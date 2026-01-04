@@ -50,7 +50,7 @@ const topicsData: Record<string, TopicContent> = {
         description: "Dünya geometrisi, koordinat sistemleri ve temel seyir kavramları",
         subTopics: [
           { title: "Dünya'nın şekli ve hareketleri", hasContent: true },
-          { title: "Coğrafi koordinat sistemi" },
+          { title: "Coğrafi koordinat sistemi", hasContent: true },
           { title: "Enlem" },
           { title: "Boylam" },
           { title: "Yön kavramları" },
