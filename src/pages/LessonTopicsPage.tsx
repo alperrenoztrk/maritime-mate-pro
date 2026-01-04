@@ -4,9 +4,12 @@ import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 import { Stability3DSim } from "@/components/stability/Stability3DSim";
+import { TopicContentModal } from "@/components/navigation/TopicContentModal";
+import { navigationTopicContents, TopicDetailContent } from "@/data/navigationTopicContents";
 
 interface SubTopic {
   title: string;
+  hasContent?: boolean;
 }
 
 interface TopicContent {
@@ -46,7 +49,7 @@ const topicsData: Record<string, TopicContent> = {
         title: "Seyrin Temelleri",
         description: "Dünya geometrisi, koordinat sistemleri ve temel seyir kavramları",
         subTopics: [
-          { title: "Dünya'nın şekli ve hareketleri" },
+          { title: "Dünya'nın şekli ve hareketleri", hasContent: true },
           { title: "Coğrafi koordinat sistemi" },
           { title: "Enlem" },
           { title: "Boylam" },
@@ -369,6 +372,7 @@ export default function LessonTopicsPage() {
   const category = calculationCategories.find(c => c.id === categoryId);
   const topicContent = categoryId ? topicsData[categoryId] : null;
   const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
+  const [selectedTopicContent, setSelectedTopicContent] = useState<TopicDetailContent | null>(null);
 
   const toggleTopic = (index: number) => {
     setExpandedTopics(prev => 
@@ -376,6 +380,13 @@ export default function LessonTopicsPage() {
         ? prev.filter(i => i !== index) 
         : [...prev, index]
     );
+  };
+
+  const handleSubTopicClick = (subTopicTitle: string) => {
+    const content = navigationTopicContents[subTopicTitle];
+    if (content) {
+      setSelectedTopicContent(content);
+    }
   };
 
   const highRefreshRateStyles: CSSProperties = {
@@ -481,15 +492,27 @@ export default function LessonTopicsPage() {
                     {hasSubTopics && isExpanded && (
                       <div className="border-t border-border/40 bg-background/50 p-4">
                         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                          {topic.subTopics!.map((sub, subIndex) => (
-                            <div
-                              key={subIndex}
-                              className="flex items-center gap-2 rounded-lg bg-card/60 px-3 py-2 text-sm"
-                            >
-                              <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                              <span className="text-foreground/90">{sub.title}</span>
-                            </div>
-                          ))}
+                          {topic.subTopics!.map((sub, subIndex) => {
+                            const hasContent = sub.hasContent && navigationTopicContents[sub.title];
+                            return (
+                              <button
+                                key={subIndex}
+                                onClick={() => hasContent && handleSubTopicClick(sub.title)}
+                                disabled={!hasContent}
+                                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-left transition-all ${
+                                  hasContent 
+                                    ? 'bg-card/60 hover:bg-primary/10 hover:border-primary/30 border border-transparent cursor-pointer' 
+                                    : 'bg-card/40 cursor-default opacity-70'
+                                }`}
+                              >
+                                <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${hasContent ? 'bg-primary' : 'bg-primary/40'}`} />
+                                <span className="text-foreground/90 flex-1">{sub.title}</span>
+                                {hasContent && (
+                                  <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
+                                )}
+                              </button>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
@@ -580,6 +603,14 @@ export default function LessonTopicsPage() {
           </Link>
         </div>
       </div>
+
+      {/* Topic Content Modal */}
+      {selectedTopicContent && (
+        <TopicContentModal
+          content={selectedTopicContent}
+          onClose={() => setSelectedTopicContent(null)}
+        />
+      )}
     </div>
   );
 }
