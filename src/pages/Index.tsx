@@ -3,8 +3,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SplashCompassDial from "@/components/ui/SplashCompassDial";
 import { createCompassListener, requestCompassPermission } from "@/utils/heading";
-import { ChevronLeft, ChevronRight, Settings } from "lucide-react";
+import { ChevronLeft, ChevronRight, Settings, Bot } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
+import { AgentWorkspace } from "@/components/ai-agent";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -12,6 +13,9 @@ const Index = () => {
   
   // Compass state
   const [headingDeg, setHeadingDeg] = useState<number | null>(null);
+  
+  // AI Agent state
+  const [agentOpen, setAgentOpen] = useState(false);
 
   // Swipe state
   const touchStartX = useRef<number | null>(null);
@@ -226,6 +230,24 @@ const Index = () => {
         <Settings className="w-6 h-6 text-white/70" />
       </button>
 
+      {/* AI Agent button */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setAgentOpen(true);
+        }}
+        className="absolute bottom-8 left-4 z-20 p-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-400/30 hover:from-cyan-500/30 hover:to-blue-500/30 hover:scale-110 transition-all duration-300"
+        style={{
+          animation: 'agent-glow 2s ease-in-out infinite'
+        }}
+        aria-label="AI Agent"
+      >
+        <Bot className="w-6 h-6 text-cyan-300" />
+      </button>
+
+      {/* AI Agent Workspace Modal */}
+      <AgentWorkspace isOpen={agentOpen} onClose={() => setAgentOpen(false)} />
+
       {/* Left arrow indicator */}
       <div className="fixed left-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none opacity-30">
         <ChevronLeft className="w-6 h-6 text-white drop-shadow-lg animate-pulse" />
@@ -311,6 +333,10 @@ const Index = () => {
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes agent-glow {
+          0%, 100% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
+          50% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); }
         }
       `}</style>
     </div>
