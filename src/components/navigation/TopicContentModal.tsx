@@ -30,7 +30,7 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
         </div>
 
         {/* Content */}
-        <ScrollArea className="flex-1">
+        <ScrollArea className="flex-1 h-[calc(90vh-80px)]">
           <div className="space-y-8 p-6">
             {/* Introduction */}
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
