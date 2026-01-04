@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.wolfram-calc]
 verify_jwt = false
+
+[functions.agent-code-gen]
+verify_jwt = false

@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      user_generated_components: {
+        Row: {
+          category: Database["public"]["Enums"]["component_category"] | null
+          code: string
+          component_type: Database["public"]["Enums"]["component_type"]
+          created_at: string | null
+          description: string | null
+          id: string
+          is_public: boolean | null
+          metadata: Json | null
+          name: string
+          thumbnail_url: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          category?: Database["public"]["Enums"]["component_category"] | null
+          code: string
+          component_type: Database["public"]["Enums"]["component_type"]
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          metadata?: Json | null
+          name: string
+          thumbnail_url?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["component_category"] | null
+          code?: string
+          component_type?: Database["public"]["Enums"]["component_type"]
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          metadata?: Json | null
+          name?: string
+          thumbnail_url?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +67,21 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      component_category:
+        | "navigation"
+        | "stability"
+        | "safety"
+        | "cargo"
+        | "engine"
+        | "weather"
+        | "general"
+      component_type:
+        | "calculation"
+        | "chart"
+        | "topic"
+        | "table"
+        | "animation"
+        | "form"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +208,24 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      component_category: [
+        "navigation",
+        "stability",
+        "safety",
+        "cargo",
+        "engine",
+        "weather",
+        "general",
+      ],
+      component_type: [
+        "calculation",
+        "chart",
+        "topic",
+        "table",
+        "animation",
+        "form",
+      ],
+    },
   },
 } as const
