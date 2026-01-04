@@ -1,6 +1,5 @@
 import { X, ChevronLeft, Lightbulb } from "lucide-react";
 import { TopicDetailContent } from "@/data/navigationTopicContents";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface TopicContentModalProps {
   content: TopicDetailContent;
@@ -29,8 +28,8 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
           </button>
         </div>
 
-        {/* Content */}
-        <ScrollArea className="flex-1 h-[calc(90vh-80px)]">
+        {/* Content (use native scrolling container instead of Radix ScrollArea) */}
+        <div className="flex-1 h-[calc(90vh-80px)] overflow-y-auto overflow-x-hidden" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div className="space-y-8 p-6">
             {/* Introduction */}
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
@@ -45,7 +44,7 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                 <h3 className="text-lg font-semibold text-foreground">
                   {section.title}
                 </h3>
-                
+
                 {section.image && (
                   <div className="overflow-hidden rounded-xl border border-border/40">
                     <img
@@ -56,11 +55,11 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                     />
                   </div>
                 )}
-                
+
                 <p className="text-sm leading-relaxed text-foreground/80">
                   {section.content}
                 </p>
-                
+
                 {section.bulletPoints && section.bulletPoints.length > 0 && (
                   <ul className="space-y-2 pl-1">
                     {section.bulletPoints.map((point, i) => (
@@ -71,7 +70,7 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                     ))}
                   </ul>
                 )}
-                
+
                 {section.formula && (
                   <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4">
                     <p className="font-mono text-sm font-medium text-amber-700 dark:text-amber-400">
@@ -105,7 +104,7 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
               </section>
             )}
           </div>
-        </ScrollArea>
+        </div>
       </div>
     </div>
   );
