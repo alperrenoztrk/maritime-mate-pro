@@ -26,12 +26,19 @@ export interface AgentMessage {
   timestamp: Date;
 }
 
+export interface FileContext {
+  name: string;
+  type: string;
+  url: string;
+}
+
 export interface AgentRequest {
   prompt: string;
   context?: {
     componentType?: ComponentType;
     category?: ComponentCategory;
     existingCode?: string;
+    files?: FileContext[];
   };
 }
 

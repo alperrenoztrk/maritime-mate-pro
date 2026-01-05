@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { generateCode, streamGenerateCode, saveComponent } from '@/services/agentService';
 import type { AgentMessage, AgentRequest, ComponentType, ComponentCategory } from '@/types/agent';
+import type { UploadedFile } from '@/hooks/useFileUpload';
 import { toast } from 'sonner';
 
 export function useAgentCodeGeneration() {
@@ -10,11 +11,18 @@ export function useAgentCodeGeneration() {
   const [componentType, setComponentType] = useState<ComponentType>('calculation');
   const [category, setCategory] = useState<ComponentCategory>('general');
 
-  const sendMessage = useCallback(async (prompt: string, useStreaming = true) => {
+  const sendMessage = useCallback(async (prompt: string, files?: UploadedFile[]) => {
+    // Build message content with file info
+    let messageContent = prompt;
+    if (files && files.length > 0) {
+      const fileInfo = files.map(f => `📎 ${f.name} (${f.type})`).join('\n');
+      messageContent = prompt ? `${prompt}\n\n${fileInfo}` : fileInfo;
+    }
+
     const userMessage: AgentMessage = {
       id: crypto.randomUUID(),
       role: 'user',
-      content: prompt,
+      content: messageContent,
       timestamp: new Date(),
     };
 
@@ -22,78 +30,60 @@ export function useAgentCodeGeneration() {
     setIsLoading(true);
 
     try {
+      // Include file URLs in context for AI processing
+      const fileContext = files?.map(f => ({
+        name: f.name,
+        type: f.type,
+        url: f.url,
+      }));
+
       const request: AgentRequest = {
-        prompt,
+        prompt: prompt || 'Bu dosyaları analiz et ve uygun bir bileşen oluştur',
         context: {
           componentType,
           category,
           existingCode: currentCode || undefined,
+          files: fileContext,
         },
       };
 
-      if (useStreaming) {
-        let assistantContent = '';
-        
-        const assistantMessage: AgentMessage = {
-          id: crypto.randomUUID(),
-          role: 'assistant',
-          content: '',
-          timestamp: new Date(),
-        };
+      // Always use streaming for better UX
+      let assistantContent = '';
+      const assistantMessage: AgentMessage = {
+        id: crypto.randomUUID(),
+        role: 'assistant',
+        content: '',
+        timestamp: new Date(),
+      };
 
-        setMessages(prev => [...prev, assistantMessage]);
+      setMessages(prev => [...prev, assistantMessage]);
 
-        await streamGenerateCode(
-          request,
-          (delta) => {
-            assistantContent += delta;
-            setMessages(prev => 
-              prev.map(m => 
-                m.id === assistantMessage.id 
-                  ? { ...m, content: assistantContent }
-                  : m
-              )
-            );
-          },
-          (code) => {
-            setCurrentCode(code);
-            setMessages(prev =>
-              prev.map(m =>
-                m.id === assistantMessage.id
-                  ? { ...m, code }
-                  : m
-              )
-            );
-          },
-          () => {
-            setIsLoading(false);
-          }
-        );
-      } else {
-        const response = await generateCode(request);
-
-        const assistantMessage: AgentMessage = {
-          id: crypto.randomUUID(),
-          role: 'assistant',
-          content: response.message,
-          code: response.code,
-          timestamp: new Date(),
-        };
-
-        setMessages(prev => [...prev, assistantMessage]);
-
-        if (response.code) {
-          setCurrentCode(response.code);
+      await streamGenerateCode(
+        request,
+        (delta) => {
+          assistantContent += delta;
+          setMessages(prev => 
+            prev.map(m => 
+              m.id === assistantMessage.id 
+                ? { ...m, content: assistantContent }
+                : m
+            )
+          );
+        },
+        (code) => {
+          setCurrentCode(code);
+          setMessages(prev =>
+            prev.map(m =>
+              m.id === assistantMessage.id
+                ? { ...m, code }
+                : m
+            )
+          );
+        },
+        () => {
+          setIsLoading(false);
         }
-        if (response.componentType) {
-          setComponentType(response.componentType as ComponentType);
-        }
-        if (response.category) {
-          setCategory(response.category as ComponentCategory);
-        }
-
-        setIsLoading(false);
-      }
+      );
     } catch (error) {
       console.error('Agent error:', error);
       toast.error(error instanceof Error ? error.message : 'Kod üretimi başarısız oldu');
