@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, User, Loader2, Sparkles } from 'lucide-react';
+import { Send, Bot, User, Loader2, Sparkles, Paperclip, X, FileText, Image, FileSpreadsheet, File } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -8,11 +8,12 @@ import { Badge } from '@/components/ui/badge';
 import type { AgentMessage } from '@/types/agent';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useFileUpload, type UploadedFile } from '@/hooks/useFileUpload';
 
 interface AgentChatProps {
   messages: AgentMessage[];
   isLoading: boolean;
-  onSendMessage: (message: string) => void;
+  onSendMessage: (message: string, files?: UploadedFile[]) => void;
 }
 
 const QUICK_PROMPTS = [
@@ -22,10 +23,19 @@ const QUICK_PROMPTS = [
   { label: 'Trim Tablosu', prompt: 'Trim hesaplama tablosu oluştur' },
 ];
 
+const getFileIcon = (type: string) => {
+  if (type.startsWith('image/')) return Image;
+  if (type.includes('spreadsheet') || type.includes('excel') || type === 'text/csv') return FileSpreadsheet;
+  if (type.includes('pdf') || type.includes('document') || type.includes('word')) return FileText;
+  return File;
+};
+
 export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps) {
   const [input, setInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { uploadedFiles, isUploading, uploadFiles, removeFile, clearFiles, formatFileSize } = useFileUpload();
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -34,9 +44,19 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
   }, [messages]);
 
   const handleSubmit = () => {
-    if (!input.trim() || isLoading) return;
-    onSendMessage(input.trim());
+    if ((!input.trim() && uploadedFiles.length === 0) || isLoading || isUploading) return;
+    onSendMessage(input.trim(), uploadedFiles.length > 0 ? uploadedFiles : undefined);
     setInput('');
+    clearFiles();
+  };
+
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      await uploadFiles(e.target.files);
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -146,7 +166,55 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
 
       {/* Input */}
       <div className="border-t border-border p-4">
+        {/* Uploaded files preview */}
+        {uploadedFiles.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-3">
+            {uploadedFiles.map((file) => {
+              const FileIcon = getFileIcon(file.type);
+              return (
+                <motion.div
+                  key={file.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex items-center gap-2 bg-muted rounded-lg px-3 py-2 text-sm"
+                >
+                  <FileIcon className="h-4 w-4 text-muted-foreground" />
+                  <span className="max-w-[120px] truncate">{file.name}</span>
+                  <span className="text-xs text-muted-foreground">({formatFileSize(file.size)})</span>
+                  <button
+                    onClick={() => removeFile(file.id)}
+                    className="ml-1 hover:text-destructive transition-colors"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
+
         <div className="flex gap-2">
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            className="hidden"
+            onChange={handleFileSelect}
+          />
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isLoading || isUploading}
+            className="h-[60px] w-[60px] shrink-0"
+            title="Dosya ekle (max 30MB)"
+          >
+            {isUploading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              <Paperclip className="h-5 w-5" />
+            )}
+          </Button>
           <Textarea
             ref={textareaRef}
             value={input}
@@ -154,13 +222,13 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
             onKeyDown={handleKeyDown}
             placeholder="Ne oluşturmamı istersiniz?"
             className="min-h-[60px] max-h-[120px] resize-none"
-            disabled={isLoading}
+            disabled={isLoading || isUploading}
           />
           <Button 
             onClick={handleSubmit} 
-            disabled={!input.trim() || isLoading}
+            disabled={(!input.trim() && uploadedFiles.length === 0) || isLoading || isUploading}
             size="icon"
-            className="h-[60px] w-[60px]"
+            className="h-[60px] w-[60px] shrink-0"
           >
             {isLoading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
@@ -169,6 +237,7 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
             )}
           </Button>
         </div>
+        <p className="text-xs text-muted-foreground mt-2">Tüm dosya türleri desteklenir (max 30MB)</p>
       </div>
     </div>
   );
