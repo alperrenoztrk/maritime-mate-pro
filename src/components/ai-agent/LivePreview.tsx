@@ -16,66 +16,32 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calculator, Anchor, Ship, Navigation, Compass, Map, Waves, AlertTriangle } from 'lucide-react';
 import React, { useState as useStateHook, useEffect as useEffectHook, useMemo as useMemoHook, useCallback as useCallbackHook } from 'react';
+import { maritimeHelpers } from '@/utils/maritimeHelpers';
 
 interface LivePreviewProps {
   code: string;
 }
 
-// Maritime helper functions for scope
-const maritimeHelpers = {
-  // GM Calculation
-  calculateGM: (KM: number, KG: number) => KM - KG,
-  
-  // GZ Calculation (small angles)
-  calculateGZ: (GM: number, heelAngle: number) => GM * Math.sin(heelAngle * Math.PI / 180),
-  
-  // Trim calculation
-  calculateTrim: (aftDraft: number, fwdDraft: number) => aftDraft - fwdDraft,
-  
-  // TPC calculation
-  calculateTPC: (waterplaneArea: number, density = 1.025) => (waterplaneArea * density) / 100,
-  
-  // MTC calculation
-  calculateMTC: (displacement: number, GML: number, length: number) => (displacement * GML) / (100 * length),
-  
-  // Displacement calculation
-  calculateDisplacement: (L: number, B: number, T: number, Cb: number, density = 1.025) => L * B * T * Cb * density,
-  
-  // Great Circle Distance
-  calculateGreatCircleDistance: (lat1: number, lon1: number, lat2: number, lon2: number) => {
-    const toRad = (deg: number) => deg * Math.PI / 180;
-    const dLon = toRad(lon2 - lon1);
-    const distance = Math.acos(
-      Math.sin(toRad(lat1)) * Math.sin(toRad(lat2)) +
-      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(dLon)
-    );
-    return distance * 60 * (180 / Math.PI);
-  },
-  
-  // Convert degrees to DMS
-  toDMS: (decimal: number) => {
-    const d = Math.floor(decimal);
-    const m = Math.floor((decimal - d) * 60);
-    const s = ((decimal - d) * 60 - m) * 60;
-    return { degrees: d, minutes: m, seconds: s };
-  },
-  
-  // Beaufort scale
-  getBeaufortScale: (windSpeed: number) => {
-    if (windSpeed < 1) return { force: 0, description: 'Calm' };
-    if (windSpeed < 4) return { force: 1, description: 'Light air' };
-    if (windSpeed < 7) return { force: 2, description: 'Light breeze' };
-    if (windSpeed < 11) return { force: 3, description: 'Gentle breeze' };
-    if (windSpeed < 17) return { force: 4, description: 'Moderate breeze' };
-    if (windSpeed < 22) return { force: 5, description: 'Fresh breeze' };
-    if (windSpeed < 28) return { force: 6, description: 'Strong breeze' };
-    if (windSpeed < 34) return { force: 7, description: 'Near gale' };
-    if (windSpeed < 41) return { force: 8, description: 'Gale' };
-    if (windSpeed < 48) return { force: 9, description: 'Strong gale' };
-    if (windSpeed < 56) return { force: 10, description: 'Storm' };
-    if (windSpeed < 64) return { force: 11, description: 'Violent storm' };
-    return { force: 12, description: 'Hurricane' };
-  },
+const FORBIDDEN_PATTERNS = [
+  /\\bwindow\\b/i,
+  /\\bdocument\\b/i,
+  /\\blocalStorage\\b/i,
+  /\\bsessionStorage\\b/i,
+  /\\bfetch\\b/i,
+  /\\bXMLHttpRequest\\b/i,
+  /\\bWebSocket\\b/i,
+  /\\beval\\b/i,
+  /\\bFunction\\b/i,
+  /\\bimport\\s*\\(/i,
+];
+
+const findForbiddenPattern = (code: string): string | null => {
+  for (const pattern of FORBIDDEN_PATTERNS) {
+    if (pattern.test(code)) {
+      return pattern.toString();
+    }
+  }
+  return null;
 };
 
 // Create scope for live preview
@@ -165,6 +131,15 @@ export function LivePreview({ code }: LivePreviewProps) {
   }, [code]);
 
   useEffect(() => {
+    if (!code) {
+      setError(null);
+      return;
+    }
+    const forbidden = findForbiddenPattern(code);
+    if (forbidden) {
+      setError(`Bu kod önizleme güvenlik filtresinden geçemedi: ${forbidden}`);
+      return;
+    }
     setError(null);
   }, [code]);
 
@@ -205,6 +180,7 @@ export function LivePreview({ code }: LivePreviewProps) {
             className="h-full w-full overflow-auto bg-background rounded-lg border border-border p-4"
           >
             <Runner
+              key={wrappedCode}
               code={wrappedCode}
               scope={scope}
               onRendered={(error) => {
