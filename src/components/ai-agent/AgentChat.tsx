@@ -156,7 +156,9 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
                   <Loader2 className="h-4 w-4 animate-spin" />
                 </div>
                 <div className="bg-muted rounded-lg px-4 py-2">
-                  <p className="text-sm text-muted-foreground">Kod üretiliyor...</p>
+                  <p className="text-sm text-muted-foreground">
+                    {isUploading ? 'Dosya yükleniyor...' : 'Kod üretiliyor...'}
+                  </p>
                 </div>
               </motion.div>
             )}
@@ -237,7 +239,9 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
             )}
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground mt-2">Tüm dosya türleri desteklenir (max 30MB)</p>
+        <p className="text-xs text-muted-foreground mt-2">
+          PDF, Excel, Word, CSV, JSON ve diğer dosyalar desteklenir (max 30MB)
+        </p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { generateCode, streamGenerateCode, saveComponent } from '@/services/agentService';
+import { parseFiles, buildFileContext } from '@/services/fileParserService';
 import type { AgentMessage, AgentRequest, ComponentType, ComponentCategory } from '@/types/agent';
 import type { UploadedFile } from '@/hooks/useFileUpload';
 import { toast } from 'sonner';
@@ -8,6 +9,7 @@ export function useAgentCodeGeneration() {
   const [messages, setMessages] = useState<AgentMessage[]>([]);
   const [currentCode, setCurrentCode] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isParsing, setIsParsing] = useState(false);
   const [componentType, setComponentType] = useState<ComponentType>('calculation');
   const [category, setCategory] = useState<ComponentCategory>('general');
 
@@ -30,15 +32,36 @@ export function useAgentCodeGeneration() {
     setIsLoading(true);
 
     try {
-      // Include file URLs in context for AI processing
+      // Parse files if any
+      let fileContentForAI = '';
+      if (files && files.length > 0) {
+        setIsParsing(true);
+        toast.info('Dosyalar işleniyor...');
+        
+        const parsedFiles = await parseFiles(files);
+        fileContentForAI = buildFileContext(parsedFiles);
+        
+        const successCount = parsedFiles.filter(f => f.success).length;
+        if (successCount > 0) {
+          toast.success(`${successCount} dosya başarıyla işlendi`);
+        }
+        setIsParsing(false);
+      }
+
+      // Include file URLs and parsed content in context for AI processing
       const fileContext = files?.map(f => ({
         name: f.name,
         type: f.type,
         url: f.url,
       }));
 
+      // Enhance prompt with parsed file content
+      const enhancedPrompt = fileContentForAI 
+        ? `${prompt || 'Bu dosyaları analiz et ve uygun bir bileşen oluştur'}${fileContentForAI}`
+        : prompt || 'Bu dosyaları analiz et ve uygun bir bileşen oluştur';
+
       const request: AgentRequest = {
-        prompt: prompt || 'Bu dosyaları analiz et ve uygun bir bileşen oluştur',
+        prompt: enhancedPrompt,
         context: {
           componentType,
           category,
@@ -88,6 +111,7 @@ export function useAgentCodeGeneration() {
       console.error('Agent error:', error);
       toast.error(error instanceof Error ? error.message : 'Kod üretimi başarısız oldu');
       setIsLoading(false);
+      setIsParsing(false);
     }
   }, [componentType, category, currentCode]);
 
@@ -136,6 +160,7 @@ export function useAgentCodeGeneration() {
     messages,
     currentCode,
     isLoading,
+    isParsing,
     componentType,
     category,
     setComponentType,
