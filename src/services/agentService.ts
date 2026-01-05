@@ -1,15 +1,15 @@
 // AI Agent Service for Marine Expert
-import { supabase } from "@/integrations/supabase/client";
-import type { AgentRequest, AgentResponse, GeneratedComponent, ComponentType, ComponentCategory } from "@/types/agent";
+import { supabase, backendUrl, backendPublishableKey } from "@/integrations/supabase/safeClient";
+import type { AgentRequest, AgentResponse, GeneratedComponent } from "@/types/agent";
 
-const AGENT_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/agent-code-gen`;
+const AGENT_FUNCTION_URL = `${backendUrl}/functions/v1/agent-code-gen`;
 
 export async function generateCode(request: AgentRequest): Promise<AgentResponse> {
   const response = await fetch(AGENT_FUNCTION_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      Authorization: `Bearer ${backendPublishableKey}`,
     },
     body: JSON.stringify(request),
   });
@@ -32,7 +32,7 @@ export async function streamGenerateCode(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      Authorization: `Bearer ${backendPublishableKey}`,
     },
     body: JSON.stringify({ ...request, stream: true }),
   });
