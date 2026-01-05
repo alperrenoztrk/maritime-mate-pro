@@ -108,7 +108,7 @@ export function useAgentCodeGeneration() {
     }
 
     try {
-      const { data: { user } } = await (await import('@/integrations/supabase/client')).supabase.auth.getUser();
+      const { data: { user } } = await (await import('@/integrations/supabase/safeClient')).supabase.auth.getUser();
       
       if (!user) {
         toast.error('Kaydetmek için giriş yapmalısınız');
