@@ -236,7 +236,7 @@ const Index = () => {
           e.stopPropagation();
           setAgentOpen(true);
         }}
-        className="absolute bottom-8 left-4 z-20 p-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-400/30 hover:from-cyan-500/30 hover:to-blue-500/30 hover:scale-110 transition-all duration-300"
+        className="absolute top-4 left-4 z-20 p-2.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-400/30 hover:from-cyan-500/30 hover:to-blue-500/30 hover:scale-110 transition-all duration-300"
         style={{
           animation: 'agent-glow 2s ease-in-out infinite'
         }}
