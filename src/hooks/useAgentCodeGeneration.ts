@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react';
-import { generateCode, streamGenerateCode, saveComponent } from '@/services/agentService';
+import { streamGenerateCode, saveComponent } from '@/services/agentService';
 import { parseFiles, buildFileContext } from '@/services/fileParserService';
 import type { AgentMessage, AgentRequest, ComponentType, ComponentCategory } from '@/types/agent';
 import type { UploadedFile } from '@/hooks/useFileUpload';
 import { toast } from 'sonner';
+import { normalizeAgentOutput } from '@/utils/agentOutputNormalizer';
 
 export function useAgentCodeGeneration() {
   const [messages, setMessages] = useState<AgentMessage[]>([]);
@@ -85,10 +86,11 @@ export function useAgentCodeGeneration() {
         request,
         (delta) => {
           assistantContent += delta;
+          const normalizedContent = normalizeAgentOutput(assistantContent);
           setMessages(prev => 
             prev.map(m => 
               m.id === assistantMessage.id 
-                ? { ...m, content: assistantContent }
+                ? { ...m, content: normalizedContent }
                 : m
             )
           );

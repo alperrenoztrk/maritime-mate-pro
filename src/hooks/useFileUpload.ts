@@ -12,6 +12,43 @@ export interface UploadedFile {
 }
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
+const SIGNED_URL_TTL_SECONDS = 10 * 60;
+const ALLOWED_MIME_TYPES = new Set([
+  'application/pdf',
+  'application/json',
+  'text/plain',
+  'text/csv',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/gif',
+]);
+const ALLOWED_EXTENSIONS = new Set([
+  'pdf',
+  'json',
+  'txt',
+  'csv',
+  'xls',
+  'xlsx',
+  'doc',
+  'docx',
+  'png',
+  'jpg',
+  'jpeg',
+  'webp',
+  'gif',
+]);
+
+const isAllowedFile = (file: File) => {
+  if (ALLOWED_MIME_TYPES.has(file.type)) return true;
+  const extension = file.name.split('.').pop()?.toLowerCase();
+  if (!extension) return false;
+  return ALLOWED_EXTENSIONS.has(extension);
+};
 
 export function useFileUpload() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
@@ -20,6 +57,10 @@ export function useFileUpload() {
   const uploadFile = useCallback(async (file: File): Promise<UploadedFile | null> => {
     if (file.size > MAX_FILE_SIZE) {
       toast.error(`Dosya boyutu 30MB'ı aşamaz: ${file.name}`);
+      return null;
+    }
+    if (!isAllowedFile(file)) {
+      toast.error(`Desteklenmeyen dosya türü: ${file.name}`);
       return null;
     }
 
@@ -49,16 +90,23 @@ export function useFileUpload() {
         return null;
       }
 
-      const { data: { publicUrl } } = supabase.storage
+      const { data: signedData, error: signedError } = await supabase.storage
         .from('agent-uploads')
-        .getPublicUrl(filePath);
+        .createSignedUrl(filePath, SIGNED_URL_TTL_SECONDS);
+
+      if (signedError || !signedData?.signedUrl) {
+        toast.error('Dosya URL oluşturulamadı');
+        await supabase.storage.from('agent-uploads').remove([filePath]);
+        setIsUploading(false);
+        return null;
+      }
 
       const uploadedFile: UploadedFile = {
         id: crypto.randomUUID(),
         name: file.name,
         size: file.size,
         type: file.type,
-        url: publicUrl,
+        url: signedData.signedUrl,
         path: filePath,
       };
 
@@ -103,9 +151,20 @@ export function useFileUpload() {
     }
   }, [uploadedFiles]);
 
-  const clearFiles = useCallback(() => {
-    setUploadedFiles([]);
-  }, []);
+  const clearFiles = useCallback(async () => {
+    if (uploadedFiles.length === 0) {
+      setUploadedFiles([]);
+      return;
+    }
+    const paths = uploadedFiles.map(file => file.path);
+    try {
+      await supabase.storage.from('agent-uploads').remove(paths);
+    } catch (error) {
+      console.error('Bulk remove error:', error);
+    } finally {
+      setUploadedFiles([]);
+    }
+  }, [uploadedFiles]);
 
   const formatFileSize = useCallback((bytes: number): string => {
     if (bytes < 1024) return bytes + ' B';

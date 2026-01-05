@@ -43,11 +43,17 @@ export function AgentChat({ messages, isLoading, onSendMessage }: AgentChatProps
     }
   }, [messages]);
 
+  useEffect(() => {
+    return () => {
+      void clearFiles();
+    };
+  }, [clearFiles]);
+
   const handleSubmit = () => {
     if ((!input.trim() && uploadedFiles.length === 0) || isLoading || isUploading) return;
     onSendMessage(input.trim(), uploadedFiles.length > 0 ? uploadedFiles : undefined);
     setInput('');
-    clearFiles();
+    void clearFiles();
   };
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
