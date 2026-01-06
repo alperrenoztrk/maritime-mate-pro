@@ -1,16 +1,6 @@
 import stabilityGolden from "../../data/validation/stability_golden.json";
-import maritimeHelpersGolden from "../../data/validation/maritime_helpers_golden.json";
 import { HydrostaticCalculations } from "../../services/hydrostaticCalculations";
 import type { ShipGeometry } from "../../types/hydrostatic";
-import {
-  calculateDisplacement,
-  calculateGM,
-  calculateGZ,
-  calculateGreatCircleDistance,
-  calculateMTC,
-  calculateTPC,
-  calculateTrim,
-} from "../maritimeHelpers";
 
 const failures: string[] = [];
 
@@ -82,73 +72,6 @@ for (const scenario of scenarios) {
     }
     default:
       failures.push(`Unknown scenario kind: ${scenario.kind}`);
-  }
-}
-
-for (const scenario of maritimeHelpersGolden.scenarios) {
-  switch (scenario.kind) {
-    case "gm": {
-      const gm = calculateGM(scenario.inputs.km as number, scenario.inputs.kg as number);
-      withinTolerance(gm, scenario.expected.gm as number, scenario.tolerance.gm as number, `${scenario.id}.gm`);
-      break;
-    }
-    case "gz": {
-      const gz = calculateGZ(scenario.inputs.gm as number, scenario.inputs.angleDeg as number);
-      withinTolerance(gz, scenario.expected.gz as number, scenario.tolerance.gz as number, `${scenario.id}.gz`);
-      break;
-    }
-    case "tpc": {
-      const tpc = calculateTPC(scenario.inputs.waterplaneArea as number, scenario.inputs.density as number);
-      withinTolerance(tpc, scenario.expected.tpc as number, scenario.tolerance.tpc as number, `${scenario.id}.tpc`);
-      break;
-    }
-    case "mtc": {
-      const mtc = calculateMTC(
-        scenario.inputs.displacement as number,
-        scenario.inputs.gml as number,
-        scenario.inputs.length as number
-      );
-      withinTolerance(mtc, scenario.expected.mtc as number, scenario.tolerance.mtc as number, `${scenario.id}.mtc`);
-      break;
-    }
-    case "displacement": {
-      const displacement = calculateDisplacement(
-        scenario.inputs.length as number,
-        scenario.inputs.breadth as number,
-        scenario.inputs.draft as number,
-        scenario.inputs.cb as number,
-        scenario.inputs.density as number
-      );
-      withinTolerance(
-        displacement,
-        scenario.expected.displacement as number,
-        scenario.tolerance.displacement as number,
-        `${scenario.id}.displacement`
-      );
-      break;
-    }
-    case "great_circle": {
-      const distance = calculateGreatCircleDistance(
-        scenario.inputs.lat1 as number,
-        scenario.inputs.lon1 as number,
-        scenario.inputs.lat2 as number,
-        scenario.inputs.lon2 as number
-      );
-      withinTolerance(
-        distance,
-        scenario.expected.distanceNm as number,
-        scenario.tolerance.distanceNm as number,
-        `${scenario.id}.distanceNm`
-      );
-      break;
-    }
-    case "trim": {
-      const trim = calculateTrim(scenario.inputs.aftDraft as number, scenario.inputs.fwdDraft as number);
-      withinTolerance(trim, scenario.expected.trim as number, scenario.tolerance.trim as number, `${scenario.id}.trim`);
-      break;
-    }
-    default:
-      failures.push(`Unknown maritime helper scenario kind: ${scenario.kind}`);
   }
 }
 

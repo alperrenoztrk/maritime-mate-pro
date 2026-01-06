@@ -46,43 +46,6 @@ export async function streamGenerateCode(
   let buffer = '';
   let codeBuffer = '';
   let inCodeBlock = false;
-  const codeFenceStart = /```(tsx|typescript|ts|jsx|js)\b/i;
-
-  const consumeContent = (content: string) => {
-    let remaining = content;
-
-    while (remaining.length > 0) {
-      if (!inCodeBlock) {
-        const match = remaining.match(codeFenceStart);
-        if (!match || match.index === undefined) {
-          onDelta(remaining);
-          return;
-        }
-
-        const beforeFence = remaining.slice(0, match.index);
-        if (beforeFence) {
-          onDelta(beforeFence);
-        }
-
-        const afterFence = remaining.slice(match.index + match[0].length);
-        inCodeBlock = true;
-        remaining = afterFence.replace(/^\s*\n/, '');
-        continue;
-      }
-
-      const endIndex = remaining.indexOf('```');
-      if (endIndex === -1) {
-        codeBuffer += remaining;
-        return;
-      }
-
-      codeBuffer += remaining.slice(0, endIndex);
-      onCode(codeBuffer);
-      codeBuffer = '';
-      inCodeBlock = false;
-      remaining = remaining.slice(endIndex + 3).replace(/^\s*\n/, '');
-    }
-  };
 
   while (true) {
     const { done, value } = await reader.read();
@@ -110,7 +73,23 @@ export async function streamGenerateCode(
         const content = parsed.choices?.[0]?.delta?.content;
         
         if (content) {
-          consumeContent(content);
+          // Check for code blocks
+          if (content.includes('```tsx') || content.includes('```typescript')) {
+            inCodeBlock = true;
+            continue;
+          }
+          if (content.includes('```') && inCodeBlock) {
+            inCodeBlock = false;
+            onCode(codeBuffer);
+            codeBuffer = '';
+            continue;
+          }
+
+          if (inCodeBlock) {
+            codeBuffer += content;
+          } else {
+            onDelta(content);
+          }
         }
       } catch {
         // Incomplete JSON, wait for more data
@@ -120,9 +99,6 @@ export async function streamGenerateCode(
     }
   }
 
-  if (codeBuffer) {
-    onCode(codeBuffer);
-  }
   onDone();
 }
 
