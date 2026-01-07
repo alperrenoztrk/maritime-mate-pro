@@ -53,7 +53,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Coğrafi koordinat sistemi", hasContent: true },
           { title: "Enlem", hasContent: true },
           { title: "Boylam", hasContent: true },
-          { title: "Yön kavramları" },
+          { title: "Yön kavramları", hasContent: true },
           { title: "Gerçek kuzey (True)" },
           { title: "Manyetik kuzey" },
           { title: "Pusula kuzeyi" },
