@@ -1079,12 +1079,50 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Harita Ölçeği ve Bilgi Düzeyi",
-        content: "Harita ölçeği, harita üzerindeki mesafelerin gerçek dünyadaki karşılığını belirlediği için yapının temel taşlarından biridir. Aynı bölgeye ait farklı ölçekli haritalar farklı amaçlarla kullanılır. Büyük ölçekli haritalar detaylı bilgi sunarken, küçük ölçekli haritalar genel seyir planlaması için tercih edilir. Haritanın yapısı, bu ölçeğe uygun olarak detaylandırılmıştır; yani her bilgi her ölçekte yer almaz.",
+        content: "Harita ölçeği, harita üzerindeki bir uzunluğun yeryüzündeki gerçek mesafeye oranını ifade eder ve deniz haritasının nasıl okunacağını doğrudan belirler. Ölçek genellikle 1:50 000, 1:10 000 gibi bir oranla gösterilir. Bu oran, harita üzerindeki bir birim uzunluğun gerçekte kaç birime karşılık geldiğini tanımlar. Ölçek kavramı doğru anlaşılmadan yapılan rota çizimleri, mesafe ölçümleri ve mevki işaretlemeleri teknik olarak tutarsız hâle gelir. Ölçeğin matematiksel mantığı basittir ancak etkisi büyüktür. 1:50 000 ölçekli bir haritada harita üzerindeki 1 santimetre, gerçekte 50 000 santimetreye yani 500 metreye karşılık gelir. Ölçek küçüldükçe payda büyür, harita üzerindeki detay azalır; ölçek büyüdükçe payda küçülür, detay artar. Bu nedenle ölçek kavramı ters mantıkla değerlendirilir: büyük ölçekli harita daha küçük alanı ama daha fazla detayı gösterir. Büyük ölçekli haritalar limanlar, demirleme sahaları, dar kanallar ve boğaz geçişleri gibi hassas seyir gerektiren bölgelerde kullanılır. Bu haritalarda kıyı çizgileri daha ayrıntılıdır, derinlik izobatları sık aralıklıdır ve seyir yardımcıları detaylı biçimde gösterilir. Büyük ölçekli bir haritada yapılan mesafe ölçümü ve rota çizimi, küçük ölçekli bir haritaya göre çok daha hassas sonuç verir. Küçük ölçekli haritalar ise geniş deniz alanlarını kapsar ve genel seyir planlaması için kullanılır. Açık deniz seyri, uzun mesafeli rota planlaması ve genel yön belirleme işlemleri bu haritalarla yapılır. Küçük ölçekli haritalarda detay bilinçli olarak azaltılmıştır; çünkü bu haritaların amacı mikro seyir değil, makro rota planlamasıdır. Harita ölçeği, mesafe ölçümünün doğruluğunu doğrudan etkiler. Aynı mesafe, farklı ölçekli iki haritada ölçüldüğünde, küçük ölçekli haritada daha kısa ve daha az hassas görünür. Bu nedenle mesafe ölçümleri her zaman mümkün olan en büyük ölçekli harita üzerinde yapılmalıdır. Bu yaklaşım, özellikle dar sularda yapılan seyirde hata payını ciddi biçimde azaltır. Ölçeğin rota çizimi üzerindeki etkisi de kritiktir. Küçük ölçekli bir haritada düz çizgi gibi görünen bir rota, büyük ölçekli haritaya geçildiğinde sığlıklar, kayalıklar veya yasak sahalarla çakışabilir. Bu nedenle seyir planlaması yapılırken önce küçük ölçekli haritada genel rota belirlenir, ardından büyük ölçekli haritalara geçilerek rota detaylandırılır. Harita ölçeği aynı zamanda harita üzerindeki sembollerin ve bilgilerin seçimini de belirler. Büyük ölçekli haritalarda yer alan bazı semboller, küçük ölçekli haritalarda hiç gösterilmez. Bu durum bilgi eksikliği değil, bilinçli bir sadeleştirmedir. Seyirci, haritanın ölçeğine bakarak hangi bilgilerin bilinçli olarak dışarıda bırakıldığını anlayabilmelidir. Harita ölçeği, denizcilikte yalnızca bir oran değildir; seyir emniyetinin doğrudan belirleyicisidir. Yanlış ölçekli harita kullanımı, doğru çizilmiş bir rotayı bile tehlikeli hâle getirebilir. Bu nedenle her seyir safhasında kullanılan haritanın ölçeği bilinçli şekilde seçilmeli ve yapılan tüm ölçümler bu ölçeğin sınırları içinde değerlendirilmelidir.",
+        image: "https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18020.jpg",
+        imageAlt: "Deniz haritasında ölçek çizgisi örneği",
         bulletPoints: [
-          "Büyük ölçek: ayrıntılı kıyı ve liman bilgisi",
-          "Küçük ölçek: genel planlama ve rota stratejisi",
-          "Ölçeğe göre bilgi yoğunluğu değişir"
+          "Büyük ölçek: küçük alan, yüksek detay",
+          "Küçük ölçek: geniş alan, sınırlı detay",
+          "Mesafe ölçümü mümkün olan en büyük ölçekte yapılmalıdır"
         ]
+      },
+      {
+        title: "Ölçek Örnekleri",
+        content: "Ölçek örnekleri, harita üzerindeki uzunlukların gerçek mesafeye nasıl dönüştüğünü netleştirir. Ölçek grafikleri ve örnek ölçüm çizgileri, deniz haritasını okurken doğru mesafe algısı oluşturur.",
+        image: "https://cdn.shopify.com/s/files/1/0523/4189/9430/files/scales.png",
+        imageAlt: "Farklı harita ölçeklerinin karşılaştırması"
+      },
+      {
+        title: "Koordinat ve Mesafe Ölçeği",
+        content: "Harita üzerindeki mesafe ölçümleri çoğu zaman enlem çizgileri ve ölçek barları üzerinden yapılır. Bu görsel, ölçüm ve koordinat okuma ilişkisinin pratik karşılığını gösterir.",
+        image: "https://sailingissues.com/chart-symbols/coordinates-dividers-nautical-chart-3x.png",
+        imageAlt: "Deniz haritasında koordinat ve ölçek kullanımı"
+      },
+      {
+        title: "Detay Karşılaştırması",
+        content: "Büyük ve küçük ölçekli haritalar arasında detay yoğunluğu farkı belirgindir. Büyük ölçekli haritalar kıyı çizgisi ve izobat ayrıntılarını daha net gösterir.",
+        image: "https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18640-detail.jpg",
+        imageAlt: "Büyük ölçekli haritada detay yoğunluğu"
+      },
+      {
+        title: "Ölçek ve Alan Kapsamı",
+        content: "Küçük ölçekli haritalar geniş alanları kapsar ve rota planlamasının genel çerçevesini kurar. Bu tip haritalarda detay azalırken kapsanan alan artar.",
+        image: "https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/530.jpg",
+        imageAlt: "Küçük ölçekli harita örneği"
+      },
+      {
+        title: "Seyir Uygulamalarında Ölçek",
+        content: "Rota planlaması yapılırken önce küçük ölçekli haritada genel rota belirlenir, ardından büyük ölçekli haritalara geçilerek rota detaylandırılır. Görsel, büyük ölçekli yaklaşımda rota detaylarının nasıl netleştiğini gösterir.",
+        image: "https://www.siranah.de/pictures/sail022g_E.jpg",
+        imageAlt: "Büyük ölçekli haritada rota detaylandırma"
+      },
+      {
+        title: "Ölçek Türleri ve Semboller",
+        content: "Harita ölçeği, hangi sembollerin ve bilgilerin gösterileceğini belirler. Büyük ölçekli haritalarda detaylı sembol dili kullanılırken, küçük ölçekli haritalarda bilgi bilinçli olarak sadeleştirilir.",
+        image: "https://www.flaggaff.com/wp-content/uploads/2017/04/Nautical-Charts.-Types-of-Scales.png",
+        imageAlt: "Nautical chart ölçek türleri görseli"
       },
       {
         title: "Harita Datum’u ve Elektronik Seyir",
