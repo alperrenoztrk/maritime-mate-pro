@@ -752,5 +752,84 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz bağıntısı kullanılır",
       "Ölü hesap ve göksel seyirde doğrultu daima hakiki kuzeye bağlıdır"
     ]
+  },
+  "Manyetik kuzey": {
+    title: "Manyetik Kuzey (Magnetic North)",
+    introduction: "Manyetik kuzey, dünyanın manyetik alan çizgilerinin yeryüzüne giriş yaptığı noktaya yönelen doğrultudur. Bu doğrultu, dünyanın dönme ekseniyle tanımlanan hakiki kuzeyden farklıdır ve zamanla yer değiştirir. Denizcilikte manyetik kuzeyin önemi, manyetik pusulanın bu doğrultuyu esas almasıdır. Elektriksel veya elektronik sistemlere ihtiyaç duymadan yön tayini yapılabilmesi, manyetik kuzeyi pratik seyirde vazgeçilmez kılar; ancak bu pratiklik, değişken bir referansla çalışıldığı gerçeğini ortadan kaldırmaz.",
+    sections: [
+      {
+        title: "Manyetik Kuzeyin Tanımı",
+        content: "Manyetik kuzey, dünyanın manyetik alan çizgilerinin yeryüzüne giriş yaptığı noktaya yönelen doğrultudur. Hakiki kuzeyle aynı değildir ve zamanla yer değiştirir.",
+        image: "https://images.theconversation.com/files/292137/original/file-20190912-190065-q685ai.jpg?auto=format&fit=clip&ixlib=rb-4.1.0&q=45&w=1000",
+        imageAlt: "Dünya ekseni ve manyetik kuzey kavramı"
+      },
+      {
+        title: "Manyetik Alanın Dinamik Yapısı",
+        content: "Dünya manyetik alanı dinamik bir yapıya sahiptir. Yer kabuğu altındaki erimiş metallerin hareketi nedeniyle manyetik kutuplar her yıl küçük miktarlarda yer değiştirir. Bu değişim, deniz haritalarında variation ve yıllık değişim değeri olarak belirtilir.",
+        image: "https://www.researchgate.net/publication/279446083/figure/fig1/AS%3A294387369168900%401447198826980/The-Earths-magnetic-field-the-geomagnetic-field-Notice-that-the-southern-and-northern.png",
+        imageAlt: "Dünya manyetik alanı ve kutup konumları"
+      },
+      {
+        title: "Manyetik Sapma (Variation)",
+        content: "Hakiki kuzey ile manyetik kuzey arasındaki açısal fark variation olarak adlandırılır. Variation, her mevki için farklıdır ve harita üzerinde derece cinsinden ifade edilir. Manyetik kuzey hakiki kuzeyin doğusunda yer alıyorsa variation doğu, batısında yer alıyorsa variation batı olarak tanımlanır.",
+        image: "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/Pattern%20of%20Magetic%20Declination.jpg?itok=DeuBC1o5",
+        imageAlt: "Manyetik sapma (variation) dağılımı"
+      },
+      {
+        title: "Manyetik Yönlerin Kullanımı",
+        content: "Manyetik sistemde ölçülen tüm yönler manyetik olarak adlandırılır ve M harfi ile gösterilir. Manyetik rota, geminin manyetik kuzeye göre izlediği doğrultudur. Manyetik kerteriz ise bir hedefin manyetik kuzeye göre ölçülen doğrultusudur. Manyetik pusuladan okunan değerler doğrudan manyetik sistemdedir ve harita üzerindeki hakiki değerlerle karşılaştırılabilmesi için mutlaka variation düzeltmesine ihtiyaç duyar.",
+        image: "https://gisgeography.com/wp-content/uploads/2015/06/Magnetic-North-300x297.png",
+        imageAlt: "Manyetik kuzey doğrultusu"
+      },
+      {
+        title: "Hakiki ve Manyetik Rota Dönüşümü",
+        content: "Hakiki ve manyetik sistemler arasındaki ilişki doğrusal bir açı dönüşümüne dayanır. Mantık, manyetik kuzeyin hakiki kuzeye göre bilinen bir açı kadar sapmış olmasıdır. Bu nedenle dönüşüm, sabit bir açı ekleme veya çıkarma işlemiyle yapılır.",
+        image: "https://sailingissues.com/drie/convert-east-west-magnetic-variation-true-courses.png",
+        imageAlt: "Hakiki ve manyetik rota dönüşümü"
+      },
+      {
+        title: "Dönüşüm Bağıntısı",
+        content: "Variation doğu ise pozitif, batı ise negatif kabul edilir. Aynı ilişki ters yönde uygulandığında manyetik rota elde edilir.",
+        image: "https://sailingissues.com/drie/magnetic-course-true-course.png",
+        imageAlt: "Manyetik ve hakiki rota ilişkisi",
+        formula: {
+          text: "Hakiki Rota = Manyetik Rota + Variation",
+          description: "Variation doğu ise +, batı ise − alınır."
+        }
+      },
+      {
+        title: "Sayısal Örnek",
+        content: "Bir bölgede variation 7° doğu olsun. Bir geminin manyetik rotası 110°M olarak belirlenmiş olsun. Hakiki rota hesaplanırken variation manyetik rotaya eklenir. Aynı örnekte variation 5° batı olsaydı, variation negatif kabul edilir ve çıkarma işlemi yapılırdı.",
+        image: "https://i.sstatic.net/W91Fr.png",
+        imageAlt: "Variation örnekleri ve yön dönüşümü",
+        bulletPoints: [
+          "Hakiki Rota = 110° + 007° = 117°",
+          "Variation batı olsaydı: Hakiki Rota = 110° − 005° = 105°"
+        ]
+      },
+      {
+        title: "Manyetik Kerteriz İlişkisi",
+        content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır. Hesaplama sonucunda değer 360°’yi aşarsa 360° çıkarılır, 0°’nin altına düşerse 360° eklenir.",
+        image: "https://www.researchgate.net/publication/341492181/figure/fig1/AS%3A892957544681472%401589909077213/Magnetic-bearings-and-relative-bearings-4.jpg",
+        imageAlt: "Manyetik ve nispi kerteriz ilişkisi",
+        formula: {
+          text: "Manyetik Kerteriz = Manyetik Rota + Nispi Kerteriz",
+          description: "Sonuç 360°'yi aşarsa 360° çıkarılır, 0°’nin altına düşerse 360° eklenir."
+        }
+      },
+      {
+        title: "Seyirde Dikkat Edilecek Nokta",
+        content: "Manyetik kuzeyle yapılan seyirdeki temel risk, variation bilgisinin ihmal edilmesidir. Küçük görünen birkaç derecelik bir hata, uzun mesafelerde ciddi mevki sapmalarına dönüşür. Bu nedenle manyetik pusuladan elde edilen her yön bilgisi, variation düzeltilmeden harita üzerinde kullanılmamalıdır.",
+        image: "https://cockpitcards.co.uk/wp-content/uploads/2020/07/Deviation-and-Variation-sums.jpg",
+        imageAlt: "Variation ve deviation düzeltmeleri"
+      }
+    ],
+    keyPoints: [
+      "Manyetik kuzey, hakiki kuzeyden farklıdır ve zamanla yer değiştirir",
+      "Variation, hakiki ve manyetik kuzey arasındaki açısal farktır",
+      "Hakiki Rota = Manyetik Rota + Variation bağıntısı kullanılır",
+      "Manyetik kerteriz hesaplarında nispi kerteriz eklenir",
+      "Variation ihmal edilirse uzun mesafelerde ciddi mevki sapması oluşur"
+    ]
   }
 };
