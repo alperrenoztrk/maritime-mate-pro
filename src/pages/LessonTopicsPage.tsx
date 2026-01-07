@@ -274,7 +274,6 @@ const topicsData: Record<string, TopicContent> = {
       { title: "Hava Haritaları", description: "Synoptik harita okuma ve yorumlama" }
     ],
     resources: [
-      { title: "Meteoroloji Hesaplamaları", href: "/weather" },
       { title: "Meteoroloji Formülleri", href: "/meteorology/formulas" },
       { title: "Meteoroloji Kuralları", href: "/meteorology/rules" }
     ]

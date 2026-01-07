@@ -73,7 +73,6 @@ import StabilityGZCurvePage from "./pages/StabilityGZCurve";
 import StabilityWindWeatherPage from "./pages/StabilityWindWeather";
 import StabilityIMOCriteriaPage from "./pages/StabilityIMOCriteria";
 import SafetyCalculationsPage from "./pages/SafetyCalculations";
-import WeatherCalculationsPage, { WeatherCalculationDetailPage } from "./pages/WeatherCalculations";
 import TankCalculationsPage from "./pages/TankCalculations";
 import BallastPage from "./pages/Ballast";
 import EnginePage from "./pages/Engine";
@@ -200,11 +199,6 @@ const AnimatedRoutes = () => {
         <Route path="/stability/wind-weather" element={<PageTransition><StabilityWindWeatherPage /></PageTransition>} />
         <Route path="/stability/imo-criteria" element={<PageTransition><StabilityIMOCriteriaPage /></PageTransition>} />
         <Route path="/safety" element={<PageTransition><SafetyCalculationsPage /></PageTransition>} />
-        <Route path="/weather" element={<PageTransition><WeatherCalculationsPage /></PageTransition>} />
-        <Route
-          path="/weather/calculations/:tab?"
-          element={<PageTransition><WeatherCalculationDetailPage /></PageTransition>}
-        />
         <Route path="/meteorology/topics" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
         <Route path="/tank" element={<PageTransition><TankCalculationsPage /></PageTransition>} />
         <Route path="/cargo/calculations" element={<PageTransition><CargoCalculationsPage /></PageTransition>} />
