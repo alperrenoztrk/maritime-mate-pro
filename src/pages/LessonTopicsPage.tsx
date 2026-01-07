@@ -51,7 +51,7 @@ const topicsData: Record<string, TopicContent> = {
         subTopics: [
           { title: "Dünya'nın şekli ve hareketleri", hasContent: true },
           { title: "Coğrafi koordinat sistemi", hasContent: true },
-          { title: "Enlem" },
+          { title: "Enlem", hasContent: true },
           { title: "Boylam" },
           { title: "Yön kavramları" },
           { title: "Gerçek kuzey (True)" },
