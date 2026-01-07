@@ -802,11 +802,11 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
   },
   "Zaman – mesafe – hız bağıntısı": {
     title: "Zaman – Mesafe – Hız Bağıntısı",
-    introduction: "Zaman, mesafe ve hız bağıntısı, seyirde yapılan tüm nicel değerlendirmelerin temelini oluşturur. Bu üç büyüklük arasındaki ilişki, geminin belirli bir rota boyunca ne kadar sürede ne kadar yol alacağını öngörmeyi mümkün kılar. Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, gemi hareketi sabit hızla gerçekleşen düzgün doğrusal hareket olarak kabul edilir ve hesaplamalar bu varsayım üzerine kurulur.",
+    introduction: "Zaman, mesafe ve hız bağıntısı, seyirde yapılan tüm nicel değerlendirmelerin temelini oluşturur. Bu üç büyüklük arasındaki ilişki, geminin belirli bir rota boyunca ne kadar sürede ne kadar yol alacağını öngörmeyi mümkün kılar. Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, gemi hareketi sabit hızla gerçekleşen düzgün doğrusal hareket olarak kabul edilir ve hesaplamalar bu varsayım üzerine kurulur. Bu nedenle zaman–mesafe–hız bağıntısı, ölü hesap mevkii belirlemenin matematiksel çekirdeğidir. Denizcilikte hız knot cinsinden ifade edilir ve 1 knot saatte 1 deniz miline eşittir. Mesafe deniz mili, zaman saat cinsindendir. Birimler arasındaki bu uyum, dönüşüm hatalarını ortadan kaldırır ve hesapların doğrudan yapılmasını sağlar.",
     sections: [
       {
         title: "Temel Kavram",
-        content: "Bu bağıntı ölü hesap mevkiinin matematiksel çekirdeğidir. Rota doğrultusunda alınan mesafe, sabit hız ve geçen zamanla doğrusal olarak artar; hız düşürüldüğünde aynı mesafeye ulaşmak için daha fazla zaman gerekir.",
+        content: "Rota doğrultusunda alınan mesafe, sabit hız ve geçen zamanla doğrusal olarak artar; hız düşürüldüğünde aynı mesafeye ulaşmak için daha fazla zaman gerekir. Hızın birim zamanda alınan yol olması, ilişkiyi sezgisel hâle getirir: süre arttıkça mesafe, hızla doğru orantılı olarak büyür.",
         image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/i008726a3101f5495/version/1604741284/image.jpg",
         imageAlt: "Zaman–mesafe–hız ilişkisini gösteren şema"
       },
@@ -817,9 +817,15 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         imageAlt: "Seyir hesaplamaları için birim uyumu"
       },
       {
+        title: "Birim Uyumunun Görsel Mantığı",
+        content: "Birimlerin birbirine doğrudan oturması, seyirde hızlı ve hatasız hesap yapmayı mümkün kılar. Bu nedenle hızın knot olarak, mesafenin deniz mili ve zamanın saat olarak kullanılması temel standarttır.",
+        image: "https://maritimesa.org/grade-10/wp-content/uploads/sites/2/2015/10/01_Voyage_calculations_R.png",
+        imageAlt: "Zaman-mesafe-hız birim uyumu"
+      },
+      {
         title: "Bağıntının Formülleri",
-        content: "Bağıntı üç eşdeğer formülle ifade edilir. Hız, birim zamanda alınan yol olduğundan mesafe, hız ile zamanın çarpımıdır. Bilinmeyen büyüklüğe göre formül düzenlenir.",
-        image: "https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/START.png",
+        content: "Bağıntı üç eşdeğer formülle ifade edilir. Hız, birim zamanda alınan yol olduğundan mesafe, hız ile zamanın çarpımıdır. Bilinmeyen büyüklüğe göre formül düzenlenir. Bu üç formül, ETA hesaplarının temel dayanağıdır.",
+        image: "https://www.mastersystems.com/wp-content/uploads/2024/08/speed-log-furuno1717127956.png",
         imageAlt: "Zaman-mesafe-hız formülleri",
         formula: {
           text: "Mesafe = Hız × Zaman",
@@ -828,9 +834,9 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Sayısal Örnek",
-        content: "Bir geminin hızı 16 knot olsun. Gemi bu hızla 2 saat 30 dakika (2,5 saat) seyir yaptığında alınan mesafe 40 deniz milidir. Aynı geminin 100 deniz millik bir mesafeyi alması için gereken süre 6,25 saat yani 6 saat 15 dakikadır.",
-        image: "https://www.myseatime.com/blogadm/wp-content/uploads/2018/02/doppler-log-working.jpg",
-        imageAlt: "Doppler log çalışma prensibi",
+        content: "Bir geminin hızı 16 knot olsun. Gemi bu hızla 2 saat 30 dakika (2,5 saat) seyir yaptığında alınan mesafe 40 deniz milidir. Aynı geminin 100 deniz millik bir mesafeyi alması için gereken süre 6,25 saat yani 6 saat 15 dakikadır. Bu tür dönüşümler, ETA hesaplarında doğru zaman planlaması yapılabilmesi için zorunludur.",
+        image: "https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/START.png",
+        imageAlt: "Zaman-mesafe-hız formül şeması",
         bulletPoints: [
           "Mesafe = 16 × 2,5 = 40 deniz mili",
           "Zaman = 100 ÷ 16 = 6,25 saat",
@@ -838,15 +844,21 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         ]
       },
       {
+        title: "Ölçüm Cihazları ve Hız Bilgisi",
+        content: "Pratikte hız bilgisi log cihazlarıyla elde edilir. Hız ölçümü ne kadar doğruysa, zaman–mesafe hesabı da o kadar güvenilir olur.",
+        image: "https://www.myseatime.com/blogadm/wp-content/uploads/2018/02/doppler-log-working.jpg",
+        imageAlt: "Doppler log çalışma prensibi"
+      },
+      {
         title: "Hız Değişiminin Zaman Üzerindeki Etkisi",
         content: "Uzun mesafeli seyirlerde hızın yalnızca 1–2 knot düşmesi, varış zamanında saatlerce gecikmeye neden olabilir. Kısa mesafelerde yapılan hız artışları ise beklenen zaman kazancını her zaman sağlamaz. Bu nedenle hız planlaması, mesafe ve zaman birlikte değerlendirilerek yapılmalıdır.",
-        image: "https://www.researchgate.net/publication/256503418/figure/fig3/AS%3A297700613476363%401447988765994/Speed-time-graph-arriving-as-late-as-possible.png",
-        imageAlt: "Hız-zaman grafiği"
+        image: "https://images.marinelink.com/images/maritime/-99700.jpg",
+        imageAlt: "Seyirde hız planlaması"
       },
       {
         title: "Geriye Dönük Analiz",
         content: "Seyir sonrası değerlendirmelerde, belirli bir sürede kat edilen mesafeden ortalama hız hesaplanır. Bu hız, makine performansı, deniz durumu ve akıntı etkilerinin dolaylı bir göstergesi olarak yorumlanır.",
-        image: "https://images.marinelink.com/images/maritime/-99700.jpg",
+        image: "https://www.researchgate.net/publication/256503418/figure/fig3/AS%3A297700613476363%401447988765994/Speed-time-graph-arriving-as-late-as-possible.png",
         imageAlt: "Seyir ve hız verilerinin değerlendirilmesi"
       },
       {
@@ -854,6 +866,12 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         content: "Hesaplanan mesafe yalnızca bir rota doğrultusunda harita üzerine taşındığında geminin mevkiini değiştirir. Sayısal hesapların doğru olması tek başına yeterli değildir; mesafenin doğru rota doğrultusunda uygulanması gerekir. Aksi hâlde elde edilen mevki matematiksel olarak tutarlı görünse bile fiziksel olarak yanlıştır.",
         image: "https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png",
         imageAlt: "Ölü hesap (DR) çizimi"
+      },
+      {
+        title: "Rota Doğrultusu ve Mevki Aktarımı",
+        content: "Hesaplanan mesafenin harita üzerinde doğru rota doğrultusunda taşınması, ölü hesap mevkiinin güvenilirliğini belirler. Bu aşamada rota açısı ve ölçüm hassasiyeti kritik önemdedir.",
+        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/ia488bbe2ca937abc/version/1604740630/image.png",
+        imageAlt: "Rota doğrultusunda mevki aktarımı"
       }
     ],
     keyPoints: [
