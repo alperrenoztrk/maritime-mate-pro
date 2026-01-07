@@ -190,30 +190,30 @@ const Index = () => {
       {/* Animated waves */}
       <div className="absolute bottom-0 left-0 right-0 h-[45%] overflow-hidden pointer-events-none">
         <div 
-          className="absolute bottom-0 left-[-10%] w-[120%] h-full opacity-70"
+          className="absolute bottom-0 left-0 w-full h-full opacity-70"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230ea5e9' fill-opacity='0.15' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,165.3C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230ea5e9' fill-opacity='0.18' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,165.3C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat-x',
             backgroundSize: '1440px 100%',
-            animation: 'wave-move 8s linear infinite'
+            animation: 'wave-drift 18s linear infinite, wave-swell 6s ease-in-out infinite'
           }}
         />
         <div 
-          className="absolute bottom-[10px] left-[-10%] w-[120%] h-full opacity-50"
+          className="absolute bottom-[10px] left-0 w-full h-full opacity-55"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2338bdf8' fill-opacity='0.12' d='M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,149.3C672,149,768,171,864,181.3C960,192,1056,192,1152,170.7C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2338bdf8' fill-opacity='0.16' d='M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,149.3C672,149,768,171,864,181.3C960,192,1056,192,1152,170.7C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat-x',
             backgroundSize: '1440px 100%',
-            animation: 'wave-move 12s linear infinite reverse'
+            animation: 'wave-drift 26s linear infinite reverse, wave-swell 7s ease-in-out infinite'
           }}
         />
         <div 
-          className="absolute bottom-[20px] left-[-10%] w-[120%] h-full opacity-30"
+          className="absolute bottom-[20px] left-0 w-full h-full opacity-35"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%237dd3fc' fill-opacity='0.1' d='M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,197.3C672,213,768,235,864,229.3C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%237dd3fc' fill-opacity='0.12' d='M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,197.3C672,213,768,235,864,229.3C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat-x',
             backgroundSize: '1440px 100%',
-            animation: 'wave-move 16s linear infinite'
+            animation: 'wave-drift 34s linear infinite, wave-swell 8s ease-in-out infinite'
           }}
         />
       </div>
@@ -315,9 +315,13 @@ const Index = () => {
 
       {/* CSS Animations */}
       <style>{`
-        @keyframes wave-move {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+        @keyframes wave-drift {
+          0% { background-position: 0 0; }
+          100% { background-position: -1440px 0; }
+        }
+        @keyframes wave-swell {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(6px); }
         }
         @keyframes beacon-rotate {
           0%, 100% { transform: rotate(-30deg); opacity: 0.9; }
