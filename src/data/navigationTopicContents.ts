@@ -800,7 +800,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Hızın sabit kalması ve kayıtların düzenli tutulması esastır"
     ]
   },
-  "Gerçek kuzey (True)": {
+  "Hakiki kuzey (True)": {
     title: "Hakiki Kuzey (True North)",
     introduction: "Hakiki kuzey, Dünya'nın dönme ekseninin yeryüzünü kestiği coğrafi kuzey noktasına yönelen doğrultudur. Bu doğrultu fiziksel ve astronomik olarak tanımlıdır; zamanla değişmez ve tüm seyir hesaplarının temel referansıdır.",
     sections: [
