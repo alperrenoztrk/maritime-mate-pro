@@ -43,6 +43,17 @@ import boylamDeparture from "@/assets/navigation/boylam-departure.jpg";
 import boylamCelestial from "@/assets/navigation/boylam-celestial.png";
 import boylamSunLongitude from "@/assets/navigation/boylam-sun-longitude.jpg";
 
+// Import images - Yön Kavramları
+import yonNorthTypes from "@/assets/navigation/yon-north-types.png";
+import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
+import yonTrueBearing from "@/assets/navigation/yon-true-bearing.jpg";
+import yonRelativeBearing from "@/assets/navigation/yon-relative-bearing.png";
+import yonHeadingBearing from "@/assets/navigation/yon-heading-bearing.jpg";
+import yonDiagram1 from "@/assets/navigation/yon-diagram-1.jpg";
+import yonDiagram2 from "@/assets/navigation/yon-diagram-2.jpg";
+import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
+import yonRadarMotion from "@/assets/navigation/yon-radar-motion.jpg";
+
 export interface TopicSection {
   title: string;
   content: string;
@@ -552,6 +563,124 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Meridyenler kutuplarda birleşir, boylamlar kutup–kutup arası uzanır",
       "Departure = DLong × cos(Lat) formülü boylam–mesafe ilişkisini verir",
       "Göksel seyirde boylam, zaman gözlemi ile bulunur"
+    ]
+  },
+  "Yön kavramları": {
+    title: "Yön Kavramları",
+    introduction: "Denizcilikte yön kavramı, geminin hareketinin matematiksel olarak tanımlanmasını ve harita üzerindeki tüm seyir hesaplarının tutarlı biçimde yapılmasını sağlar. Yön, belirli bir kuzey referansına göre ölçülen açısal bir büyüklüktür ve daima saat yönünde, 0° ile 360° arasında ifade edilir. Hakiki, manyetik veya pusula ayrımı yapılmadan kullanılan bir yön değeri, teknik olarak eksik ve uygulamada yanıltıcıdır.",
+    sections: [
+      {
+        title: "Kuzey Türleri",
+        content: "Denizcilikte üç farklı kuzey referansı kullanılır: Hakiki Kuzey (True North), Manyetik Kuzey (Magnetic North) ve Pusula Kuzeyi (Compass North). Bu referanslar arasındaki farklar, seyir hesaplarında kritik öneme sahiptir.",
+        image: yonNorthTypes,
+        imageAlt: "Hakiki, manyetik ve pusula kuzeyi arasındaki ilişki",
+        bulletPoints: [
+          "True North (Hakiki Kuzey): Dünya'nın coğrafi kuzey kutbunu gösteren referans",
+          "Magnetic North (Manyetik Kuzey): Pusulanın gösterdiği manyetik kuzey kutbu",
+          "Grid North (Şebeke Kuzeyi): Harita projeksiyonunda kullanılan kuzey referansı",
+          "Magnetic Declination (Sapma): Hakiki kuzey ile manyetik kuzey arasındaki açı farkı"
+        ]
+      },
+      {
+        title: "Pusula Gülü ve Yön Sistemi",
+        content: "Yön ölçümünün geometrik temeli dairesel sistemdir. Hakiki kuzey 0° kabul edilir, doğu 90°, güney 180° ve batı 270° olarak tanımlanır. Bu sistem sayesinde doğrultular sayısal hale getirilir ve vektörel hareket hesabı mümkün olur.",
+        image: yonCompassRose,
+        imageAlt: "Pusula gülü ve derece sistemi",
+        bulletPoints: [
+          "Kuzey: 0° veya 360°",
+          "Doğu: 90°",
+          "Güney: 180°",
+          "Batı: 270°",
+          "Ara yönler: NE (45°), SE (135°), SW (225°), NW (315°)"
+        ]
+      },
+      {
+        title: "Hakiki Kerteriz (True Bearing)",
+        content: "Hakiki kerteriz, gemiden bir hedefe olan doğrultunun hakiki kuzeye göre açısıdır. Harita üzerindeki her rota hattı, her kerteriz doğrultusu ve her mevki değişimi bu dairesel açı sistemi üzerinden ifade edilir.",
+        image: yonTrueBearing,
+        imageAlt: "Hakiki kerteriz ve yön kavramı",
+        bulletPoints: [
+          "True Bearing: Hedefin hakiki kuzeye göre açısı",
+          "True Heading: Geminin pruvasının hakiki kuzeye göre açısı",
+          "Kerterizler T harfi ile ifade edilir (örn: 065°T)"
+        ]
+      },
+      {
+        title: "Nispi Kerteriz (Relative Bearing)",
+        content: "Nispi kerteriz, hedefin geminin pruvasına göre görüldüğü açıdır ve gemi ekseni referans alınarak ölçülür. Nispi kerteriz sancakta veya iskelede ölçülmesine göre saat yönünde ya da saat yönünün tersinde değerlendirilir.",
+        image: yonRelativeBearing,
+        imageAlt: "Nispi kerteriz kavramı",
+        bulletPoints: [
+          "Sancak tarafı: Saat yönünde, pozitif değer",
+          "İskele tarafı: Saat yönünün tersi, negatif değer",
+          "Pruva: 0° nispi kerteriz",
+          "Kıç: 180° nispi kerteriz"
+        ]
+      },
+      {
+        title: "Hakiki Rota, Hakiki Kerteriz ve Nispi Kerteriz İlişkisi",
+        content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Bu üç kavram arasındaki ilişki, göreli bir yönün mutlak sisteme dönüştürülmesi mantığına dayanır.",
+        image: yonHeadingBearing,
+        imageAlt: "Rota, kerteriz ve nispi kerteriz ilişkisi",
+        formula: {
+          text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+          description: "Hesaplama sonucunda elde edilen değer 360°'yi aşarsa, 360° çıkarılarak sonuç dairesel sistem içine alınır"
+        }
+      },
+      {
+        title: "Örnek Hesaplama 1 - Sancak Tarafı",
+        content: "Bir geminin hakiki rotası 065°T olsun. Gemiden bir fener sancak tarafından nispi 30° kerterizle görülüyor olsun. Nispi kerteriz pozitif kabul edilir ve hakiki rotaya eklenir.",
+        image: yonDiagram1,
+        imageAlt: "Sancak kerteriz hesabı örneği",
+        bulletPoints: [
+          "Hakiki Rota: 065°T",
+          "Nispi Kerteriz: +30° (sancak)",
+          "Hakiki Kerteriz = 065° + 030° = 095°",
+          "Sonuç: Fener hakiki kuzeye göre 095° doğrultusundadır"
+        ]
+      },
+      {
+        title: "Örnek Hesaplama 2 - İskele Tarafı",
+        content: "Aynı örnekte fener iskele tarafından nispi 20° ile görülseydi, nispi kerteriz −020° olarak alınır ve hakiki rotadan çıkarma işlemi yapılır.",
+        image: yonDiagram2,
+        imageAlt: "İskele kerteriz hesabı örneği",
+        bulletPoints: [
+          "Hakiki Rota: 065°T",
+          "Nispi Kerteriz: −20° (iskele)",
+          "Hakiki Kerteriz = 065° − 020° = 045°",
+          "Sonuç: Fener hakiki kuzeye göre 045° doğrultusundadır"
+        ]
+      },
+      {
+        title: "Rüzgâr ve Akıntı Etkisi",
+        content: "Yön kavramı, rüzgâr ve akıntı hesaplarında da kullanılır. Heading (pruva doğrultusu), Course Over Ground (COG - su üstü seyir yönü) ve drift (kayma) kavramları yön sistemi üzerine kuruludur.",
+        image: yonWindDrift,
+        imageAlt: "Rüzgâr ve akıntının seyire etkisi",
+        bulletPoints: [
+          "Heading: Geminin pruva doğrultusu",
+          "COG (Course Over Ground): Gerçek zemin üzerindeki hareket yönü",
+          "Drift: Rüzgâr veya akıntı nedeniyle oluşan kayma",
+          "Track: Geminin gerçekte izlediği rota"
+        ]
+      },
+      {
+        title: "Ölü Hesap ve Yön",
+        content: "Yön kavramının düzlem seyirdeki en önemli işlevlerinden biri, mesafenin vektörel anlam kazanmasını sağlamasıdır. Geminin aldığı yol yalnızca kaç deniz mili olduğu ile değil, bu mesafenin hangi hakiki rota doğrultusunda alındığı ile anlamlıdır.",
+        image: yonRadarMotion,
+        imageAlt: "Radar ve hareket vektörleri",
+        bulletPoints: [
+          "Aynı mesafe farklı yönlerde alındığında tamamen farklı bir mevki ortaya çıkar",
+          "Yön, ölü hesap mevkii belirlemenin ayrılmaz bir parçasıdır",
+          "Her yön hatası, mesafe doğru hesaplansa bile mevkiyi yanlış noktaya taşır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Yön, 0°–360° arasında saat yönünde ölçülür",
+      "Hakiki Kuzey, Manyetik Kuzey ve Pusula Kuzeyi ayrımını her zaman belirtmek gerekir",
+      "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+      "Sancak tarafı pozitif (+), iskele tarafı negatif (−) değer alır",
+      "Yön kavramı, seyir hesaplarının matematik dilidir"
     ]
   }
 };
