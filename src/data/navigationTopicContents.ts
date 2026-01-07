@@ -682,5 +682,75 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Sancak tarafı pozitif (+), iskele tarafı negatif (−) değer alır",
       "Yön kavramı, seyir hesaplarının matematik dilidir"
     ]
+  },
+  "Gerçek kuzey (True)": {
+    title: "Hakiki Kuzey (True North)",
+    introduction: "Hakiki kuzey, Dünya'nın dönme ekseninin yeryüzünü kestiği coğrafi kuzey noktasına yönelen doğrultudur. Bu doğrultu fiziksel ve astronomik olarak tanımlıdır; zamanla değişmez ve tüm seyir hesaplarının temel referansıdır.",
+    sections: [
+      {
+        title: "Tanım ve Temel Referans",
+        content: "Denizcilikte hakiki kuzey, teorik hesapların başlangıç noktasıdır. Haritalar, meridyenler, paraleller ve göksel seyir tabloları hakiki kuzey esas alınarak hazırlanır. Bu nedenle hakiki kuzey, diğer tüm kuzey türlerinin başlangıç noktası kabul edilir.",
+        image: "https://images.theconversation.com/files/292137/original/file-20190912-190065-q685ai.jpg?auto=format&fit=clip&ixlib=rb-4.1.0&q=45&w=1000",
+        imageAlt: "Coğrafi kuzey kutbu ve Dünya ekseni"
+      },
+      {
+        title: "Sabit ve Evrensel Bir Doğrultu",
+        content: "Hakiki kuzey, manyetik alanlardan, gemi yapısından veya çevresel etkilerden etkilenmeyen tek ve sabit bir referans sunar. Uzun mesafeli seyirlerde ve göksel gözlemlerde bu sabitlik vazgeçilmezdir.",
+        image: "https://mapscaping.com/wp-content/uploads/2024/09/image-691.png",
+        imageAlt: "Gerçek kuzey ve yön doğrultuları"
+      },
+      {
+        title: "Meridyenler ve Hakiki Kuzey Doğrultusu",
+        content: "Harita üzerindeki her dikey meridyen çizgisi, hakiki kuzey–hakiki güney doğrultusunu temsil eder. Bu çizgiler, yön ölçümünün geometrik temelini oluşturur.",
+        image: "https://www.geographyrealm.com/wp-content/uploads/2021/05/Magnetic-North-Pole-Positions-cavit.jpg",
+        imageAlt: "Kuzey referansları ve meridyenler"
+      },
+      {
+        title: "Hakiki Yönlerin Ölçümü",
+        content: "Hakiki kuzey referans alınarak ölçülen tüm yönler hakiki olarak adlandırılır. Bir doğrultu, meridyen ile yaptığı saat yönündeki açıyla ifade edilir ve bu açı 0° ile 360° arasındadır.",
+        image: "https://mathspace-production-media.mathspace.co/media/upload/images/11-bearings/true-acute-bearing.png",
+        imageAlt: "Hakiki yön ölçümü"
+      },
+      {
+        title: "Hakiki Rota ve Hakiki Kerteriz",
+        content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Hakiki kerteriz ise gemiden bir hedefe olan doğrultunun hakiki kuzeye göre ölçülen açısıdır.",
+        image: "https://blog.mytimezero.com/wp-content/uploads/2017/12/art-blog-course-heading-fr.png",
+        imageAlt: "Hakiki rota ve kerteriz ilişkisi"
+      },
+      {
+        title: "Hakiki Kerteriz Hesap Bağıntısı",
+        content: "Hakiki kerteriz, nispi gözlemin hakiki sisteme taşınmasıyla elde edilir. Nispi kerteriz sancak yönünde ölçülmüşse pozitif, iskele yönünde ölçülmüşse negatif kabul edilir. Sonuç 360°’yi aşarsa 360° çıkarılır, 0°’nin altına düşerse 360° eklenir.",
+        image: "https://tdgil.com/wp-content/uploads/2020/09/Compass-Rose.png",
+        imageAlt: "Pusula gülü ve yön sistemi",
+        formula: {
+          text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
+          description: "Nispi kerteriz, gemi eksenine göre ölçülen açının hakiki kuzeye taşınmasını sağlar."
+        }
+      },
+      {
+        title: "Sayısal Örnek",
+        content: "Bir geminin hakiki rotası 120°T olsun. Hedef sancakta nispi 35° ile görülüyor olsun. Nispi kerteriz pozitif kabul edilir ve hakiki rotaya eklenir. Aynı durumda hedef iskele tarafından nispi 25° ile görülseydi, nispi kerteriz negatif alınırdı.",
+        image: "https://sailingissues.com/drie/magnetic-course-true-course.png",
+        imageAlt: "Hakiki rota ve kerteriz örneği",
+        bulletPoints: [
+          "Hakiki Kerteriz = 120° + 035° = 155°",
+          "Hedef hakiki kuzeye göre 155° doğrultusundadır",
+          "İskele örneği: Hakiki Kerteriz = 120° − 025° = 095°"
+        ]
+      },
+      {
+        title: "Ölü Hesap ve Hakiki Kuzey",
+        content: "Ölü hesap mevkiinde başlangıç noktası bilinir; hakiki rota ve hız sabit kabul edilerek geçen zaman sonunda alınan mesafe hesaplanır. Bu mesafe, hakiki rota doğrultusunda harita üzerinde taşınarak yeni mevki bulunur.",
+        image: "https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png",
+        imageAlt: "Ölü hesap mevkiinde hakiki rota kullanımı"
+      }
+    ],
+    keyPoints: [
+      "Hakiki kuzey, coğrafi kuzeye yönelen tek ve sabit referanstır",
+      "Meridyenler hakiki kuzey–güney doğrultusunu temsil eder",
+      "Hakiki kerteriz ve hakiki rota, tüm seyir hesaplarının temelidir",
+      "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz bağıntısı kullanılır",
+      "Ölü hesap ve göksel seyirde doğrultu daima hakiki kuzeye bağlıdır"
+    ]
   }
 };
