@@ -230,14 +230,6 @@ export const calculationCategories: CategoryConfig[] = [
     ctaLabel: "Meteoroloji menüsü",
     sections: [
       {
-        id: "calculations",
-        label: "Hesaplamalar",
-        description: "Rüzgâr, dalga, görüş ve yoğunluk araçları",
-        status: "live",
-        badge: "Hazır",
-        href: "/weather",
-      },
-      {
         id: "formulas",
         label: "Formüller",
         description: "Rüzgâr, dalga ve atmosfer denklemleri",
