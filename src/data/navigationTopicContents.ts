@@ -683,6 +683,123 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Yön kavramı, seyir hesaplarının matematik dilidir"
     ]
   },
+  "Rota hız ve mesafe ilişkisi": {
+    title: "Rota, Hız ve Mesafe İlişkisi",
+    introduction: "Seyirde geminin hareketi, rota, hız ve mesafe arasındaki matematiksel ve geometrik ilişki ile tanımlanır. Bu ilişki düzlem seyirde yapılan tüm ölü hesap mevkii işlemlerinin temelini oluşturur. Rota, geminin hakiki kuzeye göre izlediği doğrultuyu; hız, bu doğrultu boyunca birim zamanda alınan yolu; mesafe ise belirli bir süre sonunda kat edilen toplam yolu ifade eder.",
+    sections: [
+      {
+        title: "Rota–Hız–Mesafe Üçlüsü",
+        content: "Bu üç büyüklükten herhangi biri yanlış veya eksik alındığında, elde edilen mevki gerçeği yansıtmaz. Rota, yön kavramının seyirdeki uygulamasıdır ve her zaman bir açı değeri olarak ifade edilir.",
+        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/i008726a3101f5495/version/1604741284/image.jpg",
+        imageAlt: "Rota, hız ve mesafe ilişkisini gösteren şema"
+      },
+      {
+        title: "Ölü Hesap Mevkiinin Temeli",
+        content: "Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir. Bu durumda alınan mesafe, hız ile geçen zamanın çarpımıdır.",
+        image: "https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fmwakqpfup%2Fdead_reckoning_explained_example-diagram_cpxrvu.jpg&w=3840",
+        imageAlt: "Ölü hesap (dead reckoning) örneği"
+      },
+      {
+        title: "Birim Uyumu ve Zaman Üçgeni",
+        content: "Hız denizcilikte knot birimiyle kullanılır ve bir knot saatte bir deniz miline eşittir. Mesafe ise deniz mili cinsindendir. Bu birim uyumu, seyir hesaplarının sade ve doğrudan yapılabilmesini sağlar.",
+        image: "https://www.marinerescueportjackson.com.au/images/timetriangle.png",
+        imageAlt: "Zaman üçgeni (mesafe-hız-zaman)"
+      },
+      {
+        title: "Temel Bağıntı",
+        content: "Mesafe, hız ile geçen zamanın çarpımıdır. Aynı bağıntı bilinmeyen büyüklüğe göre düzenlenerek hız veya zaman hesabında da kullanılır.",
+        image: "https://www.tradewindssailing.com/wordpress/wp-content/uploads/2018/07/DST-2.jpg",
+        imageAlt: "Mesafe-hız-zaman diyagramı",
+        formula: {
+          text: "Mesafe = Hız × Zaman",
+          description: "Hız = Mesafe ÷ Zaman | Zaman = Mesafe ÷ Hız"
+        }
+      },
+      {
+        title: "Rüzgâr ve Akıntı Varsayımı",
+        content: "Bu hesaplar geçerli olabilmesi için hızın gerçekten sabit kalması ve dış etkilerin (akıntı, rüzgâr, dalga) ihmal edilebilir düzeyde olması gerekir. Aksi durumda rota ve hız değerleri güncellenmelidir.",
+        image: "https://www.nauticed.org/blog/wp-content/uploads/2009/02/true-wind.jpg",
+        imageAlt: "Rüzgârın seyire etkisi"
+      },
+      {
+        title: "Ölü Hesap Şeması",
+        content: "Başlangıç mevkii bilinen bir gemi, belirli bir hakiki rota ve hızla hareket ettiğinde, geçen zaman sonunda ulaştığı mevki bu ilişkiyle hesaplanır.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Dead-reckoning.svg",
+        imageAlt: "Ölü hesap (dead reckoning) şeması"
+      },
+      {
+        title: "Düzgün Doğrusal Hareket Modeli",
+        content: "Rota–hız–mesafe ilişkisi düzgün doğrusal harekete dayanır. Düzlem seyirde geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir.",
+        image: "https://teachengineering.org/content/cub_/lessons/cub_images/cub_navigation_lesson02_activity1_clipart1.jpg",
+        imageAlt: "Düzgün doğrusal hareket şeması"
+      },
+      {
+        title: "ETA ve Seyir Planlaması",
+        content: "Bu üçlü bağıntı, varış zamanı (ETA) hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
+        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/i008726a3101f5495/version/1604741284/image.jpg",
+        imageAlt: "Hız ve mesafe ilişkisi görseli"
+      },
+      {
+        title: "ETA Diyagramı",
+        content: "ETA hesapları, hız ve mesafe değerlerinin sahada düzenli kontrolü ile güncellenir. Bu nedenle seyir boyunca zaman, hız ve mesafe üçgeni sürekli izlenir.",
+        image: "https://www.marineinsight.com/wp-content/uploads/2021/01/ETDA-USE.png",
+        imageAlt: "ETA ve mesafe diyagramı"
+      },
+      {
+        title: "Seyir Günlüğü ve Kayıt",
+        content: "Ölü hesap mevkiinde alınan her mesafe, seyir günlüğüne kaydedilerek güvenli takip ve geriye dönük kontrol sağlanır.",
+        image: "https://cdn.vertex42.com/ExcelTemplates/Images/running-log_scr.png",
+        imageAlt: "Seyir günlüğü örneği"
+      },
+      {
+        title: "Sayısal Örnek",
+        content: "Bir geminin hakiki rotası sabit kabul edilsin ve hızı 14 knot olsun. Gemi bu hızla 3,5 saat seyir yaptığında alınan mesafe 49 deniz milidir. Aynı geminin 70 deniz millik bir mesafeyi alması için gereken süre 5 saattir.",
+        image: "https://www.myseatime.com/blogadm/wp-content/uploads/2018/02/Doppler-effect-graph.jpg",
+        imageAlt: "Hız ölçümünde değişkenlik örneği",
+        bulletPoints: [
+          "Mesafe = 14 × 3,5 = 49 deniz mili",
+          "Zaman = 70 ÷ 14 = 5 saat",
+          "Hız sabit kalmazsa sonuçlar güncellenmelidir"
+        ]
+      },
+      {
+        title: "Hızın Değişkenliği",
+        content: "Hız, makine devri, deniz durumu ve yükleme gibi etkenlere bağlı olarak değişebilir. Bu nedenle gerçek zamanlı hız takibi, rota ve mesafe hesaplarının doğruluğu açısından kritiktir.",
+        image: "https://www.researchgate.net/publication/373787121/figure/fig1/AS%3A11431281187518414%401694270676599/The-diagram-of-changes-in-speed-parameters-in-two-different-mental-motivational-states.jpg",
+        imageAlt: "Hız parametrelerindeki değişim grafiği"
+      },
+      {
+        title: "Makine Performansı Etkisi",
+        content: "Makine torku ve güç eğrileri, geminin hızını doğrudan etkiler. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
+        image: "https://www.epi-eng.com/images/Engine/ET-TqCrv3.gif",
+        imageAlt: "Makine torku ve hız ilişkisi"
+      },
+      {
+        title: "Vektörel Anlam",
+        content: "Rota, hız ve mesafe ilişkisi yalnızca doğrusal bir hesap değildir; vektörel bir anlam taşır. Mesafe, yönsüz bir büyüklüktür ve ancak rota doğrultusunda uygulandığında geminin mevkiini değiştirir.",
+        image: "https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png",
+        imageAlt: "Ölü hesap (DR) çizimi"
+      },
+      {
+        title: "Harita Üzerinde Uygulama",
+        content: "Başlangıç mevkii bilinen bir geminin, belirli bir hakiki rota ve hızla belirli bir süre sonunda ulaşacağı mevki, mesafenin rota doğrultusunda harita üzerine taşınmasıyla bulunur.",
+        image: "https://uscaptainstraining.com/wp-content/uploads/parallel-ruler-chart-plot-tool.png",
+        imageAlt: "Paralel cetvelle rota çizimi"
+      },
+      {
+        title: "Hata Birikimi ve Sapmalar",
+        content: "Küçük hız hataları zaman uzadıkça büyük mesafe sapmalarına dönüşür. Benzer şekilde rotadaki birkaç derecelik bir hata, uzun seyirlerde geminin planlanan hattın ciddi şekilde dışına çıkmasına neden olur.",
+        image: "https://threepointsofthecompass.com/wp-content/uploads/2021/11/possible_edited-1.jpg",
+        imageAlt: "Rota sapmalarına dair örnek"
+      }
+    ],
+    keyPoints: [
+      "Rota, hız ve mesafe birlikte değerlendirildiğinde anlamlıdır",
+      "Mesafe = Hız × Zaman bağıntısı seyir hesaplarının temelidir",
+      "Rota hatası ve hız sapması, uzun seyirde büyük mevki hatası doğurur",
+      "Hızın sabit kalması ve kayıtların düzenli tutulması esastır"
+    ]
+  },
   "Gerçek kuzey (True)": {
     title: "Hakiki Kuzey (True North)",
     introduction: "Hakiki kuzey, Dünya'nın dönme ekseninin yeryüzünü kestiği coğrafi kuzey noktasına yönelen doğrultudur. Bu doğrultu fiziksel ve astronomik olarak tanımlıdır; zamanla değişmez ve tüm seyir hesaplarının temel referansıdır.",
