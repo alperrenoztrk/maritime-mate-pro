@@ -1040,5 +1040,72 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Hakiki Rota = Manyetik Rota + Variation bağıntısı kullanılır",
       "Variation düzeltmesi yapılmadan harita üzerinde yön kullanılmamalıdır"
     ]
+  },
+  "Deniz haritasının yapısı": {
+    title: "Deniz haritasının yapısı",
+    introduction: "Deniz haritasının yapısı, harita üzerinde yer alan bilgilerin rastgele değil, belirli bir teknik düzen ve hiyerarşi içinde sunulmasına dayanır. Bir deniz haritası, seyir emniyetini doğrudan etkileyen veriler içerdiği için yalnızca çizgilerden ve rakamlardan oluşan bir görsel değil, uluslararası kurallarla standardize edilmiş teknik bir dokümandır.",
+    sections: [
+      {
+        title: "Genel Yapı",
+        content: "Deniz haritası iki ana bölümden oluşur: haritanın ana gövdesi ve kenar bilgileri. Ana gövde, seyir sırasında doğrudan kullanılan coğrafi ve hidrografik bilgileri içerirken, kenar bilgileri bu verilerin nasıl okunacağını ve hangi referanslara göre hazırlandığını açıklar. Bu iki bölüm birbirinden bağımsız değildir; kenar bilgileri okunmadan ana gövdedeki hiçbir bilgi tam anlamıyla yorumlanamaz."
+      },
+      {
+        title: "Ana Gövde: Kıyı ve Hidrografi",
+        content: "Haritanın ana gövdesinde kıyı çizgileri, adalar, kayalıklar, sığlıklar ve derinlik bilgileri yer alır. Derinlikler sayısal değerler ve izobatlar ile gösterilir. Sayısal derinlikler belirli bir referans su seviyesine göre verilmiştir ve bu referans seviye haritanın kenar bilgilerinde açıkça belirtilir. İzobatlar ise aynı derinlikteki noktaları birleştirerek deniz tabanının genel yapısını görsel olarak ortaya koyar.",
+        bulletPoints: [
+          "Sayısal derinlikler belirli bir chart datum seviyesine göre verilir",
+          "İzobatlar, aynı derinlikteki noktaları birleştirir",
+          "Derinlik yapısı, geminin su çekimiyle birlikte değerlendirilir"
+        ]
+      },
+      {
+        title: "Seyir Yardımcıları ve Tehlikeler",
+        content: "Ana gövdede ayrıca fenerler, şamandıralar, sis düdükleri, trafik ayırım düzenleri, yasak sahalar ve batıklar gibi seyir yardımcıları ve tehlikeler bulunur. Bu unsurlar standart semboller ve kısaltmalarla gösterilir. Harita üzerindeki bir sembolün yanlış yorumlanması, yanlış bir derinlik hesabından çok daha ağır sonuçlar doğurabilir; bu nedenle sembol dili harita yapısının en kritik parçalarından biridir.",
+        bulletPoints: [
+          "Seyir yardımcıları standart sembollerle gösterilir",
+          "Tehlikeler (batık, sığlık, kayalık) ayrı işaretlerle belirtilir",
+          "Trafik ayırım düzenleri ve yasak sahalar açıkça işaretlenir"
+        ]
+      },
+      {
+        title: "Kenar Bilgileri (Teknik Kimlik)",
+        content: "Haritanın kenar bilgileri, haritanın teknik kimliğini oluşturur. Burada haritanın adı ve numarası, ölçeği, kullanılan projeksiyon türü, datum bilgisi, variation değeri ve yıllık değişimi yer alır. Ayrıca haritanın hangi tarihe kadar düzeltildiği ve hangi Notice to Mariners yayınlarının işlendiği de bu bölümde belirtilir.",
+        bulletPoints: [
+          "Harita adı, numarası ve ölçeği",
+          "Projeksiyon türü ve kullanılan datum",
+          "Variation değeri ve yıllık değişim",
+          "Düzeltme tarihi ve Notice to Mariners kayıtları"
+        ]
+      },
+      {
+        title: "Harita Ölçeği ve Bilgi Düzeyi",
+        content: "Harita ölçeği, harita üzerindeki mesafelerin gerçek dünyadaki karşılığını belirlediği için yapının temel taşlarından biridir. Aynı bölgeye ait farklı ölçekli haritalar farklı amaçlarla kullanılır. Büyük ölçekli haritalar detaylı bilgi sunarken, küçük ölçekli haritalar genel seyir planlaması için tercih edilir. Haritanın yapısı, bu ölçeğe uygun olarak detaylandırılmıştır; yani her bilgi her ölçekte yer almaz.",
+        bulletPoints: [
+          "Büyük ölçek: ayrıntılı kıyı ve liman bilgisi",
+          "Küçük ölçek: genel planlama ve rota stratejisi",
+          "Ölçeğe göre bilgi yoğunluğu değişir"
+        ]
+      },
+      {
+        title: "Harita Datum’u ve Elektronik Seyir",
+        content: "Harita datum’u, harita üzerindeki tüm koordinatların hangi matematiksel dünya modeline göre tanımlandığını gösterir. Bu bilgi kenar kısmında açıkça belirtilir. Datum, özellikle elektronik seyir sistemleriyle harita birlikte kullanıldığında kritik hâle gelir. Yanlış datum varsayımı, mevkinin harita üzerinde doğru noktada işaretlenmemesine neden olur.",
+        bulletPoints: [
+          "Datum bilgisi kenar bölümünde açıkça yazılıdır",
+          "ECDIS/GPS ile birlikte kullanıldığında kritik öneme sahiptir",
+          "Yanlış datum, mevki hatasına yol açar"
+        ]
+      },
+      {
+        title: "Seyir Uygulamalarına Etkisi",
+        content: "Deniz haritasının yapısı, seyirde yapılan tüm işlemlerin fiziksel karşılığını oluşturur. Rota çizimi, kurs ölçümü, mesafe hesaplaması ve mevki işaretleme işlemleri ancak haritanın yapısı doğru anlaşıldığında anlam kazanır. Harita, matematiğin deniz üzerindeki izdüşümüdür; bu izdüşümün dili ise haritanın yapısında saklıdır."
+      }
+    ],
+    keyPoints: [
+      "Deniz haritası ana gövde ve kenar bilgileri olarak iki ana bölümden oluşur",
+      "Derinlikler ve izobatlar chart datum referansına göre verilir",
+      "Seyir yardımcıları standart sembollerle gösterilir",
+      "Kenar bilgileri haritanın teknik kimliğini ve geçerliliğini açıklar",
+      "Datum bilgisi, elektronik seyirde mevki doğruluğunu belirler"
+    ]
   }
 };
