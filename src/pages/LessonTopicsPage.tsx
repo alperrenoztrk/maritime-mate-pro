@@ -68,7 +68,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Harita ölçeği" },
           { title: "Mercator projeksiyonu" },
           { title: "Harita datum" },
-          { title: "Harita sembolleri ve kısaltmalar", hasContent: true },
+          { title: "Harita sembolleri ve kısaltmalar" },
           { title: "Mesafe ölçümü" },
           { title: "Rota ölçümü" },
           { title: "Mevki işaretleme" },
