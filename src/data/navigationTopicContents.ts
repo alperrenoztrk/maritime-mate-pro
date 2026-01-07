@@ -1088,12 +1088,60 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Harita Datum’u ve Elektronik Seyir",
-        content: "Harita datum’u, harita üzerindeki tüm koordinatların hangi matematiksel dünya modeline göre tanımlandığını gösterir. Bu bilgi kenar kısmında açıkça belirtilir. Datum, özellikle elektronik seyir sistemleriyle harita birlikte kullanıldığında kritik hâle gelir. Yanlış datum varsayımı, mevkinin harita üzerinde doğru noktada işaretlenmemesine neden olur.",
+        content: "Harita datum’u, deniz haritası üzerindeki tüm koordinatların yeryüzü ile hangi matematiksel modele göre ilişkilendirildiğini belirleyen referans sistemidir. Bir datum, dünyanın şeklinin ve boyutlarının nasıl kabul edildiğini tanımlar; bu kabul, enlem ve boylam değerlerinin harita üzerinde hangi noktalara karşılık geleceğini belirler. Datum bilgisi doğru anlaşılmadan yapılan mevki işaretlemeleri sayısal olarak tutarlı görünse bile fiziksel olarak yanlış bir konuma karşılık gelir. Modern denizcilikte en yaygın kullanılan datum WGS-84’tür; çünkü GPS sistemleri de aynı datum’u kullanır. Ancak daha eski haritalarda farklı datum’lar bulunabilir ve bu durum seyirde ciddi hatalara yol açabilir.",
         bulletPoints: [
           "Datum bilgisi kenar bölümünde açıkça yazılıdır",
           "ECDIS/GPS ile birlikte kullanıldığında kritik öneme sahiptir",
           "Yanlış datum, mevki hatasına yol açar"
         ]
+      },
+      {
+        title: "Datum Modelleri: Clarke 1866, WGS-84 ve GRS80",
+        content: "Farklı datum’lar, dünyanın farklı bölgelerinde daha doğru sonuç verecek şekilde tanımlanmış elipsoidlere dayanır. Aynı coğrafi nokta farklı datum’larda farklı enlem–boylam değerlerine sahip olabilir. Bu nedenle kullanılan datum’un harita kenar bilgisinde kontrol edilmesi zorunludur.",
+        image: "https://vdatum.noaa.gov/images/docs/clarke1866_wgs84_grs80.gif",
+        imageAlt: "Clarke 1866, WGS-84 ve GRS80 datum karşılaştırması"
+      },
+      {
+        title: "Chart Datum ve Gelgit Referansları",
+        content: "Deniz haritalarında derinlikler belirli bir referans su seviyesine (chart datum) göre verilir. Bu referans, gelgit düzeyleriyle ilişkilidir ve harita kenarındaki datum notlarında belirtilir. Gelgit referansları doğru anlaşılmadan yapılan sığlık ve emniyet hesabı ciddi risk doğurabilir.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Tide_legal_use.gif",
+        imageAlt: "Gelgit seviyeleri ve chart datum ilişkisi"
+      },
+      {
+        title: "Yatay ve Düşey Datum Ayrımı",
+        content: "Datum kavramı yalnızca yatay koordinatları değil, düşey ölçümleri de etkiler. Yükseklikler ve derinlikler farklı düşey datumlara bağlıdır. Harita üzerinde verilen yükseklik ve derinliklerin hangi referansa göre ölçüldüğü net biçimde okunmalıdır.",
+        image: "https://vdatum.noaa.gov/images/docs/heights.gif",
+        imageAlt: "Yatay ve düşey datumların gösterimi"
+      },
+      {
+        title: "Harita Kenar Bilgilerinde Datum Notları",
+        content: "Datum bilgisi harita kenarında açıkça belirtilir. Bazı haritalarda datum dönüşümü için yön ve mesafe düzeltmeleri verilir. Bu notlar uygulanmadığında, GPS’ten alınan mevki harita üzerinde yanlış konuma taşınır.",
+        image: "https://www.mibsar.com/LandNav/Datums/2002MNRDatumLegend.jpg",
+        imageAlt: "Harita kenarında datum bilgisi örneği"
+      },
+      {
+        title: "Nautical Chart Datum Blok Örneği",
+        content: "Nautical chart datum blokları, haritanın hangi datum’a göre hazırlandığını ve varsa dönüşüm notlarını gösterir. Harita kenarındaki bu blok, datum uyumluluğunu kontrol etmek için ilk bakılması gereken yerdir.",
+        image: "https://geographic.org/nautical_charts/mcd/nNTC_Block.jpg",
+        imageAlt: "Nautical chart datum blok örneği"
+      },
+      {
+        title: "Datum Uyuşmazlığının Seyre Etkisi",
+        content: "Datum uyuşmazlığı özellikle kıyıya yakın seyirlerde ve dar sularda kritik hâle gelir. Gerçek mevki ile harita üzerinde işaretlenen mevki arasında onlarca hatta yüzlerce metre fark oluşabilir. Açık denizde fark küçük görünse de liman girişleri ve sığ sularda bu sapma tehlike doğurur.",
+        image: "https://static.wixstatic.com/media/43d115_a2b4984a4a1b49628452db55424f4f78~mv2.png/v1/fill/w_568%2Ch_276%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/43d115_a2b4984a4a1b49628452db55424f4f78~mv2.png",
+        imageAlt: "Datum uyuşmazlığı kaynaklı konum sapması örneği"
+      },
+      {
+        title: "GPS Datum Ayarı ve Dönüşüm Uygulamaları",
+        content: "GPS alıcıları datum ayarı sunar. Harita datum’u WGS-84 ise GPS de aynı datum’a ayarlanmalıdır. Farklı datum kullanılan haritalarda, harita üzerinde belirtilen düzeltme değerleri dikkatle uygulanmalıdır.",
+        image: "https://www.siranah.de/pictures/sail022e_A.gif",
+        imageAlt: "GPS datum ayarı ve harita mevki düzeltmesi örneği"
+      },
+      {
+        title: "Dönüşüm Notları ve Emniyetli Uygulama",
+        content: "Bazı haritalarda datum dönüşüm notları doğu–batı ve kuzey–güney yönlerinde metre cinsinden verilir. Bu düzeltmeler uygulanmadığında mevki işaretleme hatası kaçınılmaz hâle gelir. Datum bilgisi, seyir emniyetinin temel yapı taşlarından biridir.",
+        image: "https://sailingissues.com/chart-symbols/clearing-heights-chart-datums-opt.svg",
+        imageAlt: "Datum dönüşüm notları ve chart datum sembolleri"
       },
       {
         title: "Seyir Uygulamalarına Etkisi",
