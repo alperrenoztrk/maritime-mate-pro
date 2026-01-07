@@ -64,7 +64,7 @@ const topicsData: Record<string, TopicContent> = {
         title: "Harita Bilgisi ve Harita Kullanımı",
         description: "Deniz haritalarının yapısı, projeksiyon sistemleri ve pratik kullanımı",
         subTopics: [
-          { title: "Deniz haritasının yapısı" },
+          { title: "Deniz haritasının yapısı", hasContent: true },
           { title: "Harita ölçeği" },
           { title: "Mercator projeksiyonu" },
           { title: "Harita datum" },
