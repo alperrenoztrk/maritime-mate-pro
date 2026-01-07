@@ -24,6 +24,15 @@ import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
 import longitudeDistance1 from "@/assets/navigation/longitude-distance-1.jpg";
 import longitudeDistance2 from "@/assets/navigation/longitude-distance-2.jpg";
 
+// Import images - Enlem
+import enlemParallels from "@/assets/navigation/enlem-parallels.jpg";
+import enlemDefinition from "@/assets/navigation/enlem-definition.jpg";
+import enlemRegions from "@/assets/navigation/enlem-regions.jpg";
+import enlemNauticalMile from "@/assets/navigation/enlem-nautical-mile.jpg";
+import enlemPlaneSailing from "@/assets/navigation/enlem-plane-sailing.jpg";
+import enlemCelestial from "@/assets/navigation/enlem-celestial.png";
+import enlemNewOrleans from "@/assets/navigation/enlem-new-orleans.jpg";
+
 export interface TopicSection {
   title: string;
   content: string;
@@ -283,6 +292,126 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "1 dakika enlem = 1 deniz mili (sabit)",
       "15° boylam = 1 saat zaman farkı",
       "Boylam mesafesi enlemle birlikte değişir: Dep = DLong × cos(Lat)"
+    ]
+  },
+  "Enlem": {
+    title: "Enlem (Latitude)",
+    introduction: "Enlem, seyirde konumun bel kemiğidir. Bir geminin kuzeyde mi güneyde mi olduğunu, kutuplara mı yoksa ekvatora mı yaklaştığını enlem belirler. Harita üzerindeki mesafe ölçümleri, göksel seyirde yapılan yükseklik hesapları ve düzlem seyirdeki tüm matematik, doğrudan enlem kavramına dayanır. Bu nedenle enlem, sadece bir koordinat değil, seyir hesaplarının referans eksenidir.",
+    sections: [
+      {
+        title: "Enlemin Tanımı ve Geometrik Anlamı",
+        content: "Enlem, Dünya üzerindeki bir noktanın ekvatora olan açısal uzaklığıdır. Bu açı, Dünya'nın merkezinden ölçülür ve ekvator düzlemi referans alınır.",
+        image: enlemDefinition,
+        imageAlt: "Enlemin geometrik tanımı",
+        bulletPoints: [
+          "Kuzey Kutbu: 90° Kuzey (90°N)",
+          "Ekvator: 0°",
+          "Güney Kutbu: 90° Güney (90°S)",
+          "Enlem her zaman Kuzey (N) veya Güney (S) olarak ifade edilir",
+          "Enlem yalnızca kuzey–güney konumunu tanımlar, doğu–batı yönü hakkında bilgi vermez"
+        ]
+      },
+      {
+        title: "Paraleller ve Enlem Çizgileri",
+        content: "Enlemler, ekvatora paralel hayali dairelerdir ve bu yüzden paralel olarak adlandırılırlar. Ekvator en büyük paraleldir; kutuplara yaklaştıkça paralellerin çevresi küçülür.",
+        image: enlemParallels,
+        imageAlt: "Enlem paralelleri",
+        bulletPoints: [
+          "Paraleller birbirini kesmez",
+          "Aynı enlem üzerindeki tüm noktalar, ekvatora eşit uzaklıktadır",
+          "Harita üzerinde kuzey–güney hareket doğrudan enlem değişimi olarak ölçülür"
+        ]
+      },
+      {
+        title: "Coğrafi Bölgeler ve Enlem",
+        content: "Enlem değerleri, Dünya üzerindeki coğrafi bölgeleri tanımlamak için kullanılır. Önemli enlem çizgileri arasında Yengeç Dönencesi (23.5°N), Oğlak Dönencesi (23.5°S), Kuzey Kutup Dairesi (66.5°N) ve Güney Kutup Dairesi (66.5°S) bulunur.",
+        image: enlemRegions,
+        imageAlt: "Dünya üzerinde enlem bölgeleri",
+        bulletPoints: [
+          "Tropikal bölge: 23.5°N ile 23.5°S arasında",
+          "Ilıman bölgeler: 23.5° ile 66.5° arasında",
+          "Kutup bölgeleri: 66.5° ile 90° arasında"
+        ]
+      },
+      {
+        title: "Enlem Birimleri ve Deniz Mili İlişkisi",
+        content: "Enlem, derece (°), dakika (′) ve saniye (″) ile ifade edilir. Seyirde temel kabul olarak 1° enlem = 60 deniz mili ve 1′ enlem = 1 deniz mili ilişkisi kullanılır.",
+        image: enlemNauticalMile,
+        imageAlt: "Enlem ve deniz mili ilişkisi",
+        bulletPoints: [
+          "1° enlem = 60 deniz mili",
+          "1′ enlem = 1 deniz mili",
+          "Deniz haritalarında mesafe ölçümü için enlem ölçeği kullanılır",
+          "Boylam ölçeği mesafe için güvenilir değildir"
+        ],
+        formula: {
+          text: "1° = 60′ (dakika) = 3600″ (saniye)",
+          description: "Bu ilişki, düzlem seyirde mesafe hesaplarının ve hız–zaman ilişkilerinin temelidir"
+        }
+      },
+      {
+        title: "Örnek Konum: New Orleans",
+        content: "New Orleans, ABD'de 30°N enlem ve 90°W boylam koordinatlarında bulunur. Bu konum, enlemi somut bir örnekle anlamak için kullanılabilir.",
+        image: enlemNewOrleans,
+        imageAlt: "New Orleans koordinatları örneği",
+        bulletPoints: [
+          "30° Kuzey enlemi, ekvatordan 30° kuzeyde olduğunu gösterir",
+          "Bu noktadan kutba mesafe: (90° - 30°) × 60 = 3600 deniz mili",
+          "Ekvatora mesafe: 30° × 60 = 1800 deniz mili"
+        ]
+      },
+      {
+        title: "Enlem Değişimi (DLat) Kavramı",
+        content: "Bir gemi kuzeye veya güneye hareket ettiğinde enlem değişimi (Difference of Latitude – DLat) meydana gelir. DLat kuzeye gidiliyorsa artı (+), güneye gidiliyorsa eksi (−) kabul edilir.",
+        image: enlemPlaneSailing,
+        imageAlt: "Düzlem seyir ve enlem değişimi formülleri",
+        bulletPoints: [
+          "DLat = Mesafe × cos(kurs)",
+          "Bu ifade, geminin gerçek hareketinin kuzey–güney bileşenini verir",
+          "Düzlem seyirde temel hesaplama formülüdür"
+        ],
+        formula: {
+          text: "DLat = Mesafe × cos(Kurs)",
+          description: "Örnek: 120 NM mesafe, 030° kurs → DLat = 120 × cos(30°) ≈ 103.9′"
+        }
+      },
+      {
+        title: "Örnek – Enlem Değişimi Hesabı",
+        content: "Başlangıç enlemi 36°20′N, kurs 030° ve mesafe 120 deniz mili olan bir gemi için yeni enlem hesaplanabilir.",
+        bulletPoints: [
+          "DLat = 120 × cos(30°) = 120 × 0.866 ≈ 103.9′",
+          "DLat ≈ 1°43.9′",
+          "Yeni enlem: 36°20′ + 1°43.9′ = 38°03.9′N"
+        ]
+      },
+      {
+        title: "Enlemin Göksel Seyirdeki Rolü",
+        content: "Göksel seyirde enlem, özellikle öğle mevkii hesaplarında kritik rol oynar. Güneşin en büyük yüksekliği ile gözlemcinin enlemi arasında doğrudan ilişki vardır.",
+        image: enlemCelestial,
+        imageAlt: "Göksel seyir ve enlem ilişkisi",
+        bulletPoints: [
+          "Gök cisminin yüksekliği arttıkça, gözlemci ekvatora yaklaşır",
+          "Güneş zenitte ise, gözlemci Güneş'in deklinasyonu enlemindedir",
+          "Kutup Yıldızı'nın yüksekliği yaklaşık olarak enleme eşittir"
+        ]
+      },
+      {
+        title: "Enlem ve Seyir Yöntemleri Arasındaki Bağlantı",
+        content: "Enlem, farklı seyir yöntemlerinde farklı şekillerde kullanılır ve hesaplanır, ancak fiziksel anlamı her zaman aynıdır.",
+        bulletPoints: [
+          "Düzlem seyirde: Enlem doğrudan hesaplanır",
+          "Orta enlem seyirde: Boylam hesabına girer",
+          "Göksel seyirde: Gözlemle bulunur",
+          "Elektronik seyirde: GPS çıktısı olarak alınır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Enlem, Dünya merkezinden ölçülen ekvator-nokta arası açıdır (0°–90° K/G)",
+      "1′ enlem = 1 deniz mili (seyirde temel mesafe birimi)",
+      "Paraleller ekvatora paralel dairelerdir ve birbirini kesmez",
+      "DLat = Mesafe × cos(Kurs) formülü düzlem seyirin temelidir",
+      "Göksel seyirde enlem, gök cismi yükseklikleri ile bulunur"
     ]
   }
 };
