@@ -46,11 +46,11 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                 </h3>
 
                 {section.image && (
-                  <div className="overflow-hidden rounded-xl border border-border/40">
+                  <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
                     <img
                       src={section.image}
                       alt={section.imageAlt || section.title}
-                      className="w-full object-contain bg-muted/30"
+                      className="h-48 w-full object-cover bg-muted/30"
                       loading="lazy"
                     />
                   </div>

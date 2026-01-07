@@ -33,6 +33,16 @@ import enlemPlaneSailing from "@/assets/navigation/enlem-plane-sailing.jpg";
 import enlemCelestial from "@/assets/navigation/enlem-celestial.png";
 import enlemNewOrleans from "@/assets/navigation/enlem-new-orleans.jpg";
 
+// Import images - Boylam
+import boylamWorldMap from "@/assets/navigation/boylam-world-map.jpg";
+import boylamLocalNoon from "@/assets/navigation/boylam-local-noon.png";
+import boylamDefinition from "@/assets/navigation/boylam-definition.jpg";
+import boylamMeridians from "@/assets/navigation/boylam-meridians.jpg";
+import boylamTimeZones from "@/assets/navigation/boylam-time-zones.png";
+import boylamDeparture from "@/assets/navigation/boylam-departure.jpg";
+import boylamCelestial from "@/assets/navigation/boylam-celestial.png";
+import boylamSunLongitude from "@/assets/navigation/boylam-sun-longitude.jpg";
+
 export interface TopicSection {
   title: string;
   content: string;
@@ -412,6 +422,136 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Paraleller ekvatora paralel dairelerdir ve birbirini kesmez",
       "DLat = Mesafe × cos(Kurs) formülü düzlem seyirin temelidir",
       "Göksel seyirde enlem, gök cismi yükseklikleri ile bulunur"
+    ]
+  },
+  "Boylam": {
+    title: "Boylam (Longitude)",
+    introduction: "Boylam, seyirde doğu–batı konumunu belirleyen temel koordinattır. Enlem geminin kuzey–güney yerini söylerken, boylam geminin Greenwich'e göre nerede olduğunu ifade eder. Zaman, kronometre, göksel seyir ve elektronik mevki tayini boylam kavramı üzerine inşa edilmiştir. Bu nedenle boylam, seyirde en hassas ve hata affetmeyen konulardan biridir.",
+    sections: [
+      {
+        title: "Boylamın Tanımı ve Geometrik Anlamı",
+        content: "Boylam, Dünya üzerindeki bir noktanın Başlangıç Meridyeni'ne (Greenwich, 0°) olan açısal uzaklığıdır. Bu açı, Dünya'nın merkezinden ölçülür ve doğu–batı yönünü ifade eder.",
+        image: boylamDefinition,
+        imageAlt: "Boylam tanımı ve Greenwich meridyeni",
+        bulletPoints: [
+          "Greenwich Meridyeni: 0°",
+          "Doğuya doğru: 0°–180° Doğu",
+          "Batıya doğru: 0°–180° Batı",
+          "Boylamlar, meridyenler olarak adlandırılır ve kutuplarda birleşir"
+        ]
+      },
+      {
+        title: "Meridyenlerin Yapısı ve Özellikleri",
+        content: "Meridyenler, Kuzey Kutbu'ndan Güney Kutbu'na uzanan hayali yarım dairelerdir. Tüm meridyenler aynı uzunluktadır ve kutuplarda birleşirler.",
+        image: boylamMeridians,
+        imageAlt: "Meridyen özellikleri",
+        bulletPoints: [
+          "Meridyenler kutup–kutup arası uzanır",
+          "Birbirini kutuplarda keser",
+          "Ekvatoru dik keser",
+          "Boylam mesafesi sabit değildir, enleme bağlı olarak değişir"
+        ]
+      },
+      {
+        title: "Dünya Üzerinde Boylam Dağılımı",
+        content: "Boylam, Dünya'nın doğu–batı yönündeki konumunu belirler. Greenwich Meridyeni (0°) referans alınarak doğuya ve batıya doğru 180°'ye kadar ölçülür.",
+        image: boylamWorldMap,
+        imageAlt: "Dünya üzerinde boylam dağılımı",
+        bulletPoints: [
+          "Doğu yarımküre: 0°–180° Doğu (E)",
+          "Batı yarımküre: 0°–180° Batı (W)",
+          "180° meridyeni Tarih Değiştirme Çizgisi'dir"
+        ]
+      },
+      {
+        title: "Boylam ve Zaman Arasındaki Temel İlişki",
+        content: "Dünya kendi ekseni etrafında 24 saatte 360° döner. Bu nedenle boylam ile zaman arasında doğrudan ve değişmez bir ilişki vardır.",
+        image: boylamTimeZones,
+        imageAlt: "Boylam ve zaman dilimleri",
+        bulletPoints: [
+          "15° boylam = 1 saat",
+          "1° boylam = 4 dakika",
+          "1′ boylam = 4 saniye"
+        ],
+        formula: {
+          text: "Boylam (°) × 4 = Zaman farkı (dakika)",
+          description: "Zamandaki her hata, doğrudan boylam hatasına dönüşür"
+        }
+      },
+      {
+        title: "Yerel Zaman ve Greenwich Zamanı",
+        content: "Boylam hesabında iki zaman kullanılır: Greenwich zamanı (UTC) ve Yerel zaman (Local Apparent Time). Yerel zaman ile Greenwich zamanı arasındaki fark, gözlemcinin boylamını verir.",
+        image: boylamLocalNoon,
+        imageAlt: "Yerel öğle zamanı ve boylam",
+        bulletPoints: [
+          "Yerel zaman ileri ise → Doğu boylam",
+          "Yerel zaman geri ise → Batı boylam",
+          "Bu prensip, göksel seyirde kronometre kullanımının temelidir"
+        ]
+      },
+      {
+        title: "Boylam Değişimi ve Departure",
+        content: "Bir gemi doğuya veya batıya hareket ettiğinde boylam değişimi (Difference of Longitude – DLo) meydana gelir. Boylam değişimi doğrudan mesafeyle ölçülemez, çünkü meridyenler kutuplara yaklaştıkça yaklaşır.",
+        image: boylamDeparture,
+        imageAlt: "Boylam değişimi ve departure kavramı",
+        bulletPoints: [
+          "Meridyenler kutuplara yaklaştıkça yaklaşır",
+          "Aynı boylam farkı, farklı enlemlerde farklı mesafelere karşılık gelir",
+          "Bu nedenle seyirde departure kavramı kullanılır"
+        ],
+        formula: {
+          text: "Departure = DLong × cos(Lat)",
+          description: "Bu ilişki düzlem seyirde, orta enlem seyirde ve akıntılı seyir hesaplarında kullanılır"
+        }
+      },
+      {
+        title: "Örnek – Boylam Değişimi Hesabı",
+        content: "Ortalama enlem 40°N ve departure 90 deniz mili (doğuya) olan bir gemi için boylam değişimi hesaplanabilir.",
+        bulletPoints: [
+          "cos 40° ≈ 0.766",
+          "DLo = Departure / cos(enlem) = 90 / 0.766 ≈ 117.5′",
+          "DLo ≈ 1°57.5′ Doğu boylam"
+        ]
+      },
+      {
+        title: "Boylamın Göksel Seyirdeki Rolü",
+        content: "Göksel seyirde boylam, zaman gözlemi ile bulunur. Gök cisminin gözlem anındaki Greenwich zamanı ile yerel zamanı arasındaki fark, doğrudan boylamı verir.",
+        image: boylamCelestial,
+        imageAlt: "Göksel seyir ve boylam",
+        bulletPoints: [
+          "Kronometre hatası → boylam hatası",
+          "Zaman kaydı hatası → mevki hatası",
+          "Yanlış UTC kullanımı büyük sapmalara yol açar"
+        ]
+      },
+      {
+        title: "Boylam ve Güneş Meridyen Geçişi",
+        content: "Güneş'in meridyenden geçtiği an (yerel öğle) kullanılarak boylam hesaplanabilir. Bu yöntem göksel seyirde temel boylam tayini yöntemidir.",
+        image: boylamSunLongitude,
+        imageAlt: "Güneş meridyen geçişi ile boylam tayini",
+        bulletPoints: [
+          "Güneş meridyenden geçtiğinde yerel öğle olur",
+          "Greenwich zamanı ile yerel öğle farkı boylam verir",
+          "1 saniye zaman hatası ≈ 0.25′ boylam hatası"
+        ]
+      },
+      {
+        title: "Boylam ve Elektronik Seyir",
+        content: "Elektronik seyirde boylam GPS tarafından doğrudan verilir. Ancak GPS hataları, datum uyuşmazlığı ve anten konumu farkı boylamda sapma yaratabilir.",
+        bulletPoints: [
+          "GPS boylam değerini doğrudan verir",
+          "GPS hataları mevki sapmasına yol açabilir",
+          "Datum uyuşmazlığı önemli hatalar oluşturabilir",
+          "Boylam, klasik ve göksel yöntemlerle çapraz kontrol edilmelidir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Boylam, Greenwich'e olan açısal uzaklıktır (0°–180° D/B)",
+      "15° boylam = 1 saat zaman farkı",
+      "Meridyenler kutuplarda birleşir, boylamlar kutup–kutup arası uzanır",
+      "Departure = DLong × cos(Lat) formülü boylam–mesafe ilişkisini verir",
+      "Göksel seyirde boylam, zaman gözlemi ile bulunur"
     ]
   }
 };
