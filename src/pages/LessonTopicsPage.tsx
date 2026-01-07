@@ -54,7 +54,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Enlem", hasContent: true },
           { title: "Boylam", hasContent: true },
           { title: "Yön kavramları", hasContent: true },
-          { title: "Gerçek kuzey (True)", hasContent: true },
+          { title: "Hakiki kuzey (True)", hasContent: true },
           { title: "Manyetik kuzey", hasContent: true },
           { title: "Rota hız ve mesafe ilişkisi" },
           { title: "Zaman – mesafe – hız bağıntısı" }
