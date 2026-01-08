@@ -1251,6 +1251,54 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       "Datum bilgisi, elektronik seyirde mevki doğruluğunu belirler"
     ]
   },
+  "Harita ölçeği": {
+    title: "Harita Ölçeği",
+    introduction: "Harita ölçeği, seyirde hangi kararın hangi harita ile verileceğini belirleyen ana filtredir.",
+    sections: [
+      {
+        title: "Harita Ölçeği",
+        content: `Harita ölçeği, deniz haritasının neyi **ayrıntılı**, neyi **bilinçli olarak eksik** gösterdiğini belirleyen temel yapıdır. Seyirde ölçek yalnızca matematiksel bir oran değildir; hangi bilginin karar üretmeye yeterli olduğunu, hangi bilginin özellikle saklandığını ve hangi aşamada hangi haritanın kullanılacağını belirleyen pratik bir filtredir. Aynı rota, farklı ölçekli haritalarda farklı görünür çünkü harita, ölçeğine göre gerçeği yeniden yorumlar. Bu nedenle ölçek, “harita ne kadar doğru” sorusundan önce “harita hangi karar için doğru” sorusunu cevaplar.
+
+![Harita ölçeği örnek harita 1](https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18020.jpg)
+
+![Harita ölçeği karşılaştırma](https://cdn.shopify.com/s/files/1/0523/4189/9430/files/scales.png)
+
+![Harita ölçeği detay örneği](https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18640-detail.jpg)
+
+![Harita ölçeği detay karşılaştırması](https://www.bwsailing.com/cc/wp-content/uploads/2016/02/2776b.jpg)
+
+Harita ölçeği, harita üzerindeki bir uzunluğun yeryüzündeki gerçek uzunluğa oranı olarak ifade edilir ve 1:50 000, 1:25 000, 1:10 000 gibi yazılır. Bu ifadede payda küçüldükçe ölçek büyür ve ayrıntı artar; payda büyüdükçe ölçek küçülür ve ayrıntı azalır. Denizcilikte büyük ölçekli harita, sayısal olarak küçük paydalı haritadır. Liman haritaları bu nedenle büyük ölçeklidir; açık deniz haritaları ise küçük ölçeklidir.
+
+![Harita ölçeği sayısal örnek](https://study.com/cimages/multimages/16/scalefactorexample21631721535405625512.jpg)
+
+![Harita ölçeği oran örneği](https://innoter.com/upload/medialibrary/ab4/occZYa.png)
+
+Ölçek mantığını sayısal olarak kurmak, harita üzerinde yapılan her ölçümün sınırlarını bilmeyi sağlar. 1:50 000 ölçekli bir haritada harita üzerindeki 1 cm, gerçekte 50 000 cm’ye yani 500 metreye karşılık gelir. 1:25 000 ölçekli bir haritada aynı 1 cm, 250 metreyi temsil eder. Ölçek büyüdükçe, harita üzerindeki küçük çizgiler gerçek dünyada daha küçük mesafelere karşılık gelir ve hata toleransı azalır. Bu nedenle büyük ölçekli haritalar, dar sularda ve manevra safhasında zorunludur.
+
+Harita ölçeğinin en kritik etkisi, **genelleştirme** üzerindedir. Küçük ölçekli haritalar, geniş bir alanı gösterebilmek için ayrıntıyı bilinçli olarak sadeleştirir. Küçük kayalıklar, sığlık uzantıları, dar kanal sınırları veya ikincil seyir yardımcıları bu haritalarda hiç gösterilmeyebilir ya da sembolik olarak küçültülür. Bu durum haritanın eksikliği değil, ölçeğin doğrudan sonucudur. Büyük ölçekli haritalarda ise aynı alan çok daha dar bir çerçevede gösterildiği için izobatlar sıklaşır, derinlik değerleri artar, şamandıra dizileri ve yasak saha sınırları netleşir.
+
+![Harita ölçeği karşılaştırma](https://cdn.shopify.com/s/files/1/0523/4189/9430/files/scales.png)
+
+![Harita ölçeği detay örneği](https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18640-detail.jpg)
+
+Bu fark, seyirde yanlış yorumlandığında ciddi hatalar üretir. Küçük ölçekli bir haritada görünmeyen bir sığlık dili, büyük ölçekli haritada açıkça yer alabilir. Bu nedenle “haritada yok” ifadesi ancak doğru ölçekli harita kullanılıyorsa anlamlıdır. Yanlış ölçekli haritada görünmeyen bir tehlike, gerçekte yok değildir; yalnızca o ölçeğin dışında bırakılmıştır.
+
+Harita ölçeği seçimi, seyir safhasına göre yapılır. Açık deniz seyri ve genel rota planlaması küçük ölçekli haritalarla yürütülür. Bu aşamada amaç, ana rota koridorunu belirlemek ve büyük engellerden kaçınmaktır. Kıyıya yaklaşma, boğaz geçişi, dar su seyri ve liman manevrası safhasında ise büyük ölçekli haritalar kullanılır. Bu haritalar, geminin su çekimiyle doğrudan ilişkili olan sığlıkları, yasak sahaları, sektörel ışıkları ve şamandıra dizilerini yönetmeye imkân verir.
+
+![Harita ölçeği detay örneği](https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/18640-detail.jpg)
+
+![Harita işaretleri örneği](https://nauticalcharts.noaa.gov/updates/wp-content/uploads/2019/05/Chart-No-1.jpg)
+
+Harita ölçeği, mesafe ölçümünün doğruluğunu da doğrudan etkiler. Ölçek küçüldükçe, harita üzerindeki milimetrelik bir ölçüm hatası gerçekte yüzlerce metreye karşılık gelebilir. Bu nedenle mesafe ölçümü, mevki işaretleme ve rota düzeltme işlemleri, mümkün olan en büyük ölçekli harita üzerinde yapılmalıdır. Aynı prensip rota ölçümü için de geçerlidir; küçük ölçekte önemsiz görünen birkaç derecelik hata, büyük ölçekte gemiyi kanal dışına taşıyabilir.
+
+![Mesafe ölçüm hatası grafiği](https://www.researchgate.net/publication/35199451/figure/fig7/AS%3A614142532657199%401523434398845/Plot-of-distance-measurement-errors-Vs-distance-The-1-s-interval-superimposed-on-the.png)
+
+![Harita ölçeği örnek sayfa](https://nauticalcharts.noaa.gov/learn/images/nautical-cartography/530.jpg)
+
+Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Marine Expert içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; **hangi safhada hangi harita ile karar verileceğini öğreten bir refleks** olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.`
+      }
+    ]
+  },
   "Harita sembolleri ve kısaltmalar": {
     title: "Harita Sembolleri ve Kısaltmalar",
     introduction: "Deniz haritasındaki semboller ve kısaltmalar, nesneleri çizmek için değil, seyir sırasında doğru kararı en kısa sürede verdirmek için kurulmuş standart bir dildir. Harita, gerçek dünyayı fotoğraf gibi çoğaltmaz; emniyetli suyun nerede bulunduğunu, tehlikenin neyi temsil ettiğini, bir hattın nasıl tutulacağını, hangi alanın hukuken veya operasyonel olarak kısıtlı olduğunu tek bakışta çözülecek şekilde kodlar. Bu dilin yükünü en çok taşıyan unsurlar şamandıralar, fenerler ve diğer seyir yardımcılarıdır; çünkü hem mevki doğrulamada hem de emniyetli geçişte doğrudan kullanılırlar.",
