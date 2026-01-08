@@ -1,4 +1,5 @@
 import { X, ChevronLeft, Lightbulb } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { TopicDetailContent } from "@/data/navigationTopicContents";
 
 interface TopicContentModalProps {
@@ -55,9 +56,25 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                 </div>
               )}
 
-              <p className="text-sm leading-relaxed text-foreground/80">
+              <ReactMarkdown
+                components={{
+                  p: ({ children }) => (
+                    <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
+                  ),
+                  img: ({ src, alt }) => (
+                    <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
+                      <img
+                        src={src}
+                        alt={alt || section.title}
+                        className="h-48 w-full object-contain bg-muted/30"
+                        loading="lazy"
+                      />
+                    </div>
+                  )
+                }}
+              >
                 {section.content}
-              </p>
+              </ReactMarkdown>
 
               {section.bulletPoints && section.bulletPoints.length > 0 && (
                 <ul className="space-y-2 pl-1">
