@@ -1,11 +1,10 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 import { Stability3DSim } from "@/components/stability/Stability3DSim";
-import { TopicContentModal } from "@/components/navigation/TopicContentModal";
-import { navigationTopicContents, TopicDetailContent } from "@/data/navigationTopicContents";
+import { navigationTopicContents } from "@/data/navigationTopicContents";
 
 interface SubTopic {
   title: string;
@@ -65,7 +64,7 @@ const topicsData: Record<string, TopicContent> = {
         description: "Deniz haritalarının yapısı, projeksiyon sistemleri ve pratik kullanımı",
         subTopics: [
           { title: "Deniz haritasının yapısı", hasContent: true },
-          { title: "Harita ölçeği" },
+          { title: "Harita ölçeği", hasContent: true },
           { title: "Mercator projeksiyonu" },
           { title: "Harita datum" },
           { title: "Harita sembolleri ve kısaltmalar", hasContent: true },
@@ -365,10 +364,10 @@ const topicsData: Record<string, TopicContent> = {
 
 export default function LessonTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
+  const navigate = useNavigate();
   const category = calculationCategories.find(c => c.id === categoryId);
   const topicContent = categoryId ? topicsData[categoryId] : null;
   const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
-  const [selectedTopicContent, setSelectedTopicContent] = useState<TopicDetailContent | null>(null);
 
   const toggleTopic = (index: number) => {
     setExpandedTopics(prev => 
@@ -380,8 +379,8 @@ export default function LessonTopicsPage() {
 
   const handleSubTopicClick = (subTopicTitle: string) => {
     const content = navigationTopicContents[subTopicTitle];
-    if (content) {
-      setSelectedTopicContent(content);
+    if (content && categoryId) {
+      navigate(`/lessons/${categoryId}/topics/${encodeURIComponent(subTopicTitle)}`);
     }
   };
 
@@ -600,13 +599,6 @@ export default function LessonTopicsPage() {
         </div>
       </div>
 
-      {/* Topic Content Modal */}
-      {selectedTopicContent && (
-        <TopicContentModal
-          content={selectedTopicContent}
-          onClose={() => setSelectedTopicContent(null)}
-        />
-      )}
     </div>
   );
 }
