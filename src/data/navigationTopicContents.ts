@@ -1434,6 +1434,91 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       "Semboller, derinlik değerleri ve geminin draft’ı birlikte değerlendirilmelidir"
     ]
   },
+  "Harita düzeltmeleri (Notice to Mariners)": {
+    title: "Harita Düzeltmeleri (Notice to Mariners)",
+    introduction: "Harita düzeltmeleri, basılı bir deniz haritasının yayımlandığı tarihten sonra deniz ortamında meydana gelen değişikliklerin, harita üzerine **manuel olarak işlenmesi** işlemidir. Bir deniz haritası basıldığı anda eskimeye başlar; çünkü denizcilik altyapısı sabit değildir. Şamandıralar yer değiştirir, fenerlerin ışık karakterleri güncellenir, yeni batıklar tespit edilir, derinlikler yeniden ölçülür ve bazı alanlar hukuki olarak kısıtlanır veya serbest bırakılır. Harita bu değişiklikleri kendi kendine yansıtmaz. Bu nedenle düzeltmesi yapılmamış bir harita, üzerinde doğru rota ve hesap yapılsa bile seyir açısından **geçerli kabul edilmez**.",
+    sections: [
+      {
+        title: "Harita Düzeltmeleri",
+        content: `![Image](https://www.celestaire.com/wp-content/uploads/cm/images/stories/virtuemart/product/Chart_Correction_5088aae37cd311.jpg)
+
+![Image](https://www.captainsnautical.com/cdn/shop/products/6162b6a837c4431f5ed98448a11171d3_2000x.png?v=1571461279)
+
+![Image](https://marine-charts.com/wp-content/uploads/symbols-abbreviations-terms-navigational-charts-3-665x461-1.jpg)`
+      },
+      {
+        title: "Harita Düzeltmelerinin Kaynağı",
+        content: `Harita düzeltmeleri, resmî olarak yayımlanan **Notice to Mariners** bültenleri aracılığıyla yapılır. Bu bültenler, hangi haritanın etkilendiğini, değişikliğin türünü, coğrafi mevkiini ve harita üzerinde nasıl gösterileceğini açık şekilde belirtir. Her düzeltme numaralandırılmıştır ve tarih taşır. Bir haritanın geçerli sayılabilmesi için, yayımlanan en son Notice to Mariners’a kadar olan tüm düzeltmelerinin harita üzerine işlenmiş olması gerekir.
+
+![Image](https://www.captainsnautical.com/cdn/shop/products/6162b6a837c4431f5ed98448a11171d3_2000x.png?v=1571461279)
+
+![Image](https://jrramos84.weebly.com/uploads/2/1/1/8/21185574/7642529_orig.gif)`
+      },
+      {
+        title: "Harita Düzeltme Türleri",
+        content: `Harita düzeltmeleri üç ana grupta ele alınır ve her biri harita üzerinde farklı disiplinle işlenir.
+
+**Kalıcı düzeltmeler**, uzun süreli veya kalıcı değişiklikleri kapsar. Yeni bir şamandıranın eklenmesi, bir fenerin yerinin veya ışık karakterinin değiştirilmesi, yeni bir batığın haritaya eklenmesi bu gruba girer. Bu düzeltmeler harita üzerine **kalıcı olarak** işlenir ve silinmez.
+
+**Geçici düzeltmeler**, belirli bir süre için geçerli olan değişikliklerdir. Geçici olarak kaldırılan bir şamandıra, geçici çalışma alanı veya kısa süreli kısıtlamalar bu kapsamdadır. Harita üzerinde geçici olduğu açıkça anlaşılacak şekilde gösterilir ve süresi dolduğunda kaldırılır.
+
+**Ön bilgi düzeltmeleri**, henüz kesinleşmemiş ancak seyri etkileyebilecek bilgiler için yayımlanır. Planlanan inşaatlar, ileride değişmesi beklenen düzenlemeler bu gruptadır. Harita üzerinde uyarı niteliğinde yer alır.
+
+![Image](https://www.celestaire.com/wp-content/uploads/cm/images/stories/virtuemart/product/Chart_Correction_5088aae37cd311.jpg)
+
+![Image](https://mdnautical.com/23949/chart-correction-kit-3rd-edition.jpg)`
+      },
+      {
+        title: "Harita Üzerinde Düzeltme İşleme Usulü",
+        content: `Bir harita düzeltmesi işlenirken amaç, haritayı yeniden çizmek değil; **mevcut bilgiyi doğru sembolle güncellemektir**. Önce düzeltmenin ilgili olduğu harita numarası kontrol edilir. Ardından düzeltmenin türü belirlenir. Kalıcı düzeltmeler harita üzerinde kalıcı şekilde işlenir, geçici ve ön bilgi düzeltmeleri ise geçici nitelikte gösterilir. Harita üzerindeki eski bilgi tamamen iptal edilir; eski sembolün üzerine ekleme yapılmaz.
+
+Düzeltme tamamlandıktan sonra, haritanın kenar boşluğuna ilgili Notice to Mariners numarası ve tarihi yazılır. Bu kayıt, haritanın hangi tarihe kadar güncel olduğunu gösterir ve teknik olarak zorunludur.
+
+![Image](https://www.alloutdoor.com/wp-content/uploads/2020/02/correctionchart-righthand.jpg)
+
+![Image](https://sailingissues.com/vier/position-fix-nautical-chart-navigation-3x.png)`
+      },
+      {
+        title: "Şamandıra Düzeltmeleri",
+        content: `Şamandıra düzeltmeleri, seyir güvenliğini en doğrudan etkileyen harita düzeltmeleridir. Bir şamandıranın mevkiinin değişmesi, kaldırılması veya yeniden yerleştirilmesi durumunda, harita üzerindeki sembol tamamen iptal edilir ve yeni konum doğru sembolle işlenir. Eğer şamandıranın ışık karakteri, rengi veya tipi değişmişse, yalnızca sembol değil, **ilgili tüm tanımlayıcı bilgiler birlikte** güncellenir.
+
+![Image](https://marine-charts.com/wp-content/uploads/nautical-chart-corrections-updates.jpg)
+
+![Image](https://www.aurkacharts.net/wp-content/uploads/2023/09/20200323_130632.png)`
+      },
+      {
+        title: "Fener ve Işık Karakteri Düzeltmeleri",
+        content: `Bir fenerin ışık karakterinde yapılan değişiklik, harita düzeltmeleri içinde en kritik işlemlerden biridir. Eski ışık karakteri harita üzerinden tamamen kaldırılır ve yenisi doğru formatta yazılır. Bu işlem yapılmadan kullanılan bir harita, gece seyri için güvenilir değildir; çünkü fener tanıma mantığı doğrudan ışık karakterine dayanır.
+
+![Image](https://lighthouses.wales/wp-content/uploads/2025/06/Screenshot-2025-06-11-170308-1.png)
+
+![Image](https://shop.hamiltonmarine.com/inet/storefront/getimage.php?recid=87837)`
+      },
+      {
+        title: "Derinlik, Batık ve Tehlike Düzeltmeleri",
+        content: `Yeni yapılan taramalar sonucu derinlik değerleri değiştiğinde, eski değerler iptal edilir ve yenileri harita üzerine işlenir. Yeni tespit edilen batıklar ve kayalar, doğru sembol ve doğru konumla haritaya eklenir. Eğer batık için **least depth** bilgisi verilmişse, bu değer harita üzerinde açıkça gösterilir ve doğrudan draft hesaplarında kullanılır.
+
+![Image](https://i1.wp.com/nauticalcharts.noaa.gov/updates/wp-content/uploads/2022/03/HuntingtonHarbourBefore.jpg?ssl=1)
+
+![Image](https://www.skippertips.com/members/images/418b.jpg?cb=20250701052841)`
+      },
+      {
+        title: "Harita Güncellik Kaydı",
+        content: `Her deniz haritasının kenar boşluğunda, yapılan düzeltmelerin kaydedildiği bir alan bulunur. Bu alana, işlenen her Notice to Mariners numarası ve tarihi yazılır. Bu kayıtlar, haritanın teknik olarak güncel olup olmadığının tek kanıtıdır. Kayıt yoksa veya eksikse, harita seyirde kullanılabilir kabul edilmez.
+
+![Image](https://www.captainsnautical.com/cdn/shop/products/6162b6a837c4431f5ed98448a11171d3_2000x.png?v=1571461279)
+
+![Image](https://navyadministration.tpub.com/14220/img/14220_44_1.jpg)`
+      }
+    ],
+    keyPoints: [
+      "Düzeltmeler, Notice to Mariners bültenleriyle resmi olarak yayımlanır",
+      "Kalıcı, geçici ve ön bilgi düzeltmeleri farklı şekilde işlenir",
+      "Eski bilgi iptal edilir, yeni sembol doğru formatta eklenir",
+      "Harita kenarındaki güncellik kaydı zorunludur",
+      "Güncellenmemiş harita seyirde geçerli kabul edilmez"
+    ]
+  },
   "Mevki koyma": {
     title: "Mevki Koyma",
     introduction: "Mevki koyma, geminin deniz üzerindeki konumunun belirli bir zamana bağlı olarak deniz haritası üzerinde teknik kurallara uygun biçimde işaretlenmesi işlemidir. Seyirde alınan tüm kararlar — rota değişikliği, hız ayarlaması, emniyetli suya yönelme veya kaçınma manevrası — doğrudan bu mevki üzerinden şekillenir. Bu nedenle mevki koyma, çizgisel bir harita işlemi değil; matematik, geometri ve ölçüm disiplininin birleştiği temel bir seyir faaliyetidir. Kullanılan yöntemin doğruluğu, mevkinin karar üretme gücünü belirler.",
