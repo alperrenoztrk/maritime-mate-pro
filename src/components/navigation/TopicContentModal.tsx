@@ -50,7 +50,7 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                     <img
                       src={section.image}
                       alt={section.imageAlt || section.title}
-                      className="h-48 w-full object-cover bg-muted/30"
+                      className="h-48 w-full object-contain bg-muted/30"
                       loading="lazy"
                     />
                   </div>
