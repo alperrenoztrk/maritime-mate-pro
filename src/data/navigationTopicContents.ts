@@ -54,6 +54,15 @@ import yonDiagram2 from "@/assets/navigation/yon-diagram-2.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
 import yonRadarMotion from "@/assets/navigation/yon-radar-motion.jpg";
 
+// Import images - Harita Sembolleri
+import sembolIalaBuoyage from "@/assets/navigation/sembol-iala-buoyage.jpg";
+import sembolCardinalMarks from "@/assets/navigation/sembol-cardinal-marks.png";
+import sembolIsolatedDanger from "@/assets/navigation/sembol-isolated-danger.jpg";
+import sembolLightCharacteristics from "@/assets/navigation/sembol-light-characteristics.jpg";
+import sembolSectorLights from "@/assets/navigation/sembol-sector-lights.jpg";
+import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
+import sembolDangers from "@/assets/navigation/sembol-dangers.jpg";
+
 export interface TopicSection {
   title: string;
   content: string;
@@ -1280,7 +1289,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Fenerler ve ışık kısaltmaları",
         content: "Haritalarda fener bilgisi, kısa bir kısaltma dizisiyle verilir ve bu dizide her parça farklı bir gerçeği taşır. Fl çakarlı, Oc örtmeli, Iso eşit aralıklı, LFl uzun çakarlı, F sabit ışığı ifade eder. Q hızlı çakar, VQ çok hızlı çakar anlamına gelir; bunlar özellikle kardinal ve yaklaşım işaretlerinde gece ayırt etmenin bel kemiğidir. Al alternatif, Mo mors, Dir yönlü ışık gibi ifadeler de haritada görülebilir. Renkler W, R, G, Y harfleriyle yazılır ve çoğu kez karakterin yanında yer alır.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lightcharacteristic.jpg/500px-Lightcharacteristic.jpg",
+        image: sembolLightCharacteristics,
         imageAlt: "Işık karakteristikleri"
       },
       {
@@ -1298,7 +1307,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Sektör ışıkları ve leading lights",
         content: "Sektör ışıkları, tek bir fenerin farklı yönlere farklı renk göstermesiyle güvenli sektör mantığı kurar. Haritada sektörler yaylar ve renk bantlarıyla gösterilir; çoğu uygulamada beyaz sektör emniyetli hattı, kırmızı sektör tehlike tarafını, yeşil sektör diğer sınırı anlatır ve ayrıntı haritadan okunur. Bu sistemin pratik değeri, özellikle yaklaşımda güvenli koridorun bir ışık üzerinden tutulabilmesidir.",
-        image: "https://safe-skipper.com/wp-content/uploads/2020/06/sector-lights-2.jpg",
+        image: sembolSectorLights,
         imageAlt: "Sektör ışıkları örneği"
       },
       {
