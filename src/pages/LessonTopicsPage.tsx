@@ -71,7 +71,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Mesafe ölçümü" },
           { title: "Rota ölçümü" },
           { title: "Mevki koyma", hasContent: true },
-          { title: "Harita düzeltmeleri (Notice to Mariners)" }
+          { title: "Harita düzeltmeleri (Notice to Mariners)", hasContent: true }
         ]
       },
       {
@@ -378,8 +378,7 @@ export default function LessonTopicsPage() {
   };
 
   const handleSubTopicClick = (subTopicTitle: string) => {
-    const content = navigationTopicContents[subTopicTitle];
-    if (content && categoryId) {
+    if (categoryId) {
       navigate(`/lessons/${categoryId}/topics/${encodeURIComponent(subTopicTitle)}`);
     }
   };
@@ -448,9 +447,10 @@ export default function LessonTopicsPage() {
           {/* Check if has subTopics - use different layout */}
           {topicContent.keyTopics.some(t => t.subTopics && t.subTopics.length > 0) ? (
             <div className="flex flex-col gap-3">
-              {topicContent.keyTopics.map((topic, index) => {
+          {topicContent.keyTopics.map((topic, index) => {
                 const isExpanded = expandedTopics.includes(index);
                 const hasSubTopics = topic.subTopics && topic.subTopics.length > 0;
+                const allowAllNavigation = categoryId === "navigation";
                 
                 return (
                   <div
@@ -488,21 +488,22 @@ export default function LessonTopicsPage() {
                       <div className="border-t border-border/40 bg-background/50 p-4">
                         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                           {topic.subTopics!.map((sub, subIndex) => {
-                            const hasContent = sub.hasContent && navigationTopicContents[sub.title];
+                            const hasContent = Boolean(sub.hasContent && navigationTopicContents[sub.title]);
+                            const canNavigate = allowAllNavigation || hasContent;
                             return (
                               <button
                                 key={subIndex}
-                                onClick={() => hasContent && handleSubTopicClick(sub.title)}
-                                disabled={!hasContent}
+                                onClick={() => canNavigate && handleSubTopicClick(sub.title)}
+                                disabled={!canNavigate}
                                 className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-left transition-all ${
-                                  hasContent 
+                                  canNavigate
                                     ? 'bg-card/60 hover:bg-primary/10 hover:border-primary/30 border border-transparent cursor-pointer' 
                                     : 'bg-card/40 cursor-default opacity-70'
                                 }`}
                               >
-                                <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${hasContent ? 'bg-primary' : 'bg-primary/40'}`} />
+                                <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${canNavigate ? 'bg-primary' : 'bg-primary/40'}`} />
                                 <span className="text-foreground/90 flex-1">{sub.title}</span>
-                                {hasContent && (
+                                {canNavigate && (
                                   <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
                                 )}
                               </button>

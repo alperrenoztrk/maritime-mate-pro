@@ -6,9 +6,21 @@ import { navigationTopicContents } from "@/data/navigationTopicContents";
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
-  const content = navigationTopicContents[decodedTitle];
+  const fallbackContent = {
+    title: decodedTitle || "Konu Detayı",
+    introduction:
+      "Bu konu başlığı için içerik hazırlanmaktadır. Şimdilik sayfa iskeleti yayınlandı; görseller ve ayrıntılı anlatım en kısa sürede eklenecektir.",
+    sections: [
+      {
+        title: "İçerik hazırlanıyor",
+        content:
+          "Bu başlık için örnekler, tablolar ve görseller hazırlanıyor. Güncel sürümde bu sayfa, yeni içerikler eklendikçe otomatik olarak zenginleşecektir."
+      }
+    ]
+  };
+  const content = navigationTopicContents[decodedTitle] ?? fallbackContent;
 
-  if (!categoryId || !content) {
+  if (!categoryId || !decodedTitle) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <p className="text-muted-foreground">İçerik bulunamadı</p>
