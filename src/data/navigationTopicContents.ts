@@ -1433,5 +1433,105 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       "Emniyetli su ve izole tehlike işaretleri, mevki doğrulamada kritik rol oynar",
       "Semboller, derinlik değerleri ve geminin draft’ı birlikte değerlendirilmelidir"
     ]
+  },
+  "Mevki koyma": {
+    title: "Mevki Koyma",
+    introduction: "Mevki koyma, geminin deniz üzerindeki konumunun belirli bir zamana bağlı olarak deniz haritası üzerinde teknik kurallara uygun biçimde işaretlenmesi işlemidir. Seyirde alınan tüm kararlar — rota değişikliği, hız ayarlaması, emniyetli suya yönelme veya kaçınma manevrası — doğrudan bu mevki üzerinden şekillenir. Bu nedenle mevki koyma, çizgisel bir harita işlemi değil; matematik, geometri ve ölçüm disiplininin birleştiği temel bir seyir faaliyetidir. Kullanılan yöntemin doğruluğu, mevkinin karar üretme gücünü belirler.",
+    sections: [
+      {
+        title: "Mevki Türleri ve Güvenilirlik Seviyeleri",
+        content: `Denizcilikte mevki, kullanılan bilginin güvenilirliğine göre farklı sınıflarda değerlendirilir.
+
+**Tahmini Mevki (Estimated Position – EP)**  
+Gözlemsel veya ölçümsel bir doğrulama olmadan, yalnızca varsayıma dayalı olarak kabul edilen konumdur. Genellikle kötü görüş veya ölçüm yapılamayan anlarda kullanılır.
+
+**Ölü Hesap Mevkii (Dead Reckoning – DR)**  
+Bilinen bir son mevkiden itibaren rota, hız ve zaman kullanılarak hesaplanan mevkiyi ifade eder. Akıntı ve rüzgâr etkileri ihmal edilir.
+
+**Kesin Mevki (Fix)**  
+İki veya daha fazla bağımsız ölçümün kesişimiyle elde edilir. Kerteriz kesişimi, mesafe–kerteriz kombinasyonu ve elektronik mevki bu sınıfa girer.
+
+![Mevki koyma örneği](https://sailingissues.com/vier/position4.png)
+
+![Tahmini mevki şeması](https://www.nomadsailing.co.uk/images/easyblog_articles/23/b2ap3_amp_Estimated-Position.JPG)
+
+![Mevki işaretleme örneği](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.05-1024x575.png?media=1759652400)
+
+![Kerteriz kesişimi örneği](https://sailingissues.com/vier/crossbear2.png)`
+      },
+      {
+        title: "Ölü Hesap Mevkii ile Mevki Koyma",
+        content: `Ölü hesap mevkii, düzlem seyirde en temel ve en sık kullanılan mevki koyma yöntemidir. Mantık, düzgün doğrusal hareket varsayımına dayanır.
+
+**Temel Bağıntı**  
+Mesafe = Hız × Zaman
+
+**Uygulama Mantığı**  
+Bilinen bir başlangıç mevkiinden itibaren geminin sabit bir hakiki rota ile sabit hızda seyir yaptığı kabul edilir. Bu süre sonunda alınan mesafe, rota doğrultusunda harita üzerine taşınarak yeni mevki bulunur.
+
+**Örnek**  
+Hız 12 knot, hakiki rota 075° ve süre 2 saat ise:  
+Mesafe = 12 × 2 = 24 deniz mili
+
+![Ölü hesap görseli](https://www.nomadsailing.co.uk/images/easyblog_articles/23/b2ap3_large_Estimated-Position.JPG)
+
+![DR uygulama şeması](https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/ia488bbe2ca937abc/version/1604740630/image.png)`
+      },
+      {
+        title: "Kerteriz Kesişimi ile Kesin Mevki",
+        content: `Kerteriz kesişimi, kesin mevki elde etmenin klasik ve güvenilir yöntemlerinden biridir. Sabit cisimlerden alınan hakiki kerterizlerin harita üzerinde kesiştirilmesine dayanır.
+
+**Temel Bağıntı**  
+Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz
+
+**Uygulama**  
+Gemiden görülebilen ve harita üzerinde yeri kesin olan en az iki sabit cisim seçilir. Bu cisimlere ait hakiki kerterizler alınır. Harita üzerinde bu kerterizler ters yönde çizilerek kesiştirilir.
+
+![Kerteriz kesişimi örneği](https://sailingissues.com/vier/position4.png)
+
+![Kerteriz çizimi](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.05-1024x575.png?media=1759652400)
+
+![Üç kerterizle fix](https://upload.wikimedia.org/wikipedia/commons/d/dd/Visual-fix-by-three-bearings.png)`
+      },
+      {
+        title: "Mesafe ve Kerteriz Kombinasyonu",
+        content: `Bir sabit cisme olan mesafe ile başka bir cisme alınan kerterizin birlikte kullanılmasıyla mevki bulunur. Radar çağında çok yaygındır.
+
+**İşlem Mantığı**  
+Mesafe harita üzerinde yay, kerteriz doğrusal hat olarak temsil edilir. Yay ile hattın kesişimi kesin mevkiyi verir.
+
+![Mevki örneği](https://sailingissues.com/vier/position4.png)
+
+![Mesafe + kerteriz uygulaması](https://maritimesa.org/nautical-science-grade-12/wp-content/uploads/sites/7/2020/09/12-1-3-6-fig1.jpg)`
+      },
+      {
+        title: "Elektronik Mevki ve Harita Üzerine Taşınması",
+        content: `Elektronik mevki, GPS ve benzeri sistemlerden alınan enlem–boylam değerlerine dayanır. Bu koordinatlar doğrudan harita üzerinde işaretlenir.
+
+**Temel Şart**  
+Harita datum’u ile elektronik sistem datum’u aynı olmalıdır. Aksi hâlde mevki hatası oluşur.
+
+![Elektronik mevki örneği](https://www.skippertips.com/members/images/821b.jpg?cb=20250701052844)
+
+![Elektronik harita katmanı](https://developers.arcgis.com/net/static/752882802f2ded0cb1b58bc30a181f5a/4b190/enc-layer.jpg)`
+      },
+      {
+        title: "Mevki Koymada Hata ve Kontrol Mantığı",
+        content: `Üç kerterizle elde edilen küçük üçgen, hata üçgenidir. Bu üçgenin büyüklüğü ölçüm kalitesini gösterir. Geniş hata üçgeni, kerterizlerin güvensiz olduğunu gösterir.
+
+Ölü hesap mevkii ile kesin mevki arasındaki fark, akıntı ve rüzgâr etkilerinin dolaylı göstergesidir. Bu fark bilinçli olarak izlenir ve seyir kararları buna göre ayarlanır.
+
+![LOP ve fix açıklaması](https://sailingissues.com/vier/position-fix-lop-explained-3x.png)
+
+![Hata üçgeni örneği](https://www.sailtrain.co.uk/navigation/images/cockedhat.gif)`
+      }
+    ],
+    keyPoints: [
+      "Mevki koyma, zamana bağlı karar üretmenin temelidir",
+      "EP, DR ve Fix mevki güvenilirlik seviyelerine göre ayrılır",
+      "DR hesapları hata birikimine açıktır ve düzenli doğrulama ister",
+      "Kerteriz kesişimi ve mesafe-kerteriz kombinasyonu klasik kesin mevki yöntemleridir",
+      "Elektronik mevki mutlaka datum uyumu ve saha doğrulamasıyla kontrol edilmelidir"
+    ]
   }
 };

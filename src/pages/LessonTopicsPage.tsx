@@ -71,7 +71,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Harita sembolleri ve kısaltmalar", hasContent: true },
           { title: "Mesafe ölçümü" },
           { title: "Rota ölçümü" },
-          { title: "Mevki koyma" },
+          { title: "Mevki koyma", hasContent: true },
           { title: "Harita düzeltmeleri (Notice to Mariners)" }
         ]
       },
