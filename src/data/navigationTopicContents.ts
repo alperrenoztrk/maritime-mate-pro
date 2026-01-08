@@ -1211,109 +1211,129 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
   },
   "Harita sembolleri ve kısaltmalar": {
     title: "Harita Sembolleri ve Kısaltmalar",
-    introduction: "Deniz haritasındaki semboller ve kısaltmalar, nesneleri çizmek için değil, seyir sırasında doğru kararı en kısa sürede verdirmek için kurulmuş standart bir dildir. Harita, emniyetli suyun nerede bulunduğunu, tehlikenin neyi temsil ettiğini, bir hattın nasıl tutulacağını ve hangi alanın hukuken veya operasyonel olarak kısıtlı olduğunu tek bakışta çözülecek şekilde kodlar. Bu dilin yükünü en çok taşıyan unsurlar şamandıralar, fenerler ve diğer seyir yardımcılarıdır; çünkü hem mevki doğrulamada hem de emniyetli geçişte doğrudan kullanılırlar.",
+    introduction: "Deniz haritasındaki semboller ve kısaltmalar, nesneleri çizmek için değil, seyir sırasında doğru kararı en kısa sürede verdirmek için kurulmuş standart bir dildir. Harita, gerçek dünyayı fotoğraf gibi çoğaltmaz; emniyetli suyun nerede bulunduğunu, tehlikenin neyi temsil ettiğini, bir hattın nasıl tutulacağını, hangi alanın hukuken veya operasyonel olarak kısıtlı olduğunu tek bakışta çözülecek şekilde kodlar. Bu dilin yükünü en çok taşıyan unsurlar şamandıralar, fenerler ve diğer seyir yardımcılarıdır; çünkü hem mevki doğrulamada hem de emniyetli geçişte doğrudan kullanılırlar.",
     sections: [
       {
         title: "Harita dilinin amacı ve temel okuma mantığı",
-        content: "Bir işaretin anlamı yalnız renk veya isimle bitmez; şekil, üst marka, ışık karakteri, ses işareti, radar/elektronik tanıtıcıları ve haritadaki kısaltma dizilimi birlikte okunur. Aşırı detay gibi görünen bu yapı, pratikte tereddütü azaltıp kazayı engellemek için vardır; bu başlık ezberletmek için değil, sahada karar verdiren bir dil gibi öğretilmelidir.",
+        content: "Bir işaretin anlamı yalnız renk veya isimle bitmez; şekil, üst marka, ışık karakteri, ses işareti, radar/elektronik tanıtıcıları ve haritadaki kısaltma dizilimi birlikte okunur. “Aşırı detay” gibi görünen bu yapı, pratikte tereddütü azaltıp kazayı engellemek için vardır; bu başlık ezberletmek için değil, sahada karar verdiren bir dil gibi öğretilmelidir.",
         image: "https://www.skippertips.com/members/images/211c.png?cb=20250701053020",
         imageAlt: "Deniz haritası sembolleri örneği"
       },
       {
+        title: "Sembol standardı: Chart No.1",
+        content: "Chart No.1, deniz haritalarında kullanılan sembollerin ve kısaltmaların standart referansıdır. Eğitimde ve pratik okumada bu görsel dilin aynı şekilde anlaşılması için temel kaynaktır.",
+        image: "https://nauticalcharts.noaa.gov/updates/wp-content/uploads/2019/05/Chart-No-1.jpg",
+        imageAlt: "Chart No.1 sembol standardı"
+      },
+      {
         title: "IALA sistemi ve şamandıra mantığı",
-        content: "Şamandıra sistemi IALA düzenine göre yorumlanır ve dünya iki ana bölgeye ayrılır. Türkiye ve Avrupa suları IALA Bölge A mantığını kullanır; limana girişte kırmızı iskelede, yeşil sancakta kalır. Bu ifade bir renk cümlesi değil, bir geçiş talimatıdır; aynı renk farklı bölgede farklı tarafı ifade edebildiği için haritadaki bir şamandıra sembolünü gördüğünde ilk refleks, hangi IALA bölgesinde olunduğunu düşünmektir.",
+        content: "Şamandıra sistemi IALA düzenine göre yorumlanır ve dünya iki ana bölgeye ayrılır. Türkiye ve Avrupa suları IALA Bölge A mantığını kullanır; limana girişte kırmızı iskelede, yeşil sancakta kalır. Buradaki kritik nokta, bu ifadenin bir renk cümlesi değil, bir geçiş talimatı olmasıdır. Aynı renk farklı bölgede farklı tarafı ifade edebildiği için haritadaki bir şamandıra sembolünü gördüğünde ilk refleks, “hangi IALA bölgesindeyim” sorusunu içgüdü hâline getirmektir. Harita şamandırayı çoğu zaman bir nokta gibi çizse bile, o nokta bir koridorun kenarını, bir tehlikenin dolaşma yönünü veya yaklaşım hattının teyidini temsil eder; dolayısıyla sembolün amacı bilgi vermek değil, hareket ettirmektir.",
         image: "https://sailtrain.org.uk/wp-content/uploads/2017/10/iala_buoys_channel.jpg",
         imageAlt: "IALA şamandıra mantığı"
       },
       {
+        title: "IALA A şamandıra örnekleri",
+        content: "IALA A bölgesinde renk, şekil ve üst marka bir bütün hâlinde okunur. Limana girişte kırmızının iskelede kalması kuralı, sahada doğrudan bir geçiş talimatına dönüşür.",
+        image: "https://safe-skipper.com/wp-content/uploads/2015/11/IALA-A-buoyage.jpg",
+        imageAlt: "IALA A şamandıra düzeni"
+      },
+      {
         title: "Lateral işaretler ve haritadaki gösterimi",
-        content: "Lateral işaretler kanalın kenarlarını tarif eder ve emniyetli suyu çizgisel olarak tanımlar. IALA A’da iskele işareti kırmızıdır ve tipik olarak silindirik biçim taşır; sancak işareti yeşildir ve tipik olarak konik biçimle eşleşir. Haritada lateral işaretin sembolü, şamandıra mı sabit beacon mı olduğunu, ışıklı mı ışıksız mı olduğunu ve bazen işaretin karakterini tek bakışta ayırt etmeye yarar. Lateral işaretin ışığı varsa yanında ışık karakteristiği yazılır; bu yazı gece ayırt etmenin şifresidir.",
+        content: "Lateral işaretler, bir kanalın veya geçiş hattının kenarlarını tarif eder ve emniyetli suyu çizgisel olarak tanımlar. IALA A’da iskele işareti kırmızıdır ve tipik olarak silindirik (can) biçim ve buna karşılık gelen üst marka mantığını taşır; sancak işareti yeşildir ve tipik olarak konik (conical) biçim ve üst marka mantığı ile eşleştirilir. Haritada lateral işaretin sembolü, bunun şamandıra mı yoksa sabit beacon mı olduğunu, ışıklı mı ışıksız mı olduğunu ve bazen işaretin karakterini tek bakışta ayırmaya yarayacak şekilde çizilir. Lateral işaretin ışığı varsa haritada yanında ışık karakteristiği yazılır; bu yazı “yanıyor” demek değildir, gece ayırt etmenin şifresidir.",
         image: "https://sailingissues.com/light/lateral-marks-IALA-A-3x.png",
         imageAlt: "Lateral işaretler ve ışıkları"
       },
       {
         title: "Lateral ışık karakterlerini okuma",
-        content: "Bir lateral işareti okurken pratik karar akışı; önce işaretin türü ve rengi, sonra varsa şekli ve üst markası, ardından ışık karakteri ve periyodu, en son nominal görünme mesafesi mantığıyla çözülür. Haritada “Fl R 5s” kırmızı çakarlı ışığın 5 saniyelik periyotla tekrar ettiğini, “Q G” hızlı çakarlı yeşil ışığı ifade eder. “Oc” ışığın çoğunlukla yandığı, kısa süre söndüğü karakterdir; “Iso” yanma ve sönme sürelerinin eşit olduğunu anlatır. Gece gözlemi haritadaki ritimle uyuşmuyorsa varsayım sorgulanmalı ve işaret yeniden teşhis edilmelidir.",
+        content: "Bir lateral işareti okurken pratik karar akışı, önce işaretin türü ve rengi, sonra varsa şekli ve üst markası, ardından ışık karakteri ve periyodu, en son nominal görünme mesafesi mantığıyla çözülür. Haritada “Fl R 5s” kırmızı çakarlı ışığın 5 saniyelik periyotla tekrar ettiğini anlarsın. “Q G” hızlı çakarlı yeşil ışığı ifade eder. “Oc” ışığın çoğunlukla yandığı, kısa süre söndüğü karakterdir. “Iso” yanma ve sönme sürelerinin eşit olduğunu anlatır. Aynı bölgede birden fazla ışıklı işaret varken bu ayrım, “hangisi hangisi” sorusunu saniyeler içinde çözer. Gece gözlemin haritadaki ritimle uyuşmaması, çoğu kazada ilk işarettir; burada doğru refleks, rotayı körlemesine düzeltmek değil, varsayımı sorgulayıp işareti yeniden teşhis etmektir.",
         image: "https://marinegyaan.com/wp-content/uploads/2016/06/Untitled-14.jpg",
         imageAlt: "Lateral şamandıra şekil eşleşmeleri"
       },
       {
         title: "Kardinal işaretler ve emniyetli su yönü",
-        content: "Kardinal işaretler kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli su yönünü tarif eder. Kuzey kardinali tehlikenin kuzeyinden, doğu kardinali doğusundan, güney kardinali güneyinden, batı kardinali batısından geçilmesi gerektiğini söyler. Haritadaki sembol renk bandını ve üst markayı ima eder; sahada gece tanımada belirleyici olan ışık ritmidir.",
+        content: "Kardinal işaretler kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli su yönünü tarif eder. Mantık yönseldir: kuzey kardinali tehlikenin kuzeyinden geç der, doğu kardinali doğusundan geç der, güney kardinali güneyinden geç der, batı kardinali batısından geç der. Bu işaretlerin haritadaki sembolü renk bandını ve üst markayı ima eder; fakat sahada en kritik kısım gece tanımadır, çünkü ışık ritmi yön bilgisini taşır.",
         image: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Cardinal_Marks.gif",
         imageAlt: "Kardinal işaretlerin renk ve üst marka mantığı"
       },
       {
         title: "Kardinal ışık imzaları",
-        content: "Kuzey kardinal kesintisiz seri hissi veren Q veya VQ ritmiyle, doğu kardinal üçlü grup Fl(3), Q(3) veya VQ(3) ile, güney kardinal altılı grup artı uzun çakar Q(6)+LFl veya VQ(6)+LFl ile, batı kardinal ise dokuzlu grup Q(9) veya VQ(9) ile tanınır. Haritada “VQ(6)+LFl 15s” ifadesi güney kardinali işaret eder ve 15 saniyelik periyotta altı kısa çok hızlı çakar ile bir uzun çakarın tekrarını anlatır; karar, tehlikenin güneyinden emniyetli geçiş olarak verilir.",
+        content: "Kuzey kardinal, pratikte “kesintisiz seri” hissi veren bir ritimle tanınır ve haritada çoğunlukla Q veya VQ ile ifade edilir. Doğu kardinalin imzası üçlü gruptur; Fl(3), Q(3) veya VQ(3). Güney kardinalin imzası altılı grup artı uzun çakardır; Q(6)+LFl veya VQ(6)+LFl. Batı kardinalin imzası dokuzlu gruptur; Q(9) veya VQ(9). Haritada bir kardinal işaret yanında “VQ(6)+LFl 15s” yazdığını düşünelim. Bu ifade güney kardinali işaret eder. 15 saniyelik periyot içinde altı kısa çok hızlı çakar ve bir uzun çakar vardır; düzen tekrar eder. Buradaki doğru karar, “işareti nasıl bırakırım” gibi slogan düzeyinde değil, “tehlikenin güneyinden emniyetli geçiş yapılır” mantığıyla verilir. Harita üzerindeki tehlike sembolüyle birlikte okunduğunda, geçiş hattı netleşir.",
         image: "https://sailingissues.com/light/cardinal-buoys%2Blights-3x.png",
         imageAlt: "Kardinal ışık karakterleri"
       },
       {
         title: "İzole tehlike, emniyetli su ve özel işaretler",
-        content: "İzole tehlike işareti, çevresinde dolaşılabilir su bulunan tekil bir tehlikeyi işaret eder; harita sembolünde tehlikenin üzerinde ya da yanında görünür ve ışık karakteri çoğu kez “Fl(2) W” şeklindedir. Emniyetli su işareti kanal orta hattını veya yaklaşım hattını teyit eder; kırmızı-beyaz dikey bantlı görünüm ve beyaz ışık karakteriyle (Iso, Oc, LFl gibi) gösterilir. Özel işaretler sarı renkle ifade edilir ve seyir emniyetinden ziyade kablo sahası, askeri saha, ölçüm alanı gibi özel amaçlı alanlara ilişkin düzenlemeleri bildirir.",
+        content: "İzole tehlike işareti, çevresinde dolaşılabilir su bulunan tekil bir tehlikeyi işaret eder; batık, kaya, sığlık gibi “noktadan” doğan riskler için kullanılır. Harita sembolünde bu işaret, tehlikenin üzerinde veya hemen yanında görülür ve ışık karakteri çoğu kez “Fl(2) W” şeklinde yazılır; iki beyaz çakar, gece ayırt etmenin en güçlü imzasıdır. Bu işaretin verdiği mesaj “burada tekil bir tehlike var, etrafı dolaşılabilir”dir; emniyetli taraf, yerel derinlik, izobatlar ve geminin draft’ı ile birlikte seçilir.",
         image: "https://www.zazbuoys.com/static/upload/image/20250815/1755250955703110.jpg",
         imageAlt: "İzole tehlike işareti"
       },
       {
         title: "Emniyetli su işareti örneği",
-        content: "Emniyetli su işareti, “doğru yerdeyim” teyidini sağlayan referans noktadır. Haritada kırmızı-beyaz dikey bantlı sembolü ve beyaz ışık karakteristiğiyle gösterilir; bu işaret, yaklaşımda hedeflenen hattın üzerinde olunduğunu güçlü biçimde doğrular.",
+        content: "Emniyetli su işareti, kanal orta hattını, yaklaşım hattını veya çevresi emniyetli suyu tarif eden bir referans noktayı işaret eder. Haritada kırmızı-beyaz dikey bantlı görünümü çağrıştıran sembolle ve beyaz ışık karakteristiğiyle gösterilir; Iso, Oc veya LFl gibi karakterler sık görülür. Bu işaretin değeri, “geçiş talimatı” vermekten çok “doğru yerdeyim” teyidi sağlamasıdır; yaklaşımda hedeflenen hattın üzerinde olunduğunu güçlü biçimde doğrular.",
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Limfjord_safe_water_mark.jpg/250px-Limfjord_safe_water_mark.jpg",
         imageAlt: "Emniyetli su işareti"
       },
       {
+        title: "Özel işaretler ve kullanım mantığı",
+        content: "Özel işaretler sarı renkle gösterilir ve seyir emniyetinden ziyade “özel amaçlı alanı” ifade eder; kablo sahası, askeri saha sınırı, ölçüm alanı, yarış parkuru gibi. Haritada sarı işaret genellikle alan taraması ve kısaltmalarla birlikte gelir; mesaj, “burada bir düzenleme/aktivite var, planlamanı buna göre yap” şeklindedir. Özel işaretin ışığı varsa genellikle sarıdır ve karakteri yerel ihtiyaca göre değişir."
+      },
+      {
         title: "Fenerler ve ışık kısaltmaları",
-        content: "Haritalarda fener bilgisi kısa bir kısaltma dizisiyle verilir. Fl çakarlı, Oc örtmeli, Iso eşit aralıklı, LFl uzun çakarlı, F sabit ışığı ifade eder; Q hızlı çakar, VQ çok hızlı çakar anlamına gelir. Renkler W, R, G, Y harfleriyle yazılır ve karakterin yanında yer alır. “Fl(3) 15s” üçlü çakar grubunun 15 saniyede bir tekrar ettiğini anlatır; amaç periyodu saymak değil, gözle görülen ritmin haritadaki imzayla eşleşip eşleşmediğini doğrulamaktır.",
+        content: "Haritalarda fener bilgisi, kısa bir kısaltma dizisiyle verilir ve bu dizide her parça farklı bir gerçeği taşır. Fl çakarlı, Oc örtmeli, Iso eşit aralıklı, LFl uzun çakarlı, F sabit ışığı ifade eder. Q hızlı çakar, VQ çok hızlı çakar anlamına gelir; bunlar özellikle kardinal ve yaklaşım işaretlerinde gece ayırt etmenin bel kemiğidir. Al alternatif, Mo mors, Dir yönlü ışık gibi ifadeler de haritada görülebilir. Renkler W, R, G, Y harfleriyle yazılır ve çoğu kez karakterin yanında yer alır.",
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lightcharacteristic.jpg/500px-Lightcharacteristic.jpg",
         imageAlt: "Işık karakteristikleri"
       },
       {
+        title: "Işık periyodu ve doğrulama mantığı",
+        content: "Işık periyodu saniye cinsinden verilir. “Fl(3) 15s” ifadesi, üçlü çakar grubunun 15 saniyede bir tekrar ettiğini anlatır. Buradaki doğru yaklaşım periyodu saymak değil, gözle görülen ritmin haritadaki imzayla eşleşip eşleşmediğini doğrulamaktır. Eşleşmiyorsa iki ihtimal vardır: yanlış ışığa bakılıyordur veya mevki varsayımı hatalıdır; bu ikisi de gece seyirde kaza üretir."
+      },
+      {
         title: "Görünme mesafesi ve ufuk mesafesi",
-        content: "Işıkların görünme mesafesi haritada “12M” gibi nominal bir değerle verilir; atmosferik şartlar, fon ışıkları ve görüş bu değeri etkiler. Diğer sert sınır ufuk mesafesidir ve fener yüksekliği ile göz yüksekliğiyle hesaplanır. Seyirde küçük olan sınır geçerli kabul edilir.",
+        content: "Işıkların görünme mesafesi çoğu zaman deniz mili cinsinden verilir ve “12M” gibi yazılır. Bu değer nominal bir kavramdır; atmosferik şartlar, fon ışıkları ve görüş bunu etkiler. Ancak ışığı görüp görememenin bir diğer sert sınırı ufuk mesafesidir; bu da yükseklikle hesaplanır ve haritada fener yüksekliği çoğu kez metre cinsinden verilir. Geographical range hesabında pratik bağıntı şu şekilde kurulur. Seyirde iki sınır birlikte düşünülür; küçük olan sınır geçerlidir.",
         formula: {
           text: "D = 2,08 × ( √h1 + √h2 )",
-          description: "D deniz mili cinsinden ufuk mesafesi, h1 fener yüksekliği ve h2 göz yüksekliği (metre). Örnek: h1=20 m, h2=9 m → D ≈ 15,54 M."
+          description: "D deniz mili cinsinden ufuk mesafesidir. h1 fener yüksekliğini, h2 göz yüksekliğini metre cinsinden temsil eder. h1=20 m ve h2=9 m alınırsa D ≈ 15,54 M olur; nominal range 12M ise sınırlayıcı parlaklıktır, 18M ise geometrik sınır 15,5 M’de devreye girer."
         }
       },
       {
         title: "Sektör ışıkları ve leading lights",
-        content: "Sektör ışıkları tek bir fenerin farklı yönlere farklı renk göstermesiyle güvenli sektör mantığı kurar; haritada sektörler yaylar ve renk bantlarıyla gösterilir. Leading lights iki ayrı fenerin aynı doğrultuda hizalanmasıyla bir range oluşturur; gemide iki ışık üst üste geldiğinde hat üzerindesindir ve küçük sapmalar bile görsel olarak hızlı doğrulanır.",
+        content: "Sektör ışıkları, tek bir fenerin farklı yönlere farklı renk göstermesiyle güvenli sektör mantığı kurar. Haritada sektörler yaylar ve renk bantlarıyla gösterilir; çoğu uygulamada beyaz sektör emniyetli hattı, kırmızı sektör tehlike tarafını, yeşil sektör diğer sınırı anlatır ve ayrıntı haritadan okunur. Bu sistemin pratik değeri, özellikle yaklaşımda güvenli koridorun bir ışık üzerinden tutulabilmesidir.",
         image: "https://safe-skipper.com/wp-content/uploads/2020/06/sector-lights-2.jpg",
         imageAlt: "Sektör ışıkları örneği"
       },
       {
         title: "Leading lights örneği",
-        content: "Haritada iki ışık sembolü ve aralarındaki hat çizgisiyle gösterilen leading lights, dar yaklaşım kanallarında pusula değerinden daha hızlı ve daha güvenilir bir hat tutma teyidi üretir.",
+        content: "Leading lights, iki ayrı fenerin aynı doğrultuda hizalanmasıyla bir range oluşturur. Haritada iki ışık sembolü ve aralarındaki hat çizgisiyle gösterilir. Gemide iki ışık üst üste geldiğinde hat üzerindesindir; biri sağa kayarsa hattın bir tarafına, sola kayarsa diğer tarafına çıkmışsındır. Dar yaklaşım kanallarında bu yöntem, pusula değerinden daha hızlı ve daha güvenilir bir hat tutma teyidi üretir.",
         image: "https://safe-skipper.com/wp-content/uploads/2020/06/leading-lights.jpg",
         imageAlt: "Leading lights örneği"
       },
       {
-        title: "Radar ve elektronik tanıtıcılar",
-        content: "RACON, radar ekranında mors kodlu bir yanıt üreten işarettir ve haritada özel sembolle gösterilir. AIS AtoN ise AIS üzerinden fiziksel veya sanal seyir yardımını yayınlar ve haritada ilgili işaretin yanında belirtilir. Bu semboller elektronik seyirde mevki doğrulama ve hedef teşhisini güçlendirir.",
+        title: "Radar ve elektronik tanıtıcılar: RACON, AIS AtoN",
+        content: "Haritalarda bazı işaretler yalnız gözle değil, radar ve AIS üzerinden tanınacak şekilde donatılmıştır. RACON, radar ekranında mors kodlu bir yanıt üreten işarettir ve haritada özel bir sembolle gösterilir; mesajı, “radarda şu imzayı vereceğim”dir. AIS AtoN ise AIS üzerinden fiziksel veya sanal seyir yardımını yayınlar; haritada bu bilgi ilgili işaretin yanında belirtilir.",
         image: "https://marinegyaan.com/wp-content/uploads/2016/06/RACON.jpg",
         imageAlt: "RACON örneği"
       },
       {
         title: "AIS AtoN ve harita sembolleri",
-        content: "AIS AtoN ile birlikte haritadaki kısaltmalar, elektronik seyirde doğru hedef teşhisini destekler. Yanlış yorumlandığında “radarda gördüğüm doğru şey mi” sorusunu yanıtsız bırakır ve hatalı teşhis zinciri oluşabilir.",
+        content: "Bu semboller elektronik seyirde mevki doğrulama ve hedef teşhisini güçlendirir; ancak yanlış yorumlandığında “radarda gördüğüm doğru şey mi” sorusunu yanıtsız bırakır ve hatalı teşhis zinciri oluşturur.",
         image: "https://marine-charts.com/wp-content/uploads/Abbreviations-symbols-used-nautical-charts-1.jpg",
         imageAlt: "Harita sembolleri ve kısaltmalar örneği"
       },
       {
         title: "Tehlike sembolleri: kayalar, sığlıklar, batıklar",
-        content: "Kayalar ve sığlıklar, su üstünde, su seviyesinde veya su altında olma durumuna göre farklı sembollerle gösterilir. Batıklar da aynı şekilde tek tip değildir; bazıları üzerinde yeterli su bulunan bilgi batığı gibi gösterilirken, bazıları tehlikeli batık olarak vurgulanır ve çoğu kez en az derinlik değeri belirtilir. Karar verirken sembol, derinlik rakamı, izobatların sıkılığı, tarama kalitesi ve geminin draft’ı birlikte değerlendirilmelidir.",
+        content: "Kayalar ve sığlıklar, harita dilinde “su üstünde, su seviyesinde, su altında” ayrımıyla anlatılır. Bir kayanın sürekli su üstünde olmasıyla, dalgaya bağlı olarak örtünüp açılması veya tamamen su altında kalması aynı değildir; sembol bu farkı taşır. Sığlıkların tarama deseni ve izobat yapısı, geminin draft’ı ile birlikte riskin büyüklüğünü belirler. Batıklar da aynı şekilde tek tip değildir; bazıları üzerinde yeterli su bulunan bilgi batığı gibi gösterilirken, bazıları tehlikeli batık olarak vurgulanır ve çoğu kez en az derinlik değeri belirtilir. Least depth bilgisi varsa, bu sayı batığın en sığ noktasındaki suyu temsil eder ve planlamada doğrudan kullanılır.",
         image: "https://charts.gc.ca/images/publications/chart1-carte1/k-rocks/k12-iho.svg",
         imageAlt: "Kaya sembolleri örnekleri"
       },
       {
         title: "Sığlık ve batık örnekleri",
-        content: "Least depth bilgisi varsa bu sayı batığın en sığ noktasındaki suyu temsil eder ve planlamada doğrudan kullanılır. Tek bir sembol mutlak tehlike değildir; bağlamla birlikte okunmalıdır.",
+        content: "Bu bölümdeki en yaygın hata, tek bir sembolü mutlak tehlike sanmaktır. Haritada tehlikenin türü, derinlik rakamı, izobatların sıkılığı, bölgenin tarama kalitesi ve geminin su çekimi birlikte değerlendirilmeden karar verilmez. Harita dili tek işaretle hüküm vermez; bağlamla hüküm verir.",
         image: "https://www.skippertips.com/members/images/831b.jpg?cb=20250701052844",
         imageAlt: "Sığlık ve batık sembolleri"
       },
       {
-        title: "Kısaltmaların pratik okunuşu",
-        content: "Bir fener yanında “Fl(2) W 10s 18m 15M” yazıyorsa, iki beyaz çakarın 10 saniyede bir tekrar ettiğini, ışığın 18 metre yükseklikte olduğunu ve nominal görünme mesafesinin 15 deniz mili olduğunu anlarsın. “Q(9) 10s” batı kardinal imzasıdır ve tehlikeyi batısından dolaşma kararını netleştirir. Leading lights ve range hattı görüldüğünde iki ışığı hizalayıp hat üzerinde kalma disiplini uygulanır; bu, çoğu durumda pusula sayısından daha güçlü bir doğrulama üretir."
+        title: "Kısaltmaların pratik okunuşu ve hızlı doğrulama",
+        content: "Bir fener yanında “Fl(2) W 10s 18m 15M” yazıyorsa, iki beyaz çakarın 10 saniyede bir tekrar ettiğini, ışığın 18 metre yükseklikte olduğunu ve nominal görünme mesafesinin 15 deniz mili olduğunu anlarsın. Gece vardiyasında gördüğün ritmi bu imzayla doğrular, mevki varsayımını güçlendirirsin. Bir işaret yanında “Q(9) 10s” görürsen bunun batı kardinal imzası olduğunu bilip, haritadaki tehlikeyi batısından dolaşma kararını netleştirirsin. Bir yaklaşımda leading lights ve range hattını görürsen, iki ışığı hizalayıp hattın üzerinde kalma disiplinini uygularsın; bu, çoğu durumda pusula sayısından daha güçlü bir doğrulama üretir."
       }
     ],
     keyPoints: [
