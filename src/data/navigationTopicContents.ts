@@ -1718,6 +1718,197 @@ Harita datum’u ile elektronik sistem datum’u aynı olmalıdır. Aksi hâlde 
       "Elektronik mevki mutlaka datum uyumu ve saha doğrulamasıyla kontrol edilmelidir"
     ]
   },
+  "Kurs – mesafe hesapları": {
+    title: "Kurs – Mesafe Hesapları",
+    introduction: "Kurs–mesafe hesapları, düzlem seyirde bir seyir hareketini tek bir doğru parçası olarak ele alıp, bu hareketin dik bileşenlerini çözerek ya da bu bileşenlerden hareketin kendisini yeniden kurarak yapılan hesaplamalardır. Düzlem seyir varsayımı altında seyir üçgeni, hipotenüsü seyredilen mesafe olan bir dik üçgen gibi düşünülür; dik kenarlar DLat ve departure’dır. Bu yaklaşım kısa mesafelerde ve orta enlemlerde pratik doğruluk verir.",
+    sections: [
+      {
+        title: "Genel Bakış",
+        content: `![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Image](https://imgv2-1-f.scribdassets.com/img/document/373015606/original/1b051a5aaf/1?v=1)
+
+![Image](https://manoa.hawaii.edu/exploringourfluidearth/sites/default/files/M1U8-Fig8.31-NauticalChartKaneoheBay.png)
+
+Kurs–mesafe hesapları düzlem seyir varsayımına dayanır. Seyir hareketi tek bir doğru parçası kabul edilir ve bu hareket, dik bileşenlerine ayrıştırılarak analiz edilir. Hipotenüs seyredilen mesafe, dik kenarlar DLat ve departure olarak düşünülür.`
+      },
+      {
+        title: "Kullanılan Büyüklükler ve Birimler",
+        content: `![Image](https://www.jove.com/files/ftp_upload/18110/18110_article_thumb_18110.jpg)
+
+![Image](https://i.ebayimg.com/images/g/rc4AAOSwr99iQ4LJ/s-l400.jpg)
+
+DLat enlem değişimidir ve dakika enlem cinsinden ifade edilir; pratikte 1 dakika enlem = 1 deniz mili kabul edildiği için DLat aynı zamanda deniz mili gibi de düşünülür. Departure doğu–batı mesafesidir ve deniz mili cinsindendir. Kurs düzlem seyirde hakiki rota olarak alınır ve 0°–360° aralığında ifade edilir. Mesafe deniz mili cinsindendir.
+
+İşaret mantığı seyir geometrisini ayakta tutar. DLat kuzeye doğru pozitif, güneye doğru negatif kabul edilir. Departure doğuya doğru pozitif, batıya doğru negatif kabul edilir. Kurs hesabında ise sonucun hangi çeyreğe düştüğü bu işaretlerden çıkarılır.`
+      },
+      {
+        title: "Tip 1: Kurs ve Mesafe Verildiğinde DLat ve Departure Bulma",
+        content: `![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image012.gif)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+Kurs ve mesafe biliniyorsa, hareketin bileşenleri trigonometrik olarak ayrıştırılır. Mesafe hipotenüstür; DLat kursun kosinüs bileşeni, departure kursun sinüs bileşenidir.
+
+DLat = Mesafe × cos Kurs  
+Departure = Mesafe × sin Kurs
+
+İşaret, kursun hangi çeyrekte olduğuna göre belirlenir. 0°–180° aralığı kuzey bileşeni, 180°–360° aralığı güney bileşeni üretir. 0°–180° aralığında doğu–batı için ayrıca 0°–90° ve 90°–180° ayrımı yapılır; 0°–180° içinde sin pozitif olduğundan doğu bileşeni çıkar, 180°–360° içinde sin negatifleştiği için batı bileşeni çıkar.
+
+**Örnek Hesaplama**  
+Mesafe 50 deniz mili, kurs 045° olsun.  
+cos 045° ≈ 0.7071  
+sin 045° ≈ 0.7071  
+
+DLat = 50 × 0.7071 = 35.36′ Kuzey  
+Departure = 50 × 0.7071 = 35.36 deniz mili Doğu  
+
+Bu sonuç, 50 deniz millik seyrin hem kuzeye hem doğuya eşit bileşen ürettiğini gösterir.`
+      },
+      {
+        title: "Tip 2: DLat ve Departure Verildiğinde Kurs ve Mesafe Bulma",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2012/06/diag-16-mod.jpg)
+
+DLat ve departure biliniyorsa önce mesafe bulunur, ardından kurs bulunur. Mesafe, dik üçgende Pisagor ile bulunur. Kurs, tanjant bağıntısıyla bulunur.
+
+Mesafe² = DLat² + Departure²  
+Mesafe = √(DLat² + Departure²)
+
+tan θ = Departure ÷ DLat
+
+Burada θ, kuzey–güney eksenine göre sapma açısıdır. Nihai kursu bulmak için DLat ve departure işaretlerinden hangi çeyrekte olunduğu belirlenir.
+
+Çeyrek belirleme mantığı şu şekilde uygulanır:  
+DLat pozitif ve departure pozitif ise kurs 0°–90° arasındadır.  
+DLat pozitif ve departure negatif ise kurs 270°–360° arasındadır.  
+DLat negatif ve departure pozitif ise kurs 90°–180° arasındadır.  
+DLat negatif ve departure negatif ise kurs 180°–270° arasındadır.
+
+**Örnek Hesaplama**  
+DLat 24′ Kuzey, departure 18 deniz mili Doğu olsun.  
+
+Mesafe = √(24² + 18²)  
+Mesafe = √(576 + 324)  
+Mesafe = √900  
+Mesafe = 30 deniz mili  
+
+tan θ = 18 ÷ 24 = 0.75  
+θ ≈ 36.87°  
+
+DLat kuzey, departure doğu olduğu için kurs 0°–90° aralığındadır.  
+Kurs ≈ 037°`
+      },
+      {
+        title: "Tip 3: Başlangıç ve Varış Mevkilerinden Kurs ve Mesafe Bulma",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+Başlangıç ve varış enlem–boylamları verildiğinde, önce DLat ve DLong bulunur. Ardından departure hesaplanır; son olarak kurs ve mesafe çözülür. Bu tür problem, düzlem seyirde en sık sorulan klasik kurs–mesafe problemidir.
+
+**1) DLat Hesabı**  
+DLat = Varış Enlemi − Başlangıç Enlemi  
+Dakika cinsinden çalışılır. Derece farkı varsa dakikaya çevrilir. Kuzeye gidiyorsa DLat kuzey, güneye gidiyorsa DLat güney kabul edilir.
+
+**2) DLong Hesabı**  
+DLong = Varış Boylamı − Başlangıç Boylamı  
+Dakika boylam cinsinden bulunur. Doğuya gidiyorsa DLong doğu, batıya gidiyorsa DLong batı kabul edilir.
+
+**3) Departure Hesabı**  
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2  
+Departure = DLong × cos Orta Enlem
+
+**4) Kurs Hesabı**  
+tan θ = Departure ÷ DLat  
+Çeyrek, DLat ve departure yönlerine göre belirlenir.
+
+**5) Mesafe Hesabı**  
+Mesafe = √(DLat² + Departure²)
+
+**Örnek Hesaplama**  
+Başlangıç mevkii: 36° 10.0′ N, 029° 20.0′ E  
+Varış mevkii: 36° 28.0′ N, 029° 50.0′ E  
+
+DLat = 36° 28.0′ − 36° 10.0′ = 18.0′ Kuzey  
+DLong = 029° 50.0′ − 029° 20.0′ = 30.0′ Doğu  
+
+Orta Enlem = (36° 10.0′ + 36° 28.0′) ÷ 2  
+Orta Enlem = 36° 19.0′  
+cos 36° 19′ ≈ 0.806  
+
+Departure = 30.0 × 0.806 = 24.18 deniz mili Doğu  
+
+tan θ = 24.18 ÷ 18.0 = 1.343  
+θ ≈ 53.4°  
+
+DLat kuzey, departure doğu olduğu için kurs 0°–90° aralığındadır.  
+Kurs ≈ 053°  
+
+Mesafe = √(18.0² + 24.18²)  
+Mesafe ≈ 30.1 deniz mili`
+      },
+      {
+        title: "Tip 4: Kurs ve Mesafe Verildiğinde Varış Mevkii Bulma",
+        content: `![Image](https://sailingissues.com/vier/double-angle-bow-running-fix-3x.png)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2012/06/diag-16-mod.jpg?w=584)
+
+Bu tür problem, ölü hesap mevkii ilerletmenin düzlem seyir versiyonudur. Kurs ve mesafe ile önce DLat ve departure bulunur; DLat ile varış enlemi, departure ile varış boylamı hesaplanır.
+
+DLat = Mesafe × cos Kurs  
+Departure = Mesafe × sin Kurs  
+Varış Enlemi = Başlangıç Enlemi + DLat  
+
+Boylam için önce DLong bulunur:  
+DLong = Departure ÷ cos Orta Enlem  
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2  
+Varış Boylamı = Başlangıç Boylamı + DLong
+
+Burada dikkat edilmesi gereken nokta, varış enlemi bilinmeden orta enlemin kesinleşmemesidir. Düzlem seyirde pratik yöntem şu sırayla ilerler: önce DLat bulunur ve varış enlemi yazılır; sonra orta enlem bulunur; sonra DLong hesaplanır; en son varış boylamı yazılır.
+
+**Örnek Hesaplama**  
+Başlangıç: 35° 40.0′ N, 026° 10.0′ E  
+Kurs: 070°  
+Mesafe: 60 deniz mili  
+
+cos 70° ≈ 0.342  
+sin 70° ≈ 0.940  
+
+DLat = 60 × 0.342 = 20.52′ Kuzey  
+Departure = 60 × 0.940 = 56.40 deniz mili Doğu  
+
+Varış enlemi = 35° 40.0′ + 20.52′  
+Varış enlemi = 36° 00.52′ N  
+
+Orta Enlem = (35° 40.0′ + 36° 00.52′) ÷ 2  
+Orta Enlem ≈ 35° 50.26′  
+cos 35° 50′ ≈ 0.810  
+
+DLong = 56.40 ÷ 0.810 = 69.6′ Doğu  
+69.6′ = 1° 09.6′  
+
+Varış boylamı = 026° 10.0′ + 69.6′  
+Varış boylamı = 027° 19.6′ E`
+      },
+      {
+        title: "Kurs Hesabında Çeyrek Hatasını Sıfırlayan Uygulama",
+        content: `![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_5.jpg)
+
+Tan θ bağıntısı yalnız açının büyüklüğünü verir; hangi yönde olduğuna DLat ve departure karar verir. Bu yüzden kurs çözümünde önce DLat’in kuzey mi güney mi olduğu, departure’ın doğu mu batı mı olduğu netleştirilir. Ardından bulunan açı uygun çeyreğe yerleştirilir. Bu disiplin uygulanmadan yapılan kurs hesapları, sayısal olarak doğru açı üretse bile 180° hatayla yanlış yöne yerleşebilir.`
+      }
+    ],
+    keyPoints: [
+      "Düzlem seyir üçgeninde hipotenüs mesafe, dik kenarlar DLat ve departure’dır",
+      "DLat kuzeye (+), güneye (−); departure doğuya (+), batıya (−) kabul edilir",
+      "Mesafe = √(DLat² + Departure²) ve tan θ = Departure ÷ DLat bağıntıları temel çözüm adımlarıdır",
+      "Orta enlem, DLong–departure dönüşümünün anahtar varsayımıdır",
+      "Çeyrek disiplini uygulanmadan kurs sonuçları 180° hata üretebilir"
+    ]
+  },
   "Enlem ve boylam değişimi": {
     title: "Enlem ve Boylam Değişimi",
     introduction: "Enlem ve boylam değişimi, düzlem seyirde bir geminin bir mevkiden diğerine geçişini koordinat sistemi içinde nicel olarak ifade eden temel hesap grubudur. Enlem değişimi (DLat) kuzey–güney bileşenini verir. Boylam değişimi (DLong) ise doğu–batı bileşenini koordinat düzeyinde verir; ancak DLong, enlem gibi sabit bir uzunluk birimine sahip olmadığı için doğrudan deniz mili sayılmaz. Bu nedenle düzlem seyirde boylam değişimi, departure ile ve orta enlem mantığıyla ilişkilendirilir.",
