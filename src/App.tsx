@@ -134,7 +134,7 @@ import MaritimeNews from "./pages/MaritimeNews";
 import ModuleSectionsPage from "./pages/ModuleSectionsPage";
 import CrewRoleDetailPage from "./pages/CrewRoleDetail";
 import LessonTopicsPage from "./pages/LessonTopicsPage";
-
+import LessonTopicDetailPage from "./pages/LessonTopicDetailPage";
 
 import StabilityTopicsPage from "./pages/StabilityTopicsPage";
 import type { CategoryId } from "@/data/calculationCenterConfig";
@@ -162,7 +162,7 @@ const AnimatedRoutes = () => {
         
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
-        
+        <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />
         <Route path="/machinery" element={<PageTransition><MachineryHubPage /></PageTransition>} />
