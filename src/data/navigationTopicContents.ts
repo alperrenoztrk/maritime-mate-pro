@@ -673,6 +673,70 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
       "Departure haritada doğrudan okunmaz; boylam değişimi hesaplarında kullanılır."
     ]
   },
+  "Düzlem seyirin sınırları": {
+    title: "Düzlem Seyirin Sınırları",
+    introduction:
+      "Düzlem seyir, dünyanın şeklinin kısa mesafelerde düz kabul edilebileceği varsayımına dayanır. Bu yaklaşım meridyenleri paralel, boylam dakikalarını sabit kabul eder ve seyir üçgenini düzlemsel geometriyle çözer. Küçük mesafelerde yeterli doğruluk sağlayan bu yöntem, mesafe büyüdükçe ve enlem farkı arttıkça hatalar üretir.",
+    sections: [
+      {
+        title: "Düzlem Seyirin Sınırlarını Belirleyen Temel Etken",
+        content: `Düzlem seyirin sınırlarını belirleyen temel etken, **meridyenlerin kutuplara doğru yakınlaşmasıdır**. Gerçekte boylam dakikasının uzunluğu ekvatordan kutuplara gidildikçe azalır. Düzlem seyirde bu azalma göz ardı edilir. Bu ihmal, özellikle doğu–batı bileşeni büyüdüğünde, hesaplanan departure ile gerçek yatay mesafe arasında fark doğurur.
+
+![Plane sailing diyagramı](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Düzlem seyir şeması](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Seyir üçgeni görselleştirmesi](https://i0.wp.com/mathscinotes.com/wp-content/uploads/2017/12/GoodIllustration.png?ssl=1)`
+      },
+      {
+        title: "Boylam Dakikasının Fiziksel Gerçeği",
+        content: `Enlem dakikası her yerde yaklaşık olarak 1 deniz milidir. Buna karşılık boylam dakikasının uzunluğu sabit değildir ve bulunduğu enleme bağlıdır. Boylam dakikasının gerçek uzunluğu, ilgili enlemin kosinüsü ile orantılıdır. Düzlem seyir, bu gerçeği yok sayar ve her boylam dakikasını ekvatordaki uzunlukta kabul eder. Bu nedenle doğu–batı yönlü mesafe arttıkça hata büyür.
+
+Bu fiziksel gerçek, düzlem seyirin **neden sınırlı bir yöntem** olduğunu açıklar ve orta enlem seyri yaklaşımının ortaya çıkış gerekçesini oluşturur.
+
+![Enlem-boylam ilişkisi](https://www.thoughtco.com/thmb/rm9dvAnkcx11DANofgETkHViXt8%3D/1500x0/filters%3Ano_upscale%28%29%3Amax_bytes%28150000%29%3Astrip_icc%28%29/Latitude-and-Longitude-58b9d1f35f9b58af5ca889f1.jpg)
+
+![Meridyen yakınsaması](https://webapps-cdn.esri.com/CDN/support-site/technical-articles-images/000020700/00N39000003LL2C-0EMf2000000Fx1g.png)`
+      },
+      {
+        title: "Hatanın Mesafeyle Artışı",
+        content: `Düzlem seyirde oluşan hata, seyredilen mesafe ile doğrusal değildir; doğu–batı bileşeni arttıkça hızlanarak büyür. Kısa mesafelerde ihmal edilebilir olan fark, orta mesafelerde birkaç deniz miline ulaşabilir. Bu durum, özellikle kıyı seyri ve dar sularda kabul edilemez sonuçlar doğurur.
+
+Bu nedenle düzlem seyir, genellikle **yaklaşık 60 deniz miline kadar** olan seyirlerde tercih edilir. Mesafe büyüdüğünde, boylam değişiminin enleme bağlı olarak düzeltilmesi gerekir. Bu noktada orta enlem seyri devreye girer.
+
+![Düzlem seyir örneği](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Hata artışı grafiği](https://static.cambridge.org/binary/version/id/urn%3Acambridge.org%3Aid%3Abinary%3A20250412114813471-0756%3AS0373463324000183%3AS0373463324000183_fig12.png?pub-status=live)`
+      },
+      {
+        title: "Düzlem Seyir ile Orta Enlem Seyri Arasındaki Geçiş Mantığı",
+        content: `Orta enlem seyri, düzlem seyirin geometrisini tamamen terk etmez; yalnızca boylam bileşenini **ortalama enlem** üzerinden düzeltir. Böylece kısa ve orta mesafelerde, karmaşık projeksiyonlara ihtiyaç duymadan daha doğru sonuç elde edilir.
+
+Bu yaklaşım, düzlem seyirin pratikliğini korurken, onun en büyük zayıflığını hedef alır. Düzlem seyirden orta enlem seyrine geçiş, yöntem değişimi değil, **varsayımın rafine edilmesidir**.
+
+![Orta enlem üçgeni](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+![Ortalama enlem diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)`
+      },
+      {
+        title: "Düzlem Seyirin Kullanılabileceği ve Kullanılmaması Gereken Durumlar",
+        content: `Düzlem seyir, kısa rota bacaklarında, enlem değişiminin sınırlı olduğu durumlarda ve yaklaşık hesapların yeterli olduğu seyirlerde kullanılabilir. Uzun doğu–batı bacakları, yüksek enlemler ve hassas mevki tayini gerektiren durumlar ise bu yöntemin sınırlarının dışındadır.
+
+Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller kullanılsa bile **yanlış sonuç** üretir. Orta enlem seyri, bu sınırların farkında olarak geliştirilen bir ara yöntemdir.
+
+![Düzlem seyir görseli](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Mevki tayini örneği](https://sailingissues.com/vier/position-fix-nautical-chart-navigation-3x.png)`
+      }
+    ],
+    keyPoints: [
+      "Düzlem seyir, kısa mesafelerde ve küçük enlem farklarında yeterli doğruluk verir.",
+      "Boylam dakikasının uzunluğu enleme bağlıdır; düzlem seyir bunu sabit varsayar.",
+      "Doğu–batı bileşeni büyüdükçe düzlem seyir hatası hızlanarak artar.",
+      "Yaklaşık 60 deniz milinden sonra orta enlem düzeltmesi gerekir.",
+      "Orta enlem seyri, düzlem seyirin varsayımını rafine eden ara bir yöntemdir."
+    ]
+  },
   "Yön kavramları": {
     title: "Yön Kavramları",
     introduction: "Denizcilikte yön kavramı, geminin hareketinin matematiksel olarak tanımlanmasını ve harita üzerindeki tüm seyir hesaplarının tutarlı biçimde yapılmasını sağlar. Yön, belirli bir kuzey referansına göre ölçülen açısal bir büyüklüktür ve daima saat yönünde, 0° ile 360° arasında ifade edilir. Hakiki, manyetik veya pusula ayrımı yapılmadan kullanılan bir yön değeri, teknik olarak eksik ve uygulamada yanıltıcıdır.",
