@@ -737,6 +737,98 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
       "Orta enlem seyri, düzlem seyirin varsayımını rafine eden ara bir yöntemdir."
     ]
   },
+  "Departure – boylam ilişkisi": {
+    title: "Departure – Boylam İlişkisi",
+    introduction:
+      "Departure ile boylam değişimi arasındaki ilişki, orta enlem seyri yaklaşımının merkezinde yer alır. Bu ilişki, doğu–batı doğrultusunda kat edilen gerçek mesafenin, harita üzerindeki boylam farkına nasıl dönüştürüleceğini tanımlar. Düzlem seyirde boylam dakikasının uzunluğu sabit kabul edilirken, orta enlem seyrinde bu kabul terk edilir ve boylam dakikasının enleme bağlı olarak değiştiği gerçeği hesaba katılır.",
+    sections: [
+      {
+        title: "Departure’ın Tanımı ve Boylam Değişimi",
+        content: `Departure, geminin doğu–batı doğrultusunda kat ettiği **gerçek mesafedir** ve deniz mili cinsindendir. Boylam değişimi ise derece ve dakika cinsinden ifade edilir. Bu iki büyüklük doğrudan eşit değildir; aralarındaki dönüşüm, ilgili enlemin kosinüsü ile kurulur.
+
+![Departure – boylam ilişkisi diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2012/06/diag-16-mod.jpg?w=584)
+
+![Departure – boylam ilişkisi diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Departure – boylam ilişkisi diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2017/08/new-diag-14-blue.jpg)`
+      },
+      {
+        title: "Boylam Dakikasının Geometrik Temeli",
+        content: `Dünya küresel bir şekle sahiptir ve meridyenler kutuplara doğru birbirine yaklaşır. Bu nedenle ekvatorda bir boylam dakikası yaklaşık 1 deniz mili uzunluğundayken, daha yüksek enlemlerde bu uzunluk azalır. Bu azalma, ilgili enlemin kosinüsüyle ifade edilir.
+
+![Boylam dakikası geometrisi](https://astronavigationdemystified.com/wp-content/uploads/2015/10/drawing21.jpg)
+
+![Meridyen yakınsaması](https://www.degruyterbrill.com/document/doi/10.1515/jag-2018-0021/asset/graphic/j_jag-2018-0021_fig_002.jpg)`,
+        formula: {
+          text: "1′ boylam = cos Enlem deniz mili",
+          description: "Boylam dakikasının uzunluğu enleme bağlıdır; enlem arttıkça cos değerinin azalması nedeniyle boylam dakikası kısalır."
+        }
+      },
+      {
+        title: "Orta Enlem Üzerinden Kurulan Bağıntı",
+        content: `Orta enlem seyrinde, seyir boyunca değişen enlem değeri tek bir temsilî değerle ifade edilir. Bu değer, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Boylam değişimi hesaplanırken, boylam dakikasının uzunluğu bu **ortalama enleme** göre değerlendirilir.
+
+![Orta enlem diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Orta enlem üçgeni](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image034.jpg)`,
+        formula: {
+          text: "Departure = DLong × cos Ortalama Enlem",
+          description: "Departure deniz mili, DLong dakika cinsindedir. Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır."
+        }
+      },
+      {
+        title: "Boylam Değişiminin Departure’dan Hesaplanması",
+        content: `Bazı seyir problemlerinde departure bilinir, boylam değişimi istenir. Bu durumda bağıntı ters çevrilir ve boylam farkı hesaplanır.
+
+![Departure’dan boylam hesabı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Boylam değişimi görseli](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.2.1_fig_4.jpg)`,
+        formula: {
+          text: "DLong = Departure ÷ cos Ortalama Enlem",
+          description: "Departure deniz mili cinsindedir; sonuç dakika cinsinden boylam değişimidir (Doğu/Batı işareti ayrıca verilir)."
+        }
+      },
+      {
+        title: "Sayısal Uygulama: Departure’dan Boylam Değişimi",
+        content: `Başlangıç enlemi 35° 20.0′ N, varış enlemi 36° 00.0′ N olsun. Seyir boyunca hesaplanan departure 48 deniz mili doğu yönlüdür.
+
+Önce ortalama enlem bulunur:
+
+Ortalama Enlem = (35° 20.0′ + 36° 00.0′) ÷ 2  
+Ortalama Enlem = 35° 40.0′ N
+
+cos 35° 40′ ≈ 0.812
+
+Boylam değişimi hesaplanır:
+
+DLong = 48 ÷ 0.812  
+DLong ≈ 59.1′ Doğu
+
+Bu sonuç, geminin başlangıç boylamından yaklaşık 59.1 dakika doğuya kaydığını ifade eder. Dakika cinsinden bulunan bu değer, gerektiğinde derece–dakika formatına çevrilerek varış boylamı hesaplarında kullanılır.
+
+![Sayısal uygulama görseli](https://imgv2-1-f.scribdassets.com/img/document/771493460/original/10f03d0b96/1?v=1)
+
+![Boylam görselleştirmesi](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)`
+      },
+      {
+        title: "İşaret Disiplini ve Yön Mantığı",
+        content: `Departure ile boylam değişimi arasındaki hesaplamalarda işaret disiplini belirleyicidir. Doğu yönlü hareketlerde departure ve DLong doğu kabul edilir, batı yönlü hareketlerde batı kabul edilir. Matematiksel işlem mutlak değerlerle yapılır; yön bilgisi, hesaplamadan sonra uygulanır.
+
+Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olarak yanlış sonuçlar elde edilir. Departure–boylam ilişkisi, bu nedenle yalnızca bir formül değil, **yön bilinciyle birlikte uygulanan bir seyir kuralıdır**.
+
+![Boylam yön görselleştirmesi](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+![Yön ve işaret mantığı](https://www.clubmarine.com.au/explore-boating/articles/boating-navigational-markers/_jcr_content/root/parsys/wrapper_copy/wrapper/wrapper/wrapper/image.img.82.3360.png/1699935040950/navigation-map.png)`
+      }
+    ],
+    keyPoints: [
+      "Departure, doğu–batı doğrultusunda kat edilen gerçek mesafedir ve deniz mili cinsindendir.",
+      "Boylam dakikasının uzunluğu enleme bağlıdır: 1′ boylam = cos enlem deniz mili.",
+      "Orta enlem seyrinde boylam değişimi, ortalama enleme göre hesaplanır.",
+      "Departure = DLong × cos Ortalama Enlem bağıntısı temel ilişkidir.",
+      "Doğu–batı işaret disiplini, hesaplamanın doğru yorumlanması için zorunludur."
+    ]
+  },
   "Yön kavramları": {
     title: "Yön Kavramları",
     introduction: "Denizcilikte yön kavramı, geminin hareketinin matematiksel olarak tanımlanmasını ve harita üzerindeki tüm seyir hesaplarının tutarlı biçimde yapılmasını sağlar. Yön, belirli bir kuzey referansına göre ölçülen açısal bir büyüklüktür ve daima saat yönünde, 0° ile 360° arasında ifade edilir. Hakiki, manyetik veya pusula ayrımı yapılmadan kullanılan bir yön değeri, teknik olarak eksik ve uygulamada yanıltıcıdır.",
