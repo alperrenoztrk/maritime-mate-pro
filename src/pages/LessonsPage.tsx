@@ -53,8 +53,6 @@ export default function LessonsPage() {
           <div className="flex justify-center">
             <Link
               to="/calculations"
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -112,8 +110,6 @@ export default function LessonsPage() {
                             {/* Konu Anlatımı Butonu */}
                             <Link
                               to={`/lessons/${category.id}/topics`}
-                              target="_blank"
-                              rel="noopener noreferrer"
                               className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
                             >
                               <div
@@ -131,8 +127,6 @@ export default function LessonsPage() {
                                 <Link
                                   key={`${category.id}-${section.id}`}
                                   to={section.href || "#"}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
                                   className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
                                 >
                                   <div
