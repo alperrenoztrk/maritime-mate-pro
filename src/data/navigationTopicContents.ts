@@ -1618,5 +1618,160 @@ Harita datum’u ile elektronik sistem datum’u aynı olmalıdır. Aksi hâlde 
       "Kerteriz kesişimi ve mesafe-kerteriz kombinasyonu klasik kesin mevki yöntemleridir",
       "Elektronik mevki mutlaka datum uyumu ve saha doğrulamasıyla kontrol edilmelidir"
     ]
+  },
+  "Enlem ve boylam değişimi": {
+    title: "Enlem ve Boylam Değişimi",
+    introduction: "Enlem ve boylam değişimi, düzlem seyirde bir geminin bir mevkiden diğerine geçişini koordinat sistemi içinde nicel olarak ifade eden temel hesap grubudur. Enlem değişimi (DLat) kuzey–güney bileşenini verir. Boylam değişimi (DLong) ise doğu–batı bileşenini koordinat düzeyinde verir; ancak DLong, enlem gibi sabit bir uzunluk birimine sahip olmadığı için doğrudan deniz mili sayılmaz. Bu nedenle düzlem seyirde boylam değişimi, departure ile ve orta enlem mantığıyla ilişkilendirilir.",
+    sections: [
+      {
+        title: "Genel Bakış",
+        content: `![Enlem ve boylam diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Enlem ve boylam açıklaması](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+Enlem değişimi ve boylam değişimi, düzlem seyirde hareketi iki bileşene ayırır. Bu iki bileşen, daha sonra kurs–mesafe hesaplarının temelini oluşturur.`
+      },
+      {
+        title: "DLat: Enlem Değişiminin Hesabı",
+        content: `![DLat şeması](https://astronavigationdemystified.com/wp-content/uploads/2012/06/diag15-mod.jpg)
+
+![Enlem-bileşen görseli](https://www.thoughtco.com/thmb/rm9dvAnkcx11DANofgETkHViXt8%3D/1500x0/filters%3Ano_upscale%28%29%3Amax_bytes%28150000%29%3Astrip_icc%28%29/Latitude-and-Longitude-58b9d1f35f9b58af5ca889f1.jpg)
+
+DLat, varış enlemi ile başlangıç enlemi arasındaki farktır ve dakika cinsinden alınır. Kuzeye gidiliyorsa DLat kuzey yönlü, güneye gidiliyorsa DLat güney yönlü kabul edilir. Derece farkı varsa dakikaya çevrilir; çünkü düzlem seyirde 1 dakika enlem = 1 deniz mili eşleştirmesi doğrudan kullanılır.`,
+        formula: {
+          text: "DLat = Varış Enlemi − Başlangıç Enlemi",
+          description: "Kuzeye gidiliyorsa DLat (+) kuzey; güneye gidiliyorsa DLat (−) güney kabul edilir."
+        }
+      },
+      {
+        title: "Örnek – DLat",
+        content: `Başlangıç: 36° 10.0′ N  
+Varış: 36° 34.0′ N
+
+DLat = 36° 34.0′ − 36° 10.0′ = 24.0′ Kuzey`
+      },
+      {
+        title: "DLong: Boylam Değişiminin Hesabı",
+        content: `![DLong hesap şeması](https://www.researchgate.net/publication/259912499/figure/fig9/AS%3A297134860587011%401447853879125/Mercator-Calculation-of-Difference-in-Longitude.png)
+
+![Boylam bileşeni görseli](https://geoinfo.sdsu.edu/hightech/LM3/Media/latitude.jpg)
+
+DLong, varış boylamı ile başlangıç boylamı arasındaki farktır ve dakika cinsinden alınır. Doğuya gidiliyorsa DLong doğu yönlü, batıya gidiliyorsa DLong batı yönlü kabul edilir. Boylam dakika farkı, enlem dakikası gibi sabit bir deniz mili değeri değildir; bu nedenle DLong tek başına “kaç mil gidildi” sorusunu cevaplamaz.`,
+        formula: {
+          text: "DLong = Varış Boylamı − Başlangıç Boylamı",
+          description: "DLong doğu yönlü (E) veya batı yönlü (W) olarak işaretlenir."
+        }
+      },
+      {
+        title: "Örnek – DLong",
+        content: `Başlangıç: 029° 20.0′ E  
+Varış: 030° 05.0′ E
+
+DLong = 030° 05.0′ − 029° 20.0′ = 45.0′ Doğu`
+      },
+      {
+        title: "Departure ile DLong Arasındaki İlişki",
+        content: `![Departure ve DLong ilişkisi](https://engineeringtraining.tpub.com/14070/img/14070_129_8.jpg)
+
+![Boylam-departure diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+Departure, doğu–batı doğrultusunda kat edilen gerçek mesafedir ve deniz mili cinsindendir. DLong ise boylam dakikasıdır. Boylam dakikasının gerçek uzunluğu enleme bağlıdır. Düzlem seyirde bu bağıntı orta enlem üzerinden kurulur.`,
+        formula: {
+          text: "Departure = DLong × cos(Orta Enlem)",
+          description: "DLong dakika cinsinden alınır; sonuç deniz mili çıkar."
+        }
+      },
+      {
+        title: "Orta Enlem",
+        content: `![Orta enlem diyagramı](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+![Orta enlem örneği](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+Orta enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır. Orta enlem, DLong’un gerçek yatay mesafeye dönüştürülmesinde kullanılan pratik referanstır.`,
+        formula: {
+          text: "Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2",
+          description: "Orta enlem derece cinsinden alınır; cos değeri bu enlemden hesaplanır."
+        }
+      },
+      {
+        title: "DLong Hesabını Departure Üzerinden Kurma",
+        content: `![DLong dönüşümü](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Orta enlem kullanım örneği](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+Bazı problemlerde departure bilinir, DLong istenir. Bu durumda bağıntı ters çevrilir.`,
+        formula: {
+          text: "DLong = Departure ÷ cos(Orta Enlem)",
+          description: "Departure deniz mili, cos orta enlem boyutsuz, sonuç dakika cinsinden DLong’dur."
+        }
+      },
+      {
+        title: "Klasik Problem: İki Mevkiden Kurs ve Mesafe Öncesi DLat–DLong Çıkarma",
+        content: `![Klasik düzlem seyir örneği](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
+
+![Koordinat üzerinde ölçüm](https://sailingissues.com/chart-symbols/coordinates-dividers-nautical-chart-3x.png)
+
+Başlangıç ve varış mevkileri verildiğinde işlem sırası disiplinlidir. Önce DLat ve DLong bulunur. Ardından orta enlem hesaplanır. Sonrasında DLong yardımıyla departure elde edilir. Bu departure, kurs–mesafe hesaplarında kullanılır.
+
+**Örnek (tam işlem)**  
+Başlangıç: 36° 10.0′ N, 029° 20.0′ E  
+Varış: 36° 34.0′ N, 030° 05.0′ E  
+
+DLat = 36° 34.0′ − 36° 10.0′ = 24.0′ Kuzey  
+DLong = 030° 05.0′ − 029° 20.0′ = 45.0′ Doğu  
+
+Orta Enlem = (36° 10.0′ + 36° 34.0′) ÷ 2 = 36° 22.0′  
+cos 36° 22′ ≈ 0.806  
+Departure = 45.0 × 0.806 = 36.3 deniz mili Doğu`
+      },
+      {
+        title: "İleri Problem: Kurs ve Mesafe ile Varış Boylamını Bulma",
+        content: `![Kurs ve mesafe örneği](https://cdn.morganscloud.com/wp-content/uploads/2021/10/13122925/No-Wind-docking-Right-scaled.jpg?strip=all)
+
+![Mevki tahmini örneği](https://www.nomadsailing.co.uk/images/easyblog_articles/23/b2ap3_large_Estimated-Position.JPG)
+
+Kurs ve mesafe verildiğinde önce DLat ve departure bulunur; sonra varış enlemi, ardından orta enlem ve DLong, en son varış boylamı hesaplanır.
+
+DLat = Mesafe × cos Kurs  
+Departure = Mesafe × sin Kurs  
+Varış Enlemi = Başlangıç Enlemi + DLat  
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2  
+DLong = Departure ÷ cos Orta Enlem  
+Varış Boylamı = Başlangıç Boylamı + DLong  
+
+**Örnek (tam işlem)**  
+Başlangıç: 35° 40.0′ N, 026° 10.0′ E  
+Kurs: 070°  
+Mesafe: 60 deniz mili  
+
+cos 70° ≈ 0.342  
+sin 70° ≈ 0.940  
+
+DLat = 60 × 0.342 = 20.52′ Kuzey  
+Departure = 60 × 0.940 = 56.40 deniz mili Doğu  
+
+Varış Enlemi = 35° 40.0′ + 20.52′ = 36° 00.52′ N  
+Orta Enlem = (35° 40.0′ + 36° 00.52′) ÷ 2 = 35° 50.26′  
+cos 35° 50′ ≈ 0.810  
+DLong = 56.40 ÷ 0.810 = 69.6′ Doğu  
+69.6′ = 1° 09.6′  
+Varış Boylamı = 026° 10.0′ + 1° 09.6′ = 027° 19.6′ E`
+      },
+      {
+        title: "İşaret ve Çeyrek Disiplini",
+        content: `![İşaret disiplini](https://qph.cf2.quoracdn.net/main-qimg-9199a21a8fb385d50574b1252d72a5e6)
+
+![Enlem-boylam işaretleri](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+DLat ve DLong’un kuzey–güney, doğu–batı yönleri netleştirilmeden yapılan hesaplar, doğru sayıları üretse bile yanlış yönde sonuç verir. Bu nedenle her işlemde önce yön belirlenir, sonra fark alınır, sonra trigonometrik veya orta enlem dönüşümü uygulanır.`
+      }
+    ],
+    keyPoints: [
+      "DLat, enlem farkıdır ve 1′ enlem = 1 deniz mili kabul edilir",
+      "DLong, boylam farkıdır; mesafeye dönüşümü enleme bağlıdır",
+      "Departure = DLong × cos(Orta Enlem) düzlem seyirde temel bağıntıdır",
+      "Orta enlem, boylamı yatay mesafeye çevirmede pratik referanstır",
+      "İşaret disiplini (N/S, E/W) sonuçların doğru yönlü olmasını sağlar"
+    ]
   }
 };
