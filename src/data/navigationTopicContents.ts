@@ -2151,5 +2151,74 @@ DLat ve DLong’un kuzey–güney, doğu–batı yönleri netleştirilmeden yap�
       "Orta enlem, boylamı yatay mesafeye çevirmede pratik referanstır",
       "İşaret disiplini (N/S, E/W) sonuçların doğru yönlü olmasını sağlar"
     ]
+  },
+  "Ortalama enlem kavramı": {
+    title: "Ortalama Enlem Kavramı",
+    introduction:
+      "Ortalama enlem, orta mesafeli seyirlerde boylam değişiminin gerçek yatay mesafeye dönüştürülmesinde kullanılan referans enlemdir. Bu kavram, düzlem seyirde yapılan en temel varsayımı kısmen düzelterek, boylam dakikasının enleme bağlı değişimini hesaba katar. Amaç, karmaşık projeksiyon hesaplarına girmeden, pratik ve yeterli doğrulukta bir çözüm elde etmektir.",
+    sections: [
+      {
+        title: "Ortalama Enlem Kavramı",
+        content: `![Orta enlem diyagramı](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+![Boylam ve enlem görseli](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+![Orta enlem seyir örneği](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+Ortalama enlem, başlangıç ve varış enlemlerinin **aritmetik ortalaması** olarak tanımlanır. Bu enlem, seyir boyunca geminin bulunduğu enlemi tek bir değerle temsil eder. Orta enlem seyri yaklaşımında, doğu–batı yönlü mesafeler bu enlemdeki boylam dakikasının uzunluğuna göre değerlendirilir.`
+      },
+      {
+        title: "Fiziksel Dayanak: Boylam Dakikasının Enleme Bağlılığı",
+        content: `![Boylam dakikası şeması](https://astronavigationdemystified.com/wp-content/uploads/2017/08/new-diag-14-blue.jpg)
+
+![Enlem-boylam geometrisi](https://www.themathdoctors.org/wp-content/uploads/2021/03/ADM51722-coordinates.png)
+
+Dünya üzerinde enlem dakikası her yerde yaklaşık olarak 1 deniz milidir. Buna karşılık boylam dakikasının uzunluğu ekvatordan kutuplara doğru azalır. Bu azalma, ilgili enlemin kosinüsü ile ifade edilir. Ortalama enlem kavramı, seyir boyunca değişen bu uzunluğu tek bir sabit değerle temsil etmeyi hedefler.
+
+Bu yaklaşımda, seyir boyunca boylam dakikasının uzunluğu sabit kabul edilir; ancak bu sabit değer, ekvatora değil, **seyir hattının ortalama enlemine** bağlanır. Böylece düzlem seyirdeki temel hata kaynağı azaltılır.`
+      },
+      {
+        title: "Ortalama Enlemin Hesaplanması",
+        content: `![Ortalama enlem hesabı](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_3.jpg)
+
+![Ortalama enlem diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+Ortalama enlem, başlangıç ve varış enlemlerinin ortalaması alınarak bulunur.
+
+Ortalama Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2
+
+Enlemler derece ve dakika cinsinden ifade ediliyorsa, işlem aynı birimler içinde yapılır. Kuzey ve güney yönleri işaret disiplinine uygun olarak değerlendirilir.
+
+**Örnek**
+
+Başlangıç enlemi: 35° 20.0′ N  
+Varış enlemi: 36° 00.0′ N
+
+Ortalama Enlem = (35° 20.0′ + 36° 00.0′) ÷ 2  
+Ortalama Enlem = 35° 40.0′ N
+
+Bu değer, boylam bileşenine uygulanacak kosinüs katsayısının alınacağı enlemdir.`
+      },
+      {
+        title: "Ortalama Enlemin Seyir Hesaplarına Etkisi",
+        content: `![Seyir üçgeni](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Departure örneği](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.2.1_fig_4.jpg)
+
+Orta enlem seyri yaklaşımında, doğu–batı yönlü mesafe olan departure ile boylam değişimi arasındaki ilişki, ortalama enlem üzerinden kurulur. Boylam dakikasının uzunluğu, cos Ortalama Enlem ile ölçeklenir. Böylece boylam farkı gerçek yatay mesafeye daha yakın bir değere dönüştürülür.
+
+Bu yaklaşım, düzlem seyirde kullanılan geometrik üçgeni korur; yalnızca doğu–batı bileşeninin fiziksel karşılığını daha doğru tanımlar. Enlem bileşeni olan DLat, her yerde aynı uzunlukta kabul edildiği için bu düzeltmeden etkilenmez.`
+      },
+      {
+        title: "Ortalama Enlemin Geçerli Olduğu Mesafe Aralığı",
+        content: `![Orta enlem diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Düzlem koordinatlar](https://www.e-education.psu.edu/geog862/sites/www.e-education.psu.edu.geog862/files/images/Lesson06/Plane%20Coordinates.png)
+
+Orta enlem kavramı, kısa ve orta mesafeli seyirler için geliştirilmiştir. Enlem değişiminin aşırı büyük olmadığı, rota bacaklarının yüzlerce deniz miline ulaşmadığı durumlarda yeterli doğruluk sağlar. Enlem değişimi büyüdükçe veya seyir yüksek enlemlere yaklaştıkça, tek bir ortalama enlemle temsil etme varsayımı zayıflar.
+
+Bu noktada daha gelişmiş projeksiyon tabanlı yöntemlere geçilmesi gerekir. Ortalama enlem, bu yöntemlere geçişten önce kullanılan pratik bir ara çözümdür.`
+      }
+    ]
   }
 };

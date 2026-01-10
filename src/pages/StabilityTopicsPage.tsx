@@ -860,6 +860,8 @@ export default function StabilityTopicsPage() {
               <Link
                 key={index}
                 to={resource.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
               >
                 <div className="flex items-center gap-2">
@@ -885,6 +887,8 @@ export default function StabilityTopicsPage() {
         <div className="flex justify-center pt-2">
           <Link
             to="/lessons"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
           >
             <BookOpen className="h-4 w-4" />
