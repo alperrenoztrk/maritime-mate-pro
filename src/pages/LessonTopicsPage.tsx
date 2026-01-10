@@ -64,7 +64,7 @@ const topicsData: Record<string, TopicContent> = {
         subTopics: [
           { title: "Deniz haritasının yapısı", hasContent: true },
           { title: "Harita ölçeği", hasContent: true },
-          { title: "Mercator projeksiyonu" },
+          { title: "Mercator projeksiyonu", hasContent: true },
           { title: "Harita datum" },
           { title: "Harita sembolleri ve kısaltmalar", hasContent: true },
           { title: "Mesafe ölçümü" },

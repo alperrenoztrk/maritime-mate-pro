@@ -1299,6 +1299,94 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       }
     ]
   },
+  "Mercator projeksiyonu": {
+    title: "Mercator Projeksiyon",
+    introduction: "Mercator projeksiyon, deniz haritalarında kullanılan ve seyir hesaplarının temelini oluşturan matematiksel harita projeksiyonudur. Bu projeksiyonun denizcilikte tercih edilmesinin nedeni estetik ya da coğrafi doğruluk değil, **seyirsel doğruluktur**. Mercator projeksiyon, yön ve doğrultu ilişkilerini korur; bu sayede denizcilikte kullanılan rota, kerteriz, mesafe ve mevki işlemleri harita üzerinde **doğrudan ve tutarlı** biçimde yapılabilir.",
+    sections: [
+      {
+        title: "Silindirik Yapı ve Haritaya Aktarım",
+        content: `Mercator projeksiyonda dünya, ekvatora teğet bir silindirin içine yerleştirilmiş gibi düşünülür. Dünya üzerindeki enlem ve boylamlar bu silindire aktarılır ve silindir açılarak düz bir harita hâline getirilir. Bu işlem sonucunda meridyenler birbirine paralel ve eşit aralıklı dikey çizgiler olarak, paraleller ise yatay çizgiler olarak görünür.
+
+![Mercator projeksiyon temel görünüm](https://cdn.britannica.com/55/109155-050-9FE4B08C/simple-cylindrical-projection-earth-map-globe-mercator.jpg)
+
+![Mercator projeksiyon silindir düzleştirme](https://www.math.ubc.ca/~israel/m103/mercator.png)
+
+![Mercator projeksiyon harita örneği](https://sailingissues.com/chart-symbols/mercator-projection-navigation-course-3x.png)`
+      },
+      {
+        title: "Mercator Projeksiyonun Temel Geometrisi",
+        content: `Mercator projeksiyonun en ayırt edici özelliği, **meridyenlerin paralel ve eşit aralıklı**, paralellerin ise enleme gidildikçe **açılarak** çizilmesidir. Ekvatora yakın bölgelerde paraleller birbirine yakındır; kutuplara yaklaştıkça paraleller arasındaki mesafe artar. Bu bilinçli bir bozulmadır ve projeksiyonun matematiksel sonucudur.
+
+Bu yapı sayesinde iki kritik seyir özelliği sağlanır:
+
+Birincisi, **hakiki rota (loxodrome)** harita üzerinde düz çizgi olarak görünür.  
+İkincisi, **enlem skalası mesafeyle doğru orantılıdır**.
+
+Bu iki özellik, Mercator projeksiyonu denizcilik için vazgeçilmez kılar.
+
+![Mercator projeksiyon temel görünüm](https://cdn.britannica.com/55/109155-050-9FE4B08C/simple-cylindrical-projection-earth-map-globe-mercator.jpg)
+
+![Mercator projeksiyon silindir düzleştirme](https://www.math.ubc.ca/~israel/m103/mercator.png)`
+      },
+      {
+        title: "Doğrultu Korunumu ve Loxodrome Mantığı",
+        content: `Mercator projeksiyonda sabit bir hakiki rota ile seyreden bir geminin izi, harita üzerinde **düz bir çizgi** olarak temsil edilir. Bu çizgiye loxodrome denir. Seyirde rota çizimi, rota ölçümü ve rota takibi bu nedenle Mercator haritalarda doğrudan yapılabilir.
+
+Bu özellik, seyir açısından kritiktir. Çünkü denizci köprüüstünde şu varsayımla çalışır:  
+“Harita üzerinde çizdiğim doğrultu, denizde tuttuğum doğrultuyla aynıdır.”
+
+Bu varsayım yalnızca Mercator projeksiyonda geçerlidir. Açı korunumu sayesinde, harita üzerindeki her açı gerçek dünyadaki açıya eşittir. Bu da kerteriz ölçümlerinin ve rota açılarının harita üzerinde doğrudan kullanılabilmesini sağlar.
+
+![Loxodrome ve Mercator ilişkisi](https://gisgeography.com/wp-content/uploads/2016/11/RhumbLine-Loxodrome-Mercator.jpg)
+
+![Mercator'da rhumb line çizimi](https://www.researchgate.net/publication/268872013/figure/fig3/AS%3A392212723585029%401470522208424/The-Mercator-map-projection-The-rhumb-lines-show-as-straight-lines.png)`
+      },
+      {
+        title: "Mesafe Ölçümü ile Mercator Projeksiyon İlişkisi",
+        content: `Mercator projeksiyonda mesafe ölçümü, yalnızca **enlem skalası** üzerinden yapılır. Bunun matematiksel temeli, projeksiyonun enlem doğrultusunda ölçeği bilinçli olarak genişletmesidir. Bu genişleme, enlem skalasını mesafe için güvenilir referans hâline getirir.
+
+Tanım gereği:
+
+1 dakika enlem = 1 deniz mili
+
+Bu nedenle harita üzerindeki iki nokta arasındaki mesafe, divider ile ölçülür ve enlem skalasına taşınarak okunur. Boylam skalası mesafe ölçümünde kullanılmaz; çünkü Mercator projeksiyonda boylam aralıkları sabit uzunluk temsil etmez.
+
+![Mercator projeksiyon mesafe ölçüm görseli](https://i.sstatic.net/Oh0ob.jpg)
+
+![1 dakika enlem = 1 deniz mili görseli](https://easysextant.com/wp-content/uploads/2024/08/definition-mile.jpg.webp)`
+      },
+      {
+        title: "Alan ve Şekil Bozulması",
+        content: `Mercator projeksiyon, yön ve açıları korurken **alanları korumaz**. Enlemler büyüdükçe alanlar harita üzerinde gerçekte olduklarından çok daha büyük görünür. Kutuplara yaklaştıkça bu büyüme sonsuza gider; bu nedenle kutuplar Mercator haritalarda gösterilmez.
+
+Bu bozulma, seyir açısından bir hata değildir; çünkü denizcilikte alan karşılaştırması değil, **yön, mesafe ve doğrultu** esastır. Ancak bu özellik bilinmezse, yüksek enlemlerde harita yorumlanırken sezgisel hatalar yapılabilir.
+
+![Mercator alan bozulması](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Mercator_projection_Square.JPG/1200px-Mercator_projection_Square.JPG)
+
+![Greenland boyut yanılsaması](https://www.geospatialworld.net/wp-content/uploads/2017/05/Greenland_1.jpg)`
+      },
+      {
+        title: "Mercator Projeksiyonun Seyirdeki Sınırları",
+        content: `Mercator projeksiyon, orta ve düşük enlemlerde seyir için idealdir. Ancak yüksek enlemlerde paralellerin aşırı açılması, ölçek bozulmasını büyütür ve harita kullanımı pratik olmaktan çıkar. Bu nedenle kutup bölgelerinde farklı projeksiyonlar tercih edilir.
+
+Bununla birlikte ticari denizciliğin büyük bölümü Mercator projeksiyonlu haritalar üzerinde yürütülür ve klasik seyir öğretisi bu projeksiyon üzerine kuruludur.
+
+![Mercator projeksiyonda kare bozulması](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Mercator_projection_Square.JPG/1200px-Mercator_projection_Square.JPG)
+
+![Mercator projeksiyonda bozulma örneği](https://upload.wikimedia.org/wikipedia/commons/7/73/Mercator_projection_Square.JPG)`
+      },
+      {
+        title: "Mercator Projeksiyonun Seyir Hesaplarına Etkisi",
+        content: `Rota ölçümü, mesafe ölçümü, ölü hesap mevkii ilerletme, kerteriz kesişimi ve harita üzerinden yapılan tüm klasik seyir hesapları Mercator projeksiyon varsayımıyla çalışır. Bu projeksiyon olmadan, harita üzerindeki düz çizgi ile denizde tutulan rota arasında doğrudan bir ilişki kurulamazdı.
+
+Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; **seyir matematiğinin çalıştığı zemin** olarak kabul edilir.
+
+![Mercator projeksiyon seyir kullanımı](https://sailingissues.com/chart-symbols/mercator-projection-navigation-course-3x.png)
+
+![Mercator projeksiyon seyir hesabı görseli](https://sidaerum.com/wp-content/uploads/2023/02/FRM-62_3.png)`
+      }
+    ]
+  },
   "Harita sembolleri ve kısaltmalar": {
     title: "Harita Sembolleri ve Kısaltmalar",
     introduction: "Deniz haritasındaki semboller ve kısaltmalar, nesneleri çizmek için değil, seyir sırasında doğru kararı en kısa sürede verdirmek için kurulmuş standart bir dildir. Harita, gerçek dünyayı fotoğraf gibi çoğaltmaz; emniyetli suyun nerede bulunduğunu, tehlikenin neyi temsil ettiğini, bir hattın nasıl tutulacağını, hangi alanın hukuken veya operasyonel olarak kısıtlı olduğunu tek bakışta çözülecek şekilde kodlar. Bu dilin yükünü en çok taşıyan unsurlar şamandıralar, fenerler ve diğer seyir yardımcılarıdır; çünkü hem mevki doğrulamada hem de emniyetli geçişte doğrudan kullanılırlar.",
