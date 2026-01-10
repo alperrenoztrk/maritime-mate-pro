@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 import { Stability3DSim } from "@/components/stability/Stability3DSim";
@@ -363,7 +363,6 @@ const topicsData: Record<string, TopicContent> = {
 
 export default function LessonTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const navigate = useNavigate();
   const category = calculationCategories.find(c => c.id === categoryId);
   const topicContent = categoryId ? topicsData[categoryId] : null;
   const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
@@ -376,11 +375,8 @@ export default function LessonTopicsPage() {
     );
   };
 
-  const handleSubTopicClick = (subTopicTitle: string) => {
-    if (categoryId) {
-      navigate(`/lessons/${categoryId}/topics/${encodeURIComponent(subTopicTitle)}`);
-    }
-  };
+  const buildSubTopicLink = (subTopicTitle: string) =>
+    categoryId ? `/lessons/${categoryId}/topics/${encodeURIComponent(subTopicTitle)}` : "#";
 
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
@@ -485,22 +481,19 @@ export default function LessonTopicsPage() {
                     {hasSubTopics && isExpanded && (
                       <div className="border-t border-border/40 bg-background/50 p-4">
                         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                          {topic.subTopics!.map((sub, subIndex) => {
-                            const canNavigate = true;
-                            return (
-                              <button
-                                key={subIndex}
-                                onClick={() => canNavigate && handleSubTopicClick(sub.title)}
-                                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-left transition-all ${
-                                  'bg-card/60 hover:bg-primary/10 hover:border-primary/30 border border-transparent cursor-pointer'
-                                }`}
-                              >
-                                <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                                <span className="text-foreground/90 flex-1">{sub.title}</span>
-                                <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
-                              </button>
-                            );
-                          })}
+                          {topic.subTopics!.map((sub, subIndex) => (
+                            <Link
+                              key={subIndex}
+                              to={buildSubTopicLink(sub.title)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 rounded-lg border border-transparent bg-card/60 px-3 py-2 text-left text-sm transition-all hover:border-primary/30 hover:bg-primary/10"
+                            >
+                              <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                              <span className="text-foreground/90 flex-1">{sub.title}</span>
+                              <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
+                            </Link>
+                          ))}
                         </div>
                       </div>
                     )}
@@ -539,6 +532,8 @@ export default function LessonTopicsPage() {
               <Link
                 key={index}
                 to={resource.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
               >
                 <div className="flex items-center gap-2">
@@ -584,6 +579,8 @@ export default function LessonTopicsPage() {
         <div className="flex justify-center pt-2">
           <Link
             to="/lessons"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
           >
             <BookOpen className="h-4 w-4" />
