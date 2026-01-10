@@ -444,6 +444,109 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Göksel seyirde enlem, gök cismi yükseklikleri ile bulunur"
     ]
   },
+  "DLat (Enlem değişimi)": {
+    title: "DLat (Enlem Değişimi)",
+    introduction:
+      "DLat, düzlem seyirde bir geminin başlangıç mevkii ile varış mevkii arasındaki enlem farkını ifade eder. Düzlem seyir varsayımında dünya, kısa mesafeler için düz kabul edilir ve enlem–boylam sistemi Kartezyen bir düzlem gibi ele alınır. Bu yaklaşım, özellikle kıyı seyri, dar su geçişleri ve kısa mesafeli rota hesaplarında yeterli doğruluk sağlar. DLat kavramı, bu varsayım altında yapılan tüm düzlem seyir hesaplarının temel taşlarından biridir.",
+    sections: [
+      {
+        title: "DLat (Enlem Değişimi)",
+        content: `![Image](https://www.endeavour-sailing.co.uk/images/articles/navigation-latitude.jpg)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://www.skippertips.com/members/images/821b.jpg?cb=20250701052844)
+
+Enlem, ekvatora göre kuzey–güney doğrultusundaki konumu tanımlar. Dolayısıyla DLat, geminin seyir boyunca **kuzeye mi yoksa güneye mi ilerlediğini** nicel olarak ifade eder. DLat pozitif veya negatif olabilir; bu işaret, yön bilgisini doğrudan taşır ve hesaplamalarda kritik öneme sahiptir.`
+      },
+      {
+        title: "DLat’in Tanımı ve İşaret Mantığı",
+        content: `![Image](https://s3.us-east-2.amazonaws.com/journeynorth.org/images/graphics/mclass/Lat_Long.gif)
+
+![Image](https://www.geographyrealm.com/wp-content/uploads/2022/07/geographic-coordinates-positive-or-negative-map.png)
+
+DLat, varış enlemi ile başlangıç enlemi arasındaki farktır ve dakika cinsinden ifade edilir.
+
+**DLat = Varış Enlemi − Başlangıç Enlemi**
+
+Enlem farkının işareti, seyir yönüne göre belirlenir.
+Kuzeye doğru seyirde DLat kuzey yönlü kabul edilir ve pozitif alınır.
+Güneye doğru seyirde DLat güney yönlü kabul edilir ve negatif alınır.
+
+Bu işaret mantığı, daha sonra yapılacak departure ve kurs–mesafe hesaplarının doğru çalışması için zorunludur. İşaret hatası, sayısal olarak küçük görünse bile rota geometrisini tamamen tersine çevirebilir.`
+      },
+      {
+        title: "Enlem Değişiminin Doğrudan Hesaplanması",
+        content: `![Image](https://cdn.prod.website-files.com/5f7dda4770392876b985cdb7/67179deb952a632e3ec66b3c_645a2b590c7f63a91eaa72da_lat-long-nautical-charts.webp)
+
+![Image](https://www.skippertips.com/members/images/821b.jpg?cb=20250701052844)
+
+Eğer başlangıç ve varış mevkilerinin enlemleri biliniyorsa, DLat doğrudan fark alınarak hesaplanır.
+
+### Örnek Hesaplama
+
+Başlangıç enlemi: 41° 12.0′ N  
+Varış enlemi: 41° 28.0′ N
+
+DLat = 41° 28.0′ − 41° 12.0′  
+DLat = 16.0′ Kuzey
+
+Bu sonuç, geminin seyir boyunca 16 deniz mili kadar kuzeye ilerlediğini gösterir. Burada derece değil, **dakika** esas alınır; çünkü seyir hesaplarında doğrusal mesafe birimi dakika–deniz mili eşleşmesine dayanır.`
+      },
+      {
+        title: "Mesafe ve Kurs Kullanılarak DLat Hesabı",
+        content: `![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
+
+Düzlem seyirde DLat, doğrudan enlem farkı bilinmiyorsa, mesafe ve kurs kullanılarak hesaplanır. Bu durumda seyir, dik üçgen mantığıyla ele alınır. Hipotenüs, seyredilen mesafeyi; dik kenarlar ise DLat ve departure değerlerini temsil eder.
+
+Bu ilişkide kullanılan temel bağıntı şudur:
+
+**DLat = Mesafe × cos Kurs**
+
+Burada kurs, **hakiki rota** olarak alınır ve trigonometrik hesaplarda cos değeri kullanılır. Mesafe deniz mili cinsindendir, sonuç dakika olarak elde edilir.
+
+### Örnek Hesaplama
+
+Seyredilen mesafe: 30 deniz mili  
+Hakiki rota: 030°
+
+cos 030° ≈ 0.866
+
+DLat = 30 × 0.866  
+DLat ≈ 26.0′ Kuzey
+
+Bu sonuç, geminin 30 deniz millik seyir boyunca yaklaşık 26 deniz mili kuzeye ilerlediğini gösterir. Kalan yatay bileşen departure olarak değerlendirilir.`
+      },
+      {
+        title: "DLat’in Harita Üzerinde Gösterimi",
+        content: `![Image](https://www.skippertips.com/members/images/821b.jpg?cb=20250701052844)
+
+![Image](https://wordpress.mrreid.org/wp-content/uploads/2014/10/day-length1.png)
+
+DLat, harita üzerinde doğrudan enlem çizgileri kullanılarak gösterilir. Başlangıç mevkiinden itibaren yalnızca kuzey–güney doğrultusunda bir hareket söz konusudur. Bu nedenle DLat çizimi, boylamdan bağımsızdır ve yalnızca paraleller arasındaki mesafeye dayanır.
+
+Harita üzerinde DLat, çoğu zaman ölü hesap mevkii ilerletme sırasında kullanılır. Başlangıç mevkiinden itibaren önce DLat kadar kuzey veya güneye çıkılır, ardından departure uygulanır. Bu sıralama, düzlem seyir geometrisinin harita üzerindeki karşılığıdır.`
+      },
+      {
+        title: "DLat’in Düzlem Seyirdeki Rolü",
+        content: `![Image](https://cdn.britannica.com/41/2941-004-E9AB5656/triangle-course-aicraft-vector-compass-heading-aircraft.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+DLat, tek başına bir seyir çözümü değildir; ancak düzlem seyirde kullanılan tüm hesapların temel bileşenidir. Enlem değişimi bilinmeden, departure hesaplanamaz; departure bilinmeden de kurs veya mesafe güvenilir şekilde çözülemez. Bu nedenle DLat, düzlem seyir üçgeninin dikey bileşeni olarak kabul edilir.
+
+Düzlem seyir varsayımı kısa mesafeler için geçerli olduğu sürece, DLat hesapları yüksek doğruluk sağlar. Mesafe büyüdükçe veya enlem arttıkça bu varsayımın sınırları zorlanır ve daha gelişmiş seyir yöntemlerine geçilir. Ancak klasik denizcilik eğitiminde, düzlem seyri anlamanın anahtarı DLat kavramını doğru kurmaktan geçer.`
+      }
+    ],
+    keyPoints: [
+      "DLat, varış enlemi ile başlangıç enlemi farkıdır ve dakika (′) cinsindendir",
+      "Kuzeye seyirde DLat pozitif, güneye seyirde negatiftir",
+      "DLat = Mesafe × cos(Kurs) düzlem seyirde temel bağıntıdır",
+      "DLat, harita üzerinde paraleller arasındaki kuzey–güney mesafeyi temsil eder"
+    ]
+  },
   "Boylam": {
     title: "Boylam (Longitude)",
     introduction: "Boylam, seyirde doğu–batı konumunu belirleyen temel koordinattır. Enlem geminin kuzey–güney yerini söylerken, boylam geminin Greenwich'e göre nerede olduğunu ifade eder. Zaman, kronometre, göksel seyir ve elektronik mevki tayini boylam kavramı üzerine inşa edilmiştir. Bu nedenle boylam, seyirde en hassas ve hata affetmeyen konulardan biridir.",
