@@ -574,6 +574,105 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Göksel seyirde boylam, zaman gözlemi ile bulunur"
     ]
   },
+  "Departure (Doğu–batı mesafesi)": {
+    title: "Departure (Doğu–Batı Mesafesi)",
+    introduction:
+      "Departure, düzlem seyirde geminin başlangıç mevkii ile varış mevkii arasında doğu–batı doğrultusunda kat ettiği mesafeyi ifade eder. Enlem değişimi olan DLat kuzey–güney bileşenini temsil ederken, departure aynı hareketin doğu–batı bileşenidir. Düzlem seyir varsayımında bu iki bileşen, geminin seyir mesafesini oluşturan dik üçgenin dik kenarları olarak ele alınır. Bu nedenle departure, DLat olmadan; DLat de departure olmadan tek başına anlamlı değildir.",
+    sections: [
+      {
+        title: "Departure (Doğu–Batı Mesafesi) Genel Tanım",
+        content: `Departure değeri daima **deniz mili** cinsindendir ve işareti, geminin doğuya mı yoksa batıya mı hareket ettiğini gösterir. Bu yön bilgisi, kurs hesaplarında ve boylam değişimi ilişkilerinde doğrudan kullanılır.
+
+![Departure düzlem seyir örneği](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Doğu–batı mesafe ilişkisi](https://astrolabesailing.com/wp-content/uploads/2014/10/distances.jpg)
+
+![Düzlem seyir dik üçgeni](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)`
+      },
+      {
+        title: "Departure’ın Tanımı ve Yön İşareti",
+        content: `Departure, başlangıç ve varış mevkileri arasındaki doğu–batı doğrultulu yatay mesafedir. İşaret mantığı şu şekildedir:
+
+![Departure bileşenleri](https://cdn11.bigcommerce.com/s-nq6l4syi/images/stencil/1280x1280/products/70167/1997660/71367-1024__58100.1720803215.jpg?c=2)
+
+![Lat & Dep bileşenleri](https://jerrymahun.com/images/open_access/trav_comps/lats_deps/img17.gif)`,
+        bulletPoints: [
+          "Doğuya doğru seyirde departure **doğu** yönlü kabul edilir ve pozitif alınır.",
+          "Batıya doğru seyirde departure **batı** yönlü kabul edilir ve negatif alınır.",
+          "Yanlış işaret, sayısal olarak doğru görünen ama geometrik olarak hatalı sonuçlar üretir."
+        ]
+      },
+      {
+        title: "Mesafe ve Kurs Kullanılarak Departure Hesabı",
+        content: `Düzlem seyirde departure, mesafe ve hakiki rota kullanılarak trigonometrik olarak hesaplanır. Seyir, bir dik üçgen olarak kabul edilir. Hipotenüs, seyredilen mesafeyi; yatay kenar departure’ı; düşey kenar ise DLat’i temsil eder.
+
+![Düzlem seyir dik üçgeni](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+![Kurs ve mesafe ile departure](https://static.wixstatic.com/media/bd1ea3_6a85245c73c7421bbc6c9c8ab9e3f995~mv2.jpg/v1/fill/w_568%2Ch_326%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/bd1ea3_6a85245c73c7421bbc6c9c8ab9e3f995~mv2.jpg)`,
+        formula: {
+          text: "Departure = Mesafe × sin Kurs",
+          description: "Kurs hakiki rota olarak alınır; sonuç deniz mili cinsindendir."
+        }
+      },
+      {
+        title: "Sayısal Örnek: Mesafe ve Kurs ile Departure",
+        content: `Seyredilen mesafe 40 deniz mili, hakiki rota 060° olsun.
+
+sin 060° ≈ 0.866
+
+Departure = 40 × 0.866
+
+Departure ≈ **34.6 deniz mili doğu**
+
+Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğuya doğru ilerlediğini gösterir. Aynı seyirde kalan bileşen DLat olarak kuzey–güney doğrultusundadır.
+
+![Plane sailing örneği](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Sayısal örnek görseli](https://media.licdn.com/dms/image/v2/D4D12AQHE63U8jqsU4w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1716369843487?e=2147483647&t=xaUQOBcwqVw1xTQW1oriqj9osyaAI52xveUaRFfCAns&v=beta)`
+      },
+      {
+        title: "DLat ile Departure Arasındaki Geometrik İlişki",
+        content: `Düzlem seyirde DLat ve departure, birbirine dik iki bileşendir. Bu iki değer birlikte kullanılarak kurs veya mesafe hesaplanabilir.
+
+![Plane sailing dik üçgeni](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![DLat–Departure ilişkisi](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_2.jpg)`,
+        formula: {
+          text: "tan Kurs = Departure ÷ DLat",
+          description: "DLat ve departure bilindiğinde hakiki rota (kurs) bulunur."
+        }
+      },
+      {
+        title: "Departure’ın Harita Üzerindeki Anlamı",
+        content: `Departure, harita üzerinde doğrudan ölçülen bir değer değildir; **hesaplanan** bir büyüklüktür. Harita üzerinde enlem çizgileri DLat’i temsil ederken, departure boylam doğrultusundaki yatay hareketi temsil eder. Ancak boylam aralıkları enleme bağlı olarak değiştiği için, departure doğrudan boylam skalasından okunmaz; önce hesaplanır, ardından boylam değişimi hesaplarında kullanılır.
+
+![Harita üzerinde mevki ve hatlar](https://sailingissues.com/vier/position-fix-nautical-chart-navigation-3x.png)
+
+![Boylam skalası örneği](https://i.sstatic.net/ih3fe.jpg)`
+      },
+      {
+        title: "Departure’ın Düzlem Seyirde Kullanım Alanı",
+        content: `Departure, özellikle şu hesaplamalarda temel bileşendir:
+
+![Düzlem seyir örneği](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+![Kurs ve mesafe ilişkisi](https://cdn.britannica.com/41/2941-004-E9AB5656/triangle-course-aicraft-vector-compass-heading-aircraft.jpg)`,
+        bulletPoints: [
+          "Kurs ve mesafe çözümü",
+          "Enlem ve boylam değişimi ilişkileri",
+          "Ölü hesap mevkii ilerletme",
+          "Running fix ve klasik mevki hesapları"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Departure, düzlem seyirde doğu–batı doğrultusundaki yatay mesafedir.",
+      "Departure değeri daima deniz mili cinsindedir ve doğu/batı yönüne göre işaretlenir.",
+      "Departure = Mesafe × sin Kurs bağıntısı düzlem seyirde temel hesaplamadır.",
+      "DLat ve departure birlikte kurs/mesafe çözümlemelerini oluşturur.",
+      "Departure haritada doğrudan okunmaz; boylam değişimi hesaplarında kullanılır."
+    ]
+  },
   "Yön kavramları": {
     title: "Yön Kavramları",
     introduction: "Denizcilikte yön kavramı, geminin hareketinin matematiksel olarak tanımlanmasını ve harita üzerindeki tüm seyir hesaplarının tutarlı biçimde yapılmasını sağlar. Yön, belirli bir kuzey referansına göre ölçülen açısal bir büyüklüktür ve daima saat yönünde, 0° ile 360° arasında ifade edilir. Hakiki, manyetik veya pusula ayrımı yapılmadan kullanılan bir yön değeri, teknik olarak eksik ve uygulamada yanıltıcıdır.",

@@ -80,7 +80,7 @@ const topicsData: Record<string, TopicContent> = {
         subTopics: [
           { title: "Düzlem seyir varsayımı" },
           { title: "DLat (Enlem değişimi)" },
-          { title: "Departure (Doğu–batı mesafesi)" },
+          { title: "Departure (Doğu–batı mesafesi)", hasContent: true },
           { title: "Kurs – mesafe hesapları" },
           { title: "Enlem ve boylam değişimi" },
           { title: "Akıntısız seyir hesapları" },
