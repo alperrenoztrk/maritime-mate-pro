@@ -2036,5 +2036,135 @@ Harita datum’u ile elektronik sistem datum’u aynı olmalıdır. Aksi hâlde 
       "Kerteriz kesişimi ve mesafe-kerteriz kombinasyonu klasik kesin mevki yöntemleridir",
       "Elektronik mevki mutlaka datum uyumu ve saha doğrulamasıyla kontrol edilmelidir"
     ]
+  },
+  "Running fix (klasik)": {
+    title: "Running Fix (Klasik)",
+    introduction: "Running fix, tek bir seyir yardımcısından veya aynı kara parçasından **farklı zamanlarda alınan kerterizlerin**, geminin hareketi hesaba katılarak birleştirilmesiyle mevki bulunması yöntemidir. Bu yöntem, aynı anda iki farklı kerteriz alınmasının mümkün olmadığı durumlar için geliştirilmiştir ve klasik seyirde son derece yaygındır. Temel varsayım şudur: gemi, iki kerteriz arasındaki sürede **bilinen bir kurs ve hızla** seyretmiştir.",
+    sections: [
+      {
+        title: "Running Fix’in Mantığı",
+        content: `Running fix, düzlem seyir varsayımıyla çalışır ve ölü hesap mevkii ile doğrudan ilişkilidir. Kerterizler arasındaki zaman farkı, geminin kat ettiği mesafeye dönüştürülür ve ilk kerteriz bu mesafe kadar ileri taşınır. Taşınan kerteriz ile ikinci kerterizin kesişimi, geminin mevkiini verir.
+
+![Running fix görseli](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
+
+![Running fix şeması](https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-1.png)
+
+![Running fix çizimi](https://sailingissues.com/vier/running-fix-3x.png)`
+      },
+      {
+        title: "Geometrik Mantık",
+        content: `Running fix’te kullanılan temel geometrik fikir, **hareketli bir referans hattının taşınmasıdır**. İlk kerteriz alındığında gemi, o kerteriz hattı üzerinde bir yerdedir; fakat tam mevki bilinmez. Gemi, belirli bir süre boyunca bilinen bir rota ve hızla ilerler. Bu süre sonunda alınan ikinci kerteriz, yeni bir hat oluşturur. İlk kerteriz hattı, geminin kat ettiği mesafe kadar **aynı doğrultuda paralel olarak** ileri taşınır. Bu taşınmış hat ile ikinci kerteriz hattının kesişimi, geminin mevkiidir.
+
+Bu nedenle running fix, “iki kerteriz” değil; “bir kerteriz + hareket + ikinci kerteriz” yöntemidir.
+
+![Geometrik mantık](https://i0.wp.com/boatluv.com/wp-content/uploads/2019/08/5_running-fix_boatluv.png?fit=400%2C400&ssl=1)
+
+![Taşıma örneği](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)`
+      },
+      {
+        title: "Kullanılan Büyüklükler ve Birimler",
+        content: `Running fix hesabında kullanılan temel büyüklükler şunlardır:
+
+- Kurs: Hakiki rota  
+- Hız: Knot  
+- Zaman: Saat veya dakika  
+- Mesafe: Deniz mili  
+- Kerterizler: Hakiki kerteriz olarak alınır
+
+Hız–zaman–mesafe bağıntısı doğrudan kullanılır:
+
+**Mesafe = Hız × Zaman**
+
+Zaman saat cinsinden alınır. Dakika kullanılıyorsa, saat karşılığına çevrilir.
+
+![DR plot örneği](https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png)
+
+![Birlikte kullanılan büyüklükler](https://www.assessment-training.com/media/2901/4.png?height=500&width=500)`
+      },
+      {
+        title: "Adım 1: Birinci Kerterizin Alınması",
+        content: "Birinci kerteriz, sabit bir seyir yardımcısından veya kara objesinden alınır ve harita üzerine **hakiki kerteriz doğrultusunda** çizilir. Bu aşamada geminin mevkii bilinmez; yalnızca bu hat üzerinde bir yerde olduğu bilinir. Kerterizin alındığı saat mutlaka not edilir; çünkü ilerleme mesafesi bu zamana bağlıdır."
+      },
+      {
+        title: "Adım 2: İlerleme Mesafesinin Hesaplanması",
+        content: `Birinci kerteriz alındıktan sonra, ikinci kerterize kadar geçen sürede geminin kat ettiği mesafe hesaplanır.
+
+**Mesafe = Hız × Zaman**
+
+### Örnek Hesaplama
+Hız: 12 knot  
+Geçen süre: 20 dakika  
+
+20 dakika = 20 ÷ 60 = 0.333 saat  
+Mesafe = 12 × 0.333  
+Mesafe ≈ 4.0 deniz mili  
+
+Bu mesafe, birinci kerteriz hattının **ileri taşınacağı miktardır**.
+
+![Mesafe hesabı](https://o.quizlet.com/ArbI0Pjn5MR4PRqiHEv.Tw.png)
+
+![Snellius construction](https://sailingissues.com/vier/snellius-construction-2-3x.png)`
+      },
+      {
+        title: "Adım 3: Birinci Kerterizin İleri Taşınması",
+        content: `Birinci kerteriz hattı, geminin seyir doğrultusu boyunca hesaplanan mesafe kadar **paralel olarak ileri taşınır**. Taşıma işlemi sırasında hattın yönü değiştirilmez; yalnızca konumu kaydırılır. Bu işlem, geminin hareketinin kerteriz hattı üzerindeki etkisini temsil eder.
+
+Bu taşınmış hat, artık geminin ikinci kerteriz alındığı anda bulunabileceği olası mevkileri temsil eder.
+
+![Taşıma örneği](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
+
+![Taşıma örneği 2](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.51-1024x574.png?media=1759652400)`
+      },
+      {
+        title: "Adım 4: İkinci Kerterizin Alınması ve Mevki Bulma",
+        content: `İkinci kerteriz, mümkün olduğunca birinciden belirgin şekilde farklı bir açıyla alınır ve harita üzerine çizilir. Bu ikinci kerteriz hattı ile ileri taşınmış birinci kerteriz hattının kesişim noktası, geminin running fix mevkiidir.
+
+Kerterizler arasındaki açı ne kadar büyükse, bulunan mevki o kadar güvenilirdir. Küçük açı farkları, kesişim hassasiyetini düşürür.
+
+![İkinci kerteriz çizimi](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.51-1024x574.png?media=1759652400)
+
+![Kesişim örneği](https://sailingissues.com/vier/position4.png)`
+      },
+      {
+        title: "Sayısal Örnek: Tam Running Fix Uygulaması",
+        content: `Bir fenerden saat 10:00’da 045° hakiki kerteriz alınmıştır. Gemi 12 knot hızla 090° hakiki rota üzerinde seyretmektedir. Saat 10:20’de aynı fenerden 350° hakiki kerteriz alınmıştır.
+
+İlerleme mesafesi daha önce hesaplandığı gibi 4.0 deniz milidir. Saat 10:00’da çizilen 045° kerteriz hattı, 090° rota doğrultusunda 4.0 deniz mili ileri taşınır. Saat 10:20’de çizilen 350° kerteriz hattı ile bu taşınmış hattın kesişimi, geminin saat 10:20’deki mevkiini verir.
+
+![Sayısal örnek](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
+
+![Örnek çizim](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)`
+      },
+      {
+        title: "Running Fix’te Hata Kaynakları",
+        content: `Running fix’te hata üreten ana faktörler şunlardır:
+
+- Kerteriz hatası  
+- Hız veya zaman hatası  
+- Rota değişikliği  
+- Akıntının hesaba katılmaması  
+
+Özellikle akıntılı sularda, ilerleme mesafesi yalnızca makina hızına göre değil, **yer sürati** dikkate alınarak değerlendirilmelidir. Aksi hâlde taşınan kerteriz hattı yanlış yere oturur.
+
+![Hata örneği](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
+
+![Kerteriz hatası](https://www.bdsbearing.com/hubfs/bearing-failure-featured-2.jpg)`
+      },
+      {
+        title: "Running Fix’in Kullanıldığı Tipik Durumlar",
+        content: `Running fix, kıyı seyri sırasında tek bir fener veya kara objesinin uzun süre görüşte kaldığı durumlarda sıkça kullanılır. Açık denizde nadiren uygulanır; çünkü sabit ve net referans bulmak zordur. Elektronik seyir sistemlerinin olmadığı veya teyit amacıyla kullanıldığı durumlarda, running fix klasik seyir disiplininin vazgeçilmez yöntemlerinden biridir.
+
+![Kıyı seyri örneği](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.22.16-1024x576.png?media=1759652400)
+
+![Kıyı seyri örneği 2](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.27-1024x574.png?media=1759652400)`
+      }
+    ],
+    keyPoints: [
+      "Running fix, aynı referanstan farklı zamanlarda alınan kerterizlerle mevki bulma yöntemidir",
+      "İlk kerteriz hattı, geminin kat ettiği mesafe kadar paralel ileri taşınır",
+      "Mesafe hesabı doğrudan Mesafe = Hız × Zaman bağıntısına dayanır",
+      "Kesişim açısı büyüdükçe mevki güvenilirliği artar",
+      "Akıntı ve hız hataları taşınan kerteriz hattını doğrudan etkiler"
+    ]
   }
 };
