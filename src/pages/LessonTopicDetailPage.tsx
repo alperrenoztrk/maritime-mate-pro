@@ -33,6 +33,8 @@ export default function LessonTopicDetailPage() {
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
         <Link
           to={`/lessons/${categoryId}/topics`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ChevronLeft className="h-4 w-4" />
