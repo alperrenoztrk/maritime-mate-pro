@@ -2197,6 +2197,97 @@ DLong, varış boylamı ile başlangıç boylamı arasındaki farktır ve dakika
         }
       },
       {
+        title: "Boylam Değişimi Hesapları",
+        content: `Boylam değişimi, geminin seyri sırasında doğu–batı doğrultusunda ulaştığı coğrafi farkı ifade eder ve orta enlem seyri hesaplarının temel unsurlarından biridir. Boylamlar meridyenlerle tanımlanır ve bu meridyenler kutuplara yaklaştıkça birbirine yaklaşır. Bu geometrik gerçek, boylam dakikasının uzunluğunun sabit olmamasına neden olur. Bu nedenle boylam değişimi, enlemden bağımsız bir mesafe gibi ele alınamaz ve seyirde doğrudan kullanılmaz.
+
+DLong, başlangıç boylamı ile varış boylamı arasındaki farktır. Hesaplamada tüm boylamlar aynı cins ifade edilir; doğu boylamları pozitif, batı boylamları negatif kabul edilerek fark alınır. Sonuç dakika cinsinden elde edilir ve yön bilgisi doğu veya batı olarak belirlenir. Bu aşamada bulunan değer yalnızca coğrafi farktır; geminin gerçekten kat ettiği doğu–batı mesafeyi ifade etmez.
+
+---
+
+**Boylam Dakikasının Enleme Bağlılığı**
+
+Enlem dakikası dünyanın her yerinde yaklaşık 1 deniz mili kabul edilirken, boylam dakikasının uzunluğu enleme bağlı olarak değişir. Ekvatorda bir boylam dakikası yaklaşık 1 deniz miline eşittir; enlem arttıkça bu uzunluk kosinüs oranında azalır. Seyir hesaplarında bu ilişki, boylam değişiminin doğrudan mesafeye çevrilememesinin temel nedenidir.
+
+Bu noktada departure kavramı devreye girer. Departure, geminin doğu–batı doğrultusunda kat ettiği gerçek mesafedir ve deniz mili cinsinden ifade edilir. Orta enlem seyri yaklaşımı, boylam değişimi ile departure arasındaki bağı tek bir katsayı üzerinden kurar.
+
+---
+
+**Temel Bağıntı: Departure – Boylam Değişimi**
+
+⬛ Temel Orta Enlem Bağıntısı  
+════════════════════  
+Departure = DLong × cos Orta Enlem  
+════════════════════
+
+Bu bağıntıda:
+
+DLong dakika cinsinden boylam değişimini,  
+Orta Enlem, seyir boyunca temsil edici enlemi,  
+cos Orta Enlem, boylam dakikasının kısalma oranını ifade eder.
+
+Sonuç, geminin doğu–batı doğrultusunda kat ettiği gerçek mesafeyi verir.
+
+Eğer problemde departure biliniyor ve boylam değişimi aranıyorsa bağıntı ters çevrilir.
+
+⬛ Ters Bağıntı  
+════════════════════  
+DLong = Departure ÷ cos Orta Enlem  
+════════════════════
+
+Bu ifade, departure değerinden coğrafi boylam farkına ulaşmayı sağlar.
+
+---
+
+**Orta Enlemin Hesaplanması**
+
+Orta enlem, başlangıç enlemi ile varış enleminin aritmetik ortalamasıdır ve boylam hesaplarının dayandığı referans değerdir.
+
+⬛ Orta Enlem Tanımı  
+════════════════════  
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2  
+════════════════════
+
+Bu değer, kosinüs katsayısının seçilmesinde kullanılır ve boylam dakikasının temsil edici uzunluğunu belirler.
+
+---
+
+**Sayısal Uygulama**
+
+Başlangıç enlemi: 35° 40′ N  
+Varış enlemi: 36° 00′ N  
+Departure: 56,4 deniz mili (Doğu)
+
+Önce orta enlem bulunur:
+
+Orta Enlem = (35° 40′ + 36° 00′) ÷ 2 = 35° 50′
+
+Bu enlemin kosinüsü yaklaşık 0,81’dir. Boylam değişimi hesaplanır:
+
+════════════════════  
+DLong = 56,4 ÷ 0,81 ≈ 69,6′  
+════════════════════
+
+69,6 dakika, 1° 09,6′ boylam değişimine karşılık gelir. Varış boylamı, başlangıç boylamına bu değer eklenerek elde edilir.
+
+---
+
+**Kurs ve Mesafeden Boylam Değişimine Giden Hesap Zinciri**
+
+Orta enlem seyri içinde boylam değişimi çoğu zaman dolaylı olarak bulunur. Kurs ve mesafe verildiğinde izlenen tam hesap sırası aşağıdaki gibidir.
+
+⬛ Tam Hesap Dizisi  
+════════════════════  
+Departure = Mesafe × sin Kurs  
+DLat = Mesafe × cos Kurs  
+Varış Enlemi = Başlangıç Enlemi + DLat  
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2  
+DLong = Departure ÷ cos Orta Enlem  
+Varış Boylamı = Başlangıç Boylamı + DLong  
+════════════════════
+
+Bu zincir, orta enlem seyri yaklaşımında boylam değişiminin nasıl ve hangi sırayla elde edildiğini eksiksiz biçimde gösterir. Boylam değişimi hesapları, yalnızca bu bütünlük korunarak yapıldığında doğru mevki tayinine hizmet eder.`
+      },
+      {
         title: "Örnek – DLong",
         content: `Başlangıç: 029° 20.0′ E  
 Varış: 030° 05.0′ E
