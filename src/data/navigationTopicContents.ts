@@ -829,6 +829,44 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       "Doğu–batı işaret disiplini, hesaplamanın doğru yorumlanması için zorunludur."
     ]
   },
+  "İşaret Değişimi (Sign Change)": {
+    title: "İşaret Değişimi (Sign Change)",
+    introduction:
+      "Seyir hesaplarında işaret, matematiksel bir işlem değil; yön bilgisidir. Enlem, boylam, DLat, DLong ve departure değerleri sayısal olarak hesaplanırken mutlak değerler kullanılır; **kuzey–güney ve doğu–batı yönü ise işaretle belirtilir**. İşaret değişimi kuralı doğru uygulanmazsa, tüm sonuçlar doğru görünse bile coğrafi olarak yanlış yönde kalır.",
+    sections: [
+      {
+        title: "Enlem İşaret Kuralı",
+        content:
+          "Enlem için temel kural basittir: **kuzey (+), güney (−)**. DLat hesaplanırken her zaman mutlak fark alınır, ardından yön verilir. Seyir kuzeye ise DLat kuzey (+), güneye ise DLat güney (−) kabul edilir. Enlem işareti, yalnızca bulunduğunuz veya varacağınız yarımküreyi değil, hareket yönünü de ifade eder."
+      },
+      {
+        title: "Boylam İşaret Kuralı",
+        content:
+          "Boylam için temel kural: **doğu (+), batı (−)**. DLong hesabında önce boylam farkı bulunur, sonra yön atanır. Doğuya gidiliyorsa DLong doğu (+), batıya gidiliyorsa batı (−) kabul edilir. Greenwich meridyeni işaretin referansıdır; doğusu (+), batısı (−) olarak değerlendirilir."
+      },
+      {
+        title: "Aynı ve Farklı Yarımküre Mantığı",
+        content:
+          "Başlangıç ve varış aynı yarımküredeyse fark alınır; farklı yarımkürelerdeyse mutlak değerler toplanır ve sonuç **varış yönüne** göre işaretlenir. Örnek: 12°N’den 5°S’ye gidiliyorsa DLat = 12° + 5° = 17° **Güney**. Aynı kural boylam için de geçerlidir: 20°E’den 10°W’ye geçişte DLong = 20° + 10° = 30° **Batı**."
+      },
+      {
+        title: "Kurs–Mesafe İşaret Disiplini",
+        content:
+          "Kurs–mesafe hesaplarında trigonometrik işlemler mutlak değerlerle yapılır. DLat ve departure hesaplandıktan sonra **işaretler çeyrekleştirme mantığına göre atanır**. DLat kuzey ise kursun kuzey bileşeni vardır; DLat güney ise güney bileşeni vardır. Departure doğu ise doğu bileşeni, batı ise batı bileşeni oluşur. Bu disiplin, kursun doğru çeyrekte (NE, SE, SW, NW) yer almasını sağlar."
+      },
+      {
+        title: "Sayısal Örnek",
+        content:
+          "Başlangıç: 08° 20′ N, 023° 10′ E\nVarış: 05° 40′ S, 020° 30′ W\n\nDLat = 8°20′ + 5°40′ = 14°00′ **Güney**\nDLong = 23°10′ + 20°30′ = 43°40′ **Batı**\n\nBu örnekte sayıların büyüklüğü doğru olsa bile işaretler yanlış yazılırsa hareketin yönü tamamen ters anlaşılır. Bu nedenle işaret, sayının ayrılmaz parçasıdır."
+      }
+    ],
+    keyPoints: [
+      "İşaret, işlem değil yön bilgisidir.",
+      "Kuzey (+), güney (−); doğu (+), batı (−) kuralı tüm hesapların temelidir.",
+      "Farklı yarımkürelerde mutlak değerler toplanır ve yön varışa göre verilir.",
+      "Kurs–mesafe problemlerinde işaretler çeyrek belirler."
+    ]
+  },
   "Yön kavramları": {
     title: "Yön Kavramları",
     introduction: "Denizcilikte yön kavramı, geminin hareketinin matematiksel olarak tanımlanmasını ve harita üzerindeki tüm seyir hesaplarının tutarlı biçimde yapılmasını sağlar. Yön, belirli bir kuzey referansına göre ölçülen açısal bir büyüklüktür ve daima saat yönünde, 0° ile 360° arasında ifade edilir. Hakiki, manyetik veya pusula ayrımı yapılmadan kullanılan bir yön değeri, teknik olarak eksik ve uygulamada yanıltıcıdır.",
