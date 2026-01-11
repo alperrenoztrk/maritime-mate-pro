@@ -2437,6 +2437,123 @@ DLat ve DLong’un kuzey–güney, doğu–batı yönleri netleştirilmeden yap�
       "İşaret disiplini (N/S, E/W) sonuçların doğru yönlü olmasını sağlar"
     ]
   },
+  "Orta Enlemde Seyir Hesaplamaları": {
+    title: "Orta Enlemde Seyir Hesaplamaları",
+    introduction:
+      "Orta enlemde seyir hesaplamaları, düzlem seyir varsayımının yetersiz kaldığı orta mesafelerde kullanılan, boylam dakikasının enleme bağlı olarak değiştiği gerçeğini hesaba katan bir yöntemdir. Bu yaklaşımda dünya küresel kabul edilir; ancak tam küresel trigonometrik çözümlere girilmez. Hesapların merkezinde ortalama enlem yer alır ve doğu–batı mesafeler bu enleme göre düzeltilir. Bu yöntemin temel amacı, verilen kurs ve mesafeden varış mevkiini ya da iki mevkii arasındaki kurs ve mesafeyi, kabul edilebilir doğrulukla bulmaktır.",
+    sections: [
+      {
+        title: "Orta Enlem Seyrinin Kullanım Gerekçesi",
+        content: `Düzlem seyirde boylam dakikası her yerde 1 deniz mili kabul edilir. Bu kabul, kısa mesafelerde ihmal edilebilir hata üretir; ancak mesafe arttıkça hata büyür. Orta enlem seyri, bu hatayı boylam dakikasının kosinüs enlem oranında kısaldığını kabul ederek düzeltir. Böylece hesaplar, küresel seyre yaklaşır.`
+      },
+      {
+        title: "Orta Enlem Kavramı",
+        content: `Orta enlem, seyir boyunca geminin bulunduğu enlemi temsil eden tek bir değerdir. Başlangıç ve varış enlemlerinin aritmetik ortalaması alınarak bulunur.
+
+⬛ Orta Enlem Tanımı
+
+════════════════════
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2
+════════════════════
+
+Bu değer, boylam dakikasının gerçek uzunluğunu temsil eden kosinüs katsayısının seçiminde kullanılır.`
+      },
+      {
+        title: "Orta Enlem Seyrinde Temel Bileşenler",
+        content: `Orta enlem seyri, düzlem seyirdeki temel bileşenleri korur; ancak boylam–departure dönüşümünü ortalama enlemle düzeltir. Kullanılan ana büyüklükler şunlardır:
+
+DLat: Enlem değişimi
+Departure: Doğu–batı doğrultusunda gerçek mesafe
+DLong: Boylam değişimi
+Kurs: Hakiki kurs
+Mesafe: Kat edilen yol`
+      },
+      {
+        title: "Temel Trigonometrik Bağıntılar",
+        content: `Orta enlem seyri hesaplamaları, düzlem seyir trigonometrisini temel alır.
+
+⬛ Düzlem Bileşen Bağıntıları
+
+════════════════════
+DLat = Mesafe × cos Kurs
+Departure = Mesafe × sin Kurs
+════════════════════
+
+Bu ifadelerle enlem ve doğu–batı mesafe bileşenleri elde edilir.`
+      },
+      {
+        title: "Departure – Boylam Dönüşümü",
+        content: `Boylam dakikasının enleme bağlı olarak kısalması nedeniyle, departure ile boylam değişimi doğrudan eşit değildir. Orta enlem seyri bu dönüşümü şu bağıntıyla kurar:
+
+⬛ Orta Enlem Dönüşüm Bağıntısı
+
+════════════════════
+Departure = DLong × cos Orta Enlem
+════════════════════
+
+Buradan boylam değişimi şu şekilde bulunur:
+
+════════════════════
+DLong = Departure ÷ cos Orta Enlem
+════════════════════`
+      },
+      {
+        title: "Orta Enlemde Varış Mevkiinin Hesaplanması",
+        content: `Başlangıç mevkii, kurs ve mesafe verildiğinde varış mevkii aşağıdaki sıra izlenerek bulunur.
+
+⬛ Hesap Sırası
+
+════════════════════
+DLat = Mesafe × cos Kurs
+Varış Enlemi = Başlangıç Enlemi + DLat
+Orta Enlem = (Başlangıç Enlemi + Varış Enlemi) ÷ 2
+Departure = Mesafe × sin Kurs
+DLong = Departure ÷ cos Orta Enlem
+Varış Boylamı = Başlangıç Boylamı + DLong
+════════════════════`
+      },
+      {
+        title: "Sayısal Uygulama: Orta Enlem Seyri",
+        content: `Başlangıç mevkii: 35° 40′ N – 026° 10′ E
+Kurs: 070°
+Mesafe: 60 deniz mili
+
+Önce enlem bileşeni hesaplanır:
+
+════════════════════
+DLat = 60 × cos 70° = 60 × 0.342 = 20.5′
+════════════════════
+
+Varış enlemi:
+
+35° 40′ + 20.5′ = 36° 00.5′ N
+
+Orta enlem:
+
+(35° 40′ + 36° 00.5′) ÷ 2 = 35° 50.25′
+
+Doğu–batı bileşeni:
+
+════════════════════
+Departure = 60 × sin 70° = 60 × 0.940 = 56.4
+════════════════════
+
+Boylam değişimi:
+
+════════════════════
+DLong = 56.4 ÷ cos 35° 50′ ≈ 56.4 ÷ 0.81 = 69.6′
+════════════════════
+
+Varış boylamı:
+
+026° 10′ + 1° 09.6′ = 027° 19.6′ E`
+      },
+      {
+        title: "Orta Enlem Seyrinin Hesap Mantığı",
+        content: `Bu yöntemde kritik nokta, boylamla ilgili hiçbir işlemin ortalama enlem belirlenmeden yapılmamasıdır. Enlem değişimi düzlem seyir mantığıyla bulunur; boylam değişimi ise mutlaka departure üzerinden ve ortalama enlem düzeltmesiyle hesaplanır. Bu disiplin korunduğunda, orta mesafeli seyirlerde elde edilen mevki, küresel seyre oldukça yakın doğruluk sağlar.`
+      }
+    ]
+  },
   "Ortalama enlem kavramı": {
     title: "Ortalama Enlem Kavramı",
     introduction:
