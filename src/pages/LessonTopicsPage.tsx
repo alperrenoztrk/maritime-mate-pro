@@ -93,6 +93,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Düzlem seyirin sınırları" },
           { title: "Ortalama enlem kavramı" },
           { title: "Departure – boylam ilişkisi" },
+          { title: "Orta Enlemde Seyir Hesaplamaları", hasContent: true },
           { title: "Boylam değişimi hesapları" },
           { title: "İşaret Değişimi (Sign Change)" },
           { title: "Sayısal orta enlem seyri uygulamaları" }
