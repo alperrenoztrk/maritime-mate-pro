@@ -94,7 +94,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Ortalama enlem kavramı" },
           { title: "Departure – boylam ilişkisi" },
           { title: "Boylam değişimi hesapları" },
-          { title: "İşaret kuralları" },
+          { title: "İşaret Değişimi (Sign Change)" },
           { title: "Sayısal orta enlem seyri uygulamaları" }
         ]
       },
