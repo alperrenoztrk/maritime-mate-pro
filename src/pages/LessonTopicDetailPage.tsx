@@ -1,12 +1,12 @@
 import { ChevronLeft, Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
-import { navigationTopicContents } from "@/data/navigationTopicContents";
+import { navigationTopicContents, TopicSection, TopicDetailContent } from "@/data/navigationTopicContents";
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
-  const fallbackContent = {
+  const fallbackContent: TopicDetailContent = {
     title: decodedTitle || "Konu Detayı",
     introduction:
       "Bu konu başlığı için içerik hazırlanmaktadır. Şimdilik sayfa iskeleti yayınlandı; görseller ve ayrıntılı anlatım en kısa sürede eklenecektir.",
