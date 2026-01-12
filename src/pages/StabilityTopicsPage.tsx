@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   GraduationCap,
   BookOpen,
@@ -14,768 +16,502 @@ import {
   Gauge,
   Shield,
   Lightbulb,
+  CheckCircle2,
+  Circle,
+  X,
+  Weight,
+  BarChart3,
+  Ruler,
+  Settings,
+  Activity,
+  Target,
+  Zap,
+  BookMarked,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { InteractiveStabilityTools } from "@/components/stability/InteractiveStabilityTools";
-import { Stability3DSim } from "@/components/stability/Stability3DSim";
 
-interface TopicSection {
+// =====================================
+// YENİ 14 BAŞLIKLI STABİLİTE MÜFREDATİ
+// =====================================
+
+interface StabilitySubTopic {
   id: string;
   title: string;
-  icon: React.ElementType;
-  content: React.ReactNode;
+  hasContent: boolean;
 }
 
-const topicSections: TopicSection[] = [
+interface StabilityMainTopic {
+  id: string;
+  number: number;
+  title: string;
+  icon: React.ElementType;
+  subtopics: StabilitySubTopic[];
+}
+
+const stabilityTopics: StabilityMainTopic[] = [
   {
-    id: "temel-kavramlar",
-    title: "1. Temel Kavramlar ve Tanımlar",
+    id: "intro",
+    number: 1,
+    title: "Stabiliteye Giriş ve Temel Kavramlar",
     icon: BookOpen,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Stabilite, bir geminin dış etkilere (rüzgâr, dalga, yük kayması, dönüş manevraları) karşı dengesini koruma ve denge bozulduğunda yeniden
-          dik konuma dönme yeteneğidir. Aşağıdaki kavramlar stabiliteyi anlamak için temel oluşturur. Burada amaç, hem teorik temeli hem de pratik
-          operasyondaki kritik noktaları netleştirmektir.
-        </p>
-        
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">1.1 Denge Türleri</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Denge türleri, geminin küçük bir yatma açısı sonrası nasıl davrandığını gösterir. Denge davranışını anlamak; yükleme, balast
-            ve operasyon kararlarının güvenliğini belirler.
-          </p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-green-500" />
-              <span><strong className="text-foreground">Kararlı (stabil) denge:</strong> Gemi, dış etkiyle yan yatıp kuvvet ortadan kalktığında tekrar dik konumuna döner. Stabil durumda pozitif GZ kolu ve pozitif metasantrik yükseklik vardır. Genellikle güvenli yükleme durumunu temsil eder.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-yellow-500" />
-              <span><strong className="text-foreground">Nötr denge:</strong> Gemi, dış etkiyle bir açıda yeni denge konumunda kalır; doğrultucu kol sıfıra yaklaşır. Bu durumda küçük bir ilave etkiyle gemi kalıcı olarak başka bir açıda dengede kalabilir.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-red-500" />
-              <span><strong className="text-foreground">Kararsız (unstable) denge:</strong> Gemi dik konumda iken negatif metasantrik yükseklik nedeniyle en ufak bir eğilmeyle devrilmeye meyillidir. Bu durumda yükleme ve balast operasyonları acil düzeltme gerektirir.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">1.2 Deplasman, Kaldırma ve Ağırlık Merkezi</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Geminin ağırlığı ile yer değiştirdiği suyun kaldırma kuvveti, stabiliteyi belirleyen temel dengedir. Bu denge, ağırlık merkezi (G)
-            ve kaldırma merkezi (B) arasındaki ilişkiyle modellenir.
-          </p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Deplasman (Δ):</strong> Geminin yer değiştirdiği suyun ağırlığıdır. Geminin toplam ağırlığına eşittir ve ton cinsinden ifade edilir.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Ağırlık merkezi (G):</strong> Gemideki tüm yüklerin ağırlıklarının birleşik uygulama noktasıdır. Yüklerin taşınması veya tankların doluluklarının değişmesi KG'yi değiştirir. KG yükselirse stabilite azalır.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Kaldırma kuvveti merkezi (B):</strong> Su altında kalan hacmin ağırlık merkezi olup, geminin yüzdüğü konuma göre yer değiştirir. Yatma açısı değiştikçe B noktası yana kayar ve doğrultucu kol oluşur.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">1.3 Metasantrik Yükseklik ve Sert/Yumuşak Gemi</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Metasantrik yükseklik (GM), geminin küçük açılardaki ilk stabilitesinin göstergesidir. <strong className="text-foreground">GM = KM − KG</strong> formülüyle hesaplanır; burada KM kökle metasentre arasındaki mesafe, KG kökle ağırlık merkezi arasındaki mesafedir.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            KM, kaldırma merkezinin kökten yüksekliği ile metasantrik yarıçapın toplamıdır: <strong className="text-foreground">KM = KB + BM</strong>. Metasantrik yarıçap ise su hattı alan atalet momentinin deplasman hacmine oranıdır: <strong className="text-foreground">BM = I/∇</strong>. Bu ilişkiler, stabilite hesabının temel geometrik bileşenlerini açıklar.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            GM değeri arttıkça gemi hızlı ve sert bir yalpa davranışı gösterir; GM azaldıkça daha yavaş ve geniş salınımlar görülür. Bu nedenle GM,
-            hem emniyet hem de konfor açısından dengelenmelidir.
-          </p>
-          <div className="grid gap-2 sm:grid-cols-2">
-            <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-3">
-              <h5 className="text-sm font-medium text-green-600 dark:text-green-400">Sert (Stiff) Gemi</h5>
-              <p className="text-xs text-muted-foreground mt-1">GM değerinin artması gemiyi "sert" yapar; yuvarlanma periyodu kısalır ve gemi hızlı hareket eder.</p>
-            </div>
-            <div className="rounded-lg border border-orange-500/30 bg-orange-500/5 p-3">
-              <h5 className="text-sm font-medium text-orange-600 dark:text-orange-400">Yumuşak (Tender) Gemi</h5>
-              <p className="text-xs text-muted-foreground mt-1">GM'nin düşük veya negatif olması gemiyi "yumuşak" yapar; yuvarlanma periyodu uzar ve yolcular daha rahat olsa da stabilite zayıflar.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">1.4 Referans Noktaları ve Eksenler</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Gemi stabilitesi anlatımında sabit referans noktaları kullanılır: <strong className="text-foreground">K</strong> kök (keel) üzerinde seçilen
-            başlangıç noktasıdır; tüm düşey ölçüler K&apos;dan başlatılır. <strong className="text-foreground">B</strong> su altı hacmin ağırlık merkezidir,
-            yatma ile konumu değişir; <strong className="text-foreground">G</strong> geminin toplam ağırlık merkezidir ve yükleme durumuna göre yer değiştirir.
-            <strong className="text-foreground">M</strong> ise küçük yatmalar için kaldırma kuvvetinin doğrultusunun kesiştiği teorik metasantr noktasıdır.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Eksenler gövdeye sabittir: <strong className="text-foreground">x ileri</strong>, <strong className="text-foreground">y iskele</strong>,
-            <strong className="text-foreground">z yukarı</strong>. Pozitif yatma işareti, geminin <strong className="text-foreground">iskeleye yatması</strong>
-            (y yönü) olarak kabul edilir.
-          </p>
-          <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-            <div className="rounded-lg border border-border/60 bg-muted/20 p-4">
-              <h5 className="text-sm font-semibold text-foreground">Şema: K/B/G/M Referansları</h5>
-              <p className="text-xs text-muted-foreground mt-1">
-                Basitleştirilmiş silüet; noktalar yerleşimin kavramsal görünümünü gösterir.
-              </p>
-            </div>
-            <div className="rounded-lg border border-border/60 bg-background p-3">
-              <svg viewBox="0 0 220 140" role="img" aria-label="Gemi silüeti ve K B G M noktaları" className="h-32 w-full">
-                <rect x="0" y="0" width="220" height="140" fill="transparent" />
-                <path d="M20 95 L60 70 H160 L200 95 Z" fill="#1f2937" opacity="0.15" />
-                <path d="M20 95 L60 70 H160 L200 95 L180 110 H40 Z" fill="#0f172a" />
-                <path d="M40 70 L70 50 H150 L175 70 Z" fill="#0f172a" opacity="0.9" />
-                <line x1="110" y1="40" x2="110" y2="110" stroke="#94a3b8" strokeDasharray="4 3" />
-                <circle cx="110" cy="110" r="4" fill="#2563eb" />
-                <text x="118" y="113" fontSize="10" fill="#1f2937">K</text>
-                <circle cx="110" cy="92" r="4" fill="#16a34a" />
-                <text x="118" y="95" fontSize="10" fill="#1f2937">B</text>
-                <circle cx="110" cy="78" r="4" fill="#f59e0b" />
-                <text x="118" y="81" fontSize="10" fill="#1f2937">G</text>
-                <circle cx="110" cy="60" r="4" fill="#ef4444" />
-                <text x="118" y="63" fontSize="10" fill="#1f2937">M</text>
-                <line x1="110" y1="118" x2="150" y2="118" stroke="#334155" strokeWidth="1.5" />
-                <polygon points="150,118 144,114 144,122" fill="#334155" />
-                <text x="154" y="121" fontSize="9" fill="#334155">x ileri</text>
-                <line x1="110" y1="118" x2="110" y2="88" stroke="#334155" strokeWidth="1.5" />
-                <polygon points="110,88 106,94 114,94" fill="#334155" />
-                <text x="114" y="88" fontSize="9" fill="#334155">z yukarı</text>
-                <line x1="110" y1="118" x2="80" y2="118" stroke="#334155" strokeWidth="1.5" />
-                <polygon points="80,118 86,114 86,122" fill="#334155" />
-                <text x="60" y="121" fontSize="9" fill="#334155">y iskele</text>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    subtopics: [
+      { id: "stability-definition", title: "Stabilitenin tanımı", hasContent: true },
+      { id: "balance-concepts", title: "Denge, devrilme ve doğrultma kavramları", hasContent: true },
+      { id: "static-stability", title: "Statik stabilite", hasContent: true },
+      { id: "dynamic-stability-intro", title: "Dinamik stabilite", hasContent: true },
+      { id: "initial-stability", title: "İlk stabilite kavramı", hasContent: true },
+      { id: "stability-safety", title: "Stabilite ve seyir emniyeti ilişkisi", hasContent: true },
+    ],
   },
   {
-    id: "statik-stabilite",
-    title: "2. Statik Stabilite ve GZ Eğrisi",
+    id: "weight-buoyancy",
+    number: 2,
+    title: "Ağırlık, Kaldırma Kuvveti ve Yüzerlik",
+    icon: Weight,
+    subtopics: [
+      { id: "weight-w", title: "Ağırlık (W)", hasContent: true },
+      { id: "center-of-gravity", title: "Ağırlık merkezi (G)", hasContent: true },
+      { id: "buoyancy-force", title: "Kaldırma kuvveti", hasContent: true },
+      { id: "center-of-buoyancy", title: "Kaldırma merkezi (B)", hasContent: true },
+      { id: "floatation-condition", title: "Yüzerlik şartı", hasContent: true },
+      { id: "equilibrium-states", title: "Denge hâlleri (stable, unstable, neutral equilibrium)", hasContent: true },
+    ],
+  },
+  {
+    id: "metacentric",
+    number: 3,
+    title: "Metasantrik Kavramlar ve İlk Stabilite",
+    icon: Target,
+    subtopics: [
+      { id: "metacenter-m", title: "Metasantr (M) kavramı", hasContent: true },
+      { id: "metacentric-height-gm", title: "Metasantrik yükseklik (GM)", hasContent: true },
+      { id: "kb-bm-kg-relation", title: "KB, BM ve KG ilişkisi", hasContent: true },
+      { id: "positive-gm", title: "Pozitif GM", hasContent: true },
+      { id: "negative-gm", title: "Negatif GM", hasContent: true },
+      { id: "gm-ship-movements", title: "GM'nin gemi hareketlerine etkisi", hasContent: true },
+    ],
+  },
+  {
+    id: "cog-shift",
+    number: 4,
+    title: "Ağırlık Merkezinin Yer Değiştirmesi",
+    icon: Settings,
+    subtopics: [
+      { id: "weight-addition", title: "Ağırlık eklenmesi", hasContent: true },
+      { id: "weight-removal", title: "Ağırlık çıkarılması", hasContent: true },
+      { id: "weight-shift", title: "Ağırlık kaydırılması", hasContent: true },
+      { id: "vertical-weight-movement", title: "Dikey ağırlık hareketleri", hasContent: true },
+      { id: "transverse-weight-movement", title: "Enine ağırlık hareketleri", hasContent: true },
+      { id: "longitudinal-weight-movement", title: "Boyuna ağırlık hareketleri", hasContent: true },
+    ],
+  },
+  {
+    id: "transverse-stability",
+    number: 5,
+    title: "Enine Stabilite Hesapları",
     icon: Scale,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Statik stabilite, geminin belirli bir yatma açısında dış kuvvetler olmadan dengeye gelmesiyle ilgilidir. Bunun analizinde GZ (doğrultucu kol)
-          eğrisi kullanılır. GZ eğrisi, geminin farklı açılardaki doğrultucu moment kapasitesini görsel ve sayısal olarak ortaya koyar.
-        </p>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">2.1 Doğrultucu Kol ve Doğrultucu Moment</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            GZ kolu geminin dengeye dönme kabiliyetini temsil eder. GZ büyüdükçe gemi daha büyük doğrultucu moment üretir ve dış kuvvetlere daha iyi karşı koyar.
-          </p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Doğrultucu kol (GZ):</strong> Ağırlık merkezi (G) ile kaldırma kuvvetinin etkili doğrultusunu (Z) birleştiren kol uzunluğudur. Küçük açılar için yaklaşık olarak <strong>GZ ≈ GM·sin φ</strong> formülü kullanılır.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Doğrultucu moment (RM):</strong> Geminin deplasmanının (Δ) GZ ile çarpımına eşittir <strong>(RM = Δ·GZ)</strong>. Dış kuvvetlere karşı koyan moment budur.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">2.2 GZ Eğrisinden Okunan Bilgiler</h4>
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="py-2 text-left font-semibold text-foreground">Bilgi</th>
-                  <th className="py-2 text-left font-semibold text-foreground">Açıklama</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border/50">
-                  <td className="py-2 font-medium text-foreground">Metasantrik yükseklik</td>
-                  <td className="py-2">Eğrinin başlangıçtaki eğimi 57,3° (1 rad) ordinatı ile kesiştiğinde GM'nin ölçüsünü verir</td>
-                </tr>
-                <tr className="border-b border-border/50">
-                  <td className="py-2 font-medium text-foreground">Maksimum GZ ve açısı</td>
-                  <td className="py-2">Tepe noktadaki GZ değeri ve açısı geminin dayanabileceği en büyük doğrultucu momenti gösterir</td>
-                </tr>
-                <tr className="border-b border-border/50">
-                  <td className="py-2 font-medium text-foreground">Pozitif stabilite menzili</td>
-                  <td className="py-2">GZ eğrisinin pozitif kaldığı yatış açıları aralığıdır; geniş aralık daha iyi stabilite demektir</td>
-                </tr>
-                <tr className="border-b border-border/50">
-                  <td className="py-2 font-medium text-foreground">Vanishing stability açısı</td>
-                  <td className="py-2">Eğri x-ekseni ile kesiştiğinde (GZ=0) gemi doğrultucu kol üretmez ve devrilme riski vardır</td>
-                </tr>
-                <tr className="border-b border-border/50">
-                  <td className="py-2 font-medium text-foreground">Downflooding açısı</td>
-                  <td className="py-2">Su giriş açıklıklarının suya temas ettiği kritik yatış açısıdır; emniyet limitleri için referans alınır</td>
-                </tr>
-                <tr className="border-b border-border/50">
-                  <td className="py-2 font-medium text-foreground">Reserve buoyancy</td>
-                  <td className="py-2">Su hattı üzerinde kalan kapalı hacimlerin sağladığı ilave yüzebilirlik ve stabilite rezervidir</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Dinamik stabilite alanı</td>
-                  <td className="py-2">Eğri altında kalan alan geminin dış kuvvetlere karşı depolayabildiği enerjiyi gösterir</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs text-muted-foreground">Alan birimi: m·rad.</p>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">2.3 Dinamik Stabilite</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Statik stabilite eğrisinin altında kalan alan, geminin heeling sırasında absorbe edebileceği enerji miktarını (dinamik stabilite) gösterir. Yüksek maksimum GZ değeri tek başına yeterli değildir; alanın geniş olması, geminin devrilmeden önce daha fazla enerji absorbe edebileceği anlamına gelir.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Dinamik stabilite değerlendirmeleri, rüzgâr ve dalga koşullarında geminin güvenliğini ölçmek için kullanılır. IMO kriterleri, özellikle belirli açı aralıklarında
-            GZ alanlarını asgari seviyede şart koşar.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">2.4 GZ Eğrisi Oluşturma ve KN Eğrileri</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Farklı KG ve deplasman değerleri için cross-curves of stability (KN eğrileri) çıkarılır. KN'den GZ'ye dönüşüm formülü:
-          </p>
-          <div className="rounded-lg bg-primary/10 p-3 text-center font-mono text-sm font-semibold text-primary">
-            GZ(θ) = KN(θ) − KG · sin θ
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">2.5 3B Eğitsel Stabilite Görselleştirme</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            GM ve KG değerlerini değiştirerek geminin eğim davranışını gözlemleyin. Bu görselleştirme, stabilite kavramını sezgisel olarak
-            anlamaya yardımcı olmak için hazırlanmış eğitim amaçlı bir modeldir.
-          </p>
-          <Stability3DSim />
-          <p className="text-xs text-muted-foreground">
-            Not: Küçük açılar için <strong className="text-foreground">GZ ≈ GM · sinφ</strong> yaklaşımı geçerlidir; GM yükseldikçe gemi daha hızlı doğrulur,
-            KG yükseldikçe meyil artar.
-          </p>
-        </div>
-      </div>
-    )
+    subtopics: [
+      { id: "righting-moment", title: "Doğrultma momenti", hasContent: true },
+      { id: "heeling-moment", title: "Yatma momenti", hasContent: true },
+      { id: "angle-of-equilibrium", title: "Denge açısı", hasContent: true },
+      { id: "heel-from-weight-shift", title: "Ağırlık kaymasına bağlı yatma", hasContent: true },
+      { id: "small-angle-stability", title: "Küçük açılar için stabilite", hasContent: true },
+      { id: "large-angle-stability", title: "Büyük açılar için stabilite", hasContent: true },
+    ],
   },
   {
-    id: "serbest-yuzey",
-    title: "3. Serbest Yüzey Etkisi",
+    id: "free-surface",
+    number: 6,
+    title: "Serbest Yüzey Etkisi (Free Surface Effect)",
     icon: Waves,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Kısmen dolu tanklardaki sıvı, gemi yatınca serbest yüzeyinde yatay kalmaya çalışarak bir kama şeklinde transfer oluşturur. Bu durum ağırlık merkezini
-          yana kaydırarak geminin metasantrik yüksekliğini düşürür; buna <strong className="text-foreground">serbest yüzey etkisi (free surface effect)</strong> denir.
-          Serbest yüzey etkisi, büyük tanklarda ve geniş güverteli gemilerde çok daha kritiktir.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">FSM (Free Surface Moment):</strong> Serbest yüzeyin yarattığı devrilme etkisinin moment karşılığıdır ve GM düzeltmesinde
-          kullanılır. FSM değeri büyüdükçe serbest yüzey etkisi artar.
-        </p>
-
-        <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4">
-          <h4 className="font-semibold text-amber-600 dark:text-amber-400 mb-2">Serbest Yüzey Düzeltmesi Formülü</h4>
-          <div className="rounded bg-background/50 p-2 text-center font-mono text-sm text-foreground">
-            GM<sub>düzeltilmiş</sub> = GM − Σ(I<sub>f</sub>/∇)
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            Burada I<sub>f</sub> her tankın serbest yüzey atalet momenti, ∇ deplasman hacmidir.
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Pratik not: Stabilite kitapçığındaki <strong className="text-foreground">FSM tablosundan düzeltme</strong> değerleri doğrudan GM düşüşüne eklenir; birden
-            fazla tank varsa FSM değerleri toplanır.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Serbest Yüzey Etkisini Azaltma Yöntemleri</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-green-500" />
-              <span>Tanklar bölmelere ayrılarak I<sub>f</sub> küçültülür</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-green-500" />
-              <span>Tankların tamamen dolu veya boş tutulması</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-green-500" />
-              <span>Enine bölme ve yatay perdeler kullanılması</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
+    subtopics: [
+      { id: "free-surface-concept", title: "Serbest yüzey kavramı", hasContent: true },
+      { id: "fse-gm-effect", title: "Serbest yüzeyin GM'ye etkisi", hasContent: true },
+      { id: "fsm", title: "Free Surface Moment (FSM)", hasContent: true },
+      { id: "fse-calc", title: "Free Surface Effect (FSE)", hasContent: true },
+      { id: "tank-geometry-effect", title: "Tank geometrisinin etkisi", hasContent: true },
+      { id: "multiple-tanks-effect", title: "Birden fazla tankın etkisi", hasContent: true },
+    ],
   },
   {
-    id: "ic-etkiler",
-    title: "4. İç Yükler ve Diğer İç Etkiler",
-    icon: Ship,
-    content: (
-        <div className="space-y-4">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-          Geminin içindeki ağırlıkların konumu stabiliteyi doğrudan etkiler. Yüklerin merkezden uzaklaşması, ağırlık merkezinin yana kayması ve GM değerinin
-          düşmesi gibi etkiler devrilme riskini artırabilir. Bu nedenle yükleme emniyeti ile stabilite emniyeti birlikte düşünülmelidir.
-          </p>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-lg border border-border/40 bg-card/50 p-3">
-            <h5 className="text-sm font-medium text-foreground mb-1">Yolcu/Personel Hareketi</h5>
-            <p className="text-xs text-muted-foreground">Yolcuların veya personelin bir tarafa toplanması gemide heeling momenti oluşturur; kalabalığın dengeli dağıtılması gerekir.</p>
-          </div>
-          <div className="rounded-lg border border-border/40 bg-card/50 p-3">
-            <h5 className="text-sm font-medium text-foreground mb-1">Yük Kayması</h5>
-            <p className="text-xs text-muted-foreground">Sabitlenmemiş veya gevşek bağlanmış yüklerin kayması G noktasını değiştirir, GZ kolunu azaltır ve gemiyi tehlikeye sokar.</p>
-          </div>
-          <div className="rounded-lg border border-border/40 bg-card/50 p-3">
-            <h5 className="text-sm font-medium text-foreground mb-1">Vinçle Yük Kaldırma</h5>
-            <p className="text-xs text-muted-foreground">Güverte dışına asılı ağır yükler, ağırlık merkezini yükseltip yana kaydırır; doğrultucu kolu azaltarak gemiyi "boom heel" durumuna getirir.</p>
-          </div>
-          <div className="rounded-lg border border-border/40 bg-card/50 p-3">
-            <h5 className="text-sm font-medium text-foreground mb-1">Balast ve Tank Operasyonları</h5>
-            <p className="text-xs text-muted-foreground">Balast tanklarının doldurulması/boşaltılması ile geminin deplasmanı ve KG değişir; yuvarlanma periyodu ve metasantrik yükseklik buna bağlı olarak değişir.</p>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: "dis-etkiler",
-    title: "5. Dış Etkiler ve Manevra Kaynaklı Stabilite",
-    icon: Gauge,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Gemi dışındaki çevresel kuvvetler ve manevra hareketleri de stabiliteyi değiştirir. Deniz durumu, rüzgâr kuvveti, akıntı ve manevra ivmeleri
-          heeling momentleri oluşturur ve GZ eğrisinin kullanılabilirliğini belirler.
-        </p>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">5.1 Rüzgâr Devrilme Momenti</h4>
-          <p className="text-sm text-muted-foreground">
-            Rüzgâr, üst yapı alanına etki ederek heeling momenti yaratır. Bu etki, rüzgâr heeling arm (rüzgâr heeling kolu) üzerinden değerlendirilir ve IMO kodu bu heeling kolunu GZ eğrisi ile karşılaştırarak belirli açı aralıklarında alan kriterleri getirir.
-          </p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Üst yapı alanı (A):</strong> Rüzgârın uygulandığı etkin alan büyüdükçe heeling arm artar.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Rüzgâr basıncı (Pw):</strong> Basınç yükseldikçe rüzgâr kaynaklı devrilme momenti büyür.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Moment kolu (Z):</strong> Etki hattının ağırlık merkezine uzaklığı heeling arm değerini belirler.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">5.2 Dalga Etkileri ve Parametrik Salınım</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Parametrik salınım (parametric rolling), baş veya kıçtan gelen dalgalarda GZ kolunun zamanla periyodik değişmesi sonucu ortaya çıkan bir rezonans fenomenidir. Metasantrik yükseklik dalga tepesinde azalır ve dalga çukurunda artar. Bu periyodik değişim, gemi kendi doğal yuvarlanma periyodu ile uyumlu olduğunda şiddetli yalpalamalara neden olur.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">5.3 Diğer Dış Faktörler</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Hızlı dönüş (turning heel):</strong> Gemi yüksek hızda keskin dönüş yaptığında merkezkaç kuvveti heeling momenti oluşturur</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Römork ve akıntı etkileri:</strong> Römork halatı veya güçlü akıntı gemiyi bir tarafa çeker</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Buz ve su birikmesi:</strong> Güverte üzerinde biriken buz veya su, KG'yi yükseltip GM'yi azaltır</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Karaya oturma:</strong> Geminin karaya oturması sırasında kaldırma kuvveti kaybolur ve stabilite düşer</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: "imo-kriterleri",
-    title: "6. Stabilite Kriterleri ve Düzenlemeler",
-    icon: Shield,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Uluslararası Denizcilik Örgütü (IMO) İntakt Stabilite Kodu, gemilerin sefer sırasında asgari stabilite şartlarını belirler.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Ancak bu kriterler geminin tipine göre farklılaşabilir; yolcu gemileri, HSC (yüksek hızlı) gemiler, balıkçı gemileri gibi özel sınıflar için ek
-          şartlar ve farklı eşik değerleri uygulanır.
-        </p>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Temel IMO Kriterleri</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Bu kriterler gemi tipine göre farklılık gösterebilir; yolcu gemileri, yüksek hızlı araçlar (HSC) ve özel maksatlı gemiler için ek veya
-            daha sıkı stabilite şartları uygulanır.
-          </p>
-          <div className="grid gap-2">
-            <div className="flex items-center gap-3 rounded-lg bg-primary/5 p-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary">1</div>
-              <div>
-                <p className="text-sm font-medium text-foreground">Minimum metasantrik yükseklik</p>
-                <p className="text-xs text-muted-foreground">Tam yüklü kargolu gemiler için GM ≥ 0,15 m</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg bg-primary/5 p-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary">2</div>
-              <div>
-                <p className="text-sm font-medium text-foreground">Maksimum GZ ve açısı</p>
-                <p className="text-xs text-muted-foreground">Maksimum GZ kolu en az 0,20 m olmalı ve 30°–40° arası bir açıda oluşmalıdır</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg bg-primary/5 p-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary">3</div>
-              <div>
-                <p className="text-sm font-medium text-foreground">Pozitif stabilite alanı</p>
-                <p className="text-xs text-muted-foreground">0°–30° arası en az 0,055 m·rad; 0°–40° arası en az 0,09 m·rad; 30°–40° arası en az 0,03 m·rad</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg bg-primary/5 p-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary">4</div>
-              <div>
-                <p className="text-sm font-medium text-foreground">Vanishing stability açısı</p>
-                <p className="text-xs text-muted-foreground">Geminin doğrultucu kolunun sıfıra düştüğü açı 25°'ten büyük olmalıdır</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: "hasar-stabilitesi",
-    title: "7. Hasar Stabilitesi",
-    icon: AlertTriangle,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Hasar stabilitesi, geminin bir veya daha fazla bölmesi su aldığında kalan kaldırma kuvveti ve stabilitenin değerlendirilmesidir. Bu analiz,
-          geminin hasar sonrası hayatta kalabilirliğini gösterir ve SOLAS kurallarına göre asgari kriterleri sağlamalıdır.
-        </p>
-
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-            <span>Permeability (μ)</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-            <span>Margin line</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-            <span>Residual stability</span>
-          </li>
-        </ul>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-lg border border-red-500/30 bg-red-500/5 p-4">
-            <h5 className="text-sm font-medium text-red-600 dark:text-red-400 mb-2">Kayıp Kaldırma Yöntemi</h5>
-            <p className="text-xs text-muted-foreground">Su alan bölmenin kaldırma kuvveti yok sayılır; geminin deplasmanı azalır ve yeni B ve G noktaları belirlenir.</p>
-          </div>
-          <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-4">
-            <h5 className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">Ek Ağırlık Yöntemi</h5>
-            <p className="text-xs text-muted-foreground">Su alan bölmeye giren su, geminin ağırlığına eklenir; deplasman artar ve G noktası yükselir.</p>
-          </div>
-        </div>
-
-        <p className="text-sm text-muted-foreground">
-          Hasar stabilitesi değerlendirmeleri, SOLAS'ın probabilistik kriterleri ve ulusal yönetmelikler uyarınca yapılır. Tanklar arası watertight (su geçirmez) perdeler ve acil durum pompaları hasar stabilitesinin artırılmasına yardımcı olur.
-        </p>
-        <p className="text-sm text-muted-foreground">
-          Özetle, hasar stabilitesi değerlendirmesinde R ve A gibi hesaplanan indeksler ile Rreq gereklilik indeksi karşılaştırılır ve geminin kriteri sağladığı doğrulanır.
-        </p>
-      </div>
-    )
-  },
-  {
-    id: "testler",
-    title: "8. Testler ve Ölçümler",
-    icon: Calculator,
-    content: (
-        <div className="space-y-4">
-          <div className="space-y-3">
-            <h4 className="font-semibold text-foreground">8.1 İnklinasyon Deneyi</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Gemi inşa edildikten sonra gerçek KG ve GM değerlerini belirlemek için yapılan deneydir. Bilinen ağırlıklar gemi içinde yatay olarak yer değiştirir ve sonuçta meydana gelen yatma açılarından GM hesaplanır.
-            </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              İnklinasyon sonuçları, stabilite kitapçığının temelini oluşturur. Ölçümde yakıt, tatlı su ve ekipman konfigürasyonlarının doğru kaydedilmesi kritik önemdedir.
-            </p>
-          </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">8.2 Yuvarlanma (Rolling) Testi</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Bazı ülkeler, geminin yuvarlanma periyodunu tespit etmek için deneme yapılmasını ister. Yuvarlanma periyodu T şu formülle yaklaşık hesaplanabilir:
-          </p>
-          <div className="rounded-lg bg-primary/10 p-3 text-center font-mono text-sm font-semibold text-primary">
-            T = C<sub>b</sub> × B / √GM
-          </div>
-          <p className="text-xs text-muted-foreground text-center">
-            C<sub>b</sub>: blok katsayısı, B: en geniş genişlik
-          </p>
-          <div className="flex items-start gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-700 dark:text-amber-200">
-            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>
-              Bu bağıntı küçük açı varsayımıyla (yaklaşık 5–10°) kullanılır. C<sub>b</sub> tipik olarak 0,60–0,85 aralığındadır ve gemi tipine bağlı olarak değişir.
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">8.3 KN / Cross-Curves ve Simpson Alan Hesapları</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Tasarım aşamasında belirli KG ve trim değerlerine göre cross-curves of stability (KN eğrileri) oluşturulur. Simpson'un 1/3 ve 3/8 kuralları, düzensiz alanların hesaplanmasında kullanılır.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">8.4 Dokümantasyon ve Doğrulama Zinciri</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            İnklinasyon deneyinden gelen veriler stabilite kitapçığına aktarılır ve bu kitapçık yükleme el kitabındaki operasyon limitlerinin temelini oluşturur. Yükleme bilgisayarı doğrulaması ise aynı limitlerin dijital hesaplamalarda doğru uygulandığını gösterir; üçü birlikte tutarlı olduğunda gemi yükleme kararları güvenle teyit edilir.
-          </p>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: "trim",
-    title: "9. Trim ve Boyuna Denge",
+    id: "longitudinal-stability",
+    number: 7,
+    title: "Boyuna Stabilite ve Trim",
     icon: Anchor,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Geminin baş ve kıç draftlarının farklı olması trim olarak adlandırılır. Geminin boyuna dengesini anlamak için hogging (ortadan yukarı bükülme)
-          ve sagging (ortadan aşağı sarkma) kavramları kullanılır. Trim hesapları; yükleme planı, yakıt tüketimi ve balast yönetimi için temel girdidir.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Trim hesaplamalarında hedef, sefer boyunca sevk verimini korurken baş-kıç ağırlık dağılımını emniyet sınırlarında tutmaktır.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          LCF, trim momentlerinin uygulandığı referans noktasıdır; MCT1cm bu nokta etrafında geminin trimini 1 cm değiştirmek için gereken momenti
-          gösterirken, TPC aynı deplasman koşulunda gemiyi paralel batırmak için gereken ağırlığı ifade eder ve birlikte trim ile ortalama draft
-          değişimini eş zamanlı değerlendirmeyi sağlar.
-        </p>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Ortalama Draft Hesabı</h4>
-          <div className="rounded-lg bg-primary/10 p-3 text-center font-mono text-sm font-semibold text-primary">
-            d<sub>M</sub> = (d<sub>F</sub> + d<sub>A</sub>) / 2
-          </div>
-          <p className="text-xs text-muted-foreground text-center">
-            d<sub>F</sub>: baş (forward) draftı, d<sub>A</sub>: kıç (aft) draftı
-          </p>
-          <div className="rounded-lg border border-border/60 bg-muted/40 p-3">
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Ortalama draft ve trim hesaplarında LCF (Longitudinal Center of Flotation) geminin boyuna eksende dönme merkezini ifade eder; MCT1cm, trimin 1 cm değişmesi için gereken momenti gösterir ve trim hesabında paydadaki hassasiyet katsayısıdır; TPC ise geminin 1 cm batması için gerekli ton miktarıdır ve paralel batma/çıkma hesabında ağırlığın drafta dönüşümünü sağlar.
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Trim Değişimi</h4>
-          <div className="rounded-lg bg-primary/10 p-3 text-center font-mono text-sm font-semibold text-primary">
-            ΔTrim = Toplam Moment / MCT
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Paralel Batma/Çıkma</h4>
-          <div className="rounded-lg bg-primary/10 p-3 text-center font-mono text-sm font-semibold text-primary">
-            Batma (cm) = w / TPC
-          </div>
-          <p className="text-xs text-muted-foreground text-center">
-            w: ilave/kaldırılan ağırlık, TPC: Tonnes per Centimetre Immersion
-          </p>
-        </div>
-      </div>
-    )
+    subtopics: [
+      { id: "lcg", title: "Boyuna ağırlık merkezi (LCG)", hasContent: true },
+      { id: "lcb", title: "Yüzerlik merkezi (LCB)", hasContent: true },
+      { id: "trim-concept", title: "Trim kavramı", hasContent: true },
+      { id: "mct", title: "MCT (Moment to Change Trim)", hasContent: true },
+      { id: "trim-calculations", title: "Trim hesapları", hasContent: true },
+      { id: "trim-control", title: "Yükleme ve boşaltmada trim kontrolü", hasContent: true },
+    ],
   },
   {
-    id: "ileri-konular",
-    title: "10. İleri Konular",
-    icon: Lightbulb,
-    content: (
-      <div className="space-y-4">
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">10.1 Negatif GM ve Loll Açısı</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Bazı yükleme durumlarında KG o kadar yükselir ki GM negatif olur. Bu durumda gemi dik konumda kararsızdır ve bir tarafa doğru kendi kendine yatmaya başlar. GZ kolu tekrar sıfıra ve pozitife döndüğünde belirli bir açıda dengede kalır. Bu açıya <strong className="text-foreground">loll açısı</strong> denir.
-          </p>
-          <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3">
-            <p className="text-xs text-amber-600 dark:text-amber-400">
-              ⚠️ Loll durumu serbest yüzey etkisi, üstte yoğun ağırlık birikmesi veya yetersiz balast nedeniyle ortaya çıkabilir. Loll'den kurtulmak için KG'nin düşürülmesi gerekir.
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">10.2 Parametrik Salınımın Önlenmesi</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Parametrik salınım riskini azaltmak için sefer sırasında dalga yönüne göre hız ve rota ayarlanmalı; dalga tepelerine denk gelen periyotlarla geminin doğal yuvarlanma periyotunun çakışması engellenmelidir.
-          </p>
-        </div>
-      </div>
-    )
+    id: "hydrostatic-data",
+    number: 8,
+    title: "Hidrostatik Veriler ve Stabilite Tabloları",
+    icon: BarChart3,
+    subtopics: [
+      { id: "displacement", title: "Deplasman", hasContent: true },
+      { id: "draft", title: "Draft", hasContent: true },
+      { id: "draft-displacement-relation", title: "Draft–deplasman ilişkisi", hasContent: true },
+      { id: "tpc", title: "TPC (Ton Per Centimeter)", hasContent: true },
+      { id: "km-values", title: "KM değerleri", hasContent: true },
+      { id: "hydrostatic-tables-usage", title: "Hidrostatik tabloların kullanımı", hasContent: true },
+    ],
   },
   {
-    id: "havuzlama",
-    title: "11. Havuzlamada Stabilite ve Kritik GM",
+    id: "gz-curve",
+    number: 9,
+    title: "Doğrultma Kolları ve Stabilite Eğrileri (GZ Curve)",
+    icon: Activity,
+    subtopics: [
+      { id: "gz-righting-lever", title: "Doğrultma kolu (GZ)", hasContent: true },
+      { id: "gz-curve-generation", title: "GZ eğrisinin elde edilmesi", hasContent: true },
+      { id: "max-gz", title: "Maksimum GZ", hasContent: true },
+      { id: "stability-area", title: "Stabilite alanı", hasContent: true },
+      { id: "capsizing-angle", title: "Devrilme açısı", hasContent: true },
+      { id: "gz-curve-interpretation", title: "GZ eğrisinin yorumu", hasContent: true },
+    ],
+  },
+  {
+    id: "dynamic-stability",
+    number: 10,
+    title: "Dinamik Stabilite",
+    icon: Zap,
+    subtopics: [
+      { id: "dynamic-righting-moment", title: "Dinamik doğrultma momenti", hasContent: true },
+      { id: "area-concept", title: "Alan kavramı", hasContent: true },
+      { id: "static-vs-dynamic", title: "Statik ve dinamik stabilite farkı", hasContent: true },
+      { id: "wave-effect", title: "Dalga etkisi", hasContent: true },
+      { id: "wind-effect", title: "Rüzgâr etkisi", hasContent: true },
+    ],
+  },
+  {
+    id: "damage-stability",
+    number: 11,
+    title: "Hasarlı Stabilite (Damage Stability)",
+    icon: AlertTriangle,
+    subtopics: [
+      { id: "post-damage-floatation", title: "Hasar sonrası yüzerlik", hasContent: true },
+      { id: "flooding-concept", title: "Flooding kavramı", hasContent: true },
+      { id: "reserve-buoyancy", title: "Rezerv yüzerlik", hasContent: true },
+      { id: "asymmetric-flooding", title: "Asimetrik flooding", hasContent: true },
+      { id: "progressive-flooding", title: "Progressive flooding", hasContent: true },
+      { id: "damaged-gm-gz", title: "Hasarlı GM ve GZ", hasContent: true },
+    ],
+  },
+  {
+    id: "special-stability",
+    number: 12,
+    title: "Özel Stabilite Durumları",
     icon: Ship,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Kuru havuza girmek (dry docking) geminin bakım ve onarımı için rutin bir işlemdir. Ancak bu süreçte geminin stabilitesi önemli ölçüde değişir ve kritik GM hesapları yapılmadan operasyon risklidir.
-        </p>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Etkili Kuvvetler</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Ağırlık (W):</strong> Geminin kendi ağırlığı olup aşağı yönlüdür</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Keel blok reaksiyonu (P):</strong> Bloklar tarafından uygulanan yukarı yönlü kuvvettir</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
-              <span><strong className="text-foreground">Kaldırma kuvveti (W−P):</strong> Kalan deplasmanın yarattığı yukarı yönlü kuvvettir</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Kritik GM Formülü</h4>
-          <div className="rounded-lg bg-primary/10 p-3 text-center font-mono text-sm font-semibold text-primary">
-            GM<sub>kritik</sub> = R × KM / Δ
-          </div>
-          <p className="text-xs text-muted-foreground text-center">
-            R: keel blok reaksiyonu, KM: kökle metasentre mesafe, Δ: gemi deplasmanı
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <h4 className="font-semibold text-foreground">Güvenli Docking İçin Altın Kurallar</h4>
-          <div className="grid gap-2">
-            {[
-              "Kritik GM pozitif olmalıdır",
-              "Gemi her zaman dik olmalıdır",
-              "Önerilen ortalama draft aşılmamalıdır",
-              "Önerilen kıç trim aşılmamalıdır",
-              "Tüm sintine ve tanklar kuru olmalıdır",
-              "Tüm tankların sounding kayıtları tutulmalıdır"
-            ].map((rule, index) => (
-              <div key={index} className="flex items-center gap-2 rounded-lg bg-green-500/5 border border-green-500/20 p-2">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500/20 text-xs font-bold text-green-600 dark:text-green-400">
-                  {index + 1}
-                </div>
-                <span className="text-xs text-foreground">{rule}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    )
+    subtopics: [
+      { id: "heavy-lift", title: "Heavy lift operasyonları", hasContent: true },
+      { id: "deck-cargo", title: "Güverte yükleri", hasContent: true },
+      { id: "suspended-weight", title: "Asılı yük etkisi", hasContent: true },
+      { id: "ballast-operations", title: "Balast operasyonları", hasContent: true },
+      { id: "cargo-shift", title: "Kargo kayması", hasContent: true },
+      { id: "icing-effect", title: "Buzlanma etkisi", hasContent: true },
+    ],
   },
   {
-    id: "formuller",
-    title: "12. Formüller ve Hesaplamalar",
-    icon: Calculator,
-    content: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Aşağıdaki tabloda gemi stabilitesiyle ilgili temel formüller özetlenmiştir.
-        </p>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="py-2 text-left font-semibold text-foreground">Konu</th>
-                <th className="py-2 text-left font-semibold text-foreground">Formül</th>
-              </tr>
-            </thead>
-            <tbody className="text-muted-foreground">
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Metasantrik Yükseklik (GM)</td>
-                <td className="py-2 font-mono">GM = KM − KG veya GM = I/∇ − KG</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Doğrultucu Kol (GZ)</td>
-                <td className="py-2 font-mono">GZ ≈ GM · sin φ (küçük açı)</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Doğrultucu Moment (RM)</td>
-                <td className="py-2 font-mono">RM = Δ · GZ</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Metasantrik Yarıçap (BM)</td>
-                <td className="py-2 font-mono">BM = I/∇</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Metasantrik Yükseklik (KM)</td>
-                <td className="py-2 font-mono">KM = KB + BM</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">KG Hesabı</td>
-                <td className="py-2 font-mono">KG = Σ(wᵢ × KGᵢ) / Σwᵢ</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Serbest Yüzey Düzeltmesi</td>
-                <td className="py-2 font-mono">GM<sub>d</sub> = GM − Σ(I<sub>f</sub>/∇)</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Yalpa Periyodu</td>
-                <td className="py-2 font-mono">T = C<sub>b</sub> × B / √GM</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">KN'den GZ'ye Dönüşüm</td>
-                <td className="py-2 font-mono">GZ(θ) = KN(θ) − KG · sin θ</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 font-medium text-foreground">Ağırlık Kaydırma Etkisi</td>
-                <td className="py-2 font-mono">ΔGM = w × d / Δ</td>
-              </tr>
-              <tr>
-                <td className="py-2 font-medium text-foreground">Kritik GM (Dry Dock)</td>
-                <td className="py-2 font-mono">GM<sub>kritik</sub> = R × KM / Δ</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    )
-  }
+    id: "stability-criteria",
+    number: 13,
+    title: "Stabilite Kriterleri ve Uluslararası Kurallar",
+    icon: Shield,
+    subtopics: [
+      { id: "imo-stability-criteria", title: "IMO stabilite kriterleri", hasContent: true },
+      { id: "intact-stability-code", title: "Intact Stability Code", hasContent: true },
+      { id: "wind-criteria", title: "Rüzgâr kriterleri", hasContent: true },
+      { id: "wave-criteria", title: "Dalga kriterleri", hasContent: true },
+      { id: "min-gm-requirements", title: "Minimum GM şartları", hasContent: true },
+      { id: "operational-limits", title: "Operasyonel limitler", hasContent: true },
+    ],
+  },
+  {
+    id: "stability-accidents",
+    number: 14,
+    title: "Stabilite Kazaları ve Operasyonel Sonuçlar",
+    icon: BookMarked,
+    subtopics: [
+      { id: "loading-errors", title: "Yükleme hataları", hasContent: true },
+      { id: "fse-accidents", title: "Serbest yüzey kaynaklı kazalar", hasContent: true },
+      { id: "wrong-gm-interpretation", title: "Yanlış GM yorumları", hasContent: true },
+      { id: "trim-operation-errors", title: "Trim kaynaklı operasyon hataları", hasContent: true },
+      { id: "psc-findings", title: "Stabiliteyle ilişkili PSC bulguları", hasContent: true },
+    ],
+  },
 ];
 
+// İçerik veritabanı - her alt konu için detaylı içerik
+interface TopicContent {
+  title: string;
+  introduction: string;
+  content: string;
+  bulletPoints?: string[];
+  formula?: {
+    name: string;
+    expression: string;
+    description: string;
+  };
+  keyPoints?: string[];
+  warnings?: string[];
+}
+
+const topicContents: Record<string, TopicContent> = {
+  "stability-definition": {
+    title: "Stabilitenin Tanımı",
+    introduction: "Stabilite, bir geminin dış kuvvetler altında dengesini koruma ve denge bozulduğunda eski haline dönme yeteneğidir.",
+    content: `Gemi stabilitesi, denizcilik mühendisliğinin en kritik konularından biridir. Bir geminin güvenli seyir yapabilmesi için yeterli stabiliteye sahip olması zorunludur.
+
+Stabilite kavramı temelde şu soruya cevap arar: "Gemi yattığında tekrar dik duruma dönebilir mi?"
+
+Bir cismin stabilitesi, o cismin denge konumundan uzaklaştırıldığında gösterdiği tepkiyle belirlenir. Eğer cisim eski konumuna dönmeye çalışıyorsa stabildir, daha da uzaklaşıyorsa unstabildir.
+
+Gemilerde stabilite, yükleme durumuna, tank doluluk oranlarına, hava koşullarına ve yapılan operasyonlara bağlı olarak sürekli değişir. Bu nedenle her yükleme durumunda stabilite hesabı yapılmalıdır.`,
+    bulletPoints: [
+      "Stabilite = Dengeyi koruma + Dengeye dönme yeteneği",
+      "Yetersiz stabilite = Devrilme riski",
+      "Aşırı stabilite = Sert salınım, yük hasarı",
+      "Optimum stabilite = Güvenli ve konforlu seyir",
+    ],
+    keyPoints: [
+      "Stabilite geminin en önemli güvenlik parametresidir",
+      "Her yükleme durumunda kontrol edilmelidir",
+      "IMO kriterleri minimum gereksinimleri belirler",
+    ],
+  },
+  "balance-concepts": {
+    title: "Denge, Devrilme ve Doğrultma Kavramları",
+    introduction: "Gemilerde denge, üzerine etki eden kuvvetlerin dengede olması durumudur. Devrilme bu dengenin bozulması, doğrultma ise dengenin yeniden sağlanmasıdır.",
+    content: `Bir gemi dengedeyken üzerine iki temel kuvvet etki eder:
+1. Ağırlık kuvveti (W) - Aşağı yönlü, ağırlık merkezinden (G) etki eder
+2. Kaldırma kuvveti (B) - Yukarı yönlü, kaldırma merkezinden (B) etki eder
+
+Dengede: W = B ve G ile B aynı düşey doğru üzerindedir.
+
+DEVRILME:
+Gemi yattığında G noktası sabit kalırken, B noktası yatan tarafa doğru kayar. Bu durum bir moment oluşturur.
+
+DOĞRULTMA:
+Eğer oluşan moment gemiyi dik duruma getirmeye çalışıyorsa, bu "doğrultma momenti"dir ve gemi stabildir.
+Eğer moment gemiyi daha da yatırmaya çalışıyorsa, gemi unstabildir.`,
+    bulletPoints: [
+      "Denge: W = B, G ve B aynı düşey doğruda",
+      "Yatma: B noktası yatan tarafa kayar",
+      "Doğrultma momenti: Gemiyi dik konuma getiren moment",
+      "Devrilme momenti: Gemiyi daha fazla yatıran moment",
+    ],
+    formula: {
+      name: "Doğrultma Momenti",
+      expression: "RM = W × GZ",
+      description: "RM: Doğrultma momenti (t-m), W: Deplasman (ton), GZ: Doğrultma kolu (m)",
+    },
+    keyPoints: [
+      "Denge, kuvvetlerin eşitliği ve momentlerin sıfır olması demektir",
+      "Devrilme, dengenin tehlikeli şekilde bozulmasıdır",
+      "Doğrultma, geminin kendini düzeltme yeteneğidir",
+    ],
+  },
+  "static-stability": {
+    title: "Statik Stabilite",
+    introduction: "Statik stabilite, geminin belirli bir yatma açısında sabit kaldığı ve hareket etmediği durumda analiz edilen stabilite türüdür.",
+    content: `Statik stabilite, geminin belirli bir yatma açısında denge durumunu inceler. Bu analiz, hareketin olmadığı, yani geminin o açıda "donmuş" gibi kabul edildiği bir durum için yapılır.
+
+Statik stabilitede temel soru şudur: "Gemi belirli bir açıda yatmış halde mi kalacak, yoksa dik duruma mı dönecek?"
+
+Statik stabilite analizi, GZ (doğrultma kolu) eğrisi üzerinden yapılır. Bu eğri, farklı yatma açılarında geminin ne kadar doğrultma momenti ürettiğini gösterir.
+
+Pozitif GZ değeri, geminin o açıda dik duruma dönme eğiliminde olduğunu gösterir.
+Negatif GZ değeri, geminin daha fazla yatma eğiliminde olduğunu gösterir.`,
+    bulletPoints: [
+      "Statik = Hareket yok, anlık denge analizi",
+      "GZ eğrisi statik stabilitenin temel aracıdır",
+      "Pozitif GZ = Gemi dik duruma dönecek",
+      "Negatif GZ = Gemi daha fazla yatacak",
+    ],
+    keyPoints: [
+      "Statik stabilite, belirli bir andaki denge durumunu inceler",
+      "GZ eğrisi, tüm yatma açıları için stabilite bilgisi verir",
+      "IMO kriterleri statik stabilite üzerine kuruludur",
+    ],
+  },
+  "dynamic-stability-intro": {
+    title: "Dinamik Stabilite",
+    introduction: "Dinamik stabilite, geminin hareket halindeyken ve dış kuvvetlere maruz kalırken gösterdiği stabilite davranışıdır.",
+    content: `Dinamik stabilite, gerçek deniz koşullarında geminin davranışını inceler. Statik stabiliteden farklı olarak, burada geminin hareketi ve enerji dengesi göz önünde bulundurulur.
+
+Dalga, rüzgâr ve manevra gibi dış kuvvetler gemiye enerji aktarır. Bu enerji, geminin yatma hareketine dönüşür. Gemi, bu enerjiyi absorbe edebilmeli ve devrilmeden dengesini korumalıdır.
+
+Dinamik stabilite, GZ eğrisinin altındaki alanla ölçülür. Bu alan, geminin belirli bir açıya kadar absorbe edebileceği enerji miktarını temsil eder.
+
+Büyük alan = Daha fazla enerji absorbe kapasitesi = Daha iyi dinamik stabilite`,
+    bulletPoints: [
+      "Dinamik = Hareket var, enerji dengesi analizi",
+      "Dış kuvvetler gemiye enerji aktarır",
+      "GZ eğrisi altındaki alan = Enerji kapasitesi",
+      "IMO kriterleri alan gereksinimlerini belirler",
+    ],
+    formula: {
+      name: "Dinamik Stabilite",
+      expression: "E = ∫ Δ × GZ × dθ",
+      description: "E: Enerji (t-m-rad), Δ: Deplasman (ton), GZ: Doğrultma kolu (m), θ: Açı (rad)",
+    },
+    keyPoints: [
+      "Dinamik stabilite gerçek deniz koşullarını yansıtır",
+      "Enerji dengesi kritik öneme sahiptir",
+      "Alan kriterleri IMO tarafından zorunlu kılınmıştır",
+    ],
+  },
+  "initial-stability": {
+    title: "İlk Stabilite Kavramı",
+    introduction: "İlk stabilite (initial stability), geminin küçük yatma açılarındaki (0-10°) stabilite davranışını tanımlar ve GM değeri ile ifade edilir.",
+    content: `İlk stabilite, geminin dik konumdan çok az yattığı (genellikle 10°'ye kadar) durumlardaki stabilitesidir. Bu aralıkta metasantr (M) noktası sabit kabul edilir.
+
+İlk stabilitenin ölçüsü, metasantrik yükseklik GM'dir:
+GM = KM - KG
+
+Burada:
+- KM: Omurgadan metasantra uzaklık (hidrostatik tablolardan)
+- KG: Omurgadan ağırlık merkezine uzaklık (yükleme hesabından)
+
+Büyük GM = Sert gemi, hızlı salınım
+Küçük GM = Yumuşak gemi, yavaş salınım
+Negatif GM = Unstabil gemi, tehlike!`,
+    bulletPoints: [
+      "İlk stabilite küçük açılar (0-10°) için geçerlidir",
+      "GM değeri ilk stabilitenin ölçüsüdür",
+      "GM = KM - KG formülü ile hesaplanır",
+      "GM pozitif olmalıdır (minimum 0.15 m)",
+    ],
+    formula: {
+      name: "Metasantrik Yükseklik",
+      expression: "GM = KM - KG",
+      description: "GM: Metasantrik yükseklik (m), KM: Omurgadan metasantra (m), KG: Omurgadan ağırlık merkezine (m)",
+    },
+    keyPoints: [
+      "GM pozitif olmalıdır - negatif GM tehlikelidir",
+      "Çok büyük GM sert salınıma neden olur",
+      "Çok küçük GM yavaş tepki ve risk demektir",
+    ],
+    warnings: [
+      "GM negatif ise gemi dik duramaz, 'loll' açısında kalır",
+      "Minimum GM değeri gemi tipine göre IMO tarafından belirlenir",
+    ],
+  },
+  "stability-safety": {
+    title: "Stabilite ve Seyir Emniyeti İlişkisi",
+    introduction: "Stabilite, seyir emniyetinin temel direğidir. Yetersiz stabilite can kaybına, gemi kaybına ve çevre felaketlerine yol açabilir.",
+    content: `Denizcilik tarihinde birçok trajik kaza, yetersiz stabiliteden kaynaklanmıştır. Bu kazalar, stabilite kurallarının sürekli güncellenmesine ve sıkılaştırılmasına neden olmuştur.
+
+Stabilite ve emniyet ilişkisi:
+1. Mürettebat güvenliği: Geminin devrilmesi can kaybına yol açar
+2. Yolcu güvenliği: Yolcu gemilerinde binlerce kişi risk altındadır
+3. Çevre güvenliği: Yakıt ve yük denize sızabilir
+4. Ekonomik güvenlik: Gemi ve yük kaybı büyük maddi zarara neden olur
+
+ISM (International Safety Management) Kodu, stabilite yönetimini zorunlu kılmaktadır. Kaptan, her yükleme durumunda stabilitenin yeterli olduğunu doğrulamalıdır.`,
+    bulletPoints: [
+      "Yetersiz stabilite = Can kaybı riski",
+      "ISM Kodu stabilite yönetimini zorunlu kılar",
+      "Kaptan stabilite sorumluluğu taşır",
+      "Her yükleme için stabilite hesabı şarttır",
+    ],
+    keyPoints: [
+      "Stabilite, en kritik emniyet parametresidir",
+      "Tarihi kazalar mevzuatı şekillendirmiştir",
+      "Yükleme bilgisayarları stabilite kontrolünde kullanılır",
+    ],
+    warnings: [
+      "Yetersiz stabilite geminin batmasına neden olabilir",
+      "Stabilite kitapçığı limitlerine uyulmalıdır",
+    ],
+  },
+  // Diğer konular için içerikler...
+  "weight-w": {
+    title: "Ağırlık (W)",
+    introduction: "Geminin toplam ağırlığı, deplasman olarak adlandırılır ve geminin yüzmesi için gereken kaldırma kuvvetini belirler.",
+    content: `Geminin ağırlığı (W veya Δ), geminin tüm bileşenlerinin toplam ağırlığıdır:
+
+W = Hafif gemi ağırlığı + Yük + Yakıt + Tatlı su + Kumanya + Personel + ...
+
+Bu toplam ağırlık, ton (t) cinsinden ifade edilir ve "deplasman" olarak adlandırılır.
+
+Arşimet prensibine göre, yüzen bir cisim kendi ağırlığı kadar su kaldırır. Dolayısıyla:
+Deplasman = Yer değiştirilen suyun ağırlığı
+
+Deplasman, stabilite hesaplarının temelini oluşturur. Doğrultma momenti, deplasman ile GZ'nin çarpımıdır.`,
+    bulletPoints: [
+      "Deplasman = Geminin toplam ağırlığı",
+      "Deplasman = Yer değiştirilen su ağırlığı",
+      "Birim: ton (t) veya metrik ton",
+      "Draft arttıkça deplasman artar",
+    ],
+    formula: {
+      name: "Deplasman Hesabı",
+      expression: "Δ = ∇ × ρ",
+      description: "Δ: Deplasman (ton), ∇: Batık hacim (m³), ρ: Deniz suyu yoğunluğu (1.025 t/m³)",
+    },
+    keyPoints: [
+      "Deplasman, stabilitenin temel girdisidir",
+      "Yükleme ile deplasman değişir",
+      "Hidrostatik tablolardan draft-deplasman ilişkisi okunur",
+    ],
+  },
+  "center-of-gravity": {
+    title: "Ağırlık Merkezi (G)",
+    introduction: "Ağırlık merkezi (G), geminin tüm ağırlığının tek bir noktada toplandığı varsayılan noktadır ve stabilitenin en kritik parametresidir.",
+    content: `Ağırlık merkezi G, gemideki tüm ağırlıkların momentler yöntemiyle hesaplanan bileşke noktasıdır.
+
+G noktasının konumu üç boyutta tanımlanır:
+- KG: Omurgadan G'ye dikey mesafe (en kritik)
+- LCG: Boyuna ağırlık merkezi (trim için önemli)
+- TCG: Enine ağırlık merkezi (list için önemli)
+
+KG değeri, stabilitenin temel belirleyicisidir:
+- KG yükselirse → GM azalır → Stabilite zayıflar
+- KG düşerse → GM artar → Stabilite güçlenir
+
+Her yük hareketi G noktasının konumunu değiştirir.`,
+    bulletPoints: [
+      "G = Tüm ağırlıkların bileşke noktası",
+      "KG yüksekliği stabiliteyi doğrudan etkiler",
+      "Yük ekleme/çıkarma G'yi hareket ettirir",
+      "Yük taşıma G'yi taşınan yöne kaydırır",
+    ],
+    formula: {
+      name: "KG Hesabı",
+      expression: "KG = Σ(wᵢ × kgᵢ) / Σwᵢ",
+      description: "Her bir ağırlığın momentleri toplamı / toplam ağırlık",
+    },
+    keyPoints: [
+      "KG ne kadar düşükse stabilite o kadar iyidir",
+      "Her yükleme işleminde KG yeniden hesaplanmalıdır",
+      "Yük taşıma işlemi başladığı anda G anında değişir",
+    ],
+  },
+  // Daha fazla içerik eklenebilir...
+};
+
 export default function StabilityTopicsPage() {
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+
+  const handleSubtopicClick = (subtopicId: string, hasContent: boolean) => {
+    if (hasContent) {
+      setSelectedTopic(subtopicId);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedTopic(null);
+  };
+
+  const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
     ["--animation-duration" as string]: "8.33ms",
@@ -784,7 +520,7 @@ export default function StabilityTopicsPage() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
       data-no-translate
       style={highRefreshRateStyles}
     >
@@ -795,103 +531,243 @@ export default function StabilityTopicsPage() {
         <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6">
+      <div className="relative z-10">
         {/* Header */}
-        <header className="space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground backdrop-blur">
-            <GraduationCap className="h-4 w-4" />
-            Konu Anlatımı
-          </div>
-          
-          <div className="flex items-center justify-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
-              <Anchor className="h-6 w-6" />
+        <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
+          <div className="px-4 py-4">
+            <div className="flex items-center gap-3 max-w-4xl mx-auto">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
+                <Anchor className="h-6 w-6" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-foreground">Gemi Stabilitesi</h1>
+                <p className="text-sm text-muted-foreground">14 Ana Konu • Kapsamlı Müfredat</p>
+              </div>
             </div>
-            <h1 className="text-2xl font-bold text-foreground">Gemi Stabilitesi Konu Anlatımı</h1>
           </div>
-          
-        </header>
+        </div>
 
         {/* Topics Accordion */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-primary" />
-            <h2 className="text-lg font-semibold text-foreground">Konu Başlıkları</h2>
-          </div>
-          
-          <Accordion type="single" collapsible className="space-y-2">
-            {topicSections.map((section) => {
-              const SectionIcon = section.icon;
-              return (
-                <AccordionItem
-                  key={section.id}
-                  value={section.id}
-                  className="rounded-xl border border-border/40 bg-card/80 backdrop-blur overflow-hidden"
-                >
-                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-card/90 [&[data-state=open]]:bg-card/90">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 text-white">
-                        <SectionIcon className="h-4 w-4" />
+        <ScrollArea className="h-[calc(100vh-80px)]">
+          <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
+            <Accordion type="single" collapsible className="space-y-2">
+              {stabilityTopics.map((topic) => {
+                const TopicIcon = topic.icon;
+                return (
+                  <AccordionItem
+                    key={topic.id}
+                    value={topic.id}
+                    className="border border-border/40 rounded-xl overflow-hidden bg-card/80 backdrop-blur"
+                  >
+                    <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
+                      <div className="flex items-center gap-3 text-left">
+                        <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold">
+                          {topic.number}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <TopicIcon className="h-4 w-4 text-primary" />
+                          <span className="font-semibold text-foreground text-sm leading-tight">
+                            {topic.title}
+                          </span>
+                        </div>
                       </div>
-                      <span className="text-left font-medium text-foreground">{section.title}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 pb-4">
+                      <div className="space-y-1 mt-2">
+                        {topic.subtopics.map((subtopic) => (
+                          <motion.button
+                            key={subtopic.id}
+                            onClick={() => handleSubtopicClick(subtopic.id, subtopic.hasContent)}
+                            className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-colors ${
+                              subtopic.hasContent && topicContents[subtopic.id]
+                                ? "hover:bg-primary/5 cursor-pointer"
+                                : "opacity-50 cursor-not-allowed"
+                            }`}
+                            whileTap={subtopic.hasContent && topicContents[subtopic.id] ? { scale: 0.98 } : {}}
+                          >
+                            {subtopic.hasContent && topicContents[subtopic.id] ? (
+                              <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                            ) : (
+                              <Circle className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                            )}
+                            <span className="text-sm text-foreground">{subtopic.title}</span>
+                            {subtopic.hasContent && topicContents[subtopic.id] && (
+                              <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />
+                            )}
+                          </motion.button>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+
+            {/* Quick Links */}
+            <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur mt-6">
+              <div className="mb-4 flex items-center gap-2">
+                <Lightbulb className="h-5 w-5 text-primary" />
+                <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-3">
+                {[
+                  { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
+                  { title: "Stabilite Formülleri", href: "/stability/formulas" },
+                  { title: "IMO Kuralları", href: "/stability/rules" }
+                ].map((resource, index) => (
+                  <Link
+                    key={index}
+                    to={resource.href}
+                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
+                  >
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm font-medium text-foreground">{resource.title}</span>
                     </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    {section.content}
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
-        </section>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                  </Link>
+                ))}
+              </div>
+            </section>
 
-        {/* Quick Links */}
-        <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur">
-          <div className="mb-4 flex items-center gap-2">
-            <Lightbulb className="h-5 w-5 text-primary" />
-            <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
-          </div>
-          <div className="grid gap-2 sm:grid-cols-3">
-            {[
-              { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
-              { title: "Stabilite Formülleri", href: "/stability/formulas" },
-              { title: "IMO Kuralları", href: "/stability/rules" }
-            ].map((resource, index) => (
+            {/* Interactive Tools Section */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Calculator className="h-5 w-5 text-primary" />
+                <h2 className="text-lg font-semibold text-foreground">İnteraktif Hesaplama Araçları</h2>
+              </div>
+              <InteractiveStabilityTools />
+            </section>
+
+            {/* Back to Lessons */}
+            <div className="flex justify-center pt-2">
               <Link
-                key={index}
-                to={resource.href}
-                className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
+                to="/lessons"
+                className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
               >
-                <div className="flex items-center gap-2">
-                  <FileText className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm font-medium text-foreground">{resource.title}</span>
-                </div>
-                <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                <BookOpen className="h-4 w-4" />
+                Tüm Derslere Dön
               </Link>
-            ))}
+            </div>
           </div>
-        </section>
-
-        {/* Interactive Tools Section */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Calculator className="h-5 w-5 text-primary" />
-            <h2 className="text-lg font-semibold text-foreground">İnteraktif Hesaplama Araçları</h2>
-          </div>
-          <InteractiveStabilityTools />
-        </section>
-
-        {/* Back to Lessons */}
-        <div className="flex justify-center pt-2">
-          <Link
-            to="/lessons"
-            className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-          >
-            <BookOpen className="h-4 w-4" />
-            Tüm Derslere Dön
-          </Link>
-        </div>
+        </ScrollArea>
       </div>
+
+      {/* Full Screen Content Modal */}
+      <AnimatePresence>
+        {selectedTopic && currentContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-background"
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border">
+              <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto">
+                <h2 className="text-lg font-bold text-foreground truncate pr-4">
+                  {currentContent.title}
+                </h2>
+                <button
+                  onClick={closeModal}
+                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center"
+                >
+                  <X className="w-5 h-5 text-foreground" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <ScrollArea className="h-[calc(100vh-60px)]">
+              <div className="p-4 space-y-6 pb-20 max-w-4xl mx-auto">
+                {/* Introduction */}
+                <div className="bg-primary/5 rounded-xl p-4 border-l-4 border-primary">
+                  <p className="text-foreground font-medium leading-relaxed">
+                    {currentContent.introduction}
+                  </p>
+                </div>
+
+                {/* Main Content */}
+                <div className="prose prose-sm max-w-none">
+                  <div className="text-foreground leading-relaxed whitespace-pre-line">
+                    {currentContent.content}
+                  </div>
+                </div>
+
+                {/* Bullet Points */}
+                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
+                  <div className="bg-muted/50 rounded-xl p-4 space-y-2">
+                    <h3 className="font-semibold text-foreground mb-3">Önemli Noktalar</h3>
+                    {currentContent.bulletPoints.map((point, index) => (
+                      <div key={index} className="flex items-start gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-sm text-foreground">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Formula */}
+                {currentContent.formula && (
+                  <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
+                    <h3 className="font-semibold text-foreground mb-2">
+                      {currentContent.formula.name}
+                    </h3>
+                    <div className="bg-background rounded-lg p-3 font-mono text-lg text-center text-primary mb-2">
+                      {currentContent.formula.expression}
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {currentContent.formula.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Key Points */}
+                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
+                  <div className="bg-primary/5 rounded-xl p-4">
+                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      Anahtar Bilgiler
+                    </h3>
+                    <div className="space-y-2">
+                      {currentContent.keyPoints.map((point, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-2 text-sm text-foreground"
+                        >
+                          <span className="text-primary font-bold">{index + 1}.</span>
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Warnings */}
+                {currentContent.warnings && currentContent.warnings.length > 0 && (
+                  <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
+                    <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
+                      <AlertTriangle className="w-5 h-5" />
+                      Uyarılar
+                    </h3>
+                    <div className="space-y-2">
+                      {currentContent.warnings.map((warning, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-2 text-sm text-foreground"
+                        >
+                          <span className="text-destructive">⚠️</span>
+                          <span>{warning}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </ScrollArea>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
