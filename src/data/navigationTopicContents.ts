@@ -2622,5 +2622,234 @@ Orta enlem kavramı, kısa ve orta mesafeli seyirler için geliştirilmiştir. E
 Bu noktada daha gelişmiş projeksiyon tabanlı yöntemlere geçilmesi gerekir. Ortalama enlem, bu yöntemlere geçişten önce kullanılan pratik bir ara çözümdür.`
       }
     ]
+  },
+  "Set ve drift": {
+    title: "Set ve Drift",
+    introduction:
+      "Set, akıntının hakiki yönüdür; drift ise akıntının hızıdır. Set pusula derecesiyle ifade edilir ve akıntının su kütlesini hangi yöne taşıdığını gösterir. Drift knot cinsindendir ve bu taşımanın hızını belirtir.",
+    sections: [
+      {
+        title: "Set ve Drift Kavramı",
+        content: `![Set ve drift diyagramı](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg)
+
+![Apparent wind diyagramı](https://sailingissues.com/acht/apparent-wind-explanation-3x.png)
+
+Set ve drift birlikte akıntı vektörünü oluşturur. Bu vektör, geminin suya göre hız vektörüne eklendiğinde geminin yer hız vektörü elde edilir. Akıntı, geminin “itildiği” bir kuvvet gibi değil, yer hareketini belirleyen bağımsız bir hız bileşeni olarak ele alınır.`
+      },
+      {
+        title: "Set ve Drift Kaynakları",
+        content:
+          "Set ve drift değerleri harita üzerindeki tidal stream atlaslarından, akıntı tablolarından, gemi sensörlerinden veya pratikte COG–SOG ile suya göre değerlerin karşılaştırılmasından elde edilir. Akıntı seti geminin pruvasına göre değil, hakiki kuzeye göre tanımlanır. Akıntı set 135° dendiğinde, akıntı güneydoğuya akıyor demektir; geminin hangi yöne gittiğinden bağımsızdır."
+      },
+      {
+        title: "Akıntı Vektörü Tanımı",
+        content:
+          "Bu tanım, akıntının vektörel çözümlerde hangi iki bilgiyle temsil edildiğini sabitler ve tüm hesapların başlangıç noktasını oluşturur.",
+        formula: {
+          text: "Akıntı Vektörü = (Set, Drift)",
+          description: "Set yön, drift ise hız bilgisidir."
+        }
+      }
+    ],
+    keyPoints: [
+      "Set akıntının yönünü, drift ise hızını ifade eder",
+      "Set hakiki kuzeye göre tanımlanır; geminin pruvasına göre değildir",
+      "Set ve drift birlikte akıntı vektörünü oluşturur"
+    ]
+  },
+  "Akıntı vektörleri": {
+    title: "Akıntı Vektörleri",
+    introduction:
+      "Akıntılı seyirde üç temel vektör bulunur: geminin suya göre hız vektörü, akıntı vektörü ve geminin yere göre hız vektörü. Suya göre vektör STW ve heading ile, akıntı vektörü set ve drift ile, yer vektörü ise COG ve SOG ile tanımlanır.",
+    sections: [
+      {
+        title: "Akıntı Vektörlerinin Görsel Mantığı",
+        content: `![Vektör toplamı](https://www.grc.nasa.gov/www/k-12/airplane/Images/vectadd.gif)
+
+![Set ve drift diyagramı](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg?w=640)
+
+Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu ilişki, akıntılı seyir hesaplarının tamamını tek bir çerçeveye oturtur.`
+      },
+      {
+        title: "Temel Vektör Eşitliği",
+        content:
+          "Bu eşitlikte büyüklükler ve yönler birlikte taşındığı için çözüm, ölçekli vektör çizimiyle veya sayısal olarak bileşenlere ayırarak yapılır.",
+        formula: {
+          text: "Yer Hız Vektörü = Suya Göre Hız Vektörü + Akıntı Vektörü",
+          description: "COG/SOG, suya göre vektör ile akıntı vektörünün toplamıdır."
+        }
+      },
+      {
+        title: "Bileşenlere Ayırma",
+        content:
+          "Sayısal çözümde her vektör kuzey–güney ve doğu–batı bileşenlerine ayrılır. Hakiki kuzey referansı kullanıldığında bir vektörün bileşenleri trigonometrik olarak bulunur.",
+        formula: {
+          text: "Kuzey Bileşeni = Hız × cos Yön | Doğu Bileşeni = Hız × sin Yön",
+          description: "Her vektör için N ve E bileşenleri ayrı ayrı hesaplanır."
+        }
+      },
+      {
+        title: "Bileşenden Büyüklük ve Yön",
+        content:
+          "Bileşenler toplandıktan sonra yer vektörünün büyüklüğü ve yönü geri hesaplanır. Yönün hangi çeyrekte olduğu, N ve E’nin işaretinden belirlenir.",
+        formula: {
+          text: "SOG = √(N² + E²) | tan(COG) = E ÷ N",
+          description: "N ve E, yer vektörünün kuzey ve doğu bileşenleridir."
+        }
+      }
+    ],
+    keyPoints: [
+      "Akıntılı seyirde üç vektör birlikte değerlendirilir: STW, set/drift ve COG/SOG",
+      "Vektörlerin toplamı geminin yer hızını verir",
+      "Sayısal çözümde N/E bileşenleri kullanılır"
+    ]
+  },
+  "Heading – COG ilişkisi": {
+    title: "Heading – COG İlişkisi",
+    introduction:
+      "Heading, geminin pruvasının baktığı hakiki yönü ifade eder. COG ise geminin yer üzerinde izlediği gerçek rota doğrultusudur. Akıntısız durumda heading ile COG aynı kabul edilebilir; akıntı varlığında ise heading ile COG arasına bir sapma girer.",
+    sections: [
+      {
+        title: "Heading ile COG Arasındaki Sapma",
+        content: `![Heading ve COG ilişkisi](https://www.researchgate.net/publication/340312372/figure/fig2/AS%3A875987097100291%401585863007511/Schematic-of-speed-over-ground-SOG-course-over-ground-COG-ship-heading-HDG-and.png)
+
+![Tidal vektörler](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2016/06/Tidal-Vectors_Dick-Everitt.jpg)
+
+Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sürüklenmesi sonucu oluşur. Akıntılı seyirde rota COG ile temsil edilir; heading ise COG’yi tutturmak için ayarlanan kontrol değişkenidir.`
+      },
+      {
+        title: "Düzeltme Açısı Mantığı",
+        content:
+          "Bu ifade, işaretlendirme yapılmadan kullanılmaz; çünkü hangi tarafa düzeltme verileceği akıntı setine bağlıdır. Akıntı gemiyi istenen rotanın sağına itiyorsa, heading istenen COG’nin soluna alınır; gemiyi soluna itiyorsa, heading sağa alınır. Bu ilişki vektör üçgeniyle netleşir.",
+        formula: {
+          text: "Düzeltme Açısı = Heading − İstenen COG",
+          description: "Düzeltme yönü akıntı setine göre belirlenir."
+        }
+      }
+    ],
+    keyPoints: [
+      "Heading geminin pruvasının yönüdür, COG ise yer rotasını gösterir",
+      "Akıntı, heading ile COG arasında sapmaya neden olur",
+      "Düzeltme açısı vektör üçgeniyle belirlenir"
+    ]
+  },
+  "STW – SOG ilişkisi": {
+    title: "STW – SOG İlişkisi",
+    introduction:
+      "STW, geminin suya göre hızıdır; SOG ise geminin yere göre hızıdır. Akıntısız durumda STW ile SOG aynı kabul edilir; akıntılı durumda farklıdır.",
+    sections: [
+      {
+        title: "STW ve SOG Farkı",
+        content: `![SOG-STW kalibrasyon diyagramı](https://www.simrad-yachting.com/globalassets/simrad/world-of-simrad/technology/sog/fig-3-sog-stw-calibrating-web.jpg)
+
+![SOG vektör diyagramı](https://www.sailtrain.co.uk/navigation/images/sog.gif)
+
+Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyorsa SOG azalır. Çapraz akıntı durumunda SOG yalnızca artıp azalmaktan ibaret değildir; aynı zamanda COG’yi değiştirir.`
+      },
+      {
+        title: "Genel İfade",
+        content:
+          "STW ile SOG arasındaki ilişki vektöreldir; bu nedenle basit çıkarma her durumda geçerli değildir. Yalnızca akıntı seti geminin suya göre rotasıyla aynı doğrultudaysa bir boyutlu yaklaşım kullanılabilir.",
+        formula: {
+          text: "SOG = | Suya Göre Hız Vektörü + Akıntı Vektörü |",
+          description: "SOG, bileşke vektörün büyüklüğüdür."
+        }
+      },
+      {
+        title: "SOG Hesabı",
+        content:
+          "Bileşen çözümü yapıldığında SOG, toplam vektörün kuzey ve doğu bileşenlerinden hesaplanır. Bu yaklaşım, STW ile drift’in yönleri farklı olduğunda dahi doğru sonucu verir.",
+        formula: {
+          text: "SOG = √(N² + E²)",
+          description: "N ve E toplam vektörün kuzey ve doğu bileşenleridir."
+        }
+      }
+    ],
+    keyPoints: [
+      "STW suya göre hız, SOG yere göre hızdır",
+      "Akıntı aynı yönde ise SOG artar, ters yönde ise azalır",
+      "Genel durumda SOG vektörel toplama ile bulunur"
+    ]
+  },
+  "Akıntılı seyir hesapları": {
+    title: "Akıntılı Seyir Hesapları",
+    introduction:
+      "Akıntılı seyir hesapları iki ana problem tipinde ele alınır. Birinci tipte suya göre rota ve STW bilinir; set ve drift bilindiğinde COG ve SOG bulunur. İkinci tipte istenen COG bilinir; set ve drift bilindiğinde bu rotayı tutmak için gerekli heading ve beklenen SOG bulunur.",
+    sections: [
+      {
+        title: "Problem Tipleri",
+        content: `![Akıntılı seyir diyagramı](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
+
+![Akıntılı seyir örneği](https://imgv2-2-f.scribdassets.com/img/document/151674944/original/fad718bd48/1?v=1)
+
+Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik hedef harita üzerinde belirlenmiş yer rotasını tutmaktır.`
+      },
+      {
+        title: "Birinci Tip – Bileşen Toplamı",
+        content:
+          "Birinci tipte çözüm, vektörlerin toplanmasıdır. Suya göre vektör ve akıntı vektörü bileşenlere ayrılır, bileşenler toplanır.",
+        formula: {
+          text: "Ntoplam = STW × cos(Heading) + Drift × cos(Set) | Etoplam = STW × sin(Heading) + Drift × sin(Set)",
+          description: "Ntoplam ve Etoplam, yer vektörünün bileşenleridir."
+        }
+      },
+      {
+        title: "Birinci Tip – COG ve SOG",
+        content:
+          "Toplam bileşenlerden COG ve SOG geri hesaplanır. Yön, bileşenlerin işaretine göre belirlenir.",
+        formula: {
+          text: "SOG = √(Ntoplam² + Etoplam²) | tan(COG) = Etoplam ÷ Ntoplam",
+          description: "Bileşenlerden büyüklük ve yön geri hesaplanır."
+        }
+      },
+      {
+        title: "İkinci Tip – Vektör Çıkarma Mantığı",
+        content:
+          "İkinci tipte hedef COG doğrultusunda yer vektörü bilinmek istenir; ancak yer vektörünün büyüklüğü başlangıçta bilinmeyebilir. Grafik yöntemde, istenen COG doğrultusu çizilir ve akıntı vektörü buna göre çıkarılarak geminin suya göre vektörü bulunur. Sayısal yöntemde aynı mantık bileşenler üzerinden yürütülür.",
+        formula: {
+          text: "Suya Göre Hız Vektörü = Yer Hız Vektörü − Akıntı Vektörü",
+          description: "İstenen yer vektöründen akıntı vektörü çıkarılır."
+        }
+      }
+    ],
+    keyPoints: [
+      "Birinci tipte STW/heading bilinir, COG/SOG bulunur",
+      "İkinci tipte hedef COG bilinir, gerekli heading hesaplanır",
+      "Bileşen yöntemi her iki problem tipinde geçerlidir"
+    ]
+  },
+  "Vektör üçgenleri": {
+    title: "Vektör Üçgenleri",
+    introduction:
+      "Akıntılı seyir problemlerinin geometrik temsil biçimi vektör üçgenidir. Üçgende bir kenar geminin suya göre hız vektörünü, bir kenar akıntı vektörünü, üçüncü kenar yer hız vektörünü temsil eder.",
+    sections: [
+      {
+        title: "Vektör Üçgeni Mantığı",
+        content: `![Rüzgâr üçgeni](https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Wind_triangle.jpg/304px-Wind_triangle.jpg)
+
+![Set ve drift diyagramı](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg?w=640)
+
+Bu üçgen, yalnızca bir çizim değil; yön ve büyüklük ilişkilerini aynı anda taşıyan bir hesap aracıdır. Grafik çözüm, vektörlerin ölçekli çizilmesiyle uygulanır; sayısal çözüm ise aynı üçgenin trigonometrik ve bileşen temelli karşılığıdır.`
+      },
+      {
+        title: "Üçgenin Kurulumu",
+        content:
+          "Vektör üçgeninin kurulumunda disiplin, tüm yönlerin hakiki kuzeye göre alınmasını ve aynı ölçeğin kullanılmasını gerektirir. Set doğrultusu akıntı vektörünün yönüdür; heading doğrultusu geminin suya göre vektörünün yönüdür; COG doğrultusu bileşke vektörün yönüdür."
+      },
+      {
+        title: "Üçgenin Temel Kimliği",
+        content:
+          "Bu kimlik, akıntılı seyirde rota tutmanın özünü tek cümlede ifade eder: geminin suya göre hareketi, akıntının etkisiyle yer üzerinde başka bir harekete dönüşür; istenen yer hareketi için suya göre hareket, akıntıyı dengeleyecek şekilde seçilir.",
+        formula: {
+          text: "COG/SOG kenarı = Heading/STW kenarı + Set/Drift kenarı",
+          description: "Yer vektörü, suya göre vektör ile akıntı vektörünün toplamıdır."
+        }
+      }
+    ],
+    keyPoints: [
+      "Vektör üçgeni üç vektörü tek şemada gösterir",
+      "Tüm yönler hakiki kuzeye göre alınır",
+      "Üçgen, heading düzeltmesini geometrik olarak gösterir"
+    ]
   }
 };
