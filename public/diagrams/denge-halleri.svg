@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <rect width="900" height="360" fill="#f8fafc" />
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Denge Halleri Şeması</text>
+
+  <g transform="translate(40,70)">
+    <rect width="240" height="240" rx="16" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <text x="120" y="36" text-anchor="middle" font-size="16" font-family="Arial" fill="#0f172a">Stabil</text>
+    <line x1="120" y1="60" x2="120" y2="200" stroke="#0f172a" stroke-width="2" />
+    <circle cx="120" cy="120" r="6" fill="#2563eb" />
+    <circle cx="120" cy="160" r="6" fill="#ef4444" />
+    <path d="M120 200 L110 188 L130 188 Z" fill="#0f172a" />
+    <path d="M120 60 L110 72 L130 72 Z" fill="#0f172a" />
+    <text x="120" y="220" text-anchor="middle" font-size="12" font-family="Arial" fill="#475569">G yukarıdan B'ye döndürür</text>
+  </g>
+
+  <g transform="translate(330,70)">
+    <rect width="240" height="240" rx="16" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <text x="120" y="36" text-anchor="middle" font-size="16" font-family="Arial" fill="#0f172a">İnstabil</text>
+    <line x1="120" y1="60" x2="120" y2="200" stroke="#0f172a" stroke-width="2" />
+    <circle cx="120" cy="120" r="6" fill="#ef4444" />
+    <circle cx="120" cy="160" r="6" fill="#2563eb" />
+    <path d="M120 200 L110 188 L130 188 Z" fill="#0f172a" />
+    <path d="M120 60 L110 72 L130 72 Z" fill="#0f172a" />
+    <text x="120" y="220" text-anchor="middle" font-size="12" font-family="Arial" fill="#475569">G, B'nin üzerine çıkar</text>
+  </g>
+
+  <g transform="translate(620,70)">
+    <rect width="240" height="240" rx="16" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <text x="120" y="36" text-anchor="middle" font-size="16" font-family="Arial" fill="#0f172a">Nötr</text>
+    <line x1="120" y1="60" x2="120" y2="200" stroke="#0f172a" stroke-width="2" />
+    <circle cx="120" cy="140" r="6" fill="#2563eb" />
+    <circle cx="120" cy="140" r="6" fill="#ef4444" opacity="0.7" />
+    <path d="M120 200 L110 188 L130 188 Z" fill="#0f172a" />
+    <path d="M120 60 L110 72 L130 72 Z" fill="#0f172a" />
+    <text x="120" y="220" text-anchor="middle" font-size="12" font-family="Arial" fill="#475569">G ve B aynı doğrultuda</text>
+  </g>
+
+  <text x="80" y="335" font-size="12" font-family="Arial" fill="#64748b">Mavi: B (kaldırma), Kırmızı: G (ağırlık)</text>
+</svg>

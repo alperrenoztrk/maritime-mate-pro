@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <rect width="900" height="360" fill="#f8fafc" />
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Metasentrik Nokta ve GM</text>
+
+  <rect x="200" y="120" width="500" height="140" rx="20" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+  <rect x="200" y="210" width="500" height="50" fill="#93c5fd" />
+  <line x1="200" y1="210" x2="700" y2="210" stroke="#1e3a8a" stroke-width="2" />
+
+  <line x1="450" y1="80" x2="450" y2="250" stroke="#0f172a" stroke-width="2" />
+  <circle cx="450" cy="100" r="7" fill="#0ea5e9" />
+  <text x="468" y="104" font-size="14" font-family="Arial" fill="#0f172a">M</text>
+
+  <circle cx="450" cy="150" r="7" fill="#ef4444" />
+  <text x="468" y="154" font-size="14" font-family="Arial" fill="#0f172a">G</text>
+
+  <circle cx="450" cy="220" r="7" fill="#2563eb" />
+  <text x="468" y="224" font-size="14" font-family="Arial" fill="#0f172a">B</text>
+
+  <path d="M430 100 L430 150" stroke="#0f172a" stroke-width="2" />
+  <path d="M430 150 L422 138 L438 138 Z" fill="#0f172a" />
+  <text x="400" y="132" font-size="12" font-family="Arial" fill="#0f172a">GM</text>
+
+  <text x="200" y="310" font-size="12" font-family="Arial" fill="#64748b">GM, G ile M arasındaki düşey mesafeyi gösterir.</text>
+</svg>
