@@ -211,169 +211,138 @@ Bu kazalar sonucunda:
     description: "Stabilite hesaplarında kullanılan temel kavramlar",
     subtopics: [
       {
-        title: "2.1. Ağırlık Merkezi (G) – Center of Gravity",
-        content: `Ağırlık merkezi (G), gemi stabilitesinin en temel kavramlarından biridir ve geminin tüm ağırlığının tek bir noktada toplandığı varsayılan noktadır.
+        title: "2.0. Denge Halleri",
+        content: `![Özgün denge halleri şeması](/diagrams/denge-halleri.svg)
 
-**Tanım ve Fiziksel Anlam**
-Gemiyi oluşturan tüm elemanların (gövde yapısı, makine, yük, yakıt, tatlı su, kumanya, yolcu, personel vb.) ağırlıklarının bileşke etki noktasına ağırlık merkezi (G) denir.
+![Image](https://maritimesa.org/nautical-science-grade-12/wp-content/uploads/sites/7/2020/09/12-2-1-2-Fig1.jpg)
 
-Ağırlık kuvveti, geminin ağırlığı W = Δ (deplasman) kadardır ve dikey olarak G noktasından aşağıya doğru etkir. Newton'un yerçekimi kanununa göre, tüm kütle aşağı yönde çekilir ve bu kuvvet G noktasından geçer.
+![Image](https://maritime.org/doc/dc/img/fig4-1.jpg)
 
-**G Noktasının Koordinatları**
-G noktası üç boyutlu bir koordinat sistemi ile tanımlanır:
-- **KG (Keel-to-G):** Omurgadan G'ye dikey mesafe
-- **LCG (Longitudinal Center of Gravity):** Boyuna ağırlık merkezi konumu
-- **TCG (Transverse Center of Gravity):** Enine ağırlık merkezi konumu
+![Image](https://fiveable.me/_next/image?q=75&url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic.prod.fiveable.me%2Fsearch-images%252F%2522Stability_equilibrium_floating_bodies_fluid_mechanics_buoyancy_center_of_gravity_images_diagrams%2522-440px-Ship_stability.svg.png&w=3840)
 
-**KG'nin Önemi**
-KG değeri, stabilite açısından en kritik parametrelerden biridir:
-- KG ne kadar düşükse, GM o kadar büyük olur
-- Düşük KG = Daha iyi stabilite
-- Yüksek KG = Daha zayıf stabilite
+Bir geminin denge hâli, ağırlık kuvveti ile kaldırma kuvveti arasındaki geometrik ilişkinin küçük bir sapma sonrasında nasıl davrandığını tanımlar. Bu davranış, geminin yatmaya karşı koyma veya yatmayı artırma eğilimini belirler ve stabilitenin temel sınıflandırmasını oluşturur. Denge hâlleri incelenirken esas alınan yaklaşım, geminin başlangıçtaki dik konumundan çok küçük bir yatma açısına maruz bırakılması ve bu yatma sonrasında oluşan kuvvet çiftinin yönünün değerlendirilmesidir. Bu değerlendirme, işaret disiplini korunarak yalnızca moment yönleri üzerinden yapılır; sayısal büyüklükler mutlak değerlerle ele alınır, yön bilgisi sonuç aşamasında eklenir.
 
-**G Noktasının Hareketi**
-Gemideki herhangi bir ağırlık değişikliği G noktasının konumunu değiştirir:
+Küçük bir yatma açısında kaldırma merkezinin yer değiştirmesiyle, ağırlık merkezi ile kaldırma merkezinden geçen doğrultular arasında bir kol oluşur. Bu kolun oluşturduğu moment, gemiyi eski konumuna döndürüyorsa pozitif doğrultma momenti, yatmayı artırıyorsa negatif doğrultma momenti olarak kabul edilir. Momentin sıfır olduğu durumlarda ise gemi yeni konumunda dengeye gelir. Bu prensipten hareketle denge hâlleri üç temel başlık altında ele alınır: stabil denge, instabil denge ve indifferent denge.
 
-1. **Ağırlık yukarı taşınırsa:** G yükselir, GM azalır
-2. **Ağırlık aşağı taşınırsa:** G alçalır, GM artar
-3. **Ağırlık yatay yönde kaydırılırsa:** G aynı yönde yatay yer değiştirir
-4. **Ağırlık eklenmesi:** G, eklenen ağırlık yönüne hareket eder
-5. **Ağırlık çıkarılması:** G, çıkarılan ağırlığın tersine hareket eder
+Stabil dengede, gemi küçük bir açıyla yana yattığında kaldırma merkezinin yer değiştirmesi sonucu oluşan moment, gemiyi tekrar dik konuma döndürmeye çalışır. Bu durumda doğrultma kolu pozitiftir ve doğrultma momenti mevcuttur. Matematiksel olarak bu durum, doğrultma kolunun pozitif olmasıyla ifade edilir. Doğrultma momentinin büyüklüğü, gemi deplasmanı ile doğrultma kolunun çarpımıdır. Bu ilişki şu şekilde ifade edilir:
 
-**Önemli Kural**
-G noktası, ağırlık ekleme, çıkarma veya taşıma işlemi tamamlanana kadar hareket etmez. Kaldırma işlemi başladığı anda (örneğin kreyn ile), yük gemiden ayrılmış kabul edilir ve G anında değişir.`,
-        formulas: [
-          {
-            formula: "KG = Σ(wᵢ × kgᵢ) / Σwᵢ",
-            description: "Toplam KG hesabı: Her bir ağırlığın momentleri toplamı / toplam ağırlık"
-          },
-          {
-            formula: "ΔKG = (w × d) / Δ",
-            description: "KG değişimi: Taşınan ağırlık × dikey mesafe / toplam deplasman"
-          },
-          {
-            formula: "KG_yeni = (Δ_eski × KG_eski + w × kg_yük) / Δ_yeni",
-            description: "Yük ekleme sonrası yeni KG hesabı"
-          }
-        ],
-        examples: [
-          {
-            problem: "10.000 ton deplasmanli bir geminin KG'si 8.0 m'dir. 500 ton yük, omurgadan 12 m yüksekliğe alınırsa yeni KG kaç olur?",
-            solution: "KG_yeni = (10000 × 8.0 + 500 × 12) / 10500 = (80000 + 6000) / 10500 = 8.19 m"
-          },
-          {
-            problem: "12.000 ton gemi, KG = 7.5 m. 200 ton yük 4 m aşağı taşınırsa ΔKG ve yeni KG?",
-            solution: "ΔKG = (200 × 4) / 12000 = -0.067 m. Yeni KG = 7.5 - 0.067 = 7.433 m (azaldı)"
-          }
-        ],
-        keyPoints: [
-          "G, geminin tüm ağırlığının toplandığı varsayılan noktadır",
-          "KG ne kadar düşükse stabilite o kadar iyidir",
-          "Her ağırlık değişikliği G'nin konumunu değiştirir",
-          "Kaldırma işlemi başladığı anda yük gemiden ayrılmış sayılır"
-        ]
+────────────
+Doğrultma Momenti = Deplasman × GZ
+────────────
+
+Burada GZ, ağırlık merkezi ile kaldırma kuvveti doğrultusu arasındaki yatay mesafeyi temsil eder ve mutlak değer olarak alınır. Örnek olarak deplasmanı 12 000 ton olan bir gemide, küçük bir yatma açısında GZ değeri 0,35 metre olarak bulunmuşsa, doğrultma momenti 12 000 × 0,35 = 4 200 ton·metre olarak hesaplanır. Bu momentin yönü, gemiyi dik konuma döndürme eğiliminde olduğu için stabil denge söz konusudur.
+
+Instabil dengede ise gemi küçük bir yatma açısına maruz kaldığında oluşan moment, yatmayı artırıcı yöndedir. Bu durumda kaldırma merkezinin yer değiştirmesi, ağırlık merkezi ile birlikte geminin daha fazla yatmasına neden olacak bir kuvvet çifti oluşturur. Matematiksel olarak GZ değeri negatif kabul edilir ve doğrultma momenti yatmayı büyütür. Örneğin aynı deplasmana sahip bir gemide GZ büyüklüğü 0,15 metre olarak bulunmuş ancak moment yönü yatmayı artırıyorsa, doğrultma momentinin büyüklüğü yine 12 000 × 0,15 = 1 800 ton·metre olarak hesaplanır; ancak işaret disiplini gereği bu moment instabil davranışı temsil eder. Böyle bir durumda gemi, küçük bir dış etki altında dahi hızla tehlikeli yatma açılarına ulaşabilir.
+
+Indifferent dengede, gemi küçük bir yatma açısına getirildiğinde kaldırma merkezinin yer değiştirmesi, ağırlık merkezi ile aynı doğrultuda kalır ve herhangi bir doğrultma ya da devirmeye yönelik moment oluşmaz. Bu hâlde GZ değeri sıfırdır ve doğrultma momenti yoktur. Matematiksel ifade şu şekilde yazılabilir:
+
+────────────
+Doğrultma Momenti = Deplasman × 0 = 0
+────────────
+
+Bu durumda gemi, hangi açıya getirilirse getirilsin o konumda kalma eğilimi gösterir. Pratikte bu durum nadir görülür ve genellikle teorik bir sınır hâli olarak değerlendirilir; ancak stabil ve instabil davranışın ayrım noktasını tanımlaması açısından önemlidir. Denge hâllerinin doğru anlaşılması, ilerleyen stabilite hesaplamalarının temelini oluşturur. Yükleme değişiklikleri, balast transferleri ve serbest yüzey etkileri, ağırlık merkezinin konumunu değiştirerek geminin denge hâlini doğrudan etkiler. Bu nedenle denge hâlleri, yalnızca teorik bir sınıflandırma değil, gemi operasyonlarının her aşamasında dikkate alınması gereken bir seyir ve emniyet parametresi olarak değerlendirilir.`
       },
       {
-        title: "2.2. Yüzme Merkezi (B) – Center of Buoyancy",
-        content: `Yüzme merkezi (B), geminin su altında kalan kısmının geometrik merkezidir ve kaldırma kuvvetinin uygulandığı noktayı temsil eder.
+        title: "2.1. Ağırlık Merkezi (G)",
+        content: `![Özgün ağırlık merkezi şeması](/diagrams/agirlik-merkezi.svg)
 
-**Tanım ve Fiziksel Anlam**
-Geminin su altında kalan kısmının (batmış hacmin) hacimsel ağırlık merkezine yüzme merkezi (B) denir. Bu nokta, yer değiştirilen suyun ağırlık merkezine karşılık gelir.
+![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Ship_stability.svg/500px-Ship_stability.svg.png)
 
-**Arşimet Prensibi ile İlişki**
-Geminin deplasmanı kadar suyu yer değiştirmesi sonucu Arşimet prensibine göre oluşan kaldırma kuvveti (Y) büyüklük olarak geminin ağırlığına eşittir. Bu kuvvet B noktasından yukarı doğru etki eder.
+![Image](https://microship.com/wp-content/uploads/2015/03/cgdb-2.jpg)
 
-**B Noktasının Konumu**
-B noktası, su altı hacminin şekline bağlıdır:
-- Dikdörtgen kesitli bir gövdede B, tam ortada olur
-- Gerçek gemi formlarında B, su altı geometrisine göre değişir
+![Image](https://www.splashmaritime.com.au/Marops/data/less/Shipk/Stab/Longitudinal_files/slide15.JPG)
 
-**KB (Keel-to-B):** Omurgadan yüzme merkezine dikey mesafe
-- Deplasman arttıkça genellikle KB artar
-- Geminin şekli KB'yi doğrudan etkiler
+Ağırlık merkezi, gemiyi oluşturan tüm ağırlıkların tek bir noktada toplanmış kabul edildiği ve ağırlık kuvvetinin etki doğrultusunun geçtiği noktadır. Bu nokta, geminin stabilite karakterini belirleyen en kritik unsurlardan biridir ve gemi üzerinde yapılan her yükleme, boşaltma, balast alma ya da balast verme işlemi ağırlık merkezinin yerini değiştirir. Ağırlık merkezi sabit bir geometrik nokta değildir; geminin o andaki yükleme durumuna bağlı olarak düşey, boyuna ve enine doğrultularda yer değiştirir.
 
-**B Noktasının Hareketi**
-G noktasından farklı olarak, B noktası geminin hareketine göre sürekli değişir:
+Ağırlık merkezinin konumu üç eksen üzerinden tanımlanır. Düşey konum, omurgadan yukarıya doğru ölçülen mesafe ile ifade edilir ve genellikle KG ile gösterilir. Boyuna konum, genellikle orta kesit referans alınarak pruvaya ya da kıça olan mesafe olarak değerlendirilir. Enine konum ise gemi orta hattına göre iskele veya sancak yönündeki uzaklığı ifade eder. Stabilite hesaplamalarında özellikle düşey ağırlık merkezi belirleyici rol oynar; çünkü KG’nin yükselmesi ya da alçalması doğrultma kollarını doğrudan etkiler.
 
-1. **Gemi yatarsa:** B, yatılan tarafa doğru hareket eder
-2. **Trim yaparsa:** B, boyuna yönde hareket eder
-3. **Deplasman değişirse:** B, su altı hacminin yeni ağırlık merkezine kayar
+Ağırlık merkezinin hesaplanmasında temel prensip moment dengesine dayanır. Gemide bulunan her bir ağırlık, kendi büyüklüğü ile referans noktasına olan mesafesinin çarpımı kadar moment üretir. Tüm ağırlıkların momentleri toplanarak toplam ağırlığa bölündüğünde ağırlık merkezinin konumu bulunur. Bu ilişki matematiksel olarak şu şekilde ifade edilir:
 
-**G ve B Arasındaki İlişki**
-Stabilitenin temeli, G ve B noktalarının göreli konumlarına dayanır:
-- Denge durumunda: G ve B aynı düşey doğru üzerindedir
-- Gemi yattığında: B hareket eder, G sabit kalır
-- Bu konum farkı, doğrultucu veya devirici moment oluşturur`,
-        formulas: [
-          {
-            formula: "KB ≈ T × (0.5 + 0.1 × Cb)",
-            description: "Yaklaşık KB hesabı (T: draft, Cb: block katsayısı)"
-          },
-          {
-            formula: "KB = ∫z × dV / ∇",
-            description: "Kesin KB hesabı: Hacimsel integral"
-          }
-        ],
-        keyPoints: [
-          "B, su altı hacminin geometrik merkezidir",
-          "Kaldırma kuvveti B noktasından yukarı doğru etkir",
-          "Gemi yattığında B hareket eder, G sabit kalır",
-          "KB değeri hidrostatik tablolardan alınır"
-        ]
+────────────
+KG = Toplam Düşey Moment / Toplam Ağırlık
+────────────
+
+Burada kullanılan momentler mutlak değerlerle hesaplanır; ağırlığın yukarıda ya da aşağıda olması yön bilgisi olarak değerlendirilir, sayısal işlem sırasında işaret kullanılmaz. Örnek olarak, toplam ağırlığı 10 000 ton olan bir gemide, düşey momentlerin toplamı 52 000 ton·metre olarak bulunmuşsa, düşey ağırlık merkezi 52 000 / 10 000 = 5,2 metre olarak hesaplanır. Bu değer, ağırlık merkezinin omurgadan itibaren 5,2 metre yukarıda bulunduğunu gösterir.
+
+Yükleme sırasında ağırlık merkezinin yer değiştirmesi, eklenen veya çıkarılan ağırlıkların konumuna bağlıdır. Gemide yeni bir yük alındığında, bu yükün ağırlığı ile kendi düşey mesafesi çarpılarak yeni bir moment oluşturulur ve toplam momente eklenir. Aynı şekilde, gemiden çıkarılan bir ağırlık, mevcut momentten düşülür. Yeni toplam moment, yeni toplam ağırlığa bölünerek güncel ağırlık merkezi hesaplanır. Bu işlem sırası her zaman aynı mantıkla yürütülür ve hiçbir adım atlanmaz.
+
+────────────
+Yeni KG = (Eski Toplam Moment ± Eklenen veya Çıkarılan Moment) / Yeni Toplam Ağırlık
+────────────
+
+Örneğin, KG’si 5,2 metre olan ve toplam ağırlığı 10 000 ton olan bir gemiye, omurgadan 9 metre yükseklikte bulunan bir noktaya 500 ton yük eklendiğinde, eklenen moment 500 × 9 = 4 500 ton·metre olur. Eski toplam moment 52 000 ton·metre olduğuna göre yeni toplam moment 56 500 ton·metreye yükselir. Yeni toplam ağırlık 10 500 ton olarak alınır ve yeni KG 56 500 / 10 500 ≈ 5,38 metre olarak bulunur. Bu sonuç, yüklemenin ağırlık merkezini yukarı taşıdığını ve geminin stabilitesini olumsuz yönde etkilediğini açıkça gösterir.
+
+Ağırlık merkezinin düşey konumu arttıkça, doğrultma kolları küçülür ve geminin yatmaya karşı direnci azalır. Buna karşılık ağırlık merkezinin aşağı çekilmesi, doğrultma kollarını büyütür ve geminin daha stabil davranmasını sağlar. Bu nedenle balast tanklarının alt seviyelerde yer alması, ağır yüklerin mümkün olduğunca aşağıda istiflenmesi ve serbest yüzey etkisinin kontrol altında tutulması stabilite açısından hayati öneme sahiptir. Ağırlık merkezi kavramı, metasentrik ilişkilerden doğrultma momenti hesaplarına kadar tüm stabilite analizlerinin temelini oluşturur ve her hesaplamada ilk dikkate alınan parametre olarak ele alınır.`
       },
       {
-        title: "2.3. Metasanter (M) – Metacenter",
-        content: `Metasanter (M), küçük açılı enine stabilite hesaplarının anahtar noktasıdır ve geminin stabilite karakteristiğini belirleyen kritik bir referans noktasıdır.
+        title: "2.2. Kaldırma Merkezi (B)",
+        content: `![Özgün kaldırma merkezi şeması](/diagrams/kaldirma-merkezi.svg)
 
-**Tanımı ve Oluşumu**
-Gemi çok küçük bir açı ile (genellikle 10°'ye kadar) enine yönde yatarsa:
-1. Su altında kalan hacim şekil değiştirir
-2. Yüzme merkezi B noktası yeni konuma (B₁) gider
-3. Yeni kaldırma kuvveti doğrusu, geminin orta düzleminde başlangıçtaki kaldırma doğrusu ile bir noktada kesişir
-4. Bu teorik kesişme noktası metasanter (M) olarak tanımlanır
+![Image](https://cdn.britannica.com/18/62818-050-2CE52D32/ship-weight-centre-gravity-water-buoyancy-force.jpg)
 
-**Metasanterin Özellikleri**
-- M noktası, küçük açılar için sabit kabul edilir (10°-15°'ye kadar)
-- Büyük açılarda M noktası hareket eder ve hesaplar karmaşıklaşır
-- Geminin enine stabilitesi, küçük açılarda esas olarak G ile M arasındaki mesafe (GM) ile ifade edilir
+![Image](https://www.researchgate.net/publication/372539796/figure/fig3/AS%3A11431281176747947%401690252118375/Shifting-of-center-of-buoyancy-due-to-heel-and-the-resulting-moment-arm.png)
 
-**Enine ve Boyuna Metasanter**
-İki tür metasanter vardır:
-1. **Enine Metasanter (Mₜ):** Enine yatma için, en çok kullanılan
-2. **Boyuna Metasanter (Mₗ):** Trim için, genellikle çok yüksekte
+![Image](https://maritimeducation.com/wp-content/uploads/Reserve-Buoyancy-2.jpg)
 
-**KM Değerinin Belirlenmesi**
-KM (Keel-to-Metacenter) değeri:
-- Geminin geometrisine bağlıdır
-- Deplasman ile değişir
-- Hidrostatik tablolardan alınır
-- Gemi daha geniş ise KM genellikle daha büyüktür
+Kaldırma merkezi, geminin su altında kalan hacminin ağırlık merkezini temsil eden ve kaldırma kuvvetinin uygulama noktasından geçen düşey doğrultunun tanımlandığı noktadır. Başka bir ifadeyle kaldırma merkezi, suyun gemiye uyguladığı toplam kaldırma kuvvetinin tek bir noktada toplanmış kabul edildiği geometrik konumdur. Bu nokta genellikle B harfi ile gösterilir ve geminin yüzme, denge ve stabilite özelliklerinin tamamında belirleyici bir rol oynar.
 
-**Metasantrin Fiziksel Yorumu**
-M noktası, geminin küçük açılarda salındığı pivot noktası gibi düşünülebilir:
-- G, M'nin altında ise: Gemi stabil (sarkaç gibi)
-- G, M ile çakışık ise: Nötr denge
-- G, M'nin üstünde ise: Gemi instabil (ters sarkaç)`,
-        formulas: [
-          {
-            formula: "KM = KB + BM",
-            description: "Metasantrik yükseklik: Omurgadan metasantera"
-          },
-          {
-            formula: "BM = I / ∇",
-            description: "Metasantrik yarıçap: Su hattı atalet momenti / batmış hacim"
-          },
-          {
-            formula: "I = (L × B³) / 12",
-            description: "Dikdörtgen su hattı için atalet momenti"
-          }
-        ],
-        keyPoints: [
-          "M, küçük açılı yatmalarda kaldırma doğrularının kesişim noktasıdır",
-          "Küçük açılarda M sabit kabul edilir",
-          "KM değeri hidrostatik tablolardan alınır",
-          "GM = KM - KG formülü stabilitenin temelidir"
-        ]
+Bir gemi su üzerinde dengede ve dik konumda bulunduğunda, kaldırma merkezi geminin orta hattı üzerinde yer alır. Bu durumda kaldırma kuvveti ile ağırlık kuvveti aynı düşey doğrultu üzerinde etki eder ve herhangi bir döndürücü moment oluşmaz. Ancak gemi yana yattığında su altında kalan hacmin şekli değişir; iskele tarafındaki hacim azalırken sancak tarafındaki hacim artar ya da tersi gerçekleşir. Bu hacim değişimi, su altında kalan hacmin ağırlık merkezini yana doğru kaydırır ve kaldırma merkezinin yeni bir konuma geçmesine neden olur.
+
+Kaldırma merkezinin yer değiştirmesi, stabilitenin temel mekanizmasını oluşturur. Ağırlık merkezi çoğu durumda sabit kabul edilirken, kaldırma merkezi geminin yatma açısına bağlı olarak sürekli yer değiştirir. Bu nedenle stabilite analizlerinde ağırlık merkezi “sabit”, kaldırma merkezi ise “hareketli” bir nokta olarak ele alınır. Yatmanın küçük açılarında kaldırma merkezinin izlediği yol, ilerleyen bölümlerde ele alınacak olan metasentrik kavramın temelini oluşturur.
+
+Kaldırma merkezinin konumu, geminin deplasmanına ve gövde formuna doğrudan bağlıdır. Deplasman arttıkça su altında kalan hacim büyür ve kaldırma merkezi genellikle düşey doğrultuda yukarı doğru yer değiştirir. Ancak bu değişim doğrusal değildir; gövde formunun dolgunluğu, su hattı alanı ve kesit geometrileri kaldırma merkezinin hareketini belirleyen ana faktörlerdir. Bu nedenle farklı tipte gemiler, aynı deplasmana sahip olsalar bile farklı kaldırma merkezi karakteristikleri gösterebilir.
+
+Teorik olarak kaldırma merkezinin konumu, su altında kalan hacmin momentleri yardımıyla hesaplanır. Su altı hacmi, omurgadan itibaren düşey mesafelere göre ele alınır ve her bir hacim elemanının momenti hesaplanır. Toplam hacim momenti, toplam su altı hacmine bölünerek kaldırma merkezinin düşey konumu bulunur. Bu ilişki şu şekilde ifade edilir:
+
+────────────
+KB = Toplam Hacim Momenti / Toplam Su Altı Hacmi
+────────────
+
+Burada KB, kaldırma merkezinin omurgadan itibaren olan düşey mesafesini ifade eder. Hesaplamalarda kullanılan hacim değerleri genellikle hidrostatik tablolar veya bilgisayar destekli stabilite yazılımları yardımıyla elde edilir. Pratik denizcilik uygulamalarında kaldırma merkezinin doğrudan hesaplanmasından ziyade, bu tablolar üzerinden hazır değerlerin kullanılması tercih edilir.
+
+Kaldırma merkezinin stabilite üzerindeki etkisi, ağırlık merkezi ile olan geometrik ilişkisi üzerinden değerlendirilir. Gemi yana yattığında kaldırma merkezinin yana kayması, ağırlık merkezi ile kaldırma kuvveti doğrultusu arasında bir yatay mesafe oluşturur. Bu mesafe, doğrultma kolunun oluşmasını sağlar ve geminin eski konumuna dönme ya da yatmayı artırma eğilimini belirler. Dolayısıyla kaldırma merkezi, tek başına bir stabilite ölçütü olmaktan ziyade, ağırlık merkezi ve metasentrik ilişkilerle birlikte ele alındığında anlam kazanan bir kavramdır.
+
+Kaldırma merkezinin davranışının doğru anlaşılması, doğrultma momentlerinin yorumlanması, stabilite eğrilerinin çizilmesi ve geminin sınır emniyet koşullarının değerlendirilmesi açısından vazgeçilmezdir. Bu kavram, bir sonraki aşamada ele alınacak metasentrik nokta ve metasentrik yükseklik konularının doğal bir ön hazırlığı niteliğindedir.`
+      },
+      {
+        title: "2.3. Metasentrik Nokta ve Metasentrik Yükseklik",
+        content: `![Özgün metasentrik şema](/diagrams/metasentrik.svg)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/2/2f/MetacentricHeight.svg)
+
+![Image](https://www.wartsila.com/images/default-source/encyclopedia/metacentre-m.jpg?sfvrsn=3d33d145_4)
+
+Metasentrik nokta, geminin küçük yatma açıları altındaki stabilite davranışını tanımlamak için kullanılan temel geometrik referans noktalarından biridir. Gemi dik konumdayken kaldırma kuvvetinin doğrultusu, kaldırma merkezinden geçen düşey bir doğru ile temsil edilir. Gemi çok küçük bir açıyla yana yattığında kaldırma merkezi yeni bir konuma kayar ve bu yeni noktadan geçen kaldırma kuvveti doğrultusu, başlangıçtaki doğrultu ile bir noktada kesişir. Bu kesişim noktası metasentrik nokta olarak adlandırılır ve genellikle M harfi ile gösterilir.
+
+Metasentrik nokta, yalnızca küçük yatma açıları için geçerli olan bir kavramdır ve bu nedenle “ilk stabilite” ya da “küçük açılar stabilitesi” analizlerinde kullanılır. Yatma açısı büyüdükçe kaldırma merkezinin izlediği yol doğrusal olmaktan çıkar ve metasentrik yaklaşım geçerliliğini kaybeder. Bu nedenle metasentrik nokta, büyük açılar stabilitesini değil, geminin başlangıçtaki yatmaya karşı davranışını tanımlar.
+
+Metasentrik yükseklik ise ağırlık merkezi ile metasentrik nokta arasındaki düşey mesafeyi ifade eder ve GM ile gösterilir. Bu mesafe, geminin küçük bir yatma açısında stabil mi, instabil mi davranacağını doğrudan belirler. Metasentrik yükseklik pozitif olduğunda metasentrik nokta ağırlık merkezinin üzerinde yer alır ve gemi stabil kabul edilir. Metasentrik yükseklik sıfır olduğunda ağırlık merkezi ile metasentrik nokta çakışır ve gemi indifferent denge hâlindedir. Metasentrik yükseklik negatif olduğunda ise metasentrik nokta ağırlık merkezinin altında kalır ve gemi instabil davranış gösterir.
+
+Metasentrik yüksekliğin hesaplanmasında kullanılan temel ilişki, kaldırma merkezinin konumu ile ağırlık merkezinin konumunu birlikte ele alır. Bu ilişki şu şekilde ifade edilir:
+
+────────────
+GM = KM − KG
+────────────
+
+Burada KM, omurgadan metasentrik noktaya olan düşey mesafeyi; KG ise omurgadan ağırlık merkezine olan düşey mesafeyi temsil eder. KG değeri yükleme durumuna bağlı olarak değişirken, KM değeri geminin gövde formuna ve deplasmanına bağlıdır ve hidrostatik tablolar yardımıyla belirlenir.
+
+KM değeri kendi içinde iki bileşenden oluşur:
+
+────────────
+KM = KB + BM
+────────────
+
+KB, kaldırma merkezinin omurgadan olan düşey mesafesini; BM ise metasentrik yarıçapı ifade eder. Metasentrik yarıçap, su hattı alanının ikinci momenti ile deplasman arasındaki ilişkiyle tanımlanır ve teorik olarak şu şekilde ifade edilir:
+
+────────────
+BM = I / ∇
+────────────
+
+Burada I, su hattı alanının gemi orta hattına göre ikinci momentini; ∇ ise geminin deplasman hacmini temsil eder. Bu ifade, gövde formunun stabilite üzerindeki etkisini açıkça ortaya koyar. Geniş su hattına sahip gemilerde I büyür ve buna bağlı olarak BM artar; bu da metasentrik yüksekliğin büyümesine katkı sağlar.
+
+Metasentrik yüksekliğin büyüklüğü, geminin hareket karakterini de belirler. Çok büyük GM değerine sahip gemiler “sert” gemiler olarak adlandırılır; bu gemiler hızlı ve kısa periyotlu yalpa hareketleri yapar. Bu durum, yapısal yükleri artırabilir ve personel konforunu olumsuz etkileyebilir. Buna karşılık çok küçük GM değerine sahip gemiler “yumuşak” gemiler olarak tanımlanır; yalpa periyotları uzun olur ve gemi ağır, isteksiz hareketler sergiler. Aşırı küçük GM değerleri ise stabilite kaybı riskini beraberinde getirir.
+
+Bu nedenle metasentrik yükseklik, ne mümkün olan en büyük ne de en küçük değerde tutulması gereken bir parametredir. Gemi tipi, kullanım amacı ve operasyonel şartlar göz önünde bulundurularak belirli bir emniyet aralığında tutulmalıdır. Metasentrik kavramı, doğrultma kollarının matematiksel ifadesine geçişte kritik bir köprü görevi görür ve stabilite eğrilerinin yorumlanmasında temel referans noktalarından biri olarak kullanılır.`
       },
       {
         title: "2.4. Dikey Mesafeler: KG, KB, BM, KM ve GM",
@@ -456,6 +425,42 @@ GM değeri, geminin küçük açılarda ne kadar stabil olduğunu gösterir:
           "Çok düşük GM değerleri tehlikeli yükleme durumunu gösterir",
           "Serbest yüzey etkisi GM'i azaltır, hesaplarda dikkate alınmalıdır"
         ]
+      },
+      {
+        title: "2.5. Doğrultma Kolu (GZ)",
+        content: `![Özgün doğrultma kolu şeması](/diagrams/dogrultma-kolu.svg)
+
+![Image](https://plato.is/plato-is/userfiles/images/namskeid/fristundaskip/stodugleiki/stodugleiki_39.jpg)
+
+![Image](https://maritime.org/doc/dc/img/fig4-3.jpg)
+
+![Image](https://cdn.practical-sailor.com/wp-content/uploads/2021/02/1a.-monohull-stability-righting-moment-data-with-lines-and-text.jpg.optimal.jpg)
+
+Doğrultma kolu, geminin yatmış bir durumda tekrar dik konumuna dönme eğilimini nicel olarak ifade eden temel stabilite parametresidir. Gemi yana yattığında, ağırlık kuvvetinin etki doğrultusu ile kaldırma kuvvetinin etki doğrultusu arasında yatay bir mesafe oluşur. Bu yatay mesafe doğrultma kolu olarak adlandırılır ve GZ ile gösterilir. Doğrultma kolu, doğrultma momentinin geometrik temelini oluşturur ve geminin stabilite davranışının açısal değişimini doğrudan yansıtır.
+
+Küçük yatma açıları için doğrultma kolu, metasentrik yaklaşım yardımıyla basit bir trigonometrik ilişkiyle ifade edilebilir. Bu bölgede metasentrik nokta sabit kabul edilir ve GZ değeri yatma açısının sinüsü ile orantılıdır. Matematiksel ifade şu şekildedir:
+
+────────────
+GZ = GM × sin θ
+────────────
+
+Burada GM, metasentrik yükseklik; θ ise geminin yatma açısıdır. Bu ifade yalnızca küçük açılar için geçerlidir ve genellikle yaklaşık 7–10 dereceye kadar kabul edilebilir sonuçlar verir. Bu aralığın ötesinde kaldırma merkezinin hareketi doğrusal olmaktan çıkar ve metasentrik yaklaşım geçerliliğini yitirir.
+
+Yatma açısı büyüdükçe doğrultma kolunun hesabı tamamen geometrik hâle gelir. Bu durumda GZ, ağırlık merkezinden geçen düşey doğru ile kaldırma merkezinden geçen düşey doğrunun arasındaki yatay mesafe olarak tanımlanır. Bu mesafe, geminin su altı hacminin şekline, ağırlık merkezinin konumuna ve yatma açısına bağlı olarak değişir. Büyük açılar için GZ değeri analitik formüllerle değil, genellikle grafiksel yöntemlerle veya bilgisayar destekli stabilite yazılımlarıyla elde edilir.
+
+Doğrultma kolunun yatma açısına karşı değişimi, GZ eğrisi ile gösterilir. Bu eğri, yatma açısı yatay eksende, GZ değeri ise düşey eksende olacak şekilde çizilir. Eğrinin şekli, geminin genel stabilite karakterini ortaya koyar. Eğrinin başlangıçtaki eğimi, küçük açılar stabilitesini; maksimum GZ değeri, geminin en güçlü doğrultma kapasitesini; eğrinin sıfırı tekrar kestiği açı ise geminin stabilitesini kaybettiği sınırı temsil eder.
+
+Doğrultma momenti, doğrultma kolu ile deplasmanın çarpımı olarak tanımlanır:
+
+────────────
+Doğrultma Momenti = Deplasman × GZ
+────────────
+
+Bu ifade, GZ’nin neden stabilite analizlerinin merkezinde yer aldığını açıkça gösterir. Aynı GZ değerine sahip iki gemiden deplasmanı büyük olanın doğrultma momenti daha büyük olacaktır. Ancak pratikte stabilite değerlendirmeleri momentten ziyade GZ üzerinden yapılır; çünkü GZ, geminin geometrik ve yükleme durumunu doğrudan yansıtan normalize bir büyüklüktür.
+
+GZ eğrisinin altında kalan alan, geminin enerji stabilitesi ile ilişkilidir. Bu alan, geminin belirli bir yatma açısına kadar doğrultulması için gereken işi temsil eder. Özellikle dalga etkisi, rüzgâr basıncı ve ani yük kaymaları gibi dinamik etkiler altında, yalnızca maksimum GZ değeri değil, eğrinin genel şekli ve alanı da emniyet açısından kritik öneme sahiptir.
+
+Doğrultma kolu kavramı, küçük açılar stabilitesinden büyük açılar stabilitesine geçişte temel bir bağlayıcı unsur oluşturur. Metasentrik yükseklik yalnızca başlangıç davranışını tanımlarken, GZ eğrisi geminin tüm yatma aralığındaki stabilite kapasitesini ortaya koyar. Bu nedenle modern stabilite kriterleri, tek bir GM değerine değil, belirli açılar için GZ değerlerine ve eğri altı alanlara dayandırılır. Bu yaklaşım, geminin gerçek operasyon koşullarındaki davranışını daha doğru ve emniyetli biçimde değerlendirmeyi mümkün kılar.`
       }
     ]
   },
