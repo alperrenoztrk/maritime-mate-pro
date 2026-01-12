@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
-import { stabilityTopicsData } from "@/data/stabilityTopicsContent";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 
 interface SubTopic {
@@ -21,20 +20,18 @@ interface TopicContent {
   };
 }
 
-const stabilityKeyTopics = stabilityTopicsData.map((topic) => ({
-  title: topic.title,
-  description: topic.description,
-  subTopics: topic.subtopics.map((subTopic) => ({
-    title: subTopic.title,
-    hasContent: Boolean(subTopic.content?.trim()),
-  })),
-}));
-
 const topicsData: Record<string, TopicContent> = {
   stability: {
     title: "Stabilite Konu Anlatımı",
     description: "Gemi stabilitesinin temel prensipleri, hesaplama yöntemleri ve IMO kriterleri hakkında kapsamlı bilgi.",
-    keyTopics: stabilityKeyTopics,
+    keyTopics: [
+      { title: "Metacentric Height (GM)", description: "Başlangıç stabilitesinin temel ölçüsü ve hesaplama yöntemleri" },
+      { title: "GZ Eğrisi", description: "Dinamik stabilite analizi ve kritik açılar" },
+      { title: "Free Surface Effect", description: "Tankların stabiliteye etkisi ve düzeltme hesapları" },
+      { title: "IMO Kriterleri", description: "Uluslararası stabilite standartları ve gereklilikleri" },
+      { title: "Ağırlık Kaydırma", description: "Yük ve balast operasyonlarının stabilite hesapları" },
+      { title: "Grain Stability", description: "Tahıl yükünün özel stabilite gereksinimleri" }
+    ],
     resources: [
       { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
       { title: "Stabilite Formülleri", href: "/stability/formulas" },

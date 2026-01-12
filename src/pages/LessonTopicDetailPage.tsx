@@ -2,73 +2,10 @@ import { ChevronLeft, Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
 import { navigationTopicContents, TopicSection, TopicDetailContent } from "@/data/navigationTopicContents";
-import { stabilityTopicsData } from "@/data/stabilityTopicsContent";
-
-const buildStabilityDetailContent = (topicTitle: string): TopicDetailContent | null => {
-  const matchedSubtopic = stabilityTopicsData
-    .flatMap((topic) => topic.subtopics)
-    .find((subtopic) => subtopic.title === topicTitle);
-
-  if (!matchedSubtopic) {
-    return null;
-  }
-
-  const sections: TopicSection[] = [
-    {
-      title: "Konu Anlatımı",
-      content: matchedSubtopic.content,
-    },
-  ];
-
-  if (matchedSubtopic.formulas && matchedSubtopic.formulas.length > 0) {
-    sections.push({
-      title: "Formüller",
-      content: matchedSubtopic.formulas
-        .map((formula) => `**${formula.formula}**\n${formula.description}`)
-        .join("\n\n"),
-    });
-  }
-
-  if (matchedSubtopic.examples && matchedSubtopic.examples.length > 0) {
-    sections.push({
-      title: "Örnekler",
-      content: matchedSubtopic.examples
-        .map((example) => `**Soru:** ${example.problem}\n**Çözüm:** ${example.solution}`)
-        .join("\n\n"),
-    });
-  }
-
-  if (matchedSubtopic.practicalTips && matchedSubtopic.practicalTips.length > 0) {
-    sections.push({
-      title: "Pratik İpuçları",
-      content: "",
-      bulletPoints: matchedSubtopic.practicalTips,
-    });
-  }
-
-  if (matchedSubtopic.warnings && matchedSubtopic.warnings.length > 0) {
-    sections.push({
-      title: "Uyarılar",
-      content: "",
-      bulletPoints: matchedSubtopic.warnings,
-    });
-  }
-
-  const introduction = matchedSubtopic.content.split("\n\n")[0] || matchedSubtopic.content;
-
-  return {
-    title: matchedSubtopic.title,
-    introduction,
-    sections,
-    keyPoints: matchedSubtopic.keyPoints,
-  };
-};
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
-  const stabilityContent =
-    categoryId === "stability" ? buildStabilityDetailContent(decodedTitle) : null;
   const fallbackContent: TopicDetailContent = {
     title: decodedTitle || "Konu Detayı",
     introduction:
@@ -81,8 +18,7 @@ export default function LessonTopicDetailPage() {
       }
     ]
   };
-  const content =
-    stabilityContent ?? navigationTopicContents[decodedTitle] ?? fallbackContent;
+  const content = navigationTopicContents[decodedTitle] ?? fallbackContent;
 
   if (!categoryId || !decodedTitle) {
     return (
