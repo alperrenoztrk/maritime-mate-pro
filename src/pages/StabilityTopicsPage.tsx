@@ -12,7 +12,6 @@ import {
   Waves,
   Scale,
   Ship,
-  Calculator,
   Gauge,
   Shield,
   Lightbulb,
@@ -30,7 +29,6 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { InteractiveStabilityTools } from "@/components/stability/InteractiveStabilityTools";
 
 // =====================================
 // YENİ 14 BAŞLIKLI STABİLİTE MÜFREDATİ
@@ -628,15 +626,6 @@ export default function StabilityTopicsPage() {
                   </Link>
                 ))}
               </div>
-            </section>
-
-            {/* Interactive Tools Section */}
-            <section className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Calculator className="h-5 w-5 text-primary" />
-                <h2 className="text-lg font-semibold text-foreground">İnteraktif Hesaplama Araçları</h2>
-              </div>
-              <InteractiveStabilityTools />
             </section>
 
             {/* Back to Lessons */}
