@@ -104,7 +104,7 @@ class WeatherPreloader {
             console.error("❌ [Preloader] Konum alınamadı:", err.message);
             reject(err);
           },
-          { enableHighAccuracy: true, timeout: 15000, maximumAge: 600000 }
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
         );
       });
 

@@ -277,7 +277,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
             console.error("❌ Konum alınamadı:", err.message);
             reject(err);
           },
-          { enableHighAccuracy: true, timeout: 15000, maximumAge: 600000 }
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
         );
       });
       const lat = position.coords.latitude;
@@ -345,7 +345,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         watchId = navigator.geolocation.watchPosition(
           handleWatch,
           () => { /* ignore watch errors */ },
-          { enableHighAccuracy: true, maximumAge: 15000, timeout: 10000 }
+          { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
         );
       } catch {
         // ignore
@@ -384,4 +384,3 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     requestOnce,
   }), [data, error, loading, locationLabel, refresh, requestOnce]);
 }
-
