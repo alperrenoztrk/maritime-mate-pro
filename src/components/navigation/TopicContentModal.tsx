@@ -50,8 +50,9 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                   <img
                     src={section.image}
                     alt={section.imageAlt || section.title}
-                    className="h-48 w-full object-contain bg-muted/30"
+                    className="h-48 w-full object-contain bg-muted/30 cursor-pointer hover:opacity-80 transition-opacity"
                     loading="lazy"
+                    onClick={() => window.open(section.image, '_blank')}
                   />
                 </div>
               )}
@@ -66,8 +67,9 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                       <img
                         src={src}
                         alt={alt || section.title}
-                        className="h-48 w-full object-contain bg-muted/30"
+                        className="h-48 w-full object-contain bg-muted/30 cursor-pointer hover:opacity-80 transition-opacity"
                         loading="lazy"
+                        onClick={() => window.open(src, '_blank')}
                       />
                     </div>
                   )
