@@ -2851,5 +2851,4129 @@ Bu üçgen, yalnızca bir çizim değil; yön ve büyüklük ilişkilerini aynı
       "Tüm yönler hakiki kuzeye göre alınır",
       "Üçgen, heading düzeltmesini geometrik olarak gösterir"
     ]
+  },
+  "Fix by Cross Bearings (Kerterizlerle Mevki Tayini)": {
+    title: "Fix by Cross Bearings (Kerterizlerle Mevki Tayini)",
+    introduction:
+      "Fix by Cross Bearings yöntemi, iki veya daha fazla sabit objeye alınan kerterizlerin harita üzerinde Line of Position (LOP) olarak çizilmesi ve bu LOP’ların kesiştirilmesiyle kesin mevkiin (Fix) bulunmasına dayanır. Klasik (terrestrial) navigasyonun en temel ve en yaygın fix yöntemlerinden biridir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://pzsc.org.uk/wp-content/uploads/2016/04/3pointfix.jpg)
+
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2016/03/crossed-bearings.jpg)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
+
+![Image](https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-1.png)
+
+---
+
+### Temel Prensip
+
+* En az **iki sabit obje** seçilir
+* Objelerin **eş zamanlı kerterizleri** alınır
+* Kerterizler **LOP**’a çevrilir
+* LOP’ların kesişimi → **Fix**
+
+⬛ **Ana İlke**
+
+════════════════════
+Bir objeye
+alınan kerteriz
+→ bir LOP
+İki LOP
+→ Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Obj A, Obj B** : Sabit ve tanımlı objeler
+* **Brg** : Bearing (Kerteriz)
+* **T** : True (Gerçek)
+* **LOP** : Line of Position
+* **Fix** : Kesin mevki
+
+---
+
+### Kerteriz Türleri
+
+⬛ **Kerteriz Kaynağı**
+
+════════════════════
+• Pusula kerterizi
+• Gyro kerterizi
+• Radar kerterizi
+════════════════════
+
+* Haritada kullanılacak kerteriz **True (T)** olmalıdır
+
+---
+
+### Kerterizin LOP’a Dönüştürülmesi
+
+⬛ **Kural**
+
+════════════════════
+LOP yönü
+= Kerteriz + 180°
+════════════════════
+
+* Çünkü LOP, **objeden gemiye doğru** çizilir
+
+---
+
+### İki Kerterizle Fix
+
+⬛ **Asgari Şart**
+
+════════════════════
+En az
+iki farklı obje
+iki LOP
+════════════════════
+
+* LOP’lar **mümkün olduğunca dik** kesişmelidir
+
+---
+
+### Geometrik Özellik
+
+⬛ **En İyi Geometri**
+
+════════════════════
+LOP’lar
+60° – 120°
+açıyla
+kesişmelidir
+════════════════════
+
+* Çok dar açı → **hata büyür**
+* 90° → **ideal durum**
+
+---
+
+### Sayısal Uygulama Örneği (İki Kerteriz)
+
+**Verilenler**
+
+* Obj A kerterizi: **045°T**
+* Obj B kerterizi: **320°T**
+
+---
+
+### Harita Çözümü
+
+⬛ **Obj A LOP’u**
+
+════════════════════
+045°T + 180° = 225°T
+Obj A’dan
+225°T doğrultusunda
+LOP çizilir
+════════════════════
+
+⬛ **Obj B LOP’u**
+
+════════════════════
+320°T + 180° = 140°T
+Obj B’den
+140°T doğrultusunda
+LOP çizilir
+════════════════════
+
+---
+
+### Fix
+
+════════════════════
+LOP A
+∩
+LOP B
+= Fix
+════════════════════
+
+Bu nokta, kerterizlerin alındığı andaki **kesin gemi mevkii**dir.
+
+---
+
+### Üç Kerterizle Fix
+
+⬛ **Avantaj**
+
+════════════════════
+Üç LOP
+→ Hata üçgeni
+→ Güvenilirlik
+════════════════════
+
+* İdeal durumda üç LOP **tek noktada kesişir**
+* Küçük bir üçgen oluşursa → **ortalama merkez Fix** alınır
+
+---
+
+### Sayısal Uygulama Örneği (Üç Kerteriz)
+
+**Verilenler**
+
+* Obj A: **060°T**
+* Obj B: **180°T**
+* Obj C: **300°T**
+
+---
+
+### Harita Yorumu
+
+════════════════════
+Üç LOP
+küçük bir
+üçgen oluşturur
+merkez
+Fix’tir
+════════════════════
+
+---
+
+### Hata Kaynakları
+
+* Kerterizlerin eş zamanlı alınmaması
+* Yanlış obje tanımı
+* Pusula / gyro hataları
+* Objelerin çok yakın veya aynı doğrultuda seçilmesi
+
+---
+
+### Harita Sembolizasyonu
+
+* Sabit obje → ▲
+* Kerteriz LOP’u → ince düz çizgi
+* Fix → ●
+* Hata üçgeni → küçük üçgen
+
+---
+
+### Kullanım Alanları
+
+* Açık ve kıyı seyri
+* Günlük rutin mevki tayini
+* Eğitim ve sınav uygulamaları
+* Elektronik sistemlerin teyidi
+
+Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir mevki tayin yöntemidir ve diğer tüm fix tekniklerinin **referans noktası** olarak kabul edilir.`
+      }
+    ]
+  },
+  "Mean Latitude Sailing": {
+    title: "Mean Latitude Sailing",
+    introduction:
+      "Mean Latitude Sailing, orta enlemlerde dünya yüzeyinin eğriliğinin kısmen dikkate alındığı, boylam değişiminin (D.Long) paralel üzerindeki gerçek mesafeye Mean Latitude kullanılarak dönüştürüldüğü klasik bir seyir yöntemidir. Plane Sailing’in geliştirilmiş hâlidir ve daha uzun mesafelerde daha doğru sonuç verir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+![Image](https://cdn.britannica.com/04/64904-050-D2054D06/cutaway-drawing-latitude-place-longitude-sizes-angles.jpg)
+
+![Image](https://assets.ltkcontent.com/images/92435/longitude-versus-latitude-earth_7abbbb2796.jpg)
+
+---
+
+### Temel Prensip
+
+* Seyir **orta enlemlerde** yapılır
+* Enlem değişimi **gerçek mesafeyi temsil eder**
+* Boylam değişimi, **Mean Latitude** ile düzeltilir
+* Seyir üçgeni hâlâ **dik üçgen** kabul edilir
+
+⬛ **Ana İlke**
+
+════════════════════
+Boylam mesafesi
+= D.Long × cos Mean Lat
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Lat₁, Lat₂** : Başlangıç ve varış enlemleri
+* **Long₁, Long₂** : Başlangıç ve varış boylamları
+* **D.Lat** : Difference of Latitude (′)
+* **D.Long** : Difference of Longitude (′)
+* **Mean Lat** : Ortalama enlem
+* **Dep** : Departure (′)
+* **C** : Course (°T)
+* **D** : Distance (NM)
+
+---
+
+### Difference of Latitude (D.Lat)
+
+⬛ **Formül**
+
+════════════════════
+D.Lat = Lat₂ − Lat₁
+════════════════════
+
+* Kuzeye → **N (+)**
+* Güneye → **S (−)**
+* 1′ enlem = **1 NM**
+
+---
+
+### Difference of Longitude (D.Long)
+
+⬛ **Formül**
+
+════════════════════
+D.Long = Long₂ − Long₁
+════════════════════
+
+* Doğuya → **E (+)**
+* Batıya → **W (−)**
+
+---
+
+### Mean Latitude
+
+⬛ **Formül**
+
+════════════════════
+Mean Lat = (Lat₁ + Lat₂) / 2
+════════════════════
+
+* Enlemler **aynı isimde** olmalıdır
+* Orta enlem, boylam mesafesinin düzeltmesinde kullanılır
+
+---
+
+### Departure (Dep)
+
+⬛ **Formül**
+
+════════════════════
+Dep = D.Long × cos Mean Lat
+════════════════════
+
+* Paralel üzerindeki **gerçek doğu–batı mesafesi**
+* Sonuç **deniz mili (NM)**
+
+---
+
+### Distance (D)
+
+⬛ **Formül**
+
+════════════════════
+D = √[(D.Lat)² + (Dep)²]
+════════════════════
+
+* Seyrin gerçek uzunluğu
+
+---
+
+### Course (C)
+
+⬛ **Formül**
+
+════════════════════
+tan C = Dep / D.Lat
+════════════════════
+
+* C, **meridyene göre** ölçülür
+* Quadrant, D.Lat ve Dep işaretlerine göre belirlenir
+
+---
+
+### Seyir Üçgeni (Mean Latitude)
+
+⬛ **Geometrik Yapı**
+
+════════════════════
+D.Lat → Meridyen
+Dep → Paralel
+Distance → Hipotenüs
+════════════════════
+
+* Üçgen hem **grafik**, hem **sayısal** çözülebilir
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Lat₁: **32°00′ N**
+* Long₁: **015°00′ E**
+* Lat₂: **34°00′ N**
+* Long₂: **018°00′ E**
+
+---
+
+### Hesaplama
+
+⬛ **D.Lat**
+
+════════════════════
+D.Lat = 34°00′ − 32°00′
+D.Lat = 2° = 120′ (N)
+════════════════════
+
+---
+
+⬛ **D.Long**
+
+════════════════════
+D.Long = 18°00′ − 15°00′
+D.Long = 3° = 180′ (E)
+════════════════════
+
+---
+
+⬛ **Mean Latitude**
+
+════════════════════
+Mean Lat = (32° + 34°) / 2
+Mean Lat = 33°
+cos 33° ≈ 0.84
+════════════════════
+
+---
+
+⬛ **Departure**
+
+════════════════════
+Dep = 180 × 0.84
+Dep ≈ 151′
+════════════════════
+
+---
+
+⬛ **Distance**
+
+════════════════════
+D = √(120² + 151²)
+D = √(14400 + 22801)
+D = √37201
+D ≈ 193 NM
+════════════════════
+
+---
+
+⬛ **Course**
+
+════════════════════
+tan C = 151 / 120
+tan C ≈ 1.26
+C ≈ 51°
+════════════════════
+
+Yön: **N 51° E → 051°T**
+
+---
+
+### Sonuç
+
+* **Course:** 051°T
+* **Distance:** 193 NM
+
+---
+
+### Plane Sailing ile Farkı
+
+* Plane Sailing → kısa mesafe
+* Mean Latitude → **orta mesafe**
+* Boylam mesafesi → **Mean Lat ile düzeltilir**
+
+---
+
+### Harita Sembolizasyonu
+
+* Başlangıç → ●
+* Varış → ×
+* D.Lat → meridyen doğrultusu
+* Dep → paralel doğrultusu
+* Distance → iki nokta arası çizgi
+
+---
+
+### Uygulama Alanı
+
+* Orta enlemde uzun geçişler
+* Okyanus dışı seferler
+* Eğitim, sınav ve manuel hesaplamalar
+* Mercator harita üzerinde klasik seyir çözümü`
+      }
+    ]
+  },
+  "Running Fix (Zamana Bağlı Kerterizle Mevki Tayini)": {
+    title: "Running Fix (Zamana Bağlı Kerterizle Mevki Tayini)",
+    introduction:
+      "Running Fix yöntemi, aynı sabit objeye farklı zamanlarda alınan kerterizlerin, geminin seyri ve hızı kullanılarak ilerletilmesi (advance) ve bu kerterizlerden elde edilen LOP’ların kesiştirilmesiyle mevkiin bulunmasına dayanır. Özellikle tek uygun obje bulunduğunda kullanılır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
+
+![Image](https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-1.png)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
+
+Running Fix yöntemi, **aynı sabit objeye farklı zamanlarda alınan kerterizlerin**, geminin **seyri ve hızı** kullanılarak **ilerletilmesi (advance)** ve bu kerterizlerden elde edilen **LOP’ların kesiştirilmesiyle** mevkiin bulunmasına dayanır. Özellikle **tek uygun obje bulunduğunda** kullanılır.
+
+---
+
+### Temel Prensip
+
+* Aynı objeye **iki farklı zamanda** kerteriz alınır
+* Zamanlar arasında gemi **bilinen rota ve hızla** ilerler
+* İlk kerteriz, **seyir mesafesi kadar ileri taşınır**
+* İkinci kerterizle kesişim → **Running Fix**
+
+⬛ **Ana İlke**
+
+════════════════════
+İlk LOP
+seyir kadar
+ileri alınır
++
+ikinci LOP
+= Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Obj A** : Sabit ve tanımlı obje
+* **Brg₁, Brg₂** : 1. ve 2. kerteriz (°T)
+* **t₁, t₂** : Kerteriz zamanları
+* **C** : Course (°T)
+* **V** : Speed (kn)
+* **D** : t₁–t₂ arası seyir mesafesi (NM)
+* **LOP** : Line of Position
+* **Fix** : Mevki
+
+---
+
+### Zaman–Mesafe İlişkisi
+
+⬛ **Formül**
+
+════════════════════
+D = V × Δt
+════════════════════
+
+* Δt saat cinsindendir
+* Mesafe **deniz mili (NM)**
+
+---
+
+### Kerterizin LOP’a Dönüştürülmesi
+
+⬛ **Kural**
+
+════════════════════
+LOP yönü
+= Kerteriz + 180°
+════════════════════
+
+* LOP, **objeden gemiye** doğru çizilir
+
+---
+
+### İlk LOP’un İlerletilmesi (Advance)
+
+⬛ **İlerletme Kuralı**
+
+════════════════════
+İlk LOP
+C doğrultusunda
+D kadar
+taşınır
+════════════════════
+
+* Taşıma **paralel** yapılır
+* Açı ve doğrultu korunur
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Obj A
+* **t₁ = 10:00** → Brg₁ = **045°T**
+* **t₂ = 10:30** → Brg₂ = **090°T**
+* Course **C = 120°T**
+* Speed **V = 12 kn**
+
+---
+
+### Hesaplama
+
+⬛ **Zaman Farkı**
+
+════════════════════
+Δt = 30 dk = 0.5 saat
+════════════════════
+
+⬛ **Seyir Mesafesi**
+
+════════════════════
+D = 12 × 0.5
+D = 6 NM
+════════════════════
+
+---
+
+### Harita Çözümü
+
+⬛ **Birinci LOP**
+
+════════════════════
+Brg₁ = 045°T
+LOP₁ = 225°T
+Obj A’dan çizilir
+════════════════════
+
+⬛ **LOP₁’in İlerletilmesi**
+
+════════════════════
+LOP₁
+120°T doğrultusunda
+6 NM
+ileri taşınır
+════════════════════
+
+⬛ **İkinci LOP**
+
+════════════════════
+Brg₂ = 090°T
+LOP₂ = 270°T
+Obj A’dan çizilir
+════════════════════
+
+---
+
+### Running Fix
+
+════════════════════
+İleri alınmış LOP₁
+∩
+LOP₂
+= Running Fix
+════════════════════
+
+Bu nokta, **t₂ anındaki gemi mevkii**dir.
+
+---
+
+### Geometrik Özellikler
+
+* Kerterizler arası açı büyüdükçe **hassasiyet artar**
+* Seyir hatası, Fix’e **doğrudan yansır**
+* Sabit rota ve hız varsayımı esastır
+
+---
+
+### Hata Kaynakları
+
+* Hız veya rota değişimi
+* Akıntının hesaba katılmaması
+* Kerterizlerin eş zamanlı olmaması
+* Objeye çok yakın kerteriz alınması
+
+---
+
+### Harita Sembolizasyonu
+
+* Sabit obje → ▲
+* İlk LOP → kesik çizgi
+* İleri alınmış LOP → paralel kesik çizgi
+* İkinci LOP → düz çizgi
+* Running Fix → ●
+
+---
+
+### Kullanım Alanları
+
+* Tek uygun obje bulunan kıyı seyri
+* Radar veya görsel kerterizle seyir
+* Eğitim ve klasik seyrüsefer uygulamaları
+* Elektronik fix’in teyidi`
+      }
+    ]
+  },
+  "Transit (Leading Line)": {
+    title: "Transit (Leading Line)",
+    introduction:
+      "Transit (Leading Line) yöntemi, iki sabit objenin tam doğrultuya girmesi (üst üste gelmesi) durumunda geminin bilinen bir hat üzerinde bulunduğunun kesin olarak tespit edilmesine dayanır. Bu yöntemle elde edilen hat, bir Line of Position (LOP)’tur ve klasik seyirde en güvenilir LOP kabul edilir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2015/08/lead-light1_cmyk.jpg)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.21.27-1024x574.png?media=1759652400)
+
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2015/08/transit-hd_cmyk.jpg)
+
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2015/08/lead-light2_cmyk-533x400.jpg)
+
+---
+
+### Temel Prensip
+
+* İki sabit obje seçilir
+* Objeler **aynı doğrultuda hizalandığında** transit oluşur
+* Bu doğrultu geminin bulunduğu **kesin LOP**’tur
+
+⬛ **Ana İlke**
+
+════════════════════
+İki obje
+aynı doğrultuda
+= gemi
+o hat üzerindedir
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Obj A (arka)** : Daha uzakta kalan obje
+* **Obj B (ön)** : Gemiye daha yakın obje
+* **Transit Line** : Objelerden geçen doğrultu
+* **LOP** : Line of Position
+* **Fix** : Mevki (başka bir LOP ile)
+
+---
+
+### Transit’in LOP Özelliği
+
+⬛ **Önemli Kural**
+
+════════════════════
+Transit
+hatasız
+bir LOP’tur
+════════════════════
+
+* Açı ölçümü yoktur
+* Kerteriz hatası içermez
+* Görsel olarak teyit edilir
+
+---
+
+### Haritada Transit Çizimi
+
+⬛ **Çizim Kuralı**
+
+════════════════════
+Obj A
+ile
+Obj B
+arasına
+düz çizgi
+════════════════════
+
+* Çizgi **iki objeden geçer**
+* Bu çizgi geminin **mevki hattıdır**
+
+---
+
+### Transit + Başka Bir LOP = Fix
+
+⬛ **Fix Prensibi**
+
+════════════════════
+Transit LOP
++
+ikinci LOP
+= Fix
+════════════════════
+
+İkinci LOP şu yöntemlerden biri olabilir:
+
+* Kerteriz
+* Mesafe (COP)
+* Başka bir transit
+
+---
+
+### Sayısal Uygulama Örneği (Transit + Kerteriz)
+
+**Verilenler**
+
+* Obj A ve Obj B transit hâlinde
+* Obj C kerterizi: **310°T**
+
+---
+
+### Harita Çözümü
+
+⬛ **Transit LOP**
+
+════════════════════
+Obj A – Obj B
+arasına
+düz çizgi
+════════════════════
+
+⬛ **Kerteriz LOP’u**
+
+════════════════════
+310°T + 180° = 130°T
+Obj C’den
+130°T doğrultusunda
+LOP çizilir
+════════════════════
+
+---
+
+### Fix
+
+════════════════════
+Transit LOP
+∩
+Kerteriz LOP
+= Fix
+════════════════════
+
+Bu nokta, ölçüm anındaki **kesin gemi mevkii**dir.
+
+---
+
+### İki Transit ile Fix
+
+⬛ **Özellik**
+
+════════════════════
+İki transit
+===========
+
+doğrudan Fix
+════════════════════
+
+* Liman girişlerinde yaygındır
+* Leading marks bu amaçla yerleştirilir
+
+---
+
+### Geometrik Avantajlar
+
+* Hata payı **minimumdur**
+* Görsel teyit kolaydır
+* Eğitim ve sınavlarda **yüksek güvenilirlik**
+
+---
+
+### Hata Kaynakları
+
+* Yanlış obje seçimi
+* Objelerin birbirine çok yakın olması
+* Perspektif yanılması
+* Düşük görüş şartları
+
+---
+
+### Harita Sembolizasyonu
+
+* Sabit obje → ▲
+* Transit hattı → kalın düz çizgi
+* Fix → ●
+
+---
+
+### Kullanım Alanları
+
+* Liman yaklaşmaları
+* Kanal ve dar geçit seyri
+* Clearing line oluşturma
+* Elektronik sistemlerin görsel teyidi
+
+Transit (Leading Line), klasik seyirde **en güvenilir ve en basit** mevki tayin yöntemlerinden biridir ve özellikle **seyir emniyetinin kritik olduğu bölgelerde** vazgeçilmezdir.`
+      }
+    ]
+  },
+  "Course and Distance Given Mean Latitude": {
+    title: "Course and Distance Given Mean Latitude",
+    introduction:
+      "Bu alt başlıkta, başlangıç mevkii, rota (Course) ve mesafe (Distance) bilindiğinde; enlem ve boylam değişimlerinin Mean Latitude yöntemiyle hesaplanması ele alınır. Bu çözüm, Middle Latitude Sailing’in doğrudan (direct) problemidir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fh53vszdxp%2Fillustration_Great_Circle_and_Composite_GC_comparison_fxcf5a.jpg&w=3840)
+
+![Image](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+![Image](https://www.onboardintelligence.com/CelestialNav/Images/astro6.gif)
+
+![Image](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+---
+
+### Temel Prensip
+
+* Rota ve mesafe, bir **dik seyir üçgeni** oluşturur
+* Mesafe, **D.Lat** ve **Departure** bileşenlerine ayrılır
+* Boylam değişimi, **Mean Latitude** ile düzeltilir
+
+⬛ **Ana İlke**
+
+════════════════════
+Distance
+→ D.Lat + Dep
+Dep → D.Long / cos Mean Lat
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Lat₁, Long₁** : Başlangıç mevkii
+* **Lat₂, Long₂** : Varış mevkii
+* **C** : Course (°T)
+* **D** : Distance (NM)
+* **D.Lat** : Difference of Latitude (′)
+* **Dep** : Departure (′)
+* **D.Long** : Difference of Longitude (′)
+* **Mean Lat** : Ortalama enlem
+
+---
+
+### Distance’in Bileşenlere Ayrılması
+
+⬛ **Formüller**
+
+════════════════════
+D.Lat = D × cos C
+════════════════════
+
+════════════════════
+Dep = D × sin C
+════════════════════
+
+* C, **meridyene göre** ölçülür
+* İşaretler (N/S – E/W), rota quadrantına göre belirlenir
+
+---
+
+### Mean Latitude
+
+⬛ **Formül**
+
+════════════════════
+Mean Lat = (Lat₁ + Lat₂) / 2
+════════════════════
+
+* İlk aşamada Lat₂ bilinmediğinden,
+  **yaklaşık Mean Lat** kullanılır
+* Hesap sonunda gerekiyorsa **düzeltme yapılır**
+
+---
+
+### Difference of Longitude
+
+⬛ **Formül**
+
+════════════════════
+D.Long = Dep / cos Mean Lat
+════════════════════
+
+* Sonuç **dakika (′)** cinsindedir
+* E (+), W (−) olarak işaretlenir
+
+---
+
+### Enlem ve Boylamın Bulunması
+
+⬛ **Enlem**
+
+════════════════════
+Lat₂ = Lat₁ ± D.Lat
+════════════════════
+
+⬛ **Boylam**
+
+════════════════════
+Long₂ = Long₁ ± D.Long
+════════════════════
+
+* İşaretler rota yönüne göre seçilir
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Lat₁ = **30°00′ N**
+* Long₁ = **020°00′ E**
+* Course **C = 060°T**
+* Distance **D = 200 NM**
+
+---
+
+### Hesaplama
+
+⬛ **D.Lat**
+
+════════════════════
+D.Lat = 200 × cos 60°
+D.Lat = 200 × 0.5
+D.Lat = 100′ (N)
+════════════════════
+
+---
+
+⬛ **Departure**
+
+════════════════════
+Dep = 200 × sin 60°
+Dep = 200 × 0.866
+Dep ≈ 173′ (E)
+════════════════════
+
+---
+
+⬛ **Yeni Enlem**
+
+════════════════════
+Lat₂ = 30°00′ + 100′
+Lat₂ = 31°40′ N
+════════════════════
+
+---
+
+⬛ **Mean Latitude**
+
+════════════════════
+Mean Lat = (30°00′ + 31°40′) / 2
+Mean Lat = 30°50′ ≈ 30.8°
+cos 30.8° ≈ 0.86
+════════════════════
+
+---
+
+⬛ **D.Long**
+
+════════════════════
+D.Long = 173 / 0.86
+D.Long ≈ 201′
+════════════════════
+
+---
+
+⬛ **Yeni Boylam**
+
+════════════════════
+Long₂ = 020°00′ + 201′
+Long₂ = 023°21′ E
+════════════════════
+
+---
+
+### Sonuç Mevkii
+
+════════════════════
+Lat₂ = 31°40′ N
+Long₂ = 023°21′ E
+════════════════════
+
+---
+
+### Seyir Üçgeni Özeti
+
+* Hipotenüs → Distance
+* Düşey kenar → D.Lat
+* Yatay kenar → Departure
+* Boylam → Mean Latitude ile düzeltilir
+
+---
+
+### Harita Sembolizasyonu
+
+* Başlangıç mevkii → ●
+* Varış mevkii → ×
+* Course → ok işareti
+* D.Lat → meridyen doğrultusu
+* Dep → paralel doğrultusu
+
+---
+
+### Uygulama Alanı
+
+* Orta enlemde seyir planlaması
+* Varış mevkii öngörüsü
+* Manuel sınav ve eğitim çözümleri
+* Elektronik sistemlerin hesap teyidi`
+      }
+    ]
+  },
+  "Clearing Line (Emniyet Hattı)": {
+    title: "Clearing Line (Emniyet Hattı)",
+    introduction:
+      "Clearing Line, geminin belirli bir tehlikeden (sığlık, kaya, resif, kıyı) güvenli tarafta kaldığını kesin olarak gösteren, önceden hesaplanmış ve harita üzerine çizilmiş bir Line of Position (LOP)’tur. Bu hattın tehlikeli tarafına geçilmediği sürece, gemi emniyetli bölgede kabul edilir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2015/08/Tacking-into-an-entrance.jpg)
+
+![Image](https://imgv2-2-f.scribdassets.com/img/document/452965426/original/a1fe3b13d5/1?v=1)
+
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2020/07/LIGHT-RECOGNITION.png)
+
+![Image](https://www.sailtrain.co.uk/gps/images/xteclearing.gif)
+
+---
+
+### Temel Prensip
+
+* Tehlike belirlenir
+* Tehlikeyi **emniyetle teğet geçen** bir doğrultu seçilir
+* Bu doğrultu **Clearing Line** olarak çizilir
+* Gemi bu hattın **güvenli tarafında** kalır
+
+⬛ **Ana İlke**
+
+════════════════════
+Clearing Line
+aşılmadığı sürece
+tehlike yoktur
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Hazard** : Sığlık, kaya, resif vb.
+* **Clearing Point** : Tehlikeye en yakın emniyet noktası
+* **Clearing Bearing** : Emniyet kerterizi (°T)
+* **Clearing Line** : Emniyet hattı (LOP)
+* **Safe Side** : Emniyetli taraf
+
+---
+
+### Clearing Line’ın Özelliği
+
+⬛ **LOP Niteliği**
+
+════════════════════
+Clearing Line
+=============
+
+tek yönlü LOP
+════════════════════
+
+* Hat **aşılmaz**, sadece **taraf kontrolü** yapılır
+* Fix için başka bir LOP gerekir
+
+---
+
+### Clearing Bearing’in Belirlenmesi
+
+⬛ **Kural**
+
+════════════════════
+Tehlikeye
+emniyet mesafesiyle
+teğet doğrultu
+════════════════════
+
+* Tehlike ile gemi arasında **minimum mesafe** bırakılır
+* Bu doğrultu haritadan **ölçülür**
+
+---
+
+### Haritada Clearing Line Çizimi
+
+⬛ **Çizim Kuralı**
+
+════════════════════
+Tehlike noktası
+üzerinden
+Clearing Bearing
+doğrultusunda
+düz çizgi
+════════════════════
+
+* Çizgi, tehlikeden geçer
+* Emniyetli taraf **işaretlenir**
+
+---
+
+### Sayısal Uygulama Örneği (Clearing Bearing)
+
+**Verilenler**
+
+* Tehlike: Kaya
+* Kaya etrafında emniyet mesafesi: **0.5 NM**
+* Haritadan ölçülen teğet doğrultu: **045°T**
+
+---
+
+### Clearing Line
+
+════════════════════
+Clearing Bearing
+= 045°T
+Clearing Line
+kaya üzerinden
+045°T doğrultusunda
+════════════════════
+
+* Gemi **045°T’nin güvenli tarafında** kaldığı sürece emniyettedir
+
+---
+
+### Clearing Line + Kerteriz Kullanımı
+
+⬛ **Uygulama**
+
+════════════════════
+Gemi kerterizi
+Clearing Bearing
+ile karşılaştırılır
+════════════════════
+
+* Kerteriz **Clearing Bearing’i geçerse** → tehlike
+
+---
+
+### Sayısal Uygulama Örneği (Kerteriz Kontrolü)
+
+**Verilenler**
+
+* Clearing Bearing: **045°T**
+* Tehlike objesi kerterizi: **030°T**
+
+════════════════════
+030°T < 045°T
+→ Emniyetli tarafta
+════════════════════
+
+---
+
+### Clearing Line + Başka LOP = Fix
+
+⬛ **Fix Prensibi**
+
+════════════════════
+Clearing Line
++
+Kerteriz / Mesafe / Transit
+= Fix
+════════════════════
+
+* Clearing Line, **emniyeti**
+* İkinci LOP, **mevkii** sağlar
+
+---
+
+### Geometrik Özellikler
+
+* Clearing Line, genellikle **kıyıya paralel değildir**
+* Tehlikeye **teğet** geçer
+* Geniş açılı doğrultular tercih edilir
+
+---
+
+### Hata Kaynakları
+
+* Yanlış tehlike seçimi
+* Yetersiz emniyet mesafesi
+* Harita ölçeğinin dikkate alınmaması
+* Kerterizin yanlış yorumlanması
+
+---
+
+### Harita Sembolizasyonu
+
+* Tehlike → ✖ / ★
+* Clearing Line → kalın kesik çizgi
+* Emniyetli taraf → ok veya tarama
+* Gemi mevkii → ●
+
+---
+
+### Kullanım Alanları
+
+* Kıyı seyri
+* Dar geçitler
+* Liman yaklaşmaları
+* Elektronik sistemlerin emniyet teyidi
+
+Clearing Line, klasik seyrüseferde **fix sağlamaz**, ancak geminin **tehlikeden uzak kaldığını kesin olarak garanti eden** en kritik emniyet araçlarından biridir.`
+      }
+    ]
+  },
+  "Distance Off by Vertical Angle": {
+    title: "Distance Off by Vertical Angle",
+    introduction:
+      "Distance Off by Vertical Angle yöntemi, yüksekliği bilinen bir objenin tepe ve tabanı arasında ölçülen düşey açıdan, gemi ile obje arasındaki yatay mesafenin hesaplanmasına dayanır. Kıyı seyri ve liman yaklaşmalarında tek başına bir LOP olarak kullanılır veya başka bir LOP ile Fix oluşturur.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/08/distance-off.jpg?fit=1200%2C901&ssl=1&w=640)
+
+![Image](https://imgv2-2-f.scribdassets.com/img/document/670945450/original/8747219132/1?v=1)
+
+![Image](https://d8it4huxumps7.cloudfront.net/bites/wp-content/banners/2024/3/6604eb9fe708f_angle_of_elevation.jpg)
+
+![Image](https://www.researchgate.net/publication/233881034/figure/fig12/AS%3A214238104481818%401428089752752/Calculation-of-elevation-angle-from-two-GPS-measures.png)
+
+---
+
+### Temel Prensip
+
+* Yüksekliği bilinen bir obje seçilir
+* Objeye ait **düşey açı (Vertical Angle)** ölçülür
+* Trigonometrik ilişki ile **mesafe** hesaplanır
+
+⬛ **Ana İlke**
+
+════════════════════
+tan θ
+=====
+
+Obj Yüksekliği / Mesafe
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **H** : Objeye ait yükseklik (m)
+* **θ** : Düşey açı (°)
+* **D** : Yatay mesafe (m veya NM)
+* **HA** : Height of Eye (m)
+* **Effective Height** : Etkin yükseklik
+
+---
+
+### Etkin Yüksekliğin Belirlenmesi
+
+⬛ **Formül**
+
+════════════════════
+Effective Height
+= Obj Yüksekliği − Height of Eye
+════════════════════
+
+* Göz yüksekliği, objenin tabanı **deniz seviyesindeyse** düşülür
+* Deniz fenerleri ve kulelerde standart uygulamadır
+
+---
+
+### Mesafe Hesabı
+
+⬛ **Temel Formül**
+
+════════════════════
+D = Effective Height / tan θ
+════════════════════
+
+* Sonuç **metre** cinsindendir
+* Deniz mili için dönüşüm gerekir
+
+⬛ **Birim Dönüşümü**
+
+════════════════════
+1 NM = 1852 m
+════════════════════
+
+---
+
+### Grafik Yorum
+
+* Düşey açı **küçüldükçe** mesafe artar
+* Yakın mesafelerde yöntem **çok hassastır**
+* Uzak mesafede küçük açı hatası → **büyük mesafe hatası**
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Obje yüksekliği (**H**) = **30 m**
+* Height of Eye (**HA**) = **5 m**
+* Ölçülen düşey açı (**θ**) = **2°**
+
+---
+
+### Hesaplama
+
+⬛ **Etkin Yükseklik**
+
+════════════════════
+Effective Height = 30 − 5
+Effective Height = 25 m
+════════════════════
+
+---
+
+⬛ **Mesafe (metre)**
+
+════════════════════
+D = 25 / tan 2°
+tan 2° ≈ 0.0349
+D ≈ 716 m
+════════════════════
+
+---
+
+⬛ **Mesafe (NM)**
+
+════════════════════
+D = 716 / 1852
+D ≈ 0.39 NM
+════════════════════
+
+---
+
+### LOP Olarak Kullanımı
+
+⬛ **LOP Niteliği**
+
+════════════════════
+Distance Off
+============
+
+yarıçapı bilinen
+daire yayı
+════════════════════
+
+* Obje merkez alınır
+* Hesaplanan mesafe yarıçap kabul edilir
+
+---
+
+### Distance Off + Kerteriz = Fix
+
+⬛ **Fix Prensibi**
+
+════════════════════
+Mesafe yayı
++
+Kerteriz LOP
+= Fix
+════════════════════
+
+---
+
+### Harita Çözümü
+
+* Obje merkezli **yarıçap = D** daire yayı
+* Objeden alınan kerteriz LOP’u
+* Kesişim noktası → **Fix**
+
+---
+
+### Hata Kaynakları
+
+* Yanlış yükseklik bilgisi
+* Height of Eye’nin ihmal edilmesi
+* Küçük açı ölçüm hataları
+* Dalgadan kaynaklı göz hizası değişimi
+
+---
+
+### Harita Sembolizasyonu
+
+* Sabit obje → ▲
+* Mesafe yayı → kesik daire yayı
+* Kerteriz LOP’u → düz çizgi
+* Fix → ●
+
+---
+
+### Kullanım Alanları
+
+* Liman yaklaşmaları
+* Kıyıya mesafe kontrolü
+* Tek obje bulunan seyir sahaları
+* Elektronik mesafe ölçümünün teyidi
+
+Distance Off by Vertical Angle, klasik seyrüseferde **tek ölçümle güvenilir mesafe** sağlayan, özellikle **kıyı emniyetinde** kritik öneme sahip bir yöntemdir.`
+      }
+    ]
+  },
+  "Course and Distance Between Two Positions (Mean Latitude)": {
+    title: "Course and Distance Between Two Positions (Mean Latitude)",
+    introduction:
+      "Bu alt başlıkta, başlangıç ve varış mevkileri bilindiğinde, rota (Course) ve mesafenin (Distance) Mean Latitude yöntemiyle hesaplanması ele alınır. Bu çözüm, Middle Latitude Sailing’in ters (inverse) problemidir ve klasik seyirde en sık kullanılan hesaplamalardan biridir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://sailingissues.com/vier/running-fix-3x.png)
+
+![Image](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+---
+
+### Temel Prensip
+
+* İki mevki arasındaki **D.Lat** ve **D.Long** bulunur
+* Boylam farkı, **Mean Latitude** ile düzeltilerek **Departure** elde edilir
+* Dik seyir üçgeninden **Course** ve **Distance** hesaplanır
+
+⬛ **Ana İlke**
+
+════════════════════
+D.Lat + Dep
+→
+Course & Distance
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Lat₁, Long₁** : Başlangıç mevkii
+* **Lat₂, Long₂** : Varış mevkii
+* **D.Lat** : Difference of Latitude (′)
+* **D.Long** : Difference of Longitude (′)
+* **Mean Lat** : Ortalama enlem
+* **Dep** : Departure (′)
+* **C** : Course (°T)
+* **D** : Distance (NM)
+
+---
+
+### Difference of Latitude (D.Lat)
+
+⬛ **Formül**
+
+════════════════════
+D.Lat = Lat₂ − Lat₁
+════════════════════
+
+* Kuzeye → **N (+)**
+* Güney → **S (−)**
+* 1′ enlem = **1 NM**
+
+---
+
+### Difference of Longitude (D.Long)
+
+⬛ **Formül**
+
+════════════════════
+D.Long = Long₂ − Long₁
+════════════════════
+
+* Doğuya → **E (+)**
+* Batıya → **W (−)**
+
+---
+
+### Mean Latitude
+
+⬛ **Formül**
+
+════════════════════
+Mean Lat = (Lat₁ + Lat₂) / 2
+════════════════════
+
+* Enlemler **aynı isimde** olmalıdır
+* Boylam mesafesinin düzeltilmesinde kullanılır
+
+---
+
+### Departure (Dep)
+
+⬛ **Formül**
+
+════════════════════
+Dep = D.Long × cos Mean Lat
+════════════════════
+
+* Paralel üzerindeki **gerçek doğu–batı mesafesi**
+* Sonuç **dakika (′)** cinsindedir
+
+---
+
+### Distance (D)
+
+⬛ **Formül**
+
+════════════════════
+D = √[(D.Lat)² + (Dep)²]
+════════════════════
+
+* Seyrin gerçek uzunluğu
+* Sonuç **deniz mili (NM)**
+
+---
+
+### Course (C)
+
+⬛ **Formül**
+
+════════════════════
+tan C = Dep / D.Lat
+════════════════════
+
+* C, **meridyene göre** ölçülür
+* Quadrant, D.Lat ve Dep işaretlerine göre belirlenir
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Lat₁ = **28°20′ N**
+* Long₁ = **017°40′ E**
+* Lat₂ = **31°50′ N**
+* Long₂ = **021°10′ E**
+
+---
+
+### Hesaplama
+
+⬛ **D.Lat**
+
+════════════════════
+31°50′ − 28°20′
+= 3°30′
+= 210′ (N)
+════════════════════
+
+---
+
+⬛ **D.Long**
+
+════════════════════
+21°10′ − 17°40′
+= 3°30′
+= 210′ (E)
+════════════════════
+
+---
+
+⬛ **Mean Latitude**
+
+════════════════════
+Mean Lat
+= (28°20′ + 31°50′) / 2
+= 30°05′ ≈ 30.1°
+cos 30.1° ≈ 0.866
+════════════════════
+
+---
+
+⬛ **Departure**
+
+════════════════════
+Dep = 210 × 0.866
+Dep ≈ 182′
+════════════════════
+
+---
+
+⬛ **Distance**
+
+════════════════════
+D = √(210² + 182²)
+D = √(44100 + 33124)
+D = √77224
+D ≈ 278 NM
+════════════════════
+
+---
+
+⬛ **Course**
+
+════════════════════
+tan C = 182 / 210
+tan C ≈ 0.87
+C ≈ 41°
+════════════════════
+
+Yön: **N 41° E → 041°T**
+
+---
+
+### Sonuç
+
+════════════════════
+Course = 041°T
+Distance = 278 NM
+════════════════════
+
+---
+
+### Seyir Üçgeni Özeti
+
+* Düşey kenar → D.Lat
+* Yatay kenar → Departure
+* Hipotenüs → Distance
+* Açı → Course
+
+---
+
+### Harita Sembolizasyonu
+
+* Başlangıç mevkii → ●
+* Varış mevkii → ×
+* D.Lat → meridyen doğrultusu
+* Dep → paralel doğrultusu
+* Course → yön oku
+
+---
+
+### Uygulama Alanı
+
+* İki mevki arası rota planlaması
+* Seyir defteri hesapları
+* Manuel sınav ve klasik çözümler
+* Elektronik sistemlerin kontrolü`
+      }
+    ]
+  },
+  "Distance Off by Horizontal Angle": {
+    title: "Distance Off by Horizontal Angle",
+    introduction:
+      "Distance Off by Horizontal Angle yöntemi, aynı doğrultuda olmayan iki sabit obje arasındaki yatay açının ölçülmesiyle, geminin bu objelere olan mesafesinin trigonometrik olarak tayin edilmesine dayanır. Kıyı seyirlerinde, özellikle iki belirgin obje mevcutken, tek ölçümle güvenilir bir LOP sağlar.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/08/distance-off.jpg?fit=1200%2C901&ssl=1&w=640)
+
+![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.1.5.10_fig_1-1024x906.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/12/10.1.5.16_fig_5.jpg)
+
+![Image](https://jerrymahun.com/images/open_access/angles/hor_def.png)
+
+---
+
+### Temel Prensip
+
+* İki sabit obje seçilir
+* Objeler arasındaki **yatay açı (Horizontal Angle)** ölçülür
+* Objelere olan mesafe, **üçgen geometrisi** ile hesaplanır
+
+⬛ **Ana İlke**
+
+════════════════════
+sin A / a
+=========
+
+sin B / b
+
+sin C / c
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Obj A, Obj B** : Sabit objeler
+* **θ** : Ölçülen yatay açı (°)
+* **d** : Objeler arası bilinen mesafe (haritadan)
+* **D** : Geminin objelere olan mesafesi
+* **LOP** : Line of Position
+
+---
+
+### Geometrik Yapı
+
+* Obj A ile Obj B arası mesafe **taban (d)**
+* Gemi, bu tabana karşı **θ açısını** görür
+* Oluşan üçgen **düzlemsel üçgendir**
+
+---
+
+### Temel Trigonometrik İlişki
+
+⬛ **Formül (İkizkenar Olmayan Genel Durum)**
+
+════════════════════
+D = d / (2 × tan(θ / 2))
+════════════════════
+
+* D, geminin **iki objeye ortalama mesafesidir**
+* θ derece cinsindendir
+
+---
+
+### Özel Durum (İkizkenar Yaklaşımı)
+
+Objeler gemiye yaklaşık eşit mesafedeyse:
+
+⬛ **Basitleştirilmiş Formül**
+
+════════════════════
+D ≈ d / (2 × tan(θ / 2))
+════════════════════
+
+Bu yaklaşım klasik sınav ve pratik seyirde yaygındır.
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Obj A – Obj B arası mesafe (**d**) = **1.2 NM**
+* Ölçülen yatay açı (**θ**) = **20°**
+
+---
+
+### Hesaplama
+
+⬛ **Yarım Açı**
+
+════════════════════
+θ / 2 = 10°
+tan 10° ≈ 0.176
+════════════════════
+
+---
+
+⬛ **Mesafe**
+
+════════════════════
+D = 1.2 / (2 × 0.176)
+D = 1.2 / 0.352
+D ≈ 3.41 NM
+════════════════════
+
+---
+
+### Sonuç
+
+════════════════════
+Geminin
+Obj A ve Obj B’ye
+ortalama mesafesi
+≈ 3.4 NM
+════════════════════
+
+---
+
+### LOP Olarak Kullanımı
+
+⬛ **LOP Niteliği**
+
+════════════════════
+Yatay açı
+=========
+
+dairenin
+bir yayı
+════════════════════
+
+* Obj A ve Obj B, dairenin **kiriş noktalarıdır**
+* Ölçülen açıya karşılık gelen **dairenin yayı**, geminin bulunduğu hattı verir
+
+---
+
+### Horizontal Angle + Kerteriz = Fix
+
+⬛ **Fix Prensibi**
+
+════════════════════
+Yatay Açı LOP’u
++
+Kerteriz LOP’u
+= Fix
+════════════════════
+
+---
+
+### Harita Çözümü
+
+* Obj A ve Obj B işaretlenir
+* Yatay açıya karşılık gelen **dairesel yay** çizilir
+* İkinci LOP ile kesişim → **Fix**
+
+---
+
+### Hata Kaynakları
+
+* Objelerin aynı hatta çok yakın olması
+* Küçük yatay açı ölçümü
+* Sextant hizalama hatası
+* Haritadan mesafe ölçüm hatası
+
+---
+
+### Harita Sembolizasyonu
+
+* Sabit objeler → ▲ ▲
+* Yatay açı yayı → kesik daire yayı
+* Kerteriz LOP’u → düz çizgi
+* Fix → ●
+
+---
+
+### Kullanım Alanları
+
+* Kıyı seyri
+* Liman yaklaşmaları
+* İki belirgin obje bulunan bölgeler
+* Elektronik fix teyidi
+
+Distance Off by Horizontal Angle, klasik seyrüseferde **tek ölçümle mesafe tayini** sağlayan, özellikle **görsel şartların iyi olduğu kıyı sularında** etkili bir yöntemdir.`
+      }
+    ]
+  },
+  "Running Fix (Koşmalı Mevki Tayini)": {
+    title: "Running Fix (Koşmalı Mevki Tayini)",
+    introduction:
+      "Running Fix, tek bir sabit objeden farklı zamanlarda alınan iki (veya daha fazla) LOP’un, geminin seyri ve kat edilen mesafe kadar ileri taşınmasıyla mevkiin tayin edilmesi yöntemidir. Özellikle tek obje bulunan kıyı sahalarında ve görüş kısıtlıyken klasik seyrüseferin temel çözümlerindendir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
+
+![Image](https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-1.png)
+
+![Image](https://www.sailtrain.co.uk/navigation/images/runfix1.gif)
+
+---
+
+### Temel Prensip
+
+* Aynı objeden **farklı zamanlarda** LOP alınır
+* İlk LOP, geminin **seyri ve mesafesi** kadar ileri taşınır
+* Taşınan LOP ile ikinci LOP’un kesişimi **Fix** verir
+
+⬛ **Ana İlke**
+
+════════════════════
+İlk LOP
++
+Advance
+∩
+İkinci LOP
+= Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **LOP₁** : İlk mevki hattı
+* **LOP₂** : İkinci mevki hattı
+* **Advance** : Seyir + Mesafe ile ileri taşıma
+* **C** : Course (°T)
+* **D** : Distance (NM)
+* **Fix** : Koşmalı mevki
+
+---
+
+### Advance (İleri Taşıma)
+
+⬛ **Tanım**
+
+════════════════════
+Advance
+=======
+
+Course yönünde
+Distance kadar
+LOP taşıma
+════════════════════
+
+* Advance, **vektörel** bir işlemdir
+* Yön ve mesafe **mutlaka doğru** olmalıdır
+
+---
+
+### Running Fix’te Kullanılan LOP Türleri
+
+* Kerteriz
+* Transit
+* Mesafe (Distance Off)
+* Clearing Line
+
+⬛ **En Yaygın Kombinasyon**
+
+════════════════════
+Kerteriz
++
+Kerteriz
+════════════════════
+
+---
+
+### Haritada Çözüm Adımları
+
+1. İlk LOP çizilir
+2. Geminin **Course** ve **Distance**’ı hesaplanır
+3. İlk LOP, bu değerlerle **ileri taşınır**
+4. İkinci LOP çizilir
+5. Kesişim noktası → **Running Fix**
+
+---
+
+### Sayısal Uygulama Örneği (Kerteriz + Kerteriz)
+
+**Verilenler**
+
+* Sabit obje: Deniz feneri
+* 1. kerteriz (T₁): **045°T**
+* 2. kerteriz (T₂): **320°T**
+* İki ölçüm arası seyir:
+
+  * Course = **090°T**
+  * Distance = **6 NM**
+
+---
+
+### Harita Çözümü
+
+⬛ **İlk LOP**
+
+════════════════════
+045°T + 180°
+= 225°T
+Fenerden
+225°T doğrultusunda
+LOP₁
+════════════════════
+
+---
+
+⬛ **Advance**
+
+════════════════════
+LOP₁
+090°T yönünde
+6 NM
+ileri taşınır
+════════════════════
+
+---
+
+⬛ **İkinci LOP**
+
+════════════════════
+320°T + 180°
+= 140°T
+Fenerden
+140°T doğrultusunda
+LOP₂
+════════════════════
+
+---
+
+### Running Fix
+
+════════════════════
+Advance edilmiş LOP₁
+∩
+LOP₂
+= Running Fix
+════════════════════
+
+Bu nokta, **ikinci kerteriz anındaki** gemi mevkiidir.
+
+---
+
+### Zaman Faktörü
+
+⬛ **Kritik Kural**
+
+════════════════════
+İki ölçüm arası
+seyir
+doğru değilse
+Fix hatalıdır
+════════════════════
+
+* Akıntı ve rüzgâr **hesaba katılmalıdır**
+* Dead Reckoning hatası, Fix’i doğrudan etkiler
+
+---
+
+### Geometrik Özellikler
+
+* LOP’lar **keskin açıyla** kesişmelidir
+* Paralel LOP’lar → **zayıf Fix**
+* Uzun advance → hata büyür
+
+---
+
+### Hata Kaynakları
+
+* Yanlış Course veya Distance
+* Akıntının ihmal edilmesi
+* Kerteriz ölçüm hatası
+* Objenin yanlış tanımlanması
+
+---
+
+### Harita Sembolizasyonu
+
+* Sabit obje → ▲
+* LOP → düz çizgi
+* Advance edilmiş LOP → kesik çizgi
+* Running Fix → ●
+
+---
+
+### Kullanım Alanları
+
+* Tek belirgin obje bulunan kıyılar
+* Liman yaklaşmaları
+* Görüşün sınırlı olduğu seyirler
+* Elektronik mevki teyidi
+
+Running Fix, klasik seyrüseferde **zaman ve hareketi denkleme katan**, doğru uygulandığında **yüksek güvenilirlik** sağlayan temel mevki tayin yöntemlerinden biridir.`
+      }
+    ]
+  },
+  "Validity and Limitations of Mean Latitude Sailing": {
+    title: "Validity and Limitations of Mean Latitude Sailing",
+    introduction:
+      "Mean Latitude Sailing, orta enlemlerde, kısa–orta mesafelerde ve meridyen yakınsamasının ihmal edilebileceği durumlarda kullanılan yaklaşık bir seyrüsefer yöntemidir. Bu alt başlıkta, yöntemin nerede güvenilir olduğu, nerede hata verdiği ve neden sınırlı kabul edildiği ele alınır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fh53vszdxp%2Fillustration_Great_Circle_and_Composite_GC_comparison_fxcf5a.jpg&w=3840)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+---
+
+### Temel Varsayım
+
+* Paraleller **birbirine paralel kabul edilir**
+* Meridyenler **birbirine yaklaşmaz varsayılır**
+* Dünya yüzeyi, küçük alan için **düzlemsel** kabul edilir
+
+⬛ **Ana Varsayım**
+
+════════════════════
+Küçük alan
++
+Orta enlem
+→
+Düzlem yaklaşımı
+════════════════════
+
+---
+
+### Mean Latitude Düzeltmesinin Anlamı
+
+Mean Latitude Sailing’de boylam farkı, **paralel üzerindeki gerçek mesafeye** dönüştürülür.
+
+⬛ **Temel İlişki**
+
+════════════════════
+Dep = D.Long × cos Mean Lat
+════════════════════
+
+* cos Mean Lat, **paralelin kısalmasını** temsil eder
+* Enlem arttıkça paralel **küçülür**
+
+---
+
+### Geçerlilik Alanı
+
+⬛ **Güvenle Kullanılabilir**
+
+════════════════════
+Enlem:
+15° – 60°
+════════════════════
+
+════════════════════
+Mesafe:
+≈ 300–400 NM
+════════════════════
+
+* Kıyı seyri
+* Bölgesel rota planlaması
+* Eğitim ve sınav uygulamaları
+
+---
+
+### Geçersiz veya Riskli Alanlar
+
+⬛ **Kullanılması Sakıncalı**
+
+════════════════════
+Yüksek enlemler
+(> 60°)
+════════════════════
+
+════════════════════
+Uzun mesafeler
+(> 600 NM)
+════════════════════
+
+════════════════════
+E–W ağırlıklı
+seyirler
+════════════════════
+
+---
+
+### Meridyen Yakınsaması Hatası
+
+Meridyenler, kutuplara doğru **birbirine yaklaşır**. Mean Latitude Sailing bu etkiyi **tam olarak hesaba katmaz**.
+
+⬛ **Yakınsama Etkisi**
+
+════════════════════
+Gerçek rota
+≠
+Hesaplanan rota
+════════════════════
+
+* Boylam farkı büyüdükçe hata artar
+* Yüksek enlem → büyük hata
+
+---
+
+### Hata Kaynağının Matematiksel Yorumu
+
+Mean Latitude Sailing’de:
+
+⬛ **Yaklaşım**
+
+════════════════════
+cos Lat
+≈
+cos Mean Lat
+════════════════════
+
+Gerçekte:
+
+════════════════════
+cos Lat
+değişkendir
+════════════════════
+
+Bu fark, **uzun E–W seyirlerde** büyür.
+
+---
+
+### Sayısal Karşılaştırma Örneği
+
+**Verilenler**
+
+* Lat₁ = **20° N**
+* Lat₂ = **40° N**
+* D.Long = **600′**
+
+---
+
+⬛ **Mean Latitude**
+
+════════════════════
+Mean Lat = 30°
+cos 30° = 0.866
+════════════════════
+
+---
+
+⬛ **Departure (Yaklaşık)**
+
+════════════════════
+Dep = 600 × 0.866
+Dep ≈ 520′
+════════════════════
+
+---
+
+⬛ **Gerçek Durum**
+
+* 20°’de cos = 0.94
+* 40°’ta cos = 0.77
+
+Paralel uzunluğu **sabit değildir**, bu nedenle sonuç **yaklaşıktır**.
+
+---
+
+### Plane Sailing ile Karşılaştırma
+
+* Plane Sailing → cos Lat **hiç kullanılmaz**
+* Mean Latitude Sailing → cos Mean Lat kullanılır
+
+⬛ **Karşılaştırma**
+
+════════════════════
+Plane Sailing
+= kısa mesafe
+════════════════════
+
+════════════════════
+Mean Latitude
+= daha geniş alan
+════════════════════
+
+---
+
+### Great Circle ile Farkı
+
+* Mean Latitude Sailing → **yaklaşık**
+* Great Circle Sailing → **gerçek en kısa yol**
+
+⬛ **Temel Ayrım**
+
+════════════════════
+Mean Latitude
+≈ düz rota
+════════════════════
+
+════════════════════
+Great Circle
+= küresel rota
+════════════════════
+
+---
+
+### Uygulamada Kabul Edilen Kural
+
+⬛ **Altın Kural**
+
+════════════════════
+Mesafe uzadıkça
+ve enlem büyüdükçe
+Mean Latitude
+terk edilir
+════════════════════
+
+Bu noktadan sonra:
+
+* Mercator Sailing
+* Great Circle Sailing
+  tercih edilir.
+
+---
+
+### Harita Sembolizasyonu
+
+* Mean Latitude rota → düz çizgi
+* Gerçek küresel rota → hafif kavisli çizgi
+* Hata alanı → taralı bölge
+
+---
+
+### Kullanım Özeti
+
+* Eğitim ve manuel hesaplar
+* Orta enlem kıyı seyri
+* Kısa–orta mesafe planlama
+* Elektronik sistem sonuçlarının yaklaşık kontrolü
+
+Mean Latitude Sailing, **basitliği ve hızı** sayesinde klasik seyrüseferin temel taşlarından biridir; ancak **geçerlilik sınırları bilinmeden kullanılması**, özellikle **yüksek enlem ve uzun mesafelerde**, ciddi rota hatalarına yol açabilir.`
+      }
+    ]
+  },
+  "Dead Reckoning and Estimated Position (DR & EP)": {
+    title: "Dead Reckoning and Estimated Position (DR & EP)",
+    introduction:
+      "Dead Reckoning (DR), geminin son bilinen mevkiden, rota (Course) ve sürat (Speed) kullanılarak dış etkiler hesaba katılmadan ilerletilmesiyle bulunan mevkiidir. Estimated Position (EP) ise DR üzerine akıntı ve rüzgâr etkileri eklenerek elde edilen tahmini gerçek mevkidir. Klasik seyrüseferin tüm mevki tayin yöntemlerinin temelini oluşturur.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://upload.wikimedia.org/wikipedia/commons/e/ed/Dead-reckoning.svg)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/PLOTTING-SYMBOLS.png?media=1759652400)
+
+![Image](https://cdn.britannica.com/41/2941-004-E9AB5656/triangle-course-aicraft-vector-compass-heading-aircraft.jpg)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Wind_drift.png/250px-Wind_drift.png)
+
+---
+
+### Temel Prensip
+
+* Son güvenilir mevki alınır
+* Course ve Speed ile mevki **ileri taşınır**
+* Dış etkiler yoksa → **DR**
+* Dış etkiler eklenirse → **EP**
+
+⬛ **Ana İlke**
+
+════════════════════
+Mevki
++
+(Course × Time × Speed)
+= DR
+════════════════════
+
+════════════════════
+DR
++
+(Current / Wind)
+= EP
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **DR** : Dead Reckoning Position
+* **EP** : Estimated Position
+* **C** : Course (°T)
+* **S** : Speed (knots)
+* **t** : Time (hours)
+* **D** : Distance (NM)
+* **Set** : Akıntı yönü (°T)
+* **Drift** : Akıntı sürati (knots)
+
+---
+
+### Mesafe Hesabı (DR)
+
+⬛ **Temel Formül**
+
+════════════════════
+D = S × t
+════════════════════
+
+* S → knot
+* t → saat
+* D → deniz mili (NM)
+
+---
+
+### DR Mevkiinin Çizimi
+
+* Son Fix’ten başlanır
+* Course doğrultusunda **D kadar** ilerlenir
+* Ulaşılan nokta → **DR**
+
+---
+
+### Akıntı Etkisi (EP)
+
+⬛ **Akıntı Mesafesi**
+
+════════════════════
+D₍c₎ = Drift × t
+════════════════════
+
+* Akıntı vektörel olarak uygulanır
+* Yön → **Set**
+
+---
+
+### EP Mevkiinin Çizimi
+
+* DR noktasından başlanır
+* Set yönünde **D₍c₎ kadar** gidilir
+* Ulaşılan nokta → **EP**
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Son Fix: **12:00**
+* Course (**C**) = **090°T**
+* Speed (**S**) = **12 kn**
+* Seyir süresi (**t**) = **2 saat**
+* Akıntı:
+
+  * Set = **180°T**
+  * Drift = **2 kn**
+
+---
+
+### DR Hesabı
+
+⬛ **Mesafe**
+
+════════════════════
+D = 12 × 2
+D = 24 NM
+════════════════════
+
+---
+
+⬛ **DR Mevkii**
+
+════════════════════
+Son Fix’ten
+090°T yönünde
+24 NM
+════════════════════
+
+Bu nokta → **DR**
+
+---
+
+### Akıntı Hesabı
+
+⬛ **Akıntı Mesafesi**
+
+════════════════════
+D₍c₎ = 2 × 2
+D₍c₎ = 4 NM
+════════════════════
+
+---
+
+### EP Mevkii
+
+════════════════════
+DR’den
+180°T yönünde
+4 NM
+════════════════════
+
+Bu nokta → **EP**
+
+---
+
+### DR ve EP Arasındaki Fark
+
+* DR → **teorik**
+* EP → **gerçeğe daha yakın**
+
+⬛ **İlişki**
+
+════════════════════
+Gerçek mevki
+≈ EP
+≠ DR
+════════════════════
+
+---
+
+### Zaman Faktörü
+
+* Zaman uzadıkça hata artar
+* DR/EP **sık Fix ile düzeltilmelidir**
+
+⬛ **Kural**
+
+════════════════════
+Uzun süre
+Fix yoksa
+DR güvenilmez
+════════════════════
+
+---
+
+### Harita Sembolizasyonu
+
+* DR → ○ (boş daire)
+* EP → ◐ (yarım taralı daire)
+* Fix → ● (dolu daire)
+* Akıntı → ok + hız değeri
+
+---
+
+### Kullanım Alanları
+
+* Fix araları seyir takibi
+* Elektronik mevki kaybı durumları
+* Seyir defteri (Log Book)
+* Tüm klasik mevki yöntemlerinin temeli
+
+Dead Reckoning ve Estimated Position, klasik seyrüseferde **her an kullanılan**, fix bulunamadığında dahi geminin **kontrolsüz kalmasını önleyen** temel mevki tayin yöntemleridir.`
+      }
+    ]
+  },
+  "Course to Steer (CTS) with Current": {
+    title: "Course to Steer (CTS) with Current",
+    introduction:
+      "Course to Steer (CTS), geminin akıntı etkisi altındayken, istenen gerçek rota (Course Made Good – CMG) üzerinde seyredebilmesi için dümenlenmesi gereken gerçek rotanın tayin edilmesidir. Klasik seyrüseferde CTS, vektör üçgeni kullanılarak çözülür ve özellikle akıntılı sahalarda temel bir uygulamadır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
+
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/03/edScreenshot-2022-02-18-at-11.26.42.png)
+
+![Image](https://sailingissues.com/vier/running-fix-3x.png)
+
+![Image](https://www.sailtrain.co.uk/navigation/images/ctsgroundtrack3.gif)
+
+---
+
+### Temel Prensip
+
+* İstenen **CMG** ve gemi sürati bilinir
+* Akıntının **Set** ve **Drift**’i bilinir
+* Akıntı telafi edilerek **CTS** bulunur
+
+⬛ **Ana İlke**
+
+════════════════════
+Ship’s Velocity
++
+Current Vector
+==============
+
+Ground Track (CMG)
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **CTS** : Course to Steer (°T)
+* **CMG** : Course Made Good (°T)
+* **S** : Ship’s Speed (knots)
+* **Set** : Akıntı yönü (°T)
+* **Drift** : Akıntı sürati (knots)
+* **t** : Zaman (hours)
+
+---
+
+### Vektör Üçgeni (Current Triangle)
+
+* Bir kenar → **Gemi hızı ve CTS**
+* Bir kenar → **Akıntı vektörü (Set & Drift)**
+* Kapanan kenar → **CMG**
+
+⬛ **Geometrik İlişki**
+
+════════════════════
+V⃗ ship
++
+V⃗ current
+==========
+
+V⃗ ground
+════════════════════
+
+---
+
+### Grafik Çözüm (Harita Üzerinde)
+
+1. CMG doğrultusunda bir çizgi çizilir
+2. Bu çizgi üzerinde **zaman ölçeği** seçilir
+3. Akıntı vektörü (Set–Drift) eklenir
+4. Başlangıç noktası ile kapanış noktası birleştirilir
+5. Bulunan yön → **CTS**
+
+---
+
+### Analitik Yaklaşım (Trigonometrik)
+
+⬛ **Akıntı Mesafesi**
+
+════════════════════
+D₍c₎ = Drift × t
+════════════════════
+
+⬛ **Gemi Mesafesi**
+
+════════════════════
+D₍s₎ = S × t
+════════════════════
+
+Bu iki mesafe ile **vektör üçgeni** çözülür.
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* İstenen rota (**CMG**) = **090°T**
+* Gemi sürati (**S**) = **10 kn**
+* Akıntı:
+
+  * Set = **180°T**
+  * Drift = **3 kn**
+* Zaman (**t**) = **1 saat**
+
+---
+
+### Hesaplama
+
+⬛ **Akıntı Mesafesi**
+
+════════════════════
+D₍c₎ = 3 × 1
+D₍c₎ = 3 NM
+════════════════════
+
+---
+
+⬛ **Gemi Mesafesi**
+
+════════════════════
+D₍s₎ = 10 × 1
+D₍s₎ = 10 NM
+════════════════════
+
+---
+
+### Vektör Çözümü
+
+* CMG doğrultusunda **10 NM** çizilir
+* Akıntı, **180°T yönünde 3 NM** olarak eklenir
+* Kapanış doğrultusu ölçülür
+
+⬛ **Sonuç**
+
+════════════════════
+CTS ≈ 073°T
+════════════════════
+
+Bu rota dümenlenirse, gemi **090°T CMG** üzerinde ilerler.
+
+---
+
+### Leeway ile Birlikte Kullanım
+
+Rüzgâr etkisi varsa:
+
+⬛ **Düzeltilmiş CTS**
+
+════════════════════
+CTS₍final₎
+= CTS ± Leeway
+════════════════════
+
+* Rüzgâr sancaktan → iskeleye düzelt
+* Rüzgâr iskeleden → sancağa düzelt
+
+---
+
+### Hata Kaynakları
+
+* Yanlış Set veya Drift bilgisi
+* Akıntının sabit varsayılması
+* Sürat değişimleri
+* Ölçek hataları (grafik çözüm)
+
+---
+
+### Harita Sembolizasyonu
+
+* CMG → düz kalın çizgi
+* Akıntı → ok + hız
+* CTS → ok başlı çizgi
+* Başlangıç → ●
+* Kapanış → ×
+
+---
+
+### Kullanım Alanları
+
+* Akıntılı boğazlar
+* Kıyı seyri
+* Liman yaklaşmaları
+* Elektronik seyir teyidi
+
+Course to Steer, klasik seyrüseferde **akıntının fiilen telafi edildiği**, geminin **istenen rota üzerinde kalmasını sağlayan** temel rota tayin yöntemidir.`
+      }
+    ]
+  },
+  "Direct Problem of Mean Latitude Sailing": {
+    title: "Direct Problem of Mean Latitude Sailing",
+    introduction:
+      "Mean Latitude Sailing’in doğrudan problemi, geminin başlangıç mevkii, rota (Course) ve mesafe (Distance) bilindiğinde, varış enlemi ve boylamının hesaplanmasıdır. Bu yöntem, orta enlemlerde yapılan klasik seyirde rota icrası ve mevki ileri taşıma için kullanılır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fh53vszdxp%2Fillustration_Great_Circle_and_Composite_GC_comparison_fxcf5a.jpg&w=3840)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image036.jpg)
+
+---
+
+### Temel Prensip
+
+* Course ve Distance bilinir
+* Seyir üçgeninden **D.Lat** ve **Departure** bulunur
+* Departure kullanılarak **D.Long** hesaplanır
+* Başlangıç mevkiine eklenerek **varış mevkii** elde edilir
+
+⬛ **Ana İlke**
+
+════════════════════
+Course + Distance
+→
+D.Lat & Dep
+→
+D.Long
+→
+New Position
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Lat₁, Long₁** : Başlangıç mevkii
+* **Lat₂, Long₂** : Varış mevkii
+* **C** : Course (°T)
+* **D** : Distance (NM)
+* **D.Lat** : Difference of Latitude (′)
+* **Dep** : Departure (′)
+* **D.Long** : Difference of Longitude (′)
+* **Mean Lat** : Ortalama enlem
+
+---
+
+### Difference of Latitude (D.Lat)
+
+⬛ **Formül**
+
+════════════════════
+D.Lat = D × cos C
+════════════════════
+
+* Kuzeye doğru → **N (+)**
+* Güneye doğru → **S (−)**
+* Sonuç **dakika (′)** cinsindedir
+
+---
+
+### Departure (Dep)
+
+⬛ **Formül**
+
+════════════════════
+Dep = D × sin C
+════════════════════
+
+* Doğuya doğru → **E (+)**
+* Batıya doğru → **W (−)**
+
+---
+
+### Varış Enlemi (Lat₂)
+
+⬛ **Formül**
+
+════════════════════
+Lat₂ = Lat₁ ± D.Lat
+════════════════════
+
+* İşaret, Course yönüne göre seçilir
+
+---
+
+### Mean Latitude
+
+⬛ **Formül**
+
+════════════════════
+Mean Lat = (Lat₁ + Lat₂) / 2
+════════════════════
+
+* Enlemler **aynı isimde** alınır
+* D.Long hesabında kullanılır
+
+---
+
+### Difference of Longitude (D.Long)
+
+⬛ **Formül**
+
+════════════════════
+D.Long = Dep / cos Mean Lat
+════════════════════
+
+* Sonuç **dakika (′)**
+* Doğu veya batı yönü Dep işaretine göre belirlenir
+
+---
+
+### Varış Boylamı (Long₂)
+
+⬛ **Formül**
+
+════════════════════
+Long₂ = Long₁ ± D.Long
+════════════════════
+
+* E → topla
+* W → çıkar
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Lat₁ = **35°20′ N**
+* Long₁ = **018°40′ E**
+* Course (**C**) = **060°T**
+* Distance (**D**) = **120 NM**
+
+---
+
+### Hesaplama
+
+⬛ **Difference of Latitude**
+
+════════════════════
+D.Lat = 120 × cos 60°
+D.Lat = 120 × 0.5
+D.Lat = 60′ (N)
+════════════════════
+
+---
+
+⬛ **Varış Enlemi**
+
+════════════════════
+Lat₂ = 35°20′ + 60′
+Lat₂ = 36°20′ N
+════════════════════
+
+---
+
+⬛ **Departure**
+
+════════════════════
+Dep = 120 × sin 60°
+Dep = 120 × 0.866
+Dep ≈ 104′ (E)
+════════════════════
+
+---
+
+⬛ **Mean Latitude**
+
+════════════════════
+Mean Lat
+= (35°20′ + 36°20′) / 2
+= 35°50′ ≈ 35.8°
+cos 35.8° ≈ 0.81
+════════════════════
+
+---
+
+⬛ **Difference of Longitude**
+
+════════════════════
+D.Long = 104 / 0.81
+D.Long ≈ 128′
+════════════════════
+
+---
+
+⬛ **Varış Boylamı**
+
+════════════════════
+Long₂ = 018°40′ + 2°08′
+Long₂ = 020°48′ E
+════════════════════
+
+---
+
+### Sonuç Mevkii
+
+════════════════════
+Lat₂ = 36°20′ N
+Long₂ = 020°48′ E
+════════════════════
+
+---
+
+### Seyir Üçgeni Özeti
+
+* Hipotenüs → Distance
+* Düşey kenar → D.Lat
+* Yatay kenar → Departure
+* Açı → Course
+
+---
+
+### Harita Sembolizasyonu
+
+* Başlangıç mevkii → ●
+* Varış mevkii → ×
+* Course → yön oku
+* D.Lat → meridyen doğrultusu
+* Dep → paralel doğrultusu
+
+---
+
+### Uygulama Alanı
+
+* Rota icrası
+* DR mevkii ileri taşıma
+* Klasik seyir hesapları
+* Elektronik mevki doğrulama
+
+Mean Latitude Sailing’in doğrudan problemi, **rota ve mesafeden yeni mevki üretme** açısından klasik seyrüseferin temel hesaplarından biridir ve özellikle **orta enlem seyirlerinde** pratik ve hızlı bir çözüm sunar.`
+      }
+    ]
+  },
+  "Leeway": {
+    title: "Leeway",
+    introduction:
+      "Leeway, rüzgâr etkisi altında seyreden geminin, dümenlenen rota (Heading / CTS) ile gerçek ilerleme doğrultusu arasında oluşan açısal farktır. Klasik seyrüseferde leeway, özellikle rüzgâra açık denizlerde ve yüksek bordalı gemilerde, rota ve mevki hatalarının başlıca nedenlerinden biridir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.8_fig_1.jpg)
+
+![Image](https://sailzing.com/wp-content/uploads/2021/02/leeway-definition.jpg)
+
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/03/edScreenshot-2022-02-18-at-11.26.42.png)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
+
+---
+
+### Temel Prensip
+
+* Rüzgâr, gemiyi **yanal olarak** sürükler
+* Gemi, pruvasını rüzgâra çevirse bile **yanal kaçma** oluşur
+* Bu kaçma **açı** olarak ifade edilir → **Leeway Açısı**
+
+⬛ **Ana İlke**
+
+════════════════════
+Heading (CTS)
+≠
+Gerçek İlerleme
+════════════════════
+
+---
+
+### Tanımlar
+
+* **Leeway (L)** : Rüzgâr kaynaklı sürüklenme açısı (°)
+* **Heading / CTS** : Dümenlenen rota (°T)
+* **CMG** : Course Made Good (°T)
+* **Windward** : Rüzgârın geldiği yön
+* **Lee side** : Rüzgâr altı taraf
+
+---
+
+### Leeway’in Yönü
+
+* Rüzgâr **iskele** tarafından geliyorsa → gemi **sancağa** sürüklenir
+* Rüzgâr **sancak** tarafından geliyorsa → gemi **iskeleye** sürüklenir
+
+⬛ **Yön Kuralı**
+
+════════════════════
+Leeway
+her zaman
+rüzgâr altına
+doğrudur
+════════════════════
+
+---
+
+### Leeway’in Rota Üzerindeki Etkisi
+
+⬛ **İlişki**
+
+════════════════════
+CMG = CTS ± Leeway
+════════════════════
+
+* Rüzgâr sancaktan → **CTS + L** (iskeleye düzelt)
+* Rüzgâr iskeleden → **CTS − L** (sancağa düzelt)
+
+---
+
+### Leeway Açısının Büyüklüğü
+
+Leeway sabit değildir; aşağıdaki faktörlere bağlıdır:
+
+* Rüzgâr şiddeti
+* Gemi formu ve borda yüksekliği
+* Gemi sürati
+* Yük durumu
+
+⬛ **Pratik Aralık**
+
+════════════════════
+Leeway
+≈ 2° – 10°
+════════════════════
+
+---
+
+### Grafik Gösterim
+
+* CTS → pruvalı düz çizgi
+* CMG → rüzgâr altına kaymış çizgi
+* İki çizgi arasındaki açı → **Leeway**
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Dümenlenen rota (**CTS**) = **090°T**
+* Rüzgâr: **030°T** (iskele başomuzluk)
+* Tahmini leeway = **5°**
+
+---
+
+### Hesaplama
+
+Rüzgâr **iskele tarafından** geldiği için gemi **sancağa** sürüklenir.
+
+⬛ **CMG**
+
+════════════════════
+CMG = 090° − 5°
+CMG = 085°T
+════════════════════
+
+---
+
+### CTS Düzeltmesi (İstenen CMG Verildiğinde)
+
+**Verilenler**
+
+* İstenen rota (**CMG**) = **090°T**
+* Rüzgâr: **030°T** (iskele)
+* Leeway = **5°**
+
+---
+
+⬛ **Dümenlenecek Rota**
+
+════════════════════
+CTS = 090° + 5°
+CTS = 095°T
+════════════════════
+
+Bu rota dümenlenirse, gemi **085°T**’ye değil, **090°T CMG** üzerine oturur.
+
+---
+
+### Leeway ve Akıntı Birlikte
+
+Leeway ve akıntı **ayrı ayrı** değerlendirilir.
+
+⬛ **Sıra Kuralı**
+
+════════════════════
+Önce
+Leeway
+sonra
+Akıntı (CTS)
+════════════════════
+
+* Leeway → rüzgâr kaynaklı **açı düzeltmesi**
+* Akıntı → **vektör düzeltmesi**
+
+---
+
+### Harita Sembolizasyonu
+
+* CTS → ok başlı düz çizgi
+* CMG → rüzgâr altına kaymış çizgi
+* Leeway → küçük yay + derece değeri
+
+---
+
+### Seyir Uygulaması
+
+* Açık deniz seyri
+* Uzun DR/EP aralıkları
+* Elektronik rota teyidi
+* Yelkenli ve düşük süratli gemiler
+
+Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uzun seyirlerde büyük mevki hatalarına** yol açabileceğinden, rota ve mevki hesaplarında **mutlaka dikkate alınmalıdır**.`
+      }
+    ]
+  },
+  "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)": {
+    title: "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)",
+    introduction:
+      "Cross Bearings ile Fix, iki veya daha fazla sabit objeden aynı anda alınan kerterizlerin, harita üzerinde çizilerek kesişim noktasının gemi mevkii olarak belirlenmesi yöntemidir. Klasik (terrestrial) seyrüseferde en güvenilir anlık mevki tayinlerinden biri kabul edilir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG)
+
+![Image](https://www.sailtrain.co.uk/navigation/images/opposite.gif)
+
+![Image](https://cdn.britannica.com/42/2942-004-687FE645.gif)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
+
+---
+
+### Temel Prensip
+
+* Aynı anda alınan **kerterizler** kullanılır
+* Her kerteriz bir **LOP (Line of Position)** üretir
+* LOP’ların kesişimi → **Fix**
+
+⬛ **Ana İlke**
+
+════════════════════
+LOP₁
+∩
+LOP₂
+= Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Bearing (B)** : Kerteriz (°T veya °M)
+* **Back Bearing (BB)** : Geri kerteriz
+* **LOP** : Mevki hattı
+* **Fix** : Kesin mevki
+* **Object** : Sabit, tanımlı kara objesi
+
+---
+
+### Kerterizden LOP Çizimi
+
+Kerteriz, **gemiden objeye doğru** ölçülür. Haritada LOP çizmek için:
+
+⬛ **Geri Kerteriz**
+
+════════════════════
+BB = B ± 180°
+════════════════════
+
+* 0°–180° arası → **+180°**
+* 180°–360° arası → **−180°**
+
+---
+
+### İki Kerterizle Fix
+
+* En az **iki sabit obje** gerekir
+* Kerterizler **aynı anda** alınmalıdır
+* Kesişim açısı **keskin** olmalıdır
+
+⬛ **Geometrik Kural**
+
+════════════════════
+Açı ≈ 60° – 120°
+→
+Güçlü Fix
+════════════════════
+
+---
+
+### Üç Kerterizle Fix
+
+* Üç LOP idealde **tek noktada** kesişir
+* Küçük bir üçgen oluşursa → **Hata Üçgeni**
+
+⬛ **Yorum**
+
+════════════════════
+Üçgen merkezi
+≈
+Gerçek mevki
+════════════════════
+
+---
+
+### Haritada Uygulama Adımları
+
+1. Objeler harita üzerinde işaretlenir
+2. Her kerteriz için **geri kerteriz** hesaplanır
+3. Objeden geri kerteriz doğrultusunda LOP çizilir
+4. LOP’ların kesişimi → **Fix**
+
+---
+
+### Sayısal Uygulama Örneği (2 Kerteriz)
+
+**Verilenler**
+
+* Obje A kerterizi = **045°T**
+* Obje B kerterizi = **315°T**
+
+---
+
+⬛ **Geri Kerterizler**
+
+════════════════════
+A için BB = 045° + 180° = 225°T
+B için BB = 315° − 180° = 135°T
+════════════════════
+
+---
+
+⬛ **Fix**
+
+* A’dan **225°T**
+* B’den **135°T**
+  doğrultusunda çizilen LOP’ların kesişimi → **Fix**
+
+---
+
+### Sayısal Uygulama (3 Kerteriz – Hata Üçgeni)
+
+**Verilenler**
+
+* A = **030°T** → BB = **210°T**
+* B = **140°T** → BB = **320°T**
+* C = **260°T** → BB = **080°T**
+
+---
+
+⬛ **Sonuç**
+
+* Üç LOP küçük bir üçgen oluşturur
+* Üçgenin **ağırlık merkezi** Fix olarak alınır
+
+---
+
+### Zaman Faktörü
+
+⬛ **Kritik Kural**
+
+════════════════════
+Kerterizler
+aynı anda
+alınmalıdır
+════════════════════
+
+* Gecikme → **running error**
+* Hareket halindeki gemide hata büyür
+
+---
+
+### Hata Kaynakları
+
+* Yanlış obje tanımı
+* Manyetik / pusula hatası
+* Geniş kesişim açısı
+* Geç alınan kerterizler
+
+---
+
+### Harita Sembolizasyonu
+
+* Obje → ▲
+* LOP → düz çizgi
+* Fix → ●
+* Hata üçgeni → küçük üçgen
+
+---
+
+### Kullanım Alanları
+
+* Kıyı seyri
+* Liman yaklaşmaları
+* Elektronik mevki teyidi
+* DR/EP düzeltmesi
+
+Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** bir mevki tayini sağlar; doğru objeler ve eş zamanlı ölçümlerle uygulandığında **en yüksek doğruluklu terrestrial fix** yöntemlerinden biridir.`
+      }
+    ]
+  },
+  "Inverse Problem of Mean Latitude Sailing": {
+    title: "Inverse Problem of Mean Latitude Sailing",
+    introduction:
+      "Mean Latitude Sailing’in ters problemi, geminin başlangıç mevkii ve varış mevkii bilindiğinde, bu iki mevkii arasındaki rota (Course) ve mesafenin (Distance) hesaplanmasıdır. Bu problem, özellikle iki bilinen mevki arasındaki seyir planlamasında ve harita üzerinden rota tayininde kullanılır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://deckskills.tripod.com/sitebuildercontent/sitebuilderpictures/mid_lat_triangle.jpg)
+
+![Image](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.2.1_fig_6.jpg)
+
+---
+
+### Temel Prensip
+
+* Başlangıç ve varış mevkii bilinir
+* **D.Lat** ve **D.Long** hesaplanır
+* Ortalama enlem bulunur
+* **Departure** elde edilir
+* Seyir üçgeninden **Course** ve **Distance** bulunur
+
+⬛ **Ana İlke**
+
+════════════════════
+Lat₁ / Long₁
++
+Lat₂ / Long₂
+→
+D.Lat & D.Long
+→
+Dep
+→
+Course & Distance
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Lat₁, Long₁** : Başlangıç mevkii
+* **Lat₂, Long₂** : Varış mevkii
+* **D.Lat** : Difference of Latitude (′)
+* **D.Long** : Difference of Longitude (′)
+* **Dep** : Departure (′)
+* **Mean Lat** : Ortalama enlem
+* **C** : Course (°T)
+* **D** : Distance (NM)
+
+---
+
+### Difference of Latitude (D.Lat)
+
+⬛ **Formül**
+
+════════════════════
+D.Lat = Lat₂ − Lat₁
+════════════════════
+
+* Kuzeye doğru → **N (+)**
+* Güneye doğru → **S (−)**
+
+---
+
+### Difference of Longitude (D.Long)
+
+⬛ **Formül**
+
+════════════════════
+D.Long = Long₂ − Long₁
+════════════════════
+
+* Doğuya doğru → **E (+)**
+* Batıya doğru → **W (−)**
+
+---
+
+### Mean Latitude
+
+⬛ **Formül**
+
+════════════════════
+Mean Lat = (Lat₁ + Lat₂) / 2
+════════════════════
+
+* Enlemler **aynı isimde** alınır
+* Departure hesabında kullanılır
+
+---
+
+### Departure (Dep)
+
+⬛ **Formül**
+
+════════════════════
+Dep = D.Long × cos Mean Lat
+════════════════════
+
+* Sonuç **dakika (′)** cinsindedir
+
+---
+
+### Course (C)
+
+⬛ **Formül**
+
+════════════════════
+tan C = Dep / D.Lat
+════════════════════
+
+* Açının yönü **D.Lat** ve **Dep** işaretlerine göre belirlenir
+
+---
+
+### Distance (D)
+
+⬛ **Formül**
+
+════════════════════
+D = D.Lat / cos C
+════════════════════
+
+veya
+
+════════════════════
+D = Dep / sin C
+════════════════════
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Lat₁ = **34°20′ N**
+* Long₁ = **015°40′ E**
+* Lat₂ = **37°50′ N**
+* Long₂ = **020°10′ E**
+
+---
+
+### Hesaplama
+
+⬛ **Difference of Latitude**
+
+════════════════════
+D.Lat = 37°50′ − 34°20′
+D.Lat = 3°30′ = 210′ (N)
+════════════════════
+
+---
+
+⬛ **Difference of Longitude**
+
+════════════════════
+D.Long = 20°10′ − 15°40′
+D.Long = 4°30′ = 270′ (E)
+════════════════════
+
+---
+
+⬛ **Mean Latitude**
+
+════════════════════
+Mean Lat
+= (34°20′ + 37°50′) / 2
+= 36°05′ ≈ 36.1°
+cos 36.1° ≈ 0.81
+════════════════════
+
+---
+
+⬛ **Departure**
+
+════════════════════
+Dep = 270 × 0.81
+Dep ≈ 219′
+════════════════════
+
+---
+
+⬛ **Course**
+
+════════════════════
+tan C = 219 / 210
+tan C ≈ 1.04
+C ≈ 46°
+════════════════════
+
+Yön: **NE → 046°T**
+
+---
+
+⬛ **Distance**
+
+════════════════════
+D = 210 / cos 46°
+D ≈ 210 / 0.694
+D ≈ 303 NM
+════════════════════
+
+---
+
+### Seyir Üçgeni Yorumu
+
+* D.Lat → meridyen doğrultusu
+* Dep → paralel doğrultusu
+* Hipotenüs → Distance
+* Açı → Course
+
+---
+
+### Harita Sembolizasyonu
+
+* Başlangıç mevkii → ●
+* Varış mevkii → ×
+* Course → ok başlı çizgi
+* D.Lat → kuzey–güney çizgisi
+* Dep → doğu–batı çizgisi
+
+---
+
+### Uygulama Alanı
+
+* İki mevki arası rota tayini
+* Seyir planlaması
+* Harita üzerinden mesafe ölçümü
+* Klasik seyir problemleri
+
+Inverse Problem of Mean Latitude Sailing, **bilinen iki mevkii arasında rota ve mesafe tayini** sağlayarak, orta enlem seyrinin **planlama aşamasındaki temel hesap yöntemlerinden biri** olarak kullanılır.`
+      }
+    ]
+  },
+  "Running Fix (Running Bearings)": {
+    title: "Running Fix (Running Bearings)",
+    introduction:
+      "Running Fix, aynı sabit objeden farklı zamanlarda alınan iki veya daha fazla kerterizin, geminin ilerlemesi (Advance) hesaba katılarak taşınması (Transfer) yoluyla mevki tayin edilmesidir. Klasik (terrestrial) seyrüseferde, tek obje mevcutken kullanılan temel fix yöntemidir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://i0.wp.com/boatluv.com/wp-content/uploads/2019/08/7_running-fix_boatluv.png?fit=400%2C400&ssl=1)
+
+![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
+
+![Image](https://www.sailtrain.co.uk/navigation/images/runningfix1.gif)
+
+![Image](https://shipsnow.com/images/wiki/criteria/turning-circle.jpg)
+
+---
+
+### Temel Prensip
+
+* Aynı objeden **en az iki kerteriz** alınır
+* Kerterizler **farklı zamanlarda** ölçülür
+* İlk LOP, geminin ilerlediği mesafe kadar **taşınır**
+* Taşınan LOP ile ikinci LOP’un kesişimi → **Fix**
+
+⬛ **Ana İlke**
+
+════════════════════
+LOP₁ (Transfer)
+∩
+LOP₂
+= Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **B₁, B₂** : Birinci ve ikinci kerteriz
+* **BB** : Geri kerteriz
+* **LOP** : Mevki hattı
+* **Advance (A)** : İki kerteriz arası gemi ilerlemesi (NM)
+* **Course (C)** : Gemi rotası (°T)
+* **Speed (S)** : Gemi sürati (knots)
+* **t** : Zaman farkı (hours)
+
+---
+
+### Advance (İlerleme)
+
+⬛ **Formül**
+
+════════════════════
+A = S × t
+════════════════════
+
+* S → knot
+* t → saat
+* A → deniz mili (NM)
+
+---
+
+### Kerterizden LOP Çizimi
+
+Kerteriz gemiden objeye alınır; haritada LOP çizmek için **geri kerteriz** kullanılır.
+
+⬛ **Geri Kerteriz**
+
+════════════════════
+BB = B ± 180°
+════════════════════
+
+---
+
+### Harita Üzerinde Uygulama Adımları
+
+1. Obje haritada işaretlenir
+2. İlk kerteriz için **BB₁** çizilir → **LOP₁**
+3. İki kerteriz arası **Advance** hesaplanır
+4. LOP₁, **Course** doğrultusunda **A kadar taşınır** → **Transferred LOP₁**
+5. İkinci kerteriz için **BB₂** çizilir → **LOP₂**
+6. Kesişim noktası → **Running Fix**
+
+---
+
+### Zaman Düzeltmesi (Transfer Kuralı)
+
+⬛ **Kritik Kural**
+
+════════════════════
+LOP
+her zaman
+geminin hareketi
+yönünde
+taşınır
+════════════════════
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Course (**C**) = **090°T**
+* Speed (**S**) = **12 kn**
+* Birinci kerteriz (**B₁**) = **045°T** @ 10:00
+* İkinci kerteriz (**B₂**) = **090°T** @ 10:30
+
+---
+
+### Advance Hesabı
+
+⬛ **Zaman Farkı**
+
+════════════════════
+t = 30 dk = 0.5 saat
+════════════════════
+
+⬛ **Advance**
+
+════════════════════
+A = 12 × 0.5
+A = 6 NM
+════════════════════
+
+---
+
+### Geri Kerterizler
+
+⬛ **BB₁**
+
+════════════════════
+BB₁ = 045° + 180°
+BB₁ = 225°T
+════════════════════
+
+⬛ **BB₂**
+
+════════════════════
+BB₂ = 090° + 180°
+BB₂ = 270°T
+════════════════════
+
+---
+
+### Fix’in Bulunması
+
+* Obje’den **225°T** doğrultusunda **LOP₁** çizilir
+* LOP₁, **090°T yönünde 6 NM** taşınır
+* Obje’den **270°T** doğrultusunda **LOP₂** çizilir
+* Taşınmış LOP₁ ile LOP₂’nin kesişimi → **Running Fix**
+
+---
+
+### Geometrik Güç Kriteri
+
+⬛ **Kesişim Açısı**
+
+════════════════════
+≈ 30° – 90°
+→
+Kabul Edilebilir Fix
+════════════════════
+
+* Çok dar açı → zayıf doğruluk
+* Çok geniş açı → zaman hatası artar
+
+---
+
+### Hata Kaynakları
+
+* Sürat veya rota değişimi
+* Akıntı ve leeway’in ihmal edilmesi
+* Zaman kayıt hatası
+* Yanlış obje tanımı
+
+---
+
+### Harita Sembolizasyonu
+
+* Obje → ▲
+* LOP → düz çizgi
+* Taşınmış LOP → kesikli çizgi
+* Running Fix → ●
+* Advance → ok + mesafe
+
+---
+
+### Kullanım Alanları
+
+* Tek kara objesi görülen sahalar
+* Kıyıya paralel seyir
+* Elektronik mevki kaybı durumları
+* DR/EP teyidi
+
+Running Fix, klasik seyrüseferde **tek obje ile mevki tayinine imkân veren**, zaman ve hareketin doğru uygulanmasıyla **yüksek doğruluk sağlayan** temel terrestrial fix yöntemlerinden biridir.`
+      }
+    ]
+  },
+  "Fix by Horizontal Angles": {
+    title: "Fix by Horizontal Angles",
+    introduction:
+      "Horizontal Angle Fix, gemiden iki veya üç sabit kara objesi arasındaki yatay açıların sekstant ile ölçülmesi ve bu açıların harita üzerinde geometrik olarak uygulanmasıyla geminin mevkiinin tayin edilmesidir. Bu yöntem, özellikle kerteriz almanın zor olduğu veya yüksek doğruluk istendiği durumlarda klasik (terrestrial) seyrüseferde kullanılır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://knowledgeofsea.com/wp-content/uploads/2020/02/IMG_4143-1024x594.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.1.5.10_fig_1-1024x906.jpg)
+
+![Image](https://imgv2-1-f.scribdassets.com/img/document/860575796/original/609410781e/1?v=1)
+
+---
+
+### Temel Prensip
+
+* Objeler arası **yatay açı** ölçülür
+* Ölçülen açı, **gemi mevkiinden** görülür
+* Aynı açıyı gören noktaların geometrik yeri bir **yay (arc)** oluşturur
+* Yayların kesişimi → **Fix**
+
+⬛ **Ana İlke**
+
+════════════════════
+Arc₁
+∩
+Arc₂
+= Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+* **Horizontal Angle (θ)** : Objeler arası yatay açı
+* **Sextant** : Açı ölçme aleti
+* **Arc of Position** : Mevki yayı
+* **Fix** : Kesin mevki
+* **Object A, B, C** : Sabit kara objeleri
+
+---
+
+### İki Objeyle Yatay Açı Fix’i
+
+* İki obje (A ve B) seçilir
+* A–B arasındaki yatay açı **θ** ölçülür
+* Bu açıya karşılık gelen **çember yayı** çizilir
+* Gemi, bu yay üzerinde bir noktadadır
+
+⬛ **Geometrik Özellik**
+
+════════════════════
+A–B
+görülen açı
+sabit
+→
+çember yayı
+════════════════════
+
+---
+
+### Üç Objeyle Fix
+
+* İki ayrı yatay açı ölçülür
+
+  * A–B → θ₁
+  * B–C → θ₂
+* Her açı için ayrı bir yay çizilir
+* İki yayın kesişimi → **Fix**
+
+---
+
+### Harita Üzerinde Uygulama (2 Açı)
+
+1. Objeler A, B, C haritada işaretlenir
+2. A–B için **θ₁** açısına uygun yay çizilir
+3. B–C için **θ₂** açısına uygun yay çizilir
+4. Yayların kesişimi → **Fix**
+
+---
+
+### Sayısal Uygulama Örneği
+
+**Verilenler**
+
+* Obje A – B arası yatay açı
+
+  * θ₁ = **40°**
+* Obje B – C arası yatay açı
+
+  * θ₂ = **55°**
+
+---
+
+### Grafik Çözüm
+
+⬛ **Adım 1 – A–B Yayı**
+
+* A ve B noktaları birleştirilir
+* A–B doğrusu üzerinde, **40° gören çember yayı** çizilir
+
+⬛ **Adım 2 – B–C Yayı**
+
+* B ve C noktaları birleştirilir
+* B–C doğrusu için **55° gören çember yayı** çizilir
+
+⬛ **Sonuç**
+
+════════════════════
+Yay₁ ∩ Yay₂
+= Fix
+════════════════════
+
+---
+
+### Güç Kriterleri
+
+⬛ **İdeal Şartlar**
+
+════════════════════
+Açılar
+30° – 120°
+Objeler
+geniş yayılım
+════════════════════
+
+* Çok küçük açı → zayıf doğruluk
+* Objelerin aynı doğrultuda olması → hatalı fix
+
+---
+
+### Hata Kaynakları
+
+* Sekstant okuma hatası
+* Yanlış obje seçimi
+* Objelerin birbirine çok yakın olması
+* Harita çizim hataları
+
+---
+
+### Harita Sembolizasyonu
+
+* Objeler → ▲
+* Yatay açı → yay + derece değeri
+* Mevki yayı → ince eğri çizgi
+* Fix → ●
+
+---
+
+### Kullanım Alanları
+
+* Kerteriz alınamayan sahalar
+* Liman girişleri
+* Dar geçitler
+* Yüksek doğruluk gerektiren kıyı seyri
+
+Horizontal Angle Fix, klasik seyrüseferde **açı geometrisine dayalı**, doğru uygulandığında **çok hassas sonuç veren** bir mevki tayin yöntemidir ve özellikle **sekstant kullanımının aktif olduğu** terrestrial seyirlerde önemli bir yer tutar.`
+      }
+    ]
+  },
+  "Limitations and Applicability of Mean Latitude Sailing": {
+    title: "Limitations and Applicability of Mean Latitude Sailing",
+    introduction:
+      "Mean Latitude Sailing, küresel Dünya yüzeyinin düzlemsel kabulüne dayanan yaklaşık bir seyir yöntemidir. Bu nedenle yalnızca belirli enlem aralıklarında ve sınırlı mesafelerde güvenilir sonuçlar verir. Bu bölümde yöntemin nerede kullanılabileceği ve nerede kullanılmaması gerektiği sistematik olarak açıklanır.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fh53vszdxp%2Fillustration_Great_Circle_and_Composite_GC_comparison_fxcf5a.jpg&w=3840)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://www.researchgate.net/publication/259912499/figure/fig9/AS%3A297134860587011%401447853879125/Mercator-Calculation-of-Difference-in-Longitude.png)
+
+![Image](https://astrolabesailing.com/wp-content/uploads/2014/10/distances.jpg)
+
+---
+
+### Temel Varsayım
+
+Mean Latitude Sailing’de şu kabuller yapılır:
+
+* Meridyenler **paralel kabul edilir**
+* Paraleller arası mesafe **sabit** varsayılır
+* Küresel geometri yerine **düzlem geometri** kullanılır
+
+⬛ **Ana Kabul**
+
+════════════════════
+Dünya
+≈
+Düzlem
+════════════════════
+
+Bu kabul, yalnızca **orta enlemlerde** yeterli doğruluğu sağlar.
+
+---
+
+### Enleme Bağlı Hata Davranışı
+
+Enlem arttıkça meridyenler birbirine yaklaşır. Mean Latitude Sailing bu yakınlaşmayı **ortalama enlem** ile telafi etmeye çalışır.
+
+⬛ **Kullanılan Yaklaşım**
+
+════════════════════
+D.Long = Dep / cos Mean Lat
+════════════════════
+
+Bu ifade, **küçük D.Lat** ve **orta enlem** şartlarında geçerlidir.
+
+---
+
+### Geçerli Enlem Aralığı
+
+⬛ **Pratik Kural**
+
+════════════════════
+Lat < 60°
+→
+Kabul Edilebilir
+════════════════════
+
+* **0° – 30°** → Çok iyi doğruluk
+* **30° – 60°** → Kabul edilebilir
+* **> 60°** → Hatalı sonuçlar
+
+---
+
+### Mesafeye Bağlı Sınır
+
+Mean Latitude Sailing, **kısa ve orta mesafeler** için uygundur.
+
+⬛ **Mesafe Kuralı**
+
+════════════════════
+Distance < 600 NM
+→
+Uygun
+════════════════════
+
+* Uzun mesafelerde küresel hata büyür
+* Büyük D.Long değerlerinde sapma artar
+
+---
+
+### Mercator Sailing ile Karşılaştırma
+
+| Özellik      | Mean Latitude | Mercator      |
+| ------------ | ------------- | ------------- |
+| Geometri     | Düzlem        | Küresel       |
+| Uzun Mesafe  | Zayıf         | Güçlü         |
+| Hesaplama    | Basit         | Daha karmaşık |
+| Yüksek Enlem | Uygun değil   | Uygun         |
+
+⬛ **Seçim İlkesi**
+
+════════════════════
+Kısa / Orta Mesafe
+→
+Mean Latitude
+════════════════════
+
+════════════════════
+Uzun Mesafe
+→
+Mercator
+════════════════════
+
+---
+
+### Hata Kaynakları
+
+* Yüksek enlem kullanımı
+* Büyük D.Lat farkı
+* Büyük boylam farkı
+* Ortalama enlemin yanlış seçilmesi
+
+---
+
+### Grafiksel Hata Gösterimi
+
+* Gerçek yol → eğri (küresel)
+* Hesaplanan yol → düz çizgi
+* Enlem arttıkça fark büyür
+
+---
+
+### Sayısal Karşılaştırma Örneği
+
+**Verilenler**
+
+* D.Lat = **600′**
+* Dep = **600′**
+* Mean Lat = **30°**
+
+⬛ **Mean Latitude Sailing**
+
+════════════════════
+D.Long = 600 / cos 30°
+D.Long = 600 / 0.866
+D.Long ≈ 693′
+════════════════════
+
+⬛ **Yüksek Enlem (60°)**
+
+════════════════════
+D.Long = 600 / cos 60°
+D.Long = 600 / 0.5
+D.Long = 1200′
+════════════════════
+
+➡ Aynı geometrik hareket, yüksek enlemde **iki kat boylam farkı** üretir.
+
+---
+
+### Uygulama Kuralları
+
+⬛ **Kullan**
+
+════════════════════
+Orta enlem
+Kısa–orta mesafe
+Planlama / DR
+════════════════════
+
+⬛ **Kullanma**
+
+════════════════════
+Yüksek enlem
+Uzun okyanus geçişi
+Kutuplara yakın seyir
+════════════════════
+
+---
+
+### Harita Sembolizasyonu
+
+* Mean Latitude → enlem yayı
+* Hesaplanan yol → düz çizgi
+* Gerçek yol → eğri çizgi
+* Hata → iki yol arası mesafe
+
+---
+
+### Seyir Uygulamasındaki Yeri
+
+* Eğitim amaçlı seyir hesapları
+* Klasik chartwork
+* DR / EP üretimi
+* Hızlı rota değerlendirmesi
+
+Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde önemli bir yere sahiptir; ancak **enlem ve mesafe sınırları bilinmeden kullanıldığında**, ciddi mevki hatalarına yol açabilir.`
+      }
+    ]
   }
 };
