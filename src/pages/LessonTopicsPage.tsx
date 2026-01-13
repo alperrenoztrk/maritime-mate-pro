@@ -53,6 +53,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Yön kavramları", hasContent: true },
           { title: "Hakiki kuzey (True)", hasContent: true },
           { title: "Manyetik kuzey", hasContent: true },
+          { title: "Dead Reckoning and Estimated Position (DR & EP)", hasContent: true },
           { title: "Rota hız ve mesafe ilişkisi" },
           { title: "Zaman – mesafe – hız bağıntısı" }
         ]
@@ -89,6 +90,13 @@ const topicsData: Record<string, TopicContent> = {
         title: "Orta Enlem Seyri (Middle Latitude)",
         description: "Orta mesafeler için enlem ortalamasına dayalı seyir hesapları",
         subTopics: [
+          { title: "Mean Latitude Sailing", hasContent: true },
+          { title: "Course and Distance Given Mean Latitude", hasContent: true },
+          { title: "Course and Distance Between Two Positions (Mean Latitude)", hasContent: true },
+          { title: "Direct Problem of Mean Latitude Sailing", hasContent: true },
+          { title: "Inverse Problem of Mean Latitude Sailing", hasContent: true },
+          { title: "Validity and Limitations of Mean Latitude Sailing", hasContent: true },
+          { title: "Limitations and Applicability of Mean Latitude Sailing", hasContent: true },
           { title: "Düzlem seyirin sınırları" },
           { title: "Ortalama enlem kavramı" },
           { title: "Departure – boylam ilişkisi" },
@@ -107,7 +115,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Heading – COG ilişkisi" },
           { title: "STW – SOG ilişkisi" },
           { title: "Akıntılı seyir hesapları" },
-          { title: "Vektör üçgenleri" }
+          { title: "Vektör üçgenleri" },
+          { title: "Course to Steer (CTS) with Current", hasContent: true }
         ]
       },
       {
@@ -117,9 +126,17 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Kerteriz türleri" },
           { title: "Kerterizle mevki tayini" },
           { title: "Mesafe + kerteriz fix" },
+          { title: "Fix by Cross Bearings (Kerterizlerle Mevki Tayini)", hasContent: true },
+          { title: "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)", hasContent: true },
+          { title: "Running Fix (Zamana Bağlı Kerterizle Mevki Tayini)", hasContent: true },
+          { title: "Running Fix (Koşmalı Mevki Tayini)", hasContent: true },
+          { title: "Running Fix (Running Bearings)", hasContent: true },
+          { title: "Transit (Leading Line)", hasContent: true },
+          { title: "Clearing Line (Emniyet Hattı)", hasContent: true },
+          { title: "Distance Off by Vertical Angle", hasContent: true },
+          { title: "Distance Off by Horizontal Angle", hasContent: true },
+          { title: "Fix by Horizontal Angles", hasContent: true },
           { title: "Running fix (klasik)" },
-          { title: "Transit (leading line)" },
-          { title: "Clearing line (emniyet hattı)" },
           { title: "Paralel indeks" },
           { title: "Kıyı seyri teknikleri" }
         ]
@@ -199,6 +216,7 @@ const topicsData: Record<string, TopicContent> = {
         description: "Rüzgâr, dalga ve hava koşullarının seyire etkisi",
         subTopics: [
           { title: "Rüzgârın gemiye etkisi" },
+          { title: "Leeway", hasContent: true },
           { title: "Leeway kavramı" },
           { title: "Leeway hesapları" },
           { title: "Rüzgâr + akıntı + gemi hareketi" },
