@@ -1667,18 +1667,51 @@ Bu ifade, büyük daire tarafının **referans mesafesini** verir.`
       },
       {
         title: "Rhumb Line Kursu ve Mesafesi",
-        content: `Rhumb line, Mercator projeksiyonda düz çizgidir. Kurs sabittir ve aşağıdaki bağıntıyla belirlenir:
+        content: `Rhumb line (loxodrom), küre üzerindeki tüm meridyenleri **sabit bir açıyla** kesen ve seyir boyunca **sabit kurs** veren bir eğridir. Mercator projeksiyonunda düz bir doğru olarak görünmesi, pratik seyirde büyük kolaylık sağlar.
 
-▭ **tan C = Δλ / Δψ**
+![Loxodrome örneği](https://upload.wikimedia.org/wikipedia/commons/d/d6/Loxodrome.png)
 
-Burada **Δψ**, meridyen parçaları farkına karşılık gelen Mercator enlemi farkıdır. Matematiksel temeli:
+![Büyük daire ve rhumb line görünümü](https://www.mathworks.com/help/map/tutor4.png)
+
+![Büyük daire vs rhumb line](https://www.kavas.com/storage/media/wysiwyg/blog/great_circle-vs-rhumb_line.jpg)
+
+────────────  
+**Rhumb Line Temel Geometrik Özelliği**  
+Meridyenlerle yapılan açı = **sabit**  
+Kurs değişimi = **yok**  
+Mesafe = **büyük daireye göre daha uzun**  
+────────────
+
+**Rhumb line mesafesi ve kurs bağıntıları**
+
+▭ **tan C = Δλ / Δψ**  
+Burada **Δλ** boylam farkı, **Δψ** izometrik enlem farkıdır. Mercator projeksiyonunda izometrik enlem:
 
 ▭ **ψ = ln [ tan (45° + φ/2) ]**
 
 Mesafe için pratik ilişki:
 
-▭ **Rhumb line mesafesi = ΔLat (dakika) / cos C**  
-(ΔLat sıfıra yakınsa doğu–batı ağırlıklı rotalarda farklı yaklaşım gerekir.)`
+▭ **Mesafe = Δφ / cos C × 60**  
+(Δφ derece cinsinden enlem farkı; sonuç deniz mili)
+
+**Tam çözümlü örnek (orta enlem yaklaşımı)**
+
+**Başlangıç:** φ₁ = 20° N, λ₁ = 010° W  
+**Varış:** φ₂ = 40° N, λ₂ = 030° E
+
+▭ Δφ = 40° − 20° = 20°  
+▭ Δλ = 10° + 30° = 40°  
+▭ Ortalama enlem ≈ 30° → cos 30° ≈ 0.866
+
+Kurs:  
+▭ tan C = Δλ / Δφ = 40 / 20 = 2  
+▭ **C ≈ 63.4°**
+
+Mesafe:  
+▭ cos 63.4° ≈ 0.447  
+▭ **Mesafe ≈ (20 / 0.447) × 60 ≈ 2682 deniz mili**
+
+Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki mevki arasında daha kısa çıkar.`
       },
       {
         title: "Sayısal Karşılaştırma – Aynı İki Mevki",
