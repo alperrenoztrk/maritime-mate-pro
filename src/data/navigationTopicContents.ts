@@ -7725,5 +7725,56 @@ Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan u
       "Vertex enlemi, meteoroloji ve buz riski açısından rota emniyetinin temel kontrolüdür.",
       "Riskli enlemler için composite rota veya limit enlem yaklaşımı uygulanır."
     ]
+  },
+  "Uzun okyanus seyri uygulamaları": {
+    title: "Uzun okyanus seyri uygulamaları",
+    introduction:
+      "Uzun okyanus seyri, binlerce deniz milini kapsayan ve seyir süresinin günler veya haftalarla ölçüldüğü geçişlerdir. Bu tür seferlerde rota seçimi yalnızca geometrik kısalık üzerinden yapılamaz; meteoroloji, akıntılar, trafik ayırım düzenleri ve geminin operasyonel sınırları planlamanın ayrılmaz parçasıdır.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Büyük daire örnek rotası](https://gisgeography.com/wp-content/uploads/2019/07/Great-Circle-NewYork-Madrid.jpg)
+
+![Okyanus akıntıları ve rotalar](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2015/09/LRATLANTIC_CIRCUIT_ROUTE_CURRENTS.jpg)
+
+![Okyanus seyri örnek harita](https://www.nauticalchartsonline.com/thumbs/56.jpg)`
+      },
+      {
+        title: "Büyük Daire – Rhumb Line – Composite Karşılaştırması",
+        content: `**Büyük daire** teorik olarak iki mevki arasındaki en kısa küresel yolu verir. Ancak uzun okyanus seyrinde bu rota çoğu zaman yüksek enlemlere taşar. Yüksek enlemler; sert hava sistemleri, buz riski, dalga boyu artışı ve sıcaklık kaynaklı operasyonel kısıtlar nedeniyle ticari açıdan dezavantajlıdır. Bu yüzden saf büyük daire rotası nadiren uygulanır.
+
+**Rhumb line** (loxodrom) sabit kurs avantajı sağlar; ancak uzun mesafelerde mesafe kaybı belirgin hale gelir. Özellikle Atlantik ve Pasifik geçişlerinde rhumb line kullanımı yakıt tüketimini ve seyir süresini ölçülebilir şekilde artırır. Bu nedenle çoğunlukla kısa mesafe veya kıyıya yakın seyirlerde tercih edilir.
+
+**Composite rota**, büyük dairenin mesafe avantajını korurken, belirlenen sınırlayıcı enlemin üzerinde seyri engeller. Böylece gemi, meteorolojik olarak daha öngörülebilir kuşaklarda tutulur. Rota genellikle birden fazla büyük daire segmenti ve bunları bağlayan sabit enlem parçalarından oluşur.`
+      },
+      {
+        title: "Uzun Okyanus Seyrinde Temel Uygulama Mantığı",
+        content: `Teorik referans → **Büyük daire**  
+Operasyonel kontrol → **Composite rota**  
+Yerel ve kısa seyir → **Rhumb line**`
+      },
+      {
+        title: "Uygulamalı Örnek Senaryo",
+        content: `Bir konteyner gemisinin Avrupa’dan Kuzey Amerika’nın batı kıyısına sefer yaptığını varsayalım. Saf büyük daire rotası, gemiyi **55–60° Kuzey** enlemlerine çıkaracaktır. Kış aylarında bu bölge, yoğun alçak basınç sistemleri ve yüksek dalga karakteristiği ile bilinir. Bu durumda sınırlayıcı enlem **48° Kuzey** olarak belirlenir.
+
+Planlama şu şekilde yapılır:
+
+* Başlangıçtan **48° Kuzey**’e kadar büyük daire seyri uygulanır.
+* **48° Kuzey** boyunca sabit enlem rhumb line segmenti ile ilerlenir.
+* Uygun boylamda tekrar büyük daireye girilerek varış limanına yönelinir.
+
+Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu toplam mesafe, saf büyük daireden daha uzun; ancak saf rhumb line’dan daha kısa çıkar. Buna karşılık rota, operasyonel olarak daha emniyetli ve ticari açıdan daha öngörülebilir olur.`
+      },
+      {
+        title: "Planlama Notları",
+        content: `Bu yaklaşım, modern seyir planlamasında elektronik haritalar, hava rota optimizasyon sistemleri ve performans modelleri ile birlikte kullanılır. Matematiksel doğruluk, pratik denizcilik gerçekleriyle dengelenmeden yapılan rota planları, uzun okyanus seyrinde sürdürülebilir değildir.`
+      }
+    ],
+    keyPoints: [
+      "Saf büyük daire, kısa mesafe avantajı sunsa da yüksek enlem riskleri nedeniyle çoğu zaman sınırlandırılır.",
+      "Rhumb line sabit kurs sağlar ancak uzun mesafede mesafe kaybı belirgindir.",
+      "Composite rota, mesafe avantajı ile operasyonel güvenlik arasında denge kurar.",
+      "Uzun okyanus planlamasında meteoroloji, akıntılar ve operasyonel sınırlar temel belirleyicilerdir."
+    ]
   }
 };
