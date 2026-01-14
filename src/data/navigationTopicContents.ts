@@ -1592,6 +1592,55 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       }
     ]
   },
+  "Büyük daire kavramı": {
+    title: "Büyük Daire Kavramı",
+    introduction:
+      "Büyük daire, küre şeklindeki Dünya üzerinde merkezden geçen bir düzlemin yüzeyi kestiği çemberdir. Bu çemberin düzlemi Dünya merkezinden geçtiği için elde edilen yaylar, küre üzerindeki iki nokta arasındaki **en kısa mesafeyi** temsil eder.",
+    sections: [
+      {
+        title: "Tanım ve Temel Geometri",
+        content: `Büyük daire, Dünya merkezinden geçen bir düzlemin küre yüzeyiyle oluşturduğu çemberdir. Ekvator ve tüm meridyenler büyük daire örnekleridir; diğer enlemler ise merkezden geçmedikleri için küçük daire niteliğindedir.
+
+![Büyük daire kavramı](https://www.caliper.com/glossary/xmaptitude-great-circle-map.jpg.pagespeed.ic.ho-3Oj1XIA.jpg)
+
+![Büyük daire, eksen ve kutuplar](https://upload.wikimedia.org/wikipedia/commons/4/46/Great_circle%2C_axis%2C_and_poles.svg)`
+      },
+      {
+        title: "Seyirde En Kısa Yol İlkesi",
+        content: `İki mevki arasındaki en kısa küresel yol büyük daire yayıdır. Bu özellik, enerji tüketimi ve zaman açısından avantaj sağlar. Ancak büyük daire rotası sabit kurs vermez; seyir boyunca gerçek pusula kursu sürekli değişir. Bu durum dümen tutma, trafik yoğunluğu, meteorolojik şartlar ve operasyonel emniyet açısından kısıtlar yaratır.
+
+![Büyük daire ve rhumb line karşılaştırması](https://www.kavas.com/storage/media/wysiwyg/blog/great_circle-vs-rhumb_line.jpg)`
+      },
+      {
+        title: "Teorik-Pratik İlişki",
+        content: `Büyük daire seyri tamamen küresel trigonometriye dayanır ve hesaplamalar Dünya’nın küreye yakın kabul edildiği varsayımıyla yapılır. Elipsoidal farklar uzun mesafelerde küçük sapmalar doğursa da klasik denizcilik hesaplarında ihmal edilir.
+
+Bu nedenle büyük daire kavramı tek başına bir seyir yöntemi değil, rota planlamasında referans alınan geometrik bir ilkedir. Pratik uygulamada rhumb line veya composite rota ile birlikte değerlendirilir.
+
+────────────
+**Büyük Daire Tanım İlişkileri ve Temel İfade**
+
+Merkezden geçen düzlem → Büyük daire  
+Merkezden geçmeyen düzlem → Küçük daire
+
+İki mevki arasındaki en kısa küresel yol → Büyük daire yayı
+────────────`
+      },
+      {
+        title: "Sayısal Açıklayıcı Örnek",
+        content: `A noktasının enlemi 40° Kuzey, B noktasının enlemi 40° Kuzey olsun ve boylam farkı 60° olsun. Aynı enlem üzerinde seyir yapılırsa rota küçük daire olur ve mesafe artar. Aynı iki nokta arasında büyük daire yayı hesaplandığında rota kuzeye ve güneye saparak ilerler ve toplam mesafe azalır.
+
+Bu fark orta enlemlerde sınırlı, yüksek enlemlerde ise belirgin hâle gelir. Özellikle 50° ve üzeri enlemlerde büyük daire ile rhumb line arasındaki mesafe farkı ticari açıdan anlamlı seviyelere ulaşır.`
+      }
+    ],
+    keyPoints: [
+      "Büyük daire, Dünya merkezinden geçen düzlemin oluşturduğu en büyük çemberdir",
+      "İki mevki arasındaki en kısa küresel yol büyük daire yayıdır",
+      "Büyük daire rotası sabit kurs vermez; kurs seyir boyunca değişir",
+      "Pratik uygulamada meteoroloji, trafik ve emniyet kısıtlarıyla birlikte değerlendirilir",
+      "Orta enlemlerde fark sınırlı, yüksek enlemlerde ise belirginleşir"
+    ]
+  },
   "Büyük Daire ve Rhumb Line Seyri": {
     title: "Büyük Daire ve Rhumb Line Seyri",
     introduction:
