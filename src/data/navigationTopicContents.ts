@@ -1758,6 +1758,72 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
       }
     ]
   },
+  "Composite (bileşik) rota": {
+    title: "Composite (bileşik) rota",
+    introduction:
+      "Composite rota, büyük daire seyrinin mesafe avantajını, rhumb line seyrinin operasyonel kolaylığıyla birleştiren karma bir rota planlama yöntemidir. Planlama büyük daire prensibine göre yapılır; ancak belirli bir **sınırlayıcı enlem**in ötesine çıkılmadan, orta kısımda sabit enlem boyunca rhumb line segmenti uygulanır. Böylece yüksek enlemlerde ortaya çıkan aşırı kurs değişimleri ve operasyonel riskler kontrol altına alınır.",
+    sections: [
+      {
+        title: "Genel Mantık",
+        content: `Büyük daire seyrinde rota genellikle yüksek enlemlere doğru kavis yapar. Bu durum kış şartlarında, buz riski bulunan bölgelerde veya geminin operasyonel sınırlarının zorlandığı durumlarda pratik değildir. Composite rota, büyük daireye göre **daha güvenli ve öngörülebilir** bir alternatif üretir: büyük daireye girilir, sınırlayıcı enleme ulaşmadan önce rota terk edilir, sabit enlem boyunca ilerlenir ve uygun noktada tekrar büyük daireye bağlanılır.
+
+![Composite rota şeması](https://www.researchgate.net/publication/352001267/figure/fig3/AS%3A11431281417326427%401746106806144/Elements-of-composite-great-circle-navigation.tif)
+
+![Great circle ve composite rota karşılaştırması](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fh53vszdxp%2Fillustration_Great_Circle_and_Composite_GC_comparison_fxcf5a.jpg&w=3840)`
+      },
+      {
+        title: "Rota Bileşenleri",
+        content: `Composite rota üç temel parçadan oluşur:
+
+1) **Başlangıç → sınırlayıcı enlem:** Büyük daire yayı  
+2) **Sınırlayıcı enlem boyunca:** Sabit enlemde rhumb line  
+3) **Sınırlayıcı enlem → varış:** İkinci büyük daire yayı
+
+Her parça ayrı hesaplanır; toplam mesafe, bu parçaların toplamıdır.`
+      },
+      {
+        title: "Sınırlayıcı Enlem (Limit Enlem) Kavramı",
+        content:
+          "Sınırlayıcı enlem, geminin çıkmasına izin verilen maksimum enlemdir. Bu değer; mevsim, meteoroloji, buz durumu, gemi tipi ve ticari gerekliliklere bağlı olarak belirlenir. Matematiksel olarak bu enlem, büyük daire rotasının maksimum enlemi (vertex) ile karşılaştırılarak seçilir.",
+        formula: {
+          text: "sin φmax = |sin C₁| × cos φ₁",
+          description: "φmax: büyük dairenin ulaştığı maksimum enlem, C₁: büyük daire başlangıç kursu, φ₁: başlangıç enlemi."
+        }
+      },
+      {
+        title: "Tam Çözümlü Örnek",
+        content: `**Başlangıç mevkii:**  
+Enlem φ₁ = 35° Kuzey  
+Boylam λ₁ = 020° Batı  
+
+**Varış mevkii:**  
+Enlem φ₂ = 40° Kuzey  
+Boylam λ₂ = 060° Doğu  
+
+**Büyük daire başlangıç kursu (verilmiş):**  
+C₁ ≈ 045°
+
+**Maksimum enlem hesabı:**  
+sin φmax = |sin 45°| × cos 35°  
+sin 45° ≈ 0.707  
+cos 35° ≈ 0.819  
+sin φmax ≈ 0.707 × 0.819 ≈ 0.579  
+φmax ≈ arcsin 0.579 ≈ **35.4° Kuzey**
+
+Bu örnekte büyük daire rotası yüksek enlemlere çıkmamaktadır. Ancak φmax değeri örneğin **55° Kuzey** olsaydı ve operasyonel sınır **50° Kuzey** olarak belirlenseydi, **50° Kuzey** sınırlayıcı enlem alınarak composite rota uygulanacaktı.`
+      },
+      {
+        title: "Operasyonel Değerlendirme",
+        content: `Composite rota, büyük daireye göre biraz daha uzun mesafe doğurur; ancak **emniyet**, **rota takibi** ve **operasyonel öngörülebilirlik** açısından ticari denizcilikte dengeli bir çözümdür. Özellikle **Kuzey Atlantik** ve **Kuzey Pasifik** geçişlerinde standart uygulama niteliğindedir.`
+      }
+    ],
+    keyPoints: [
+      "Composite rota: büyük daire + sabit enlem rhumb line + büyük daire kombinasyonudur.",
+      "Amaç; mesafeyi makul düzeyde kısa tutarken yüksek enlem risklerini sınırlamaktır.",
+      "Sınırlayıcı enlem; meteoroloji, buz ve operasyonel sınırlar üzerinden belirlenir.",
+      "Her parça ayrı hesaplanır ve toplam mesafe parçaların toplamıdır."
+    ]
+  },
   "Mercator – rhumb line ilişkisi": {
     title: "Mercator – Rhumb Line İlişkisi",
     introduction:
