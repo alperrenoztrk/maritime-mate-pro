@@ -1592,6 +1592,90 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       }
     ]
   },
+  "Büyük Daire ve Rhumb Line Seyri": {
+    title: "Büyük Daire ve Rhumb Line Seyri",
+    introduction:
+      "Büyük daire, küre üzerinde iki mevki arasındaki **en kısa yüzey mesafesini** verir; rhumb line (loxodrome) ise Mercator projeksiyonunda **düz çizgi** olarak görünen ve tüm rota boyunca **sabit kurs** ile ilerlenen hattır. Rhumb line yönetimi daha kolaydır; büyük daire ise çoğu durumda daha kısa mesafe sağlar. Pratik seyirde karar yalnızca mesafe değil; meteoroloji, trafik, emniyet ve operasyonel kısıtlarla birlikte verilir.",
+    sections: [
+      {
+        title: "Kavramsal Karşılaştırma",
+        content: `Büyük dairede kurs sürekli değişir; rhumb line’da kurs sabittir. Bu nedenle büyük daire “yakıt ve süre” avantajı, rhumb line ise “uygulama sadeliği” avantajı sunar. Modern ECDIS ve rota planlama sistemleri, büyük daireyi ara noktalara bölerek rhumb line segmentleri şeklinde uygular; böylece sahada **hibrit** bir yöntem ortaya çıkar.
+
+![Büyük daire ve rhumb line görünümü](https://www.mathworks.com/help/map/tutor4.png)
+
+![Büyük daire ve rhumb line karşılaştırması](https://mapscaping.com/wp-content/uploads/2024/09/image-684.png)
+
+![Mesafe farkı görsel karşılaştırma](https://astrolabesailing.com/wp-content/uploads/2014/10/distances.jpg)`
+      },
+      {
+        title: "Büyük Daire Mesafesi",
+        content: `İki mevki arasındaki büyük daire mesafesi için temel bağıntı:
+
+▭ **cos θ = sin φ₁ × sin φ₂ + cos φ₁ × cos φ₂ × cos Δλ**  
+▭ **Büyük daire mesafesi = θ × 60 deniz mili**
+
+Bu ifade, büyük daire tarafının **referans mesafesini** verir.`
+      },
+      {
+        title: "Rhumb Line Kursu ve Mesafesi",
+        content: `Rhumb line, Mercator projeksiyonda düz çizgidir. Kurs sabittir ve aşağıdaki bağıntıyla belirlenir:
+
+▭ **tan C = Δλ / Δψ**
+
+Burada **Δψ**, meridyen parçaları farkına karşılık gelen Mercator enlemi farkıdır. Matematiksel temeli:
+
+▭ **ψ = ln [ tan (45° + φ/2) ]**
+
+Mesafe için pratik ilişki:
+
+▭ **Rhumb line mesafesi = ΔLat (dakika) / cos C**  
+(ΔLat sıfıra yakınsa doğu–batı ağırlıklı rotalarda farklı yaklaşım gerekir.)`
+      },
+      {
+        title: "Sayısal Karşılaştırma – Aynı İki Mevki",
+        content: `**Başlangıç:** 35° N, 020° W  
+**Varış:** 50° N, 010° E  
+▭ φ₁ = 35°, φ₂ = 50°, Δλ = 30°
+
+### A) Büyük Daire Mesafesi
+
+▭ sin 35° ≈ 0.574  
+▭ sin 50° ≈ 0.766  
+▭ cos 35° ≈ 0.819  
+▭ cos 50° ≈ 0.643  
+▭ cos 30° ≈ 0.866
+
+▭ cos θ = (0.574 × 0.766) + (0.819 × 0.643 × 0.866)  
+▭ cos θ ≈ 0.440 + 0.456  
+▭ cos θ ≈ 0.896  
+▭ θ ≈ 26.5°
+
+▭ **Büyük daire mesafesi ≈ 26.5 × 60 = 1590 deniz mili**
+
+### B) Rhumb Line Mesafesi (Pratik Yaklaşım)
+
+▭ ΔLat = 50° − 35° = 15°  
+▭ ΔLat = 15 × 60 = 900 dakika
+
+▭ ψ₁ = ln [ tan 62.5° ] ≈ ln(1.92) ≈ 0.653  
+▭ ψ₂ = ln [ tan 70° ] ≈ ln(2.747) ≈ 1.011  
+▭ Δψ ≈ 0.358
+
+▭ Δλ = 30° = 30 × π/180 ≈ 0.524 radyan  
+▭ tan C = 0.524 / 0.358 ≈ 1.464  
+▭ C ≈ 55.7°
+
+▭ cos 55.7° ≈ 0.563  
+▭ **Rhumb line mesafesi ≈ 900 / 0.563 ≈ 1598 deniz mili**
+
+### Sonuç
+
+▭ Büyük daire ≈ **1590 deniz mili**  
+▭ Rhumb line ≈ **1598 deniz mili**  
+▭ Fark ≈ **8 deniz mili**`
+      }
+    ]
+  },
   "Mercator projeksiyonu": {
     title: "Mercator Projeksiyon",
     introduction: "Mercator projeksiyon, deniz haritalarında kullanılan ve seyir hesaplarının temelini oluşturan matematiksel harita projeksiyonudur. Bu projeksiyonun denizcilikte tercih edilmesinin nedeni estetik ya da coğrafi doğruluk değil, **seyirsel doğruluktur**. Mercator projeksiyon, yön ve doğrultu ilişkilerini korur; bu sayede denizcilikte kullanılan rota, kerteriz, mesafe ve mevki işlemleri harita üzerinde **doğrudan ve tutarlı** biçimde yapılabilir.",
