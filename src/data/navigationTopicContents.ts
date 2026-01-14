@@ -1884,6 +1884,93 @@ Bu hesaplama, büyük daire geometrisinin küresel üçgen esasına dayandığı
       "Merkez açı, büyük daire mesafesinin doğrudan karşılığıdır."
     ]
   },
+  "Büyük daire başlangıç kursu": {
+    title: "Büyük Daire Başlangıç Kursu",
+    introduction:
+      "Büyük daire başlangıç kursu, geminin başlangıç mevkiinden büyük daire rotasına girdiği andaki **gerçek pusula doğrultusudur**. Büyük daire seyri boyunca kurs sabit olmadığından, pratik seyirde hesaplanan bu değer yalnızca başlangıç anı için geçerlidir. Kursun seyir ilerledikçe değişmesinin nedeni, büyük daire yayının meridyenleri farklı açılarla kesmesidir.",
+    sections: [
+      {
+        title: "Küresel Üçgen Yaklaşımı",
+        content: `Başlangıç kursu hesabı, Kuzey Kutbu, başlangıç mevkii ve varış mevkiinden oluşan küresel üçgenin çözümüne dayanır. Bu üçgende başlangıç noktasındaki açı, büyük daire başlangıç kursunu verir. Hesaplama tamamen küresel trigonometri esaslıdır ve düzlem seyir bağıntıları bu problemde geçerli değildir.
+
+![Büyük daire başlangıç kursu görseli](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
+
+![Küresel üçgen şeması](https://www.nosco.ch/mathematics/inc/img/sphericaltriangle.png)`
+      },
+      {
+        title: "Temel Bağıntılar",
+        content: `Önce merkez açı **d** hesaplanır:
+
+cos d = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ
+
+Ardından başlangıç kursu **C₁** için:
+
+sin C₁ = (cos φ₂ · sin Δλ) / sin d  
+cos C₁ = (sin φ₂ − sin φ₁ · cos d) / (cos φ₁ · sin d)
+
+C₁ açısı, sin ve cos değerleri birlikte değerlendirilerek doğru kadranda bulunur. Boylam farkının doğu ya da batı yönlü olması, kursun doğuya veya batıya açılmasını belirler.`,
+        formula: {
+          text: "sin C₁ = (cos φ₂ · sin Δλ) / sin d",
+          description: "C₁ başlangıç kursu, d merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır."
+        }
+      },
+      {
+        title: "Büyük Daire – Rhumb Line Karşılaştırması",
+        content: `Büyük dairede kurs sürekli değişirken, rhumb line (loxodrome) rota boyunca sabit kurs verir. Bu nedenle büyük daire hesapları, sadece başlangıç kursu için kesin değer üretir; seyir ilerledikçe rota yeni değerlere sapar.
+
+![Büyük daire ve rhumb line karşılaştırması](https://www.kavas.com/storage/media/wysiwyg/blog/great_circle-vs-rhumb_line-02.jpg)`
+      },
+      {
+        title: "Tam Çözümlü Örnek",
+        content: `**Başlangıç mevkii:**  
+Enlem φ₁ = 25° Kuzey  
+Boylam λ₁ = 010° Doğu
+
+**Varış mevkii:**  
+Enlem φ₂ = 55° Kuzey  
+Boylam λ₂ = 070° Doğu
+
+**Boylam farkı:**  
+Δλ = 70° − 10° = 60°
+
+**Merkez açı:**
+
+sin 25° ≈ 0.423  
+sin 55° ≈ 0.819  
+cos 25° ≈ 0.906  
+cos 55° ≈ 0.574  
+cos 60° = 0.500
+
+cos d = (0.423 × 0.819) + (0.906 × 0.574 × 0.500)  
+cos d = 0.346 + 0.260  
+cos d ≈ 0.606  
+d ≈ arccos 0.606 ≈ 52.6°
+
+sin d ≈ sin 52.6° ≈ 0.795
+
+**Başlangıç kursu:**
+
+sin C₁ = (0.574 × sin 60°) / 0.795  
+sin 60° ≈ 0.866  
+sin C₁ ≈ 0.625
+
+cos C₁ = (0.819 − 0.423 × 0.606) / (0.906 × 0.795)  
+cos C₁ ≈ 0.782
+
+Bu değerlere göre:
+
+**C₁ ≈ 39°**
+
+Başlangıç kursu yaklaşık **039° gerçek** kurstur. Seyir ilerledikçe bu kurs değişir, orta noktalarda maksimum sapmaya ulaşır ve varışa doğru farklı bir değere döner.`
+      }
+    ],
+    keyPoints: [
+      "Başlangıç kursu, büyük daire rotasına giriş anındaki gerçek kurstur.",
+      "Hesaplama küresel üçgene dayanır; düzlem seyir bağıntıları geçerli değildir.",
+      "Meridyenleri farklı açılarla kesmesi nedeniyle kurs seyir boyunca değişir.",
+      "C₁ değeri sin ve cos birlikte değerlendirilerek doğru kadranda bulunur."
+    ]
+  },
   "Büyük daire mesafesi": {
     title: "Büyük Daire Mesafesi Hesaplamaları",
     introduction: "Büyük daire mesafesi, küre üzerindeki iki mevki arasındaki büyük daire yayı uzunluğudur ve Dünya merkezinden bakıldığında oluşan merkez açı ile doğrudan ilişkilidir. Denizcilikte pratik kabul, Dünya çevresinin 360 dereceye bölünmesi ve her bir derecenin 60 deniz miline karşılık gelmesidir. Bu nedenle mesafe hesabının özü, merkez açıyı doğru ve güvenilir biçimde bulmaktır.",
