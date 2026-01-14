@@ -193,6 +193,110 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       "Seyir yöntemi seçimi, Dünya'nın gerçek şekline bağlıdır"
     ]
   },
+  "Yükseklik düzeltmeleri": {
+    title: "Yükseklik düzeltmeleri",
+    introduction:
+      "Yükseklik düzeltmeleri, sextant ile ölçülen alet yüksekliğinin gerçek geometrik yüksekliğe dönüştürülmesi için uygulanan zorunlu işlemlerdir. Sextanttan okunan değer doğrudan gök cisminin gerçek yüksekliği değildir; göz yüksekliği, atmosfer, gök cisminin fiziksel boyutu ve Dünya merkezinden bakış varsayımı gibi etkiler bu ölçümü sistematik olarak saptırır. Bu nedenle düzeltmeler uygulanmadan yapılan hesaplar mevki tayininde güvenilir sonuç vermez.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2015/09/nonum-diag26.jpg)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2015/09/diag-27.jpg)
+
+![Image](https://i0.wp.com/mathscinotes.com/wp-content/uploads/2015/10/lc-nav-fig3.gif?ssl=1)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/3/39/Atmospheric_refraction_-_sunset_and_sunrise.png)`
+      },
+      {
+        title: "Amaç ve Genel Çerçeve",
+        content:
+          "Düzeltmelerin amacı, ölçümü ideal kabul edilen gözlem koşullarına indirgemektir. Uygulama sırası ve işaretler kritiktir. Yanlış sırada veya hatalı işaretle yapılan tek bir düzeltme, Ho değerini dakikalar mertebesinde değiştirerek mevki hattını mil ölçeğinde kaydırır. Pratik seyirde bu, özellikle düşük yükseklikli gözlemlerde belirgin bir hata kaynağıdır."
+      },
+      {
+        title: "Düzeltmelerin Uygulama Sırası",
+        content: "Hs üzerinden Ho’ya geçerken temel sıra aşağıdaki gibidir:",
+        bulletPoints: [
+          "İndeks hatası (IE) uygulanır: Hs ± IE",
+          "Dip düzeltmesi çıkarılır",
+          "Atmosferik refraksiyon çıkarılır",
+          "Yarıçap (SD) ve paralaks (P) gök cismi türüne göre eklenir/çıkarılır"
+        ]
+      },
+      {
+        title: "Dip Düzeltmesi",
+        content: "Göz yüksekliği arttıkça görülen ufuk düşer; bu nedenle dip her zaman çıkarılır.",
+        formula: {
+          text: "Dip = 1.76 × √h",
+          description: "h: göz yüksekliği (metre). Sonuç dakikadır ve çıkarma işaretiyle uygulanır."
+        }
+      },
+      {
+        title: "Atmosferik Refraksiyon",
+        content:
+          "Atmosfer ışığı kırarak gök cismini olduğundan daha yüksek gösterir. Bu nedenle refraksiyon her zaman çıkarılır. Basit yaklaşım:",
+        formula: {
+          text: "R ≈ 1 / tan h",
+          description: "R dakikadır, h gözlenen yükseklik açısıdır. Düşük yüksekliklerde hata büyür."
+        }
+      },
+      {
+        title: "Yarıçap (SD) ve Paralaks",
+        content:
+          "Yıldız gözlemlerinde yarıçap ve paralaks ihmal edilebilirken, Güneş ve Ay gözlemlerinde bu terimler zorunludur.",
+        bulletPoints: [
+          "Güneş alt kenar gözlemi: +SD",
+          "Güneş üst kenar gözlemi: −SD",
+          "SD yaklaşık 16′ alınır",
+          "Paralaks: özellikle Ay’da belirgindir"
+        ],
+        formula: {
+          text: "P = HP × cos h",
+          description: "HP yatay paralakstır; h gözlenen yüksekliktir."
+        }
+      },
+      {
+        title: "Toplam Bağıntı",
+        formula: {
+          text: "Ho = Hs ± IE − Dip − R ± SD ± P",
+          description: "Ho: düzeltilmiş gözlemsel yükseklik, Hs: sextant ölçümü."
+        }
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Sextanttan okunan alet yüksekliği **Hs = 27° 18.4′** olsun. İndeks hatası **−1.6′**, göz yüksekliği **16 m** ve Güneş **alt kenar** gözlemi yapılmış olsun.
+
+Dip düzeltmesi:
+
+Dip = 1.76 × √16  
+Dip = 1.76 × 4  
+Dip = **7.0′**
+
+Atmosferik refraksiyon:
+
+h ≈ 27°  
+tan 27° ≈ 0.509  
+R ≈ 1 / 0.509 ≈ **2.0′**
+
+Yarıçap düzeltmesi:
+
+SD = **+16.0′**
+
+Düzeltilmiş yükseklik:
+
+Ho = 27° 18.4′ − 1.6′ − 7.0′ − 2.0′ + 16.0′  
+Ho = **27° 23.8′**
+
+Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırılmış geometrik yüksekliktir. Bu değer, astronomik tablolarla hesaplanan Hc ile karşılaştırılarak intercept belirlenir; düzeltmelerdeki ihmal, mevki tayinini doğrudan zayıflatır.`
+      }
+    ],
+    keyPoints: [
+      "Hs değeri doğrudan gerçek yükseklik değildir; dip ve refraksiyon mutlaka çıkarılır.",
+      "Güneş ve Ay gözlemlerinde yarıçap ve paralaks zorunlu düzeltmelerdir.",
+      "Sıra ve işaret hatası, Ho değerini dakikalar düzeyinde kaydırabilir.",
+      "Toplam bağıntı Ho = Hs ± IE − Dip − R ± SD ± P şeklindedir."
+    ]
+  },
   "Coğrafi koordinat sistemi": {
     title: "Coğrafi Koordinat Sistemi: Enlem ve Boylam",
     introduction: "Seyirde mevki tayini, Dünya üzerindeki herhangi bir noktanın enlem (latitude) ve boylam (longitude) değerleriyle ifade edilmesine dayanır. Bu iki açı, Dünya'nın merkezinden ölçülen küresel koordinatlardır ve tüm seyir hesaplarının ortak dilidir.",
