@@ -7849,5 +7849,67 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       "Deklinasyon ve saat açısı, gök cisimlerinin göksel küre üzerindeki konumunu tanımlar.",
       "Küresel üçgen bağıntısı, ölçülen yükseklikten mevki hesaplarının temelini oluşturur."
     ]
+  },
+  "LOP çizimi": {
+    title: "Mevki Hattı (LOP) Çizimi",
+    introduction:
+      "Mevki hattı (Line of Position – LOP), bir gök cismi gözlemine dayanarak gözlemcinin bulunabileceği tüm noktaları temsil eden geometrik bir doğrudur. Ho–Hc farkı ile elde edilen intercept mesafesi, yalnızca doğrusal bir uzaklıktır; bu uzaklığın hangi doğrultuda ve hangi referansa göre taşınacağı mevki hattı çizimiyle anlam kazanır. Mevki hattı, varsayılan mevkiden gök cismine çizilen azimut doğrultusuna diktir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Mevki hattı şeması](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/11/fullsizerender-70.jpg?fit=835%2C1200&ssl=1)
+
+![Güneşe doğru/uzak yön](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
+
+![Zenit uzaklığı ve LOP](https://www.myseatime.com/blogadm/wp-content/uploads/2017/09/celestial-position-line-from-zenith-distance.jpg)
+
+![Azimut ve LOP ilişkisi](https://easysextant.com/wp-content/uploads/2024/11/line-of-position-and-point-GP-2.jpg.webp)`
+      },
+      {
+        title: "Harita Üzerinde Çizim Mantığı",
+        content:
+          "Çizim işlemi harita üzerinde gerçekleştirilir ve tamamen geometriktir. Önce varsayılan mevki işaretlenir. Bu noktadan, hesaplanan azimut doğrultusunda bir doğru çizilir. Intercept mesafesi bu doğru üzerinde, Ho–Hc ilişkisine göre gök cismine doğru veya gök cisminden uzağa taşınır. Elde edilen yeni noktadan, azimut doğrultusuna dik bir doğru çizilir. Bu doğru, gözlem anındaki mevki hattıdır.",
+        bulletPoints: [
+          "Varsayılan mevki işaretlenir.",
+          "Azimut doğrultusunda bir çizgi oluşturulur.",
+          "Intercept mesafesi, Ho–Hc işaretine göre doğru üzerinde taşınır.",
+          "Yeni noktadan azimuta dik çizgi çizilir → LOP."
+        ]
+      },
+      {
+        title: "Intercept Mesafesi",
+        content: "Intercept mesafesi, ölçülen ve hesaplanan yükseklik farkının deniz mili cinsinden karşılığıdır. 1′ = 1 deniz mili kabul edilir.",
+        formula: {
+          text: "d = |Ho − Hc|",
+          description: "d: deniz mili cinsinden intercept mesafesi."
+        }
+      },
+      {
+        title: "Mevki Hattının Yön İlişkisi",
+        content: "Mevki hattı, gök cismine bakış doğrultusuna dik olduğundan azimut doğrultusuna 90° açı yapar.",
+        formula: {
+          text: "LOP doğrultusu = Zn ± 90°",
+          description: "Zn: gök cisminin azimut doğrultusu."
+        }
+      },
+      {
+        title: "Örnek – Harita Üzerinde LOP Çizimi",
+        content:
+          "Varsayılan mevki **36° 00′ N, 029° 00′ E** olsun. Hesaplanan azimut **Zn = 120°**, Ho − Hc farkı **+6.0′**.\n\n" +
+          "Intercept mesafesi: **d = 6.0 deniz mili**\n\n" +
+          "Ho, Hc’den büyük olduğundan gök cismine doğru ilerlenir. Harita üzerinde varsayılan mevkiden **120°** doğrultusunda bir doğru çizilir ve bu doğru üzerinde **6 deniz mili** ilerlenir. Bu yeni noktadan, **120° doğrultusuna dik** olacak şekilde **030°–210°** doğrultusunda bir doğru çizilir. Çizilen bu doğru, gözlem anındaki mevki hattıdır."
+      },
+      {
+        title: "LOP Kesişimi ve Güvenilirlik",
+        content:
+          "Tek bir mevki hattı kesin mevki vermez. En az iki, tercihen üç farklı gök cisminden elde edilen mevki hatlarının kesişimi gerçek mevkiyi belirler. Hatlar paralel veya çok dar açılı kesişiyorsa sonuç güvenilir değildir. Bu durum özellikle aynı azimuta yakın gök cisimleri kullanıldığında ortaya çıkar ve uygulamada ciddi bir hata kaynağıdır."
+      }
+    ],
+    keyPoints: [
+      "LOP, azimut doğrultusuna dik çizilen geometrik bir mevki doğrusudur.",
+      "Intercept mesafesi yalnızca uzaklıktır; doğru yön ve referansla taşınmalıdır.",
+      "En az iki LOP kesişimi gerekir; paralel LOP’lar güvenilir sonuç vermez.",
+      "Çizim tamamen geometriktir ve harita üzerinde uygulanır."
+    ]
   }
 };
