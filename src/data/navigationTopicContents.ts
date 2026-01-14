@@ -3543,6 +3543,154 @@ o hat üzerindedir
 
 ---
 
+### Transit Fix (Leading Lines ile Mevki Tayini)
+
+Transit Fix, iki sabit objenin gemiden bakıldığında aynı doğrultu üzerinde hizalanması (transit/leading line) prensibine dayanarak oluşturulan tek bir LOP ile, bu LOP’un başka bir LOP ile kesiştirilmesi sonucu kesin mevki (Fix) elde edilmesidir. Klasik (terrestrial) navigasyonda en yüksek doğruluğa sahip görsel yöntemlerden biridir.
+
+---
+
+### Temel Prensip
+
+İki obje hizalandığında, gemi bu objeleri birleştiren doğru üzerinde bulunur. Bu doğru Transit LOP’tur.
+
+⬛ **Ana İlke**
+
+════════════════════
+Hizalanan Objeler → Tek LOP (Transit)
+Transit LOP ∩ Diğer LOP = Fix
+════════════════════
+
+---
+
+### Kullanılan Tanımlar
+
+Transit : İki objenin aynı doğrultuda görünmesi
+
+Leading Line : Transit doğrultusu
+
+LOP : Konum doğrusu
+
+Fix : Kesin mevki
+
+---
+
+### Transit LOP’un Özelliği
+
+Açı ölçümü yoktur
+
+Pusula hatasından bağımsızdır
+
+Görsel hassasiyeti çok yüksektir
+
+⬛ **Pratik Kural**
+
+════════════════════
+Transit = En Güvenilir LOP
+════════════════════
+
+---
+
+### Transit ile Fix Oluşturma
+
+Transit tek başına fix vermez; mutlaka ikinci bir LOP gerekir:
+
+Kerteriz
+
+Kerteriz + Running Fix
+
+Kerteriz + Mesafe (radar)
+
+---
+
+### Sayısal Uygulama Örneği (Transit + Kerteriz)
+
+**Verilenler**
+
+Obje A ve Obje B hizalı → Transit LOP
+
+Aynı anda Obje C kerterizi: 060°T
+
+---
+
+### Hesaplama
+
+⬛ **Kerteriz Tersi**
+
+════════════════════
+Bᵣ = 060° + 180°
+Bᵣ = 240°
+════════════════════
+
+---
+
+### Harita Uygulaması
+
+1. Haritada A–B doğrusu çizilir → Transit LOP
+
+2. Obje C’den 240° doğrultusunda LOP çizilir
+
+3. Kesişim noktası → Fix
+
+---
+
+### Transit + Mesafe (Radar)
+
+Transit LOP, radar mesafesi ile de kesiştirilebilir.
+
+⬛ **Radar LOP**
+
+════════════════════
+Sabit Mesafe = Çember LOP
+════════════════════
+
+Radar mesafesi → çember
+
+Transit → doğru
+
+Kesişim → Fix
+
+---
+
+### Geometrik Hassasiyet
+
+Transit doğrultusuna dik gelen ikinci LOP → en iyi fix
+
+Paralel veya dar açılı kesişimler hatayı büyütür
+
+⬛ **İdeal Kesişim**
+
+════════════════════
+60°–90°
+════════════════════
+
+---
+
+### Harita Sembolizasyonu
+
+Transit LOP → kalın çizgi
+
+Kerteriz LOP → ince çizgi
+
+Fix → ●
+
+Zaman → fix yanına yazılır
+
+---
+
+### Kullanım Alanları
+
+Liman girişleri
+
+Dar kanal seyri
+
+Tehlikeli sığlık hatlarının takibi
+
+Pilotaj seyri
+
+Transit Fix yöntemi, klasik (terrestrial) navigasyonda yüksek doğruluk, düşük hata ve hızlı uygulama avantajlarıyla özellikle kıyı ve liman seyirlerinde vazgeçilmez bir tekniktir.
+
+---
+
 ### Kullanılan Tanımlar
 
 * **Obj A (arka)** : Daha uzakta kalan obje
