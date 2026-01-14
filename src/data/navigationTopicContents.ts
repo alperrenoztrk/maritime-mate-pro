@@ -1758,6 +1758,80 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
       }
     ]
   },
+  "Mercator – rhumb line ilişkisi": {
+    title: "Mercator – Rhumb Line İlişkisi",
+    introduction:
+      "Mercator projeksiyonu, küresel Dünya yüzeyinin silindirik bir yüzeye açılması esasına dayanır ve denizcilikte rhumb line (loxodrome) seyrinin temelini oluşturur. Meridyenler dikey ve birbirine paralel, paraleller ise yatay doğrular olarak gösterilir. Enlem arttıkça paraleller arası mesafe büyür ve kutuplara yaklaştıkça sonsuza gider. Bu bilinçli bozulma, **sabit kursla seyri** harita üzerinde düz çizgi hâline getirir.",
+    sections: [
+      {
+        title: "Rhumb Line’ın Mercator’da Düz Görünmesi",
+        content: `Rhumb line, küre üzerinde meridyenleri **sabit açıyla kesen** bir eğridir. Mercator projeksiyonu açısal doğruluğu koruduğu için bu eğri harita üzerinde **tam olarak düz bir doğru** gibi görünür. Bu sayede denizci, sabit kursla seyir yapan geminin rotasını harita üzerinde cetvelle tek hamlede çizebilir.
+
+Büyük daire ise küre üzerindeki **en kısa yol** olmasına rağmen Mercator haritasında eğri olarak görünür; yalnızca ekvator ve meridyenler düz çizgi hâlindedir.
+
+![Mercator haritasında rhumb line](https://www.researchgate.net/publication/268872013/figure/fig3/AS%3A392212723585029%401470522208424/The-Mercator-map-projection-The-rhumb-lines-show-as-straight-lines.png)
+
+![Büyük daire ve rhumb line karşılaştırması](https://mapscaping.com/wp-content/uploads/2024/09/image-684.png)
+
+![Mercator projeksiyonda alan bozulması](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Mercator_projection_Square.JPG/1280px-Mercator_projection_Square.JPG)`
+      },
+      {
+        title: "Temel İlişkiler (Özet)",
+        content: `Rhumb line kürede → **eğri**  
+Rhumb line Mercator’da → **düz doğru**
+
+Büyük daire kürede → **en kısa yol**  
+Büyük daire Mercator’da → **eğri**
+
+Mercator projeksiyonunun bu avantajı, **alan ve mesafe bozulmalarının** enlemle hızla büyümesi karşılığında elde edilir. Bu nedenle Mercator haritada ölçülen mesafeler doğrudan gerçek mesafeyi vermez; yalnızca **enlem skalası** üzerinden okunmalıdır.`
+      },
+      {
+        title: "İzometrik Enlem (Mercator Enlemi)",
+        content: `Mercator projeksiyonunda enlemler arası açılma **izometrik enlem** ile ifade edilir. Rhumb line hesaplarının temel büyüklüğü bu dönüşümdür:
+
+────────────  
+**ψ = ln [ tan (45° + φ / 2) ]**  
+────────────
+
+Burada **ψ**, Mercator enlemi; **φ** ise küresel enlemdir. Bu dönüşüm, enlemlerin harita üzerindeki gerçek yerlerini temsil eder.`
+      },
+      {
+        title: "Tam Çözümlü Örnek (Rhumb Line Kursu)",
+        content: `**Başlangıç mevkii:**  
+φ₁ = 15° N, λ₁ = 005° E
+
+**Varış mevkii:**  
+φ₂ = 45° N, λ₂ = 035° E
+
+**1) İzometrik enlemler**
+
+ψ₁ = ln [ tan (45° + 15° / 2) ]  
+ψ₁ = ln [ tan 52.5° ] ≈ ln (1.279) ≈ 0.246
+
+ψ₂ = ln [ tan (45° + 45° / 2) ]  
+ψ₂ = ln [ tan 67.5° ] ≈ ln (2.414) ≈ 0.881
+
+Δψ = 0.881 − 0.246 = **0.635**
+
+**2) Boylam farkı (radyan)**  
+Δλ = 35° − 5° = 30° = **0.5236 rad**
+
+**3) Rhumb line kursu**
+
+tan C = Δλ / Δψ  
+tan C ≈ 0.5236 / 0.635 ≈ 0.825  
+**C ≈ 39.4°**
+
+Bu örnek, Mercator projeksiyonunda kurs hesaplarının **izometrik enlem** üzerinden yapıldığını ve **Δλ’nin radyan** alınması gerektiğini açıkça gösterir.`
+      }
+    ],
+    keyPoints: [
+      "Rhumb line, Mercator’da düz çizgi görünür; bu, sabit kursla seyri harita üzerinde pratikleştirir.",
+      "Büyük daire en kısa yol olmasına rağmen Mercator’da eğri görünür.",
+      "Mercator projeksiyonu açıları korur; alan ve mesafe bozulmaları enlemle büyür.",
+      "Rhumb line kursu, izometrik enlem (ψ) farkı kullanılarak hesaplanır."
+    ]
+  },
   "Mercator projeksiyonu": {
     title: "Mercator Projeksiyon",
     introduction: "Mercator projeksiyon, deniz haritalarında kullanılan ve seyir hesaplarının temelini oluşturan matematiksel harita projeksiyonudur. Bu projeksiyonun denizcilikte tercih edilmesinin nedeni estetik ya da coğrafi doğruluk değil, **seyirsel doğruluktur**. Mercator projeksiyon, yön ve doğrultu ilişkilerini korur; bu sayede denizcilikte kullanılan rota, kerteriz, mesafe ve mevki işlemleri harita üzerinde **doğrudan ve tutarlı** biçimde yapılabilir.",
