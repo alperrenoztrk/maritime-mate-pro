@@ -149,6 +149,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Büyük daire geometrisi" },
           { title: "Büyük daire mesafesi" },
           { title: "Büyük daire başlangıç kursu" },
+          { title: "Büyük Daire Vertex (En Yüksek Enlem) Hesaplamaları", hasContent: true },
           { title: "Rhumb line (loxodrom)" },
           { title: "Mercator – rhumb line ilişkisi" },
           { title: "Composite (bileşik) rota" },
