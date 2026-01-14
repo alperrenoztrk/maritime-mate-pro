@@ -1886,23 +1886,21 @@ Bu hesaplama, büyük daire geometrisinin küresel üçgen esasına dayandığı
   },
   "Büyük daire mesafesi": {
     title: "Büyük Daire Mesafesi Hesaplamaları",
-    introduction: "Büyük daire mesafesi, iki mevki arasındaki en kısa yüzey yolunun nicel ifadesidir ve uzun mesafe seyrin temel çıktısıdır. Bu mesafe, Dünya merkezinde oluşan merkez açı üzerinden tanımlanır. Küresel geometride merkez açı ile büyük daire yayı arasında doğrusal ilişki vardır; denizcilikte pratik kabul olarak büyük daire üzerindeki her 1° yay, 60 deniz miline karşılık gelir. Bu nedenle hesaplamanın özü, merkez açıyı doğru bulmaktır.",
+    introduction: "Büyük daire mesafesi, küre üzerindeki iki mevki arasındaki büyük daire yayı uzunluğudur ve Dünya merkezinden bakıldığında oluşan merkez açı ile doğrudan ilişkilidir. Denizcilikte pratik kabul, Dünya çevresinin 360 dereceye bölünmesi ve her bir derecenin 60 deniz miline karşılık gelmesidir. Bu nedenle mesafe hesabının özü, merkez açıyı doğru ve güvenilir biçimde bulmaktır.",
     sections: [
       {
         title: "Büyük Daire Mesafesinin Geometrisi",
-        content: `Büyük daire, küre üzerindeki **en büyük dairedir** ve bir meridyen ile ekvator bu dairelere örnektir. İki nokta arasındaki büyük daire yayı, yüzey üzerindeki **en kısa mesafedir**. Seyirde bu yolun belirlenmesi, rotanın gerçekten minimum mesafe olup olmadığını anlamak için zorunludur.
+        content: `Büyük daire mesafesi, küre üzerindeki iki mevkii birleştiren **en kısa yüzey yoludur**. Bu mesafe, Dünya merkezinde görülen **merkez açı** ile tanımlanır. Merkez açı büyüdükçe büyük daire yayı doğrusal olarak uzar.
 
-![Büyük daire mesafesi şeması](https://upload.wikimedia.org/wikipedia/commons/c/cb/Illustration_of_great-circle_distance.svg)
+![Büyük daire mesafesi görseli](https://astrolabesailing.com/wp-content/uploads/2014/10/distances.jpg?w=396)
 
-Bu mesafe, Dünya merkezinde oluşan **merkez açı (θ)** ile tanımlanır. Merkez açı ne kadar büyükse, yüzeydeki yay da o kadar uzundur.`
+![Merkez açı diyagramı](https://study.com/cimages/multimages/16/central_angle_diagram_22020434325126197092.png)`
       },
       {
-        title: "Merkez Açı Formülü (Küresel Kosinüs Teoremi)",
-        content: `Büyük daire hesaplarında enlem ve boylam birlikte ele alınır. Sadece doğu–batı ya da kuzey–güney farkı tek başına yeterli değildir. Küresel kosinüs teoremi merkez açıyı doğrudan verir:
+        title: "Merkez Açı Formülü (Küresel Kosinüs)",
+        content: `Büyük daire mesafesi düzlem trigonometrisiyle hesaplanamaz. Enlem ve boylam farkları yalnızca **küresel trigonometrinin** içinde anlam kazanır. Bu nedenle ilk adım, iki mevki arasındaki merkez açıyı doğru bulmaktır. Küresel kosinüs teoremi, merkez açıyı doğrudan verir:
 
-![Haversine ve merkez açı ilişkisi](https://graphsearch.epfl.ch/_next/image?q=75&url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F38%2FLaw-of-haversines.svg%2F1200px-Law-of-haversines.svg.png&w=1080)
-
-![Spherical law of cosines görseli](https://www.wolframcloud.com/obj/resourcesystem/published/DemonstrationRepository/deployments/SphericalLawOfCosines/img/SphericalLawOfCosines_Snapshot-2.png)`,
+![Büyük daire vs rhumb line](https://www.kavas.com/storage/media/wysiwyg/blog/great_circle-vs-rhumb_line.jpg)`,
         formula: {
           text: "cos θ = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ",
           description: "θ merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır."
@@ -1910,7 +1908,7 @@ Bu mesafe, Dünya merkezinde oluşan **merkez açı (θ)** ile tanımlanır. Mer
       },
       {
         title: "Merkez Açıdan Mesafeye Geçiş",
-        content: "Merkez açı hesaplandıktan sonra mesafe doğrudan yay uzunluğuna çevrilir. Denizcilikte standart kabul: **1° büyük daire yayı = 60 deniz mili**.",
+        content: "Merkez açı hesaplandıktan sonra mesafe doğrudan yay uzunluğuna çevrilir. Denizcilikte standart kabul: **1° büyük daire yayı = 60 deniz mili**. Böylece bulunan merkez açı, büyük daire mesafesinin doğrudan karşılığıdır.",
         formula: {
           text: "Büyük daire mesafesi (nm) = θ × 60",
           description: "θ derece cinsinden merkez açıdır."
@@ -1918,27 +1916,34 @@ Bu mesafe, Dünya merkezinde oluşan **merkez açı (θ)** ile tanımlanır. Mer
       },
       {
         title: "Örnek Hesap (Adım Adım)",
-        content: `Başlangıç mevkii: **38° N, 015° W**  
-Varış mevkii: **52° N, 025° E**
+        content: `Başlangıç mevkii:  
+**Enlem φ₁ = 10° Kuzey**  
+**Boylam λ₁ = 030° Batı**
 
-Boylam farkı: Δλ = 40°
+Varış mevkii:  
+**Enlem φ₂ = 40° Kuzey**  
+**Boylam λ₂ = 020° Doğu**
+
+Boylam farkı:  
+Δλ = 30° + 20° = **50°**
 
 Yaklaşık trigonometrik değerler:  
-sin 38° ≈ 0.616, sin 52° ≈ 0.788  
-cos 38° ≈ 0.788, cos 52° ≈ 0.616  
-cos 40° ≈ 0.766
+sin 10° ≈ 0.174, sin 40° ≈ 0.643  
+cos 10° ≈ 0.985, cos 40° ≈ 0.766  
+cos 50° ≈ 0.643
 
-Merkez açı hesabı:  
-cos θ = (0.616 × 0.788) + (0.788 × 0.616 × 0.766)  
-cos θ ≈ 0.485 + 0.372 = 0.857  
-θ ≈ 31°
+Formüle yerleştirme:  
+cos θ = (0.174 × 0.643) + (0.985 × 0.766 × 0.643)  
+cos θ = 0.112 + 0.484  
+cos θ ≈ 0.596
 
-Mesafe:  
-31 × 60 = **1860 deniz mili**
+Merkez açı:  
+θ ≈ arccos 0.596 ≈ **53.4°**
 
-Bu değer, aynı iki nokta arasındaki **rhumb line** mesafesinden daha kısadır. Fark, özellikle yüksek enlemler ve geniş boylam farklarında belirginleşir.
+Büyük daire mesafesi:  
+53.4 × 60 ≈ **3204 deniz mili**
 
-![Büyük daire ve rhumb line karşılaştırması](https://timeandnavigation.si.edu/sites/default/files/multimedia-assets/300-si_fl_great_circle_fa.jpg)`
+Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. Rhumb line seyirde mesafe daha uzun çıkar ve fark özellikle orta–yüksek enlemlerde belirginleşir.`
       }
     ],
     keyPoints: [
