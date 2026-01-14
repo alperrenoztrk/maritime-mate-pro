@@ -169,6 +169,22 @@ export default function NavigationFormulasPage() {
             </CardHeader>
             {isOpen('gc') && (
             <CardContent className="space-y-3 text-sm">
+              <div className="bg-muted/30 rounded p-3 space-y-3">
+                <p>
+                  Büyük daire geometrisi, yerkürenin küresel kabulüne dayanan seyir matematiğinin çekirdeğini oluşturur.
+                  İki mevkiyi ve yerküre merkezini birleştiren tek düzlemin küreyi kestiği yay, büyük daire yayını verir.
+                  Bu yüzden büyük daire, rastgele bir eğri değil; tamamen tanımlı bir geometrik zorunluluktur.
+                </p>
+                <p>
+                  Temel yapı küresel üçgendir. Başlangıç mevkii, varış mevkii ve kutup noktasıyla kurulan üçgende
+                  kenarlar büyük daire yaylarıdır. Düzlem trigonometrisinden farklı olarak, kenarlar açılarla; açılar
+                  ise enlem ve boylam farklarıyla temsil edilir.
+                </p>
+                <p>
+                  Büyük daire mesafesi, merkezde oluşan merkez açıyla tanımlanır. Merkez açı büyüdükçe yüzeydeki mesafe
+                  doğrusal olarak artar. Bu nedenle hesapların ilk adımı merkez açıyı doğru bulmaktır.
+                </p>
+              </div>
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6">{`Mesafe (nm):
 d = 2R × arcsin(√(sin²((φ₂−φ₁)/2) + cosφ₁ · cosφ₂ · sin²((λ₂−λ₁)/2)))
@@ -186,6 +202,34 @@ Composite GC:
 Kutuplara yaklaşmamak için yüksek enlemde GC leg + RL leg ile birleştir.
 
 R ≈ 3440.065 nm`}</pre>
+              </div>
+              <div className="bg-muted/30 rounded p-3 space-y-2">
+                <div className="font-semibold text-primary">Küresel Üçgen – Merkez Açı Bağıntısı</div>
+                <div className="font-mono text-sm leading-6">{`cos θ = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ`}</div>
+                <ul className="list-disc pl-4 space-y-1">
+                  <li>θ: iki mevki arasındaki merkez açı</li>
+                  <li>φ₁, φ₂: başlangıç ve varış enlemleri</li>
+                  <li>Δλ: boylam farkı</li>
+                </ul>
+              </div>
+              <div className="bg-muted/30 rounded p-3 space-y-2">
+                <div className="font-semibold text-primary">Örnek Hesap</div>
+                <div className="grid gap-1">
+                  <div>Başlangıç: 25° N, 040° W</div>
+                  <div>Varış: 45° N, 010° E</div>
+                  <div>Δλ = 50°</div>
+                </div>
+                <div className="font-mono text-sm leading-6">{`sin 25° ≈ 0.423   cos 25° ≈ 0.906
+sin 45° ≈ 0.707   cos 45° ≈ 0.707
+cos 50° ≈ 0.643
+
+cos θ = (0.423 × 0.707) + (0.906 × 0.707 × 0.643)
+cos θ ≈ 0.299 + 0.412 = 0.711
+θ ≈ 45°`}</div>
+                <p>
+                  Bulunan merkez açı, büyük daire mesafesinin doğrudan karşılığıdır ve bir sonraki adımda mesafe hesabına
+                  dönüştürülür.
+                </p>
               </div>
             </CardContent>
             )}
