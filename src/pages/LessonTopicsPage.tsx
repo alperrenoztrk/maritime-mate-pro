@@ -160,7 +160,7 @@ const topicsData: Record<string, TopicContent> = {
         title: "Göksel Seyir (Celestial Navigation)",
         description: "Güneş, yıldızlar ve gezegenler kullanılarak mevki tayini",
         subTopics: [
-          { title: "Göksel küre" },
+          { title: "Göksel küre", hasContent: true },
           { title: "Zaman – açı ilişkisi" },
           { title: "Sextant kullanımı" },
           { title: "Yükseklik düzeltmeleri" },

@@ -30,7 +30,6 @@ import enlemDefinition from "@/assets/navigation/enlem-definition.jpg";
 import enlemRegions from "@/assets/navigation/enlem-regions.jpg";
 import enlemNauticalMile from "@/assets/navigation/enlem-nautical-mile.jpg";
 import enlemPlaneSailing from "@/assets/navigation/enlem-plane-sailing.jpg";
-import enlemCelestial from "@/assets/navigation/enlem-celestial.png";
 import enlemNewOrleans from "@/assets/navigation/enlem-new-orleans.jpg";
 
 // Import images - Boylam
@@ -40,7 +39,6 @@ import boylamDefinition from "@/assets/navigation/boylam-definition.jpg";
 import boylamMeridians from "@/assets/navigation/boylam-meridians.jpg";
 import boylamTimeZones from "@/assets/navigation/boylam-time-zones.png";
 import boylamDeparture from "@/assets/navigation/boylam-departure.jpg";
-import boylamCelestial from "@/assets/navigation/boylam-celestial.png";
 import boylamSunLongitude from "@/assets/navigation/boylam-sun-longitude.jpg";
 
 // Import images - Yön Kavramları
@@ -53,6 +51,12 @@ import yonDiagram1 from "@/assets/navigation/yon-diagram-1.jpg";
 import yonDiagram2 from "@/assets/navigation/yon-diagram-2.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
 import yonRadarMotion from "@/assets/navigation/yon-radar-motion.jpg";
+
+// Import images - Göksel Küre
+import celestialTriangle from "@/assets/navigation/celestial-triangle.svg";
+import azimuthalProjection from "@/assets/navigation/azimuthal-projection.svg";
+import enlemCelestial from "@/assets/navigation/enlem-celestial.png";
+import boylamCelestial from "@/assets/navigation/boylam-celestial.png";
 
 // Import images - Harita Sembolleri
 import sembolIalaBuoyage from "@/assets/navigation/sembol-iala-buoyage.jpg";
@@ -7775,6 +7779,75 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       "Rhumb line sabit kurs sağlar ancak uzun mesafede mesafe kaybı belirgindir.",
       "Composite rota, mesafe avantajı ile operasyonel güvenlik arasında denge kurar.",
       "Uzun okyanus planlamasında meteoroloji, akıntılar ve operasyonel sınırlar temel belirleyicilerdir."
+    ]
+  },
+  "Göksel küre": {
+    title: "Göksel Küre",
+    introduction:
+      "Göksel küre, gözlemcinin Dünya üzerinde merkezde kabul edildiği ve gök cisimlerinin bu hayali kürenin iç yüzeyine izdüşürülerek tanımlandığı geometrik bir modeldir. Amaç fiziksel gerçekliği temsil etmek değil; gök cisimlerinin açısal konumlarını sade ve hesaplanabilir hale getirmektir. Sextant ölçümleri, zaman bilgisi ve astronomik tablolar; bu model üzerinde birleştirilerek seyirde mevki tayinine temel oluşturur.",
+    sections: [
+      {
+        title: "Modelin Temel Referansları",
+        content:
+          "Göksel kürede gözlemcinin bulunduğu nokta **merkez**, baş üstü noktası **zenit**, tam karşısı **nadir** olarak alınır. Gözlemciye teğet düzlemin küreyle kesişimi **ufuk dairesini** oluşturur. Dünya’nın dönme ekseninin küreyi kestiği noktalar **gök kutupları**, ekvator düzleminin küreyle kesişimi ise **gök ekvatoru**dur.",
+        image: celestialTriangle,
+        imageAlt: "Göksel küre üzerinde ufuk, zenit ve temel daireler"
+      },
+      {
+        title: "Koordinat ve Açısal Tanımlar",
+        content:
+          "Bir gök cisminin gök ekvatoruna göre açısal uzaklığı **deklinasyon (δ)**, yerel meridyene göre açısal konumu ise **saat açısı (LHA)** ile ifade edilir. Gözlemcinin enlemi **φ**, gözlenen cismin ufuk üzerindeki yüksekliği **h** olarak alınır. Bu büyüklükler, göksel küre üzerindeki küresel üçgenin kenarlarını ve açılarını belirler.",
+        image: enlemCelestial,
+        imageAlt: "Göksel kürede enlem, deklinasyon ve yükseklik ilişkisi"
+      },
+      {
+        title: "Zenit Uzaklığı ve Saat Açısı İlişkileri",
+        content:
+          "Zenit uzaklığı, cismin gök kubbede gözlemci başüstü noktasına olan açısal mesafesidir. Seyirde kullanılan temel dönüşümler aşağıdaki gibidir.",
+        formula: {
+          text: "Z = 90° − h",
+          description: "Z: zenit uzaklığı, h: gök cisminin ölçülen yüksekliği"
+        }
+      },
+      {
+        title: "Greenwich Saat Açısından Yerel Saat Açısına",
+        content:
+          "Astronomik tablolarda verilen Greenwich Saat Açısı (GHA), gözlemcinin boylamıyla birleştirilerek Yerel Saat Açısı (LHA) bulunur. Doğu boylamları çıkarma, batı boylamları ekleme işaretiyle alınır.",
+        formula: {
+          text: "LHA = GHA ± λ",
+          description: "λ: boylam (Doğu çıkarılır, Batı eklenir)"
+        },
+        image: boylamCelestial,
+        imageAlt: "GHA, LHA ve boylam ilişkisi"
+      },
+      {
+        title: "Küresel Üçgende Temel Kosinüs Bağıntısı",
+        content:
+          "Göksel seyirde kullanılan temel bağıntı, gözlemci enlemi (φ), gök cisminin deklinasyonu (δ) ve LHA yardımıyla cismin yüksekliğini verir.",
+        formula: {
+          text: "sin h = sin φ · sin δ + cos φ · cos δ · cos LHA",
+          description: "h: yükseklik | φ: gözlemci enlemi | δ: deklinasyon | LHA: yerel saat açısı"
+        },
+        image: azimuthalProjection,
+        imageAlt: "Göksel küre küresel üçgen geometrisi"
+      },
+      {
+        title: "Örnek Hesap",
+        content:
+          "Varsayım: **φ = 36° N**, **δ = 10° N**, **LHA = 40°**\n\n" +
+          "sin h = sin 36° · sin 10° + cos 36° · cos 10° · cos 40°\n\n" +
+          "sin 36° = 0.588 | sin 10° = 0.174 | cos 36° = 0.809 | cos 10° = 0.985 | cos 40° = 0.766\n\n" +
+          "sin h = (0.588 × 0.174) + (0.809 × 0.985 × 0.766)\n\n" +
+          "sin h = 0.102 + 0.611 = **0.713**\n\n" +
+          "h = arcsin 0.713 ≈ **45.5°**\n\n" +
+          "Bu değer, cismin ufuk üzerinde yaklaşık **45.5°** yükseklikte görülmesi gerektiğini gösterir. Pratikte bu değer sextant ile ölçülen düzeltilmiş yükseklikle karşılaştırılır ve intercept yönteminde kullanılır."
+      }
+    ],
+    keyPoints: [
+      "Göksel küre fiziksel bir gerçeklik değil, açısal ilişkileri sadeleştiren bir geometrik modeldir.",
+      "Zenit, nadir, ufuk dairesi, gök kutupları ve gök ekvatoru temel referansları oluşturur.",
+      "Deklinasyon ve saat açısı, gök cisimlerinin göksel küre üzerindeki konumunu tanımlar.",
+      "Küresel üçgen bağıntısı, ölçülen yükseklikten mevki hesaplarının temelini oluşturur."
     ]
   }
 };
