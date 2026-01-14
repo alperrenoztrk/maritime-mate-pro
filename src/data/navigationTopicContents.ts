@@ -1680,6 +1680,71 @@ Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; **
       }
     ]
   },
+  "Büyük daire mesafesi": {
+    title: "Büyük Daire Mesafesi Hesaplamaları",
+    introduction: "Büyük daire mesafesi, iki mevki arasındaki en kısa yüzey yolunun nicel ifadesidir ve uzun mesafe seyrin temel çıktısıdır. Bu mesafe, Dünya merkezinde oluşan merkez açı üzerinden tanımlanır. Küresel geometride merkez açı ile büyük daire yayı arasında doğrusal ilişki vardır; denizcilikte pratik kabul olarak büyük daire üzerindeki her 1° yay, 60 deniz miline karşılık gelir. Bu nedenle hesaplamanın özü, merkez açıyı doğru bulmaktır.",
+    sections: [
+      {
+        title: "Büyük Daire Mesafesinin Geometrisi",
+        content: `Büyük daire, küre üzerindeki **en büyük dairedir** ve bir meridyen ile ekvator bu dairelere örnektir. İki nokta arasındaki büyük daire yayı, yüzey üzerindeki **en kısa mesafedir**. Seyirde bu yolun belirlenmesi, rotanın gerçekten minimum mesafe olup olmadığını anlamak için zorunludur.
+
+![Büyük daire mesafesi şeması](https://upload.wikimedia.org/wikipedia/commons/c/cb/Illustration_of_great-circle_distance.svg)
+
+Bu mesafe, Dünya merkezinde oluşan **merkez açı (θ)** ile tanımlanır. Merkez açı ne kadar büyükse, yüzeydeki yay da o kadar uzundur.`
+      },
+      {
+        title: "Merkez Açı Formülü (Küresel Kosinüs Teoremi)",
+        content: `Büyük daire hesaplarında enlem ve boylam birlikte ele alınır. Sadece doğu–batı ya da kuzey–güney farkı tek başına yeterli değildir. Küresel kosinüs teoremi merkez açıyı doğrudan verir:
+
+![Haversine ve merkez açı ilişkisi](https://graphsearch.epfl.ch/_next/image?q=75&url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F38%2FLaw-of-haversines.svg%2F1200px-Law-of-haversines.svg.png&w=1080)
+
+![Spherical law of cosines görseli](https://www.wolframcloud.com/obj/resourcesystem/published/DemonstrationRepository/deployments/SphericalLawOfCosines/img/SphericalLawOfCosines_Snapshot-2.png)`,
+        formula: {
+          text: "cos θ = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ",
+          description: "θ merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır."
+        }
+      },
+      {
+        title: "Merkez Açıdan Mesafeye Geçiş",
+        content: "Merkez açı hesaplandıktan sonra mesafe doğrudan yay uzunluğuna çevrilir. Denizcilikte standart kabul: **1° büyük daire yayı = 60 deniz mili**.",
+        formula: {
+          text: "Büyük daire mesafesi (nm) = θ × 60",
+          description: "θ derece cinsinden merkez açıdır."
+        }
+      },
+      {
+        title: "Örnek Hesap (Adım Adım)",
+        content: `Başlangıç mevkii: **38° N, 015° W**  
+Varış mevkii: **52° N, 025° E**
+
+Boylam farkı: Δλ = 40°
+
+Yaklaşık trigonometrik değerler:  
+sin 38° ≈ 0.616, sin 52° ≈ 0.788  
+cos 38° ≈ 0.788, cos 52° ≈ 0.616  
+cos 40° ≈ 0.766
+
+Merkez açı hesabı:  
+cos θ = (0.616 × 0.788) + (0.788 × 0.616 × 0.766)  
+cos θ ≈ 0.485 + 0.372 = 0.857  
+θ ≈ 31°
+
+Mesafe:  
+31 × 60 = **1860 deniz mili**
+
+Bu değer, aynı iki nokta arasındaki **rhumb line** mesafesinden daha kısadır. Fark, özellikle yüksek enlemler ve geniş boylam farklarında belirginleşir.
+
+![Büyük daire ve rhumb line karşılaştırması](https://timeandnavigation.si.edu/sites/default/files/multimedia-assets/300-si_fl_great_circle_fa.jpg)`
+      }
+    ],
+    keyPoints: [
+      "Büyük daire, küre üzerindeki iki nokta arasındaki en kısa yüzey yoludur.",
+      "Mesafe hesabının özü merkez açının bulunmasına dayanır.",
+      "Küresel kosinüs teoremi, merkez açıyı doğrudan veren pratik formüldür.",
+      "1° büyük daire yayı = 60 deniz mili kabulü denizcilikte standarttır.",
+      "Rhumb line, özellikle yüksek enlemlerde büyük daireye göre daha uzundur."
+    ]
+  },
   "Harita sembolleri ve kısaltmalar": {
     title: "Harita Sembolleri ve Kısaltmalar",
     introduction: "Deniz haritasındaki semboller ve kısaltmalar, nesneleri çizmek için değil, seyir sırasında doğru kararı en kısa sürede verdirmek için kurulmuş standart bir dildir. Harita, gerçek dünyayı fotoğraf gibi çoğaltmaz; emniyetli suyun nerede bulunduğunu, tehlikenin neyi temsil ettiğini, bir hattın nasıl tutulacağını, hangi alanın hukuken veya operasyonel olarak kısıtlı olduğunu tek bakışta çözülecek şekilde kodlar. Bu dilin yükünü en çok taşıyan unsurlar şamandıralar, fenerler ve diğer seyir yardımcılarıdır; çünkü hem mevki doğrulamada hem de emniyetli geçişte doğrudan kullanılırlar.",
