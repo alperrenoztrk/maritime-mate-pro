@@ -1813,6 +1813,77 @@ Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; **
       }
     ]
   },
+  "Büyük daire geometrisi": {
+    title: "Büyük Daire Geometrisi",
+    introduction:
+      "Büyük daire geometrisi, Dünya’nın küresel kabulü altında küresel trigonometri esaslarına dayanır. İki mevki arasındaki büyük daire yayı, Dünya merkezinden geçen bir düzlemin küreyi kesmesiyle oluşur. Bu düzlem, başlangıç ve varış mevkileri ile Dünya merkezini içeren tekil bir düzlemdir. Seyir problemleri bu nedenle küresel üçgenler üzerinden çözülür.",
+    sections: [
+      {
+        title: "Büyük Daire ve Küresel Üçgen",
+        content: `Küresel üçgen, kenarları büyük daire yaylarından oluşan ve köşeleri küre yüzeyinde bulunan geometrik yapıdır. Denizcilikte kullanılan temel küresel üçgen, **Kuzey Kutbu – başlangıç mevkii – varış mevkii** köşeleriyle kurulur. Bu üçgende kenarlar enlemlerin tamamlayıcıları ve boylam farkı ile ifade edilir; açılar ise büyük daire başlangıç kursu ve bitiş kursu gibi seyirle doğrudan ilişkili büyüklüklerdir.
+
+![Büyük daire üçgeni](https://www.researchgate.net/publication/307477485/figure/fig4/AS%3A401098465660931%401472640734814/Spherical-triangle-for-Great-circle-computations.png)
+
+![Küresel üçgen ve kutup ilişkisi](https://www.onboardintelligence.com/CelestialNav/Images/astro6.gif)
+
+![Büyük daire, eksen ve kutuplar](https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Great_circle%2C_axis%2C_and_poles.svg/1280px-Great_circle%2C_axis%2C_and_poles.svg.png)`
+      },
+      {
+        title: "Temel Küresel Geometri İlişkileri",
+        content: `Meridyen yayı = 90° − enlem  
+Boylam farkı = Δλ
+
+Merkez açı **d** derece cinsinden bulunduğunda, deniz mili karşılığı doğrudan hesaplanabilir:  
+**Büyük daire mesafesi = d × 60 deniz mili**.`,
+        formula: {
+          text: "cos d = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ",
+          description: "d merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır."
+        }
+      },
+      {
+        title: "Kurs Geometrisi ve Başlangıç Kursu",
+        content:
+          "Büyük daire seyri boyunca kurs sabit değildir. Bunun geometrik nedeni, büyük daire yayının meridyenleri farklı açılarla kesmesidir. Yalnızca ekvator ve meridyenler meridyenlerle sabit açı yapar. Diğer tüm büyük daireler seyir ilerledikçe gerçek kurs değişimine neden olur.",
+        formula: {
+          text: "sin C₁ = (cos φ₂ · sin Δλ) / sin d",
+          description: "C₁ başlangıç kursudur."
+        }
+      },
+      {
+        title: "Tam Çözümlü Örnek",
+        content: `**Başlangıç mevkii:** φ₁ = 30° N, λ₁ = 020° E  
+**Varış mevkii:** φ₂ = 50° N, λ₂ = 060° E  
+**Boylam farkı:** Δλ = 60° − 20° = 40°
+
+Kosinüs teoremi uygulanır:
+
+cos d = sin 30° · sin 50° + cos 30° · cos 50° · cos 40°
+
+Yaklaşık trigonometrik değerler:  
+sin 30° = 0.500  
+sin 50° ≈ 0.766  
+cos 30° ≈ 0.866  
+cos 50° ≈ 0.643  
+cos 40° ≈ 0.766
+
+cos d = (0.500 × 0.766) + (0.866 × 0.643 × 0.766)  
+cos d = 0.383 + 0.426  
+cos d ≈ 0.809
+
+Merkez açı: d ≈ arccos 0.809 ≈ 36°
+
+**Büyük daire mesafesi:** 36° × 60 = **2160 deniz mili**
+
+Bu hesaplama, büyük daire geometrisinin küresel üçgen esasına dayandığını ve düzlem trigonometriyle çözülemeyeceğini açık biçimde gösterir.`
+      }
+    ],
+    keyPoints: [
+      "Büyük daire yayı, Dünya merkezinden geçen tek düzlemin küreyi kesmesiyle oluşur.",
+      "Küresel üçgen, büyük daire seyir hesaplarının temel geometrik yapısıdır.",
+      "Kurs sabit değildir; meridyenleri farklı açılarla kestiği için rota boyunca değişir.",
+      "Merkez açı, büyük daire mesafesinin doğrudan karşılığıdır."
+    ]
+  },
   "Büyük daire mesafesi": {
     title: "Büyük Daire Mesafesi Hesaplamaları",
     introduction: "Büyük daire mesafesi, iki mevki arasındaki en kısa yüzey yolunun nicel ifadesidir ve uzun mesafe seyrin temel çıktısıdır. Bu mesafe, Dünya merkezinde oluşan merkez açı üzerinden tanımlanır. Küresel geometride merkez açı ile büyük daire yayı arasında doğrusal ilişki vardır; denizcilikte pratik kabul olarak büyük daire üzerindeki her 1° yay, 60 deniz miline karşılık gelir. Bu nedenle hesaplamanın özü, merkez açıyı doğru bulmaktır.",
