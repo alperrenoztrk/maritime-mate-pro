@@ -238,22 +238,50 @@ const Index = () => {
 
       {/* Main content */}
       <div className="relative z-10 flex min-h-[100svh] flex-col items-center px-6 text-center">
-        {/* Title */}
+        {/* Title with Mexican Wave Animation */}
         <div className="pt-12 sm:pt-16">
-          <h1
-            className="select-none font-black tracking-wider"
-            style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)',
-              backgroundSize: '200% auto',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              animation: 'title-shine 3s linear infinite',
-              textShadow: '0 0 40px rgba(56,189,248,0.3)'
-            }}
-          >
-            <span className="block text-[clamp(2.5rem,9vw,4.5rem)] leading-tight">MARINE</span>
-            <span className="block text-[clamp(2.5rem,9vw,4.5rem)] leading-tight">EXPERT PRO</span>
+          <h1 className="select-none font-black tracking-wider">
+            <div className="block text-[clamp(2.5rem,9vw,4.5rem)] leading-tight flex justify-center">
+              {"MARINE".split('').map((char, i) => (
+                <span
+                  key={`marine-${i}`}
+                  className="inline-block"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)',
+                    backgroundSize: '200% auto',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    animation: `mexican-wave 2s ease-in-out infinite, title-shine 3s linear infinite`,
+                    animationDelay: `${i * 0.1}s, 0s`,
+                    textShadow: '0 0 40px rgba(56,189,248,0.3)'
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+            <div className="block text-[clamp(2.5rem,9vw,4.5rem)] leading-tight flex justify-center">
+              {"EXPERT PRO".split('').map((char, i) => (
+                <span
+                  key={`expert-${i}`}
+                  className="inline-block"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)',
+                    backgroundSize: '200% auto',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    animation: `mexican-wave 2s ease-in-out infinite, title-shine 3s linear infinite`,
+                    animationDelay: `${(i + 6) * 0.1}s, 0s`,
+                    textShadow: '0 0 40px rgba(56,189,248,0.3)',
+                    marginLeft: char === ' ' ? '0.3em' : '0'
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </div>
           </h1>
         </div>
 
@@ -311,6 +339,11 @@ const Index = () => {
         }
         @keyframes title-shine {
           to { background-position: 200% center; }
+        }
+        @keyframes mexican-wave {
+          0%, 100% { transform: translateY(0); }
+          25% { transform: translateY(-8px); }
+          50% { transform: translateY(0); }
         }
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(10px); }
