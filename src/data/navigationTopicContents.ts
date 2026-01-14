@@ -7123,5 +7123,73 @@ Kutuplara yakın seyir
 Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde önemli bir yere sahiptir; ancak **enlem ve mesafe sınırları bilinmeden kullanıldığında**, ciddi mevki hatalarına yol açabilir.`
       }
     ]
+  },
+  "Büyük Daire Vertex (En Yüksek Enlem) Hesaplamaları": {
+    title: "Büyük Daire Vertex (En Yüksek Enlem) Hesaplamaları",
+    introduction:
+      "Büyük daire seyrinde vertex, büyük daire yayının kutba en çok yaklaştığı ve rota boyunca ulaşılan en yüksek enlemi veren kritik noktadır. Bu değer, özellikle buz sahaları, fırtına kuşağı ve operasyonel sınırlar açısından rota planlamasının emniyet kontrol parametresidir.",
+    sections: [
+      {
+        title: "Vertex’in Seyirdeki Önemi",
+        content: `Vertex, büyük daire rotasının **kutba en yakın** olduğu noktadır. Büyük daire, en kısa yol olduğu için yüksek enlemlere doğru “yukarı kıvrılır”; bu kıvrılma sınırının bilinmemesi, gemiyi istenmeyen meteorolojik ve operasyonel koşullara sokabilir.
+
+![Great circle vertex görselleştirmesi](https://blog.evoatpl.com/wp-content/uploads/2024/08/GreatCircleVertices-1.png)
+
+![Great circle ve composite rota karşılaştırması](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fh53vszdxp%2Fillustration_Great_Circle_and_Composite_GC_comparison_fxcf5a.jpg&w=3840)`
+      },
+      {
+        title: "Geometrik Tanım",
+        content: `Vertex noktası, büyük daire yayının bir paraleli **teğet geçtiği** konumdur. Bu noktada enlem değişimi anlık olarak sıfıra yaklaşır ve rota doğrultusu **doğu–batı** yönüne en çok yaklaşan halini alır.
+
+![Büyük daire teğet noktası](https://i0.wp.com/captsschaudhari.com/wp-content/uploads/2022/05/9e654-untitled330-1.jpg?fit=523%2C287&ssl=1)`
+      },
+      {
+        title: "Vertex Enlemi (Maksimum Enlem) Formülü",
+        content: "En pratik yaklaşım, başlangıç enlemi ve başlangıç kursu üzerinden vertex enlemini bulmaktır. Mutlak değer, maksimum enlem büyüklüğünü verir; işaret, rota yarımküresi ve seyir yönüne göre değerlendirilir.",
+        formula: {
+          text: "sin φv = |sin C₁| × cos φ₁",
+          description: "φv: vertex enlemi, C₁: başlangıç kursu, φ₁: başlangıç enlemi."
+        }
+      },
+      {
+        title: "Hesap Adımları (Özet)",
+        content: "Uygulamada hızlı kontrol için aşağıdaki adımlar kullanılır:",
+        bulletPoints: [
+          "Başlangıç enlemi φ₁ ve başlangıç kursu C₁ belirlenir.",
+          "sin C₁ ve cos φ₁ hesaplanır.",
+          "sin φv = |sin C₁| × cos φ₁ bulunur.",
+          "φv = arcsin(sin φv) ile maksimum enlem elde edilir.",
+          "Yarımküre ve rota yönüne göre işaret değerlendirilir."
+        ]
+      },
+      {
+        title: "Örnek Hesap – Maksimum Enlem",
+        content: `Bir gemi **37° N** enleminden büyük daire seyrine başlıyor ve başlangıç kursu **55°** olsun.
+
+sin 55° ≈ 0.819  
+cos 37° ≈ 0.799  
+
+sin φv = 0.819 × 0.799 ≈ 0.654  
+φv ≈ **40.9°**
+
+Bu sonuç, geminin büyük daire seyri boyunca yaklaşık **40.9° N** enleminin üzerine çıkmayacağını gösterir. Kış sezonunda Kuzey Atlantik gibi bölgelerde bu değer kabul edilebilir sınırın üstündeyse rota **composite** veya **limit enlem** yaklaşımıyla revize edilmelidir.`
+      },
+      {
+        title: "Operasyonel Değerlendirme",
+        content: `Vertex enlemi bulunduğunda, bu değer aşağıdaki risk katmanlarıyla karşılaştırılır:
+
+* Buz sahası ve düşük sıcaklık bölgeleri
+* Fırtına kuşağı ve dalga rejimi
+* Trafik yoğunluğu ve rota kısıtları
+
+Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan uygulanmaz; **composite great circle** veya **limit enlem** planlaması tercih edilir.`
+      }
+    ],
+    keyPoints: [
+      "Vertex, büyük daire yayının kutba en yakın ve en yüksek enleme ulaştığı noktadır.",
+      "sin φv = |sin C₁| × cos φ₁ bağıntısı pratikte en sık kullanılan yöntemdir.",
+      "Vertex enlemi, meteoroloji ve buz riski açısından rota emniyetinin temel kontrolüdür.",
+      "Riskli enlemler için composite rota veya limit enlem yaklaşımı uygulanır."
+    ]
   }
 };
