@@ -161,18 +161,18 @@ const topicsData: Record<string, TopicContent> = {
         description: "Güneş, yıldızlar ve gezegenler kullanılarak mevki tayini",
         subTopics: [
           { title: "Göksel küre", hasContent: true },
-          { title: "Zaman – açı ilişkisi" },
-          { title: "Sextant kullanımı" },
-          { title: "Yükseklik düzeltmeleri" },
-          { title: "Ho – Hc kavramı" },
-          { title: "Intercept yöntemi" },
+          { title: "Zaman – açı ilişkisi", hasContent: true },
+          { title: "Sextant kullanımı", hasContent: true },
+          { title: "Yükseklik düzeltmeleri", hasContent: true },
+          { title: "Ho – Hc kavramı", hasContent: true },
+          { title: "Intercept yöntemi", hasContent: true },
           { title: "Azimut hesapları", hasContent: true },
           { title: "LOP çizimi", hasContent: true },
           { title: "2 LOP ve 3 LOP fix", hasContent: true },
-          { title: "Öğle mevkii (enlem)" },
-          { title: "Zamanla boylam" },
-          { title: "Running fix (göksel)" },
-          { title: "Göksel seyir hata analizi" }
+          { title: "Öğle mevkii (enlem)", hasContent: true },
+          { title: "Zamanla boylam", hasContent: true },
+          { title: "Running fix (göksel)", hasContent: true },
+          { title: "Göksel seyir hata analizi", hasContent: true }
         ]
       },
       {
