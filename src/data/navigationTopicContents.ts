@@ -8077,5 +8077,72 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       "En az iki LOP kesişimi gerekir; paralel LOP’lar güvenilir sonuç vermez.",
       "Çizim tamamen geometriktir ve harita üzerinde uygulanır."
     ]
+  },
+  "2 LOP ve 3 LOP fix": {
+    title: "2 LOP ve 3 LOP Fix (Göksel Seyir)",
+    introduction:
+      "Göksel seyirde tek bir mevki hattı (LOP), geminin yalnızca **olası konum doğrusu**nu verir. Kesin mevki, iki veya üç bağımsız LOP’un birlikte değerlendirilmesiyle geometrik olarak daraltılır. Bu yaklaşım, **tek bir hesap sonucu nokta** değil; **çoklu kısıtların ortak çözümü** olarak fix kavramını tanımlar.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Running fix ve LOP taşıma mantığı](https://easysextant.com/wp-content/uploads/2024/03/running-fix.jpg)
+
+![İki ve üç LOP kesişim örneği](https://www.onboardintelligence.com/CelestialNav/Images/InFix.jpg)
+
+![LOP kesişim geometrisi](https://www.mdpi.com/energies/energies-14-01492/article_deploy/html/images/energies-14-01492-g001-550.jpg)
+
+![Kesişim türleri ve hata etkisi](https://www.researchgate.net/publication/352523373/figure/fig1/AS%3A1038230812102656%401624544923281/Different-types-of-intersections.png)`
+      },
+      {
+        title: "Aşama 1: Birinci LOP’un Kurulması",
+        content:
+          "İlk gök cismi gözleminden elde edilen LOP, harita düzleminde bir doğru olarak çizilir. Bu çizgi, geminin **gözlem anında** bu doğru üzerinde bir yerde olduğunu ifade eder. Ancak tek bir LOP, tek başına kesin mevki vermez."
+      },
+      {
+        title: "Aşama 2: İkinci LOP’un Eklenmesi – 2 LOP Fix",
+        content:
+          "İkinci bir gök cismi gözlemi ile ikinci LOP çizilir. İki LOP’un **kesiştiği nokta**, her iki gözlemin aynı anda doğru olabildiği tek konumdur ve **2 LOP fix** olarak kabul edilir.\n\n" +
+          "Kesişim açısı kritik önemdedir: Açının **dar** olması durumunda küçük ölçüm hataları mevkiyi ciddi şekilde kaydırır. Bu nedenle 2 LOP fix için **dik veya dikliğe yakın** kesişim tercih edilir."
+      },
+      {
+        title: "Aşama 3: Üçüncü LOP’un Eklenmesi – 3 LOP Fix",
+        content:
+          "Üçüncü bir gök cisminden elde edilen LOP eklendiğinde, üç hat çoğu zaman tek noktada kesişmez. Bunun yerine küçük bir üçgen oluşur. Bu üçgen **cocked hat** olarak adlandırılır.\n\n" +
+          "Gemi mevkiinin bu üçgenin içinde olduğu kabul edilir. Üçgenin alanı, gözlemlerin tutarlılığını ve zaman bilgisinin doğruluğunu doğrudan gösterir: **küçük cocked hat** güvenilir fix, **büyük cocked hat** sistematik hata göstergesidir."
+      },
+      {
+        title: "Aşama 4: Zaman Farkı Varsa LOP Taşıma (Running Fix Mantığı)",
+        content:
+          "LOP’lar aynı anda alınmadıysa, ilk LOP **zaman farkı kadar taşınır**. Taşıma, geminin seyri ve hızı kullanılarak yapılır; LOP doğrultusu değişmez, yalnızca **paralel ötelenir**. Taşınmış LOP ile sonraki LOP’un kesişimi, ilgili zamandaki fix’i verir."
+      },
+      {
+        title: "Temel İlişkiler",
+        content: "LOP kesişim ilkesi ve zamanla taşıma mantığı aşağıdaki temel bağıntılarla ifade edilir.",
+        formula: {
+          text: "Fix = LOP₁ ∩ LOP₂",
+          description: "İki LOP’un kesişimi, 2 LOP fix’i verir."
+        }
+      },
+      {
+        title: "Zamana Bağlı Taşıma",
+        content: "Zaman farkı varsa LOP taşıma mesafesi aşağıdaki bağıntı ile bulunur.",
+        formula: {
+          text: "Δs = V × Δt",
+          description: "Δs: taşınan mesafe (NM) | V: hız (knot) | Δt: zaman farkı (saat)"
+        }
+      },
+      {
+        title: "Örnek Uygulama (Görsel Mantıkla)",
+        content:
+          "Saat **09:30**’da birinci gök cisminden LOP çizilsin. Saat **09:35**’te ikinci gök cisminden ikinci LOP çizilsin. İki LOP harita üzerinde **yaklaşık dik** açıyla kesişiyorsa, bu kesişim noktası geminin **09:35 civarındaki 2 LOP fix’idir**.\n\n" +
+          "Aynı zaman aralığında üçüncü gök cisminden bir LOP daha alındığında, üç hat küçük bir üçgen oluşturuyorsa bu **cocked hat**’tir. Üçgenin küçük olması gözlemlerin tutarlı olduğunu; büyük olması ise gözlemlerde veya zaman bilgisinde hata olabileceğini gösterir."
+      }
+    ],
+    keyPoints: [
+      "Tek LOP kesin mevki vermez; en az iki LOP gerekir.",
+      "2 LOP fix’te kesişim açısı ne kadar dikse güvenilirlik o kadar artar.",
+      "3 LOP fix’te oluşan cocked hat, hata büyüklüğünü görsel olarak gösterir.",
+      "Zaman farkı varsa LOP, seyir ve hızla paralel taşınır."
+    ]
   }
 };
