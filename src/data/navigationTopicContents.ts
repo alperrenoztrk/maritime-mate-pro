@@ -8009,28 +8009,38 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
     sections: [
       {
         title: "Görsel Kavramlar",
-        content: `![Ho–Hc geometrisi](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Diagram_showing_GP_distance_%3D_ZD.jpg/500px-Diagram_showing_GP_distance_%3D_ZD.jpg)
+        content: `![GP mesafe ilişkisi](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Diagram_showing_GP_distance_%3D_ZD.jpg/500px-Diagram_showing_GP_distance_%3D_ZD.jpg)
 
-![Intercept yöntemi](https://www.onboardintelligence.com/CelestialNav/Images/astro6.gif)
+![Intercept geometrisi](https://flyandwire.com/wp-content/uploads/2020/12/intercept-geometry-n-p2-definitions-rate-of-closure-tid-as-2.png?w=780)
 
-![Intercept çizimi](https://easysextant.com/wp-content/uploads/2024/05/intercept-1024x885.jpg.webp)
+![Toward / Away yönü](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
 
-![Intercept sight reduction](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Intercept_Sight_Reduction-00.png/330px-Intercept_Sight_Reduction-00.png)`
+![Mevki hattı oluşumu](https://www.myseatime.com/blogadm/wp-content/uploads/2018/03/Position-line-from-intercept-method-concept.jpg)`
       },
       {
-        title: "Ho ve Hc Tanımı",
+        title: "Aşama 1: Varsayılan mevkinin (AP) kurulması",
         content:
-          "Ho, sextant ölçümü ve tüm düzeltmeler uygulandıktan sonra elde edilen **gerçek gözlemsel yüksekliktir**. Hc ise varsayılan mevkiye (assumed position) göre almanak ve tablolarla hesaplanan **teorik yüksekliktir**. Bu iki değer arasındaki fark, gözlemcinin varsayılan mevkiye göre gök cismine olan doğrusal mesafesini verir."
+          "Varsayılan mevki (AP), DR mevkiine yakın bir noktadır ve Hc ile Zn’nin hesaplandığı referans noktadır. Amaç “doğru nokta” olmak değil, **gerçek mevkiye yeterince yakın** olmaktır. Intercept yöntemi bu yakınlık varsayımı üzerine çalışır."
       },
       {
-        title: "Varsayılan Mevki ve Azimut",
+        title: "Aşama 2: Gözlemsel ve teorik yüksekliklerin karşılaştırılması",
         content:
-          "Varsayılan mevki, genellikle DR mevkiine yakın ve tam derece enlem/boylamdan seçilir. Bu tercih, hesap kolaylığı sağlar. Bu noktadan gök cismi için Hc ve azimut bulunur; ardından intercept değeri azimut doğrultusunda haritaya taşınır."
+          "Ho, sextant ölçümü ve tüm düzeltmeler sonrası elde edilen **gerçek gözlemsel yüksekliktir**. Hc, varsayılan mevkiye göre almanak ve tablolarla hesaplanan **teorik yüksekliktir**. Bu iki değer arasındaki fark, geminin varsayılan mevkiye göre gök cismine olan açısal uzaklığını temsil eder."
       },
       {
-        title: "Intercept Bağıntısı",
+        title: "Aşama 3: Intercept mesafesinin elde edilmesi",
         content:
-          "Ho–Hc farkı, deniz mili cinsinden intercept olarak adlandırılır. 1′ yükseklik farkı 1 deniz miline eşittir. İşaret, yönü belirler.",
+          "Ho ile Hc farkı **doğrusal mesafeye** dönüştürülür. Dakika cinsinden bulunan fark, doğrudan deniz mili olarak yorumlanır. Bu aşamada yön bilgisi yoktur; yalnızca “ne kadar” sapma olduğu belirlenir."
+      },
+      {
+        title: "Aşama 4: Yönün belirlenmesi (toward / away)",
+        content:
+          "Ho, Hc’den büyükse gözlemci varsayılan mevkiden **gök cismine daha yakındır** ve taşıma gök cismine doğru yapılır. Ho, Hc’den küçükse gözlemci gök cisminden daha uzaktadır ve taşıma gök cisminden uzağa yapılır."
+      },
+      {
+        title: "Formüller (Intercept yöntemi)",
+        content:
+          "Intercept tanımı ve mesafe yorumu aşağıdaki gibidir. Yön, Ho ile Hc arasındaki işaret üzerinden belirlenir.",
         formula: {
           text: "a = Ho − Hc",
           description: "a: intercept (nm), Ho: düzeltilmiş gözlemsel yükseklik, Hc: hesaplanan teorik yükseklik."
@@ -8042,19 +8052,15 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
         ]
       },
       {
-        title: "Yorum ve Geometrik Mantık",
-        content:
-          "Ho–Hc yöntemi küresel trigonometrinin karmaşıklığını, pratik bir çizim problemine indirger. Ancak yöntem diferansiyel bir yaklaşımdır; varsayılan mevki gerçek mevkiye çok uzak seçilirse doğruluk bozulur. Bu nedenle kısa mesafelerde güvenilir kabul edilir ve pratik seyirde kontrol amacıyla hâlâ kullanılır."
-      },
-      {
-        title: "Örnek Hesap – Intercept Yorumu",
-        content: `Düzeltilmiş gözlemsel yükseklik Ho = 45° 18.0′, varsayılan mevkiye göre hesaplanan teorik yükseklik Hc = 45° 12.5′ olsun.
+        title: "Örnek Uygulama (Intercept yorumu)",
+        content: `Düzeltilmiş gözlemsel yükseklik Ho = 41° 28.0′ olsun.  
+Varsayılan mevkiye göre hesaplanan teorik yükseklik Hc = 41° 21.5′ olsun.
 
 a = Ho − Hc  
-a = 45° 18.0′ − 45° 12.5′  
-a = 5.5′
+a = 41° 28.0′ − 41° 21.5′  
+a = 6.5′
 
-Bu fark **5.5 deniz mili**dir. Ho, Hc’den büyük olduğu için gözlemci varsayılan mevkiden gök cismine doğru 5.5 mil daha yakındır. Harita üzerinde varsayılan mevkiden azimut doğrultusunda 5.5 mil gidilir ve bu noktadan azimuta dik bir doğru çizilerek mevki hattı elde edilir.`
+Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayılan mevkiden gök cismine doğru 6.5 deniz mili daha yakındır. Bu bilgi, Zn doğrultusu ile birleştirildiğinde mevki hattının çizilmesini sağlar.`
       }
     ],
     keyPoints: [
