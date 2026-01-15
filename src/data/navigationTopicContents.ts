@@ -618,6 +618,53 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
         ]
       },
       {
+        title: "Zamanla Boylam — Göksel Seyir (Görsel Aşamalı)",
+        content: `Zamanla boylam tayini, Dünya'nın kendi ekseni etrafındaki dönüşü ile **zaman–açı** ilişkisinin doğrudan kullanılmasına dayanır. Bu yöntemde amaç, **yerel zaman** ile **Greenwich zamanı** arasındaki farktan **boylamı** elde etmektir. Anlatım, hesaplama adımlarını **aşama aşama ve görseller üzerinden** izler.
+
+![Greenwich–yerel meridyen ilişkisi](https://astronavigationdemystified.com/wp-content/uploads/2017/10/diag4-with-greenwich.jpg?w=584)
+
+**Aşama 1: Referans zamanların kurulması**  
+Greenwich meridyeni ve gözlemcinin yerel meridyeni birlikte düşünülür. Greenwich zamanı kronometreden okunur. Yerel zaman ise astronomik bir olaya (çoğunlukla Güneş’in yerel meridyenden geçişi) bağlanır. Burada kritik nokta, yerel zamanın **olaya göre** belirlenmesidir; saat ayarına göre değil.
+
+![Yerel öğle ve kronometre okuması](https://astronavigationdemystified.com/wp-content/uploads/2015/07/gmt-white.jpg)
+
+**Aşama 2: Yerel öğle anının belirlenmesi**  
+Yerel öğle, Güneş’in gün içindeki yüksekliğinin **maksimum** olduğu andır. Bu an, yerel meridyen geçişidir. Aynı anda kronometrede okunan Greenwich zamanı not edilir. Boylam hesabının tek girişi bu zaman farkıdır.
+
+![Zaman farkı → açı dönüşümü](https://www.eso.org/public/outreach/eduoff/seaspace/navigation/navastro/images/nava13a.gif)
+
+**Aşama 3: Zaman farkının açıya çevrilmesi**  
+Dünya 24 saatte 360° döndüğü için zaman doğrudan açıya çevrilebilir. Bu aşamada trigonometrik hesap yoktur; yalnızca **sabit dönüşüm** kullanılır.
+
+![Doğu–batı yorum kuralı](https://www.thestargarden.co.uk/Images/Longitude-time-zones.jpg)
+
+**Aşama 4: Doğu–batı yorumunun yapılması**  
+Yerel olay Greenwich’ten **daha erken** gerçekleşmişse gözlemci **doğu** boylamındadır; **daha geç** gerçekleşmişse **batı** boylamındadır. Bu yorum yapılmadan bulunan açı tek başına anlamlı değildir.
+
+**Formüller (zamanla boylam — ders uyumlu)**  
+360° = 24 saat  
+1 saat = 15°  
+1 dakika zaman = 15′  
+1 saniye zaman = 15″  
+**Boylam bağıntısı:** λ = Δt × 15°
+
+**İşaret kuralı**  
+Yerel zaman Greenwich’ten ileri → **Doğu boylam**  
+Yerel zaman Greenwich’ten geri → **Batı boylam**
+
+**Örnek uygulama (görsel mantıkla)**  
+Yerel öğle anında kronometrede okunan Greenwich zamanı **09:48:00** olsun. Yerel öğle, yerel saatle **12:00:00** kabul edilir.
+
+Δt = 12:00:00 − 09:48:00 = **2 saat 12 dakika**  
+2 saat × 15° = 30°  
+12 dakika × 15′ = 180′ = 3°  
+**λ = 33°**
+
+Yerel olay Greenwich’ten **daha geç** gerçekleştiği için boylam **batıdır**. Sonuç: Gemi yaklaşık **33° Batı boylamındadır**.
+
+Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etkilidir. Ancak birkaç saniyelik zaman hatasının dahi mil mertebesinde boylam hatası üretebildiği unutulmamalıdır; bu nedenle sonuçlar diğer göksel verilerle birlikte kontrol edilmelidir.`
+      },
+      {
         title: "Boylam Değişimi ve Departure",
         content: "Bir gemi doğuya veya batıya hareket ettiğinde boylam değişimi (Difference of Longitude – DLo) meydana gelir. Boylam değişimi doğrudan mesafeyle ölçülemez, çünkü meridyenler kutuplara yaklaştıkça yaklaşır.",
         image: boylamDeparture,
