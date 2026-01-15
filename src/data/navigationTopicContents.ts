@@ -8016,6 +8016,98 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       "Küresel üçgen bağıntısı, ölçülen yükseklikten mevki hesaplarının temelini oluşturur."
     ]
   },
+  "Running fix (göksel)": {
+    title: "Running fix (göksel)",
+    introduction:
+      "Running fix, göksel seyirde **aynı anda elde edilemeyen mevki hatlarının (LOP)** geminin hareketi dikkate alınarak **aynı zamana taşınması** esasına dayanır. Farklı zamanlarda yapılan gözlemler tek zaman düzleminde birleştirilerek fix elde edilir. Gök cismi sayısının sınırlı olduğu veya hava koşulları nedeniyle eşzamanlı gözlemin mümkün olmadığı durumlarda pratik bir çözümdür.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://easysextant.com/wp-content/uploads/2024/03/running-fix.jpg)
+
+![Image](https://easysextant.com/wp-content/uploads/2024/08/The-process-of-transferring-a-line-of-position.jpg.webp)
+
+![Image](https://www.navsoft.com/assets/images/Transferred_Position_Line.png)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2013/09/diag44mod-new.jpg)
+
+---
+
+### Aşama 1: İlk LOP’un elde edilmesi (t₁)
+
+İlk gözlem anında (t₁) elde edilen LOP, geminin t₁ anında bulunabileceği tüm noktaları temsil eder. Bu aşamada henüz fix yoktur ve LOP kendi zamanına aittir.
+
+---
+
+### Aşama 2: Zaman farkının ve gemi hareketinin belirlenmesi
+
+t₁ ile ikinci gözlem zamanı t₂ arasındaki zaman farkı (Δt) ve geminin bu süredeki seyri hesaplanır. Gemi hızının sabit, rotanın değişmediği kabulü yapılır. Bu kabul zayıfsa running fix’in güvenilirliği düşer.
+
+---
+
+### Aşama 3: İlk LOP’un taşınması (transported LOP)
+
+t₁ anına ait LOP, geminin seyir doğrultusunda ve kat edilen mesafe kadar **paralel** olarak ötelenir. Bu işlem LOP’un yönünü değiştirmez; yalnızca konumunu t₂ zamanına taşır.
+
+⬛ **Kullanılan ilişki**
+
+════════════════════
+Δs = V × Δt
+════════════════════
+
+---
+
+### Aşama 4: İkinci LOP ile kesişim — running fix
+
+t₂ anında elde edilen ikinci LOP çizilir. Bu LOP ile taşınmış ilk LOP’un kesişim noktası, geminin t₂ anındaki mevkiidir. Bu nokta running fix’tir.
+
+---
+
+### Formüller (ders uyumlu)
+
+⬛ **Taşınan mesafe**
+
+════════════════════
+Δs = V × Δt
+════════════════════
+
+* Δs: taşınan mesafe (deniz mili)
+* V: gemi hızı (knot)
+* Δt: zaman farkı (saat)
+
+⬛ **Taşınmış LOP ilkesi**
+
+Taşınan LOP, orijinal LOP’a **paralel** kalır.
+
+---
+
+### Örnek Uygulama (görsel mantıkla)
+
+Birinci gök cismi gözlemi saat **08:20**’de yapılmış ve bir LOP elde edilmiştir. İkinci gözlem saat **08:50**’de farklı bir gök cisminden yapılmıştır. Gemi hızı **12 knot**, rota sabit kabul edilsin.
+
+⬛ **Zaman farkı**
+
+════════════════════
+Δt = 30 dakika = 0.5 saat
+════════════════════
+
+⬛ **Taşınan mesafe**
+
+════════════════════
+Δs = 12 × 0.5
+Δs = 6 deniz mili
+════════════════════
+
+Saat 08:20’de elde edilen LOP, geminin seyir doğrultusunda **6 deniz mili** paralel ötelenir. Saat 08:50’de elde edilen ikinci LOP ile kesişim noktası, geminin **08:50’deki running fix** mevkiidir.
+
+---
+
+### Kullanım Notu
+
+Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değişimi varsa ya da DR disiplini zayıfsa sonuç güvenilir kabul edilmez. Bu nedenle yöntem, mümkün olduğunda eşzamanlı LOP’larla elde edilen fix’lerin yerine değil, **tamamlayıcı** olarak kullanılmalıdır.`
+      }
+    ]
+  },
   "LOP çizimi": {
     title: "Mevki Hattı (LOP) Çizimi",
     introduction:
