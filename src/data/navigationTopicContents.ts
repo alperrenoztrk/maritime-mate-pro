@@ -8070,6 +8070,63 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       "Varsayılan mevki gerçek mevkiye yakın seçilmezse yöntem doğruluk kaybeder."
     ]
   },
+  "Azimut hesapları": {
+    title: "Azimut hesapları (göksel seyir — trigonometrisiz, görsel mantık)",
+    introduction:
+      "Azimut, gök cisminin **gerçek kuzeye göre doğrultusudur** ve Zn ile gösterilir. Göksel seyirde azimut, intercept mesafesinin hangi doğrultuda taşınacağını ve LOP’un hangi yönde çizileceğini belirleyen tek yön bilgisidir. Azimut **rota değildir**, seyir yönü değildir; yalnızca **gök cismine bakış doğrultusudur**.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Azimut geometrisi](https://www.onboardintelligence.com/CelestialNav/Images/astro2.gif)
+
+![Göksel üçgen gösterimi](https://ars.els-cdn.com/content/image/1-s2.0-S0038092X13002612-fx1.jpg)
+
+![Zn yerleşimi (PZX üçgeni)](https://astronavigationdemystified.com/wp-content/uploads/2013/07/diag22nonum.jpeg)
+
+![Zn ve LOP ilişkisi](https://astronavigationdemystified.com/wp-content/uploads/2013/07/diag-23-mod-pzx.jpeg?w=584)`
+      },
+      {
+        title: "Aşama 1: Girdilerin hazırlanması (AP merkezli)",
+        content:
+          "Azimut hesabı **her zaman varsayılan mevkiye (AP)** göre yapılır. Gerekli bilgiler: gök cisminin **deklinasyonu (δ)**, gözlemcinin **enlemi (φ)** ve gök cisminin **yerel saat açısı (LHA)**. Bu üç bilgi, astronomik almanak ve zaman–açı ilişkisi üzerinden bulunur; bu aşamada henüz yön çizimi yapılmaz."
+      },
+      {
+        title: "Aşama 2: Tablodan Zn’nin okunması (Sight Reduction mantığı)",
+        content:
+          "AP merkezli soyut göksel üçgen pratikte **Sight Reduction Tables (HO-249/HO-229)** ile çözülür. Tablolar, verilen φ, δ ve LHA için **Hc** (teorik yükseklik) ve **Zn** (azimut) değerlerini **doğrudan** verir. Bu aşamada trigonometrik işlem yapılmaz; Zn **okunan** bir değerdir."
+      },
+      {
+        title: "Aşama 3: Doğu–batı kontrolü (Zn’nin yerleştirilmesi)",
+        content:
+          "Gök cisminin **doğuda mı batıda mı** olduğu bilgisi LHA’dan gelir. Tablodan okunan azimut açısı, bu bilgiye göre **gerçek kuzeyden saat yönünde** yerleştirilir.\n\n- **LHA 0°–180° → gök cismi batıda**\n- **LHA 180°–360° → gök cismi doğuda**\n\nZn’nin yanlış yarımküreye yerleştirilmesi, azimut hatalarının en yaygın nedenidir."
+      },
+      {
+        title: "Aşama 4: Zn’nin LOP ile ilişkilendirilmesi",
+        content:
+          "Zn doğrultusu çizilir; bunun **LOP’un kendisi olmadığı** özellikle vurgulanır. LOP, Zn’ye **dik** çizilir. Böylece azimutun görevi tamamlanır: Zn yalnızca **yön referansı** sağlar.",
+        formula: {
+          text: "LOP doğrultusu = Zn ± 90°",
+          description: "LOP, azimut doğrultusuna dik çizilir."
+        }
+      },
+      {
+        title: "Formüller (ders uyumlu, trigonometrisiz)",
+        content:
+          "Saat açısı ilişkisi:\n\n- **LHA = GHA ± λ**\n\nYarımküre kontrolü:\n\n- **LHA 0°–180° → batı**\n- **LHA 180°–360° → doğu**"
+      },
+      {
+        title: "Örnek uygulama (tablo mantığıyla Zn yorumu)",
+        content:
+          "Varsayılan mevki enlemi **36° N** olsun. Gök cisminin deklinasyonu **12° N** ve **LHA = 245°** olsun. Sight Reduction Tables kullanılarak bu değerler için **Zn = 118°** okunmuş olsun.\n\nLHA 180°’den büyük olduğu için gök cismi **doğudadır**. Zn, gerçek kuzeyden saat yönünde **118°** olarak yerleştirilir. Harita üzerinde AP’den 118° doğrultusunda bir bakış doğrultusu çizilir. LOP, bu doğrultuya **dik** olarak çizilecektir.\n\nAzimut doğru hesaplanıp doğru yarımkürede yerleştirilmediği sürece, intercept mesafesi doğru olsa bile mevki hattı yanlış konumlanır. Bu nedenle göksel seyirde azimut, **hesaptan çok yorum disiplini** gerektirir."
+      }
+    ],
+    keyPoints: [
+      "Azimut, gök cisminin gerçek kuzeye göre bakış doğrultusudur; rota değildir.",
+      "Zn, Sight Reduction Tables ile doğrudan okunur; trigonometrik işlem gerekmez.",
+      "LHA, Zn’nin doğu/batı yarımkürede doğru yerleştirilmesinin ana kontrolüdür.",
+      "LOP, Zn doğrultusuna dik çizilir; azimut yalnızca yön referansıdır."
+    ]
+  },
   "Büyük Daire Vertex (En Yüksek Enlem) Hesaplamaları": {
     title: "Büyük Daire Vertex (En Yüksek Enlem) Hesaplamaları",
     introduction:
