@@ -297,6 +297,63 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       "Toplam bağıntı Ho = Hs ± IE − Dip − R ± SD ± P şeklindedir."
     ]
   },
+  "Sextant kullanımı": {
+    title: "Sextant kullanımı (göksel seyir — aşama aşama)",
+    introduction:
+      "Sextant kullanımı, göksel seyirde tek fiziksel ölçüm adımıdır. Yapılan tüm hesaplar, çizimler ve fix işlemleri, sextant ile ölçülen yükseklik açısına dayanır. Bu nedenle sextant kullanımı bir “alet tanıtımı” değil, ölçüm disiplini olarak ele alınmalıdır. Aşağıdaki anlatım, hesaplamaya girmeden önce yapılan işlemleri görsel aşamalar üzerinden açıklar.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://future-seafarer.com/wp-content/uploads/2017/09/sextent_with_parts.jpg)
+
+![Image](https://easysextant.com/wp-content/uploads/2022/10/Hv-anglais.jpg.webp)
+
+![Image](https://ik.imagekit.io/nnxh9whs7ca/wp-content/uploads/2015/11/Using-Sextant.jpg)
+
+![Image](https://www.prosmarine.com/wp-content/uploads/2017/07/how-to-adjust-marine-sextant-errors.jpg)`
+      },
+      {
+        title: "Aşama 1: Sextantın geometrik mantığının kurulması",
+        content:
+          "Sextantın iki aynası (indeks aynası ve ufuk aynası) ve teleskop, gök cisminin görüntüsünü ufuk düzlemiyle çakıştırmak için kullanılır. Sextant, gök cisminin görüntüsünü aynalar yardımıyla ufukla çakıştırarak aradaki açıyı ölçer. Ölçülen açı, gök cisminin ufka göre yüksekliğidir; burada ölçülen şey mesafe değil açıdır."
+      },
+      {
+        title: "Aşama 2: İndeks hatasının kontrol edilmesi (ölçüm öncesi)",
+        content:
+          "Ufuk–ufuk veya Güneş–Güneş yöntemiyle indeks hatası kontrol edilir. Sextant sıfırdayken görüntüler tam çakışmıyorsa, ölçülen tüm yükseklikler sistematik hata içerir. Bu kontrol her gözlem serisinden önce yapılır ve sonuç not edilir. İndeks hatası düzeltilmeden yapılan gözlem, sonraki tüm aşamaları geçersiz kılar."
+      },
+      {
+        title: "Aşama 3: Gök cisminin ufukla çakıştırılması",
+        content:
+          "Sextant dik tutulur, teleskoptan bakılarak gök cisminin görüntüsü yavaşça ufka indirilir. Amaç, gök cisminin alt kenarının ufka tam temas ettiği anı yakalamaktır. Gemi hareketli olduğu için bu işlem birkaç salınım içinde yapılır ve ortalama alınır."
+      },
+      {
+        title: "Aşama 4: Alet yüksekliğinin okunması (Hs)",
+        content:
+          "Ölçüm tamamlandığında sextanttan okunan değer alet yüksekliği (Hs) olarak adlandırılır. Hs henüz geometrik bir yükseklik değildir. Bu aşamada ölçüm tamamlanır; hesaplama henüz başlamaz. Ölçüm anına ait zaman bilgisi (UTC) bu noktada kronometreden not edilir."
+      },
+      {
+        title: "Temel ilişkiler (bağlam)",
+        content:
+          "Bu aşamada yalnızca Hs ve IE (indeks hatası) elde edilir; diğer terimler sonraki başlıklara aittir.",
+        formula: {
+          text: "Ho = Hs ± IE − Dip − R ± SD ± P",
+          description: "Düzeltilmiş yükseklik bağıntısı. Hs sextanttan okunan değerdir."
+        }
+      },
+      {
+        title: "Örnek uygulama (görsel mantıkla ölçüm süreci)",
+        content:
+          "Güneş gözlemi yapılırken sextant dik tutulur. İndeks kolu hareket ettirilerek Güneş’in alt kenarı ufka temas ettirilir. Gemi dalga nedeniyle yukarı–aşağı hareket ederken temas anları birkaç kez gözlenir ve ortalama bir temas noktası seçilir. Ölçüm tamamlandığında sextanttan **Hs = 46° 12.4′** okunur ve aynı anda kronometreden gözlem zamanı kaydedilir. Bu değer henüz mevki tayini değildir; sextant kullanımı burada biter. Bundan sonra yapılan tüm işlemler bu ölçümün düzeltmeye ve yoruma tabi tutulmasıdır. Sextant doğru kullanılmadığında, hesaplar ne kadar düzgün yapılırsa yapılsın sonuç güvenilir olmaz."
+      }
+    ],
+    keyPoints: [
+      "Sextant ölçümü, göksel seyirde tek fiziksel ölçüm adımıdır",
+      "İndeks hatası kontrolü her gözlem serisinden önce yapılır",
+      "Alt kenarın ufka temas ettiği an yakalanır ve salınımlardan ortalama alınır",
+      "Okunan değer Hs’dir; hesaplama bundan sonra başlar"
+    ]
+  },
   "Öğle mevkii (enlem)": {
     title: "Öğle mevkii (enlem)",
     introduction:
