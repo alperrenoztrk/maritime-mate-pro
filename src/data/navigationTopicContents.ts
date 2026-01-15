@@ -8019,40 +8019,41 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
   "LOP çizimi": {
     title: "Mevki Hattı (LOP) Çizimi",
     introduction:
-      "Mevki hattı (Line of Position – LOP), bir gök cismi gözlemine dayanarak gözlemcinin bulunabileceği tüm noktaları temsil eden geometrik bir doğrudur. Ho–Hc farkı ile elde edilen intercept mesafesi, yalnızca doğrusal bir uzaklıktır; bu uzaklığın hangi doğrultuda ve hangi referansa göre taşınacağı mevki hattı çizimiyle anlam kazanır. Mevki hattı, varsayılan mevkiden gök cismine çizilen azimut doğrultusuna diktir.",
+      "LOP çizimi, gök cismi gözleminden elde edilen açısal bilginin geometrik sonuca dönüştürülmesidir. Bu işlem düzlem seyir değildir; harita yalnızca sonuçların aktarıldığı yüzeydir. Esas olan, varsayılan mevki ile gök cismi doğrultusu arasındaki geometrik ilişkidir.",
     sections: [
       {
         title: "Görsel Referanslar",
-        content: `![Mevki hattı şeması](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/11/fullsizerender-70.jpg?fit=835%2C1200&ssl=1)
+        content: `![Güneşe doğru/uzak yön](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
 
-![Güneşe doğru/uzak yön](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
+![Mevki hattı şeması](https://i0.wp.com/astrolabesailing.com/wp-content/uploads/2016/11/fullsizerender-70.jpg?fit=835%2C1200&ssl=1)
 
 ![Zenit uzaklığı ve LOP](https://www.myseatime.com/blogadm/wp-content/uploads/2017/09/celestial-position-line-from-zenith-distance.jpg)
 
 ![Azimut ve LOP ilişkisi](https://easysextant.com/wp-content/uploads/2024/11/line-of-position-and-point-GP-2.jpg.webp)`
       },
       {
-        title: "Harita Üzerinde Çizim Mantığı",
+        title: "Aşama 1: Varsayılan Mevkinin (AP) Gösterilmesi",
         content:
-          "Çizim işlemi harita üzerinde gerçekleştirilir ve tamamen geometriktir. Önce varsayılan mevki işaretlenir. Bu noktadan, hesaplanan azimut doğrultusunda bir doğru çizilir. Intercept mesafesi bu doğru üzerinde, Ho–Hc ilişkisine göre gök cismine doğru veya gök cisminden uzağa taşınır. Elde edilen yeni noktadan, azimut doğrultusuna dik bir doğru çizilir. Bu doğru, gözlem anındaki mevki hattıdır.",
-        bulletPoints: [
-          "Varsayılan mevki işaretlenir.",
-          "Azimut doğrultusunda bir çizgi oluşturulur.",
-          "Intercept mesafesi, Ho–Hc işaretine göre doğru üzerinde taşınır.",
-          "Yeni noktadan azimuta dik çizgi çizilir → LOP."
-        ]
+          "İlk görselde yalnızca soyut bir enlem–boylam ızgarası ve varsayılan mevki yer alır. Bu nokta, DR mevkiine yakın ve tam derece koordinatlardan seçilmiş referans noktadır. Burada herhangi bir rota, kıyı veya seyir hattı anlamı yoktur. AP yalnızca hesaplanan Hc ve Zn’nin geçerli olduğu geometrik merkezdir."
       },
       {
-        title: "Intercept Mesafesi",
-        content: "Intercept mesafesi, ölçülen ve hesaplanan yükseklik farkının deniz mili cinsinden karşılığıdır. 1′ = 1 deniz mili kabul edilir.",
+        title: "Aşama 2: Gök Cismi Doğrultusunun (Zn) Kurulması",
+        content:
+          "İkinci görselde AP’den başlayan tek bir doğrultu çizilir. Bu doğrultu Zn’dir ve gök cismine bakış doğrultusunu temsil eder. Zn bir rota değildir, geminin gittiği yön değildir. Bu doğru yalnızca “gök cismi bu yöndedir” bilgisini taşır; gerçek kuzeye göre ölçülen bir doğrultudur."
+      },
+      {
+        title: "Aşama 3: Ho − Hc Farkının Geometrik Taşınması",
+        content:
+          "Üçüncü görselde, Ho ile Hc arasındaki fark yalnızca bir mesafe olarak ele alınır. 1′ = 1 deniz mili kabul edilir. Bu mesafe, Zn doğrultusu üzerinde taşınır. Ho > Hc ise gök cismine doğru; Ho < Hc ise gök cisminden uzağa ilerlenir. Bu aşamada hâlâ LOP yoktur; yalnızca AP’den ne kadar ve hangi yönde sapma olduğu belirlenir.",
         formula: {
-          text: "d = |Ho − Hc|",
-          description: "d: deniz mili cinsinden intercept mesafesi."
+          text: "a = Ho − Hc",
+          description: "1′ = 1 deniz mili."
         }
       },
       {
-        title: "Mevki Hattının Yön İlişkisi",
-        content: "Mevki hattı, gök cismine bakış doğrultusuna dik olduğundan azimut doğrultusuna 90° açı yapar.",
+        title: "Aşama 4: Mevki Hattının (LOP) Ortaya Çıkışı",
+        content:
+          "Dördüncü görselde, intercept ile ulaşılan noktadan Zn doğrultusuna dik bir doğru çizilir. Bu doğru LOP’tur. Bu hat, gözlem anında bulunulabilecek tüm noktaları temsil eder; gemi bu hat üzerinde bir yerdedir.",
         formula: {
           text: "LOP doğrultusu = Zn ± 90°",
           description: "Zn: gök cisminin azimut doğrultusu."
