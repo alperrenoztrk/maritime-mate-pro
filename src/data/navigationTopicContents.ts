@@ -8606,4 +8606,301 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       "Zaman farkı varsa LOP, seyir ve hızla paralel taşınır."
     ]
   },
+  "Intercept yöntemi": {
+    title: "Intercept Yöntemi (St. Hilaire Metodu)",
+    introduction:
+      "Intercept yöntemi, modern göksel seyirde en yaygın kullanılan mevki tayini tekniğidir. 19. yüzyılın sonunda Fransız subay Marcq St. Hilaire tarafından geliştirilen bu yöntem, gözlem ile hesaplama arasındaki farkı geometrik olarak yorumlayarak mevki hattı (LOP) elde etmeyi sağlar. Yöntemin gücü, doğrudan mesafe veya açı hesabı yapmadan, yalnızca 'ne kadar sapma var?' sorusunu yanıtlamasıdır.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Intercept geometrisi](https://www.onboardintelligence.com/CelestialNav/Images/astro2.gif)
+
+![Toward / Away kuralı](https://easysextant.com/wp-content/uploads/2024/05/towards-or-away-from-the-sun-677x1024.jpg.webp)
+
+![Intercept ve LOP ilişkisi](https://www.myseatime.com/blogadm/wp-content/uploads/2018/03/Position-line-from-intercept-method-concept.jpg)
+
+![St. Hilaire metodu adımları](https://flyandwire.com/wp-content/uploads/2020/12/intercept-geometry-n-p2-definitions-rate-of-closure-tid-as-2.png?w=780)`
+      },
+      {
+        title: "Yöntemin Temel Mantığı",
+        content:
+          "Intercept yöntemi şu basit soruyu yanıtlar: Varsayılan mevkiye (AP) göre hesaplanan teorik yükseklik (Hc) ile gerçekte gözlenen yükseklik (Ho) arasındaki fark nedir? Bu fark, gözlemcinin AP'den gök cismine olan doğrusal uzaklığını verir. Yöntem, doğrudan mevki vermez; ancak mevkinin üzerinde olması gereken bir doğru (LOP) tanımlar.",
+        bulletPoints: [
+          "AP, DR mevkiine yakın seçilen varsayılan mevkidir",
+          "Hc, AP'ye göre hesaplanan teorik yüksekliktir",
+          "Ho, sextant ölçümü ve düzeltmeler sonrası elde edilen gözlemsel yüksekliktir",
+          "Intercept, Ho ile Hc arasındaki farktır ve doğrudan deniz miline dönüşür"
+        ]
+      },
+      {
+        title: "Adım 1: Varsayılan Mevki (AP) Seçimi",
+        content:
+          "AP seçimi, yöntemin başarısı için kritiktir. AP genellikle DR mevkiinin yakınında, hesaplamayı kolaylaştırmak için **tam derece enlem ve tam dakika boylam** olarak seçilir. Bunun nedeni, Sight Reduction Tablolarının (HO-249, HO-229) tam derece girişleri kabul etmesidir.",
+        bulletPoints: [
+          "DR mevkii 35° 42.5′ N, 028° 17.3′ E ise → AP: 36° 00′ N, 028° 00′ E seçilebilir",
+          "AP ile gerçek mevki arasındaki fark tipik olarak 30-60 NM'den az tutulmalıdır",
+          "Çok uzak AP seçimi, yöntemin geometrik doğruluğunu azaltır"
+        ]
+      },
+      {
+        title: "Adım 2: GHA, LHA ve Deklinasyon Hesabı",
+        content:
+          "Gözlem anının UTC zamanı ve Nautical Almanac kullanılarak gök cisminin Greenwich Hour Angle (GHA) ve Declination (Dec) değerleri bulunur. LHA, AP boylamı kullanılarak hesaplanır.",
+        formula: {
+          text: "LHA = GHA ± λ",
+          description: "Doğu boylamda (+), Batı boylamda (−). Sonuç 0°–360° arasına normalize edilir."
+        }
+      },
+      {
+        title: "Adım 3: Sight Reduction ile Hc ve Zn Bulunması",
+        content:
+          "HO-249 veya HO-229 tabloları kullanılarak, AP enlemi (φ), gök cismi deklinasyonu (δ) ve LHA değerleri ile teorik yükseklik (Hc) ve azimut (Zn) okunur. Bu aşamada trigonometrik hesap gerekmez; tablolar doğrudan değer verir.",
+        bulletPoints: [
+          "Tabloya giriş: φ (AP enlemi), δ (deklinasyon), LHA",
+          "Tablondan çıkış: Hc (hesaplanan yükseklik), Zn (azimut)",
+          "İnterpolasyon gerekebilir (dakika değerleri için)"
+        ]
+      },
+      {
+        title: "Adım 4: Intercept (a) Hesabı",
+        content:
+          "Sextant ölçümü düzeltildikten sonra elde edilen Ho ile tablolardan bulunan Hc karşılaştırılır. Fark, intercept değerini verir.",
+        formula: {
+          text: "a = Ho − Hc",
+          description: "a: intercept (dakika cinsinden, 1′ = 1 NM). Pozitif ise toward, negatif ise away."
+        }
+      },
+      {
+        title: "Adım 5: Toward / Away Kuralı",
+        content:
+          "Intercept'in yönü, geminin AP'ye göre gök cismine olan konumunu belirler. Bu kural, LOP çizimi için zorunludur.",
+        bulletPoints: [
+          "**Ho > Hc (a > 0)**: Gemi, AP'den gök cismine **daha yakındır** → TOWARD (gök cismine doğru)",
+          "**Ho < Hc (a < 0)**: Gemi, AP'den gök cisminden **daha uzaktadır** → AWAY (gök cisminden uzağa)",
+          "Hafıza kuralı: **HoMoTo** (Ho More, Toward) veya **Coast Guard Academy: 'Computed Greater Away'**"
+        ]
+      },
+      {
+        title: "Adım 6: LOP Çizimi",
+        content:
+          "Harita üzerinde AP işaretlenir. Zn doğrultusunda intercept mesafesi kadar ilerlenir (toward ise gök cismine doğru, away ise uzağa). Ulaşılan noktadan Zn'ye dik bir doğru çizilir. Bu doğru LOP'tur.",
+        formula: {
+          text: "LOP doğrultusu = Zn ± 90°",
+          description: "LOP her zaman azimut doğrultusuna diktir."
+        }
+      },
+      {
+        title: "Tam Hesap Örneği",
+        content: `**Gözlem Verileri:**
+- UTC: 10:24:35
+- DR mevkii: 36° 42′ N, 029° 18′ E
+- Sextant ölçümü (Hs): 41° 23.4′
+- Göz yüksekliği: 12 m
+- İndeks hatası: +1.2′
+
+**Adım 1 – AP Seçimi:**
+AP: 37° N, 029° E
+
+**Adım 2 – Düzeltilmiş Yükseklik (Ho):**
+- Dip = 1.76 × √12 = 6.1′
+- Refraksiyon ≈ 1.2′
+- SD = +16′ (Güneş alt kenar)
+
+Ho = 41° 23.4′ + 1.2′ − 6.1′ − 1.2′ + 16′ = **41° 33.3′**
+
+**Adım 3 – Almanak ve Sight Reduction:**
+- GHA Güneş (10:24 UTC): 335° 42.5′
+- Dec Güneş: 12° 15.3′ N
+- LHA = 335° 42.5′ + 29° = 364° 42.5′ → **4° 42.5′**
+
+HO-249 tablosu: φ = 37°, δ = 12°, LHA = 5° için:
+- **Hc = 41° 26.8′**
+- **Zn = 118°**
+
+**Adım 4 – Intercept:**
+a = Ho − Hc = 41° 33.3′ − 41° 26.8′ = **+6.5′ = 6.5 NM TOWARD**
+
+**Adım 5 – LOP Çizimi:**
+AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° doğrultusunda LOP çizilir.`
+      },
+      {
+        title: "Yaygın Hatalar ve Önlemler",
+        content:
+          "Intercept yöntemi uygulamasında sık karşılaşılan hatalar ve bunlardan kaçınma yolları:",
+        bulletPoints: [
+          "**Yanlış AP seçimi**: AP'nin DR mevkiinden çok uzak olması geometrik hatayı artırır",
+          "**LHA hesap hatası**: Doğu/Batı boylam işareti karıştırılması sık görülür",
+          "**Toward/Away karışıklığı**: İşaret hatasının farkına varılmadan çizilen LOP tamamen yanlış konumlanır",
+          "**İnterpolasyon ihmali**: Tablolarda ara değer alınmaması Hc'yi birkaç dakika kaydırabilir",
+          "**Zn yarımküre hatası**: Doğu/Batı yarımküre kontrolü yapılmadan azimut yanlış yerleştirilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Intercept yöntemi, Ho ile Hc farkını geometrik mesafeye çevirir (1′ = 1 NM).",
+      "AP, tam derece değerlerle seçilerek tablo kullanımı kolaylaştırılır.",
+      "Toward/Away kuralı LOP yönünü belirler: Ho > Hc → gök cismine doğru.",
+      "LOP, azimut doğrultusuna dik çizilir; intercept mesafesi bu doğrultuda taşınır.",
+      "HO-249 veya HO-229 tabloları trigonometrik hesap ihtiyacını ortadan kaldırır."
+    ]
+  },
+  "Göksel seyir hata analizi": {
+    title: "Göksel Seyir Hata Analizi",
+    introduction:
+      "Göksel seyirde mevki tayini, birden fazla gözlem ve hesap adımının birleşimidir. Sextant ölçümünden başlayarak zaman, almanak, düzeltmeler ve çizim aşamalarına kadar her adımda yapılan küçük hatalar, nihai mevkide belirgin sapmalara yol açar. Hata analizi, hangi kaynakların mevki güvenilirliğini ne ölçüde etkilediğini anlamak ve bu etkileri minimize etmek için gereklidir. Profesyonel denizcilik pratiğinde, bir fix'in güvenilirliği yalnızca LOP kesişimiyle değil, hata kaynaklarının sistematik değerlendirilmesiyle belirlenir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Cocked hat ve hata üçgeni](https://www.mdpi.com/energies/energies-14-01492/article_deploy/html/images/energies-14-01492-g001-550.jpg)
+
+![LOP kesişim açılarının etkisi](https://www.researchgate.net/publication/352523373/figure/fig1/AS%3A1038230812102656%401624544923281/Different-types-of-intersections.png)
+
+![Hata elipsi kavramı](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Error_ellipse.svg/400px-Error_ellipse.svg.png)
+
+![Zaman-boylam hata ilişkisi](https://astronavigationdemystified.com/wp-content/uploads/2015/09/nonum-diag26.jpg)`
+      },
+      {
+        title: "Hata Türleri: Sistematik ve Rastgele",
+        content:
+          "Göksel seyirde hatalar iki ana kategoriye ayrılır. Bu ayrım, hatanın kaynağını ve düzeltme yöntemini belirler.",
+        bulletPoints: [
+          "**Sistematik hatalar**: Her gözlemde aynı yönde ve benzer büyüklükte tekrarlayan hatalardır. Örnek: Kalibre edilmemiş sextant, yanlış indeks hatası, hatalı kronometr.",
+          "**Rastgele hatalar**: Ölçümden ölçüme değişen, tahmin edilemeyen hatalardır. Örnek: Gemi salınımı sırasında tepe yakalama, ufuk belirsizliği, atmosferik bozulmalar.",
+          "Sistematik hatalar **tespit edilip düzeltilebilir**; rastgele hatalar yalnızca **çoklu gözlemle azaltılabilir**."
+        ]
+      },
+      {
+        title: "Zaman Hatası ve Boylam Etkisi",
+        content:
+          "Kronometredeki zaman hatası, boylam hesabını doğrudan etkiler. Dünya dakikada 15′ açı döndüğünden, zaman hatası geometrik olarak boylam hatasına dönüşür. Bu ilişki, göksel seyirdeki en kritik hata kaynaklarından biridir.",
+        formula: {
+          text: "Δλ = Δt × 15′/dakika",
+          description: "4 saniye zaman hatası ≈ 1′ boylam hatası ≈ 1 NM (ekvatorda)"
+        },
+        bulletPoints: [
+          "4 saniye zaman hatası → ekvatorda ~1 deniz mili boylam kayması",
+          "1 dakika zaman hatası → ekvatorda ~15 deniz mili boylam kayması",
+          "Yüksek enlemlerde boylam hatası azalır (cos φ etkisi)",
+          "Kronometr kontrolü ve UTC senkronizasyonu zorunludur"
+        ]
+      },
+      {
+        title: "Sextant Ölçüm Hataları",
+        content:
+          "Sextant ile yapılan ölçümler, alet kaynaklı ve gözlemci kaynaklı hatalar içerir. Bu hatalar düzeltilmediğinde veya yanlış düzeltildiğinde, Ho değeri dakikalar mertebesinde sapabilir.",
+        bulletPoints: [
+          "**İndeks hatası (IE)**: Kontrol edilmeden yapılan gözlem sistematik olarak yanlıştır. Her seans öncesi kontrol zorunludur.",
+          "**Göz yüksekliği tahmini**: Dip düzeltmesinde yanlış değer kullanımı. Her metre hata ≈ 0.5′ etki yaratır.",
+          "**Tepe yakalama hatası**: Gemi salınımında yanlış an seçimi, 2-5′ hata yaratabilir.",
+          "**Paralaks ve ufuk belirsizliği**: Düşük yüksekliklerde ufuk seçimi zorlaşır."
+        ]
+      },
+      {
+        title: "Yükseklik Düzeltme Hataları",
+        content:
+          "Her düzeltme adımı potansiyel bir hata kaynağıdır. Sıra ve işaret hataları, kümülatif olarak birikir.",
+        bulletPoints: [
+          "**Dip düzeltmesi**: Göz yüksekliği yanlış tahmin edilirse Dip değeri hatalı olur",
+          "**Refraksiyon**: Standart atmosfer varsayımı her zaman geçerli değildir. Aşırı sıcak/soğuk havada ek düzeltme gerekir",
+          "**SD (Yarıçap)**: Güneş/Ay kenar seçiminde hata, ±16′ sapma yaratır",
+          "**Paralaks**: Özellikle Ay gözlemlerinde ihmal edilemez"
+        ],
+        formula: {
+          text: "1′ yükseklik hatası ≈ 1 NM mevki hatası",
+          description: "Yükseklik ile mevki arasında doğrudan ilişki vardır."
+        }
+      },
+      {
+        title: "LOP Kesişim Geometrisi ve Hata Büyütmesi",
+        content:
+          "İki veya daha fazla LOP'un kesişim açısı, fix güvenilirliğini doğrudan etkiler. Dar açılı kesişimler, küçük ölçüm hatalarını büyük mevki hatalarına dönüştürür.",
+        bulletPoints: [
+          "**90° kesişim (ideal)**: Hatalar minimum büyütülür, en güvenilir fix",
+          "**60°-120° kesişim**: Kabul edilebilir güvenilirlik",
+          "**30°'den dar kesişim**: Hata büyütmesi ciddi, fix güvenilmez",
+          "**Paralel LOP'lar**: Kesişim noktası belirsiz, pratik değeri yoktur"
+        ],
+        formula: {
+          text: "Hata büyütme faktörü ≈ 1 / sin(kesişim açısı)",
+          description: "30° kesişimde hata 2 kat, 15° kesişimde hata ~4 kat büyür."
+        }
+      },
+      {
+        title: "Cocked Hat (Hata Üçgeni) Analizi",
+        content:
+          "Üç LOP'un bir noktada kesişmemesi normaldir. Oluşan üçgen, 'cocked hat' olarak adlandırılır ve hata büyüklüğünün görsel göstergesidir.",
+        bulletPoints: [
+          "**Küçük cocked hat** (< 2 NM kenar): Gözlemler tutarlı, fix güvenilir",
+          "**Orta cocked hat** (2-5 NM kenar): Kabul edilebilir, ancak dikkatli yorumlanmalı",
+          "**Büyük cocked hat** (> 5 NM kenar): Sistematik hata işareti, gözlemler kontrol edilmeli",
+          "Üçgen büyüklüğü, zaman bilgisi veya gözlemlerdeki hatayı gösterir"
+        ]
+      },
+      {
+        title: "Most Probable Position (MPP)",
+        content:
+          "Cocked hat oluştuğunda, geminin en olası konumu (MPP) belirlenir. MPP, üçgenin geometrik merkezi olmayabilir; LOP güvenilirliklerine göre ağırlıklı ortalama alınır.",
+        bulletPoints: [
+          "Tüm LOP'lar eşit güvenilirlikte ise: MPP, üçgenin ağırlık merkezidir (centroid)",
+          "Bir LOP daha güvenilir ise: MPP, o LOP'a daha yakın konumlanır",
+          "Tehlike yakınında: MPP, tehlikeye en yakın noktada varsayılır (emniyet prensibi)",
+          "Pratikte en kötü durum senaryosu tercih edilir"
+        ]
+      },
+      {
+        title: "Sayısal Örnek: Hata Analizi",
+        content: `**Senaryo:**
+- Üç yıldızdan gözlem alındı
+- Kronometr hatası: ±2 saniye
+- Sextant okunuşunda tahmin edilen hata: ±0.5′
+- LOP kesişim açıları: 60°, 75°, 45°
+
+**Zaman Kaynaklı Hata:**
+Δt = 2 s → Δλ ≈ 0.5′ → ~0.5 NM (ekvatorda)
+
+**Yükseklik Kaynaklı Hata:**
+0.5′ yükseklik hatası → ~0.5 NM mevki hatası
+
+**Kesişim Geometrisi Etkisi:**
+En dar açı 45° → Hata büyütme faktörü ≈ 1.4
+0.5 NM × 1.4 ≈ 0.7 NM
+
+**Tahmini Toplam Hata:**
+Cocked hat boyutu: ~1-2 NM beklenir
+Bu senaryoda fix güvenilirdir.`
+      },
+      {
+        title: "Hata Minimizasyonu İçin Pratik Öneriler",
+        content:
+          "Göksel seyirde hata kaynaklarını azaltmak için sistematik bir yaklaşım gereklidir.",
+        bulletPoints: [
+          "**Kronometr kontrolü**: Her gözlem serisinden önce UTC doğrulaması yapılmalı",
+          "**İndeks hatası kontrolü**: Her gözlem seansında ufuk-ufuk veya Güneş-Güneş yöntemiyle kontrol",
+          "**Çoklu gözlem**: En az 3, tercihen 5-7 gözlem ortalaması alınmalı",
+          "**Gök cismi seçimi**: 60°-120° azimut farkı olan cisimler tercih edilmeli",
+          "**Twilight kullanımı**: Yıldız gözlemleri için ufuk görünürlüğü kritik",
+          "**Hesap çapraz kontrolü**: Farklı yöntemlerle (tablo + hesap makinesi) doğrulama"
+        ]
+      },
+      {
+        title: "Emniyet Prensibi",
+        content:
+          "Belirsizlik durumunda, seyir emniyeti her zaman önceliklidir. Fix'in güvenilirliği sorgulandığında, tehlikeye en yakın yorumlama yapılmalıdır.",
+        bulletPoints: [
+          "Cocked hat tehlikeye yakınsa: MPP tehlike tarafında varsayılır",
+          "Büyük hata üçgeni: Fix'e güvenilmemeli, ek gözlem alınmalı",
+          "Tek LOP: Riskli bölgelerde kesinlikle tek LOP'a güvenilmemeli",
+          "Prensip: 'Şüphe durumunda emniyet tarafında kal'"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Sistematik hatalar tespit edilip düzeltilebilir; rastgele hatalar çoklu gözlemle azaltılır.",
+      "4 saniye zaman hatası ≈ 1 NM boylam hatası (ekvatorda).",
+      "1′ yükseklik hatası ≈ 1 NM mevki hatası.",
+      "LOP kesişim açısı 90°'ye ne kadar yakınsa fix o kadar güvenilirdir.",
+      "Cocked hat büyüklüğü, gözlem tutarlılığının görsel göstergesidir.",
+      "MPP, tehlike yakınında en kötü senaryoya göre belirlenir."
+    ]
+  },
 };
