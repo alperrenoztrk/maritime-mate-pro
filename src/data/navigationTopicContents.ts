@@ -297,6 +297,84 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       "Toplam bağıntı Ho = Hs ± IE − Dip − R ± SD ± P şeklindedir."
     ]
   },
+  "Öğle mevkii (enlem)": {
+    title: "Öğle mevkii (enlem)",
+    introduction:
+      "Öğle mevkii, Güneş’in yerel meridyenden geçişi anında yapılan tek gözlemle enlemin doğrudan bulunmasını sağlar. Bu yöntem LOP üretmez; yerel öğlede Güneş’in en büyük yüksekliği temel alınır ve zenit uzaklığı üzerinden enlem hesaplanır.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2018/09/ship-position-by-sun-sight.jpg)
+
+![Image](https://easysextant.com/wp-content/uploads/2025/09/L-D-alpha.jpg.webp)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2015/07/altitude-and-zenith-distance.jpg)
+
+![Image](https://www.onboardintelligence.com/CelestialNav/Images/astro2.gif)`
+      },
+      {
+        title: "Aşama 1: Yerel öğle anının tespiti",
+        content:
+          "Güneş’in yükselip alçaldığı yay izlenir; **yerel öğle**, yüksekliğin **en büyük** olduğu andır. Bu an, saat bilgisine göre değil, **yüksekliğin maksimuma ulaştığı nokta** olarak belirlenir. Boylam bu aşamada gerekli değildir."
+      },
+      {
+        title: "Aşama 2: En büyük yükseklikten Ho’nun elde edilmesi",
+        content:
+          "Sextant ile ölçülen en büyük yükseklik, tüm düzeltmeler (IE, dip, refraksiyon, SD, paralaks) uygulanarak **Ho (düzeltilmiş yükseklik)** değerine çevrilir. Öğle mevkiinde Ho, Güneş’in meridyendeki gerçek yüksekliğini temsil eder."
+      },
+      {
+        title: "Aşama 3: Zenit uzaklığının (Z) kurulması",
+        content:
+          "Ho değeri, gözlemcinin zenit noktasına göre açısal uzaklığa çevrilir. Zenit uzaklığı, Güneş ile zenit arasındaki geometrik mesafedir.",
+        formula: {
+          text: "Z = 90° − Ho",
+          description: "Z: zenit uzaklığı, Ho: düzeltilmiş gözlemsel yükseklik."
+        }
+      },
+      {
+        title: "Aşama 4: Enlemin belirlenmesi (kuzey/güney yorumu)",
+        content:
+          "Güneş’in **deklinasyonu (δ)** ve zenit uzaklığı birlikte yorumlanır. Güneş gözlemcinin **kuzeyinde** veya **güneyinde** meridyenden geçer; bu durum işaret kuralını belirler ve enlem doğrudan elde edilir.",
+        formula: {
+          text: "φ = Z ± δ",
+          description: "φ: enlem | Z: zenit uzaklığı | δ: deklinasyon."
+        },
+        bulletPoints: [
+          "Güneş ve gözlemci **aynı yarımkürede** → φ = Z + δ",
+          "Güneş ve gözlemci **karşı yarımkürede** → φ = Z − δ"
+        ]
+      },
+      {
+        title: "Formül Özeti (Trigonometrisiz Uygulama)",
+        content:
+          "Öğle mevkii yöntemi, yalnızca Ho ve δ ile çalışır; küresel trigonometri gerektirmez. Bu nedenle hızlı enlem kontrolü sağlar.",
+        bulletPoints: [
+          "Z = 90° − Ho",
+          "φ = Z ± δ (işaret yorumu meridyen geçiş yönüne göre yapılır)"
+        ]
+      },
+      {
+        title: "Örnek Uygulama",
+        content: `Yerel öğle anında **Ho = 63° 20.0′** ölçülsün.
+
+Z = 90° − 63° 20.0′ = **26° 40.0′**
+
+Astronomik tablodan Güneş deklinasyonu **δ = 18° 10.0′ N** olsun. Güneş meridyende **güneyde** geçiyorsa (kuzey yarımkürede klasik durum):
+
+φ = Z − δ  
+φ = 26° 40.0′ − 18° 10.0′  
+φ = **08° 30.0′ N**
+
+Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulunduğunu gösterir. Öğle mevkii, açık denizde hızlı ve güvenilir bir enlem kontrolü sağlar; ancak bulutlu havada ve Güneş’in meridyene net çıkmadığı koşullarda operasyonel olarak zayıflar.`
+      }
+    ],
+    keyPoints: [
+      "Öğle mevkii, Güneş’in meridyenden geçiş anındaki en büyük yükseklikte yapılır.",
+      "Ho’dan zenit uzaklığı bulunur: Z = 90° − Ho.",
+      "Enlem, φ = Z ± δ bağıntısıyla doğrudan elde edilir.",
+      "İşaret yorumu, Güneş’in gözlemciye göre kuzeyde mi güneyde mi geçtiğine göre belirlenir."
+    ]
+  },
   "Coğrafi koordinat sistemi": {
     title: "Coğrafi Koordinat Sistemi: Enlem ve Boylam",
     introduction: "Seyirde mevki tayini, Dünya üzerindeki herhangi bir noktanın enlem (latitude) ve boylam (longitude) değerleriyle ifade edilmesine dayanır. Bu iki açı, Dünya'nın merkezinden ölçülen küresel koordinatlardır ve tüm seyir hesaplarının ortak dilidir.",
