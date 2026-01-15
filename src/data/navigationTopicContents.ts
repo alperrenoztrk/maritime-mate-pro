@@ -8702,8 +8702,8 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
 AP: 37° N, 029° E
 
 **Adım 2 – Düzeltilmiş Yükseklik (Ho):**
-- Dip = 1.76 × √12 = 6.1′
-- Refraksiyon ≈ 1.2′
+- Dip (12 m göz yüksekliği için tablo değeri): 6.1′
+- Refraksiyon (tablo değeri): 1.2′
 - SD = +16′ (Güneş alt kenar)
 
 Ho = 41° 23.4′ + 1.2′ − 6.1′ − 1.2′ + 16′ = **41° 33.3′**
@@ -8821,8 +8821,8 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
           "**Paralel LOP'lar**: Kesişim noktası belirsiz, pratik değeri yoktur"
         ],
         formula: {
-          text: "Hata büyütme faktörü ≈ 1 / sin(kesişim açısı)",
-          description: "30° kesişimde hata 2 kat, 15° kesişimde hata ~4 kat büyür."
+          text: "Dar açılı kesişim → Hata büyür | Dik açılı kesişim → Hata minimize",
+          description: "30° kesişimde hata yaklaşık 2 kat, 15° kesişimde hata yaklaşık 4 kat büyür."
         }
       },
       {
