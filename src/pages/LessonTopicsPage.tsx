@@ -166,7 +166,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Yükseklik düzeltmeleri" },
           { title: "Ho – Hc kavramı" },
           { title: "Intercept yöntemi" },
-          { title: "Azimut hesapları" },
+          { title: "Azimut hesapları", hasContent: true },
           { title: "LOP çizimi", hasContent: true },
           { title: "2 LOP ve 3 LOP fix", hasContent: true },
           { title: "Öğle mevkii (enlem)" },
