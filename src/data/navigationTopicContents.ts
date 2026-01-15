@@ -807,6 +807,60 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       "Göksel seyirde boylam, zaman gözlemi ile bulunur"
     ]
   },
+  "Zamanla boylam": {
+    title: "Zamanla Boylam Tayini",
+    introduction:
+      "Zamanla boylam tayini, Dünya’nın kendi ekseni etrafındaki dönüşü ile zaman arasındaki sabit ilişkiye dayanır. Yerel meridyenden geçen bir gök cisminin zamanı ile Greenwich meridyenindeki aynı olayın zamanı karşılaştırıldığında, iki meridyen arasındaki açısal fark doğrudan boylamı verir. Bu yöntem, göksel seyirde zaman bilgisinin neden merkezi bir rol oynadığını açık biçimde ortaya koyar.",
+    sections: [
+      {
+        title: "Temel İlke: Dünya Dönüşü ve Zaman",
+        content:
+          "Dünya 24 saatte 360° döndüğü için zaman farkı doğrudan boylam farkına karşılık gelir. Bu sabit oran, kronometre zamanını yerel zamanla karşılaştırarak boylam bulmayı mümkün kılar.",
+        image: boylamTimeZones,
+        imageAlt: "Boylam ve zaman dilimleri ilişkisi",
+        bulletPoints: ["24 saat = 360° dönüş", "1 saat = 15°", "1 dakika zaman = 15′", "1 saniye zaman = 15″"],
+        formula: {
+          text: "λ = Δt × 15°",
+          description: "Δt, Greenwich zamanı ile yerel zaman arasındaki farktır."
+        }
+      },
+      {
+        title: "Yerel Zaman ve Greenwich Zamanı",
+        content:
+          "Yerel zaman, gök cisminin yerel meridyenden geçişine (yerel öğle) veya belirli bir saat açısına göre belirlenir. Greenwich zamanı ise kronometre ile okunur. İki zaman arasındaki fark doğrudan boylamı verir; işaret, doğu veya batı yönünü belirler.",
+        image: boylamLocalNoon,
+        imageAlt: "Yerel öğle, Greenwich zamanı ve boylam ilişkisi",
+        bulletPoints: ["Yerel zaman Greenwich’ten ileri ise → Doğu boylamı", "Yerel zaman Greenwich’ten geri ise → Batı boylamı"]
+      },
+      {
+        title: "Hata Kaynakları ve Uygulama Disiplini",
+        content:
+          "Zamanla boylam yöntemi teorik olarak nettir; ancak pratikte kronometre hatası, gözlem anının yanlış tespiti ve düzeltilmiş yükseklik hataları boylam sonucunu doğrudan etkiler. Bu nedenle yöntem, açık denizde kontrol amaçlı güvenilir bir araç olmakla birlikte, tek başına dar alan seyri için yeterli emniyeti sağlamaz.",
+        image: boylamCelestial,
+        imageAlt: "Göksel seyirde kronometre disiplini"
+      },
+      {
+        title: "Örnek Hesap: Zaman Farkından Boylam",
+        content:
+          "Yerel meridyenden Güneş geçişi anı yerel saatle 12:00 olarak belirlensin. Aynı anda kronometrede okunan Greenwich zamanı 09:40 olsun. Zaman farkı 2 saat 20 dakika olduğundan boylam yaklaşık 35° bulunur ve yerel zaman Greenwich’ten ileri olduğundan sonuç doğu boylamıdır.",
+        bulletPoints: [
+          "Δt = 12:00 − 09:40 = 2 saat 20 dakika",
+          "20 dakika = 0.333 saat → Δt = 2.333 saat",
+          "λ = 2.333 × 15° ≈ 35.0° Doğu"
+        ],
+        formula: {
+          text: "1 saat = 15° | 1 dakika = 15′ | 1 saniye = 15″",
+          description: "Zaman farkı doğrudan boylam farkına çevrilir."
+        }
+      }
+    ],
+    keyPoints: [
+      "Boylam, yerel zaman ile Greenwich zamanı farkından bulunur",
+      "1 saat zaman farkı = 15° boylam",
+      "Yerel zaman ileri ise doğu, geri ise batı boylamı kabul edilir",
+      "Zaman hatası doğrudan boylam hatasına dönüşür"
+    ]
+  },
   "Departure (Doğu–batı mesafesi)": {
     title: "Departure (Doğu–Batı Mesafesi)",
     introduction:
