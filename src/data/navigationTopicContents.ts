@@ -8195,6 +8195,74 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       "Küresel üçgen bağıntısı, ölçülen yükseklikten mevki hesaplarının temelini oluşturur."
     ]
   },
+  "Zaman – açı ilişkisi": {
+    title: "Zaman – Açı İlişkisi (Göksel Seyir)",
+    introduction:
+      "Zaman–açı ilişkisi, göksel seyirde yapılan tüm hesapların temel dayanağıdır. Dünya’nın kendi ekseni etrafındaki düzenli dönüşü, zamanı doğrudan açısal bir büyüklüğe dönüştürür. Göksel seyirde mesafe değil açı ölçülür; zaman bilgisi bu açının anahtarıdır.",
+    sections: [
+      {
+        title: "Aşama 1: Dünya’nın dönüşünün kurulması",
+        content:
+          "Dünya 24 saatte bir tam tur yapar. Bu tam tur, 360°’lik açısal bir harekettir. Göksel seyirde zaman hesabı, bu fiziksel gerçeğin üzerine kurulur.",
+        image: earthRotation,
+        imageAlt: "Dünya'nın ekseni etrafındaki dönüşü"
+      },
+      {
+        title: "Aşama 2: Zamanın açısal karşılığının gösterilmesi",
+        content:
+          "360°’lik dönüş 24 saate bölündüğünde, her saatlik zaman farkının gök küresi üzerinde belirli bir açısal kaymaya karşılık geldiği görülür. Burada yalnızca oran vardır; trigonometrik bir ilişki yoktur.",
+        image: earthTimezone1,
+        imageAlt: "Zaman dilimleri ve açısal kayma ilişkisi"
+      },
+      {
+        title: "Aşama 3: Greenwich meridyeni ve yerel meridyen",
+        content:
+          "Greenwich meridyeni sabit referans kabul edilir. Gök cisimlerinin konumu **Greenwich Saat Açısı (GHA)** ile, gözlemcinin meridyenine göre konumu ise **Yerel Saat Açısı (LHA)** ile ifade edilir. İki meridyen arasındaki açısal fark boylamdır.",
+        image: boylamMeridians,
+        imageAlt: "Greenwich ve yerel meridyen ilişkisi"
+      },
+      {
+        title: "Aşama 4: Zaman farkının boylam ve saat açısına dönüşmesi",
+        content:
+          "Greenwich zamanı ile yerel zaman arasındaki fark, gök cisminin konumunu değiştirir. Bu fark, hem boylam tayininde hem de Hc ve azimut hesaplarının girişinde kullanılır. Böylece **zaman farkı → açısal fark → konum değişimi** zinciri açıkça kurulmuş olur.",
+        image: longitudeTime1,
+        imageAlt: "Zaman farkının boylam ve saat açısına dönüşümü"
+      },
+      {
+        title: "Formüller (ders uyumlu)",
+        content:
+          "Dünya dönüşü: **360° = 24 saat**\n\n" +
+          "Dönüşümler:\n" +
+          "- **1 saat = 15°**\n" +
+          "- **1 dakika zaman = 15′**\n" +
+          "- **1 saniye zaman = 15″**\n\n" +
+          "Saat açısı ilişkisi:\n" +
+          "- **LHA = GHA ± λ**\n\n" +
+          "Doğu boylamları çıkarma, batı boylamları ekleme işaretiyle alınır.",
+        formula: {
+          text: "360° = 24 saat → 1 saat = 15° → 1 dakika = 15′ → 1 saniye = 15″ | LHA = GHA ± λ",
+          description: "Zaman–açı dönüşümleri ve saat açısı ilişkisi"
+        }
+      },
+      {
+        title: "Örnek uygulama (görsel mantıkla)",
+        content:
+          "Kronometrede okunan Greenwich zamanı ile yerel gözlem zamanı arasında **2 saat 20 dakika** fark olsun.\n\n" +
+          "**Saat karşılığı:** 2 saat × 15° = **30°**\n\n" +
+          "**Dakika karşılığı:** 20 dakika × 15′ = **300′ = 5°**\n\n" +
+          "**Toplam açısal fark:** **35°**\n\n" +
+          "Bu değer, gözlemcinin Greenwich meridyenine göre **35° boylam farkında** olduğunu gösterir. Yerel zaman Greenwich’ten ilerideyse boylam doğu, gerideyse batı olarak yorumlanır.",
+        image: longitudeTime2,
+        imageAlt: "Zaman farkının açısal karşılığı ile boylam hesaplama"
+      }
+    ],
+    keyPoints: [
+      "Dünya’nın düzenli dönüşü, zamanı doğrudan açısal bir büyüklüğe dönüştürür.",
+      "Göksel seyirde temel ilişki: 1 saat = 15° ve bu oran tüm saat açısı hesaplarının merkezidir.",
+      "GHA, LHA ve boylam arasındaki işaret ilişkisi doğru kurulmadan hesap güvenilir olmaz.",
+      "Zaman hatası saniye mertebesinde bile mevkii mil mertebesinde kaydırabilir."
+    ]
+  },
   "Running fix (göksel)": {
     title: "Running fix (göksel)",
     introduction:
