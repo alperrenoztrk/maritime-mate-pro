@@ -168,7 +168,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Intercept yöntemi" },
           { title: "Azimut hesapları" },
           { title: "LOP çizimi", hasContent: true },
-          { title: "2 LOP ve 3 LOP fix" },
+          { title: "2 LOP ve 3 LOP fix", hasContent: true },
           { title: "Öğle mevkii (enlem)" },
           { title: "Zamanla boylam" },
           { title: "Running fix (göksel)" },
