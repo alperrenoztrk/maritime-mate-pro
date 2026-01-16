@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -25,10 +25,13 @@ import {
   Trophy,
   Flame,
   Star,
-  Zap
+  Zap,
+  BarChart3,
+  User
 } from "lucide-react";
 
 import { StabilityQuiz } from "@/components/stability/StabilityQuiz";
+import { QuizStatsDashboard } from "@/components/quiz/QuizStatsDashboard";
 import { stabilityQuestions } from "@/data/stabilityQuestions";
 import { navigationQuestions } from "@/data/navigationQuestions";
 import { safetyQuestions } from "@/data/safetyQuestions";
@@ -37,6 +40,8 @@ import { seamanshipQuestions } from "@/data/seamanshipQuestions";
 import { machineQuestions } from "@/data/machineQuestions";
 import { meteorologyQuestions } from "@/data/meteorologyQuestions";
 import { createSeededRng, pickRandomUnique } from "@/utils/random";
+import { useQuizStats } from "@/hooks/useQuizStats";
+import { supabase } from "@/integrations/supabase/client";
 import type { QuizQuestion } from "@/types/quiz";
 
 // Exam module configuration
@@ -213,6 +218,27 @@ export default function ExamPreparationPage() {
   const [quizActive, setQuizActive] = useState(false);
   const [lastScore, setLastScore] = useState<{ score: number; total: number } | null>(null);
   const [seed, setSeed] = useState<number>(Date.now());
+  const [userId, setUserId] = useState<string | undefined>(undefined);
+  const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
+  const quizStartTime = useRef<number>(0);
+
+  // Auth check
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUserId(session?.user?.id);
+    };
+    checkAuth();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUserId(session?.user?.id);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Quiz stats hook
+  const { saveQuizResult, refresh: refreshStats } = useQuizStats(userId);
 
   // Calculate total questions
   const totalQuestions = useMemo(() => {
@@ -228,6 +254,8 @@ export default function ExamPreparationPage() {
     const selected = pickRandomUnique(module.questions, Math.min(count, module.questions.length), rng);
     setQuizQuestions(selected);
     setSelectedModule(moduleId);
+    setSelectedAnswers({});
+    quizStartTime.current = Date.now();
     setQuizActive(true);
   };
 
@@ -242,6 +270,8 @@ export default function ExamPreparationPage() {
     const selected = pickRandomUnique(allQuestions, Math.min(preset.count, allQuestions.length), rng);
     setQuizQuestions(selected);
     setSelectedPreset(presetId);
+    setSelectedAnswers({});
+    quizStartTime.current = Date.now();
     setQuizActive(true);
   };
 
@@ -272,11 +302,45 @@ export default function ExamPreparationPage() {
 
     setQuizQuestions(selected.slice(0, exam.totalQuestions));
     setSelectedOfficerExam(examId);
+    setSelectedAnswers({});
+    quizStartTime.current = Date.now();
     setQuizActive(true);
   };
 
-  const handleQuizComplete = (score: number, total: number) => {
+  const handleQuizComplete = async (score: number, total: number, answers: { [key: number]: number }) => {
     setLastScore({ score, total });
+    setSelectedAnswers(answers);
+
+    // Save to database if user is logged in
+    if (userId) {
+      const moduleId = selectedModule || selectedPreset || selectedOfficerExam || 'mixed';
+      const examType = selectedModule ? 'module' : selectedPreset ? 'preset' : 'officer';
+      const examName = selectedModule 
+        ? examModules.find(m => m.id === selectedModule)?.title || 'Quiz'
+        : selectedPreset
+          ? examPresets.find(p => p.id === selectedPreset)?.title || 'Sınav'
+          : selectedOfficerExam
+            ? deckOfficerExams.find(e => e.id === selectedOfficerExam)?.title || 'Zabit Sınavı'
+            : 'Quiz';
+
+      const timeSpent = Math.round((Date.now() - quizStartTime.current) / 1000);
+
+      try {
+        await saveQuizResult(
+          moduleId,
+          examType as 'module' | 'preset' | 'officer',
+          examName,
+          score,
+          total,
+          quizQuestions,
+          answers,
+          timeSpent
+        );
+        refreshStats();
+      } catch (err) {
+        console.error('Failed to save quiz result:', err);
+      }
+    }
   };
 
   const resetQuiz = () => {
@@ -387,7 +451,7 @@ export default function ExamPreparationPage() {
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="modules" className="gap-2">
               <BookOpen className="h-4 w-4" />
               Modüller
@@ -400,7 +464,16 @@ export default function ExamPreparationPage() {
               <Award className="h-4 w-4" />
               Zabit Sınavları
             </TabsTrigger>
+            <TabsTrigger value="stats" className="gap-2">
+              <BarChart3 className="h-4 w-4" />
+              İstatistikler
+            </TabsTrigger>
           </TabsList>
+
+          {/* Stats Tab */}
+          <TabsContent value="stats" className="space-y-4 mt-4">
+            <QuizStatsDashboard userId={userId} />
+          </TabsContent>
 
           {/* Modules Tab */}
           <TabsContent value="modules" className="space-y-4 mt-4">

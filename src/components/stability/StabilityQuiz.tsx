@@ -8,7 +8,7 @@ import type { QuizQuestion } from '@/types/quiz';
 
 interface QuizProps {
   questions: QuizQuestion[];
-  onComplete?: (score: number, totalQuestions: number) => void;
+  onComplete?: (score: number, totalQuestions: number, selectedAnswers: { [key: number]: number }) => void;
 }
 
 export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
@@ -67,7 +67,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
   const finishQuiz = () => {
     setQuizCompleted(true);
     const score = calculateScore();
-    onComplete?.(score, totalQuestions);
+    onComplete?.(score, totalQuestions, selectedAnswers);
   };
 
   const resetQuiz = () => {
