@@ -14,6 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
+      quiz_results: {
+        Row: {
+          completed_at: string
+          created_at: string
+          exam_name: string
+          exam_type: string | null
+          id: string
+          module_id: string
+          percentage: number | null
+          question_results: Json
+          score: number
+          time_spent_seconds: number | null
+          total_questions: number
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          created_at?: string
+          exam_name: string
+          exam_type?: string | null
+          id?: string
+          module_id: string
+          percentage?: number | null
+          question_results?: Json
+          score: number
+          time_spent_seconds?: number | null
+          total_questions: number
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          created_at?: string
+          exam_name?: string
+          exam_type?: string | null
+          id?: string
+          module_id?: string
+          percentage?: number | null
+          question_results?: Json
+          score?: number
+          time_spent_seconds?: number | null
+          total_questions?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_category_stats: {
+        Row: {
+          category: string
+          correct_answers: number
+          id: string
+          last_attempt_at: string | null
+          total_questions: number
+          updated_at: string
+          user_id: string
+          wrong_answers: number
+        }
+        Insert: {
+          category: string
+          correct_answers?: number
+          id?: string
+          last_attempt_at?: string | null
+          total_questions?: number
+          updated_at?: string
+          user_id: string
+          wrong_answers?: number
+        }
+        Update: {
+          category?: string
+          correct_answers?: number
+          id?: string
+          last_attempt_at?: string | null
+          total_questions?: number
+          updated_at?: string
+          user_id?: string
+          wrong_answers?: number
+        }
+        Relationships: []
+      }
       user_generated_components: {
         Row: {
           category: Database["public"]["Enums"]["component_category"] | null
