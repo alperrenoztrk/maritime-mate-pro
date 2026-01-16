@@ -128,6 +128,7 @@ import MachineFormulasPage from "./pages/MachineFormulas";
 import MachineQuizPage from "./pages/MachineQuiz";
 import MachineRulesPage from "./pages/MachineRules";
 import RegulationDetailPage from "./pages/RegulationDetailPage";
+import ExamPreparationPage from "./pages/ExamPreparationPage";
 
 import WidgetPage from "./pages/WidgetPage";
 import MaritimeNews from "./pages/MaritimeNews";
@@ -288,6 +289,7 @@ const AnimatedRoutes = () => {
         <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
         <Route path="/sunrise-times" element={<PageTransition><SunriseTimes /></PageTransition>} />
         <Route path="/location-selector" element={<PageTransition><LocationSelector /></PageTransition>} />
+        <Route path="/exam-preparation" element={<PageTransition><ExamPreparationPage /></PageTransition>} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
     </AnimatePresence>
