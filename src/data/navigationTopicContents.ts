@@ -227,8 +227,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dip Düzeltmesi",
         content: "Göz yüksekliği arttıkça görülen ufuk düşer; bu nedenle dip her zaman çıkarılır.",
         formula: {
-          text: "Dip değeri, göz yüksekliğine göre hazır tablolardan okunur",
-          description: "Örnek tablo değerleri: 4 m → 3.5′, 8 m → 5.0′, 12 m → 6.1′, 16 m → 7.0′, 20 m → 7.9′. Sonuç her zaman çıkarılır."
+          text: "Dip = 1.76 × √h",
+          description: "h: göz yüksekliği (metre). Sonuç dakikadır ve çıkarma işaretiyle uygulanır."
         }
       },
       {
@@ -236,8 +236,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Atmosfer ışığı kırarak gök cismini olduğundan daha yüksek gösterir. Bu nedenle refraksiyon her zaman çıkarılır. Basit yaklaşım:",
         formula: {
-          text: "Refraksiyon değeri, yükseklik açısına göre tablolardan okunur",
-          description: "Örnek tablo değerleri: 10° → 5.3′, 20° → 2.6′, 30° → 1.7′, 45° → 1.0′, 60° → 0.6′. Düşük yüksekliklerde değer büyür."
+          text: "R ≈ 1 / tan h",
+          description: "R dakikadır, h gözlenen yükseklik açısıdır. Düşük yüksekliklerde hata büyür."
         }
       },
       {
@@ -251,8 +251,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
           "Paralaks: özellikle Ay’da belirgindir"
         ],
         formula: {
-          text: "Paralaks değeri Nautical Almanac tablolarından okunur",
-          description: "Ay için HP (yatay paralaks) yaklaşık 54′–61′ arasındadır. Güneş paralaksı ihmal edilebilir düzeydedir (< 0.15′)."
+          text: "P = HP × cos h",
+          description: "HP yatay paralakstır; h gözlenen yüksekliktir."
         }
       },
       {
@@ -269,11 +269,15 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
 
 Dip düzeltmesi:
 
-Göz yüksekliği 16 m için tablodan → Dip = **7.0′**
+Dip = 1.76 × √16  
+Dip = 1.76 × 4  
+Dip = **7.0′**
 
 Atmosferik refraksiyon:
 
-Yükseklik yaklaşık 27° için tablodan → R ≈ **2.0′**
+h ≈ 27°  
+tan 27° ≈ 0.509  
+R ≈ 1 / 0.509 ≈ **2.0′**
 
 Yarıçap düzeltmesi:
 
@@ -551,8 +555,8 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
           "Kutuplarda 1° boylam = 0 deniz mili"
         ],
         formula: {
-          text: "Departure = DLong × (enlem için düzeltme faktörü)",
-          description: "Düzeltme faktörü enlem tablosundan okunur. Örnek: 0° → 1.00, 30° → 0.87, 45° → 0.71, 60° → 0.50. Bu ilişki düzlem seyirde departure kavramını temel alır."
+          text: "Departure = DLong × cos(Lat)",
+          description: "Bu formül düzlem seyirde departure kavramını ve orta enlem seyirde boylam hesaplarını temel alır"
         }
       }
     ],
@@ -561,7 +565,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       "Boylam: Greenwich'e olan açısal uzaklık (0°–180° D/B)",
       "1 dakika enlem = 1 deniz mili (sabit)",
       "15° boylam = 1 saat zaman farkı",
-      "Boylam mesafesi enlemle birlikte değişir: Departure tablosundan okunur"
+      "Boylam mesafesi enlemle birlikte değişir: Dep = DLong × cos(Lat)"
     ]
   },
   "Enlem": {
@@ -636,22 +640,22 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
         image: enlemPlaneSailing,
         imageAlt: "Düzlem seyir ve enlem değişimi formülleri",
         bulletPoints: [
-          "DLat = Mesafe × (kurs için düzeltme faktörü - tablodan)",
+          "DLat = Mesafe × cos(kurs)",
           "Bu ifade, geminin gerçek hareketinin kuzey–güney bileşenini verir",
           "Düzlem seyirde temel hesaplama formülüdür"
         ],
         formula: {
-          text: "DLat değeri, Traverse Table veya düzlem seyir tablolarından okunur",
-          description: "Örnek: 120 NM mesafe, 030° kurs için tablodan → DLat ≈ 104′"
+          text: "DLat = Mesafe × cos(Kurs)",
+          description: "Örnek: 120 NM mesafe, 030° kurs → DLat = 120 × cos(30°) ≈ 103.9′"
         }
       },
       {
         title: "Örnek – Enlem Değişimi Hesabı",
         content: "Başlangıç enlemi 36°20′N, kurs 030° ve mesafe 120 deniz mili olan bir gemi için yeni enlem hesaplanabilir.",
         bulletPoints: [
-          "DLat tablodan okunur: 030° kurs, 120 NM → DLat ≈ 104′",
-          "DLat ≈ 1°44′",
-          "Yeni enlem: 36°20′ + 1°44′ = 38°04′N"
+          "DLat = 120 × cos(30°) = 120 × 0.866 ≈ 103.9′",
+          "DLat ≈ 1°43.9′",
+          "Yeni enlem: 36°20′ + 1°43.9′ = 38°03.9′N"
         ]
       },
       {
@@ -807,17 +811,17 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
           "Bu nedenle seyirde departure kavramı kullanılır"
         ],
         formula: {
-          text: "Departure tablodan okunur (enlem düzeltme faktörü ile)",
-          description: "Düzeltme faktörü: 0° → 1.00, 30° → 0.87, 40° → 0.77, 60° → 0.50. Bu ilişki düzlem ve orta enlem seyirde kullanılır."
+          text: "Departure = DLong × cos(Lat)",
+          description: "Bu ilişki düzlem seyirde, orta enlem seyirde ve akıntılı seyir hesaplarında kullanılır"
         }
       },
       {
         title: "Örnek – Boylam Değişimi Hesabı",
         content: "Ortalama enlem 40°N ve departure 90 deniz mili (doğuya) olan bir gemi için boylam değişimi hesaplanabilir.",
         bulletPoints: [
-          "40° enlem için düzeltme faktörü tablodan → 0.77",
-          "DLo = Departure / 0.77 = 90 / 0.77 ≈ 117′",
-          "DLo ≈ 1°57′ Doğu boylam"
+          "cos 40° ≈ 0.766",
+          "DLo = Departure / cos(enlem) = 90 / 0.766 ≈ 117.5′",
+          "DLo ≈ 1°57.5′ Doğu boylam"
         ]
       },
       {
@@ -857,7 +861,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       "Boylam, Greenwich'e olan açısal uzaklıktır (0°–180° D/B)",
       "15° boylam = 1 saat zaman farkı",
       "Meridyenler kutuplarda birleşir, boylamlar kutup–kutup arası uzanır",
-      "Departure değeri enlem düzeltme tablosundan okunarak boylam–mesafe ilişkisi bulunur",
+      "Departure = DLong × cos(Lat) formülü boylam–mesafe ilişkisini verir",
       "Göksel seyirde boylam, zaman gözlemi ile bulunur"
     ]
   },
@@ -951,7 +955,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
 
 ![Kurs ve mesafe ile departure](https://static.wixstatic.com/media/bd1ea3_6a85245c73c7421bbc6c9c8ab9e3f995~mv2.jpg/v1/fill/w_568%2Ch_326%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/bd1ea3_6a85245c73c7421bbc6c9c8ab9e3f995~mv2.jpg)`,
         formula: {
-          text: "Departure değeri, Traverse Table'dan (seyir tablosu) kurs ve mesafeye göre okunur",
+          text: "Departure = Mesafe × sin Kurs",
           description: "Kurs hakiki rota olarak alınır; sonuç deniz mili cinsindendir."
         }
       },
@@ -959,7 +963,9 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
         title: "Sayısal Örnek: Mesafe ve Kurs ile Departure",
         content: `Seyredilen mesafe 40 deniz mili, hakiki rota 060° olsun.
 
-Traverse Table'dan 060° kurs ve 40 NM mesafe için:
+sin 060° ≈ 0.866
+
+Departure = 40 × 0.866
 
 Departure ≈ **34.6 deniz mili doğu**
 
@@ -977,7 +983,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
 
 ![DLat–Departure ilişkisi](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_2.jpg)`,
         formula: {
-          text: "Kurs değeri, DLat ve Departure bilindiğinde Traverse Table'dan okunur",
+          text: "tan Kurs = Departure ÷ DLat",
           description: "DLat ve departure bilindiğinde hakiki rota (kurs) bulunur."
         }
       },
@@ -1007,7 +1013,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
     keyPoints: [
       "Departure, düzlem seyirde doğu–batı doğrultusundaki yatay mesafedir.",
       "Departure değeri daima deniz mili cinsindedir ve doğu/batı yönüne göre işaretlenir.",
-      "Departure değeri Traverse Table'dan mesafe ve kursa göre okunur.",
+      "Departure = Mesafe × sin Kurs bağıntısı düzlem seyirde temel hesaplamadır.",
       "DLat ve departure birlikte kurs/mesafe çözümlemelerini oluşturur.",
       "Departure haritada doğrudan okunmaz; boylam değişimi hesaplarında kullanılır."
     ]
@@ -6003,10 +6009,10 @@ Mean Latitude Sailing’de boylam farkı, **paralel üzerindeki gerçek mesafeye
 ⬛ **Temel İlişki**
 
 ════════════════════
-Dep = D.Long × (enlem düzeltme faktörü)
+Dep = D.Long × cos Mean Lat
 ════════════════════
 
-* Enlem düzeltme faktörü tablodan okunur
+* cos Mean Lat, **paralelin kısalmasını** temsil eder
 * Enlem arttıkça paralel **küçülür**
 
 ---
@@ -6076,16 +6082,16 @@ Mean Latitude Sailing’de:
 ⬛ **Yaklaşım**
 
 ════════════════════
-Enlem düzeltme faktörü
+cos Lat
 ≈
-Ortalama enlem için sabit değer
+cos Mean Lat
 ════════════════════
 
 Gerçekte:
 
 ════════════════════
-Düzeltme faktörü
-enlem boyunca değişir
+cos Lat
+değişkendir
 ════════════════════
 
 Bu fark, **uzun E–W seyirlerde** büyür.
@@ -6106,7 +6112,7 @@ Bu fark, **uzun E–W seyirlerde** büyür.
 
 ════════════════════
 Mean Lat = 30°
-Tablodan düzeltme faktörü = 0.87
+cos 30° = 0.866
 ════════════════════
 
 ---
@@ -6114,8 +6120,8 @@ Tablodan düzeltme faktörü = 0.87
 ⬛ **Departure (Yaklaşık)**
 
 ════════════════════
-Dep = 600 × 0.87
-Dep ≈ 522′
+Dep = 600 × 0.866
+Dep ≈ 520′
 ════════════════════
 
 ---
@@ -6131,8 +6137,8 @@ Paralel uzunluğu **sabit değildir**, bu nedenle sonuç **yaklaşıktır**.
 
 ### Plane Sailing ile Karşılaştırma
 
-* Plane Sailing → enlem düzeltmesi **hiç kullanılmaz**
-* Mean Latitude Sailing → ortalama enlem için düzeltme faktörü kullanılır
+* Plane Sailing → cos Lat **hiç kullanılmaz**
+* Mean Latitude Sailing → cos Mean Lat kullanılır
 
 ⬛ **Karşılaştırma**
 
