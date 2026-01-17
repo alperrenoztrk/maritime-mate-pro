@@ -2103,6 +2103,80 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
       }
     ]
   },
+  "GPS doğruluğu": {
+    title: "GPS Doğruluğu ve Diferansiyel GPS (DGPS)",
+    introduction:
+      "Diferansiyel GPS (DGPS), GPS ölçümlerinde ortaya çıkan ortak hataların referans istasyonları yardımıyla düzeltilmesi prensibine dayanır. Konumu çok hassas olarak bilinen sabit bir referans istasyonu, GPS uydularından aldığı sinyallerle kendi hesaplanan konumu arasındaki farkı belirler ve bu farkı düzeltme mesajı olarak yayınlar. Aynı bölgedeki gemi alıcıları bu düzeltmeyi kullanarak hesaplanan konum doğruluğunu artırır.",
+    sections: [
+      {
+        title: "DGPS’in Temel Prensibi",
+        content:
+          "Referans istasyonu, uydu saat hatası, yörünge hatası ve atmosferik gecikmeler gibi bölgesel etkili hataları ölçerek gerçek konumuyla arasındaki farkı belirler. Bu fark, anlık konum hatasını temsil eder ve düzeltme mesajı olarak yayınlanır. Gemideki alıcı, bu düzeltmeleri kendi ölçümlerine uygulayarak daha doğru bir mevki çözümü elde eder.",
+        image:
+          "https://www.researchgate.net/profile/Prof-Dr-Engr-Sayed-Hyder-Abbas-Musavi/publication/228412282/figure/fig1/AS%3A301825820512261%401448972291293/The-concept-of-Differential-GPS.png",
+        imageAlt: "Diferansiyel GPS düzeltme prensibi"
+      },
+      {
+        title: "Hata Kaynaklarının Azaltılması",
+        content:
+          "DGPS’in temel avantajı, uydu saat hataları, yörünge hataları ve atmosferik gecikmeler gibi bölgesel olarak benzer etki yapan hataları büyük ölçüde ortadan kaldırmasıdır. Bu sayede yatay doğruluk metre altı seviyelere kadar düşebilir. Denizcilikte DGPS, özellikle kıyı seyri, dar kanallar ve pilotaj bölgelerinde operasyonel emniyeti artıran bir destek sistemidir.",
+        image: "https://www.oc.nps.edu/oc2902w/images/dgpsgeos.gif",
+        imageAlt: "DGPS düzeltme mantığı ve ortak hata bileşenleri"
+      },
+      {
+        title: "Kapsama ve Etkinlik Sınırı",
+        content:
+          "DGPS’in etkinliği, gemi ile referans istasyonu arasındaki mesafeye bağlıdır. Mesafe arttıkça atmosferik koşulların farklılaşması nedeniyle düzeltmelerin geçerliliği azalır. Bu nedenle DGPS, açık denizde değil, esas olarak kıyıya yakın seyirlerde anlamlı fayda sağlar.",
+        image:
+          "https://media.licdn.com/dms/image/v2/D5622AQHmqnicGto_gw/feedshare-shrink_800/B56ZZcEJZWGQAg-/0/1745301317629?e=2147483647&t=QGHe90eBSvTqCmOnGR7rmgPZ5gM_veGqZijdx5rWpVY&v=beta",
+        imageAlt: "DGPS kapsama alanı ve referans istasyonu etkisi"
+      },
+      {
+        title: "Temel Formüller",
+        content:
+          "DGPS hesaplarında kullanılan temel ifadeler, referans istasyonunun hesapladığı hata ile gemi ölçümlerinin düzeltilmesine dayanır.",
+        bulletPoints: [
+          "Referans hata = Hesaplanan konum − Gerçek konum",
+          "Düzeltilmiş mesafe = Ölçülen sözde mesafe − Referans hata",
+          "Yatay hata (DGPS) ≈ HDOP × UERE(düzeltilmiş)"
+        ]
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir DGPS referans istasyonu, bir uydu için aşağıdaki farkı tespit etmiştir:
+
+Hesaplanan mesafe = 21 608 m  
+Gerçek mesafe = 21 600 m
+
+Adım 1: Referans hatanın hesaplanması  
+Referans hata = 21 608 − 21 600 = 8 m
+
+Adım 2: Gemide ölçülen sözde mesafenin alınması  
+Gemide ölçülen mesafe = 21 620 m
+
+Adım 3: Düzeltmenin uygulanması  
+Düzeltilmiş mesafe = 21 620 − 8 = 21 612 m
+
+Adım 4: Konum çözümü  
+Tüm uydular için düzeltilmiş mesafeler kullanılarak yeni konum hesaplanır. Bu işlem sonucunda geminin yatay konum hatası belirgin şekilde azalır.`,
+        image:
+          "https://figures.semanticscholar.org/7fcb5557a29c930d77bd49ca6f0ffd53ab25a5a1/8-Table1-1.png",
+        imageAlt: "DGPS düzeltme örnek tablosu"
+      },
+      {
+        title: "Operasyonel Değerlendirme",
+        content:
+          "DGPS, birincil seyir yöntemi değildir. Referans istasyonu kapsama alanı dışında kalındığında veya düzeltme sinyali kesildiğinde sistemin güvenilirliği düşer. Bu nedenle DGPS, denizcilikte GPS’in doğruluğunu artıran tamamlayıcı bir sistem olarak değerlendirilir."
+      }
+    ],
+    keyPoints: [
+      "DGPS, referans istasyonundan alınan düzeltmelerle GPS ortak hatalarını azaltır.",
+      "Yatay doğruluk metre altı seviyelere kadar iyileşebilir.",
+      "Etkinlik, gemi ile referans istasyonu arasındaki mesafeye bağlıdır.",
+      "Kıyı seyri ve pilotaj bölgelerinde operasyonel emniyeti artırır.",
+      "Referans sinyali kesildiğinde DGPS birincil yöntem olarak kullanılmamalıdır."
+    ]
+  },
   "Composite (bileşik) rota": {
     title: "Composite (bileşik) rota",
     introduction:
