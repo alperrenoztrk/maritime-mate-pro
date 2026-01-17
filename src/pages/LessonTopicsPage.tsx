@@ -182,6 +182,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "GPS prensibi" },
           { title: "Trilaterasyon" },
           { title: "GPS doğruluğu" },
+          { title: "GPS sınırlamaları ve operasyonel riskler", hasContent: true },
           { title: "HDOP" },
           { title: "PDOP" },
           { title: "Radar prensibi" },

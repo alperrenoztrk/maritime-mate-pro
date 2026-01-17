@@ -8903,4 +8903,70 @@ Bu senaryoda fix güvenilirdir.`
       "MPP, tehlike yakınında en kötü senaryoya göre belirlenir."
     ]
   },
+  "GPS sınırlamaları ve operasyonel riskler": {
+    title: "GPS Sınırlamaları ve Operasyonel Riskler",
+    introduction:
+      "GPS yüksek doğruluk sağlar; ancak denizcilikte mutlak güvenilir bir sistem değildir. Sinyalin dış kaynağa bağımlı olması, elektromanyetik ortamdan etkilenmesi ve fiziksel engellerle zayıflaması nedeniyle operasyonel sınırlamalar oluşur. Bu sınırlamalar göz ardı edildiğinde özellikle dar sularda ve yoğun trafikte ciddi seyir riskleri ortaya çıkar.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://www.researchgate.net/publication/251910114/figure/fig1/AS%3A666789058973702%401535986308510/GPS-environment-and-multipath-signals.jpg)
+
+![Image](https://www.groundcontrol.com/wp-content/uploads/2025/05/Diagram-of-RockBLOCK-APNT-in-Maritime-Application.jpg)
+
+![Image](https://cruisingclub.org/sites/default/files/inline-images/Picture6.png)
+
+![Image](https://cruisingclub.org/sites/default/files/inline-images/Picture5.png)`
+      },
+      {
+        title: "Operasyonel Sınırlamalar",
+        content:
+          "Gemi üstyapısı, vinçler, radar direkleri ve konteyner yığınları GPS anteni için gölgeleme yaratabilir. Bu durum belirli yönlerden gelen uydu sinyallerinin kaybına ve uydu geometrisinin bozulmasına neden olur. Geometri bozulduğunda konum hâlâ hesaplanabilir; ancak hata büyür ve alıcı bunu her zaman açıkça kullanıcıya bildirmez."
+      },
+      {
+        title: "Çok Yollu (Multipath) Sinyal Yayılımı",
+        content:
+          "Sinyalin metal yüzeylerden yansıyarak alıcıya gecikmeli ulaşması, sözde mesafenin olduğundan uzun hesaplanmasına yol açar. Liman sahaları ve iskele bölgeleri bu etkinin en yoğun görüldüğü alanlardır."
+      },
+      {
+        title: "Kasıtlı Bozma ve Aldatma Tehdidi",
+        content:
+          "Modern seyirde giderek artan bir tehdit de kasıtlı sinyal bozma ve aldatmadır. GPS karıştırma ve sahte sinyal yayını, alıcının yanlış konum üretmesine neden olabilir. Bu durumda sistem çalışıyor gibi görünür; ancak üretilen mevki gerçek dışıdır. Denizcilikte bu durum, açıkça fark edilmediği sürece en tehlikeli GPS arızası türüdür."
+      },
+      {
+        title: "Formüller",
+        content: `**Çok yollu etkisiyle ölçülen mesafe**  
+Ölçülen mesafe = Gerçek mesafe + Yansıma gecikmesi × Işık hızı
+
+**Geometri bozulmasının yatay hataya etkisi**  
+Yatay hata = HDOP × UERE
+
+HDOP’un büyümesi, hata büyümesini doğrusal olarak artırır.`
+      },
+      {
+        title: "Örnek Hesap",
+        content: `**Koşullar**  
+UERE = 5 m  
+Normal seyirde HDOP = 1,2  
+Gölgeleme sonrası HDOP = 3,5
+
+**Adım 1: Normal şartlarda yatay hata**  
+Yatay hata = 1,2 × 5 = 6 m
+
+**Adım 2: Gölgeleme sonrası yatay hata**  
+Yatay hata = 3,5 × 5 = 17,5 m
+
+**Adım 3: Sonucun değerlendirilmesi**  
+Hata artışı = 17,5 − 6 = 11,5 m
+
+Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini gösterir. Açık denizde bu fark tolere edilebilirken, rıhtıma yaklaşma veya dar kanal geçişinde kabul edilemez bir emniyet açığı yaratır. Bu nedenle GPS, denizcilikte tek başına bir seyir sistemi olarak değil; radar, pusula, görsel mevki ve seyir tecrübesi ile birlikte kullanılan yardımcı bir sistem olarak ele alınmak zorundadır.`
+      }
+    ],
+    keyPoints: [
+      "Gölgeleme ve uydu geometrisi bozulması HDOP’u büyütür, hata artar.",
+      "Multipath, sözde mesafeyi uzatarak mevki sapması üretir.",
+      "Karıştırma ve aldatma, çalışıyor görünen fakat yanlış mevki üreten en kritik risktir.",
+      "GPS tek başına değil, radar, pusula ve görsel mevki ile çapraz kontrol edilmelidir."
+    ]
+  },
 };
