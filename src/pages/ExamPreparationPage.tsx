@@ -41,7 +41,7 @@ import { machineQuestions } from "@/data/machineQuestions";
 import { meteorologyQuestions } from "@/data/meteorologyQuestions";
 import { createSeededRng, pickRandomUnique } from "@/utils/random";
 import { useQuizStats } from "@/hooks/useQuizStats";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/integrations/supabase/safeClient";
 import type { QuizQuestion } from "@/types/quiz";
 
 // Exam module configuration
