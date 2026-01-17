@@ -5331,6 +5331,76 @@ Distance Off by Vertical Angle, klasik seyrüseferde **tek ölçümle güvenilir
       }
     ]
   },
+  "GPS’in seyirde kullanımı ve sensör entegrasyonu": {
+    title: "GPS’in Seyirde Kullanımı ve Sensör Entegrasyonu",
+    introduction:
+      "GPS, modern seyirde doğrudan bir mevki tayin sistemi olmaktan ziyade entegre seyir altyapısının bir veri kaynağıdır. ECDIS, radar, gyro pusula ve hız ölçer sistemleri GPS’ten gelen konum ve zaman bilgisini ortak referans olarak kullanır. Bu bütünleşik resim, GPS’e mutlak güven anlamına gelmez; aksine çapraz kontrol gerektirir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://www.researchgate.net/publication/332914204/figure/fig1/AS%3A756106720727040%401557281298029/A-typical-configuration-of-ship-ECDIS-system.ppm)
+
+![Image](https://optim.tildacdn.net/tild3836-3661-4332-a265-663434346237/-/resize/640x/-/format/webp/21_Types_of_Navigati.png.webp)
+
+![Image](https://www.nautinst.org/static/derivatives/600x394_highestperformance_/505a9188-7ac0-4afc-80daa47ec365c46e.1dea365c-7673-4979-8065d97915b61207.jpg)
+
+![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2017/05/position-by-running-fix-on-ECDIS.jpg)`
+      },
+      {
+        title: "Entegre Seyir Mantığı",
+        content:
+          "ECDIS üzerinde gösterilen gemi konumu doğrudan GPS verisine dayanır. Radar hedefleri, AIS bilgileri ve seyir alarmları bu konuma referanslanır. GPS konumunda oluşan sistematik bir hata, aynı anda tüm bu sistemlere yansır. Bu nedenle elektronik seyirde “tek hata noktası” riski vardır ve profesyonel uygulama, sensörler arası çapraz kontrol ile yürütülür."
+      },
+      {
+        title: "Hız Verisinin Yorumlanması (SOG vs STW)",
+        content:
+          "Hız bilgisi çoğu zaman GPS’ten alınan SOG değeridir. Ancak SOG yere göre hızdır; suya göre hız değildir. Akıntı bulunan bölgelerde GPS hızına dayanarak yapılan manevra ve durdurma hesapları ciddi hatalara yol açabilir. Bu nedenle log (STW) hızı ile GPS (SOG) hızı birlikte değerlendirilmelidir."
+      },
+      {
+        title: "Gyro – GPS İlişkisi",
+        content:
+          "GPS, gerçek kuzeye referanslı konum üretirken gyro pusula yön bilgisini sağlar. Gyro hatası ile GPS hatası aynı anda fark edilmezse, ECDIS üzerindeki seyir hattı gerçek durumu yansıtmayabilir. Bu nedenle gyro ve GPS verileri görsel kerteriz, radar overlay ve transit kontrolleriyle sürekli doğrulanmalıdır."
+      },
+      {
+        title: "Formüller",
+        content: `Yere göre hız ile suya göre hız ilişkisi:
+
+V yere göre = V suya göre + Akıntı hızı
+
+Konum doğrulama mantığı:
+
+Konum güvenilirliği ≈ GPS konumu ± Sensör farkı
+
+Sensör farkı; radar mesafesi, kerteriz veya görsel mevki ile ölçülen sapmayı ifade eder.`
+      },
+      {
+        title: "Örnek Hesap",
+        content: `**Veriler**
+
+GPS yere göre hız = 14 kn  
+Log suya göre hız = 11 kn
+
+**Adım 1: Akıntı hızının hesaplanması**
+
+Akıntı hızı = 14 − 11  
+Akıntı hızı = 3 kn
+
+**Adım 2: Operasyonel değerlendirmenin yapılması**
+
+Gemi makine komutlarını GPS hızına göre değil, suya göre hıza göre vermelidir.
+
+**Adım 3: Seyir güvenliğinin yorumu**
+
+Akıntının 3 knot olduğu bir bölgede, GPS’e bakılarak yapılan yaklaşma manevrası beklenenden daha uzun durma mesafesi yaratır. Bu örnek, GPS verisinin tek başına kullanılmasının neden riskli olduğunu gösterir.`
+      }
+    ],
+    keyPoints: [
+      "GPS, entegre seyir altyapısının merkezindedir ancak tek başına karar verdirmez.",
+      "SOG ve STW birlikte değerlendirilmezse akıntı etkisi hatalı yorumlanır.",
+      "Sistematik GPS hatası tüm sensörlere aynı anda yansıyabilir.",
+      "Gyro/GPS sapmaları görsel ve radar doğrulamalarıyla kontrol edilmelidir."
+    ]
+  },
   "Course and Distance Between Two Positions (Mean Latitude)": {
     title: "Course and Distance Between Two Positions (Mean Latitude)",
     introduction:
