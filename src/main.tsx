@@ -29,34 +29,32 @@ weatherPreloader.preloadWeatherData();
 createRoot(container).render(<Root />);
 
 // Hide splash screen only after weather data is preloaded or timeout
-const splashEl = document.getElementById('splash-root');
-if (splashEl) {
-  const hideSplash = () => {
+const hideSplash = () => {
+  const splash = document.getElementById('splash-root');
+  if (splash && !splash.classList.contains('splash-hide')) {
     console.log('✅ [Main] Splash screen gizleniyor...');
-    splashEl.classList.add('splash-hide');
+    splash.classList.add('splash-hide');
     // Remove from DOM after transition
-    setTimeout(() => splashEl.remove(), 600);
-  };
+    setTimeout(() => splash.remove(), 600);
+  }
+};
 
-  // Wait for preload to complete or timeout after 8 seconds
-  const checkPreloadStatus = () => {
-    if (weatherPreloader.isPreloadComplete()) {
-      console.log('✅ [Main] Hava durumu preload tamamlandı, splash screen gizleniyor');
-      setTimeout(hideSplash, 1000); // Show splash for at least 1 second
-    } else {
-      // Check again in 100ms
-      setTimeout(checkPreloadStatus, 100);
-    }
-  };
+// Wait for preload to complete or timeout
+const checkPreloadStatus = () => {
+  if (weatherPreloader.isPreloadComplete()) {
+    console.log('✅ [Main] Hava durumu preload tamamlandı, splash screen gizleniyor');
+    setTimeout(hideSplash, 500); // Short delay for smooth transition
+  } else {
+    // Check again in 100ms
+    setTimeout(checkPreloadStatus, 100);
+  }
+};
 
-  // Start checking after minimum splash time
-  setTimeout(checkPreloadStatus, 1000);
-  
-  // Force hide after 8 seconds max
-  setTimeout(() => {
-    if (!splashEl.classList.contains('splash-hide')) {
-      console.log('⏱️ [Main] Splash screen timeout, zorla gizleniyor');
-      hideSplash();
-    }
-  }, 8000);
-}
+// Start checking after minimum splash time (1 second)
+setTimeout(checkPreloadStatus, 1000);
+
+// GUARANTEED: Force hide after 6 seconds max (reduced from 8s)
+setTimeout(() => {
+  console.log('⏱️ [Main] Splash screen timeout kontrolü...');
+  hideSplash();
+}, 6000);
