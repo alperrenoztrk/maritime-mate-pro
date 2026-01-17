@@ -2104,77 +2104,76 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
     ]
   },
   "GPS doğruluğu": {
-    title: "GPS Doğruluğu ve Diferansiyel GPS (DGPS)",
+    title: "GPS Doğruluğu",
     introduction:
-      "Diferansiyel GPS (DGPS), GPS ölçümlerinde ortaya çıkan ortak hataların referans istasyonları yardımıyla düzeltilmesi prensibine dayanır. Konumu çok hassas olarak bilinen sabit bir referans istasyonu, GPS uydularından aldığı sinyallerle kendi hesaplanan konumu arasındaki farkı belirler ve bu farkı düzeltme mesajı olarak yayınlar. Aynı bölgedeki gemi alıcıları bu düzeltmeyi kullanarak hesaplanan konum doğruluğunu artırır.",
+      "GPS doğruluğu, hesaplanan konumun gerçek konuma ne kadar yakın olduğunu ifade eder ve denizcilikte seyir emniyetini doğrudan etkiler. Doğruluk; uydu saat hataları, alıcı saat hatası, iyonosfer ve troposfer gecikmeleri, çok yollu sinyal yayılımı ve uydu geometrisi gibi birden fazla etkenin toplam etkisidir. Bu hataların her biri küçük görünse de özellikle dar sular ve kıyı seyrinde toplam etki kritik hale gelir.",
     sections: [
       {
-        title: "DGPS’in Temel Prensibi",
+        title: "Doğruluğu Belirleyen Hata Kaynakları",
         content:
-          "Referans istasyonu, uydu saat hatası, yörünge hatası ve atmosferik gecikmeler gibi bölgesel etkili hataları ölçerek gerçek konumuyla arasındaki farkı belirler. Bu fark, anlık konum hatasını temsil eder ve düzeltme mesajı olarak yayınlanır. Gemideki alıcı, bu düzeltmeleri kendi ölçümlerine uygulayarak daha doğru bir mevki çözümü elde eder.",
-        image:
-          "https://www.researchgate.net/profile/Prof-Dr-Engr-Sayed-Hyder-Abbas-Musavi/publication/228412282/figure/fig1/AS%3A301825820512261%401448972291293/The-concept-of-Differential-GPS.png",
-        imageAlt: "Diferansiyel GPS düzeltme prensibi"
+          "GPS alıcısında oluşan toplam konum hatası, farklı hata bileşenlerinin birleşimidir. Uydu saat ve yörünge hataları, atmosferik gecikmeler (iyonosfer/troposfer), alıcı saat hatası, çok yollu (multipath) yansıma ve alıcı gürültüsü toplam hatayı büyütür. Uydu geometrisinin zayıf olduğu anlarda (yüksek DOP) aynı hata büyüklüğü konumda daha büyük sapma üretir.",
+        image: "https://electronics.drotek.com/wp-content/uploads/2023/01/multipath-errors.png",
+        imageAlt: "Multipath kaynaklı GPS hata oluşumu"
       },
       {
-        title: "Hata Kaynaklarının Azaltılması",
+        title: "Uydu Geometrisi ve DOP Etkisi",
         content:
-          "DGPS’in temel avantajı, uydu saat hataları, yörünge hataları ve atmosferik gecikmeler gibi bölgesel olarak benzer etki yapan hataları büyük ölçüde ortadan kaldırmasıdır. Bu sayede yatay doğruluk metre altı seviyelere kadar düşebilir. Denizcilikte DGPS, özellikle kıyı seyri, dar kanallar ve pilotaj bölgelerinde operasyonel emniyeti artıran bir destek sistemidir.",
-        image: "https://www.oc.nps.edu/oc2902w/images/dgpsgeos.gif",
-        imageAlt: "DGPS düzeltme mantığı ve ortak hata bileşenleri"
+          "Uydu geometrisi, hesaplanan konum hatasının büyüklüğünü doğrudan etkiler. HDOP değeri küçüldükçe yatay hata azalır; büyüdükçe hata elipsi genişler. Bu nedenle aynı UERE değeri, farklı HDOP koşullarında farklı doğruluk seviyeleri üretir.",
+        image:
+          "https://www.researchgate.net/publication/335127650/figure/fig5/AS%3A791127594655751%401565630925940/Error-ellipses-calculated-using-DOP-analysis-procedureThe-orientations-of-the-error.png",
+        imageAlt: "DOP analiziyle hata elipsleri ve yönelim"
       },
       {
-        title: "Kapsama ve Etkinlik Sınırı",
+        title: "Tipik Doğruluk Seviyeleri",
         content:
-          "DGPS’in etkinliği, gemi ile referans istasyonu arasındaki mesafeye bağlıdır. Mesafe arttıkça atmosferik koşulların farklılaşması nedeniyle düzeltmelerin geçerliliği azalır. Bu nedenle DGPS, açık denizde değil, esas olarak kıyıya yakın seyirlerde anlamlı fayda sağlar.",
-        image:
-          "https://media.licdn.com/dms/image/v2/D5622AQHmqnicGto_gw/feedshare-shrink_800/B56ZZcEJZWGQAg-/0/1745301317629?e=2147483647&t=QGHe90eBSvTqCmOnGR7rmgPZ5gM_veGqZijdx5rWpVY&v=beta",
-        imageAlt: "DGPS kapsama alanı ve referans istasyonu etkisi"
+          "Sivil GPS alıcılarında yatay doğruluk genellikle metre mertebesindedir. Açık denizde bu seviye çoğu zaman yeterlidir; ancak liman yaklaşmaları ve manevra sahalarında aynı doğruluk seviyesi operasyonel risk oluşturabilir. Bu nedenle denizcilikte DGPS/SBAS destekli sistemler, radar mesafeleri ve görsel mevki tayini gibi doğrulama yöntemleri birlikte kullanılır.",
+        image: "https://www.oc.nps.edu/oc2902w/images/gpsacc.gif",
+        imageAlt: "GPS doğruluk dağılımı ve hata yüzdeleri"
       },
       {
         title: "Temel Formüller",
         content:
-          "DGPS hesaplarında kullanılan temel ifadeler, referans istasyonunun hesapladığı hata ile gemi ölçümlerinin düzeltilmesine dayanır.",
+          "GPS doğruluğu çoğunlukla istatistiksel bir kavramdır. Konum hatası sabit bir değer değildir; zamana bağlı olarak değişir ve belirli bir olasılık dağılımı gösterir. Bu nedenle doğruluk, çoğu zaman belirli bir güven aralığı içinde ifade edilir.",
         bulletPoints: [
-          "Referans hata = Hesaplanan konum − Gerçek konum",
-          "Düzeltilmiş mesafe = Ölçülen sözde mesafe − Referans hata",
-          "Yatay hata (DGPS) ≈ HDOP × UERE(düzeltilmiş)"
+          "Toplam hata = √(Uydu hatası² + Saat hatası² + Atmosfer hatası² + Çok yollu hata² + Gürültü²)",
+          "Yatay hata ≈ HDOP × UERE",
+          "HDOP: Yatay geometrik seyreltme katsayısı",
+          "UERE: Eşdeğer kullanıcı mesafe hatası"
         ]
       },
       {
         title: "Örnek Hesap",
-        content: `Bir DGPS referans istasyonu, bir uydu için aşağıdaki farkı tespit etmiştir:
+        content: `Bir gemide kullanılan GPS alıcısı için aşağıdaki değerler verilmiştir:
 
-Hesaplanan mesafe = 21 608 m  
-Gerçek mesafe = 21 600 m
+UERE = 5 m  
+HDOP = 1,8
 
-Adım 1: Referans hatanın hesaplanması  
-Referans hata = 21 608 − 21 600 = 8 m
+Adım 1: Yatay hata formülünün yazılması  
+Yatay hata = HDOP × UERE
 
-Adım 2: Gemide ölçülen sözde mesafenin alınması  
-Gemide ölçülen mesafe = 21 620 m
+Adım 2: Sayısal değerlerin yerine konması  
+Yatay hata = 1,8 × 5
 
-Adım 3: Düzeltmenin uygulanması  
-Düzeltilmiş mesafe = 21 620 − 8 = 21 612 m
+Adım 3: Sonucun hesaplanması  
+Yatay hata = 9 m
 
-Adım 4: Konum çözümü  
-Tüm uydular için düzeltilmiş mesafeler kullanılarak yeni konum hesaplanır. Bu işlem sonucunda geminin yatay konum hatası belirgin şekilde azalır.`,
+Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapabileceğini gösterir. Açık denizde bu hata kabul edilebilirken, dar bir kanalda veya yanaşma manevrasında emniyet payını ciddi biçimde azaltır.`,
         image:
-          "https://figures.semanticscholar.org/7fcb5557a29c930d77bd49ca6f0ffd53ab25a5a1/8-Table1-1.png",
-        imageAlt: "DGPS düzeltme örnek tablosu"
+          "https://www.researchgate.net/publication/275594171/figure/fig2/AS%3A375689560772609%401466582779334/Comparison-of-DGPS-based-KODGIS-NAWGIS-and-embedded-GPS-receiver-positioning-accuracy.png",
+        imageAlt: "GPS doğruluk karşılaştırması grafiği"
       },
       {
         title: "Operasyonel Değerlendirme",
         content:
-          "DGPS, birincil seyir yöntemi değildir. Referans istasyonu kapsama alanı dışında kalındığında veya düzeltme sinyali kesildiğinde sistemin güvenilirliği düşer. Bu nedenle DGPS, denizcilikte GPS’in doğruluğunu artıran tamamlayıcı bir sistem olarak değerlendirilir."
+          "GPS doğruluğu tek başına yeterli görülmemelidir. Radar mesafeleri, görsel mevki tayini ve ECDIS alarm limitleri ile birlikte değerlendirilerek emniyetli seyir sağlanır."
       }
     ],
     keyPoints: [
-      "DGPS, referans istasyonundan alınan düzeltmelerle GPS ortak hatalarını azaltır.",
-      "Yatay doğruluk metre altı seviyelere kadar iyileşebilir.",
-      "Etkinlik, gemi ile referans istasyonu arasındaki mesafeye bağlıdır.",
-      "Kıyı seyri ve pilotaj bölgelerinde operasyonel emniyeti artırır.",
-      "Referans sinyali kesildiğinde DGPS birincil yöntem olarak kullanılmamalıdır."
+      "GPS doğruluğu, uydu saatleri, atmosfer, multipath ve geometri gibi çoklu hata kaynaklarının toplam etkisine bağlıdır.",
+      "HDOP küçüldükçe yatay hata azalır; büyüdükçe hata elipsi genişler.",
+      "Yatay hata, pratikte HDOP × UERE yaklaşımıyla değerlendirilir.",
+      "Metre seviyesindeki doğruluk açık denizde yeterli olabilir; dar sularda risk oluşturabilir.",
+      "GPS verisi radar, görsel mevki ve ECDIS alarmlarıyla birlikte kullanılmalıdır."
     ]
   },
   "Composite (bileşik) rota": {
