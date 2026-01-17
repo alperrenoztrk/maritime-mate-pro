@@ -76,6 +76,9 @@ class WeatherPreloader {
     return this.preloadPromise;
   }
 
+  // Default fallback coordinates (Istanbul)
+  private readonly defaultCoords = { latitude: 41.0082, longitude: 28.9784 };
+
   private async doPreload(): Promise<PreloadedWeatherData | null> {
     if (this.isPreloading) return this.preloadedData;
     
@@ -85,31 +88,41 @@ class WeatherPreloader {
     console.log("🌤️ [Preloader] Splash screen sırasında hava durumu verisi alınıyor...");
     
     try {
-      // Get current position
-      const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-        console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
-        if (!("geolocation" in navigator)) {
-          console.error("❌ [Preloader] Konum servisi desteklenmiyor");
-          reject(new Error("Konum servisi desteklenmiyor"));
-          return;
-        }
+      // Get current position with fallback
+      let lat: number;
+      let lon: number;
+      
+      try {
+        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+          console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
+          if (!("geolocation" in navigator)) {
+            console.warn("⚠️ [Preloader] Konum servisi desteklenmiyor, fallback kullanılacak");
+            reject(new Error("Konum servisi desteklenmiyor"));
+            return;
+          }
+          
+          console.log("📍 [Preloader] Konum bilgisi isteniyor (5s timeout)...");
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              console.log("✅ [Preloader] Konum alındı:", pos.coords.latitude, pos.coords.longitude);
+              resolve(pos);
+            },
+            (err) => {
+              console.warn("⚠️ [Preloader] Konum alınamadı:", err.message);
+              reject(err);
+            },
+            { enableHighAccuracy: false, timeout: 5000, maximumAge: 300000 } // 5s timeout, 5 min cache
+          );
+        });
         
-        console.log("📍 [Preloader] Konum bilgisi isteniyor...");
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            console.log("✅ [Preloader] Konum alındı:", pos.coords.latitude, pos.coords.longitude);
-            resolve(pos);
-          },
-          (err) => {
-            console.error("❌ [Preloader] Konum alınamadı:", err.message);
-            reject(err);
-          },
-          { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
-        );
-      });
-
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+      } catch {
+        // Use fallback coordinates if geolocation fails
+        console.log("📍 [Preloader] Fallback koordinatlar kullanılıyor (İstanbul)");
+        lat = this.defaultCoords.latitude;
+        lon = this.defaultCoords.longitude;
+      }
 
       console.log("🌤️ [Preloader] Hava durumu ve konum verisi paralel olarak alınıyor...");
       
