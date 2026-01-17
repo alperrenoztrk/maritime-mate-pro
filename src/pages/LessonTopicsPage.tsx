@@ -192,8 +192,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "XTE" },
           { title: "ETA" },
           { title: "Turn radius" },
-          { title: "Elektronik seyirde çapraz kontrol" },
-          { title: "GPS arızalarında uygulanacak seyir prosedürleri", hasContent: true }
+          { title: "Elektronik seyirde çapraz kontrol" }
         ]
       },
       {
