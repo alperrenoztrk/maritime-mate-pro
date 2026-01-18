@@ -14,8 +14,9 @@ import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calculator, Anchor, Ship, Navigation, Compass, Map, Waves, AlertTriangle } from 'lucide-react';
+import { Calculator, Anchor, Ship, Navigation, Compass, Map, Waves, AlertTriangle, ShieldAlert } from 'lucide-react';
 import React, { useState as useStateHook, useEffect as useEffectHook, useMemo as useMemoHook, useCallback as useCallbackHook } from 'react';
+import { sanitizeCode, getSecurityWarning } from '@/utils/codeSanitizer';
 
 interface LivePreviewProps {
   code: string;
@@ -78,14 +79,14 @@ const maritimeHelpers = {
   },
 };
 
-// Create scope for live preview
+// Create scope for live preview - restricted to safe components only
 const createScope = (): Scope => ({
-  // React
+  // React - only safe hooks
   React,
   useState: useStateHook,
-  useEffect: useEffectHook,
   useMemo: useMemoHook,
   useCallback: useCallbackHook,
+  // Note: useEffect removed to prevent side effects in user-generated code
   
   // Framer Motion
   motion,
@@ -145,28 +146,49 @@ const createScope = (): Scope => ({
 
 export function LivePreview({ code }: LivePreviewProps) {
   const [error, setError] = useState<string | null>(null);
+  const [securityViolation, setSecurityViolation] = useState<string | null>(null);
   const scope = useMemo(() => createScope(), []);
+
+  // Sanitize and validate code before execution
+  const sanitizationResult = useMemo(() => {
+    if (!code) return null;
+    return sanitizeCode(code);
+  }, [code]);
 
   // Wrap code to export default component
   const wrappedCode = useMemo(() => {
     if (!code) return '';
     
+    // If sanitization failed, don't wrap
+    if (sanitizationResult && !sanitizationResult.isValid) {
+      return '';
+    }
+    
+    const safeCode = sanitizationResult?.sanitizedCode || code;
+    
     // Check if code already has export or render statement
-    if (code.includes('export default') || code.includes('render(')) {
-      return code;
+    if (safeCode.includes('export default') || safeCode.includes('render(')) {
+      return safeCode;
     }
     
     // Extract component name from code
-    const componentMatch = code.match(/(?:const|function)\s+(\w+)/);
+    const componentMatch = safeCode.match(/(?:const|function)\s+(\w+)/);
     const componentName = componentMatch ? componentMatch[1] : 'Component';
     
     // Wrap with render
-    return `${code}\n\nrender(<${componentName} />)`;
-  }, [code]);
+    return `${safeCode}\n\nrender(<${componentName} />)`;
+  }, [code, sanitizationResult]);
 
   useEffect(() => {
     setError(null);
-  }, [code]);
+    
+    // Check for security violations
+    if (sanitizationResult && !sanitizationResult.isValid) {
+      setSecurityViolation(getSecurityWarning(sanitizationResult.violations));
+    } else {
+      setSecurityViolation(null);
+    }
+  }, [code, sanitizationResult]);
 
   if (!code) {
     return (
@@ -174,6 +196,22 @@ export function LivePreview({ code }: LivePreviewProps) {
         <Ship className="h-12 w-12 text-muted-foreground mb-4" />
         <p className="text-muted-foreground text-center">
           Kod üretildiğinde burada önizleme görünecek
+        </p>
+      </div>
+    );
+  }
+
+  // Show security violation warning
+  if (securityViolation) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full bg-destructive/10 rounded-lg border border-destructive/30 p-6">
+        <ShieldAlert className="h-12 w-12 text-destructive mb-4" />
+        <p className="text-destructive font-bold mb-2">Güvenlik İhlali Tespit Edildi</p>
+        <pre className="text-xs text-destructive/90 bg-destructive/5 p-4 rounded overflow-auto max-h-48 w-full whitespace-pre-wrap">
+          {securityViolation}
+        </pre>
+        <p className="text-sm text-muted-foreground mt-4 text-center">
+          Bu kod güvenlik nedeniyle çalıştırılmadı. Lütfen tehlikeli kalıpları kaldırarak yeniden deneyin.
         </p>
       </div>
     );
