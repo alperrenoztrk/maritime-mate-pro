@@ -34,7 +34,7 @@ export default function TermsGlossary() {
 
   const filteredTerms = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
-    return terms.filter((term) => {
+    const scopedTerms = terms.filter((term) => {
       if (activeCategory !== "all" && term.category_id !== activeCategory) {
         return false;
       }
@@ -52,6 +52,14 @@ export default function TermsGlossary() {
         .toLowerCase();
       return searchPool.includes(normalizedQuery);
     });
+
+    if (activeCategory === "all") {
+      return [...scopedTerms].sort((a, b) =>
+        a.term_tr.localeCompare(b.term_tr, "tr", { sensitivity: "base" }),
+      );
+    }
+
+    return scopedTerms;
   }, [activeCategory, query]);
 
   return (
