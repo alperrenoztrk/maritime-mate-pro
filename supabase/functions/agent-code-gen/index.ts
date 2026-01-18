@@ -1,25 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-
-// CORS configuration - restrict to known origins
-const ALLOWED_ORIGINS = [
-  'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
-  'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
-  'capacitor://localhost',
-  'http://localhost:5173',
-  'http://localhost:8080',
-];
-
-function getCorsHeaders(origin: string | null): Record<string, string> {
-  const isAllowed = origin && (
-    ALLOWED_ORIGINS.includes(origin) ||
-    /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
-    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
-  );
-  return {
-    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
-    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  };
-}
+import { getCorsHeaders } from "../_shared/cors.ts";
+import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
 const SYSTEM_PROMPT = `Sen Marine Expert uygulaması için bir AI kod üretici asistansın. 
 Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React/TypeScript bileşenleri üretiyorsun.
@@ -64,24 +45,25 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Validate authentication
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
+  }
+
   try {
     const { prompt, context, stream } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
     if (!LOVABLE_API_KEY) {
-      console.error('LOVABLE_API_KEY is not configured');
-      return new Response(
-        JSON.stringify({ error: 'API anahtarı yapılandırılmamış' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      logError('agent-code-gen', 'API key not configured');
+      return errorResponse(corsHeaders, 503, GENERIC_ERRORS.NOT_CONFIGURED);
     }
 
     const messages = [
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: buildPrompt(prompt, context) }
     ];
-
-    console.log('Sending request to Lovable AI Gateway...');
 
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
@@ -98,26 +80,16 @@ serve(async (req) => {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('AI Gateway error:', response.status, errorText);
+      logError('agent-code-gen', `AI Gateway returned ${response.status}`);
 
       if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ error: 'Çok fazla istek gönderildi. Lütfen biraz bekleyin.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+        return errorResponse(corsHeaders, 429, GENERIC_ERRORS.RATE_LIMIT);
       }
       if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: 'Kredi limitiniz doldu.' }),
-          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+        return errorResponse(corsHeaders, 402, 'Kredi limitiniz doldu.');
       }
 
-      return new Response(
-        JSON.stringify({ error: 'AI servisi şu an kullanılamıyor' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return errorResponse(corsHeaders, 500, GENERIC_ERRORS.SERVICE_ERROR);
     }
 
     if (stream) {
@@ -138,20 +110,14 @@ serve(async (req) => {
     const componentType = detectComponentType(prompt, code);
     const category = detectCategory(prompt);
 
-    console.log('Generated response successfully');
-
     return new Response(
       JSON.stringify({ message, code, componentType, category }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
-    console.error('Agent error:', error);
-    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
-    return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Bilinmeyen hata' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    logError('agent-code-gen', error);
+    return errorResponse(corsHeaders);
   }
 });
 
