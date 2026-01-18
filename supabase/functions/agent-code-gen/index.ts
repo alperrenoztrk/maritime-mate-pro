@@ -2,6 +2,96 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
+// Server-side code validation patterns (mirrors client-side sanitizer)
+const DANGEROUS_PATTERNS = [
+  // Storage access
+  /localStorage\s*\./gi,
+  /sessionStorage\s*\./gi,
+  /indexedDB/gi,
+  
+  // Cookie access
+  /document\s*\.\s*cookie/gi,
+  
+  // Dynamic code execution
+  /\beval\s*\(/gi,
+  /new\s+Function\s*\(/gi,
+  /Function\s*\(/gi,
+  
+  // DOM manipulation that could be dangerous
+  /document\s*\.\s*write/gi,
+  /innerHTML\s*=/gi,
+  /outerHTML\s*=/gi,
+  /insertAdjacentHTML/gi,
+  
+  // Network requests
+  /\bfetch\s*\(/gi,
+  /XMLHttpRequest/gi,
+  
+  // Window manipulation
+  /window\s*\.\s*location/gi,
+  /window\s*\.\s*open/gi,
+  /window\s*\[\s*['"]loc/gi, // Obfuscation: window['location']
+  
+  // Script injection
+  /<\s*script/gi,
+  /javascript\s*:/gi,
+  
+  // Dynamic imports
+  /\bimport\s*\(/gi,
+  /\brequire\s*\(/gi,
+  
+  // Prototype pollution
+  /__proto__/gi,
+  /prototype\s*\[/gi,
+  /Object\s*\.\s*defineProperty/gi,
+  
+  // Obfuscation detection
+  /window\s*\[\s*['"][^'"]+['"]\s*\]/gi, // window['anything']
+  /\\u[0-9a-fA-F]{4}/g, // Unicode escapes like \u0065val
+];
+
+interface CodeValidation {
+  isValid: boolean;
+  violations: string[];
+}
+
+function validateGeneratedCode(code: string): CodeValidation {
+  if (!code || typeof code !== 'string') {
+    return { isValid: true, violations: [] };
+  }
+
+  const violations: string[] = [];
+
+  for (const pattern of DANGEROUS_PATTERNS) {
+    pattern.lastIndex = 0; // Reset for global patterns
+    if (pattern.test(code)) {
+      const patternDesc = pattern.source.substring(0, 30);
+      violations.push(`Blocked pattern: ${patternDesc}`);
+      pattern.lastIndex = 0;
+    }
+  }
+
+  // Additional string-based checks for common obfuscation
+  const lowerCode = code.toLowerCase();
+  const obfuscationPatterns = [
+    { pattern: "['lo'+'ca", desc: "String concatenation obfuscation" },
+    { pattern: '["lo"+"ca', desc: "String concatenation obfuscation" },
+    { pattern: "['eval']", desc: "Bracket notation for eval" },
+    { pattern: '["eval"]', desc: "Bracket notation for eval" },
+  ];
+
+  for (const { pattern, desc } of obfuscationPatterns) {
+    if (lowerCode.includes(pattern)) {
+      violations.push(`Obfuscation detected: ${desc}`);
+    }
+  }
+
+  return {
+    isValid: violations.length === 0,
+    violations: [...new Set(violations)]
+  };
+}
+
 const SYSTEM_PROMPT = `Sen Marine Expert uygulaması için bir AI kod üretici asistansın. 
 Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React/TypeScript bileşenleri üretiyorsun.
 
@@ -15,6 +105,7 @@ Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React
 7. Kod TEMİZ ve OKUNAKLI olmalı
 8. Denizcilik terminolojisi DOĞRU olmalı
 9. Formüller DOĞRU olmalı
+10. GÜVENLİK: eval, fetch, localStorage, window.location gibi tehlikeli API'ler KULLANMA
 
 ## Mevcut Scope (bunları import etmeden kullanabilirsin):
 - React, useState, useEffect, useMemo, useCallback
@@ -58,6 +149,11 @@ serve(async (req) => {
     if (!LOVABLE_API_KEY) {
       logError('agent-code-gen', 'API key not configured');
       return errorResponse(corsHeaders, 503, GENERIC_ERRORS.NOT_CONFIGURED);
+    }
+
+    // Validate prompt input
+    if (!prompt || typeof prompt !== 'string' || prompt.length > 10000) {
+      return errorResponse(corsHeaders, 400, GENERIC_ERRORS.INVALID_INPUT);
     }
 
     const messages = [
@@ -106,6 +202,22 @@ serve(async (req) => {
     const code = codeMatch ? codeMatch[1].trim() : undefined;
     const message = content.replace(/```tsx[\s\S]*?```/g, '').trim();
 
+    // SERVER-SIDE CODE VALIDATION
+    if (code) {
+      const validation = validateGeneratedCode(code);
+      if (!validation.isValid) {
+        logError('agent-code-gen', `Code validation failed: ${validation.violations.join(', ')}`);
+        return new Response(
+          JSON.stringify({ 
+            error: 'Üretilen kod güvenlik kontrolünden geçemedi',
+            message: 'Kod potansiyel olarak tehlikeli kalıplar içeriyor. Lütfen isteğinizi yeniden düzenleyin.',
+            violations: validation.violations.length
+          }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
     // Detect component type and category
     const componentType = detectComponentType(prompt, code);
     const category = detectCategory(prompt);
@@ -131,7 +243,13 @@ function buildPrompt(prompt: string, context?: { componentType?: string; categor
     fullPrompt += `\nKategori: ${context.category}`;
   }
   if (context?.existingCode) {
-    fullPrompt += `\n\nMevcut kod (düzenle):\n\`\`\`tsx\n${context.existingCode}\n\`\`\``;
+    // Validate existing code too
+    const validation = validateGeneratedCode(context.existingCode);
+    if (!validation.isValid) {
+      fullPrompt += `\n\n[Mevcut kod güvenlik nedeniyle dahil edilemedi]`;
+    } else {
+      fullPrompt += `\n\nMevcut kod (düzenle):\n\`\`\`tsx\n${context.existingCode}\n\`\`\``;
+    }
   }
 
   return fullPrompt;

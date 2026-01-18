@@ -63,7 +63,7 @@ export const CelestialTimeTravel: React.FC<CelestialTimeTravelProps> = ({
 
   // Playback control
   React.useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     
     if (isPlaying) {
       interval = setInterval(() => {

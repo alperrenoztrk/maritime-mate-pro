@@ -67,7 +67,7 @@ export class ErrorBoundary extends Component<Props, State> {
                   Tekrar Dene
                 </Button>
               </div>
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {import.meta.env.DEV && this.state.error && (
                 <details className="mt-4 p-3 bg-muted rounded-lg">
                   <summary className="cursor-pointer text-sm font-medium mb-2">
                     Hata Detayları (Geliştirici)
