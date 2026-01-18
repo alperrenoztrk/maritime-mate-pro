@@ -138,15 +138,16 @@ export async function getUserComponents(): Promise<GeneratedComponent[]> {
   return (data || []) as GeneratedComponent[];
 }
 
-export async function getPublicComponents(): Promise<GeneratedComponent[]> {
+export async function getPublicComponents(): Promise<Omit<GeneratedComponent, 'user_id'>[]> {
+  // Security: Exclude user_id from public queries to prevent user tracking
   const { data, error } = await supabase
     .from('user_generated_components')
-    .select('*')
+    .select('id, name, description, code, component_type, category, thumbnail_url, is_public, metadata, created_at, updated_at')
     .eq('is_public', true)
     .order('created_at', { ascending: false });
 
   if (error) throw new Error(error.message);
-  return (data || []) as GeneratedComponent[];
+  return (data || []) as Omit<GeneratedComponent, 'user_id'>[];
 }
 
 export async function updateComponent(
