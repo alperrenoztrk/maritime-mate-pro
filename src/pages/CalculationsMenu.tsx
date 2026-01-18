@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import type { CSSProperties } from "react";
 import {
   BookOpen,
+  BookMarked,
   ChevronRight,
   ClipboardList,
   Scale
@@ -45,6 +46,17 @@ export default function CalculationsMenu() {
               <BookOpen className="h-4 w-4" />
             </span>
             <span>Dersler</span>
+            <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+          </Link>
+
+          <Link
+            to="/terms-glossary"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-600 text-white shadow group-hover:scale-105">
+              <BookMarked className="h-4 w-4" />
+            </span>
+            <span>Terimler Sözlüğü</span>
             <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </Link>
 
@@ -107,4 +119,3 @@ export default function CalculationsMenu() {
     </div>
   );
 }
-
