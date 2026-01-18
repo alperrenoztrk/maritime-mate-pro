@@ -1,6 +1,5 @@
 import React from 'react';
 import Knot3DViewer from '@/components/Knot3DViewer';
-import KnotBabylonViewer from '@/components/KnotBabylonViewer';
 
 export default function SailorKnotsPage() {
 
@@ -16,12 +15,9 @@ export default function SailorKnotsPage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Three.js version */}
-          <Knot3DViewer title="Bowline (İzbarço Bağı) — Three.js" knot="bowline" />
-          <Knot3DViewer title="Figure-Eight (Sekizli Bağı) — Three.js" knot="figure-eight" />
-          {/* Babylon.js version */}
-          <KnotBabylonViewer title="Bowline (İzbarço Bağı) — Babylon" knot="bowline" />
-          <KnotBabylonViewer title="Clove Hitch (Kazık Bağı) — Babylon" knot="clove-hitch" />
+          <Knot3DViewer title="Bowline (İzbarço Bağı)" knot="bowline" />
+          <Knot3DViewer title="Figure-Eight (Sekizli Bağı)" knot="figure-eight" />
+          <Knot3DViewer title="Clove Hitch (Kazık Bağı)" knot="clove-hitch" />
         </div>
       </div>
     </div>
