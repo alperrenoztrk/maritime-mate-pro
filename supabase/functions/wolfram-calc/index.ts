@@ -1,11 +1,29 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+// CORS configuration - restrict to known origins
+const ALLOWED_ORIGINS = [
+  'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
+  'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
+  'capacitor://localhost',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const isAllowed = origin && (
+    ALLOWED_ORIGINS.includes(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
+  );
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -68,6 +86,7 @@ serve(async (req) => {
   } catch (e) {
     console.error("Function error:", e);
     const errorMessage = e instanceof Error ? e.message : "Unknown error";
+    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
     return new Response(
       JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }

@@ -49,19 +49,26 @@ export function useFileUpload() {
         return null;
       }
 
-      const { data: { publicUrl } } = supabase.storage
+      // Use signed URL for private bucket (1 hour expiry)
+      const { data: signedUrlData, error: signedUrlError } = await supabase.storage
         .from('agent-uploads')
-        .getPublicUrl(filePath);
+        .createSignedUrl(filePath, 3600);
+
+      if (signedUrlError || !signedUrlData) {
+        console.error('Signed URL error:', signedUrlError);
+        toast.error('Dosya URL\'i oluşturulamadı');
+        setIsUploading(false);
+        return null;
+      }
 
       const uploadedFile: UploadedFile = {
         id: crypto.randomUUID(),
         name: file.name,
         size: file.size,
         type: file.type,
-        url: publicUrl,
+        url: signedUrlData.signedUrl,
         path: filePath,
       };
-
       setUploadedFiles(prev => [...prev, uploadedFile]);
       setIsUploading(false);
       return uploadedFile;

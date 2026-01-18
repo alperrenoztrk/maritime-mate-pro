@@ -1,9 +1,25 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders: Record<string, string> = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+// CORS configuration - restrict to known origins
+const ALLOWED_ORIGINS = [
+  'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
+  'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
+  'capacitor://localhost',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const isAllowed = origin && (
+    ALLOWED_ORIGINS.includes(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
+  );
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
 
 interface CreateCheckoutBody {
   priceId?: string;
@@ -15,7 +31,7 @@ interface CreateCheckoutBody {
 }
 
 // Minimal Stripe REST call using fetch to avoid external deps on Deno Edge
-async function createStripeCheckoutSession(params: CreateCheckoutBody) {
+async function createStripeCheckoutSession(params: CreateCheckoutBody, corsHeaders: Record<string, string>) {
   const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
   if (!stripeKey) {
     return new Response(
@@ -94,6 +110,8 @@ async function createStripeCheckoutSession(params: CreateCheckoutBody) {
 }
 
 serve(async (req: Request) => {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -117,7 +135,7 @@ serve(async (req: Request) => {
       );
     }
     
-    return await createStripeCheckoutSession(body);
+    return await createStripeCheckoutSession(body, corsHeaders);
   } catch (e) {
     console.error("Function error:", e);
     const errorMessage = e instanceof Error ? e.message : "Unknown error";
@@ -127,4 +145,3 @@ serve(async (req: Request) => {
     );
   }
 });
-

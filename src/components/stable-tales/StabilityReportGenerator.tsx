@@ -156,9 +156,17 @@ Stable Tales - Maritime Stability System
     toast.success("Rapor indirildi!");
   };
 
+  // HTML escape function to prevent XSS
+  const escapeHtml = (text: string): string => {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  };
+
   const printReport = () => {
     const printWindow = window.open('', '_blank');
     if (printWindow) {
+      const escapedReport = escapeHtml(generatedReport);
       printWindow.document.write(`
         <html>
           <head>
@@ -169,7 +177,7 @@ Stable Tales - Maritime Stability System
             </style>
           </head>
           <body>
-            <pre>${generatedReport}</pre>
+            <pre>${escapedReport}</pre>
           </body>
         </html>
       `);

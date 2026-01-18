@@ -1,9 +1,25 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+// CORS configuration - restrict to known origins
+const ALLOWED_ORIGINS = [
+  'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
+  'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
+  'capacitor://localhost',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const isAllowed = origin && (
+    ALLOWED_ORIGINS.includes(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
+  );
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
 
 const SYSTEM_PROMPT = `Sen Marine Expert uygulaması için bir AI kod üretici asistansın. 
 Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React/TypeScript bileşenleri üretiyorsun.
@@ -42,6 +58,8 @@ Kod bloğu SADECE React bileşeni içermeli, import ifadeleri OLMAMALI.
 Bileşen adı açıklayıcı olmalı (örn: GMCalculator, GreatCircleChart).`;
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
@@ -129,6 +147,7 @@ serve(async (req) => {
 
   } catch (error) {
     console.error('Agent error:', error);
+    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
     return new Response(
       JSON.stringify({ error: error instanceof Error ? error.message : 'Bilinmeyen hata' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
