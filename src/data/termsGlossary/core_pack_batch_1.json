@@ -10498,13 +10498,713 @@
         "local time",
         "lt"
       ]
+    },
+    {
+      "id": "abramak",
+      "canonical_term_id": "abramak",
+      "is_canonical": true,
+      "term_tr": "Abramak",
+      "term_en": "Haul in",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "cekme",
+      "subtopic_tr": "Çekme",
+      "short_definition_tr": "Abramak, Çekme kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Abramak, Çekme uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "cekmek",
+        "viyalamak",
+        "vira-etmek"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Abramak komutu halatın içeri alınması için verilir."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "abramak",
+        "abrama",
+        "haul in",
+        "abramak"
+      ]
+    },
+    {
+      "id": "alesta",
+      "canonical_term_id": "alesta",
+      "is_canonical": true,
+      "term_tr": "Alesta",
+      "term_en": "Stand by",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "manevra",
+      "subtopic_tr": "Manevra",
+      "short_definition_tr": "Alesta, Manevra kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Alesta, Manevra uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "avara-etmek",
+        "aborda",
+        "alabanda"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Kıç halatı alesta tutuldu."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "alesta",
+        "alesta",
+        "stand by",
+        "alesta"
+      ]
+    },
+    {
+      "id": "cekmek",
+      "canonical_term_id": "cekmek",
+      "is_canonical": true,
+      "term_tr": "Çekmek",
+      "term_en": "Haul",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "cekme",
+      "subtopic_tr": "Çekme",
+      "short_definition_tr": "Çekmek, Çekme kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Çekmek, Çekme uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "abramak",
+        "viyalamak",
+        "vira-etmek"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Baş halatını çekmek için ekip hazırlandı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "cekmek",
+        "çekmek",
+        "haul",
+        "cekmek"
+      ]
+    },
+    {
+      "id": "viyalamak",
+      "canonical_term_id": "viyalamak",
+      "is_canonical": true,
+      "term_tr": "Viyalamak",
+      "term_en": "Veer/Slack",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "cekme",
+      "subtopic_tr": "Çekme",
+      "short_definition_tr": "Viyalamak, Çekme kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Viyalamak, Çekme uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "cekmek",
+        "abramak",
+        "vira-etmek"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Rüzgârın etkisine karşı halat viyalandı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "viyalamak",
+        "viyalama",
+        "veer",
+        "viyalamak"
+      ]
+    },
+    {
+      "id": "vira-etmek",
+      "canonical_term_id": "vira-etmek",
+      "is_canonical": true,
+      "term_tr": "Vira etmek",
+      "term_en": "Heave up",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "cekme",
+      "subtopic_tr": "Çekme",
+      "short_definition_tr": "Vira etmek, Çekme kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Vira etmek, Çekme uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "abramak",
+        "cekmek",
+        "viyalamak"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Demir vira edildiğinde sancak vardiya hazırlandı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "vira etmek",
+        "vira",
+        "heave up",
+        "vira"
+      ]
+    },
+    {
+      "id": "avara-etmek",
+      "canonical_term_id": "avara-etmek",
+      "is_canonical": true,
+      "term_tr": "Avara etmek",
+      "term_en": "Cast off",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Avara etmek, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Avara etmek, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "aborda",
+        "palamar",
+        "alesta"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Kıç halatı avara edildi, gemi iskeleden ayrıldı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "avara etmek",
+        "avara",
+        "cast off",
+        "avara"
+      ]
+    },
+    {
+      "id": "aborda",
+      "canonical_term_id": "aborda",
+      "is_canonical": true,
+      "term_tr": "Aborda",
+      "term_en": "Come alongside",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Aborda, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Aborda, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "avara-etmek",
+        "palamar",
+        "alesta"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Pilot talimatıyla gemi rıhtıma aborda edildi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "aborda",
+        "aborda",
+        "come alongside",
+        "aborda"
+      ]
+    },
+    {
+      "id": "alabanda",
+      "canonical_term_id": "alabanda",
+      "is_canonical": true,
+      "term_tr": "Alabanda",
+      "term_en": "Hard over",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "manevra",
+      "subtopic_tr": "Manevra",
+      "short_definition_tr": "Alabanda, Manevra kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Alabanda, Manevra uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "alesta",
+        "aborda",
+        "palamar"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Dümen alabanda ile dönüş hızlandırıldı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 3,
+      "search_tokens_tr": [
+        "alabanda",
+        "alabanda",
+        "hard over",
+        "alabanda"
+      ]
+    },
+    {
+      "id": "palamar",
+      "canonical_term_id": "palamar",
+      "is_canonical": true,
+      "term_tr": "Palamar",
+      "term_en": "Mooring line",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Palamar, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Palamar, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "bas-halati",
+        "kic-halati",
+        "spring"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Palamar gerilerek gemi rıhtıma sabitlendi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "palamar",
+        "palamar",
+        "mooring line",
+        "palamar"
+      ]
+    },
+    {
+      "id": "volta",
+      "canonical_term_id": "volta",
+      "is_canonical": true,
+      "term_tr": "Volta",
+      "term_en": "Turn around a bitt",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Volta, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Volta, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "palamar",
+        "baba",
+        "kocboynuzu"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Palamar babaseye volta edildi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "volta",
+        "volta",
+        "turn around a bitt",
+        "volta"
+      ]
+    },
+    {
+      "id": "bas-halati",
+      "canonical_term_id": "bas-halati",
+      "is_canonical": true,
+      "term_tr": "Baş halatı",
+      "term_en": "Head line",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Baş halatı, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Baş halatı, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "palamar",
+        "bas-spring",
+        "spring"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Baş halatı karaya verildi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "bas halati",
+        "baş halatı",
+        "head line",
+        "bas halati"
+      ]
+    },
+    {
+      "id": "kic-halati",
+      "canonical_term_id": "kic-halati",
+      "is_canonical": true,
+      "term_tr": "Kıç halatı",
+      "term_en": "Stern line",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Kıç halatı, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Kıç halatı, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "palamar",
+        "kic-spring",
+        "spring"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Kıç halatı gerilerek gemi sabitlendi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "kic halati",
+        "kıç halatı",
+        "stern line",
+        "kic halati"
+      ]
+    },
+    {
+      "id": "bas-spring",
+      "canonical_term_id": "bas-spring",
+      "is_canonical": true,
+      "term_tr": "Baş spring",
+      "term_en": "Head spring",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Baş spring, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Baş spring, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "spring",
+        "bas-halati",
+        "palamar"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Baş spring rıhtıma verildi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "bas spring",
+        "baş spring",
+        "head spring",
+        "bas spring"
+      ]
+    },
+    {
+      "id": "kic-spring",
+      "canonical_term_id": "kic-spring",
+      "is_canonical": true,
+      "term_tr": "Kıç spring",
+      "term_en": "Stern spring",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Kıç spring, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Kıç spring, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "spring",
+        "kic-halati",
+        "palamar"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Kıç spring uygun voltayla bağlandı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "kic spring",
+        "kıç spring",
+        "stern spring",
+        "kic spring"
+      ]
+    },
+    {
+      "id": "spring",
+      "canonical_term_id": "spring",
+      "is_canonical": true,
+      "term_tr": "Spring",
+      "term_en": "Spring line",
+      "category_id": "manevra-baglama",
+      "subtopic_id": "baglama",
+      "subtopic_tr": "Bağlama",
+      "short_definition_tr": "Spring, Bağlama kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Spring, Bağlama uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "bas-spring",
+        "kic-spring",
+        "palamar"
+      ],
+      "tags": [
+        "manevra-baglama"
+      ],
+      "usage_examples_tr": [
+        "Spring hattı geminin hareketini kontrol etmek için kullanıldı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "spring",
+        "spring",
+        "spring line",
+        "spring"
+      ]
+    },
+    {
+      "id": "halat",
+      "canonical_term_id": "halat",
+      "is_canonical": true,
+      "term_tr": "Halat",
+      "term_en": "Rope",
+      "category_id": "guverte-isleri-bakim",
+      "subtopic_id": "donanim",
+      "subtopic_tr": "Donanım",
+      "short_definition_tr": "Halat, Donanım kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Halat, Donanım uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "palamar",
+        "volta",
+        "makara"
+      ],
+      "tags": [
+        "guverte-isleri-bakim"
+      ],
+      "usage_examples_tr": [
+        "Halatın aşınma kontrolü güverte vardiyasında yapılır."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "halat",
+        "halat",
+        "rope",
+        "halat"
+      ]
+    },
+    {
+      "id": "mapa",
+      "canonical_term_id": "mapa",
+      "is_canonical": true,
+      "term_tr": "Mapa",
+      "term_en": "Padeye",
+      "category_id": "guverte-isleri-bakim",
+      "subtopic_id": "donanim",
+      "subtopic_tr": "Donanım",
+      "short_definition_tr": "Mapa, Donanım kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Mapa, Donanım uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "kocboynuzu",
+        "baba",
+        "halat"
+      ],
+      "tags": [
+        "guverte-isleri-bakim"
+      ],
+      "usage_examples_tr": [
+        "Sapan mapa ile güvenli şekilde bağlandı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "mapa",
+        "mapa",
+        "padeye",
+        "mapa"
+      ]
+    },
+    {
+      "id": "kocboynuzu",
+      "canonical_term_id": "kocboynuzu",
+      "is_canonical": true,
+      "term_tr": "Koçboynuzu",
+      "term_en": "Cleat",
+      "category_id": "guverte-isleri-bakim",
+      "subtopic_id": "donanim",
+      "subtopic_tr": "Donanım",
+      "short_definition_tr": "Koçboynuzu, Donanım kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Koçboynuzu, Donanım uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "baba",
+        "volta",
+        "halat"
+      ],
+      "tags": [
+        "guverte-isleri-bakim"
+      ],
+      "usage_examples_tr": [
+        "Halat koçboynuzuna volta edildi."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "kocboynuzu",
+        "koçboynuzu",
+        "cleat",
+        "kocboynuzu"
+      ]
+    },
+    {
+      "id": "baba",
+      "canonical_term_id": "baba",
+      "is_canonical": true,
+      "term_tr": "Baba",
+      "term_en": "Bollard",
+      "category_id": "guverte-isleri-bakim",
+      "subtopic_id": "donanim",
+      "subtopic_tr": "Donanım",
+      "short_definition_tr": "Baba, Donanım kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Baba, Donanım uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "kocboynuzu",
+        "volta",
+        "palamar"
+      ],
+      "tags": [
+        "guverte-isleri-bakim"
+      ],
+      "usage_examples_tr": [
+        "Palamar baba üzerine voltalandı."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "baba",
+        "baba",
+        "bollard",
+        "baba"
+      ]
+    },
+    {
+      "id": "makara",
+      "canonical_term_id": "makara",
+      "is_canonical": true,
+      "term_tr": "Makara",
+      "term_en": "Block/Pulley",
+      "category_id": "guverte-isleri-bakim",
+      "subtopic_id": "donanim",
+      "subtopic_tr": "Donanım",
+      "short_definition_tr": "Makara, Donanım kapsamında kullanılan temel bir denizcilik terimidir.",
+      "long_definition_tr": "Makara, Donanım uygulamalarında standart iletişim ve raporlama için kullanılır. Operasyonel planlama ve eğitim süreçlerinde doğru anlamlandırılması önemlidir. Günlük gemi operasyonlarında pratik karşılığı bulunan bir kavramdır.",
+      "synonyms_tr": [],
+      "abbreviations": [],
+      "related_terms": [
+        "halat",
+        "mapa",
+        "kocboynuzu"
+      ],
+      "tags": [
+        "guverte-isleri-bakim"
+      ],
+      "usage_examples_tr": [
+        "Makara üzerinden geçirilen halat daha kontrollü çekilir."
+      ],
+      "common_mistakes_tr": [],
+      "disambiguation_note_tr": "",
+      "source_hint": "genel denizcilik kullanımı",
+      "difficulty": 2,
+      "search_tokens_tr": [
+        "makara",
+        "makara",
+        "block",
+        "makara"
+      ]
     }
   ],
   "batch_meta": {
     "pack_id": "core_pack",
     "batch_id": "core_pack_batch_1",
     "target_total_core_terms": 1500,
-    "batch_size": 300,
+    "batch_size": 320,
     "category_term_counts": {
       "seyir-navigasyon": 20,
       "gemi-yapisi-donanim": 20,
@@ -10513,10 +11213,10 @@
       "meteoroloji-osinografi": 20,
       "haberlesme-vhf-gmdss": 20,
       "liman-operasyonlari-kargo": 20,
-      "manevra-baglama": 20,
+      "manevra-baglama": 35,
       "deniz-hukuku-belgeler": 20,
       "ecdis-ais-radar-elektronik": 20,
-      "guverte-isleri-bakim": 20,
+      "guverte-isleri-bakim": 25,
       "balast-yakit-tank": 20,
       "cevre-marpol": 20,
       "personel-rutbeler": 20,
@@ -10720,7 +11420,7 @@
         "status": "ok"
       },
       "manevra-baglama": {
-        "count": 20,
+        "count": 35,
         "target_min": 20,
         "status": "ok"
       },
@@ -10735,7 +11435,7 @@
         "status": "ok"
       },
       "guverte-isleri-bakim": {
-        "count": 20,
+        "count": 25,
         "target_min": 20,
         "status": "ok"
       },
