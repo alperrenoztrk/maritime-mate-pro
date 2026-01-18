@@ -1,11 +1,26 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, cache-control, pragma",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-};
+// CORS configuration - restrict to known origins
+const ALLOWED_ORIGINS = [
+  'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
+  'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
+  'capacitor://localhost',
+  'http://localhost:5173',
+  'http://localhost:8080',
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const isAllowed = origin && (
+    ALLOWED_ORIGINS.includes(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
+    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
+  );
+  return {
+    "Access-Control-Allow-Origin": isAllowed ? origin : ALLOWED_ORIGINS[0],
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, cache-control, pragma",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  };
+}
 
 type Suggestion = {
   id: string;
@@ -24,11 +39,17 @@ type TideEvent = {
 function json(
   body: unknown,
   init?: { status?: number; headers?: Record<string, string> },
+  corsHeaders?: Record<string, string>,
 ) {
+  const defaultCors = {
+    "Access-Control-Allow-Origin": ALLOWED_ORIGINS[0],
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, cache-control, pragma",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  };
   return new Response(JSON.stringify(body), {
     status: init?.status ?? 200,
     headers: {
-      ...corsHeaders,
+      ...(corsHeaders || defaultCors),
       "Content-Type": "application/json",
       ...(init?.headers ?? {}),
     },
@@ -186,6 +207,8 @@ function computeRangeM(events: TideEvent[]): number | null {
 }
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
@@ -197,7 +220,7 @@ serve(async (req) => {
     const locId = typeof body.loc_id === "string" ? body.loc_id.trim() : "";
 
     if (!query) {
-      return json({ error: "query is required" }, { status: 400 });
+      return json({ error: "query is required" }, { status: 400 }, corsHeaders);
     }
 
     // 1) Search suggestions
@@ -221,10 +244,11 @@ serve(async (req) => {
         return json(
           { error: `autocomplete failed: ${res.status}` },
           { status: 502 },
+          corsHeaders,
         );
       }
       const suggestions = parseAutocompleteResponse(res.text);
-      return json({ suggestions });
+      return json({ suggestions }, undefined, corsHeaders);
     }
 
     // 2) Resolve to location URL (302 redirect) and fetch tides
@@ -256,6 +280,7 @@ serve(async (req) => {
           status: catchRes.status,
         },
         { status: 502 },
+        corsHeaders,
       );
     }
 
@@ -277,6 +302,7 @@ serve(async (req) => {
       return json(
         { error: `tides page fetch failed: ${tidesRes.status}`, locationUrl },
         { status: 502 },
+        corsHeaders,
       );
     }
 
@@ -293,10 +319,10 @@ serve(async (req) => {
         // Cache lightly to reduce upstream hits; user can refresh anytime.
         "Cache-Control": "public, max-age=120",
       },
-    });
+    }, corsHeaders);
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown error";
-    return json({ error: message }, { status: 500 });
+    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+    return json({ error: message }, { status: 500 }, corsHeaders);
   }
 });
-
