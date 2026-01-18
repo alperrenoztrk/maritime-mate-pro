@@ -1,32 +1,18 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-
-// CORS configuration - restrict to known origins
-const ALLOWED_ORIGINS = [
-  'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
-  'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
-  'capacitor://localhost',
-  'http://localhost:5173',
-  'http://localhost:8080',
-];
-
-function getCorsHeaders(origin: string | null): Record<string, string> {
-  const isAllowed = origin && (
-    ALLOWED_ORIGINS.includes(origin) ||
-    /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
-    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
-  );
-  return {
-    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
-    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  };
-}
+import { getCorsHeaders } from "../_shared/cors.ts";
+import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
 
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Validate authentication
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
   }
 
   try {
@@ -34,53 +20,30 @@ serve(async (req) => {
 
     if (!text || !targetLanguage) {
       return new Response(
-        JSON.stringify({ error: 'Text and targetLanguage are required' }),
+        JSON.stringify({ error: GENERIC_ERRORS.INVALID_INPUT }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
     const apiKey = Deno.env.get('LOVABLE_API_KEY');
     if (!apiKey) {
-      console.error('LOVABLE_API_KEY is not set');
-      return new Response(
-        JSON.stringify({ error: 'Translation service not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      logError('translate', 'API key not configured');
+      return errorResponse(corsHeaders, 503, GENERIC_ERRORS.NOT_CONFIGURED);
     }
 
-    // Language names for better translation
     const languageNames: Record<string, string> = {
-      'en': 'English',
-      'tr': 'Turkish',
-      'es': 'Spanish',
-      'de': 'German',
-      'fr': 'French',
-      'it': 'Italian',
-      'pt': 'Portuguese',
-      'ru': 'Russian',
-      'ja': 'Japanese',
-      'ko': 'Korean',
-      'zh-CN': 'Chinese (Simplified)',
-      'ar': 'Arabic',
-      'hi': 'Hindi',
-      'nl': 'Dutch',
-      'sv': 'Swedish',
-      'no': 'Norwegian',
-      'da': 'Danish',
-      'fi': 'Finnish',
-      'pl': 'Polish',
-      'cs': 'Czech',
-      'hu': 'Hungarian',
-      'ro': 'Romanian',
-      'el': 'Greek',
-      'bg': 'Bulgarian',
-      'uk': 'Ukrainian'
+      'en': 'English', 'tr': 'Turkish', 'es': 'Spanish', 'de': 'German',
+      'fr': 'French', 'it': 'Italian', 'pt': 'Portuguese', 'ru': 'Russian',
+      'ja': 'Japanese', 'ko': 'Korean', 'zh-CN': 'Chinese (Simplified)',
+      'ar': 'Arabic', 'hi': 'Hindi', 'nl': 'Dutch', 'sv': 'Swedish',
+      'no': 'Norwegian', 'da': 'Danish', 'fi': 'Finnish', 'pl': 'Polish',
+      'cs': 'Czech', 'hu': 'Hungarian', 'ro': 'Romanian', 'el': 'Greek',
+      'bg': 'Bulgarian', 'uk': 'Ukrainian'
     };
 
     const sourceLangName = languageNames[sourceLanguage] || sourceLanguage;
     const targetLangName = languageNames[targetLanguage] || targetLanguage;
 
-    // Use Lovable AI Gateway for translation
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -96,50 +59,32 @@ serve(async (req) => {
           },
           { role: 'user', content: text }
         ],
-        temperature: 0.3, // Lower temperature for more consistent translations
+        temperature: 0.3,
       }),
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Lovable AI error:', response.status, errorText);
+      logError('translate', `AI Gateway returned ${response.status}`);
       
       if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+        return errorResponse(corsHeaders, 429, GENERIC_ERRORS.RATE_LIMIT);
       }
-      
       if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: 'Payment required. Please add credits to your workspace.' }),
-          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+        return errorResponse(corsHeaders, 402, 'Kredi limitiniz doldu.');
       }
 
-      return new Response(
-        JSON.stringify({ error: 'Translation failed', details: errorText }),
-        { status: response.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return errorResponse(corsHeaders, 500, GENERIC_ERRORS.SERVICE_ERROR);
     }
 
     const data = await response.json();
     const translatedText = data.choices?.[0]?.message?.content?.trim() || text;
-
-    console.log(`Translated: "${text}" -> "${translatedText}" (${sourceLanguage} -> ${targetLanguage})`);
 
     return new Response(
       JSON.stringify({ translatedText }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
-    console.error('Error in translate function:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
-    return new Response(
-      JSON.stringify({ error: errorMessage }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    logError('translate', error);
+    return errorResponse(corsHeaders);
   }
 });

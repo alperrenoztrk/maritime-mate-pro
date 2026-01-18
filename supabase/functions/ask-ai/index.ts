@@ -1,6 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
+import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
 serve(async (req) => {
   const origin = req.headers.get('origin');
@@ -11,56 +12,44 @@ serve(async (req) => {
     return new Response('ok', { headers: corsHeaders });
   }
 
+  // Validate authentication
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
+  }
+
   let question: string = '';
   let values: any;
   let conversationHistory: Array<{question: string, answer: string}> | undefined;
   
   try {
-    console.log('Request received:', req.method);
-    
     const body = await req.json();
-    console.log('Request body:', body);
     
     ({ question, values, conversationHistory } = body);
     
     // Input validation and sanitization
     if (!question || typeof question !== 'string') {
-      console.log('Invalid question provided');
       return new Response(
-        JSON.stringify({ error: 'Geçersiz soru formatı' }),
+        JSON.stringify({ error: GENERIC_ERRORS.INVALID_INPUT }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
     
     // Sanitize question input
-    const sanitizedQuestion = question.slice(0, 1000).trim(); // Limit length and trim
+    const sanitizedQuestion = question.slice(0, 1000).trim();
     
     if (!sanitizedQuestion) {
-      console.log('Empty question after sanitization');
       return new Response(
         JSON.stringify({ error: 'Soru eksik' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Question received:', question);
-    console.log('Values received:', values);
-
     // API anahtarlarını al - ONLY from environment variables (secure)
     const geminiApiKey = Deno.env.get('GEMINI_API_KEY');
     const wolframApiKey = Deno.env.get('WOLFRAM_API_KEY');
     
-    // Log missing keys for debugging (without exposing values)
     if (!geminiApiKey) {
-      console.log('GEMINI_API_KEY is not configured');
-    }
-    
-    if (!wolframApiKey) {
-      console.log('WOLFRAM_API_KEY is not configured');
-    }
-    
-    if (!geminiApiKey) {
-      console.log('API keys missing - returning local answer');
       return new Response(
         JSON.stringify({ 
           answer: getLocalAnswer(question, conversationHistory),
@@ -71,15 +60,12 @@ serve(async (req) => {
       );
     }
 
-    console.log('API keys found, starting hybrid calculation...');
-
     // 1. Önce AI açıklama al
     const aiExplanation = await getGeminiExplanation(question, values, geminiApiKey, conversationHistory);
     
     // 2. Wolfram hesaplama yap (eğer değerler ve API key varsa)
     let wolframResult = null;
     if (values && Object.keys(values).length > 0 && wolframApiKey) {
-      console.log('Performing Wolfram calculation with values:', values);
       wolframResult = await performWolframCalculation(question, values, wolframApiKey);
     }
 
@@ -96,14 +82,12 @@ serve(async (req) => {
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
-    console.error('Error in ask-ai function:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    logError('ask-ai', error);
     const localAnswer = getLocalAnswer(question, conversationHistory);
     return new Response(
       JSON.stringify({ 
         answer: localAnswer,
-        source: 'local',
-        error: errorMessage
+        source: 'local'
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
