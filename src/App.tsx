@@ -12,6 +12,7 @@ import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
 import Index from "./pages/Index";
 import CalculationsMenu from "./pages/CalculationsMenu";
+import TermsGlossary from "./pages/TermsGlossary";
 import LessonsPage from "./pages/LessonsPage";
 import CrewHierarchyPage from "./pages/CrewHierarchyPage";
 import BridgeDevicesPage from "./pages/BridgeDevicesPage";
@@ -159,6 +160,7 @@ const AnimatedRoutes = () => {
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/widgets" element={<PageTransition><WidgetPage /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
+        <Route path="/terms-glossary" element={<PageTransition><TermsGlossary /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
