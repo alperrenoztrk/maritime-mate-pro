@@ -34,7 +34,6 @@ import enlemParallels from "@/assets/navigation/enlem-parallels.jpg";
 import enlemDefinition from "@/assets/navigation/enlem-definition.jpg";
 import enlemRegions from "@/assets/navigation/enlem-regions.jpg";
 import enlemNauticalMile from "@/assets/navigation/enlem-nautical-mile.jpg";
-import enlemPlaneSailing from "@/assets/navigation/enlem-plane-sailing.jpg";
 import enlemNewOrleans from "@/assets/navigation/enlem-new-orleans.jpg";
 
 // Import images - Boylam
@@ -692,27 +691,46 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem Değişimi (DLat) Kavramı",
-        content: "Bir gemi kuzeye veya güneye hareket ettiğinde enlem değişimi (Difference of Latitude – DLat) meydana gelir. DLat kuzeye gidiliyorsa artı (+), güneye gidiliyorsa eksi (−) kabul edilir.",
-        image: enlemPlaneSailing,
-        imageAlt: "Düzlem seyir ve enlem değişimi formülleri",
-        bulletPoints: [
-          "DLat = Mesafe × cos(kurs)",
-          "Bu ifade, geminin gerçek hareketinin kuzey–güney bileşenini verir",
-          "Düzlem seyirde temel hesaplama formülüdür"
-        ],
-        formula: {
-          text: "DLat = Mesafe × cos(Kurs)",
-          description: "Örnek: 120 NM mesafe, 030° kurs → DLat = 120 × cos(30°) ≈ 103.9′"
-        }
-      },
-      {
-        title: "Örnek – Enlem Değişimi Hesabı",
-        content: "Başlangıç enlemi 36°20′N, kurs 030° ve mesafe 120 deniz mili olan bir gemi için yeni enlem hesaplanabilir.",
-        bulletPoints: [
-          "DLat = 120 × cos(30°) = 120 × 0.866 ≈ 103.9′",
-          "DLat ≈ 1°43.9′",
-          "Yeni enlem: 36°20′ + 1°43.9′ = 38°03.9′N"
-        ]
+        content: `![DLat şeması](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+![DLat düzlem seyir şeması](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+![DLat örnek diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2012/11/diag-ex8.jpeg)
+![DLat kurs–mesafe ilişkisi](https://astronavigationdemystified.com/wp-content/uploads/2017/08/new-diag-14-blue.jpg)
+
+DLat (Difference of Latitude), bir geminin seyri sırasında başlangıç ve varış enlemleri arasındaki farkı ifade eder. Düzlem seyirde DLat, kuzey–güney doğrultusundaki yer değiştirmeyi temsil eder ve rota–mesafe ilişkilerinin temel bileşenlerinden biridir. Enlem değişimi, doğrudan meridyenler boyunca ölçülür ve denizcilikte dakikalık enlem farkı deniz mili cinsinden mesafeye eşdeğerdir.
+
+Düzlem seyirde geminin kat ettiği mesafe, kurs doğrultusuna göre kuzey–güney ve doğu–batı bileşenlerine ayrılır. Bu ayrımda DLat, toplam mesafenin kursun kosinüsü ile çarpılmasıyla elde edilir. Kurs açısı gerçek kuzeye göre ölçülür ve kuzey–güney bileşeninin işaretini belirler.
+
+────────────────
+DLAT HESAP FORMÜLÜ
+────────────────
+DLat = Mesafe × cos(Kurs)
+
+DLat dakika cinsinden bulunur. Kuzeye doğru seyir pozitif, güneye doğru seyir negatif kabul edilir.
+
+────────────────
+ÖRNEK HESAP
+────────────────
+Mesafe: 120 deniz mili  
+Kurs: 030°
+
+cos 030° = 0,866
+
+DLat = 120 × 0,866 = 103,9 dakika
+
+Bu sonuç, geminin yaklaşık 103,9 deniz mili kuzeye doğru ilerlediğini gösterir.
+
+Başlangıç enlemi 38° 20,0′ N olsun.
+
+Yeni enlem = 38° 20,0′ + 103,9′  
+103,9′ = 1° 43,9′
+
+Yeni enlem = 40° 03,9′ N
+
+Bu sonuç, geminin seyir sonunda 40° 03,9′ N enlemine ulaştığını gösterir.
+
+DLat hesaplarında yapılan en yaygın hata, kurs açısının yanlış referansla kullanılmasıdır. Kursun manyetik veya pusula değeriyle doğrudan trigonometrik hesaplara sokulması akademik olarak yanlıştır. Düzlem seyirde tüm trigonometrik hesaplar gerçek kurs üzerinden yapılır. Ayrıca işaret kontrolü yapılmadan mutlak değerle işlem yapılması, kuzey–güney yönünün ters yorumlanmasına yol açar.
+
+DLat, kısa ve orta mesafeli seyirlerde pratik ve yeterli doğruluk sağlar. Ancak mesafe büyüdükçe veya yüksek enlemlere çıkıldıkça düzlem seyir varsayımının sınırları zorlanır ve enlem değişimi hesaplarında biriken hatalar anlamlı hale gelir. Bu durumda orta enlem veya büyük daire yöntemlerine geçilmesi gerekir.`
       },
       {
         title: "Enlemin Göksel Seyirdeki Rolü",
