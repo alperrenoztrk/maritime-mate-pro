@@ -1942,7 +1942,51 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       },
       {
         title: "Harita Datum’u ve Elektronik Seyir",
-        content: "Harita datum’u, deniz haritası üzerindeki tüm koordinatların yeryüzü ile hangi matematiksel modele göre ilişkilendirildiğini belirleyen referans sistemidir. Bir datum, dünyanın şeklinin ve boyutlarının nasıl kabul edildiğini tanımlar; bu kabul, enlem ve boylam değerlerinin harita üzerinde hangi noktalara karşılık geleceğini belirler. Datum bilgisi doğru anlaşılmadan yapılan mevki işaretlemeleri sayısal olarak tutarlı görünse bile fiziksel olarak yanlış bir konuma karşılık gelir. Modern denizcilikte en yaygın kullanılan datum WGS-84’tür; çünkü GPS sistemleri de aynı datum’u kullanır. Ancak daha eski haritalarda farklı datum’lar bulunabilir ve bu durum seyirde ciddi hatalara yol açabilir.",
+        content: `Harita datum, bir deniz haritasında yer alan tüm coğrafi koordinatların hangi referans yüzeyine göre tanımlandığını ifade eder. Enlem ve boylam değerlerinin matematiksel olarak anlam kazanabilmesi, kullanılan datumun doğru bilinmesine bağlıdır. Datum farkı göz ardı edildiğinde, harita üzerinde doğru görünen bir pozisyon pratikte ciddi mevki hatalarına yol açabilir.
+
+Denizcilikte modern elektronik sistemlerin büyük bölümü **WGS-84** datumunu kullanır. Ancak kâğıt haritaların tamamı bu datumda basılmamıştır. Özellikle eski baskı haritalar, bölgesel veya ulusal datumlara göre hazırlanmış olabilir. Bu durum, GPS’ten alınan pozisyonun doğrudan haritaya aktarılması halinde sistematik bir konum kayması oluşturur.
+
+Harita üzerinde kullanılan datum bilgisi, haritanın kenar bilgileri kısmında açıkça belirtilir. Seyir öncesinde bu bilginin kontrol edilmemesi, planlama aşamasında yapılan en temel hatalardan biridir. Akademik olarak küçük görünen datum farkları, kıyıya yakın seyirlerde ve dar su geçişlerinde emniyet açısından kabul edilemez sonuçlar doğurabilir.
+
+![Harita datum referans yüzeyi örneği](https://minio.scielo.br/documentstore/2675-2824/VBXJjWCRmF7CNC6BNz4J5Jf/128d62d0c20708aaa874853f14d79c9e66b3b2a0.png)
+
+![Datum uyumsuzluğu görsel örneği](https://ihr.iho.int/wp-content/uploads/2021/08/word-image-186.png)
+
+![Datum uyumsuzluğu konum farkı örneği](https://ihr.iho.int/wp-content/uploads/2021/08/word-image-187.png)
+
+────────────────
+DATUM KAYMASI PRENSİBİ
+────────────────
+Gerçek mevki = GPS mevkii ± Datum düzeltmesi
+
+Datum düzeltmesi, harita üzerinde belirtilen kuzey-güney ve doğu-batı yönlü kayma değerlerine göre uygulanır.
+
+────────────────
+ÖRNEK HESAP
+────────────────
+GPS cihazı WGS-84 datumunda çalışıyor olsun.
+Kullanılan kâğıt harita farklı bir datumda basılmış ve harita kenarında şu bilgi yer alsın:
+
+“WGS-84 datumuna dönüştürmek için:
+Enleme +0,08 dakika ekle
+Boylamdan −0,12 dakika çıkar”
+
+GPS’ten alınan mevki:
+Enlem: 40° 15,20′ N
+Boylam: 029° 45,60′ E
+
+Düzeltilmiş enlem = 15,20 + 0,08 = 15,28′
+Düzeltilmiş boylam = 45,60 − 0,12 = 45,48′
+
+Sonuç mevki:
+40° 15,28′ N
+029° 45,48′ E
+
+Bu mevki, GPS ekranında görülen noktadan farklıdır ve harita üzerinde doğru yere işaretlenmesi gerekir. Bu düzeltme yapılmadığında gemi, fark edilmeden planlanan rotanın dışına çıkmış kabul edilir.
+
+Datum konusundaki en yaygın pratik hata, “harita ile GPS zaten aynı şeyi gösteriyor” varsayımıdır. Elektronik seyirde ECDIS bu uyumsuzluğu otomatik olarak yönetse de, kâğıt harita kullanılan gemilerde datum farkının manuel olarak dikkate alınması zorunludur. Ticari pratikte bu kontrolün atlanması, mevki hatasına bağlı karaya oturma vakalarının bilinen nedenleri arasındadır.
+
+![Datum kayması tek fark yöntemi örneği](https://www.e-education.psu.edu/geog862/sites/www.e-education.psu.edu.geog862/files/images/Lesson02/BetweenReceiversSingleDifference.png)`,
         bulletPoints: [
           "Datum bilgisi kenar bölümünde açıkça yazılıdır",
           "ECDIS/GPS ile birlikte kullanıldığında kritik öneme sahiptir",
