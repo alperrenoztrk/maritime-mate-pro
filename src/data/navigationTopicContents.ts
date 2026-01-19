@@ -1652,55 +1652,54 @@ Bu örnek, ETA’nın neden dinamik bir değer olduğunu açıkça gösterir.`,
   },
   "Rota ölçümü": {
     title: "Rota Ölçümü",
-    introduction: "Rota ölçümü, deniz haritası üzerinde belirlenen iki nokta arasındaki doğrultunun hakiki kuzeye göre açısal değerinin bulunması işlemidir. Bu işlem, seyirde yön kavramının harita üzerindeki somut karşılığıdır ve tüm hız–zaman–mesafe hesaplarının doğru bir doğrultuda uygulanabilmesi için zorunludur. Rota ölçümü yalnızca bir açı okumak değildir; haritanın projeksiyonu, meridyen yapısı ve kullanılan ölçüm aracının doğru referansla kullanılması bu işlemin ayrılmaz parçalarıdır.",
+    introduction:
+      "Rota ölçümü, bir geminin harita üzerindeki iki nokta arasındaki doğrultusunun, hakiki kuzeye göre açı cinsinden belirlenmesidir. Bu açı, kurs (course) olarak ifade edilir ve seyir planlamasında dümen komutlarının, akıntı ve rüzgâr düzeltmelerinin temelini oluşturur. Rota ölçümü doğru yapılmadığında, mesafe ve hız hesapları doğru olsa dahi gemi hedeflenen hatta ilerleyemez.",
     sections: [
       {
-        title: "Hakiki Sistem ve Referans",
-        content: "Deniz haritalarında rota her zaman hakiki sistemde ölçülür. Harita üzerindeki meridyenler hakiki kuzey–hakiki güney doğrultusunu temsil ettiği için, yapılan her açı ölçümü doğrudan hakiki rota değerini verir. Bu nedenle harita üzerinde ölçülen rota, manyetik veya pusula değil, daima hakiki rota olarak kabul edilir. Daha sonra gerekiyorsa variation ve deviation düzeltmeleriyle diğer sistemlere geçilir."
+        title: "Hakiki Kuzey Referansı",
+        content:
+          "Deniz haritalarında rota ölçümü her zaman hakiki kuzeye göre yapılır. Manyetik kuzey veya pusula kuzeyi bu aşamada kullanılmaz; manyetik ve pusula düzeltmeleri, hakiki rotadan diğer sistemlere geçişte uygulanır.",
+        image: "https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navtex_files/image044.gif",
+        imageAlt: "Pusula gülü üzerinde hakiki kuzey referansı"
       },
       {
-        title: "Ölçümün Temel Mantığı",
-        content: "Rota ölçümünün temel mantığı, ölçülecek rota hattı ile bir meridyen doğrultusu arasındaki saat yönündeki açının bulunmasına dayanır. Bu açı, 0° ile 360° arasında ifade edilir. Ölçüm sırasında kullanılan referans çizgisi mutlaka meridyen olmalıdır; paralel çizgiler veya harita kenarı, yalnızca meridyen doğrultusuna paralel oldukları sürece referans olarak kullanılabilir."
+        title: "Ölçüm Araçları",
+        content:
+          "Rota ölçümü, paralel cetvel veya açıölçer (course plotter) yardımıyla yapılır. Paralel cetvel rota hattına yerleştirilir ve doğrultu bozulmadan pusula gülüne taşınır. Açıölçerde ise açı doğrudan rota hattı üzerinde okunur.",
+        image: "https://m.media-amazon.com/images/I/51aC8QSTz6L.jpg",
+        imageAlt: "Paralel cetvel"
       },
       {
-        title: "Araçlar: Paralel Cetvel ve Üçgen Cetvel",
-        content: "Pratikte rota ölçümü paralel cetvel veya üçgen cetvel yardımıyla yapılır. Paralel cetvel, seçilen doğrultunun bozulmadan haritanın kenarındaki meridyene taşınmasını sağlar. Üçgen cetvellerde ise bir üçgen sabit tutulur, diğeri onun üzerinden kaydırılarak aynı paralellik elde edilir. Kullanılan aracın türü değişse de mantık aynıdır: rota hattını, meridyen doğrultusuyla aynı noktada kesişecek şekilde taşımak ve açı değerini buradan okumak."
+        title: "Pusula Gülüne Taşıma",
+        content:
+          "Temel prensip, ölçümün rota hattı boyunca taşınarak pusula gülüne ulaştırılmasıdır. Harita üzerinde birden fazla pusula gülü bulunabilir; rota hattına en yakın olanı kullanmak doğru sonuç verir.",
+        image: "https://sailingissues.com/chart-symbols/portland-course-plotter.png",
+        imageAlt: "Haritada açıölçer ile rota okuma"
       },
       {
-        title: "Uygulama Adımları",
-        content: "Önce başlangıç ve varış noktaları harita üzerinde net olarak belirlenir. Bu iki nokta arasına ince, düz bir rota hattı çizilir. Paralel cetvel bu hatta yerleştirilir ve cetvel bozulmadan haritanın bir meridyen çizgisine taşınır. Cetvel meridyenle çakıştığında, cetvel üzerindeki rota hattı ile meridyen arasındaki açı, pusula gülü veya derece skalası üzerinden okunur. Okunan değer, hakiki rotadır."
+        title: "Rota Ölçüm Prensibi",
+        content:
+          "Gerçek rota açısı, rota hattı ile hakiki kuzey arasındaki açıdır. Bu açı 000°–360° aralığında ifade edilir ve her zaman hakiki kuzeye referanslıdır.",
+        image: "https://image.jimcdn.com/app/cms/image/transf/dimension%3D455x1024%3Aformat%3Dpng/path/sd6ea49279f075268/image/i083f50a99fdecce1/version/1604740744/image.png",
+        imageAlt: "Rota hattı ile hakiki kuzey arasındaki açı"
       },
       {
-        title: "Kritik Hata: Yönün Ters Okunması",
-        content: "Bu ölçümde yapılan en kritik hata, açının yanlış yönde okunmasıdır. Denizcilikte rota, her zaman kuzeyden başlayarak saat yönünde ölçülür. Güneyden, doğudan veya ters yönde yapılan okumalar, sayısal olarak doğru görünen ancak fiziksel olarak yanlış bir rota üretir. Bu nedenle ölçüm sırasında zihinsel olarak “kuzeyden saat yönünde” kuralı sürekli korunmalıdır."
+        title: "Örnek Hesap",
+        content:
+          "Harita üzerinde A noktasından B noktasına çizilmiş bir rota hattı olsun. Paralel cetvel rota hattına yerleştirilip pusula gülüne taşındığında açı 065° olarak okunsun.\n\nGerçek rota = 065°\n\nAynı rota için ölçüm ters yönde, yani B’den A’ya yapılırsa okunan açı 245° olur. Bu durum, rota ölçümünde yön kavramının kritik olduğunu gösterir."
       },
       {
-        title: "Karşı Rota",
-        content: "Rota ölçümü ile birlikte sıkça kullanılan kavramlardan biri de karşı rotadır. Bir rotanın karşı rotası, aynı hattın ters yönde izlenmesi anlamına gelir ve hakiki rota değerine 180° eklenerek veya çıkarılarak bulunur.",
-        formula: {
-          text: "Karşı Rota = Hakiki Rota ± 180°",
-          description: "Hakiki rota 180°’den küçükse 180° eklenir, 180°’den büyükse 180° çıkarılır."
-        }
-      },
-      {
-        title: "Projeksiyon ve Enlem Etkisi",
-        content: "Rota ölçümünde harita projeksiyonunun etkisi de göz önünde bulundurulmalıdır. Mercator projeksiyonunda doğrultular düz çizgi olarak görünür; bu, sabit rota seyri için büyük bir avantajdır. Ancak yüksek enlemlerde meridyenler arasındaki mesafe arttığı için, ölçüm hassasiyeti düşebilir. Bu bölgelerde rota ölçümü daha dikkatli yapılmalı ve mümkünse daha büyük ölçekli haritalar tercih edilmelidir."
-      },
-      {
-        title: "Ölçek Seçimi",
-        content: "Rota ölçümünün her zaman uygun ölçekli harita üzerinde yapılması gerekir. Küçük ölçekli bir haritada ölçülen rota, genel seyir için yeterli olabilir; ancak dar sularda ve liman yaklaşmalarında büyük ölçekli haritalara geçilmeden bu rota kullanılmamalıdır. Aynı rota hattı, büyük ölçekli haritada sığlıklar veya engellerle çakışabilir."
-      },
-      {
-        title: "Disiplinli Uygulama",
-        content: "Rota ölçümü, denizcilikte en temel işlemlerden biri gibi görünse de, hataya en açık konulardan biridir. Yanlış referans çizgisi, yanlış yönde açı okuma veya yanlış ölçekli harita kullanımı, tüm seyir planını geçersiz hâle getirebilir. Bu nedenle rota ölçümü, mekanik bir cetvel hareketi değil; yön kavramı, harita yapısı ve matematiksel disiplinin birlikte uygulandığı bilinçli bir süreç olarak ele alınmalıdır."
+        title: "Yaygın Hatalar",
+        content:
+          "Rota ölçümünde sık yapılan hatalardan biri pusula gülünün yanlış merkezden okunmasıdır. Ayrıca manyetik varyasyon değerlerini bu aşamada rotaya eklemek yanlıştır; düzeltmeler hakiki rotadan manyetik ve pusula rotasına geçilirken yapılır."
       }
     ],
     keyPoints: [
       "Rota ölçümü haritada her zaman hakiki (true) sistemdedir",
-      "Açı kuzeyden başlayarak saat yönünde okunur",
-      "Referans çizgisi meridyen doğrultusu olmalıdır",
-      "Paralel cetvel doğrultuyu meridyene taşımak için kullanılır",
-      "Yanlış yön okuma ve yanlış ölçek seçimi ciddi rota hatası doğurur"
+      "Açı, kuzeyden başlayarak saat yönünde okunur",
+      "Ölçüm, rota hattı pusula gülüne taşınarak yapılır",
+      "Karşı yönde ölçüm 180° fark yaratır",
+      "Manyetik ve pusula düzeltmeleri bu aşamada yapılmaz"
     ]
   },
   "Hakiki kuzey (True)": {
