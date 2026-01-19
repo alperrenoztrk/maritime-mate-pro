@@ -20,6 +20,11 @@ import latitudeMeasurement2 from "@/assets/navigation/latitude-measurement-2.jpg
 import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import longitudeTime1 from "@/assets/navigation/longitude-time-1.png";
 import longitudeTime2 from "@/assets/navigation/longitude-time-2.png";
+
+// Import images - Rota Planlama
+import ecdisDisplay from "@/assets/navigation/ecdis-display.svg";
+import radarDisplay from "@/assets/navigation/radar-display.svg";
+import weatherSystems from "@/assets/navigation/weather-systems.svg";
 import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
 import longitudeDistance1 from "@/assets/navigation/longitude-distance-1.jpg";
 import longitudeDistance2 from "@/assets/navigation/longitude-distance-2.jpg";
@@ -9259,6 +9264,106 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       "Multipath, sözde mesafeyi uzatarak mevki sapması üretir.",
       "Karıştırma ve aldatma, çalışıyor görünen fakat yanlış mevki üreten en kritik risktir.",
       "GPS tek başına değil, radar, pusula ve görsel mevki ile çapraz kontrol edilmelidir."
+    ]
+  },
+  "Rota planlama": {
+    title: "Rota Planlama",
+    introduction:
+      "Rota planlama, geminin kalkış noktasından varış noktasına emniyetli, uygulanabilir ve kontrol edilebilir bir seyir hattı oluşturma sürecidir. Bu süreç yalnızca harita üzerinde bir hat çizmekle sınırlı değildir; geminin su çekimi, manevra kabiliyeti, meteorolojik koşullar, trafik düzenleri ve operasyonel kısıtlar birlikte değerlendirilir. ECDIS güçlü bir yardımcıdır; ancak karar verici değildir.",
+    sections: [
+      {
+        title: "Planlamanın Emniyet Temeli",
+        content:
+          "Rota, **emniyetli** (tehlikelerden uzak), **uygulanabilir** (dönüş yarıçapı ve hızla uyumlu) ve **kontrol edilebilir** (izlenebilir ve revize edilebilir) olmalıdır. Bu üç kriter, rota kalitesinin asıl ölçütüdür. Planlamada geminin draft’ı, minimum derinlik gereksinimi ve manevra sınırları başlangıç parametreleri olarak alınır.",
+        image: ecdisDisplay,
+        imageAlt: "ECDIS üzerinde rota planlama görünümü",
+        bulletPoints: [
+          "Rota, draft ve emniyet payı dikkate alınarak çizilir.",
+          "Manevra sınırları, dönüş noktalarının aralığını belirler.",
+          "Rota, sadece çizim değil sürekli kontrol edilen bir süreçtir."
+        ]
+      },
+      {
+        title: "Harita Analizi ve Dönüş Noktaları",
+        content:
+          "Harita analizi, rota planlamanın başlangıç adımıdır. Sığlıklar, yasaklı sahalar, trafik ayırım düzenleri, demirleme bölgeleri ve raporlama noktaları dikkate alınarak rota koridoru belirlenir. Dönüş noktaları (waypoint) ise geminin dönüş yarıçapı ve hızına uygun olacak şekilde seçilir; dar sularda gereksiz keskin dönüşlerden kaçınılır.",
+        image: chartPlotting,
+        imageAlt: "Harita üzerinde rota çizimi",
+        bulletPoints: [
+          "Seyir emniyeti için büyük ölçekli haritalar kritik alanlarda kullanılır.",
+          "Trafik ayırım düzenleri ve raporlama noktaları rota üzerinde işaretlenir.",
+          "Dönüş noktaları, uygulamada gerçekçi olacak şekilde yerleştirilir."
+        ]
+      },
+      {
+        title: "ECDIS Ayarları ve Rota Kontrolü",
+        content:
+          "ECDIS üzerinde emniyet konturu ve emniyet derinliği ayarları doğru yapılmadıkça rota emniyetli görünse bile operasyonel risk yaratabilir. Rota kontrol (route check) fonksiyonu, sadece tanımlanmış parametreler kadar etkilidir. Bu nedenle emniyet derinliği, su çekimi, squat ve dalga etkisi gibi unsurlar göz önünde bulundurulmalıdır.",
+        image: radarDisplay,
+        imageAlt: "ECDIS ve radar destekli rota kontrolü",
+        bulletPoints: [
+          "Emniyet derinliği ayarı, geminin gerçek draft’ı ile uyumlu olmalıdır.",
+          "Squat ve dalga etkisi, emniyet payını artırmayı gerektirebilir.",
+          "Rota kontrolü, parametreler doğru girildiğinde anlamlıdır."
+        ]
+      },
+      {
+        title: "Dinamik İzleme ve Revizyon",
+        content:
+          "Rota planlama tek seferlik bir işlem değildir. Seyir sırasında rota sürekli izlenir; meteoroloji, akıntı, trafik ve operasyonel kısıtlar değiştikçe plan revize edilir. Bu yaklaşım, rota planlamayı statik değil **dinamik** bir süreç haline getirir.",
+        image: weatherSystems,
+        imageAlt: "Meteorolojik sistemler ve rota revizyonu"
+      },
+      {
+        title: "Temel Formüller",
+        content:
+          "Rota planlamada kullanılan basit ilişkiler, rota üzerindeki performansın izlenmesini kolaylaştırır.",
+        formula: {
+          text: "Mesafe = Hız × Zaman",
+          description: "Hız (kn) ve zaman (saat) kullanıldığında mesafe deniz mili (NM) olarak bulunur."
+        }
+      },
+      {
+        title: "Dönüş Yarıçapı Yaklaşımı",
+        content:
+          "Dönüş yarıçapı, özellikle dar su seyirlerinde rota uygulanabilirliğini belirler. Hız m/s, yan ivme m/s² alınır.",
+        formula: {
+          text: "Dönüş yarıçapı ≈ Hız² ÷ Yan ivme",
+          description: "Hız arttıkça dönüş yarıçapı büyür; dar sularda hız kontrolü kritikleşir."
+        }
+      },
+      {
+        title: "Sapma Kontrolü",
+        content:
+          "Rota üzerindeki sapmalar erken tespit edilmelidir. Bu fark büyüdükçe rota güvenliği azalır.",
+        formula: {
+          text: "Sapma = Gerçek mevki − Planlanan rota hattı",
+          description: "Sapma ölçümü, rota düzeltme kararının zamanında verilmesini sağlar."
+        }
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir gemi için rota planlaması sırasında aşağıdaki veriler verilmiştir:
+
+Planlanan hız = 12 kn  
+Bir rota bacağı süresi = 1 saat 20 dakika
+
+**Adım 1: Sürenin saat cinsine çevrilmesi**  
+1 saat 20 dakika = 1,33 saat
+
+**Adım 2: Kat edilecek mesafenin hesaplanması**  
+Mesafe = 12 × 1,33  
+Mesafe ≈ 16 deniz mili
+
+**Adım 3: Operasyonel değerlendirme**  
+Bu bacak boyunca gemi, rota üzerinde kalabilmek için akıntı ve rüzgâr etkilerini izleyerek küçük rota düzeltmeleri yapmak zorundadır. Bu hesap, rota planlamanın yalnızca geometrik bir işlem olmadığını; çizilen hattın gerçek şartlarda sürdürülebilirliğinin sürekli kontrol edilmesi gerektiğini gösterir.`
+      }
+    ],
+    keyPoints: [
+      "Rota planlama emniyetli, uygulanabilir ve kontrol edilebilir bir seyir hattı oluşturmayı hedefler.",
+      "ECDIS rota planlamayı destekler; ancak karar verme sorumluluğunu ortadan kaldırmaz.",
+      "Emniyet konturu ve emniyet derinliği ayarları rota güvenliğinin temelidir.",
+      "Rota planlama statik değil, seyir boyunca güncellenen dinamik bir süreçtir."
     ]
   },
   PDOP: {
