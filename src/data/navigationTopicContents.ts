@@ -2248,6 +2248,83 @@ Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapa
       "GPS verisi radar, görsel mevki ve ECDIS alarmlarıyla birlikte kullanılmalıdır."
     ]
   },
+  HDOP: {
+    title: "HDOP (Horizontal Dilution of Precision)",
+    introduction:
+      "HDOP, yatay geometrik seyreltme katsayısını ifade eder ve GPS konum doğruluğunun en kritik belirleyicilerinden biridir. HDOP, ölçüm hatası üretmez; mevcut mesafe hatalarının yatay konum üzerindeki etkisini büyüten veya küçülten bir geometrik çarpan gibi davranır. İyi uydu geometrisinde aynı mesafe hatası küçük bir yatay sapmaya, kötü geometride ise ciddi konum hatasına dönüşür.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![HDOP örnek eğrisi](https://image2.slideserve.com/4575047/slide20-l.jpg)
+
+![Uydu geometrisi ve HDOP ilişkisi](https://ozzmaker.com/wp-content/uploads/2020/02/hdop-overlap.png)
+
+![Uydu sayısı ve HDOP ilişkisi](https://www.researchgate.net/publication/51872763/figure/fig4/AS%3A341518356369429%401458435729967/Relationship-between-Horizontal-Dilution-of-Precision-HDOP-the-number-of-satellites.png)
+
+![DOP şeması](https://gnssdecoded.com/wp-content/uploads/2025/10/Dilution-of-precision.jpg)`
+      },
+      {
+        title: "Uydu Geometrisi ve Operasyonel Etki",
+        content:
+          "Uydu geometrisi, alıcının gökyüzünde gördüğü uyduların birbirine göre açısal dağılımıdır. Uydular geniş açılara yayılmışsa HDOP düşer; uydular dar bir sektörde toplanırsa HDOP yükselir. Denizcilikte özellikle kıyıya yakın seyirlerde gemi üstyapısı, vinçler veya çevresel engeller belirli uydu sektörlerini kapatabilir ve HDOP değeri kısa sürede yükselir."
+      },
+      {
+        title: "Operasyonel Yorum",
+        content:
+          "HDOP değeri alıcı tarafından sürekli hesaplanır ve ECDIS/GPS ekranlarında sayısal olarak izlenebilir. Ancak HDOP yükselmesi her zaman alarm üretmez. Bu nedenle vardiya zabitinin HDOP’u yorumlayabilmesi operasyonel bir zorunluluktur. Düşük HDOP, yüksek doğruluk garantisi değildir; yalnızca mevcut mesafe hatalarının yatay düzlemde daha az büyütüldüğünü gösterir."
+      },
+      {
+        title: "Formüller",
+        content: `**Yatay konum hatası**  
+Yatay hata = HDOP × UERE
+
+**Burada:**  
+HDOP: Yatay geometrik seyreltme katsayısı  
+UERE: Eşdeğer kullanıcı mesafe hatası
+
+**Geometrik yorum**  
+HDOP küçük → Uydu açısal dağılımı iyi  
+HDOP büyük → Uydu açısal dağılımı kötü`
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir gemide GPS alıcısı için eşdeğer kullanıcı mesafe hatası aşağıdaki gibi kabul edilmektedir:
+
+UERE = 6 m
+
+**Durum A: Açık deniz, iyi uydu geometrisi**  
+HDOP = 0,9
+
+Adım 1: Yatay hatanın hesaplanması  
+Yatay hata = 0,9 × 6  
+Yatay hata = 5,4 m
+
+**Durum B: Liman yaklaşması, üstyapı gölgelemesi**  
+HDOP = 3,2
+
+Adım 2: Yatay hatanın hesaplanması  
+Yatay hata = 3,2 × 6  
+Yatay hata = 19,2 m
+
+Adım 3: Operasyonel karşılaştırma  
+Aynı GPS alıcısı ve aynı mesafe hatası, yalnızca uydu geometrisi değiştiği için yatay hatayı yaklaşık dört kat artırmıştır.
+
+Bu sonuç, HDOP’un denizcilikte neden kritik olduğunu açıkça gösterir. GPS çalışıyor görünse bile HDOP yükseldiğinde konum güvenilirliği ciddi biçimde azalır.`
+      },
+      {
+        title: "Emniyet Notu",
+        content:
+          "HDOP, seyirde yalnızca izlenen bir sayı değil; radar, görsel mevki ve ECDIS alarm ayarlarıyla birlikte yorumlanması gereken operasyonel bir emniyet göstergesidir."
+      }
+    ],
+    keyPoints: [
+      "HDOP, yatay konum hatasını büyüten veya küçülten geometrik bir çarpandır.",
+      "Uydu açısal dağılımı iyi olduğunda HDOP düşer; kötü olduğunda yükselir.",
+      "Düşük HDOP yüksek doğruluk garantisi değildir; sadece hata büyümesini sınırlar.",
+      "Liman yaklaşmalarında gölgeleme HDOP’u hızla artırabilir.",
+      "HDOP değerleri, radar ve görsel mevki ile birlikte yorumlanmalıdır."
+    ]
+  },
   "Composite (bileşik) rota": {
     title: "Composite (bileşik) rota",
     introduction:
