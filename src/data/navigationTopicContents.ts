@@ -304,6 +304,56 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       "Toplam bağıntı Ho = Hs ± IE − Dip − R ± SD ± P şeklindedir."
     ]
   },
+  Execution: {
+    title: "Execution (Seyir Planının Uygulanması)",
+    introduction:
+      "Execution safhası, planning aşamasında hazırlanan seyir planının köprüüstünde fiilen uygulanmasıdır. Bu aşama, planın kâğıt veya ECDIS üzerinde doğru hazırlanmış olmasından ziyade, geminin gerçek seyir şartları altında emniyetli şekilde sevk ve idaresini kapsar. Köprüüstü ekibi, planı ortak bir referans olarak kullanır ve gemi hareketleri bu plana uygun icra edilir.",
+    sections: [
+      {
+        title: "Execution Safhasının Temel Mantığı",
+        content:
+          "Execution sırasında kaptan ve vardiya zabiti, rota üzerindeki her bir waypoint’i, planlanan hızları, dönüş noktalarını ve emniyet mesafelerini aktif olarak takip eder. Seyir planı, yalnızca başlangıçta gözden geçirilen bir doküman değil; seyir süresince sürekli başvurulan bir kontrol aracıdır. Rota dışına çıkma, planlanan hızdan sapma veya öngörülmeyen çevresel etkiler derhal fark edilmelidir.",
+        image: "https://safety4sea.com/wp-content/uploads/2018/04/Passage-Planning.jpg",
+        imageAlt: "Passage planning ve köprüüstü uygulaması"
+      },
+      {
+        title: "Hız Kontrolü ve Emniyet Mesafesi",
+        content:
+          "Execution safhasında hız kontrolü, özellikle dar su geçişleri ve yoğun trafikte kritik öneme sahiptir. Planlanan hız, geminin durma mesafesi ve dümen etkinliği ile uyumlu olmalıdır. Hızın yalnızca ETA’yı tutturmak amacıyla artırılması, emniyet açısından zayıf ve PSC denetimlerinde sorgulanan bir uygulamadır.",
+        image: "https://media.licdn.com/dms/image/v2/C5612AQGndR048_Bteg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1636202767796?e=2147483647&t=KK4ARtyMkfkUJykIUZFd6KluTxqzKI3xLrg6R5pFHTA&v=beta",
+        imageAlt: "Köprüüstü vardiya yönetimi ve hız kontrolü"
+      },
+      {
+        title: "Durma Mesafesi ve Hız İlişkisi",
+        content:
+          "Durma mesafesi, geminin hızına ve köprüüstü ekibinin reaksiyon süresine doğrudan bağlıdır. Uygulamada reaksiyon süresi genellikle 0,5–1 dakika aralığında değerlendirilir. Bu nedenle hız artırma kararı, geminin önünde yeterli emniyetli alan bulunduğu teyit edilerek verilmelidir.",
+        image: "https://www.kongsberg.com/contentassets/61758815329f4f07a45cbd3bf5cb79b1/ecdis_hero_cropped.png",
+        imageAlt: "ECDIS üzerinde rota uygulaması ve durum takibi",
+        formula: {
+          text: "Durma mesafesi = Hız × Reaksiyon süresi + Frenleme mesafesi",
+          description:
+            "Örnek: 12 knot ≈ 0,2 deniz mili/dakika. Reaksiyon süresi 1 dakika ve frenleme mesafesi 0,3 deniz mili ise toplam durma mesafesi 0,5 deniz milidir."
+        }
+      },
+      {
+        title: "Plan Dışı Durumlar ve İletişim",
+        content:
+          "Execution safhasında meteorolojik şartların kötüleşmesi, trafik yoğunluğunun artması veya makine kısıtları planın revize edilmesini gerektirebilir. Bu durumda rota ve hız değişiklikleri kayıt altına alınmalı ve tüm köprüüstü ekibi tarafından ortak şekilde anlaşılmalıdır. Sessizce yapılan rota veya hız değişiklikleri, BRM açısından ciddi bir zafiyet oluşturur."
+      },
+      {
+        title: "ECDIS Alarm Yönetimi",
+        content:
+          "Execution aşamasında sık yapılan hatalardan biri, ECDIS alarm ve limitlerinin devre dışı bırakılmasıdır. Alarm yorgunluğu gerekçe gösterilerek yapılan bu uygulama, PSC bakış açısından kabul edilemez ve emniyet seviyesini düşürür. Akademik olarak ideal kabul edilen hız ve rota, gerçek trafik ve manevra koşullarıyla uyumlu değilse pratikte uygulanabilir değildir."
+      }
+    ],
+    keyPoints: [
+      "Execution, planın köprüüstünde ortak referans olarak kullanılmasıdır",
+      "Waypoint, hız ve dönüş noktaları sürekli takip edilmelidir",
+      "Hız kontrolü durma mesafesi ve dümen etkinliğiyle uyumlu olmalıdır",
+      "Plan dışı değişiklikler kayıt altına alınmalı ve ekipçe teyit edilmelidir",
+      "ECDIS alarmlarını devre dışı bırakmak PSC açısından ciddi zafiyettir"
+    ]
+  },
   "Sextant kullanımı": {
     title: "Sextant kullanımı (göksel seyir — aşama aşama)",
     introduction:
@@ -7605,9 +7655,9 @@ Leeway, pusula/gerçek rota düzeltmelerinde mutlaka hesaba katılmalıdır. Dü
 
 ### Pratik Hesaplama Yaklaşımı
 
-```
+~~~
 Leeway Açısı ≈ K × Rüzgâr Hızı / Gemi Hızı
-```
+~~~
 
 * Rüzgâr hızı ve gemi hızı **aynı birimde** alınır.
 * K katsayısı gemi tipine göre değişir (yaklaşık **0,5 – 1,5**).
@@ -7620,9 +7670,9 @@ Bu bağıntı **ampirik** bir yaklaşımdır ve emniyetli, muhafazakâr bir tahm
 
 ### Rota Düzeltmesi
 
-```
+~~~
 Gerçek Seyir Rotası = Dümenlenen Rota ± Leeway Açısı
-```
+~~~
 
 * Rüzgâr **iskele** tarafından geliyorsa leeway **iskeleye**,
 * Rüzgâr **sancak** tarafından geliyorsa leeway **sancağa** olur.
@@ -7640,22 +7690,22 @@ Düzeltme, geminin **rüzgâra doğru** dümenlenmesi şeklinde uygulanır.
 * K katsayısı: **1,0**
 
 **Adım 1:**
-```
+~~~
 Rüzgâr Hızı / Gemi Hızı = 24 / 12 = 2
-```
+~~~
 
 **Adım 2:**
-```
+~~~
 Leeway ≈ 1,0 × 2 = 2°
-```
+~~~
 
 **Adım 3 (Düzeltme):**
 
 Gemi **090°** rota ile seyrediyor ve rüzgâr **sancak** tarafından geliyorsa gemi **iskeleye** sürüklenir. Bu durumda dümenlenen rota:
 
-```
+~~~
 Dümenlenen Rota ≈ 090° + 2° = 092°
-```
+~~~
 
 Bu örnek, gemiyi planlanan iz hattı üzerinde tutmak için dümenin **rüzgâra doğru** verilmesi gerektiğini gösterir. Leeway’in ihmal edilmesi, açık deniz seyirlerinde **yavaş fakat sürekli mevki hatalarına** yol açar.`
       }
