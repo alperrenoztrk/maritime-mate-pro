@@ -241,19 +241,6 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Bridge Resource Management (BRM)" },
           { title: "PSC bakış açısı" }
         ]
-      },
-      {
-        title: "COLREG & Çatışma Analizleri",
-        description: "Denizde çatışmadan kaçınma kuralları ve kaza analizleri",
-        subTopics: [
-          { title: "COLREG temel prensipleri" },
-          { title: "Crossing" },
-          { title: "Head-on" },
-          { title: "Overtaking" },
-          { title: "Restricted visibility" },
-          { title: "Gerçek çatışma kazaları" },
-          { title: "Neden – sonuç – ihlal – önlem analizi" }
-        ]
       }
     ],
     resources: [
