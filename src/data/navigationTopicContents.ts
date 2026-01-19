@@ -2007,6 +2007,62 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       }
     ]
   },
+  "Chart datum (LAT)": {
+    title: "Chart datum (LAT)",
+    introduction: "Chart datum, deniz haritalarında derinliklerin ve gelgit yüksekliklerinin referans alındığı düşey sıfır düzlemidir. Denizcilikte modern standart olarak kullanılan datum LAT (Lowest Astronomical Tide)’dir. LAT, yalnızca astronomik etkiler altında oluşabilecek en düşük teorik gelgit seviyesini ifade eder; rüzgâr, atmosfer basıncı ve meteorolojik anormallikler bu tanımın dışında bırakılır.",
+    sections: [
+      {
+        title: "Tanım ve Amaç",
+        content: "LAT’nin temel amacı, haritada verilen derinliklerin her koşulda emniyetli tarafta kalmasını sağlamaktır. Haritadaki tüm sounding değerleri ve kurutma sınırları LAT’ye göre ölçülür. Bu nedenle pratikte gerçek su seviyesi çoğu zaman harita derinliklerinden daha büyüktür; denizci açısından bu yaklaşım emniyetlidir ancak planlama yapılırken gelgit ilavesi mutlaka hesaba katılmalıdır.",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Tide_legal_use.gif",
+        imageAlt: "Gelgit seviyeleri ve chart datum ilişkisi"
+      },
+      {
+        title: "Teorik Minimum ve Meteorolojik Etkiler",
+        content: "LAT’nin kritik bir özelliği, gözlemsel bir minimum değil, astronomik olarak hesaplanan teorik bir minimum olmasıdır. Bu durum, bazı bölgelerde gerçek deniz seviyesinin LAT’nin de altına inebileceği anlamına gelir. Özellikle kuvvetli yüksek basınç ve uzun süreli off-shore rüzgâr koşullarında bu fark pratikte görülebilir. Bu nedenle LAT, mutlak bir güvenlik garantisi değil, standartlaştırılmış bir referans seviyesidir.",
+        image: "https://www.marineinsight.com/wp-content/uploads/2023/08/Lowest-Astronomical-Tide.jpg",
+        imageAlt: "Lowest Astronomical Tide görseli"
+      },
+      {
+        title: "Harita ve Tidal Tablo Referansı",
+        content: "Deniz haritası üzerinde görülen “0” seviyesi, ortalama deniz seviyesi değil, LAT’dir. Tidal tablolarında verilen tüm yükseklikler bu sıfır düzleme göre pozitif veya negatif olarak ifade edilir. Denizci, gerçek su derinliğini bulmak için harita derinliği ile ilgili zamandaki gelgit yüksekliğini birleştirmek zorundadır.",
+        image: "https://sailingissues.com/chart-symbols/clearing-heights-chart-datums-opt.svg",
+        imageAlt: "Chart datum ve clearing heights sembolleri"
+      },
+      {
+        title: "Temel İlişki",
+        content: "UKC hesaplarının ve liman giriş planlamalarının temelini oluşturan ilişki aşağıdaki gibidir:",
+        formula: {
+          text: "Gerçek su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre)",
+          description: "Harita derinliği LAT’ye, gelgit yüksekliği ise aynı referansa göre verilmiştir."
+        }
+      },
+      {
+        title: "Örnek hesap: LAT referanslı gerçek derinlik",
+        content: `Bir liman yaklaşımında harita üzerinde gösterilen derinlik 6,2 m’dir. Tidal tabloda ilgili saat için verilen gelgit yüksekliği +1,4 m’dir.
+
+**Adım 1: Referansların kontrolü**
+Harita derinliği LAT’ye göredir.
+Gelgit yüksekliği LAT’ye göre verilmiştir.
+
+**Adım 2: Derinlik hesaplaması**
+Gerçek su derinliği = 6,2 + 1,4 = 7,6 m
+
+**Adım 3: Sonucun yorumu**
+Bu zaman diliminde gemi, haritada görülen derinliğe göre 1,4 m daha fazla suya sahiptir. Ancak bu değer yalnızca astronomik gelgiti kapsar; meteorolojik etkiler ayrıca değerlendirilmelidir. Bu nedenle UKC planlamasında emniyet payı korunarak hareket edilmesi gerekir.`
+      },
+      {
+        title: "Sonraki başlık",
+        content: "Bu ana başlığın bir sonraki tetiklemesinde **Height of tide hesapları** alt başlığı üretilecektir."
+      }
+    ],
+    keyPoints: [
+      "LAT, astronomik etkiler altında oluşabilecek en düşük teorik gelgit seviyesidir",
+      "Harita derinlikleri ve kurutma sınırları LAT’ye göre verilir",
+      "Gerçek su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre)",
+      "Meteorolojik etkiler, gerçek seviyeyi LAT’nin altına indirebilir"
+    ]
+  },
   "Büyük daire kavramı": {
     title: "Büyük Daire Kavramı",
     introduction:
