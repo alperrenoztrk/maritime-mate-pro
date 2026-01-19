@@ -7579,6 +7579,101 @@ Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** 
       }
     ]
   },
+  "Radar ile mevki tayini": {
+    title: "Radar ile mevki tayini",
+    introduction:
+      "Radar ile mevki tayini, geminin konumunun radar ekranında ölçülen mesafe ve kerteriz değerleri kullanılarak harita üzerinde belirlenmesi esasına dayanır. Bu yöntem, özellikle kıyı seyrinde, dar sularda ve görüşün kısıtlı olduğu durumlarda yüksek emniyet sağlar. Radar aktif bir sistem olduğu için dış altyapıya bağımlı değildir; bu yönüyle GPS’e karşı en güçlü alternatiflerden biridir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://maritimesa.org/nautical-science-grade-12/wp-content/uploads/sites/7/2020/09/12-1-3-6-fig1.jpg)
+
+![Image](https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG)
+
+![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2017/05/Running-fix-on-ECDIS-transferred-PL.jpg)
+
+![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2016/05/Marine-radars.jpg)
+
+Radar mevki tayininde temel prensip, radar tarafından algılanan sabit ve güvenilir hedeflerin harita üzerindeki gerçek konumları ile gemi arasındaki geometrik ilişkinin kurulmasıdır. Bu hedefler genellikle burunlar, fenerler, adalar, belirgin kıyı çıkıntıları ve büyük yapay tesislerdir. Hareketli hedefler mevki tayininde kullanılmaz.
+
+---
+
+### Temel Yaklaşım
+
+* Radar ile mevki tayini üç ana yöntemle yapılır:
+  * **İki mesafe**
+  * **Mesafe – kerteriz**
+  * **İki kerteriz**
+* Denizcilikte en güvenilir yöntem **iki mesafe** yöntemidir; çünkü radar mesafesi, kerterize kıyasla daha az hata içerir.
+
+---
+
+### Formüller
+
+⬛ **Radar mesafe ölçümü**
+
+════════════════════
+Mesafe = (Işık hızı × Zaman farkı) ÷ 2
+════════════════════
+
+⬛ **Harita üzerinde mesafe yayı mantığı**
+
+════════════════════
+Gemi mevkii
+=
+İki sabit hedef merkezli
+mesafe yaylarının kesişimi
+════════════════════
+
+⬛ **Mesafe–kerteriz ilişkisi**
+
+════════════════════
+Gemi mevkii
+=
+Mesafe yayı
+∩
+Kerteriz doğrusu
+════════════════════
+
+---
+
+### Örnek Hesap
+
+Bir gemi, kıyı seyrinde iki sabit hedefe radar mesafesi ölçmüştür:
+
+* **Hedef A (fener): 4,2 deniz mili**
+* **Hedef B (burun): 6,0 deniz mili**
+
+**Adım 1: Hedeflerin harita üzerindeki gerçek konumlarının belirlenmesi**  
+Fener ve burun harita üzerinde kesin konumları bilinen sabit hedeflerdir.
+
+**Adım 2: Birinci mesafe yayının çizilmesi**  
+Fener merkez alınarak 4,2 deniz mili yarıçaplı bir yay çizilir.
+
+**Adım 3: İkinci mesafe yayının çizilmesi**  
+Burun merkez alınarak 6,0 deniz mili yarıçaplı ikinci bir yay çizilir.
+
+**Adım 4: Yayların kesişiminin belirlenmesi**  
+İki yayın kesiştiği nokta geminin mevkiidir.
+
+**Adım 5: Operasyonel değerlendirme**  
+Elde edilen mevki, radarın bağımsız ölçümüne dayandığı için GPS konumu ile karşılaştırılarak doğrulanır.
+
+---
+
+### Kritik Not
+
+Radar ile mevki tayini, doğru hedef seçimi yapılmadığında ciddi hata üretebilir. Yanlış hedef tanımlaması veya radar ekranındaki yankının yanlış yorumlanması, matematiksel olarak doğru görünen ancak operasyonel olarak hatalı bir mevki oluşturur. Bu nedenle radar mevkii, yalnızca ölçüm değil, yorumlama disiplinidir ve vardiya zabitinin en kritik yetkinliklerinden biridir.`
+      }
+    ],
+    keyPoints: [
+      "Radar mevkii, güvenilir sabit hedeflerin mesafe ve kerteriz ölçümlerine dayanır.",
+      "En güvenilir yöntem iki mesafe (range–range) yöntemidir.",
+      "Mesafe yayı + kerteriz doğrusu kesişimi hızlı ve pratiktir.",
+      "Yanlış hedef seçimi, doğru matematiğe rağmen hatalı mevki üretir.",
+      "Radar mevkii GPS ile mutlaka çapraz doğrulanmalıdır."
+    ]
+  },
   "Inverse Problem of Mean Latitude Sailing": {
     title: "Inverse Problem of Mean Latitude Sailing",
     introduction:
