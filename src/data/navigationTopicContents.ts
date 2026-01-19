@@ -2175,6 +2175,79 @@ Bu değer, alıcı ile uydu arasındaki sözde mesafedir. Aynı işlem en az dö
       "GPS verisi denizcilikte diğer sensörlerle mutlaka çapraz kontrol edilmelidir."
     ]
   },
+  "Radar prensibi": {
+    title: "Radar Prensibi",
+    introduction:
+      "RADAR (Radio Detection and Ranging), elektromanyetik dalgaların gönderilmesi ve hedeflerden yansıyan enerjinin geri alınması prensibine dayanan aktif bir algılama sistemidir. Deniz radarları mikrodalga bandında kısa süreli darbeler gönderir; darbe bir hedefe çarptığında yansır ve antene geri döner. Gönderim ile alınan yankı arasındaki zaman farkı mesafeyi, antenin gönderim anındaki yönü ise kerterizi verir.",
+    sections: [
+      {
+        title: "Zaman Ölçümü ve Mesafe Hesabı",
+        content:
+          "Radar sisteminde temel ölçüm büyüklüğü zamandır. Elektromanyetik dalgaların atmosferdeki yayılma hızı ışık hızına çok yakındır ve sabit kabul edilir. Radar, sinyalin gidiş–dönüş süresini ölçtüğü için hesaplanan mesafe, hedefe gidiş mesafesinin iki katına karşılık gelir; bu nedenle sonuç ikiye bölünür.",
+        image:
+          "https://maritimesa.org/nautical-science-grade-12/wp-content/uploads/sites/7/2020/09/12-1-3-3-fig1-1.jpg",
+        imageAlt: "Radar darbesinin gidiş-dönüş süresi ve mesafe ölçümü"
+      },
+      {
+        title: "Anten, Tarama ve Kerteriz",
+        content:
+          "Deniz radarlarında döner anten, dar bir ışın demeti üretir. Anten 360° tarama yaptıkça çevredeki hedefler ekranda bağıl konumlarıyla görünür. Kerteriz, antenin gönderme anındaki yönüyle belirlenir; bu nedenle doğru kerteriz için anten yön bilgisi ile radar göstergesinin kalibrasyonu kritik önemdedir.",
+        image: "https://www.tek.com/-/media/sites/default/files/2018-04/radar20part20120series20header20april20167.png",
+        imageAlt: "Radar anteni ve tarama prensibi"
+      },
+      {
+        title: "Hedef Yansıması ve Yorumlama",
+        content:
+          "Radar, hedefin şeklini değil, yansıtma karakteristiğini algılar. Metal yapılar güçlü yankı verirken, küçük ahşap tekneler ve şamandıralar zayıf yankı üretebilir. Bu durum, radar ekranındaki yorumlama becerisini doğrudan etkiler ve hedefin gerçek boyutu ile radar izi her zaman örtüşmeyebilir.",
+        image: "https://firecontrolman.tpub.com/12404/img/12404_12_1.jpg",
+        imageAlt: "Radar yansıması ve hedef izleri"
+      },
+      {
+        title: "Sistem Bağımsızlığı ve Sınırlamalar",
+        content:
+          "Radar, dış altyapıya bağımlı olmayan aktif bir sistemdir ve bu yönüyle GPS’ten temel olarak ayrılır. Ancak mutlak doğruluk sağlamaz; deniz durumu, yağış, dalga tepeleri ve hedefin yapısal özellikleri ölçümleri etkileyebilir. Bu nedenle radar verileri, görsel mevki ve diğer sensörlerle birlikte değerlendirilmelidir.",
+        image: "https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG",
+        imageAlt: "Radar ekranı üzerinde hedeflerin bağıl görünümü"
+      },
+      {
+        title: "Temel Formüller",
+        content:
+          "Radar mesafesi, sinyalin gidiş–dönüş süresine göre hesaplanır. Kerteriz, antenin gönderim anındaki yönüne karşılık gelir.",
+        bulletPoints: [
+          "Mesafe = (c × Δt) ÷ 2",
+          "c: ışık hızı (≈ 300 000 km/s)",
+          "Δt: gönderilen darbe ile yankının geri alınması arasındaki süre",
+          "Kerteriz = antenin gönderme anındaki yönü"
+        ]
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir gemi radarı, gönderilen bir darbenin **0,00008 s** sonra geri döndüğünü ölçmüştür.
+
+Adım 1: Işık hızının tanımlanması  
+c ≈ 300 000 km/s
+
+Adım 2: Zaman farkının kullanılması  
+Δt = 0,00008 s
+
+Adım 3: Gidiş–dönüş mesafesinin hesaplanması  
+Toplam yol = c × Δt  
+Toplam yol = 300 000 × 0,00008 = **24 km**
+
+Adım 4: Gerçek mesafenin bulunması  
+Mesafe = 24 ÷ 2 = **12 km**
+
+Bu sonuç, radar hedefinin gemiden yaklaşık 12 kilometre uzaklıkta olduğunu gösterir.`
+      }
+    ],
+    keyPoints: [
+      "Radar aktif bir sensördür; dış altyapıya bağımlı değildir.",
+      "Mesafe ölçümü zaman farkına dayanır ve gidiş–dönüş süresi ikiye bölünür.",
+      "Kerteriz, antenin gönderim anındaki yönüyle belirlenir.",
+      "Hedefin yansıtma karakteristiği radar izini belirler.",
+      "Deniz durumu ve yağış, radar performansını etkileyebilir."
+    ]
+  },
   "GPS doğruluğu": {
     title: "GPS Doğruluğu",
     introduction:
