@@ -2468,6 +2468,85 @@ Bu sonuç, HDOP’un denizcilikte neden kritik olduğunu açıkça gösterir. GP
       "HDOP değerleri, radar ve görsel mevki ile birlikte yorumlanmalıdır."
     ]
   },
+  "Turn radius": {
+    title: "Turn Radius",
+    introduction:
+      "Turn radius, geminin sabit hız ve sabit dümen açısı altında izlediği dairesel yolun yarıçapını ifade eder. Bu büyüklük, dönüşün **geometrik boyutunu** tanımlar ve özellikle rota planlama, dönüş noktalarının konumlandırılması ve dar sularda manevra emniyeti için kritiktir. Turn radius tek başına dönüşün ne kadar sürede tamamlandığını açıklamaz; yalnızca dönüşün ne kadar “geniş” veya “keskin” olduğunu gösterir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Dönüş dairesi şeması](https://www.researchgate.net/publication/349430717/figure/fig1/AS%3A1007941725483009%401617323442741/Turning-Circle-Diagram.png)
+
+![Turning circle örneği](https://oe3036.hydratech.in/ch_06/turning-circle.png)
+
+![Gemi dönüş karakteristiği](https://shipsnow.com/images/wiki/criteria/turning-circle.jpg)
+
+![Advance ve transfer görseli](https://marinegyaan.com/wp-content/uploads/2016/06/77-3.jpg)`
+      },
+      {
+        title: "Tanım ve Operasyonel Önemi",
+        content:
+          "Turn radius, idealize edilmiş dairesel hareketi temsil eder. Gerçek dönüşte gemi önce hız kesmeden ilerler, sonra kavis oluşturmaya başlar; bu nedenle pratik planlamada **advance**, **transfer** ve **tactical diameter** gibi değerlerle birlikte değerlendirilir. Turn radius, dönüşün ne kadar yer kaplayacağını gösterdiği için ECDIS üzerinde çizilen teorik dönüşlerle geminin gerçek manevra kabiliyetinin örtüşmesi zorunludur."
+      },
+      {
+        title: "Turn Radius’u Etkileyen Faktörler",
+        content:
+          "Dönüş yarıçapı; gemi hızı, dümen açısı, gemi tipi, pervane–dümen etkileşimi, su derinliği ve hidrodinamik direnç gibi değişkenlerle belirlenir. Hız arttıkça aynı dümen açısında dönüş yarıçapı büyür; bu nedenle yüksek süratte çizilen dönüşler, dar sularda operasyonel olarak uygulanamaz.",
+        bulletPoints: [
+          "Hız arttıkça dönüş yarıçapı büyür",
+          "Dümen açısı büyüdükçe dönüş yarıçapı küçülür",
+          "Sığ su ve squat etkisi dönüş karakteristiğini bozar",
+          "Tam yük/ballast durumu manevra kabiliyetini değiştirir"
+        ]
+      },
+      {
+        title: "Geometrik Yaklaşım ve Pratik İlişki",
+        content:
+          "Basitleştirilmiş yaklaşımda dönüş yarıçapı, merkezcil ivmeye bağlıdır. Denizcilikte pratik kullanımda ise **aynı dümen açısı için hız arttıkça turn radius’un hızın karesiyle büyüdüğü** kabul edilir. Bu ilişki, rota planlamada hız değişiminin dönüş alanını ne kadar büyüttüğünü hızlıca öngörmeye yarar.",
+        formula: {
+          text: "Turn radius ≈ V² ÷ ay  →  pratikte: Turn radius ∝ V²",
+          description: "V: hız, ay: yan (merkezcil) ivme. Pratik planlamada ay sabit varsayılır."
+        }
+      },
+      {
+        title: "Advance ve Transfer ile Birlikte Değerlendirme",
+        content:
+          "Turn radius ideal daireyi anlatır; **advance** geminin dönüşe girdikten sonra ileri yönde kat ettiği mesafeyi, **transfer** ise dönüş sırasında yanal sapmayı gösterir. Bu üç büyüklük birlikte ele alınmadığında ECDIS üzerinde çizilen dönüş noktaları gerçek manevrada yetersiz kalabilir."
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir gemi için iki farklı hız durumu değerlendirilsin.
+
+**Durum A**  
+Hız = 10 kn  
+Turn radius = 0,30 deniz mili
+
+**Durum B**  
+Hız = 14 kn
+
+Adım 1: Hız oranı  
+14 ÷ 10 = **1,4**
+
+Adım 2: Hızın karesiyle artış varsayımı  
+Turn radius B ≈ 0,30 × (1,4)²  
+Turn radius B ≈ 0,30 × 1,96  
+Turn radius B ≈ **0,59 deniz mili**
+
+Bu sonuç, hız %40 arttığında dönüş yarıçapının yaklaşık iki katına çıktığını gösterir.`
+      },
+      {
+        title: "Operasyonel Not",
+        content:
+          "Turn radius, sabit bir gemi karakteristiği değildir; hız, yükleme ve çevresel koşullarla sürekli değişir. Bu nedenle rota planlamasında ECDIS üzerinde tanımlanan dönüşler, geminin **gerçek manevra kabiliyeti** ile her zaman çapraz kontrol edilmelidir."
+      }
+    ],
+    keyPoints: [
+      "Turn radius dönüşün geometrik genişliğini ifade eder; süreyi tek başına açıklamaz.",
+      "Hız arttıkça aynı dümen açısında dönüş yarıçapı büyür.",
+      "Advance ve transfer, gerçek dönüşün zaman–mesafe davranışını tamamlar.",
+      "ECDIS üzerinde çizilen dönüşler gerçek manevra verileriyle doğrulanmalıdır."
+    ]
+  },
   "Composite (bileşik) rota": {
     title: "Composite (bileşik) rota",
     introduction:
