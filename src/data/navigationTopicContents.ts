@@ -9184,4 +9184,75 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       "GPS tek başına değil, radar, pusula ve görsel mevki ile çapraz kontrol edilmelidir."
     ]
   },
+  PDOP: {
+    title: "PDOP",
+    introduction:
+      "PDOP (Position Dilution of Precision), konum belirlemede üç boyutlu geometrik seyreltme katsayısını ifade eder. PDOP, yatay ve düşey doğruluk bileşenlerinin birlikte değerlendirilmiş halidir ve GPS konum çözümünün genel geometrik kalitesini gösterir. PDOP, ölçüm hatası üretmez; mevcut mesafe hatalarının üç boyutlu konum çözümüne ne kadar büyütülerek yansıtıldığını tanımlar.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![PDOP grafik örneği](https://gnssdecoded.com/wp-content/uploads/2025/10/Dilution-of-precision.jpg)
+
+![Uydu geometrisi ve PDOP etkisi](https://imagedelivery.net/_jGo7Cp8DLHLbI9FzBn6-Q/the5krunner.com/2018/07/51-1.gif/w%3D9999)
+
+![Kötü uydu geometrisi ve PDOP](https://www.e-education.psu.edu/geog862/sites/www.e-education.psu.edu.geog862/files/images/Lesson01/Bad%20PDOP.png)
+
+![DOP ve konum hatası ilişkisi](https://www.researchgate.net/publication/366509947/figure/fig2/AS%3A11431281212192197%401702554931906/The-influence-of-the-DOP-on-the-GPS-position-error-8.tif)`
+      },
+      {
+        title: "Uydu Geometrisi ve PDOP",
+        content:
+          "PDOP değeri, uydu–alıcı geometrisinin üç boyutlu uzaydaki dağılımına bağlıdır. Uydular gökyüzünde geniş bir hacme yayılmışsa PDOP düşüktür. Uydular belirli bir düzleme veya dar bir uzaysal sektöre sıkışmışsa PDOP yükselir. Denizcilikte özellikle yüksek enlemler, kıyıya yakın seyir ve üstyapı gölgelemesi PDOP değerinin artmasına neden olabilir.",
+        bulletPoints: [
+          "Geniş hacme yayılmış uydu geometrisi → düşük PDOP (daha iyi geometri).",
+          "Dar uzaysal dağılım veya düzlemleşme → yüksek PDOP (zayıf geometri).",
+          "Yüksek enlem ve üstyapı gölgelemesi PDOP’u artırabilir."
+        ]
+      },
+      {
+        title: "HDOP ve VDOP İlişkisi",
+        content:
+          "PDOP, HDOP ve VDOP’un birleşik etkisini temsil eder. Bu nedenle PDOP değeri düşük olan bir çözüm genel olarak güvenilir kabul edilir; ancak deniz seyri açısından yatay hata çoğu zaman daha kritik olduğu için PDOP tek başına karar kriteri olarak kullanılmaz. PDOP, sistemin genel sağlık göstergesi olarak değerlendirilir."
+      },
+      {
+        title: "Formüller",
+        content: `**PDOP ilişkisi**  
+PDOP = √(HDOP² + VDOP²)
+
+**Üç boyutlu konum hatası yaklaşımı**  
+3B hata = PDOP × UERE
+
+HDOP: Yatay geometrik seyreltme katsayısı  
+VDOP: Düşey geometrik seyreltme katsayısı  
+UERE: Eşdeğer kullanıcı mesafe hatası`
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir GPS alıcısı için aşağıdaki değerler verilmiştir:
+
+HDOP = 1,6  
+VDOP = 2,2  
+UERE = 5 m
+
+**Adım 1: PDOP’un hesaplanması**  
+PDOP = √(1,6² + 2,2²)  
+PDOP = √(2,56 + 4,84)  
+PDOP = √7,40  
+PDOP ≈ 2,72
+
+**Adım 2: Üç boyutlu konum hatasının hesaplanması**  
+3B hata = 2,72 × 5  
+3B hata ≈ 13,6 m
+
+**Adım 3: Operasyonel değerlendirme**  
+Bu değer, GPS’in üç boyutlu konum çözümünde yaklaşık 14 metre seviyesinde bir belirsizlik bulunduğunu gösterir. Bu nedenle PDOP, HDOP ile birlikte yorumlanmalı; PDOP’un yükselmesi, GPS’in çalışıyor görünmesine rağmen konum çözümünün güvenilirliğinin azaldığına dair güçlü bir uyarı olarak değerlendirilmelidir.`
+      }
+    ],
+    keyPoints: [
+      "PDOP, yatay ve düşey doğruluk bileşenlerinin birleşik etkisini temsil eder.",
+      "Uydu geometrisi kötüleştikçe PDOP yükselir, konum hatası büyür.",
+      "PDOP, HDOP ile birlikte yorumlanmalı ve genel sistem sağlığı göstergesi olarak görülmelidir.",
+      "3B konum hatası yaklaşımı PDOP × UERE ile değerlendirilir."
+    ]
+  },
 };
