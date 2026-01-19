@@ -9897,4 +9897,68 @@ Gemi, planlanan rota hattından yaklaşık yarım deniz mili yanal sapma göster
       "XTE, radar ve görsel seyirle birlikte yorumlanmalıdır."
     ]
   },
+  "Gelgitin fiziksel mantığı": {
+    title: "Gelgitin Fiziksel Mantığı",
+    introduction:
+      "Gelgit, Dünya üzerindeki su kütlelerinin Ay ve Güneş’in kütleçekim etkileri ile Dünya–Ay sisteminin ortak kütle merkezi etrafındaki hareketinden doğan kuvvetler sonucunda periyodik olarak yükselip alçalmasıdır. Denizcilikte gelgit, su derinliğini doğrudan etkilediği için emniyetli seyir, liman manevrası ve UKC planlamasının temel bileşenlerinden biridir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/2952/2018/01/31195914/CNX_UPhysics_13_06_MoonTides.jpg)
+
+![Image](https://oceanservice.noaa.gov/education/tutorial_tides/media/tide03_480.gif)
+
+![Image](https://cdn.serc.carleton.edu/images/integrate/teaching_materials/coastlines/student_materials/figure_showing_positions_sun_1473264128834091545_744.webp)
+
+![Image](https://caseagrant.ucsd.edu/sites/default/files/styles/800px/public/importedFiles/users/nsadrpour/perigeanspringtide.jpg?itok=JMf1s70S)`
+      },
+      {
+        title: "Ay’ın Baskın Etkisi ve Çift Kabarma",
+        content:
+          "Ay, Dünya’ya Güneş’ten çok daha küçük bir kütleyle etki eder; ancak Dünya’ya çok daha yakın olması nedeniyle gelgit üzerindeki baskın etkendir. Ay’ın çekim kuvveti, Dünya’nın Ay’a bakan tarafındaki suyu kendine doğru çeker. Aynı anda, Dünya–Ay sisteminin ortak kütle merkezi etrafında dönmesi nedeniyle Dünya’nın Ay’dan uzak tarafında merkezkaç etkisi ortaya çıkar. Bu iki etki sonucunda Dünya’nın karşılıklı iki tarafında su kabarmaları oluşur."
+      },
+      {
+        title: "Gelgit Periyodu (Lunar Day)",
+        content:
+          "Dünya kendi ekseni etrafında döndükçe, herhangi bir nokta bu iki kabarmanın altından geçer ve bu da yaklaşık 24 saat 50 dakikalık bir sürede iki yüksek su ve iki alçak su yaşanmasına neden olur. Bu süre, Ay’ın Dünya çevresindeki hareketi nedeniyle güneş gününden biraz daha uzundur."
+      },
+      {
+        title: "Güneş’in Etkisi: Spring ve Neap",
+        content:
+          "Güneş de gelgit üzerinde etkilidir ancak etkisi Ay’a kıyasla ikincildir. Güneş ve Ay aynı doğrultuda hizalandığında çekim etkileri birleşir ve gelgit genliği artar (spring tide). Birbirine dik konumda olduklarında ise etkiler kısmen sönümlenir (neap tide)."
+      },
+      {
+        title: "Yerel Morfoloji ve Rezonans Etkisi",
+        content:
+          "Gelgit kuvvetinin büyüklüğü yalnızca gök cisimlerinin konumuna değil; kıyı geometrisine, deniz tabanının şekline ve havzanın rezonans özelliklerine de bağlıdır. Açık okyanusta birkaç metre olan seviye farkı, dar ve sığ bir körfezde çok daha büyük veya çok daha küçük olabilir. Bu nedenle denizcilik uygulamalarında gelgit mutlaka yerel tidal tablolarla değerlendirilir."
+      },
+      {
+        title: "Gelgit Kuvvetinin Temel Bağıntısı",
+        content:
+          "Gelgit kuvveti, kütleçekim kuvvetinin mesafeye bağlı farkından kaynaklanır. Bu nedenle gelgit etkisi, kütle kadar yakınlıkla da belirlenir.",
+        formula: {
+          text: "Gelgit kuvveti ∝ Çeken cismin kütlesi / Mesafe³",
+          description: "Aynı kütle için mesafe iki katına çıkarsa etki yaklaşık sekizde bire düşer."
+        }
+      },
+      {
+        title: "Ay ve Güneş’in Göreli Etkisi (Örnek)",
+        content: `Ay’ın Dünya’ya ortalama uzaklığı ≈ 384 000 km  
+Güneş’in Dünya’ya ortalama uzaklığı ≈ 150 000 000 km
+
+Mesafe oranı ≈ 150 000 000 / 384 000 ≈ 390  
+Mesafe küp ile ters orantılı olduğundan:  
+390³ ≈ 59 000 000
+
+Bu sonuç, Güneş’in kütlesi Ay’dan çok daha büyük olmasına rağmen, uzaklık etkisi nedeniyle gelgit oluşturma kapasitesinin Ay’a göre daha düşük olduğunu gösterir. Bu hesap, gelgitin yalnızca “büyük kütle” ile değil, esas olarak “yakınlık” ile belirlendiğini ortaya koyar.`
+      }
+    ],
+    keyPoints: [
+      "Gelgitin ana tetikleyicisi Ay’ın çekimidir; Güneş ikincil etkendir.",
+      "Dünya–Ay sisteminin kütle merkezi nedeniyle iki karşılıklı kabarma oluşur.",
+      "Gelgit periyodu yaklaşık 24 saat 50 dakikadır ve iki yüksek/iki alçak su üretir.",
+      "Spring ve neap gelgitler, Ay ve Güneş’in doğrultusuna bağlıdır.",
+      "Yerel kıyı geometrisi ve havza rezonansı gelgit genliğini belirgin biçimde değiştirir."
+    ]
+  },
 };
