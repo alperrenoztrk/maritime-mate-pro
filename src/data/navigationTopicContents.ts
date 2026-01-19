@@ -10092,4 +10092,70 @@ Bu sonuç, Güneş’in kütlesi Ay’dan çok daha büyük olmasına rağmen, u
       "Yerel kıyı geometrisi ve havza rezonansı gelgit genliğini belirgin biçimde değiştirir."
     ]
   },
+  "İnterpolasyon": {
+    title: "İnterpolasyon",
+    introduction:
+      "İnterpolasyon, yüksek su ile alçak su arasında kalan herhangi bir zaman için gelgit yüksekliğinin, tidal tabloda verilen uç değerler kullanılarak hesaplanmasıdır. Denizcilikte bu yöntem, height of tide hesabının daha hassas yapılmasını sağlar. İnterpolasyon, gelgit değişiminin zaman içinde düzgün ve sürekli bir eğri izlediği varsayımına dayanır. Bu varsayım pratik uygulamalar için yeterli doğruluğu sağlar.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://sailingissues.com/datum/curvec.png)
+
+![Image](https://sailingissues.com/chart-symbols/rule-of-twelfths-tidal-heights.png)
+
+![Image](https://cockpitcards.co.uk/wp-content/uploads/2020/08/Tidal-Curve-in-use.png)
+
+![Image](https://www.sailtrain.co.uk/navigation/images/curve1.gif)`
+      },
+      {
+        title: "Doğrusal Yaklaşımın Mantığı",
+        content:
+          "Tidal tablolar genellikle yalnızca yüksek su ve alçak su zamanlarını ve yüksekliklerini verir. Ara zamanlarda deniz seviyesini belirlemek için, seviye değişiminin zamana orantılı olduğu kabul edilir ve doğrusal yaklaşım uygulanır. Bu yaklaşım, özellikle liman manevrası ve UKC değerlendirmelerinde tercih edilir."
+      },
+      {
+        title: "Temel İnterpolasyon Bağıntısı",
+        content: `Zamansal oran = Geçen süre / Toplam süre
+
+Yükseklik değişimi = Tidal range × Zamansal oran
+
+Height of tide = Başlangıç seviyesi + Yükseklik değişimi
+
+Bu bağıntılar, alçak sudan yükseğe veya yüksek sudan alçağa geçiş için aynı mantıkla kullanılır.`
+      },
+      {
+        title: "Örnek Hesap: Doğrusal İnterpolasyon",
+        content: `Bir liman için tidal tabloda verilen değerler:
+
+Alçak su (LW): 02:00 — 0,8 m  
+Yüksek su (HW): 08:00 — 4,4 m
+
+Saat 05:00 için height of tide hesaplanacaktır.
+
+**Adım 1: Tidal range hesaplanır**  
+Tidal range = 4,4 − 0,8 = 3,6 m
+
+**Adım 2: Zaman oranı belirlenir**  
+Toplam süre = 6 saat  
+Geçen süre = 02:00 → 05:00 = 3 saat  
+Zamansal oran = 3 / 6 = 0,5
+
+**Adım 3: Yükseklik değişimi hesaplanır**  
+Yükseklik değişimi = 3,6 × 0,5 = 1,8 m
+
+**Adım 4: Height of tide bulunur**  
+Height of tide = 0,8 + 1,8 = 2,6 m
+
+**Adım 5: Sonucun yorumu**  
+Saat 05:00’te deniz seviyesi, Chart datum (LAT) seviyesinin yaklaşık 2,6 m üzerindedir. Bu değer, basit interpolasyonla elde edilen pratik bir yaklaşımdır ve çoğu seyir planlamasında yeterlidir. Ancak gelgit eğrisinin simetrik olmadığı bölgelerde hata payı oluşabileceği unutulmamalıdır.
+
+Bir sonraki alt başlık 12’ler kuralıdır.`
+      }
+    ],
+    keyPoints: [
+      "İnterpolasyon, HW/LW uç değerlerinden ara saatlerdeki gelgit yüksekliğini tahmin eder.",
+      "Doğrusal yaklaşım pratikte yeterli kabul edilir ancak eğrinin simetrik olmadığı bölgelerde hata payı olabilir.",
+      "Zamansal oran ile tidal range çarpılarak ara yükseklik hesaplanır.",
+      "Height of tide sonucu Chart datum (LAT) referansına göre yorumlanmalıdır."
+    ]
+  },
 };
