@@ -5553,6 +5553,80 @@ Distance Off by Vertical Angle, klasik seyrüseferde **tek ölçümle güvenilir
       }
     ]
   },
+  ECDIS: {
+    title: "ECDIS (Electronic Chart Display and Information System)",
+    introduction:
+      "ECDIS, elektronik seyir haritaları üzerinde gemi konumunun, rotasının ve çevresel tehlikelerin entegre biçimde izlenmesini sağlayan bir seyir bilgi sistemidir. Kağıt haritanın dijital karşılığı olmakla sınırlı değildir; sensörlerden gelen verileri işleyerek seyir emniyetine yönelik karar destek fonksiyonu üretir. Bu nedenle ECDIS, pasif bir gösterim aracı değil, aktif bir seyir sistemidir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://ik.imagekit.io/mwakqpfup/evdis_enc_chart_detalization_menu_lsn8en.jpg)
+
+![Image](https://www.researchgate.net/publication/331571625/figure/fig1/AS%3A733839362117632%401551972346113/Official-ECDIS-system-architecture.ppm)
+
+![Image](https://www.marineinsight.com/wp-content/uploads/2018/03/Untitled-1.png)
+
+![Image](https://knowledgeofsea.com/wp-content/uploads/2021/03/5-1024x679.png)`
+      },
+      {
+        title: "Temel Girdi ve Entegrasyon",
+        content:
+          "ECDIS’in temel girdisi elektronik seyir haritalarıdır (ENC). Bu haritalar resmi hidrografik ofisler tarafından üretilir ve standartlaştırılmış veri yapısına sahiptir. Gemi konumu genellikle GPS’ten alınır; rota, hız ve baş bilgileri ise gyro pusula ve hız ölçerden beslenir. Radar ve AIS verileri ECDIS üzerine bindirilerek tek bir ekranda bütünleşik bir seyir resmi elde edilir."
+      },
+      {
+        title: "Alarm ve Uyarı Mantığı",
+        content:
+          "ECDIS’in en kritik özelliği alarm ve uyarı mekanizmasıdır. Emniyet konturu, emniyet derinliği, sapma limitleri ve yaklaşma alarmları, kullanıcının önceden tanımladığı değerlere göre çalışır. Bu ayarlar doğru yapılmadığında ECDIS ya sürekli alarm üreten bir sisteme dönüşür ya da sessiz kalarak ciddi tehlikeleri gözden kaçırır. Bu durum, ECDIS kazalarının temel nedenlerinden biridir."
+      },
+      {
+        title: "Operasyonel Güvenilirlik",
+        content:
+          "ECDIS, doğru kullanıldığında kağıt haritaya eşdeğer kabul edilir. Ancak bu eşdeğerlik yalnızca yetkili zabit, güncel harita ve doğru ayar koşulları sağlandığında geçerlidir. Yanlış datum, güncellenmemiş harita veya hatalı sensör girdisi, ECDIS’i operasyonel olarak güvenilmez hale getirir."
+      },
+      {
+        title: "Formüller",
+        content: `Emniyet konturu mantığı:
+
+Emniyet konturu ≥ Gemi su çekimi + Emniyet payı
+
+Sapma kontrolü:
+
+Sapma = Gerçek mevki − Planlanan rota
+
+Zaman–mesafe ilişkisi (rota izleme):
+
+Kat edilen mesafe = Hız × Zaman`
+      },
+      {
+        title: "Örnek Hesap",
+        content: `**Veriler**
+
+Gemi su çekimi = 8,5 m  
+Emniyet payı = 1,0 m
+
+**Adım 1: Emniyet konturunun belirlenmesi**
+
+Emniyet konturu = 8,5 + 1,0  
+Emniyet konturu = 9,5 m
+
+**Adım 2: Harita üzerinde uygun konturun seçilmesi**
+
+ECDIS’te 10 m emniyet konturu seçilir.
+
+**Adım 3: Operasyonel değerlendirme**
+
+10 metreden sığ alanlar sistem tarafından tehlikeli olarak işaretlenir ve yaklaşma durumunda alarm üretir.
+
+Bu ayar sayesinde ECDIS, geminin su çekimine uygun olmayan sığlıkları otomatik olarak ayıklar. Ancak ECDIS, yalnızca tanımlanan parametreler kadar güvenlidir. Yanlış emniyet konturu seçildiğinde sistem doğru çalışıyor görünse bile gemiyi tehlikeye yönlendirebilir.`
+      }
+    ],
+    keyPoints: [
+      "ECDIS, sensör verilerini birleştirerek aktif bir seyir karar destek sistemi sunar.",
+      "ENC güncelliği ve doğru datum seçimi operasyonel güvenilirliğin temelidir.",
+      "Alarm limitleri doğru tanımlanmazsa sistem ya aşırı alarm üretir ya da kritik riskleri kaçırır.",
+      "Güvenli kullanım, doğru ayar + sürekli çapraz kontrol disiplinine bağlıdır."
+    ]
+  },
   "GPS’in seyirde kullanımı ve sensör entegrasyonu": {
     title: "GPS’in Seyirde Kullanımı ve Sensör Entegrasyonu",
     introduction:
