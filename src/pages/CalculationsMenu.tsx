@@ -40,7 +40,7 @@ export default function CalculationsMenu() {
         <div className="flex flex-col gap-4">
           <Link
             to="/lessons"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 text-white shadow group-hover:scale-105">
               <BookOpen className="h-4 w-4" />
@@ -51,7 +51,7 @@ export default function CalculationsMenu() {
 
           <Link
             to="/terms-glossary"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-600 text-white shadow group-hover:scale-105">
               <BookMarked className="h-4 w-4" />
@@ -61,19 +61,8 @@ export default function CalculationsMenu() {
           </Link>
 
           <Link
-            to="/regulations"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-red-500 via-rose-500 to-pink-500 text-white shadow group-hover:scale-105">
-              <Scale className="h-4 w-4" />
-            </span>
-            <span>Regülasyonlar</span>
-            <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-          </Link>
-
-          <Link
             to="/crew"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-500 text-white shadow group-hover:scale-105">
               👥
@@ -84,7 +73,7 @@ export default function CalculationsMenu() {
 
           <Link
             to="/bridge"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 via-teal-500 to-sky-500 text-white shadow group-hover:scale-105">
               📡
@@ -95,7 +84,7 @@ export default function CalculationsMenu() {
 
           <Link
             to="/machinery"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-amber-600 via-orange-500 to-yellow-500 text-white shadow group-hover:scale-105">
               🛠️
@@ -106,12 +95,23 @@ export default function CalculationsMenu() {
 
           <Link
             to="/ship-tasks"
-            className="group inline-flex min-h-12 w-full max-w-md items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 text-white shadow group-hover:scale-105">
               <ClipboardList className="h-4 w-4" />
             </span>
             <span>Gemide Yapılan Tüm İşler ve Sorumluları</span>
+            <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+          </Link>
+
+          <Link
+            to="/regulations"
+            className="group inline-flex items-center justify-center gap-2 self-center rounded-full border border-border/60 bg-card/80 px-5 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-red-500 via-rose-500 to-pink-500 text-white shadow group-hover:scale-105">
+              <Scale className="h-4 w-4" />
+            </span>
+            <span>Regülasyonlar</span>
             <ChevronRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
