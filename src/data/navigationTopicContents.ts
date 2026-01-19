@@ -1534,6 +1534,71 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       "Hesaplanan mesafe, doğru rota doğrultusunda harita üzerine taşınmalıdır"
     ]
   },
+  "ETA": {
+    title: "ETA (Estimated Time of Arrival)",
+    introduction:
+      "ETA, geminin belirlenen bir mevkie veya varış noktasına tahmini varış zamanını ifade eder. ETA sabit bir zaman bilgisi değildir; hız, akıntı, rüzgâr, rota değişiklikleri ve operasyonel kararlar doğrultusunda sürekli güncellenir. Denizcilikte ETA yalnızca seyirle ilgili bir kavram değil; liman operasyonları, pilotaj, römorkör planlaması ve ticari zaman yönetimi açısından kritik bir parametredir.",
+    sections: [
+      {
+        title: "ETA’nın Operasyonel Çerçevesi",
+        content:
+          "ETA hesabının temelinde zaman–mesafe–hız ilişkisi yer alır. ECDIS ve seyir sistemleri, mevcut hız ve rota bilgilerini kullanarak ETA’yı otomatik olarak üretir. Ancak bu otomatik değer, yalnızca mevcut şartlar değişmediği sürece geçerlidir.",
+        image: "https://www.maptrip.de/wp-content/uploads/2022/08/eta-calculation_4.png",
+        imageAlt: "ETA hesaplama şeması"
+      },
+      {
+        title: "Dinamik ve Güncellenebilir Bir Değer",
+        content:
+          "Akıntı bölgeleri, hız düşüşleri, trafik yoğunluğu veya manevra kısıtları ETA’yı doğrudan etkiler. Bu nedenle profesyonel kullanımda ETA, her zaman tolerans payı ile değerlendirilir ve seyir boyunca düzenli revize edilir.",
+        image: "https://www-sygic.akamaized.net/content/14-blog/0-2017/20171020-how-speed-profiles-in-sygic-professional-navigation-makes-your-life-easier/eta-precision.png",
+        imageAlt: "Hız profilleri ve ETA hassasiyeti"
+      },
+      {
+        title: "Formüller",
+        content:
+          "ETA hesabında temel yaklaşım, kalan mesafe ve ortalama hız üzerinden seyir süresini bulmaktır. Akıntı etkisi varsa gerçek hız suya göre hızdan farklılaşır.",
+        image: "https://d2csxpduxe849s.cloudfront.net/media/A14868A9-EF99-4148-ACC2D04DE609CA3B/E6B883D2-64F7-4D71-BAE2DDC8DF1F1E12/webimage-72E43918-B4C3-454E-BABED51068EFAC46.png",
+        imageAlt: "ETA formülleri görseli",
+        formula: {
+          text: "ETA = Mevcut zaman + (Kalan mesafe ÷ Ortalama hız)",
+          description: "Temel zaman–mesafe–hız ilişkisi: Zaman = Mesafe ÷ Hız"
+        },
+        bulletPoints: [
+          "Zaman = Mesafe ÷ Hız",
+          "Gerçek hız = Suya göre hız ± Akıntı hızı"
+        ]
+      },
+      {
+        title: "Sayısal Örnek",
+        content: `Bir gemi için aşağıdaki veriler mevcuttur:
+
+Kalan mesafe = 96 deniz mili  
+Ortalama hız = 12 kn  
+Mevcut zaman = 08:00
+
+**Adım 1: Seyir süresinin hesaplanması**  
+Zaman = 96 ÷ 12 = 8 saat
+
+**Adım 2: ETA’nın belirlenmesi**  
+ETA = 08:00 + 8 saat = 16:00
+
+**Adım 3: Akıntı etkisi bulunan ikinci durum**  
+Akıntı = +2 kn  
+Gerçek hız = 12 + 2 = 14 kn  
+Yeni seyir süresi = 96 ÷ 14 ≈ 6,9 saat  
+Yeni ETA ≈ 14:54
+
+Bu örnek, ETA’nın neden dinamik bir değer olduğunu açıkça gösterir.`,
+        image: "https://www.maritimeinformed.com/img/products/400/w24l100-mra1fp-400.jpg",
+        imageAlt: "ETA takip ekipmanı"
+      }
+    ],
+    keyPoints: [
+      "ETA kesinlik iddiası taşımaz; operasyonel bir öngörü aracıdır.",
+      "Akıntı, rüzgâr, rota değişiklikleri ve trafik yoğunluğu ETA’yı doğrudan etkiler.",
+      "ETA, seyir emniyetini değil zaman yönetimini temsil eder ve sürekli güncellenmelidir."
+    ]
+  },
   "Rota ölçümü": {
     title: "Rota Ölçümü",
     introduction: "Rota ölçümü, deniz haritası üzerinde belirlenen iki nokta arasındaki doğrultunun hakiki kuzeye göre açısal değerinin bulunması işlemidir. Bu işlem, seyirde yön kavramının harita üzerindeki somut karşılığıdır ve tüm hız–zaman–mesafe hesaplarının doğru bir doğrultuda uygulanabilmesi için zorunludur. Rota ölçümü yalnızca bir açı okumak değildir; haritanın projeksiyonu, meridyen yapısı ve kullanılan ölçüm aracının doğru referansla kullanılması bu işlemin ayrılmaz parçalarıdır.",
