@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { XMLParser } from "https://esm.sh/fast-xml-parser@4.5.3";
+import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -320,6 +321,12 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Authenticate user before processing request
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
+  }
+
   try {
     const url = new URL(req.url);
 
@@ -398,11 +405,7 @@ serve(async (req) => {
       }
     );
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
-    return new Response(JSON.stringify({ error: message }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    logError('maritime-news', e);
+    return errorResponse(corsHeaders, 500);
   }
 });
