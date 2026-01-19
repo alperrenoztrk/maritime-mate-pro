@@ -7742,6 +7742,84 @@ Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uz
       }
     ]
   },
+  "Rüzgârın gemiye etkisi": {
+    title: "Rüzgârın Gemiye Etkisi",
+    introduction:
+      "Rüzgâr, gemi üzerine etki eden ve seyir esnasında yön, hız ve manevra kabiliyeti üzerinde belirgin sonuçlar doğuran temel dış kuvvetlerden biridir. Etki; geminin su üstü alanına, rüzgârın şiddetine, göreli geliş açısına ve gemi hızına bağlıdır. Yüksek bordalı, geniş üstyapılı ve hafif yüklü gemiler rüzgâr etkisine daha hassastır. Özellikle düşük hızlarda ve manevra sırasında rüzgâr kuvveti, pervane ve dümen etkisine baskın hâle gelebilir.",
+    sections: [
+      {
+        title: "Görsel Özet",
+        content: `![Rüzgârın gemi manevrasına etkisi](https://www.marineinsight.com/wp-content/uploads/2023/03/Effects-Of-Wind-On-Ship-Handling.png)
+
+![Rüzgâr basıncı ve sürüklenme](https://www.marineinsight.com/wp-content/uploads/2021/12/image005.png)
+
+![Rüzgârın sürüklenmeye etkisi](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/07/edScreenshot-2022-06-29-at-14.57.57.png)
+
+![Gerçek rüzgâr kavramı](https://www.nauticed.org/blog/wp-content/uploads/2009/02/true-wind.jpg)
+
+Rüzgâr, gemi üzerinde **yanal sürüklenme** ve **döndürme momenti** oluşturur. Kuvvetin büyüklüğü, rüzgâr hızının karesiyle artar; bu nedenle rüzgâr şiddetindeki küçük artışlar dahi kuvveti hızlı şekilde büyütür.`
+      },
+      {
+        title: "Rüzgârın Oluşturduğu Kuvvet ve Moment",
+        content:
+          "Rüzgârın gemi üzerindeki etkisi iki ana bileşenle değerlendirilir: (1) gemiyi rüzgâr yönüne doğru sürükleyen **yanal kuvvet** ve (2) geminin başını veya kıçını rüzgâra döndürmeye çalışan **döndürme momenti**. Momentin büyüklüğü; rüzgâr basınç merkezinin, geminin su altı direnç merkezine göre konumuna bağlıdır. Başüstü rüzgâr genellikle hız kaybına, kıçtan rüzgâr hız artışına, bordadan rüzgâr ise belirgin yanal sürüklenmeye yol açar.",
+        bulletPoints: [
+          "Yüksek borda ve geniş üstyapı → rüzgâr etkisi artar",
+          "Düşük hızda rüzgâr kuvveti, dümen etkisini bastırabilir",
+          "Moment kolu büyüdükçe gemi baş-kıç yönünde daha kolay döner"
+        ]
+      },
+      {
+        title: "Rüzgâr Kuvveti Bağıntısı",
+        content:
+          "Rüzgâr kuvveti, rüzgârın gemi üzerindeki **yatay etkisini** ifade eder ve geminin su üstü izdüşüm alanı üzerinden hesaplanır. Hava yoğunluğu standart atmosferde yaklaşık 1,225 kg/m³ alınır. Sürükleme katsayısı (Cₑ), gemi formu ve üstyapı geometrisine bağlıdır; pratikte 1,0–1,3 aralığında kullanılır.",
+        formula: {
+          text: "F = 0,5 × ρ × V² × A × Cₑ",
+          description: "F: rüzgâr kuvveti (N), ρ: hava yoğunluğu (kg/m³), V: rüzgâr hızı (m/s), A: etkin alan (m²), Cₑ: sürükleme katsayısı."
+        }
+      },
+      {
+        title: "Rüzgâr Momenti",
+        content:
+          "Rüzgârın oluşturduğu döndürme momenti, kuvvetin uygulama noktası ile geminin su altı direnç merkezi arasındaki yatay mesafe (moment kolu) ile belirlenir. Bu mesafe büyüdükçe geminin baş veya kıçının rüzgâra dönme eğilimi artar.",
+        formula: {
+          text: "M = F × d",
+          description: "M: rüzgâr momenti (N·m), F: rüzgâr kuvveti (N), d: moment kolu (m)."
+        }
+      },
+      {
+        title: "Örnek Hesaplama",
+        content: `**Verilenler**
+
+* Etkin alan (A): **900 m²**
+* Sürükleme katsayısı (Cₑ): **1,1**
+* Gerçek rüzgâr hızı (V): **15 m/s**
+* Hava yoğunluğu (ρ): **1,225 kg/m³**
+
+**Adım 1: Hızın karesi**
+
+15² = **225**
+
+**Adım 2: Kuvvet hesabı**
+
+F = 0,5 × 1,225 × 225 × 900 × 1,1  
+F ≈ **136 300 N** (≈ **136 kN**)
+
+**Adım 3: Moment yorumu**
+
+Moment kolu **8 m** ise:  
+M = 136 300 × 8 ≈ **1 090 000 N·m**
+
+Bu büyüklükte bir moment, özellikle düşük hızda seyir ve liman manevralarında geminin kontrolünü ciddi şekilde zorlaştırır. Bu nedenle rüzgâr yönü ve şiddeti manevra planına doğrudan dahil edilmelidir.`
+      }
+    ],
+    keyPoints: [
+      "Rüzgâr kuvveti, hızın karesiyle artar; küçük hız artışları büyük kuvvet farkı yaratır.",
+      "Borda rüzgârı yanal sürüklenme ve rota sapmasına neden olur.",
+      "Düşük süratte rüzgâr, dümen ve pervane etkisinden daha baskın olabilir.",
+      "Moment kolu büyüdükçe baş-kıç dönme eğilimi artar; manevra planı buna göre yapılmalıdır."
+    ]
+  },
   "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)": {
     title: "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)",
     introduction:
