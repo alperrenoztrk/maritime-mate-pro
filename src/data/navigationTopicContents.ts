@@ -71,6 +71,7 @@ import sembolLightCharacteristics from "@/assets/navigation/sembol-light-charact
 import sembolSectorLights from "@/assets/navigation/sembol-sector-lights.jpg";
 import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
 import sembolDangers from "@/assets/navigation/sembol-dangers.jpg";
+import ruleOfTwelfths from "@/assets/tides/rule-of-twelfths.svg";
 
 export interface TopicSection {
   title: string;
@@ -2061,6 +2062,75 @@ Bu zaman diliminde gemi, haritada görülen derinliğe göre 1,4 m daha fazla su
       "Harita derinlikleri ve kurutma sınırları LAT’ye göre verilir",
       "Gerçek su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre)",
       "Meteorolojik etkiler, gerçek seviyeyi LAT’nin altına indirebilir"
+    ]
+  },
+  "12'ler kuralı": {
+    title: "12’ler kuralı",
+    introduction:
+      "12’ler kuralı, yüksek su ile alçak su arasındaki yaklaşık 6 saatlik sürede gelgit yüksekliğinin zamana göre **oransal dağılımını** pratik biçimde hesaplamak için kullanılan yöntemdir. Gelgit eğrisinin doğrusal olmadığı kabul edilir; yükselme/alçalma başlangıçta yavaş, ortada hızlı, sonda tekrar yavaş seyreder. Bu yaklaşım özellikle hızlı UKC değerlendirmelerinde ve liman yaklaşım planlamasında kullanılır.",
+    sections: [
+      {
+        title: "Saatlik dağılım mantığı",
+        content:
+          "Tidal range, 6 saatlik periyot boyunca **12 eşit parçaya** bölünür. Saatlik seviye değişimleri bu parçalara dağıtılır. Dağılım, hem yükselen hem alçalan gelgit için aynı oranlarla uygulanır.",
+        image: ruleOfTwelfths,
+        imageAlt: "12’ler kuralı gelgit dağılımı diyagramı",
+        bulletPoints: [
+          "1’inci saat: 1/12",
+          "2’nci saat: 2/12",
+          "3’üncü saat: 3/12",
+          "4’üncü saat: 3/12",
+          "5’inci saat: 2/12",
+          "6’ncı saat: 1/12"
+        ]
+      },
+      {
+        title: "Temel ilişkiler",
+        content:
+          "12’ler kuralı, tidal range’i saatlere paylaştırarak kümülatif yükselme/alçalma hesabı yapar. Temel bağıntılar şöyledir:",
+        formula: {
+          text: "Saatlik seviye değişimi = Tidal range × (ilgili saat payı / 12)",
+          description: "Kümülatif seviye değişimi, ilgili saat paylarının toplamı ile hesaplanır."
+        },
+        bulletPoints: [
+          "Tidal range = Yüksek su seviyesi − Alçak su seviyesi",
+          "Height of tide = Başlangıç seviyesi + Kümülatif seviye değişimi"
+        ]
+      },
+      {
+        title: "Örnek hesap: 12’ler kuralı ile height of tide",
+        content: `Bir liman için tidal tabloda verilen değerler:
+
+Alçak su (LW): 01:00 — 0,9 m  
+Yüksek su (HW): 07:00 — 4,5 m  
+
+**Saat 04:00 için height of tide hesaplanacaktır.**
+
+**Adım 1: Tidal range**
+Tidal range = 4,5 − 0,9 = 3,6 m
+
+**Adım 2: Saatlik paylar (01:00 → 04:00)**
+1/12 + 2/12 + 3/12 = 6/12
+
+**Adım 3: Kümülatif yükselme**
+Kümülatif yükselme = 3,6 × (6/12) = 1,8 m
+
+**Adım 4: Height of tide**
+Height of tide = 0,9 + 1,8 = 2,7 m
+
+**Adım 5: Sonucun yorumu**
+Saat 04:00’te deniz seviyesi, chart datum (LAT) seviyesinin yaklaşık 2,7 m üzerindedir. Bu değer, doğrusal interpolasyona göre daha gerçekçi bir dağılım sunar. Yöntem, yarı günlük gelgit karakteri gösteren bölgelerde daha güvenilir sonuç verir; düzensiz gelgit rejimlerinde dikkatle kullanılmalıdır.`
+      },
+      {
+        title: "Sonraki başlık",
+        content: "Bir sonraki alt başlık **Spring tide ve Neap tide** olacaktır."
+      }
+    ],
+    keyPoints: [
+      "Tidal range 6 saat içinde 12 eşit paya bölünür",
+      "Saatlik oranlar 1-2-3-3-2-1 şeklinde dağılır",
+      "Kümülatif paylar istenen saat için gelgit yüksekliğini verir",
+      "Yöntem yarı günlük gelgit düzeni için pratik bir yaklaşımdır"
     ]
   },
   "Büyük daire kavramı": {
