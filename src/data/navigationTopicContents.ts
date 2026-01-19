@@ -10294,4 +10294,83 @@ Bir sonraki alt başlık 12’ler kuralıdır.`
       "Height of tide sonucu Chart datum (LAT) referansına göre yorumlanmalıdır."
     ]
   },
+  "Fırtınada rota ve hız kararı": {
+    title: "Fırtınada rota ve hız kararı",
+    introduction:
+      "Kuvvetli rüzgâr ve dalga koşullarında geminin emniyetli seyri, doğru hız ve rota ayarlaması ile sağlanır. Bu ayarlamalar, geminin dalga ile karşılaşma şeklini değiştirerek yapısal yükleri, yalpa genliğini ve makine-dümen üzerindeki zorlanmaları doğrudan etkiler. Hız ve rota, birbirinden bağımsız kararlar değildir; birlikte değerlendirilir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://www.northsails.com/cdn/shop/articles/Heavy-Weather-Technique_d4719be2-a99a-4a84-a82f-e8ab0d1e2a67.jpg?v=1685187668)
+
+![Image](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fres.cloudinary.com%2Fdhqq9jwqj%2Fimage%2Fupload%2Fv1748381641%2Fsynchronous_rolling_six_degrees_of_motion_roll_heave_circled_qbnzrj.jpg&w=3840)
+
+![Image](https://safety4sea.com/wp-content/uploads/2019/05/kr-waves-and-shipping.png)
+
+![Image](https://static.wixstatic.com/media/82eb4b_c415794cedc44d69a28f9afc34dd433e~mv2.jpg/v1/fill/w_980,h_822,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/82eb4b_c415794cedc44d69a28f9afc34dd433e~mv2.jpg)`
+      },
+      {
+        title: "Karşılaşma Açısı ve Riskler",
+        content:
+          "Dalga ile gemi arasındaki karşılaşma açısı, seyir emniyetini belirleyen ana parametrelerden biridir. Baş dalgada hız fazla tutulursa slamming ve baş bodoslama yükleri artar. Kıçtan dalgada aşırı hız, surf-riding ve broaching riskini yükseltir. Borda dalgada ise hızdan bağımsız olarak aşırı yalpa tehlikesi öne çıkar. Bu nedenle rota, dalgayı mümkün olduğunca güvenli bir açıdan alacak şekilde ayarlanır.",
+        bulletPoints: [
+          "Baş dalga + yüksek hız → slamming ve baş yükleri artışı",
+          "Kıçtan dalga + aşırı hız → surf-riding ve broaching riski",
+          "Borda dalga → yalpa genliği tehlikeli seviyelere çıkabilir"
+        ]
+      },
+      {
+        title: "Pratik Rota Yaklaşımı",
+        content:
+          "Pratik denizcilikte tercih edilen yaklaşım, dalgayı tam baştan veya tam kıçtan almak yerine 20°–40° aralığında çapraz almaktır. Bu yöntem, dikey ivmeleri ve ani yüklenmeleri azaltır. Ancak bu yaklaşım her gemi için mutlak çözüm değildir; gemi tipi, yük durumu ve stabilite özellikleri mutlaka dikkate alınır."
+      },
+      {
+        title: "Hızın Dinamik Yüklere Etkisi",
+        content:
+          "Hızdaki küçük bir artışın bile gemi üzerindeki dinamik zorlanmaları ciddi biçimde artırdığı unutulmamalıdır. Heavy weather koşullarında hızın kademeli olarak düşürülmesi temel bir emniyet tedbiridir.",
+        formula: {
+          text: "Dinamik Yükler ∝ Gemi Hızı²",
+          description: "Hız küçük artışlarla yükselse bile dinamik yükler karesel olarak büyür."
+        }
+      },
+      {
+        title: "Rota Değişiminin Karşılaşma Frekansına Etkisi",
+        content:
+          "Karşılaşma açısı büyüdükçe, yani dalga baştan uzaklaştıkça, karşılaşma frekansı azalır ve geminin maruz kaldığı darbeler yumuşar.",
+        formula: {
+          text: "Karşılaşma Frekansı ∝ cos(Karşılaşma Açısı)",
+          description: "Karşılaşma açısı arttıkça frekans azalır, darbeler yumuşar."
+        }
+      },
+      {
+        title: "Örnek Değerlendirme",
+        content: `Bir gemi 090° rota ile seyretmektedir. Dalga yönü 090° olup pruvadan gelmektedir. Gemi hızı 15 knot’tur ve slamming gözlenmektedir.
+
+**Adım 1: Mevcut durumun değerlendirilmesi**  
+Dalga pruvadan geldiği için karşılaşma açısı yaklaşık 0°’dir. Bu durum, yüksek dikey ivme ve slamming riski doğurur.
+
+**Adım 2: Rota ayarlaması**  
+Gemi rotası 110° olarak değiştirilsin.  
+Yeni Karşılaşma Açısı = 110° − 090° = 20°  
+Bu durumda dalga artık pruva baş omuzluktan alınmaktadır.
+
+**Adım 3: Hız ayarlaması**  
+Gemi hızı 15 knot’tan 11 knot’a düşürülsün.  
+Hız Oranı = 11 / 15 ≈ 0,73  
+Dinamik Yük Oranı ≈ 0,73² ≈ 0,53
+
+**Adım 4: Sonuçların yorumu**  
+Rota ve hız birlikte ayarlandığında, slamming riski belirgin şekilde azalır, makine ve gövde üzerindeki zorlanmalar düşer ve gemi emniyetli bir şekilde ilerlemeye devam eder.
+
+Bu örnek, heavy weather koşullarında yalnızca rota değiştirmenin veya yalnızca hız düşürmenin tek başına yeterli olmadığını; ticari kaygılarla yüksek hızda ısrar etmenin teknik ve emniyet açısından zayıf bir yaklaşım olduğunu açıkça ortaya koyar.`
+      }
+    ],
+    keyPoints: [
+      "Hız ve rota kararları birlikte değerlendirilmelidir.",
+      "Dalgayı 20°–40° çapraz almak, dikey ivmeleri ve ani yüklenmeleri azaltabilir.",
+      "Dinamik yükler hızın karesi ile artar; hız düşürmek temel emniyet tedbiridir.",
+      "Karşılaşma açısı büyüdükçe karşılaşma frekansı azalır ve darbeler yumuşar.",
+      "Tek başına rota veya hız değişimi çoğu durumda yeterli değildir."
+    ]
+  }
 };
