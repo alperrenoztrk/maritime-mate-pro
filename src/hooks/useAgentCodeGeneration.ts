@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { generateCode, streamGenerateCode, saveComponent } from '@/services/agentService';
 import { parseFiles, buildFileContext } from '@/services/fileParserService';
+import { sanitizeCode, getSecurityWarning } from '@/utils/codeSanitizer';
 import type { AgentMessage, AgentRequest, ComponentType, ComponentCategory } from '@/types/agent';
 import type { UploadedFile } from '@/hooks/useFileUpload';
 import { toast } from 'sonner';
@@ -94,6 +95,20 @@ export function useAgentCodeGeneration() {
           );
         },
         (code) => {
+          // Client-side validation of AI-generated code
+          const validation = sanitizeCode(code);
+          if (!validation.isValid) {
+            console.error('Code validation failed:', validation.violations);
+            toast.error('Üretilen kod güvenlik kontrolünden geçemedi');
+            setMessages(prev =>
+              prev.map(m =>
+                m.id === assistantMessage.id
+                  ? { ...m, content: assistantContent + '\n\n' + getSecurityWarning(validation.violations) }
+                  : m
+              )
+            );
+            return;
+          }
           setCurrentCode(code);
           setMessages(prev =>
             prev.map(m =>
@@ -118,6 +133,14 @@ export function useAgentCodeGeneration() {
   const saveCurrentComponent = useCallback(async (name: string, description?: string) => {
     if (!currentCode) {
       toast.error('Kaydedilecek kod yok');
+      return;
+    }
+
+    // Re-validate code before saving
+    const validation = sanitizeCode(currentCode);
+    if (!validation.isValid) {
+      toast.error('Kod güvenlik kontrolünden geçemedi - kaydetme iptal edildi');
+      console.error('Save blocked:', validation.violations);
       return;
     }
 

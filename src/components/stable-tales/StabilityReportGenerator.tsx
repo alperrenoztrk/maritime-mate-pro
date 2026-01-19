@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DOMPurify from "dompurify";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -156,32 +157,33 @@ Stable Tales - Maritime Stability System
     toast.success("Rapor indirildi!");
   };
 
-  // HTML escape function to prevent XSS
-  const escapeHtml = (text: string): string => {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  };
-
   const printReport = () => {
     const printWindow = window.open('', '_blank');
     if (printWindow) {
-      const escapedReport = escapeHtml(generatedReport);
-      printWindow.document.write(`
-        <html>
-          <head>
-            <title>Stabilite Raporu</title>
-            <style>
-              body { font-family: 'Courier New', monospace; margin: 20px; }
-              pre { white-space: pre-wrap; }
-            </style>
-          </head>
-          <body>
-            <pre>${escapedReport}</pre>
-          </body>
-        </html>
-      `);
-      printWindow.document.close();
+      // Use DOMPurify to sanitize content - strip all HTML, keep only text
+      const sanitizedReport = DOMPurify.sanitize(generatedReport, {
+        ALLOWED_TAGS: [], // Strip all HTML tags
+        KEEP_CONTENT: true // Keep text content
+      });
+      
+      // Build document using DOM methods instead of document.write
+      const doc = printWindow.document;
+      doc.open();
+      
+      const style = doc.createElement('style');
+      style.textContent = `
+        body { font-family: 'Courier New', monospace; margin: 20px; }
+        pre { white-space: pre-wrap; }
+      `;
+      
+      const pre = doc.createElement('pre');
+      pre.textContent = sanitizedReport; // Safe: textContent doesn't interpret HTML
+      
+      doc.head.appendChild(style);
+      doc.title = 'Stabilite Raporu';
+      doc.body.appendChild(pre);
+      doc.close();
+      
       printWindow.print();
       toast.success("Rapor yazdırılıyor...");
     }
