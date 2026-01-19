@@ -2103,6 +2103,78 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
       }
     ]
   },
+  "GPS prensibi": {
+    title: "GPS Prensibi",
+    introduction:
+      "Küresel Konumlandırma Sistemi (GPS), Dünya yörüngesinde belirli bir geometriyle dağıtılmış uyduların gönderdiği zaman damgalı radyo sinyallerinin ölçülmesi esasına dayanır. Her uydu atomik saatine referanslı sinyal yayınlar; alıcı, sinyalin gönderilme zamanı ile alınma zamanı arasındaki farkı ölçerek uydu–alıcı arasındaki sözde mesafeyi hesaplar. Eş zamanlı olarak en az dört uydudan ölçülen sözde mesafeler ile alıcının üç boyutlu konumu ve saat hatası birlikte çözülür.",
+    sections: [
+      {
+        title: "Uydu Konstelasyonu ve Geometri",
+        content:
+          "GPS konstelasyonu, alıcının her an birden fazla uyduyu görebileceği şekilde tasarlanmıştır. Uydu geometrisi (DOP), konum çözümünün doğruluğunu doğrudan etkiler; geometri bozulduğunda yatay doğruluk hızlı şekilde düşer.",
+        image:
+          "https://www.researchgate.net/publication/394292701/figure/fig1/AS%3A11431281573147950%401754363410553/Simplified-diagram-of-the-GPS-satellite-constellation-Expandable-24-slot-configuration.ppm",
+        imageAlt: "GPS uydu konstelasyonunun basitleştirilmiş diyagramı"
+      },
+      {
+        title: "Trilaterasyon Mantığı",
+        content:
+          "GPS, kerteriz değil mesafe ölçümü ile çalışır. Her uydu için ölçülen sözde mesafe, uydudan geçen bir küre tanımlar; en az dört uydu için bu kürelerin kesişimi alıcının konumunu verir. Dördüncü uydu, alıcı saat hatasının çözülmesi için zorunludur.",
+        image: "https://gisgeography.com/wp-content/uploads/2018/04/GPS-Trilateration-Feature.jpg",
+        imageAlt: "GPS trilaterasyon prensibi"
+      },
+      {
+        title: "Sistem Yapısı ve Zaman Ölçümü",
+        content:
+          "GPS’te temel fiziksel prensip, elektromanyetik dalgaların boşluktaki yayılma hızının sabit kabul edilmesidir. Denizcilikte kullanılan sivil alıcılarda bu hız pratikte ışık hızı olarak alınır. Ölçülen mesafe, atmosferik gecikmeler, uydu saat hataları ve alıcı saat sapması nedeniyle gerçek geometrik mesafeden farklı olabilir; bu nedenle hesaplanan değer “sözde mesafe” olarak adlandırılır.",
+        image: "https://signalprocessingsociety.org/sites/default/files/1_GPS_System_Strcture.jpg",
+        imageAlt: "GPS sistem yapısı ve bileşenleri"
+      },
+      {
+        title: "Konum Çözümü ve Operasyonel Etki",
+        content:
+          "Konum çözümü, enlem, boylam ve yükseklik ile birlikte alıcı saat hatasının aynı anda bulunmasına dayanır. Deniz seyirinde yükseklik ikincil önemde olsa da çözümün parçası olmak zorundadır. Uydu geometrisinin zayıfladığı anlarda (yüksek DOP), özellikle dar sularda ve kıyı seyrinde operasyonel risk artar.",
+        image: "https://www.faa.gov/sites/faa.gov/files/about/office_org/headquarters_offices/ato/GPS_how_it_works1.png",
+        imageAlt: "GPS’in çalışma prensibi şeması"
+      },
+      {
+        title: "Temel Formüller",
+        content:
+          "Sözde mesafe, ölçülen zaman farkı ile ışık hızının çarpımına eşittir. Konum çözümünde her uydu için bir denklem kurulur ve dört uydu ile dört bilinmeyen çözülür.",
+        bulletPoints: [
+          "Sözde mesafe: ρ = c × Δt",
+          "c: ışık hızı (≈ 300 000 km/s)",
+          "Δt: sinyalin gönderilmesi ile alınması arasındaki süre",
+          "3B konum denklemi (bir uydu): ρ = √[(x − xs)² + (y − ys)² + (z − zs)²] + b",
+          "b: alıcı saat hatası"
+        ]
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir GPS alıcısı, bir uydudan gelen sinyalin gönderilme ve alınma zamanları arasındaki farkı **0,000072 s** olarak ölçmüştür.
+
+Adım 1: Işık hızının tanımlanması  
+c ≈ 300 000 km/s
+
+Adım 2: Zaman farkının kullanılması  
+Δt = 0,000072 s
+
+Adım 3: Sözde mesafenin hesaplanması  
+ρ = c × Δt  
+ρ = 300 000 × 0,000072  
+ρ = **21,6 km**
+
+Bu değer, alıcı ile uydu arasındaki sözde mesafedir. Aynı işlem en az dört farklı uydu için yapıldığında, bu mesafelerin kesişiminden geminin konumu hesaplanır. Denizcilikte bu sonuç, harita datumuna bağlı olarak ECDIS ve radar gibi diğer sensörlerle çapraz kontrol edilmediği sürece tek başına emniyetli kabul edilmez.`
+      }
+    ],
+    keyPoints: [
+      "GPS, zaman ölçümü temelli sözde mesafeler ile konum çözer.",
+      "En az dört uydu ile 3B konum ve saat hatası birlikte bulunur.",
+      "İyonosfer/troposfer gecikmeleri ve saat hataları sözde mesafeyi büyütür.",
+      "Uydu geometrisi zayıfladığında doğruluk hızlı düşer.",
+      "GPS verisi denizcilikte diğer sensörlerle mutlaka çapraz kontrol edilmelidir."
+    ]
+  },
   "GPS doğruluğu": {
     title: "GPS Doğruluğu",
     introduction:
