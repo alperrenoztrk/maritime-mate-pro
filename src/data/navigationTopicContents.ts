@@ -10098,6 +10098,75 @@ Saat 07:00’de deniz seviyesi, Chart Datum (LAT) seviyesinin yaklaşık 2,4 m �
       "Daha yüksek hassasiyet gerektiğinde Rule of Twelfths ve interpolasyon kullanılmalıdır."
     ]
   },
+  "Tidal window (liman giriş zamanı)": {
+    title: "Tidal Window (Liman Giriş Zamanı)",
+    introduction:
+      "Tidal window, bir geminin draftı ile mevcut su derinliği arasındaki ilişki dikkate alınarak, liman giriş veya çıkışının emniyetle yapılabildiği **sınırlı zaman aralığını** ifade eder. Bu aralık, gelgitin sağladığı ek su yüksekliğine bağlıdır ve geçicidir. Özellikle derin draftlı gemiler için operasyonun yapılabileceği tek fırsat bu pencere olabilir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://sailingissues.com/chart-symbols/clearing-heights-chart-datums-opt.svg)
+
+![Image](https://sailingissues.com/chart-symbols/tidal-curves-explanation.png)
+
+![Image](https://sailingissues.com/acht/tidal-diamond-course-to-steer-rate-set.png)
+
+![Image](https://sailingissues.com/acht/tide-coast-ledge-ebb-flood-eddy.png)`
+      },
+      {
+        title: "Tanım ve Operasyonel Amaç",
+        content:
+          "Tidal window hesabı, tek bir saatten ziyade **bir zaman aralığını** belirlemeyi amaçlar. Bu aralık; gelgitin yükselmeye başladığı, yeterli UKC’nin sağlandığı ve tekrar kritik seviyenin altına düşmediği süreyi kapsar. Harita derinliği, gemi draftı, squat ve emniyet payı birlikte değerlendirilir."
+      },
+      {
+        title: "Temel İlişkiler",
+        content: `Gerekli minimum su derinliği, geminin efektif draftı ve istenen UKC’nin toplamıdır. Sağlanan su derinliği ise harita derinliği ile gelgit yüksekliğinin toplamıdır.
+
+Tidal window → **Sağlanan su derinliği ≥ Gerekli minimum su derinliği** olan zaman aralığı.`,
+        formula: {
+          text: "Efektif draft = Statik draft + Squat + Emniyet payı",
+          description: "Efektif draft, geminin hareket hâlindeki gerçek su çekimini temsil eder."
+        }
+      },
+      {
+        title: "Örnek hesap: Tidal window belirlenmesi",
+        content: `Bir liman girişi için aşağıdaki bilgiler verilsin:
+
+Harita derinliği (LAT): 8,0 m  
+Geminin statik draftı: 7,1 m  
+Squat: 0,4 m  
+Emniyet payı: 0,3 m  
+Minimum istenen UKC: 0,5 m
+
+**Adım 1: Efektif draft hesaplanır**  
+Efektif draft = 7,1 + 0,4 + 0,3 = 7,8 m
+
+**Adım 2: Gerekli minimum su derinliği belirlenir**  
+Gerekli minimum su derinliği = 7,8 + 0,5 = 8,3 m
+
+**Adım 3: Gerekli gelgit yüksekliği hesaplanır**  
+Gerekli gelgit yüksekliği = 8,3 − 8,0 = 0,3 m
+
+**Adım 4: Tidal tablodan uygun zaman aralığı belirlenir**  
+Tidal tabloda gelgit yüksekliğinin 0,3 m ve üzeri olduğu zaman aralığı:  
+10:40 → 14:20
+
+**Adım 5: Sonucun yorumu**  
+Bu gemi için liman girişi yalnızca 10:40 ile 14:20 arasındaki tidal window içinde emniyetle yapılabilir. Bu pencerenin dışında, UKC kritik seviyenin altına düşmektedir. Operasyon gecikmesi durumunda giriş iptal edilmeli veya bir sonraki gelgit çevrimi beklenmelidir.`
+      },
+      {
+        title: "Operasyonel Gerçekçilik",
+        content:
+          "Tidal window, teorik bir hesap değildir; römorkör gecikmeleri, trafik, rüzgâr ve akıntı gibi faktörler bu pencereyi fiilen daraltabilir. Bu nedenle pratikte hesaplanan tidal window’un tamamı kullanılmaz, emniyetli bir alt aralık seçilir. Gelgit avantajı, zaman baskısı altında risk almaya gerekçe olarak görülmemelidir."
+      }
+    ],
+    keyPoints: [
+      "Tidal window, emniyetli giriş/çıkış için gerekli su derinliğinin sağlandığı zaman aralığıdır.",
+      "Efektif draft; statik draft, squat ve emniyet payının toplamıdır.",
+      "Sağlanan su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre).",
+      "Operasyonel gecikmeler tidal window’u pratikte daraltır."
+    ]
+  },
   "Gelgitin fiziksel mantığı": {
     title: "Gelgitin Fiziksel Mantığı",
     introduction:
