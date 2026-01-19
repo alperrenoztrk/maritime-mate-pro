@@ -9679,4 +9679,78 @@ Bu değer, GPS’in üç boyutlu konum çözümünde yaklaşık 14 metre seviyes
       "3B konum hatası yaklaşımı PDOP × UERE ile değerlendirilir."
     ]
   },
+  XTE: {
+    title: "XTE (Cross Track Error)",
+    introduction:
+      "XTE, geminin planlanan rota hattından yanal olarak ne kadar saptığını gösteren nicel bir seyir parametresidir. Rota üzerindeki ilerleme başarısını ölçmez; geminin rota hattına olan dik mesafesini ölçer. Bu nedenle özellikle dar sular, trafik ayırım düzenleri ve kıyıya paralel seyirde doğrudan emniyet göstergesi olarak kabul edilir.",
+    sections: [
+      {
+        title: "Tanım ve Operasyonel Anlamı",
+        content:
+          "XTE değeri, rota hattına olan dik mesafeyi temsil eder. Gemi rota hattını koruduğu sürece XTE küçük kalır; rüzgar, akıntı veya yanlış dümenleme sonucu rota dışına çıkıldığında XTE büyür.",
+        image: "https://www.simrad-yachting.com/globalassets/simrad/world-of-simrad/technology/xte/xte-basics-fig-2.jpg",
+        imageAlt: "XTE'nin rota hattına olan dik mesafesi",
+        bulletPoints: [
+          "XTE, rota hattına göre yanal sapmayı ölçer.",
+          "Rota üzerindeki ilerleme başarısını değil, sapma miktarını gösterir.",
+          "Dar su ve TSS seyirlerinde erken emniyet göstergesi olarak izlenir."
+        ]
+      },
+      {
+        title: "ECDIS Koridoru ve Alarm Mantığı",
+        content:
+          "ECDIS üzerinde planlanan rota hattının her iki yanına bir koridor tanımlanır. Gemi bu koridor içinde kaldığı sürece seyir emniyetli kabul edilir. XTE değeri koridor sınırlarını aştığında sistem alarm üretir. Bu alarm, geminin tehlikeye girdiğini değil; tehlikeye yaklaşmakta olduğunu gösterir.",
+        image:
+          "https://www.researchgate.net/publication/349713709/figure/fig2/AS%3A1050468532887555%401627462623956/Cross-track-distance-XTD-is-set-to-a-number-of-meters-on-the-port-and-starboard-side.png",
+        imageAlt: "XTE koridoru ve port-starboard limitleri",
+        bulletPoints: [
+          "|XTE| ≤ Tanımlı limit → emniyetli seyir",
+          "|XTE| > Tanımlı limit → alarm",
+          "Alarm, yaklaşan tehlike için erken uyarı sağlar."
+        ]
+      },
+      {
+        title: "GPS Doğruluğu ve Operasyonel Sınırlamalar",
+        content:
+          "XTE değeri GPS konumuna dayanır. GPS doğruluğu, HDOP ve uydu geometrisi bozulduğunda XTE sayısal olarak doğru görünse bile operasyonel olarak yanıltıcı olabilir. Bu yüzden XTE, radar ve görsel seyirle birlikte değerlendirilmelidir.\n\n![Along-track ve cross-track hataları](https://www.researchgate.net/publication/265251751/figure/fig6/AS%3A295854108889093%401447548524603/llustration-of-along-track-cross-track-and-horizontal-errors.png)\n\n![XTE'nin rota emniyetine etkisi](https://www.mdpi.com/jmse/jmse-08-00566/article_deploy/html/images/jmse-08-00566-g003.png)"
+      },
+      {
+        title: "Formüller",
+        content: `**Temel geometrik tanım**  
+XTE = Rota hattına olan dik mesafe
+
+**Basitleştirilmiş trigonometrik yaklaşım**  
+XTE ≈ Mesafe × sin(Sapma açısı)
+
+**Alarm mantığı**  
+|XTE| ≤ Tanımlı XTE limiti → Emniyetli  
+|XTE| > Tanımlı XTE limiti → Alarm`
+      },
+      {
+        title: "Örnek Hesap",
+        content: `Bir gemi için aşağıdaki veriler mevcuttur:
+
+Planlanan rota bacağı uzunluğu = 10 deniz mili  
+Rota ile gerçek seyir arasındaki sapma açısı = 3°
+
+**Adım 1: Trigonometrik ilişkinin kurulması**  
+XTE ≈ 10 × sin 3°
+
+**Adım 2: Sayısal değerin hesaplanması**  
+sin 3° ≈ 0,052  
+XTE ≈ 10 × 0,052  
+XTE ≈ 0,52 deniz mili
+
+**Adım 3: Operasyonel değerlendirme**  
+Gemi, planlanan rota hattından yaklaşık yarım deniz mili yanal sapma göstermektedir. Bu değer açık denizde tolere edilebilir olabilir; ancak dar bir kanalda kabul edilemez bir emniyet ihlali oluşturur. XTE limitleri her rota bacağı için ayrı ayrı ve geminin manevra kabiliyetine göre tanımlanmalıdır.`
+      }
+    ],
+    keyPoints: [
+      "XTE, rota hattına olan dik mesafeyi ölçer ve yanal sapmayı gösterir.",
+      "ECDIS koridoru içinde kalmak emniyetli seyri ifade eder; sınır aşımı alarm üretir.",
+      "XTE alarmı tehlikeye yaklaşımı bildirir, tehlikeyi doğrulamaz.",
+      "GPS doğruluğu bozulduğunda XTE operasyonel olarak yanıltıcı olabilir.",
+      "XTE, radar ve görsel seyirle birlikte yorumlanmalıdır."
+    ]
+  },
 };
