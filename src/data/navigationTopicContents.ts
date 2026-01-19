@@ -9953,6 +9953,81 @@ Gemi, planlanan rota hattından yaklaşık yarım deniz mili yanal sapma göster
       "XTE, radar ve görsel seyirle birlikte yorumlanmalıdır."
     ]
   },
+  "Height of tide hesapları": {
+    title: "Height of Tide Hesapları",
+    introduction:
+      "Height of tide, belirli bir yer ve zamanda deniz seviyesinin Chart Datum (LAT) seviyesinin ne kadar üzerinde veya altında olduğunu ifade eder. Bu değer, gerçek su derinliği ve UKC hesaplarında doğrudan kullanılır. Gelgit tablolarında verilen HW/LW zaman ve yükseklikleri, ara zamanlardaki gelgit yüksekliğinin yaklaşık olarak hesaplanmasına imkân tanır.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://sailingissues.com/chart-symbols/tidal-curves-explanation.png)
+
+![Image](https://cdn.shopify.com/s/files/1/0538/4028/1792/t/8/assets/pf-579b63d7--tide-graph_1200x.PNG?v=1617898174)
+
+![Image](https://maritimesa.org/grade-10/wp-content/uploads/sites/2/2015/10/01_tides_A.png)
+
+![Image](https://www.researchgate.net/publication/369476105/figure/fig1/AS%3A11431281129752024%401679619585532/Diagram-showing-terminology-used-in-this-study-tidal-phases-rising-vs-falling-phase.png)`
+      },
+      {
+        title: "Temel Kavramlar",
+        content:
+          "Gelgit tablolarında yer alan yüksek su (HW) ve alçak su (LW) değerleri, Chart Datum (LAT) referansına göre verilir. İstenen saatteki gelgit yüksekliği, HW–LW arasındaki değişimin zamana dağılımı temel alınarak bulunur.",
+        bulletPoints: [
+          "Tidal range = Yüksek su seviyesi − Alçak su seviyesi",
+          "Height of tide = İlgili zamandaki deniz seviyesi − Chart Datum (LAT)",
+          "Bu iki büyüklük birlikte kullanılarak ara saatler için yükseklik bulunur"
+        ]
+      },
+      {
+        title: "Temel Hesap Mantığı",
+        content:
+          "Yüksek su ile alçak su arasındaki zaman aralığı pratikte yaklaşık 6 saat kabul edilir. Bu süre boyunca deniz seviyesi alçaktan yükseğe veya yüksekten alçağa doğru değişir. İstenen saat, bu 6 saatlik periyot içindeki konumuna göre değerlendirilir.",
+        formula: {
+          text: "Height of tide ≈ LW + (Tidal range × zaman oranı)",
+          description: "Zaman oranı, gelgitin yükselme/azalma sürecindeki konumu temsil eder."
+        }
+      },
+      {
+        title: "Örnek Hesap: Height of Tide",
+        content: `Bir liman için tidal tabloda aşağıdaki bilgiler verilmiştir:
+
+Alçak su (LW): 04:00 — 0,6 m  
+Yüksek su (HW): 10:00 — 4,2 m
+
+**Adım 1: Tidal range hesaplanır**  
+Tidal range = 4,2 − 0,6 = 3,6 m
+
+**Adım 2: Zaman aralığı belirlenir**  
+LW ile HW arasındaki süre = 6 saat  
+Saat 07:00 için hesap yapılacaktır.  
+04:00 → 07:00 arası geçen süre = 3 saat
+
+**Adım 3: Yükselme miktarı değerlendirilir**  
+3 saat, 6 saatlik periyodun tam ortasıdır.  
+Bu noktada deniz seviyesi yaklaşık olarak tidal range’in yarısı kadar yükselmiş kabul edilir.
+
+Yükselme miktarı ≈ 3,6 / 2 = 1,8 m
+
+**Adım 4: Height of tide bulunur**  
+Height of tide = LW seviyesi + yükselme miktarı  
+Height of tide = 0,6 + 1,8 = 2,4 m
+
+**Adım 5: Sonucun yorumu**  
+Saat 07:00’de deniz seviyesi, Chart Datum (LAT) seviyesinin yaklaşık 2,4 m üzerindedir. Bu değer, gerçek su derinliği ve UKC hesaplarında doğrudan kullanılabilir.`
+      },
+      {
+        title: "Hassasiyet Notu ve Interpolasyon",
+        content:
+          "Gelgit hareketi teorik olarak tam bir sinüs eğrisi değildir; ancak pratik denizcilikte kabul edilebilir doğrulukla eğrisel bir değişim gösterdiği varsayılır. Daha hassas hesaplar için Rule of Twelfths ve interpolasyon yöntemi uygulanır. Bir sonraki alt başlık Interpolasyon olacaktır."
+      }
+    ],
+    keyPoints: [
+      "Height of tide, istenen saatteki deniz seviyesinin LAT’ye göre yüksekliğidir.",
+      "Tidal range, HW ve LW arasındaki yükseklik farkıdır.",
+      "Ara zamanlar için oranlama yaklaşımı pratikte kabul edilebilir doğruluk sağlar.",
+      "Daha yüksek hassasiyet gerektiğinde Rule of Twelfths ve interpolasyon kullanılmalıdır."
+    ]
+  },
   "Gelgitin fiziksel mantığı": {
     title: "Gelgitin Fiziksel Mantığı",
     introduction:
