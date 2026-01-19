@@ -10372,5 +10372,78 @@ Bu örnek, heavy weather koşullarında yalnızca rota değiştirmenin veya yaln
       "Karşılaşma açısı büyüdükçe karşılaşma frekansı azalır ve darbeler yumuşar.",
       "Tek başına rota veya hız değişimi çoğu durumda yeterli değildir."
     ]
+  },
+  "Bridge Resource Management (BRM)": {
+    title: "Bridge Resource Management (BRM)",
+    introduction:
+      "Bridge Resource Management (BRM), seyir emniyetinin yalnızca teknik bilgi ve cihaz kullanımına değil, köprüüstü ekibinin insan faktörleri üzerinden yönetilmesine dayandığını kabul eder. BRM yaklaşımı; kaptan, vardiya zabiti, dümenci ve gerektiğinde kılavuz kaptan arasındaki görev paylaşımını, iletişimi ve karar alma sürecini disiplinli şekilde yürütmeyi hedefler. IMO A.893(21) kapsamında hazırlanan seyir planı, BRM uygulamasıyla desteklenmediği sürece pratikte emniyetli kabul edilemez.",
+    sections: [
+      {
+        title: "BRM’in Ana Felsefesi",
+        content:
+          "BRM, köprüüstünde tek bir kişinin bilgi ve karar merkezine dönüşmesini riskli kabul eder. Gemi emniyeti, ekip tarafından paylaşılan durumsal farkındalık ve disiplinli iletişimle korunur. Akademik olarak doğru kararlar, ekip tarafından paylaşılmadığında operasyonel değerini kaybeder.",
+        image: "https://naviminds.com/wp-content/uploads/what-is-brm-1024x654.jpg",
+        imageAlt: "Bridge Resource Management ekip koordinasyonu"
+      },
+      {
+        title: "Ortak Durumsal Farkındalık",
+        content:
+          "Köprüüstünde bulunan her personel, geminin pozisyonu, planlanan rota, yaklaşan riskler ve olası kararlar hakkında asgari bilgi sahibi olmalıdır. Bilginin tek bir kişide toplanması, özellikle yoğun trafik ve dar su geçişlerinde ciddi bir zafiyet yaratır.",
+        image: "https://naviminds.com/wp-content/uploads/5-key-components-of-BRM-1024x683.jpg",
+        imageAlt: "BRM’in temel bileşenleri"
+      },
+      {
+        title: "Açık ve Doğrulanabilir İletişim",
+        content:
+          "BRM uygulamasında iletişim açık, net ve teyit edilebilir olmalıdır. Varsayıma dayalı ifadeler, ima yoluyla verilen komutlar ve teyitsiz uygulamalar kabul edilebilir değildir. Özellikle rota veya hız değişiklikleri, köprüüstündeki tüm personel tarafından duyulmalı ve anlaşıldığı doğrulanmalıdır.",
+        image:
+          "https://www.researchgate.net/publication/317919074/figure/fig1/AS%3A588511715536898%401517323535490/dentified-relationship-among-bridge-climate-action-errors-and-team-communication-skill.png",
+        imageAlt: "Köprüüstü iletişim ve ekip iklimi ilişkisi"
+      },
+      {
+        title: "BRM Zaman Paylaşımı Hesabı",
+        content:
+          "Vardiya zabitinin seyir izlemeye gerçekten ayırabildiği süre, vardiya süresinden idari ve ikincil görevlerin çıkarılmasıyla elde edilir. Bu hesap, gözlem kalitesini doğrudan etkiler.",
+        formula: {
+          text: "Etkili izleme süresi = Vardiya süresi − İdari ve ikincil görev süreleri",
+          description:
+            "Fiili seyir takibi için ayrılan süreyi netleştirir; görev paylaşımı yapılmadığında izleme kalitesi düşer."
+        }
+      },
+      {
+        title: "Örnek Zaman Paylaşımı",
+        content:
+          "**Vardiya süresi:** 4 saat  \n**Kayıt tutma, raporlama ve idari işler:** 45 dakika (0,75 saat)  \n**Etkili izleme süresi:** 4 − 0,75 = **3,25 saat**  \n\nBu sonuç, vardiya zabitinin dikkatinin yaklaşık %20’sinin seyir dışı görevlerle bölündüğünü gösterir. BRM kapsamında iş yükünün dengelenmesi kritik öneme sahiptir.",
+        image: "https://www.marineinsight.com/wp-content/uploads/2021/05/Understanding-Bridge-Resource-Management-And-Its-Key-Elements-On-Board-Ships-1.png",
+        imageAlt: "BRM’in gemideki temel unsurları"
+      },
+      {
+        title: "Karar Verme Süresi Hesabı",
+        content:
+          "Köprüüstünde karar alma; algılama, değerlendirme ve uygulama aşamalarından oluşur. Bu süreçteki gecikmeler yüksek hızda ciddi mesafe kaybına neden olur.",
+        formula: {
+          text: "Toplam karar süresi = Algılama süresi + Değerlendirme süresi + Uygulama süresi",
+          description: "Erken bildirim ve net iletişim, toplam süreyi doğrudan azaltır."
+        }
+      },
+      {
+        title: "Örnek Karar Verme Süresi",
+        content:
+          "**Tehlikenin fark edilmesi:** 30 s  \n**Durum değerlendirmesi:** 45 s  \n**Komutun uygulanması:** 45 s  \n**Toplam:** 120 s  \n\nBu iki dakikalık gecikme, yüksek hızda seyreden bir gemide ciddi mesafe kaybına yol açar. BRM’de erken bildirim ve açık iletişim hayati önemdedir."
+      },
+      {
+        title: "Otoriteye Aşırı Bağımlılık Riski",
+        content:
+          "BRM’in zayıf uygulandığı durumlarda, vardiya zabitinin açık bir tehlikeyi görmesine rağmen kaptanı uyarmaktan çekinmesi sık görülür. Akademik olarak doğru olan; hiyerarşiden bağımsız biçimde emniyetin önceliklendirilmesidir. Bu kültür oluşturulmadığında seyir emniyeti ciddi şekilde zedelenir."
+      }
+    ],
+    keyPoints: [
+      "BRM, insan faktörlerini ve ekip koordinasyonunu merkezine alan bir emniyet yaklaşımıdır.",
+      "Ortak durumsal farkındalık, dar su geçişleri ve yoğun trafikte temel savunma hattıdır.",
+      "Açık ve teyitli iletişim, rota/hız değişikliklerinde hata riskini azaltır.",
+      "İş yükü dengesi sağlanmadığında izleme kalitesi düşer.",
+      "Karar verme süresi doğrudan güvenli manevra mesafesini etkiler.",
+      "Otoriteye aşırı bağımlılık, BRM’in en riskli zayıflıklarından biridir."
+    ]
   }
 };
