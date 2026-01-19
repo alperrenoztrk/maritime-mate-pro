@@ -7502,173 +7502,92 @@ Mean Latitude Sailing’in doğrudan problemi, **rota ve mesafeden yeni mevki ü
         title: "Detaylı Anlatım",
         content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.8_fig_1.jpg)
 
-![Image](https://sailzing.com/wp-content/uploads/2021/02/leeway-definition.jpg)
+![Image](https://www.researchgate.net/publication/331016370/figure/fig1/AS%3A725119362146308%401549893336477/Diagram-of-leeway-As-shown-in-Fig-2-the-formula-of-the-ships-track-direction-under.png)
 
-![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/03/edScreenshot-2022-02-18-at-11.26.42.png)
+![Image](https://www.passageplanning-sales.com/media/images/user-images/37949/Yacht1_OCR.jpg)
 
-![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
-
----
-
-### Temel Prensip
-
-* Rüzgâr, gemiyi **yanal olarak** sürükler
-* Gemi, pruvasını rüzgâra çevirse bile **yanal kaçma** oluşur
-* Bu kaçma **açı** olarak ifade edilir → **Leeway Açısı**
-
-⬛ **Ana İlke**
-
-════════════════════
-Heading (CTS)
-≠
-Gerçek İlerleme
-════════════════════
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2016/06/Nav-in-a-nutshell_-Shaping-a-course.jpg)
 
 ---
 
-### Tanımlar
+### Tanım
 
-* **Leeway (L)** : Rüzgâr kaynaklı sürüklenme açısı (°)
-* **Heading / CTS** : Dümenlenen rota (°T)
-* **CMG** : Course Made Good (°T)
-* **Windward** : Rüzgârın geldiği yön
-* **Lee side** : Rüzgâr altı taraf
+Leeway, rüzgâr etkisi altında seyreden bir geminin **pruvasının gösterdiği doğrultu** ile **su üzerindeki gerçek iz hattı** arasında oluşan açısal farktır. Başka bir ifadeyle leeway, rüzgâr nedeniyle geminin **rüzgâraltına sürüklenmesi** sonucu oluşan yanal sapmadır. Bu etki özellikle bordadan veya pruvaya yakın açılardan esen rüzgârlarda belirginleşir.
 
 ---
 
-### Leeway’in Yönü
+### Leeway Açısını Etkileyen Faktörler
 
-* Rüzgâr **iskele** tarafından geliyorsa → gemi **sancağa** sürüklenir
-* Rüzgâr **sancak** tarafından geliyorsa → gemi **iskeleye** sürüklenir
-
-⬛ **Yön Kuralı**
-
-════════════════════
-Leeway
-her zaman
-rüzgâr altına
-doğrudur
-════════════════════
-
----
-
-### Leeway’in Rota Üzerindeki Etkisi
-
-⬛ **İlişki**
-
-════════════════════
-CMG = CTS ± Leeway
-════════════════════
-
-* Rüzgâr sancaktan → **CTS + L** (iskeleye düzelt)
-* Rüzgâr iskeleden → **CTS − L** (sancağa düzelt)
-
----
-
-### Leeway Açısının Büyüklüğü
-
-Leeway sabit değildir; aşağıdaki faktörlere bağlıdır:
-
+* Gemi üstyapısı ile su altı alanı arasındaki denge
 * Rüzgâr şiddeti
-* Gemi formu ve borda yüksekliği
-* Gemi sürati
-* Yük durumu
+* Gemi hızı
+* Yükleme durumu
 
-⬛ **Pratik Aralık**
-
-════════════════════
-Leeway
-≈ 2° – 10°
-════════════════════
+Hafif yüklü, geniş üstyapılı ve düşük süratli gemilerde leeway **daha büyük**; yük arttıkça ve hız yükseldikçe **daha küçük** olur.
 
 ---
 
-### Grafik Gösterim
+### Seyirde Önemi
 
-* CTS → pruvalı düz çizgi
-* CMG → rüzgâr altına kaymış çizgi
-* İki çizgi arasındaki açı → **Leeway**
+Leeway, pusula/gerçek rota düzeltmelerinde mutlaka hesaba katılmalıdır. Düzeltme yapılmazsa gemi planlanan rotanın **rüzgâraltına düşer** ve özellikle uzun mesafelerde **mevki hataları** büyür. Leeway, **set ve drift**’ten farklı olarak yalnızca **rüzgâr kaynaklı** bir sapmadır.
 
 ---
 
-### Sayısal Uygulama Örneği
+### Pratik Hesaplama Yaklaşımı
 
-**Verilenler**
+```
+Leeway Açısı ≈ K × Rüzgâr Hızı / Gemi Hızı
+```
 
-* Dümenlenen rota (**CTS**) = **090°T**
-* Rüzgâr: **030°T** (iskele başomuzluk)
-* Tahmini leeway = **5°**
+* Rüzgâr hızı ve gemi hızı **aynı birimde** alınır.
+* K katsayısı gemi tipine göre değişir (yaklaşık **0,5 – 1,5**).
+  * Düşük bordalı/ağır gemilerde **küçük**,
+  * Yüksek bordalı gemilerde **büyük** değer seçilir.
 
----
-
-### Hesaplama
-
-Rüzgâr **iskele tarafından** geldiği için gemi **sancağa** sürüklenir.
-
-⬛ **CMG**
-
-════════════════════
-CMG = 090° − 5°
-CMG = 085°T
-════════════════════
+Bu bağıntı **ampirik** bir yaklaşımdır ve emniyetli, muhafazakâr bir tahmin sağlar.
 
 ---
 
-### CTS Düzeltmesi (İstenen CMG Verildiğinde)
+### Rota Düzeltmesi
 
-**Verilenler**
+```
+Gerçek Seyir Rotası = Dümenlenen Rota ± Leeway Açısı
+```
 
-* İstenen rota (**CMG**) = **090°T**
-* Rüzgâr: **030°T** (iskele)
-* Leeway = **5°**
+* Rüzgâr **iskele** tarafından geliyorsa leeway **iskeleye**,
+* Rüzgâr **sancak** tarafından geliyorsa leeway **sancağa** olur.
 
----
-
-⬛ **Dümenlenecek Rota**
-
-════════════════════
-CTS = 090° + 5°
-CTS = 095°T
-════════════════════
-
-Bu rota dümenlenirse, gemi **085°T**’ye değil, **090°T CMG** üzerine oturur.
+Düzeltme, geminin **rüzgâra doğru** dümenlenmesi şeklinde uygulanır.
 
 ---
 
-### Leeway ve Akıntı Birlikte
+### Örnek Hesap
 
-Leeway ve akıntı **ayrı ayrı** değerlendirilir.
+**Veriler**
 
-⬛ **Sıra Kuralı**
+* Gemi hızı: **12 kn**
+* Bordadan gerçek rüzgâr: **24 kn**
+* K katsayısı: **1,0**
 
-════════════════════
-Önce
-Leeway
-sonra
-Akıntı (CTS)
-════════════════════
+**Adım 1:**
+```
+Rüzgâr Hızı / Gemi Hızı = 24 / 12 = 2
+```
 
-* Leeway → rüzgâr kaynaklı **açı düzeltmesi**
-* Akıntı → **vektör düzeltmesi**
+**Adım 2:**
+```
+Leeway ≈ 1,0 × 2 = 2°
+```
 
----
+**Adım 3 (Düzeltme):**
 
-### Harita Sembolizasyonu
+Gemi **090°** rota ile seyrediyor ve rüzgâr **sancak** tarafından geliyorsa gemi **iskeleye** sürüklenir. Bu durumda dümenlenen rota:
 
-* CTS → ok başlı düz çizgi
-* CMG → rüzgâr altına kaymış çizgi
-* Leeway → küçük yay + derece değeri
+```
+Dümenlenen Rota ≈ 090° + 2° = 092°
+```
 
----
-
-### Seyir Uygulaması
-
-* Açık deniz seyri
-* Uzun DR/EP aralıkları
-* Elektronik rota teyidi
-* Yelkenli ve düşük süratli gemiler
-
-Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uzun seyirlerde büyük mevki hatalarına** yol açabileceğinden, rota ve mevki hesaplarında **mutlaka dikkate alınmalıdır**.`
+Bu örnek, gemiyi planlanan iz hattı üzerinde tutmak için dümenin **rüzgâra doğru** verilmesi gerektiğini gösterir. Leeway’in ihmal edilmesi, açık deniz seyirlerinde **yavaş fakat sürekli mevki hatalarına** yol açar.`
       }
     ]
   },
