@@ -59,6 +59,7 @@ class WeatherPreloader {
   private preloadError: string | null = null;
   private isPreloading: boolean = false;
   private preloadPromise: Promise<PreloadedWeatherData | null> | null = null;
+  private preloadComplete: boolean = false;
 
   static getInstance(): WeatherPreloader {
     if (!WeatherPreloader.instance) {
@@ -164,6 +165,8 @@ class WeatherPreloader {
       return null;
     } finally {
       this.isPreloading = false;
+      this.preloadComplete = true;
+      console.log("🏁 [Preloader] Preload tamamlandı (başarılı veya hata)");
     }
   }
 
@@ -267,7 +270,7 @@ class WeatherPreloader {
   }
 
   isPreloadComplete(): boolean {
-    return !this.isPreloading && (this.preloadedData !== null || this.preloadError !== null);
+    return this.preloadComplete;
   }
 
   clearPreloadedData(): void {
