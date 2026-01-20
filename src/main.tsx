@@ -22,13 +22,7 @@ function Root() {
   );
 }
 
-// Start preloading weather data during splash screen
-console.log('🌤️ [Main] Hava durumu preload başlatılıyor...');
-weatherPreloader.preloadWeatherData();
-
-createRoot(container).render(<Root />);
-
-// Hide splash screen only after weather data is preloaded or timeout
+// Hide splash screen function - must be defined BEFORE anything else
 const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
@@ -39,22 +33,25 @@ const hideSplash = () => {
   }
 };
 
-// Wait for preload to complete or timeout
-const checkPreloadStatus = () => {
-  if (weatherPreloader.isPreloadComplete()) {
-    console.log('✅ [Main] Hava durumu preload tamamlandı, splash screen gizleniyor');
-    setTimeout(hideSplash, 500); // Short delay for smooth transition
-  } else {
-    // Check again in 100ms
-    setTimeout(checkPreloadStatus, 100);
-  }
-};
-
-// Start checking after minimum splash time (1 second)
-setTimeout(checkPreloadStatus, 1000);
-
-// GUARANTEED: Force hide after 6 seconds max (reduced from 8s)
-setTimeout(() => {
-  console.log('⏱️ [Main] Splash screen timeout kontrolü...');
+// GUARANTEED: Force hide after 4 seconds max - set this FIRST before anything else
+const forceHideTimeout = setTimeout(() => {
+  console.log('⏱️ [Main] Splash screen ZORLA gizleniyor (4s timeout)...');
   hideSplash();
-}, 6000);
+}, 4000);
+
+// Start rendering immediately
+createRoot(container).render(<Root />);
+
+// Start preloading weather data (non-blocking)
+console.log('🌤️ [Main] Hava durumu preload başlatılıyor...');
+weatherPreloader.preloadWeatherData().then(() => {
+  console.log('✅ [Main] Hava durumu preload tamamlandı');
+  // Clear force timeout if preload completed
+  clearTimeout(forceHideTimeout);
+  // Hide splash after short delay for smooth transition
+  setTimeout(hideSplash, 300);
+}).catch((err) => {
+  console.warn('⚠️ [Main] Hava durumu preload hatası, splash yine de gizlenecek:', err);
+  clearTimeout(forceHideTimeout);
+  hideSplash();
+});
