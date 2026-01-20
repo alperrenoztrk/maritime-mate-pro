@@ -22,36 +22,23 @@ function Root() {
   );
 }
 
-// Hide splash screen function - must be defined BEFORE anything else
+// Hide splash screen function
 const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     console.log('✅ [Main] Splash screen gizleniyor...');
     splash.classList.add('splash-hide');
-    // Remove from DOM after transition
-    setTimeout(() => splash.remove(), 600);
+    setTimeout(() => splash.remove(), 500);
   }
 };
 
-// GUARANTEED: Force hide after 4 seconds max - set this FIRST before anything else
-const forceHideTimeout = setTimeout(() => {
-  console.log('⏱️ [Main] Splash screen ZORLA gizleniyor (4s timeout)...');
-  hideSplash();
-}, 4000);
-
-// Start rendering immediately
+// Start rendering IMMEDIATELY
 createRoot(container).render(<Root />);
 
-// Start preloading weather data (non-blocking)
-console.log('🌤️ [Main] Hava durumu preload başlatılıyor...');
-weatherPreloader.preloadWeatherData().then(() => {
-  console.log('✅ [Main] Hava durumu preload tamamlandı');
-  // Clear force timeout if preload completed
-  clearTimeout(forceHideTimeout);
-  // Hide splash after short delay for smooth transition
-  setTimeout(hideSplash, 300);
-}).catch((err) => {
-  console.warn('⚠️ [Main] Hava durumu preload hatası, splash yine de gizlenecek:', err);
-  clearTimeout(forceHideTimeout);
-  hideSplash();
+// Hide splash after minimal delay (just enough for first paint)
+setTimeout(hideSplash, 800);
+
+// Start preloading weather data in background (non-blocking, doesn't affect splash)
+weatherPreloader.preloadWeatherData().catch((err) => {
+  console.warn('⚠️ [Main] Hava durumu preload hatası (arka planda):', err);
 });

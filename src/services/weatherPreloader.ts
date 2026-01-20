@@ -95,24 +95,15 @@ class WeatherPreloader {
       
       try {
         const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-          console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
           if (!("geolocation" in navigator)) {
-            console.warn("⚠️ [Preloader] Konum servisi desteklenmiyor, fallback kullanılacak");
             reject(new Error("Konum servisi desteklenmiyor"));
             return;
           }
           
-          console.log("📍 [Preloader] Konum bilgisi isteniyor (5s timeout)...");
           navigator.geolocation.getCurrentPosition(
-            (pos) => {
-              console.log("✅ [Preloader] Konum alındı:", pos.coords.latitude, pos.coords.longitude);
-              resolve(pos);
-            },
-            (err) => {
-              console.warn("⚠️ [Preloader] Konum alınamadı:", err.message);
-              reject(err);
-            },
-            { enableHighAccuracy: false, timeout: 5000, maximumAge: 300000 } // 5s timeout, 5 min cache
+            resolve,
+            reject,
+            { enableHighAccuracy: false, timeout: 2000, maximumAge: 600000 } // 2s timeout, 10 min cache
           );
         });
         
