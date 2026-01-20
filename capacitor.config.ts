@@ -1,13 +1,19 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
+const serverUrl = process.env.CAPACITOR_SERVER_URL;
+
 const config: CapacitorConfig = {
   appId: 'app.lovable.c91ef2fa0890438a815184cda6639f91',
   appName: 'maritime-calculator',
   webDir: 'dist',
-  server: {
-    url: 'https://c91ef2fa-0890-438a-8151-84cda6639f91.lovableproject.com?forceHideBadge=true',
-    cleartext: true
-  },
+  ...(serverUrl
+    ? {
+        server: {
+          url: serverUrl,
+          cleartext: true
+        }
+      }
+    : {}),
   plugins: {
     StatusBar: {
       style: 'DARK',
