@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Anchor, BookOpen, Brain, Calculator, CloudSun, Compass, Leaf, ListChecks, Package, Shield, Ship, Sigma, TrendingUp, Wrench } from "lucide-react";
+import { Anchor, BookOpen, Brain, Calculator, CloudSun, Compass, Leaf, ListChecks, Package, Radio, Shield, Ship, Sigma, TrendingUp, Wrench } from "lucide-react";
 
 export type SectionId = "calculations" | "formulas" | "rules" | "assistant" | "quiz";
 export type CategoryId =
@@ -8,6 +8,7 @@ export type CategoryId =
   | "cargo"
   | "meteorology"
   | "seamanship"
+  | "communications"
   | "safety"
   | "machine"
   | "environment"
@@ -312,6 +313,53 @@ export const calculationCategories: CategoryConfig[] = [
         status: "live",
         badge: "Hazır",
         href: "/seamanship/quiz",
+      },
+    ],
+  },
+  {
+    id: "communications",
+    title: "Denizde Haberleşme",
+    subtitle: "",
+    icon: Radio,
+    accent: "from-sky-500 via-blue-600 to-indigo-600",
+    badge: "Güverte",
+    status: "info",
+    ctaLabel: "Haberleşme menüsü",
+    sections: [
+      {
+        id: "calculations",
+        label: "Hesaplamalar",
+        description: "Kanallar, nöbet çizelgeleri ve çağrı prosedürü hesapları",
+        status: "upcoming",
+        badge: "Yakında",
+      },
+      {
+        id: "formulas",
+        label: "Formüller",
+        description: "GMDSS, VHF ve DSC iletişim formülleri",
+        status: "upcoming",
+        badge: "Yakında",
+      },
+      {
+        id: "rules",
+        label: "Kurallar",
+        description: "SOLAS IV, GMDSS ve VTS haberleşme kuralları",
+        status: "info",
+        badge: "Özet",
+      },
+      {
+        id: "assistant",
+        label: "Asistan",
+        description: "Standart mesaj şablonları ve iletişim akışı",
+        status: "upcoming",
+        badge: "Yakında",
+      },
+      {
+        id: "quiz",
+        label: "Quiz",
+        description: "GMDSS, VHF prosedürleri ve çağrı sinyalleri",
+        status: "upcoming",
+        badge: "Yakında",
       },
     ],
   },
