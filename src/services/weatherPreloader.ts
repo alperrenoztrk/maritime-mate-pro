@@ -59,7 +59,6 @@ class WeatherPreloader {
   private preloadError: string | null = null;
   private isPreloading: boolean = false;
   private preloadPromise: Promise<PreloadedWeatherData | null> | null = null;
-  private preloadComplete: boolean = false;
 
   static getInstance(): WeatherPreloader {
     if (!WeatherPreloader.instance) {
@@ -95,15 +94,24 @@ class WeatherPreloader {
       
       try {
         const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+          console.log("📍 [Preloader] Konum servisi kontrol ediliyor...");
           if (!("geolocation" in navigator)) {
+            console.warn("⚠️ [Preloader] Konum servisi desteklenmiyor, fallback kullanılacak");
             reject(new Error("Konum servisi desteklenmiyor"));
             return;
           }
           
+          console.log("📍 [Preloader] Konum bilgisi isteniyor (5s timeout)...");
           navigator.geolocation.getCurrentPosition(
-            resolve,
-            reject,
-            { enableHighAccuracy: false, timeout: 2000, maximumAge: 600000 } // 2s timeout, 10 min cache
+            (pos) => {
+              console.log("✅ [Preloader] Konum alındı:", pos.coords.latitude, pos.coords.longitude);
+              resolve(pos);
+            },
+            (err) => {
+              console.warn("⚠️ [Preloader] Konum alınamadı:", err.message);
+              reject(err);
+            },
+            { enableHighAccuracy: false, timeout: 5000, maximumAge: 300000 } // 5s timeout, 5 min cache
           );
         });
         
@@ -156,8 +164,6 @@ class WeatherPreloader {
       return null;
     } finally {
       this.isPreloading = false;
-      this.preloadComplete = true;
-      console.log("🏁 [Preloader] Preload tamamlandı (başarılı veya hata)");
     }
   }
 
@@ -261,7 +267,7 @@ class WeatherPreloader {
   }
 
   isPreloadComplete(): boolean {
-    return this.preloadComplete;
+    return !this.isPreloading && (this.preloadedData !== null || this.preloadError !== null);
   }
 
   clearPreloadedData(): void {

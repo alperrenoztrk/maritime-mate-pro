@@ -20,11 +20,6 @@ import latitudeMeasurement2 from "@/assets/navigation/latitude-measurement-2.jpg
 import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import longitudeTime1 from "@/assets/navigation/longitude-time-1.png";
 import longitudeTime2 from "@/assets/navigation/longitude-time-2.png";
-
-// Import images - Rota Planlama
-import ecdisDisplay from "@/assets/navigation/ecdis-display.svg";
-import radarDisplay from "@/assets/navigation/radar-display.svg";
-import weatherSystems from "@/assets/navigation/weather-systems.svg";
 import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
 import longitudeDistance1 from "@/assets/navigation/longitude-distance-1.jpg";
 import longitudeDistance2 from "@/assets/navigation/longitude-distance-2.jpg";
@@ -34,6 +29,7 @@ import enlemParallels from "@/assets/navigation/enlem-parallels.jpg";
 import enlemDefinition from "@/assets/navigation/enlem-definition.jpg";
 import enlemRegions from "@/assets/navigation/enlem-regions.jpg";
 import enlemNauticalMile from "@/assets/navigation/enlem-nautical-mile.jpg";
+import enlemPlaneSailing from "@/assets/navigation/enlem-plane-sailing.jpg";
 import enlemNewOrleans from "@/assets/navigation/enlem-new-orleans.jpg";
 
 // Import images - Boylam
@@ -70,7 +66,6 @@ import sembolLightCharacteristics from "@/assets/navigation/sembol-light-charact
 import sembolSectorLights from "@/assets/navigation/sembol-sector-lights.jpg";
 import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
 import sembolDangers from "@/assets/navigation/sembol-dangers.jpg";
-import ruleOfTwelfths from "@/assets/tides/rule-of-twelfths.svg";
 
 export interface TopicSection {
   title: string;
@@ -301,56 +296,6 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       "Güneş ve Ay gözlemlerinde yarıçap ve paralaks zorunlu düzeltmelerdir.",
       "Sıra ve işaret hatası, Ho değerini dakikalar düzeyinde kaydırabilir.",
       "Toplam bağıntı Ho = Hs ± IE − Dip − R ± SD ± P şeklindedir."
-    ]
-  },
-  Execution: {
-    title: "Execution (Seyir Planının Uygulanması)",
-    introduction:
-      "Execution safhası, planning aşamasında hazırlanan seyir planının köprüüstünde fiilen uygulanmasıdır. Bu aşama, planın kâğıt veya ECDIS üzerinde doğru hazırlanmış olmasından ziyade, geminin gerçek seyir şartları altında emniyetli şekilde sevk ve idaresini kapsar. Köprüüstü ekibi, planı ortak bir referans olarak kullanır ve gemi hareketleri bu plana uygun icra edilir.",
-    sections: [
-      {
-        title: "Execution Safhasının Temel Mantığı",
-        content:
-          "Execution sırasında kaptan ve vardiya zabiti, rota üzerindeki her bir waypoint’i, planlanan hızları, dönüş noktalarını ve emniyet mesafelerini aktif olarak takip eder. Seyir planı, yalnızca başlangıçta gözden geçirilen bir doküman değil; seyir süresince sürekli başvurulan bir kontrol aracıdır. Rota dışına çıkma, planlanan hızdan sapma veya öngörülmeyen çevresel etkiler derhal fark edilmelidir.",
-        image: "https://safety4sea.com/wp-content/uploads/2018/04/Passage-Planning.jpg",
-        imageAlt: "Passage planning ve köprüüstü uygulaması"
-      },
-      {
-        title: "Hız Kontrolü ve Emniyet Mesafesi",
-        content:
-          "Execution safhasında hız kontrolü, özellikle dar su geçişleri ve yoğun trafikte kritik öneme sahiptir. Planlanan hız, geminin durma mesafesi ve dümen etkinliği ile uyumlu olmalıdır. Hızın yalnızca ETA’yı tutturmak amacıyla artırılması, emniyet açısından zayıf ve PSC denetimlerinde sorgulanan bir uygulamadır.",
-        image: "https://media.licdn.com/dms/image/v2/C5612AQGndR048_Bteg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1636202767796?e=2147483647&t=KK4ARtyMkfkUJykIUZFd6KluTxqzKI3xLrg6R5pFHTA&v=beta",
-        imageAlt: "Köprüüstü vardiya yönetimi ve hız kontrolü"
-      },
-      {
-        title: "Durma Mesafesi ve Hız İlişkisi",
-        content:
-          "Durma mesafesi, geminin hızına ve köprüüstü ekibinin reaksiyon süresine doğrudan bağlıdır. Uygulamada reaksiyon süresi genellikle 0,5–1 dakika aralığında değerlendirilir. Bu nedenle hız artırma kararı, geminin önünde yeterli emniyetli alan bulunduğu teyit edilerek verilmelidir.",
-        image: "https://www.kongsberg.com/contentassets/61758815329f4f07a45cbd3bf5cb79b1/ecdis_hero_cropped.png",
-        imageAlt: "ECDIS üzerinde rota uygulaması ve durum takibi",
-        formula: {
-          text: "Durma mesafesi = Hız × Reaksiyon süresi + Frenleme mesafesi",
-          description:
-            "Örnek: 12 knot ≈ 0,2 deniz mili/dakika. Reaksiyon süresi 1 dakika ve frenleme mesafesi 0,3 deniz mili ise toplam durma mesafesi 0,5 deniz milidir."
-        }
-      },
-      {
-        title: "Plan Dışı Durumlar ve İletişim",
-        content:
-          "Execution safhasında meteorolojik şartların kötüleşmesi, trafik yoğunluğunun artması veya makine kısıtları planın revize edilmesini gerektirebilir. Bu durumda rota ve hız değişiklikleri kayıt altına alınmalı ve tüm köprüüstü ekibi tarafından ortak şekilde anlaşılmalıdır. Sessizce yapılan rota veya hız değişiklikleri, BRM açısından ciddi bir zafiyet oluşturur."
-      },
-      {
-        title: "ECDIS Alarm Yönetimi",
-        content:
-          "Execution aşamasında sık yapılan hatalardan biri, ECDIS alarm ve limitlerinin devre dışı bırakılmasıdır. Alarm yorgunluğu gerekçe gösterilerek yapılan bu uygulama, PSC bakış açısından kabul edilemez ve emniyet seviyesini düşürür. Akademik olarak ideal kabul edilen hız ve rota, gerçek trafik ve manevra koşullarıyla uyumlu değilse pratikte uygulanabilir değildir."
-      }
-    ],
-    keyPoints: [
-      "Execution, planın köprüüstünde ortak referans olarak kullanılmasıdır",
-      "Waypoint, hız ve dönüş noktaları sürekli takip edilmelidir",
-      "Hız kontrolü durma mesafesi ve dümen etkinliğiyle uyumlu olmalıdır",
-      "Plan dışı değişiklikler kayıt altına alınmalı ve ekipçe teyit edilmelidir",
-      "ECDIS alarmlarını devre dışı bırakmak PSC açısından ciddi zafiyettir"
     ]
   },
   "Sextant kullanımı": {
@@ -691,46 +636,27 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem Değişimi (DLat) Kavramı",
-        content: `![DLat şeması](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
-![DLat düzlem seyir şeması](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
-![DLat örnek diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2012/11/diag-ex8.jpeg)
-![DLat kurs–mesafe ilişkisi](https://astronavigationdemystified.com/wp-content/uploads/2017/08/new-diag-14-blue.jpg)
-
-DLat (Difference of Latitude), bir geminin seyri sırasında başlangıç ve varış enlemleri arasındaki farkı ifade eder. Düzlem seyirde DLat, kuzey–güney doğrultusundaki yer değiştirmeyi temsil eder ve rota–mesafe ilişkilerinin temel bileşenlerinden biridir. Enlem değişimi, doğrudan meridyenler boyunca ölçülür ve denizcilikte dakikalık enlem farkı deniz mili cinsinden mesafeye eşdeğerdir.
-
-Düzlem seyirde geminin kat ettiği mesafe, kurs doğrultusuna göre kuzey–güney ve doğu–batı bileşenlerine ayrılır. Bu ayrımda DLat, toplam mesafenin kursun kosinüsü ile çarpılmasıyla elde edilir. Kurs açısı gerçek kuzeye göre ölçülür ve kuzey–güney bileşeninin işaretini belirler.
-
-────────────────
-DLAT HESAP FORMÜLÜ
-────────────────
-DLat = Mesafe × cos(Kurs)
-
-DLat dakika cinsinden bulunur. Kuzeye doğru seyir pozitif, güneye doğru seyir negatif kabul edilir.
-
-────────────────
-ÖRNEK HESAP
-────────────────
-Mesafe: 120 deniz mili  
-Kurs: 030°
-
-cos 030° = 0,866
-
-DLat = 120 × 0,866 = 103,9 dakika
-
-Bu sonuç, geminin yaklaşık 103,9 deniz mili kuzeye doğru ilerlediğini gösterir.
-
-Başlangıç enlemi 38° 20,0′ N olsun.
-
-Yeni enlem = 38° 20,0′ + 103,9′  
-103,9′ = 1° 43,9′
-
-Yeni enlem = 40° 03,9′ N
-
-Bu sonuç, geminin seyir sonunda 40° 03,9′ N enlemine ulaştığını gösterir.
-
-DLat hesaplarında yapılan en yaygın hata, kurs açısının yanlış referansla kullanılmasıdır. Kursun manyetik veya pusula değeriyle doğrudan trigonometrik hesaplara sokulması akademik olarak yanlıştır. Düzlem seyirde tüm trigonometrik hesaplar gerçek kurs üzerinden yapılır. Ayrıca işaret kontrolü yapılmadan mutlak değerle işlem yapılması, kuzey–güney yönünün ters yorumlanmasına yol açar.
-
-DLat, kısa ve orta mesafeli seyirlerde pratik ve yeterli doğruluk sağlar. Ancak mesafe büyüdükçe veya yüksek enlemlere çıkıldıkça düzlem seyir varsayımının sınırları zorlanır ve enlem değişimi hesaplarında biriken hatalar anlamlı hale gelir. Bu durumda orta enlem veya büyük daire yöntemlerine geçilmesi gerekir.`
+        content: "Bir gemi kuzeye veya güneye hareket ettiğinde enlem değişimi (Difference of Latitude – DLat) meydana gelir. DLat kuzeye gidiliyorsa artı (+), güneye gidiliyorsa eksi (−) kabul edilir.",
+        image: enlemPlaneSailing,
+        imageAlt: "Düzlem seyir ve enlem değişimi formülleri",
+        bulletPoints: [
+          "DLat = Mesafe × cos(kurs)",
+          "Bu ifade, geminin gerçek hareketinin kuzey–güney bileşenini verir",
+          "Düzlem seyirde temel hesaplama formülüdür"
+        ],
+        formula: {
+          text: "DLat = Mesafe × cos(Kurs)",
+          description: "Örnek: 120 NM mesafe, 030° kurs → DLat = 120 × cos(30°) ≈ 103.9′"
+        }
+      },
+      {
+        title: "Örnek – Enlem Değişimi Hesabı",
+        content: "Başlangıç enlemi 36°20′N, kurs 030° ve mesafe 120 deniz mili olan bir gemi için yeni enlem hesaplanabilir.",
+        bulletPoints: [
+          "DLat = 120 × cos(30°) = 120 × 0.866 ≈ 103.9′",
+          "DLat ≈ 1°43.9′",
+          "Yeni enlem: 36°20′ + 1°43.9′ = 38°03.9′N"
+        ]
       },
       {
         title: "Enlemin Göksel Seyirdeki Rolü",
@@ -1603,121 +1529,57 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       "Hesaplanan mesafe, doğru rota doğrultusunda harita üzerine taşınmalıdır"
     ]
   },
-  "ETA": {
-    title: "ETA (Estimated Time of Arrival)",
-    introduction:
-      "ETA, geminin belirlenen bir mevkie veya varış noktasına tahmini varış zamanını ifade eder. ETA sabit bir zaman bilgisi değildir; hız, akıntı, rüzgâr, rota değişiklikleri ve operasyonel kararlar doğrultusunda sürekli güncellenir. Denizcilikte ETA yalnızca seyirle ilgili bir kavram değil; liman operasyonları, pilotaj, römorkör planlaması ve ticari zaman yönetimi açısından kritik bir parametredir.",
-    sections: [
-      {
-        title: "ETA’nın Operasyonel Çerçevesi",
-        content:
-          "ETA hesabının temelinde zaman–mesafe–hız ilişkisi yer alır. ECDIS ve seyir sistemleri, mevcut hız ve rota bilgilerini kullanarak ETA’yı otomatik olarak üretir. Ancak bu otomatik değer, yalnızca mevcut şartlar değişmediği sürece geçerlidir.",
-        image: "https://www.maptrip.de/wp-content/uploads/2022/08/eta-calculation_4.png",
-        imageAlt: "ETA hesaplama şeması"
-      },
-      {
-        title: "Dinamik ve Güncellenebilir Bir Değer",
-        content:
-          "Akıntı bölgeleri, hız düşüşleri, trafik yoğunluğu veya manevra kısıtları ETA’yı doğrudan etkiler. Bu nedenle profesyonel kullanımda ETA, her zaman tolerans payı ile değerlendirilir ve seyir boyunca düzenli revize edilir.",
-        image: "https://www-sygic.akamaized.net/content/14-blog/0-2017/20171020-how-speed-profiles-in-sygic-professional-navigation-makes-your-life-easier/eta-precision.png",
-        imageAlt: "Hız profilleri ve ETA hassasiyeti"
-      },
-      {
-        title: "Formüller",
-        content:
-          "ETA hesabında temel yaklaşım, kalan mesafe ve ortalama hız üzerinden seyir süresini bulmaktır. Akıntı etkisi varsa gerçek hız suya göre hızdan farklılaşır.",
-        image: "https://d2csxpduxe849s.cloudfront.net/media/A14868A9-EF99-4148-ACC2D04DE609CA3B/E6B883D2-64F7-4D71-BAE2DDC8DF1F1E12/webimage-72E43918-B4C3-454E-BABED51068EFAC46.png",
-        imageAlt: "ETA formülleri görseli",
-        formula: {
-          text: "ETA = Mevcut zaman + (Kalan mesafe ÷ Ortalama hız)",
-          description: "Temel zaman–mesafe–hız ilişkisi: Zaman = Mesafe ÷ Hız"
-        },
-        bulletPoints: [
-          "Zaman = Mesafe ÷ Hız",
-          "Gerçek hız = Suya göre hız ± Akıntı hızı"
-        ]
-      },
-      {
-        title: "Sayısal Örnek",
-        content: `Bir gemi için aşağıdaki veriler mevcuttur:
-
-Kalan mesafe = 96 deniz mili  
-Ortalama hız = 12 kn  
-Mevcut zaman = 08:00
-
-**Adım 1: Seyir süresinin hesaplanması**  
-Zaman = 96 ÷ 12 = 8 saat
-
-**Adım 2: ETA’nın belirlenmesi**  
-ETA = 08:00 + 8 saat = 16:00
-
-**Adım 3: Akıntı etkisi bulunan ikinci durum**  
-Akıntı = +2 kn  
-Gerçek hız = 12 + 2 = 14 kn  
-Yeni seyir süresi = 96 ÷ 14 ≈ 6,9 saat  
-Yeni ETA ≈ 14:54
-
-Bu örnek, ETA’nın neden dinamik bir değer olduğunu açıkça gösterir.`,
-        image: "https://www.maritimeinformed.com/img/products/400/w24l100-mra1fp-400.jpg",
-        imageAlt: "ETA takip ekipmanı"
-      }
-    ],
-    keyPoints: [
-      "ETA kesinlik iddiası taşımaz; operasyonel bir öngörü aracıdır.",
-      "Akıntı, rüzgâr, rota değişiklikleri ve trafik yoğunluğu ETA’yı doğrudan etkiler.",
-      "ETA, seyir emniyetini değil zaman yönetimini temsil eder ve sürekli güncellenmelidir."
-    ]
-  },
   "Rota ölçümü": {
     title: "Rota Ölçümü",
-    introduction:
-      "Rota ölçümü, bir geminin harita üzerindeki iki nokta arasındaki doğrultusunun, hakiki kuzeye göre açı cinsinden belirlenmesidir. Bu açı, kurs (course) olarak ifade edilir ve seyir planlamasında dümen komutlarının, akıntı ve rüzgâr düzeltmelerinin temelini oluşturur. Rota ölçümü doğru yapılmadığında, mesafe ve hız hesapları doğru olsa dahi gemi hedeflenen hatta ilerleyemez.",
+    introduction: "Rota ölçümü, deniz haritası üzerinde belirlenen iki nokta arasındaki doğrultunun hakiki kuzeye göre açısal değerinin bulunması işlemidir. Bu işlem, seyirde yön kavramının harita üzerindeki somut karşılığıdır ve tüm hız–zaman–mesafe hesaplarının doğru bir doğrultuda uygulanabilmesi için zorunludur. Rota ölçümü yalnızca bir açı okumak değildir; haritanın projeksiyonu, meridyen yapısı ve kullanılan ölçüm aracının doğru referansla kullanılması bu işlemin ayrılmaz parçalarıdır.",
     sections: [
       {
-        title: "Hakiki Kuzey Referansı",
-        content:
-          "Deniz haritalarında rota ölçümü her zaman hakiki kuzeye göre yapılır. Manyetik kuzey veya pusula kuzeyi bu aşamada kullanılmaz; manyetik ve pusula düzeltmeleri, hakiki rotadan diğer sistemlere geçişte uygulanır.",
-        image: "https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navtex_files/image044.gif",
-        imageAlt: "Pusula gülü üzerinde hakiki kuzey referansı"
+        title: "Hakiki Sistem ve Referans",
+        content: "Deniz haritalarında rota her zaman hakiki sistemde ölçülür. Harita üzerindeki meridyenler hakiki kuzey–hakiki güney doğrultusunu temsil ettiği için, yapılan her açı ölçümü doğrudan hakiki rota değerini verir. Bu nedenle harita üzerinde ölçülen rota, manyetik veya pusula değil, daima hakiki rota olarak kabul edilir. Daha sonra gerekiyorsa variation ve deviation düzeltmeleriyle diğer sistemlere geçilir."
       },
       {
-        title: "Ölçüm Araçları",
-        content:
-          "Rota ölçümü, paralel cetvel veya açıölçer (course plotter) yardımıyla yapılır. Paralel cetvel rota hattına yerleştirilir ve doğrultu bozulmadan pusula gülüne taşınır. Açıölçerde ise açı doğrudan rota hattı üzerinde okunur.",
-        image: "https://m.media-amazon.com/images/I/51aC8QSTz6L.jpg",
-        imageAlt: "Paralel cetvel"
+        title: "Ölçümün Temel Mantığı",
+        content: "Rota ölçümünün temel mantığı, ölçülecek rota hattı ile bir meridyen doğrultusu arasındaki saat yönündeki açının bulunmasına dayanır. Bu açı, 0° ile 360° arasında ifade edilir. Ölçüm sırasında kullanılan referans çizgisi mutlaka meridyen olmalıdır; paralel çizgiler veya harita kenarı, yalnızca meridyen doğrultusuna paralel oldukları sürece referans olarak kullanılabilir."
       },
       {
-        title: "Pusula Gülüne Taşıma",
-        content:
-          "Temel prensip, ölçümün rota hattı boyunca taşınarak pusula gülüne ulaştırılmasıdır. Harita üzerinde birden fazla pusula gülü bulunabilir; rota hattına en yakın olanı kullanmak doğru sonuç verir.",
-        image: "https://sailingissues.com/chart-symbols/portland-course-plotter.png",
-        imageAlt: "Haritada açıölçer ile rota okuma"
+        title: "Araçlar: Paralel Cetvel ve Üçgen Cetvel",
+        content: "Pratikte rota ölçümü paralel cetvel veya üçgen cetvel yardımıyla yapılır. Paralel cetvel, seçilen doğrultunun bozulmadan haritanın kenarındaki meridyene taşınmasını sağlar. Üçgen cetvellerde ise bir üçgen sabit tutulur, diğeri onun üzerinden kaydırılarak aynı paralellik elde edilir. Kullanılan aracın türü değişse de mantık aynıdır: rota hattını, meridyen doğrultusuyla aynı noktada kesişecek şekilde taşımak ve açı değerini buradan okumak."
       },
       {
-        title: "Rota Ölçüm Prensibi",
-        content:
-          "Gerçek rota açısı, rota hattı ile hakiki kuzey arasındaki açıdır. Bu açı 000°–360° aralığında ifade edilir ve her zaman hakiki kuzeye referanslıdır.",
-        image: "https://image.jimcdn.com/app/cms/image/transf/dimension%3D455x1024%3Aformat%3Dpng/path/sd6ea49279f075268/image/i083f50a99fdecce1/version/1604740744/image.png",
-        imageAlt: "Rota hattı ile hakiki kuzey arasındaki açı"
+        title: "Uygulama Adımları",
+        content: "Önce başlangıç ve varış noktaları harita üzerinde net olarak belirlenir. Bu iki nokta arasına ince, düz bir rota hattı çizilir. Paralel cetvel bu hatta yerleştirilir ve cetvel bozulmadan haritanın bir meridyen çizgisine taşınır. Cetvel meridyenle çakıştığında, cetvel üzerindeki rota hattı ile meridyen arasındaki açı, pusula gülü veya derece skalası üzerinden okunur. Okunan değer, hakiki rotadır."
       },
       {
-        title: "Örnek Hesap",
-        content:
-          "Harita üzerinde A noktasından B noktasına çizilmiş bir rota hattı olsun. Paralel cetvel rota hattına yerleştirilip pusula gülüne taşındığında açı 065° olarak okunsun.\n\nGerçek rota = 065°\n\nAynı rota için ölçüm ters yönde, yani B’den A’ya yapılırsa okunan açı 245° olur. Bu durum, rota ölçümünde yön kavramının kritik olduğunu gösterir."
+        title: "Kritik Hata: Yönün Ters Okunması",
+        content: "Bu ölçümde yapılan en kritik hata, açının yanlış yönde okunmasıdır. Denizcilikte rota, her zaman kuzeyden başlayarak saat yönünde ölçülür. Güneyden, doğudan veya ters yönde yapılan okumalar, sayısal olarak doğru görünen ancak fiziksel olarak yanlış bir rota üretir. Bu nedenle ölçüm sırasında zihinsel olarak “kuzeyden saat yönünde” kuralı sürekli korunmalıdır."
       },
       {
-        title: "Yaygın Hatalar",
-        content:
-          "Rota ölçümünde sık yapılan hatalardan biri pusula gülünün yanlış merkezden okunmasıdır. Ayrıca manyetik varyasyon değerlerini bu aşamada rotaya eklemek yanlıştır; düzeltmeler hakiki rotadan manyetik ve pusula rotasına geçilirken yapılır."
+        title: "Karşı Rota",
+        content: "Rota ölçümü ile birlikte sıkça kullanılan kavramlardan biri de karşı rotadır. Bir rotanın karşı rotası, aynı hattın ters yönde izlenmesi anlamına gelir ve hakiki rota değerine 180° eklenerek veya çıkarılarak bulunur.",
+        formula: {
+          text: "Karşı Rota = Hakiki Rota ± 180°",
+          description: "Hakiki rota 180°’den küçükse 180° eklenir, 180°’den büyükse 180° çıkarılır."
+        }
+      },
+      {
+        title: "Projeksiyon ve Enlem Etkisi",
+        content: "Rota ölçümünde harita projeksiyonunun etkisi de göz önünde bulundurulmalıdır. Mercator projeksiyonunda doğrultular düz çizgi olarak görünür; bu, sabit rota seyri için büyük bir avantajdır. Ancak yüksek enlemlerde meridyenler arasındaki mesafe arttığı için, ölçüm hassasiyeti düşebilir. Bu bölgelerde rota ölçümü daha dikkatli yapılmalı ve mümkünse daha büyük ölçekli haritalar tercih edilmelidir."
+      },
+      {
+        title: "Ölçek Seçimi",
+        content: "Rota ölçümünün her zaman uygun ölçekli harita üzerinde yapılması gerekir. Küçük ölçekli bir haritada ölçülen rota, genel seyir için yeterli olabilir; ancak dar sularda ve liman yaklaşmalarında büyük ölçekli haritalara geçilmeden bu rota kullanılmamalıdır. Aynı rota hattı, büyük ölçekli haritada sığlıklar veya engellerle çakışabilir."
+      },
+      {
+        title: "Disiplinli Uygulama",
+        content: "Rota ölçümü, denizcilikte en temel işlemlerden biri gibi görünse de, hataya en açık konulardan biridir. Yanlış referans çizgisi, yanlış yönde açı okuma veya yanlış ölçekli harita kullanımı, tüm seyir planını geçersiz hâle getirebilir. Bu nedenle rota ölçümü, mekanik bir cetvel hareketi değil; yön kavramı, harita yapısı ve matematiksel disiplinin birlikte uygulandığı bilinçli bir süreç olarak ele alınmalıdır."
       }
     ],
     keyPoints: [
       "Rota ölçümü haritada her zaman hakiki (true) sistemdedir",
-      "Açı, kuzeyden başlayarak saat yönünde okunur",
-      "Ölçüm, rota hattı pusula gülüne taşınarak yapılır",
-      "Karşı yönde ölçüm 180° fark yaratır",
-      "Manyetik ve pusula düzeltmeleri bu aşamada yapılmaz"
+      "Açı kuzeyden başlayarak saat yönünde okunur",
+      "Referans çizgisi meridyen doğrultusu olmalıdır",
+      "Paralel cetvel doğrultuyu meridyene taşımak için kullanılır",
+      "Yanlış yön okuma ve yanlış ölçek seçimi ciddi rota hatası doğurur"
     ]
   },
   "Hakiki kuzey (True)": {
@@ -1959,51 +1821,7 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       },
       {
         title: "Harita Datum’u ve Elektronik Seyir",
-        content: `Harita datum, bir deniz haritasında yer alan tüm coğrafi koordinatların hangi referans yüzeyine göre tanımlandığını ifade eder. Enlem ve boylam değerlerinin matematiksel olarak anlam kazanabilmesi, kullanılan datumun doğru bilinmesine bağlıdır. Datum farkı göz ardı edildiğinde, harita üzerinde doğru görünen bir pozisyon pratikte ciddi mevki hatalarına yol açabilir.
-
-Denizcilikte modern elektronik sistemlerin büyük bölümü **WGS-84** datumunu kullanır. Ancak kâğıt haritaların tamamı bu datumda basılmamıştır. Özellikle eski baskı haritalar, bölgesel veya ulusal datumlara göre hazırlanmış olabilir. Bu durum, GPS’ten alınan pozisyonun doğrudan haritaya aktarılması halinde sistematik bir konum kayması oluşturur.
-
-Harita üzerinde kullanılan datum bilgisi, haritanın kenar bilgileri kısmında açıkça belirtilir. Seyir öncesinde bu bilginin kontrol edilmemesi, planlama aşamasında yapılan en temel hatalardan biridir. Akademik olarak küçük görünen datum farkları, kıyıya yakın seyirlerde ve dar su geçişlerinde emniyet açısından kabul edilemez sonuçlar doğurabilir.
-
-![Harita datum referans yüzeyi örneği](https://minio.scielo.br/documentstore/2675-2824/VBXJjWCRmF7CNC6BNz4J5Jf/128d62d0c20708aaa874853f14d79c9e66b3b2a0.png)
-
-![Datum uyumsuzluğu görsel örneği](https://ihr.iho.int/wp-content/uploads/2021/08/word-image-186.png)
-
-![Datum uyumsuzluğu konum farkı örneği](https://ihr.iho.int/wp-content/uploads/2021/08/word-image-187.png)
-
-────────────────
-DATUM KAYMASI PRENSİBİ
-────────────────
-Gerçek mevki = GPS mevkii ± Datum düzeltmesi
-
-Datum düzeltmesi, harita üzerinde belirtilen kuzey-güney ve doğu-batı yönlü kayma değerlerine göre uygulanır.
-
-────────────────
-ÖRNEK HESAP
-────────────────
-GPS cihazı WGS-84 datumunda çalışıyor olsun.
-Kullanılan kâğıt harita farklı bir datumda basılmış ve harita kenarında şu bilgi yer alsın:
-
-“WGS-84 datumuna dönüştürmek için:
-Enleme +0,08 dakika ekle
-Boylamdan −0,12 dakika çıkar”
-
-GPS’ten alınan mevki:
-Enlem: 40° 15,20′ N
-Boylam: 029° 45,60′ E
-
-Düzeltilmiş enlem = 15,20 + 0,08 = 15,28′
-Düzeltilmiş boylam = 45,60 − 0,12 = 45,48′
-
-Sonuç mevki:
-40° 15,28′ N
-029° 45,48′ E
-
-Bu mevki, GPS ekranında görülen noktadan farklıdır ve harita üzerinde doğru yere işaretlenmesi gerekir. Bu düzeltme yapılmadığında gemi, fark edilmeden planlanan rotanın dışına çıkmış kabul edilir.
-
-Datum konusundaki en yaygın pratik hata, “harita ile GPS zaten aynı şeyi gösteriyor” varsayımıdır. Elektronik seyirde ECDIS bu uyumsuzluğu otomatik olarak yönetse de, kâğıt harita kullanılan gemilerde datum farkının manuel olarak dikkate alınması zorunludur. Ticari pratikte bu kontrolün atlanması, mevki hatasına bağlı karaya oturma vakalarının bilinen nedenleri arasındadır.
-
-![Datum kayması tek fark yöntemi örneği](https://www.e-education.psu.edu/geog862/sites/www.e-education.psu.edu.geog862/files/images/Lesson02/BetweenReceiversSingleDifference.png)`,
+        content: "Harita datum’u, deniz haritası üzerindeki tüm koordinatların yeryüzü ile hangi matematiksel modele göre ilişkilendirildiğini belirleyen referans sistemidir. Bir datum, dünyanın şeklinin ve boyutlarının nasıl kabul edildiğini tanımlar; bu kabul, enlem ve boylam değerlerinin harita üzerinde hangi noktalara karşılık geleceğini belirler. Datum bilgisi doğru anlaşılmadan yapılan mevki işaretlemeleri sayısal olarak tutarlı görünse bile fiziksel olarak yanlış bir konuma karşılık gelir. Modern denizcilikte en yaygın kullanılan datum WGS-84’tür; çünkü GPS sistemleri de aynı datum’u kullanır. Ancak daha eski haritalarda farklı datum’lar bulunabilir ve bu durum seyirde ciddi hatalara yol açabilir.",
         bulletPoints: [
           "Datum bilgisi kenar bölümünde açıkça yazılıdır",
           "ECDIS/GPS ile birlikte kullanıldığında kritik öneme sahiptir",
@@ -2117,131 +1935,6 @@ Harita ölçeği, mesafe ölçümünün doğruluğunu da doğrudan etkiler. Öl�
 
 Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış ölçek seçimi, doğru hesapları bile tehlikeli kılar. Marine Expert içinde bu konu, yalnızca “büyük–küçük ölçek” tanımıyla geçiştirilirse kullanıcı, liman yaklaşımını kıyı haritasıyla yönetmeye çalışır veya küçük ölçekli haritada görünmeyen tehlikeyi yok sanır. Bu nedenle ölçek, tanım olarak değil; **hangi safhada hangi harita ile karar verileceğini öğreten bir refleks** olarak sunulmalıdır. Bu refleks oluştuğunda harita, pasif bir çizim değil, aktif bir seyir aracı hâline gelir.`
       }
-    ]
-  },
-  "Chart datum (LAT)": {
-    title: "Chart datum (LAT)",
-    introduction: "Chart datum, deniz haritalarında derinliklerin ve gelgit yüksekliklerinin referans alındığı düşey sıfır düzlemidir. Denizcilikte modern standart olarak kullanılan datum LAT (Lowest Astronomical Tide)’dir. LAT, yalnızca astronomik etkiler altında oluşabilecek en düşük teorik gelgit seviyesini ifade eder; rüzgâr, atmosfer basıncı ve meteorolojik anormallikler bu tanımın dışında bırakılır.",
-    sections: [
-      {
-        title: "Tanım ve Amaç",
-        content: "LAT’nin temel amacı, haritada verilen derinliklerin her koşulda emniyetli tarafta kalmasını sağlamaktır. Haritadaki tüm sounding değerleri ve kurutma sınırları LAT’ye göre ölçülür. Bu nedenle pratikte gerçek su seviyesi çoğu zaman harita derinliklerinden daha büyüktür; denizci açısından bu yaklaşım emniyetlidir ancak planlama yapılırken gelgit ilavesi mutlaka hesaba katılmalıdır.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Tide_legal_use.gif",
-        imageAlt: "Gelgit seviyeleri ve chart datum ilişkisi"
-      },
-      {
-        title: "Teorik Minimum ve Meteorolojik Etkiler",
-        content: "LAT’nin kritik bir özelliği, gözlemsel bir minimum değil, astronomik olarak hesaplanan teorik bir minimum olmasıdır. Bu durum, bazı bölgelerde gerçek deniz seviyesinin LAT’nin de altına inebileceği anlamına gelir. Özellikle kuvvetli yüksek basınç ve uzun süreli off-shore rüzgâr koşullarında bu fark pratikte görülebilir. Bu nedenle LAT, mutlak bir güvenlik garantisi değil, standartlaştırılmış bir referans seviyesidir.",
-        image: "https://www.marineinsight.com/wp-content/uploads/2023/08/Lowest-Astronomical-Tide.jpg",
-        imageAlt: "Lowest Astronomical Tide görseli"
-      },
-      {
-        title: "Harita ve Tidal Tablo Referansı",
-        content: "Deniz haritası üzerinde görülen “0” seviyesi, ortalama deniz seviyesi değil, LAT’dir. Tidal tablolarında verilen tüm yükseklikler bu sıfır düzleme göre pozitif veya negatif olarak ifade edilir. Denizci, gerçek su derinliğini bulmak için harita derinliği ile ilgili zamandaki gelgit yüksekliğini birleştirmek zorundadır.",
-        image: "https://sailingissues.com/chart-symbols/clearing-heights-chart-datums-opt.svg",
-        imageAlt: "Chart datum ve clearing heights sembolleri"
-      },
-      {
-        title: "Temel İlişki",
-        content: "UKC hesaplarının ve liman giriş planlamalarının temelini oluşturan ilişki aşağıdaki gibidir:",
-        formula: {
-          text: "Gerçek su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre)",
-          description: "Harita derinliği LAT’ye, gelgit yüksekliği ise aynı referansa göre verilmiştir."
-        }
-      },
-      {
-        title: "Örnek hesap: LAT referanslı gerçek derinlik",
-        content: `Bir liman yaklaşımında harita üzerinde gösterilen derinlik 6,2 m’dir. Tidal tabloda ilgili saat için verilen gelgit yüksekliği +1,4 m’dir.
-
-**Adım 1: Referansların kontrolü**
-Harita derinliği LAT’ye göredir.
-Gelgit yüksekliği LAT’ye göre verilmiştir.
-
-**Adım 2: Derinlik hesaplaması**
-Gerçek su derinliği = 6,2 + 1,4 = 7,6 m
-
-**Adım 3: Sonucun yorumu**
-Bu zaman diliminde gemi, haritada görülen derinliğe göre 1,4 m daha fazla suya sahiptir. Ancak bu değer yalnızca astronomik gelgiti kapsar; meteorolojik etkiler ayrıca değerlendirilmelidir. Bu nedenle UKC planlamasında emniyet payı korunarak hareket edilmesi gerekir.`
-      },
-      {
-        title: "Sonraki başlık",
-        content: "Bu ana başlığın bir sonraki tetiklemesinde **Height of tide hesapları** alt başlığı üretilecektir."
-      }
-    ],
-    keyPoints: [
-      "LAT, astronomik etkiler altında oluşabilecek en düşük teorik gelgit seviyesidir",
-      "Harita derinlikleri ve kurutma sınırları LAT’ye göre verilir",
-      "Gerçek su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre)",
-      "Meteorolojik etkiler, gerçek seviyeyi LAT’nin altına indirebilir"
-    ]
-  },
-  "12'ler kuralı": {
-    title: "12’ler kuralı",
-    introduction:
-      "12’ler kuralı, yüksek su ile alçak su arasındaki yaklaşık 6 saatlik sürede gelgit yüksekliğinin zamana göre **oransal dağılımını** pratik biçimde hesaplamak için kullanılan yöntemdir. Gelgit eğrisinin doğrusal olmadığı kabul edilir; yükselme/alçalma başlangıçta yavaş, ortada hızlı, sonda tekrar yavaş seyreder. Bu yaklaşım özellikle hızlı UKC değerlendirmelerinde ve liman yaklaşım planlamasında kullanılır.",
-    sections: [
-      {
-        title: "Saatlik dağılım mantığı",
-        content:
-          "Tidal range, 6 saatlik periyot boyunca **12 eşit parçaya** bölünür. Saatlik seviye değişimleri bu parçalara dağıtılır. Dağılım, hem yükselen hem alçalan gelgit için aynı oranlarla uygulanır.",
-        image: ruleOfTwelfths,
-        imageAlt: "12’ler kuralı gelgit dağılımı diyagramı",
-        bulletPoints: [
-          "1’inci saat: 1/12",
-          "2’nci saat: 2/12",
-          "3’üncü saat: 3/12",
-          "4’üncü saat: 3/12",
-          "5’inci saat: 2/12",
-          "6’ncı saat: 1/12"
-        ]
-      },
-      {
-        title: "Temel ilişkiler",
-        content:
-          "12’ler kuralı, tidal range’i saatlere paylaştırarak kümülatif yükselme/alçalma hesabı yapar. Temel bağıntılar şöyledir:",
-        formula: {
-          text: "Saatlik seviye değişimi = Tidal range × (ilgili saat payı / 12)",
-          description: "Kümülatif seviye değişimi, ilgili saat paylarının toplamı ile hesaplanır."
-        },
-        bulletPoints: [
-          "Tidal range = Yüksek su seviyesi − Alçak su seviyesi",
-          "Height of tide = Başlangıç seviyesi + Kümülatif seviye değişimi"
-        ]
-      },
-      {
-        title: "Örnek hesap: 12’ler kuralı ile height of tide",
-        content: `Bir liman için tidal tabloda verilen değerler:
-
-Alçak su (LW): 01:00 — 0,9 m  
-Yüksek su (HW): 07:00 — 4,5 m  
-
-**Saat 04:00 için height of tide hesaplanacaktır.**
-
-**Adım 1: Tidal range**
-Tidal range = 4,5 − 0,9 = 3,6 m
-
-**Adım 2: Saatlik paylar (01:00 → 04:00)**
-1/12 + 2/12 + 3/12 = 6/12
-
-**Adım 3: Kümülatif yükselme**
-Kümülatif yükselme = 3,6 × (6/12) = 1,8 m
-
-**Adım 4: Height of tide**
-Height of tide = 0,9 + 1,8 = 2,7 m
-
-**Adım 5: Sonucun yorumu**
-Saat 04:00’te deniz seviyesi, chart datum (LAT) seviyesinin yaklaşık 2,7 m üzerindedir. Bu değer, doğrusal interpolasyona göre daha gerçekçi bir dağılım sunar. Yöntem, yarı günlük gelgit karakteri gösteren bölgelerde daha güvenilir sonuç verir; düzensiz gelgit rejimlerinde dikkatle kullanılmalıdır.`
-      },
-      {
-        title: "Sonraki başlık",
-        content: "Bir sonraki alt başlık **Spring tide ve Neap tide** olacaktır."
-      }
-    ],
-    keyPoints: [
-      "Tidal range 6 saat içinde 12 eşit paya bölünür",
-      "Saatlik oranlar 1-2-3-3-2-1 şeklinde dağılır",
-      "Kümülatif paylar istenen saat için gelgit yüksekliğini verir",
-      "Yöntem yarı günlük gelgit düzeni için pratik bir yaklaşımdır"
     ]
   },
   "Büyük daire kavramı": {
@@ -2410,151 +2103,6 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
       }
     ]
   },
-  "GPS prensibi": {
-    title: "GPS Prensibi",
-    introduction:
-      "Küresel Konumlandırma Sistemi (GPS), Dünya yörüngesinde belirli bir geometriyle dağıtılmış uyduların gönderdiği zaman damgalı radyo sinyallerinin ölçülmesi esasına dayanır. Her uydu atomik saatine referanslı sinyal yayınlar; alıcı, sinyalin gönderilme zamanı ile alınma zamanı arasındaki farkı ölçerek uydu–alıcı arasındaki sözde mesafeyi hesaplar. Eş zamanlı olarak en az dört uydudan ölçülen sözde mesafeler ile alıcının üç boyutlu konumu ve saat hatası birlikte çözülür.",
-    sections: [
-      {
-        title: "Uydu Konstelasyonu ve Geometri",
-        content:
-          "GPS konstelasyonu, alıcının her an birden fazla uyduyu görebileceği şekilde tasarlanmıştır. Uydu geometrisi (DOP), konum çözümünün doğruluğunu doğrudan etkiler; geometri bozulduğunda yatay doğruluk hızlı şekilde düşer.",
-        image:
-          "https://www.researchgate.net/publication/394292701/figure/fig1/AS%3A11431281573147950%401754363410553/Simplified-diagram-of-the-GPS-satellite-constellation-Expandable-24-slot-configuration.ppm",
-        imageAlt: "GPS uydu konstelasyonunun basitleştirilmiş diyagramı"
-      },
-      {
-        title: "Trilaterasyon Mantığı",
-        content:
-          "GPS, kerteriz değil mesafe ölçümü ile çalışır. Her uydu için ölçülen sözde mesafe, uydudan geçen bir küre tanımlar; en az dört uydu için bu kürelerin kesişimi alıcının konumunu verir. Dördüncü uydu, alıcı saat hatasının çözülmesi için zorunludur.",
-        image: "https://gisgeography.com/wp-content/uploads/2018/04/GPS-Trilateration-Feature.jpg",
-        imageAlt: "GPS trilaterasyon prensibi"
-      },
-      {
-        title: "Sistem Yapısı ve Zaman Ölçümü",
-        content:
-          "GPS’te temel fiziksel prensip, elektromanyetik dalgaların boşluktaki yayılma hızının sabit kabul edilmesidir. Denizcilikte kullanılan sivil alıcılarda bu hız pratikte ışık hızı olarak alınır. Ölçülen mesafe, atmosferik gecikmeler, uydu saat hataları ve alıcı saat sapması nedeniyle gerçek geometrik mesafeden farklı olabilir; bu nedenle hesaplanan değer “sözde mesafe” olarak adlandırılır.",
-        image: "https://signalprocessingsociety.org/sites/default/files/1_GPS_System_Strcture.jpg",
-        imageAlt: "GPS sistem yapısı ve bileşenleri"
-      },
-      {
-        title: "Konum Çözümü ve Operasyonel Etki",
-        content:
-          "Konum çözümü, enlem, boylam ve yükseklik ile birlikte alıcı saat hatasının aynı anda bulunmasına dayanır. Deniz seyirinde yükseklik ikincil önemde olsa da çözümün parçası olmak zorundadır. Uydu geometrisinin zayıfladığı anlarda (yüksek DOP), özellikle dar sularda ve kıyı seyrinde operasyonel risk artar.",
-        image: "https://www.faa.gov/sites/faa.gov/files/about/office_org/headquarters_offices/ato/GPS_how_it_works1.png",
-        imageAlt: "GPS’in çalışma prensibi şeması"
-      },
-      {
-        title: "Temel Formüller",
-        content:
-          "Sözde mesafe, ölçülen zaman farkı ile ışık hızının çarpımına eşittir. Konum çözümünde her uydu için bir denklem kurulur ve dört uydu ile dört bilinmeyen çözülür.",
-        bulletPoints: [
-          "Sözde mesafe: ρ = c × Δt",
-          "c: ışık hızı (≈ 300 000 km/s)",
-          "Δt: sinyalin gönderilmesi ile alınması arasındaki süre",
-          "3B konum denklemi (bir uydu): ρ = √[(x − xs)² + (y − ys)² + (z − zs)²] + b",
-          "b: alıcı saat hatası"
-        ]
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir GPS alıcısı, bir uydudan gelen sinyalin gönderilme ve alınma zamanları arasındaki farkı **0,000072 s** olarak ölçmüştür.
-
-Adım 1: Işık hızının tanımlanması  
-c ≈ 300 000 km/s
-
-Adım 2: Zaman farkının kullanılması  
-Δt = 0,000072 s
-
-Adım 3: Sözde mesafenin hesaplanması  
-ρ = c × Δt  
-ρ = 300 000 × 0,000072  
-ρ = **21,6 km**
-
-Bu değer, alıcı ile uydu arasındaki sözde mesafedir. Aynı işlem en az dört farklı uydu için yapıldığında, bu mesafelerin kesişiminden geminin konumu hesaplanır. Denizcilikte bu sonuç, harita datumuna bağlı olarak ECDIS ve radar gibi diğer sensörlerle çapraz kontrol edilmediği sürece tek başına emniyetli kabul edilmez.`
-      }
-    ],
-    keyPoints: [
-      "GPS, zaman ölçümü temelli sözde mesafeler ile konum çözer.",
-      "En az dört uydu ile 3B konum ve saat hatası birlikte bulunur.",
-      "İyonosfer/troposfer gecikmeleri ve saat hataları sözde mesafeyi büyütür.",
-      "Uydu geometrisi zayıfladığında doğruluk hızlı düşer.",
-      "GPS verisi denizcilikte diğer sensörlerle mutlaka çapraz kontrol edilmelidir."
-    ]
-  },
-  "Radar prensibi": {
-    title: "Radar Prensibi",
-    introduction:
-      "RADAR (Radio Detection and Ranging), elektromanyetik dalgaların gönderilmesi ve hedeflerden yansıyan enerjinin geri alınması prensibine dayanan aktif bir algılama sistemidir. Deniz radarları mikrodalga bandında kısa süreli darbeler gönderir; darbe bir hedefe çarptığında yansır ve antene geri döner. Gönderim ile alınan yankı arasındaki zaman farkı mesafeyi, antenin gönderim anındaki yönü ise kerterizi verir.",
-    sections: [
-      {
-        title: "Zaman Ölçümü ve Mesafe Hesabı",
-        content:
-          "Radar sisteminde temel ölçüm büyüklüğü zamandır. Elektromanyetik dalgaların atmosferdeki yayılma hızı ışık hızına çok yakındır ve sabit kabul edilir. Radar, sinyalin gidiş–dönüş süresini ölçtüğü için hesaplanan mesafe, hedefe gidiş mesafesinin iki katına karşılık gelir; bu nedenle sonuç ikiye bölünür.",
-        image:
-          "https://maritimesa.org/nautical-science-grade-12/wp-content/uploads/sites/7/2020/09/12-1-3-3-fig1-1.jpg",
-        imageAlt: "Radar darbesinin gidiş-dönüş süresi ve mesafe ölçümü"
-      },
-      {
-        title: "Anten, Tarama ve Kerteriz",
-        content:
-          "Deniz radarlarında döner anten, dar bir ışın demeti üretir. Anten 360° tarama yaptıkça çevredeki hedefler ekranda bağıl konumlarıyla görünür. Kerteriz, antenin gönderme anındaki yönüyle belirlenir; bu nedenle doğru kerteriz için anten yön bilgisi ile radar göstergesinin kalibrasyonu kritik önemdedir.",
-        image: "https://www.tek.com/-/media/sites/default/files/2018-04/radar20part20120series20header20april20167.png",
-        imageAlt: "Radar anteni ve tarama prensibi"
-      },
-      {
-        title: "Hedef Yansıması ve Yorumlama",
-        content:
-          "Radar, hedefin şeklini değil, yansıtma karakteristiğini algılar. Metal yapılar güçlü yankı verirken, küçük ahşap tekneler ve şamandıralar zayıf yankı üretebilir. Bu durum, radar ekranındaki yorumlama becerisini doğrudan etkiler ve hedefin gerçek boyutu ile radar izi her zaman örtüşmeyebilir.",
-        image: "https://firecontrolman.tpub.com/12404/img/12404_12_1.jpg",
-        imageAlt: "Radar yansıması ve hedef izleri"
-      },
-      {
-        title: "Sistem Bağımsızlığı ve Sınırlamalar",
-        content:
-          "Radar, dış altyapıya bağımlı olmayan aktif bir sistemdir ve bu yönüyle GPS’ten temel olarak ayrılır. Ancak mutlak doğruluk sağlamaz; deniz durumu, yağış, dalga tepeleri ve hedefin yapısal özellikleri ölçümleri etkileyebilir. Bu nedenle radar verileri, görsel mevki ve diğer sensörlerle birlikte değerlendirilmelidir.",
-        image: "https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG",
-        imageAlt: "Radar ekranı üzerinde hedeflerin bağıl görünümü"
-      },
-      {
-        title: "Temel Formüller",
-        content:
-          "Radar mesafesi, sinyalin gidiş–dönüş süresine göre hesaplanır. Kerteriz, antenin gönderim anındaki yönüne karşılık gelir.",
-        bulletPoints: [
-          "Mesafe = (c × Δt) ÷ 2",
-          "c: ışık hızı (≈ 300 000 km/s)",
-          "Δt: gönderilen darbe ile yankının geri alınması arasındaki süre",
-          "Kerteriz = antenin gönderme anındaki yönü"
-        ]
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir gemi radarı, gönderilen bir darbenin **0,00008 s** sonra geri döndüğünü ölçmüştür.
-
-Adım 1: Işık hızının tanımlanması  
-c ≈ 300 000 km/s
-
-Adım 2: Zaman farkının kullanılması  
-Δt = 0,00008 s
-
-Adım 3: Gidiş–dönüş mesafesinin hesaplanması  
-Toplam yol = c × Δt  
-Toplam yol = 300 000 × 0,00008 = **24 km**
-
-Adım 4: Gerçek mesafenin bulunması  
-Mesafe = 24 ÷ 2 = **12 km**
-
-Bu sonuç, radar hedefinin gemiden yaklaşık 12 kilometre uzaklıkta olduğunu gösterir.`
-      }
-    ],
-    keyPoints: [
-      "Radar aktif bir sensördür; dış altyapıya bağımlı değildir.",
-      "Mesafe ölçümü zaman farkına dayanır ve gidiş–dönüş süresi ikiye bölünür.",
-      "Kerteriz, antenin gönderim anındaki yönüyle belirlenir.",
-      "Hedefin yansıtma karakteristiği radar izini belirler.",
-      "Deniz durumu ve yağış, radar performansını etkileyebilir."
-    ]
-  },
   "GPS doğruluğu": {
     title: "GPS Doğruluğu",
     introduction:
@@ -2626,162 +2174,6 @@ Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapa
       "Yatay hata, pratikte HDOP × UERE yaklaşımıyla değerlendirilir.",
       "Metre seviyesindeki doğruluk açık denizde yeterli olabilir; dar sularda risk oluşturabilir.",
       "GPS verisi radar, görsel mevki ve ECDIS alarmlarıyla birlikte kullanılmalıdır."
-    ]
-  },
-  HDOP: {
-    title: "HDOP (Horizontal Dilution of Precision)",
-    introduction:
-      "HDOP, yatay geometrik seyreltme katsayısını ifade eder ve GPS konum doğruluğunun en kritik belirleyicilerinden biridir. HDOP, ölçüm hatası üretmez; mevcut mesafe hatalarının yatay konum üzerindeki etkisini büyüten veya küçülten bir geometrik çarpan gibi davranır. İyi uydu geometrisinde aynı mesafe hatası küçük bir yatay sapmaya, kötü geometride ise ciddi konum hatasına dönüşür.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![HDOP örnek eğrisi](https://image2.slideserve.com/4575047/slide20-l.jpg)
-
-![Uydu geometrisi ve HDOP ilişkisi](https://ozzmaker.com/wp-content/uploads/2020/02/hdop-overlap.png)
-
-![Uydu sayısı ve HDOP ilişkisi](https://www.researchgate.net/publication/51872763/figure/fig4/AS%3A341518356369429%401458435729967/Relationship-between-Horizontal-Dilution-of-Precision-HDOP-the-number-of-satellites.png)
-
-![DOP şeması](https://gnssdecoded.com/wp-content/uploads/2025/10/Dilution-of-precision.jpg)`
-      },
-      {
-        title: "Uydu Geometrisi ve Operasyonel Etki",
-        content:
-          "Uydu geometrisi, alıcının gökyüzünde gördüğü uyduların birbirine göre açısal dağılımıdır. Uydular geniş açılara yayılmışsa HDOP düşer; uydular dar bir sektörde toplanırsa HDOP yükselir. Denizcilikte özellikle kıyıya yakın seyirlerde gemi üstyapısı, vinçler veya çevresel engeller belirli uydu sektörlerini kapatabilir ve HDOP değeri kısa sürede yükselir."
-      },
-      {
-        title: "Operasyonel Yorum",
-        content:
-          "HDOP değeri alıcı tarafından sürekli hesaplanır ve ECDIS/GPS ekranlarında sayısal olarak izlenebilir. Ancak HDOP yükselmesi her zaman alarm üretmez. Bu nedenle vardiya zabitinin HDOP’u yorumlayabilmesi operasyonel bir zorunluluktur. Düşük HDOP, yüksek doğruluk garantisi değildir; yalnızca mevcut mesafe hatalarının yatay düzlemde daha az büyütüldüğünü gösterir."
-      },
-      {
-        title: "Formüller",
-        content: `**Yatay konum hatası**  
-Yatay hata = HDOP × UERE
-
-**Burada:**  
-HDOP: Yatay geometrik seyreltme katsayısı  
-UERE: Eşdeğer kullanıcı mesafe hatası
-
-**Geometrik yorum**  
-HDOP küçük → Uydu açısal dağılımı iyi  
-HDOP büyük → Uydu açısal dağılımı kötü`
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir gemide GPS alıcısı için eşdeğer kullanıcı mesafe hatası aşağıdaki gibi kabul edilmektedir:
-
-UERE = 6 m
-
-**Durum A: Açık deniz, iyi uydu geometrisi**  
-HDOP = 0,9
-
-Adım 1: Yatay hatanın hesaplanması  
-Yatay hata = 0,9 × 6  
-Yatay hata = 5,4 m
-
-**Durum B: Liman yaklaşması, üstyapı gölgelemesi**  
-HDOP = 3,2
-
-Adım 2: Yatay hatanın hesaplanması  
-Yatay hata = 3,2 × 6  
-Yatay hata = 19,2 m
-
-Adım 3: Operasyonel karşılaştırma  
-Aynı GPS alıcısı ve aynı mesafe hatası, yalnızca uydu geometrisi değiştiği için yatay hatayı yaklaşık dört kat artırmıştır.
-
-Bu sonuç, HDOP’un denizcilikte neden kritik olduğunu açıkça gösterir. GPS çalışıyor görünse bile HDOP yükseldiğinde konum güvenilirliği ciddi biçimde azalır.`
-      },
-      {
-        title: "Emniyet Notu",
-        content:
-          "HDOP, seyirde yalnızca izlenen bir sayı değil; radar, görsel mevki ve ECDIS alarm ayarlarıyla birlikte yorumlanması gereken operasyonel bir emniyet göstergesidir."
-      }
-    ],
-    keyPoints: [
-      "HDOP, yatay konum hatasını büyüten veya küçülten geometrik bir çarpandır.",
-      "Uydu açısal dağılımı iyi olduğunda HDOP düşer; kötü olduğunda yükselir.",
-      "Düşük HDOP yüksek doğruluk garantisi değildir; sadece hata büyümesini sınırlar.",
-      "Liman yaklaşmalarında gölgeleme HDOP’u hızla artırabilir.",
-      "HDOP değerleri, radar ve görsel mevki ile birlikte yorumlanmalıdır."
-    ]
-  },
-  "Turn radius": {
-    title: "Turn Radius",
-    introduction:
-      "Turn radius, geminin sabit hız ve sabit dümen açısı altında izlediği dairesel yolun yarıçapını ifade eder. Bu büyüklük, dönüşün **geometrik boyutunu** tanımlar ve özellikle rota planlama, dönüş noktalarının konumlandırılması ve dar sularda manevra emniyeti için kritiktir. Turn radius tek başına dönüşün ne kadar sürede tamamlandığını açıklamaz; yalnızca dönüşün ne kadar “geniş” veya “keskin” olduğunu gösterir.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Dönüş dairesi şeması](https://www.researchgate.net/publication/349430717/figure/fig1/AS%3A1007941725483009%401617323442741/Turning-Circle-Diagram.png)
-
-![Turning circle örneği](https://oe3036.hydratech.in/ch_06/turning-circle.png)
-
-![Gemi dönüş karakteristiği](https://shipsnow.com/images/wiki/criteria/turning-circle.jpg)
-
-![Advance ve transfer görseli](https://marinegyaan.com/wp-content/uploads/2016/06/77-3.jpg)`
-      },
-      {
-        title: "Tanım ve Operasyonel Önemi",
-        content:
-          "Turn radius, idealize edilmiş dairesel hareketi temsil eder. Gerçek dönüşte gemi önce hız kesmeden ilerler, sonra kavis oluşturmaya başlar; bu nedenle pratik planlamada **advance**, **transfer** ve **tactical diameter** gibi değerlerle birlikte değerlendirilir. Turn radius, dönüşün ne kadar yer kaplayacağını gösterdiği için ECDIS üzerinde çizilen teorik dönüşlerle geminin gerçek manevra kabiliyetinin örtüşmesi zorunludur."
-      },
-      {
-        title: "Turn Radius’u Etkileyen Faktörler",
-        content:
-          "Dönüş yarıçapı; gemi hızı, dümen açısı, gemi tipi, pervane–dümen etkileşimi, su derinliği ve hidrodinamik direnç gibi değişkenlerle belirlenir. Hız arttıkça aynı dümen açısında dönüş yarıçapı büyür; bu nedenle yüksek süratte çizilen dönüşler, dar sularda operasyonel olarak uygulanamaz.",
-        bulletPoints: [
-          "Hız arttıkça dönüş yarıçapı büyür",
-          "Dümen açısı büyüdükçe dönüş yarıçapı küçülür",
-          "Sığ su ve squat etkisi dönüş karakteristiğini bozar",
-          "Tam yük/ballast durumu manevra kabiliyetini değiştirir"
-        ]
-      },
-      {
-        title: "Geometrik Yaklaşım ve Pratik İlişki",
-        content:
-          "Basitleştirilmiş yaklaşımda dönüş yarıçapı, merkezcil ivmeye bağlıdır. Denizcilikte pratik kullanımda ise **aynı dümen açısı için hız arttıkça turn radius’un hızın karesiyle büyüdüğü** kabul edilir. Bu ilişki, rota planlamada hız değişiminin dönüş alanını ne kadar büyüttüğünü hızlıca öngörmeye yarar.",
-        formula: {
-          text: "Turn radius ≈ V² ÷ ay  →  pratikte: Turn radius ∝ V²",
-          description: "V: hız, ay: yan (merkezcil) ivme. Pratik planlamada ay sabit varsayılır."
-        }
-      },
-      {
-        title: "Advance ve Transfer ile Birlikte Değerlendirme",
-        content:
-          "Turn radius ideal daireyi anlatır; **advance** geminin dönüşe girdikten sonra ileri yönde kat ettiği mesafeyi, **transfer** ise dönüş sırasında yanal sapmayı gösterir. Bu üç büyüklük birlikte ele alınmadığında ECDIS üzerinde çizilen dönüş noktaları gerçek manevrada yetersiz kalabilir."
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir gemi için iki farklı hız durumu değerlendirilsin.
-
-**Durum A**  
-Hız = 10 kn  
-Turn radius = 0,30 deniz mili
-
-**Durum B**  
-Hız = 14 kn
-
-Adım 1: Hız oranı  
-14 ÷ 10 = **1,4**
-
-Adım 2: Hızın karesiyle artış varsayımı  
-Turn radius B ≈ 0,30 × (1,4)²  
-Turn radius B ≈ 0,30 × 1,96  
-Turn radius B ≈ **0,59 deniz mili**
-
-Bu sonuç, hız %40 arttığında dönüş yarıçapının yaklaşık iki katına çıktığını gösterir.`
-      },
-      {
-        title: "Operasyonel Not",
-        content:
-          "Turn radius, sabit bir gemi karakteristiği değildir; hız, yükleme ve çevresel koşullarla sürekli değişir. Bu nedenle rota planlamasında ECDIS üzerinde tanımlanan dönüşler, geminin **gerçek manevra kabiliyeti** ile her zaman çapraz kontrol edilmelidir."
-      }
-    ],
-    keyPoints: [
-      "Turn radius dönüşün geometrik genişliğini ifade eder; süreyi tek başına açıklamaz.",
-      "Hız arttıkça aynı dümen açısında dönüş yarıçapı büyür.",
-      "Advance ve transfer, gerçek dönüşün zaman–mesafe davranışını tamamlar.",
-      "ECDIS üzerinde çizilen dönüşler gerçek manevra verileriyle doğrulanmalıdır."
     ]
   },
   "Composite (bileşik) rota": {
@@ -6012,80 +5404,6 @@ Distance Off by Vertical Angle, klasik seyrüseferde **tek ölçümle güvenilir
       }
     ]
   },
-  ECDIS: {
-    title: "ECDIS (Electronic Chart Display and Information System)",
-    introduction:
-      "ECDIS, elektronik seyir haritaları üzerinde gemi konumunun, rotasının ve çevresel tehlikelerin entegre biçimde izlenmesini sağlayan bir seyir bilgi sistemidir. Kağıt haritanın dijital karşılığı olmakla sınırlı değildir; sensörlerden gelen verileri işleyerek seyir emniyetine yönelik karar destek fonksiyonu üretir. Bu nedenle ECDIS, pasif bir gösterim aracı değil, aktif bir seyir sistemidir.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Image](https://ik.imagekit.io/mwakqpfup/evdis_enc_chart_detalization_menu_lsn8en.jpg)
-
-![Image](https://www.researchgate.net/publication/331571625/figure/fig1/AS%3A733839362117632%401551972346113/Official-ECDIS-system-architecture.ppm)
-
-![Image](https://www.marineinsight.com/wp-content/uploads/2018/03/Untitled-1.png)
-
-![Image](https://knowledgeofsea.com/wp-content/uploads/2021/03/5-1024x679.png)`
-      },
-      {
-        title: "Temel Girdi ve Entegrasyon",
-        content:
-          "ECDIS’in temel girdisi elektronik seyir haritalarıdır (ENC). Bu haritalar resmi hidrografik ofisler tarafından üretilir ve standartlaştırılmış veri yapısına sahiptir. Gemi konumu genellikle GPS’ten alınır; rota, hız ve baş bilgileri ise gyro pusula ve hız ölçerden beslenir. Radar ve AIS verileri ECDIS üzerine bindirilerek tek bir ekranda bütünleşik bir seyir resmi elde edilir."
-      },
-      {
-        title: "Alarm ve Uyarı Mantığı",
-        content:
-          "ECDIS’in en kritik özelliği alarm ve uyarı mekanizmasıdır. Emniyet konturu, emniyet derinliği, sapma limitleri ve yaklaşma alarmları, kullanıcının önceden tanımladığı değerlere göre çalışır. Bu ayarlar doğru yapılmadığında ECDIS ya sürekli alarm üreten bir sisteme dönüşür ya da sessiz kalarak ciddi tehlikeleri gözden kaçırır. Bu durum, ECDIS kazalarının temel nedenlerinden biridir."
-      },
-      {
-        title: "Operasyonel Güvenilirlik",
-        content:
-          "ECDIS, doğru kullanıldığında kağıt haritaya eşdeğer kabul edilir. Ancak bu eşdeğerlik yalnızca yetkili zabit, güncel harita ve doğru ayar koşulları sağlandığında geçerlidir. Yanlış datum, güncellenmemiş harita veya hatalı sensör girdisi, ECDIS’i operasyonel olarak güvenilmez hale getirir."
-      },
-      {
-        title: "Formüller",
-        content: `Emniyet konturu mantığı:
-
-Emniyet konturu ≥ Gemi su çekimi + Emniyet payı
-
-Sapma kontrolü:
-
-Sapma = Gerçek mevki − Planlanan rota
-
-Zaman–mesafe ilişkisi (rota izleme):
-
-Kat edilen mesafe = Hız × Zaman`
-      },
-      {
-        title: "Örnek Hesap",
-        content: `**Veriler**
-
-Gemi su çekimi = 8,5 m  
-Emniyet payı = 1,0 m
-
-**Adım 1: Emniyet konturunun belirlenmesi**
-
-Emniyet konturu = 8,5 + 1,0  
-Emniyet konturu = 9,5 m
-
-**Adım 2: Harita üzerinde uygun konturun seçilmesi**
-
-ECDIS’te 10 m emniyet konturu seçilir.
-
-**Adım 3: Operasyonel değerlendirme**
-
-10 metreden sığ alanlar sistem tarafından tehlikeli olarak işaretlenir ve yaklaşma durumunda alarm üretir.
-
-Bu ayar sayesinde ECDIS, geminin su çekimine uygun olmayan sığlıkları otomatik olarak ayıklar. Ancak ECDIS, yalnızca tanımlanan parametreler kadar güvenlidir. Yanlış emniyet konturu seçildiğinde sistem doğru çalışıyor görünse bile gemiyi tehlikeye yönlendirebilir.`
-      }
-    ],
-    keyPoints: [
-      "ECDIS, sensör verilerini birleştirerek aktif bir seyir karar destek sistemi sunar.",
-      "ENC güncelliği ve doğru datum seçimi operasyonel güvenilirliğin temelidir.",
-      "Alarm limitleri doğru tanımlanmazsa sistem ya aşırı alarm üretir ya da kritik riskleri kaçırır.",
-      "Güvenli kullanım, doğru ayar + sürekli çapraz kontrol disiplinine bağlıdır."
-    ]
-  },
   "GPS’in seyirde kullanımı ve sensör entegrasyonu": {
     title: "GPS’in Seyirde Kullanımı ve Sensör Entegrasyonu",
     introduction:
@@ -7683,171 +7001,174 @@ Mean Latitude Sailing’in doğrudan problemi, **rota ve mesafeden yeni mevki ü
         title: "Detaylı Anlatım",
         content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.8_fig_1.jpg)
 
-![Image](https://www.researchgate.net/publication/331016370/figure/fig1/AS%3A725119362146308%401549893336477/Diagram-of-leeway-As-shown-in-Fig-2-the-formula-of-the-ships-track-direction-under.png)
+![Image](https://sailzing.com/wp-content/uploads/2021/02/leeway-definition.jpg)
 
-![Image](https://www.passageplanning-sales.com/media/images/user-images/37949/Yacht1_OCR.jpg)
+![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/03/edScreenshot-2022-02-18-at-11.26.42.png)
 
-![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/19/2016/06/Nav-in-a-nutshell_-Shaping-a-course.jpg)
-
----
-
-### Tanım
-
-Leeway, rüzgâr etkisi altında seyreden bir geminin **pruvasının gösterdiği doğrultu** ile **su üzerindeki gerçek iz hattı** arasında oluşan açısal farktır. Başka bir ifadeyle leeway, rüzgâr nedeniyle geminin **rüzgâraltına sürüklenmesi** sonucu oluşan yanal sapmadır. Bu etki özellikle bordadan veya pruvaya yakın açılardan esen rüzgârlarda belirginleşir.
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.8.7_fig_1.jpg)
 
 ---
 
-### Leeway Açısını Etkileyen Faktörler
+### Temel Prensip
 
-* Gemi üstyapısı ile su altı alanı arasındaki denge
+* Rüzgâr, gemiyi **yanal olarak** sürükler
+* Gemi, pruvasını rüzgâra çevirse bile **yanal kaçma** oluşur
+* Bu kaçma **açı** olarak ifade edilir → **Leeway Açısı**
+
+⬛ **Ana İlke**
+
+════════════════════
+Heading (CTS)
+≠
+Gerçek İlerleme
+════════════════════
+
+---
+
+### Tanımlar
+
+* **Leeway (L)** : Rüzgâr kaynaklı sürüklenme açısı (°)
+* **Heading / CTS** : Dümenlenen rota (°T)
+* **CMG** : Course Made Good (°T)
+* **Windward** : Rüzgârın geldiği yön
+* **Lee side** : Rüzgâr altı taraf
+
+---
+
+### Leeway’in Yönü
+
+* Rüzgâr **iskele** tarafından geliyorsa → gemi **sancağa** sürüklenir
+* Rüzgâr **sancak** tarafından geliyorsa → gemi **iskeleye** sürüklenir
+
+⬛ **Yön Kuralı**
+
+════════════════════
+Leeway
+her zaman
+rüzgâr altına
+doğrudur
+════════════════════
+
+---
+
+### Leeway’in Rota Üzerindeki Etkisi
+
+⬛ **İlişki**
+
+════════════════════
+CMG = CTS ± Leeway
+════════════════════
+
+* Rüzgâr sancaktan → **CTS + L** (iskeleye düzelt)
+* Rüzgâr iskeleden → **CTS − L** (sancağa düzelt)
+
+---
+
+### Leeway Açısının Büyüklüğü
+
+Leeway sabit değildir; aşağıdaki faktörlere bağlıdır:
+
 * Rüzgâr şiddeti
-* Gemi hızı
-* Yükleme durumu
+* Gemi formu ve borda yüksekliği
+* Gemi sürati
+* Yük durumu
 
-Hafif yüklü, geniş üstyapılı ve düşük süratli gemilerde leeway **daha büyük**; yük arttıkça ve hız yükseldikçe **daha küçük** olur.
+⬛ **Pratik Aralık**
 
----
-
-### Seyirde Önemi
-
-Leeway, pusula/gerçek rota düzeltmelerinde mutlaka hesaba katılmalıdır. Düzeltme yapılmazsa gemi planlanan rotanın **rüzgâraltına düşer** ve özellikle uzun mesafelerde **mevki hataları** büyür. Leeway, **set ve drift**’ten farklı olarak yalnızca **rüzgâr kaynaklı** bir sapmadır.
-
----
-
-### Pratik Hesaplama Yaklaşımı
-
-~~~
-Leeway Açısı ≈ K × Rüzgâr Hızı / Gemi Hızı
-~~~
-
-* Rüzgâr hızı ve gemi hızı **aynı birimde** alınır.
-* K katsayısı gemi tipine göre değişir (yaklaşık **0,5 – 1,5**).
-  * Düşük bordalı/ağır gemilerde **küçük**,
-  * Yüksek bordalı gemilerde **büyük** değer seçilir.
-
-Bu bağıntı **ampirik** bir yaklaşımdır ve emniyetli, muhafazakâr bir tahmin sağlar.
+════════════════════
+Leeway
+≈ 2° – 10°
+════════════════════
 
 ---
 
-### Rota Düzeltmesi
+### Grafik Gösterim
 
-~~~
-Gerçek Seyir Rotası = Dümenlenen Rota ± Leeway Açısı
-~~~
-
-* Rüzgâr **iskele** tarafından geliyorsa leeway **iskeleye**,
-* Rüzgâr **sancak** tarafından geliyorsa leeway **sancağa** olur.
-
-Düzeltme, geminin **rüzgâra doğru** dümenlenmesi şeklinde uygulanır.
+* CTS → pruvalı düz çizgi
+* CMG → rüzgâr altına kaymış çizgi
+* İki çizgi arasındaki açı → **Leeway**
 
 ---
 
-### Örnek Hesap
+### Sayısal Uygulama Örneği
 
-**Veriler**
+**Verilenler**
 
-* Gemi hızı: **12 kn**
-* Bordadan gerçek rüzgâr: **24 kn**
-* K katsayısı: **1,0**
+* Dümenlenen rota (**CTS**) = **090°T**
+* Rüzgâr: **030°T** (iskele başomuzluk)
+* Tahmini leeway = **5°**
 
-**Adım 1:**
-~~~
-Rüzgâr Hızı / Gemi Hızı = 24 / 12 = 2
-~~~
+---
 
-**Adım 2:**
-~~~
-Leeway ≈ 1,0 × 2 = 2°
-~~~
+### Hesaplama
 
-**Adım 3 (Düzeltme):**
+Rüzgâr **iskele tarafından** geldiği için gemi **sancağa** sürüklenir.
 
-Gemi **090°** rota ile seyrediyor ve rüzgâr **sancak** tarafından geliyorsa gemi **iskeleye** sürüklenir. Bu durumda dümenlenen rota:
+⬛ **CMG**
 
-~~~
-Dümenlenen Rota ≈ 090° + 2° = 092°
-~~~
+════════════════════
+CMG = 090° − 5°
+CMG = 085°T
+════════════════════
 
-Bu örnek, gemiyi planlanan iz hattı üzerinde tutmak için dümenin **rüzgâra doğru** verilmesi gerektiğini gösterir. Leeway’in ihmal edilmesi, açık deniz seyirlerinde **yavaş fakat sürekli mevki hatalarına** yol açar.`
+---
+
+### CTS Düzeltmesi (İstenen CMG Verildiğinde)
+
+**Verilenler**
+
+* İstenen rota (**CMG**) = **090°T**
+* Rüzgâr: **030°T** (iskele)
+* Leeway = **5°**
+
+---
+
+⬛ **Dümenlenecek Rota**
+
+════════════════════
+CTS = 090° + 5°
+CTS = 095°T
+════════════════════
+
+Bu rota dümenlenirse, gemi **085°T**’ye değil, **090°T CMG** üzerine oturur.
+
+---
+
+### Leeway ve Akıntı Birlikte
+
+Leeway ve akıntı **ayrı ayrı** değerlendirilir.
+
+⬛ **Sıra Kuralı**
+
+════════════════════
+Önce
+Leeway
+sonra
+Akıntı (CTS)
+════════════════════
+
+* Leeway → rüzgâr kaynaklı **açı düzeltmesi**
+* Akıntı → **vektör düzeltmesi**
+
+---
+
+### Harita Sembolizasyonu
+
+* CTS → ok başlı düz çizgi
+* CMG → rüzgâr altına kaymış çizgi
+* Leeway → küçük yay + derece değeri
+
+---
+
+### Seyir Uygulaması
+
+* Açık deniz seyri
+* Uzun DR/EP aralıkları
+* Elektronik rota teyidi
+* Yelkenli ve düşük süratli gemiler
+
+Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uzun seyirlerde büyük mevki hatalarına** yol açabileceğinden, rota ve mevki hesaplarında **mutlaka dikkate alınmalıdır**.`
       }
-    ]
-  },
-  "Rüzgârın gemiye etkisi": {
-    title: "Rüzgârın Gemiye Etkisi",
-    introduction:
-      "Rüzgâr, gemi üzerine etki eden ve seyir esnasında yön, hız ve manevra kabiliyeti üzerinde belirgin sonuçlar doğuran temel dış kuvvetlerden biridir. Etki; geminin su üstü alanına, rüzgârın şiddetine, göreli geliş açısına ve gemi hızına bağlıdır. Yüksek bordalı, geniş üstyapılı ve hafif yüklü gemiler rüzgâr etkisine daha hassastır. Özellikle düşük hızlarda ve manevra sırasında rüzgâr kuvveti, pervane ve dümen etkisine baskın hâle gelebilir.",
-    sections: [
-      {
-        title: "Görsel Özet",
-        content: `![Rüzgârın gemi manevrasına etkisi](https://www.marineinsight.com/wp-content/uploads/2023/03/Effects-Of-Wind-On-Ship-Handling.png)
-
-![Rüzgâr basıncı ve sürüklenme](https://www.marineinsight.com/wp-content/uploads/2021/12/image005.png)
-
-![Rüzgârın sürüklenmeye etkisi](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2022/07/edScreenshot-2022-06-29-at-14.57.57.png)
-
-![Gerçek rüzgâr kavramı](https://www.nauticed.org/blog/wp-content/uploads/2009/02/true-wind.jpg)
-
-Rüzgâr, gemi üzerinde **yanal sürüklenme** ve **döndürme momenti** oluşturur. Kuvvetin büyüklüğü, rüzgâr hızının karesiyle artar; bu nedenle rüzgâr şiddetindeki küçük artışlar dahi kuvveti hızlı şekilde büyütür.`
-      },
-      {
-        title: "Rüzgârın Oluşturduğu Kuvvet ve Moment",
-        content:
-          "Rüzgârın gemi üzerindeki etkisi iki ana bileşenle değerlendirilir: (1) gemiyi rüzgâr yönüne doğru sürükleyen **yanal kuvvet** ve (2) geminin başını veya kıçını rüzgâra döndürmeye çalışan **döndürme momenti**. Momentin büyüklüğü; rüzgâr basınç merkezinin, geminin su altı direnç merkezine göre konumuna bağlıdır. Başüstü rüzgâr genellikle hız kaybına, kıçtan rüzgâr hız artışına, bordadan rüzgâr ise belirgin yanal sürüklenmeye yol açar.",
-        bulletPoints: [
-          "Yüksek borda ve geniş üstyapı → rüzgâr etkisi artar",
-          "Düşük hızda rüzgâr kuvveti, dümen etkisini bastırabilir",
-          "Moment kolu büyüdükçe gemi baş-kıç yönünde daha kolay döner"
-        ]
-      },
-      {
-        title: "Rüzgâr Kuvveti Bağıntısı",
-        content:
-          "Rüzgâr kuvveti, rüzgârın gemi üzerindeki **yatay etkisini** ifade eder ve geminin su üstü izdüşüm alanı üzerinden hesaplanır. Hava yoğunluğu standart atmosferde yaklaşık 1,225 kg/m³ alınır. Sürükleme katsayısı (Cₑ), gemi formu ve üstyapı geometrisine bağlıdır; pratikte 1,0–1,3 aralığında kullanılır.",
-        formula: {
-          text: "F = 0,5 × ρ × V² × A × Cₑ",
-          description: "F: rüzgâr kuvveti (N), ρ: hava yoğunluğu (kg/m³), V: rüzgâr hızı (m/s), A: etkin alan (m²), Cₑ: sürükleme katsayısı."
-        }
-      },
-      {
-        title: "Rüzgâr Momenti",
-        content:
-          "Rüzgârın oluşturduğu döndürme momenti, kuvvetin uygulama noktası ile geminin su altı direnç merkezi arasındaki yatay mesafe (moment kolu) ile belirlenir. Bu mesafe büyüdükçe geminin baş veya kıçının rüzgâra dönme eğilimi artar.",
-        formula: {
-          text: "M = F × d",
-          description: "M: rüzgâr momenti (N·m), F: rüzgâr kuvveti (N), d: moment kolu (m)."
-        }
-      },
-      {
-        title: "Örnek Hesaplama",
-        content: `**Verilenler**
-
-* Etkin alan (A): **900 m²**
-* Sürükleme katsayısı (Cₑ): **1,1**
-* Gerçek rüzgâr hızı (V): **15 m/s**
-* Hava yoğunluğu (ρ): **1,225 kg/m³**
-
-**Adım 1: Hızın karesi**
-
-15² = **225**
-
-**Adım 2: Kuvvet hesabı**
-
-F = 0,5 × 1,225 × 225 × 900 × 1,1  
-F ≈ **136 300 N** (≈ **136 kN**)
-
-**Adım 3: Moment yorumu**
-
-Moment kolu **8 m** ise:  
-M = 136 300 × 8 ≈ **1 090 000 N·m**
-
-Bu büyüklükte bir moment, özellikle düşük hızda seyir ve liman manevralarında geminin kontrolünü ciddi şekilde zorlaştırır. Bu nedenle rüzgâr yönü ve şiddeti manevra planına doğrudan dahil edilmelidir.`
-      }
-    ],
-    keyPoints: [
-      "Rüzgâr kuvveti, hızın karesiyle artar; küçük hız artışları büyük kuvvet farkı yaratır.",
-      "Borda rüzgârı yanal sürüklenme ve rota sapmasına neden olur.",
-      "Düşük süratte rüzgâr, dümen ve pervane etkisinden daha baskın olabilir.",
-      "Moment kolu büyüdükçe baş-kıç dönme eğilimi artar; manevra planı buna göre yapılmalıdır."
     ]
   },
   "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)": {
@@ -8034,101 +7355,6 @@ alınmalıdır
 
 Cross Bearings ile Fix, klasik seyrüseferde **hızlı, görsel ve güvenilir** bir mevki tayini sağlar; doğru objeler ve eş zamanlı ölçümlerle uygulandığında **en yüksek doğruluklu terrestrial fix** yöntemlerinden biridir.`
       }
-    ]
-  },
-  "Radar ile mevki tayini": {
-    title: "Radar ile mevki tayini",
-    introduction:
-      "Radar ile mevki tayini, geminin konumunun radar ekranında ölçülen mesafe ve kerteriz değerleri kullanılarak harita üzerinde belirlenmesi esasına dayanır. Bu yöntem, özellikle kıyı seyrinde, dar sularda ve görüşün kısıtlı olduğu durumlarda yüksek emniyet sağlar. Radar aktif bir sistem olduğu için dış altyapıya bağımlı değildir; bu yönüyle GPS’e karşı en güçlü alternatiflerden biridir.",
-    sections: [
-      {
-        title: "Detaylı Anlatım",
-        content: `![Image](https://maritimesa.org/nautical-science-grade-12/wp-content/uploads/sites/7/2020/09/12-1-3-6-fig1.jpg)
-
-![Image](https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG)
-
-![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2017/05/Running-fix-on-ECDIS-transferred-PL.jpg)
-
-![Image](https://www.myseatime.com/blogadm/wp-content/uploads/2016/05/Marine-radars.jpg)
-
-Radar mevki tayininde temel prensip, radar tarafından algılanan sabit ve güvenilir hedeflerin harita üzerindeki gerçek konumları ile gemi arasındaki geometrik ilişkinin kurulmasıdır. Bu hedefler genellikle burunlar, fenerler, adalar, belirgin kıyı çıkıntıları ve büyük yapay tesislerdir. Hareketli hedefler mevki tayininde kullanılmaz.
-
----
-
-### Temel Yaklaşım
-
-* Radar ile mevki tayini üç ana yöntemle yapılır:
-  * **İki mesafe**
-  * **Mesafe – kerteriz**
-  * **İki kerteriz**
-* Denizcilikte en güvenilir yöntem **iki mesafe** yöntemidir; çünkü radar mesafesi, kerterize kıyasla daha az hata içerir.
-
----
-
-### Formüller
-
-⬛ **Radar mesafe ölçümü**
-
-════════════════════
-Mesafe = (Işık hızı × Zaman farkı) ÷ 2
-════════════════════
-
-⬛ **Harita üzerinde mesafe yayı mantığı**
-
-════════════════════
-Gemi mevkii
-=
-İki sabit hedef merkezli
-mesafe yaylarının kesişimi
-════════════════════
-
-⬛ **Mesafe–kerteriz ilişkisi**
-
-════════════════════
-Gemi mevkii
-=
-Mesafe yayı
-∩
-Kerteriz doğrusu
-════════════════════
-
----
-
-### Örnek Hesap
-
-Bir gemi, kıyı seyrinde iki sabit hedefe radar mesafesi ölçmüştür:
-
-* **Hedef A (fener): 4,2 deniz mili**
-* **Hedef B (burun): 6,0 deniz mili**
-
-**Adım 1: Hedeflerin harita üzerindeki gerçek konumlarının belirlenmesi**  
-Fener ve burun harita üzerinde kesin konumları bilinen sabit hedeflerdir.
-
-**Adım 2: Birinci mesafe yayının çizilmesi**  
-Fener merkez alınarak 4,2 deniz mili yarıçaplı bir yay çizilir.
-
-**Adım 3: İkinci mesafe yayının çizilmesi**  
-Burun merkez alınarak 6,0 deniz mili yarıçaplı ikinci bir yay çizilir.
-
-**Adım 4: Yayların kesişiminin belirlenmesi**  
-İki yayın kesiştiği nokta geminin mevkiidir.
-
-**Adım 5: Operasyonel değerlendirme**  
-Elde edilen mevki, radarın bağımsız ölçümüne dayandığı için GPS konumu ile karşılaştırılarak doğrulanır.
-
----
-
-### Kritik Not
-
-Radar ile mevki tayini, doğru hedef seçimi yapılmadığında ciddi hata üretebilir. Yanlış hedef tanımlaması veya radar ekranındaki yankının yanlış yorumlanması, matematiksel olarak doğru görünen ancak operasyonel olarak hatalı bir mevki oluşturur. Bu nedenle radar mevkii, yalnızca ölçüm değil, yorumlama disiplinidir ve vardiya zabitinin en kritik yetkinliklerinden biridir.`
-      }
-    ],
-    keyPoints: [
-      "Radar mevkii, güvenilir sabit hedeflerin mesafe ve kerteriz ölçümlerine dayanır.",
-      "En güvenilir yöntem iki mesafe (range–range) yöntemidir.",
-      "Mesafe yayı + kerteriz doğrusu kesişimi hızlı ve pratiktir.",
-      "Yanlış hedef seçimi, doğru matematiğe rağmen hatalı mevki üretir.",
-      "Radar mevkii GPS ile mutlaka çapraz doğrulanmalıdır."
     ]
   },
   "Inverse Problem of Mean Latitude Sailing": {
@@ -9886,675 +9112,4 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       "GPS tek başına değil, radar, pusula ve görsel mevki ile çapraz kontrol edilmelidir."
     ]
   },
-  "Rota planlama": {
-    title: "Rota Planlama",
-    introduction:
-      "Rota planlama, geminin kalkış noktasından varış noktasına emniyetli, uygulanabilir ve kontrol edilebilir bir seyir hattı oluşturma sürecidir. Bu süreç yalnızca harita üzerinde bir hat çizmekle sınırlı değildir; geminin su çekimi, manevra kabiliyeti, meteorolojik koşullar, trafik düzenleri ve operasyonel kısıtlar birlikte değerlendirilir. ECDIS güçlü bir yardımcıdır; ancak karar verici değildir.",
-    sections: [
-      {
-        title: "Planlamanın Emniyet Temeli",
-        content:
-          "Rota, **emniyetli** (tehlikelerden uzak), **uygulanabilir** (dönüş yarıçapı ve hızla uyumlu) ve **kontrol edilebilir** (izlenebilir ve revize edilebilir) olmalıdır. Bu üç kriter, rota kalitesinin asıl ölçütüdür. Planlamada geminin draft’ı, minimum derinlik gereksinimi ve manevra sınırları başlangıç parametreleri olarak alınır.",
-        image: ecdisDisplay,
-        imageAlt: "ECDIS üzerinde rota planlama görünümü",
-        bulletPoints: [
-          "Rota, draft ve emniyet payı dikkate alınarak çizilir.",
-          "Manevra sınırları, dönüş noktalarının aralığını belirler.",
-          "Rota, sadece çizim değil sürekli kontrol edilen bir süreçtir."
-        ]
-      },
-      {
-        title: "Harita Analizi ve Dönüş Noktaları",
-        content:
-          "Harita analizi, rota planlamanın başlangıç adımıdır. Sığlıklar, yasaklı sahalar, trafik ayırım düzenleri, demirleme bölgeleri ve raporlama noktaları dikkate alınarak rota koridoru belirlenir. Dönüş noktaları (waypoint) ise geminin dönüş yarıçapı ve hızına uygun olacak şekilde seçilir; dar sularda gereksiz keskin dönüşlerden kaçınılır.",
-        image: chartPlotting,
-        imageAlt: "Harita üzerinde rota çizimi",
-        bulletPoints: [
-          "Seyir emniyeti için büyük ölçekli haritalar kritik alanlarda kullanılır.",
-          "Trafik ayırım düzenleri ve raporlama noktaları rota üzerinde işaretlenir.",
-          "Dönüş noktaları, uygulamada gerçekçi olacak şekilde yerleştirilir."
-        ]
-      },
-      {
-        title: "ECDIS Ayarları ve Rota Kontrolü",
-        content:
-          "ECDIS üzerinde emniyet konturu ve emniyet derinliği ayarları doğru yapılmadıkça rota emniyetli görünse bile operasyonel risk yaratabilir. Rota kontrol (route check) fonksiyonu, sadece tanımlanmış parametreler kadar etkilidir. Bu nedenle emniyet derinliği, su çekimi, squat ve dalga etkisi gibi unsurlar göz önünde bulundurulmalıdır.",
-        image: radarDisplay,
-        imageAlt: "ECDIS ve radar destekli rota kontrolü",
-        bulletPoints: [
-          "Emniyet derinliği ayarı, geminin gerçek draft’ı ile uyumlu olmalıdır.",
-          "Squat ve dalga etkisi, emniyet payını artırmayı gerektirebilir.",
-          "Rota kontrolü, parametreler doğru girildiğinde anlamlıdır."
-        ]
-      },
-      {
-        title: "Dinamik İzleme ve Revizyon",
-        content:
-          "Rota planlama tek seferlik bir işlem değildir. Seyir sırasında rota sürekli izlenir; meteoroloji, akıntı, trafik ve operasyonel kısıtlar değiştikçe plan revize edilir. Bu yaklaşım, rota planlamayı statik değil **dinamik** bir süreç haline getirir.",
-        image: weatherSystems,
-        imageAlt: "Meteorolojik sistemler ve rota revizyonu"
-      },
-      {
-        title: "Temel Formüller",
-        content:
-          "Rota planlamada kullanılan basit ilişkiler, rota üzerindeki performansın izlenmesini kolaylaştırır.",
-        formula: {
-          text: "Mesafe = Hız × Zaman",
-          description: "Hız (kn) ve zaman (saat) kullanıldığında mesafe deniz mili (NM) olarak bulunur."
-        }
-      },
-      {
-        title: "Dönüş Yarıçapı Yaklaşımı",
-        content:
-          "Dönüş yarıçapı, özellikle dar su seyirlerinde rota uygulanabilirliğini belirler. Hız m/s, yan ivme m/s² alınır.",
-        formula: {
-          text: "Dönüş yarıçapı ≈ Hız² ÷ Yan ivme",
-          description: "Hız arttıkça dönüş yarıçapı büyür; dar sularda hız kontrolü kritikleşir."
-        }
-      },
-      {
-        title: "Sapma Kontrolü",
-        content:
-          "Rota üzerindeki sapmalar erken tespit edilmelidir. Bu fark büyüdükçe rota güvenliği azalır.",
-        formula: {
-          text: "Sapma = Gerçek mevki − Planlanan rota hattı",
-          description: "Sapma ölçümü, rota düzeltme kararının zamanında verilmesini sağlar."
-        }
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir gemi için rota planlaması sırasında aşağıdaki veriler verilmiştir:
-
-Planlanan hız = 12 kn  
-Bir rota bacağı süresi = 1 saat 20 dakika
-
-**Adım 1: Sürenin saat cinsine çevrilmesi**  
-1 saat 20 dakika = 1,33 saat
-
-**Adım 2: Kat edilecek mesafenin hesaplanması**  
-Mesafe = 12 × 1,33  
-Mesafe ≈ 16 deniz mili
-
-**Adım 3: Operasyonel değerlendirme**  
-Bu bacak boyunca gemi, rota üzerinde kalabilmek için akıntı ve rüzgâr etkilerini izleyerek küçük rota düzeltmeleri yapmak zorundadır. Bu hesap, rota planlamanın yalnızca geometrik bir işlem olmadığını; çizilen hattın gerçek şartlarda sürdürülebilirliğinin sürekli kontrol edilmesi gerektiğini gösterir.`
-      }
-    ],
-    keyPoints: [
-      "Rota planlama emniyetli, uygulanabilir ve kontrol edilebilir bir seyir hattı oluşturmayı hedefler.",
-      "ECDIS rota planlamayı destekler; ancak karar verme sorumluluğunu ortadan kaldırmaz.",
-      "Emniyet konturu ve emniyet derinliği ayarları rota güvenliğinin temelidir.",
-      "Rota planlama statik değil, seyir boyunca güncellenen dinamik bir süreçtir."
-    ]
-  },
-  PDOP: {
-    title: "PDOP",
-    introduction:
-      "PDOP (Position Dilution of Precision), konum belirlemede üç boyutlu geometrik seyreltme katsayısını ifade eder. PDOP, yatay ve düşey doğruluk bileşenlerinin birlikte değerlendirilmiş halidir ve GPS konum çözümünün genel geometrik kalitesini gösterir. PDOP, ölçüm hatası üretmez; mevcut mesafe hatalarının üç boyutlu konum çözümüne ne kadar büyütülerek yansıtıldığını tanımlar.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![PDOP grafik örneği](https://gnssdecoded.com/wp-content/uploads/2025/10/Dilution-of-precision.jpg)
-
-![Uydu geometrisi ve PDOP etkisi](https://imagedelivery.net/_jGo7Cp8DLHLbI9FzBn6-Q/the5krunner.com/2018/07/51-1.gif/w%3D9999)
-
-![Kötü uydu geometrisi ve PDOP](https://www.e-education.psu.edu/geog862/sites/www.e-education.psu.edu.geog862/files/images/Lesson01/Bad%20PDOP.png)
-
-![DOP ve konum hatası ilişkisi](https://www.researchgate.net/publication/366509947/figure/fig2/AS%3A11431281212192197%401702554931906/The-influence-of-the-DOP-on-the-GPS-position-error-8.tif)`
-      },
-      {
-        title: "Uydu Geometrisi ve PDOP",
-        content:
-          "PDOP değeri, uydu–alıcı geometrisinin üç boyutlu uzaydaki dağılımına bağlıdır. Uydular gökyüzünde geniş bir hacme yayılmışsa PDOP düşüktür. Uydular belirli bir düzleme veya dar bir uzaysal sektöre sıkışmışsa PDOP yükselir. Denizcilikte özellikle yüksek enlemler, kıyıya yakın seyir ve üstyapı gölgelemesi PDOP değerinin artmasına neden olabilir.",
-        bulletPoints: [
-          "Geniş hacme yayılmış uydu geometrisi → düşük PDOP (daha iyi geometri).",
-          "Dar uzaysal dağılım veya düzlemleşme → yüksek PDOP (zayıf geometri).",
-          "Yüksek enlem ve üstyapı gölgelemesi PDOP’u artırabilir."
-        ]
-      },
-      {
-        title: "HDOP ve VDOP İlişkisi",
-        content:
-          "PDOP, HDOP ve VDOP’un birleşik etkisini temsil eder. Bu nedenle PDOP değeri düşük olan bir çözüm genel olarak güvenilir kabul edilir; ancak deniz seyri açısından yatay hata çoğu zaman daha kritik olduğu için PDOP tek başına karar kriteri olarak kullanılmaz. PDOP, sistemin genel sağlık göstergesi olarak değerlendirilir."
-      },
-      {
-        title: "Formüller",
-        content: `**PDOP ilişkisi**  
-PDOP = √(HDOP² + VDOP²)
-
-**Üç boyutlu konum hatası yaklaşımı**  
-3B hata = PDOP × UERE
-
-HDOP: Yatay geometrik seyreltme katsayısı  
-VDOP: Düşey geometrik seyreltme katsayısı  
-UERE: Eşdeğer kullanıcı mesafe hatası`
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir GPS alıcısı için aşağıdaki değerler verilmiştir:
-
-HDOP = 1,6  
-VDOP = 2,2  
-UERE = 5 m
-
-**Adım 1: PDOP’un hesaplanması**  
-PDOP = √(1,6² + 2,2²)  
-PDOP = √(2,56 + 4,84)  
-PDOP = √7,40  
-PDOP ≈ 2,72
-
-**Adım 2: Üç boyutlu konum hatasının hesaplanması**  
-3B hata = 2,72 × 5  
-3B hata ≈ 13,6 m
-
-**Adım 3: Operasyonel değerlendirme**  
-Bu değer, GPS’in üç boyutlu konum çözümünde yaklaşık 14 metre seviyesinde bir belirsizlik bulunduğunu gösterir. Bu nedenle PDOP, HDOP ile birlikte yorumlanmalı; PDOP’un yükselmesi, GPS’in çalışıyor görünmesine rağmen konum çözümünün güvenilirliğinin azaldığına dair güçlü bir uyarı olarak değerlendirilmelidir.`
-      }
-    ],
-    keyPoints: [
-      "PDOP, yatay ve düşey doğruluk bileşenlerinin birleşik etkisini temsil eder.",
-      "Uydu geometrisi kötüleştikçe PDOP yükselir, konum hatası büyür.",
-      "PDOP, HDOP ile birlikte yorumlanmalı ve genel sistem sağlığı göstergesi olarak görülmelidir.",
-      "3B konum hatası yaklaşımı PDOP × UERE ile değerlendirilir."
-    ]
-  },
-  XTE: {
-    title: "XTE (Cross Track Error)",
-    introduction:
-      "XTE, geminin planlanan rota hattından yanal olarak ne kadar saptığını gösteren nicel bir seyir parametresidir. Rota üzerindeki ilerleme başarısını ölçmez; geminin rota hattına olan dik mesafesini ölçer. Bu nedenle özellikle dar sular, trafik ayırım düzenleri ve kıyıya paralel seyirde doğrudan emniyet göstergesi olarak kabul edilir.",
-    sections: [
-      {
-        title: "Tanım ve Operasyonel Anlamı",
-        content:
-          "XTE değeri, rota hattına olan dik mesafeyi temsil eder. Gemi rota hattını koruduğu sürece XTE küçük kalır; rüzgar, akıntı veya yanlış dümenleme sonucu rota dışına çıkıldığında XTE büyür.",
-        image: "https://www.simrad-yachting.com/globalassets/simrad/world-of-simrad/technology/xte/xte-basics-fig-2.jpg",
-        imageAlt: "XTE'nin rota hattına olan dik mesafesi",
-        bulletPoints: [
-          "XTE, rota hattına göre yanal sapmayı ölçer.",
-          "Rota üzerindeki ilerleme başarısını değil, sapma miktarını gösterir.",
-          "Dar su ve TSS seyirlerinde erken emniyet göstergesi olarak izlenir."
-        ]
-      },
-      {
-        title: "ECDIS Koridoru ve Alarm Mantığı",
-        content:
-          "ECDIS üzerinde planlanan rota hattının her iki yanına bir koridor tanımlanır. Gemi bu koridor içinde kaldığı sürece seyir emniyetli kabul edilir. XTE değeri koridor sınırlarını aştığında sistem alarm üretir. Bu alarm, geminin tehlikeye girdiğini değil; tehlikeye yaklaşmakta olduğunu gösterir.",
-        image:
-          "https://www.researchgate.net/publication/349713709/figure/fig2/AS%3A1050468532887555%401627462623956/Cross-track-distance-XTD-is-set-to-a-number-of-meters-on-the-port-and-starboard-side.png",
-        imageAlt: "XTE koridoru ve port-starboard limitleri",
-        bulletPoints: [
-          "|XTE| ≤ Tanımlı limit → emniyetli seyir",
-          "|XTE| > Tanımlı limit → alarm",
-          "Alarm, yaklaşan tehlike için erken uyarı sağlar."
-        ]
-      },
-      {
-        title: "GPS Doğruluğu ve Operasyonel Sınırlamalar",
-        content:
-          "XTE değeri GPS konumuna dayanır. GPS doğruluğu, HDOP ve uydu geometrisi bozulduğunda XTE sayısal olarak doğru görünse bile operasyonel olarak yanıltıcı olabilir. Bu yüzden XTE, radar ve görsel seyirle birlikte değerlendirilmelidir.\n\n![Along-track ve cross-track hataları](https://www.researchgate.net/publication/265251751/figure/fig6/AS%3A295854108889093%401447548524603/llustration-of-along-track-cross-track-and-horizontal-errors.png)\n\n![XTE'nin rota emniyetine etkisi](https://www.mdpi.com/jmse/jmse-08-00566/article_deploy/html/images/jmse-08-00566-g003.png)"
-      },
-      {
-        title: "Formüller",
-        content: `**Temel geometrik tanım**  
-XTE = Rota hattına olan dik mesafe
-
-**Basitleştirilmiş trigonometrik yaklaşım**  
-XTE ≈ Mesafe × sin(Sapma açısı)
-
-**Alarm mantığı**  
-|XTE| ≤ Tanımlı XTE limiti → Emniyetli  
-|XTE| > Tanımlı XTE limiti → Alarm`
-      },
-      {
-        title: "Örnek Hesap",
-        content: `Bir gemi için aşağıdaki veriler mevcuttur:
-
-Planlanan rota bacağı uzunluğu = 10 deniz mili  
-Rota ile gerçek seyir arasındaki sapma açısı = 3°
-
-**Adım 1: Trigonometrik ilişkinin kurulması**  
-XTE ≈ 10 × sin 3°
-
-**Adım 2: Sayısal değerin hesaplanması**  
-sin 3° ≈ 0,052  
-XTE ≈ 10 × 0,052  
-XTE ≈ 0,52 deniz mili
-
-**Adım 3: Operasyonel değerlendirme**  
-Gemi, planlanan rota hattından yaklaşık yarım deniz mili yanal sapma göstermektedir. Bu değer açık denizde tolere edilebilir olabilir; ancak dar bir kanalda kabul edilemez bir emniyet ihlali oluşturur. XTE limitleri her rota bacağı için ayrı ayrı ve geminin manevra kabiliyetine göre tanımlanmalıdır.`
-      }
-    ],
-    keyPoints: [
-      "XTE, rota hattına olan dik mesafeyi ölçer ve yanal sapmayı gösterir.",
-      "ECDIS koridoru içinde kalmak emniyetli seyri ifade eder; sınır aşımı alarm üretir.",
-      "XTE alarmı tehlikeye yaklaşımı bildirir, tehlikeyi doğrulamaz.",
-      "GPS doğruluğu bozulduğunda XTE operasyonel olarak yanıltıcı olabilir.",
-      "XTE, radar ve görsel seyirle birlikte yorumlanmalıdır."
-    ]
-  },
-  "Height of tide hesapları": {
-    title: "Height of Tide Hesapları",
-    introduction:
-      "Height of tide, belirli bir yer ve zamanda deniz seviyesinin Chart Datum (LAT) seviyesinin ne kadar üzerinde veya altında olduğunu ifade eder. Bu değer, gerçek su derinliği ve UKC hesaplarında doğrudan kullanılır. Gelgit tablolarında verilen HW/LW zaman ve yükseklikleri, ara zamanlardaki gelgit yüksekliğinin yaklaşık olarak hesaplanmasına imkân tanır.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Image](https://sailingissues.com/chart-symbols/tidal-curves-explanation.png)
-
-![Image](https://cdn.shopify.com/s/files/1/0538/4028/1792/t/8/assets/pf-579b63d7--tide-graph_1200x.PNG?v=1617898174)
-
-![Image](https://maritimesa.org/grade-10/wp-content/uploads/sites/2/2015/10/01_tides_A.png)
-
-![Image](https://www.researchgate.net/publication/369476105/figure/fig1/AS%3A11431281129752024%401679619585532/Diagram-showing-terminology-used-in-this-study-tidal-phases-rising-vs-falling-phase.png)`
-      },
-      {
-        title: "Temel Kavramlar",
-        content:
-          "Gelgit tablolarında yer alan yüksek su (HW) ve alçak su (LW) değerleri, Chart Datum (LAT) referansına göre verilir. İstenen saatteki gelgit yüksekliği, HW–LW arasındaki değişimin zamana dağılımı temel alınarak bulunur.",
-        bulletPoints: [
-          "Tidal range = Yüksek su seviyesi − Alçak su seviyesi",
-          "Height of tide = İlgili zamandaki deniz seviyesi − Chart Datum (LAT)",
-          "Bu iki büyüklük birlikte kullanılarak ara saatler için yükseklik bulunur"
-        ]
-      },
-      {
-        title: "Temel Hesap Mantığı",
-        content:
-          "Yüksek su ile alçak su arasındaki zaman aralığı pratikte yaklaşık 6 saat kabul edilir. Bu süre boyunca deniz seviyesi alçaktan yükseğe veya yüksekten alçağa doğru değişir. İstenen saat, bu 6 saatlik periyot içindeki konumuna göre değerlendirilir.",
-        formula: {
-          text: "Height of tide ≈ LW + (Tidal range × zaman oranı)",
-          description: "Zaman oranı, gelgitin yükselme/azalma sürecindeki konumu temsil eder."
-        }
-      },
-      {
-        title: "Örnek Hesap: Height of Tide",
-        content: `Bir liman için tidal tabloda aşağıdaki bilgiler verilmiştir:
-
-Alçak su (LW): 04:00 — 0,6 m  
-Yüksek su (HW): 10:00 — 4,2 m
-
-**Adım 1: Tidal range hesaplanır**  
-Tidal range = 4,2 − 0,6 = 3,6 m
-
-**Adım 2: Zaman aralığı belirlenir**  
-LW ile HW arasındaki süre = 6 saat  
-Saat 07:00 için hesap yapılacaktır.  
-04:00 → 07:00 arası geçen süre = 3 saat
-
-**Adım 3: Yükselme miktarı değerlendirilir**  
-3 saat, 6 saatlik periyodun tam ortasıdır.  
-Bu noktada deniz seviyesi yaklaşık olarak tidal range’in yarısı kadar yükselmiş kabul edilir.
-
-Yükselme miktarı ≈ 3,6 / 2 = 1,8 m
-
-**Adım 4: Height of tide bulunur**  
-Height of tide = LW seviyesi + yükselme miktarı  
-Height of tide = 0,6 + 1,8 = 2,4 m
-
-**Adım 5: Sonucun yorumu**  
-Saat 07:00’de deniz seviyesi, Chart Datum (LAT) seviyesinin yaklaşık 2,4 m üzerindedir. Bu değer, gerçek su derinliği ve UKC hesaplarında doğrudan kullanılabilir.`
-      },
-      {
-        title: "Hassasiyet Notu ve Interpolasyon",
-        content:
-          "Gelgit hareketi teorik olarak tam bir sinüs eğrisi değildir; ancak pratik denizcilikte kabul edilebilir doğrulukla eğrisel bir değişim gösterdiği varsayılır. Daha hassas hesaplar için Rule of Twelfths ve interpolasyon yöntemi uygulanır. Bir sonraki alt başlık Interpolasyon olacaktır."
-      }
-    ],
-    keyPoints: [
-      "Height of tide, istenen saatteki deniz seviyesinin LAT’ye göre yüksekliğidir.",
-      "Tidal range, HW ve LW arasındaki yükseklik farkıdır.",
-      "Ara zamanlar için oranlama yaklaşımı pratikte kabul edilebilir doğruluk sağlar.",
-      "Daha yüksek hassasiyet gerektiğinde Rule of Twelfths ve interpolasyon kullanılmalıdır."
-    ]
-  },
-  "Tidal window (liman giriş zamanı)": {
-    title: "Tidal Window (Liman Giriş Zamanı)",
-    introduction:
-      "Tidal window, bir geminin draftı ile mevcut su derinliği arasındaki ilişki dikkate alınarak, liman giriş veya çıkışının emniyetle yapılabildiği **sınırlı zaman aralığını** ifade eder. Bu aralık, gelgitin sağladığı ek su yüksekliğine bağlıdır ve geçicidir. Özellikle derin draftlı gemiler için operasyonun yapılabileceği tek fırsat bu pencere olabilir.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Image](https://sailingissues.com/chart-symbols/clearing-heights-chart-datums-opt.svg)
-
-![Image](https://sailingissues.com/chart-symbols/tidal-curves-explanation.png)
-
-![Image](https://sailingissues.com/acht/tidal-diamond-course-to-steer-rate-set.png)
-
-![Image](https://sailingissues.com/acht/tide-coast-ledge-ebb-flood-eddy.png)`
-      },
-      {
-        title: "Tanım ve Operasyonel Amaç",
-        content:
-          "Tidal window hesabı, tek bir saatten ziyade **bir zaman aralığını** belirlemeyi amaçlar. Bu aralık; gelgitin yükselmeye başladığı, yeterli UKC’nin sağlandığı ve tekrar kritik seviyenin altına düşmediği süreyi kapsar. Harita derinliği, gemi draftı, squat ve emniyet payı birlikte değerlendirilir."
-      },
-      {
-        title: "Temel İlişkiler",
-        content: `Gerekli minimum su derinliği, geminin efektif draftı ve istenen UKC’nin toplamıdır. Sağlanan su derinliği ise harita derinliği ile gelgit yüksekliğinin toplamıdır.
-
-Tidal window → **Sağlanan su derinliği ≥ Gerekli minimum su derinliği** olan zaman aralığı.`,
-        formula: {
-          text: "Efektif draft = Statik draft + Squat + Emniyet payı",
-          description: "Efektif draft, geminin hareket hâlindeki gerçek su çekimini temsil eder."
-        }
-      },
-      {
-        title: "Örnek hesap: Tidal window belirlenmesi",
-        content: `Bir liman girişi için aşağıdaki bilgiler verilsin:
-
-Harita derinliği (LAT): 8,0 m  
-Geminin statik draftı: 7,1 m  
-Squat: 0,4 m  
-Emniyet payı: 0,3 m  
-Minimum istenen UKC: 0,5 m
-
-**Adım 1: Efektif draft hesaplanır**  
-Efektif draft = 7,1 + 0,4 + 0,3 = 7,8 m
-
-**Adım 2: Gerekli minimum su derinliği belirlenir**  
-Gerekli minimum su derinliği = 7,8 + 0,5 = 8,3 m
-
-**Adım 3: Gerekli gelgit yüksekliği hesaplanır**  
-Gerekli gelgit yüksekliği = 8,3 − 8,0 = 0,3 m
-
-**Adım 4: Tidal tablodan uygun zaman aralığı belirlenir**  
-Tidal tabloda gelgit yüksekliğinin 0,3 m ve üzeri olduğu zaman aralığı:  
-10:40 → 14:20
-
-**Adım 5: Sonucun yorumu**  
-Bu gemi için liman girişi yalnızca 10:40 ile 14:20 arasındaki tidal window içinde emniyetle yapılabilir. Bu pencerenin dışında, UKC kritik seviyenin altına düşmektedir. Operasyon gecikmesi durumunda giriş iptal edilmeli veya bir sonraki gelgit çevrimi beklenmelidir.`
-      },
-      {
-        title: "Operasyonel Gerçekçilik",
-        content:
-          "Tidal window, teorik bir hesap değildir; römorkör gecikmeleri, trafik, rüzgâr ve akıntı gibi faktörler bu pencereyi fiilen daraltabilir. Bu nedenle pratikte hesaplanan tidal window’un tamamı kullanılmaz, emniyetli bir alt aralık seçilir. Gelgit avantajı, zaman baskısı altında risk almaya gerekçe olarak görülmemelidir."
-      }
-    ],
-    keyPoints: [
-      "Tidal window, emniyetli giriş/çıkış için gerekli su derinliğinin sağlandığı zaman aralığıdır.",
-      "Efektif draft; statik draft, squat ve emniyet payının toplamıdır.",
-      "Sağlanan su derinliği = Harita derinliği + Gelgit yüksekliği (LAT’ye göre).",
-      "Operasyonel gecikmeler tidal window’u pratikte daraltır."
-    ]
-  },
-  "Gelgitin fiziksel mantığı": {
-    title: "Gelgitin Fiziksel Mantığı",
-    introduction:
-      "Gelgit, Dünya üzerindeki su kütlelerinin Ay ve Güneş’in kütleçekim etkileri ile Dünya–Ay sisteminin ortak kütle merkezi etrafındaki hareketinden doğan kuvvetler sonucunda periyodik olarak yükselip alçalmasıdır. Denizcilikte gelgit, su derinliğini doğrudan etkilediği için emniyetli seyir, liman manevrası ve UKC planlamasının temel bileşenlerinden biridir.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Image](https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/2952/2018/01/31195914/CNX_UPhysics_13_06_MoonTides.jpg)
-
-![Image](https://oceanservice.noaa.gov/education/tutorial_tides/media/tide03_480.gif)
-
-![Image](https://cdn.serc.carleton.edu/images/integrate/teaching_materials/coastlines/student_materials/figure_showing_positions_sun_1473264128834091545_744.webp)
-
-![Image](https://caseagrant.ucsd.edu/sites/default/files/styles/800px/public/importedFiles/users/nsadrpour/perigeanspringtide.jpg?itok=JMf1s70S)`
-      },
-      {
-        title: "Ay’ın Baskın Etkisi ve Çift Kabarma",
-        content:
-          "Ay, Dünya’ya Güneş’ten çok daha küçük bir kütleyle etki eder; ancak Dünya’ya çok daha yakın olması nedeniyle gelgit üzerindeki baskın etkendir. Ay’ın çekim kuvveti, Dünya’nın Ay’a bakan tarafındaki suyu kendine doğru çeker. Aynı anda, Dünya–Ay sisteminin ortak kütle merkezi etrafında dönmesi nedeniyle Dünya’nın Ay’dan uzak tarafında merkezkaç etkisi ortaya çıkar. Bu iki etki sonucunda Dünya’nın karşılıklı iki tarafında su kabarmaları oluşur."
-      },
-      {
-        title: "Gelgit Periyodu (Lunar Day)",
-        content:
-          "Dünya kendi ekseni etrafında döndükçe, herhangi bir nokta bu iki kabarmanın altından geçer ve bu da yaklaşık 24 saat 50 dakikalık bir sürede iki yüksek su ve iki alçak su yaşanmasına neden olur. Bu süre, Ay’ın Dünya çevresindeki hareketi nedeniyle güneş gününden biraz daha uzundur."
-      },
-      {
-        title: "Güneş’in Etkisi: Spring ve Neap",
-        content:
-          "Güneş de gelgit üzerinde etkilidir ancak etkisi Ay’a kıyasla ikincildir. Güneş ve Ay aynı doğrultuda hizalandığında çekim etkileri birleşir ve gelgit genliği artar (spring tide). Birbirine dik konumda olduklarında ise etkiler kısmen sönümlenir (neap tide)."
-      },
-      {
-        title: "Yerel Morfoloji ve Rezonans Etkisi",
-        content:
-          "Gelgit kuvvetinin büyüklüğü yalnızca gök cisimlerinin konumuna değil; kıyı geometrisine, deniz tabanının şekline ve havzanın rezonans özelliklerine de bağlıdır. Açık okyanusta birkaç metre olan seviye farkı, dar ve sığ bir körfezde çok daha büyük veya çok daha küçük olabilir. Bu nedenle denizcilik uygulamalarında gelgit mutlaka yerel tidal tablolarla değerlendirilir."
-      },
-      {
-        title: "Gelgit Kuvvetinin Temel Bağıntısı",
-        content:
-          "Gelgit kuvveti, kütleçekim kuvvetinin mesafeye bağlı farkından kaynaklanır. Bu nedenle gelgit etkisi, kütle kadar yakınlıkla da belirlenir.",
-        formula: {
-          text: "Gelgit kuvveti ∝ Çeken cismin kütlesi / Mesafe³",
-          description: "Aynı kütle için mesafe iki katına çıkarsa etki yaklaşık sekizde bire düşer."
-        }
-      },
-      {
-        title: "Ay ve Güneş’in Göreli Etkisi (Örnek)",
-        content: `Ay’ın Dünya’ya ortalama uzaklığı ≈ 384 000 km  
-Güneş’in Dünya’ya ortalama uzaklığı ≈ 150 000 000 km
-
-Mesafe oranı ≈ 150 000 000 / 384 000 ≈ 390  
-Mesafe küp ile ters orantılı olduğundan:  
-390³ ≈ 59 000 000
-
-Bu sonuç, Güneş’in kütlesi Ay’dan çok daha büyük olmasına rağmen, uzaklık etkisi nedeniyle gelgit oluşturma kapasitesinin Ay’a göre daha düşük olduğunu gösterir. Bu hesap, gelgitin yalnızca “büyük kütle” ile değil, esas olarak “yakınlık” ile belirlendiğini ortaya koyar.`
-      }
-    ],
-    keyPoints: [
-      "Gelgitin ana tetikleyicisi Ay’ın çekimidir; Güneş ikincil etkendir.",
-      "Dünya–Ay sisteminin kütle merkezi nedeniyle iki karşılıklı kabarma oluşur.",
-      "Gelgit periyodu yaklaşık 24 saat 50 dakikadır ve iki yüksek/iki alçak su üretir.",
-      "Spring ve neap gelgitler, Ay ve Güneş’in doğrultusuna bağlıdır.",
-      "Yerel kıyı geometrisi ve havza rezonansı gelgit genliğini belirgin biçimde değiştirir."
-    ]
-  },
-  "İnterpolasyon": {
-    title: "İnterpolasyon",
-    introduction:
-      "İnterpolasyon, yüksek su ile alçak su arasında kalan herhangi bir zaman için gelgit yüksekliğinin, tidal tabloda verilen uç değerler kullanılarak hesaplanmasıdır. Denizcilikte bu yöntem, height of tide hesabının daha hassas yapılmasını sağlar. İnterpolasyon, gelgit değişiminin zaman içinde düzgün ve sürekli bir eğri izlediği varsayımına dayanır. Bu varsayım pratik uygulamalar için yeterli doğruluğu sağlar.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Image](https://sailingissues.com/datum/curvec.png)
-
-![Image](https://sailingissues.com/chart-symbols/rule-of-twelfths-tidal-heights.png)
-
-![Image](https://cockpitcards.co.uk/wp-content/uploads/2020/08/Tidal-Curve-in-use.png)
-
-![Image](https://www.sailtrain.co.uk/navigation/images/curve1.gif)`
-      },
-      {
-        title: "Doğrusal Yaklaşımın Mantığı",
-        content:
-          "Tidal tablolar genellikle yalnızca yüksek su ve alçak su zamanlarını ve yüksekliklerini verir. Ara zamanlarda deniz seviyesini belirlemek için, seviye değişiminin zamana orantılı olduğu kabul edilir ve doğrusal yaklaşım uygulanır. Bu yaklaşım, özellikle liman manevrası ve UKC değerlendirmelerinde tercih edilir."
-      },
-      {
-        title: "Temel İnterpolasyon Bağıntısı",
-        content: `Zamansal oran = Geçen süre / Toplam süre
-
-Yükseklik değişimi = Tidal range × Zamansal oran
-
-Height of tide = Başlangıç seviyesi + Yükseklik değişimi
-
-Bu bağıntılar, alçak sudan yükseğe veya yüksek sudan alçağa geçiş için aynı mantıkla kullanılır.`
-      },
-      {
-        title: "Örnek Hesap: Doğrusal İnterpolasyon",
-        content: `Bir liman için tidal tabloda verilen değerler:
-
-Alçak su (LW): 02:00 — 0,8 m  
-Yüksek su (HW): 08:00 — 4,4 m
-
-Saat 05:00 için height of tide hesaplanacaktır.
-
-**Adım 1: Tidal range hesaplanır**  
-Tidal range = 4,4 − 0,8 = 3,6 m
-
-**Adım 2: Zaman oranı belirlenir**  
-Toplam süre = 6 saat  
-Geçen süre = 02:00 → 05:00 = 3 saat  
-Zamansal oran = 3 / 6 = 0,5
-
-**Adım 3: Yükseklik değişimi hesaplanır**  
-Yükseklik değişimi = 3,6 × 0,5 = 1,8 m
-
-**Adım 4: Height of tide bulunur**  
-Height of tide = 0,8 + 1,8 = 2,6 m
-
-**Adım 5: Sonucun yorumu**  
-Saat 05:00’te deniz seviyesi, Chart datum (LAT) seviyesinin yaklaşık 2,6 m üzerindedir. Bu değer, basit interpolasyonla elde edilen pratik bir yaklaşımdır ve çoğu seyir planlamasında yeterlidir. Ancak gelgit eğrisinin simetrik olmadığı bölgelerde hata payı oluşabileceği unutulmamalıdır.
-
-Bir sonraki alt başlık 12’ler kuralıdır.`
-      }
-    ],
-    keyPoints: [
-      "İnterpolasyon, HW/LW uç değerlerinden ara saatlerdeki gelgit yüksekliğini tahmin eder.",
-      "Doğrusal yaklaşım pratikte yeterli kabul edilir ancak eğrinin simetrik olmadığı bölgelerde hata payı olabilir.",
-      "Zamansal oran ile tidal range çarpılarak ara yükseklik hesaplanır.",
-      "Height of tide sonucu Chart datum (LAT) referansına göre yorumlanmalıdır."
-    ]
-  },
-  "Fırtınada rota ve hız kararı": {
-    title: "Fırtınada rota ve hız kararı",
-    introduction:
-      "Kuvvetli rüzgâr ve dalga koşullarında geminin emniyetli seyri, doğru hız ve rota ayarlaması ile sağlanır. Bu ayarlamalar, geminin dalga ile karşılaşma şeklini değiştirerek yapısal yükleri, yalpa genliğini ve makine-dümen üzerindeki zorlanmaları doğrudan etkiler. Hız ve rota, birbirinden bağımsız kararlar değildir; birlikte değerlendirilir.",
-    sections: [
-      {
-        title: "Görsel Referanslar",
-        content: `![Image](https://www.northsails.com/cdn/shop/articles/Heavy-Weather-Technique_d4719be2-a99a-4a84-a82f-e8ab0d1e2a67.jpg?v=1685187668)
-
-![Image](https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fres.cloudinary.com%2Fdhqq9jwqj%2Fimage%2Fupload%2Fv1748381641%2Fsynchronous_rolling_six_degrees_of_motion_roll_heave_circled_qbnzrj.jpg&w=3840)
-
-![Image](https://safety4sea.com/wp-content/uploads/2019/05/kr-waves-and-shipping.png)
-
-![Image](https://static.wixstatic.com/media/82eb4b_c415794cedc44d69a28f9afc34dd433e~mv2.jpg/v1/fill/w_980,h_822,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/82eb4b_c415794cedc44d69a28f9afc34dd433e~mv2.jpg)`
-      },
-      {
-        title: "Karşılaşma Açısı ve Riskler",
-        content:
-          "Dalga ile gemi arasındaki karşılaşma açısı, seyir emniyetini belirleyen ana parametrelerden biridir. Baş dalgada hız fazla tutulursa slamming ve baş bodoslama yükleri artar. Kıçtan dalgada aşırı hız, surf-riding ve broaching riskini yükseltir. Borda dalgada ise hızdan bağımsız olarak aşırı yalpa tehlikesi öne çıkar. Bu nedenle rota, dalgayı mümkün olduğunca güvenli bir açıdan alacak şekilde ayarlanır.",
-        bulletPoints: [
-          "Baş dalga + yüksek hız → slamming ve baş yükleri artışı",
-          "Kıçtan dalga + aşırı hız → surf-riding ve broaching riski",
-          "Borda dalga → yalpa genliği tehlikeli seviyelere çıkabilir"
-        ]
-      },
-      {
-        title: "Pratik Rota Yaklaşımı",
-        content:
-          "Pratik denizcilikte tercih edilen yaklaşım, dalgayı tam baştan veya tam kıçtan almak yerine 20°–40° aralığında çapraz almaktır. Bu yöntem, dikey ivmeleri ve ani yüklenmeleri azaltır. Ancak bu yaklaşım her gemi için mutlak çözüm değildir; gemi tipi, yük durumu ve stabilite özellikleri mutlaka dikkate alınır."
-      },
-      {
-        title: "Hızın Dinamik Yüklere Etkisi",
-        content:
-          "Hızdaki küçük bir artışın bile gemi üzerindeki dinamik zorlanmaları ciddi biçimde artırdığı unutulmamalıdır. Heavy weather koşullarında hızın kademeli olarak düşürülmesi temel bir emniyet tedbiridir.",
-        formula: {
-          text: "Dinamik Yükler ∝ Gemi Hızı²",
-          description: "Hız küçük artışlarla yükselse bile dinamik yükler karesel olarak büyür."
-        }
-      },
-      {
-        title: "Rota Değişiminin Karşılaşma Frekansına Etkisi",
-        content:
-          "Karşılaşma açısı büyüdükçe, yani dalga baştan uzaklaştıkça, karşılaşma frekansı azalır ve geminin maruz kaldığı darbeler yumuşar.",
-        formula: {
-          text: "Karşılaşma Frekansı ∝ cos(Karşılaşma Açısı)",
-          description: "Karşılaşma açısı arttıkça frekans azalır, darbeler yumuşar."
-        }
-      },
-      {
-        title: "Örnek Değerlendirme",
-        content: `Bir gemi 090° rota ile seyretmektedir. Dalga yönü 090° olup pruvadan gelmektedir. Gemi hızı 15 knot’tur ve slamming gözlenmektedir.
-
-**Adım 1: Mevcut durumun değerlendirilmesi**  
-Dalga pruvadan geldiği için karşılaşma açısı yaklaşık 0°’dir. Bu durum, yüksek dikey ivme ve slamming riski doğurur.
-
-**Adım 2: Rota ayarlaması**  
-Gemi rotası 110° olarak değiştirilsin.  
-Yeni Karşılaşma Açısı = 110° − 090° = 20°  
-Bu durumda dalga artık pruva baş omuzluktan alınmaktadır.
-
-**Adım 3: Hız ayarlaması**  
-Gemi hızı 15 knot’tan 11 knot’a düşürülsün.  
-Hız Oranı = 11 / 15 ≈ 0,73  
-Dinamik Yük Oranı ≈ 0,73² ≈ 0,53
-
-**Adım 4: Sonuçların yorumu**  
-Rota ve hız birlikte ayarlandığında, slamming riski belirgin şekilde azalır, makine ve gövde üzerindeki zorlanmalar düşer ve gemi emniyetli bir şekilde ilerlemeye devam eder.
-
-Bu örnek, heavy weather koşullarında yalnızca rota değiştirmenin veya yalnızca hız düşürmenin tek başına yeterli olmadığını; ticari kaygılarla yüksek hızda ısrar etmenin teknik ve emniyet açısından zayıf bir yaklaşım olduğunu açıkça ortaya koyar.`
-      }
-    ],
-    keyPoints: [
-      "Hız ve rota kararları birlikte değerlendirilmelidir.",
-      "Dalgayı 20°–40° çapraz almak, dikey ivmeleri ve ani yüklenmeleri azaltabilir.",
-      "Dinamik yükler hızın karesi ile artar; hız düşürmek temel emniyet tedbiridir.",
-      "Karşılaşma açısı büyüdükçe karşılaşma frekansı azalır ve darbeler yumuşar.",
-      "Tek başına rota veya hız değişimi çoğu durumda yeterli değildir."
-    ]
-  },
-  "Bridge Resource Management (BRM)": {
-    title: "Bridge Resource Management (BRM)",
-    introduction:
-      "Bridge Resource Management (BRM), seyir emniyetinin yalnızca teknik bilgi ve cihaz kullanımına değil, köprüüstü ekibinin insan faktörleri üzerinden yönetilmesine dayandığını kabul eder. BRM yaklaşımı; kaptan, vardiya zabiti, dümenci ve gerektiğinde kılavuz kaptan arasındaki görev paylaşımını, iletişimi ve karar alma sürecini disiplinli şekilde yürütmeyi hedefler. IMO A.893(21) kapsamında hazırlanan seyir planı, BRM uygulamasıyla desteklenmediği sürece pratikte emniyetli kabul edilemez.",
-    sections: [
-      {
-        title: "BRM’in Ana Felsefesi",
-        content:
-          "BRM, köprüüstünde tek bir kişinin bilgi ve karar merkezine dönüşmesini riskli kabul eder. Gemi emniyeti, ekip tarafından paylaşılan durumsal farkındalık ve disiplinli iletişimle korunur. Akademik olarak doğru kararlar, ekip tarafından paylaşılmadığında operasyonel değerini kaybeder.",
-        image: "https://naviminds.com/wp-content/uploads/what-is-brm-1024x654.jpg",
-        imageAlt: "Bridge Resource Management ekip koordinasyonu"
-      },
-      {
-        title: "Ortak Durumsal Farkındalık",
-        content:
-          "Köprüüstünde bulunan her personel, geminin pozisyonu, planlanan rota, yaklaşan riskler ve olası kararlar hakkında asgari bilgi sahibi olmalıdır. Bilginin tek bir kişide toplanması, özellikle yoğun trafik ve dar su geçişlerinde ciddi bir zafiyet yaratır.",
-        image: "https://naviminds.com/wp-content/uploads/5-key-components-of-BRM-1024x683.jpg",
-        imageAlt: "BRM’in temel bileşenleri"
-      },
-      {
-        title: "Açık ve Doğrulanabilir İletişim",
-        content:
-          "BRM uygulamasında iletişim açık, net ve teyit edilebilir olmalıdır. Varsayıma dayalı ifadeler, ima yoluyla verilen komutlar ve teyitsiz uygulamalar kabul edilebilir değildir. Özellikle rota veya hız değişiklikleri, köprüüstündeki tüm personel tarafından duyulmalı ve anlaşıldığı doğrulanmalıdır.",
-        image:
-          "https://www.researchgate.net/publication/317919074/figure/fig1/AS%3A588511715536898%401517323535490/dentified-relationship-among-bridge-climate-action-errors-and-team-communication-skill.png",
-        imageAlt: "Köprüüstü iletişim ve ekip iklimi ilişkisi"
-      },
-      {
-        title: "BRM Zaman Paylaşımı Hesabı",
-        content:
-          "Vardiya zabitinin seyir izlemeye gerçekten ayırabildiği süre, vardiya süresinden idari ve ikincil görevlerin çıkarılmasıyla elde edilir. Bu hesap, gözlem kalitesini doğrudan etkiler.",
-        formula: {
-          text: "Etkili izleme süresi = Vardiya süresi − İdari ve ikincil görev süreleri",
-          description:
-            "Fiili seyir takibi için ayrılan süreyi netleştirir; görev paylaşımı yapılmadığında izleme kalitesi düşer."
-        }
-      },
-      {
-        title: "Örnek Zaman Paylaşımı",
-        content:
-          "**Vardiya süresi:** 4 saat  \n**Kayıt tutma, raporlama ve idari işler:** 45 dakika (0,75 saat)  \n**Etkili izleme süresi:** 4 − 0,75 = **3,25 saat**  \n\nBu sonuç, vardiya zabitinin dikkatinin yaklaşık %20’sinin seyir dışı görevlerle bölündüğünü gösterir. BRM kapsamında iş yükünün dengelenmesi kritik öneme sahiptir.",
-        image: "https://www.marineinsight.com/wp-content/uploads/2021/05/Understanding-Bridge-Resource-Management-And-Its-Key-Elements-On-Board-Ships-1.png",
-        imageAlt: "BRM’in gemideki temel unsurları"
-      },
-      {
-        title: "Karar Verme Süresi Hesabı",
-        content:
-          "Köprüüstünde karar alma; algılama, değerlendirme ve uygulama aşamalarından oluşur. Bu süreçteki gecikmeler yüksek hızda ciddi mesafe kaybına neden olur.",
-        formula: {
-          text: "Toplam karar süresi = Algılama süresi + Değerlendirme süresi + Uygulama süresi",
-          description: "Erken bildirim ve net iletişim, toplam süreyi doğrudan azaltır."
-        }
-      },
-      {
-        title: "Örnek Karar Verme Süresi",
-        content:
-          "**Tehlikenin fark edilmesi:** 30 s  \n**Durum değerlendirmesi:** 45 s  \n**Komutun uygulanması:** 45 s  \n**Toplam:** 120 s  \n\nBu iki dakikalık gecikme, yüksek hızda seyreden bir gemide ciddi mesafe kaybına yol açar. BRM’de erken bildirim ve açık iletişim hayati önemdedir."
-      },
-      {
-        title: "Otoriteye Aşırı Bağımlılık Riski",
-        content:
-          "BRM’in zayıf uygulandığı durumlarda, vardiya zabitinin açık bir tehlikeyi görmesine rağmen kaptanı uyarmaktan çekinmesi sık görülür. Akademik olarak doğru olan; hiyerarşiden bağımsız biçimde emniyetin önceliklendirilmesidir. Bu kültür oluşturulmadığında seyir emniyeti ciddi şekilde zedelenir."
-      }
-    ],
-    keyPoints: [
-      "BRM, insan faktörlerini ve ekip koordinasyonunu merkezine alan bir emniyet yaklaşımıdır.",
-      "Ortak durumsal farkındalık, dar su geçişleri ve yoğun trafikte temel savunma hattıdır.",
-      "Açık ve teyitli iletişim, rota/hız değişikliklerinde hata riskini azaltır.",
-      "İş yükü dengesi sağlanmadığında izleme kalitesi düşer.",
-      "Karar verme süresi doğrudan güvenli manevra mesafesini etkiler.",
-      "Otoriteye aşırı bağımlılık, BRM’in en riskli zayıflıklarından biridir."
-    ]
-  }
 };

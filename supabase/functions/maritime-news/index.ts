@@ -320,8 +320,6 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Public endpoint - no authentication required for news feed
-
   try {
     const url = new URL(req.url);
 
@@ -400,10 +398,11 @@ serve(async (req) => {
       }
     );
   } catch (e) {
-    console.error('[maritime-news]', e instanceof Error ? e.message : e);
-    return new Response(
-      JSON.stringify({ error: 'Haber servisi geçici olarak kullanılamıyor' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    const message = e instanceof Error ? e.message : "Unknown error";
+    const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+    return new Response(JSON.stringify({ error: message }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });

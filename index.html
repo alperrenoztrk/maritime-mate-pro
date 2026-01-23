@@ -16,6 +16,18 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics (isteğe bağlı) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
   </head>
 
   <body>
@@ -86,33 +98,6 @@
       </style>
     </div>
     <div id="root"></div>
-    <script>
-      // Failsafe: if the app bundle crashes before main.tsx runs, don't keep users stuck on splash forever.
-      (function () {
-        var splash = document.getElementById('splash-root');
-        if (!splash) return;
-
-        function hideSplashFallback(reason) {
-          try {
-            if (splash.classList.contains('splash-hide')) return;
-            console.log('[Splash:Failsafe] Hiding splash:', reason);
-            splash.classList.add('splash-hide');
-            setTimeout(function () {
-              try { splash.remove(); } catch (_) {}
-            }, 650);
-          } catch (_) {
-            // no-op
-          }
-        }
-
-        // Time-based fallback
-        setTimeout(function () { hideSplashFallback('timeout'); }, 3500);
-
-        // Error-based fallback (covers runtime errors after bundle starts)
-        window.addEventListener('error', function () { hideSplashFallback('window.error'); });
-        window.addEventListener('unhandledrejection', function () { hideSplashFallback('unhandledrejection'); });
-      })();
-    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

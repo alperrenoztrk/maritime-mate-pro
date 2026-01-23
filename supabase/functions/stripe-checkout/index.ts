@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { validateAuth, unauthorizedResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -127,7 +126,7 @@ serve(async (req: Request) => {
 
     const body = (await req.json().catch(() => ({}))) as CreateCheckoutBody & { test?: boolean };
     
-    // Health check request - allow without auth for status checks
+    // Health check request
     if (body.test === true) {
       const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
       return new Response(
@@ -135,27 +134,13 @@ serve(async (req: Request) => {
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-
-    // Validate user authentication for payment requests
-    const { user, error: authError } = await validateAuth(req);
-    if (authError || !user) {
-      console.error("[stripe-checkout] Authentication failed:", authError);
-      return unauthorizedResponse(corsHeaders);
-    }
-
-    console.log(`[stripe-checkout] Checkout initiated by user: ${user.id}`);
     
-    // Pass user email to checkout if available
-    const checkoutBody: CreateCheckoutBody = {
-      ...body,
-      customerEmail: body.customerEmail || user.email,
-    };
-    
-    return await createStripeCheckoutSession(checkoutBody, corsHeaders);
+    return await createStripeCheckoutSession(body, corsHeaders);
   } catch (e) {
-    logError("stripe-checkout", e);
+    console.error("Function error:", e);
+    const errorMessage = e instanceof Error ? e.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: GENERIC_ERRORS.SERVICE_ERROR }),
+      JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }

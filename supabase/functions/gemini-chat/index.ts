@@ -1,19 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
-import { logError, GENERIC_ERRORS } from "../_shared/auth.ts";
-
-// Helper function for error responses
-function errorResponse(
-  corsHeaders: Record<string, string>, 
-  status: number = 500, 
-  message?: string
-): Response {
-  return new Response(
-    JSON.stringify({ error: message || GENERIC_ERRORS.SERVICE_ERROR }),
-    { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-  );
-}
+import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
@@ -22,7 +10,11 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Public AI chat endpoint - no authentication required
+  // Validate authentication
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
+  }
 
   try {
     const body = await req.json();

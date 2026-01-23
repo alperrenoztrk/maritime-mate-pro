@@ -241,6 +241,19 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Bridge Resource Management (BRM)" },
           { title: "PSC bakış açısı" }
         ]
+      },
+      {
+        title: "COLREG & Çatışma Analizleri",
+        description: "Denizde çatışmadan kaçınma kuralları ve kaza analizleri",
+        subTopics: [
+          { title: "COLREG temel prensipleri" },
+          { title: "Crossing" },
+          { title: "Head-on" },
+          { title: "Overtaking" },
+          { title: "Restricted visibility" },
+          { title: "Gerçek çatışma kazaları" },
+          { title: "Neden – sonuç – ihlal – önlem analizi" }
+        ]
       }
     ],
     resources: [
@@ -297,22 +310,6 @@ const topicsData: Record<string, TopicContent> = {
       { title: "Gemicilik Hesaplamaları", href: "/seamanship/calculations" },
       { title: "Gemicilik Formülleri", href: "/seamanship/formulas" },
       { title: "Gemicilik Kuralları", href: "/seamanship/rules" }
-    ]
-  },
-  communications: {
-    title: "Denizde Haberleşme Konu Anlatımı",
-    description: "Denizcilik haberleşmesi, GMDSS bileşenleri ve standart mesajlaşma prosedürleri.",
-    keyTopics: [
-      { title: "GMDSS Yapısı", description: "A1-A4 deniz alanları, istasyon tipleri ve görevler" },
-      { title: "VHF Haberleşme", description: "Kanal planı, DSC çağrıları ve köprüüstü protokolleri" },
-      { title: "MF/HF & DSC", description: "Uzak menzil haberleşme ve otomatik çağrı prosedürleri" },
-      { title: "NAVTEX & MSI", description: "Deniz emniyet bilgileri, yayın programları ve kayıtlar" },
-      { title: "EPIRB & SART", description: "Acil durum cihazları ve doğru kullanım akışı" },
-      { title: "VTS & Liman Haberleşmesi", description: "Liman yaklaşımı, raporlama ve trafik kontrolü" }
-    ],
-    resources: [
-      { title: "Haberleşme Konu Anlatımı", href: "/lessons/communications/topics" },
-      { title: "Haberleşme Kuralları", href: "#" }
     ]
   },
   safety: {

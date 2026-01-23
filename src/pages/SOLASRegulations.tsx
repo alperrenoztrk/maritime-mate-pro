@@ -46,16 +46,6 @@ const chapters = [
     ],
   },
   {
-    id: "IV",
-    title: "Telsiz Haberleşmesi (GMDSS)",
-    summary: "GMDSS donanımı, deniz alanı uygunluğu, radyo kayıtları ve sertifikasyon şartları.",
-    checkpoints: [
-      "GMDSS cihaz listesi (VHF DSC, MF/HF DSC, Inmarsat, EPIRB, SART/AIS-SART) gemi deniz alanına uygun ve çalışır durumda",
-      "Gemi Radyo Güvenlik Sertifikası ve telsiz ekipman listesi geçerli; servis ve yıllık performans testleri kayıtlı",
-      "GMDSS günlük/haftalık test logları, yedek güç kaynakları ve acil haberleşme prosedürleri uygulanıyor"
-    ],
-  },
-  {
     id: "V",
     title: "Seyir Güvenliği",
     summary: "Seyir almaçları, elektronik sistemler, kayıt cihazları ve operasyon prosedürleri.",
@@ -63,96 +53,6 @@ const chapters = [
       "Voyage Data Recorder (VDR) fonksiyon testi gerçekleştirildi",
       "E-NP, dijital seyir yayınları ve kağıt haritalar güncel",
       "Bridge Navigational Watch Alarm System (BNWAS) aktif ve kaydediliyor"
-    ],
-  },
-  {
-    id: "VI",
-    title: "Yüklerin Taşınması",
-    summary: "Yük bilgisi, istif/bağlama güvenliği ve tahıl taşımalarındaki özel şartlar.",
-    checkpoints: [
-      "Cargo Securing Manual ve onaylı istif/bağlama planı sahada uygulanıyor, uygunsuzluklar kayıt altına alınıyor",
-      "Yük bilgileri (ağırlık, dağılım, yükleme limiti) kargo operasyonu öncesi teyit edildi",
-      "Tahıl taşımalarında Grain Code’a uygun stabilite hesapları ve yükleme planı onayları mevcut"
-    ],
-  },
-  {
-    id: "VII",
-    title: "Tehlikeli Yükler",
-    summary: "IMDG/IMSBC, IBC, IGC ve INF Code hükümlerine uygun sınıflandırma ve taşıma.",
-    checkpoints: [
-      "Tehlikeli Yük Manifestosu, stowage planı ve ayırma şartları (segregation) güncel ve imzalı",
-      "IMDG paketleme/etiketleme, MSDS/EmS/ERG belgeleri ve acil müdahale prosedürleri erişilebilir",
-      "Dökme sıvı/gaz veya INF yüklerinde uygun sertifikalar, gaz algılama ve yangın ekipmanı testleri kayıtlı"
-    ],
-  },
-  {
-    id: "VIII",
-    title: "Nükleer Gemiler",
-    summary: "Nükleer tahrik/enerji sistemlerine yönelik özel güvenlik ve radyasyon kontrol şartları.",
-    checkpoints: [
-      "Radyasyon izleme cihazları, kişisel dozimetreler ve alarm sistemleri kalibrasyonlu",
-      "Acil durum prosedürleri, izolasyon planları ve eğitim tatbikat kayıtları güncel",
-      "Nükleer güvenlik sertifikaları ve bayrak devleti onayları doğrulandı"
-    ],
-  },
-  {
-    id: "IX",
-    title: "Güvenli İşletme (ISM Kodu)",
-    summary: "SMS yönetimi, sorumluluklar, iç denetimler ve düzeltici faaliyetler.",
-    checkpoints: [
-      "DOC ve SMC sertifikaları geçerli; SMS revizyonları imzalı ve erişilebilir",
-      "İç denetim, yönetim gözden geçirmesi ve düzeltici faaliyet kayıtları kapatıldı",
-      "Uygunsuzluk/near-miss raporlama sistemi aktif ve takip ediliyor"
-    ],
-  },
-  {
-    id: "X",
-    title: "Yüksek Hızlı Gemiler",
-    summary: "HSC Code kapsamı, işletme limitleri ve özel güvenlik düzenlemeleri.",
-    checkpoints: [
-      "HSC Güvenlik Sertifikası ve işletme kısıtları (sefer alanı, hava şartları) güncel",
-      "Hızlı seyirde köprüüstü prosedürleri, acil durdurma ve manevra sistemleri test edildi",
-      "Yolcu güvenliği, tahliye ve haberleşme düzenleri HSC Code’a uygun"
-    ],
-  },
-  {
-    id: "XI-1",
-    title: "Denizde Emniyeti Artırıcı Özel Tedbirler",
-    summary: "Gemi kimliği, sürekli kayıt (CSR) ve yetkilendirme/denetim düzenlemeleri.",
-    checkpoints: [
-      "IMO numarası ve gemi tanımlama işaretleri gövde ve yaşam mahallerinde doğru",
-      "Continuous Synopsis Record (CSR) dosyası güncel ve tüm değişiklikler kayıtlı",
-      "Yetkilendirilmiş kuruluş denetim raporları ve bayrak devleti yazışmaları erişilebilir"
-    ],
-  },
-  {
-    id: "XI-2",
-    title: "Denizcilik Güvenliği (ISPS Kodu)",
-    summary: "Güvenlik seviyesi uygulamaları, gemi güvenlik planı ve erişim kontrolü.",
-    checkpoints: [
-      "Onaylı Gemi Güvenlik Planı (SSP) gemide; plan revizyonları bayrak devleti onaylı",
-      "Gemi Güvenlik Sertifikası (ISSC) geçerli, güvenlik seviye değişiklik kayıtları tutuluyor",
-      "Erişim kontrolü, devriye, CCTV/aydınlatma ve alarm sistemleri operasyonel; tatbikat kayıtları güncel"
-    ],
-  },
-  {
-    id: "XII",
-    title: "Dökme Yük Gemileri İçin Ek Tedbirler",
-    summary: "Bulk carrier yapısal bütünlük, yükleme/boşaltma prosedürleri ve survey şartları.",
-    checkpoints: [
-      "Dökme Yük Gemisi Güvenlik Sertifikası/uygunluk belgeleri güncel",
-      "Hold yapıları, tank top ve balast tankları için ölçüm/kalınlık raporları mevcut",
-      "Yükleme bilgisayarı/planı sınıf onaylı ve strain limitleri izleniyor"
-    ],
-  },
-  {
-    id: "XIII",
-    title: "Uygunluk Doğrulaması",
-    summary: "Bayrak devleti doğrulama düzeni ve uygunluk teyidi süreçleri.",
-    checkpoints: [
-      "Bayrak devleti doğrulama planı ve denetim raporları erişilebilir",
-      "Denetim bulgularına yönelik düzeltici faaliyetler kapatıldı",
-      "Uygunluk beyanları, sertifika dosyaları ve kayıt süreleri güncel"
     ],
   },
 ];
