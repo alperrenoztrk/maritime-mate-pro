@@ -86,6 +86,33 @@
       </style>
     </div>
     <div id="root"></div>
+    <script>
+      // Failsafe: if the app bundle crashes before main.tsx runs, don't keep users stuck on splash forever.
+      (function () {
+        var splash = document.getElementById('splash-root');
+        if (!splash) return;
+
+        function hideSplashFallback(reason) {
+          try {
+            if (splash.classList.contains('splash-hide')) return;
+            console.log('[Splash:Failsafe] Hiding splash:', reason);
+            splash.classList.add('splash-hide');
+            setTimeout(function () {
+              try { splash.remove(); } catch (_) {}
+            }, 650);
+          } catch (_) {
+            // no-op
+          }
+        }
+
+        // Time-based fallback
+        setTimeout(function () { hideSplashFallback('timeout'); }, 3500);
+
+        // Error-based fallback (covers runtime errors after bundle starts)
+        window.addEventListener('error', function () { hideSplashFallback('window.error'); });
+        window.addEventListener('unhandledrejection', function () { hideSplashFallback('unhandledrejection'); });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
