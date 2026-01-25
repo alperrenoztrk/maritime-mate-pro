@@ -127,6 +127,70 @@ export default function ShipTasksPage() {
                 </tbody>
               </table>
             </div>
+            <div className="space-y-4 rounded-xl border border-border/60 bg-background/80 p-4 text-xs text-foreground shadow-sm">
+              <h3 className="text-sm font-semibold text-foreground">ECDIS / ENC Güncellemesi</h3>
+              <div className="space-y-3 text-muted-foreground">
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">1. ENC Kavramı</p>
+                  <p>
+                    ENC, ECDIS sistemlerinde kullanılan elektronik seyir haritalarıdır ve kağıt haritaların dijital
+                    karşılığını oluşturur. ENC&apos;ler belirli sınırlarla ayrılmış hücreler halinde çalışır ve her hücre
+                    bağımsız olarak güncellenir. Bu nedenle ECDIS güncellemesinde esas olan, rota üzerinde kullanılan tüm
+                    ENC hücrelerinin ayrı ayrı güncel olmasıdır.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">2. Güncelleme Dosyalarının Yüklenmesi</p>
+                  <p>
+                    ENC güncelleme dosyaları gemiye ulaştırıldıktan sonra ECDIS sistemine yüklenir. Bu işlem genellikle
+                    harici bir veri taşıyıcı veya gemi içi ağ üzerinden gerçekleştirilir. Bu aşamada yapılan işlem yalnızca
+                    verinin sisteme aktarılmasıdır ve güncellemenin tamamlandığı anlamına gelmez.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">3. Güncellemelerin Uygulandığının Kontrolü</p>
+                  <p>
+                    Güncelleme dosyaları yüklendikten sonra, ECDIS üzerinde her ENC hücresinin durumu kontrol edilir.
+                    ENC&apos;ye ait Edition Number, Update Number ve Last Update Date bilgileri incelenerek güncellemelerin
+                    eksiksiz şekilde uygulandığı teyit edilir. ECDIS, güncel olmayan ENC&apos;leri bu aşamada uyarı
+                    mesajlarıyla belirtir.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">4. Permit Kontrolü</p>
+                  <p>
+                    ENC&apos;lerin kullanılabilmesi ve güncellenebilmesi için ilgili hücrelere ait permitlerin geçerli olması
+                    gerekir. Permit süresi dolmuş bir ENC, görüntülenebilir olsa bile yeni güncellemeleri alamaz. Bu nedenle
+                    güncelleme sonrasında rota üzerindeki tüm ENC&apos;lerin permit durumu ayrıca kontrol edilir.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">5. Ölçek ve Kullanım Bandı Kontrolü</p>
+                  <p>
+                    ENC&apos;nin güncel olması tek başına yeterli değildir. Kullanılan ENC&apos;nin seyir safhasına uygun
+                    ölçekte olması gerekir. Yanlış ölçekte kullanılan bir ENC, güncel olsa dahi emniyetli seyir için yeterli
+                    bilgi sağlamaz. Bu nedenle kullanım bandı ve overscale uyarıları kontrol edilir.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">6. Güncelleme Kayıtları</p>
+                  <p>
+                    ENC güncellemesi tamamlandıktan sonra, ECDIS tarafından oluşturulan update report alınır. Bu rapor,
+                    yapılan güncellemelerin sistem tarafından kabul edildiğini gösterir. Güncelleme işlemi tarih, saat ve
+                    sorumlu zabit bilgisiyle gemi kayıtlarına işlenir ve denetimlerde belge olarak kullanılır.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">Genel Değerlendirme</p>
+                  <p>
+                    Kağıt haritalar ve ECDIS üzerinde kullanılan ENC&apos;ler farklı yöntemlerle güncellenmelerine rağmen aynı
+                    amaca hizmet eder: seyirde kullanılan bilgilerin en güncel ve doğru haliyle gemiye sunulması. Her iki
+                    sistemde de güncelleme işlemleri, vardiya zabitinin doğrudan sorumluluğu altında yürütülür ve eksiksiz
+                    şekilde kayıt altına alınır.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* 3. Yük Operasyonları */}
@@ -394,4 +458,3 @@ export default function ShipTasksPage() {
     </div>
   );
 }
-
