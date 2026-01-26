@@ -1,5 +1,21 @@
 import type { LucideIcon } from "lucide-react";
-import { Anchor, BookOpen, Brain, Calculator, CloudSun, Compass, Leaf, ListChecks, Package, Shield, Ship, Sigma, TrendingUp, Wrench } from "lucide-react";
+import {
+  Anchor,
+  BookOpen,
+  Brain,
+  Calculator,
+  CloudSun,
+  Compass,
+  Leaf,
+  ListChecks,
+  Package,
+  Radio,
+  Shield,
+  Ship,
+  Sigma,
+  TrendingUp,
+  Wrench,
+} from "lucide-react";
 
 export type SectionId = "calculations" | "formulas" | "rules" | "assistant" | "quiz";
 export type CategoryId =
@@ -9,6 +25,7 @@ export type CategoryId =
   | "meteorology"
   | "seamanship"
   | "safety"
+  | "communication"
   | "machine"
   | "environment"
   | "economics";
@@ -312,6 +329,53 @@ export const calculationCategories: CategoryConfig[] = [
         status: "live",
         badge: "Hazır",
         href: "/seamanship/quiz",
+      },
+    ],
+  },
+  {
+    id: "communication",
+    title: "Denizde Haberleşme",
+    subtitle: "",
+    icon: Radio,
+    accent: "from-cyan-500 via-blue-500 to-indigo-500",
+    badge: "Güverte",
+    status: "info",
+    ctaLabel: "Haberleşme menüsü",
+    sections: [
+      {
+        id: "calculations",
+        label: "Hesaplamalar",
+        description: "Kapsama, kanal planı ve çağrı önceliği senaryoları",
+        status: "info",
+        badge: "Plan",
+      },
+      {
+        id: "formulas",
+        label: "Formüller",
+        description: "Frekans, dalga boyu ve anten verimi özetleri",
+        status: "info",
+        badge: "Plan",
+      },
+      {
+        id: "rules",
+        label: "Kurallar",
+        description: "GMDSS, SOLAS IV ve ITU düzenlemeleri",
+        status: "info",
+        badge: "Bilgi",
+      },
+      {
+        id: "assistant",
+        label: "Asistan",
+        description: "VHF/DSC çağrı metinleri ve acil durum akışı",
+        status: "info",
+        badge: "Plan",
+      },
+      {
+        id: "quiz",
+        label: "Quiz",
+        description: "DSC, NAVTEX ve acil çağrı prosedürleri",
+        status: "info",
+        badge: "Plan",
       },
     ],
   },
