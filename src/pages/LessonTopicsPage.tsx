@@ -333,12 +333,70 @@ const topicsData: Record<string, TopicContent> = {
     title: "Gemi Makineleri Konu Anlatımı",
     description: "Gemi makine sistemleri, bakım prosedürleri ve performans optimizasyonu.",
     keyTopics: [
-      { title: "Ana Makine", description: "Dizel motorlar ve çalışma prensipleri" },
-      { title: "Yardımcı Makineler", description: "Jeneratörler, pompalar ve kompresörler" },
-      { title: "Yakıt Sistemleri", description: "Yakıt hazırlama ve tüketim hesapları" },
-      { title: "Soğutma Sistemleri", description: "Deniz suyu ve tatlı su soğutma" },
-      { title: "Elektrik Sistemleri", description: "Gemi elektrik dağıtımı" },
-      { title: "Bakım Yönetimi", description: "PMS ve bakım stratejileri" }
+      {
+        title: "Termodinamik ve Isı Tekniği",
+        description: "Isı, iş ve enerji kavramları; enerji dönüşümleri; termodinamik çevrimler; verim hesapları; ısı kayıpları."
+      },
+      {
+        title: "Akışkanlar Mekaniği",
+        description: "Basınç, debi ve akış türleri; pompa karakteristikleri; boru kayıpları; valfler ve fittingler."
+      },
+      {
+        title: "Makine Elemanları ve Malzeme Bilgisi",
+        description: "Miller, yataklar ve kaplinler; titreşim ve balans; malzeme özellikleri; korozyon ve korunma."
+      },
+      {
+        title: "Deniz Dizel Makineleri",
+        description: "İki/dört zamanlı makineler; silindir, piston, biyel ve krank; yanma süreci; enjeksiyon; supap zamanlaması; performans parametreleri; tipik arızalar."
+      },
+      {
+        title: "Gemi Makine Sistemleri",
+        description: "Yakıt, yağlama, soğutma, hava/egzoz ve buhar sistemleri; sistemler arası etkileşim."
+      },
+      {
+        title: "Yardımcı Makineler",
+        description: "Jeneratörler, kazanlar, separatörler, tatlı su jeneratörleri, hava kompresörleri ve pompa türleri."
+      },
+      {
+        title: "Yakıt Teknolojisi ve Yönetimi",
+        description: "HFO, MGO, LNG; yakıt arıtma; viskozite kontrolü; yakıt kaynaklı arızalar."
+      },
+      {
+        title: "Soğutma ve Klima Sistemleri",
+        description: "Soğutma çevrimi; soğutucu akışkanlar; provision soğutma; reefer ve klima sistemleri."
+      },
+      {
+        title: "Gemi Elektrik Sistemleri",
+        description: "AC/DC sistemler, alternatörler, ana ve acil dağıtım panoları, koruma sistemleri, black-out nedenleri."
+      },
+      {
+        title: "Elektronik, Ölçme ve Otomasyon",
+        description: "Alarm/izleme sistemleri, sensörler, transmitterler, PLC temelleri ve uzaktan izleme."
+      },
+      {
+        title: "Makine Dairesi Operasyonları",
+        description: "Makine vardiyası, seyir öncesi kontroller, seyir izleme, liman operasyonları, devreye alma/durdurma prosedürleri."
+      },
+      {
+        title: "Bakım ve Tutum",
+        description: "Planlı bakım sistemleri, önleyici bakım, arıza bakımı, yağ analizleri, klas ve bayrak gereklilikleri."
+      },
+      {
+        title: "Makine Dairesi Güvenliği",
+        description: "Makine dairesi yangınları, yangın söndürme sistemleri, patlama riskleri, acil durdurma sistemleri, makine kazaları."
+      },
+      {
+        title: "Çevre ve MARPOL – Makine",
+        description: "Sintine sistemleri, atık yağ ve sludge, sewage sistemleri ve emisyonlar."
+      },
+      {
+        title: "Engine Resource Management",
+        description: "Vardiya yönetimi, insan faktörü ve risk değerlendirme."
+      },
+      {
+        title: "Enerji Verimliliği",
+        description: "EEDI, EEXI, SEEMP, yakıt optimizasyonu ve atık ısı geri kazanımı."
+      }
     ],
     resources: [
       { title: "Makine Hesaplamaları", href: "/machine/calculations" },
