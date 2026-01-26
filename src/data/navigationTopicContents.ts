@@ -9112,4 +9112,382 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       "GPS tek başına değil, radar, pusula ve görsel mevki ile çapraz kontrol edilmelidir."
     ]
   },
+  "Düzlem seyir varsayımı": {
+    title: "Düzlem Seyir Varsayımı (Plane Sailing Assumption)",
+    introduction:
+      "Düzlem seyir, kısa mesafelerde Dünya'nın küresel şeklinin ihmal edilebilir kabul edildiği ve seyir hesaplarının düzlem geometri ile yapıldığı bir yaklaşımdır. Bu varsayım, meridyenlerin paralel olduğunu ve boylam dakikasının sabit uzunlukta olduğunu kabul eder. Bowditch'e göre düzlem seyir, meridyenlerin yakınsamamasını göz ardı ederek kısa rotalar için basit ve pratik çözümler sunar.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)`
+      },
+      {
+        title: "Temel Varsayım",
+        content:
+          "Düzlem seyirde Dünya'nın küreselliği göz ardı edilir. Meridyenler paralel kabul edilir ve boylam dakikasının uzunluğu her enlemde sabit alınır. Bu varsayım, yaklaşık 60 deniz miline kadar olan seyirlerde kabul edilebilir doğruluk sağlar.",
+        bulletPoints: [
+          "Meridyenler paralel kabul edilir",
+          "Boylam dakikası uzunluğu sabit varsayılır",
+          "Dünya yüzeyi düz düzlem olarak modellenir",
+          "Kısa mesafelerde hata ihmal edilebilir düzeydedir"
+        ]
+      },
+      {
+        title: "Düzlem Seyir Üçgeni",
+        content:
+          "Düzlem seyirde geminin hareketi, dik açılı bir üçgen olarak temsil edilir. Hipotenüs seyredilen mesafeyi (D), bir dik kenar DLat'i (kuzey-güney bileşeni), diğer dik kenar departure'ı (doğu-batı bileşeni) temsil eder. Kurs açısı (C), hakiki kuzey ile seyir hattı arasındaki açıdır.",
+        formula: {
+          text: "DLat = D × cos(C) | Departure = D × sin(C)",
+          description: "D: seyredilen mesafe (NM), C: hakiki rota, DLat ve Departure dakika/NM cinsinden."
+        }
+      },
+      {
+        title: "Ters Problem: Kurs ve Mesafe Hesabı",
+        content:
+          "DLat ve departure bilindiğinde, kurs ve mesafe hesaplanabilir. Bu problem, iki noktanın koordinatları verildiğinde aralarındaki rota ve mesafeyi bulmak için kullanılır.",
+        formula: {
+          text: "tan(C) = Departure ÷ DLat | D = DLat ÷ cos(C)",
+          description: "DLat ve departure bilinen değerlerdir; kurs ve mesafe hesaplanır."
+        }
+      },
+      {
+        title: "Sınırlamalar",
+        content:
+          "Düzlem seyir varsayımı, mesafe arttıkça ve özellikle doğu-batı bileşeni büyüdükçe artan hatalar üretir. Bu nedenle orta ve uzun mesafelerde orta enlem seyri veya büyük daire seyri tercih edilmelidir.",
+        bulletPoints: [
+          "Yaklaşık 60 NM'ye kadar güvenilir sonuç verir",
+          "Yüksek enlemlerde hata daha hızlı büyür",
+          "Doğu-batı seyirlerinde departure hatası belirginleşir",
+          "Uzun mesafelerde orta enlem düzeltmesi gerekir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Düzlem seyir, kısa mesafelerde Dünya'nın düz kabul edildiği pratik bir yöntemdir.",
+      "Seyir üçgeni: DLat = D × cos(C), Departure = D × sin(C).",
+      "Ters problem: tan(C) = Departure ÷ DLat.",
+      "Yaklaşık 60 NM'ye kadar kabul edilebilir doğruluk sağlar.",
+      "Uzun mesafelerde meridyen yakınsaması nedeniyle hata artar."
+    ]
+  },
+  "DLat (Enlem değişimi)": {
+    title: "DLat (Enlem Değişimi / Difference of Latitude)",
+    introduction:
+      "DLat (Difference of Latitude), bir geminin seyir sırasında enlem doğrultusunda kat ettiği açısal değişimi ifade eder. Bu değer, dakika (') cinsinden ölçülür ve 1' enlem = 1 deniz mili eşitliği nedeniyle doğrudan kuzey-güney mesafesine karşılık gelir. Bowditch'e göre DLat, düzlem seyirin temel bileşenlerinden biridir ve seyir üçgeninin dikey kenarını oluşturur.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
+
+![Image](https://jerrymahun.com/images/open_access/trav_comps/lats_deps/img17.gif)
+
+![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)`
+      },
+      {
+        title: "Tanım",
+        content:
+          "DLat, varış noktasının enlemi ile kalkış noktasının enlemi arasındaki farktır. Kuzeye gidildiğinde DLat pozitif (N), güneye gidildiğinde negatif (S) kabul edilir.",
+        formula: {
+          text: "DLat = Varış Enlemi − Kalkış Enlemi",
+          description: "Sonuç dakika (') veya derece-dakika formatında ifade edilir."
+        }
+      },
+      {
+        title: "Mesafe ile DLat İlişkisi",
+        content:
+          "Düzlem seyirde DLat, seyredilen mesafe ve kursun kosinüsü çarpımı ile hesaplanır. Bu, seyir üçgeninin dikey bileşenidir.",
+        formula: {
+          text: "DLat = Mesafe × cos(Kurs)",
+          description: "Mesafe deniz mili, kurs hakiki rota (°T) cinsindendir. Sonuç dakika olarak DLat'i verir."
+        }
+      },
+      {
+        title: "Sayısal Örnek",
+        content: `**Verilen:**
+- Kalkış enlemi: 34° 20.0' N
+- Seyredilen mesafe: 85 NM
+- Hakiki rota: 035°
+
+**Hesap:**
+DLat = 85 × cos(35°)
+DLat = 85 × 0.8192
+DLat = 69.6' N (≈ 1° 09.6' N)
+
+**Varış Enlemi:**
+34° 20.0' + 1° 09.6' = 35° 29.6' N`,
+        bulletPoints: [
+          "cos(35°) ≈ 0.8192",
+          "DLat pozitif olduğundan kuzey yönünde hareket var",
+          "Sonuç varış enlemini bulmak için kalkış enlemine eklenir"
+        ]
+      },
+      {
+        title: "İşaret Kuralları",
+        content:
+          "DLat'in işareti, geminin hareket yönünü gösterir. Kuzey yarımkürede kuzeye giderken DLat pozitif, güneye giderken negatiftir. Ekvatorun geçildiği durumlarda işaret değişimi dikkatle hesaba katılmalıdır.",
+        bulletPoints: [
+          "Kuzeye hareket: DLat pozitif (N)",
+          "Güneye hareket: DLat negatif (S)",
+          "Ekvator geçişi: İşaret değişimi zorunlu",
+          "Farklı yarımküreler arası: Mutlak değerler toplanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "DLat, enlem doğrultusundaki açısal değişimdir (dakika cinsinden).",
+      "1' DLat = 1 deniz mili kuzey-güney mesafesi.",
+      "DLat = Mesafe × cos(Kurs) formülü düzlem seyirde temeldir.",
+      "Kuzeye hareket pozitif, güneye hareket negatif işaretlidir.",
+      "Ekvator geçişlerinde işaret kurallarına dikkat edilmelidir."
+    ]
+  },
+  "Kurs – mesafe hesapları": {
+    title: "Kurs ve Mesafe Hesapları (Course and Distance Calculations)",
+    introduction:
+      "Kurs ve mesafe hesapları, düzlem seyirde iki temel problemi çözer: (1) Başlangıç ve varış koordinatları verildiğinde kurs ve mesafeyi bulmak (ters problem), (2) Kurs, mesafe ve başlangıç koordinatı verildiğinde varış koordinatlarını bulmak (düz problem). Bowditch, bu hesaplamaların seyir planlamasının temelini oluşturduğunu vurgular.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_2.jpg)
+
+![Image](https://cdn.britannica.com/41/2941-004-E9AB5656/triangle-course-aicraft-vector-compass-heading-aircraft.jpg)`
+      },
+      {
+        title: "Düz Problem (Direct Problem)",
+        content:
+          "Başlangıç mevkii, kurs ve mesafe bilindiğinde varış mevkii hesaplanır. Bu problem, ölü hesap mevkii tayininde sürekli kullanılır.",
+        formula: {
+          text: "DLat = D × cos(C) | Dep = D × sin(C)",
+          description: "DLat'i kalkış enlemine ekleyerek varış enlemi, departure'dan boylam değişimini hesaplayarak varış boylamı bulunur."
+        },
+        bulletPoints: [
+          "Varış Enlemi = Kalkış Enlemi ± DLat",
+          "DLong = Dep ÷ cos(Ortalama Enlem)",
+          "Varış Boylamı = Kalkış Boylamı ± DLong"
+        ]
+      },
+      {
+        title: "Ters Problem (Inverse Problem)",
+        content:
+          "Kalkış ve varış koordinatları bilindiğinde kurs ve mesafe hesaplanır. Bu problem, seyir planlamasında rota belirleme için kullanılır.",
+        formula: {
+          text: "tan(C) = Dep ÷ DLat | D = DLat ÷ cos(C)",
+          description: "Önce DLat ve departure hesaplanır, sonra kurs ve mesafe bulunur."
+        }
+      },
+      {
+        title: "Sayısal Örnek: Ters Problem",
+        content: `**Verilen:**
+- Kalkış: 36° 00.0' N, 005° 30.0' W
+- Varış: 37° 20.0' N, 004° 10.0' W
+
+**Adım 1: DLat hesabı**
+DLat = 37° 20.0' − 36° 00.0' = 1° 20.0' = 80.0' N
+
+**Adım 2: DLong hesabı**
+DLong = 005° 30.0' − 004° 10.0' = 1° 20.0' = 80.0' E
+
+**Adım 3: Ortalama enlem**
+Ortalama Enlem = (36° 00.0' + 37° 20.0') ÷ 2 = 36° 40.0'
+
+**Adım 4: Departure**
+Dep = DLong × cos(36° 40') = 80 × 0.803 = 64.2 NM
+
+**Adım 5: Kurs**
+tan(C) = 64.2 ÷ 80 = 0.8025
+C = arctan(0.8025) = 038.8°
+Kurs = N 38.8° E = 038.8°T (kuzeydoğu kadranda)
+
+**Adım 6: Mesafe**
+D = 80 ÷ cos(38.8°) = 80 ÷ 0.779 = 102.7 NM`
+      },
+      {
+        title: "Kadran Kuralları",
+        content:
+          "Kurs açısı, DLat ve departure işaretlerine göre uygun kadrana yerleştirilmelidir. Hesaplanan açı her zaman 0°-90° arasındadır; nihai kurs 000°-360° aralığına dönüştürülür.",
+        bulletPoints: [
+          "DLat N, Dep E → NE kadranı (000°-090°)",
+          "DLat S, Dep E → SE kadranı (090°-180°)",
+          "DLat S, Dep W → SW kadranı (180°-270°)",
+          "DLat N, Dep W → NW kadranı (270°-360°)"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Düz problem: Kurs ve mesafeden varış mevkii hesaplanır.",
+      "Ters problem: İki mevkiden kurs ve mesafe hesaplanır.",
+      "DLat = D × cos(C), Departure = D × sin(C).",
+      "Kadran kuralları kursun doğru yönde ifade edilmesini sağlar.",
+      "Bowditch düzlem seyir tablolarıyla hesaplar kolaylaştırılabilir."
+    ]
+  },
+  "Enlem ve boylam değişimi": {
+    title: "Enlem ve Boylam Değişimi (Difference of Latitude and Longitude)",
+    introduction:
+      "Enlem ve boylam değişimi, bir geminin iki mevki arasındaki koordinat farklarını ifade eder. DLat (enlem değişimi) doğrudan mesafeye karşılık gelirken, DLong (boylam değişimi) enlemle değişen bir uzunluğa sahiptir. Bu nedenle boylam değişiminin mesafeye dönüşümü ortalama enlem üzerinden yapılır. Bowditch, bu ayrımın seyir hesaplarının temelini oluşturduğunu belirtir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+
+![Image](https://sailingissues.com/vier/longitude-latitude-explained-3x.png)
+
+![Image](https://maritimesa.org/nautical-science-grade-10/wp-content/uploads/sites/5/2020/11/10.2.1_fig_4.jpg)`
+      },
+      {
+        title: "Enlem Değişimi (DLat)",
+        content:
+          "DLat, iki mevki arasındaki enlem farkıdır. 1' enlem = 1 NM olduğundan, DLat doğrudan deniz miline dönüştürülebilir. Kuzeye hareket pozitif, güneye hareket negatif işaretlidir.",
+        formula: {
+          text: "DLat = Varış Enlemi − Kalkış Enlemi",
+          description: "Sonuç dakika cinsinden verilir; 1' = 1 NM."
+        }
+      },
+      {
+        title: "Boylam Değişimi (DLong)",
+        content:
+          "DLong, iki mevki arasındaki boylam farkıdır. Ancak boylam dakikasının uzunluğu enleme bağlı olarak değişir. Ekvatorda 1' boylam = 1 NM iken, 60° enlemde 1' boylam = 0.5 NM'dir.",
+        formula: {
+          text: "DLong = Varış Boylamı − Kalkış Boylamı",
+          description: "Sonuç dakika cinsinden verilir; mesafeye dönüşüm enlem düzeltmesi gerektirir."
+        }
+      },
+      {
+        title: "Departure ve DLong İlişkisi",
+        content:
+          "DLong ile departure (doğu-batı mesafesi) arasındaki ilişki, ortalama enlemin kosinüsü ile kurulur. Bu ilişki, düzlem seyirden orta enlem seyrine geçişin matematiksel temelidir.",
+        formula: {
+          text: "Departure = DLong × cos(Ortalama Enlem)",
+          description: "Tersi: DLong = Departure ÷ cos(Ortalama Enlem)"
+        }
+      },
+      {
+        title: "Sayısal Örnek",
+        content: `**Verilen:**
+- Kalkış: 40° 30.0' N, 014° 15.0' E
+- Varış: 42° 10.0' N, 016° 45.0' E
+
+**DLat Hesabı:**
+DLat = 42° 10.0' − 40° 30.0' = 1° 40.0' = 100.0' N
+
+**DLong Hesabı:**
+DLong = 016° 45.0' − 014° 15.0' = 2° 30.0' = 150.0' E
+
+**Ortalama Enlem:**
+Mean Lat = (40° 30.0' + 42° 10.0') ÷ 2 = 41° 20.0'
+
+**Departure:**
+Dep = 150 × cos(41° 20') = 150 × 0.751 = 112.7 NM
+
+**Sonuç:**
+- Kuzey-güney mesafesi: 100.0 NM
+- Doğu-batı mesafesi: 112.7 NM`
+      },
+      {
+        title: "İşaret Kuralları",
+        content:
+          "Enlem ve boylam değişimlerinin işaretleri, hareket yönünü belirler ve kurs kadranının tespitinde kullanılır.",
+        bulletPoints: [
+          "DLat N (+): Kuzeye hareket",
+          "DLat S (−): Güneye hareket",
+          "DLong E (+): Doğuya hareket",
+          "DLong W (−): Batıya hareket",
+          "180° meridyeninde işaret kurallarına dikkat"
+        ]
+      }
+    ],
+    keyPoints: [
+      "DLat doğrudan mesafeye eşittir: 1' DLat = 1 NM.",
+      "DLong mesafeye dönüşüm için enlem düzeltmesi gerektirir.",
+      "Departure = DLong × cos(Ortalama Enlem).",
+      "Boylam dakikasının uzunluğu kutuplara doğru azalır.",
+      "İşaret kuralları kurs kadranını belirler."
+    ]
+  },
+  "Akıntısız seyir hesapları": {
+    title: "Akıntısız Seyir Hesapları (Sailing Without Current)",
+    introduction:
+      "Akıntısız seyir hesapları, rüzgâr ve akıntı etkilerinin ihmal edildiği ideal koşullarda yapılan temel seyir hesaplamalarıdır. Bowditch'e göre bu hesaplar, geminin su üzerindeki hızı (STW) ve pusuladan okunan rotanın (heading) doğrudan kullanıldığı en basit seyir senaryosunu temsil eder. Gerçek koşullarda akıntı ve rüzgâr eklendiğinde, bu temel hesaplar üzerine vektörel düzeltmeler uygulanır.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/e/ed/Dead-reckoning.svg)
+
+![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)`
+      },
+      {
+        title: "Temel Varsayımlar",
+        content:
+          "Akıntısız seyir hesaplarında geminin rotası (heading) ve su üzerindeki hızı (STW) sabit ve biliniyor kabul edilir. Dış etkiler olmadığından COG = Heading ve SOG = STW olur.",
+        bulletPoints: [
+          "Akıntı hızı: 0 knot",
+          "Rüzgâr kayması (leeway): 0°",
+          "COG = Heading (Geminin rotası)",
+          "SOG = STW (Su üzerindeki hız)"
+        ]
+      },
+      {
+        title: "Ölü Hesap (Dead Reckoning) Mantığı",
+        content:
+          "Akıntısız koşullarda ölü hesap, en basit formunda uygulanır. Son bilinen mevkiden itibaren rota ve hız kullanılarak belirli bir süre sonundaki mevki hesaplanır.",
+        formula: {
+          text: "Mesafe = Hız × Zaman | DLat = D × cos(C) | Dep = D × sin(C)",
+          description: "Bu üç formül akıntısız DR hesabının temelini oluşturur."
+        }
+      },
+      {
+        title: "Sayısal Örnek",
+        content: `**Verilen:**
+- Son bilinen mevki: 35° 00.0' N, 010° 00.0' E
+- Rota: 060°T
+- Hız: 12 knots
+- Süre: 3 saat
+
+**Adım 1: Mesafe**
+D = 12 × 3 = 36 NM
+
+**Adım 2: DLat**
+DLat = 36 × cos(60°) = 36 × 0.5 = 18.0' N
+
+**Adım 3: Departure**
+Dep = 36 × sin(60°) = 36 × 0.866 = 31.2 NM E
+
+**Adım 4: DLong**
+Ortalama Enlem ≈ 35° 09'
+DLong = 31.2 ÷ cos(35° 09') = 31.2 ÷ 0.817 = 38.2' E
+
+**Adım 5: Varış Mevkii**
+Enlem: 35° 00.0' + 18.0' = 35° 18.0' N
+Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
+
+**DR Mevkii: 35° 18.0' N, 010° 38.2' E**`
+      },
+      {
+        title: "Akıntısız Hesabın Sınırlamaları",
+        content:
+          "Gerçek deniz koşullarında tamamen akıntısız seyir nadiren mümkündür. Bu hesaplar, gerçek mevkinin kabaca tahmin edilmesi için başlangıç noktası oluşturur; ancak fix alınarak doğrulanmalıdır.",
+        bulletPoints: [
+          "Sadece teorik koşullarda tam doğrudur",
+          "Akıntı ve rüzgâr etkisi gerçekte her zaman mevcuttur",
+          "DR mevkii fix ile doğrulanmalıdır",
+          "EP (Estimated Position) için akıntı ve leeway eklenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Akıntısız seyirde COG = Heading ve SOG = STW varsayılır.",
+      "Mesafe = Hız × Zaman temel bağıntısıdır.",
+      "DR mevkii: DLat ve Dep hesaplanarak elde edilir.",
+      "Gerçek koşullarda akıntı ve rüzgâr düzeltmesi eklenir.",
+      "DR mevkii her zaman fix ile doğrulanmalıdır."
+    ]
+  },
 };
