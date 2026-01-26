@@ -9325,4 +9325,209 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
       "DR mevkii her zaman fix ile doğrulanmalıdır."
     ]
   },
+  "Kerteriz türleri": {
+    title: "Kerteriz Türleri (Types of Bearings)",
+    introduction:
+      "Kerteriz (bearing), seyirde bir hedefin gözlemciye göre yönünü ifade eden açısal değerdir. Bowditch'e göre kerterizler, referans sistemine göre üç ana türe ayrılır: hakiki kerteriz (true bearing), manyetik kerteriz (magnetic bearing) ve nispi kerteriz (relative bearing). Bu türlerin doğru anlaşılması ve birbirine dönüştürülmesi, mevki tayini ve seyir emniyeti için kritik öneme sahiptir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://sailingissues.com/drie/convert-east-west-magnetic-variation-true-courses.png)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Compass_rose_en.svg/800px-Compass_rose_en.svg.png)
+
+![Image](https://www.researchgate.net/publication/341492181/figure/fig1/AS%3A892957544681472%401589909077213/Magnetic-bearings-and-relative-bearings-4.jpg)`
+      },
+      {
+        title: "Hakiki Kerteriz (True Bearing)",
+        content:
+          "Hakiki kerteriz, bir hedefin hakiki kuzeye göre ölçülen açısal yönüdür. Harita üzerinde çizilen tüm kerterizler hakiki sistemdedir. Hakiki kerteriz 000°T ile 360°T arasında ifade edilir ve meridyenlerle doğrudan ilişkilidir.",
+        bulletPoints: [
+          "Referans: Hakiki kuzey (True North)",
+          "Gösterim: 045°T, 180°T, 270°T gibi",
+          "Harita üzerinde doğrudan ölçülür",
+          "Göksel seyir ve GPS çıktılarında standart"
+        ]
+      },
+      {
+        title: "Manyetik Kerteriz (Magnetic Bearing)",
+        content:
+          "Manyetik kerteriz, bir hedefin manyetik kuzeye göre ölçülen açısal yönüdür. Manyetik pusula ile alınan ham okumalar manyetik sistemdedir. Hakiki kerterize dönüşüm için variation düzeltmesi gerekir.",
+        formula: {
+          text: "Hakiki Kerteriz = Manyetik Kerteriz + Variation",
+          description: "Variation doğu (+), batı (−) olarak uygulanır."
+        },
+        bulletPoints: [
+          "Referans: Manyetik kuzey",
+          "Gösterim: 045°M, 180°M gibi",
+          "Manyetik pusula ile ölçülür",
+          "Variation düzeltmesi ile hakikiye çevrilir"
+        ]
+      },
+      {
+        title: "Pusula Kerterizi (Compass Bearing)",
+        content:
+          "Pusula kerterizi, gemideki manyetik pusuladan doğrudan okunan değerdir. Bu değer hem variation hem de deviation (gemi manyetik sapması) içerir. Hakiki kerterize dönüşüm için her iki düzeltme de uygulanmalıdır.",
+        formula: {
+          text: "Hakiki Kerteriz = Pusula Kerterizi + Variation + Deviation",
+          description: "Deviation, geminin rotasına göre değişen tablolardan okunur."
+        }
+      },
+      {
+        title: "Nispi Kerteriz (Relative Bearing)",
+        content:
+          "Nispi kerteriz, bir hedefin geminin baş doğrultusuna (heading) göre ölçülen açısal konumudur. Saat yönünde 000° (tam baş) ile 360° arasında ifade edilir. Radar ve görsel gözlemlerde yaygın kullanılır.",
+        formula: {
+          text: "Hakiki Kerteriz = Geminin Hakiki Rotası + Nispi Kerteriz",
+          description: "Sonuç 360°'yi aşarsa 360° çıkarılır."
+        },
+        bulletPoints: [
+          "000° = Tam baş (dead ahead)",
+          "090° = Sancak tam trabzan (starboard beam)",
+          "180° = Tam kıç (dead astern)",
+          "270° = İskele tam trabzan (port beam)"
+        ]
+      },
+      {
+        title: "Sayısal Örnek: Nispi → Hakiki Dönüşümü",
+        content: `**Verilen:**
+- Geminin hakiki rotası: 045°T
+- Hedef nispi kerterizi: 120° (sancak tarafta)
+
+**Hesap:**
+Hakiki Kerteriz = 045° + 120° = 165°T
+
+**Sonuç:**
+Hedef, hakiki kuzeye göre 165° doğrultusundadır.
+
+---
+
+**İkinci Örnek:**
+- Geminin hakiki rotası: 320°T
+- Hedef nispi kerterizi: 080°
+
+**Hesap:**
+Hakiki Kerteriz = 320° + 080° = 400°
+400° > 360° → 400° − 360° = 040°T
+
+**Sonuç:**
+Hedef, hakiki kuzeye göre 040° doğrultusundadır.`
+      },
+      {
+        title: "Dönüşüm Özeti",
+        content:
+          "Kerteriz türleri arasındaki dönüşümler, seyirde sürekli kullanılan temel işlemlerdir.",
+        bulletPoints: [
+          "Pusula → Manyetik: Deviation ekle",
+          "Manyetik → Hakiki: Variation ekle",
+          "Nispi → Hakiki: Geminin hakiki rotasını ekle",
+          "Doğu variation/deviation: Pozitif (+)",
+          "Batı variation/deviation: Negatif (−)"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Hakiki kerteriz: Hakiki kuzeye göre, harita standardı.",
+      "Manyetik kerteriz: Manyetik kuzeye göre, pusula okuması.",
+      "Nispi kerteriz: Gemi başına göre, radar/görsel gözlem.",
+      "Dönüşüm formülü: Hakiki = Pusula + Var + Dev.",
+      "Nispi → Hakiki: Geminin hakiki rotası + nispi kerteriz."
+    ]
+  },
+  "Running fix (klasik)": {
+    title: "Running Fix (Koşmalı Mevki Tayini)",
+    introduction:
+      "Running fix, yalnızca tek bir seyir yardımcısının (NAVAID) görünür olduğu durumlarda, farklı zamanlarda alınan iki kerteriz kullanılarak mevki tayini yapılmasıdır. Bowditch'e göre bu yöntem, ilk kerteriz hattının (LOP) geminin hareketi kadar ilerletilmesi ve ikinci kerteriz ile kesiştirilmesi esasına dayanır. Açık denizde tek fener görünüyorken veya kıyı boyunca seyirde kritik bir tekniktir.",
+    sections: [
+      {
+        title: "Görsel Referanslar",
+        content: `![Image](https://sailingissues.com/courses/images/runningfix.png)
+
+![Image](https://tdgil.com/wp-content/uploads/2020/04/Running-Fix.png)
+
+![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.2.3_fig_1.jpg)`
+      },
+      {
+        title: "Temel Prensip",
+        content:
+          "Running fix, aynı hedefe farklı zamanlarda alınan iki kerterizin birlikte değerlendirilmesiyle elde edilir. İlk kerteriz alındığında geminin mevkii bu hat üzerindedir ancak tam yeri belirsizdir. Gemi hareket ettikten sonra ikinci kerteriz alındığında, ilk kerteriz geminin aldığı mesafe ve rota kadar ilerletilir. Bu ilerletilmiş LOP ile ikinci LOP'un kesişimi running fix'tir.",
+        bulletPoints: [
+          "Tek NAVAID ile mevki tayini sağlar",
+          "İki farklı zamanda kerteriz alınır",
+          "İlk LOP, rota ve mesafe kadar ilerletilir",
+          "Kesişim noktası running fix olarak işaretlenir"
+        ]
+      },
+      {
+        title: "Uygulama Adımları",
+        content: `**Adım 1:** İlk kerterizi al ve zamanı kaydet (T₁)
+**Adım 2:** İlk LOP'u haritaya çiz
+**Adım 3:** Seyire devam et, ikinci kerterizi al (T₂)
+**Adım 4:** Geçen süre ve hızdan mesafeyi hesapla: D = V × (T₂ − T₁)
+**Adım 5:** İlk LOP üzerinde herhangi bir noktadan, geminin rotası doğrultusunda hesaplanan mesafe kadar ilerlet
+**Adım 6:** İlerletilmiş LOP'u çiz (orijinal LOP'a paralel)
+**Adım 7:** İkinci LOP ile kesişim noktasını bul → Running Fix`,
+        formula: {
+          text: "D = V × Δt",
+          description: "D: ilerletme mesafesi (NM), V: hız (kn), Δt: zaman farkı (saat)."
+        }
+      },
+      {
+        title: "Sayısal Örnek",
+        content: `**Verilen:**
+- Saat 10:00'da fener kerterizi: 045°T
+- Saat 10:30'da fener kerterizi: 090°T
+- Geminin rotası: 270°T
+- Geminin hızı: 12 knot
+
+**Adım 1: Mesafe hesabı**
+Δt = 30 dakika = 0.5 saat
+D = 12 × 0.5 = 6 NM
+
+**Adım 2: İlerletme**
+İlk LOP (045°T) üzerinden herhangi bir nokta seçilir
+Bu noktadan 270° doğrultusunda 6 NM ilerletilir
+İlerletilmiş LOP çizilir (045°T'ye paralel)
+
+**Adım 3: Kesişim**
+İlerletilmiş LOP ile ikinci LOP (090°T) kesiştirilir
+Kesişim noktası = Running Fix (10:30)
+
+**Sonuç:** Gemi saat 10:30'da bu noktadadır.`
+      },
+      {
+        title: "Doubled Angle on the Bow",
+        content:
+          "Özel bir running fix tekniğidir. İlk kerteriz açısı, ikinci kerterizde tam iki katına ulaştığında, alınan mesafe ile hedefe olan mesafe eşit olur (ikizkenar üçgen prensibi).",
+        bulletPoints: [
+          "İlk açı: a (örn. 30°)",
+          "İkinci açı: 2a (örn. 60°)",
+          "Log mesafesi = Hedefe mesafe",
+          "Four Point Fix: a=45°, 2a=90° özel durumu"
+        ],
+        formula: {
+          text: "Açı ikiye katlandığında: d₁ = d₂ (ikizkenar üçgen)",
+          description: "d₁: alınan mesafe, d₂: hedefe mesafe"
+        }
+      },
+      {
+        title: "Sınırlamalar ve Dikkat Edilecekler",
+        content:
+          "Running fix, akıntı ve rüzgâr etkilerini hesaba katmaz. Bu nedenle elde edilen mevki, gerçek mevkiden sapabilir. Akıntılı sularda EP (Estimated Position) yaklaşımı ile birleştirilmelidir.",
+        bulletPoints: [
+          "Akıntı etkisi dahil değildir",
+          "İki kerteriz arası süre uzadıkça hata artar",
+          "Açı farkı büyük olmalı (ideal: 45°-90°)",
+          "Akıntılı sularda EP düzeltmesi gerekir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Running fix, tek NAVAID ile iki kerteriz kullanarak mevki tayini yapar.",
+      "İlk LOP, rota ve mesafe kadar ilerletilir.",
+      "D = V × Δt formülüyle ilerletme mesafesi hesaplanır.",
+      "Doubled angle tekniği: Açı 2 katına ulaşınca log mesafesi = hedefe mesafe.",
+      "Akıntı ve rüzgâr etkisi dahil edilmediğinden hata payı vardır."
+    ]
+  },
 };
