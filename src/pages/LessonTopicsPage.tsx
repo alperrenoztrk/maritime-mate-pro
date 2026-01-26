@@ -222,7 +222,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Leeway", hasContent: true },
           { title: "Leeway kavramı" },
           { title: "Leeway hesapları" },
-          { title: "Rüzgâr + akıntı + gemi hareketi", hasContent: true },
+          { title: "Rüzgâr + akıntı + gemi hareketi" },
           { title: "Dalga etkileri" },
           { title: "Heavy weather navigation" },
           { title: "Fırtınada rota ve hız kararı" }
@@ -333,188 +333,12 @@ const topicsData: Record<string, TopicContent> = {
     title: "Gemi Makineleri Konu Anlatımı",
     description: "Gemi makine sistemleri, bakım prosedürleri ve performans optimizasyonu.",
     keyTopics: [
-      {
-        title: "Termodinamik ve Isı Tekniği",
-        description: "Enerji dönüşümleri, çevrimler ve ısı kayıpları analizleri.",
-        subTopics: [
-          { title: "Isı, iş ve enerji kavramları" },
-          { title: "Enerji dönüşümleri" },
-          { title: "Termodinamik çevrimler" },
-          { title: "Verim hesapları" },
-          { title: "Isı kayıpları" }
-        ]
-      },
-      {
-        title: "Akışkanlar Mekaniği",
-        description: "Akış rejimleri, basınç-debi ilişkisi ve boru kayıpları.",
-        subTopics: [
-          { title: "Basınç" },
-          { title: "Debi" },
-          { title: "Akış türleri" },
-          { title: "Pompa karakteristikleri" },
-          { title: "Boru kayıpları" },
-          { title: "Valfler ve fittingler" }
-        ]
-      },
-      {
-        title: "Makine Elemanları ve Malzeme Bilgisi",
-        description: "Dönen elemanlar, malzeme özellikleri ve korozyon koruma.",
-        subTopics: [
-          { title: "Miller" },
-          { title: "Yataklar" },
-          { title: "Kaplinler" },
-          { title: "Titreşim ve balans" },
-          { title: "Malzeme özellikleri" },
-          { title: "Korozyon ve korunma" }
-        ]
-      },
-      {
-        title: "Deniz Dizel Makineleri",
-        description: "İki ve dört zamanlı dizel makinelerin çalışma prensipleri.",
-        subTopics: [
-          { title: "İki zamanlı dizel makineler" },
-          { title: "Dört zamanlı dizel makineler" },
-          { title: "Silindir, piston, biyel ve krank mekanizması" },
-          { title: "Yanma süreci" },
-          { title: "Yakıt enjeksiyon sistemleri" },
-          { title: "Supap zamanlaması" },
-          { title: "Motor performans parametreleri" },
-          { title: "Tipik motor arızaları" }
-        ]
-      },
-      {
-        title: "Gemi Makine Sistemleri",
-        description: "Yakıt, yağlama, soğutma ve egzoz sistemlerinin entegrasyonu.",
-        subTopics: [
-          { title: "Yakıt sistemi" },
-          { title: "Yağlama sistemi" },
-          { title: "Soğutma sistemleri" },
-          { title: "Hava ve egzoz sistemleri" },
-          { title: "Buhar sistemleri" },
-          { title: "Sistemler arası etkileşim" }
-        ]
-      },
-      {
-        title: "Yardımcı Makineler",
-        description: "Jeneratör, kazan ve yardımcı ekipmanların işletimi.",
-        subTopics: [
-          { title: "Jeneratörler" },
-          { title: "Kazanlar" },
-          { title: "Separatörler" },
-          { title: "Tatlı su jeneratörleri" },
-          { title: "Hava kompresörleri" },
-          { title: "Pompa türleri" }
-        ]
-      },
-      {
-        title: "Yakıt Teknolojisi ve Yönetimi",
-        description: "Deniz yakıtları, arıtma süreçleri ve operasyonel riskler.",
-        subTopics: [
-          { title: "HFO" },
-          { title: "MGO" },
-          { title: "LNG" },
-          { title: "Yakıt arıtma" },
-          { title: "Viskozite kontrolü" },
-          { title: "Yakıt kaynaklı arızalar" }
-        ]
-      },
-      {
-        title: "Soğutma ve Klima Sistemleri",
-        description: "Soğutma çevrimleri, reefer ve HVAC uygulamaları.",
-        subTopics: [
-          { title: "Soğutma çevrimi" },
-          { title: "Soğutucu akışkanlar" },
-          { title: "Provision soğutma" },
-          { title: "Reefer sistemleri" },
-          { title: "Klima sistemleri" }
-        ]
-      },
-      {
-        title: "Gemi Elektrik Sistemleri",
-        description: "AC/DC dağıtım, koruma ve black-out yönetimi.",
-        subTopics: [
-          { title: "AC sistemler" },
-          { title: "DC sistemler" },
-          { title: "Alternatörler" },
-          { title: "Ana ve acil dağıtım panoları" },
-          { title: "Koruma sistemleri" },
-          { title: "Black-out nedenleri" }
-        ]
-      },
-      {
-        title: "Elektronik, Ölçme ve Otomasyon",
-        description: "Sensör, transmitter ve otomasyon altyapısı.",
-        subTopics: [
-          { title: "Alarm ve izleme sistemleri" },
-          { title: "Sensörler" },
-          { title: "Transmitterler" },
-          { title: "PLC temelleri" },
-          { title: "Uzaktan izleme sistemleri" }
-        ]
-      },
-      {
-        title: "Makine Dairesi Operasyonları",
-        description: "Vardiya, izleme ve operasyonel prosedürler.",
-        subTopics: [
-          { title: "Makine vardiyası" },
-          { title: "Seyir öncesi kontroller" },
-          { title: "Seyir esnası izleme" },
-          { title: "Liman operasyonları" },
-          { title: "Devreye alma ve durdurma prosedürleri" }
-        ]
-      },
-      {
-        title: "Bakım ve Tutum",
-        description: "Planlı bakım sistemleri ve klas gereklilikleri.",
-        subTopics: [
-          { title: "Planlı bakım sistemleri" },
-          { title: "Önleyici bakım" },
-          { title: "Arıza bakımı" },
-          { title: "Yağ analizleri" },
-          { title: "Klas ve bayrak gereklilikleri" }
-        ]
-      },
-      {
-        title: "Makine Dairesi Güvenliği",
-        description: "Yangın, patlama ve acil durdurma riskleri.",
-        subTopics: [
-          { title: "Makine dairesi yangınları" },
-          { title: "Yangın söndürme sistemleri" },
-          { title: "Patlama riskleri" },
-          { title: "Acil durdurma sistemleri" },
-          { title: "Makine kazaları" }
-        ]
-      },
-      {
-        title: "Çevre ve MARPOL – Makine",
-        description: "Atık yönetimi ve emisyon kontrolü uygulamaları.",
-        subTopics: [
-          { title: "Sintine sistemleri" },
-          { title: "Atık yağ ve sludge" },
-          { title: "Sewage sistemleri" },
-          { title: "Emisyonlar" }
-        ]
-      },
-      {
-        title: "Engine Resource Management",
-        description: "Vardiya yönetimi, insan faktörü ve risk değerlendirme.",
-        subTopics: [
-          { title: "Vardiya yönetimi" },
-          { title: "İnsan faktörü" },
-          { title: "Risk değerlendirme" }
-        ]
-      },
-      {
-        title: "Enerji Verimliliği",
-        description: "EEDI, EEXI, SEEMP ve atık ısı geri kazanımı.",
-        subTopics: [
-          { title: "EEDI" },
-          { title: "EEXI" },
-          { title: "SEEMP" },
-          { title: "Yakıt optimizasyonu" },
-          { title: "Atık ısı geri kazanımı" }
-        ]
-      }
+      { title: "Ana Makine", description: "Dizel motorlar ve çalışma prensipleri" },
+      { title: "Yardımcı Makineler", description: "Jeneratörler, pompalar ve kompresörler" },
+      { title: "Yakıt Sistemleri", description: "Yakıt hazırlama ve tüketim hesapları" },
+      { title: "Soğutma Sistemleri", description: "Deniz suyu ve tatlı su soğutma" },
+      { title: "Elektrik Sistemleri", description: "Gemi elektrik dağıtımı" },
+      { title: "Bakım Yönetimi", description: "PMS ve bakım stratejileri" }
     ],
     resources: [
       { title: "Makine Hesaplamaları", href: "/machine/calculations" },
