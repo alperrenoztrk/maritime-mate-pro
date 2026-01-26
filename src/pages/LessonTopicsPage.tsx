@@ -222,7 +222,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Leeway", hasContent: true },
           { title: "Leeway kavramı" },
           { title: "Leeway hesapları" },
-          { title: "Rüzgâr + akıntı + gemi hareketi" },
+          { title: "Rüzgâr + akıntı + gemi hareketi", hasContent: true },
           { title: "Dalga etkileri" },
           { title: "Heavy weather navigation" },
           { title: "Fırtınada rota ve hız kararı" }

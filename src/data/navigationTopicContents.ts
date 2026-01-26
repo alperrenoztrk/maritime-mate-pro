@@ -7171,6 +7171,167 @@ Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uz
       }
     ]
   },
+  "Rüzgâr + akıntı + gemi hareketi": {
+    title: "Rüzgâr + Akıntı + Gemi Hareketi",
+    introduction:
+      "Bir geminin deniz üzerindeki gerçek hareketi, yalnızca dümenlenen rota ve suya göre hız ile belirlenmez. Rüzgârın oluşturduğu leeway sapması ile akıntının set/drift etkileri aynı vektör probleminde değerlendirilir. Bu bileşke, yer üzerindeki gerçek rota ve gerçek hızı verir.",
+    sections: [
+      {
+        title: "Detaylı Anlatım",
+        content: `![Image](https://sailing-blog.nauticed.org/wp-content/uploads/schema-and-structured-data-for-wp/ddbbb16de0cf4104013390b15231530a-1200x900.jpeg)
+
+![Image](https://navigationspreadsheets.wordpress.com/wp-content/uploads/2014/07/setanddrift.jpg?w=640)
+
+![Image](https://www.oceandrivers.com/wp-content/uploads/2015/10/EasyCurrents-Currents-Tactics-Diagram1-e1425903075609.png)
+
+![Rüzgâr üçgeni](https://upload.wikimedia.org/wikipedia/commons/1/13/Wind_triangle.jpg)
+
+---
+
+### Temel Bileşenler
+
+* **Suya göre hareket**: Gemi hızı ve dümenlenen rota (STS/CTS)
+* **Akıntı etkisi**: Set (yön) + Drift (hız)
+* **Rüzgâr etkisi**: Leeway (açısal sapma)
+
+Akıntı, gemiyi suyla birlikte taşırken; rüzgâr geminin suya göre yönünü değiştirir. Bu nedenle hesap sırası önemlidir:
+
+⬛ **Sıra Kuralı**
+
+════════════════════
+Önce
+Leeway düzeltmesi
+sonra
+Akıntı vektörü
+════════════════════
+
+---
+
+### Vektör İlişkisi
+
+Yer üzerindeki hareket, suya göre hız vektörü ile akıntı vektörünün bileşkesidir.
+
+════════════════════
+Yer Üzeri Hız Vektörü
+=
+Gemi Hızı Vektörü
++
+Akıntı Hız Vektörü
+════════════════════
+
+Bu vektörel toplam sonucunda iki büyüklük bulunur:
+
+* **Gerçek rota (COG)**
+* **Yer üzerindeki hız (SOG)**
+
+---
+
+### Yer Üzeri Hız Bileşkesi
+
+════════════════════
+SOG = √(V² + D² + 2 × V × D × cos(θ))
+════════════════════
+
+* **V** : Suya göre hız (knot)
+* **D** : Drift (knot)
+* **θ** : Suya göre rota ile set yönü arasındaki açı
+
+---
+
+### Rota Sapması (Set Açısı)
+
+════════════════════
+Sapma Açısı
+= arctan( D × sin(θ) / (V + D × cos(θ)) )
+════════════════════
+
+Sapma açısı, leeway düzeltmesinden sonra elde edilen suya göre rota üzerine eklenir.
+
+---
+
+### Kısa Özet
+
+* Leeway → **açı düzeltmesi**
+* Akıntı → **vektör eklemesi**
+* Sonuç → **COG + SOG**`
+      },
+      {
+        title: "Örnek Hesaplama",
+        content: `**Verilenler**
+
+* Suya göre rota = **090°**
+* Suya göre hız = **10 kn**
+* Rüzgâr: sancak borda → **Leeway = 3°**
+* Akıntı set = **180°**, drift = **2 kn**
+
+---
+
+### Adım 1: Leeway düzeltmesi
+
+Rüzgâr sancaktan geldiği için gemi iskeleye sürüklenir; rota rüzgâra doğru çevrilir.
+
+════════════════════
+Düzeltilmiş Rota
+= 090° + 3°
+= 093°
+════════════════════
+
+---
+
+### Adım 2: Açı farkı
+
+Akıntı yönü 180°, gemi rotası 093°:
+
+θ = 180° − 093° = **87°**
+
+---
+
+### Adım 3: Yer üzerindeki hız
+
+════════════════════
+SOG = √(10² + 2² + 2 × 10 × 2 × cos87°)
+════════════════════
+
+cos87° ≈ 0.05
+
+SOG ≈ √(100 + 4 + 2)
+SOG ≈ **10.3 kn**
+
+---
+
+### Adım 4: Rota sapması
+
+════════════════════
+Sapma Açısı
+= arctan( 2 × sin87° / (10 + 2 × cos87°) )
+════════════════════
+
+sin87° ≈ 0.998
+
+Sapma ≈ arctan(1.996 / 10.1)
+Sapma ≈ **11°**
+
+---
+
+### Adım 5: Gerçek rota
+
+Akıntı güney yönlü olduğu için sapma açısı güneye eklenir:
+
+════════════════════
+Gerçek Rota
+= 093° + 11°
+≈ 104°
+════════════════════
+
+Bu örnek, suya göre **093°** ile seyreden geminin yer üzerinde yaklaşık **104°** rota izlediğini gösterir.`
+      }
+    ],
+    keyPoints: [
+      "Gerçek hareket, leeway düzeltmesi ve akıntı vektörünün bileşkesidir",
+      "Önce leeway uygulanır, ardından akıntı vektörü eklenir",
+      "Sonuç COG ve SOG olarak raporlanır"
+    ]
+  },
   "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)": {
     title: "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)",
     introduction:
