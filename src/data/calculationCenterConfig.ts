@@ -17,7 +17,28 @@ import {
   Wrench,
 } from "lucide-react";
 
-export type SectionId = "calculations" | "formulas" | "rules" | "assistant" | "quiz";
+export type SectionId =
+  | "calculations"
+  | "formulas"
+  | "rules"
+  | "assistant"
+  | "quiz"
+  | "machine-thermodynamics"
+  | "machine-fluid-mechanics"
+  | "machine-elements"
+  | "machine-diesel"
+  | "machine-systems"
+  | "machine-auxiliary"
+  | "machine-fuel-technology"
+  | "machine-cooling-hvac"
+  | "machine-electrical"
+  | "machine-automation"
+  | "machine-engine-room-ops"
+  | "machine-maintenance"
+  | "machine-engine-room-safety"
+  | "machine-environment"
+  | "machine-erm"
+  | "machine-energy-efficiency";
 export type CategoryId =
   | "stability"
   | "navigation"
@@ -69,12 +90,30 @@ export interface CategoryConfig {
   sections: SectionConfig[];
 }
 
+const buildMachineTopicLink = (title: string) => `/lessons/machine/topics/${encodeURIComponent(title)}`;
+
 export const sectionIconMap: Record<SectionId, LucideIcon> = {
   calculations: Calculator,
   formulas: Sigma,
   rules: BookOpen,
   assistant: Brain,
   quiz: ListChecks,
+  "machine-thermodynamics": BookOpen,
+  "machine-fluid-mechanics": BookOpen,
+  "machine-elements": BookOpen,
+  "machine-diesel": BookOpen,
+  "machine-systems": BookOpen,
+  "machine-auxiliary": BookOpen,
+  "machine-fuel-technology": BookOpen,
+  "machine-cooling-hvac": BookOpen,
+  "machine-electrical": BookOpen,
+  "machine-automation": BookOpen,
+  "machine-engine-room-ops": BookOpen,
+  "machine-maintenance": BookOpen,
+  "machine-engine-room-safety": BookOpen,
+  "machine-environment": BookOpen,
+  "machine-erm": BookOpen,
+  "machine-energy-efficiency": BookOpen,
 };
 
 export const calculationCategories: CategoryConfig[] = [
@@ -480,6 +519,118 @@ export const calculationCategories: CategoryConfig[] = [
         status: "live",
         badge: "Hazır",
         href: "/machine/quiz",
+      },
+      {
+        id: "machine-thermodynamics",
+        label: "Termodinamik ve Isı Tekniği",
+        description: "Isı, iş ve enerji çevrimleri; verim hesapları ve ısı kayıpları.",
+        status: "info",
+        href: buildMachineTopicLink("Termodinamik ve Isı Tekniği"),
+      },
+      {
+        id: "machine-fluid-mechanics",
+        label: "Akışkanlar Mekaniği",
+        description: "Basınç, debi, pompa karakteristikleri ve boru kayıpları.",
+        status: "info",
+        href: buildMachineTopicLink("Akışkanlar Mekaniği"),
+      },
+      {
+        id: "machine-elements",
+        label: "Makine Elemanları ve Malzeme Bilgisi",
+        description: "Miller, yataklar, titreşim, balans ve korozyon yönetimi.",
+        status: "info",
+        href: buildMachineTopicLink("Makine Elemanları ve Malzeme Bilgisi"),
+      },
+      {
+        id: "machine-diesel",
+        label: "Deniz Dizel Makineleri",
+        description: "İki/dört zamanlı makineler, yanma süreci, enjeksiyon ve arızalar.",
+        status: "info",
+        href: buildMachineTopicLink("Deniz Dizel Makineleri"),
+      },
+      {
+        id: "machine-systems",
+        label: "Gemi Makine Sistemleri",
+        description: "Yakıt, yağlama, soğutma, hava/egzoz ve buhar sistemleri.",
+        status: "info",
+        href: buildMachineTopicLink("Gemi Makine Sistemleri"),
+      },
+      {
+        id: "machine-auxiliary",
+        label: "Yardımcı Makineler",
+        description: "Jeneratörler, kazanlar, separatörler ve kompresörler.",
+        status: "info",
+        href: buildMachineTopicLink("Yardımcı Makineler"),
+      },
+      {
+        id: "machine-fuel-technology",
+        label: "Yakıt Teknolojisi ve Yönetimi",
+        description: "HFO/MGO/LNG, yakıt arıtma, viskozite kontrolü ve arızalar.",
+        status: "info",
+        href: buildMachineTopicLink("Yakıt Teknolojisi ve Yönetimi"),
+      },
+      {
+        id: "machine-cooling-hvac",
+        label: "Soğutma ve Klima Sistemleri",
+        description: "Soğutma çevrimi, akışkanlar, provision ve klima uygulamaları.",
+        status: "info",
+        href: buildMachineTopicLink("Soğutma ve Klima Sistemleri"),
+      },
+      {
+        id: "machine-electrical",
+        label: "Gemi Elektrik Sistemleri",
+        description: "AC/DC dağıtım, alternatörler, koruma ve black-out nedenleri.",
+        status: "info",
+        href: buildMachineTopicLink("Gemi Elektrik Sistemleri"),
+      },
+      {
+        id: "machine-automation",
+        label: "Elektronik, Ölçme ve Otomasyon",
+        description: "Alarm/izleme, sensörler, PLC temelleri ve uzaktan izleme.",
+        status: "info",
+        href: buildMachineTopicLink("Elektronik, Ölçme ve Otomasyon"),
+      },
+      {
+        id: "machine-engine-room-ops",
+        label: "Makine Dairesi Operasyonları",
+        description: "Vardiya, seyir/liman prosedürleri ve devreye alma adımları.",
+        status: "info",
+        href: buildMachineTopicLink("Makine Dairesi Operasyonları"),
+      },
+      {
+        id: "machine-maintenance",
+        label: "Bakım ve Tutum",
+        description: "Planlı bakım, yağ analizleri, klas ve bayrak gereklilikleri.",
+        status: "info",
+        href: buildMachineTopicLink("Bakım ve Tutum"),
+      },
+      {
+        id: "machine-engine-room-safety",
+        label: "Makine Dairesi Güvenliği",
+        description: "Yangınlar, acil durdurma sistemleri ve makine kazaları.",
+        status: "info",
+        href: buildMachineTopicLink("Makine Dairesi Güvenliği"),
+      },
+      {
+        id: "machine-environment",
+        label: "Çevre ve MARPOL – Makine",
+        description: "Sintine, atık yağ/sludge, sewage sistemleri ve emisyonlar.",
+        status: "info",
+        href: buildMachineTopicLink("Çevre ve MARPOL – Makine"),
+      },
+      {
+        id: "machine-erm",
+        label: "Engine Resource Management",
+        description: "Vardiya yönetimi, insan faktörü ve risk değerlendirmesi.",
+        status: "info",
+        href: buildMachineTopicLink("Engine Resource Management"),
+      },
+      {
+        id: "machine-energy-efficiency",
+        label: "Enerji Verimliliği",
+        description: "EEDI, EEXI, SEEMP ve atık ısı geri kazanımı.",
+        status: "info",
+        href: buildMachineTopicLink("Enerji Verimliliği"),
       },
     ],
   },

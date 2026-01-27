@@ -1412,8 +1412,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Hızın Değişkenliği",
         content: "Hız, makine devri, deniz durumu ve yükleme gibi etkenlere bağlı olarak değişebilir. Bu nedenle gerçek zamanlı hız takibi, rota ve mesafe hesaplarının doğruluğu açısından kritiktir. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
-        image: "https://www.researchgate.net/publication/373787121/figure/fig1/AS%3A11431281187518414%401694270676599/The-diagram-of-changes-in-speed-parameters-in-two-different-mental-motivational-states.jpg",
-        imageAlt: "Hız parametrelerindeki değişim grafiği"
+        image: "https://www.mastersystems.com/wp-content/uploads/2024/08/speed-log-furuno1717127956.png",
+        imageAlt: "Seyirde hız takibini gösteren speed log ekranı"
       },
       {
         title: "Makine Performansı Etkisi",
