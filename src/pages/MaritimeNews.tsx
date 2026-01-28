@@ -104,9 +104,12 @@ const MaritimeNews = () => {
     return map;
   }, [sourceErrors]);
 
+  // Only include items with images
+  const itemsWithImages = useMemo(() => items.filter((it) => Boolean(it.imageUrl)), [items]);
+
   const groupedItems = useMemo(() => {
-    const bySource = new Map<string, typeof items>();
-    items.forEach((it) => {
+    const bySource = new Map<string, typeof itemsWithImages>();
+    itemsWithImages.forEach((it) => {
       const list = bySource.get(it.source) ?? [];
       if (list.length < perSourceLimit) {
         list.push(it);
@@ -126,7 +129,7 @@ const MaritimeNews = () => {
       .map(([source, list]) => ({ id: source, name: source, url: "", items: list.slice(0, perSourceLimit) }));
 
     return [...definedSources, ...unknownSources].filter((group) => group.items.length > 0 || errorBySource.has(group.name));
-  }, [items, sources, perSourceLimit, errorBySource]);
+  }, [itemsWithImages, sources, perSourceLimit, errorBySource]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
