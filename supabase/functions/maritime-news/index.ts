@@ -371,7 +371,9 @@ serve(async (req) => {
       if (r.error) errors.push({ source: r.feed.name, error: r.error });
     }
 
+    // Filter to only include items with images, then sort by date
     const sorted = allItems
+      .filter((i) => Boolean(i.imageUrl))
       .map((i) => ({
         ...i,
         publishedAt: i.publishedAt,
