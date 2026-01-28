@@ -2,10 +2,14 @@ import { ChevronLeft, Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
 import { navigationTopicContents, TopicSection, TopicDetailContent } from "@/data/navigationTopicContents";
+import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
+  if (categoryId === "machine" && decodedTitle === "Akışkanlar Mekaniği") {
+    return <FluidMechanicsTopicsPage />;
+  }
   const fallbackContent: TopicDetailContent = {
     title: decodedTitle || "Konu Detayı",
     introduction:
