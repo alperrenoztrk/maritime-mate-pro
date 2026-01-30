@@ -44,14 +44,31 @@ function normalizeImageUrl(url?: string): string | undefined {
   }
 }
 
+function toHighResImageUrl(url?: string): string | undefined {
+  const normalized = normalizeImageUrl(url);
+  if (!normalized) return undefined;
+
+  try {
+    const parsed = new URL(normalized);
+    parsed.pathname = parsed.pathname.replace(/([_-])\d{2,4}x\d{2,4}(?=\.[a-z0-9]+$)/i, "");
+
+    const paramsToStrip = ["w", "h", "width", "height", "resize", "fit", "crop", "quality", "q"];
+    paramsToStrip.forEach((param) => parsed.searchParams.delete(param));
+
+    return parsed.toString();
+  } catch {
+    return normalized;
+  }
+}
+
 function toProxyImageUrl(url?: string, size: 'small' | 'medium' | 'large' = 'large'): string | undefined {
   const normalized = normalizeImageUrl(url);
   if (!normalized) return undefined;
 
   const sizeConfig = {
-    small: { w: 640, h: 360 },
-    medium: { w: 1024, h: 576 },
-    large: { w: 1600, h: 900 },
+    small: { w: 720, h: 405 },
+    medium: { w: 1280, h: 720 },
+    large: { w: 2000, h: 1125 },
   };
 
   const { w, h } = sizeConfig[size];
@@ -62,11 +79,11 @@ function toProxyImageUrl(url?: string, size: 'small' | 'medium' | 'large' = 'lar
     if (!sanitized) return undefined;
 
     // Yüksek kalite parametreleri:
-    // q=85: Kalite seviyesi
+    // q=90: Kalite seviyesi
     // we: WebP formatı (daha küçük dosya, aynı kalite)
     // il: Progressive yükleme
     // dpr=2: Retina ekran desteği
-    return `https://images.weserv.nl/?url=${encodeURIComponent(sanitized)}&w=${w}&h=${h}&fit=cover&q=85&we&il&dpr=2`;
+    return `https://images.weserv.nl/?url=${encodeURIComponent(sanitized)}&w=${w}&h=${h}&fit=cover&q=90&we&il&dpr=2`;
   } catch {
     return undefined;
   }
@@ -289,9 +306,10 @@ const MaritimeNews = () => {
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {group.items.map((it, itemIndex) => {
                       // Responsive srcset için farklı boyutlarda URL'ler
-                      const smallImageUrl = toProxyImageUrl(it.imageUrl, 'small');
-                      const mediumImageUrl = toProxyImageUrl(it.imageUrl, 'medium');
-                      const largeImageUrl = toProxyImageUrl(it.imageUrl, 'large');
+                      const highResImageUrl = toHighResImageUrl(it.imageUrl);
+                      const smallImageUrl = toProxyImageUrl(highResImageUrl, 'small');
+                      const mediumImageUrl = toProxyImageUrl(highResImageUrl, 'medium');
+                      const largeImageUrl = toProxyImageUrl(highResImageUrl, 'large');
                       const fallbackImageUrl = normalizeImageUrl(it.imageUrl);
                       const displayImageUrl = largeImageUrl ?? fallbackImageUrl;
 
@@ -315,10 +333,10 @@ const MaritimeNews = () => {
                                 <img
                                   src={displayImageUrl}
                                   srcSet={smallImageUrl && mediumImageUrl && largeImageUrl 
-                                    ? `${smallImageUrl} 640w, ${mediumImageUrl} 1024w, ${largeImageUrl} 1600w`
+                                    ? `${smallImageUrl} 720w, ${mediumImageUrl} 1280w, ${largeImageUrl} 2000w`
                                     : undefined
                                   }
-                                  sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1600px"
+                                  sizes="(max-width: 720px) 720px, (max-width: 1280px) 1280px, 2000px"
                                   alt={it.title}
                                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                                   loading={isEagerLoad ? "eager" : "lazy"}
