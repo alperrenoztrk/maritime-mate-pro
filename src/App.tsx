@@ -50,6 +50,7 @@ import Settings from "./pages/Settings";
 import Formulas from "./pages/Formulas";
 import Regulations from "./pages/Regulations";
 import StabilityFormulasPage from "./pages/StabilityFormulas";
+import Glossary from "./pages/Glossary";
 
 import StabilityFormulaDetailPage from "./pages/StabilityFormulaDetail";
 import NavigationFormulasPage from "./pages/NavigationFormulas";
@@ -160,6 +161,7 @@ const AnimatedRoutes = () => {
         <Route path="/widgets" element={<PageTransition><WidgetPage /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
+        <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
