@@ -61,6 +61,11 @@ export default function ShipTasksPage() {
               <span className="text-xl">⚓</span>
               <h2 className="font-bold text-foreground">1️⃣ SEYİR & KÖPRÜÜSTÜ İŞLERİ</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik çalışma için bu başlık seçildiğinde; rota planı, mevki belirleme yöntemleri ve
+              OOW’un köprüüstü görev akışı adım adım anlatılır. Bir örnek senaryo (kısıtlı görüş, yoğun
+              trafik vb.) üzerinden COLREG uygulaması ve kaptana bilgi verme kriterleri yazılır.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -100,6 +105,11 @@ export default function ShipTasksPage() {
               <span className="text-xl">🗺️</span>
               <h2 className="font-bold text-foreground">2️⃣ NAVİGASYON & HARİTA İŞLERİ</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte ECDIS/kağıt harita düzeltme adımları, Notice to Mariners takibi ve
+              gyrolar/manyetik pusula karşılaştırması açıklanır. Kısa bir kontrol listesi ve örnek düzeltme
+              notu eklenir.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -135,6 +145,11 @@ export default function ShipTasksPage() {
               <span className="text-xl">📦</span>
               <h2 className="font-bold text-foreground">3️⃣ YÜK OPERASYONLARI</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte yük planı okuma, operasyon sırasında draft/sounding kontrolü ve emniyet
+              gözetimi anlatılır. Bir yükleme örneği üzerinden hız takibi ve sapma raporlama adımları
+              yazılır.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -172,6 +187,10 @@ export default function ShipTasksPage() {
               <span className="text-xl">🧯</span>
               <h2 className="font-bold text-foreground">4️⃣ EMNİYET & ISM / ISPS</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte yangın ve güvenlik devriyesi güzergâhı, kritik ekipman kontrolleri ve
+              ISPS erişim adımları açıklanır. Kayıt örneğiyle uygunsuzluk bildirimi yazılır.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -208,6 +227,10 @@ export default function ShipTasksPage() {
               <span className="text-xl">🔧</span>
               <h2 className="font-bold text-foreground">5️⃣ GÜVERTE BAKIM & ONARIM</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte güverte ekipman kontrolü, boya/pas takibi ve halat–tel bakım adımları
+              anlatılır. Bakım planına nasıl not düşüleceği örnek bir kayıtla gösterilir.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -243,6 +266,11 @@ export default function ShipTasksPage() {
               <span className="text-xl">👥</span>
               <h2 className="font-bold text-foreground">6️⃣ PERSONEL & DİSİPLİN</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte vardiya görev dağılımı, PPE kullanım kontrolü ve yeni personel
+              oryantasyonu anlatılır. Disiplin ve iletişim notlarının nasıl tutulacağı kısa bir örnekle
+              yazılır.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -276,6 +304,11 @@ export default function ShipTasksPage() {
               <span className="text-xl">📑</span>
               <h2 className="font-bold text-foreground">7️⃣ DOKÜMANTASYON & DENETİM</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte logbook yazım düzeni, kontrol listesi kullanımı ve PSC hazırlık dosyası
+              gözden geçirme adımları açıklanır. Sertifika geçerliliği kontrolüne dair kısa bir örnek
+              metin eklenir.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -309,6 +342,10 @@ export default function ShipTasksPage() {
               <span className="text-xl">🚨</span>
               <h2 className="font-bold text-foreground">8️⃣ ACİL DURUMLAR</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte alarm panelleri, kaçış yolları ve acil ekipman erişim noktaları anlatılır.
+              Bir acil durumda ekip rolleri ve ilk yapılacaklar maddeler halinde yazılır.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -344,6 +381,11 @@ export default function ShipTasksPage() {
               <span className="text-xl">⚙️</span>
               <h2 className="font-bold text-foreground">9️⃣ MAKİNE DAİRESİ İŞLERİ</h2>
             </div>
+            <p className="text-xs text-muted-foreground">
+              Saatlik içerikte ana/yardımcı makine parametre kontrolü, alarm kayıtları ve sintine
+              seviyeleri anlatılır. Yakıt/yağ transferi ve separasyon takibine yönelik kısa bir örnek
+              rapor yazılır.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
@@ -394,4 +436,3 @@ export default function ShipTasksPage() {
     </div>
   );
 }
-
