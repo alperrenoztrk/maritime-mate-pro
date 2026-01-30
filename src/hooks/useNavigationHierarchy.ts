@@ -231,12 +231,22 @@ export const useNavigationHierarchy = () => {
   useEffect(() => {
     const navigateToParent = () => {
       const parentPath = findParentPath(location.pathname);
+      if (location.pathname === '/' && parentPath === '/') {
+        navigate('/', { replace: true });
+        return;
+      }
       navigate(parentPath, { replace: true });
     };
 
     // Handle mobile back button (Capacitor)
     let backButtonListener: { remove: () => void } | undefined;
-    CapacitorApp.addListener('backButton', navigateToParent).then(listener => {
+    CapacitorApp.addListener('backButton', ({ canGoBack }) => {
+      if (!canGoBack && location.pathname === '/') {
+        navigate('/', { replace: true });
+        return;
+      }
+      navigateToParent();
+    }).then(listener => {
       backButtonListener = listener;
     });
 
