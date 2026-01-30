@@ -89,6 +89,18 @@ function toProxyImageUrl(url?: string, size: 'small' | 'medium' | 'large' = 'lar
   }
 }
 
+function stripHtml(text?: string): string {
+  if (!text) return "";
+  return text.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function estimateReadingTime(text: string): string {
+  if (!text) return "";
+  const wordCount = text.split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(wordCount / 200));
+  return `${minutes} dk okuma`;
+}
+
 const MaritimeNews = () => {
   const navigate = useNavigate();
   const touchStartX = useRef<number | null>(null);
@@ -96,6 +108,7 @@ const MaritimeNews = () => {
 
   const [readerOpen, setReaderOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MaritimeNewsItem | null>(null);
+  const [readerMode, setReaderMode] = useState<"summary" | "web">("summary");
 
   const openExternal = async (url: string) => {
     try {
@@ -177,6 +190,13 @@ const MaritimeNews = () => {
     touchStartX.current = null;
     touchEndX.current = null;
   };
+
+  const selectedSummary = stripHtml(selectedItem?.summary);
+  const selectedReadingTime = estimateReadingTime(selectedSummary);
+  const selectedHighResImage = toHighResImageUrl(selectedItem?.imageUrl);
+  const selectedImageUrl =
+    toProxyImageUrl(selectedHighResImage, "large") ??
+    normalizeImageUrl(selectedItem?.imageUrl);
 
   return (
     <div
@@ -304,7 +324,7 @@ const MaritimeNews = () => {
                   </div>
                 ) : (
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {group.items.map((it, itemIndex) => {
+                    {group.items.map((it, itemIndex) => {
                       // Responsive srcset için farklı boyutlarda URL'ler
                       const highResImageUrl = toHighResImageUrl(it.imageUrl);
                       const smallImageUrl = toProxyImageUrl(highResImageUrl, 'small');
@@ -322,6 +342,7 @@ const MaritimeNews = () => {
                           type="button"
                           onClick={() => {
                             setSelectedItem(it);
+                            setReaderMode(stripHtml(it.summary) ? "summary" : "web");
                             setReaderOpen(true);
                           }}
                           className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left transition-all hover:border-white/20 hover:bg-white/10"
@@ -414,51 +435,131 @@ const MaritimeNews = () => {
         }}
       >
         <DialogContent className="max-w-4xl border-white/10 bg-slate-950 text-white">
-          <DialogHeader>
+          <DialogHeader className="space-y-3">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-white/60">
+              {selectedItem?.source ? (
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80">
+                  {selectedItem.source}
+                </span>
+              ) : null}
+              {selectedItem?.publishedAt ? <span>{formatDateTR(selectedItem.publishedAt)}</span> : null}
+              {selectedReadingTime ? <span>• {selectedReadingTime}</span> : null}
+            </div>
             <DialogTitle className="text-white">{selectedItem?.title ?? "Haber"}</DialogTitle>
             <DialogDescription className="text-white/70">
-              {selectedItem?.source ? `${selectedItem.source} • ` : ""}
-              {selectedItem?.publishedAt ? formatDateTR(selectedItem.publishedAt) : ""}
+              Haberleri uygulama içinde okumak için özet modu ve kaynak görünümü arasında geçiş yapabilirsiniz.
             </DialogDescription>
           </DialogHeader>
 
-          <div className="mt-2 overflow-hidden rounded-md border border-white/10 bg-black/30">
-            {selectedItem?.link ? (
-              <iframe
-                title={selectedItem.title}
-                src={selectedItem.link}
-                className="h-[70svh] w-full"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <div className="p-6 text-sm text-white/70">Haber bağlantısı bulunamadı.</div>
-            )}
-          </div>
+          <div className="flex flex-col gap-4 lg:flex-row">
+            <div className="flex-1 space-y-4">
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950">
+                <div className="relative h-56 w-full bg-slate-900">
+                  {selectedImageUrl ? (
+                    <img
+                      src={selectedImageUrl}
+                      alt={selectedItem?.title ?? "Haber görseli"}
+                      className="h-full w-full object-cover"
+                      loading="eager"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-sm text-white/40">
+                      Görsel bulunamadı
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                </div>
+                <div className="space-y-3 p-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Button
+                      variant={readerMode === "summary" ? "secondary" : "outline"}
+                      className={
+                        readerMode === "summary"
+                          ? "bg-white/15 text-white hover:bg-white/20"
+                          : "border-white/20 bg-transparent text-white hover:bg-white/10"
+                      }
+                      onClick={() => setReaderMode("summary")}
+                    >
+                      Özet Modu
+                    </Button>
+                    <Button
+                      variant={readerMode === "web" ? "secondary" : "outline"}
+                      className={
+                        readerMode === "web"
+                          ? "bg-white/15 text-white hover:bg-white/20"
+                          : "border-white/20 bg-transparent text-white hover:bg-white/10"
+                      }
+                      onClick={() => setReaderMode("web")}
+                      disabled={!selectedItem?.link}
+                    >
+                      Kaynak Görünümü
+                    </Button>
+                  </div>
+                  {readerMode === "summary" ? (
+                    <div className="space-y-3 text-sm text-white/80">
+                      {selectedSummary ? (
+                        <>
+                          <p className="leading-relaxed">{selectedSummary}</p>
+                          <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/60">
+                            Not: Bu özet RSS içeriğinden oluşturulur. Tam metin için kaynak görünümünü kullanın.
+                          </div>
+                        </>
+                      ) : (
+                        <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 text-xs text-white/60">
+                          Bu haber için özet bulunamadı. Kaynak görünümünü açarak tam metni okuyabilirsiniz.
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="overflow-hidden rounded-xl border border-white/10 bg-black/30">
+                      {selectedItem?.link ? (
+                        <iframe
+                          title={selectedItem.title}
+                          src={selectedItem.link}
+                          className="h-[60svh] w-full"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="p-6 text-sm text-white/70">Haber bağlantısı bulunamadı.</div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
 
-          <div className="text-xs text-white/50">
-            Not: Bazı siteler güvenlik nedeniyle uygulama içinde görüntülenmeyi engelleyebilir. Bu durumda “Dışarıda aç”ı kullanın.
+            <aside className="w-full space-y-4 lg:w-72">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
+                <h3 className="text-base font-semibold text-white">Okuma Kontrolleri</h3>
+                <p className="mt-2 text-xs leading-relaxed text-white/60">
+                  Kaynak siteler bazı durumlarda gömülü görüntülemeyi engelleyebilir. Bu durumda “Dışarıda aç” ile
+                  haberin tam metnine erişebilirsiniz.
+                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <Button
+                    variant="secondary"
+                    className="bg-white/10 hover:bg-white/15"
+                    onClick={() => {
+                      if (selectedItem?.link) openExternal(selectedItem.link);
+                    }}
+                    disabled={!selectedItem?.link}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Dışarıda aç
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-white/20 bg-transparent text-white hover:bg-white/10"
+                    onClick={() => setReaderOpen(false)}
+                  >
+                    Kapat
+                  </Button>
+                </div>
+              </div>
+            </aside>
           </div>
-
-          <DialogFooter className="gap-2 sm:gap-2">
-            <Button
-              variant="outline"
-              className="border-white/20 bg-transparent text-white hover:bg-white/10"
-              onClick={() => setReaderOpen(false)}
-            >
-              Kapat
-            </Button>
-            <Button
-              variant="secondary"
-              className="bg-white/10 hover:bg-white/15"
-              onClick={() => {
-                if (selectedItem?.link) openExternal(selectedItem.link);
-              }}
-              disabled={!selectedItem?.link}
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Dışarıda aç
-            </Button>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
