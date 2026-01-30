@@ -28,6 +28,7 @@ android/app/src/main/assets/public/
 android/app/build/
 android/.gradle/
 android/local.properties
+android/capacitor-cordova-android-plugins/.gradle/
 
 # Capacitor
 capacitor.config.json
