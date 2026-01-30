@@ -24,6 +24,8 @@ import latitudeParallels from "@/assets/navigation/latitude-parallels.jpg";
 import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
+import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
+import { buildNavigationSectionKey } from "@/services/topicContentOverrides";
 
 const navigationImageFallbacks = [
   { keywords: ["sextant", "sekstant"], src: sextant },
@@ -72,6 +74,7 @@ const resolveNavigationImage = (
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
+  const overrides = useTopicContentOverrides();
   if (categoryId === "machine" && decodedTitle === "Akışkanlar Mekaniği") {
     return <FluidMechanicsTopicsPage />;
   }
@@ -117,7 +120,12 @@ export default function LessonTopicDetailPage() {
           <p className="text-sm leading-relaxed text-foreground/90">{content.introduction}</p>
         </div>
 
-        {content.sections.map((section, index) => (
+        {content.sections.map((section, index) => {
+          const overrideKey = buildNavigationSectionKey(decodedTitle || content.title, section.title);
+          const override = overrides[overrideKey];
+          const resolvedContent = override?.content || section.content;
+
+          return (
           <section key={`${section.title}-${index}`} className="space-y-4">
             <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
@@ -161,7 +169,7 @@ export default function LessonTopicDetailPage() {
                 )
               }}
             >
-              {section.content}
+              {resolvedContent}
             </ReactMarkdown>
 
             {section.bulletPoints && section.bulletPoints.length > 0 && (
@@ -186,7 +194,8 @@ export default function LessonTopicDetailPage() {
               </div>
             )}
           </section>
-        ))}
+          );
+        })}
 
         {content.keyPoints && content.keyPoints.length > 0 && (
           <section className="rounded-xl border border-border/40 bg-card/60 p-5">
