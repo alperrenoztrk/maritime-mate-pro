@@ -1050,6 +1050,107 @@ GM değerinin büyüklüğü geminin davranışını etkiler:
           "Sert gemi şikayetlerinde balast düzenlemesi yapın",
           "Yumuşak gemi durumunda alt tanklara balast alın"
         ]
+      },
+      {
+        title: "4.4. İnclinometer ve GM Ölçümü",
+        content: `Eğim testi (inclining experiment), bir geminin metasantrik yüksekliğini (GM) deneysel olarak belirlemenin en güvenilir yoludur. Bu test, gemi inşa edildiğinde ve önemli modifikasyonlardan sonra zorunlu olarak yapılır.
+
+**Eğim Testi (Inclining Experiment) Nedir?**
+Eğim testi, bilinen bir ağırlığın gemide bilinen bir mesafe kaydırılmasıyla geminin yatma açısının ölçülmesi ve bu verilerden GM'in hesaplanması işlemidir. Test sonuçları, geminin tüm ömrü boyunca referans olarak kullanılır.
+
+**Test Prosedürü**
+
+**Hazırlık Aşaması:**
+- Gemi mümkün olduğunca boş ve serbest olmalı
+- Tüm gevşek eşyalar sabitlenmeli
+- Tanklar tam dolu veya tamamen boş olmalı
+- Halatlar gevşetilmeli (sadece çok hafif bağlı)
+- Rüzgâr ve akıntı minimum olmalı
+- Deniz sakin olmalı
+
+**Test Ağırlıkları:**
+- Tipik olarak 4-8 adet test ağırlığı kullanılır
+- Toplam ağırlık genellikle deplasmanın %1-2'si kadar
+- Ağırlıklar güvertede enine doğrultuda hareket ettirilir
+- Her kaydırma mesafesi tam olarak ölçülür
+
+**İnclinometer (Eğim Ölçer)**
+İnclinometer, geminin yatma açısını hassas olarak ölçen cihazdır:
+
+**Sarkaç Tipi İnclinometer:**
+- Uzun bir ipten asılı ağırlık
+- Altında ölçekli cetvel
+- Sapma miktarı ölçülür
+- tan(θ) = sapma / ip uzunluğu
+
+**U-Tüpü (Manometre):**
+- İki kollu su dolu tüp
+- Yatmada su seviye farkı oluşur
+- Fark açıyla orantılı
+- Daha hassas ölçüm
+
+**Dijital İnclinometer:**
+- Elektronik sensörler
+- Anlık dijital okuma
+- Kayıt imkânı
+- Modern gemilerde yaygın
+
+**GM Hesabı**
+
+Temel formül:
+────────────
+GM = (w × d) / (Δ × tan θ)
+────────────
+
+Burada:
+- w = Kaydırılan ağırlık (ton)
+- d = Kaydırma mesafesi (m)
+- Δ = Gemi deplasmanı (ton)
+- θ = Ölçülen yatma açısı
+
+**Lightship Değerleri**
+Eğim testinden elde edilen sonuçlar:
+- Lightship deplasmanı
+- Lightship KG
+- Lightship LCG
+- Bu değerler stabilite kitapçığının temelini oluşturur`,
+        formulas: [
+          {
+            formula: "GM = (w × d) / (Δ × tan θ)",
+            description: "Eğim testinden GM hesabı"
+          },
+          {
+            formula: "tan θ = sapma / ip uzunluğu",
+            description: "Sarkaç tipi inclinometer açı ölçümü"
+          },
+          {
+            formula: "KG = KM - GM",
+            description: "Test sonrası KG hesabı"
+          }
+        ],
+        examples: [
+          {
+            problem: "Eğim testinde: w = 20 ton, d = 12 m, Δ = 5000 ton, ölçülen sapma = 15 cm, ip = 5 m. GM değerini hesaplayın.",
+            solution: "tan θ = 0.15/5 = 0.03. GM = (20 × 12) / (5000 × 0.03) = 240/150 = 1.60 m"
+          }
+        ],
+        keyPoints: [
+          "Eğim testi geminin referans stabilite verilerini oluşturur",
+          "Test koşulları stabilite kitapçığında belirtilen şekilde olmalı",
+          "İnclinometer hassasiyeti sonuçları doğrudan etkiler",
+          "Lightship değerleri tüm hesapların temelidir"
+        ],
+        practicalTips: [
+          "Test sırasında gemide minimum personel bulundurun",
+          "Rüzgârsız ve sakin deniz koşullarını bekleyin",
+          "Birden fazla ölçüm alarak ortalama kullanın",
+          "Tüm tank durumlarını dikkatli belgeleyin"
+        ],
+        warnings: [
+          "Hatalı eğim testi tüm stabilite hesaplarını etkiler",
+          "Test koşulları uygun değilse sonuçlar geçersiz olabilir",
+          "Modifikasyonlardan sonra test tekrarlanmalıdır"
+        ]
       }
     ]
   },
@@ -1235,6 +1336,107 @@ Bu yöntem pratikte yaygın olarak kullanılır:
           "Büyük GM = Kısa periyot, Küçük GM = Uzun periyot",
           "Periyot ölçümü ile GM tahmin edilebilir",
           "Dalga rezonansından kaçınmak için periyot önemlidir"
+        ]
+      },
+      {
+        title: "5.4. Parametrik Yalpa (Parametric Rolling)",
+        content: `Parametrik yalpa (parametric rolling), belirli dalga koşullarında gemilerin aşırı ve tehlikeli enine salınımlar yapmasına neden olan dinamik bir fenomendir. Özellikle modern konteyner gemileri ve büyük yolcu gemileri için ciddi bir risk oluşturur.
+
+**Parametrik Yalpa Nedir?**
+Parametrik yalpa, geminin boyuna dalgalarla (baş veya kıçtan gelen) karşılaştığında, dalga geçişi sırasında su hattı alanının değişmesi nedeniyle GM'in periyodik olarak değişmesi sonucu oluşan aşırı enine salınım hareketidir.
+
+**Fiziksel Mekanizma**
+
+**Dalga Tepesinde:**
+- Orta gövde dalga tepesinde
+- Su hattı genişliği azalır
+- BM küçülür
+- GM azalır (geçici olarak düşük stabilite)
+
+**Dalga Çukurunda:**
+- Orta gövde dalga çukurunda
+- Su hattı genişliği artar
+- BM büyür
+- GM artar (geçici olarak yüksek stabilite)
+
+**Rezonans Durumu**
+GM'deki bu periyodik değişim, gemi rulo periyodunun yarısına eşit olduğunda rezonans oluşur ve salınım amplitüdü tehlikeli boyutlara ulaşabilir.
+
+**Kritik Koşullar**
+
+**Dalga Boyu - Gemi Boyu Oranı:**
+────────────
+λ / L ≈ 0.8 - 2.0
+────────────
+(λ: dalga boyu, L: gemi boyu)
+
+**Karşılaşma Periyodu İlişkisi:**
+────────────
+T_e ≈ T_r / 2  veya  T_e ≈ T_r
+────────────
+(T_e: karşılaşma periyodu, T_r: doğal rulo periyodu)
+
+**Hız Etkisi:**
+- Baştan dalgada: Gemi hızı arttıkça T_e azalır
+- Kıçtan dalgada: Gemi hızı arttıkça T_e artar
+
+**Yüksek Risk Faktörleri**
+- Düşük GM (yumuşak gemi)
+- Geniş baş ve kıç flare'ları
+- Uzun rulo periyodu
+- Düşük su hattı alanı değişimi direnci
+- Kıçtan veya baştan dalga
+
+**Önleme Yöntemleri**
+
+**1. Hız Değişikliği:**
+- Kritik hızdan kaçının
+- Yavaşlayarak veya hızlanarak T_e'yi değiştirin
+
+**2. Rota Değişikliği:**
+- Dalgalara açı verin (baştan veya kıçtan kaçının)
+- Baş açısını 30-50° yapın
+
+**3. GM Artırma:**
+- Alt tanklara ballast alın
+- Üst tankları boşaltın
+- Ağırlık merkezini düşürün
+
+**4. Aktif Stabilizasyon:**
+- Fin stabilizatörleri
+- Anti-rolling tankları
+- Aktif rulo sönümleme sistemleri`,
+        formulas: [
+          {
+            formula: "λ / L ≈ 0.8 - 2.0",
+            description: "Kritik dalga boyu / gemi boyu oranı"
+          },
+          {
+            formula: "T_e = T_r / 2",
+            description: "Ana parametrik rezonans koşulu"
+          },
+          {
+            formula: "T_e = λ / (V_w ± V_s)",
+            description: "Karşılaşma periyodu (baştan/kıçtan dalga)"
+          }
+        ],
+        keyPoints: [
+          "Parametrik yalpa boyuna dalgalarda oluşur",
+          "GM'in periyodik değişimi rezonansa neden olur",
+          "Konteyner gemileri özellikle savunmasızdır",
+          "Hız ve rota değişikliği en etkili önlemdir"
+        ],
+        warnings: [
+          "Parametrik yalpa çok hızlı gelişebilir (birkaç dakika)",
+          "Salınım açıları 40° üzerine çıkabilir",
+          "Konteyner kaybı ve gemi hasarı riski yüksek",
+          "Mürettebat yaralanması tehlikesi vardır"
+        ],
+        practicalTips: [
+          "Kıçtan veya baştan dalgada dikkatli olun",
+          "Salınım artarsa hemen rota veya hız değiştirin",
+          "Kritik hız aralıklarını önceden hesaplayın",
+          "Ağır havada düşük GM ile seyir etmeyin"
         ]
       }
     ]
@@ -1491,6 +1693,111 @@ Grafikte:
           "GZ = KN - KG × sin(θ) temel hesap formülüdür",
           "Cross Curves stabilite kitapçığında bulunur",
           "KG ne kadar düşükse GZ o kadar büyük olur"
+        ]
+      },
+      {
+        title: "6.5. Wall-Sided Formülü",
+        content: `Wall-sided formülü, duvar bordolu (dikey bordolu) gemiler için büyük açılarda GZ hesabı yapılmasına olanak sağlayan analitik bir yaklaşımdır. Bu formül, Cross Curves kullanmadan hızlı GZ tahmini yapmak için kullanılır.
+
+**Wall-Sided Gemi Nedir?**
+Duvar bordolu (wall-sided) gemi, su hattı civarındaki borda yüzeylerinin dikey (düşey) olduğu gemidir. Birçok kargo gemisi, tanker ve bulk carrier bu tanıma yakın formlara sahiptir.
+
+**Wall-Sided Formülün Temeli**
+
+Dikey bordalı gemilerde, yatma sırasında:
+- Su hattı alanı (A_w) değişmez
+- B noktasının yatay hareketi hesaplanabilir
+- M noktasının yükselişi analitik olarak ifade edilebilir
+
+**Wall-Sided GZ Formülü**
+
+────────────────────────────
+GZ = sin θ × (GM + ½ BM × tan² θ)
+────────────────────────────
+
+Burada:
+- θ = Yatma açısı
+- GM = Metasantrik yükseklik
+- BM = Metasantrik yarıçap
+
+**Formülün Açılımı**
+
+Formül iki bileşenden oluşur:
+
+**1. GM Bileşeni: sin θ × GM**
+- Küçük açılarda baskın terim
+- Standart GZ = GM × sin θ formülüne eşit
+
+**2. BM Bileşeni: ½ × sin θ × BM × tan² θ**
+- Büyük açılarda önemli hale gelir
+- M noktasının yükselmesinden kaynaklanır
+- Pozitif katkı sağlar (GZ'yi artırır)
+
+**Basitleştirilmiş Form**
+Küçük açılarda tan θ ≈ sin θ olduğundan:
+GZ ≈ sin θ × GM + ½ × sin θ × tan² θ × BM
+
+**Uygulama Sınırları**
+
+Wall-sided formül şu durumlarda geçerlidir:
+- Borda yüzeyleri dikeye yakın
+- Güverte batmamış
+- Yatma açısı < 25-30° (yaklaşık)
+
+**Geçersiz Olduğu Durumlar:**
+- Flared (açılı) bordalar
+- Tumblehome (içe dönük) bordalar
+- Güverte batması
+- Çok büyük açılar (> 30°)
+
+**Karşılaştırma: Cross Curves vs Wall-Sided**
+
+| Özellik | Cross Curves | Wall-Sided |
+|---------|--------------|------------|
+| Doğruluk | Yüksek (tüm açılar) | Sınırlı (küçük-orta açılar) |
+| Hesap | Tablo/grafik okuma | Formül |
+| Genel geçerlilik | Tüm gemi formları | Sadece dikey bordalı |
+| Hız | Yavaş | Hızlı |
+| Kullanım | Nihai değerlendirme | Hızlı tahmin |`,
+        formulas: [
+          {
+            formula: "GZ = sin θ × (GM + ½ BM × tan² θ)",
+            description: "Wall-sided GZ formülü"
+          },
+          {
+            formula: "GZ ≈ GM × sin θ + ½ BM × sin θ × tan² θ",
+            description: "Açılmış form"
+          },
+          {
+            formula: "ΔGZ = ½ BM × sin θ × tan² θ",
+            description: "Wall-sided düzeltme terimi"
+          }
+        ],
+        examples: [
+          {
+            problem: "GM = 1.5 m, BM = 6.0 m. θ = 15° için wall-sided GZ değeri?",
+            solution: "GZ = sin 15° × (1.5 + 0.5 × 6.0 × tan² 15°) = 0.259 × (1.5 + 3.0 × 0.0718) = 0.259 × 1.715 = 0.444 m"
+          },
+          {
+            problem: "Aynı gemi için küçük açı formülü ile karşılaştırın.",
+            solution: "GZ_küçük_açı = GM × sin θ = 1.5 × 0.259 = 0.389 m. Fark = 0.444 - 0.389 = 0.055 m (Wall-sided formül daha büyük değer verir)"
+          }
+        ],
+        keyPoints: [
+          "Wall-sided formül dikey bordalı gemiler içindir",
+          "BM terimi büyük açılarda GZ'yi artırır",
+          "25-30° üzerinde güvenilirliği azalır",
+          "Cross Curves ile doğrulama yapılmalıdır"
+        ],
+        practicalTips: [
+          "Hızlı tahmin için kullanın, nihai değer için Cross Curves",
+          "Gemi formunun uygunluğunu değerlendirin",
+          "Kritik durumlarda formüle güvenmeyin, hidrostatik veri kullanın"
+        ],
+        warnings: [
+          "Flared veya tumblehome bordalı gemilerde kullanmayın",
+          "Güverte batması durumunda geçersiz olur",
+          "30° üzeri açılarda sonuçlar yanıltıcı olabilir"
         ]
       }
     ]
@@ -1784,6 +2091,108 @@ Trim, baş ve kıç draftları arasındaki farktır:
           "Trim, baş ve kıç draft farkıdır",
           "Hafif kıça trim genellikle tercih edilir",
           "Yük yerleşimi trim'i doğrudan etkiler"
+        ]
+      },
+      {
+        title: "8.5. LCF ve Draft Düzeltmeleri",
+        content: `LCF (Longitudinal Center of Flotation), trim hesaplamalarında kritik öneme sahip bir referans noktasıdır. Draft düzeltmeleri, perpendikülerdeki gerçek draft değerlerinin belirlenmesi için gereklidir.
+
+**LCF (Boyuna Yüzme Merkezi) Nedir?**
+LCF, su hattı alanının boyuna ağırlık merkezidir. Gemi trim yaptığında, pivota noktası LCF'dir - yani gemi bu nokta etrafında döner.
+
+**LCF'nin Fiziksel Anlamı**
+- LCF'ye ağırlık eklenirse: Sadece paralel batma olur (trim değişmez)
+- LCF'nin önüne ağırlık: Başa trim
+- LCF'nin arkasına ağırlık: Kıça trim
+
+**LCF Konumu**
+LCF genellikle hidrostatik tablolardan okunur:
+- Deplasmanla değişir
+- Tipik olarak mastorinin (orta kesitin) biraz arkasında
+- Baş veya kıç perpendikülerden mesafe olarak ifade edilir
+
+**Draft Düzeltmeleri**
+
+**Neden Düzeltme Gerekli?**
+Draft markaları genellikle perpendikülerlerde (FP ve AP) değildir:
+- Baş draft markası: FP'nin biraz gerisinde
+- Kıç draft markası: AP'nin biraz önünde
+- Orta draft markası: Mastori bölgesinde
+
+**Düzeltme Formülü:**
+
+────────────────────────────
+Düzeltme = (Mesafe × Trim) / LBP
+────────────────────────────
+
+Burada:
+- Mesafe = Draft markası ile perpendikül arasındaki mesafe
+- Trim = Mevcut trim (m)
+- LBP = Perpendiküleler arası uzunluk
+
+**Perpendikülerdeki Draft Hesabı**
+
+**Baş Draft (FP'de):**
+T_FP = T_okunan ± (d_baş × Trim / LBP)
+
+**Kıç Draft (AP'de):**
+T_AP = T_okunan ± (d_kıç × Trim / LBP)
+
+İşaret kuralı:
+- Marka perpendikülün içinde ise: Kıça trimde (+), başa trimde (-)
+- Marka perpendikülün dışında ise: Kıça trimde (-), başa trimde (+)
+
+**Mean Draft Hesabı**
+
+**True Mean Draft (LCF'deki):**
+T_mean = T_FP + (LCF × Trim / LBP)
+
+veya
+
+T_mean = (T_FP + T_AP) / 2 + (LCF - LBP/2) × Trim / LBP
+
+**Draft Survey'de Kullanım**
+Draft survey hesaplarında:
+1. Tüm draft okumaları düzeltilir
+2. Perpendikülerdeki değerler bulunur
+3. True mean draft hesaplanır
+4. Hidrostatik tablolardan deplasman okunur`,
+        formulas: [
+          {
+            formula: "Düzeltme = (Mesafe × Trim) / LBP",
+            description: "Draft düzeltme formülü"
+          },
+          {
+            formula: "T_mean = T_FP + (LCF × Trim / LBP)",
+            description: "LCF'deki ortalama draft"
+          },
+          {
+            formula: "T_corrected = T_okunan ± (d × Trim / LBP)",
+            description: "Perpendikülde düzeltilmiş draft"
+          }
+        ],
+        examples: [
+          {
+            problem: "LBP = 180 m, LCF = 85 m (AP'den). Baş draft markası FP'nin 3 m gerisinde. Okunan baş draft = 6.20 m, kıç draft = 7.80 m. Düzeltilmiş baş draftı bulun.",
+            solution: "Trim = 7.80 - 6.20 = 1.60 m (kıç trimli). Düzeltme = (3 × 1.60) / 180 = 0.027 m. Marka içeride, kıça trim → T_FP = 6.20 + 0.027 = 6.227 m"
+          }
+        ],
+        keyPoints: [
+          "LCF trim hareketinin pivot noktasıdır",
+          "Draft markaları genellikle perpendikülerlerde değildir",
+          "Düzeltme = (Mesafe × Trim) / LBP",
+          "True mean draft LCF konumunda hesaplanır"
+        ],
+        practicalTips: [
+          "Draft survey öncesi marka konumlarını öğrenin",
+          "Trim'in işaretine dikkat edin",
+          "Hesapları sistematik tablo formatında yapın",
+          "Hidrostatik tablolardaki referans noktalarını kontrol edin"
+        ],
+        warnings: [
+          "Düzeltme yapılmayan draftlar hatalı deplasman verir",
+          "LCF deplasmanla değişir - doğru değeri kullanın",
+          "Büyük trimlerde düzeltmeler önemli boyutlara ulaşır"
         ]
       },
       {
@@ -2265,6 +2674,126 @@ Su geçirmez güvertenin en az 76 mm altında çizilen hayali hat. Final waterli
           "Çok fazla su almak batmaya yol açar",
           "Panik halinde yanlış kararlar verilebilir - sakin kalın"
         ]
+      },
+      {
+        title: "9.5. Progressive Flooding (Ardışık Su Basması)",
+        content: `Progressive flooding, bir bölmedeki hasarın diğer bölmelere yayılarak su basmasının genişlemesi durumudur. Bu fenomen hasarlı stabilite açısından en tehlikeli senaryolardan biridir.
+
+**Progressive Flooding Nedir?**
+Başlangıçtaki hasar sonrası su basan bölmeden komşu bölmelere su geçişidir. Bu durum şunlardan kaynaklanabilir:
+- Bölme perdesinin (bulkhead) hasarı
+- Havalandırma kanalları
+- Boru geçişleri ve penetrasyonlar
+- Kapıların kapanmaması veya sızıntısı
+- Yapısal deformasyon
+
+**Ardışık Su Basmasının Mekanizması**
+
+**Aşama 1 - İlk Hasar:**
+- Dış hasardan su girişi
+- İlk bölme kısmen veya tamamen dolar
+- Stabilite azalır, trim/heel oluşur
+
+**Aşama 2 - Yayılma:**
+- Su seviyesi iç açıklıklara ulaşır
+- Komşu bölmelere geçiş başlar
+- Her yeni bölme stabiliteyi daha da azaltır
+
+**Aşama 3 - Kritik Durum:**
+- Birden fazla bölme su altında
+- Marj hattı tehlike altında
+- Batma veya devrilme riski yüksek
+
+**Cross-Flooding (Çapraz Doldurma)**
+
+Cross-flooding, asimetrik su basmasını dengelemek için kullanılan kontrollü bir yöntemdir:
+
+**Amaç:**
+- Heel açısını azaltmak
+- Devrilmeyi önlemek
+- Stabiliteyi kontrol etmek
+
+**Cross-Flooding Sistemi:**
+- Borda tankları arasında bağlantı boruları
+- Manuel veya otomatik valfler
+- Kontrollü su geçişi
+
+**Dikkat:**
+- Toplam su miktarı artar
+- Genel stabilite düşebilir
+- Zaman kritiktir
+
+**Cross-Flooding Zaman Hesabı**
+
+Zaman formülü:
+────────────────────────────
+t = V / (A × C × √(2gh))
+────────────────────────────
+
+Burada:
+- t = Doldurma süresi (s)
+- V = Transfer edilecek hacim (m³)
+- A = Boru kesit alanı (m²)
+- C = Akış katsayısı (0.6-0.8)
+- g = Yerçekimi ivmesi (9.81 m/s²)
+- h = Seviye farkı (m)
+
+**Progressive Flooding'i Önleme**
+
+**Tasarım Önlemleri:**
+- Su geçirmez bölme sayısının artırılması
+- Yüksek marj hattı
+- Güçlendirilmiş bölme perdeleri
+- Minimum penetrasyon
+
+**Operasyonel Önlemler:**
+- Su geçirmez kapıların kapalı tutulması
+- Düzenli bakım ve kontrol
+- Havalandırma kapaklarının kontrolü
+- Hasar kontrol eğitimi
+
+**SOLAS Gereksinimleri**
+
+**Bölmelendirme:**
+- Minimum bölme sayısı (gemi boyuna göre)
+- Tek veya çift bölme hasarı senaryoları
+- Probabilistik değerlendirme
+
+**Cross-Flooding:**
+- Maksimum dengeleme süresi (≤ 15 dakika)
+- Ara durumlarda stabilite kontrolü`,
+        formulas: [
+          {
+            formula: "t = V / (A × C × √(2gh))",
+            description: "Cross-flooding zaman hesabı"
+          },
+          {
+            formula: "Q = A × C × √(2gh)",
+            description: "Su geçiş debisi (m³/s)"
+          },
+          {
+            formula: "Heel_azalma = (w × d) / (Δ × GM)",
+            description: "Cross-flooding ile heel düzeltmesi"
+          }
+        ],
+        keyPoints: [
+          "Progressive flooding birden fazla bölmeyi etkiler",
+          "Her yeni bölme stabiliteyi daha da düşürür",
+          "Cross-flooding dengeleme sağlar ama toplam su artar",
+          "Zaman kritik - hızlı değerlendirme gerekli"
+        ],
+        warnings: [
+          "Progressive flooding hızla gelişebilir",
+          "Cross-flooding dikkatli hesaplanmalı",
+          "Aşırı cross-flooding batmaya yol açabilir",
+          "Zaman baskısı altında doğru karar vermek zor"
+        ],
+        practicalTips: [
+          "Bölme kapılarını kapalı tutun",
+          "Hasar kontrol planını iyi bilin",
+          "Cross-flooding valflerinin çalıştığından emin olun",
+          "Düzenli tatbikat yapın"
+        ]
       }
     ]
   },
@@ -2485,6 +3014,120 @@ Tahıl kayması nedeniyle oluşan moment:
           "Yük tutma cihazlarının (shifting boards) düzgün yerleştirildiğinden emin olun",
           "Seyir boyunca tahıl yerleşmesini izleyin",
           "Stabilite hesabını sık aralıklarla güncelleyin"
+        ]
+      },
+      {
+        title: "10.5. İkinci Nesil Stabilite Kriterleri (SGISC)",
+        content: `İkinci Nesil Sağlam Stabilite Kriterleri (Second Generation Intact Stability Criteria - SGISC), IMO tarafından geliştirilen ve mevcut kriterlerin kapsamadığı dinamik stabilite başarısızlık modlarını ele alan yeni düzenleyici çerçevedir.
+
+**Neden Yeni Kriterler Gerekli?**
+Mevcut IMO 2008 IS Code kriterleri:
+- Statik koşullar için tasarlanmış
+- Dinamik fenomenleri yeterince kapsamıyor
+- Büyük modern gemiler için yetersiz kalıyor
+- Bazı kaza türlerini öngöremiyor
+
+**5 Başarısızlık Modu (Failure Modes)**
+
+SGISC, beş temel dinamik başarısızlık modunu ele alır:
+
+**1. Pure Loss of Stability (Saf Stabilite Kaybı)**
+- Dalga tepesinde GM'in aşırı düşmesi
+- Wall-sided olmayan gemilerde kritik
+- Ani ve geçici negatif GM
+
+**2. Parametric Rolling (Parametrik Yalpa)**
+- Boyuna dalgalarda GM değişimi
+- Rezonans sonucu aşırı salınım
+- Konteyner gemileri için önemli
+
+**3. Surf-Riding / Broaching-to**
+- Kıçtan dalgalarda hız kaybı kontrolü
+- Geminin dalga ile birlikte sürüklenmesi
+- Ani dönüş ve devrilme riski
+
+**4. Dead Ship Condition (Ölü Gemi Durumu)**
+- Makine arızası senaryosu
+- Rüzgar ve dalga altında sürüklenme
+- Aşırı heel ve devrilme
+
+**5. Excessive Acceleration (Aşırı İvme)**
+- Sert gemilerde yüksek ivmeler
+- Kargo, ekipman ve personel hasarı
+- Rulo ivmesi kriterleri
+
+**Kademeli Değerlendirme Yaklaşımı**
+
+**Level 1 - Vulnerability Check (Basit):**
+- Basit formüller ve eşik değerler
+- Hızlı değerlendirme
+- Fail ederse Level 2'ye geçilir
+
+**Level 2 - Detailed Vulnerability (Detaylı):**
+- Daha karmaşık hesaplamalar
+- Dalga spektrumu değerlendirmesi
+- Fail ederse Level 3 veya operasyonel kısıtlamalar
+
+**Level 3 - Direct Stability Assessment (DSA):**
+- Tam simülasyon
+- Model testleri veya CFD
+- En yüksek doğruluk
+- En yüksek maliyet ve zaman
+
+**IMO Düzenlemeleri**
+
+**MSC.1/Circ.1627:**
+- Geçici yönergeler
+- Gönüllü uygulama
+- 2020 yayınlandı
+
+**Beklenen Zorunluluk:**
+- Kademeli geçiş
+- Yeni inşa gemiler öncelikli
+- Mevcut gemiler için muafiyetler
+
+**Pratik Etkileri**
+
+**Gemi Tasarımına Etkisi:**
+- Form optimizasyonu gerekebilir
+- Aktif stabilizasyon sistemleri
+- Operasyonel kılavuzlar (OGS - Operational Guidance to Ships)
+
+**Operasyonlara Etkisi:**
+- Hız/rota kısıtlamaları
+- Gerçek zamanlı izleme
+- Karar destek sistemleri`,
+        formulas: [
+          {
+            formula: "RPL = Σ W_i × C_i (Level 2)",
+            description: "Parametrik yalpa olasılık indeksi"
+          },
+          {
+            formula: "ΔGM / GM_mean < Kritik_Değer",
+            description: "Level 1 pure loss kontrolü"
+          },
+          {
+            formula: "Froude No. < 0.3 (surf-riding için)",
+            description: "Surf-riding kırılganlık kontrolü"
+          }
+        ],
+        keyPoints: [
+          "SGISC 5 dinamik başarısızlık modunu ele alır",
+          "3 kademeli değerlendirme yaklaşımı kullanılır",
+          "Mevcut kriterlere ek olarak uygulanır",
+          "Büyük modern gemiler için özellikle önemli"
+        ],
+        warnings: [
+          "SGISC henüz zorunlu değil ama olacak",
+          "Bazı gemiler mevcut tasarımla kriterleri sağlayamayabilir",
+          "Operasyonel kısıtlamalar gerekebilir",
+          "Erken hazırlık avantaj sağlar"
+        ],
+        practicalTips: [
+          "Gemi tipiniz için kritik modları belirleyin",
+          "Konteyner gemisi ise parametrik rolling'e dikkat",
+          "Yüksek hızlı gemilerde surf-riding kontrolü yapın",
+          "Operasyonel kılavuzları takip edin"
         ]
       },
       {
