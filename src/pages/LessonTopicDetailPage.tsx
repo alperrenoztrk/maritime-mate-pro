@@ -3,6 +3,71 @@ import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
 import { navigationTopicContents, TopicSection, TopicDetailContent } from "@/data/navigationTopicContents";
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
+import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
+import compass from "@/assets/navigation/compass.svg";
+import gpsSatellites from "@/assets/navigation/gps-satellites.svg";
+import radarDisplay from "@/assets/navigation/radar-display.svg";
+import ecdisDisplay from "@/assets/navigation/ecdis-display.svg";
+import tideCurrent from "@/assets/navigation/tide-current.svg";
+import mercatorProjection from "@/assets/navigation/mercator-projection.svg";
+import greatCircleRhumb from "@/assets/navigation/great-circle-vs-rhumb.svg";
+import sextant from "@/assets/navigation/sextant.svg";
+import weatherSystems from "@/assets/navigation/weather-systems.svg";
+import aisTargets from "@/assets/navigation/ais-targets.svg";
+import navtexReceiver from "@/assets/navigation/navtex-receiver.svg";
+import autopilotControl from "@/assets/navigation/autopilot-control.svg";
+import vhfRadio from "@/assets/navigation/vhf-radio.svg";
+import safetyEquipment from "@/assets/navigation/safety-equipment.svg";
+import gnomonicProjection from "@/assets/navigation/gnomonic-projection.svg";
+import coordinateSystem from "@/assets/navigation/coordinate-system-1.jpg";
+import latitudeParallels from "@/assets/navigation/latitude-parallels.jpg";
+import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
+import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
+import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
+
+const navigationImageFallbacks = [
+  { keywords: ["sextant", "sekstant"], src: sextant },
+  { keywords: ["mercator"], src: mercatorProjection },
+  { keywords: ["gnomonic", "great circle", "büyük daire", "loxodrom", "loxodrome", "rhumb"], src: greatCircleRhumb },
+  { keywords: ["gps", "gnss", "satellite", "trilaterasyon", "dop", "hdop", "pdop"], src: gpsSatellites },
+  { keywords: ["radar", "arpa"], src: radarDisplay },
+  { keywords: ["ecdis"], src: ecdisDisplay },
+  { keywords: ["tide", "gelgit", "tidal", "set", "drift"], src: tideCurrent },
+  { keywords: ["chart", "harita", "plot", "mevki", "position", "fix"], src: chartPlotting },
+  { keywords: ["compass", "pusula", "bearing", "yön", "true", "manyetik", "variation", "deviation"], src: yonCompassRose },
+  { keywords: ["enlem", "latitude"], src: latitudeParallels },
+  { keywords: ["boylam", "longitude"], src: longitudeConcept },
+  { keywords: ["koordinat", "coordinate"], src: coordinateSystem },
+  { keywords: ["wind", "rüzg", "leeway", "dalga"], src: yonWindDrift },
+  { keywords: ["weather", "meteoroloji"], src: weatherSystems },
+  { keywords: ["ais"], src: aisTargets },
+  { keywords: ["navtex"], src: navtexReceiver },
+  { keywords: ["autopilot"], src: autopilotControl },
+  { keywords: ["vhf", "gmdss", "radio"], src: vhfRadio },
+  { keywords: ["squat", "ukc", "emniyet", "safety"], src: safetyEquipment },
+  { keywords: ["projection", "projeksiyon"], src: gnomonicProjection },
+  { keywords: ["north", "kuzey"], src: compass }
+];
+
+const resolveNavigationImage = (
+  src: string | undefined,
+  sectionTitle: string,
+  topicTitle: string,
+  alt: string | undefined,
+  replaceExternal: boolean
+) => {
+  if (!src) {
+    return undefined;
+  }
+  if (!replaceExternal || !src.startsWith("http")) {
+    return src;
+  }
+  const haystack = `${alt ?? ""} ${sectionTitle} ${topicTitle}`.toLowerCase();
+  const match = navigationImageFallbacks.find(item =>
+    item.keywords.some(keyword => haystack.includes(keyword))
+  );
+  return match?.src ?? chartPlotting;
+};
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
@@ -23,6 +88,7 @@ export default function LessonTopicDetailPage() {
     ]
   };
   const content = navigationTopicContents[decodedTitle] ?? fallbackContent;
+  const shouldReplaceExternalImages = categoryId === "navigation";
 
   if (!categoryId || !decodedTitle) {
     return (
@@ -58,7 +124,13 @@ export default function LessonTopicDetailPage() {
             {section.image && (
               <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
                 <img
-                  src={section.image}
+                  src={resolveNavigationImage(
+                    section.image,
+                    section.title,
+                    content.title,
+                    section.imageAlt,
+                    shouldReplaceExternalImages
+                  )}
                   alt={section.imageAlt || section.title}
                   className="h-48 w-full object-contain bg-muted/30"
                   loading="lazy"
@@ -74,7 +146,13 @@ export default function LessonTopicDetailPage() {
                 img: ({ src, alt }) => (
                   <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
                     <img
-                      src={src}
+                      src={resolveNavigationImage(
+                        src,
+                        section.title,
+                        content.title,
+                        alt,
+                        shouldReplaceExternalImages
+                      )}
                       alt={alt || section.title}
                       className="h-48 w-full object-contain bg-muted/30"
                       loading="lazy"

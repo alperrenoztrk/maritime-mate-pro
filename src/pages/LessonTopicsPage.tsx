@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
+import { navigationTopicContents } from "@/data/navigationTopicContents";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 
 interface SubTopic {
@@ -445,6 +446,8 @@ export default function LessonTopicsPage() {
   const category = calculationCategories.find(c => c.id === categoryId);
   const topicContent = categoryId ? topicsData[categoryId] : null;
   const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
+  const isNavigation = categoryId === "navigation";
+  const navigationContentTitles = isNavigation ? new Set(Object.keys(navigationTopicContents)) : null;
 
   const toggleTopic = (index: number) => {
     setExpandedTopics(prev => 
@@ -462,6 +465,16 @@ export default function LessonTopicsPage() {
     ["--animation-duration" as string]: "8.33ms",
     ["--transition-duration" as string]: "16.67ms",
   };
+
+  const missingNavigationTopics = isNavigation && topicContent
+    ? topicContent.keyTopics
+        .map(topic => ({
+          title: topic.title,
+          missing: (topic.subTopics ?? []).filter(sub => !navigationContentTitles?.has(sub.title))
+        }))
+        .filter(item => item.missing.length > 0)
+    : [];
+  const missingNavigationCount = missingNavigationTopics.reduce((total, item) => total + item.missing.length, 0);
 
   if (!category || !topicContent) {
     return (
@@ -561,6 +574,9 @@ export default function LessonTopicsPage() {
                       <div className="border-t border-border/40 bg-background/50 p-4">
                         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                           {topic.subTopics!.map((sub, subIndex) => (
+                            (() => {
+                              const hasContent = isNavigation ? navigationContentTitles?.has(sub.title) : sub.hasContent;
+                              return (
                             <Link
                               key={subIndex}
                               to={buildSubTopicLink(sub.title)}
@@ -568,8 +584,21 @@ export default function LessonTopicsPage() {
                             >
                               <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                               <span className="text-foreground/90 flex-1">{sub.title}</span>
+                              {isNavigation && (
+                                <span
+                                  className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                                    hasContent
+                                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200"
+                                      : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200"
+                                  }`}
+                                >
+                                  {hasContent ? "İçerik var" : "Eksik"}
+                                </span>
+                              )}
                               <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
                             </Link>
+                              );
+                            })()
                           ))}
                         </div>
                       </div>
@@ -597,6 +626,30 @@ export default function LessonTopicsPage() {
             </div>
           )}
         </section>
+
+        {isNavigation && missingNavigationCount > 0 && (
+          <section className="rounded-2xl border border-amber-500/20 bg-amber-50/70 p-6 text-amber-900 backdrop-blur dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-100">
+            <div className="mb-4 flex items-center gap-2">
+              <Lightbulb className="h-5 w-5 text-amber-500" />
+              <h2 className="text-lg font-semibold">Eksik Konular (Seyir)</h2>
+              <span className="ml-auto rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
+                {missingNavigationCount} başlık
+              </span>
+            </div>
+            <div className="space-y-4 text-sm">
+              {missingNavigationTopics.map(item => (
+                <div key={item.title} className="rounded-xl border border-amber-200/60 bg-white/70 p-4 dark:border-amber-500/20 dark:bg-amber-500/10">
+                  <p className="font-semibold text-amber-800 dark:text-amber-100">{item.title}</p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-amber-800/90 dark:text-amber-100/90">
+                    {item.missing.map(sub => (
+                      <li key={sub.title}>{sub.title}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Quick Links */}
         <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur">

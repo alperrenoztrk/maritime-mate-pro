@@ -66,6 +66,21 @@ import sembolLightCharacteristics from "@/assets/navigation/sembol-light-charact
 import sembolSectorLights from "@/assets/navigation/sembol-sector-lights.jpg";
 import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
 import sembolDangers from "@/assets/navigation/sembol-dangers.jpg";
+import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
+import mercatorProjection from "@/assets/navigation/mercator-projection.svg";
+import gnomonicProjection from "@/assets/navigation/gnomonic-projection.svg";
+import gpsSatellites from "@/assets/navigation/gps-satellites.svg";
+import radarDisplay from "@/assets/navigation/radar-display.svg";
+import ecdisDisplay from "@/assets/navigation/ecdis-display.svg";
+import tideCurrent from "@/assets/navigation/tide-current.svg";
+import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
+import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
+import weatherSystems from "@/assets/navigation/weather-systems.svg";
+import aisTargets from "@/assets/navigation/ais-targets.svg";
+import navtexReceiver from "@/assets/navigation/navtex-receiver.svg";
+import autopilotControl from "@/assets/navigation/autopilot-control.svg";
+import vhfRadio from "@/assets/navigation/vhf-radio.svg";
+import safetyEquipment from "@/assets/navigation/safety-equipment.svg";
 
 export interface TopicSection {
   title: string;
@@ -9530,4 +9545,1599 @@ Kesişim noktası = Running Fix (10:30)
       "Akıntı ve rüzgâr etkisi dahil edilmediğinden hata payı vardır."
     ]
   },
+  "Harita datum": {
+    title: "Harita Datum",
+    introduction:
+      "Harita datum, coğrafi koordinatların (enlem–boylam) hangi referans elipsoidine göre verildiğini ifade eder. Aynı koordinat değerleri, farklı datumlarda farklı coğrafi noktaları gösterebilir.",
+    sections: [
+      {
+        title: "Datum Nedir?",
+        content:
+          "Datum; harita ve elektronik sistemlerin kullandığı referans modelidir. WGS-84, modern GPS ve ECDIS sistemlerinde standart datumdur.",
+        image: chartPlotting,
+        imageAlt: "Harita datum ve mevki referansı"
+      },
+      {
+        title: "Seyirde Etkisi",
+        content:
+          "Haritada yazan datum ile cihaz datumunun uyuşmaması, mevkiyi yüzlerce metre kaydırabilir. Bu nedenle GPS/ECDIS datum ayarı, kullanılan kağıt haritanın datumuna eşitlenmelidir.",
+        bulletPoints: [
+          "Harita kenar bilgisinden datum kontrol edilir",
+          "Cihaz datum ayarı doğrulanır",
+          "Farklı datumlar arasında offset düzeltmesi yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Datum, koordinatların referans modelidir.",
+      "WGS-84, güncel navigasyon sistemlerinde standarttır.",
+      "Yanlış datum ayarı mevkiyi kaydırır."
+    ]
+  },
+  "Mesafe ölçümü": {
+    title: "Mesafe Ölçümü",
+    introduction:
+      "Deniz haritalarında mesafe ölçümü, haritanın kenarındaki enlem skalası üzerinden yapılır. Çünkü 1′ enlem = 1 deniz milidir.",
+    sections: [
+      {
+        title: "Doğru Ölçüm Pratiği",
+        content:
+          "Mesafe ölçerken parakete veya pergel ucu, ölçüm yapılacak enleme yakın yerleştirilir. Böylece ölçek hatası minimize edilir.",
+        image: chartPlotting,
+        imageAlt: "Harita üzerinde mesafe ölçümü"
+      },
+      {
+        title: "Sık Hatalar",
+        content:
+          "Boylam skalası mesafe için kullanılmaz. Harita ölçeği büyüdükçe ölçüm hassasiyeti artar.",
+        bulletPoints: [
+          "Enlem skalası kullanılır",
+          "Ölçüm, en yakın enlemde yapılır",
+          "Ölçek büyüdükçe hassasiyet artar"
+        ]
+      }
+    ],
+    keyPoints: [
+      "1′ enlem = 1 deniz mili kabul edilir.",
+      "Mesafe, enlem skalasından ölçülür.",
+      "Boylam skalası mesafe ölçümü için uygun değildir."
+    ]
+  },
+  "Boylam değişimi hesapları": {
+    title: "Boylam Değişimi Hesapları",
+    introduction:
+      "Boylam değişimi, seyredilen doğu–batı mesafenin enleme bağlı olarak boylama çevrilmesiyle bulunur. Enlem arttıkça 1′ boylamın uzunluğu küçülür.",
+    sections: [
+      {
+        title: "Temel Mantık",
+        content:
+          "Doğu–batı mesafe (departure), ortalama enlemdeki boylam dakikasıyla ilişkilidir. Bu ilişki, orta enlem seyri hesaplarının temelidir.",
+        image: mercatorProjection,
+        imageAlt: "Boylam değişimi ve Mercator projeksiyonu"
+      },
+      {
+        title: "Uygulama Notu",
+        content:
+          "Boylam değişimi hesaplarında enlem işareti ve doğu–batı yönü doğru yorumlanmalıdır.",
+        bulletPoints: [
+          "Ortalama enlem kullanılır",
+          "Doğu (+) / Batı (−) yönü belirtilir",
+          "Harita üzerinde doğrulama yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Boylam değişimi enleme bağlıdır.",
+      "Ortalama enlem üzerinden hesaplanır.",
+      "Yön işareti doğru verilmelidir."
+    ]
+  },
+  "Sayısal orta enlem seyri uygulamaları": {
+    title: "Sayısal Orta Enlem Seyri Uygulamaları",
+    introduction:
+      "Orta enlem seyri, iki mevki arasındaki kurs ve mesafenin hesaplandığı pratik bir yöntemdir. Sayısal uygulama, teorik adımların hesapla doğrulanmasını sağlar.",
+    sections: [
+      {
+        title: "Adım Adım Hesap",
+        content:
+          "DLat, departure ve ortalama enlem kullanılarak kurs ve mesafe bulunur. Bulunan değerler, haritada kontrol edilerek doğrulanır.",
+        image: chartPlotting,
+        imageAlt: "Orta enlem seyri uygulaması"
+      },
+      {
+        title: "Doğrulama",
+        content:
+          "Hesap sonucu rota çizimiyle uyuşmuyorsa, işaret hatası veya yanlış enlem kullanımı kontrol edilir.",
+        bulletPoints: [
+          "DLat ve departure işaretleri kontrol edilir",
+          "Ortalama enlem doğru alınır",
+          "Harita çizimiyle karşılaştırılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Sayısal uygulama, teoriyi doğrular.",
+      "Ortalama enlem hatası sonucu bozar.",
+      "Harita kontrolü zorunludur."
+    ]
+  },
+  "Kerterizle mevki tayini": {
+    title: "Kerterizle Mevki Tayini",
+    introduction:
+      "Kerterizle mevki tayini, sabit ve tanınabilir iki veya üç noktadan alınan kerterizlerin kesişimiyle gemi mevkisinin bulunmasıdır.",
+    sections: [
+      {
+        title: "Temel Yöntem",
+        content:
+          "En az iki kerteriz alınır ve haritada ilgili doğrular çizilir. Kesişim noktası gemi mevkisidir.",
+        image: chartPlotting,
+        imageAlt: "Kerterizlerle mevki tayini"
+      },
+      {
+        title: "Hata Kaynakları",
+        content:
+          "Kerteriz açılarının küçük olması, pusula hatası ve zaman farkı mevkiyi etkiler.",
+        bulletPoints: [
+          "Kerterizler mümkün olduğunca geniş açıyla alınır",
+          "Zaman farkı minimize edilir",
+          "Pusula sapmaları düzeltilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "İki veya üç kerterizle fix yapılır.",
+      "Açı ne kadar genişse doğruluk artar.",
+      "Zaman farkı azaltılmalıdır."
+    ]
+  },
+  "Mesafe + kerteriz fix": {
+    title: "Mesafe + Kerteriz Fix",
+    introduction:
+      "Tek bir sabit objeye olan mesafe ve kerteriz birlikte kullanılarak gemi mevkisi belirlenir.",
+    sections: [
+      {
+        title: "Uygulama",
+        content:
+          "Objeye olan mesafe, radar veya görsel yöntemlerle ölçülür; kerterizle birleştirilerek haritada tek bir nokta bulunur.",
+        image: radarDisplay,
+        imageAlt: "Mesafe ve kerterizle mevki tayini"
+      },
+      {
+        title: "Kullanım Alanı",
+        content:
+          "Kıyıya yakın seyirlerde veya sınırlı NAVAID bulunan bölgelerde hızlı mevki kontrolü sağlar.",
+        bulletPoints: [
+          "Radar mesafesi + pusula kerterizi",
+          "Hızlı doğrulama amacıyla kullanılır",
+          "Tek objeye bağlı olduğundan dikkat gerektirir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Mesafe ve kerteriz aynı anda alınmalıdır.",
+      "Radar ölçümü yaygın kullanılır.",
+      "Tek objeye bağlılık hata riskini artırır."
+    ]
+  },
+  "Paralel indeks": {
+    title: "Paralel İndeks",
+    introduction:
+      "Paralel indeks, geminin belirli bir hat boyunca emniyetli mesafede seyretmesini sağlayan bir izleme yöntemidir.",
+    sections: [
+      {
+        title: "Kullanım",
+        content:
+          "Haritada belirlenen emniyet hattı, rota çizgisine paralel olarak çizilir ve radar ekranında izlenir.",
+        image: radarDisplay,
+        imageAlt: "Paralel indeks uygulaması"
+      },
+      {
+        title: "Avantaj",
+        content:
+          "Kıyı yakınında veya dar sularda rota sapmalarını erken fark etmeyi sağlar.",
+        bulletPoints: [
+          "Dar sularda emniyet sağlar",
+          "Sürekli izleme kolaylığı sunar",
+          "Radar ile uygulanabilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Rota çizgisine paralel emniyet hattı oluşturulur.",
+      "Radar ile izlenir.",
+      "Kıyı seyri için pratik bir tekniktir."
+    ]
+  },
+  "Kıyı seyri teknikleri": {
+    title: "Kıyı Seyri Teknikleri",
+    introduction:
+      "Kıyı seyri, kıyıya yakın bölgelerde görsel referans ve harita bilgisiyle yürütülen seyirdir. Transitler, kerterizler ve clearing line’lar temel araçlardır.",
+    sections: [
+      {
+        title: "Temel Araçlar",
+        content:
+          "Transit hatları, emniyet hatları ve kerterizler birlikte kullanılır. Bu yöntemler mevki doğrulama ve emniyet sağlar.",
+        image: chartPlotting,
+        imageAlt: "Kıyı seyri teknikleri"
+      },
+      {
+        title: "Dikkat Edilecekler",
+        content:
+          "Görüş kısıtlıysa radar ve elektronik sistemlerle çapraz kontrol yapılmalıdır.",
+        bulletPoints: [
+          "Görsel referans + harita doğrulaması",
+          "Transit ve clearing line kullanımı",
+          "Elektronik sistemlerle kontrol"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Kıyı seyri görsel referansa dayanır.",
+      "Transit ve clearing line güvenlik sağlar.",
+      "Radar/ECDIS ile çapraz kontrol yapılır."
+    ]
+  },
+  "Rhumb line (loxodrom)": {
+    title: "Rhumb Line (Loxodrom)",
+    introduction:
+      "Loxodrom, sabit bir hakiki rota ile seyredilen hattır. Mercator haritalarında düz bir çizgi olarak görünür.",
+    sections: [
+      {
+        title: "Özellikleri",
+        content:
+          "Loxodrom, büyük daireye göre daha uzun olabilir ancak sabit rota nedeniyle uygulaması kolaydır.",
+        image: mercatorProjection,
+        imageAlt: "Loxodromun Mercator haritada gösterimi"
+      },
+      {
+        title: "Kullanım",
+        content:
+          "Kısa ve orta mesafelerde sabit rota kolaylığı nedeniyle tercih edilir.",
+        bulletPoints: [
+          "Sabit rota sağlar",
+          "Mercator haritada düz çizgidir",
+          "Uzun mesafede büyük daireye göre daha uzundur"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Loxodrom sabit rota hattıdır.",
+      "Mercator haritada düz çizgi olarak görünür.",
+      "Uzun mesafede verimliliği düşebilir."
+    ]
+  },
+  "GPS prensibi": {
+    title: "GPS Prensibi",
+    introduction:
+      "GPS, uydulardan gelen zaman bilgisiyle geminin üç boyutlu konumunu hesaplayan bir uydu navigasyon sistemidir.",
+    sections: [
+      {
+        title: "Temel Çalışma",
+        content:
+          "Alıcı, birden fazla uyduya olan sinyal süresi farkını ölçerek konumunu hesaplar.",
+        image: gpsSatellites,
+        imageAlt: "GPS uyduları ve konum belirleme"
+      },
+      {
+        title: "Seyirde Kullanım",
+        content:
+          "GPS, ECDIS ve diğer köprüüstü sistemlerine konum verisi sağlar.",
+        bulletPoints: [
+          "Uydu tabanlı konum",
+          "Zaman senkronizasyonu önemlidir",
+          "ECDIS ve radar entegrasyonu yaygındır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "GPS uydulardan zaman sinyali alır.",
+      "Konum trilaterasyonla bulunur.",
+      "Köprüüstü sistemlerinin ana veri kaynağıdır."
+    ]
+  },
+  "Trilaterasyon": {
+    title: "Trilaterasyon",
+    introduction:
+      "Trilaterasyon, bir noktanın konumunu mesafe ölçüleriyle belirleme yöntemidir. GPS sisteminin temel matematiksel prensibidir.",
+    sections: [
+      {
+        title: "GPS’te Trilaterasyon",
+        content:
+          "Uydu–alıcı arasındaki mesafeler küresel kesişim noktası verir. Saat hatası düzeltmesi için en az dört uydu gerekir.",
+        image: gpsSatellites,
+        imageAlt: "GPS trilaterasyon prensibi"
+      },
+      {
+        title: "Doğruluk",
+        content:
+          "Uydu geometrisi ve sinyal kalitesi doğruluğu belirler.",
+        bulletPoints: [
+          "En az 4 uydu gerekir",
+          "Saat hatası düzeltmesi yapılır",
+          "Geometri doğruluğu etkiler"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Trilaterasyon mesafe ölçümüne dayanır.",
+      "GPS’te dört uydu kullanılır.",
+      "Geometri doğruluğu kritik önemdedir."
+    ]
+  },
+  "HDOP": {
+    title: "HDOP",
+    introduction:
+      "HDOP (Horizontal Dilution of Precision), uydu geometrisinin yatay konum doğruluğu üzerindeki etkisini gösterir.",
+    sections: [
+      {
+        title: "Anlamı",
+        content:
+          "Düşük HDOP değeri, uyduların iyi dağıldığını ve yatay doğruluğun yüksek olduğunu gösterir.",
+        image: gpsSatellites,
+        imageAlt: "HDOP kavramı"
+      },
+      {
+        title: "Operasyonel Etki",
+        content:
+          "HDOP yükseldikçe GPS konumu daha az güvenilir olur.",
+        bulletPoints: [
+          "Düşük HDOP = daha iyi doğruluk",
+          "Uydu dağılımı belirleyicidir",
+          "Yoğun kıyı yapıları doğruluğu etkileyebilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "HDOP yatay doğruluk göstergesidir.",
+      "Değer düştükçe doğruluk artar.",
+      "Uydu geometrisi kritik rol oynar."
+    ]
+  },
+  "PDOP": {
+    title: "PDOP",
+    introduction:
+      "PDOP (Position Dilution of Precision), hem yatay hem düşey bileşenleri kapsayan genel konum doğruluğu göstergesidir.",
+    sections: [
+      {
+        title: "Kapsam",
+        content:
+          "PDOP, uydu geometrisinin toplam konum hassasiyetine etkisini temsil eder.",
+        image: gpsSatellites,
+        imageAlt: "PDOP kavramı"
+      },
+      {
+        title: "Seyirde Kullanım",
+        content:
+          "PDOP değeri düşük olduğunda konum verisi daha güvenilirdir.",
+        bulletPoints: [
+          "Hem yatay hem düşey etkiler",
+          "Düşük değer daha güvenilir konum",
+          "GNSS alıcılarında izlenebilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "PDOP genel konum doğruluğu göstergesidir.",
+      "Uydu geometrisi belirleyicidir.",
+      "Düşük PDOP tercih edilir."
+    ]
+  },
+  "Radar prensibi": {
+    title: "Radar Prensibi",
+    introduction:
+      "Radar, elektromanyetik dalga gönderip yansımasını ölçerek hedeflerin uzaklık ve yönünü belirler.",
+    sections: [
+      {
+        title: "Çalışma Mantığı",
+        content:
+          "Gönderilen darbe sinyalinin geri dönüş süresi mesafeyi, anten yönü ise kerterizi verir.",
+        image: radarDisplay,
+        imageAlt: "Radar çalışma prensibi"
+      },
+      {
+        title: "Seyirde Önemi",
+        content:
+          "Kısıtlı görüşte hedef tespiti ve mevki doğrulaması için temel araçtır.",
+        bulletPoints: [
+          "Mesafe ve kerteriz sağlar",
+          "Kötü görüşte kritik önemdedir",
+          "ARPA ile hedef takibi yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Radar yansıma süresine göre mesafe ölçer.",
+      "Anten yönü kerterizi verir.",
+      "Kısıtlı görüşte ana araçtır."
+    ]
+  },
+  "Radar ile mevki tayini": {
+    title: "Radar ile Mevki Tayini",
+    introduction:
+      "Radar mevki tayini, kıyı hattı, radar mesafeleri ve kerterizleri kullanılarak geminin yerinin belirlenmesidir.",
+    sections: [
+      {
+        title: "Yöntemler",
+        content:
+          "Mesafe–kerteriz, iki mesafe veya kıyı hattı silueti kullanılarak fix yapılabilir.",
+        image: radarDisplay,
+        imageAlt: "Radar ile mevki tayini"
+      },
+      {
+        title: "Dikkat Edilecekler",
+        content:
+          "Radar hataları (index error, range error) ve deniz durumu etkileri göz önüne alınmalıdır.",
+        bulletPoints: [
+          "Radar mesafe düzeltmeleri kontrol edilir",
+          "Kıyı hattı konturu doğrulanır",
+          "Zaman farkı minimize edilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Radar, mesafe ve kerterizle fix sağlar.",
+      "Kıyı hattı konturu kullanılabilir.",
+      "Radar hataları düzeltilmelidir."
+    ]
+  },
+  "Paralel indeks (radar)": {
+    title: "Paralel İndeks (Radar)",
+    introduction:
+      "Radar paralel indeks, radar ekranında rota çizgisine paralel emniyet hattı oluşturarak geminin güvenli bölgede kalmasını sağlar.",
+    sections: [
+      {
+        title: "Uygulama",
+        content:
+          "Seçilen hedefe belirli mesafede paralel çizgi çizilir ve gemi bu çizgiye göre izlenir.",
+        image: radarDisplay,
+        imageAlt: "Radar paralel indeks"
+      },
+      {
+        title: "Avantaj",
+        content:
+          "Dar sularda ve kıyıya yakın seyirde hatayı erken tespit etmeye yardımcı olur.",
+        bulletPoints: [
+          "Radar ekranında sabit referans",
+          "Sürekli izleme kolaylığı",
+          "Kıyı seyri emniyeti artırır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Radar paralel indeks, emniyet hattı oluşturur.",
+      "Dar sularda pratik bir izleme yöntemidir.",
+      "Sürekli doğrulama sağlar."
+    ]
+  },
+  "ECDIS": {
+    title: "ECDIS",
+    introduction:
+      "ECDIS (Electronic Chart Display and Information System), elektronik harita üzerinde gemi mevki ve rota bilgilerinin takip edildiği ana navigasyon sistemidir.",
+    sections: [
+      {
+        title: "Temel İşlevler",
+        content:
+          "ENC verileri, sensör bilgileri ve alarmlar ECDIS üzerinde entegre olarak izlenir.",
+        image: ecdisDisplay,
+        imageAlt: "ECDIS ekranı"
+      },
+      {
+        title: "Emniyet",
+        content:
+          "Safety contour, safety depth ve XTE limitleri ECDIS üzerinden kontrol edilir.",
+        bulletPoints: [
+          "ENC güncelliği kritik",
+          "Alarm ayarları dikkatle yapılır",
+          "Sensör entegrasyonu doğrulanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "ECDIS, elektronik harita sistemidir.",
+      "Sensör ve alarm entegrasyonu sağlar.",
+      "ENC güncelliği emniyet için kritiktir."
+    ]
+  },
+  "Rota planlama": {
+    title: "Rota Planlama",
+    introduction:
+      "Rota planlama, seyrin emniyetli, verimli ve mevzuata uygun şekilde yürütülmesi için önceden yapılan hazırlıktır.",
+    sections: [
+      {
+        title: "Planlama Adımları",
+        content:
+          "Rota, waypoint’ler ve emniyet limitleri belirlenir; alternatif ve acil durum rotaları hazırlanır.",
+        image: chartPlotting,
+        imageAlt: "Rota planlama"
+      },
+      {
+        title: "Kontrol",
+        content:
+          "Rota, harita yayınları ve meteorolojik bilgilerle doğrulanır.",
+        bulletPoints: [
+          "Waypoint ve XTE limitleri belirlenir",
+          "Tehlikeler işaretlenir",
+          "Alternatif rota planlanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Rota planlama emniyetin temelidir.",
+      "Alternatif ve acil durum rotası hazırlanır.",
+      "Yayın ve meteoroloji güncel olmalıdır."
+    ]
+  },
+  "XTE": {
+    title: "XTE (Cross Track Error)",
+    introduction:
+      "XTE, geminin planlanan rotadan sağa veya sola olan enine sapma mesafesini ifade eder.",
+    sections: [
+      {
+        title: "Tanım",
+        content:
+          "XTE, rota hattına olan dik mesafedir ve genellikle ECDIS üzerinde izlenir.",
+        image: ecdisDisplay,
+        imageAlt: "XTE gösterimi"
+      },
+      {
+        title: "Seyirde Kullanım",
+        content:
+          "XTE sınırları, emniyetli koridor oluşturmak için belirlenir.",
+        bulletPoints: [
+          "XTE limitleri rota planında belirlenir",
+          "Sapma artarsa müdahale edilir",
+          "Alarm sınırları dikkatle ayarlanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "XTE, rota hattından enine sapmadır.",
+      "ECDIS üzerinde izlenir.",
+      "Limitler emniyetli koridor sağlar."
+    ]
+  },
+  "ETA": {
+    title: "ETA (Estimated Time of Arrival)",
+    introduction:
+      "ETA, geminin varış noktasına ulaşacağı tahmini zamanı ifade eder ve seyir planlamasında kritik bir göstergedir.",
+    sections: [
+      {
+        title: "Hesap Mantığı",
+        content:
+          "ETA, planlanan hız ve kalan mesafe bilgilerine göre hesaplanır ve güncel seyir performansı ile düzenli güncellenir.",
+        image: chartPlotting,
+        imageAlt: "ETA planlaması"
+      },
+      {
+        title: "Operasyonel Etki",
+        content:
+          "ETA, liman planlaması, bunker yönetimi ve operasyon koordinasyonu için kullanılır.",
+        bulletPoints: [
+          "Hız değişimi ETA’yı etkiler",
+          "Meteoroloji ve akıntı dikkate alınır",
+          "Günlük olarak güncellenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "ETA, varış zamanını gösterir.",
+      "Hız ve mesafe değişimleri ETA’yı değiştirir.",
+      "Operasyon planlamasında temel göstergedir."
+    ]
+  },
+  "Turn radius": {
+    title: "Turn Radius",
+    introduction:
+      "Turn radius, geminin dönüş manevrası sırasında izlediği dairenin yarıçapıdır. Hız, dümen açısı ve gemi özelliklerine bağlıdır.",
+    sections: [
+      {
+        title: "Etkileyen Faktörler",
+        content:
+          "Hız arttıkça dönüş yarıçapı büyür. Düşük hız ve yüksek dümen açısı daha dar dönüş sağlar.",
+        image: autopilotControl,
+        imageAlt: "Dönüş yarıçapı ve manevra"
+      },
+      {
+        title: "Seyirde Önemi",
+        content:
+          "Rota planlamasında dönüş noktaları ve emniyet mesafeleri belirlenirken dikkate alınır.",
+        bulletPoints: [
+          "Yüksek hız = geniş dönüş",
+          "Dümen açısı dönüşü etkiler",
+          "Dönüş öncesi mesafe planlanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Turn radius, dönüş manevrasının yarıçapıdır.",
+      "Hız ve dümen açısı temel etkendir.",
+      "Rota planlamasında dikkate alınır."
+    ]
+  },
+  "Elektronik seyirde çapraz kontrol": {
+    title: "Elektronik Seyirde Çapraz Kontrol",
+    introduction:
+      "Elektronik seyirde çapraz kontrol, GPS, radar, görsel ve geleneksel yöntemlerin birbirini doğrulamasıyla yapılır.",
+    sections: [
+      {
+        title: "Çapraz Kontrol Yöntemleri",
+        content:
+          "ECDIS üzerindeki mevki, radar mesafeleri ve görsel kerterizlerle karşılaştırılır.",
+        image: ecdisDisplay,
+        imageAlt: "Elektronik seyirde çapraz kontrol"
+      },
+      {
+        title: "Emniyet Katkısı",
+        content:
+          "Tek bir sensöre bağımlılığı azaltır ve sistem hatalarını erken fark ettirir.",
+        bulletPoints: [
+          "GPS + radar karşılaştırması",
+          "Görsel kerteriz ile doğrulama",
+          "Alarm ve sensör sapmaları izlenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Çapraz kontrol, hataları erken yakalar.",
+      "Farklı sensörler birlikte kullanılmalıdır.",
+      "Emniyetli seyir için zorunlu bir uygulamadır."
+    ]
+  },
+  "Gelgitin fiziksel mantığı": {
+    title: "Gelgitin Fiziksel Mantığı",
+    introduction:
+      "Gelgit, Ay ve Güneş’in yerçekimsel etkisiyle deniz seviyesinin periyodik yükselip alçalmasıdır.",
+    sections: [
+      {
+        title: "Temel Etki",
+        content:
+          "Ay’ın etkisi daha güçlüdür; Güneş ise gelgit genliğini artırıp azaltabilir.",
+        image: tideCurrent,
+        imageAlt: "Gelgit fiziksel mantığı"
+      },
+      {
+        title: "Seyirde Önemi",
+        content:
+          "Gelgit, liman giriş-çıkış zamanlarını ve UKC hesaplarını doğrudan etkiler.",
+        bulletPoints: [
+          "Yerçekimi etkisi temel faktördür",
+          "Ay–Güneş hizalanması genliği değiştirir",
+          "Derinlik planlamasında kullanılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Gelgit yerçekimi etkisiyle oluşur.",
+      "Ay, Güneş’e göre daha etkili rol oynar.",
+      "Seyir planlamasında kritik veridir."
+    ]
+  },
+  "Spring tide – Neap tide": {
+    title: "Spring Tide – Neap Tide",
+    introduction:
+      "Spring tide, Ay ve Güneş’in aynı doğrultuda olduğu durumda oluşan yüksek genlikli gelgittir. Neap tide ise dik açı konumunda oluşan düşük genlikli gelgittir.",
+    sections: [
+      {
+        title: "Spring Tide",
+        content:
+          "Yeni ay ve dolunay dönemlerinde gelgit genliği maksimum olur.",
+        image: tideCurrent,
+        imageAlt: "Spring tide"
+      },
+      {
+        title: "Neap Tide",
+        content:
+          "İlk ve son dördün dönemlerinde gelgit genliği minimum seviyededir.",
+        bulletPoints: [
+          "Spring: yüksek genlik",
+          "Neap: düşük genlik",
+          "Planlama için takvim bilgisi önemlidir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Spring tide: maksimum genlik.",
+      "Neap tide: minimum genlik.",
+      "Ay evreleri gelgit genliğini belirler."
+    ]
+  },
+  "Chart datum (LAT)": {
+    title: "Chart Datum (LAT)",
+    introduction:
+      "Chart datum, derinliklerin ve gelgit tablolarının referans aldığı sıfır seviyedir. Birçok ülkede LAT (Lowest Astronomical Tide) kullanılır.",
+    sections: [
+      {
+        title: "LAT Nedir?",
+        content:
+          "LAT, astronomik olarak beklenen en düşük gelgit seviyesidir.",
+        image: tideCurrent,
+        imageAlt: "Chart datum ve LAT"
+      },
+      {
+        title: "Seyirde Kullanım",
+        content:
+          "Haritadaki derinlikler LAT’a göre verilir. Gerçek derinlik için gelgit yüksekliği eklenir.",
+        bulletPoints: [
+          "Derinlikler datum’a göre verilir",
+          "Gelgit yüksekliği eklenir",
+          "Emniyetli UKC hesapları yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Chart datum derinliklerin referansıdır.",
+      "LAT en düşük astronomik gelgit seviyesidir.",
+      "Gerçek derinlik için gelgit eklenir."
+    ]
+  },
+  "Tidal table okuma": {
+    title: "Tidal Table Okuma",
+    introduction:
+      "Gelgit tabloları, belirli bir liman veya referans noktası için yüksek ve alçak su zamanlarını ve yüksekliklerini verir.",
+    sections: [
+      {
+        title: "Tablo İçeriği",
+        content:
+          "Tabloda tarih, HW/LW zamanları ve yükseklikleri yer alır. Sekonder limanlar için düzeltmeler yapılır.",
+        image: tideCurrent,
+        imageAlt: "Gelgit tablosu okuma"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Zaman ve yükseklik düzeltmeleri yapılarak hedef liman için doğru değer bulunur.",
+        bulletPoints: [
+          "HW/LW zamanları okunur",
+          "Sekonder liman düzeltmeleri uygulanır",
+          "Saat dilimi kontrol edilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Gelgit tabloları HW/LW zamanlarını verir.",
+      "Sekonder limanlar için düzeltme gerekir.",
+      "Saat dilimi ve datum kontrol edilir."
+    ]
+  },
+  "Height of tide hesapları": {
+    title: "Height of Tide Hesapları",
+    introduction:
+      "Height of tide, belirli bir zamanda gelgit yüksekliğini bulma işlemidir. Gelgit tablosu verileri temel alınır.",
+    sections: [
+      {
+        title: "Hesap Yaklaşımı",
+        content:
+          "HW ve LW arasındaki zaman diliminde interpolasyon yapılır. 12’ler kuralı pratik bir yöntemdir.",
+        image: tideCurrent,
+        imageAlt: "Gelgit yüksekliği hesapları"
+      },
+      {
+        title: "Dikkat Noktaları",
+        content:
+          "Gelgit eğrisi her zaman doğrusal değildir; yerel farklar göz önüne alınmalıdır.",
+        bulletPoints: [
+          "Interpolasyon gerekir",
+          "12’ler kuralı pratik yaklaşım sağlar",
+          "Yerel şartlar dikkate alınır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Gelgit yüksekliği interpolasyonla bulunur.",
+      "12’ler kuralı yaygın pratik yöntemdir.",
+      "Yerel özellikler sonucu etkiler."
+    ]
+  },
+  "12'ler kuralı": {
+    title: "12'ler Kuralı",
+    introduction:
+      "12’ler kuralı, HW ile LW arasındaki gelgit yüksekliğinin zamana göre yaklaşık dağılımını verir.",
+    sections: [
+      {
+        title: "Kuralın Mantığı",
+        content:
+          "6 saatlik gelgit süresi 6 eşit parçaya ayrılır ve yükseklik değişimi 1-2-3-3-2-1 oranında paylaştırılır.",
+        image: tideCurrent,
+        imageAlt: "12'ler kuralı"
+      },
+      {
+        title: "Kullanım",
+        content:
+          "Hızlı ve pratik hesap için kullanılır; hassas sonuç gerektiren durumlarda tablo eğrisi tercih edilir.",
+        bulletPoints: [
+          "1/12, 2/12, 3/12, 3/12, 2/12, 1/12",
+          "Yaklaşık sonuç verir",
+          "Hızlı hesap için uygundur"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Gelgit yüksekliği 1-2-3-3-2-1 oranında değişir.",
+      "Pratik ve hızlı bir yöntemdir.",
+      "Hassasiyet gerektiğinde ek doğrulama yapılır."
+    ]
+  },
+  "İnterpolasyon": {
+    title: "İnterpolasyon",
+    introduction:
+      "İnterpolasyon, iki bilinen değer arasındaki ara değeri hesaplama yöntemidir. Gelgit hesaplarında sık kullanılır.",
+    sections: [
+      {
+        title: "Lineer Yaklaşım",
+        content:
+          "Basit uygulamalarda lineer interpolasyon yeterlidir. Zaman ve yükseklik düzeltmeleri bu şekilde yapılır.",
+        image: tideCurrent,
+        imageAlt: "Gelgit interpolasyonu"
+      },
+      {
+        title: "Uygulama Notu",
+        content:
+          "Gelgit eğrisi doğrusal olmadığından, kural ve tablolarla çapraz kontrol yapılmalıdır.",
+        bulletPoints: [
+          "Lineer yaklaşım pratik sağlar",
+          "Gelgit eğrisi doğrusal değildir",
+          "Hassasiyet için kontrol yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Interpolasyon ara değer bulma yöntemidir.",
+      "Gelgit hesaplarında yaygın kullanılır.",
+      "Çapraz kontrol önerilir."
+    ]
+  },
+  "Tidal stream": {
+    title: "Tidal Stream",
+    introduction:
+      "Tidal stream, gelgitin oluşturduğu akıntıdır. Zamanla yön ve hız değiştirir.",
+    sections: [
+      {
+        title: "Akıntı Bilgisi",
+        content:
+          "Akıntı tablosu veya akıntı atlasları kullanılarak set ve drift belirlenir.",
+        image: tideCurrent,
+        imageAlt: "Tidal stream akıntısı"
+      },
+      {
+        title: "Seyirde Etki",
+        content:
+          "Akıntı, COG ve SOG değerlerini değiştirir; rota düzeltmesi gerektirir.",
+        bulletPoints: [
+          "Zamana bağlı yön değişimi",
+          "Set ve drift belirlenir",
+          "Rota düzeltmesi yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Tidal stream gelgit kaynaklı akıntıdır.",
+      "Set ve drift ile ifade edilir.",
+      "Rota düzeltmesi gerektirir."
+    ]
+  },
+  "Set – drift": {
+    title: "Set – Drift",
+    introduction:
+      "Set, akıntının yönünü; drift ise akıntının hızını ifade eder. Seyirde vektörel düzeltme yapılır.",
+    sections: [
+      {
+        title: "Tanım",
+        content:
+          "Set gerçek kuzeye göre yön, drift ise deniz mili/saat cinsinden hızdır.",
+        image: tideCurrent,
+        imageAlt: "Set ve drift"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Set ve drift, rota vektörüyle birleştirilerek gerçek iz (COG) bulunur.",
+        bulletPoints: [
+          "Set = yön",
+          "Drift = hız",
+          "Vektör toplaması yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Set yönü, drift hızı ifade eder.",
+      "Rota düzeltmesi için birlikte kullanılır.",
+      "Vektörel hesap esastır."
+    ]
+  },
+  "UKC + gelgit hesapları": {
+    title: "UKC + Gelgit Hesapları",
+    introduction:
+      "UKC (Under Keel Clearance), gemi omurgası ile deniz tabanı arasındaki emniyetli mesafedir. Gelgit, UKC hesaplarında doğrudan etkilidir.",
+    sections: [
+      {
+        title: "Hesap Yaklaşımı",
+        content:
+          "Harita derinliği, gelgit yüksekliği ve gemi draftı birlikte değerlendirilir.",
+        image: safetyEquipment,
+        imageAlt: "UKC ve gelgit"
+      },
+      {
+        title: "Emniyet",
+        content:
+          "Minimum UKC limitleri şirket prosedürlerine göre belirlenir.",
+        bulletPoints: [
+          "Derinlik + gelgit yüksekliği",
+          "Draft ve squat dikkate alınır",
+          "Minimum UKC şartı kontrol edilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "UKC, emniyetli seyir için temel kriterdir.",
+      "Gelgit yüksekliği UKC’yi artırabilir.",
+      "Squat etkisi dikkate alınmalıdır."
+    ]
+  },
+  "Tidal window (liman giriş zamanı)": {
+    title: "Tidal Window (Liman Giriş Zamanı)",
+    introduction:
+      "Tidal window, geminin limana güvenli şekilde giriş/çıkış yapabileceği gelgit zaman aralığıdır.",
+    sections: [
+      {
+        title: "Planlama",
+        content:
+          "Draft ve UKC gereksinimleri dikkate alınarak uygun zaman aralığı belirlenir.",
+        image: tideCurrent,
+        imageAlt: "Tidal window planlaması"
+      },
+      {
+        title: "Operasyonel Etki",
+        content:
+          "Liman planlaması, römorkör ve pilot organizasyonu tidal window’a göre yapılır.",
+        bulletPoints: [
+          "UKC limitleri hesaplanır",
+          "Gelgit tablosu kullanılır",
+          "Operasyonlar zamanlanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Tidal window, giriş/çıkış için uygun zaman aralığıdır.",
+      "Draft ve UKC hesaplarına göre belirlenir.",
+      "Operasyon planlaması için kritiktir."
+    ]
+  },
+  "Rüzgârın gemiye etkisi": {
+    title: "Rüzgârın Gemiye Etkisi",
+    introduction:
+      "Rüzgâr, gemi üzerinde sürükleme ve yan kuvvet oluşturarak rota ve hız üzerinde etki yaratır.",
+    sections: [
+      {
+        title: "Ana Etkiler",
+        content:
+          "Yan rüzgâr leeway oluşturur; baş rüzgâr hız kaybına neden olabilir.",
+        image: yonWindDrift,
+        imageAlt: "Rüzgâr etkisi"
+      },
+      {
+        title: "Seyir Düzeltmesi",
+        content:
+          "Rüzgâr etkisi, rota ve hız planında düzeltme gerektirir.",
+        bulletPoints: [
+          "Yan rüzgâr leeway üretir",
+          "Baş rüzgâr hız düşürür",
+          "COG ve ETA etkilenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Rüzgâr rota ve hız üzerinde etkilidir.",
+      "Leeway ve hız kaybı oluşur.",
+      "Seyir düzeltmesi yapılmalıdır."
+    ]
+  },
+  "Leeway kavramı": {
+    title: "Leeway Kavramı",
+    introduction:
+      "Leeway, rüzgâr etkisiyle geminin rota hattından yana kaymasıdır. Yön olarak rüzgâr altına doğru oluşur.",
+    sections: [
+      {
+        title: "Tanım",
+        content:
+          "Leeway açısı, geminin baş hattı ile gerçek iz arasında oluşan açıdır.",
+        image: yonWindDrift,
+        imageAlt: "Leeway kavramı"
+      },
+      {
+        title: "Etkileyen Faktörler",
+        content:
+          "Rüzgâr şiddeti, gemi formu ve sürat leeway’i değiştirir.",
+        bulletPoints: [
+          "Rüzgâr şiddeti artınca leeway artar",
+          "Yük durumu etkilidir",
+          "Sürat arttıkça leeway azalabilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Leeway, rüzgâr kaynaklı yan kaymadır.",
+      "Rüzgâr şiddeti ve gemi formu etkiler.",
+      "Rota düzeltmesi için dikkate alınır."
+    ]
+  },
+  "Leeway hesapları": {
+    title: "Leeway Hesapları",
+    introduction:
+      "Leeway hesapları, rüzgâr etkisiyle oluşan sapmanın rota planına nasıl yansıtılacağını belirler.",
+    sections: [
+      {
+        title: "Pratik Yaklaşım",
+        content:
+          "Leeway açısı deneysel değerler, gemi verileri veya operasyonel tablolarla belirlenir.",
+        image: yonWindDrift,
+        imageAlt: "Leeway hesapları"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Leeway açısı, rota düzeltmesine eklenerek hedef COG korunur.",
+        bulletPoints: [
+          "Deneysel değerler kullanılır",
+          "Rüzgâr şiddeti ve yönü değerlendirilir",
+          "Rota düzeltmesi yapılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Leeway hesapları deneyime dayanır.",
+      "Rota düzeltmesi için kullanılır.",
+      "Rüzgâr koşullarıyla birlikte değerlendirilir."
+    ]
+  },
+  "Rüzgâr + akıntı + gemi hareketi": {
+    title: "Rüzgâr + Akıntı + Gemi Hareketi",
+    introduction:
+      "Gerçek rota ve hız, gemi hareketi vektörü ile rüzgâr ve akıntı vektörlerinin birleşimidir.",
+    sections: [
+      {
+        title: "Vektör Toplamı",
+        content:
+          "COG ve SOG, gemi hız vektörü ile set–drift ve rüzgâr etkisinin birleşimiyle elde edilir.",
+        image: yonWindDrift,
+        imageAlt: "Rüzgâr ve akıntı vektörleri"
+      },
+      {
+        title: "Seyirde Uygulama",
+        content:
+          "Rota düzeltmeleri bu birleşik etki hesaplanarak yapılır.",
+        bulletPoints: [
+          "Gemi vektörü + akıntı vektörü",
+          "Rüzgâr etkisi leeway ile eklenir",
+          "COG/SOG güncellenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Gerçek rota vektörlerin toplamıdır.",
+      "Akıntı ve rüzgâr etkisi birlikte değerlendirilir.",
+      "COG/SOG bu bileşime göre hesaplanır."
+    ]
+  },
+  "Dalga etkileri": {
+    title: "Dalga Etkileri",
+    introduction:
+      "Dalga, geminin hızını düşürür, yakıt tüketimini artırır ve manevra kabiliyetini etkiler.",
+    sections: [
+      {
+        title: "Operasyonel Sonuçlar",
+        content:
+          "Baş–pruva dalgası hız kaybı yaratır; yandan dalga yalpa riskini artırır.",
+        image: weatherSystems,
+        imageAlt: "Dalga etkileri"
+      },
+      {
+        title: "Seyirde Önlem",
+        content:
+          "Hız ve rota ayarlanarak dalga etkisi minimize edilir.",
+        bulletPoints: [
+          "Hız kaybı planlamaya dahil edilir",
+          "Rota, dalga yönüne göre düzenlenir",
+          "Gemi emniyeti önceliklidir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Dalga hız ve yakıt tüketimini etkiler.",
+      "Yalpa ve vurma riskini artırır.",
+      "Rota ve hız ayarı gerektirir."
+    ]
+  },
+  "Heavy weather navigation": {
+    title: "Heavy Weather Navigation",
+    introduction:
+      "Ağır hava seyri, gemi emniyetini korumak için hız ve rota yönetiminin özel kurallarla yapıldığı seyirdir.",
+    sections: [
+      {
+        title: "Temel Yaklaşım",
+        content:
+          "Gemiye binen dalga yükü azaltılır, güvenli hızda seyir yapılır.",
+        image: weatherSystems,
+        imageAlt: "Ağır hava seyri"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Hız azaltma, rota değişikliği ve gerektiğinde heaving-to uygulanabilir.",
+        bulletPoints: [
+          "Hız düşürülür",
+          "Dalga yönüne göre rota ayarlanır",
+          "Yapısal emniyet önceliklidir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Ağır hava seyri emniyet odaklıdır.",
+      "Hız ve rota kontrollü yönetilir.",
+      "Gemi yapısal emniyeti önceliklidir."
+    ]
+  },
+  "Fırtınada rota ve hız kararı": {
+    title: "Fırtınada Rota ve Hız Kararı",
+    introduction:
+      "Fırtına koşullarında rota ve hız seçimi, geminin stabilitesi ve yapısal emniyeti için kritik bir karardır.",
+    sections: [
+      {
+        title: "Karar Kriterleri",
+        content:
+          "Dalga yönü, gemi tipi ve yük durumu dikkate alınır.",
+        image: weatherSystems,
+        imageAlt: "Fırtınada rota ve hız"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Gerekirse hız düşürülür, rota dalgaya uygun açıyla düzenlenir.",
+        bulletPoints: [
+          "Yan dalgadan kaçınılır",
+          "Hız düşürülür",
+          "Gemi stabilitesi izlenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Fırtına seyri emniyet merkezlidir.",
+      "Dalga yönü ve gemi tipi belirleyicidir.",
+      "Hız ve rota birlikte optimize edilir."
+    ]
+  },
+  "IMO A.893(21)": {
+    title: "IMO A.893(21)",
+    introduction:
+      "IMO A.893(21) kararı, gemilerde passage planning sürecinin standartlarını belirler ve dört temel aşamayı tanımlar.",
+    sections: [
+      {
+        title: "Temel Aşamalar",
+        content:
+          "Appraisal, Planning, Execution ve Monitoring adımları zorunlu kabul edilir.",
+        image: chartPlotting,
+        imageAlt: "IMO A.893(21) passage planning"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Planlama süreci seyir emniyeti, personel koordinasyonu ve kaynak kullanımını kapsar.",
+        bulletPoints: [
+          "Standart süreç yaklaşımı",
+          "Emniyet odaklı planlama",
+          "Dokümantasyon zorunluluğu"
+        ]
+      }
+    ],
+    keyPoints: [
+      "IMO A.893(21) passage planning standardıdır.",
+      "Dört aşamalı süreç tanımlar.",
+      "Emniyet ve dokümantasyon şarttır."
+    ]
+  },
+  "Appraisal": {
+    title: "Appraisal",
+    introduction:
+      "Appraisal, passage planlama sürecinin bilgi toplama ve değerlendirme aşamasıdır.",
+    sections: [
+      {
+        title: "Girdi Bilgileri",
+        content:
+          "Haritalar, yayınlar, meteoroloji ve trafik bilgileri değerlendirilir.",
+        image: navtexReceiver,
+        imageAlt: "Appraisal bilgileri"
+      },
+      {
+        title: "Amaç",
+        content:
+          "Planlama için gerekli riskleri ve kısıtları belirlemektir.",
+        bulletPoints: [
+          "Harita ve yayın güncelliği kontrol edilir",
+          "Meteoroloji raporları incelenir",
+          "Yerel düzenlemeler değerlendirilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Appraisal bilgi toplama aşamasıdır.",
+      "Harita, meteoroloji ve trafik bilgileri değerlendirilir.",
+      "Riskler bu aşamada belirlenir."
+    ]
+  },
+  "Planning": {
+    title: "Planning",
+    introduction:
+      "Planning aşamasında rota detaylandırılır, waypoint’ler belirlenir ve emniyet limitleri tanımlanır.",
+    sections: [
+      {
+        title: "Rota Detayı",
+        content:
+          "Rota çizilir, tehlikeler işaretlenir ve emniyet konturları belirlenir.",
+        image: chartPlotting,
+        imageAlt: "Planning aşaması"
+      },
+      {
+        title: "Dokümantasyon",
+        content:
+          "Planlama kayıt altına alınır ve köprüüstü ekibiyle paylaşılır.",
+        bulletPoints: [
+          "Waypoint listesi oluşturulur",
+          "Alternatif rotalar eklenir",
+          "Emniyet limitleri tanımlanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Planning, rota detaylarının belirlendiği aşamadır.",
+      "Waypoint ve emniyet limitleri tanımlanır.",
+      "Plan dokümante edilir."
+    ]
+  },
+  "Execution": {
+    title: "Execution",
+    introduction:
+      "Execution, planlanan rotanın uygulanması ve gerekli düzeltmelerin yapılması aşamasıdır.",
+    sections: [
+      {
+        title: "Uygulama",
+        content:
+          "Hız, rota ve vardiya düzeni plan doğrultusunda yürütülür.",
+        image: autopilotControl,
+        imageAlt: "Execution aşaması"
+      },
+      {
+        title: "Değişiklik Yönetimi",
+        content:
+          "Meteoroloji veya trafik durumuna göre plan güncellenebilir.",
+        bulletPoints: [
+          "Plan dışı değişiklikler kaydedilir",
+          "Emniyet önceliklidir",
+          "Köprüüstü bilgilendirilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Execution planın uygulama aşamasıdır.",
+      "Gerekirse plan güncellenir.",
+      "Tüm değişiklikler kayıt altına alınır."
+    ]
+  },
+  "Monitoring": {
+    title: "Monitoring",
+    introduction:
+      "Monitoring, seyrin planla uyumlu şekilde ilerlediğinin sürekli izlenmesidir.",
+    sections: [
+      {
+        title: "Sürekli İzleme",
+        content:
+          "XTE, hız ve mevki bilgileri izlenir; sapmalar anında düzeltilir.",
+        image: ecdisDisplay,
+        imageAlt: "Monitoring aşaması"
+      },
+      {
+        title: "Raporlama",
+        content:
+          "Seyir kayıtları tutulur ve sapmalar raporlanır.",
+        bulletPoints: [
+          "Plan–gerçek karşılaştırması yapılır",
+          "XTE limitleri takip edilir",
+          "Seyir kayıtları düzenli tutulur"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Monitoring, sürekli takip aşamasıdır.",
+      "Sapmalar anında düzeltilir.",
+      "Kayıt ve raporlama zorunludur."
+    ]
+  },
+  "UKC ve squat": {
+    title: "UKC ve Squat",
+    introduction:
+      "Squat, geminin dar ve sığ sularda hız nedeniyle suya gömülmesi sonucu draftın artmasıdır. UKC hesaplarında kritik etkendir.",
+    sections: [
+      {
+        title: "Squat Etkisi",
+        content:
+          "Hız arttıkça squat artar. Dar kanal ve sığ sularda etki belirginleşir.",
+        image: safetyEquipment,
+        imageAlt: "Squat ve UKC"
+      },
+      {
+        title: "UKC Yönetimi",
+        content:
+          "Squat hesapları eklenerek minimum UKC korunur.",
+        bulletPoints: [
+          "Hız kontrolü squatı azaltır",
+          "Sığ sularda daha yüksek risk",
+          "UKC limitleri uygulanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Squat, draftı artırır.",
+      "Hız ve su derinliği squatı etkiler.",
+      "UKC hesaplarında mutlaka dikkate alınır."
+    ]
+  },
+  "Bridge Resource Management (BRM)": {
+    title: "Bridge Resource Management (BRM)",
+    introduction:
+      "BRM, köprüüstü ekibinin iletişim, görev paylaşımı ve karar süreçlerini emniyet odaklı yönetmesini sağlar.",
+    sections: [
+      {
+        title: "Temel İlkeler",
+        content:
+          "Açık iletişim, görev dağılımı ve çapraz kontrol BRM’nin temelidir.",
+        image: vhfRadio,
+        imageAlt: "BRM iletişimi"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Kritik manevralarda ekip koordinasyonu artırılır.",
+        bulletPoints: [
+          "Görev paylaşımı net yapılır",
+          "Karar süreçleri paylaşılır",
+          "Çapraz kontrol uygulanır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "BRM ekip koordinasyonunu güçlendirir.",
+      "İletişim ve görev paylaşımı esastır.",
+      "Emniyeti artırır."
+    ]
+  },
+  "PSC bakış açısı": {
+    title: "PSC Bakış Açısı",
+    introduction:
+      "Port State Control (PSC), liman otoritesinin gemi emniyetini ve mevzuata uyumu denetlediği süreçtir.",
+    sections: [
+      {
+        title: "Denetim Konuları",
+        content:
+          "Seyir planı, güncel haritalar, köprüüstü prosedürleri ve emniyet ekipmanları incelenir.",
+        image: safetyEquipment,
+        imageAlt: "PSC denetimi"
+      },
+      {
+        title: "Hazırlık",
+        content:
+          "Dokümantasyon ve ekipman güncelliği PSC denetimi için kritiktir.",
+        bulletPoints: [
+          "Seyir planı hazır olmalı",
+          "Harita yayınları güncel olmalı",
+          "Kayıtlar eksiksiz tutulmalı"
+        ]
+      }
+    ],
+    keyPoints: [
+      "PSC emniyet ve mevzuat denetimidir.",
+      "Seyir planı ve kayıtlar kritik önemdedir.",
+      "Eksik dokümantasyon risk yaratır."
+    ]
+  },
+  "COLREG temel prensipleri": {
+    title: "COLREG Temel Prensipleri",
+    introduction:
+      "COLREG, denizde çatışmayı önlemek için uygulanması gereken uluslararası kuralları belirler.",
+    sections: [
+      {
+        title: "Temel Kurallar",
+        content:
+          "Güvenli hız, uygun gözcülük ve risk değerlendirmesi her durumda geçerlidir.",
+        image: aisTargets,
+        imageAlt: "COLREG temel prensipleri"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Kurallar her durumda iyi denizcilik uygulamalarıyla desteklenir.",
+        bulletPoints: [
+          "Uygun gözcülük yapılır",
+          "Güvenli hız korunur",
+          "Çatışma riski erken belirlenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "COLREG güvenli hız ve gözcülüğü zorunlu kılar.",
+      "Risk değerlendirmesi sürekli yapılır.",
+      "İyi denizcilik uygulamaları destekler."
+    ]
+  },
+  "Crossing": {
+    title: "Crossing",
+    introduction:
+      "Crossing durumu, iki geminin yollarının kesiştiği ve çatışma riski oluştuğu durumdur.",
+    sections: [
+      {
+        title: "Kural 15",
+        content:
+          "Baş omuzdan gelen gemi, yol verme yükümlülüğündedir.",
+        image: aisTargets,
+        imageAlt: "Crossing durumu"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Yol veren gemi erken ve belirgin manevra yapmalıdır.",
+        bulletPoints: [
+          "Yol veren gemi baş omuzdan gelen gemidir",
+          "Erken ve belirgin manevra yapılır",
+          "Durum sürekli izlenir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Crossing, çatışma riski taşıyan kesişmedir.",
+      "Yol veren gemi baş omuzdan gelen gemidir.",
+      "Erken ve belirgin manevra esastır."
+    ]
+  },
+  "Head-on": {
+    title: "Head-on",
+    introduction:
+      "Head-on durumunda iki gemi karşılıklı olarak yaklaşır ve çatışma riski vardır.",
+    sections: [
+      {
+        title: "Kural 14",
+        content:
+          "Her iki gemi de sancağa dönerek birbirlerinin sancak tarafından geçer.",
+        image: aisTargets,
+        imageAlt: "Head-on durumu"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Manevra erken ve belirgin olmalı, kararsızlık yaratmamalıdır.",
+        bulletPoints: [
+          "Her iki gemi sancağa döner",
+          "Manevra erken yapılır",
+          "VHF ile koordinasyon gerekebilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Head-on karşılıklı yaklaşma durumudur.",
+      "Her iki gemi sancağa döner.",
+      "Erken ve net manevra şarttır."
+    ]
+  },
+  "Overtaking": {
+    title: "Overtaking",
+    introduction:
+      "Overtaking, bir geminin diğerini arkadan geçmesi durumudur. Hızlı olan gemi yol verir.",
+    sections: [
+      {
+        title: "Kural 13",
+        content:
+          "Arkadan gelen gemi her durumda yol verme yükümlülüğündedir.",
+        image: aisTargets,
+        imageAlt: "Overtaking durumu"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Güvenli mesafe korunur ve geçiş sonrası rota temizlenir.",
+        bulletPoints: [
+          "Arkadan gelen yol verir",
+          "Güvenli mesafe korunur",
+          "Geçiş tamamlanana kadar sorumluluk devam eder"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Overtaking’de arkadan gelen gemi yol verir.",
+      "Sorumluluk geçiş tamamlanana kadar sürer.",
+      "Güvenli mesafe korunmalıdır."
+    ]
+  },
+  "Restricted visibility": {
+    title: "Restricted Visibility",
+    introduction:
+      "Kısıtlı görüşte seyir, sis, yoğun yağış veya karanlık gibi durumlarda yapılan seyirdir.",
+    sections: [
+      {
+        title: "Kural 19",
+        content:
+          "Güvenli hız, radar kullanımı ve sesli işaretler zorunludur.",
+        image: radarDisplay,
+        imageAlt: "Kısıtlı görüşte seyir"
+      },
+      {
+        title: "Uygulama",
+        content:
+          "Radar gözcülüğü artırılır ve rotalar güvenli şekilde düzenlenir.",
+        bulletPoints: [
+          "Güvenli hız uygulanır",
+          "Radar sürekli izlenir",
+          "Sesli işaretler kullanılır"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Kısıtlı görüşte güvenli hız esastır.",
+      "Radar gözcülüğü kritik rol oynar.",
+      "Sesli işaretler uygulanır."
+    ]
+  },
+  "Gerçek çatışma kazaları": {
+    title: "Gerçek Çatışma Kazaları",
+    introduction:
+      "Gerçek olay incelemeleri, COLREG uygulamalarının önemini ve ihlallerin sonuçlarını gösterir.",
+    sections: [
+      {
+        title: "Analiz Amacı",
+        content:
+          "Kazalar, hatalı karar, iletişim eksikliği veya prosedür ihlallerini ortaya koyar.",
+        image: aisTargets,
+        imageAlt: "Çatışma kazası analizi"
+      },
+      {
+        title: "Öğrenilen Dersler",
+        content:
+          "Kazaların incelenmesi, eğitim ve prosedür geliştirme için temel veri sağlar.",
+        bulletPoints: [
+          "COLREG ihlalleri analiz edilir",
+          "İletişim ve gözcülük hataları değerlendirilir",
+          "Önleyici tedbirler geliştirilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Gerçek kazalar eğitim için kritik kaynaktır.",
+      "İhlal ve hata türleri netleşir.",
+      "Önleyici tedbirler geliştirilir."
+    ]
+  },
+  "Neden – sonuç – ihlal – önlem analizi": {
+    title: "Neden – Sonuç – İhlal – Önlem Analizi",
+    introduction:
+      "Çatışma ve kaza analizlerinde neden, sonuç, ihlal ve önlem sıralamasıyla sistematik değerlendirme yapılır.",
+    sections: [
+      {
+        title: "Analiz Yaklaşımı",
+        content:
+          "Olayın temel nedeni, ortaya çıkan sonuç, ihlal edilen kural ve alınacak önlem birlikte değerlendirilir.",
+        image: aisTargets,
+        imageAlt: "Neden-sonuç analizi"
+      },
+      {
+        title: "Eğitim Etkisi",
+        content:
+          "Bu yöntem, hataların tekrarını önlemek ve prosedür geliştirmek için kullanılır.",
+        bulletPoints: [
+          "Kural ihlalleri netleştirilir",
+          "Sonuçlar kayıt altına alınır",
+          "Önleyici uygulamalar geliştirilir"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Neden–sonuç analizi sistematik yaklaşım sağlar.",
+      "İhlal edilen kurallar netleşir.",
+      "Önleyici tedbirler geliştirilir."
+    ]
+  }
 };
