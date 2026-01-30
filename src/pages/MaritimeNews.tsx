@@ -44,18 +44,29 @@ function normalizeImageUrl(url?: string): string | undefined {
   }
 }
 
-function toProxyImageUrl(url?: string): string | undefined {
+function toProxyImageUrl(url?: string, size: 'small' | 'medium' | 'large' = 'large'): string | undefined {
   const normalized = normalizeImageUrl(url);
   if (!normalized) return undefined;
+
+  const sizeConfig = {
+    small: { w: 640, h: 360 },
+    medium: { w: 1024, h: 576 },
+    large: { w: 1600, h: 900 },
+  };
+
+  const { w, h } = sizeConfig[size];
 
   try {
     const parsed = new URL(normalized);
     const sanitized = `${parsed.hostname}${parsed.pathname}${parsed.search}${parsed.hash}`.replace(/^[\/]+/, "");
     if (!sanitized) return undefined;
 
-    // Request higher-resolution, consistently sized thumbnails via the image proxy.
-    // Larger dimensions reduce pixelation from low-quality upstream images while keeping aspect coverage.
-    return `https://images.weserv.nl/?url=${encodeURIComponent(sanitized)}&w=1600&h=900&fit=cover`;
+    // Yüksek kalite parametreleri:
+    // q=85: Kalite seviyesi
+    // we: WebP formatı (daha küçük dosya, aynı kalite)
+    // il: Progressive yükleme
+    // dpr=2: Retina ekran desteği
+    return `https://images.weserv.nl/?url=${encodeURIComponent(sanitized)}&w=${w}&h=${h}&fit=cover&q=85&we&il&dpr=2`;
   } catch {
     return undefined;
   }
@@ -276,10 +287,16 @@ const MaritimeNews = () => {
                   </div>
                 ) : (
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {group.items.map((it) => {
-                      const proxiedImageUrl = toProxyImageUrl(it.imageUrl);
+                {group.items.map((it, itemIndex) => {
+                      // Responsive srcset için farklı boyutlarda URL'ler
+                      const smallImageUrl = toProxyImageUrl(it.imageUrl, 'small');
+                      const mediumImageUrl = toProxyImageUrl(it.imageUrl, 'medium');
+                      const largeImageUrl = toProxyImageUrl(it.imageUrl, 'large');
                       const fallbackImageUrl = normalizeImageUrl(it.imageUrl);
-                      const displayImageUrl = proxiedImageUrl ?? fallbackImageUrl;
+                      const displayImageUrl = largeImageUrl ?? fallbackImageUrl;
+
+                      // İlk 3 görsel için eager loading
+                      const isEagerLoad = itemIndex < 3;
 
                       return (
                         <button
@@ -297,9 +314,16 @@ const MaritimeNews = () => {
                               <>
                                 <img
                                   src={displayImageUrl}
+                                  srcSet={smallImageUrl && mediumImageUrl && largeImageUrl 
+                                    ? `${smallImageUrl} 640w, ${mediumImageUrl} 1024w, ${largeImageUrl} 1600w`
+                                    : undefined
+                                  }
+                                  sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1600px"
                                   alt={it.title}
                                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                  loading="lazy"
+                                  loading={isEagerLoad ? "eager" : "lazy"}
+                                  decoding="async"
+                                  fetchPriority={isEagerLoad ? "high" : "auto"}
                                   referrerPolicy="no-referrer"
                                   onError={(e) => {
                                     const target = e.target as HTMLImageElement;
