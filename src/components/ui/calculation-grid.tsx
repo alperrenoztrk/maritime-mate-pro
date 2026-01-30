@@ -23,7 +23,7 @@ const iconContainerStyle =
 
 export function CalculationGrid({ items, className }: CalculationGridProps) {
   return (
-    <div className={cn("grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5", className)}>
+    <div className={cn("grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:gap-5", className)}>
       {items.map((item) => (
         <CalculationMenuCard key={item.id ?? item.title} {...item} />
       ))}
@@ -74,7 +74,7 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
   );
 
   const sharedClassName = cn(
-    "group block rounded-[22px] border border-slate-800/70 bg-slate-950/70 p-4 shadow-[0_14px_40px_rgba(47,91,255,0.18)] transition-all duration-200 backdrop-blur",
+    "group block w-full max-w-[26rem] rounded-[22px] border border-slate-800/70 bg-slate-950/70 p-4 shadow-[0_14px_40px_rgba(47,91,255,0.18)] transition-all duration-200 backdrop-blur",
     disabled
       ? "pointer-events-none opacity-60"
       : "hover:-translate-y-0.5 hover:shadow-[0_18px_46px_rgba(47,91,255,0.22)]",
