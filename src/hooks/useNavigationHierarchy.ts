@@ -2,140 +2,222 @@ import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 
-// Sayfa hiyerarşisi mapping'i - her sayfa için parent menü tanımı
-const navigationHierarchy: Record<string, string> = {
-  // Calculations menu pages
-  '/calculations': '/',
-  '/navigation-calculation': '/calculations',
-  '/stability-calculations': '/calculations',
-  '/hydrostatics': '/calculations',
-  '/hydrostatic-page': '/calculations',
-  '/hydrostatics-stability': '/calculations',
-  '/trim-list': '/calculations',
-  '/ballast': '/calculations',
-  '/tank-calculations': '/calculations',
-  '/engine': '/calculations',
-  '/economics': '/calculations',
-  '/safety-calculations': '/calculations',
-  '/structural-calculations': '/calculations',
-  '/hydrodynamics': '/calculations',
-  '/emission-calculations': '/calculations',
-  '/weather-calculations': '/calculations',
-  '/special-ship-calculations': '/calculations',
-  
-  // Navigation menu pages
-  '/navigation-menu': '/',
-  
-  '/navigation-formulas': '/navigation-menu',
-  '/navigation-quiz': '/navigation-menu',
-  '/navigation-assistant': '/navigation-menu',
-  '/celestial-calculations': '/navigation-menu',
-  
-  // Stability menu pages
-  '/stability': '/',
-  
-  '/stability-formulas': '/stability',
-  '/stability-quiz': '/stability',
-  '/stability-assistant': '/stability',
-  '/stability-calculator': '/stability',
-  '/stability-analysis': '/stability',
-  '/stable-tales': '/stability',
-  
-  
-  // Stability practical pages
-  '/stability-practical': '/stability',
-  '/stability-practical/fwa': '/stability-practical',
-  '/stability-practical/ghm': '/stability-practical',
-  '/stability-practical/tank': '/stability-practical',
-  
-  // Stability formulas detail pages
-  '/stability-formulas/transverse': '/stability-formulas',
-  '/stability-formulas/longitudinal': '/stability-formulas',
-  '/stability-formulas/trim': '/stability-formulas',
-  '/stability-formulas/gm': '/stability-formulas',
-  '/stability-formulas/gz': '/stability-formulas',
-  '/stability-formulas/displacement': '/stability-formulas',
-  '/stability-formulas/draft': '/stability-formulas',
-  '/stability-formulas/tpc': '/stability-formulas',
-  '/stability-formulas/free-surface': '/stability-formulas',
-  '/stability-formulas/weight-shift': '/stability-formulas',
-  '/stability-formulas/wind-heel': '/stability-formulas',
-  '/stability-formulas/list': '/stability-formulas',
-  '/stability-formulas/loll': '/stability-formulas',
-  '/stability-formulas/roll-period': '/stability-formulas',
-  '/stability-formulas/imo-criteria': '/stability-formulas',
-  '/stability-formulas/grain': '/stability-formulas',
-  
-  // Stability rules pages
-  '/stability-rules': '/stability',
-  '/stability-rules/basic': '/stability-rules',
-  
-  // Draft survey pages
-  '/draft-survey': '/calculations',
-  '/draft-survey/standard': '/draft-survey',
-  '/draft-survey/intermediate': '/draft-survey',
-  '/draft-survey/comparative': '/draft-survey',
-  '/draft-survey/density': '/draft-survey',
-  '/draft-survey/ballast': '/draft-survey',
-  '/draft-survey/bunker': '/draft-survey',
-  '/draft-survey/port': '/draft-survey',
-  '/draft-survey/preloading': '/draft-survey',
-  '/draft-survey/postdischarge': '/draft-survey',
-  '/draft-survey/analysis': '/draft-survey',
-  
-  // Ballast menu pages
-  '/ballast-menu': '/',
-  
-  // Tank menu pages
-  '/tank-menu': '/',
-  
-  // Engine menu pages
-  '/engine-menu': '/',
-  
-  // Economics menu pages
-  '/economics-menu': '/',
-  
-  // Safety menu pages
-  '/safety-menu': '/',
-  
-  // Emissions menu pages
-  '/emissions-menu': '/',
-  
-  // Hydrodynamics menu pages
-  '/hydrodynamics-menu': '/',
-  
-  // Structural menu pages
-  '/structural-menu': '/',
-  
-  // Special ships menu pages
-  '/special-ships-menu': '/',
-  
-  // SOLAS menu pages
-  '/solas-menu': '/',
-  '/regulations': '/solas-menu',
-  '/colreg-presentation': '/solas-menu',
-  
-  // Seamanship menu pages
-  '/seamanship-menu': '/',
-  
-  '/sailor-knots': '/seamanship-menu',
-  
-  // Weather pages
-  '/weather-menu': '/',
-  '/weather-forecast': '/weather-menu',
-  '/detailed-meteorology': '/weather-menu',
-  
-  // Utility pages
-  '/clock': '/',
-  '/moon-phases': '/',
-  '/sunrise-times': '/',
-  '/sunset-times': '/',
-  '/location-selector': '/',
-  '/settings': '/',
-  '/maritime-news': '/',
-  
-  // Widget page
-  '/empty': '/',
+type NavigationRule = {
+  pattern: RegExp;
+  parent: (match: RegExpMatchArray) => string;
+};
+
+const navigationRules: NavigationRule[] = [
+  {
+    pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
+    parent: (match) => `/lessons/${match[1]}/topics`,
+  },
+  {
+    pattern: /^\/lessons\/([^/]+)\/topics$/,
+    parent: () => '/lessons',
+  },
+  {
+    pattern: /^\/crew\/([^/]+)$/,
+    parent: () => '/crew',
+  },
+  {
+    pattern: /^\/bridge\/([^/]+)$/,
+    parent: () => '/bridge',
+  },
+  {
+    pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
+    parent: (match) => `/hub/${match[1]}`,
+  },
+  {
+    pattern: /^\/hub\/([^/]+)$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/navigation\/calc\/([^/]+)$/,
+    parent: () => '/navigation',
+  },
+  {
+    pattern: /^\/navigation\/tide-tutorial$/,
+    parent: () => '/navigation',
+  },
+  {
+    pattern: /^\/navigation\/(formulas|rules|assistant|quiz|meteorology)$/,
+    parent: () => '/hub/navigation',
+  },
+  {
+    pattern: /^\/stability\/formulas\/([^/]+)$/,
+    parent: () => '/stability/formulas',
+  },
+  {
+    pattern: /^\/stability\/practical\/(tank|fwa|ghm)$/,
+    parent: () => '/stability/practical',
+  },
+  {
+    pattern: /^\/stability\/(assistant|rules|gz-imo|advanced|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
+    parent: () => '/stability',
+  },
+  {
+    pattern: /^\/cargo\/calculations\/(draft-survey|preloading|intermediate|postdischarge|comparative|ballast|density|bunker)$/,
+    parent: () => '/cargo/calculations',
+  },
+  {
+    pattern: /^\/cargo\/calculations$/,
+    parent: () => '/hub/cargo',
+  },
+  {
+    pattern: /^\/cargo\/(rules|assistant|quiz|formulas)$/,
+    parent: () => '/hub/cargo',
+  },
+  {
+    pattern: /^\/meteorology\/(formulas|rules|assistant|quiz|topics)$/,
+    parent: () => '/hub/meteorology',
+  },
+  {
+    pattern: /^\/seamanship\/calculations\/([^/]+)$/,
+    parent: () => '/seamanship/calculations',
+  },
+  {
+    pattern: /^\/seamanship\/(calculations|formulas|rules|assistant|quiz|knots)$/,
+    parent: () => '/seamanship-menu',
+  },
+  {
+    pattern: /^\/safety\/(formulas|rules|assistant|quiz)$/,
+    parent: () => '/safety-menu',
+  },
+  {
+    pattern: /^\/machine\/(calculations|formulas|rules|assistant|quiz)$/,
+    parent: () => '/hub/machine',
+  },
+  {
+    pattern: /^\/environment\/(calculations|formulas|rules|assistant|quiz)$/,
+    parent: () => '/hub/environment',
+  },
+  {
+    pattern: /^\/solas\/(regulations|certificates|ship-requirements|safety-equipment)$/,
+    parent: () => '/solas',
+  },
+  {
+    pattern: /^\/regulations\/([^/]+)$/,
+    parent: () => '/regulations',
+  },
+  {
+    pattern: /^\/navigation-menu$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/seamanship-menu$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/safety-menu$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/weather-menu$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/economics-menu$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/tank-menu$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/ballast$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/tank$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/safety$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/engine$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/structural$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/special-ships$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/emissions$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/economics$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/weather-forecast$/,
+    parent: () => '/weather-menu',
+  },
+  {
+    pattern: /^\/location-selector$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/sunrise-times$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/sunset-times$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/settings$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/maritime-news$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/widgets$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/calculations$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/stability$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/solas$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/navigation$/,
+    parent: () => '/hub/navigation',
+  },
+  {
+    pattern: /^\/hydrodynamics$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/passage-plan$/,
+    parent: () => '/',
+  },
+];
+
+const findParentPath = (pathname: string) => {
+  for (const rule of navigationRules) {
+    const match = pathname.match(rule.pattern);
+    if (match) {
+      return rule.parent(match);
+    }
+  }
+  return '/';
 };
 
 /**
@@ -148,20 +230,8 @@ export const useNavigationHierarchy = () => {
 
   useEffect(() => {
     const navigateToParent = () => {
-      const historyLength = window.history.length;
-      const parentPath = navigationHierarchy[location.pathname];
-
-      if (historyLength > 1) {
-        navigate(-1);
-        return;
-      }
-
-      if (parentPath && parentPath !== location.pathname) {
-        navigate(parentPath, { replace: true });
-        return;
-      }
-
-      navigate('/', { replace: true });
+      const parentPath = findParentPath(location.pathname);
+      navigate(parentPath, { replace: true });
     };
 
     // Handle mobile back button (Capacitor)
