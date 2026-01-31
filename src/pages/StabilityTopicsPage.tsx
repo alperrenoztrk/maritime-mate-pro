@@ -409,6 +409,186 @@ Negatif GM = Unstabil gemi, tehlike!`,
       "Minimum GM değeri gemi tipine göre IMO tarafından belirlenir",
     ],
   },
+  "metacenter-m": {
+    title: "Metasantr (M) kavramı",
+    introduction: "Metasantr, gemi küçük açılarla yattığında kaldırma merkezinin izlediği eğrinin dikey eksenle kesiştiği noktadır ve ilk stabilitenin geometrik temelidir.",
+    content: `Metasantr (M), gemi çok küçük bir yatma açısına geçtiğinde kaldırma merkezinin (B) yeni konumundan çizilen düşey doğrultunun, gemi merkez hattı ile kesiştiği noktadır. Bu nokta, küçük açılar için doğrultma momentinin oluşup oluşmadığını belirler.
+
+Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesaplanan BM mesafesi ile belirlenir. BM, B ile M arasındaki düşey mesafedir ve geminin su hattı şekline hassastır.
+
+Görsel: Enine kesitte gemi, ilk konumda B noktası ve küçük yatma açısında B noktasının kayışı; bu iki B noktasından çizilen düşey doğruların kesişimi M olarak işaretlenir.`,
+    bulletPoints: [
+      "M noktası küçük yatma açılarında sabit kabul edilir",
+      "BM mesafesi su hattı geometrisine bağlıdır",
+      "Metasantr, ilk stabilitenin geometrik referans noktasıdır",
+    ],
+    formula: {
+      name: "Metasantrik Yarıçap",
+      expression: "BM = I / ∇; KM = KB + BM",
+      description: "BM: Metasantrik yarıçap (m), I: Su hattı atalet momenti (m⁴), ∇: Batık hacim (m³), KB: Omurgadan kaldırma merkezine (m)",
+    },
+    examples: [
+      {
+        problem: "I = 3.200 m⁴, ∇ = 6.400 m³ ve KB = 3.2 m ise BM ve KM kaç metredir?",
+        solution: "1) BM = I / ∇ = 3.200 / 6.400 = 0.5 m. 2) KM = KB + BM = 3.2 + 0.5 = 3.7 m. Sonuç: Metasantr omurgadan 3.7 m yüksekliktedir.",
+      },
+    ],
+    keyPoints: [
+      "BM büyüdükçe metasantr yükselir",
+      "Su hattı genişledikçe I artar ve BM büyür",
+      "Metasantr konumu ilk stabilitenin temel girdisidir",
+    ],
+  },
+  "metacentric-height-gm": {
+    title: "Metasantrik yükseklik (GM)",
+    introduction: "Metasantrik yükseklik GM, metasantr ile ağırlık merkezi arasındaki düşey mesafedir ve ilk stabilitenin sayısal ölçüsüdür.",
+    content: `GM, geminin küçük yatma açılarında ne kadar hızlı doğrultma momenti üreteceğini gösterir. GM pozitif ise gemi dik duruma dönme eğilimindedir, GM negatif ise gemi dengesizdir.
+
+GM değeri, hidrostatik tablolardan alınan KM ile yükleme hesabından çıkan KG farkıdır. GM büyüdükçe gemi sertleşir ve salınım periyodu kısalır.
+
+Görsel: Omurga üzerinde KB, G ve M noktalarının aynı düşey hat üzerinde gösterildiği şema; GM aralığı vurgulanır.`,
+    bulletPoints: [
+      "GM, ilk stabilitenin ana göstergesidir",
+      "GM pozitif olmalıdır",
+      "KM hidrostatik veriden, KG yükleme hesabından gelir",
+    ],
+    formula: {
+      name: "Metasantrik Yükseklik",
+      expression: "GM = KM - KG",
+      description: "GM: Metasantrik yükseklik (m), KM: Omurgadan metasantra (m), KG: Omurgadan ağırlık merkezine (m)",
+    },
+    examples: [
+      {
+        problem: "KM = 7.2 m ve KG = 6.6 m ise GM kaç metredir?",
+        solution: "1) GM = KM - KG. 2) GM = 7.2 - 6.6 = 0.6 m. Sonuç: GM pozitif olduğundan gemi küçük açılarda stabildir.",
+      },
+    ],
+    keyPoints: [
+      "GM büyüdükçe doğrultma momenti artar",
+      "GM küçüldükçe gemi yumuşar ve yatma eğilimi artar",
+      "GM negatif ise gemi loll açısına gider",
+    ],
+  },
+  "kb-bm-kg-relation": {
+    title: "KB, BM ve KG ilişkisi",
+    introduction: "KB, BM ve KG arasındaki ilişki, metasantrik yükseklik ve ilk stabiliteyi belirleyen temel geometrik zincirdir.",
+    content: `KB, omurgadan kaldırma merkezine olan mesafedir ve batık şekle bağlıdır. BM, su hattı atalet momenti ile batık hacmin oranıdır. KG ise ağırlık merkezinin omurgadan yüksekliğidir.
+
+Bu üç büyüklük bir araya geldiğinde önce KM hesaplanır, ardından GM bulunur. Bu zincir, stabilite hesabında kullanılan en temel geometrik bağlantıdır.
+
+Görsel: Geminin enine kesitinde omurga, KB, BM ve KG noktaları; KM ve GM aralıkları ölçü çizgileriyle gösterilir.`,
+    bulletPoints: [
+      "KB hidrostatik tablodan gelir",
+      "BM su hattı şekline duyarlıdır",
+      "KG yükleme durumuna bağlıdır",
+    ],
+    formula: {
+      name: "Geometrik İlişkiler",
+      expression: "KM = KB + BM; GM = KM - KG",
+      description: "KM: Omurgadan metasantra (m), KB: Omurgadan kaldırma merkezine (m), BM: Metasantrik yarıçap (m), KG: Omurgadan ağırlık merkezine (m)",
+    },
+    examples: [
+      {
+        problem: "KB = 4.0 m, BM = 1.2 m ve KG = 4.6 m ise KM ve GM kaç metredir?",
+        solution: "1) KM = KB + BM = 4.0 + 1.2 = 5.2 m. 2) GM = KM - KG = 5.2 - 4.6 = 0.6 m. Sonuç: GM pozitif, ilk stabilite yeterlidir.",
+      },
+    ],
+    keyPoints: [
+      "KG yükseldikçe GM azalır",
+      "BM, su hattı genişliğine ve formuna bağlıdır",
+      "KB ve BM hidrostatik tablolarla desteklenmelidir",
+    ],
+  },
+  "positive-gm": {
+    title: "Pozitif GM",
+    introduction: "Pozitif GM, ağırlık merkezinin metasantrın altında olduğunu ve geminin küçük açılarda doğrultma momenti üretebildiğini gösterir.",
+    content: `GM pozitif olduğunda, gemi küçük bir açıyla yattığında doğrultma kolu GZ oluşur ve gemi dik duruma dönme eğilimi gösterir. Bu durumda doğrultma momenti pozitif yöndedir.
+
+Küçük açılar için GZ, GM ile açının sinüsü çarpımına eşit kabul edilir. Bu basit ilişki, ilk stabilite hesaplarında kullanılır.
+
+Görsel: G noktası M noktasının altında, gemi küçük açıyla yatmış, GZ kolu ve doğrultma momenti okları gösterilir.`,
+    bulletPoints: [
+      "Pozitif GM, ilk stabilitenin varlığını gösterir",
+      "GZ doğrultma kolu pozitif olur",
+      "Doğrultma momenti gemiyi dikleştirir",
+    ],
+    formula: {
+      name: "Küçük Açı Doğrultma İlişkisi",
+      expression: "GZ ≈ GM × sin θ; RM = Δ × GZ",
+      description: "GZ: Doğrultma kolu (m), GM: Metasantrik yükseklik (m), θ: Yatma açısı (derece), RM: Doğrultma momenti (t m), Δ: Deplasman (ton)",
+    },
+    examples: [
+      {
+        problem: "GM = 0.8 m, θ = 10° ve Δ = 5.000 ton ise GZ ve RM kaçtır?",
+        solution: "1) sin 10° ≈ 0.174. 2) GZ ≈ 0.8 × 0.174 = 0.139 m. 3) RM = Δ × GZ = 5.000 × 0.139 = 695 t m. Sonuç: Doğrultma momenti pozitif ve gemi dik duruma dönme eğilimindedir.",
+      },
+    ],
+    keyPoints: [
+      "Pozitif GM güvenli başlangıç stabilitesi sağlar",
+      "GZ ve RM değerleri açıyla artar",
+      "Küçük açılar yaklaşımı 10 dereceye kadar geçerlidir",
+    ],
+  },
+  "negative-gm": {
+    title: "Negatif GM",
+    introduction: "Negatif GM, ağırlık merkezinin metasantrın üzerinde olduğunu ve geminin küçük açılarda dengesiz olduğunu gösterir.",
+    content: `GM negatif olduğunda, gemi küçük açıyla yattığında doğrultma kolu GZ negatif olur. Bu durumda moment gemiyi daha da yatırır ve gemi dengesiz davranır.
+
+Negatif GM, geminin belirli bir loll açısına yatmasına yol açabilir. Bu durum operasyonel olarak tehlikelidir ve yükleme derhal düzeltilmelidir.
+
+Görsel: G noktası M noktasının üzerinde, gemi küçük açıyla yatmış, GZ kolu ve moment okları devrilme yönünde gösterilir.`,
+    bulletPoints: [
+      "Negatif GM dengesizliği gösterir",
+      "GZ negatif olur ve devrilme momenti oluşur",
+      "Loll açısı oluşabilir ve operasyonel risk doğar",
+    ],
+    formula: {
+      name: "Negatif GM Durumu",
+      expression: "GZ ≈ GM × sin θ; RM = Δ × GZ",
+      description: "GM negatif ise GZ ve RM de negatif olur ve moment devrilme yönündedir",
+    },
+    examples: [
+      {
+        problem: "GM = -0.3 m, θ = 8° ve Δ = 5.000 ton ise GZ ve RM kaçtır?",
+        solution: "1) sin 8° ≈ 0.139. 2) GZ ≈ -0.3 × 0.139 = -0.042 m. 3) RM = 5.000 × -0.042 = -210 t m. Sonuç: Negatif moment gemiyi daha fazla yatırır.",
+      },
+    ],
+    keyPoints: [
+      "Negatif GM acil düzeltme gerektirir",
+      "Loll açısı geminin kararlı görünen ama riskli konumudur",
+      "Yükleme ve balast düzeni gözden geçirilmelidir",
+    ],
+  },
+  "gm-ship-movements": {
+    title: "GM'nin gemi hareketlerine etkisi",
+    introduction: "GM, geminin yalpa periyodunu ve hareket karakterini belirler; büyük GM sert, küçük GM yumuşak hareketlere neden olur.",
+    content: `GM büyüdükçe geminin doğrultma momenti artar ve yalpa periyodu kısalır. Bu durum gemiyi sert hale getirir, yükler üzerinde dinamik kuvvetler artar.
+
+GM küçüldükçe yalpa periyodu uzar, gemi yavaş salınır ve yolcu konforu artabilir; ancak stabilite marjı azalır. Bu nedenle GM değeri emniyet ve konfor arasında dikkatle değerlendirilir.
+
+Görsel: Farklı GM değerleri için yalpa periyodu eğrisi ve gemi salınım genliği karşılaştırması.`,
+    bulletPoints: [
+      "Büyük GM = Kısa periyot, sert hareket",
+      "Küçük GM = Uzun periyot, yumuşak hareket",
+      "Konfor ve güvenlik arasında denge gerekir",
+    ],
+    formula: {
+      name: "Yalpa Periyodu",
+      expression: "T = 2π × √(k² / (g × GM))",
+      description: "T: Yalpa periyodu (s), k: Atalet yarıçapı (m), g: Yer çekimi ivmesi (9.81 m s²), GM: Metasantrik yükseklik (m)",
+    },
+    examples: [
+      {
+        problem: "k = 4.5 m ve GM = 0.6 m için yalpa periyodu kaç saniyedir?",
+        solution: "1) k² = 4.5 × 4.5 = 20.25. 2) g × GM = 9.81 × 0.6 = 5.886. 3) 20.25 / 5.886 = 3.44. 4) √3.44 = 1.855. 5) T = 2π × 1.855 = 11.65 s. Sonuç: Yalpa periyodu yaklaşık 11.6 saniyedir.",
+      },
+    ],
+    keyPoints: [
+      "GM artışı periyodu azaltır",
+      "Aşırı GM yük ve ekipman üzerinde darbe etkisi oluşturur",
+      "Operasyonel konfor için GM hedef aralığı belirlenmelidir",
+    ],
+  },
   "stability-safety": {
     title: "Stabilite ve Seyir Emniyeti İlişkisi",
     introduction: "Stabilite, seyir emniyetinin temel direğidir. Yetersiz stabilite can kaybına, gemi kaybına ve çevre felaketlerine yol açabilir.",
