@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -244,6 +244,10 @@ const stabilityTopics: StabilityMainTopic[] = [
     ],
   },
 ];
+
+const AUTO_LESSON_STORAGE_KEY = "stability:auto-lessons-v1";
+const AUTO_LESSON_INTERVAL_MS = 20 * 60 * 1000;
+const AUTO_LESSON_IDS = ["buoyancy-force", "center-of-buoyancy", "weight-w", "center-of-gravity"];
 
 // İçerik veritabanı - her alt konu için detaylı içerik
 interface TopicContent {
@@ -572,24 +576,128 @@ Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve sime
   // Daha fazla içerik eklenebilir...
 };
 
+interface AutoLessonState {
+  startAt: number;
+  publishedCount: number;
+}
+
+const getDefaultAutoLessonState = (): AutoLessonState => ({
+  startAt: Date.now(),
+  publishedCount: 0,
+});
+
+const parseStoredAutoLessonState = (): AutoLessonState => {
+  if (typeof window === "undefined") {
+    return getDefaultAutoLessonState();
+  }
+
+  const raw = window.localStorage.getItem(AUTO_LESSON_STORAGE_KEY);
+  if (!raw) {
+    const freshState = getDefaultAutoLessonState();
+    window.localStorage.setItem(AUTO_LESSON_STORAGE_KEY, JSON.stringify(freshState));
+    return freshState;
+  }
+
+  try {
+    const parsed = JSON.parse(raw) as AutoLessonState;
+    if (!parsed || typeof parsed.startAt !== "number" || typeof parsed.publishedCount !== "number") {
+      throw new Error("Invalid auto lesson state");
+    }
+    return parsed;
+  } catch {
+    const freshState = getDefaultAutoLessonState();
+    window.localStorage.setItem(AUTO_LESSON_STORAGE_KEY, JSON.stringify(freshState));
+    return freshState;
+  }
+};
+
+const clampAutoLessonState = (state: AutoLessonState): AutoLessonState => ({
+  startAt: state.startAt,
+  publishedCount: Math.min(Math.max(state.publishedCount, 0), AUTO_LESSON_IDS.length),
+});
+
+const updateAutoLessonStorage = (state: AutoLessonState) => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  window.localStorage.setItem(AUTO_LESSON_STORAGE_KEY, JSON.stringify(state));
+};
+
+const syncAutoLessonState = (state: AutoLessonState) => {
+  const now = Date.now();
+  const elapsed = Math.max(now - state.startAt, 0);
+  const availableCount = Math.min(AUTO_LESSON_IDS.length, Math.floor(elapsed / AUTO_LESSON_INTERVAL_MS));
+  const nextState = clampAutoLessonState({
+    ...state,
+    publishedCount: Math.max(state.publishedCount, availableCount),
+  });
+  updateAutoLessonStorage(nextState);
+  return nextState;
+};
+
+const formatRemainingTime = (remainingMs: number) => {
+  const totalSeconds = Math.max(Math.ceil(remainingMs / 1000), 0);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  if (minutes > 0) {
+    return `${minutes} dk ${seconds} sn`;
+  }
+  return `${seconds} sn`;
+};
+
 export default function StabilityTopicsPage() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-  const autoLessonIds = ["buoyancy-force", "center-of-buoyancy", "weight-w", "center-of-gravity"];
-  const [autoTopicIndex, setAutoTopicIndex] = useState(0);
+  const [autoLessonState, setAutoLessonState] = useState<AutoLessonState>(() =>
+    syncAutoLessonState(parseStoredAutoLessonState())
+  );
+  const [remainingTime, setRemainingTime] = useState<string | null>(null);
+
+  const refreshAutoLessons = useCallback(() => {
+    setAutoLessonState((previous) => syncAutoLessonState(previous));
+  }, []);
 
   useEffect(() => {
-    if (autoLessonIds.length === 0) {
+    refreshAutoLessons();
+  }, [refreshAutoLessons]);
+
+  useEffect(() => {
+    if (AUTO_LESSON_IDS.length === 0) {
       return;
     }
 
     const intervalId = window.setInterval(() => {
-      setAutoTopicIndex((previous) => (previous + 1) % autoLessonIds.length);
-    }, 20 * 60 * 1000);
+      refreshAutoLessons();
+    }, 60 * 1000);
 
     return () => {
       window.clearInterval(intervalId);
     };
-  }, [autoLessonIds.length]);
+  }, [refreshAutoLessons]);
+
+  useEffect(() => {
+    if (autoLessonState.publishedCount >= AUTO_LESSON_IDS.length) {
+      setRemainingTime(null);
+      return;
+    }
+
+    const nextReleaseAt =
+      autoLessonState.startAt + (autoLessonState.publishedCount + 1) * AUTO_LESSON_INTERVAL_MS;
+    const updateRemaining = () => {
+      const nextRemaining = Math.max(nextReleaseAt - Date.now(), 0);
+      setRemainingTime(formatRemainingTime(nextRemaining));
+    };
+
+    updateRemaining();
+    const timerId = window.setInterval(updateRemaining, 1000);
+    const timeoutId = window.setTimeout(() => {
+      refreshAutoLessons();
+    }, Math.max(nextReleaseAt - Date.now(), 0));
+
+    return () => {
+      window.clearInterval(timerId);
+      window.clearTimeout(timeoutId);
+    };
+  }, [autoLessonState, refreshAutoLessons]);
 
   const handleSubtopicClick = (subtopicId: string, hasContent: boolean) => {
     if (hasContent) {
@@ -602,8 +710,16 @@ export default function StabilityTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
-  const currentAutoTopicId = autoLessonIds[autoTopicIndex % autoLessonIds.length];
-  const currentAutoContent = currentAutoTopicId ? topicContents[currentAutoTopicId] : null;
+  const publishedAutoLessonIds = useMemo(
+    () => AUTO_LESSON_IDS.slice(0, autoLessonState.publishedCount),
+    [autoLessonState.publishedCount]
+  );
+  const publishedAutoLessons = useMemo(
+    () => publishedAutoLessonIds.map((id) => topicContents[id]).filter(Boolean),
+    [publishedAutoLessonIds]
+  );
+  const nextAutoLessonId = AUTO_LESSON_IDS[autoLessonState.publishedCount];
+  const nextAutoLesson = nextAutoLessonId ? topicContents[nextAutoLessonId] : null;
 
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
@@ -644,51 +760,72 @@ export default function StabilityTopicsPage() {
         <ScrollArea className="h-[calc(100vh-80px)]">
           <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
             {/* Auto Lesson */}
-            {currentAutoContent && (
+            {(publishedAutoLessons.length > 0 || nextAutoLesson) && (
               <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur">
                 <div className="mb-4 flex items-center gap-2">
                   <GraduationCap className="h-5 w-5 text-primary" />
                   <div>
                     <h2 className="text-lg font-semibold text-foreground">Otomatik Konu Anlatımı</h2>
                     <p className="text-xs text-muted-foreground">
-                      20 dakikada bir yeni alt başlık gösterilir.
+                      20 dakikada bir yeni alt başlık uygulamaya eklenir.
                     </p>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="rounded-xl border border-border/40 bg-background/60 p-4">
-                    <h3 className="text-base font-semibold text-foreground mb-2">
-                      {currentAutoContent.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {currentAutoContent.introduction}
-                    </p>
-                    <div className="text-sm text-foreground whitespace-pre-line">
-                      {currentAutoContent.content}
-                    </div>
-                  </div>
-
-                  {currentAutoContent.formula && (
-                    <div className="rounded-xl border border-accent/20 bg-accent/10 p-4">
-                      <h4 className="text-sm font-semibold text-foreground mb-2">Formül</h4>
-                      <div className="bg-background rounded-lg p-3 font-mono text-center text-primary">
-                        {currentAutoContent.formula.expression}
-                      </div>
-                      <p className="mt-2 text-xs text-muted-foreground">
-                        {currentAutoContent.formula.description}
-                      </p>
+                  {publishedAutoLessons.length === 0 && nextAutoLesson && (
+                    <div className="rounded-xl border border-dashed border-border/60 bg-background/40 p-4 text-sm text-muted-foreground">
+                      İlk konu anlatımı {remainingTime ? `${remainingTime} sonra` : "20 dakika sonra"} eklenecek.
                     </div>
                   )}
 
-                  {currentAutoContent.examples && currentAutoContent.examples.length > 0 && (
-                    <div className="rounded-xl border border-border/40 bg-muted/40 p-4 space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground">Sayısal Örnek</h4>
-                      {currentAutoContent.examples.map((example, index) => (
-                        <div key={index} className="text-sm text-foreground">
-                          <p className="font-medium">Soru: {example.problem}</p>
-                          <p className="text-muted-foreground">Çözüm: {example.solution}</p>
+                  {publishedAutoLessons.map((lesson, index) => (
+                    <div key={`${lesson.title}-${index}`} className="space-y-3">
+                      <div className="rounded-xl border border-border/40 bg-background/60 p-4">
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <h3 className="text-base font-semibold text-foreground">
+                            {lesson.title}
+                          </h3>
+                          <span className="text-xs text-muted-foreground">
+                            {index + 1}. otomatik içerik
+                          </span>
                         </div>
-                      ))}
+                        <p className="text-sm text-muted-foreground mb-3">
+                          {lesson.introduction}
+                        </p>
+                        <div className="text-sm text-foreground whitespace-pre-line">
+                          {lesson.content}
+                        </div>
+                      </div>
+
+                      {lesson.formula && (
+                        <div className="rounded-xl border border-accent/20 bg-accent/10 p-4">
+                          <h4 className="text-sm font-semibold text-foreground mb-2">Formül</h4>
+                          <div className="bg-background rounded-lg p-3 font-mono text-center text-primary">
+                            {lesson.formula.expression}
+                          </div>
+                          <p className="mt-2 text-xs text-muted-foreground">
+                            {lesson.formula.description}
+                          </p>
+                        </div>
+                      )}
+
+                      {lesson.examples && lesson.examples.length > 0 && (
+                        <div className="rounded-xl border border-border/40 bg-muted/40 p-4 space-y-3">
+                          <h4 className="text-sm font-semibold text-foreground">Sayısal Örnek</h4>
+                          {lesson.examples.map((example, exampleIndex) => (
+                            <div key={exampleIndex} className="text-sm text-foreground">
+                              <p className="font-medium">Soru: {example.problem}</p>
+                              <p className="text-muted-foreground">Çözüm: {example.solution}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  {nextAutoLesson && publishedAutoLessons.length > 0 && (
+                    <div className="rounded-xl border border-dashed border-border/60 bg-background/40 p-4 text-sm text-muted-foreground">
+                      Sıradaki konu anlatımı {remainingTime ? `${remainingTime} sonra` : "20 dakika sonra"} eklenecek.
                     </div>
                   )}
                 </div>
