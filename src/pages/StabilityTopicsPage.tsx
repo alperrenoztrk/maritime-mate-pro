@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -251,6 +251,10 @@ interface TopicContent {
   introduction: string;
   content: string;
   bulletPoints?: string[];
+  examples?: {
+    problem: string;
+    solution: string;
+  }[];
   formula?: {
     name: string;
     expression: string;
@@ -454,6 +458,12 @@ Deplasman, stabilite hesaplarının temelini oluşturur. Doğrultma momenti, dep
       expression: "Δ = ∇ × ρ",
       description: "Δ: Deplasman (ton), ∇: Batık hacim (m³), ρ: Deniz suyu yoğunluğu (1.025 t/m³)",
     },
+    examples: [
+      {
+        problem: "Lightship = 3.500 t, kargo = 1.200 t, yakıt = 300 t, tatlı su = 50 t ise deplasman kaç tondur?",
+        solution: "Δ = 3.500 + 1.200 + 300 + 50 = 5.050 ton",
+      },
+    ],
     keyPoints: [
       "Deplasman, stabilitenin temel girdisidir",
       "Yükleme ile deplasman değişir",
@@ -486,10 +496,77 @@ Her yük hareketi G noktasının konumunu değiştirir.`,
       expression: "KG = Σ(wᵢ × kgᵢ) / Σwᵢ",
       description: "Her bir ağırlığın momentleri toplamı / toplam ağırlık",
     },
+    examples: [
+      {
+        problem: "100 t yük KG=6 m ve 200 t yük KG=3 m ise toplam KG kaç metredir?",
+        solution: "KG = (100×6 + 200×3) / 300 = (600 + 600) / 300 = 4.0 m",
+      },
+    ],
     keyPoints: [
       "KG ne kadar düşükse stabilite o kadar iyidir",
       "Her yükleme işleminde KG yeniden hesaplanmalıdır",
       "Yük taşıma işlemi başladığı anda G anında değişir",
+    ],
+  },
+  "buoyancy-force": {
+    title: "Kaldırma Kuvveti",
+    introduction: "Kaldırma kuvveti, gemiyi su üzerinde tutan temel kuvvettir ve yer değiştirdiği suyun ağırlığına eşittir.",
+    content: `Kaldırma kuvveti (Y), geminin suya batmış hacminin yer değiştirdiği suyun ağırlığına eşittir. Bu kuvvet, kaldırma merkezinden (B) yukarı doğru etkir ve geminin ağırlık kuvvetini dengeleyerek yüzmesini sağlar.
+
+Kaldırma kuvveti, suyun yoğunluğuna bağlıdır. Bu nedenle gemi tatlı suda daha fazla batar, deniz suyunda ise daha yüksek yüzer.
+
+Stabilite hesaplarında kaldırma kuvveti, geminin deplasmanına eşit kabul edilir:
+Y = W = Δ`,
+    bulletPoints: [
+      "Kaldırma kuvveti yukarı yönlüdür ve B noktasından etkir",
+      "Yüzen gemide Y = W dengesi vardır",
+      "Suyun yoğunluğu değiştikçe kaldırma kuvveti değişir",
+    ],
+    formula: {
+      name: "Kaldırma Kuvveti",
+      expression: "Y = ρ × g × ∇",
+      description: "Y: Kaldırma kuvveti (kN), ρ: Yoğunluk (t/m³), g: 9.81 m/s², ∇: Batık hacim (m³)",
+    },
+    examples: [
+      {
+        problem: "∇ = 3.000 m³, ρ = 1.025 t/m³ olan bir gemide kaldırma kuvveti kaç kN olur?",
+        solution: "Y = 1.025 × 9.81 × 3.000 ≈ 30 166 kN",
+      },
+    ],
+    keyPoints: [
+      "Kaldırma kuvveti geminin ağırlığına eşittir",
+      "Yoğunluk değişimi draftı etkiler",
+      "B noktası değiştikçe doğrultma momenti oluşur",
+    ],
+  },
+  "center-of-buoyancy": {
+    title: "Kaldırma Merkezi (B)",
+    introduction: "Kaldırma merkezi (B), batmış hacmin geometrik ağırlık merkezidir ve kaldırma kuvvetinin etki noktasıdır.",
+    content: `Kaldırma merkezi (B), geminin su altında kalan hacminin geometrik merkezidir. Bu nokta, gemi yattığında su altı hacminin şekli değiştiği için yer değiştirir.
+
+Gemi yatmaya başladığında B noktası yatılan tarafa kayar. Bu kayma, ağırlık merkezine göre bir moment kolu oluşturur ve doğrultma momenti meydana gelir.
+
+Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve simetrik durumda omurgadan T/2 kadar yukarıdadır.`,
+    bulletPoints: [
+      "B, batmış hacmin geometrik merkezidir",
+      "Gemi yattığında B yatılan tarafa kayar",
+      "B'nin kayması doğrultma momentinin temelidir",
+    ],
+    formula: {
+      name: "Kaldırma Merkezi Yüksekliği",
+      expression: "KB = (∫ z · d∇) / ∇",
+      description: "KB: Omurgadan kaldırma merkezine dikey mesafe, z: derinlik koordinatı",
+    },
+    examples: [
+      {
+        problem: "Dikdörtgen kesitli bir gemide draft T = 4 m ise KB yaklaşık kaç metredir?",
+        solution: "Dikdörtgen kesitte KB ≈ T/2 = 2.0 m",
+      },
+    ],
+    keyPoints: [
+      "KB değeri hidrostatik tablolardan alınır",
+      "B'nin hareketi GZ kolunu oluşturur",
+      "Şekil değiştikçe B'nin konumu değişir",
     ],
   },
   // Daha fazla içerik eklenebilir...
@@ -497,6 +574,22 @@ Her yük hareketi G noktasının konumunu değiştirir.`,
 
 export default function StabilityTopicsPage() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+  const autoLessonIds = ["buoyancy-force", "center-of-buoyancy", "weight-w", "center-of-gravity"];
+  const [autoTopicIndex, setAutoTopicIndex] = useState(0);
+
+  useEffect(() => {
+    if (autoLessonIds.length === 0) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setAutoTopicIndex((previous) => (previous + 1) % autoLessonIds.length);
+    }, 20 * 60 * 1000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [autoLessonIds.length]);
 
   const handleSubtopicClick = (subtopicId: string, hasContent: boolean) => {
     if (hasContent) {
@@ -509,6 +602,8 @@ export default function StabilityTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+  const currentAutoTopicId = autoLessonIds[autoTopicIndex % autoLessonIds.length];
+  const currentAutoContent = currentAutoTopicId ? topicContents[currentAutoTopicId] : null;
 
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
@@ -548,6 +643,58 @@ export default function StabilityTopicsPage() {
         {/* Topics Accordion */}
         <ScrollArea className="h-[calc(100vh-80px)]">
           <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
+            {/* Auto Lesson */}
+            {currentAutoContent && (
+              <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur">
+                <div className="mb-4 flex items-center gap-2">
+                  <GraduationCap className="h-5 w-5 text-primary" />
+                  <div>
+                    <h2 className="text-lg font-semibold text-foreground">Otomatik Konu Anlatımı</h2>
+                    <p className="text-xs text-muted-foreground">
+                      20 dakikada bir yeni alt başlık gösterilir.
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="rounded-xl border border-border/40 bg-background/60 p-4">
+                    <h3 className="text-base font-semibold text-foreground mb-2">
+                      {currentAutoContent.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      {currentAutoContent.introduction}
+                    </p>
+                    <div className="text-sm text-foreground whitespace-pre-line">
+                      {currentAutoContent.content}
+                    </div>
+                  </div>
+
+                  {currentAutoContent.formula && (
+                    <div className="rounded-xl border border-accent/20 bg-accent/10 p-4">
+                      <h4 className="text-sm font-semibold text-foreground mb-2">Formül</h4>
+                      <div className="bg-background rounded-lg p-3 font-mono text-center text-primary">
+                        {currentAutoContent.formula.expression}
+                      </div>
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        {currentAutoContent.formula.description}
+                      </p>
+                    </div>
+                  )}
+
+                  {currentAutoContent.examples && currentAutoContent.examples.length > 0 && (
+                    <div className="rounded-xl border border-border/40 bg-muted/40 p-4 space-y-3">
+                      <h4 className="text-sm font-semibold text-foreground">Sayısal Örnek</h4>
+                      {currentAutoContent.examples.map((example, index) => (
+                        <div key={index} className="text-sm text-foreground">
+                          <p className="font-medium">Soru: {example.problem}</p>
+                          <p className="text-muted-foreground">Çözüm: {example.solution}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
+
             <Accordion type="single" collapsible className="space-y-2">
               {stabilityTopics.map((topic) => {
                 const TopicIcon = topic.icon;
@@ -708,6 +855,19 @@ export default function StabilityTopicsPage() {
                     <p className="text-sm text-muted-foreground">
                       {currentContent.formula.description}
                     </p>
+                  </div>
+                )}
+
+                {/* Examples */}
+                {currentContent.examples && currentContent.examples.length > 0 && (
+                  <div className="bg-muted/50 rounded-xl p-4 space-y-3">
+                    <h3 className="font-semibold text-foreground mb-2">Sayısal Örnek</h3>
+                    {currentContent.examples.map((example, index) => (
+                      <div key={index} className="text-sm text-foreground">
+                        <p className="font-medium">Soru: {example.problem}</p>
+                        <p className="text-muted-foreground">Çözüm: {example.solution}</p>
+                      </div>
+                    ))}
                   </div>
                 )}
 
