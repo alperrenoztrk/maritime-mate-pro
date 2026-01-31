@@ -26,6 +26,7 @@ const EmptyPage = () => {
   const { theme } = useTheme();
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const hasSwiped = useRef(false);
   const [activeTab, setActiveTab] = useState("time");
   const tabs = ["time", "weather", "location"];
   const [showTutorial, setShowTutorial] = useState(false);
@@ -62,37 +63,62 @@ const EmptyPage = () => {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = null;
+    hasSwiped.current = false;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     touchEndX.current = e.targetTouches[0].clientX;
+    if (hasSwiped.current || touchStartX.current === null || touchEndX.current === null) return;
+
+    const distance = touchEndX.current - touchStartX.current;
+    const swipeThreshold = 60;
+    const isRightSwipe = distance > swipeThreshold;
+    const isLeftSwipe = distance < -swipeThreshold;
+
+    if (isRightSwipe || isLeftSwipe) {
+      const currentIndex = tabs.indexOf(activeTab);
+      if (isRightSwipe) {
+        if (currentIndex === 0) {
+          navigate('/');
+        } else {
+          setActiveTab(tabs[currentIndex - 1]);
+        }
+      } else if (isLeftSwipe) {
+        if (currentIndex < tabs.length - 1) {
+          setActiveTab(tabs[currentIndex + 1]);
+        }
+      }
+      hasSwiped.current = true;
+    }
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current === null || touchEndX.current === null) return;
-    
-    const distance = touchEndX.current - touchStartX.current;
-    const isRightSwipe = distance > 100; // Sağa kaydırma
-    const isLeftSwipe = distance < -100; // Sola kaydırma
-    
-    const currentIndex = tabs.indexOf(activeTab);
-    
-    if (isRightSwipe) {
-      // Sağa kaydırma: Önceki sekmeye git veya ana sayfaya dön
-      if (currentIndex === 0) {
-        navigate('/');
-      } else {
-        setActiveTab(tabs[currentIndex - 1]);
-      }
-    } else if (isLeftSwipe) {
-      // Sola kaydırma: Sonraki sekmeye git
-      if (currentIndex < tabs.length - 1) {
-        setActiveTab(tabs[currentIndex + 1]);
+    if (!hasSwiped.current && touchStartX.current !== null && touchEndX.current !== null) {
+      const distance = touchEndX.current - touchStartX.current;
+      const isRightSwipe = distance > 100; // Sağa kaydırma
+      const isLeftSwipe = distance < -100; // Sola kaydırma
+
+      const currentIndex = tabs.indexOf(activeTab);
+
+      if (isRightSwipe) {
+        // Sağa kaydırma: Önceki sekmeye git veya ana sayfaya dön
+        if (currentIndex === 0) {
+          navigate('/');
+        } else {
+          setActiveTab(tabs[currentIndex - 1]);
+        }
+      } else if (isLeftSwipe) {
+        // Sola kaydırma: Sonraki sekmeye git
+        if (currentIndex < tabs.length - 1) {
+          setActiveTab(tabs[currentIndex + 1]);
+        }
       }
     }
-    
+
     touchStartX.current = null;
     touchEndX.current = null;
+    hasSwiped.current = false;
   };
 
   // Click navigation for left and right zones
