@@ -1098,7 +1098,7 @@ All colors MUST be HSL.
     /* Optimize tab navigation for mobile */
     [role="tablist"] {
       overflow-x: auto;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
     }
     
     /* Hide tab scrollbars on mobile but keep swipe */
