@@ -120,6 +120,29 @@ function normalizeLink(link: unknown): string {
   return String(link);
 }
 
+function upgradeImageResolution(url: string): string {
+  try {
+    const parsed = new URL(url);
+    
+    // MarineLink: /w150/ -> /w1200/ veya /w800/ (yüksek çözünürlük)
+    if (parsed.hostname.includes("marinelink.com")) {
+      parsed.pathname = parsed.pathname
+        .replace(/\/w\d{2,4}\//i, "/w1200/")
+        .replace(/\/h\d{2,4}\//i, "/");
+      return parsed.toString();
+    }
+    
+    // Genel küçük boyut kalıplarını temizle
+    parsed.pathname = parsed.pathname
+      .replace(/([_-])(thumb|thumbnail|small|medium|low|mini)(?=\.[a-z0-9]+$)/i, "")
+      .replace(/([_-])\d{2,4}x\d{2,4}(?=\.[a-z0-9]+$)/i, "");
+    
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+}
+
 function normalizeImageUrl(value: unknown, baseUrl?: string): string | undefined {
   if (!value) return undefined;
 
@@ -127,13 +150,13 @@ function normalizeImageUrl(value: unknown, baseUrl?: string): string | undefined
     const trimmed = value.trim();
     if (!trimmed) return undefined;
     // Avoid data URIs or relative paths; only allow http(s).
-    if (/^https?:\/\//i.test(trimmed)) return trimmed;
+    if (/^https?:\/\//i.test(trimmed)) return upgradeImageResolution(trimmed);
     // Some feeds (e.g. gCaptain, Splash247) use protocol-relative URLs. Normalize them to https to keep images visible.
-    if (/^\/\//.test(trimmed)) return `https:${trimmed}`;
+    if (/^\/\//.test(trimmed)) return upgradeImageResolution(`https:${trimmed}`);
     if (baseUrl) {
       try {
         const resolved = new URL(trimmed, baseUrl).toString();
-        if (/^https?:\/\//i.test(resolved)) return resolved;
+        if (/^https?:\/\//i.test(resolved)) return upgradeImageResolution(resolved);
       } catch {
         return undefined;
       }

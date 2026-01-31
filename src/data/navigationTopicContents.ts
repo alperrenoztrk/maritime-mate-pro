@@ -66,15 +66,12 @@ import sembolLightCharacteristics from "@/assets/navigation/sembol-light-charact
 import sembolSectorLights from "@/assets/navigation/sembol-sector-lights.jpg";
 import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
 import sembolDangers from "@/assets/navigation/sembol-dangers.jpg";
-import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
 import mercatorProjection from "@/assets/navigation/mercator-projection.svg";
 import gnomonicProjection from "@/assets/navigation/gnomonic-projection.svg";
 import gpsSatellites from "@/assets/navigation/gps-satellites.svg";
 import radarDisplay from "@/assets/navigation/radar-display.svg";
 import ecdisDisplay from "@/assets/navigation/ecdis-display.svg";
 import tideCurrent from "@/assets/navigation/tide-current.svg";
-import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
-import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
 import weatherSystems from "@/assets/navigation/weather-systems.svg";
 import aisTargets from "@/assets/navigation/ais-targets.svg";
 import navtexReceiver from "@/assets/navigation/navtex-receiver.svg";
