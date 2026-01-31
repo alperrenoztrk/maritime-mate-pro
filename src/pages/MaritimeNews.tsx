@@ -52,6 +52,13 @@ function toHighResImageUrl(url?: string): string | undefined {
     const parsed = new URL(normalized);
     parsed.pathname = parsed.pathname.replace(/([_-])\d{2,4}x\d{2,4}(?=\.[a-z0-9]+$)/i, "");
 
+    if (parsed.hostname.includes("marinelink.com")) {
+      parsed.pathname = parsed.pathname
+        .replace(/\/\d{2,4}x\d{2,4}(?=\/)/i, "")
+        .replace(/\/\d{2,4}(?=\/)/, "")
+        .replace(/([_-])(thumb|thumbnail|small|medium|low)(?=\.[a-z0-9]+$)/i, "");
+    }
+
     const paramsToStrip = ["w", "h", "width", "height", "resize", "fit", "crop", "quality", "q"];
     paramsToStrip.forEach((param) => parsed.searchParams.delete(param));
 
