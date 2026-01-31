@@ -8,8 +8,15 @@ export type TopicContentOverrides = Record<string, TopicContentOverride>;
 export const TOPIC_CONTENT_OVERRIDES_KEY = "marineExpert.topicContentOverrides";
 export const TOPIC_CONTENT_OVERRIDES_EVENT = "marineExpert:topicContentOverridesUpdated";
 
+// Category prefixes for building keys
+export type ContentCategory = "navigation" | "stability" | "cargo" | "meteorology" | "safety" | "seamanship" | "machine";
+
+export const buildSectionKey = (category: ContentCategory, topicTitle: string, sectionTitle: string) =>
+  `${category}:${topicTitle}::${sectionTitle}`;
+
+// Legacy function for backward compatibility
 export const buildNavigationSectionKey = (topicTitle: string, sectionTitle: string) =>
-  `navigation:${topicTitle}::${sectionTitle}`;
+  buildSectionKey("navigation", topicTitle, sectionTitle);
 
 const safeParseOverrides = (raw: string | null): TopicContentOverrides => {
   if (!raw) return {};
@@ -35,4 +42,19 @@ export const setTopicContentOverride = (key: string, override: TopicContentOverr
   };
   localStorage.setItem(TOPIC_CONTENT_OVERRIDES_KEY, JSON.stringify(nextOverrides));
   window.dispatchEvent(new CustomEvent(TOPIC_CONTENT_OVERRIDES_EVENT));
+};
+
+export const setMultipleTopicContentOverrides = (updates: Record<string, TopicContentOverride>) => {
+  const overrides = getTopicContentOverrides();
+  const nextOverrides = { ...overrides, ...updates };
+  localStorage.setItem(TOPIC_CONTENT_OVERRIDES_KEY, JSON.stringify(nextOverrides));
+  window.dispatchEvent(new CustomEvent(TOPIC_CONTENT_OVERRIDES_EVENT));
+};
+
+export const getOverridesByCategory = (category: ContentCategory): TopicContentOverrides => {
+  const all = getTopicContentOverrides();
+  const prefix = `${category}:`;
+  return Object.fromEntries(
+    Object.entries(all).filter(([key]) => key.startsWith(prefix))
+  );
 };
