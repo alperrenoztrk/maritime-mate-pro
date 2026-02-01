@@ -3256,6 +3256,84 @@ Tahıl kayması nedeniyle oluşan moment:
         ]
       },
       {
+        title: "10.4. Stabilite Doğrulama ve Sertifikasyon",
+        content: `Stabilite gereksinimleri, çeşitli doğrulama ve sertifikasyon süreçleriyle kontrol edilir.
+
+**Stabilite Kitapçığı (Stability Booklet)**
+Her gemide bulunması zorunlu olan dokümandır:
+- Gemi özellikleri ve hidrostatik veriler
+- Onaylı yükleme senaryoları
+- Stabilite hesap prosedürleri
+- IMO kriterleri ve sınırlar
+- KN eğrileri veya tabloları
+- Tank kapasiteleri ve serbest yüzey verileri
+
+**Stabilite Kitapçığının İçeriği**
+1. Genel bilgiler (gemi boyutları, lightship verileri)
+2. Hidrostatik tablolar (draft vs KM, TPC, MCT vb.)
+3. Tank tabloları (kapasite, VCG, LCG, FSM)
+4. Örnek yükleme durumları ve hesaplar
+5. Kriter özeti ve kontrol tabloları
+6. GZ eğrileri (tipik durumlar için)
+
+**Yükleme Bilgisayarı (Loading Computer)**
+Modern gemilerde zorunlu:
+- Stabilite hesabını otomatik yapar
+- IMO kriterlerini kontrol eder
+- Uyarı ve alarm verir
+- Onaylı yazılım gerektirir
+
+**Sertifikasyon Süreci**
+
+**1. Tasarım Aşaması:**
+- Stabilite hesapları
+- Klas kuruluşu onayı
+
+**2. İnşa Sonrası:**
+- Eğim testi (inclining experiment)
+- Lightship verileri doğrulama
+- Stabilite kitapçığı onayı
+
+**3. İşletme Dönemi:**
+- Periyodik doğrulama (5 yıl)
+- Lightship değişikliği kontrolü
+- Yükleme bilgisayarı kalibrasyonu
+
+**Eğim Testi (Inclining Experiment)**
+Geminin lightship KG değerini belirlemek için yapılır:
+1. Gemi boşaltılır (lightship durumu)
+2. Bilinen ağırlıklar enine taşınır
+3. Yatma açısı ölçülür
+4. GM ve KG hesaplanır`,
+        formulas: [
+          {
+            formula: "GM = (w × d) / (Δ × tan(θ))",
+            description: "Eğim testi GM hesabı"
+          },
+          {
+            formula: "KG = KM - GM",
+            description: "Eğim testinden KG belirleme"
+          }
+        ],
+        keyPoints: [
+          "Stabilite kitapçığı her gemide zorunludur",
+          "Yükleme bilgisayarı modern gemilerde standart",
+          "Eğim testi lightship KG'yi belirler",
+          "Periyodik doğrulama gereklidir"
+        ],
+        practicalTips: [
+          "Stabilite kitapçığını her zaman güncel tutun",
+          "Yükleme bilgisayarı sonuçlarını manuel kontrol edin",
+          "Lightship değişikliklerini kaydedin ve raporlayın",
+          "Kriter sınırlarına yaklaşıldığında dikkatli olun"
+        ],
+        warnings: [
+          "Onaysız stabilite yazılımı kullanmayın",
+          "Lightship değişiklikleri rapor edilmelidir",
+          "Kriterleri karşılamayan yükleme durumu tehlikelidir"
+        ]
+      },
+      {
         title: "10.5. İkinci Nesil Stabilite Kriterleri (SGISC)",
         content: `İkinci Nesil Sağlam Stabilite Kriterleri (Second Generation Intact Stability Criteria - SGISC), IMO tarafından geliştirilen ve mevcut kriterlerin kapsamadığı dinamik stabilite başarısızlık modlarını ele alan yeni düzenleyici çerçevedir.
 
@@ -3370,81 +3448,57 @@ SGISC, beş temel dinamik başarısızlık modunu ele alır:
         ]
       },
       {
-        title: "10.4. Stabilite Doğrulama ve Sertifikasyon",
-        content: `Stabilite gereksinimleri, çeşitli doğrulama ve sertifikasyon süreçleriyle kontrol edilir.
+        title: "10.6. Operasyonel Limitler ve Uygunluk Yönetimi",
+        content: `IMO kriterleri sadece tasarım aşamasıyla sınırlı değildir; geminin işletme sürecinde de uygulanabilir operasyonel sınırlar tanımlanmalıdır.
 
-**Stabilite Kitapçığı (Stability Booklet)**
-Her gemide bulunması zorunlu olan dokümandır:
-- Gemi özellikleri ve hidrostatik veriler
-- Onaylı yükleme senaryoları
-- Stabilite hesap prosedürleri
-- IMO kriterleri ve sınırlar
-- KN eğrileri veya tabloları
-- Tank kapasiteleri ve serbest yüzey verileri
+**Operasyonel Limitler Nedir?**
+Stabilite kitapçığında verilen limitler, geminin güvenli çalışması için kabul edilebilir aralıkları belirtir:
+- Maksimum izin verilen KG/VCG
+- Minimum GM limitleri
+- Maksimum yükseklikli güverte yükleri
+- Downflooding açısı ve kapak limitleri
 
-**Stabilite Kitapçığının İçeriği**
-1. Genel bilgiler (gemi boyutları, lightship verileri)
-2. Hidrostatik tablolar (draft vs KM, TPC, MCT vb.)
-3. Tank tabloları (kapasite, VCG, LCG, FSM)
-4. Örnek yükleme durumları ve hesaplar
-5. Kriter özeti ve kontrol tabloları
-6. GZ eğrileri (tipik durumlar için)
+**Tipik Limit Eğrileri**
+- **Limiting KG / VCG eğrisi:** Draft veya deplasmana göre maksimum KG
+- **Limiting GM eğrisi:** Minimum güvenli GM sınırı
+- **KN/GZ tabloları:** Farklı yükleme durumları için referans
 
-**Yükleme Bilgisayarı (Loading Computer)**
-Modern gemilerde zorunlu:
-- Stabilite hesabını otomatik yapar
-- IMO kriterlerini kontrol eder
-- Uyarı ve alarm verir
-- Onaylı yazılım gerektirir
+**Operasyonel Uygunluk Yönetimi**
+1. Yükleme durumu seç
+2. Stabilite kitabındaki limit eğrilerini kontrol et
+3. Yükleme bilgisayarıyla hesap doğrulaması yap
+4. Kriterleri sağlayamıyorsan yük dağılımını revize et
 
-**Sertifikasyon Süreci**
-
-**1. Tasarım Aşaması:**
-- Stabilite hesapları
-- Klas kuruluşu onayı
-
-**2. İnşa Sonrası:**
-- Eğim testi (inclining experiment)
-- Lightship verileri doğrulama
-- Stabilite kitapçığı onayı
-
-**3. İşletme Dönemi:**
-- Periyodik doğrulama (5 yıl)
-- Lightship değişikliği kontrolü
-- Yükleme bilgisayarı kalibrasyonu
-
-**Eğim Testi (Inclining Experiment)**
-Geminin lightship KG değerini belirlemek için yapılır:
-1. Gemi boşaltılır (lightship durumu)
-2. Bilinen ağırlıklar enine taşınır
-3. Yatma açısı ölçülür
-4. GM ve KG hesaplanır`,
+**Operasyonel Riskler**
+- Limit eğrisine yakın yükleme, küçük hatalarda uygunsuzluğa düşer
+- Serbest yüzey ve yüksek VCG, limitleri hızla aşırır
+- Downflooding açısı düşükse emniyet rezervi azalır`,
         formulas: [
           {
-            formula: "GM = (w × d) / (Δ × tan(θ))",
-            description: "Eğim testi GM hesabı"
+            formula: "KG_lim = KM - GM_gerekli",
+            description: "Limit KG hesabının temel ilişkisi"
           },
           {
-            formula: "KG = KM - GM",
-            description: "Eğim testinden KG belirleme"
+            formula: "GM_gerekli = GM_min + FSM/Δ",
+            description: "Serbest yüzey düzeltmesi ile gerekli GM"
           }
         ],
         keyPoints: [
-          "Stabilite kitapçığı her gemide zorunludur",
-          "Yükleme bilgisayarı modern gemilerde standart",
-          "Eğim testi lightship KG'yi belirler",
-          "Periyodik doğrulama gereklidir"
-        ],
-        practicalTips: [
-          "Stabilite kitapçığını her zaman güncel tutun",
-          "Yükleme bilgisayarı sonuçlarını manuel kontrol edin",
-          "Lightship değişikliklerini kaydedin ve raporlayın",
-          "Kriter sınırlarına yaklaşıldığında dikkatli olun"
+          "Operasyonel limitler stabilite kitabının en kritik bölümüdür",
+          "Limit eğrileri yükleme planının temel referansıdır",
+          "Yükleme bilgisayarı limit kontrolünde kullanılmalıdır",
+          "Limitlere yakın yükleme operasyonel risk yaratır"
         ],
         warnings: [
-          "Onaysız stabilite yazılımı kullanmayın",
-          "Lightship değişiklikleri rapor edilmelidir",
-          "Kriterleri karşılamayan yükleme durumu tehlikelidir"
+          "Limit eğrilerine uymayan yükleme durumu sefere çıkamaz",
+          "Kısmi dolu tanklar limitleri hızlı aşırabilir",
+          "Downflooding açısı düşerse stabilite rezervi azalır"
+        ],
+        practicalTips: [
+          "KG/VCG limit eğrilerini sefer planlamasında mutlaka kullanın",
+          "Kritik yükleme durumlarını önceden simüle edin",
+          "Serbest yüzeyli tankları minimize edin",
+          "Limitlere yakın durumlarda ekstra GM marjı bırakın"
         ]
       }
     ]
