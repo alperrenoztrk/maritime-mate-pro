@@ -1939,6 +1939,105 @@ Wall-sided formül şu durumlarda geçerlidir:
           "Güverte batması durumunda geçersiz olur",
           "30° üzeri açılarda sonuçlar yanıltıcı olabilir"
         ]
+      },
+      {
+        title: "6.6. Deck Edge Immersion ve Downflooding Açısı",
+        content: `Büyük açılı stabilitede, **pozitif stabilite menzilini** belirleyen kritik sınır çoğu zaman **downflooding (su girişi) açısıdır**. Bu nedenle GZ eğrisi yalnızca geometrik sıfır noktasıyla değil, geminin su almaya başladığı açıyla birlikte değerlendirilmelidir.
+
+**Deck Edge Immersion (Güverte Kenar Batması)**
+- Güverte kenar çizgisinin suya değdiği açıdır.
+- Bu noktadan sonra güverte üzerindeki açıklıklar daha hızlı su alma riski taşır.
+- Gemi formuna bağlı olarak GZ eğrisinin davranışı değişebilir.
+
+**Downflooding Açısı (θ_df)**
+- Su geçirmez olmayan açıklıkların (kapak, menhol, havalandırma, kapı) su altında kaldığı açıdır.
+- Pozitif stabilite menzilinin pratik sınırıdır.
+- Stabilite kitapçığında, her yükleme durumu için belirlenir.
+
+**Neden Kritik?**
+GZ eğrisi teorik olarak pozitif kalsa bile, downflooding ile su girişi başladığında:
+- Serbest yüzey etkisi hızla büyür
+- G artar, GZ düşer
+- Gerçek stabilite rezervi hızla azalır
+
+**Değerlendirme Prensibi**
+- Pozitif stabilite menzili = min(θ_vanishing, θ_df)
+- Downflooding açısı düşükse, GZ eğrisi güvenli kabul edilmez
+
+**Operasyonel Sonuç**
+- Açıklıkların kapatılması ve denetlenmesi
+- Yükleme sırasında freeboard ve trim kontrolü
+- GZ eğrisi yorumunda θ_df mutlaka referans alınır`,
+        keyPoints: [
+          "Downflooding açısı, pozitif stabilite menzilinin pratik sınırıdır",
+          "Deck edge immersion, su giriş riskinin başladığı erken eşiktir",
+          "GZ pozitif olsa bile θ_df düşükse stabilite yetersizdir",
+          "θ_df değeri stabilite kitapçığında yer alır"
+        ],
+        warnings: [
+          "Açıklıklar düzgün kapatılmadıysa θ_df fiilen düşer",
+          "Düşük freeboard ve aşırı trim, su girişini hızlandırır",
+          "Downflooding sonrası GZ eğrisi hızla bozulabilir"
+        ],
+        practicalTips: [
+          "Seyir öncesi tüm su geçirmez kapakları kontrol edin",
+          "Trim ve freeboard değerlerini stabilite limitleriyle kıyaslayın",
+          "GZ eğrisi yorumunda θ_df değerini mutlaka işaretleyin"
+        ]
+      },
+      {
+        title: "6.7. Pozitif Stabilite Menzili ve Stabilite Rezervi",
+        content: `GZ eğrisi, geminin **pozitif stabilite menzili** ve **stabilite rezervi** hakkında net bilgi sağlar. Bu iki kavram, özellikle büyük açılarda geminin devrilmeye karşı kalan güvenlik payını ifade eder.
+
+**Pozitif Stabilite Menzili**
+- GZ'nin pozitif kaldığı açılar aralığıdır.
+- Başlangıç 0° kabul edilir.
+- Bitiş, **vanishing angle** veya **downflooding açısı**dır (hangisi daha küçükse).
+
+**Stabilite Rezervi (Reserve of Stability)**
+- GZ eğrisi altında kalan alan ile temsil edilir.
+- Aynı GM’ye sahip iki gemiden, alanı daha büyük olan daha güvenlidir.
+- Rezerv, özellikle ağır hava ve ani heeling momentlerine karşı enerji tamponudur.
+
+**IMO Intact Stabilite Kriterleri (Özet)**
+- Pozitif stabilite menzili en az 30° (tercihen 40°)
+- GZ_max ≥ 0.20 m ve genellikle 25° veya üzerindeki bir açıda
+- 0°–30° ve 0°–40° alan kriterleri (dinamik stabilite)
+
+**Menzil Değerlendirme**
+- Dar menzil = erken devrilme riski
+- Geniş menzil = daha iyi güvenlik rezervi
+- Downflooding açısı düşükse menzil fiilen daralır
+
+**Operasyonel Uygulama**
+- Yükleme durumu değiştikçe menzil ve alan tekrar kontrol edilir
+- Serbest yüzey etkisi, menzili görünürde koruyup rezervi azaltabilir`,
+        formulas: [
+          {
+            formula: "θ_range = min(θ_vanishing, θ_df)",
+            description: "Pozitif stabilite menzili sınırı"
+          },
+          {
+            formula: "A = ∫₀^{θ} GZ × dθ",
+            description: "Stabilite rezervi (eğri altı alan)"
+          }
+        ],
+        keyPoints: [
+          "Pozitif stabilite menzili, devrilme sınırını gösterir",
+          "Stabilite rezervi GZ eğrisi altı alanla değerlendirilir",
+          "Downflooding açısı menzili pratikte sınırlar",
+          "IMO kriterleri menzil ve alan için minimum şartlar belirler"
+        ],
+        practicalTips: [
+          "Her yükleme durumunda menzil ve alanı birlikte kontrol edin",
+          "GZ eğrisi üzerinde θ_df ve GZ_max noktalarını işaretleyin",
+          "Dar menzil varsa operasyonel limitleri sıkılaştırın"
+        ],
+        warnings: [
+          "Menzil yeterli görünse bile alan küçükse dinamik stabilite zayıftır",
+          "Serbest yüzey etkisi stabilite rezervini beklenenden fazla düşürebilir",
+          "Downflooding açısı düşükse emniyet marjı hızla kaybolur"
+        ]
       }
     ]
   },
