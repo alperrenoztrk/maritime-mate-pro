@@ -37,6 +37,7 @@ export type WeatherData = {
   longitude: number;
   timezoneId?: string;
   utcOffsetSeconds?: number;
+  isFallbackLocation?: boolean;
   sunriseIso?: string;
   sunsetIso?: string;
 };
@@ -78,6 +79,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<WeatherData | null>(null);
   const [locationLabel, setLocationLabel] = useState<string | null>(null);
+  const [isFallbackLocation, setIsFallbackLocation] = useState<boolean>(false);
 
   const lastPositionRef = useRef<{ lat: number; lon: number } | null>(null);
   const lastReverseRef = useRef<{ lat: number; lon: number; label: string | null } | null>(null);
@@ -140,6 +142,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         longitude: json.longitude,
         timezoneId: json.timezone,
         utcOffsetSeconds: json.utc_offset_seconds,
+        isFallbackLocation: false,
         sunriseIso,
         sunsetIso,
       });
@@ -201,6 +204,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
   const handleWatch = useCallback((pos: GeolocationPosition) => {
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
+    setIsFallbackLocation(false);
     const prev = lastPositionRef.current;
     lastPositionRef.current = { lat, lon };
     if (!prev) {
@@ -238,9 +242,11 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         longitude: preloadedData.longitude,
         timezoneId: preloadedData.timezoneId,
         utcOffsetSeconds: preloadedData.utcOffsetSeconds,
+        isFallbackLocation: preloadedData.isFallbackLocation,
         sunriseIso: preloadedData.sunriseIso,
         sunsetIso: preloadedData.sunsetIso,
       });
+      setIsFallbackLocation(preloadedData.isFallbackLocation);
       if (preloadedData.locationLabel) {
         setLocationLabel(preloadedData.locationLabel);
       }
@@ -288,12 +294,14 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         fetchWeather(lat, lon),
         fetchReverse(lat, lon),
       ]);
+      setIsFallbackLocation(false);
       console.log("✅ Hava durumu verisi başarıyla alındı");
       return dataRef.current;
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Bilinmeyen hata";
       console.error("❌ Hava durumu hatası:", message);
       setError(message);
+      setIsFallbackLocation(true);
       return null;
     } finally {
       setLoading(false);
@@ -315,6 +323,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         setLoading(true);
         lastPositionRef.current = { lat: selectedLocation.latitude, lon: selectedLocation.longitude };
         setLocationLabel(selectedLocation.locationLabel);
+        setIsFallbackLocation(false);
         await fetchWeather(selectedLocation.latitude, selectedLocation.longitude);
         setLoading(false);
       })();
@@ -380,7 +389,8 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     error,
     data,
     locationLabel,
+    isFallbackLocation,
     refresh,
     requestOnce,
-  }), [data, error, loading, locationLabel, refresh, requestOnce]);
+  }), [data, error, isFallbackLocation, loading, locationLabel, refresh, requestOnce]);
 }

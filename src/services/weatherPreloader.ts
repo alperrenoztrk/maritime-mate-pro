@@ -49,9 +49,12 @@ export type PreloadedWeatherData = {
   timezoneId?: string;
   utcOffsetSeconds?: number;
   locationLabel?: string;
+  isFallbackLocation: boolean;
   sunriseIso?: string;
   sunsetIso?: string;
 };
+
+type WeatherCoreData = Omit<PreloadedWeatherData, "locationLabel" | "isFallbackLocation">;
 
 class WeatherPreloader {
   private static instance: WeatherPreloader;
@@ -91,6 +94,7 @@ class WeatherPreloader {
       // Get current position with fallback
       let lat: number;
       let lon: number;
+      let isFallbackLocation = false;
       
       try {
         const position = await new Promise<GeolocationPosition>((resolve, reject) => {
@@ -122,6 +126,7 @@ class WeatherPreloader {
         console.log("📍 [Preloader] Fallback koordinatlar kullanılıyor (İstanbul)");
         lat = this.defaultCoords.latitude;
         lon = this.defaultCoords.longitude;
+        isFallbackLocation = true;
       }
 
       console.log("🌤️ [Preloader] Hava durumu ve konum verisi paralel olarak alınıyor...");
@@ -132,7 +137,7 @@ class WeatherPreloader {
         this.fetchLocationLabel(lat, lon)
       ]);
 
-      let weatherData: PreloadedWeatherData | null = null;
+      let weatherData: WeatherCoreData | null = null;
       let locationLabel: string | null = null;
 
       if (weatherResult.status === 'fulfilled') {
@@ -150,7 +155,8 @@ class WeatherPreloader {
       if (weatherData) {
         this.preloadedData = {
           ...weatherData,
-          locationLabel: locationLabel || undefined
+          locationLabel: locationLabel || undefined,
+          isFallbackLocation,
         };
         console.log("✅ [Preloader] Hava durumu verisi başarıyla preload edildi");
         return this.preloadedData;
@@ -167,7 +173,7 @@ class WeatherPreloader {
     }
   }
 
-  private async fetchWeather(lat: number, lon: number) {
+  private async fetchWeather(lat: number, lon: number): Promise<WeatherCoreData> {
     const weatherUrl = new URL("https://api.open-meteo.com/v1/forecast");
     weatherUrl.searchParams.set("latitude", String(lat));
     weatherUrl.searchParams.set("longitude", String(lon));
