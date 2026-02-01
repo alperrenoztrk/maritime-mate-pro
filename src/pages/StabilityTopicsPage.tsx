@@ -933,6 +933,142 @@ Basit şekilli prizmalar için B noktası, batmış hacmin merkezindedir ve sime
       "Şekil değiştikçe B'nin konumu değişir",
     ],
   },
+  "gz-righting-lever": {
+    title: "Doğrultma Kolu (GZ)",
+    introduction: "GZ, gemi yattığında ağırlık kuvveti ile kaldırma kuvveti arasındaki yatay mesafeyi ifade eder ve doğrultma momentinin temelidir.",
+    content: `GZ (righting lever), gemi belirli bir açıyla yattığında ağırlık merkezi (G) ile kaldırma kuvvetinin etki doğrultusu arasındaki yatay uzaklıktır. Bu kol, doğrultma momentini üretir ve geminin dik konuma dönme eğilimini gösterir.
+
+Küçük açılarda GZ yaklaşık olarak GM × sinθ kabul edilir. Bu ilişki, ilk stabilite değerlendirmelerinde hızlı bir kontrol sağlar. GZ pozitif olduğunda doğrultma momenti gemiyi düzeltir; GZ negatif olduğunda gemi daha fazla yatma eğilimindedir.`,
+    bulletPoints: [
+      "GZ doğrultma momentinin koludur",
+      "Pozitif GZ: gemi dikleşme eğiliminde",
+      "Negatif GZ: devrilme eğilimi",
+      "Küçük açılarda GZ ≈ GM × sinθ",
+    ],
+    formula: {
+      name: "Doğrultma Momenti",
+      expression: "RM = Δ × GZ",
+      description: "RM: Doğrultma momenti (t·m), Δ: Deplasman (ton), GZ: Doğrultma kolu (m)",
+    },
+    keyPoints: [
+      "GZ eğrisi geminin tüm yatma açıları için stabilite profilini verir",
+      "GZ büyüklüğü, stabilite kalitesinin doğrudan göstergesidir",
+      "Yükleme değişiklikleri GZ'yi önemli ölçüde etkiler",
+    ],
+  },
+  "gz-curve-generation": {
+    title: "GZ Eğrisinin Elde Edilmesi",
+    introduction: "GZ eğrisi, geminin farklı yatma açılarındaki doğrultma kollarının hesaplanmasıyla oluşturulan stabilite eğrisidir.",
+    content: `GZ eğrisi, geminin çeşitli yatma açıları (genellikle 0°–90° ve gerekirse daha fazla) için GZ değerlerinin hesaplanmasıyla elde edilir. Bu hesaplar, geminin belirli bir yükleme durumundaki geometrisine ve hidrostatik özelliklerine dayanır.
+
+Klasik yöntem şu adımları içerir:
+1) Seçilen yatma açısı için su hattı ve batık hacim hesaplanır.
+2) Kaldırma merkezinin (B) yeni konumu bulunur.
+3) G ve B arasındaki yatay mesafe (GZ) belirlenir.
+4) Tüm açılar için tekrar edilerek eğri oluşturulur.
+
+Modern uygulamalarda bu süreç stabilite yazılımlarıyla otomatik yapılır; ancak sonuçların stabilite kitapçığı ve hidrostatik tablolarla tutarlı olması şarttır.`,
+    bulletPoints: [
+      "GZ eğrisi her yükleme durumu için ayrı hesaplanır",
+      "Hidrostatik tablolar ve stabilite yazılımı kullanılır",
+      "GZ eğrisi, IMO kriterlerinin temel girdisidir",
+    ],
+    keyPoints: [
+      "Doğru GZ eğrisi için doğru KG ve deplasman şarttır",
+      "Serbest yüzey düzeltmeleri mutlaka dahil edilmelidir",
+      "Eğri, hasarlı stabilite için ayrıca oluşturulur",
+    ],
+  },
+  "max-gz": {
+    title: "Maksimum GZ",
+    introduction: "Maksimum GZ, doğrultma kolunun en büyük değerini aldığı yatma açısıdır ve geminin stabilite kapasitesinin önemli bir göstergesidir.",
+    content: `GZ eğrisi belirli bir açıya kadar artar, ardından azalarak sıfıra yaklaşır. Eğrinin tepe noktası, geminin en yüksek doğrultma kapasitesini gösterir.
+
+IMO 2008 IS Code gibi kriterler, maksimum GZ değerinin ve oluştuğu açının belirli minimumları sağlamasını ister. Örneğin genel kargo gemileri için GZ_max ≥ 0.20 m ve bu maksimumun en az 25°–30° civarında oluşması beklenir (gemi tipine göre değişir).
+
+Maksimum GZ'nin çok düşük veya küçük açıda oluşması, yetersiz stabilite göstergesi olabilir.`,
+    bulletPoints: [
+      "Maksimum GZ stabilite kapasitesinin tepe noktasıdır",
+      "Aşırı küçük açıdaki maksimum GZ risklidir",
+      "Gemi tipine göre minimum GZ_max kriterleri vardır",
+    ],
+    keyPoints: [
+      "GZ_max, GM'den bağımsız olarak büyük açılı davranışı temsil eder",
+      "Üst ağırlıkların artması GZ_max'ı düşürür",
+      "GZ_max değeri yükleme planı ile kontrol edilir",
+    ],
+    warnings: [
+      "GZ_max kriteri sağlanmazsa sefer emniyeti risk altındadır",
+      "Güverte yükleri ve serbest yüzey etkisi GZ_max'ı hızlı düşürebilir",
+    ],
+  },
+  "stability-area": {
+    title: "Stabilite Alanı",
+    introduction: "Stabilite alanı, GZ eğrisi altında kalan alanı ifade eder ve geminin dinamik stabilite enerji kapasitesini gösterir.",
+    content: `GZ eğrisinin belirli bir açı aralığında altında kalan alan, geminin dış kuvvetlere karşı enerji sönümleme kapasitesini temsil eder. Bu alan ne kadar büyükse gemi dalga ve rüzgâr etkilerini o kadar iyi karşılar.
+
+IMO kriterleri, farklı açı aralıkları için minimum alan değerleri tanımlar (ör. 0°–30°, 0°–40° ve 30°–40°). Bu değerler gemi tipine göre değişebilir.
+
+Alan hesabı pratikte sayısal integrasyon veya stabilite yazılımı ile yapılır.`,
+    bulletPoints: [
+      "Alan = Enerji kapasitesi göstergesi",
+      "IMO kriterleri alan minimumlarını belirler",
+      "Hasarlı stabilitede alan kriterleri daha kritiktir",
+    ],
+    formula: {
+      name: "Dinamik Stabilite Alanı",
+      expression: "A = ∫ GZ · dθ",
+      description: "A: Alan (m·rad), GZ: doğrultma kolu (m), θ: yatma açısı (rad)",
+    },
+    keyPoints: [
+      "Alan büyüdükçe devrilme riski azalır",
+      "Alan değerleri GZ eğrisinin şekline bağlıdır",
+      "Serbest yüzey ve üst yükler alanı küçültür",
+    ],
+  },
+  "capsizing-angle": {
+    title: "Devrilme Açısı (Vanishing Stability Angle)",
+    introduction: "Devrilme açısı, GZ eğrisinin tekrar sıfıra düştüğü ve geminin doğrultma momenti üretmeyi bıraktığı açıdır.",
+    content: `GZ eğrisi, belirli bir açıdan sonra azalır ve bir noktada sıfıra ulaşır. Bu açı, geminin doğrultma yeteneğinin sona erdiği sınırdır ve vanishing stability angle olarak adlandırılır.
+
+Bu açıdan sonra GZ negatif olur ve gemi devrilme eğilimine girer. Devrilme açısı, geminin güvenli stabilite aralığını tanımlar ve yükleme durumuna göre değişir.`,
+    bulletPoints: [
+      "GZ = 0 olduğu açı güvenli stabilite sınırıdır",
+      "Bu açıdan sonra devrilme riski hızla artar",
+      "Yükleme ve KG değişimleri devrilme açısını etkiler",
+    ],
+    keyPoints: [
+      "Devrilme açısı ne kadar büyükse o kadar güvenlidir",
+      "Freeboard ve downflooding açıklıkları bu açıyı sınırlayabilir",
+      "Hasarlı stabilitede devrilme açısı daha küçüktür",
+    ],
+    warnings: [
+      "Açıklıkların suya girmesi devrilme açısını pratikte düşürür",
+      "Downflooding açısı, GZ eğrisinden önce sınır olabilir",
+    ],
+  },
+  "gz-curve-interpretation": {
+    title: "GZ Eğrisinin Yorumu",
+    introduction: "GZ eğrisi, geminin farklı yatma açılarına karşı stabilite davranışını görsel olarak ortaya koyar.",
+    content: `GZ eğrisi üzerinde aşağıdaki noktalar birlikte değerlendirilir:
+- Eğrinin başlangıç eğimi (GM ile ilişkili)
+- Maksimum GZ değeri ve oluştuğu açı
+- Pozitif GZ aralığı (stabilite aralığı)
+- Alan büyüklükleri (dinamik stabilite)
+
+Yükleme değiştiğinde eğri de değişir. Üst yüklerin artması eğriyi aşağı çeker; serbest yüzey etkisi başlangıç eğimini düşürür; genişlik artışı veya düşük KG eğriyi yukarı taşır.`,
+    bulletPoints: [
+      "Eğrinin başlangıcı GM'yi yansıtır",
+      "Tepe noktası maksimum doğrultma kapasitesidir",
+      "Eğrinin sıfıra indiği açı güvenli sınırdır",
+      "Alanlar dinamik stabiliteyi temsil eder",
+    ],
+    keyPoints: [
+      "Tek bir değer yerine eğrinin tüm şekli okunmalıdır",
+      "Yükleme senaryoları arasında kıyaslama yapılmalıdır",
+      "GZ eğrisi, operasyonel limitlerin temel dayanağıdır",
+    ],
+  },
   // Daha fazla içerik eklenebilir...
 };
 
