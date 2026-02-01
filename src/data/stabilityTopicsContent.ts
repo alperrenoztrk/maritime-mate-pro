@@ -1438,6 +1438,146 @@ T_e ≈ T_r / 2  veya  T_e ≈ T_r
           "Kritik hız aralıklarını önceden hesaplayın",
           "Ağır havada düşük GM ile seyir etmeyin"
         ]
+      },
+      {
+        title: "5.5. Rulo Sönümlemesi (Roll Damping)",
+        content: `Rulo sönümlemesi, geminin yalpa hareketi sırasında enerjinin kaybedilmesiyle salınımların zamanla küçülmesini ifade eder. Sönümleme yetersizse gemi uzun süre salınır; sönümleme yüksekse salınım hızlıca azalır.
+
+**Sönümleme Kaynakları**
+1. **Viskoz Sürtünme:** Gövde yüzeyinde su ile oluşan sürtünme.
+2. **Dalgasal Radyasyon:** Yalpa sırasında suya enerji aktarımıyla dalga oluşumu.
+3. **Apendisler:** Bilge keel, fin stabilizatör, pervane ve dümen gibi elemanlar.
+4. **İç Sürtünme:** Yapısal elemanlarda mikro deformasyonlar.
+
+**Sönümlemenin Pratik Önemi**
+- Sönümleme, rulo periyodundan bağımsız olarak salınım şiddetini kontrol eder.
+- Zayıf sönümleme, konforu ve güvenliği olumsuz etkiler.
+- Ağır havada büyük rulo açılarını sınırlamak için kritik bir parametredir.
+
+**Rulo Sönümleme Ölçümü (Serbest Salınım)**
+Geminin serbest rulo salınımında ardışık tepe açıları ölçülerek sönümleme bulunur:
+────────────
+δ = ln(θ₁ / θ₂)
+ζ ≈ δ / (2π)
+────────────
+Burada:
+- θ₁, θ₂: Ardışık iki tepe rulo açısı
+- δ: Logaritmik decrement
+- ζ: Sönüm oranı
+
+**Yükleme ve Sönümleme**
+- Sığ draftta sönümleme genelde azalır.
+- Geniş ve keskin bilge bölgeleri sönümlemeyi artırır.
+- Yüksek serbest yüzey etkisi sönümlemeyi artırsa da GM’i düşürerek risk yaratır.`,
+        formulas: [
+          {
+            formula: "δ = ln(θ₁ / θ₂)",
+            description: "Logaritmik decrement (sönümleme göstergesi)"
+          },
+          {
+            formula: "ζ ≈ δ / (2π)",
+            description: "Sönüm oranı (yaklaşık)"
+          }
+        ],
+        examples: [
+          {
+            problem: "Serbest rulo testinde ardışık tepe açıları 8° ve 6°. Logaritmik decrement nedir?",
+            solution: "δ = ln(8/6) = ln(1.333) ≈ 0.288"
+          }
+        ],
+        keyPoints: [
+          "Sönümleme salınımın zamanla azalmasını sağlar",
+          "Bilge keel ve apendisler sönümlemeyi artırır",
+          "Zayıf sönümleme uzun süreli yalpaya yol açar",
+          "Logaritmik decrement sönümleme için pratik ölçüttür"
+        ],
+        practicalTips: [
+          "Sert rulo şikayetlerinde sönümleme elemanlarını kontrol edin",
+          "Serbest rulo ölçümleriyle sönümleme takibi yapılabilir",
+          "Bilge keel bakımı sönümleme performansını etkiler"
+        ]
+      },
+      {
+        title: "5.6. Rulo Stabilizasyon Sistemleri",
+        content: `Rulo stabilizasyon sistemleri, geminin yalpa hareketini azaltmak için kullanılan pasif veya aktif çözümlerdir. Özellikle yolcu gemileri, Ro-Ro ve konteyner gemilerinde operasyonel güvenlik ve konfor açısından kritiktir.
+
+**Pasif Sistemler**
+1. **Bilge Keel:** Gövdeye sabit kanatlar; sönümlemeyi artırır, bakım kolaydır.
+2. **Anti-Rolling Tank (ART):** U-tüp veya flume tanklar; suyun kontrollü hareketiyle ruloyu azaltır.
+3. **Keskin Bilge Formu:** Gövde geometrisi ile sönümleme artırılır.
+
+**Aktif Sistemler**
+1. **Fin Stabilizatörleri:** Hidrodinamik kanatlar; hızla etkili, ancak bakım ve enerji gerektirir.
+2. **Aktif Tanklar:** Pompa ve valflerle tank içi akış kontrol edilir.
+3. **Gyro Stabilizer:** Dönen kütle ile karşı moment üretir (daha küçük gemilerde yaygın).
+
+**Sistem Seçiminde Kriterler**
+- Gemi tipi ve operasyon profili
+- Seyir hızı (fin stabilizatörleri için kritik)
+- Enerji tüketimi ve bakım maliyeti
+- Liman ve düşük hız operasyonları
+
+**Seyir Emniyetine Etkisi**
+- Rulo açılarını düşürerek yük kayması riskini azaltır
+- Konforu artırır, yolcu emniyeti sağlar
+- Yapısal yükleri ve ekipman yorgunluğunu düşürür`,
+        keyPoints: [
+          "Pasif sistemler düşük bakım, orta etkinlik sağlar",
+          "Aktif sistemler yüksek etkinlik ancak enerji ve bakım ister",
+          "Seyir hızına bağlı performans değişimi kritik bir parametredir",
+          "Doğru sistem seçimi operasyonel riskleri azaltır"
+        ],
+        practicalTips: [
+          "Fin stabilizatörleri düşük hızda etkisini kaybeder",
+          "Anti-rolling tanklar düşük hızda da etkilidir",
+          "Bakım planı stabilizasyon performansını korur"
+        ],
+        warnings: [
+          "Stabilizatör arızaları ani yalpa artışına yol açabilir",
+          "Yanlış tank ayarı yalpayı artırabilir",
+          "Aktif sistemler yüksek enerji tüketimi yaratır"
+        ]
+      },
+      {
+        title: "5.7. Rulo Rezonansı ve Operasyonel Yönetim",
+        content: `Rulo rezonansı, geminin doğal rulo periyodu ile karşılaşılan dalga periyodunun yakınlaşması sonucu salınım büyümesidir. Parametrik yalpaya benzer riskler doğurabilir, ancak farklı bir mekanizmaya sahiptir.
+
+**Rezonansın Oluşumu**
+- Dalga periyodu (T_w) ≈ Geminin doğal rulo periyodu (T_r)
+- Tekrarlı dalga etkileri ruloyu her çevrimde büyütür
+- Özellikle yan dalga (beam sea) koşullarında kritiktir
+
+**Risk Artıran Faktörler**
+- Zayıf sönümleme
+- Uzun rulo periyodu (yumuşak gemi)
+- Tekdüze dalga spektrumu
+- Düşük sürat (manevra kısıtları)
+
+**Operasyonel Önlemler**
+1. **Rota Değişikliği:** Dalga açısını 20–40° değiştirerek rezonansı kırın.
+2. **Hız Ayarı:** Karşılaşma periyodunu değiştirmek için hız artırma/azaltma.
+3. **GM Yönetimi:** Alt balastla GM artırıp periyodu kısaltın.
+4. **Sönümleme Artışı:** Bilge keel ve stabilizatör performansını kontrol edin.
+
+**Pratik Gözlem**
+- Düzenli ve büyüyen rulo açısı rezonans işareti olabilir
+- Tek bir büyük dalga yerine ardışık büyüyen yalpa oluşur`,
+        keyPoints: [
+          "Rulo rezonansı dalga periyodu ile doğal periyot çakışınca oluşur",
+          "Yan dalga koşulları riski artırır",
+          "Rota ve hız değişikliği en hızlı müdahaledir",
+          "GM ayarı periyodu değiştirmek için etkili bir araçtır"
+        ],
+        practicalTips: [
+          "Yan dalga yerine baş-kıç açıları tercih edin",
+          "Hız değişimiyle karşılaşma periyodunu kaydırın",
+          "Sönümleme elemanlarını düzenli kontrol edin"
+        ],
+        warnings: [
+          "Rulo rezonansı hızlı büyüyebilir ve kontrol dışına çıkabilir",
+          "Rüzgâr ve dalga yönü birlikte değerlendirilmelidir",
+          "Aşırı rulo yük kayması ve yaralanma riskini artırır"
+        ]
       }
     ]
   },
