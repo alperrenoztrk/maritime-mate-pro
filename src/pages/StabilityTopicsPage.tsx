@@ -617,6 +617,186 @@ ISM (International Safety Management) Kodu, stabilite yönetimini zorunlu kılma
       "Stabilite kitapçığı limitlerine uyulmalıdır",
     ],
   },
+  "weight-addition": {
+    title: "Ağırlık eklenmesi",
+    introduction: "Gemiye yeni bir ağırlık eklendiğinde toplam deplasman artar ve ağırlık merkezi eklenen yükün konumuna doğru kayar.",
+    content: `Ağırlık ekleme; kargo yükleme, yakıt/ballast alma, ekipman montajı gibi işlemleri kapsar. Eklenen yük, toplam ağırlığı artırdığı için geminin draftı büyür ve KG, LCG, TCG değerleri değişir.
+
+Yeni ağırlık merkezinin hesabı momentler yöntemi ile yapılır. Eklenen yükün dikey (kg), enine (tcg) ve boyuna (lcg) konumları ayrı ayrı değerlendirilir. Bu işlem, her yükleme adımında stabilite kitabı sınırları içinde kalmak için zorunludur.
+
+Görsel: Geminin üzerinde eklenen yük, G noktasının yük yönüne kaydığı vektörle ve moment kolu ile gösterilir.`,
+    bulletPoints: [
+      "Deplasman artar, draft büyür",
+      "G noktası eklenen yükün konumuna yaklaşır",
+      "KG, LCG ve TCG ayrı ayrı güncellenir",
+    ],
+    formula: {
+      name: "Ağırlık Ekleme ile Yeni KG",
+      expression: "KG₁ = (Δ × KG₀ + w × kg) / (Δ + w)",
+      description: "Δ: başlangıç deplasmanı (t), KG₀: başlangıç KG (m), w: eklenen ağırlık (t), kg: eklenen yükün dikey konumu (m)",
+    },
+    examples: [
+      {
+        problem: "Δ = 5.000 t, KG₀ = 6.2 m ve w = 200 t yük kg = 9.0 m seviyesine eklendi. Yeni KG kaç m?",
+        solution: "KG₁ = (5.000×6.2 + 200×9.0) / 5.200 = (31.000 + 1.800) / 5.200 = 6.31 m. Sonuç: KG yükselir, GM azalır.",
+      },
+    ],
+    keyPoints: [
+      "Yük yukarıda eklenirse KG artar, stabilite azalır",
+      "Yük aşağıda eklenirse KG düşer, stabilite artar",
+      "Her ekleme adımı için yeni G konumu hesaplanmalıdır",
+    ],
+  },
+  "weight-removal": {
+    title: "Ağırlık çıkarılması",
+    introduction: "Ağırlık çıkarıldığında deplasman azalır ve ağırlık merkezi çıkarılan yükün ters yönüne kayar.",
+    content: `Ağırlık çıkarma; kargo boşaltma, yakıt tüketimi veya balast verme gibi işlemlerle oluşur. Bu durumda gemi hafifler, draft azalır ve G noktası çıkarılan yükün konumuna ters yönde hareket eder.
+
+Çıkarılan yükün konumu yüksek ise KG azalır ve stabilite artabilir; aşağıdan ağırlık çıkarılırsa KG yükselir ve stabilite azalır. Bu nedenle tüketim ve boşaltma planı, stabilite açısından dikkatle izlenmelidir.
+
+Görsel: Yük çıkarma sonrası G noktasının ters yöne kayması ve moment kolu gösterilir.`,
+    bulletPoints: [
+      "Deplasman azalır, draft küçülür",
+      "G noktası çıkarılan yükün ters yönüne kayar",
+      "Yüksekte ağırlık çıkarmak stabiliteyi iyileştirir",
+    ],
+    formula: {
+      name: "Ağırlık Çıkarma ile Yeni KG",
+      expression: "KG₁ = (Δ × KG₀ - w × kg) / (Δ - w)",
+      description: "Δ: başlangıç deplasmanı (t), KG₀: başlangıç KG (m), w: çıkarılan ağırlık (t), kg: çıkarılan yükün dikey konumu (m)",
+    },
+    examples: [
+      {
+        problem: "Δ = 4.800 t, KG₀ = 5.9 m, w = 150 t ve kg = 10 m yük çıkarılıyor. Yeni KG kaç m?",
+        solution: "KG₁ = (4.800×5.9 - 150×10) / 4.650 = (28.320 - 1.500) / 4.650 = 5.77 m. Sonuç: KG azalır, stabilite artar.",
+      },
+    ],
+    keyPoints: [
+      "Üstten ağırlık çıkarma GM’yi artırır",
+      "Alttan ağırlık çıkarma GM’yi azaltır",
+      "Yakıt tüketimi stabilite planında mutlaka izlenmelidir",
+    ],
+  },
+  "weight-shift": {
+    title: "Ağırlık kaydırılması",
+    introduction: "Ağırlık kaydırma, deplasmanı değiştirmeden ağırlık merkezinin yön değiştirmesine neden olur ve list/trim oluşturabilir.",
+    content: `Ağırlık kaydırma; gemi içinde bir yükün başka bir konuma taşınmasıdır. Bu işlemde toplam deplasman değişmez, ancak G noktası taşınan yükün yönüne doğru kayar.
+
+Enine kaydırma list (yana yatma), boyuna kaydırma trim değişimine neden olur. Dikey kaydırma ise GM’yi doğrudan etkiler. Bu yüzden vinç operasyonları, konteyner yer değişimleri ve balast transferleri sırasında ağırlık kaydırma etkisi mutlaka hesaplanır.
+
+Görsel: Yükün yeni konumuna taşınması, G noktasının kayma vektörü ve oluşan moment kolu gösterilir.`,
+    bulletPoints: [
+      "Deplasman sabit kalır, G noktası yer değiştirir",
+      "Enine kaydırma list oluşturur",
+      "Boyuna kaydırma trim değiştirir",
+    ],
+    formula: {
+      name: "Ağırlık Kaydırma ile G Değişimi",
+      expression: "GG₁ = (w × d) / Δ",
+      description: "GG₁: G’nin kayma miktarı (m), w: kaydırılan ağırlık (t), d: kaydırma mesafesi (m), Δ: deplasman (t)",
+    },
+    examples: [
+      {
+        problem: "Δ = 6.000 t, w = 120 t yük 6 m enine kaydırılıyor. G kaç metre kayar?",
+        solution: "GG₁ = (120×6) / 6.000 = 0.12 m. Sonuç: G, 12 cm kayar ve list oluşur.",
+      },
+    ],
+    keyPoints: [
+      "G kayması doğrudan list/trim yaratır",
+      "Vinç operasyonlarında kaydırma etkisi kritiktir",
+      "Kısa mesafeler bile büyük list oluşturabilir",
+    ],
+  },
+  "vertical-weight-movement": {
+    title: "Dikey ağırlık hareketleri",
+    introduction: "Ağırlığın dikey taşınması KG’yi değiştirir ve geminin ilk stabilitesini doğrudan etkiler.",
+    content: `Dikey ağırlık hareketlerinde yük yukarı taşınırsa KG artar, aşağı taşınırsa KG azalır. Bu işlem deplasmanı değiştirmez ancak GM üzerinde güçlü etki yaratır.
+
+Vinçle yük kaldırma, güverteye ekipman yerleştirme veya balastın alt tanklara transferi gibi işlemler dikey ağırlık hareketidir. Özellikle yükün askıda olduğu durumlarda, ağırlık merkezinin etkin konumu askı noktasına taşınmış kabul edilir.
+
+Görsel: Yükün yukarı/aşağı taşınması ve KG’nin yeni konumu ile GM değişimi gösterilir.`,
+    bulletPoints: [
+      "Yukarı taşıma KG’yi artırır, GM azalır",
+      "Aşağı taşıma KG’yi azaltır, GM artar",
+      "Askıdaki yük, ağırlık merkezini askı noktasına taşır",
+    ],
+    formula: {
+      name: "Dikey Taşıma ile KG Değişimi",
+      expression: "ΔKG = (w × d) / Δ",
+      description: "ΔKG: KG değişimi (m), w: taşınan ağırlık (t), d: dikey taşıma mesafesi (m), Δ: deplasman (t)",
+    },
+    examples: [
+      {
+        problem: "Δ = 7.200 t, w = 80 t yük 4 m yukarı taşınıyor. KG ne kadar artar?",
+        solution: "ΔKG = (80×4) / 7.200 = 0.044 m. Sonuç: KG yaklaşık 4.4 cm artar ve GM azalır.",
+      },
+    ],
+    keyPoints: [
+      "Dikey hareketler GM üzerinde en hızlı etkiye sahiptir",
+      "Yükün askıda olduğu sürede stabilite azalır",
+      "Kritik operasyonlarda izinli KG limitleri kontrol edilmelidir",
+    ],
+  },
+  "transverse-weight-movement": {
+    title: "Enine ağırlık hareketleri",
+    introduction: "Enine ağırlık hareketleri TCG’yi değiştirir ve gemide list (yana yatma) oluşturur.",
+    content: `Enine taşıma, bir yükün iskeleden sancağa veya sancaktan iskeleye kaydırılmasıdır. Bu işlemde G noktası yatılan tarafa doğru kayar ve gemi denge açısına gelir.
+
+Küçük açılar için list hesabı, doğrultma momenti ile yatma momentinin dengelenmesi prensibine dayanır. Enine kaydırma, liman operasyonlarında sık gerçekleştiği için yükleme planlarında mutlaka hesaplanır.
+
+Görsel: Yükün enine taşınması, TCG kayması ve oluşan list açısı gösterilir.`,
+    bulletPoints: [
+      "TCG kayması list oluşturur",
+      "Küçük açılarda tan θ yaklaşımı kullanılır",
+      "Konteyner ve palet yer değiştirmeleri list yaratabilir",
+    ],
+    formula: {
+      name: "Enine Kaydırmada List Açısı",
+      expression: "tan θ = (w × d) / (Δ × GM)",
+      description: "θ: list açısı (rad), w: taşınan ağırlık (t), d: enine taşıma mesafesi (m), Δ: deplasman (t), GM: metasantrik yükseklik (m)",
+    },
+    examples: [
+      {
+        problem: "Δ = 5.500 t, GM = 0.9 m, w = 60 t yük 5 m enine kaydırılıyor. List açısı yaklaşık kaç derece?",
+        solution: "tan θ = (60×5) / (5.500×0.9) = 300 / 4.950 = 0.0606. θ ≈ 3.47°. Sonuç: Yaklaşık 3.5° list oluşur.",
+      },
+    ],
+    keyPoints: [
+      "GM küçüldükçe list açısı büyür",
+      "Enine taşıma operasyonları limitler içinde yapılmalıdır",
+      "Yükler simetrik yerleştirilmeli, list izlenmelidir",
+    ],
+  },
+  "longitudinal-weight-movement": {
+    title: "Boyuna ağırlık hareketleri",
+    introduction: "Boyuna ağırlık hareketleri LCG’yi değiştirir ve geminin trimini etkiler.",
+    content: `Boyuna taşınan yükler, geminin baş-kıç dengesini değiştirir. Bu değişim LCG kayması ile ifade edilir ve trim oluşmasına neden olur.
+
+Trim hesabında temel büyüklük MCT (Moment to Change Trim) değeridir. Boyuna kaydırma momenti (w × d) ile MCT karşılaştırılarak trim değişimi bulunur. Bu analiz, yükleme planı ve seyre hazırlık açısından kritiktir.
+
+Görsel: Yükün başa/kıça kaydırılması, LCG kayması ve oluşan trim yönü gösterilir.`,
+    bulletPoints: [
+      "LCG kayması trim değiştirir",
+      "Trim hesabında MCT kullanılır",
+      "Baş-kıç dengesizliği performansı etkiler",
+    ],
+    formula: {
+      name: "Boyuna Kaydırmada Trim Değişimi",
+      expression: "Trim = (w × d) / MCT",
+      description: "Trim: trim değişimi (m veya cm), w: taşınan ağırlık (t), d: boyuna taşıma mesafesi (m), MCT: trim değişimi momenti (t·m/cm veya t·m/m)",
+    },
+    examples: [
+      {
+        problem: "w = 200 t yük 12 m başa kaydırılıyor. MCT = 400 t·m/cm ise trim değişimi kaç cm olur?",
+        solution: "Trim = (200×12) / 400 = 2.400 / 400 = 6 cm. Sonuç: Baş trim yaklaşık 6 cm artar.",
+      },
+    ],
+    keyPoints: [
+      "Trim değişimi yakıt tüketimi ve hız üzerinde etkilidir",
+      "LCG kaymasıyla birlikte LCB uyumu kontrol edilmelidir",
+      "MCT değeri hidrostatik tablolardan alınır",
+    ],
+  },
   // Diğer konular için içerikler...
   "weight-w": {
     title: "Ağırlık (W)",
