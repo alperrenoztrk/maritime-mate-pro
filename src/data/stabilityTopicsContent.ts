@@ -2527,7 +2527,277 @@ Trim, baş ve kıç draftları arasındaki farktır:
         ]
       },
       {
-        title: "8.5. LCF ve Draft Düzeltmeleri",
+        title: "8.2. LCG – LCB İlişkisi ve Trim Momenti",
+        content: `Boyuna dengede temel belirleyici, **LCG (Boyuna Ağırlık Merkezi)** ile **LCB (Boyuna Kaldırma Merkezi)** arasındaki farktır.
+
+**LCG ve LCB Nedir?**
+- **LCG (Longitudinal Center of Gravity):** Gemideki tüm ağırlıkların boyuna ağırlık merkezi.
+- **LCB (Longitudinal Center of Buoyancy):** Su hattı altındaki hacmin boyuna kaldırma merkezi.
+
+**Denge Prensibi**
+Even keel (düz omurga) için:
+- **LCG ≈ LCB** olmalıdır.
+- LCG ile LCB arasındaki fark trim momenti doğurur.
+
+**Trim Momenti (Trimming Moment)**
+Trimming moment = Δ × (LCG - LCB)
+Bu moment, gemiyi başa veya kıça yatırır.
+
+**Trim Yönü**
+- **LCG LCB’nin önünde ise:** Gemi **başa trim** yapar.
+- **LCG LCB’nin gerisinde ise:** Gemi **kıça trim** yapar.
+
+> Not: İşaret kuralı, gemi kitabı ve hidrostatik tabloların referansına göre değişebilir. Hesapta kullanılan eksen yönünü mutlaka kontrol edin.
+
+**Trim Hesabına Etkisi**
+Trim (cm) = Trimming moment / MCT1cm
+Bu ilişki, LCG-LCB farkının trim değerine nasıl dönüştüğünü gösterir.
+
+**Pratik Önemi**
+- Yük dağılımı ile LCG’yi kontrol etmek, trim yönetiminin temelidir.
+- Yakıt tüketimi, kargo hareketi veya balast transferi LCG’yi değiştirir; bu da trim’i etkiler.`,
+        formulas: [
+          {
+            formula: "Trimming moment = Δ × (LCG - LCB)",
+            description: "LCG-LCB farkından doğan trim momenti (t·m)"
+          },
+          {
+            formula: "Trim (cm) = Trimming moment / MCT1cm",
+            description: "Trim hesabı (cm)"
+          }
+        ],
+        examples: [
+          {
+            problem: "Δ=18000 ton, LCG midship’ten 1.2 m başta, LCB midship’ten 0.4 m kıçta. MCT1cm=200 t·m/cm. Trim nedir?",
+            solution: "LCG-LCB farkı = 1.2 - (-0.4) = 1.6 m (LCG önde). Trimming moment = 18000 × 1.6 = 28800 t·m. Trim = 28800 / 200 = 144 cm başa."
+          }
+        ],
+        keyPoints: [
+          "Even keel için LCG ≈ LCB olmalıdır",
+          "LCG-LCB farkı trim momenti doğurur",
+          "Trim yönü LCG’nin LCB’ye göre konumuna bağlıdır",
+          "Trim hesabında MCT1cm kullanılır"
+        ],
+        practicalTips: [
+          "Hidrostatik tablolarda LCB referansını doğrulayın",
+          "LCG’yi yükleme planıyla hedeflenen trim’e yaklaştırın",
+          "Yakıt tüketimi ve balast transferlerini trim hesabına dahil edin"
+        ]
+      },
+      {
+        title: "8.3. MCT (Moment to Change Trim) Kavramı",
+        content: `MCT, trim hesaplamalarında kullanılan temel parametredir ve 1 cm trim değişimi için gereken momenti ifade eder.
+
+**MCT Tanımı**
+MCT1cm (veya MCTC), geminin trim'ini 1 cm değiştirmek için gereken momenttir (ton-metre).
+
+**MCT Formülü**
+MCT1cm = (Δ × GML) / (100 × L)
+
+Burada:
+- MCT1cm: Moment (t·m/cm)
+- Δ: Deplasman (ton)
+- GML: Boyuna metasantrik yükseklik (m)
+- L: Geminin boyu (m)
+- 100: cm → m dönüşümü
+
+**Alternatif Formül**
+MCT1cm = (Δ × BML) / (100 × L) (KG etkisi küçük olduğu için yaklaşık)
+
+**MCT'nin Özellikleri**
+- Deplasmanla değişir
+- Hidrostatik tablolardan alınır
+- Gemi ne kadar büyükse MCT o kadar büyük
+- Trim hesaplarında temel çarpan
+
+**MCT Kullanımı**
+Trim değişimi = Trimming moment / MCT1cm
+
+Örneğin:
+- 1000 t·m moment uygularsanız
+- MCT1cm = 200 t·m/cm ise
+- Trim değişimi = 1000 / 200 = 5 cm
+
+**Trimming Moment**
+Trimming moment = w × d
+- w: Taşınan/eklenen ağırlık (ton)
+- d: LCF'ye (yüzme merkezine) göre boyuna mesafe (m)
+
+LCF'nin önüne ağırlık → Başa trim
+LCF'nin arkasına ağırlık → Kıça trim`,
+        formulas: [
+          {
+            formula: "MCT1cm = (Δ × GML) / (100 × L)",
+            description: "MCT hesabı"
+          },
+          {
+            formula: "Trim değişimi = Trimming moment / MCT1cm",
+            description: "Trim değişimi hesabı (cm)"
+          },
+          {
+            formula: "Trimming moment = w × d",
+            description: "Trimming moment (t·m)"
+          }
+        ],
+        examples: [
+          {
+            problem: "Δ=15000 ton, GML=150 m, L=120 m. MCT1cm kaçtır?",
+            solution: "MCT1cm = (15000 × 150) / (100 × 120) = 2250000 / 12000 = 187.5 t·m/cm"
+          },
+          {
+            problem: "MCT1cm = 200 t·m/cm. 300 ton yük, LCF'nin 15 m önüne konursa trim değişimi?",
+            solution: "Moment = 300 × 15 = 4500 t·m. Trim değişimi = 4500 / 200 = 22.5 cm başa trim"
+          }
+        ],
+        keyPoints: [
+          "MCT1cm, 1 cm trim için gereken momenttir",
+          "Hidrostatik tablolardan alınır veya formülle hesaplanır",
+          "Trim değişimi = Moment / MCT",
+          "LCF konumu trim yönünü belirler"
+        ]
+      },
+      {
+        title: "8.4. Trim Hesaplamaları",
+        content: `Trim hesaplamaları, yükleme planlamasının en önemli parçalarından biridir.
+
+**Temel Trim Hesabı**
+
+**Adım 1: Trimming Moment Hesabı**
+Her ağırlık değişikliği için:
+Moment = w × (x - LCF)
+
+- w: Ağırlık (ton) - pozitif ekleme, negatif çıkarma
+- x: Ağırlığın boyuna konumu (midship'ten)
+- LCF: Yüzme merkezi konumu (midship'ten)
+
+**Adım 2: Net Trimming Moment**
+Tüm momentlerin cebirsel toplamı:
+ΣM = M₁ + M₂ + M₃ + ...
+
+**Adım 3: Trim Değişimi**
+ΔTrim = ΣM / MCT1cm (cm)
+
+**Adım 4: Baş ve Kıç Draft Değişimleri**
+- ΔT_F = ΔTrim × (L - LCF_from_aft) / L
+- ΔT_A = ΔTrim × (LCF_from_aft) / L
+
+Veya yaklaşık olarak trim değişimi baş ve kıç arasında orantılı dağılır.
+
+**Draft Sonrası Paralel Batma**
+Toplam ağırlık değişikliği paralel batmaya da neden olur:
+ΔDraft_paralel = Σw / TPC
+
+Bu da baş ve kıç draftlarına eklenir.
+
+**Toplam Draft Değişimleri**
+Final T_F = Initial T_F + ΔDraft_paralel + ΔT_F
+Final T_A = Initial T_A + ΔDraft_paralel + ΔT_A
+
+**LCF (Longitudinal Center of Flotation)**
+- Su hattı alanının geometrik merkezi
+- Trim değişiminin pivot noktası
+- Hidrostatik tablolardan alınır
+- Deplasmana göre değişir`,
+        formulas: [
+          {
+            formula: "ΔTrim = ΣM / MCT1cm",
+            description: "Toplam trim değişimi (cm)"
+          },
+          {
+            formula: "ΔT_F = ΔTrim × d_a / L",
+            description: "Baş draft değişimi (d_a: LCF'nin kıçtan mesafesi)"
+          },
+          {
+            formula: "ΔT_A = ΔTrim × d_f / L",
+            description: "Kıç draft değişimi (d_f: LCF'nin baştan mesafesi)"
+          }
+        ],
+        examples: [
+          {
+            problem: "L=100m, LCF midship'ten 2m kıçta. MCT=150 t·m/cm, TPC=20 t/cm. 200 ton yük midship'ten 30m başa alınıyor. T_F=6.0m, T_A=7.0m idi. Yeni draftlar?",
+            solution: "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m (midship'ten -2m). ΔT_F = 42.7 × 48/100 = 20.5 cm batma. ΔT_A = 42.7 × 52/100 = 22.2 cm yükselme. Paralel = 200/20 = 10 cm. T_F = 6.0 + 0.10 + 0.205 = 6.305 m. T_A = 7.0 + 0.10 - 0.222 = 6.878 m"
+          }
+        ],
+        keyPoints: [
+          "Trim değişimi = Moment / MCT",
+          "LCF trim değişiminin pivot noktasıdır",
+          "Baş ve kıç draft değişimleri LCF konumuna göre orantılanır",
+          "Paralel batma da dikkate alınmalıdır"
+        ],
+        practicalTips: [
+          "Yükleme planında trim hedefini belirleyin",
+          "Ağırlıkları LCF'ye göre dengeleyerek istenen trim'e ulaşın",
+          "Seyir boyunca yakıt tüketiminin trim'e etkisini hesaplayın",
+          "Balast transferleri ile trim ayarı yapın"
+        ]
+      },
+      {
+        title: "8.5. Yükleme Planlaması ve Trim Optimizasyonu",
+        content: `Doğru yükleme planlaması, güvenli ve verimli seyir için kritik öneme sahiptir.
+
+**Yükleme Planlamasının Amaçları**
+1. Güvenli stabilite (GM) sağlamak
+2. İstenen trim'e ulaşmak
+3. Yapısal yükleri sınırlamak
+4. Operasyonel verimliliği artırmak
+
+**Trim Optimizasyonu**
+**İdeal Trim Durumu:**
+- Hafif kıça trim (0.5-1.5 m) genellikle tercih edilir
+- Pervane verimliliği için yeterli batış
+- Aşırıya kaçmamak önemli
+
+**Başa Trim'in Dezavantajları:**
+- Pruvada dalga vuruşu (slamming) riski
+- Köprüden görüş kaybı
+- Çapada zorluk
+
+**Aşırı Kıça Trim'in Dezavantajları:**
+- Pervane kavitasyonu
+- Dümen verimliliği azalması
+- Yakıt tüketimi artışı
+
+**Yükleme Sıralaması**
+1. Lightship verilerini al
+2. Yük ve yakıt miktarlarını belirle
+3. Ağırlıkları dağıt (GM ve trim hedeflerine göre)
+4. Stabilite hesabı yap (GM_eff kontrolü)
+5. Trim hesabı yap
+6. Gerekirse düzenleme yap
+7. Yapısal kontroller (shearing force, bending moment)
+
+**Balast Kullanımı**
+Balast, trim ve stabiliteyi ayarlamak için ana araçtır:
+- Ön tanklara balast → Başa trim azalır
+- Arka tanklara balast → Kıça trim azalır
+- Derin tanklara balast → GM artar
+- Üst tanklara balast → GM azalır (sert gemiyi yumuşatır)
+
+**Dinamik Değişimler**
+Seyir boyunca:
+- Yakıt tüketimi → Draft ve trim değişir
+- Balast transferleri gerekebilir
+- Periyodik stabilite/trim kontrolü yapılmalı`,
+        keyPoints: [
+          "Yükleme planı hem stabilite hem trim için optimize edilmeli",
+          "Hafif kıça trim genellikle idealdir",
+          "Balast transferleri trim ayarı için kullanılır",
+          "Seyir boyunca değişimler izlenmelidir"
+        ],
+        practicalTips: [
+          "Kalkış, varış ve ara durumlarda trim hesabı yapın",
+          "Yakıt tüketim planını trim değişimleri ile birlikte değerlendirin",
+          "Deniz durumuna göre trim tercihlerini ayarlayın",
+          "Yükleme bilgisayarını aktif olarak kullanın"
+        ],
+        warnings: [
+          "Aşırı trim yapısal hasara yol açabilir",
+          "Yanlış trim yakıt tüketimini artırır",
+          "Trim ile birlikte stabiliteyi de kontrol edin"
+        ]
+      },
+      {
+        title: "8.6. LCF ve Draft Düzeltmeleri",
         content: `LCF (Longitudinal Center of Flotation), trim hesaplamalarında kritik öneme sahip bir referans noktasıdır. Draft düzeltmeleri, perpendikülerdeki gerçek draft değerlerinin belirlenmesi için gereklidir.
 
 **LCF (Boyuna Yüzme Merkezi) Nedir?**
@@ -2626,218 +2896,6 @@ Draft survey hesaplarında:
           "Düzeltme yapılmayan draftlar hatalı deplasman verir",
           "LCF deplasmanla değişir - doğru değeri kullanın",
           "Büyük trimlerde düzeltmeler önemli boyutlara ulaşır"
-        ]
-      },
-      {
-        title: "8.2. MCT (Moment to Change Trim) Kavramı",
-        content: `MCT, trim hesaplamalarında kullanılan temel parametredir ve 1 cm trim değişimi için gereken momenti ifade eder.
-
-**MCT Tanımı**
-MCT1cm (veya MCTC), geminin trim'ini 1 cm değiştirmek için gereken momenttir (ton-metre).
-
-**MCT Formülü**
-MCT1cm = (Δ × GML) / (100 × L)
-
-Burada:
-- MCT1cm: Moment (t·m/cm)
-- Δ: Deplasman (ton)
-- GML: Boyuna metasantrik yükseklik (m)
-- L: Geminin boyu (m)
-- 100: cm → m dönüşümü
-
-**Alternatif Formül**
-MCT1cm = (Δ × BML) / (100 × L) (KG etkisi küçük olduğu için yaklaşık)
-
-**MCT'nin Özellikleri**
-- Deplasmanla değişir
-- Hidrostatik tablolardan alınır
-- Gemi ne kadar büyükse MCT o kadar büyük
-- Trim hesaplarında temel çarpan
-
-**MCT Kullanımı**
-Trim değişimi = Trimming moment / MCT1cm
-
-Örneğin:
-- 1000 t·m moment uygularsanız
-- MCT1cm = 200 t·m/cm ise
-- Trim değişimi = 1000 / 200 = 5 cm
-
-**Trimming Moment**
-Trimming moment = w × d
-- w: Taşınan/eklenen ağırlık (ton)
-- d: LCF'ye (yüzme merkezine) göre boyuna mesafe (m)
-
-LCF'nin önüne ağırlık → Başa trim
-LCF'nin arkasına ağırlık → Kıça trim`,
-        formulas: [
-          {
-            formula: "MCT1cm = (Δ × GML) / (100 × L)",
-            description: "MCT hesabı"
-          },
-          {
-            formula: "Trim değişimi = Trimming moment / MCT1cm",
-            description: "Trim değişimi hesabı (cm)"
-          },
-          {
-            formula: "Trimming moment = w × d",
-            description: "Trimming moment (t·m)"
-          }
-        ],
-        examples: [
-          {
-            problem: "Δ=15000 ton, GML=150 m, L=120 m. MCT1cm kaçtır?",
-            solution: "MCT1cm = (15000 × 150) / (100 × 120) = 2250000 / 12000 = 187.5 t·m/cm"
-          },
-          {
-            problem: "MCT1cm = 200 t·m/cm. 300 ton yük, LCF'nin 15 m önüne konursa trim değişimi?",
-            solution: "Moment = 300 × 15 = 4500 t·m. Trim değişimi = 4500 / 200 = 22.5 cm başa trim"
-          }
-        ],
-        keyPoints: [
-          "MCT1cm, 1 cm trim için gereken momenttir",
-          "Hidrostatik tablolardan alınır veya formülle hesaplanır",
-          "Trim değişimi = Moment / MCT",
-          "LCF konumu trim yönünü belirler"
-        ]
-      },
-      {
-        title: "8.3. Trim Hesaplamaları",
-        content: `Trim hesaplamaları, yükleme planlamasının en önemli parçalarından biridir.
-
-**Temel Trim Hesabı**
-
-**Adım 1: Trimming Moment Hesabı**
-Her ağırlık değişikliği için:
-Moment = w × (x - LCF)
-
-- w: Ağırlık (ton) - pozitif ekleme, negatif çıkarma
-- x: Ağırlığın boyuna konumu (midship'ten)
-- LCF: Yüzme merkezi konumu (midship'ten)
-
-**Adım 2: Net Trimming Moment**
-Tüm momentlerin cebirsel toplamı:
-ΣM = M₁ + M₂ + M₃ + ...
-
-**Adım 3: Trim Değişimi**
-ΔTrim = ΣM / MCT1cm (cm)
-
-**Adım 4: Baş ve Kıç Draft Değişimleri**
-- ΔT_F = ΔTrim × (L - LCF_from_aft) / L
-- ΔT_A = ΔTrim × (LCF_from_aft) / L
-
-Veya yaklaşık olarak trim değişimi baş ve kıç arasında orantılı dağılır.
-
-**Draft Sonrası Paralel Batma**
-Toplam ağırlık değişikliği paralel batmaya da neden olur:
-ΔDraft_paralel = Σw / TPC
-
-Bu da baş ve kıç draftlarına eklenir.
-
-**Toplam Draft Değişimleri**
-Final T_F = Initial T_F + ΔDraft_paralel + ΔT_F
-Final T_A = Initial T_A + ΔDraft_paralel + ΔT_A
-
-**LCF (Longitudinal Center of Flotation)**
-- Su hattı alanının geometrik merkezi
-- Trim değişiminin pivot noktası
-- Hidrostatik tablolardan alınır
-- Deplasmana göre değişir`,
-        formulas: [
-          {
-            formula: "ΔTrim = ΣM / MCT1cm",
-            description: "Toplam trim değişimi (cm)"
-          },
-          {
-            formula: "ΔT_F = ΔTrim × d_a / L",
-            description: "Baş draft değişimi (d_a: LCF'nin kıçtan mesafesi)"
-          },
-          {
-            formula: "ΔT_A = ΔTrim × d_f / L",
-            description: "Kıç draft değişimi (d_f: LCF'nin baştan mesafesi)"
-          }
-        ],
-        examples: [
-          {
-            problem: "L=100m, LCF midship'ten 2m kıçta. MCT=150 t·m/cm, TPC=20 t/cm. 200 ton yük midship'ten 30m başa alınıyor. T_F=6.0m, T_A=7.0m idi. Yeni draftlar?",
-            solution: "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m (midship'ten -2m). ΔT_F = 42.7 × 48/100 = 20.5 cm batma. ΔT_A = 42.7 × 52/100 = 22.2 cm yükselme. Paralel = 200/20 = 10 cm. T_F = 6.0 + 0.10 + 0.205 = 6.305 m. T_A = 7.0 + 0.10 - 0.222 = 6.878 m"
-          }
-        ],
-        keyPoints: [
-          "Trim değişimi = Moment / MCT",
-          "LCF trim değişiminin pivot noktasıdır",
-          "Baş ve kıç draft değişimleri LCF konumuna göre orantılanır",
-          "Paralel batma da dikkate alınmalıdır"
-        ],
-        practicalTips: [
-          "Yükleme planında trim hedefini belirleyin",
-          "Ağırlıkları LCF'ye göre dengeleyerek istenen trim'e ulaşın",
-          "Seyir boyunca yakıt tüketiminin trim'e etkisini hesaplayın",
-          "Balast transferleri ile trim ayarı yapın"
-        ]
-      },
-      {
-        title: "8.4. Yükleme Planlaması ve Trim Optimizasyonu",
-        content: `Doğru yükleme planlaması, güvenli ve verimli seyir için kritik öneme sahiptir.
-
-**Yükleme Planlamasının Amaçları**
-1. Güvenli stabilite (GM) sağlamak
-2. İstenen trim'e ulaşmak
-3. Yapısal yükleri sınırlamak
-4. Operasyonel verimliliği artırmak
-
-**Trim Optimizasyonu**
-**İdeal Trim Durumu:**
-- Hafif kıça trim (0.5-1.5 m) genellikle tercih edilir
-- Pervane verimliliği için yeterli batış
-- Aşırıya kaçmamak önemli
-
-**Başa Trim'in Dezavantajları:**
-- Pruvada dalga vuruşu (slamming) riski
-- Köprüden görüş kaybı
-- Çapada zorluk
-
-**Aşırı Kıça Trim'in Dezavantajları:**
-- Pervane kavitasyonu
-- Dümen verimliliği azalması
-- Yakıt tüketimi artışı
-
-**Yükleme Sıralaması**
-1. Lightship verilerini al
-2. Yük ve yakıt miktarlarını belirle
-3. Ağırlıkları dağıt (GM ve trim hedeflerine göre)
-4. Stabilite hesabı yap (GM_eff kontrolü)
-5. Trim hesabı yap
-6. Gerekirse düzenleme yap
-7. Yapısal kontroller (shearing force, bending moment)
-
-**Balast Kullanımı**
-Balast, trim ve stabiliteyi ayarlamak için ana araçtır:
-- Ön tanklara balast → Başa trim azalır
-- Arka tanklara balast → Kıça trim azalır
-- Derin tanklara balast → GM artar
-- Üst tanklara balast → GM azalır (sert gemiyi yumuşatır)
-
-**Dinamik Değişimler**
-Seyir boyunca:
-- Yakıt tüketimi → Draft ve trim değişir
-- Balast transferleri gerekebilir
-- Periyodik stabilite/trim kontrolü yapılmalı`,
-        keyPoints: [
-          "Yükleme planı hem stabilite hem trim için optimize edilmeli",
-          "Hafif kıça trim genellikle idealdir",
-          "Balast transferleri trim ayarı için kullanılır",
-          "Seyir boyunca değişimler izlenmelidir"
-        ],
-        practicalTips: [
-          "Kalkış, varış ve ara durumlarda trim hesabı yapın",
-          "Yakıt tüketim planını trim değişimleri ile birlikte değerlendirin",
-          "Deniz durumuna göre trim tercihlerini ayarlayın",
-          "Yükleme bilgisayarını aktif olarak kullanın"
-        ],
-        warnings: [
-          "Aşırı trim yapısal hasara yol açabilir",
-          "Yanlış trim yakıt tüketimini artırır",
-          "Trim ile birlikte stabiliteyi de kontrol edin"
         ]
       }
     ]
