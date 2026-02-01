@@ -75,7 +75,7 @@ export default function LocationSelector() {
   const { setSelectedLocation } = useLocation();
   
   const returnTo = searchParams.get('returnTo') || '/';
-  const { locationLabel } = useCurrentWeather();
+  const { locationLabel, isFallbackLocation } = useCurrentWeather();
 
   const handleLocationSelect = (location: LocationResult) => {
     setSelectedLocationState(location);
@@ -90,6 +90,12 @@ export default function LocationSelector() {
     toast.success(`Konum ayarlandı: ${location.name}`);
     
     // Seçim sonrası hedef sayfaya dön
+    navigate(returnTo);
+  };
+
+  const handleUseDeviceLocation = () => {
+    setSelectedLocation(null);
+    toast.success("Cihaz konumu kullanılacak");
     navigate(returnTo);
   };
 
@@ -109,10 +115,20 @@ export default function LocationSelector() {
               Mevcut Konum
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              {locationLabel || "Konum bilgisi alınıyor..."}
-            </p>
+          <CardContent className="space-y-3">
+            <div>
+              <p className="text-muted-foreground">
+                {locationLabel || "Konum bilgisi alınıyor..."}
+              </p>
+              {isFallbackLocation && (
+                <p className="text-xs text-amber-500 mt-1">
+                  Konum alınamadı. Varsayılan konum gösteriliyor.
+                </p>
+              )}
+            </div>
+            <Button variant="outline" onClick={handleUseDeviceLocation}>
+              Cihaz konumunu kullan
+            </Button>
           </CardContent>
         </Card>
 
