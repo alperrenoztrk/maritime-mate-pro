@@ -2023,7 +2023,201 @@ Serbest yüzey etkisi, tankın doluluk oranından bağımsızdır (yaklaşık ol
         ]
       },
       {
-        title: "7.2. Serbest Yüzey Etkisini Azaltma Yöntemleri",
+        title: "7.2. Serbest Yüzeyin GM'ye Etkisi",
+        content: `Serbest yüzey etkisinin en kritik sonucu, geminin **efektif GM** değerini düşürmesidir. Bu düşüş, geminin sanki ağırlık merkezi yükselmiş gibi davranmasına yol açar.
+
+**Sanal KG Artışı (Virtual Rise of G)**
+- Serbest yüzey, G'nin gerçek konumunu değiştirmez.
+- Ancak stabilite hesabında G **GG₁ kadar yükselmiş** kabul edilir.
+- GG₁ = ΣFSM / Δ
+
+**Efektif GM**
+GM_eff = GM_solid - GG₁ = GM_solid - ΣFSM / Δ
+
+**Fiziksel Yorum**
+Serbest yüzeyli bir tank, yattıkça sıvı kütlesini yana kaydırır. Bu kayma:
+- Doğrultma kolunu azaltır
+- Yatma hareketini büyütür
+- Stabilite rezervini düşürür
+
+**Kritik Eşik**
+- GM_eff < 0 → Gemi kararsızdır
+- GM_eff düşük → "yumuşak gemi" ve büyük yalpa
+- GM_eff sınır değerlerin hemen üzerindeyse → dinamik etkilerle kritik hale gelebilir`,
+        formulas: [
+          {
+            formula: "GG₁ = ΣFSM / Δ",
+            description: "Serbest yüzey nedeniyle sanal KG artışı"
+          },
+          {
+            formula: "GM_eff = GM_solid - ΣFSM / Δ",
+            description: "Efektif GM (serbest yüzey düzeltilmiş)"
+          }
+        ],
+        examples: [
+          {
+            problem: "GM_solid = 1.20 m, Δ = 12000 ton. Toplam FSM = 1800 t·m ise GM_eff kaçtır?",
+            solution: "GG₁ = 1800/12000 = 0.15 m. GM_eff = 1.20 - 0.15 = 1.05 m"
+          }
+        ],
+        keyPoints: [
+          "Serbest yüzey GM'i doğrudan düşürür",
+          "GM_eff her zaman GM_solid'den küçüktür",
+          "ΣFSM/Δ hesabı minimum GM kontrolü için zorunludur",
+          "Küçük GM değerlerinde serbest yüzey kritikleşir"
+        ],
+        warnings: [
+          "Serbest yüzey düzeltmesi yapılmayan GM değerleri yanıltıcıdır",
+          "Düşük GM + büyük serbest yüzey → hızlı stabilite kaybı"
+        ]
+      },
+      {
+        title: "7.3. Free Surface Moment (FSM)",
+        content: `Free Surface Moment (FSM), serbest yüzey etkisinin büyüklüğünü nicel olarak ifade eder ve GM düzeltmesinin temelini oluşturur.
+
+**FSM Tanımı**
+FSM, kısmen dolu tanktaki sıvı yüzeyinin atalet momenti ile sıvı yoğunluğunun çarpımına eşittir:
+
+FSM = ρₜ × i
+
+**Atalet Momenti (i)**
+- Dikdörtgen tank: i = l × b³ / 12
+- Trapez tank: i = l × (b₁³ + b₂³ + b₁²b₂ + b₁b₂²) / 48
+- Düzensiz şekil: Stabilite kitapçığı tablosundan alınır
+
+**Neden b³?**
+Genişlik (b) küp ile girdiği için:
+- Geniş tanklarda FSM çok hızlı büyür
+- Dar tanklarda FSM dramatik şekilde azalır
+
+**Yoğunluk Etkisi**
+- Deniz suyu (ρ ≈ 1.025) > Tatlı su (ρ ≈ 1.000)
+- Yakıt (ρ ≈ 0.90–0.98) → FSM biraz daha düşük`,
+        formulas: [
+          {
+            formula: "FSM = ρₜ × i",
+            description: "Serbest yüzey momenti (t·m)"
+          },
+          {
+            formula: "i = l × b³ / 12",
+            description: "Dikdörtgen yüzey atalet momenti (m⁴)"
+          },
+          {
+            formula: "i = l × (b₁³ + b₂³ + b₁²b₂ + b₁b₂²) / 48",
+            description: "Trapez tank atalet momenti (m⁴)"
+          }
+        ],
+        examples: [
+          {
+            problem: "l=18 m, b=9 m, deniz suyu. FSM?",
+            solution: "i = 18 × 9³ / 12 = 18 × 729 / 12 = 1093.5 m⁴. FSM = 1.025 × 1093.5 = 1120.8 t·m"
+          }
+        ],
+        keyPoints: [
+          "FSM, serbest yüzey etkisinin büyüklüğünü belirler",
+          "FSM, tank genişliğinin küpü ile artar",
+          "FSM hesapları GM düzeltmesinin temelidir",
+          "Yoğunluk farkı FSM'yi doğrudan etkiler"
+        ]
+      },
+      {
+        title: "7.4. Tank Geometrisinin Etkisi",
+        content: `Tank geometrisi, serbest yüzey etkisinin şiddetini belirleyen en önemli faktörlerden biridir.
+
+**Genişlik Etkisi (b³)**
+- Tank genişliği iki katına çıkarsa FSM **8 kat** artar.
+- Bu nedenle geniş sığ tanklar en riskli tanklardır.
+
+**Boyuna Bölmelendirme (Longitudinal Bulkhead)**
+- Geniş tankları boyuna bölmek FSM'yi dramatik biçimde düşürür.
+- n adet eşit parçaya bölünürse: FSM_toplam = FSM_orijinal / n²
+
+**Şekil Etkisi**
+- Dar ve derin tanklar avantajlıdır
+- V veya trapez kesitler serbest yüzey alanını azaltır
+- Orta hat yakınındaki tanklar, enine momentleri küçültür
+
+**Kısmi Doluluk Etkisi**
+- Serbest yüzey etkisi, doluluk oranına göre sınırlı değişir
+- En kritik durum genellikle yarı doludur
+- Çok düşük veya çok yüksek dolulukta etkisi biraz azalır`,
+        formulas: [
+          {
+            formula: "FSM_n = FSM_0 / n²",
+            description: "n parçaya bölünmüş tankta toplam FSM"
+          },
+          {
+            formula: "FSM ∝ b³",
+            description: "Tank genişliği etkisi"
+          }
+        ],
+        keyPoints: [
+          "Genişlik FSM üzerinde belirleyici parametredir",
+          "Boyuna bölmeler FSM'yi hızlı düşürür",
+          "Dar ve derin tanklar serbest yüzey için daha güvenlidir",
+          "Tank geometrisi tasarım aşamasında kritik bir karardır"
+        ],
+        practicalTips: [
+          "Geniş tankları mümkün olduğunca bölün",
+          "Balast ve yakıt tanklarını dar-dik tasarlayın",
+          "Kısmi doluluk sürelerini operasyonla minimize edin"
+        ],
+        warnings: [
+          "Geniş sığ tanklar stabiliteyi hızla düşürür",
+          "Bölmesiz geniş tanklar özellikle Ro-Ro ve tankerlerde kritik risk yaratır"
+        ]
+      },
+      {
+        title: "7.5. Birden Fazla Tankın Etkisi",
+        content: `Bir gemide aynı anda birden fazla kısmen dolu tank varsa, toplam serbest yüzey etkisi **toplam FSM** ile hesaplanır.
+
+**Toplam FSM**
+ΣFSM = FSM₁ + FSM₂ + FSM₃ + ...
+
+**Efektif GM**
+GM_eff = GM_solid - ΣFSM / Δ
+
+**Farklı Yoğunluklar**
+- Deniz suyu, tatlı su, yakıt ve yağın yoğunluğu farklıdır
+- Her tank için ρ değeri ayrı kullanılmalıdır
+
+**Çapraz Bağlı Tanklar (Cross-Connected)**
+- Birleştirilmiş tanklar, tek geniş tank gibi davranır
+- FSM dramatik şekilde artar
+- Bu nedenle seferde cross-connection genellikle istenmez
+
+**Operasyonel Sonuç**
+- Aynı anda birçok tankı kısmen doldurmak GM'i hızla düşürür
+- Bu nedenle “tek tankı tam kullanma” prensibi uygulanır`,
+        formulas: [
+          {
+            formula: "ΣFSM = FSM₁ + FSM₂ + ...",
+            description: "Toplam serbest yüzey momenti"
+          },
+          {
+            formula: "GM_eff = GM_solid - ΣFSM / Δ",
+            description: "Toplam serbest yüzey düzeltmesi"
+          }
+        ],
+        examples: [
+          {
+            problem: "FSM değerleri 600, 450 ve 300 t·m olan üç tank varsa toplam FSM nedir?",
+            solution: "ΣFSM = 600 + 450 + 300 = 1350 t·m"
+          }
+        ],
+        keyPoints: [
+          "Toplam serbest yüzey etkisi tankların toplamıdır",
+          "Farklı yoğunluklar ayrı ayrı hesaba katılmalıdır",
+          "Cross-connection FSM'yi büyütür",
+          "Çoklu kısmi doluluk yüksek risk yaratır"
+        ],
+        warnings: [
+          "Birden fazla kısmen dolu tank GM'i kritik seviyeye düşürebilir",
+          "Cross-connection sırasında stabilite mutlaka yeniden hesaplanmalıdır"
+        ]
+      },
+      {
+        title: "7.6. Serbest Yüzey Etkisini Azaltma Yöntemleri",
         content: `Serbest yüzey etkisi, çeşitli tasarım ve operasyonel önlemlerle azaltılabilir.
 
 **Tasarım Önlemleri**
@@ -2096,7 +2290,7 @@ Toplam FSM = Orijinal FSM / n²
         ]
       },
       {
-        title: "7.3. Serbest Yüzey Düzeltmesi Hesaplamaları",
+        title: "7.7. Serbest Yüzey Düzeltmesi Hesaplamaları",
         content: `Serbest yüzey düzeltmesi, tüm stabilite hesaplamalarında uygulanması gereken kritik bir düzeltmedir.
 
 **Genel Hesap Prosedürü**
