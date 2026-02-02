@@ -1064,7 +1064,1067 @@ Yükleme değiştiğinde eğri de değişir. Üst yüklerin artması eğriyi aş
       "GZ eğrisi, operasyonel limitlerin temel dayanağıdır",
     ],
   },
-  // Daha fazla içerik eklenebilir...
+  // =====================================================
+  // BÖLÜM 2 - EKSİK İÇERİKLER
+  // =====================================================
+  "floatation-condition": {
+    title: "Yüzerlik Şartı",
+    introduction: "Bir cismin su üzerinde kalabilmesi için toplam ağırlığının, batık hacminin yer değiştirdiği suyun ağırlığına eşit veya küçük olması gerekir.",
+    content: `Arşimet prensibine göre bir cisim, yer değiştirdiği sıvının ağırlığı kadar kaldırma kuvveti alır. Yüzerlik şartı bu prensipten türetilir.
+
+Yüzerlik şartı:
+W ≤ ρ × g × ∇_max
+
+Burada ∇_max, cismin tamamen batması durumundaki hacmidir. W bu değerin üzerindeyse cisim batar.
+
+Gemilerde yüzerlik şartı her zaman sağlanmalıdır. Gemi hafif haldeyken bile yeterli batık hacme sahiptir. Yükleme arttıkça draft yükselir ve batık hacim artar. Ancak fribord sınırı aşılırsa tehlike oluşur.
+
+Yüzerlik durumu statik denge için gerekli ama yeterli değildir. Yüzen bir cisim stabil olmayabilir.`,
+    bulletPoints: [
+      "W = ρ × ∇ denklemi denge koşulunu tanımlar",
+      "Batık hacim ≤ toplam hacim olmalıdır",
+      "Fribord yüzerliğin görsel göstergesidir",
+      "Yüzmek için stabilite ayrıca sağlanmalıdır",
+    ],
+    formula: {
+      name: "Yüzerlik Denklemi",
+      expression: "W = ρ × g × ∇; veya Δ = ρ × ∇",
+      description: "W: Ağırlık (kN), ρ: Suyun yoğunluğu (t/m³), ∇: Batık hacim (m³), Δ: Deplasman (ton)",
+    },
+    examples: [
+      {
+        problem: "Bir geminin batık hacmi ∇ = 4.800 m³ ve deniz suyu yoğunluğu ρ = 1.025 t/m³ ise maksimum deplasman kaç tondur?",
+        solution: "Δ = ρ × ∇ = 1.025 × 4.800 = 4.920 ton. Sonuç: Gemi 4.920 tona kadar yüklenebilir.",
+      },
+    ],
+    keyPoints: [
+      "Yüzerlik şartı temel fizik kuralıdır",
+      "Draft artışı batık hacmi artırır",
+      "Fribord sınırı aşılmamalıdır",
+    ],
+  },
+  "equilibrium-states": {
+    title: "Denge Halleri",
+    introduction: "Yüzen bir cisim üç farklı denge halinde bulunabilir: kararlı denge (stable), kararsız denge (unstable) ve nötr denge (neutral).",
+    content: `Denge halleri, cisim denge konumundan uzaklaştırıldığında gösterdiği tepkiye göre sınıflandırılır.
+
+KARARLI DENGE (Stable Equilibrium):
+Cisim denge konumundan uzaklaştırıldığında geri dönme eğilimi gösterir. Gemilerde pozitif GM bu durumu sağlar. G noktası M noktasının altındadır.
+
+KARARSIZ DENGE (Unstable Equilibrium):
+Cisim denge konumundan uzaklaştırıldığında daha da uzaklaşma eğilimi gösterir. Negatif GM bu duruma yol açar. G noktası M noktasının üzerindedir.
+
+NÖTR DENGE (Neutral Equilibrium):
+Cisim yeni konumda kalır, ne geri döner ne de uzaklaşır. GM = 0 olduğunda oluşur. G ve M noktaları çakışıktır.
+
+Gemilerin güvenli seyir yapabilmesi için kararlı dengede olması şarttır.`,
+    bulletPoints: [
+      "Kararlı denge: Pozitif GM, G altında M",
+      "Kararsız denge: Negatif GM, G üstünde M",
+      "Nötr denge: GM = 0, G ve M çakışık",
+      "Seyir emniyeti kararlı denge gerektirir",
+    ],
+    examples: [
+      {
+        problem: "KM = 6.5 m ve KG = 6.5 m ise gemi hangi denge halindedir?",
+        solution: "GM = KM - KG = 6.5 - 6.5 = 0 m. Sonuç: Nötr denge. Gemi herhangi bir açıda kalabilir, bu durum tehlikelidir.",
+      },
+    ],
+    keyPoints: [
+      "Kararlı denge seyir için zorunludur",
+      "Kararsız denge devrilme riskidir",
+      "Nötr denge operasyonel olarak kabul edilemez",
+    ],
+    warnings: [
+      "GM = 0 veya negatif durumda gemi seyir yapmamalıdır",
+      "Yükleme derhal düzeltilmelidir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 5 - ENİNE STABİLİTE HESAPLARI
+  // =====================================================
+  "righting-moment": {
+    title: "Doğrultma Momenti",
+    introduction: "Doğrultma momenti, gemi yattığında ağırlık ve kaldırma kuvvetlerinin oluşturduğu ve gemiyi dik konuma döndürmeye çalışan momenttir.",
+    content: `Gemi belirli bir açıyla yattığında, ağırlık kuvveti G noktasından aşağı, kaldırma kuvveti B noktasından yukarı etkir. Bu iki kuvvet arasındaki yatay mesafe GZ (doğrultma kolu) olarak adlandırılır.
+
+Doğrultma momenti (RM), deplasmanın GZ ile çarpımıdır:
+RM = Δ × GZ
+
+Bu moment pozitif olduğunda gemiyi dikleştirici etki yapar. Negatif olduğunda ise yatmayı artırır.
+
+Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri belirli açılarda minimum doğrultma kapasitesi gerektirir.`,
+    bulletPoints: [
+      "RM = Δ × GZ formülü ile hesaplanır",
+      "Pozitif RM gemiyi dikleştirir",
+      "Negatif RM yatmayı artırır",
+      "RM büyüklüğü stabilite kapasitesini gösterir",
+    ],
+    formula: {
+      name: "Doğrultma Momenti",
+      expression: "RM = Δ × GZ",
+      description: "RM: Doğrultma momenti (t·m), Δ: Deplasman (ton), GZ: Doğrultma kolu (m)",
+    },
+    examples: [
+      {
+        problem: "Δ = 8.000 ton ve GZ = 0.35 m ise doğrultma momenti kaç t·m olur?",
+        solution: "RM = 8.000 × 0.35 = 2.800 t·m. Sonuç: Gemi 2.800 t·m doğrultma momenti üretir.",
+      },
+    ],
+    keyPoints: [
+      "RM stabilite hesabının temel çıktısıdır",
+      "GZ eğrisi RM profilini gösterir",
+      "Yükleme değişiklikleri RM'yi doğrudan etkiler",
+    ],
+  },
+  "heeling-moment": {
+    title: "Yatma Momenti",
+    introduction: "Yatma momenti, gemiyi yana yatıran dış kuvvetlerin oluşturduğu momenttir ve doğrultma momenti ile dengelenir.",
+    content: `Yatma momenti (HM), rüzgâr, dalga, ağırlık kayması, dönüş manevrası veya asılı yük gibi dış etkilerden kaynaklanır.
+
+Gemi belirli bir açıda dengeye geldiğinde:
+HM = RM
+
+Bu denge noktasına "denge açısı" (angle of equilibrium) denir.
+
+Yatma momenti doğrultma momentinden büyük olursa gemi devrilir. Bu nedenle yatma momentinin kaynakları önceden hesaplanmalı ve sınırlandırılmalıdır.`,
+    bulletPoints: [
+      "HM dış kaynaklı yatma etkisidir",
+      "Rüzgâr, dalga, ağırlık kayması HM oluşturur",
+      "Denge: HM = RM",
+      "HM > RM_max ise devrilme riski oluşur",
+    ],
+    formula: {
+      name: "Yatma Momenti (Rüzgâr)",
+      expression: "HM = P × A × h",
+      description: "HM: Yatma momenti (t·m), P: Rüzgâr basıncı (t/m²), A: Rüzgâra maruz alan (m²), h: Kaldırma kolu (m)",
+    },
+    examples: [
+      {
+        problem: "Rüzgâr basıncı P = 0.05 t/m², A = 400 m² ve h = 6 m ise HM kaç t·m olur?",
+        solution: "HM = 0.05 × 400 × 6 = 120 t·m. Sonuç: Rüzgâr 120 t·m yatma momenti oluşturur.",
+      },
+    ],
+    keyPoints: [
+      "HM kaynakları önceden hesaplanmalıdır",
+      "Operasyonel limitler HM'ye göre belirlenir",
+      "IMO rüzgâr kriteri HM hesabına dayanır",
+    ],
+  },
+  "angle-of-equilibrium": {
+    title: "Denge Açısı",
+    introduction: "Denge açısı, yatma momenti ile doğrultma momentinin eşitlendiği yatma açısıdır ve gemi bu açıda sabit kalır.",
+    content: `Dış bir kuvvet gemiye yatma momenti uyguladığında, gemi doğrultma momenti üretir. İki moment eşitlendiğinde gemi belirli bir açıda dengeye ulaşır.
+
+GZ eğrisi üzerinde bu açı, yatma momenti doğrusunun eğriyi kestiği noktadır.
+
+Denge açısının büyüklüğü:
+- Yatma momentinin büyüklüğüne
+- Geminin GM değerine
+- GZ eğrisinin şekline bağlıdır
+
+Küçük açılar için tan θ ≈ HM / (Δ × GM) yaklaşımı kullanılabilir.`,
+    bulletPoints: [
+      "Denge açısı: HM = RM olduğu açı",
+      "GZ eğrisi üzerinde grafiksel olarak bulunur",
+      "GM büyükse denge açısı küçük olur",
+      "GM küçükse denge açısı büyük olur",
+    ],
+    formula: {
+      name: "Küçük Açı Denge Formülü",
+      expression: "tan θ = HM / (Δ × GM)",
+      description: "θ: Denge açısı, HM: Yatma momenti (t·m), Δ: Deplasman (ton), GM: Metasantrik yükseklik (m)",
+    },
+    examples: [
+      {
+        problem: "HM = 200 t·m, Δ = 5.000 ton, GM = 0.8 m ise denge açısı yaklaşık kaç derece olur?",
+        solution: "tan θ = 200 / (5.000 × 0.8) = 200 / 4.000 = 0.05. θ ≈ 2.86°. Sonuç: Gemi yaklaşık 3° yatma açısında dengelenir.",
+      },
+    ],
+    keyPoints: [
+      "Denge açısı operasyonel limitleri belirler",
+      "Büyük denge açısı yük kaymalarına yol açabilir",
+      "Yolcu gemilerinde konfor sınırları uygulanır",
+    ],
+  },
+  "heel-from-weight-shift": {
+    title: "Ağırlık Kaymasına Bağlı Yatma",
+    introduction: "Gemide bir ağırlığın enine kayması, ağırlık merkezini kaydırarak yatma (list) oluşturur.",
+    content: `Ağırlık kayması, deplasmanı değiştirmeden G noktasının enine hareket etmesine neden olur. Bu kayma yatma momentine eşdeğerdir.
+
+Oluşan yatma momenti:
+HM = w × d
+
+Burada w kaydırılan ağırlık, d ise kaydırma mesafesidir.
+
+Denge açısı:
+tan θ = (w × d) / (Δ × GM)
+
+Kargo kayması, balast transferi veya vinç operasyonları bu tür yatmaya neden olabilir.`,
+    bulletPoints: [
+      "Enine ağırlık kayması list oluşturur",
+      "HM = w × d formülü uygulanır",
+      "GM küçükse aynı kayma daha büyük açı yaratır",
+      "Kargo emniyet bağları kaymayı önler",
+    ],
+    formula: {
+      name: "Ağırlık Kayması ile Yatma",
+      expression: "tan θ = (w × d) / (Δ × GM)",
+      description: "θ: Yatma açısı, w: Kaydırılan ağırlık (ton), d: Kaydırma mesafesi (m), Δ: Deplasman (ton), GM: Metasantrik yükseklik (m)",
+    },
+    examples: [
+      {
+        problem: "60 ton yük 4 m enine kaydı. Δ = 6.000 ton, GM = 0.6 m. List açısı kaç derece?",
+        solution: "tan θ = (60 × 4) / (6.000 × 0.6) = 240 / 3.600 = 0.0667. θ ≈ 3.8°. Sonuç: Yaklaşık 4° list oluşur.",
+      },
+    ],
+    keyPoints: [
+      "Kargo kayması kazaların önemli nedenlerindendir",
+      "Lashing ve securing prosedürleri kritiktir",
+      "Seyir sırasında kayma izlenmelidir",
+    ],
+    warnings: [
+      "Büyük kaymalarda list hızla artabilir",
+      "Asimetrik flooding benzer etki yaratır",
+    ],
+  },
+  "small-angle-stability": {
+    title: "Küçük Açılar İçin Stabilite",
+    introduction: "Küçük yatma açılarında (yaklaşık 10°'ye kadar) metasantr sabit kabul edilir ve basitleştirilmiş formüller kullanılır.",
+    content: `Küçük açı stabilitesi, geminin dik konuma yakın davranışını inceler. Bu aralıkta metasantr (M) sabit kabul edilir ve GZ doğrusal olarak artar.
+
+Temel ilişki:
+GZ ≈ GM × sin θ
+
+Bu yaklaşım, ilk stabilite değerlendirmelerinde hızlı hesap imkânı sağlar.
+
+Küçük açı yaklaşımı sin θ ≈ θ (radyan) olarak da yazılabilir. Ancak 10°'nin üzerinde bu yaklaşım hata verir ve tam GZ hesabı gereklidir.`,
+    bulletPoints: [
+      "Küçük açı: 0° - 10° aralığı",
+      "M sabit kabul edilir",
+      "GZ ≈ GM × sin θ ilişkisi geçerlidir",
+      "10° üzerinde tam hesap gerekir",
+    ],
+    formula: {
+      name: "Küçük Açı GZ Formülü",
+      expression: "GZ ≈ GM × sin θ",
+      description: "GZ: Doğrultma kolu (m), GM: Metasantrik yükseklik (m), θ: Yatma açısı (derece)",
+    },
+    examples: [
+      {
+        problem: "GM = 0.7 m ve θ = 8° ise GZ kaç metre olur?",
+        solution: "sin 8° = 0.139. GZ ≈ 0.7 × 0.139 = 0.097 m. Sonuç: GZ yaklaşık 10 cm'dir.",
+      },
+    ],
+    keyPoints: [
+      "Küçük açı formülleri hızlı değerlendirme sağlar",
+      "GM değeri bu aralıkta belirleyicidir",
+      "Büyük açılarda GZ eğrisi kullanılmalıdır",
+    ],
+  },
+  "large-angle-stability": {
+    title: "Büyük Açılar İçin Stabilite",
+    introduction: "Büyük yatma açılarında metasantr sabit değildir ve stabilite analizi tam GZ eğrisi ile yapılır.",
+    content: `10°'nin üzerindeki açılarda metasantr (M) konumu değişir ve küçük açı yaklaşımı geçerliliğini yitirir. Bu nedenle büyük açı stabilitesi doğrudan GZ eğrisi üzerinden incelenir.
+
+GZ eğrisi, geminin tüm yatma aralığındaki stabilite davranışını gösterir. Eğri üzerinde maksimum GZ, stabilite alanları ve devrilme açısı değerlendirilir.
+
+IMO kriterleri büyük açılar için minimum gereksinimler tanımlar:
+- Maksimum GZ ≥ 0.20 m (bazı gemi tipleri için)
+- GZ_max açısı ≥ 25°
+- Alan kriterleri`,
+    bulletPoints: [
+      "10° üzerinde tam GZ analizi gerekir",
+      "Metasantr konumu değişkendir",
+      "GZ eğrisi tüm stabilite profilini verir",
+      "IMO kriterleri büyük açı gereksinimleri tanımlar",
+    ],
+    keyPoints: [
+      "Büyük açı stabilitesi operasyonel güvenlik için kritiktir",
+      "GZ eğrisi her yükleme durumu için oluşturulmalıdır",
+      "Hasarlı stabilite büyük açılarda daha kritiktir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 6 - SERBEST YÜZEY ETKİSİ
+  // =====================================================
+  "free-surface-concept": {
+    title: "Serbest Yüzey Kavramı",
+    introduction: "Serbest yüzey, kısmen dolu bir tankta sıvının serbestçe hareket edebilmesi durumunu ifade eder ve stabiliteyi olumsuz etkiler.",
+    content: `Bir tank tamamen dolu veya tamamen boş olduğunda içindeki sıvı hareket edemez. Ancak tank kısmen doluysa, sıvı gemi yattığında yatan tarafa akar ve ağırlık merkezini kaydırır.
+
+Bu hareket, sanal bir KG artışı yaratır ve GM'yi azaltır. Bu fenomen "serbest yüzey etkisi" (Free Surface Effect - FSE) olarak adlandırılır.
+
+Serbest yüzey etkisi:
+- Tank ne kadar genişse etki o kadar büyüktür
+- Sıvı yoğunluğu etkiyi artırır
+- Tank bölmeleri (longitudinal veya transverse) etkiyi azaltır
+
+Tüm kısmen dolu tanklar serbest yüzey etkisi yaratır: yakıt, balast, tatlı su, cargo oil.`,
+    bulletPoints: [
+      "Kısmen dolu tank = Serbest yüzey etkisi",
+      "Sıvı hareketi KG'yi sanal olarak yükseltir",
+      "GM azalır, stabilite zayıflar",
+      "Tank bölmeleri etkiyi azaltır",
+    ],
+    keyPoints: [
+      "Serbest yüzey etkisi her kısmen dolu tankta vardır",
+      "Etki tank genişliğinin küpüyle orantılıdır",
+      "Stabilite hesabında mutlaka dahil edilmelidir",
+    ],
+    warnings: [
+      "Birden fazla serbest yüzeyli tank etkiyi katlayabilir",
+      "Seyir sırasında tank durumları izlenmelidir",
+    ],
+  },
+  "fse-gm-effect": {
+    title: "Serbest Yüzeyin GM'ye Etkisi",
+    introduction: "Serbest yüzey, efektif GM değerini düşürerek geminin ilk stabilitesini zayıflatır.",
+    content: `Serbest yüzey etkisi, ağırlık merkezinin sanal olarak yükselmesine (GG' veya virtual rise of G) neden olur. Bu artış GM'yi doğrudan azaltır.
+
+Düzeltilmiş GM:
+GM_fluid = GM_solid - GG'
+
+Burada GG' serbest yüzey düzeltmesidir ve FSM/Δ olarak hesaplanır.
+
+Efektif GM (GM_fluid) negatif olursa gemi kararsız hale gelir. Bu nedenle stabilite hesaplarında serbest yüzey düzeltmesi her zaman uygulanır.`,
+    bulletPoints: [
+      "Serbest yüzey KG'yi sanal olarak yükseltir",
+      "GM_fluid = GM_solid - GG'",
+      "GG' = FSM / Δ",
+      "Düşük GM'li gemilerde etki kritiktir",
+    ],
+    formula: {
+      name: "Serbest Yüzey Düzeltmesi",
+      expression: "GM_fluid = GM_solid - (FSM / Δ)",
+      description: "GM_fluid: Düzeltilmiş GM (m), GM_solid: Katı hesaplı GM (m), FSM: Serbest yüzey momenti (t·m), Δ: Deplasman (ton)",
+    },
+    examples: [
+      {
+        problem: "GM_solid = 0.80 m, FSM = 400 t·m, Δ = 8.000 ton ise GM_fluid kaç metredir?",
+        solution: "GG' = FSM / Δ = 400 / 8.000 = 0.05 m. GM_fluid = 0.80 - 0.05 = 0.75 m. Sonuç: Serbest yüzey GM'yi 5 cm azaltır.",
+      },
+    ],
+    keyPoints: [
+      "Stabilite hesabı her zaman GM_fluid kullanmalıdır",
+      "FSM değerleri tank tablolarından alınır",
+      "Birden fazla tank için FSM'ler toplanır",
+    ],
+  },
+  "fsm": {
+    title: "Free Surface Moment (FSM)",
+    introduction: "Free Surface Moment, bir tankın serbest yüzey etkisinin büyüklüğünü ifade eden ve stabilite hesabında kullanılan değerdir.",
+    content: `FSM, tankın geometrik özelliklerine ve içindeki sıvının yoğunluğuna bağlıdır.
+
+FSM = ρ × I
+
+Burada ρ sıvının yoğunluğu, I ise tank su yüzeyinin boyuna eksene göre atalet momentidir.
+
+Dikdörtgen kesitli bir tank için:
+I = (L × B³) / 12
+
+FSM değerleri genellikle tank tablolarında verilir. Farklı doluluk oranları için farklı FSM değerleri olabilir.`,
+    bulletPoints: [
+      "FSM = ρ × I formülü ile hesaplanır",
+      "I, su yüzeyinin atalet momentidir",
+      "Genişlik (B) küpü ile orantılıdır",
+      "Tank tabloları FSM değerlerini verir",
+    ],
+    formula: {
+      name: "Free Surface Moment",
+      expression: "FSM = ρ × I = ρ × (L × B³) / 12",
+      description: "FSM: Serbest yüzey momenti (t·m), ρ: Sıvı yoğunluğu (t/m³), L: Tank uzunluğu (m), B: Tank genişliği (m)",
+    },
+    examples: [
+      {
+        problem: "Tank boyutları L = 10 m, B = 6 m ve yakıt yoğunluğu ρ = 0.85 t/m³ ise FSM kaç t·m olur?",
+        solution: "I = (10 × 6³) / 12 = (10 × 216) / 12 = 180 m⁴. FSM = 0.85 × 180 = 153 t·m. Sonuç: Tank 153 t·m serbest yüzey momenti oluşturur.",
+      },
+    ],
+    keyPoints: [
+      "FSM tank genişliğine çok duyarlıdır (B³)",
+      "Bölmeli tanklar FSM'yi önemli ölçüde azaltır",
+      "Her tank için ayrı FSM hesaplanır",
+    ],
+  },
+  "fse-calc": {
+    title: "Free Surface Effect (FSE)",
+    introduction: "Free Surface Effect, serbest yüzey momentinin deplasmanla bölünmesiyle bulunan ve KG'ye eklenen sanal yükselme değeridir.",
+    content: `FSE (veya GG'), serbest yüzeyin ağırlık merkezini ne kadar sanal olarak yükselttiğini gösterir.
+
+FSE = FSM / Δ
+
+Bu değer KG'ye eklenerek efektif KG bulunur:
+KG_fluid = KG_solid + FSE
+
+Veya doğrudan GM'den düşülür:
+GM_fluid = GM_solid - FSE
+
+Birden fazla serbest yüzeyli tank varsa, tüm FSM'ler toplanır ve toplam FSE hesaplanır.`,
+    bulletPoints: [
+      "FSE = FSM / Δ formülü kullanılır",
+      "FSE, KG'ye eklenir veya GM'den çıkarılır",
+      "Birden fazla tank için FSM'ler toplanır",
+      "Deplasman büyüdükçe FSE küçülür",
+    ],
+    formula: {
+      name: "Free Surface Effect Hesabı",
+      expression: "FSE = Σ(FSM) / Δ; KG_fluid = KG_solid + FSE",
+      description: "FSE: Serbest yüzey etkisi (m), FSM: Serbest yüzey momenti (t·m), Δ: Deplasman (ton)",
+    },
+    examples: [
+      {
+        problem: "3 tankın FSM toplamı 600 t·m ve Δ = 10.000 ton ise FSE kaç metredir?",
+        solution: "FSE = 600 / 10.000 = 0.06 m. Sonuç: KG 6 cm sanal olarak yükselir.",
+      },
+    ],
+    keyPoints: [
+      "FSE hesabı stabilite kontrolünde zorunludur",
+      "Yüksek deplasman FSE'yi küçültür",
+      "Kritik operasyonlarda FSE izlenmelidir",
+    ],
+  },
+  "tank-geometry-effect": {
+    title: "Tank Geometrisinin Etkisi",
+    introduction: "Tank şekli ve bölmeleme durumu serbest yüzey momentini doğrudan etkiler; geniş tanklar daha büyük FSM üretir.",
+    content: `FSM hesabında atalet momenti (I) tank genişliğinin küpüyle orantılıdır. Bu nedenle geniş tanklar çok daha büyük serbest yüzey etkisi yaratır.
+
+Boyuna bölme (longitudinal subdivision):
+Bir tankı ortadan boyuna bölmek, toplam FSM'yi 1/4'üne düşürür (2 × (B/2)³ / 2 = B³/4).
+
+Enine bölme (transverse subdivision):
+Enine bölmeler FSM'yi değiştirmez; ancak sıvı akışını sınırlar.
+
+Tank şekli:
+Eğrisel veya konik tanklarda FSM hesabı daha karmaşıktır ve tank tablolarına başvurulur.`,
+    bulletPoints: [
+      "FSM, B³ ile orantılıdır",
+      "Boyuna bölme FSM'yi 1/4'e düşürür",
+      "Enine bölme FSM'yi değiştirmez",
+      "Karmaşık geometriler için tablo kullanılır",
+    ],
+    formula: {
+      name: "Bölmeli Tank FSM",
+      expression: "FSM_bölmeli = FSM_tam / n²",
+      description: "n: Boyuna bölme sayısı (2 bölme için FSM 1/4 olur)",
+    },
+    examples: [
+      {
+        problem: "12 m genişliğinde bir tankın FSM = 800 t·m. Tank ortadan boyuna bölünürse yeni FSM kaç t·m olur?",
+        solution: "Bölme sayısı n = 2. FSM_yeni = 800 / 2² = 800 / 4 = 200 t·m. Sonuç: FSM 1/4'e düşer.",
+      },
+    ],
+    keyPoints: [
+      "Geniş tanklarda mutlaka bölme düşünülmelidir",
+      "Boyuna bölmeler stabilitede çok etkilidir",
+      "Tank tasarımı stabilite ile birlikte değerlendirilir",
+    ],
+  },
+  "multiple-tanks-effect": {
+    title: "Birden Fazla Tankın Etkisi",
+    introduction: "Birden fazla kısmen dolu tank varsa, her tankın serbest yüzey momenti toplanarak toplam etki hesaplanır.",
+    content: `Gemide genellikle birden fazla tank kısmen dolu olabilir: yakıt tankları, balast tankları, tatlı su tankları, cargo oil tankları.
+
+Her tankın FSM'si ayrı hesaplanır veya tank tablolarından alınır. Toplam serbest yüzey momenti:
+Σ(FSM) = FSM₁ + FSM₂ + FSM₃ + ...
+
+Toplam FSE:
+FSE = Σ(FSM) / Δ
+
+Tamamen dolu veya tamamen boş tanklar FSM hesabına dahil edilmez.`,
+    bulletPoints: [
+      "Her kısmen dolu tank FSM üretir",
+      "FSM'ler toplanır, tek FSE hesaplanır",
+      "Tam dolu veya boş tanklar dahil edilmez",
+      "Yükleme planı FSM toplamını etkiler",
+    ],
+    examples: [
+      {
+        problem: "3 tank: FSM₁ = 150 t·m, FSM₂ = 200 t·m, FSM₃ = 100 t·m. Δ = 7.500 ton. Toplam FSE kaç metredir?",
+        solution: "Σ(FSM) = 150 + 200 + 100 = 450 t·m. FSE = 450 / 7.500 = 0.06 m. Sonuç: Toplam serbest yüzey etkisi 6 cm'dir.",
+      },
+    ],
+    keyPoints: [
+      "Tank sayısı arttıkça FSE artabilir",
+      "Tankları tamamen doldurmak veya boşaltmak FSE'yi sıfırlar",
+      "Yükleme planında FSM minimizasyonu hedeflenir",
+    ],
+    warnings: [
+      "Çok sayıda kısmen dolu tank kritik FSE oluşturabilir",
+      "Kritik seyirlerde tank durumları gözden geçirilmelidir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 7 - BOYUNA STABİLİTE VE TRİM
+  // =====================================================
+  "lcg": {
+    title: "Boyuna Ağırlık Merkezi (LCG)",
+    introduction: "LCG, geminin ağırlık merkezinin boyuna konumunu ifade eder ve trim hesaplarının temel girdisidir.",
+    content: `LCG (Longitudinal Center of Gravity), gemideki tüm ağırlıkların momentler yöntemiyle hesaplanan boyuna bileşkesidir.
+
+Referans noktası genellikle:
+- Kıç dikme (AP - After Perpendicular)
+- Orta kesit (Midship)
+- Baş dikme (FP - Forward Perpendicular)
+
+LCG hesabı:
+LCG = Σ(wᵢ × lcgᵢ) / Σwᵢ
+
+LCG ile LCB arasındaki fark trim oluşumunu belirler.`,
+    bulletPoints: [
+      "LCG boyuna ağırlık merkezidir",
+      "Momentler yöntemiyle hesaplanır",
+      "Referans noktası AP, Midship veya FP olabilir",
+      "LCG - LCB farkı trim yaratır",
+    ],
+    formula: {
+      name: "LCG Hesabı",
+      expression: "LCG = Σ(wᵢ × lcgᵢ) / Δ",
+      description: "LCG: Boyuna ağırlık merkezi (m), wᵢ: Her bir ağırlık (ton), lcgᵢ: Her ağırlığın boyuna konumu (m)",
+    },
+    examples: [
+      {
+        problem: "500 t yük AP'den 80 m, 300 t yük AP'den 40 m ise LCG kaç metredir?",
+        solution: "LCG = (500 × 80 + 300 × 40) / 800 = (40.000 + 12.000) / 800 = 65 m. Sonuç: LCG, AP'den 65 m'dir.",
+      },
+    ],
+    keyPoints: [
+      "LCG yükleme ile değişir",
+      "LCG hesabı trim kontrolü için gereklidir",
+      "Yük yerleşimi LCG'yi doğrudan etkiler",
+    ],
+  },
+  "lcb": {
+    title: "Yüzerlik Merkezi (LCB)",
+    introduction: "LCB, geminin batık hacminin boyuna geometrik merkezidir ve trim hesaplarında LCG ile karşılaştırılır.",
+    content: `LCB (Longitudinal Center of Buoyancy), batık hacmin boyuna ağırlık merkezidir. Kaldırma kuvveti bu noktadan yukarı yönlü etkir.
+
+LCB konumu:
+- Draft ve trim durumuna bağlıdır
+- Hidrostatik tablolardan okunur
+- Gemi form ve doluluk oranına duyarlıdır
+
+Denge durumunda LCG ve LCB aynı düşey doğru üzerinde olmalıdır. Aksi halde boyuna moment oluşur ve trim meydana gelir.`,
+    bulletPoints: [
+      "LCB batık hacmin boyuna merkezidir",
+      "Hidrostatik tablolardan alınır",
+      "LCG = LCB ise trim sıfırdır",
+      "LCG ≠ LCB ise trim oluşur",
+    ],
+    formula: {
+      name: "Trim Momenti",
+      expression: "Trim Moment = Δ × (LCG - LCB)",
+      description: "Trim Moment: Boyuna moment (t·m), Δ: Deplasman (ton), LCG - LCB: Fark (m)",
+    },
+    examples: [
+      {
+        problem: "Δ = 6.000 ton, LCG = 70 m (AP'den), LCB = 68 m (AP'den). Trim momenti kaç t·m?",
+        solution: "Trim Moment = 6.000 × (70 - 68) = 6.000 × 2 = 12.000 t·m. Sonuç: Baş yönünde trim momenti oluşur.",
+      },
+    ],
+    keyPoints: [
+      "LCB draft ile değişir",
+      "LCB-LCG farkı trim yönünü belirler",
+      "Trim düzeltmesi LCG kaydırılarak yapılır",
+    ],
+  },
+  "trim-concept": {
+    title: "Trim Kavramı",
+    introduction: "Trim, geminin baş ve kıç draftları arasındaki farkı ifade eder ve boyuna stabiliteyi gösterir.",
+    content: `Trim, geminin boyuna yatma durumudur ve iki şekilde ifade edilir:
+1. Fark olarak: Trim = T_kıç - T_baş
+2. Açı olarak: θ = arctan(Trim / LBP)
+
+Trim pozitif ise: Kıç trimi (stern trim)
+Trim negatif ise: Baş trimi (bow trim)
+Trim = 0 ise: Düz oturma (even keel)
+
+Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığını etkiler. Ticari operasyonlarda optimum trim değerleri belirlenir.`,
+    bulletPoints: [
+      "Trim = T_kıç - T_baş",
+      "Pozitif trim = Kıç trimi",
+      "Negatif trim = Baş trimi",
+      "Optimum trim yakıt verimliliğini artırır",
+    ],
+    formula: {
+      name: "Trim Hesabı",
+      expression: "Trim = T_kıç - T_baş",
+      description: "Trim: Baş-kıç draft farkı (m), T_kıç: Kıç draftı (m), T_baş: Baş draftı (m)",
+    },
+    examples: [
+      {
+        problem: "T_kıç = 7.2 m, T_baş = 6.8 m ise trim durumu nedir?",
+        solution: "Trim = 7.2 - 6.8 = 0.4 m. Sonuç: 40 cm kıç trimi (stern trim) vardır.",
+      },
+    ],
+    keyPoints: [
+      "Trim seyir performansını etkiler",
+      "Aşırı baş trimi güverte ıslaklığına yol açar",
+      "Pervane derinliği kıç trimi ile ilişkilidir",
+    ],
+  },
+  "mct": {
+    title: "MCT (Moment to Change Trim)",
+    introduction: "MCT, trimi 1 cm değiştirmek için gereken momenti ifade eder ve trim hesaplarında temel büyüklüktür.",
+    content: `MCT (Moment to Change Trim 1 cm), geminin boyuna stabilitesinin ölçüsüdür. Bu değer hidrostatik tablolardan alınır ve draft ile değişir.
+
+MCT hesabı:
+MCT = (Δ × GML) / (100 × LBP)
+
+Burada GML boyuna metasantrik yükseklik, LBP iki dikme arası uzunluktur.
+
+Trim değişimi hesabı:
+Trim = (w × d) / MCT
+
+Burada w ağırlık, d boyuna taşıma mesafesidir.`,
+    bulletPoints: [
+      "MCT, trimi 1 cm değiştiren momenttir",
+      "Hidrostatik tablolardan okunur",
+      "Draft ile değişir",
+      "Trim = Moment / MCT formülü kullanılır",
+    ],
+    formula: {
+      name: "MCT Formülü",
+      expression: "MCT = (Δ × GML) / (100 × LBP); Trim = (w × d) / MCT",
+      description: "MCT: Trim değiştirme momenti (t·m/cm), GML: Boyuna metasantrik yükseklik (m), LBP: İki dikme arası (m)",
+    },
+    examples: [
+      {
+        problem: "MCT = 350 t·m/cm, 140 ton yük 15 m başa kaydırılıyor. Trim değişimi kaç cm?",
+        solution: "Moment = 140 × 15 = 2.100 t·m. Trim = 2.100 / 350 = 6 cm. Sonuç: Baş trimi 6 cm artar.",
+      },
+    ],
+    keyPoints: [
+      "MCT büyük gemilerde daha yüksektir",
+      "Trim hesabı yükleme planının parçasıdır",
+      "MCT değeri draft ile değişir",
+    ],
+  },
+  "trim-calculations": {
+    title: "Trim Hesapları",
+    introduction: "Trim hesapları, yük hareketlerinin ve ağırlık değişikliklerinin baş-kıç draftlarına etkisini belirler.",
+    content: `Trim hesabı iki temel durumu kapsar:
+1. Ağırlık kayması (w × d momenti)
+2. Ağırlık ekleme/çıkarma (LCG değişimi)
+
+Trim değişimi:
+ΔTrim = (w × d) / MCT
+
+Baş ve kıç draft değişimleri:
+ΔT_baş = (ΔTrim × LCF) / LBP
+ΔT_kıç = ΔTrim - ΔT_baş
+
+LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
+    bulletPoints: [
+      "Trim değişimi = Moment / MCT",
+      "LCF, draft dağılımını belirler",
+      "Baş ve kıç draftları ayrı hesaplanır",
+      "Trim hesabı yükleme planında zorunludur",
+    ],
+    formula: {
+      name: "Trim ve Draft Değişimi",
+      expression: "ΔTrim = (w × d) / MCT; ΔT_baş = ΔTrim × (LBP - LCF) / LBP",
+      description: "ΔTrim: Trim değişimi (cm), LCF: Yüzme merkezinin kıçtan uzaklığı (m)",
+    },
+    examples: [
+      {
+        problem: "w = 200 t, d = 20 m başa, MCT = 400 t·m/cm, LBP = 120 m, LCF = 55 m (kıçtan). Draft değişimleri nedir?",
+        solution: "ΔTrim = (200 × 20) / 400 = 10 cm baş trimi. ΔT_kıç = 10 × 55 / 120 = 4.58 cm azalma. ΔT_baş = 10 - 4.58 = 5.42 cm artış. Sonuç: Baş 5.4 cm batar, kıç 4.6 cm yükselir.",
+      },
+    ],
+    keyPoints: [
+      "LCF orta kesitte değilse draftlar eşit değişmez",
+      "Trim hesabı fribord kontrolü ile birlikte yapılır",
+      "Aşırı trim operasyonel sorunlara yol açar",
+    ],
+  },
+  "trim-control": {
+    title: "Yükleme ve Boşaltmada Trim Kontrolü",
+    introduction: "Trim kontrolü, yükleme operasyonları sırasında geminin optimum trim değerlerinde kalmasını sağlar.",
+    content: `Yükleme ve boşaltma sırasında trim sürekli değişir. Optimum trim değerleri şunları etkiler:
+- Yakıt tüketimi
+- Pervane verimliliği
+- Güverte ıslaklığı
+- Liman manevrası
+
+Trim kontrolü yöntemleri:
+1. Yük yerleşim planı
+2. Balast transferi
+3. Yakıt transferi
+4. Yükleme sırası optimizasyonu
+
+Stabilite bilgisayarları trim simülasyonu yaparak optimum yükleme planı önerir.`,
+    bulletPoints: [
+      "Optimum trim yakıt tasarrufu sağlar",
+      "Balast transferi trim düzeltmesinde kullanılır",
+      "Yükleme sırası trim kontrolünü etkiler",
+      "Stabilite yazılımları trim simülasyonu yapar",
+    ],
+    keyPoints: [
+      "Trim kontrolü yükleme planının parçasıdır",
+      "Aşırı trim operasyonel sorunlara yol açar",
+      "Optimum trim gemi tipine göre değişir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 8 - HİDROSTATİK VERİLER VE TABLOLAR
+  // =====================================================
+  "displacement": {
+    title: "Deplasman",
+    introduction: "Deplasman, geminin toplam ağırlığı ve yer değiştirdiği suyun ağırlığıdır; stabilitenin temel büyüklüğüdür.",
+    content: `Deplasman (Δ), geminin yüzerken yer değiştirdiği suyun ağırlığına eşittir. Arşimet prensibine göre bu değer geminin toplam ağırlığına eşittir.
+
+Δ = ∇ × ρ
+
+Burada ∇ batık hacim (m³), ρ suyun yoğunluğudur (deniz suyu için 1.025 t/m³).
+
+Deplasman değeri:
+- Stabilite hesaplarının girdisidir
+- Doğrultma momenti hesabında kullanılır
+- Hidrostatik tablolardan draft ile ilişkilendirilir`,
+    bulletPoints: [
+      "Δ = Geminin toplam ağırlığı",
+      "Δ = Yer değiştirilen su ağırlığı",
+      "Δ = ∇ × ρ formülü ile hesaplanır",
+      "Draft arttıkça deplasman artar",
+    ],
+    formula: {
+      name: "Deplasman Hesabı",
+      expression: "Δ = ∇ × ρ",
+      description: "Δ: Deplasman (ton), ∇: Batık hacim (m³), ρ: Su yoğunluğu (t/m³, deniz suyu için 1.025)",
+    },
+    examples: [
+      {
+        problem: "Batık hacim ∇ = 5.000 m³, deniz suyu yoğunluğu ρ = 1.025 t/m³ ise deplasman kaç tondur?",
+        solution: "Δ = 5.000 × 1.025 = 5.125 ton. Sonuç: Gemi 5.125 ton ağırlığındadır.",
+      },
+    ],
+    keyPoints: [
+      "Deplasman stabilitenin ana girdisidir",
+      "Yoğunluk değişimi deplasmanı etkiler",
+      "Lightship + deadweight = Deplasman",
+    ],
+  },
+  "draft": {
+    title: "Draft",
+    introduction: "Draft, geminin omurgasından su hattına olan dikey mesafedir ve yükleme durumunun göstergesidir.",
+    content: `Draft (su çekimi), geminin ne kadar suya battığını gösterir. Üç konumda ölçülür:
+1. Baş draftı (Forward draft)
+2. Kıç draftı (Aft draft)
+3. Orta draft (Mean draft)
+
+Orta draft = (T_baş + T_kıç) / 2
+
+Draft arttıkça:
+- Deplasman artar
+- Fribord azalır
+- Batık hacim büyür
+
+Draft okuması, yükleme hesabının başlangıç noktasıdır.`,
+    bulletPoints: [
+      "Draft omurgadan su hattına mesafedir",
+      "Baş, kıç ve orta draft ayrı ölçülür",
+      "Draft artışı deplasman artışı demektir",
+      "Fribord sınırları draft limitini belirler",
+    ],
+    formula: {
+      name: "Orta Draft",
+      expression: "T_mean = (T_baş + T_kıç) / 2",
+      description: "T_mean: Orta draft (m), T_baş: Baş draftı (m), T_kıç: Kıç draftı (m)",
+    },
+    examples: [
+      {
+        problem: "T_baş = 6.4 m, T_kıç = 7.0 m ise orta draft kaç metredir?",
+        solution: "T_mean = (6.4 + 7.0) / 2 = 6.7 m. Sonuç: Orta draft 6.7 metredir.",
+      },
+    ],
+    keyPoints: [
+      "Draft okuması operasyonun başlangıcıdır",
+      "Fribord = Summer Load Line - Draft",
+      "Minimum fribord sınırı aşılmamalıdır",
+    ],
+  },
+  "draft-displacement-relation": {
+    title: "Draft-Deplasman İlişkisi",
+    introduction: "Draft ve deplasman arasındaki ilişki hidrostatik eğrilerle tanımlanır ve yükleme hesabında kullanılır.",
+    content: `Draft arttıkça batık hacim ve dolayısıyla deplasman artar. Bu ilişki doğrusal değildir; gemi formuna bağlıdır.
+
+Hidrostatik tablolar veya eğriler bu ilişkiyi gösterir:
+- Draft (m) vs Deplasman (ton)
+- Draft (m) vs Batık hacim (m³)
+
+Bu tablolar geminin inşa aşamasında hesaplanır ve stabilite kitapçığında verilir.
+
+Yükleme sırasında draft ölçülerek deplasman bulunur veya tersine deplasman hesabından beklenen draft kontrol edilir.`,
+    bulletPoints: [
+      "Draft-deplasman ilişkisi doğrusal değildir",
+      "Hidrostatik tablolardan okunur",
+      "Gemi formuna bağlıdır",
+      "Yükleme kontrolünün temel aracıdır",
+    ],
+    keyPoints: [
+      "Hidrostatik veriler gemiye özgüdür",
+      "Trim durumu draft okumalarını etkiler",
+      "Hidrostatik tablolar trim düzeltmeleri içerir",
+    ],
+  },
+  "tpc": {
+    title: "TPC (Ton Per Centimeter)",
+    introduction: "TPC, draftı 1 cm artırmak için gereken ağırlığı gösterir ve hızlı yükleme hesaplarında kullanılır.",
+    content: `TPC (Tons Per Centimeter Immersion), geminin su hattı alanı ile ilişkilidir.
+
+TPC = (A × ρ) / 100
+
+Burada A su hattı alanı (m²), ρ su yoğunluğudur (t/m³).
+
+TPC kullanımı:
+- Yüklenecek ağırlık / TPC = Draft artışı (cm)
+- Draft değişimi × TPC = Ağırlık değişimi (ton)
+
+TPC değeri draft ile değişir; hidrostatik tablolardan okunur.`,
+    bulletPoints: [
+      "TPC, 1 cm batış için gereken tondur",
+      "Su hattı alanına bağlıdır",
+      "Hidrostatik tablolardan okunur",
+      "Hızlı yükleme hesabında kullanılır",
+    ],
+    formula: {
+      name: "TPC Hesabı",
+      expression: "TPC = (A × ρ) / 100; ΔT = w / TPC",
+      description: "TPC: Ton per cm (ton/cm), A: Su hattı alanı (m²), ρ: Yoğunluk (t/m³), ΔT: Draft değişimi (cm), w: Ağırlık (ton)",
+    },
+    examples: [
+      {
+        problem: "TPC = 25 ton/cm ve 500 ton yük yüklenecek. Draft kaç cm artar?",
+        solution: "ΔT = 500 / 25 = 20 cm. Sonuç: Draft 20 cm artar.",
+      },
+    ],
+    keyPoints: [
+      "TPC geniş gemilerde daha büyüktür",
+      "Draft değiştikçe TPC de değişir",
+      "Liman operasyonlarında sık kullanılır",
+    ],
+  },
+  "km-values": {
+    title: "KM Değerleri",
+    introduction: "KM, omurgadan metasantra olan mesafedir ve GM hesabının temel girdisidir.",
+    content: `KM (Keel to Metacenter), metasantrın omurgadan yüksekliğidir.
+
+KM = KB + BM
+
+Burada KB omurgadan kaldırma merkezine, BM metasantrik yarıçaptır.
+
+KM değeri:
+- Draft ile değişir
+- Hidrostatik tablolardan okunur
+- GM hesabında kullanılır: GM = KM - KG
+
+KM değeri gemi geometrisine bağlıdır ve yükleme ile değişmez (yalnızca draft değişimi ile değişir).`,
+    bulletPoints: [
+      "KM = KB + BM formülü geçerlidir",
+      "Hidrostatik tablolardan alınır",
+      "Draft ile değişir",
+      "GM = KM - KG hesabında kullanılır",
+    ],
+    formula: {
+      name: "KM ve GM İlişkisi",
+      expression: "KM = KB + BM; GM = KM - KG",
+      description: "KM: Omurgadan metasantra (m), KB: Omurgadan kaldırma merkezine (m), BM: Metasantrik yarıçap (m), KG: Omurgadan ağırlık merkezine (m)",
+    },
+    examples: [
+      {
+        problem: "Hidrostatik tablodan T = 6.5 m için KM = 7.8 m okundu. KG = 7.2 m ise GM kaç metredir?",
+        solution: "GM = KM - KG = 7.8 - 7.2 = 0.6 m. Sonuç: GM 60 cm'dir, ilk stabilite yeterlidir.",
+      },
+    ],
+    keyPoints: [
+      "KM gemiye özgü hidrostatik veridir",
+      "Draft arttıkça genellikle KM azalır",
+      "Stabilite hesabında KM doğru okunmalıdır",
+    ],
+  },
+  "hydrostatic-tables-usage": {
+    title: "Hidrostatik Tabloların Kullanımı",
+    introduction: "Hidrostatik tablolar, geminin draft ve trim durumuna göre stabilite parametrelerini veren temel referanstır.",
+    content: `Hidrostatik tablolar genellikle şu verileri içerir:
+- Draft vs Deplasman
+- Draft vs TPC
+- Draft vs KM (KMt ve KMl)
+- Draft vs KB
+- Draft vs LCB
+- Draft vs LCF
+- Draft vs MCT
+
+Tablolar düz oturma (even keel) için hazırlanır. Trim durumunda düzeltme yapılması gerekebilir.
+
+Modern stabilite bilgisayarları bu tabloları otomatik olarak kullanır; ancak manuel kontrol için tablolar bilinmelidir.`,
+    bulletPoints: [
+      "Tüm stabilite parametreleri tablolardan okunur",
+      "Draft ana giriş değeridir",
+      "Trim düzeltmeleri gerekebilir",
+      "Stabilite yazılımları tabloları otomatik kullanır",
+    ],
+    keyPoints: [
+      "Tablolar gemiye özgüdür ve değiştirilemez",
+      "Enterpolasyon doğru yapılmalıdır",
+      "Trim düzeltmeleri için özel tablolar bulunabilir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 10 - DİNAMİK STABİLİTE
+  // =====================================================
+  "dynamic-righting-moment": {
+    title: "Dinamik Doğrultma Momenti",
+    introduction: "Dinamik doğrultma momenti, geminin hareket halindeyken dış kuvvetlere karşı ürettiği toplam doğrultma kapasitesidir.",
+    content: `Dinamik stabilite, geminin belirli bir açıya kadar absorbe edebileceği enerji miktarını ifade eder. Bu kapasite, GZ eğrisinin altındaki alanla ölçülür.
+
+Dinamik doğrultma momenti:
+DRM = Δ × ∫GZ dθ
+
+Bu integral, başlangıç açısından belirli bir açıya kadar GZ eğrisinin altındaki alandır.
+
+Statik stabiliteden farkı:
+- Statik: Belirli bir açıda anlık denge
+- Dinamik: Hareket boyunca enerji dengesi`,
+    bulletPoints: [
+      "Dinamik stabilite enerji kapasitesidir",
+      "GZ eğrisi altındaki alanla ölçülür",
+      "Dalga ve rüzgâr enerjisini absorbe eder",
+      "IMO alan kriterleri dinamik stabiliteyi denetler",
+    ],
+    formula: {
+      name: "Dinamik Stabilite",
+      expression: "E = Δ × ∫(0 to θ) GZ dθ",
+      description: "E: Dinamik stabilite enerjisi (t·m·rad), Δ: Deplasman (ton), GZ: Doğrultma kolu (m), θ: Açı (rad)",
+    },
+    keyPoints: [
+      "Dinamik stabilite deniz koşullarını yansıtır",
+      "Alan büyüklüğü güvenliğin ölçüsüdür",
+      "IMO kriterleri minimum alanları belirler",
+    ],
+  },
+  "area-concept": {
+    title: "Alan Kavramı",
+    introduction: "GZ eğrisi altındaki alan, geminin dinamik stabilite kapasitesini ve dış kuvvetlere direnme yeteneğini gösterir.",
+    content: `GZ eğrisi altındaki alan, geminin belirli bir açıya kadar ne kadar enerji absorbe edebileceğini ifade eder.
+
+IMO kriterleri şu alanları tanımlar:
+- A₁: 0° - 30° arası alan ≥ 0.055 m·rad
+- A₂: 0° - 40° arası alan ≥ 0.090 m·rad
+- A₃: 30° - 40° arası alan ≥ 0.030 m·rad
+
+Bu alanlar, geminin çeşitli yatma senaryolarında yeterli enerji rezervine sahip olmasını garanti eder.
+
+Alan hesabı sayısal integrasyon veya trapez kuralı ile yapılır.`,
+    bulletPoints: [
+      "Alan = Enerji kapasitesi",
+      "IMO minimum alan kriterleri tanımlar",
+      "0-30°, 0-40° ve 30-40° alanları kontrol edilir",
+      "Sayısal integrasyon ile hesaplanır",
+    ],
+    formula: {
+      name: "Alan Hesabı (Trapez Kuralı)",
+      expression: "A = Σ [(GZₙ + GZₙ₊₁) / 2] × Δθ",
+      description: "A: Alan (m·rad), GZ: Doğrultma kolu (m), Δθ: Açı aralığı (rad)",
+    },
+    examples: [
+      {
+        problem: "0-30° arasında hesaplanan alan A₁ = 0.048 m·rad. IMO kriteri sağlanıyor mu?",
+        solution: "IMO kriteri: A₁ ≥ 0.055 m·rad. 0.048 < 0.055. Sonuç: Kriter sağlanmıyor, stabilite yetersiz.",
+      },
+    ],
+    keyPoints: [
+      "Tüm alan kriterleri aynı anda sağlanmalıdır",
+      "Yükleme değişiklikleri alanları etkiler",
+      "Kritik yüklemelerde alan kontrolü zorunludur",
+    ],
+  },
+  "static-vs-dynamic": {
+    title: "Statik ve Dinamik Stabilite Farkı",
+    introduction: "Statik stabilite anlık dengeyi, dinamik stabilite ise hareket halinde enerji dengesini inceler.",
+    content: `Statik ve dinamik stabilite birbirini tamamlar:
+
+STATİK STABİLİTE:
+- Belirli bir açıda anlık denge analizi
+- GZ değerleri ve GM kontrolü
+- Küçük açılarda GM, büyük açılarda GZ eğrisi
+
+DİNAMİK STABİLİTE:
+- Hareket boyunca enerji dengesi
+- GZ eğrisi altındaki alanlar
+- Dalga ve rüzgâr etkisi altında davranış
+
+Her iki analiz de gereklidir. Statik kriterlerin sağlanması dinamik güvenliği garanti etmez; alan kriterleri de kontrol edilmelidir.`,
+    bulletPoints: [
+      "Statik: Anlık denge, GZ ve GM",
+      "Dinamik: Enerji dengesi, alanlar",
+      "Her ikisi de IMO tarafından zorunludur",
+      "Statik yeterlilik dinamik güvenliği garanti etmez",
+    ],
+    keyPoints: [
+      "Stabilite değerlendirmesi her iki analizi kapsar",
+      "GZ eğrisi hem statik hem dinamik bilgi verir",
+      "Kritik operasyonlarda dinamik analiz önceliklidir",
+    ],
+  },
+  "wave-effect": {
+    title: "Dalga Etkisi",
+    introduction: "Dalgalar gemiye enerji aktararak yatma hareketi oluşturur ve dinamik stabiliteyi test eder.",
+    content: `Dalgalar gemiye çeşitli şekillerde etki eder:
+
+1. Dalga eğimi (wave slope): Gemi dalga üzerinde yattığında efektif yatma açısı artar.
+
+2. Dalga momenti: Dalga yüksekliği ve periyodu yatma momentini belirler.
+
+3. Rezonans: Dalga periyodu yalpa periyoduna yaklaştığında tehlikeli salınımlar oluşur.
+
+4. Parametrik yalpalama: Baş-kıç dalgalarında değişen su hattı genişliği stabiliteyi periyodik olarak değiştirir.
+
+IMO rüzgâr ve dalga kriterleri bu etkileri hesaba katar.`,
+    bulletPoints: [
+      "Dalgalar yatma enerjisi aktarır",
+      "Dalga periyodu ile yalpa periyodu rezonansa girebilir",
+      "Baş-kıç dalgalarda parametrik yalpalama riski vardır",
+      "Stabilite alanları dalga enerjisini absorbe eder",
+    ],
+    keyPoints: [
+      "Dalga koşulları stabilite değerlendirmesinde kritiktir",
+      "Rezonans önleme için rota ve hız ayarlanır",
+      "Parametrik yalpalama konteyner gemilerinde önemlidir",
+    ],
+    warnings: [
+      "Rezonans koşullarında salınım genliği tehlikeli boyutlara ulaşabilir",
+      "Rota değişikliği veya hız azaltma gerekebilir",
+    ],
+  },
+  "wind-effect": {
+    title: "Rüzgâr Etkisi",
+    introduction: "Rüzgâr, geminin üst yapılarına etki ederek yatma momenti oluşturur ve stabiliteyi zorlar.",
+    content: `Rüzgâr etkisi, rüzgâra maruz kalan yüzey alanı ve rüzgâr hızına bağlıdır.
+
+Rüzgâr yatma momenti:
+HM_wind = 0.5 × ρ_air × V² × A × h
+
+Burada ρ_air hava yoğunluğu, V rüzgâr hızı, A maruz alan, h kaldırma koludur.
+
+IMO rüzgâr kriteri (Weather Criterion), ani rüzgâr altında geminin devrilmemesini garanti eden stabilite kontrolüdür. Bu kriter GZ eğrisi üzerinde grafiksel olarak uygulanır.`,
+    bulletPoints: [
+      "Rüzgâr yatma momenti üst yapı alanına bağlıdır",
+      "Rüzgâr hızının karesiyle orantılıdır",
+      "IMO Weather Criterion rüzgâr güvenliğini test eder",
+      "Yüksek freeboard ve üst yapı rüzgâr etkisini artırır",
+    ],
+    formula: {
+      name: "Rüzgâr Yatma Momenti",
+      expression: "HM = P × A × h; P = 0.5 × ρ × V²",
+      description: "HM: Yatma momenti (N·m), P: Rüzgâr basıncı (Pa), A: Maruz alan (m²), h: Kaldırma kolu (m), V: Rüzgâr hızı (m/s)",
+    },
+    keyPoints: [
+      "Rüzgâr kriteri tüm gemiler için zorunludur",
+      "Ani rüzgâr (gust) hesaba katılır",
+      "Yatma açısı sınırları kontrol edilir",
+    ],
+  },
 };
 
 export default function StabilityTopicsPage() {
