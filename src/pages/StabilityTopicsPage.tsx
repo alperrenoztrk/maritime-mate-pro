@@ -2125,6 +2125,918 @@ IMO rüzgâr kriteri (Weather Criterion), ani rüzgâr altında geminin devrilme
       "Yatma açısı sınırları kontrol edilir",
     ],
   },
+  // =====================================================
+  // BÖLÜM 11 - HASARLI STABİLİTE (DAMAGE STABILITY)
+  // =====================================================
+  "post-damage-floatation": {
+    title: "Hasar Sonrası Yüzerlik",
+    introduction: "Hasar sonrası yüzerlik, geminin bir veya birden fazla bölmenin su ile dolması durumunda yüzmeye devam edip edemeyeceğini belirler.",
+    content: `Geminin hasar görmesi durumunda yüzerliğin korunması, can ve mal güvenliği açısından kritik öneme sahiptir.
+
+Hasar sonrası yüzerlik iki faktöre bağlıdır:
+1. Hasarlı bölmenin hacmi ve konumu
+2. Geminin mevcut rezerv yüzerliği
+
+Rezerv yüzerlik, su hattı üzerinde kalan suya dayanıklı hacimdir. Hasarlı bölmeye dolan su miktarı bu hacmi aşarsa gemi batar.
+
+Permeabilite (μ) faktörü, bölmenin ne kadarının su ile dolabileceğini gösterir:
+- Makine dairesi: μ = 0.85
+- Kargo ambarı (genel yük): μ = 0.60
+- Yolcu alanları: μ = 0.95
+- Boş tanklar: μ = 0.95
+
+Hasarlı hacim = Gerçek hacim × μ`,
+    bulletPoints: [
+      "Rezerv yüzerlik = Su hattı üstü suya dayanıklı hacim",
+      "Permeabilite (μ) bölmeye göre değişir",
+      "Hasarlı hacim = Hacim × μ",
+      "Bölmeleme geminin batma direncini artırır",
+    ],
+    formula: {
+      name: "Hasarlı Hacim Hesabı",
+      expression: "V_flooded = V_compartment × μ",
+      description: "V_flooded: Dolan hacim (m³), V_compartment: Bölme hacmi (m³), μ: Permeabilite katsayısı",
+    },
+    examples: [
+      {
+        problem: "Hacmi 500 m³ olan bir kargo ambarı hasar görüyor. Permeabilite μ = 0.60 ise ne kadar su dolar?",
+        solution: "V_flooded = 500 × 0.60 = 300 m³. Sonuç: Ambara 300 m³ su dolar.",
+      },
+    ],
+    keyPoints: [
+      "Permeabilite değerleri SOLAS tarafından belirlenir",
+      "Yüksek permeabilite = Daha fazla su dolumu",
+      "Bölme sayısı arttıkça hasar direnci artar",
+    ],
+  },
+  "flooding-concept": {
+    title: "Flooding Kavramı",
+    introduction: "Flooding, geminin bir bölmesinin kontrolsüz şekilde su ile dolmasıdır ve iki yöntemle analiz edilir: kayıp yüzerlik ve eklenen ağırlık.",
+    content: `Flooding analizi iki yaklaşımla yapılır:
+
+1. KAYIP YÜZERLİK YÖNTEMİ (Lost Buoyancy Method):
+Su dolan bölme artık kaldırma kuvveti üretmez. Gemi dengeyi sağlamak için daha fazla batar. Bu yöntemde deplasmanın değişmediği kabul edilir.
+
+2. EKLENEN AĞIRLIK YÖNTEMİ (Added Weight Method):
+Dolan su bir ağırlık olarak kabul edilir. Deplasman artar ve gemi batar. Bu yöntem serbest yüzey etkisini de dikkate alır.
+
+Her iki yöntem de aynı nihai draft ve trim değerlerini verir; ancak hesap mantığı farklıdır.
+
+Modern stabilite bilgisayarları genellikle eklenen ağırlık yöntemini kullanır.`,
+    bulletPoints: [
+      "Kayıp yüzerlik: Bölme kaldırma üretmez",
+      "Eklenen ağırlık: Su bir ağırlık olarak eklenir",
+      "Her iki yöntem aynı sonucu verir",
+      "Eklenen ağırlık serbest yüzeyi hesaba katar",
+    ],
+    formula: {
+      name: "Eklenen Ağırlık Hesabı",
+      expression: "w_added = V_flooded × ρ_water",
+      description: "w_added: Eklenen su ağırlığı (ton), V_flooded: Dolan hacim (m³), ρ_water: Su yoğunluğu (t/m³)",
+    },
+    examples: [
+      {
+        problem: "Bir bölmeye 400 m³ deniz suyu (ρ = 1.025 t/m³) doluyorsa eklenen ağırlık nedir?",
+        solution: "w_added = 400 × 1.025 = 410 ton. Sonuç: 410 ton ağırlık eklenir.",
+      },
+    ],
+    keyPoints: [
+      "Flooding analizi hasar stabilitesinin temelidir",
+      "Serbest yüzey etkisi flooding durumunda kritiktir",
+      "Stabilite yazılımları flooding simülasyonu yapar",
+    ],
+  },
+  "reserve-buoyancy": {
+    title: "Rezerv Yüzerlik",
+    introduction: "Rezerv yüzerlik, geminin su hattı üzerinde kalan suya dayanıklı hacmidir ve hasar durumunda batmaya karşı güvenlik marjını oluşturur.",
+    content: `Rezerv yüzerlik, geminin fribord ve kapalı üst yapılarının oluşturduğu hacimdir. Bu hacim, hasar durumunda ek yüzerlik sağlar.
+
+Rezerv yüzerlik faktörleri:
+- Fribord yüksekliği
+- Kapalı üst yapıların hacmi
+- Su geçirmez bölmeleme
+- Kapı ve açıklıkların durumu
+
+SOLAS gereksinimleri:
+- Minimum fribord değerleri
+- Bölme uzunluğu sınırlamaları
+- Su geçirmez kapı standartları
+
+Rezerv yüzerlik hesabı:
+RB = V_üst yapı + V_fribord
+
+Yeterli rezerv yüzerlik, geminin hasarlı durumda bile yüzmesini sağlar.`,
+    bulletPoints: [
+      "Rezerv yüzerlik = Fribord + Kapalı üst yapılar",
+      "Fribord azaldıkça rezerv yüzerlik azalır",
+      "Su geçirmez bölmeleme rezerv yüzerliği korur",
+      "SOLAS minimum fribord değerlerini belirler",
+    ],
+    formula: {
+      name: "Rezerv Yüzerlik",
+      expression: "RB = WPA × Freeboard + V_superstructure",
+      description: "RB: Rezerv yüzerlik (m³), WPA: Su hattı alanı (m²), Freeboard: Fribord (m)",
+    },
+    keyPoints: [
+      "Rezerv yüzerlik güvenlik marjıdır",
+      "Aşırı yükleme rezerv yüzerliği azaltır",
+      "Kapalı kapılar rezerv yüzerliği korur",
+    ],
+    warnings: [
+      "Açık kapak ve kapılar rezerv yüzerliği sıfırlar",
+      "Fribord çizgisi aşılmamalıdır",
+    ],
+  },
+  "asymmetric-flooding": {
+    title: "Asimetrik Flooding",
+    introduction: "Asimetrik flooding, suyun geminin bir tarafına dolması durumudur ve tehlikeli list açısına yol açar.",
+    content: `Asimetrik flooding, hasar tek tarafa olduğunda oluşur. Su yalnızca bir bordaya dolarsa gemi o tarafa yatar.
+
+Asimetrik flooding tehlikeleri:
+1. Ani ve büyük list açısı
+2. Güverte kenarının suya girmesi
+3. Açık güverte açıklıklarından ek su girişi
+4. Devrilme riski
+
+Çapraz eşitleme (cross-flooding):
+Karşı bordadaki tankların kasten doldurularak listin azaltılması. Bu işlem:
+- SOLAS tarafından zorunlu kılınır
+- Maksimum 15 dakikada tamamlanmalıdır
+- List açısını kabul edilebilir değere düşürür
+
+Çapraz eşitleme kapasitesi gemi tasarımında belirlenir.`,
+    bulletPoints: [
+      "Asimetrik flooding tehlikeli list yaratır",
+      "Çapraz eşitleme liisti azaltır",
+      "SOLAS maksimum 15 dakika çapraz eşitleme süresi tanır",
+      "Güverte kenarı batması devrilmeye yol açar",
+    ],
+    formula: {
+      name: "List Açısı Tahmini",
+      expression: "tan(θ) ≈ (w × y) / (Δ × GM)",
+      description: "θ: List açısı, w: Dolan su ağırlığı (ton), y: Suyun enine mesafesi (m), GM: Metasantrik yükseklik (m)",
+    },
+    examples: [
+      {
+        problem: "200 ton su bordadan 5 m mesafede birikir. Δ = 10.000 ton, GM = 1.0 m ise list açısı nedir?",
+        solution: "tan(θ) = (200 × 5) / (10.000 × 1.0) = 0.1. θ = arctan(0.1) ≈ 5.7°. Sonuç: List açısı yaklaşık 6°.",
+      },
+    ],
+    keyPoints: [
+      "Asimetrik flooding en tehlikeli hasar durumudur",
+      "Çapraz eşitleme sistemleri kritiktir",
+      "List açısı 15°'yi aşmamalıdır",
+    ],
+  },
+  "progressive-flooding": {
+    title: "Progressive Flooding",
+    introduction: "Progressive flooding, suyun bir bölmeden diğerine kontrol dışı yayılmasıdır ve geminin batma riskini artırır.",
+    content: `Progressive flooding, hasarlı bölmedeki suyun:
+- Açık kapılar
+- Hasarlı bölme sınırları
+- Havalandırma kanalları
+- Boru hatları
+üzerinden diğer bölmelere yayılmasıdır.
+
+Bu durum, ilk hasar sonrası geminin durumunu hızla kötüleştirir.
+
+Önleme yöntemleri:
+1. Su geçirmez kapıların kapatılması
+2. Havalandırma damperlerinin kapatılması
+3. Boru valflerinin kontrol edilmesi
+4. Hasarlı bölmenin izole edilmesi
+
+SOLAS, progressive flooding süresini ve geminin nihai konumunu değerlendirir.`,
+    bulletPoints: [
+      "Su açık geçitlerden diğer bölmelere yayılır",
+      "Gemi durumu hızla kötüleşir",
+      "Su geçirmez kapılar yayılmayı önler",
+      "SOLAS progressive flooding senaryolarını test eder",
+    ],
+    keyPoints: [
+      "Kapı ve damperlerin durumu kritiktir",
+      "Düzenli su geçirmezlik kontrolleri yapılmalıdır",
+      "Mürettebat eğitimi önemlidir",
+    ],
+    warnings: [
+      "Açık bırakılan kapılar felakete yol açabilir",
+      "Su geçirmez kapılar seyir sırasında kapalı tutulmalıdır",
+    ],
+  },
+  "damaged-gm-gz": {
+    title: "Hasarlı GM ve GZ",
+    introduction: "Hasar sonrası GM ve GZ değerleri değişir; bu değişim geminin hayatta kalma kapasitesini belirler.",
+    content: `Flooding sonrası stabilite değişiklikleri:
+
+GM DEĞİŞİMİ:
+1. KG değişimi: Dolan su ağırlık merkezi yükseltir veya alçaltır
+2. KM değişimi: Yeni draft ve trim KM'yi etkiler
+3. Serbest yüzey: Dolan bölmede serbest yüzey etkisi oluşur
+
+Hasarlı GM = Sağlam GM + KM değişimi - KG değişimi - FSE
+
+GZ EĞRİSİ DEĞİŞİMİ:
+- Eğri yatay kayar (list açısı)
+- Maksimum GZ azalır
+- Stabilite alanı küçülür
+- Devrilme açısı azalır
+
+SOLAS hasarlı durumda minimum GZ ve alan değerlerini tanımlar.`,
+    bulletPoints: [
+      "Hasarlı GM genellikle azalır",
+      "Serbest yüzey GM'yi daha da düşürür",
+      "GZ eğrisi list yönüne kayar",
+      "Stabilite marjları daralır",
+    ],
+    formula: {
+      name: "Hasarlı GM Tahmini",
+      expression: "GM_damaged = GM_intact - ΔFSE - ΔKG + ΔKM",
+      description: "Her parametre flooding durumuna göre hesaplanır",
+    },
+    keyPoints: [
+      "Hasarlı stabilite hesabı zorunludur",
+      "SOLAS minimum değerleri belirler",
+      "Stabilite bilgisayarları hasar senaryolarını simüle eder",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 12 - ÖZEL STABİLİTE DURUMLARI
+  // =====================================================
+  "heavy-lift": {
+    title: "Heavy Lift Operasyonları",
+    introduction: "Heavy lift operasyonları, ağır yüklerin vinç ile kaldırılması sırasında geminin stabilitesini kritik şekilde etkiler.",
+    content: `Ağır yük kaldırma sırasında stabilite değişiklikleri:
+
+1. SANAL KG YÜKSELMESİ:
+Yük yerden kalktığında ağırlık merkezi vinç ucuna taşınmış gibi davranır.
+KG_yeni = KG + (w × h) / Δ
+h: Kaldırma yüksekliği
+
+2. SERFİ ETKİSİ:
+Asılı yük bir sarkaç gibi hareket eder ve GM'yi azaltır.
+GM_reduced = GM - (w × l²) / (Δ × GM)
+l: Sapan uzunluğu
+
+3. LIST OLUŞUMU:
+Boom dışarı açıldığında enine moment oluşur.
+
+Güvenlik önlemleri:
+- Kaldırma öncesi stabilite hesabı
+- Balast hazırlığı
+- Kaldırma sırasında sürekli izleme
+- Rüzgâr ve dalga kontrolü`,
+    bulletPoints: [
+      "Yük kalktığında KG sanal olarak yükselir",
+      "Asılı yük sarkaç etkisi yaratır",
+      "GM kaldırma sırasında azalır",
+      "Stabilite hesabı operasyon öncesi yapılmalıdır",
+    ],
+    formula: {
+      name: "Sanal KG Yükselmesi",
+      expression: "ΔKG = (w × h) / Δ",
+      description: "ΔKG: KG artışı (m), w: Yük ağırlığı (ton), h: Kaldırma yüksekliği (m), Δ: Deplasman (ton)",
+    },
+    examples: [
+      {
+        problem: "50 ton yük 10 m yüksekliğe kaldırılıyor. Δ = 5.000 ton ise KG ne kadar artar?",
+        solution: "ΔKG = (50 × 10) / 5.000 = 0.10 m. Sonuç: KG 10 cm sanal olarak yükselir.",
+      },
+    ],
+    keyPoints: [
+      "Her kaldırma öncesi stabilite kontrolü yapılır",
+      "Rüzgârda kaldırma tehlikelidir",
+      "Asılı yük serbest yüzey gibi davranır",
+    ],
+  },
+  "deck-cargo": {
+    title: "Güverte Yükleri",
+    introduction: "Güverte yükleri KG'yi yükselterek GM'yi azaltır ve rüzgâr alanını artırarak stabiliteyi olumsuz etkiler.",
+    content: `Güverte yüklerinin stabilite etkileri:
+
+1. KG YÜKSELMESİ:
+Güverte üstü yükler yüksek KG'ye sahiptir.
+KG_yeni = Σ(wᵢ × KGᵢ) / Σwᵢ
+
+2. GM AZALMASI:
+Yükselen KG, GM'yi düşürür.
+GM = KM - KG
+
+3. RÜZGÂR ALANI ARTIŞI:
+Güverte konteynerları veya kereste yığınları rüzgâr maruz alanını artırır.
+
+4. YANAL MOMENT:
+Yük dengesiz yerleştirilirse list oluşur.
+
+Güverte yükü sınırlamaları:
+- Maksimum yük ağırlığı (yapısal)
+- Stabilite gereksinimleri
+- Görüş gereksinimleri
+- Bağlama kapasitesi`,
+    bulletPoints: [
+      "Güverte yükü KG'yi yükseltir",
+      "Rüzgâr maruz alanı artar",
+      "List oluşmaması için dengeli yükleme gerekir",
+      "Bağlama güvenliği kritiktir",
+    ],
+    formula: {
+      name: "Güverte Yükü ile KG",
+      expression: "KG_new = (Δ_old × KG_old + w_deck × KG_deck) / Δ_new",
+      description: "Ağırlık-moment yöntemiyle yeni KG hesaplanır",
+    },
+    keyPoints: [
+      "Güverte yükü limitleri aşılmamalıdır",
+      "Stabilite hesabı güverte yükünü içermelidir",
+      "Bağlama planı hazırlanmalıdır",
+    ],
+  },
+  "suspended-weight": {
+    title: "Asılı Yük Etkisi",
+    introduction: "Asılı yükler ağırlık merkezini sanal olarak askı noktasına taşır ve stabiliteyi azaltır.",
+    content: `Asılı yük (suspended weight), serbestçe sallanabilen herhangi bir ağırlıktır:
+- Vinç yükü
+- Şerit halindeki yük
+- Serbest sallanan ekipman
+
+SANAL KG YÜKSELMESİ:
+Asılı yükün ağırlık merkezi, askı noktasına taşınmış kabul edilir.
+GG' = (w × d) / Δ
+d: Yükün gerçek KG'si ile askı noktası arasındaki mesafe
+
+SALINCAK ETKİSİ:
+Asılı yük gemi yattığında dışa salınır ve yatmayı artırır. Bu etki serbest yüzeye benzer.
+
+Asılı yük durumunda GM:
+GM_effective = GM - (w × l²) / (Δ × GM)
+l: Sapan uzunluğu`,
+    bulletPoints: [
+      "Asılı yük KG'yi sanal olarak yükseltir",
+      "Salıncak etkisi stabiliteyi azaltır",
+      "Serbest yüzey benzeri etki yaratır",
+      "Kaldırma operasyonlarında kritiktir",
+    ],
+    formula: {
+      name: "Asılı Yük KG Yükselmesi",
+      expression: "GG' = (w × d) / Δ",
+      description: "GG': Sanal KG yükselmesi (m), w: Asılı ağırlık (ton), d: Askı noktası mesafesi (m)",
+    },
+    examples: [
+      {
+        problem: "30 ton yük, askı noktası KG'den 8 m yukarıda. Δ = 6.000 ton ise sanal KG artışı nedir?",
+        solution: "GG' = (30 × 8) / 6.000 = 0.04 m. Sonuç: KG 4 cm sanal olarak yükselir.",
+      },
+    ],
+    keyPoints: [
+      "Asılı yük serbest yüzey gibi etki eder",
+      "Uzun sapanlar etkiyi artırır",
+      "Operasyon sırasında izleme gerekir",
+    ],
+  },
+  "ballast-operations": {
+    title: "Balast Operasyonları",
+    introduction: "Balast operasyonları geminin stabilitesini, draft ve trim değerlerini kontrol etmek için kullanılır.",
+    content: `Balast suyu yönetimi stabilite kontrolünün temel aracıdır.
+
+BALAST İŞLEVLERİ:
+1. Stabilite ayarı (GM kontrolü)
+2. Trim düzeltme
+3. List düzeltme
+4. Minimum draft sağlama
+5. Stres yönetimi
+
+STABİLİTE ETKİLERİ:
+Balast tankları genellikle geminin alt kısımlarındadır.
+- Balast alımı: KG düşer, GM artar
+- Balast atımı: KG yükselir, GM azalır
+
+SERBEST YÜZEY:
+Kısmen dolu balast tankları FSE yaratır. Kritik operasyonlarda tanklar tam dolu veya boş tutulmalıdır.
+
+Balast değişimi sırası önemlidir - stabilite hiçbir aşamada kritik değerlerin altına düşmemelidir.`,
+    bulletPoints: [
+      "Balast stabilite, draft ve trim kontrolü sağlar",
+      "Düşük tanklar KG'yi düşürür",
+      "Kısmen dolu tanklar FSE yaratır",
+      "Değişim sırası stabilitey etkiler",
+    ],
+    formula: {
+      name: "Balast ile KG Değişimi",
+      expression: "KG_new = (Δ × KG + w_ballast × KG_tank) / (Δ + w_ballast)",
+      description: "Balast alındığında yeni KG hesaplanır",
+    },
+    keyPoints: [
+      "Balast operasyonu planı hazırlanmalıdır",
+      "Serbest yüzey etkisi izlenmelidir",
+      "Ara durumlar kontrol edilmelidir",
+    ],
+  },
+  "cargo-shift": {
+    title: "Kargo Kayması",
+    introduction: "Kargo kayması, yükün geminin hareketi ile yer değiştirmesidir ve ani list veya devrilmeye yol açabilir.",
+    content: `Kargo kayması en tehlikeli stabilite kazası nedenlerinden biridir.
+
+KAYMA TÜRLERİ:
+1. Döküm yük kayması (tahıl, cevher, kömür)
+2. Paketli yük kayması (bağlama kopması)
+3. Sıvı yük dalgalanması (tank içi)
+4. Araç kayması (RoRo gemileri)
+
+LİST HESABI:
+tan(θ) = (w × d) / (Δ × GM)
+w: Kayan yük ağırlığı
+d: Kayma mesafesi
+
+ÖNLEMLERİ:
+- Uygun istif ve bağlama
+- Tahıl için shifting board kullanımı
+- Tank doluluk kontrolü
+- RoRo'da araç bağlama
+
+SOLAS ve Tahıl Kodu kayma önlemlerini zorunlu kılar.`,
+    bulletPoints: [
+      "Kargo kayması tehlikeli list yaratır",
+      "Döküm yükler özel risk taşır",
+      "Bağlama kopması devrilmeye yol açabilir",
+      "IMO yük güvenliği kuralları zorunludur",
+    ],
+    formula: {
+      name: "Kargo Kayması List Açısı",
+      expression: "tan(θ) = (w × d) / (Δ × GM)",
+      description: "θ: List açısı, w: Kayan ağırlık (ton), d: Kayma mesafesi (m)",
+    },
+    examples: [
+      {
+        problem: "500 ton kargo 2 m yana kayar. Δ = 15.000 ton, GM = 1.0 m ise list açısı nedir?",
+        solution: "tan(θ) = (500 × 2) / (15.000 × 1.0) = 0.067. θ = arctan(0.067) ≈ 3.8°. Sonuç: 4° civarında list oluşur.",
+      },
+    ],
+    keyPoints: [
+      "Yük güvenliği operasyonun ayrılmaz parçasıdır",
+      "Seyir sırasında yük kontrolü yapılmalıdır",
+      "Kötü hava öncesi bağlamalar kontrol edilmelidir",
+    ],
+  },
+  "icing-effect": {
+    title: "Buzlanma Etkisi",
+    introduction: "Buzlanma, geminin üst yapılarında buz birikmesiyle KG'yi yükselterek stabiliteyi tehlikeli şekilde azaltır.",
+    content: `Buzlanma, soğuk bölgelerde seyir eden gemiler için ciddi bir stabilite tehlikesidir.
+
+BUZ BİRİKİMİ:
+- Hava sıcaklığı -2°C altında
+- Deniz suyu sıcaklığı +8°C altında
+- Rüzgâr ve dalga spreyi
+
+BUZ AĞIRLIĞI:
+Buz, üst yapılarda, ekipmanlarda ve güvertede birikir.
+- Orta buzlanma: 30 kg/m²
+- Şiddetli buzlanma: 50+ kg/m²
+
+STABİLİTE ETKİSİ:
+Buz yüksek KG'ye sahiptir.
+ΔKG = (w_ice × KG_ice) / (Δ + w_ice)
+
+GM hızla azalır ve devrilme riski artar.
+
+Buz temizliği kritik öneme sahiptir.`,
+    bulletPoints: [
+      "Buzlanma KG'yi yükseltir",
+      "GM azalır, stabilite bozulur",
+      "Şiddetli buzlanmada devrilme riski vardır",
+      "Buz temizliği sürekli yapılmalıdır",
+    ],
+    formula: {
+      name: "Buz Ağırlığı ile KG Değişimi",
+      expression: "ΔKG = (m_ice × h_ice) / Δ",
+      description: "ΔKG: KG artışı (m), m_ice: Buz kütlesi (ton), h_ice: Buzun ortalama yüksekliği (m)",
+    },
+    examples: [
+      {
+        problem: "Üst yapılarda 50 ton buz birikir, ortalama KG = 15 m. Δ = 5.000 ton, mevcut KG = 7 m ise yeni KG nedir?",
+        solution: "KG_new = (5.000 × 7 + 50 × 15) / 5.050 = (35.000 + 750) / 5.050 = 7.08 m. Sonuç: KG 8 cm yükselir.",
+      },
+    ],
+    keyPoints: [
+      "Soğuk bölge seyirlerinde buzlanma izlenir",
+      "Buz temizliği öncelikli operasyondur",
+      "Buzlanma hızı şiddetli koşullarda çok yüksektir",
+    ],
+    warnings: [
+      "Buzlanma çok kısa sürede kritik seviyeye ulaşabilir",
+      "Rota değişikliği gerekebilir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 13 - STABİLİTE KRİTERLERİ VE ULUSLARARASI KURALLAR
+  // =====================================================
+  "imo-stability-criteria": {
+    title: "IMO Stabilite Kriterleri",
+    introduction: "IMO stabilite kriterleri, gemilerin minimum güvenlik gereksinimlerini tanımlar ve tüm ticari gemiler için zorunludur.",
+    content: `IMO (Uluslararası Denizcilik Örgütü) stabilite kriterleri MSC.267(85) Intact Stability Code ile belirlenir.
+
+TEMEL KRİTERLER:
+
+1. ALAN KRİTERLERİ:
+- 0° - 30° arası alan ≥ 0.055 m·rad
+- 0° - 40° arası alan ≥ 0.090 m·rad
+- 30° - 40° arası alan ≥ 0.030 m·rad
+
+2. GZ KRİTERLERİ:
+- Maksimum GZ ≥ 0.20 m
+- Maksimum GZ en az 25° açıda olmalı
+- Tercihen 30° ve üzerinde
+
+3. GM KRİTERİ:
+- Başlangıç GM ≥ 0.15 m
+- Bazı gemi tipleri için daha yüksek değerler
+
+Bu kriterler hasarsız (intact) stabilite içindir. Hasarlı stabilite kriterleri ayrıca tanımlanır.`,
+    bulletPoints: [
+      "Alan kriterleri dinamik stabiliteyi kontrol eder",
+      "GZ kriterleri yeterli doğrultma kolunu garanti eder",
+      "GM kriteri ilk stabiliteyi sağlar",
+      "Tüm kriterler aynı anda sağlanmalıdır",
+    ],
+    formula: {
+      name: "IMO Alan Kriterleri",
+      expression: "A₁ ≥ 0.055; A₂ ≥ 0.090; A₃ ≥ 0.030 (m·rad)",
+      description: "A₁: 0-30° alan, A₂: 0-40° alan, A₃: 30-40° alan",
+    },
+    keyPoints: [
+      "Kriterler tüm yükleme durumları için sağlanmalıdır",
+      "Stabilite kitapçığı onaylı durumları listeler",
+      "Kriter dışı çalışma yasaktır",
+    ],
+  },
+  "intact-stability-code": {
+    title: "Intact Stability Code",
+    introduction: "Intact Stability Code (IS Code), hasarsız gemiler için kapsamlı stabilite gereksinimlerini ve hesap yöntemlerini içerir.",
+    content: `Intact Stability Code (2008 IS Code), MSC.267(85) kararıyla kabul edilmiştir.
+
+İÇERİK:
+Bölüm 1: Genel hükümler
+Bölüm 2: Stabilite kriterleri
+Bölüm 3: Özel gemi tipleri
+Bölüm 4: Operasyonel önlemler
+
+GEMİ TİPLERİ:
+- Yük gemileri (≥ 24 m)
+- Yolcu gemileri
+- Özel amaçlı gemiler
+- Tankerler
+- Konteyner gemileri
+
+ZORUNLU VE TAVSİYE HÜKÜMLER:
+Kod A bölümü zorunlu, B bölümü tavsiye niteliğindedir.
+
+Gemi tasarımında ve operasyonda IS Code gereksinimleri esas alınır.`,
+    bulletPoints: [
+      "IS Code 2008 tüm ticari gemileri kapsar",
+      "Zorunlu (A) ve tavsiye (B) hükümleri içerir",
+      "Gemi tiplerine göre özel gereksinimler tanımlar",
+      "Tasarım ve operasyon için referanstır",
+    ],
+    keyPoints: [
+      "IS Code stabilite kitapçığının temelidir",
+      "Tüm hesaplar bu kod referans alınarak yapılır",
+      "Bayrak devletleri uyumu denetler",
+    ],
+  },
+  "wind-criteria": {
+    title: "Rüzgâr Kriterleri",
+    introduction: "Rüzgâr kriterleri (Weather Criterion), geminin şiddetli rüzgâr ve dalga koşullarında devrilmemesini sağlar.",
+    content: `Weather Criterion, geminin ani rüzgâr (gust) ve dalga kombinasyonunda hayatta kalmasını test eder.
+
+SENARYO:
+1. Kararlı rüzgâr gemiyi θ₁ açısına yatırır
+2. Dalga etkisiyle gemi rüzgâr üstüne θ₂ açısına döner
+3. Ani rüzgâr (gust) gemiyi tekrar rüzgâr altına iter
+
+KRİTER:
+b ≥ a (GZ eğrisinde alanlar)
+- a: Rüzgâr momenti ile GZ eğrisi arasındaki alan
+- b: Doğrultma tarafındaki alan
+
+RÜZGÂR BASINCI:
+P = 504 N/m² (standart değer)
+Düzeltme faktörleri uygulanır.
+
+Bu kriter özellikle yüksek üst yapılı gemilerde kritiktir.`,
+    bulletPoints: [
+      "Weather Criterion en kötü senaryo testidir",
+      "Ani rüzgâr ve dalga kombinasyonu değerlendirilir",
+      "GZ eğrisinde alan karşılaştırması yapılır",
+      "Stabilite kitapçığında grafiksel gösterilir",
+    ],
+    formula: {
+      name: "Weather Criterion",
+      expression: "b ≥ a; P = 504 N/m² (standart)",
+      description: "a: Rüzgâr yatırma alanı, b: Doğrultma rezerv alanı",
+    },
+    keyPoints: [
+      "Weather Criterion tüm gemiler için zorunludur",
+      "Yüksek freeboard bu kriteri zorlaştırır",
+      "Tasarımda dikkate alınmalıdır",
+    ],
+  },
+  "wave-criteria": {
+    title: "Dalga Kriterleri",
+    introduction: "Dalga kriterleri, geminin dalga etkisinde parametrik yalpalama ve aşırı salınım risklerini değerlendirir.",
+    content: `Dalga koşullarında stabilite değerlendirmesi:
+
+PARAMETRİK YALPALAMA:
+Baş veya kıç dalgalarda su hattı genişliği periyodik olarak değişir. Bu durum GM'yi periyodik olarak değiştirir ve rezonans koşullarında tehlikeli salınımlara yol açar.
+
+Konteyner gemileri ve RoPax'lar özellikle hassastır.
+
+SURF-RIDING VE BROACHING:
+Kıç dalgalarda gemi dalga ile birlikte sürüklenebilir ve kontrolsüz dönüşe girebilir.
+
+IMO TAVSİYELERİ:
+- MSC.1/Circ.1228: Parametrik yalpalama
+- MSC.1/Circ.707: Tehlikeli durumlardan kaçınma
+
+Operasyonel önlemler: rota ve hız değişikliği.`,
+    bulletPoints: [
+      "Parametrik yalpalama GM değişiminden kaynaklanır",
+      "Rezonans koşullarında salınım tehlikeli boyutlara ulaşır",
+      "Konteyner gemileri hassastır",
+      "Rota ve hız ayarlaması ile önlenir",
+    ],
+    keyPoints: [
+      "Dalga periyodu ile yalpa periyodu ilişkisi kritiktir",
+      "Operasyonel farkındalık gereklidir",
+      "Simülasyon araçları risk değerlendirmesinde kullanılır",
+    ],
+    warnings: [
+      "Parametrik yalpalama ani ve şiddetli olabilir",
+      "Kötü hava rotası planlaması hayati önemdedir",
+    ],
+  },
+  "min-gm-requirements": {
+    title: "Minimum GM Şartları",
+    introduction: "Minimum GM değerleri gemi tipi ve yükleme durumuna göre belirlenir ve operasyonda aşılamaz alt sınırlardır.",
+    content: `Minimum GM gereksinimleri gemi tipine göre değişir:
+
+GENEL YÜKGEMISI:
+- Minimum GM ≥ 0.15 m
+
+YOLCU GEMİLERİ:
+- Döner yolcu gemileri: GM ≥ 0.15 m
+- Ek gereksinimler yolcu sayısına bağlı
+
+TANKERLER:
+- Yüklü durumda: Stabilite kitapçığına göre
+- Ballast durumda: Genellikle daha yüksek GM
+
+KONTEYNER GEMİLERİ:
+- Yükleme durumuna özel hesap
+- Parametrik yalpalama riski dikkate alınır
+
+Stabilite kitapçığı her yükleme durumu için minimum GM değerini belirtir.`,
+    bulletPoints: [
+      "Genel minimum GM ≥ 0.15 m",
+      "Gemi tipine göre daha yüksek değerler gerekebilir",
+      "Stabilite kitapçığı referans kaynaktır",
+      "Operasyonda minimum GM aşılmamalıdır",
+    ],
+    keyPoints: [
+      "Minimum GM sınırları mutlaktır",
+      "Yükleme planı GM kontrolü içermelidir",
+      "GM azaltıcı operasyonlar öncesi hesap yapılmalıdır",
+    ],
+    warnings: [
+      "Minimum GM altında seyir tehlikelidir",
+      "Yakıt tüketimi GM'yi etkileyebilir",
+    ],
+  },
+  "operational-limits": {
+    title: "Operasyonel Limitler",
+    introduction: "Operasyonel limitler, geminin güvenli çalışma koşullarını tanımlar ve aşılmaları yasaktır.",
+    content: `Operasyonel limitler stabilite kitapçığında tanımlanır:
+
+YÜK LİMİTLERİ:
+- Maksimum deadweight
+- Ambar ve güverte yük kapasiteleri
+- Yük dağılım sınırları
+
+STABİLİTE LİMİTLERİ:
+- Minimum GM değerleri
+- Maksimum KG değerleri (KG limiti eğrisi)
+- Trim sınırları
+
+ÇEVRESEL LİMİTLER:
+- Rüzgâr hızı sınırları (bazı operasyonlar için)
+- Dalga yüksekliği sınırları
+- Sıcaklık limitleri (buzlanma)
+
+LİMİT AŞIMI:
+Stabilite limitlerinin aşılması:
+- Sigorta geçerliliğini etkiler
+- PSC denetimlerinde tutulmaya yol açar
+- Kazalarda sorumluluk doğurur`,
+    bulletPoints: [
+      "Stabilite kitapçığı tüm limitleri tanımlar",
+      "KG limiti eğrisi sık kullanılır",
+      "Limit aşımı yasal sonuçlar doğurur",
+      "Her yükleme limitlere göre kontrol edilir",
+    ],
+    keyPoints: [
+      "Limitler güvenli operasyonun sınırlarıdır",
+      "Kaptan limitlerden sorumludur",
+      "Limit yaklaşımlarında dikkat gerekir",
+    ],
+  },
+  // =====================================================
+  // BÖLÜM 14 - STABİLİTE KAZALARI VE OPERASYONEL SONUÇLAR
+  // =====================================================
+  "loading-errors": {
+    title: "Yükleme Hataları",
+    introduction: "Yükleme hataları stabilite kazalarının en yaygın nedenidir ve dikkatli planlama ile önlenebilir.",
+    content: `Yaygın yükleme hataları:
+
+1. YANLIŞ AĞIRLIK BİLGİSİ:
+- Beyan edilen ve gerçek ağırlık farkı
+- Konteyner ağırlık sapmaları
+- Döküm yük ölçüm hataları
+
+2. YANLIŞ YERLEŞİM:
+- Ağır yüklerin yüksek yerleşimi
+- Asimetrik yük dağılımı
+- Boş alan yanlış değerlendirmesi
+
+3. HESAP HATALARI:
+- Yanlış KG hesabı
+- FSE'nin ihmal edilmesi
+- Trim hesap hatası
+
+4. PLANLAMA EKSİKLİĞİ:
+- Ara durumların kontrolsüzlüğü
+- Yakıt tüketimi etkisi
+- Balast düzenlemesi eksikliği
+
+Bu hatalar stabilite kitapçığının dikkatli kullanımı ile önlenir.`,
+    bulletPoints: [
+      "Yanlış ağırlık bilgisi yaygın sorundur",
+      "Yüksek yerleşim GM'yi düşürür",
+      "Hesap hataları kritik sonuçlar doğurur",
+      "Dikkatli planlama kazaları önler",
+    ],
+    keyPoints: [
+      "Yük bilgileri doğrulanmalıdır",
+      "Hesaplar iki kez kontrol edilmelidir",
+      "Ara durumlar gözden geçirilmelidir",
+    ],
+    warnings: [
+      "Konteyner ağırlıkları sıkça yanlış beyan edilir",
+      "IMO VGM (Verified Gross Mass) zorunluluğu uygulanmaktadır",
+    ],
+  },
+  "fse-accidents": {
+    title: "Serbest Yüzey Kaynaklı Kazalar",
+    introduction: "Serbest yüzey etkisinin ihmal edilmesi veya yanlış hesaplanması ciddi stabilite kazalarına yol açmıştır.",
+    content: `Serbest yüzey kaynaklı kazaların ortak özellikleri:
+
+1. ÇOK SAYIDA KISMEN DOLU TANK:
+Birden fazla tankın kısmen dolu olması toplam FSE'yi kritik seviyeye çıkarır.
+
+2. FSE HESABININ İHMALİ:
+GM hesabında serbest yüzey düzeltmesinin yapılmaması.
+
+3. ANİ GM KAYBI:
+Yük veya balast operasyonu sırasında ani FSE artışı.
+
+ÖRNEK KAZALAR:
+- Bulk carrier alabora (çok sayıda kısmen dolu ambar)
+- Tanker devrilmesi (bölmeler arası sıvı transferi)
+- Balıkçı gemisi batması (haznelerin açık bırakılması)
+
+Önlem: Tankları tam dolu veya boş tutmak, FSE'yi sürekli izlemek.`,
+    bulletPoints: [
+      "Çok sayıda kısmen dolu tank tehlikelidir",
+      "FSE hesabı ihmal edilmemelidir",
+      "Ani GM kaybı devrilmeye yol açar",
+      "Tank durumu sürekli izlenmelidir",
+    ],
+    keyPoints: [
+      "FSE her stabilite hesabına dahil edilmelidir",
+      "Kritik operasyonlarda tank sayısı azaltılmalıdır",
+      "Operasyon öncesi hesap yapılmalıdır",
+    ],
+  },
+  "wrong-gm-interpretation": {
+    title: "Yanlış GM Yorumları",
+    introduction: "GM değerinin yanlış yorumlanması operasyonel hatalara ve kazalara neden olabilir.",
+    content: `GM yorumlama hataları:
+
+1. ÇOK YÜKSEK GM İYİDİR YANILGISI:
+Çok yüksek GM sert salınıma (stiff ship) yol açar:
+- Kısa yalpa periyodu
+- Yük hasarı riski
+- Personel rahatsızlığı
+- Yapısal stres
+
+2. DÜZ OTURMA HER ZAMAN İYİDİR YANILGISI:
+Bazı gemilerde optimum trim değerleri yakıt verimliliğini artırır.
+
+3. NEGATİF GM FARKINDA OLUNMAMASI:
+Loll açısı (unstabil denge) yanlış yorumlanabilir:
+- Rüzgâr etkisi sanılır
+- Dengeleme girişimi durumu kötüleştirir
+
+4. STATİK VS DİNAMİK KARIŞIKLIĞI:
+Yeterli GM, yeterli dinamik stabilite anlamına gelmez.`,
+    bulletPoints: [
+      "Çok yüksek GM de sorunludur",
+      "Negatif GM loll açısı yaratır",
+      "Statik ve dinamik stabilite farklıdır",
+      "Optimum GM değeri aranmalıdır",
+    ],
+    keyPoints: [
+      "GM dengeli bir değerde tutulmalıdır",
+      "Loll açısı tehlikeli bir uyarıdır",
+      "Alan kriterleri de kontrol edilmelidir",
+    ],
+    warnings: [
+      "Loll durumunda düşük bordaya balast alınmamalıdır",
+      "Önce en düşük tanklara su alınmalıdır",
+    ],
+  },
+  "trim-operation-errors": {
+    title: "Trim Kaynaklı Operasyon Hataları",
+    introduction: "Yanlış trim değerleri pervane verimliliğini, manevrabiliteyi ve güvenliği olumsuz etkiler.",
+    content: `Trim kaynaklı operasyon hataları:
+
+1. AŞIRI BAŞ TRİMİ:
+- Güverte ıslaklığı
+- Azalan görüş
+- Baş dalgalanma riski
+- Pervane verimliliği kaybı
+
+2. AŞIRI KIÇ TRİMİ:
+- Dümen etkisi azalması
+- Prova jeti verimsizliği
+- Limanda manevra zorluğu
+- Karina sürtünme artışı
+
+3. TRİM HESAP HATALARI:
+- LCF'nin yanlış kullanımı
+- MCT değerinin yanlış alınması
+- Ara durumların ihmal edilmesi
+
+4. YAKIT TÜKETİMİ ETKİSİ:
+Seyir sırasında yakıt tüketimi trimi değiştirir.`,
+    bulletPoints: [
+      "Aşırı baş trimi güverte ıslaklığına yol açar",
+      "Aşırı kıç trimi manevrabiliteyi azaltır",
+      "Optimum trim yakıt tasarrufu sağlar",
+      "Seyir sırasında trim değişir",
+    ],
+    keyPoints: [
+      "Trim değerleri sürekli izlenmelidir",
+      "Optimum trim gemiye özeldir",
+      "Yakıt transferi ile trim düzeltilebilir",
+    ],
+  },
+  "psc-findings": {
+    title: "Stabiliteyle İlişkili PSC Bulguları",
+    introduction: "Port State Control denetimleri stabilite eksikliklerini tespit eder ve gemi tutulmasına yol açabilir.",
+    content: `PSC (Port State Control) stabilite denetimi odaklanır:
+
+BELGE KONTROLLERI:
+- Stabilite kitapçığının güncelliği
+- Yükleme bilgisayarı onayı
+- Eğitim kayıtları
+- Stabilite hesapları
+
+FİZİKSEL KONTROLLER:
+- Draft okuma ve hesap karşılaştırması
+- Tank durumu ve hesaptaki uyum
+- Su geçirmez kapıların durumu
+- Bağlama ekipmanları
+
+YAYGIN BULGULAR:
+- Stabilite hesabı güncel değil
+- Draft hesap uyumsuzluğu
+- Su geçirmez kapılar açık
+- Yük bağlama eksik
+- FSE hesaba dahil değil
+
+Tutulma: Kritik bulgularda gemi kalkmaya izin verilmez.`,
+    bulletPoints: [
+      "Stabilite kitapçığı güncel olmalıdır",
+      "Hesaplar gerçek durumla uyumlu olmalıdır",
+      "Su geçirmez kapılar çalışır durumda olmalıdır",
+      "Yük bağlama yeterli olmalıdır",
+    ],
+    keyPoints: [
+      "PSC denetimi her limanda olabilir",
+      "Kritik bulgu gemi tutulmasına yol açar",
+      "Düzenli iç denetim önerilir",
+    ],
+    warnings: [
+      "Tutulma mali ve operasyonel kayıp demektir",
+      "ISM Code gereği önleyici prosedürler uygulanmalıdır",
+    ],
+  },
 };
 
 export default function StabilityTopicsPage() {
