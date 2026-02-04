@@ -27,6 +27,14 @@ import {
   BookMarked,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+// Stabilite görselleri
+import metacenterDiagram from "@/assets/stability/metacenter-diagram.png";
+import gzCurveDiagram from "@/assets/stability/gz-curve-diagram.png";
+import freeSurfaceEffect from "@/assets/stability/free-surface-effect.png";
+import rightingMomentDiagram from "@/assets/stability/righting-moment-diagram.png";
+import trimDiagram from "@/assets/stability/trim-diagram.png";
+import damageStabilityDiagram from "@/assets/stability/damage-stability-diagram.png";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 // =====================================
@@ -261,6 +269,11 @@ interface TopicContent {
   };
   keyPoints?: string[];
   warnings?: string[];
+  images?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  }[];
 }
 
 const topicContents: Record<string, TopicContent> = {
@@ -409,9 +422,14 @@ Negatif GM = Unstabil gemi, tehlike!`,
     introduction: "Metasantr, gemi küçük açılarla yattığında kaldırma merkezinin izlediği eğrinin dikey eksenle kesiştiği noktadır ve ilk stabilitenin geometrik temelidir.",
     content: `Metasantr (M), gemi çok küçük bir yatma açısına geçtiğinde kaldırma merkezinin (B) yeni konumundan çizilen düşey doğrultunun, gemi merkez hattı ile kesiştiği noktadır. Bu nokta, küçük açılar için doğrultma momentinin oluşup oluşmadığını belirler.
 
-Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesaplanan BM mesafesi ile belirlenir. BM, B ile M arasındaki düşey mesafedir ve geminin su hattı şekline hassastır.
-
-Görsel: Enine kesitte gemi, ilk konumda B noktası ve küçük yatma açısında B noktasının kayışı; bu iki B noktasından çizilen düşey doğruların kesişimi M olarak işaretlenir.`,
+Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesaplanan BM mesafesi ile belirlenir. BM, B ile M arasındaki düşey mesafedir ve geminin su hattı şekline hassastır.`,
+    images: [
+      {
+        src: metacenterDiagram,
+        alt: "Metasantr ve GM diyagramı",
+        caption: "Şekil: Gemi kesitinde K, B, G ve M noktalarının gösterimi ve GM mesafesi",
+      },
+    ],
     bulletPoints: [
       "M noktası küçük yatma açılarında sabit kabul edilir",
       "BM mesafesi su hattı geometrisine bağlıdır",
@@ -963,6 +981,13 @@ Klasik yöntem şu adımları içerir:
 4) Tüm açılar için tekrar edilerek eğri oluşturulur.
 
 Modern uygulamalarda bu süreç stabilite yazılımlarıyla otomatik yapılır; ancak sonuçların stabilite kitapçığı ve hidrostatik tablolarla tutarlı olması şarttır.`,
+    images: [
+      {
+        src: gzCurveDiagram,
+        alt: "GZ eğrisi diyagramı",
+        caption: "Şekil: Tipik GZ eğrisi - yatma açısına göre doğrultma kolu değişimi",
+      },
+    ],
     bulletPoints: [
       "GZ eğrisi her yükleme durumu için ayrı hesaplanır",
       "Hidrostatik tablolar ve stabilite yazılımı kullanılır",
@@ -1154,6 +1179,13 @@ RM = Δ × GZ
 Bu moment pozitif olduğunda gemiyi dikleştirici etki yapar. Negatif olduğunda ise yatmayı artırır.
 
 Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri belirli açılarda minimum doğrultma kapasitesi gerektirir.`,
+    images: [
+      {
+        src: rightingMomentDiagram,
+        alt: "Doğrultma momenti diyagramı",
+        caption: "Şekil: Yatmış gemide G, B noktaları ve doğrultma kolu GZ gösterimi",
+      },
+    ],
     bulletPoints: [
       "RM = Δ × GZ formülü ile hesaplanır",
       "Pozitif RM gemiyi dikleştirir",
@@ -1361,6 +1393,13 @@ Serbest yüzey etkisi:
 - Tank bölmeleri (longitudinal veya transverse) etkiyi azaltır
 
 Tüm kısmen dolu tanklar serbest yüzey etkisi yaratır: yakıt, balast, tatlı su, cargo oil.`,
+    images: [
+      {
+        src: freeSurfaceEffect,
+        alt: "Serbest yüzey etkisi diyagramı",
+        caption: "Şekil: Kısmen dolu tankta sıvı kayması ve sanal KG yükselmesi",
+      },
+    ],
     bulletPoints: [
       "Kısmen dolu tank = Serbest yüzey etkisi",
       "Sıvı hareketi KG'yi sanal olarak yükseltir",
@@ -1640,6 +1679,13 @@ Trim negatif ise: Baş trimi (bow trim)
 Trim = 0 ise: Düz oturma (even keel)
 
 Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığını etkiler. Ticari operasyonlarda optimum trim değerleri belirlenir.`,
+    images: [
+      {
+        src: trimDiagram,
+        alt: "Trim diyagramı",
+        caption: "Şekil: Gemi yan görünüşü - baş ve kıç draftları ve trim gösterimi",
+      },
+    ],
     bulletPoints: [
       "Trim = T_kıç - T_baş",
       "Pozitif trim = Kıç trimi",
@@ -2146,6 +2192,13 @@ Permeabilite (μ) faktörü, bölmenin ne kadarının su ile dolabileceğini gö
 - Boş tanklar: μ = 0.95
 
 Hasarlı hacim = Gerçek hacim × μ`,
+    images: [
+      {
+        src: damageStabilityDiagram,
+        alt: "Hasar stabilitesi diyagramı",
+        caption: "Şekil: Hasarlı bölme, su girişi ve geminin list durumu gösterimi",
+      },
+    ],
     bulletPoints: [
       "Rezerv yüzerlik = Su hattı üstü suya dayanıklı hacim",
       "Permeabilite (μ) bölmeye göre değişir",
@@ -3219,6 +3272,26 @@ export default function StabilityTopicsPage() {
                     {currentContent.introduction}
                   </p>
                 </div>
+
+                {/* Images/Diagrams */}
+                {currentContent.images && currentContent.images.length > 0 && (
+                  <div className="space-y-4">
+                    {currentContent.images.map((image, index) => (
+                      <div key={index} className="rounded-xl overflow-hidden border border-border/40 bg-muted/30">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-48 object-contain bg-muted/30"
+                        />
+                        {image.caption && (
+                          <p className="text-xs text-muted-foreground text-center py-2 px-4">
+                            {image.caption}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
