@@ -191,7 +191,7 @@ export default function MachineTopicQuizPage() {
               </Button>
             </div>
 
-            <Quiz questions={questions} moduleId={`machine-${topicSlug}`} examName={`${topic.title} Quiz`} />
+            <Quiz questions={questions} />
           </CardContent>
         </Card>
       </div>
