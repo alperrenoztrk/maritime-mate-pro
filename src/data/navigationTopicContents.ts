@@ -11136,5 +11136,37 @@ Kesişim noktası = Running Fix (10:30)
       "İhlal edilen kurallar netleşir.",
       "Önleyici tedbirler geliştirilir."
     ]
-  }
+  },
+  "Meteoroloji Bağlantılı Seyir": {
+    title: "Meteoroloji Bağlantılı Seyir",
+    introduction:
+      "Meteoroloji bağlantılı seyir, rota planlamasında yalnızca mesafe ve zamanın değil; rüzgâr, dalga, akıntı, görüş ve barometrik değişimlerin birlikte değerlendirilmesini ifade eder. Amaç, emniyeti artırırken gemi ve yük üzerindeki zorlamayı azaltmaktır.",
+    sections: [
+      {
+        title: "Planlama Aşamasında Meteorolojik Entegrasyon",
+        content:
+          "Sefer öncesinde pilot chart, grib verileri, sinoptik haritalar ve rota üzerindeki liman tahminleri birlikte incelenmelidir. Tek bir kaynağa bağlı kalmak yerine farklı kaynakların karşılaştırılması, yanlış tahmin riskini azaltır. Özellikle açık deniz geçişlerinde 24–72 saatlik trendin izlenmesi kritik önem taşır.",
+        bulletPoints: [
+          "Rota boyunca beklenen rüzgâr yönü ve şiddeti belirlenir",
+          "Dalgaların periyot, yön ve yükseklik bilgisi değerlendirilir",
+          "Basınç düşüşü ve cephe geçişi alarm kriteri olarak izlenir"
+        ]
+      },
+      {
+        title: "Seyir Sırasında Karar Noktaları",
+        content:
+          "Meteorolojik şartlar değiştikçe rota, hız ve vardiya organizasyonu dinamik biçimde güncellenmelidir. Baş omuzluktan gelen sert dalga koşullarında hız azaltma, rotayı birkaç derece kaydırma veya hava penceresi bekleme gibi seçenekler karşılaştırılır. Bu yaklaşım, slam ve yeşil su riskini düşürür.",
+        bulletPoints: [
+          "ETA baskısı emniyet kriterlerinin önüne geçmemelidir",
+          "Kritik eşikler aşıldığında kaptan onayıyla yeni seyir planı uygulanır",
+          "Köprüüstü-makine iletişimi hız/mani̇vra kararlarıyla senkron yürütülür"
+        ]
+      }
+    ],
+    keyPoints: [
+      "Meteorolojik seyirde temel hedef emniyetli ve sürdürülebilir ilerlemedir.",
+      "Rota optimizasyonu, yakıt ekonomisi kadar gemi zorlanmasını da dikkate almalıdır.",
+      "Tahminler güncellenmedikçe plan geçerliliğini hızla kaybeder."
+    ]
+  },
 };

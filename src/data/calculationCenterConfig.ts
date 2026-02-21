@@ -286,6 +286,14 @@ export const calculationCategories: CategoryConfig[] = [
     ctaLabel: "Meteoroloji menüsü",
     sections: [
       {
+        id: "calculations",
+        label: "Konu Anlatımı",
+        description: "Deniz meteorolojisi ve fırtına seyri konu içerikleri",
+        status: "live",
+        badge: "Yeni",
+        href: "/meteorology/topics",
+      },
+      {
         id: "formulas",
         label: "Formüller",
         description: "Rüzgâr, dalga ve atmosfer denklemleri",
