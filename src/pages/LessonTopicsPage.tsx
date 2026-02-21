@@ -284,14 +284,69 @@ const topicsData: Record<string, TopicContent> = {
     title: "Meteoroloji Konu Anlatımı",
     description: "Deniz meteorolojisi, hava tahminleri ve fırtına kaçınma stratejileri.",
     keyTopics: [
-      { title: "Atmosfer Sistemleri", description: "Basınç sistemleri ve hava kütleleri" },
-      { title: "Rüzgar ve Dalga", description: "Beaufort skalası ve dalga tahminleri" },
-      { title: "Tropikal Siklonlar", description: "Kasırga ve tayfun navigasyonu" },
-      { title: "Sis ve Görüş", description: "Kısıtlı görüş koşulları ve tedbirler" },
-      { title: "Okyanus Akıntıları", description: "Akıntı sistemleri ve rota etkisi" },
-      { title: "Hava Haritaları", description: "Synoptik harita okuma ve yorumlama" }
+      {
+        title: "Atmosfer Sistemleri",
+        description: "Basınç sistemleri ve hava kütleleri",
+        subTopics: [
+          { title: "Basınç merkezleri (alçak/yüksek)" },
+          { title: "İzobar yapısı ve gradyan" },
+          { title: "Hava kütleleri ve kaynak bölgeler" },
+          { title: "Cephe tipleri ve geçiş etkileri" }
+        ]
+      },
+      {
+        title: "Rüzgar ve Dalga",
+        description: "Beaufort skalası ve dalga tahminleri",
+        subTopics: [
+          { title: "Gerçek rüzgar ve görünen rüzgar" },
+          { title: "Beaufort skalası uygulamaları" },
+          { title: "Dalga yüksekliği ve periyot" },
+          { title: "Swell ve wind sea ayrımı" }
+        ]
+      },
+      {
+        title: "Tropikal Siklonlar",
+        description: "Kasırga ve tayfun navigasyonu",
+        subTopics: [
+          { title: "Siklon yapısı ve gelişim evreleri" },
+          { title: "Tehlikeli/seyir yapılabilir yarım daire" },
+          { title: "Barometre ve rüzgarla konum tayini" },
+          { title: "Kaçınma manevrası prensipleri" }
+        ]
+      },
+      {
+        title: "Sis ve Görüş",
+        description: "Kısıtlı görüş koşulları ve tedbirler",
+        subTopics: [
+          { title: "Sis oluşum türleri" },
+          { title: "Görüş sınıflandırması" },
+          { title: "Kısıtlı görüşte seyir kuralları" },
+          { title: "Radar ve ses işaretleri" }
+        ]
+      },
+      {
+        title: "Okyanus Akıntıları",
+        description: "Akıntı sistemleri ve rota etkisi",
+        subTopics: [
+          { title: "Küresel akıntı sistemleri" },
+          { title: "Set ve drift değerlendirmesi" },
+          { title: "Akıntının ETA ve yakıta etkisi" },
+          { title: "Mevsimsel akıntı değişimleri" }
+        ]
+      },
+      {
+        title: "Hava Haritaları",
+        description: "Synoptik harita okuma ve yorumlama",
+        subTopics: [
+          { title: "Synoptik harita sembolleri" },
+          { title: "Cephe analizi ve hareket tahmini" },
+          { title: "Rüzgar/deniz tahmini çıkarımı" },
+          { title: "Rota üzerinde risk işaretleme" }
+        ]
+      }
     ],
     resources: [
+      { title: "Meteoroloji Konu Anlatımı", href: "/meteorology/topics" },
       { title: "Meteoroloji Formülleri", href: "/meteorology/formulas" },
       { title: "Meteoroloji Kuralları", href: "/meteorology/rules" }
     ]
