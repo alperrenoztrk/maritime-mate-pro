@@ -1,22 +1,22 @@
 import React, { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { Capacitor } from "@capacitor/core";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
-import { ChevronRight, ExternalLink, RefreshCw } from "lucide-react";
+import { ChevronRight, ExternalLink, RefreshCw, Loader2 } from "lucide-react";
 
 function formatDateTR(iso?: string): string {
   if (!iso) return "";
