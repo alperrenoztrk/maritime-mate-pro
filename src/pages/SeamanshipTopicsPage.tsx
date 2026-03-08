@@ -1249,6 +1249,7 @@ Ana dümen makinesi arızasında yardımcı sisteme geçiş süresi mümkün ola
   },
   "turning-circle": {
     title: "Dönme Dairesi ve Manevra Karakteristikleri",
+    image: "/diagrams/seamanship/donme-dairesi.svg",
     introduction: "Dönme dairesi (turning circle), geminin tam dümen açısıyla 360° dönüş yaptığında çizdiği yoldur ve geminin manevra kabiliyetini tanımlar.",
     content: `DÖNME DAİRESİ PARAMETRELERİ:
 
