@@ -1343,6 +1343,7 @@ IMO STANDARDI: Head reach ≤ 15 gemi boyu (MSC.137(76))`,
   },
   "squat-effect": {
     title: "Squat Etkisi ve Sığ Su Etkileri",
+    image: "/diagrams/seamanship/squat-etkisi.svg",
     introduction: "Squat, geminin sığ suda veya dar kanalda hareket ederken su altı basınç değişimlerinin etkisiyle batmasıdır (draft artışı).",
     content: `SQUAT FİZİĞİ:
 
