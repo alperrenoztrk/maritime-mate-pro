@@ -304,14 +304,17 @@ const Index = () => {
 
       {/* CSS Animations */}
       <style>{`
-        @keyframes wave-drift {
-          0% { background-position: 0 0; }
-          100% { background-position: -1440px 0; }
-        }
-        @keyframes wave-swell {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(6px); }
-        }
+        @keyframes ocean-drift-1 { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes ocean-drift-2 { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes ocean-drift-3 { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes ocean-drift-4 { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes ocean-drift-5 { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes ocean-swell-1 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+        @keyframes ocean-swell-2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+        @keyframes ocean-swell-3 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+        @keyframes ocean-swell-4 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        @keyframes ocean-swell-5 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+        @keyframes ocean-foam { 0%,100% { opacity: 0.15; } 50% { opacity: 0.25; } }
         @keyframes beacon-rotate {
           0%, 100% { transform: rotate(-30deg); opacity: 0.9; }
           50% { transform: rotate(60deg); opacity: 0.6; }
