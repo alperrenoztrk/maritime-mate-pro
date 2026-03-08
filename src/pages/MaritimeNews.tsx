@@ -16,7 +16,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
-import { ChevronRight, ExternalLink, RefreshCw, Loader2 } from "lucide-react";
+import { ChevronRight, ExternalLink, Loader2 } from "lucide-react";
 
 function formatDateTR(iso?: string): string {
   if (!iso) return "";
