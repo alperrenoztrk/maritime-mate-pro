@@ -710,6 +710,7 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
   "anchor-types": {
     title: "Demir Tipleri ve Özellikleri",
     introduction: "Gemilerde kullanılan demirler, yapılarına ve tutma kuvvetlerine göre farklı tiplerde üretilir; seçim deniz tabanı yapısına ve gemi tonajına göre yapılır.",
+    image: "/diagrams/seamanship/demir-tipleri.svg",
     content: `BAŞLICA DEMİR TİPLERİ:
 
 STOCKLESS ANCHOR (Patentli Demir / Hall Demiri): Ticaret gemilerinde en yaygın kullanılan tiptir. Kolları (flukes) ankasa (crown) etrafında dönebilir. Hawse pipe içinde depolanabilir. Kendi ağırlığının 3-5 katı tutma kuvveti üretir.
