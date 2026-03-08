@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
 import { BookOpen, ChevronDown, ChevronRight, ArrowLeft, GraduationCap, Ship, Wrench } from "lucide-react";
+
 export default function LessonsPage() {
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
@@ -10,8 +11,14 @@ export default function LessonsPage() {
     ["--transition-duration" as string]: "16.67ms",
   };
   const [expandedGroup, setExpandedGroup] = useState<"deck" | "machine" | null>(null);
-  const deckCategories = calculationCategories.filter((category) => category.id !== "machine");
-  const machineCategory = calculationCategories.find((category) => category.id === "machine");
+
+  const deckCategories = calculationCategories.filter(
+    (category) => !category.group || category.group === "deck"
+  ).filter((category) => !(category.id as string).startsWith("machine-"));
+
+  const machineCategories = calculationCategories.filter(
+    (category) => category.group === "machine" || (category.id as string).startsWith("machine-")
+  );
 
   const groups = [
     {
@@ -28,7 +35,7 @@ export default function LessonsPage() {
       subtitle: "Gemi makineleri ve makina sistemleri",
       icon: Wrench,
       accent: "from-slate-600 via-zinc-600 to-slate-800",
-      categories: machineCategory ? [machineCategory] : [],
+      categories: machineCategories,
     },
   ];
 
@@ -92,6 +99,10 @@ export default function LessonsPage() {
                   <div className="flex flex-col gap-6">
                     {group.categories.map((category) => {
                       const CategoryIcon = category.icon;
+                      // Extract slug for machine topics
+                      const isMachineTopic = (category.id as string).startsWith("machine-");
+                      const machineSlug = isMachineTopic ? (category.id as string).replace("machine-", "") : null;
+
                       return (
                         <div key={category.id} className="space-y-3">
                           <div className="flex items-center gap-3">
@@ -107,21 +118,19 @@ export default function LessonsPage() {
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6">
-                            {/* Konu Anlatımı Butonu - sadece güverte için */}
-                            {category.id !== "machine" && (
-                              <Link
-                                to={`/lessons/${category.id}/topics`}
-                                className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
+                            {/* Konu Anlatımı Butonu */}
+                            <Link
+                              to={isMachineTopic ? `/machine/${machineSlug}/topics` : `/lessons/${category.id}/topics`}
+                              className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
+                            >
+                              <div
+                                className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${category.accent} text-white transition-transform group-hover:scale-110`}
                               >
-                                <div
-                                  className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${category.accent} text-white transition-transform group-hover:scale-110`}
-                                >
-                                  <GraduationCap className="h-4 w-4" />
-                                </div>
-                                <span className="text-center text-xs font-medium text-foreground">Konu Anlatımı</span>
-                                <ChevronRight className="h-3 w-3 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                              </Link>
-                            )}
+                                <GraduationCap className="h-4 w-4" />
+                              </div>
+                              <span className="text-center text-xs font-medium text-foreground">Konu Anlatımı</span>
+                              <ChevronRight className="h-3 w-3 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                            </Link>
 
                             {category.sections.map((section) => {
                               const SectionIcon = sectionIconMap[section.id];
