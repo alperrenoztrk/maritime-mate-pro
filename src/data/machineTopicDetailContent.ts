@@ -1257,8 +1257,9 @@ const content: ContentMap = {
 import content2 from "./machineTopicDetailContent2";
 import content3 from "./machineTopicDetailContent3";
 import content4 from "./machineTopicDetailContent4";
+import content5 from "./machineTopicDetailContent5";
 
-const allContentMaps = [content, content2, content3, content4];
+const allContentMaps = [content, content2, content3, content4, content5];
 
 export function getMachineSubTopicContent(topicSlug: string, subTopicTitle: string): MachineSubTopicContent | null {
   for (const map of allContentMaps) {
