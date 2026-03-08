@@ -16,29 +16,15 @@ import {
   TrendingUp,
   Wrench,
 } from "lucide-react";
+import { machineTopics } from "@/data/machineTopicData";
 
 export type SectionId =
   | "calculations"
   | "formulas"
   | "rules"
   | "assistant"
-  | "quiz"
-  | "machine-thermodynamics"
-  | "machine-fluid-mechanics"
-  | "machine-elements"
-  | "machine-diesel"
-  | "machine-systems"
-  | "machine-auxiliary"
-  | "machine-fuel-technology"
-  | "machine-cooling-hvac"
-  | "machine-electrical"
-  | "machine-automation"
-  | "machine-engine-room-ops"
-  | "machine-maintenance"
-  | "machine-engine-room-safety"
-  | "machine-environment"
-  | "machine-erm"
-  | "machine-energy-efficiency";
+  | "quiz";
+
 export type CategoryId =
   | "stability"
   | "navigation"
@@ -47,9 +33,10 @@ export type CategoryId =
   | "seamanship"
   | "safety"
   | "communication"
-  | "machine"
   | "environment"
-  | "economics";
+  | "economics"
+  | `machine-${string}`;
+
 export type SectionStatus = "live" | "info" | "external" | "upcoming";
 
 export interface SectionFallback {
@@ -88,9 +75,8 @@ export interface CategoryConfig {
   badge?: string;
   ctaLabel?: string;
   sections: SectionConfig[];
+  group?: "deck" | "machine";
 }
-
-const buildMachineTopicLink = (title: string) => `/lessons/machine/topics/${encodeURIComponent(title)}`;
 
 export const sectionIconMap: Record<SectionId, LucideIcon> = {
   calculations: Calculator,
@@ -98,23 +84,186 @@ export const sectionIconMap: Record<SectionId, LucideIcon> = {
   rules: BookOpen,
   assistant: Brain,
   quiz: ListChecks,
-  "machine-thermodynamics": BookOpen,
-  "machine-fluid-mechanics": BookOpen,
-  "machine-elements": BookOpen,
-  "machine-diesel": BookOpen,
-  "machine-systems": BookOpen,
-  "machine-auxiliary": BookOpen,
-  "machine-fuel-technology": BookOpen,
-  "machine-cooling-hvac": BookOpen,
-  "machine-electrical": BookOpen,
-  "machine-automation": BookOpen,
-  "machine-engine-room-ops": BookOpen,
-  "machine-maintenance": BookOpen,
-  "machine-engine-room-safety": BookOpen,
-  "machine-environment": BookOpen,
-  "machine-erm": BookOpen,
-  "machine-energy-efficiency": BookOpen,
 };
+
+// Machine topic descriptions for sections
+const machineTopicDescriptions: Record<string, { calculations: string; formulas: string; rules: string; assistant: string; quiz: string }> = {
+  thermodynamics: {
+    calculations: "Carnot verimi, ısı transferi ve enerji dönüşüm hesapları",
+    formulas: "Termodinamik kanunları, entropi ve entalpi formülleri",
+    rules: "Basınçlı kaplar, kazan güvenliği ve ISM gereklilikleri",
+    assistant: "Isı çevrimi analizi ve verim optimizasyonu danışmanı",
+    quiz: "Termodinamik kanunları ve ısı çevrimi soruları",
+  },
+  "fluid-mechanics": {
+    calculations: "Reynolds sayısı, basınç kaybı ve pompa gücü hesapları",
+    formulas: "Bernoulli, Darcy-Weisbach ve süreklilik denklemleri",
+    rules: "Boru sistemi standartları ve pompa seçim kriterleri",
+    assistant: "Akışkan sistemleri tasarım ve arıza analizi danışmanı",
+    quiz: "Akışkanlar mekaniği ve pompa soruları",
+  },
+  "machine-elements": {
+    calculations: "Mil, yatak, dişli ve kaynak mukavemet hesapları",
+    formulas: "Gerilme, yorulma ve güvenlik katsayısı formülleri",
+    rules: "Malzeme sertifikasyonu ve klas gereklilikleri",
+    assistant: "Malzeme seçimi ve arıza analizi danışmanı",
+    quiz: "Makine elemanları ve malzeme bilgisi soruları",
+  },
+  "diesel-engines": {
+    calculations: "SFOC, silindir basıncı ve güç hesapları",
+    formulas: "Ortalama efektif basınç, kompresyon oranı formülleri",
+    rules: "NOx Tier, EEDI ve makine performans standartları",
+    assistant: "Dizel makine arıza teşhisi ve performans danışmanı",
+    quiz: "İki/dört zamanlı motorlar ve yanma soruları",
+  },
+  "ship-systems": {
+    calculations: "Yakıt, yağlama ve soğutma sistemi kapasite hesapları",
+    formulas: "Isı dengesi, akış debisi ve basınç düşüm formülleri",
+    rules: "SOLAS, klas ve bayrak devleti sistem gereklilikleri",
+    assistant: "Sistem arızası analizi ve bakım planlaması danışmanı",
+    quiz: "Gemi makine sistemleri ve hat şemaları soruları",
+  },
+  auxiliary: {
+    calculations: "Jeneratör yük hesabı, separatör kapasitesi ve kazan buhar üretimi",
+    formulas: "Güç faktörü, separasyon verimi ve buhar entalpisi formülleri",
+    rules: "SOLAS II-1, klas kuralları ve periyodik bakım gereklilikleri",
+    assistant: "Yardımcı makine arıza teşhisi ve optimizasyon danışmanı",
+    quiz: "Jeneratör, kazan, separatör ve kompresör soruları",
+  },
+  "fuel-technology": {
+    calculations: "Viskozite-sıcaklık, CCAI ve yakıt tüketimi hesapları",
+    formulas: "Yakıt ısıl değer, viskozite ve uyumluluk formülleri",
+    rules: "MARPOL Annex VI, ISO 8217 ve yakıt kalite standartları",
+    assistant: "Yakıt sorunları teşhisi ve arıtma sistemi danışmanı",
+    quiz: "HFO/MGO/LNG ve yakıt yönetimi soruları",
+  },
+  "cooling-hvac": {
+    calculations: "Soğutma kapasitesi, COP ve ısı yükü hesapları",
+    formulas: "Soğutma çevrimi, akışkan basınç-sıcaklık formülleri",
+    rules: "Montreal Protokolü, F-Gaz ve HVAC güvenlik standartları",
+    assistant: "Soğutma sistemi arıza teşhisi ve optimizasyon danışmanı",
+    quiz: "Soğutma çevrimi, akışkanlar ve klima soruları",
+  },
+  electrical: {
+    calculations: "Yük analizi, kısa devre akımı ve kablo boyutlandırma",
+    formulas: "Ohm, güç üçgeni ve transformatör oranı formülleri",
+    rules: "IEC 60092, klas elektrik kuralları ve SOLAS gereklilikleri",
+    assistant: "Elektrik arızası teşhisi ve blackout analizi danışmanı",
+    quiz: "AC/DC sistemler, koruma ve blackout soruları",
+  },
+  automation: {
+    calculations: "PID parametre ayarı, sensör kalibrasyonu ve alarm eşikleri",
+    formulas: "Kontrol teorisi, sinyal işleme ve ölçme hata formülleri",
+    rules: "Sınıflandırma kuruluşu otomasyon ve UMS gereklilikleri",
+    assistant: "Otomasyon sistemi arıza teşhisi ve ayarlama danışmanı",
+    quiz: "PLC, sensörler ve alarm sistemi soruları",
+  },
+  "engine-room-ops": {
+    calculations: "Vardiya planlaması, devreye alma süreleri ve kontrol listeleri",
+    formulas: "Performans izleme ve trend analizi formülleri",
+    rules: "STCW, ISM ve vardiya tutma gereklilikleri",
+    assistant: "Makine dairesi operasyonları ve prosedür danışmanı",
+    quiz: "Vardiya, seyir/liman ve acil durum prosedür soruları",
+  },
+  maintenance: {
+    calculations: "Bakım aralıkları, yağ analiz değerlendirmesi ve maliyet hesapları",
+    formulas: "MTBF, MTTR ve güvenilirlik formülleri",
+    rules: "ISM, klas periyodik survey ve PMS gereklilikleri",
+    assistant: "Bakım planlama ve arıza önleme danışmanı",
+    quiz: "Planlı bakım, yağ analizi ve klas soruları",
+  },
+  "engine-room-safety": {
+    calculations: "Yangın söndürme kapasitesi ve havalandırma hesapları",
+    formulas: "CO₂ miktarı, köpük oranı ve kaçış süresi formülleri",
+    rules: "SOLAS II-2, FSS Code ve makine dairesi güvenlik kuralları",
+    assistant: "Makine dairesi güvenlik analizi ve acil durum danışmanı",
+    quiz: "Makine dairesi yangını, acil durdurma ve güvenlik soruları",
+  },
+  "environment-machine": {
+    calculations: "Sintine suyu, sludge ve emisyon hesapları",
+    formulas: "OWS verim, NOx/SOx dönüşüm ve atık su formülleri",
+    rules: "MARPOL Annex I/IV/VI ve BWM Convention gereklilikleri",
+    assistant: "Çevre uyumu ve denetim hazırlığı danışmanı",
+    quiz: "MARPOL, OWS, scrubber ve emisyon soruları",
+  },
+  erm: {
+    calculations: "Risk matrisi, iş yükü analizi ve CRM değerlendirmesi",
+    formulas: "İnsan hatası olasılık ve risk skoru formülleri",
+    rules: "STCW, ISM ve MLC insan faktörü gereklilikleri",
+    assistant: "Vardiya yönetimi ve ekip kaynak yönetimi danışmanı",
+    quiz: "ERM, insan faktörü ve liderlik soruları",
+  },
+  "energy-efficiency": {
+    calculations: "EEDI, EEXI, CII ve atık ısı geri kazanım hesapları",
+    formulas: "Yakıt tasarrufu, trim optimizasyonu ve verim formülleri",
+    rules: "MEPC kuralları, SEEMP ve DCS raporlama gereklilikleri",
+    assistant: "Enerji verimliliği analizi ve optimizasyon danışmanı",
+    quiz: "EEDI, CII, SEEMP ve enerji yönetimi soruları",
+  },
+};
+
+// Generate machine topic categories
+const machineCategories: CategoryConfig[] = machineTopics.map((topic) => {
+  const desc = machineTopicDescriptions[topic.slug] || {
+    calculations: `${topic.title} hesaplamaları`,
+    formulas: `${topic.title} formülleri`,
+    rules: `${topic.title} kuralları`,
+    assistant: `${topic.title} danışmanı`,
+    quiz: `${topic.title} soruları`,
+  };
+  return {
+    id: `machine-${topic.slug}` as CategoryId,
+    title: topic.title,
+    subtitle: "",
+    icon: topic.icon,
+    accent: topic.accent,
+    badge: "Makine",
+    status: "live" as SectionStatus,
+    group: "machine" as const,
+    sections: [
+      {
+        id: "calculations" as SectionId,
+        label: "Hesaplamalar",
+        description: desc.calculations,
+        status: "live" as SectionStatus,
+        badge: "Hazır",
+        href: `/machine/${topic.slug}/calculations`,
+      },
+      {
+        id: "formulas" as SectionId,
+        label: "Formüller",
+        description: desc.formulas,
+        status: "live" as SectionStatus,
+        badge: "Hazır",
+        href: `/machine/${topic.slug}/formulas`,
+      },
+      {
+        id: "rules" as SectionId,
+        label: "Kurallar",
+        description: desc.rules,
+        status: "live" as SectionStatus,
+        badge: "Hazır",
+        href: `/machine/${topic.slug}/rules`,
+      },
+      {
+        id: "assistant" as SectionId,
+        label: "Asistan",
+        description: desc.assistant,
+        status: "live" as SectionStatus,
+        badge: "Hazır",
+        href: `/machine/${topic.slug}/assistant`,
+      },
+      {
+        id: "quiz" as SectionId,
+        label: "Quiz",
+        description: desc.quiz,
+        status: "live" as SectionStatus,
+        badge: "Hazır",
+        href: `/machine/${topic.slug}/quiz`,
+      },
+    ],
+  };
+});
 
 export const calculationCategories: CategoryConfig[] = [
   {
@@ -478,130 +627,8 @@ export const calculationCategories: CategoryConfig[] = [
       },
     ],
   },
-  {
-    id: "machine",
-    title: "Gemi Makineleri",
-    subtitle: "",
-    icon: Wrench,
-    accent: "from-slate-600 via-zinc-600 to-slate-800",
-    badge: "Teknik",
-    status: "info",
-    ctaLabel: "Makine menüsü",
-    sections: [
-      {
-        id: "machine-thermodynamics",
-        label: "Termodinamik ve Isı Tekniği",
-        description: "Isı, iş ve enerji çevrimleri; verim hesapları ve ısı kayıpları.",
-        status: "info",
-        href: buildMachineTopicLink("Termodinamik ve Isı Tekniği"),
-      },
-      {
-        id: "machine-fluid-mechanics",
-        label: "Akışkanlar Mekaniği",
-        description: "Basınç, debi, pompa karakteristikleri ve boru kayıpları.",
-        status: "info",
-        href: buildMachineTopicLink("Akışkanlar Mekaniği"),
-      },
-      {
-        id: "machine-elements",
-        label: "Makine Elemanları ve Malzeme Bilgisi",
-        description: "Miller, yataklar, titreşim, balans ve korozyon yönetimi.",
-        status: "info",
-        href: buildMachineTopicLink("Makine Elemanları ve Malzeme Bilgisi"),
-      },
-      {
-        id: "machine-diesel",
-        label: "Deniz Dizel Makineleri",
-        description: "İki/dört zamanlı makineler, yanma süreci, enjeksiyon ve arızalar.",
-        status: "info",
-        href: buildMachineTopicLink("Deniz Dizel Makineleri"),
-      },
-      {
-        id: "machine-systems",
-        label: "Gemi Makine Sistemleri",
-        description: "Yakıt, yağlama, soğutma, hava/egzoz ve buhar sistemleri.",
-        status: "info",
-        href: buildMachineTopicLink("Gemi Makine Sistemleri"),
-      },
-      {
-        id: "machine-auxiliary",
-        label: "Yardımcı Makineler",
-        description: "Jeneratörler, kazanlar, separatörler ve kompresörler.",
-        status: "info",
-        href: buildMachineTopicLink("Yardımcı Makineler"),
-      },
-      {
-        id: "machine-fuel-technology",
-        label: "Yakıt Teknolojisi ve Yönetimi",
-        description: "HFO/MGO/LNG, yakıt arıtma, viskozite kontrolü ve arızalar.",
-        status: "info",
-        href: buildMachineTopicLink("Yakıt Teknolojisi ve Yönetimi"),
-      },
-      {
-        id: "machine-cooling-hvac",
-        label: "Soğutma ve Klima Sistemleri",
-        description: "Soğutma çevrimi, akışkanlar, provision ve klima uygulamaları.",
-        status: "info",
-        href: buildMachineTopicLink("Soğutma ve Klima Sistemleri"),
-      },
-      {
-        id: "machine-electrical",
-        label: "Gemi Elektrik Sistemleri",
-        description: "AC/DC dağıtım, alternatörler, koruma ve black-out nedenleri.",
-        status: "info",
-        href: buildMachineTopicLink("Gemi Elektrik Sistemleri"),
-      },
-      {
-        id: "machine-automation",
-        label: "Elektronik, Ölçme ve Otomasyon",
-        description: "Alarm/izleme, sensörler, PLC temelleri ve uzaktan izleme.",
-        status: "info",
-        href: buildMachineTopicLink("Elektronik, Ölçme ve Otomasyon"),
-      },
-      {
-        id: "machine-engine-room-ops",
-        label: "Makine Dairesi Operasyonları",
-        description: "Vardiya, seyir/liman prosedürleri ve devreye alma adımları.",
-        status: "info",
-        href: buildMachineTopicLink("Makine Dairesi Operasyonları"),
-      },
-      {
-        id: "machine-maintenance",
-        label: "Bakım ve Tutum",
-        description: "Planlı bakım, yağ analizleri, klas ve bayrak gereklilikleri.",
-        status: "info",
-        href: buildMachineTopicLink("Bakım ve Tutum"),
-      },
-      {
-        id: "machine-engine-room-safety",
-        label: "Makine Dairesi Güvenliği",
-        description: "Yangınlar, acil durdurma sistemleri ve makine kazaları.",
-        status: "info",
-        href: buildMachineTopicLink("Makine Dairesi Güvenliği"),
-      },
-      {
-        id: "machine-environment",
-        label: "Çevre ve MARPOL – Makine",
-        description: "Sintine, atık yağ/sludge, sewage sistemleri ve emisyonlar.",
-        status: "info",
-        href: buildMachineTopicLink("Çevre ve MARPOL – Makine"),
-      },
-      {
-        id: "machine-erm",
-        label: "Engine Resource Management",
-        description: "Vardiya yönetimi, insan faktörü ve risk değerlendirmesi.",
-        status: "info",
-        href: buildMachineTopicLink("Engine Resource Management"),
-      },
-      {
-        id: "machine-energy-efficiency",
-        label: "Enerji Verimliliği",
-        description: "EEDI, EEXI, SEEMP ve atık ısı geri kazanımı.",
-        status: "info",
-        href: buildMachineTopicLink("Enerji Verimliliği"),
-      },
-    ],
-  },
+  // Machine topic categories (16 adet)
+  ...machineCategories,
   {
     id: "environment",
     title: "Denizcilik ve Çevre Koruma",
