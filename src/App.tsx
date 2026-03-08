@@ -86,6 +86,7 @@ import MachineTopicFormulasPage from "./pages/MachineTopicFormulasPage";
 import MachineTopicRulesPage from "./pages/MachineTopicRulesPage";
 import MachineTopicAssistantPage from "./pages/MachineTopicAssistantPage";
 import MachineTopicQuizPage from "./pages/MachineTopicQuizPage";
+import MachineTopicLessonsPage from "./pages/MachineTopicLessonsPage";
 
 import EmissionFormulas from "./pages/EmissionFormulas";
 import EmissionRules from "./pages/EmissionRules";
