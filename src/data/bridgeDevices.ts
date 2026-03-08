@@ -413,7 +413,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
       "VDR; radar/ECDIS görüntüleri, bridge audio, VHF, GNSS, gyro, log, echo sounder gibi girdileri kayıt altına alır. Kaza sonrası incelemenin temel kaynağıdır.",
     icon: HardDrive,
     accent: "from-slate-500 via-gray-600 to-zinc-700",
-    images: [bridgeDeviceImages.shipBridge, bridgeDeviceImages.radarDisplay],
+    images: [bridgeDeviceImages.vdrUnit, bridgeDeviceImages.shipBridge],
     duties: [
       "VDR durum ışığı ve self-test’lerin vardiya öncesi kontrolü",
       "Girdi kaynaklarının (GPS/gyro/log/echo sounder/radar video) aktif olduğunun doğrulanması",
