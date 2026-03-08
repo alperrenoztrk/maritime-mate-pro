@@ -439,7 +439,6 @@ const MaritimeNews = () => {
                           type="button"
                           onClick={() => {
                             setSelectedItem(it);
-                            setReaderMode(stripHtml(it.summary) ? "summary" : "web");
                             setReaderOpen(true);
                           }}
                           className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left transition-all hover:border-white/20 hover:bg-white/10"
