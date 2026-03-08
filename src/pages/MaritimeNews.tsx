@@ -193,7 +193,7 @@ const MaritimeNews = () => {
   const navigate = useNavigate();
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
-  const queryClient = useQueryClient();
+  
 
   const [readerOpen, setReaderOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MaritimeNewsItem | null>(null);
