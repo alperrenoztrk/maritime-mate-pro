@@ -1,39 +1,47 @@
 
-# Konu Anlatımları Toplu Üretim Çözümü
 
-## ✅ Uygulama Tamamlandı
+## Plan: Gemide Yapılan Tüm İşler - Detay Sayfaları
 
-### Oluşturulan Bileşenler
+### Mevcut Durum
+- ShipTasksPage'de 9 kategori, ~80+ iş maddesi var
+- Sadece "Passage Plan" bir detay sayfasına (`/passage-plan`) bağlı
+- Diğer tüm işler sadece tablo satırı olarak listeleniyor, tıklanabilir değil
 
-| Dosya | Açıklama | Durum |
-|-------|----------|-------|
-| `supabase/functions/batch-content-writer/index.ts` | Toplu içerik üretim edge function | ✅ Deploy edildi |
-| `src/components/ContentAutoWriterController.tsx` | Gelişmiş admin paneli | ✅ Güncellendi |
-| `src/services/topicContentOverrides.ts` | Çoklu kategori desteği | ✅ Güncellendi |
+### Yaklaşım
+PassagePlanPage formatını referans alarak, her iş maddesi için detay sayfası oluşturulacak. Dinamik routing ile tek bir bileşen kullanılacak.
 
-### Yeni Özellikler
+### Teknik Yapı
 
-1. **Toplu Seçim**: Checkbox ile 50'ye kadar alt başlık seçilebilir
-2. **Batch İşleme**: 5, 10 veya 20'li gruplar halinde AI üretimi
-3. **İlerleme Takibi**: Progress bar ve sonuç listesi
-4. **Durdurma**: İstenildiğinde işlemi durdurma
-5. **Kategori Seçimi**: Navigation kategorisi aktif, diğerleri eklenebilir
+**1. Veri Dosyası:** `src/data/shipTaskDetailData.ts`
+- Her kategori ve iş maddesi için detaylı içerik (tanım, prosedür adımları, sorumluluk tablosu, ilgili mevzuat, pratik ipuçları)
+- 9 kategorideki ~80 iş için yapılandırılmış veri
 
-### Kullanım
+**2. Dinamik Sayfa:** `src/pages/ShipTaskDetailPage.tsx`
+- Route: `/ship-tasks/:taskSlug`
+- PassagePlanPage ile aynı tasarım dili (koyu arka plan, kartlar, tablolar)
+- Her iş için: tanım, prosedür, sorumluluk matrisi, mevzuat referansları, kontrol listesi
 
-1. Settings sayfasındaki "Toplu Konu Anlatımı Üretimi" kartına git
-2. Kategori seç (şimdilik sadece Navigation)
-3. Batch boyutunu belirle (5, 10 veya 20)
-4. İstediğin alt başlıkları seç veya "Tümünü Seç" kullan
-5. "Toplu Üret" butonuna tıkla
-6. İlerlemeyi takip et, gerekirse "Durdur" butonunu kullan
+**3. ShipTasksPage Güncelleme:**
+- Tüm iş maddelerine `href` eklenerek tıklanabilir link haline getirilecek
+- Tüm kategorilerdeki inline diziler yapılandırılmış veriye dönüştürülecek
 
-### Gelecek Kategoriler
+**4. App.tsx Route Ekleme:**
+- `/ship-tasks/:taskSlug` route'u eklenecek
 
-Eklenecek veri dosyaları:
-- `cargoTopicsContent.ts` - Kargo operasyonları
-- `meteorologyTopicsContent.ts` - Deniz meteorolojisi
-- `safetyTopicsContent.ts` - Deniz güvenliği
-- `seamanshipTopicsContent.ts` - Gemicilik
-- `machineTopicsContent.ts` - Gemi makineleri
+### İçerik Kapsamı (Passage Plan formatında)
+Her iş detayı şunları içerecek:
+- Tanım ve önem
+- Adım adım prosedür
+- Sorumluluk matrisi (kim ne yapar)
+- İlgili SOLAS/MARPOL/ISM/STCW referansları
+- Kontrol listesi
+- Pratik senaryo veya örnek
+
+### Uygulama Sırası
+1. `shipTaskDetailData.ts` veri dosyası oluştur (tüm 80+ iş için)
+2. `ShipTaskDetailPage.tsx` dinamik bileşen oluştur
+3. `ShipTasksPage.tsx` güncelle (tüm işlere href ekle)
+4. `App.tsx` route ekle
+
+Veri boyutu nedeniyle birden fazla mesajda tamamlanacak.
 
