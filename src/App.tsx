@@ -178,6 +178,9 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
         <Route path="/lessons/cargo/topics" element={<PageTransition><CargoTopicsPage /></PageTransition>} />
         <Route path="/lessons/seamanship/topics" element={<PageTransition><SeamanshipTopicsPage /></PageTransition>} />
+        <Route path="/lessons/safety/topics" element={<PageTransition><SafetyTopicsPage /></PageTransition>} />
+        <Route path="/lessons/environment/topics" element={<PageTransition><EnvironmentTopicsPage /></PageTransition>} />
+        <Route path="/lessons/economics/topics" element={<PageTransition><EconomicsTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
