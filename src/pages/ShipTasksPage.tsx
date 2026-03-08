@@ -22,7 +22,7 @@ const TaskLink = ({ task, slug }: { task: string; slug?: string }) =>
   );
 
 const bridgeNavigationTasks: TaskRow[] = [
-  { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O", slug: "passage-plan" },
+  { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O" },
   { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O – 4/O", slug: "vardiya-tutma" },
   { task: "Radar / ARPA takibi", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "radar-arpa-takibi" },
   { task: "COLREG uygulama", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "colreg-uygulama" },
