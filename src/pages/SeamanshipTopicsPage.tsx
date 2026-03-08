@@ -489,6 +489,17 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
   "wire-ropes": {
     title: "Çelik Teller ve Yapıları",
     introduction: "Çelik teller, yüksek çekme dayanımı gerektiren güverte operasyonlarında kullanılır; tel yapısı, kullanım amacına göre seçilir.",
+    table: {
+      title: "Çelik Tel Tipleri Karşılaştırması",
+      headers: ["Tip", "Telcik Sayısı", "Esneklik", "Aşınma Direnci", "Kullanım Alanı"],
+      rows: [
+        ["6×7", "42 (az, kalın)", "Düşük", "Yüksek", "Korkuluk, sabit bağlantı"],
+        ["6×19", "114 (orta)", "Orta", "Orta", "Genel güverte işleri"],
+        ["6×37", "222 (çok, ince)", "Yüksek", "Düşük", "Vinç, kaldırma"],
+        ["6×19 FC", "114 + lif çekirdek", "Yüksek", "Orta", "Kaldırma operasyonları"],
+        ["6×19 IWRC", "114 + tel çekirdek", "Orta", "Yüksek", "Ağır yük, ezilme riski"],
+      ],
+    },
     content: `ÇELİK TEL YAPISI:
 
 Çelik tel, ince çelik telciklerin (wire) bir çekirdek (core) etrafında kollar (strands) halinde sarılmasıyla üretilir. Standart gösterim: A × B şeklindedir. Örneğin 6 × 19, 6 kol ve her kolda 19 telcik anlamına gelir.
