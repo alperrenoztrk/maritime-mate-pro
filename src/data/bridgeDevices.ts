@@ -280,8 +280,8 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
     icon: Compass,
     accent: "from-slate-600 via-gray-700 to-stone-800",
     images: [
-      bridgeDeviceImages.compassDiagram,
-      bridgeDeviceImages.navigationCompassPhoto
+      bridgeDeviceImages.gyroCompass,
+      bridgeDeviceImages.shipBridge
     ],
     duties: [
       "COG/heading referansı sağlayarak radar, ECDIS, autopilot ve conning sistemlerini besler",
