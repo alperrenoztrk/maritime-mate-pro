@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
+import { hasSubTopicContent } from "@/data/machineTopicDetailContent";
 import { machineTopicLessons } from "@/data/machineTopicLessonData";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 
