@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { crewHierarchy } from "@/data/crewHierarchy";
 import { ArrowLeft } from "lucide-react";
+import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function CrewHierarchyPage() {
   const highRefreshRateStyles: CSSProperties = {
@@ -12,7 +13,7 @@ export default function CrewHierarchyPage() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 pb-24 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
       data-no-translate
       style={highRefreshRateStyles}
     >
@@ -86,6 +87,7 @@ export default function CrewHierarchyPage() {
           </div>
         </section>
       </div>
+      <BottomNavigation />
     </div>
   );
 }

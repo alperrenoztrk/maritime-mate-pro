@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpenText, Search } from "lucide-react";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
 const Glossary = () => {
@@ -24,7 +25,7 @@ const Glossary = () => {
   }, [search, activeCategory]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 pb-24 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
@@ -126,6 +127,7 @@ const Glossary = () => {
           )}
         </section>
       </div>
+      <BottomNavigation />
     </div>
   );
 };
