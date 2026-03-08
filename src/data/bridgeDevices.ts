@@ -384,7 +384,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
       "Echo sounder, özellikle coastal/confined waters’da en kritik doğrulama sensörüdür. Draft ofseti, tide ofseti ve alarm eşikleri doğru ayarlanmadığında yanlış güven hissi yaratabilir.",
     icon: Waves,
     accent: "from-cyan-600 via-sky-600 to-blue-700",
-    images: [bridgeDeviceImages.oceanWaves, bridgeDeviceImages.shipBridge],
+    images: [bridgeDeviceImages.echoSounder, bridgeDeviceImages.shipBridge],
     duties: [
       "Derinlik trendini izleyerek sığ su riskini erken tespit",
       "Shallow/deep alarm limitlerini passage plan’a uygun yönetmek",
