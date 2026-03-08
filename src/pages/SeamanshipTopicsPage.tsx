@@ -955,6 +955,19 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
   "mooring-lines": {
     title: "Palamar Halatları ve Adlandırmaları",
     introduction: "Geminin rıhtıma güvenli bağlanması için kullanılan palamar halatları, konumlarına ve görevlerine göre adlandırılır.",
+    image: "/diagrams/seamanship/palamar-duzeni.svg",
+    table: {
+      title: "Palamar Halatları Görev Tablosu",
+      headers: ["Halat Adı", "Konum", "Görev", "Yön"],
+      rows: [
+        ["Head Line", "Pruva", "Geminin ileri hareketini önler", "İleri-yukarı"],
+        ["Stern Line", "Kıç", "Geminin geri hareketini önler", "Geri-yukarı"],
+        ["Forward Breast", "Pruva", "Rıhtımdan uzaklaşmayı önler", "Dik (rıhtıma)"],
+        ["After Breast", "Kıç", "Rıhtımdan uzaklaşmayı önler", "Dik (rıhtıma)"],
+        ["Forward Spring", "Pruva → kıça doğru", "Gemi ileri kaymasını önler", "Geriye doğru çapraz"],
+        ["After Spring", "Kıç → pruvaya doğru", "Gemi geri kaymasını önler", "İleriye doğru çapraz"],
+      ],
+    },
     content: `PALAMAR HALAT TÜRLERİ VE ADLARI:
 
 Geminin pruvasından kıçına doğru sırasıyla:
