@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <rect width="900" height="420" fill="#f8fafc"/>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Demir Tipleri Karşılaştırması</text>
+
+  <!-- Stockless Anchor -->
+  <g transform="translate(150, 50)">
+    <text x="0" y="10" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Patentsiz (Stockless)</text>
+    <!-- Shank -->
+    <rect x="-8" y="40" width="16" height="120" rx="3" fill="#71717a" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Crown -->
+    <ellipse cx="0" cy="165" rx="12" ry="10" fill="#71717a" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Flukes -->
+    <path d="M-12 165 L-60 220 L-45 230 L-5 175" fill="#a1a1aa" stroke="#3f3f46" stroke-width="2"/>
+    <path d="M12 165 L60 220 L45 230 L5 175" fill="#a1a1aa" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Ring -->
+    <circle cx="0" cy="35" r="10" fill="none" stroke="#3f3f46" stroke-width="3"/>
+
+    <text x="0" y="265" text-anchor="middle" font-size="10" fill="#059669" font-family="Arial">✓ Hawse pipe'a çekilir</text>
+    <text x="0" y="280" text-anchor="middle" font-size="10" fill="#059669" font-family="Arial">✓ Kolay depolama</text>
+    <text x="0" y="295" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">✗ Düşük tutma kuvveti</text>
+    <text x="0" y="320" text-anchor="middle" font-size="11" fill="#475569" font-family="Arial">Tutma: Ağırlığının 3-5 katı</text>
+  </g>
+
+  <!-- Danforth Anchor -->
+  <g transform="translate(450, 50)">
+    <text x="0" y="10" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Danforth (Fluke)</text>
+    <!-- Shank -->
+    <rect x="-6" y="40" width="12" height="100" rx="2" fill="#71717a" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Stock (cross piece) -->
+    <rect x="-50" y="140" width="100" height="8" rx="2" fill="#94a3b8" stroke="#3f3f46" stroke-width="1.5"/>
+    <!-- Large flukes -->
+    <path d="M-50 148 L-75 230 L-10 160" fill="#a1a1aa" stroke="#3f3f46" stroke-width="2"/>
+    <path d="M50 148 L75 230 L10 160" fill="#a1a1aa" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Ring -->
+    <circle cx="0" cy="35" r="10" fill="none" stroke="#3f3f46" stroke-width="3"/>
+
+    <text x="0" y="265" text-anchor="middle" font-size="10" fill="#059669" font-family="Arial">✓ Çok yüksek tutma kuvveti</text>
+    <text x="0" y="280" text-anchor="middle" font-size="10" fill="#059669" font-family="Arial">✓ Kum/çamurda mükemmel</text>
+    <text x="0" y="295" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">✗ Kayalık zeminde zayıf</text>
+    <text x="0" y="320" text-anchor="middle" font-size="11" fill="#475569" font-family="Arial">Tutma: Ağırlığının 10-20 katı</text>
+  </g>
+
+  <!-- Bruce Anchor -->
+  <g transform="translate(750, 50)">
+    <text x="0" y="10" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Bruce (Pençe)</text>
+    <!-- Shank -->
+    <rect x="-7" y="40" width="14" height="100" rx="2" fill="#71717a" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Claw shape -->
+    <path d="M-7 140 L-60 200 L-40 220 L0 180 L40 220 L60 200 L7 140" fill="#a1a1aa" stroke="#3f3f46" stroke-width="2"/>
+    <!-- Ring -->
+    <circle cx="0" cy="35" r="10" fill="none" stroke="#3f3f46" stroke-width="3"/>
+
+    <text x="0" y="265" text-anchor="middle" font-size="10" fill="#059669" font-family="Arial">✓ Her zeminde çalışır</text>
+    <text x="0" y="280" text-anchor="middle" font-size="10" fill="#059669" font-family="Arial">✓ Yön değişiminde tutar</text>
+    <text x="0" y="295" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">✗ Çamurda penetrasyon düşük</text>
+    <text x="0" y="320" text-anchor="middle" font-size="11" fill="#475569" font-family="Arial">Tutma: Ağırlığının 7-15 katı</text>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="450" y="380" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">Tutma kuvveti deniz tabanı cinsine, zincir uzunluğuna ve rüzgar/akıntı koşullarına göre değişir.</text>
+  <text x="450" y="398" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Ticaret gemilerinde genellikle stockless (patentsiz) demir kullanılır.</text>
+</svg>

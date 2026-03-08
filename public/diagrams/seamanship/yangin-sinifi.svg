@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <rect width="900" height="420" fill="#f8fafc"/>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Yangın Sınıfları ve Söndürme Yöntemleri</text>
+
+  <!-- Class A -->
+  <g transform="translate(100, 55)">
+    <rect x="0" y="0" width="130" height="160" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <circle cx="65" cy="40" r="25" fill="#dc2626"/>
+    <text x="65" y="46" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">A</text>
+    <text x="65" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Katı Madde</text>
+    <text x="65" y="102" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">Ahşap, kağıt,</text>
+    <text x="65" y="115" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">kumaş, plastik</text>
+    <text x="65" y="140" text-anchor="middle" font-size="10" font-weight="bold" fill="#059669" font-family="Arial">Su, Köpük</text>
+  </g>
+
+  <!-- Class B -->
+  <g transform="translate(250, 55)">
+    <rect x="0" y="0" width="130" height="160" rx="10" fill="#fef9c3" stroke="#d97706" stroke-width="2"/>
+    <circle cx="65" cy="40" r="25" fill="#d97706"/>
+    <text x="65" y="46" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">B</text>
+    <text x="65" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Sıvı Madde</text>
+    <text x="65" y="102" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">Benzin, yağ,</text>
+    <text x="65" y="115" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">boya, mazot</text>
+    <text x="65" y="140" text-anchor="middle" font-size="10" font-weight="bold" fill="#059669" font-family="Arial">Köpük, KKT, CO₂</text>
+  </g>
+
+  <!-- Class C -->
+  <g transform="translate(400, 55)">
+    <rect x="0" y="0" width="130" height="160" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <circle cx="65" cy="40" r="25" fill="#2563eb"/>
+    <text x="65" y="46" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">C</text>
+    <text x="65" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Gaz</text>
+    <text x="65" y="102" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">LPG, LNG,</text>
+    <text x="65" y="115" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">metan, propan</text>
+    <text x="65" y="140" text-anchor="middle" font-size="10" font-weight="bold" fill="#059669" font-family="Arial">KKT, CO₂</text>
+  </g>
+
+  <!-- Class D -->
+  <g transform="translate(550, 55)">
+    <rect x="0" y="0" width="130" height="160" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <circle cx="65" cy="40" r="25" fill="#7c3aed"/>
+    <text x="65" y="46" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">D</text>
+    <text x="65" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Metal</text>
+    <text x="65" y="102" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">Magnezyum,</text>
+    <text x="65" y="115" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">alüminyum tozu</text>
+    <text x="65" y="140" text-anchor="middle" font-size="10" font-weight="bold" fill="#059669" font-family="Arial">Özel KKT, kum</text>
+  </g>
+
+  <!-- Class E/F (Electrical) -->
+  <g transform="translate(700, 55)">
+    <rect x="0" y="0" width="130" height="160" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+    <circle cx="65" cy="40" r="25" fill="#059669"/>
+    <text x="65" y="46" text-anchor="middle" font-size="20" font-weight="bold" fill="white" font-family="Arial">E</text>
+    <text x="65" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Elektrik</text>
+    <text x="65" y="102" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">Elektrikli cihaz,</text>
+    <text x="65" y="115" text-anchor="middle" font-size="9" fill="#64748b" font-family="Arial">kablo, pano</text>
+    <text x="65" y="140" text-anchor="middle" font-size="10" font-weight="bold" fill="#059669" font-family="Arial">CO₂, KKT</text>
+  </g>
+
+  <!-- Fire Triangle mini -->
+  <g transform="translate(450, 250)">
+    <text x="0" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Yangın Üçgeni</text>
+    <path d="M0 20 L60 110 L-60 110 Z" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="0" y="55" text-anchor="middle" font-size="10" font-weight="bold" fill="#dc2626" font-family="Arial">ISI</text>
+    <text x="-35" y="100" text-anchor="middle" font-size="9" font-weight="bold" fill="#d97706" font-family="Arial">YAKIT</text>
+    <text x="35" y="100" text-anchor="middle" font-size="9" font-weight="bold" fill="#2563eb" font-family="Arial">O₂</text>
+  </g>
+
+  <!-- Note -->
+  <rect x="100" y="370" width="700" height="35" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="450" y="385" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">KKT: Kuru Kimyevi Toz | CO₂: Karbondioksit | Sınıflandırma IMO ve NFPA standartlarına göre yapılmıştır.</text>
+  <text x="450" y="398" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial">Yangın söndürmede üçgenin en az bir elemanı ortadan kaldırılır (soğutma, boğma, yakıtı kesme).</text>
+</svg>
