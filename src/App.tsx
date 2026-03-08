@@ -86,6 +86,7 @@ import MachineTopicFormulasPage from "./pages/MachineTopicFormulasPage";
 import MachineTopicRulesPage from "./pages/MachineTopicRulesPage";
 import MachineTopicAssistantPage from "./pages/MachineTopicAssistantPage";
 import MachineTopicQuizPage from "./pages/MachineTopicQuizPage";
+import MachineTopicLessonsPage from "./pages/MachineTopicLessonsPage";
 
 import EmissionFormulas from "./pages/EmissionFormulas";
 import EmissionRules from "./pages/EmissionRules";
@@ -276,7 +277,7 @@ const AnimatedRoutes = () => {
         <Route path="/machine/assistant" element={<PageTransition><MachineAssistantPage /></PageTransition>} />
         <Route path="/machine/quiz" element={<PageTransition><MachineQuizPage /></PageTransition>} />
         {/* Machine topic sub-routes */}
-        <Route path="/machine/:topicSlug/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/topics" element={<PageTransition><MachineTopicLessonsPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/calculations" element={<PageTransition><MachineTopicCalculationsPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/formulas" element={<PageTransition><MachineTopicFormulasPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/rules" element={<PageTransition><MachineTopicRulesPage /></PageTransition>} />
