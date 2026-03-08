@@ -435,13 +435,19 @@ const Index = () => {
         @keyframes ocean-swell-4 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes ocean-swell-5 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
         @keyframes ocean-foam { 0%,100% { opacity: 0.15; } 50% { opacity: 0.25; } }
-        @keyframes lighthouse-rotate {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        @keyframes lighthouse-flash {
+          0%, 1% { opacity: 0; }
+          2.5% { opacity: 1; }
+          5%, 14% { opacity: 0; }
+          16.5% { opacity: 1; }
+          19%, 100% { opacity: 0; }
         }
-        @keyframes fresnel-pulse {
-          0%, 100% { opacity: 0.8; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.15); }
+        @keyframes fresnel-flash {
+          0%, 1% { opacity: 0.3; transform: scale(1); }
+          2.5% { opacity: 1; transform: scale(1.2); }
+          5%, 14% { opacity: 0.3; transform: scale(1); }
+          16.5% { opacity: 1; transform: scale(1.2); }
+          19%, 100% { opacity: 0.3; transform: scale(1); }
         }
         @keyframes title-shine {
           to { background-position: 200% center; }
