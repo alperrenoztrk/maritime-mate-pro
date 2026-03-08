@@ -190,6 +190,13 @@ export default function MachineTopicDetailPage() {
           </Link>
         </div>
       </div>
+
+      <ImageViewerModal
+        src={viewerImage || ""}
+        alt={viewerAlt}
+        isOpen={!!viewerImage}
+        onClose={() => setViewerImage(null)}
+      />
     </div>
   );
 }
