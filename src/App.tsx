@@ -17,6 +17,7 @@ import CrewHierarchyPage from "./pages/CrewHierarchyPage";
 import BridgeDevicesPage from "./pages/BridgeDevicesPage";
 import MachineryHubPage from "./pages/MachineryHubPage";
 import ShipTasksPage from "./pages/ShipTasksPage";
+import ShipTaskDetailPage from "./pages/ShipTaskDetailPage";
 import CalculationSectionPage from "./pages/CalculationSectionPage";
 import StabilityMenu from "./pages/StabilityMenu";
 import SafetyMenu from "./pages/SafetyMenu";
