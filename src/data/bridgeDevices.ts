@@ -100,7 +100,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
     icon: Waves,
     accent: "from-cyan-500 via-sky-500 to-blue-600",
     images: [
-      bridgeDeviceImages.dscDistress,
+      bridgeDeviceImages.dscPanel,
       bridgeDeviceImages.shipBridge
     ],
     duties: [
