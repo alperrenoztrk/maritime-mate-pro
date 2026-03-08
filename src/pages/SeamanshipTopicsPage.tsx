@@ -214,6 +214,8 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  image?: string;
+  table?: { title: string; headers: string[]; rows: string[][] };
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
@@ -263,6 +265,7 @@ STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her s
   "ship-parts": {
     title: "Gemi Kısımları ve Terminolojisi",
     introduction: "Geminin yapısal elemanlarının ve bölümlerinin doğru terminoloji ile bilinmesi, güverte operasyonlarının etkin yürütülmesi için temel gereksinimdir.",
+    image: "/diagrams/seamanship/gemi-kisimlari.svg",
     content: `GEMİ ANA BÖLÜMLER:
 
 PRUVA (BOW): Geminin ön kısmıdır. Pruva formu, dalga kırma performansını belirler. Başlıca pruva tipleri: Düz pruva (vertical stem), ampul pruva (bulbous bow), clipper pruva, raker pruva. Ampul pruva, dalga direncini %5-15 oranında azaltarak yakıt tasarrufu sağlar.
@@ -433,6 +436,19 @@ Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifi
   "rope-types": {
     title: "Halat Türleri ve Malzemeleri",
     introduction: "Gemilerde kullanılan halatlar, malzemelerine ve yapılarına göre sınıflandırılır; her tür farklı mekanik özelliklere ve kullanım alanlarına sahiptir.",
+    image: "/diagrams/seamanship/halat-yapilari.svg",
+    table: {
+      title: "Halat Malzeme Karşılaştırma Tablosu",
+      headers: ["Malzeme", "Özgül Ağırlık", "Uzama (%)", "Islak Dayanım", "Kullanım Alanı"],
+      rows: [
+        ["Manila", "1,38", "10-12", "%10-15 düşer", "Pilot merdiveni"],
+        ["Naylon (PA)", "1,14", "30-40", "%10 düşer", "Çekme halatı"],
+        ["Polipropilen", "0,91 (yüzer)", "15-20", "Değişmez", "Can kurtarma halatı"],
+        ["Polyester", "1,38", "12-15", "Değişmez", "Palamar halatı"],
+        ["HMPE (Dyneema)", "0,97", "3-4", "Değişmez", "Palamar, çekme"],
+        ["Çelik Tel", "7,85", "1-2", "Korozyon riski", "Vinç, kaldırma"],
+      ],
+    },
     content: `DOĞAL LİF HALATLAR:
 
 Manila: Abaka bitkisinden üretilir. Doğal halatlar arasında en güçlüsüdür. Islakken dayanımı %10-15 düşer. Günümüzde hâlâ pilot merdiveni güvenlik halatı olarak kullanılır.
@@ -473,6 +489,17 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
   "wire-ropes": {
     title: "Çelik Teller ve Yapıları",
     introduction: "Çelik teller, yüksek çekme dayanımı gerektiren güverte operasyonlarında kullanılır; tel yapısı, kullanım amacına göre seçilir.",
+    table: {
+      title: "Çelik Tel Tipleri Karşılaştırması",
+      headers: ["Tip", "Telcik Sayısı", "Esneklik", "Aşınma Direnci", "Kullanım Alanı"],
+      rows: [
+        ["6×7", "42 (az, kalın)", "Düşük", "Yüksek", "Korkuluk, sabit bağlantı"],
+        ["6×19", "114 (orta)", "Orta", "Orta", "Genel güverte işleri"],
+        ["6×37", "222 (çok, ince)", "Yüksek", "Düşük", "Vinç, kaldırma"],
+        ["6×19 FC", "114 + lif çekirdek", "Yüksek", "Orta", "Kaldırma operasyonları"],
+        ["6×19 IWRC", "114 + tel çekirdek", "Orta", "Yüksek", "Ağır yük, ezilme riski"],
+      ],
+    },
     content: `ÇELİK TEL YAPISI:
 
 Çelik tel, ince çelik telciklerin (wire) bir çekirdek (core) etrafında kollar (strands) halinde sarılmasıyla üretilir. Standart gösterim: A × B şeklindedir. Örneğin 6 × 19, 6 kol ve her kolda 19 telcik anlamına gelir.
@@ -683,6 +710,7 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
   "anchor-types": {
     title: "Demir Tipleri ve Özellikleri",
     introduction: "Gemilerde kullanılan demirler, yapılarına ve tutma kuvvetlerine göre farklı tiplerde üretilir; seçim deniz tabanı yapısına ve gemi tonajına göre yapılır.",
+    image: "/diagrams/seamanship/demir-tipleri.svg",
     content: `BAŞLICA DEMİR TİPLERİ:
 
 STOCKLESS ANCHOR (Patentli Demir / Hall Demiri): Ticaret gemilerinde en yaygın kullanılan tiptir. Kolları (flukes) ankasa (crown) etrafında dönebilir. Hawse pipe içinde depolanabilir. Kendi ağırlığının 3-5 katı tutma kuvveti üretir.
@@ -715,6 +743,7 @@ Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demi
   "anchor-chain": {
     title: "Demir Zinciri ve Bağlantıları",
     introduction: "Demir zinciri, demiri gemiye bağlayan ve demirleme sırasında tutma kuvvetini artıran ağır çelik zincirdir.",
+    image: "/diagrams/seamanship/zincir-isaretleme.svg",
     content: `ZİNCİR YAPISI:
 
 Demir zinciri, baklalardan (links) oluşur. Her bakla ortasında bir takviye çubuğu (stud) bulunur; bu çubuk baklanın ezilmesini ve birbirine dolaşmasını önler. Stud-link chain, ticaret gemilerinde standarttır.
@@ -926,6 +955,19 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
   "mooring-lines": {
     title: "Palamar Halatları ve Adlandırmaları",
     introduction: "Geminin rıhtıma güvenli bağlanması için kullanılan palamar halatları, konumlarına ve görevlerine göre adlandırılır.",
+    image: "/diagrams/seamanship/palamar-duzeni.svg",
+    table: {
+      title: "Palamar Halatları Görev Tablosu",
+      headers: ["Halat Adı", "Konum", "Görev", "Yön"],
+      rows: [
+        ["Head Line", "Pruva", "Geminin ileri hareketini önler", "İleri-yukarı"],
+        ["Stern Line", "Kıç", "Geminin geri hareketini önler", "Geri-yukarı"],
+        ["Forward Breast", "Pruva", "Rıhtımdan uzaklaşmayı önler", "Dik (rıhtıma)"],
+        ["After Breast", "Kıç", "Rıhtımdan uzaklaşmayı önler", "Dik (rıhtıma)"],
+        ["Forward Spring", "Pruva → kıça doğru", "Gemi ileri kaymasını önler", "Geriye doğru çapraz"],
+        ["After Spring", "Kıç → pruvaya doğru", "Gemi geri kaymasını önler", "İleriye doğru çapraz"],
+      ],
+    },
     content: `PALAMAR HALAT TÜRLERİ VE ADLARI:
 
 Geminin pruvasından kıçına doğru sırasıyla:
@@ -1140,6 +1182,7 @@ SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dok�
   // =====================================================
   "rudder-types": {
     title: "Dümen Tipleri ve Yapıları",
+    image: "/diagrams/seamanship/dumen-tipleri.svg",
     introduction: "Dümen, geminin yön değiştirmesini sağlayan birincil manevra elemanıdır; tipi ve boyutu geminin manevra kabiliyetini doğrudan etkiler.",
     content: `BAŞLICA DÜMEN TİPLERİ:
 
@@ -1206,6 +1249,7 @@ Ana dümen makinesi arızasında yardımcı sisteme geçiş süresi mümkün ola
   },
   "turning-circle": {
     title: "Dönme Dairesi ve Manevra Karakteristikleri",
+    image: "/diagrams/seamanship/donme-dairesi.svg",
     introduction: "Dönme dairesi (turning circle), geminin tam dümen açısıyla 360° dönüş yaptığında çizdiği yoldur ve geminin manevra kabiliyetini tanımlar.",
     content: `DÖNME DAİRESİ PARAMETRELERİ:
 
@@ -1299,6 +1343,7 @@ IMO STANDARDI: Head reach ≤ 15 gemi boyu (MSC.137(76))`,
   },
   "squat-effect": {
     title: "Squat Etkisi ve Sığ Su Etkileri",
+    image: "/diagrams/seamanship/squat-etkisi.svg",
     introduction: "Squat, geminin sığ suda veya dar kanalda hareket ederken su altı basınç değişimlerinin etkisiyle batmasıdır (draft artışı).",
     content: `SQUAT FİZİĞİ:
 
@@ -1791,6 +1836,7 @@ HAYATTA KALMA ÖNCELİKLERİ:
   // =====================================================
   "fire-triangle": {
     title: "Yangın Üçgeni ve Yangın Sınıfları",
+    image: "/diagrams/seamanship/yangin-sinifi.svg",
     introduction: "Yangın, ısı, yakıt ve oksijenin bir arada bulunmasıyla başlar; bu üç unsurun herhangi birini ortadan kaldırmak yangını söndürür.",
     content: `YANGIN ÜÇGENİ:
 
@@ -1853,6 +1899,17 @@ SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fi
   "portable-extinguishers": {
     title: "Taşınabilir Söndürücüler",
     introduction: "Taşınabilir yangın söndürücüler, yangının başlangıç aşamasında ilk müdahale için kullanılan birincil söndürme araçlarıdır.",
+    table: {
+      title: "Taşınabilir Söndürücü Tipleri ve Kullanım Alanları",
+      headers: ["Söndürücü Tipi", "Söndürme Maddesi", "Yangın Sınıfı", "Menzil (m)", "Dikkat"],
+      rows: [
+        ["Su", "Su (9 L)", "A", "6-10", "Elektrikte kullanılamaz"],
+        ["Köpük (Foam)", "AFFF (9 L)", "A, B", "3-6", "Elektrikte kullanılamaz"],
+        ["CO₂", "Karbondioksit (5 kg)", "B, E", "1-3", "Kapalı alanda O₂ düşer"],
+        ["KKT", "Kuru kimyevi toz (6-9 kg)", "A, B, C, E", "3-6", "Artık bırakır, hassas cihazda dikkat"],
+        ["Temiz Ajan", "HFC-227ea / FK-5-1-12", "B, C, E", "2-4", "Ozon dostu, pahalı"],
+      ],
+    },
     content: `SÖNDÜRÜCÜ TÜRLERİ:
 
 1. CO₂ (Karbondioksit): B ve E sınıfı yangınlar. Oksijeni keserek söndürür. Kapalı alanda boğulma riski vardır. Elektrik yangınlarında güvenlidir.
@@ -2888,12 +2945,57 @@ export default function SeamanshipTopicsPage() {
                   </p>
                 </div>
 
+                {/* Topic Image/Diagram */}
+                {currentContent.image && (
+                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                    <img
+                      src={currentContent.image}
+                      alt={currentContent.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
                   <div className="text-foreground leading-relaxed whitespace-pre-line">
                     {currentContent.content}
                   </div>
                 </div>
+
+                {/* Data Table */}
+                {currentContent.table && (
+                  <div className="rounded-xl border border-border/40 overflow-hidden">
+                    <div className="bg-muted/60 px-4 py-3 border-b border-border/40">
+                      <h3 className="font-semibold text-foreground text-sm">{currentContent.table.title}</h3>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-border/40 bg-muted/30">
+                            {currentContent.table.headers.map((header, i) => (
+                              <th key={i} className="px-3 py-2.5 text-left font-medium text-foreground whitespace-nowrap">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {currentContent.table.rows.map((row, rowIdx) => (
+                            <tr key={rowIdx} className="border-b border-border/20 last:border-0 hover:bg-muted/20 transition-colors">
+                              {row.map((cell, cellIdx) => (
+                                <td key={cellIdx} className={`px-3 py-2 text-foreground/80 ${cellIdx === 0 ? 'font-medium text-foreground' : ''}`}>
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
 
                 {/* Bullet Points */}
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (

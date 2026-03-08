@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320">
+  <rect width="900" height="320" fill="#f8fafc"/>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Halat Yapıları Karşılaştırması</text>
+
+  <!-- Laid Rope (3-strand) -->
+  <g transform="translate(150, 60)">
+    <text x="0" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Kolalı Halat (Laid)</text>
+    <text x="0" y="16" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">3 kollu, Z-büküm</text>
+    <!-- Cross section -->
+    <circle cx="0" cy="100" r="50" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 2"/>
+    <circle cx="0" cy="72" r="22" fill="#fbbf24" opacity="0.6" stroke="#b45309" stroke-width="1.5"/>
+    <circle cx="-20" cy="118" r="22" fill="#fbbf24" opacity="0.6" stroke="#b45309" stroke-width="1.5"/>
+    <circle cx="20" cy="118" r="22" fill="#fbbf24" opacity="0.6" stroke="#b45309" stroke-width="1.5"/>
+    <text x="0" y="76" text-anchor="middle" font-size="9" fill="#78350f" font-family="Arial">Kol 1</text>
+    <text x="-20" y="122" text-anchor="middle" font-size="9" fill="#78350f" font-family="Arial">Kol 2</text>
+    <text x="20" y="122" text-anchor="middle" font-size="9" fill="#78350f" font-family="Arial">Kol 3</text>
+    <text x="0" y="175" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Aşınma direnci: Orta</text>
+    <text x="0" y="190" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Esneklik: Orta</text>
+    <text x="0" y="205" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Dönme eğilimi: Var</text>
+  </g>
+
+  <!-- Braided Rope -->
+  <g transform="translate(450, 60)">
+    <text x="0" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Örgülü Halat (Braided)</text>
+    <text x="0" y="16" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">İç çekirdek + dış örgü</text>
+    <!-- Cross section -->
+    <circle cx="0" cy="100" r="50" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 2"/>
+    <circle cx="0" cy="100" r="18" fill="#93c5fd" opacity="0.6" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="0" y="104" text-anchor="middle" font-size="8" fill="#1e3a8a" font-family="Arial">Çekirdek</text>
+    <!-- Outer braid strands -->
+    <circle cx="0" cy="62" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="22" cy="68" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="36" cy="85" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="38" cy="108" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="27" cy="128" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="5" cy="140" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="-18" cy="138" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="-35" cy="120" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="-38" cy="96" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="-30" cy="74" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="-13" cy="60" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <circle cx="12" cy="58" r="10" fill="#86efac" opacity="0.6" stroke="#15803d" stroke-width="1"/>
+    <text x="0" y="175" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Aşınma direnci: Yüksek</text>
+    <text x="0" y="190" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Esneklik: Yüksek</text>
+    <text x="0" y="205" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Dönme eğilimi: Yok</text>
+  </g>
+
+  <!-- Wire Rope -->
+  <g transform="translate(750, 60)">
+    <text x="0" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Çelik Tel (6×19)</text>
+    <text x="0" y="16" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">6 kol + çekirdek</text>
+    <!-- Cross section -->
+    <circle cx="0" cy="100" r="50" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 2"/>
+    <circle cx="0" cy="100" r="12" fill="#fecaca" opacity="0.8" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="0" y="104" text-anchor="middle" font-size="7" fill="#991b1b" font-family="Arial">Core</text>
+    <circle cx="0" cy="70" r="16" fill="#d4d4d8" stroke="#71717a" stroke-width="1.5"/>
+    <circle cx="26" cy="85" r="16" fill="#d4d4d8" stroke="#71717a" stroke-width="1.5"/>
+    <circle cx="26" cy="115" r="16" fill="#d4d4d8" stroke="#71717a" stroke-width="1.5"/>
+    <circle cx="0" cy="130" r="16" fill="#d4d4d8" stroke="#71717a" stroke-width="1.5"/>
+    <circle cx="-26" cy="115" r="16" fill="#d4d4d8" stroke="#71717a" stroke-width="1.5"/>
+    <circle cx="-26" cy="85" r="16" fill="#d4d4d8" stroke="#71717a" stroke-width="1.5"/>
+    <text x="0" y="175" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Çekme dayanımı: Çok yüksek</text>
+    <text x="0" y="190" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Esneklik: Düşük-Orta</text>
+    <text x="0" y="205" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Korozyon riski: Var</text>
+  </g>
+</svg>
