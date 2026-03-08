@@ -238,7 +238,7 @@ const Index = () => {
           <rect x="37" y="100" width="6" height="8" rx="3" fill="rgba(251,191,36,0.25)" stroke="#9ca3af" strokeWidth="0.5" />
         </svg>
         
-        {/* Realistic rotating light beam - continuous 360° rotation like real lighthouse */}
+        {/* Realistic light beam - Fl(2) 10s characteristic (Group Flashing) */}
         <div 
           className="absolute z-[2]"
           style={{
@@ -246,7 +246,8 @@ const Index = () => {
             left: '50%',
             width: '0px',
             height: '0px',
-            animation: 'lighthouse-rotate 8s linear infinite'
+            transform: 'rotate(-15deg)',
+            animation: 'lighthouse-flash 10s infinite'
           }}
         >
           {/* Main beam - narrow cone like Fresnel lens output */}
@@ -269,32 +270,6 @@ const Index = () => {
             height: '24px',
             background: 'linear-gradient(90deg, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0.12) 20%, rgba(251,191,36,0.03) 50%, transparent 100%)',
             transformOrigin: 'left center',
-            filter: 'blur(3px)',
-            borderRadius: '0 50% 50% 0',
-          }} />
-          {/* Opposite beam (dual-beam lighthouse characteristic) */}
-          <div style={{
-            position: 'absolute',
-            top: '-3px',
-            right: '0',
-            left: 'auto',
-            width: '280px',
-            height: '6px',
-            background: 'linear-gradient(-90deg, rgba(255,251,235,0.95) 0%, rgba(251,191,36,0.7) 8%, rgba(251,191,36,0.3) 25%, rgba(251,191,36,0.08) 50%, transparent 100%)',
-            transformOrigin: 'right center',
-            transform: 'rotate(180deg)',
-            filter: 'blur(0.5px)',
-          }} />
-          <div style={{
-            position: 'absolute',
-            top: '-12px',
-            right: '0',
-            left: 'auto',
-            width: '220px',
-            height: '24px',
-            background: 'linear-gradient(-90deg, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0.12) 20%, rgba(251,191,36,0.03) 50%, transparent 100%)',
-            transformOrigin: 'right center',
-            transform: 'rotate(180deg)',
             filter: 'blur(3px)',
             borderRadius: '0 50% 50% 0',
           }} />
