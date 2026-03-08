@@ -317,7 +317,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
     accent: "from-teal-500 via-cyan-500 to-blue-500",
     images: [
       bridgeDeviceImages.autopilotControl,
-      bridgeDeviceImages.oceanWaves
+      bridgeDeviceImages.shipBridge
     ],
     duties: [
       "Heading hold, course over ground veya track control modlarında otomatik dümenleme",
