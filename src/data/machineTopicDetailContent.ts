@@ -835,11 +835,415 @@ const content: ContentMap = {
     "Sıcaklık ölçüm sensörleri (termokuple, RTD)": { title: "Sıcaklık Ölçüm Sensörleri", introduction: "Gemi makine dairesinde sıcaklık ölçümü için termokuple ve RTD (Resistance Temperature Detector) sensörleri kullanılır.", sections: [{ heading: "Termokuple", paragraphs: ["İki farklı metalin birleşim noktasındaki sıcaklık farkına bağlı EMK üretir (Seebeck etkisi). Ucuzdur, geniş sıcaklık aralığında çalışır (−200 ile 1800°C), dayanıklıdır ancak doğruluğu RTD'ye göre düşüktür."], table: { headers: ["Tip", "Metal Çifti", "Aralık (°C)"], rows: [["K", "NiCr – NiAl", "−200 – 1250"], ["J", "Fe – CuNi", "−40 – 750"], ["T", "Cu – CuNi", "−200 – 350"]] } }, { heading: "RTD (Pt100)", paragraphs: ["Platin telin direncinin sıcaklıkla doğrusal olarak değişmesine dayanır. 100Ω'da 0°C referansı alır. Yüksek doğruluk (±0.1°C) sağlar ancak daha pahalıdır ve sıcaklık aralığı daha dardır (−200 – 850°C)."] }], keyPoints: ["Egzoz sıcaklığı ölçümünde K tipi termokuple tercih edilir.", "Soğutma suyu ve yağ sıcaklığında RTD daha doğru sonuç verir.", "Sinyal iletiminde 4-20 mA standart analog çıkış kullanılır."] },
   },
 
-  // Remaining topics with minimal entries (fallback will handle the rest)
-  "machine-elements": {},
-  "fuel-technology": {},
-  "engine-room-ops": {},
-  "engine-room-safety": {},
+  // ═══════════════════════════════════════════════════════════════
+  // MAKİNE ELEMANLARI VE MALZEME BİLGİSİ
+  // ═══════════════════════════════════════════════════════════════
+  "machine-elements": {
+    "Kristal yapılar ve faz diyagramları": {
+      title: "Kristal Yapılar ve Faz Diyagramları",
+      introduction: "Metallerin mekanik özellikleri büyük ölçüde atomların kristal kafes içindeki düzenlenme biçimine bağlıdır. Faz diyagramları ise alaşımların sıcaklık ve bileşime göre hangi fazda bulunacağını gösterir.",
+      sections: [
+        { heading: "Temel Kristal Yapılar", paragraphs: ["Metallerde üç temel kristal yapı gözlemlenir: Hacim Merkezli Kübik (HMK/BCC), Yüzey Merkezli Kübik (YMK/FCC) ve Sıkı Paket Hekzagonal (SPH/HCP).", "HMK yapı: α-demir (ferrit), krom, molibden. Sert ve kırılgan. YMK yapı: γ-demir (östenit), bakır, alüminyum, nikel. Sünek ve iyi şekillendirilebilir. SPH yapı: çinko, magnezyum. Sınırlı sürtünme."] },
+        { heading: "Demir-Karbon Faz Diyagramı", paragraphs: ["Çelik ve dökme demir metalurjisinin temelini oluşturur. Yatay eksen karbon yüzdesi (%0-6.67), düşey eksen sıcaklıktır.", "Önemli fazlar: Ferrit (α-demir, yumuşak), Östenit (γ-demir, yüksek sıcaklık fazı), Sementit (Fe₃C, sert ve kırılgan), Perlit (ferrit + sementit karışımı)."], table: { headers: ["Faz", "Yapı", "Özellik"], rows: [["Ferrit", "HMK", "Yumuşak, manyetik, max %0.025 C"], ["Östenit", "YMK", "Sünek, amanyetik, max %2.06 C"], ["Sementit", "Ortorombik", "Çok sert, kırılgan, %6.67 C"], ["Perlit", "Lameller", "Ferrit + Sementit, %0.8 C"]] } },
+        { heading: "Kritik Sıcaklıklar", paragraphs: ["A₁ (723°C): Ötektoid dönüşüm sıcaklığı. Perlit ↔ östenit dönüşümü. A₃: Hipoötektoid çeliklerde ferrit → östenit tamamlanma sıcaklığı. A_cm: Hiperötektoid çeliklerde sementit çözünme sıcaklığı.", "Isıl işlem (tavlama, sertleştirme, menevişleme) bu kritik sıcaklıklara göre planlanır."] }
+      ],
+      keyPoints: ["Çelik: %0-2.06 C, dökme demir: %2.06-6.67 C.", "Ötektoid çelik (%0.8 C) tamamen perlit yapıdadır.", "Kristal yapı değişimi (allotropik dönüşüm) ısıl işlemin temelini oluşturur."]
+    },
+    "Çelik türleri ve alaşım elementleri": {
+      title: "Çelik Türleri ve Alaşım Elementleri",
+      introduction: "Çelik, demir ile karbonun alaşımıdır. Karbon oranı ve eklenen alaşım elementleri çeliğin mekanik özelliklerini belirler.",
+      sections: [
+        { heading: "Karbon Çelikleri", paragraphs: ["Düşük karbonlu çelik (%0.05-0.25 C): Kaynak edilebilir, sünek. Gemi saçları, yapısal profiller.", "Orta karbonlu çelik (%0.25-0.60 C): Daha sert, mil ve dişli yapımında.", "Yüksek karbonlu çelik (%0.60-1.40 C): Çok sert, yay ve kesici takımlarda."] },
+        { heading: "Alaşım Elementlerinin Etkileri", paragraphs: [], table: { headers: ["Element", "Etki", "Kullanım Alanı"], rows: [["Krom (Cr)", "Korozyon direnci, sertlik", "Paslanmaz çelik (>%12 Cr)"], ["Nikel (Ni)", "Tokluk, korozyon direnci", "Ostenitik paslanmaz çelik"], ["Molibden (Mo)", "Yüksek sıcaklık dayanımı", "Supap çelikleri, kazan boruları"], ["Mangan (Mn)", "Sertlik, aşınma direnci", "Hadfield çeliği (yüksek Mn)"], ["Vanadyum (V)", "İnce tane yapısı, sertlik", "Yüksek mukavemet çelikleri"]] } },
+        { heading: "Paslanmaz Çelik Türleri", paragraphs: ["Ostenitik (304, 316): Amanyetik, mükemmel korozyon direnci. Boru hatları, tank iç yüzeyleri.", "Ferritik (430): Manyetik, orta korozyon direnci. Dekoratif uygulamalar.", "Martenzitik (410, 420): Sertleştirilebilir. Supap milleri, pompa şaftları.", "Dubleks: Yüksek mukavemet + korozyon direnci. Denizcilik uygulamaları."] }
+      ],
+      keyPoints: ["Denizcilik çelikleri genellikle AH, DH, EH, FH sınıflarındadır.", "316L paslanmaz çelik deniz suyu uygulamalarında tercih edilir.", "Alaşım elementleri kaynak kabiliyetini etkileyebilir (karbon eşdeğeri)."]
+    },
+    "Demir dışı metaller (bakır, alüminyum)": {
+      title: "Demir Dışı Metaller",
+      introduction: "Gemi yapım ve makine imalatında demir dışı metaller korozyon direnci, hafiflik veya özel fiziksel özellikler gerektiren yerlerde kullanılır.",
+      sections: [
+        { heading: "Bakır ve Alaşımları", paragraphs: ["Saf bakır: Yüksek elektrik ve ısıl iletkenlik. Elektrik kabloları, ısı eşanjör boruları.", "Pirinç (Cu-Zn): Korozyon direnci, işlenebilirlik. Valf gövdeleri, boru bağlantıları.", "Bronz (Cu-Sn): Yüksek aşınma direnci. Pervane, yatak burçları.", "Cupronickel (Cu-Ni 90/10, 70/30): Mükemmel deniz suyu direnci. Kondenser boruları, boru hatları."] },
+        { heading: "Alüminyum ve Alaşımları", paragraphs: ["Denizcilik alüminyum alaşımları: 5083, 5086 (Mg alaşımlı) korozyon direnci yüksektir.", "Kullanım: Üst yapılar, sürat tekneleri, helikopter güvertesi.", "Avantajları: Hafiflik (çeliğin 1/3'ü), korozyon direnci. Dezavantajları: Düşük erime noktası (660°C), yangın riski, galvanik korozyon."] }
+      ],
+      keyPoints: ["Cupronickel 90/10 deniz suyu borularında standarttır.", "Alüminyum-çelik birleşiminde galvanik korozyon önlemi şarttır.", "Bronz pervaneler kavitasyon erozyonuna karşı dayanıklıdır."]
+    },
+    "Korozyon direnci ve korozyon tipleri": {
+      title: "Korozyon Direnci ve Korozyon Tipleri",
+      introduction: "Deniz ortamı korozyon için son derece agresiftir. Metalik yapıların ömrü, korozyon mekanizmalarının anlaşılması ve doğru koruma yöntemlerinin uygulanmasına bağlıdır.",
+      sections: [
+        { heading: "Korozyon Tipleri", paragraphs: [], table: { headers: ["Tip", "Mekanizma", "Örnek"], rows: [["Üniform (genel)", "Tüm yüzeyde eşit metal kaybı", "Boyasız çelik yüzeyler"], ["Galvanik", "Farklı metallerin teması", "Çelik-bronz bağlantı"], ["Çukurcuk (pitting)", "Lokal korozyon çukurları", "Paslanmaz çelikte klorür etkisi"], ["Erozyon-korozyon", "Akışkan hızı + korozyon", "Boru dirsekleri, pompa çarkları"], ["Gerilme korozyon çatlaması", "Gerilme + korozif ortam", "Kazan boruları, paslanmaz kaynak"], ["Aralık (crevice)", "Dar aralıklarda O₂ tükenmesi", "Flanş yüzeyleri, conta altları"]] } },
+        { heading: "Korozyon Koruma Yöntemleri", paragraphs: [], bulletPoints: ["Katodik koruma: Anot yerleştirme (çinko, alüminyum) veya tatbiki akım (ICCP).", "Boya ve kaplama: Primer, antifouling, epoksi kaplama.", "Malzeme seçimi: Korozyon dirençli alaşımlar (CuNi, dubleks çelik).", "Çevre kontrolü: Inhibitör ekleme (soğutma suyu), pH kontrolü."] }
+      ],
+      keyPoints: ["Galvanik korozyon en yaygın gemi korozyon problemlerinden biridir.", "Anot ömrü periyodik olarak kontrol edilmelidir.", "Antifouling boyalar hem korozyonu hem biyolojik yapışmayı önler."]
+    },
+    "Isıl işlemler (tavlama, sertleştirme)": {
+      title: "Isıl İşlemler",
+      introduction: "Isıl işlem, metallerin mekanik özelliklerini kontrollü ısıtma ve soğutma ile değiştirme yöntemidir.",
+      sections: [
+        { heading: "Temel Isıl İşlem Türleri", paragraphs: [], table: { headers: ["İşlem", "Sıcaklık", "Soğutma", "Amaç"], rows: [["Tam tavlama", "A₃+30°C", "Fırında yavaş", "Yumuşatma, iç gerilim giderme"], ["Normalleştirme", "A₃+50°C", "Havada", "İnce tane yapısı, homojenlik"], ["Su verme (sertleştirme)", "A₃+30°C", "Su/yağda hızlı", "Martenzit oluşumu, maksimum sertlik"], ["Menevişleme", "150-650°C", "Havada", "Sertlik-tokluk dengesi, iç gerilim azaltma"], ["Gerilim giderme tavlaması", "550-650°C", "Yavaş", "Kaynak sonrası iç gerilim giderme"]] } },
+        { heading: "Gemi Uygulamaları", paragraphs: ["Kaynak sonrası gerilim giderme tavlaması (PWHT) yüksek mukavemetli çelik birleşimlerde zorunlu olabilir. Supap milleri su verme + menevişleme ile sertleştirilir. Krank mili muylularına yüzey sertleştirme (indüksiyon veya nitrürleme) uygulanır."] }
+      ],
+      keyPoints: ["Su verme en hızlı soğutmadır ve en sert yapıyı (martenzit) oluşturur.", "Menevişleme her zaman su vermeden sonra yapılır.", "PWHT gerekliliği klas kuruluşu kurallarına göre belirlenir."]
+    },
+    "Denizcilik çelik standartları": {
+      title: "Denizcilik Çelik Standartları",
+      introduction: "Gemi yapımında kullanılan çeliklerin mekanik özellikleri ve kimyasal bileşimi uluslararası sınıflama kuruluşları (IACS) tarafından standartlaştırılmıştır.",
+      sections: [
+        { heading: "IACS Çelik Sınıfları", paragraphs: ["Gemi yapı çelikleri normal mukavemetli (A, B, D, E) ve yüksek mukavemetli (AH, DH, EH, FH) olmak üzere sınıflandırılır. Harfler düşük sıcaklıklarda darbe dayanımını (çentik tokluğu) ifade eder."], table: { headers: ["Sınıf", "Charpy Test Sıcaklığı", "Min. Akma (MPa)"], rows: [["A", "Yok", "235"], ["B", "0°C", "235"], ["D", "−20°C", "235"], ["E", "−40°C", "235"], ["AH32", "Yok", "315"], ["DH36", "−20°C", "355"], ["EH40", "−40°C", "390"]] } },
+        { heading: "Seçim Kriterleri", paragraphs: ["Soğuk iklimde çalışan gemilerde D veya E sınıfı çelik kullanılır. Yüksek gerilmeli bölgelerde (makine dairesi temeli, ambar ağzı köşeleri) yüksek mukavemetli çelik tercih edilir."] }
+      ],
+      keyPoints: ["Her çelik levha üreticinin sertifikası (mill certificate) ile gelir.", "Karbon eşdeğeri (CE) kaynak kabiliyetini belirler; CE < 0.40 iyi kaynaklanabilir.", "Klas kuruluşu surveyörü çelik kalitesini doğrular."]
+    },
+    "Normal gerilme ve deformasyon": {
+      title: "Normal Gerilme ve Deformasyon",
+      introduction: "Gerilme, bir cismin birim alanına etki eden iç kuvvettir. Deformasyon ise gerilme sonucu oluşan şekil değişimidir. Mukavemet hesaplarının temelidir.",
+      sections: [
+        { heading: "Normal Gerilme (σ)", paragraphs: ["Kesit alanına dik etki eden kuvvet, normal gerilme oluşturur. Çekme (+) veya basma (−) olabilir."], formula: { expression: "σ = F / A", variables: ["σ: Normal gerilme (MPa = N/mm²)", "F: Eksenel kuvvet (N)", "A: Kesit alanı (mm²)"] }, example: { problem: "Çapı 50 mm olan bir çelik çubuğa 100 kN çekme kuvveti uygulanmaktadır. Gerilmeyi hesaplayınız.", steps: ["A = π/4 × 50² = 1963.5 mm²", "σ = F/A = 100000 / 1963.5 = 50.9 MPa"], result: "Çekme gerilmesi 50.9 MPa'dır." } },
+        { heading: "Birim Uzama (ε)", paragraphs: ["Birim uzama, orijinal boya göre uzama miktarıdır: ε = ΔL / L₀. Boyutsuz bir büyüklüktür, genellikle yüzde (%) olarak ifade edilir."] }
+      ],
+      keyPoints: ["Gerilme birimi: 1 MPa = 1 N/mm² = 10⁶ Pa.", "Güvenlik katsayısı ile emniyet gerilmesi belirlenir: σ_izin = σ_akma / n.", "Denizcilik uygulamalarında n = 2-4 arasında seçilir."]
+    },
+    "Hooke yasası ve elastiklik modülü": {
+      title: "Hooke Yasası ve Elastiklik Modülü",
+      introduction: "Hooke yasası, elastik bölgede gerilme ile birim uzama arasındaki doğrusal ilişkiyi tanımlar.",
+      sections: [
+        { heading: "Hooke Yasası", paragraphs: ["Elastik sınır içinde gerilme, birim uzamayla doğru orantılıdır."], formula: { expression: "σ = E × ε", variables: ["E: Elastiklik modülü (Young modülü) (GPa)", "Çelik için E ≈ 200-210 GPa", "Alüminyum için E ≈ 70 GPa", "Bakır için E ≈ 120 GPa"] }, example: { problem: "2 m boyundaki çelik bir çubuk 100 MPa gerilme altında ne kadar uzar? (E = 210 GPa)", steps: ["ε = σ/E = 100/210000 = 4.762 × 10⁻⁴", "ΔL = ε × L₀ = 4.762 × 10⁻⁴ × 2000 mm = 0.952 mm"], result: "Çubuk 0.95 mm uzar." } }
+      ],
+      keyPoints: ["Elastik sınırın ötesinde Hooke yasası geçerli değildir.", "E değeri malzemeye özgüdür ve sıcaklıkla hafifçe düşer.", "Yüksek E değeri = sert malzeme (az deformasyon)."]
+    },
+    "Eğilme gerilmesi ve moment hesabı": {
+      title: "Eğilme Gerilmesi ve Moment Hesabı",
+      introduction: "Eğilme gerilmesi, kirişlere enine yük uygulandığında kesit boyunca oluşan normal gerilmedir. Gemi yapısında omurga, kemere ve borda elemanları eğilme yüküne maruz kalır.",
+      sections: [
+        { heading: "Eğilme Formülü", paragraphs: ["Eğilme gerilmesi kesit boyunca doğrusal değişir; nötr eksende sıfır, üst ve alt yüzeylerde maksimumdur."], formula: { expression: "σ = M × y / I", variables: ["M: Eğilme momenti (N·mm)", "y: Nötr eksenden uzaklık (mm)", "I: Atalet momenti (mm⁴)"] }, example: { problem: "Dikdörtgen kesitli (60×100 mm) bir kirişe 5 kN·m eğilme momenti uygulanmaktadır. Maksimum eğilme gerilmesini bulunuz.", steps: ["I = bh³/12 = 60 × 100³/12 = 5 × 10⁶ mm⁴", "y_max = 100/2 = 50 mm", "σ = M×y/I = 5×10⁶ × 50 / (5×10⁶) = 50 MPa"], result: "Maksimum eğilme gerilmesi 50 MPa'dır." } }
+      ],
+      keyPoints: ["Nötr eksende gerilme sıfırdır.", "I değeri büyük olan kesitler eğilmeye daha dayanıklıdır.", "Gemi omurgasının eğilme momenti hogging ve sagging durumlarında hesaplanır."]
+    },
+    "Burulma gerilmesi": {
+      title: "Burulma Gerilmesi",
+      introduction: "Burulma, bir mile tork uygulandığında oluşan kayma gerilmesidir. Pervane şaftı, krank mili ve pompa milleri burulma yüküne maruz kalır.",
+      sections: [
+        { heading: "Burulma Formülü", paragraphs: ["Dairesel kesitli bir milde burulma gerilmesi:"], formula: { expression: "τ = T × r / J", variables: ["τ: Kayma gerilmesi (MPa)", "T: Tork (N·mm)", "r: Yarıçap (mm)", "J: Polar atalet momenti (mm⁴)", "İçi dolu mil: J = πd⁴/32"] }, example: { problem: "Çapı 200 mm olan bir pervane şaftına 150 kN·m tork uygulanmaktadır. Maksimum kayma gerilmesini bulunuz.", steps: ["J = π × 200⁴/32 = 157.08 × 10⁶ mm⁴", "r = 100 mm", "τ = T×r/J = 150×10⁶ × 100 / (157.08×10⁶) = 95.5 MPa"], result: "Maksimum kayma gerilmesi 95.5 MPa'dır." } }
+      ],
+      keyPoints: ["Gerilme merkezde sıfır, yüzeyde maksimumdur.", "İçi boş miller aynı ağırlıkta daha yüksek tork taşır.", "Pervane şaftı çapı IACS UR M68 kuralına göre hesaplanır."]
+    },
+    "Mil çapı hesabı (burulma ve eğilme)": {
+      title: "Mil Çapı Hesabı",
+      introduction: "Şaft tasarımında mil çapı, hem burulma hem eğilme yüklerini güvenle taşıyacak şekilde hesaplanır.",
+      sections: [
+        { heading: "Bileşik Yükleme", paragraphs: ["Gerçek çalışma koşullarında miller hem eğilme hem burulma yüküne aynı anda maruz kalır. Eşdeğer moment yöntemi veya Von Mises kriteri kullanılır."], formula: { expression: "d ≥ ³√(16/(π×τ_izin) × √(M² + T²))", variables: ["d: Mil çapı (mm)", "M: Eğilme momenti (N·mm)", "T: Tork (N·mm)", "τ_izin: İzin verilen kayma gerilmesi (MPa)"] }, example: { problem: "Bir pompa miline 2 kN·m eğilme momenti ve 5 kN·m tork etki etmektedir. τ_izin = 40 MPa ise gerekli mil çapını hesaplayınız.", steps: ["Te = √(M² + T²) = √(2² + 5²) × 10⁶ = √29 × 10⁶ = 5.385 × 10⁶ N·mm", "d = ³√(16Te/(π×τ)) = ³√(16 × 5.385×10⁶ / (π × 40))", "d = ³√(86.16×10⁶ / 125.66) = ³√(685700) = 88.1 mm"], result: "Minimum mil çapı 88 mm'dir; standart çap olarak 90 mm seçilir." } }
+      ],
+      keyPoints: ["Mil çapı hesabında dinamik yükler için güvenlik katsayısı eklenir.", "IACS kuralları pervane şaftı minimum çapını belirler.", "Şaft hizalama bozukluğu ek eğilme gerilmesi oluşturur."]
+    },
+    "Düz dişli hesapları": {
+      title: "Düz Dişli Hesapları",
+      introduction: "Dişli çarklar, güç ve hareketin iki mil arasında aktarılmasını sağlar. Düz dişliler en basit ve yaygın dişli tipidir.",
+      sections: [
+        { heading: "Temel Parametreler", paragraphs: [], table: { headers: ["Parametre", "Formül", "Açıklama"], rows: [["Modül (m)", "m = d/z", "Diş büyüklüğü ölçüsü"], ["Bölüm çapı (d)", "d = m × z", "Diş temasının olduğu çap"], ["Diş sayısı (z)", "z = d/m", "Çark üzerindeki diş adedi"], ["Eksen mesafesi (a)", "a = (d₁+d₂)/2", "İki mil merkezi arası"], ["Dişli oranı (i)", "i = z₂/z₁ = n₁/n₂", "Devir oranı"]] } },
+        { heading: "Lewis Eğilme Gerilmesi", paragraphs: ["Diş dibi eğilme gerilmesi, dişin kırılma mukavemetini belirler."], formula: { expression: "σ = Ft / (b × m × Y)", variables: ["Ft: Teğetsel kuvvet (N)", "b: Diş genişliği (mm)", "m: Modül (mm)", "Y: Lewis form faktörü"] } }
+      ],
+      keyPoints: ["Küçük modül = küçük diş, pürüzsüz çalışma ancak düşük yük kapasitesi.", "Redüktör dişli çiftinde küçük dişli (pinion) daha hızlı aşınır.", "Gemi redüktörlerinde helisel dişliler sessiz çalışma sağlar."]
+    },
+    "Yorulma ömrü ve S-N eğrisi": {
+      title: "Yorulma Ömrü ve S-N Eğrisi",
+      introduction: "Yorulma, tekrarlı yükleme altında malzemenin statik dayanım sınırının çok altındaki gerilmelerde kırılmasıdır. Deniz makinelerinde pervane şaftı, krank mili ve biyel kolu gibi parçalarda yorulma kritik bir tasarım parametresidir.",
+      sections: [
+        { heading: "S-N Eğrisi (Wöhler Eğrisi)", paragraphs: ["Gerilme genliği (S) ile kırılmaya kadar çevrim sayısı (N) arasındaki ilişkiyi gösterir. Çelik için genellikle 10⁶-10⁷ çevrimde bir sınır değer (yorulma dayanımı / endurance limit) oluşur.", "Yorulma dayanımı çelikler için çekme dayanımının yaklaşık %40-50'si kadardır."] },
+        { heading: "Yorulma Kırılmasını Etkileyen Faktörler", paragraphs: [], bulletPoints: ["Gerilme yoğunlaşması: Çentikler, delikler, keskin köşeler kırılmayı başlatır.", "Yüzey kalitesi: Pürüzlü yüzey yorulma ömrünü kısaltır.", "Boyut etkisi: Büyük parçalarda yorulma dayanımı düşer.", "Korozyon: Deniz ortamında yorulma dayanımı önemli ölçüde azalır (korozyon yorulması).", "Sıcaklık: Yüksek sıcaklık creep ile birleşerek ömrü kısaltır."] }
+      ],
+      keyPoints: ["Yorulma çatlağı genellikle yüzeyden başlar ve ilerler.", "Krank mili fillet radyüsleri gerilme yoğunlaşmasını azaltmak için kritiktir.", "Pervane şaftı korozyon yorulmasına karşı katodik koruma gerektirir."]
+    },
+    "Elektrik ark kaynağı (SMAW)": {
+      title: "Elektrik Ark Kaynağı (SMAW)",
+      introduction: "SMAW (Shielded Metal Arc Welding), örtülü elektrot kullanılarak yapılan en yaygın kaynak yöntemidir. Gemi onarımlarında sıklıkla kullanılır.",
+      sections: [
+        { heading: "Çalışma Prensibi", paragraphs: ["Elektrot ile iş parçası arasında oluşan elektrik arkı her iki metali eritir. Elektrot örtüsü erir ve koruyucu gaz ile cüruf oluşturarak kaynak banyosunu atmosferden korur.", "DC veya AC akımla çalışabilir. DC ters polarite (DCEP) daha derin nüfuziyet sağlar."] },
+        { heading: "Elektrot Seçimi", paragraphs: [], table: { headers: ["AWS Kodu", "Örtü Tipi", "Pozisyon", "Uygulama"], rows: [["E6010", "Selülozik", "Tüm", "Boru kökü paso, iyi nüfuziyet"], ["E6013", "Rutil", "Tüm", "Genel amaçlı, kolay kullanım"], ["E7018", "Bazik (düşük H₂)", "Tüm", "Yüksek mukavemet, kritik birleşimler"]] } }
+      ],
+      keyPoints: ["E7018 elektrotu kritik gemi yapısal kaynaklarında tercih edilir.", "Bazik elektrotlar kullanım öncesi kurutma fırınında tutulmalıdır (nem → hidrojen çatlaması).", "Kaynak pozisyonu (düz, yatay, düşey, tavan) elektrot ve parametre seçimini etkiler."]
+    },
+    "Kaynak hataları ve muayene yöntemleri": {
+      title: "Kaynak Hataları ve Muayene Yöntemleri",
+      introduction: "Kaynak birleşimlerinin kalitesi gemi yapısal bütünlüğü için kritiktir. Hatalar mekanik dayanımı düşürür ve çatlak başlangıç noktası oluşturabilir.",
+      sections: [
+        { heading: "Yaygın Kaynak Hataları", paragraphs: [], table: { headers: ["Hata", "Nedeni", "Etkisi"], rows: [["Gözeneklilik (porosity)", "Gaz hapsolması, nemli elektrot", "Dayanım düşüşü"], ["Cüruf kapanması", "Yetersiz cüruf temizliği", "Gerilme yoğunlaşması"], ["Çatlak", "Hızlı soğuma, hidrojen, gerilme", "En tehlikeli hata"], ["Nüfuziyet eksikliği", "Düşük akım, yanlış teknik", "Mekanik dayanım kaybı"], ["Yanma oluğu (undercut)", "Yüksek akım, hızlı ilerleme", "Çentik etkisi"]] } },
+        { heading: "NDT Yöntemleri", paragraphs: [], bulletPoints: ["Görsel muayene (VT): İlk ve en temel kontrol.", "Ultrasonik muayene (UT): İç hataları tespit eder, kalınlık ölçümü.", "Radyografik muayene (RT): X-ışını veya gama ışını ile film üzerinde görüntüleme.", "Manyetik parçacık (MT): Yüzey ve yüzeye yakın çatlaklar.", "Sıvı penetrant (PT): Yüzey çatlakları, gözenekler."] }
+      ],
+      keyPoints: ["Çatlak en tehlikeli kaynak hatası olup her zaman tamir gerektirir.", "Klas kuruluşu kritik birleşimlerde %100 RT veya UT isteyebilir.", "NDT operatörleri sertifikalı (SNT-TC-1A veya ISO 9712) olmalıdır."]
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // YAKIT TEKNOLOJİSİ VE YÖNETİMİ
+  // ═══════════════════════════════════════════════════════════════
+  "fuel-technology": {
+    "HFO (Heavy Fuel Oil) özellikleri": {
+      title: "HFO (Heavy Fuel Oil) Özellikleri",
+      introduction: "HFO, ham petrolün rafinaj artığından elde edilen, yüksek viskoziteli ve düşük maliyetli deniz yakıtıdır. Büyük deniz dizel motorlarının geleneksel yakıtıdır.",
+      sections: [
+        { heading: "Fiziksel Özellikler", paragraphs: ["HFO yüksek viskoziteye sahiptir (genellikle 180-380 cSt @ 50°C). Kullanım öncesi 130-150°C'ye ısıtılarak viskozitesi 10-15 cSt'ye düşürülmelidir.", "Yoğunluğu 0.96-0.99 kg/L aralığındadır. Yüksek yoğunluk separatörde su ayrımını zorlaştırır."], table: { headers: ["Parametre", "Tipik Değer", "ISO 8217 Limiti (RMG 380)"], rows: [["Viskozite (50°C)", "300-380 cSt", "Max 380 cSt"], ["Yoğunluk (15°C)", "0.975-0.991 kg/L", "Max 0.991 kg/L"], ["Kükürt", "%1.0-3.5", "Bölgeye göre"], ["Flash point", "> 60°C", "Min 60°C"], ["Su", "%0.2-0.5", "Max 0.5%"], ["Al+Si", "30-60 ppm", "Max 60 ppm"]] } },
+        { heading: "Kullanım Sorunları", paragraphs: ["Katalizör ince parçacıkları (Al+Si) aşınma yapar; purifier ile uzaklaştırılmalıdır. Asfaltenler yakıt filtrelerini tıkayabilir. Uyumsuz yakıtların karıştırılması sludge oluşumuna neden olur."] }
+      ],
+      keyPoints: ["2020 sonrası scrubber'sız gemilerde HFO (>%0.50 S) kullanılamaz.", "Yakıt ısıtma sistemi arızası motor durdurma sebebidir.", "HFO depolama sıcaklığı pour point'in üzerinde tutulmalıdır."]
+    },
+    "VLSFO (Very Low Sulphur Fuel Oil)": {
+      title: "VLSFO (Very Low Sulphur Fuel Oil)",
+      introduction: "VLSFO, 2020 IMO kükürt düzenlemesi sonrası yaygınlaşan, kükürt oranı %0.50'nin altındaki deniz yakıtıdır.",
+      sections: [
+        { heading: "Özellikler", paragraphs: ["VLSFO, farklı rafinaj ürünlerinin harmanlanmasıyla üretilir. Viskozitesi HFO'dan düşüktür (genellikle 20-200 cSt @ 50°C). Stabilite ve uyumluluk sorunları HFO'ya göre daha sık görülür.", "Bazı VLSFO'lar parafenik yapıda olup yüksek pour point'e sahiptir; uygun ısıtma gerektirir. Bazıları ise aromatik yapıda olup uyumsuzluk riski taşır."] },
+        { heading: "Operasyonel Zorluklar", paragraphs: [], bulletPoints: ["Uyumluluk: Farklı VLSFO partilerinin karıştırılması sludge oluşturabilir (spot test önerilir).", "Cat fines: HFO'ya göre düşük ancak yine de purifier performansı kritiktir.", "Silindir yağı TBN: Düşük kükürtlü yakıtta düşük TBN'li (25-40) silindir yağı kullanılır.", "Viskozite: Geniş aralıkta değişir; viskozimetre ile sürekli izleme önerilir."] }
+      ],
+      keyPoints: ["VLSFO yakıt uyumluluk testi (spot test) farklı partilerde mutlaka yapılmalıdır.", "Düşük kükürt = düşük TBN silindir yağı gereksinimi.", "Bazı VLSFO'lar düşük viskozitede olduğundan ısıtma gerektirmeyebilir."]
+    },
+    "MGO ve MDO ayrımı": {
+      title: "MGO ve MDO Ayrımı",
+      introduction: "MGO (Marine Gas Oil) ve MDO (Marine Diesel Oil) düşük viskoziteli distilat yakıtlardır.",
+      sections: [
+        { heading: "Karşılaştırma", paragraphs: [], table: { headers: ["Özellik", "MGO (DMA)", "MDO (DMB)"], rows: [["Viskozite (40°C)", "2-6 cSt", "2-11 cSt"], ["Kükürt", "<%0.10", "<%0.50"], ["Artık bileşen", "Yok", "Az miktarda olabilir"], ["Fiyat", "En yüksek", "Orta"], ["Kullanım", "ECA bölgeleri, limanlar", "Genel operasyon"]] } },
+        { heading: "Kullanım Alanları", paragraphs: ["ECA bölgelerine girişte MGO'ya geçiş yapılır. Yardımcı dizel jeneratörlerin bir kısmı MGO ile çalıştırılır. Acil jeneratör genellikle MDO veya MGO ile çalışır."] }
+      ],
+      keyPoints: ["MGO düşük viskozitesi nedeniyle yakıt pompası aşınmasına neden olabilir.", "HFO → MGO geçişinde kademeli sıcaklık düşürme yapılmalıdır.", "MGO düşük sülfür içeriği nedeniyle yağlama kapasitesi zayıftır."]
+    },
+    "ISO 8217 yakıt standartları": {
+      title: "ISO 8217 Yakıt Standartları",
+      introduction: "ISO 8217, deniz yakıtlarının kalite parametrelerini tanımlayan uluslararası standarttır.",
+      sections: [
+        { heading: "Yakıt Sınıflandırması", paragraphs: ["Distilat yakıtlar DMA, DMB, DMC olarak; artık yakıtlar RMA, RMB, RMD, RME, RMG, RMK olarak sınıflandırılır.", "Her sınıf için viskozite, yoğunluk, flash point, su, kükürt, Al+Si, vanadyum gibi parametrelerin limit değerleri belirlenir."] },
+        { heading: "Temel Parametre Limitleri (RMG 380)", paragraphs: [], table: { headers: ["Parametre", "Limit"], rows: [["Viskozite (50°C)", "Max 380 cSt"], ["Yoğunluk (15°C)", "Max 991.0 kg/m³"], ["Flash point", "Min 60°C"], ["Pour point (kış/yaz)", "Max 30°C"], ["Su", "Max 0.50% v/v"], ["Al+Si", "Max 60 mg/kg"], ["Vanadyum", "Max 350 mg/kg"], ["Toplam sediment", "Max 0.10% m/m"]] } }
+      ],
+      keyPoints: ["Bunker alımında ISO 8217 referans alınır.", "BDN (Bunker Delivery Note) yakıtın ISO sınıfını belirtmelidir.", "Uyumsuz yakıt motor hasarına neden olabilir; analiz raporu beklenmeden kullanım risklidir."]
+    },
+    "Viskozite ve sıcaklık ilişkisi": {
+      title: "Viskozite ve Sıcaklık İlişkisi",
+      introduction: "Yakıt viskozitesi sıcaklıkla ters orantılı olarak değişir. Doğru enjeksiyon viskozitesi motor performansı için kritiktir.",
+      sections: [
+        { heading: "Viskozite Kontrolü", paragraphs: ["HFO enjeksiyon viskozitesi genellikle 10-15 cSt olmalıdır. Bu değeri sağlamak için yakıt 130-150°C'ye ısıtılır.", "Viskozimetre (viscotherm) sürekli olarak viskoziteyi ölçer ve ısıtıcı buhar valfini otomatik ayarlar."], formula: { expression: "Enjeksiyon sıcaklığı, yakıtın viskozite-sıcaklık grafiğinden belirlenir", variables: ["Hedef viskozite: 10-15 cSt (motor üreticisi önerisine göre)"] } },
+        { heading: "Viskozite Ölçüm Yöntemleri", paragraphs: ["Kinematik viskozite (cSt = mm²/s): Laboratuvarda capillary viskozimetre ile ölçülür.", "Dinamik viskozite (cP = mPa·s): Kinematik viskozite × yoğunluk.", "Gemi üzerinde online viskozimetre sürekli izleme sağlar."] }
+      ],
+      keyPoints: ["Yetersiz ısıtma: Kötü atomizasyon, eksik yanma, karbon birikimi.", "Aşırı ısıtma: Gaz oluşumu, pompa kavitasyonu riski.", "Yakıt değişimi sırasında viskozite geçişi kademeli yapılmalıdır."]
+    },
+    "Settling tank ve servis tank": {
+      title: "Settling Tank ve Servis Tank",
+      introduction: "Yakıt depolama ve arıtma sistemi, yakıtın motorlara temiz ve uygun koşullarda ulaşmasını sağlar.",
+      sections: [
+        { heading: "Settling Tank", paragraphs: ["Bunker tanklarından alınan yakıt ilk olarak settling tank'a aktarılır. Burada yer çekimi etkisiyle su ve ağır partiküller dibe çöker.", "Sıcaklık HFO için 60-70°C'de tutulur. Bekleme süresi en az 24 saat önerilir. Tank altındaki drain valfinden periyodik olarak su ve sludge boşaltılır."] },
+        { heading: "Servis Tank (Day Tank)", paragraphs: ["Purifier çıkışından gelen arıtılmış yakıt servis tankına aktarılır. Motor yakıt sistemi buradan beslenir.", "SOLAS gereği en az 8 saatlik yakıt kapasitesine sahip olmalıdır. Otonom sensörler ile su algılama ve alarm sistemi bulunur."] }
+      ],
+      keyPoints: ["Settling tank sıcaklığı yakıtın pour point'inin üzerinde tutulmalıdır.", "Servis tank seviyesi düşük alarm seviyesinin altına düşürülmemelidir.", "Tanklar arasında uyumsuz yakıtların karıştırılması önlenmelidir."]
+    },
+    "Bunker planlama ve sipariş": {
+      title: "Bunker Planlama ve Sipariş",
+      introduction: "Bunker operasyonu, geminin yakıt ihtiyacının planlanması, siparişi, alımı ve kalite kontrolünü kapsayan kritik bir süreçtir.",
+      sections: [
+        { heading: "Planlama", paragraphs: ["Sefer planına göre yakıt tüketimi hesaplanır: Tüketim = SFOC × Güç × Süre. Güvenlik payı (%10-15), kötü hava payı ve bekleme süreleri eklenir.", "ECA bölgeleri için düşük kükürtlü yakıt miktarı ayrıca planlanır."], formula: { expression: "Gerekli yakıt (ton) = SFOC (g/kWh) × Güç (kW) × Süre (h) / 10⁶ + Güvenlik payı", variables: [] }, example: { problem: "Ana motor 8000 kW'ta 12 gün seyir edecek, SFOC = 175 g/kWh. %15 güvenlik payı ile gerekli yakıt miktarını hesaplayınız.", steps: ["Süre = 12 × 24 = 288 saat", "Yakıt = 175 × 8000 × 288 / 10⁶ = 403.2 ton", "Güvenlik payı dahil = 403.2 × 1.15 = 463.7 ton"], result: "Yaklaşık 464 ton HFO siparişi verilmelidir." } }
+      ],
+      keyPoints: ["Bunker miktarı stability hesaplarını etkiler.", "Yakıt alım limanı fiyat, kalite ve lojistik açıdan değerlendirilir.", "Sipariş öncesi mevcut yakıtla uyumluluk kontrol edilmelidir."]
+    },
+    "Bunker Delivery Note (BDN)": {
+      title: "Bunker Delivery Note (BDN)",
+      introduction: "BDN, yakıt tedarikçisinin gemiye teslim ettiği yakıtın miktarını, özelliklerini ve MARPOL uyumunu belgeleyen resmi dokümandır.",
+      sections: [
+        { heading: "BDN İçeriği", paragraphs: ["MARPOL Annex VI Reg. 18 gereği BDN aşağıdaki bilgileri içermelidir:"], bulletPoints: ["Tedarikçi adı ve adresi", "Gemi adı, IMO numarası, bayrak", "Teslim tarihi, limanı ve miktarı", "Yakıt tanımı (ISO 8217 sınıfı)", "Kükürt içeriği (%m/m)", "Yoğunluk (15°C)", "Tedarikçi beyanı (MARPOL Annex VI uyumu)"] },
+        { heading: "Saklama ve Kontrol", paragraphs: ["BDN, yakıt numunesiyle birlikte teslim tarihinden itibaren en az 3 yıl gemide saklanmalıdır.", "MARPOL numunesi mühürlü şişede 400 mL olarak alınır ve üzerine gemi/tedarikçi temsilcisi imzası atılır. Port State Control denetimlerinde yakıt numunesi ve BDN kontrol edilir."] }
+      ],
+      keyPoints: ["BDN olmadan yakıt alımı MARPOL ihlalidir.", "Numune en az 3 yıl saklanır.", "BDN ile analiz raporu arasındaki tutarsızlık raporlanmalıdır."]
+    },
+    "Yakıt numunesi alma prosedürü": {
+      title: "Yakıt Numunesi Alma Prosedürü",
+      introduction: "Yakıt numunesi, teslim edilen yakıtın kalitesini doğrulamak ve olası uyuşmazlıklarda kanıt sağlamak amacıyla alınır.",
+      sections: [
+        { heading: "Numune Tipleri", paragraphs: [], table: { headers: ["Numune Tipi", "Amaç", "Miktar"], rows: [["MARPOL numunesi", "Kükürt doğrulaması (PSC)", "Min 400 mL, mühürlü"], ["Tedarikçi numunesi", "Kalite analizi", "2-5 litre"], ["Gemi numunesi", "Bağımsız analiz", "2-5 litre"], ["Karşılaştırma numunesi", "Uyuşmazlık çözümü", "2-5 litre"]] } },
+        { heading: "Alma Yöntemi", paragraphs: ["Numune, manifold hattına bağlı sürekli damlama (drip sampling) yöntemi ile tüm bunker operasyonu boyunca alınmalıdır. Nokta numune (spot sample) yalnızca drip mümkün olmadığında kabul edilir.", "Numune şişesi etiketlenir, her iki taraf (gemi/tedarikçi) imzalar ve mühürlenir."] }
+      ],
+      keyPoints: ["MARPOL numunesi düzenleyici otorite tarafından talep edilebilir.", "Drip sampling en temsili sonucu verir.", "Numuneler direkt güneş ışığından korunarak saklanır."]
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // MAKİNE DAİRESİ OPERASYONLARI
+  // ═══════════════════════════════════════════════════════════════
+  "engine-room-ops": {
+    "Ana makine seyir hazırlık prosedürü": {
+      title: "Ana Makine Seyir Hazırlık Prosedürü",
+      introduction: "Ana makinenin seyir için hazırlanması, sistematik kontrol ve testleri içeren kritik bir operasyondur. Yetersiz hazırlık motor arızası veya gecikmeye neden olabilir.",
+      sections: [
+        { heading: "Hazırlık Adımları", paragraphs: ["Kalkıştan en az 2-4 saat önce hazırlık başlatılır. Süre motor tipine ve boyutuna göre değişir."], bulletPoints: ["Yağlama yağı seviye ve basınç kontrolü; ön yağlama pompası çalıştırılır.", "Soğutma suyu (HT ve LT) seviye kontrolü, pompalar devreye alınır.", "Yakıt sistemi kontrolü: servis tank seviyesi, filtreler, viskozite ayarı.", "Silindir yağlama sistemi çalıştırılır (iki zamanlı motorlarda).", "Turboşarj yardımcı üfleyici (auxiliary blower) devreye alınır.", "Başlatma havası basıncı kontrol edilir (≥ 25 bar).", "Gösterge musluklarından silindirler havalandırılır (turning gear ile).", "Turning gear devreye alınarak motor yavaşça döndürülür (minimum 1 tam tur).", "Turning gear çıkarılır ve interlock kontrol edilir.", "Kontrol sistemi (telegraph, remote/local seçim) test edilir.", "Dümen sistemi ve manevra testi yapılır."] },
+        { heading: "Sıcak Bekleme (Stand-by)", paragraphs: ["Köprüüstünden stand-by komutu geldiğinde motor manevra moduna alınır. Telgraf cevapları doğrulanır, motor ileri ve geri yönde deneme çalıştırması yapılır.", "Stand-by süresince tüm parametreler yakından izlenir ve anomaliler raporlanır."] }
+      ],
+      keyPoints: ["Turning gear çıkarılmadan motor asla çalıştırılmamalıdır.", "Gösterge musluklarından su veya yağ geliyorsa nedeni araştırılmalıdır.", "Hazırlık kontrol listesi (checklist) kullanılmalı ve imzalanmalıdır."]
+    },
+    "Makine vardiyası devir-teslim": {
+      title: "Makine Vardiyası Devir-Teslim",
+      introduction: "Makine vardiya devir-teslimi, gelen ve giden vardiya mühendisleri arasında bilgi aktarımını sağlayan yapılandırılmış bir prosedürdür.",
+      sections: [
+        { heading: "Devir-Teslim İçeriği", paragraphs: ["Giden vardiya mühendisi, gelen vardiyaya aşağıdaki bilgileri aktarır:"], bulletPoints: ["Ana makine ve jeneratörlerin çalışma durumu ve parametreleri.", "Devam eden bakım veya onarım işleri.", "Anormal durumlar, alarm geçmişi ve yapılan müdahaleler.", "Balast, yakıt ve tatlı su transfer operasyonları.", "Köprüüstünden alınan özel talimatlar (hız değişikliği, yakıt değişimi vb.).", "Sonraki limana tahmini varış süresi ve beklenen operasyonlar."] },
+        { heading: "Kontrol Turu", paragraphs: ["Gelen vardiyacı, devir-teslim öncesinde veya hemen sonrasında makine dairesinde kapsamlı bir kontrol turu (round) yapmalıdır. Bu turda ekipman sesleri, sıcaklıklar, sızıntılar ve seviyeler kontrol edilir.", "Devir-teslim, Engine Log Book'a kaydedilir ve her iki mühendis tarafından imzalanır."] }
+      ],
+      keyPoints: ["Devir-teslim asla telefon veya interkom ile yapılmamalıdır.", "Anormal durumlar açık ve net biçimde aktarılmalıdır.", "Gelen vardiyacı bilgi aldığı konuları anladığını teyit etmelidir."]
+    },
+    "Performans parametreleri izleme": {
+      title: "Performans Parametreleri İzleme",
+      introduction: "Motor ve ekipman performansının sürekli izlenmesi, erken arıza tespiti ve verimli operasyon için gereklidir.",
+      sections: [
+        { heading: "İzlenen Parametreler", paragraphs: [], table: { headers: ["Parametre", "Tipik Aralık", "Sapma Anlamı"], rows: [["Egzoz sıcaklığı (silindir başına)", "350-450°C", "Yüksek: enjektör/ring arızası"], ["Süpürme havası basıncı", "1.5-3.5 bar", "Düşük: turboşarj/filtre"], ["Soğutma suyu sıcaklığı (çıkış)", "80-85°C", "Yüksek: termostat/pompa"], ["Yağlama yağı basıncı", "3-5 bar", "Düşük: yatak aşınması/pompa"], ["SFOC", "165-185 g/kWh", "Yüksek: kötü yanma/timing"], ["Turboşarj devri", "Nominal ±5%", "Düşük: fouling/surging"]] } },
+        { heading: "Trend Analizi", paragraphs: ["Anlık değerler kadar zaman içindeki trend de önemlidir. Egzoz sıcaklığının haftalık artış trendi yaklaşan enjektör arızasını, SFOC artışı ise verim kaybını gösterir.", "Modern gemilerde performans izleme yazılımları otomatik trend grafikleri oluşturur."] }
+      ],
+      keyPoints: ["Silindirler arası egzoz sıcaklık farkı 50°C'yi geçmemelidir.", "Performans verileri düzenli olarak kaydedilmeli ve analiz edilmelidir.", "Ani parametre değişiklikleri acil müdahale gerektirebilir."]
+    },
+    "Blackout ve güç geri kazanımı": {
+      title: "Blackout ve Güç Geri Kazanımı",
+      introduction: "Blackout, geminin tüm elektrik gücünü kaybetmesi durumudur. Ciddi bir acil durum olup hızlı ve düzenli müdahale gerektirir.",
+      sections: [
+        { heading: "Blackout Nedenleri", paragraphs: [], bulletPoints: ["Çalışan jeneratörün aşırı yüklenmesi ve trip etmesi.", "Yakıt sistemi arızası (hava girişi, filtre tıkanması).", "Soğutma suyu kaybı → otomatik durdurma.", "Yağlama yağı basınç düşüşü → otomatik durdurma.", "Elektrik arızası (kısa devre, toprak kaçağı).", "Otomasyon sistemi hatası."] },
+        { heading: "Güç Geri Kazanım Prosedürü", paragraphs: ["Blackout anında navigasyon ve acil aydınlatma akü beslemeli UPS'ten sağlanır. Dümen sistemi acil güç ile çalışır."], bulletPoints: ["Sakin kal, durumu köprüüstüne bildir.", "Makine dairesine in (karanlıkta acil aydınlatma mevcut).", "Jeneratör trip nedenini araştır ve gider.", "Bir jeneratörü manual olarak başlat ve baraya al.", "Kritik ekipmanları sırasıyla devreye al (dümen pompası, yağlama, soğutma).", "Ana makineyi tekrar çalıştır ve seyir durumuna dön.", "Tüm süreci Engine Log Book'a kaydet."] }
+      ],
+      keyPoints: ["Blackout tatbikatı SOLAS gereği periyodik olarak yapılmalıdır.", "Acil jeneratör 45 saniye içinde otomatik devreye girmelidir.", "Preferential trip sistemi blackout'u önleyen ilk savunma hattıdır."]
+    },
+    "Manevra modu geçiş prosedürü": {
+      title: "Manevra Modu Geçiş Prosedürü",
+      introduction: "Liman yaklaşımı ve dar kanal seyri gibi durumlarda ana makine manevra moduna alınır. Bu modda hız değişiklikleri ve geri yol komutlarına hızlı yanıt verilmesi beklenir.",
+      sections: [
+        { heading: "Geçiş Prosedürü", paragraphs: [], bulletPoints: ["Köprüüstünden manevra talebi geldiğinde, ikinci jeneratör devreye alınır.", "Yakıt sistemi kontrolü: HFO'dan MDO/MGO'ya geçiş gerekiyorsa başlatılır.", "Yardımcı üfleyiciler (auxiliary blowers) devreye alınır.", "Turning gear interlocking kontrol edilir.", "Başlatma havası basıncı ≥ 25 bar doğrulanır.", "Ana makine slow ahead/astern test edilir.", "Dümen testleri yapılır (hard port, hard starboard).", "Manevra hazır raporu köprüüstüne verilir."] }
+      ],
+      keyPoints: ["Manevra modunda makine dairesinde sürekli nöbet tutulur.", "MGO'ya geçiş ECA bölgelerine girişte zorunlu olabilir.", "Acil durma ve geri yol zamanları test edilmeli ve kayıt altına alınmalıdır."]
+    },
+    "Acil durma ve geri yol": {
+      title: "Acil Durma ve Geri Yol",
+      introduction: "Acil durma (emergency stop) ve acil geri yol (crash astern) komutları çarpışma riski gibi kritik durumlarda verilir.",
+      sections: [
+        { heading: "Acil Durma", paragraphs: ["Ana makineye yakıt kesilerek motor durdurulur. İki zamanlı motorlarda krank mili kısa sürede durur; dört zamanlı motorlarda atalet nedeniyle biraz daha uzun sürer.", "Acil durma butonu köprüüstü ve makine dairesinde bulunur."] },
+        { heading: "Acil Geri Yol (Crash Astern)", paragraphs: ["İki zamanlı motorlarda: Motor durdurulur → starting air ile ters yönde çevrilerek çalıştırılır. Toplam süre 15-30 saniye.", "Dört zamanlı CPP gemilerde: Motor devri sabit, pervane hatvesi negatife çevrilir. Daha hızlı tepki.", "Crash astern sırasında turboşarj devrinin düşmesi nedeniyle yardımcı üfleyiciler otomatik devreye girer."] }
+      ],
+      keyPoints: ["Crash astern, motor ve şaft hattına büyük mekanik yük bindirir.", "Deniz testlerinde crash astern süresi ölçülür ve kayıt edilir.", "SOLAS gereği pervane tam ileri → tam geri süresi belgelenir."]
+    },
+    "Makine dairesi yangını": {
+      title: "Makine Dairesi Yangını",
+      introduction: "Makine dairesi yangını, gemideki en tehlikeli acil durumlardan biridir. Yakıt sızıntısı, yağ buharı ve elektrik arçları en yaygın tutuşma kaynaklarıdır.",
+      sections: [
+        { heading: "İlk Müdahale", paragraphs: [], bulletPoints: ["Yangın alarmını çal ve köprüüstüne bildir.", "Yangının boyutuna göre portatif söndürücü ile ilk müdahaleyi yap.", "Yakıt hızlı kapama valflerini kapat (quick closing valves).", "Havalandırma fanlarını durdur ve damperleri kapat.", "Yangın kontrolden çıkıyorsa tahliye et ve su geçirmez kapıları kapat."] },
+        { heading: "Sabit Söndürme Sistemi", paragraphs: ["Makine dairesi tahliye edildikten ve tüm personel sayıldıktan sonra CO₂ veya FM200 (HFC-227ea) sabit söndürme sistemi devreye alınabilir.", "CO₂ sistemi devreye alınmadan önce: tüm personel dışarıda, tüm kapı ve havalandırma kapalı, uyarı alarmı verilmiş olmalıdır."] }
+      ],
+      keyPoints: ["Quick closing valve testi periyodik olarak yapılmalıdır.", "CO₂ boşaltma öncesi personel sayımı hayati önem taşır.", "Yakıt sızıntılarının sıcak yüzeylere teması en yaygın yangın nedenidir."]
+    },
+    "Engine room check list": {
+      title: "Engine Room Check List",
+      introduction: "Makine dairesi kontrol listeleri, operasyonel güvenliği ve prosedüre uyumu sağlayan standart dokümanlardır.",
+      sections: [
+        { heading: "Temel Kontrol Listeleri", paragraphs: [], bulletPoints: ["Seyir hazırlık kontrol listesi (Departure Checklist)", "Manevra kontrol listesi", "Makine dairesi terk kontrol listesi (UMS geçiş)", "Acil durum kontrol listeleri (yangın, blackout, su sızıntısı)", "Bunker operasyonu kontrol listesi", "Bakım öncesi güvenlik kontrol listesi (Lock Out/Tag Out)"] },
+        { heading: "Kullanım Prensibi", paragraphs: ["Her madde ilgili personel tarafından fiziksel olarak kontrol edilir ve imzalanır. Kontrol listesi prosedürün yerini almaz, prosedürün tamamlandığının kanıtıdır.", "ISM Code, güvenlik kritik operasyonlar için kontrol listesi kullanımını zorunlu kılar."] }
+      ],
+      keyPoints: ["Kontrol listeleri sadece imzalanmak için değil, gerçekten kontrol yapmak için kullanılır.", "Eksik veya geçiştirilen maddeler ciddi sonuçlara yol açabilir.", "Kontrol listeleri periyodik olarak gözden geçirilir ve güncellenir."]
+    },
+    "UMS (Unmanned Machinery Space) operasyonu": {
+      title: "UMS Operasyonu",
+      introduction: "UMS, makine dairesinin belirli saatlerde insansız olarak çalıştırılmasını mümkün kılan otomasyon sistemi ve operasyonel düzenidir.",
+      sections: [
+        { heading: "UMS Gereklilikleri", paragraphs: [], bulletPoints: ["Alarm ve izleme sistemi: Tüm kritik parametreler izlenir ve alarmlar makine mühendisinin kamarasına ve köprüüstüne iletilir.", "Otomatik yavaşlama ve durdurma: Kritik arızalarda motor otomatik olarak yavaşlar veya durur.", "Yangın algılama ve söndürme: Otomatik algılama, manuel veya otomatik söndürme.", "Çift güç kaynağı: Alarm sisteminin bağımsız güç beslemesi.", "Uzaktan başlatma: Jeneratör uzaktan çalıştırılabilmeli."] },
+        { heading: "UMS Geçiş Prosedürü", paragraphs: ["Makine dairesi terk edilmeden önce kapsamlı bir kontrol turu yapılır, tüm sistemler izlenir, alarm sistemi test edilir ve UMS kontrol listesi tamamlanır.", "Nöbetçi mühendis taşınabilir alarm cihazını yanına alır ve çağrılabilir durumda olur."] }
+      ],
+      keyPoints: ["UMS notasyonu klas kuruluşu tarafından verilir.", "Alarm cihazı 'dead man alarm' (hareketsizlik alarmı) içerir.", "UMS modunda bile makine dairesi düzenli aralıklarla kontrol edilmelidir."]
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // MAKİNE DAİRESİ GÜVENLİĞİ
+  // ═══════════════════════════════════════════════════════════════
+  "engine-room-safety": {
+    "Kişisel koruyucu donanım (KKD) türleri": {
+      title: "Kişisel Koruyucu Donanım (KKD) Türleri",
+      introduction: "Makine dairesinde çalışan personel, çeşitli fiziksel ve kimyasal tehlikelere maruz kalır. KKD kullanımı son savunma hattıdır.",
+      sections: [
+        { heading: "KKD Kategorileri", paragraphs: [], table: { headers: ["KKD Tipi", "Koruma Sağladığı Tehlike", "Standart"], rows: [["Baret", "Düşen cisim, çarpma", "EN 397"], ["Kulak koruyucu", "Gürültü (>85 dBA)", "EN 352"], ["Koruyucu gözlük/yüzlük", "Kıvılcım, kimyasal sıçrama", "EN 166"], ["Koruyucu eldiven", "Isı, kimyasal, kesik", "EN 388/407"], ["Güvenlik ayakkabısı", "Düşen cisim, kayma", "EN ISO 20345"], ["Tulum/iş elbisesi", "Isı, kıvılcım, kimyasal", "EN ISO 11612"], ["Güvenlik kemeri", "Yüksekten düşme", "EN 361"]] } },
+        { heading: "Makine Dairesi Zorunlu KKD", paragraphs: ["Makine dairesine girerken minimum olarak: baret, koruyucu gözlük, kulak koruyucu, güvenlik ayakkabısı ve uygun iş elbisesi giyilmelidir.", "İşe özel ek KKD (örn. kaynak maskesi, kimyasal eldiven, solunum koruyucu) risk değerlendirmesine göre belirlenir."] }
+      ],
+      keyPoints: ["KKD son savunma hattıdır; önce mühendislik kontrolü uygulanmalıdır.", "Hasarlı veya süresi dolmuş KKD kullanılmamalıdır.", "KKD kullanımı ISM Code ve şirket SMS prosedürlerince zorunludur."]
+    },
+    "Yangın üçgeni ve yangın sınıfları": {
+      title: "Yangın Üçgeni ve Yangın Sınıfları",
+      introduction: "Yangın, yanıcı madde, oksijen ve ısının (tutuşma kaynağı) birleşmesiyle oluşur. Bu üç unsur 'yangın üçgeni' olarak bilinir.",
+      sections: [
+        { heading: "Yangın Üçgeni", paragraphs: ["Yangın üçgeninin herhangi bir kenarı kaldırılırsa yangın söner: yakıt kesilir (quick closing valve), oksijen kesilir (CO₂, köpük) veya sıcaklık düşürülür (su)."] },
+        { heading: "Yangın Sınıfları", paragraphs: [], table: { headers: ["Sınıf", "Yanıcı Madde", "Söndürücü"], rows: [["A", "Katılar (ahşap, kumaş, kağıt)", "Su, köpük"], ["B", "Yanıcı sıvılar (yakıt, yağ, boya)", "Köpük, CO₂, kuru kimyevi toz"], ["C", "Yanıcı gazlar (LPG, LNG)", "Kuru kimyevi toz, CO₂"], ["D", "Yanıcı metaller (alüminyum, magnezyum)", "Özel toz"], ["E/F", "Elektrik ekipmanı / Pişirme yağları", "CO₂ / Islak kimyevi"]] } },
+        { heading: "Makine Dairesi Yangın Riskleri", paragraphs: [], bulletPoints: ["Yakıt sızıntısının sıcak yüzeye (egzoz manifoldu, turboşarj) teması.", "Yağlama yağı sızıntısı ve buharlaşması.", "Elektrik kısa devresi veya aşırı ısınma.", "Ekonomizer kurum (soot) yangını.", "Purifier arızası sonucu yağ sıçraması."] }
+      ],
+      keyPoints: ["Makine dairesi B sınıfı yangın riski en yüksek bölgedir.", "Quick closing valve'lar yangının yakıt kaynağını keser.", "Yalıtım malzemesi yakıta emdirilmişse yangın riski artar."]
+    },
+    "Makine dairesi sabit söndürme (CO₂, FM200)": {
+      title: "Makine Dairesi Sabit Söndürme Sistemleri",
+      introduction: "Makine dairesi sabit söndürme sistemi, yangın kontrolden çıktığında devreye alınan son çare söndürme yöntemidir.",
+      sections: [
+        { heading: "CO₂ Sistemi", paragraphs: ["Yüksek basınçlı CO₂ tüplerinden makine dairesine CO₂ boşaltılarak oksijen konsantrasyonu %21'den %15'in altına düşürülür. Boğucu etkiyle yangın söner.", "Boşaltma öncesi: personel sayımı, havalandırma kapatma, acil kaçış kapıları kapatma, uyarı alarmı verilmesi zorunludur."] },
+        { heading: "FM200 (HFC-227ea)", paragraphs: ["CO₂'ye alternatif temiz gaz söndürücüdür. Kimyasal olarak yanma reaksiyonunu keser. İnsan sağlığına CO₂'den daha az zararlıdır ancak yine de tahliye gerektirir.", "Daha hızlı söndürme sağlar ve ekipmana zarar vermez."] },
+        { heading: "Devreye Alma Prosedürü", paragraphs: [], bulletPoints: ["Yangın alarmı verilir, köprüüstü bilgilendirilir.", "Makine dairesi TAHLİYE edilir, personel sayılır.", "Havalandırma fanları durdurulur, damperler kapatılır.", "Quick closing valve'lar kapatılır, yakıt pompası durdurulur.", "CO₂ uyarı alarmı verilir (sesli ve ışıklı).", "Kaptan veya sorumlu zabit onay verir.", "CO₂ boşaltma kolu çekilir veya butona basılır.", "Kapılar kapalı tutulur, tekrar giriş yapılmaz."] }
+      ],
+      keyPoints: ["CO₂ boşaltma öncesi personel sayımı EN KRİTİK adımdır.", "CO₂ ortamına girmek ölümcüldür; SCBA olmadan giriş yapılmamalıdır.", "CO₂ şişeleri periyodik olarak tartılarak kontrol edilir (ağırlık kaybı = sızıntı)."]
+    },
+    "Kapalı alan tanımı ve tehlikeler": {
+      title: "Kapalı Alan Tanımı ve Tehlikeler",
+      introduction: "Kapalı (confined/enclosed) alanlar, sınırlı giriş-çıkışı olan ve sürekli insan çalışması için tasarlanmamış mekanlardır. Gemide ölümlü kazaların önemli bir kısmı kapalı alan girişlerinde yaşanır.",
+      sections: [
+        { heading: "Gemide Kapalı Alanlar", paragraphs: [], bulletPoints: ["Ballast tankları", "Kargo tankları (özellikle tanker)", "Çift dip (double bottom) tankları", "Void alanlar", "Boru tünelleri", "Kazan su bölmesi", "Separator odaları (küçük, havalandırmasız olanlar)"] },
+        { heading: "Tehlikeler", paragraphs: [], table: { headers: ["Tehlike", "Kaynak", "Risk"], rows: [["Oksijen eksikliği", "Korozyon (O₂ tüketimi), inert gaz", "Bilinç kaybı, ölüm"], ["Zehirli gaz (H₂S)", "Organik madde çürümesi", "Bilinç kaybı, ölüm"], ["Patlayıcı atmosfer", "Hidrokarbon buharı", "Patlama, yanık"], ["Fiziksel tehlike", "Kayma, düşme, sıkışma", "Yaralanma"]] } },
+        { heading: "Güvenli Giriş Prosedürü", paragraphs: [], bulletPoints: ["Risk değerlendirmesi yapılır.", "Giriş izni (Enclosed Space Entry Permit) alınır.", "Alan yeterince havalandırılır (mekanik fan ile).", "Atmosfer testi yapılır: O₂ (%20.9), H₂S (<10 ppm), HC (%LFL<1).", "Giriş boyunca sürekli atmosfer izleme yapılır.", "Dışarıda kurtarma ekibi hazır bekler (en az 2 kişi).", "SCBA ve kurtarma halatı/harness hazır bulundurulur."] }
+      ],
+      keyPoints: ["Kapalı alana İZİNSİZ giriş ölümcüldür ve kesinlikle yasaktır.", "Arkadaş kurtarmaya çalışırken hayatını kaybetmek en yaygın senaryodur.", "Atmosfer testi giriş öncesi VE giriş süresince yapılmalıdır."]
+    },
+    "ISM Code gereklilikleri": {
+      title: "ISM Code Gereklilikleri",
+      introduction: "ISM (International Safety Management) Code, gemilerin güvenli yönetimi ve deniz kirliliğinin önlenmesi için uluslararası standart oluşturur.",
+      sections: [
+        { heading: "Temel Unsurlar", paragraphs: ["ISM Code, SOLAS Chapter IX'da yer alır. Tüm ticari gemiler ve işletmeleri için zorunludur."], bulletPoints: ["Güvenlik ve çevre koruma politikası", "Şirket sorumluluğu ve yetki tanımları", "Designated Person Ashore (DPA) atanması", "Kaptan'ın yetki ve sorumluluğu", "Kaynakların ve personelin temini", "Gemi operasyonları için planlar ve prosedürler", "Acil durum hazırlığı", "Uygunsuzluk, kaza ve tehlikeli durumların raporlanması", "Bakım prosedürleri", "Dokümantasyon ve kayıt yönetimi", "Şirket doğrulaması, gözden geçirme ve değerlendirme"] },
+        { heading: "SMS (Safety Management System)", paragraphs: ["ISM Code kapsamında şirket bir SMS oluşturur. SMS, politikalardan prosedürlere, kontrol listelerinden raporlama formlarına kadar tüm güvenlik dokümanlarını içerir.", "DOC (Document of Compliance) şirkete, SMC (Safety Management Certificate) gemiye verilir."] }
+      ],
+      keyPoints: ["ISM uyumsuzluğu geminin alıkonmasına neden olabilir.", "DPA, şirket ile gemi arasında güvenlik köprüsü görevindedir.", "Near-miss raporlama kültürü kazaları önlemenin en etkili yoludur."]
+    },
+    "Risk değerlendirme (Risk Assessment)": {
+      title: "Risk Değerlendirme",
+      introduction: "Risk değerlendirme, bir işin veya operasyonun tehlikelerini tanımlayarak riskleri derecelendiren ve kontrol önlemleri belirleyen sistematik bir süreçtir.",
+      sections: [
+        { heading: "Risk Matrisi", paragraphs: ["Risk = Olasılık × Şiddet formülüyle hesaplanır. 5×5 matris yaygın olarak kullanılır."], table: { headers: ["", "Önemsiz (1)", "Küçük (2)", "Orta (3)", "Büyük (4)", "Felaket (5)"], rows: [["Çok olası (5)", "5", "10", "15", "20", "25"], ["Olası (4)", "4", "8", "12", "16", "20"], ["Mümkün (3)", "3", "6", "9", "12", "15"], ["Olası değil (2)", "2", "4", "6", "8", "10"], ["Nadir (1)", "1", "2", "3", "4", "5"]] } },
+        { heading: "Kontrol Hiyerarşisi", paragraphs: ["Tehlike kontrol öncelik sırası:"], bulletPoints: ["Eliminasyon: Tehlikeyi tamamen ortadan kaldır.", "Yerine koyma: Daha az tehlikeli alternatif kullan.", "Mühendislik kontrolü: Fiziksel bariyer, koruyucu.", "İdari kontrol: Prosedür, eğitim, işaret, izin sistemi.", "KKD: Son savunma hattı."] }
+      ],
+      keyPoints: ["Risk değerlendirmesi iş başlamadan ÖNCE yapılır.", "Yüksek riskli işler (15+) ek onay ve önlem gerektirir.", "Risk değerlendirmesi tüm çalışanların katılımıyla yapılmalıdır."]
+    },
+    "İş izin sistemi (Permit to Work)": {
+      title: "İş İzin Sistemi (Permit to Work)",
+      introduction: "PTW, yüksek riskli işlerin güvenli biçimde yürütülmesini sağlayan resmi yetkilendirme sistemidir.",
+      sections: [
+        { heading: "PTW Gerektiren İşler", paragraphs: [], bulletPoints: ["Sıcak çalışma (hot work): Kaynak, kesme, taşlama", "Kapalı alan girişi (enclosed space entry)", "Elektrik üzerinde çalışma (yüksek gerilim)", "Yüksekte çalışma", "Basınçlı ekipman üzerinde çalışma", "Borüstü çalışma (working overside)", "Asbest içeren malzeme ile çalışma"] },
+        { heading: "PTW Süreci", paragraphs: [], bulletPoints: ["Risk değerlendirmesi yapılır.", "İzin formu doldurulur: iş tanımı, tehlikeler, önlemler, KKD.", "Yetkili kişi (Chief Engineer veya Master) onaylar.", "İş sahası hazırlanır: izolasyon, kilitleme (LOTO), test.", "İş tamamlandığında alan kontrol edilir ve izin kapatılır.", "İzin formları kayıt altına alınır."] }
+      ],
+      keyPoints: ["PTW olmadan yüksek riskli iş başlatılmamalıdır.", "İzin belirli süre için geçerlidir; süre aşılırsa yenilenir.", "Lock Out / Tag Out (LOTO) enerji izolasyonunun fiziksel garantisidir."]
+    },
+    "Yangın algılama sistemi": {
+      title: "Yangın Algılama Sistemi",
+      introduction: "Makine dairesi yangın algılama sistemi, yangını erken aşamada tespit ederek hızlı müdahale imkânı sağlar.",
+      sections: [
+        { heading: "Dedektör Tipleri", paragraphs: [], table: { headers: ["Tip", "Algılama Prensibi", "Kullanım Alanı"], rows: [["Duman dedektörü (optik)", "Işık saçılması/zayıflaması", "Yaşam mahalleri, kontrol odası"], ["Duman dedektörü (iyonizasyon)", "İyonizasyon akım değişimi", "Genel alanlar"], ["Isı dedektörü (sabit sıcaklık)", "Belli sıcaklık aşımı (57-77°C)", "Makine dairesi, mutfak"], ["Isı dedektörü (artış hızı)", "Hızlı sıcaklık artışı", "Makine dairesi"], ["Alev dedektörü (UV/IR)", "Ultraviyole/kızılötesi radyasyon", "Makine dairesi, açık alanlar"], ["Manuel ihbar butonu", "Personel aktivasyonu", "Tüm bölgeler"]] } },
+        { heading: "Sistem Yapısı", paragraphs: ["Yangın algılama paneli köprüüstünde bulunur ve tüm bölgelerin dedektörlerini izler. Alarm durumunda sesli ve ışıklı uyarı verir.", "Makine dairesinde genellikle ısı dedektörleri ve alev dedektörleri kullanılır. Duman dedektörleri makine dairesinin normal ortamında yanlış alarm verebilir."] }
+      ],
+      keyPoints: ["Dedektörler periyodik olarak test edilmelidir.", "Yanlış alarm nedeniyle dedektör devre dışı bırakılmamalıdır.", "Yangın algılama sistemi bağımsız güç kaynağına sahip olmalıdır."]
+    },
+    "MSDS (Güvenlik Bilgi Formu) okuma": {
+      title: "MSDS (Güvenlik Bilgi Formu) Okuma",
+      introduction: "MSDS (Material Safety Data Sheet) veya SDS, kimyasal maddelerin tehlikelerini, güvenli kullanım koşullarını ve acil durum bilgilerini içeren standart belgedir.",
+      sections: [
+        { heading: "MSDS Bölümleri (16 Bölüm - GHS)", paragraphs: [], bulletPoints: ["1. Madde/karışım ve şirket tanımı", "2. Tehlike tanımı (GHS piktogramları)", "3. Bileşim/içerik bilgisi", "4. İlk yardım önlemleri", "5. Yangınla mücadele", "6. Kaza sonucu yayılma", "7. Elleçleme ve depolama", "8. Maruziyet kontrolleri / KKD", "9. Fiziksel ve kimyasal özellikler", "10. Stabilite ve reaktivite", "11. Toksikolojik bilgi", "12-16. Çevre, bertaraf, taşıma, mevzuat, diğer"] },
+        { heading: "Makine Dairesi Kimyasalları", paragraphs: ["Makine dairesinde yaygın kullanılan kimyasallar: soğutma suyu kimyasalları, kazan su işlem kimyasalları, temizlik solventleri, boya ve tiner, epoksi yapıştırıcılar. Her birinin MSDS'i kolayca erişilebilir yerde bulunmalıdır."] }
+      ],
+      keyPoints: ["MSDS çalışma alanına yakın ve erişilebilir olmalıdır.", "GHS piktogramları uluslararası olarak standartlaştırılmıştır.", "Kimyasal döküntüsünde MSDS'e göre hareket edilir."]
+    },
+    "Portatif söndürücü tipleri": {
+      title: "Portatif Söndürücü Tipleri",
+      introduction: "Portatif yangın söndürücüler, yangınla ilk müdahale için kullanılan taşınabilir ekipmanlardır.",
+      sections: [
+        { heading: "Söndürücü Tipleri ve Uygunluk", paragraphs: [], table: { headers: ["Söndürücü Tipi", "A Sınıfı", "B Sınıfı", "C Sınıfı", "Elektrik"], rows: [["Su", "✓", "✗", "✗", "✗"], ["Köpük (AFFF)", "✓", "✓", "✗", "✗"], ["CO₂", "✗", "✓", "✓", "✓"], ["Kuru kimyevi toz (ABC)", "✓", "✓", "✓", "✓"]] } },
+        { heading: "Kullanım Tekniği (PASS)", paragraphs: [], bulletPoints: ["P – Pull: Pimi çek.", "A – Aim: Nozülü alevlerin tabanına yönelt.", "S – Squeeze: Tetik kolunu sık.", "S – Sweep: Sağa sola süpürme hareketi yap."] }
+      ],
+      keyPoints: ["CO₂ söndürücü elektrik yangınlarında güvenlidir.", "Kuru toz söndürücü en çok yönlü tiptir ancak ekipmana zarar verebilir.", "Söndürücüler aylık görsel kontrol, yıllık bakım ve 5/10 yıllık hidrostatik teste tabi tutulur."]
+    },
+  },
 };
 
 export function getMachineSubTopicContent(topicSlug: string, subTopicTitle: string): MachineSubTopicContent | null {
