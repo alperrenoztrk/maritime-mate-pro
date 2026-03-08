@@ -11,30 +11,19 @@ import {
 } from "lucide-react";
 
 const bridgeDeviceImages = {
-  shipBridge: new URL("../assets/maritime/ship-bridge.jpg", import.meta.url).href,
-  lighthouse: new URL("../assets/maritime/lighthouse.jpg", import.meta.url).href,
-  oceanWaves: new URL("../assets/maritime/ocean-waves.jpg", import.meta.url).href,
-  navigationCompassPhoto: new URL("../assets/maritime/navigation-compass.jpg", import.meta.url).href,
-
-  radarDisplay:
-    "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1400&q=80",
-  ecdisDisplay:
-    "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80",
-  gpsSatellites:
-    "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1400&q=80",
-  compassDiagram:
-    "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1400&q=80",
-
-  vhfRadio:
-    "https://images.unsplash.com/photo-1581091215367-59ab6dcef35a?auto=format&fit=crop&w=1400&q=80",
-  dscDistress:
-    "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1400&q=80",
-  navtexReceiver:
-    "https://images.unsplash.com/photo-1517976547714-720226b864c1?auto=format&fit=crop&w=1400&q=80",
-  aisTargets:
-    "https://images.unsplash.com/photo-1530543787849-128d94430c6b?auto=format&fit=crop&w=1400&q=80",
-  autopilotControl:
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80"
+  shipBridge: new URL("../assets/bridge/ship-bridge-overview.jpg", import.meta.url).href,
+  vhfRadio: new URL("../assets/bridge/vhf-radio.jpg", import.meta.url).href,
+  dscPanel: new URL("../assets/bridge/dsc-panel.jpg", import.meta.url).href,
+  ecdisDisplay: new URL("../assets/bridge/ecdis-display.jpg", import.meta.url).href,
+  radarDisplay: new URL("../assets/bridge/radar-display.jpg", import.meta.url).href,
+  navtexReceiver: new URL("../assets/bridge/navtex-receiver.jpg", import.meta.url).href,
+  aisDisplay: new URL("../assets/bridge/ais-display.jpg", import.meta.url).href,
+  gyroCompass: new URL("../assets/bridge/gyro-compass.jpg", import.meta.url).href,
+  autopilotControl: new URL("../assets/bridge/autopilot-control.jpg", import.meta.url).href,
+  inmarsatTerminal: new URL("../assets/bridge/inmarsat-terminal.jpg", import.meta.url).href,
+  echoSounder: new URL("../assets/bridge/echo-sounder.jpg", import.meta.url).href,
+  vdrUnit: new URL("../assets/bridge/vdr-unit.jpg", import.meta.url).href,
+  bnwasPanel: new URL("../assets/bridge/bnwas-panel.jpg", import.meta.url).href,
 } as const;
 
 export type BridgeDeviceId =
