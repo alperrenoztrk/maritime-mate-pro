@@ -7,6 +7,7 @@ interface TaskRow {
   responsible: string;
   worker?: string;
   slug?: string;
+  href?: string;
 }
 
 const TaskLink = ({ task, slug, href }: { task: string; slug?: string; href?: string }) => {
