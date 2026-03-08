@@ -188,6 +188,7 @@ const AnimatedRoutes = () => {
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />
         <Route path="/machinery" element={<PageTransition><MachineryHubPage /></PageTransition>} />
         <Route path="/ship-tasks" element={<PageTransition><ShipTasksPage /></PageTransition>} />
+        <Route path="/ship-tasks/:taskSlug" element={<PageTransition><ShipTaskDetailPage /></PageTransition>} />
         <Route path="/hub" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/hub/:categoryId" element={<PageTransition><HubCategoryPage /></PageTransition>} />
         <Route path="/crew/:roleSlug" element={<PageTransition><CrewRoleDetailPage /></PageTransition>} />
