@@ -319,34 +319,15 @@ const MaritimeNews = () => {
       </div>
 
       <div className="mx-auto w-full max-w-3xl space-y-4">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <h1 className="text-2xl font-bold tracking-tight text-white">Denizcilik Haberleri</h1>
-            <p className="mt-1 text-sm text-white/70">
-              Güncel denizcilik haberleri (RSS). Sola kaydırarak ana sayfaya dönebilirsiniz.
-            </p>
-            {fetchedAt ? (
-              <p className="mt-1 text-xs text-white/50">Son güncelleme: {formatDateTR(fetchedAt)}</p>
-            ) : null}
-          </div>
-          <div className="flex shrink-0 items-center gap-2">
-            <Button
-              variant="secondary"
-              className="bg-white/10 hover:bg-white/15"
-              onClick={() => query.refetch()}
-              disabled={query.isFetching}
-            >
-              <RefreshCw className={"mr-2 h-4 w-4 " + (query.isFetching ? "animate-spin" : "")} />
-              Yenile
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white/20 bg-transparent text-white hover:bg-white/10"
-              onClick={() => navigate("/")}
-            >
-              Ana Sayfa
-            </Button>
-          </div>
+        <div className="flex items-center justify-between gap-3">
+          <h1 className="text-2xl font-bold tracking-tight text-white">Denizcilik Haberleri</h1>
+          <Button
+            variant="outline"
+            className="border-white/20 bg-transparent text-white hover:bg-white/10"
+            onClick={() => navigate("/")}
+          >
+            Ana Sayfa
+          </Button>
         </div>
 
         <Separator className="bg-white/10" />
