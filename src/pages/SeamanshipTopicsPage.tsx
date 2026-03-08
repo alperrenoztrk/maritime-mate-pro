@@ -2945,12 +2945,57 @@ export default function SeamanshipTopicsPage() {
                   </p>
                 </div>
 
+                {/* Topic Image/Diagram */}
+                {currentContent.image && (
+                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                    <img
+                      src={currentContent.image}
+                      alt={currentContent.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
                   <div className="text-foreground leading-relaxed whitespace-pre-line">
                     {currentContent.content}
                   </div>
                 </div>
+
+                {/* Data Table */}
+                {currentContent.table && (
+                  <div className="rounded-xl border border-border/40 overflow-hidden">
+                    <div className="bg-muted/60 px-4 py-3 border-b border-border/40">
+                      <h3 className="font-semibold text-foreground text-sm">{currentContent.table.title}</h3>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-border/40 bg-muted/30">
+                            {currentContent.table.headers.map((header, i) => (
+                              <th key={i} className="px-3 py-2.5 text-left font-medium text-foreground whitespace-nowrap">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {currentContent.table.rows.map((row, rowIdx) => (
+                            <tr key={rowIdx} className="border-b border-border/20 last:border-0 hover:bg-muted/20 transition-colors">
+                              {row.map((cell, cellIdx) => (
+                                <td key={cellIdx} className={`px-3 py-2 text-foreground/80 ${cellIdx === 0 ? 'font-medium text-foreground' : ''}`}>
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
 
                 {/* Bullet Points */}
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
