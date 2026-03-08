@@ -108,6 +108,87 @@ function estimateReadingTime(text: string): string {
   return `${minutes} dk okuma`;
 }
 
+/* ─── Article fetcher service ─── */
+async function fetchArticleContent(url: string): Promise<{
+  title: string;
+  content: string;
+  author?: string;
+  publishedAt?: string;
+  warning?: string;
+}> {
+  const baseUrl = (import.meta.env.VITE_SUPABASE_URL as string || "").replace(/\/+$/, "");
+  const key = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY) as string;
+
+  if (!baseUrl || !key) throw new Error("Backend yapılandırması eksik.");
+
+  const res = await fetch(`${baseUrl}/functions/v1/fetch-article`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      apikey: key,
+      authorization: `Bearer ${key}`,
+    },
+    body: JSON.stringify({ url }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    let errorMsg = `Makale alınamadı (${res.status})`;
+    try {
+      const parsed = JSON.parse(text);
+      if (parsed.error) errorMsg = parsed.error;
+    } catch { /* ignore */ }
+    throw new Error(errorMsg);
+  }
+
+  return res.json();
+}
+
+/* ─── Render article content with basic formatting ─── */
+function ArticleRenderer({ content }: { content: string }) {
+  const paragraphs = content.split("\n\n").filter(Boolean);
+
+  return (
+    <div className="space-y-4 text-sm leading-relaxed text-white/85">
+      {paragraphs.map((para, i) => {
+        const trimmed = para.trim();
+        if (trimmed.startsWith("## ")) {
+          return (
+            <h3 key={i} className="text-base font-bold text-white mt-6 mb-2">
+              {trimmed.replace(/^## /, "")}
+            </h3>
+          );
+        }
+        if (trimmed.startsWith("> ")) {
+          return (
+            <blockquote key={i} className="border-l-2 border-blue-400/40 pl-4 italic text-white/70">
+              {trimmed.replace(/^> /, "")}
+            </blockquote>
+          );
+        }
+        if (trimmed.startsWith("• ")) {
+          const items = trimmed.split("\n").filter(l => l.trim().startsWith("• "));
+          return (
+            <ul key={i} className="list-disc list-inside space-y-1 text-white/80">
+              {items.map((item, j) => (
+                <li key={j}>{item.replace(/^• /, "")}</li>
+              ))}
+            </ul>
+          );
+        }
+        // Handle bold and italic markers
+        const formatted = trimmed
+          .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-white">$1</strong>')
+          .replace(/_([^_]+)_/g, '<em>$1</em>');
+
+        return (
+          <p key={i} dangerouslySetInnerHTML={{ __html: formatted }} />
+        );
+      })}
+    </div>
+  );
+}
+
 const MaritimeNews = () => {
   const navigate = useNavigate();
   const touchStartX = useRef<number | null>(null);
