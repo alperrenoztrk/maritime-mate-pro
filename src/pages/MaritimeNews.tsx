@@ -485,10 +485,6 @@ const MaritimeNews = () => {
                             {it.summary && (
                               <p className="mt-2 line-clamp-2 text-xs text-white/60">{it.summary}</p>
                             )}
-                            <div className="mt-auto flex items-center gap-1 pt-3 text-xs text-blue-400">
-                              <span>Uygulamada oku</span>
-                              <ChevronRight className="h-3 w-3" />
-                            </div>
                           </div>
                         </button>
                       );
