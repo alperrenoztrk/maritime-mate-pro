@@ -1170,7 +1170,7 @@ const content: ContentMap = {
       title: "Yangın Üçgeni ve Yangın Sınıfları",
       introduction: "Yangın, yanıcı madde, oksijen ve ısının (tutuşma kaynağı) birleşmesiyle oluşur. Bu üç unsur 'yangın üçgeni' olarak bilinir.",
       sections: [
-        { heading: "Yangın Üçgeni", paragraphs: ["Yangın üçgeninin herhangi bir kenarı kaldırılırsa yangın söner: yakıt kesilir (quick closing valve), oksijen kesilir (CO₂, köpük) veya sıcaklık düşürülür (su)."] },
+        { heading: "Yangın Üçgeni", paragraphs: ["Yangın üçgeninin herhangi bir kenarı kaldırılırsa yangın söner: yakıt kesilir (quick closing valve), oksijen kesilir (CO₂, köpük) veya sıcaklık düşürülür (su)."], diagram: { src: "/diagrams/machine/yangin-ucgeni.svg", alt: "Yangın Üçgeni - Isı, Yakıt, Oksijen", caption: "Şekil: Yangın üçgeni – üç unsurun birleşimi" } },
         { heading: "Yangın Sınıfları", paragraphs: [], table: { headers: ["Sınıf", "Yanıcı Madde", "Söndürücü"], rows: [["A", "Katılar (ahşap, kumaş, kağıt)", "Su, köpük"], ["B", "Yanıcı sıvılar (yakıt, yağ, boya)", "Köpük, CO₂, kuru kimyevi toz"], ["C", "Yanıcı gazlar (LPG, LNG)", "Kuru kimyevi toz, CO₂"], ["D", "Yanıcı metaller (alüminyum, magnezyum)", "Özel toz"], ["E/F", "Elektrik ekipmanı / Pişirme yağları", "CO₂ / Islak kimyevi"]] } },
         { heading: "Makine Dairesi Yangın Riskleri", paragraphs: [], bulletPoints: ["Yakıt sızıntısının sıcak yüzeye (egzoz manifoldu, turboşarj) teması.", "Yağlama yağı sızıntısı ve buharlaşması.", "Elektrik kısa devresi veya aşırı ısınma.", "Ekonomizer kurum (soot) yangını.", "Purifier arızası sonucu yağ sıçraması."] }
       ],
