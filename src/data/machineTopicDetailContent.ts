@@ -907,7 +907,7 @@ const content: ContentMap = {
       introduction: "Gerilme, bir cismin birim alanına etki eden iç kuvvettir. Deformasyon ise gerilme sonucu oluşan şekil değişimidir. Mukavemet hesaplarının temelidir.",
       sections: [
         { heading: "Normal Gerilme (σ)", paragraphs: ["Kesit alanına dik etki eden kuvvet, normal gerilme oluşturur. Çekme (+) veya basma (−) olabilir."], formula: { expression: "σ = F / A", variables: ["σ: Normal gerilme (MPa = N/mm²)", "F: Eksenel kuvvet (N)", "A: Kesit alanı (mm²)"] }, example: { problem: "Çapı 50 mm olan bir çelik çubuğa 100 kN çekme kuvveti uygulanmaktadır. Gerilmeyi hesaplayınız.", steps: ["A = π/4 × 50² = 1963.5 mm²", "σ = F/A = 100000 / 1963.5 = 50.9 MPa"], result: "Çekme gerilmesi 50.9 MPa'dır." } },
-        { heading: "Birim Uzama (ε)", paragraphs: ["Birim uzama, orijinal boya göre uzama miktarıdır: ε = ΔL / L₀. Boyutsuz bir büyüklüktür, genellikle yüzde (%) olarak ifade edilir."] }
+        { heading: "Birim Uzama (ε)", paragraphs: ["Birim uzama, orijinal boya göre uzama miktarıdır: ε = ΔL / L₀. Boyutsuz bir büyüklüktür, genellikle yüzde (%) olarak ifade edilir."], diagram: { src: "/diagrams/machine/gerilme-gerinim.svg", alt: "Gerilme-Gerinim Diyagramı (Çelik)", caption: "Şekil: Çelik için tipik gerilme-gerinim eğrisi" } }
       ],
       keyPoints: ["Gerilme birimi: 1 MPa = 1 N/mm² = 10⁶ Pa.", "Güvenlik katsayısı ile emniyet gerilmesi belirlenir: σ_izin = σ_akma / n.", "Denizcilik uygulamalarında n = 2-4 arasında seçilir."]
     },
