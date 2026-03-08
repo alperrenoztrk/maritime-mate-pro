@@ -460,13 +460,13 @@ const Index = () => {
         @keyframes ocean-swell-4 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes ocean-swell-5 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
         @keyframes ocean-foam { 0%,100% { opacity: 0.15; } 50% { opacity: 0.25; } }
-        @keyframes beacon-rotate {
-          0%, 100% { transform: rotate(-30deg); opacity: 0.9; }
-          50% { transform: rotate(60deg); opacity: 0.6; }
+        @keyframes lighthouse-rotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
-        @keyframes beacon-pulse {
-          0%, 100% { transform: scale(1); opacity: 0.9; }
-          50% { transform: scale(1.3); opacity: 0.5; }
+        @keyframes fresnel-pulse {
+          0%, 100% { opacity: 0.8; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.15); }
         }
         @keyframes title-shine {
           to { background-position: 200% center; }
