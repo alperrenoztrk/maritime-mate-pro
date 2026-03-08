@@ -148,10 +148,10 @@ const ThreeColTable = ({ tasks, headers }: { tasks: TaskRow[]; headers: [string,
         </tr>
       </thead>
       <tbody className="divide-y divide-border/30">
-        {tasks.map(({ task, responsible, worker, slug }) => (
+        {tasks.map(({ task, responsible, worker, slug, href }) => (
           <tr key={task}>
             <td className="py-1.5 pr-4 text-foreground">
-              <TaskLink task={task} slug={slug} />
+              <TaskLink task={task} slug={slug} href={href} />
             </td>
             <td className="py-1.5 pr-4 text-primary">{responsible}</td>
             <td className="py-1.5 text-muted-foreground">{worker}</td>
