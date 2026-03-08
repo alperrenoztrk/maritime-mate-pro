@@ -1,286 +1,468 @@
-import type { CSSProperties } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
+  ArrowRight,
+  Anchor,
+  Battery,
   BookOpen,
   ChevronDown,
   ChevronRight,
-  Anchor,
-  Battery,
   Cog,
   Droplets,
   Factory,
   Flame,
   Gauge,
+  Info,
   ShieldCheck,
   Snowflake,
+  Zap,
+  Ship,
+  Fuel,
+  Wind,
+  CircleDot,
+  type LucideIcon,
 } from "lucide-react";
+import engineRoomImg from "@/assets/maritime/engine-room.jpg";
 
-const machinerySystems = [
+/* ───── types ───── */
+interface MachineSystem {
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  color: string;
+  specs: string[];
+}
+
+interface EngineType {
+  title: string;
+  icon: LucideIcon;
+  color: string;
+  powerRange: string;
+  efficiency: string;
+  fuel: string;
+  usage: string;
+  summary: string;
+  advantages: string[];
+  disadvantages: string[];
+}
+
+/* ───── data ───── */
+const machinerySystems: MachineSystem[] = [
   {
-    name: "Ana Makine (Sevk Sistemi)",
-    description:
-      "Ana dizel makine, türbin ve diesel-electric tahrik kombinasyonlarının devreye alma, yük paylaşımı ve seyir performansını izleme",
+    name: "Ana Makine",
+    description: "Ana dizel motor, türbin ve tahrik kombinasyonları",
     icon: Cog,
+    color: "from-amber-500 to-orange-600",
+    specs: ["2-Zamanlı / 4-Zamanlı", "50–80.000 kW", "80–120 RPM"],
   },
   {
     name: "Yardımcı Makineler",
-    description:
-      "Yardımcı dizel, acil durum ve ana şaft tahrikli jeneratörlerin paralel çalışma, senkronizasyon ve güç yönetimi",
+    description: "Jeneratörler, kompresörler ve pompa grupları",
     icon: Factory,
+    color: "from-blue-500 to-indigo-600",
+    specs: ["Dizel Jeneratör", "500–3000 kW", "720/900 RPM"],
   },
   {
-    name: "Elektrik & Güç Sistemleri",
-    description:
-      "Ana/acil switchboard, UPS, trafolar ve batarya gruplarının yük aktarımı, gerilim/frekans denetimi ve kesintisiz güç sürekliliği",
+    name: "Elektrik Sistemleri",
+    description: "Switchboard, UPS, trafolar ve güç dağıtımı",
     icon: Battery,
+    color: "from-yellow-500 to-amber-600",
+    specs: ["440V / 6.6kV", "60 Hz", "3-Fazlı AC"],
   },
   {
-    name: "Yakıt & Yağ Sistemleri",
-    description:
-      "Fuel/Lube oil separatörleri, günlük tanklar ve transfer/besleme pompalarının arıtma, ısıtma ve otomatik tank balansı",
+    name: "Yakıt & Yağ",
+    description: "Separatörler, tanklar, transfer ve besleme hatları",
     icon: Droplets,
+    color: "from-orange-500 to-red-600",
+    specs: ["HFO / MGO / VLSFO", "Purifier", "Viscotherm"],
   },
   {
     name: "Pompalar",
-    description:
-      "Sintine, balast, yangın ve soğutma suyu pompalarının otomatik start/stop, basınç koruma ve hat yedekliliği",
+    description: "Sintine, balast, yangın ve soğutma suyu pompaları",
     icon: Gauge,
+    color: "from-cyan-500 to-blue-600",
+    specs: ["Santrifüj / Pistonlu", "0.5–200 m³/h", "Otomatik Start"],
   },
   {
     name: "Soğutma & HVAC",
-    description:
-      "Merkezi soğutma, HVAC, soğuk hava depoları ve reefer devrelerinin ısı değiştirici kontrolü, fan/pompa kademesi ve nem-sıcaklık optimizasyonu",
+    description: "Merkezi soğutma, klima ve reefer devreleri",
     icon: Snowflake,
+    color: "from-sky-400 to-cyan-600",
+    specs: ["Tatlı Su / Deniz Suyu", "Isı Değiştirici", "R-134a / R-407C"],
   },
   {
-    name: "Kazanlar (Boiler)",
-    description:
-      "Auxiliary boiler ve EGB ile yakma hava ayarı, buhar basıncı regülasyonu ve ısıtma devrelerinin arıza/tekrar devreye alma işlemleri",
+    name: "Kazanlar",
+    description: "Yardımcı kazan, EGB ve buhar devreleri",
     icon: Flame,
+    color: "from-red-500 to-rose-600",
+    specs: ["7–10 bar", "Composite Boiler", "Economizer"],
   },
   {
-    name: "Emniyet & Kontrol Sistemleri",
-    description:
-      "Yangın algılama/CO₂, ECR, alarm ve izleme sistemlerinin sensör doğrulama, arıza izolasyonu ve otomatik güvenlik müdahaleleri",
+    name: "Emniyet Sistemleri",
+    description: "Yangın algılama, CO₂, alarm ve izleme sistemleri",
     icon: ShieldCheck,
+    color: "from-emerald-500 to-green-600",
+    specs: ["SOLAS Ch. II-2", "CO₂ / FM-200", "SCBA"],
   },
   {
     name: "Güverte Makineleri",
-    description:
-      "Irgat, mooring winch, kreyn, capstan ve Ro-Ro rampalarının yük limit kontrolü, hidrolik/elektrik tahrik gözetimi ve emniyet kilitlemeleri",
+    description: "Irgat, vinç, capstan ve mooring winch",
     icon: Anchor,
+    color: "from-slate-500 to-zinc-600",
+    specs: ["Hidrolik / Elektrik", "SWL Sertifikalı", "Fren Sistemi"],
   },
 ];
 
-const machineryDetailSections = [
+const engineTypes: EngineType[] = [
   {
-    title: "Dizel Ana Makine (Slow/Medium/High-Speed)",
-    summary:
-      "Dizel çevrimli pistonlu motorlar; düşük devirde doğrudan şaft, orta/yüksek devirde redüksiyon dişlisiyle pervaneye güç aktarır.",
-    bullets: [
-      "Avantaj: Yüksek verim ve dayanıklılık, ağır yakıtla çalışabilme, geniş servis ağı.",
-      "Dezavantaj: Ağırlık/hacim, titreşim ve emisyonlar için ek arıtma gerekebilir.",
-      "Kullanım: Büyük ticari gemilerde slow-speed; Ro-Ro/feribotlarda medium-speed; küçük feribot/devriye botlarında high-speed.",
-    ],
+    title: "Dizel Ana Makine",
+    icon: Cog,
+    color: "from-slate-600 to-zinc-700",
+    powerRange: "0.5 – 80+ MW",
+    efficiency: "%48–52 (termal)",
+    fuel: "HFO / VLSFO / MGO",
+    usage: "Konteyner, tanker, dökme yük",
+    summary: "Yüksek verimli pistonlu motorlar. İki zamanlı büyük yavaş devirli motorlar ana tahrikte; dört zamanlı orta/yüksek devirli motorlar jeneratörlerde kullanılır.",
+    advantages: ["Yüksek termal verim ve düşük SFOC", "Ağır yakıtlarla çalışabilme", "Uzun çalışma ömrü ve sağlamlık"],
+    disadvantages: ["NOx/SOx emisyonları (SCR, scrubber gerektirir)", "Periyodik overhaul için uzun duruş süreleri", "Yüksek ağırlık ve hacim"],
   },
   {
-    title: "Dual-Fuel Dizel (DF) Ana Makine",
-    summary:
-      "Gaz modunda küçük pilot dizel püskürtmesiyle tutuşan dizel mimarisi; LNG/LPG/metanol + dizel yakıt esnekliği sunar.",
-    bullets: [
-      "Avantaj: SOx/PM emisyonlarında ciddi azalma, NOx uyumu kolay, yakıt seçeneği geniş.",
-      "Dezavantaj: Gaz besleme ve güvenlik sistemleri karmaşık; LNG'de metan kayması konusu.",
-      "Kullanım: LNG taşıyıcılar, çevreci feribotlar, yeni nesil konteyner ve offshore tedarik gemileri.",
-    ],
+    title: "Dual-Fuel (DF) Motor",
+    icon: Fuel,
+    color: "from-green-600 to-emerald-700",
+    powerRange: "2 – 80 MW",
+    efficiency: "%46–50",
+    fuel: "LNG + Pilot Dizel",
+    usage: "LNG taşıyıcı, yeni nesil konteyner",
+    summary: "Gaz modunda pilot dizel püskürtmesiyle tutuşan motorlar. SOx/PM emisyonlarını neredeyse sıfıra indirir, NOx Tier III uyumunu kolaylaştırır.",
+    advantages: ["SOx/PM emisyonu neredeyse sıfır", "NOx Tier III uyumu kolay", "Yakıt esnekliği (LNG + Dizel)"],
+    disadvantages: ["Kriyojenik depolama ve FGSS karmaşıklığı", "Metan kayması (methane slip) riski", "Yüksek ilk yatırım maliyeti"],
   },
   {
-    title: "Gaz Türbini Tahrik",
-    summary: "Brayton çevrimiyle çalışan kompakt makineler; redüksiyon dişlisiyle pervane veya jeneratöre bağlanır.",
-    bullets: [
-      "Avantaj: Çok yüksek güç/ağırlık oranı, düşük titreşim, hızlı güç artışı.",
-      "Dezavantaj: Kısmi yükte verim düşer, yakıt tüketimi dizelden yüksek, sıcak parça bakımı maliyetli.",
-      "Kullanım: CODAG/CODLAG kombinasyonlu savaş gemileri, yüksek hızlı feribotlar, bazı yatlar.",
-    ],
+    title: "Gaz Türbini",
+    icon: Wind,
+    color: "from-sky-600 to-blue-700",
+    powerRange: "5 – 40 MW",
+    efficiency: "%30–38",
+    fuel: "MGO / Doğal Gaz",
+    usage: "Savaş gemisi, hızlı feribot",
+    summary: "Brayton çevrimiyle çalışan kompakt makineler. Yüksek güç/ağırlık oranı ve düşük titreşimle kısa sürede tam güce ulaşır.",
+    advantages: ["Çok yüksek güç/ağırlık oranı", "Düşük titreşim ve sessiz çalışma", "Hızlı devreye alma"],
+    disadvantages: ["Kısmi yükte düşük verim", "Yüksek kaliteli yakıt ihtiyacı", "Pahalı sıcak parça bakımı"],
   },
   {
-    title: "Buhar Türbini ve Kazan Sistemi",
-    summary:
-      "Kazanda üretilen buhar türbinde genişleyerek şaftı döndürür; kondenser ve besi suyu devresi kapalı çevrim sağlar.",
-    bullets: [
-      "Avantaj: Yüksek güçte titreşimsiz çalışma; LNG taşıyıcılarında boil-off gazı değerlendirebilir.",
-      "Dezavantaj: Modern dizellere göre düşük verim, kazan/türbin ve su kimyası bakımı karmaşık.",
-      "Kullanım: Eski nesil LNG tankerleri, bazı uçak gemileri, buz kıranlar, nükleer tahrikte ısı kaynağı olarak.",
-    ],
+    title: "Buhar Türbini",
+    icon: Flame,
+    color: "from-orange-600 to-red-700",
+    powerRange: "10 – 50 MW",
+    efficiency: "%28–35",
+    fuel: "HFO / Boil-off Gaz",
+    usage: "LNG taşıyıcı, buz kıran",
+    summary: "Kazanda üretilen yüksek basınçlı buhar türbin kademelerinden geçerek mekanik enerji üretir. Pürüzsüz tork ve düşük titreşim sağlar.",
+    advantages: ["Pürüzsüz tork üretimi", "Boil-off gaz değerlendirebilme", "Sürekli yüksek güçte çalışma"],
+    disadvantages: ["Modern dizellere göre düşük verim", "Kazan/kondanser bakım karmaşıklığı", "Yüksek kütle ve hacim"],
   },
   {
-    title: "Nükleer Tahrik (Buhar Türbini ile)",
-    summary: "Reaktördeki fisyon ısısı buhar üretir ve türbinleri döndürür; çok uzun menzil ve yüksek sürekli güç sağlar.",
-    bullets: [
-      "Avantaj: Yakıt ikmaline düşük bağımlılık, uzun süre yüksek güç.",
-      "Dezavantaj: Lisans/güvenlik gereksinimleri, ilk yatırım ve atık yönetimi maliyetli.",
-      "Kullanım: Askerî uçak gemisi/denizaltı, bazı buz kıranlar.",
-    ],
-  },
-  {
-    title: "CODAD / CODAG / CODOG / CODLAG / IFEP",
-    summary:
-      "Dizel, gaz türbini ve elektrik motorlarının farklı hız/görev profilleri için kombinasyonlu kullanımı; esnek güç yönetimi sunar.",
-    bullets: [
-      "Avantaj: Ekonomik seyir için dizel, sprint için gaz türbini; CODLAG/IFEP ile sessiz seyir ve dağıtılabilir güç.",
-      "Dezavantaj: Dişli/şaft ve kontrol sistemi karmaşıklığı, bakım ve eğitim ihtiyacı.",
-      "Kullanım: Fırkateyn/muhrip, sessiz seyir isteyen denizaltı ve büyük yolcu/feribotlarda IFEP.",
-    ],
-  },
-  {
-    title: "Tam Elektrikli / Hibrit-Elektrikli Tahrik",
-    summary:
-      "Dizel jeneratörler (veya gaz türbini/nükleer) elektrik üretir; frekans dönüştürücülü motorlar pervaneyi döndürür, batarya destek verebilir.",
-    bullets: [
-      "Avantaj: Yerleşimde esneklik, düşük titreşim ve iyi manevra; batarya ile düşük yük verimi ve hızlı yanıt artar.",
-      "Dezavantaj: Güç elektroniği soğutma/kablo ağırlığı, harmonik ve EMC yönetimi gereksinimi.",
-      "Kullanım: Yolcu/gezinti gemileri, buz kıranlar, offshore inşaat/tedarik, DP gemileri ve feribotlar.",
-    ],
+    title: "Dizel-Elektrik / Hibrit",
+    icon: Zap,
+    color: "from-violet-600 to-purple-700",
+    powerRange: "1 – 30 MW",
+    efficiency: "%40–48",
+    fuel: "MGO / Batarya",
+    usage: "DP gemisi, kruvaziyer, römorkör",
+    summary: "Dizel motorlar jeneratörleri döndürür; elektrik güç dağıtım sistemi tahrik motorlarını besler. Batarya desteğiyle emisyon azaltımı sağlar.",
+    advantages: ["Kısmi yükte iyi verim", "Layout esnekliği ve düşük gürültü", "Batarya ile hızlı güç yanıtı"],
+    disadvantages: ["Güç elektroniği soğutma gereksinimi", "Yüksek yatırım ve entegrasyon karmaşıklığı", "Harmonik kontrol ihtiyacı"],
   },
   {
     title: "Azipod / Pod Tahrik",
-    summary:
-      "Elektrik motoru ve pervane aynı döner gondol içinde; 360° dönebilme ile dümen ihtiyacını azaltır ve manevrayı güçlendirir.",
-    bullets: [
-      "Avantaj: Üstün manevra, kısalan şaft hattı, pulling tipte verim artışı, gürültü/titreşim azaltımı.",
-      "Dezavantaj: Yatırım maliyeti ve sızdırmazlık/bakım hassasiyeti; güçlü elektrik altyapısı ister.",
-      "Kullanım: Yolcu/gezinti gemileri, buz kıranlar, dinamik konumlamalı offshore gemileri, feribotlar.",
-    ],
-  },
-  {
-    title: "Pervane-Dışı Yüksek İtki Sistemleri",
-    summary: "Waterjet, Voith-Schneider ve thruster çözümleri manevra ve hız odaklı itki seçenekleri sunar.",
-    bullets: [
-      "Waterjet: Yüksek hızda verimli, pervanesiz jet akışı; sığ su ve manevrada güçlü ama düşük hızda verimsiz.",
-      "Voith-Schneider: Dikey dönen kanatlarla anında yönlenebilir itki; römorkör ve feribotlarda hassas manevra.",
-      "Tunnel/azimuth thruster: Dinamik konumlama, yanaşma ve DP kabiliyeti için ek itki birimleri.",
-    ],
-  },
-  {
-    title: "Alternatif Yakıt ve Yeni Teknolojiler",
-    summary:
-      "Metanol, amonyak, hidrojen yakıt hücresi ve batarya çözümleri sıfıra yakın emisyon hedefleri için geliştiriliyor.",
-    bullets: [
-      "Metanol motorları: Düşük SOx/PM, güvenlik gereksinimli yakıt sistemi; dizel verimine yakın.",
-      "Amonyak: Karbonsuz potansiyel, toksisite ve NOx kontrolü nedeniyle AR-GE aşamasında.",
-      "Yakıt hücresi/batarya: Sessiz ve lokal emisyonsuz; şu an küçük güç/yardımcı tahrik ve kısa mesafe feribotlarda yaygın.",
-    ],
-  },
-  {
-    title: "Yardımcı Dizel Jeneratörler ve PTO/PTI",
-    summary: "Elektrik üretimi ve şafttan güç alma/şafta güç verme sistemleri enerji yönetimini optimize eder.",
-    bullets: [
-      "Avantaj: Ana makine yüküne göre optimize enerji, limanda düşük emisyon için shore-power veya PTO desteği.",
-      "Dezavantaj: Ek güç elektroniği, dişli ve kavrama karmaşıklığı; yük paylaşım algoritması gerektirir.",
-      "Kullanım: Çoğu ticari gemide yardımcı/jeneratör seti, enerji verimliliği odaklı PTO/PTI konfigürasyonları.",
-    ],
-  },
-  {
-    title: "Yardımcı Kazanlar ve Isı Geri Kazanımı",
-    summary:
-      "Ana makine egzozu veya bağımsız yakma ile buhar/sıcak su üretip yakıt/yağ/kargo ısıtma ve yaşam mahalli konforu sağlar.",
-    bullets: [
-      "Avantaj: Economizer ile atık ısıdan yakıt tasarrufu, geniş kullanım yelpazesi.",
-      "Dezavantaj: Kazan suyu kimyası, kurum/korozyon kontrolü ve termal şok riskleri dikkat ister.",
-      "Kullanım: Çoğu ticari gemide yardımcı kazan; egzoz gazı kazanlarıyla kombine çözümler.",
-    ],
+    icon: CircleDot,
+    color: "from-indigo-600 to-blue-700",
+    powerRange: "5 – 25 MW",
+    efficiency: "%45–50",
+    fuel: "Elektrik (jeneratörden)",
+    usage: "Kruvaziyer, buz kıran, DP",
+    summary: "Elektrik motoru ve pervane aynı döner gondol içinde. 360° dönebilme ile dümen ihtiyacını ortadan kaldırır ve üstün manevra yeteneği sağlar.",
+    advantages: ["360° manevra kabiliyeti", "Kısalan şaft hattı ve verim artışı", "Düşük gürültü ve titreşim"],
+    disadvantages: ["Yüksek yatırım maliyeti", "Sızdırmazlık ve bakım hassasiyeti", "Güçlü elektrik altyapısı gerektirir"],
   },
 ];
 
-export default function MachineryHubPage() {
-  const highRefreshRateStyles: CSSProperties = {
-    ["--frame-rate" as string]: "120",
-    ["--animation-duration" as string]: "8.33ms",
-    ["--transition-duration" as string]: "16.67ms",
-  };
-
+/* ───── sub‑components ───── */
+function SystemCard({ system }: { system: MachineSystem }) {
   return (
-    <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-      data-no-translate
-      style={highRefreshRateStyles}
+    <motion.div
+      whileHover={{ y: -4 }}
+      className="group relative flex flex-col gap-3 rounded-xl border border-border/50 bg-card/80 p-4 shadow-sm backdrop-blur transition-colors hover:border-primary/40 hover:shadow-md"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
+      <div className="flex items-center gap-3">
+        <span className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${system.color} text-white shadow-md`}>
+          <system.icon className="h-5 w-5" />
+        </span>
+        <div>
+          <h3 className="text-sm font-bold text-foreground">{system.name}</h3>
+          <p className="text-[11px] leading-snug text-muted-foreground">{system.description}</p>
+        </div>
       </div>
+      <div className="flex flex-wrap gap-1.5">
+        {system.specs.map((spec) => (
+          <span key={spec} className="rounded-md bg-muted/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+            {spec}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
-        <header className="space-y-3 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground backdrop-blur">
-            Hesaplama Merkezi
+function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOpen: boolean; onToggle: () => void }) {
+  return (
+    <div className="rounded-xl border border-border/50 bg-card/80 shadow-sm backdrop-blur transition-colors hover:border-primary/30">
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center gap-3 p-4 text-left"
+      >
+        <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${engine.color} text-white shadow-md`}>
+          <engine.icon className="h-5 w-5" />
+        </span>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm font-bold text-foreground">{engine.title}</h3>
+          <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
+            <span>⚡ {engine.powerRange}</span>
+            <span>📊 {engine.efficiency}</span>
+            <span>⛽ {engine.fuel}</span>
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Gemi Makineleri</h1>
-          <p className="text-xs text-muted-foreground">
-            Jeneratör, separatör, kazan, kompresör ve diğer makineleri tek ekranda inceleyin.
-          </p>
-          <div className="flex justify-center">
-            <Link
-              to="/calculations"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Geri
-            </Link>
-          </div>
-        </header>
+        </div>
+        <ChevronDown className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+      </button>
 
-        <section className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {machinerySystems.map((system) => {
-              const MachineryIcon = system.icon;
-              return (
-                <div
-                  key={system.name}
-                  className="group flex h-full flex-col items-start gap-2 rounded-xl border border-border/50 bg-background/70 p-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card hover:shadow-md"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-amber-600 via-orange-500 to-yellow-500 text-white shadow">
-                      <MachineryIcon className="h-4 w-4" />
-                    </span>
-                    <span className="text-sm font-semibold text-foreground">{system.name}</span>
-                  </div>
-                  <p className="text-xs leading-relaxed text-muted-foreground">{system.description}</p>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
-                    İncele
-                    <ChevronRight className="h-3 w-3 transition group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-border/40 px-4 pb-4 pt-3 space-y-3">
+              <p className="text-xs leading-relaxed text-foreground/90">{engine.summary}</p>
 
-          <div className="rounded-xl border border-border/50 bg-background/60 p-4 shadow-inner">
-            <div className="mb-3 flex items-center gap-2">
-              <BookOpen className="h-4 w-4 text-primary" />
-              <h2 className="text-sm font-semibold text-foreground">Detaylı Makine Açıklamaları</h2>
-            </div>
-            <div className="space-y-3">
-              {machineryDetailSections.map((section) => (
-                <details
-                  key={section.title}
-                  className="group rounded-lg border border-border/40 bg-card/70 p-3 shadow-sm transition hover:border-primary/40"
-                >
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-2 text-left">
-                    <div className="space-y-1">
-                      <div className="text-sm font-semibold text-foreground">{section.title}</div>
-                      <p className="text-xs leading-relaxed text-muted-foreground">{section.summary}</p>
-                    </div>
-                    <ChevronDown className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition group-open:rotate-180" />
-                  </summary>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-foreground/90">
-                    {section.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="rounded-lg bg-emerald-500/10 p-3">
+                  <h4 className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Avantajlar</h4>
+                  <ul className="space-y-1">
+                    {engine.advantages.map((a) => (
+                      <li key={a} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
+                        <span className="mt-0.5 text-emerald-500">✓</span>{a}
+                      </li>
                     ))}
                   </ul>
-                </details>
-              ))}
+                </div>
+                <div className="rounded-lg bg-red-500/10 p-3">
+                  <h4 className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">Dezavantajlar</h4>
+                  <ul className="space-y-1">
+                    {engine.disadvantages.map((d) => (
+                      <li key={d} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
+                        <span className="mt-0.5 text-red-500">✗</span>{d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1.5 rounded-lg bg-muted/40 px-3 py-2">
+                <Ship className="h-3.5 w-3.5 text-primary" />
+                <span className="text-[11px] text-muted-foreground">
+                  <strong className="text-foreground">Kullanım:</strong> {engine.usage}
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ───── comparison table ───── */
+function ComparisonTable() {
+  return (
+    <div className="overflow-x-auto rounded-xl border border-border/50 bg-card/80 shadow-sm backdrop-blur">
+      <table className="w-full text-[11px]">
+        <thead>
+          <tr className="border-b border-border/50 bg-muted/30">
+            <th className="px-3 py-2.5 text-left font-bold text-foreground">Makine Tipi</th>
+            <th className="px-3 py-2.5 text-center font-bold text-foreground">Güç (MW)</th>
+            <th className="px-3 py-2.5 text-center font-bold text-foreground">Verim</th>
+            <th className="hidden px-3 py-2.5 text-center font-bold text-foreground sm:table-cell">Bakım</th>
+            <th className="hidden px-3 py-2.5 text-left font-bold text-foreground md:table-cell">Öne Çıkan Kullanım</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { name: "Dizel", power: "0.5–80+", eff: "Yüksek", effColor: "text-emerald-500", maint: "Düzenli overhaul", use: "Büyük ticari gemiler" },
+            { name: "Gaz Türbini", power: "5–40", eff: "Kısmi ↓", effColor: "text-amber-500", maint: "Yüksek maliyet", use: "Savaş gemisi, feribot" },
+            { name: "Buhar Türbini", power: "10–50", eff: "Orta", effColor: "text-amber-500", maint: "Kazan bakımı", use: "LNG taşıyıcı, buz kıran" },
+            { name: "Nükleer", power: "50–200+", eff: "Yüksek", effColor: "text-emerald-500", maint: "Özel lisans", use: "Uçak gemisi, denizaltı" },
+            { name: "Dizel-Elektrik", power: "1–30", eff: "İyi", effColor: "text-emerald-500", maint: "Batarya bakımı", use: "DP, kruvaziyer" },
+            { name: "Dual-Fuel", power: "2–80", eff: "Yüksek", effColor: "text-emerald-500", maint: "FGSS bakımı", use: "LNG, konteyner" },
+            { name: "Yakıt Hücresi", power: "0.1–5", eff: "Çok yüksek", effColor: "text-emerald-500", maint: "Stack değişimi", use: "Pilot feribot" },
+          ].map((row) => (
+            <tr key={row.name} className="border-b border-border/30 transition-colors hover:bg-muted/20">
+              <td className="px-3 py-2 font-semibold text-foreground">{row.name}</td>
+              <td className="px-3 py-2 text-center text-muted-foreground">{row.power}</td>
+              <td className={`px-3 py-2 text-center font-semibold ${row.effColor}`}>{row.eff}</td>
+              <td className="hidden px-3 py-2 text-center text-muted-foreground sm:table-cell">{row.maint}</td>
+              <td className="hidden px-3 py-2 text-muted-foreground md:table-cell">{row.use}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/* ───── main page ───── */
+export default function MachineryHubPage() {
+  const [openEngine, setOpenEngine] = useState<number | null>(null);
+
+  return (
+    <div className="relative min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,5%)] dark:via-[hsl(220,50%,7%)] dark:to-[hsl(220,50%,9%)]">
+      {/* ── Hero ── */}
+      <div className="relative h-56 sm:h-64 overflow-hidden">
+        <img
+          src={engineRoomImg}
+          alt="Gemi makine dairesi"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+              <Cog className="h-3 w-3" /> Makine Bölümü
+            </div>
+            <h1 className="text-2xl font-bold text-white drop-shadow-lg sm:text-3xl">
+              Gemi Makineleri
+            </h1>
+            <p className="mt-1 text-xs text-white/80 sm:text-sm">
+              Tahrik sistemleri, yardımcı makineler ve makine dairesi ekipmanları
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ── Back button ── */}
+      <div className="mx-auto flex max-w-6xl justify-start px-4 pt-4">
+        <Link
+          to="/calculations"
+          className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/80 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          Geri
+        </Link>
+      </div>
+
+      <div className="mx-auto max-w-6xl space-y-6 px-4 pb-12 pt-4">
+        {/* ── System Cards Grid ── */}
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
+            <Cog className="h-4 w-4 text-primary" />
+            Makine Dairesi Sistemleri
+          </h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {machinerySystems.map((system, i) => (
+              <motion.div
+                key={system.name}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+              >
+                <SystemCard system={system} />
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Engine Types ── */}
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
+            <BookOpen className="h-4 w-4 text-primary" />
+            Tahrik Sistemi Tipleri
+          </h2>
+          <div className="space-y-2">
+            {engineTypes.map((engine, idx) => (
+              <EngineTypeCard
+                key={engine.title}
+                engine={engine}
+                isOpen={openEngine === idx}
+                onToggle={() => setOpenEngine(openEngine === idx ? null : idx)}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* ── Comparison Table ── */}
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
+            <Info className="h-4 w-4 text-primary" />
+            Karşılaştırma Tablosu
+          </h2>
+          <ComparisonTable />
+        </section>
+
+        {/* ── Quick Links ── */}
+        <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { label: "Makine Hesaplamaları", to: "/engine", icon: Gauge, desc: "Motor gücü, yakıt tüketimi ve performans" },
+            { label: "Makine Dersleri", to: "/lessons", icon: BookOpen, desc: "16 konu başlığında makine müfredatı" },
+            { label: "Makine Dairesi İşleri", to: "/ship-tasks", icon: Factory, desc: "Günlük operasyon prosedürleri" },
+          ].map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="group flex items-center gap-3 rounded-xl border border-border/50 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <link.icon className="h-5 w-5" />
+              </span>
+              <div className="flex-1">
+                <span className="text-sm font-bold text-foreground">{link.label}</span>
+                <p className="text-[11px] text-muted-foreground">{link.desc}</p>
+              </div>
+              <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" />
+            </Link>
+          ))}
+        </section>
+
+        {/* ── SVG Diagrams ── */}
+        <section>
+          <h2 className="mb-3 flex items-center gap-2 text-sm font-bold text-foreground">
+            <Ship className="h-4 w-4 text-primary" />
+            Teknik Diyagramlar
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="overflow-hidden rounded-xl border border-border/50 bg-card/80 shadow-sm">
+              <div className="border-b border-border/40 px-4 py-2">
+                <h3 className="text-xs font-bold text-foreground">2 Zamanlı Dizel Motor Çevrimi</h3>
+              </div>
+              <div className="p-2">
+                <img src="/diagrams/machine/iki-zamanli-dizel.svg" alt="2 Zamanlı Dizel Motor Çevrimi" className="w-full rounded-lg" />
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-xl border border-border/50 bg-card/80 shadow-sm">
+              <div className="border-b border-border/40 px-4 py-2">
+                <h3 className="text-xs font-bold text-foreground">Yakıt Sistemi Akış Şeması (HFO)</h3>
+              </div>
+              <div className="p-2">
+                <img src="/diagrams/machine/yakit-sistemi.svg" alt="Yakıt Sistemi Akış Şeması" className="w-full rounded-lg" />
+              </div>
             </div>
           </div>
         </section>
@@ -288,4 +470,3 @@ export default function MachineryHubPage() {
     </div>
   );
 }
-
