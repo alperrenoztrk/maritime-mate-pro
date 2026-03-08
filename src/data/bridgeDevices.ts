@@ -352,7 +352,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
       "Inmarsat-C (EGC) ve modern uydu terminalleri; NAVAREA/METAREA SafetyNET mesajları, distress/urgency haberleşmesi ve veri servisleri için kullanılır. NAVTEX kapsaması dışına çıkıldığında kritik yedek MSI kaynağıdır.",
     icon: SatelliteDish,
     accent: "from-fuchsia-500 via-violet-500 to-indigo-600",
-    images: [bridgeDeviceImages.gpsSatellites, bridgeDeviceImages.shipBridge],
+    images: [bridgeDeviceImages.inmarsatTerminal, bridgeDeviceImages.shipBridge],
     duties: [
       "SafetyNET MSI mesajlarının alınması ve ilgili tehlikelerin rota planına işlenmesi",
       "GMDSS prosedürlerine uygun distress/urgency trafiğinin yürütülmesi",
