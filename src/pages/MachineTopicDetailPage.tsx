@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { ChevronLeft, Lightbulb, BookOpen } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { getMachineSubTopicContent, MachineSubTopicContent } from "@/data/machineTopicDetailContent";
+import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 
 export default function MachineTopicDetailPage() {
+  const [viewerImage, setViewerImage] = useState<string | null>(null);
+  const [viewerAlt, setViewerAlt] = useState("");
   const { topicSlug, subTopicTitle } = useParams<{ topicSlug: string; subTopicTitle: string }>();
   const decodedTitle = subTopicTitle ? decodeURIComponent(subTopicTitle) : "";
   const topicConfig = topicSlug ? machineTopicBySlug[topicSlug] : null;
@@ -129,6 +133,29 @@ export default function MachineTopicDetailPage() {
                 ))}
               </ul>
             )}
+
+            {section.diagram && (
+              <figure className="space-y-2">
+                <div className="overflow-hidden rounded-xl border border-border/40 bg-muted/30">
+                  <img
+                    src={section.diagram.src}
+                    alt={section.diagram.alt}
+                    className="mx-auto h-auto w-full max-w-2xl object-contain p-2"
+                    loading="lazy"
+                    onClick={() => {
+                      setViewerImage(section.diagram!.src);
+                      setViewerAlt(section.diagram!.alt);
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  />
+                </div>
+                {section.diagram.caption && (
+                  <figcaption className="text-center text-xs text-muted-foreground italic">
+                    {section.diagram.caption}
+                  </figcaption>
+                )}
+              </figure>
+            )}
           </section>
         ))}
 
@@ -163,6 +190,13 @@ export default function MachineTopicDetailPage() {
           </Link>
         </div>
       </div>
+
+      <ImageViewerModal
+        src={viewerImage || ""}
+        alt={viewerAlt}
+        isOpen={!!viewerImage}
+        onClose={() => setViewerImage(null)}
+      />
     </div>
   );
 }

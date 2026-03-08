@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
+  <rect width="500" height="420" rx="8" fill="#f1f5f9"/>
+  <text x="250" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a" font-family="Arial">Yangın Üçgeni</text>
+
+  <!-- Üçgen -->
+  <path d="M250 70 L440 340 L60 340 Z" fill="none" stroke="#dc2626" stroke-width="3"/>
+  <path d="M250 70 L440 340 L60 340 Z" fill="#fef2f2" opacity="0.5"/>
+
+  <!-- Isı (üst) -->
+  <circle cx="250" cy="100" r="35" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <text x="250" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#78350f" font-family="Arial">ISI</text>
+  <text x="250" y="110" text-anchor="middle" font-size="9" fill="#78350f" font-family="Arial">🔥</text>
+
+  <!-- Yakıt (sol alt) -->
+  <circle cx="105" cy="310" r="35" fill="#a3e635" stroke="#65a30d" stroke-width="2"/>
+  <text x="105" y="305" text-anchor="middle" font-size="13" font-weight="bold" fill="#365314" font-family="Arial">YAKIT</text>
+  <text x="105" y="322" text-anchor="middle" font-size="9" fill="#365314" font-family="Arial">⛽</text>
+
+  <!-- Oksijen (sağ alt) -->
+  <circle cx="395" cy="310" r="35" fill="#93c5fd" stroke="#2563eb" stroke-width="2"/>
+  <text x="395" y="305" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a" font-family="Arial">OKSİJEN</text>
+  <text x="395" y="322" text-anchor="middle" font-size="9" fill="#1e3a8a" font-family="Arial">O₂</text>
+
+  <!-- Merkez alev -->
+  <circle cx="250" cy="230" r="28" fill="#f97316" opacity="0.3"/>
+  <circle cx="250" cy="230" r="16" fill="#ef4444" opacity="0.5"/>
+  <text x="250" y="235" text-anchor="middle" font-size="16" fill="#fff" font-family="Arial">🔥</text>
+
+  <!-- Kenar etiketleri -->
+  <text x="165" y="180" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial" transform="rotate(-56 165 180)">Tutuşma sıcaklığı</text>
+  <text x="340" y="180" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial" transform="rotate(56 340 180)">Yanma oranı</text>
+  <text x="250" y="355" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Yanıcı madde</text>
+
+  <!-- Alt açıklama -->
+  <text x="250" y="390" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">Yangın, bu üç unsurun birlikte bulunmasıyla başlar.</text>
+  <text x="250" y="408" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Herhangi birini kaldırmak yangını söndürür.</text>
+</svg>
