@@ -148,6 +148,9 @@ import LessonTopicDetailPage from "./pages/LessonTopicDetailPage";
 import StabilityTopicsPage from "./pages/StabilityTopicsPage";
 import CargoTopicsPage from "./pages/CargoTopicsPage";
 import SeamanshipTopicsPage from "./pages/SeamanshipTopicsPage";
+import SafetyTopicsPage from "./pages/SafetyTopicsPage";
+import EnvironmentTopicsPage from "./pages/EnvironmentTopicsPage";
+import EconomicsTopicsPage from "./pages/EconomicsTopicsPage";
 import type { CategoryId } from "@/data/calculationCenterConfig";
 const queryClient = new QueryClient();
 
