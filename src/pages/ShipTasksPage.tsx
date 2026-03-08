@@ -172,10 +172,10 @@ const TwoColTable = ({ tasks, headers }: { tasks: TaskRow[]; headers: [string, s
         </tr>
       </thead>
       <tbody className="divide-y divide-border/30">
-        {tasks.map(({ task, responsible, slug }) => (
+        {tasks.map(({ task, responsible, slug, href }) => (
           <tr key={task}>
             <td className="py-1.5 pr-4 text-foreground">
-              <TaskLink task={task} slug={slug} />
+              <TaskLink task={task} slug={slug} href={href} />
             </td>
             <td className="py-1.5 text-primary">{responsible}</td>
           </tr>
