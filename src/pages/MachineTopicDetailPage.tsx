@@ -129,6 +129,29 @@ export default function MachineTopicDetailPage() {
                 ))}
               </ul>
             )}
+
+            {section.diagram && (
+              <figure className="space-y-2">
+                <div className="overflow-hidden rounded-xl border border-border/40 bg-muted/30">
+                  <img
+                    src={section.diagram.src}
+                    alt={section.diagram.alt}
+                    className="mx-auto h-auto w-full max-w-2xl object-contain p-2"
+                    loading="lazy"
+                    onClick={() => {
+                      setViewerImage(section.diagram!.src);
+                      setViewerAlt(section.diagram!.alt);
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  />
+                </div>
+                {section.diagram.caption && (
+                  <figcaption className="text-center text-xs text-muted-foreground italic">
+                    {section.diagram.caption}
+                  </figcaption>
+                )}
+              </figure>
+            )}
           </section>
         ))}
 

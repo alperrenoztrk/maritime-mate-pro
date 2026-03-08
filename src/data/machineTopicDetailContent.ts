@@ -15,6 +15,11 @@ export interface MachineSubTopicSection {
     rows: string[][];
   };
   bulletPoints?: string[];
+  diagram?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
 }
 
 export interface MachineSubTopicContent {
