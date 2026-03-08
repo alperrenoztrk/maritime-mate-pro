@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileLayout } from "@/components/MobileLayout";
+import { BottomNavigation } from "@/components/BottomNavigation";
 
 /* ─── Types ─── */
 type CalcTool = {
