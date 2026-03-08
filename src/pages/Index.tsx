@@ -153,32 +153,177 @@ const Index = () => {
         }}
       />
 
-      {/* Lighthouse */}
-      <div className="absolute right-[8%] bottom-[22%] w-[50px] h-[100px] z-[1] pointer-events-none">
-        <svg viewBox="0 0 60 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-lg">
-          <ellipse cx="30" cy="118" rx="28" ry="4" fill="rgba(30,40,50,0.8)"/>
-          <path d="M20 115 L22 50 L38 50 L40 115 Z" fill="rgba(255,255,255,0.9)"/>
-          <path d="M22.5 65 L37.5 65 L37.2 75 L22.8 75 Z" fill="rgba(239,68,68,0.9)"/>
-          <path d="M23.3 85 L36.7 85 L36.4 95 L23.6 95 Z" fill="rgba(239,68,68,0.9)"/>
-          <rect x="18" y="42" width="24" height="10" rx="1" fill="rgba(40,50,60,0.95)"/>
-          <rect x="20" y="44" width="20" height="6" rx="0.5" fill="rgba(251,191,36,0.6)"/>
-          <path d="M15 42 L30 30 L45 42 Z" fill="rgba(60,70,80,0.95)"/>
-          <rect x="29" y="24" width="2" height="8" fill="rgba(80,90,100,0.9)"/>
-          <rect x="26" y="100" width="8" height="15" rx="4" fill="rgba(60,50,40,0.9)"/>
+      {/* Realistic Lighthouse */}
+      <div className="absolute right-[8%] bottom-[22%] w-[60px] h-[120px] z-[1] pointer-events-none">
+        <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}>
+          <defs>
+            {/* Tower gradient - weathered white/grey stone */}
+            <linearGradient id="tower-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#d4d0c8" />
+              <stop offset="30%" stopColor="#f0ece4" />
+              <stop offset="70%" stopColor="#f5f1e9" />
+              <stop offset="100%" stopColor="#c8c4bc" />
+            </linearGradient>
+            {/* Red stripe */}
+            <linearGradient id="red-stripe" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#b91c1c" />
+              <stop offset="30%" stopColor="#dc2626" />
+              <stop offset="70%" stopColor="#ef4444" />
+              <stop offset="100%" stopColor="#b91c1c" />
+            </linearGradient>
+            {/* Lantern room glass warm glow */}
+            <radialGradient id="lantern-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.95" />
+              <stop offset="60%" stopColor="#f59e0b" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#d97706" stopOpacity="0.4" />
+            </radialGradient>
+            {/* Fresnel lens light cone */}
+            <radialGradient id="fresnel-glow" cx="0%" cy="50%" r="100%">
+              <stop offset="0%" stopColor="#fef3c7" stopOpacity="0.9" />
+              <stop offset="20%" stopColor="#fbbf24" stopOpacity="0.5" />
+              <stop offset="60%" stopColor="#f59e0b" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          
+          {/* Rock base */}
+          <ellipse cx="40" cy="156" rx="36" ry="5" fill="#1a1a2e" opacity="0.6" />
+          <path d="M8,155 Q15,148 25,150 Q35,145 45,150 Q55,148 65,150 Q72,148 72,155 Z" fill="#2d3748" />
+          <path d="M12,155 Q20,151 30,153 Q40,149 50,153 Q60,151 68,155 Z" fill="#4a5568" />
+          
+          {/* Tower body - tapered */}
+          <path d="M27 150 L30 68 L50 68 L53 150 Z" fill="url(#tower-grad)" />
+          
+          {/* Tower shadow edge */}
+          <path d="M27 150 L30 68 L34 68 L31 150 Z" fill="rgba(0,0,0,0.08)" />
+          
+          {/* Red stripes */}
+          <path d="M31.2 85 L48.8 85 L48.5 95 L31.5 95 Z" fill="url(#red-stripe)" />
+          <path d="M32.4 110 L47.6 110 L47.3 120 L32.7 120 Z" fill="url(#red-stripe)" />
+          
+          {/* Gallery/walkway platform */}
+          <rect x="22" y="64" width="36" height="4" rx="1" fill="#374151" />
+          <rect x="24" y="63" width="32" height="2" rx="0.5" fill="#4b5563" />
+          {/* Gallery railing posts */}
+          <line x1="24" y1="58" x2="24" y2="64" stroke="#6b7280" strokeWidth="1" />
+          <line x1="32" y1="58" x2="32" y2="64" stroke="#6b7280" strokeWidth="0.8" />
+          <line x1="40" y1="58" x2="40" y2="64" stroke="#6b7280" strokeWidth="0.8" />
+          <line x1="48" y1="58" x2="48" y2="64" stroke="#6b7280" strokeWidth="0.8" />
+          <line x1="56" y1="58" x2="56" y2="64" stroke="#6b7280" strokeWidth="1" />
+          {/* Railing top bar */}
+          <line x1="23" y1="58" x2="57" y2="58" stroke="#6b7280" strokeWidth="1" />
+          
+          {/* Lantern room - glass housing */}
+          <rect x="28" y="44" width="24" height="20" rx="1.5" fill="#1f2937" />
+          {/* Glass panes with warm glow */}
+          <rect x="30" y="46" width="9" height="16" rx="0.5" fill="url(#lantern-glow)" />
+          <rect x="41" y="46" width="9" height="16" rx="0.5" fill="url(#lantern-glow)" />
+          {/* Fresnel lens center */}
+          <circle cx="40" cy="54" r="5" fill="#fef3c7" opacity="0.8" />
+          <circle cx="40" cy="54" r="3" fill="#ffffff" opacity="0.9" />
+          
+          {/* Dome roof */}
+          <path d="M26 44 Q28 34 40 30 Q52 34 54 44 Z" fill="#374151" />
+          <path d="M30 44 Q32 36 40 33 Q48 36 50 44 Z" fill="#4b5563" opacity="0.5" />
+          
+          {/* Ventilator ball + lightning rod */}
+          <circle cx="40" cy="28" r="3" fill="#6b7280" />
+          <line x1="40" y1="18" x2="40" y2="25" stroke="#9ca3af" strokeWidth="1.5" />
+          
+          {/* Door */}
+          <rect x="35" y="138" width="10" height="14" rx="5" fill="#78350f" />
+          <circle cx="43" cy="146" r="0.8" fill="#d97706" />
+          
+          {/* Window */}
+          <rect x="37" y="100" width="6" height="8" rx="3" fill="rgba(251,191,36,0.25)" stroke="#9ca3af" strokeWidth="0.5" />
         </svg>
+        
+        {/* Realistic rotating light beam - continuous 360° rotation like real lighthouse */}
         <div 
-          className="absolute top-[28%] left-1/2 w-[200px] h-[4px] origin-left"
+          className="absolute z-[2]"
           style={{
-            background: 'linear-gradient(90deg, rgba(251,191,36,0.8) 0%, rgba(251,191,36,0.4) 30%, transparent 100%)',
-            filter: 'blur(1px)',
-            animation: 'beacon-rotate 4s ease-in-out infinite'
+            top: '34%',
+            left: '50%',
+            width: '0px',
+            height: '0px',
+            animation: 'lighthouse-rotate 8s linear infinite'
+          }}
+        >
+          {/* Main beam - narrow cone like Fresnel lens output */}
+          <div style={{
+            position: 'absolute',
+            top: '-3px',
+            left: '0',
+            width: '280px',
+            height: '6px',
+            background: 'linear-gradient(90deg, rgba(255,251,235,0.95) 0%, rgba(251,191,36,0.7) 8%, rgba(251,191,36,0.3) 25%, rgba(251,191,36,0.08) 50%, transparent 100%)',
+            transformOrigin: 'left center',
+            filter: 'blur(0.5px)',
+          }} />
+          {/* Beam spread/scatter */}
+          <div style={{
+            position: 'absolute',
+            top: '-12px',
+            left: '0',
+            width: '220px',
+            height: '24px',
+            background: 'linear-gradient(90deg, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0.12) 20%, rgba(251,191,36,0.03) 50%, transparent 100%)',
+            transformOrigin: 'left center',
+            filter: 'blur(3px)',
+            borderRadius: '0 50% 50% 0',
+          }} />
+          {/* Opposite beam (dual-beam lighthouse characteristic) */}
+          <div style={{
+            position: 'absolute',
+            top: '-3px',
+            right: '0',
+            left: 'auto',
+            width: '280px',
+            height: '6px',
+            background: 'linear-gradient(-90deg, rgba(255,251,235,0.95) 0%, rgba(251,191,36,0.7) 8%, rgba(251,191,36,0.3) 25%, rgba(251,191,36,0.08) 50%, transparent 100%)',
+            transformOrigin: 'right center',
+            transform: 'rotate(180deg)',
+            filter: 'blur(0.5px)',
+          }} />
+          <div style={{
+            position: 'absolute',
+            top: '-12px',
+            right: '0',
+            left: 'auto',
+            width: '220px',
+            height: '24px',
+            background: 'linear-gradient(-90deg, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0.12) 20%, rgba(251,191,36,0.03) 50%, transparent 100%)',
+            transformOrigin: 'right center',
+            transform: 'rotate(180deg)',
+            filter: 'blur(3px)',
+            borderRadius: '0 50% 50% 0',
+          }} />
+        </div>
+        
+        {/* Fresnel lens glow - constant warm halo around lantern */}
+        <div 
+          className="absolute rounded-full"
+          style={{
+            top: '30%',
+            left: '30%',
+            width: '24px',
+            height: '24px',
+            background: 'radial-gradient(circle, rgba(255,251,235,0.9) 0%, rgba(251,191,36,0.6) 30%, rgba(251,191,36,0.2) 60%, transparent 100%)',
+            animation: 'fresnel-pulse 2s ease-in-out infinite',
           }}
         />
+        
+        {/* Atmospheric light scatter around lantern room */}
         <div 
-          className="absolute top-[26%] left-[45%] w-[20px] h-[20px] rounded-full"
+          className="absolute rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(251,191,36,0.4) 40%, transparent 70%)',
-            animation: 'beacon-pulse 4s ease-in-out infinite'
+            top: '22%',
+            left: '10%',
+            width: '50px',
+            height: '50px',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,191,36,0.05) 50%, transparent 100%)',
+            filter: 'blur(4px)',
+            animation: 'fresnel-pulse 2s ease-in-out infinite',
           }}
         />
       </div>
