@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
 import { BookOpen, ChevronDown, ChevronRight, ArrowLeft, GraduationCap, Ship, Wrench } from "lucide-react";
+import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function LessonsPage() {
   const highRefreshRateStyles: CSSProperties = {

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpenText, Search } from "lucide-react";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
 const Glossary = () => {

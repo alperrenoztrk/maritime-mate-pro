@@ -335,6 +335,7 @@ export default function CalculationsMenu() {
           )}
         </div>
       </div>
+      <BottomNavigation />
     </MobileLayout>
   );
 }

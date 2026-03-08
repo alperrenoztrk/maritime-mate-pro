@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { crewHierarchy } from "@/data/crewHierarchy";
 import { ArrowLeft } from "lucide-react";
+import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function CrewHierarchyPage() {
   const highRefreshRateStyles: CSSProperties = {
