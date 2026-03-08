@@ -1899,6 +1899,17 @@ SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fi
   "portable-extinguishers": {
     title: "Taşınabilir Söndürücüler",
     introduction: "Taşınabilir yangın söndürücüler, yangının başlangıç aşamasında ilk müdahale için kullanılan birincil söndürme araçlarıdır.",
+    table: {
+      title: "Taşınabilir Söndürücü Tipleri ve Kullanım Alanları",
+      headers: ["Söndürücü Tipi", "Söndürme Maddesi", "Yangın Sınıfı", "Menzil (m)", "Dikkat"],
+      rows: [
+        ["Su", "Su (9 L)", "A", "6-10", "Elektrikte kullanılamaz"],
+        ["Köpük (Foam)", "AFFF (9 L)", "A, B", "3-6", "Elektrikte kullanılamaz"],
+        ["CO₂", "Karbondioksit (5 kg)", "B, E", "1-3", "Kapalı alanda O₂ düşer"],
+        ["KKT", "Kuru kimyevi toz (6-9 kg)", "A, B, C, E", "3-6", "Artık bırakır, hassas cihazda dikkat"],
+        ["Temiz Ajan", "HFC-227ea / FK-5-1-12", "B, C, E", "2-4", "Ozon dostu, pahalı"],
+      ],
+    },
     content: `SÖNDÜRÜCÜ TÜRLERİ:
 
 1. CO₂ (Karbondioksit): B ve E sınıfı yangınlar. Oksijeni keserek söndürür. Kapalı alanda boğulma riski vardır. Elektrik yangınlarında güvenlidir.
