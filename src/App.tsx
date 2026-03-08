@@ -45,6 +45,7 @@ import SailorKnotsPage from "./pages/SailorKnots";
 import StabilityAnalysisPage from "./pages/StabilityAnalysis";
 import StableTalesPage from "./pages/StableTales";
 import EmptyPage from "./pages/EmptyPage";
+import ConverterPage from "./pages/Converter";
 import PassagePlanPage from "./pages/PassagePlanPage";
 import MoonPhases from "./pages/MoonPhases";
 import Settings from "./pages/Settings";
