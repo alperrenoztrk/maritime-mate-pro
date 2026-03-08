@@ -137,7 +137,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
     accent: "from-emerald-500 via-teal-500 to-cyan-500",
     images: [
       bridgeDeviceImages.ecdisDisplay,
-      bridgeDeviceImages.gpsSatellites
+      bridgeDeviceImages.shipBridge
     ],
     duties: [
       "Passage plan üretimi: appraisal–planning–execution–monitoring aşamalarının dijital yönetimi",
