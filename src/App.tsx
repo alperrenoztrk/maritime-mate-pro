@@ -81,6 +81,11 @@ import HydrodynamicsPage from "./pages/Hydrodynamics";
 import StructuralCalculationsPage from "./pages/StructuralCalculations";
 import SpecialShipCalculationsPage from "./pages/SpecialShipCalculations";
 import EmissionCalculationsPage from "./pages/EmissionCalculationsPage";
+import MachineTopicCalculationsPage from "./pages/MachineTopicCalculationsPage";
+import MachineTopicFormulasPage from "./pages/MachineTopicFormulasPage";
+import MachineTopicRulesPage from "./pages/MachineTopicRulesPage";
+import MachineTopicAssistantPage from "./pages/MachineTopicAssistantPage";
+import MachineTopicQuizPage from "./pages/MachineTopicQuizPage";
 
 import EmissionFormulas from "./pages/EmissionFormulas";
 import EmissionRules from "./pages/EmissionRules";
