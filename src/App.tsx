@@ -81,6 +81,11 @@ import HydrodynamicsPage from "./pages/Hydrodynamics";
 import StructuralCalculationsPage from "./pages/StructuralCalculations";
 import SpecialShipCalculationsPage from "./pages/SpecialShipCalculations";
 import EmissionCalculationsPage from "./pages/EmissionCalculationsPage";
+import MachineTopicCalculationsPage from "./pages/MachineTopicCalculationsPage";
+import MachineTopicFormulasPage from "./pages/MachineTopicFormulasPage";
+import MachineTopicRulesPage from "./pages/MachineTopicRulesPage";
+import MachineTopicAssistantPage from "./pages/MachineTopicAssistantPage";
+import MachineTopicQuizPage from "./pages/MachineTopicQuizPage";
 
 import EmissionFormulas from "./pages/EmissionFormulas";
 import EmissionRules from "./pages/EmissionRules";
@@ -270,6 +275,13 @@ const AnimatedRoutes = () => {
         <Route path="/machine/rules" element={<PageTransition><MachineRulesPage /></PageTransition>} />
         <Route path="/machine/assistant" element={<PageTransition><MachineAssistantPage /></PageTransition>} />
         <Route path="/machine/quiz" element={<PageTransition><MachineQuizPage /></PageTransition>} />
+        {/* Machine topic sub-routes */}
+        <Route path="/machine/:topicSlug/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/calculations" element={<PageTransition><MachineTopicCalculationsPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/formulas" element={<PageTransition><MachineTopicFormulasPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/rules" element={<PageTransition><MachineTopicRulesPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/quiz" element={<PageTransition><MachineTopicQuizPage /></PageTransition>} />
         <Route path="/tank-menu" element={<PageTransition><TankMenu /></PageTransition>} />
         <Route path="/solas" element={<PageTransition><SOLASMenu /></PageTransition>} />
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
