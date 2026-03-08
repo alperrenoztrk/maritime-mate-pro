@@ -169,6 +169,7 @@ export default function LessonsPage() {
           </div>
         </div>
       </div>
+      <BottomNavigation />
     </div>
   );
 }

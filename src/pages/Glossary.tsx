@@ -127,6 +127,7 @@ const Glossary = () => {
           )}
         </section>
       </div>
+      <BottomNavigation />
     </div>
   );
 };

@@ -87,6 +87,7 @@ export default function CrewHierarchyPage() {
           </div>
         </section>
       </div>
+      <BottomNavigation />
     </div>
   );
 }
