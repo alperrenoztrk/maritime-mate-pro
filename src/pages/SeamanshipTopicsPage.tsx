@@ -1836,6 +1836,7 @@ HAYATTA KALMA ÖNCELİKLERİ:
   // =====================================================
   "fire-triangle": {
     title: "Yangın Üçgeni ve Yangın Sınıfları",
+    image: "/diagrams/seamanship/yangin-sinifi.svg",
     introduction: "Yangın, ısı, yakıt ve oksijenin bir arada bulunmasıyla başlar; bu üç unsurun herhangi birini ortadan kaldırmak yangını söndürür.",
     content: `YANGIN ÜÇGENİ:
 
