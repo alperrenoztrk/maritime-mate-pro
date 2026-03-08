@@ -1182,6 +1182,7 @@ SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dok�
   // =====================================================
   "rudder-types": {
     title: "Dümen Tipleri ve Yapıları",
+    image: "/diagrams/seamanship/dumen-tipleri.svg",
     introduction: "Dümen, geminin yön değiştirmesini sağlayan birincil manevra elemanıdır; tipi ve boyutu geminin manevra kabiliyetini doğrudan etkiler.",
     content: `BAŞLICA DÜMEN TİPLERİ:
 
