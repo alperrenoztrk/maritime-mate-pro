@@ -238,7 +238,7 @@ const Index = () => {
           <rect x="37" y="100" width="6" height="8" rx="3" fill="rgba(251,191,36,0.25)" stroke="#9ca3af" strokeWidth="0.5" />
         </svg>
         
-        {/* Realistic rotating light beam - continuous 360° rotation like real lighthouse */}
+        {/* Realistic light beam - Fl(2) 10s characteristic (Group Flashing) */}
         <div 
           className="absolute z-[2]"
           style={{
@@ -246,7 +246,8 @@ const Index = () => {
             left: '50%',
             width: '0px',
             height: '0px',
-            animation: 'lighthouse-rotate 8s linear infinite'
+            transform: 'rotate(-15deg)',
+            animation: 'lighthouse-flash 10s infinite'
           }}
         >
           {/* Main beam - narrow cone like Fresnel lens output */}
@@ -272,32 +273,6 @@ const Index = () => {
             filter: 'blur(3px)',
             borderRadius: '0 50% 50% 0',
           }} />
-          {/* Opposite beam (dual-beam lighthouse characteristic) */}
-          <div style={{
-            position: 'absolute',
-            top: '-3px',
-            right: '0',
-            left: 'auto',
-            width: '280px',
-            height: '6px',
-            background: 'linear-gradient(-90deg, rgba(255,251,235,0.95) 0%, rgba(251,191,36,0.7) 8%, rgba(251,191,36,0.3) 25%, rgba(251,191,36,0.08) 50%, transparent 100%)',
-            transformOrigin: 'right center',
-            transform: 'rotate(180deg)',
-            filter: 'blur(0.5px)',
-          }} />
-          <div style={{
-            position: 'absolute',
-            top: '-12px',
-            right: '0',
-            left: 'auto',
-            width: '220px',
-            height: '24px',
-            background: 'linear-gradient(-90deg, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0.12) 20%, rgba(251,191,36,0.03) 50%, transparent 100%)',
-            transformOrigin: 'right center',
-            transform: 'rotate(180deg)',
-            filter: 'blur(3px)',
-            borderRadius: '0 50% 50% 0',
-          }} />
         </div>
         
         {/* Fresnel lens glow - constant warm halo around lantern */}
@@ -309,7 +284,7 @@ const Index = () => {
             width: '24px',
             height: '24px',
             background: 'radial-gradient(circle, rgba(255,251,235,0.9) 0%, rgba(251,191,36,0.6) 30%, rgba(251,191,36,0.2) 60%, transparent 100%)',
-            animation: 'fresnel-pulse 2s ease-in-out infinite',
+            animation: 'fresnel-flash 10s infinite',
           }}
         />
         
@@ -323,7 +298,7 @@ const Index = () => {
             height: '50px',
             background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,191,36,0.05) 50%, transparent 100%)',
             filter: 'blur(4px)',
-            animation: 'fresnel-pulse 2s ease-in-out infinite',
+            animation: 'fresnel-flash 10s infinite',
           }}
         />
       </div>
@@ -460,13 +435,19 @@ const Index = () => {
         @keyframes ocean-swell-4 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes ocean-swell-5 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
         @keyframes ocean-foam { 0%,100% { opacity: 0.15; } 50% { opacity: 0.25; } }
-        @keyframes lighthouse-rotate {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        @keyframes lighthouse-flash {
+          0%, 1% { opacity: 0; }
+          2.5% { opacity: 1; }
+          5%, 14% { opacity: 0; }
+          16.5% { opacity: 1; }
+          19%, 100% { opacity: 0; }
         }
-        @keyframes fresnel-pulse {
-          0%, 100% { opacity: 0.8; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.15); }
+        @keyframes fresnel-flash {
+          0%, 1% { opacity: 0.3; transform: scale(1); }
+          2.5% { opacity: 1; transform: scale(1.2); }
+          5%, 14% { opacity: 0.3; transform: scale(1); }
+          16.5% { opacity: 1; transform: scale(1.2); }
+          19%, 100% { opacity: 0.3; transform: scale(1); }
         }
         @keyframes title-shine {
           to { background-position: 200% center; }
