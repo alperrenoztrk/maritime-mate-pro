@@ -45,7 +45,8 @@ const content: ContentMap = {
           paragraphs: [
             "Termodinamik sistem, incelenmek üzere seçilen ve sınırlarıyla çevresinden ayrılan madde veya uzay bölgesidir. Sistemin dışında kalan her şey çevre (surroundings), sistemi çevreden ayıran yüzey ise sınır (boundary) olarak adlandırılır.",
             "Sınır sabit veya hareketli olabilir. Bir silindirdeki pistonun üst yüzeyi hareketli sınıra örnektir; silindir duvarları ise sabit sınırdır."
-          ]
+          ],
+          diagram: { src: "/diagrams/machine/termodinamik-sistem.svg", alt: "Termodinamik Sistem Sınıflandırması - Kapalı, Açık ve Yalıtılmış Sistem", caption: "Şekil: Kapalı, açık ve yalıtılmış sistem karşılaştırması" }
         },
         {
           heading: "Kapalı Sistem (Kontrol Kütlesi)",
