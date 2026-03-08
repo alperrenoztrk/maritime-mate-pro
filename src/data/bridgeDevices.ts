@@ -244,8 +244,8 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
     icon: Radio,
     accent: "from-violet-500 via-indigo-500 to-blue-500",
     images: [
-      bridgeDeviceImages.aisTargets,
-      bridgeDeviceImages.gpsSatellites
+      bridgeDeviceImages.aisDisplay,
+      bridgeDeviceImages.shipBridge
     ],
     duties: [
       "Statik (IMO, MMSI, çağrı adı) ve dinamik (SOG, COG, ROT) bilgileri periyodik yayınlama",
