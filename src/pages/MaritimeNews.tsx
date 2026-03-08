@@ -289,7 +289,7 @@ const MaritimeNews = () => {
   };
 
   const selectedSummary = stripHtml(selectedItem?.summary);
-  const selectedReadingTime = estimateReadingTime(selectedSummary);
+  
   const selectedHighResImage = toHighResImageUrl(selectedItem?.imageUrl);
   const selectedImageUrl =
     toProxyImageUrl(selectedHighResImage, "large") ??
