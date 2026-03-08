@@ -441,7 +441,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
       "BNWAS, köprüüstü vardiya zabitinin uyanıklığını kontrol eder; süre sonunda onay gelmezse aşamalı alarm üretir. Tek personel vardiyada risk azaltır ve PSC denetimlerinde kritik kontrol maddesidir.",
     icon: Bell,
     accent: "from-amber-500 via-orange-500 to-rose-600",
-    images: [bridgeDeviceImages.shipBridge, bridgeDeviceImages.autopilotControl],
+    images: [bridgeDeviceImages.bnwasPanel, bridgeDeviceImages.shipBridge],
     duties: [
       "Zamanlayıcı (3–12 dk gibi) ve alarm kademelerinin gemi prosedürüne uygun ayarı",
       "Reset butonları/hareket sensörleri işlev testi ve alarm zincirinin doğrulanması",
