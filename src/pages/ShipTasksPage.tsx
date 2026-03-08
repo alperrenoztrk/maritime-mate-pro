@@ -9,10 +9,11 @@ interface TaskRow {
   slug?: string;
 }
 
-const TaskLink = ({ task, slug }: { task: string; slug?: string }) =>
-  slug ? (
+const TaskLink = ({ task, slug, href }: { task: string; slug?: string; href?: string }) => {
+  const to = href || (slug ? `/ship-tasks/${slug}` : undefined);
+  return to ? (
     <Link
-      to={`/ship-tasks/${slug}`}
+      to={to}
       className="text-primary underline decoration-dotted underline-offset-2 transition-colors hover:text-primary/80"
     >
       {task}
@@ -20,6 +21,7 @@ const TaskLink = ({ task, slug }: { task: string; slug?: string }) =>
   ) : (
     <>{task}</>
   );
+};
 
 const bridgeNavigationTasks: TaskRow[] = [
   { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O" },
