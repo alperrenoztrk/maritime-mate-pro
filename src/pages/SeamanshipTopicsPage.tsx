@@ -436,6 +436,19 @@ Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifi
   "rope-types": {
     title: "Halat Türleri ve Malzemeleri",
     introduction: "Gemilerde kullanılan halatlar, malzemelerine ve yapılarına göre sınıflandırılır; her tür farklı mekanik özelliklere ve kullanım alanlarına sahiptir.",
+    image: "/diagrams/seamanship/halat-yapilari.svg",
+    table: {
+      title: "Halat Malzeme Karşılaştırma Tablosu",
+      headers: ["Malzeme", "Özgül Ağırlık", "Uzama (%)", "Islak Dayanım", "Kullanım Alanı"],
+      rows: [
+        ["Manila", "1,38", "10-12", "%10-15 düşer", "Pilot merdiveni"],
+        ["Naylon (PA)", "1,14", "30-40", "%10 düşer", "Çekme halatı"],
+        ["Polipropilen", "0,91 (yüzer)", "15-20", "Değişmez", "Can kurtarma halatı"],
+        ["Polyester", "1,38", "12-15", "Değişmez", "Palamar halatı"],
+        ["HMPE (Dyneema)", "0,97", "3-4", "Değişmez", "Palamar, çekme"],
+        ["Çelik Tel", "7,85", "1-2", "Korozyon riski", "Vinç, kaldırma"],
+      ],
+    },
     content: `DOĞAL LİF HALATLAR:
 
 Manila: Abaka bitkisinden üretilir. Doğal halatlar arasında en güçlüsüdür. Islakken dayanımı %10-15 düşer. Günümüzde hâlâ pilot merdiveni güvenlik halatı olarak kullanılır.
