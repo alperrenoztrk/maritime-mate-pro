@@ -1254,14 +1254,16 @@ const content: ContentMap = {
   },
 };
 
+import content2 from "./machineTopicDetailContent2";
+
 export function getMachineSubTopicContent(topicSlug: string, subTopicTitle: string): MachineSubTopicContent | null {
-  const topicContent = content[topicSlug];
+  const topicContent = content[topicSlug] || content2[topicSlug];
   if (!topicContent) return null;
   return topicContent[subTopicTitle] || null;
 }
 
 export function hasSubTopicContent(topicSlug: string, subTopicTitle: string): boolean {
-  const topicContent = content[topicSlug];
+  const topicContent = content[topicSlug] || content2[topicSlug];
   if (!topicContent) return false;
   return !!topicContent[subTopicTitle];
 }
