@@ -45,6 +45,7 @@ import SailorKnotsPage from "./pages/SailorKnots";
 import StabilityAnalysisPage from "./pages/StabilityAnalysis";
 import StableTalesPage from "./pages/StableTales";
 import EmptyPage from "./pages/EmptyPage";
+import ConverterPage from "./pages/Converter";
 import PassagePlanPage from "./pages/PassagePlanPage";
 import MoonPhases from "./pages/MoonPhases";
 import Settings from "./pages/Settings";
@@ -319,6 +320,8 @@ const AnimatedRoutes = () => {
         <Route path="/sunrise-times" element={<PageTransition><SunriseTimes /></PageTransition>} />
         <Route path="/location-selector" element={<PageTransition><LocationSelector /></PageTransition>} />
         <Route path="/exam-preparation" element={<PageTransition><ExamPreparationPage /></PageTransition>} />
+        <Route path="/converter" element={<PageTransition><ConverterPage /></PageTransition>} />
+        <Route path="/machine-calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
     </AnimatePresence>
