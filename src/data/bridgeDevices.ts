@@ -209,7 +209,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
     accent: "from-amber-500 via-orange-500 to-rose-500",
     images: [
       bridgeDeviceImages.navtexReceiver,
-      bridgeDeviceImages.lighthouse
+      bridgeDeviceImages.shipBridge
     ],
     duties: [
       "NAVAREA/METAREA yayınlarının otomatik alımı ve kategorilere göre filtrelenmesi",
