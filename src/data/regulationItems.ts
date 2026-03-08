@@ -6,42 +6,41 @@ export type RegulationCategory =
   | "Gemi Sertifikaları"
   | "Bölgesel Düzenlemeler";
 
-export interface RegulationResource {
-  label: string;
-  href: string;
-}
-
-export interface RegulationItem {
+export type RegulationItem = {
   slug: string;
   label: string;
   category: RegulationCategory;
   overview: string;
   essentials: string[];
   actions: string[];
-  resources?: RegulationResource[];
-}
+  resources?: { label: string; href: string }[];
+};
 
 export const regulationItems: RegulationItem[] = [
+  // ── IMO Sözleşmeleri ───────────────────────────────────────────────
   {
     slug: "solas",
-    label: "SOLAS – Denizde Can Güvenliği",
+    label: "SOLAS – Denizde Can Emniyeti",
     category: "IMO Sözleşmeleri",
     overview:
-      "Gemilerin tasarım, donanım ve operasyonel güvenlik standartlarını belirleyen temel sözleşme; can kurtarma, yangın güvenliği ve seyre elverişlilik başlıklarını kapsar.",
+      "Uluslararası deniz taşımacılığında can emniyeti için temel gereklilikleri belirler; gemi inşası, teçhizat, operasyon ve sertifikasyon standartlarını kapsar.",
     essentials: [
-      "Bölüm II-2 yangın bütünlüğü, sabit söndürme sistemleri ve algılama gereklilikleri",
-      "Bölüm III can kurtarma araçları, tatbikat ve mustering planları",
-      "Filo bazında ISM Code ve sertifikasyon sürekliliği",
+      "Gemi yapısı, bölmeleme ve stabilite (Chapter II-1)",
+      "Yangın güvenliği, algılama ve söndürme (Chapter II-2)",
+      "Can kurtarma araçları ve düzenlemeleri (Chapter III)",
+      "Radyo haberleşme ve GMDSS (Chapter IV)",
+      "Seyir emniyeti teçhizatı (Chapter V)",
     ],
     actions: [
-      "Emniyet ekipmanının sertifika tarihlerini ve bakım kayıtlarını güncel tut",
-      "Acil durum prosedürlerini mürettebatla düzenli tatbikatla doğrula",
-      "SMS dokümantasyonunda SOLAS değişikliklerini izleyip yayına al",
+      "Yıllık, ara ve yenileme survey'lerini zamanında tamamla",
+      "SOLAS sertifikalarını güncel tut ve gemide bulundur",
+      "Mürettebat eğitim ve tatbikatlarını düzenli yap",
+      "Teçhizat bakım kayıtlarını düzenli tut",
     ],
     resources: [
       {
-        label: "SOLAS genel bakış (IMO)",
-        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea.aspx",
+        label: "IMO SOLAS sayfası",
+        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea-(SOLAS),-1974.aspx",
       },
     ],
   },
@@ -50,135 +49,175 @@ export const regulationItems: RegulationItem[] = [
     label: "MARPOL – Deniz Kirliliğinin Önlenmesi",
     category: "IMO Sözleşmeleri",
     overview:
-      "Petrol, kimyasal, atık su, çöpler ve hava emisyonları dâhil olmak üzere gemi kaynaklı kirliliği önlemeye yönelik altı ek ve ilgili kararları düzenler.",
+      "Gemilerden kaynaklanan deniz kirliliğinin önlenmesi için uluslararası standartları belirler; altı ek ile petrol, kimyasal, atık, çöp, hava emisyonları ve balistik su yönetimini düzenler.",
     essentials: [
-      "Ek I/II kargo ve makinelerden kaynaklanan kirlenmenin önlenmesi",
-      "Ek VI hava emisyonları, yakıt kükürt limitleri ve EGCS raporlaması",
-      "Oily Water Separator, IAPP/IOPP sertifikalarının takibi",
+      "Ek I: Petrol kirliliği (IOPP, ORB, SOPEP)",
+      "Ek II: Zararlı sıvı maddeler (NLS, Cargo Record Book)",
+      "Ek IV: Kanalizasyon (sewage treatment, discharge criteria)",
+      "Ek V: Çöp yönetimi (Garbage Record Book, discharge restrictions)",
+      "Ek VI: Hava kirliliği (SOx, NOx, EEXI, CII, SEEMP)",
     ],
     actions: [
-      "Oil Record Book ve Garbage Record Book kayıtlarını günlük doğrula",
-      "Bunker teslimat notları ve yakıt örneklerini 36 ay sakla",
-      "SEEMP, DCS ve şirket MRV entegrasyonunu denetle",
+      "ORB, Cargo Record Book ve Garbage Record Book kayıtlarını düzenli tut",
+      "IOPP ve IAPP sertifikalarını güncel tut",
+      "Yakıt numuneleri ve BDN'leri sakla",
+      "SEEMP'i uygula ve CII performansını izle",
     ],
     resources: [
       {
-        label: "MARPOL konsolide özet",
-        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Prevention-of-Pollution-from-Ships.aspx",
+        label: "IMO MARPOL sayfası",
+        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Prevention-of-Pollution-from-Ships-(MARPOL).aspx",
       },
     ],
   },
   {
     slug: "stcw",
-    label: "STCW – Gemi Adamları Eğitim ve Belgelendirme",
+    label: "STCW – Gemi Adamları Eğitim Standardı",
     category: "IMO Sözleşmeleri",
     overview:
-      "Denizcilerin asgari yeterlik, eğitim, sertifikasyon ve vardiya standartlarını belirleyerek güvenli ve çevreci gemi işletmesini sağlar.",
+      "Gemi adamlarının eğitim, belgelendirme ve vardiya tutma standartlarını düzenler; yeterlilik sertifikaları, yenileme gereklilikleri ve dinlenme saatlerini kapsar.",
     essentials: [
-      "Tablo A-II/1, A-III/1 gibi yeterlik tabloları ve deniz hizmet süreleri",
-      "BRM/ERM, ECDIS, IGF, tanker ve güvenlik eğitimlerinin geçerlilik tarihleri",
-      "Tıbbi muayene ve denizde çalışma izinlerinin sürekliliği",
+      "Yeterlilik sertifikaları ve yenileme gereklilikleri",
+      "Zorunlu eğitimler: BST, ARPA, ECDIS, tanker endorsements",
+      "Vardiya düzeni ve dinlenme saatleri (minimum 10 saat/24 saat)",
+      "Mürettebat kayıtları ve Safe Manning Document uyumu",
     ],
     actions: [
-      "Manning planını STCW ve bayrak gerekliliklerine göre eşleştir",
-      "Sertifika ve CoC doğrulamalarını onboarding sürecine ekle",
-      "Yıllık eğitim matrisi ve simülatör kayıtlarını denetim için sakla",
+      "Sertifika geçerlilik tarihlerini takip et ve yenileme planla",
+      "Zorunlu eğitimleri zamanında tamamla",
+      "Dinlenme saatlerini kaydet ve uyumu doğrula",
+      "Safe Manning Document ile mürettebat sayısını eşleştir",
     ],
     resources: [
       {
-        label: "STCW bilgi sayfası",
-        href: "https://www.imo.org/en/OurWork/HumanElement/Pages/STCW-Conv-LINK.aspx",
+        label: "IMO STCW sayfası",
+        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Standards-of-Training,-Certification-and-Watchkeeping-for-Seafarers-(STCW).aspx",
       },
     ],
   },
   {
     slug: "mlc",
-    label: "MLC – Denizcilik Çalışma Sözleşmesi",
+    label: "MLC 2006 – Denizcilik Çalışma Sözleşmesi",
     category: "IMO Sözleşmeleri",
     overview:
-      "Mürettebatın çalışma ve yaşam koşullarını, sözleşme, ödeme, konaklama, sağlık ve refah haklarını harmonize eder.",
+      "Gemi adamlarının çalışma ve yaşam koşullarını düzenler; sözleşme hakları, ücret, çalışma saatleri, konaklama, sağlık ve sosyal güvenlik standartlarını kapsar.",
     essentials: [
-      "MLC Sertifikası, DMLC Bölüm I-II gereklilikleri",
-      "Çalışma/istirahat saatleri, mürettebat sözleşmeleri ve repatriation",
-      "Gemi sağlık ve refah tesisleri, şikâyet prosedürleri",
+      "Çalışma sözleşmesi ve ücret ödeme gereklilikleri",
+      "Çalışma ve dinlenme saatleri (max. 14 saat/gün, 72 saat/hafta)",
+      "Konaklama, yemek ve rekreasyon standartları",
+      "Sağlık, tıbbi bakım ve repatriation hakları",
     ],
     actions: [
-      "Saat çizelgelerini ILO model formatına uygun arşivle",
-      "Mürettebat şikâyet kanallarını gemi içi görünür şekilde yayınla",
-      "DMLC eylem planı ve iç denetim bulgularını takip et",
+      "MLC sertifikası ve DMLC'yi güncel tut",
+      "Çalışma saatlerini kaydet ve limitlere uy",
+      "Konaklama ve yemek standartlarını düzenli denetle",
+      "Mürettebat şikayetlerini kaydet ve çöz",
     ],
     resources: [
       {
-        label: "MLC 2006 rehberi",
+        label: "ILO MLC 2006",
         href: "https://www.ilo.org/global/standards/maritime-labour-convention/lang--en/index.htm",
       },
     ],
   },
   {
-    slug: "colreg",
-    label: "COLREG – Denizde Çatışmayı Önleme Kuralları",
+    slug: "bwm",
+    label: "BWM – Balast Suyu Yönetimi",
     category: "IMO Sözleşmeleri",
     overview:
-      "Çatışmayı önleme manevra kuralları, seyrüsefer ışıkları, şekiller ve ses işaretleri için evrensel standartları belirler.",
+      "Balast suyu ile taşınan zararlı organizmaların yayılmasını önlemek için arıtma ve yönetim standartlarını belirler; BWMS kurulumu ve işletme gerekliliklerini kapsar.",
     essentials: [
-      "Bölüm B Kural 4-19 manevra öncelikleri ve dar kanal uygulamaları",
-      "Işık/şekil gösterme ve sis işaretlerinin çalışma kontrolleri",
-      "Kaptanın sorumluluğu ve iyi denizcilik uygulaması",
+      "D-2 standardı: arıtılmış balast suyu deşarjı",
+      "BWMS kurulumu, işletme ve bakım gereklilikleri",
+      "Balast Suyu Kayıt Defteri (BWRB) tutma",
+      "Commissioning test ve yıllık survey",
     ],
     actions: [
-      "Günlük navigasyon brifinglerinde vaka analizi ve COLREG alıştırmaları yap",
-      "Işık ve düdük testlerini seyir öncesi kontrol listesine ekle",
-      "ECDIS ve radar alarm limitlerini risk değerlendirmesine göre ayarla",
+      "BWMS'yi düzenli olarak çalıştır ve bakımını yap",
+      "BWRB kayıtlarını her balast operasyonunda tamamla",
+      "UV lamba ve filtre değişimlerini zamanında yap",
+      "Yıllık survey ve commissioning test'i planla",
     ],
     resources: [
       {
-        label: "COLREG metni",
-        href: "https://www.imo.org/en/About/Conventions/Pages/COLREG.aspx",
+        label: "IMO BWM Convention",
+        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Control-and-Management-of-Ships'-Ballast-Water-and-Sediments-(BWM).aspx",
       },
     ],
   },
   {
-    slug: "load-lines",
-    label: "Load Lines – Yükleme Hattı Sözleşmesi",
+    slug: "llc",
+    label: "LLC – Yük Hattı Sözleşmesi",
     category: "IMO Sözleşmeleri",
     overview:
-      "Geminin seyre elverişliliğini sağlamak için yaz/kış/tropik bölgeler ve tatlı su için freeboard ve markalama gerekliliklerini belirler.",
+      "Gemilerin güvenli yükleme limitlerini belirleyen yük hattı işaretleri ve freeboard hesaplamalarını düzenler; mevsimsel ve bölgesel yükleme sınırlarını kapsar.",
     essentials: [
-      "Plimsoll markaları, freeboard hesapları ve Load Line sertifikası",
-      "Hava kapakları, su geçirmez kapılar ve açıklıkların sızdırmazlığı",
-      "Kıç/borda yükseklikleri, sheer ve kat açıklıkları",
+      "Freeboard hesaplaması ve yük hattı işaretleri",
+      "Mevsimsel zonlar ve yükleme limitleri",
+      "Yük Hattı Sertifikası ve survey gereklilikleri",
+      "Hava ve su geçirmezlik kontrolleri",
     ],
     actions: [
-      "Kalkış öncesi draft survey ile freeboard limitini doğrula",
-      "Açıklıkların kapatma testlerini (hose test) yıllık planla",
-      "Sertifika eklerini ve izin verilen yükleme sezonlarını seyir planına ekle",
+      "Yükleme öncesi yük hattı limitlerini kontrol et",
+      "Mevsimsel zon değişikliklerinde yükleme planını güncelle",
+      "Yük Hattı Sertifikasını güncel tut",
+      "Hava ve su geçirmez kapakları düzenli denetle",
     ],
     resources: [
       {
-        label: "ICLL 66 özet",
+        label: "IMO Load Lines Convention",
         href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Load-Lines.aspx",
       },
     ],
   },
   {
-    slug: "ism-code",
-    label: "ISM Code – Uluslararası Güvenlik Yönetimi",
-    category: "Emniyet Kodları",
+    slug: "colreg",
+    label: "COLREG – Denizde Çatışmayı Önleme",
+    category: "IMO Sözleşmeleri",
     overview:
-      "Şirket ve gemi için güvenlik yönetim sisteminin kurulması, uygulanması ve sürekli iyileştirilmesi için çerçeve sağlar.",
+      "Denizde gemilerin birbirlerinden kaçınma kurallarını, seyir ışıkları, şekil ve ses işaretlerini düzenler; tüm deniz araçları için zorunlu uyum gerektirir.",
     essentials: [
-      "Emniyet ve çevre koruma politikası, yetkili kişi (DPA) ataması",
-      "SMS dokümantasyonu, risk değerlendirme ve değişiklik yönetimi",
-      "İç/dış ISM denetimleri ve düzeltici faaliyetler",
+      "Seyir kuralları: karşılaşma, geçiş, yetişme durumları",
+      "Seyir ışıkları ve şekil işaretleri",
+      "Ses ve ışık sinyalleri",
+      "Dar kanal, trafik ayrım şemaları ve kısıtlı görüş kuralları",
     ],
     actions: [
-      "Kaza/olay raporlarını kök neden analiziyle kapat",
-      "Gemi içi ISM öz değerlendirmelerini altı ayda bir planla",
-      "SMS değişikliklerini mürettebata imza karşılığı duyur",
+      "Seyir ışıklarını günlük kontrol et ve kaydet",
+      "Dar kanal ve TSS geçişlerinde COLREG kurallarına uy",
+      "Kısıtlı görüşte sis sinyali ver ve hızı azalt",
+      "Mürettebata COLREG kurallarını düzenli hatırlat",
     ],
     resources: [
       {
-        label: "ISM Code metni",
+        label: "IMO COLREG",
+        href: "https://www.imo.org/en/About/Conventions/Pages/COLREG.aspx",
+      },
+    ],
+  },
+
+  // ── Emniyet Kodları ────────────────────────────────────────────────
+  {
+    slug: "ism-code",
+    label: "ISM Code – Uluslararası Emniyet Yönetimi",
+    category: "Emniyet Kodları",
+    overview:
+      "Gemi ve şirket düzeyinde emniyet yönetim sistemi (SMS) kurulması, uygulanması ve sürekli iyileştirilmesi için çerçeve sağlar.",
+    essentials: [
+      "Emniyet ve çevre politikası",
+      "Şirket ve gemi sorumlulukları",
+      "Acil durum hazırlığı ve tatbikatlar",
+      "İç ve dış denetimler (internal/external audit)",
+    ],
+    actions: [
+      "SMS prosedürlerini güncel tut ve mürettebata eğit",
+      "Acil durum tatbikatlarını düzenli yap ve kaydet",
+      "İç denetimleri planla ve uygunsuzlukları kapat",
+      "DOC ve SMC sertifikalarını güncel tut",
+    ],
+    resources: [
+      {
+        label: "IMO ISM Code",
         href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx",
       },
     ],
@@ -188,205 +227,225 @@ export const regulationItems: RegulationItem[] = [
     label: "ISPS Code – Gemi ve Liman Tesisi Güvenliği",
     category: "Emniyet Kodları",
     overview:
-      "Gemi ve liman tesislerinin güvenlik risklerini yönetmek, erişim kontrolü ve acil durum iletişimini standardize etmek için uygulanır.",
+      "Deniz güvenliği tehditlerine karşı gemi ve liman tesislerinin korunması için risk değerlendirmesi, güvenlik planları ve prosedürler belirler.",
     essentials: [
-      "SSP uygulaması, güvenlik seviyeleri ve görevli tanımları",
-      "ISSC sertifikası, eğitim ve tatbikat kayıtları",
-      "Güvenlik ekipmanı, CCTV ve erişim kontrol prosedürleri",
+      "Gemi Güvenlik Planı (SSP) ve güvenlik seviyeleri (1-2-3)",
+      "Gemi Güvenlik Görevlisi (SSO) ve Şirket Güvenlik Görevlisi (CSO)",
+      "Güvenlik ekipmanları: CCTV, alarm, erişim kontrol",
+      "Güvenlik tatbikatları ve denetimler",
     ],
     actions: [
-      "Güvenlik seviyesi değişimlerini köprüüstü kayıtlarına işle",
-      "Ziyaretçi/giriş kayıtlarını (ID, araç, yük) günlük kontrol et",
-      "Drill ve ex. tatbikatları 3 ayı aşmadan planla",
+      "SSP'yi güncel tut ve mürettebata eğit",
+      "Güvenlik seviyesi değişimlerinde prosedürleri uygula",
+      "Güvenlik ekipmanlarını düzenli test et",
+      "ISSC sertifikasını güncel tut",
     ],
     resources: [
       {
-        label: "ISPS rehberi",
-        href: "https://www.imo.org/en/OurWork/Security/Pages/MaritimeSecurity.aspx",
-      },
-    ],
-  },
-  {
-    slug: "imdg-code",
-    label: "IMDG Code – Tehlikeli Yükler",
-    category: "Emniyet Kodları",
-    overview:
-      "Denizyolu ile taşınan tehlikeli maddelerin sınıflandırma, paketleme, işaretleme, dokümantasyon ve istif kurallarını belirler.",
-    essentials: [
-      "UN numarası, sınıf ayrımı ve segregasyon tabloları",
-      "EmS, MFAG ve special provision uygulamaları",
-      "Dokümantasyon: DGD, stowage plan ve manifest doğrulaması",
-    ],
-    actions: [
-      "Segregasyon kurallarını stowage plan üzerinde çapraz kontrol et",
-      "IMDG eğitim sertifikalarının geçerlilik tarihlerini izle",
-      "Sızıntı/hasar durumunda EmS kartlarına göre müdahale planı hazırla",
-    ],
-    resources: [
-      {
-        label: "IMDG Code bilgi notu",
-        href: "https://www.imo.org/en/OurWork/Safety/Pages/DangerousGoods.aspx",
+        label: "IMO ISPS Code",
+        href: "https://www.imo.org/en/OurWork/Security/Pages/ISPS-Code.aspx",
       },
     ],
   },
   {
     slug: "imsbc-code",
-    label: "IMSBC Code – Katı Dökme Yükler",
+    label: "IMSBC Code – Dökme Katı Yük Kuralları",
     category: "Emniyet Kodları",
     overview:
-      "Dökme katı yüklerin taşınmasında nem, akma ve patlama risklerini yönetmek için test, sınıflandırma ve istifleme kuralları sunar.",
+      "Dökme katı yükün güvenli taşınması için sınıflandırma, istif, trimming ve özel önlemler belirler; liquefy olabilen ve kimyasal tehlike taşıyan yükleri kapsar.",
     essentials: [
-      "TML/MCB testleri, Group A/B/C sınıflandırması",
-      "Cihaz kalibrasyonu ve nem sertifikası doğrulaması",
-      "Kargo havalandırma ve gaz ölçüm gereklilikleri",
+      "Yük grupları: A (liquefy), B (kimyasal tehlike), C (diğer)",
+      "Nem limiti ve TML (Transportable Moisture Limit)",
+      "Trimming gereklilikleri ve istif faktörü",
+      "Özel önlemler: havalandırma, gaz ölçümü, yangın riski",
     ],
     actions: [
-      "Yükleme öncesi shippers declaration üzerindeki TML/MCB değerlerini kontrol et",
-      "Nem ölçer kalibrasyon kayıtlarını sakla",
-      "Yükleme sırasında trim ve drenaj prosedürlerini takip et",
+      "Yük bildirimini (cargo declaration) kontrol et",
+      "TML ve nem testlerini doğrula",
+      "Ambar havalandırmasını ve gaz ölçümlerini düzenli yap",
+      "Trimming gerekliliklerine uy",
     ],
     resources: [
       {
-        label: "IMSBC Code özet",
-        href: "https://www.imo.org/en/OurWork/Safety/Pages/IMSBC-CODE.aspx",
+        label: "IMO IMSBC Code",
+        href: "https://www.imo.org/en/Publications/Pages/IMSBC-Code.aspx",
+      },
+    ],
+  },
+  {
+    slug: "imdg-code",
+    label: "IMDG Code – Tehlikeli Madde Taşımacılığı",
+    category: "Emniyet Kodları",
+    overview:
+      "Tehlikeli maddelerin deniz yoluyla taşınmasında sınıflandırma, ambalajlama, işaretleme, belgelendirme ve ayrım kurallarını düzenler.",
+    essentials: [
+      "9 tehlike sınıfı ve alt sınıflar",
+      "Ambalajlama, işaretleme ve etiketleme",
+      "Ayrım (segregation) gereklilikleri",
+      "Belgelendirme: DG manifest, container packing certificate",
+    ],
+    actions: [
+      "DG manifest ve packing certificate'ı kontrol et",
+      "Ayrım kurallarına göre istif planı yap",
+      "Acil durum prosedürlerini (EmS) hazır bulundur",
+      "Mürettebata tehlikeli madde eğitimi ver",
+    ],
+    resources: [
+      {
+        label: "IMO IMDG Code",
+        href: "https://www.imo.org/en/Publications/Pages/IMDG-Code.aspx",
+      },
+    ],
+  },
+  {
+    slug: "igs-code",
+    label: "IGS Code – Inert Gaz Sistemleri",
+    category: "Emniyet Kodları",
+    overview:
+      "Tanker gemilerinde kargo tanklarının inert gaz ile korunması için sistem tasarımı, işletme ve bakım standartlarını belirler.",
+    essentials: [
+      "Oksijen seviyesi: max. %8 (operasyon), %5 (yükleme/boşaltma)",
+      "IG üretimi: flue gas veya inert gas generator",
+      "Sistem bileşenleri: scrubber, blower, deck seal",
+      "İzleme ve alarm sistemleri",
+    ],
+    actions: [
+      "IG sistemi performansını sürekli izle",
+      "Oksijen seviyesini düzenli ölç ve kaydet",
+      "Scrubber ve blower bakımlarını zamanında yap",
+      "Deck seal su seviyesini kontrol et",
+    ],
+    resources: [
+      {
+        label: "IMO IGS Code",
+        href: "https://www.imo.org/en/OurWork/Safety/Pages/IGS-Code.aspx",
+      },
+    ],
+  },
+  {
+    slug: "igf-code",
+    label: "IGF Code – Gaz Yakıtlı Gemiler",
+    category: "Emniyet Kodları",
+    overview:
+      "LNG ve diğer düşük parlama noktalı gazlarla çalışan gemilerin tasarım, inşa ve işletme güvenliği için risk tabanlı yaklaşım ve teknik standartlar sağlar.",
+    essentials: [
+      "Risk değerlendirmesi ve alternatif tasarım onayı",
+      "Yakıt tankı, boru hattı ve bunkering düzenleri",
+      "Gaz algılama, havalandırma ve acil durum sistemleri",
+      "Mürettebat eğitimi ve operasyon prosedürleri",
+    ],
+    actions: [
+      "Gaz algılama sistemlerini günlük test et",
+      "Bunkering prosedürlerini checklist ile uygula",
+      "Acil durum tatbikatlarını düzenli yap",
+      "Mürettebata gaz yakıt güvenliği eğitimi ver",
+    ],
+    resources: [
+      {
+        label: "IMO IGF Code",
+        href: "https://www.imo.org/en/OurWork/Safety/Pages/IGF-Code.aspx",
+      },
+    ],
+  },
+  {
+    slug: "bc-code",
+    label: "BC Code – Dökme Yük Gemileri",
+    category: "Emniyet Kodları",
+    overview:
+      "Dökme yük gemilerinin yapısal güvenliği, yükleme/boşaltma prosedürleri ve stabilite için ek gereklilikler belirler.",
+    essentials: [
+      "Yapısal dayanım ve yükleme sınırlamaları",
+      "Loading instrument ve stress monitoring",
+      "Ambar erişimi ve havalandırma",
+      "Yükleme/boşaltma planı ve onayı",
+    ],
+    actions: [
+      "Loading instrument ile stres değerlerini izle",
+      "Yükleme planını kaptan ve terminal ile onayla",
+      "Ambar havalandırmasını düzenli kontrol et",
+      "Yapısal hasarları düzenli denetle",
+    ],
+    resources: [
+      {
+        label: "IMO BC Code",
+        href: "https://www.imo.org/en/OurWork/Safety/Pages/BulkCarriers.aspx",
+      },
+    ],
+  },
+  {
+    slug: "ics-code",
+    label: "ICS Code – Kimyasal Tankerler",
+    category: "Emniyet Kodları",
+    overview:
+      "Kimyasal tanker gemilerinin tasarım, inşa ve tehlikeli kimyasal madde taşımacılığı için güvenlik standartlarını düzenler.",
+    essentials: [
+      "Gemi tipi: 1, 2, 3 (tehlike seviyesine göre)",
+      "Kargo tank malzemesi ve kaplama gereklilikleri",
+      "Kargo transfer, havalandırma ve gaz freeing",
+      "P&A Manual ve cargo compatibility",
+    ],
+    actions: [
+      "P&A Manual'i güncel tut ve mürettebata eğit",
+      "Cargo compatibility kontrolü yap",
+      "Tank kaplama durumunu düzenli denetle",
+      "Gaz freeing prosedürlerini uygula",
+    ],
+    resources: [
+      {
+        label: "IMO IBC Code",
+        href: "https://www.imo.org/en/Publications/Pages/IBC-Code.aspx",
       },
     ],
   },
   {
     slug: "igc-code",
-    label: "IGC Code – Gaz Taşıyıcı Gemiler",
+    label: "IGC Code – Gaz Tankerleri",
     category: "Emniyet Kodları",
     overview:
-      "LNG/LPG gibi sıvılaştırılmış gaz taşıyıcılarının tasarım, sistem bütünlüğü ve operasyonel güvenliğini düzenler.",
+      "Sıvılaştırılmış gaz (LNG, LPG vb.) taşıyan tankerlerin tasarım, inşa ve işletme güvenliği için kapsamlı teknik standartlar sağlar.",
     essentials: [
-      "Kargo tank tipleri, MARVS limitleri ve bağımsızlık seviyeleri",
-      "Boil-off, reliquefaction ve inerting sistemleri",
-      "IGC sertifikası ve ESD, gaz algılama testleri",
+      "Tank tipi: bağımsız, membran, integral",
+      "Kargo sıcaklık ve basınç kontrol sistemleri",
+      "Gaz algılama, havalandırma ve acil durum prosedürleri",
+      "Mürettebat eğitimi ve operasyon limitleri",
     ],
     actions: [
-      "ESD ve gaz algılama ekipmanının fonksiyon testlerini yükleme öncesi tamamla",
-      "IGC operasyonel kısıtlamalarını kargo planına ekle",
-      "Soğutma ve inerting prosedürlerini ekip eğitiminde tekrar et",
+      "Kargo sıcaklık ve basıncını sürekli izle",
+      "Gaz algılama sistemlerini günlük test et",
+      "Acil durum prosedürlerini düzenli tatbikat et",
+      "Tank muayene ve bakımlarını zamanında yap",
     ],
     resources: [
       {
-        label: "IGC Code",
-        href: "https://www.imo.org/en/OurWork/Safety/Pages/IGC-Code.aspx",
+        label: "IMO IGC Code",
+        href: "https://www.imo.org/en/Publications/Pages/IGC-Code.aspx",
       },
     ],
   },
+
+  // ── Çevresel Düzenlemeler ──────────────────────────────────────────
   {
-    slug: "ibc-code",
-    label: "IBC Code – Kimyasal Tankerler",
-    category: "Emniyet Kodları",
-    overview:
-      "Kimyasal tankerlerde kargo uyumluluğu, malzeme seçimi ve kirlilik riskleri için detaylı teknik gereklilikler getirir.",
-    essentials: [
-      "Kargo listesi, ship type 1/2/3 gereklilikleri ve coating uyumu",
-      "Ventilation, tank cleaning ve yükleme limitleri",
-      "IBC sertifikası, P&A Manual ve Emergency Towing",
-    ],
-    actions: [
-      "Kargo uyumluluk matrisi ve coating listesiyle yük kabulü yap",
-      "Tank temizliği ve ventilasyon planını IBC yük notlarına göre oluştur",
-      "P&A Manual revizyonlarını ve kalibrasyon kayıtlarını güncel tut",
-    ],
-    resources: [
-      {
-        label: "IBC Code",
-        href: "https://www.imo.org/en/OurWork/Safety/Pages/IBC-Code.aspx",
-      },
-    ],
-  },
-  {
-    slug: "bwm",
-    label: "BWM Convention – Balast Suyu Yönetimi",
+    slug: "eexi",
+    label: "EEXI – Enerji Verimliliği Tasarım İndeksi",
     category: "Çevresel Düzenlemeler",
     overview:
-      "İstilacı türlerin yayılımını önlemek için balast suyu değişimi veya arıtım sistemleri ve raporlama gerekliliklerini belirler.",
+      "Mevcut gemilerin enerji verimliliğini değerlendiren teknik indeks; 2023'ten itibaren zorunlu, geminin CO₂ emisyon performansını ölçer.",
     essentials: [
-      "D-1 değişim, D-2 arıtım standartları ve BWTS tip onayı",
-      "IBWMC sertifikası, Ballast Water Record Book yönetimi",
-      "VGP/COI gibi bölgesel ek gereklilikler",
+      "EEXI hesaplaması ve attained/required EEXI karşılaştırması",
+      "Teknik ve operasyonel iyileştirme seçenekleri",
+      "EEXI Technical File hazırlama ve onay",
+      "İlk survey sonrası sertifikasyon",
     ],
     actions: [
-      "Balast operasyonlarını zaman/konumla birlikte BWRB'ye eksiksiz işle",
-      "BWTS bakım ve kalibrasyon kayıtlarını üretici talimatına göre tut",
-      "De-ballast planını çevresel kısıtlamalarla önceden kontrol et",
+      "EEXI hesaplamasını klas/bayrak ile doğrula",
+      "Gerekirse EPL (Engine Power Limitation) uygula",
+      "EEXI Technical File'ı hazırla ve gemide bulundur",
+      "IAPP sertifikasına EEXI onayını ekle",
     ],
     resources: [
       {
-        label: "BWM Convention",
-        href: "https://www.imo.org/en/About/Conventions/Pages/BWM-Treaty.aspx",
-      },
-    ],
-  },
-  {
-    slug: "afs",
-    label: "AFS Convention – Zehirli Boya Sistemleri",
-    category: "Çevresel Düzenlemeler",
-    overview:
-      "Zararlı gemi boyalarının kullanımını yasaklayarak çevre ve insan sağlığını korur, uyum ve sertifikasyon süreçlerini tarif eder.",
-    essentials: [
-      "AFS Sertifikası, TBT ve zararlı bileşik yasakları",
-      "Kayıtlı uygulama/çıkarma işlemleri ve gövde denetimleri",
-      "Yeni kaplama uygulamalarında malzeme beyanı",
-    ],
-    actions: [
-      "AFS sertifikasının geçerliliğini klas denetimleriyle hizala",
-      "Kaplama değişikliklerinde malzeme MSDS ve beyanlarını arşivle",
-      "Kuru havuz öncesi çevresel bertaraf planını doğrula",
-    ],
-    resources: [
-      {
-        label: "AFS sözleşmesi",
-        href: "https://www.imo.org/en/OurWork/Environment/Pages/Anti-fouling.aspx",
-      },
-    ],
-  },
-  {
-    slug: "hong-kong",
-    label: "Hong Kong Convention – Gemi Geri Dönüşümü",
-    category: "Çevresel Düzenlemeler",
-    overview:
-      "Gemi geri dönüşümünde insan sağlığı, emniyet ve çevre korumasını sağlamak için malzeme envanteri ve onaylı tesis gereksinimleri getirir.",
-    essentials: [
-      "IHM (Inventory of Hazardous Materials) ve sertifikası",
-      "Geri dönüşüm tesisi onayı ve Recycling Plan",
-      "Asbest, PCB, TBT gibi tehlikeli maddelerin yönetimi",
-    ],
-    actions: [
-      "IHM güncellemelerini modifikasyon sonrası 3 ay içinde tamamla",
-      "Geri dönüşüm tesisi seçiminde klas/flag onaylarını kontrol et",
-      "Tehlikeli madde kayıtlarını mürettebat bilgilendirmesiyle paylaş",
-    ],
-    resources: [
-      {
-        label: "Hong Kong Convention",
-        href: "https://www.imo.org/en/OurWork/Environment/Pages/Ship-Recycling.aspx",
-      },
-    ],
-  },
-  {
-    slug: "eedi-eexi",
-    label: "EEDI/EEXI – Enerji Verimliliği İndeksleri",
-    category: "Çevresel Düzenlemeler",
-    overview:
-      "Yeni ve mevcut gemiler için tasarımsal enerji verimliliği kriterleri; makine güç limiti ve teknik iyileştirmeleri teşvik eder.",
-    essentials: [
-      "EEDI/EEXI hesaplaması, EEXI Technical File ve ShaPoLi/POLi",
-      "Kısıtlama cihazlarının onayı ve doğrulama testleri",
-      "SEEMP Part III ve CII hedefleriyle bağlantı",
-    ],
-    actions: [
-      "EEXI teknik dosyasını klasla onaylatıp gemide bulundur",
-      "ShaPoLi/POLi ekipmanının fonksiyon testini liman çıkışında kaydet",
-      "SEEMP Part III'ü yıllık CII revizyonlarıyla güncelle",
-    ],
-    resources: [
-      {
-        label: "MEPC.335(76) özeti",
-        href: "https://www.imo.org/en/MediaCentre/PressBriefings/pages/EEXI.aspx",
+        label: "IMO EEXI rehberi",
+        href: "https://www.imo.org/en/OurWork/Environment/Pages/EEXI.aspx",
       },
     ],
   },
@@ -395,246 +454,351 @@ export const regulationItems: RegulationItem[] = [
     label: "CII – Karbon Yoğunluğu Göstergesi",
     category: "Çevresel Düzenlemeler",
     overview:
-      "Geminin yıllık operasyonel karbon yoğunluğunu derecelendirerek A–E bandında performans ve iyileştirme planlarını zorunlu kılar.",
+      "Geminin yıllık operasyonel karbon verimliliğini ölçen gösterge; A-E arası derecelendirme ile performans izlenir, düşük performans iyileştirme planı gerektirir.",
     essentials: [
-      "Aylık yakıt/veri raporlaması ve DCS entegrasyonu",
-      "CII derecesi, Corrective Action Plan ve izleme penceresi",
-      "SEEMP Part III doğrulaması ve hedef hatları",
+      "Yıllık CII hesaplaması: gCO₂/(dwt·mil)",
+      "Rating: A (en iyi) – E (en kötü)",
+      "D veya E rating için SEEMP iyileştirme planı",
+      "Yıllık raporlama ve doğrulama",
     ],
     actions: [
-      "A/B hedefini tutturmak için hız, rota ve yük optimizasyonu planla",
-      "E veya D notu sonrası CAP aksiyonlarını 3 ay içinde uygula",
-      "Dönemsel CII trend analizlerini yönetimle paylaş",
+      "Yakıt tüketimi ve mesafe verilerini düzenli kaydet",
+      "CII performansını aylık izle ve tahmin et",
+      "Düşük performansta SEEMP iyileştirme planı hazırla",
+      "Yıllık CII raporunu bayrak devletine sun",
     ],
     resources: [
       {
-        label: "CII rehberi",
+        label: "IMO CII rehberi",
         href: "https://www.imo.org/en/OurWork/Environment/Pages/CII.aspx",
       },
     ],
   },
   {
     slug: "eu-ets",
-    label: "EU ETS – Emisyon Ticaret Sistemi",
+    label: "EU ETS – AB Emisyon Ticaret Sistemi",
     category: "Çevresel Düzenlemeler",
     overview:
-      "AB sularında seyreden gemilerin CO₂ emisyonlarını kapsama alarak tahsisat yönetimi ve teslim yükümlülükleri getirir.",
+      "AB limanlarına uğrayan gemilerin CO₂ emisyonlarını kapsayan karbon fiyatlandırma mekanizması; 2024'ten itibaren kademeli uygulama başlar.",
     essentials: [
-      "Uygulama kapsamı: AB liman arası %100, AB-dışı seferlerde %50",
-      "Doğrulanmış emisyon raporu, tahsisat teslimi ve ceza mekanizması",
-      "ETS ile MRV, DCS ve SEEMP veri uyumu",
+      "Kapsam: AB limanları arası ve AB-üçüncü ülke seferleri",
+      "İzleme, raporlama ve doğrulama (MRV) gereklilikleri",
+      "Emisyon kotası (allowance) satın alma ve teslim",
+      "Kademeli uygulama: %40 (2024), %70 (2025), %100 (2026)",
     ],
     actions: [
-      "Yıllık emisyonlarını doğrulanmış MRV raporlarıyla eşleştir",
-      "ETS tahsisat alım/teslim takvimini finans ve operasyonla koordine et",
-      "Kapsam dışı/istisna seferleri belgeleyerek sakla",
+      "MRV sistemini kur ve emisyon verilerini kaydet",
+      "Doğrulayıcı kuruluş ile yıllık doğrulama yap",
+      "Emisyon kotası ihtiyacını hesapla ve satın al",
+      "Teslim tarihlerine (30 Nisan) uyum sağla",
     ],
     resources: [
       {
         label: "EU ETS denizcilik",
-        href: "https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets/shipping_en",
+        href: "https://climate.ec.europa.eu/eu-action/transport/reducing-emissions-shipping-sector_en",
       },
     ],
   },
+  {
+    slug: "fueleu-maritime",
+    label: "FuelEU Maritime – AB Yakıt Standardı",
+    category: "Çevresel Düzenlemeler",
+    overview:
+      "AB limanlarına uğrayan gemilerin kullandığı yakıtların sera gazı yoğunluğunu kademeli olarak azaltmayı hedefleyen AB düzenlemesi.",
+    essentials: [
+      "GHG yoğunluğu limitleri: 2025'ten itibaren kademeli azalma",
+      "Alternatif yakıt kullanımı teşviki",
+      "Liman elektriği (OPS) kullanım zorunluluğu",
+      "Uyumsuzluk cezaları ve compliance balance",
+    ],
+    actions: [
+      "Yakıt GHG yoğunluğunu hesapla ve limitle karşılaştır",
+      "Alternatif yakıt ve OPS kullanım planı yap",
+      "Compliance balance'ı izle",
+      "Yıllık raporlama ve doğrulama yap",
+    ],
+    resources: [
+      {
+        label: "FuelEU Maritime",
+        href: "https://climate.ec.europa.eu/eu-action/transport/reducing-emissions-shipping-sector/fueleu-maritime_en",
+      },
+    ],
+  },
+  {
+    slug: "imo-dcs",
+    label: "IMO DCS – Veri Toplama Sistemi",
+    category: "Çevresel Düzenlemeler",
+    overview:
+      "5000 GT üzeri gemilerin yakıt tüketimi ve CO₂ emisyon verilerini toplama ve raporlama sistemi; MARPOL Ek VI kapsamında zorunludur.",
+    essentials: [
+      "Yıllık yakıt tüketimi, mesafe ve çalışma saati verisi",
+      "Bayrak devletine raporlama (31 Mart)",
+      "IMO veri tabanına aktarım ve şeffaflık",
+      "SEEMP ile entegrasyon",
+    ],
+    actions: [
+      "Yakıt tüketimi verilerini düzenli kaydet",
+      "Yıllık DCS raporunu hazırla ve bayrak devletine sun",
+      "SEEMP'te DCS verilerini kullan",
+      "Veri kalitesini doğrula",
+    ],
+    resources: [
+      {
+        label: "IMO DCS",
+        href: "https://www.imo.org/en/OurWork/Environment/Pages/Data-Collection-System.aspx",
+      },
+    ],
+  },
+  {
+    slug: "imo-2020",
+    label: "IMO 2020 – Kükürt Limiti",
+    category: "Çevresel Düzenlemeler",
+    overview:
+      "Gemi yakıtlarındaki kükürt içeriğini %0.50 m/m ile sınırlayan küresel düzenleme; ECA bölgelerinde %0.10 m/m limiti geçerlidir.",
+    essentials: [
+      "Küresel limit: %0.50 m/m SOx",
+      "ECA bölgeleri: %0.10 m/m SOx",
+      "Uyum seçenekleri: LSFO, MGO veya EGCS (scrubber)",
+      "Yakıt numune ve BDN saklama",
+    ],
+    actions: [
+      "Yakıt kükürt içeriğini BDN ile doğrula",
+      "ECA giriş/çıkışında yakıt değişimini kaydet",
+      "EGCS kullanımında emisyon verilerini izle",
+      "Yakıt numunelerini 12 ay sakla",
+    ],
+    resources: [
+      {
+        label: "IMO 2020 sulphur limit",
+        href: "https://www.imo.org/en/MediaCentre/HotTopics/Pages/Sulphur-2020.aspx",
+      },
+    ],
+  },
+
+  // ── Denetim & Sörvey ───────────────────────────────────────────────
   {
     slug: "psc",
     label: "PSC – Liman Devleti Kontrolü",
     category: "Denetim & Sörvey",
     overview:
-      "Liman devleti tarafından yapılan uyum denetimleri; yüksek riskli alanlara odaklanarak eksiklerin giderilmesini sağlar.",
+      "Liman devletlerinin yabancı bayraklı gemileri uluslararası standartlara uyum açısından denetlemesi; eksiklik ve alıkoyma riski taşır.",
     essentials: [
-      "Hedef faktörler, eksiklik ve alıkoyma kriterleri",
-      "ISM/ISPS, sertifikalar ve kritik ekipman kontrolleri",
-      "Paris/Tokyo MoU kampanyaları (CIC) takibi",
+      "Denetim kapsamı: sertifikalar, teçhizat, mürettebat, operasyon",
+      "Eksiklik kodları ve alıkoyma kriterleri",
+      "Bölgesel MoU'lar: Paris, Tokyo, USCG vb.",
+      "Risk tabanlı hedefleme: HRS, SRS, LRS",
     ],
     actions: [
-      "Denetim öncesi self-checklist ile kritik sistemleri kontrol et",
-      "Eksiklikleri kapatma kanıtlarını PSC portalına zamanında yükle",
-      "CIC temalarını mürettebat brifinglerinde prova et",
+      "Tüm sertifikaları güncel ve gemide bulundur",
+      "Teçhizat bakım kayıtlarını düzenli tut",
+      "PSC denetimi öncesi iç denetim yap",
+      "Eksiklikleri hızlı kapat ve kanıtla",
     ],
     resources: [
       {
-        label: "Paris MoU PSC",
+        label: "Paris MoU",
         href: "https://www.parismou.org/",
+      },
+      {
+        label: "Tokyo MoU",
+        href: "https://www.tokyo-mou.org/",
       },
     ],
   },
   {
-    slug: "fsc",
-    label: "FSC – Bayrak Devleti Kontrolü",
+    slug: "flag-state",
+    label: "Flag State Inspection – Bayrak Devleti Denetimi",
     category: "Denetim & Sörvey",
     overview:
-      "Bayrak devletinin yetkilendirdiği denetçilerce yürütülen sertifika, ekipman ve operasyon uygunluk kontrolleridir.",
+      "Bayrak devletinin kendi gemilerini uluslararası sözleşmelere uyum açısından denetlemesi; yetkilendirme, survey ve sertifikasyon süreçlerini kapsar.",
     essentials: [
-      "Delegation anlaşmaları ve RO gözetimi",
-      "Periyodik/yenileme/ara denetim aralıkları",
-      "Ciddi olay sonrası ek denetim prosedürleri",
+      "Bayrak devleti yetkilendirmesi ve RO (Recognized Organization) görevlendirmesi",
+      "Zorunlu survey'ler: yıllık, ara, yenileme, özel",
+      "Sertifika düzenleme ve geçerlilik kontrolleri",
+      "Bayrak devleti denetim programları",
     ],
     actions: [
-      "Denetim planını klas/bayrak takvimiyle uyumlu tut",
-      "RO bulgularının düzeltici faaliyetlerini SMS'e entegre et",
-      "Yetkilendirme kapsamı dışındaki ekipmanları flag guidance'a göre yönet",
+      "Survey tarihlerini takip et ve zamanında planla",
+      "RO ile koordinasyon sağla",
+      "Bayrak devleti gerekliliklerini güncel takip et",
+      "Denetim bulgularını hızlı kapat",
     ],
     resources: [
       {
         label: "IMO Flag State Implementation",
-        href: "https://www.imo.org/en/OurWork/III/Pages/Default.aspx",
+        href: "https://www.imo.org/en/OurWork/IIIS/Pages/Flag%20State%20Implementation.aspx",
       },
     ],
   },
   {
     slug: "class-survey",
-    label: "Class Survey – Klas Denetimleri",
+    label: "Class Survey – Klas Denetimi",
     category: "Denetim & Sörvey",
     overview:
-      "Klas kurallarına uyumu doğrulayan periyodik, ara ve özel denetimler; yapısal ve makine bütünlüğüne odaklanır.",
+      "Klas kuruluşunun geminin yapısal ve mekanik bütünlüğünü değerlendirmesi; klas notasyonu ve sertifikasyonu için gereklidir.",
     essentials: [
-      "Special Survey, Intermediate, Annual, Docking gereklilikleri",
-      "Önemli onarım/modifikasyon sonrası sınıflandırma",
-      "Klas kayıtları ve Condition of Class takibi",
+      "Yıllık, ara ve özel survey'ler",
+      "Klas notasyonları ve ek notlar",
+      "Yapısal muayene ve kalınlık ölçümleri",
+      "Makine ve elektrik tesisleri denetimi",
     ],
     actions: [
-      "Due date yaklaşan surveyleri bakım planı ile hizala",
-      "Koşullu klas şartlarını (Condition of Class) önceliklendir",
-      "Survey raporlarını teknik yönetim sisteminde arşivle",
+      "Survey tarihlerini klas ile koordine et",
+      "Kalınlık ölçüm raporlarını hazırla",
+      "Klas bulgularını zamanında kapat",
+      "Klas sertifikalarını güncel tut",
     ],
     resources: [
       {
-        label: "IACS klas kural linkleri",
-        href: "https://iacs.org.uk/publications/unified-requirements/",
+        label: "IACS",
+        href: "https://iacs.org.uk/",
       },
     ],
   },
   {
     slug: "vetting",
-    label: "Vetting – Tanker Denetimleri (SIRE, CDI)",
+    label: "Vetting Inspection – Kiralayan Denetimi",
     category: "Denetim & Sörvey",
     overview:
-      "Charterer ve terminal odaklı denetimler; güvenlik yönetimi, ekipman kondisyonu ve operasyonel disipline yoğunlaşır.",
+      "Petrol şirketleri ve charterer'ların gemileri SIRE, CDI, OVID gibi standartlara göre denetlemesi; ticari kabul için kritik öneme sahiptir.",
     essentials: [
-      "SIRE 2.0/VIQ7 soru setleri ve tanık operasyonlar",
-      "CDI kimyasal tanker odaklı değerlendirmeler",
-      "Observation yönetimi ve TMSA entegrasyonu",
+      "SIRE (Ship Inspection Report Programme) – petrol tankerleri",
+      "CDI (Chemical Distribution Institute) – kimyasal tankerler",
+      "OVID (OCIMF Vessel Inspection Database)",
+      "Denetim kapsamı: yapısal, operasyonel, dokümantasyon",
     ],
     actions: [
-      "SIRE 2.0 KPI ve eCMID bulgularını analiz ederek kapat",
-      "Denetim öncesi pre-vetting checklist ve ekip brifingi yap",
-      "Kritik ekipman fonksiyon testlerini (ESD, IG, PV valve) belgeyle",
+      "Vetting denetimi öncesi iç denetim yap",
+      "Tüm dokümantasyonu güncel ve erişilebilir tut",
+      "Mürettebatı vetting prosedürleri konusunda eğit",
+      "Gözlemleri (observations) hızlı kapat",
     ],
     resources: [
       {
         label: "OCIMF SIRE",
-        href: "https://www.ocimf.org/programmes/sire/",
+        href: "https://www.ocimf.org/sire",
       },
     ],
   },
   {
-    slug: "ism-audit",
-    label: "ISM Audit – İç ve Dış Denetimler",
+    slug: "rightship",
+    label: "RightShip – Gemi Değerlendirme",
     category: "Denetim & Sörvey",
     overview:
-      "Şirket ve gemi SMS uygulamalarının bağımsız olarak gözden geçirilmesi; uygunluk, etkinlik ve sürekli iyileştirme değerlendirilir.",
+      "Dökme yük gemilerinin emniyet ve çevre performansını değerlendiren bağımsız platform; charterer kabulü için yaygın kullanılır.",
     essentials: [
-      "Yıllık internal audit, 3 aylık doğrulama ve DOC/SMC ara denetimleri",
-      "Kök neden analizi, düzeltici/önleyici faaliyet takibi",
-      "İletişim, dokümantasyon ve kayıt yönetimi kontrolü",
+      "Safety Score: A-G arası derecelendirme",
+      "GHG Rating: A-G arası emisyon performansı",
+      "Vetting denetimleri ve raporlama",
+      "Charterer kabul kriterleri",
     ],
     actions: [
-      "Audit planını riskli süreçlere odaklayarak hazırlayın",
-      "DÖF kapanışını kanıt dokümanlarıyla doğrula",
-      "Findings trend analizlerini yönetim gözden geçirmesinde paylaş",
+      "RightShip Safety Score'u düzenli izle",
+      "GHG Rating'i iyileştirmek için yakıt verimliliği önlemleri al",
+      "RightShip denetimlerine hazırlıklı ol",
+      "Düşük skorlarda iyileştirme planı yap",
     ],
     resources: [
       {
-        label: "ISM denetim rehberi",
-        href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx",
+        label: "RightShip",
+        href: "https://www.rightship.com/",
       },
     ],
   },
+
+  // ── Gemi Sertifikaları ─────────────────────────────────────────────
   {
     slug: "smc",
-    label: "SMC – Safety Management Certificate",
+    label: "SMC – Emniyet Yönetim Sertifikası",
     category: "Gemi Sertifikaları",
     overview:
-      "Gemi SMS'inin ISM Code'a uygunluğunu gösteren sertifika; dış denetimle verilir ve süreklilik denetimleriyle korunur.",
+      "ISM Code kapsamında geminin emniyet yönetim sistemini uyguladığını belgeleyen sertifika; DOC ile birlikte zorunludur.",
     essentials: [
-      "5 yıllık geçerlilik, 2.-3. yıllar arasında ara denetim",
-      "Sertifika, klas ve bayrak kayıtları ile bağlantı",
-      "Deniz kazası sonrası ek doğrulama gereklilikleri",
+      "İlk sertifikasyon ve yenileme (5 yıl)",
+      "Ara doğrulama (2.5-3 yıl arası)",
+      "SMS uygulaması ve iç denetim kayıtları",
+      "Uygunsuzlukların kapatılması",
     ],
     actions: [
-      "SMC ara denetim tarihini SMS takviminde takip et",
-      "ISM audit bulgularını SMC yenileme öncesi kapat",
-      "Sertifika nüshalarını köprüüstü ve ofiste senkronize tut",
+      "SMS prosedürlerini güncel tut",
+      "İç denetimleri düzenli yap",
+      "Ara doğrulama tarihini takip et",
+      "Dış denetim bulgularını hızlı kapat",
     ],
     resources: [
       {
-        label: "ISM/SMC bilgiler",
-        href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx",
-      },
-    ],
-  },
-  {
-    slug: "doc",
-    label: "DOC – Document of Compliance",
-    category: "Gemi Sertifikaları",
-    overview:
-      "Şirketin filosu için ISM Code uyumunu gösteren belge; gemi tip kapsamı ve ofis denetimleriyle doğrulanır.",
-    essentials: [
-      "Yıllık doğrulama, 5 yılda yenileme",
-      "Kapsamlı gemi tiplerinin belgedeki listesi",
-      "DPA ve yönetim organizasyonunun doğrulanması",
-    ],
-    actions: [
-      "Yıllık doğrulamayı gecikmeden tamamlamak için audit planı oluştur",
-      "Yeni gemi ilavesinde DOC kapsamı güncelliğini kontrol et",
-      "Ofis prosedür değişikliklerini DOC referanslarıyla eşleştir",
-    ],
-    resources: [
-      {
-        label: "DOC rehberi",
+        label: "ISM Code",
         href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx",
       },
     ],
   },
   {
     slug: "issc",
-    label: "ISSC – International Ship Security Certificate",
+    label: "ISSC – Gemi Güvenlik Sertifikası",
     category: "Gemi Sertifikaları",
     overview:
-      "ISPS Code'a uyumu gösteren gemi güvenlik sertifikası; üç yıllık geçerlilikte ara doğrulamalarla desteklenir.",
+      "ISPS Code kapsamında geminin güvenlik önlemlerini uyguladığını belgeleyen sertifika; SSP uyumu ve güvenlik ekipmanı gerektirir.",
     essentials: [
-      "Security Level prosedürleri ve SSP onayı",
-      "Güvenlik görevlisi atanması ve eğitim kayıtları",
-      "Tatbikat ve denetim bulgularının takibi",
+      "İlk sertifikasyon ve yenileme (5 yıl)",
+      "Ara doğrulama (2.5-3 yıl arası)",
+      "SSP uygulaması ve güvenlik tatbikatları",
+      "Güvenlik ekipmanı bakım kayıtları",
     ],
     actions: [
-      "Ara doğrulama tarihini port visit planlarına göre ayarla",
-      "Güvenlik ekipman testlerini (SSAS, AIS güvenlik) belgele",
-      "SSP revizyonlarını bayrak/RO onayıyla senkronize et",
+      "SSP'yi güncel tut ve mürettebata eğit",
+      "Güvenlik ekipmanlarını düzenli test et",
+      "Ara doğrulama tarihini takip et",
+      "Güvenlik tatbikatlarını kaydet",
     ],
     resources: [
       {
-        label: "ISPS/ISSC",
-        href: "https://www.imo.org/en/OurWork/Security/Pages/MaritimeSecurity.aspx",
+        label: "ISPS Code",
+        href: "https://www.imo.org/en/OurWork/Security/Pages/ISPS-Code.aspx",
       },
     ],
   },
   {
-    slug: "iopp",
-    label: "IOPP – Oil Pollution Prevention Certificate",
+    slug: "mlc-cert",
+    label: "MLC Certificate – Denizcilik Çalışma Sertifikası",
     category: "Gemi Sertifikaları",
     overview:
-      "MARPOL Ek I gereği yağ kirliliğini önlemeye yönelik ekipman, operasyon ve kayıtların uygunluğunu belgelendirir.",
+      "MLC 2006 kapsamında geminin çalışma ve yaşam koşullarını sağladığını belgeleyen sertifika; DMLC ile birlikte zorunludur.",
     essentials: [
-      "Bilge, sludge, OWS/ODME sistem testleri",
-      "ITPP verileri ve segregated ballast kontrolleri",
-      "Sertifika yenileme ve ara survey aralıkları",
+      "İlk sertifikasyon ve yenileme (5 yıl)",
+      "Ara denetim (2.5-3 yıl arası)",
+      "DMLC Part I ve Part II uyumu",
+      "Çalışma koşulları, konaklama ve sağlık standartları",
     ],
     actions: [
-      "OWS/ODME fonksiyon testlerini loglarla destekle",
-      "Sludge transfer kayıtlarını ORB ile eşleştir",
-      "Sertifika eklerini (P&A, IOPP supplement) güncel tut",
+      "DMLC'yi güncel tut",
+      "Çalışma saatlerini kaydet ve limitlere uy",
+      "Konaklama ve yemek standartlarını denetle",
+      "Ara denetim tarihini takip et",
+    ],
+    resources: [
+      {
+        label: "MLC 2006",
+        href: "https://www.ilo.org/global/standards/maritime-labour-convention/lang--en/index.htm",
+      },
+    ],
+  },
+  {
+    slug: "iopp-cert",
+    label: "IOPP Certificate – Petrol Kirliliği Önleme Belgesi",
+    category: "Gemi Sertifikaları",
+    overview:
+      "MARPOL Ek I kapsamında geminin petrol kirliliği önleme ekipmanı ve prosedürlerini belgeleyen sertifika.",
+    essentials: [
+      "İlk sertifikasyon ve yenileme (5 yıl)",
+      "Yıllık ve ara survey",
+      "ODM, OWS, bilge alarm ve SOPEP gereklilikleri",
+      "ORB kayıt tutma",
+    ],
+    actions: [
+      "OWS ve bilge alarm testlerini düzenli yap",
+      "ORB kayıtlarını eksiksiz tut",
+      "SOPEP'i güncel tut ve tatbikat yap",
+      "Survey tarihlerini takip et",
     ],
     resources: [
       {
@@ -643,44 +807,25 @@ export const regulationItems: RegulationItem[] = [
       },
     ],
   },
-  {
-    slug: "load-line-certificate",
-    label: "Load Line Certificate – Yükleme Hattı Belgesi",
-    category: "Gemi Sertifikaları",
-    overview:
-      "ICLL gerekliliklerine uygun freeboard, su geçirmezlik ve markalama kontrollerinin yapıldığını gösterir.",
-    essentials: [
-      "Freeboard hesapları ve markalama doğrulaması",
-      "Açıklıkların testleri ve bakım kayıtları",
-      "Yıllık ve yenileme survey aralıkları",
-    ],
-    actions: [
-      "Draft/freeboard ölçümlerini seyir öncesi fotoğrafla belgeley",
-      "Açıklıkların bakım/onarım kayıtlarını survey öncesi hazırla",
-      "Load Line sertifika geçerliliğini voyage planına ekle",
-    ],
-    resources: [
-      {
-        label: "ICLL 66",
-        href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Load-Lines.aspx",
-      },
-    ],
-  },
+
+  // ── Bölgesel Düzenlemeler ──────────────────────────────────────────
   {
     slug: "paris-mou",
-    label: "Paris MoU – Avrupa PSC Rejimi",
+    label: "Paris MoU – Avrupa PSC",
     category: "Bölgesel Düzenlemeler",
     overview:
-      "Avrupa ve Kuzey Atlantik limanlarında PSC koordinasyonunu sağlayan bölgesel anlaşma; risk profili ve hedefleme kriterleri sunar.",
+      "Avrupa ve Kuzey Atlantik limanlarında PSC denetimlerini koordine eden bölgesel mutabakat zaptı; risk tabanlı hedefleme ve CIC kampanyaları yürütür.",
     essentials: [
-      "Gemi risk profili, hedef faktörleri ve kampanyalar",
-      "Eksiklik kodları ve alıkoyma eşikleri",
-      "THETIS veri girişi ve sonuç paylaşımı",
+      "Risk profili: HRS, SRS, LRS",
+      "Denetim sıklığı ve öncelik",
+      "CIC (Concentrated Inspection Campaign) temaları",
+      "Eksiklik ve alıkoyma prosedürleri",
     ],
     actions: [
-      "Paris MoU profilini izleyip eksiklik trendlerini azalt",
-      "CIC konularını gemi brifinglerinde önceden çalış",
-      "THETIS girişlerini doğruluk için iç kontrolle takip et",
+      "Gemi risk profilini düzenli kontrol et",
+      "CIC kampanya temalarını takip et ve hazırlan",
+      "Tüm sertifikaları güncel tut",
+      "Eksiklikleri hızlı kapat",
     ],
     resources: [
       {
@@ -694,16 +839,18 @@ export const regulationItems: RegulationItem[] = [
     label: "Tokyo MoU – Asya-Pasifik PSC",
     category: "Bölgesel Düzenlemeler",
     overview:
-      "Asya-Pasifik bölgesindeki PSC uygulamalarını standardize eder; hedef faktörler ve kampanyalar Paris MoU ile paraleldir.",
+      "Asya-Pasifik bölgesindeki liman devletleri arasında PSC koordinasyonunu sağlayan bölgesel mutabakat zaptı.",
     essentials: [
-      "Risk tabanlı denetim ve ortak CIC programları",
-      "Eksiklik kodları, kapatma süreleri ve alıkoyma kriterleri",
-      "Veri paylaşımı ve IMO GISIS entegrasyonu",
+      "Risk tabanlı hedefleme sistemi",
+      "Denetim standartları ve prosedürleri",
+      "Bölgesel CIC kampanyaları",
+      "Veri paylaşımı ve istatistikler",
     ],
     actions: [
-      "CIC duyurularına göre operasyonel hazırlıkları gözden geçir",
-      "Denetim kapanış kanıtlarını bayrak ve klas ile paylaşıp arşivle",
-      "Seyir planında yüksek riskli limanlara hazırlık süresi ekle",
+      "Tokyo MoU bölgesine giriş öncesi hazırlık yap",
+      "CIC kampanya temalarını mürettebatla gözden geçir",
+      "Denetim trendlerini izle",
+      "Eksiklik kapatma kanıtlarını hazır tut",
     ],
     resources: [
       {
@@ -714,47 +861,51 @@ export const regulationItems: RegulationItem[] = [
   },
   {
     slug: "uscg",
-    label: "US USCG – ABD Sahil Güvenlik",
+    label: "USCG – ABD Sahil Güvenlik Denetimleri",
     category: "Bölgesel Düzenlemeler",
     overview:
-      "ABD sularında PSC ve güvenlik kontrolleri, VGP, ballast, CFR gereklilikleri ve COI süreçlerini kapsar.",
+      "ABD limanlarında USCG tarafından yapılan kapsamlı denetimler; QUALSHIP 21 programı ve sıkı uyum gereklilikleri içerir.",
     essentials: [
-      "VGP, BWM AMS onayı ve NOA/D kötü hava bildirimleri",
-      "Tanker Security, TVR ve CFR 33/46 gereklilikleri",
-      "COI/SQD denetimleri ve hedefleme programı",
+      "QUALSHIP 21 programı ve avantajları",
+      "Denetim kapsamı: sertifikalar, teçhizat, operasyon, mürettebat",
+      "COI (Certificate of Inspection) gereklilikleri",
+      "Eksiklik ve alıkoyma prosedürleri",
     ],
     actions: [
-      "NOA/D bildirimlerini zamanında gönderip onay al",
-      "VGP numune sonuçlarını ve istisnaları arşivle",
-      "USCG denetimlerine yönelik şirket prosedürlerini güncel tut",
+      "QUALSHIP 21 kriterlerini karşılamaya çalış",
+      "ABD'ye giriş öncesi kapsamlı iç denetim yap",
+      "Tüm dokümantasyonu hazır tut",
+      "USCG gerekliliklerini güncel takip et",
     ],
     resources: [
       {
-        label: "USCG PSC",
-        href: "https://www.dco.uscg.mil/Our-Organization/Assistant-Commandant-for-Prevention-Policy-CG-5P/Travel-Marine-Safety-Center/Port-State-Control/",
+        label: "USCG",
+        href: "https://www.dco.uscg.mil/",
       },
     ],
   },
   {
-    slug: "eu-regulations",
-    label: "EU Regulations – AB Denizcilik Mevzuatı",
+    slug: "riyadh-mou",
+    label: "Riyadh MoU – Körfez PSC",
     category: "Bölgesel Düzenlemeler",
     overview:
-      "AB MRV, ETS, Sulphur Directive ve atık yönetimi gibi bölgesel kuralların topluca uygulanmasını ifade eder.",
+      "Basra Körfezi ve Kızıldeniz bölgesindeki liman devletleri arasında PSC koordinasyonunu sağlayan bölgesel mutabakat zaptı.",
     essentials: [
-      "MRV yıllık emisyon raporu ve DoC",
-      "AB sülfür limitleri ve yakıt örnekleme",
-      "Liman atık alım tesisleri ve bildirimleri",
+      "Denetim standartları ve prosedürleri",
+      "Eksiklik sınıflandırması ve raporlama",
+      "Bölgesel işbirliği ve veri paylaşımı",
+      "CIC kampanyaları",
     ],
     actions: [
-      "MRV veri akışını DCS/SEEMP ile uyumlu hale getir",
-      "Yakıt numune ve BDN arşivini 3 yıl sakla",
-      "Liman atık bildirimlerini (Advance Notification) zamanında gönder",
+      "Körfez bölgesine giriş öncesi hazırlık yap",
+      "Yerel gereklilikleri kontrol et",
+      "CIC kampanya temalarını takip et",
+      "Denetim bulgularını hızlı kapat",
     ],
     resources: [
       {
-        label: "EU MRV",
-        href: "https://transport.ec.europa.eu/transport-modes/maritime/maritime-and-environment/monitoring-reporting-and-verification-co2-emissions_en",
+        label: "Riyadh MoU",
+        href: "https://www.riyadhmou.org/",
       },
     ],
   },
@@ -780,6 +931,225 @@ export const regulationItems: RegulationItem[] = [
         href: "https://www.bsmou.org/",
       },
     ],
+  },
+
+  // ── IMO Sözleşmeleri (ek) ──────────────────────────────────────────
+  {
+    slug: "itc-69",
+    label: "ITC 69 – Tonaj Ölçümü Sözleşmesi",
+    category: "IMO Sözleşmeleri",
+    overview: "Gemilerin brüt ve net tonajlarının evrensel ve tutarlı biçimde ölçülmesi için kurallar koyar; liman harçları, güvenlik gereklilikleri ve manning hesaplamalarına temel oluşturur.",
+    essentials: ["Brüt tonaj (GT) ve net tonaj (NT) hesaplama formülleri", "Kapalı hacimlerin tanımı ve istisnaları", "Tonaj sertifikasının geçerliliği ve yenileme koşulları"],
+    actions: ["Yapısal modifikasyon sonrası tonaj yeniden hesaplamasını talep et", "Tonaj sertifikası ile manning ve emniyet gerekliliklerini karşılaştır", "Liman harç hesaplarında GT/NT doğrulaması yap"],
+    resources: [{ label: "ITC 69 bilgi sayfası", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Tonnage-Measurement-of-Ships.aspx" }],
+  },
+  {
+    slug: "sar-convention",
+    label: "SAR – Arama ve Kurtarma Sözleşmesi",
+    category: "IMO Sözleşmeleri",
+    overview: "Denizde arama ve kurtarma operasyonlarının koordinasyonunu, SRR bölgelerini ve MRCC işbirliği çerçevesini düzenler.",
+    essentials: ["SRR (Search and Rescue Region) sınırları ve sorumluluklar", "MRCC/MRSC koordinasyon ve haberleşme prosedürleri", "SAR planları, tatbikatlar ve kaynak paylaşımı"],
+    actions: ["Seyir planında geçilen SRR'lerin MRCC iletişim bilgilerini hazırla", "SAR tatbikatlarını yılda en az bir kez gerçekleştir", "GMDSS cihazlarının SAR alarm fonksiyonlarını periyodik test et"],
+    resources: [{ label: "SAR Convention", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Maritime-Search-and-Rescue-(SAR).aspx" }],
+  },
+  {
+    slug: "fal-convention",
+    label: "FAL – Deniz Trafiğinin Kolaylaştırılması",
+    category: "IMO Sözleşmeleri",
+    overview: "Gemilerin limanlara giriş/çıkışında gereken belge ve prosedürleri basitleştirerek uluslararası deniz ticaretini kolaylaştırır.",
+    essentials: ["FAL formları (1–7) ve elektronik veri değişimi", "Ön bildirim gereklilikleri ve liman prosedürleri", "Kaçak yolcu ve sığınmacı prosedürleri"],
+    actions: ["FAL formlarını elektronik ortamda hazırla ve zamanında ilet", "Ön bildirim (pre-arrival notification) gerekliliklerini kontrol et", "Kaçak yolcu arama ve raporlama prosedürlerini mürettebata öğret"],
+    resources: [{ label: "FAL Convention", href: "https://www.imo.org/en/About/Conventions/Pages/Convention-on-Facilitation-of-International-Maritime-Traffic-(FAL).aspx" }],
+  },
+  {
+    slug: "sua-convention",
+    label: "SUA – Denizde Yasadışı Eylemlerin Önlenmesi",
+    category: "IMO Sözleşmeleri",
+    overview: "Gemilere karşı korsanlık, terörizm ve diğer yasadışı eylemlerin önlenmesi, bastırılması ve yargılanması için hukuki çerçeve sağlar.",
+    essentials: ["Suç tanımları: gemi ele geçirme, yolcu/mürettebata şiddet, hasar verme", "Yargı yetkisi ve iade (extradition) düzenlemeleri", "2005 Protokolü: WMD taşımacılığı ve platform güvenliği"],
+    actions: ["Yüksek riskli bölgelerde BMP (Best Management Practices) uygula", "Güvenlik seviyesi değişimlerinde SSP prosedürlerini etkinleştir", "Yasadışı eylem girişimlerini kıyı devleti ve bayrak devletine raporla"],
+    resources: [{ label: "SUA Convention", href: "https://www.imo.org/en/About/Conventions/Pages/SUA-Treaties.aspx" }],
+  },
+
+  // ── Emniyet Kodları (ek) ───────────────────────────────────────────
+  {
+    slug: "lsa-code",
+    label: "LSA Code – Can Kurtarma Araçları",
+    category: "Emniyet Kodları",
+    overview: "Can filikaları, can salları, kişisel can kurtarma teçhizatı ve indirme düzeneklerinin tasarım, performans ve test standartlarını belirler.",
+    essentials: ["Can filikası ve can salı performans ve kapasite gereklilikleri", "Kişisel teçhizat: can yeleği, can simidi, dalma elbisesi standartları", "İndirme/kurtarma (davit) düzenekleri ve bakım/test aralıkları"],
+    actions: ["Can kurtarma araçlarının periyodik servis ve yıllık muayenelerini planla", "Dalma elbisesi ve can yeleği sayılarını manifesto ile eşleştir", "Davit ve vinç yük testlerini 5 yıllık döngüde tamamla"],
+    resources: [{ label: "LSA Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/LifeSavingAppliances.aspx" }],
+  },
+  {
+    slug: "fss-code",
+    label: "FSS Code – Yangın Güvenlik Sistemleri",
+    category: "Emniyet Kodları",
+    overview: "Sabit yangın söndürme, algılama ve alarm sistemlerinin tasarım, kurulum, test ve bakım standartlarını düzenler.",
+    essentials: ["Sabit CO₂, köpük, su sisi ve aerosol söndürme sistemleri", "Otomatik ve manuel yangın algılama/alarm düzenleri", "Sistem test, bakım ve yedek parça gereklilikleri"],
+    actions: ["CO₂ sistemi ağırlık kontrolünü yıllık olarak yap ve kaydet", "Algılama ve alarm panellerini haftalık fonksiyon testiyle doğrula", "Söndürme ajanı miktarı ve şarj durumunu izle"],
+    resources: [{ label: "FSS Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/FireProtection.aspx" }],
+  },
+  {
+    slug: "css-code",
+    label: "CSS Code – Yüklerin Bağlanması",
+    category: "Emniyet Kodları",
+    overview: "Kargonun güvenli istiflenmesi, sabitlenmesi ve lashing düzenlemelerinin genel ilkelerini belirler; Cargo Securing Manual referansıdır.",
+    essentials: ["Cargo Securing Manual (CSM) gereklilikleri", "Lashing malzeme standartları ve MSL (Maximum Securing Load) hesapları", "Konteyner, araç ve ağır yük bağlama düzenleri"],
+    actions: ["CSM prosedürlerini yükleme planıyla eşleştir", "Lashing ekipmanının bakım ve muayene kayıtlarını tut", "Kötü hava koşullarında ek bağlama önlemlerini uygula"],
+    resources: [{ label: "CSS Code rehberi", href: "https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx" }],
+  },
+  {
+    slug: "grain-code",
+    label: "Grain Code – Tahıl Taşıma Kuralları",
+    category: "Emniyet Kodları",
+    overview: "Dökme tahıl taşımacılığında stabilite hesapları, serbest yüzey etkisi ve istif gerekliliklerini düzenler.",
+    essentials: ["Tahıl kaymaya karşı stabilite kriterleri (GZ alanı, θ açısı)", "Serbest yüzey düzeltmesi ve heeling moment hesabı", "Feeding ve overstowing gereklilikleri"],
+    actions: ["Grain stability hesaplamalarını yükleme öncesi doğrula", "Document of Authorization belgesi geçerliliğini kontrol et", "Feeding düzenlemelerini ambar koşullarına göre planla"],
+    resources: [{ label: "Grain Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/Grain.aspx" }],
+  },
+  {
+    slug: "iamsar",
+    label: "IAMSAR – Arama Kurtarma Rehberi",
+    category: "Emniyet Kodları",
+    overview: "IMO/ICAO ortak arama kurtarma operasyon rehberi; arama şekilleri, koordinasyon ve gemiden yapılacak yardım prosedürlerini içerir.",
+    essentials: ["Cilt III: Gemi kaptanı sorumlulukları ve SAR prosedürleri", "Arama şekilleri: expanding square, sector, parallel track", "OSC (On-Scene Coordinator) görev ve sorumlulukları"],
+    actions: ["IAMSAR Cilt III'ü köprüüstünde erişilebilir tut ve güncel versiyonu doğrula", "SAR haberleşme formatlarını GMDSS tatbikatlarına entegre et", "Arama şekillerini harita üzerinde mürettebatla prova et"],
+    resources: [{ label: "IAMSAR bilgi", href: "https://www.imo.org/en/OurWork/Safety/Pages/IAMSARManual.aspx" }],
+  },
+
+  // ── Çevresel Düzenlemeler (ek) ─────────────────────────────────────
+  {
+    slug: "polar-code",
+    label: "Polar Code – Kutup Suları Kuralları",
+    category: "Çevresel Düzenlemeler",
+    overview: "Kutup sularında seyreden gemiler için ek emniyet ve çevre koruma gerekliliklerini belirler; buz sınıfı, ekipman ve operasyon planlamasını kapsar.",
+    essentials: ["Polar Ship Certificate ve PWOM (Polar Water Operational Manual)", "Buz sınıfı gereklilikleri ve yapısal güçlendirme", "Çevresel koruma: sıfır deşarj, yakıt kısıtlamaları"],
+    actions: ["PWOM'u rotaya özgü buz ve hava koşullarına göre güncelle", "Kutup suları için ek can kurtarma teçhizatını hazır bulundur", "Mürettebata kutup suları eğitimi ve tatbikatı yaptır"],
+    resources: [{ label: "Polar Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/polar-code.aspx" }],
+  },
+  {
+    slug: "ghg-strategy",
+    label: "IMO GHG Strategy – Sera Gazı Stratejisi",
+    category: "Çevresel Düzenlemeler",
+    overview: "IMO'nun denizcilik sektöründen kaynaklanan sera gazı emisyonlarını azaltmak için belirlediği hedefler ve uygulama yol haritasını içerir.",
+    essentials: ["2050 net sıfır hedefi ve ara dönem kontrol noktaları", "Alternatif yakıtlar: amonyak, metanol, hidrojen, biyoyakıt", "Piyasa tabanlı önlemler (MBM) ve GHG Fuel Standard"],
+    actions: ["Filo dekarbonizasyon yol haritasını GHG stratejisiyle hizala", "Alternatif yakıt uyumluluğu için teknik fizibilite çalışması yap", "CII ve EEXI performansını GHG hedefleriyle birlikte izle"],
+    resources: [{ label: "IMO GHG Strategy", href: "https://www.imo.org/en/OurWork/Environment/Pages/2023-IMO-Strategy-on-Reduction-of-GHG-Emissions-from-Ships.aspx" }],
+  },
+  {
+    slug: "oprc",
+    label: "OPRC – Petrol Kirliliğine Hazırlık ve Müdahale",
+    category: "Çevresel Düzenlemeler",
+    overview: "Denizde petrol sızıntılarına karşı hazırlık, müdahale planları ve uluslararası işbirliği çerçevesini düzenler.",
+    essentials: ["Gemi ve liman SOPEP (Shipboard Oil Pollution Emergency Plan)", "Müdahale ekipmanları ve organizasyon gereklilikleri", "Bildirim yükümlülükleri ve uluslararası işbirliği"],
+    actions: ["SOPEP planını mürettebatla yılda en az bir kez tatbikat et", "Kirlilik müdahale ekipmanlarının (sorbent, boom) envanterini kontrol et", "Kirlilik olaylarını kıyı devletine derhal raporla"],
+    resources: [{ label: "OPRC Convention", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Oil-Pollution-Preparedness,-Response-and-Co-Operation-(OPRC).aspx" }],
+  },
+
+  // ── Denetim & Sörvey (ek) ─────────────────────────────────────────
+  {
+    slug: "esp",
+    label: "ESP – Geliştirilmiş Sörvey Programı",
+    category: "Denetim & Sörvey",
+    overview: "Dökme yük ve tanker gemilerinin yapısal bütünlüğünü değerlendirmek için geliştirilmiş denetim prosedürlerini belirler.",
+    essentials: ["Kalınlık ölçümü, yakın görsel muayene ve yapısal değerlendirme", "Survey rapor formatları ve dosya yönetimi", "Klas/bayrak ile koordineli denetim planlaması"],
+    actions: ["ESP kalınlık ölçüm raporlarını klas surveyor'e önceden hazırla", "Kritik yapısal alanlarda korozyon trendlerini izle", "ESP dosyasını gemide güncel ve erişilebilir tut"],
+    resources: [{ label: "IACS ESP", href: "https://iacs.org.uk/publications/unified-requirements/" }],
+  },
+  {
+    slug: "dry-dock",
+    label: "Dry Dock Survey – Kuru Havuz Denetimi",
+    category: "Denetim & Sörvey",
+    overview: "Geminin su altı kısmının periyodik olarak kuru havuzda denetlenmesini ve bakım/onarım gerekliliklerini kapsar.",
+    essentials: ["5 yıllık döngüde 2 kuru havuz denetimi (max. 36 ay aralık)", "Pervane, dümen, deniz bağlantıları ve anot kontrolleri", "Gövde temizliği, boyama ve katodik koruma değerlendirmesi"],
+    actions: ["Kuru havuz spesifikasyonunu klas/bayrak gerekliliklerine göre hazırla", "Su altı fotoğraf/video kayıtlarını survey dosyasına ekle", "Anot tüketim oranlarını izleyip sonraki havuz için planlama yap"],
+    resources: [{ label: "Klas havuz gereklilikleri", href: "https://iacs.org.uk/publications/unified-requirements/" }],
+  },
+
+  // ── Gemi Sertifikaları (ek) ────────────────────────────────────────
+  {
+    slug: "safety-equipment-cert",
+    label: "Safety Equipment Certificate – Emniyet Teçhizat Belgesi",
+    category: "Gemi Sertifikaları",
+    overview: "SOLAS gereği gemideki can kurtarma, yangın söndürme ve seyir güvenliği teçhizatının yeterliliğini belgeleyen sertifika.",
+    essentials: ["Can kurtarma, yangın ve seyir teçhizatı envanter doğrulaması", "Sertifika süresi, yıllık ve ara survey gereklilikleri", "Teçhizat servis/bakım kayıtları ile uyum"],
+    actions: ["Teçhizat envanterini sertifika ekleriyle eşleştir", "Servis süresi dolan teçhizatı survey öncesi yenile", "Yıllık survey tarihini bakım planına entegre et"],
+    resources: [{ label: "SOLAS sertifikalar", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea.aspx" }],
+  },
+  {
+    slug: "safety-radio-cert",
+    label: "Safety Radio Certificate – Telsiz Emniyet Belgesi",
+    category: "Gemi Sertifikaları",
+    overview: "GMDSS telsiz ekipmanının SOLAS Chapter IV gerekliliklerine uygunluğunu belgeleyen sertifika.",
+    essentials: ["Sea area'ya göre GMDSS ekipman asgari listesi", "EPIRB, SART, VHF DSC ve MF/HF test kayıtları", "Yıllık ve periyodik survey aralıkları"],
+    actions: ["EPIRB ve SART pil/HRD tarihlerini izle", "Telsiz ekipman fonksiyon testlerini haftalık kaydet", "Sertifika eklerini ekipman değişikliklerinde güncelle"],
+    resources: [{ label: "SOLAS Chapter IV", href: "https://www.imo.org/en/OurWork/Safety/Pages/RadioCommunications.aspx" }],
+  },
+  {
+    slug: "safety-construction-cert",
+    label: "Safety Construction Certificate – İnşa Emniyet Belgesi",
+    category: "Gemi Sertifikaları",
+    overview: "Gemi gövdesi, makineleri ve elektrik tesislerinin SOLAS Chapter II-1 ve II-2 gerekliliklerine uygunluğunu belgelendirir.",
+    essentials: ["Yapısal bütünlük, bölmeleme ve stabilite doğrulaması", "Makine ve elektrik tesislerinin emniyet kontrolleri", "Yangın bütünlüğü ve malzeme uygunluğu"],
+    actions: ["Yapısal modifikasyonları sertifika kapsamıyla doğrula", "Su geçirmez kapı ve yangın kapısı testlerini periyodik yap", "Sertifika yenileme survey'ini klas denetimiyle koordine et"],
+    resources: [{ label: "SOLAS Chapter II", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea.aspx" }],
+  },
+  {
+    slug: "iapp-cert",
+    label: "IAPP Certificate – Hava Kirliliği Önleme Belgesi",
+    category: "Gemi Sertifikaları",
+    overview: "MARPOL Ek VI kapsamında geminin hava emisyonları, yakıt kalitesi ve enerji verimliliği gerekliliklerine uyumunu belgelendirir.",
+    essentials: ["NOx Teknik Dosyası ve motor sertifikasyonu", "SOx uyumu: yakıt kükürt limiti veya EGCS onayı", "SEEMP ve enerji verimliliği doğrulaması"],
+    actions: ["NOx Teknik Dosyasını motor bakımlarıyla güncel tut", "Yakıt numune ve BDN kayıtlarını IAPP survey'e hazırla", "EGCS emisyon verilerini periyodik olarak doğrula"],
+    resources: [{ label: "MARPOL Ek VI", href: "https://www.imo.org/en/OurWork/Environment/Pages/AirPollution.aspx" }],
+  },
+  {
+    slug: "tonnage-cert",
+    label: "Tonnage Certificate – Tonaj Belgesi",
+    category: "Gemi Sertifikaları",
+    overview: "ITC 69 kapsamında geminin brüt ve net tonajının ölçüm sonuçlarını belgeleyen sertifika; liman harçları ve uluslararası gerekliliklere referans oluşturur.",
+    essentials: ["GT ve NT değerleri ile hesaplama detayları", "Sertifikanın süresiz geçerliliği ve yenileme koşulları", "Yapısal değişiklik sonrası yeniden tonaj ölçümü"],
+    actions: ["Yapısal modifikasyon sonrası tonaj sertifikasını güncelle", "GT/NT değerlerini manning ve emniyet gereklilikleriyle karşılaştır", "Sertifika nüshasını köprüüstü ve ofiste bulundur"],
+    resources: [{ label: "ITC 69", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Tonnage-Measurement-of-Ships.aspx" }],
+  },
+  {
+    slug: "dmlc",
+    label: "DMLC – Denizcilik Çalışma Beyanı",
+    category: "Gemi Sertifikaları",
+    overview: "MLC 2006 kapsamında bayrak devleti gerekliliklerini (Bölüm I) ve şirket uyum önlemlerini (Bölüm II) belgeleyen iki parçalı deklarasyon.",
+    essentials: ["DMLC Part I: bayrak devleti ulusal gereklilikleri", "DMLC Part II: şirket uygulama ve uyum planları", "MLC sertifikası ile birlikte gemide bulundurma zorunluluğu"],
+    actions: ["DMLC Part II'yi şirket prosedür değişikliklerinde güncelle", "Bayrak devleti gereklilik değişikliklerini Part I'de izle", "PSC denetimlerinde DMLC ve MLC sertifikasını birlikte sun"],
+    resources: [{ label: "MLC 2006", href: "https://www.ilo.org/global/standards/maritime-labour-convention/lang--en/index.htm" }],
+  },
+
+  // ── Bölgesel Düzenlemeler (ek) ─────────────────────────────────────
+  {
+    slug: "indian-ocean-mou",
+    label: "Indian Ocean MoU – Hint Okyanusu PSC",
+    category: "Bölgesel Düzenlemeler",
+    overview: "Hint Okyanusu bölgesindeki liman devletleri arasında PSC koordinasyonunu sağlayan bölgesel mutabakat zaptı.",
+    essentials: ["Risk tabanlı hedefleme ve denetim oranları", "Eksiklik ve alıkoyma prosedürleri", "Bölgesel CIC kampanyaları ve veri paylaşımı"],
+    actions: ["Hint Okyanusu limanlarına giriş öncesi CIC temalarını gözden geçir", "Bölgesel denetim trendlerini izleyip hazırlık yap", "Eksiklik kapatma kanıtlarını zamanında sunarak alıkoymayı önle"],
+    resources: [{ label: "Indian Ocean MoU", href: "https://www.iomou.org/" }],
+  },
+  {
+    slug: "mediterranean-mou",
+    label: "Mediterranean MoU – Akdeniz PSC",
+    category: "Bölgesel Düzenlemeler",
+    overview: "Akdeniz limanlarında PSC denetim koordinasyonu ve uyum standartlarını belirleyen bölgesel anlaşma.",
+    essentials: ["Hedefleme sistemi ve öncelikli denetim kriterleri", "Eksiklik sınıflandırması ve alıkoyma koşulları", "Bölgesel kampanyalar ve GISIS veri entegrasyonu"],
+    actions: ["Akdeniz limanlarında beklenen denetim konularına hazırlan", "CIC kampanya duyurularını operasyon ekibiyle paylaş", "Denetim bulgu trendlerini analiz ederek önleyici aksiyon al"],
+    resources: [{ label: "Mediterranean MoU", href: "https://www.medmou.org/" }],
+  },
+  {
+    slug: "vina-del-mar",
+    label: "Viña del Mar Agreement – Latin Amerika PSC",
+    category: "Bölgesel Düzenlemeler",
+    overview: "Latin Amerika limanlarında PSC denetimlerini koordine eden bölgesel anlaşma; Güney Amerika kıyılarında uyum denetimlerini standardize eder.",
+    essentials: ["Denetim hedefleme ve risk değerlendirme kriterleri", "Eksiklik kodları ve alıkoyma prosedürleri", "Bölgesel işbirliği ve veri paylaşım mekanizmaları"],
+    actions: ["Latin Amerika limanlarına girmeden yerel PSC gerekliliklerini kontrol et", "Bölgesel kampanya temalarını mürettebatla paylaş", "Alıkoyma riskini azaltmak için pre-arrival checklist uygula"],
+    resources: [{ label: "Viña del Mar Agreement", href: "https://www.vinamou.cl/" }],
   },
 ];
 
