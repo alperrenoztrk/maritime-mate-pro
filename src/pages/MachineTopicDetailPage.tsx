@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { ChevronLeft, Lightbulb, BookOpen } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { getMachineSubTopicContent, MachineSubTopicContent } from "@/data/machineTopicDetailContent";
+import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 
 export default function MachineTopicDetailPage() {
+  const [viewerImage, setViewerImage] = useState<string | null>(null);
+  const [viewerAlt, setViewerAlt] = useState("");
   const { topicSlug, subTopicTitle } = useParams<{ topicSlug: string; subTopicTitle: string }>();
   const decodedTitle = subTopicTitle ? decodeURIComponent(subTopicTitle) : "";
   const topicConfig = topicSlug ? machineTopicBySlug[topicSlug] : null;
