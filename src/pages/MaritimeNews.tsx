@@ -370,11 +370,8 @@ const MaritimeNews = () => {
             {groupedItems.map((group) => (
               <Card key={group.id} className="border-white/10 bg-white/5 p-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="space-y-1">
+                  <div>
                     <h2 className="text-lg font-semibold text-white">{group.name}</h2>
-                    <p className="text-sm text-white/70">
-                      Her kaynaktan {perSourceLimit} güncel haber. Görseller otomatik olarak çekilir.
-                    </p>
                     {errorBySource.has(group.name) ? (
                       <p className="text-xs text-amber-200/80">
                         Bu kaynak için uyarı: {errorBySource.get(group.name)}
