@@ -193,10 +193,19 @@ const MaritimeNews = () => {
   const navigate = useNavigate();
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const queryClient = useQueryClient();
 
   const [readerOpen, setReaderOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MaritimeNewsItem | null>(null);
-  const [readerMode, setReaderMode] = useState<"summary" | "web">("summary");
+
+  // Full article fetch query
+  const articleQuery = useQuery({
+    queryKey: ["article-content", selectedItem?.link],
+    queryFn: () => fetchArticleContent(selectedItem!.link),
+    enabled: readerOpen && !!selectedItem?.link,
+    staleTime: 30 * 60 * 1000, // cache for 30 min
+    retry: 1,
+  });
 
   const openExternal = async (url: string) => {
     try {
