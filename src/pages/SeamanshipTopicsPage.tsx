@@ -743,6 +743,7 @@ Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demi
   "anchor-chain": {
     title: "Demir Zinciri ve Bağlantıları",
     introduction: "Demir zinciri, demiri gemiye bağlayan ve demirleme sırasında tutma kuvvetini artıran ağır çelik zincirdir.",
+    image: "/diagrams/seamanship/zincir-isaretleme.svg",
     content: `ZİNCİR YAPISI:
 
 Demir zinciri, baklalardan (links) oluşur. Her bakla ortasında bir takviye çubuğu (stud) bulunur; bu çubuk baklanın ezilmesini ve birbirine dolaşmasını önler. Stud-link chain, ticaret gemilerinde standarttır.
