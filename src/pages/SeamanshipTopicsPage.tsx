@@ -265,6 +265,7 @@ STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her s
   "ship-parts": {
     title: "Gemi Kısımları ve Terminolojisi",
     introduction: "Geminin yapısal elemanlarının ve bölümlerinin doğru terminoloji ile bilinmesi, güverte operasyonlarının etkin yürütülmesi için temel gereksinimdir.",
+    image: "/diagrams/seamanship/gemi-kisimlari.svg",
     content: `GEMİ ANA BÖLÜMLER:
 
 PRUVA (BOW): Geminin ön kısmıdır. Pruva formu, dalga kırma performansını belirler. Başlıca pruva tipleri: Düz pruva (vertical stem), ampul pruva (bulbous bow), clipper pruva, raker pruva. Ampul pruva, dalga direncini %5-15 oranında azaltarak yakıt tasarrufu sağlar.
