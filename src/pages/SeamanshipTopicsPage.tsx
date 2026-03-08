@@ -214,6 +214,8 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  image?: string;
+  table?: { title: string; headers: string[]; rows: string[][] };
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
