@@ -535,7 +535,8 @@ const content: ContentMap = {
           heading: "Carnot Çevrimi Süreçleri",
           paragraphs: [
             "Carnot çevrimi dört tersinir süreçten oluşur: (1) İzotermik genleşme – yüksek sıcaklık kaynağından ısı alınır; (2) Adyabatik genleşme – sıcaklık düşer; (3) İzotermik sıkıştırma – düşük sıcaklık kaynağına ısı verilir; (4) Adyabatik sıkıştırma – sıcaklık yükselir."
-          ]
+          ],
+          diagram: { src: "/diagrams/machine/carnot-cevrimi.svg", alt: "Carnot Çevrimi T-S Diyagramı", caption: "Şekil: Carnot çevrimi T-S diyagramında dört tersinir süreç" }
         },
         {
           heading: "Carnot Verimi",
