@@ -2,17 +2,242 @@ import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-const bridgeNavigationTasks = [
-  { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O", href: "/passage-plan" },
-  { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O – 4/O" },
-  { task: "Radar / ARPA takibi", responsible: "Vardiya zabiti", worker: "Vardiya zabiti" },
-  { task: "COLREG uygulama", responsible: "Vardiya zabiti", worker: "Vardiya zabiti" },
-  { task: "Kaptanı çağırma kararı", responsible: "Vardiya zabiti", worker: "Vardiya zabiti" },
-  { task: "Logbook doldurma", responsible: "Vardiya zabiti", worker: "Vardiya zabiti" },
-  { task: "Pilot embark/disembark", responsible: "Master", worker: "2/O–3/O" },
-  { task: "Kısıtlı sularda seyir", responsible: "Master", worker: "Master + OOW" },
-  { task: "GMDSS acil çağrı", responsible: "Master", worker: "2/O" },
-  { task: "Köprüüstü disiplin", responsible: "Master", worker: "Tüm zabitler" },
+interface TaskRow {
+  task: string;
+  responsible: string;
+  worker?: string;
+  slug?: string;
+}
+
+const TaskLink = ({ task, slug }: { task: string; slug?: string }) =>
+  slug ? (
+    <Link
+      to={`/ship-tasks/${slug}`}
+      className="text-primary underline decoration-dotted underline-offset-2 transition-colors hover:text-primary/80"
+    >
+      {task}
+    </Link>
+  ) : (
+    <>{task}</>
+  );
+
+const bridgeNavigationTasks: TaskRow[] = [
+  { task: "Passage plan", responsible: "Master + 2/O", worker: "2/O", slug: "passage-plan" },
+  { task: "Vardiya tutma", responsible: "Master", worker: "2/O – 3/O – 4/O", slug: "vardiya-tutma" },
+  { task: "Radar / ARPA takibi", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "radar-arpa-takibi" },
+  { task: "COLREG uygulama", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "colreg-uygulama" },
+  { task: "Kaptanı çağırma kararı", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "kaptani-cagirma-karari" },
+  { task: "Logbook doldurma", responsible: "Vardiya zabiti", worker: "Vardiya zabiti", slug: "logbook-doldurma" },
+  { task: "Pilot embark/disembark", responsible: "Master", worker: "2/O–3/O", slug: "pilot-embark-disembark" },
+  { task: "Kısıtlı sularda seyir", responsible: "Master", worker: "Master + OOW", slug: "kisitli-sularda-seyir" },
+  { task: "GMDSS acil çağrı", responsible: "Master", worker: "2/O", slug: "gmdss-acil-cagri" },
+  { task: "Köprüüstü disiplin", responsible: "Master", worker: "Tüm zabitler", slug: "koprusustu-disiplin" },
+];
+
+const navigationTasks: TaskRow[] = [
+  { task: "Harita düzeltmeleri", responsible: "2. Kaptan", slug: "harita-duzeltmeleri" },
+  { task: "ECDIS güncellemeleri", responsible: "2. Kaptan", slug: "ecdis-guncellemeleri" },
+  { task: "Notice to Mariners", responsible: "2. Kaptan", slug: "notice-to-mariners" },
+  { task: "Navigational warnings", responsible: "2. Kaptan", slug: "navigational-warnings" },
+  { task: "Gyro / manyetik pusula kontrolü", responsible: "2/O – 3/O", slug: "gyro-manyetik-pusula-kontrolu" },
+  { task: "Draft & position plotting", responsible: "OOW", slug: "draft-position-plotting" },
+  { task: "BNWAS / AIS kontrol", responsible: "OOW", slug: "bnwas-ais-kontrol" },
+  { task: "Seyir cihazları bakımı", responsible: "2/O", slug: "seyir-cihazlari-bakimi" },
+];
+
+const cargoTasks: TaskRow[] = [
+  { task: "Yük planı", responsible: "Chief Officer", worker: "C/O", slug: "yuk-plani" },
+  { task: "Loading / Discharging", responsible: "Chief Officer", worker: "3/O", slug: "loading-discharging" },
+  { task: "Draft survey", responsible: "C/O", worker: "3/O", slug: "draft-survey" },
+  { task: "Tank sounding", responsible: "C/O", worker: "3/O", slug: "tank-sounding" },
+  { task: "Cargo watch", responsible: "3/O – 4/O", worker: "3/O", slug: "cargo-watch" },
+  { task: "Mooring / unmooring", responsible: "Master", worker: "2/O–3/O", slug: "mooring-unmooring" },
+  { task: "Hatch cover operasyonu", responsible: "C/O", worker: "Bosun", slug: "hatch-cover-operasyonu" },
+  { task: "Cargo damage takibi", responsible: "C/O", worker: "3/O", slug: "cargo-damage-takibi" },
+];
+
+const safetyTasks: TaskRow[] = [
+  { task: "Safety Officer", responsible: "3. Kaptan", slug: "safety-officer" },
+  { task: "Yangın ekipmanları", responsible: "3/O", slug: "yangin-ekipmanlari" },
+  { task: "Can kurtarma araçları", responsible: "3/O", slug: "can-kurtarma-araclari" },
+  { task: "Weekly / Monthly checks", responsible: "3/O", slug: "weekly-monthly-checks" },
+  { task: "Drill organizasyonu", responsible: "3/O", slug: "drill-organizasyonu" },
+  { task: "Muster list", responsible: "Master", slug: "muster-list" },
+  { task: "ISM kayıtları", responsible: "Master + C/O", slug: "ism-kayitlari" },
+  { task: "ISPS (güvenlik)", responsible: "Master", slug: "isps-guvenlik" },
+  { task: "Security watch", responsible: "3/O – 4/O", slug: "security-watch" },
+];
+
+const maintenanceTasks: TaskRow[] = [
+  { task: "Boya & pas", responsible: "C/O", worker: "Bosun + AB", slug: "boya-pas" },
+  { task: "Güverte temizliği", responsible: "C/O", worker: "AB", slug: "guverte-temizligi" },
+  { task: "Halat – tel bakımı", responsible: "C/O", worker: "Bosun", slug: "halat-tel-bakimi" },
+  { task: "Vinç – capstan yağlama", responsible: "C/O", worker: "AB", slug: "vinc-capstan-yaglama" },
+  { task: "Güverte aydınlatma", responsible: "C/O", worker: "AB", slug: "guverte-aydinlatma" },
+  { task: "Fener & işaretler", responsible: "C/O", worker: "AB", slug: "fener-isaretler" },
+];
+
+const personnelTasks: TaskRow[] = [
+  { task: "Günlük iş planı", responsible: "Chief Officer", slug: "gunluk-is-plani" },
+  { task: "Güverte personeli", responsible: "C/O", slug: "guverte-personeli" },
+  { task: "Disiplin", responsible: "Master", slug: "disiplin" },
+  { task: "İş güvenliği", responsible: "3/O", slug: "is-guvenligi" },
+  { task: "Yeni personel oryantasyonu", responsible: "3/O", slug: "yeni-personel-oryantasyonu" },
+  { task: "Eğitim", responsible: "Master + C/O", slug: "egitim" },
+];
+
+const documentationTasks: TaskRow[] = [
+  { task: "PSC hazırlık", responsible: "Master + C/O + 3/O", slug: "psc-hazirlik" },
+  { task: "Logbooks", responsible: "OOW", slug: "logbooks-dokumantasyon" },
+  { task: "Checklists", responsible: "İlgili zabit", slug: "checklists-dokumantasyon" },
+  { task: "Certificates", responsible: "Master", slug: "certificates-dokumantasyon" },
+  { task: "Company reporting", responsible: "Master", slug: "company-reporting" },
+  { task: "Deficiency takibi", responsible: "C/O", slug: "deficiency-takibi" },
+];
+
+const emergencyTasks: TaskRow[] = [
+  { task: "Yangın", responsible: "Master", slug: "yangin-acil" },
+  { task: "Can kurtarma", responsible: "3/O", slug: "can-kurtarma-acil" },
+  { task: "Adam denize", responsible: "Master", slug: "adam-denize" },
+  { task: "Collision", responsible: "Master", slug: "collision-acil" },
+  { task: "Grounding", responsible: "Master", slug: "grounding-acil" },
+  { task: "Abandon ship", responsible: "Master", slug: "abandon-ship" },
+  { task: "Medical emergency", responsible: "Master", slug: "medical-emergency" },
+  { task: "Oil spill", responsible: "C/O", slug: "oil-spill-acil" },
+];
+
+const engineRoomTasks: TaskRow[] = [
+  { task: "Ana makine operasyonu", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "ana-makine-operasyonu" },
+  { task: "Yardımcı makine bakımı", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "yardimci-makine-bakimi" },
+  { task: "Jeneratör operasyonu", responsible: "2nd Engineer", worker: "3/E – Oiler", slug: "jenerator-operasyonu" },
+  { task: "Yakıt transferi", responsible: "Chief Engineer", worker: "3/E", slug: "yakit-transferi" },
+  { task: "Yağlama sistemi", responsible: "2nd Engineer", worker: "4/E – Oiler", slug: "yaglama-sistemi" },
+  { task: "Soğutma sistemi", responsible: "2nd Engineer", worker: "3/E", slug: "sogutma-sistemi" },
+  { task: "Balast operasyonu", responsible: "Chief Engineer", worker: "3/E", slug: "balast-operasyonu" },
+  { task: "Sintine pompası", responsible: "3rd Engineer", worker: "4/E – Oiler", slug: "sintine-pompasi" },
+  { task: "Separator çalıştırma", responsible: "3rd Engineer", worker: "4/E", slug: "separator-calistirma" },
+  { task: "Kazan operasyonu", responsible: "2nd Engineer", worker: "3/E", slug: "kazan-operasyonu" },
+  { task: "Kompresör bakımı", responsible: "3rd Engineer", worker: "4/E", slug: "kompresor-bakimi" },
+  { task: "Pompa bakımları", responsible: "2nd Engineer", worker: "3/E – 4/E", slug: "pompa-bakimlari" },
+  { task: "Elektrik sistemleri", responsible: "Electrician", worker: "Electrician", slug: "elektrik-sistemleri" },
+  { task: "Otomasyon sistemleri", responsible: "Chief Engineer", worker: "Electrician", slug: "otomasyon-sistemleri" },
+  { task: "Spare parts yönetimi", responsible: "Chief Engineer", worker: "2/E", slug: "spare-parts-yonetimi" },
+  { task: "Makine logbook", responsible: "Chief Engineer", worker: "Vardiya mühendisi", slug: "makine-logbook" },
+  { task: "PMS kayıtları", responsible: "2nd Engineer", worker: "Tüm mühendisler", slug: "pms-kayitlari" },
+  { task: "Bunkering operasyonu", responsible: "Chief Engineer", worker: "2/E – 3/E", slug: "bunkering-operasyonu" },
+  { task: "LO/FO analizleri", responsible: "Chief Engineer", worker: "2/E", slug: "lo-fo-analizleri" },
+  { task: "Makine dairesi temizliği", responsible: "Chief Engineer", worker: "Oiler – Wiper", slug: "makine-dairesi-temizligi" },
+  { task: "Emergency generator", responsible: "2nd Engineer", worker: "3/E", slug: "emergency-generator" },
+  { task: "Steering gear bakımı", responsible: "2nd Engineer", worker: "3/E", slug: "steering-gear-bakimi" },
+  { task: "Makine dairesi güvenliği", responsible: "Chief Engineer", worker: "Tüm personel", slug: "makine-dairesi-guvenligi" },
+];
+
+/* ── Table renderers ── */
+
+const ThreeColTable = ({ tasks, headers }: { tasks: TaskRow[]; headers: [string, string, string] }) => (
+  <div className="overflow-x-auto">
+    <table className="w-full text-xs">
+      <thead>
+        <tr className="border-b border-border/50 text-left">
+          <th className="py-2 pr-4 font-semibold text-foreground">{headers[0]}</th>
+          <th className="py-2 pr-4 font-semibold text-primary">{headers[1]}</th>
+          <th className="py-2 font-semibold text-muted-foreground">{headers[2]}</th>
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-border/30">
+        {tasks.map(({ task, responsible, worker, slug }) => (
+          <tr key={task}>
+            <td className="py-1.5 pr-4 text-foreground">
+              <TaskLink task={task} slug={slug} />
+            </td>
+            <td className="py-1.5 pr-4 text-primary">{responsible}</td>
+            <td className="py-1.5 text-muted-foreground">{worker}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
+const TwoColTable = ({ tasks, headers }: { tasks: TaskRow[]; headers: [string, string] }) => (
+  <div className="overflow-x-auto">
+    <table className="w-full text-xs">
+      <thead>
+        <tr className="border-b border-border/50 text-left">
+          <th className="py-2 pr-4 font-semibold text-foreground">{headers[0]}</th>
+          <th className="py-2 font-semibold text-primary">{headers[1]}</th>
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-border/30">
+        {tasks.map(({ task, responsible, slug }) => (
+          <tr key={task}>
+            <td className="py-1.5 pr-4 text-foreground">
+              <TaskLink task={task} slug={slug} />
+            </td>
+            <td className="py-1.5 text-primary">{responsible}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
+interface CategorySection {
+  icon: string;
+  number: string;
+  title: string;
+  description: string;
+  tasks: TaskRow[];
+  columns: 2 | 3;
+  headers: [string, string] | [string, string, string];
+}
+
+const categories: CategorySection[] = [
+  {
+    icon: "⚓", number: "1️⃣", title: "SEYİR & KÖPRÜÜSTÜ İŞLERİ",
+    description: "Saatlik çalışma için bu başlık seçildiğinde; rota planı, mevki belirleme yöntemleri ve OOW'un köprüüstü görev akışı adım adım anlatılır.",
+    tasks: bridgeNavigationTasks, columns: 3, headers: ["İş", "Asıl Sorumlu", "Fiilen Yapan"],
+  },
+  {
+    icon: "🗺️", number: "2️⃣", title: "NAVİGASYON & HARİTA İŞLERİ",
+    description: "Saatlik içerikte ECDIS/kağıt harita düzeltme adımları, Notice to Mariners takibi ve gyrolar/manyetik pusula karşılaştırması açıklanır.",
+    tasks: navigationTasks, columns: 2, headers: ["İş", "Sorumlu"],
+  },
+  {
+    icon: "📦", number: "3️⃣", title: "YÜK OPERASYONLARI",
+    description: "Saatlik içerikte yük planı okuma, operasyon sırasında draft/sounding kontrolü ve emniyet gözetimi anlatılır.",
+    tasks: cargoTasks, columns: 3, headers: ["İş", "Asıl Sorumlu", "Sahadaki"],
+  },
+  {
+    icon: "🧯", number: "4️⃣", title: "EMNİYET & ISM / ISPS",
+    description: "Saatlik içerikte yangın ve güvenlik devriyesi güzergâhı, kritik ekipman kontrolleri ve ISPS erişim adımları açıklanır.",
+    tasks: safetyTasks, columns: 2, headers: ["İş", "Sorumlu"],
+  },
+  {
+    icon: "🔧", number: "5️⃣", title: "GÜVERTE BAKIM & ONARIM",
+    description: "Saatlik içerikte güverte ekipman kontrolü, boya/pas takibi ve halat–tel bakım adımları anlatılır.",
+    tasks: maintenanceTasks, columns: 3, headers: ["İş", "Sorumlu", "Yapan"],
+  },
+  {
+    icon: "👥", number: "6️⃣", title: "PERSONEL & DİSİPLİN",
+    description: "Saatlik içerikte vardiya görev dağılımı, PPE kullanım kontrolü ve yeni personel oryantasyonu anlatılır.",
+    tasks: personnelTasks, columns: 2, headers: ["İş", "Sorumlu"],
+  },
+  {
+    icon: "📑", number: "7️⃣", title: "DOKÜMANTASYON & DENETİM",
+    description: "Saatlik içerikte logbook yazım düzeni, kontrol listesi kullanımı ve PSC hazırlık dosyası gözden geçirme adımları açıklanır.",
+    tasks: documentationTasks, columns: 2, headers: ["İş", "Sorumlu"],
+  },
+  {
+    icon: "🚨", number: "8️⃣", title: "ACİL DURUMLAR",
+    description: "Saatlik içerikte alarm panelleri, kaçış yolları ve acil ekipman erişim noktaları anlatılır.",
+    tasks: emergencyTasks, columns: 2, headers: ["Durum", "Lider"],
+  },
+  {
+    icon: "⚙️", number: "9️⃣", title: "MAKİNE DAİRESİ İŞLERİ",
+    description: "Saatlik içerikte ana/yardımcı makine parametre kontrolü, alarm kayıtları ve sintine seviyeleri anlatılır.",
+    tasks: engineRoomTasks, columns: 3, headers: ["İş", "Asıl Sorumlu", "Fiilen Yapan"],
+  },
 ];
 
 export default function ShipTasksPage() {
@@ -55,382 +280,20 @@ export default function ShipTasksPage() {
         </header>
 
         <section className="space-y-6 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
-          {/* 1. Seyir & Köprüüstü İşleri */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">⚓</span>
-              <h2 className="font-bold text-foreground">1️⃣ SEYİR & KÖPRÜÜSTÜ İŞLERİ</h2>
+          {categories.map((cat) => (
+            <div key={cat.title} className="space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">{cat.icon}</span>
+                <h2 className="font-bold text-foreground">{cat.number} {cat.title}</h2>
+              </div>
+              <p className="text-xs text-muted-foreground">{cat.description}</p>
+              {cat.columns === 3 ? (
+                <ThreeColTable tasks={cat.tasks} headers={cat.headers as [string, string, string]} />
+              ) : (
+                <TwoColTable tasks={cat.tasks} headers={cat.headers as [string, string]} />
+              )}
             </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik çalışma için bu başlık seçildiğinde; rota planı, mevki belirleme yöntemleri ve
-              OOW’un köprüüstü görev akışı adım adım anlatılır. Bir örnek senaryo (kısıtlı görüş, yoğun
-              trafik vb.) üzerinden COLREG uygulaması ve kaptana bilgi verme kriterleri yazılır.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 pr-4 font-semibold text-primary">Asıl Sorumlu</th>
-                    <th className="py-2 font-semibold text-muted-foreground">Fiilen Yapan</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {bridgeNavigationTasks.map(({ task, responsible, worker, href }) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">
-                        {href ? (
-                          <Link
-                            to={href}
-                            className="text-primary underline decoration-dotted underline-offset-2 transition-colors hover:text-primary/80"
-                          >
-                            {task}
-                          </Link>
-                        ) : (
-                          task
-                        )}
-                      </td>
-                      <td className="py-1.5 pr-4 text-primary">{responsible}</td>
-                      <td className="py-1.5 text-muted-foreground">{worker}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 2. Navigasyon & Harita İşleri */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🗺️</span>
-              <h2 className="font-bold text-foreground">2️⃣ NAVİGASYON & HARİTA İŞLERİ</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte ECDIS/kağıt harita düzeltme adımları, Notice to Mariners takibi ve
-              gyrolar/manyetik pusula karşılaştırması açıklanır. Kısa bir kontrol listesi ve örnek düzeltme
-              notu eklenir.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 font-semibold text-primary">Sorumlu</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Harita düzeltmeleri", "2. Kaptan"],
-                    ["ECDIS güncellemeleri", "2. Kaptan"],
-                    ["Notice to Mariners", "2. Kaptan"],
-                    ["Navigational warnings", "2. Kaptan"],
-                    ["Gyro / manyetik pusula kontrolü", "2/O – 3/O"],
-                    ["Draft & position plotting", "OOW"],
-                    ["BNWAS / AIS kontrol", "OOW"],
-                    ["Seyir cihazları bakımı", "2/O"],
-                  ].map(([task, responsible]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 text-primary">{responsible}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 3. Yük Operasyonları */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">📦</span>
-              <h2 className="font-bold text-foreground">3️⃣ YÜK OPERASYONLARI</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte yük planı okuma, operasyon sırasında draft/sounding kontrolü ve emniyet
-              gözetimi anlatılır. Bir yükleme örneği üzerinden hız takibi ve sapma raporlama adımları
-              yazılır.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 pr-4 font-semibold text-primary">Asıl Sorumlu</th>
-                    <th className="py-2 font-semibold text-muted-foreground">Sahadaki</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Yük planı", "Chief Officer", "C/O"],
-                    ["Loading / Discharging", "Chief Officer", "3/O"],
-                    ["Draft survey", "C/O", "3/O"],
-                    ["Tank sounding", "C/O", "3/O"],
-                    ["Cargo watch", "3/O – 4/O", "3/O"],
-                    ["Mooring / unmooring", "Master", "2/O–3/O"],
-                    ["Hatch cover operasyonu", "C/O", "Bosun"],
-                    ["Cargo damage takibi", "C/O", "3/O"],
-                  ].map(([task, responsible, worker]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 pr-4 text-primary">{responsible}</td>
-                      <td className="py-1.5 text-muted-foreground">{worker}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 4. Emniyet & ISM/ISPS */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🧯</span>
-              <h2 className="font-bold text-foreground">4️⃣ EMNİYET & ISM / ISPS</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte yangın ve güvenlik devriyesi güzergâhı, kritik ekipman kontrolleri ve
-              ISPS erişim adımları açıklanır. Kayıt örneğiyle uygunsuzluk bildirimi yazılır.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 font-semibold text-primary">Sorumlu</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Safety Officer", "3. Kaptan"],
-                    ["Yangın ekipmanları", "3/O"],
-                    ["Can kurtarma araçları", "3/O"],
-                    ["Weekly / Monthly checks", "3/O"],
-                    ["Drill organizasyonu", "3/O"],
-                    ["Muster list", "Master"],
-                    ["ISM kayıtları", "Master + C/O"],
-                    ["ISPS (güvenlik)", "Master"],
-                    ["Security watch", "3/O – 4/O"],
-                  ].map(([task, responsible]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 text-primary">{responsible}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 5. Güverte Bakım & Onarım */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🔧</span>
-              <h2 className="font-bold text-foreground">5️⃣ GÜVERTE BAKIM & ONARIM</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte güverte ekipman kontrolü, boya/pas takibi ve halat–tel bakım adımları
-              anlatılır. Bakım planına nasıl not düşüleceği örnek bir kayıtla gösterilir.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 pr-4 font-semibold text-primary">Sorumlu</th>
-                    <th className="py-2 font-semibold text-muted-foreground">Yapan</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Boya & pas", "C/O", "Bosun + AB"],
-                    ["Güverte temizliği", "C/O", "AB"],
-                    ["Halat – tel bakımı", "C/O", "Bosun"],
-                    ["Vinç – capstan yağlama", "C/O", "AB"],
-                    ["Güverte aydınlatma", "C/O", "AB"],
-                    ["Fener & işaretler", "C/O", "AB"],
-                  ].map(([task, responsible, worker]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 pr-4 text-primary">{responsible}</td>
-                      <td className="py-1.5 text-muted-foreground">{worker}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 6. Personel & Disiplin */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">👥</span>
-              <h2 className="font-bold text-foreground">6️⃣ PERSONEL & DİSİPLİN</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte vardiya görev dağılımı, PPE kullanım kontrolü ve yeni personel
-              oryantasyonu anlatılır. Disiplin ve iletişim notlarının nasıl tutulacağı kısa bir örnekle
-              yazılır.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 font-semibold text-primary">Sorumlu</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Günlük iş planı", "Chief Officer"],
-                    ["Güverte personeli", "C/O"],
-                    ["Disiplin", "Master"],
-                    ["İş güvenliği", "3/O"],
-                    ["Yeni personel oryantasyonu", "3/O"],
-                    ["Eğitim", "Master + C/O"],
-                  ].map(([task, responsible]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 text-primary">{responsible}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 7. Dokümantasyon & Denetim */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">📑</span>
-              <h2 className="font-bold text-foreground">7️⃣ DOKÜMANTASYON & DENETİM</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte logbook yazım düzeni, kontrol listesi kullanımı ve PSC hazırlık dosyası
-              gözden geçirme adımları açıklanır. Sertifika geçerliliği kontrolüne dair kısa bir örnek
-              metin eklenir.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 font-semibold text-primary">Sorumlu</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["PSC hazırlık", "Master + C/O + 3/O"],
-                    ["Logbooks", "OOW"],
-                    ["Checklists", "İlgili zabit"],
-                    ["Certificates", "Master"],
-                    ["Company reporting", "Master"],
-                    ["Deficiency takibi", "C/O"],
-                  ].map(([task, responsible]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 text-primary">{responsible}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 8. Acil Durumlar */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🚨</span>
-              <h2 className="font-bold text-foreground">8️⃣ ACİL DURUMLAR</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte alarm panelleri, kaçış yolları ve acil ekipman erişim noktaları anlatılır.
-              Bir acil durumda ekip rolleri ve ilk yapılacaklar maddeler halinde yazılır.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">Durum</th>
-                    <th className="py-2 font-semibold text-primary">Lider</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Yangın", "Master"],
-                    ["Can kurtarma", "3/O"],
-                    ["Adam denize", "Master"],
-                    ["Collision", "Master"],
-                    ["Grounding", "Master"],
-                    ["Abandon ship", "Master"],
-                    ["Medical emergency", "Master"],
-                    ["Oil spill", "C/O"],
-                  ].map(([situation, leader]) => (
-                    <tr key={situation}>
-                      <td className="py-1.5 pr-4 text-foreground">{situation}</td>
-                      <td className="py-1.5 text-primary">{leader}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* 9. Makine Dairesi İşleri */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">⚙️</span>
-              <h2 className="font-bold text-foreground">9️⃣ MAKİNE DAİRESİ İŞLERİ</h2>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Saatlik içerikte ana/yardımcı makine parametre kontrolü, alarm kayıtları ve sintine
-              seviyeleri anlatılır. Yakıt/yağ transferi ve separasyon takibine yönelik kısa bir örnek
-              rapor yazılır.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-border/50 text-left">
-                    <th className="py-2 pr-4 font-semibold text-foreground">İş</th>
-                    <th className="py-2 pr-4 font-semibold text-primary">Asıl Sorumlu</th>
-                    <th className="py-2 font-semibold text-muted-foreground">Fiilen Yapan</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/30">
-                  {[
-                    ["Ana makine operasyonu", "Chief Engineer", "2/E – 3/E"],
-                    ["Yardımcı makine bakımı", "2nd Engineer", "3/E – 4/E"],
-                    ["Jeneratör operasyonu", "2nd Engineer", "3/E – Oiler"],
-                    ["Yakıt transferi", "Chief Engineer", "3/E"],
-                    ["Yağlama sistemi", "2nd Engineer", "4/E – Oiler"],
-                    ["Soğutma sistemi", "2nd Engineer", "3/E"],
-                    ["Balast operasyonu", "Chief Engineer", "3/E"],
-                    ["Sintine pompası", "3rd Engineer", "4/E – Oiler"],
-                    ["Separator çalıştırma", "3rd Engineer", "4/E"],
-                    ["Kazan operasyonu", "2nd Engineer", "3/E"],
-                    ["Kompresör bakımı", "3rd Engineer", "4/E"],
-                    ["Pompa bakımları", "2nd Engineer", "3/E – 4/E"],
-                    ["Elektrik sistemleri", "Electrician", "Electrician"],
-                    ["Otomasyon sistemleri", "Chief Engineer", "Electrician"],
-                    ["Spare parts yönetimi", "Chief Engineer", "2/E"],
-                    ["Makine logbook", "Chief Engineer", "Vardiya mühendisi"],
-                    ["PMS kayıtları", "2nd Engineer", "Tüm mühendisler"],
-                    ["Bunkering operasyonu", "Chief Engineer", "2/E – 3/E"],
-                    ["LO/FO analizleri", "Chief Engineer", "2/E"],
-                    ["Makine dairesi temizliği", "Chief Engineer", "Oiler – Wiper"],
-                    ["Emergency generator", "2nd Engineer", "3/E"],
-                    ["Steering gear bakımı", "2nd Engineer", "3/E"],
-                    ["Makine dairesi güvenliği", "Chief Engineer", "Tüm personel"],
-                  ].map(([task, responsible, worker]) => (
-                    <tr key={task}>
-                      <td className="py-1.5 pr-4 text-foreground">{task}</td>
-                      <td className="py-1.5 pr-4 text-primary">{responsible}</td>
-                      <td className="py-1.5 text-muted-foreground">{worker}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          ))}
         </section>
       </div>
     </div>
