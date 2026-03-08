@@ -183,35 +183,46 @@ const Index = () => {
         />
       </div>
 
-      {/* Animated waves */}
-      <div className="absolute bottom-0 left-0 right-0 h-[45%] overflow-hidden pointer-events-none">
-        <div 
-          className="absolute bottom-0 left-0 w-full h-full opacity-70"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230ea5e9' fill-opacity='0.18' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,165.3C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat-x',
-            backgroundSize: '1440px 100%',
-            animation: 'wave-drift 18s linear infinite, wave-swell 6s ease-in-out infinite'
-          }}
-        />
-        <div 
-          className="absolute bottom-[10px] left-0 w-full h-full opacity-55"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2338bdf8' fill-opacity='0.16' d='M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,149.3C672,149,768,171,864,181.3C960,192,1056,192,1152,170.7C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat-x',
-            backgroundSize: '1440px 100%',
-            animation: 'wave-drift 26s linear infinite reverse, wave-swell 7s ease-in-out infinite'
-          }}
-        />
-        <div 
-          className="absolute bottom-[20px] left-0 w-full h-full opacity-35"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%237dd3fc' fill-opacity='0.12' d='M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,197.3C672,213,768,235,864,229.3C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat-x',
-            backgroundSize: '1440px 100%',
-            animation: 'wave-drift 34s linear infinite, wave-swell 8s ease-in-out infinite'
-          }}
-        />
+      {/* Realistic ocean waves */}
+      <div className="absolute bottom-0 left-0 right-0 h-[50%] overflow-hidden pointer-events-none">
+        {/* Deep ocean base */}
+        <div className="absolute bottom-0 left-0 right-0 h-[60%]" style={{ background: 'linear-gradient(180deg, rgba(2,48,71,0.0) 0%, rgba(2,48,71,0.6) 30%, rgba(1,36,53,0.95) 100%)' }} />
+
+        {/* Wave layer 1 - back swell */}
+        <svg className="absolute bottom-[28%] left-0 w-[200%] h-[80px]" viewBox="0 0 2880 80" preserveAspectRatio="none"
+          style={{ animation: 'ocean-swell-1 12s ease-in-out infinite, ocean-drift-1 22s linear infinite' }}>
+          <path d="M0,45 C120,38 240,55 360,48 C480,41 600,30 720,35 C840,40 960,55 1080,50 C1200,45 1320,32 1440,38 C1560,44 1680,55 1800,48 C1920,41 2040,30 2160,35 C2280,40 2400,55 2520,50 C2640,45 2760,35 2880,40 L2880,80 L0,80 Z" fill="rgba(8,60,85,0.5)" />
+        </svg>
+
+        {/* Wave layer 2 - mid ocean */}
+        <svg className="absolute bottom-[20%] left-0 w-[200%] h-[70px]" viewBox="0 0 2880 70" preserveAspectRatio="none"
+          style={{ animation: 'ocean-swell-2 10s ease-in-out infinite, ocean-drift-2 18s linear infinite' }}>
+          <path d="M0,35 C80,28 180,42 300,38 C420,34 500,22 660,28 C820,34 900,48 1080,42 C1260,36 1340,24 1440,30 C1540,36 1660,48 1800,42 C1940,36 1980,22 2160,28 C2340,34 2400,48 2520,42 C2640,36 2760,28 2880,32 L2880,70 L0,70 Z" fill="rgba(14,100,140,0.45)" />
+        </svg>
+
+        {/* Wave layer 3 - surface chop */}
+        <svg className="absolute bottom-[14%] left-0 w-[200%] h-[55px]" viewBox="0 0 2880 55" preserveAspectRatio="none"
+          style={{ animation: 'ocean-swell-3 7.5s ease-in-out infinite, ocean-drift-3 14s linear infinite' }}>
+          <path d="M0,30 C60,24 140,36 240,32 C340,28 420,18 560,24 C700,30 780,40 960,35 C1140,30 1200,18 1320,22 C1440,26 1540,38 1680,34 C1820,30 1860,18 2000,24 C2140,30 2220,40 2400,35 C2580,30 2700,22 2880,28 L2880,55 L0,55 Z" fill="rgba(14,130,170,0.4)" />
+        </svg>
+
+        {/* Wave layer 4 - foam line */}
+        <svg className="absolute bottom-[8%] left-0 w-[200%] h-[40px]" viewBox="0 0 2880 40" preserveAspectRatio="none"
+          style={{ animation: 'ocean-swell-4 6s ease-in-out infinite, ocean-drift-4 11s linear infinite' }}>
+          <path d="M0,22 C50,18 120,28 200,24 C280,20 360,14 480,18 C600,22 680,30 840,26 C1000,22 1060,14 1200,18 C1340,22 1400,30 1560,26 C1720,22 1780,14 1920,18 C2060,22 2120,30 2280,26 C2440,22 2560,16 2700,20 C2820,24 2860,22 2880,24 L2880,40 L0,40 Z" fill="rgba(20,160,200,0.35)" />
+        </svg>
+
+        {/* Wave layer 5 - closest, with subtle foam */}
+        <svg className="absolute bottom-[2%] left-0 w-[200%] h-[35px]" viewBox="0 0 2880 35" preserveAspectRatio="none"
+          style={{ animation: 'ocean-swell-5 5s ease-in-out infinite, ocean-drift-5 9s linear infinite' }}>
+          <path d="M0,18 C40,14 100,22 180,19 C260,16 340,10 440,14 C540,18 620,24 760,21 C900,18 960,10 1100,14 C1240,18 1300,24 1440,21 C1580,18 1640,10 1780,14 C1920,18 1980,24 2120,21 C2260,18 2340,12 2480,16 C2620,20 2740,18 2880,20 L2880,35 L0,35 Z" fill="rgba(30,180,220,0.3)" />
+        </svg>
+
+        {/* Foam highlights */}
+        <svg className="absolute bottom-[10%] left-0 w-[200%] h-[20px] opacity-[0.15]" viewBox="0 0 2880 20" preserveAspectRatio="none"
+          style={{ animation: 'ocean-drift-3 16s linear infinite, ocean-foam 4s ease-in-out infinite' }}>
+          <path d="M0,12 C30,10 80,14 140,12 C200,10 260,8 340,10 C420,12 480,15 580,13 C680,11 740,8 860,10 C980,12 1040,15 1160,13 C1280,11 1340,8 1460,10 C1580,12 1640,15 1760,13 C1880,11 1940,8 2060,10 C2180,12 2240,15 2360,13 C2480,11 2600,9 2760,11 C2840,12 2860,12 2880,12 L2880,20 L0,20 Z" fill="rgba(200,230,255,0.6)" />
+        </svg>
       </div>
 
       {/* Settings button */}
