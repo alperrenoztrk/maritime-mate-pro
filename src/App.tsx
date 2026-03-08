@@ -282,6 +282,7 @@ const AnimatedRoutes = () => {
         <Route path="/machine/:topicSlug/formulas" element={<PageTransition><MachineTopicFormulasPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/rules" element={<PageTransition><MachineTopicRulesPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/topics/:subTopicTitle" element={<PageTransition><MachineTopicDetailPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/quiz" element={<PageTransition><MachineTopicQuizPage /></PageTransition>} />
         <Route path="/tank-menu" element={<PageTransition><TankMenu /></PageTransition>} />
         <Route path="/solas" element={<PageTransition><SOLASMenu /></PageTransition>} />

@@ -109,15 +109,22 @@ export default function MachineTopicLessonsPage() {
                   {isExpanded && (
                     <div className="border-t border-border/40 bg-background/50 p-4">
                       <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                        {topic.subTopics.map((sub, subIndex) => (
-                          <div
-                            key={subIndex}
-                            className="flex items-center gap-2 rounded-lg border border-transparent bg-card/60 px-3 py-2 text-left text-sm"
-                          >
-                            <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                            <span className="flex-1 text-foreground/90">{sub.title}</span>
-                          </div>
-                        ))}
+                        {topic.subTopics.map((sub, subIndex) => {
+                          const hasContent = topicSlug ? hasSubTopicContent(topicSlug, sub.title) : false;
+                          const Wrapper = hasContent ? Link : "div" as any;
+                          const linkProps = hasContent ? { to: `/machine/${topicSlug}/topics/${encodeURIComponent(sub.title)}` } : {};
+                          return (
+                            <Wrapper
+                              key={subIndex}
+                              {...linkProps}
+                              className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition-colors ${hasContent ? "border-primary/20 bg-card/60 hover:border-primary/40 hover:bg-card" : "border-transparent bg-card/60 opacity-70"}`}
+                            >
+                              <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${hasContent ? "bg-primary" : "bg-muted-foreground"}`} />
+                              <span className="flex-1 text-foreground/90">{sub.title}</span>
+                              {hasContent && <span className="text-xs text-primary">✓</span>}
+                            </Wrapper>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
