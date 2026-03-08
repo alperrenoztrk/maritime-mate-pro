@@ -1255,15 +1255,20 @@ const content: ContentMap = {
 };
 
 import content2 from "./machineTopicDetailContent2";
+import content3 from "./machineTopicDetailContent3";
+
+const allContentMaps = [content, content2, content3];
 
 export function getMachineSubTopicContent(topicSlug: string, subTopicTitle: string): MachineSubTopicContent | null {
-  const topicContent = content[topicSlug] || content2[topicSlug];
-  if (!topicContent) return null;
-  return topicContent[subTopicTitle] || null;
+  for (const map of allContentMaps) {
+    if (map[topicSlug]?.[subTopicTitle]) return map[topicSlug][subTopicTitle];
+  }
+  return null;
 }
 
 export function hasSubTopicContent(topicSlug: string, subTopicTitle: string): boolean {
-  const topicContent = content[topicSlug] || content2[topicSlug];
-  if (!topicContent) return false;
-  return !!topicContent[subTopicTitle];
+  for (const map of allContentMaps) {
+    if (map[topicSlug]?.[subTopicTitle]) return true;
+  }
+  return false;
 }
