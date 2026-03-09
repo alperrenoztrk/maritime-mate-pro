@@ -6,12 +6,63 @@ import { createCompassListener, requestCompassPermission } from "@/utils/heading
 import { ChevronLeft, ChevronRight, Settings } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 
+// Lighthouse characteristic definitions (IALA standard)
+const LIGHTHOUSE_CHARS = [
+  {
+    id: 'Fl(2)',
+    label: 'Fl(2) 10s',
+    desc: 'Group Flashing',
+    period: 10,
+    // Two flashes in 10s period
+    beamKeyframes: `0%,1%{opacity:0}2.5%{opacity:1}5%,14%{opacity:0}16.5%{opacity:1}19%,100%{opacity:0}`,
+    fresnelKeyframes: `0%,1%{opacity:0.3;transform:scale(1)}2.5%{opacity:1;transform:scale(1.2)}5%,14%{opacity:0.3;transform:scale(1)}16.5%{opacity:1;transform:scale(1.2)}19%,100%{opacity:0.3;transform:scale(1)}`,
+  },
+  {
+    id: 'Fl',
+    label: 'Fl 5s',
+    desc: 'Flashing',
+    period: 5,
+    // Single short flash every 5s
+    beamKeyframes: `0%,2%{opacity:0}4%{opacity:1}12%{opacity:1}16%,100%{opacity:0}`,
+    fresnelKeyframes: `0%,2%{opacity:0.3;transform:scale(1)}4%{opacity:1;transform:scale(1.2)}12%{opacity:1;transform:scale(1.2)}16%,100%{opacity:0.3;transform:scale(1)}`,
+  },
+  {
+    id: 'Oc',
+    label: 'Oc 4s',
+    desc: 'Occulting',
+    period: 4,
+    // Mostly ON, brief OFF
+    beamKeyframes: `0%{opacity:1}37%{opacity:1}40%{opacity:0}60%{opacity:0}63%{opacity:1}100%{opacity:1}`,
+    fresnelKeyframes: `0%{opacity:1;transform:scale(1.1)}37%{opacity:1;transform:scale(1.1)}40%{opacity:0.2;transform:scale(0.9)}60%{opacity:0.2;transform:scale(0.9)}63%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1.1)}`,
+  },
+  {
+    id: 'Iso',
+    label: 'Iso 6s',
+    desc: 'Isophase',
+    period: 6,
+    // Equal on and off (3s each)
+    beamKeyframes: `0%{opacity:1}2%{opacity:1}48%{opacity:1}50%{opacity:0}98%{opacity:0}100%{opacity:1}`,
+    fresnelKeyframes: `0%{opacity:1;transform:scale(1.15)}48%{opacity:1;transform:scale(1.15)}50%{opacity:0.2;transform:scale(0.9)}98%{opacity:0.2;transform:scale(0.9)}100%{opacity:1;transform:scale(1.15)}`,
+  },
+  {
+    id: 'Q',
+    label: 'Q',
+    desc: 'Quick',
+    period: 1,
+    // ~1 flash per second
+    beamKeyframes: `0%{opacity:0}15%{opacity:1}45%{opacity:1}55%{opacity:0}100%{opacity:0}`,
+    fresnelKeyframes: `0%{opacity:0.3;transform:scale(1)}15%{opacity:1;transform:scale(1.15)}45%{opacity:1;transform:scale(1.15)}55%{opacity:0.3;transform:scale(1)}100%{opacity:0.3;transform:scale(1)}`,
+  },
+];
+
 const Index = () => {
   const navigate = useNavigate();
   const { theme } = useTheme();
   
   // Compass state
   const [headingDeg, setHeadingDeg] = useState<number | null>(null);
+  const [charIndex, setCharIndex] = useState(0);
+  const currentChar = LIGHTHOUSE_CHARS[charIndex];
   
   // Swipe state
   const touchStartX = useRef<number | null>(null);
