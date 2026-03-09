@@ -204,8 +204,26 @@ const Index = () => {
         }}
       />
 
-      {/* Realistic Lighthouse */}
-      <div className="absolute right-[8%] bottom-[22%] w-[60px] h-[120px] z-[1] pointer-events-none">
+      {/* Realistic Lighthouse - tap to change characteristic */}
+      <div 
+        className="absolute right-[8%] bottom-[22%] w-[60px] h-[120px] z-[1] cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCharIndex((prev) => (prev + 1) % LIGHTHOUSE_CHARS.length);
+        }}
+      >
+        {/* Characteristic label */}
+        <div 
+          className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-mono font-bold tracking-wide px-2 py-0.5 rounded-full select-none"
+          style={{
+            background: 'rgba(0,0,0,0.5)',
+            color: '#fbbf24',
+            border: '1px solid rgba(251,191,36,0.3)',
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          {currentChar.label}
+        </div>
         <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}>
           <defs>
             {/* Tower gradient - weathered white/grey stone */}
