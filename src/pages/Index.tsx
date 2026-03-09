@@ -6,12 +6,63 @@ import { createCompassListener, requestCompassPermission } from "@/utils/heading
 import { ChevronLeft, ChevronRight, Settings } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 
+// Lighthouse characteristic definitions (IALA standard)
+const LIGHTHOUSE_CHARS = [
+  {
+    id: 'Fl(2)',
+    label: 'Fl(2) 10s',
+    desc: 'Group Flashing',
+    period: 10,
+    // Two flashes in 10s period
+    beamKeyframes: `0%,1%{opacity:0}2.5%{opacity:1}5%,14%{opacity:0}16.5%{opacity:1}19%,100%{opacity:0}`,
+    fresnelKeyframes: `0%,1%{opacity:0.3;transform:scale(1)}2.5%{opacity:1;transform:scale(1.2)}5%,14%{opacity:0.3;transform:scale(1)}16.5%{opacity:1;transform:scale(1.2)}19%,100%{opacity:0.3;transform:scale(1)}`,
+  },
+  {
+    id: 'Fl',
+    label: 'Fl 5s',
+    desc: 'Flashing',
+    period: 5,
+    // Single short flash every 5s
+    beamKeyframes: `0%,2%{opacity:0}4%{opacity:1}12%{opacity:1}16%,100%{opacity:0}`,
+    fresnelKeyframes: `0%,2%{opacity:0.3;transform:scale(1)}4%{opacity:1;transform:scale(1.2)}12%{opacity:1;transform:scale(1.2)}16%,100%{opacity:0.3;transform:scale(1)}`,
+  },
+  {
+    id: 'Oc',
+    label: 'Oc 4s',
+    desc: 'Occulting',
+    period: 4,
+    // Mostly ON, brief OFF
+    beamKeyframes: `0%{opacity:1}37%{opacity:1}40%{opacity:0}60%{opacity:0}63%{opacity:1}100%{opacity:1}`,
+    fresnelKeyframes: `0%{opacity:1;transform:scale(1.1)}37%{opacity:1;transform:scale(1.1)}40%{opacity:0.2;transform:scale(0.9)}60%{opacity:0.2;transform:scale(0.9)}63%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1.1)}`,
+  },
+  {
+    id: 'Iso',
+    label: 'Iso 6s',
+    desc: 'Isophase',
+    period: 6,
+    // Equal on and off (3s each)
+    beamKeyframes: `0%{opacity:1}2%{opacity:1}48%{opacity:1}50%{opacity:0}98%{opacity:0}100%{opacity:1}`,
+    fresnelKeyframes: `0%{opacity:1;transform:scale(1.15)}48%{opacity:1;transform:scale(1.15)}50%{opacity:0.2;transform:scale(0.9)}98%{opacity:0.2;transform:scale(0.9)}100%{opacity:1;transform:scale(1.15)}`,
+  },
+  {
+    id: 'Q',
+    label: 'Q',
+    desc: 'Quick',
+    period: 1,
+    // ~1 flash per second
+    beamKeyframes: `0%{opacity:0}15%{opacity:1}45%{opacity:1}55%{opacity:0}100%{opacity:0}`,
+    fresnelKeyframes: `0%{opacity:0.3;transform:scale(1)}15%{opacity:1;transform:scale(1.15)}45%{opacity:1;transform:scale(1.15)}55%{opacity:0.3;transform:scale(1)}100%{opacity:0.3;transform:scale(1)}`,
+  },
+];
+
 const Index = () => {
   const navigate = useNavigate();
   const { theme } = useTheme();
   
   // Compass state
   const [headingDeg, setHeadingDeg] = useState<number | null>(null);
+  const [charIndex, setCharIndex] = useState(0);
+  const currentChar = LIGHTHOUSE_CHARS[charIndex];
   
   // Swipe state
   const touchStartX = useRef<number | null>(null);
@@ -153,8 +204,26 @@ const Index = () => {
         }}
       />
 
-      {/* Realistic Lighthouse */}
-      <div className="absolute right-[8%] bottom-[22%] w-[60px] h-[120px] z-[1] pointer-events-none">
+      {/* Realistic Lighthouse - tap to change characteristic */}
+      <div 
+        className="absolute right-[8%] bottom-[22%] w-[60px] h-[120px] z-[1] cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCharIndex((prev) => (prev + 1) % LIGHTHOUSE_CHARS.length);
+        }}
+      >
+        {/* Characteristic label */}
+        <div 
+          className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-mono font-bold tracking-wide px-2 py-0.5 rounded-full select-none"
+          style={{
+            background: 'rgba(0,0,0,0.5)',
+            color: '#fbbf24',
+            border: '1px solid rgba(251,191,36,0.3)',
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          {currentChar.label}
+        </div>
         <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))' }}>
           <defs>
             {/* Tower gradient - weathered white/grey stone */}
@@ -238,16 +307,17 @@ const Index = () => {
           <rect x="37" y="100" width="6" height="8" rx="3" fill="rgba(251,191,36,0.25)" stroke="#9ca3af" strokeWidth="0.5" />
         </svg>
         
-        {/* Realistic light beam - Fl(2) 10s characteristic (Group Flashing) */}
+        {/* Light beam - dynamic characteristic */}
         <div 
           className="absolute z-[2]"
+          key={currentChar.id + '-beam'}
           style={{
             top: '34%',
             left: '50%',
             width: '0px',
             height: '0px',
             transform: 'rotate(-15deg)',
-            animation: 'lighthouse-flash 10s infinite'
+            animation: `lighthouse-flash ${currentChar.period}s infinite`
           }}
         >
           {/* Main beam - narrow cone like Fresnel lens output */}
@@ -284,7 +354,7 @@ const Index = () => {
             width: '24px',
             height: '24px',
             background: 'radial-gradient(circle, rgba(255,251,235,0.9) 0%, rgba(251,191,36,0.6) 30%, rgba(251,191,36,0.2) 60%, transparent 100%)',
-            animation: 'fresnel-flash 10s infinite',
+            animation: `fresnel-flash ${currentChar.period}s infinite`,
           }}
         />
         
@@ -298,7 +368,7 @@ const Index = () => {
             height: '50px',
             background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,191,36,0.05) 50%, transparent 100%)',
             filter: 'blur(4px)',
-            animation: 'fresnel-flash 10s infinite',
+            animation: `fresnel-flash ${currentChar.period}s infinite`,
           }}
         />
       </div>
@@ -435,20 +505,8 @@ const Index = () => {
         @keyframes ocean-swell-4 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         @keyframes ocean-swell-5 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
         @keyframes ocean-foam { 0%,100% { opacity: 0.15; } 50% { opacity: 0.25; } }
-        @keyframes lighthouse-flash {
-          0%, 1% { opacity: 0; }
-          2.5% { opacity: 1; }
-          5%, 14% { opacity: 0; }
-          16.5% { opacity: 1; }
-          19%, 100% { opacity: 0; }
-        }
-        @keyframes fresnel-flash {
-          0%, 1% { opacity: 0.3; transform: scale(1); }
-          2.5% { opacity: 1; transform: scale(1.2); }
-          5%, 14% { opacity: 0.3; transform: scale(1); }
-          16.5% { opacity: 1; transform: scale(1.2); }
-          19%, 100% { opacity: 0.3; transform: scale(1); }
-        }
+        @keyframes lighthouse-flash { ${currentChar.beamKeyframes} }
+        @keyframes fresnel-flash { ${currentChar.fresnelKeyframes} }
         @keyframes title-shine {
           to { background-position: 200% center; }
         }
