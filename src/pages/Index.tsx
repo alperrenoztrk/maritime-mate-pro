@@ -307,16 +307,17 @@ const Index = () => {
           <rect x="37" y="100" width="6" height="8" rx="3" fill="rgba(251,191,36,0.25)" stroke="#9ca3af" strokeWidth="0.5" />
         </svg>
         
-        {/* Realistic light beam - Fl(2) 10s characteristic (Group Flashing) */}
+        {/* Light beam - dynamic characteristic */}
         <div 
           className="absolute z-[2]"
+          key={currentChar.id + '-beam'}
           style={{
             top: '34%',
             left: '50%',
             width: '0px',
             height: '0px',
             transform: 'rotate(-15deg)',
-            animation: 'lighthouse-flash 10s infinite'
+            animation: `lighthouse-flash ${currentChar.period}s infinite`
           }}
         >
           {/* Main beam - narrow cone like Fresnel lens output */}
