@@ -354,7 +354,7 @@ const Index = () => {
             width: '24px',
             height: '24px',
             background: 'radial-gradient(circle, rgba(255,251,235,0.9) 0%, rgba(251,191,36,0.6) 30%, rgba(251,191,36,0.2) 60%, transparent 100%)',
-            animation: 'fresnel-flash 10s infinite',
+            animation: `fresnel-flash ${currentChar.period}s infinite`,
           }}
         />
         
