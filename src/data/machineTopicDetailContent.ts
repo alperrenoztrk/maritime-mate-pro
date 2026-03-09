@@ -1260,8 +1260,11 @@ import content4 from "./machineTopicDetailContent4";
 import content5 from "./machineTopicDetailContent5";
 import content6 from "./machineTopicDetailContent6";
 import content7 from "./machineTopicDetailContent7";
+import content8 from "./machineTopicDetailContent8";
+import content9 from "./machineTopicDetailContent9";
+import content10 from "./machineTopicDetailContent10";
 
-const allContentMaps = [content, content2, content3, content4, content5, content6, content7];
+const allContentMaps = [content, content2, content3, content4, content5, content6, content7, content8, content9, content10];
 
 export function getMachineSubTopicContent(topicSlug: string, subTopicTitle: string): MachineSubTopicContent | null {
   for (const map of allContentMaps) {
