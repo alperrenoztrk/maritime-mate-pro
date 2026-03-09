@@ -368,7 +368,7 @@ const Index = () => {
             height: '50px',
             background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,191,36,0.05) 50%, transparent 100%)',
             filter: 'blur(4px)',
-            animation: 'fresnel-flash 10s infinite',
+            animation: `fresnel-flash ${currentChar.period}s infinite`,
           }}
         />
       </div>
