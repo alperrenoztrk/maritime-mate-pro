@@ -45,57 +45,264 @@ const content4: ContentMap = {
     },
     "Politropik süreç ve n üssü": {
       title: "Politropik Süreç ve n Üssü",
-      introduction: "Politropik süreç, PVⁿ = sabit ilişkisiyle tanımlanan genel hal değişimidir. Diğer tüm idealize süreçler (izotermik, adyabatik, izobarik, izokorik) politropik sürecin özel halleridir.",
+      introduction: "Politropik süreç, gerçek kompresör ve genleşme makinesi davranışını idealize süreçlerden daha iyi temsil eden genel hal değişim modelidir. Süreç, PVⁿ = sabit bağıntısıyla ifade edilir ve n üssü ısı alışverişi ile iç tersinmezliklerin birleşik etkisini tek parametrede toplar.",
       sections: [
-        { heading: "Genel Formül", paragraphs: ["Politropik üs (n) değerine göre sürecin karakteri değişir."], formula: { expression: "PVⁿ = sabit", variables: [] }, table: { headers: ["n Değeri", "Süreç Tipi", "Açıklama"], rows: [["n = 0", "İzobarik", "P = sabit"], ["n = 1", "İzotermik", "T = sabit"], ["n = γ", "Adyabatik", "Q = 0"], ["n = ∞", "İzokorik", "V = sabit"], ["1 < n < γ", "Politropik", "Gerçek süreçler"]] } },
-        { heading: "Sayısal Örnek", paragraphs: [], example: { problem: "Bir kompresörde hava n = 1.3 politropik üssüyle 1 bar'dan 8 bar'a sıkıştırılıyor. Giriş sıcaklığı 25°C ise çıkış sıcaklığını bulunuz.", steps: ["T₂ = T₁ × (P₂/P₁)^((n-1)/n)", "T₂ = 298 × (8/1)^((1.3-1)/1.3)", "T₂ = 298 × 8^(0.2308)", "8^0.2308 = e^(0.2308 × 2.079) = e^0.48 = 1.616", "T₂ = 298 × 1.616 = 482 K = 209°C"], result: "Politropik sıkıştırma sonrası sıcaklık 482 K (209°C). Adyabatik durumda (n=1.4) sıcaklık daha yüksek, izotermik durumda (n=1) sıcaklık değişmez." } }
+        {
+          heading: "Politropik Modelin Fiziksel Anlamı",
+          paragraphs: [
+            "Politropik üs n, süreç sırasında çevreyle ısı alışverişi seviyesini ve makine içi kayıpları temsil eden ampirik bir parametredir. Bu nedenle n, sadece teorik bir sayı değil, aynı zamanda ekipman performans göstergesidir.",
+            "Kompresörlerde n değeri genellikle 1 ile γ arasındadır; ara soğutma arttıkça n değeri 1'e yaklaşır. Türbinlerde ise genleşmenin gerçek karakterine bağlı olarak efektif üs farklılaşır ve izentropik verimle birlikte değerlendirilir."
+          ],
+          formula: { expression: "PVⁿ = sabit", variables: ["n: Politropik üs", "n = 1 → izotermik, n = γ → izentropik"] },
+          table: { headers: ["n Değeri", "Süreç Tipi", "Mühendislik Yorumu"], rows: [["n = 0", "İzobarik", "Geniş ısı alışverişi, basınç sabit"], ["n = 1", "İzotermik", "Maksimum soğutmalı ideal sıkıştırma"], ["1 < n < γ", "Gerçek sıkıştırma", "Deniz kompresörleri için tipik bölge"], ["n = γ", "İzentropik", "Isı transferi yok, tersinir limit"], ["n → ∞", "İzokorik", "Hacim değişimi ihmal edilebilir"]] }
+        },
+        {
+          heading: "Sıcaklık ve İş Bağıntıları",
+          paragraphs: [
+            "Politropik bağıntıdan türetilen sıcaklık oranı, saha hesaplarında kompresör çıkış sıcaklığını öngörmek için kullanılır. Bu hesap, yağlama koşulları, soğutucu verimi ve çevre sıcaklığı ile birlikte yorumlanmalıdır.",
+            "Birim kütle başına politropik iş hesabı, motor yardımcı sistemlerinin güç tüketim analizinde kritik öneme sahiptir."
+          ],
+          formula: {
+            expression: "T₂/T₁ = (P₂/P₁)^((n-1)/n)\nw = (n/(n-1)) · R · (T₂ - T₁)",
+            variables: ["w: Birim kütle başına iş (kJ/kg)", "R: Gaz sabiti (kJ/kg·K)"]
+          }
+        },
+        {
+          heading: "Sayısal Örnek ve Operasyon Yorumu",
+          paragraphs: ["Aynı basınç oranında n değerinin artması çıkış sıcaklığını yükseltir; bu durum valf, segman ve yağ filmi için ek termal yük oluşturur."],
+          example: { problem: "Bir kompresörde hava n = 1.3 politropik üssüyle 1 bar'dan 8 bar'a sıkıştırılıyor. Giriş sıcaklığı 25°C ise çıkış sıcaklığını bulunuz.", steps: ["T₂ = T₁ × (P₂/P₁)^((n-1)/n)", "T₂ = 298 × (8)^((1.3-1)/1.3)", "T₂ = 298 × 8^0.2308", "8^0.2308 = 1.616", "T₂ = 298 × 1.616 = 482 K = 209°C"], result: "Politropik sıkıştırma sonrası sıcaklık 209°C bulunur. Bu değer ara soğutma yetersizse yağ karbonlaşması riski yaratabilir; bakım planında soğutucu performansı izlenmelidir." }
+        }
       ],
-      keyPoints: ["Gerçek kompresörlerde n değeri 1 ile γ arasındadır.", "n > γ ise sıkıştırma sırasında ısı alınıyor demektir (pratikte nadir).", "Politropik üs, gerçek makine süreçlerini modellemenin en uygun yoludur."]
+      keyPoints: ["Politropik model, gerçek makine davranışını ideal süreçlerden daha iyi temsil eder.", "n değeri saha verisiyle kalibre edilmelidir; tek başına teorik kabul edilmemelidir.", "Kompresör çıkış sıcaklığı ve özgül güç tüketimi n değerine yüksek duyarlıdır."]
     },
     "Otto çevrimi (benzinli motor)": {
       title: "Otto Çevrimi (Benzinli Motor)",
-      introduction: "Otto çevrimi, buji ile ateşlemeli (benzinli) motorların idealize termodinamik modelidir. Sabit hacimde ısı alımı ve atımı ile karakterize edilir.",
+      introduction: "Otto çevrimi, kıvılcım ateşlemeli motorların teorik performans sınırını veren temel çevrimdir. Denizcilikte ana tahrikte sınırlı kullanılsa da yardımcı jeneratörler, küçük servis motorları ve eğitim amaçlı termodinamik analizlerde kritik referanstır.",
       sections: [
-        { heading: "Çevrim Aşamaları", paragraphs: ["1→2: Adyabatik sıkıştırma.", "2→3: Sabit hacimde ısı alımı (yanma).", "3→4: Adyabatik genleşme (iş stroku).", "4→1: Sabit hacimde ısı atımı (egzoz)."] },
-        { heading: "Termal Verim", paragraphs: [], formula: { expression: "η_Otto = 1 − (1/r)^(γ−1)", variables: ["r: Sıkıştırma oranı (V₁/V₂)", "γ: Özgül ısı oranı"] }, example: { problem: "Sıkıştırma oranı r = 10 olan bir Otto çevriminin termal verimini bulunuz. (γ = 1.4)", steps: ["η = 1 − (1/10)^(1.4−1)", "η = 1 − (0.1)^0.4", "0.1^0.4 = e^(0.4 × ln0.1) = e^(−0.921) = 0.398", "η = 1 − 0.398 = 0.602"], result: "Otto çevrimi termal verimi %60.2'dir. Gerçek benzinli motorlarda kayıplar nedeniyle %25-35 civarındadır." } }
+        { heading: "Çevrim Aşamaları ve P-V Yorumu", paragraphs: ["1→2 adyabatik sıkıştırmada basınç ve sıcaklık hızla yükselir; vuruntu sınırına yaklaşım bu bölgede belirlenir.", "2→3 sabit hacimde ısı alımı ideal bir varsayımdır; gerçek motorda yanma sonlu sürede olduğu için basınç tepe değeri krank açısına bağlıdır.", "3→4 adyabatik genleşme iş üreten stroktur; çevrim net işinin büyük kısmı bu bölgede oluşur.", "4→1 sabit hacimde ısı atımı, egzoz ve soğutma kayıplarının ideal temsili olarak kabul edilir."] },
+        { heading: "Termal Verim ve Sıkıştırma Oranı Etkisi", paragraphs: ["Otto çevrimi verimi teorik olarak yalnızca sıkıştırma oranı ve γ değerine bağlıdır. Bu durum tasarımcıya açık bir mesaj verir: uygun yakıtla daha yüksek sıkıştırma oranı daha yüksek verim üretir.", "Ancak pratikte vuruntu (knock), malzeme sıcaklık sınırları ve NOx oluşumu sıkıştırma oranını sınırlayan temel faktörlerdir."], formula: { expression: "η_Otto = 1 − (1/r)^(γ−1)", variables: ["r: Sıkıştırma oranı (V₁/V₂)", "γ: Özgül ısı oranı"] } },
+        { heading: "Sayısal Örnek ve Gerçek Motor Sapmaları", paragraphs: ["İdeal hesap sonucu her zaman gerçek motor veriminden yüksektir; farkın nedeni ısı kayıpları, sürtünme, eksik yanma ve pompalama işidir."], example: { problem: "Sıkıştırma oranı r = 10 olan bir Otto çevriminin termal verimini bulunuz. (γ = 1.4)", steps: ["η = 1 − (1/10)^(1.4−1)", "η = 1 − (0.1)^0.4", "0.1^0.4 = 0.398", "η = 1 − 0.398 = 0.602"], result: "İdeal Otto verimi %60.2 bulunur. Gerçek makinede etkin verim tipik olarak %25-35 bandındadır; kalan enerji egzoz, soğutma ve mekanik kayıplarla dağılır." } }
       ],
-      keyPoints: ["Otto çevrimi verimi yalnızca sıkıştırma oranına bağlıdır.", "Sıkıştırma oranı arttıkça verim artar ancak vuruntu riski doğar.", "Denizcilik uygulamalarında Otto çevrimi sınırlı kullanıma sahiptir."]
+      keyPoints: ["Otto çevrimi teorik sınırı verir; gerçek motor tasarımı bu sınıra yaklaşma problemidir.", "Sıkıştırma oranı artışı verimi yükseltir ancak vuruntu ve emisyon limitleriyle dengelenmelidir.", "Denizcilikte eğitim, küçük yardımcı makineler ve kıyas analizlerinde temel referans çevrimdir."]
     },
     "Sabathe (ikili) çevrimi": {
       title: "Sabathe (İkili) Çevrimi",
-      introduction: "Sabathe çevrimi, yanmanın bir kısmının sabit hacimde, bir kısmının sabit basınçta gerçekleştiğini kabul eden modeldir. Gerçek dizel motorlarını Otto ve Diesel çevrimlerinden daha doğru temsil eder.",
+      introduction: "Sabathe (dual/ikili) çevrimi, gerçek dizel motor yanmasını tek bir ideal süreçle temsil etmenin yetersiz kaldığı durumlar için geliştirilmiş karma bir modeldir. Isı eklemesinin bir bölümünü sabit hacimde, kalan bölümünü sabit basınçta kabul ederek hem tepe basıncı hem de enjeksiyon süresinin çevrim verimine etkisini aynı anda değerlendirme imkânı sağlar.",
       sections: [
-        { heading: "Çevrim Aşamaları", paragraphs: ["1→2: Adyabatik sıkıştırma.", "2→3: Sabit hacimde ısı alımı (ani yanma).", "3→4: Sabit basınçta ısı alımı (yavaş yanma).", "4→5: Adyabatik genleşme.", "5→1: Sabit hacimde ısı atımı."] },
-        { heading: "Verim", paragraphs: ["Sabathe çevrimi verimi sıkıştırma oranı (r), basınç artış oranı (α = P₃/P₂) ve kesme oranına (ρ = V₄/V₃) bağlıdır. α = 1 ise Diesel, ρ = 1 ise Otto çevrimine dönüşür."], formula: { expression: "η = 1 − (1/r^(γ-1)) × [(αρ^γ − 1) / (α−1 + α·γ·(ρ−1))]", variables: ["α: Basınç artış oranı", "ρ: Kesme oranı", "r: Sıkıştırma oranı"] } }
+        {
+          heading: "Neden Sabathe Modeli Kullanılır?",
+          paragraphs: [
+            "Gerçek deniz dizel motorlarında yanma, krank açısı boyunca sonlu bir zaman aralığına yayılır. Bu nedenle yanmanın tamamını yalnızca sabit basınç (Diesel çevrimi) veya yalnızca sabit hacim (Otto çevrimi) kabul etmek, özellikle orta-yük bölgelerinde anlamlı hata üretir.",
+            "Sabathe çevrimi, hızlı ön-karışım yanmasını sabit hacim, difüzyon kontrollü geç yanmayı sabit basınç kısmıyla modelleyerek indike basınç eğrisine daha yakın bir teorik çerçeve verir."
+          ]
+        },
+        {
+          heading: "Çevrim Aşamaları",
+          paragraphs: [
+            "1→2: Adyabatik sıkıştırma ile hava sıcaklığı yükselir ve yakıtın kendiliğinden tutuşması için uygun ortam oluşur.",
+            "2→3: Sabit hacimde ısı alımı (ani yanma fazı). Bu kısım tepe basıncı belirler ve mekanik yükleri doğrudan etkiler.",
+            "3→4: Sabit basınçta ısı alımı (enjeksiyonun devam ettiği kontrollü yanma). Kesme oranı bu kısımda tanımlanır.",
+            "4→5: Adyabatik genleşme ile faydalı iş üretilir.",
+            "5→1: Sabit hacimde ısı atımı, egzoz ve soğutma kayıplarının ideal karşılığıdır."
+          ]
+        },
+        {
+          heading: "Verim Parametreleri ve Tasarım Etkisi",
+          paragraphs: [
+            "Sabathe çevriminde termal verim; sıkıştırma oranı (r), basınç artış oranı (α) ve kesme oranı (ρ) parametrelerine bağlıdır. α büyüdükçe erken yanma etkisi artar; ρ büyüdükçe sabit basınçta ısı ekleme süresi uzar.",
+            "Aynı maksimum silindir basıncı sınırı altında, enjeksiyon zamanlamasının optimize edilmesiyle Sabathe çevrimi daha yüksek net iş sağlayabilir. Bu nedenle common-rail motorlarda çoklu enjeksiyon stratejileri çevrim yaklaşımını pratikte şekillendirir."
+          ],
+          formula: {
+            expression: "η = 1 − (1/r^(γ-1)) × [(αρ^γ − 1) / (α−1 + α·γ·(ρ−1))]",
+            variables: [
+              "r: Sıkıştırma oranı",
+              "α: Basınç artış oranı (P₃/P₂)",
+              "ρ: Kesme oranı (V₄/V₃)",
+              "γ: Özgül ısı oranı"
+            ]
+          }
+        },
+        {
+          heading: "Operasyonel Yorum",
+          paragraphs: [
+            "Tepe basıncın aşırı yükselmesi piston pimleri, biyel ve ana yataklar üzerinde darbe yükünü artırır. Buna karşılık yanmanın fazla gecikmesi özgül yakıt tüketimini ve egzoz sıcaklığını yükseltir.",
+            "Makine zabiti açısından hedef; yakıt ekonomisi, NOx limiti ve mekanik güvenilirlik arasında denge kurmaktır. Silindir basıncı trendleri, Pmax, dP/dθ ve egzoz sıcaklığı birlikte değerlendirilmelidir."
+          ]
+        }
       ],
-      keyPoints: ["Gerçek deniz dizel motorları Sabathe çevrimiyle en doğru modellenir.", "Yüksek basınçlı common rail enjeksiyon yanma profilini değiştirir.", "Pilot enjeksiyon ile basınç artış hızı kontrol edilir."]
+      keyPoints: [
+        "Sabathe çevrimi, gerçek deniz dizellerini Otto ve Diesel çevrimlerinden daha gerçekçi temsil eder.",
+        "Enjeksiyon stratejisi (pilot-ana-son) çevrimin α ve ρ parametrelerini fiilen değiştirir.",
+        "Verim artışı hedeflenirken Pmax ve emisyon sınırları birlikte yönetilmelidir."
+      ]
     },
     "Rankine çevrimi (buhar türbini)": {
       title: "Rankine Çevrimi (Buhar Türbini)",
-      introduction: "Rankine çevrimi, buhar türbinli güç santrallerinin ve gemi buhar tahrik sistemlerinin temel termodinamik modelidir.",
+      introduction: "Rankine çevrimi, buhar üretimi-temini-genleşmesi-yoğunlaşması adımlarından oluşan kapalı bir güç çevrimidir. Denizcilikte klasik buhar tahrik sistemleri dışında, güncel olarak egzoz gazı ekonomizeri destekli turbo-jeneratör ve atık ısı geri kazanım (WHRS) mimarilerinin temel termodinamik omurgasını oluşturur.",
       sections: [
-        { heading: "Çevrim Bileşenleri", paragraphs: ["1→2: Pompa ile suyun basıncının artırılması (izentropik).", "2→3: Kazanda izobarik ısı alımı (su buharlaştırılır).", "3→4: Türbinde izentropik genleşme (iş üretimi).", "4→1: Kondenserde izobarik ısı atımı (buhar yoğunlaştırılır)."] },
-        { heading: "Verim Hesabı", paragraphs: [], formula: { expression: "η_Rankine = (h₃ − h₄) − (h₂ − h₁) / (h₃ − h₂)\n≈ (h₃ − h₄) / (h₃ − h₂)  (pompa işi ihmal edilebilir)", variables: ["h: Entalpi değerleri (kJ/kg)", "h₃: Türbin girişi (kızgın buhar)", "h₄: Türbin çıkışı (yaş buhar)"] }, example: { problem: "Bir Rankine çevriminde: h₃ = 3230 kJ/kg (türbin girişi), h₄ = 2100 kJ/kg (türbin çıkışı), h₁ = 192 kJ/kg, h₂ = 195 kJ/kg. Çevrim verimini hesaplayınız.", steps: ["Türbin işi: w_T = h₃ − h₄ = 3230 − 2100 = 1130 kJ/kg", "Pompa işi: w_P = h₂ − h₁ = 195 − 192 = 3 kJ/kg", "Net iş: w_net = 1130 − 3 = 1127 kJ/kg", "Kazanda alınan ısı: q_in = h₃ − h₂ = 3230 − 195 = 3035 kJ/kg", "η = 1127 / 3035 = 0.371"], result: "Rankine çevrimi verimi %37.1'dir." } }
+        {
+          heading: "Çevrim Bileşenleri ve Enerji Akışı",
+          paragraphs: [
+            "Pompa: Kondenser çıkışındaki doymuş/sübsoğutulmuş suyu kazan basıncına yükseltir. Pompa işi nispeten küçük olsa da yüksek basınç çevrimlerinde ihmal edilmemelidir.",
+            "Kazan/Ekonomizer: Besi suyu ısıtılır, buharlaştırılır ve gerekiyorsa kızdırılır. Deniz uygulamasında ısı kaynağı çoğunlukla ana makine egzozudur.",
+            "Türbin: Buhar entalpisi şaft işine dönüştürülür. Elde edilen mekanik güç jeneratöre aktarılır.",
+            "Kondenser: Türbin çıkış buharı yoğuşturularak çevrim kapatılır; düşük kondenser basıncı çevrim verimini artırır ancak soğutma suyu koşullarına bağlıdır."
+          ]
+        },
+        {
+          heading: "h-s Diyagramı ile Performans Yorumu",
+          paragraphs: [
+            "İdeal Rankine çevriminde türbin ve pompa izentropik kabul edilir. Gerçekte türbin izentropik verimi ve nem oranı, özellikle düşük yükte, elde edilen net işi belirgin biçimde etkiler.",
+            "Türbin çıkışında nem oranının artması son kademelerde erozyon riski yaratır; bu nedenle kızdırma (superheat) ve gerektiğinde yeniden kızdırma (reheat) uygulamaları kullanılır."
+          ],
+          formula: {
+            expression: "w_t = h₃ − h₄\nw_p = h₂ − h₁\nq_in = h₃ − h₂\nη_th = (w_t − w_p) / q_in",
+            variables: [
+              "h: Özgül entalpi (kJ/kg)",
+              "w_t: Türbin özgül işi",
+              "w_p: Pompa özgül işi"
+            ]
+          }
+        },
+        {
+          heading: "Sayısal Örnek (Basitleştirilmiş)",
+          paragraphs: ["Aşağıdaki örnek, yardımcı turbo-jeneratör seviyesinde hızlı bir ön fizibilite hesabı mantığını gösterir."],
+          example: {
+            problem: "Bir Rankine çevriminde h₃=3230 kJ/kg, h₄=2550 kJ/kg, h₂=220 kJ/kg, h₁=200 kJ/kg değerleri ölçülüyor. Çevrim verimini bulunuz.",
+            steps: [
+              "w_t = h₃ − h₄ = 3230 − 2550 = 680 kJ/kg",
+              "w_p = h₂ − h₁ = 220 − 200 = 20 kJ/kg",
+              "w_net = 680 − 20 = 660 kJ/kg",
+              "q_in = h₃ − h₂ = 3230 − 220 = 3010 kJ/kg",
+              "η_th = 660 / 3010 = 0.219 = %21.9"
+            ],
+            result: "İdealize edilmiş çevrim verimi yaklaşık %21.9 bulunur. Egzoz ısısı kaynaklı WHRS uygulamalarında bu değer ekonomik kazanım için çoğu durumda yeterlidir çünkü yakıt girdisi 'atık ısı'dır."
+          }
+        },
+        {
+          heading: "Deniz Uygulamasında İyileştirme Noktaları",
+          paragraphs: [
+            "Kondenser vakumunun korunması, tüp kirlenmesinin kontrolü ve non-condensable gazların uzaklaştırılması çevrim verimine doğrudan etki eder.",
+            "Besi suyu ön ısıtma (regeneratif ısıtma), deaeratör kontrolü ve blöf optimizasyonu hem termal verim hem ekipman ömrü açısından kritik iyileştirme alanlarıdır."
+          ]
+        }
       ],
-      keyPoints: ["Kızgınlık derecesi arttırılarak verim iyileştirilir.", "Tekrar ısıtma (reheat) ve rejenerasyon verimi artırır.", "LNG taşıyıcılarında buhar türbin tahrik sistemi hâlâ kullanılır."]
+      keyPoints: [
+        "Rankine çevrimi deniz WHRS/turbo-jeneratör tasarımının temelidir.",
+        "Kondenser basıncı ve türbin izentropik verimi, net güçte en etkili iki parametredir.",
+        "h-s diyagramı üzerinden izleme, arıza teşhisini (nem artışı, vakum kaybı) hızlandırır."
+      ]
     },
     "Brayton çevrimi (gaz türbini)": {
       title: "Brayton Çevrimi (Gaz Türbini)",
-      introduction: "Brayton çevrimi, gaz türbinlerinin idealize termodinamik modelidir. Sürekli akışlı bir açık çevrimdir.",
+      introduction: "Brayton çevrimi, sürekli akışlı güç üretiminin temel modelidir ve kompresör-yanma odası-türbin üçlüsü üzerinden çalışır. Denizcilikte yüksek güç/ağırlık oranı ve hızlı yük alma kabiliyeti nedeniyle hızlı askeri gemiler, bazı LNG uygulamaları ve kombine çevrim (COGAS/COGES) sistemlerinde önem kazanır.",
       sections: [
-        { heading: "Çevrim Aşamaları", paragraphs: ["1→2: Kompresörde adyabatik sıkıştırma.", "2→3: Yanma odasında izobarik ısı alımı.", "3→4: Türbinde adyabatik genleşme.", "4→1: Atmosfere izobarik ısı atımı."] },
-        { heading: "Verim", paragraphs: [], formula: { expression: "η_Brayton = 1 − (1/r_p)^((γ-1)/γ)", variables: ["r_p = P₂/P₁: Basınç oranı"] }, example: { problem: "Basınç oranı 12 olan bir gaz türbininin ideal verimini bulunuz.", steps: ["η = 1 − (1/12)^((1.4-1)/1.4)", "η = 1 − (1/12)^0.2857", "12^0.2857 = e^(0.2857×2.485) = e^0.71 = 2.034", "η = 1 − 1/2.034 = 1 − 0.492 = 0.508"], result: "İdeal Brayton çevrimi verimi %50.8. Gerçek gaz türbinlerinde %30-40 civarındadır." } }
+        {
+          heading: "Temel Süreçler ve Gerçek Sistem Sapmaları",
+          paragraphs: [
+            "1→2 izentropik sıkıştırma varsayımı pratikte kompresör verimi ile sınırlıdır; gerçek sıkıştırma için daha fazla iş gerekir.",
+            "2→3 sabit basınçta ısı ekleme sırasında yanma odası basınç kayıpları oluşur. Bu kayıp, çevrim net işini doğrudan azaltır.",
+            "3→4 türbinde genleşme ile güç üretilir; türbinin bir kısmı kompresörü sürmek için harcanır, kalan kısım faydalı şaft gücüdür.",
+            "4→1 çevrim kapanışı ideal modelde çevreye ısı atımıdır; gerçek makinede egzoz ısısı WHRS ile geri kazanılabilir."
+          ]
+        },
+        {
+          heading: "Verim, Basınç Oranı ve Özgül İş",
+          paragraphs: [
+            "İdeal Brayton verimi basınç oranı arttıkça yükselir; ancak çok yüksek basınç oranlarında kompresör işi büyür ve malzeme sıcaklık limitleri devreye girer.",
+            "Gerçek tasarımda optimum nokta; kompresör harcaması, türbin giriş sıcaklığı (TIT) limiti, soğutma havası ihtiyacı ve emisyon hedefleri birlikte değerlendirilerek bulunur."
+          ],
+          formula: {
+            expression: "η_Brayton = 1 − (1/r_p)^((γ−1)/γ)\nBack Work Ratio = w_c / w_t",
+            variables: [
+              "r_p: Kompresör basınç oranı",
+              "w_c: Kompresör işi",
+              "w_t: Türbin işi"
+            ]
+          }
+        },
+        {
+          heading: "Sayısal Örnek",
+          paragraphs: ["İdeal bir ön hesapla verim seviyesi görülebilir; gerçek sistemde kompresör/türbin verimleri ayrıca uygulanmalıdır."],
+          example: {
+            problem: "Basınç oranı 12 ve γ=1.4 için ideal Brayton çevrimi verimini hesaplayınız.",
+            steps: [
+              "η = 1 − (1/12)^((1.4−1)/1.4)",
+              "η = 1 − (1/12)^0.2857",
+              "12^0.2857 ≈ 2.034",
+              "η = 1 − 1/2.034 = 0.508"
+            ],
+            result: "İdeal çevrim verimi yaklaşık %50.8 bulunur. Gerçek deniz gaz türbinlerinde ekipman verimleri ve yanma odası kayıpları nedeniyle tipik değer %30-40 bandındadır."
+          }
+        },
+        {
+          heading: "Deniz Uygulaması ve Kombine Çevrim",
+          paragraphs: [
+            "Gaz türbini egzozu 450-550°C seviyelerinde olduğundan, bu ısı HRSG üzerinden Rankine alt çevrimine verilerek COGAS/COGES sisteminde toplam verim anlamlı biçimde artırılır.",
+            "Kısmi yükte verim düşüşü gaz türbinlerinin zayıf noktasıdır; bu nedenle hibrit konfigürasyonlarda yük paylaşımı dizel-jeneratörlerle optimize edilir."
+          ]
+        }
       ],
-      keyPoints: ["Gaz türbinleri hızlı gemilerde ve COGAS sistemlerinde kullanılır.", "Basınç oranı arttıkça verim artar.", "Gemi gaz türbinleri genellikle rejeneratörlü çalışır."]
+      keyPoints: [
+        "Brayton çevrimi yüksek güç yoğunluğu sağlar ancak kısmi yük verimi sınırlıdır.",
+        "Basınç oranı ve türbin giriş sıcaklığı temel performans sürücüleridir.",
+        "Atık ısı geri kazanımı (COGAS/COGES) olmadan egzoz enerjisinin büyük kısmı kaybedilir."
+      ]
     },
     "Ters çevrimler: soğutma ve ısı pompası": {
       title: "Ters Çevrimler: Soğutma ve Isı Pompası",
-      introduction: "Ters termodinamik çevrimler, düşük sıcaklıktaki ortamdan ısı alarak yüksek sıcaklıktaki ortama aktarır. Dışarıdan iş girdisi gerektirir.",
+      introduction: "Ters çevrimler, ısının doğal akış yönüne karşı düşük sıcaklık seviyesinden yüksek sıcaklık seviyesine taşınmasını sağlar ve bunun için dışarıdan iş girdisi gerekir. Gemilerde klima, soğuk depo, provizyon odası ve bazı proses ısıtma uygulamalarında bu çevrimler kritik önemdedir.",
       sections: [
-        { heading: "Soğutma Çevrimi", paragraphs: ["Soğutma çevriminin amacı düşük sıcaklıktaki ortamın (evaporatör) ısısını almaktır. Performans ölçütü COP (Performans Katsayısı) olup 1'den büyük olabilir."], formula: { expression: "COP_soğutma = Q_L / W_net = Q_L / (Q_H − Q_L)", variables: ["Q_L: Düşük sıcaklıktan alınan ısı", "Q_H: Yüksek sıcaklığa atılan ısı", "W_net: Kompresör işi"] } },
-        { heading: "Isı Pompası", paragraphs: ["Isı pompasının amacı yüksek sıcaklıktaki ortama (kondenser) ısı vermektir."], formula: { expression: "COP_ısı pompası = Q_H / W_net = COP_soğutma + 1", variables: [] }, example: { problem: "Bir gemi soğutma sistemi evaporatörden 50 kW ısı alıyor ve kompresör 15 kW güç tüketiyor. Soğutma ve ısı pompası COP değerlerini bulunuz.", steps: ["COP_soğutma = Q_L/W = 50/15 = 3.33", "Q_H = Q_L + W = 50 + 15 = 65 kW", "COP_ısı pompası = Q_H/W = 65/15 = 4.33", "Doğrulama: COP_ısıp = COP_soğ + 1 = 3.33 + 1 = 4.33 ✓"], result: "Soğutma COP'u 3.33, ısı pompası COP'u 4.33'tür." } }
+        {
+          heading: "Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri",
+          paragraphs: [
+            "Kompresör: Düşük basınçlı buharı sıkıştırır; çevrimin ana güç tüketicisidir.",
+            "Kondenser: Akışkan ısı vererek yoğuşur; deniz suyu soğutmalı kondensörler gemilerde yaygındır.",
+            "Genleşme elemanı: Basınç düşürerek akışkanı evaporatör şartlarına taşır.",
+            "Evaporatör: Korunacak hacimden ısı çekilerek soğutma etkisi oluşturulur."
+          ]
+        },
+        {
+          heading: "COP Kavramı ve Enerji Yorumu",
+          paragraphs: [
+            "Soğutma çevriminde performans metriği COP_refrigeration = Q_L/W_net olarak tanımlanır. Isı pompasında ise amaç ısıtmadır ve COP_heatpump = Q_H/W_net olur.",
+            "COP değerinin 1'den büyük olması termodinamiğe aykırı değildir; çünkü cihaz ısıyı 'üretmez', düşük sıcaklıktan çekip yüksek sıcaklığa taşır."
+          ],
+          formula: {
+            expression: "COP_soğutma = Q_L / W_net\nCOP_ısı pompası = Q_H / W_net = COP_soğutma + 1",
+            variables: [
+              "Q_L: Düşük sıcaklık tarafında çekilen ısı",
+              "Q_H: Yüksek sıcaklık tarafına verilen ısı",
+              "W_net: Kompresör net işi"
+            ]
+          }
+        },
+        {
+          heading: "Sayısal Örnek",
+          paragraphs: ["Gemi provizyon soğutma sisteminde kompresör gücünün izlenmesi, COP trendinin bozulmasını erken yakalamak için temel göstergedir."],
+          example: {
+            problem: "Evaporatörden 50 kW ısı çeken bir soğutma sisteminde kompresör gücü 15 kW ise soğutma ve ısı pompası COP değerlerini bulunuz.",
+            steps: [
+              "COP_soğutma = Q_L / W = 50 / 15 = 3.33",
+              "Q_H = Q_L + W = 50 + 15 = 65 kW",
+              "COP_ısı pompası = Q_H / W = 65 / 15 = 4.33"
+            ],
+            result: "Soğutma COP'u 3.33, ısı pompası COP'u 4.33 bulunur. Aynı cihaz farklı amaçla kullanıldığında performans tanımı değişse de enerji dengesi aynıdır."
+          }
+        },
+        {
+          heading: "Saha Problemleri ve Verim Düşüş Nedenleri",
+          paragraphs: [
+            "Kondenser kirlenmesi, hava/gaz varlığı ve yetersiz deniz suyu debisi kondenser basıncını artırır; kompresör işi yükselir ve COP düşer.",
+            "Evaporatör buzlanması, genleşme valfi ayarsızlığı ve soğutucu kaçakları soğutma kapasitesini azaltır. Trend izleme için emme-basma basınçları, süperheat ve subcooling değerleri birlikte kaydedilmelidir."
+          ]
+        }
       ],
-      keyPoints: ["COP 1'den büyük olabilir (verimle karıştırılmamalıdır).", "Carnot COP'u ulaşılabilecek maksimum değerdir.", "Gemi klima sistemleri ters çevrim prensibiyle çalışır."]
+      keyPoints: [
+        "Ters çevrimlerde amaç ısıyı taşımaktır; COP verimden farklı bir performans ölçütüdür.",
+        "Kondenser/evaporatör ısı transfer koşulları bozulduğunda COP hızlı düşer.",
+        "Gemide enerji yönetimi için soğutma sistemlerinde düzenli COP trend analizi yapılmalıdır."
+      ]
     },
     "Fourier iletim yasası": {
       title: "Fourier İletim Yasası",
