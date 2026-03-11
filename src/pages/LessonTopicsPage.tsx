@@ -557,7 +557,7 @@ export default function LessonTopicsPage() {
         .filter(item => item.missing.length > 0)
     : [];
   const missingNavigationCount = missingNavigationTopics.reduce((total, item) => total + item.missing.length, 0);
-  const isMeteorology = topic === "meteorology";
+  const isMeteorology = categoryId === "meteorology";
   const meteorologyBacklogCards: MeteorologyBacklogCard[] = isMeteorology
     ? topicContent.keyTopics.flatMap(topicItem => {
         const sprint = meteorologySprintMap[topicItem.title] ?? "Atmosfer sistemleri";
