@@ -33,6 +33,9 @@ jobs:
       - name: Run validation tests
         run: npm run test:validation
 
+      - name: Run topic coverage quality gate
+        run: npm run check:topic-coverage
+
       - name: Build web (Vite)
         run: npm run build
 
