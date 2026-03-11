@@ -21,32 +21,6 @@ interface TopicContent {
   };
 }
 
-interface MeteorologyBacklogCard {
-  sprint: string;
-  parentTopic: string;
-  title: string;
-  targetFilePath: string;
-  targetTitleString: string;
-}
-
-const meteorologySprintOrder = [
-  "Atmosfer sistemleri",
-  "Rüzgar/dalga",
-  "Tropikal siklonlar",
-  "Sis/görüş",
-  "Okyanus akıntıları",
-  "Hava haritaları"
-] as const;
-
-const meteorologySprintMap: Record<string, (typeof meteorologySprintOrder)[number]> = {
-  "Atmosfer Sistemleri": "Atmosfer sistemleri",
-  "Rüzgar ve Dalga": "Rüzgar/dalga",
-  "Tropikal Siklonlar": "Tropikal siklonlar",
-  "Sis ve Görüş": "Sis/görüş",
-  "Okyanus Akıntıları": "Okyanus akıntıları",
-  "Hava Haritaları": "Hava haritaları"
-};
-
 const topicsData: Record<string, TopicContent> = {
   stability: {
     title: "Stabilite Konu Anlatımı",
@@ -557,26 +531,6 @@ export default function LessonTopicsPage() {
         .filter(item => item.missing.length > 0)
     : [];
   const missingNavigationCount = missingNavigationTopics.reduce((total, item) => total + item.missing.length, 0);
-  const isMeteorology = categoryId === "meteorology";
-  const meteorologyBacklogCards: MeteorologyBacklogCard[] = isMeteorology
-    ? topicContent.keyTopics.flatMap(topicItem => {
-        const sprint = meteorologySprintMap[topicItem.title] ?? "Atmosfer sistemleri";
-        return (topicItem.subTopics ?? []).map(sub => ({
-          sprint,
-          parentTopic: topicItem.title,
-          title: sub.title,
-          targetFilePath: "src/data/meteorologyTopicContents.ts",
-          targetTitleString: sub.title
-        }));
-      })
-    : [];
-  const meteorologySprintCards = meteorologySprintOrder
-    .map(sprint => ({
-      sprint,
-      cards: meteorologyBacklogCards.filter(card => card.sprint === sprint)
-    }))
-    .filter(group => group.cards.length > 0);
-
   if (!category || !topicContent) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
@@ -746,63 +700,6 @@ export default function LessonTopicsPage() {
                       <li key={sub.title}>{sub.title}</li>
                     ))}
                   </ul>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {isMeteorology && meteorologyBacklogCards.length > 0 && (
-          <section className="rounded-2xl border border-sky-500/20 bg-sky-50/70 p-6 text-sky-900 backdrop-blur dark:border-sky-500/30 dark:bg-sky-500/10 dark:text-sky-100">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-sky-500" />
-              <h2 className="text-lg font-semibold">Meteoroloji Backlog Kartları</h2>
-              <span className="ml-auto rounded-full bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-700 dark:bg-sky-500/20 dark:text-sky-200">
-                {meteorologyBacklogCards.length} kart
-              </span>
-            </div>
-
-            <div className="space-y-5">
-              {meteorologySprintCards.map(group => (
-                <div key={group.sprint} className="rounded-xl border border-sky-200/60 bg-white/70 p-4 dark:border-sky-500/20 dark:bg-sky-500/10">
-                  <div className="mb-3 flex items-center gap-2">
-                    <p className="font-semibold text-sky-800 dark:text-sky-100">Sprint: {group.sprint}</p>
-                    <span className="rounded-full bg-sky-100 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:bg-sky-500/20 dark:text-sky-200">
-                      {group.cards.length} backlog maddesi
-                    </span>
-                  </div>
-
-                  <div className="grid gap-3 md:grid-cols-2">
-                    {group.cards.map(card => (
-                      <article key={`${card.parentTopic}-${card.title}`} className="rounded-lg border border-sky-200/70 bg-white/90 p-4 text-sm dark:border-sky-500/20 dark:bg-sky-900/20">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-700/80 dark:text-sky-200/80">
-                          {card.parentTopic}
-                        </p>
-                        <h3 className="mt-1 font-semibold text-sky-900 dark:text-sky-50">{card.title}</h3>
-                        <div className="mt-3 space-y-1 text-xs text-sky-800/90 dark:text-sky-100/90">
-                          <p>
-                            <span className="font-semibold">Hedef dosya yolu:</span> <code>{card.targetFilePath}</code>
-                          </p>
-                          <p>
-                            <span className="font-semibold">Başlık string&apos;i:</span> <code>{card.targetTitleString}</code>
-                          </p>
-                        </div>
-
-                        <div className="mt-3 rounded-md bg-sky-100/70 p-3 text-xs text-sky-900 dark:bg-sky-950/40 dark:text-sky-50">
-                          <p className="font-semibold">Kabul Kriterleri (Standart)</p>
-                          <ul className="mt-1 list-disc space-y-1 pl-5">
-                            <li>En az 5 paragraf içerik bulunur.</li>
-                            <li>En az 1 operasyon örneği bulunur.</li>
-                            <li>En az 3 madde kritik not bulunur.</li>
-                          </ul>
-                          <p className="mt-2 font-semibold">Zorunlu Kapanış Kriteri</p>
-                          <ul className="mt-1 list-disc pl-5">
-                            <li>UI&apos;de Eksik etiketi kalktı kontrolü doğrulanır.</li>
-                          </ul>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
                 </div>
               ))}
             </div>
