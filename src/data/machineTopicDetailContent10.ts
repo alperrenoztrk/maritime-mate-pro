@@ -974,6 +974,228 @@ const content10: ContentMap = {
         "Trend analizi tek ölçüm değerinden çok daha anlamlıdır.",
         "Anormal metal artışı erken yatak arızası göstergesidir."
       ]
+    },
+
+    "KKD seçimi ve bakım işlerinde kullanımı": {
+      title: "KKD Seçimi ve Bakım İşlerinde Kullanımı",
+      introduction:
+        "Bakım faaliyetlerinde kişisel koruyucu donanım (KKD) seçimi işe ve riske göre yapılmalıdır. Yanlış KKD seçimi yaralanma riskini artırır ve işi güvensiz hale getirir.",
+      sections: [
+        {
+          heading: "Bakım İşine Göre KKD Eşleştirmesi",
+          paragraphs: [],
+          table: {
+            headers: ["İş", "Temel KKD", "Ek Koruma"],
+            rows: [
+              ["Taşlama/kesme", "Gözlük + yüz siperi", "Kesilmeye dayanıklı eldiven"],
+              ["Kimyasal temizleme", "Kimyasal eldiven + gözlük", "Solunum maskesi (uygun kartuş)"],
+              ["Sıcak yüzey yakın çalışma", "Isıya dayanıklı eldiven", "Alev geciktirici tulum"],
+              ["Gürültülü alan", "Kulak tıkacı/kulaklık", "Titreşim eldiveni"],
+              ["Kapalı alan hazırlığı", "Baret + emniyet ayakkabısı", "Gaz ölçüm cihazı + kurtarma kemeri"]
+            ]
+          }
+        },
+        {
+          heading: "Uygulama kontrol listesi",
+          paragraphs: [],
+          bulletPoints: [
+            "İşe başlamadan önce JSA/RA üzerinde KKD gereklilikleri doğrula.",
+            "KKD'nin beden/uyumluluk kontrolünü yap (özellikle gözlük ve solunum maskesi).",
+            "Hasarlı/ömrü dolmuş KKD'yi derhal servis dışı bırak.",
+            "Kimyasal işlerde MSDS'ye göre eldiven ve filtre tipi doğrula.",
+            "İş bitiminde KKD temizliği ve kayıtlı depolama uygula."
+          ]
+        }
+      ],
+      keyPoints: [
+        "KKD son bariyerdir; mühendislik ve idari kontrollerin yerine geçmez.",
+        "Yanlış eldiven malzemesi kimyasal geçişe neden olabilir.",
+        "KKD denetimi toolbox talk'ın zorunlu adımı olmalıdır."
+      ]
+    },
+
+    "Bakımda yangın güvenliği ve sıcak iş izni": {
+      title: "Bakımda Yangın Güvenliği ve Sıcak İş İzni",
+      introduction:
+        "Makine dairesindeki bakım işlerinde sıcak iş (kaynak, taşlama, kesme) kaynaklı yangın riski yüksektir. İzin sistemi ve yangın gözcüsü uygulaması kritik önemdedir.",
+      sections: [
+        {
+          heading: "Sıcak İş Öncesi Emniyet Adımları",
+          paragraphs: [],
+          bulletPoints: [
+            "Hot Work Permit (PTW) onayı alınmadan işe başlanmaz.",
+            "Çevredeki yanıcılar temizlenir veya yangın battaniyesi ile izole edilir.",
+            "Yakıt/yağ sızıntısı ve buhar varlığı gaz ölçümü ile doğrulanır.",
+            "Uygun tipte portatif söndürücüler hazır bulundurulur.",
+            "Yangın gözcüsü iş boyunca ve iş bitiminden sonra en az 30 dk sahada kalır."
+          ]
+        },
+        {
+          heading: "Saha hatası uyarısı",
+          paragraphs: [
+            "En sık saha hatası, taşlama öncesi bilge ve platform altındaki yağlı bez/kir birikimlerinin temizlenmemesidir. Kıvılcım düşmesiyle gecikmeli tutuşma meydana gelebilir ve vardiya değişiminde fark edilmeyen yangına dönüşebilir."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Quick closing valve ve acil durdurmaların erişilebilirliği işe başlamadan kontrol edilmelidir.",
+        "Sıcak iş sonrası yeniden gaz ölçümü iyi uygulamadır.",
+        "Yangın gözcüsü görevi başka işlerle birleştirilmemelidir."
+      ]
+    },
+
+    "MARPOL Ek I (Petrol) bakım ve kayıt yükümlülükleri": {
+      title: "MARPOL Ek I (Petrol) Bakım ve Kayıt Yükümlülükleri",
+      introduction:
+        "Ek I, petrol kirliliğinin önlenmesine odaklanır. Yağlı su separatörü, 15 ppm alarmı ve ilgili borulama/valf düzeninin bakımı ile kayıt disiplinini zorunlu kılar.",
+      sections: [
+        {
+          heading: "Uygulama kontrol listesi",
+          paragraphs: [],
+          bulletPoints: [
+            "OWS ve 15 ppm monitor kalibrasyon/tetik testlerini PMS'e göre uygula.",
+            "Standard discharge connection ve hat valflerinin mühür/pozisyon kontrolünü yap.",
+            "Oil Record Book Part I girişlerini operasyonla aynı vardiyada tamamla.",
+            "Sludge transfer, incineration ve shore disposal kayıtlarını çapraz doğrula.",
+            "Bypass hattı/kaçak bağlantı açısından periyodik boru devriyesi yap."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Kayıt-tank soundingi uyuşmazlığı PSC'de doğrudan uygunsuzluk doğurur.",
+        "Magic pipe kullanımı ağır ihlaldir ve cezai yaptırıma tabidir.",
+        "OWS arızalarında acil eylem ve liman bildirim prosedürü hazır olmalıdır."
+      ]
+    },
+
+    "MARPOL Ek II (Dökme zararlı sıvılar) uygulama yükümlülükleri": {
+      title: "MARPOL Ek II (Dökme Zararlı Sıvılar) Uygulama Yükümlülükleri",
+      introduction:
+        "Ek II, dökme taşınan zararlı sıvı maddeler için tank yıkama, stripping ve deşarj kriterlerini düzenler. Makine personeli yıkama/transfer ekipmanının çalışırlığından sorumludur.",
+      sections: [
+        {
+          heading: "Saha hatası uyarısı",
+          paragraphs: [
+            "Kategoriye uygun prewash yapılmadan limandan ayrılmak ciddi ihlaldir. Sahada en çok görülen hata, stripping hattı testinin atlanması nedeniyle tankta kalıntı bırakılmasıdır."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Cargo Record Book kayıtları operasyon zaman damgalarıyla uyumlu olmalıdır.",
+        "Tank yıkama ekipman arızaları sefer öncesi giderilmelidir.",
+        "P&A Manual prosedürleri gemi tipine uygun güncel tutulmalıdır."
+      ]
+    },
+
+    "MARPOL Ek III (Paketli zararlı maddeler) bakım bağlantıları": {
+      title: "MARPOL Ek III (Paketli Zararlı Maddeler) Bakım Bağlantıları",
+      introduction:
+        "Ek III doğrudan makine ekipmanına odaklanmasa da, paketli zararlı yük taşınırken drenaj, havalandırma ve sızıntı kontrol altyapısının emniyetli çalışması bakım ekibinin sorumluluğundadır.",
+      sections: [
+        {
+          heading: "Uygulama kontrol listesi",
+          paragraphs: [],
+          bulletPoints: [
+            "Kargo alanı drenajlarının geri akış önleyici valflerini test et.",
+            "Havalandırma fanlarının kıvılcım riski ve izolasyon kontrollerini yap.",
+            "Dökülme kitlerinin erişilebilirlik ve içerik kontrolünü vardiya bazında doğrula.",
+            "Sızıntı alarmı/izleme sensörlerinin fonksiyon testini planla."
+          ]
+        }
+      ],
+      keyPoints: [
+        "IMDG segregasyonuna aykırı geçici depolama saha kazalarını artırır.",
+        "Drenaj körleme/izolasyon planları tatbikatla doğrulanmalıdır.",
+        "Makine-kargo ekipleri arasında ortak kontrol turu iyi uygulamadır."
+      ]
+    },
+
+    "MARPOL Ek IV (Pis su) bakım ve kayıt yükümlülükleri": {
+      title: "MARPOL Ek IV (Pis Su) Bakım ve Kayıt Yükümlülükleri",
+      introduction:
+        "Ek IV, pis suyun denize deşarj şartlarını ve arıtma sistemi gerekliliklerini belirler. Sewage treatment plant performansı düzenli bakım ve doğru işletmeye bağlıdır.",
+      sections: [
+        {
+          heading: "Uygulama kontrol listesi",
+          paragraphs: [],
+          bulletPoints: [
+            "Sewage plant blower, dozaj pompası ve dezenfeksiyon ünitesi fonksiyon testini yap.",
+            "Holding tank seviye alarmı ve taşma emniyetlerini doğrula.",
+            "Deşarj valf dizilimi ve overboard kilit/mühür durumunu kontrol et.",
+            "Bakım ve arıza kayıtlarını ISM formlarıyla eşleştir."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Arıtma sistemi by-pass kullanımı ancak prosedür ve bildirimle yönetilebilir.",
+        "Yanlış kimyasal dozaj biyolojik prosesi bozarak uygunsuz deşarja yol açar.",
+        "Liman devleti denetiminde ekipman testi talep edilebilir."
+      ]
+    },
+
+    "MARPOL Ek V (Çöp) uygulama ve kayıt yükümlülükleri": {
+      title: "MARPOL Ek V (Çöp) Uygulama ve Kayıt Yükümlülükleri",
+      introduction:
+        "Ek V kapsamında çöp ayrıştırma, depolama, işleme ve deşarj/teslim süreçleri kayıt altına alınmalıdır. Makine dairesi özellikle incinerator ve atık transfer ekipmanını emniyetli işletmekle sorumludur.",
+      sections: [
+        {
+          heading: "Saha hatası uyarısı",
+          paragraphs: [
+            "Sık görülen hata, özel alanda yiyecek atığı deşarj limitlerinin yanlış uygulanmasıdır. GPS konumu kayda işlenmeden yapılan atık transferleri denetimde ciddi uygunsuzluk oluşturur."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Garbage Record Book girişleri kategori bazında ve gecikmeden yapılmalıdır.",
+        "Plastik ve sentetik atıkların denize deşarjı tamamen yasaktır.",
+        "Incinerator operasyonu üretici sıcaklık/atık türü limitlerine göre yürütülmelidir."
+      ]
+    },
+
+    "MARPOL Ek VI (Hava emisyonları) bakım ve uyum": {
+      title: "MARPOL Ek VI (Hava Emisyonları) Bakım ve Uyum",
+      introduction:
+        "Ek VI, NOx, SOx, partikül ve ozon tabakasına zarar veren emisyonları sınırlar. Yakıt geçişi, scrubber/EGCS, NOx teknik dosyası ve enerji verimliliği kayıtları bakım süreçleriyle doğrudan ilişkilidir.",
+      sections: [
+        {
+          heading: "Uygulama kontrol listesi",
+          paragraphs: [],
+          bulletPoints: [
+            "ECA giriş/çıkış yakıt geçiş zamanını ve tank/hat durumunu kayıtla doğrula.",
+            "Scrubber washwater sensörleri (pH, PAH, bulanıklık) bakım-kalibrasyonunu uygula.",
+            "NOx kritik komponent değişimlerini Technical File ve EIAPP ile eşleştir.",
+            "ODS ve VOC ile ilgili servis kayıtlarını sertifikalarla birlikte sakla."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Yakıt değişim prosedüründeki gecikme SOx ihlaline neden olabilir.",
+        "SCR/EGR performansı düzenli bakım yapılmazsa hızla düşer.",
+        "Ek VI uyumu için kayıt, operasyon kadar kritiktir."
+      ]
+    },
+
+    "MARPOL Ek I-VI entegre kayıt ve uygulama yükümlülük matrisi": {
+      title: "MARPOL Ek I-VI Entegre Kayıt ve Uygulama Yükümlülük Matrisi",
+      introduction:
+        "Tüm MARPOL ekleri için bakım, operasyon ve kayıt süreçlerinin entegre yönetimi denetim başarısının anahtarıdır. Gemide tek bir yükümlülük matrisiyle sorumluluk dağıtımı netleştirilmelidir.",
+      sections: [
+        {
+          heading: "Entegre kontrol listesi",
+          paragraphs: [],
+          bulletPoints: [
+            "Her MARPOL eki için sorumlu zabit/mühendis ve yedek sorumlu tanımla.",
+            "Kayıt defteri, sertifika ve ekipman test tarihlerini tek tabloda takip et.",
+            "Aylık iç denetimde kayıt-belge-ekipman tutarlılığını çapraz kontrol et.",
+            "Bulguları CAPA (düzeltici/önleyici faaliyet) planına bağla."
+          ]
+        }
+      ],
+      keyPoints: [
+        "Denetimde en kritik bulgu, doğru operasyonun yanlış/eksik kaydedilmesidir.",
+        "Matris yaklaşımı vardiya devrinde bilgi kaybını azaltır.",
+        "ISM iç tetkikleri MARPOL kayıt kalitesini periyodik doğrulamalıdır."
+      ]
     }
   }
 };
