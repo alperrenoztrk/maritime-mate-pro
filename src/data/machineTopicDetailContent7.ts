@@ -248,6 +248,90 @@ const content7: ContentMap = {
       ],
       keyPoints: ["Zaman baskısı altında bile hızlı risk değerlendirmesi yapılmalıdır.", "Hiçbir ticari baskı insan güvenliğinin önüne geçmemelidir.", "Karar sonrası geri bildirim ve değerlendirme öğrenmeyi sağlar."]
     },
+    "Zaman baskısı altında karar": {
+      title: "Zaman Baskısı Altında Karar",
+      introduction: "Acil operasyonlarda karar kalitesi, bireysel deneyimin ötesinde ekip koordinasyonu, standart iletişim ve önceden hazırlanmış senaryo disiplinine bağlıdır. Zaman baskısı altında yapılan hatalar çoğunlukla teknik bilgi eksikliğinden değil; öncelik karmaşası, bilişsel yük artışı ve teyitsiz komutlardan kaynaklanır.",
+      sections: [
+        {
+          heading: "Olay Bağlamı",
+          paragraphs: [
+            "Dar boğaz yaklaşmasında makine dairesi, köprüüstünden gelen ardışık 'half ahead - slow ahead' komutlarını uygularken aynı anda jacket cooling suyu düşük basınç alarmı almıştır. Görevli zabit manevraya odaklandığı için alarmı gecikmeli değerlendirmiş, yardımcı pompa devreye alma 90 saniye gecikmiştir.",
+            "Aynı zaman diliminde kontrol odasında yalnızca bir zabitin bulunması, alarm paneli takibi ile telegraph komutlarının çakışmasına yol açmış; ekipte ortak durum resmi oluşmadığı için müdahale sırası net belirlenememiştir."
+          ]
+        },
+        {
+          heading: "Hatanın Kök Nedeni",
+          paragraphs: [
+            "Önceliklendirme yapılmadan tek kişiye birden fazla kritik iş yüklenmesi, kısa karar kontrol listesi (time-critical checklist) kullanılmaması ve köprüüstü-makine komut teyidinin atlanması temel kök nedenlerdir.",
+            "İkincil kök neden, vardiya öncesi 'yüksek riskli manevra brifingi' yapılmaması ve alarm/komut yoğunluğu için görev ayrımı (alarm officer - telegraph officer) planının tanımlanmamış olmasıdır.",
+            "İnsan faktörü açısından bakıldığında, zaman baskısı altında dikkat daralması (tunnel vision) ve doğrulama yanlılığı (ilk varsayıma bağlı kalma) karar kalitesini düşürmüştür."
+          ]
+        },
+        {
+          heading: "Önleyici Aksiyon",
+          paragraphs: [
+            "30-60 saniyelik 'Stop-Think-Act-Review' mini prosedürü manevra esnasında zorunlu hale getirilmeli; alarm geldiğinde ekip önce 'gemi emniyeti - personel emniyeti - ekipman emniyeti' sırasına göre karar vermelidir.",
+            "Manevra vardiyasında en az iki kişi aktif tutulmalı: biri telegraph/komut icrası, diğeri alarm ve yardımcı sistem sürekliliği takibi. Bu görev dağılımı vardiya öncesi yazılı kart ile teyit edilmelidir.",
+            "Kritik komutlarda kapalı döngü iletişim (komut - tekrar - onay) zorunlu tutulmalı; CCR kayıtları haftalık ERM toplantısında örnek olay olarak gözden geçirilmelidir.",
+            "Yüksek riskli liman yaklaşmalarında 'pre-arrival risk trigger list' kullanılmalı (ör. düşük basınç, PMS alarmı, yardımcı pompa unavailable). Trigger gerçekleştiğinde otomatik ilave personel çağrısı prosedürü devreye alınmalıdır."
+          ],
+          table: {
+            headers: ["Zaman Penceresi", "Beklenen Davranış", "Kontrol Noktası"],
+            rows: [["İlk 30 sn", "Durumu stabilize et, alarm sınıfını belirle", "Kritik/uyarı ayrımı"], ["30-90 sn", "Görev dağılımını netleştir, komut teyit et", "Read-back tamamlandı mı?"], ["90 sn+", "Düzeltici aksiyonu uygula, trend izle", "Alarm tekrarı var mı?"]]
+          }
+        },
+        {
+          heading: "Ders Çıkarımı ve Eğitim Entegrasyonu",
+          paragraphs: [
+            "Bu vaka, zaman baskısında doğru kararın bireysel hızdan değil ekip disiplininden çıktığını gösterir. Hızlı olmak ile acele etmek farklıdır; hızlı ekipler standart prosedürü atlamayan ekiplerdir.",
+            "Benzer olayların tekrarlanmaması için simülatör tatbikatlarında aynı senaryo farklı iş yükü seviyeleriyle çalıştırılmalı; karar süreleri kadar karar doğruluğu da ölçülmelidir."
+          ]
+        }
+      ],
+      keyPoints: ["Zaman baskısı altında en büyük risk, öncelik karmaşasıdır.", "Görev ayrımı yapılmamış vardiya, en güçlü teknik ekibi bile kırılgan hale getirir.", "Kapalı döngü iletişim karar hızını değil, karar doğruluğunu artırır.", "Manevra öncesi risk tetikleyici listesi operasyonel dayanıklılığı yükseltir."]
+    },
+    "Hata zincirleri ve kırma noktaları": {
+      title: "Hata Zincirleri ve Kırma Noktaları",
+      introduction: "Deniz kazalarının büyük kısmı tekil bir kritik hatadan değil, düşük önemde görülen sapmaların ardışık birikiminden gelişir. ERM perspektifinde amaç, zincirin son halkasında kriz yönetmek değil; ilk halkada sapmayı görüp kırma noktasını işletmektir.",
+      sections: [
+        {
+          heading: "Olay Bağlamı",
+          paragraphs: [
+            "Gece vardiyasında purifier diferansiyel basınç alarmı 'geçici' görülerek ertelenmiş, aynı vardiyada settling tank su drain kontrolü atlanmıştır. Ertesi gün yakıt viskozitesi hedef aralığın altına inmiş, enjektörlerde düzensiz püskürtme ve egzoz sıcaklık dağılımında dengesizlik görülmüştür.",
+            "Takip eden 6 saat içinde ana makinede yük dalgalanması yaşanmış; köprüüstü istenen hızı korumakta zorlanmıştır. Olay teknik arıza gibi görünse de kökünde vardiya disiplini ve alarm yönetimi zaafı vardır."
+          ]
+        },
+        {
+          heading: "Hatanın Kök Nedeni",
+          paragraphs: [
+            "Alarmın erken aşamada 'nuisance alarm' etiketiyle normalize edilmesi, vardiya devir teslim notlarının ölçülebilir veri içermemesi (değer, trend, süre), ve bakım ertelemesinin risk puanına bağlanmaması ana nedenlerdir.",
+            "Sistem seviyesinde kök neden, 'tek alarm - tek aksiyon' yaklaşımıdır. Oysa yakıt sistemi olayları çok parametrelidir; purifier DP, viskozite, sıcaklık, enjektör geri kaçak ve egzoz trendi birlikte izlenmelidir.",
+            "Organizasyonel açıdan, ertelenen aksiyonların kapanış takibi yapılmadığı için açık riskler vardiyadan vardiyaya taşınmıştır."
+          ]
+        },
+        {
+          heading: "Önleyici Aksiyon",
+          paragraphs: [
+            "Kritik alarm ertelemesi için zabit onayı + yazılı gerekçe + yeniden değerlendirme zamanı zorunlu olmalıdır (ör. 15 dk / 30 dk). Süresi dolan alarm otomatik olarak yeniden kritik seviyeye dönmelidir.",
+            "Her vardiya sonunda 'açık risk listesi' güncellenmeli ve devir teslimde üç veri mutlaka aktarılmalıdır: mevcut değer, son 4 saat trendi, beklenen bir sonraki aksiyon.",
+            "Purifier alarmı, yakıt viskozitesi, sıcaklık ve enjektör performansı tek bir performans ekranında korele izlenmeli; eşik aşımı durumunda köprüüstüne 'hız etkisi olabilir' bilgilendirmesi yapılmalıdır.",
+            "Aylık ERM incelemesinde en az bir 'zincir kırma' vakası seçilip, zincirin hangi halkasında hangi müdahalenin olayı önleyebileceği ekipçe analiz edilmelidir."
+          ],
+          table: {
+            headers: ["Zincir Halkası", "Erken Belirti", "Kırma Noktası", "Sorumlu"],
+            rows: [["Alarm normalizasyonu", "Tekrarlayan DP alarmı", "Alarmı ertelemeden önce risk puanla", "Nöbetçi zabit"], ["Vardiya devri", "Eksik not / belirsiz ifade", "Standart devir teslim şablonu", "Devreden ve devralan"], ["Bakım erteleme", "Açık iş emri birikimi", "Tarih-saatli kapanış planı", "2. mühendis"], ["Operasyon etkisi", "Yük dalgalanması", "Köprüüstüne erken bilgilendirme", "Baş mühendis"]]
+          }
+        },
+        {
+          heading: "Ders Çıkarımı",
+          paragraphs: [
+            "Kazayı önleyen unsur çoğu zaman büyük teknik müdahale değil, küçük bir disiplin hareketidir: doğru not, doğru teyit, doğru zamanda escalation.",
+            "Hata zinciri yaklaşımı kurum kültürüne yerleştiğinde ekipler 'kim hata yaptı?' sorusundan 'hangi bariyer neden çalışmadı?' sorusuna geçer; bu da sürdürülebilir güvenlik sağlar."
+          ]
+        }
+      ],
+      keyPoints: ["Hata zincirleri görünmez değil, izlenmediği için görünmezdir.", "En etkili kırma noktası: standart devir teslim + ölçülebilir notlama.", "Alarm erteleme kontrolsüzse teknik risk hızla operasyonel riske dönüşür.", "Kök neden analizi kişi odaklı değil bariyer odaklı yapılmalıdır."]
+    },
     "Stres ve yorgunluk etkisi": {
       title: "Stres ve Yorgunluk Etkisi",
       introduction: "Stres ve yorgunluk, denizci performansını ciddi ölçüde düşüren ve kaza riskini artıran insan faktörleridir.",
@@ -320,6 +404,86 @@ const content7: ContentMap = {
       ],
       keyPoints: ["Preferential trip sistemi büyük yükleri keserek blackout'u önler.", "Blackout kurtarma süresi minimum tutulmalıdır.", "Her blackout olayı detaylı rapor ve analiz gerektirir."]
     },
+    "Kapalı alan kazaları": {
+      title: "Kapalı Alan Kazaları",
+      introduction: "Kapalı alan girişleri; oksijen düşüklüğü, toksik gaz ve patlayıcı atmosfer riski nedeniyle denizcilikte en ölümcül operasyonlardan biridir. Bu tür kazalarda ilk hata genellikle görünmezdir: eksik hazırlık, eksik ölçüm veya yanlış güven varsayımı.",
+      sections: [
+        {
+          heading: "Olay Bağlamı",
+          paragraphs: [
+            "Bilge tankında seviye şamandırası kontrolü için yapılan girişte atmosfer ölçümü yalnızca kapak ağzında yapılmış, tankın alt ve orta seviyeleri test edilmemiştir. İlk personel içeri girdikten birkaç dakika sonra baş dönmesi ve koordinasyon kaybı yaşamıştır.",
+            "Kurtarma refleksiyle ikinci personel, tam ekipman ve emniyet hattı olmadan tanka girmiş; olay kısa sürede çift yaralanmalı near-miss'e dönüşmüştür."
+          ]
+        },
+        {
+          heading: "Hatanın Kök Nedeni",
+          paragraphs: [
+            "Permit to Work sürecinin prosedürel bir formaliteye dönüşmesi, çok noktalı atmosfer testinin yapılmaması ve standby personelin rolünün yalnızca 'beklemek' şeklinde yanlış anlaşılması temel kök nedenlerdir.",
+            "Ayrıca 'işi hızlı bitirme' baskısı nedeniyle havalandırma süresi kısaltılmış, giriş öncesi toolbox talk yeterli derinlikte yapılmamıştır.",
+            "İkincil kök neden, kurtarma planının ekipçe prova edilmemiş olmasıdır; bu nedenle olay anında izinsiz kurtarma davranışı ortaya çıkmıştır."
+          ]
+        },
+        {
+          heading: "Önleyici Aksiyon",
+          paragraphs: [
+            "Kapalı alan girişinde O₂, H₂S, CO ve LEL ölçümü üst-orta-alt seviyede yapılmalı; sonuçlar permit formuna saat/dakika ile kaydedilmelidir. Ölçüm tek seferlik değil, giriş boyunca periyodik devam etmelidir.",
+            "Mekanik havalandırma yeterli süre çalıştırılmalı; havalandırma kesildiğinde giriş otomatik olarak askıya alınmalıdır. Giriş yapan personelde kişisel çoklu gaz detektörü sürekli aktif olmalıdır.",
+            "Giriş gözcüsü, iletişim hattı ve kurtarma ekipmanı (SCBA, tripod, retrieval line) hazır olmadan giriş başlatılmamalıdır. Kurtarma yalnızca eğitimli ekip tarafından yapılmalı; izinsiz ikinci giriş kesinlikle yasaktır.",
+            "Yılda en az iki gerçekçi kapalı alan kurtarma tatbikatı yapılarak ölçüm, iletişim ve tahliye süreleri raporlanmalıdır."
+          ],
+          bulletPoints: ["O₂ kabul aralığı: yaklaşık %20.9 (prosedür limitleri esas alınır)", "LEL > limit ise giriş yok", "Standby personel aktif güvenlik bariyeridir, pasif gözlemci değildir", "Permit imzası, saha doğrulaması olmadan geçerli sayılmamalıdır"]
+        },
+        {
+          heading: "Ders Çıkarımı",
+          paragraphs: [
+            "Kapalı alan olaylarında ikinci kayıp çoğu zaman 'yardım etme refleksi' ile oluşur. Doğru refleks, plansız giriş değil alarm, izolasyon ve eğitimli kurtarma ekibini devreye almaktır.",
+            "En güçlü önlem ekipman değil, prosedürü uygulayan ekip davranışıdır. Form doldurmak değil, formun gereğini sahada yaşatmak emniyeti sağlar."
+          ]
+        }
+      ],
+      keyPoints: ["Kapalı alan emniyeti üçlü bariyere dayanır: ölçüm, havalandırma, gözcü.", "İzinsiz kurtarma girişi en kritik ikincil ölüm nedenidir.", "Permit to Work, saha doğrulaması olmadan bir kağıttan ibarettir.", "Tatbikat performansı raporlanmayan ekiplerde prosedür sürdürülebilirliği düşer."]
+    },
+    "İletişim kopukluğuna bağlı olaylar": {
+      title: "İletişim Kopukluğuna Bağlı Olaylar",
+      introduction: "Makine-köprüüstü iletişimindeki belirsizlikler, teknik arıza olmadan da emniyet olayına neden olabilir. Özellikle manevra, liman operasyonu ve acil durumlarda yanlış anlaşılan tek bir komut dahi ciddi operasyonel sonuçlar doğurur.",
+      sections: [
+        {
+          heading: "Olay Bağlamı",
+          paragraphs: [
+            "Liman ayrılışında köprüüstü 'stand by engine' komutunu vermiş, makine dairesi bunu 'dead slow ahead'a geçiş hazırlığı olarak yorumlamıştır. Komut tekrar edilmediği için şaft devri beklenenden önce yükselmiş ve palamar operasyonunda risk oluşmuştur.",
+            "Olayda ekipman arızası yoktur; hata tamamen komutun anlamı, zamanlaması ve teyidi konusundaki iletişim kopukluğundan kaynaklanmıştır."
+          ]
+        },
+        {
+          heading: "Hatanın Kök Nedeni",
+          paragraphs: [
+            "Standart denizcilik terminolojisi yerine yerel/alışkanlık ifadelerinin kullanılması, read-back/onay döngüsünün atlanması ve manevra öncesi ortak komut sözlüğünün netleştirilmemesi ana kök nedendir.",
+            "İkincil olarak, yoğun operasyon anında iletişim kanalına gereksiz trafik girmesi (non-essential talk) kritik komutların anlaşılmasını zorlaştırmıştır."
+          ]
+        },
+        {
+          heading: "Önleyici Aksiyon",
+          paragraphs: [
+            "Manevra evresinde yalnızca standard marine communication phrases kullanılmalı; her komut 'komut - tekrar - onay' döngüsü tamamlanmadan uygulanmamalıdır.",
+            "Manevra öncesi 5 dakikalık ortak brifingte kritik komut seti, beklenen sıra ve olası geri alma komutları netleştirilmelidir.",
+            "Devir teslimlerde 'kritik beklenen komutlar' listesi zorunlu tutulmalı; köprüüstü-makine ses hattı test çağrısı manevra öncesi checklist maddesi olmalıdır.",
+            "İletişim kalitesi aylık olarak near-miss kayıtlarından ölçülmeli; tekrar edilen belirsiz komut kalıpları için hedefli eğitim verilmelidir."
+          ],
+          table: {
+            headers: ["Riskli İfade", "Standart İfade", "Beklenen Teyit"],
+            rows: [["Hazır ol", "Stand by engine", "Stand by engine, confirmed"], ["Biraz ver", "Dead slow ahead", "Dead slow ahead, confirmed"], ["Geri al", "Stop engine / Astern command", "Stop/astern, confirmed"]]
+          }
+        },
+        {
+          heading: "Ders Çıkarımı",
+          paragraphs: [
+            "İletişim kopukluğu çoğu zaman rapora 'yanlış anlama' olarak girer; ancak kök neden daima sistemiktir: dil standardı, teyit disiplini ve brifing kalitesi.",
+            "İyi iletişim kültürü yalnızca kaza önlemez; operasyon verimini de artırır çünkü ekipler aynı anda aynı durumu görür ve daha az düzeltme manevrası gerekir."
+          ]
+        }
+      ],
+      keyPoints: ["Belirsiz komut, gecikmiş veya yanlış aksiyon demektir.", "Kapalı döngü iletişim bir prosedür değil, emniyet bariyeridir.", "Ortak terminoloji çok uluslu ekiplerde kaza frekansını düşürür.", "Manevra öncesi kısa brifing, operasyon sırasında dakika kazandırır."]
+    },
     "Derslerin operasyona yansıtılması": {
       title: "Derslerin Operasyona Yansıtılması",
       introduction: "Kaza ve olaylardan çıkarılan dersler, ancak operasyonel prosedürlere ve eğitime yansıtıldığında gerçek değer taşır.",
@@ -335,6 +499,115 @@ const content7: ContentMap = {
   // ENERJİ VERİMLİLİĞİ — Eksik alt başlıklar
   // ═══════════════════════════════════════════════════════════════
   "energy-efficiency": {
+    "EEDI (Enerji Verimliliği Tasarım İndeksi)": {
+      title: "EEDI (Enerji Verimliliği Tasarım İndeksi)",
+      introduction: "EEDI, yeni gemiler için tasarım aşamasında birim taşıma işi başına CO₂ emisyonunu sınırlandıran temel IMO göstergesidir. Bu indeks, geminin sadece kâğıt üzerindeki teknik verimini değil; ilerideki operasyonel yakıt ekonomisinin sınırlarını da belirler.",
+      sections: [
+        {
+          heading: "Hesap Mantığı",
+          paragraphs: [
+            "EEDI, ana ve yardımcı makine kaynaklı CO₂ emisyon katkılarının geminin referans taşıma işi (kapasite × referans hız) ile oranlanması prensibine dayanır. Motor SFOC, yakıt tipi karbon faktörü, shaft jeneratör/yardımcı yük dengesi ve verimlilik teknolojileri sonuca birlikte etki eder.",
+            "Temel uygunluk yaklaşımı: Attained EEDI ≤ Required EEDI. Required EEDI değeri gemi tipine ve IMO faz indirgeme katsayısına göre belirlenir; aynı sınıfta iki geminin tasarım farkı bu eşitsizlikte doğrudan görünür."
+          ],
+          formula: {
+            expression: "Attained EEDI = (Toplam CO₂ emisyon terimleri) / (Capacity × Vref)",
+            variables: ["Capacity: DWT/GT (gemi tipine göre)", "Vref: referans hız", "CO₂ emisyon terimleri: ana/yardımcı makine ve düzeltme katsayıları"]
+          }
+        },
+        {
+          heading: "Pratik Operasyon Bağı",
+          paragraphs: [
+            "EEDI doğrudan günlük bir operasyon KPI'ı değildir; ancak gövde formu, pervane seçimi, WHRS, air lubrication veya enerji tasarruf cihazı gibi tasarım kararları günlük bunker tüketiminin tabanını belirler.",
+            "Operasyonda yüksek sea margin (hedef hız için artan güç ihtiyacı), tasarım varsayımlarından sapmayı gösterir. Bu sapma çoğu zaman fouling, pervane hasarı, yanlış trim veya makine verim kaybı kaynaklıdır ve EEDI'nin pratik etkisini görünür hale getirir.",
+            "Sea trial hız-güç eğrisi, gemi yaşam döngüsü boyunca performans benchmark'ı olarak korunmalıdır. Bu referans olmadan CII kötüleşmesinin nedeni doğru ayrıştırılamaz (tasarım mı, operasyon mu, bakım mı)."
+          ]
+        },
+        {
+          heading: "Operasyon Ekibine Uygulanabilir Kontrol Listesi",
+          paragraphs: [
+            "Baş mühendis ve kaptan, en az aylık periyotta hız-güç performansını sea trial baseline ile kıyaslamalı; sapma eşiklerini SMS içine tanımlamalıdır.",
+            "Yeni retrofit kararlarında (pre-swirl, propeller boss cap fin vb.) yalnızca yatırım geri dönüşü değil, EEDI/EEXI/CII birlikte değerlendirilmelidir."
+          ]
+        }
+      ],
+      keyPoints: ["EEDI tasarım aşamasında belirlenir, etkisi operasyon boyunca sürer.", "Sea trial baseline performans yönetiminin temel veri setidir.", "Tasarım verimliliği kötü bakım ile hızla kaybedilebilir.", "EEDI başarısı, EEXI/CII performansına zemin hazırlar."]
+    },
+    "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)": {
+      title: "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)",
+      introduction: "EEXI, mevcut gemilerin teknik enerji verimliliğini doğrulayan IMO uyum mekanizmasıdır. Uygulamada çoğu gemi için EEXI uyumu, yalnızca hesap sonucu değil; güç sınırlaması, sefer planı ve bakım stratejisinin birlikte yönetilmesini gerektirir.",
+      sections: [
+        {
+          heading: "Hesap ve Uygunluk",
+          paragraphs: [
+            "EEXI hesabında geminin MCR değeri, olası EPL/ShaPoLi ayarları, motor SFOC parametreleri ve referans taşıma kapasitesi kullanılır. Uygunluk çoğu zaman güç sınırlaması ile elde edilir.",
+            "Attained EEXI ≤ Required EEXI kriteri sağlansa da operasyonel risk analizi yapılmazsa kağıt üzerindeki uyum sahada kırılgan olabilir. Özellikle ağır hava, akıntı ve emniyet manevralarında güç rezervi planlaması kritik hale gelir.",
+            "Doğrulama süreci IAPP/IEEC sertifikasyonuna bağlıdır; ancak sürdürülebilir uygunluk için işletme prosedürlerinin (override şartları, kayıt disiplini) net tanımlanması gerekir."
+          ],
+          formula: {
+            expression: "Attained EEXI ≤ Required EEXI",
+            variables: ["Attained EEXI: geminin mevcut teknik konfigürasyonuyla hesaplanan değer", "Required EEXI: IMO referans eğrisi ve indirgeme faktörüyle belirlenen sınır"]
+          }
+        },
+        {
+          heading: "Pratik Operasyon Bağı",
+          paragraphs: [
+            "EPL uygulanan bir gemide hız/ETA planlaması eski güç varsayımlarıyla yapılamaz. Kaptan ve baş mühendis ağır hava pencerelerinde güvenli hızın altına düşme riskini rota planı aşamasında modellemelidir.",
+            "Makine tarafında turboşarj verimi, enjektör dengesi, hava soğutucu temizliği ve gövde-pervane kondisyonu sınırlı güçte daha kritik hale gelir; küçük verim kaybı bile program sapmasına dönüşebilir.",
+            "Acil durum override yetkisi, kriterleri ve kayıt yöntemi önceden tanımlanmalıdır. Aksi halde emniyet için gerekli güç artırımı sonrası uyum tartışması doğabilir."
+          ],
+          table: {
+            headers: ["Operasyon Alanı", "EEXI Sonrası Risk", "Yönetim Yaklaşımı"],
+            rows: [["Sefer planı", "ETA sapması", "Hava/akıntı düzeltmeli hız planı"], ["Makine performansı", "Sınırlı güçte hız kaybı", "Önleyici bakım ve trend takibi"], ["Acil durum", "Override belirsizliği", "Yetki matrisi + kayıt disiplini"]]
+          }
+        },
+        {
+          heading: "Ders Çıkarımı",
+          paragraphs: [
+            "EEXI uyumu tek başına teknik bir onay değildir; aynı zamanda 'daha düşük güçte güvenli operasyon' kültürünün kurulmasıdır.",
+            "EPL ile uyumlu gemilerde operasyon başarısı, teknik bakım kalitesi ve köprüüstü planlama disiplininin toplamıdır."
+          ]
+        }
+      ],
+      keyPoints: ["EEXI kağıt üzerinde değil sahada da yönetilmelidir.", "EPL, sefer planı ve bakım stratejisini doğrudan değiştirir.", "Override prosedürü net değilse emniyet-uyum çatışması doğar.", "Sınırlı güçte operasyon için trend bazlı bakım şarttır."]
+    },
+    "CII (Karbon Yoğunluğu Göstergesi)": {
+      title: "CII (Karbon Yoğunluğu Göstergesi)",
+      introduction: "CII, geminin yıllık operasyon verisiyle hesaplanan ve köprüüstü ile makine dairesinin ortak performansını yansıtan dinamik bir göstergedir. EEDI/EEXI'den farklı olarak CII, 'tasarım' değil 'gerçek işletme davranışı' ölçer.",
+      sections: [
+        {
+          heading: "İzleme Mantığı",
+          paragraphs: [
+            "CII hesaplaması yıllık toplam CO₂ emisyonunun taşıma işine oranlanmasına dayanır. Bu nedenle yalnızca yakıt tüketimi değil; sefer profili, taşınan yük, ballast oranı, bekleme süreleri ve rota kalitesi de sonucu etkiler.",
+            "Pratikte en sağlıklı yaklaşım aylık projected CII takibidir. Yıl sonunu beklemek yerine her ay 'gerçekleşen - hedef - yıl sonu projeksiyonu' üçlüsü izlenmeli ve sapma büyümeden aksiyon alınmalıdır.",
+            "Noon report, flowmeter, bunker delivery note ve liman operasyon verileri uyumsuzsa CII yönetimi yanıltıcı olur. Bu nedenle veri kalitesi ayrı bir performans metriği olarak takip edilmelidir."
+          ],
+          formula: {
+            expression: "Operational CII = Annual CO₂ / (Capacity × Distance)",
+            variables: ["Annual CO₂: yakıt tüketimi × emisyon faktörü", "Capacity: DWT/GT", "Distance: yıllık toplam kat edilen mesafe"]
+          }
+        },
+        {
+          heading: "Pratik Operasyon Bağı",
+          paragraphs: [
+            "CII iyileştirmesi için hız optimizasyonu, trim yönetimi, weather routing, liman bekleme azaltımı, gövde-pervane temizliği ve yardımcı makine yük optimizasyonu birlikte değerlendirilmelidir. Tek başına 'hızı düşür' yaklaşımı ticari ve emniyet etkileri nedeniyle sürdürülebilir olmayabilir.",
+            "Sefer bazlı karar seti oluşturulmalıdır: ETA esnekliği varsa ekonomik hız, hava sertleşiyorsa rota revizyonu, liman sıkışıklığında just-in-time arrival, ballast seyirde trim ve yardımcı yük optimizasyonu.",
+            "Makine dairesi yakıt kayıtları ile köprüüstü seyir verileri arasında günlük mutabakat yapılmalı; uyumsuzluklar DCS/MRV raporuna yansımadan düzeltilmelidir. Bu disiplin, CII derecesinin güvenilirliğini artırır."
+          ],
+          table: {
+            headers: ["Operasyon Parametresi", "CII Etkisi", "Önerilen Takip"],
+            rows: [["Hız profili", "Yüksek", "Haftalık hız-güç analizi"], ["Bekleme süresi", "Yüksek", "JIT arrival planı"], ["Gövde/pervane kondisyonu", "Orta-Yüksek", "Temizlik periyodu + performans trendi"], ["Veri kalitesi", "Yüksek", "Noon report - bunker - flowmeter mutabakatı"]]
+          }
+        },
+        {
+          heading: "Ders Çıkarımı",
+          paragraphs: [
+            "CII yönetimi, tek departman işi değildir; köprüüstü, makine, operasyon planlama ve şirket ofisinin ortak kontrol döngüsüdür.",
+            "Aylık projeksiyon, yıl sonu sürprizlerini önleyen en güçlü araçtır. Geciken aksiyonlar aynı yıl içinde telafi edilemeyebilir."
+          ]
+        }
+      ],
+      keyPoints: ["CII, gerçek işletme kalitesinin sayısal çıktısıdır.", "Projected CII aylık takip edilmeden etkin yönetim mümkün değildir.", "Veri kalitesi zayıfsa doğru CII kararı alınamaz.", "Köprüüstü-makine-ofis koordinasyonu CII performansının anahtarıdır."]
+    },
     "CII derecelendirme sistemi (A–E)": {
       title: "CII Derecelendirme Sistemi (A–E)",
       introduction: "CII (Carbon Intensity Indicator), geminin taşıma kapasitesi başına karbon emisyonunu yıllık olarak değerlendiren ve A'dan E'ye derecelendiren IMO göstergesidir.",
