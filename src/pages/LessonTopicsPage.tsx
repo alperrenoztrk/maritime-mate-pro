@@ -351,6 +351,28 @@ const topicsData: Record<string, TopicContent> = {
       { title: "Meteoroloji Kuralları", href: "/meteorology/rules" }
     ]
   },
+  communication: {
+    title: "Denizde Haberleşme Konu Anlatımı",
+    description: "GMDSS, VHF/DSC, NAVTEX ve acil durum mesajlaşma prosedürleri ile denizde profesyonel haberleşme disiplini.",
+    keyTopics: [
+      {
+        title: "GMDSS Altyapısı",
+        description: "Deniz alanları, zorunlu ekipman ve operasyonel uygunluk",
+        subTopics: [
+          { title: "GMDSS Mimarisi ve Deniz Alanları", hasContent: true },
+          { title: "VHF-DSC Operasyonları", hasContent: true },
+          { title: "Tehlike, Aciliyet ve Emniyet Haberleşmesi", hasContent: true },
+          { title: "NAVTEX, SafetyNET ve MSI", hasContent: true },
+          { title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu", hasContent: true }
+        ]
+      }
+    ],
+    resources: [
+      { title: "Haberleşme Hesaplamaları", href: "/calculations/communication/calculations" },
+      { title: "Haberleşme Formülleri", href: "/calculations/communication/formulas" },
+      { title: "Haberleşme Kuralları", href: "/calculations/communication/rules" }
+    ]
+  },
   seamanship: {
     title: "Gemicilik Konu Anlatımı",
     description: "Temel gemicilik becerileri, manevra teknikleri ve güverte operasyonları.",
