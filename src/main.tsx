@@ -50,11 +50,11 @@ const checkPreloadStatus = () => {
   }
 };
 
-// Start checking after minimum splash time (1 second)
-setTimeout(checkPreloadStatus, 1000);
+// Start checking after minimum splash time (3 seconds)
+setTimeout(checkPreloadStatus, 3000);
 
-// GUARANTEED: Force hide after 6 seconds max (reduced from 8s)
+// GUARANTEED: Force hide after 8 seconds max
 setTimeout(() => {
   console.log('⏱️ [Main] Splash screen timeout kontrolü...');
   hideSplash();
-}, 6000);
+}, 8000);
