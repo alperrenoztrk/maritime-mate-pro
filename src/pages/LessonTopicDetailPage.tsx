@@ -1,7 +1,8 @@
 import { ChevronLeft, Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
-import { navigationTopicContents, TopicSection, TopicDetailContent } from "@/data/navigationTopicContents";
+import { getTopicContentsByCategory } from "@/data/topicContents";
+import type { TopicDetailContent } from "@/data/navigationTopicContents";
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
 import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
 import compass from "@/assets/navigation/compass.svg";
@@ -25,7 +26,7 @@ import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
 import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
-import { buildNavigationSectionKey } from "@/services/topicContentOverrides";
+import { buildSectionKey, type ContentCategory } from "@/services/topicContentOverrides";
 
 const navigationImageFallbacks = [
   { keywords: ["sextant", "sekstant"], src: sextant },
@@ -90,7 +91,8 @@ export default function LessonTopicDetailPage() {
       }
     ]
   };
-  const content = navigationTopicContents[decodedTitle] ?? fallbackContent;
+  const categoryContents = getTopicContentsByCategory(categoryId);
+  const content = categoryContents[decodedTitle] ?? fallbackContent;
   const shouldReplaceExternalImages = categoryId === "navigation";
 
   if (!categoryId || !decodedTitle) {
@@ -121,7 +123,8 @@ export default function LessonTopicDetailPage() {
         </div>
 
         {content.sections.map((section, index) => {
-          const overrideKey = buildNavigationSectionKey(decodedTitle || content.title, section.title);
+          const categoryKey = (categoryId ?? "navigation") as ContentCategory;
+          const overrideKey = buildSectionKey(categoryKey, decodedTitle || content.title, section.title);
           const override = overrides[overrideKey];
           const resolvedContent = override?.content || section.content;
 

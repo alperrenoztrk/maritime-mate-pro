@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
-import { navigationTopicContents } from "@/data/navigationTopicContents";
+import { getTopicContentTitlesByCategory } from "@/data/topicContents";
 import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 
 interface SubTopic {
@@ -528,7 +528,8 @@ export default function LessonTopicsPage() {
   const topicContent = categoryId ? topicsData[categoryId] : null;
   const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
   const isNavigation = categoryId === "navigation";
-  const navigationContentTitles = isNavigation ? new Set(Object.keys(navigationTopicContents)) : null;
+  const contentTitles = getTopicContentTitlesByCategory(categoryId);
+  const hasDerivedContent = contentTitles.size > 0;
 
   const toggleTopic = (index: number) => {
     setExpandedTopics(prev => 
@@ -547,11 +548,11 @@ export default function LessonTopicsPage() {
     ["--transition-duration" as string]: "16.67ms",
   };
 
-  const missingNavigationTopics = isNavigation && topicContent
+  const missingNavigationTopics = isNavigation && topicContent && hasDerivedContent
     ? topicContent.keyTopics
         .map(topic => ({
           title: topic.title,
-          missing: (topic.subTopics ?? []).filter(sub => !navigationContentTitles?.has(sub.title))
+          missing: (topic.subTopics ?? []).filter(sub => !contentTitles.has(sub.title))
         }))
         .filter(item => item.missing.length > 0)
     : [];
@@ -675,7 +676,7 @@ export default function LessonTopicsPage() {
                         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                           {topic.subTopics!.map((sub, subIndex) => (
                             (() => {
-                              const hasContent = isNavigation ? navigationContentTitles?.has(sub.title) : sub.hasContent;
+                              const hasContent = hasDerivedContent ? contentTitles.has(sub.title) : sub.hasContent;
                               return (
                             <Link
                               key={subIndex}
@@ -684,7 +685,7 @@ export default function LessonTopicsPage() {
                             >
                               <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                               <span className="text-foreground/90 flex-1">{sub.title}</span>
-                              {isNavigation && (
+                              {(isNavigation || categoryId === "meteorology") && (
                                 <span
                                   className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                                     hasContent

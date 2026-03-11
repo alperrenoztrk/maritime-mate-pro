@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { navigationTopicContents } from "@/data/navigationTopicContents";
+import { getTopicContentsByCategory } from "@/data/topicContents";
 import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
 import {
   buildSectionKey,
@@ -44,15 +44,7 @@ const isContentMissing = (content?: string) => {
   return stripped.length === 0;
 };
 
-const getCategoryData = (category: ContentCategory) => {
-  switch (category) {
-    case "navigation":
-      return navigationTopicContents;
-    // Future categories can be added here
-    default:
-      return {};
-  }
-};
+const getCategoryData = (category: ContentCategory) => getTopicContentsByCategory(category);
 
 const buildTargets = (
   category: ContentCategory,
