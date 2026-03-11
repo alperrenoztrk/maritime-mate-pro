@@ -21,7 +21,8 @@
     "cap:add:firebase": "npm install @capacitor-firebase/app @capacitor-firebase/authentication @capacitor-firebase/messaging",
     "android:build": "npm run build && npx cap sync && cd android && ./gradlew assembleDebug",
     "lovable:update": "node scripts/lovable-update.cjs && npm run build:prod",
-    "lovable:deploy": "node scripts/lovable-deploy.cjs"
+    "lovable:deploy": "node scripts/lovable-deploy.cjs",
+    "check:topic-coverage": "node scripts/check-topic-coverage.mjs"
   },
   "dependencies": {
     "@capacitor-community/admob": "^6.0.1",
