@@ -288,60 +288,60 @@ const topicsData: Record<string, TopicContent> = {
         title: "Atmosfer Sistemleri",
         description: "Basınç sistemleri ve hava kütleleri",
         subTopics: [
-          { title: "Basınç merkezleri (alçak/yüksek)" },
-          { title: "İzobar yapısı ve gradyan" },
-          { title: "Hava kütleleri ve kaynak bölgeler" },
-          { title: "Cephe tipleri ve geçiş etkileri" }
+          { title: "Basınç merkezleri (alçak/yüksek)", hasContent: true },
+          { title: "İzobar yapısı ve gradyan", hasContent: true },
+          { title: "Hava kütleleri ve kaynak bölgeler", hasContent: true },
+          { title: "Cephe tipleri ve geçiş etkileri", hasContent: true }
         ]
       },
       {
         title: "Rüzgar ve Dalga",
         description: "Beaufort skalası ve dalga tahminleri",
         subTopics: [
-          { title: "Gerçek rüzgar ve görünen rüzgar" },
-          { title: "Beaufort skalası uygulamaları" },
-          { title: "Dalga yüksekliği ve periyot" },
-          { title: "Swell ve wind sea ayrımı" }
+          { title: "Gerçek rüzgar ve görünen rüzgar", hasContent: true },
+          { title: "Beaufort skalası uygulamaları", hasContent: true },
+          { title: "Dalga yüksekliği ve periyot", hasContent: true },
+          { title: "Swell ve wind sea ayrımı", hasContent: true }
         ]
       },
       {
         title: "Tropikal Siklonlar",
         description: "Kasırga ve tayfun navigasyonu",
         subTopics: [
-          { title: "Siklon yapısı ve gelişim evreleri" },
-          { title: "Tehlikeli/seyir yapılabilir yarım daire" },
-          { title: "Barometre ve rüzgarla konum tayini" },
-          { title: "Kaçınma manevrası prensipleri" }
+          { title: "Siklon yapısı ve gelişim evreleri", hasContent: true },
+          { title: "Tehlikeli/seyir yapılabilir yarım daire", hasContent: true },
+          { title: "Barometre ve rüzgarla konum tayini", hasContent: true },
+          { title: "Kaçınma manevrası prensipleri", hasContent: true }
         ]
       },
       {
         title: "Sis ve Görüş",
         description: "Kısıtlı görüş koşulları ve tedbirler",
         subTopics: [
-          { title: "Sis oluşum türleri" },
-          { title: "Görüş sınıflandırması" },
-          { title: "Kısıtlı görüşte seyir kuralları" },
-          { title: "Radar ve ses işaretleri" }
+          { title: "Sis oluşum türleri", hasContent: true },
+          { title: "Görüş sınıflandırması", hasContent: true },
+          { title: "Kısıtlı görüşte seyir kuralları", hasContent: true },
+          { title: "Radar ve ses işaretleri", hasContent: true }
         ]
       },
       {
         title: "Okyanus Akıntıları",
         description: "Akıntı sistemleri ve rota etkisi",
         subTopics: [
-          { title: "Küresel akıntı sistemleri" },
-          { title: "Set ve drift değerlendirmesi" },
-          { title: "Akıntının ETA ve yakıta etkisi" },
-          { title: "Mevsimsel akıntı değişimleri" }
+          { title: "Küresel akıntı sistemleri", hasContent: true },
+          { title: "Set ve drift değerlendirmesi", hasContent: true },
+          { title: "Akıntının ETA ve yakıta etkisi", hasContent: true },
+          { title: "Mevsimsel akıntı değişimleri", hasContent: true }
         ]
       },
       {
         title: "Hava Haritaları",
         description: "Synoptik harita okuma ve yorumlama",
         subTopics: [
-          { title: "Synoptik harita sembolleri" },
-          { title: "Cephe analizi ve hareket tahmini" },
-          { title: "Rüzgar/deniz tahmini çıkarımı" },
-          { title: "Rota üzerinde risk işaretleme" }
+          { title: "Synoptik harita sembolleri", hasContent: true },
+          { title: "Cephe analizi ve hareket tahmini", hasContent: true },
+          { title: "Rüzgar/deniz tahmini çıkarımı", hasContent: true },
+          { title: "Rota üzerinde risk işaretleme", hasContent: true }
         ]
       }
     ],
