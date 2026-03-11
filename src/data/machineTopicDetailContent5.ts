@@ -35,6 +35,180 @@ const content5: ContentMap = {
       ],
       keyPoints: ["Kompozit kazan yakıt tasarrufu sağlar.", "Ekonomizer bölümünde is (soot) birikimi yangın riski oluşturur.", "Soot blowing düzenli yapılmalıdır."]
     },
+    "Egzoz gazı ekonomizeri": {
+      title: "Egzoz Gazı Ekonomizeri",
+      introduction: "Egzoz gazı ekonomizeri (EGE), ana makine egzozundaki atık ısıyı geri kazanarak servis buharı üreten kritik bir ısı eşanjörüdür. Doğru işletildiğinde yardımcı kazan yükünü, yakıt tüketimini ve dolaylı CO₂ emisyonunu anlamlı biçimde düşürür; yanlış işletildiğinde ise asit korozyonu, soot fire, tüp hasarı ve buhar kalitesi sorunlarına yol açabilir.",
+      sections: [
+        {
+          heading: "Temel Prensip ve Termodinamik Arka Plan",
+          paragraphs: [
+            "Ana makineden çıkan egzoz gazı, ekonomizerin gaz tarafında akarken boru içindeki besi suyuna ısı transfer eder. Bu süreçte su sıcaklığı yükselir, doymuş koşullara yaklaşır ve yeterli ısı akısında buhar üretimi başlar.",
+            "Ekonomizer, atık ısı kazanı (waste heat boiler) olarak değerlendirilir. Amaç, bacadan atılan entalpinin bir bölümünü geri kazanarak yardımcı kazanın yakması gereken yakıt miktarını azaltmaktır.",
+            "Isı geri kazanım performansı; motor yükü, egzoz debisi, egzoz giriş sıcaklığı, gaz/su tarafı kirlenme (fouling), su kimyası, drum seviye kontrol kalitesi ve otomasyon ayarlarının birlikte etkisiyle belirlenir."
+          ],
+          formula: {
+            expression: "Q = ṁ_gaz · c_p,gaz · (T_giriş − T_çıkış)",
+            variables: [
+              "Q: Ekonomizerde geri kazanılan ısı (kW)",
+              "ṁ_gaz: Egzoz gazı debisi (kg/s)",
+              "c_p,gaz: Egzoz gazı özgül ısısı (kJ/kg·K)",
+              "T_giriş, T_çıkış: Ekonomizer giriş/çıkış egzoz sıcaklığı (°C)"
+            ]
+          }
+        },
+        {
+          heading: "Sistem Mimarisi ve Ana Ekipmanlar",
+          paragraphs: [
+            "Tipik bir EGE sisteminde ekonomizer gövdesi, buhar-su drum'u, sirkülasyon hattı, feedwater kontrol vanası, sürekli/dip blowdown hattı, by-pass damper, emniyet ventilleri, soot blower sistemi ve ilgili otomasyon loop'ları bulunur.",
+            "Doğal sirkülasyonlu sistemlerde akış, yoğunluk farkı ile sürdürülür; zorlanmış sirkülasyonlu sistemlerde pompa ile akış güvence altına alınır. Yük değişiminin fazla olduğu operasyonlarda zorlanmış sirkülasyon, kontrol kararlılığı açısından avantaj sağlayabilir."
+          ],
+          table: {
+            headers: ["Bileşen", "Temel Görev", "Arıza Belirtisi", "Operasyonel Sonuç"],
+            rows: [
+              ["By-pass damper", "Egzozu ekonomizerden yönlendirme", "Damper sıkışması / pozisyon sapması", "Buhar üretiminde ani dalgalanma"],
+              ["Soot blower", "Gaz tarafı kurum temizliği", "ΔP artışı, baca sıcaklık trend bozulması", "Verim düşüşü ve soot fire riski"],
+              ["Drum seviye kontrolü", "Emniyetli su seviyesi", "High/Low level alarm", "Carry-over veya tüp aşırı ısınması"],
+              ["Feedwater control valve", "Buhar talebine göre su besleme", "Hunting/kararsızlık", "Buhar basıncında salınım"],
+              ["Emniyet ventili", "Aşırı basınç koruması", "Sette açmama/sürekli sızdırma", "Emniyet riski / enerji kaybı"],
+              ["Blowdown hattı", "TDS kontrolü", "Vana kaçırma/tıkanma", "Köpürme, carry-over, su kaybı"]
+            ]
+          }
+        },
+        {
+          heading: "Gemide Kullanım: Seyir, Manevra ve Liman Senaryoları",
+          paragraphs: [
+            "Seyirde ana makine yükü arttıkça egzoz entalpisi yükselir ve ekonomizer buhar üretimi artar. Tipik yaklaşım, ekonomizer öncelikli buhar üretimi; eksik kalan kısmın yardımcı kazan ile tamamlanmasıdır.",
+            "Manevra ve düşük yük geçişlerinde egzoz sıcaklığı/debisi azalacağından buhar üretimi kararsız hale gelebilir. Bu nedenle yardımcı kazan auto-standby modda tutulmalı, seviye kontrolünün düşük yükteki dinamiği yakından izlenmelidir.",
+            "Liman koşullarında ana makine duruyorsa ekonomizer üretimi yoktur; tüm buhar talebi yardımcı kazana geçer. Liman öncesi geçiş planı yapılmazsa buhar tüketicilerinde basınç düşümü yaşanabilir."
+          ],
+          bulletPoints: [
+            "Seyir başlangıcında damper pozisyon geri bildirimi ve kontrol loop doğrulaması yapılır.",
+            "Yük düşüşlerinde low-water riskine karşı seviye trendi anlık takip edilir.",
+            "Liman geçişinde yardımcı kazan devreye alma zamanı buhar tüketim profiline göre planlanır.",
+            "Operatör vardiya notunda EGE ΔP, T_giriş/T_çıkış, drum level ve blowdown durumunu birlikte kaydeder."
+          ]
+        },
+        {
+          heading: "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı",
+          paragraphs: [
+            "Ekonomizer çıkış egzoz sıcaklığının asit çiğ noktası altına düşmesi, özellikle yüksek sülfürlü yakıtta düşük sıcaklık korozyonunu hızlandırır. Bu nedenle enerji geri kazanımı artırılırken minimum güvenli sıcaklık limiti korunmalıdır.",
+            "Gaz tarafında kurum birikimi arttığında diferansiyel basınç yükselir, ısı transferi düşer ve lokal sıcak noktalar oluşabilir. Bu durum soot fire için erken uyarı kabul edilmelidir.",
+            "Su tarafında düşük seviye tüp hasarı; yüksek seviye carry-over riski doğurur. Carry-over downstream ekipmanda su darbesi, vana/armatür hasarı ve kondens kalite sorunlarına neden olabilir."
+          ],
+          table: {
+            headers: ["İzlenen Parametre", "Tipik Hedef/Aralık", "Uyarı İşareti", "Potansiyel Sonuç"],
+            rows: [
+              ["T_giriş (egzoz)", "220-380°C", "Beklenenden düşük", "Yetersiz buhar üretimi"],
+              ["T_çıkış (egzoz)", "> 160°C (yakıt ve üretici limitine bağlı)", "Hızla düşme", "Asit korozyonu"],
+              ["Gaz tarafı ΔP", "Stabil trend", "Kademeli artış", "Kurum birikimi/yangın riski"],
+              ["Drum seviye", "Normal band", "Hunting / ani sıçrama", "Low-level trip veya carry-over"],
+              ["Buhar basıncı", "Talebe uygun stabil", "Dalgalanma", "Tüketicilerde performans kaybı"],
+              ["TDS/iletkenlik", "SMS limitinde", "Yükselme", "Köpürme ve buhar saflığı sorunu"]
+            ]
+          }
+        },
+        {
+          heading: "Yakıt Tipine Göre Operasyonel Riskler ve MARPOL Bağlamı",
+          paragraphs: [
+            "HFO operasyonunda sülfür ve kül kaynaklı etkiler daha belirgindir: asit çiğ noktası korozyonu, kurum birikimi ve ısı transfer yüzeylerinde kirlenme daha hızlı gelişebilir. Bu nedenle çıkış sıcaklığı ve temizlik periyodu daha konservatif yönetilir.",
+            "VLSFO operasyonunda sülfür yükü azalsa da yakıt karışım karakteri nedeniyle kurum/fouling davranışı değişken olabilir. Bunker partileri arasında trend karşılaştırması yapılmadan sabit bakım periyodu uygulamak verimsiz olabilir.",
+            "MGO kullanımında genel olarak kurum yükü düşer; ancak düşük makine yüklerinde egzoz entalpisi de düşeceği için ekonomizer buhar üretimi gerileyebilir. Operasyonel fayda, yük profili ile birlikte değerlendirilmelidir.",
+            "LNG/dual-fuel modunda SOx neredeyse sıfırlanır; buna karşın bazı operasyon profillerinde egzoz sıcaklığı düşük kalabilir ve buhar üretim kapasitesi sınırlanabilir. Yardımcı kazan desteği daha sık gerekebilir.",
+            "MARPOL Annex VI perspektifinde ekonomizer performansının korunması, dolaylı CO₂ azaltımı ve CII iyileşmesi için önemlidir. Ekonomizer kirlenmesi nedeniyle yardımcı kazanın fazla yakıt yakması, aynı seferde daha yüksek karbon yoğunluğu anlamına gelir."
+          ],
+          table: {
+            headers: ["Yakıt", "Baskın Risk", "MARPOL/Operasyon Etkisi", "Önerilen Kontrol"],
+            rows: [
+              ["HFO", "Asit korozyonu + ağır kurum", "Yardımcı kazan yükü artarsa CO₂ artar", "Çıkış sıcaklık limiti + sık soot blowing"],
+              ["VLSFO", "Değişken fouling davranışı", "Verim dalgalanması CII'yi etkiler", "Bunker bazlı trend analizi"],
+              ["MGO", "Düşük yükte yetersiz ısı geri kazanımı", "Liman/seyir geçişinde buhar açığı", "Geçişte yardımcı kazan planı"],
+              ["LNG (DF)", "Düşük egzoz sıcaklık profili", "Buhar üretim kapasitesi kısıtı", "Hibrit buhar stratejisi"]
+            ]
+          }
+        },
+        {
+          heading: "Arıza Modları, Soot Fire ve Acil Müdahale Yaklaşımı",
+          paragraphs: [
+            "Soot fire, özellikle kurum birikimi yüksek ve yük değişimi fazla operasyonlarda kritik bir risktir. Belirtiler arasında baca sıcaklığında anormal artış, kıvılcım/alev gözlemi, ΔP anormalliği ve beklenmedik buhar davranışı yer alır.",
+            "İlk müdahalede ana amaç yangının büyümesini önlemek ve termal şok yaratmamaktır. Bu nedenle üretici/SMS prosedürüne uygun yük azaltma, soot blowing'in durdurulması, kontrollü izolasyon ve gerektiğinde planlı soğutma uygulanır.",
+            "Tube leak arızasında drum seviyesinde açıklanamayan düşüş, egzoz tarafında buhar izleri veya kontaminasyon belirtileri görülür. Kaçak şüphesinde ekonomizer izole edilmeli, yardımcı kazan devreye alınmalı ve güvenli onarım planı hazırlanmalıdır."
+          ],
+          bulletPoints: [
+            "Acil durumda prosedür dışı ani soğutma termal şok kaynaklı ilave hasar doğurabilir.",
+            "Soot fire sonrası devreye alma öncesi detaylı iç muayene ve kök neden analizi yapılmalıdır.",
+            "Kök neden analizi: yakıt kalitesi, yük profili, soot blowing disiplini, seviye kontrol ayarı ve bakım kayıtlarıyla birlikte incelenmelidir."
+          ]
+        },
+        {
+          heading: "Bakım, Muayene ve Performans İzleme Programı",
+          paragraphs: [
+            "EGE'de güvenli ve verimli işletme için planlı bakım şarttır. Gaz tarafı temizlik (soot blowing / offline cleaning), su tarafı kimyasal kontrol, valf ve damper fonksiyon testleri, sensör kalibrasyonu periyodik yürütülmelidir.",
+            "Sadece periyodik bakım değil, trend bazlı kestirimci yaklaşım da önemlidir. Özellikle ΔP artış hızı, çıkış sıcaklığı sapması, buhar üretim-güç oranı ve blowdown tüketimi birlikte izlenerek erken bakım kararı alınabilir.",
+            "Klas ve şirket SMS gereksinimleri doğrultusunda test, muayene ve bakım kayıtlarının eksiksiz tutulması PSC denetimleri açısından da kritik önemdedir."
+          ],
+          table: {
+            headers: ["Kontrol/Bakım Kalemi", "Önerilen Periyot", "Amaç"],
+            rows: [
+              ["Soot blowing", "Günlük-haftalık (yük/yakıta bağlı)", "Gaz tarafı ısı transferini korumak"],
+              ["Drum level kontrol testi", "Vardiya/günlük", "Low/high level riskini azaltmak"],
+              ["TDS ve blowdown kontrolü", "Günlük", "Buhar saflığını korumak"],
+              ["Damper ve aktüatör fonksiyon testi", "Aylık", "Geçiş emniyetini sağlamak"],
+              ["Sensör kalibrasyonu", "Planlı bakım döneminde", "Ölçüm güvenilirliği"],
+              ["İç muayene (offline)", "Klas/SMS planına göre", "Korozyon, çatlak, fouling tespiti"]
+            ]
+          }
+        },
+        {
+          heading: "Kısa Hesap Yaklaşımı, Buhar Tahmini ve Örnek Karşılaştırma",
+          paragraphs: [
+            "Vardiya mühendisliği açısından pratik hesap yöntemi, önce geri kazanılan ısıyı (Q), ardından yaklaşık buhar debisini hesaplamaktır. Böylece yardımcı kazanın hangi yükte destek vereceği hızlıca tahmin edilir.",
+            "Aynı yükte ekonomik karşılaştırma yapılırken, ekonomizer aktif/pasif durumda yardımcı kazan yakıt tüketim farkı (kg/h) ve sefer süresine etkisi değerlendirilir."
+          ],
+          formula: {
+            expression: "Q = ṁ_gaz · c_p,gaz · (T_giriş − T_çıkış)\nṁ_buhar ≈ Q / h_fg\nYakıt tasarrufu ≈ (Q / η_kazan) / LHV",
+            variables: [
+              "ṁ_buhar: Yaklaşık buhar üretimi (kg/s)",
+              "h_fg: Buharlaşma gizli ısısı (kJ/kg)",
+              "η_kazan: Yardımcı kazan verimi",
+              "LHV: Yakıt alt ısıl değeri"
+            ]
+          },
+          example: {
+            problem: "ṁ_gaz = 20 kg/s, c_p,gaz = 1.08 kJ/kg·K, T_giriş = 340°C, T_çıkış = 220°C, h_fg = 2100 kJ/kg için Q ve buhar debisini hesaplayınız.",
+            steps: [
+              "Q = 20 × 1.08 × (340 − 220) = 2592 kW",
+              "ṁ_buhar ≈ 2592 / 2100 = 1.234 kg/s",
+              "Saatlik buhar ≈ 1.234 × 3600 = 4442 kg/h (~4.44 t/h)"
+            ],
+            result: "Bu çalışma noktasında ekonomizer yaklaşık 2.59 MW geri kazanım ve 4.44 t/h buhar üretim potansiyeli sağlar."
+          }
+        },
+        {
+          heading: "Operasyonel Karar Matrisi (Pratik Özet)",
+          paragraphs: [
+            "Aşağıdaki karşılaştırma, vardiya sırasında hızlı karar vermek için kullanılabilir. Amaç; güvenlik limitlerini ihlal etmeden maksimum ısı geri kazanımı sağlamaktır."
+          ],
+          table: {
+            headers: ["Durum", "İlk Aksiyon", "İkinci Aksiyon", "Takip Edilecek Parametre"],
+            rows: [
+              ["ΔP artıyor", "Soot blowing planını sıklaştır", "Offline cleaning planla", "ΔP trendi + T_çıkış"],
+              ["T_çıkış çok düşüyor", "Damper/yük optimizasyonu", "Korozyon kontrol muayenesi", "T_çıkış + metal sıcaklığı"],
+              ["Drum level hunting", "Kontrol loop tuning kontrolü", "Feedwater vana/ölçüm doğrulaması", "Seviye trendi + buhar basıncı"],
+              ["Buhar açığı oluştu", "Yardımcı kazan kademeli devreye al", "Buhar tüketicilerini önceliklendir", "Header basıncı + tüketim"],
+              ["Soot fire belirtisi", "Prosedüre göre yük azalt/izole et", "Acil durum planını uygula", "Baca sıcaklığı + görsel belirti"]
+            ]
+          }
+        }
+      ],
+      keyPoints: [
+        "EGE, yakıt ekonomisi ve MARPOL Annex VI operasyon hedefleri için doğrudan etkili bir ekipmandır; performans kaybı CII sonuçlarına yansır.",
+        "Asit çiğ noktası korozyonu, soot birikimi ve drum seviye kontrolü en kritik üç risk alanıdır.",
+        "Trend bazlı izleme (T_giriş/T_çıkış, ΔP, seviye, TDS, buhar basıncı) arıza öncesi erken uyarı sağlar.",
+        "Yakıt tipine göre bakım/temizlik stratejisi değiştirilmeli; tek tip periyot yaklaşımından kaçınılmalıdır.",
+        "Hızlı enerji dengesi hesabı, yardımcı kazan yük planlamasında pratik karar desteği sunar."
+      ]
+    },
+
     "Kazan su kimyası ve işlem": {
       title: "Kazan Su Kimyası ve İşlem",
       introduction: "Kazan suyunun kimyasal özelliklerinin kontrol altında tutulması, kazan ömrü ve güvenliği için kritiktir. Yanlış su kimyası korozyon, kireçlenme ve köpürmeye yol açar.",
