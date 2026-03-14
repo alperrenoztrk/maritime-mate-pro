@@ -111,9 +111,9 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     title: "Denizcilik Uygulamaları",
     icon: Anchor,
     subtopics: [
-      { id: "ballast-bilge", title: "Balast ve sintine devreleri", hasContent: false },
-      { id: "cooling-circuits", title: "Soğutma suyu devreleri", hasContent: false },
-      { id: "fire-main", title: "Yangın hattı hidrolikleri", hasContent: false },
+      { id: "ballast-bilge", title: "Balast ve sintine devreleri", hasContent: true },
+      { id: "cooling-circuits", title: "Soğutma suyu devreleri", hasContent: true },
+      { id: "fire-main", title: "Yangın hattı hidrolikleri", hasContent: true },
     ],
   },
 ];
