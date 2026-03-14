@@ -45,6 +45,7 @@ const FILTERS: { key: Category; label: string }[] = [
   { key: "navigation", label: "Navigasyon" },
   { key: "stability", label: "Stabilite" },
   { key: "machine", label: "Makine" },
+  { key: "ship-systems", label: "Gemi Sistemleri" },
   { key: "converter", label: "Dönüştürücüler" },
 ];
 
