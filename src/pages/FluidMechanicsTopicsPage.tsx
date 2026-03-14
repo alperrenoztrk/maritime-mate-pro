@@ -101,8 +101,8 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     icon: BarChart3,
     subtopics: [
       { id: "venturi-orifice", title: "Venturi ve orifis prensibi", hasContent: true },
-      { id: "pitot", title: "Pitot tüpü ile hız ölçümü", hasContent: false },
-      { id: "meter-selection", title: "Debi ölçer seçimi", hasContent: false },
+      { id: "pitot", title: "Pitot tüpü ile hız ölçümü", hasContent: true },
+      { id: "meter-selection", title: "Debi ölçer seçimi", hasContent: true },
     ],
   },
   {
