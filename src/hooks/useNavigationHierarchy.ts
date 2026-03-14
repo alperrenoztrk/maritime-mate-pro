@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
+import { Capacitor } from '@capacitor/core';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -8,6 +9,7 @@ type NavigationRule = {
 };
 
 const navigationRules: NavigationRule[] = [
+  // Lessons
   {
     pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
     parent: (match) => `/lessons/${match[1]}/topics`,
@@ -17,13 +19,69 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/lessons',
   },
   {
+    pattern: /^\/lessons$/,
+    parent: () => '/',
+  },
+
+  // Crew & Bridge
+  {
     pattern: /^\/crew\/([^/]+)$/,
     parent: () => '/crew',
+  },
+  {
+    pattern: /^\/crew$/,
+    parent: () => '/',
   },
   {
     pattern: /^\/bridge\/([^/]+)$/,
     parent: () => '/bridge',
   },
+  {
+    pattern: /^\/bridge$/,
+    parent: () => '/',
+  },
+
+  // Ship Systems
+  {
+    pattern: /^\/ship-systems\/([^/]+)$/,
+    parent: () => '/ship-systems',
+  },
+  {
+    pattern: /^\/ship-systems$/,
+    parent: () => '/',
+  },
+
+  // Ship Tasks
+  {
+    pattern: /^\/ship-tasks\/([^/]+)$/,
+    parent: () => '/ship-tasks',
+  },
+  {
+    pattern: /^\/ship-tasks$/,
+    parent: () => '/',
+  },
+
+  // Machine topic sub-routes
+  {
+    pattern: /^\/machine\/([^/]+)\/topics\/([^/]+)$/,
+    parent: (match) => `/machine/${match[1]}/topics`,
+  },
+  {
+    pattern: /^\/machine\/([^/]+)\/(topics|calculations|formulas|rules|assistant|quiz)$/,
+    parent: () => '/hub/machine',
+  },
+
+  // Machine hub-level
+  {
+    pattern: /^\/machine\/(calculations|formulas|rules|assistant|quiz)$/,
+    parent: () => '/hub/machine',
+  },
+  {
+    pattern: /^\/machine-calculations$/,
+    parent: () => '/hub/machine',
+  },
+
+  // Calculations hub
   {
     pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
     parent: (match) => `/hub/${match[1]}`,
@@ -32,6 +90,8 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/hub\/([^/]+)$/,
     parent: () => '/calculations',
   },
+
+  // Navigation
   {
     pattern: /^\/navigation\/calc\/([^/]+)$/,
     parent: () => '/navigation',
@@ -41,9 +101,23 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/navigation',
   },
   {
-    pattern: /^\/navigation\/(formulas|rules|assistant|quiz|meteorology)$/,
+    pattern: /^\/navigation\/colreg-presentation$/,
+    parent: () => '/navigation',
+  },
+  {
+    pattern: /^\/navigation\/meteorology$/,
+    parent: () => '/navigation',
+  },
+  {
+    pattern: /^\/navigation\/(formulas|rules|assistant|quiz)$/,
     parent: () => '/hub/navigation',
   },
+  {
+    pattern: /^\/navigation$/,
+    parent: () => '/hub/navigation',
+  },
+
+  // Stability
   {
     pattern: /^\/stability\/formulas\/([^/]+)$/,
     parent: () => '/stability/formulas',
@@ -57,6 +131,12 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/stability',
   },
   {
+    pattern: /^\/stability$/,
+    parent: () => '/',
+  },
+
+  // Cargo
+  {
     pattern: /^\/cargo\/calculations\/(draft-survey|preloading|intermediate|postdischarge|comparative|ballast|density|bunker)$/,
     parent: () => '/cargo/calculations',
   },
@@ -68,10 +148,14 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/cargo\/(rules|assistant|quiz|formulas)$/,
     parent: () => '/hub/cargo',
   },
+
+  // Meteorology
   {
     pattern: /^\/meteorology\/(formulas|rules|assistant|quiz|topics)$/,
     parent: () => '/hub/meteorology',
   },
+
+  // Seamanship
   {
     pattern: /^\/seamanship\/calculations\/([^/]+)$/,
     parent: () => '/seamanship/calculations',
@@ -80,26 +164,40 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/seamanship\/(calculations|formulas|rules|assistant|quiz|knots)$/,
     parent: () => '/seamanship-menu',
   },
+
+  // Safety
   {
     pattern: /^\/safety\/(formulas|rules|assistant|quiz)$/,
     parent: () => '/safety-menu',
   },
-  {
-    pattern: /^\/machine\/(calculations|formulas|rules|assistant|quiz)$/,
-    parent: () => '/hub/machine',
-  },
+
+  // Environment
   {
     pattern: /^\/environment\/(calculations|formulas|rules|assistant|quiz)$/,
     parent: () => '/hub/environment',
   },
+
+  // SOLAS
   {
     pattern: /^\/solas\/(regulations|certificates|ship-requirements|safety-equipment)$/,
     parent: () => '/solas',
   },
   {
+    pattern: /^\/solas$/,
+    parent: () => '/',
+  },
+
+  // Regulations
+  {
     pattern: /^\/regulations\/([^/]+)$/,
     parent: () => '/regulations',
   },
+  {
+    pattern: /^\/regulations$/,
+    parent: () => '/',
+  },
+
+  // Menu pages
   {
     pattern: /^\/navigation-menu$/,
     parent: () => '/',
@@ -124,6 +222,8 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/tank-menu$/,
     parent: () => '/',
   },
+
+  // Calculation sub-pages
   {
     pattern: /^\/ballast$/,
     parent: () => '/calculations',
@@ -157,9 +257,21 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/calculations',
   },
   {
+    pattern: /^\/hydrodynamics$/,
+    parent: () => '/calculations',
+  },
+  {
+    pattern: /^\/converter$/,
+    parent: () => '/calculations',
+  },
+
+  // Weather
+  {
     pattern: /^\/weather-forecast$/,
     parent: () => '/weather-menu',
   },
+
+  // Top-level pages → home
   {
     pattern: /^\/location-selector$/,
     parent: () => '/',
@@ -189,28 +301,36 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/',
   },
   {
-    pattern: /^\/stability$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/solas$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/navigation$/,
-    parent: () => '/hub/navigation',
-  },
-  {
-    pattern: /^\/hydrodynamics$/,
-    parent: () => '/calculations',
-  },
-  {
     pattern: /^\/passage-plan$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/machinery$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/glossary$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/exam-preparation$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/moon-phases$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/clock$/,
+    parent: () => '/',
+  },
+  {
+    pattern: /^\/formulas$/,
     parent: () => '/',
   },
 ];
 
-const findParentPath = (pathname: string) => {
+export const findParentPath = (pathname: string): string => {
   for (const rule of navigationRules) {
     const match = pathname.match(rule.pattern);
     if (match) {
@@ -228,30 +348,46 @@ export const useNavigationHierarchy = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const navigateToParent = () => {
-      const parentPath = findParentPath(location.pathname);
-      if (location.pathname === '/' && parentPath === '/') {
-        navigate('/', { replace: true });
-        return;
-      }
-      navigate(parentPath, { replace: true });
-    };
+  const navigateToParent = useCallback(() => {
+    const parentPath = findParentPath(location.pathname);
+    if (location.pathname === '/' && parentPath === '/') {
+      return;
+    }
+    navigate(parentPath, { replace: true });
+  }, [location.pathname, navigate]);
 
+  useEffect(() => {
     // Handle mobile back button (Capacitor)
     let backButtonListener: { remove: () => void } | undefined;
-    CapacitorApp.addListener('backButton', ({ canGoBack }) => {
-      if (!canGoBack && location.pathname === '/') {
-        navigate('/', { replace: true });
-        return;
-      }
+    if (Capacitor.isNativePlatform()) {
+      CapacitorApp.addListener('backButton', ({ canGoBack }) => {
+        if (!canGoBack && location.pathname === '/') {
+          CapacitorApp.exitApp();
+          return;
+        }
+        navigateToParent();
+      }).then(listener => {
+        backButtonListener = listener;
+      });
+    }
+
+    // Handle browser back button (popstate)
+    // Push an extra history entry so we can intercept the back press
+    const handlePopState = (e: PopStateEvent) => {
+      // Prevent default browser back and navigate to logical parent instead
+      e.preventDefault();
+      // Re-push state so the next back press is also intercepted
+      window.history.pushState(null, '', location.pathname);
       navigateToParent();
-    }).then(listener => {
-      backButtonListener = listener;
-    });
+    };
+
+    // Push a state entry so popstate fires on back press
+    window.history.pushState(null, '', location.pathname);
+    window.addEventListener('popstate', handlePopState);
 
     return () => {
       backButtonListener?.remove();
+      window.removeEventListener('popstate', handlePopState);
     };
-  }, [location.pathname, navigate]);
+  }, [location.pathname, navigateToParent]);
 };
