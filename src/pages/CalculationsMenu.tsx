@@ -37,7 +37,7 @@ type CalcTool = {
   category: Category;
 };
 
-type Category = "all" | "navigation" | "stability" | "machine" | "converter";
+type Category = "all" | "navigation" | "stability" | "machine" | "ship-systems" | "converter";
 
 /* ─── Data ─── */
 const FILTERS: { key: Category; label: string }[] = [
