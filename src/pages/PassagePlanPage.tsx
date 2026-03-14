@@ -280,7 +280,7 @@ export default function PassagePlanPage() {
                 <img 
                   src={`/passage-plan/page_${page}.jpg`} 
                   alt={`Passage Plan Sayfa ${page}`}
-                  className="w-full rounded-lg"
+                  className={`w-full rounded-lg ${page === 1 ? 'rotate-180' : ''}`}
                   loading="lazy"
                 />
               </div>
