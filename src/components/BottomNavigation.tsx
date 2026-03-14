@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Calculator, BookOpen, BookA, Users } from "lucide-react";
+import { Calculator, BookOpen, BookA, Users, Ship } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: "Dersler", icon: BookOpen, to: "/lessons" },
   { label: "Sözlük", icon: BookA, to: "/glossary" },
   { label: "Personel", icon: Users, to: "/crew" },
+  { label: "Gemi Sistemleri", icon: Ship, to: "/ship-systems" },
 ] as const;
 
 export function BottomNavigation() {
