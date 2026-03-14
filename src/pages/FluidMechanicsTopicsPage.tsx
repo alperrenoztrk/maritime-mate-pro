@@ -79,8 +79,8 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     icon: Ruler,
     subtopics: [
       { id: "darcy-weisbach", title: "Darcy–Weisbach eşitliği", hasContent: true },
-      { id: "friction-factor", title: "Sürtünme faktörü ve Moody diyagramı", hasContent: false },
-      { id: "minor-losses", title: "Lokal kayıplar", hasContent: false },
+      { id: "friction-factor", title: "Sürtünme faktörü ve Moody diyagramı", hasContent: true },
+      { id: "minor-losses", title: "Lokal kayıplar", hasContent: true },
     ],
   },
   {
