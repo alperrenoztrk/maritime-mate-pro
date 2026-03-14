@@ -1,15 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
+import { shipSystemImages } from "@/data/shipSystemImages";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
+import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 
 export default function ShipSystemDetailPage() {
   const { sectionId } = useParams<{ sectionId: string }>();
   const [expandedTopic, setExpandedTopic] = useState<number | null>(0);
+  const [viewerImage, setViewerImage] = useState<{ src: string; alt: string } | null>(null);
 
   const section = sectionId ? shipSystemsData[sectionId] : null;
+  const images = sectionId ? shipSystemImages[sectionId] || [] : [];
 
   if (!section) {
     return (
@@ -33,6 +37,7 @@ export default function ShipSystemDetailPage() {
         <div className="mx-auto max-w-2xl px-4 py-4 space-y-3">
           {section.topics.map((topic, idx) => {
             const isOpen = expandedTopic === idx;
+            const topicImage = images[idx];
             return (
               <div key={idx} className="rounded-xl border border-border/30 bg-card/60 overflow-hidden">
                 <button
@@ -46,6 +51,21 @@ export default function ShipSystemDetailPage() {
 
                 {isOpen && (
                   <div className="border-t border-border/20 px-4 py-4 space-y-4">
+                    {/* Topic Image */}
+                    {topicImage && (
+                      <div
+                        className="overflow-hidden rounded-lg cursor-pointer group"
+                        onClick={() => setViewerImage({ src: topicImage, alt: topic.title })}
+                      >
+                        <img
+                          src={topicImage}
+                          alt={topic.title}
+                          className="w-full h-44 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
                     <p className="text-sm text-foreground/90 leading-relaxed">{topic.introduction}</p>
 
                     {topic.sections.map((sec, si) => (
@@ -101,6 +121,14 @@ export default function ShipSystemDetailPage() {
         </div>
       </div>
       <BottomNavigation />
+
+      {/* Image Viewer Modal */}
+      <ImageViewerModal
+        src={viewerImage?.src || ""}
+        alt={viewerImage?.alt}
+        isOpen={!!viewerImage}
+        onClose={() => setViewerImage(null)}
+      />
     </MobileLayout>
   );
 }
