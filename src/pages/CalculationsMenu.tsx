@@ -94,6 +94,16 @@ const CATEGORIZED: { title: string; cat: Category; items: CalcTool[] }[] = [
     ],
   },
   {
+    title: "Gemi Sistemleri ve Ekipmanları",
+    cat: "ship-systems" as Category,
+    items: [
+      { id: "deck-machinery", title: "Güverte Makineleri", desc: "Vinç, ırgat, mooring winch", icon: Anchor, to: "/machine-topics/ship-systems/topic/deck-machinery", category: "ship-systems" as Category },
+      { id: "nav-systems", title: "Seyir Sistemleri ve Cihazları", desc: "Radar, ECDIS, AIS, GPS", icon: Compass, to: "/machine-topics/ship-systems/topic/nav-systems", category: "ship-systems" as Category },
+      { id: "main-engine", title: "Ana Makine / Tahrik Sistemi", desc: "Ana motor, şaft, pervane", icon: Wrench, to: "/machine-topics/ship-systems/topic/main-engine", category: "ship-systems" as Category },
+      { id: "auxiliary", title: "Yardımcı Makineler", desc: "Jeneratör, kompresör, pompa", icon: Gauge, to: "/machine-topics/ship-systems/topic/auxiliary", category: "ship-systems" as Category },
+    ],
+  },
+  {
     title: "Dönüştürücüler",
     cat: "converter",
     items: [
