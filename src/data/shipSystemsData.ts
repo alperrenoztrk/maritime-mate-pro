@@ -468,7 +468,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             paragraphs: [
               "Manyetik pusula, gemideki demir ve çelik yapılardan kaynaklanan deviation (sapma) hatası taşır. Bu hata Flinders bar, yumuşak demir küreler ve mıknatıslarla düzeltilir (compass adjustment).",
               "Variation (iğne sapması) coğrafi konuma bağlıdır ve haritadan okunur. Yıllık değişimi vardır.",
-              "Toplam hata = Variation + Deviation. CADET kuralı: Compass + Deviation = Magnetic + Variation = True"
+              "Toplam hata = Variation + Deviation. CDMVT kuralı: Compass → Deviation → Magnetic → Variation → True"
             ],
             formula: {
               expression: "True Bearing = Compass Bearing + Deviation + Variation",
