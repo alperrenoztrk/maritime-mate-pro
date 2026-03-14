@@ -89,7 +89,7 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     title: "Pompa ve Sistem Eğrileri",
     icon: Zap,
     subtopics: [
-      { id: "pump-curves", title: "Pompa karakteristik eğrileri", hasContent: false },
+      { id: "pump-curves", title: "Pompa karakteristik eğrileri", hasContent: true },
       { id: "npsh-cavitation", title: "NPSH ve kavitasyon", hasContent: true },
       { id: "pump-power", title: "Pompa güç hesabı", hasContent: true },
     ],
