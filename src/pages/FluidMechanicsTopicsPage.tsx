@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { fluidMechanicsTopicContents } from "@/data/fluidMechanicsContent";
+import type { FluidTopicContent } from "@/data/fluidMechanicsContent";
 
 interface FluidSubTopic {
   id: string;
@@ -33,19 +35,6 @@ interface FluidMainTopic {
   title: string;
   icon: React.ElementType;
   subtopics: FluidSubTopic[];
-}
-
-interface FluidTopicContent {
-  title: string;
-  introduction: string;
-  content: string;
-  bulletPoints?: string[];
-  formula?: {
-    name: string;
-    expression: string;
-    description: string;
-  };
-  keyPoints?: string[];
 }
 
 const fluidMechanicsTopics: FluidMainTopic[] = [
