@@ -67,9 +67,9 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     title: "Akış Rejimleri ve Reynolds",
     icon: Waves,
     subtopics: [
-      { id: "laminar-turbulent", title: "Laminer ve türbülanslı akış", hasContent: false },
+      { id: "laminar-turbulent", title: "Laminer ve türbülanslı akış", hasContent: true },
       { id: "reynolds", title: "Reynolds sayısı ve kritik değerler", hasContent: true },
-      { id: "velocity-profile", title: "Hız profilleri", hasContent: false },
+      { id: "velocity-profile", title: "Hız profilleri", hasContent: true },
     ],
   },
   {
