@@ -44,8 +44,8 @@ const fluidMechanicsTopics: FluidMainTopic[] = [
     title: "Akışkan Özellikleri ve Basınç",
     icon: Gauge,
     subtopics: [
-      { id: "fluid-definition", title: "Akışkan tanımı ve sınıflandırma", hasContent: false },
-      { id: "density-viscosity", title: "Yoğunluk, özgül ağırlık ve viskozite", hasContent: false },
+      { id: "fluid-definition", title: "Akışkan tanımı ve sınıflandırma", hasContent: true },
+      { id: "density-viscosity", title: "Yoğunluk, özgül ağırlık ve viskozite", hasContent: true },
       { id: "pressure-pascal", title: "Basınç ve Pascal prensibi", hasContent: true },
       { id: "hydrostatic-pressure", title: "Hidrostatik basınç dağılımı", hasContent: true },
     ],
