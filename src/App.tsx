@@ -148,6 +148,7 @@ import LessonTopicsPage from "./pages/LessonTopicsPage";
 import LessonTopicDetailPage from "./pages/LessonTopicDetailPage";
 
 import ShipSystemsPage from "./pages/ShipSystemsPage";
+import ShipSystemDetailPage from "./pages/ShipSystemDetailPage";
 import StabilityTopicsPage from "./pages/StabilityTopicsPage";
 import CargoTopicsPage from "./pages/CargoTopicsPage";
 import SeamanshipTopicsPage from "./pages/SeamanshipTopicsPage";
