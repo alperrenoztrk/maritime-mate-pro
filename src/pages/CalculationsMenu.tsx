@@ -37,7 +37,7 @@ type CalcTool = {
   category: Category;
 };
 
-type Category = "all" | "navigation" | "stability" | "machine" | "converter";
+type Category = "all" | "navigation" | "stability" | "machine" | "ship-systems" | "converter";
 
 /* ─── Data ─── */
 const FILTERS: { key: Category; label: string }[] = [
@@ -45,6 +45,7 @@ const FILTERS: { key: Category; label: string }[] = [
   { key: "navigation", label: "Navigasyon" },
   { key: "stability", label: "Stabilite" },
   { key: "machine", label: "Makine" },
+  { key: "ship-systems", label: "Gemi Sistemleri" },
   { key: "converter", label: "Dönüştürücüler" },
 ];
 
@@ -90,6 +91,16 @@ const CATEGORIZED: { title: string; cat: Category; items: CalcTool[] }[] = [
       { id: "machine-calc", title: "Makine Hesaplamaları", desc: "Yakıt, yağ, soğutma", icon: Gauge, to: "/machine-calculations", category: "machine" },
       { id: "emissions", title: "Emisyon Hesabı", desc: "CO₂, SOx, NOx hesapları", icon: Flame, to: "/emissions", category: "machine" },
       { id: "structural", title: "Yapısal Hesaplar", desc: "Gemi yapısı dayanım", icon: Layers, to: "/structural", category: "machine" },
+    ],
+  },
+  {
+    title: "Gemi Sistemleri ve Ekipmanları",
+    cat: "ship-systems" as Category,
+    items: [
+      { id: "deck-machinery", title: "Güverte Makineleri", desc: "Vinç, ırgat, mooring winch", icon: Anchor, to: "/machine-topics/ship-systems/topic/deck-machinery", category: "ship-systems" as Category },
+      { id: "nav-systems", title: "Seyir Sistemleri ve Cihazları", desc: "Radar, ECDIS, AIS, GPS", icon: Compass, to: "/machine-topics/ship-systems/topic/nav-systems", category: "ship-systems" as Category },
+      { id: "main-engine", title: "Ana Makine / Tahrik Sistemi", desc: "Ana motor, şaft, pervane", icon: Wrench, to: "/machine-topics/ship-systems/topic/main-engine", category: "ship-systems" as Category },
+      { id: "auxiliary", title: "Yardımcı Makineler", desc: "Jeneratör, kompresör, pompa", icon: Gauge, to: "/machine-topics/ship-systems/topic/auxiliary", category: "ship-systems" as Category },
     ],
   },
   {
