@@ -3,6 +3,7 @@
 export interface ShipSystemTopic {
   title: string;
   introduction: string;
+  image?: string;
   sections: {
     heading: string;
     paragraphs: string[];
