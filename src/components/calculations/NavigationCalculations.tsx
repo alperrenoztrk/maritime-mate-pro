@@ -1900,7 +1900,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               <div className="text-muted-foreground">Kalan Mesafe</div>
                               <div className="font-mono text-lg">{Number.isFinite(progressCalc.remainingDistanceNm) ? progressCalc.remainingDistanceNm.toFixed(1) : "-"} nm</div>
                             </div>
-                            <div className="p-3 rounded border bg-rose-50 dark:bg-rose-900/20">
+                            <div className="p-3 rounded border bg-destructive/5 dark:bg-destructive/10">
                               <div className="text-muted-foreground">Kalan Süre</div>
                               <div className="font-mono text-lg">{formatHours(result.remainingTimeHours ?? Number.NaN)}</div>
                             </div>
