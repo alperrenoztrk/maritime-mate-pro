@@ -902,6 +902,22 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Güvenilirlik R(t)",
+      description: "Üstel dağılım ile zaman bazlı güvenilirlik hesabı: R(t) = e^(-t/MTBF)",
+      inputs: [
+        { key: "mtbf", label: "MTBF", unit: "saat", placeholder: "5000" },
+        { key: "t", label: "Hedef Süre (t)", unit: "saat", placeholder: "1000" },
+      ],
+      calculate: (v) => {
+        const lambda = 1 / v.mtbf;
+        const rt = Math.exp(-lambda * v.t) * 100;
+        return [
+          { label: "Arıza Oranı (λ)", value: `${(lambda * 1e6).toFixed(1)} × 10⁻⁶ /saat` },
+          { label: `R(${v.t}) Güvenilirlik`, value: `${rt.toFixed(2)}%` },
+        ];
+      },
+    },
   ],
   "energy-efficiency": [
     {
