@@ -4233,7 +4233,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               <span className="font-mono">{result.twilightTimes.astronomicalTwilightBegin}</span>
                             </div>
                             <Separator />
-                            <div className="flex justify-between p-2 bg-purple-50 dark:bg-purple-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-accent/5 dark:bg-accent/10 rounded">
                               <span>Astronomik Alacakaranlık Sonu</span>
                               <span className="font-mono">{result.twilightTimes.astronomicalTwilightEnd}</span>
                             </div>
