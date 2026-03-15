@@ -4904,7 +4904,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.pilotBoardingETA}</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Güvenli Draf</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Güvenli Draf</Label>
                   <p className="text-lg font-semibold">{result.safeDraft.toFixed(1)} m</p>
                 </div>
                 <div className="space-y-1">
