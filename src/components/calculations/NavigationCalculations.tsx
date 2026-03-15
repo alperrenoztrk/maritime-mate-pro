@@ -4763,7 +4763,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 </div>
               </div>
               <div className="space-y-1">
-                <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Önerilen Eylem</Label>
+                <Label className="text-sm font-medium text-muted-foreground">Önerilen Eylem</Label>
                 <p className="text-sm">{result.recommendedAction}</p>
               </div>
             </CardContent>
