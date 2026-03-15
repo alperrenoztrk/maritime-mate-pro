@@ -3306,14 +3306,14 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded border">
-                        <div className="text-sm text-muted-foreground">Toplam Derinlik</div>
-                        <div className="font-mono text-xl text-blue-600">{result.minimumDepth.toFixed(1)} m</div>
-                      </div>
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded border">
-                        <div className="text-sm text-muted-foreground">Tavsiye Zincir Boyu</div>
-                        <div className="font-mono text-xl text-green-600">{result.safeDraft.toFixed(1)} m</div>
-                      </div>
+                       <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
+                         <div className="text-sm text-muted-foreground">Toplam Derinlik</div>
+                         <div className="font-mono text-xl text-primary">{result.minimumDepth.toFixed(1)} m</div>
+                       </div>
+                       <div className="p-3 bg-success/5 dark:bg-success/10 rounded border">
+                         <div className="text-sm text-muted-foreground">Tavsiye Zincir Boyu</div>
+                         <div className="font-mono text-xl text-success">{result.safeDraft.toFixed(1)} m</div>
+                       </div>
                     </div>
                   )}
                 </CardContent>
