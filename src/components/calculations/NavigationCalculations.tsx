@@ -1503,9 +1503,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     }
                   >
                     <div className="flex items-center gap-5">
-                      <Icon className="w-10 h-10 text-blue-700 dark:text-blue-400 drop-shadow-lg" />
+                      <Icon className="w-10 h-10 text-primary drop-shadow-lg" />
                       <div className="flex-1">
-                        <div className="text-xl font-bold text-blue-700 dark:text-blue-400">{item.label}</div>
+                        <div className="text-xl font-bold text-primary">{item.label}</div>
                       </div>
                     </div>
                   </button>
