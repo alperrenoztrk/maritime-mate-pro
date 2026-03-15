@@ -1644,7 +1644,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-red-700">Varış Konumu</h4>
+                      <h4 className="font-semibold text-destructive">Varış Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="mercLat2">Enlem (°)</Label>
