@@ -5227,10 +5227,10 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             </div>
 
             {/* Hesaplama Türleri Seçimi */}
-            <Card className="mt-6 border-green-200 bg-green-50 dark:bg-green-950">
+              <Card className="mt-6 border-success/20 bg-success/5 dark:bg-success/10">
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Target className="h-5 w-5 text-green-600" />
+                  <Target className="h-5 w-5 text-success" />
                   🎯 Hesaplama Türü Seçimi
                 </CardTitle>
               </CardHeader>
