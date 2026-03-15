@@ -3219,7 +3219,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Anchor className="h-5 w-5 text-green-600" />
+                    <Anchor className="h-5 w-5 text-success" />
                     Demirleme Hesapları
                   </CardTitle>
                   <CardDescription>Su derinliği ve hava durumuna göre zincir boyu (scope)</CardDescription>
