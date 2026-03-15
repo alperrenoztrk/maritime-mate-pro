@@ -2635,7 +2635,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           type="text"
                           readOnly
                           defaultValue="02:30"
-                          className="bg-gray-50 dark:bg-gray-800"
+                          className="bg-muted"
                         />
                       </div>
                     </div>
