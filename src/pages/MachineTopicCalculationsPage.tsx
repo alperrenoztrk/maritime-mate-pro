@@ -664,6 +664,24 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Reaktif Güç",
+      description: "Aktif güç ve güç faktöründen reaktif gücü hesaplar.",
+      inputs: [
+        { key: "p", label: "Aktif Güç (P)", unit: "kW", placeholder: "300" },
+        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+      ],
+      calculate: (v) => {
+        const phi = Math.acos(v.pf);
+        const q = v.p * Math.tan(phi);
+        const s = v.p / v.pf;
+        return [
+          { label: "Reaktif Güç (Q)", value: `${q.toFixed(1)} kVAR` },
+          { label: "Görünür Güç (S)", value: `${s.toFixed(1)} kVA` },
+          { label: "Faz Açısı (φ)", value: `${(phi * 180 / Math.PI).toFixed(1)}°` },
+        ];
+      },
+    },
   ],
   "cooling-hvac": [
     {
