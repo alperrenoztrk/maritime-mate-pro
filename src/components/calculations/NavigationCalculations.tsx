@@ -5170,7 +5170,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣4️⃣ Astronomik Seyir",
           icon: Sun,
-          accent: "border-purple-200 bg-purple-50 dark:bg-purple-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "GHA / LHA ve declination hesapları",
             "Sextant correction (IC, Dip, Refraction)",
