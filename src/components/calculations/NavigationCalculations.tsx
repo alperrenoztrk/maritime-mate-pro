@@ -2670,7 +2670,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <h4 className="font-semibold flex items-center gap-2">
-                          <Waves className="h-4 w-4 text-blue-500" />
+                          <Waves className="h-4 w-4 text-primary" />
                           Akıntı Verileri
                         </h4>
                         <div className="space-y-2">
