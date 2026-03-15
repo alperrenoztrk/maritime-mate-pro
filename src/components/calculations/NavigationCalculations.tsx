@@ -4867,7 +4867,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Spring/Neap Faktörü</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Spring/Neap Faktörü</Label>
                   <p className="text-lg font-semibold">{result.springNeapFactor.toFixed(2)}</p>
                 </div>
                 <div className="space-y-1">
