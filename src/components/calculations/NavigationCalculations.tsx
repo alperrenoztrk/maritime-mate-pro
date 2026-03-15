@@ -4075,10 +4075,10 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-orange-50 dark:bg-orange-900/20">
+                       <Card className="bg-warning/5 dark:bg-warning/10">
                         <CardContent className="pt-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-orange-600">
+                            <div className="text-2xl font-bold text-warning">
                               {result.weatherDelay}
                             </div>
                             <div className="text-sm text-muted-foreground">Hava Gecikmesi (saat)</div>
