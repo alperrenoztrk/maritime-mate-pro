@@ -4065,10 +4065,10 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-cyan-50 dark:bg-cyan-900/20">
+                       <Card className="bg-accent/5 dark:bg-accent/10">
                         <CardContent className="pt-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-cyan-600">
+                            <div className="text-2xl font-bold text-accent">
                               {result.seaState}
                             </div>
                             <div className="text-sm text-muted-foreground">Douglas Deniz Durumu</div>
