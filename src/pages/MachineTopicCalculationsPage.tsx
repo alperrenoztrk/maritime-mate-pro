@@ -746,6 +746,37 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [{ label: "Carnot COP", value: copCarnot.toFixed(2) }];
       },
     },
+    {
+      name: "Kompresör İşi",
+      description: "Soğutma kompresörünün iş değerini hesaplar: W = ṁ × (h₂ - h₁)",
+      inputs: [
+        { key: "mdot", label: "Kütle Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
+        { key: "h1", label: "Kompresör Girişi (h₁)", unit: "kJ/kg", placeholder: "400" },
+        { key: "h2", label: "Kompresör Çıkışı (h₂)", unit: "kJ/kg", placeholder: "450" },
+      ],
+      calculate: (v) => {
+        const w = v.mdot * (v.h2 - v.h1);
+        return [{ label: "Kompresör Gücü (W)", value: `${w.toFixed(2)} kW` }];
+      },
+    },
+    {
+      name: "Nem Alma Kapasitesi",
+      description: "Klima sisteminde nem alma kapasitesini hesaplar.",
+      inputs: [
+        { key: "q", label: "Hava Debisi", unit: "m³/h", placeholder: "5000" },
+        { key: "w1", label: "Giriş Nem Oranı (W₁)", unit: "g/kg", placeholder: "14" },
+        { key: "w2", label: "Çıkış Nem Oranı (W₂)", unit: "g/kg", placeholder: "8" },
+        { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.2" },
+      ],
+      calculate: (v) => {
+        const mAir = v.q * v.rho / 3600; // kg/s
+        const moisture = mAir * (v.w1 - v.w2) / 1000; // kg/s water removed
+        return [
+          { label: "Nem Alma Kapasitesi", value: `${(moisture * 3600).toFixed(2)} kg/saat` },
+          { label: "Latent Yük", value: `${(moisture * 2450).toFixed(1)} kW` },
+        ];
+      },
+    },
   ],
   "fuel-technology": [
     {
