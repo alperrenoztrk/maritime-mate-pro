@@ -2025,13 +2025,13 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result?.estimatedPosition && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded border">
+                      <div className="p-3 bg-destructive/5 dark:bg-destructive/10 rounded border">
                         <div className="text-sm text-muted-foreground">DR Enlemi</div>
-                        <div className="font-mono text-xl text-red-600">{result.estimatedPosition.lat?.toFixed(5)}°</div>
+                        <div className="font-mono text-xl text-destructive">{result.estimatedPosition.lat?.toFixed(5)}°</div>
                       </div>
-                      <div className="p-3 bg-pink-50 dark:bg-pink-900/20 rounded border">
+                      <div className="p-3 bg-destructive/5 dark:bg-destructive/10 rounded border">
                         <div className="text-sm text-muted-foreground">DR Boylamı</div>
-                        <div className="font-mono text-xl text-pink-600">{result.estimatedPosition.lon?.toFixed(5)}°</div>
+                        <div className="font-mono text-xl text-destructive">{result.estimatedPosition.lon?.toFixed(5)}°</div>
                       </div>
                     </div>
                   )}
