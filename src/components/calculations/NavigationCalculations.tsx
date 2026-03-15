@@ -5224,175 +5224,124 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 </div>
               </CardContent>
             </Card>
-          </Tabs>
-        </CardContent>
-      </Card>
-      <div className="mt-6">
-        <Button onClick={calculate} className="w-full">
-          <Calculator className="mr-2 h-4 w-4" />
-          Hesapla
-        </Button>
-      </div>
-
-      {/* Standalone Navigation Calculators */}
-      <Separator className="my-6" />
-      <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
-        <Calculator className="h-5 w-5" />
-        Ek Seyir Hesaplayıcıları
-      </h3>
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Radar className="h-4 w-4" /> Radar Ufku</CardTitle></CardHeader>
-          <CardContent>
-            <NavStandaloneCalc inputs={[
-              { key: "h1", label: "Anten Yüksekliği (h₁)", unit: "m", placeholder: "25" },
-              { key: "h2", label: "Hedef Yüksekliği (h₂)", unit: "m", placeholder: "10" },
-            ]} calculate={(v) => {
-              const d = 2.23 * (Math.sqrt(v.h1) + Math.sqrt(v.h2));
-              return [{ label: "Radar Ufku", value: `${d.toFixed(1)} NM` }];
-            }} />
           </CardContent>
         </Card>
-
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Eye className="h-4 w-4" /> Coğrafi Görüş Mesafesi</CardTitle></CardHeader>
-          <CardContent>
-            <NavStandaloneCalc inputs={[
-              { key: "hObs", label: "Gözlemci Yüksekliği", unit: "m", placeholder: "15" },
-              { key: "hObj", label: "Hedef Yüksekliği", unit: "m", placeholder: "20" },
-            ]} calculate={(v) => {
-              const dObs = 2.08 * Math.sqrt(v.hObs);
-              const dObj = 2.08 * Math.sqrt(v.hObj);
-              return [
-                { label: "Gözlemci Ufku", value: `${dObs.toFixed(1)} NM` },
-                { label: "Hedef Ufku", value: `${dObj.toFixed(1)} NM` },
-                { label: "Toplam Mesafe", value: `${(dObs + dObj).toFixed(1)} NM` },
-              ];
-            }} />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Navigation className="h-4 w-4" /> Dönüş Hesabı (ROT)</CardTitle></CardHeader>
-          <CardContent>
-            <NavStandaloneCalc inputs={[
-              { key: "speed", label: "Gemi Hızı", unit: "knot", placeholder: "12" },
-              { key: "rudder", label: "Dümen Açısı", unit: "°", placeholder: "15" },
-              { key: "length", label: "Gemi Boyu", unit: "m", placeholder: "180" },
-              { key: "courseChange", label: "Rota Değişimi", unit: "°", placeholder: "90" },
-            ]} calculate={(v) => {
-              const speedMs = v.speed * 0.5144;
-              const rudderRad = v.rudder * Math.PI / 180;
-              const tdFactor = Math.max(2, 5 - v.rudder * 0.1);
-              const tacticalDiameter = v.length * tdFactor;
-              const turnRadius = tacticalDiameter / 2;
-              const advance = tacticalDiameter * 0.8 * (v.courseChange / 90);
-              const transfer = tacticalDiameter * 0.5 * Math.min(1, v.courseChange / 90);
-              const rot = (speedMs * Math.sin(rudderRad) / turnRadius) * (180 / Math.PI) * 60;
-              const turnTime = rot > 0 ? v.courseChange / rot : 0;
-              return [
-                { label: "ROT", value: `${rot.toFixed(1)} °/dk` },
-                { label: "Advance", value: `${advance.toFixed(0)} m` },
-                { label: "Transfer", value: `${transfer.toFixed(0)} m` },
-                { label: "Tactical Diameter", value: `${tacticalDiameter.toFixed(0)} m` },
-                { label: "Dönüş Süresi", value: `${turnTime.toFixed(1)} dk` },
-              ];
-            }} />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Ship className="h-4 w-4" /> Squat Hesabı</CardTitle></CardHeader>
-          <CardContent>
-            <NavStandaloneCalc inputs={[
-              { key: "cb", label: "Blok Katsayısı (C_b)", unit: "", placeholder: "0.82" },
-              { key: "speed", label: "Gemi Hızı", unit: "knot", placeholder: "10" },
-              { key: "draft", label: "Draft", unit: "m", placeholder: "10" },
-              { key: "depth", label: "Su Derinliği", unit: "m", placeholder: "14" },
-            ]} calculate={(v) => {
-              const squatOpen = v.cb * v.speed * v.speed / 100;
-              const blockage = (v.draft * 30) / (v.depth * 50);
-              const squatConfined = squatOpen * (1 + blockage);
-              const ukc = v.depth - v.draft - squatConfined;
-              return [
-                { label: "Squat (Açık Su)", value: `${squatOpen.toFixed(2)} m` },
-                { label: "Squat (Dar Su)", value: `${squatConfined.toFixed(2)} m` },
-                { label: "Net UKC", value: `${ukc.toFixed(2)} m` },
-                { label: "UKC Durumu", value: ukc < 1 ? "DİKKAT" : ukc < 2 ? "Marginal" : "Yeterli" },
-              ];
-            }} />
-          </CardContent>
-        </Card>
-
-        <Card className="md:col-span-2">
-          <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Target className="h-4 w-4" /> Wheel Over Point (WOP)</CardTitle></CardHeader>
-          <CardContent>
-            <NavStandaloneCalc inputs={[
-              { key: "advance", label: "Advance (90° için)", unit: "m", placeholder: "500" },
-              { key: "transfer", label: "Transfer (90° için)", unit: "m", placeholder: "250" },
-              { key: "courseChange", label: "Rota Değişimi", unit: "°", placeholder: "60" },
-            ]} calculate={(v) => {
-              const changeRad = v.courseChange * Math.PI / 180;
-              const wopDist = v.advance * Math.sin(changeRad / 2) + v.transfer * Math.cos(changeRad / 2);
-              const offset = v.transfer * Math.sin(changeRad / 2);
-              return [
-                { label: "WOP Mesafesi", value: `${wopDist.toFixed(0)} m (${(wopDist / 1852).toFixed(2)} NM)` },
-                { label: "Yanal Offset", value: `${offset.toFixed(0)} m` },
-              ];
-            }} />
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
-};
-
-function NavStandaloneCalc({ inputs, calculate }: {
-  inputs: { key: string; label: string; unit: string; placeholder?: string }[];
-  calculate: (vals: Record<string, number>) => { label: string; value: string }[];
-}) {
-  const [vals, setVals] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<{ label: string; value: string }[] | null>(null);
-
-  const handleCalc = () => {
-    const numVals: Record<string, number> = {};
-    for (const inp of inputs) {
-      const v = parseFloat(vals[inp.key] || inp.placeholder || "0");
-      if (isNaN(v)) return;
-      numVals[inp.key] = v;
-    }
-    setResults(calculate(numVals));
-  };
-
-  return (
-    <div className="space-y-3">
-      <div className="grid gap-3 sm:grid-cols-2">
-        {inputs.map((inp) => (
-          <div key={inp.key} className="space-y-1">
-            <Label className="text-xs">{inp.label} {inp.unit && <span className="text-muted-foreground">({inp.unit})</span>}</Label>
-            <Input
-              type="number"
-              placeholder={inp.placeholder}
-              value={vals[inp.key] || ""}
-              onChange={(e) => setVals((p) => ({ ...p, [inp.key]: e.target.value }))}
-              className="h-9"
-            />
-          </div>
-        ))}
-      </div>
-      <Button onClick={handleCalc} size="sm" className="w-full gap-2">
-        <Calculator className="h-4 w-4" /> Hesapla
-      </Button>
-      {results && (
-        <div className="bg-primary/5 rounded-lg p-3 space-y-1">
-          {results.map((r, i) => (
-            <div key={i} className="flex justify-between text-sm">
-              <span className="text-muted-foreground">{r.label}</span>
-              <span className="font-semibold">{r.value}</span>
-            </div>
-          ))}
+        <div className="mt-6">
+          <Button onClick={calculate} className="w-full">
+            <Calculator className="mr-2 h-4 w-4" />
+            Hesapla
+          </Button>
         </div>
-      )}
-    </div>
-  );
-}
+
+        {/* Standalone Navigation Calculators */}
+        <Separator className="my-6" />
+        <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
+          <Calculator className="h-5 w-5" />
+          Ek Seyir Hesaplayıcıları
+        </h3>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Radar className="h-4 w-4" /> Radar Ufku</CardTitle></CardHeader>
+            <CardContent>
+              <NavStandaloneCalc inputs={[
+                { key: "h1", label: "Anten Yüksekliği (h₁)", unit: "m", placeholder: "25" },
+                { key: "h2", label: "Hedef Yüksekliği (h₂)", unit: "m", placeholder: "10" },
+              ]} calculate={(v) => {
+                const d = 2.23 * (Math.sqrt(v.h1) + Math.sqrt(v.h2));
+                return [{ label: "Radar Ufku", value: `${d.toFixed(1)} NM` }];
+              }} />
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Eye className="h-4 w-4" /> Coğrafi Görüş Mesafesi</CardTitle></CardHeader>
+            <CardContent>
+              <NavStandaloneCalc inputs={[
+                { key: "hObs", label: "Gözlemci Yüksekliği", unit: "m", placeholder: "15" },
+                { key: "hObj", label: "Hedef Yüksekliği", unit: "m", placeholder: "20" },
+              ]} calculate={(v) => {
+                const dObs = 2.08 * Math.sqrt(v.hObs);
+                const dObj = 2.08 * Math.sqrt(v.hObj);
+                return [
+                  { label: "Gözlemci Ufku", value: `${dObs.toFixed(1)} NM` },
+                  { label: "Hedef Ufku", value: `${dObj.toFixed(1)} NM` },
+                  { label: "Toplam Mesafe", value: `${(dObs + dObj).toFixed(1)} NM` },
+                ];
+              }} />
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Navigation className="h-4 w-4" /> Dönüş Hesabı (ROT)</CardTitle></CardHeader>
+            <CardContent>
+              <NavStandaloneCalc inputs={[
+                { key: "speed", label: "Gemi Hızı", unit: "knot", placeholder: "12" },
+                { key: "rudder", label: "Dümen Açısı", unit: "°", placeholder: "15" },
+                { key: "length", label: "Gemi Boyu", unit: "m", placeholder: "180" },
+                { key: "courseChange", label: "Rota Değişimi", unit: "°", placeholder: "90" },
+              ]} calculate={(v) => {
+                const speedMs = v.speed * 0.5144;
+                const rudderRad = v.rudder * Math.PI / 180;
+                const tdFactor = Math.max(2, 5 - v.rudder * 0.1);
+                const tacticalDiameter = v.length * tdFactor;
+                const turnRadius = tacticalDiameter / 2;
+                const advance = tacticalDiameter * 0.8 * (v.courseChange / 90);
+                const transfer = tacticalDiameter * 0.5 * Math.min(1, v.courseChange / 90);
+                const rot = (speedMs * Math.sin(rudderRad) / turnRadius) * (180 / Math.PI) * 60;
+                const turnTime = rot > 0 ? v.courseChange / rot : 0;
+                return [
+                  { label: "ROT", value: `${rot.toFixed(1)} °/dk` },
+                  { label: "Advance", value: `${advance.toFixed(0)} m` },
+                  { label: "Transfer", value: `${transfer.toFixed(0)} m` },
+                  { label: "Tactical Diameter", value: `${tacticalDiameter.toFixed(0)} m` },
+                  { label: "Dönüş Süresi", value: `${turnTime.toFixed(1)} dk` },
+                ];
+              }} />
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Ship className="h-4 w-4" /> Squat Hesabı</CardTitle></CardHeader>
+            <CardContent>
+              <NavStandaloneCalc inputs={[
+                { key: "cb", label: "Blok Katsayısı (C_b)", unit: "", placeholder: "0.82" },
+                { key: "speed", label: "Gemi Hızı", unit: "knot", placeholder: "10" },
+                { key: "draft", label: "Draft", unit: "m", placeholder: "10" },
+                { key: "depth", label: "Su Derinliği", unit: "m", placeholder: "14" },
+              ]} calculate={(v) => {
+                const squatOpen = v.cb * v.speed * v.speed / 100;
+                const blockage = (v.draft * 30) / (v.depth * 50);
+                const squatConfined = squatOpen * (1 + blockage);
+                const ukc = v.depth - v.draft - squatConfined;
+                return [
+                  { label: "Squat (Açık Su)", value: `${squatOpen.toFixed(2)} m` },
+                  { label: "Squat (Dar Su)", value: `${squatConfined.toFixed(2)} m` },
+                  { label: "Net UKC", value: `${ukc.toFixed(2)} m` },
+                  { label: "UKC Durumu", value: ukc < 1 ? "DİKKAT" : ukc < 2 ? "Marginal" : "Yeterli" },
+                ];
+              }} />
+            </CardContent>
+          </Card>
+
+          <Card className="md:col-span-2">
+            <CardHeader className="pb-2"><CardTitle className="text-base flex items-center gap-2"><Target className="h-4 w-4" /> Wheel Over Point (WOP)</CardTitle></CardHeader>
+            <CardContent>
+              <NavStandaloneCalc inputs={[
+                { key: "advance", label: "Advance (90° için)", unit: "m", placeholder: "500" },
+                { key: "transfer", label: "Transfer (90° için)", unit: "m", placeholder: "250" },
+                { key: "courseChange", label: "Rota Değişimi", unit: "°", placeholder: "60" },
+              ]} calculate={(v) => {
+                const changeRad = v.courseChange * Math.PI / 180;
+                const wopDist = v.advance * Math.sin(changeRad / 2) + v.transfer * Math.cos(changeRad / 2);
+                const offset = v.transfer * Math.sin(changeRad / 2);
+                return [
+                  { label: "WOP Mesafesi", value: `${wopDist.toFixed(0)} m (${(wopDist / 1852).toFixed(2)} NM)` },
+                  { label: "Yanal Offset", value: `${offset.toFixed(0)} m` },
+                ];
+              }} />
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
