@@ -4688,7 +4688,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.gcInitialBearing.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Son Doğrultu</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Son Doğrultu</Label>
                   <p className="text-lg font-semibold">{result.gcFinalBearing.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
