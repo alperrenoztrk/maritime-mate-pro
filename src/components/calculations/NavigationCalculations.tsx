@@ -4871,7 +4871,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.springNeapFactor.toFixed(2)}</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Akımı Doğrultusu</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Akımı Doğrultusu</Label>
                   <p className="text-lg font-semibold">{result.tidalStreamDirection.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
