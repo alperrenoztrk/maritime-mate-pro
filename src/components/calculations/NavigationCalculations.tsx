@@ -2035,7 +2035,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                   )}
-                  <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border">
+                  <div className="mt-4 p-3 bg-warning/5 dark:bg-warning/10 rounded border">
                     <div className="text-sm">
                       <strong>Not:</strong> DR (Dead Reckoning) sadece pusula ve hızı temel alır. 
                       Akıntı, rüzgâr ve diğer dış etkenler hesaba katılmaz. Gerçek konum için 
