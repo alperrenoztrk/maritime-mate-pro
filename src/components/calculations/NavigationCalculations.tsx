@@ -3167,7 +3167,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Port Approach Parameters */}
                   <div>
-                    <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-success flex items-center gap-2 mb-4">
                       <Anchor className="h-4 w-4" />
                       Yaklaşım Parametreleri
                     </h4>
