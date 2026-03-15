@@ -4879,7 +4879,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.tidalAcceleration.toFixed(2)} m/sa</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Akımı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Akımı</Label>
                   <p className="text-lg font-semibold">{result.tidalStream.toFixed(1)} knot</p>
                 </div>
               </div>
