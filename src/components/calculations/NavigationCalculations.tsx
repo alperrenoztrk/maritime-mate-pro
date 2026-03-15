@@ -3761,7 +3761,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           </div>
                           <div className="text-center space-y-1">
                             <div className="text-xl sm:text-2xl font-semibold">{moonPhase.illumination}%</div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">Aydınlanma</div>
+                            <div className="text-sm text-muted-foreground">Aydınlanma</div>
                           </div>
                         </div>
                       </CardContent>
