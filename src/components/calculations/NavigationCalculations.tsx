@@ -4274,8 +4274,8 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </CardHeader>
                       <CardContent>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="text-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-yellow-600">
+                           <div className="text-center p-3 bg-warning/5 dark:bg-warning/10 rounded-lg">
+                             <div className="text-xl font-bold text-warning">
                               {result.sunPosition.altitude.toFixed(1)}°
                             </div>
                             <div className="text-sm text-muted-foreground">Yükseklik</div>
