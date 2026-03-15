@@ -3602,9 +3602,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         </div>
 
                         {/* Additional Information */}
-                        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded border">
-                          <h5 className="font-semibold text-blue-700 mb-2">UKC Hesaplama Formülü:</h5>
-                          <div className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+                        <div className="p-4 bg-primary/5 dark:bg-primary/10 rounded border">
+                          <h5 className="font-semibold text-primary mb-2">UKC Hesaplama Formülü:</h5>
+                          <div className="text-sm space-y-1 text-muted-foreground">
                             <div>• <strong>Efektif Draft</strong> = Draft + Squat + |Trim|</div>
                             <div>• <strong>Mevcut Su Derinliği</strong> = Kart Datumu + Gelgit Yüksekliği - Dalga İlavesi</div>
                             <div>• <strong>Mevcut UKC</strong> = Mevcut Su Derinliği - Efektif Draft</div>
