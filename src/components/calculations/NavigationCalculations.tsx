@@ -2876,7 +2876,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Other Compass Errors */}
                   <div>
-                    <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-success flex items-center gap-2 mb-4">
                       <Target className="h-4 w-4" />
                       Diğer Pusula Hataları
                     </h4>
