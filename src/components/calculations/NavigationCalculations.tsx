@@ -5146,7 +5146,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣2️⃣ Seyir Emniyeti Hesapları",
           icon: Anchor,
-          accent: "border-fuchsia-200 bg-fuchsia-50 dark:bg-fuchsia-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "UKC ve squat hesapları",
             "Safe speed ve safe passing distance",
