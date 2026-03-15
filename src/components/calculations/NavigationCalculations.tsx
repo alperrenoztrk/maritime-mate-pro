@@ -4750,7 +4750,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.tcpa.toFixed(1)} dakika</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Çarpışma Riski</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Çarpışma Riski</Label>
                   <Badge variant={
                     result.collisionRisk === 'high' ? 'destructive' :
                     result.collisionRisk === 'medium' ? 'default' :
