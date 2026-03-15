@@ -1503,9 +1503,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     }
                   >
                     <div className="flex items-center gap-5">
-                      <Icon className="w-10 h-10 text-blue-700 dark:text-blue-400 drop-shadow-lg" />
+                      <Icon className="w-10 h-10 text-primary drop-shadow-lg" />
                       <div className="flex-1">
-                        <div className="text-xl font-bold text-blue-700 dark:text-blue-400">{item.label}</div>
+                        <div className="text-xl font-bold text-primary">{item.label}</div>
                       </div>
                     </div>
                   </button>
@@ -1518,7 +1518,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Globe className="h-5 w-5 text-blue-500" />
+                    <Globe className="h-5 w-5 text-primary" />
                     Great Circle Sailing (Büyük Daire Seyri)
                   </CardTitle>
                   <CardDescription>
@@ -1528,7 +1528,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-green-700">Başlangıç Konumu</h4>
+                      <h4 className="font-semibold text-success">Başlangıç Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="gcLat1">Enlem (°)</Label>
@@ -1555,7 +1555,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-red-700">Varış Konumu</h4>
+                      <h4 className="font-semibold text-destructive">Varış Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="gcLat2">Enlem (°)</Label>
@@ -1589,13 +1589,13 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded border">
+                      <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
                         <div className="text-sm text-muted-foreground">Great Circle Mesafe</div>
-                        <div className="font-mono text-xl text-blue-600">{result.gcDistance?.toFixed(2)} nm</div>
+                        <div className="font-mono text-xl text-primary">{result.gcDistance?.toFixed(2)} nm</div>
                       </div>
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded border">
+                      <div className="p-3 bg-success/5 dark:bg-success/10 rounded border">
                         <div className="text-sm text-muted-foreground">İlk Pusula</div>
-                        <div className="font-mono text-xl text-green-600">{result.gcInitialBearing?.toFixed(1)}°</div>
+                        <div className="font-mono text-xl text-success">{result.gcInitialBearing?.toFixed(1)}°</div>
                       </div>
                     </div>
                   )}
@@ -1617,7 +1617,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-green-700">Başlangıç Konumu</h4>
+                      <h4 className="font-semibold text-success">Başlangıç Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="mercLat1">Enlem (°)</Label>
@@ -1644,7 +1644,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-red-700">Varış Konumu</h4>
+                      <h4 className="font-semibold text-destructive">Varış Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="mercLat2">Enlem (°)</Label>
@@ -1678,17 +1678,17 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result && (
                     <div className="mt-4 grid grid-cols-3 gap-4">
-                      <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded border">
+                      <div className="p-3 bg-accent/5 dark:bg-accent/10 rounded border">
                         <div className="text-sm text-muted-foreground">Rhumb Line Mesafe</div>
-                        <div className="font-mono text-xl text-purple-600">{result.rhumbDistance?.toFixed(2)} nm</div>
+                        <div className="font-mono text-xl text-accent">{result.rhumbDistance?.toFixed(2)} nm</div>
                       </div>
-                      <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded border">
+                      <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
                         <div className="text-sm text-muted-foreground">Pusula (Sabit)</div>
-                        <div className="font-mono text-xl text-indigo-600">{result.rhumbBearing?.toFixed(1)}°</div>
+                        <div className="font-mono text-xl text-primary">{result.rhumbBearing?.toFixed(1)}°</div>
                       </div>
-                      <div className="p-3 bg-cyan-50 dark:bg-cyan-900/20 rounded border">
+                      <div className="p-3 bg-secondary/5 dark:bg-secondary/10 rounded border">
                         <div className="text-sm text-muted-foreground">Departure</div>
-                        <div className="font-mono text-xl text-cyan-600">{result.departure?.toFixed(2)} nm</div>
+                        <div className="font-mono text-xl text-secondary">{result.departure?.toFixed(2)} nm</div>
                       </div>
                     </div>
                   )}
@@ -1888,19 +1888,19 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         </div>
                         {result?.averageSpeed !== undefined && (
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-                            <div className="p-3 rounded border bg-emerald-50 dark:bg-emerald-900/20">
+                            <div className="p-3 rounded border bg-success/5 dark:bg-success/10">
                               <div className="text-muted-foreground">Ortalama Hız (SMG)</div>
                               <div className="font-mono text-lg">{result.averageSpeed?.toFixed(2)} kn</div>
                             </div>
-                            <div className="p-3 rounded border bg-blue-50 dark:bg-blue-900/20">
+                            <div className="p-3 rounded border bg-primary/5 dark:bg-primary/10">
                               <div className="text-muted-foreground">DMG</div>
                               <div className="font-mono text-lg">{result.dmg?.toFixed(1)} nm</div>
                             </div>
-                            <div className="p-3 rounded border bg-amber-50 dark:bg-amber-900/20">
+                            <div className="p-3 rounded border bg-warning/5 dark:bg-warning/10">
                               <div className="text-muted-foreground">Kalan Mesafe</div>
                               <div className="font-mono text-lg">{Number.isFinite(progressCalc.remainingDistanceNm) ? progressCalc.remainingDistanceNm.toFixed(1) : "-"} nm</div>
                             </div>
-                            <div className="p-3 rounded border bg-rose-50 dark:bg-rose-900/20">
+                            <div className="p-3 rounded border bg-destructive/5 dark:bg-destructive/10">
                               <div className="text-muted-foreground">Kalan Süre</div>
                               <div className="font-mono text-lg">{formatHours(result.remainingTimeHours ?? Number.NaN)}</div>
                             </div>
@@ -1917,13 +1917,13 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result?.eta && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded border">
+                      <div className="p-3 bg-warning/5 dark:bg-warning/10 rounded border">
                         <div className="text-sm text-muted-foreground">Tahmini Varış Zamanı (ETA)</div>
-                        <div className="font-mono text-xl text-orange-600">{result.eta}</div>
+                        <div className="font-mono text-xl text-warning">{result.eta}</div>
                       </div>
-                      <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border">
+                      <div className="p-3 bg-warning/5 dark:bg-warning/10 rounded border">
                         <div className="text-sm text-muted-foreground">Seyir Süresi</div>
-                        <div className="font-mono text-xl text-yellow-600">{result.timeToGo?.toFixed(1)} saat</div>
+                        <div className="font-mono text-xl text-warning">{result.timeToGo?.toFixed(1)} saat</div>
                       </div>
                     </div>
                   )}
@@ -1936,7 +1936,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Navigation className="h-5 w-5 text-red-500" />
+                    <Navigation className="h-5 w-5 text-destructive" />
                     DR (Dead Reckoning) Plotting
                   </CardTitle>
                   <CardDescription>
@@ -1946,7 +1946,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-green-700">Başlangıç Konumu</h4>
+                      <h4 className="font-semibold text-success">Başlangıç Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="drLat">Son Bilinen Enlem (°)</Label>
@@ -1981,7 +1981,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-blue-700">Seyir Verileri</h4>
+                      <h4 className="font-semibold text-primary">Seyir Verileri</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="drCourse">Seyir Edilen Pusula (°)</Label>
@@ -2025,17 +2025,17 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result?.estimatedPosition && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded border">
+                      <div className="p-3 bg-destructive/5 dark:bg-destructive/10 rounded border">
                         <div className="text-sm text-muted-foreground">DR Enlemi</div>
-                        <div className="font-mono text-xl text-red-600">{result.estimatedPosition.lat?.toFixed(5)}°</div>
+                        <div className="font-mono text-xl text-destructive">{result.estimatedPosition.lat?.toFixed(5)}°</div>
                       </div>
-                      <div className="p-3 bg-pink-50 dark:bg-pink-900/20 rounded border">
+                      <div className="p-3 bg-destructive/5 dark:bg-destructive/10 rounded border">
                         <div className="text-sm text-muted-foreground">DR Boylamı</div>
-                        <div className="font-mono text-xl text-pink-600">{result.estimatedPosition.lon?.toFixed(5)}°</div>
+                        <div className="font-mono text-xl text-destructive">{result.estimatedPosition.lon?.toFixed(5)}°</div>
                       </div>
                     </div>
                   )}
-                  <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border">
+                  <div className="mt-4 p-3 bg-warning/5 dark:bg-warning/10 rounded border">
                     <div className="text-sm">
                       <strong>Not:</strong> DR (Dead Reckoning) sadece pusula ve hızı temel alır. 
                       Akıntı, rüzgâr ve diğer dış etkenler hesaba katılmaz. Gerçek konum için 
@@ -2051,7 +2051,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <MapPin className="h-5 w-5 text-green-600" />
+                    <MapPin className="h-5 w-5 text-success" />
                     Fix Mevkii (Kerteriz / Mesafe ile)
                   </CardTitle>
                   <CardDescription>Kara veya sabit cisim kerteriz/mesafeleri ile gerçek mevkii</CardDescription>
@@ -2085,7 +2085,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Navigation className="h-5 w-5 text-purple-600" />
+                    <Navigation className="h-5 w-5 text-accent" />
                     Koçanlı Mevki (Running Fix)
                   </CardTitle>
                   <CardDescription>Tek kerteriz hattı ve süre/yol ile mevki</CardDescription>
@@ -2119,7 +2119,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <MapPin className="h-5 w-5 text-blue-500" />
+                    <MapPin className="h-5 w-5 text-primary" />
                     Konum Koordinatları
                   </CardTitle>
                 </CardHeader>
@@ -2127,7 +2127,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <div className="space-y-6">
                     {/* Departure Position */}
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-green-700 flex items-center gap-2">
+                      <h4 className="font-semibold text-success flex items-center gap-2">
                         <Navigation className="h-4 w-4" />
                         Başlangıç Konumu
                       </h4>
@@ -2151,7 +2151,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {/* Arrival Position */}
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-red-700 flex items-center gap-2">
+                      <h4 className="font-semibold text-destructive flex items-center gap-2">
                         <Target className="h-4 w-4" />
                         Varış Konumu
                       </h4>
@@ -2217,7 +2217,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Navigation className="h-5 w-5 text-blue-500" />
+                    <Navigation className="h-5 w-5 text-primary" />
                     Plane Sailing
                   </CardTitle>
                   <CardDescription>
@@ -2284,7 +2284,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <MapPin className="h-5 w-5 text-green-500" />
+                    <MapPin className="h-5 w-5 text-success" />
                     Traverse Sailing
                   </CardTitle>
                   <CardDescription>
@@ -2425,7 +2425,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Target className="h-5 w-5 text-purple-500" />
+                    <Target className="h-5 w-5 text-accent" />
                     Route Planning
                   </CardTitle>
                   <CardDescription>
@@ -2507,7 +2507,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                  <div className="mt-6 p-4 bg-accent/5 dark:bg-accent/10 rounded-lg">
                     <h4 className="font-semibold mb-2">Route Planning Faktörleri:</h4>
                     <div className="text-sm space-y-1">
                       <p>• Hava durumu koşulları</p>
@@ -2525,7 +2525,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Clock className="h-5 w-5 text-orange-500" />
+                    <Clock className="h-5 w-5 text-warning" />
                     Real Time Running
                   </CardTitle>
                   <CardDescription>
@@ -2635,12 +2635,12 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           type="text"
                           readOnly
                           defaultValue="02:30"
-                          className="bg-gray-50 dark:bg-gray-800"
+                          className="bg-muted"
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                  <div className="mt-6 p-4 bg-warning/5 dark:bg-warning/10 rounded-lg">
                     <h4 className="font-semibold mb-2">Real Time Monitoring:</h4>
                     <div className="text-sm space-y-1">
                       <p>• GPS pozisyon güncellemeleri</p>
@@ -2658,7 +2658,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Wind className="h-5 w-5 text-cyan-500" />
+                    <Wind className="h-5 w-5 text-accent" />
                     Current & Wind Sailing
                   </CardTitle>
                   <CardDescription>
@@ -2670,7 +2670,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <h4 className="font-semibold flex items-center gap-2">
-                          <Waves className="h-4 w-4 text-blue-500" />
+                          <Waves className="h-4 w-4 text-primary" />
                           Akıntı Verileri
                         </h4>
                         <div className="space-y-2">
@@ -2775,7 +2775,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           step="0.1"
                           readOnly
                           defaultValue="087"
-                          className="bg-gray-50 dark:bg-gray-800"
+                          className="bg-muted"
                         />
                       </div>
                     </div>
@@ -2854,7 +2854,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   {/* Magnetic Corrections with E-W Buttons */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-red-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-destructive flex items-center gap-2 mb-4">
                       <Navigation className="h-4 w-4" />
                       Manyetik Düzeltmeler
                     </h4>
@@ -2876,7 +2876,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Other Compass Errors */}
                   <div>
-                    <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-success flex items-center gap-2 mb-4">
                       <Target className="h-4 w-4" />
                       Diğer Pusula Hataları
                     </h4>
@@ -2972,13 +2972,13 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               </div>
               {result?.cpa !== undefined && (
                 <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded border">
+                  <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
                     <div className="text-sm text-muted-foreground">CPA</div>
-                    <div className="font-mono text-xl text-blue-600">{result.cpa.toFixed(2)} nm</div>
+                    <div className="font-mono text-xl text-primary">{result.cpa.toFixed(2)} nm</div>
                   </div>
-                  <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded border">
+                  <div className="p-3 bg-success/5 dark:bg-success/10 rounded border">
                     <div className="text-sm text-muted-foreground">TCPA</div>
-                    <div className="font-mono text-xl text-green-600">{result.tcpa.toFixed(1)} dk</div>
+                    <div className="font-mono text-xl text-success">{result.tcpa.toFixed(1)} dk</div>
                   </div>
                 </div>
               )}
@@ -3060,7 +3060,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Wind className="h-5 w-5 text-blue-500" />
+                     <Wind className="h-5 w-5 text-primary" />
                     Hava Durumu Verileri
                   </CardTitle>
                   <CardDescription>
@@ -3133,7 +3133,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Anchor className="h-5 w-5 text-green-600" />
+                     <Anchor className="h-5 w-5 text-success" />
                     Liman Yaklaşım Verileri
                   </CardTitle>
                   <CardDescription>
@@ -3143,7 +3143,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   {/* Pilot Boarding Position with N-S E-W Buttons */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-blue-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-primary flex items-center gap-2 mb-4">
                       <Ship className="h-4 w-4" />
                       Pilot Alma Pozisyonu
                     </h4>
@@ -3167,7 +3167,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Port Approach Parameters */}
                   <div>
-                    <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-success flex items-center gap-2 mb-4">
                       <Anchor className="h-4 w-4" />
                       Yaklaşım Parametreleri
                     </h4>
@@ -3219,7 +3219,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Anchor className="h-5 w-5 text-green-600" />
+                    <Anchor className="h-5 w-5 text-success" />
                     Demirleme Hesapları
                   </CardTitle>
                   <CardDescription>Su derinliği ve hava durumuna göre zincir boyu (scope)</CardDescription>
@@ -3306,14 +3306,14 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded border">
-                        <div className="text-sm text-muted-foreground">Toplam Derinlik</div>
-                        <div className="font-mono text-xl text-blue-600">{result.minimumDepth.toFixed(1)} m</div>
-                      </div>
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded border">
-                        <div className="text-sm text-muted-foreground">Tavsiye Zincir Boyu</div>
-                        <div className="font-mono text-xl text-green-600">{result.safeDraft.toFixed(1)} m</div>
-                      </div>
+                       <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
+                         <div className="text-sm text-muted-foreground">Toplam Derinlik</div>
+                         <div className="font-mono text-xl text-primary">{result.minimumDepth.toFixed(1)} m</div>
+                       </div>
+                       <div className="p-3 bg-success/5 dark:bg-success/10 rounded border">
+                         <div className="text-sm text-muted-foreground">Tavsiye Zincir Boyu</div>
+                         <div className="font-mono text-xl text-success">{result.safeDraft.toFixed(1)} m</div>
+                       </div>
                     </div>
                   )}
                 </CardContent>
@@ -3325,7 +3325,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Ship className="h-5 w-5 text-blue-600" />
+                    <Ship className="h-5 w-5 text-primary" />
                     UKC (Under Keel Clearance) Hesabı
                   </CardTitle>
                   <CardDescription>
@@ -3336,7 +3336,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <div className="space-y-6">
                     {/* Ship Parameters */}
                     <div>
-                      <h4 className="font-semibold text-blue-700 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
                         <Ship className="h-4 w-4" />
                         Gemi Parametreleri
                       </h4>
@@ -3377,7 +3377,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {/* Tidal Information */}
                     <div>
-                      <h4 className="font-semibold text-green-700 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-success mb-3 flex items-center gap-2">
                         <Waves className="h-4 w-4" />
                         Gelgit Bilgileri
                       </h4>
@@ -3417,7 +3417,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {/* Safety Margins */}
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-warning mb-3 flex items-center gap-2">
                         <Target className="h-4 w-4" />
                         Güvenlik Marjları
                       </h4>
@@ -3554,47 +3554,47 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <div className="space-y-4">
                         {/* Main Results */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-blue-50 dark:bg-blue-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-primary/5 dark:bg-primary/10' : 'bg-destructive/5 dark:bg-destructive/10'}`}>
                             <div className="text-sm text-muted-foreground">Efektif Draft</div>
-                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-blue-600' : 'text-red-600'}`}>
+                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-primary' : 'text-destructive'}`}>
                               {result.safeDraft.toFixed(2)} m
                             </div>
                           </div>
-                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-green-50 dark:bg-green-900/20' : 'bg-orange-50 dark:bg-orange-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-success/5 dark:bg-success/10' : 'bg-warning/5 dark:bg-warning/10'}`}>
                             <div className="text-sm text-muted-foreground">Mevcut UKC</div>
-                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-green-600' : 'text-orange-600'}`}>
+                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-success' : 'text-warning'}`}>
                               {result.currentTideHeight.toFixed(2)} m
                             </div>
                           </div>
-                          <div className={`p-3 rounded border ${result.tidalStream >= 0 ? 'bg-emerald-50 dark:bg-emerald-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.tidalStream >= 0 ? 'bg-success/5 dark:bg-success/10' : 'bg-destructive/5 dark:bg-destructive/10'}`}>
                             <div className="text-sm text-muted-foreground">Güvenlik Marjı</div>
-                            <div className={`font-mono text-lg ${result.tidalStream >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+                            <div className={`font-mono text-lg ${result.tidalStream >= 0 ? 'text-success' : 'text-destructive'}`}>
                               {result.tidalStream.toFixed(2)} m
                             </div>
                           </div>
-                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-cyan-50 dark:bg-cyan-900/20' : 'bg-yellow-50 dark:bg-yellow-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-accent/5 dark:bg-accent/10' : 'bg-warning/5 dark:bg-warning/10'}`}>
                             <div className="text-sm text-muted-foreground">Min. Gerekli Derinlik</div>
-                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-cyan-600' : 'text-yellow-600'}`}>
+                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-accent' : 'text-warning'}`}>
                               {result.minimumDepth.toFixed(2)} m
                             </div>
                           </div>
                         </div>
 
                         {/* Status and Recommendations */}
-                        <div className={`p-4 rounded-lg border-2 ${result.collisionRisk === 'none' ? 'bg-green-50 dark:bg-green-900/20 border-green-500' : 'bg-red-50 dark:bg-red-900/20 border-red-500'}`}>
+                        <div className={`p-4 rounded-lg border-2 ${result.collisionRisk === 'none' ? 'bg-success/5 dark:bg-success/10 border-success' : 'bg-destructive/5 dark:bg-destructive/10 border-destructive'}`}>
                           <div className="flex items-start gap-3">
                             {result.collisionRisk === 'none' ? (
-                              <CheckCircle className="h-6 w-6 text-green-600 mt-0.5" />
+                              <CheckCircle className="h-6 w-6 text-success mt-0.5" />
                             ) : (
-                              <Target className="h-6 w-6 text-red-600 mt-0.5" />
+                              <Target className="h-6 w-6 text-destructive mt-0.5" />
                             )}
                             <div className="flex-1 space-y-2">
-                              <div className={`font-semibold text-lg ${result.collisionRisk === 'none' ? 'text-green-700' : 'text-red-700'}`}>
+                              <div className={`font-semibold text-lg ${result.collisionRisk === 'none' ? 'text-success' : 'text-destructive'}`}>
                                 {result.recommendations[0]}
                               </div>
                               <div className="text-sm space-y-1">
                                 {result.recommendations.slice(1).map((rec, idx) => (
-                                  <div key={idx} className="text-gray-700 dark:text-gray-300">• {rec}</div>
+                                  <div key={idx} className="text-muted-foreground">• {rec}</div>
                                 ))}
                               </div>
                             </div>
@@ -3602,9 +3602,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         </div>
 
                         {/* Additional Information */}
-                        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded border">
-                          <h5 className="font-semibold text-blue-700 mb-2">UKC Hesaplama Formülü:</h5>
-                          <div className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+                        <div className="p-4 bg-primary/5 dark:bg-primary/10 rounded border">
+                          <h5 className="font-semibold text-primary mb-2">UKC Hesaplama Formülü:</h5>
+                          <div className="text-sm space-y-1 text-muted-foreground">
                             <div>• <strong>Efektif Draft</strong> = Draft + Squat + |Trim|</div>
                             <div>• <strong>Mevcut Su Derinliği</strong> = Kart Datumu + Gelgit Yüksekliği - Dalga İlavesi</div>
                             <div>• <strong>Mevcut UKC</strong> = Mevcut Su Derinliği - Efektif Draft</div>
@@ -3622,7 +3622,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Sun className="h-5 w-5 text-orange-600" />
+                    <Sun className="h-5 w-5 text-warning" />
                     Astronomik Hesaplamalar
                   </CardTitle>
                   <CardDescription>
@@ -3632,7 +3632,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   {/* Date and Time Settings */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-success flex items-center gap-2 mb-4">
                       <Clock className="h-4 w-4" />
                       Tarih ve Saat Ayarları
                     </h4>
@@ -3663,7 +3663,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Observer Position with N-S E-W Buttons */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-blue-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-primary flex items-center gap-2 mb-4">
                       <Globe className="h-4 w-4" />
                       Gözlemci Pozisyonu
                     </h4>
@@ -3701,7 +3701,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="flex items-center gap-2 text-lg">
-                          <Sun className="h-5 w-5 text-yellow-500" />
+                          <Sun className="h-5 w-5 text-warning" />
                           Güneş Zamanları
                         </CardTitle>
                       </CardHeader>
@@ -3745,7 +3745,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="flex items-center gap-2 text-lg">
-                          <Moon className="h-5 w-5 text-blue-400" />
+                          <Moon className="h-5 w-5 text-primary" />
                           Ay Fazı
                         </CardTitle>
                       </CardHeader>
@@ -3753,15 +3753,15 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           <div className="text-center space-y-1">
                             <div className="text-xl sm:text-2xl font-semibold">{moonPhase.phaseName}</div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">Faz Adı</div>
+                             <div className="text-sm text-muted-foreground">Faz Adı</div>
                           </div>
                           <div className="text-center space-y-1">
                             <div className="text-xl sm:text-2xl font-semibold">{moonPhase.phase}%</div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">Tamamlanma</div>
+                            <div className="text-sm text-muted-foreground">Tamamlanma</div>
                           </div>
                           <div className="text-center space-y-1">
                             <div className="text-xl sm:text-2xl font-semibold">{moonPhase.illumination}%</div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">Aydınlanma</div>
+                            <div className="text-sm text-muted-foreground">Aydınlanma</div>
                           </div>
                         </div>
                       </CardContent>
@@ -3771,7 +3771,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="flex items-center gap-2 text-lg">
-                          <Globe className="h-5 w-5 text-orange-500" />
+                          <Globe className="h-5 w-5 text-warning" />
                           Güneş Konumu
                         </CardTitle>
                       </CardHeader>
@@ -3818,7 +3818,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   {/* Observer Position */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-blue-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-primary flex items-center gap-2 mb-4">
                       <Eye className="h-4 w-4" />
                       Gözlemci Pozisyonu
                     </h4>
@@ -3842,7 +3842,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Celestial Measurements */}
                   <div>
-                    <h4 className="font-semibold text-purple-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-accent flex items-center gap-2 mb-4">
                       <Camera className="h-4 w-4" />
                       Sextant Ölçümleri
                     </h4>
@@ -3953,7 +3953,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Wind className="h-5 w-5 text-blue-500" />
+                    <Wind className="h-5 w-5 text-primary" />
                     Deniz Hava Durumu
                   </CardTitle>
                   <CardDescription>
@@ -3966,7 +3966,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <Wind className="h-4 w-4 text-blue-500" />
+                          <Wind className="h-4 w-4 text-primary" />
                           Rüzgar Verileri
                         </CardTitle>
                       </CardHeader>
@@ -4010,7 +4010,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <Waves className="h-4 w-4 text-cyan-500" />
+                           <Waves className="h-4 w-4 text-accent" />
                           Dalga Verileri
                         </CardTitle>
                       </CardHeader>
@@ -4055,30 +4055,30 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   {/* Weather Analysis Results */}
                   {result && (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <Card className="bg-blue-50 dark:bg-blue-900/20">
+                       <Card className="bg-primary/5 dark:bg-primary/10">
                         <CardContent className="pt-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-blue-600">
+                            <div className="text-2xl font-bold text-primary">
                               {result.beaufortScale}
                             </div>
                             <div className="text-sm text-muted-foreground">Beaufort Skalası</div>
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-cyan-50 dark:bg-cyan-900/20">
+                       <Card className="bg-accent/5 dark:bg-accent/10">
                         <CardContent className="pt-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-cyan-600">
+                            <div className="text-2xl font-bold text-accent">
                               {result.seaState}
                             </div>
                             <div className="text-sm text-muted-foreground">Douglas Deniz Durumu</div>
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="bg-orange-50 dark:bg-orange-900/20">
+                       <Card className="bg-warning/5 dark:bg-warning/10">
                         <CardContent className="pt-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-orange-600">
+                            <div className="text-2xl font-bold text-warning">
                               {result.weatherDelay}
                             </div>
                             <div className="text-sm text-muted-foreground">Hava Gecikmesi (saat)</div>
@@ -4138,7 +4138,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Sunrise className="h-5 w-5 text-orange-500" />
+                    <Sunrise className="h-5 w-5 text-warning" />
                     Gündoğumu/Gün Batımı Tabloları
                   </CardTitle>
                   <CardDescription>
@@ -4151,7 +4151,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-green-500" />
+                          <MapPin className="h-4 w-4 text-success" />
                           Konum Bilgileri
                         </CardTitle>
                       </CardHeader>
@@ -4206,46 +4206,46 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <Sun className="h-4 w-4 text-yellow-500" />
+                           <Sun className="h-4 w-4 text-warning" />
                           Güneş Zamanları
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
                         {result?.twilightTimes && (
                           <div className="space-y-2 text-sm">
-                            <div className="flex justify-between p-2 bg-orange-50 dark:bg-orange-900/20 rounded">
+                             <div className="flex justify-between p-2 bg-warning/5 dark:bg-warning/10 rounded">
                               <span className="flex items-center gap-2">
                                 <Sunrise className="h-3 w-3" />
                                 Gündoğumu
                               </span>
                               <span className="font-mono">{result.twilightTimes.sunrise}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-blue-50 dark:bg-blue-900/20 rounded">
+                             <div className="flex justify-between p-2 bg-primary/5 dark:bg-primary/10 rounded">
                               <span>Sivil Alacakaranlık Başı</span>
                               <span className="font-mono">{result.twilightTimes.civilTwilightBegin}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded">
+                             <div className="flex justify-between p-2 bg-primary/5 dark:bg-primary/10 rounded">
                               <span>Denizcilik Alacakaranlık Başı</span>
                               <span className="font-mono">{result.twilightTimes.nauticalTwilightBegin}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-purple-50 dark:bg-purple-900/20 rounded">
+                             <div className="flex justify-between p-2 bg-accent/5 dark:bg-accent/10 rounded">
                               <span>Astronomik Alacakaranlık Başı</span>
                               <span className="font-mono">{result.twilightTimes.astronomicalTwilightBegin}</span>
                             </div>
                             <Separator />
-                            <div className="flex justify-between p-2 bg-purple-50 dark:bg-purple-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-accent/5 dark:bg-accent/10 rounded">
                               <span>Astronomik Alacakaranlık Sonu</span>
                               <span className="font-mono">{result.twilightTimes.astronomicalTwilightEnd}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-primary/5 dark:bg-primary/10 rounded">
                               <span>Denizcilik Alacakaranlık Sonu</span>
                               <span className="font-mono">{result.twilightTimes.nauticalTwilightEnd}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-blue-50 dark:bg-blue-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-primary/5 dark:bg-primary/10 rounded">
                               <span>Sivil Alacakaranlık Sonu</span>
                               <span className="font-mono">{result.twilightTimes.civilTwilightEnd}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-orange-50 dark:bg-orange-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-warning/5 dark:bg-warning/10 rounded">
                               <span className="flex items-center gap-2">
                                 <Sunset className="h-3 w-3" />
                                 Gün Batımı
@@ -4253,7 +4253,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               <span className="font-mono">{result.twilightTimes.sunset}</span>
                             </div>
                             <Separator />
-                            <div className="flex justify-between p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-warning/5 dark:bg-warning/10 rounded">
                               <span>Gündüz Süresi</span>
                               <span className="font-mono">{result.twilightTimes.daylightDuration.toFixed(1)} saat</span>
                             </div>
@@ -4268,26 +4268,26 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <Sun className="h-4 w-4 text-yellow-500" />
+                           <Sun className="h-4 w-4 text-warning" />
                           Güneş Konumu (Şu Anki)
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="text-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-yellow-600">
+                           <div className="text-center p-3 bg-warning/5 dark:bg-warning/10 rounded-lg">
+                             <div className="text-xl font-bold text-warning">
                               {result.sunPosition.altitude.toFixed(1)}°
                             </div>
                             <div className="text-sm text-muted-foreground">Yükseklik</div>
                           </div>
-                          <div className="text-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-orange-600">
+                           <div className="text-center p-3 bg-warning/5 dark:bg-warning/10 rounded-lg">
+                             <div className="text-xl font-bold text-warning">
                               {result.sunPosition.azimuth.toFixed(1)}°
                             </div>
                             <div className="text-sm text-muted-foreground">Azimut</div>
                           </div>
-                          <div className="text-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-red-600">
+                           <div className="text-center p-3 bg-destructive/5 dark:bg-destructive/10 rounded-lg">
+                             <div className="text-xl font-bold text-destructive">
                               {result.sunPosition.declination.toFixed(1)}°
                             </div>
                             <div className="text-sm text-muted-foreground">Deklinasyon</div>
@@ -4397,7 +4397,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Globe className="h-5 w-5 text-blue-500" />
+                      <Globe className="h-5 w-5 text-primary" />
                       Nautical Almanac
                     </CardTitle>
                     <CardDescription>
@@ -4410,7 +4410,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Card className="border-dashed">
                         <CardHeader className="pb-3">
                           <CardTitle className="text-base flex items-center gap-2">
-                            <Star className="h-4 w-4 text-yellow-500" />
+                            <Star className="h-4 w-4 text-warning" />
                             Nautical Almanac 2025
                           </CardTitle>
                         </CardHeader>
@@ -4438,7 +4438,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Card className="border-dashed">
                         <CardHeader className="pb-3">
                           <CardTitle className="text-base flex items-center gap-2">
-                            <Navigation className="h-4 w-4 text-blue-500" />
+                            <Navigation className="h-4 w-4 text-primary" />
                             Sight Reduction Tables
                           </CardTitle>
                         </CardHeader>
@@ -4472,7 +4472,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Card className="border-dashed">
                         <CardHeader className="pb-3">
                           <CardTitle className="text-base flex items-center gap-2">
-                            <Waves className="h-4 w-4 text-cyan-500" />
+                            <Waves className="h-4 w-4 text-accent" />
                             Tide Tables
                           </CardTitle>
                         </CardHeader>
@@ -4510,7 +4510,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         <Card className="bg-muted/30">
                           <CardHeader className="pb-3">
                             <CardTitle className="text-sm flex items-center gap-2">
-                              <Sun className="h-4 w-4 text-yellow-500" />
+                              <Sun className="h-4 w-4 text-warning" />
                               2025 Güneş Almanacı (UTC saatlik)
                             </CardTitle>
                             <CardDescription>
@@ -4607,14 +4607,14 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
                               <span className="flex items-center gap-2">
-                                <Sun className="h-3 w-3 text-yellow-500" />
+                                <Sun className="h-3 w-3 text-warning" />
                                 Güneş SD
                               </span>
                               <span>15.7′ - 16.3′</span>
                             </div>
                             <div className="flex justify-between">
                               <span className="flex items-center gap-2">
-                                <Moon className="h-3 w-3 text-gray-400" />
+                                <Moon className="h-3 w-3 text-muted-foreground" />
                                 Ay SD
                               </span>
                               <span>14.7′ - 16.8′</span>
@@ -4676,27 +4676,27 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Büyük Daire Mesafesi</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Büyük Daire Mesafesi</Label>
                   <p className="text-xl sm:text-2xl font-bold text-info">{result.gcDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Loxodromik Mesafe</Label>
-                  <p className="text-xl sm:text-2xl font-bold text-green-600">{result.rhumbDistance.toFixed(1)} nm</p>
+                  <Label className="text-sm font-medium text-muted-foreground">Loxodromik Mesafe</Label>
+                  <p className="text-xl sm:text-2xl font-bold text-success">{result.rhumbDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">İlk Doğrultu</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">İlk Doğrultu</Label>
                   <p className="text-lg font-semibold">{result.gcInitialBearing.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Son Doğrultu</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Son Doğrultu</Label>
                   <p className="text-lg font-semibold">{result.gcFinalBearing.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">ETA</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">ETA</Label>
                   <p className="text-lg font-semibold">{result.eta}</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Seyir Süresi</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Seyir Süresi</Label>
                   <p className="text-lg font-semibold">{result.timeToGo.toFixed(1)} saat</p>
                 </div>
               </div>
@@ -4713,19 +4713,19 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Yerüstü Rotası</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Yerüstü Rotası</Label>
                   <p className="text-lg font-semibold">{result.groundTrack.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Yerüstü Hızı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Yerüstü Hızı</Label>
                   <p className="text-lg font-semibold">{result.groundSpeed.toFixed(1)} knot</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Sürüklenme Açısı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Sürüklenme Açısı</Label>
                   <p className="text-lg font-semibold">{result.driftAngle.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Tutulacak Rota</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Tutulacak Rota</Label>
                   <p className="text-lg font-semibold">{result.courseToSteer.toFixed(1)}°</p>
                 </div>
               </div>
@@ -4742,15 +4742,15 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">CPA</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">CPA</Label>
                   <p className="text-lg font-semibold">{result.cpa.toFixed(2)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">TCPA</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">TCPA</Label>
                   <p className="text-lg font-semibold">{result.tcpa.toFixed(1)} dakika</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Çarpışma Riski</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Çarpışma Riski</Label>
                   <Badge variant={
                     result.collisionRisk === 'high' ? 'destructive' :
                     result.collisionRisk === 'medium' ? 'default' :
@@ -4763,7 +4763,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 </div>
               </div>
               <div className="space-y-1">
-                <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Önerilen Eylem</Label>
+                <Label className="text-sm font-medium text-muted-foreground">Önerilen Eylem</Label>
                 <p className="text-sm">{result.recommendedAction}</p>
               </div>
             </CardContent>
@@ -4779,19 +4779,19 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Mevcut Gelgit Yüksekliği</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Mevcut Gelgit Yüksekliği</Label>
                   <p className="text-lg font-semibold">{result.currentTideHeight.toFixed(1)} m</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Farkı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Farkı</Label>
                   <p className="text-lg font-semibold">{result.tideRange.toFixed(1)} m</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Yüksek Suya Kalan Süre</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Yüksek Suya Kalan Süre</Label>
                   <p className="text-lg font-semibold">{result.timeToHW.toFixed(1)} saat</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Alçak Suya Kalan Süre</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Alçak Suya Kalan Süre</Label>
                   <p className="text-lg font-semibold">{result.timeToLW.toFixed(1)} saat</p>
                 </div>
               </div>
@@ -4808,18 +4808,18 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Spheroidal Mesafe</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Spheroidal Mesafe</Label>
                   <p className="text-lg font-semibold text-info">{result.spheroidalDistance.toFixed(3)} nm</p>
                   <p className="text-xs text-muted-foreground">WGS84 elipsoidi</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Yakıt Maliyeti</Label>
-                  <p className="text-lg font-semibold text-green-600">${result.totalFuelCost.toFixed(0)}</p>
+                  <Label className="text-sm font-medium text-muted-foreground">Yakıt Maliyeti</Label>
+                  <p className="text-lg font-semibold text-success">${result.totalFuelCost.toFixed(0)}</p>
                   <p className="text-xs text-muted-foreground">Tahmini maliyet</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Hava Gecikmesi</Label>
-                  <p className="text-lg font-semibold text-orange-600">{result.alternateETA}</p>
+                  <Label className="text-sm font-medium text-muted-foreground">Hava Gecikmesi</Label>
+                  <p className="text-lg font-semibold text-warning">{result.alternateETA}</p>
                   <p className="text-xs text-muted-foreground">Hava koşulları ile</p>
                 </div>
               </div>
@@ -4842,7 +4842,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 </div>
                 <div className="space-y-2 p-3 bg-muted/50 rounded-lg">
                   <Label className="text-sm font-medium text-muted-foreground">Deniz Durumu</Label>
-                  <p className="text-xl lg:text-2xl font-bold text-green-600">{result.seaState}</p>
+                  <p className="text-xl lg:text-2xl font-bold text-success">{result.seaState}</p>
                   <p className="text-xs text-muted-foreground">Douglas skalası</p>
                 </div>
                 <div className="space-y-2 p-3 bg-muted/50 rounded-lg">
@@ -4867,19 +4867,19 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Spring/Neap Faktörü</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Spring/Neap Faktörü</Label>
                   <p className="text-lg font-semibold">{result.springNeapFactor.toFixed(2)}</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Akımı Doğrultusu</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Akımı Doğrultusu</Label>
                   <p className="text-lg font-semibold">{result.tidalStreamDirection.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Değişim Hızı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Değişim Hızı</Label>
                   <p className="text-lg font-semibold">{result.tidalAcceleration.toFixed(2)} m/sa</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Akımı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Akımı</Label>
                   <p className="text-lg font-semibold">{result.tidalStream.toFixed(1)} knot</p>
                 </div>
               </div>
@@ -4896,19 +4896,19 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Pilot Alma Mesafesi</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Pilot Alma Mesafesi</Label>
                   <p className="text-lg font-semibold">{result.pilotBoardingDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Pilot Alma ETA</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Pilot Alma ETA</Label>
                   <p className="text-lg font-semibold">{result.pilotBoardingETA}</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Güvenli Draf</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Güvenli Draf</Label>
                   <p className="text-lg font-semibold">{result.safeDraft.toFixed(1)} m</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Minimum Derinlik</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Minimum Derinlik</Label>
                   <p className="text-lg font-semibold">{result.minimumDepth.toFixed(1)} m</p>
                 </div>
               </div>
@@ -4981,7 +4981,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <ul className="space-y-2">
                   {result.recommendations.map((rec, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-success mt-0.5 flex-shrink-0" />
                       <span className="text-sm">{rec}</span>
                     </li>
                   ))}
@@ -4993,9 +4993,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
       )}
 
       {/* Seyir Asistanı */}
-      <Card className="shadow border border-emerald-200/50">
+      <Card className="shadow border border-success/30">
         <CardHeader className="pb-2">
-          <CardTitle className="flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+          <CardTitle className="flex items-center gap-2 text-success">
             <Brain className="h-5 w-5" />
             Seyir Asistanı
           </CardTitle>
@@ -5014,7 +5014,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣ Zaman – Mesafe – Hız Hesapları (Temel Seyir)",
           icon: Clock,
-          accent: "border-blue-200 bg-blue-50 dark:bg-blue-950",
+          accent: "border-primary/20 bg-primary/5 dark:bg-primary/10",
           items: [
             "Hız = Mesafe / Zaman; Mesafe = Hız × Zaman; Zaman = Mesafe / Hız",
             "Knot ↔ km/s ↔ m/s dönüşümleri",
@@ -5026,7 +5026,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "2️⃣ Rota ve Kerteriz (Plane Sailing & Coastal Navigation)",
           icon: MapPin,
-          accent: "border-cyan-200 bg-cyan-50 dark:bg-cyan-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "Düzlem seyri: Departure (Dep), D.Lat, rota (true/magnetic/compass)",
             "Distance = Dep / cos Lat hesapları",
@@ -5038,7 +5038,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "3️⃣ Enlem – Boylam Hesapları",
           icon: Globe,
-          accent: "border-amber-200 bg-amber-50 dark:bg-amber-950",
+          accent: "border-warning/20 bg-warning/5 dark:bg-warning/10",
           items: [
             "D.Lat ve D.Long (Kuzey/Güney, Doğu/Batı)",
             "1° enlem = 60 NM ilişkisi",
@@ -5050,7 +5050,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "4️⃣ Harita Üzerinde Yapılan Hesaplamalar",
           icon: Navigation,
-          accent: "border-lime-200 bg-lime-50 dark:bg-lime-950",
+          accent: "border-success/20 bg-success/5 dark:bg-success/10",
           items: [
             "Ölçekten mesafe ölçümü, pergelle mesafe hesapları",
             "Paralel cetvel ile rota çizimi ve gerçek rota (True Course)",
@@ -5062,7 +5062,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "5️⃣ Manyetik ve Pusula Düzeltmeleri",
           icon: Compass,
-          accent: "border-rose-200 bg-rose-50 dark:bg-rose-950",
+          accent: "border-destructive/20 bg-destructive/5 dark:bg-destructive/10",
           items: [
             "Variation (manyetik sapma) ve Deviation (pusula sapması)",
             "True → Magnetic → Compass dönüşümleri; TVMDC",
@@ -5074,7 +5074,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "6️⃣ Akıntı ve Rüzgâr Düzeltmeli Seyir (Current & Wind)",
           icon: Wind,
-          accent: "border-indigo-200 bg-indigo-50 dark:bg-indigo-950",
+          accent: "border-primary/20 bg-primary/5 dark:bg-primary/10",
           items: [
             "Set (akıntı yönü) ve Drift (akıntı hızı)",
             "Course to Steer (CTS) ve Speed over Ground (SOG)",
@@ -5086,7 +5086,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "7️⃣ Kerteriz Hesapları (Fixing Position)",
           icon: Eye,
-          accent: "border-sky-200 bg-sky-50 dark:bg-sky-950",
+          accent: "border-info/20 bg-info-muted dark:bg-info/10",
           items: [
             "Tek/iki/üç kerterizle mevki",
             "Relative bearing → True bearing dönüşümü",
@@ -5098,7 +5098,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "8️⃣ Radar Seyri ve Radar Hesapları",
           icon: Radar,
-          accent: "border-slate-200 bg-slate-50 dark:bg-slate-950",
+          accent: "border-muted bg-muted/50 dark:bg-muted/30",
           items: [
             "Radar mesafe ve kerteriz ölçümü (Relative/True)",
             "CPA ve TCPA analizleri",
@@ -5110,7 +5110,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "9️⃣ COLREG Bağlantılı Seyir Hesapları",
           icon: Ship,
-          accent: "border-orange-200 bg-orange-50 dark:bg-orange-950",
+          accent: "border-warning/20 bg-warning/5 dark:bg-warning/10",
           items: [
             "Karşılaşma durumu tespiti ve çatışma riski",
             "CPA/TCPA sonrası manevra değerlendirmesi",
@@ -5122,7 +5122,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "🔟 Great Circle & Rhumb Line Hesapları",
           icon: Globe,
-          accent: "border-emerald-200 bg-emerald-50 dark:bg-emerald-950",
+          accent: "border-success/20 bg-success/5 dark:bg-success/10",
           items: [
             "Rhumb Line (Mercator Sailing) sabit rota hesapları",
             "D.Lat & D.Long kullanımı, Meridional Parts",
@@ -5134,7 +5134,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣1️⃣ Gelgit (Tides) Hesapları",
           icon: Waves,
-          accent: "border-cyan-200 bg-cyan-50 dark:bg-cyan-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "HW/LW zamanı ve Height of Tide",
             "Rule of Twelfths uygulamaları",
@@ -5146,7 +5146,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣2️⃣ Seyir Emniyeti Hesapları",
           icon: Anchor,
-          accent: "border-fuchsia-200 bg-fuchsia-50 dark:bg-fuchsia-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "UKC ve squat hesapları",
             "Safe speed ve safe passing distance",
@@ -5158,7 +5158,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣3️⃣ Passage Plan Hesapları",
           icon: Navigation,
-          accent: "border-green-200 bg-green-50 dark:bg-green-950",
+          accent: "border-success/20 bg-success/5 dark:bg-success/10",
           items: [
             "Toplam rota mesafesi ve leg bazlı ETA",
             "Wheel-over positions ve no-go area belirleme",
@@ -5170,7 +5170,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣4️⃣ Astronomik Seyir",
           icon: Sun,
-          accent: "border-purple-200 bg-purple-50 dark:bg-purple-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "GHA / LHA ve declination hesapları",
             "Sextant correction (IC, Dip, Refraction)",
@@ -5182,7 +5182,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣5️⃣ Elektronik Seyir Sistemleri (ECDIS Bağlantılı)",
           icon: Target,
-          accent: "border-yellow-200 bg-yellow-50 dark:bg-yellow-950",
+          accent: "border-warning/20 bg-warning/5 dark:bg-warning/10",
           items: [
             "Cross Track Distance (XTD) takibi",
             "Safety contour ve safety depth parametreleri",
@@ -5227,10 +5227,10 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             </div>
 
             {/* Hesaplama Türleri Seçimi */}
-            <Card className="mt-6 border-green-200 bg-green-50 dark:bg-green-950">
+              <Card className="mt-6 border-success/20 bg-success/5 dark:bg-success/10">
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Target className="h-5 w-5 text-green-600" />
+                  <Target className="h-5 w-5 text-success" />
                   🎯 Hesaplama Türü Seçimi
                 </CardTitle>
               </CardHeader>
