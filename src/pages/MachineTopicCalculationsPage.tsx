@@ -250,6 +250,28 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Afinite Kuralları",
+      description: "Pompa/fan hız değişiminde debi, basınç ve güç ilişkisini hesaplar.",
+      inputs: [
+        { key: "n1", label: "Mevcut Devir (n₁)", unit: "rpm", placeholder: "1450" },
+        { key: "n2", label: "Yeni Devir (n₂)", unit: "rpm", placeholder: "1200" },
+        { key: "q1", label: "Mevcut Debi (Q₁)", unit: "m³/h", placeholder: "100" },
+        { key: "h1", label: "Mevcut Basma Yük. (H₁)", unit: "m", placeholder: "30" },
+        { key: "p1", label: "Mevcut Güç (P₁)", unit: "kW", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        const ratio = v.n2 / v.n1;
+        const q2 = v.q1 * ratio;
+        const h2 = v.h1 * Math.pow(ratio, 2);
+        const p2 = v.p1 * Math.pow(ratio, 3);
+        return [
+          { label: "Yeni Debi (Q₂)", value: `${q2.toFixed(1)} m³/h` },
+          { label: "Yeni Basma Yük. (H₂)", value: `${h2.toFixed(1)} m` },
+          { label: "Yeni Güç (P₂)", value: `${p2.toFixed(2)} kW` },
+        ];
+      },
+    },
   ],
   "diesel-engines": [
     {
