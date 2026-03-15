@@ -3594,7 +3594,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               </div>
                               <div className="text-sm space-y-1">
                                 {result.recommendations.slice(1).map((rec, idx) => (
-                                  <div key={idx} className="text-gray-700 dark:text-gray-300">• {rec}</div>
+                                  <div key={idx} className="text-muted-foreground">• {rec}</div>
                                 ))}
                               </div>
                             </div>
