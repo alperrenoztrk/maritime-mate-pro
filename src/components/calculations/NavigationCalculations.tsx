@@ -4818,8 +4818,8 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-xs text-muted-foreground">Tahmini maliyet</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Hava Gecikmesi</Label>
-                  <p className="text-lg font-semibold text-orange-600">{result.alternateETA}</p>
+                  <Label className="text-sm font-medium text-muted-foreground">Hava Gecikmesi</Label>
+                  <p className="text-lg font-semibold text-warning">{result.alternateETA}</p>
                   <p className="text-xs text-muted-foreground">Hava koşulları ile</p>
                 </div>
               </div>
