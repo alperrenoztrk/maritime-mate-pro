@@ -3632,7 +3632,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   {/* Date and Time Settings */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-success flex items-center gap-2 mb-4">
                       <Clock className="h-4 w-4" />
                       Tarih ve Saat Ayarları
                     </h4>
