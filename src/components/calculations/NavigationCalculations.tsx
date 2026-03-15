@@ -4842,7 +4842,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 </div>
                 <div className="space-y-2 p-3 bg-muted/50 rounded-lg">
                   <Label className="text-sm font-medium text-muted-foreground">Deniz Durumu</Label>
-                  <p className="text-xl lg:text-2xl font-bold text-green-600">{result.seaState}</p>
+                  <p className="text-xl lg:text-2xl font-bold text-success">{result.seaState}</p>
                   <p className="text-xs text-muted-foreground">Douglas skalası</p>
                 </div>
                 <div className="space-y-2 p-3 bg-muted/50 rounded-lg">
