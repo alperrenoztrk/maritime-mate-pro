@@ -5098,7 +5098,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "8️⃣ Radar Seyri ve Radar Hesapları",
           icon: Radar,
-          accent: "border-slate-200 bg-slate-50 dark:bg-slate-950",
+          accent: "border-muted bg-muted/50 dark:bg-muted/30",
           items: [
             "Radar mesafe ve kerteriz ölçümü (Relative/True)",
             "CPA ve TCPA analizleri",
