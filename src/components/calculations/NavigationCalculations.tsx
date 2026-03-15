@@ -4286,8 +4286,8 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                             </div>
                             <div className="text-sm text-muted-foreground">Azimut</div>
                           </div>
-                          <div className="text-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-red-600">
+                           <div className="text-center p-3 bg-destructive/5 dark:bg-destructive/10 rounded-lg">
+                             <div className="text-xl font-bold text-destructive">
                               {result.sunPosition.declination.toFixed(1)}°
                             </div>
                             <div className="text-sm text-muted-foreground">Deklinasyon</div>
