@@ -3663,7 +3663,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Observer Position with N-S E-W Buttons */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-blue-700 flex items-center gap-2 mb-4">
+                     <h4 className="font-semibold text-primary flex items-center gap-2 mb-4">
                       <Globe className="h-4 w-4" />
                       Gözlemci Pozisyonu
                     </h4>
