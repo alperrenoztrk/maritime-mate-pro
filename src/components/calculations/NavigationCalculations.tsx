@@ -4410,7 +4410,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Card className="border-dashed">
                         <CardHeader className="pb-3">
                           <CardTitle className="text-base flex items-center gap-2">
-                            <Star className="h-4 w-4 text-yellow-500" />
+                            <Star className="h-4 w-4 text-warning" />
                             Nautical Almanac 2025
                           </CardTitle>
                         </CardHeader>
