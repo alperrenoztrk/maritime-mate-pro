@@ -4280,8 +4280,8 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                             </div>
                             <div className="text-sm text-muted-foreground">Yükseklik</div>
                           </div>
-                          <div className="text-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-orange-600">
+                           <div className="text-center p-3 bg-warning/5 dark:bg-warning/10 rounded-lg">
+                             <div className="text-xl font-bold text-warning">
                               {result.sunPosition.azimuth.toFixed(1)}°
                             </div>
                             <div className="text-sm text-muted-foreground">Azimut</div>
