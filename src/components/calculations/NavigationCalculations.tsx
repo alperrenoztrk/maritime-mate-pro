@@ -4510,7 +4510,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         <Card className="bg-muted/30">
                           <CardHeader className="pb-3">
                             <CardTitle className="text-sm flex items-center gap-2">
-                              <Sun className="h-4 w-4 text-yellow-500" />
+                              <Sun className="h-4 w-4 text-warning" />
                               2025 Güneş Almanacı (UTC saatlik)
                             </CardTitle>
                             <CardDescription>
