@@ -216,6 +216,41 @@ interface NavigationResult {
   recommendations: string[];
 }
 
+interface NavCalcInput { key: string; label: string; unit: string; placeholder: string; }
+interface NavCalcResult { label: string; value: string; }
+
+const NavStandaloneCalc = ({ inputs, calculate }: { inputs: NavCalcInput[]; calculate: (values: Record<string, number>) => NavCalcResult[]; }) => {
+  const [values, setValues] = useState<Record<string, string>>({});
+  const [results, setResults] = useState<NavCalcResult[] | null>(null);
+
+  const handleCalc = () => {
+    const nums: Record<string, number> = {};
+    for (const inp of inputs) {
+      nums[inp.key] = parseFloat(values[inp.key] || inp.placeholder);
+    }
+    setResults(calculate(nums));
+  };
+
+  return (
+    <div className="space-y-3">
+      {inputs.map(inp => (
+        <div key={inp.key} className="flex items-center gap-2">
+          <Label className="text-xs w-1/2">{inp.label} {inp.unit && <span className="text-muted-foreground">({inp.unit})</span>}</Label>
+          <Input type="number" placeholder={inp.placeholder} value={values[inp.key] || ""} onChange={e => setValues(p => ({ ...p, [inp.key]: e.target.value }))} className="h-8 text-sm" />
+        </div>
+      ))}
+      <Button size="sm" onClick={handleCalc} className="w-full"><Calculator className="mr-1 h-3 w-3" />Hesapla</Button>
+      {results && (
+        <div className="bg-muted/50 rounded p-2 space-y-1">
+          {results.map((r, i) => (
+            <div key={i} className="flex justify-between text-sm"><span className="text-muted-foreground">{r.label}</span><span className="font-semibold">{r.value}</span></div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const NavigationCalculations = ({ initialTab }: { initialTab?: string } = {}) => {
   const [activeCalculation, setActiveCalculation] = useState<string>(initialTab || "dr-plotting");
   const { data: currentWeather } = useCurrentWeather({ watchPosition: false, reverseGeocode: false, refreshMs: 300000 });
