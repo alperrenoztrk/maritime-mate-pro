@@ -5134,7 +5134,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣1️⃣ Gelgit (Tides) Hesapları",
           icon: Waves,
-          accent: "border-cyan-200 bg-cyan-50 dark:bg-cyan-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "HW/LW zamanı ve Height of Tide",
             "Rule of Twelfths uygulamaları",
