@@ -1350,6 +1350,25 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [{ label: "Tahmini Sıcaklık", value: `${temp.toFixed(0)} °C` }];
       },
     },
+    {
+      name: "Doğruluk / Hata Hesabı",
+      description: "Ölçüm cihazı doğruluğunu ve hata yüzdesini hesaplar.",
+      inputs: [
+        { key: "measured", label: "Ölçülen Değer", unit: "", placeholder: "102" },
+        { key: "actual", label: "Gerçek Değer", unit: "", placeholder: "100" },
+        { key: "span", label: "Ölçüm Aralığı (Span)", unit: "", placeholder: "200" },
+      ],
+      calculate: (v) => {
+        const absError = Math.abs(v.measured - v.actual);
+        const relError = (absError / v.actual) * 100;
+        const spanError = (absError / v.span) * 100;
+        return [
+          { label: "Mutlak Hata", value: `${absError.toFixed(3)}` },
+          { label: "Bağıl Hata", value: `${relError.toFixed(2)}%` },
+          { label: "Span Hatası", value: `${spanError.toFixed(2)}%` },
+        ];
+      },
+    },
   ],
   "engine-room-ops": [
     {
