@@ -5062,7 +5062,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "5️⃣ Manyetik ve Pusula Düzeltmeleri",
           icon: Compass,
-          accent: "border-rose-200 bg-rose-50 dark:bg-rose-950",
+          accent: "border-destructive/20 bg-destructive/5 dark:bg-destructive/10",
           items: [
             "Variation (manyetik sapma) ve Deviation (pusula sapması)",
             "True → Magnetic → Compass dönüşümleri; TVMDC",
