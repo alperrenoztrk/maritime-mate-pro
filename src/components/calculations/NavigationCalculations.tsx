@@ -1946,7 +1946,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-green-700">Başlangıç Konumu</h4>
+                      <h4 className="font-semibold text-success">Başlangıç Konumu</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="drLat">Son Bilinen Enlem (°)</Label>
