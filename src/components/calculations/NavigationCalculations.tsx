@@ -5158,7 +5158,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣3️⃣ Passage Plan Hesapları",
           icon: Navigation,
-          accent: "border-green-200 bg-green-50 dark:bg-green-950",
+          accent: "border-success/20 bg-success/5 dark:bg-success/10",
           items: [
             "Toplam rota mesafesi ve leg bazlı ETA",
             "Wheel-over positions ve no-go area belirleme",
