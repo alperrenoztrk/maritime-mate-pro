@@ -1004,6 +1004,240 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
           )}
         </div>
       )}
+
+      {/* Standalone Meteorological Calculators */}
+      <Separator className="my-6" />
+      <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
+        <Calculator className="h-5 w-5" />
+        Meteoroloji Formül Hesaplayıcıları
+      </h3>
+      <StandaloneMeteoCalcs />
     </div>
   );
 };
+
+function StandaloneMeteoCalcs() {
+  const [trueWind, setTrueWind] = useState({ va: "", vg: "", theta: "" });
+  const [airDensity, setAirDensity] = useState({ p: "1013", t: "20" });
+  const [wavelength, setWavelength] = useState({ period: "" });
+  const [beaufort, setBeaufort] = useState({ b: "" });
+  const [dewPoint, setDewPoint] = useState({ t: "", rh: "" });
+  const [seaLevel, setSeaLevel] = useState({ p: "", h: "", t: "" });
+
+  const trueWindResult = (() => {
+    const va = parseFloat(trueWind.va);
+    const vg = parseFloat(trueWind.vg);
+    const theta = parseFloat(trueWind.theta) * Math.PI / 180;
+    if (isNaN(va) || isNaN(vg) || isNaN(theta)) return null;
+    // Vector: VT = √(VA² + VG² - 2·VA·VG·cos(θ))
+    const vt = Math.sqrt(va * va + vg * vg - 2 * va * vg * Math.cos(theta));
+    return vt.toFixed(1);
+  })();
+
+  const airDensityResult = (() => {
+    const p = parseFloat(airDensity.p);
+    const t = parseFloat(airDensity.t);
+    if (isNaN(p) || isNaN(t)) return null;
+    // ρ = P / (R × T), R = 287.05 J/(kg·K), P in Pa
+    const rho = (p * 100) / (287.05 * (t + 273.15));
+    return rho.toFixed(4);
+  })();
+
+  const wavelengthResult = (() => {
+    const T = parseFloat(wavelength.period);
+    if (isNaN(T)) return null;
+    // Deep water: L = g × T² / 2π
+    const L = (9.81 * T * T) / (2 * Math.PI);
+    const C = L / T;
+    return { L: L.toFixed(1), C: C.toFixed(1) };
+  })();
+
+  const beaufortResult = (() => {
+    const b = parseFloat(beaufort.b);
+    if (isNaN(b) || b < 0 || b > 12) return null;
+    // V = 0.836 × B^1.5 (m/s)
+    const vMs = 0.836 * Math.pow(b, 1.5);
+    const vKn = vMs * 1.94384;
+    return { ms: vMs.toFixed(1), kn: vKn.toFixed(1) };
+  })();
+
+  const dewPointResult = (() => {
+    const t = parseFloat(dewPoint.t);
+    const rh = parseFloat(dewPoint.rh);
+    if (isNaN(t) || isNaN(rh)) return null;
+    // Td ≈ T - (100 - RH) / 5
+    const td = t - (100 - rh) / 5;
+    return td.toFixed(1);
+  })();
+
+  const seaLevelResult = (() => {
+    const p = parseFloat(seaLevel.p);
+    const h = parseFloat(seaLevel.h);
+    const t = parseFloat(seaLevel.t);
+    if (isNaN(p) || isNaN(h) || isNaN(t)) return null;
+    // P₀ = P × exp(g × h / (R × T̄))
+    const tMean = t + 273.15 + 0.0065 * h / 2;
+    const p0 = p * Math.exp((9.81 * h) / (287.05 * tMean));
+    return p0.toFixed(1);
+  })();
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Wind className="h-4 w-4" />
+            Gerçek Rüzgâr Hızı
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Görünen Rüzgâr (V_A) (knot)</Label>
+            <Input type="number" placeholder="25" value={trueWind.va} onChange={(e) => setTrueWind(p => ({ ...p, va: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Gemi Hızı (V_G) (knot)</Label>
+            <Input type="number" placeholder="12" value={trueWind.vg} onChange={(e) => setTrueWind(p => ({ ...p, vg: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Aralarındaki Açı (θ) (°)</Label>
+            <Input type="number" placeholder="60" value={trueWind.theta} onChange={(e) => setTrueWind(p => ({ ...p, theta: e.target.value }))} className="h-9" />
+          </div>
+          {trueWindResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">Gerçek Rüzgâr (V_T):</span>
+              <p className="text-lg font-bold">{trueWindResult} knot</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Thermometer className="h-4 w-4" />
+            Hava Yoğunluğu
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Basınç (hPa)</Label>
+            <Input type="number" placeholder="1013" value={airDensity.p} onChange={(e) => setAirDensity(p => ({ ...p, p: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Sıcaklık (°C)</Label>
+            <Input type="number" placeholder="20" value={airDensity.t} onChange={(e) => setAirDensity(p => ({ ...p, t: e.target.value }))} className="h-9" />
+          </div>
+          {airDensityResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">ρ = P / (R × T):</span>
+              <p className="text-lg font-bold">{airDensityResult} kg/m³</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Waves className="h-4 w-4" />
+            Derin Su Dalgaboyu & Hızı
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Dalga Periyodu (T) (s)</Label>
+            <Input type="number" placeholder="8" value={wavelength.period} onChange={(e) => setWavelength(p => ({ ...p, period: e.target.value }))} className="h-9" />
+          </div>
+          {wavelengthResult && (
+            <div className="bg-primary/5 rounded-lg p-3 space-y-1">
+              <div>
+                <span className="text-xs text-muted-foreground">Dalgaboyu (L = gT²/2π):</span>
+                <p className="text-lg font-bold">{wavelengthResult.L} m</p>
+              </div>
+              <div>
+                <span className="text-xs text-muted-foreground">Dalga Hızı (C = L/T):</span>
+                <p className="text-lg font-bold">{wavelengthResult.C} m/s</p>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Activity className="h-4 w-4" />
+            Beaufort → Hız
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Beaufort Skalası (0–12)</Label>
+            <Input type="number" min="0" max="12" placeholder="6" value={beaufort.b} onChange={(e) => setBeaufort(p => ({ ...p, b: e.target.value }))} className="h-9" />
+          </div>
+          {beaufortResult && (
+            <div className="bg-primary/5 rounded-lg p-3 space-y-1">
+              <span className="text-xs text-muted-foreground">V = 0.836 × B^1.5:</span>
+              <p className="text-lg font-bold">{beaufortResult.ms} m/s ({beaufortResult.kn} knot)</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Droplets className="h-4 w-4" />
+            Çiğ Noktası Sıcaklığı
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Hava Sıcaklığı (°C)</Label>
+            <Input type="number" placeholder="25" value={dewPoint.t} onChange={(e) => setDewPoint(p => ({ ...p, t: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Bağıl Nem (%)</Label>
+            <Input type="number" placeholder="70" value={dewPoint.rh} onChange={(e) => setDewPoint(p => ({ ...p, rh: e.target.value }))} className="h-9" />
+          </div>
+          {dewPointResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">Td ≈ T - (100 - RH) / 5:</span>
+              <p className="text-lg font-bold">{dewPointResult} °C</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <TrendingUp className="h-4 w-4" />
+            Deniz Seviyesine İndirgenmiş Basınç
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">İstasyon Basıncı (hPa)</Label>
+            <Input type="number" placeholder="1000" value={seaLevel.p} onChange={(e) => setSeaLevel(p => ({ ...p, p: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Yükseklik (m)</Label>
+            <Input type="number" placeholder="30" value={seaLevel.h} onChange={(e) => setSeaLevel(p => ({ ...p, h: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Sıcaklık (°C)</Label>
+            <Input type="number" placeholder="15" value={seaLevel.t} onChange={(e) => setSeaLevel(p => ({ ...p, t: e.target.value }))} className="h-9" />
+          </div>
+          {seaLevelResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">P₀ = P × e^(gh/RT̄):</span>
+              <p className="text-lg font-bold">{seaLevelResult} hPa</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

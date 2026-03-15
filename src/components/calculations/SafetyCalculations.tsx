@@ -958,6 +958,170 @@ export const SafetyCalculations = () => {
           )}
         </div>
       )}
+
+      {/* Standalone Calculators */}
+      <Separator className="my-6" />
+      <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
+        <Calculator className="h-5 w-5" />
+        Hızlı Hesaplayıcılar
+      </h3>
+      <StandaloneFireCalcs />
     </div>
   );
 };
+
+function StandaloneFireCalcs() {
+  const [foamInputs, setFoamInputs] = useState({ rate: "6.5", area: "", time: "15" });
+  const [mistInputs, setMistInputs] = useState({ k: "0.07", pressure: "" });
+  const [waterInputs, setWaterInputs] = useState({ q: "", time: "60", pumps: "2" });
+  const [escapeInputs, setEscapeInputs] = useState({ length: "", speed: "1.2" });
+
+  const foamResult = (() => {
+    const rate = parseFloat(foamInputs.rate);
+    const area = parseFloat(foamInputs.area);
+    const time = parseFloat(foamInputs.time);
+    if (isNaN(rate) || isNaN(area) || isNaN(time)) return null;
+    const quantity = rate * area * time / 1000; // m³
+    return quantity.toFixed(2);
+  })();
+
+  const mistResult = (() => {
+    const k = parseFloat(mistInputs.k);
+    const p = parseFloat(mistInputs.pressure);
+    if (isNaN(k) || isNaN(p)) return null;
+    const q = k * Math.sqrt(p);
+    return q.toFixed(3);
+  })();
+
+  const waterResult = (() => {
+    const q = parseFloat(waterInputs.q);
+    const t = parseFloat(waterInputs.time);
+    const n = parseFloat(waterInputs.pumps);
+    if (isNaN(q) || isNaN(t) || isNaN(n)) return null;
+    const capacity = q * t * n / 1000;
+    return capacity.toFixed(1);
+  })();
+
+  const escapeResult = (() => {
+    const l = parseFloat(escapeInputs.length);
+    const v = parseFloat(escapeInputs.speed);
+    if (isNaN(l) || isNaN(v) || v === 0) return null;
+    const time = l / v / 60; // minutes
+    return time.toFixed(1);
+  })();
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Flame className="h-4 w-4" />
+            Köpük Çözeltisi Miktarı
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Uygulama Hızı (L/m²/dk)</Label>
+            <Input type="number" placeholder="6.5" value={foamInputs.rate} onChange={(e) => setFoamInputs(p => ({ ...p, rate: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Korunan Alan (m²)</Label>
+            <Input type="number" placeholder="500" value={foamInputs.area} onChange={(e) => setFoamInputs(p => ({ ...p, area: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Uygulama Süresi (dk)</Label>
+            <Input type="number" placeholder="15" value={foamInputs.time} onChange={(e) => setFoamInputs(p => ({ ...p, time: e.target.value }))} className="h-9" />
+          </div>
+          {foamResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">Gerekli Köpük:</span>
+              <p className="text-lg font-bold">{foamResult} m³</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Droplets className="h-4 w-4" />
+            Su Sisi Debisi
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Nozul Katsayısı (K)</Label>
+            <Input type="number" placeholder="0.07" value={mistInputs.k} onChange={(e) => setMistInputs(p => ({ ...p, k: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Basınç (bar)</Label>
+            <Input type="number" placeholder="100" value={mistInputs.pressure} onChange={(e) => setMistInputs(p => ({ ...p, pressure: e.target.value }))} className="h-9" />
+          </div>
+          {mistResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">Nozul Debisi (Q = K × √P):</span>
+              <p className="text-lg font-bold">{mistResult} L/dk</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Anchor className="h-4 w-4" />
+            Yangın Suyu Kapasitesi
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Pompa Debisi (m³/h)</Label>
+            <Input type="number" placeholder="150" value={waterInputs.q} onChange={(e) => setWaterInputs(p => ({ ...p, q: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Çalışma Süresi (dk)</Label>
+            <Input type="number" placeholder="60" value={waterInputs.time} onChange={(e) => setWaterInputs(p => ({ ...p, time: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Pompa Sayısı</Label>
+            <Input type="number" placeholder="2" value={waterInputs.pumps} onChange={(e) => setWaterInputs(p => ({ ...p, pumps: e.target.value }))} className="h-9" />
+          </div>
+          {waterResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">Toplam Kapasite:</span>
+              <p className="text-lg font-bold">{waterResult} m³</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Users className="h-4 w-4" />
+            Kaçış Süresi
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-1">
+            <Label className="text-xs">Kaçış Yolu Uzunluğu (m)</Label>
+            <Input type="number" placeholder="120" value={escapeInputs.length} onChange={(e) => setEscapeInputs(p => ({ ...p, length: e.target.value }))} className="h-9" />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Yürüme Hızı (m/s)</Label>
+            <Input type="number" placeholder="1.2" value={escapeInputs.speed} onChange={(e) => setEscapeInputs(p => ({ ...p, speed: e.target.value }))} className="h-9" />
+          </div>
+          {escapeResult && (
+            <div className="bg-primary/5 rounded-lg p-3">
+              <span className="text-xs text-muted-foreground">Tahmini Kaçış Süresi (t = L / v):</span>
+              <p className="text-lg font-bold">{escapeResult} dakika</p>
+              {parseFloat(escapeResult) > 30 && (
+                <Badge variant="destructive" className="mt-1">SOLAS 30 dk limitini aşıyor</Badge>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

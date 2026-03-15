@@ -101,6 +101,51 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Entropi Değişimi",
+      description: "ΔS = Q/T formülüyle entropi değişimini hesaplar.",
+      inputs: [
+        { key: "q", label: "Isı Miktarı (Q)", unit: "kJ", placeholder: "500" },
+        { key: "t", label: "Sıcaklık (T)", unit: "°C", placeholder: "100" },
+      ],
+      calculate: (v) => {
+        const tK = v.t + 273.15;
+        const ds = v.q / tK;
+        return [{ label: "Entropi Değişimi (ΔS)", value: `${ds.toFixed(4)} kJ/K` }];
+      },
+    },
+    {
+      name: "Politropik Süreç",
+      description: "P₁V₁ⁿ = P₂V₂ⁿ ile son basınç ve işi hesaplar.",
+      inputs: [
+        { key: "p1", label: "Başlangıç Basıncı (P₁)", unit: "bar", placeholder: "1" },
+        { key: "v1", label: "Başlangıç Hacmi (V₁)", unit: "m³", placeholder: "0.5" },
+        { key: "v2", label: "Son Hacim (V₂)", unit: "m³", placeholder: "0.05" },
+        { key: "n", label: "Politropik İndeks (n)", unit: "", placeholder: "1.3" },
+      ],
+      calculate: (v) => {
+        const p2 = v.p1 * Math.pow(v.v1 / v.v2, v.n);
+        const work = (v.p1 * 1e5 * v.v1 - p2 * 1e5 * v.v2) / (v.n - 1);
+        return [
+          { label: "Son Basınç (P₂)", value: `${p2.toFixed(2)} bar` },
+          { label: "İş (W)", value: `${(work / 1000).toFixed(2)} kJ` },
+        ];
+      },
+    },
+    {
+      name: "Isı İletimi (Fourier)",
+      description: "Q = k × A × ΔT / L ile düz duvar ısı iletimini hesaplar.",
+      inputs: [
+        { key: "k", label: "Isı İletim Katsayısı (k)", unit: "W/m·K", placeholder: "50" },
+        { key: "a", label: "Alan (A)", unit: "m²", placeholder: "2" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "°C", placeholder: "80" },
+        { key: "l", label: "Duvar Kalınlığı (L)", unit: "m", placeholder: "0.05" },
+      ],
+      calculate: (v) => {
+        const q = (v.k * v.a * v.dt) / v.l;
+        return [{ label: "Isı Akısı (Q)", value: `${(q / 1000).toFixed(2)} kW` }];
+      },
+    },
   ],
   "fluid-mechanics": [
     {
@@ -205,6 +250,28 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Afinite Kuralları",
+      description: "Pompa/fan hız değişiminde debi, basınç ve güç ilişkisini hesaplar.",
+      inputs: [
+        { key: "n1", label: "Mevcut Devir (n₁)", unit: "rpm", placeholder: "1450" },
+        { key: "n2", label: "Yeni Devir (n₂)", unit: "rpm", placeholder: "1200" },
+        { key: "q1", label: "Mevcut Debi (Q₁)", unit: "m³/h", placeholder: "100" },
+        { key: "h1", label: "Mevcut Basma Yük. (H₁)", unit: "m", placeholder: "30" },
+        { key: "p1", label: "Mevcut Güç (P₁)", unit: "kW", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        const ratio = v.n2 / v.n1;
+        const q2 = v.q1 * ratio;
+        const h2 = v.h1 * Math.pow(ratio, 2);
+        const p2 = v.p1 * Math.pow(ratio, 3);
+        return [
+          { label: "Yeni Debi (Q₂)", value: `${q2.toFixed(1)} m³/h` },
+          { label: "Yeni Basma Yük. (H₂)", value: `${h2.toFixed(1)} m` },
+          { label: "Yeni Güç (P₂)", value: `${p2.toFixed(2)} kW` },
+        ];
+      },
+    },
   ],
   "diesel-engines": [
     {
@@ -296,6 +363,39 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [{ label: "Admiralty Katsayısı (C)", value: c.toFixed(1) }];
       },
     },
+    {
+      name: "Sıkıştırma Oranı",
+      description: "Silindir geometrisinden sıkıştırma oranını hesaplar.",
+      inputs: [
+        { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "500" },
+        { key: "stroke", label: "Strok", unit: "mm", placeholder: "2000" },
+        { key: "vc", label: "Ölü Hacim (V_c)", unit: "litre", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000) * 1000; // litre
+        const cr = (vs + v.vc) / v.vc;
+        return [
+          { label: "Strok Hacmi (V_s)", value: `${vs.toFixed(1)} litre` },
+          { label: "Sıkıştırma Oranı (r)", value: `${cr.toFixed(1)}:1` },
+        ];
+      },
+    },
+    {
+      name: "Hava Fazlalık Katsayısı (λ)",
+      description: "Gerçek hava/yakıt oranını stokiyometrik orana bölerek λ hesaplar.",
+      inputs: [
+        { key: "afr", label: "Gerçek Hava/Yakıt Oranı", unit: "kg/kg", placeholder: "42" },
+        { key: "stoich", label: "Stokiyometrik Oran", unit: "kg/kg", placeholder: "14.7" },
+      ],
+      calculate: (v) => {
+        const lambda = v.afr / v.stoich;
+        const status = lambda < 1 ? "Zengin Karışım" : lambda > 1.5 ? "Fakir Karışım" : "Normal Aralık";
+        return [
+          { label: "Hava Fazlalık Katsayısı (λ)", value: lambda.toFixed(2) },
+          { label: "Durum", value: status },
+        ];
+      },
+    },
   ],
   "ship-systems": [
     {
@@ -360,6 +460,50 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [
           { label: "Piston Alanı", value: `${(areaM2 * 1e4).toFixed(2)} cm²` },
           { label: "Silindir Kuvveti", value: `${(force / 1000).toFixed(1)} kN` },
+        ];
+      },
+    },
+    {
+      name: "Walther Viskozite-Sıcaklık",
+      description: "Walther denklemiyle farklı sıcaklıktaki viskoziteyi tahmin eder.",
+      inputs: [
+        { key: "v1", label: "Viskozite @T₁", unit: "cSt", placeholder: "380" },
+        { key: "t1", label: "Sıcaklık T₁", unit: "°C", placeholder: "50" },
+        { key: "v2", label: "Viskozite @T₂", unit: "cSt", placeholder: "15" },
+        { key: "t2", label: "Sıcaklık T₂", unit: "°C", placeholder: "130" },
+        { key: "tx", label: "Hedef Sıcaklık T_x", unit: "°C", placeholder: "100" },
+      ],
+      calculate: (v) => {
+        // Walther equation: log(log(ν+0.7)) = A - B × log(T+273.15)
+        const w1 = Math.log10(Math.log10(v.v1 + 0.7));
+        const w2 = Math.log10(Math.log10(v.v2 + 0.7));
+        const lt1 = Math.log10(v.t1 + 273.15);
+        const lt2 = Math.log10(v.t2 + 273.15);
+        const B = (w1 - w2) / (lt2 - lt1);
+        const A = w1 + B * lt1;
+        const ltx = Math.log10(v.tx + 273.15);
+        const wx = A - B * ltx;
+        const vx = Math.pow(10, Math.pow(10, wx)) - 0.7;
+        return [{ label: `Viskozite @${v.tx}°C`, value: `${vx.toFixed(1)} cSt` }];
+      },
+    },
+    {
+      name: "Yağ Film Kalınlığı",
+      description: "Sommerfeld sayısı ile minimum yağ film kalınlığını tahmin eder.",
+      inputs: [
+        { key: "mu", label: "Yağ Viskozitesi (μ)", unit: "Pa·s", placeholder: "0.05" },
+        { key: "n", label: "Devir (n)", unit: "rps", placeholder: "5" },
+        { key: "p", label: "Birim Yük (P)", unit: "MPa", placeholder: "3" },
+        { key: "c", label: "Yatak Boşluğu (c)", unit: "mm", placeholder: "0.1" },
+        { key: "r", label: "Mil Yarıçapı (r)", unit: "mm", placeholder: "100" },
+      ],
+      calculate: (v) => {
+        // Sommerfeld number: S = (μ × n / P) × (r/c)²
+        const S = (v.mu * v.n / (v.p * 1e6)) * Math.pow((v.r / v.c), 2);
+        const hMin = v.c * (1 - 1 / (1 + 2 * S)); // Approximate
+        return [
+          { label: "Sommerfeld Sayısı (S)", value: S.toFixed(3) },
+          { label: "Min. Film Kalınlığı", value: `${(hMin * 1000).toFixed(1)} µm` },
         ];
       },
     },
@@ -520,6 +664,24 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Reaktif Güç",
+      description: "Aktif güç ve güç faktöründen reaktif gücü hesaplar.",
+      inputs: [
+        { key: "p", label: "Aktif Güç (P)", unit: "kW", placeholder: "300" },
+        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+      ],
+      calculate: (v) => {
+        const phi = Math.acos(v.pf);
+        const q = v.p * Math.tan(phi);
+        const s = v.p / v.pf;
+        return [
+          { label: "Reaktif Güç (Q)", value: `${q.toFixed(1)} kVAR` },
+          { label: "Görünür Güç (S)", value: `${s.toFixed(1)} kVA` },
+          { label: "Faz Açısı (φ)", value: `${(phi * 180 / Math.PI).toFixed(1)}°` },
+        ];
+      },
+    },
   ],
   "cooling-hvac": [
     {
@@ -582,6 +744,37 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const TH = v.th + 273.15;
         const copCarnot = TL / (TH - TL);
         return [{ label: "Carnot COP", value: copCarnot.toFixed(2) }];
+      },
+    },
+    {
+      name: "Kompresör İşi",
+      description: "Soğutma kompresörünün iş değerini hesaplar: W = ṁ × (h₂ - h₁)",
+      inputs: [
+        { key: "mdot", label: "Kütle Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
+        { key: "h1", label: "Kompresör Girişi (h₁)", unit: "kJ/kg", placeholder: "400" },
+        { key: "h2", label: "Kompresör Çıkışı (h₂)", unit: "kJ/kg", placeholder: "450" },
+      ],
+      calculate: (v) => {
+        const w = v.mdot * (v.h2 - v.h1);
+        return [{ label: "Kompresör Gücü (W)", value: `${w.toFixed(2)} kW` }];
+      },
+    },
+    {
+      name: "Nem Alma Kapasitesi",
+      description: "Klima sisteminde nem alma kapasitesini hesaplar.",
+      inputs: [
+        { key: "q", label: "Hava Debisi", unit: "m³/h", placeholder: "5000" },
+        { key: "w1", label: "Giriş Nem Oranı (W₁)", unit: "g/kg", placeholder: "14" },
+        { key: "w2", label: "Çıkış Nem Oranı (W₂)", unit: "g/kg", placeholder: "8" },
+        { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.2" },
+      ],
+      calculate: (v) => {
+        const mAir = v.q * v.rho / 3600; // kg/s
+        const moisture = mAir * (v.w1 - v.w2) / 1000; // kg/s water removed
+        return [
+          { label: "Nem Alma Kapasitesi", value: `${(moisture * 3600).toFixed(2)} kg/saat` },
+          { label: "Latent Yük", value: `${(moisture * 2450).toFixed(1)} kW` },
+        ];
       },
     },
   ],
@@ -709,6 +902,22 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Güvenilirlik R(t)",
+      description: "Üstel dağılım ile zaman bazlı güvenilirlik hesabı: R(t) = e^(-t/MTBF)",
+      inputs: [
+        { key: "mtbf", label: "MTBF", unit: "saat", placeholder: "5000" },
+        { key: "t", label: "Hedef Süre (t)", unit: "saat", placeholder: "1000" },
+      ],
+      calculate: (v) => {
+        const lambda = 1 / v.mtbf;
+        const rt = Math.exp(-lambda * v.t) * 100;
+        return [
+          { label: "Arıza Oranı (λ)", value: `${(lambda * 1e6).toFixed(1)} × 10⁻⁶ /saat` },
+          { label: `R(${v.t}) Güvenilirlik`, value: `${rt.toFixed(2)}%` },
+        ];
+      },
+    },
   ],
   "energy-efficiency": [
     {
@@ -767,6 +976,42 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [
           { label: "Yeni Tüketim", value: `${fc2.toFixed(1)} ton/gün` },
           { label: "Tasarruf", value: `${saving.toFixed(1)}%` },
+        ];
+      },
+    },
+    {
+      name: "EEXI Hesabı",
+      description: "Mevcut gemiler için Enerji Verimlilik İndeksini hesaplar.",
+      inputs: [
+        { key: "pme", label: "Ana Motor Gücü (P_ME)", unit: "kW", placeholder: "15000" },
+        { key: "sfocMe", label: "Ana Motor SFOC", unit: "g/kW·h", placeholder: "175" },
+        { key: "pae", label: "Yardımcı Motor Gücü (P_AE)", unit: "kW", placeholder: "750" },
+        { key: "sfocAe", label: "Yardımcı SFOC", unit: "g/kW·h", placeholder: "215" },
+        { key: "cf", label: "CO₂ Faktörü", unit: "", placeholder: "3.114" },
+        { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
+        { key: "vref", label: "Referans Hız", unit: "knot", placeholder: "14.5" },
+      ],
+      calculate: (v) => {
+        const eexi = ((v.pme * v.sfocMe * v.cf) + (v.pae * v.sfocAe * v.cf)) / (v.dwt * v.vref);
+        return [{ label: "EEXI", value: `${eexi.toFixed(2)} g CO₂/(ton·NM)` }];
+      },
+    },
+    {
+      name: "Atık Isı Geri Kazanım (WHRS)",
+      description: "Egzoz gazından geri kazanılabilir enerjiyi hesaplar.",
+      inputs: [
+        { key: "mexh", label: "Egzoz Debisi", unit: "kg/s", placeholder: "30" },
+        { key: "texhIn", label: "Egzoz Giriş Sıcaklığı", unit: "°C", placeholder: "350" },
+        { key: "texhOut", label: "Egzoz Çıkış Sıcaklığı", unit: "°C", placeholder: "180" },
+        { key: "cp", label: "Özgül Isı (c_p)", unit: "kJ/kg·K", placeholder: "1.05" },
+        { key: "eta", label: "Sistem Verimi", unit: "%", placeholder: "70" },
+      ],
+      calculate: (v) => {
+        const qAvail = v.mexh * v.cp * (v.texhIn - v.texhOut);
+        const qRecovered = qAvail * (v.eta / 100);
+        return [
+          { label: "Kullanılabilir Isı", value: `${qAvail.toFixed(0)} kW` },
+          { label: "Geri Kazanılan Enerji", value: `${qRecovered.toFixed(0)} kW` },
         ];
       },
     },
@@ -926,6 +1171,48 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Yorgunluk İndeksi",
+      description: "IMO yorgunluk yönetimi için çalışma/dinlenme saatlerini değerlendirir.",
+      inputs: [
+        { key: "workHours", label: "Günlük Çalışma", unit: "saat", placeholder: "14" },
+        { key: "restHours", label: "Günlük Dinlenme", unit: "saat", placeholder: "10" },
+        { key: "days", label: "Ardışık Çalışma Günü", unit: "gün", placeholder: "14" },
+      ],
+      calculate: (v) => {
+        const ratio = v.workHours / v.restHours;
+        const fatigue = Math.min(100, ratio * v.days * 3);
+        const status = fatigue < 30 ? "Düşük" : fatigue < 60 ? "Orta" : fatigue < 80 ? "Yüksek" : "Kritik";
+        const mclCompliant = v.workHours <= 14 && v.restHours >= 10;
+        return [
+          { label: "Yorgunluk İndeksi", value: `${fatigue.toFixed(0)}%` },
+          { label: "Risk Seviyesi", value: status },
+          { label: "MLC Uyumu", value: mclCompliant ? "Uygun" : "UYUMSUZ" },
+        ];
+      },
+    },
+    {
+      name: "Vardiya Etkinliği",
+      description: "Vardiya düzeninin operasyonel etkinliğini değerlendirir.",
+      inputs: [
+        { key: "crew", label: "Makine Personeli", unit: "kişi", placeholder: "8" },
+        { key: "watchHours", label: "Vardiya Süresi", unit: "saat", placeholder: "4" },
+        { key: "tasks", label: "Günlük Rutin Görev", unit: "adet", placeholder: "25" },
+        { key: "incidents", label: "Aylık Olay Sayısı", unit: "adet", placeholder: "2" },
+      ],
+      calculate: (v) => {
+        const watchesPerDay = 24 / v.watchHours;
+        const crewPerWatch = v.crew / (watchesPerDay > 2 ? 3 : 2);
+        const taskLoad = v.tasks / v.crew;
+        const effectiveness = Math.max(0, 100 - v.incidents * 10 - Math.max(0, taskLoad - 4) * 5);
+        return [
+          { label: "Vardiya Sayısı/Gün", value: `${watchesPerDay.toFixed(0)}` },
+          { label: "Vardiya Başına Kişi", value: `${crewPerWatch.toFixed(1)}` },
+          { label: "Kişi Başı Görev Yükü", value: `${taskLoad.toFixed(1)} görev/kişi` },
+          { label: "Etkinlik Skoru", value: `${effectiveness.toFixed(0)}%` },
+        ];
+      },
+    },
   ],
   "machine-elements": [
     {
@@ -1063,6 +1350,25 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [{ label: "Tahmini Sıcaklık", value: `${temp.toFixed(0)} °C` }];
       },
     },
+    {
+      name: "Doğruluk / Hata Hesabı",
+      description: "Ölçüm cihazı doğruluğunu ve hata yüzdesini hesaplar.",
+      inputs: [
+        { key: "measured", label: "Ölçülen Değer", unit: "", placeholder: "102" },
+        { key: "actual", label: "Gerçek Değer", unit: "", placeholder: "100" },
+        { key: "span", label: "Ölçüm Aralığı (Span)", unit: "", placeholder: "200" },
+      ],
+      calculate: (v) => {
+        const absError = Math.abs(v.measured - v.actual);
+        const relError = (absError / v.actual) * 100;
+        const spanError = (absError / v.span) * 100;
+        return [
+          { label: "Mutlak Hata", value: `${absError.toFixed(3)}` },
+          { label: "Bağıl Hata", value: `${relError.toFixed(2)}%` },
+          { label: "Span Hatası", value: `${spanError.toFixed(2)}%` },
+        ];
+      },
+    },
   ],
   "engine-room-ops": [
     {
@@ -1114,6 +1420,44 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [
           { label: "Toplam Silindir Yağı", value: `${(consumption * 1000).toFixed(0)} kg` },
           { label: "Günlük Tüketim", value: `${(dailyRate * 1000).toFixed(1)} kg/gün` },
+        ];
+      },
+    },
+    {
+      name: "Motor Isınma Süresi",
+      description: "Soğuk motorun servis sıcaklığına ulaşma süresini tahmin eder.",
+      inputs: [
+        { key: "mass", label: "Motor Blok Kütlesi", unit: "ton", placeholder: "200" },
+        { key: "cp", label: "Özgül Isı (çelik)", unit: "kJ/kg·K", placeholder: "0.5" },
+        { key: "tStart", label: "Başlangıç Sıcaklığı", unit: "°C", placeholder: "20" },
+        { key: "tTarget", label: "Hedef Sıcaklık", unit: "°C", placeholder: "60" },
+        { key: "qHeater", label: "Isıtıcı Gücü", unit: "kW", placeholder: "150" },
+      ],
+      calculate: (v) => {
+        const energy = v.mass * 1000 * v.cp * (v.tTarget - v.tStart);
+        const timeH = energy / (v.qHeater * 3600);
+        return [
+          { label: "Gerekli Enerji", value: `${(energy / 3600).toFixed(0)} kWh` },
+          { label: "Tahmini Isınma Süresi", value: `${(timeH * 60).toFixed(0)} dakika` },
+        ];
+      },
+    },
+    {
+      name: "Yağ Basınç Kontrol",
+      description: "Motor yağ basıncının kabul edilebilir aralıkta olup olmadığını kontrol eder.",
+      inputs: [
+        { key: "pMeasured", label: "Ölçülen Basınç", unit: "bar", placeholder: "4.2" },
+        { key: "pMin", label: "Minimum İzin", unit: "bar", placeholder: "2.5" },
+        { key: "pMax", label: "Maksimum İzin", unit: "bar", placeholder: "6.0" },
+        { key: "pAlarm", label: "Alarm Değeri", unit: "bar", placeholder: "2.0" },
+      ],
+      calculate: (v) => {
+        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Düşük" : v.pMeasured > v.pMax ? "Yüksek" : "Normal";
+        const margin = ((v.pMeasured - v.pAlarm) / v.pAlarm) * 100;
+        return [
+          { label: "Durum", value: status },
+          { label: "Alarm Marjı", value: `${margin.toFixed(1)}%` },
+          { label: "Aralık", value: `${v.pMin}–${v.pMax} bar` },
         ];
       },
     },
