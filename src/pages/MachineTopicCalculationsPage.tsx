@@ -979,6 +979,42 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "EEXI Hesabı",
+      description: "Mevcut gemiler için Enerji Verimlilik İndeksini hesaplar.",
+      inputs: [
+        { key: "pme", label: "Ana Motor Gücü (P_ME)", unit: "kW", placeholder: "15000" },
+        { key: "sfocMe", label: "Ana Motor SFOC", unit: "g/kW·h", placeholder: "175" },
+        { key: "pae", label: "Yardımcı Motor Gücü (P_AE)", unit: "kW", placeholder: "750" },
+        { key: "sfocAe", label: "Yardımcı SFOC", unit: "g/kW·h", placeholder: "215" },
+        { key: "cf", label: "CO₂ Faktörü", unit: "", placeholder: "3.114" },
+        { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
+        { key: "vref", label: "Referans Hız", unit: "knot", placeholder: "14.5" },
+      ],
+      calculate: (v) => {
+        const eexi = ((v.pme * v.sfocMe * v.cf) + (v.pae * v.sfocAe * v.cf)) / (v.dwt * v.vref);
+        return [{ label: "EEXI", value: `${eexi.toFixed(2)} g CO₂/(ton·NM)` }];
+      },
+    },
+    {
+      name: "Atık Isı Geri Kazanım (WHRS)",
+      description: "Egzoz gazından geri kazanılabilir enerjiyi hesaplar.",
+      inputs: [
+        { key: "mexh", label: "Egzoz Debisi", unit: "kg/s", placeholder: "30" },
+        { key: "texhIn", label: "Egzoz Giriş Sıcaklığı", unit: "°C", placeholder: "350" },
+        { key: "texhOut", label: "Egzoz Çıkış Sıcaklığı", unit: "°C", placeholder: "180" },
+        { key: "cp", label: "Özgül Isı (c_p)", unit: "kJ/kg·K", placeholder: "1.05" },
+        { key: "eta", label: "Sistem Verimi", unit: "%", placeholder: "70" },
+      ],
+      calculate: (v) => {
+        const qAvail = v.mexh * v.cp * (v.texhIn - v.texhOut);
+        const qRecovered = qAvail * (v.eta / 100);
+        return [
+          { label: "Kullanılabilir Isı", value: `${qAvail.toFixed(0)} kW` },
+          { label: "Geri Kazanılan Enerji", value: `${qRecovered.toFixed(0)} kW` },
+        ];
+      },
+    },
   ],
   "environment-machine": [
     {
