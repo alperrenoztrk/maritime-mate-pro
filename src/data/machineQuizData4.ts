@@ -2,7 +2,7 @@
 import type { QuizQuestion } from "@/types/quiz";
 
 export const machineQuizQuestions4: Record<string, QuizQuestion[]> = {
-  environment: [
+  "environment-machine": [
     { id: 1, question: "MARPOL Annex VI neyi düzenler?", options: ["Denize çöp atımı", "Gemilerden kaynaklanan hava kirliliği", "Balast suyu", "Yağlı su deşarjı"], correctAnswer: 1, explanation: "MARPOL Annex VI, gemilerden kaynaklanan SOx, NOx, PM ve ODS emisyonlarını düzenler.", category: "Çevre" },
     { id: 2, question: "ECA (Emission Control Area) bölgelerinde SOx limiti nedir?", options: ["%3.50", "%0.50", "%0.10", "%1.00"], correctAnswer: 2, explanation: "ECA bölgelerinde yakıt kükürt limiti %0.10 m/m'dir.", category: "Çevre" },
     { id: 3, question: "Global kükürt limiti (2020 sonrası) nedir?", options: ["%3.50", "%0.50", "%0.10", "%1.00"], correctAnswer: 1, explanation: "IMO 2020 ile global kükürt limiti %0.50 m/m olarak belirlenmiştir.", category: "Çevre" },

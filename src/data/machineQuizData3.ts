@@ -108,7 +108,7 @@ export const machineQuizQuestions3: Record<string, QuizQuestion[]> = {
     { id: 50, question: "Bakım kayıtları (maintenance records) neden önemlidir?", options: ["Gereksizdir", "Sınıf survey, PSC denetimleri, garanti takibi ve trend analizi için zorunludur", "Yalnızca kâğıt israfı", "Yalnızca kaptan için"], correctAnswer: 1, explanation: "Bakım kayıtları yasal zorunluluk olup sınıf kuruluşu, PSC ve ISM denetimlerinde kanıt olarak sunulur.", category: "Bakım" },
   ],
 
-  safety: [
+  "engine-room-safety": [
     { id: 1, question: "Makine dairesinde CO₂ fixed fire-fighting sistemi ne zaman kullanılır?", options: ["Küçük yangınlarda", "Tüm personel tahliye edildikten sonra kontrol edilemeyen yangınlarda", "Her yangında", "Test amaçlı"], correctAnswer: 1, explanation: "CO₂ total flooding yalnızca tüm personel tahliye edilip bölme kapatıldıktan sonra boşaltılır.", category: "Makine Dairesi Güvenliği" },
     { id: 2, question: "CO₂ room'a giriş için hangi önlemler alınmalıdır?", options: ["Hiçbir önlem gerekmez", "Yetkili erişim, kilit sistemi ve kazara boşaltmayı önleyen güvenlik mekanizması", "Yalnızca kapı kilidi", "Yalnızca anahtar"], correctAnswer: 1, explanation: "CO₂ odasına erişim kontrollü olmalı; kazara boşaltmayı önleyen iki aşamalı kilit/emniyet düzeneği bulunmalıdır.", category: "Makine Dairesi Güvenliği" },
     { id: 3, question: "LEL (Lower Explosive Limit) ne anlama gelir?", options: ["En düşük egzoz sınırı", "Bir gazın havayla karışarak patlayıcı ortam oluşturacağı minimum konsantrasyon", "En düşük verimlilik", "En düşük sıcaklık"], correctAnswer: 1, explanation: "LEL: gaz/buhar konsantrasyonunun havayla karışarak alev alabileceği minimum yüzde değeridir.", category: "Makine Dairesi Güvenliği" },
