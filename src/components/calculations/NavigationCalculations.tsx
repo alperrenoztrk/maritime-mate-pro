@@ -4138,7 +4138,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Sunrise className="h-5 w-5 text-orange-500" />
+                    <Sunrise className="h-5 w-5 text-warning" />
                     Gündoğumu/Gün Batımı Tabloları
                   </CardTitle>
                   <CardDescription>
