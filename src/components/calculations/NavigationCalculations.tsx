@@ -4896,7 +4896,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Pilot Alma Mesafesi</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Pilot Alma Mesafesi</Label>
                   <p className="text-lg font-semibold">{result.pilotBoardingDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
