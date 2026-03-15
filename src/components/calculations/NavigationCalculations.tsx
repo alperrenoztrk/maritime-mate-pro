@@ -2284,7 +2284,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <MapPin className="h-5 w-5 text-green-500" />
+                    <MapPin className="h-5 w-5 text-success" />
                     Traverse Sailing
                   </CardTitle>
                   <CardDescription>
