@@ -4010,7 +4010,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <Waves className="h-4 w-4 text-cyan-500" />
+                           <Waves className="h-4 w-4 text-accent" />
                           Dalga Verileri
                         </CardTitle>
                       </CardHeader>
