@@ -4224,7 +4224,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               <span>Sivil Alacakaranlık Başı</span>
                               <span className="font-mono">{result.twilightTimes.civilTwilightBegin}</span>
                             </div>
-                            <div className="flex justify-between p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded">
+                             <div className="flex justify-between p-2 bg-primary/5 dark:bg-primary/10 rounded">
                               <span>Denizcilik Alacakaranlık Başı</span>
                               <span className="font-mono">{result.twilightTimes.nauticalTwilightBegin}</span>
                             </div>
