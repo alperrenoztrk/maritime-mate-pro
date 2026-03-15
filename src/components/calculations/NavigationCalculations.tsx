@@ -5110,7 +5110,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "9️⃣ COLREG Bağlantılı Seyir Hesapları",
           icon: Ship,
-          accent: "border-orange-200 bg-orange-50 dark:bg-orange-950",
+          accent: "border-warning/20 bg-warning/5 dark:bg-warning/10",
           items: [
             "Karşılaşma durumu tespiti ve çatışma riski",
             "CPA/TCPA sonrası manevra değerlendirmesi",
