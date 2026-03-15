@@ -4607,7 +4607,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
                               <span className="flex items-center gap-2">
-                                <Sun className="h-3 w-3 text-yellow-500" />
+                                <Sun className="h-3 w-3 text-warning" />
                                 Güneş SD
                               </span>
                               <span>15.7′ - 16.3′</span>
