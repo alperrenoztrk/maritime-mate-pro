@@ -3554,9 +3554,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <div className="space-y-4">
                         {/* Main Results */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-blue-50 dark:bg-blue-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-primary/5 dark:bg-primary/10' : 'bg-destructive/5 dark:bg-destructive/10'}`}>
                             <div className="text-sm text-muted-foreground">Efektif Draft</div>
-                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-blue-600' : 'text-red-600'}`}>
+                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-primary' : 'text-destructive'}`}>
                               {result.safeDraft.toFixed(2)} m
                             </div>
                           </div>
