@@ -4253,7 +4253,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               <span className="font-mono">{result.twilightTimes.sunset}</span>
                             </div>
                             <Separator />
-                            <div className="flex justify-between p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded">
+                            <div className="flex justify-between p-2 bg-warning/5 dark:bg-warning/10 rounded">
                               <span>Gündüz Süresi</span>
                               <span className="font-mono">{result.twilightTimes.daylightDuration.toFixed(1)} saat</span>
                             </div>
