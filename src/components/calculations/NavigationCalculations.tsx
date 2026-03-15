@@ -4684,7 +4684,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-xl sm:text-2xl font-bold text-success">{result.rhumbDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">İlk Doğrultu</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">İlk Doğrultu</Label>
                   <p className="text-lg font-semibold">{result.gcInitialBearing.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
