@@ -4438,7 +4438,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Card className="border-dashed">
                         <CardHeader className="pb-3">
                           <CardTitle className="text-base flex items-center gap-2">
-                            <Navigation className="h-4 w-4 text-blue-500" />
+                            <Navigation className="h-4 w-4 text-primary" />
                             Sight Reduction Tables
                           </CardTitle>
                         </CardHeader>
