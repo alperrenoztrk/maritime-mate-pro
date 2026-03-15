@@ -4717,7 +4717,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.groundTrack.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Yerüstü Hızı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Yerüstü Hızı</Label>
                   <p className="text-lg font-semibold">{result.groundSpeed.toFixed(1)} knot</p>
                 </div>
                 <div className="space-y-1">
