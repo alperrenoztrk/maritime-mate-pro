@@ -3325,7 +3325,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Ship className="h-5 w-5 text-blue-600" />
+                    <Ship className="h-5 w-5 text-primary" />
                     UKC (Under Keel Clearance) Hesabı
                   </CardTitle>
                   <CardDescription>
