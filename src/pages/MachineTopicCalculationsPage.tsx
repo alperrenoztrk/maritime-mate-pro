@@ -463,6 +463,50 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Walther Viskozite-Sıcaklık",
+      description: "Walther denklemiyle farklı sıcaklıktaki viskoziteyi tahmin eder.",
+      inputs: [
+        { key: "v1", label: "Viskozite @T₁", unit: "cSt", placeholder: "380" },
+        { key: "t1", label: "Sıcaklık T₁", unit: "°C", placeholder: "50" },
+        { key: "v2", label: "Viskozite @T₂", unit: "cSt", placeholder: "15" },
+        { key: "t2", label: "Sıcaklık T₂", unit: "°C", placeholder: "130" },
+        { key: "tx", label: "Hedef Sıcaklık T_x", unit: "°C", placeholder: "100" },
+      ],
+      calculate: (v) => {
+        // Walther equation: log(log(ν+0.7)) = A - B × log(T+273.15)
+        const w1 = Math.log10(Math.log10(v.v1 + 0.7));
+        const w2 = Math.log10(Math.log10(v.v2 + 0.7));
+        const lt1 = Math.log10(v.t1 + 273.15);
+        const lt2 = Math.log10(v.t2 + 273.15);
+        const B = (w1 - w2) / (lt2 - lt1);
+        const A = w1 + B * lt1;
+        const ltx = Math.log10(v.tx + 273.15);
+        const wx = A - B * ltx;
+        const vx = Math.pow(10, Math.pow(10, wx)) - 0.7;
+        return [{ label: `Viskozite @${v.tx}°C`, value: `${vx.toFixed(1)} cSt` }];
+      },
+    },
+    {
+      name: "Yağ Film Kalınlığı",
+      description: "Sommerfeld sayısı ile minimum yağ film kalınlığını tahmin eder.",
+      inputs: [
+        { key: "mu", label: "Yağ Viskozitesi (μ)", unit: "Pa·s", placeholder: "0.05" },
+        { key: "n", label: "Devir (n)", unit: "rps", placeholder: "5" },
+        { key: "p", label: "Birim Yük (P)", unit: "MPa", placeholder: "3" },
+        { key: "c", label: "Yatak Boşluğu (c)", unit: "mm", placeholder: "0.1" },
+        { key: "r", label: "Mil Yarıçapı (r)", unit: "mm", placeholder: "100" },
+      ],
+      calculate: (v) => {
+        // Sommerfeld number: S = (μ × n / P) × (r/c)²
+        const S = (v.mu * v.n / (v.p * 1e6)) * Math.pow((v.r / v.c), 2);
+        const hMin = v.c * (1 - 1 / (1 + 2 * S)); // Approximate
+        return [
+          { label: "Sommerfeld Sayısı (S)", value: S.toFixed(3) },
+          { label: "Min. Film Kalınlığı", value: `${(hMin * 1000).toFixed(1)} µm` },
+        ];
+      },
+    },
   ],
   auxiliary: [
     {
