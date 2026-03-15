@@ -4614,7 +4614,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                             </div>
                             <div className="flex justify-between">
                               <span className="flex items-center gap-2">
-                                <Moon className="h-3 w-3 text-gray-400" />
+                                <Moon className="h-3 w-3 text-muted-foreground" />
                                 Ay SD
                               </span>
                               <span>14.7′ - 16.8′</span>
