@@ -3581,15 +3581,15 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         </div>
 
                         {/* Status and Recommendations */}
-                        <div className={`p-4 rounded-lg border-2 ${result.collisionRisk === 'none' ? 'bg-green-50 dark:bg-green-900/20 border-green-500' : 'bg-red-50 dark:bg-red-900/20 border-red-500'}`}>
+                        <div className={`p-4 rounded-lg border-2 ${result.collisionRisk === 'none' ? 'bg-success/5 dark:bg-success/10 border-success' : 'bg-destructive/5 dark:bg-destructive/10 border-destructive'}`}>
                           <div className="flex items-start gap-3">
                             {result.collisionRisk === 'none' ? (
-                              <CheckCircle className="h-6 w-6 text-green-600 mt-0.5" />
+                              <CheckCircle className="h-6 w-6 text-success mt-0.5" />
                             ) : (
-                              <Target className="h-6 w-6 text-red-600 mt-0.5" />
+                              <Target className="h-6 w-6 text-destructive mt-0.5" />
                             )}
                             <div className="flex-1 space-y-2">
-                              <div className={`font-semibold text-lg ${result.collisionRisk === 'none' ? 'text-green-700' : 'text-red-700'}`}>
+                              <div className={`font-semibold text-lg ${result.collisionRisk === 'none' ? 'text-success' : 'text-destructive'}`}>
                                 {result.recommendations[0]}
                               </div>
                               <div className="text-sm space-y-1">
