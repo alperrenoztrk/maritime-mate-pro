@@ -3701,7 +3701,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="flex items-center gap-2 text-lg">
-                          <Sun className="h-5 w-5 text-yellow-500" />
+                          <Sun className="h-5 w-5 text-warning" />
                           Güneş Zamanları
                         </CardTitle>
                       </CardHeader>
