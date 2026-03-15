@@ -2972,13 +2972,13 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               </div>
               {result?.cpa !== undefined && (
                 <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded border">
+                  <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
                     <div className="text-sm text-muted-foreground">CPA</div>
-                    <div className="font-mono text-xl text-blue-600">{result.cpa.toFixed(2)} nm</div>
+                    <div className="font-mono text-xl text-primary">{result.cpa.toFixed(2)} nm</div>
                   </div>
-                  <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded border">
+                  <div className="p-3 bg-success/5 dark:bg-success/10 rounded border">
                     <div className="text-sm text-muted-foreground">TCPA</div>
-                    <div className="font-mono text-xl text-green-600">{result.tcpa.toFixed(1)} dk</div>
+                    <div className="font-mono text-xl text-success">{result.tcpa.toFixed(1)} dk</div>
                   </div>
                 </div>
               )}
