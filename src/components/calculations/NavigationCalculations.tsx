@@ -5344,4 +5344,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         </div>
       </div>
     );
-  }
+  };
+
+  return null;
+};
