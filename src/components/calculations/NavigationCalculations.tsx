@@ -3966,7 +3966,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <Wind className="h-4 w-4 text-blue-500" />
+                          <Wind className="h-4 w-4 text-primary" />
                           Rüzgar Verileri
                         </CardTitle>
                       </CardHeader>
