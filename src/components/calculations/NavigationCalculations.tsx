@@ -1430,7 +1430,12 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
     { value: "marine-weather", label: "Deniz Hava Durumu", icon: Waves },
     { value: "sunrise-sunset", label: "Gündoğumu/Günbatımı", icon: Sunrise },
     { value: "almanac", label: "Almanak & Yıldızlar", icon: Brain },
-    { value: "real-time", label: "Anlık İz & Track", icon: Target }
+    { value: "real-time", label: "Anlık İz & Track", icon: Target },
+    { value: "radar-horizon", label: "Radar Ufku", icon: Radar },
+    { value: "geo-range", label: "Coğrafi Görüş Mesafesi", icon: Eye },
+    { value: "turning", label: "Dönüş Hesabı (ROT)", icon: Navigation },
+    { value: "squat-calc", label: "Squat Hesabı", icon: Ship },
+    { value: "wop", label: "Wheel Over Point", icon: Target },
   ];
 
   return (
