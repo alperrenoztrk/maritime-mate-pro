@@ -4875,7 +4875,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.tidalStreamDirection.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Gelgit Değişim Hızı</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Değişim Hızı</Label>
                   <p className="text-lg font-semibold">{result.tidalAcceleration.toFixed(2)} m/sa</p>
                 </div>
                 <div className="space-y-1">
