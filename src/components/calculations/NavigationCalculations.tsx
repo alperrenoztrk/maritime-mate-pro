@@ -3622,7 +3622,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Sun className="h-5 w-5 text-orange-600" />
+                    <Sun className="h-5 w-5 text-warning" />
                     Astronomik Hesaplamalar
                   </CardTitle>
                   <CardDescription>
