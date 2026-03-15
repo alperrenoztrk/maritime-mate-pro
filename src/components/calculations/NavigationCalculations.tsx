@@ -1917,13 +1917,13 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result?.eta && (
                     <div className="mt-4 grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded border">
+                      <div className="p-3 bg-warning/5 dark:bg-warning/10 rounded border">
                         <div className="text-sm text-muted-foreground">Tahmini Varış Zamanı (ETA)</div>
-                        <div className="font-mono text-xl text-orange-600">{result.eta}</div>
+                        <div className="font-mono text-xl text-warning">{result.eta}</div>
                       </div>
-                      <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border">
+                      <div className="p-3 bg-warning/5 dark:bg-warning/10 rounded border">
                         <div className="text-sm text-muted-foreground">Seyir Süresi</div>
-                        <div className="font-mono text-xl text-yellow-600">{result.timeToGo?.toFixed(1)} saat</div>
+                        <div className="font-mono text-xl text-warning">{result.timeToGo?.toFixed(1)} saat</div>
                       </div>
                     </div>
                   )}
