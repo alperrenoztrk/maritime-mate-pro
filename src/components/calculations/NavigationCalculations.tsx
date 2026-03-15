@@ -3842,7 +3842,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                   {/* Celestial Measurements */}
                   <div>
-                    <h4 className="font-semibold text-purple-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-accent flex items-center gap-2 mb-4">
                       <Camera className="h-4 w-4" />
                       Sextant Ölçümleri
                     </h4>
