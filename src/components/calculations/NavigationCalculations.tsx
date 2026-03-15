@@ -5014,7 +5014,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣ Zaman – Mesafe – Hız Hesapları (Temel Seyir)",
           icon: Clock,
-          accent: "border-blue-200 bg-blue-50 dark:bg-blue-950",
+          accent: "border-primary/20 bg-primary/5 dark:bg-primary/10",
           items: [
             "Hız = Mesafe / Zaman; Mesafe = Hız × Zaman; Zaman = Mesafe / Hız",
             "Knot ↔ km/s ↔ m/s dönüşümleri",
