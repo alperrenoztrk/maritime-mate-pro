@@ -4808,7 +4808,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Spheroidal Mesafe</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Spheroidal Mesafe</Label>
                   <p className="text-lg font-semibold text-info">{result.spheroidalDistance.toFixed(3)} nm</p>
                   <p className="text-xs text-muted-foreground">WGS84 elipsoidi</p>
                 </div>
