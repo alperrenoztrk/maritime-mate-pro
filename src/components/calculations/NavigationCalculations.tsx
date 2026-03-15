@@ -2854,7 +2854,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <CardContent>
                   {/* Magnetic Corrections with E-W Buttons */}
                   <div className="mb-6">
-                    <h4 className="font-semibold text-red-700 flex items-center gap-2 mb-4">
+                    <h4 className="font-semibold text-destructive flex items-center gap-2 mb-4">
                       <Navigation className="h-4 w-4" />
                       Manyetik Düzeltmeler
                     </h4>
