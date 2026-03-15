@@ -101,6 +101,51 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Entropi Değişimi",
+      description: "ΔS = Q/T formülüyle entropi değişimini hesaplar.",
+      inputs: [
+        { key: "q", label: "Isı Miktarı (Q)", unit: "kJ", placeholder: "500" },
+        { key: "t", label: "Sıcaklık (T)", unit: "°C", placeholder: "100" },
+      ],
+      calculate: (v) => {
+        const tK = v.t + 273.15;
+        const ds = v.q / tK;
+        return [{ label: "Entropi Değişimi (ΔS)", value: `${ds.toFixed(4)} kJ/K` }];
+      },
+    },
+    {
+      name: "Politropik Süreç",
+      description: "P₁V₁ⁿ = P₂V₂ⁿ ile son basınç ve işi hesaplar.",
+      inputs: [
+        { key: "p1", label: "Başlangıç Basıncı (P₁)", unit: "bar", placeholder: "1" },
+        { key: "v1", label: "Başlangıç Hacmi (V₁)", unit: "m³", placeholder: "0.5" },
+        { key: "v2", label: "Son Hacim (V₂)", unit: "m³", placeholder: "0.05" },
+        { key: "n", label: "Politropik İndeks (n)", unit: "", placeholder: "1.3" },
+      ],
+      calculate: (v) => {
+        const p2 = v.p1 * Math.pow(v.v1 / v.v2, v.n);
+        const work = (v.p1 * 1e5 * v.v1 - p2 * 1e5 * v.v2) / (v.n - 1);
+        return [
+          { label: "Son Basınç (P₂)", value: `${p2.toFixed(2)} bar` },
+          { label: "İş (W)", value: `${(work / 1000).toFixed(2)} kJ` },
+        ];
+      },
+    },
+    {
+      name: "Isı İletimi (Fourier)",
+      description: "Q = k × A × ΔT / L ile düz duvar ısı iletimini hesaplar.",
+      inputs: [
+        { key: "k", label: "Isı İletim Katsayısı (k)", unit: "W/m·K", placeholder: "50" },
+        { key: "a", label: "Alan (A)", unit: "m²", placeholder: "2" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "°C", placeholder: "80" },
+        { key: "l", label: "Duvar Kalınlığı (L)", unit: "m", placeholder: "0.05" },
+      ],
+      calculate: (v) => {
+        const q = (v.k * v.a * v.dt) / v.l;
+        return [{ label: "Isı Akısı (Q)", value: `${(q / 1000).toFixed(2)} kW` }];
+      },
+    },
   ],
   "fluid-mechanics": [
     {
