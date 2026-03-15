@@ -5388,13 +5388,62 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
           </Tabs>
         </CardContent>
       </Card>
-        <div className="mt-6">
-          <Button onClick={calculate} className="w-full">
-            <Calculator className="mr-2 h-4 w-4" />
-            Hesapla
-          </Button>
-        </div>
+      <div className="mt-6">
+        <Button onClick={calculate} className="w-full">
+          <Calculator className="mr-2 h-4 w-4" />
+          Hesapla
+        </Button>
       </div>
-    );
-  }
+    </div>
+  );
 };
+
+function NavStandaloneCalc({ inputs, calculate }: {
+  inputs: { key: string; label: string; unit: string; placeholder?: string }[];
+  calculate: (vals: Record<string, number>) => { label: string; value: string }[];
+}) {
+  const [vals, setVals] = useState<Record<string, string>>({});
+  const [results, setResults] = useState<{ label: string; value: string }[] | null>(null);
+
+  const handleCalc = () => {
+    const numVals: Record<string, number> = {};
+    for (const inp of inputs) {
+      const v = parseFloat(vals[inp.key] || inp.placeholder || "0");
+      if (isNaN(v)) return;
+      numVals[inp.key] = v;
+    }
+    setResults(calculate(numVals));
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="grid gap-3 sm:grid-cols-2">
+        {inputs.map((inp) => (
+          <div key={inp.key} className="space-y-1">
+            <Label className="text-xs">{inp.label} {inp.unit && <span className="text-muted-foreground">({inp.unit})</span>}</Label>
+            <Input
+              type="number"
+              placeholder={inp.placeholder}
+              value={vals[inp.key] || ""}
+              onChange={(e) => setVals((p) => ({ ...p, [inp.key]: e.target.value }))}
+              className="h-9"
+            />
+          </div>
+        ))}
+      </div>
+      <Button onClick={handleCalc} size="sm" className="w-full gap-2">
+        <Calculator className="h-4 w-4" /> Hesapla
+      </Button>
+      {results && (
+        <div className="bg-primary/5 rounded-lg p-3 space-y-1">
+          {results.map((r, i) => (
+            <div key={i} className="flex justify-between text-sm">
+              <span className="text-muted-foreground">{r.label}</span>
+              <span className="font-semibold">{r.value}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
