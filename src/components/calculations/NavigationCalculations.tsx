@@ -2151,7 +2151,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {/* Arrival Position */}
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-red-700 flex items-center gap-2">
+                      <h4 className="font-semibold text-destructive flex items-center gap-2">
                         <Target className="h-4 w-4" />
                         Varış Konumu
                       </h4>
