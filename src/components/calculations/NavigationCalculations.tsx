@@ -3417,7 +3417,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {/* Safety Margins */}
                     <div>
-                      <h4 className="font-semibold text-orange-700 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-warning mb-3 flex items-center gap-2">
                         <Target className="h-4 w-4" />
                         Güvenlik Marjları
                       </h4>
