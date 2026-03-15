@@ -5050,7 +5050,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "4️⃣ Harita Üzerinde Yapılan Hesaplamalar",
           icon: Navigation,
-          accent: "border-lime-200 bg-lime-50 dark:bg-lime-950",
+          accent: "border-success/20 bg-success/5 dark:bg-success/10",
           items: [
             "Ölçekten mesafe ölçümü, pergelle mesafe hesapları",
             "Paralel cetvel ile rota çizimi ve gerçek rota (True Course)",
