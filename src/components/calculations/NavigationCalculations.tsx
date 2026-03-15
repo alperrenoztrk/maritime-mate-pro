@@ -5224,9 +5224,6 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 </div>
               </CardContent>
             </Card>
-          </CardContent>
-        </Card>
-
           </Tabs>
         </CardContent>
       </Card>
