@@ -1936,7 +1936,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-lg">
-                    <Navigation className="h-5 w-5 text-red-500" />
+                    <Navigation className="h-5 w-5 text-destructive" />
                     DR (Dead Reckoning) Plotting
                   </CardTitle>
                   <CardDescription>
