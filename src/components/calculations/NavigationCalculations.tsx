@@ -4746,7 +4746,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.cpa.toFixed(2)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">TCPA</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">TCPA</Label>
                   <p className="text-lg font-semibold">{result.tcpa.toFixed(1)} dakika</p>
                 </div>
                 <div className="space-y-1">
