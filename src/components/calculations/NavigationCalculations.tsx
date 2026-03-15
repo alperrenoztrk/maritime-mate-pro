@@ -1888,15 +1888,15 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         </div>
                         {result?.averageSpeed !== undefined && (
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-                            <div className="p-3 rounded border bg-emerald-50 dark:bg-emerald-900/20">
+                            <div className="p-3 rounded border bg-success/5 dark:bg-success/10">
                               <div className="text-muted-foreground">Ortalama Hız (SMG)</div>
                               <div className="font-mono text-lg">{result.averageSpeed?.toFixed(2)} kn</div>
                             </div>
-                            <div className="p-3 rounded border bg-blue-50 dark:bg-blue-900/20">
+                            <div className="p-3 rounded border bg-primary/5 dark:bg-primary/10">
                               <div className="text-muted-foreground">DMG</div>
                               <div className="font-mono text-lg">{result.dmg?.toFixed(1)} nm</div>
                             </div>
-                            <div className="p-3 rounded border bg-amber-50 dark:bg-amber-900/20">
+                            <div className="p-3 rounded border bg-warning/5 dark:bg-warning/10">
                               <div className="text-muted-foreground">Kalan Mesafe</div>
                               <div className="font-mono text-lg">{Number.isFinite(progressCalc.remainingDistanceNm) ? progressCalc.remainingDistanceNm.toFixed(1) : "-"} nm</div>
                             </div>
