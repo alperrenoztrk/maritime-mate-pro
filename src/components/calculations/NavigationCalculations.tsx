@@ -5086,7 +5086,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "7️⃣ Kerteriz Hesapları (Fixing Position)",
           icon: Eye,
-          accent: "border-sky-200 bg-sky-50 dark:bg-sky-950",
+          accent: "border-info/20 bg-info-muted dark:bg-info/10",
           items: [
             "Tek/iki/üç kerterizle mevki",
             "Relative bearing → True bearing dönüşümü",
