@@ -3336,7 +3336,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <div className="space-y-6">
                     {/* Ship Parameters */}
                     <div>
-                      <h4 className="font-semibold text-blue-700 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
                         <Ship className="h-4 w-4" />
                         Gemi Parametreleri
                       </h4>
