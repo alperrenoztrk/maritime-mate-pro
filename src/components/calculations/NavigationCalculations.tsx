@@ -2640,7 +2640,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                  <div className="mt-6 p-4 bg-warning/5 dark:bg-warning/10 rounded-lg">
                     <h4 className="font-semibold mb-2">Real Time Monitoring:</h4>
                     <div className="text-sm space-y-1">
                       <p>• GPS pozisyon güncellemeleri</p>
