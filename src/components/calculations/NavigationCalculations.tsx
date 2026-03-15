@@ -4680,8 +4680,8 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-xl sm:text-2xl font-bold text-info">{result.gcDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Loxodromik Mesafe</Label>
-                  <p className="text-xl sm:text-2xl font-bold text-green-600">{result.rhumbDistance.toFixed(1)} nm</p>
+                  <Label className="text-sm font-medium text-muted-foreground">Loxodromik Mesafe</Label>
+                  <p className="text-xl sm:text-2xl font-bold text-success">{result.rhumbDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
                   <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">İlk Doğrultu</Label>
