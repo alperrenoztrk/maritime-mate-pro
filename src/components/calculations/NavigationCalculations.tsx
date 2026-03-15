@@ -4813,8 +4813,8 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-xs text-muted-foreground">WGS84 elipsoidi</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Yakıt Maliyeti</Label>
-                  <p className="text-lg font-semibold text-green-600">${result.totalFuelCost.toFixed(0)}</p>
+                  <Label className="text-sm font-medium text-muted-foreground">Yakıt Maliyeti</Label>
+                  <p className="text-lg font-semibold text-success">${result.totalFuelCost.toFixed(0)}</p>
                   <p className="text-xs text-muted-foreground">Tahmini maliyet</p>
                 </div>
                 <div className="space-y-1">
