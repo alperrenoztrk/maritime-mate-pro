@@ -4397,7 +4397,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Globe className="h-5 w-5 text-blue-500" />
+                      <Globe className="h-5 w-5 text-primary" />
                       Nautical Almanac
                     </CardTitle>
                     <CardDescription>
