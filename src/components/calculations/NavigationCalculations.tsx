@@ -3572,9 +3572,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               {result.tidalStream.toFixed(2)} m
                             </div>
                           </div>
-                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-cyan-50 dark:bg-cyan-900/20' : 'bg-yellow-50 dark:bg-yellow-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-accent/5 dark:bg-accent/10' : 'bg-warning/5 dark:bg-warning/10'}`}>
                             <div className="text-sm text-muted-foreground">Min. Gerekli Derinlik</div>
-                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-cyan-600' : 'text-yellow-600'}`}>
+                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-accent' : 'text-warning'}`}>
                               {result.minimumDepth.toFixed(2)} m
                             </div>
                           </div>
