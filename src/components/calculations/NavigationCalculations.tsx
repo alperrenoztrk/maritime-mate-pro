@@ -5074,7 +5074,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "6️⃣ Akıntı ve Rüzgâr Düzeltmeli Seyir (Current & Wind)",
           icon: Wind,
-          accent: "border-indigo-200 bg-indigo-50 dark:bg-indigo-950",
+          accent: "border-primary/20 bg-primary/5 dark:bg-primary/10",
           items: [
             "Set (akıntı yönü) ve Drift (akıntı hızı)",
             "Course to Steer (CTS) ve Speed over Ground (SOG)",
