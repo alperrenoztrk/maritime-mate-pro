@@ -1981,7 +1981,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-blue-700">Seyir Verileri</h4>
+                      <h4 className="font-semibold text-primary">Seyir Verileri</h4>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <Label htmlFor="drCourse">Seyir Edilen Pusula (°)</Label>
