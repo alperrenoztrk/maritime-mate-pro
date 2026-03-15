@@ -3953,7 +3953,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Wind className="h-5 w-5 text-blue-500" />
+                    <Wind className="h-5 w-5 text-primary" />
                     Deniz Hava Durumu
                   </CardTitle>
                   <CardDescription>
