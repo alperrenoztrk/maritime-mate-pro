@@ -2127,7 +2127,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <div className="space-y-6">
                     {/* Departure Position */}
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-green-700 flex items-center gap-2">
+                      <h4 className="font-semibold text-success flex items-center gap-2">
                         <Navigation className="h-4 w-4" />
                         Başlangıç Konumu
                       </h4>
