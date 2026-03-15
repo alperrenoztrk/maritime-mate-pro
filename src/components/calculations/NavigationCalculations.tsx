@@ -4900,7 +4900,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.pilotBoardingDistance.toFixed(1)} nm</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Pilot Alma ETA</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Pilot Alma ETA</Label>
                   <p className="text-lg font-semibold">{result.pilotBoardingETA}</p>
                 </div>
                 <div className="space-y-1">
