@@ -1171,6 +1171,48 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Yorgunluk İndeksi",
+      description: "IMO yorgunluk yönetimi için çalışma/dinlenme saatlerini değerlendirir.",
+      inputs: [
+        { key: "workHours", label: "Günlük Çalışma", unit: "saat", placeholder: "14" },
+        { key: "restHours", label: "Günlük Dinlenme", unit: "saat", placeholder: "10" },
+        { key: "days", label: "Ardışık Çalışma Günü", unit: "gün", placeholder: "14" },
+      ],
+      calculate: (v) => {
+        const ratio = v.workHours / v.restHours;
+        const fatigue = Math.min(100, ratio * v.days * 3);
+        const status = fatigue < 30 ? "Düşük" : fatigue < 60 ? "Orta" : fatigue < 80 ? "Yüksek" : "Kritik";
+        const mclCompliant = v.workHours <= 14 && v.restHours >= 10;
+        return [
+          { label: "Yorgunluk İndeksi", value: `${fatigue.toFixed(0)}%` },
+          { label: "Risk Seviyesi", value: status },
+          { label: "MLC Uyumu", value: mclCompliant ? "Uygun" : "UYUMSUZ" },
+        ];
+      },
+    },
+    {
+      name: "Vardiya Etkinliği",
+      description: "Vardiya düzeninin operasyonel etkinliğini değerlendirir.",
+      inputs: [
+        { key: "crew", label: "Makine Personeli", unit: "kişi", placeholder: "8" },
+        { key: "watchHours", label: "Vardiya Süresi", unit: "saat", placeholder: "4" },
+        { key: "tasks", label: "Günlük Rutin Görev", unit: "adet", placeholder: "25" },
+        { key: "incidents", label: "Aylık Olay Sayısı", unit: "adet", placeholder: "2" },
+      ],
+      calculate: (v) => {
+        const watchesPerDay = 24 / v.watchHours;
+        const crewPerWatch = v.crew / (watchesPerDay > 2 ? 3 : 2);
+        const taskLoad = v.tasks / v.crew;
+        const effectiveness = Math.max(0, 100 - v.incidents * 10 - Math.max(0, taskLoad - 4) * 5);
+        return [
+          { label: "Vardiya Sayısı/Gün", value: `${watchesPerDay.toFixed(0)}` },
+          { label: "Vardiya Başına Kişi", value: `${crewPerWatch.toFixed(1)}` },
+          { label: "Kişi Başı Görev Yükü", value: `${taskLoad.toFixed(1)} görev/kişi` },
+          { label: "Etkinlik Skoru", value: `${effectiveness.toFixed(0)}%` },
+        ];
+      },
+    },
   ],
   "machine-elements": [
     {
