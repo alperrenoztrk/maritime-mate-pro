@@ -3566,9 +3566,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               {result.currentTideHeight.toFixed(2)} m
                             </div>
                           </div>
-                          <div className={`p-3 rounded border ${result.tidalStream >= 0 ? 'bg-emerald-50 dark:bg-emerald-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.tidalStream >= 0 ? 'bg-success/5 dark:bg-success/10' : 'bg-destructive/5 dark:bg-destructive/10'}`}>
                             <div className="text-sm text-muted-foreground">Güvenlik Marjı</div>
-                            <div className={`font-mono text-lg ${result.tidalStream >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+                            <div className={`font-mono text-lg ${result.tidalStream >= 0 ? 'text-success' : 'text-destructive'}`}>
                               {result.tidalStream.toFixed(2)} m
                             </div>
                           </div>
