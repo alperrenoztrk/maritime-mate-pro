@@ -5038,7 +5038,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "3️⃣ Enlem – Boylam Hesapları",
           icon: Globe,
-          accent: "border-amber-200 bg-amber-50 dark:bg-amber-950",
+          accent: "border-warning/20 bg-warning/5 dark:bg-warning/10",
           items: [
             "D.Lat ve D.Long (Kuzey/Güney, Doğu/Batı)",
             "1° enlem = 60 NM ilişkisi",
