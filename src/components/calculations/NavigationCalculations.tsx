@@ -3560,9 +3560,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                               {result.safeDraft.toFixed(2)} m
                             </div>
                           </div>
-                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-green-50 dark:bg-green-900/20' : 'bg-orange-50 dark:bg-orange-900/20'}`}>
+                          <div className={`p-3 rounded border ${result.collisionRisk === 'none' ? 'bg-success/5 dark:bg-success/10' : 'bg-warning/5 dark:bg-warning/10'}`}>
                             <div className="text-sm text-muted-foreground">Mevcut UKC</div>
-                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-green-600' : 'text-orange-600'}`}>
+                            <div className={`font-mono text-lg ${result.collisionRisk === 'none' ? 'text-success' : 'text-warning'}`}>
                               {result.currentTideHeight.toFixed(2)} m
                             </div>
                           </div>
