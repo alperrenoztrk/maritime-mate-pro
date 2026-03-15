@@ -4696,7 +4696,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.eta}</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Seyir Süresi</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Seyir Süresi</Label>
                   <p className="text-lg font-semibold">{result.timeToGo.toFixed(1)} saat</p>
                 </div>
               </div>
