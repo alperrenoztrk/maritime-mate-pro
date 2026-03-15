@@ -5026,7 +5026,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "2️⃣ Rota ve Kerteriz (Plane Sailing & Coastal Navigation)",
           icon: MapPin,
-          accent: "border-cyan-200 bg-cyan-50 dark:bg-cyan-950",
+          accent: "border-accent/20 bg-accent/5 dark:bg-accent/10",
           items: [
             "Düzlem seyri: Departure (Dep), D.Lat, rota (true/magnetic/compass)",
             "Distance = Dep / cos Lat hesapları",
