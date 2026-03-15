@@ -4213,7 +4213,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <CardContent>
                         {result?.twilightTimes && (
                           <div className="space-y-2 text-sm">
-                            <div className="flex justify-between p-2 bg-orange-50 dark:bg-orange-900/20 rounded">
+                             <div className="flex justify-between p-2 bg-warning/5 dark:bg-warning/10 rounded">
                               <span className="flex items-center gap-2">
                                 <Sunrise className="h-3 w-3" />
                                 Gündoğumu
