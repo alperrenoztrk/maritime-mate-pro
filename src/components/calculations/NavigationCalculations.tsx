@@ -5122,7 +5122,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "🔟 Great Circle & Rhumb Line Hesapları",
           icon: Globe,
-          accent: "border-emerald-200 bg-emerald-50 dark:bg-emerald-950",
+          accent: "border-success/20 bg-success/5 dark:bg-success/10",
           items: [
             "Rhumb Line (Mercator Sailing) sabit rota hesapları",
             "D.Lat & D.Long kullanımı, Meridional Parts",
