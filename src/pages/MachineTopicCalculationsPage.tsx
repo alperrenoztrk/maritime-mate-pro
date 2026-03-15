@@ -363,6 +363,39 @@ const topicCalculations: Record<string, CalcTool[]> = {
         return [{ label: "Admiralty Katsayısı (C)", value: c.toFixed(1) }];
       },
     },
+    {
+      name: "Sıkıştırma Oranı",
+      description: "Silindir geometrisinden sıkıştırma oranını hesaplar.",
+      inputs: [
+        { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "500" },
+        { key: "stroke", label: "Strok", unit: "mm", placeholder: "2000" },
+        { key: "vc", label: "Ölü Hacim (V_c)", unit: "litre", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000) * 1000; // litre
+        const cr = (vs + v.vc) / v.vc;
+        return [
+          { label: "Strok Hacmi (V_s)", value: `${vs.toFixed(1)} litre` },
+          { label: "Sıkıştırma Oranı (r)", value: `${cr.toFixed(1)}:1` },
+        ];
+      },
+    },
+    {
+      name: "Hava Fazlalık Katsayısı (λ)",
+      description: "Gerçek hava/yakıt oranını stokiyometrik orana bölerek λ hesaplar.",
+      inputs: [
+        { key: "afr", label: "Gerçek Hava/Yakıt Oranı", unit: "kg/kg", placeholder: "42" },
+        { key: "stoich", label: "Stokiyometrik Oran", unit: "kg/kg", placeholder: "14.7" },
+      ],
+      calculate: (v) => {
+        const lambda = v.afr / v.stoich;
+        const status = lambda < 1 ? "Zengin Karışım" : lambda > 1.5 ? "Fakir Karışım" : "Normal Aralık";
+        return [
+          { label: "Hava Fazlalık Katsayısı (λ)", value: lambda.toFixed(2) },
+          { label: "Durum", value: status },
+        ];
+      },
+    },
   ],
   "ship-systems": [
     {
