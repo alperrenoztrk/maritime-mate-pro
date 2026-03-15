@@ -1678,17 +1678,17 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   </div>
                   {result && (
                     <div className="mt-4 grid grid-cols-3 gap-4">
-                      <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded border">
+                      <div className="p-3 bg-accent/5 dark:bg-accent/10 rounded border">
                         <div className="text-sm text-muted-foreground">Rhumb Line Mesafe</div>
-                        <div className="font-mono text-xl text-purple-600">{result.rhumbDistance?.toFixed(2)} nm</div>
+                        <div className="font-mono text-xl text-accent">{result.rhumbDistance?.toFixed(2)} nm</div>
                       </div>
-                      <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded border">
+                      <div className="p-3 bg-primary/5 dark:bg-primary/10 rounded border">
                         <div className="text-sm text-muted-foreground">Pusula (Sabit)</div>
-                        <div className="font-mono text-xl text-indigo-600">{result.rhumbBearing?.toFixed(1)}°</div>
+                        <div className="font-mono text-xl text-primary">{result.rhumbBearing?.toFixed(1)}°</div>
                       </div>
-                      <div className="p-3 bg-cyan-50 dark:bg-cyan-900/20 rounded border">
+                      <div className="p-3 bg-secondary/5 dark:bg-secondary/10 rounded border">
                         <div className="text-sm text-muted-foreground">Departure</div>
-                        <div className="font-mono text-xl text-cyan-600">{result.departure?.toFixed(2)} nm</div>
+                        <div className="font-mono text-xl text-secondary">{result.departure?.toFixed(2)} nm</div>
                       </div>
                     </div>
                   )}
