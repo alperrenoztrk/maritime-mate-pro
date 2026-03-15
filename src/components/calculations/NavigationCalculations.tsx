@@ -4993,9 +4993,9 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
       )}
 
       {/* Seyir Asistanı */}
-      <Card className="shadow border border-emerald-200/50">
+      <Card className="shadow border border-success/30">
         <CardHeader className="pb-2">
-          <CardTitle className="flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+          <CardTitle className="flex items-center gap-2 text-success">
             <Brain className="h-5 w-5" />
             Seyir Asistanı
           </CardTitle>
