@@ -3753,7 +3753,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           <div className="text-center space-y-1">
                             <div className="text-xl sm:text-2xl font-semibold">{moonPhase.phaseName}</div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">Faz Adı</div>
+                             <div className="text-sm text-muted-foreground">Faz Adı</div>
                           </div>
                           <div className="text-center space-y-1">
                             <div className="text-xl sm:text-2xl font-semibold">{moonPhase.phase}%</div>
