@@ -5226,6 +5226,168 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
             </Card>
           </CardContent>
         </Card>
+        {/* Radar Horizon */}
+        <TabsContent value="radar-horizon" className="space-y-4">
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2"><Radar className="h-5 w-5" /> Radar Ufku</CardTitle>
+              <CardDescription>d = 2.23 × (√h₁ + √h₂) ile radar ufku mesafesini hesaplar.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <NavStandaloneCalc
+                inputs={[
+                  { key: "h1", label: "Anten Yüksekliği (h₁)", unit: "m", placeholder: "25" },
+                  { key: "h2", label: "Hedef Yüksekliği (h₂)", unit: "m", placeholder: "10" },
+                ]}
+                calculate={(v) => {
+                  const d = 2.23 * (Math.sqrt(v.h1) + Math.sqrt(v.h2));
+                  return [{ label: "Radar Ufku", value: `${d.toFixed(1)} NM` }];
+                }}
+              />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Geographical Range */}
+        <TabsContent value="geo-range" className="space-y-4">
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2"><Eye className="h-5 w-5" /> Coğrafi Görüş Mesafesi</CardTitle>
+              <CardDescription>Fener veya hedefin coğrafi görüş mesafesini hesaplar.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <NavStandaloneCalc
+                inputs={[
+                  { key: "hObs", label: "Gözlemci Yüksekliği", unit: "m", placeholder: "15" },
+                  { key: "hObj", label: "Hedef Yüksekliği", unit: "m", placeholder: "20" },
+                ]}
+                calculate={(v) => {
+                  const dObs = 2.08 * Math.sqrt(v.hObs);
+                  const dObj = 2.08 * Math.sqrt(v.hObj);
+                  const total = dObs + dObj;
+                  return [
+                    { label: "Gözlemci Ufku", value: `${dObs.toFixed(1)} NM` },
+                    { label: "Hedef Ufku", value: `${dObj.toFixed(1)} NM` },
+                    { label: "Coğrafi Görüş Mesafesi", value: `${total.toFixed(1)} NM` },
+                  ];
+                }}
+              />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Turning / ROT */}
+        <TabsContent value="turning" className="space-y-4">
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2"><Navigation className="h-5 w-5" /> Dönüş Hesabı</CardTitle>
+              <CardDescription>ROT, Advance, Transfer ve Tactical Diameter hesaplamaları.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <NavStandaloneCalc
+                inputs={[
+                  { key: "speed", label: "Gemi Hızı", unit: "knot", placeholder: "12" },
+                  { key: "rudder", label: "Dümen Açısı", unit: "°", placeholder: "15" },
+                  { key: "length", label: "Gemi Boyu", unit: "m", placeholder: "180" },
+                  { key: "courseChange", label: "Rota Değişimi", unit: "°", placeholder: "90" },
+                ]}
+                calculate={(v) => {
+                  // Approximate turning circle parameters
+                  const speedMs = v.speed * 0.5144;
+                  const rudderRad = v.rudder * Math.PI / 180;
+                  // Tactical diameter ≈ 3-5 × ship length for 15° rudder
+                  const tdFactor = Math.max(2, 5 - v.rudder * 0.1);
+                  const tacticalDiameter = v.length * tdFactor;
+                  const turnRadius = tacticalDiameter / 2;
+                  // Advance ≈ 0.8 × TD for 90° turn
+                  const advance = tacticalDiameter * 0.8 * (v.courseChange / 90);
+                  // Transfer ≈ 0.5 × TD for 90° turn
+                  const transfer = tacticalDiameter * 0.5 * Math.min(1, v.courseChange / 90);
+                  // ROT (°/min)
+                  const rot = (speedMs * Math.sin(rudderRad) / turnRadius) * (180 / Math.PI) * 60;
+                  // Time to turn
+                  const turnTime = rot > 0 ? v.courseChange / rot : 0;
+                  return [
+                    { label: "ROT", value: `${rot.toFixed(1)} °/dk` },
+                    { label: "Advance", value: `${advance.toFixed(0)} m` },
+                    { label: "Transfer", value: `${transfer.toFixed(0)} m` },
+                    { label: "Tactical Diameter", value: `${tacticalDiameter.toFixed(0)} m` },
+                    { label: "Dönüş Süresi", value: `${turnTime.toFixed(1)} dk` },
+                  ];
+                }}
+              />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Squat */}
+        <TabsContent value="squat-calc" className="space-y-4">
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2"><Ship className="h-5 w-5" /> Squat Hesabı</CardTitle>
+              <CardDescription>Barrass formülü ile squat etkisini hesaplar.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <NavStandaloneCalc
+                inputs={[
+                  { key: "cb", label: "Blok Katsayısı (C_b)", unit: "", placeholder: "0.82" },
+                  { key: "speed", label: "Gemi Hızı", unit: "knot", placeholder: "10" },
+                  { key: "draft", label: "Draft", unit: "m", placeholder: "10" },
+                  { key: "depth", label: "Su Derinliği", unit: "m", placeholder: "14" },
+                ]}
+                calculate={(v) => {
+                  // Barrass: Squat = Cb × V² / 100 (open water)
+                  const squatOpen = v.cb * v.speed * v.speed / 100;
+                  // Confined water factor
+                  const blockage = (v.draft * 30) / (v.depth * 50); // Simplified S/A ratio
+                  const squatConfined = squatOpen * (1 + blockage);
+                  const ukc = v.depth - v.draft - squatConfined;
+                  return [
+                    { label: "Squat (Açık Su)", value: `${squatOpen.toFixed(2)} m` },
+                    { label: "Squat (Dar Su)", value: `${squatConfined.toFixed(2)} m` },
+                    { label: "Net UKC", value: `${ukc.toFixed(2)} m` },
+                    { label: "UKC Durumu", value: ukc < 1 ? "DİKKAT — Yetersiz" : ukc < 2 ? "Marginal" : "Yeterli" },
+                  ];
+                }}
+              />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Wheel Over Point */}
+        <TabsContent value="wop" className="space-y-4">
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2"><Target className="h-5 w-5" /> Wheel Over Point (WOP)</CardTitle>
+              <CardDescription>Dümenin basılacağı mesafeyi hesaplar.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <NavStandaloneCalc
+                inputs={[
+                  { key: "advance", label: "Advance (90° için)", unit: "m", placeholder: "500" },
+                  { key: "transfer", label: "Transfer (90° için)", unit: "m", placeholder: "250" },
+                  { key: "courseChange", label: "Rota Değişimi", unit: "°", placeholder: "60" },
+                ]}
+                calculate={(v) => {
+                  const changeRad = v.courseChange * Math.PI / 180;
+                  // WOP distance from waypoint along original course
+                  const wopDist = v.advance * Math.sin(changeRad / 2) + v.transfer * Math.cos(changeRad / 2);
+                  // Perpendicular offset
+                  const offset = v.transfer * Math.sin(changeRad / 2);
+                  return [
+                    { label: "WOP Mesafesi (Rotadan)", value: `${wopDist.toFixed(0)} m` },
+                    { label: "WOP Mesafesi", value: `${(wopDist / 1852).toFixed(2)} NM` },
+                    { label: "Yanal Offset", value: `${offset.toFixed(0)} m` },
+                  ];
+                }}
+              />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+          </Tabs>
+        </CardContent>
+      </Card>
         <div className="mt-6">
           <Button onClick={calculate} className="w-full">
             <Calculator className="mr-2 h-4 w-4" />
