@@ -1423,6 +1423,44 @@ const topicCalculations: Record<string, CalcTool[]> = {
         ];
       },
     },
+    {
+      name: "Motor Isınma Süresi",
+      description: "Soğuk motorun servis sıcaklığına ulaşma süresini tahmin eder.",
+      inputs: [
+        { key: "mass", label: "Motor Blok Kütlesi", unit: "ton", placeholder: "200" },
+        { key: "cp", label: "Özgül Isı (çelik)", unit: "kJ/kg·K", placeholder: "0.5" },
+        { key: "tStart", label: "Başlangıç Sıcaklığı", unit: "°C", placeholder: "20" },
+        { key: "tTarget", label: "Hedef Sıcaklık", unit: "°C", placeholder: "60" },
+        { key: "qHeater", label: "Isıtıcı Gücü", unit: "kW", placeholder: "150" },
+      ],
+      calculate: (v) => {
+        const energy = v.mass * 1000 * v.cp * (v.tTarget - v.tStart);
+        const timeH = energy / (v.qHeater * 3600);
+        return [
+          { label: "Gerekli Enerji", value: `${(energy / 3600).toFixed(0)} kWh` },
+          { label: "Tahmini Isınma Süresi", value: `${(timeH * 60).toFixed(0)} dakika` },
+        ];
+      },
+    },
+    {
+      name: "Yağ Basınç Kontrol",
+      description: "Motor yağ basıncının kabul edilebilir aralıkta olup olmadığını kontrol eder.",
+      inputs: [
+        { key: "pMeasured", label: "Ölçülen Basınç", unit: "bar", placeholder: "4.2" },
+        { key: "pMin", label: "Minimum İzin", unit: "bar", placeholder: "2.5" },
+        { key: "pMax", label: "Maksimum İzin", unit: "bar", placeholder: "6.0" },
+        { key: "pAlarm", label: "Alarm Değeri", unit: "bar", placeholder: "2.0" },
+      ],
+      calculate: (v) => {
+        const status = v.pMeasured < v.pAlarm ? "ALARM" : v.pMeasured < v.pMin ? "Düşük" : v.pMeasured > v.pMax ? "Yüksek" : "Normal";
+        const margin = ((v.pMeasured - v.pAlarm) / v.pAlarm) * 100;
+        return [
+          { label: "Durum", value: status },
+          { label: "Alarm Marjı", value: `${margin.toFixed(1)}%` },
+          { label: "Aralık", value: `${v.pMin}–${v.pMax} bar` },
+        ];
+      },
+    },
   ],
 };
 
