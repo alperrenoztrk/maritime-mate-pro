@@ -4055,10 +4055,10 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   {/* Weather Analysis Results */}
                   {result && (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <Card className="bg-blue-50 dark:bg-blue-900/20">
+                       <Card className="bg-primary/5 dark:bg-primary/10">
                         <CardContent className="pt-4">
                           <div className="text-center">
-                            <div className="text-2xl font-bold text-blue-600">
+                            <div className="text-2xl font-bold text-primary">
                               {result.beaufortScale}
                             </div>
                             <div className="text-sm text-muted-foreground">Beaufort Skalası</div>
