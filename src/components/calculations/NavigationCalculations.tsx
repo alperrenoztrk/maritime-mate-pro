@@ -5182,7 +5182,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
         {
           title: "1️⃣5️⃣ Elektronik Seyir Sistemleri (ECDIS Bağlantılı)",
           icon: Target,
-          accent: "border-yellow-200 bg-yellow-50 dark:bg-yellow-950",
+          accent: "border-warning/20 bg-warning/5 dark:bg-warning/10",
           items: [
             "Cross Track Distance (XTD) takibi",
             "Safety contour ve safety depth parametreleri",
