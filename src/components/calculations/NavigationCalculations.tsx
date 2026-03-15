@@ -3377,7 +3377,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
 
                     {/* Tidal Information */}
                     <div>
-                      <h4 className="font-semibold text-green-700 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-success mb-3 flex items-center gap-2">
                         <Waves className="h-4 w-4" />
                         Gelgit Bilgileri
                       </h4>
