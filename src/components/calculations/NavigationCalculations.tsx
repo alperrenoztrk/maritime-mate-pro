@@ -4151,7 +4151,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                     <Card>
                       <CardHeader className="pb-3">
                         <CardTitle className="text-sm flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-green-500" />
+                          <MapPin className="h-4 w-4 text-success" />
                           Konum Bilgileri
                         </CardTitle>
                       </CardHeader>
