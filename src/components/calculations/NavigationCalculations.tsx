@@ -2507,7 +2507,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                  <div className="mt-6 p-4 bg-accent/5 dark:bg-accent/10 rounded-lg">
                     <h4 className="font-semibold mb-2">Route Planning Faktörleri:</h4>
                     <div className="text-sm space-y-1">
                       <p>• Hava durumu koşulları</p>
