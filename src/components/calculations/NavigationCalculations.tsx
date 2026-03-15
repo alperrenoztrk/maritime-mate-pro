@@ -4725,7 +4725,7 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                   <p className="text-lg font-semibold">{result.driftAngle.toFixed(1)}°</p>
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-sm font-medium text-gray-600 dark:text-gray-400">Tutulacak Rota</Label>
+                  <Label className="text-sm font-medium text-muted-foreground">Tutulacak Rota</Label>
                   <p className="text-lg font-semibold">{result.courseToSteer.toFixed(1)}°</p>
                 </div>
               </div>
