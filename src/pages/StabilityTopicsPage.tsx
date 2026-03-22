@@ -2320,7 +2320,7 @@ Karşı bordadaki tankların kasten doldurularak listin azaltılması. Bu işlem
 Çapraz eşitleme kapasitesi gemi tasarımında belirlenir.`,
     bulletPoints: [
       "Asimetrik flooding tehlikeli list yaratır",
-      "Çapraz eşitleme liisti azaltır",
+      "Çapraz eşitleme listi azaltır",
       "SOLAS maksimum 15 dakika çapraz eşitleme süresi tanır",
       "Güverte kenarı batması devrilmeye yol açar",
     ],

@@ -12,7 +12,7 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
           "Alçak basınç merkezi, çevresindeki basınçtan daha düşük basınca sahip atmosferik bölgedir. Bu merkezde hava yüzeyden yukarıya doğru yükselir; yükselme sırasında soğuyarak nem yoğuşmasına, bulut oluşumuna ve yağışa neden olur. Kuzey yarım kürede alçak basınç etrafında rüzgâr saatin tersi yönünde (siklonik) dönerken, güney yarım kürede saat yönünde döner. Alçak basınç merkezinin yaklaşması barometre okumasında düzenli bir düşüşle kendini gösterir; bu düşüşün hızı ve sürekliliği, sistemin şiddetini tahmin etmede önemli ipuçları verir. Denizde karşılaşılan fırtınaların büyük çoğunluğu alçak basınç sistemleriyle ilişkilidir. Derin bir alçak basınç merkezi, geniş bir alanda şiddetli rüzgâr, yüksek dalga ve kötü görüş koşulları üretebilir. Seyir planlamasında alçak basınç merkezinin tahmini rotası, hızı ve derinliği kritik parametrelerdir.",
       },
       {
-        title: "Yüksek Basınç Merkezleri (Antisiylon)",
+        title: "Yüksek Basınç Merkezleri (Antisiklon)",
         content:
           "Yüksek basınç merkezi, çevre basınçtan daha yüksek olan bölgedir. Burada hava yukarıdan aşağıya inerek yüzeyde yayılır; inen hava ısınır ve nem kapasitesi artar, dolayısıyla bulut çözülür ve genellikle açık, sakin hava koşulları oluşur. Kuzey yarım kürede yüksek basınç etrafında rüzgâr saat yönünde (antisiklonik) döner. Yüksek basınç sistemleri genellikle yavaş hareket eder veya yarı kalıcı konumlarda bulunur (Azor Yüksek Basıncı, Sibirya Yüksek Basıncı vb.). Ancak yüksek basınç her zaman sakin deniz anlamına gelmez: sistemin kenarlarında oluşan güçlü basınç gradyanları önemli rüzgâr hızlarına ulaşabilir. Ayrıca yüksek basınç egemenliğinde radyasyon sisi veya inversyon tabakası nedeniyle görüş düşüklüğü riski bulunur.",
       },
@@ -441,7 +441,7 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       "Kısıtlı görüşte yol verme yükümlülüğü kavramı yoktur; her gemi kendi güvenliğinden sorumludur.",
       "İskele baş omuzluktaki hedefe iskeleye dönüş; kıçtaki hedefe kıça dönüş yapılmamalıdır.",
       "Ses işaretleri COLREG Kural 35'e göre zorunludur ve zamanında başlatılmalıdır.",
-      "Hız azaltma her zaman geçerli bir manevrra seçeneğidir.",
+      "Hız azaltma her zaman geçerli bir manevra seçeneğidir.",
     ],
   },
 

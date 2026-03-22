@@ -460,7 +460,7 @@ SÖZLEŞME: BARECON (BIMCO Bareboat Charter Party) en yaygın formdur.`,
     keyPoints: [
       "Bareboat charter'da tüm risk kiracıya aittir",
       "Finansman aracı olarak yaygın kullanılır (hire-purchase)",
-      "BARECON BIMCO'nun standart bareboat forumudur",
+      "BARECON BIMCO'nun standart bareboat formudur",
     ],
   },
   "coa": {
@@ -854,7 +854,7 @@ Bazı charter party'lerde "all time saved" veya "working time saved" ayrımı ya
 - All time saved: Pazar/tatil dahil tasarruf edilen toplam süre
 - Working time saved: Yalnızca çalışma günlerindeki tasarruf
 
-DESPATCH MANTIGI:
+DESPATCH MANTIĞI:
 
 Gemi erken ayrılırsa armatör bir sonraki sefere daha erken başlayabilir. Ancak despatch oranı demurrage oranının yarısıdır; bu da armatörün gecikmeden daha fazla zarara uğradığını yansıtır.`,
     formula: {

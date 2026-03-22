@@ -2412,7 +2412,7 @@ STABİLİTE ETKİSİ:
 - Su absorpsiyonu %15-25 oranında olabilir
 - Buzlanma ek ağırlık oluşturur
 
-FREIBORD:
+FREEBOARD:
 Timber Load Line ile normal Load Line farklıdır.
 Kereste güverte yükü taşıyan gemilere daha derin yükleme izni verilir (ek reserve buoyancy).`,
     bulletPoints: [

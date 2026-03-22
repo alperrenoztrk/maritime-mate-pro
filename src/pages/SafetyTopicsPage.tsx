@@ -995,7 +995,7 @@ Davitli sal: Davit ile kontrollü indirilir, embarkasyon güverte seviyesinde ya
     introduction: "Gemiyi terk ettikten sonra kurtarılana kadar geçen sürede hayatta kalma, fiziksel ve psikolojik hazırlık gerektirir.",
     content: `HAYATTA KALMA ÖNCELİKLERİ:
 
-1. KORUMA: Hipotermi, güneş çarpması ve yaralanmadan korunma. İmmersion suit veya TPA kullanımı. Sal tentesininin kapatılması.
+1. KORUMA: Hipotermi, güneş çarpması ve yaralanmadan korunma. İmmersion suit veya TPA kullanımı. Sal tentesinin kapatılması.
 2. YER BİLDİRME: EPIRB, SART, piroteknik işaretler, ayna (heliograph), düdük.
 3. SU: Tatlı su yönetimi en kritik unsurdur. Yetişkin kişi günde minimum 0.5 litre suyla hayatta kalabilir. İlk 24 saat su içilmez (vücut deposu yeterlidir).
 4. GIDA: Acil gıda rasyonu. Protein sindirimi su tüketimini artırdığından, su kısıtlı ise balık yenmemelidir.
@@ -1231,7 +1231,7 @@ KONTROL VE YENİLEME:
   },
   "telemedical": {
     title: "Tele-Tıbbi Danışmanlık (TMAS)",
-    introduction: "TMAS (Telemedical Maritime Assistance Service), gemilere 24 saat uzaktan tıbbi danışmanlık hizmeti sunan sistem dir.",
+    introduction: "TMAS (Telemedical Maritime Assistance Service), gemilere 24 saat uzaktan tıbbi danışmanlık hizmeti sunan sistemdir.",
     content: `TMAS SİSTEMİ:
 
 TMAS, sahilde konuşlanmış tıbbi profesyonellerin, gemideki hasta veya yaralı mürettebat için uzaktan tanı, tedavi ve tahliye kararı vermesini sağlayan hizmettir. Hizmet ücretsizdir ve 7/24 kullanılabilir.

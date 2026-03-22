@@ -1924,7 +1924,7 @@ Hareketli parçası yoktur. Ultrasonik ses dalgalarının rüzgârdan etkilenmes
 RÜZGÂR ÖLÇÜMÜNDE DÜZELTMELERİ:
 
 GERÇEK RÜZGÂR VE GEMİ RÜZGÂRI:
-Gemi hareket halinde ölçülen rüzgâr "apparent wind" (görünen rüzgâr) dir. Gerçek rüzgâr, gemi hızı ve rotası dikkate alınarak vektörel olarak hesaplanır.
+Gemi hareket halinde ölçülen rüzgâr "apparent wind" (görünen rüzgâr)'dır. Gerçek rüzgâr, gemi hızı ve rotası dikkate alınarak vektörel olarak hesaplanır.
 
 Gerçek rüzgâr = Apparent wind − Gemi hız/yön vektörü
 
