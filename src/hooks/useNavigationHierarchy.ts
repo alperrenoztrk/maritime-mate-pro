@@ -139,7 +139,7 @@ const navigationRules: NavigationRule[] = [
   // Cargo
   {
     pattern: /^\/cargo\/calculations\/(draft-survey|preloading|intermediate|postdischarge|comparative|ballast|density|bunker)$/,
-    parent: () => '/cargo/calculations',
+    parent: () => '/hub/cargo',
   },
   {
     pattern: /^\/cargo\/calculations$/,
