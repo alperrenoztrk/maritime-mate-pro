@@ -1,7 +1,8 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
+import { toast } from 'sonner';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -347,6 +348,8 @@ export const findParentPath = (pathname: string): string => {
 export const useNavigationHierarchy = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const lastBackPressAtRef = useRef(0);
+  const EXIT_CONFIRMATION_WINDOW_MS = 2000;
 
   const navigateToParent = useCallback(() => {
     const parentPath = findParentPath(location.pathname);
@@ -362,7 +365,16 @@ export const useNavigationHierarchy = () => {
     if (Capacitor.isNativePlatform()) {
       CapacitorApp.addListener('backButton', ({ canGoBack }) => {
         if (!canGoBack && location.pathname === '/') {
-          CapacitorApp.exitApp();
+          const now = Date.now();
+          const shouldExit = now - lastBackPressAtRef.current < EXIT_CONFIRMATION_WINDOW_MS;
+
+          if (shouldExit) {
+            CapacitorApp.exitApp();
+            return;
+          }
+
+          lastBackPressAtRef.current = now;
+          toast.info('Çıkmak için geri tuşuna tekrar basın');
           return;
         }
         navigateToParent();
