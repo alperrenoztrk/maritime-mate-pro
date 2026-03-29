@@ -9719,1422 +9719,1956 @@ Kesişim noktası = Running Fix (10:30)
   "Paralel indeks": {
     title: "Paralel İndeks",
     introduction:
-      "Paralel indeks, geminin belirli bir hat boyunca emniyetli mesafede seyretmesini sağlayan bir izleme yöntemidir.",
+      "Paralel indeks (Parallel Index), radar veya ECDIS üzerinde planlanan rota çizgisine paralel biçimde çizilen ve sabit bir referans noktasıyla (genellikle belirgin bir kıyı noktası, burun, fener veya radar yansıtıcısı) gemi arasındaki yatay mesafeyi sürekli olarak gösteren bir navigasyon izleme tekniğidir. Teknik özü itibarıyla çok basittir: geminin belirli bir noktaya olan mesafesi, o noktanın radar veya ECDIS ekranındaki konumuna göre rota çizgisine paralel bir çizgi çizilerek her an kontrol altında tutulur.\n\nParalel indeks, özellikle dar boğazlarda, limanların yaklaşma rotalarında, sığ sularda ve görüşün kısıtlı olduğu durumlarda köprüüstünün en kritik seyir araçlarından biridir. Bu teknik sayesinde zabitan, planlı rotadan ne kadar saptığını anlık olarak görebilir; küçük sapmalar büyümeden müdahale edebilir. Görsel işaret olmadan veya GPS bozulmuş olsa bile radar ile uygulanabilmesi, tekniğin güvenilirliğini artırır.\n\nParalel indeks uygulaması, gerçekten işe yarayan tek seyir kontrolünün anlık, sürekli ve görsel doğrulama olduğu ilkesine dayanır. Sadece gemi mevkiini bilmek yeterli değildir; geminin doğru yönde, doğru mesafede ilerlediğinden emin olmak gerekir. Bu nedenle IMO ve STCW mevzuatı, paralel indeks tekniğini köprüüstü yeterlilik programlarının zorunlu bir bileşeni olarak tanımlar.",
     sections: [
       {
-        title: "Kullanım",
+        title: "Paralel İndeks Çiziminin Prensibi",
         content:
-          "Haritada belirlenen emniyet hattı, rota çizgisine paralel olarak çizilir ve radar ekranında izlenir.",
+          "Paralel indeksin kurulumu için önce bir referans noktası belirlenir. Bu nokta radar ekranında net bir yansıma veren, haritada konumu kesin olarak bilinen sabit bir nesne olmalıdır (ör. burun, fener, ada, rıhtım başı). Ardından gemi ile bu referans noktası arasındaki planlanan yatay mesafe ölçülür; bu mesafe haritadan önceden hesaplanır.\n\nRadar ekranında (veya ECDIS üzerinde) referans noktasına karşılık gelen yansıma ile gemi simgesi arasındaki mesafe, belirlenen planlı mesafeye eşit olacak şekilde EBL (Electronic Bearing Line) veya PI çizgisi konumlandırılır. Gemi seyir sırasında bu çizgiye paralel kalması gerekiyorken referans yansıması çizginin üzerinde izlenmelidir. Yansımanın çizginin üzerinde mi, altında mı kaldığına bakılarak sapma yönü ve büyüklüğü anında okunur.",
         image: radarDisplay,
-        imageAlt: "Paralel indeks uygulaması"
+        imageAlt: "Paralel indeks kurulumu ve radar görüntüsü"
       },
       {
-        title: "Avantaj",
+        title: "Uygulama Adımları ve Önemli Noktalar",
         content:
-          "Kıyı yakınında veya dar sularda rota sapmalarını erken fark etmeyi sağlar.",
+          "Paralel indeks uygulamasında şu adımlar takip edilir: (1) Seyir öncesinde harita üzerinde, rotanın her kritik bölümü için en uygun referans noktası seçilir ve planlanan mesafeler ölçülür. (2) Bu mesafeler PI tablosuna veya plan notuna kaydedilir ve vardiya tesliminde aktarılır. (3) Seyir sırasında referans noktasının yansıması ekranda tespit edilerek PI çizgisi o yansımayı gösterecek şekilde ayarlanır. (4) Referans noktası çizginin gerisinde kalıyorsa gemi planlanan rotadan uzaklaşıyor; önündeyse yaklaşıyor demektir.\n\nUygulama sırasında dikkat edilmesi gereken nokta, radar ölçek değişikliklerinde PI mesafesinin otomatik ölçeklendiğinin doğrulanmasıdır. Bunun yanında, birden fazla PI çizgisi aynı anda kullanılabilir; bu, iki farklı tehlikeden eşzamanlı uzaklığı izlemek için son derece yararlıdır.",
         bulletPoints: [
-          "Dar sularda emniyet sağlar",
-          "Sürekli izleme kolaylığı sunar",
-          "Radar ile uygulanabilir"
+          "Referans noktası haritada kesin konumu bilinen, radar yansıması net olan nesnelerden seçilir",
+          "Planlanan mesafe harita üzerinde önceden ölçülüp kaydedilir",
+          "Radar ölçek değişikliğinde PI çizgisinin güncellenmesi gerekebilir",
+          "Birden fazla PI çizgisi eş zamanlı kullanılabilir",
+          "PI, görsel kılavuz olmaksızın da uygulanabilir – bu kısıtlı görüşte kritik önemdedir"
         ]
+      },
+      {
+        title: "ECDIS ile Paralel İndeks",
+        content:
+          "Modern ECDIS sistemleri, paralel indeks fonksiyonunu yerleşik olarak sunar. ECDIS'te XTE (Cross Track Error) çizgileri aslında birer paralel indeksi işlevi görür; ancak ECDIS PI'ı radar PI'ından farklıdır: ECDIS PI, GPS konumunu esas alırken radar PI, gerçek zamanlı radar yansımalarını kullanır. Bu fark, GPS hatasının olası olduğu durumlarda radar PI'ının bağımsız doğrulama değerini artırır.\n\nDenizcilik fakültesi öğrencileri açısından önemli nokta şudur: Elektronik sistemlerin çoğalmasına rağmen radar paralel indeks, bağımsız ve çapraz doğrulama aracı olarak önemini korumaktadır. Özellikle GPS sinyal bütünlüğünün sorgulayıcı bir şekilde değerlendirilmesi gereken durumlarda radar PI, gerçek dünya referansını sağlar."
       }
     ],
     keyPoints: [
-      "Rota çizgisine paralel emniyet hattı oluşturulur.",
-      "Radar ile izlenir.",
-      "Kıyı seyri için pratik bir tekniktir."
+      "Paralel indeks, rotaya paralel çizilen referans hattıyla gemi-kıyı mesafesini anlık izler.",
+      "Referans noktası net radar yansıması veren, haritada kesin konumlu bir nesne olmalıdır.",
+      "Radar ölçeği değiştiğinde PI mesafesi güncellenmeli ya da otomatik ölçekleme doğrulanmalıdır.",
+      "ECDIS'teki XTE sınırları paralel indeks işlevi görse de, GPS hatasına karşı radar PI bağımsız doğrulama sağlar.",
+      "Dar sular ve kısıtlı görüşte paralel indeks hayat kurtarıcı bir kontrol aracıdır."
     ]
   },
   "Kıyı seyri teknikleri": {
     title: "Kıyı Seyri Teknikleri",
     introduction:
-      "Kıyı seyri, kıyıya yakın bölgelerde görsel referans ve harita bilgisiyle yürütülen seyirdir. Transitler, kerterizler ve clearing line’lar temel araçlardır.",
+      "Kıyı seyri (Coastal Navigation), geminin kıyıya görsel mesafede veya radar kapsamında seyrettiği, sürekli mevki teyidinin yapılabildiği seyir biçimidir. Açık deniz seyrine kıyasla hem daha fazla güvenli referans noktası sunar hem de daha yoğun trafik, daha az meydan ve daha fazla tehlike barındırır. Bu çelişkili özellik, kıyı seyri tekniklerini hem zengin hem de kritik bir konu haline getirir.\n\nKıyı seyri tekniklerinin özünde güvenilir mevki belirleme ve sürdürülebilir emniyet sağlama ilkeleri yatar. Tek bir yönteme bağlı kalmak yerine, görsel referans, kerteriz, transit hat, clearing line ve elektronik sistemlerin birlikte kullanılması, güvenilirlik hiyerarşisi oluşturur. Bir yöntemde hata olduğunda diğeri devreye girerek hatayı ortaya koyar; bu çapraz doğrulama yaklaşımı tüm seyirde uygulanmalıdır.",
     sections: [
       {
-        title: "Temel Araçlar",
+        title: "Transit Hatları (Leading Lines)",
         content:
-          "Transit hatları, emniyet hatları ve kerterizler birlikte kullanılır. Bu yöntemler mevki doğrulama ve emniyet sağlar.",
+          "Transit hat (leading line), iki sabit nesnenin aynı doğrultu üzerinde hizalandığında oluşturduğu görsel çizgidir. Bu çizgi üzerinde gemi bulunduğu sürece hem mevkii kesin olarak bilinir hem de tehlikeli bölgeden uzak tutulur. Liman girişlerinde, boğazlarda ve güvenli kanalların orta eksenini işaret etmek için yaygın biçimde kullanılır.\n\nTransit hatlar, Admiralty haritalarında iki paralel çizgi sembolüyle gösterilir ve genellikle özel ayırtman ışıkları (leading lights) ile gece de kullanılabilir hale getirilir. Gemi hangi noktada olursa olsun, her iki nesne aynı dikey düzlemde göründüğü sürece kanalın ekseni üzerinde demektir.",
         image: chartPlotting,
-        imageAlt: "Kıyı seyri teknikleri"
+        imageAlt: "Transit hat ve leading line uygulaması"
       },
       {
-        title: "Dikkat Edilecekler",
+        title: "Clearing Lines (Emniyet Hatları)",
         content:
-          "Görüş kısıtlıysa radar ve elektronik sistemlerle çapraz kontrol yapılmalıdır.",
+          "Clearing line, geminin belirli bir tehlikeden uzak kalmasını sağlamak amacıyla kullanılan ve genellikle bir coğrafi kerteriz veya izobar olarak tanımlanan güvenli sınırdır. Clearing line’ın kullanım mantığı şudur: tehlikenin hangi tarafında olunduğu, mutlak bir mevki bilgisi olmaksızın dahi belirlenebilir.\n\nÖrneğin, bir kayanın batı yakasından güvenli geçiş için ‘sahil feneri 047° veya daha küçük bir kerterizde kalındığı sürece kaya güvende’ gibi bir kural tanımlanır. Bu kural, mevki hatasına karşı pasif emniyet sağlar: kerteriz sınırını aşmadan herhangi bir mevkide bulunmak, tehlikeden uzak olduğunu garanti eder. Clearing line’lar haritaya çizilir ve sefer planına işlenir; seyir sırasında anlık gözlemle kontrol edilir.",
         bulletPoints: [
-          "Görsel referans + harita doğrulaması",
-          "Transit ve clearing line kullanımı",
-          "Elektronik sistemlerle kontrol"
+          "Transit hatlar iki sabit nesnenin hizalanmasıyla oluşur; kanal eksenini gösterir",
+          "Clearing line, tehlikeden hangi tarafta bulunulduğunu anlık olarak gösterir",
+          "Mevki bilgisi olmadan da emniyet sağlar – çok güçlü bir yöntemdir",
+          "Clearing bearings (emniyet kerterizleri) haritaya önceden işlenmeli ve sefer planına dahil edilmelidir",
+          "Geceleyin leading lights ile transit hatlar kolayca takip edilebilir"
         ]
+      },
+      {
+        title: "Radar ve ECDIS ile Çapraz Doğrulama",
+        content:
+          "Kıyı seyri sırasında görsel yöntemlerin yanı sıra radar ve ECDIS’in birlikte kullanılması, her bir sistemin zayıf noktalarını kapatan entegre bir doğrulama yaklaşımı oluşturur. Radar, gerçek zamanlı ve GPS’ten bağımsız mesafe ölçümü sağlar; kıyı silüetini, tombazları ve sabit referansları tespit eder. ECDIS ise elektronik haritayı GPS konumuyla üst üste getirir ve tehlikelere göre alarmsallık sağlar.\n\nÇapraz doğrulama prensibi şöyle uygulanır: ECDIS’teki GPS konumu, radar mesafe veya kerterizi ile doğrulanır; bu iki değer uyuşuyorsa sistem güvenilirdir, uyuşmuyorsa nedeni araştırılır. Herhangi bir uyumsuzluk, GPS hatası, radar kalibrasyon sorunu veya harita hatasına işaret edebilir. Bu nedenle kıyı seyri boyunca mevki güncelleme sıklığı ve yöntemler çeşitliliği artırılmalıdır."
       }
     ],
     keyPoints: [
-      "Kıyı seyri görsel referansa dayanır.",
-      "Transit ve clearing line güvenlik sağlar.",
-      "Radar/ECDIS ile çapraz kontrol yapılır."
+      "Kıyı seyri, trafik yoğunluğu ve tehlike çeşitliliği nedeniyle açık deniz seyrine göre daha yoğun dikkat gerektirir.",
+      "Transit hatlar kanal eksenini görsel olarak işaret eder; clearing line’lar tehlikeden uzaklığı garanti eder.",
+      "Görsel, radar ve ECDIS yöntemlerinin çapraz doğrulaması güvenilirlik hiyerarşisi oluşturur.",
+      "Clearing bearings sefer planına önceden işlenmeli ve seyir boyunca aktif olarak kontrol edilmelidir.",
+      "Kıyı seyri planlamasında mevki güncelleme sıklığı ve yöntem çeşitliliği açık denize göre belirgin biçimde artırılmalıdır."
     ]
   },
   "Rhumb line (loxodrom)": {
     title: "Rhumb Line (Loxodrom)",
     introduction:
-      "Loxodrom, sabit bir hakiki rota ile seyredilen hattır. Mercator haritalarında düz bir çizgi olarak görünür.",
+      "Rhumb line veya loxodrom, tüm meridyenleri sabit bir açıyla kesen yüzey eğrisidir. Başka bir deyişle, gemi kuzey-güney meridyenlerine her zaman aynı açıyı (hakiki rota) yaparak seyrederse izlediği hat loxodromdur. Bu teknik tanımın pratik sonucu son derece güçlüdür: yolculuk boyunca rotanın değiştirilmesine gerek yoktur; dümen sabit tutulur.\n\nMercator projeksiyonunda bir loxodrom, başlangıç ve bitiş noktasını birleştiren düz bir çizgi olarak görünür. Bu özellik, Mercator haritasını deniz seyiri için standart kılan ana nedenlerden biridir: rotayı haritada cetvel ve iletki kullanarak doğrudan çizmek ve okumak mümkündür. Bu pratiklik, loxodromu kısa ve orta mesafeli seyirlerde tercih edilen hat biçimi yapar.\n\nAncak küresel geometri nedeniyle loxodrom, iki nokta arasındaki en kısa yolu göstermez. En kısa yol büyük daire (ortodrom) üzerinde bulunur. İki hat arasındaki mesafe farkı, seyredilen enleme ve mesafeye bağlı olarak önemli boyutlara ulaşabilir; özellikle yüksek enlemlerde ve uzun transatlantik güzergahlarda bu fark yüzlerce deniz miline çıkabilir.",
     sections: [
       {
-        title: "Özellikleri",
+        title: "Loxodromun Matematiksel Temeli",
         content:
-          "Loxodrom, büyük daireye göre daha uzun olabilir ancak sabit rota nedeniyle uygulaması kolaydır.",
+          "Bir loxodrom, küre üzerinde meridyenleri sabit açıyla kesen eğridir. Kutuplara yaklaştıkça spiralleşir ve eğer kutba ulaşmazsa kutup noktasını sonsuz kez dönerek sarar. Bu nedenle loxodrom, kutuplar dışında tam anlamıyla kapanmaz.\n\nMercator haritasında loxodromun düz çizgi olarak görünmesi, Mercator projeksiyonunun özellikle bu konformal (açı koruyan) özelliği için tasarlanmış olmasının sonucudur. Meridyenler Mercator haritasında dikey paralel çizgilerdir; dolayısıyla tüm meridyenlerle sabit açı yapan loxodrom, haritada bu dikey çizgilerle sabit açı yapan düz bir çizgiye dönüşür.",
         image: mercatorProjection,
-        imageAlt: "Loxodromun Mercator haritada gösterimi"
+        imageAlt: "Loxodromun Mercator haritada düz çizgi olarak gösterimi",
+        formula: {
+          text: "D_lox = Δλ · cos φ_m (yaklaşık, orta enlemde) | Gerçek hesap: Mercator sailing formülleri ile",
+          description: "Loxodrom mesafesi, orta enlem yöntemiyle veya Mercator sailing formülleriyle hesaplanır"
+        }
       },
       {
-        title: "Kullanım",
+        title: "Loxodrom ile Büyük Dairenin Karşılaştırılması",
         content:
-          "Kısa ve orta mesafelerde sabit rota kolaylığı nedeniyle tercih edilir.",
+          "Mesafe farkı: Ekvator üzerinde veya yakınında loxodrom ve büyük daire neredeyse aynı yolu izler, fark ihmal edilebilir. Ancak 50° enlemde iki nokta arasındaki 3000 deniz millik bir seyirde loxodrom, büyük daireye göre 100–200 deniz mili daha uzun olabilir.\n\nRota farkı: Büyük daire rotası sürekli değişir ve sabit tutulmaz; loxodromda ise rota baştan sona sabittir. Bu nedenle büyük daire seyri, gerçekte waypoint'lere bölünmüş bir loxodrom dizisiyle (bileşik rota – composite sailing) yaklaşık olarak uygulanır.\n\nKullanım: Tropik ve subtropik bölgelerde kısa–orta mesafelerde loxodrom yeterlidir. Kuzey Atlantik, Kuzey Pasifik ve Güney Okyanus gibi yüksek enllemlerdeki uzun seyirlerde büyük daire rotası yakıt ve zaman tasarrufu sağlar.",
         bulletPoints: [
-          "Sabit rota sağlar",
-          "Mercator haritada düz çizgidir",
-          "Uzun mesafede büyük daireye göre daha uzundur"
+          "Loxodrom: sabit rota, kolay uygulama, Mercator haritada düz çizgi",
+          "Büyük daire: en kısa yol, değişen rota, gnomonic haritada düz çizgi",
+          "Yüksek enllemlerde mesafe farkı yüzlerce deniz miline ulaşabilir",
+          "Bileşik seyir (composite sailing): büyük daireyi loxodrom dilimlerine böler"
         ]
+      },
+      {
+        title: "Mercator Sailing – Loxodrom Hesabı",
+        content:
+          "Mercator sailing yöntemi, iki nokta arasındaki loxodrom mesafesini ve rotasını hesaplar. Temel formüller meridional farkı (m) ve boylam farkını (DLo) kullanır. Rota açısı (C) şu şekilde hesaplanır: tan C = DLo / m, burada m = M₂ – M₁ (meridional parts farkı).\n\nMesafe ise D = ΔLat / cos C formülüyle bulunur; ΔLat, derece cinsinden enlem farkının deniz mili karşılığıdır (1° = 60 NM). Bu hesaplar, denizcilik sınavlarında ve çalışma tablolarında standart olarak uygulanır ve Mercator harita cetvelinin pratikte nasıl çalıştığını matematiksel olarak açıklar."
       }
     ],
     keyPoints: [
-      "Loxodrom sabit rota hattıdır.",
-      "Mercator haritada düz çizgi olarak görünür.",
-      "Uzun mesafede verimliliği düşebilir."
+      "Loxodrom, tüm meridyenleri sabit açıyla keser; bu nedenle gemi boyunca aynı rotayı korur.",
+      "Mercator haritasında loxodrom düz bir çizgidir – bu navigasyonda rota ölçümünü kolaylaştırır.",
+      "Loxodrom, iki nokta arasındaki en kısa yol değildir; büyük daire en kısa yoldur.",
+      "Yüksek enlemlerde ve uzun mesafelerde loxodrom ile büyük daire arasındaki mesafe farkı büyür.",
+      "Mercator sailing formülleri, loxodrom rota ve mesafesini kesin olarak hesaplar."
     ]
   },
   "GPS prensibi": {
     title: "GPS Prensibi",
     introduction:
-      "GPS, uydulardan gelen zaman bilgisiyle geminin üç boyutlu konumunu hesaplayan bir uydu navigasyon sistemidir.",
+      "GPS (Global Positioning System), Amerikan Savunma Bakanlığı tarafından geliştirilen ve 1995'ten itibaren sivil kullanıma tam kapasite açılan, uzay tabanlı uydu navigasyon sistemidir. Sistem, Dünya'nın çeşitli yörüngelerinde konumlandırılmış en az 24 etkin uydudan oluşur ve bu uydular sürekli olarak güçlü zaman sinyalleri yayar. Yeryüzündeki bir alıcı bu sinyalleri alarak kendi konumunu hesaplar.\n\nGPS'in denizcilik açısından devrimsel önemi, sürekli, otomatik ve yüksek doğruluklu konum belirleme imkânı sunmasındadır. Gece gündüz, her hava koşulunda, her okyanusta çalışan GPS; sextant, radar ve görsel mevki tayininin tamamlayıcısı haline gelmiş, modern ECDIS sistemlerinin birincil veri kaynağı olmuştur.\n\nBununla birlikte GPS, kör bir güven tehlikesi de barındırır. Uydulardan gelen sinyalin kesilmesi, boğulması (jamming) veya kandırılması (spoofing), GNSS sistemlerini devre dışı bırakabilir ya da yanlış konum gösterilmesine yol açabilir. Bu nedenle STCW ve IMO, GPS'i destekleyici bir araç olarak tanımlar; navigatörler radar, astronomi ve geleneksel mevki tayini yeterliliklerini korumak zorundadır.",
     sections: [
       {
-        title: "Temel Çalışma",
+        title: "Sistemin Bileşenleri: Uzay, Kontrol, Kullanıcı",
         content:
-          "Alıcı, birden fazla uyduya olan sinyal süresi farkını ölçerek konumunu hesaplar.",
+          "GPS üç ana bölümden oluşur. Uzay segmenti: yaklaşık 20.200 km yükseklikte 6 yörüngede dağıtılmış en az 24 uydudan oluşur; her yörüngede 4 uydu bulunur. Bu düzenleme, dünyanın herhangi bir noktasında eş zamanlı olarak en az 4 uyduyu ufuk üzerinde görünür kılar. Kontrol segmenti: Colorado'daki ana kontrol istasyonu ve dünyadaki izleme istasyonları; uyduların orbital parametrelerini ve saat düzeltmelerini günceller. Kullanıcı segmenti: gemideki, uçaktaki veya elde taşınan GPS alıcılarından oluşur; sinyalleri alır ve hesaplar.",
         image: gpsSatellites,
-        imageAlt: "GPS uyduları ve konum belirleme"
+        imageAlt: "GPS uydu konstellasyonu ve konum belirleme prensibi"
       },
       {
-        title: "Seyirde Kullanım",
+        title: "Konum Belirleme: Pseudo-Range ve Trilateration",
         content:
-          "GPS, ECDIS ve diğer köprüüstü sistemlerine konum verisi sağlar.",
+          "GPS alıcısı, her uydunun göndermekte olduğu sinyal ile alıcının kendi ürettiği kopya sinyal arasındaki zaman farkını ölçer. Bu zaman farkı, ışık hızıyla çarpılarak uyduya olan mesafe (pseudo-range) hesaplanır. 'Pseudo' (sözde) ifadesi, alıcı saatindeki hatanın mesafeye hata kattığına işaret eder.\n\nSaati tam senkronize olan bir alıcı, teorik olarak 3 uyduyla konumunu belirleyebilir (3 boyutlu trilateration). Ancak alıcı saati uydu atomik saatlerine göre hatalı olduğundan dördüncü bir uydu, saat hatasını matematiksel olarak ortadan kaldırmak için kullanılır. Böylece 4 uyduyla hem 3D konum (enlem, boylam, yükseklik) hem de kesin zaman elde edilir.",
+        formula: {
+          text: "Pseudo-range = c × Δt | Gerçek mesafe = Pseudo-range − (saat hatası × c)",
+          description: "c = ışık hızı (≈ 3×10⁸ m/s), Δt = sinyal gecikmesi. Dördüncü uydu saat hatasını eliminate eder."
+        }
+      },
+      {
+        title: "GPS Hataları ve Denizcilik Açısından Sınırları",
+        content:
+          "GPS doğruluğunu etkileyen başlıca hata kaynakları şunlardır: (1) İyonosferik gecikme: iyonosfer tabakası sinyali yavaşlatır; çift frekanslı alıcılar bunu düzeltebilir. (2) Troposferik gecikme: atmosferin alt katmanlarındaki nem ve basınç sinyali etkiler. (3) Çok yollu yansıma (multipath): sinyal binalara veya diğer yapılara çarparak alıcıya farklı yollardan ulaşırsa hata oluşur; liman girişlerinde ve şehir yakınlarında belirginleşir. (4) Uydu geometrisi (DOP): uydular gökyüzüne iyi dağılmamışsa hesap doğruluğu düşer. (5) Ephemeris hataları: uyduların yayımladığı orbital parametrelerde oluşan küçük hatalar.\n\nAynı zamanda GPS, GNSS sistemlerine yönelik elektronik tehditlerden etkilenebilir. GPS jamming (sinyal karıştırma), alıcıyı işlevsiz kılar. Spoofing ise çok daha sinsi bir tehdittir: sahte GPS sinyalleri üretilerek alıcının yanlış konum hesaplaması sağlanır. Bu tür siber tehditler, özellikle stratejik sularda ve çatışma bölgelerindeki gemiler için ciddi bir operasyonel risktir.",
         bulletPoints: [
-          "Uydu tabanlı konum",
-          "Zaman senkronizasyonu önemlidir",
-          "ECDIS ve radar entegrasyonu yaygındır"
+          "Sivil GPS doğruluğu genellikle ±3–5 metre (iyi koşullarda daha az)",
+          "DGPS ve SBAS sistemleri metre altı doğruluğa ulaşabilir",
+          "Jamming: sinyal paraziti – konum kaybı",
+          "Spoofing: sahte sinyal – yanlış konum gösterimi, en tehlikeli GNSS tehdidi",
+          "GPS, tek navigasyon aracı olarak asla kullanılmamalı; çapraz doğrulama zorunludur"
         ]
       }
     ],
     keyPoints: [
-      "GPS uydulardan zaman sinyali alır.",
-      "Konum trilaterasyonla bulunur.",
-      "Köprüüstü sistemlerinin ana veri kaynağıdır."
+      "GPS, en az 24 uydudan gelen zaman sinyallerinin trilaterasyonuyla konum belirler.",
+      "4 uydu gereklidir: 3'ü 3D konum için, 4.'sü alıcı saat hatasını düzeltmek için.",
+      "Pseudo-range, alıcı saat hatasını içeren ham mesafedir; 4. uydu ile saat hatası çözülür.",
+      "Jamming ve spoofing, GPS güvenilirliğini tehdit eden başlıca siber tehlikelerdir.",
+      "STCW: GPS, geleneksel ve radar navigasyon becerilerinin yerini alamaz; bağımsız doğrulama şarttır.",
+      "DOP değerleri, uydu geometrisinin konum doğruluğuna etkisini sayısal olarak gösterir."
     ]
   },
   "Trilaterasyon": {
     title: "Trilaterasyon",
     introduction:
-      "Trilaterasyon, bir noktanın konumunu mesafe ölçüleriyle belirleme yöntemidir. GPS sisteminin temel matematiksel prensibidir.",
+      "Trilaterasyon, bir noktanın konumunu, konumu bilinen birden fazla referans noktasına olan mesafeleri kullanarak belirleme yöntemidir. Triangulasyondan temel farkı şudur: triangulasyon açı ölçümüne, trilaterasyon ise mesafe ölçümüne dayanır. GPS, trilaterasyon prensibini küresel ölçekte uygular; uyduların konumları tam olarak bilinmekte ve alıcıya olan mesafeler sinyal gecikme süresiyle ölçülmektedir.\n\nTrilaterasyonun temel geometrik mantığı şöyle açıklanabilir: bilinen konumdaki tek bir noktadan r₁ mesafesindeyseniz, o noktayı merkez alan r₁ yarıçaplı bir küre (ya da 2D’de daire) üzerinde herhangi bir yerde olabilirsiniz. İkinci bir referans noktası eklendiğinde iki kürenin kesişimi bir daire oluşturur. Üçüncü referans eklendiğinde iki nokta elde edilir. Yeryüzü şartları bu iki noktadan birini anlamsız kılar; böylece tek bir konum saptanır.",
     sections: [
       {
-        title: "GPS’te Trilaterasyon",
+        title: "GPS’te Trilaterasyonun Uygulanması",
         content:
-          "Uydu–alıcı arasındaki mesafeler küresel kesişim noktası verir. Saat hatası düzeltmesi için en az dört uydu gerekir.",
+          "GPS’te trilaterasyon uygulaması şöyle işler: her uydu kendi konumunu ve sinyal gönderim zamanını içeren bir mesaj yayımlar. Alıcı bu sinyali aldığında, sinyal gecikmesini (Δt) ışık hızıyla (c) çarparak uyduya olan sözde mesafeyi (pseudo-range) hesaplar. Bu sözde mesafe, küre yüzeyini tanımlar ve alıcının bu küre üzerinde bir yerde bulunduğunu gösterir. 3 uyduyla elde edilen 3 kürenin kesişimi teorik olarak iki nokta verir; yeryüzü dışındaki nokta otomatik elenir ve 3D konum elde edilir.\n\nAncak gerçekte 4 uydu zorunludur. Bunun nedeni alıcı saatinin uydu atomik saatleri kadar hassas olmayışıdır. Alıcı saat hatası (dt_r), her ölçüme eşit miktarda hata katar. Dördüncü uyduyla 4 denklemden oluşan bir sistem kurulur ve hem 3D konum (x, y, z) hem de saat hatası (dt_r) bilinmeyeni birlikte çözülür.",
         image: gpsSatellites,
-        imageAlt: "GPS trilaterasyon prensibi"
+        imageAlt: "GPS trilaterasyon: dört uyduyla konum ve saat hatası çözümü",
+        formula: {
+          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dt_r) | i = 1,2,3,4 uydu",
+          description: "Her uydu için bir denklem; 4 denklem 4 bilinmeyeni (x, y, z, dt_r) çözer"
+        }
       },
       {
-        title: "Doğruluk",
+        title: "Geometrinin Doğruluğa Etkisi",
         content:
-          "Uydu geometrisi ve sinyal kalitesi doğruluğu belirler.",
+          "Trilaterasyonun doğruluğu yalnızca mesafe ölçüm hassasiyetine değil, aynı zamanda referans noktalarının (uydular) geometrik dağılımına da bağlıdır. Uydular gökyüzüne iyi dağılmışsa her ölçüm farklı yönlerden kısıt sağlar ve konum kesin olarak belirlenir. Uydular bir arada kümelenirse, ölçüm hatalarının konuma yansıması büyür.\n\nBu geometrik etki DOP (Dilution of Precision) değerleriyle sayısal olarak ifade edilir. DOP değeri düştükçe uydu geometrisi iyileşir ve aynı ölçüm hatası daha küçük konum hatasına yol açar. Tersine, yüksek DOP küçük bir ölçüm hatasını bile büyük bir konum belirsizliğine dönüştürür.",
         bulletPoints: [
-          "En az 4 uydu gerekir",
-          "Saat hatası düzeltmesi yapılır",
-          "Geometri doğruluğu etkiler"
+          "İyi uydu geometrisi: uydular gökyüzüne homojen dağılmış, düşük DOP",
+          "Kötü uydu geometrisi: uydular kümelemiş, yüksek DOP → büyük konum hatası",
+          "4 uydu minimum; modern alıcılar 8–12 uydu kullanarak aşırı belirlenmiş sistem kurar",
+          "Aşırı belirleme, en küçük kareler (least squares) yöntemiyle çözülür ve hassasiyeti artırır"
         ]
       }
     ],
     keyPoints: [
-      "Trilaterasyon mesafe ölçümüne dayanır.",
-      "GPS’te dört uydu kullanılır.",
-      "Geometri doğruluğu kritik önemdedir."
+      "Trilaterasyon, mesafe ölçümünden konum belirleme yöntemidir; triangulasyon açı kullanır.",
+      "3 uyduyla 2 olası konum elde edilir; yeryüzü geometrisi gerçekçi olanı seçer.",
+      "4. uydu, alıcı saat hatasını (dt_r) ortadan kaldırmak için zorunludur.",
+      "DOP (Dilution of Precision), uydu geometrisinin konum hatasına katkısını gösterir.",
+      "Aşırı belirlenmiş sistemler (4’ten fazla uydu) least squares yöntemiyle daha hassas çözüm üretir."
     ]
   },
   "HDOP": {
-    title: "HDOP",
+    title: "HDOP – Yatay Konum Seyreltme Katsayısı",
     introduction:
-      "HDOP (Horizontal Dilution of Precision), uydu geometrisinin yatay konum doğruluğu üzerindeki etkisini gösterir.",
+      "DOP (Dilution of Precision – Hassasiyet Seyreltme Katsayısı), GNSS sistemlerinde uydu geometrisinin konum doğruluğuna yaptığı etkinin sayısal göstergesidir. DOP, ölçüm hassasiyetini doğrudan etkilemez; ölçüm hatalarının geometri nedeniyle konum hatasına nasıl dönüştüğünü gösterir. Düşük DOP değeri, uyduların geometrik olarak iyi konumlandığını ve küçük bir ölçüm hatasının da küçük bir konum hatasına yol açacağını ifade eder.\n\nHDOP (Horizontal DOP), yatay konumdaki (enlem ve boylam) hassasiyet seyreltmesini gösterir. Deniz seyirinde HDOP en kritik DOP türüdür çünkü gemilerin birincil endişesi yatay konumdur; yükseklik bilgisi genellikle ikincil öneme sahiptir. HDOP = 1 mükemmel geometri anlamına gelir. HDOP < 2 iyi; HDOP 2–5 kabul edilebilir; HDOP > 5 zayıf; HDOP > 10 çok zayıf olarak değerlendirilir.",
     sections: [
       {
-        title: "Anlamı",
+        title: "HDOP'un Hesaplanması ve Fiziksel Anlamı",
         content:
-          "Düşük HDOP değeri, uyduların iyi dağıldığını ve yatay doğruluğun yüksek olduğunu gösterir.",
+          "HDOP değeri, görünen uydular için kurulan tasarım matrisi (H matrisi) aracılığıyla hesaplanır. Matematiksel detaylar yerine fiziksel yorumu şöyle özetlenebilir: uydular yatay düzlemde gökyüzüne homojen biçimde dağılmışsa ve birbirlerine göre geniş açılar yapıyorsa, her ölçüm farklı bir yönden 'kısıt' getirir ve yatay konum güçlü şekilde belirlenir. Uydular bir grupta kümelenmişse, birbiriyle benzer yönlerden gelen bilgi tekrar eder ve yatay konum belirsizleşir.\n\nÖrneğin, dört uydudan biri tam tepede (zenit), diğerleri kuzey, doğu ve batı ufkuna yakın dağılmışsa HDOP mükemele yakın olacaktır. Öte yandan tüm uydular güney ufku yakınında kümelenmişse HDOP çok yüksek olacak ve yatay konum büyük hata içerecektir.",
         image: gpsSatellites,
-        imageAlt: "HDOP kavramı"
+        imageAlt: "HDOP ve uydu geometrisi ilişkisi",
+        formula: {
+          text: "σ_yatay = HDOP × σ_ölçüm",
+          description: "σ_yatay = yatay konum standart sapması; σ_ölçüm = pseudorange ölçüm standart sapması"
+        }
       },
       {
-        title: "Operasyonel Etki",
+        title: "DOP Türleri ve Kullanım Alanları",
         content:
-          "HDOP yükseldikçe GPS konumu daha az güvenilir olur.",
+          "GPS alıcıları farklı DOP türlerini raporlar. HDOP: yatay konum (enlem, boylam) – deniz seyirinde en önemli. VDOP: dikey konum (yükseklik) – havacılıkta kritik. PDOP (Position DOP): 3 boyutlu konum, √(HDOP²+VDOP²). TDOP: zaman doğruluğu. GDOP: Geometri DOP, tüm bileşenleri kapsar.\n\nDenizcilik uygulamalarında alıcı ekranında görülen HDOP < 2 değerinde, GPS konumunun yeterince güvenilir olduğu kabul edilir. HDOP > 4 olduğunda sonuçlar kritik mevki tayinlerinde dikkatle değerlendirilmeli; mümkünse radar veya görsel teyit alınmalıdır. Dar limanlarda yüksek binalar veya kıyı yapıları uydulardan gelen sinyali engelleyerek HDOP değerini artırabilir.",
         bulletPoints: [
-          "Düşük HDOP = daha iyi doğruluk",
-          "Uydu dağılımı belirleyicidir",
-          "Yoğun kıyı yapıları doğruluğu etkileyebilir"
+          "HDOP < 1: ideal (teorik limit)",
+          "HDOP 1–2: mükemmel – hassas mevki tayini için idealdir",
+          "HDOP 2–5: iyi – çoğu seyreltme için yeterlidir",
+          "HDOP 5–10: orta – sonuçlar şüpheyle değerlendirilmeli",
+          "HDOP > 10: zayıf – GPS tek başına güvenilmez, çapraz kontrol şarttır"
         ]
       }
     ],
     keyPoints: [
-      "HDOP yatay doğruluk göstergesidir.",
-      "Değer düştükçe doğruluk artar.",
-      "Uydu geometrisi kritik rol oynar."
+      "HDOP, uydu geometrisinin yatay konum hatasını ne kadar büyüttüğünü gösterir.",
+      "σ_yatay = HDOP × σ_ölçüm: DOP düştükçe aynı ölçüm hatası daha küçük konum hatasına yol açar.",
+      "Uydular gökyüzüne homojen dağıldığında HDOP düşer, doğruluk artar.",
+      "Dar limanlarda yüksek yapılar uydulara görüş hattını engelleyerek HDOP'u artırabilir.",
+      "HDOP > 4 durumunda GPS mevkiini radar veya görsel yöntemlerle teyit etmek gerekir."
     ]
   },
   "PDOP": {
-    title: "PDOP",
+    title: "PDOP – 3 Boyutlu Konum Seyreltme Katsayısı",
     introduction:
-      "PDOP (Position Dilution of Precision), hem yatay hem düşey bileşenleri kapsayan genel konum doğruluğu göstergesidir.",
+      "PDOP (Position Dilution of Precision – 3 Boyutlu Konum Hassasiyet Seyreltme Katsayısı), GNSS alıcısının hem yatay hem de düşey konum bileşenlerindeki toplam geometrik hassasiyet seyreltmesini ifade eder. PDOP, HDOP ve VDOP'un kareleri toplamının kareköküne eşittir:\n\nPDOP = √(HDOP² + VDOP²)\n\nBu ilişki açıkça gösterir ki PDOP, her zaman HDOP'tan büyük veya eşittir; çünkü düşey belirsizlik eklenince toplam konum belirsizliği artar. Deniz seyirinde PDOP, 3 boyutlu konum doğruluğuna genel bir bakış sağlar; ancak HDOP genellikle birincil izleme parametresidir.",
     sections: [
       {
-        title: "Kapsam",
+        title: "PDOP, HDOP ve VDOP İlişkisi",
         content:
-          "PDOP, uydu geometrisinin toplam konum hassasiyetine etkisini temsil eder.",
+          "GNSS konum belirsizliği üç boyuta ayrıştırılabilir: yatay düzlem (enlem ve boylam) ve düşey eksen (yükseklik). HDOP yatay belirsizlik geometrisini, VDOP düşey belirsizlik geometrisini, PDOP ise her ikisinin bileşimini ifade eder. Tipik olarak VDOP, HDOP'tan 1.5–2 kat daha büyüktür; çünkü tüm uydular ufuktan yukarıda olmak zorundadır ve bu asimetri yükseklik çözümünü zorlaştırır.\n\nDeniz seyirinde yükseklik bilgisi navigasyon açısından genellikle önemli değildir; ancak PDOP, genel uydu konstellasyon kalitesini tek bir sayıyla özetlemek için kullanışlıdır.",
         image: gpsSatellites,
-        imageAlt: "PDOP kavramı"
+        imageAlt: "PDOP, HDOP ve VDOP ilişkisi",
+        formula: {
+          text: "PDOP = √(HDOP² + VDOP²) | GDOP = √(PDOP² + TDOP²)",
+          description: "GDOP tüm bileşenleri kapsar (konum + zaman). Deniz seyirinde HDOP/PDOP öncelikli izlenir."
+        }
       },
       {
-        title: "Seyirde Kullanım",
+        title: "DOP Değerlerinin Operasyonel Yorumlanması",
         content:
-          "PDOP değeri düşük olduğunda konum verisi daha güvenilirdir.",
+          "Denizcilik uygulamalarında kabul gören DOP kalite eşikleri şöyledir: PDOP ≤ 2 mükemmel konum kalitesi; PDOP 2–4 iyi kalite; PDOP 4–6 orta kalite; PDOP 6–8 zayıf kalite; PDOP > 8 güvenilmez düzey. IMO ve bazı liman otoriteleri dar sularda ve kritik manevralarda PDOP < 4 veya HDOP < 2 şartını belirler.\n\nPratik bir not: birçok modern GPS alıcısı, DOP değeri belirlenen eşiği aştığında kullanıcıyı otomatik olarak uyarır. Köprüüstü zabiti bu uyarıya güvenmemeli; DOP değerini sürekli izlemeli ve yüksek DOP dönemlerinde radar veya görsel doğrulama yapmalıdır.",
         bulletPoints: [
-          "Hem yatay hem düşey etkiler",
-          "Düşük değer daha güvenilir konum",
-          "GNSS alıcılarında izlenebilir"
+          "PDOP ≤ 2: mükemmel – kritik manevralar için idealdir",
+          "PDOP 2–4: iyi – rutin seyirde yeterlidir",
+          "PDOP 4–6: orta – dikkatli olunmalı, çapraz kontrol önerilir",
+          "PDOP > 6: zayıf – GPS tek başına güvenilmez",
+          "Liman yaklaşımı ve dar su geçişi gibi kritik anlarda DOP izleme zorunludur"
         ]
       }
     ],
     keyPoints: [
-      "PDOP genel konum doğruluğu göstergesidir.",
-      "Uydu geometrisi belirleyicidir.",
-      "Düşük PDOP tercih edilir."
+      "PDOP = √(HDOP² + VDOP²): yatay ve düşey belirsizliğin geometrik bileşimi.",
+      "Deniz seyirinde HDOP öncelikli izlenir; PDOP genel kalite özeti sağlar.",
+      "PDOP > 4 durumunda GPS bağımsız navigasyon aracı olarak yeterli değildir.",
+      "VDOP tipik olarak HDOP'tan büyüktür; tüm uydular ufuktan yukarıdadır.",
+      "Liman otoriteleri kritik manevralarda HDOP ve PDOP eşik değerleri belirleyebilir."
     ]
   },
   "Radar prensibi": {
     title: "Radar Prensibi",
     introduction:
-      "Radar, elektromanyetik dalga gönderip yansımasını ölçerek hedeflerin uzaklık ve yönünü belirler.",
+      "Radar (Radio Detection And Ranging), mikro dalga bandında (tipik olarak 3 GHz / X-bandı veya 9 GHz / S-bandı) elektromanyetik enerji darbelerini hedef yönüne yayımlayan ve yansıyan sinyali analiz ederek hedefin mesafesini, kerterizini ve hareket bilgilerini çıkaran aktif bir algılama sistemidir. Deniz radarı, görüş mesafesinden bağımsız olarak çalışır; sis, yağmur, karanlık veya yoğun deniz püskürtüsü koşullarında bile hedef tespiti yapabilir.\n\nDenizcilik radarı, köprüüstünün en kritik elektronik aracıdır. COLREG Kural 5 ve 7 kapsamında uygun gözcülük ve çatışma riski değerlendirmesi için radar kullanımı zorunlu tutulmuştur. SOLAS Bölüm V, 500 GT ve üzeri gemilerde en az iki bağımsız radar bulundurulmasını şart koşar. Modern ARPA (Automatic Radar Plotting Aid) sistemleri, hedefleri otomatik olarak izler, CPA ve TCPA hesaplar ve çatışma riski konusunda alarm üretir.",
     sections: [
       {
-        title: "Çalışma Mantığı",
+        title: "Radar Çalışma Prensibi: Zaman-Mesafe İlişkisi",
         content:
-          "Gönderilen darbe sinyalinin geri dönüş süresi mesafeyi, anten yönü ise kerterizi verir.",
+          "Radar anteni kısa süreli güçlü elektromanyetik darbeler (pulse) gönderir ve ardından kısa bir süre dinleme (reception) moduna geçer. Bu gönderme–dinleme döngüsü saniyede yüzlerce kez tekrarlanır. Gönderilen darbenin bir hedefe çarpıp geri dönmesi için geçen süre (two-way travel time, t) ölçülerek hedefe olan mesafe hesaplanır.\n\nElektromanyetik dalgalar ışık hızıyla (c ≈ 3×10⁸ m/s) yayıldığından, mesafe R = c × t / 2 formülüyle doğrudan hesaplanır. Bölü 2 ifadesi, darbeın hedefe gidip gelmesi gereken toplam yolu ikiye böler. Anten aynı anda hem gönderici hem alıcı olamayacağından, gönderme sonrasında çok kısa bir süre var olan 'kör bölge' (minimum range), anten yakınındaki hedeflerin tespitini engeller.",
         image: radarDisplay,
-        imageAlt: "Radar çalışma prensibi"
+        imageAlt: "Radar çalışma prensibi: darbe gönderme ve yansıma",
+        formula: {
+          text: "R = c × t / 2 | c = 3×10⁸ m/s, t = iki yönlü sinyal süresi",
+          description: "Mesafe, sinyalin hedefe gidip-gelme süresinin yarısı ve ışık hızının çarpımıdır"
+        }
       },
       {
-        title: "Seyirde Önemi",
+        title: "Bant, Frekans ve Yayılma Özellikleri",
         content:
-          "Kısıtlı görüşte hedef tespiti ve mevki doğrulaması için temel araçtır.",
+          "Deniz radarları iki ana frekans bandında çalışır. X-bandı (9 GHz, 3 cm dalga boyu): daha yüksek çözünürlük, küçük hedefleri daha iyi tespit eder, kıyı seyri ve liman yaklaşmaları için tercih edilir; ancak yağmur ve sis tarafından daha fazla zayıflatılır. S-bandı (3 GHz, 10 cm dalga boyu): daha uzun menzil, hava koşullarından daha az etkilenir, açık deniz seyri ve kötü hava koşulları için uygundur.\n\nRadar darbelerinin yayılma etkisi atmosfere bağlıdır. Süper refraksiyon koşullarında radar menzili olağanüstü uzar; sub-refraksiyon koşullarında kısalır. Yüksek nem ve sıcaklık inversiyonları bu etkileri belirginleştirir.",
         bulletPoints: [
-          "Mesafe ve kerteriz sağlar",
-          "Kötü görüşte kritik önemdedir",
-          "ARPA ile hedef takibi yapılır"
+          "X-bandı (9 GHz): yüksek çözünürlük, kısa menzil, hava etkisine duyarlı",
+          "S-bandı (3 GHz): düşük çözünürlük, uzun menzil, hava koşullarına dirençli",
+          "Pulse Width (darbe genişliği): kısa darbe → iyi mesafe çözünürlüğü; uzun darbe → uzun menzil",
+          "PRF (Pulse Repetition Frequency): saniyedeki darbe sayısı – menzil ile ters orantılıdır"
         ]
+      },
+      {
+        title: "ARPA ve Hedef Takibi",
+        content:
+          "ARPA (Automatic Radar Plotting Aid), birden fazla radarhedefini eşzamanlı olarak izleyen, her hedef için COURSE, SPEED, CPA (Closest Point of Approach) ve TCPA (Time to CPA) hesaplayan otomatik sistemdir. ARPA olmadan bu hesaplar elle çizim yapılarak (radar plotting) yapılmaktaydı; ARPA bu süreci saniyeler içinde tamamlar ve köprüüstü zabitine değerli karar destek bilgisi sunar.\n\nAncak ARPA'nın sınırlarını bilmek şarttır: ARPA hedefi önce 'korele etmelidir' – yani birkaç tarama döngüsünde aynı hedefi izlemeli ve stabil bir iz oluşturmalıdır. Bu süreç sırasında (tipik olarak 1–3 dakika) CPA/TCPA bilgileri güvenilir değildir. Ayrıca ARPA, radar ekranında görünen hedefleri izler; sis içindeki küçük bir tekne veya yeterince güçlü yansıma yapamayan bir nesne ARPA tarafından görülmeyebilir. COLREG, ARPA verileri yerine navigatörün bütüncül durumsal farkındalığını esas alır."
       }
     ],
     keyPoints: [
-      "Radar yansıma süresine göre mesafe ölçer.",
-      "Anten yönü kerterizi verir.",
-      "Kısıtlı görüşte ana araçtır."
+      "Radar, elektromanyetik darbe gönderip dönüş süresini ölçerek mesafeyi bulur: R = c×t/2.",
+      "Anten dönüş yönü kerterizi verir; her taramada 360° ufuk taranır.",
+      "X-bandı: yüksek çözünürlük; S-bandı: uzun menzil ve hava direnci.",
+      "ARPA: çoklu hedef izleme, CPA/TCPA hesaplama; ancak 1–3 dakikalık başlangıç gecikmesi göz önüne alınmalıdır.",
+      "SOLAS: 500 GT üzeri gemilerde iki bağımsız radar zorunludur.",
+      "Radar, COLREG Kural 5 kapsamında sürekli gözcülük aracı olarak kullanılmalıdır."
     ]
   },
   "Radar ile mevki tayini": {
     title: "Radar ile Mevki Tayini",
     introduction:
-      "Radar mevki tayini, kıyı hattı, radar mesafeleri ve kerterizleri kullanılarak geminin yerinin belirlenmesidir.",
+      "Radar mevki tayini (Radar Fixing), kıyı hattı veya belirgin nesnelerden alınan radar mesafeleri ve kerterizler kullanılarak geminin haritadaki kesin konumunun belirlenmesi işlemidir. GPS erişiminin olmadığı veya sorgulandığı durumlarda radar fix, bağımsız ve güvenilir bir mevki kaynağı sağlar. Radar mevki tayini aynı zamanda GPS konumunun doğrulanmasında da kullanılır.\n\nRadar ile fix yapmanın temel avantajı gerçek dünya referansına dayanmasıdır: radar, fiziksel nesneleri gerçek zamanlı olarak tespit eder ve GPS veya harita veritabanlarına bağımlı değildir. Bu nedenle elektronik harita hataları veya GPS bozulmaları radar fixini olumsuz etkilemez. Ancak radar ölçümlerinin de kendi sistematik ve tesadüfi hataları vardır; bu hataları anlamak ve minimize etmek navigatörün sorumluluğundadır.",
     sections: [
       {
-        title: "Yöntemler",
+        title: "Radar Fix Yöntemleri",
         content:
-          "Mesafe–kerteriz, iki mesafe veya kıyı hattı silueti kullanılarak fix yapılabilir.",
+          "En güvenilir radar fix yöntemi iki veya üç noktadan mesafe çemberleri çizilerek elde edilen mesafe fix'idir. Radar mesafe ölçümü, kerteriz ölçümüne göre genellikle daha doğrudur çünkü mesafe, elektronik sayaçlarla kesin şekilde ölçülürken kerteriz, anten dönme hızı ve hedef boyutundan etkilenir. İki mesafe çemberinin kesişimi iki olası mevki verir; üçüncü bir mesafe veya kerteriz belirsizliği ortadan kaldırır.\n\nMesafe-kerteriz yöntemi: tek noktadan hem mesafe hem de kerteriz alınarak 'range-bearing fix' yapılır. Pratik ve hızlıdır ancak tek noktaya dayandığından hata kontrolü sınırlıdır. Kıyı hattı siluet yöntemi: radar görüntüsündeki kıyı konturu, haritadaki kıyı hattıyla örtüştürülerek mevki bulunur. Bu yöntem hassasiyeti düşük olmasına karşın uygun referans noktası olmadığında kullanışlıdır.",
         image: radarDisplay,
-        imageAlt: "Radar ile mevki tayini"
+        imageAlt: "Radar ile mesafe ve kerteriz fix teknikleri"
       },
       {
-        title: "Dikkat Edilecekler",
+        title: "Radar Hataları ve Düzeltme",
         content:
-          "Radar hataları (index error, range error) ve deniz durumu etkileri göz önüne alınmalıdır.",
+          "Radar ölçümlerini etkileyen sistematik hatalar bilinmeli ve mümkünse düzeltilmelidir. Index error: radarın mesafe sıfırını yanlış ayarlaması; test prosedürleriyle tespit edilir ve düzeltme değeri uygulanır. Beam width (demet genişliği) hatası: radar demeti belirli bir açısal genişliktedir; geniş hedeflerin radar ekranındaki yansıması gerçek boyuttan büyük görünür ve kerteriz ölçümü merkez yerine kenardan yapılırsa hata oluşur. Yansıma noktası seçimi: mesafe fixinde kullanılan noktanın haritadaki konumuyla örtüşmesi şarttır – aynı nesnenin bir ucu ile haritadaki işaretlenen nokta uyuşmuyorsa sistematik hata oluşur.\n\nDeniz durumu etkisi: yüksek dalgalanmada deniz clutterı (geri saçılım) küçük hedefleri maskeleyebilir; gain ve clutter kontrollerinin doğru ayarlanması gerekir. Bu kontrollerin aşırı kullanımı küçük teknelerin veya önemli nesnelerin kaybedilmesine yol açabilir.",
         bulletPoints: [
-          "Radar mesafe düzeltmeleri kontrol edilir",
-          "Kıyı hattı konturu doğrulanır",
-          "Zaman farkı minimize edilir"
+          "İki veya üç mesafe fix: en güvenilir yöntem – mesafe ölçümü kerterizden daha kesindir",
+          "Index error: düzenli testlerle tespit edilmeli ve uygulanmalıdır",
+          "Beam width hatası: kerteriz ölçümünde hedefin merkezi kullanılmalıdır",
+          "Fix noktaları eş zamanlı alınmalı; hareket eden gemide zaman farkı fix'i bozar",
+          "Deniz clutterını bastırmak için gain/clutter ayarları optimize edilmeli, ancak abartılmamalıdır"
         ]
       }
     ],
     keyPoints: [
-      "Radar, mesafe ve kerterizle fix sağlar.",
-      "Kıyı hattı konturu kullanılabilir.",
-      "Radar hataları düzeltilmelidir."
+      "Radar mesafe fix'i, mesafe-kerteriz fix'inden genellikle daha güvenilirdir.",
+      "Üç nokta fix (üçgen hatası), ölçüm güvenilirliğini doğrulamada kullanılır.",
+      "Index error düzenli olarak kontrol edilmeli ve düzeltme katsayısı uygulanmalıdır.",
+      "Radar fix, GPS bağımsız konum doğrulaması için kritik bir araçtır.",
+      "Deniz koşulları (clutter), beam width hatası ve yansıma noktası seçimi başlıca hata kaynaklarıdır."
     ]
   },
   "Paralel indeks (radar)": {
-    title: "Paralel İndeks (Radar)",
+    title: "Paralel İndeks (Radar Uygulaması)",
     introduction:
-      "Radar paralel indeks, radar ekranında rota çizgisine paralel emniyet hattı oluşturarak geminin güvenli bölgede kalmasını sağlar.",
+      "Radar paralel indeksi, köprüüstü seyir tekniklerinin en pratik ve en önemli uygulamalarından biridir. Temel fikir basittir: radar ekranında, sabit bir referans noktasının gemiye olan yatay mesafesini temsil eden bir çizgi çizilir ve gemi seyri boyunca bu çizgiye göre konumunu izler. Referans noktasının radar ekranındaki yansıması bu çizginin üzerinde kaldığı sürece gemi doğru mesafede doğru rotada demektir; herhangi bir sapma anında görsel olarak fark edilir.\n\nRadar PI, kıyı seyri boyunca, dar boğaz geçişlerinde, liman yaklaşmalarında ve kısıtlı görüş koşullarında köprüüstünün rutin seyir izleme aracıdır. STCW yeterlilik standartları, zabitlerden radar PI kurma ve yorumlama becerisi bekler; MCA ve IMO kılavuzları bu tekniği passage plan hazırlığının ayrılmaz bir parçası olarak tanımlar.",
     sections: [
       {
-        title: "Uygulama",
+        title: "Radar PI Kurulumu: Adım Adım",
         content:
-          "Seçilen hedefe belirli mesafede paralel çizgi çizilir ve gemi bu çizgiye göre izlenir.",
+          "Seyir öncesi planlama aşamasında: harita üzerinde rotanın kritik her bölümü için uygun bir referans noktası seçilir (açık bir burun ucu, tekil kaya, baca gibi net yansıma yapan nesne). Planlanan rota çizgisiyle bu referans noktası arasındaki dik mesafe ölçülür; bu değer 'PI mesafesi' olarak tabloya kaydedilir.\n\nSeyir sırasında: radar ekranında referans noktasının yansıması tespit edilir. EBL (Electronic Bearing Line) veya PI fonksiyonu kullanılarak, referans yansımasından PI mesafesine eşit uzaklıkta rota çizgisine paralel bir çizgi çizilir. Seyir boyunca referans yansıması bu çizgiyi izlemelidir. Yansıma çizginin kıyı tarafına geçerse gemi kıyıya yaklaşıyor; uzak tarafa geçerse uzaklaşıyor demektir.",
         image: radarDisplay,
-        imageAlt: "Radar paralel indeks"
+        imageAlt: "Radar PI kurulumu: referans noktası ve paralel çizgi"
       },
       {
-        title: "Avantaj",
+        title: "Çoklu PI Kullanımı ve Kritik Noktalar",
         content:
-          "Dar sularda ve kıyıya yakın seyirde hatayı erken tespit etmeye yardımcı olur.",
+          "İleri düzey uygulamada iki veya daha fazla PI çizgisi eş zamanlı kullanılabilir. Örneğin, bir kıyıya olan minimum mesafeyi ve bir sığlığa olan minimum mesafeyi aynı anda izlemek için iki farklı referans noktasından iki PI çizgisi kurulabilir. Bu yaklaşım, özellikle kanalda birden fazla tehlike bulunduğunda son derece etkindir.\n\nPratik dikkat noktaları: (1) Radar ölçeği değiştirildiğinde PI çizgisinin ölçekle güncellenmesi gerekir; birçok modern radar bu güncellemeyi otomatik yapar ancak doğrulanmalıdır. (2) Referans noktasının radar yansıması kötü veya belirsizse PI güvenilir olmaz; yağmur/deniz clutterında referans yansımasının kaybolmaması için gain ayarları optimize edilmelidir. (3) Tide, current ve leeway etkisiyle gemi rotadan saptıysa PI bu sapmayı anlık gösterir; rota düzeltmesi gecikmeden yapılmalıdır.",
         bulletPoints: [
-          "Radar ekranında sabit referans",
-          "Sürekli izleme kolaylığı",
-          "Kıyı seyri emniyeti artırır"
+          "Seyir öncesinde harita üzerinde PI mesafeleri hesaplanıp passage planına işlenmelidir",
+          "Birden fazla PI eş zamanlı kullanılabilir – kanalda iki tehlike varsa iki PI çizgisi",
+          "Radar ölçek değişikliğinde PI mesafesinin güncellenmesi doğrulanmalıdır",
+          "Referans noktasının net ve sürekli radar yansıması yapması gerekir",
+          "Kısıtlı görüşte radar PI, görsel PI'nın yerini alır ve kritik öneme sahiptir"
         ]
       }
     ],
     keyPoints: [
-      "Radar paralel indeks, emniyet hattı oluşturur.",
-      "Dar sularda pratik bir izleme yöntemidir.",
-      "Sürekli doğrulama sağlar."
+      "Radar PI, rotaya paralel çizgiyle referans noktasının gemiye olan anlık mesafesini gösterir.",
+      "PI mesafesi seyir öncesinde haritadan ölçülür ve passage planına kaydedilir.",
+      "Referans yansımasının PI çizgisini aşması, planlanan rota hattından sapma demektir.",
+      "Çoklu PI, birden fazla tehlike için eş zamanlı mesafe izleme imkânı sunar.",
+      "Radar PI, GPS bağımsız çalışır ve kısıtlı görüşte en değerli seyir izleme aracıdır."
     ]
   },
   "ECDIS": {
-    title: "ECDIS",
+    title: "ECDIS – Elektronik Harita Gösterim ve Bilgi Sistemi",
     introduction:
-      "ECDIS (Electronic Chart Display and Information System), elektronik harita üzerinde gemi mevki ve rota bilgilerinin takip edildiği ana navigasyon sistemidir.",
+      "ECDIS (Electronic Chart Display and Information System), IMO standartlarını karşılaması koşuluyla kağıt haritanın resmi yerine geçebilen, elektronik seyir haritalarını (ENC – Electronic Navigational Chart) gemi sensör verileriyle entegre eden gelişmiş köprüüstü seyir sistemidir. SOLAS Bölüm V düzenlemesiyle 2012–2018 yılları arasında aşamalı olarak zorunlu hale getirilmiştir; 10.000 GT ve üzeri yolcu gemileri ile 3000 GT ve üzeri ticari gemiler ECDIS taşımak zorundadır.\n\nECDIS'in temel değeri, coğrafi konumu (GPS/GNSS) ile harita tehlikeleri arasında sürekli ve otomatik karşılaştırma yapmasında yatar. Gemi tehlikeli bir alana yaklaştığında sistem alarm üretir. Ancak bu güç, 'otomasyon güveni' adı verilen tehlikeli bir tuzağa da yol açar: navigatörün ECDIS'e aşırı güvenmesi ve manuel doğrulama ve bağımsız düşüncenin geri plana atılması. Son yıllardaki birçok deniz kazası, ECDIS kullanımındaki prosedür hatalarından kaynaklanmıştır.",
     sections: [
       {
-        title: "Temel İşlevler",
+        title: "ECDIS Bileşenleri ve Veri Kaynakları",
         content:
-          "ENC verileri, sensör bilgileri ve alarmlar ECDIS üzerinde entegre olarak izlenir.",
+          "ECDIS, birkaç temel bileşenden oluşur. ENC (Electronic Navigational Chart): UKHO, NOAA veya diğer yetkili hidrografik kurumlar tarafından üretilen vektörel seyir haritasıdır. IHO S-57 standardına göre kodlanır; derinlikler, tehlikeler, yardımcı seyir işaretleri, kıyı yapıları gibi katmanlardan oluşur. ECDIS bu katmanları seçilebilir biçimde gösterir.\n\nSensör entegrasyonu: ECDIS, GPS/GNSS (konum), giroscope (heading), log (hız/mesafe), AIS ve radar verilerini entegre eder. Gemi simgesi gerçek zamanlı konum ve başı gösterecek biçimde haritada hareket eder. NAVTEX ve SafetyNET uyarıları ECDIS'e beslenebilir. Bazı ECDIS sistemleri radar görüntüsünü de haritanın üzerine bindirerek radar/chart overlay sunar.",
         image: ecdisDisplay,
-        imageAlt: "ECDIS ekranı"
+        imageAlt: "ECDIS ekranı: ENC, sensör entegrasyonu ve alarm katmanları"
       },
       {
-        title: "Emniyet",
+        title: "ECDIS Alarm Sistemi ve Emniyet Parametreleri",
         content:
-          "Safety contour, safety depth ve XTE limitleri ECDIS üzerinden kontrol edilir.",
+          "ECDIS'in en kritik emniyet işlevleri alarm parametrelerinde yatar. Yanlış ayarlanan parametreler ya gereksiz alarmlara (alarm yorgunluğu) ya da tehlikelerin kaçırılmasına yol açar.\n\nSafety contour (Emniyet kontur derinliği): geminin güvenli geçiş yapabildiği minimum su derinliğidir; bu konturun kıyı tarafındaki suya ECDIS alarm üretir. Safety depth (Emniyet derinliği): bu değerin altındaki su derinlikleri haritada farklı renkte gösterilir. XTE limit: planlanan rotadan enine maksimum izin verilen sapma mesafesi. Anti-grounding alarm: gemi, look-ahead çizgisi boyunca belirlenen süre içinde tehlikeli bir alana girecekse erken uyarı verir.\n\nBu parametreler gemi drafı, trim, UKC şartı ve köprüüstü politikasına göre belirlenmelidir. Varsayılan değerler büyük olasılıkla uygun değildir; her sefer başında kontrol ve doğrulama gerekir.",
         bulletPoints: [
-          "ENC güncelliği kritik",
-          "Alarm ayarları dikkatle yapılır",
-          "Sensör entegrasyonu doğrulanır"
+          "ENC güncelliği kritik: eski ENC'ler yanlış derinlik veya tehlike bilgisi içerebilir – düzenli güncelleme şarttır",
+          "Safety contour drafttan büyük tutulmalı; UKC ve squat payı eklenmeli",
+          "Alarm yorgunluğu: aşırı alarm köprüüstü zabitinin önemli uyarıları görmezden gelmesine neden olabilir",
+          "ECDIS Paper Chart ile çapraz kontrol edilmeli; ne ECDIS ne de kağıt harita tek başına yeterlidir",
+          "ECDIS tip onayı: her ECDIS markası ayrı eğitim ve tip onayı gerektirir (STCW zorunluluğu)"
         ]
+      },
+      {
+        title: "ECDIS Kazaları ve Öğrenilen Dersler",
+        content:
+          "Uluslararası kazalar ve MAIB raporları, ECDIS hatalarının belli örüntüler izlediğini gösterir: yanlış safety contour ayarı, ENC güncellemelerinin yapılmaması, alarm sesini kapatma ve ECDIS'e körce güven. 2013'te İskoçya açıklarında MV Ovit'in karaya oturması, safety contour değerinin geminin drafının altında ayarlanmasından kaynaklanmıştır – ECDIS alarm vermemiş çünkü yanlış parametre girilmişti.\n\nBu nedenle STCW ve IMO, her zabitin kendi gemisindeki ECDIS sisteminin tip eğitimini (manufacturer-specific training) almış olmasını şart koşar. Genel ECDIS eğitimi yeterli değildir; farklı üreticilerin arayüz ve alarm yönetimleri önemli farklılıklar gösterir."
       }
     ],
     keyPoints: [
-      "ECDIS, elektronik harita sistemidir.",
-      "Sensör ve alarm entegrasyonu sağlar.",
-      "ENC güncelliği emniyet için kritiktir."
+      "ECDIS, ENC haritasını GNSS konumuyla birleştirerek gerçek zamanlı tehlike uyarısı sağlar.",
+      "Safety contour, safety depth ve XTE limitlerinin doğru ayarlanması ECDIS emniyetinin temelidir.",
+      "ENC düzenli olarak güncellenmeli; eski ENC yanlış tehlike bilgisi içerebilir.",
+      "ECDIS tip onayı ve üretici eğitimi STCW kapsamında zorunludur.",
+      "Otomasyon güveni en büyük ECDIS riski: alarm yorgunluğu ve manuel doğrulamayı ihmal etme.",
+      "ECDIS, radar ve GPS ile çapraz doğrulanmalıdır; tek başına yeterli değildir."
     ]
   },
   "Rota planlama": {
-    title: "Rota Planlama",
+    title: "Rota Planlama (Passage Planning)",
     introduction:
-      "Rota planlama, seyrin emniyetli, verimli ve mevzuata uygun şekilde yürütülmesi için önceden yapılan hazırlıktır.",
+      "Passage planning (rota / sefer planlama), geminin kalkış noktasından varış yerine emniyetli, verimli ve mevzuata uygun biçimde ulaşması için seyirden önce yapılan kapsamlı hazırlık sürecidir. IMO Karar A.893(21), bu süreci dört zorunlu aşamaya ayırır: Appraisal, Planning, Execution ve Monitoring. Bu çerçeve SOLAS Bölüm V ile de desteklenir; tüm uluslararası sefer yapan gemiler için kaptan ve seyir zabitleri üzerinde yasal bir sorumluluk yaratır.\n\nRota planlamasının önemi, tehlikeleri ve kısıtları önceden tanımlayarak köprüüstünün ‘reaktif’ yerine ‘proaktif’ çalışmasını sağlamasından kaynaklanır. Plan olmadan seyirde, tehlikeler yaklaştıkça fark edilir; bu anlarda hem zaman hem de hareket alanı sınırlıdır. Plan varsa tehlikeler çok önceden bilinir, alternatif kararlar önceden verilmiş olur ve kriz anında köprüüstü kararlı biçimde hareket edebilir.",
     sections: [
       {
-        title: "Planlama Adımları",
+        title: "Appraisal: Bilgi Toplama ve Değerlendirme",
         content:
-          "Rota, waypoint’ler ve emniyet limitleri belirlenir; alternatif ve acil durum rotaları hazırlanır.",
+          "Appraisal aşamasında seyire dair tüm bilgiler toplanır ve değerlendirilir. Kontrol edilecekler: tüm güncel seyir haritaları (kalkış noktasından varışa), Admiralty Pilot Books, List of Lights, Tide Tables, Tidal Atlas, Sailing Directions, Notice to Mariners güncellemeleri, liman yaklaşım kılavuzları (port approach guides), meteoroloji tahminleri, VTS (Vessel Traffic Service) gereklilikleri, draft kısıtları ve köprü/kanal açıklık bilgileri.\n\nBu aşamanın amacı seyrin tüm risklerini, kısıtlarını ve özel gereksinimlerini önceden tanımlamaktır. Planlama appraisal olmadan başlanamaz; eksik bilgiyle çizilen plan gerçekçi olmaz.",
         image: chartPlotting,
-        imageAlt: "Rota planlama"
+        imageAlt: "Passage planning: harita ve kaynaklar"
       },
       {
-        title: "Kontrol",
+        title: "Planning: Detaylı Rota Hazırlığı",
         content:
-          "Rota, harita yayınları ve meteorolojik bilgilerle doğrulanır.",
+          "Planning aşamasında appraisal verileri kullanılarak rota haritaya veya ECDIS’e işlenir. Waypoint listesi hazırlanır, her waypoint için XTE limitleri belirlenir ve tehlikeler işaretlenir. Safety contour, clearing lines, no-go areas ve kritik noktalardaki gerekli başlık değişiklikleri planlanır.\n\nSeyir notu (voyage note) hazırlanır: önemli bölgelerde hız planı, gelgit penceresi, dar geçişler için tahmini zamanlar, VHF kanalları ve kanallar için görev dağılımı. Alternatif rotalar ve acil durum (emergency) waypoint’leri eklenir. Yakıt planlaması, ETA hesabı ve karbon raporlaması da bu aşamada tamamlanır. Plan kaptan tarafından incelenir ve onaylanır.",
         bulletPoints: [
-          "Waypoint ve XTE limitleri belirlenir",
-          "Tehlikeler işaretlenir",
-          "Alternatif rota planlanır"
+          "Waypoint listesi: koordinatlar, rota, mesafe, hız ve tahmini zamanlar",
+          "XTE limitleri: her segment için rota genişliğini ve emniyet koridor belirleme",
+          "Safety contour ECDIS’te doğru ayarlanmalı – draft + UKC + squat payı",
+          "Clearing bearings ve leading lines sefer notuna işlenmeli",
+          "Alternatif rotalar ve aile limanları (ports of refuge) önceden belirlenmeli"
         ]
+      },
+      {
+        title: "Plan Kalitesi ve Sık Yapılan Hatalar",
+        content:
+          "Rota planlama kalitesi, köprüüstü yönetiminin gerçek testlerinden biridir. Sık yapılan hatalar: eski haritaların kullanılması, Notice to Mariners güncellemelerinin atlanması, XTE limitlerinin varsayılan geniş değerlerde bırakılması, safety contour’un doğru ayarlanmaması ve alternatifsiz tek rota planlaması.\n\nPSC (Port State Control) denetimleri, rota planının mevcudiyetini, güncelliğini ve kalitesini kontrol eder. Yetersiz passage plan, geminin tutulmasına (detention) yol açan sık deficiency nedenlerinden biridir. Bir rota planı, üç soruyu yanıtlamalıdır: gemi nerede olacak? Hangi tehlikeler var? Tehlikeleri geçerken ne yapılacak?"
       }
     ],
     keyPoints: [
-      "Rota planlama emniyetin temelidir.",
-      "Alternatif ve acil durum rotası hazırlanır.",
-      "Yayın ve meteoroloji güncel olmalıdır."
+      "Passage planning, IMO A.893(21) ve SOLAS V kapsamında yasal bir yükümlülüktür.",
+      "Dört aşama: Appraisal (bilgi toplama) → Planning (rota hazırlığı) → Execution (uygulama) → Monitoring (izleme).",
+      "XTE limitleri, safety contour ve clearing lines passage planının temel güvenlik unsurlarıdır.",
+      "Plan kaptan tarafından onaylanmalı, köprüüstü ekibiyle briefing yapılarak paylaşılmalıdır.",
+      "Alternatifsiz plan yetmez: acil durum waypoint’leri ve aile limanları önceden belirlenmeli.",
+      "PSC denetimleri passage plan kalitesini sorgular; eksik plan detention gerekçesi olabilir."
     ]
   },
   "XTE": {
-    title: "XTE (Cross Track Error)",
+    title: "XTE – Cross Track Error (Enine Rota Sapması)",
     introduction:
-      "XTE, geminin planlanan rotadan sağa veya sola olan enine sapma mesafesini ifade eder.",
+      "XTE (Cross Track Error), geminin anlık konumunun planlanan rota çizgisinden yaptığı dik (enine) uzaklığı ifade eder. Gemi rotanın sağına saptıysa pozitif (+) XTE, soluna saptıysa negatif (−) XTE değeri raporlanır; yön işareti seyir yazılımına göre değişebilir. ECDIS'te ve GPS alıcılarında otomatik olarak hesaplanır ve görüntülenir.\n\nXTE, passage planlamasının en temel izleme parametrelerinden biridir. Planlama aşamasında her rota segmenti için XTE limiti belirlenir; bu limit, rota hattının her iki yanında belirlenen emniyetli koridorun yarı genişliğini ifade eder. ECDIS, XTE bu limiti aştığında alarm üretir.",
     sections: [
       {
-        title: "Tanım",
+        title: "XTE Limitlerinin Belirlenmesi",
         content:
-          "XTE, rota hattına olan dik mesafedir ve genellikle ECDIS üzerinde izlenir.",
+          "XTE limiti, iki ayrı düşünce çizgisiyle belirlenir: (1) Tehlikelere olan mesafe: rota hattının her iki yanındaki en yakın tehlike, tehlikeden minimum güvenli mesafe ile XTE limitini belirler. Örneğin, rota hattının kıyı tarafında 0.5 NM ötede bir sığlık varsa ve minimum emniyet mesafesi 0.2 NM ise kıyı tarafi için XTE limiti en fazla 0.3 NM olabilir. (2) Yerel trafik ve kanal genişliği: dar kanallarda veya yoğun trafik alanlarında XTE limiti daha kısıtlı tutulur.\n\nXTE limitinin açık denizde gevşek, kıyıya yakın bölgelerde sıkı tutulması doğru bir yaklaşımdır. Sabit bir XTE limiti uygulamak yerine tehlike yoğunluğuna göre değişken limit belirlemek, hem alarm yorgunluğunu azaltır hem de kritik anlarda sıkı kontrolü sağlar.",
         image: ecdisDisplay,
-        imageAlt: "XTE gösterimi"
+        imageAlt: "XTE gösterimi: rota hattı ve enine sapma"
       },
       {
-        title: "Seyirde Kullanım",
+        title: "XTE ve Passage Plan Koridoru",
         content:
-          "XTE sınırları, emniyetli koridor oluşturmak için belirlenir.",
+          "Passage planlama mantığında XTE limiti, rota hattının etrafında bir 'güvenli koridor' (safe corridor) oluşturur. Bu koridorun içinde kaldığı sürece gemi tehlikeden uzak demektir. Koridorun dışına çıkıldığında alarm üretir ve acil müdahale gerekebilir.\n\nHierarchik limit yapısı: ECDIS'te genellikle iki kademeli XTE alarmı kurulur. Birinci kademe (warning) hafif sapmayı gösterir – rotaya dönme zamanının geldiğini işaret eder. İkinci kademe (alarm) kritik eşiği aştığını gösterir – acil müdahale gerekir. Bu yapı, köprüüstünü hem proaktif hem de acil durum müdahalesine hazırlar.",
         bulletPoints: [
-          "XTE limitleri rota planında belirlenir",
-          "Sapma artarsa müdahale edilir",
-          "Alarm sınırları dikkatle ayarlanır"
+          "XTE limiti = rota hattı ile en yakın tehlike arasındaki mesafeden emniyet payı düşülerek hesaplanır",
+          "Açık denizde geniş XTE (örn. 0.5–1.0 NM), dar sularda dar XTE (örn. 0.05–0.1 NM)",
+          "Çift kademeli alarm (warning + alarm) alarm yorgunluğunu azaltır",
+          "XTE alarm limiti ECDIS'te rota planına bireysel segment bazında ayarlanmalıdır",
+          "XTE aşımı derhal kaptan ve ilgili zabitlere raporlanmalıdır"
         ]
       }
     ],
     keyPoints: [
-      "XTE, rota hattından enine sapmadır.",
-      "ECDIS üzerinde izlenir.",
-      "Limitler emniyetli koridor sağlar."
+      "XTE, geminin planlanan rota çizgisinden enine uzaklığıdır; pozitif/negatif işaret sapma tarafını gösterir.",
+      "XTE limiti, tehlikelere olan mesafeye göre her segment için ayrıca belirlenir.",
+      "Açık denizde geniş, dar sularda dar XTE limiti alarm yorgunluğunu azaltır.",
+      "ECDIS'te çift kademeli XTE alarmı (warning + alarm) en iyi uygulamadır.",
+      "XTE aşımı passage planının gözden geçirilmesi ve gerekirse rotanın yeniden değerlendirilmesi sinyalidir."
     ]
   },
   "ETA": {
-    title: "ETA (Estimated Time of Arrival)",
+    title: "ETA – Estimated Time of Arrival (Tahmini Varış Zamanı)",
     introduction:
-      "ETA, geminin varış noktasına ulaşacağı tahmini zamanı ifade eder ve seyir planlamasında kritik bir göstergedir.",
+      "ETA (Estimated Time of Arrival), geminin planlanan varış noktasına (liman, kılavuz istasyonu veya ara waypoint) ulaşacağı tahmini zamanı ifade eden operasyonel bir göstergedir. Geminin liman operasyonları, römorkör ve pilotaj servisi, kargo hazırlığı ve bunkerleme programının tamamı ETA etrafında organize edilir.\n\nBir ETA hesabının doğruluğu girdi verilerinin kalitesine bağlıdır: ortalama SOG, kalan mesafe, beklenen akıntı ve rüzgâr etkileri, kanalda düşük hız bölgeleri ve olası bekleme ihtimali. ETA sabit bir tahmin değil, sürekli güncellenmesi gereken dinamik bir parametredir.",
     sections: [
       {
-        title: "Hesap Mantığı",
+        title: "ETA Hesabı: Temel Yöntem",
         content:
-          "ETA, planlanan hız ve kalan mesafe bilgilerine göre hesaplanır ve güncel seyir performansı ile düzenli güncellenir.",
+          "ETA hesabının temeli basittir: ETA = Kalkış Zamanı + (Kalan Mesafe / Ortalama SOG). Ancak pratikte bu hesap birçok düzeltme gerektirir. Tailwind ve favourable current SOG’u artırırken, headwind ve adverse current azaltır. Yüksek dalga ve ağır hava hız düşüşü ve dolayısıyla ETA gecikmesi yaratır.\n\nLiman yaklaşma süreci: kılavuz bekleme süresi, bölge geçiş hız kısıtlamaları, TSS içindeki rota uzaması ve demirde bekleme ihtimali ETA’ya eklenmesi gereken tampon süreleri oluşturur. Tidal window bazı limanlarda giriş için belirli gelgit zamanı gerektirir; bu pencere ETA’nın en kritik kısıtı olabilir.",
         image: chartPlotting,
-        imageAlt: "ETA planlaması"
+        imageAlt: "ETA hesabı ve sefer planlaması",
+        formula: {
+          text: "ETA = ETD + (D / SOG_ort) + Kılavuz bekleme + TSS gecikmesi",
+          description: "ETD = kalkış zamanı, D = toplam mesafe, SOG = ortalama zemin hızı. Tampon süreler eklenmeli."
+        }
       },
       {
-        title: "Operasyonel Etki",
+        title: "ETA Güncelleme ve İletişim",
         content:
-          "ETA, liman planlaması, bunker yönetimi ve operasyon koordinasyonu için kullanılır.",
+          "ETA, günlük noon raporu, her vardiya devri ve hava durumu değişiklikleri gibi koşullar değiştikçe güncellenir. Planlanan ETA’dan önemli sapmalar (genellikle ±30 dakika veya daha fazla) derhal armatore, operatöre ve liman ajanına bildirilir.\n\nETA baskısı ve emniyet dengesi: IMO ve ISM Kodu, hız kararının emniyete dayanması gerektiğini açıkça vurgular. ETA tutturmak için hız artırmak, köprüüstü üzerinde hatalı karar almanın önemli bir tetikleyicisidir.",
         bulletPoints: [
-          "Hız değişimi ETA’yı etkiler",
-          "Meteoroloji ve akıntı dikkate alınır",
-          "Günlük olarak güncellenir"
+          "ETA günlük noon raporu ve vardiya devirlerinde güncellenir",
+          "±30 dakika veya daha büyük sapma derhal tüm paydaşlara bildirilmeli",
+          "Tidal window kısıtı ETA’nın en katı sınırını oluşturabilir",
+          "ETA baskısı emniyetsiz hız kararlarının önemli bir nedenidir – ISM kodla çatışır",
+          "Liman ajanı için ETA kritiktir: kılavuz, römorkör, berth ve kargo hazırlığı ETA’ya göre organize edilir"
         ]
       }
     ],
     keyPoints: [
-      "ETA, varış zamanını gösterir.",
-      "Hız ve mesafe değişimleri ETA’yı değiştirir.",
-      "Operasyon planlamasında temel göstergedir."
+      "ETA = ETD + (Mesafe/SOG) + liman süreçleri; akıntı ve hava etkisi dahil edilmeli.",
+      "ETA dinamik bir parametredir; koşullar değiştikçe güncellenmeli ve paydaşlara iletilmelidir.",
+      "Tidal window bazı limanlarda ETA’nın en katı kısıtını oluşturur.",
+      "ETA baskısı, emniyetsiz hız kararlarının yaygın nedenidir; ISM Kodu emniyeti öncelikli kılar.",
+      "Noon raporu ve vardiya devri ETA güncelleme zorunluluğu gerektirir."
     ]
   },
   "Turn radius": {
-    title: "Turn Radius",
+    title: "Turn Radius – Dönüş Yarıçapı",
     introduction:
-      "Turn radius, geminin dönüş manevrası sırasında izlediği dairenin yarıçapıdır. Hız, dümen açısı ve gemi özelliklerine bağlıdır.",
+      "Turn radius (dönüş yarıçapı), bir geminin belirli bir dümen açısı ve hızda tam dönüş yaptığında izlediği dairesel yayın yarıçapıdır. Dümen açısı, gemi hızı ve geminin hidrodinamik karakteristikleri dönüş yarıçapını belirler. Küçük dönüş yarıçapı, manevra kabiliyetinin yüksek olduğunu gösterir.\n\nDönüş yarıçapı kavramı, dar kanallarda, boğazlarda ve liman içi manevralarında rota planlamasının temel girdisidir. Bir waypoint'te yapılacak başlık değişikliğinin kaç metre önünden başlayacağı, doğrudan dönüş yarıçapına bağlıdır. Gemi doğrultma gecikmesi (advance) ve enine kayma (transfer) miktarları da dönüş karakteristiğinin parçasıdır.",
     sections: [
       {
-        title: "Etkileyen Faktörler",
+        title: "Dönüş Manevrası Parametreleri",
         content:
-          "Hız arttıkça dönüş yarıçapı büyür. Düşük hız ve yüksek dümen açısı daha dar dönüş sağlar.",
+          "Bir geminin dönüş davranışı birkaç temel parametreyle tanımlanır. Advance (ilerleme): dönüş emri verildiği andan, geminin yeni başlıktan 90° dönmesine kadar geçen sürede orijinal rota yönünde kat edilen mesafe. Transfer: aynı aşamada orijinal rota çizgisinin enine geçilen mesafe. Tactical Diameter: 180° dönüş tamamlandığında orijinal rota çizgisinden enine uzaklık – bu değer genellikle dönüş için kritik meydan gereksinimini belirler.\n\nWaypoint alternatifi olan Steady Turning Radius (sabit dönüş yarıçapı): gemi tam dönüş tamamlandığında izlediği dairesel yayın yarıçapı. Tactical diameter, genellikle steady turning radius'un iki katına yakındır. Gemi manevralar kitapçığında (ship's manoeuvring booklet) bu değerler farklı hız ve dümen açısı için tablo olarak verilir.",
         image: autopilotControl,
-        imageAlt: "Dönüş yarıçapı ve manevra"
+        imageAlt: "Dönüş yarıçapı, advance, transfer ve tactical diameter",
+        formula: {
+          text: "Wheel-over point mesafesi ≈ Advance | Güvenli mesafe = Turn Radius + emniyet payı",
+          description: "Wheel-over point, waypoint'ten önceki başlık değişikliği noktasıdır; advance mesafesi kadar öne alınır"
+        }
       },
       {
-        title: "Seyirde Önemi",
+        title: "Hız ve Dümen Açısının Etkisi",
         content:
-          "Rota planlamasında dönüş noktaları ve emniyet mesafeleri belirlenirken dikkate alınır.",
+          "Dümen açısı artırıldıkça dönüş yarıçapı küçülür ve dönüş hızlanır; ancak aşırı dümen açısı hız kaybına ve yalpa artışına neden olabilir. Hız arttıkça dönüş yarıçapı büyür; yani yüksek hızda dar dönüş yapmak istiyorsanız büyük dümen açısı gerekir. Ağır yük durumu (deep draught), yüklü olmayan duruma kıyasla dönüş kabiliyetini değiştirebilir; bu nedenle manevralar kitapçığı hem yüklü hem ballast koşullar için değerler içerir.\n\nNarrow channel turn planning: dar kanallarda wheel-over point, waypoint'in yeterince gerisine konumlandırılır. Hesaplama: geminin mevcut rota üzerinde yavaşlama, advance ve transfer miktarları haritaya çizilerek tam güzergah izlenir. Bu planlama ECDIS'te turn radius veya wheel-over point fonksiyonuyla otomatik yapılabilir.",
         bulletPoints: [
-          "Yüksek hız = geniş dönüş",
-          "Dümen açısı dönüşü etkiler",
-          "Dönüş öncesi mesafe planlanır"
+          "Dümen açısı ↑ → dönüş yarıçapı ↓, dönüş hızı ↑",
+          "Hız ↑ → dönüş yarıçapı ↑ – yüksek hızda dar dönüş için büyük dümen açısı gerekir",
+          "Tactical diameter = 180° dönüşün enine uzaklığı – kanal genişliği planlamasının temel değeri",
+          "Manevralar kitapçığı farklı hız ve dümen açısı için tablo içerir",
+          "ECDIS'te wheel-over point otomatik hesaplanabilir; doğrulanması gerekir"
         ]
       }
     ],
     keyPoints: [
-      "Turn radius, dönüş manevrasının yarıçapıdır.",
-      "Hız ve dümen açısı temel etkendir.",
-      "Rota planlamasında dikkate alınır."
+      "Turn radius, hız ve dümen açısına bağlıdır; hız artınca yarıçap büyür.",
+      "Tactical diameter, 180° dönüşün enine genişliğidir – dar su planlamasının temel girdisi.",
+      "Wheel-over point, waypoint'ten önce başlık değişikliğine başlanacak noktadır; advance mesafesi kadar öne alınır.",
+      "Manevralar kitapçığı her gemi için yüklü/ballast ve farklı hız değerlerine ait dönüş tablolarını içerir.",
+      "Narrow channel geçişlerinde dönüş planlaması seyir planının kritik bir parçasıdır."
     ]
   },
   "Elektronik seyirde çapraz kontrol": {
     title: "Elektronik Seyirde Çapraz Kontrol",
     introduction:
-      "Elektronik seyirde çapraz kontrol, GPS, radar, görsel ve geleneksel yöntemlerin birbirini doğrulamasıyla yapılır.",
+      "Elektronik navigasyon sistemlerinin yaygınlaşması, köprüüstünün birden fazla dijital bilgi akışını yönetmesini gerektirmiştir. Çapraz kontrol (cross-checking), farklı ve bağımsız kaynaklardan elde edilen konum ve çevre bilgilerinin karşılaştırılmasıyla her kaynağın doğrulanması ilkesine dayanır. Bu ilke, tek bir sensöre kör güven tehlikesini doğrudan ele alır ve COLREG'in uygun gözcülük yükümlülüğünü karşılamak için zorunludur.\n\nÇapraz kontrol yalnızca bir 'iyi uygulama' değil; IMO ve STCW'nin elektronik navigasyona ilişkin kılavuzlarında açıkça öngörülen bir prosedürdür. SOLAS Bölüm V Kural 19, uygun navigasyon araçlarının kullanımını ve bunların güvenilirliğinin doğrulanmasını şart koşar. Çapraz kontrol disiplini, navigatörün sistem hatalarını ve GPS/ECDIS anomalilerini gerçek tehlike haline gelmeden fark etmesini sağlar.",
     sections: [
       {
-        title: "Çapraz Kontrol Yöntemleri",
+        title: "Çapraz Kontrol Hiyerarşisi",
         content:
-          "ECDIS üzerindeki mevki, radar mesafeleri ve görsel kerterizlerle karşılaştırılır.",
+          "Etkin çapraz kontrol, bağımsız veri kaynaklarının karşılaştırılmasını gerektirir. Bağımsızlık kritiktir: GPS ve ECDIS'i karşılaştırmak anlamsızdır çünkü ECDIS'teki konum doğrudan GPS'ten gelir; bu iki sistem bağımsız değildir. Gerçek çapraz kontrol şu şekillerde sağlanır:\n\n(1) GPS mevkii ↔ Radar mesafe/kerterizi: Radar, GPS'ten bağımsız olarak gerçek dünya referansına dayanır. GPS konumu, radar ile alınan mesafelerle örtüşüyor mu? (2) ECDIS mevkii ↔ Görsel kerteriz: Belirli bir kara noktasının görsel kerterizi ECDIS'teki konumla tutarlı mı? (3) GPS SOG/COG ↔ Gyro başı + log hız: Zemin hız ve yön (GPS'ten), su hız ve yön (log + gyro) ile karşılaştırılarak akıntı vektörü hesaplanabilir.",
         image: ecdisDisplay,
-        imageAlt: "Elektronik seyirde çapraz kontrol"
+        imageAlt: "Elektronik seyirde çapraz kontrol şeması"
       },
       {
-        title: "Emniyet Katkısı",
+        title: "Sensör Uyuşmazlığı Tespiti ve Müdahale",
         content:
-          "Tek bir sensöre bağımlılığı azaltır ve sistem hatalarını erken fark ettirir.",
+          "Çapraz kontrol sırasında uyuşmazlık tespit edildiğinde sistematik bir tanı yaklaşımı uygulanır. Uyuşmazlık büyüklüğü ve yönü değerlendirilir: GPS konumu ile radar fix arasında küçük tutarlı bir fark varsa, radar mesafe hataları veya harita datum farklılığı nedeni olabilir. Büyük ve tutarsız fark, GPS spoofing, sensör arızası veya haritada yanlış datum/referans sistemine işaret edebilir.\n\nMüdahale protokolü: (1) Varsa bağımsız ikinci GPS alıcısının değeri kontrol edilir. (2) Radar ile kıyı konturunun harita silüetiyle örtüşmesi görsel olarak incelenir. (3) Astronomik gözlem veya sextant ile konum kontrol edilir (eğer uygunsa). (4) Durum kaptana bildirilir ve geminin emniyetli bir tutumda olduğu teyit edilir. (5) Log tutulur.",
         bulletPoints: [
-          "GPS + radar karşılaştırması",
-          "Görsel kerteriz ile doğrulama",
-          "Alarm ve sensör sapmaları izlenir"
+          "GPS ↔ Radar: en güçlü bağımsız çapraz kontrol çifti",
+          "GPS + ECDIS karşılaştırması bağımsız değildir – ECDIS konumu GPS'ten alır",
+          "SOG/COG (GPS) ile Heading (gyro) + STW (log) uyuşmazlığı akıntı hesabıyla açıklanabilir",
+          "Uyuşmazlık > belirlenen eşik → kaptan derhal bilgilendirilmeli",
+          "Tüm uyuşmazlıklar ve alınan tedbirler log defterine kaydedilmeli"
         ]
       }
     ],
     keyPoints: [
-      "Çapraz kontrol, hataları erken yakalar.",
-      "Farklı sensörler birlikte kullanılmalıdır.",
-      "Emniyetli seyir için zorunlu bir uygulamadır."
+      "Çapraz kontrol, bağımsız veri kaynaklarını karşılaştırarak tek sensör hatalarını yakalar.",
+      "GPS ↔ Radar en güçlü bağımsız kontrol çiftidir; ECDIS ↔ GPS bağımsız değildir.",
+      "Sensör uyuşmazlığı sistematik tanı protokolüyle incelenmeli ve log'a kaydedilmelidir.",
+      "SOLAS Bölüm V ve STCW, navigasyon araçlarının güvenilirliğinin düzenli doğrulanmasını şart koşar.",
+      "Çapraz kontrol, GPS spoofing ve ECDIS hata tesbitinin en pratik savunma hattıdır."
     ]
   },
   "Gelgitin fiziksel mantığı": {
     title: "Gelgitin Fiziksel Mantığı",
     introduction:
-      "Gelgit, Ay ve Güneş’in yerçekimsel etkisiyle deniz seviyesinin periyodik yükselip alçalmasıdır.",
+      "Gelgit (tide), Ay ve Güneş’in yerçekimsel etkisiyle okyanus ve denizlerdeki su seviyesinin periyodik olarak yükselip alçalmasıdır. Bu etki, astronomik olarak öngörülebilir olduğundan gelgit tabloları uzun süreler öncesinden hesaplanabilir. Gelgit, dünya genelinde farklı karakterler gösterir: bazı limanlarda günde iki kez yükselip alçalma (semidiurnal), bazılarında günde bir kez (diurnal), bazılarında ise karma (mixed) bir döngü gözlenir.\n\nGelgitin denizcilik açısından önemi çok yönlüdür: liman giriş-çıkış zamanlaması, UKC (Under Keel Clearance) hesabı, köprü altı geçiş yüksekliği, kıyı geçiş emniyeti ve kurtarma operasyonlarında su yüzeyi tahmini gibi alanlarda gelgit bilgisi kritik rol oynar. Denizcilik fakültesi öğrencilerinin gelgitin hem fiziksel temelini hem de tablolardan hesaplama yöntemlerini eksiksiz bilmesi zorunludur.",
     sections: [
       {
-        title: "Temel Etki",
+        title: "Ay’ın Yerçekimi ve Merkez Kaç Kuvvet",
         content:
-          "Ay’ın etkisi daha güçlüdür; Güneş ise gelgit genliğini artırıp azaltabilir.",
+          "Gelgitin ana kaynağı, Ay’ın Dünya üzerindeki diferansiyel çekim kuvvetidir. Ay Dünya’ya yakın taraftaki su kütlesini daha güçlü çeker; bu tarafta su kabarır. Öte yandan Dünya’nın karşı tarafında, merkez kaç etkisiyle (Dünya-Ay sistemi ağırlık merkezi etrafındaki dönüşten kaynaklanan kuvvet) de bir kabartı oluşur. Bu nedenle Dünya üzerinde aynı anda iki karşıt gelgit kabartısı bulunur.\n\nAy, Dünya’yı 24 saat 50 dakikada çevrelediğinden, bir konum bir günde yaklaşık 2 kez yüksek su ve 2 kez alçak su yaşar (semidiurnal gelgit). Ay etkisi, Güneş etkisinden yaklaşık 2.2 kat daha güçlüdür; bu oran hem kütleye hem de mesafenin küpüyle değişen diferansiyel çekim etkisine bağlıdır.",
         image: tideCurrent,
-        imageAlt: "Gelgit fiziksel mantığı"
+        imageAlt: "Gelgit oluşumu: Ay’ın diferansiyel çekimi ve iki kabartı"
       },
       {
-        title: "Seyirde Önemi",
+        title: "Güneş’in Etkisi: Spring ve Neap Gelgitler",
         content:
-          "Gelgit, liman giriş-çıkış zamanlarını ve UKC hesaplarını doğrudan etkiler.",
+          "Güneş de gelgit yaratır; ancak büyük kütlesine karşın çok daha uzak olduğundan etkisi Ay’ın yaklaşık %46’sı kadardır. Ay ve Güneş hizalandığında (yeni ay veya dolunay dönemleri) etkileri üst üste gelir ve gelgit genliği maksimum olur – bu duruma spring gelgit (kuvvetli gelgit) denir.\n\nAy ile Güneş birbirine dik konumda olduğunda (ilk ve son dördün dönemleri), etkileri kısmen sıfırlar ve gelgit genliği minimumdur – buna neap gelgit (zayıf gelgit) denir. Spring gelgit, neap gelgite göre yaklaşık %20 daha büyük genlik üretir. Bu döngü yaklaşık 14–15 günde bir tekrarlanır ve gelgit tablolarının hazırlandığı temel astronomik parametredir.",
         bulletPoints: [
-          "Yerçekimi etkisi temel faktördür",
-          "Ay–Güneş hizalanması genliği değiştirir",
-          "Derinlik planlamasında kullanılır"
+          "Spring gelgit: Ay + Güneş hizalı (yeni ay / dolunay) – maksimum genlik",
+          "Neap gelgit: Ay + Güneş dik (dördün) – minimum genlik",
+          "Semidiurnal: günde 2 HW + 2 LW (Kuzey Atlantik ve Avrupa kıyıları için tipik)",
+          "Diurnal: günde 1 HW + 1 LW (Körfez Meksika gibi bazı bölgeler)",
+          "Mixed: karmaşık döngü (Hint Okyanusu ve Pasifik kıyılarının bir kısmı)"
         ]
+      },
+      {
+        title: "Yerel Faktörler: Coğrafya ve Rezonans",
+        content:
+          "Teorik astronomik gelgit, yerel coğrafya ve okyanus havzası dinamikleri tarafından büyük ölçüde değiştirilebilir. Kanallar, körfezler ve sığ sularda rezonans etkisi gelgit genliğini aşırı artırabilir. Fundy Körfezi (Kanada), dünyanın en yüksek gelgit genliğine (15–16 metre) sahiptir; bu etki körfez geometrisinin gelgit periyoduyla rezonansa girmesinden kaynaklanır.\n\nTürkiye’nin Karadeniz kıyılarında ve Ege’nin bazı bölgelerinde gelgit genliği yalnızca birkaç onlarca santimetre iken Adriyatik veya İngiliz Kanalı’nda 5–8 metre gelgit genliği gözlenebilir. Bu nedenle limana özgü tablolar ve yerel hydrografik bilgi her zaman kullanılmalı; dünya ortalaması temel alınmamalıdır."
       }
     ],
     keyPoints: [
-      "Gelgit yerçekimi etkisiyle oluşur.",
-      "Ay, Güneş’e göre daha etkili rol oynar.",
-      "Seyir planlamasında kritik veridir."
+      "Gelgit, Ay ve Güneş’in diferansiyel çekim kuvvetleri sonucu oluşur; Ay etkisi Güneş’ten 2.2 kat güçlüdür.",
+      "Dünya’da aynı anda iki karşıt gelgit kabartısı bulunur; bu nedenle semidiurnal gelgitte günde 2 yüksek su yaşanır.",
+      "Spring gelgit: Ay+Güneş hizalı, maksimum genlik; Neap gelgit: dik konum, minimum genlik.",
+      "Yerel coğrafya (körfez, kanal, rezonans) astronomi tabanlı tahminden çok farklı genlikler üretebilir.",
+      "Gelgit bilgisi UKC, tidal window ve köprü altı geçiş hesaplarında doğrudan kullanılır."
     ]
   },
   "Spring tide – Neap tide": {
-    title: "Spring Tide – Neap Tide",
+    title: "Spring Tide – Neap Tide (Kuvvetli ve Zayıf Gelgit)",
     introduction:
-      "Spring tide, Ay ve Güneş’in aynı doğrultuda olduğu durumda oluşan yüksek genlikli gelgittir. Neap tide ise dik açı konumunda oluşan düşük genlikli gelgittir.",
+      "Spring tide (kuvvetli gelgit veya büyük gelgit), Ay ve Güneş’in Dünya’ya göre aynı doğrultuda – yeni ay veya dolunay döneminde – bulunduğunda meydana gelen ve gelgit genliğinin en yüksek değerine ulaştığı dönemdir. Neap tide (zayıf gelgit veya küçük gelgit) ise Ay ve Güneş’in Dünya’ya göre birbirine dik konumda – ilk veya son dördün döneminde – bulunduğu, gelgit genliğinin en düşük olduğu dönemdir.\n\nBu iki uç arasında her 7 günde bir döngü yaşanır: spring → neap → spring. Döngünün periyodik yapısı, denizcilik açısından kritik bir planlamakoşulu yaratır; bir limanın tidal window’u spring döneminde çok daha uzun, neap döneminde ise çok daha kısıtlı olabilir.",
     sections: [
       {
-        title: "Spring Tide",
+        title: "Spring Tide: Operasyonel Etkileri",
         content:
-          "Yeni ay ve dolunay dönemlerinde gelgit genliği maksimum olur.",
+          "Spring döneminde HW (Yüksek Su) seviyesi yıllık ortalamanın üzerinde, LW (Alçak Su) seviyesi ise ortalamanın altında olur. Bu durum iki önemli operasyonel etki yaratır: (1) Olumlu: Derin draftlı gemiler normalde giremeyen sığ limanlara spring döneminde giriş yapabilir; köprü altı yükseklikleri artar. (2) Olumsuz: LW sırasında normalde yeterli UKC’ye sahip limanlarda bile UKC kritik düzeye düşebilir; sığlıklar su altında kalmaya devam edebilir.\n\nSpring döneminde tidal stream (gelgit akıntısı) da güçlenir; çünkü gelgit farkı arttıkça su kütlelerinin hareketi hızlanır. Bu durum dar kanallarda ve boğazlarda akıntı hızını önemli ölçüde artırır.",
         image: tideCurrent,
-        imageAlt: "Spring tide"
+        imageAlt: "Spring ve neap tide karşılaştırması"
       },
       {
-        title: "Neap Tide",
+        title: "Neap Tide: Operasyonel Etkileri ve Tablolara Yansıması",
         content:
-          "İlk ve son dördün dönemlerinde gelgit genliği minimum seviyededir.",
+          "Neap döneminde gelgit farkı (range) azalır; HW beklenen ortalamanın altında, LW ise ortalamanın üzerinde olur. Bu durum: (1) Küçük tidal window: büyük draftlı gemilerin girişi için gereken minimum su seviyesine daha kısa bir süre için ulaşılır. (2) Daha sakin akıntı: tidal stream hızı azaldığından dar geçişler veya akıntılı kanallar daha kolay yönetilir.\n\nGelgit tablolarında spring ve neap arasındaki geçiş, her günkü HW/LW yükseklik değerlerindeki sistematik artış veya azalmadan izlenebilir. Almanac veya yıllık tablolarda ay evreleri ile gelgit genliği arasındaki korelasyon açıkça görülür.",
         bulletPoints: [
-          "Spring: yüksek genlik",
-          "Neap: düşük genlik",
-          "Planlama için takvim bilgisi önemlidir"
+          "Spring (yeni ay/dolunay): maksimum HW yüksekliği, minimum LW yüksekliği, maksimum range",
+          "Neap (dördün): minimum HW yüksekliği, maksimum LW yüksekliği, minimum range",
+          "Spring’de tidal stream güçlenir – dar kanallarda akıntı artışı dikkate alınmalı",
+          "Tidal window planlaması için ay takvimi ve tidal tables birlikte kullanılmalı",
+          "Range = HW − LW: spring’de büyük, neap’te küçük"
         ]
       }
     ],
     keyPoints: [
-      "Spring tide: maksimum genlik.",
-      "Neap tide: minimum genlik.",
-      "Ay evreleri gelgit genliğini belirler."
+      "Spring tide: Ay+Güneş hizalı (yeni ay/dolunay), en büyük gelgit genliği.",
+      "Neap tide: Ay+Güneş dik (dördün), en küçük gelgit genliği.",
+      "Spring’de tidal stream güçlenir; neap’te akıntı zayıflar.",
+      "Tidal window planlaması, ay takvimiyle gelgit tablolarının birlikte kullanılmasını gerektirir.",
+      "Range = HW − LW; spring’de büyük range geniş tidal window yaratır."
     ]
   },
   "Chart datum (LAT)": {
-    title: "Chart Datum (LAT)",
+    title: "Chart Datum ve LAT (Lowest Astronomical Tide)",
     introduction:
-      "Chart datum, derinliklerin ve gelgit tablolarının referans aldığı sıfır seviyedir. Birçok ülkede LAT (Lowest Astronomical Tide) kullanılır.",
+      "Chart datum, seyir haritalarında derinliklerin ve gelgit tablolarındaki su yüksekliklerinin ölçüldüğü referans sıfır seviyesidir. Kullanılan datum, ülkeden ülkeye ve haritadan haritaya farklılık gösterebilir; ancak IHO (International Hydrographic Organization) LAT’ın (Lowest Astronomical Tide) uluslararası standart datum olarak kullanılmasını tavsiye etmiştir ve çoğu modern Admiralty haritası bunu esas alır.\n\nLAT (Lowest Astronomical Tide), yalnızca astronomik (Ay ve Güneş konumu) faktörler dikkate alındığında teorik olarak elde edilebilecek en düşük su seviyesidir. Meteorolojik faktörler (fırtına gelgiti, alçak basınç etkisi) hesaba katılmaz. Bu nedenle gerçek su seviyesi teorik olarak LAT’ın altına düşebilir; ancak bu, yalnızca düşük basınç ve rüzgâr gibi meteotsunamiler gibi istisnai koşullarda gerçekleşir.",
     sections: [
       {
-        title: "LAT Nedir?",
+        title: "Datum Kavramı ve Farklı Datum Türleri",
         content:
-          "LAT, astronomik olarak beklenen en düşük gelgit seviyesidir.",
+          "Dünya genelinde kullanılan birkaç farklı chart datum türü mevcuttur. LAT (Lowest Astronomical Tide): en düşük öngörülen astronomik gelgit seviyesi – modern uluslararası standart. MLLW (Mean Lower Low Water): ABD’de yaygın kullanılan, en düşük günlük alçak suların uzun dönem ortalaması. MLW (Mean Low Water): ortalama alçak su seviyesi. LLWS (Lowest Low Water Springs): spring gelgitlerinin ortalama alçak su seviyesi – bazı Avrupa haritalarında kullanılır.\n\nBu farklı datumlar, seyircinin farklı haritalar arasında geçiş yaparken datum farklılığına dikkat etmesini gerektirir. Bazı durumlarda komşu ülke haritalarında farklı datumlar kullanılabilir; bu durum bağlantı noktalarındaki derinlik referanslarının uyumsuzluğuna yol açabilir.",
         image: tideCurrent,
-        imageAlt: "Chart datum ve LAT"
+        imageAlt: "Chart datum: LAT referansı ve derinlik ölçümü"
       },
       {
-        title: "Seyirde Kullanım",
+        title: "Gerçek Derinlik Hesabı: Datum + Gelgit Yüksekliği",
         content:
-          "Haritadaki derinlikler LAT’a göre verilir. Gerçek derinlik için gelgit yüksekliği eklenir.",
+          "Harita üzerindeki derinlik değerleri (sounding), daima seçilen datuma göre ölçülmüştür. Gerçek anlık su derinliği hesabı şu formülle yapılır:\n\nGerçek Derinlik = Chart sounding (harita derinliği) + Height of Tide (gelgit yüksekliği)\n\nGelgit yüksekliği (height of tide), ilgili andaki su seviyesinin datumun kaç metre üzerinde olduğunu ifade eder. LAT datum kullanılıyorsa, gelgit yüksekliği daima pozitiftir veya sıfırdır (çünkü LAT en düşük düzeydir). Eğer gerçek su seviyesi LAT’ın altına düşmüş olsaydı, gelgit yüksekliği negatif olurdu; bu olağandışı bir durumdur.",
+        formula: {
+          text: "Gerçek derinlik = Harita derinliği (sounding) + Gelgit yüksekliği (height of tide)",
+          description: "UKC hesabı: Gerçek derinlik − Gemi drafı − Squat − Hava kabarması payı = UKC"
+        },
         bulletPoints: [
-          "Derinlikler datum’a göre verilir",
-          "Gelgit yüksekliği eklenir",
-          "Emniyetli UKC hesapları yapılır"
+          "LAT: en düşük teorik astronomik gelgit – harita sıfır referansı",
+          "Gerçek derinlik = harita derinliği + gelgit yüksekliği",
+          "Gelgit yüksekliği LAT datum kullanılıyorsa ≥ 0 (teorik olarak negatif olabilir)",
+          "Datum farklılığı: geçiş yapılan haritalar aynı datumu kullanıyor mu kontrol edilmeli",
+          "Chart datum, Clear of Datum olan köprü altı yüksekliklerinde de kullanılır"
         ]
       }
     ],
     keyPoints: [
-      "Chart datum derinliklerin referansıdır.",
-      "LAT en düşük astronomik gelgit seviyesidir.",
-      "Gerçek derinlik için gelgit eklenir."
+      "Chart datum, haritadaki derinliklerin ölçüldüğü referans sıfır seviyesidir.",
+      "LAT (Lowest Astronomical Tide): IHO tavsiyeli modern uluslararası standart datum.",
+      "Gerçek derinlik = harita derinliği + gelgit yüksekliği.",
+      "LAT datumunda gelgit yüksekliği teorik olarak her zaman ≥ 0’dır.",
+      "Farklı haritalar farklı datumlar kullanabilir; geçişlerde datum uyumsuzluğuna dikkat edilmeli."
     ]
   },
   "Tidal table okuma": {
-    title: "Tidal Table Okuma",
+    title: "Gelgit Tablolarını Okuma",
     introduction:
-      "Gelgit tabloları, belirli bir liman veya referans noktası için yüksek ve alçak su zamanlarını ve yüksekliklerini verir.",
+      "Gelgit tabloları (tidal tables), belirli bir referans limanı (standard port) için her günkü Yüksek Su (High Water – HW) ve Alçak Su (Low Water – LW) zamanlarını ve yüksekliklerini, genellikle UT (UTC) cinsinden ve chart datum'a göre metre olarak verir. Admiralty Tide Tables (ATT), Türkiye için Seyir, Hidrografi ve Oşinografi Dairesi yayınları ve yerel idarelerin tabloları başlıca kaynaklar arasındadır.\n\nGelgit tabloları iki temel yapıda düzenlenir: (1) Standart limanlar (standard ports): Tam yıllık HW/LW zamanı ve yükseklikleri tablo halinde verilir. (2) İkincil limanlar (secondary/subordinate ports): Standart bir referans limana göre zaman ve yükseklik düzeltme faktörleri verilir; bu faktörler standart limanın tablolarına uygulanarak ikincil liman için hesap yapılır.",
     sections: [
       {
-        title: "Tablo İçeriği",
+        title: "Standart Liman Tablosundan Değer Okuma",
         content:
-          "Tabloda tarih, HW/LW zamanları ve yükseklikleri yer alır. Sekonder limanlar için düzeltmeler yapılır.",
+          "Standart liman tablosunda her satır genellikle şu sütunları içerir: Tarih (ve gün), Zaman (UT), Yükseklik (m, chart datum'a göre). Bir günde tipik olarak 2 HW ve 2 LW değeri bulunur (semidiurnal); diurnal bölgeler için 1 HW ve 1 LW yeterlidir.\n\nOkuma örneği: 15 Temmuz için Tablo → HW 03:22 / 5.6 m ve LW 09:45 / 0.9 m görünüyorsa; bu gün saat 03:22 UT'de su seviyesi chart datum üzerinde 5.6 metre, saat 09:45 UT'de ise 0.9 metre olacaktır. Tidal range = 5.6 − 0.9 = 4.7 metre; bu günün range değeridir. Zaman dilimi: tablolar genellikle UT'dedir; yerel zamana çevirmek için bölgenin UTC offset'i eklenmeli ve yazın DST (yaz saati) dikkate alınmalıdır.",
         image: tideCurrent,
-        imageAlt: "Gelgit tablosu okuma"
+        imageAlt: "Gelgit tablosu örneği ve tablo okuma"
       },
       {
-        title: "Uygulama",
+        title: "İkincil Liman Düzeltmesi",
         content:
-          "Zaman ve yükseklik düzeltmeleri yapılarak hedef liman için doğru değer bulunur.",
+          "Çoğu küçük liman, tidal table yayınlarında doğrudan yer almaz; bunun yerine bir standart referans limana bağlı ikincil liman olarak listelenir. İkincil liman bölümünde şu düzeltmeler verilir: Zaman farkı (Time Differences): HW ve LW için standart limana göre +/− dakika farkı. Yükseklik faktörü (Height Differences veya Factors): bazı yayınlarda fark olarak (metre), bazılarında çarpan olarak (oran) verilir.\n\nUygulama: Standart limanın tablosundan HW zamanı ve yüksekliğini oku → Zaman farkını ekle/çıkar → Yükseklik düzeltmesini uygula → İkincil liman için HW zamanı ve yüksekliğini bul. Aynı işlem LW için tekrar edilir.",
+        formula: {
+          text: "İkincil HW zamanı = Standart HW zamanı + Zaman farkı (HW) | İkincil HW yüksekliği = Standart HW yüksekliği × Faktör (veya + Fark)",
+          description: "Standart ATT yöntemine göre; bazı tablolarda interpolasyon gerekebilir"
+        },
         bulletPoints: [
-          "HW/LW zamanları okunur",
-          "Sekonder liman düzeltmeleri uygulanır",
-          "Saat dilimi kontrol edilir"
+          "Saat dilimi kritik: tablolar UT, yerel zaman UTC offset + DST ile hesaplanır",
+          "Standart liman referansı doğrulanmalı – birkaç standart limana bağlı ikincil limanlar karıştırılabilir",
+          "İkincil liman düzeltmesi bazen interpolasyon gerektirir (spring/neap arasında)",
+          "Her HW ve her LW için ayrı zaman ve yükseklik düzeltmesi uygulanır",
+          "Tidal range düşük (neap) iken küçük bir hata bile UKC üzerinde orantısız etki yapabilir"
         ]
       }
     ],
     keyPoints: [
-      "Gelgit tabloları HW/LW zamanlarını verir.",
-      "Sekonder limanlar için düzeltme gerekir.",
-      "Saat dilimi ve datum kontrol edilir."
+      "Gelgit tabloları standart limanlar için HW/LW zaman ve yüksekliklerini UT cinsinden verir.",
+      "İkincil limanlar için standart limana göre zaman ve yükseklik düzeltmesi uygulanır.",
+      "Tidal range = HW yüksekliği − LW yüksekliği; bu değer height of tide hesaplarının temelidir.",
+      "Saat dilimi ve yazın DST (yaz saati) her zaman kontrol edilmelidir.",
+      "Tablo değerleri astronomi tabanlıdır; meteoroloji etkisini (storm surge) içermez."
     ]
   },
   "Height of tide hesapları": {
     title: "Height of Tide Hesapları",
     introduction:
-      "Height of tide, belirli bir zamanda gelgit yüksekliğini bulma işlemidir. Gelgit tablosu verileri temel alınır.",
+      "Height of Tide (gelgit yüksekliği), belirli bir zamanda ve limanda su seviyesinin chart datum’ın kaç metre üzerinde olduğunu ifade eder. Gelgit tablosundan yalnızca HW ve LW zamanları ve yükseklikleri doğrudan okunabilir; bunlar arasındaki her an için su yüksekliği hesaplanmalıdır.\n\nBu hesap, üç temel yöntemle yapılabilir: (1) 12’ler kuralı (Rule of Twelfths): basit ve hızlı, ancak yaklaşık; (2) Sinüs eğrisi interpolasyonu: daha doğru bir matematiksel yöntem; (3) Admiralty gelgit eğrisi (tidal curve): en doğru yöntem, özellikle karmaşık veya düzensiz gelgit profiline sahip limanlarda kullanılır. Denizcilik sınavlarında genellikle 12’ler kuralı ve gelgit eğrisi yöntemi istenir.",
     sections: [
       {
-        title: "Hesap Yaklaşımı",
+        title: "12’ler Kuralı ile Height of Tide",
         content:
-          "HW ve LW arasındaki zaman diliminde interpolasyon yapılır. 12’ler kuralı pratik bir yöntemdir.",
+          "12’ler kuralı, altı saatlik standart gelgit döngüsü boyunca su yüksekliğinin nasıl değiştiğini oran olarak yaklaşık biçimde ifade eder. Gelgit, ilk saatte Range’in 1/12’si kadar değişir; ikinci saatte 2/12; üçüncü saatte 3/12; dördüncü saatte 3/12; beşinci saatte 2/12; altıncı saatte 1/12. Toplam 12/12 = tam range, yani HW’den LW’ye veya LW’den HW’ye geçiş tamamlanmış olur.\n\nUygulama: Tablo → LW yüksekliği 0.8 m, HW yüksekliği 5.6 m, Range = 4.8 m. LW zamanından 2 saat sonraki height of tide = LW + (1/12 + 2/12) × Range = 0.8 + (3/12 × 4.8) = 0.8 + 1.2 = 2.0 m.",
         image: tideCurrent,
-        imageAlt: "Gelgit yüksekliği hesapları"
+        imageAlt: "12’ler kuralı ile gelgit yüksekliği hesabı",
+        formula: {
+          text: "Birikimli değişim: 1st hr 1/12 | 2nd hr 3/12 | 3rd hr 6/12 | 4th hr 9/12 | 5th hr 11/12 | 6th hr 12/12",
+          description: "Birikimli oranlar: LW’den itibaren hesaplama yapılıyorsa bu oranlar eklenerek height of tide bulunur"
+        }
       },
       {
-        title: "Dikkat Noktaları",
+        title: "Admiralty Tidal Curve Yöntemi",
         content:
-          "Gelgit eğrisi her zaman doğrusal değildir; yerel farklar göz önüne alınmalıdır.",
+          "Admiralty Tide Tables (ATT) Part I’de her standart liman için bir tidal curve (gelgit eğrisi) verilir. Bu eğri, liman özelinde kalibre edilmiştir ve gerçek gelgit profilini 12’ler kuralından çok daha doğru yansıtır. Özellikle kıyı geometrisi nedeniyle düzensiz gelgit döngüsü yaşayan limanlarda tidal curve yöntemi zorunludur.\n\nTidal curve kullanımı adımları: (1) Standart liman tablosundan HW/LW zamanı ve yüksekliği okunur. (2) Range (= HW − LW) hesaplanır. (3) Hesaplanacak andaki HW’ye olan zaman farkı (x ekseni) bulunur. (4) Eğri üzerinden bu zaman farkına karşılık gelen interpolasyon faktörü (F) okunur. (5) Height of tide = LW + F × Range formülüyle hesaplanır.",
         bulletPoints: [
-          "Interpolasyon gerekir",
-          "12’ler kuralı pratik yaklaşım sağlar",
-          "Yerel şartlar dikkate alınır"
+          "12’ler kuralı 6 saatlik standart gelgit için yaklaşıktır; yavaş veya hızlı gelgitlerde hata artar",
+          "Tidal curve yöntemi her liman için kalibre edilmiştir – daha doğru",
+          "Range değeri spring/neap için farklıdır; tabloda hangi tarih için hesap yapıldığı belirtilmeli",
+          "ATT Part I: standart limanlar için tidal curve grafiği içerir",
+          "Height of tide hesabı doğrudan UKC ve tidal window hesabına girer"
         ]
       }
     ],
     keyPoints: [
-      "Gelgit yüksekliği interpolasyonla bulunur.",
-      "12’ler kuralı yaygın pratik yöntemdir.",
-      "Yerel özellikler sonucu etkiler."
+      "12’ler kuralı: her saatte 1, 2, 3, 3, 2, 1 oranında yükseklik değişimi (toplam 12/12 = tam range).",
+      "Tidal curve yöntemi daha doğru; her standart liman için ATT Part I’de verilir.",
+      "Height of tide = LW + F × Range; F, tidal curve’den veya 12’ler kuralından elde edilir.",
+      "Hesaplanan height of tide doğrudan harita derinliğine eklenerek gerçek derinlik bulunur.",
+      "Karmaşık veya düzensiz gelgit profiline sahip limanlarda tidal curve zorunludur."
     ]
   },
-  "12'ler kuralı": {
-    title: "12'ler Kuralı",
+  "12’ler kuralı": {
+    title: "12’ler Kuralı (Rule of Twelfths)",
     introduction:
-      "12’ler kuralı, HW ile LW arasındaki gelgit yüksekliğinin zamana göre yaklaşık dağılımını verir.",
+      "12’ler kuralı, LW’den HW’ye veya HW’den LW’ye geçen altı saatlik standart gelgit döngüsünde her saatte gerçekleşen su yüksekliği değişiminin toplam range’e oranını yaklaşık olarak veren pratik bir mnemonikal kuraldır. Kuralın temel dayanağı, gelgit eğrisinin sinüs formuna yakın olduğu ve bu nedenle gelgitin ortasında en hızlı, uçlarda (HW ve LW civarında) en yavaş değiştiğidir.\n\nKural: toplam range (HW − LW) 12 eşit parçaya bölünür. Her saatte gerçekleşen değişim sırasıyla 1/12, 2/12, 3/12, 3/12, 2/12, 1/12 oranlarındadır. Bu oranların toplamı 12/12 = 1 (tam range) eder. Yöntem özellikle hızlı ve görsel hesap için son derece pratiktir; not defterine çizmek veya zihinsel hesap yapmak mümkündür.",
     sections: [
       {
-        title: "Kuralın Mantığı",
+        title: "12’ler Kuralının Adım Adım Uygulaması",
         content:
-          "6 saatlik gelgit süresi 6 eşit parçaya ayrılır ve yükseklik değişimi 1-2-3-3-2-1 oranında paylaştırılır.",
+          "Adım 1: Tablondan LW ve HW zamanları ile yüksekliklerini oku. Adım 2: Range = HW − LW hesapla. Adım 3: Range’i 12’ye böl → 1 birim değeri bul. Adım 4: Hedef zamanın LW (veya HW) üzerinden kaçıncı saat olduğunu belirle. Adım 5: Birikimli oranı uygula: 1. saat +1/12; 2. saat kümülatif +3/12; 3. saat kümülatif +6/12; 4. saat kümülatif +9/12; 5. saat kümülatif +11/12; 6. saat kümülatif +12/12.\n\nÖrnek: LW = 0.6 m, HW = 5.4 m, Range = 4.8 m. LW’den 3 saat sonraki height of tide = 0.6 + (6/12 × 4.8) = 0.6 + 2.4 = 3.0 m. LW’den 4 saat sonraki height of tide = 0.6 + (9/12 × 4.8) = 0.6 + 3.6 = 4.2 m.",
         image: tideCurrent,
-        imageAlt: "12'ler kuralı"
+        imageAlt: "12’ler kuralı: 1-2-3-3-2-1 oranları ve örnek hesap",
+        formula: {
+          text: "Kümülatif: 1h → 1/12 | 2h → 3/12 | 3h → 6/12 | 4h → 9/12 | 5h → 11/12 | 6h → 12/12",
+          description: "Height of tide = LW yüksekliği + (Kümülatif oran × Range)"
+        }
       },
       {
-        title: "Kullanım",
+        title: "Kural Sınırları ve Ne Zaman Tidal Curve Kullanılmalı",
         content:
-          "Hızlı ve pratik hesap için kullanılır; hassas sonuç gerektiren durumlarda tablo eğrisi tercih edilir.",
+          "12’ler kuralı şu varsayımları gerektirir: (1) gelgit döngüsü tam altı saattir; (2) HW ve LW arasındaki geçiş simetrik sinüs formuna uyar. Bu koşullar sağlandığında kural makul bir yaklaşım verir; ancak birçok limanda bu koşullar sağlanmaz.\n\nKuralın yetersiz kaldığı durumlar: (a) Gelgit periyodu altı saatten farklı: bazı bölgelerde HW–LW aralığı 5 saat veya 7–8 saattir; kuralın 6 saatlik oranları bu limanlarda hatalı sonuç verir. (b) Asimetrik gelgit profili: bazı limanlarda yükselen gelgit hızlı, alçalan gelgit yavaş (veya tersi) olabilir; 12’ler kuralı bu asimetriyi yakalayamaz. (c) Kritik UKC hesabı: dar emniyet marjı olan hesaplarda 12’ler kuralı yeterli değildir; tidal curve kullanılmalıdır.",
         bulletPoints: [
-          "1/12, 2/12, 3/12, 3/12, 2/12, 1/12",
-          "Yaklaşık sonuç verir",
-          "Hızlı hesap için uygundur"
+          "12’ler kuralı 1–2–3–3–2–1: kümülatif olarak 1/12, 3/12, 6/12, 9/12, 11/12, 12/12",
+          "Gelgit ortasında (3. saat) en hızlı değişim; HW ve LW yakınında en yavaş",
+          "Pratik avantaj: kağıt, hesap makinesi olmadan zihinsel hesap mümkün",
+          "6 saatlik simetrik döngü varsayımı: farklı limanlarda periyot değişir",
+          "Kritik UKC hesabında tidal curve yöntemi tercih edilmeli"
         ]
       }
     ],
     keyPoints: [
-      "Gelgit yüksekliği 1-2-3-3-2-1 oranında değişir.",
-      "Pratik ve hızlı bir yöntemdir.",
-      "Hassasiyet gerektiğinde ek doğrulama yapılır."
+      "12’ler kuralı: gelgit her saatte 1, 2, 3, 3, 2, 1 oranında (range’in 1/12’si cinsinden) değişir.",
+      "Kümülatif oranlar: 1/12, 3/12, 6/12, 9/12, 11/12, 12/12 → LW’den HW’ye geçişi gösterir.",
+      "Height of tide = LW yüksekliği + (Kümülatif oran × Range).",
+      "Altı saatten farklı periyotlu veya asimetrik gelgit profilinde kural hatalı sonuç verir.",
+      "Kritik UKC ve tidal window hesaplarında tidal curve yöntemi kullanılmalıdır."
     ]
   },
   "İnterpolasyon": {
-    title: "İnterpolasyon",
+    title: "İnterpolasyon – Gelgit Hesaplarında Ara Değer Bulma",
     introduction:
-      "İnterpolasyon, iki bilinen değer arasındaki ara değeri hesaplama yöntemidir. Gelgit hesaplarında sık kullanılır.",
+      "İnterpolasyon (interpolation), iki bilinen değer arasında kalan bir ara değeri, bu iki değer arasındaki ilişkiyi modelleyerek tahmin etme yöntemidir. Gelgit hesaplarında interpolasyon iki farklı bağlamda kullanılır: (1) Zaman interpolasyonu: HW veya LW'nin tam olarak tablodaki saat başlarına denk gelmediği durumlarda geçiş zamanı hesabı. (2) İkincil liman yükseklik interpolasyonu: ikincil liman düzeltme faktörlerinin spring ve neap değerleri arasında interpolasyonla bulunması.",
     sections: [
       {
-        title: "Lineer Yaklaşım",
+        title: "Lineer İnterpolasyon Prensibi",
         content:
-          "Basit uygulamalarda lineer interpolasyon yeterlidir. Zaman ve yükseklik düzeltmeleri bu şekilde yapılır.",
+          "Lineer interpolasyon, iki bilinen nokta arasındaki değişimin doğrusal (orantılı) olduğunu varsayar. Formül:\n\ny = y₁ + (x − x₁) / (x₂ − x₁) × (y₂ − y₁)\n\nBurada x₁, x₂ bilinen zaman veya parametre değerleri; y₁, y₂ bu değerlere karşılık gelen gelgit yükseklikleri veya düzeltme faktörleridir. x, hesaplanmak istenen andaki değerdir.\n\nGelgit hesabında doğrudan uygulama: Bir ikincil limanın spring ve neap için zaman düzeltmeleri farklı tablolarda veriliyorsa (örneğin spring için +20 dak, neap için +35 dak) ve o gün spring-neap arası bir dönem yaşanıyorsa, günün HW yüksekliği oransal olarak bir düzeltme değerine interpolasyon yapılır.",
         image: tideCurrent,
-        imageAlt: "Gelgit interpolasyonu"
+        imageAlt: "Lineer interpolasyon ve gelgit düzeltmesi",
+        formula: {
+          text: "y = y₁ + [(x − x₁) / (x₂ − x₁)] × (y₂ − y₁)",
+          description: "Lineer interpolasyon formülü: x₁,y₁ ve x₂,y₂ bilinen noktalar; x istenen değer; y bulunan sonuç"
+        }
       },
       {
-        title: "Uygulama Notu",
+        title: "Gelgit Hesaplarında İnterpolasyon Örnekleri",
         content:
-          "Gelgit eğrisi doğrusal olmadığından, kural ve tablolarla çapraz kontrol yapılmalıdır.",
+          "ATT ikincil liman tablosundaki interpolasyon: Standart limanda spring HW yüksekliği 6.0 m için düzeltme +0.3 m; neap HW yüksekliği 3.5 m için düzeltme −0.1 m. O gün standart limanda HW = 5.0 m ise:  Düzeltme = +0.3 + [(5.0 − 6.0) / (3.5 − 6.0)] × (−0.1 − 0.3) = +0.3 + [0.4] × (−0.4) = +0.3 − 0.16 = +0.14 m (yaklaşık +0.1 m). Bu ikincil liman için uygulanacak yükseklik düzeltmesidir.\n\nZaman interpolasyonu: Standart limanda tablodan HW zamanı 14:30 UT; zaman dilimi +3 (Türkiye), yaz saati +1 = yerel saat 14:30 + 4 = 18:30. Bu hesap lineer olmakla birlikte yaz/kış saati geçiş tarihlerine dikkat edilmeli; tablo datumunun hangi yılı kapsadığı doğrulanmalıdır.",
         bulletPoints: [
-          "Lineer yaklaşım pratik sağlar",
-          "Gelgit eğrisi doğrusal değildir",
-          "Hassasiyet için kontrol yapılır"
+          "Lineer interpolasyon iki bilinen değer arasında orantılı hesap sağlar",
+          "ATT ikincil liman düzeltmeleri spring/neap için iki ayrı değer içerir – interpolasyon gerekir",
+          "Gelgit profili doğrusal değildir; interpolasyon yalnızca yaklaşık sonuç verir",
+          "Tidal curve üzerinde interpolasyon, tidal curve grafiğinden oran okuyarak yapılır",
+          "Kesin sınır değerleri gerektiren hesaplarda (UKC, tidal window) interpolasyon sonucu bir emniyetli marjla desteklenmeli"
         ]
       }
     ],
     keyPoints: [
-      "Interpolasyon ara değer bulma yöntemidir.",
-      "Gelgit hesaplarında yaygın kullanılır.",
-      "Çapraz kontrol önerilir."
+      "Lineer interpolasyon: y = y₁ + [(x−x₁)/(x₂−x₁)] × (y₂−y₁).",
+      "ATT ikincil liman tablolarında spring ve neap düzeltme değerleri arasında interpolasyon yapılır.",
+      "Gelgit profili sinüsoidal; lineer interpolasyon yaklaşıktır – kritik hesaplarda tidal curve tercih edilmeli.",
+      "Zaman interpolasyonunda saat dilimi ve yaz saati dönüşümü dikkatli yapılmalıdır.",
+      "Güvenlik gerektiren hesaplarda interpolasyon sonucuna emniyetli marj eklenmesi önerilir."
     ]
   },
   "Tidal stream": {
-    title: "Tidal Stream",
+    title: "Tidal Stream – Gelgit Akıntısı",
     introduction:
-      "Tidal stream, gelgitin oluşturduğu akıntıdır. Zamanla yön ve hız değiştirir.",
+      "Tidal stream (gelgit akıntısı), denizlerdeki periyodik su yüksekliği değişiminin (gelgitin) neden olduğu yatay su hareketidir. Gelgit hareketi yukarı-aşağı olduğu halde, bu hareket kıyı geometrisi ve havza şekli nedeniyle yatay akıntılara dönüşür. Gelgit akan su, set (akıntı yönü) ve drift (akıntı hızı, knot cinsinden) parametreleriyle tanımlanır.\n\nTidal stream, nehir akıntısı veya okyanus sirkülasyonu gibi kalıcı akıntılardan farklı olarak periyodik ve yön değiştiricidir. Bir gelgit döngüsünde akıntı hem hız hem de yön bakımından değişir: alçalan gelgit sırasında bir yönde akarken, HW slack water (durgun su) döneminin ardından yükselen gelgitle birlikte ters yönde akmaya başlar. Bu periyodik karakteri, tidal stream'i tahmin edilebilir kılmaktadır; tidal atlas ve akıntı tabloları, her konumdaki akıntıyı saat bazında önceden gösterir.",
     sections: [
       {
-        title: "Akıntı Bilgisi",
+        title: "Tidal Atlas ve Akıntı Tablolarının Kullanımı",
         content:
-          "Akıntı tablosu veya akıntı atlasları kullanılarak set ve drift belirlenir.",
+          "Tidal atlas (akıntı atlası), bir deniz bölgesindeki tidal stream'i her saat için ok işaretleri ve sayısal değerlerle gösteren seri haritalar topluluğudur. Admiralty Tidal Atlas'larda her sayfa, HW'den belirli saat önce veya sonraki akıntı durumunu gösterir: HW−6, HW−5, ..., HW−0, HW+1, ..., HW+6. Okların yönü set'i, yanındaki sayılar neap/spring hızlarını (genellikle 0.x/0.y knot biçiminde) verir.\n\nAkıntı tabloları (tidal stream tables), belirli referans noktaları için saat bazında set ve drift değerlerini liste halinde sunar. Tidal atlas'a kıyasla belirli bir noktaya özgü daha detaylı bilgi sağlar; ancak atlasın görseLliği seyir planlamasında bütüncül bir bakış açısı sunar.",
         image: tideCurrent,
-        imageAlt: "Tidal stream akıntısı"
+        imageAlt: "Tidal atlas örneği ve akıntı yönü işaretleri"
       },
       {
-        title: "Seyirde Etki",
+        title: "Slack Water ve Akıntı Geçişi",
         content:
-          "Akıntı, COG ve SOG değerlerini değiştirir; rota düzeltmesi gerektirir.",
+          "Tidal stream'in yön değiştirmesi anında akıntı hızı sıfıra yaklaşır; bu dönem slack water (durgun su) olarak adlandırılır. Slack water, dar kanallarda ve boğazlarda manevra için en uygun zamandır; çünkü akıntı kuvveti minimumdur ve gemi üzerindeki yan kuvvet azalmıştır.\n\nSlack water zamanı, HW veya LW zamanından farklıdır; aradaki fark konuma ve coğrafyaya göre değişir. Bazı dar kanallarda slack water, HW'den 2–3 saat sonra oluşabilir. Bu nedenle tidal stream geçiş zamanı, yalnızca gelgit tablosundan değil, tidal atlas veya akıntı tablolarından belirlenmelidir. Boğaz geçişini slack water'a planlamak, manevra emniyetini önemli ölçüde artırır.",
         bulletPoints: [
-          "Zamana bağlı yön değişimi",
-          "Set ve drift belirlenir",
-          "Rota düzeltmesi yapılır"
+          "Tidal stream: periyodik, yön değiştiren gelgit kaynaklı akıntı",
+          "Set = akıntı yönü (True); Drift = akıntı hızı (knot)",
+          "Slack water: akıntı geçişinde hız sıfıra iner – dar kanal geçişi için en uygun zaman",
+          "Slack water zamanı HW/LW zamanından farklı olabilir; tidal atlas'tan belirlenmeli",
+          "Spring'de tidal stream hızı neap'e kıyasla yaklaşık 1.5–2 kat daha yüksek olabilir"
         ]
       }
     ],
     keyPoints: [
-      "Tidal stream gelgit kaynaklı akıntıdır.",
-      "Set ve drift ile ifade edilir.",
-      "Rota düzeltmesi gerektirir."
+      "Tidal stream, gelgit hareketinin neden olduğu yatay su akıntısıdır; set ve drift ile ifade edilir.",
+      "Tidal atlas: HW'ye göre saat başı akıntı yönü ve hızını harita üzerinde gösterir.",
+      "Slack water: yön geçişinde akıntı hızı sıfıra iner – dar kanal geçişleri için idealdir.",
+      "Slack water zamanı gelgit zamanından farklı olabilir; atlasla belirlenmeli.",
+      "Spring'de tidal stream neap'e kıyasla belirgin biçimde güçlenir."
     ]
   },
   "Set – drift": {
-    title: "Set – Drift",
+    title: "Set ve Drift",
     introduction:
-      "Set, akıntının yönünü; drift ise akıntının hızını ifade eder. Seyirde vektörel düzeltme yapılır.",
+      "Set ve drift, herhangi bir akıntının (gelgit, okyanus sirkülasyonu veya rüzgâr kaynaklı yüzey sürükleme) denizcilik açısından tanımlanmasında kullanılan iki temel parametredir. Set, akıntının hareket ettiği yönü (gerçek kuzeyden saat yönünde derece cinsinden, akıntının gittiği yön); Drift ise akıntının hızını (deniz mili/saat – knot cinsinden) ifade eder.\n\nBu tanımlama, rüzgâr yönünden farklıdır: rüzgâr geldiği yönden tarif edilirken (örn. kuzeybatı rüzgârı kuzey batıdan gelir), akıntı gittiği yönden tarif edilir (örn. set 090° akıntı doğuya doğru akmaktadır). Bu fark, özellikle akıntı ve rüzgâr etkilerini aynı hesap içinde yorumlarken kritik önem taşır.",
     sections: [
       {
-        title: "Tanım",
+        title: "Set ve Drift'in Vektörel Kullanımı",
         content:
-          "Set gerçek kuzeye göre yön, drift ise deniz mili/saat cinsinden hızdır.",
+          "Seyir hesaplarında set ve drift, gemi hız vektörüne (STW ve heading) eklenerek gerçek zemin hareketi (COG ve SOG) elde edilir. Bu vektör toplamı, üç farklı bileşeni kapsar: gemi hız vektörü (heading ve STW), akıntı vektörü (set ve drift), ve sonuç vektörü (COG ve SOG).\n\nÖrnek: Gemi heading 270° (gerçek), STW 12 knot. Akıntı set 180° (güneye gidiyor), drift 2 knot. Vektörel toplam: batıya giden gemi aynı zamanda 2 knot güneye sürükleniyor; COG yaklaşık 264° ve SOG yaklaşık 12.2 knot olur. Bu hesap grafiksel olarak vektör üçgeni çizilerek ya da trigonometrik bileşen yöntemiyle analitik olarak yapılabilir.",
         image: tideCurrent,
-        imageAlt: "Set ve drift"
+        imageAlt: "Set, drift ve vektör üçgeni",
+        formula: {
+          text: "SOG² = STW² + Drift² + 2×STW×Drift×cos(Set − Heading) | COG trigonometrik hesap",
+          description: "Vektör toplamı: gemi hız vektörü + akıntı vektörü = COG/SOG vektörü"
+        }
       },
       {
-        title: "Uygulama",
+        title: "Gözlemsel Set ve Drift Tespiti",
         content:
-          "Set ve drift, rota vektörüyle birleştirilerek gerçek iz (COG) bulunur.",
+          "Uygulamada set ve drift iki şekilde belirlenir: (1) Kaynaklardan (tidal atlas, akıntı tabloları, pilot books): bölgenin akıntısı önceden bilinir ve seyir planına dahil edilir. (2) Gözlem: belirli bir süre boyunca GPS COG/SOG ile gyro heading ve log STW değerleri karşılaştırılır; fark, fiili set ve drift'i verir.\n\nGözlemsel yöntem: Gemi belli bir süre sabit heading ve STW ile seyretsin; GPS SOG ve COG değerleri ölçülsün. Set = COG − intended COG (akıntı olmadan elde edilmesi beklenen rota); bu fark vektörünün yönü set'i, büyüklüğü drift'i yaklaşık olarak verir. Bu yöntem, gerçek fiili akıntı koşullarını ölçer ve mevcut tahminlerle karşılaştırma fırsatı sunar.",
         bulletPoints: [
-          "Set = yön",
-          "Drift = hız",
-          "Vektör toplaması yapılır"
+          "Set: akıntının gittiği yön (True kuzeyden derece); Drift: akıntı hızı (knot)",
+          "Akıntı yön tanımı rüzgârın tersidir: geldiği değil, gittiği yön",
+          "COG/SOG = heading/STW + set/drift vektörel toplamı",
+          "Gözlemsel set-drift: GPS COG/SOG ile gyro/log karşılaştırmasından elde edilir",
+          "Seyir planlamasında akıntı etkisi ETA ve yakıt hesabına dahil edilmeli"
         ]
       }
     ],
     keyPoints: [
-      "Set yönü, drift hızı ifade eder.",
-      "Rota düzeltmesi için birlikte kullanılır.",
-      "Vektörel hesap esastır."
+      "Set = akıntının gittiği yön (gerçek kuzeyden derece); Drift = akıntı hızı (knot).",
+      "Akıntı gittiği yönden tarif edilir; rüzgâr geldiği yönden tarif edilir – bu fark kritik.",
+      "COG/SOG, heading/STW ve set/drift vektörlerinin toplamıdır.",
+      "Gözlemsel set-drift: GPS COG/SOG ile gyro heading/log STW karşılaştırmasından elde edilir.",
+      "Set ve drift, ETA hesabına ve yakıt planlamasına dahil edilmelidir."
     ]
   },
   "UKC + gelgit hesapları": {
-    title: "UKC + Gelgit Hesapları",
+    title: "UKC ve Gelgit Hesapları",
     introduction:
-      "UKC (Under Keel Clearance), gemi omurgası ile deniz tabanı arasındaki emniyetli mesafedir. Gelgit, UKC hesaplarında doğrudan etkilidir.",
+      "UKC (Under Keel Clearance – Omurga Altı Mesafesi), geminin omurgası ile deniz tabanı arasında kalan su sütununun yüksekliğidir. Bu değer sıfıra ulaşırsa gemi karaya oturur; bu nedenle UKC, seyir emniyetinin en temel kritik göstergelerinden biridir. Herhangi bir andaki gerçek UKC, harita derinliği, gelgit yüksekliği, gemi draftı, squat ve hava kabarması payı (swell allowance) gibi birden fazla faktörün bileşimidir.\n\nUKC hesabı, özellikle liman girişlerinde, dar kanallarda ve sığ sularda kritik önem taşır. Çoğu şirket, ISM Kodu kapsamında minimum UKC politikası belirler; bu politika genellikle açık denizde draftın %10–15’i ve limanlarda 0.5–1.0 metre gibi sabit değerler biçiminde ifade edilir. Bu limitlerin altına inmek güvensiz olarak kabul edilir.",
     sections: [
       {
-        title: "Hesap Yaklaşımı",
+        title: "UKC Hesabının Bileşenleri",
         content:
-          "Harita derinliği, gelgit yüksekliği ve gemi draftı birlikte değerlendirilir.",
+          "Bir UKC hesabının tam doğruluğu için şu bileşenler göz önüne alınmalıdır:\n\n(1) Harita derinliği (chart sounding): datum’a göre haritadaki değer.\n(2) Gelgit yüksekliği (height of tide): hesaplama anında suyun datumdan yüksekliği.\n(3) Gemi draftı: genellikle orta kesitteki maksimum; trim düzeltmesi gerekebilir.\n(4) Squat: hızdan kaynaklanan dinamik batma – ilerleyen bölümde ayrıntılı ele alınır.\n(5) Hava kabarması (wave allowance veya swell allowance): özellikle açık denizde swell etkisiyle gemi hareket eder; bu hareket anlık draftı artırır.\n(6) Balast ve akıntı değişkeni: transit sırasında balast veya yakıt tüketimi draftı değiştirebilir.",
         image: safetyEquipment,
-        imageAlt: "UKC ve gelgit"
+        imageAlt: "UKC bileşenleri: harita derinliği, gelgit, draft ve squat",
+        formula: {
+          text: "UKC = (Harita derinliği + Gelgit yüksekliği) − (Draft + Squat + Hava kabarması payı)",
+          description: "Tüm değerler metre cinsinden; sonuç ≥ minimum UKC politikası olmalıdır"
+        }
       },
       {
-        title: "Emniyet",
+        title: "Tidal Window Hesabı ve Uygulama",
         content:
-          "Minimum UKC limitleri şirket prosedürlerine göre belirlenir.",
+          "Tidal window (gelgit penceresi), bir limana giriş veya çıkış için gereken minimum su derinliğinin sağlandığı zaman aralığıdır. Hesap şu adımları içerir: (1) Minimum gereken su derinliği = Draft + Squat + Hava payı + Minimum UKC. (2) Bu derinliği sağlayan gelgit yüksekliği = Minimum gereken su derinliği − Harita derinliği. (3) Tidal table ve 12’ler kuralı veya tidal curve kullanılarak bu gelgit yüksekliğine ne zaman ulaşıldığı ve ne kadar süre o seviyenin üzerinde kalındığı hesaplanır.\n\nÖrnek: Kanal derinliği 9.0 m (haritadan), Gemi draftı 8.2 m, Squat 0.3 m, Minimum UKC 0.5 m, Hava payı 0.3 m. Minimum su = 8.2 + 0.3 + 0.5 + 0.3 = 9.3 m. Gereken minimum gelgit yüksekliği = 9.3 − 9.0 = 0.3 m. Tidal table’dan bu değerin ne zaman ve ne kadar süre aşıldığı hesaplanır – işte bu süre tidal window’dur.",
         bulletPoints: [
-          "Derinlik + gelgit yüksekliği",
-          "Draft ve squat dikkate alınır",
-          "Minimum UKC şartı kontrol edilir"
+          "UKC = (Harita derinliği + Height of Tide) − (Draft + Squat + Hava payı)",
+          "Squat: hızla artar – dar kanallarda hız azaltma UKC’yi korur",
+          "Tidal window: minimum gereken su derinliğinin sağlandığı zaman aralığı",
+          "Spring’de tidal window neap’e göre genellikle daha uzundur",
+          "UKC hesabında tidal table ve 12’ler kuralı/tidal curve birlikte kullanılır"
         ]
       }
     ],
     keyPoints: [
-      "UKC, emniyetli seyir için temel kriterdir.",
-      "Gelgit yüksekliği UKC’yi artırabilir.",
-      "Squat etkisi dikkate alınmalıdır."
+      "UKC = (Harita derinliği + Gelgit yüksekliği) − (Draft + Squat + Hava payı).",
+      "Minimum UKC şirket politikası ve yerel liman kurallarınca belirlenir; bu limitin altına inilmez.",
+      "Tidal window: minimum UKC’yi karşılayan gelgit yüksekliğinin sağlandığı zaman aralığı.",
+      "Squat, draft üzerine eklenmeli; hız azaltma squat’ı ve dolayısıyla UKC riskini azaltır.",
+      "Spring tidal window neap’e göre genişler; büyük draftlı gemiler için spring geçişi planlanmalıdır."
     ]
   },
   "Tidal window (liman giriş zamanı)": {
-    title: "Tidal Window (Liman Giriş Zamanı)",
+    title: "Tidal Window – Liman Giriş ve Çıkış Zamanı",
     introduction:
-      "Tidal window, geminin limana güvenli şekilde giriş/çıkış yapabileceği gelgit zaman aralığıdır.",
+      "Tidal window (gelgit penceresi), bir geminin belirli draft değeriyle bir limana veya kanala güvenli biçimde giriş ya da çıkış yapabilmesi için yeterli su derinliğinin mevcut olduğu zaman aralığıdır. Özellikle sığ barlar (bar), kanal girişleri ve gelgitin belirleyici olduğu limanlarda tidal window, tüm operasyonel takvimin merkezini oluşturur.\n\nTidal window hesabı, UKC hesabının doğal devamıdır: minimum UKC koşulunu sağlayan gelgit yüksekliği bulunur ve bu yüksekliğin ne zaman aşıldığı, ne kadar süreyle aşıldığı ve ne zaman yeniden altına düştüğü belirlenir. Bu süre tidal window’dur; giriş/çıkış operasyonu bu pencere içinde tamamlanmalıdır.",
     sections: [
       {
-        title: "Planlama",
+        title: "Tidal Window Hesabı: Adım Adım",
         content:
-          "Draft ve UKC gereksinimleri dikkate alınarak uygun zaman aralığı belirlenir.",
+          "Adım 1: Minimum su derinliği (MSD) hesapla. MSD = Draft + Squat + Hava payı + Min. UKC. Adım 2: Gereken minimum gelgit yüksekliği (MHoT) bul. MHoT = MSD − Chart derinliği. Adım 3: Tidal table’dan o gün için HW/LW zamanları ve yüksekliklerini oku. Adım 4: 12’ler kuralı veya tidal curve kullanarak MHoT’nin kaçıncı saatte aşıldığını ve kaçıncı saatte yeniden bu değerin altına düştüğünü hesapla. Bu iki zaman arasındaki süre tidal window’dur.\n\nÖrnek: Kanal sounding 8.0 m, Draft 7.5 m, Squat 0.2 m, Min. UKC 0.5 m, Hava payı 0.2 m. MSD = 8.4 m. MHoT = 8.4 − 8.0 = 0.4 m. Bugün LW = 0.2 m, HW = 5.2 m, gelgit period ≈ 6 saat. LW’den başlayarak 12’ler kuralıyla MHoT = 0.4 m ne zaman aşılıyor? LW + 0.4 m = 1. saatin hemen başında. HW’den sonra aynı değere ne zaman dönüyor? Simetriden ≈ LW+5 saat. Tidal window ≈ 5 saatlik bir aralıktır.",
         image: tideCurrent,
-        imageAlt: "Tidal window planlaması"
+        imageAlt: "Tidal window hesabı: gelgit eğrisi ve giriş zamanı",
+        formula: {
+          text: "MHoT = MSD − Chart sounding = (Draft + Squat + Hava payı + Min.UKC) − Chart sounding",
+          description: "MHoT = tidal window’u açan minimum gelgit yüksekliği"
+        }
       },
       {
-        title: "Operasyonel Etki",
+        title: "Operasyonel Planlama ve Emniyet Payları",
         content:
-          "Liman planlaması, römorkör ve pilot organizasyonu tidal window’a göre yapılır.",
+          "Tidal window belirlendikten sonra liman ajanına, pilota, römorköre ve güvertede liman operasyonuna hazırlık için yeterli süre bırakılmalıdır. Gerçekçi bir tidal window planı şu payları içerir: (1) Erken giriş payı: window açılısından hemen sonra girmek yerine, 30–60 dakika ilave beklemek UKC marjını artırır. (2) İşletme payı: transit sırasında beklenmedik hız kayıpları, trafik gecikmesi veya pilot koordinasyon süresi hesaba katılmalıdır. (3) Emniyet payı: gelgit tahmini meteoroloji etkisini içermez; fırtına gelgiti (storm surge) veya alçak basınç, beklenen su seviyesini 0.5–1.0 metre düşürebilir. Bu nedenle kritik geçişlerde meteoroloji tabanlı su seviyesi tahmini de kullanılmalıdır.",
         bulletPoints: [
-          "UKC limitleri hesaplanır",
-          "Gelgit tablosu kullanılır",
-          "Operasyonlar zamanlanır"
+          "Tidal window: MHoT’nin sağlandığı zaman aralığı – hesaptan önce MSD ve MHoT belirlenmeli",
+          "Spring’de tidal window genişler, neap’te daralır – giriş tarihi spring dönemi için planlanmalı",
+          "Tidal window’un ortası, maksimum UKC’nin sağlandığı andır – en güvenli giriş zamanı",
+          "Meteorolojik storm surge, tidal window’u daraltabilir – sadece gelgit tablolarına güvenilmemeli",
+          "Pilot, römorkör ve operasyon hazırlığı tidal window içinde tamamlanabilecek şekilde planlanmalı"
         ]
       }
     ],
     keyPoints: [
-      "Tidal window, giriş/çıkış için uygun zaman aralığıdır.",
-      "Draft ve UKC hesaplarına göre belirlenir.",
-      "Operasyon planlaması için kritiktir."
+      "Tidal window: minimum UKC koşulunu karşılayan gelgit yüksekliğinin sağlandığı zaman aralığı.",
+      "MHoT = (Draft + Squat + Hava payı + Min.UKC) − Harita derinliği.",
+      "Window’un ortası maksimum UKC’ye karşılık gelir – en güvenli giriş anıdır.",
+      "Storm surge ve meteoroloji etkisi tidal window hesabını değiştirebilir; sadece astronomi tablolarına güvenilmemeli.",
+      "Spring döneminde tidal window genellikle neap’e göre daha uzundur."
     ]
   },
   "Rüzgârın gemiye etkisi": {
     title: "Rüzgârın Gemiye Etkisi",
     introduction:
-      "Rüzgâr, gemi üzerinde sürükleme ve yan kuvvet oluşturarak rota ve hız üzerinde etki yaratır.",
+      "Rüzgâr, gemi üzerinde iki temel hidrodinamik etki yaratır: sürükleme kuvveti (drag force) ve kaldırma/itme kuvveti (lift force). Bu iki kuvvetin bileşimi, geminin denizde tuttuğu rotayı, hızını ve manevra kabiliyetini etkiler. Rüzgâr etkisi hem açık deniz seyir planlamasında hem de limanlarda manevralar sırasında kritik değişken olarak ele alınmalıdır.\n\nRüzgârın gemiye etkisi, geminin fribord yüksekliğine (suyun üzerindeki yan yüzey alanı), üst yapı şekline ve yükleme durumuna bağlıdır. Boş gemi (ballast) koşulunda fribord yüksek olduğundan rüzgâr etkisi çok daha belirgindir; yüklü gemide su hattı yüksek, fribord düşük olduğundan rüzgâr etkisi görece azalır.",
     sections: [
       {
-        title: "Ana Etkiler",
+        title: "Rüzgârın Yarattığı Kuvvetler: Leeway ve Hız Etkisi",
         content:
-          "Yan rüzgâr leeway oluşturur; baş rüzgâr hız kaybına neden olabilir.",
+          "Yan rüzgâr (beam wind): geminin baş-kıç eksenine dik açıyla esen rüzgâr, gemi üzerinde rüzgâr altına doğru bir yan kuvvet oluşturur. Bu kuvvet geminin rüzgâr altına doğru kaymasına – leeway (rüzgâr kayması) – neden olur. Gemi heading yönünde ilerlese de gerçek iz (COG) leeway açısı kadar rüzgâr altına saptırılır.\n\nBaş rüzgâr (head wind): gemiye doğrudan pruva yönünden esen rüzgâr, ilerleyişe karşı direnç (drag) yaratır ve hızı düşürür. Bu hız düşüşü SOG'u azaltır ve ETA'yı olumsuz etkiler. Yakıt tüketimi aynı makine gücünde artabilir ya da aynı hızı korumak için daha yüksek makine gücü gerekebilir.\n\nKıç rüzgâr (following wind): geminin arkasından esen rüzgâr ilerleyişe katkı sağlar ve SOG'u artırır; ancak dalga ve rüzgâr aynı yönden geliyorsa broaching (kıç alabanda tehlikesi) riski oluşabilir.",
         image: yonWindDrift,
-        imageAlt: "Rüzgâr etkisi"
+        imageAlt: "Rüzgâr kuvvetleri ve leeway etkisi"
       },
       {
-        title: "Seyir Düzeltmesi",
+        title: "Liman Manevralarında Rüzgâr Etkisi",
         content:
-          "Rüzgâr etkisi, rota ve hız planında düzeltme gerektirir.",
+          "Açık deniz seyri ile liman manevrası arasındaki en belirgin fark, liman manevralarında rüzgârın anlık ve büyük ölçekli etkilerinin çok daha kısa sürede hissedilmesidir. Boş geminin yüksek friborduna güçlü yan rüzgâr etki ettiğinde gemi yan rüzgâr altına doğru hızla sürüklenebilir; bu durum, iskelede veya demirleme manevrasında ciddi kontrol güçlüğü yaratır.\n\nOperasyonel değerlendirme: liman manevrası öncesinde hangi tarafın rüzgâra karşı olacağı belirlenir; rüzgâr etkisine göre römorkör pozisyonları ve güç gereksinimleri planlanır. İskele bağlama işlemlerinde rüzgâr durumu, baş ve kıç rıhtım halatlarının gergiliğini etkilediğinden uygun halatlar sabitlenmeli ve gevşetilmemelidir.",
         bulletPoints: [
-          "Yan rüzgâr leeway üretir",
-          "Baş rüzgâr hız düşürür",
-          "COG ve ETA etkilenir"
+          "Yan rüzgâr leeway üretir – COG, heading'den rüzgâr altına sapar",
+          "Baş rüzgâr hız kaybı ve yakıt tüketim artışına yol açar",
+          "Kıç rüzgâr SOG artışı sağlar; ancak broaching riski izlenmeli",
+          "Ballast/boş gemi yüklü gemiye göre çok daha fazla rüzgâr etkisine maruz kalır",
+          "Liman manevrası öncesinde rüzgâr gücü ve yönü, römorkör planına dahil edilmeli"
         ]
       }
     ],
     keyPoints: [
-      "Rüzgâr rota ve hız üzerinde etkilidir.",
-      "Leeway ve hız kaybı oluşur.",
-      "Seyir düzeltmesi yapılmalıdır."
+      "Rüzgâr, sürükleme (drag) ve yanal kuvvet (lift) yaratarak rota ve hızı etkiler.",
+      "Yan rüzgâr leeway üretir; gemi heading yönünde ilerler ama COG rüzgâr altına saptırılır.",
+      "Baş rüzgâr hız kaybı, kıç rüzgâr hız kazancı yaratır.",
+      "Ballast/boş gemi yüksek fribord nedeniyle rüzgâr etkisine en duyarlı durumdadır.",
+      "Liman manevralarında rüzgâr gücü ve yönü römorkör planlamasının temel girdisidir."
     ]
   },
   "Leeway kavramı": {
     title: "Leeway Kavramı",
     introduction:
-      "Leeway, rüzgâr etkisiyle geminin rota hattından yana kaymasıdır. Yön olarak rüzgâr altına doğru oluşur.",
+      "Leeway (rüzgâr kayması), rüzgâr kuvvetinin etkisiyle geminin izlediği gerçek yolun (COG – Course Over Ground), geminin baş yönünün (heading) gösterdiği rotadan rüzgâr altına doğru sapması olgusudur. Başka bir ifadeyle: gemi dümenini belirli bir yöne tutsa da, rüzgâr onu yanal olarak iter ve gerçek iz hedeflenen rotadan ayrılır.\n\nLeeway, derece cinsinden ifade edilir ve her zaman rüzgâr altı yönündedir; yani kuzeyden esen bir rüzgârda (rüzgâr üstü = kuzey, rüzgâr altı = güney) gemi güneye doğru kayar. Leeway açısının büyüklüğü; rüzgâr şiddetine, geminin fribord yüksekliğine, hıza ve gemi formuna bağlıdır.",
     sections: [
       {
-        title: "Tanım",
+        title: "Leeway Açısının Fiziksel Temeli",
         content:
-          "Leeway açısı, geminin baş hattı ile gerçek iz arasında oluşan açıdır.",
+          "Geminin su üstündeki lateral alanı (fribord + üst yapı yüzeyleri), rüzgâr kuvvetini emer. Su altındaki lateral alan ise bu kuvvete direnç gösterir; omurga, san ve trim tabı yan harekete karşı direncin temel kaynağıdır. Su altı lateral alan, su üstü lateral alandan çok daha büyük olduğu için gemi tamamen rüzgâr altına sürüklenmez; ancak denge noktasında belirli bir açı tutturulur – bu leeway açısıdır.\n\nLeeway açısını artıran faktörler: rüzgâr şiddeti artışı, geminin hafif yüklü (ballast) olması (fribord artışı), düşük seyir hızı (hydrodynamik direnç azalır), geniş üst yapı, düz şekilli gemi gövdesi. Leeway açısını azaltan faktörler: dolu yüklü durum, yüksek hız, dar ve derin bir gemi gövdesi.",
         image: yonWindDrift,
-        imageAlt: "Leeway kavramı"
+        imageAlt: "Leeway açısı: heading ile COG arasındaki fark"
       },
       {
-        title: "Etkileyen Faktörler",
+        title: "Leeway’in Seyir Planlamasına Yansıması",
         content:
-          "Rüzgâr şiddeti, gemi formu ve sürat leeway’i değiştirir.",
+          "Leeway, geminin gerçek iz (COG) ve hedeflenen rota arasında sistematik bir açı oluşturur. Seyir planlamasında leeway dikkate alınmazsa gemi istenen rotadan saparak tehlikeli bölgelere yaklaşabilir; özellikle kıyı seyri ve dar kanallarda bu risk belirginleşir.\n\nLeeway’i kompanse etmek için iki temel yaklaşım kullanılır: (1) Heading düzeltmesi: gemi, leeway açısı kadar rüzgâr üstüne doğru çevrilir. Örneğin hedeflenen COG 090°, leeway açısı 5° ve rüzgâr kuzeyden esiyorsa (gemi güneye kayıyor) heading 085°’ye alınır. (2) GPS COG izleme: modern seyirde GPS sürekli COG verir; başın bu değere göre sürekli düzeltilmesi leeway’i otomatik kompanse eder. Ancak bu, GPS hatası durumunda yedek bilgi kaynağının olmadığı bir yaklaşımdır.",
         bulletPoints: [
-          "Rüzgâr şiddeti artınca leeway artar",
-          "Yük durumu etkilidir",
-          "Sürat arttıkça leeway azalabilir"
+          "Leeway daima rüzgâr altı yönündedir",
+          "Ballast gemi yüklü gemiden çok daha büyük leeway yapar",
+          "Hız artışı leeway açısını azaltır",
+          "Heading düzeltmesi: hedeflenen COG için heading rüzgâr üstüne çekilir",
+          "GPS COG sürekli izlenerek heading dinamik olarak düzeltilir"
         ]
       }
     ],
     keyPoints: [
-      "Leeway, rüzgâr kaynaklı yan kaymadır.",
-      "Rüzgâr şiddeti ve gemi formu etkiler.",
-      "Rota düzeltmesi için dikkate alınır."
+      "Leeway: rüzgâr kuvvetinin neden olduğu COG ile heading arasındaki açısal fark; daima rüzgâr altına yönelir.",
+      "Büyük fribord, düşük hız ve güçlü yan rüzgâr leeway’i artırır.",
+      "Leeway kompansasyonu: heading, leeway açısı kadar rüzgâr üstüne çekilir.",
+      "GPS COG izleme, heading düzeltmesini otomatize eder; yedek bağımsız kontrol gereklidir.",
+      "Kıyı seyri ve dar sularda leeway göz ardı edilemez; passage planında leeway payı olarak dikkate alınmalıdır."
     ]
   },
   "Leeway hesapları": {
     title: "Leeway Hesapları",
     introduction:
-      "Leeway hesapları, rüzgâr etkisiyle oluşan sapmanın rota planına nasıl yansıtılacağını belirler.",
+      "Leeway açısının sayısal olarak belirlenmesi, seyir planlamasında rota ve heading hesabı için gereklidir. Ancak leeway'i önceden kesin olarak tahmin etmek zordur; zira gemi dinamiği, rüzgâr şiddeti ve yönündeki anlık değişimler, deniz durumu ve balast/yük koşulu gibi birden fazla değişkene bağlıdır. Bu nedenle leeway hesabı, pratikte gözlem ve tahmin yöntemlerinin bir kombinasyonuyla yapılır.",
     sections: [
       {
-        title: "Pratik Yaklaşım",
+        title: "Leeway Açısının Tahmin Yöntemleri",
         content:
-          "Leeway açısı deneysel değerler, gemi verileri veya operasyonel tablolarla belirlenir.",
+          "Pratik denizcilik uygulamalarında leeway açısı şu yollarla tahmin edilir:\n\n(1) Gemi manevralar belgesi veya deneysel tablo: bazı gemilerin manevralar kitapçığında veya safety management sisteminde belirli rüzgâr hızları ve yükleme durumları için leeway açısı değerleri bulunabilir. Bu değerler gemi özgüdür.\n\n(2) GPS COG ve gyro heading karşılaştırması: En pratik ve gerçek zamanlı yöntem. Gemi sabit bir heading'de ve sabit hızda yol alırken GPS COG ile gyro heading arasındaki fark, akıntı ve rüzgâr toplamının etkisini verir. Akıntı biliniyorsa leeway bileşeni ayrıştırılabilir.\n\n(3) Beaufort skalası tabanlı tahmin: bazı pratik rehberlerde rüzgâr kuvvetine ve gemi tipine göre yaklaşık leeway açıları verilir; örneğin 10°–15° beam wind ile tam ballast bir büyük tanker için 5°–8° leeway.",
         image: yonWindDrift,
-        imageAlt: "Leeway hesapları"
+        imageAlt: "Leeway hesabı: GPS COG ve gyro heading karşılaştırması",
+        formula: {
+          text: "Leeway açısı ≈ COG − Heading (akıntı etkisi sıfır veya biliniyorsa düzeltilmiş)",
+          description: "Pozitif fark: sancak leeway (sancağa kayma); negatif fark: iskele leeway"
+        }
       },
       {
-        title: "Uygulama",
+        title: "Heading Düzeltmesi ve Rota Planlaması",
         content:
-          "Leeway açısı, rota düzeltmesine eklenerek hedef COG korunur.",
+          "Leeway açısı belirlendikten sonra, hedeflenen COG'u elde etmek için heading şu şekilde düzeltilir:\n\nHeading = Hedeflenen COG − Leeway açısı (sol leeway için: heading sağa, yani rüzgâr üstüne)\n\nÖrnek: Hedeflenen COG 180° (güneye). Rüzgâr doğudan (sancaktan) esiyor. Leeway açısı 6°. Gemi batıya (iskeleye) doğru kayıyor. Düzeltme: heading = 180° − 6° = 174° (biraz doğuya / sancağa yönelmek gerekiyor). Böylece gerçek iz hedeflenen 180°'ye yaklaşır.\n\nBu düzeltme, statik bir değer değildir; rüzgâr güçlenince leeway artar ve heading düzeltmesi güncellenmeli; rüzgâr kesilince düzeltme azaltılmalıdır. ECDIS veya GPS COG sürekli izlenerek heading anlık olarak optimize edilir.",
         bulletPoints: [
-          "Deneysel değerler kullanılır",
-          "Rüzgâr şiddeti ve yönü değerlendirilir",
-          "Rota düzeltmesi yapılır"
+          "Heading = Hedeflenen COG − Leeway açısı (rüzgâr üstüne düzeltme)",
+          "GPS COG ile heading karşılaştırması, fiili leeway + akıntı toplamını verir",
+          "Leeway değişkeni: rüzgâr güçlenince artır, zayıflayınca azalt",
+          "Dar su ve kıyıya yakın seyirde leeway payı XTE limitine dahil edilmeli",
+          "Uzun geçişlerde ortalama leeway açısı, toplam rota sapmasını tahmin eder"
         ]
       }
     ],
     keyPoints: [
-      "Leeway hesapları deneyime dayanır.",
-      "Rota düzeltmesi için kullanılır.",
-      "Rüzgâr koşullarıyla birlikte değerlendirilir."
+      "Leeway açısı GPS COG ile gyro heading farkından pratik olarak elde edilebilir.",
+      "Heading = Hedeflenen COG − Leeway açısı; düzeltme rüzgâr üstüne doğrudur.",
+      "Rüzgâr değiştikçe leeway değişir; heading dinamik olarak güncellenmelidir.",
+      "Kıyı seyri ve dar sularda leeway, XTE güvenlik koridoruna dahil edilmelidir.",
+      "Uzun seyirlerde kümülatif leeway etkisi önemli rota sapmasına yol açabilir."
     ]
   },
   "Rüzgâr + akıntı + gemi hareketi": {
-    title: "Rüzgâr + Akıntı + Gemi Hareketi",
+    title: "Rüzgâr, Akıntı ve Gemi Hareketinin Bileşimi",
     introduction:
-      "Gerçek rota ve hız, gemi hareketi vektörü ile rüzgâr ve akıntı vektörlerinin birleşimidir.",
+      "Gerçek deniz seyirinde bir geminin SOG (Speed Over Ground) ve COG (Course Over Ground) değerleri, yalnızca makine gücü ve dümen açısına bağlı değildir; akıntı (set ve drift) ve rüzgâr kayması (leeway) da denkleme girer. Bu üç bileşenin vektörel olarak birleşimi, geminin gerçek zemin hareketini oluşturur.\n\nBu bileşik etki, seyircinin 'nerede olduğumu mu düşünmeliyim?' yerine 'nereye gittiğimi' bilerek navigasyon yapmasını zorunlu kılar. GPS COG ve SOG bu gerçek hareketi doğrudan ölçer; ancak GPS olmadığında veya GPS güvenilirliği sorgulandığında, bu üç bileşeni vektörel olarak hesaplamak tek seçenektir.",
     sections: [
       {
-        title: "Vektör Toplamı",
+        title: "Üç Bileşenli Vektör Modeli",
         content:
-          "COG ve SOG, gemi hız vektörü ile set–drift ve rüzgâr etkisinin birleşimiyle elde edilir.",
+          "Modelin üç bileşeni şunlardır: (1) Gemi hız vektörü: heading yönünde, büyüklüğü STW (Speed Through Water – log hızı). Bu vektör geminin su kütlesine göre hareketini ifade eder; akıntıyı ve rüzgârı kapsamaz. (2) Akıntı vektörü: set yönünde, büyüklüğü drift. Bu vektör tüm su kütlesinin hareketidir – gemi ister hareket etsin ister dursun, su kütlesi bu vektörle hareket eder. (3) Leeway vektörü: rüzgâr altı yönünde, büyüklüğü STW × tan(leeway açısı) – bu, rüzgârın yarattığı yatay sapmadır.\n\nVektör toplamı: COG/SOG vektörü = Gemi hız vektörü + Akıntı vektörü + Leeway vektörü. Grafik çözüm için vektör üçgeni (veya dörtgeni) çizilir; analitik çözüm için bileşen yöntemi kullanılır.",
         image: yonWindDrift,
-        imageAlt: "Rüzgâr ve akıntı vektörleri"
+        imageAlt: "Rüzgâr, akıntı ve gemi hareketi vektör toplamı"
       },
       {
-        title: "Seyirde Uygulama",
+        title: "Rota Düzeltmesi: Hedeflenen COG'u Elde Etme",
         content:
-          "Rota düzeltmeleri bu birleşik etki hesaplanarak yapılır.",
+          "Seyirde hedeflenen COG verildiğinde ve akıntı/leeway bilindiğinde, doğru heading ve STW'yi bulmak için ters vektör problemi çözülür. Bu problem grafiksel veya analitik olarak çözülebilir.\n\nGrafiksel yöntem: Hedef mevkiden COG yönünde sonuç vektörü çizilir. Başlangıç noktasından akıntı vektörü (set-drift) çizilir. Bu vektörün ucundan, STW büyüklüğünde bir yay çizilir; yayın sonuç vektörüyle kesişim noktası, gereken heading ve STW yönünü gösterir.\n\nPratik sonuç: Bu hesap, özellikle akıntılı dar kanallarda hedefe doğru ilerlemenin hangi heading'de yapılacağını belirler; gereksiz XTE oluşumunu önler ve ETA'yı optimize eder.",
         bulletPoints: [
-          "Gemi vektörü + akıntı vektörü",
-          "Rüzgâr etkisi leeway ile eklenir",
-          "COG/SOG güncellenir"
+          "COG/SOG = Gemi vektörü (heading, STW) + Akıntı (set, drift) + Leeway",
+          "GPS COG doğrudan bu bileşik hareketi ölçer",
+          "Vektör üçgeni grafiksel çözüme imkân verir; bileşen yöntemi analitik çözüm sağlar",
+          "Ters problem: hedef COG için gereken heading ve STW hesabı – akıntılı kanallarda kritik",
+          "Tüm bileşenler bilindiğinde ETA ve yakıt planlaması daha doğru yapılır"
         ]
       }
     ],
     keyPoints: [
-      "Gerçek rota vektörlerin toplamıdır.",
-      "Akıntı ve rüzgâr etkisi birlikte değerlendirilir.",
-      "COG/SOG bu bileşime göre hesaplanır."
+      "COG/SOG = Gemi hız vektörü (heading, STW) + Akıntı vektörü (set, drift) + Leeway.",
+      "GPS COG ve SOG bu bileşik hareketi doğrudan ölçer; GPS olmadığında vektör hesabı zorunludur.",
+      "Hedeflenen COG için gereken heading, ters vektör problemi çözülerek bulunur.",
+      "Akıntılı dar kanallarda bu hesabı yapmadan heading seçimi XTE ve emniyet sorunlarına yol açar.",
+      "Vektör üçgeni grafiği, bu bileşik hareketi görsel ve hızlı biçimde çözer."
     ]
   },
   "Dalga etkileri": {
     title: "Dalga Etkileri",
     introduction:
-      "Dalga, geminin hızını düşürür, yakıt tüketimini artırır ve manevra kabiliyetini etkiler.",
+      "Deniz dalgaları, geminin yapısal bütünlüğü, stabilitesi, hızı ve mürettebat konforu üzerinde kapsamlı etkiler yaratır. Dalga etkisi, seyir kararlarının en önemli dış belirleyicilerinden biridir; ağır dalga koşullarında hız azaltma, rota değişikliği veya bölgeden çıkma zorunlu hale gelebilir.\n\nDalgaların gemiye etkisi, dalganın boyuna (wavelength), dönemine (period), yüksekliğine (significant wave height – Hs) ve özellikle geliş yönüne bağlıdır. Aynı dalga yüksekliği bile geliş yönüne göre çok farklı etkiler yaratabilir: baş dalgası (head sea) hız kaybı ve pounding'e neden olurken, yan dalga (beam sea) yalpayı ve devrilme riskini artırır; kıç dalgası (following sea) broaching tehlikesini doğurur.",
     sections: [
       {
-        title: "Operasyonel Sonuçlar",
+        title: "Dalganın Gemiye Yük Etkileri",
         content:
-          "Baş–pruva dalgası hız kaybı yaratır; yandan dalga yalpa riskini artırır.",
+          "Yapısal yük: Baş taraftan gelen dalga, geminin prupava çarptığında (slamming veya pounding) çok kısa sürede devasa ani kuvvetler oluşturur. Bu kuvvetler baş güverte, kemere bağlantıları ve baş pik tankı üzerinde yorulma çatlaklarına ve hasara yol açabilir. Slamming, ağır yük koşullarında özellikle büyük tehlike oluşturur; hız azaltma bu kuvvetleri dramatik biçimde düşürür.\n\nGreen water: Baş güverteye dalga yığılması (green water) olarak adlandırılan bu olgu, dalga kütlesinin güverte üstüne yüklenmesidir. Güverte makineleri, luks kapakları, köprüüstü penceresi ve mürettebatı tehdit eder. Green water riski, draftın azaldığı (ballast) koşullarda veya düşük fribordlu gemilerde belirginleşir.",
         image: weatherSystems,
-        imageAlt: "Dalga etkileri"
+        imageAlt: "Dalga etkileri: slamming, green water ve yalpa"
       },
       {
-        title: "Seyirde Önlem",
+        title: "Hız Kaybı ve Yalpa Etkisi",
         content:
-          "Hız ve rota ayarlanarak dalga etkisi minimize edilir.",
+          "Dalga koşullarında gemi, aynı makine gücüyle daha yavaş ilerler; buna added wave resistance (ek dalga direnci) denir. Bu direnç, dalga yüksekliği ve periyoduna bağlı olarak SOG'u belirgin biçimde düşürebilir. Ağır koşullarda %20–40 hız kaybı yaşanabilir; bu durum ETA hesabına dahil edilmeli ve yakıt planlamasına yansıtılmalıdır.\n\nYalpa (rolling): Yan dalga (beam sea), geminin enine salınımını artırır. Eğer dalga periyodu gemi doğal yalpa periyoduna yaklaşırsa, rezonans yalpası (parametric rolling veya senkronize yalpa) oluşabilir; bu durum aşırı yalpa açıları ve kargo kayması riskini beraberinde getirir. Hız veya rotanın değiştirilerek dalga periyodundan uzaklaşılması bu riski azaltır.",
         bulletPoints: [
-          "Hız kaybı planlamaya dahil edilir",
-          "Rota, dalga yönüne göre düzenlenir",
-          "Gemi emniyeti önceliklidir"
+          "Baş dalga: slamming ve green water – hız azalt, dalga periyodunu gözlemle",
+          "Yan dalga: yalpa ve rezonans riski – rota veya hız değiştirerek periyot uyumsuzluğu sağla",
+          "Kıç dalga: broaching riski – otopilot yerine dikkatli elle yönetim",
+          "Added wave resistance: ağır dalga koşullarında %20–40 SOG kaybı beklenebilir",
+          "Hız azaltma: slamming kuvvetini kübik yaklaşımla azaltır – en etkili müdahale"
         ]
       }
     ],
     keyPoints: [
-      "Dalga hız ve yakıt tüketimini etkiler.",
-      "Yalpa ve vurma riskini artırır.",
-      "Rota ve hız ayarı gerektirir."
+      "Dalga etkisi: yapısal yük (slamming), hız kaybı (added resistance), yalpa ve kargo kayması riski.",
+      "Baş dalga hız kaybına ve slamming'e yol açar; hız azaltma en etkili müdahaledir.",
+      "Yan dalga rezonans yalpasına neden olabilir; periyot uyumsuzluğu için rota veya hız değiştirilmeli.",
+      "Kıç dalga broaching tehlikesi doğurur; özellikle yüksek hızda ve büyük dalgada risklidir.",
+      "Dalga kaynaklı hız kaybı ETA ve yakıt planlamasına sistematik olarak dahil edilmelidir."
     ]
   },
   "Heavy weather navigation": {
-    title: "Heavy Weather Navigation",
+    title: "Ağır Hava Seyri (Heavy Weather Navigation)",
     introduction:
-      "Ağır hava seyri, gemi emniyetini korumak için hız ve rota yönetiminin özel kurallarla yapıldığı seyirdir.",
+      "Ağır hava seyri, kuvvetli rüzgâr ve dalga koşullarında geminin yapısal bütünlüğünü, stabilitesini ve mürettebat emniyetini korumak amacıyla belirli hız, rota ve operasyon kararlarının alındığı özel bir seyir rejimidir. Bu rejimin temel ilkesi, ETA veya ticari takvim baskısına rağmen gemi emniyetinin her zaman birinci öncelik olmasıdır.\n\nAğır hava seyri salt reaktif bir yaklaşım değildir; iddialı bir öngörü ve karar sürecidir. İyi bir navigator, ağır hava bölgesine girmeden önce meteoroloji verilerini yorumlar, rota alternatifleri değerlendirir ve ağır havayı en az riskle yönetecek hız-rota kombinasyonunu belirler.",
     sections: [
       {
-        title: "Temel Yaklaşım",
+        title: "Hız Seçimi: Kritik Karar",
         content:
-          "Gemiye binen dalga yükü azaltılır, güvenli hızda seyir yapılır.",
+          "Ağır havada hız seçimi, yapısal ve stabilite açısından en kritik karardır. Hız yüksek tutulursa slamming kuvvetleri küpsel (hız³) yaklaşımla artar; bu çok küçük hız artışlarının bile yapısal yükü dramatik biçimde büyüttüğü anlamına gelir. Hız azaltma, slamming ve green water riskini en etkili biçimde düşürür.\n\nAngular resonance (parametrik yalpa): gemi ve dalga periyotlarının örtüşmesi, rezonans yalpası oluşturabilir. Hızı azaltmak veya artırmak bu rezonansı bozabilir; IMO MSC.1/Circ.1228, bu konuda kılavuzluk sağlar. Safe speed (emniyet hızı): ağır havada 'güvenli hız' hem dalga yükü hem de stabilite kriterlerini karşılamalıdır. Gemi stability criteria kötüleşen dalga koşullarında her zaman kontrol edilmelidir.",
         image: weatherSystems,
-        imageAlt: "Ağır hava seyri"
+        imageAlt: "Ağır hava seyri: hız ve rota seçimi"
       },
       {
-        title: "Uygulama",
+        title: "Rota Seçimi ve Heaving-to",
         content:
-          "Hız azaltma, rota değişikliği ve gerektiğinde heaving-to uygulanabilir.",
+          "Ağır havada rota seçimi, dalganın geliş yönüne göre optimize edilir. Genel ilke: yan dalgadan (beam sea) mümkün olduğunca kaçınılır; baş açısı büyük olan bir konuş (geniş bow sea) veya kıçtan dalga (following sea) tercih edilebilir. Ancak kıçtan gelişen büyük dalga broaching riskini artırır; bu nedenle kıç denizinde de belirli hız limitleri gözetilmelidir.\n\nHeaving-to (derin enlem): Gemi, küçük dümen açısıyla seyir edecek şekilde minimum hıza düşürülür ve dalga ile belirli bir açı tutturulur. Bu, gemi üzerindeki baskıyı azaltır ve acil durum müdahalesi, onarım veya ekip dinlenmesi için kontrollü bir tutum sağlar. Her gemi tipi farklı heaving-to pozisyonu gerektirebilir; bu manevralar kitapçığında belirtilmiş olmalıdır.",
         bulletPoints: [
-          "Hız düşürülür",
-          "Dalga yönüne göre rota ayarlanır",
-          "Yapısal emniyet önceliklidir"
+          "Slamming kuvveti hız³ ile artar – küçük hız azaltması büyük yük azalması sağlar",
+          "Yan dalgadan (beam sea) kaçın – rezonans yalpası ve stabilite riski",
+          "Kıç dalgasında yüksek hız broaching tehlikesi yaratır",
+          "Heaving-to: kontrollü minimum hız tutumu – acil onarım ve bekleme için",
+          "ISM Kodu: kaptan, gemi emniyetini tehdit eden koşullarda sürati azaltma yetkisine sahiptir"
         ]
       }
     ],
     keyPoints: [
-      "Ağır hava seyri emniyet odaklıdır.",
-      "Hız ve rota kontrollü yönetilir.",
-      "Gemi yapısal emniyeti önceliklidir."
+      "Ağır havada hız azaltma en öncelikli karardır; slamming kuvveti hız küpüyle orantılıdır.",
+      "Yan dalgadan kaçınılmalı; rezonans yalpası için hız veya rota değişikliği yapılmalıdır.",
+      "Heaving-to: çok zor koşullarda kontrolü koruyarak minimum hızda tutma pozisyonu.",
+      "ISM Kodu kapsamında kaptan ticari baskıya rağmen hızı azaltma ve güzergahı değiştirme yetkisine sahiptir.",
+      "Heavy weather öncesi meteoroloji takibi ve erken rota alternatifi değerlendirmesi yapılmalıdır."
     ]
   },
   "Fırtınada rota ve hız kararı": {
     title: "Fırtınada Rota ve Hız Kararı",
     introduction:
-      "Fırtına koşullarında rota ve hız seçimi, geminin stabilitesi ve yapısal emniyeti için kritik bir karardır.",
+      "Fırtına koşullarında rota ve hız kararı, belki de tüm seyir karlarının en karmaşığıdır: çünkü yanlış karar hem gemi güvenliğini hem de mürettebat hayatını tehlikeye atar. Bu karar birden fazla değişkeni – gemi tipi, yükleme durumu, fırtınanın şiddeti ve hareketi, mevki ve alternatif rotalar – eş zamanlı değerlendirmeyi gerektirir. Bir fırtına kararı salt 'hızı düşür' veya 'rotayı değiştir' düzeyinde değil, sistematik ve belgelenmiş bir süreç olarak ele alınmalıdır.",
     sections: [
       {
-        title: "Karar Kriterleri",
+        title: "Fırtına Öncesi Hazırlık ve Karar Penceresi",
         content:
-          "Dalga yönü, gemi tipi ve yük durumu dikkate alınır.",
+          "En iyi fırtına kararı, fırtına başlamadan önce verilen karardır. Synoptik harita analizi, GRIB verileri ve pilot chart bilgisiyle fırtına bölgesi 24–48 saat öncesinden tespit edilir. Bu aşamada üç ana seçenek değerlendirilir:\n\n(1) Rota değişikliği – fırtınayı tamamen veya kısmen dolaşmak: Uzun rotada ek mesafe ve zaman maliyeti olmakla birlikte, fırtına rotasında hız kaybı ve yakıt tüketimi hesaba katıldığında çoğu zaman daha ekonomik ve güvenlidir.\n\n(2) Hız optimizasyonu – fırtına penceresi dışında geçmek: Fırtınanın hareketini modelleyerek geminin fırtına merkezine göre zamanlamasını ayarlamak. Fırtına erken geçiyorsa hızlanmak, geç geçiyorsa yavaşlamak bölgeden sonradan daha iyi koşullarda geçilmesini sağlar.\n\n(3) Bekleme – Aile limanı veya demirde bekleme: Çok şiddetli fırtına koşullarında güvenli bir limanda veya korunaklı demirleme alanında bekleme, en güvenli seçenektir.",
         image: weatherSystems,
-        imageAlt: "Fırtınada rota ve hız"
+        imageAlt: "Fırtına rotası kararı ve alternatif seçenekler"
       },
       {
-        title: "Uygulama",
+        title: "Fırtına İçindeyken: Anlık Kararlar",
         content:
-          "Gerekirse hız düşürülür, rota dalgaya uygun açıyla düzenlenir.",
+          "Fırtına içindeyken kararlar daha sınırlı olmakla birlikte kritik önemi değişmez. Temel prensip: her 1/2 saatte bir stabilite, trim, güverte hasarı ve makine durumu değerlendirilmeli ve log'a kaydedilmelidir.\n\nHız kararı: slamming ve yapısal geri bildirime göre hız dinamik olarak ayarlanır. Makine dairesi, ani hız değişikliklerinin motor yüklenmesine etkisi konusunda köprüüstüyle koordineli olmalıdır. Rota kararı: fırtına içinde iken tam 90° rota değişikliği yerine yavaş ve aşamalı değişiklik yapılır; ani manevra kıç dalgası veya çifte dalga riskini artırabilir. Kargo ve balast: fırtına öncesinde ballast tankları ve kargoların bağlamaları kontrol edilmeli, serbest yüzey etkisi minimize edilmelidir.",
         bulletPoints: [
-          "Yan dalgadan kaçınılır",
-          "Hız düşürülür",
-          "Gemi stabilitesi izlenir"
+          "En iyi karar: fırtına öncesi 24–48 saat değerlendirmesi – rota/hız/bekleme seçimi",
+          "Fırtına içinde hız azaltma birinci öncelik; slamming ve yapısal geri bildirim rehber",
+          "Fırtına içinde ani rota değişikliğinden kaçın – aşamalı düzeltme tercih edilir",
+          "Balast ve kargo bağlamaları fırtına öncesinde tamamlanmış olmalı",
+          "Her kritik karar log'a kaydedilmeli ve kaptan onayıyla alınmalı"
         ]
       }
     ],
     keyPoints: [
-      "Fırtına seyri emniyet merkezlidir.",
-      "Dalga yönü ve gemi tipi belirleyicidir.",
-      "Hız ve rota birlikte optimize edilir."
+      "En etkili fırtına kararı, fırtınaya girmeden önce verilen erken karardır.",
+      "Rota değişikliği, hız optimizasyonu ve bekleme seçenekleri sistematik biçimde karşılaştırılmalıdır.",
+      "Fırtına içindeyken hız azaltma birinci öncelik; anlık yapısal geri bildirim rehber alınmalıdır.",
+      "Ani ve büyük rota değişikliklerinden kaçınılmalı; aşamalı düzeltmeler tercih edilmeli.",
+      "Tüm kararlar log'a kaydedilmeli, kaptan onayı ve ISM prosedürü çerçevesinde alınmalıdır."
     ]
   },
   "IMO A.893(21)": {
-    title: "IMO A.893(21)",
+    title: "IMO A.893(21) – Passage Planning Standardı",
     introduction:
-      "IMO A.893(21) kararı, gemilerde passage planning sürecinin standartlarını belirler ve dört temel aşamayı tanımlar.",
+      "IMO Karar A.893(21), 'Guidelines for Voyage Planning' başlığıyla 1999 yılında yürürlüğe girmiştir ve uluslararası sefer yapan tüm gemilerde uygulanması gereken yolculuk planlama standartlarını belirler. Karar, seyir planlamasını dört zorunlu aşamaya ayırır: Appraisal (Bilgi Toplama ve Değerlendirme), Planning (Planlama), Execution (Uygulama) ve Monitoring (İzleme). Bu dört aşama, geminin kalkıştan varışa kadar her adımda yapılandırılmış bir emniyet çerçevesinde çalışmasını sağlar.\n\nIMO A.893(21), SOLAS Bölüm V Kural 34 ile birlikte değerlendirildiğinde yasal bir zorunluluk haline gelir. SOLAS V/34, 'yolculuğun ve beklentilerin önceden planlanması' için uygun seyir planlaması yapılmasını şart koşar. Bu iki düzenlemenin birlikte uygulanması, passage planning'i hem teknik hem de hukuki bir yükümlülük olarak tanımlar.",
     sections: [
       {
-        title: "Temel Aşamalar",
+        title: "A.893(21)'in Dört Aşaması: Özet",
         content:
-          "Appraisal, Planning, Execution ve Monitoring adımları zorunlu kabul edilir.",
+          "Appraisal: Seyire özgü tüm bilgilerin toplanması ve değerlendirilmesi. Güncel haritalar, pilot books, list of lights, NtM güncellemeleri, meteoroloji, tidal data, VTS gereklilikleri ve gemi kısıtlamaları bu aşamada incelenir. Planlamadan önce tüm risklerin ve kısıtların tanımlanması amaçlanır.\n\nPlanning: Toplanan bilgiler ışığında detaylı rota planlanır. Waypoint listesi, XTE limitleri, safety contour, clearing lines, tehlikeler, alternatif rotalar, kanallar için özel notlar ve yakıt/ETA planı hazırlanır. Plan kaptan tarafından onaylanır.\n\nExecution: Plan uygulamaya konur. Köprüüstü ekibi planla briefing yapılır; başlık, hız ve vardiya düzeni plan doğrultusunda yürütülür. Plan dışı değişiklikler dokümante edilir.\n\nMonitoring: Seyir planıyla uyum sürekli izlenir. XTE, hız ve ETA gerçek değerlerle karşılaştırılır; sapmalar kaydedilir ve düzeltilir.",
         image: chartPlotting,
-        imageAlt: "IMO A.893(21) passage planning"
+        imageAlt: "IMO A.893(21): dört aşamalı passage planning çerçevesi"
       },
       {
-        title: "Uygulama",
+        title: "Hukuki Bağlam ve PSC Değerlendirmesi",
         content:
-          "Planlama süreci seyir emniyeti, personel koordinasyonu ve kaynak kullanımını kapsar.",
+          "SOLAS Bölüm V Kural 34, passage planning için genel yasal çerçeveyi oluşturur; A.893(21) bu çerçeveyi uygulama kılavuzuyla detaylandırır. PSC denetimlerinde (USCG, Tokyo MOU, Paris MOU) passage plan varlığı, güncelliği ve içerik kalitesi önemli bir değerlendirme kriteridir. Passage planın bulunmaması veya yetersiz olması, detention gerekçesi olabilecek bir deficiency'dir.\n\nHukuki sorumluluk boyutu: bir kaza sonrasında soruşturmacılar, passage planning sürecinin IMO A.893(21) ve SOLAS V/34 gerekliliklerini karşılayıp karşılamadığını inceler. Planlama eksiklikleri, kaptan ve şirkete ihmal sorumluluğu doğurabilir. Bu nedenle passage plan yalnızca operasyonel bir araç değil, hukuki bir belge olarak da titizlikle hazırlanmalıdır.",
         bulletPoints: [
-          "Standart süreç yaklaşımı",
-          "Emniyet odaklı planlama",
-          "Dokümantasyon zorunluluğu"
+          "SOLAS V/34 + IMO A.893(21) = yasal passage planning yükümlülüğü",
+          "PSC denetiminde passage plan hem mevcudiyet hem kalite açısından incelenir",
+          "Dört aşama: Appraisal → Planning → Execution → Monitoring",
+          "Plan kaptan tarafından onaylanmalı ve köprüüstü brifingiyle ekiple paylaşılmalı",
+          "Kaza soruşturmalarında passage planning kalitesi ihmal değerlendirmesinde temel kriter"
         ]
       }
     ],
     keyPoints: [
-      "IMO A.893(21) passage planning standardıdır.",
-      "Dört aşamalı süreç tanımlar.",
-      "Emniyet ve dokümantasyon şarttır."
+      "IMO A.893(21): Voyage Planning Kılavuzu – dört zorunlu aşamayı tanımlar.",
+      "SOLAS V/34 ile birlikte passage planning uluslararası sefer gemileri için yasal yükümlülüktür.",
+      "Dört aşama: Appraisal, Planning, Execution, Monitoring – her aşamanın belgelenmiş çıktısı olmalıdır.",
+      "PSC denetiminde passage plan mevcudiyeti ve kalitesi detention gerekçesi olabilecek bir değerlendirme kriteridir.",
+      "Passage plan, kaza soruşturmalarında hukuki sorumluluk değerlendirmesinde temel belgedir."
     ]
   },
   "Appraisal": {
-    title: "Appraisal",
+    title: "Appraisal – Passage Planning Birinci Aşaması",
     introduction:
-      "Appraisal, passage planlama sürecinin bilgi toplama ve değerlendirme aşamasıdır.",
+      "Appraisal (Bilgi Toplama ve Değerlendirme), IMO A.893(21) çerçevesindeki passage planning sürecinin birinci ve temel aşamasıdır. Bu aşamada seyire özgü tüm bilgiler sistematik olarak toplanır, güncellikleri kontrol edilir ve planlama aşamasına temel oluşturulur. Appraisal yapılmadan hazırlanan passage plan, eksik veya yanlış varsayımlarla inşa edilmiş anlamına gelir ve emniyeti tehlikeye atar.\n\nAppraisal, yalnızca haritaları açıp bakma değildir; tüm seyire ilişkin kaynakların sistematik olarak gözden geçirilmesidir. Bu süreç saat alabilir ve ikinci zabiti (navigating officer) yeterli zaman ayırması için güçlendirmek bir yönetim sorumluluğudur.",
     sections: [
       {
-        title: "Girdi Bilgileri",
+        title: "Appraisal'da Kontrol Edilecek Kaynaklar",
         content:
-          "Haritalar, yayınlar, meteoroloji ve trafik bilgileri değerlendirilir.",
+          "Haritalar ve yayınlar: Rota boyunca tüm haritaların güncel olup olmadığı kontrol edilir. Güncellik iki şekilde sağlanır: basım sonrası kağıt haritalar için Notice to Mariners (NtM) düzeltmeleri uygulanmış olmalı; ECDIS için ENC güncellemeleri yapılmış olmalıdır. Ocean Pilot Books (Sailing Directions), Admiralty List of Lights, List of Radio Signals, ALRS (Admiralty List of Radio Signals), Tide Tables ve Tidal Atlas bu aşamada incelenir.\n\nMeteoroloji: Kalkış tarihi için ve transit süresince beklenen hava tahminleri, pilot charts ve synoptik haritalar değerlendirilir. Tropikal siklon sezonunun aktif olup olmadığı ve bölgede uyarı olup olmadığı kontrol edilir. Özellikle uzun seferler için çoklu tahmin kaynakları karşılaştırılır.",
         image: navtexReceiver,
-        imageAlt: "Appraisal bilgileri"
+        imageAlt: "Appraisal: kaynaklar ve bilgi kontrolü"
       },
       {
-        title: "Amaç",
+        title: "Gemi ve Rota Kısıtlamalarının Değerlendirilmesi",
         content:
-          "Planlama için gerekli riskleri ve kısıtları belirlemektir.",
+          "Gemi kısıtlamaları: Mevcut draft, air draft (su üstü yüksekliği), gemi genişliği ve güzergah boyunca bunlara karşılık gelen kanal derinlikleri, köprü açıklıkları ve kanalların maksimum geçiş boyutları karşılaştırılır. Squat etkisi hesaplanır ve belirli kanallar için UKC hesabı yapılır.\n\nYerel düzenlemeler: VTS (Vessel Traffic Service) zorunluluğu, compulsory pilotage (zorunlu kılavuzluk), traffic separation scheme (trafik ayrım planı), seyir kısıtlamaları, gemi raporlama sistemleri (GMDSS raporlama alanları), karantina ve gümrük gereksinimleri appraisal kapsamında araştırılır. Bu bilgiler liman ajanından, ALRS'den ve ilgili ülkenin yetkili makamından temin edilir.",
         bulletPoints: [
-          "Harita ve yayın güncelliği kontrol edilir",
-          "Meteoroloji raporları incelenir",
-          "Yerel düzenlemeler değerlendirilir"
+          "Harita güncelliği: kağıt haritalar NtM düzeltmeleri, ECDIS ENC güncellemeleri – ikisi de zorunlu",
+          "Meteoroloji: pilot charts + güncel tahmin + tropikal uyarı taraması",
+          "Draft/air draft: kanal derinlikleri ve köprü açıklıklarıyla karşılaştırılmalı",
+          "VTS, compulsory pilotage, TSS ve raporlama gereklilikleri: her liman için araştırılmalı",
+          "Yetersiz appraisal, passage planın en yaygın eksikliğidir – PSC tarafından sıkça sorgulanır"
         ]
       }
     ],
     keyPoints: [
-      "Appraisal bilgi toplama aşamasıdır.",
-      "Harita, meteoroloji ve trafik bilgileri değerlendirilir.",
-      "Riskler bu aşamada belirlenir."
+      "Appraisal: tüm seyir bilgilerini sistematik olarak toplama ve değerlendirme aşaması.",
+      "Harita güncelliği, meteoroloji, kısıtlamalar ve yerel düzenlemeler bu aşamada incelenir.",
+      "Eksik appraisal, planlamanın hatalı temeller üzerine inşa edilmesi anlamına gelir.",
+      "Liman ajanı ve ALRS, yerel düzenlemeler için birincil bilgi kaynaklarıdır.",
+      "PSC denetimleri, appraisal kalitesini passage plan dokümantasyonu üzerinden değerlendirir."
     ]
   },
   "Planning": {
-    title: "Planning",
+    title: "Planning – Passage Planning İkinci Aşaması",
     introduction:
-      "Planning aşamasında rota detaylandırılır, waypoint’ler belirlenir ve emniyet limitleri tanımlanır.",
+      "Planning (Planlama), appraisal sonrası toplanan bilgilerin somut bir seyir planına dönüştürüldüğü ikinci aşamadır. Bu aşamada rota haritaya işlenir, waypoint’ler koordinatlarıyla listelenir, emniyet parametreleri tanımlanır ve köprüüstü ekibine yönelik seyir notları hazırlanır. Planning, passage planın en görünür ve dokümante bölümüdür; hem köprüüstü ekibinin rehberi hem de PSC denetiminin incelediği belgedir.",
     sections: [
       {
-        title: "Rota Detayı",
+        title: "Rota ve Waypoint Planlaması",
         content:
-          "Rota çizilir, tehlikeler işaretlenir ve emniyet konturları belirlenir.",
+          "Rota, başlangıç noktasından varışa kadar harita üzerinde (kağıt veya ECDIS) çizilir. Her rota değişim noktasına bir waypoint atanır; waypoint’lerin koordinatları (WGS84 datum), planlanan başlık, rota mesafesi ve o noktada gerekli özel dikkat (hız kısıtlaması, VHF kanal değişimi, kılavuz alımı gibi) waypoint listesinde kaydedilir.\n\nXTE limitleri: her segment için tehlikelere olan mesafe dikkate alınarak XTE limitleri belirlenir. Açık denizde geniş XTE (0.5–1.0 NM), dar sularda dar XTE (0.05–0.2 NM). Safety contour ECDIS’te doğru ayarlanmalı; draft + UKC + squat payı safety contour değerini belirler. No-go areas (girilmez bölgeler): tehlikeli sığlıklar, kablo güzergahları, atış alanları harita üzerinde işaretlenir.",
         image: chartPlotting,
-        imageAlt: "Planning aşaması"
+        imageAlt: "Planning: waypoint listesi ve rota çizimi"
       },
       {
-        title: "Dokümantasyon",
+        title: "Seyir Notu ve Kaptan Onayı",
         content:
-          "Planlama kayıt altına alınır ve köprüüstü ekibiyle paylaşılır.",
+          "Seyir notu (voyage note veya master’s passage plan), kritik bölgeler için özel talimatları, hız planını, gelgit pencerelerini, VTS bildirim noktalarını, alternatif rotaları ve acil durum waypoint’lerini içerir. Bu not, plan dosyasına eklenir ve kaptan tarafından imzalanarak onaylanır.\n\nBriefing: Plan hazırlandıktan ve kaptan onayladıktan sonra tüm köprüüstü ekibiyle bir brifing yapılır. Her zabitin planı anlaması, kritik noktaları bilmesi ve soru sorma fırsatı bulması sağlanır. Bu brifing, bridge resource management (BRM) çerçevesinde tüm ekibin ortak durumsal farkındalığa sahip olmasını garantiler.",
         bulletPoints: [
-          "Waypoint listesi oluşturulur",
-          "Alternatif rotalar eklenir",
-          "Emniyet limitleri tanımlanır"
+          "Waypoint listesi: koordinat, başlık, mesafe, XTE limiti ve özel notlar içermeli",
+          "Safety contour: draft + UKC + squat → ECDIS’te doğru ayarlanmalı",
+          "No-go areas harita üzerinde açıkça işaretlenmeli",
+          "Alternatif rotalar ve acil durum waypoint’leri plan dosyasında olmalı",
+          "Kaptan onayı zorunlu; köprüüstü brifingi TÜM zabitlere yapılmalı"
         ]
       }
     ],
     keyPoints: [
-      "Planning, rota detaylarının belirlendiği aşamadır.",
-      "Waypoint ve emniyet limitleri tanımlanır.",
-      "Plan dokümante edilir."
+      "Planning: appraisal bilgilerini somut rota planına dönüştürme aşaması.",
+      "Waypoint listesi, XTE limitleri, safety contour ve no-go areas planın temel bileşenleridir.",
+      "Seyir notu kritik bölgeler için özel talimatları ve alternatifleri içermelidir.",
+      "Plan kaptan onayıyla kesinleşir ve köprüüstü brifingiyle ekiple paylaşılır.",
+      "PSC denetiminde bu aşamanın belgeleri (waypoint listesi, onaylı plan) doğrudan incelenir."
     ]
   },
   "Execution": {
-    title: "Execution",
+    title: "Execution – Passage Planning Üçüncü Aşaması",
     introduction:
-      "Execution, planlanan rotanın uygulanması ve gerekli düzeltmelerin yapılması aşamasıdır.",
+      "Execution (Uygulama), planlanan seyrin fiilen yürütüldüğü üçüncü aşamadır. Bu aşama kalkıştan varışa kadar sürer ve planın gerçek dünya koşullarıyla karşılaştırıldığı, uyum sorunlarının giderildiği ve dinamik kararların alındığı süreçtir. Execution'ın başarısı, doğrudan planın kalitesiyle ve köprüüstü ekibinin BRM (Bridge Resource Management) becerisiyle orantılıdır.\n\nExecution, pasif bir plan izleme değildir; aktif, eleştirel ve durumsal farkındalığa dayalı bir süreçtir. Her vardiya zabiti, kalkışta yapılan planın hâlâ geçerli olup olmadığını, koşulların planla uyumlu olup olmadığını ve gerekirse hangi kapsamda değişiklik gerektiğini değerlendirmelidir.",
     sections: [
       {
-        title: "Uygulama",
+        title: "Köprüüstü Prosedürleri ve Vardiya Yönetimi",
         content:
-          "Hız, rota ve vardiya düzeni plan doğrultusunda yürütülür.",
+          "Execution'ın köprüüstü boyutu; vardiya devir-teslimi, sürekli izleme ve plan uyumunun sağlanmasından oluşur. Vardiya devir-teslimi: gelen zabit, mevcut pozisyon, hız, XTE, yakın tehlikeler, gelecek 4 saat için plan notları ve barometre trendi hakkında bilgilendirilir. Plan dokümanı köprüüstünde her zaman erişilebilir olmalıdır.\n\nSürekli izleme: Fiziksel konum (GPS, radar, görsel) planlanan konumla karşılaştırılır. XTE, heading, SOG ve ETA anlık olarak takip edilir. ECDIS alarmları aktif ve doğru ayarlı tutulur. Kritik waypoint'lere yaklaşımda artan dikkat ve mevki güncelleme sıklığı uygulanır.",
         image: autopilotControl,
-        imageAlt: "Execution aşaması"
+        imageAlt: "Execution: köprüüstü izleme ve plan uyumu"
       },
       {
-        title: "Değişiklik Yönetimi",
+        title: "Plan Değişikliği Yönetimi",
         content:
-          "Meteoroloji veya trafik durumuna göre plan güncellenebilir.",
+          "Execution sırasında planın değiştirilmesi gerekebilir: meteoroloji beklentilerden farklı gelişmiş, trafik beklenmedik yoğunluğa ulaşmış veya gemi teknik durumu değişmiştir. Bu değişiklikler log'a kaydedilmeli ve kaptan bilgilendirilmelidir.\n\nDeğişiklik yönetimi prosedürü: (1) Değişiklik nedenini belgele. (2) Alternatifleri değerlendir (devam, hız değişikliği, rota değişikliği). (3) Kaptan onayı al. (4) Köprüüstüne bildir ve ECDIS/kağıt haritayı güncelle. (5) Liman ajanına yeni ETA bildir. Planın değiştirilmesi anlamına gelen deviation, şirket SMS (Safety Management System) prosedürü kapsamında raporlanmalıdır.",
         bulletPoints: [
-          "Plan dışı değişiklikler kaydedilir",
-          "Emniyet önceliklidir",
-          "Köprüüstü bilgilendirilir"
+          "Vardiya devir-teslimi: mevcut mevki, XTE, plan notları ve alarm durumu aktarılır",
+          "Plan dokümanı her zaman köprüüstünde erişilebilir olmalı",
+          "Plan değişikliği: belgelenmiş, kaptan onaylı ve ajan bildirimli",
+          "ECDIS alarmları aktif ve doğru ayarlı tutulmalı – devre dışı bırakma kaydedilmeli",
+          "Kritik waypoint yaklaşımlarında mevki güncelleme sıklığı artırılmalı"
         ]
       }
     ],
     keyPoints: [
-      "Execution planın uygulama aşamasıdır.",
-      "Gerekirse plan güncellenir.",
-      "Tüm değişiklikler kayıt altına alınır."
+      "Execution: planın fiilen uygulandığı aşama – aktif izleme ve durumsal farkındalık gerektirir.",
+      "Vardiya devir-teslimi: mevzi, XTE, plan notları ve tehlikeler aktarılmalıdır.",
+      "Plan değişikliği: nedenini belgele, kaptan onayı al, log'a kaydet.",
+      "ECDIS alarmları her zaman aktif ve doğru ayarlı olmalıdır.",
+      "Kritik waypoint yaklaşımlarında dikkat artırılmalı ve mevki güncelleme sıklığı yükseltilmelidir."
     ]
   },
   "Monitoring": {
-    title: "Monitoring",
+    title: "Monitoring – Passage Planning Dördüncü Aşaması",
     introduction:
-      "Monitoring, seyrin planla uyumlu şekilde ilerlediğinin sürekli izlenmesidir.",
+      "Monitoring (İzleme), passage planning sürecinin son ve seyir boyunca devam eden aşamasıdır. Bu aşamada, seyir planının gerçek uygulama koşullarıyla uyumu düzenli olarak kontrol edilir; sapmalar tespit edildiğinde nedenler araştırılır ve gerekli düzeltici tedbirler alınır. Monitoring, reaktif bir alarm yönetimi değil; proaktif bir uyum izleme sürecidir.\n\nMonitoring'in etkinliği, köprüüstü ekibinin durumsal farkındalığıyla doğrudan ilişkilidir. Sapmayı fark eden zabit, bunun nedenini anlamalı (akıntı mı, rüzgâr mı, hız kaybı mı, hedefleme hatası mı?), boyutunu değerlendirmeli ve uygun düzeltici eylemi zamanında yapmalıdır.",
     sections: [
       {
-        title: "Sürekli İzleme",
+        title: "İzleme Parametreleri ve Sıklığı",
         content:
-          "XTE, hız ve mevki bilgileri izlenir; sapmalar anında düzeltilir.",
+          "Monitoring kapsamındaki temel parametreler: (1) Konum (mevki): GPS COG ve konumu; radar fix veya görsel teyit ile belirli aralıklarla doğrulanır. Açık denizde saatlik, kıyıda sık mevki güncellemesi yapılır. (2) XTE: ECDIS üzerinde anlık izlenir; alarm eşiği aşıldığında müdahale edilir. (3) SOG ve ETA: Planlanan hız ve varış zamanıyla karşılaştırılır; önemli sapmalar güncelleme gerektirir. (4) Meteoroloji: Barometre trendi, görsel gözlemler ve NAVTEX/SafetyNET mesajları plan beklentileriyle karşılaştırılır.\n\nLoglama: Monitoring sonuçları seyir log defterine kayıt edilir. Seyir log defteri (voyage log), belirli aralıklarla mevzi, hız, heading, meteoroloji, deniz durumu ve önemli olayları içerir. Bu kayıtlar PSC denetimlerinde ve kaza soruşturmalarında temel delil niteliği taşır.",
         image: ecdisDisplay,
-        imageAlt: "Monitoring aşaması"
+        imageAlt: "Monitoring: mevzi, XTE ve plan-gerçek karşılaştırması"
       },
       {
-        title: "Raporlama",
+        title: "Sapma Tespiti ve Düzeltici Eylem",
         content:
-          "Seyir kayıtları tutulur ve sapmalar raporlanır.",
+          "Monitoring sırasında tespit edilen bir sapma, sistematik bir süreçle ele alınır: (1) Sapmayı tespit et ve boyutunu ölç (XTE miktarı, ETA farkı, hız farkı). (2) Nedenini tanı: akıntı beklenenden güçlü mü? Rüzgâr planlanmamış yönde mi? Makine sorununa bağlı hız kaybı mı? (3) Düzeltici eylemi belirle: heading düzeltmesi, hız ayarı veya plan revizyonu. (4) Gerekirse kaptanı bilgilendir. (5) Log'a kaydet.\n\nPlan ile gerçeğin önemli ölçüde ayrışması – örneğin aşılamayan XTE limitleri, gerçekleşmeyen ETA veya meteorolojinin planı geçersiz kılması – planning aşamasına dönülmesi ve planın revize edilmesi anlamına gelebilir.",
         bulletPoints: [
-          "Plan–gerçek karşılaştırması yapılır",
-          "XTE limitleri takip edilir",
-          "Seyir kayıtları düzenli tutulur"
+          "Açık denizde saatlik, kıyıda sık mevki kaydı ve plan karşılaştırması",
+          "XTE ECDIS'te anlık izlenmeli; alarm eşiği seyrin tehlike düzeyine göre ayarlanmalı",
+          "Sapma tespitinde neden-sonuç analizi yapılmalı – sadece düzeltme değil, anlama önemli",
+          "Önemli sapmalar log'a kaydedilmeli ve kaptan bilgilendirilmeli",
+          "Plan ile gerçek büyük ölçüde ayrışıyorsa plan revizyonu gerekebilir"
         ]
       }
     ],
     keyPoints: [
-      "Monitoring, sürekli takip aşamasıdır.",
-      "Sapmalar anında düzeltilir.",
-      "Kayıt ve raporlama zorunludur."
+      "Monitoring: seyir boyunca plan-gerçek uyumunu izleme ve sapmaları düzeltme aşaması.",
+      "Temel izleme parametreleri: konum, XTE, SOG/ETA ve meteoroloji.",
+      "Seyir log defteri monitoring bulgularının resmi kaydıdır; PSC denetiminde incelenir.",
+      "Sapma tespitinde nedenini anlamak, yalnızca düzeltmek kadar önemlidir.",
+      "Plan-gerçek büyük ayrışması planlama revizyonunu tetikleyebilir."
     ]
   },
   "UKC ve squat": {
     title: "UKC ve Squat",
     introduction:
-      "Squat, geminin dar ve sığ sularda hız nedeniyle suya gömülmesi sonucu draftın artmasıdır. UKC hesaplarında kritik etkendir.",
+      "Squat, ilerleme halindeki bir geminin hız nedeniyle suya normalden daha fazla gömülme olgusudur. Bu olgu, gemi hareket ettikçe alt su basıncının azalması ve gemi etrafındaki akışın gemiyi aşağı çekmesiyle açıklanır. Squat değeri, geminin draftının üstüne eklenerek gerçek dinamik draft hesaplanır; bu değer UKC hesabında kritik rol oynar.\n\nSquat, sığ sularda (shallow water – su derinliği geminin draftının 1.5–2 katından az) ve dar kanallarda (kanal kesiti kısıtlı) en belirgin biçimde ortaya çıkar. Açık derin suda squat etkisi ihmal edilebilir düzeydedir; ancak kanallarda, rıhtım yaklaşımlarında ve sığ seferlerde squat hesabını atlamak ciddi UKC hatasına yol açabilir.",
     sections: [
       {
-        title: "Squat Etkisi",
+        title: "Squat Hesabı: Barras Formülü ve Basit Yaklaşım",
         content:
-          "Hız arttıkça squat artar. Dar kanal ve sığ sularda etki belirginleşir.",
+          "Squat hesabı için birçok ampirik formül geliştirilmiştir. Barras formülü, denizcilik sektöründe en yaygın kullanılan yöntemdir:\n\nS = Cb × V² / 100\n\nBurada S = squat (metre), Cb = block katsayısı (geminin doluluk oranı; tipik olarak bulk carrier ve tanker için 0.75–0.85, konteyner gemisi için 0.60–0.70), V = geminin hızı (knot cinsinden). Bu formül, açık sular için geçerlidir; kanallarda düzeltme faktörü uygulanır.\n\nÖrnek: Cb = 0.80, V = 8 knot → S = 0.80 × 64 / 100 = 0.51 metre. Gemi hızını 10 knot'a çıkarırsa squat = 0.80 × 100 / 100 = 0.80 metre. Hız %25 arttığında squat %57 artar – hızın karesel etkisi çok belirgindir.",
         image: safetyEquipment,
-        imageAlt: "Squat ve UKC"
+        imageAlt: "Squat etkisi ve UKC hesabı",
+        formula: {
+          text: "S = Cb × V² / 100 (Barras formülü, açık su) | Kanal içi: S_kanal = S × (1 + As/Ac)",
+          description: "Cb = block katsayısı; V = hız (knot); As = gemi kesit alanı; Ac = kanal kesit alanı"
+        }
       },
       {
-        title: "UKC Yönetimi",
+        title: "Squat Yönetimi ve UKC'ye Entegrasyonu",
         content:
-          "Squat hesapları eklenerek minimum UKC korunur.",
+          "UKC hesabında squat değeri statik drafta eklenir: Dinamik draft = Statik draft + Squat. UKC = (Harita derinliği + Gelgit yüksekliği) − (Statik draft + Squat + Hava payı). Bu denklemdeki her değişken hata payı içerdiğinden, toplamda yeterli bir emniyet marjı bırakılmalıdır.\n\nSquat'ı azaltmanın tek yolu hız azaltmadır. Özellikle sığ sulara girerken veya dar kanallarda squat etkisi hız kısıtlamalarına doğrudan yansıtılır. Örneğin belirli bir kanala giriş için maksimum güvenli hız, squat değeri UKC limitinin içinde kalacak biçimde hesaplanır. Bu hesap, kanal geçiş planının zorunlu bir parçasıdır.",
         bulletPoints: [
-          "Hız kontrolü squatı azaltır",
-          "Sığ sularda daha yüksek risk",
-          "UKC limitleri uygulanır"
+          "Squat = Cb × V² / 100 (Barras, açık su) – kanal koşulları için düzeltme eklenir",
+          "Hız iki katına çıkınca squat dört katına çıkar – hızın kare etkisi",
+          "Dinamik draft = Statik draft + Squat",
+          "UKC = (Harita derinliği + HoT) − (Dinamik draft + Hava payı)",
+          "Sığ su kanallarında maksimum güvenli hız squat sınırlamasıyla belirlenir"
         ]
       }
     ],
     keyPoints: [
-      "Squat, draftı artırır.",
-      "Hız ve su derinliği squatı etkiler.",
-      "UKC hesaplarında mutlaka dikkate alınır."
+      "Squat: ilerleme halindeki geminin hız nedeniyle normalden fazla suya gömülmesi.",
+      "Barras formülü: S = Cb × V² / 100 – hız kareyle orantılı, güçlü etki.",
+      "Dinamik draft = Statik draft + Squat; UKC hesabında dinamik draft kullanılır.",
+      "Sığ su ve dar kanallarda squat belirginleşir; açık derin suda ihmal edilebilir.",
+      "Hız azaltma squatı düşürmenin tek yoludur; kanal hız limitleri squat sınırlamasından kaynaklanır."
     ]
   },
   "Bridge Resource Management (BRM)": {
     title: "Bridge Resource Management (BRM)",
     introduction:
-      "BRM, köprüüstü ekibinin iletişim, görev paylaşımı ve karar süreçlerini emniyet odaklı yönetmesini sağlar.",
+      "Bridge Resource Management (BRM), köprüüstü ekibinin sahip olduğu tüm kaynakları — insan, teknoloji, bilgi ve prosedür — en etkin biçimde kullanarak gemi emniyetini sağlama disiplinidir. 1970’lerde havacılıkta geliştirilen Crew Resource Management (CRM) kavramından türetilen BRM, insan hatasının deniz kazalarının %80’inden fazlasındaki rolünü azaltmayı hedefler. IMO’nun STCW Manila Değişiklikleri (2010) ile BRM eğitimi, tüm denizcilik yeterlilik seviyelerinde zorunlu hale getirilmiştir. BRM; yalnızca teknik beceri değil, liderlik, durumsal farkındalık, iletişim kalitesi ve karar alma süreçlerini kapsayan bütüncül bir yaklaşımdır. Denizcilik fakültesi öğrencileri için BRM’yi kavramak, hem sınav süreçlerinde hem de kariyerlerinin ilk günlerinden itibaren köprüüstü emniyetine katkı sağlamak açısından kritik önem taşır.",
     sections: [
       {
-        title: "Temel İlkeler",
+        title: "BRM’nin Temel Bileşenleri: Liderlik, İletişim ve Durumsal Farkındalık",
         content:
-          "Açık iletişim, görev dağılımı ve çapraz kontrol BRM’nin temelidir.",
+          "BRM’nin çekirdeğinde üç temel bileşen bulunur: liderlik ve otorite yönetimi, açık ve net iletişim ile sürekli durumsal farkındalık. Liderlik açısından kaptan, köprüüstü ekibini yönlendiren ve nihai kararı veren kişidir; ancak etkili bir lider, ast görüşlerini aktif olarak talep eder ve otorite gradyanının (otorite farkının) aşırı büyümesine izin vermez. Aşırı otorite gradyanı, ast personelin kritik bilgileri bildirememesine yol açarak kazalara zemin hazırlar. İletişimde standart terminoloji ve kapalı döngü doğrulama (read-back/hear-back) prensibi esastır: verilen her talimat tekrar edilmeli ve onaylanmalıdır. Durumsal farkındalık ise ekibin gemi konumu, trafik, meteoroloji ve seyir planı hakkında ortak bir zihinsel model paylaşmasıdır; bu model bozulduğunda ‘durumsal farkındalık kaybı’ yaşanır ve büyük kazaların en yaygın öncüsüdür.",
         image: vhfRadio,
-        imageAlt: "BRM iletişimi"
+        imageAlt: "BRM iletişimi ve köprüüstü koordinasyonu",
+        bulletPoints: [
+          "Kapalı döngü iletişim: her talimat tekrar edilip onaylanır",
+          "Otorite gradyanı yönetimi: ast personelin sesinin duyulması sağlanır",
+          "Durumsal farkındalık paylaşımı: tüm ekip aynı zihinsel modeli taşır",
+          "Görev dağılımı net yapılır ve kritik görevlerde çapraz kontrol uygulanır",
+          "Briefing ve debriefing kültürü: vardiya öncesi ve sonrası bilgi aktarımı"
+        ]
       },
       {
-        title: "Uygulama",
+        title: "Görev Paylaşımı ve İş Yükü Yönetimi",
         content:
-          "Kritik manevralarda ekip koordinasyonu artırılır.",
+          "Köprüüstünde iş yükünün eşitsiz dağılması — bir kişinin aşırı yüklenmesi, diğerinin boş kalması — hata riskini artırır. Etkin BRM, özellikle yoğun trafik bölgelerine giriş, limana yaklaşma ve kötü hava gibi kritik manevra dönemlerinde iş yükünü önceden planlar. STCW Kural VIII/2 altında düzenlenen ‘Minimum güvenli vardiya personeli’ ve IMO MSC Sirküleri çerçevesinde belirlenen köprüüstü organizasyonu, iş yükü yönetiminin yasal zeminini oluşturur. Prosedürel olarak ‘tek nokta arızasını’ önlemek için kritik görevler paylaşılır: seyir haritasını izleyen subay ile VHF trafiğini takip eden subay farklı kişiler olmalıdır. Navigator rolünde bulunan kişi çok sayıda ekrana aynı anda bakıp birden fazla görevi üstlenirse ‘tünel vizyonu’ (tek göreve odaklanma) riski artar.",
         bulletPoints: [
-          "Görev paylaşımı net yapılır",
-          "Karar süreçleri paylaşılır",
-          "Çapraz kontrol uygulanır"
+          "Kritik manevralarda görevler önceden tanımlanır ve ekibe duyurulur",
+          "Bir kişi navigasyon, diğeri iletişim, diğeri gözcülük rolünü üstlenir",
+          "Yoğun dönemlerde ekstra personel köprüüstüne çağrılır",
+          "ECDIS, radar ve haritayı aynı anda izleme görevi dönüşümlü yapılır",
+          "İş yükü azaldığında briefing yapılarak sonraki kritik dönem planlanır"
+        ]
+      },
+      {
+        title: "Karar Alma Süreçleri ve Hata Yönetimi",
+        content:
+          "BRM’de karar alma, tek kişinin sezgisine değil yapılandırılmış süreçlere dayanır. Özellikle manevra kararlarında FORDEC modeli (Facts, Options, Risks/benefits, Decision, Execution, Check) veya benzer yapılı çerçeveler kullanılır. Ekip üyelerinin ‘soru sormaktan çekinmeme’ kültürü, hataların erken yakalanmasını sağlar. Hata yönetiminde ‘tuzak-hata-sonuç’ modeli (Threat and Error Management, TEM) benimsenir: önce tehdit tespit edilir, hata oluşmadan önlenmez ise hatanın sonucu yönetilir. BRM eğitimlerinde simülatör senaryoları kullanılarak ekiplerin baskı altında iletişim kalitesi ve karar süreçleri değerlendirilir. STCW’nin A-VIII bölümü, köprüüstü vardiya tutma standartlarını, navigasyon donanımının kullanımını ve emniyetli gemi yönetimini yasal çerçevede tanımlar.",
+        formula: {
+          text: "TEM Modeli: Tehdit → Hata → Sonuç yönetimi",
+          description: "Tehdit: dış risk faktörleri (hava, trafik, ekipman arızası) | Hata: insan davranışı sapması | Sonuç: emniyetsiz durumun önlenmesi"
+        }
+      },
+      {
+        title: "Simülatör Eğitimi ve BRM Sertifikasyonu",
+        content:
+          "STCW Manila değişiklikleri ile BRM eğitimi, II/1 (zabit), II/2 (kaptan/güverte zabiti) ve II/3 (kılavuz kaptan dahil) yeterlilik sertifikaları için zorunlu hale getirilmiştir. Eğitim genellikle GMDSS köprüüstü simülatörü üzerinde saatlik senaryolarla gerçekleştirilir; senaryo içerikleri standart STCW müfredatına uygun olmakla birlikte her kurumun kendine özgü senaryoları da bulunabilir. Değerlendirme kriterleri arasında iletişim kalitesi, görev paylaşımı etkinliği, durumsal farkındalık, liderlik ve karar alma hızı yer alır. Öte yandan simülatör eğitimi tek başına yeterli değildir; gerçek gemide gözetim altında deneyim kazanma, BRM prensiplerinin içselleştirilmesinde belirleyicidir.",
+        bulletPoints: [
+          "STCW A-II/1 ve A-II/2 kapsamında BRM eğitimi zorunludur",
+          "Köprüüstü simülatörü: tam misyonlu veya masaüstü (desktop) türleri kullanılır",
+          "Senaryo değerlendirmesi: iletişim, liderlik, durumsal farkındalık ölçülür",
+          "Denizcilik fakültesi müfredatında BRM genellikle ‘köprüüstü uygulamaları’ dersiyle entegre edilir",
+          "Yenileme eğitimi 5 yılda bir STCW Kural I/11 kapsamında gereklidir"
         ]
       }
     ],
     keyPoints: [
-      "BRM ekip koordinasyonunu güçlendirir.",
-      "İletişim ve görev paylaşımı esastır.",
-      "Emniyeti artırır."
+      "BRM, insan kaynaklı deniz kazalarını azaltmaya yönelik STCW zorunlu eğitim programıdır.",
+      "Kapalı döngü iletişim, otorite gradyanı yönetimi ve durumsal farkındalık BRM’nin üç temel sütunudur.",
+      "İş yükü yönetimi: kritik manevralarda görevler önceden tanımlanır ve ekip arasında net şekilde paylaşılır.",
+      "TEM (Threat and Error Management) modeli, tehdit-hata-sonuç zincirini her aşamada kesmek üzere uygulanır.",
+      "STCW Manila 2010 değişiklikleri ile BRM, tüm güverte zabitleri ve kaptanlar için zorunlu hale gelmiştir.",
+      "Simülatör eğitimi senaryolarında iletişim, liderlik ve karar alma kalitesi değerlendirilir."
     ]
   },
   "PSC bakış açısı": {
-    title: "PSC Bakış Açısı",
+    title: "PSC Bakış Açısı: Seyir Planlaması Denetimi",
     introduction:
-      "Port State Control (PSC), liman otoritesinin gemi emniyetini ve mevzuata uyumu denetlediği süreçtir.",
+      "Port State Control (PSC), taraf devletlerin kendi limanlarında yabancı bayraklı gemileri uluslararası sözleşmelere — SOLAS, MARPOL, STCW, MLC 2006 ve COLREG dahil — uygunluk açısından denetleme hakkı ve yükümlülüğüdür. Paris MOU, Tokyo MOU, Akdeniz MOU ve diğer bölgesel anlaşmalar çerçevesinde koordineli şekilde yürütülen bu denetimler, subzero performanslı gemilere 'detention' (alıkoyma) uygulanmasıyla sonuçlanabilir. Güverte zabitleri ve kaptanlar için PSC denetim süreci, yalnızca resmi bir kontrol olmaktan öte; mevcut seyir planı, köprüüstü prosedürleri ve dokümantasyonun gerçek dünya standartlarını karşılayıp karşılamadığının sorgulandığı profesyonel bir test niteliği taşır. Bu nedenle PSC bakış açısından seyir planlaması, navitasyon donanımı ve köprüüstü organizasyonunu anlamak, denizcilik eğitimi açısından temel yeterlilik sayılır.",
     sections: [
       {
-        title: "Denetim Konuları",
+        title: "PSC Denetim Süreci ve Hukuki Dayanak",
         content:
-          "Seyir planı, güncel haritalar, köprüüstü prosedürleri ve emniyet ekipmanları incelenir.",
+          "PSC müfettişi, gemiye çıkışından itibaren kaptan ve kıdemli zabitten sertifikaları, güvenlik belgeleri ve önemli kayıtları talep eder. SOLAS Bölüm V'in 34. Kuralı uyarınca her sefer için seyir planı hazırlanmış olmalı ve köprüüstünde erişilebilir konumda bulunmalıdır. Denetim iki aşamada gerçekleşir: ilk aşamada sertifikalar ve belgeler kontrol edilir (belge denetimi); ikinci aşamada fiziksel ekipman, prosedür ve kayıtlar incelenir (ayrıntılı denetim). Paris MOU kriterlerine göre yüksek risk profili taşıyan gemiler — bayrak, sınıflandırma geçmişi ve önceki detention sayısına göre — daha sık ve daha kapsamlı denetime tabi tutulur. Eksiklikler 'deficiency' olarak kayıt altına alınır; belirli eşiği aşan veya emniyet açısından kritik eksiklikler detention ile sonuçlanır.",
         image: safetyEquipment,
-        imageAlt: "PSC denetimi"
+        imageAlt: "PSC denetimi ve köprüüstü kontrolleri",
+        bulletPoints: [
+          "SOLAS V/34: her sefer için seyir planı zorunludur, köprüüstünde bulunmalıdır",
+          "Müfettiş köprüüstünü ziyaret ederek ECDIS/kağıt harita kullanımını, alarm yönetimini ve seyir planı detaylarını inceler",
+          "Sertifikalar: SMC, DOC, ISSC, DMLC Part I–II ve personel STCW sertifikaları kontrol edilir",
+          "VDR (Voyage Data Recorder) ve ECDIS güncelleme kayıtları sıkça istenir",
+          "Detention: geminin limanda tutulması — ciddi eksiklik varlığında uygulanır"
+        ]
       },
       {
-        title: "Hazırlık",
+        title: "Seyir Planı ve ECDIS: PSC'nin Odak Noktaları",
         content:
-          "Dokümantasyon ve ekipman güncelliği PSC denetimi için kritiktir.",
+          "PSC müfettişleri, seyir planının yalnızca varlığını değil içeriğini ve uygulanabilirliğini sorgular. IMO Resolution A.893(21) çerçevesinde değerlendirilen seyir planı; appraisal (ön değerlendirme), planning (planlama), execution (uygulama) ve monitoring (izleme) aşamalarının tümünü kapsamalıdır. ECDIS kullanılıyorsa ilave kontroller devreye girer: ECDIS yazılımının sertifikalı ve güncel olması, ENCs'lerin güncel lisans altında olması, alarm eşiklerinin uygun değerlere ayarlanması ve ECDIS'te kullanılan datum ile GPS datum uyumunun belgelenmesi gerekir. Ayrıca pilot board planı, acil cast off prosedürü ve contingency planının bulunması istenir. Müfettiş, köprüüstünde olan zabiti sezin rotası üzerindeki tehlikeleri göstermesini, güvenli hız gerekçesini açıklamasını ve passage plan onay sürecini anlatmasını isteyebilir.",
         bulletPoints: [
-          "Seyir planı hazır olmalı",
-          "Harita yayınları güncel olmalı",
-          "Kayıtlar eksiksiz tutulmalı"
+          "ECDIS: yazılım versiyonu ve ENC güncellik tarihleri defterle belgelenmelidir",
+          "Seyir planı: en az appraisal, planlama, waypoint listesi ve acil prosedürleri içermelidir",
+          "Seyir planı kaptan tarafından onaylanmış olmalı ve imzası bulunmalıdır",
+          "NAVTEX ve yayın güncelleme kaydı — Notice to Mariners — belgelenmeli",
+          "Kağıt harita kullanılıyorsa düzeltme kaydı (correction log) eksiksiz tutulmalı"
+        ]
+      },
+      {
+        title: "Köprüüstü Prosedürleri ve STCW Uyumu",
+        content:
+          "PSC denetiminde köprüüstü prosedürleri; vardiya tutma standartları, seyir donanımı kullanım talimatları ve acil durum prosedürlerini kapsar. STCW Bölüm VIII/2 kapsamında güvenli vardiya tutma ilkeleri, söz konusu seyrin özelliklerine göre uyarlanmış köprüüstü prosedürlerine yansıtılmış olmalıdır. Müfettiş köprüüstü log defterini, radar ve ARPA kayıtlarını ve GMDSS log defterini inceleyebilir. Bridge Procedures Guide (ICS, 5. Baskı) referans alınarak hazırlanan Ship Specific Operations Manual, müfettişe prosedürlerin sistematik şekilde belgelendiğini gösterir. Ayrıca SOLAS Bölüm II-1/49 kapsamında köprüüstünden iletişim sistemi testi — bridge-to-emergency generator communication — ile SOLAS V/26 kapsamında pilot transfer düzenlemelerinin hazırlığı da kontrol edilebilir.",
+        formula: {
+          text: "PSC Risk Skoru = f(Bayrak, Sınıflandırma, Önceki Detention, Yaş, Tip)",
+          description: "Paris MOU concentrated inspection kampanyaları belirli ekipman veya prosedür konusuna odaklanır; güncel kampanya konusu başlık sefer öncesinde araştırılmalıdır"
+        }
+      },
+      {
+        title: "Deficiency ve Detention Yönetimi",
+        content:
+          "PSC denetiminde tespit edilen her eksiklik CIC (Concentrated Inspection Campaign) formuna ya da Paris/Tokyo MOU sistemine kaydedilir. 'Detention' kararı, emniyet açısından kritik eksiklik — güvenlik ekipmanı çalışmıyor, sertifika geçersiz, mürettebat yeterlilikleri uygunsuz, köprüüstü donanımı arızalı — halinde verilir. Detention, gemi armatoruna hem maddi hem de itibar kaybı açısından ciddi sonuçlar doğurur. Kaptan ve zabitler açısından detention, kişisel kariyer üzerinde de olumsuz iz bırakabilir. Bu nedenle PSC denetimine hazırlık; belgelerin güncelliği, ekipmanların çalışırlığı ve mürettebatın prosedürlere hakimiyeti açısından sistematik öz-denetim (internal audit) ile desteklenmelidir.",
+        bulletPoints: [
+          "Detention kararı sonrasında müfettişin tespit ettiği eksikliklerin giderilmesi şart",
+          "Detention kaydı, gemi Paris/Tokyo MOU veritabanına işlenir ve gemi daha sık denetime tabi olur",
+          "Kaptan, müfettiş tespitlerini imzalamadan önce itiraz hakkını kullanabilir",
+          "ISM kapsamında 'non-conformity' tespiti, SMS (Safety Management System) güncellemesini tetikler",
+          "Proaktif hazırlık: SMS prosedürlerinin köprüüstünde uygulanması, detention riskini büyük ölçüde azaltır"
         ]
       }
     ],
     keyPoints: [
-      "PSC emniyet ve mevzuat denetimidir.",
-      "Seyir planı ve kayıtlar kritik önemdedir.",
-      "Eksik dokümantasyon risk yaratır."
+      "PSC, SOLAS V/34 kapsamında her geminin seyir planı hazırlayıp hazırlamadığını denetler.",
+      "ECDIS kullanıyorsa yazılım sürümü ve ENC güncelleme tarihleri müfettişe belgelenebilir olmalıdır.",
+      "Müfettiş zabitten seyir planının içeriğini, tehlikelerin konumunu ve acil prosedürleri sözlü açıklamasını isteyebilir.",
+      "Paris MOU'nun risk endeksi; bayrak, sınıflandırma kuruluşu, önceki detention sayısı ve yaşa göre hesaplanır.",
+      "Detention kararı maddi ve itibar kaybına yol açar; proaktif iç denetim ile büyük ölçüde önlenebilir.",
+      "STCW sertifikalarının geçerliliği, yazılı prosedürlere uyum ve köprüüstü günlük kayıtları PSC'nin temel odaklanma noktalarıdır."
     ]
   },
   "COLREG temel prensipleri": {
     title: "COLREG Temel Prensipleri",
     introduction:
-      "COLREG, denizde çatışmayı önlemek için uygulanması gereken uluslararası kuralları belirler.",
+      "COLREG (Convention on the International Regulations for Preventing Collisions at Sea, 1972), deniz kazalarının en yıkıcı türü olan çatışmaları önlemek amacıyla IMO bünyesinde hazırlanmış ve 1977 yılında yürürlüğe girmiş uluslararası sözleşmedir. 38 kural ve eklerden oluşan COLREG, açık deniz ve liman giriş kanalları dahil tüm sularda geçerlidir; yalnızca iç suya özgü kuralları olan ülkelerin yetkisi saklı kalmak üzere. Kurallar üç sütun üzerine inşa edilmiştir: sürekli ve etkin gözcülük (Kural 5), koşullara göre belirlenen güvenli hız (Kural 6) ve erken aşamada belirlenip yönetilen çatışma riski (Kural 7–8). Tüm bu teknik kurallar, Kural 2'nin 'iyi denizcilik uygulamaları' genel hükmüyle tamamlanır: olağandışı koşullarda kurallara sıkı biçimde bağlı kalmak tehlike yaratıyorsa kaptan inisiyatif kullanabilir. Denizcilik fakültesi öğrencileri için COLREG, hem sınav hem de gerçek deniz hayatında günlük karşılaşılan durumları yöneten temel hukuki çerçevedir.",
     sections: [
       {
-        title: "Temel Kurallar",
+        title: "Kural 5: Gözcülük ve Kural 6: Güvenli Hız",
         content:
-          "Güvenli hız, uygun gözcülük ve risk değerlendirmesi her durumda geçerlidir.",
+          "Kural 5, geminin görme ve işitme dahil mevcut tüm araçlarla sürekli ve etkin gözcülük yapmasını zorunlu kılar; ARPA ve AIS bu araçların başında gelir, ancak bunların salt teknolojik çıktısına dayanmak yetersizdir. 'Sürekli' gözcülük, vardiya zabiti dahil tüm köprüüstü personelinin durumsal farkındalık içinde kalmasını gerektirir. Kural 6 ise her koşulda 'güvenli hız' uygulanması zorunluluğunu getirir; güvenli hız, geminin mevcut görüş, trafik yoğunluğu, rüzgâr, akıntı ve su derinliğini dikkate alarak tam durdurma mesafesi (stopping distance) içinde kalabileceği azami hızdır. Tam manevra kabiliyeti (full maneuverability) olmayan gemilerde — draft kısıtlaması, makine arızası — güvenli hız buna göre düşürülür. Kısıtlı görüşte güvenli hız özellikle önem kazanır: Kural 19(b) radar menzili ile orantılı hız yapılmasını açıkça zorunlu tutar.",
         image: aisTargets,
-        imageAlt: "COLREG temel prensipleri"
+        imageAlt: "COLREG gözcülük ve güvenli hız",
+        bulletPoints: [
+          "Kural 5: görme, işitme, radar ve AIS ile sürekli ve etkin gözcülük zorunludur",
+          "Kural 6: güvenli hız; görüş, trafik, manevra kabiliyeti ve deniz durumuna göre belirlenir",
+          "Güvenli hızın aşılması çatışma davasında kusur olarak değerlendirilir",
+          "Tam durdurma mesafesi (crash-stop distance) seyir öncesinde bilinmeli ve kayıtlı olmalıdır",
+          "Kısıtlı görüşte güvenli hız genellikle önemli ölçüde düşürülür"
+        ]
       },
       {
-        title: "Uygulama",
+        title: "Kural 7 ve 8: Çatışma Riski ve Önleyici Manevra",
         content:
-          "Kurallar her durumda iyi denizcilik uygulamalarıyla desteklenir.",
+          "Kural 7, çatışma riskinin belirlenmesini düzenler. Risk, kompass yöntemle (sabit pusula yönü) veya ARPA ile hesaplanan CPA/TCPA değerleriyle tespit edilir. Pusulanın değişmediği bir gemi çatışma riski taşır; CPA sıfıra yaklaşıyor ve TCPA azalıyorsa risk yüksektir. Kuralın kilit ifadesi 'eğer şüphe varsa, risk var sayılır' — bu ilke muhafazakârlığa zorlar. Kural 8, önleyici manevralar için üç temel kriteri öngörür: (1) manevra erken yapılmalı; (2) manevra geniş açılı ve net biçimde uygulanmalı (küçük dümen değişiklikleri karşı gemiyi yanıltır); (3) manevra sonucunda yeni bir çatışma riski yaratılmamalıdır. 'Erken ve belirgin' ilkesi COLREG'in vazgeçilmez kavramıdır; son dakika Kural 17(b) manevrası beklenmeden çok önce harekete geçilmesi şarttır.",
         bulletPoints: [
-          "Uygun gözcülük yapılır",
-          "Güvenli hız korunur",
-          "Çatışma riski erken belirlenir"
+          "CPA (Closest Point of Approach) ve TCPA (Time to CPA) risk değerlendirmesinin nicel araçlarıdır",
+          "Sabit pusula yönü + azalan mesafe kombinasyonu çatışma riskinin klasik göstergesidir",
+          "Kural 8: manevra erken, büyük açılı ve net biçimde uygulanmalıdır",
+          "Çoklu gemi senaryosunda her gemi için ayrı risk değerlendirmesi yapılır",
+          "ARPA vector modunu kullanarak tahmin edilen konumları izlemek Kural 7 yükümlülüğünü karşılar"
+        ]
+      },
+      {
+        title: "Kural 2: İyi Denizcilik Uygulamaları ve Özel Koşullar",
+        content:
+          "Kural 2, COLREG'in 'istisnai koşullara kapı açan' maddesidir: sözleşmenin diğer hiçbir hükmünün ihmalden doğan sonuçları ortadan kaldırmadığını ve olağandışı tehlikeyi önlemek için kurallardan sapmanın gerekebileceğini açıkça kabul eder. Bu madde aynı zamanda kurallara körü körüne uymak yerine durumu bütünüyle değerlendiren, yargılayan bir kaptan profilini öngörür. COLREG kuralları belirli durumlar için (crossing, head-on, overtaking) net talimatlar verse de açık denizde bütün senaryoları öngörmek mümkün değildir; Kural 2 bu boşluğu kapatır. Uygulamada 'iyi denizcilik uygulamaları' kavramı mahkeme kararlarında yaygın biçimde kullanılır: makul bir kaptan bu koşullarda ne yapardı? Bu standardın içselleştirilmesi, kuralları ezberlemekten çok daha kalıcı bir mesleki yetkinlik sağlar.",
+        formula: {
+          text: "Risk Değerlendirmesi: ΔBearing ≈ 0 + ΔRange azalıyor → Çatışma riski VAR",
+          description: "Bearing = pusula yönü (°); CPA → 0'a yaklaşırsa risk kritik; TCPA = süre (dk); erken manevra için TCPA > 15–20 dk iken harekete geçmek standart uygulamadır"
+        }
+      },
+      {
+        title: "COLREG Hiyerarşisi: Yol Verme Öncelik Sıralaması",
+        content:
+          "COLREG'in 38 kuralı tematik gruplara ayrılır: Bölüm A (Genel: Kural 1–3 tanımlar), Bölüm B (Yönetim ve Seyir: Kural 4–19), Bölüm C (Fenerlerin ve Işık Şekillerinin Gösterilmesi: Kural 20–31), Bölüm D (Ses ve Işık İşaretleri: Kural 32–37). Bölüm B'nin manevra kabiliyeti hiyerarşisi kritiktir: manevra kabiliyeti kısıtlı gemiler (RAM), sığlıkta kısıtlı gemiler (CBD), balıkçı gemileri, yelken gemileri ve motor gemileri arasında sıralama belirlenmiş olup motor gemisi hiyerarşinin en altındadır. Bu hiyerarşiyi bilmek, yol verme yükümlülüğünün kime ait olduğunu doğru belirlemenin ön koşuludur.",
+        bulletPoints: [
+          "NUC (Not Under Command): manevra kabiliyetini yitirmiş gemi — en üst öncelik",
+          "RAM (Restricted in Ability to Manoeuvre): manevra kabiliyeti kısıtlı gemi",
+          "CBD (Constrained by Draught): derin su gemisi — yalnızca dar su yollarında geçerli",
+          "Balıkçı (fishing): olta değil, ağ veya trol kullanan gemi",
+          "Yelken altında seyreden gemi: motor gemisine karşı öncelikli, kendi üstündeki sınıflara yol verir"
         ]
       }
     ],
     keyPoints: [
-      "COLREG güvenli hız ve gözcülüğü zorunlu kılar.",
-      "Risk değerlendirmesi sürekli yapılır.",
-      "İyi denizcilik uygulamaları destekler."
+      "COLREG 1972, tüm denizlerde geçerli uluslararası çatışma önleme sözleşmesidir; 38 kural ve eklerden oluşur.",
+      "Kural 5: sürekli ve etkin gözcülük — görme, işitme ve elektronik araçların tümü kullanılır.",
+      "Kural 6: güvenli hız — tam durdurma mesafesi içinde kalınabilecek azami hız; kısıtlı görüşte özellikle kritik.",
+      "Kural 7–8: çatışma riski sabit pusula yönü + azalan mesafeyle belirlenir; manevra erken, büyük açılı ve net yapılır.",
+      "Kural 2: iyi denizcilik uygulamaları — kurallara körü körüne bağlılık yerine durumu bütünüyle değerlendiren kaptan profili.",
+      "Hiyerarşi: NUC > RAM > CBD > Balıkçı > Yelken > Motor gemisi; yol verme yükümlülüğü alt sınıftaki gemidedir."
     ]
   },
   "Crossing": {
-    title: "Crossing",
+    title: "Crossing: COLREG Kural 15",
     introduction:
-      "Crossing durumu, iki geminin yollarının kesiştiği ve çatışma riski oluştuğu durumdur.",
+      "Crossing (kesişme) durumu, COLREG'in en sık karşılaşılan ve aynı zamanda en çok yanlış yorumlanan senaryolarından biridir. İki motorlu gemi aynı anda çatışma riski oluşturacak biçimde birbirinin rotasını kesiyor ve bu durum head-on ya da overtaking kapsamına girmiyorsa Kural 15 devreye girer. Crossing, dünya genelindeki deniz kazası istatistiklerinde önemli yer tutar: yanlış gemi görev belirlenmesi (hangisinin 'give-way' olduğu), geç ya da yetersiz manevra ve VHF üzerinden yanlış anlaşmalar başlıca hata kaynaklarıdır. Denizcilik fakültesi öğrencileri için crossing senaryosunu geometrik, yasal ve operasyonel boyutlarıyla kavramak, STCW sınavlarında ve gerçek deniz hayatında en kritik yetkinliklerden biridir.",
     sections: [
       {
-        title: "Kural 15",
+        title: "COLREG Kural 15: Temel Tanım ve Yükümlülükler",
         content:
-          "Baş omuzdan gelen gemi, yol verme yükümlülüğündedir.",
+          "Kural 15 yalnızca iki motorlu gemi arasında uygulanır ve şunu belirtir: çatışma riski varsa, diğer gemiye kendi sancak tarafından sahip olan gemi yol verme yükümlülüğündedir (give-way vessel). Kural 15'in uygulanabilmesi için crossing senaryosunun önce tanımlanması gerekir: iki geminin rotaları kesişmeli ve Kural 14 (head-on) ile Kural 13 (overtaking) koşulları geçerli olmamalıdır. Give-way gemisi, diğerinin kıçından geçerek manevra yapmalıdır — pratikte bu büyük çoğunlukla sancağa dönüp diğerinin kıçından geçmek anlamına gelir. Stand-on gemisi ise rotasını ve hızını korumalı; ancak çatışma tehlikesi son ana kadar yaklaştığında Kural 17(b) kapsamında harekete geçmek zorunda kalabilir.",
         image: aisTargets,
-        imageAlt: "Crossing durumu"
+        imageAlt: "Crossing — COLREG Kural 15 yol verme senaryosu",
+        bulletPoints: [
+          "Sancak tarafında bulunan gemiye yol verilir: 'The vessel which has the other on her starboard side shall keep out of the way'",
+          "Give-way gemisi: erken, büyük açılı ve net manevra yapmalıdır (Kural 8)",
+          "Stand-on gemisi: rota ve hızını korur; ancak çatışma kaçınılmaz görünürse Kural 17(b) devreye girer",
+          "Crossing senaryosu, head-on ile karıştırılmamalıdır: head-on'da her iki gemi birden sancağa döner",
+          "VHF üzerinden düzenleme girişimi tehlikeli olabilir: kural uygulansın, VHF koordinasyonu ona ek yapılsın"
+        ]
       },
       {
-        title: "Uygulama",
+        title: "Crossing Senaryolarında Geometri ve ARPA Uygulaması",
         content:
-          "Yol veren gemi erken ve belirgin manevra yapmalıdır.",
+          "Crossing riskinin doğru belirlenmesi için bearing (pusula yönü) ve range (mesafe) verisini birlikte değerlendirmek gerekir. Sabit bearing + azalan range kombinasyonu çatışma riskini gösterir. ARPA üzerinde relative vector ile diğer geminin yakın geçiş noktasını (CPA) ve TCPA'yı hesaplamak, give-way manevrası için gereken zamanı belirlemenin en doğru yoludur. Pratikte TCPA > 15 dakika iken harekete geçmek standarttır; daha geç bırakmak stand-on gemisini Kural 17(b) manevrası yapmak zorunda bırakabilir. Kuralda 'sancak tarafında' olan geminin belirlenmesi zaman zaman güçtür: iki gemi neredeyse aynı rotadaysa ve küçük bir açı farkıyla kesişiyorsa head-on–crossing ayrımı gri bölge yaratabilir.",
         bulletPoints: [
-          "Yol veren gemi baş omuzdan gelen gemidir",
-          "Erken ve belirgin manevra yapılır",
-          "Durum sürekli izlenir"
+          "ARPA CPA < 0.5 nm ve TCPA < 20 dk: kritik risk, hemen harekete geç",
+          "Bearing değişimi yoksa (steady bearing): çatışma riski kesindir",
+          "Give-way manevrasının 'büyük açılı' olması kritik: 30° üzeri dümen değişimi karşı gemiye açık sinyal gönderir",
+          "Kendi rotanun kıçından geçmek 'alma' (taking the stern) olarak bilinir ve crossing için tercih edilen manevradır",
+          "Gündüzleri görsel, geceleri fener ve ARPA ile durum teyit edilir"
         ]
+      },
+      {
+        title: "Kural 17: Stand-On Gemisinin Hakları ve Sınırları",
+        content:
+          "Stand-on gemisi Kural 17(a)(i) kapsamında rota ve hızını korumalıdır. Kural 17(a)(ii), stand-on gemisinin kendi manevrası sonucunda çatışmayı önleyemeyeceği anlaşılırsa harekete geçebileceğini söyler. Kural 17(b) ise çatışma kaçınılmaz hale geldiğinde stand-on gemisine en etkili manevrayı yapma zorunluluğu getirir. Bu hiyerarşik yapı kritiktir: stand-on gemisi erkenden müdahale ederek give-way gemisinin manevralarını karıştırmamalı; ancak son an geldiğinde çatışmayı önlemek için harekete geçmelidir. Mahkemeler, her iki geminin de kusurlu bulunduğu pek çok çatışma davasında stand-on gemisinin Kural 17 kapsamındaki gecikmiş eylemsizliğini de sorumluluk faktörü olarak değerlendirmiştir.",
+        formula: {
+          text: "Crossing Riski: Sabit Bearing (°) + Azalan Range (nm) + Sancak Tarafı → Give-way gemisi belirlenir",
+          description: "Give-way gemisi: diğerini sancağında gören | Stand-on gemisi: diğerini iskelesinde gören — Kural 17 kapsamında rota/hız korur"
+        }
       }
     ],
     keyPoints: [
-      "Crossing, çatışma riski taşıyan kesişmedir.",
-      "Yol veren gemi baş omuzdan gelen gemidir.",
-      "Erken ve belirgin manevra esastır."
+      "Crossing, Kural 15 kapsamında çatışma riski oluşturan iki motorlu geminin rota kesişmesidir.",
+      "Yol verme yükümlülüğü: diğerini sancak tarafında gören gemi give-way'dir; genellikle kıçtan geçer.",
+      "Give-way gemisi Kural 8 uyarınca erken, büyük açılı ve net manevra yapmalıdır.",
+      "Stand-on gemisi Kural 17(a)(i) kapsamında rota ve hızını korur; son anda 17(b) devreye girer.",
+      "ARPA ile CPA ve TCPA hesaplanarak kritik risk zamanı belirlenir; TCPA > 15 dk iken manevra standarttır.",
+      "VHF koordinasyonu kurala ek yapılır; kuralın uygulanmasının yerini almaz."
     ]
   },
   "Head-on": {
-    title: "Head-on",
+    title: "Head-on: COLREG Kural 14",
     introduction:
-      "Head-on durumunda iki gemi karşılıklı olarak yaklaşır ve çatışma riski vardır.",
+      "Head-on (karşılıklı yaklaşma) durumu, COLREG'in en net ve tartışmasız manevralarından birini zorunlu kılar: her iki motorlu gemi de sancağa (sağa) dönerek birbirlerinin sancak tarafından geçer. Kural 14, symmetrical — her iki gemiye de eşit yükümlülük yükleyen — tek kuraldır. Dünya genelinde analiz edilen çatışma vakalarında head-on senaryosunun katkısı yüksektir; bunun başlıca nedenleri arasında sisin veya gecelerin görüşü kısıtlaması, ARPA yorumundaki hatalar ve head-on ile crossing arasındaki sınırda yaşanan belirsizlik sayılabilir. Kural 14'ün doğru anlaşılması; manevraya şüphe ile yaklaşıldığında head-on varsayımının tercih edilmesi gerektiği ilkesini de kapsar.",
     sections: [
       {
-        title: "Kural 14",
+        title: "COLREG Kural 14: Tanım ve Koşullar",
         content:
-          "Her iki gemi de sancağa dönerek birbirlerinin sancak tarafından geçer.",
+          "Kural 14(a) şunu belirtir: iki motorlu gemi karşılıklı veya neredeyse karşılıklı rotalarda birbirlerine yaklaşıyorsa çatışma riski oluşur ve her iki gemi de sancağa dönmelidir. Kural 14(b) ise head-on durumunun pratik tanımını yapar: gece boyundan gemi feneri (masthead light) ile yan fenerin aynı anda karşıdan görülmesi; gündüzleri ise geminin diğerinin rotasına tam veya neredeyse tam karşı yönde olması. Kural 14(c) kritik bir hüküm içerir: şüphe halinde head-on durumunun var olduğu varsayılmalıdır. Bu varsayım ilkesi, belirsiz durumlarda her iki geminin de sancağa dönmesini güvenceye alır ve yanlış yorumdan kaynaklanan çatışma riskini büyük ölçüde azaltır.",
         image: aisTargets,
-        imageAlt: "Head-on durumu"
+        imageAlt: "Head-on — Kural 14 karşılıklı yaklaşma senaryosu",
+        bulletPoints: [
+          "Head-on tanımı: iki motorlu gemi karşılıklı rotalarda birbirine yaklaşıyorsa",
+          "Kural 14(c): şüphe varsa head-on varsayılır — her iki gemi de sancağa döner",
+          "Gece tanımı: boydan gemi feneri + her iki yan fener aynı anda görülür",
+          "Kural 14 crossing ile karıştırılmamalı: head-on'da simülasyon yükümlülük eşit, crossing'de asimetrik",
+          "Genel kural: 10–15° veya daha az farklılık varsa crossing değil head-on varsay"
+        ]
       },
       {
-        title: "Uygulama",
+        title: "Manevra Uygulaması ve Sık Yapılan Hatalar",
         content:
-          "Manevra erken ve belirgin olmalı, kararsızlık yaratmamalıdır.",
+          "Head-on senaryosunda her iki gemi de sancağa (sağa) dönerek birbirlerinin sancak tarafından geçer; bu simetrik manevra, trafik ayrım düzenlemelerine (TSS) benzer şekilde 'sağda kal' prensibini pekiştirer. Manevradan doğan sık hatalar şunlardır: (1) gemilerin farklı yönde dönmesi — biri sancağa, diğeri iskeleye dönerse mesafe kapanır; (2) küçük dümen değişiklikleri — 5°'lik bir değişimi karşı gemi fark etmez ve crossing ile baş omuz etkisi yaratılır; (3) VHF üzerinden 'iskeleye iskeleye' gibi kural dışı anlaşmalar yapılması. IMO rehberlerine göre yalnızca Kural 14 uygulanmalı; VHF üzerinden 'hangi tarafa' sorgusu COLREG'in yerini alamaz çünkü iletişim hatası halinde riski artırır.",
         bulletPoints: [
-          "Her iki gemi sancağa döner",
-          "Manevra erken yapılır",
-          "VHF ile koordinasyon gerekebilir"
+          "Her iki gemi sancağa döner — asimetrik manevra çatışma riskini artırır",
+          "Manevra büyük açılı yapılmalı: en az 15–20° dümen değişimi, karşı gemi tarafından görünür olmalı",
+          "VHF 'iskele geçişi' anlaşması: güvenli görünse de COLREG'i override edemez — kaçınılmalı",
+          "Geç fark edilen head-on: radar P-PI (parallel index) ile yaklaşma geometrisi erken analiz edilmeli",
+          "Sound signal: iki kısa düdük (port side passing) vs bir kısa düdük (starboard side passing) — Kural 34"
         ]
+      },
+      {
+        title: "Head-on ve Crossing Sınırındaki Gri Alan",
+        content:
+          "Pratikte head-on ile crossing arasındaki sınır her zaman net değildir. Kural 14(c)'nin 'şüphe halinde head-on varsay' ilkesi bu gri alanı yönetmek içindir. ARPA'da iki geminin birbirine 170–180° üzerinde yaklaştığı görülüyorsa head-on; 90–135° üzerinde yaklaşıyorsa crossing; arası için dikkatli analiz gerekir. Sınır senaryolarında her iki kuralın uygulanması — head-on kapsamında her ikisi sancağa, crossing kapsamında give-way sancağa — farklı manevralar doğuracak ve iki gemi aynı yönde dönerse crossing manevrası oluşacaktır. Bu belirsizlik, ARPA kullanımı ve erken sabit bearing takibini zorunlu kılar.",
+        formula: {
+          text: "Head-on Koşulu: Relative Bearing ≈ 180° ± ~10° → Her iki gemi sancağa döner",
+          description: "Relative bearing = karşı geminin pusula yönü; 180°'ye yakın ise head-on, 90–135° arası ise crossing senaryosu; şüphe halinde head-on varsayılır (Kural 14c)"
+        }
       }
     ],
     keyPoints: [
-      "Head-on karşılıklı yaklaşma durumudur.",
-      "Her iki gemi sancağa döner.",
-      "Erken ve net manevra şarttır."
+      "Head-on, iki motorlu geminin karşılıklı rotalarda birbirine yaklaştığı COLREG Kural 14 senaryosudur.",
+      "Her iki gemi de sancağa döner — simetrik yükümlülük, diğer kuralların aksine her iki gemiye eşit uygulanır.",
+      "Kural 14(c): şüphe halinde head-on varsayılır ve her iki gemi sancağa döner.",
+      "Manevralar büyük açılı ve erken yapılmalı; küçük dümen değişiklikleri karşı gemiyi yanıltır.",
+      "VHF ile 'iskele geçişi' anlaşması COLREG'in yerini alamaz; kuralın uygulanması esastır.",
+      "Head-on ve crossing sınırındaki senaryolarda Kural 14(c) gri alanı yönetir: şüphe = head-on varsayımı."
     ]
   },
   "Overtaking": {
-    title: "Overtaking",
+    title: "Overtaking: COLREG Kural 13",
     introduction:
-      "Overtaking, bir geminin diğerini arkadan geçmesi durumudur. Hızlı olan gemi yol verir.",
+      "Overtaking (geçme manevrası), COLREG’in en uzun süre sorumluluk yükleyen senaryosudur: geçme işlemini başlatan gemi, geçiş tamamen tamamlanana kadar — diğer geminin gemiden çok uzaklaşana kadar — yol verme yükümlülüğü altında kalmaya devam eder. Kural 13, geçen geminin hiyerarşide nerede durduğundan bağımsızdır: overtaking durumunu yaratan gemi, karşılaşma her ne olursa olsun give-way yükümlülüğünü üstlenir. Bu prensip, overtaking’in hem dar su yollarında hem de açık denizde kazara çatışma potansiyelini barındıran kritik bir manevra olduğunu ortaya koyar.",
     sections: [
       {
-        title: "Kural 13",
+        title: "COLREG Kural 13: Tanım ve Sınırlar",
         content:
-          "Arkadan gelen gemi her durumda yol verme yükümlülüğündedir.",
+          "Kural 13(b) overtaking’i geometrik olarak tanımlar: bir gemi, diğerinin kıç doğrultusu ışığının (sternlight, 135° kapsam alanı) içinden yaklaşıyorsa overtaking durumu söz konusudur. Gündüzleri bu 22.5° kıç omuz yayının içinden yaklaşmak anlamına gelir. Kural 13(c) ise kritik bir hüküm içerir: overtaking durumundan şüphe edildikçe, gemi overtaking durumunda olduğunu varsaymalıdır. Kural 13(d) ise geçme manevrası başladıktan sonra iki geminin konumsal ilişkisi crossing konumuna geçse bile Kural 13’ün geçerliliğini koruduğunu açıklar — böylece overtaking gemisi kural değiştirme yoluyla sorumluluğu üzerinden atamaz.",
         image: aisTargets,
-        imageAlt: "Overtaking durumu"
+        imageAlt: "Overtaking — Kural 13 geçme manevrası senaryosu",
+        bulletPoints: [
+          "Kural 13(b): kıç ışığının 135° yayı içinden yaklaşma = overtaking",
+          "Kural 13(c): şüphe halinde overtaking varsayılır",
+          "Kural 13(d): geçiş başladıktan sonra crossing konumuna geçilse de Kural 13 devam eder",
+          "Geçen gemi (overtaking vessel): hiyerarşik statüsünden bağımsız olarak her zaman give-way",
+          "Geçilen gemi (vessel being overtaken): stand-on — rota ve hız korunur"
+        ]
       },
       {
-        title: "Uygulama",
+        title: "Overtaking Manevrası: Sancak mı, İskele mi?",
         content:
-          "Güvenli mesafe korunur ve geçiş sonrası rota temizlenir.",
+          "Overtaking senaryosunda geçen gemi sancaktan mı yoksa iskeledan mı geçeceğine karar vermelidir. Kural 13 bu konuda açık tercih belirtmez; ancak trafik ayrım düzenlemelerinde (TSS) sancak geçiş tercih edilir. Dar su yollarında (Kural 9) ise geçme ancak güvenli ve pratik olduğunda yapılmalıdır. Overtaking sırasında geçen gemi karşı geminin sancak veya iskele tarafında yeterli açıklık yaratmalı, iki gemi arasındaki boşluktan kaynaklanan ‘bank etki’ veya ‘interaction’ (etkileşim) kuvvetlerine karşı dikkatli olmalıdır. Büyük gemilerde bu etkileşim, sürüklenme ve dümen tepkisizliği yaratarak çatışma riskini artırabilir.",
         bulletPoints: [
-          "Arkadan gelen yol verir",
-          "Güvenli mesafe korunur",
-          "Geçiş tamamlanana kadar sorumluluk devam eder"
+          "Overtaking geçişi sırasında iki gemi arasındaki mesafe genellikle en az 2-3 gemi genişliği olmalı",
+          "Hydrodynamic interaction: yakın mesafede geçiş; geçilen gemiyi itme veya çekme etkisi yaratır",
+          "Dar sularda overtaking: karşı tarafı sesli işaretle uyar (Kural 34(c)(i): iki uzun + bir kısa düdük)",
+          "Geçilen geminin geçişe izin sinyali: iki uzun + iki kısa düdük (Kural 34(c)(ii))",
+          "Geçiş tamamlanana kadar overtaking gemisi yol verir — kesintisiz sorumluluk"
         ]
+      },
+      {
+        title: "Overtaking ve Dar Su Yolları Etkileşimi",
+        content:
+          "Kural 9 (Dar Kanallar), overtaking senaryosunu kısıtlayan ek düzenlemeler içerir. Dar kanallarda geçme manevrası yalnızca güvenli ve pratik olduğunda yapılabilir; geçilen geminin de manevra için yeterli alan açması gerekmektedir. Bu durum, overtaking gemisinin Kural 9(e)(i) uyarınca ses sinyali vermesini — 2 uzun 1 kısa — ve geçilen geminin onay vermesini — 2 uzun 2 kısa — zorunlu kılar. Geçilen gemi itiraz edebilir: 5 kısa hızlı düdük tehlike veya şüphe sinyali olarak kullanılır. Pilot alınan sularda pilot, overtaking kararını limancı otoritesi kuralları ve kanal trafik düzenlemeleri çerçevesinde verir; ancak sorumluluk yasal olarak hâlâ kaptana aittir.",
+        formula: {
+          text: "Overtaking Tanımı: Açı < 22.5° kıç omuz yayı (her iki taraf) → Overtaking durumu",
+          description: "22.5°, kıç ışığının kapsam yarı açısıdır; bu açı içinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir"
+        }
       }
     ],
     keyPoints: [
-      "Overtaking’de arkadan gelen gemi yol verir.",
-      "Sorumluluk geçiş tamamlanana kadar sürer.",
-      "Güvenli mesafe korunmalıdır."
+      "Overtaking (Kural 13): kıç ışığının 135° kapsam yayı içinden yaklaşan gemi overtaking durumundadır.",
+      "Geçen gemi, hiyerarşik statüsünden bağımsız olarak her zaman give-way yükümlülüğü taşır.",
+      "Kural 13(d): geçiş başladıktan sonra crossing konumuna geçilse bile Kural 13 devam eder.",
+      "Dar su yollarında geçme için ses sinyali (2 uzun 1 kısa) ve karşı geminin onayı gereklidir.",
+      "Hydrodynamic interaction: yakın geçişte iki gemi arasında sürükleme/itme kuvvetleri oluşur.",
+      "Sorumluluk geçiş tamamen tamamlanana kadar — geçen gemi tamamen önde ve uzakta olmayan kadar — sürer."
     ]
   },
   "Restricted visibility": {
-    title: "Restricted Visibility",
+    title: "Restricted Visibility: COLREG Kural 19",
     introduction:
-      "Kısıtlı görüşte seyir, sis, yoğun yağış veya karanlık gibi durumlarda yapılan seyirdir.",
+      "Kısıtlı görüş (restricted visibility), denizcilik tarihinde en fazla can ve mal kaybına yol açan seyir koşullarının başında gelir. Sis, yoğun yağış, kar, kum fırtınası veya diğer benzer durumlar görüşü kısıtladığında COLREG Kural 19 devreye girer. Kural 19'un diğer tüm kurallardan temel farkı şudur: bu kural görsel temas olmaksızın yaklaşan gemilere uygulanır ve give-way / stand-on ayrımını ortadan kaldırır — her gemi, karşı geminin konumunu ve niyetini tam olarak göremeden manevra yapmak zorundadır. Bu durum radar okumasını, ARPA analizini ve ses sinyallerini kritik hale getirirken aynı zamanda yanlış yorumların daha hızlı geliştiği bir seyir ortamı yaratır. Denizcilik fakültesi öğrencileri için Kural 19'un tüm gereksinimleri — hız, radar, ses sinyalleri ve manevra kısıtlamaları — bütün olarak kavranmalıdır.",
     sections: [
       {
-        title: "Kural 19",
+        title: "Kural 19: Kapsamı ve Temel Yükümlülükler",
         content:
-          "Güvenli hız, radar kullanımı ve sesli işaretler zorunludur.",
+          "Kural 19(a), düzenlemenin uygulanacağı durumu tanımlar: birbirini göremeyen gemiler arasındaki veya kısıtlı görüş bölgelerine yakın gemilere uygulanır. Kural 19(b) en kritik hükmü içerir: kısıtlı görüşte güvenli hız, radar menziliyle orantılı olmalı ve tam durdurma mesafesi içinde kalabilecek hızla seyredilmelidir. Yalnızca radar izine dayanılarak ani manevra yapılmamalıdır: Kural 19(d)(i) 'bir gemi çatışma riskini yalnızca radar izine dayanarak tespit ederse, tek başına rotayı iskeleye almaktan kaçınmalıdır' — çünkü baş omuzdan gelen bir gemi rotayı iskeleye alırsa iki gemi aynı yöne dönmüş olabilir. Kural 19(e) ise çatışmanın hemen gerçekleşeceği noktaya gelindiğinde manevranın hız azaltma, tam durdurma veya öne hareketini sonlandırma şeklinde yapılabileceğini belirtir.",
         image: radarDisplay,
-        imageAlt: "Kısıtlı görüşte seyir"
+        imageAlt: "Kısıtlı görüşte seyir — radar gözcülüğü",
+        bulletPoints: [
+          "Kural 19(b): güvenli hız radar menziliyle orantılı olmalı; tam durabilme mesafesi içinde kalınmalı",
+          "Kural 19(d)(i): sadece radar izine dayanarak gemi baş omuzdan geliyorsa rota iskeleye alınmamalı",
+          "Kural 19(d)(ii): baş omuz dışından yaklaşan gemiye yol verme için sancağa dönüş tercih edilir",
+          "Kural 19(e): çatışma kaçınılmaz ise hız azalt, dur veya astern ver",
+          "Give-way / stand-on ayrımı kısıtlı görüşte uygulanmaz — her gemi erken ve muhafazakâr manevra yapar"
+        ]
       },
       {
-        title: "Uygulama",
+        title: "Sis Prosedürleri ve GMDSS Yükümlülükleri",
         content:
-          "Radar gözcülüğü artırılır ve rotalar güvenli şekilde düzenlenir.",
+          "Kısıtlı görüş koşullarına giren gemi için standart prosedürler: (1) makineyi hazır konuma al (engines on standby); (2) ses şaretlerini başlat — motorlu gemi: her 2 dakikada bir uzun düdük (Kural 35(a)); (3) ek gözcü köprüüstüne al ve iş yükünü yeniden dağıt; (4) tüm navigasyon fenerleri yak; (5) radar ve ARPA'yı en yüksek çözünürlükte kullan; (6) AIS'i aktive et ve kanal 16'yı dinle. GMDSS kapsamında söz konusu sularda NAVTEX sis uyarıları ve yerel liman kanalından duyurular izlenmelidir. ISM kapsamındaki SMS (Safety Management System), geminin sis prosedürlerini yazılı olarak belgelemesini zorunlu kılar; kaptan bu prosedürleri uyguladığını log defterine kaydetmelidir.",
         bulletPoints: [
-          "Güvenli hız uygulanır",
-          "Radar sürekli izlenir",
-          "Sesli işaretler kullanılır"
+          "Makine hazır (standby): ani hız değişikliği için fiziksel hazırlık",
+          "Ses sinyali (Kural 35a): 2 dakikada bir uzun düdük — motorlu gemi, yolda",
+          "Demir atmış gemi (Kural 35g): 1 dakikada 5 saniye çan — arka çan da olabilir",
+          "NUC/RAM gemisi (Kural 35c): 2 dakikada bir uzun + 2 kısa düdük",
+          "Radar: her iki menzil skalasını da kullan — kısa menzil yakın tehdidi, uzun menzil genel tabloyu gösterir"
+        ]
+      },
+      {
+        title: "Radar ARPA Analizi ve Manevra Kısıtlamaları",
+        content:
+          "Kısıtlı görüşte ARPA, çatışma riskini belirlemenin birincil aracıdır. Her hedefin CPA ve TCPA değerleri izlenmeli; hedefler arasında öncelik sıralaması yapılmalıdır. Kural 19(d)(i)'nin 'iskeleye dönme' kısıtlaması, ARPA'da hangi yönden yaklaştığı belli olduğunda uygulanır: baş omuzdan gelen hedef için sancağa ya da hız azaltma tercih edilmelidir. 'Seçici manevra' (selective avoidance) prensibi: ARPA'da birden fazla hedef olduğunda, en yakın ve en tehlikeli hedefe yönelik manevra diğerlerine zarar vermemelidir. Simülatör eğitimlerinde sıklıkla sis senaryoları uygulanır; öğrencilerden çoklu hedeflerde doğru CPA/TCPA analizi ve Kural 19'a uygun manevra kararı beklenir.",
+        formula: {
+          text: "Sis Güvenli Hızı: V_sis ≤ (R_radar × 60) / T_stop_dk",
+          description: "R_radar = kullanılan radar menzili (nm); T_stop = tam durdurma süresi (dk); geminin tam durdurma mesafesi radar menzilin yarısını geçmemeli kuralı pratikte kullanılır"
+        }
+      },
+      {
+        title: "Kural 19 ile Diğer Kurallar Arasındaki İlişki",
+        content:
+          "Kural 19(a) açıkça belirtir: bu kural görsel temas olmaksızın yaklaşan gemilere uygulanır ve 'birbirini gören gemilere yönelik' kuralların (Kural 12, 13, 14, 15, 16, 17) uygulanmasını geçersiz kılar. Bu, give-way/stand-on hiyerarşisinin kısıtlı görüşte çalışmadığı anlamına gelir. Karşı gemi ARPA'da görülse de COLREG anlamında 'görsel temas' yoksa Kural 19 uygulanır. Bununla birlikte, gemilerin göz görüşüne girmeye başladığı geçiş döneminde (hem radar hem de görsel temas) hangi kuralın uygulanacağına dair yorumlar tartışmalıdır; pratikte bu an için gemi durumunu log defterine kaydetmek, hukuki sorumlulukta önemli belge niteliği taşır.",
+        bulletPoints: [
+          "Kural 19 uygulanırken Kural 12–17 (give-way/stand-on kuralları) devre dışıdır",
+          "Görsel temas başladığı anda Kural 19'dan çıkılır ve ilgili kural devreye girer",
+          "Geçiş döneminde log defterine zaman, koşul ve uygulanan kural kaydedilmeli",
+          "Kısıtlı görüşte çatışma davalarında ARPA kayıtları kritik kanıt niteliği taşır",
+          "VDR (Voyage Data Recorder) kayıtları kaza sonrası soruşturmalarda Kural 19 uyumunu kanıtlar"
         ]
       }
     ],
     keyPoints: [
-      "Kısıtlı görüşte güvenli hız esastır.",
-      "Radar gözcülüğü kritik rol oynar.",
-      "Sesli işaretler uygulanır."
+      "Kural 19, birbirini göremeyen gemilere uygulanır; give-way/stand-on ayrımını ortadan kaldırır.",
+      "Güvenli hız radar menziline orantılı olmalı ve tam durdurma mesafesi içinde kalınmalıdır.",
+      "Kural 19(d)(i): yalnızca radar izine dayanarak baş omuzdan gelen gemiye karşı iskeleye dönülmez.",
+      "Sis prosedürleri: makine hazır, ses sinyalleri başlat, ek gözcü al, tüm fenerleri yak.",
+      "ARPA CPA/TCPA analizi kısıtlı görüşte temel navigasyon aracıdır; seçici manevra prensibine uyulur.",
+      "Görsel temas başlar başlamaz Kural 19'dan çıkılır ve ilgili COLREG kuralı devreye girer."
     ]
   },
   "Gerçek çatışma kazaları": {
-    title: "Gerçek Çatışma Kazaları",
+    title: "Gerçek Çatışma Kazaları: Vaka İncelemeleri",
     introduction:
-      "Gerçek olay incelemeleri, COLREG uygulamalarının önemini ve ihlallerin sonuçlarını gösterir.",
+      "Deniz kazası soruşturmaları, COLREG kurallarının gerçek dünyada nasıl ihlal edildiğini, insan hatasının ve durumsal farkındalık kaybının felaketlere nasıl yol açtığını somut kanıtlarla ortaya koyar. IMO'nun MSC/Circ. kararları, ulusal kaza soruşturma raporları (MAIB, NTSB, EMSA, TSB) ve Lloyds List gibi yayınlarda belgelenen vakalar, denizcilik eğitiminin temel öğretim kaynaklarından biridir. Gerçek kazaları incelemek; teknik hata ile prosedürel hata arasındaki farkı, 'normalization of deviance' (sapmanın normalleşmesi) olgusunu ve savunma katmanlarının art arda nasıl çöktüğünü anlamayı sağlar. Denizcilik fakültesi öğrencileri bu vakaları yalnızca tarihsel bilgi olarak değil, kariyerleri boyunca benzer hataları öngörmek için bir zihinsel çerçeve olarak kullanmalıdır.",
     sections: [
       {
-        title: "Analiz Amacı",
+        title: "Vaka 1: MV Bright Field – Mississippi Nehri, 1996",
         content:
-          "Kazalar, hatalı karar, iletişim eksikliği veya prosedür ihlallerini ortaya koyar.",
+          "Panama bandıralı bulk carrier Bright Field, Mississippi Nehri'nde seyir ederken makine arızası yaşadı ve akıntının etkisiyle New Orleans rıhtımına çarptı; 116 kişi yaralandı. Soruşturma; makine bakımındaki sistemik yetersizlikleri, kaptan ile makine zabiti arasındaki iletişim eksikliğini ve acil durum tatbikatlarının yetersizliğini tespit etti. Bu vaka, 'kıyı seyri güvenlidir' varsayımının dar sularda ve akıntılı kanallarda nasıl yanlış olduğunu ve makine arızası senaryosu için köprüüstü-makine koordinasyon planlamasının kritikliğini gözler önüne serdi. ISM Kodu'nun zorunlu hale getirilmesinde bu türden vakalar belirleyici rol oynadı.",
         image: aisTargets,
-        imageAlt: "Çatışma kazası analizi"
+        imageAlt: "Çatışma kazası analizi — vaka incelemeleri",
+        bulletPoints: [
+          "İhlal edilen kural: Kural 5 (gözcülük) ve Kural 6 (güvenli hız dar sularda)",
+          "Temel neden: makine bakım yetersizliği + köprüüstü-makine iletişim kopukluğu",
+          "Ders: dar su seyirlerinde makine her zaman hazır konumda (standby) olmalı",
+          "ISM'deki acil durum prosedürleri gerçek tatbikatlarla desteklenmeli",
+          "Normalization of deviance: kronik bakım eksikliğinin 'olağan' sayılması"
+        ]
       },
       {
-        title: "Öğrenilen Dersler",
+        title: "Vaka 2: MV Doña Paz – Tablas Boğazı, 1987",
         content:
-          "Kazaların incelenmesi, eğitim ve prosedür geliştirme için temel veri sağlar.",
+          "Filipinler'de MT Vector ile çarpışan feribot Doña Paz, yaklaşık 4.000 can kaybıyla tarihin en büyük barış dönemi deniz felaketlerinden biri olarak kayıtlara geçti. Soruşturma, her iki gemide de yetersiz gözcülük, aşırı yolcu kapasitesi ve köprüüstü ekibinin uykuda ya da görev başında olmadığına dair kanıtlar ortaya koydu. Vector yakıt tankeri olmasına karşın hem seyir fenerleri çalışmıyordu hem de gözcülük yapılmıyordu. Bu vaka, Kural 5'in (etkin gözcülük) hayati önemini, SOLAS yaşam kurtarma ekipmanı gerekliliklerini ve gece seyiri öncesi köprüüstü hazırlığını dramatik biçimde örneklemektedir.",
         bulletPoints: [
-          "COLREG ihlalleri analiz edilir",
-          "İletişim ve gözcülük hataları değerlendirilir",
-          "Önleyici tedbirler geliştirilir"
+          "İhlal edilen kural: Kural 5 (etkin gözcülük), Kural 20 (fenerlerin gösterilmesi)",
+          "Temel neden: köprüüstü terk edilmesi, gözcülük yapılmaması, fenerler arızalı",
+          "Ders: gece seyiri öncesinde tüm navigasyon fenerlerinin testi zorunludur",
+          "SOLAS yaşam kurtarma ekipmanı taşıma kapasitesi gerçekçi şekilde belgelenmelidir",
+          "İnsan hatası: 'routine becomes risky' — rutin seyirlerde dikkatsizlik artma eğilimi"
         ]
+      },
+      {
+        title: "Vaka 3: MV MSC Napoli – İngiliz Kanalı, 2007",
+        content:
+          "Container gemisi MSC Napoli İngiliz Kanalı'nda sert hava koşullarıyla karşılaşarak ciddi yapısal hasar aldı ve kıyıya oturdu. Soruşturma, geminin yapısal bütünlüğünün zaten yetersiz olduğunu ve hava durumu değerlendirmesinin yetersiz kaldığını ortaya koydu. Bu vaka, passage planning'de meteorolojik değerlendirme sürecini, kötü hava senaryolarında hız azaltma kararını ve ISM kapsamındaki conditional assessment of structural integrity prosedürlerini yeniden gündeme taşıdı. Denizcilik fakültesi perspektifinden bakıldığında, passage plan appraisal aşamasında gemi yapısal limitlerini bilmek ve hava penceresini doğru değerlendirmek kritik dersler arasındadır.",
+        bulletPoints: [
+          "İhlal edilen prosedür: hava koşulları değerlendirmesinde yetersiz appraisal aşaması",
+          "Yapısal sınırlar passage plan aşamasında göz önünde bulundurulmalı",
+          "Kötü hava senaryosunda 'hava penceresi bekleme' kararı erken verilmeli",
+          "ISM: yapısal muayene raporları köprüüstü bilgisi dahilinde olmalı",
+          "Yük dağılımı ve trim, ağır hava dayanıklılığını doğrudan etkiler"
+        ]
+      },
+      {
+        title: "Çatışma Kazalarının Ortak Paydaları",
+        content:
+          "Düzinelerce deniz kazası soruşturma raporu incelendiğinde şu ortak faktörler öne çıkmaktadır: (1) Kural 5 ihlali — yetersiz veya dikkatssiz gözcülük; (2) geç ve yetersiz manevra — Kural 8'in erken ve belirgin manevra ilkesinin uygulanmaması; (3) VHF bağımlılığı — COLREG kuralları uygulanmadan önce VHF üzerinden anlaşmaya çalışılması; (4) otorite gradyanı — ast personelin uyarılarını bildirememesi; (5) aşırı güven — teknoloji (ARPA, AIS) insan gözcülüğünün yerini tutamaz. EMSA ve MAIB istatistikleri, tüm deniz kazalarının %80'inden fazlasında insan hatasının birincil veya katkıda bulunan faktör olduğunu tutarlı biçimde göstermektedir.",
+        formula: {
+          text: "Kaza Zinciri: Latent Failure → Active Failure → Savunma Katmanı Çöküşü → Kaza",
+          description: "Reason'ın İsviçre Peyniri Modeli: her savunma katmanı (prosedür, ekipman, eğitim, denetim) deliklere sahiptir; delikler hizalandığında kaza meydana gelir"
+        }
       }
     ],
     keyPoints: [
-      "Gerçek kazalar eğitim için kritik kaynaktır.",
-      "İhlal ve hata türleri netleşir.",
-      "Önleyici tedbirler geliştirilir."
+      "Gerçek kaza vakaları, COLREG ihlallerinin ve insan hatasının somut sonuçlarını göstererek en etkili öğretim aracıdır.",
+      "En yaygın ihlal: Kural 5 (gözcülük eksikliği) + Kural 8 (geç ve yetersiz manevra).",
+      "VHF bağımlılığı: kuralları uygulamadan önce VHF üzerinden anlaşmaya çalışmak riski artırır.",
+      "Reason'ın İsviçre Peyniri Modeli: latent ve aktif hatalar art arda savunma katmanlarını delerek kazaya yol açar.",
+      "Normalization of deviance: küçük prosedür ihlallerinin zamanla 'normal' sayılması sistemik riski gizler.",
+      "EMSA/MAIB: tüm deniz kazalarının %80'inden fazlasında insan hatası birincil faktördür."
     ]
   },
   "Neden – sonuç – ihlal – önlem analizi": {
     title: "Neden – Sonuç – İhlal – Önlem Analizi",
     introduction:
-      "Çatışma ve kaza analizlerinde neden, sonuç, ihlal ve önlem sıralamasıyla sistematik değerlendirme yapılır.",
+      "Deniz kazası analizinde 'neden–sonuç–ihlal–önlem' çerçevesi, olayı yalnızca sonuçtan geriye doğru değil, kök nedenlerden ileriye doğru da izleyerek sistematik bir anlayış geliştirir. Bu yaklaşım, IMO'nun 'Casualties and incidents' raporlama çerçevesinden, MAIB (Marine Accident Investigation Branch) ve EMSA kaza inceleme metodolojilerinden türetilmektedir. Denizcilik eğitiminde bu çerçeveyi kavramak kritik önem taşır: hem sınav sorularında vaka analizleri bu yapıya göre sorulur hem de gerçek kariyer hayatında kaza raporlama (Near Miss, Non-Conformity, Incident Report) ISM Kodu kapsamında bu mantıkla yürütülür. Analiz, yalnızca 'ne oldu'yu değil, 'neden oldu, hangi kural ihlal edildi ve bir daha olmaması için ne yapılacak'ı da yanıtlar.",
     sections: [
       {
-        title: "Analiz Yaklaşımı",
+        title: "Neden (Root Cause) Analizi: Kök Neden Tespiti",
         content:
-          "Olayın temel nedeni, ortaya çıkan sonuç, ihlal edilen kural ve alınacak önlem birlikte değerlendirilir.",
+          "Kök neden analizi, yüzeysel hatanın (active failure) arkasındaki sistemik zayıflıkları (latent failure) ortaya çıkarmayı hedefler. '5 Neden Tekniği' (5 Whys), kök nedene ulaşmak için her bir hatanın nedenini beş katmana kadar sorgular. Örnek: Çatışma neden oldu? → Gemi rotayı değiştirmedi. Neden? → Gözcü uyarı vermedi. Neden? → Radarı izlemiyordu. Neden? → İş yükü aşırıydı. Neden? → Vardiya organizasyonu yetersizdi. Kök neden: vardiya planlaması ve köprüüstü organizasyonu. Bu teknik, tek bir kişiyi suçlamak yerine sistemin tasarımındaki boşlukları hedef alır — bu nedenle IMO'nun 'just culture' (adil kültür) anlayışıyla da uyumludur.",
         image: aisTargets,
-        imageAlt: "Neden-sonuç analizi"
+        imageAlt: "Neden-sonuç-ihlal-önlem sistematik analiz çerçevesi",
+        bulletPoints: [
+          "5 Neden Tekniği: yüzey hatadan kök nedene kadar her katmanı sorgula",
+          "Active failure: doğrudan hatayı yapan kişinin eylemi veya eylemsizliği",
+          "Latent failure: sistemde gömülü, tetikleyici koşul gelene kadar görünmez zayıflık",
+          "Kök neden genellikle yönetim, eğitim veya prosedür tasarımıyla ilgilidir",
+          "Just culture: bireysel suçlama değil, sistem iyileştirmesi hedeflenir"
+        ]
       },
       {
-        title: "Eğitim Etkisi",
+        title: "Sonuç Analizi: Hasar, Can Kaybı ve Operasyonel Etki",
         content:
-          "Bu yöntem, hataların tekrarını önlemek ve prosedür geliştirmek için kullanılır.",
+          "Kaza sonuçları dört boyutta değerlendirilir: (1) insani boyut — yaralanma, ölüm, psikolojik etki; (2) çevresel boyut — yakıt dökülmesi, kirlilik, deniz ekosistemi hasarı; (3) maddi boyut — gemi hasarı, kargo kaybı, kurtarma masrafları; (4) operasyonel/hukuki boyut — geminin alıkonması, sigorta talepleri, cezai kovuşturma. Sonuç analizi aynı zamanda 'son savunma katmanı' kavramını değerlendirir: emniyet donanımı (EPIRB, yaşam kurtarma araçları, yangın bastırma) hasar sınırlamada ne kadar etkili oldu? Bu sorunun yanıtı, sonraki önlem planlamasını doğrudan şekillendirir.",
         bulletPoints: [
-          "Kural ihlalleri netleştirilir",
-          "Sonuçlar kayıt altına alınır",
-          "Önleyici uygulamalar geliştirilir"
+          "İnsani boyut: yaralanma/ölüm sayısı, psikolojik etki, mürettebat rehabilitasyonu",
+          "Çevresel boyut: MARPOL kapsamı, temizleme yükümlülükleri, uzun vadeli ekosistem etkisi",
+          "Maddi boyut: P&I kulübü bildirimi, H&M sigortası talebi, kurtarma sözleşmesi (LOF)",
+          "Hukuki boyut: bayrağın soruşturması, liman devleti denetim kararları, cezai kovuşturma riski",
+          "VDR kayıtları: sonuç değerlendirmesinde ve sorumluluk belirlenmesinde birincil kanıt"
+        ]
+      },
+      {
+        title: "İhlal Analizi: Hangi Kural, Prosedür veya Standart İhlal Edildi?",
+        content:
+          "İhlal analizi, kazaya katkıda bulunan her aktörün hangi yasal veya prosedürel yükümlülüğü yerine getirmediğini belirler. COLREG ihlalleri — Kural 5, 6, 7, 8, 13, 14, 15 veya 19 — en sık karşılaşılan kategorilerdir. SOLAS ihlalleri; yetersiz yaşam kurtarma ekipmanı, donanım bakım yetersizliği. STCW ihlalleri; niteliksiz personel, dinlenme süreleri ihlali. ISM ihlalleri; SMS prosedürlerine uyumsuzluk, risk değerlendirmesinin yapılmaması. İhlal analizi aynı zamanda 'contributing factors' (katkıda bulunan faktörler) kavramını kapsar: doğrudan ihlal eden kişinin ötesinde sistemi zayıflatan faktörler nelerdir?",
+        formula: {
+          text: "İhlal Kategorileri: COLREG Kural X + SOLAS Bölüm Y + STCW Kural Z + ISM Non-Conformity",
+          description: "Her ihlal için: kural maddesi — yükümlülüğün içeriği — ihlal biçimi — katkıda bulunan faktörler; çoklu ihlal katmanları analiz edilir"
+        }
+      },
+      {
+        title: "Önlem Analizi: Koruyucu ve Düzeltici Tedbirler",
+        content:
+          "Önlem analizi iki katmanlıdır: (1) düzeltici önlemler — kazanın tekrar oluşmaması için mevcut sistemdeki boşlukları kapatan müdahaleler; (2) önleyici önlemler — benzer risklerin başka gemilerde de oluşmasını önlemek için sektör genelinde yayılan tedbirler. IMO'nun emniyet kültürüne katkısı bu ikinci katmanda yoğunlaşır: MSC Dairesellerle yayılan ders özeti (safety lessons learned), ISM ile şirket genelinde prosedür revizyonu ve STCW ile eğitim standartlarının güncellenmesi. Denizcilik eğitiminde önlem analizi pratiği; öğrencilerin 'bu senaryo bende yaşanırsa ne yapardım?' sorusunu yapılandırılmış biçimde yanıtlamasını sağlar.",
+        bulletPoints: [
+          "Düzeltici önlem: doğrudan kazadan kaynaklanan prosedür revizyonu, ekipman yenileme, eğitim",
+          "Önleyici önlem: benzer riski taşıyan tüm gemiler için sektör genelinde yayılan güvenlik tedbirleri",
+          "ISM Non-Conformity kapatma süreci: kök neden analizi → düzeltici eylem → doğrulama",
+          "Near Miss raporlama kültürü: küçük olayların raporlanması büyük kazaları önler",
+          "IMO MSC Dairesellerle yayılan 'lessons learned': sektörün ortak belleği olarak işlev görür"
         ]
       }
     ],
     keyPoints: [
-      "Neden–sonuç analizi sistematik yaklaşım sağlar.",
-      "İhlal edilen kurallar netleşir.",
-      "Önleyici tedbirler geliştirilir."
+      "Neden–sonuç–ihlal–önlem çerçevesi, kazayı kök nedenlerden sonuçlara ve tedbirlere kadar sistematik biçimde analiz eder.",
+      "5 Neden Tekniği: her hatanın nedenini beş katmana kadar sorgulayarak sistemik zayıflıkları ortaya çıkarır.",
+      "Active failure + Latent failure: doğrudan hatanın ardında daima sistemde gömülü organizasyonel zayıflıklar vardır.",
+      "İhlal analizi; COLREG, SOLAS, STCW ve ISM katmanlarını birlikte değerlendirir.",
+      "Önlem planlaması iki katmanlıdır: düzeltici (mevcut gemi) ve önleyici (sektör geneli).",
+      "Near Miss raporlama ve ISM Non-Conformity kültürü, büyük kazaları erken sinyal aşamasında önlemenin temel aracıdır."
     ]
   },
   "Meteoroloji Bağlantılı Seyir": {
