@@ -9,6 +9,15 @@ import { DensityProvider } from "@/contexts/DensityContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { useFrameRate } from "@/hooks/useFrameRate";
 import Index from "./pages/Index";
 import CalculationsMenu from "./pages/CalculationsMenu";
@@ -165,11 +174,30 @@ const HubCategoryPage = () => {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   // Apply hierarchical navigation
-  useNavigationHierarchy();
-  
+  const { showExitDialog, closeExitDialog, confirmExit } = useNavigationHierarchy();
+
   return (
+    <>
+    <Dialog open={showExitDialog} onOpenChange={closeExitDialog}>
+      <DialogContent className="max-w-[320px] rounded-xl">
+        <DialogHeader>
+          <DialogTitle>Uygulamadan Çık</DialogTitle>
+          <DialogDescription>
+            Çıkmak istediğinize emin misiniz?
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter className="flex-row justify-end gap-2">
+          <Button variant="outline" onClick={closeExitDialog}>
+            İptal
+          </Button>
+          <Button variant="destructive" onClick={confirmExit}>
+            Evet, Çık
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
@@ -329,6 +357,7 @@ const AnimatedRoutes = () => {
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
     </AnimatePresence>
+    </>
   );
 };
 
