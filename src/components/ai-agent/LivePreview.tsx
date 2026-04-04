@@ -1,10 +1,10 @@
-import { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { Runner, Scope } from 'react-live-runner';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
+import {
   LineChart, BarChart, PieChart, AreaChart,
-  XAxis, YAxis, CartesianGrid, Tooltip, Legend, 
-  ResponsiveContainer, Line, Bar, Pie, Area 
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, Line, Bar, Pie, Area
 } from 'recharts';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -15,7 +15,6 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calculator, Anchor, Ship, Navigation, Compass, Map, Waves, AlertTriangle, ShieldAlert } from 'lucide-react';
-import React, { useState as useStateHook, useEffect as useEffectHook, useMemo as useMemoHook, useCallback as useCallbackHook } from 'react';
 import { sanitizeCode, getSecurityWarning } from '@/utils/codeSanitizer';
 
 interface LivePreviewProps {
@@ -81,12 +80,12 @@ const maritimeHelpers = {
 
 // Create scope for live preview - restricted to safe components only
 const createScope = (): Scope => ({
-  // React - only safe hooks
+  // React hooks
   React,
-  useState: useStateHook,
-  useMemo: useMemoHook,
-  useCallback: useCallbackHook,
-  // Note: useEffect removed to prevent side effects in user-generated code
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
   
   // Framer Motion
   motion,
@@ -171,9 +170,11 @@ export function LivePreview({ code }: LivePreviewProps) {
       return safeCode;
     }
     
-    // Extract component name from code
-    const componentMatch = safeCode.match(/(?:const|function)\s+(\w+)/);
-    const componentName = componentMatch ? componentMatch[1] : 'Component';
+    // Extract component name - prefer last capitalized name (React component convention)
+    const allMatches = [...safeCode.matchAll(/(?:const|function)\s+([A-Z]\w*)/g)];
+    const componentName = allMatches.length > 0
+      ? allMatches[allMatches.length - 1][1]
+      : 'Component';
     
     // Wrap with render
     return `${safeCode}\n\nrender(<${componentName} />)`;
