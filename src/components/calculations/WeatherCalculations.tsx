@@ -9,6 +9,8 @@ import { Cloud, Compass, Wind, Droplets, Sun, Thermometer, Eye, Info, CloudRain,
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 import { format } from "date-fns";
 import { tr } from "date-fns/locale";
@@ -121,6 +123,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
   });
 
   const [result, setResult] = useState<MeteoOceanResult | null>(null);
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
   // Calculate Beaufort Scale from wind speed
   const calculateBeaufortScale = (windSpeed: number): { scale: number; description: string } => {
@@ -355,9 +358,95 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
       };
 
       setResult(calculatedResult);
+
+      // --- Hesaplama adimlarini olustur ---
+      const windDirRad = (data.windDirection * Math.PI) / 180;
+      const shipHeadingRad = (data.shipHeading * Math.PI) / 180;
+
+      // Beaufort & Douglas adimlar
+      const beaufortSteps: CalculationStep[] = [
+        { step: 1, title: "Beaufort Skalasi", formula: "Ruzgar hizi aralik tablosu ile eslestirilir", substitution: `V_ruzgar = ${data.windSpeed} knot`, result: `Beaufort = ${beaufort.scale} (${beaufort.description})`, explanation: "Ruzgar hizi Beaufort olcegine gore siniflandirilir (0-12 arasi)" },
+        { step: 2, title: "Douglas Deniz Skalasi", formula: "Dalga yuksekligi aralik tablosu ile eslestirilir", substitution: `H_s = ${data.waveHeight} m`, result: `Douglas = ${douglas.scale} (${douglas.description})`, explanation: "Anlamli dalga yuksekligi Douglas deniz olcegine gore siniflandirilir (0-9 arasi)" },
+        { step: 3, title: "Deniz Durumu Aciklamasi", formula: "Douglas skalasina gore deniz durumu belirlenir", result: `${douglas.conditions}`, explanation: "Dalga yuksekligine bagli deniz durumu Turkce olarak ifade edilir" },
+      ];
+
+      // Ruzgar etkileri adimlari
+      const wX = data.windSpeed * Math.sin(windDirRad);
+      const wY = data.windSpeed * Math.cos(windDirRad);
+      const sX = data.shipSpeed * Math.sin(shipHeadingRad);
+      const sY = data.shipSpeed * Math.cos(shipHeadingRad);
+      const rWX = wX - sX;
+      const rWY = wY - sY;
+      const windArea = data.shipLength * data.shipFreeboard;
+      const windSpeedMs = relWind.speed * 0.514;
+      const windSteps: CalculationStep[] = [
+        { step: 1, title: "Ruzgar Vektor Bilesenleri", formula: "Wx = V_ruzgar * sin(yön_rad), Wy = V_ruzgar * cos(yön_rad)", substitution: `Wx = ${data.windSpeed} * sin(${data.windDirection}°) = ${wX.toFixed(2)}, Wy = ${data.windSpeed} * cos(${data.windDirection}°) = ${wY.toFixed(2)}`, explanation: "Ruzgar hizi X ve Y bilesenlerine ayrilir" },
+        { step: 2, title: "Gemi Vektor Bilesenleri", formula: "Sx = V_gemi * sin(bas_rad), Sy = V_gemi * cos(bas_rad)", substitution: `Sx = ${data.shipSpeed} * sin(${data.shipHeading}°) = ${sX.toFixed(2)}, Sy = ${data.shipSpeed} * cos(${data.shipHeading}°) = ${sY.toFixed(2)}`, explanation: "Gemi hizi X ve Y bilesenlerine ayrilir" },
+        { step: 3, title: "Bagil Ruzgar Bilesenleri", formula: "Rx = Wx - Sx, Ry = Wy - Sy", substitution: `Rx = ${wX.toFixed(2)} - ${sX.toFixed(2)} = ${rWX.toFixed(2)}, Ry = ${wY.toFixed(2)} - ${sY.toFixed(2)} = ${rWY.toFixed(2)}`, explanation: "Bagil ruzgar = gercek ruzgar - gemi hareketi" },
+        { step: 4, title: "Bagil Ruzgar Hizi", formula: "V_bagil = sqrt(Rx² + Ry²)", substitution: `V_bagil = sqrt(${rWX.toFixed(2)}² + ${rWY.toFixed(2)}²)`, result: `${relWind.speed.toFixed(1)} knot`, explanation: "Bagil ruzgar buyuklugu hesaplanir" },
+        { step: 5, title: "Bagil Ruzgar Yonu", formula: "θ_bagil = atan2(Rx, Ry) * 180/π", substitution: `θ_bagil = atan2(${rWX.toFixed(2)}, ${rWY.toFixed(2)}) * 180/π`, result: `${relWind.direction.toFixed(0)}°`, explanation: "Bagil ruzgar yonu derece cinsinden hesaplanir" },
+        { step: 6, title: "Ruzgar Kuvveti", formula: "F = 0.5 * ρ * V² * A * Cd", substitution: `F = 0.5 * ${data.airDensity} * (${windSpeedMs.toFixed(2)})² * ${windArea.toFixed(0)} * 0.8`, result: `${(windForce.force / 1000).toFixed(1)} kN`, explanation: "V: bagil ruzgar hizi m/s cinsinden (knot * 0.514), A: yan ruzgar alani (boy * freeboard), Cd = 0.8 surukleme katsayisi" },
+        { step: 7, title: "Ruzgar Momenti", formula: "M = F * (freeboard / 2)", substitution: `M = ${windForce.force.toFixed(0)} * (${data.shipFreeboard} / 2)`, result: `${(windForce.moment / 1000).toFixed(0)} kNm`, explanation: "Kuvvet etkisi noktasi freeboard yuksekliginin yarisinda kabul edilir" },
+        { step: 8, title: "Yatis Acisi", formula: "θ_heel = (M / (Δ * g * B/2)) * 180/π", substitution: `θ_heel = (${windForce.moment.toFixed(0)} / (${data.shipDisplacement * 1000} * 9.81 * ${data.shipBeam / 2})) * 180/π`, result: `${Math.abs(windHeelAngle).toFixed(1)}°`, explanation: "Ruzgar momentinin gemi deplasmanina ve genisligine orani ile yatis acisi tahmini" },
+      ];
+
+      // Akinti ve suruklenme adimlari
+      const cDirRad = (data.currentDirection * Math.PI) / 180;
+      const cX = data.currentSpeed * Math.sin(cDirRad);
+      const cY = data.currentSpeed * Math.cos(cDirRad);
+      const resX = sX + cX;
+      const resY = sY + cY;
+      const relWindAngle = Math.abs(data.windDirection - data.shipHeading);
+      const adjRelAngle = relWindAngle > 180 ? 360 - relWindAngle : relWindAngle;
+      const leewayFactor = Math.sin((adjRelAngle * Math.PI) / 180);
+      const currentSteps: CalculationStep[] = [
+        { step: 1, title: "Akinti Vektor Bilesenleri", formula: "Cx = V_akinti * sin(yön_rad), Cy = V_akinti * cos(yön_rad)", substitution: `Cx = ${data.currentSpeed} * sin(${data.currentDirection}°) = ${cX.toFixed(2)}, Cy = ${data.currentSpeed} * cos(${data.currentDirection}°) = ${cY.toFixed(2)}`, explanation: "Akinti hizi bilesenlerine ayrilir" },
+        { step: 2, title: "Gemi + Akinti Bilesik Vektoru", formula: "Rx = Sx + Cx, Ry = Sy + Cy", substitution: `Rx = ${sX.toFixed(2)} + ${cX.toFixed(2)} = ${resX.toFixed(2)}, Ry = ${sY.toFixed(2)} + ${cY.toFixed(2)} = ${resY.toFixed(2)}`, explanation: "Gemi ve akinti vektorleri toplanarak yer ustu hareketi bulunur" },
+        { step: 3, title: "Yer Ustu Hiz (SOG)", formula: "SOG = sqrt(Rx² + Ry²)", substitution: `SOG = sqrt(${resX.toFixed(2)}² + ${resY.toFixed(2)}²)`, result: `${currentEffects.speedOverGround.toFixed(1)} knot`, explanation: "Gercek yer ustu hizi hesaplanir" },
+        { step: 4, title: "Gercek Iz (COG)", formula: "COG = atan2(Rx, Ry) * 180/π", substitution: `COG = atan2(${resX.toFixed(2)}, ${resY.toFixed(2)}) * 180/π`, result: `${currentEffects.groundTrack.toFixed(0)}°`, explanation: "Geminin gercek yer ustu rotasi" },
+        { step: 5, title: "Leeway (Ruzgar Suruklemesi)", formula: "V_leeway = (V_ruzgar / 20) * sin(θ_bagil) * (leeway_acisi / 5)", substitution: `V_leeway = (${data.windSpeed} / 20) * sin(${adjRelAngle.toFixed(0)}°) * (${data.leewayAngle} / 5) = (${data.windSpeed} / 20) * ${leewayFactor.toFixed(3)} * ${(data.leewayAngle / 5).toFixed(2)}`, result: `${leewaySpeed.toFixed(2)} nm/h`, explanation: "Ruzgar etkisiyle geminin yana suruklenme hizi; bocadan ruzgarda en fazladir" },
+        { step: 6, title: "Toplam Suruklenme", formula: "D_toplam = sqrt(V_akinti² + V_leeway²)", substitution: `D_toplam = sqrt(${data.currentSpeed}² + ${leewaySpeed.toFixed(2)}²)`, result: `${calculatedResult.totalDrift.toFixed(2)} nm/h`, explanation: "Akinti ve ruzgar suruklenme vektorlerinin bilesik buyuklugu" },
+        { step: 7, title: "Rota Hatasi", formula: "ε = atan2(V_c * sin(θ_c - θ_s), V_s + V_c * cos(θ_c - θ_s)) * 180/π", substitution: `ε = atan2(${data.currentSpeed} * sin(${data.currentDirection - data.shipHeading}°), ${data.shipSpeed} + ${data.currentSpeed} * cos(${data.currentDirection - data.shipHeading}°))`, result: `${courseError.toFixed(1)}°`, explanation: "Akinti nedeniyle geminin rotasindan ne kadar saptigini gosterir" },
+      ];
+
+      // Kuvvet bilesimi adimlari
+      const windAngleRadVal = (relWind.direction * Math.PI) / 180;
+      const forceSteps: CalculationStep[] = [
+        { step: 1, title: "Ruzgar Kuvveti X Bileseni", formula: "Fw_x = F_ruzgar * sin(θ_bagil_rad)", substitution: `Fw_x = ${windForce.force.toFixed(0)} * sin(${relWind.direction.toFixed(0)}°)`, result: `${(windForceX / 1000).toFixed(1)} kN`, explanation: "Ruzgar kuvvetinin X (dogu-bati) bileseni" },
+        { step: 2, title: "Ruzgar Kuvveti Y Bileseni", formula: "Fw_y = F_ruzgar * cos(θ_bagil_rad)", substitution: `Fw_y = ${windForce.force.toFixed(0)} * cos(${relWind.direction.toFixed(0)}°)`, result: `${(windForceY / 1000).toFixed(1)} kN`, explanation: "Ruzgar kuvvetinin Y (kuzey-guney) bileseni" },
+        { step: 3, title: "Akinti Kuvveti X Bileseni", formula: "Fc_x = V_akinti * 1000 * sin(θ_akinti_rad)", substitution: `Fc_x = ${data.currentSpeed} * 1000 * sin(${data.currentDirection}°)`, result: `${(currentForceX / 1000).toFixed(1)} kN`, explanation: "Akintidan kaynaklanan basitlestirilmis kuvvet X bileseni" },
+        { step: 4, title: "Akinti Kuvveti Y Bileseni", formula: "Fc_y = V_akinti * 1000 * cos(θ_akinti_rad)", substitution: `Fc_y = ${data.currentSpeed} * 1000 * cos(${data.currentDirection}°)`, result: `${(currentForceY / 1000).toFixed(1)} kN`, explanation: "Akintidan kaynaklanan basitlestirilmis kuvvet Y bileseni" },
+        { step: 5, title: "Toplam Kuvvet Bilesenleri", formula: "Ft_x = Fw_x + Fc_x, Ft_y = Fw_y + Fc_y", substitution: `Ft_x = ${(windForceX / 1000).toFixed(1)} + ${(currentForceX / 1000).toFixed(1)} = ${(totalForceX / 1000).toFixed(1)} kN, Ft_y = ${(windForceY / 1000).toFixed(1)} + ${(currentForceY / 1000).toFixed(1)} = ${(totalForceY / 1000).toFixed(1)} kN`, explanation: "Ruzgar ve akinti kuvvet bilesenleri toplanir" },
+        { step: 6, title: "Toplam Kuvvet Buyuklugu", formula: "|F_toplam| = sqrt(Ft_x² + Ft_y²)", substitution: `|F_toplam| = sqrt(${(totalForceX / 1000).toFixed(1)}² + ${(totalForceY / 1000).toFixed(1)}²)`, result: `${(totalForceMagnitude / 1000).toFixed(1)} kN`, explanation: "Bilesik kuvvetin buyuklugu" },
+        { step: 7, title: "Kuvvet Yonu", formula: "θ_F = atan2(Ft_x, Ft_y) * 180/π", substitution: `θ_F = atan2(${(totalForceX / 1000).toFixed(1)}, ${(totalForceY / 1000).toFixed(1)}) * 180/π`, result: `${totalForceDirection.toFixed(0)}°`, explanation: "Bilesik kuvvetin etkidigi yon" },
+        { step: 8, title: "Stabilite Indeksi", formula: "SI = max(0, 100 - Beaufort*8 - Douglas*10)", substitution: `SI = max(0, 100 - ${beaufort.scale}*8 - ${douglas.scale}*10) = max(0, 100 - ${beaufort.scale * 8} - ${douglas.scale * 10})`, result: `${stabilityIndex.toFixed(0)} / 100`, explanation: "Dusuk deger daha tehlikeli kosullari gosterir" },
+      ];
+
+      // Seyir duzeltmeleri adimlari
+      const navSteps: CalculationStep[] = [
+        { step: 1, title: "Pusula Rotasi", formula: "Pusula = Gemi_basi - Rota_hatasi", substitution: `Pusula = ${data.shipHeading}° - (${courseError.toFixed(1)}°)`, result: `${calculatedResult.compassCourse.toFixed(0)}°`, explanation: "Akinti ve suruklenmeyi telafi etmek icin dumen tutulmasi gereken rota" },
+        { step: 2, title: "Onerilen Hiz", formula: "V_onerilen = max(3, V_gemi * (1 - Beaufort * 0.05))", substitution: `V_onerilen = max(3, ${data.shipSpeed} * (1 - ${beaufort.scale} * 0.05)) = max(3, ${data.shipSpeed} * ${(1 - beaufort.scale * 0.05).toFixed(2)})`, result: `${calculatedResult.recommendedSpeed.toFixed(1)} knot`, explanation: "Beaufort olcegine gore guvenli hiz onerisi; her beaufort kademesi icin %5 azaltma uygulanir" },
+        { step: 3, title: "Onerilen Bas", formula: "Bas_onerilen = Gemi_basi + (rota_hatasi > 0 ? -5 : +5)", substitution: `Bas_onerilen = ${data.shipHeading}° + (${courseError > 0 ? '-5' : '+5'})`, result: `${calculatedResult.recommendedHeading.toFixed(0)}°`, explanation: "Rota hatasini dengelemek icin onerilen bas yonu" },
+      ];
+
+      // Guvenlik gostergeleri adimlari
+      const safetySteps: CalculationStep[] = [
+        { step: 1, title: "Dalga Carpma Riski", formula: "Risk = H_dalga > (L_gemi / 20) VE V_gemi > 8 knot", substitution: `${data.waveHeight} > (${data.shipLength} / 20 = ${(data.shipLength / 20).toFixed(1)}) VE ${data.shipSpeed} > 8`, result: `${waveSlamming ? 'EVET - Yuksek Risk' : 'HAYIR - Dusuk Risk'}`, explanation: "Dalga yuksekligi gemi boyunun 1/20'sini astiginda ve hiz 8 knot ustundeyse risk artar" },
+        { step: 2, title: "Guverte Su Alma Riski", formula: "Risk = H_dalga > Freeboard * 0.8", substitution: `${data.waveHeight} > ${data.shipFreeboard} * 0.8 = ${(data.shipFreeboard * 0.8).toFixed(1)}`, result: `${greenWaterRisk ? 'EVET - Risk Var' : 'HAYIR - Risk Yok'}`, explanation: "Dalga yuksekligi freeboardun %80'ini astiginda guverte uzerine su alma riski olusur" },
+      ];
+
+      setCalcSteps({
+        beaufort: beaufortSteps,
+        wind: windSteps,
+        current: currentSteps,
+        force: forceSteps,
+        nav: navSteps,
+        safety: safetySteps,
+      });
+
       toast({
-        title: "Hesaplama Tamamlandı",
-        description: "Meteoroloji ve oşinografi hesaplamaları tamamlandı.",
+        title: "Hesaplama Tamamlandi",
+        description: "Meteoroloji ve osinografi hesaplamalari tamamlandi.",
       });
     } catch (error) {
       toast({
@@ -784,6 +873,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                   <p className="text-sm">{result.seaConditions}</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["beaufort"] || []} />
             </CardContent>
           </Card>
 
@@ -818,6 +908,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                   <p className="text-lg font-semibold">{result.windHeelAngle.toFixed(1)}°</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["wind"] || []} />
             </CardContent>
           </Card>
 
@@ -856,6 +947,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                   <p className="text-lg font-semibold">{result.courseError.toFixed(1)}°</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["current"] || []} />
             </CardContent>
           </Card>
 
@@ -891,7 +983,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Güvenlik Durumu</Label>
-                  <Badge variant={result.safetyRecommendation === 'safe' ? 'default' : 
+                  <Badge variant={result.safetyRecommendation === 'safe' ? 'default' :
                                  result.safetyRecommendation === 'caution' ? 'secondary' :
                                  result.safetyRecommendation === 'dangerous' ? 'destructive' : 'destructive'}>
                     {result.safetyRecommendation === 'safe' ? 'Güvenli' :
@@ -900,6 +992,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                   </Badge>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["force"] || []} />
             </CardContent>
           </Card>
 
@@ -930,6 +1023,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                 <Label className="text-sm font-medium">Alternatif Rota</Label>
                 <p className="text-sm">{result.alternativeRoute}</p>
               </div>
+              <CalculationSteps steps={calcSteps["nav"] || []} />
             </CardContent>
           </Card>
 
@@ -956,6 +1050,7 @@ export const WeatherCalculations = ({ initialTab }: { initialTab?: string } = {}
                   </Badge>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["safety"] || []} />
             </CardContent>
           </Card>
 
@@ -1023,15 +1118,23 @@ function StandaloneMeteoCalcs() {
   const [beaufort, setBeaufort] = useState({ b: "" });
   const [dewPoint, setDewPoint] = useState({ t: "", rh: "" });
   const [seaLevel, setSeaLevel] = useState({ p: "", h: "", t: "" });
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
   const trueWindResult = (() => {
     const va = parseFloat(trueWind.va);
     const vg = parseFloat(trueWind.vg);
-    const theta = parseFloat(trueWind.theta) * Math.PI / 180;
+    const thetaDeg = parseFloat(trueWind.theta);
+    const theta = thetaDeg * Math.PI / 180;
     if (isNaN(va) || isNaN(vg) || isNaN(theta)) return null;
     // Vector: VT = √(VA² + VG² - 2·VA·VG·cos(θ))
     const vt = Math.sqrt(va * va + vg * vg - 2 * va * vg * Math.cos(theta));
-    return vt.toFixed(1);
+    const steps: CalculationStep[] = [
+      { step: 1, title: "Formul", formula: "V_T = sqrt(V_A² + V_G² - 2 * V_A * V_G * cos(θ))", explanation: "Kosinüs teoremi kullanilarak gercek ruzgar hizi hesaplanir" },
+      { step: 2, title: "Degerlerin Yerlestirilmesi", formula: `V_T = sqrt(${va}² + ${vg}² - 2 * ${va} * ${vg} * cos(${thetaDeg}°))`, substitution: `V_T = sqrt(${(va * va).toFixed(1)} + ${(vg * vg).toFixed(1)} - 2 * ${va} * ${vg} * ${Math.cos(theta).toFixed(4)})` },
+      { step: 3, title: "Ara Hesap", formula: `V_T = sqrt(${(va * va).toFixed(1)} + ${(vg * vg).toFixed(1)} - ${(2 * va * vg * Math.cos(theta)).toFixed(1)})`, substitution: `V_T = sqrt(${(va * va + vg * vg - 2 * va * vg * Math.cos(theta)).toFixed(2)})` },
+      { step: 4, title: "Sonuc", formula: "V_T", result: `${vt.toFixed(1)} knot`, explanation: "Gercek ruzgar hizi" },
+    ];
+    return { value: vt.toFixed(1), steps };
   })();
 
   const airDensityResult = (() => {

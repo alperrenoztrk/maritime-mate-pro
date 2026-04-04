@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Calculator, Droplets, ArrowUpDown, AlertTriangle, CheckCircle, FlaskConical } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
+import type { CalculationStep } from "@/types/calculationSteps";
 
 interface BallastTank {
   name: string;
@@ -70,6 +72,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
   const [result, setResult] = useState<BallastResult | null>(null);
   const [bwmcData, setBwmcData] = useState<Partial<BWMCCompliance>>({});
   const [activeTab, setActiveTab] = useState(initialTab || "tanks");
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
   // Calculate total ballast weight
   const calculateTotalBallast = (): number => {
@@ -210,6 +213,92 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
     };
 
     setResult(result);
+
+    // Adım adım hesaplama açıklaması oluştur
+    const steps: CalculationStep[] = [
+      {
+        step: 1,
+        title: "Transfer ağırlığı hesabı",
+        formula: "W_transfer = V × ρ",
+        substitution: `W_transfer = ${operation.volume} × 1.025`,
+        result: `W_transfer = ${transferWeight.toFixed(3)} ton`,
+        explanation: "Transfer edilen suyun ağırlığı, hacim ile deniz suyu yoğunluğunun çarpımıdır"
+      },
+      {
+        step: 2,
+        title: "Kaynak tank yeni seviyesi",
+        formula: "Seviye_yeni = Seviye_eski - (V_transfer / Kapasite × 100)",
+        substitution: `Seviye_yeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
+        result: `Seviye_yeni = ${newFromLevel.toFixed(1)}%`,
+        explanation: `${fromTank.name} tankının transfer sonrası seviyesi`
+      },
+      {
+        step: 3,
+        title: "Hedef tank yeni seviyesi",
+        formula: "Seviye_yeni = Seviye_eski + (V_transfer / Kapasite × 100)",
+        substitution: `Seviye_yeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
+        result: `Seviye_yeni = ${newToLevel.toFixed(1)}%`,
+        explanation: `${toTank.name} tankının transfer sonrası seviyesi`
+      },
+      {
+        step: 4,
+        title: "Boyuna moment değişimi (Trim momenti)",
+        formula: "M_LCG = W_transfer × (LCG_hedef - LCG_kaynak)",
+        substitution: `M_LCG = ${transferWeight.toFixed(3)} × (${toTank.LCG} - ${fromTank.LCG})`,
+        result: `M_LCG = ${momentLCG.toFixed(3)} t·m`,
+        explanation: "Boyuna ağırlık merkezi farkından kaynaklanan moment"
+      },
+      {
+        step: 5,
+        title: "Enine moment değişimi (List momenti)",
+        formula: "M_TCG = W_transfer × (TCG_hedef - TCG_kaynak)",
+        substitution: `M_TCG = ${transferWeight.toFixed(3)} × (${toTank.TCG} - ${fromTank.TCG})`,
+        result: `M_TCG = ${momentTCG.toFixed(3)} t·m`,
+        explanation: "Enine ağırlık merkezi farkından kaynaklanan moment"
+      },
+      {
+        step: 6,
+        title: "Trim değişimi hesabı",
+        formula: "ΔTrim = M_LCG / (Δ × GML / 100)",
+        substitution: `ΔTrim = ${momentLCG.toFixed(3)} / (${displacement} × ${GML} / 100)`,
+        result: `ΔTrim = ${trimChange.toFixed(3)} cm = ${(trimChange / 100).toFixed(3)} m`,
+        explanation: "Δ = deplasman, GML = boyuna metasentrik yükseklik"
+      },
+      {
+        step: 7,
+        title: "List değişimi hesabı",
+        formula: "ΔList = M_TCG / (Δ × GMT) × (180/π)",
+        substitution: `ΔList = ${momentTCG.toFixed(3)} / (${displacement} × ${GMT}) × ${(180 / Math.PI).toFixed(4)}`,
+        result: `ΔList = ${listChange.toFixed(3)}°`,
+        explanation: "GMT = enine metasentrik yükseklik, sonuç dereceye çevrilir"
+      },
+      {
+        step: 8,
+        title: "Pompalama süresi hesabı",
+        formula: "t = V / min(Q_kaynak, Q_hedef)",
+        substitution: `t = ${operation.volume} / min(${fromTank.pumpRate}, ${toTank.pumpRate})`,
+        result: `t = ${pumpingTime.toFixed(2)} saat`,
+        explanation: "İki tankın pompa kapasitesinden düşük olanı baz alınır"
+      },
+      {
+        step: 9,
+        title: "Serbest yüzey düzeltmesi (FSC)",
+        formula: "FSC = Σ(ρ × l × b³ / 12) / Δ",
+        substitution: `FSC = Σ(FSM) / ${displacement}`,
+        result: `FSC = ${freeSurfaceEffect.toFixed(4)} m`,
+        explanation: "Kısmen dolu tanklardaki sıvı hareketinin stabiliteye etkisi (%5-%95 arası seviyeler)"
+      },
+      {
+        step: 10,
+        title: "Düzeltilmiş GM hesabı",
+        formula: "GM_düzeltilmiş = GM₀ - FSC",
+        substitution: `GM_düzeltilmiş = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
+        result: `GM_düzeltilmiş = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
+        explanation: "Serbest yüzey etkisi çıkarılarak düzeltilmiş metasentrik yükseklik bulunur"
+      }
+    ];
+
+    setCalcSteps(prev => ({...prev, "ballastTransfer": steps}));
 
     toast({
       title: "Balast Transfer Hesaplandı",
@@ -463,6 +552,8 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                             </ul>
                           </div>
                         )}
+
+                        <CalculationSteps steps={calcSteps["ballastTransfer"] || []} />
                       </CardContent>
                     </Card>
                   )}

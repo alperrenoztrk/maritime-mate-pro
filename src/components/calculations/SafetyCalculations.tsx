@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Calculator, Anchor, Shield, AlertTriangle, CheckCircle, LifeBuoy, Flame, Droplets, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 interface SafetyData {
   // Ship Dimensions
@@ -137,6 +139,7 @@ export const SafetyCalculations = () => {
   });
 
   const [result, setResult] = useState<SafetyResult | null>(null);
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
   
 
   // Anchoring calculations
@@ -467,6 +470,31 @@ export const SafetyCalculations = () => {
       };
 
       setResult(calculatedResult);
+      setCalcSteps({
+        anchoring: [
+          { step: 1, title: "Rüzgar kuvveti", formula: "F_rüzgar = 0.5 × ρ_hava × Cd × A × V²", result: `F_rüzgar = ${anchoring.windForce.toFixed(2)} ton` },
+          { step: 2, title: "Akıntı kuvveti", formula: "F_akıntı = 0.5 × ρ_su × Cd × A × V²", result: `F_akıntı = ${anchoring.currentForce.toFixed(2)} ton` },
+          { step: 3, title: "Toplam çevresel kuvvet", formula: "F_toplam = (F_rüzgar + F_akıntı) × Dalga faktörü", result: `F_toplam = ${anchoring.totalForce.toFixed(2)} ton` },
+          { step: 4, title: "Zincir uzunluğu", formula: "L = Kapsam × Efektif Derinlik", result: `Önerilen = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
+          { step: 5, title: "Tutma gücü", formula: "HP = (Çapa Ağırlığı / 1000) × Zemin Faktörü", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} ton, Emniyet Faktörü = ${anchoring.safetyFactor.toFixed(2)}` },
+        ],
+        mooring: [
+          { step: 1, title: "Hat başına yük", formula: "Yük = Toplam Kuvvet / Hat Sayısı", result: `Yük = ${mooring.mooringLineLoad.toFixed(2)} ton/hat` },
+          { step: 2, title: "Emniyet faktörü", formula: "SF = Kopma Yükü / (Hat Yükü × Hat Sayısı)", result: `SF = ${mooring.mooringLineSafety.toFixed(2)}` },
+        ],
+        fireFighting: [
+          { step: 1, title: "Yangın suyu debisi", formula: "Q = Pompa Kapasitesi × Verimlilik", result: `Q = ${fireFighting.fireWaterFlow.toFixed(1)} m³/saat` },
+          { step: 2, title: "Hortum erişimi", formula: "Erişim = √(2 × P × g) × faktör", result: `Erişim = ${fireFighting.fireReach.toFixed(1)} m` },
+        ],
+        lsa: [
+          { step: 1, title: "Toplam can kurtarma kapasitesi", formula: "Kapasite = (Bot Sayısı × Kapasite) + (Sal Sayısı × Kapasite)", result: `Toplam = ${lsa.totalLifeSavingCapacity} kişi (Gemide: ${data.totalPersonsOnBoard})` },
+          { step: 2, title: "SOLAS uygunluğu", formula: "Kapasite ≥ Gemideki Kişi Sayısı", result: lsa.lsaCompliance ? "UYGUN" : "UYGUN DEĞİL" },
+        ],
+        freeboard: [
+          { step: 1, title: "Fribord hesabı", formula: "Fribord = Derinlik - Draft", result: `Minimum = ${freeboard.minimumFreeboard.toFixed(2)} m, Gerçek = ${freeboard.actualFreeboard.toFixed(2)} m` },
+          { step: 2, title: "Uygunluk", formula: "Gerçek Fribord ≥ Minimum Fribord", result: freeboard.freeboardCompliance ? "UYGUN" : "UYGUN DEĞİL" },
+        ],
+      });
       toast({
         title: "Hesaplama Tamamlandı",
         description: "Güverte ve güvenlik hesaplamaları başarıyla tamamlandı.",
@@ -809,6 +837,8 @@ export const SafetyCalculations = () => {
                   <p className="text-lg font-semibold">{result.anchorHoldingPower.toFixed(1)} ton</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["anchoring"] || []} />
+              <CalculationSteps steps={calcSteps["mooring"] || []} />
             </CardContent>
           </Card>
 
@@ -850,6 +880,7 @@ export const SafetyCalculations = () => {
                 <Label className="text-sm font-medium">Yangın Kapsamı</Label>
                 <p className="text-sm">{result.fireCoverage}</p>
               </div>
+              <CalculationSteps steps={calcSteps["fireFighting"] || []} />
             </CardContent>
           </Card>
 
@@ -881,6 +912,7 @@ export const SafetyCalculations = () => {
                   </Badge>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["lsa"] || []} />
             </CardContent>
           </Card>
 
@@ -912,6 +944,7 @@ export const SafetyCalculations = () => {
                   </Badge>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["freeboard"] || []} />
             </CardContent>
           </Card>
 

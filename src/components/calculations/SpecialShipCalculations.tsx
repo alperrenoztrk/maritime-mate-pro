@@ -7,8 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Fuel, Container, Ship, Truck } from "lucide-react";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } = {}) => {
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
+
   // Tanker - COW and Inert Gas
   const [cargoTankVolume, setCargoTankVolume] = useState("");
   const [cowRate, setCowRate] = useState("");
@@ -50,10 +54,15 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       inertGasRequired,
       tankPressure: pressure,
       pressureStatus,
-      safetyNote: pressureStatus === 'safe' ? 'Güvenli basınç seviyesi' : 
-                  pressureStatus === 'caution' ? 'Dikkat - basınç yükseliyor' : 
+      safetyNote: pressureStatus === 'safe' ? 'Güvenli basınç seviyesi' :
+                  pressureStatus === 'caution' ? 'Dikkat - basınç yükseliyor' :
                   'Kritik basınç - acil müdahale gerekli'
     });
+    setCalcSteps(prev => ({ ...prev, tanker: [
+      { step: 1, title: "COW süresi hesabı", formula: "COW Süresi = Tank Hacmi / COW Oranı", substitution: `COW = ${volume.toFixed(1)} / ${rate.toFixed(1)}`, result: `COW Süresi = ${cowTime.toFixed(1)} saat` },
+      { step: 2, title: "İnert gaz gereksinimi", formula: "İnert Gaz = Tank Hacmi × 1.05 (%5 fazlalık)", substitution: `İnert Gaz = ${volume.toFixed(1)} × 1.05`, result: `İnert Gaz = ${inertGasRequired.toFixed(0)} m³` },
+      { step: 3, title: "Basınç kontrolü", formula: "P < 0.014 bar → Güvenli, P < 0.02 → Dikkat, P ≥ 0.02 → Kritik", result: `P = ${pressure} bar → ${pressureStatus}` },
+    ] }));
   };
 
   const calculateLNGBoilOff = () => {
@@ -74,10 +83,16 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       totalBoilOff,
       remainingCargo,
       lossPercentage,
-      status: lossPercentage < 2 ? 'excellent' : 
-              lossPercentage < 5 ? 'good' : 
+      status: lossPercentage < 2 ? 'excellent' :
+              lossPercentage < 5 ? 'good' :
               lossPercentage < 10 ? 'acceptable' : 'excessive'
     });
+    setCalcSteps(prev => ({ ...prev, lng: [
+      { step: 1, title: "Formül", formula: "Toplam Kayıp = (Günlük Boil-off% / 100) × Kapasite × Gün", explanation: "LNG buharlaşma kaybı hesabı" },
+      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Kayıp = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Toplam Kayıp = ${totalBoilOff.toFixed(1)} m³` },
+      { step: 3, title: "Kalan kargo", formula: "Kalan = Kapasite - Toplam Kayıp", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
+      { step: 4, title: "Kayıp yüzdesi", formula: "Kayıp% = (Toplam Kayıp / Kapasite) × 100", substitution: `Kayıp% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Kayıp = %${lossPercentage.toFixed(2)}` },
+    ] }));
   };
 
   const calculateContainerStack = () => {
@@ -100,12 +115,17 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       deckCapacity: capacity,
       safetyFactor,
       maxSafeHeight,
-      status: safetyFactor >= 1.5 ? 'safe' : 
+      status: safetyFactor >= 1.5 ? 'safe' :
               safetyFactor >= 1.2 ? 'caution' : 'dangerous',
-      recommendation: safetyFactor < 1.2 ? 'Stack yüksekliğini azaltın' : 
-                     safetyFactor < 1.5 ? 'Dikkatli yükleme yapın' : 
+      recommendation: safetyFactor < 1.2 ? 'Stack yüksekliğini azaltın' :
+                     safetyFactor < 1.5 ? 'Dikkatli yükleme yapın' :
                      'Güvenli yükleme limitleri'
     });
+    setCalcSteps(prev => ({ ...prev, container: [
+      { step: 1, title: "Toplam stack ağırlığı", formula: "Toplam = Konteyner Ağırlığı × Stack Yüksekliği", substitution: `Toplam = ${weight} × ${height}`, result: `Toplam = ${totalStackWeight} ton` },
+      { step: 2, title: "Emniyet faktörü", formula: "SF = Güverte Kapasitesi / Toplam Stack Ağırlığı", substitution: `SF = ${capacity} / ${totalStackWeight}`, result: `SF = ${safetyFactor.toFixed(2)}` },
+      { step: 3, title: "Maks. güvenli stack", formula: "Maks = ⌊Güverte Kapasitesi / Konteyner Ağırlığı⌋", substitution: `Maks = ⌊${capacity} / ${weight}⌋`, result: `Maks Güvenli Stack = ${maxSafeHeight} adet` },
+    ] }));
   };
 
   const calculateRoRoAxleLoad = () => {
@@ -127,10 +147,15 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
       totalPressure,
       safetyMargin,
       status: axleLoad <= limit ? 'safe' : 'overload',
-      recommendation: axleLoad <= limit ? 
-        `Güvenli - ${safetyMargin.toFixed(1)}% emniyet marjı` : 
+      recommendation: axleLoad <= limit ?
+        `Güvenli - ${safetyMargin.toFixed(1)}% emniyet marjı` :
         'Yük limiti aşıldı - araç reddedilmeli'
     });
+    setCalcSteps(prev => ({ ...prev, roro: [
+      { step: 1, title: "Axle yükü hesabı", formula: "Axle Yükü = Araç Ağırlığı / Axle Sayısı", substitution: `Axle Yükü = ${weight} / ${axles}`, result: `Axle Yükü = ${axleLoad.toFixed(2)} ton/axle` },
+      { step: 2, title: "Emniyet marjı", formula: "Marj = ((Limit - Axle Yükü) / Limit) × 100", substitution: `Marj = ((${limit} - ${axleLoad.toFixed(2)}) / ${limit}) × 100`, result: `Emniyet Marjı = ${safetyMargin.toFixed(1)}%` },
+      { step: 3, title: "Sonuç", formula: "Axle Yükü ≤ Limit → Güvenli", result: axleLoad <= limit ? `${axleLoad.toFixed(2)} ≤ ${limit} → GÜVENLİ` : `${axleLoad.toFixed(2)} > ${limit} → AŞIRI YÜK` },
+    ] }));
   };
 
   return (
@@ -207,8 +232,8 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                       </div>
                       <div>
                         <span className="font-medium">Basınç Durumu:</span>
-                        <Badge variant={tankerResult.pressureStatus === 'safe' ? 'default' : 
-                                      tankerResult.pressureStatus === 'caution' ? 'outline' : 'destructive'} 
+                        <Badge variant={tankerResult.pressureStatus === 'safe' ? 'default' :
+                                      tankerResult.pressureStatus === 'caution' ? 'outline' : 'destructive'}
                                className="ml-2">
                           {tankerResult.pressureStatus}
                         </Badge>
@@ -221,6 +246,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   </div>
                 </div>
               )}
+              <CalculationSteps steps={calcSteps["tanker"] || []} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -289,8 +315,8 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                       </div>
                       <div>
                         <span className="font-medium">Kayıp Oranı:</span>
-                        <Badge variant={lngResult.status === 'excellent' ? 'default' : 
-                                      lngResult.status === 'good' ? 'outline' : 'destructive'} 
+                        <Badge variant={lngResult.status === 'excellent' ? 'default' :
+                                      lngResult.status === 'good' ? 'outline' : 'destructive'}
                                className="ml-2">
                           {lngResult.lossPercentage.toFixed(2)}%
                         </Badge>
@@ -303,6 +329,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   </div>
                 </div>
               )}
+              <CalculationSteps steps={calcSteps["lng"] || []} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -375,8 +402,8 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                       </div>
                       <div>
                         <span className="font-medium">Durum:</span>
-                        <Badge variant={containerResult.status === 'safe' ? 'default' : 
-                                      containerResult.status === 'caution' ? 'outline' : 'destructive'} 
+                        <Badge variant={containerResult.status === 'safe' ? 'default' :
+                                      containerResult.status === 'caution' ? 'outline' : 'destructive'}
                                className="ml-2">
                           {containerResult.status}
                         </Badge>
@@ -389,6 +416,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   </div>
                 </div>
               )}
+              <CalculationSteps steps={calcSteps["container"] || []} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -457,7 +485,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                       </div>
                       <div>
                         <span className="font-medium">Durum:</span>
-                        <Badge variant={roroResult.status === 'safe' ? 'default' : 'destructive'} 
+                        <Badge variant={roroResult.status === 'safe' ? 'default' : 'destructive'}
                                className="ml-2">
                           {roroResult.status}
                         </Badge>
@@ -470,6 +498,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                   </div>
                 </div>
               )}
+              <CalculationSteps steps={calcSteps["roro"] || []} />
             </CardContent>
           </Card>
         </TabsContent>

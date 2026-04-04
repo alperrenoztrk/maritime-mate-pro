@@ -6,8 +6,12 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { DollarSign, TrendingUp, Clock } from "lucide-react";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 export const EconomicCalculations = () => {
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
+
   // Time Charter Equivalent
   const [grossFreight, setGrossFreight] = useState("");
   const [voyageExpenses, setVoyageExpenses] = useState("");
@@ -45,6 +49,11 @@ export const EconomicCalculations = () => {
       tce: tce,
       profitability: tce > 15000 ? 'Excellent' : tce > 10000 ? 'Good' : tce > 5000 ? 'Fair' : 'Poor'
     });
+    setCalcSteps(prev => ({ ...prev, tce: [
+      { step: 1, title: "Formül", formula: "TCE = (Brüt Navlun - Sefer Giderleri) / Sefer Günü", explanation: "Zaman Eşdeğer Kiralama (TCE), günlük kazancı hesaplar" },
+      { step: 2, title: "Net navlun hesabı", formula: "Net Navlun = Brüt Navlun - Sefer Giderleri", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
+      { step: 3, title: "TCE hesabı", formula: "TCE = Net Navlun / Gün", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/gün` },
+    ] }));
   };
 
   const calculateDemurrage = () => {
@@ -82,6 +91,18 @@ export const EconomicCalculations = () => {
     }
 
     setDemurrageResult(result);
+    const demSteps: CalculationStep[] = [
+      { step: 1, title: "Formül", formula: "Süre Farkı = Gerçek Süre - Lay Time", explanation: "Pozitif fark demurrage, negatif fark despatch anlamına gelir" },
+      { step: 2, title: "Süre farkı hesabı", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} saat` },
+    ];
+    if (timeDifference > 0) {
+      demSteps.push({ step: 3, title: "Demurrage hesabı", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
+    } else if (timeDifference < 0) {
+      demSteps.push({ step: 3, title: "Despatch hesabı", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
+    } else {
+      demSteps.push({ step: 3, title: "Sonuç", formula: "Fark = 0", result: "Tam zamanında tamamlandı, ödeme yok" });
+    }
+    setCalcSteps(prev => ({ ...prev, demurrage: demSteps }));
   };
 
   const calculateVoyageEconomics = () => {
@@ -106,11 +127,17 @@ export const EconomicCalculations = () => {
       totalCosts,
       netProfit,
       profitMargin,
-      profitability: profitMargin > 20 ? 'Excellent' : 
-                     profitMargin > 10 ? 'Good' : 
-                     profitMargin > 5 ? 'Fair' : 
+      profitability: profitMargin > 20 ? 'Excellent' :
+                     profitMargin > 10 ? 'Good' :
+                     profitMargin > 5 ? 'Fair' :
                      profitMargin > 0 ? 'Poor' : 'Loss'
     });
+    setCalcSteps(prev => ({ ...prev, voyage: [
+      { step: 1, title: "Brüt gelir hesabı", formula: "Brüt Gelir = Kargo Miktarı × Navlun Oranı", substitution: `Brüt Gelir = ${quantity.toLocaleString()} × $${rate}`, result: `Brüt Gelir = $${grossRevenue.toLocaleString()}` },
+      { step: 2, title: "Toplam maliyet", formula: "Toplam Maliyet = Yakıt + Liman Masrafları", substitution: `Toplam = $${bunker.toLocaleString()} + $${ports.toLocaleString()}`, result: `Toplam Maliyet = $${totalCosts.toLocaleString()}` },
+      { step: 3, title: "Net kâr", formula: "Net Kâr = Brüt Gelir - Toplam Maliyet", substitution: `Net Kâr = $${grossRevenue.toLocaleString()} - $${totalCosts.toLocaleString()}`, result: `Net Kâr = $${netProfit.toLocaleString()}` },
+      { step: 4, title: "Kâr marjı", formula: "Kâr Marjı = (Net Kâr / Brüt Gelir) × 100", substitution: `Marj = ($${netProfit.toLocaleString()} / $${grossRevenue.toLocaleString()}) × 100`, result: `Kâr Marjı = %${profitMargin.toFixed(1)}` },
+    ] }));
   };
 
   return (
@@ -184,8 +211,8 @@ export const EconomicCalculations = () => {
                   </div>
                   <div className="col-span-2">
                     <span className="font-medium">Kârlılık:</span>
-                    <Badge variant={tceResult.profitability === 'Excellent' ? 'default' : 
-                                  tceResult.profitability === 'Good' ? 'outline' : 'destructive'} 
+                    <Badge variant={tceResult.profitability === 'Excellent' ? 'default' :
+                                  tceResult.profitability === 'Good' ? 'outline' : 'destructive'}
                            className="ml-2">
                       {tceResult.profitability}
                     </Badge>
@@ -194,6 +221,7 @@ export const EconomicCalculations = () => {
               </div>
             </div>
           )}
+          <CalculationSteps steps={calcSteps["tce"] || []} />
         </CardContent>
       </Card>
 
@@ -254,8 +282,8 @@ export const EconomicCalculations = () => {
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <span className="font-medium">Tip:</span>
-                    <Badge variant={demurrageResult.status === 'bonus' ? 'default' : 
-                                  demurrageResult.status === 'penalty' ? 'destructive' : 'outline'} 
+                    <Badge variant={demurrageResult.status === 'bonus' ? 'default' :
+                                  demurrageResult.status === 'penalty' ? 'destructive' : 'outline'}
                            className="ml-2">
                       {demurrageResult.type}
                     </Badge>
@@ -276,6 +304,7 @@ export const EconomicCalculations = () => {
               </div>
             </div>
           )}
+          <CalculationSteps steps={calcSteps["demurrage"] || []} />
         </CardContent>
       </Card>
 
@@ -360,16 +389,16 @@ export const EconomicCalculations = () => {
                   </div>
                   <div>
                     <span className="font-medium">Kâr Marjı:</span>
-                    <Badge variant={voyageResult.profitMargin > 10 ? 'default' : 
-                                  voyageResult.profitMargin > 0 ? 'outline' : 'destructive'} 
+                    <Badge variant={voyageResult.profitMargin > 10 ? 'default' :
+                                  voyageResult.profitMargin > 0 ? 'outline' : 'destructive'}
                            className="ml-2">
                       {voyageResult.profitMargin.toFixed(1)}%
                     </Badge>
                   </div>
                   <div className="col-span-2">
                     <span className="font-medium">Değerlendirme:</span>
-                    <Badge variant={voyageResult.profitability === 'Excellent' ? 'default' : 
-                                  voyageResult.profitability === 'Good' ? 'outline' : 'destructive'} 
+                    <Badge variant={voyageResult.profitability === 'Excellent' ? 'default' :
+                                  voyageResult.profitability === 'Good' ? 'outline' : 'destructive'}
                            className="ml-2">
                       {voyageResult.profitability}
                     </Badge>
@@ -378,6 +407,7 @@ export const EconomicCalculations = () => {
               </div>
             </div>
           )}
+          <CalculationSteps steps={calcSteps["voyage"] || []} />
         </CardContent>
       </Card>
     </div>

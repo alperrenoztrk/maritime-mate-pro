@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Calculator, Leaf, TrendingDown, BarChart3, AlertTriangle, CheckCircle, Target, Activity } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 interface EmissionData {
   // Ship Parameters
@@ -110,7 +112,8 @@ export const EmissionCalculations = ({ initialTab }: { initialTab?: string } = {
   });
 
   const [result, setResult] = useState<EmissionResult | null>(null);
-  
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
+
 
   // Emission factors by fuel type (tonnes CO2/tonne fuel)
   const emissionFactors = {
@@ -349,9 +352,293 @@ export const EmissionCalculations = ({ initialTab }: { initialTab?: string } = {
       };
 
       setResult(calculatedResult);
+
+      // Emisyon hesaplama adimlari
+      const factors = emissionFactors[data.fuelType];
+      const adjustedSoxFactor = data.fuelType === 'HFO' ?
+        factors.sox * (data.sulfurContent / 3.5) : factors.sox;
+
+      const emissionSteps: CalculationStep[] = [
+        {
+          step: 1,
+          title: "CO2 emisyon faktoru belirlenmesi",
+          formula: "CO2_faktor = Yakit_Tipi_Faktoru",
+          substitution: `CO2_faktor = ${factors.co2} (${data.fuelType})`,
+          result: `${factors.co2} ton CO2/ton yakit`,
+          explanation: `${data.fuelType} yakit tipi icin standart CO2 emisyon faktoru kullanilmaktadir.`
+        },
+        {
+          step: 2,
+          title: "SOx emisyon faktoru ayarlamasi",
+          formula: data.fuelType === 'HFO' ? "SOx_faktor = Baz_SOx_faktor x (Kukurt_Icerik / 3.5)" : "SOx_faktor = Baz_SOx_faktor",
+          substitution: data.fuelType === 'HFO' ? `SOx_faktor = ${factors.sox} x (${data.sulfurContent} / 3.5)` : `SOx_faktor = ${factors.sox}`,
+          result: `${adjustedSoxFactor.toFixed(6)}`,
+          explanation: data.fuelType === 'HFO'
+            ? `HFO icin SOx faktoru, gercek kukurt icerigine (%${data.sulfurContent}) gore ayarlanmaktadir.`
+            : `${data.fuelType} yakit tipi icin standart SOx emisyon faktoru kullanilmaktadir.`
+        },
+        {
+          step: 3,
+          title: "Yillik CO2 emisyonu hesabi",
+          formula: "CO2 = Yillik_Yakit_Tuketimi x CO2_faktor",
+          substitution: `CO2 = ${data.annualFuelConsumption} x ${factors.co2}`,
+          result: `${emissions.co2Emissions.toFixed(2)} ton/yil`,
+          explanation: "Yillik yakit tuketimi ile CO2 emisyon faktoru carpilarak toplam CO2 emisyonu bulunur."
+        },
+        {
+          step: 4,
+          title: "Yillik SOx emisyonu hesabi",
+          formula: "SOx = Yillik_Yakit_Tuketimi x SOx_faktor",
+          substitution: `SOx = ${data.annualFuelConsumption} x ${adjustedSoxFactor.toFixed(6)}`,
+          result: `${emissions.soxEmissions.toFixed(2)} ton/yil`,
+          explanation: "Kukurt oksit emisyonu, yakit tuketimi ve ayarlanmis SOx faktoru ile hesaplanir."
+        },
+        {
+          step: 5,
+          title: "Yillik NOx emisyonu hesabi",
+          formula: "NOx = Yillik_Yakit_Tuketimi x NOx_faktor",
+          substitution: `NOx = ${data.annualFuelConsumption} x ${factors.nox}`,
+          result: `${emissions.noxEmissions.toFixed(2)} ton/yil`,
+          explanation: "Nitrojen oksit emisyonu, yakit tuketimi ve NOx faktoru ile hesaplanir."
+        },
+        {
+          step: 6,
+          title: "Yillik PM emisyonu hesabi",
+          formula: "PM = Yillik_Yakit_Tuketimi x PM_faktor",
+          substitution: `PM = ${data.annualFuelConsumption} x ${factors.pm}`,
+          result: `${emissions.pmEmissions.toFixed(4)} ton/yil`,
+          explanation: "Partikul madde emisyonu, yakit tuketimi ve PM faktoru ile hesaplanir."
+        }
+      ];
+
+      // CII hesaplama adimlari
+      const co2ForCII = emissions.co2Emissions;
+      const reference = ciiReferences[data.shipType];
+      const currentYear = new Date().getFullYear();
+      const reductionFactor = 1 - ((currentYear - 2019) * 0.02);
+      const refCIIBase = reference.a * Math.pow(data.deadweight, -reference.c);
+
+      const ciiSteps: CalculationStep[] = [
+        {
+          step: 1,
+          title: "CO2 emisyonunun gram cinsine cevirilmesi",
+          formula: "CO2_gram = CO2_ton x 1.000.000",
+          substitution: `CO2_gram = ${co2ForCII.toFixed(2)} x 1.000.000`,
+          result: `${(co2ForCII * 1000000).toFixed(0)} g`,
+          explanation: "CII hesabi icin CO2 emisyonu gram cinsine donusturulur."
+        },
+        {
+          step: 2,
+          title: "Gerceklesen CII hesabi",
+          formula: "CII_gercek = (CO2_gram) / Tasima_Isi",
+          substitution: `CII_gercek = ${(co2ForCII * 1000000).toFixed(0)} / ${data.transportWork}`,
+          result: `${cii.actualCII.toFixed(4)} g CO2/ton-mil`,
+          explanation: "Gerceklesen CII, toplam CO2 emisyonunun (gram) tasima isine bolunmesiyle bulunur."
+        },
+        {
+          step: 3,
+          title: "Referans CII degerinin hesaplanmasi",
+          formula: "CII_ref = a x DWT^(-c)",
+          substitution: `CII_ref = ${reference.a} x ${data.deadweight}^(-${reference.c})`,
+          result: `${refCIIBase.toFixed(4)} g CO2/ton-mil`,
+          explanation: `${data.shipType} gemi tipi icin referans parametreleri: a=${reference.a}, c=${reference.c}.`
+        },
+        {
+          step: 4,
+          title: "Yillik azaltma faktorunun uygulanmasi",
+          formula: "Azaltma_Faktoru = 1 - ((Mevcut_Yil - 2019) x 0.02)",
+          substitution: `Azaltma_Faktoru = 1 - ((${currentYear} - 2019) x 0.02)`,
+          result: `${reductionFactor.toFixed(4)}`,
+          explanation: `2019'dan itibaren yilda %2 azaltma gereksinimi uygulanir. ${currentYear} icin toplam %${((currentYear - 2019) * 2)} azaltma.`
+        },
+        {
+          step: 5,
+          title: "Gerekli CII hesabi",
+          formula: "CII_gerekli = CII_ref x Azaltma_Faktoru",
+          substitution: `CII_gerekli = ${refCIIBase.toFixed(4)} x ${reductionFactor.toFixed(4)}`,
+          result: `${cii.requiredCII.toFixed(4)} g CO2/ton-mil`,
+          explanation: "Gerekli CII, referans deger ile azaltma faktorunun carpimidir."
+        },
+        {
+          step: 6,
+          title: "CII derecelendirmesi",
+          formula: "Oran = CII_gercek / CII_gerekli",
+          substitution: `Oran = ${cii.actualCII.toFixed(4)} / ${cii.requiredCII.toFixed(4)}`,
+          result: `${(cii.actualCII / cii.requiredCII).toFixed(4)} => Derece: ${cii.ciiRating}`,
+          explanation: "Oran <= 0.78: A, <= 0.94: B, <= 1.06: C, <= 1.18: D, > 1.18: E olarak derecelendirilir."
+        }
+      ];
+
+      // EEXI hesaplama adimlari
+      const mainEngineCO2 = (data.mainEngineRating * data.mainEngineLoadFactor / 100) * factors.co2 * 0.185;
+      const auxEngineCO2 = (data.auxiliaryEngineRating * data.auxiliaryEngineLoadFactor / 100) * factors.co2 * 0.215;
+      const mainEngineEffective = data.mainEngineRating * data.mainEngineLoadFactor / 100;
+      const auxEngineEffective = data.auxiliaryEngineRating * data.auxiliaryEngineLoadFactor / 100;
+
+      const eexiSteps: CalculationStep[] = [
+        {
+          step: 1,
+          title: "Ana motor efektif gucunun hesaplanmasi",
+          formula: "P_ana = Ana_Motor_Gucu x Yuk_Faktoru / 100",
+          substitution: `P_ana = ${data.mainEngineRating} x ${data.mainEngineLoadFactor} / 100`,
+          result: `${mainEngineEffective.toFixed(2)} kW`,
+          explanation: "Ana motorun efektif gucu, nominal guc ile yuk faktorunun carpimidir."
+        },
+        {
+          step: 2,
+          title: "Ana motor CO2 katki hesabi",
+          formula: "CO2_ana = P_ana x CO2_faktor x SFOC",
+          substitution: `CO2_ana = ${mainEngineEffective.toFixed(2)} x ${factors.co2} x 0.185`,
+          result: `${mainEngineCO2.toFixed(4)}`,
+          explanation: "Ana motor CO2 katkisi; efektif guc, emisyon faktoru ve yakit tuketim oraninin (SFOC = 0.185) carpimidir."
+        },
+        {
+          step: 3,
+          title: "Yardimci motor efektif gucunun hesaplanmasi",
+          formula: "P_yard = Yard_Motor_Gucu x Yuk_Faktoru / 100",
+          substitution: `P_yard = ${data.auxiliaryEngineRating} x ${data.auxiliaryEngineLoadFactor} / 100`,
+          result: `${auxEngineEffective.toFixed(2)} kW`,
+          explanation: "Yardimci motorun efektif gucu, nominal guc ile yuk faktorunun carpimidir."
+        },
+        {
+          step: 4,
+          title: "Yardimci motor CO2 katki hesabi",
+          formula: "CO2_yard = P_yard x CO2_faktor x SFOC",
+          substitution: `CO2_yard = ${auxEngineEffective.toFixed(2)} x ${factors.co2} x 0.215`,
+          result: `${auxEngineCO2.toFixed(4)}`,
+          explanation: "Yardimci motor CO2 katkisi; efektif guc, emisyon faktoru ve yakit tuketim oraninin (SFOC = 0.215) carpimidir."
+        },
+        {
+          step: 5,
+          title: "Elde edilen EEXI hesabi",
+          formula: "EEXI_elde = (CO2_ana + CO2_yard) x 1000 / DWT",
+          substitution: `EEXI_elde = (${mainEngineCO2.toFixed(4)} + ${auxEngineCO2.toFixed(4)}) x 1000 / ${data.deadweight}`,
+          result: `${eexi.attainedEEXI.toFixed(4)} g CO2/ton-mil`,
+          explanation: "Elde edilen EEXI, toplam CO2 katkisinin 1000 ile carpilip DWT'ye bolunmesiyle bulunur."
+        },
+        {
+          step: 6,
+          title: "Gerekli EEXI hesabi",
+          formula: "EEXI_gerekli = a x DWT^(-c) x 0.75",
+          substitution: `EEXI_gerekli = ${reference.a} x ${data.deadweight}^(-${reference.c}) x 0.75`,
+          result: `${eexi.requiredEEXI.toFixed(4)} g CO2/ton-mil`,
+          explanation: "Gerekli EEXI, referans degerden %25 azaltma uygulanarak hesaplanir."
+        },
+        {
+          step: 7,
+          title: "EEXI uygunluk kontrolu",
+          formula: "Uygunluk = EEXI_elde <= EEXI_gerekli",
+          substitution: `${eexi.attainedEEXI.toFixed(4)} <= ${eexi.requiredEEXI.toFixed(4)}`,
+          result: eexi.eexiCompliance ? "Uygun" : "Uygun Degil",
+          explanation: eexi.eexiCompliance
+            ? "Elde edilen EEXI, gerekli degerin altinda oldugundan gemi uygundur."
+            : "Elde edilen EEXI, gerekli degeri astigindan teknik iyilestirme gerekmektedir."
+        }
+      ];
+
+      // SEEMP hesaplama adimlari
+      const totalEfficiencyGain = data.hullCoatingReduction + data.propellerOptimization +
+                                  data.engineTuning + data.weatherRouting;
+      const investmentCost = data.deadweight * 50;
+
+      const seempSteps: CalculationStep[] = [
+        {
+          step: 1,
+          title: "Toplam verimlilik kazancinin hesaplanmasi",
+          formula: "Toplam_Verim = Govde_Kaplama + Pervane_Opt + Motor_Ayar + Hava_Rota",
+          substitution: `Toplam_Verim = ${data.hullCoatingReduction} + ${data.propellerOptimization} + ${data.engineTuning} + ${data.weatherRouting}`,
+          result: `%${totalEfficiencyGain.toFixed(1)}`,
+          explanation: "Tum verimlilik onlemlerinin toplam kazanci hesaplanir."
+        },
+        {
+          step: 2,
+          title: "Yillik yakit tasarrufu hesabi",
+          formula: "Yakit_Tasarrufu = Yillik_Tuketim x (Toplam_Verim / 100)",
+          substitution: `Yakit_Tasarrufu = ${data.annualFuelConsumption} x (${totalEfficiencyGain.toFixed(1)} / 100)`,
+          result: `${seemp.fuelSavings.toFixed(2)} ton/yil`,
+          explanation: "Verimlilik kazanci oraninda yakit tasarrufu saglanir."
+        },
+        {
+          step: 3,
+          title: "Emisyon azaltma orani",
+          formula: "Emisyon_Azalma = (Yakit_Tasarrufu / Yillik_Tuketim) x 100",
+          substitution: `Emisyon_Azalma = (${seemp.fuelSavings.toFixed(2)} / ${data.annualFuelConsumption}) x 100`,
+          result: `%${seemp.emissionReduction.toFixed(2)}`,
+          explanation: "Yakit tasarrufu orani dogrudan emisyon azaltma oranina karsilik gelir."
+        },
+        {
+          step: 4,
+          title: "Yillik maliyet tasarrufu hesabi",
+          formula: "Maliyet_Tasarrufu = Yakit_Tasarrufu x Yakit_Fiyati",
+          substitution: `Maliyet_Tasarrufu = ${seemp.fuelSavings.toFixed(2)} x 600`,
+          result: `$${seemp.costSavings.toFixed(0)}/yil`,
+          explanation: "Yakit fiyati ton basina $600 olarak varsayilmistir."
+        },
+        {
+          step: 5,
+          title: "Yatirim maliyeti tahmini",
+          formula: "Yatirim = DWT x 50",
+          substitution: `Yatirim = ${data.deadweight} x 50`,
+          result: `$${investmentCost.toFixed(0)}`,
+          explanation: "Yaklasik yatirim maliyeti DWT basina $50 olarak tahmin edilmistir."
+        },
+        {
+          step: 6,
+          title: "Geri odeme suresi hesabi",
+          formula: "Geri_Odeme = Yatirim / Yillik_Tasarruf",
+          substitution: `Geri_Odeme = ${investmentCost.toFixed(0)} / ${seemp.costSavings.toFixed(0)}`,
+          result: `${seemp.paybackPeriod.toFixed(2)} yil`,
+          explanation: "Yatirim maliyetinin yillik tasarrufa bolunmesiyle geri odeme suresi bulunur."
+        }
+      ];
+
+      // Gelecek projeksiyonlari hesaplama adimlari
+      const futureSteps: CalculationStep[] = [
+        {
+          step: 1,
+          title: "Mevcut CO2 emisyonunun belirlenmesi",
+          formula: "Mevcut_CO2 = Yillik_Yakit x CO2_faktor",
+          substitution: `Mevcut_CO2 = ${data.annualFuelConsumption} x ${factors.co2}`,
+          result: `${emissions.co2Emissions.toFixed(2)} ton/yil`,
+          explanation: "Gelecek projeksiyonlari icin mevcut emisyon degeri temel alinir."
+        },
+        {
+          step: 2,
+          title: "2025 hedef emisyon hesabi",
+          formula: "Hedef_2025 = Mevcut_CO2 x 0.80",
+          substitution: `Hedef_2025 = ${emissions.co2Emissions.toFixed(2)} x 0.80`,
+          result: `${futureProjections.futureEmissions2025.toFixed(2)} ton`,
+          explanation: "IMO hedeflerine gore 2025 yilina kadar %20 azaltma ongorulmektedir."
+        },
+        {
+          step: 3,
+          title: "2030 hedef emisyon hesabi",
+          formula: "Hedef_2030 = Mevcut_CO2 x 0.60",
+          substitution: `Hedef_2030 = ${emissions.co2Emissions.toFixed(2)} x 0.60`,
+          result: `${futureProjections.futureEmissions2030.toFixed(2)} ton`,
+          explanation: "IMO hedeflerine gore 2030 yilina kadar %40 azaltma ongorulmektedir."
+        },
+        {
+          step: 4,
+          title: "Gerekli azaltma oraninin hesaplanmasi",
+          formula: "Gerekli_Azalma = ((Mevcut - Hedef_2030) / Mevcut) x 100",
+          substitution: `Gerekli_Azalma = ((${emissions.co2Emissions.toFixed(2)} - ${futureProjections.futureEmissions2030.toFixed(2)}) / ${emissions.co2Emissions.toFixed(2)}) x 100`,
+          result: `%${futureProjections.requiredReduction.toFixed(2)}`,
+          explanation: "2030 hedefine ulasmak icin gereken toplam emisyon azaltma yuzdesi."
+        }
+      ];
+
+      setCalcSteps({
+        emissions: emissionSteps,
+        cii: ciiSteps,
+        eexi: eexiSteps,
+        seemp: seempSteps,
+        future: futureSteps
+      });
+
       toast({
-        title: "Hesaplama Tamamlandı",
-        description: "Emisyon ve çevresel hesaplamalar başarıyla tamamlandı.",
+        title: "Hesaplama Tamamlandi",
+        description: "Emisyon ve cevresel hesaplamalar basariyla tamamlandi.",
       });
     } catch (error) {
       toast({
@@ -595,6 +882,7 @@ export const EmissionCalculations = ({ initialTab }: { initialTab?: string } = {
                   <p className="text-2xl font-bold text-purple-600">{result.pmEmissions.toFixed(2)} ton/yıl</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["emissions"] || []} />
             </CardContent>
           </Card>
 
@@ -656,6 +944,9 @@ export const EmissionCalculations = ({ initialTab }: { initialTab?: string } = {
                   <p className="text-lg font-semibold">{result.paybackPeriod.toFixed(1)} yıl</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["cii"] || []} />
+              <CalculationSteps steps={calcSteps["eexi"] || []} />
+              <CalculationSteps steps={calcSteps["seemp"] || []} />
             </CardContent>
           </Card>
 
@@ -694,6 +985,7 @@ export const EmissionCalculations = ({ initialTab }: { initialTab?: string } = {
                   </Badge>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["future"] || []} />
             </CardContent>
           </Card>
 
