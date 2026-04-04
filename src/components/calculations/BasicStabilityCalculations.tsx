@@ -112,15 +112,15 @@ export const BasicStabilityCalculations = () => {
       {
         step: 1,
         title: "Formül",
-        formula: "BM = I_xx / ∇",
-        explanation: "BM (metacentrik yarıçap), su hattı atalet momentinin (I_xx) hacim deplasmanına (∇) bölünmesiyle bulunur."
+        formula: "BM = Ixx / ∇",
+        explanation: "BM (metacentrik yarıçap), su hattı atalet momentinin (Ixx) hacim deplasmanına (∇) bölünmesiyle bulunur."
       },
       {
         step: 2,
-        title: "Atalet momentini hesapla (I_xx)",
-        formula: "I_xx = (L × B³) / 12",
-        substitution: `I_xx = (${L!.toFixed(2)} × ${B!.toFixed(2)}³) / 12 = (${L!.toFixed(2)} × ${Math.pow(B!, 3).toFixed(2)}) / 12`,
-        result: `I_xx = ${Ixx.toFixed(3)} m⁴`,
+        title: "Atalet momentini hesapla (Ixx)",
+        formula: "Ixx = (L × B³) / 12",
+        substitution: `Ixx = (${L!.toFixed(2)} × ${B!.toFixed(2)}³) / 12 = (${L!.toFixed(2)} × ${Math.pow(B!, 3).toFixed(2)}) / 12`,
+        result: `Ixx = ${Ixx.toFixed(3)} m⁴`,
       },
       {
         step: 3,
@@ -132,7 +132,7 @@ export const BasicStabilityCalculations = () => {
       {
         step: 4,
         title: "Sonuç",
-        formula: "BM = I_xx / ∇",
+        formula: "BM = Ixx / ∇",
         substitution: `BM = ${Ixx.toFixed(3)} / ${volumeDisplacement.toFixed(3)}`,
         result: `BM = ${result.toFixed(3)} m`,
       },

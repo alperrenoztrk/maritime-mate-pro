@@ -416,13 +416,13 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         fuel: [
           { step: 1, title: "SFOC hesabı", formula: "SFOC interpolasyon ile hesaplanır (yük %'sine göre)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Yük: %${data.currentLoad})` },
           { step: 2, title: "Güç çıkışı", formula: "P = MCR × Yük / 100", substitution: `P = ${data.mcrPower} × ${data.currentLoad} / 100`, result: `P = ${powerOutput.toFixed(0)} kW` },
-          { step: 3, title: "Saatlik tüketim", formula: "FC_saat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/saat` },
-          { step: 4, title: "Günlük tüketim", formula: "FC_gün = (FC_saat × Çalışma Saati) / 1000", substitution: `FC_gün = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FC_gün = ${dailyConsumption.toFixed(1)} ton/gün` },
+          { step: 3, title: "Saatlik tüketim", formula: "FCsaat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/saat` },
+          { step: 4, title: "Günlük tüketim", formula: "FCgün = (FCsaat × Çalışma Saati) / 1000", substitution: `FCgün = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FCgün = ${dailyConsumption.toFixed(1)} ton/gün` },
         ],
         power: [
           { step: 1, title: "Fren gücü", formula: "BP = İndike Güç × Mekanik Verim / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
           { step: 2, title: "Elektrik gücü", formula: "EP = BP × Jeneratör Verimi / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
-          { step: 3, title: "İndike termal verim", formula: "η_i = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `η_i = ${indicatedThermalEfficiency.toFixed(1)}%` },
+          { step: 3, title: "İndike termal verim", formula: "ηi = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `ηi = ${indicatedThermalEfficiency.toFixed(1)}%` },
           { step: 4, title: "Toplam verim", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
         ],
         emissions: [
@@ -436,11 +436,11 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         ],
         cooling: [
           { step: 1, title: "Isı atım oranı", formula: "Q = Güç × 0.4 (tipik %40 ısı atımı)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
-          { step: 2, title: "Gerekli soğutma", formula: "Q_gerekli = Q × 1.2 (%20 emniyet)", substitution: `Q_gerekli = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Q_gerekli = ${coolingCapacityRequired.toFixed(0)} kW` },
+          { step: 2, title: "Gerekli soğutma", formula: "Qgerekli = Q × 1.2 (%20 emniyet)", substitution: `Qgerekli = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Qgerekli = ${coolingCapacityRequired.toFixed(0)} kW` },
         ],
         heatExchanger: [
-          { step: 1, title: "Isı değiştirici alanı", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (U_eff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
-          { step: 2, title: "Boru sayısı", formula: "n = A / (π × d × L_boru)", result: `n = ${heatExchanger.tubes} adet` },
+          { step: 1, title: "Isı değiştirici alanı", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (Ueff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
+          { step: 2, title: "Boru sayısı", formula: "n = A / (π × d × Lboru)", result: `n = ${heatExchanger.tubes} adet` },
         ],
         tanks: [
           { step: 1, title: "Pis su tankı", formula: "V = L × B × H", substitution: `V = ${data.bilgeTankLength} × ${data.bilgeTankWidth} × ${data.bilgeTankHeight}`, result: `V = ${tanks.bilgeCapacity.toFixed(1)} m³` },

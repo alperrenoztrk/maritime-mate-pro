@@ -269,15 +269,15 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 1,
         title: "Yapısal ağırlığın hesaplanması",
-        formula: "W_yapisal = Deplasman x 0.30",
-        substitution: `W_yapisal = ${data.displacement} x 0.30`,
-        result: `W_yapisal = ${structuralWeight.toFixed(1)} ton`,
+        formula: "Wyapisal = Deplasman x 0.30",
+        substitution: `Wyapisal = ${data.displacement} x 0.30`,
+        result: `Wyapisal = ${structuralWeight.toFixed(1)} ton`,
         explanation: "Geminin yapısal ağırlığı, deplasmanın yaklaşık %30'u olarak kabul edilir."
       },
       {
         step: 2,
         title: "Dağıtılmış ağırlığın hesaplanması",
-        formula: "w = W_yapisal / L",
+        formula: "w = Wyapisal / L",
         substitution: `w = ${structuralWeight.toFixed(1)} / ${data.L}`,
         result: `w = ${distributedWeight.toFixed(2)} ton/m`,
         explanation: "Yapısal ağırlık gemi boyunca düzgün dağıtılmış kabul edilir."
@@ -285,41 +285,41 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 3,
         title: "Toplam yükün hesaplanması",
-        formula: "Q_toplam = w x L + Sigma(P_i)",
-        substitution: `Q_toplam = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
-        result: `Q_toplam = ${totalLoad.toFixed(1)} ton`,
+        formula: "Qtoplam = w x L + Sigma(Pi)",
+        substitution: `Qtoplam = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
+        result: `Qtoplam = ${totalLoad.toFixed(1)} ton`,
         explanation: `Dağıtılmış ağırlık (${structuralWeight.toFixed(0)} ton) ve ${loadPoints.length} adet noktasal yük (${totalConcentrated.toFixed(0)} ton) toplanır.`
       },
       {
         step: 4,
         title: "Mesnet tepkisinin hesaplanması (basit mesnetli kiriş)",
-        formula: "R_AP = Q_toplam / 2",
-        substitution: `R_AP = ${totalLoad.toFixed(1)} / 2`,
-        result: `R_AP = ${reactionAP.toFixed(1)} ton`,
+        formula: "RAP = Qtoplam / 2",
+        substitution: `RAP = ${totalLoad.toFixed(1)} / 2`,
+        result: `RAP = ${reactionAP.toFixed(1)} ton`,
         explanation: "Gemi basit mesnetli kiriş olarak modellenir, simetrik yükleme varsayımıyla tepkiler eşit alınır."
       },
       {
         step: 5,
         title: "Maksimum sagging (çökme) momenti",
-        formula: "M_sagging = max(M(x)) x 9.81",
-        substitution: `M_sagging = ${(maxSaggingMoment / 9.81).toFixed(0)} x 9.81`,
-        result: `M_sagging = ${maxSaggingMoment.toFixed(0)} kN.m`,
+        formula: "Msagging = max(M(x)) x 9.81",
+        substitution: `Msagging = ${(maxSaggingMoment / 9.81).toFixed(0)} x 9.81`,
+        result: `Msagging = ${maxSaggingMoment.toFixed(0)} kN.m`,
         explanation: "Gemi boyunca 50 noktada eğilme momenti hesaplanarak en büyük pozitif moment bulunur."
       },
       {
         step: 6,
         title: "Maksimum hogging (kabarma) momenti",
-        formula: "M_hogging = |min(M(x))| x 9.81",
-        substitution: `M_hogging = |${(maxHoggingMoment / 9.81).toFixed(0)}| x 9.81`,
-        result: `M_hogging = ${maxHoggingMoment.toFixed(0)} kN.m`,
+        formula: "Mhogging = |min(M(x))| x 9.81",
+        substitution: `Mhogging = |${(maxHoggingMoment / 9.81).toFixed(0)}| x 9.81`,
+        result: `Mhogging = ${maxHoggingMoment.toFixed(0)} kN.m`,
         explanation: "Gemi boyunca hesaplanan en büyük negatif moment mutlak değeri alınır."
       },
       {
         step: 7,
         title: "Maksimum kesme kuvvetinin bulunması",
-        formula: "V_max = max(|V(x)|) x 9.81",
-        substitution: `V_max = ${(maxShearForce / 9.81).toFixed(0)} x 9.81`,
-        result: `V_max = ${maxShearForce.toFixed(0)} kN`,
+        formula: "Vmax = max(|V(x)|) x 9.81",
+        substitution: `Vmax = ${(maxShearForce / 9.81).toFixed(0)} x 9.81`,
+        result: `Vmax = ${maxShearForce.toFixed(0)} kN`,
         explanation: "Gemi boyunca 50 noktada kesme kuvveti hesaplanarak en büyük mutlak değer bulunur."
       },
       {
@@ -333,7 +333,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 9,
         title: "Kesme gerilmesinin hesaplanması",
-        formula: "tau = V / A_web",
+        formula: "tau = V / Aweb",
         substitution: `tau = (${maxShearForce.toFixed(0)} x 1000) / (${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)})`,
         result: `tau = ${maxShearStress.toFixed(1)} N/mm²`,
         explanation: `Gövde (web) alanı: A = plaka kalınlığı x derinlik = ${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)} = ${webAreaVal.toFixed(0)} mm²`
@@ -349,7 +349,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 11,
         title: "Güvenlik faktörünün hesaplanması",
-        formula: "SF = sigma_y / sigma_max",
+        formula: "SF = sigmay / sigmamax",
         substitution: `SF = ${data.steelYieldStrength} / ${maxBendingStress.toFixed(1)}`,
         result: `SF = ${safetyFactor.toFixed(2)}`,
         explanation: safetyFactor >= 2.0

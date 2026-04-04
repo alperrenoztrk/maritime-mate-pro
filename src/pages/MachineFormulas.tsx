@@ -150,7 +150,7 @@ const formulaCategories = [
       },
       {
         name: "Hava Şişe Kapasitesi",
-        formula: "V = (N × Vswept × p_start) / p_bottle",
+        formula: "V = (N × Vswept × pstart) / pbottle",
         variables: "N: başlatma sayısı, Vswept: süpürülen hacim",
       },
       {
@@ -160,7 +160,7 @@ const formulaCategories = [
       },
       {
         name: "Şarj Süresi",
-        formula: "t = (V × (p₂ - p₁)) / (Q × p_atm)",
+        formula: "t = (V × (p₂ - p₁)) / (Q × patm)",
         variables: "Q: kompresör kapasitesi (m³/min)",
       },
     ],
