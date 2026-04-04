@@ -9,6 +9,8 @@ import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, Settings, Fuel, Gauge, Activity, Zap, AlertTriangle, CheckCircle, TrendingUp, BarChart3, Thermometer, Droplets, Waves } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
+import type { CalculationStep } from "@/types/calculationSteps";
 
 interface EngineData {
   // Main Engine Parameters
@@ -165,6 +167,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
   });
 
   const [result, setResult] = useState<EngineResult | null>(null);
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
   // Calculate SFOC based on engine load using interpolation
   const calculateSFOC = (load: number): number => {
@@ -409,6 +412,41 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       };
 
       setResult(calculatedResult);
+      setCalcSteps({
+        fuel: [
+          { step: 1, title: "SFOC hesabı", formula: "SFOC interpolasyon ile hesaplanır (yük %'sine göre)", result: `SFOC = ${currentSFOC.toFixed(1)} g/kWh (Yük: %${data.currentLoad})` },
+          { step: 2, title: "Güç çıkışı", formula: "P = MCR × Yük / 100", substitution: `P = ${data.mcrPower} × ${data.currentLoad} / 100`, result: `P = ${powerOutput.toFixed(0)} kW` },
+          { step: 3, title: "Saatlik tüketim", formula: "FC_saat = (P × SFOC) / 1000", substitution: `FC = (${powerOutput.toFixed(0)} × ${currentSFOC.toFixed(1)}) / 1000`, result: `FC = ${hourlyConsumption.toFixed(1)} kg/saat` },
+          { step: 4, title: "Günlük tüketim", formula: "FC_gün = (FC_saat × Çalışma Saati) / 1000", substitution: `FC_gün = (${hourlyConsumption.toFixed(1)} × ${data.dailyRunningHours}) / 1000`, result: `FC_gün = ${dailyConsumption.toFixed(1)} ton/gün` },
+        ],
+        power: [
+          { step: 1, title: "Fren gücü", formula: "BP = İndike Güç × Mekanik Verim / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
+          { step: 2, title: "Elektrik gücü", formula: "EP = BP × Jeneratör Verimi / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
+          { step: 3, title: "İndike termal verim", formula: "η_i = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `η_i = ${indicatedThermalEfficiency.toFixed(1)}%` },
+          { step: 4, title: "Toplam verim", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
+        ],
+        emissions: [
+          { step: 1, title: "NOx emisyonu", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
+          { step: 2, title: "SOx emisyonu", formula: "SOx = 2 × S% × FC", explanation: `Kükürt içeriği: %${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
+          { step: 3, title: "CO₂ emisyonu", formula: "CO₂ = FC × Emisyon Faktörü", explanation: `${data.fuelType} emisyon faktörü kullanıldı`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} ton/gün` },
+        ],
+        changeover: [
+          { step: 1, title: "Geçiş süresi", formula: "Süre = Ön Isıtma + (Boru Hacmi / Akış Oranı)", substitution: `Süre = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Süre = ${changeoverTime.toFixed(0)} dakika` },
+          { step: 2, title: "Atık yakıt", formula: "Atık = Boru Hacmi × 1.1 (%10 emniyet)", substitution: `Atık = ${data.pipelineVolume} × 1.1`, result: `Atık = ${fuelWasteVolume.toFixed(0)} L` },
+        ],
+        cooling: [
+          { step: 1, title: "Isı atım oranı", formula: "Q = Güç × 0.4 (tipik %40 ısı atımı)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },
+          { step: 2, title: "Gerekli soğutma", formula: "Q_gerekli = Q × 1.2 (%20 emniyet)", substitution: `Q_gerekli = ${heatRejectionRate.toFixed(0)} × 1.2`, result: `Q_gerekli = ${coolingCapacityRequired.toFixed(0)} kW` },
+        ],
+        heatExchanger: [
+          { step: 1, title: "Isı değiştirici alanı", formula: "A = Q / (U × LMTD)", substitution: `A = ${(data.heatLoad*1000).toFixed(0)} / (U_eff × ${data.logMeanTempDiff})`, result: `A = ${heatExchanger.area.toFixed(1)} m²` },
+          { step: 2, title: "Boru sayısı", formula: "n = A / (π × d × L_boru)", result: `n = ${heatExchanger.tubes} adet` },
+        ],
+        tanks: [
+          { step: 1, title: "Pis su tankı", formula: "V = L × B × H", substitution: `V = ${data.bilgeTankLength} × ${data.bilgeTankWidth} × ${data.bilgeTankHeight}`, result: `V = ${tanks.bilgeCapacity.toFixed(1)} m³` },
+          { step: 2, title: "Sintine tankı", formula: "V = π × r² × H", substitution: `V = π × ${(data.sludgeTankDiameter/2).toFixed(2)}² × ${data.sludgeTankHeight}`, result: `V = ${tanks.sludgeCapacity.toFixed(1)} m³` },
+        ],
+      });
       toast({
         title: "Hesaplama Tamamlandı",
         description: "Makine hesaplamaları MARPOL regülasyonlarına uygun olarak tamamlandı.",
@@ -838,6 +876,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-2xl font-bold text-purple-600">{result.overallEfficiency.toFixed(1)}%</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["fuel"] || []} />
             </CardContent>
           </Card>
 
@@ -876,6 +915,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.brakeSpecificFuelPressure.toFixed(1)} bar</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["power"] || []} />
             </CardContent>
           </Card>
 
@@ -929,6 +969,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.eeoi.toFixed(2)} kg CO₂/nm</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["emissions"] || []} />
             </CardContent>
           </Card>
 
@@ -955,6 +996,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">${result.changeoverCost.toFixed(0)}</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["changeover"] || []} />
             </CardContent>
           </Card>
 
@@ -981,6 +1023,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.coolingEfficiency.toFixed(0)}%</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["cooling"] || []} />
             </CardContent>
           </Card>
 
@@ -1015,6 +1058,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.effectiveness.toFixed(0)}%</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["heatExchanger"] || []} />
             </CardContent>
           </Card>
 
@@ -1045,6 +1089,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.sludgeGenerationRate.toFixed(1)} L/gün</p>
                 </div>
               </div>
+              <CalculationSteps steps={calcSteps["tanks"] || []} />
             </CardContent>
           </Card>
 

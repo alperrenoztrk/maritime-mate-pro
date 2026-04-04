@@ -7,6 +7,8 @@ import { Calculator, Ship, Waves, AlertCircle, CheckCircle } from "lucide-react"
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 interface DraftReadings {
   // Port Side
@@ -102,6 +104,7 @@ export function DraftSurveyCalculations() {
   const [storesDeduction, setStoresDeduction] = useState<string>("150");
   
   const [results, setResults] = useState<DraftSurveyResults | null>(null);
+  const [surveySteps, setSurveySteps] = useState<CalculationStep[]>([]);
 
   const calculateDraftSurvey = () => {
     try {
@@ -195,9 +198,22 @@ export function DraftSurveyCalculations() {
       };
 
       setResults(calculatedResults);
-      toast({ 
-        title: "Draft Survey Tamamlandı", 
-        description: `Kargo Ağırlığı: ${cargoWeight.toFixed(2)} ton hesaplandı` 
+      setSurveySteps([
+        { step: 1, title: "Port ortalama draft", formula: "dM_port = (dF + 6×dM + dA) / 8", substitution: `dM_port = (${pf} + 6×${pm} + ${pa}) / 8`, result: `dM_port = ${portMeanDraft.toFixed(3)} m` },
+        { step: 2, title: "Starboard ortalama draft", formula: "dM_stb = (dF + 6×dM + dA) / 8", substitution: `dM_stb = (${sf} + 6×${sm} + ${sa}) / 8`, result: `dM_stb = ${starboardMeanDraft.toFixed(3)} m` },
+        { step: 3, title: "Genel ortalama draft", formula: "dM = (dM_port + dM_stb) / 2", substitution: `dM = (${portMeanDraft.toFixed(3)} + ${starboardMeanDraft.toFixed(3)}) / 2`, result: `dM = ${overallMeanDraft.toFixed(3)} m` },
+        { step: 4, title: "Trim hesabı", formula: "Trim = dA_ort - dF_ort", substitution: `Trim = ${aftMean.toFixed(3)} - ${forwardMean.toFixed(3)}`, result: `Trim = ${trim.toFixed(3)} m (${trimByHead ? 'By Head' : 'By Stern'})` },
+        { step: 5, title: "Trim düzeltmesi", formula: "Düzeltme = (|Trim| × LBP/2 × (LCF - LBP/2)) / (MCT × 100)", substitution: `Düzeltme = (${Math.abs(trim).toFixed(3)} × ${(lbp/2).toFixed(1)} × (${lcf} - ${(lbp/2).toFixed(1)})) / (${mct} × 100)`, result: `Düzeltme = ${trimCorrection.toFixed(4)} m` },
+        { step: 6, title: "Düzeltilmiş draft", formula: "dM_düzeltilmiş = dM ± Trim düzeltmesi", result: `dM_düzeltilmiş = ${correctedDraft.toFixed(3)} m` },
+        { step: 7, title: "Ham deplasman", formula: "Δ = Düzeltilmiş Draft × TPC × 100", substitution: `Δ = ${correctedDraft.toFixed(3)} × ${tpc} × 100`, result: `Δ = ${displacement.toFixed(2)} ton` },
+        { step: 8, title: "Yoğunluk düzeltmesi", formula: "ΔD = Δ × (1 - ρ_gerçek / ρ_standart)", substitution: `ΔD = ${displacement.toFixed(2)} × (1 - ${actualDensity} / ${standardDensity})`, result: `ΔD = ${densityCorrection.toFixed(2)} ton` },
+        { step: 9, title: "Son deplasman", formula: "Δ_son = Δ - ΔD", substitution: `Δ_son = ${displacement.toFixed(2)} - ${densityCorrection.toFixed(2)}`, result: `Δ_son = ${finalDisplacement.toFixed(2)} ton` },
+        { step: 10, title: "Deadweight", formula: "DWT = Δ_son - Light Weight", substitution: `DWT = ${finalDisplacement.toFixed(2)} - ${lightWeight}`, result: `DWT = ${deadweight.toFixed(2)} ton` },
+        { step: 11, title: "Kargo ağırlığı", formula: "Kargo = DWT - Çıkarımlar", substitution: `Kargo = ${deadweight.toFixed(2)} - ${totalDeductions.toFixed(2)}`, result: `Kargo = ${cargoWeight.toFixed(2)} ton` },
+      ]);
+      toast({
+        title: "Draft Survey Tamamlandı",
+        description: `Kargo Ağırlığı: ${cargoWeight.toFixed(2)} ton hesaplandı`
       });
 
     } catch (error) {
@@ -578,6 +594,7 @@ export function DraftSurveyCalculations() {
                       </div>
                     </div>
                   </div>
+                  <CalculationSteps steps={surveySteps} />
                 </div>
               )}
             </TabsContent>

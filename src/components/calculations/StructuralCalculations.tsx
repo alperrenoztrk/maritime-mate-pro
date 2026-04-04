@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Calculator, Building, BarChart3, AlertTriangle, CheckCircle, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import type { CalculationStep } from "@/types/calculationSteps";
+import { CalculationSteps } from "@/components/ui/calculation-steps";
 
 interface StructuralData {
   // Ship dimensions
@@ -78,6 +80,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
   const [result, setResult] = useState<StructuralResult | null>(null);
   const [shearBendingData, setShearBendingData] = useState<ShearBendingPoint[]>([]);
   const [activeTab, setActiveTab] = useState(initialTab || "loads");
+  const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
   // Calculate distributed weight (ship's own weight)
   const calculateDistributedWeight = (L: number, displacement: number): number => {
@@ -250,7 +253,122 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
     };
     
     setResult(result);
-    
+
+    // Adim adim hesaplama aciklamasi
+    const distributedWeight = calculateDistributedWeight(data.L, data.displacement);
+    const structuralWeight = data.displacement * 0.3;
+    const totalLoad = distributedWeight * data.L + loadPoints.reduce((sum, load) => sum + load.weight, 0);
+    const totalConcentrated = loadPoints.reduce((sum, load) => sum + load.weight, 0);
+    const reactionAP = totalLoad / 2;
+    const maxMomentVal = Math.max(maxSaggingMoment, maxHoggingMoment);
+    const webAreaVal = data.plateThickness * (data.D || 12) * 1000;
+    const wVal = data.displacement * 9.81 / (data.L * 1000);
+    const I_val = data.momentOfInertia || 500000000;
+
+    const steps: CalculationStep[] = [
+      {
+        step: 1,
+        title: "Yapısal ağırlığın hesaplanması",
+        formula: "W_yapisal = Deplasman x 0.30",
+        substitution: `W_yapisal = ${data.displacement} x 0.30`,
+        result: `W_yapisal = ${structuralWeight.toFixed(1)} ton`,
+        explanation: "Geminin yapısal ağırlığı, deplasmanın yaklaşık %30'u olarak kabul edilir."
+      },
+      {
+        step: 2,
+        title: "Dağıtılmış ağırlığın hesaplanması",
+        formula: "w = W_yapisal / L",
+        substitution: `w = ${structuralWeight.toFixed(1)} / ${data.L}`,
+        result: `w = ${distributedWeight.toFixed(2)} ton/m`,
+        explanation: "Yapısal ağırlık gemi boyunca düzgün dağıtılmış kabul edilir."
+      },
+      {
+        step: 3,
+        title: "Toplam yükün hesaplanması",
+        formula: "Q_toplam = w x L + Sigma(P_i)",
+        substitution: `Q_toplam = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
+        result: `Q_toplam = ${totalLoad.toFixed(1)} ton`,
+        explanation: `Dağıtılmış ağırlık (${structuralWeight.toFixed(0)} ton) ve ${loadPoints.length} adet noktasal yük (${totalConcentrated.toFixed(0)} ton) toplanır.`
+      },
+      {
+        step: 4,
+        title: "Mesnet tepkisinin hesaplanması (basit mesnetli kiriş)",
+        formula: "R_AP = Q_toplam / 2",
+        substitution: `R_AP = ${totalLoad.toFixed(1)} / 2`,
+        result: `R_AP = ${reactionAP.toFixed(1)} ton`,
+        explanation: "Gemi basit mesnetli kiriş olarak modellenir, simetrik yükleme varsayımıyla tepkiler eşit alınır."
+      },
+      {
+        step: 5,
+        title: "Maksimum sagging (çökme) momenti",
+        formula: "M_sagging = max(M(x)) x 9.81",
+        substitution: `M_sagging = ${(maxSaggingMoment / 9.81).toFixed(0)} x 9.81`,
+        result: `M_sagging = ${maxSaggingMoment.toFixed(0)} kN.m`,
+        explanation: "Gemi boyunca 50 noktada eğilme momenti hesaplanarak en büyük pozitif moment bulunur."
+      },
+      {
+        step: 6,
+        title: "Maksimum hogging (kabarma) momenti",
+        formula: "M_hogging = |min(M(x))| x 9.81",
+        substitution: `M_hogging = |${(maxHoggingMoment / 9.81).toFixed(0)}| x 9.81`,
+        result: `M_hogging = ${maxHoggingMoment.toFixed(0)} kN.m`,
+        explanation: "Gemi boyunca hesaplanan en büyük negatif moment mutlak değeri alınır."
+      },
+      {
+        step: 7,
+        title: "Maksimum kesme kuvvetinin bulunması",
+        formula: "V_max = max(|V(x)|) x 9.81",
+        substitution: `V_max = ${(maxShearForce / 9.81).toFixed(0)} x 9.81`,
+        result: `V_max = ${maxShearForce.toFixed(0)} kN`,
+        explanation: "Gemi boyunca 50 noktada kesme kuvveti hesaplanarak en büyük mutlak değer bulunur."
+      },
+      {
+        step: 8,
+        title: "Eğilme gerilmesinin hesaplanması",
+        formula: "sigma = M / Z = (M x 10^6) / (Z x 10^3)",
+        substitution: `sigma = (${maxMomentVal.toFixed(0)} x 10^6) / (${data.sectionModulus} x 10^3)`,
+        result: `sigma = ${maxBendingStress.toFixed(1)} N/mm²`,
+        explanation: "Birim dönüşümü: M (kN.m -> N.mm) ve Z (cm³ -> mm³) uygulanır."
+      },
+      {
+        step: 9,
+        title: "Kesme gerilmesinin hesaplanması",
+        formula: "tau = V / A_web",
+        substitution: `tau = (${maxShearForce.toFixed(0)} x 1000) / (${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)})`,
+        result: `tau = ${maxShearStress.toFixed(1)} N/mm²`,
+        explanation: `Gövde (web) alanı: A = plaka kalınlığı x derinlik = ${data.plateThickness} x ${((data.D || 12) * 1000).toFixed(0)} = ${webAreaVal.toFixed(0)} mm²`
+      },
+      {
+        step: 10,
+        title: "Maksimum deformasyonun hesaplanması (Euler-Bernoulli)",
+        formula: "delta = 5wL^4 / (384EI)",
+        substitution: `delta = (5 x ${wVal.toFixed(4)} x (${(data.L * 1000).toFixed(0)})^4) / (384 x ${data.elasticModulus} x ${I_val} x 10000)`,
+        result: `delta = ${deflection.toFixed(1)} mm`,
+        explanation: "Düzgün dağılmış yük altında basit mesnetli kiriş için maksimum sehim formülü kullanılır."
+      },
+      {
+        step: 11,
+        title: "Güvenlik faktörünün hesaplanması",
+        formula: "SF = sigma_y / sigma_max",
+        substitution: `SF = ${data.steelYieldStrength} / ${maxBendingStress.toFixed(1)}`,
+        result: `SF = ${safetyFactor.toFixed(2)}`,
+        explanation: safetyFactor >= 2.0
+          ? "Güvenlik faktörü >= 2.0: Yapı güvenli durumda."
+          : safetyFactor >= 1.5
+            ? "Güvenlik faktörü 1.5 - 2.0 arası: Sınır durumda, dikkat edilmeli."
+            : "Güvenlik faktörü < 1.5: Yapı güvensiz, acil önlem gerekli!"
+      },
+      {
+        step: 12,
+        title: "Durum değerlendirmesi",
+        formula: "SF >= 2.0 -> Güvenli | 1.5 <= SF < 2.0 -> Sınır | SF < 1.5 -> Güvensiz",
+        result: `Durum: ${status === 'safe' ? 'GÜVENLİ' : status === 'marginal' ? 'SINIR DURUMDA' : 'GÜVENSİZ'}`,
+        explanation: `Kritik kesit AP'den ${criticalPoint.position.toFixed(1)} m mesafede. İzin verilen sehim = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, hesaplanan sehim = ${deflection.toFixed(1)} mm.`
+      }
+    ];
+
+    setCalcSteps(prev => ({ ...prev, "calculateStructural": steps }));
+
     toast({
       title: "Yapısal Analiz Tamamlandı",
       description: `Güvenlik Faktörü: ${safetyFactor.toFixed(2)}`,
@@ -550,6 +668,8 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                         </ul>
                       </div>
                     )}
+
+                    <CalculationSteps steps={calcSteps["calculateStructural"] || []} />
                   </CardContent>
                 </Card>
               )}
