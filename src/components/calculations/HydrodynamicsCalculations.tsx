@@ -431,7 +431,6 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
       setResult(calculatedResult);
 
       // Adim adim hesaplama aciklamalari
-      const speedMS = data.shipSpeed * 0.514;
 
       // Direnc ve Verimlilik adimlari
       const resistanceSteps: CalculationStep[] = [
