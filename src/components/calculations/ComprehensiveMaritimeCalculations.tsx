@@ -290,7 +290,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       const angle = Math.atan(heelingMoment / (displacement * gm)) * (180 / Math.PI);
       setHeelAngleResult(angle);
       setCalcSteps(prev => ({ ...prev, heelAngle: [
-        { step: 1, title: "Formül", formula: "θ = arctan(M_heel / (Δ × GM)) × (180/π)", explanation: "Meyil açısı, meyil momentinin deplasman ve GM çarpımına oranından bulunur" },
+        { step: 1, title: "Formül", formula: "θ = arctan(Mheel / (Δ × GM)) × (180/π)", explanation: "Meyil açısı, meyil momentinin deplasman ve GM çarpımına oranından bulunur" },
         { step: 2, title: "Değerlerin yerleştirilmesi", formula: `θ = arctan(${heelingMoment.toFixed(2)} / (${displacement.toFixed(2)} × ${gm.toFixed(3)}))`, substitution: `θ = arctan(${heelingMoment.toFixed(2)} / ${(displacement*gm).toFixed(2)}) = arctan(${(heelingMoment/(displacement*gm)).toFixed(6)})` },
         { step: 3, title: "Sonuç", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
       ] }));
@@ -335,9 +335,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const criticalGM = (pressure * km) / displacement;
     setDrydockGMResult(criticalGM);
     setCalcSteps(prev => ({ ...prev, drydockGM: [
-      { step: 1, title: "Formül", formula: "GM_kritik = (P × KM) / Δ", explanation: "Kuru havuzda kritik GM, omurga basıncı ve KM çarpımının deplasmanla oranıdır" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `GM_k = (${pressure.toFixed(2)} × ${km.toFixed(3)}) / ${displacement.toFixed(2)}`, substitution: `GM_k = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}` },
-      { step: 3, title: "Sonuç", formula: `GM_k = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}`, result: `GM_kritik = ${criticalGM.toFixed(3)} m` }
+      { step: 1, title: "Formül", formula: "GMkritik = (P × KM) / Δ", explanation: "Kuru havuzda kritik GM, omurga basıncı ve KM çarpımının deplasmanla oranıdır" },
+      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `GMk = (${pressure.toFixed(2)} × ${km.toFixed(3)}) / ${displacement.toFixed(2)}`, substitution: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}` },
+      { step: 3, title: "Sonuç", formula: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}`, result: `GMkritik = ${criticalGM.toFixed(3)} m` }
     ] }));
     toast({ title: "Hesaplama Tamamlandı", description: `Kritik GM: ${criticalGM.toFixed(3)} m` });
   };
@@ -482,8 +482,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const correction = displacement * (actualDensity / 1.025 - 1);
     setDensityCorrectionResult(correction);
     setCalcSteps(prev => ({ ...prev, densityCorrection: [
-      { step: 1, title: "Formül", formula: "Δ_düzeltme = Δ × (ρ_gerçek / 1.025 - 1)", explanation: "Yoğunluk düzeltmesi, gerçek su yoğunluğu ile standart deniz suyu arasındaki farktan hesaplanır" },
-      { step: 2, title: "Oran hesabı", formula: `ρ_gerçek / 1.025 = ${actualDensity.toFixed(3)} / 1.025 = ${(actualDensity/1.025).toFixed(6)}` },
+      { step: 1, title: "Formül", formula: "Δdüzeltme = Δ × (ρgerçek / 1.025 - 1)", explanation: "Yoğunluk düzeltmesi, gerçek su yoğunluğu ile standart deniz suyu arasındaki farktan hesaplanır" },
+      { step: 2, title: "Oran hesabı", formula: `ρgerçek / 1.025 = ${actualDensity.toFixed(3)} / 1.025 = ${(actualDensity/1.025).toFixed(6)}` },
       { step: 3, title: "Sonuç", formula: `Düzeltme = ${displacement.toFixed(2)} × (${(actualDensity/1.025).toFixed(6)} - 1)`, result: `Düzeltme = ${correction.toFixed(2)} ton` }
     ] }));
     toast({ title: "Hesaplama Tamamlandı", description: `Yoğunluk Düzeltmesi: ${correction.toFixed(2)} ton` });
@@ -546,9 +546,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const newDisplacement = displacement * (newDensity / oldDensity);
     setDensityChangeResult(newDisplacement);
     setCalcSteps(prev => ({ ...prev, densityChange: [
-      { step: 1, title: "Formül", formula: "Δ_yeni = Δ × (ρ_yeni / ρ_eski)", explanation: "Farklı yoğunlukta suda deplasman, yoğunluk oranıyla düzeltilir" },
-      { step: 2, title: "Oran hesabı", formula: `ρ_yeni / ρ_eski = ${newDensity.toFixed(3)} / ${oldDensity.toFixed(3)} = ${(newDensity/oldDensity).toFixed(6)}` },
-      { step: 3, title: "Sonuç", formula: `Δ_yeni = ${displacement.toFixed(2)} × ${(newDensity/oldDensity).toFixed(6)}`, result: `Δ_yeni = ${newDisplacement.toFixed(2)} ton` }
+      { step: 1, title: "Formül", formula: "Δyeni = Δ × (ρyeni / ρeski)", explanation: "Farklı yoğunlukta suda deplasman, yoğunluk oranıyla düzeltilir" },
+      { step: 2, title: "Oran hesabı", formula: `ρyeni / ρeski = ${newDensity.toFixed(3)} / ${oldDensity.toFixed(3)} = ${(newDensity/oldDensity).toFixed(6)}` },
+      { step: 3, title: "Sonuç", formula: `Δyeni = ${displacement.toFixed(2)} × ${(newDensity/oldDensity).toFixed(6)}`, result: `Δyeni = ${newDisplacement.toFixed(2)} ton` }
     ] }));
     toast({ title: "Hesaplama Tamamlandı", description: `Yeni Deplasman: ${newDisplacement.toFixed(2)} ton` });
   };
@@ -682,10 +682,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setTemperatureDensityResult(newDensity);
     const tempDiff = newTemp - oldTemp;
     setCalcSteps(prev => ({ ...prev, temperatureDensity: [
-      { step: 1, title: "Formül", formula: "ρ_yeni = ρ_eski - (ΔT × k)", explanation: "Sıcaklık değişiminin yoğunluğa etkisi, sıcaklık farkı ile katsayının çarpımıyla hesaplanır" },
-      { step: 2, title: "Sıcaklık farkı", formula: `ΔT = T_yeni - T_eski = ${newTemp.toFixed(1)} - ${oldTemp.toFixed(1)} = ${tempDiff.toFixed(1)} °C` },
-      { step: 3, title: "Değerlerin yerleştirilmesi", formula: `ρ_yeni = ${oldDensity.toFixed(4)} - (${tempDiff.toFixed(1)} × ${coefficient.toFixed(4)})`, substitution: `ρ_yeni = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}` },
-      { step: 4, title: "Sonuç", formula: `ρ_yeni = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}`, result: `ρ_yeni = ${newDensity.toFixed(4)} ton/m³` }
+      { step: 1, title: "Formül", formula: "ρyeni = ρeski - (ΔT × k)", explanation: "Sıcaklık değişiminin yoğunluğa etkisi, sıcaklık farkı ile katsayının çarpımıyla hesaplanır" },
+      { step: 2, title: "Sıcaklık farkı", formula: `ΔT = Tyeni - Teski = ${newTemp.toFixed(1)} - ${oldTemp.toFixed(1)} = ${tempDiff.toFixed(1)} °C` },
+      { step: 3, title: "Değerlerin yerleştirilmesi", formula: `ρyeni = ${oldDensity.toFixed(4)} - (${tempDiff.toFixed(1)} × ${coefficient.toFixed(4)})`, substitution: `ρyeni = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}` },
+      { step: 4, title: "Sonuç", formula: `ρyeni = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}`, result: `ρyeni = ${newDensity.toFixed(4)} ton/m³` }
     ] }));
     toast({ title: "Hesaplama Tamamlandı", description: `Yeni Yoğunluk: ${newDensity.toFixed(4)} ton/m³` });
   };
@@ -739,8 +739,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaKG = (w * heightDiff) / delta; // meters
     setCraneVerticalResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, craneVertical: [
-      { step: 1, title: "Formül", formula: "ΔKG = (w × (h_cunda - h_yük)) / Δ", explanation: "Vinç ile dikey kaldırmada KG değişimi, ağırlık ile yükseklik farkının deplasmanla oranıdır" },
-      { step: 2, title: "Yükseklik farkı", formula: `h_cunda - h_yük = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
+      { step: 1, title: "Formül", formula: "ΔKG = (w × (hcunda - hyük)) / Δ", explanation: "Vinç ile dikey kaldırmada KG değişimi, ağırlık ile yükseklik farkının deplasmanla oranıdır" },
+      { step: 2, title: "Yükseklik farkı", formula: `hcunda - hyük = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
       { step: 3, title: "Değerlerin yerleştirilmesi", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
       { step: 4, title: "Sonuç", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
@@ -764,12 +764,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     }
     setDrydockReactionResult({ P, gmCritical });
     const drydockSteps: CalculationStep[] = [
-      { step: 1, title: "Formül", formula: "P = (MCT1cm × Trim_cm) / t", explanation: "Kuru havuz omurga basıncı (P), MCT1cm ve trim çarpımının takoz mesafesine bölünmesiyle bulunur" },
+      { step: 1, title: "Formül", formula: "P = (MCT1cm × Trimcm) / t", explanation: "Kuru havuz omurga basıncı (P), MCT1cm ve trim çarpımının takoz mesafesine bölünmesiyle bulunur" },
       { step: 2, title: "Değerlerin yerleştirilmesi", formula: `P = (${mct1cm.toFixed(2)} × ${trimCm.toFixed(2)}) / ${t.toFixed(2)}`, substitution: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}` },
       { step: 3, title: "P sonucu", formula: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}`, result: `P = ${P.toFixed(2)} ton` },
     ];
     if (gmCritical != null) {
-      drydockSteps.push({ step: 4, title: "Kritik GM", formula: "GM_k = (P × KM) / Δ", substitution: `GM_k = (${P.toFixed(2)} × ${km.toFixed(3)}) / ${delta.toFixed(2)}`, result: `GM_k = ${gmCritical.toFixed(3)} m` });
+      drydockSteps.push({ step: 4, title: "Kritik GM", formula: "GMk = (P × KM) / Δ", substitution: `GMk = (${P.toFixed(2)} × ${km.toFixed(3)}) / ${delta.toFixed(2)}`, result: `GMk = ${gmCritical.toFixed(3)} m` });
     }
     setCalcSteps(prev => ({ ...prev, drydockReaction: drydockSteps }));
     toast({ title: "Hesaplama Tamamlandı", description: `P = ${P.toFixed(2)} ton${gmCritical != null ? `, GM_k = ${gmCritical.toFixed(3)} m` : ''}` });
@@ -823,8 +823,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaDraft = w / (effectiveArea * rho); // meters
     setPontoonResult(deltaDraft);
     setCalcSteps(prev => ({ ...prev, pontoon: [
-      { step: 1, title: "Formül", formula: "Δd = W / ((L×B - A_yaralı) × ρ)", explanation: "Yaralı durumda draft artışı, etkin alana ve yoğunluğa bağlıdır" },
-      { step: 2, title: "Etkin alan", formula: `A_etkin = L×B - A_yaralı = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
+      { step: 1, title: "Formül", formula: "Δd = W / ((L×B - Ayaralı) × ρ)", explanation: "Yaralı durumda draft artışı, etkin alana ve yoğunluğa bağlıdır" },
+      { step: 2, title: "Etkin alan", formula: `Aetkin = L×B - Ayaralı = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
       { step: 3, title: "Sonuç", formula: `Δd = ${w.toFixed(2)} / (${effectiveArea.toFixed(2)} × ${rho.toFixed(3)})`, result: `Δd = ${deltaDraft.toFixed(3)} m` }
     ] }));
     toast({ title: "Hesaplama Tamamlandı", description: `Δd = ${deltaDraft.toFixed(3)} m` });
@@ -1057,9 +1057,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaKG = (ixx / V) * (rhoFluid / rhoSea) * (1 / (n * n));
     setFsmGroupResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, fsmGroup: [
-      { step: 1, title: "Formül", formula: "ΔKG = (L×B³/12/V) × (ρ_sıvı/ρ_deniz) × (1/n²)", explanation: "Bölünmüş tank için serbest yüzey etkisiyle KG değişimi" },
+      { step: 1, title: "Formül", formula: "ΔKG = (L×B³/12/V) × (ρsıvı/ρdeniz) × (1/n²)", explanation: "Bölünmüş tank için serbest yüzey etkisiyle KG değişimi" },
       { step: 2, title: "Ixx hesabı", formula: `Ixx = ${L.toFixed(2)} × ${B.toFixed(2)}³ / 12 = ${ixx.toFixed(2)} m⁴` },
-      { step: 3, title: "Yoğunluk oranı", formula: `ρ_sıvı/ρ_deniz = ${rhoFluid.toFixed(3)} / ${rhoSea.toFixed(3)} = ${(rhoFluid/rhoSea).toFixed(4)}` },
+      { step: 3, title: "Yoğunluk oranı", formula: `ρsıvı/ρdeniz = ${rhoFluid.toFixed(3)} / ${rhoSea.toFixed(3)} = ${(rhoFluid/rhoSea).toFixed(4)}` },
       { step: 4, title: "Bölme etkisi", formula: `1/n² = 1/${n.toFixed(0)}² = ${(1/(n*n)).toFixed(4)}` },
       { step: 5, title: "Sonuç", formula: `ΔKG = (${ixx.toFixed(2)} / ${V.toFixed(2)}) × ${(rhoFluid/rhoSea).toFixed(4)} × ${(1/(n*n)).toFixed(4)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
@@ -1077,8 +1077,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaT = w / effectiveArea; // m (assuming ρ≈1 t/m³)
     setDamagedDraftResult(deltaT);
     setCalcSteps(prev => ({ ...prev, damagedDraft: [
-      { step: 1, title: "Formül", formula: "ΔT = W / A_etkin", explanation: "Yaralı durumda draft değişimi, ağırlığın etkin su kesim alanına bölünmesiyle bulunur" },
-      { step: 2, title: "Etkin alan hesabı", formula: "A_etkin = (L × B) - (L_yaralı × B)", substitution: `A_etkin = (${L.toFixed(2)} × ${B.toFixed(2)}) - (${Ld.toFixed(2)} × ${B.toFixed(2)}) = ${effectiveArea.toFixed(2)} m²` },
+      { step: 1, title: "Formül", formula: "ΔT = W / Aetkin", explanation: "Yaralı durumda draft değişimi, ağırlığın etkin su kesim alanına bölünmesiyle bulunur" },
+      { step: 2, title: "Etkin alan hesabı", formula: "Aetkin = (L × B) - (Lyaralı × B)", substitution: `Aetkin = (${L.toFixed(2)} × ${B.toFixed(2)}) - (${Ld.toFixed(2)} × ${B.toFixed(2)}) = ${effectiveArea.toFixed(2)} m²` },
       { step: 3, title: "Sonuç", formula: `ΔT = ${w.toFixed(2)} / ${effectiveArea.toFixed(2)}`, result: `ΔT = ${deltaT.toFixed(3)} m` }
     ] }));
     toast({ title: "Yaralı Stabilite", description: `ΔT = ${deltaT.toFixed(3)} m` });
@@ -1092,9 +1092,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const wmax = Vh / SF;
     setMaxCargoResult(wmax);
     setCalcSteps(prev => ({ ...prev, maxCargo: [
-      { step: 1, title: "Formül", formula: "W_max = V_ambar / SF", explanation: "Maksimum yük miktarı, ambar hacminin istif faktörüne bölünmesiyle bulunur" },
-      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `W_max = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
-      { step: 3, title: "Sonuç", formula: `W_max = ${Vh.toFixed(2)} / ${SF.toFixed(3)}`, result: `W_max = ${wmax.toFixed(2)} ton` }
+      { step: 1, title: "Formül", formula: "Wmax = Vambar / SF", explanation: "Maksimum yük miktarı, ambar hacminin istif faktörüne bölünmesiyle bulunur" },
+      { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
+      { step: 3, title: "Sonuç", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}`, result: `Wmax = ${wmax.toFixed(2)} ton` }
     ] }));
     toast({ title: "Maksimum Yük", description: `w_max = ${wmax.toFixed(2)} ton` });
   };

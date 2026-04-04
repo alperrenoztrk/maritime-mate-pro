@@ -19,7 +19,7 @@ const safetyFormulas = [
   {
     title: "CO₂ Miktarı",
     icon: Wind,
-    formula: "M = 1.5 × V × (ρ_gas / ρ_liq)",
+    formula: "M = 1.5 × V × (ρgas / ρliq)",
     variables: [
       "M: Gerekli CO₂ miktarı (kg)",
       "V: Korunan hacim (m³)",

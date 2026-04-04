@@ -132,19 +132,19 @@ export const LongitudinalStabilityCalculations = () => {
       
       // Generate step-by-step calculation explanations
       setGmlSteps([
-        { step: 1, title: "Formül", formula: "BM_L = I_L / ∇", explanation: "Boyuna metasantrik yarıçap, su hattı alanının boyuna atalet momentinin su altı hacmine bölünmesiyle bulunur" },
+        { step: 1, title: "Formül", formula: "BML = IL / ∇", explanation: "Boyuna metasantrik yarıçap, su hattı alanının boyuna atalet momentinin su altı hacmine bölünmesiyle bulunur" },
         { step: 2, title: "Su altı hacmi hesabı", formula: "∇ = Δ / ρ", substitution: `∇ = ${formatNumber(inputs.displacement)} / 1.025 = ${formatNumber(volume)} m³`, explanation: "Deplasman, deniz suyu yoğunluğuna bölünerek su altı hacmi elde edilir" },
-        { step: 3, title: "BM_L hesabı", formula: "BM_L = I_L / ∇", substitution: `BM_L = ${formatNumber(inputs.il)} / ${formatNumber(volume)} = ${formatNumber(bml)} m` },
+        { step: 3, title: "BML hesabı", formula: "BML = IL / ∇", substitution: `BML = ${formatNumber(inputs.il)} / ${formatNumber(volume)} = ${formatNumber(bml)} m` },
         { step: 4, title: "KB tahmini", formula: "KB ≈ T / 2", substitution: `KB ≈ ${formatNumber(inputs.draft)} / 2 = ${formatNumber(kb)} m`, explanation: "Basitleştirilmiş yaklaşımla KB, draftin yarısı olarak alınır" },
         { step: 5, title: "BG hesabı", formula: "BG = KG - KB", substitution: `BG = ${formatNumber(inputs.kg)} - ${formatNumber(kb)} = ${formatNumber(bg)} m` },
-        { step: 6, title: "Sonuç", formula: "GM_L = BM_L - BG", substitution: `GM_L = ${formatNumber(bml)} - ${formatNumber(bg)} = ${formatNumber(gml)} m`, result: `= ${formatNumber(gml)} m` },
+        { step: 6, title: "Sonuç", formula: "GML = BML - BG", substitution: `GML = ${formatNumber(bml)} - ${formatNumber(bg)} = ${formatNumber(gml)} m`, result: `= ${formatNumber(gml)} m` },
       ]);
 
       setMctSteps([
-        { step: 1, title: "Formül", formula: "MCT 1cm = (Δ × GM_L) / (100 × L_BP)", explanation: "Trimi 1 cm değiştirmek için gerekli moment hesaplanır" },
-        { step: 2, title: "Değerlerin yerleştirilmesi", formula: "MCT 1cm = (Δ × GM_L) / (100 × L_BP)", substitution: `MCT 1cm = (${formatNumber(inputs.displacement)} × ${formatNumber(gml)}) / (100 × ${formatNumber(inputs.length)})` },
-        { step: 3, title: "Pay hesabı", formula: "Δ × GM_L", substitution: `${formatNumber(inputs.displacement)} × ${formatNumber(gml)} = ${formatNumber(inputs.displacement * gml)}` },
-        { step: 4, title: "Payda hesabı", formula: "100 × L_BP", substitution: `100 × ${formatNumber(inputs.length)} = ${formatNumber(100 * inputs.length)}` },
+        { step: 1, title: "Formül", formula: "MCT 1cm = (Δ × GML) / (100 × LBP)", explanation: "Trimi 1 cm değiştirmek için gerekli moment hesaplanır" },
+        { step: 2, title: "Değerlerin yerleştirilmesi", formula: "MCT 1cm = (Δ × GML) / (100 × LBP)", substitution: `MCT 1cm = (${formatNumber(inputs.displacement)} × ${formatNumber(gml)}) / (100 × ${formatNumber(inputs.length)})` },
+        { step: 3, title: "Pay hesabı", formula: "Δ × GML", substitution: `${formatNumber(inputs.displacement)} × ${formatNumber(gml)} = ${formatNumber(inputs.displacement * gml)}` },
+        { step: 4, title: "Payda hesabı", formula: "100 × LBP", substitution: `100 × ${formatNumber(inputs.length)} = ${formatNumber(100 * inputs.length)}` },
         { step: 5, title: "Sonuç", formula: "MCT 1cm = Pay / Payda", substitution: `MCT 1cm = ${formatNumber(inputs.displacement * gml)} / ${formatNumber(100 * inputs.length)} = ${formatNumber(mct1cm)} t·m/cm`, result: `= ${formatNumber(mct1cm)} t·m/cm` },
       ]);
 
@@ -158,17 +158,17 @@ export const LongitudinalStabilityCalculations = () => {
       ]);
 
       setDistributionSteps([
-        { step: 1, title: "Formül", formula: "Kıç değişimi = |Trim| × (LCF_kıç / L_BP)", explanation: "Trim değişimi, LCF konumuna göre baş ve kıça orantılı olarak dağıtılır" },
-        { step: 2, title: "LCF mesafeleri", formula: "LCF_kıç = LCF, LCF_baş = L_BP - LCF", substitution: `LCF_kıç = ${formatNumber(inputs.lcf)} m, LCF_baş = ${formatNumber(inputs.length)} - ${formatNumber(inputs.lcf)} = ${formatNumber(forwardDistance)} m` },
-        { step: 3, title: "Kıç draft değişimi", formula: "Kıç değişimi = |Trim| × (LCF_kıç / L_BP)", substitution: `Kıç değişimi = ${formatNumber(Math.abs(trimChange))} × (${formatNumber(aftDistance)} / ${formatNumber(inputs.length)}) = ${formatNumber(aftChange)} cm`, result: `= ${formatNumber(signedAftChange, 1)} cm (işaretli)` },
-        { step: 4, title: "Baş draft değişimi", formula: "Baş değişimi = |Trim| × (LCF_baş / L_BP)", substitution: `Baş değişimi = ${formatNumber(Math.abs(trimChange))} × (${formatNumber(forwardDistance)} / ${formatNumber(inputs.length)}) = ${formatNumber(forwardChange)} cm`, result: `= ${formatNumber(signedForwardChange, 1)} cm (işaretli)` },
+        { step: 1, title: "Formül", formula: "Kıç değişimi = |Trim| × (LCFkıç / LBP)", explanation: "Trim değişimi, LCF konumuna göre baş ve kıça orantılı olarak dağıtılır" },
+        { step: 2, title: "LCF mesafeleri", formula: "LCFkıç = LCF, LCFbaş = LBP - LCF", substitution: `LCFkıç = ${formatNumber(inputs.lcf)} m, LCFbaş = ${formatNumber(inputs.length)} - ${formatNumber(inputs.lcf)} = ${formatNumber(forwardDistance)} m` },
+        { step: 3, title: "Kıç draft değişimi", formula: "Kıç değişimi = |Trim| × (LCFkıç / LBP)", substitution: `Kıç değişimi = ${formatNumber(Math.abs(trimChange))} × (${formatNumber(aftDistance)} / ${formatNumber(inputs.length)}) = ${formatNumber(aftChange)} cm`, result: `= ${formatNumber(signedAftChange, 1)} cm (işaretli)` },
+        { step: 4, title: "Baş draft değişimi", formula: "Baş değişimi = |Trim| × (LCFbaş / LBP)", substitution: `Baş değişimi = ${formatNumber(Math.abs(trimChange))} × (${formatNumber(forwardDistance)} / ${formatNumber(inputs.length)}) = ${formatNumber(forwardChange)} cm`, result: `= ${formatNumber(signedForwardChange, 1)} cm (işaretli)` },
       ]);
 
       setDraftSteps([
         { step: 1, title: "Formül", formula: "Yeni Draft = Başlangıç Draft + Değişim / 100", explanation: "Draft değişimi cm cinsinden olduğundan metreye çevirmek için 100'e bölünür" },
-        { step: 2, title: "Yeni kıç draft", formula: "Kıç_yeni = Kıç_eski + Kıç_değişim / 100", substitution: `Kıç_yeni = ${formatNumber(inputs.initialDraftAft)} + ${formatNumber(signedAftChange)} / 100 = ${formatNumber(inputs.initialDraftAft)} + ${formatNumber(signedAftChange / 100, 4)} = ${formatNumber(newAft, 4)} m`, result: `= ${formatNumber(newAft, 4)} m` },
-        { step: 3, title: "Yeni baş draft", formula: "Baş_yeni = Baş_eski + Baş_değişim / 100", substitution: `Baş_yeni = ${formatNumber(inputs.initialDraftForward)} + (${formatNumber(signedForwardChange)}) / 100 = ${formatNumber(inputs.initialDraftForward)} + ${formatNumber(signedForwardChange / 100, 4)} = ${formatNumber(newForward, 4)} m`, result: `= ${formatNumber(newForward, 4)} m` },
-        { step: 4, title: "Ortalama draft", formula: "Ortalama = (Kıç_yeni + Baş_yeni) / 2", substitution: `Ortalama = (${formatNumber(newAft, 4)} + ${formatNumber(newForward, 4)}) / 2 = ${formatNumber(newMean, 4)} m`, result: `= ${formatNumber(newMean, 4)} m` },
+        { step: 2, title: "Yeni kıç draft", formula: "Kıçyeni = Kıçeski + Kıçdeğişim / 100", substitution: `Kıçyeni = ${formatNumber(inputs.initialDraftAft)} + ${formatNumber(signedAftChange)} / 100 = ${formatNumber(inputs.initialDraftAft)} + ${formatNumber(signedAftChange / 100, 4)} = ${formatNumber(newAft, 4)} m`, result: `= ${formatNumber(newAft, 4)} m` },
+        { step: 3, title: "Yeni baş draft", formula: "Başyeni = Başeski + Başdeğişim / 100", substitution: `Başyeni = ${formatNumber(inputs.initialDraftForward)} + (${formatNumber(signedForwardChange)}) / 100 = ${formatNumber(inputs.initialDraftForward)} + ${formatNumber(signedForwardChange / 100, 4)} = ${formatNumber(newForward, 4)} m`, result: `= ${formatNumber(newForward, 4)} m` },
+        { step: 4, title: "Ortalama draft", formula: "Ortalama = (Kıçyeni + Başyeni) / 2", substitution: `Ortalama = (${formatNumber(newAft, 4)} + ${formatNumber(newForward, 4)}) / 2 = ${formatNumber(newMean, 4)} m`, result: `= ${formatNumber(newMean, 4)} m` },
       ]);
 
       setResults({

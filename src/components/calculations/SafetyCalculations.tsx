@@ -472,9 +472,9 @@ export const SafetyCalculations = () => {
       setResult(calculatedResult);
       setCalcSteps({
         anchoring: [
-          { step: 1, title: "Rüzgar kuvveti", formula: "F_rüzgar = 0.5 × ρ_hava × Cd × A × V²", result: `F_rüzgar = ${anchoring.windForce.toFixed(2)} ton` },
-          { step: 2, title: "Akıntı kuvveti", formula: "F_akıntı = 0.5 × ρ_su × Cd × A × V²", result: `F_akıntı = ${anchoring.currentForce.toFixed(2)} ton` },
-          { step: 3, title: "Toplam çevresel kuvvet", formula: "F_toplam = (F_rüzgar + F_akıntı) × Dalga faktörü", result: `F_toplam = ${anchoring.totalForce.toFixed(2)} ton` },
+          { step: 1, title: "Rüzgar kuvveti", formula: "Früzgar = 0.5 × ρhava × Cd × A × V²", result: `Früzgar = ${anchoring.windForce.toFixed(2)} ton` },
+          { step: 2, title: "Akıntı kuvveti", formula: "Fakıntı = 0.5 × ρsu × Cd × A × V²", result: `Fakıntı = ${anchoring.currentForce.toFixed(2)} ton` },
+          { step: 3, title: "Toplam çevresel kuvvet", formula: "Ftoplam = (Früzgar + Fakıntı) × Dalga faktörü", result: `Ftoplam = ${anchoring.totalForce.toFixed(2)} ton` },
           { step: 4, title: "Zincir uzunluğu", formula: "L = Kapsam × Efektif Derinlik", result: `Önerilen = ${anchoring.recommendedChainLength.toFixed(0)} m, Min = ${anchoring.minimumChainLength.toFixed(0)} m` },
           { step: 5, title: "Tutma gücü", formula: "HP = (Çapa Ağırlığı / 1000) × Zemin Faktörü", result: `HP = ${anchoring.anchorHoldingPower.toFixed(2)} ton, Emniyet Faktörü = ${anchoring.safetyFactor.toFixed(2)}` },
         ],

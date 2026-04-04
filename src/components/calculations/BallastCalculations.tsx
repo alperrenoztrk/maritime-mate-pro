@@ -219,47 +219,47 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 1,
         title: "Transfer ağırlığı hesabı",
-        formula: "W_transfer = V × ρ",
-        substitution: `W_transfer = ${operation.volume} × 1.025`,
-        result: `W_transfer = ${transferWeight.toFixed(3)} ton`,
+        formula: "Wtransfer = V × ρ",
+        substitution: `Wtransfer = ${operation.volume} × 1.025`,
+        result: `Wtransfer = ${transferWeight.toFixed(3)} ton`,
         explanation: "Transfer edilen suyun ağırlığı, hacim ile deniz suyu yoğunluğunun çarpımıdır"
       },
       {
         step: 2,
         title: "Kaynak tank yeni seviyesi",
-        formula: "Seviye_yeni = Seviye_eski - (V_transfer / Kapasite × 100)",
-        substitution: `Seviye_yeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
-        result: `Seviye_yeni = ${newFromLevel.toFixed(1)}%`,
+        formula: "Seviyeyeni = Seviyeeski - (Vtransfer / Kapasite × 100)",
+        substitution: `Seviyeyeni = ${fromTank.currentLevel} - (${operation.volume} / ${fromTank.capacity} × 100)`,
+        result: `Seviyeyeni = ${newFromLevel.toFixed(1)}%`,
         explanation: `${fromTank.name} tankının transfer sonrası seviyesi`
       },
       {
         step: 3,
         title: "Hedef tank yeni seviyesi",
-        formula: "Seviye_yeni = Seviye_eski + (V_transfer / Kapasite × 100)",
-        substitution: `Seviye_yeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
-        result: `Seviye_yeni = ${newToLevel.toFixed(1)}%`,
+        formula: "Seviyeyeni = Seviyeeski + (Vtransfer / Kapasite × 100)",
+        substitution: `Seviyeyeni = ${toTank.currentLevel} + (${operation.volume} / ${toTank.capacity} × 100)`,
+        result: `Seviyeyeni = ${newToLevel.toFixed(1)}%`,
         explanation: `${toTank.name} tankının transfer sonrası seviyesi`
       },
       {
         step: 4,
         title: "Boyuna moment değişimi (Trim momenti)",
-        formula: "M_LCG = W_transfer × (LCG_hedef - LCG_kaynak)",
-        substitution: `M_LCG = ${transferWeight.toFixed(3)} × (${toTank.LCG} - ${fromTank.LCG})`,
-        result: `M_LCG = ${momentLCG.toFixed(3)} t·m`,
+        formula: "MLCG = Wtransfer × (LCGhedef - LCGkaynak)",
+        substitution: `MLCG = ${transferWeight.toFixed(3)} × (${toTank.LCG} - ${fromTank.LCG})`,
+        result: `MLCG = ${momentLCG.toFixed(3)} t·m`,
         explanation: "Boyuna ağırlık merkezi farkından kaynaklanan moment"
       },
       {
         step: 5,
         title: "Enine moment değişimi (List momenti)",
-        formula: "M_TCG = W_transfer × (TCG_hedef - TCG_kaynak)",
-        substitution: `M_TCG = ${transferWeight.toFixed(3)} × (${toTank.TCG} - ${fromTank.TCG})`,
-        result: `M_TCG = ${momentTCG.toFixed(3)} t·m`,
+        formula: "MTCG = Wtransfer × (TCGhedef - TCGkaynak)",
+        substitution: `MTCG = ${transferWeight.toFixed(3)} × (${toTank.TCG} - ${fromTank.TCG})`,
+        result: `MTCG = ${momentTCG.toFixed(3)} t·m`,
         explanation: "Enine ağırlık merkezi farkından kaynaklanan moment"
       },
       {
         step: 6,
         title: "Trim değişimi hesabı",
-        formula: "ΔTrim = M_LCG / (Δ × GML / 100)",
+        formula: "ΔTrim = MLCG / (Δ × GML / 100)",
         substitution: `ΔTrim = ${momentLCG.toFixed(3)} / (${displacement} × ${GML} / 100)`,
         result: `ΔTrim = ${trimChange.toFixed(3)} cm = ${(trimChange / 100).toFixed(3)} m`,
         explanation: "Δ = deplasman, GML = boyuna metasentrik yükseklik"
@@ -267,7 +267,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 7,
         title: "List değişimi hesabı",
-        formula: "ΔList = M_TCG / (Δ × GMT) × (180/π)",
+        formula: "ΔList = MTCG / (Δ × GMT) × (180/π)",
         substitution: `ΔList = ${momentTCG.toFixed(3)} / (${displacement} × ${GMT}) × ${(180 / Math.PI).toFixed(4)}`,
         result: `ΔList = ${listChange.toFixed(3)}°`,
         explanation: "GMT = enine metasentrik yükseklik, sonuç dereceye çevrilir"
@@ -275,7 +275,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 8,
         title: "Pompalama süresi hesabı",
-        formula: "t = V / min(Q_kaynak, Q_hedef)",
+        formula: "t = V / min(Qkaynak, Qhedef)",
         substitution: `t = ${operation.volume} / min(${fromTank.pumpRate}, ${toTank.pumpRate})`,
         result: `t = ${pumpingTime.toFixed(2)} saat`,
         explanation: "İki tankın pompa kapasitesinden düşük olanı baz alınır"
@@ -291,9 +291,9 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
       {
         step: 10,
         title: "Düzeltilmiş GM hesabı",
-        formula: "GM_düzeltilmiş = GM₀ - FSC",
-        substitution: `GM_düzeltilmiş = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
-        result: `GM_düzeltilmiş = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
+        formula: "GMdüzeltilmiş = GM₀ - FSC",
+        substitution: `GMdüzeltilmiş = ${GMT} - ${freeSurfaceEffect.toFixed(4)}`,
+        result: `GMdüzeltilmiş = ${(GMT - freeSurfaceEffect).toFixed(3)} m`,
         explanation: "Serbest yüzey etkisi çıkarılarak düzeltilmiş metasentrik yükseklik bulunur"
       }
     ];

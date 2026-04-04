@@ -28,9 +28,9 @@ const Engine = () => {
               title: "⚡ Güç Formülleri",
               accent: "blue",
               lines: [
-                { label: "Fren Gücü", formula: "BHP = IHP × η_mech" },
-                { label: "Şaft Gücü", formula: "SHP = BHP × η_trans" },
-                { label: "Efektif Güç", formula: "EHP = SHP × η_prop" },
+                { label: "Fren Gücü", formula: "BHP = IHP × ηmech" },
+                { label: "Şaft Gücü", formula: "SHP = BHP × ηtrans" },
+                { label: "Efektif Güç", formula: "EHP = SHP × ηprop" },
               ],
             },
             {
@@ -64,8 +64,8 @@ const Engine = () => {
               title: "📊 Verimlilik Formülleri",
               accent: "purple",
               lines: [
-                { label: "Termal Verimlilik", formula: "η_th = P / (FC × LCV)" },
-                { label: "Genel Verimlilik", formula: "η_total = η_th × η_mech × η_prop" },
+                { label: "Termal Verimlilik", formula: "ηth = P / (FC × LCV)" },
+                { label: "Genel Verimlilik", formula: "ηtotal = ηth × ηmech × ηprop" },
                 { label: "EEOI", formula: "EEOI = CO₂ / (Cargo × Distance)" },
               ],
             },

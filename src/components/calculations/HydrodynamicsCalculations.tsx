@@ -437,7 +437,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 1,
           title: "Hiz Donusumu (knot -> m/s)",
-          formula: "V = V_knot x 0.514",
+          formula: "V = Vknot x 0.514",
           substitution: `V = ${data.shipSpeed} x 0.514`,
           result: `V = ${speedMS.toFixed(3)} m/s`,
           explanation: "Gemi hizi knot biriminden m/s birimine donusturulur."
@@ -517,25 +517,25 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 11,
           title: "Govde Verimi",
-          formula: "eta_H = (1 - t) / (1 - w)",
-          substitution: `eta_H = (1 - ${propulsion.thrustDeduction.toFixed(4)}) / (1 - ${propulsion.wakeDeduction.toFixed(4)})`,
-          result: `eta_H = ${(propulsion.hullEfficiency).toFixed(2)}%`,
+          formula: "etaH = (1 - t) / (1 - w)",
+          substitution: `etaH = (1 - ${propulsion.thrustDeduction.toFixed(4)}) / (1 - ${propulsion.wakeDeduction.toFixed(4)})`,
+          result: `etaH = ${(propulsion.hullEfficiency).toFixed(2)}%`,
           explanation: "Govde verimi, iz ve itki azalma katsayilarinin birlesmis etkisini gosterir."
         },
         {
           step: 12,
           title: "Pervane Verimi",
-          formula: "eta_O = (Kt / Kq) x (J / 2pi)",
-          substitution: `eta_O hesaplandi (Wageningen B-serisi yaklasimi ile)`,
-          result: `eta_O = ${propulsion.propellerEfficiency.toFixed(2)}%`,
+          formula: "etaO = (Kt / Kq) x (J / 2pi)",
+          substitution: `etaO hesaplandi (Wageningen B-serisi yaklasimi ile)`,
+          result: `etaO = ${propulsion.propellerEfficiency.toFixed(2)}%`,
           explanation: "Pervane acik su verimi, pervane itki ve tork katsayilari ile ilerleme katsayisindan hesaplanir."
         },
         {
           step: 13,
           title: "Toplam Sevk Verimi",
-          formula: "eta_D = eta_O x eta_H x eta_R / 10000",
-          substitution: `eta_D = ${propulsion.propellerEfficiency.toFixed(2)} x ${propulsion.hullEfficiency.toFixed(2)} x ${propulsion.relativeRotativeEfficiency.toFixed(2)} / 10000`,
-          result: `eta_D = ${propulsion.totalPropulsiveEfficiency.toFixed(2)}%`,
+          formula: "etaD = etaO x etaH x etaR / 10000",
+          substitution: `etaD = ${propulsion.propellerEfficiency.toFixed(2)} x ${propulsion.hullEfficiency.toFixed(2)} x ${propulsion.relativeRotativeEfficiency.toFixed(2)} / 10000`,
+          result: `etaD = ${propulsion.totalPropulsiveEfficiency.toFixed(2)}%`,
           explanation: "Toplam sevk verimi, tum verimlilik bilesenlerinin carpimini ifade eder."
         }
       ];
@@ -563,31 +563,31 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 3,
           title: "Karsilasma Frekans",
-          formula: "omega_e = omega - omega^2 x V / g x cos(mu)",
-          substitution: `omega_e = ${omega.toFixed(4)} - ${omega.toFixed(4)}^2 x ${speedMS.toFixed(3)} / ${g} x cos(${data.waveDirection}deg)`,
-          result: `omega_e = ${motions.encounterFrequency.toFixed(4)} rad/s`,
+          formula: "omegae = omega - omega^2 x V / g x cos(mu)",
+          substitution: `omegae = ${omega.toFixed(4)} - ${omega.toFixed(4)}^2 x ${speedMS.toFixed(3)} / ${g} x cos(${data.waveDirection}deg)`,
+          result: `omegae = ${motions.encounterFrequency.toFixed(4)} rad/s`,
           explanation: "Karsilasma frekansi, geminin dalga ile karsilasma hizini ifade eder. Dalga yonu ve gemi hizina baglidir."
         },
         {
           step: 4,
           title: "Yalpa Dogal Frekansi",
-          formula: "omega_roll = 2pi / T_roll",
-          substitution: `omega_roll = 2pi / ${data.naturalRollPeriod}`,
-          result: `omega_roll = ${(2 * Math.PI / data.naturalRollPeriod).toFixed(4)} rad/s`,
+          formula: "omegaroll = 2pi / Troll",
+          substitution: `omegaroll = 2pi / ${data.naturalRollPeriod}`,
+          result: `omegaroll = ${(2 * Math.PI / data.naturalRollPeriod).toFixed(4)} rad/s`,
           explanation: "Yalpa dogal frekansi, geminin serbest yalpa periyodundan elde edilir."
         },
         {
           step: 5,
           title: "Yalpa RAO (Tepki Genlik Operatoru)",
-          formula: "RAO_roll = Hw / (1 + (omega_e / omega_roll)^2)",
-          substitution: `RAO_roll = ${data.waveHeight} / (1 + (${motions.encounterFrequency.toFixed(4)} / ${(2 * Math.PI / data.naturalRollPeriod).toFixed(4)})^2)`,
-          result: `RAO_roll = ${(data.waveHeight / (1 + Math.pow(motions.encounterFrequency / (2 * Math.PI / data.naturalRollPeriod), 2))).toFixed(4)}`,
+          formula: "RAOroll = Hw / (1 + (omegae / omegaroll)^2)",
+          substitution: `RAOroll = ${data.waveHeight} / (1 + (${motions.encounterFrequency.toFixed(4)} / ${(2 * Math.PI / data.naturalRollPeriod).toFixed(4)})^2)`,
+          result: `RAOroll = ${(data.waveHeight / (1 + Math.pow(motions.encounterFrequency / (2 * Math.PI / data.naturalRollPeriod), 2))).toFixed(4)}`,
           explanation: "RAO, dalga yuksekligine karsilik gelen hareket genligini verir."
         },
         {
           step: 6,
           title: "Yalpa Genligi",
-          formula: "phi = RAO_roll x atan(GM / k_xx) x 180/pi",
+          formula: "phi = RAOroll x atan(GM / kxx) x 180/pi",
           substitution: `phi = RAO x atan(${data.metacentricHeight} / ${data.radiusOfGyration}) x 180/pi`,
           result: `phi = ${motions.rollAmplitude.toFixed(2)} derece`,
           explanation: "Yalpa genligi, dalga kosullarinda geminin enine sallanma miktarini ifade eder."
@@ -611,17 +611,17 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 9,
           title: "Dusey Ivme",
-          formula: "a_v = omega_e^2 x z",
-          substitution: `a_v = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.heaveAmplitude.toFixed(2)}`,
-          result: `a_v = ${motions.verticalAcceleration.toFixed(3)} m/s^2`,
+          formula: "av = omegae^2 x z",
+          substitution: `av = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.heaveAmplitude.toFixed(2)}`,
+          result: `av = ${motions.verticalAcceleration.toFixed(3)} m/s^2`,
           explanation: "Dusey ivme, dalip cikma hareketinden kaynaklanan ivmedir. Yuk ve murettebat konforu icin onemlidir."
         },
         {
           step: 10,
           title: "Yanal Ivme",
-          formula: "a_l = omega_e^2 x phi x B/2 / 180 x pi",
-          substitution: `a_l = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.rollAmplitude.toFixed(2)} x ${data.shipBeam}/2 / 180 x pi`,
-          result: `a_l = ${motions.lateralAcceleration.toFixed(3)} m/s^2`,
+          formula: "al = omegae^2 x phi x B/2 / 180 x pi",
+          substitution: `al = ${motions.encounterFrequency.toFixed(4)}^2 x ${motions.rollAmplitude.toFixed(2)} x ${data.shipBeam}/2 / 180 x pi`,
+          result: `al = ${motions.lateralAcceleration.toFixed(3)} m/s^2`,
           explanation: "Yanal ivme, yalpa hareketinden kaynaklanan yan ivmedir."
         }
       ];
@@ -641,31 +641,31 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 2,
           title: "Slamming Olasiligi (Ochi Metodu)",
-          formula: "P_slam = min(100, Sp x 50)",
-          substitution: `P_slam = min(100, ${slammingParameter.toExponential(4)} x 50)`,
-          result: `P_slam = ${slamming.slammingProbability.toFixed(2)}%`,
+          formula: "Pslam = min(100, Sp x 50)",
+          substitution: `Pslam = min(100, ${slammingParameter.toExponential(4)} x 50)`,
+          result: `Pslam = ${slamming.slammingProbability.toFixed(2)}%`,
           explanation: "Slamming olasiligi %5'in uzerinde ise slamming riski vardir."
         },
         {
           step: 3,
           title: "Dalga Etki Kuvveti",
-          formula: "F_impact = 0.5 x rho x V^2 x B x Hw",
-          substitution: `F_impact = 0.5 x ${rho} x ${speedMS.toFixed(3)}^2 x ${data.shipBeam} x ${data.waveHeight}`,
-          result: `F_impact = ${slamming.waveImpactForce.toFixed(1)} N`,
+          formula: "Fimpact = 0.5 x rho x V^2 x B x Hw",
+          substitution: `Fimpact = 0.5 x ${rho} x ${speedMS.toFixed(3)}^2 x ${data.shipBeam} x ${data.waveHeight}`,
+          result: `Fimpact = ${slamming.waveImpactForce.toFixed(1)} N`,
           explanation: "Dalga etki kuvveti, dalgalarin govdeye uyguladi dinamik kuvvettir."
         },
         {
           step: 4,
           title: "Ilave Dalga Direnci (Gerritsma-Beukelman)",
-          formula: "R_aw = C_aw x 0.5 x rho x g x Hw^2 x B / 1000",
-          substitution: `R_aw hesabi: dalga sayisi, dalga yuksekligi, gemi boyutlari ve dalga yonu kullanilarak yapildi`,
-          result: `R_aw = ${addedRes.addedResistance.toFixed(2)} kN`,
+          formula: "Raw = Caw x 0.5 x rho x g x Hw^2 x B / 1000",
+          substitution: `Raw hesabi: dalga sayisi, dalga yuksekligi, gemi boyutlari ve dalga yonu kullanilarak yapildi`,
+          result: `Raw = ${addedRes.addedResistance.toFixed(2)} kN`,
           explanation: "Ilave dalga direnci, dalgali denizde artan direnci ifade eder."
         },
         {
           step: 5,
           title: "Hiz Kaybi",
-          formula: "DeltaV = (R_aw / P_eng) x 100",
+          formula: "DeltaV = (Raw / Peng) x 100",
           substitution: `DeltaV = (${addedRes.addedResistance.toFixed(2)} / ${data.enginePower}) x 100`,
           result: `DeltaV = ${addedRes.speedLoss.toFixed(2)}%`,
           explanation: "Dalgali denizde motor gucune oranla beklenen hiz kaybi yuzdesidir."
@@ -681,7 +681,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 7,
           title: "Operabilite Indeksi",
-          formula: "OI = max(0, 100 - DeltaV x 2 - P_slam)",
+          formula: "OI = max(0, 100 - DeltaV x 2 - Pslam)",
           substitution: `OI = max(0, 100 - ${addedRes.speedLoss.toFixed(2)} x 2 - ${slamming.slammingProbability.toFixed(2)})`,
           result: `OI = ${operabilityIndex.toFixed(1)}%`,
           explanation: "Operabilite indeksi, geminin mevcut kosullarda ne kadar etkili calisabilecegini gosterir."
@@ -701,7 +701,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 2,
           title: "Itki Gucu (PT)",
-          formula: "PT = PE / eta_H",
+          formula: "PT = PE / etaH",
           substitution: `PT = ${effectivePower.toFixed(1)} / ${(propulsion.hullEfficiency / 100).toFixed(4)}`,
           result: `PT = ${thrustPower.toFixed(1)} kW`,
           explanation: "Itki gucu, pervanenin suya aktardigi guctur. Govde verimi ile iliskilidir."
@@ -709,7 +709,7 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
         {
           step: 3,
           title: "Teslim Edilen Guc (PD)",
-          formula: "PD = PT / eta_O",
+          formula: "PD = PT / etaO",
           substitution: `PD = ${thrustPower.toFixed(1)} / ${(propulsion.propellerEfficiency / 100).toFixed(4)}`,
           result: `PD = ${deliveredPower.toFixed(1)} kW`,
           explanation: "Teslim edilen guc, pervane miline iletilmesi gereken guctur. Pervane verimi ile iliskilidir."
