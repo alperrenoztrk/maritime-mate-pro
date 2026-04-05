@@ -190,11 +190,7 @@ const navigationRules: NavigationRule[] = [
   // SOLAS
   {
     pattern: /^\/solas\/(regulations|certificates|ship-requirements|safety-equipment)$/,
-    parent: () => '/solas',
-  },
-  {
-    pattern: /^\/solas$/,
-    parent: () => '/',
+    parent: () => '/hub/solas',
   },
 
   // Regulations
@@ -204,32 +200,6 @@ const navigationRules: NavigationRule[] = [
   },
   {
     pattern: /^\/regulations$/,
-    parent: () => '/',
-  },
-
-  // Menu pages
-  {
-    pattern: /^\/navigation-menu$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/seamanship-menu$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/safety-menu$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/weather-menu$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/economics-menu$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/tank-menu$/,
     parent: () => '/',
   },
 

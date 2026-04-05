@@ -8,7 +8,7 @@ export default function StabilityPracticalPage() {
     <MobileLayout>
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <Link to="/stability">
+          <Link to="/hub/stability">
             <Button variant="ghost" size="sm" className="gap-2">
               <ArrowLeft className="h-4 w-4" />
               Stabilite
