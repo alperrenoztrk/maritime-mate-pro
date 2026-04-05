@@ -30,14 +30,6 @@ import ShipTaskDetailPage from "./pages/ShipTaskDetailPage";
 import ShipOperationsPage from "./pages/ShipOperationsPage";
 import ShipOperationsDetail from "./pages/ShipOperationsDetail";
 import CalculationSectionPage from "./pages/CalculationSectionPage";
-import StabilityMenu from "./pages/StabilityMenu";
-import SafetyMenu from "./pages/SafetyMenu";
-import WeatherMenu from "./pages/WeatherMenu";
-import NavigationMenu from "./pages/NavigationMenu";
-import EconomicsMenu from "./pages/EconomicsMenu";
-import SeamanshipMenu from "./pages/SeamanshipMenu";
-import TankMenu from "./pages/TankMenu";
-import SOLASMenu from "./pages/SOLASMenu";
 import Navigation from "./pages/Navigation";
 import NavigationCalculationPage from "./pages/NavigationCalculation";
 import TideCalculationTutorial from "./pages/TideCalculationTutorial";
@@ -232,7 +224,6 @@ const AnimatedRoutes = () => {
         <Route path="/ship-systems" element={<PageTransition><ShipSystemsPage /></PageTransition>} />
         <Route path="/ship-systems/:sectionId" element={<PageTransition><ShipSystemDetailPage /></PageTransition>} />
         <Route path="/calculations/:categoryId/:sectionId" element={<PageTransition><CalculationSectionPage /></PageTransition>} />
-        <Route path="/stability" element={<PageTransition><StabilityMenu /></PageTransition>} />
         {/* Stability sub-routes */}
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />
         <Route path="/stability/rules" element={<PageTransition><StabilityRules /></PageTransition>} />
@@ -296,11 +287,6 @@ const AnimatedRoutes = () => {
         <Route path="/solas/certificates" element={<PageTransition><SOLASCertificatesPage /></PageTransition>} />
         <Route path="/solas/ship-requirements" element={<PageTransition><SOLASShipRequirementsPage /></PageTransition>} />
         <Route path="/solas/safety-equipment" element={<PageTransition><SOLASSafetyEquipmentPage /></PageTransition>} />
-        <Route path="/safety-menu" element={<PageTransition><SafetyMenu /></PageTransition>} />
-        <Route path="/weather-menu" element={<PageTransition><WeatherMenu /></PageTransition>} />
-        <Route path="/navigation-menu" element={<PageTransition><NavigationMenu /></PageTransition>} />
-        <Route path="/economics-menu" element={<PageTransition><EconomicsMenu /></PageTransition>} />
-        <Route path="/seamanship-menu" element={<PageTransition><SeamanshipMenu /></PageTransition>} />
         <Route path="/seamanship/knots" element={<PageTransition><SailorKnotsPage /></PageTransition>} />
         <Route path="/seamanship/calculations" element={<PageTransition><SeamanshipCalculationsPage /></PageTransition>} />
         <Route
@@ -330,8 +316,6 @@ const AnimatedRoutes = () => {
         <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/topics/:subTopicTitle" element={<PageTransition><MachineTopicDetailPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/quiz" element={<PageTransition><MachineTopicQuizPage /></PageTransition>} />
-        <Route path="/tank-menu" element={<PageTransition><TankMenu /></PageTransition>} />
-        <Route path="/solas" element={<PageTransition><SOLASMenu /></PageTransition>} />
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />
         <Route path="/navigation/tide-tutorial" element={<PageTransition><TideCalculationTutorial /></PageTransition>} />
