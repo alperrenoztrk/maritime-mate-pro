@@ -61,6 +61,16 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/',
   },
 
+  // Ship Operations
+  {
+    pattern: /^\/ship-operations\/([^/]+)$/,
+    parent: () => '/ship-operations',
+  },
+  {
+    pattern: /^\/ship-operations$/,
+    parent: () => '/',
+  },
+
   // Machine topic sub-routes
   {
     pattern: /^\/machine\/([^/]+)\/topics\/([^/]+)$/,
