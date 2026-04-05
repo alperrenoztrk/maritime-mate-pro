@@ -27,6 +27,8 @@ import BridgeDevicesPage from "./pages/BridgeDevicesPage";
 import MachineryHubPage from "./pages/MachineryHubPage";
 import ShipTasksPage from "./pages/ShipTasksPage";
 import ShipTaskDetailPage from "./pages/ShipTaskDetailPage";
+import ShipOperationsPage from "./pages/ShipOperationsPage";
+import ShipOperationsDetail from "./pages/ShipOperationsDetail";
 import CalculationSectionPage from "./pages/CalculationSectionPage";
 import StabilityMenu from "./pages/StabilityMenu";
 import SafetyMenu from "./pages/SafetyMenu";
@@ -220,6 +222,8 @@ const AnimatedRoutes = () => {
         <Route path="/machinery" element={<PageTransition><MachineryHubPage /></PageTransition>} />
         <Route path="/ship-tasks" element={<PageTransition><ShipTasksPage /></PageTransition>} />
         <Route path="/ship-tasks/:taskSlug" element={<PageTransition><ShipTaskDetailPage /></PageTransition>} />
+        <Route path="/ship-operations" element={<PageTransition><ShipOperationsPage /></PageTransition>} />
+        <Route path="/ship-operations/:shipType" element={<PageTransition><ShipOperationsDetail /></PageTransition>} />
         <Route path="/hub" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/hub/:categoryId" element={<PageTransition><HubCategoryPage /></PageTransition>} />
         <Route path="/crew/:roleSlug" element={<PageTransition><CrewRoleDetailPage /></PageTransition>} />
