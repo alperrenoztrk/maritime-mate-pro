@@ -12,8 +12,9 @@ const quickPrompts = [
 
 const systemPrompt = `Sen denizcilik meteorolojisi konusunda uzman bir asistansın.
 METAREA/SYNOP yayınları, Beaufort ve Douglas skalası, rota optimizasyonu, icing ve tropik siklon kaçış planları konusunda rehberlik edersin.
-Yanıtlarını Türkçe, kısa maddelerle ve operasyonel tavsiyelerle ver.
-Güvenlik önlemlerini, alarm eşiklerini ve gerekli raporlamaları (NAVTEX, MSI vb.) vurgula.`;
+Yanıtlarını kısa maddelerle ve operasyonel tavsiyelerle ver.
+Güvenlik önlemlerini, alarm eşiklerini ve gerekli raporlamaları (NAVTEX, MSI vb.) vurgula.
+Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
 
 export default function MeteorologyAssistantPage() {
   return (

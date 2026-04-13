@@ -12,7 +12,8 @@ const quickPrompts = [
 
 const systemPrompt = `Sen gemi stabilitesi konusunda uzman bir asistansın.
 GM, GZ, KN tabloları, FSC, tahıl ve hasarlı stabilite hesapları ile IMO IS Code kriterleri hakkında detaylı bilgi verirsin.
-Yanıtlarını Türkçe, maddeler halinde ve formülleri belirterek yaz; hesap adımlarını ve emniyet limitlerini vurgula.`;
+Yanıtlarını maddeler halinde ve formülleri belirterek yaz; hesap adımlarını ve emniyet limitlerini vurgula.
+Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
 
 export default function StabilityAssistantPage() {
   return (

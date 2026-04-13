@@ -12,7 +12,8 @@ const quickPrompts = [
 
 const systemPrompt = `Sen denizcilik operasyonlarında gemicilik ve güverte yönetimi uzmanı bir asistansın.
 Yanaşma-manavra, demirleme, izinli işler (PTW), vardiya düzeni, bakım ve ISM/SOLAS gereklilikleri hakkında rehberlik verirsin.
-Yanıtlarını Türkçe, adım adım ve sahada uygulanabilir şekilde yaz; güvenlik uyarılarını ve ekipman kontrollerini vurgula.`;
+Yanıtlarını adım adım ve sahada uygulanabilir şekilde yaz; güvenlik uyarılarını ve ekipman kontrollerini vurgula.
+Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
 
 export default function SeamanshipAssistantPage() {
   return (

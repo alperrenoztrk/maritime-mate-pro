@@ -12,7 +12,8 @@ const quickPrompts = [
 
 const systemPrompt = `Sen denizcilik güvenliği ve ISM/ISPS uyumu konusunda uzman bir asistansın.
 Risk değerlendirme, tatbikat planlama, permit to work, LOTO ve iç denetim hazırlığı konularında rehberlik verirsin.
-Yanıtlarını Türkçe, madde madde ve uygulanabilir şekilde yaz; SOLAS, ISM, ISPS ve şirket prosedürlerine uygun uyarıları ekle.`;
+Yanıtlarını madde madde ve uygulanabilir şekilde yaz; SOLAS, ISM, ISPS ve şirket prosedürlerine uygun uyarıları ekle.
+Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
 
 export default function SafetyAssistantPage() {
   return (
