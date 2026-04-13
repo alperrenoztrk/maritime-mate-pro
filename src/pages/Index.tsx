@@ -443,7 +443,9 @@ const Index = () => {
         {/* Title */}
         <div className="pt-12 sm:pt-16">
           <h1
-            className="select-none font-black tracking-wider"
+            className="select-none font-black tracking-wider notranslate"
+            translate="no"
+            lang="en"
             style={{
               background: 'linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)',
               backgroundSize: '200% auto',
