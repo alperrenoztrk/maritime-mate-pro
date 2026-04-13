@@ -1807,3 +1807,17 @@ All colors MUST be HSL.
 }
 
 /* Animation keyframes removed - no rotation needed */
+
+/* Google Translate mobile banner (top frame) should stay hidden after translation */
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+body > .skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+body {
+  top: 0 !important;
+}
