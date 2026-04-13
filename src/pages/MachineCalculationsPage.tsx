@@ -128,7 +128,7 @@ export default function MachineCalculationsPage() {
         title="Makine Hesaplamaları"
         subtitle="Motor gücü, yakıt tüketimi ve performans hesaplamalarınızı yapın"
       >
-        <Card className="border-blue-100/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
+        <Card className="border-border/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
           <CardHeader className="pb-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <CardTitle className="flex items-center gap-2 text-lg text-[#2F5BFF]">
@@ -146,7 +146,7 @@ export default function MachineCalculationsPage() {
                 {onboardMachines.map((machine) => (
                   <div
                     key={machine.name}
-                    className="rounded-xl border border-blue-100 bg-white/80 px-4 py-3 shadow-[0_8px_24px_rgba(47,91,255,0.08)] space-y-3"
+                    className="rounded-xl border border-border bg-card/80 dark:bg-card/60 px-4 py-3 shadow-[0_8px_24px_rgba(47,91,255,0.08)] space-y-3"
                   >
                     <div className="space-y-1">
                       <p className="text-sm font-semibold text-slate-900">{machine.name}</p>
@@ -173,7 +173,7 @@ export default function MachineCalculationsPage() {
           )}
         </Card>
 
-        <Card className="bg-white/90 border-white/60 shadow-lg">
+        <Card className="bg-card border-border shadow-lg">
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-xl text-[#2F5BFF]">
               <Wrench className="h-6 w-6" />
