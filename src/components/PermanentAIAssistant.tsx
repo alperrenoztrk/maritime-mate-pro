@@ -5,8 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Brain, Loader2, MessageCircle, CheckCircle, AlertTriangle, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getLanguageDisplayName } from "@/services/aiClient";
 
 export const PermanentAIAssistant = () => {
+  const { currentLanguage } = useLanguage();
   const [question, setQuestion] = useState("");
   const [aiResponse, setAiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -40,20 +43,21 @@ export const PermanentAIAssistant = () => {
   };
 
   const askGeminiAI = async (question: string): Promise<string> => {
-    const maritimeContext = `Sen bir uzman Maritime Mühendisliği AI asistanısın. 
-    
-Maritime mühendisliği, gemi inşaatı, denizcilik ve okyanus mühendisliği konularında detaylı, teknik ve pratik yanıtlar ver.
+    const langName = getLanguageDisplayName(currentLanguage);
+    const maritimeContext = `You are an expert Maritime Engineering AI assistant.
 
-Soru: ${question}
+Provide detailed, technical, and practical answers on maritime engineering, shipbuilding, seafaring, and ocean engineering topics.
 
-Yanıtını şu kategoriler altında organize et:
-- **Temel Açıklama**
-- **Formüller ve Hesaplamalar** 
-- **Pratik Uygulama**
-- **IMO/SOLAS Standartları** (varsa)
-- **Güvenlik Önlemleri** (varsa)
+Question: ${question}
 
-Türkçe olarak, teknik ama anlaşılır şekilde yanıtla.`;
+Organize your response under these categories:
+- **Core Explanation**
+- **Formulas & Calculations**
+- **Practical Application**
+- **IMO/SOLAS Standards** (if applicable)
+- **Safety Precautions** (if applicable)
+
+CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLanguage}). Do not use any other language.`;
 
     try {
       const { data, error } = await supabase.functions.invoke("gemini-chat", {
