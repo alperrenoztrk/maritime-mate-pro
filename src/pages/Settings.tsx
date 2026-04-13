@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Moon, Sun, Globe, Settings2 as SettingsIcon, Palette, CreditCard } from "lucide-react";
+import { Moon, Sun, Globe, Settings2 as SettingsIcon, Palette } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { useTheme } from "@/hooks/useTheme";
@@ -10,17 +8,10 @@ import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageFlag } from "@/utils/languages";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/safeClient";
-import { GoogleAuth } from "@/components/auth/GoogleAuth";
-import { SupabaseStatusIndicator } from "@/components/SupabaseStatusIndicator";
-import { APIStatusIndicator } from "@/components/APIStatusIndicator";
-import { ContentAuditController } from "@/components/ContentAuditController";
-import { ContentAutoWriterController } from "@/components/ContentAutoWriterController";
 
 const Settings = () => {
   const { theme, setTheme } = useTheme();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
-  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   // Neon and Nature themes are no longer available in Settings
 
@@ -40,39 +31,11 @@ const Settings = () => {
     toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
   };
 
-  // Neon ses ayarları kaldırıldı
-
-  const handleStartCheckout = async () => {
-    try {
-      setIsProcessingPayment(true);
-      const { data, error } = await supabase.functions.invoke('stripe-checkout', {
-        body: {
-          // priceId: 'price_XXXX', // Supabase Edge env'de STRIPE_DEFAULT_PRICE_ID de kullanılabilir
-          mode: 'payment',
-          successUrl: window.location.origin + '/?payment=success',
-          cancelUrl: window.location.origin + '/settings?payment=cancel',
-        },
-      });
-      if (error) throw error;
-      const url = (data as { url?: string } | null)?.url;
-      if (!url) {
-        toast.error('Stripe checkout URL oluşturulamadı');
-        return;
-      }
-      window.location.href = url as string;
-    } catch (e: unknown) {
-      console.error(e);
-      toast.error('Ödeme başlatılamadı');
-    } finally {
-      setIsProcessingPayment(false);
-    }
-  };
-
   return (
     <MobileLayout>
       <div className="min-h-screen bg-background text-foreground p-4">
         <div className="max-w-4xl mx-auto space-y-6">
-          
+
           {/* Header */}
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center gap-3">
@@ -86,23 +49,7 @@ const Settings = () => {
             </p>
           </div>
 
-          {/* Settings Cards: Google ile giriş bu sayfaya taşındı */}
           <div className="grid gap-6">
-            {/* API Status Overview */}
-            <APIStatusIndicator />
-            
-            {/* Backend Status */}
-            <SupabaseStatusIndicator />
-            
-            {/* Account / Authentication */}
-            <GoogleAuth />
-
-            {/* Content Audit Controller */}
-            <ContentAuditController />
-
-            {/* Content Auto Writer */}
-            <ContentAutoWriterController />
-            
             {/* Theme Settings */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700 nature:bg-green-50 nature:border-green-200">
               <CardHeader>
@@ -139,7 +86,6 @@ const Settings = () => {
                             <span data-translatable>Koyu Tema</span>
                           </div>
                         </SelectItem>
-
                       </SelectContent>
                     </Select>
                   </div>
@@ -149,10 +95,6 @@ const Settings = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Density Settings removed as requested */}
-
-            {/* Neon ses ayarları kaldırıldı */}
 
             {/* Language Settings */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
@@ -198,38 +140,6 @@ const Settings = () => {
                   <p className="text-xs text-muted-foreground">
                     <span data-translatable>Çeviriler Google Translate altyapısı ile uygulanır</span>
                   </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Payment / Stripe */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CreditCard className="w-5 h-5" />
-                  <span data-translatable>Ödeme</span>
-                </CardTitle>
-                <CardDescription>
-                  <span data-translatable>Pro özellikler için ödeme yapın</span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between">
-                  <div className="space-y-1">
-                    <Label>
-                      <span data-translatable>Stripe Checkout</span>
-                    </Label>
-                    <p className="text-sm text-muted-foreground">
-                      <span data-translatable>Güvenli ödeme ile hemen yükseltin</span>
-                    </p>
-                  </div>
-                  <Button onClick={handleStartCheckout} disabled={isProcessingPayment}>
-                    {isProcessingPayment ? (
-                      <span data-translatable>Yönlendiriliyor...</span>
-                    ) : (
-                      <span data-translatable>Satın Al</span>
-                    )}
-                  </Button>
                 </div>
               </CardContent>
             </Card>
