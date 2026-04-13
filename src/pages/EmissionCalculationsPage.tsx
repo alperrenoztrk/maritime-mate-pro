@@ -104,7 +104,7 @@ export default function EmissionCalculationsPage() {
       case "C": return "text-yellow-600 bg-yellow-100";
       case "D": return "text-orange-600 bg-orange-100";
       case "E": return "text-red-600 bg-red-100";
-      default: return "text-slate-600 bg-slate-100";
+      default: return "text-muted-foreground bg-slate-100";
     }
   };
 
@@ -115,16 +115,16 @@ export default function EmissionCalculationsPage() {
         title="CO₂, CII & EEXI Hesaplamaları"
         subtitle="Karbon emisyonu ve enerji verimliliği değerlendirmeleri"
       >
-        <Card className="bg-white/90 border-white/60 shadow-lg">
+        <Card className="bg-card border-border shadow-lg">
           <CardContent className="pt-6 space-y-6">
             <Tabs defaultValue="cii" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-2 bg-white/80">
+              <TabsList className="grid w-full grid-cols-2 bg-card/80 dark:bg-card/60">
                 <TabsTrigger value="cii">CO₂ & CII</TabsTrigger>
                 <TabsTrigger value="eexi">EEXI</TabsTrigger>
               </TabsList>
 
               <TabsContent value="cii">
-                <Card className="border-white/60 bg-white/80">
+                <Card className="border-border bg-card/80 dark:bg-card/60">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
                       <TrendingDown className="h-5 w-5" />
@@ -204,22 +204,22 @@ export default function EmissionCalculationsPage() {
 
                     {result && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
-                        <div className="p-4 rounded-xl bg-blue-50">
-                          <p className="text-sm text-slate-600">Yıllık CO₂ Emisyonu</p>
+                        <div className="p-4 rounded-xl bg-primary/5">
+                          <p className="text-sm text-muted-foreground">Yıllık CO₂ Emisyonu</p>
                           <p className="text-2xl font-bold text-[#2F5BFF]">
                             {result.co2.toLocaleString("tr-TR", { maximumFractionDigits: 2 })} ton
                           </p>
                         </div>
 
-                        <div className="p-4 rounded-xl bg-blue-50">
-                          <p className="text-sm text-slate-600">AER (gCO₂/ton-nm)</p>
+                        <div className="p-4 rounded-xl bg-primary/5">
+                          <p className="text-sm text-muted-foreground">AER (gCO₂/ton-nm)</p>
                           <p className="text-2xl font-bold text-[#2F5BFF]">
                             {result.aer.toFixed(2)}
                           </p>
                         </div>
 
-                        <div className="p-4 rounded-xl bg-blue-50">
-                          <p className="text-sm text-slate-600">CII Değeri</p>
+                        <div className="p-4 rounded-xl bg-primary/5">
+                          <p className="text-sm text-muted-foreground">CII Değeri</p>
                           <p className="text-2xl font-bold text-[#2F5BFF]">
                             {result.cii.toFixed(3)}
                           </p>
@@ -242,7 +242,7 @@ export default function EmissionCalculationsPage() {
               </TabsContent>
 
               <TabsContent value="eexi">
-                <Card className="border-white/60 bg-white/80">
+                <Card className="border-border bg-card/80 dark:bg-card/60">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
                       <Ship className="h-5 w-5" />
@@ -314,12 +314,12 @@ export default function EmissionCalculationsPage() {
                     </Button>
 
                     {eexiResult !== null && (
-                      <div className="p-6 rounded-xl bg-blue-50 text-center">
-                        <p className="text-sm text-slate-600 mb-2">Hesaplanan EEXI</p>
+                      <div className="p-6 rounded-xl bg-primary/5 text-center">
+                        <p className="text-sm text-muted-foreground mb-2">Hesaplanan EEXI</p>
                         <p className="text-4xl font-bold text-[#2F5BFF]">
                           {eexiResult.toFixed(4)}
                         </p>
-                        <p className="text-xs text-slate-500 mt-2">
+                        <p className="text-xs text-muted-foreground mt-2">
                           gCO₂ / (ton·nm)
                         </p>
                       </div>

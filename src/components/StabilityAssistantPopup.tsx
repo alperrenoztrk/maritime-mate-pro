@@ -180,7 +180,7 @@ import { useToast } from "@/hooks/use-toast";
                        {messages.map((m, i)=> (
                          <div key={i} className={`text-sm ${m.role==='user'?'text-right':''}`}>
                            <div className={`inline-flex items-center gap-2`}>
-                             <div className={`inline-block px-2 py-1 rounded ${m.role==='user'?'bg-blue-600 text-white':'bg-white'}`}>{m.content}</div>
+                             <div className={`inline-block px-2 py-1 rounded ${m.role==='user'?'bg-blue-600 text-white':'bg-card border border-border'}`}>{m.content}</div>
                              <button aria-label="Kopyala" onClick={()=> copyText(m.content)} className="text-xs text-muted-foreground hover:text-foreground">
                                <Copy className="h-3 w-3" />
                              </button>

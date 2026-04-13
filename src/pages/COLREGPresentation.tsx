@@ -69,7 +69,7 @@ export default function COLREGPresentation() {
         </div>
 
         {/* PDF Viewer */}
-        <div className="bg-white rounded-lg shadow-xl overflow-auto p-4 flex justify-center" style={{ maxHeight: 'calc(100vh - 250px)' }}>
+        <div className="bg-card rounded-lg shadow-xl overflow-auto p-4 flex justify-center" style={{ maxHeight: 'calc(100vh - 250px)' }}>
           <Document
             file="/COLREG-Ders-Sunumu.pdf"
             onLoadSuccess={onDocumentLoadSuccess}
