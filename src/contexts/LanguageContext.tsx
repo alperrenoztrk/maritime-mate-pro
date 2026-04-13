@@ -75,6 +75,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const scriptLoadedRef = useRef(false);
+  const translationCacheRef = useRef<Map<string, string>>(new Map());
+  const translationRunIdRef = useRef(0);
 
   // RTL languages
   const rtlLanguages = ['ar', 'he', 'fa', 'ur'];
@@ -97,7 +99,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     document.cookie = `googtrans=${target};domain=.${window.location.hostname};path=/;max-age=31536000`;
   };
 
-  const applyGoogleTranslateLanguage = (languageCode: string) => {
+  const applyGoogleTranslateLanguage = (languageCode: string, reloadIfComboMissing: boolean = true) => {
     if (typeof document === 'undefined') return;
     setGoogleTranslateCookie(languageCode);
     const combo = document.querySelector<HTMLSelectElement>('.goog-te-combo');
@@ -108,7 +110,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
 
     // Fallback for first language switch before widget mounts
-    window.location.reload();
+    if (reloadIfComboMissing) {
+      window.location.reload();
+    }
   };
 
   const initGoogleTranslate = () => {
@@ -133,6 +137,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
           },
           'google_translate_element'
         );
+
+        const preferredLanguage = localStorage.getItem('preferredLanguage') || 'tr';
+        if (preferredLanguage !== 'tr') {
+          setTimeout(() => {
+            applyGoogleTranslateLanguage(preferredLanguage, false);
+          }, 300);
+        }
       }
     };
 
@@ -147,6 +158,71 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     script.async = true;
     scriptLoadedRef.current = true;
     document.body.appendChild(script);
+  };
+
+  const translateText = async (text: string, languageCode: string): Promise<string> => {
+    const normalizedText = text.trim();
+    if (!normalizedText) return text;
+    if (languageCode === 'tr') return normalizedText;
+
+    const cacheKey = `${languageCode}:${normalizedText}`;
+    const cached = translationCacheRef.current.get(cacheKey);
+    if (cached) return cached;
+
+    try {
+      const response = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=tr&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(normalizedText)}`
+      );
+      const data = await response.json();
+      const translated = Array.isArray(data?.[0])
+        ? data[0].map((item: [string]) => item[0]).join('')
+        : normalizedText;
+      translationCacheRef.current.set(cacheKey, translated);
+      return translated;
+    } catch (error) {
+      console.error('Metin çevirisi alınamadı:', error);
+      return normalizedText;
+    }
+  };
+
+  const translateMarkedContent = async (languageCode: string) => {
+    if (typeof document === 'undefined') return;
+
+    const runId = ++translationRunIdRef.current;
+    const translatableElements = Array.from(document.querySelectorAll<HTMLElement>('[data-translatable]'))
+      .filter((el) => !el.closest('[data-no-translate]'));
+
+    for (const el of translatableElements) {
+      if (!el.dataset.originalText) {
+        el.dataset.originalText = el.textContent?.trim() || '';
+      }
+
+      if (languageCode === 'tr') {
+        el.textContent = el.dataset.originalText;
+        continue;
+      }
+
+      const translated = await translateText(el.dataset.originalText, languageCode);
+      if (translationRunIdRef.current !== runId) return;
+      el.textContent = translated;
+    }
+
+    const placeholderElements = Array.from(document.querySelectorAll<HTMLElement>('[data-translatable-placeholder]'));
+    for (const el of placeholderElements) {
+      if (translationRunIdRef.current !== runId) return;
+
+      const input = el as HTMLInputElement;
+      if (!input.dataset.originalPlaceholder) {
+        input.dataset.originalPlaceholder = input.placeholder;
+      }
+
+      if (languageCode === 'tr') {
+        input.placeholder = input.dataset.originalPlaceholder || '';
+        continue;
+      }
+
+      input.placeholder = await translateText(input.dataset.originalPlaceholder || '', languageCode);
+    }
   };
 
   const changeLanguage = (languageCode: string) => {
@@ -177,6 +253,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     document.documentElement.lang = currentLanguage;
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
   }, [currentLanguage, isRTL]);
+
+  useEffect(() => {
+    if (isLoading) return;
+    translateMarkedContent(currentLanguage);
+  }, [currentLanguage, isLoading]);
 
   const getLanguageName = (code: string): string => {
     return SUPPORTED_LANGUAGES.find(lang => lang.language === code)?.displayName || code;
