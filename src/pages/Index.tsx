@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import SplashCompassDial from "@/components/ui/SplashCompassDial";
 import { createCompassListener, requestCompassPermission } from "@/utils/heading";
 import { ChevronLeft, ChevronRight, Settings } from "lucide-react";
+import { GlobalSearch } from "@/components/GlobalSearch";
 import { useTheme } from "@/hooks/useTheme";
 
 // Lighthouse characteristic definitions (IALA standard)
@@ -475,8 +476,13 @@ const Index = () => {
           </div>
         </div>
 
+        {/* Search */}
+        <div className="w-full max-w-[22rem] mx-auto pb-3" onClick={e => e.stopPropagation()}>
+          <GlobalSearch />
+        </div>
+
         {/* CTA Button */}
-        <div className="w-full pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-6">
+        <div className="w-full pb-[max(2.5rem,env(safe-area-inset-bottom))]">
           <Link to="/calculations" className="inline-block w-full max-w-[22rem]" aria-label="Keşfetmeye Başla">
             <Button
               className="w-full rounded-full py-6 text-[clamp(1.3rem,4vw,1.6rem)] font-semibold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
