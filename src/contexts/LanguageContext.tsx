@@ -18,6 +18,8 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const DEFAULT_LANGUAGE = 'en';
+const SOURCE_LANGUAGE = 'tr';
 
 // Supported languages - 25 languages
 const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
@@ -71,7 +73,7 @@ declare global {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState<string>('tr');
+  const [currentLanguage, setCurrentLanguage] = useState<string>(DEFAULT_LANGUAGE);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const scriptLoadedRef = useRef(false);
@@ -84,17 +86,17 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   useEffect(() => {
     // Simple initialization without DOM manipulation
-    const savedLanguage = localStorage.getItem('preferredLanguage') || 'tr';
+    const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
     const validLanguage = SUPPORTED_LANGUAGES.find(lang => lang.language === savedLanguage) 
       ? savedLanguage 
-      : 'tr';
+      : DEFAULT_LANGUAGE;
     
     setCurrentLanguage(validLanguage);
     setIsLoading(false);
   }, []);
 
   const setGoogleTranslateCookie = (languageCode: string) => {
-    const target = languageCode === 'tr' ? '/tr/tr' : `/tr/${languageCode}`;
+    const target = languageCode === SOURCE_LANGUAGE ? `/${SOURCE_LANGUAGE}/${SOURCE_LANGUAGE}` : `/${SOURCE_LANGUAGE}/${languageCode}`;
     document.cookie = `googtrans=${target};path=/;max-age=31536000`;
     document.cookie = `googtrans=${target};domain=.${window.location.hostname};path=/;max-age=31536000`;
   };
@@ -131,15 +133,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       if (window.google?.translate?.TranslateElement) {
         new window.google.translate.TranslateElement(
           {
-            pageLanguage: 'tr',
+            pageLanguage: SOURCE_LANGUAGE,
             includedLanguages,
             autoDisplay: false,
           },
           'google_translate_element'
         );
 
-        const preferredLanguage = localStorage.getItem('preferredLanguage') || 'tr';
-        if (preferredLanguage !== 'tr') {
+        const preferredLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
+        if (preferredLanguage !== SOURCE_LANGUAGE) {
           setTimeout(() => {
             applyGoogleTranslateLanguage(preferredLanguage, false);
           }, 300);
@@ -163,7 +165,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const translateText = async (text: string, languageCode: string): Promise<string> => {
     const normalizedText = text.trim();
     if (!normalizedText) return text;
-    if (languageCode === 'tr') return normalizedText;
+    if (languageCode === SOURCE_LANGUAGE) return normalizedText;
 
     const cacheKey = `${languageCode}:${normalizedText}`;
     const cached = translationCacheRef.current.get(cacheKey);
@@ -171,7 +173,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     try {
       const response = await fetch(
-        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=tr&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(normalizedText)}`
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(normalizedText)}`
       );
       const data = await response.json();
       const translated = Array.isArray(data?.[0])
@@ -197,7 +199,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         el.dataset.originalText = el.textContent?.trim() || '';
       }
 
-      if (languageCode === 'tr') {
+      if (languageCode === SOURCE_LANGUAGE) {
         el.textContent = el.dataset.originalText;
         continue;
       }
@@ -216,7 +218,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         input.dataset.originalPlaceholder = input.placeholder;
       }
 
-      if (languageCode === 'tr') {
+      if (languageCode === SOURCE_LANGUAGE) {
         input.placeholder = input.dataset.originalPlaceholder || '';
         continue;
       }
@@ -265,7 +267,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   const resetLanguagePreferences = () => {
     localStorage.removeItem('preferredLanguage');
-    setCurrentLanguage('tr');
+    setCurrentLanguage(DEFAULT_LANGUAGE);
     
     toast({
       title: "Ayarlar Sıfırlandı",
@@ -300,6 +302,6 @@ export const useLanguage = (): LanguageContextType => {
 
 // Simple translation utility (no hooks, no re-renders)
 // This is kept for backwards compatibility but doesn't use the API
-export const getTranslation = (key: string, defaultText: string = '', language: string = 'tr') => {
+export const getTranslation = (key: string, defaultText: string = '', language: string = DEFAULT_LANGUAGE) => {
   return defaultText;
 };
