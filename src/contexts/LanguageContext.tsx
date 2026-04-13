@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/safeClient';
 
 interface SupportedLanguage {
   language: string;
@@ -49,18 +48,33 @@ const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'uk', name: 'Ukrainian', displayName: 'Українська' }
 ];
 
-// Translation cache to avoid repeated API calls
-const translationCache = new Map<string, string>();
-
 interface LanguageProviderProps {
   children: ReactNode;
+}
+
+declare global {
+  interface Window {
+    google?: {
+      translate?: {
+        TranslateElement?: new (
+          options: {
+            pageLanguage: string;
+            includedLanguages: string;
+            autoDisplay: boolean;
+          },
+          elementId: string
+        ) => unknown;
+      };
+    };
+    googleTranslateElementInit?: () => void;
+  }
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<string>('tr');
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
-  const languageRef = useRef<string>('tr');
+  const scriptLoadedRef = useRef(false);
 
   // RTL languages
   const rtlLanguages = ['ar', 'he', 'fa', 'ur'];
@@ -77,97 +91,62 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     setIsLoading(false);
   }, []);
 
-  // Keep a ref of the latest language for observers
-  useEffect(() => {
-    languageRef.current = currentLanguage;
-  }, [currentLanguage]);
-
-  // Helper: translate text using Lovable AI translate edge function
-  const translateText = async (text: string, targetLang: string): Promise<string> => {
-    if (!text || text.trim() === '') return text;
-    if (targetLang === 'tr') return text; // Already in Turkish
-    
-    const cacheKey = `${text}:${targetLang}`;
-    if (translationCache.has(cacheKey)) {
-      return translationCache.get(cacheKey)!;
-    }
-
-    try {
-      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/translate`;
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
-          text,
-          targetLanguage: targetLang,
-          sourceLanguage: 'tr',
-        }),
-      });
-
-      if (!response.ok) {
-        console.error('Translation HTTP error:', response.status, await response.text());
-        return text;
-      }
-
-      const data = await response.json();
-      const translated = data?.translatedText || text;
-      translationCache.set(cacheKey, translated);
-      return translated;
-    } catch (error) {
-      console.error('Translation request failed:', error);
-      return text;
-    }
+  const setGoogleTranslateCookie = (languageCode: string) => {
+    const target = languageCode === 'tr' ? '/tr/tr' : `/tr/${languageCode}`;
+    document.cookie = `googtrans=${target};path=/;max-age=31536000`;
+    document.cookie = `googtrans=${target};domain=.${window.location.hostname};path=/;max-age=31536000`;
   };
 
-  // Helper: translate a single element marked with data-translatable
-  const translateElementText = async (el: Element, languageCode: string) => {
-    const element = el as HTMLElement;
-    const originalTextAttr = element.getAttribute('data-original-text');
-    const originalText = originalTextAttr != null ? originalTextAttr : (element.textContent || '').trim();
-    if (originalTextAttr == null) {
-      element.setAttribute('data-original-text', originalText);
-    }
-    const translated = await translateText(originalText, languageCode);
-    if (translated && element.textContent !== translated) {
-      element.textContent = translated;
-    }
-  };
-
-  // Helper: translate placeholder for inputs/textarea marked with data-translatable-placeholder
-  const translateElementPlaceholder = async (el: Element, languageCode: string) => {
-    const element = el as HTMLInputElement | HTMLTextAreaElement;
-    const originalPlaceholderAttr = element.getAttribute('data-original-placeholder');
-    const originalPlaceholder = originalPlaceholderAttr != null ? originalPlaceholderAttr : (element.placeholder || '').trim();
-    if (originalPlaceholderAttr == null) {
-      element.setAttribute('data-original-placeholder', originalPlaceholder);
-    }
-    const translated = await translateText(originalPlaceholder, languageCode);
-    if (translated && element.placeholder !== translated) {
-      element.placeholder = translated;
-    }
-  };
-
-  // Translate an element and its descendants
-  const translateNode = async (node: Element, languageCode: string) => {
-    if ((node as Element).hasAttribute && (node as Element).hasAttribute('data-translatable')) {
-      await translateElementText(node, languageCode);
-    }
-    if ((node as Element).hasAttribute && (node as Element).hasAttribute('data-translatable-placeholder')) {
-      await translateElementPlaceholder(node, languageCode);
-    }
-    const textNodes = node.querySelectorAll('[data-translatable]');
-    await Promise.all(Array.from(textNodes).map(el => translateElementText(el, languageCode)));
-    const placeholderNodes = node.querySelectorAll('[data-translatable-placeholder]');
-    await Promise.all(Array.from(placeholderNodes).map(el => translateElementPlaceholder(el, languageCode)));
-  };
-
-  // Translate the whole document
-  const translateDocument = async (languageCode: string) => {
+  const applyGoogleTranslateLanguage = (languageCode: string) => {
     if (typeof document === 'undefined') return;
-    await translateNode(document.body, languageCode);
+    setGoogleTranslateCookie(languageCode);
+    const combo = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+    if (combo) {
+      combo.value = languageCode;
+      combo.dispatchEvent(new Event('change'));
+      return;
+    }
+
+    // Fallback for first language switch before widget mounts
+    window.location.reload();
+  };
+
+  const initGoogleTranslate = () => {
+    if (typeof document === 'undefined') return;
+    if (scriptLoadedRef.current) return;
+
+    if (!document.getElementById('google_translate_element')) {
+      const container = document.createElement('div');
+      container.id = 'google_translate_element';
+      container.style.display = 'none';
+      document.body.appendChild(container);
+    }
+
+    window.googleTranslateElementInit = () => {
+      const includedLanguages = SUPPORTED_LANGUAGES.map(lang => lang.language).join(',');
+      if (window.google?.translate?.TranslateElement) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: 'tr',
+            includedLanguages,
+            autoDisplay: false,
+          },
+          'google_translate_element'
+        );
+      }
+    };
+
+    if (document.getElementById('google-translate-script')) {
+      scriptLoadedRef.current = true;
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    scriptLoadedRef.current = true;
+    document.body.appendChild(script);
   };
 
   const changeLanguage = (languageCode: string) => {
@@ -178,6 +157,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     setCurrentLanguage(languageCode);
     localStorage.setItem('preferredLanguage', languageCode);
+    applyGoogleTranslateLanguage(languageCode);
 
     toast({
       title: "Dil Değiştirildi",
@@ -185,29 +165,18 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     });
   };
 
-  // Update document language/dir and apply translations when language changes
+  // Initialize Google Translate widget once
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    initGoogleTranslate();
+  }, []);
+
+  // Update document language/dir when language changes
   useEffect(() => {
     if (typeof document === 'undefined') return;
     document.documentElement.lang = currentLanguage;
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-    translateDocument(currentLanguage);
   }, [currentLanguage, isRTL]);
-
-  // Observe DOM changes to translate dynamically added elements
-  useEffect(() => {
-    if (typeof MutationObserver === 'undefined' || typeof document === 'undefined') return;
-    const observer = new MutationObserver(mutations => {
-      for (const mutation of mutations) {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            translateNode(node as Element, languageRef.current).catch(console.error);
-          }
-        });
-      }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
-  }, []);
 
   const getLanguageName = (code: string): string => {
     return SUPPORTED_LANGUAGES.find(lang => lang.language === code)?.displayName || code;

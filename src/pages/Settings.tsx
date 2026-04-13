@@ -54,13 +54,13 @@ const Settings = () => {
         },
       });
       if (error) throw error;
-      const url = (data as any)?.url;
+      const url = (data as { url?: string } | null)?.url;
       if (!url) {
         toast.error('Stripe checkout URL oluşturulamadı');
         return;
       }
       window.location.href = url as string;
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e);
       toast.error('Ödeme başlatılamadı');
     } finally {
@@ -194,6 +194,9 @@ const Settings = () => {
                   </div>
                   <p className="text-sm text-muted-foreground">
                     <span data-translatable>Seçilen dil tüm uygulamada geçerli olacaktır</span>
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    <span data-translatable>Çeviriler Google Translate altyapısı ile uygulanır</span>
                   </p>
                 </div>
               </CardContent>
