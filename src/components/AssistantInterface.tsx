@@ -33,6 +33,14 @@ export function AssistantInterface({
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+  const strictFormatRules = `
+ZORUNLU BİÇİM KURALLARI:
+- Yanıtlarda "#" ve "*" karakterlerini kullanma.
+- Maddeleme gerekiyorsa "-" kullan.
+- Eğer kullanıcı formül isterse yalnızca formül(ler)i yaz.
+- Formül yanıtlarında açıklama, başlık, not veya formül dışı hiçbir metin yazma.
+- Formül satırlarında alt çizgi (_) dışında markdown/latex biçimlendirmesi kullanma.
+`.trim();
 
   const askQuestion = async (q: string) => {
     if (!q.trim()) {
@@ -47,7 +55,7 @@ export function AssistantInterface({
       const { data, error } = await supabase.functions.invoke("gemini-chat", {
         body: {
           messages: [
-            { role: "system", content: systemPrompt },
+            { role: "system", content: `${systemPrompt}\n\n${strictFormatRules}` },
             { role: "user", content: q }
           ]
         }
@@ -165,4 +173,3 @@ export function AssistantInterface({
     </div>
   );
 }
-
