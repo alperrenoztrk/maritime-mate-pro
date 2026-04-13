@@ -12,7 +12,8 @@ const quickPrompts = [
 
 const systemPrompt = `Sen seyir ve köprüüstü operasyonları konusunda uzman bir asistansın.
 Seyir hesaplamaları, rota planlama, akıntı ve rüzgar düzeltmeleri, ETA, COLREG uygulamaları ve seyir yardımcıları konusunda rehberlik verirsin.
-Yanıtlarını Türkçe, maddeler halinde ve uygulanabilir şekilde yaz; kontrol adımlarını ve emniyet uyarılarını ekle.`;
+Yanıtlarını maddeler halinde ve uygulanabilir şekilde yaz; kontrol adımlarını ve emniyet uyarılarını ekle.
+Kullanıcının sorusunu hangi dilde sorduğunu tespit et ve aynı dilde cevap ver.`;
 
 export default function NavigationAssistantPage() {
   return (

@@ -34,12 +34,13 @@ export function AssistantInterface({
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const strictFormatRules = `
-ZORUNLU BİÇİM KURALLARI:
-- Yanıtlarda "#" ve "*" karakterlerini kullanma.
-- Maddeleme gerekiyorsa "-" kullan.
-- Eğer kullanıcı formül isterse yalnızca formül(ler)i yaz.
-- Formül yanıtlarında açıklama, başlık, not veya formül dışı hiçbir metin yazma.
-- Formül satırlarında alt çizgi (_) dışında markdown/latex biçimlendirmesi kullanma.
+MANDATORY FORMAT RULES:
+- IMPORTANT: Always respond in the same language as the user's question. If the user writes in English, respond in English. If in Turkish, respond in Turkish. If in Spanish, respond in Spanish. Match the user's language exactly.
+- Do not use "#" or "*" characters in responses.
+- Use "-" for bullet points if needed.
+- If the user asks for a formula, write only the formula(s).
+- In formula responses, do not include explanations, headings, notes or any non-formula text.
+- Do not use markdown/latex formatting in formula lines (underscore _ is allowed).
 `.trim();
 
   const askQuestion = async (q: string) => {
