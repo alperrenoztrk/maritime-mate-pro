@@ -1209,7 +1209,7 @@ function StandaloneMeteoCalcs() {
           {trueWindResult && (
             <div className="bg-primary/5 rounded-lg p-3">
               <span className="text-xs text-muted-foreground">Gerçek Rüzgâr (V_T):</span>
-              <p className="text-lg font-bold">{trueWindResult} knot</p>
+              <p className="text-lg font-bold">{typeof trueWindResult === 'object' && trueWindResult !== null ? trueWindResult.value : trueWindResult} knot</p>
             </div>
           )}
         </CardContent>
