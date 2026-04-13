@@ -4,8 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Brain, Loader2, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/safeClient";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getLanguageDisplayName } from "@/services/aiClient";
 
 export const WorkingAIAssistant = () => {
+  const { currentLanguage } = useLanguage();
   const [question, setQuestion] = useState("");
   const [aiResponse, setAiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -257,60 +261,74 @@ Denizcilik hesaplamaları konusunda uzman yardımınıza hazırım!
 Hangi konuda yardım istiyorsunuz?`
   };
 
+  const getGeminiResponse = async (userQuestion: string): Promise<string> => {
+    const langName = getLanguageDisplayName(currentLanguage);
+    const { data, error } = await supabase.functions.invoke("gemini-chat", {
+      body: {
+        messages: [
+          {
+            role: "system",
+            content: `You are an expert Maritime Engineering AI assistant with comprehensive knowledge of ship stability, navigation, marine engineering, cargo operations, safety regulations, and ballast systems.
+
+Provide detailed, technical, and practical answers. Organize your response with clear headings, formulas, and practical notes. Reference IMO/SOLAS standards where applicable.
+
+CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLanguage}). Do not use any other language.`
+          },
+          { role: "user", content: userQuestion }
+        ]
+      }
+    });
+    if (error) throw error;
+    return data?.text || "";
+  };
+
   const processAIQuery = async () => {
     if (!question.trim()) {
-      toast.error("Lütfen bir soru yazın");
+      toast.error("Please enter a question");
       return;
     }
 
     setIsLoading(true);
-    
+    const currentQuestion = question.trim();
+
     try {
-      // Simulate AI processing time
-      await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
-      
-      const lowerQuestion = question.toLowerCase();
       let response = "";
-      
-      // Smart keyword matching
-      if (lowerQuestion.includes("gm") || lowerQuestion.includes("metasantrik")) {
-        response = maritimeKnowledgeBase.gm;
-      } else if (lowerQuestion.includes("stabilite") || lowerQuestion.includes("stability") || lowerQuestion.includes("kararlı")) {
-        response = maritimeKnowledgeBase.stabilite;
-      } else if (lowerQuestion.includes("trim") || lowerQuestion.includes("list") || lowerQuestion.includes("denge")) {
-        response = maritimeKnowledgeBase.trim;
-      } else if (lowerQuestion.includes("navigasyon") || lowerQuestion.includes("seyir") || lowerQuestion.includes("rota")) {
-        response = maritimeKnowledgeBase.navigasyon;
-      } else if (lowerQuestion.includes("motor") || lowerQuestion.includes("makine") || lowerQuestion.includes("yakıt") || lowerQuestion.includes("sfoc")) {
-        response = maritimeKnowledgeBase.motor;
-      } else if (lowerQuestion.includes("kargo") || lowerQuestion.includes("yük") || lowerQuestion.includes("container")) {
-        response = maritimeKnowledgeBase.cargo;
-      } else if (lowerQuestion.includes("güvenlik") || lowerQuestion.includes("solas") || lowerQuestion.includes("yangın") || lowerQuestion.includes("can salı")) {
-        response = maritimeKnowledgeBase.güvenlik;
-      } else if (lowerQuestion.includes("balast") || lowerQuestion.includes("ballast")) {
-        response = maritimeKnowledgeBase.balast;
-      } else {
-        response = maritimeKnowledgeBase.default;
+
+      try {
+        response = await getGeminiResponse(currentQuestion);
+        toast.success("Response ready");
+      } catch {
+        // Fallback to local knowledge base
+        const lowerQuestion = currentQuestion.toLowerCase();
+        if (lowerQuestion.includes("gm") || lowerQuestion.includes("metacentric")) {
+          response = maritimeKnowledgeBase.gm;
+        } else if (lowerQuestion.includes("stabilite") || lowerQuestion.includes("stability") || lowerQuestion.includes("kararlı")) {
+          response = maritimeKnowledgeBase.stabilite;
+        } else if (lowerQuestion.includes("trim") || lowerQuestion.includes("list") || lowerQuestion.includes("denge")) {
+          response = maritimeKnowledgeBase.trim;
+        } else if (lowerQuestion.includes("navigasyon") || lowerQuestion.includes("navigation") || lowerQuestion.includes("seyir") || lowerQuestion.includes("rota")) {
+          response = maritimeKnowledgeBase.navigasyon;
+        } else if (lowerQuestion.includes("motor") || lowerQuestion.includes("engine") || lowerQuestion.includes("makine") || lowerQuestion.includes("yakıt") || lowerQuestion.includes("sfoc")) {
+          response = maritimeKnowledgeBase.motor;
+        } else if (lowerQuestion.includes("kargo") || lowerQuestion.includes("cargo") || lowerQuestion.includes("yük") || lowerQuestion.includes("container")) {
+          response = maritimeKnowledgeBase.cargo;
+        } else if (lowerQuestion.includes("güvenlik") || lowerQuestion.includes("safety") || lowerQuestion.includes("solas") || lowerQuestion.includes("yangın") || lowerQuestion.includes("fire")) {
+          response = maritimeKnowledgeBase.güvenlik;
+        } else if (lowerQuestion.includes("balast") || lowerQuestion.includes("ballast")) {
+          response = maritimeKnowledgeBase.balast;
+        } else {
+          response = maritimeKnowledgeBase.default;
+        }
+        toast.info("Using local knowledge base");
       }
 
-      // Add conversation context
-      const enhancedResponse = `${response}
+      setAiResponse(response);
+      setConversationHistory(prev => [...prev, { question: currentQuestion, answer: response }]);
+      setQuestion("");
 
----
-**💡 İlgili Konular:** Başka sorularınız varsa "trim hesabı", "motor gücü", "kargo operasyonları" gibi konular hakkında da sorabilirsiniz.
-
-**⚙️ Hesaplamalar:** Ana sayfadaki hesaplama modüllerini kullanarak pratik hesaplamalar yapabilirsiniz.`;
-
-      setAiResponse(enhancedResponse);
-      
-      // Save to conversation history
-      setConversationHistory(prev => [...prev, { question, answer: enhancedResponse }]);
-      
-      toast.success("Yanıt hazırlandı");
-      
     } catch (error) {
       console.error('Response Error:', error);
-      toast.error("Yanıt alınamadı");
+      toast.error("Could not get a response");
     } finally {
       setIsLoading(false);
     }

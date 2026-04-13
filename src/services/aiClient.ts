@@ -6,7 +6,40 @@ export interface AIMessage {
 
 import { supabase } from '@/integrations/supabase/safeClient';
 
-const MARITIME_REGULATIONS_SYSTEM_PROMPT = `You are Mark, a maritime regulations and information guidance expert specialized in helping seafarers find the correct maritime publications, regulations, and references.
+const LANGUAGE_NAMES: Record<string, string> = {
+  'tr': 'Turkish',
+  'en': 'English',
+  'es': 'Spanish',
+  'de': 'German',
+  'fr': 'French',
+  'it': 'Italian',
+  'pt': 'Portuguese',
+  'ru': 'Russian',
+  'ja': 'Japanese',
+  'ko': 'Korean',
+  'zh-CN': 'Chinese (Simplified)',
+  'ar': 'Arabic',
+  'hi': 'Hindi',
+  'nl': 'Dutch',
+  'sv': 'Swedish',
+  'no': 'Norwegian',
+  'da': 'Danish',
+  'fi': 'Finnish',
+  'pl': 'Polish',
+  'cs': 'Czech',
+  'hu': 'Hungarian',
+  'ro': 'Romanian',
+  'el': 'Greek',
+  'bg': 'Bulgarian',
+  'uk': 'Ukrainian',
+};
+
+export const getLanguageDisplayName = (code: string): string =>
+  LANGUAGE_NAMES[code] ?? 'English';
+
+const getMaritimeRegulationsSystemPrompt = (language: string) => {
+  const langName = getLanguageDisplayName(language);
+  return `You are Mark, a maritime regulations and information guidance expert specialized in helping seafarers find the correct maritime publications, regulations, and references.
 
 MAIN ROLE: Guide users to the correct maritime publications, books, codes, and references for specific information needs.
 
@@ -25,16 +58,16 @@ RESPONSE STYLE:
 - Provide publication codes/numbers when available
 - Explain WHY that specific publication is authoritative
 - Include any relevant updates or amendments
-- Communicate in the user's language (Turkish/English)
-
-EXAMPLE FORMAT:
-"Weather fax frekansları için → ALRS Volume 3 (Radio Weather Services) kullanılır çünkü bu yayın tüm meteorolojik radyo istasyonlarının frekans, program ve teknik bilgilerini içerir."
+- CRITICAL: You MUST respond entirely in ${langName} (language code: ${language}). Do not use any other language.
 
 Keep responses precise, authoritative, and cite specific sources.`;
+};
 
-const NAVIGATION_ASSISTANT_SYSTEM_PROMPT = `You are a professional Maritime Navigation Assistant with comprehensive knowledge of all navigation calculations and formulas.
+const getNavigationAssistantSystemPrompt = (language: string) => {
+  const langName = getLanguageDisplayName(language);
+  return `You are a professional Maritime Navigation Assistant with comprehensive knowledge of all navigation calculations and formulas.
 
-MAIN ROLE: Help with ALL navigation tasks, calculations, and formulas. Provide correct formulas, step-by-step methods, and clear results. Use user's language (Turkish/English).
+MAIN ROLE: Help with ALL navigation tasks, calculations, and formulas. Provide correct formulas, step-by-step methods, and clear results.
 
 COMPLETE FORMULA DATABASE:
 
@@ -67,7 +100,7 @@ COMPLETE FORMULA DATABASE:
 🌊 TIDES & DISTANCE:
 - Rule of Twelfths: 1st hr: R/12, 2nd: 3R/12, 3rd: 5R/12, 4th: 6R/12, 5th: 9R/12, 6th: 11R/12
 - Dip of Horizon: d = 2.075√h nm
-- Radar Horizon: d = 2.35√h nm  
+- Radar Horizon: d = 2.35√h nm
 - Light Visibility: d = 1.17(√h_eye + √h_light) nm
 
 ⭐ CELESTIAL NAVIGATION:
@@ -99,7 +132,9 @@ RESPONSE STYLE:
 - Include units and practical notes
 - Ask for missing essential values only
 - Provide safety considerations (COLREG, UKC, weather limits)
-- Keep explanations concise but complete`;
+- Keep explanations concise but complete
+- CRITICAL: You MUST respond entirely in ${langName} (language code: ${language}). Do not use any other language.`;
+};
 
 // All AI calls go through edge function for security
 async function callGemini(messages: AIMessage[]): Promise<string> {
@@ -111,10 +146,10 @@ async function callGemini(messages: AIMessage[]): Promise<string> {
   return text.trim();
 }
 
-export async function callMaritimeRegulationsAssistant(messages: AIMessage[]): Promise<string> {
+export async function callMaritimeRegulationsAssistant(messages: AIMessage[], language: string = 'en'): Promise<string> {
   const withSystem: AIMessage[] = messages.some(m => m.role === 'system')
     ? messages
-    : [{ role: 'system', content: MARITIME_REGULATIONS_SYSTEM_PROMPT }, ...messages];
+    : [{ role: 'system', content: getMaritimeRegulationsSystemPrompt(language) }, ...messages];
 
   try {
     return await callGemini(withSystem);
@@ -165,10 +200,10 @@ export async function callMaritimeRegulationsAssistant(messages: AIMessage[]): P
   }
 }
 
-export async function callNavigationAssistant(messages: AIMessage[]): Promise<string> {
+export async function callNavigationAssistant(messages: AIMessage[], language: string = 'en'): Promise<string> {
   const withSystem: AIMessage[] = messages.some(m => m.role === 'system')
     ? messages
-    : [{ role: 'system', content: NAVIGATION_ASSISTANT_SYSTEM_PROMPT }, ...messages];
+    : [{ role: 'system', content: getNavigationAssistantSystemPrompt(language) }, ...messages];
 
   try {
     return await callGemini(withSystem);

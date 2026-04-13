@@ -7,34 +7,38 @@ import { Label } from "@/components/ui/label";
 import { Ship, Loader2, MessageCircle, Calculator, Send, BarChart3, Compass } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getLanguageDisplayName } from "@/services/aiClient";
 
 export const UnifiedMaritimeAssistant = () => {
+  const { currentLanguage } = useLanguage();
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<Array<{question: string, answer: string, timestamp: number}>>([]);
 
   const getGeminiResponse = async (prompt: string): Promise<string> => {
+    const langName = getLanguageDisplayName(currentLanguage);
     try {
       const { data, error } = await supabase.functions.invoke("gemini-chat", {
         body: {
           messages: [
-            { 
-              role: "system", 
-              content: `Sen "Mark" adlı bir Denizcilik Regülasyon Rehberi asistanısın. Gemilerde hangi bilgiye nereden ulaşılması gerektiğini, hangi kitabın/cildin/tablonun kullanılacağını ve pratik erişim yolunu tarif edersin.
+            {
+              role: "system",
+              content: `You are "Mark", a Maritime Regulations Guide assistant. You describe where to find specific information on ships, which book/volume/table to use, and the practical access path.
 
-Önceliklerin:
-- IS Code, SOLAS, MARPOL, COLREG, IAMSAR, STCW, LOAD LINE, IMDG Code, Grain Code, ALRS (Admiralty List of Radio Signals), NP/NP5011, NP100 vb. kaynaklara yönlendir.
-- Soruya "Hangi kaynaktan, hangi cilt/bölüm/başlık?" şeklinde net yanıt ver.
-- Gerekirse sayfa/bölüm örnekleri (ör: ALRS Vol 3, Radiofacsimile/WeatherFax Schedules) belirt.
-- Yanıtta kısalık ve netlik: önce Kaynak/Cilt, sonra erişim yöntemi ve notlar.
+Your priorities:
+- Direct users to IS Code, SOLAS, MARPOL, COLREG, IAMSAR, STCW, LOAD LINE, IMDG Code, Grain Code, ALRS (Admiralty List of Radio Signals), NP/NP5011, NP100, etc.
+- Answer clearly: "From which source, which volume/section/heading?"
+- Specify page/section examples when needed (e.g., ALRS Vol 3, Radiofacsimile/WeatherFax Schedules).
+- Keep responses brief and clear: Source/Volume first, then access method and notes.
 
-Yanıtını şu şablonda ver:
-- **Kaynak**: (kitap/kod adı, cilt/bölüm)
-- **Erişim**: (nereden/nasıl bulunur; dizin, konu başlığı, tablo/ek örneği)
-- **Not**: (kısa uyarı/istisna/ilgili başka kaynak)
+Respond using this template:
+- **Source**: (book/code name, volume/section)
+- **Access**: (where/how to find it; index, topic heading, table/appendix example)
+- **Note**: (brief warning/exception/related source)
 
-Türkçe, düzenli ve kısa yanıtla.`
+CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLanguage}). Do not use any other language.`
             },
             { role: "user", content: prompt }
           ]

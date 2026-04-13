@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MessageCircle, Send, Loader2 } from "lucide-react";
 import { callNavigationAssistant } from "@/services/aiClient";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface NavigationAssistantProps {
   variant?: 'floating' | 'inline';
@@ -12,6 +13,7 @@ interface NavigationAssistantProps {
 }
 
 export default function NavigationAssistantPopup({ variant = 'floating', calculationContext }: NavigationAssistantProps) {
+  const { currentLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant', content: string }>>([]);
@@ -205,7 +207,7 @@ Lütfen hangi hesaplamayı yapmak istediğinizi belirtin:
       const response = await callNavigationAssistant([
         ...messages.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })),
         { role: 'user', content: userMessage }
-      ]);
+      ], currentLanguage);
       appendAssistant(response);
     } catch (error) {
       appendAssistant("Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.");
