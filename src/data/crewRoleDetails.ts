@@ -70,6 +70,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Deniz protestu (sea protest) ve noter bildirimi",
         description: `Ağır hava, çatışma, karaya oturma, yük hasarı veya kıyı tesisi hasarı gibi olaylar sonrasında kaptanın noter huzurunda resmi deniz protestu (sea protest / noting protest) yapması hukuki bir zorunluluktur. Bu belge, mürettebatın üzerine yüklenmesi muhtemel sorumlulukları sınırlandırır ve sigorta süreçleri için kritik kanıt oluşturur. Protest hazırlığı, olay günlüğü (log kayıtları), tanık ifadeleri ve zamanında noter başvurusu kaptanın koordinasyonuyla yapılır. P&I Club'ın (koruma ve tazminat sigortası) mümkün olan en kısa sürede bilgilendirilmesi de bu sürecin parçasıdır.`
+      },
+      {
+        title: "Konşimento (Bill of Lading) imza yetkisi ve yük belgeleri",
+        description: `Kaptan, yüklenen kargonun taşındığını teyit eden konşimentoyu (Bill of Lading) imzalama yetkisine sahiptir ve bu imza şirketi hukuken bağlar. B/L imzalanmadan önce kaptanın yük miktarı, durumu ve koşulları (apparent order and condition) kontrol ettirmesi zorunludur; şüpheli veya hasarlı yük için "Letter of Protest" düzenlenerek kargo sahibi uyarılır. Mate's Receipt, Cargo Manifest, Notice of Readiness (NOR) ve Statement of Facts gibi diğer yük belgelerini de kaptan onaylar ya da yetkilendirir. B/L'de hata veya sahtecilik, ağır hukuki sorumluluk doğurur.`
+      },
+      {
+        title: "Uyuşturucu ve alkol (Drug & Alcohol) politikasının uygulanması",
+        description: `ISM Code ve çoğu şirketin SMS'i kapsamında gemide sıfır toleranslı bir D&A politikası uygulanması zorunludur. Kaptanın sorumluluğu; yeni katılan personelin D&A testinin yaptırılması, rastgele (random) test programının koordinasyonu, pozitif test sonucunda kişinin göreve son verilmesi ve şirkete derhal bildirilmesi, limanlardan kaynaklanan D&A talebi denetimlerine hazır olunmasıdır. USCG, Paris MOU ve diğer liman devleti otoritelerinin D&A denetimleri giderek yaygınlaşmaktadır; hazırlıksız olmak gemi tutulmasına neden olur.`
       }
     ],
     equipment: [
@@ -167,6 +175,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Ağır hava (heavy weather) hazırlığı ve güverte emniyeti",
         description: `Kötü hava öngörüldüğünde ya da seyir sırasında karşılaşıldığında güverte departmanının hazırlığını koordine etmek Birinci Zabitin sorumluluğudur. Hatch cover'ların sıkıca kapatılması ve cleating kontrolü, güverte üzeri tüm loose ekipmanın bağlanması (lashing), vinç kancalarının güvenceye alınması, gangway ve pilotluk merdiveninin kaldırılması, freeboard scupper ve freeing port'ların serbest olduğunun doğrulanması heavy weather preparation checklist'in temel kalemleridir. Personelin güverte üzerindeki hareketini kısıtlayan emrin verilmesi ve uygulanması da bu görevin parçasıdır. Yük kayması riskine karşı lashing tensioning ve güverte stres hesaplarının ağır hava koşullarında yeniden değerlendirilmesi gerekebilir.`
+      },
+      {
+        title: "Hazırlık bildirisi (NOR) ve yük belgeleri yönetimi",
+        description: `Notice of Readiness (NOR), geminin yükleme/boşaltmaya hazır olduğunun charterer veya terminal operatörüne resmi bildirimidir. NOR'un zamanında ve doğru biçimde verilmesi, taşıma sözleşmesi (charter party) kapsamında laycan hesabını doğrudan etkiler; geç verilen NOR demurrage kaybına yol açar. Statement of Facts (SoF), tüm port operasyonunun kayıt altına alındığı zaman çizelgesidir: NOR veriliş, operasyon başlangıç-bitiş, draftlar, vardiya değişimleri. Birinci Zabit bu belgeleri hazırlar ve imzalar. Mate's Receipt düzenleyerek kargo miktarını ve görünür durumunu teyit eder; şüpheli yük için zamanında Letter of Protest yazılmasını koordine eder.`
       }
     ],
     equipment: [
@@ -367,6 +379,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Safety housekeeping",
         description: `Küçümsenir ama ciddi bulgu çıkarır: fire locker önü dolu mu, extinguisher önü kapalı mı, escape route üstünde malzeme var mı, lifebuoy ışığı çürümüş mü, liferaft lashings boyalı olduğu için release serbest değil mi, hydrant dolabı pasla kilitlenmiş mi, fire door wedge ile açık tutuluyor mu. Bunlar "ufak kusur" değil; gerçek acilde adam öldürür.`
+      },
+      {
+        title: "ISM Safety Committee ve near-miss yönetimi",
+        description: `Birçok şirketin SMS'i gereğince gemide aylık Safety Committee toplantısı düzenlenir. Bu toplantıyı genellikle Üçüncü Zabit/Safety Officer organize eder ve yönetir: gündem hazırlama, katılımcı listesi, near-miss raporlarının değerlendirilmesi, düzeltici/önleyici aksiyon (CAPA) takibi ve toplantı tutanağının DPA'ya iletilmesi. Near-miss raporlama kültürü, "adam korktuğu için bildirmiyor" noktasına çekilmeden canlı tutulmalıdır — her bildirilen near-miss, ileride önlenecek bir kazadır.`
+      },
+      {
+        title: "Uyuşturucu ve alkol testi (Drug & Alcohol testing)",
+        description: `Safety Officer sıfatıyla, şirket D&A politikası kapsamında random test programının lojistiğini yürütür: test kitlerin yönetimi, testlerin belirsiz aralıklarla ve kayıt altında uygulanması, pozitif sonuçların kaptan ve şirkete gizlilikle bildirilmesi. Liman devleti veya terminal tarafından talep edilen D&A denetimlerinde süreci koordine eder. Test kitlerinin son kullanma tarihleri, chain of custody (gözetim zinciri) prosedürleri ve imha kayıtları da bu kapsamda tutulur.`
       }
     ],
     equipment: [
@@ -867,6 +887,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Teknik bilgi ve sistem öğrenimi",
         description: `Gemi sistemleri (ballast, bilge, fire main, steering gear, anchoring), köprüüstü cihazları ve yük operasyon prensiplerini sistematik olarak öğrenir. Kaptan veya zabitler tarafından verilen eğitim modüllerini tamamlar.`
+      },
+      {
+        title: "Deniz hizmet belgesi (Sea Service Certificate) ve sertifika süreci",
+        description: `Stajyer, gemide geçirdiği her seyir dönemini resmi Sea Service Certificate (deniz hizmet belgesi) ile belgelemek zorundadır. Bu belge, kaptan tarafından imzalanır ve tarihleri, gemi adını, seyir bölgesini ve görev tanımını içerir. STCW'nin OICNW (Officer in Charge of Navigational Watch) yeterlilik belgesi için gereken 12 aylık deniz hizmetinin ispatında bu belgeler temel kanıttır. Stajyerin kendi sorumluluğu: belgeleri doğru talep etmek, kayıpsız saklamak ve her liman değişiminde yeniden başlatmak. Eksik veya hatalı belgeler ileride sertifika sınavına girebilme hakkını tehlikeye atabilir.`
       }
     ],
     equipment: [
@@ -954,6 +978,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Baş Mühendis gece talimatları (Chief Engineer night orders)",
         description: `Kaptanın "night orders" pratiğinin makine departmanındaki karşılığıdır. Baş Mühendis, gece vardiyası için beklenebilecek arıza risklerini, kritik parametre eşiklerini, özel bakım görevlerini ve hangi durumlarda uyandırılması gerektiğini yazılı olarak bildirir. Bu uygulama, gece makine dairesini yöneten 3./4. Mühendisin karar yetki sınırlarını netleştirir; gecenin ilerleyen saatlerinde önlenebilir büyük arızaların raporlanmadan büyümesinin önüne geçer.`
+      },
+      {
+        title: "Yağlama yağı analiz programı (LO analysis)",
+        description: `Ana makine, jeneratörler ve yardımcı ekipmanlara ait yağlama yağlarının periyodik olarak analiz edilmesi Baş Mühendisin gözetiminde yürütülür. Yağ numuneleri belirlenen aralıklarla alınır, sertifikalı bir laboratuvara gönderilir ve sonuçlar (viskozite, TBN, TAN, metal içerikleri, su kirliliği, soot) değerlendirilir. Anormal bulgu (örneğin yüksek demir ya da bakır içeriği) erken aşamada iç aşınma veya soğutma sistemi arızasına işaret eder. Yağ değişim kararı saat-bazlı rutine değil, analiz sonuçlarına göre verilmesi hem ekipman ömrünü uzatır hem de maliyet etkinliği sağlar. Analiz sonuçları PMS kayıtlarına işlenir ve klas society veya Superintendent talebi halinde sunulur.`
       }
     ],
     equipment: [
@@ -1203,6 +1231,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Soğutma ve iklimlendirme sistemleri (HVAC/reefer) bakımı",
         description: `ETO, gemideki soğutma kompresörleri, kondenser, evaporatör ve kontrol panellerinin elektriksel bakımından sorumludur. Soğutucu akışkan (refrigerant) basınç değerlerinin izlenmesi, compressor motor elektrik parametrelerinin kontrolü, termostat ve solenoid valf bakımı, defrost sistemi ve alarm devreleri bu kapsamdadır. Reefer cargo taşıyan gemilerde konteyner soğutma sistemlerinin monitörü de ETO uhdesindedir. Montreal Protokolü ve F-gaz regülasyonları kapsamında refrigerant kaçaklarının kayıt altına alınması ve lisanslı teknisyen kullanılması yasal zorunluluktur.`
+      },
+      {
+        title: "VSAT ve uydu haberleşme sistemleri bakımı",
+        description: `Modern gemilerde VSAT (Very Small Aperture Terminal) uydu sistemi; operasyonel iletişim, navigasyon veri iletimi, şirket raporlaması ve mürettebat refahı (internet) için kritik öneme sahiptir. ETO; VSAT anteni (anten stabilizasyon sistemi, uydu izleme mekanizması), modem, router ve ağ anahtarlarının bakımından sorumludur. Sistem kesintilerinde arıza teşhisi, servis sağlayıcı ile teknik koordinasyon ve yedek bağlantı (Inmarsat, MF/HF) geçiş prosedürleri de bu kapsamdadır. Ayrıca gemi ağının (LAN/WLAN) yönetimi, IT güvenliği (güvenlik duvarı, erişim kontrolü) ve siber güvenlik politikasının uygulanması ISM Code'un siber risk yönetimi (Resolution MSC-FAL.1/Circ.3) gerekliliklerine göre ETO'nun görev alanındadır.`
       }
     ],
     equipment: [
@@ -1283,6 +1315,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Acil durumlara katılım",
         description: `Muster station'da hazır bulunma, fire party veya boundary cooling görevlerinde yer alma. Makine dairesi tahliye prosedürlerini bilme. Emergency shut-down butonlarının ve kaçış yollarının konumlarını bilme.`
+      },
+      {
+        title: "Kaldırma ve taşıma ekipmanlarının (rigging/lifting gear) güvenlik kontrolü",
+        description: `Fitter, makine dairesindeki chain block'lar, wire sling'ler, tekstil sling'ler, shackle'lar, eye bolt'lar ve overhead crane/monorail gibi kaldırma ekipmanlarının periyodik güvenlik kontrolünü yapar. SWL (Safe Working Load) işaretlerinin okunurluğu, tel sling'lerde broken wire ve kink tespiti, tekstil sling'lerde yırtık, deformasyon ve renk bozulması, shackle pin güvenliği ve zincir bloklarda mekanik çalışırlık bu kontrolün kapsamındadır. Hasarlı veya etiket tarihi geçmiş ekipman derhal hizmet dışına alınmalıdır. Kaldırma ekipmanlarıyla yapılan işlerin log'u tutulur; bakım kayıtları klas society denetiminde sunulabilmelidir.`
       }
     ],
     equipment: [
@@ -1351,6 +1387,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Teknik çizim ve PMS öğrenimi",
         description: `Teknik çizimlerin (piping diagram, electrical diagram, general arrangement) okunması. PMS yazılımı kullanımı, iş emri açma/kapatma, spare parts kodu ve stok kontrolü mantığının öğrenilmesi.`
+      },
+      {
+        title: "Deniz hizmet belgesi (Sea Service Certificate) ve sertifika süreci",
+        description: `Makine stajyeri, gemide geçirdiği her seyir dönemini kaptan tarafından imzalanan resmi Sea Service Certificate ile belgelemek zorundadır. STCW'nin OOW (Officer of the Watch — Machinery) yeterlilik belgesi için gereken deniz hizmeti süresinin ispatında bu belgeler temel kanıttır. Ayrıca Watchkeeping Certificate for Engine Department için STCW tablo A-III/1 kapsamındaki tüm yetkinlik alanlarının TRB'de tamamlanmış ve eğitmen mühendis tarafından onaylanmış olması gerekir. Belgelerin kaybolması, staj süresinin tanınmaması veya sınava girebilme hakkının ertelenmesi anlamına gelebilir.`
       }
     ],
     equipment: [
