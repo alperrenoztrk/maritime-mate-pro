@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
-import { ArrowLeft, ShieldCheck, Sparkles, Wrench, AlertTriangle, ChevronDown, CheckCircle2, Anchor } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 
@@ -260,7 +260,7 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
 }
 
 /* ─── Basic Content (fallback for roles without detailed data) ─── */
-function BasicContent({ role }: { role: ReturnType<typeof crewRoleMap[string] & {}> }) {
+function BasicContent({ role }: { role: typeof crewRoleMap[string] }) {
   return (
     <section className="rounded-xl border border-border/50 bg-background/80 p-5 shadow-sm">
       <div className="mb-4 flex items-center gap-2">
