@@ -75,22 +75,6 @@ export default function CrewRoleDetailPage() {
           <BasicContent role={role} />
         )}
 
-        {/* Footer */}
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm text-foreground">
-          <div className="space-y-1">
-            <p className="text-xs uppercase tracking-[0.18em] text-primary">İpucu</p>
-            <p className="text-muted-foreground">
-              Bu sayfa, ilgili rol için sorumluluklar, görevler ve ekipman kontrol listelerini kapsamlı şekilde sunar.
-            </p>
-          </div>
-          <Link
-            to="/crew"
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition hover:-translate-y-0.5 hover:border-primary/60"
-          >
-            Tüm Roller
-            <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
-          </Link>
-        </div>
       </div>
       <BottomNavigation />
     </div>
