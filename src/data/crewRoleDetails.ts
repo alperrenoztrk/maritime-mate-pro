@@ -62,6 +62,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Şirket, charterer ve üçüncü taraf iletişimi",
         description: `DPA (Designated Person Ashore) ile sürekli iletişim, charterer talepleri ile emniyet arasındaki denge, acentelerle koordinasyon ve port authorities ile resmi yazışmalar kaptanın iletişim ağının parçalarıdır. Kaptanın "overriding authority" hakkı, ticari baskıya karşı emniyet kararı almasına imkân tanır.`
+      },
+      {
+        title: "MLC 2006 kapsamında mürettebat hakları ve refah yönetimi",
+        description: `Maritime Labour Convention (MLC) 2006, gemide çalışma koşullarının asgari standartlarını belirler ve bu standartların gemideki uygulanmasından kaptan birincil derecede sorumludur. Çalışma ve dinlenme saatlerinin (rest hours) kayıt altına alınması ve ILO 180/MLC gerekliliklerine uygunluğunun sağlanması, mürettebat maaşlarının zamanında ödenmesinin takibi, yaşam koşullarının (yiyecek, barınma, sıhhi tesisat) standartlara uygunluğunun kontrolü kaptanın görevidir. PSC denetiminde MLC compliance doğrudan sorgulanır; rest hours ihlalleri gemi tutmaya yol açabilir. Gemide disiplin işlemleri, şikâyet prosedürleri ve ayrımcılık yasağı da MLC kapsamında kaptanın sorumluluğundadır.`
+      },
+      {
+        title: "Deniz protestu (sea protest) ve noter bildirimi",
+        description: `Ağır hava, çatışma, karaya oturma, yük hasarı veya kıyı tesisi hasarı gibi olaylar sonrasında kaptanın noter huzurunda resmi deniz protestu (sea protest / noting protest) yapması hukuki bir zorunluluktur. Bu belge, mürettebatın üzerine yüklenmesi muhtemel sorumlulukları sınırlandırır ve sigorta süreçleri için kritik kanıt oluşturur. Protest hazırlığı, olay günlüğü (log kayıtları), tanık ifadeleri ve zamanında noter başvurusu kaptanın koordinasyonuyla yapılır. P&I Club'ın (koruma ve tazminat sigortası) mümkün olan en kısa sürede bilgilendirilmesi de bu sürecin parçasıdır.`
       }
     ],
     equipment: [
@@ -155,6 +163,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Denetim ve sörvey hazırlığı",
         description: `PSC, vetting, flag state ve klas denetimlerine güverte departmanı açısından hazırlık yapılması. Emniyet ekipman kayıtları, PMS logları, drill kayıtları, risk assessment arşivi ve çalışma izni dosyalarının denetim formatına uygun tutulması.`
+      },
+      {
+        title: "Ağır hava (heavy weather) hazırlığı ve güverte emniyeti",
+        description: `Kötü hava öngörüldüğünde ya da seyir sırasında karşılaşıldığında güverte departmanının hazırlığını koordine etmek Birinci Zabitin sorumluluğudur. Hatch cover'ların sıkıca kapatılması ve cleating kontrolü, güverte üzeri tüm loose ekipmanın bağlanması (lashing), vinç kancalarının güvenceye alınması, gangway ve pilotluk merdiveninin kaldırılması, freeboard scupper ve freeing port'ların serbest olduğunun doğrulanması heavy weather preparation checklist'in temel kalemleridir. Personelin güverte üzerindeki hareketini kısıtlayan emrin verilmesi ve uygulanması da bu görevin parçasıdır. Yük kayması riskine karşı lashing tensioning ve güverte stres hesaplarının ağır hava koşullarında yeniden değerlendirilmesi gerekebilir.`
       }
     ],
     equipment: [
@@ -244,9 +256,24 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Köprüüstü ekibinin seyir eğitimi",
         description: `BRM tatbikatları, ECDIS familiarization, radar/ARPA eğitimi ve COLREG senaryoları üzerinde köprüüstü ekibinin yetkinliğinin artırılması. Yeni gelen zabit ve stajyerlerin seyir cihazları konusunda eğitilmesi.`
+      },
+      {
+        title: "Revir (sick bay) ve tıbbi malzeme sorumluluğu",
+        description: `İkinci Zabit, uluslararası pratikte geminin tıbbi sorumlusu (Medical Officer) olarak görev yapar. SOLAS Chapter III ve MLC 2006 Kural 4.1 gereğince gemide yeterli tıbbi ekipman ve ilaç bulundurulması zorunludur. Tıbbi chest envanterinin güncel tutulması, ilaç ve malzeme son kullanma tarihlerinin kontrolü, medical log book'un tutulması ve limanda ikmal listelerinin hazırlanması bu görevin kapsamındadır. Mürettebat hastalığı veya yaralanması durumunda TMAS (Telemedical Assistance Service) ile iletişim, hasta değerlendirmesi ve gerektiğinde medevac koordinasyonu İkinci Zabit tarafından yürütülür. Medical emergency drill ve ilk yardım tatbikatlarını organize eder.`
       }
     ],
     equipment: [
+      {
+        title: "Revir ve tıbbi ekipman",
+        checkpoints: [
+          "Medical chest — ilaç, enjektör, sargı malzemesi envanter ve son kullanma tarihleri",
+          "Defibrilatör (AED) — batarya, pad son kullanma tarihi, self-test",
+          "Oksijen tüpü ve regülatörü — basınç, maske durumu",
+          "Sedye ve hasta taşıma ekipmanı — operasyonel durumu",
+          "Medical log book — güncel tutulması",
+          "TMAS iletişim prosedürleri ve acil tıp rehberi (IMGS)"
+        ]
+      },
       {
         title: "Seyir cihazları",
         checkpoints: [
@@ -674,6 +701,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Acemilik eğitimi ve yeni personel desteği",
         description: `Yeni gelen güverte tayfalarına pratik işleri öğretmek, güvenli çalışma alışkanlıklarını kazandırmak ve ekibe entegrasyonlarını sağlamak. Deneyimsiz personelin yüksek riskli işlerde (overside work, working aloft) gözetim altında çalışmasını sağlamak.`
+      },
+      {
+        title: "Demir (anchor) operasyonlarında ekip liderliği",
+        description: `Demir tarama ve demir alma operasyonlarında fo'c'sle güvertesindeki ekibi yönetir. Anchor windlass operasyonu, chain stopper kullanımı, demir zincirinin güvenli kontrolü ve kanca işlemlerini koordine eder. Kaptan veya zabitin köprüüstünden verdiği komutları (shackle sayısı, vira/fıra) sahada hayata geçirir. Demir zincirinin durumunu (link aşınması, çatlak, marking) seyir öncesinde kontrol eder; anormal yük ya da titreşimde köprüüstünü uyarır. Demir cezasında (dragging anchor) veya acil demir tarama durumunda sahadaki en kritik kişidir.`
+      },
+      {
+        title: "Kapalı mekan girişi (enclosed space entry) için ekip hazırlığı",
+        description: `Cargo hold, ballast tank, void space, cofferdam ve pump room gibi kapalı mekânlara giriş, SOLAS ve ISM Code açısından en yüksek riskli çalışmalar arasındadır. Reis, Birinci Zabitten alınan Enclosed Space Entry Permit'e uygun olarak ekibi hazırlar: standby kişinin atanması, atmosfer ölçüm cihazının (O2, HC, H2S, CO) kullanımı, SCBA veya SAA hazırlığı, kurtarma hattı ve lifeline düzenlemesi. Çalışma süresince dışarıda standby tutar, periyodik kontroller yapar ve iletişimi sürdürür. "Sadece bakayım" refleksiyle kapalı mekâna giren ve kurtarmaya koşan personelin hayatını kaybettiği vakalar sıkça belgelenmiştir.`
       }
     ],
     equipment: [
@@ -757,6 +792,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Güverte düzeni ve temizlik",
         description: `Güverte alanlarının temiz, düzenli ve güvenli tutulması. Kaçış yollarının açık tutulması, emniyet ekipmanlarına erişimin engellenmemesi. Drenaj kanallarının, scupper'ların ve freeing port'ların açık tutulması.`
+      },
+      {
+        title: "Kapalı mekan girişlerinde standby ve kurtarma desteği",
+        description: `Enclosed space entry operasyonlarında AB, reisten alınan talimata göre dışarıda standby görevi üstlenir. Lifeline tutar, iletişimi sürdürür, atmosfer ölçüm cihazını kullanmayı bilir ve içerideki kişinin rahat bölgeden çıkması durumunda alarm verir. Kurtarma gerekirse içeri girmeden önce SCBA takarak ve ek personel çağırarak hareket eder — "kahraman kurtarma" girişimi, makine dairesi boğulma vakalarının önemli bir kısmında hayatı kurtarmak yerine ikinci kurban yaratmıştır.`
       }
     ],
     equipment: [
@@ -907,6 +946,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Acil durumda teknik müdahale",
         description: `Blackout recovery, ana makine arızası, emergency steering, fire in engine room ve flooding senaryolarında karar alma ve müdahale koordinasyonu. Emergency procedures'ın makine ekibine düzenli olarak eğitilmesi ve tatbik edilmesi.`
+      },
+      {
+        title: "ECA bölgelerinde düşük kükürtlü yakıt (LSFO/MGO) geçişi yönetimi",
+        description: `MARPOL Ek VI Regulation 14 gereğince ECA (Emission Control Area) bölgelerine giriş ve çıkışlarda yakıt değişimi zorunludur. Baş Mühendis bu geçişin teknik prosedürünü tasarlar ve denetler: geçiş noktasından önce geçişin başlatılması, HFO servis tankından LSFO/MGO servis tankına geçiş, sistem arındırması (purging) süresi hesabı ve kükürt içeriğinin 0.10%'un altına düşürülmesi. Fuel changeover logbook kaydının tutulması, geçiş tamamlanmadan ECA'ya girilmemesi ve acil durum prosedürlerinin (yakıt karışması, viskozite sorunları) hazır tutulması kritik gerekliliklerdir.`
+      },
+      {
+        title: "Baş Mühendis gece talimatları (Chief Engineer night orders)",
+        description: `Kaptanın "night orders" pratiğinin makine departmanındaki karşılığıdır. Baş Mühendis, gece vardiyası için beklenebilecek arıza risklerini, kritik parametre eşiklerini, özel bakım görevlerini ve hangi durumlarda uyandırılması gerektiğini yazılı olarak bildirir. Bu uygulama, gece makine dairesini yöneten 3./4. Mühendisin karar yetki sınırlarını netleştirir; gecenin ilerleyen saatlerinde önlenebilir büyük arızaların raporlanmadan büyümesinin önüne geçer.`
       }
     ],
     equipment: [
@@ -995,6 +1042,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Makine personeli eğitimi",
         description: `Yeni gelen mühendis ve tayfaların familiarization'ı, makine dairesi emniyet prosedürlerinin eğitimi, vendor-specific ekipman eğitimlerinin koordinasyonu. Emergency procedures (blackout recovery, engine room fire, flooding) tatbikatlarına katılım ve eğitim.`
+      },
+      {
+        title: "Soğutma suyu analizi ve kimyasal dozajlama",
+        description: `Ana makine ve jeneratörlerde jacket cooling water (tatlı su soğutma) sisteminin su kalitesinin düzenli analiz edilmesi İkinci Mühendisin sorumluluğundadır. Nitrit, pH, klorür ve toplam sertlik değerleri kriter aralıklarında tutulmazsa corrosion inhibitor etkinliği düşer ve liner/cylinder cover'da korozyon başlar. Soğutma suyu analiz kiti kullanılarak periyodik testler yapılır, sonuçlar log'a kaydedilir ve gerektiğinde inhibitor (DCA/corrosion inhibitor) ilave edilir. Kapsamlı analiz için shore-side test laboratuarına numune gönderilmesi de bu görevin parçasıdır.`
       }
     ],
     equipment: [
@@ -1068,6 +1119,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Önleyici bakım ve arıza analizi",
         description: `Düzenli kontroller sırasında erken arıza belirtilerinin tespiti (unusual noise, vibration, leak, temperature deviation). Basit arıza teşhisi ve çözümü. Karmaşık arızalarda üst mühendise detaylı rapor sunumu.`
+      },
+      {
+        title: "UMS (Unmanned Machinery Space) gece hazırlıkları",
+        description: `Makine dairesi UMS onaylı gemilerde gece periyodunda düzenli mühendis nöbeti tutulmaz; bunun yerine kapsamlı bir hazırlık yapılır ve otomatik alarm sistemi izler. Bu hazırlık genellikle 3. veya 4. Mühendis tarafından yürütülür: tüm alarm setpoint'lerinin doğrulanması, beklenen sarf miktarlarına göre servis tank seviyelerinin kontrolü, otomatik start/stop sistemlerinin aktif olduğunun doğrulanması, bilge alarm ve high-level switch testleri, güverte ve makine dairesi arasındaki haberleşme kanalının hazır tutulması. UMS periyodunda alarm çalması durumunda kısa sürede makine dairesine inebilecek nöbetçi mühendisin hazır bulunması gerekir.`
       }
     ],
     equipment: [
@@ -1144,6 +1199,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Yedek parça ve kalibrasyon yönetimi",
         description: `Elektronik yedek parça stok kontrolü (PCB, fuse, relay, sensor, connector), kalibrasyon sertifikalarının takibi ve periyodik kalibrasyon planlaması. Kritik spare parts listesinin (klas requirement) güncel tutulması.`
+      },
+      {
+        title: "Soğutma ve iklimlendirme sistemleri (HVAC/reefer) bakımı",
+        description: `ETO, gemideki soğutma kompresörleri, kondenser, evaporatör ve kontrol panellerinin elektriksel bakımından sorumludur. Soğutucu akışkan (refrigerant) basınç değerlerinin izlenmesi, compressor motor elektrik parametrelerinin kontrolü, termostat ve solenoid valf bakımı, defrost sistemi ve alarm devreleri bu kapsamdadır. Reefer cargo taşıyan gemilerde konteyner soğutma sistemlerinin monitörü de ETO uhdesindedir. Montreal Protokolü ve F-gaz regülasyonları kapsamında refrigerant kaçaklarının kayıt altına alınması ve lisanslı teknisyen kullanılması yasal zorunluluktur.`
       }
     ],
     equipment: [
@@ -1441,6 +1500,10 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Ziyaretçi ve misafir yönetimi desteği",
         description: `Limanda gelen surveyor, PSC inspectors, vetting inspectors ve diğer ziyaretçilere servis. Toplantı odası/salon hazırlığı, ikram hizmeti. İlk izlenim açısından geminin yaşam mahalli düzeninin denetim standartlarına uygun tutulması.`
+      },
+      {
+        title: "Revir (sick bay) temizliği ve tıbbi yardım desteği",
+        description: `Gemi reviri MLC 2006 ve SOLAS gerekliliklerine göre her an temiz, düzenli ve kullanıma hazır tutulmalıdır. Kamarot, revirin günlük temizliğini (zemin, yatak, tezgah, aletler) ve sanitasyon kontrolünü yürütür. Denetimde kirli veya düzensiz bir revir doğrudan MLC non-compliance bulgusuna yol açar. Hasta mürettebata yemek, içecek ve temel ihtiyaçları taşıma, hasta odasının havalandırmasını ve konforunu sağlama görevleri de kamarotun sorumluluğundadır. Bulaşıcı hastalık şüphesinde artan dezenfeksiyon protokolleri (özellikle tuvalet ve ortak yüzeyler) kamarot tarafından uygulanır.`
       }
     ],
     equipment: [
