@@ -71,15 +71,16 @@ export function AskAIPopup() {
 
   if (!selectedText || !position) return null;
 
-  // Button position: centered horizontally above selection
+  // Button position: above selection, or below if near top of viewport
+  const MARGIN = 8;
   const btnLeft = position.x;
-  const btnTop = position.y - 40;
+  const btnTop = position.y > 48 ? position.y - 40 : position.y + 24;
 
-  // Panel position: near button but adjust for viewport
-  const panelTop = position.y - 320;
+  // Panel position: adjust to stay fully within viewport
+  const panelTop = Math.max(position.y - 320, MARGIN);
   const panelLeft = Math.min(
-    Math.max(position.x - 160, 8),
-    window.innerWidth - 328
+    Math.max(position.x - 160, MARGIN),
+    window.innerWidth - 328 - MARGIN
   );
 
   return (
@@ -116,7 +117,7 @@ export function AskAIPopup() {
           <div className="flex items-center justify-between px-3 py-2 bg-gradient-to-r from-blue-700/80 to-cyan-700/80 border-b border-blue-500/30">
             <div className="flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
-              <span className="text-xs font-semibold text-white">Gemini AI</span>
+              <span className="text-xs font-semibold text-white">AI Asistan</span>
             </div>
             <button
               data-ask-ai-popup="true"
