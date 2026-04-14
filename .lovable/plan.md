@@ -1,62 +1,101 @@
 
 
-# Gemi Personeli İçerik Yeniden Yapılandırma Planı
+# Konu Anlatımı İçerik Denetleme ve Tamamlama Planı
 
-## Mevcut Durum
-Şu an `CrewRole` tipi sadece `alwaysDuties: string[]` ve `generalTasks: string[]` içeriyor — kısa maddeler halinde. Kullanıcının istediği format ise her rol için kapsamlı, profesyonel denizcilik pratiğine dayanan detaylı içerik: giriş paragrafı, sorumluluk ağacı, her görevin açıklaması, ekipman listesi ve kontrol noktaları.
+## Mevcut Durum Analizi
 
-## Yapılacaklar
+Tüm kategorileri taradım. Sonuçlar:
 
-### 1. Veri Modelini Genişlet (`CrewRole` tipi)
-Mevcut basit string dizilerine ek olarak zengin içerik alanları ekle:
+| Kategori | Alt Başlık | İçerik Durumu | Sorun |
+|----------|-----------|---------------|-------|
+| **Seyir (Navigation)** | ~130 alt başlık | **84 alt başlık içerik YOK** | En kritik eksik |
+| **Stabilite** | 82 alt başlık | Tümü var ama **21 tanesi çok kısa** (310-400 karakter) | Yetersiz derinlik |
+| **Meteoroloji** | 24 konu | İyi (~2700 kar/konu) | Yeterli |
+| **Haberleşme** | 5 konu | İyi ama sadece 5 konu | Yeterli |
+| **Yük Elleçleme** | 68 alt başlık | Orta (ort. 704 kar) | Kabul edilebilir |
+| **Gemicilik** | 68 alt başlık | İyi (ort. 1003 kar) | Yeterli |
+| **Denizde Emniyet** | 57 alt başlık | İyi (ort. 1139 kar) | Yeterli |
+| **Çevre Koruma** | 39 alt başlık | İyi (ort. 1006 kar) | Yeterli |
+| **Deniz İşletmeciliği** | 28 alt başlık | Orta (ort. 913 kar) | Kabul edilebilir |
+| **Makine** | 600+ başlık | Çok kapsamlı (~800K kar) | Yeterli |
 
-```typescript
-type CrewRoleDetail = {
-  // mevcut alanlar korunur (slug, rank, responsibility, reportsTo, alwaysDuties, generalTasks)
-  intro: string;                    // Giriş paragrafı
-  tasks: { title: string; description: string }[];    // A) İşler — her biri başlık + açıklama
-  equipment: { title: string; checkpoints: string[] }[];  // B) Ekipmanlar — kontrol listeleri
-  coreSummary: string;              // Net çekirdek tanım
-  criticalNotes?: string[];         // Yaşlı gemi / pratik uyarılar
-};
-```
+---
 
-### 2. 16 Rol İçin Kapsamlı İçerik Yaz
-Her rol için kullanıcının verdiği 4. Kaptan şablonuna uygun, profesyonel gemi pratiğine dayanan detaylı içerik hazırla. Roller:
+## Kritik Eksikler ve Yapılacak İşler
 
-**Güverte (8 rol):** Kaptan, Birinci Zabit, İkinci Zabit, Üçüncü Zabit, Dördüncü Zabit, Reis/Bosun, Usta Gemici/Gemiciler, Güverte Stajyeri
+### 1. SEYİR — 84 Eksik Alt Başlık İçeriği (En Büyük İş)
 
-**Makine (6 rol):** Baş Mühendis, İkinci Mühendis, Üçüncü/Dördüncü Mühendis, ETO, Yağcı/Fitter/Silici, Makine Stajyeri
+Aşağıdaki alt başlıklar için `navigationTopicContents.ts` dosyasına detaylı içerik yazılacak. Her içerik ilgili regülasyona referans verecek:
 
-**İkmal (2 rol):** Aşçı, Kamarot/Steward
+**Seyrin Temelleri (2 eksik):**
+- Rota hız ve mesafe ilişkisi *(COLREG Kural 6 — Emniyetli Hız)*
+- Zaman – mesafe – hız bağıntısı
 
-Her rol için:
-- Rolün gerçek sorumluluğunu açıklayan giriş paragrafı (SOLAS, ISM, MARPOL referanslarıyla)
-- A) İşler: 8-12 madde, her biri başlık + detaylı açıklama paragrafı
-- B) Ekipmanlar: Rolün sorumlu olduğu ekipmanlar + her biri için kontrol noktaları
-- Net çekirdek tanım (tek cümle özet)
-- Pratik uyarılar
+**Harita Bilgisi (3 eksik):**
+- Harita datum *(IHO S-44, SOLAS V/19)*
+- Mesafe ölçümü
+- Rota ölçümü
 
-İçerik boyutu nedeniyle veri ayrı bir dosyaya taşınacak: `src/data/crewRoleDetails.ts`
+**Düzlem Seyir (5 eksik):**
+- Düzlem seyir varsayımı, DLat, Kurs-mesafe hesapları, Enlem-boylam değişimi, Akıntısız seyir hesapları
 
-### 3. Detay Sayfasını Yeniden Tasarla (`CrewRoleDetail.tsx`)
-Mevcut basit iki sütunlu görünüm yerine zengin içerik formatını render eden yeni layout:
+**Orta Enlem Seyri (6 eksik):**
+- Düzlem seyirin sınırları, Ortalama enlem kavramı, Departure-boylam ilişkisi, Boylam değişimi, İşaret değişimi, Sayısal uygulamalar
 
-- **Giriş kartı**: Rol tanımı + intro paragrafı
-- **A) İşler bölümü**: Accordion veya genişletilebilir kartlar — her görev başlık + açıklama
-- **B) Ekipmanlar bölümü**: Ekipman kartları, her biri altında kontrol noktaları listesi
-- **Çekirdek tanım**: Vurgulu özet kartı
-- **Pratik uyarılar**: Uyarı kutusu formatında
+**Akıntı ve Rüzgar (6 eksik):**
+- Set ve drift, Akıntı vektörleri, Heading-COG, STW-SOG, Akıntılı seyir hesapları, Vektör üçgenleri
 
-### 4. Mevcut Yapıyı Koru
-`crewHierarchy.ts`'deki mevcut `alwaysDuties` ve `generalTasks` alanları liste sayfası (`CrewHierarchyPage`) için korunur. Yeni detay verileri ayrı dosyada tutulur ve sadece detay sayfasında kullanılır.
+**Klasik Seyir (5 eksik):**
+- Kerteriz türleri, Kerterizle mevki tayini, Mesafe+kerteriz fix, Running fix (klasik), Paralel indeks, Kıyı seyri teknikleri
 
-## Teknik Detaylar
-- Yeni dosya: `src/data/crewRoleDetails.ts` (~3000-4000 satır statik veri)
-- Güncellenecek: `src/pages/CrewRoleDetail.tsx` (yeni layout)
-- Güncellenecek: `src/data/crewHierarchy.ts` (tip genişletme)
-- İçerik büyüklüğü nedeniyle birden fazla adımda uygulanacak
+**Büyük Daire (8 eksik):**
+- Büyük daire kavramı/geometrisi/mesafesi/başlangıç kursu, Rhumb line, Mercator-rhumb ilişkisi, Composite rota, Uzun okyanus seyri
 
-## İçerik büyük — aşamalı teslim
-Bu çok büyük bir içerik işi (16 rol × ortalama 200 satır = ~3200+ satır). Tüm rolleri tek seferde yazacağım ama dosya boyutu nedeniyle birkaç adımda commit edilebilir.
+**Elektronik Seyir (13 eksik):**
+- GPS prensibi/Trilaterasyon/Doğruluk, HDOP/PDOP, Radar prensibi/mevki tayini, Paralel indeks (radar), ECDIS, Rota planlama, XTE/ETA/Turn radius, Çapraz kontrol *(SOLAS V/19, IMO A.817(19))*
+
+**Tides (11 eksik):**
+- Gelgitin fiziksel mantığı, Spring/Neap, Chart datum (LAT), Tidal table okuma, Height of tide, 12'ler kuralı, İnterpolasyon, Tidal stream, Set-drift, UKC+gelgit, Tidal window *(SOLAS V/34, IMO A.893(21))*
+
+**Meteoroloji Bağlantılı Seyir (7 eksik):**
+- Rüzgârın gemiye etkisi, Leeway kavramı/hesapları, Rüzgâr+akıntı+gemi hareketi, Dalga etkileri, Heavy weather navigation, Fırtınada rota ve hız kararı *(COLREG Kural 6, SOLAS V/34)*
+
+**Passage Planning (8 eksik):**
+- IMO A.893(21), Appraisal/Planning/Execution/Monitoring, UKC ve squat, BRM, PSC bakış açısı *(SOLAS V/34, IMO A.893(21))*
+
+**COLREG (7 eksik):**
+- COLREG temel prensipleri, Crossing, Head-on, Overtaking, Restricted visibility, Gerçek çatışma kazaları, Neden-sonuç analizi *(COLREG 1972, MSC/Circ.1023)*
+
+### 2. STABİLİTE — 21 Yetersiz İçerik Güçlendirme
+
+Aşağıdaki başlıkların içerikleri ~300 karakterden ~800-1200 karaktere çıkarılacak, formül açıklaması + operasyonel bağlam + regülasyon referansı eklenecek:
+
+- trim-calculations, draft, fse-calc, tpc, lcg, capsizing-angle, mct, heel-from-weight-shift, fsm, km-values, multiple-tanks-effect, lcb, trim-control, heeling-moment, displacement, small-angle-stability, fse-gm-effect, hydrostatic-tables-usage, dynamic-righting-moment, wind-effect, trim-concept
+
+**Referans regülasyonlar:** IMO A.749(18), SOLAS II-1, IS Code (2008 Intact Stability Code), Grain Code
+
+---
+
+## Uygulama Planı
+
+### Adım 1: Seyir İçerikleri — Bölüm 1 (~40 alt başlık)
+`navigationTopicContents.ts` dosyasına yeni içerikler ekle:
+- Seyrin Temelleri, Harita Bilgisi, Düzlem Seyir, Orta Enlem Seyri, Akıntı/Rüzgar
+- Her biri ~600-1000 karakter, formül + regülasyon referansı ile
+- `LessonTopicsPage.tsx`'de `hasContent: true` ekle
+
+### Adım 2: Seyir İçerikleri — Bölüm 2 (~44 alt başlık)
+- Klasik Seyir, Büyük Daire, Elektronik Seyir, Tides, Meteoroloji Bağlantılı Seyir, Passage Planning, COLREG
+- Her biri ~600-1000 karakter
+
+### Adım 3: Stabilite İçerik Güçlendirme (21 giriş)
+`StabilityTopicsPage.tsx` içindeki `topicContents` kaydında kısa girişleri genişlet:
+- Her girişi IS Code / SOLAS II-1 / IMO A.749(18) referanslarıyla zenginleştir
+- Formül açıklaması, neden önemli, operasyonel bağlam ekle
+
+### Teknik Detaylar
+- Dosya boyutu nedeniyle seyir içerikleri 2 aşamada yazılacak
+- Her içerik statik veri olarak yazılacak (kitap dili standardı, AI izi minimumda)
+- Regülasyon referansları mevcut `regulationItems.ts` slug'larıyla uyumlu tutulacak
+- Toplam ~105 içerik bloğu, tahmini ~80-100K karakter yeni veri
 
