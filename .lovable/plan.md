@@ -1,40 +1,62 @@
 
 
-# Denizcilik Terminolojisine Uygun Çeviri Sistemi
+# Gemi Personeli İçerik Yeniden Yapılandırma Planı
 
-## Sorun
-Şu an uygulama çeviriler için Google Translate'in ücretsiz API'sini (`translate.googleapis.com/translate_a/single`) kullanıyor. Bu API genel amaçlı çeviri yapıyor ve denizcilik terimlerini yanlış çeviriyor (örneğin "sancak" → "starboard" yerine genel bir anlam veriyor, "alabanda" düzgün çevrilmiyor).
+## Mevcut Durum
+Şu an `CrewRole` tipi sadece `alwaysDuties: string[]` ve `generalTasks: string[]` içeriyor — kısa maddeler halinde. Kullanıcının istediği format ise her rol için kapsamlı, profesyonel denizcilik pratiğine dayanan detaylı içerik: giriş paragrafı, sorumluluk ağacı, her görevin açıklaması, ekipman listesi ve kontrol noktaları.
 
-Ayrıca bir runtime hatası var: `AskAIPopup` bileşeni `LanguageProvider` dışında render ediliyor — bu da düzeltilecek.
+## Yapılacaklar
 
-## Çözüm
-Google Translate API yerine, mevcut `translate` edge function'ı (Lovable AI Gateway + Gemini) kullanılacak. Bu function'ın system prompt'u zaten denizcilik terminolojisi için talimat içeriyor ama şu an sadece AI chat'te kullanılıyor, sayfa çevirilerinde kullanılmıyor.
+### 1. Veri Modelini Genişlet (`CrewRole` tipi)
+Mevcut basit string dizilerine ek olarak zengin içerik alanları ekle:
 
-### Değişiklikler
+```typescript
+type CrewRoleDetail = {
+  // mevcut alanlar korunur (slug, rank, responsibility, reportsTo, alwaysDuties, generalTasks)
+  intro: string;                    // Giriş paragrafı
+  tasks: { title: string; description: string }[];    // A) İşler — her biri başlık + açıklama
+  equipment: { title: string; checkpoints: string[] }[];  // B) Ekipmanlar — kontrol listeleri
+  coreSummary: string;              // Net çekirdek tanım
+  criticalNotes?: string[];         // Yaşlı gemi / pratik uyarılar
+};
+```
 
-#### 1. Edge Function Prompt'unu Güçlendir (`supabase/functions/translate/index.ts`)
-- System prompt'a detaylı denizcilik terminoloji talimatı ekle:
-  - IMO/SOLAS/MARPOL standart terimlerinin korunması
-  - Her dil için o dilin resmi denizcilik terminolojisinin kullanılması
-  - Teknik terimlerin (EPIRB, SART, EEBD, SCBA, LSA, FFE vb.) kısaltma olarak korunması
-  - Gemicilik fiillerinin (alabanda, manevra, demir alma, palamar vb.) doğru karşılıklarının kullanılması
+### 2. 16 Rol İçin Kapsamlı İçerik Yaz
+Her rol için kullanıcının verdiği 4. Kaptan şablonuna uygun, profesyonel gemi pratiğine dayanan detaylı içerik hazırla. Roller:
 
-#### 2. `LanguageContext.tsx` — `translateText` fonksiyonunu güncelle
-- Google Translate API çağrısını kaldır, yerine mevcut `translate` edge function'ı çağır
-- Auth gerektirdiği için: giriş yapmış kullanıcılar için edge function, giriş yapmamışlar için Google Translate fallback
-- Batch çeviri desteği ekle (birden fazla metni tek istekle çevir — API çağrısı sayısını azaltmak için)
+**Güverte (8 rol):** Kaptan, Birinci Zabit, İkinci Zabit, Üçüncü Zabit, Dördüncü Zabit, Reis/Bosun, Usta Gemici/Gemiciler, Güverte Stajyeri
 
-#### 3. Runtime Hatası Düzelt
-- `AskAIPopup` bileşeninin `LanguageProvider` içinde render edildiğinden emin ol (muhtemelen App.tsx'teki sıralama sorunu)
+**Makine (6 rol):** Baş Mühendis, İkinci Mühendis, Üçüncü/Dördüncü Mühendis, ETO, Yağcı/Fitter/Silici, Makine Stajyeri
 
-### Teknik Detaylar
-- Edge function'daki system prompt şöyle genişletilecek:
-  ```
-  You are a professional maritime translator specializing in nautical terminology.
-  Use official maritime terminology recognized by IMO for the target language.
-  Keep technical abbreviations unchanged: SOLAS, MARPOL, ISM, EPIRB, SART, EEBD, SCBA, LSA, FFE, PSC, PMS, VHF, DSC, GMDSS, AIS, ECDIS, COLREG.
-  For nautical terms, use the standard terminology of the target language's maritime tradition (e.g., "starboard/port" in English, "tribord/bâbord" in French, "Steuerbord/Backbord" in German).
-  ```
-- `translateText` fonksiyonu: supabase client üzerinden `functions.invoke('translate', ...)` çağrısı yapacak
-- Cache mekanizması korunacak
+**İkmal (2 rol):** Aşçı, Kamarot/Steward
+
+Her rol için:
+- Rolün gerçek sorumluluğunu açıklayan giriş paragrafı (SOLAS, ISM, MARPOL referanslarıyla)
+- A) İşler: 8-12 madde, her biri başlık + detaylı açıklama paragrafı
+- B) Ekipmanlar: Rolün sorumlu olduğu ekipmanlar + her biri için kontrol noktaları
+- Net çekirdek tanım (tek cümle özet)
+- Pratik uyarılar
+
+İçerik boyutu nedeniyle veri ayrı bir dosyaya taşınacak: `src/data/crewRoleDetails.ts`
+
+### 3. Detay Sayfasını Yeniden Tasarla (`CrewRoleDetail.tsx`)
+Mevcut basit iki sütunlu görünüm yerine zengin içerik formatını render eden yeni layout:
+
+- **Giriş kartı**: Rol tanımı + intro paragrafı
+- **A) İşler bölümü**: Accordion veya genişletilebilir kartlar — her görev başlık + açıklama
+- **B) Ekipmanlar bölümü**: Ekipman kartları, her biri altında kontrol noktaları listesi
+- **Çekirdek tanım**: Vurgulu özet kartı
+- **Pratik uyarılar**: Uyarı kutusu formatında
+
+### 4. Mevcut Yapıyı Koru
+`crewHierarchy.ts`'deki mevcut `alwaysDuties` ve `generalTasks` alanları liste sayfası (`CrewHierarchyPage`) için korunur. Yeni detay verileri ayrı dosyada tutulur ve sadece detay sayfasında kullanılır.
+
+## Teknik Detaylar
+- Yeni dosya: `src/data/crewRoleDetails.ts` (~3000-4000 satır statik veri)
+- Güncellenecek: `src/pages/CrewRoleDetail.tsx` (yeni layout)
+- Güncellenecek: `src/data/crewHierarchy.ts` (tip genişletme)
+- İçerik büyüklüğü nedeniyle birden fazla adımda uygulanacak
+
+## İçerik büyük — aşamalı teslim
+Bu çok büyük bir içerik işi (16 rol × ortalama 200 satır = ~3200+ satır). Tüm rolleri tek seferde yazacağım ama dosya boyutu nedeniyle birkaç adımda commit edilebilir.
 

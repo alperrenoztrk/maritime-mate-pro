@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { backendUrl, backendPublishableKey } from '@/integrations/supabase/safeClient';
 
 interface SupportedLanguage {
   language: string;
@@ -12,7 +11,6 @@ interface LanguageContextType {
   currentLanguage: string;
   supportedLanguages: SupportedLanguage[];
   isLoading: boolean;
-  isTranslating: boolean;
   changeLanguage: (languageCode: string) => void;
   getLanguageName: (code: string) => string;
   isRTL: boolean;
@@ -23,7 +21,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const DEFAULT_LANGUAGE = 'en';
 const SOURCE_LANGUAGE = 'tr';
 
-// Supported languages
+// Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'tr', name: 'Turkish', displayName: 'Türkçe' },
   { language: 'en', name: 'English', displayName: 'English' },
@@ -51,283 +49,239 @@ const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'bg', name: 'Bulgarian', displayName: 'Български' },
   { language: 'uk', name: 'Ukrainian', displayName: 'Українська' }
 ];
-
 const SUPPORTED_LANGUAGES: SupportedLanguage[] = [...BASE_SUPPORTED_LANGUAGES].sort((a, b) =>
   a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
 );
-
-// App-wide translation cache: lang -> Map<originalText, translatedText>
-const globalTranslationCache = new Map<string, Map<string, string>>();
-
-// Batch translate via edge function
-const TRANSLATE_URL = `${backendUrl}/functions/v1/translate`;
-
-async function batchTranslate(
-  texts: string[],
-  targetLanguage: string,
-  sourceLanguage: string = SOURCE_LANGUAGE
-): Promise<string[]> {
-  if (targetLanguage === sourceLanguage) return texts;
-  if (texts.length === 0) return [];
-
-  // Check cache first
-  const langCache = globalTranslationCache.get(targetLanguage) || new Map<string, string>();
-  const uncachedIndices: number[] = [];
-  const uncachedTexts: string[] = [];
-  const results: string[] = [...texts];
-
-  for (let i = 0; i < texts.length; i++) {
-    const cached = langCache.get(texts[i]);
-    if (cached) {
-      results[i] = cached;
-    } else {
-      uncachedIndices.push(i);
-      uncachedTexts.push(texts[i]);
-    }
-  }
-
-  if (uncachedTexts.length === 0) return results;
-
-  // Batch in chunks of 50 to avoid oversized requests
-  const BATCH_SIZE = 50;
-  for (let start = 0; start < uncachedTexts.length; start += BATCH_SIZE) {
-    const batchTexts = uncachedTexts.slice(start, start + BATCH_SIZE);
-    const batchIndicesInUncached = uncachedIndices.slice(start, start + BATCH_SIZE);
-
-    try {
-      const response = await fetch(TRANSLATE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': backendPublishableKey,
-        },
-        body: JSON.stringify({
-          texts: batchTexts,
-          targetLanguage,
-          sourceLanguage,
-        }),
-      });
-
-      if (!response.ok) {
-        console.error(`Translation API error: ${response.status}`);
-        continue;
-      }
-
-      const data = await response.json();
-      const translations: string[] = data.translations || batchTexts;
-
-      for (let j = 0; j < translations.length; j++) {
-        const originalIdx = batchIndicesInUncached[j];
-        results[originalIdx] = translations[j];
-        langCache.set(texts[originalIdx], translations[j]);
-      }
-    } catch (error) {
-      console.error('Translation batch failed:', error);
-    }
-  }
-
-  globalTranslationCache.set(targetLanguage, langCache);
-  return results;
-}
 
 interface LanguageProviderProps {
   children: ReactNode;
 }
 
+declare global {
+  interface Window {
+    google?: {
+      translate?: {
+        TranslateElement?: new (
+          options: {
+            pageLanguage: string;
+            includedLanguages: string;
+            autoDisplay: boolean;
+          },
+          elementId: string
+        ) => unknown;
+      };
+    };
+    googleTranslateElementInit?: () => void;
+  }
+}
+
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<string>(DEFAULT_LANGUAGE);
   const [isLoading, setIsLoading] = useState(true);
-  const [isTranslating, setIsTranslating] = useState(false);
   const { toast } = useToast();
+  const scriptLoadedRef = useRef(false);
+  const translationCacheRef = useRef<Map<string, string>>(new Map());
   const translationRunIdRef = useRef(0);
-  const observerRef = useRef<MutationObserver | null>(null);
-  const translationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // RTL languages
   const rtlLanguages = ['ar', 'he', 'fa', 'ur'];
   const isRTL = rtlLanguages.includes(currentLanguage);
 
   useEffect(() => {
+    // Simple initialization without DOM manipulation
     const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
-    const validLanguage = SUPPORTED_LANGUAGES.find(lang => lang.language === savedLanguage)
-      ? savedLanguage
+    const validLanguage = SUPPORTED_LANGUAGES.find(lang => lang.language === savedLanguage) 
+      ? savedLanguage 
       : DEFAULT_LANGUAGE;
+    
     setCurrentLanguage(validLanguage);
     setIsLoading(false);
   }, []);
 
-  // Collect all translatable text from the entire DOM
-  const collectTranslatableElements = useCallback(() => {
-    if (typeof document === 'undefined') return { elements: [], texts: [] };
+  const setGoogleTranslateCookie = (languageCode: string) => {
+    const target = languageCode === SOURCE_LANGUAGE ? `/${SOURCE_LANGUAGE}/${SOURCE_LANGUAGE}` : `/${SOURCE_LANGUAGE}/${languageCode}`;
+    document.cookie = `googtrans=${target};path=/;max-age=31536000`;
+    document.cookie = `googtrans=${target};domain=.${window.location.hostname};path=/;max-age=31536000`;
+  };
 
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-translatable]')
-    ).filter(el => !el.closest('[data-no-translate]'));
-
-    // Store original text on first encounter
-    for (const el of elements) {
-      if (!el.dataset.originalText) {
-        el.dataset.originalText = el.textContent?.trim() || '';
-      }
-    }
-
-    const texts = elements.map(el => el.dataset.originalText || '');
-    return { elements, texts };
-  }, []);
-
-  // Collect translatable placeholders
-  const collectPlaceholderElements = useCallback(() => {
-    if (typeof document === 'undefined') return { elements: [], texts: [] };
-
-    const elements = Array.from(
-      document.querySelectorAll<HTMLInputElement>('[data-translatable-placeholder]')
-    );
-
-    for (const el of elements) {
-      if (!el.dataset.originalPlaceholder) {
-        el.dataset.originalPlaceholder = el.placeholder;
-      }
-    }
-
-    const texts = elements.map(el => el.dataset.originalPlaceholder || '');
-    return { elements, texts };
-  }, []);
-
-  // Translate the entire app at once
-  const translateApp = useCallback(async (languageCode: string) => {
+  const applyGoogleTranslateLanguage = (languageCode: string, reloadIfComboMissing: boolean = true) => {
     if (typeof document === 'undefined') return;
-
-    const runId = ++translationRunIdRef.current;
-
-    // Source language = no translation needed, restore originals
-    if (languageCode === SOURCE_LANGUAGE) {
-      const { elements } = collectTranslatableElements();
-      for (const el of elements) {
-        el.textContent = el.dataset.originalText || '';
-      }
-      const { elements: phElements } = collectPlaceholderElements();
-      for (const el of phElements) {
-        el.placeholder = el.dataset.originalPlaceholder || '';
-      }
+    setGoogleTranslateCookie(languageCode);
+    const combo = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+    if (combo) {
+      combo.value = languageCode;
+      combo.dispatchEvent(new Event('change'));
       return;
     }
 
-    setIsTranslating(true);
-
-    try {
-      // Collect ALL translatable content across the app
-      const { elements, texts } = collectTranslatableElements();
-      const { elements: phElements, texts: phTexts } = collectPlaceholderElements();
-
-      const allTexts = [...texts, ...phTexts].filter(t => t.length > 0);
-
-      if (allTexts.length === 0) {
-        setIsTranslating(false);
-        return;
-      }
-
-      // Translate everything in one batch call
-      const allTranslations = await batchTranslate(allTexts, languageCode);
-
-      // Abort if a newer translation request started
-      if (translationRunIdRef.current !== runId) return;
-
-      // Apply all translations at once (atomic update)
-      const textCount = texts.length;
-      for (let i = 0; i < elements.length; i++) {
-        if (texts[i].length > 0) {
-          elements[i].textContent = allTranslations[i] || texts[i];
-        }
-      }
-
-      for (let i = 0; i < phElements.length; i++) {
-        if (phTexts[i].length > 0) {
-          phElements[i].placeholder = allTranslations[textCount + i] || phTexts[i];
-        }
-      }
-    } catch (error) {
-      console.error('App-wide translation failed:', error);
-    } finally {
-      if (translationRunIdRef.current === runId) {
-        setIsTranslating(false);
-      }
+    // Fallback for first language switch before widget mounts
+    if (reloadIfComboMissing) {
+      window.location.reload();
     }
-  }, [collectTranslatableElements, collectPlaceholderElements]);
+  };
 
-  // Watch for DOM changes and re-translate new elements
-  useEffect(() => {
-    if (isLoading || currentLanguage === SOURCE_LANGUAGE) return;
+  const initGoogleTranslate = () => {
+    if (typeof document === 'undefined') return;
+    if (scriptLoadedRef.current) return;
 
-    // Initial translation
-    translateApp(currentLanguage);
+    if (!document.getElementById('google_translate_element')) {
+      const container = document.createElement('div');
+      container.id = 'google_translate_element';
+      container.style.display = 'none';
+      document.body.appendChild(container);
+    }
 
-    // Observe DOM mutations to catch route changes / lazy-loaded content
-    observerRef.current?.disconnect();
+    window.googleTranslateElementInit = () => {
+      const includedLanguages = SUPPORTED_LANGUAGES.map(lang => lang.language).join(',');
+      if (window.google?.translate?.TranslateElement) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: SOURCE_LANGUAGE,
+            includedLanguages,
+            autoDisplay: false,
+          },
+          'google_translate_element'
+        );
 
-    const observer = new MutationObserver(() => {
-      // Debounce: wait for DOM to settle
-      if (translationTimeoutRef.current) {
-        clearTimeout(translationTimeoutRef.current);
-      }
-      translationTimeoutRef.current = setTimeout(() => {
-        // Only translate newly added elements (those without translations applied)
-        translateApp(currentLanguage);
-      }, 500);
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-
-    observerRef.current = observer;
-
-    return () => {
-      observer.disconnect();
-      if (translationTimeoutRef.current) {
-        clearTimeout(translationTimeoutRef.current);
+        const preferredLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
+        if (preferredLanguage !== SOURCE_LANGUAGE) {
+          setTimeout(() => {
+            applyGoogleTranslateLanguage(preferredLanguage, false);
+          }, 300);
+        }
       }
     };
-  }, [currentLanguage, isLoading, translateApp]);
 
-  // Update document language/dir
+    if (document.getElementById('google-translate-script')) {
+      scriptLoadedRef.current = true;
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    scriptLoadedRef.current = true;
+    document.body.appendChild(script);
+  };
+
+  const translateText = async (text: string, languageCode: string): Promise<string> => {
+    const normalizedText = text.trim();
+    if (!normalizedText) return text;
+    if (languageCode === SOURCE_LANGUAGE) return normalizedText;
+
+    const cacheKey = `${languageCode}:${normalizedText}`;
+    const cached = translationCacheRef.current.get(cacheKey);
+    if (cached) return cached;
+
+    try {
+      const response = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(normalizedText)}`
+      );
+      const data = await response.json();
+      const translated = Array.isArray(data?.[0])
+        ? data[0].map((item: [string]) => item[0]).join('')
+        : normalizedText;
+      translationCacheRef.current.set(cacheKey, translated);
+      return translated;
+    } catch (error) {
+      console.error('Metin çevirisi alınamadı:', error);
+      return normalizedText;
+    }
+  };
+
+  const translateMarkedContent = async (languageCode: string) => {
+    if (typeof document === 'undefined') return;
+
+    const runId = ++translationRunIdRef.current;
+    const translatableElements = Array.from(document.querySelectorAll<HTMLElement>('[data-translatable]'))
+      .filter((el) => !el.closest('[data-no-translate]'));
+
+    for (const el of translatableElements) {
+      if (!el.dataset.originalText) {
+        el.dataset.originalText = el.textContent?.trim() || '';
+      }
+
+      if (languageCode === SOURCE_LANGUAGE) {
+        el.textContent = el.dataset.originalText;
+        continue;
+      }
+
+      const translated = await translateText(el.dataset.originalText, languageCode);
+      if (translationRunIdRef.current !== runId) return;
+      el.textContent = translated;
+    }
+
+    const placeholderElements = Array.from(document.querySelectorAll<HTMLElement>('[data-translatable-placeholder]'));
+    for (const el of placeholderElements) {
+      if (translationRunIdRef.current !== runId) return;
+
+      const input = el as HTMLInputElement;
+      if (!input.dataset.originalPlaceholder) {
+        input.dataset.originalPlaceholder = input.placeholder;
+      }
+
+      if (languageCode === SOURCE_LANGUAGE) {
+        input.placeholder = input.dataset.originalPlaceholder || '';
+        continue;
+      }
+
+      input.placeholder = await translateText(input.dataset.originalPlaceholder || '', languageCode);
+    }
+  };
+
+  const changeLanguage = (languageCode: string) => {
+    if (languageCode === currentLanguage) return;
+
+    const isValidLanguage = SUPPORTED_LANGUAGES.find(lang => lang.language === languageCode);
+    if (!isValidLanguage) return;
+
+    setCurrentLanguage(languageCode);
+    localStorage.setItem('preferredLanguage', languageCode);
+    applyGoogleTranslateLanguage(languageCode);
+
+    toast({
+      title: "Dil Değiştirildi",
+      description: `Uygulama dili ${getLanguageName(languageCode)} olarak değiştirildi`,
+    });
+  };
+
+  // Initialize Google Translate widget once
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    initGoogleTranslate();
+  }, []);
+
+  // Update document language/dir when language changes
   useEffect(() => {
     if (typeof document === 'undefined') return;
     document.documentElement.lang = currentLanguage;
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
   }, [currentLanguage, isRTL]);
 
-  const changeLanguage = useCallback((languageCode: string) => {
-    if (languageCode === currentLanguage) return;
-    const isValidLanguage = SUPPORTED_LANGUAGES.find(lang => lang.language === languageCode);
-    if (!isValidLanguage) return;
-
-    setCurrentLanguage(languageCode);
-    localStorage.setItem('preferredLanguage', languageCode);
-
-    toast({
-      title: "Dil Değiştirildi",
-      description: `Uygulama dili ${getLanguageName(languageCode)} olarak değiştirildi`,
-    });
-  }, [currentLanguage, toast]);
+  useEffect(() => {
+    if (isLoading) return;
+    translateMarkedContent(currentLanguage);
+  }, [currentLanguage, isLoading]);
 
   const getLanguageName = (code: string): string => {
     return SUPPORTED_LANGUAGES.find(lang => lang.language === code)?.displayName || code;
   };
 
-  const resetLanguagePreferences = useCallback(() => {
+  const resetLanguagePreferences = () => {
     localStorage.removeItem('preferredLanguage');
     setCurrentLanguage(DEFAULT_LANGUAGE);
+    
     toast({
       title: "Ayarlar Sıfırlandı",
       description: "Dil ayarları varsayılan değerlere döndürüldü",
     });
-  }, [toast]);
+  };
 
   const contextValue: LanguageContextType = {
     currentLanguage,
     supportedLanguages: SUPPORTED_LANGUAGES,
     isLoading,
-    isTranslating,
     changeLanguage,
     getLanguageName,
     isRTL,
@@ -349,6 +303,8 @@ export const useLanguage = (): LanguageContextType => {
   return context;
 };
 
+// Simple translation utility (no hooks, no re-renders)
+// This is kept for backwards compatibility but doesn't use the API
 export const getTranslation = (key: string, defaultText: string = '', language: string = DEFAULT_LANGUAGE) => {
   return defaultText;
 };
