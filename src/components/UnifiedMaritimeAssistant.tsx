@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageDisplayName } from "@/services/aiClient";
+import { stripMarkdown } from "@/utils/cleanText";
 
 export const UnifiedMaritimeAssistant = () => {
   const { currentLanguage } = useLanguage();
@@ -363,11 +364,12 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
             </h4>
             <div className="text-sm text-card-foreground whitespace-pre-wrap leading-relaxed space-y-2">
               {response.split('\n').map((line, index) => {
+                const cleaned = stripMarkdown(line);
                 // Formül satırları için özel stil
                 if (line.includes('=') && (line.includes('×') || line.includes('+') || line.includes('-') || line.includes('/'))) {
                   return (
                     <div key={index} className="bg-muted border border-primary/30 p-3 rounded-lg font-mono text-sm">
-                      <code className="text-foreground">{line}</code>
+                      <code className="text-foreground">{cleaned}</code>
                     </div>
                   );
                 }
@@ -375,13 +377,13 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
                 if (line.startsWith('**') && line.endsWith('**')) {
                   return (
                     <h5 key={index} className="font-semibold text-primary mt-3 mb-1">
-                      {line.replace(/\*\*/g, '')}
+                      {cleaned}
                     </h5>
                   );
                 }
                 // Normal satırlar
-                return line.trim() ? (
-                  <p key={index} className="mb-1">{line}</p>
+                return cleaned.trim() ? (
+                  <p key={index} className="mb-1">{cleaned}</p>
                 ) : (
                   <div key={index} className="h-2"></div>
                 );

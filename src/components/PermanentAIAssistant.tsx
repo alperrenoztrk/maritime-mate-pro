@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageDisplayName } from "@/services/aiClient";
+import { stripMarkdown } from "@/utils/cleanText";
 
 export const PermanentAIAssistant = () => {
   const { currentLanguage } = useLanguage();
@@ -326,7 +327,7 @@ Detaylı bir soru sorun, size özel hesaplama ve açıklamalar sunayım!
               Uzman Yanıtı:
             </h4>
             <div className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-              {aiResponse}
+              {stripMarkdown(aiResponse)}
             </div>
           </div>
         )}

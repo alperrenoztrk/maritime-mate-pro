@@ -7,6 +7,7 @@ import type { LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { stripMarkdown } from "@/utils/cleanText";
 
 // UI string translations for all 25 supported languages
 const UI_TRANSLATIONS: Record<string, {
@@ -462,7 +463,7 @@ MANDATORY FORMAT RULES:
                     className="whitespace-pre-wrap text-sm text-foreground leading-relaxed notranslate"
                     translate="no"
                   >
-                    {response}
+                    {stripMarkdown(response)}
                   </div>
                 </div>
               </CardContent>
