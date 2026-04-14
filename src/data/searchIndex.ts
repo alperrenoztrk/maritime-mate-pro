@@ -24,6 +24,7 @@ export const searchIndex: SearchItem[] = [
   { title: "COLREG Sunumu", path: "/colreg", category: "Seyir", keywords: ["deniz trafik", "kural", "çatışma"] },
   
   // Stabilite
+  { title: "Stabilite Hesaplamaları", path: "/stability/calculations", category: "Stabilite", keywords: ["denge", "GM", "KG"] },
   { title: "GM Hesaplama", path: "/stability/gm", category: "Stabilite", keywords: ["metacentric height", "metacentre"] },
   { title: "GZ Eğrisi", path: "/stability/gz-curve", category: "Stabilite", keywords: ["cross curve", "righting lever"] },
   { title: "GZ-IMO Kriterleri", path: "/stability/gz-imo", category: "Stabilite", keywords: ["IMO criteria"] },
@@ -34,6 +35,10 @@ export const searchIndex: SearchItem[] = [
   { title: "Rüzgâr-Hava Kriteri", path: "/stability/wind-weather", category: "Stabilite", keywords: ["weather criterion", "severe wind"] },
   { title: "IMO Kriterleri", path: "/stability/imo-criteria", category: "Stabilite", keywords: ["IMO A.749"] },
   { title: "Kesme-Bükme Momentleri", path: "/stability/shearing-bending", category: "Stabilite", keywords: ["shearing force", "bending moment"] },
+  { title: "Stabilite Kuralları", path: "/stability/rules", category: "Stabilite" },
+  { title: "Stabilite Formülleri", path: "/stability/formulas", category: "Stabilite" },
+  { title: "Stabilite Quiz", path: "/stability/quiz", category: "Stabilite" },
+  { title: "Stabilite Asistanı", path: "/stability/assistant", category: "Stabilite", keywords: ["AI", "yapay zeka"] },
   { title: "Pratik Stabilite", path: "/stability/practical", category: "Stabilite" },
   { title: "FWA Hesaplama", path: "/stability/practical/fwa", category: "Stabilite", keywords: ["fresh water allowance", "tatlı su"] },
   { title: "Tank Hesabı", path: "/stability/practical/tank", category: "Stabilite" },
@@ -48,6 +53,7 @@ export const searchIndex: SearchItem[] = [
   { title: "Meteoroloji Asistanı", path: "/meteorology/assistant", category: "Meteoroloji" },
 
   // Kargo
+  { title: "Kargo Hesaplamaları", path: "/hub/cargo", category: "Kargo", keywords: ["yük"] },
   { title: "Draft Survey", path: "/cargo/calculations/draft-survey", category: "Kargo", keywords: ["draft", "su çekimi"] },
   { title: "Draft Survey - Yükleme Öncesi", path: "/cargo/calculations/preloading", category: "Kargo" },
   { title: "Draft Survey - Ara Hesap", path: "/cargo/calculations/intermediate", category: "Kargo" },
@@ -56,6 +62,10 @@ export const searchIndex: SearchItem[] = [
   { title: "Draft Survey - Balast", path: "/cargo/calculations/ballast", category: "Kargo" },
   { title: "Draft Survey - Yoğunluk", path: "/cargo/calculations/density", category: "Kargo" },
   { title: "Draft Survey - Bunker", path: "/cargo/calculations/bunker", category: "Kargo" },
+  { title: "Kargo Formülleri", path: "/cargo/formulas", category: "Kargo" },
+  { title: "Kargo Kuralları", path: "/cargo/rules", category: "Kargo" },
+  { title: "Kargo Asistanı", path: "/cargo/assistant", category: "Kargo" },
+  { title: "Kargo Quiz", path: "/cargo/quiz", category: "Kargo" },
   { title: "Kargo Konu Anlatımları", path: "/lessons/cargo/topics", category: "Kargo" },
   
   // Güvenlik

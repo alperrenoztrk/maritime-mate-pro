@@ -8,8 +8,10 @@ import {
   Compass,
   Leaf,
   ListChecks,
+  Package,
   Radio,
   Shield,
+  Ship,
   Sigma,
   TrendingUp,
   Wrench,
@@ -24,7 +26,9 @@ export type SectionId =
   | "quiz";
 
 export type CategoryId =
+  | "stability"
   | "navigation"
+  | "cargo"
   | "meteorology"
   | "seamanship"
   | "safety"
@@ -263,6 +267,59 @@ const machineCategories: CategoryConfig[] = machineTopics.map((topic) => {
 
 export const calculationCategories: CategoryConfig[] = [
   {
+    id: "stability",
+    title: "Stabilite",
+    subtitle: "",
+    icon: Ship,
+    accent: "from-blue-500 via-indigo-500 to-blue-600",
+    badge: "Çekirdek",
+    status: "live",
+    ctaLabel: "Stabilite merkezine git",
+    sections: [
+      {
+        id: "calculations",
+        label: "Hesaplamalar",
+        description: "GZ, GM, ağırlık kaydırma ve FWA araçları",
+        status: "live",
+        badge: "Hazır",
+        ctaLabel: "Hesaplamaları aç",
+        href: "/stability/calculations",
+      },
+      {
+        id: "formulas",
+        label: "Formüller",
+        description: "Tüm stabilite formülleri ve açıklamaları",
+        status: "live",
+        badge: "Hazır",
+        href: "/stability/formulas",
+      },
+      {
+        id: "rules",
+        label: "Kurallar",
+        description: "IMO, IS Code ve klas limitleri",
+        status: "live",
+        badge: "Hazır",
+        href: "/stability/rules",
+      },
+      {
+        id: "assistant",
+        label: "Asistan",
+        description: "Stabilite danışmanı ve AI destekli öneriler",
+        status: "live",
+        badge: "Hazır",
+        href: "/stability/assistant",
+      },
+      {
+        id: "quiz",
+        label: "Quiz",
+        description: "Sınav soruları ve anlık geri bildirimler",
+        status: "live",
+        badge: "Hazır",
+        href: "/stability/quiz",
+      },
+    ],
+  },
+  {
     id: "navigation",
     title: "Seyir",
     subtitle: "",
@@ -312,6 +369,58 @@ export const calculationCategories: CategoryConfig[] = [
         status: "live",
         badge: "Hazır",
         href: "/navigation/quiz",
+      },
+    ],
+  },
+  {
+    id: "cargo",
+    title: "Yük Elleçleme ve İstifleme",
+    subtitle: "",
+    icon: Package,
+    accent: "from-amber-500 via-orange-500 to-rose-500",
+    badge: "Operasyon",
+    status: "live",
+    ctaLabel: "Kargo menüsü",
+    sections: [
+      {
+        id: "calculations",
+        label: "Hesaplamalar",
+        description: "Draft survey ve yükleme hesap modülleri",
+        status: "live",
+        badge: "Hazır",
+        href: "/cargo/calculations",
+      },
+      {
+        id: "formulas",
+        label: "Formüller",
+        description: "Standart draft survey formülleri ve örnekler",
+        status: "live",
+        badge: "Hazır",
+        href: "/cargo/formulas",
+      },
+      {
+        id: "rules",
+        label: "Kurallar",
+        description: "IMSBC, Grain Rules ve terminal prosedürleri",
+        status: "live",
+        badge: "Hazır",
+        href: "/cargo/rules",
+      },
+      {
+        id: "assistant",
+        label: "Asistan",
+        description: "AI ile yükleme sırası ve trim danışmanlığı",
+        status: "live",
+        badge: "Hazır",
+        href: "/cargo/assistant",
+      },
+      {
+        id: "quiz",
+        label: "Quiz",
+        description: "Draft survey ve yük hesap soruları",
+        status: "live",
+        badge: "Hazır",
+        href: "/cargo/quiz",
       },
     ],
   },

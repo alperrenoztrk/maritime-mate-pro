@@ -14,6 +14,7 @@ import {
   LifeBuoy,
   Navigation,
   Ruler,
+  Scale,
   Search,
   Ship,
   Star,
@@ -50,8 +51,10 @@ const FILTERS: { key: Category; label: string }[] = [
 
 const QUICK_TOOLS: CalcTool[] = [
   { id: "draft", title: "Draft Hesabı", desc: "Draft survey hesapları", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "trim", title: "Stabilite / Trim", desc: "Trim ve stabilite analizi", icon: Scale, to: "/hub/stability", category: "stability" },
   { id: "fuel", title: "Yakıt Tüketimi", desc: "Sefer yakıt hesaplama", icon: Flame, to: "/machine-calculations", category: "machine" },
   { id: "voyage", title: "Sefer Süresi", desc: "ETA ve süre hesabı", icon: Timer, to: "/navigation", category: "navigation" },
+  { id: "cargo", title: "Yük Dağılımı", desc: "Yük planı ve dağılım", icon: Layers, to: "/cargo/calculations", category: "stability" },
   { id: "converter", title: "Birim Dönüştürücü", desc: "Denizcilik birimleri", icon: Zap, to: "/converter", category: "converter" },
 ];
 
@@ -65,6 +68,7 @@ const CATEGORIZED: { title: string; cat: Category; items: CalcTool[] }[] = [
       { id: "ballast", title: "Balast Hesabı", desc: "Balast tankı hesaplamaları", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
       { id: "density", title: "Yoğunluk Düzeltme", desc: "Su yoğunluğu düzeltmeleri", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
       { id: "bunker", title: "Bunker Survey", desc: "Yakıt alım ölçümleri", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
+      { id: "stability-calc", title: "Stabilite Hesapları", desc: "GM, KG, meyil açısı", icon: Scale, to: "/stability/calculations", category: "stability" },
       { id: "tank", title: "Tank Hesapları", desc: "Tank kapasiteleri ve hacim", icon: Anchor, to: "/tank", category: "stability" },
       { id: "imo-criteria", title: "IMO Kriterleri", desc: "Stabilite onay kriterleri", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
     ],
@@ -105,6 +109,7 @@ const CATEGORIZED: { title: string; cat: Category; items: CalcTool[] }[] = [
     items: [
       { id: "unit-conv", title: "Birim Dönüştürücü", desc: "Uzunluk, ağırlık, hacim", icon: Zap, to: "/converter", category: "converter" },
       { id: "nav-formulas", title: "Navigasyon Formülleri", desc: "Seyir formül referansları", icon: Compass, to: "/navigation/formulas", category: "converter" },
+      { id: "stab-formulas", title: "Stabilite Formülleri", desc: "Stabilite formül referansları", icon: Scale, to: "/stability/formulas", category: "converter" },
       { id: "cargo-formulas", title: "Draft Survey Std.", desc: "Draft survey standart formüller", icon: Ruler, to: "/cargo/formulas", category: "converter" },
     ],
   },
