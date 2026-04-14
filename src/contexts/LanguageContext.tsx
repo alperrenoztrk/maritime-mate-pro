@@ -21,8 +21,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const DEFAULT_LANGUAGE = 'en';
 const SOURCE_LANGUAGE = 'tr';
 
-// Supported languages - 25 languages
-const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
+// Supported languages - 25 languages (sorted by international alphabetical order / English name)
+const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'tr', name: 'Turkish', displayName: 'Türkçe' },
   { language: 'en', name: 'English', displayName: 'English' },
   { language: 'es', name: 'Spanish', displayName: 'Español' },
@@ -49,6 +49,9 @@ const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'bg', name: 'Bulgarian', displayName: 'Български' },
   { language: 'uk', name: 'Ukrainian', displayName: 'Українська' }
 ];
+const SUPPORTED_LANGUAGES: SupportedLanguage[] = [...BASE_SUPPORTED_LANGUAGES].sort((a, b) =>
+  a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+);
 
 interface LanguageProviderProps {
   children: ReactNode;
