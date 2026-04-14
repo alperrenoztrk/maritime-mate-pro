@@ -51,7 +51,7 @@ const FILTERS: { key: Category; label: string }[] = [
 
 const QUICK_TOOLS: CalcTool[] = [
   { id: "draft", title: "Draft Hesabı", desc: "Draft survey hesapları", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "trim", title: "Stabilite / Trim", desc: "Trim ve stabilite analizi", icon: Scale, to: "/hub/stability", category: "stability" },
+  { id: "trim", title: "Stabilite / Trim", desc: "Trim ve stabilite analizi", icon: Scale, to: "/lessons", category: "stability" },
   { id: "fuel", title: "Yakıt Tüketimi", desc: "Sefer yakıt hesaplama", icon: Flame, to: "/machine-calculations", category: "machine" },
   { id: "voyage", title: "Sefer Süresi", desc: "ETA ve süre hesabı", icon: Timer, to: "/navigation", category: "navigation" },
   { id: "cargo", title: "Yük Dağılımı", desc: "Yük planı ve dağılım", icon: Layers, to: "/cargo/calculations", category: "stability" },

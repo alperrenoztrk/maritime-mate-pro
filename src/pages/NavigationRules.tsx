@@ -122,7 +122,7 @@ export default function NavigationRulesPage() {
       <div className="min-h-screen bg-background px-4 pb-24 pt-6">
         <div className="mx-auto max-w-lg space-y-4">
           <div className="flex items-center gap-3">
-            <Link to="/hub/navigation">
+            <Link to="/lessons">
               <Button variant="ghost" size="icon" className="h-8 w-8">
                 <ArrowLeft className="h-4 w-4" />
               </Button>
