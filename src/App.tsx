@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import { AskAIPopup } from "@/components/AskAIPopup";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, useParams } from "react-router-dom";
@@ -361,6 +362,7 @@ const App = () => {
             <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
               <DensityProvider>
                 <Toaster />
+                <AskAIPopup />
                 <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
                   <BrowserRouter>
                     <AnimatedRoutes />
