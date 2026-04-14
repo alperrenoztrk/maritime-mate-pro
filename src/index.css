@@ -1825,6 +1825,8 @@ body {
 /* Hide all Google Translate UI elements (widget icon, tooltip, balloon) */
 .goog-te-gadget,
 .goog-te-gadget-icon,
+.goog-te-gadget-simple,
+.goog-logo-link,
 .goog-te-gadget span,
 .goog-te-gadget a,
 #goog-gt-tt,
@@ -1832,10 +1834,15 @@ body {
 .goog-tooltip-table,
 .goog-te-balloon-frame,
 .goog-te-spinner,
+.skiptranslate,
+iframe.skiptranslate,
+iframe[src*="translate.google"],
+[class*="VIpgJd-ZVi9od-"],
 .VIpgJd-ZVi9od-xl56Ob-OWXEXe,
 .VIpgJd-ZVi9od-l4eHX-hSRGPd,
 .VIpgJd-ZVi9od-SmfZ-hSRGPd,
 .VIpgJd-ZVi9od-ORHb-OEVmcd,
+#google_translate_element,
 div[id="google_translate_element"] {
   display: none !important;
   visibility: hidden !important;
