@@ -6,6 +6,7 @@ import { MessageCircle, Send, Loader2 } from "lucide-react";
 import { callNavigationAssistant } from "@/services/aiClient";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { stripMarkdown } from "@/utils/cleanText";
 
 interface NavigationAssistantProps {
   variant?: 'floating' | 'inline';
@@ -236,7 +237,7 @@ Lütfen hangi hesaplamayı yapmak istediğinizi belirtin:
                       ? 'bg-primary text-primary-foreground' 
                       : 'bg-muted'
                   }`}>
-                    <pre className="whitespace-pre-wrap text-sm font-sans">{message.content}</pre>
+                    <pre className="whitespace-pre-wrap text-sm font-sans">{stripMarkdown(message.content)}</pre>
                   </div>
                 </div>
               ))}

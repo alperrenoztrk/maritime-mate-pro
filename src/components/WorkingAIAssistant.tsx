@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageDisplayName } from "@/services/aiClient";
+import { stripMarkdown } from "@/utils/cleanText";
 
 export const WorkingAIAssistant = () => {
   const { currentLanguage } = useLanguage();
@@ -405,7 +406,7 @@ CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLang
                   Uzman Yanıtı:
                 </h4>
                 <div className="text-sm text-info-muted-foreground whitespace-pre-wrap leading-relaxed">
-                  {aiResponse}
+                  {stripMarkdown(aiResponse)}
                 </div>
               </CardContent>
             </Card>

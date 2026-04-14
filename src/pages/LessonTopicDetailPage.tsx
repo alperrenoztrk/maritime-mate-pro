@@ -1,6 +1,7 @@
 import { ChevronLeft, Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
+import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { getTopicContentsByCategory } from "@/data/topicContents";
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
@@ -119,7 +120,7 @@ export default function LessonTopicDetailPage() {
 
       <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-          <p className="text-sm leading-relaxed text-foreground/90">{content.introduction}</p>
+          <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
         </div>
 
         {content.sections.map((section, index) => {
@@ -172,7 +173,7 @@ export default function LessonTopicDetailPage() {
                 )
               }}
             >
-              {resolvedContent}
+              {stripDollarSigns(resolvedContent)}
             </ReactMarkdown>
 
             {section.bulletPoints && section.bulletPoints.length > 0 && (
@@ -180,7 +181,7 @@ export default function LessonTopicDetailPage() {
                 {section.bulletPoints.map((point, pointIndex) => (
                   <li key={`${section.title}-point-${pointIndex}`} className="flex items-start gap-3 text-sm text-foreground/80">
                     <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    <span>{point}</span>
+                    <span>{stripMarkdown(point)}</span>
                   </li>
                 ))}
               </ul>
@@ -212,7 +213,7 @@ export default function LessonTopicDetailPage() {
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
                     {index + 1}
                   </span>
-                  <span>{point}</span>
+                  <span>{stripMarkdown(point)}</span>
                 </li>
               ))}
             </ul>

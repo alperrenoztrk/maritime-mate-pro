@@ -1821,3 +1821,23 @@ body > .skiptranslate {
 body {
   top: 0 !important;
 }
+
+/* Hide all Google Translate UI elements (widget icon, tooltip, balloon) */
+.goog-te-gadget,
+.goog-te-gadget-icon,
+.goog-te-gadget span,
+.goog-te-gadget a,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip-table,
+.goog-te-balloon-frame,
+.goog-te-spinner,
+.VIpgJd-ZVi9od-xl56Ob-OWXEXe,
+.VIpgJd-ZVi9od-l4eHX-hSRGPd,
+.VIpgJd-ZVi9od-SmfZ-hSRGPd,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+div[id="google_translate_element"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
