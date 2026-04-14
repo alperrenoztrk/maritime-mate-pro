@@ -10,7 +10,7 @@ export default function StabilityFormulasPage() {
     <MobileLayout>
       <div className="space-y-4" data-no-translate>
         <div className="flex items-center justify-between">
-          <Link to="/hub/stability">
+          <Link to="/lessons">
             <Button variant="ghost" size="sm" className="gap-2">
               <ArrowLeft className="h-4 w-4" />
               Stabilite

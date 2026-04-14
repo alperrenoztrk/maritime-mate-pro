@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -146,7 +146,7 @@ import ExamPreparationPage from "./pages/ExamPreparationPage";
 
 import WidgetPage from "./pages/WidgetPage";
 import MaritimeNews from "./pages/MaritimeNews";
-import ModuleSectionsPage from "./pages/ModuleSectionsPage";
+
 import CrewRoleDetailPage from "./pages/CrewRoleDetail";
 import LessonTopicsPage from "./pages/LessonTopicsPage";
 import LessonTopicDetailPage from "./pages/LessonTopicDetailPage";
@@ -159,13 +159,7 @@ import SeamanshipTopicsPage from "./pages/SeamanshipTopicsPage";
 import SafetyTopicsPage from "./pages/SafetyTopicsPage";
 import EnvironmentTopicsPage from "./pages/EnvironmentTopicsPage";
 import EconomicsTopicsPage from "./pages/EconomicsTopicsPage";
-import type { CategoryId } from "@/data/calculationCenterConfig";
 const queryClient = new QueryClient();
-
-const HubCategoryPage = () => {
-  const { categoryId } = useParams<{ categoryId: CategoryId }>();
-  return <ModuleSectionsPage categoryId={(categoryId ?? "stability") as CategoryId} />;
-};
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -217,8 +211,6 @@ const AnimatedRoutes = () => {
         <Route path="/ship-tasks/:taskSlug" element={<PageTransition><ShipTaskDetailPage /></PageTransition>} />
         <Route path="/ship-operations" element={<PageTransition><ShipOperationsPage /></PageTransition>} />
         <Route path="/ship-operations/:shipType" element={<PageTransition><ShipOperationsDetail /></PageTransition>} />
-        <Route path="/hub" element={<PageTransition><CalculationsMenu /></PageTransition>} />
-        <Route path="/hub/:categoryId" element={<PageTransition><HubCategoryPage /></PageTransition>} />
         <Route path="/crew/:roleSlug" element={<PageTransition><CrewRoleDetailPage /></PageTransition>} />
         <Route path="/bridge/:deviceId" element={<PageTransition><BridgeDeviceDetailPage /></PageTransition>} />
         <Route path="/passage-plan" element={<PageTransition><PassagePlanPage /></PageTransition>} />
