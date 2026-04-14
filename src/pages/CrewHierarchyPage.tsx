@@ -44,7 +44,7 @@ export default function CrewHierarchyPage() {
         </header>
 
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
-          <div className="grid gap-3 md:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-3">
             {crewHierarchy.map((group) => (
               <div
                 key={group.department}

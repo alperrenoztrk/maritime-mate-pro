@@ -3,6 +3,7 @@ import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
 import { ArrowLeft, ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { useState } from "react";
 
 export default function CrewRoleDetailPage() {
@@ -23,17 +24,17 @@ export default function CrewRoleDetailPage() {
           </p>
         </div>
         <Link
-          to="/hub"
+          to="/crew"
           className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
         >
-          <ArrowLeft className="h-4 w-4" /> Hesaplama Merkezine Dön
+          <ArrowLeft className="h-4 w-4" /> Gemi Personeline Dön
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 py-10 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 pb-24 py-10 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute left-10 top-10 h-36 w-36 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-20 right-16 h-44 w-44 rounded-full bg-indigo-500/10 blur-3xl" />
@@ -43,7 +44,7 @@ export default function CrewRoleDetailPage() {
         {/* Navigation */}
         <div className="flex flex-wrap items-center gap-3">
           <Link
-            to="/hub"
+            to="/crew"
             className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground backdrop-blur transition hover:border-primary/40 hover:bg-card"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -83,7 +84,7 @@ export default function CrewRoleDetailPage() {
             </p>
           </div>
           <Link
-            to="/hub"
+            to="/crew"
             className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary transition hover:-translate-y-0.5 hover:border-primary/60"
           >
             Tüm Roller
@@ -91,6 +92,7 @@ export default function CrewRoleDetailPage() {
           </Link>
         </div>
       </div>
+      <BottomNavigation />
     </div>
   );
 }
