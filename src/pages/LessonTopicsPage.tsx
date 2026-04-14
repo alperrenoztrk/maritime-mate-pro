@@ -55,8 +55,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Hakiki kuzey (True)", hasContent: true },
           { title: "Manyetik kuzey", hasContent: true },
           { title: "Dead Reckoning and Estimated Position (DR & EP)", hasContent: true },
-          { title: "Rota hız ve mesafe ilişkisi" },
-          { title: "Zaman – mesafe – hız bağıntısı" }
+          { title: "Rota hız ve mesafe ilişkisi", hasContent: true },
+          { title: "Zaman – mesafe – hız bağıntısı", hasContent: true }
         ]
       },
       {
@@ -66,10 +66,10 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Deniz haritasının yapısı", hasContent: true },
           { title: "Harita ölçeği", hasContent: true },
           { title: "Mercator projeksiyonu", hasContent: true },
-          { title: "Harita datum" },
+          { title: "Harita datum", hasContent: true },
           { title: "Harita sembolleri ve kısaltmalar", hasContent: true },
-          { title: "Mesafe ölçümü" },
-          { title: "Rota ölçümü" },
+          { title: "Mesafe ölçümü", hasContent: true },
+          { title: "Rota ölçümü", hasContent: true },
           { title: "Mevki koyma", hasContent: true },
           { title: "Harita düzeltmeleri (Notice to Mariners)", hasContent: true }
         ]
@@ -78,13 +78,13 @@ const topicsData: Record<string, TopicContent> = {
         title: "Düzlem Seyir (Plane Sailing)",
         description: "Kısa mesafeler için düzlem geometri varsayımına dayalı seyir hesapları",
         subTopics: [
-          { title: "Düzlem seyir varsayımı" },
-          { title: "DLat (Enlem değişimi)" },
+          { title: "Düzlem seyir varsayımı", hasContent: true },
+          { title: "DLat (Enlem değişimi)", hasContent: true },
           { title: "Departure (Doğu–batı mesafesi)", hasContent: true },
-          { title: "Kurs – mesafe hesapları" },
-          { title: "Enlem ve boylam değişimi" },
-          { title: "Akıntısız seyir hesapları" },
-          { title: "Running fix (klasik)" }
+          { title: "Kurs – mesafe hesapları", hasContent: true },
+          { title: "Enlem ve boylam değişimi", hasContent: true },
+          { title: "Akıntısız seyir hesapları", hasContent: true },
+          { title: "Running fix (klasik)", hasContent: true }
         ]
       },
       {
@@ -98,25 +98,25 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Inverse Problem of Mean Latitude Sailing", hasContent: true },
           { title: "Validity and Limitations of Mean Latitude Sailing", hasContent: true },
           { title: "Limitations and Applicability of Mean Latitude Sailing", hasContent: true },
-          { title: "Düzlem seyirin sınırları" },
-          { title: "Ortalama enlem kavramı" },
-          { title: "Departure – boylam ilişkisi" },
+          { title: "Düzlem seyirin sınırları", hasContent: true },
+          { title: "Ortalama enlem kavramı", hasContent: true },
+          { title: "Departure – boylam ilişkisi", hasContent: true },
           { title: "Orta Enlemde Seyir Hesaplamaları", hasContent: true },
-          { title: "Boylam değişimi hesapları" },
-          { title: "İşaret Değişimi (Sign Change)" },
-          { title: "Sayısal orta enlem seyri uygulamaları" }
+          { title: "Boylam değişimi hesapları", hasContent: true },
+          { title: "İşaret Değişimi (Sign Change)", hasContent: true },
+          { title: "Sayısal orta enlem seyri uygulamaları", hasContent: true }
         ]
       },
       {
         title: "Akıntı ve Rüzgâr Hesapları",
         description: "Akıntı ve rüzgâr etkilerinin seyir üzerindeki hesaplamaları",
         subTopics: [
-          { title: "Set ve drift" },
-          { title: "Akıntı vektörleri" },
-          { title: "Heading – COG ilişkisi" },
-          { title: "STW – SOG ilişkisi" },
-          { title: "Akıntılı seyir hesapları" },
-          { title: "Vektör üçgenleri" },
+          { title: "Set ve drift", hasContent: true },
+          { title: "Akıntı vektörleri", hasContent: true },
+          { title: "Heading – COG ilişkisi", hasContent: true },
+          { title: "STW – SOG ilişkisi", hasContent: true },
+          { title: "Akıntılı seyir hesapları", hasContent: true },
+          { title: "Vektör üçgenleri", hasContent: true },
           { title: "Course to Steer (CTS) with Current", hasContent: true }
         ]
       },
@@ -124,9 +124,9 @@ const topicsData: Record<string, TopicContent> = {
         title: "Klasik (Terrestrial) Seyir",
         description: "Kerteriz, transit ve kıyı seyir teknikleri",
         subTopics: [
-          { title: "Kerteriz türleri" },
-          { title: "Kerterizle mevki tayini" },
-          { title: "Mesafe + kerteriz fix" },
+          { title: "Kerteriz türleri", hasContent: true },
+          { title: "Kerterizle mevki tayini", hasContent: true },
+          { title: "Mesafe + kerteriz fix", hasContent: true },
           { title: "Fix by Cross Bearings (Kerterizlerle Mevki Tayini)", hasContent: true },
           { title: "Fix by Cross Bearings (Kesişen Kerterizlerle Mevki Tayini)", hasContent: true },
           { title: "Running Fix (Zamana Bağlı Kerterizle Mevki Tayini)", hasContent: true },
@@ -137,24 +137,24 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Distance Off by Vertical Angle", hasContent: true },
           { title: "Distance Off by Horizontal Angle", hasContent: true },
           { title: "Fix by Horizontal Angles", hasContent: true },
-          { title: "Running fix (klasik)" },
-          { title: "Paralel indeks" },
-          { title: "Kıyı seyri teknikleri" }
+          { title: "Running fix (klasik)", hasContent: true },
+          { title: "Paralel indeks", hasContent: true },
+          { title: "Kıyı seyri teknikleri", hasContent: true }
         ]
       },
       {
         title: "Büyük Daire ve Rhumb Line Seyri",
         description: "Uzun mesafe okyanus seyri için büyük daire ve loxodrom rotaları",
         subTopics: [
-          { title: "Büyük daire kavramı" },
-          { title: "Büyük daire geometrisi" },
-          { title: "Büyük daire mesafesi" },
-          { title: "Büyük daire başlangıç kursu" },
+          { title: "Büyük daire kavramı", hasContent: true },
+          { title: "Büyük daire geometrisi", hasContent: true },
+          { title: "Büyük daire mesafesi", hasContent: true },
+          { title: "Büyük daire başlangıç kursu", hasContent: true },
           { title: "Büyük Daire Vertex (En Yüksek Enlem) Hesaplamaları", hasContent: true },
-          { title: "Rhumb line (loxodrom)" },
-          { title: "Mercator – rhumb line ilişkisi" },
-          { title: "Composite (bileşik) rota" },
-          { title: "Uzun okyanus seyri uygulamaları" }
+          { title: "Rhumb line (loxodrom)", hasContent: true },
+          { title: "Mercator – rhumb line ilişkisi", hasContent: true },
+          { title: "Composite (bileşik) rota", hasContent: true },
+          { title: "Uzun okyanus seyri uygulamaları", hasContent: true }
         ]
       },
       {
@@ -180,80 +180,80 @@ const topicsData: Record<string, TopicContent> = {
         title: "Elektronik Seyir",
         description: "GPS, Radar ve ECDIS sistemleri ile modern navigasyon",
         subTopics: [
-          { title: "GPS prensibi" },
-          { title: "Trilaterasyon" },
-          { title: "GPS doğruluğu" },
+          { title: "GPS prensibi", hasContent: true },
+          { title: "Trilaterasyon", hasContent: true },
+          { title: "GPS doğruluğu", hasContent: true },
           { title: "GPS sınırlamaları ve operasyonel riskler", hasContent: true },
-          { title: "HDOP" },
-          { title: "PDOP" },
-          { title: "Radar prensibi" },
-          { title: "Radar ile mevki tayini" },
-          { title: "Paralel indeks (radar)" },
-          { title: "ECDIS" },
-          { title: "Rota planlama" },
-          { title: "XTE" },
-          { title: "ETA" },
-          { title: "Turn radius" },
-          { title: "Elektronik seyirde çapraz kontrol" },
-          { title: "GPS’in seyirde kullanımı ve sensör entegrasyonu", hasContent: true }
+          { title: "HDOP", hasContent: true },
+          { title: "PDOP", hasContent: true },
+          { title: "Radar prensibi", hasContent: true },
+          { title: "Radar ile mevki tayini", hasContent: true },
+          { title: "Paralel indeks (radar)", hasContent: true },
+          { title: "ECDIS", hasContent: true },
+          { title: "Rota planlama", hasContent: true },
+          { title: "XTE", hasContent: true },
+          { title: "ETA", hasContent: true },
+          { title: "Turn radius", hasContent: true },
+          { title: "Elektronik seyirde çapraz kontrol", hasContent: true },
+          { title: "GPS'in seyirde kullanımı ve sensör entegrasyonu", hasContent: true }
         ]
       },
       {
         title: "Tides & Tidal Navigation",
         description: "Gelgit hesapları ve gel-git akıntıları",
         subTopics: [
-          { title: "Gelgitin fiziksel mantığı" },
-          { title: "Spring tide – Neap tide" },
-          { title: "Chart datum (LAT)" },
-          { title: "Tidal table okuma" },
-          { title: "Height of tide hesapları" },
-          { title: "12'ler kuralı" },
-          { title: "İnterpolasyon" },
-          { title: "Tidal stream" },
-          { title: "Set – drift" },
-          { title: "UKC + gelgit hesapları" },
-          { title: "Tidal window (liman giriş zamanı)" }
+          { title: "Gelgitin fiziksel mantığı", hasContent: true },
+          { title: "Spring tide – Neap tide", hasContent: true },
+          { title: "Chart datum (LAT)", hasContent: true },
+          { title: "Tidal table okuma", hasContent: true },
+          { title: "Height of tide hesapları", hasContent: true },
+          { title: "12'ler kuralı", hasContent: true },
+          { title: "İnterpolasyon", hasContent: true },
+          { title: "Tidal stream", hasContent: true },
+          { title: "Set – drift", hasContent: true },
+          { title: "UKC + gelgit hesapları", hasContent: true },
+          { title: "Tidal window (liman giriş zamanı)", hasContent: true }
         ]
       },
       {
         title: "Meteoroloji Bağlantılı Seyir",
         description: "Rüzgâr, dalga ve hava koşullarının seyire etkisi",
         subTopics: [
-          { title: "Rüzgârın gemiye etkisi" },
+          { title: "Rüzgârın gemiye etkisi", hasContent: true },
           { title: "Leeway", hasContent: true },
-          { title: "Leeway kavramı" },
-          { title: "Leeway hesapları" },
-          { title: "Rüzgâr + akıntı + gemi hareketi" },
-          { title: "Dalga etkileri" },
-          { title: "Heavy weather navigation" },
-          { title: "Fırtınada rota ve hız kararı" }
+          { title: "Leeway kavramı", hasContent: true },
+          { title: "Leeway hesapları", hasContent: true },
+          { title: "Rüzgâr + akıntı + gemi hareketi", hasContent: true },
+          { title: "Dalga etkileri", hasContent: true },
+          { title: "Heavy weather navigation", hasContent: true },
+          { title: "Fırtınada rota ve hız kararı", hasContent: true }
         ]
       },
       {
         title: "Passage Planning & Seyir Emniyeti",
         description: "IMO standartlarına uygun seyir planlaması ve köprüüstü yönetimi",
         subTopics: [
-          { title: "IMO A.893(21)" },
-          { title: "Appraisal" },
-          { title: "Planning" },
-          { title: "Execution" },
-          { title: "Monitoring" },
-          { title: "UKC ve squat" },
-          { title: "Bridge Resource Management (BRM)" },
-          { title: "PSC bakış açısı" }
+          { title: "IMO A.893(21)", hasContent: true },
+          { title: "Appraisal", hasContent: true },
+          { title: "Planning", hasContent: true },
+          { title: "Execution", hasContent: true },
+          { title: "Monitoring", hasContent: true },
+          { title: "UKC ve squat", hasContent: true },
+          { title: "Bridge Resource Management (BRM)", hasContent: true },
+          { title: "PSC bakış açısı", hasContent: true }
         ]
       },
       {
         title: "COLREG & Çatışma Analizleri",
         description: "Denizde çatışmadan kaçınma kuralları ve kaza analizleri",
         subTopics: [
-          { title: "COLREG temel prensipleri" },
-          { title: "Crossing" },
-          { title: "Head-on" },
-          { title: "Overtaking" },
-          { title: "Restricted visibility" },
-          { title: "Gerçek çatışma kazaları" },
-          { title: "Neden – sonuç – ihlal – önlem analizi" }
+          { title: "COLREG temel prensipleri", hasContent: true },
+          { title: "Crossing", hasContent: true },
+          { title: "Head-on", hasContent: true },
+          { title: "Overtaking", hasContent: true },
+          { title: "Restricted visibility", hasContent: true },
+          { title: "Gerçek çatışma kazaları", hasContent: true },
+          { title: "Neden – sonuç – ihlal – önlem analizi", hasContent: true }
         ]
       }
     ],
