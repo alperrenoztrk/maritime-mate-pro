@@ -159,6 +159,8 @@ import SeamanshipTopicsPage from "./pages/SeamanshipTopicsPage";
 import SafetyTopicsPage from "./pages/SafetyTopicsPage";
 import EnvironmentTopicsPage from "./pages/EnvironmentTopicsPage";
 import EconomicsTopicsPage from "./pages/EconomicsTopicsPage";
+import BetaFeaturesPage from "./pages/BetaFeaturesPage";
+import BetaWorkHoursTool from "./pages/BetaWorkHoursTool";
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
@@ -195,6 +197,8 @@ const AnimatedRoutes = () => {
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
+        <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
+        <Route path="/beta/work-hours" element={<PageTransition><BetaWorkHoursTool /></PageTransition>} />
         
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
         <Route path="/lessons/cargo/topics" element={<PageTransition><CargoTopicsPage /></PageTransition>} />
