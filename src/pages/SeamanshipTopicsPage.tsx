@@ -29,6 +29,16 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+// Gemicilik gerçekçi fotoğraflar
+import photoRopeTypes from "@/assets/seamanship/rope-types.jpg";
+import photoWireRope from "@/assets/seamanship/wire-rope.jpg";
+import photoAnchorTypes from "@/assets/seamanship/anchor-types.jpg";
+import photoAnchorChain from "@/assets/seamanship/anchor-chain.jpg";
+import photoKnotsDisplay from "@/assets/seamanship/knots-display.jpg";
+import photoShipPartsOverview from "@/assets/seamanship/ship-parts-overview.jpg";
+import photoMooringEquipment from "@/assets/seamanship/mooring-equipment.jpg";
+import photoWindlass from "@/assets/seamanship/windlass.jpg";
+
 interface SeamanshipSubTopic {
   id: string;
   title: string;
@@ -215,6 +225,7 @@ interface TopicContent {
   introduction: string;
   content: string;
   image?: string;
+  photos?: { src: string; caption: string }[];
   table?: { title: string; headers: string[]; rows: string[][] };
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
@@ -266,6 +277,9 @@ STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her s
     title: "Gemi Kısımları ve Terminolojisi",
     introduction: "Geminin yapısal elemanlarının ve bölümlerinin doğru terminoloji ile bilinmesi, güverte operasyonlarının etkin yürütülmesi için temel gereksinimdir.",
     image: "/diagrams/seamanship/gemi-kisimlari.svg",
+    photos: [
+      { src: photoShipPartsOverview, caption: "Modern dökme yük gemisi: bulbous bow, kasara, ambar kapakları, akomodasyon ve baca yapısı" },
+    ],
     content: `GEMİ ANA BÖLÜMLER:
 
 PRUVA (BOW): Geminin ön kısmıdır. Pruva formu, dalga kırma performansını belirler. Başlıca pruva tipleri: Düz pruva (vertical stem), ampul pruva (bulbous bow), clipper pruva, raker pruva. Ampul pruva, dalga direncini %5-15 oranında azaltarak yakıt tasarrufu sağlar.
@@ -437,6 +451,9 @@ Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifi
     title: "Halat Türleri ve Malzemeleri",
     introduction: "Gemilerde kullanılan halatlar, malzemelerine ve yapılarına göre sınıflandırılır; her tür farklı mekanik özelliklere ve kullanım alanlarına sahiptir.",
     image: "/diagrams/seamanship/halat-yapilari.svg",
+    photos: [
+      { src: photoRopeTypes, caption: "Yaygın halat türleri: naylon (beyaz), polipropilen (sarı), manila (kahverengi), polyester (mavi)" },
+    ],
     table: {
       title: "Halat Malzeme Karşılaştırma Tablosu",
       headers: ["Malzeme", "Özgül Ağırlık", "Uzama (%)", "Islak Dayanım", "Kullanım Alanı"],
@@ -489,6 +506,9 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
   "wire-ropes": {
     title: "Çelik Teller ve Yapıları",
     introduction: "Çelik teller, yüksek çekme dayanımı gerektiren güverte operasyonlarında kullanılır; tel yapısı, kullanım amacına göre seçilir.",
+    photos: [
+      { src: photoWireRope, caption: "6×36 IWRC çelik tel kesiti: kollar (strands) ve bağımsız tel çekirdek (IWRC) yapısı" },
+    ],
     table: {
       title: "Çelik Tel Tipleri Karşılaştırması",
       headers: ["Tip", "Telcik Sayısı", "Esneklik", "Aşınma Direnci", "Kullanım Alanı"],
@@ -582,6 +602,9 @@ ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım
   "knots-bends": {
     title: "Düğümler ve Bağlamalar (Knots & Bends)",
     introduction: "Denizcilik düğümleri, halatların belirli amaçlarla birleştirilmesi veya sabitlenmesi için kullanılan standart bağlama tekniklerdir.",
+    photos: [
+      { src: photoKnotsDisplay, caption: "Temel denizcilik düğümleri: bowline, figure-eight, clove hitch, reef knot, sheet bend, round turn & two half hitches" },
+    ],
     content: `TEMEL DÜĞÜMLER (KNOTS):
 
 Yassı Düğüm (Reef Knot / Square Knot): Aynı çaptaki iki halat ucunu birleştirmek için kullanılır. Yelken toplarken yaygın olarak uygulanır. Farklı çaptaki halatlarda güvenilir değildir; kayabilir.
@@ -711,6 +734,9 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
     title: "Demir Tipleri ve Özellikleri",
     introduction: "Gemilerde kullanılan demirler, yapılarına ve tutma kuvvetlerine göre farklı tiplerde üretilir; seçim deniz tabanı yapısına ve gemi tonajına göre yapılır.",
     image: "/diagrams/seamanship/demir-tipleri.svg",
+    photos: [
+      { src: photoAnchorTypes, caption: "Yaygın demir tipleri yan yana: Hall stockless, AC-14 high holding power, Danforth fluke, Admiralty stocked" },
+    ],
     content: `BAŞLICA DEMİR TİPLERİ:
 
 STOCKLESS ANCHOR (Patentli Demir / Hall Demiri): Ticaret gemilerinde en yaygın kullanılan tiptir. Kolları (flukes) ankasa (crown) etrafında dönebilir. Hawse pipe içinde depolanabilir. Kendi ağırlığının 3-5 katı tutma kuvveti üretir.
@@ -744,6 +770,10 @@ Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demi
     title: "Demir Zinciri ve Bağlantıları",
     introduction: "Demir zinciri, demiri gemiye bağlayan ve demirleme sırasında tutma kuvvetini artıran ağır çelik zincirdir.",
     image: "/diagrams/seamanship/zincir-isaretleme.svg",
+    photos: [
+      { src: photoAnchorChain, caption: "Stud-link demir zinciri ve renkli shackle işaretlemesi (beyaz/kırmızı/mavi); arka planda windlass" },
+      { src: photoWindlass, caption: "Demir vinci (windlass): wildcat, fren bandı, chain stopper ve hawse pipe" },
+    ],
     content: `ZİNCİR YAPISI:
 
 Demir zinciri, baklalardan (links) oluşur. Her bakla ortasında bir takviye çubuğu (stud) bulunur; bu çubuk baklanın ezilmesini ve birbirine dolaşmasını önler. Stud-link chain, ticaret gemilerinde standarttır.
@@ -956,6 +986,9 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
     title: "Palamar Halatları ve Adlandırmaları",
     introduction: "Geminin rıhtıma güvenli bağlanması için kullanılan palamar halatları, konumlarına ve görevlerine göre adlandırılır.",
     image: "/diagrams/seamanship/palamar-duzeni.svg",
+    photos: [
+      { src: photoMooringEquipment, caption: "Hidrolik palamar vinci, halat tamburu, babalar (bollards) ve kıç güverte palamar düzeni" },
+    ],
     table: {
       title: "Palamar Halatları Görev Tablosu",
       headers: ["Halat Adı", "Konum", "Görev", "Yön"],
@@ -2954,6 +2987,25 @@ export default function SeamanshipTopicsPage() {
                       className="w-full h-auto object-contain"
                       loading="lazy"
                     />
+                  </div>
+                )}
+
+                {/* Real Photographs Gallery */}
+                {currentContent.photos && currentContent.photos.length > 0 && (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {currentContent.photos.map((p, i) => (
+                      <figure key={i} className="overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                        <img
+                          src={p.src}
+                          alt={p.caption}
+                          className="w-full h-48 object-cover"
+                          loading="lazy"
+                        />
+                        <figcaption className="px-3 py-2 text-xs text-muted-foreground bg-muted/30">
+                          {p.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
                   </div>
                 )}
 
