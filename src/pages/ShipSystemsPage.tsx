@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Anchor, Compass, Wrench, Gauge, Flame, ArrowRight, Search, X } from "lucide-react";
+import { Anchor, Compass, Wrench, Gauge, Flame, Package, ArrowRight, Search, X } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { shipSystemsData } from "@/data/shipSystemsData";
@@ -45,6 +45,14 @@ const SECTIONS = [
     icon: Flame,
     to: "/ship-systems/fire-safety",
     color: "from-red-500/20 to-rose-500/10",
+  },
+  {
+    id: "cargo-systems",
+    title: "Yük Sistemleri ve Ekipmanları",
+    desc: "Kargo pompaları, COW, hatch cover, lashing, reefer plug, ramp ve cargo gear",
+    icon: Package,
+    to: "/ship-systems/cargo-systems",
+    color: "from-yellow-500/20 to-amber-500/10",
   },
 ];
 
