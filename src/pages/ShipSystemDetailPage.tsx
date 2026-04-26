@@ -105,6 +105,59 @@ export default function ShipSystemDetailPage() {
                       </div>
                     ))}
 
+                    {topic.workingPrinciple && topic.workingPrinciple.length > 0 && (
+                      <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 space-y-1">
+                        <p className="text-xs font-semibold text-primary mb-1">Çalışma Prensibi</p>
+                        {topic.workingPrinciple.map((wp, wi) => (
+                          <p key={wi} className="text-[12px] text-foreground/80 leading-relaxed">• {wp}</p>
+                        ))}
+                      </div>
+                    )}
+
+                    {topic.operation && topic.operation.length > 0 && (
+                      <div className="rounded-lg border border-border/30 bg-card/40 p-3 space-y-1">
+                        <p className="text-xs font-semibold text-foreground mb-1">Kullanım</p>
+                        {topic.operation.map((op, oi) => (
+                          <p key={oi} className="text-[12px] text-foreground/80 leading-relaxed">{oi + 1}. {op}</p>
+                        ))}
+                      </div>
+                    )}
+
+                    {topic.faults && topic.faults.length > 0 && (
+                      <div className="space-y-1.5">
+                        <p className="text-xs font-semibold text-destructive">Olası Arızalar ve Müdahale</p>
+                        <div className="overflow-x-auto rounded-lg border border-destructive/20">
+                          <table className="w-full text-xs">
+                            <thead>
+                              <tr className="bg-destructive/10">
+                                <th className="px-2 py-1.5 text-left font-medium text-destructive">Arıza</th>
+                                <th className="px-2 py-1.5 text-left font-medium text-destructive">Sebep</th>
+                                <th className="px-2 py-1.5 text-left font-medium text-destructive">Yapılacak</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {topic.faults.map((f, fi) => (
+                                <tr key={fi} className="border-t border-destructive/10 align-top">
+                                  <td className="px-2 py-1.5 text-foreground/90 font-medium">{f.fault}</td>
+                                  <td className="px-2 py-1.5 text-foreground/75">{f.cause}</td>
+                                  <td className="px-2 py-1.5 text-foreground/75">{f.action}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+
+                    {topic.precautions && topic.precautions.length > 0 && (
+                      <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 space-y-1">
+                        <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">Önlemler ve Emniyet</p>
+                        {topic.precautions.map((pc, pci) => (
+                          <p key={pci} className="text-[12px] text-foreground/80 leading-relaxed">• {pc}</p>
+                        ))}
+                      </div>
+                    )}
+
                     {topic.keyPoints.length > 0 && (
                       <div className="rounded-lg bg-muted/20 p-3 space-y-1">
                         <p className="text-xs font-semibold text-muted-foreground mb-1">Önemli Noktalar</p>
