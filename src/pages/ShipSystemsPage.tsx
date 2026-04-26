@@ -62,6 +62,14 @@ const SECTIONS = [
     to: "/ship-systems/environmental-auxiliary",
     color: "from-green-500/20 to-emerald-500/10",
   },
+  {
+    id: "gmdss-lsa",
+    title: "GMDSS ve Can Kurtarma Sistemleri",
+    desc: "GMDSS, EPIRB, SART, BNWAS, VDR, lifeboat, davit, liferaft ve rescue boat",
+    icon: Radio,
+    to: "/ship-systems/gmdss-lsa",
+    color: "from-sky-500/20 to-indigo-500/10",
+  },
 ];
 
 const SECTION_META: Record<string, { title: string; icon: typeof Anchor; color: string }> = Object.fromEntries(
