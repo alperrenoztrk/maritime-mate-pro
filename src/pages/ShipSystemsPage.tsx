@@ -54,6 +54,14 @@ const SECTIONS = [
     to: "/ship-systems/cargo-systems",
     color: "from-yellow-500/20 to-amber-500/10",
   },
+  {
+    id: "environmental-auxiliary",
+    title: "Çevre ve Yardımcı Sistemler",
+    desc: "BWMS, OWS, sewage, insinerator, HVAC, hidrofor, soğuk depo, sıkıştırılmış hava ve buhar",
+    icon: Leaf,
+    to: "/ship-systems/environmental-auxiliary",
+    color: "from-green-500/20 to-emerald-500/10",
+  },
 ];
 
 const SECTION_META: Record<string, { title: string; icon: typeof Anchor; color: string }> = Object.fromEntries(
