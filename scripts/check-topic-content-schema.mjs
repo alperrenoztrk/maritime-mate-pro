@@ -22,16 +22,20 @@ import ts from "typescript";
 
 const repoRoot = process.cwd();
 
+/**
+ * Each entry: { filePath, variableName }
+ * variableName lets us support files that re-export the map under a different
+ * identifier (e.g. fluidMechanicsTopicContents).
+ */
 const FILES = [
-  "src/pages/SeamanshipTopicsPage.tsx",
-  "src/pages/MeteorologyTopicsPage.tsx",
-  "src/pages/StabilityTopicsPage.tsx",
-  "src/pages/CargoTopicsPage.tsx",
-  "src/pages/SafetyTopicsPage.tsx",
-  "src/pages/EnvironmentTopicsPage.tsx",
-  "src/pages/EconomicsTopicsPage.tsx",
-  "src/pages/FluidMechanicsTopicsPage.tsx",
-  "src/pages/MachineTopicLessonsPage.tsx",
+  { filePath: "src/pages/SeamanshipTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/pages/MeteorologyTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/pages/StabilityTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/pages/CargoTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/pages/SafetyTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/pages/EnvironmentTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/pages/EconomicsTopicsPage.tsx", variableName: "topicContents" },
+  { filePath: "src/data/fluidMechanicsContent.ts", variableName: "fluidMechanicsTopicContents" },
 ];
 
 const REQUIRED_STRING_FIELDS = ["title", "introduction", "content"];
