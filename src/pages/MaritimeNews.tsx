@@ -581,11 +581,7 @@ const MaritimeNews = () => {
                   </div>
                 ) : selectedSummary ? (
                   <p className="text-sm leading-relaxed text-white/85">{selectedSummary}</p>
-                ) : (
-                  <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 text-sm text-white/60">
-                    Bu haber için içerik bulunamadı.
-                  </div>
-                )}
+                ) : null}
               </div>
 
               {/* Actions */}

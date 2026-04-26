@@ -1,86 +1,69 @@
-## Hedef
-1. Gemi Operasyonları kart listesinde **emoji yerine her gemi tipinin gerçek fotoğrafı** gözüksün (Konteyner, Ro-Ro, Tanker, Dökme, Yolcu).
-2. Her gemi tipinin **Güverte ve Makine** sekmelerindeki ~150 operasyon başlığı için **uzun, detaylı içerik** açılsın (basit liste yerine açılabilir kartlar).
+# Yapay Zeka İzini Minimuma İndirme Planı
 
----
+Amaç: Uygulamanın "AI tarafından üretilmiş / hazırlanıyor / yakında / asistan" hissi veren tüm yüzey öğelerini sadeleştirmek. AI özellikleri kalmaya devam edecek, ama **görsel ve dilsel iz** denizcilik referans kitabı tonuna çekilecek.
 
-## 1. Gerçek Gemi Fotoğrafları
+## 1) "İçerik yok / İçerik hazırlanıyor / Yakında" yazılarının kaldırılması
 
-5 gemi tipi için yüksek kaliteli, gerçekçi görseller AI ile (`google/gemini-3.1-flash-image-preview`) üretilecek:
-- `src/assets/ships/container-ship.jpg` — büyük konteyner gemisi, denizde, yandan görünüm
-- `src/assets/ships/roro-ship.jpg` — Ro-Ro gemisi, rampa açık, liman
-- `src/assets/ships/tanker-ship.jpg` — ham petrol tankeri, manifold görünür
-- `src/assets/ships/bulk-carrier.jpg` — dökme yük gemisi, ambar kapakları
-- `src/assets/ships/passenger-ship.jpg` — kruvaziyer/yolcu gemisi
+Bu ifadeler kullanıcıya "burayı AI dolduracak, henüz boş" hissi veriyor. Kaldırılacak / yeniden yazılacak yerler:
 
-`shipOperationsData.ts` içine `image` alanı eklenecek. `ShipOperationsPage.tsx` kartlarında emoji kutusu yerine 64×64 yuvarlak köşeli foto thumbnail; `ShipOperationsDetail.tsx` başlığında küçük thumbnail veya hero kullanılacak (emoji fallback olarak kalır).
+- `src/pages/LessonTopicDetailPage.tsx` (satır 86–91): "Bu konu başlığı için içerik hazırlanmaktadır… İçerik hazırlanıyor" placeholder'ı → konu için **gerçek özet + kaynak referansı** ile değiştir; içerik gerçekten yoksa o başlığı listeden gizle.
+- `src/pages/MachineTopicDetailPage.tsx` (satır 20): "İçerik hazırlanıyor..." → veri yoksa başlık menüden çıkarılsın; loader yerine sessiz iskelet.
+- `src/pages/MaritimeNews.tsx` (satır 586): "Bu haber için içerik bulunamadı." → haber kartı doğrudan kaynak siteye yönlendirsin, mesaj gösterilmesin.
+- `src/components/ContentAutoWriterController.tsx` (satır 278–279) ve `src/data/calculationCenterConfig.ts` (716, 731): **"(Yakında)"** rozetli devre dışı seçenekler menüden tamamen kaldırılacak.
+- `src/components/calculations/NavigationCalculations.tsx` (2076, 2110): "Yakında: Mevki Hesapla" / "Yakında: Koçanlı Mevki Hesapla" placeholder kartları kaldırılacak veya gerçek hesaplama bağlanacak.
+- `src/components/ui/module-card.tsx` (25): default "Yakında" badge tanımı kaldırılsın.
 
----
+## 2) "AI / Yapay Zeka / 🤖" etiketlerinin temizlenmesi
 
-## 2. Operasyon Başlıkları için Detaylı İçerik
+Kullanıcıya AI markası dayatan yerler nötrleştirilecek:
 
-### Veri yapısı genişletmesi
-`ShipOperationDepartment.operations` `string[]` yerine yapılı tipe dönüşecek:
+- `src/pages/Formulas.tsx` (174): "Google Gemini AI ile gelişmiş maritime mühendisliği analizi." → "Maritime mühendisliği analizi."
+- `src/pages/BetaWorkHoursTool.tsx` (394): buton metni **"AI ile çıkar"** → **"Otomatik çıkar"**.
+- `src/components/ContentAutoWriterController.tsx` (263): "Eksik alt başlıkları toplu olarak AI ile tamamlayın" → "Eksik alt başlıkları toplu olarak tamamla". (Bu panel zaten yönetici aracı, son kullanıcıya görünmüyorsa olduğu gibi kalabilir — kontrol edip karar verilecek.)
+- `src/components/PermanentAIAssistant.tsx`:
+  - "🤖 Local Maritime AI Database", "🤖 Maritime AI Ready", "Maritime Mühendisliği AI Asistanı" başlıkları → "Denizcilik Referans Asistanı" / "Hazır" gibi nötr ifadeler, robot emojisi tamamen kalkacak.
+  - "Hazırlanıyor" badge'i (264) → "Yanıtlanıyor" gibi operasyonel dile çekilecek.
+- `src/data/searchIndex.ts` (41): "Stabilite Asistanı" anahtar kelimeleri `["AI","yapay zeka"]` → `["danışman","rehber","stabilite"]` olarak güncellenecek; arama sonuçlarında AI öne çıkmayacak.
+- `src/data/calculationCenterConfig.ts` (412): "AI ile yükleme sırası ve trim danışmanlığı" → "Yükleme sırası ve trim danışmanlığı".
 
-```ts
-interface ShipOperation {
-  title: string;          // mevcut başlık
-  purpose: string;        // operasyonun amacı (1-2 cümle)
-  procedure: string[];    // adım adım uygulama (5-10 madde)
-  regulations?: string[]; // SOLAS/MARPOL/STCW/IMDG/ISM atıfları
-  safety?: string[];      // güvenlik notları, riskler
-  records?: string[];     // tutulacak kayıt/checklist (ORB, deck log vb.)
-}
-```
+## 3) Asistan sayfalarındaki dil ve görsel iz
 
-Mevcut `string[]` operasyonlar otomatik olarak yeni şemaya migrate edilecek; başlık korunacak, geri kalan alanlar her bir operasyon için **uygulamayla uyumlu, doğru ve detaylı** şekilde elle yazılacak.
+Tüm `*Assistant.tsx` sayfalarında (`MeteorologyAssistant`, `SeamanshipAssistant`, `SafetyAssistant`, `StabilityAssistant`, `MachineAssistant`, `EmissionAssistant`, `CargoAssistant`):
 
-### İçerik standardı (her operasyon için)
-- **Amaç**: 1–2 cümlelik özet
-- **Prosedür**: 6–10 numaralı/adımlı uygulama akışı
-- **İlgili Mevzuat**: en az 1, mümkünse 2–3 atıf (örn. *MARPOL Annex I Reg. 17 — ORB I*, *SOLAS V/34*, *STCW Reg. VIII/2*, *IMDG Code Part 7*, *ISM Code Element 7*, *MLC 2006*, *BWM D-2*)
-- **Güvenlik & Risk**: kritik uyarılar (örn. enclosed space, hot work permit, IGS oksijen %)
-- **Kayıt/Checklist**: hangi defter/forma işleneceği (ORB I/II, Deck Log, Cargo Record Book, Garbage Record Book, Bunker Delivery Note vb.)
+- Sayfa başlıklarındaki "… Asistanı" ibaresi korunabilir (denizcilik referans rehberi tonunda) ama:
+  - Alt başlıklardan "AI / yapay zeka / chatbot" geçen tüm ifadeler çıkarılacak.
+  - `AssistantInterface.tsx` içindeki `preparing: "Yanıt hazırlanıyor..."` → `"Hesaplanıyor..."`.
+  - Konuşma balonu robot/parlama efektleri sadeleştirilecek; düz, kitap stili kart görünümü.
+- `PermanentAIAssistant.tsx` ve `WorkingAIAssistant.tsx` ana sayfada kayan/parlayan buton olarak duruyorsa, **glow + robot ikonu yerine** sade bir "Soru Sor" düğmesi (kitap/soru işareti ikonu) olacak.
 
-Toplam ~150 operasyon × ~15–20 satır = **çok geniş içerik**. Boyut yönetimi için içerik gemi tipi bazında ayrı dosyalara bölünecek:
+## 4) Boş durum (empty state) standardı
 
-```
-src/data/shipOperations/
-  konteyner.ts
-  roRo.ts
-  tanker.ts
-  dokme.ts
-  yolcu.ts
-  index.ts        // shipTypes export
-  types.ts
-```
+Tek bir kural getirilecek:
 
-### UI değişikliği — `ShipOperationsDetail.tsx`
-- Operasyon listesi `Accordion` (shadcn) olarak render edilecek.
-- Kapalı durumda: mevcut görünüm (check ikon + başlık).
-- Açık durumda: 5 bölüm halinde (`Amaç`, `Prosedür`, `Mevzuat`, `Güvenlik`, `Kayıt`) ikon + chip + tipografi ile gösterim. Mevcut maritime tema ve `bg-card/60`, `border-border/30` gibi tokenlar korunur.
-- Üst bölüme küçük gemi foto thumbnail’i eklenir.
+- Bir liste / detay boşsa: **"Veri yok" / "İçerik bulunamadı" yazma**. Onun yerine ya bölümü gizle, ya da o konunun **gerçek tanımı + ilgili formül/kaynak referansı** ile bir mini kart göster. Bu, mem://style/curriculum-content-standard ile uyumlu.
 
----
+## 5) Toast ve bildirim metinleri
 
-## Doğruluk Notları
-- IMO/IMDG/SOLAS/MARPOL/STCW/MLC/COLREG atıfları yürürlükteki konsolide metinlere göre yazılacak.
-- Tanker özelinde IGS, COW, tank cleaning, ISGOTT 6th edition referansları.
-- Dökme yük için IMSBC Code, Group A/B/C ve TML ölçümleri.
-- Yolcu gemisi için SOLAS Ch. II-2 Reg. 21 (safe return to port), ISPS, MARPOL Annex IV (STP).
-- Ro-Ro için SOLAS Ch. II-1 Part B-2 (watertight integrity), CSS Code, lashing manual.
+`toast.success/error/info` çağrılarında geçen "AI", "yapay zeka", "üretildi", "oluşturuldu" gibi ifadeler operasyonel dile çekilecek (ör. "Hesap tamamlandı", "Rapor hazır"). Tarama yapılıp tek tek değiştirilecek.
 
----
+## 6) Kaldırılması önerilen bileşenler
 
-## Teknik Adımlar
-1. `src/assets/ships/` altında 5 gerçek gemi fotoğrafı üret.
-2. `src/data/shipOperations/` klasörü oluştur, `types.ts` + 5 gemi dosyası + `index.ts` yaz.
-3. Tüm operasyonları yeni şemaya genişletilmiş içerikle taşı (titleler birebir korunur).
-4. `ShipOperationsPage.tsx` — emoji kutusu yerine `image` thumbnail.
-5. `ShipOperationsDetail.tsx` — Accordion ile detay gösterimi + üst başlıkta foto.
-6. `shipOperationsData.ts` re-export shim (geri uyumluluk).
-7. TS build kontrolü.
+Aşağıdakiler işlevsel olarak çakışıyor ve "AI markası"nı çoğaltıyor — sadece biri tutulacak:
 
-## Kapsam Dışı
-- Operasyon başlıklarının kendisi değişmeyecek (sadece içerik eklenecek).
-- Quiz, görsel galeri, video gibi ek özellikler bu görevde yok.
+- `TestGeminiAI.tsx` → kullanılmıyorsa silinecek.
+- `WorkingAIAssistant.tsx` vs `PermanentAIAssistant.tsx` vs `UnifiedMaritimeAssistant.tsx`: tek bir "Denizcilik Danışma" bileşenine indirgenecek (en zengin olan korunup diğerleri kaldırılacak).
+
+## Onay sonrası uygulama sırası
+
+1. `pages/*Assistant.tsx` ve `AssistantInterface.tsx` metin temizliği.
+2. "Yakında / hazırlanıyor / içerik bulunamadı" yer tutucularının kaldırılması.
+3. `searchIndex`, `calculationCenterConfig`, `Formulas`, `BetaWorkHoursTool` etiket güncellemeleri.
+4. `PermanentAIAssistant` görsel sadeleştirmesi + duplicate asistan bileşenlerinin temizlenmesi.
+5. `bun run build` ile doğrulama.
+
+## Açık sorular
+
+- Asistan sayfalarının kendisi (Gemicilik / Stabilite / Makine / Emisyon / Emniyet asistanları) **kalsın mı, yoksa tamamen kaldırılıp** yerine sadece statik referans sayfaları mı gelsin? Tonu belirler:
+  - **A**: Asistanlar kalsın, sadece dil ve görsel iz nötrleşsin (bu plan).
+  - **B**: Asistan sayfaları tamamen kaldırılsın; yalnızca konu anlatımı + hesaplama + formül kalsın.
+- "Soru Sor" düğmesi anasayfada kalsın mı, yoksa sadece ilgili modül (ör. Stabilite) içinde mi görünsün?
