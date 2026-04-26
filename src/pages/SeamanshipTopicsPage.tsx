@@ -2968,6 +2968,25 @@ export default function SeamanshipTopicsPage() {
                   </div>
                 )}
 
+                {/* Real Photographs Gallery */}
+                {currentContent.photos && currentContent.photos.length > 0 && (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {currentContent.photos.map((p, i) => (
+                      <figure key={i} className="overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                        <img
+                          src={p.src}
+                          alt={p.caption}
+                          className="w-full h-48 object-cover"
+                          loading="lazy"
+                        />
+                        <figcaption className="px-3 py-2 text-xs text-muted-foreground bg-muted/30">
+                          {p.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                )}
+
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
                   <div className="text-foreground leading-relaxed whitespace-pre-line">
