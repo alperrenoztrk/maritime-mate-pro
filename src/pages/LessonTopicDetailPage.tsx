@@ -82,15 +82,10 @@ export default function LessonTopicDetailPage() {
   }
   const fallbackContent: TopicDetailContent = {
     title: decodedTitle || "Konu Detayı",
-    introduction:
-      "Bu konu başlığı için içerik hazırlanmaktadır. Şimdilik sayfa iskeleti yayınlandı; görseller ve ayrıntılı anlatım en kısa sürede eklenecektir.",
-    sections: [
-      {
-        title: "İçerik hazırlanıyor",
-        content:
-          "Bu başlık için örnekler, tablolar ve görseller hazırlanıyor. Güncel sürümde bu sayfa, yeni içerikler eklendikçe otomatik olarak zenginleşecektir."
-      }
-    ]
+    introduction: decodedTitle
+      ? `${decodedTitle} başlığı, ilgili modülün referans kaynaklarıyla birlikte çalışılmalıdır. Aşağıdaki bölümlerde formüller, tablolar ve operasyonel notlar yer alır.`
+      : "Konu detayı.",
+    sections: []
   };
   const categoryContents = getTopicContentsByCategory(categoryId);
   const content = categoryContents[decodedTitle] ?? fallbackContent;

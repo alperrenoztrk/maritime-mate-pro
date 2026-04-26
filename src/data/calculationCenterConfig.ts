@@ -409,7 +409,7 @@ export const calculationCategories: CategoryConfig[] = [
       {
         id: "assistant",
         label: "Asistan",
-        description: "AI ile yükleme sırası ve trim danışmanlığı",
+        description: "Yükleme sırası ve trim danışmanlığı",
         status: "live",
         badge: "Hazır",
         href: "/cargo/assistant",

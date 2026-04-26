@@ -391,7 +391,7 @@ export default function BetaWorkHoursTool() {
               ) : (
                 <>
                   <Sparkles className="mr-2 h-4 w-4" />
-                  AI ile çıkar
+                  Otomatik çıkar
                 </>
               )}
             </Button>
