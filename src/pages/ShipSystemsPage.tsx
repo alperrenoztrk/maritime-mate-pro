@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Anchor, Compass, Wrench, Gauge, Flame, Package, Leaf, ArrowRight, Search, X } from "lucide-react";
+import { Anchor, Compass, Wrench, Gauge, Flame, Package, Leaf, Radio, ArrowRight, Search, X } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { shipSystemsData } from "@/data/shipSystemsData";
