@@ -27,6 +27,19 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";
+
+// Etap 1B - meteoroloji gerçekçi fotoğraflar
+import photoCumulonimbus from "@/assets/meteorology/cumulonimbus.jpg";
+import photoCirrus from "@/assets/meteorology/cirrus.jpg";
+import photoCumulus from "@/assets/meteorology/cumulus.jpg";
+import photoSeaFog from "@/assets/meteorology/sea-fog.jpg";
+import photoStormWaves from "@/assets/meteorology/storm-waves.jpg";
+import photoBarometer from "@/assets/meteorology/barometer.jpg";
+import photoAnemometer from "@/assets/meteorology/anemometer.jpg";
+import photoHurricaneSatellite from "@/assets/meteorology/hurricane-satellite.jpg";
+import photoWaterspout from "@/assets/meteorology/waterspout.jpg";
+import photoColdFront from "@/assets/meteorology/cold-front.jpg";
 
 interface MeteoSubTopic {
   id: string;
@@ -209,6 +222,7 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  photos?: GalleryPhoto[];
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
@@ -659,6 +673,14 @@ Gemide terleme (ship sweat / cargo sweat) çiy noktası ilişkilidir. Gemi sıca
   "cloud-formation": {
     title: "Bulut Oluşumu ve Sınıflandırması",
     introduction: "Bulutlar, havadaki su buharının yoğunlaşma çekirdekleri etrafında yoğunlaşmasıyla oluşur ve oluşum mekanizmalarına göre sınıflandırılır.",
+    photos: [
+      {
+        src: photoCumulonimbus,
+        title: "Olgun cumulonimbus (Cb) — fırtına bulutu",
+        caption: "Açık denizde 12 km'ye ulaşan, klasik örs (anvil) tepeli olgun cumulonimbus; iç yıldırım deşarjı görülür. Cb bulutları kuvvetli yukarı akımlar (10-30 m/s), şiddetli yağış, dolu, yıldırım, dik fırtına (squall) ve hortum üretebilir.",
+        alt: "Karanlık okyanus üstünde devasa, örs şeklinde tepesi olan cumulonimbus fırtına bulutu; içinde yıldırım çakıyor.",
+      },
+    ],
     content: `BULUT OLUŞUM MEKANİZMALARI:
 
 1. KONVEKTİF YÜKSELME:
@@ -694,6 +716,20 @@ Bulutlar 10 ana cinse ayrılır. Yüksekliklerine göre üç seviyeye dağıtıl
   "cloud-types": {
     title: "Bulut Türleri ve Seviyeleri",
     introduction: "Her bulut türü farklı atmosferik koşulları yansıtır ve denizci için gelecek hava durumu hakkında bilgi sunar.",
+    photos: [
+      {
+        src: photoCirrus,
+        title: "Cirrus (Ci) — yüksek seviye buz kristali bulutları",
+        caption: "Okyanus ufku üzerinde 8-12 km yükseklikte, ince tüy şeklinde beyaz cirrus bulutları. Genelde iyi hava işaretidir, ancak hızla artıyorsa 24-48 saat içinde sıcak cephe yaklaşımının ilk göstergesidir.",
+        alt: "Mavi gökyüzünde yüksekte ince, tüy şeklinde dağılmış beyaz cirrus bulutları, altta sakin koyu mavi okyanus.",
+      },
+      {
+        src: photoCumulus,
+        title: "Cumulus humilis (Cu) — iyi hava cumulus bulutları",
+        caption: "1.500 m yükseklikte, düz tabanlı, pamuk topu şeklinde dağınık cumulus bulutları. Sıcak yüzeyden konvektif yükselme ile oluşur; dikey gelişim sınırlıysa hava iyi kalır, fakat dikey gelişim hızlanırsa Cb'ye dönüşebilir.",
+        alt: "Mavi gökyüzünde dağınık, beyaz pamuk topu şeklinde, düz tabanlı cumulus bulutları; altta sakin mavi deniz.",
+      },
+    ],
     content: `YÜKSEK BULUTLAR (Ci, Cc, Cs) — 6.000 m üzeri:
 
 CİRRUS (Ci): İnce, ipliksi, beyaz bulutlar. Buz kristallerinden oluşur. Tek başına iyi havayı gösterir, ancak kalınlaşıp yayılması yaklaşan sıcak cephenin habercisidir.
@@ -844,6 +880,14 @@ Nemli havanın eğimli arazi boyunca yükselmesiyle oluşur. Dağlık kıyılard
   "advection-fog": {
     title: "Adveksiyon Sisi (Deniz Sisi)",
     introduction: "Adveksiyon sisi, sıcak ve nemli bir hava kütlesinin soğuk bir deniz yüzeyi üzerinden geçmesiyle oluşan ve denizcilikte en sık karşılaşılan sis türüdür.",
+    photos: [
+      {
+        src: photoSeaFog,
+        title: "Yoğun adveksiyon sisi içinde gemi pruvası",
+        caption: "Görüş 100 m'nin altında. Adveksiyon sisi günlerce sürebilir; 12 knot üzeri rüzgârlarla bile dağılmaz. Bu koşullarda COLREG Kural 19 (sınırlı görüş) uygulanır: emniyetli hız, ses sinyalleri (1 dakikada bir uzun düdük), ARPA radar ile çevre takibi şarttır.",
+        alt: "Yoğun gri-beyaz sis içinde bir geminin pruvası; ileride sadece silüet görünüyor, görüş çok kısıtlı, deniz hafif çırpıntılı.",
+      },
+    ],
     content: `OLUŞUM KOŞULLARI:
 1. Sıcak, nemli hava kütlesi mevcut olmalıdır
 2. Bu hava kütlesi soğuk bir yüzey üzerine hareket etmelidir
@@ -1037,6 +1081,14 @@ Sıcak hava geçişi (stable): Rüzgâr hafif olabilir ama sis ve düşük gör�
   "cold-front": {
     title: "Soğuk Cephe Yapısı ve Hava Olayları",
     introduction: "Soğuk cephe, soğuk hava kütlesinin sıcak hava kütlesinin altına girerek onu kaldırmasıyla oluşan sınır bölgesidir.",
+    photos: [
+      {
+        src: photoColdFront,
+        title: "Soğuk cephe geçişi — shelf cloud (raf bulutu)",
+        caption: "Okyanus üzerinde dikey-keskin sınırlı, alçak, yatay raf bulutu (shelf cloud) yaklaşan soğuk cephenin gust front'unu işaretler. Geçiş sırasında ani rüzgâr dönüşü, basınç sıçraması, sıcaklık düşüşü ve yoğun yağış (squall) olur.",
+        alt: "Okyanus ufku üzerinde uzun, dikey kenarlı koyu gri raf bulutu; altında yağış perdesi ve çırpıntılı deniz.",
+      },
+    ],
     content: `SOĞUK CEPHE YAPISI:
 Soğuk hava yoğun olduğu için yüzeyde ilerler ve sıcak havayı kama şeklinde alttan kaldırır. Cephe yüzeyi dik açılıdır (yaklaşık 1:50 ile 1:100 arası eğim). Bu dik yapı ani ve şiddetli hava olayları üretir.
 
@@ -1227,6 +1279,14 @@ TROPİKAL DENİZ KOŞULLARI:
   "tropical-cyclone-formation": {
     title: "Tropikal Siklon Oluşumu ve Yapısı",
     introduction: "Tropikal siklon, sıcak okyanus suları üzerinde güçlü konveksiyonla oluşan, organize döngüsel rüzgâr sistemidir.",
+    photos: [
+      {
+        src: photoHurricaneSatellite,
+        title: "Olgun tropikal siklonun uydu görüntüsü",
+        caption: "Klasik spiral bant yapısı ve merkezde net görülen göz (eye). Göz çapı 30-65 km, gözduvarındaki rüzgârlar 64+ knot. Kuzey yarıkürede saat yönünün tersine, güney yarıkürede saat yönünde döner.",
+        alt: "Okyanus üstünde gelişmiş tropikal siklonun yukarıdan uydu görüntüsü; spiral bulut bantları ve merkezde temiz göz bölgesi belirgin.",
+      },
+    ],
     content: `OLUŞUM KOŞULLARI:
 1. Deniz suyu sıcaklığı ≥ 26 °C (en az 50 m derinliğe kadar)
 2. Yeterli Coriolis etkisi (genellikle 5° enlemden poleward)
@@ -1263,6 +1323,14 @@ Sıcak okyanusdan buharlaşan su buharının yoğunlaşmasıyla açığa çıkan
   "cyclone-classification": {
     title: "Siklon Sınıflandırması",
     introduction: "Tropikal siklonlar rüzgâr hızına göre sınıflandırılır ve bölgeye göre farklı isimler alır.",
+    photos: [
+      {
+        src: photoWaterspout,
+        title: "Hortum (waterspout) — tornadik deniz olayı",
+        caption: "Cumulus konjestus altında okyanusa uzanan dönen su sütunu. Tornadik (kuvvetli) ve fair-weather (zayıf) tipleri vardır. Tornadik hortumlar 100+ knot rüzgâr içerebilir; gemiler 20° pruva değişimi ile kaçınmalıdır.",
+        alt: "Mavi gökyüzünde geniş bir bulutun altından okyanusa uzanan dar, dönen su sütunu; deniz yüzeyinde girdap.",
+      },
+    ],
     content: `RÜZGÂR HIZINA GÖRE SINIFLANDIRMA:
 
 TROPİKAL BOZULMA (Tropical Disturbance): Organize olmamış konveksiyon, kapalı izobar yok.
@@ -1478,6 +1546,14 @@ Verilen rüzgâr hızı, süre ve fetch için ulaşılabilecek maksimum dalga du
   "wave-types": {
     title: "Dalga Türleri",
     introduction: "Deniz dalgaları oluşum kaynağına göre rüzgâr dalgaları (wind waves) ve ölü deniz (swell) olarak iki ana kategoride incelenir.",
+    photos: [
+      {
+        src: photoStormWaves,
+        title: "Fırtına koşullarında kırılan rüzgâr dalgası",
+        caption: "Force 10 (storm) koşullarında ~8 m yüksekliğinde, beyaz tepeli aktif rüzgâr dalgası. Dik, düzensiz ve kısa periyotlu yapı tipik wind sea karakteridir. Beaufort 10'da significant wave height 9-12,5 m'ye ulaşır.",
+        alt: "Açık denizde devasa, beyaz köpüklü tepesi kırılan dalga; gri fırtınalı gökyüzü, çırpıntılı koyu mavi su.",
+      },
+    ],
     content: `RÜZGÂR DALGALARI (Wind Waves / Sea):
 Aktif rüzgâr etkisiyle oluşan ve şekillenen dalgalar. Düzensiz, kısa periyotlu ve dik yapılıdır. Rüzgâr yönünde hareket eder. Beyaz köpüklü dalgalar (whitecaps) rüzgâr dalgalarının kırılmasıyla oluşur.
 
@@ -1839,6 +1915,14 @@ SEYİRE ETKİSİ:
   "barometer": {
     title: "Barometre Türleri ve Kullanımı",
     introduction: "Barometre, atmosfer basıncını ölçen temel meteoroloji aletidir ve gemilerde civalı, aneroid ve barograf olmak üzere üç tipi kullanılır.",
+    photos: [
+      {
+        src: photoBarometer,
+        title: "Pirinç gövdeli aneroid deniz barometresi",
+        caption: "Köprüüstü ahşap perdesine monte edilmiş klasik aneroid barometre; mb (millibar) ve inHg ölçeklerini gösterir. 3 saatlik basınç eğilimi (tendency) cephe ve siklon yaklaşımının erken göstergesidir: 3 mb/3 saat düşüş = fırtına uyarısı.",
+        alt: "Köprüüstünde maun ahşap üzerine monte edilmiş, parlak pirinç gövdeli yuvarlak aneroid barometre; basınç skalası belirgin.",
+      },
+    ],
     content: `CİVALI BAROMETRE:
 En hassas basınç ölçüm aracıdır. Camboruda civa sütununun yüksekliği basınçla orantılıdır. Gemilerde sallanmayı kompanze eden Kew-pattern deniz barometresi kullanılır.
 
@@ -1910,6 +1994,14 @@ Nem değişimini sürekli kaydeden cihazdır. Saç higrometri prensibine dayanı
   "anemometer": {
     title: "Anemometre ve Rüzgâr Ölçümü",
     introduction: "Anemometre rüzgâr hızını, rüzgâr gülü (wind vane) ise rüzgâr yönünü ölçen meteoroloji aletleridir.",
+    photos: [
+      {
+        src: photoAnemometer,
+        title: "Üç-cuplu anemometre ve rüzgâr gülü direği",
+        caption: "Geminin en yüksek noktasına (genellikle ana direk) monte edilmiş üç cuplu rotasyon anemometre ve ok şeklinde rüzgâr gülü. Ölçülen rüzgâr 'apparent wind'dir; gerçek rüzgâr (true wind), gemi hızı vektörel olarak çıkarılarak hesaplanır.",
+        alt: "Mavi gökyüzü önünde, beyaz bir direğin üstüne monte üç cuplu anemometre ve uzun ok şeklinde metalik rüzgâr gülü.",
+      },
+    ],
     content: `ANEMOMETRE TÜRLERİ:
 
 1. KUPA ANEMOMETRESİ (Cup Anemometer):
@@ -2797,6 +2889,11 @@ export default function MeteorologyTopicsPage() {
                     {currentContent.introduction}
                   </p>
                 </div>
+
+                {/* Photo Gallery */}
+                {currentContent.photos && currentContent.photos.length > 0 && (
+                  <PhotoGallery photos={currentContent.photos} topicTitle={currentContent.title} />
+                )}
 
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
