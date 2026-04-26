@@ -65,8 +65,8 @@ export default function ShipSystemDetailPage() {
                 </button>
 
                 {isOpen && (
-                  <div className="border-t border-border/20 px-4 py-4 space-y-4">
-                    {/* Topic Image */}
+                  <div className="border-t border-border/20 px-4 py-4 flex flex-col gap-4">
+                    {/* 1. Görsel */}
                     {topicImage && (
                       <div
                         className="overflow-hidden rounded-lg cursor-pointer group"
@@ -81,45 +81,58 @@ export default function ShipSystemDetailPage() {
                       </div>
                     )}
 
-                    <p className="text-sm text-foreground/90 leading-relaxed">{topic.introduction}</p>
+                    {/* 2. Tanım */}
+                    {topic.introduction && (
+                      <p className="text-sm text-foreground/90 leading-relaxed">{topic.introduction}</p>
+                    )}
 
-                    {topic.sections.map((sec, si) => (
-                      <div key={si} className="space-y-2">
-                        <h3 className="text-sm font-semibold text-primary">{sec.heading}</h3>
-                        {sec.paragraphs.map((p, pi) => (
-                          <p key={pi} className="text-[13px] text-foreground/80 leading-relaxed">{p}</p>
-                        ))}
+                    {/* 3. Konu bölümleri */}
+                    {topic.sections
+                      ?.filter(
+                        (sec) =>
+                          (sec.paragraphs && sec.paragraphs.length > 0) ||
+                          sec.table ||
+                          sec.formula ||
+                          sec.example,
+                      )
+                      .map((sec, si) => (
+                        <div key={si} className="flex flex-col gap-2">
+                          <h3 className="text-sm font-semibold text-primary">{sec.heading}</h3>
+                          {sec.paragraphs?.map((p, pi) => (
+                            <p key={pi} className="text-[13px] text-foreground/80 leading-relaxed">{p}</p>
+                          ))}
 
-                        {sec.table && (
-                          <div className="overflow-x-auto rounded-lg border border-border/30">
-                            <table className="w-full text-xs">
-                              <thead><tr className="bg-muted/30">{sec.table.headers.map((h, hi) => <th key={hi} className="px-2 py-1.5 text-left font-medium text-muted-foreground">{h}</th>)}</tr></thead>
-                              <tbody>{sec.table.rows.map((row, ri) => <tr key={ri} className="border-t border-border/20">{row.map((cell, ci) => <td key={ci} className="px-2 py-1.5 text-foreground/80">{cell}</td>)}</tr>)}</tbody>
-                            </table>
-                          </div>
-                        )}
+                          {sec.table && (
+                            <div className="overflow-x-auto rounded-lg border border-border/30">
+                              <table className="w-full text-xs">
+                                <thead><tr className="bg-muted/30">{sec.table.headers.map((h, hi) => <th key={hi} className="px-2 py-1.5 text-left font-medium text-muted-foreground">{h}</th>)}</tr></thead>
+                                <tbody>{sec.table.rows.map((row, ri) => <tr key={ri} className="border-t border-border/20">{row.map((cell, ci) => <td key={ci} className="px-2 py-1.5 text-foreground/80">{cell}</td>)}</tr>)}</tbody>
+                              </table>
+                            </div>
+                          )}
 
-                        {sec.formula && (
-                          <div className="rounded-lg border-2 border-primary/20 bg-primary/5 p-3 space-y-1">
-                            <p className="text-sm font-mono font-semibold text-center text-foreground">{sec.formula.expression}</p>
-                            {sec.formula.variables.map((v, vi) => (
-                              <p key={vi} className="text-[11px] text-muted-foreground">{v}</p>
-                            ))}
-                          </div>
-                        )}
+                          {sec.formula && (
+                            <div className="rounded-lg border-2 border-primary/20 bg-primary/5 p-3 space-y-1">
+                              <p className="text-sm font-mono font-semibold text-center text-foreground">{sec.formula.expression}</p>
+                              {sec.formula.variables.map((v, vi) => (
+                                <p key={vi} className="text-[11px] text-muted-foreground">{v}</p>
+                              ))}
+                            </div>
+                          )}
 
-                        {sec.example && (
-                          <div className="rounded-lg border border-accent/30 bg-accent/5 p-3 space-y-2">
-                            <p className="text-xs font-semibold text-accent-foreground">Örnek: {sec.example.problem}</p>
-                            {sec.example.steps.map((s, si2) => (
-                              <p key={si2} className="text-[12px] font-mono text-foreground/80">{s}</p>
-                            ))}
-                            <p className="text-xs font-semibold text-primary">{sec.example.result}</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                          {sec.example && (
+                            <div className="rounded-lg border border-accent/30 bg-accent/5 p-3 space-y-2">
+                              <p className="text-xs font-semibold text-accent-foreground">Örnek: {sec.example.problem}</p>
+                              {sec.example.steps.map((s, si2) => (
+                                <p key={si2} className="text-[12px] font-mono text-foreground/80">{s}</p>
+                              ))}
+                              <p className="text-xs font-semibold text-primary">{sec.example.result}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
 
+                    {/* 4. Çalışma Prensibi */}
                     {topic.workingPrinciple && topic.workingPrinciple.length > 0 && (
                       <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 space-y-1">
                         <p className="text-xs font-semibold text-primary mb-1">Çalışma Prensibi</p>
@@ -129,6 +142,7 @@ export default function ShipSystemDetailPage() {
                       </div>
                     )}
 
+                    {/* 5. Kullanım */}
                     {topic.operation && topic.operation.length > 0 && (
                       <div className="rounded-lg border border-border/30 bg-card/40 p-3 space-y-1">
                         <p className="text-xs font-semibold text-foreground mb-1">Kullanım</p>
@@ -138,8 +152,9 @@ export default function ShipSystemDetailPage() {
                       </div>
                     )}
 
+                    {/* 6. Olası Arızalar ve Müdahale */}
                     {topic.faults && topic.faults.length > 0 && (
-                      <div className="space-y-1.5">
+                      <div className="flex flex-col gap-1.5">
                         <p className="text-xs font-semibold text-destructive">Olası Arızalar ve Müdahale</p>
                         <div className="overflow-x-auto rounded-lg border border-destructive/20">
                           <table className="w-full text-xs">
@@ -164,6 +179,7 @@ export default function ShipSystemDetailPage() {
                       </div>
                     )}
 
+                    {/* 7. Önlemler ve Emniyet */}
                     {topic.precautions && topic.precautions.length > 0 && (
                       <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 space-y-1">
                         <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">Önlemler ve Emniyet</p>
@@ -173,7 +189,8 @@ export default function ShipSystemDetailPage() {
                       </div>
                     )}
 
-                    {topic.keyPoints.length > 0 && (
+                    {/* 8. Önemli Noktalar */}
+                    {topic.keyPoints && topic.keyPoints.length > 0 && (
                       <div className="rounded-lg bg-muted/20 p-3 space-y-1">
                         <p className="text-xs font-semibold text-muted-foreground mb-1">Önemli Noktalar</p>
                         {topic.keyPoints.map((kp, ki) => (
