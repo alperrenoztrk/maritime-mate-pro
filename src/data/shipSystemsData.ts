@@ -1586,5 +1586,464 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ]
       }
     ]
+  },
+  "fire-safety": {
+    title: "Yangın ve Emniyet Sistemleri",
+    description: "Sabit ve seyyar yangın söndürme sistemleri, dedektörler ve kişisel emniyet ekipmanları",
+    topics: [
+      {
+        title: "Yangın Devre Pompası ve Hattı (Fire Main)",
+        introduction: "Yangın devre pompası, gemideki yangın hidrantlarına ve sabit söndürme sistemlerine basınçlı deniz suyu sağlayan ana pompadır. SOLAS gereği iki bağımsız yangın pompası ve bir adet acil yangın pompası (emergency fire pump) bulunur.",
+        sections: [
+          {
+            heading: "Yangın Hattı Donanımı",
+            paragraphs: [
+              "Ana yangın pompaları makine dairesinde, acil yangın pompası ise makine dairesi dışında ayrı bir bölmede yer alır.",
+              "Yangın hattı (fire main) hidrantlar, ISC (international shore connection) ve sabit söndürme sistemlerini besler.",
+              "Hat üzerinde basıncı koruyan jokey pompa (jockey/pressure maintenance pump) ve hidrofor tankı bulunabilir."
+            ],
+            table: {
+              headers: ["Bileşen", "İşlevi"],
+              rows: [
+                ["Ana yangın pompası", "Normal yangın söndürme basıncı sağlar"],
+                ["Acil yangın pompası", "Makine dairesi devre dışı kaldığında devreye girer"],
+                ["Hidrant valfi", "Hortum bağlantısı için yangın suyu çıkışı"],
+                ["ISC bağlantısı", "Karadan/başka gemiden yangın suyu alımı"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "SOLAS Reg. II-2/10 gereği minimum 2 bağımsız yangın pompası zorunludur.",
+          "Acil yangın pompası kendi yakıt tankı ve bağımsız enerji kaynağına sahiptir.",
+          "Hidrant basıncı genelde 2.7–4 bar, debi gemi tonajına göre belirlenir."
+        ],
+        workingPrinciple: [
+          "Pompa deniz suyunu kingstondan alır, basınçlandırarak fire main hattına basar.",
+          "Hat boyunca basınç sensörü ve PSV (pressure safety valve) bulunur.",
+          "Hidrant açıldığında basınç düşer; otomatik start sensörü pompayı devreye alır."
+        ],
+        operation: [
+          "Suction valfini aç, kingston filtresini kontrol et.",
+          "Pompayı yerel veya uzaktan (köprüüstü/kontrol odası) çalıştır.",
+          "Hat basıncını manometreden izle (2.7–4 bar normal).",
+          "Haftalık test sırasında hidrantı aç ve debi/basıncı doğrula."
+        ],
+        faults: [
+          { fault: "Pompa basınç vermiyor", cause: "Suction tıkalı, hava emiyor, impeller aşınmış", action: "Strainer temizle, pompayı priming et, impeller kontrol et." },
+          { fault: "Acil yangın pompası start almıyor", cause: "Akü zayıf, yakıt yok", action: "Akü ve yakıt seviyesini kontrol et, manuel start dene." },
+          { fault: "Hat basıncı düşüyor", cause: "Hat üzerinde sızıntı, valfler tam kapanmamış", action: "Hattı izle, valfleri sıkıştır, sızıntı noktasını ara." }
+        ],
+        precautions: [
+          "Acil yangın pompası haftalık test edilmeli ve kayıt tutulmalı.",
+          "Hidrant valfleri ve hortumları açık/kapalı pozisyonda korozyona karşı denetlenmeli.",
+          "ISC bağlantısı kolay erişilebilir yerde, gri renk ve etiketli olmalı.",
+          "Kış aylarında açık güverte hatlarında donma önlemi alınmalı."
+        ]
+      },
+      {
+        title: "CO₂ Sabit Söndürme Sistemi",
+        introduction: "CO₂ sistemi, makine dairesi, kargo ambarı ve yakıt tankı gibi kapalı hacimlerde yangını oksijensiz bırakarak söndüren sabit gaz söndürme sistemidir. Yüksek basınçlı CO₂ silindirleri özel bir bottle room'da depolanır.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Yüksek basınç (HP) CO₂ silindirleri ~50 bar basınçta sıvı CO₂ içerir; en yaygın gemi tipi.",
+              "Pilot silindir, master valfi ve manifold valflerini açan kontrol gazını sağlar.",
+              "Time delay (zaman geciktirici) personelin tahliyesi için 20–60 sn bekleme süresi sağlar.",
+              "Discharge nozülleri korunan hacme dağıtılmıştır; tasarım konsantrasyon makine dairesi için %40 hacim oranında CO₂."
+            ],
+            table: {
+              headers: ["Bileşen", "İşlev"],
+              rows: [
+                ["CO₂ silindirleri", "Söndürme gazını depolar"],
+                ["Master valfi", "Korunan hacme gaz akışını başlatır"],
+                ["Pilot hattı", "Silindir valflerini pnömatik açar"],
+                ["Time delay ünitesi", "Tahliye için süre tanır"],
+                ["Alarm sireni", "Tahliye uyarısı verir"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Aktivasyon öncesi tüm personel tahliye edilmeli, kapı/jaluzi/fan kapatılmalıdır.",
+          "Boğulma riski nedeniyle CO₂ odasına giriş için EEBD/SCBA zorunludur.",
+          "Yıllık dış muayene, 5 yılda bir hidrostatik test (silindir tartımı %10 kayıpta yenilenir)."
+        ],
+        workingPrinciple: [
+          "CO₂ ortamdaki oksijeni seyrelterek yanma reaksiyonunu durdurur.",
+          "Pilot silindiri açıldığında pnömatik basınç master valfi ve istenen sayıda silindiri tetikler.",
+          "Gaz manifolddan dağıtılır; nozüllerden hacme yayılır.",
+          "%34'ün altında oksijen konsantrasyonu yangını söndürür; CO₂ tasarımı bunu garanti eder."
+        ],
+        operation: [
+          "Yangın doğrulandıktan sonra makine dairesi tahliye edilir.",
+          "Quick closing valves, fan, jaluzi ve yakıt valfleri kapatılır (uzaktan).",
+          "Release box açılır: önce alarm/time delay devreye girer, sonra master + silindir valfleri açılır.",
+          "Boşaltım sonrası hacim soğuyana ve gaz analiz yapılana kadar girilmez."
+        ],
+        faults: [
+          { fault: "Silindir basıncı düşük", cause: "Sızıntı veya valf gevşek", action: "Silindiri tart, %10 kayıpta yeniden doldur veya değiştir." },
+          { fault: "Sistem boşalmıyor", cause: "Pilot hattı tıkalı, valf yapışmış", action: "Pilot hattını kontrol et, manuel boşaltım koluna geç." },
+          { fault: "Time delay çalışmıyor", cause: "Pnömatik kaçak", action: "Hatları sızdırmazlık testi, yedek pilot silindirine geç." }
+        ],
+        precautions: [
+          "CO₂ odası iyi havalandırılmalı, sıcaklık < 55 °C olmalı.",
+          "Hacme girmeden önce oksimetre ile O₂ ölçülmeli (> %20.5 olmalı).",
+          "Release box mühürlü tutulmalı; mühür kırıldığında köprüüstüne bildirim gider.",
+          "Personel kazara aktivasyona karşı eğitilmeli, alarm anlamı bilinmelidir."
+        ]
+      },
+      {
+        title: "Köpüklü (Foam) Söndürme Sistemi",
+        introduction: "Foam sistemi, hidrokarbon yakıt yangınlarında yakıt yüzeyini örterek oksijen temasını kesen ve buhar oluşumunu engelleyen söndürme yöntemidir. Tankerlerde güverte foam, makine dairesinde ise lokal foam sistemi bulunur.",
+        sections: [
+          {
+            heading: "Foam Tipleri",
+            paragraphs: [
+              "AFFF (Aqueous Film Forming Foam), hidrokarbonların üzerinde ince film oluşturur; yaygın deniz tipi.",
+              "Alcohol Resistant (AR-AFFF), polar çözücü yangınlarında (alkol, keton) kullanılır.",
+              "High-expansion foam (genleşme oranı 200–1000), kapalı hacimleri hızla doldurur."
+            ],
+            table: {
+              headers: ["Genleşme", "Oran", "Kullanım"],
+              rows: [
+                ["Düşük", "< 20:1", "Güverte foam, tanker"],
+                ["Orta", "20–200:1", "Makine dairesi"],
+                ["Yüksek", "200–1000:1", "Kargo ambarı, kapalı hacim"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MARPOL ve SOLAS, tankerlerde güverte foam sistemini zorunlu kılar.",
+          "Foam konsantresi tipik %3 veya %6 oranında karıştırılır.",
+          "Foam monitor ve aplikatörler güverte boyunca dağıtılmıştır."
+        ],
+        workingPrinciple: [
+          "Yangın pompası deniz suyunu basınçlandırır.",
+          "Inductor (proportioner) venturi etkisiyle foam konsantresini ana hatta belirli oranda enjekte eder.",
+          "Foam–su karışımı nozüldeki hava ile çırpılarak köpük oluşturur.",
+          "Köpük yüzey üzerine örtülerek yangını boğar ve yakıt buharını bastırır."
+        ],
+        operation: [
+          "Yangın pompasını çalıştır ve hatta basınç ver.",
+          "Foam tankı valfini aç, inductor seçim valflerini ayarla.",
+          "Monitor/aplikatörü yangının kenarından merkeze doğru süpür.",
+          "Söndürme sonrası örtü tabakasını bozma; yeniden alevlenmeyi önle."
+        ],
+        faults: [
+          { fault: "Köpük üretmiyor", cause: "Konsantre yok, inductor tıkalı", action: "Tank seviyesini kontrol et, inductor sökerek temizle." },
+          { fault: "Köpük kalitesiz (suluk)", cause: "Karışım oranı yanlış, hava emilimi düşük", action: "Proportioner kalibrasyonu yap, nozülü kontrol et." },
+          { fault: "Konsantre tankı kontamine", cause: "Su kaçağı, yaşlanma", action: "Foam numunesini test et, gerekirse tankı boşaltıp yenisiyle doldur." }
+        ],
+        precautions: [
+          "Foam konsantresinin yıllık laboratuvar testi yapılmalı.",
+          "AFFF cilde temas ederse bol su ile yıkanmalı.",
+          "Tatbikat sonrası hat tatlı suyla yıkanmalı, korozyon önlenmeli.",
+          "Foam genişleme oranı ve drenaj süresi periyodik ölçülmeli."
+        ]
+      },
+      {
+        title: "Sprinkler ve Su Sisleme Sistemi (Water Mist)",
+        introduction: "Sprinkler sistemi otomatik olarak ısıyı algılayıp basınçlı su püskürten sabit söndürme sistemidir. Su sisleme (water mist), düşük su debisiyle yüksek basınçta çok ince damla üreterek hem söndürme hem soğutma sağlar.",
+        sections: [
+          {
+            heading: "Sistem Mantığı",
+            paragraphs: [
+              "Sprinkler başlığındaki cam ampul belirli sıcaklıkta (genelde 68 °C) patlar ve suyu serbest bırakır.",
+              "Hat basınçlı tutulur (wet pipe); su deşarjı anında alarm valfi aktif olur.",
+              "Water mist, 70–200 bar basınçta 100 µm altı damlacık üretir; oksijen yer değiştirmesi ve buhar soğutması ile söndürür."
+            ],
+            table: {
+              headers: ["Sistem", "Avantaj", "Kullanım Alanı"],
+              rows: [
+                ["Sprinkler (wet)", "Otomatik, basit", "Yatakhane, salonlar"],
+                ["Water mist HP", "Düşük su, hızlı söndürme", "Makine dairesi, gali"],
+                ["Deluge", "Tüm başlıklar açık, manuel start", "Helikopter güvertesi, tanker"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Yolcu gemilerinde aksanmadığı yatak/salon mahallerinde sprinkler zorunludur.",
+          "Water mist, CO₂'ye alternatif olarak makine dairelerinde IMO MSC.1/Circ.1387 kapsamında onaylanır.",
+          "Sistem basıncı sürekli izlenir; basınç düşüşü alarm verir."
+        ],
+        workingPrinciple: [
+          "Cam ampul ısıyla genleşip patlar, başlık açılır.",
+          "Hat basıncı düşer, alarm valfi açılır ve pompa devreye girer.",
+          "Deluge sisteminde manuel veya dedektör tetikleme ile tüm bölge başlıkları aynı anda boşalır."
+        ],
+        operation: [
+          "Sistemi her zaman basınçlı (charged) konumda tut.",
+          "Aylık manometre/akış kontrolü yap.",
+          "Test valfinden örnek deşarj alarak alarm valfini test et.",
+          "Deşarj sonrası ıslanan sigorta panelleri ve elektronik kontrol edilir."
+        ],
+        faults: [
+          { fault: "Hat basıncı düşmüş", cause: "Sızıntı, jokey pompa arızalı", action: "Sızıntıyı tespit et, jokey pompayı kontrol et." },
+          { fault: "Sprinkler başlığı sürekli sızdırıyor", cause: "Cam ampul bozuk, yataklama hatalı", action: "Başlığı değiştir, doğru moment ile sık." },
+          { fault: "Pompa otomatik start almıyor", cause: "Pressure switch arızalı", action: "Switch test, kontak temizle veya değiştir." }
+        ],
+        precautions: [
+          "Sprinkler başlıklarına boya, izolasyon veya ek yapılmamalı.",
+          "Başlık çevresinde 50 cm açık alan bırakılmalı.",
+          "Donma riskli alanlarda kuru tip (dry pipe) tercih edilmeli.",
+          "Yıllık kapsamlı sertifikasyon ve hidrostatik test yapılmalı."
+        ]
+      },
+      {
+        title: "Inert Gas Sistemi (IGS)",
+        introduction: "Inert gas sistemi, ham petrol ve ürün tankerlerinde kargo tanklarındaki oksijeni %5'in altına düşürerek patlayıcı atmosfer oluşumunu engeller. Boiler flue gazı veya inert gas jeneratörü ile üretilir.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Flue gas scrubber, kazan baca gazını deniz suyu ile yıkayarak SO₂ ve karbonu temizler.",
+              "Blower'lar gazı tank atmosferine basar; tipik basınç 800–1500 mmWC.",
+              "Deck water seal ve non-return valf, hidrokarbonların makine dairesine geri kaçışını önler.",
+              "P/V kırıcı (pressure/vacuum breaker) tank basıncını koruyan en son emniyet ekipmanıdır."
+            ],
+            table: {
+              headers: ["Bileşen", "İşlev"],
+              rows: [
+                ["Scrubber", "Gazı yıkar ve soğutur"],
+                ["IG Blower", "Tanklara gaz basar"],
+                ["Deck water seal", "Geri akışı önler"],
+                ["O₂ analizör", "Çıkış O₂'sini ölçer (< %5)"],
+                ["P/V valve", "Tank aşırı basınç/vakumu tahliye eder"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "SOLAS Reg. II-2/4.5.5: 8000 DWT üzeri tankerlerde IGS zorunludur.",
+          "Inert gas O₂ < %5, pozitif basınç altında tutulmalıdır.",
+          "Discharge, tank temizleme ve gas-freeing operasyonlarında inert ortam korunur."
+        ],
+        workingPrinciple: [
+          "Boiler exhaust ~%4 O₂ ile scrubber'a girer; deniz suyu yıkamasıyla soğutulur ve temizlenir.",
+          "Blower bu gazı deck main hattına basar.",
+          "Deck water seal sıvı bariyer oluşturarak geri akışı önler.",
+          "Hat basıncı düşerse alarm; çok artarsa P/V breaker tahliye eder."
+        ],
+        operation: [
+          "Boiler'ı yeterli yükte tut, scrubber pompasını çalıştır.",
+          "Blower'ı low/high speed devreye al, çıkış O₂'sini izle.",
+          "O₂ %5'in altına inince main isolation valfi aç.",
+          "Discharge sırasında tank pozitif basınçta tutulur (~200 mmWC)."
+        ],
+        faults: [
+          { fault: "Çıkış O₂ yüksek", cause: "Boiler düşük yük, blower kaçırıyor", action: "Boiler yükünü artır, blower seal/conta kontrol." },
+          { fault: "Deck water seal seviyesi düşük", cause: "Make-up su valfi kapalı", action: "Seviye otomatiğini kontrol et, manuel besle." },
+          { fault: "Hat basıncı düşüyor", cause: "Tank valfi sızdırıyor, P/V valve açık kalmış", action: "Valfleri kontrol, P/V'yi test et." }
+        ],
+        precautions: [
+          "Tank atmosferine giriş öncesi mutlaka gas-free + O₂ ölçümü yapılmalı.",
+          "IGS kapalıyken kargo discharge yasaktır.",
+          "Scrubber'da yıkama suyu sürekli akmalı, aksi halde aşırı sıcaklık ve korozyon olur.",
+          "Sistem üzerinde her zaman iki bağımsız non-return bariyer olmalı."
+        ]
+      },
+      {
+        title: "Yangın Dedektörleri ve Alarm Sistemi",
+        introduction: "Sabit yangın dedeksiyon sistemi, yangını erken aşamada algılayıp köprüüstüne ve mahallere uyarı veren elektronik sistemdir. Algılama tipi mahalle göre seçilir.",
+        sections: [
+          {
+            heading: "Dedektör Tipleri",
+            paragraphs: [
+              "İyonizasyon ve fotoelektrik duman dedektörleri yatakhane, koridor ve kontrol odalarında kullanılır.",
+              "Sıcaklık dedektörleri (sabit veya ROR – rate of rise) gali, çamaşırhane gibi yüksek nemli/buharlı yerlerde tercih edilir.",
+              "Alev dedektörü (UV/IR) hidrokarbon yangınlarında kullanılır; helikopter güvertesi, pump room.",
+              "Aspirating smoke detection (HSSD/VESDA) kargo ambarı için yüksek hassasiyetli erken algılama sağlar."
+            ],
+            table: {
+              headers: ["Dedektör", "Algılama", "Tipik Yer"],
+              rows: [
+                ["Foto/iyon duman", "Duman partikülü", "Yatakhane, ofis"],
+                ["Sabit sıcaklık", "Belirli sıcaklık (68 °C)", "Gali"],
+                ["ROR sıcaklık", "Hızlı sıcaklık artışı", "Makine dairesi"],
+                ["UV/IR alev", "Alev radyasyonu", "Pump room, helideck"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Yatak alanlarında hem duman dedektörü hem otomatik sprinkler bulunmalıdır.",
+          "Alarm panelinde yangın bölgesi, gözetim arızası ve test fonksiyonları bulunur.",
+          "Fail-safe: kablo kopması arıza alarmı vermelidir."
+        ],
+        workingPrinciple: [
+          "Duman dedektöründe optik oda; partikül girince ışık saçılır ve fotosel sinyali artar.",
+          "Sabit sıcaklık dedektöründe bimetal/eutektik elemanı eşik sıcaklıkta devreyi kapatır.",
+          "Sinyal merkezi panel tarafından bölgeye eşleştirilir, görsel + sesli alarm verilir."
+        ],
+        operation: [
+          "Panelden günlük lamp test ve haftalık bölge testi yapılır.",
+          "Test gazı/aerosolü ile yıllık dedektör testi (PSC kontrolünde sorulur).",
+          "Yatakhane dedektörleri 6 ayda bir tozdan temizlenmeli.",
+          "Yanlış alarm sonrası bölge önce silinir, sonra reset edilir."
+        ],
+        faults: [
+          { fault: "Sürekli yanlış alarm", cause: "Toz, nem, böcek", action: "Dedektörü temizle, gerekirse değiştir." },
+          { fault: "Bölge gözetim arızası", cause: "Kablo kopuk, dedektör çıkık", action: "Hattı ölç, terminasyonu kontrol et." },
+          { fault: "Panel batarya alarmı", cause: "Yedek akü zayıf", action: "Aküyü değiştir, şarj devresini test et." }
+        ],
+        precautions: [
+          "Dedektör altında 50 cm açık koni olmalı, eşya konmamalı.",
+          "Boya/dekorasyon sırasında dedektörler sökülmemeli, üzerleri kapatılmamalı.",
+          "Test sırasında köprüüstüne ve makine kontrol odasına önceden bilgi verilmeli.",
+          "Yıllık sertifika ve test raporları gemi kayıtlarında tutulmalı."
+        ]
+      },
+      {
+        title: "Seyyar Yangın Söndürücüler",
+        introduction: "Seyyar (portable) yangın söndürücüler, başlangıç yangınında ilk müdahale için tüm gemiye dağıtılan ekipmanlardır. Yangın sınıfına ve mahalle göre tip seçilir.",
+        sections: [
+          {
+            heading: "Sınıf ve Söndürücü Eşleşmesi",
+            paragraphs: [
+              "A sınıfı (katılar): su, AFFF köpük, çok amaçlı kuru kimyasal.",
+              "B sınıfı (sıvılar): köpük, CO₂, kuru kimyasal.",
+              "C sınıfı (gazlar): kuru kimyasal — önce gaz akışı kesilmeli.",
+              "D sınıfı (metaller): özel D tozu (alümünyum, magnezyum yangınları için).",
+              "Elektrik (eski E): CO₂ veya kuru kimyasal — su asla kullanılmaz."
+            ],
+            table: {
+              headers: ["Tip", "Kapsama Sınıfı", "Mahaller"],
+              rows: [
+                ["Su (9 L)", "A", "Yatakhane, koridor"],
+                ["Köpük (9 L)", "A, B", "Makine dairesi, mooring"],
+                ["CO₂ (5 kg)", "B, elektrik", "Switchboard, kontrol odası"],
+                ["Kuru kimyasal (6 kg)", "A, B, C, elektrik", "Genel kullanım"],
+                ["D tozu", "D", "Atölye, metal işleme"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "SOLAS, gemide minimum söndürücü sayısını mahalle göre belirler.",
+          "Söndürücüler 1.5 m yükseklikte, kolay erişilebilir ve etiketli olmalıdır.",
+          "Yıllık servis, 10 yılda bir hidrostatik test zorunludur."
+        ],
+        workingPrinciple: [
+          "Su: soğutma ile söndürür (yangın üçgeninden ısıyı çeker).",
+          "Köpük: yakıt yüzeyini örter, oksijeni keser.",
+          "CO₂: oksijeni seyreltir, soğutur (-78 °C).",
+          "Kuru kimyasal: yanma reaksiyonunu kimyasal olarak keser (zincir kırma)."
+        ],
+        operation: [
+          "P-A-S-S: Pin çek, Aim (alevin tabanına nişan al), Squeeze (kolu sık), Sweep (süpürerek uygula).",
+          "Rüzgârı arkana al, alevin tabanına yönlendir.",
+          "Söndürdükten sonra geri çekil, yeniden alevlenmeyi bekle.",
+          "Kullanılan veya boşalmış söndürücü hemen değiştirilir, kullanım kaydı tutulur."
+        ],
+        faults: [
+          { fault: "Manometre kırmızı bölgede (basınç düşük)", cause: "Sızıntı, sıcaklık değişimi", action: "Servise gönder, yeniden doldurt." },
+          { fault: "Tetik çekilmiyor", cause: "Pin sıkışmış, korozyon", action: "Söndürücüyü servise ver." },
+          { fault: "Hortum çatlak", cause: "Yaşlanma, UV", action: "Hortumu değiştir, yıllık servis kontrolünde işaretle." }
+        ],
+        precautions: [
+          "Söndürücüye yakın elektrik tablosu varsa CO₂/kuru kimyasal seçilmeli; su yasaktır.",
+          "CO₂ kapalı küçük hacimde kullanırsa boğulma riski vardır.",
+          "Kuru kimyasal sonrası elektronik ekipman kuruluk + temizlik gerektirir.",
+          "Personel yıllık tatbikatla söndürücü kullanımı konusunda eğitilmeli."
+        ]
+      },
+      {
+        title: "EEBD ve SCBA (Solunum Cihazları)",
+        introduction: "EEBD (Emergency Escape Breathing Device) sadece kaçış için, SCBA (Self-Contained Breathing Apparatus) ise yangın söndürme ve kapalı mahal girişi için kullanılan basınçlı hava solunum cihazlarıdır.",
+        sections: [
+          {
+            heading: "EEBD vs SCBA",
+            paragraphs: [
+              "EEBD minimum 10 dakikalık hava sağlar, sadece tahliye amaçlıdır; yangın söndürmede kullanılmaz.",
+              "SCBA tipik 1200/1800/2000 L hava ile 30–45 dakika çalışma süresi sunar.",
+              "SCBA seti: tüp, basınç regülatörü, demand valf, tam yüz maskesi, sırt taşıma çatısı, alçak basınç düdüğü içerir."
+            ],
+            table: {
+              headers: ["Özellik", "EEBD", "SCBA"],
+              rows: [
+                ["Amaç", "Sadece kaçış", "Müdahale + giriş"],
+                ["Süre", "≥ 10 dk", "30–45 dk"],
+                ["Maske", "Başlık", "Tam yüz maskesi"],
+                ["Basınç", "Kapalı devre / hood", "Açık devre, ~300 bar"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "SOLAS gereği her yatak alanı, makine dairesi ve kontrol odasında EEBD bulunmalı.",
+          "Gemide en az 2 SCBA seti ve her seti için 2 yedek tüp zorunludur (yangın takımı).",
+          "Yangın takımı: SCBA + yangın elbisesi + eldiven + bot + kask + can ipi + balta + el feneri."
+        ],
+        workingPrinciple: [
+          "Yüksek basınçlı tüp (200–300 bar) hava regülatörden orta basınca düşer.",
+          "Demand valf, kullanıcı nefes aldıkça maskeye hava verir.",
+          "Düşük basınç düdüğü ~55 bar'da çalar; geri dönüş zamanını bildirir."
+        ],
+        operation: [
+          "Kullanım öncesi tüp basıncını kontrol et (>%80 dolu olmalı).",
+          "Maske sızdırmazlık testi: tüm girişi kapat, derin nefes al — vakum tutmalı.",
+          "Cihazı tak, ana valfi tam aç, demand valfini bağla.",
+          "Görev sırasında basıncı izle; düdük çaldığında geri dön."
+        ],
+        faults: [
+          { fault: "Tüp basıncı düşük", cause: "Sızıntı veya yetersiz dolum", action: "Conta kontrol et, kompresörden yeniden doldur." },
+          { fault: "Demand valf sürekli açık (free flow)", cause: "Diyafram arızalı", action: "Servise gönder; yedek setle değiştir." },
+          { fault: "Maske sızdırıyor", cause: "Yanlış boy/sakal/conta yıpranmış", action: "Doğru boy seç, contayı değiştir, sakal traşı." }
+        ],
+        precautions: [
+          "SCBA tüpü için 5 yıllık hidrostatik test sertifikası gerekli.",
+          "Hava kompresöründe CO/CO₂/yağ buharı filtreleri periyodik değiştirilmelidir.",
+          "EEBD eğitimi yapılmadan kullanılmamalı; hood göz korumasını sağlamalı.",
+          "Yangın takımı yerinde, mühürlü ve eksiksiz tutulmalı; aylık kontrol kayda alınmalı."
+        ]
+      },
+      {
+        title: "Acil Tahliye ve Yangın Devre Dışı Bırakma (Quick Closing & Shut-off)",
+        introduction: "Yangın anında yakıt, havalandırma ve elektrik devrelerini hızla kesen uzaktan kumandalı sistemlerdir. Quick closing valves, fan stop, fuel pump stop ve emergency stop butonları içerir.",
+        sections: [
+          {
+            heading: "Sistem Mantığı",
+            paragraphs: [
+              "Quick closing valves (QCV) makine dairesi dışındaki bir panelden tetiklenir; yakıt tankı, lubrikasyon yağı tankları ve servis tanklarındaki valfleri kapatır.",
+              "Fan stop ve damper kapatma sistemi makine dairesi havalandırmasını keser, oksijeni azaltır.",
+              "Yakıt pompası ve purifier emergency stop butonları yangın bölgesi dışına yerleştirilir.",
+              "Skylight, jaluzi ve havalandırma kanalı kapakları manuel veya pnömatik kapatılabilir."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Tüm acil stop ve QCV kontrolleri makine dairesi dışında, kolay ulaşılır panelde olmalı.",
+          "Sistemler aylık test edilmeli, kayıt tutulmalıdır.",
+          "Pnömatik QCV'lerde yedek azot/hava şişesi her zaman dolu olmalıdır."
+        ],
+        workingPrinciple: [
+          "QCV sapanı çekildiğinde önceden kurulmuş yay kuvveti valf tabağını kapatır.",
+          "Pnömatik tipte ise kontrol valfi açılınca silindir QCV'yi kapatır.",
+          "Fan stop kontağı motor kontaktörünü açar, fan durur.",
+          "Yakıt servis pompası emergency stop kontağı koruma rölesi üzerinden devreyi keser."
+        ],
+        operation: [
+          "Yangın doğrulanıp tahliye sağlandıktan sonra: yakıtı kes (QCV) → fanları durdur → yakıt pompalarını durdur → CO₂ release.",
+          "Aylık testlerde her QCV ayrı ayrı kapatılır, açılır, gres yapılır.",
+          "Emergency stop butonları PSC denetiminde fonksiyonel test edilir.",
+          "Test sonrası ilgili sistemlerin yeniden hatta alındığı log defterine yazılır."
+        ],
+        faults: [
+          { fault: "QCV kapanmıyor", cause: "Yay korozyonu, kablo gevşek, hava basıncı yok", action: "Mekanik kontrol, yağla, hava şişesi basıncını doldur." },
+          { fault: "Fan stop çalışmıyor", cause: "Kontaktör bobini arızalı", action: "Kontaktörü test et, bobini değiştir." },
+          { fault: "QCV sızdırıyor", cause: "Tabak/seat aşınmış", action: "Valf revize edilmeli, gerekirse değiştirilmeli." }
+        ],
+        precautions: [
+          "Tatbikat dışında QCV asla kapatılmamalı (ana makine durabilir).",
+          "Test öncesi köprüüstü ve makine kontrol odası bilgilendirilmeli.",
+          "Re-set sonrası yakıt hattında havayı al, sızıntı kontrol et.",
+          "Etiketleme net olmalı: hangi tank/pompa hangi sapana bağlı belirtilmeli."
+        ]
+      }
+    ]
   }
 };
