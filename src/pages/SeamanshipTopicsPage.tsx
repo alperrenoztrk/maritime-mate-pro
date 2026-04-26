@@ -29,6 +29,16 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+// Gemicilik gerçekçi fotoğraflar
+import photoRopeTypes from "@/assets/seamanship/rope-types.jpg";
+import photoWireRope from "@/assets/seamanship/wire-rope.jpg";
+import photoAnchorTypes from "@/assets/seamanship/anchor-types.jpg";
+import photoAnchorChain from "@/assets/seamanship/anchor-chain.jpg";
+import photoKnotsDisplay from "@/assets/seamanship/knots-display.jpg";
+import photoShipPartsOverview from "@/assets/seamanship/ship-parts-overview.jpg";
+import photoMooringEquipment from "@/assets/seamanship/mooring-equipment.jpg";
+import photoWindlass from "@/assets/seamanship/windlass.jpg";
+
 interface SeamanshipSubTopic {
   id: string;
   title: string;
@@ -215,6 +225,7 @@ interface TopicContent {
   introduction: string;
   content: string;
   image?: string;
+  photos?: { src: string; caption: string }[];
   table?: { title: string; headers: string[]; rows: string[][] };
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
