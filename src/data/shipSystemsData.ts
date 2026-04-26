@@ -2045,5 +2045,466 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ]
       }
     ]
+  },
+  "cargo-systems": {
+    title: "Yük Sistemleri ve Ekipmanları",
+    description: "Kargo pompaları, COW, lashing, hatch cover, ramp ve reefer ekipmanları",
+    topics: [
+      {
+        title: "Kargo Pompaları (Cargo / Stripping / Booster)",
+        introduction: "Kargo pompaları, sıvı yük taşıyan tankerlerde yükün boşaltılması, son sıyırma (stripping) ve yüksek terminal basıncı ihtiyacını karşılayan boost (booster) operasyonlarında kullanılan büyük debili pompalardır. Tipik olarak ana kargo pompaları santrifüj, stripping pompaları ise pozitif deplasmanlıdır.",
+        sections: [
+          {
+            heading: "Pompa Tipleri ve Kullanım Alanları",
+            paragraphs: [
+              "Santrifüj kargo pompaları: ham petrol ve ürün tankerlerinde 1500–6000 m³/h debide çalışır; pump room'da bulunur ve buhar/elektrik motoruyla tahrik edilir.",
+              "Submerged (deepwell) pompalar: kimyasal tankerlerde her tank için ayrı, tank tabanına yerleştirilmiş hidrolik tahrikli pompalar; cross-contamination riskini ortadan kaldırır.",
+              "Stripping pompaları: pozitif deplasmanlı (vidalı veya pistonlu) tip; tank dibinde kalan son ~5–20 m³ yükü çekmek için kullanılır.",
+              "Booster pompası: terminalin manifold basıncı yüksekse hat basıncını artırmak için ana pompa çıkışına seri bağlanır."
+            ],
+            table: {
+              headers: ["Pompa", "Tip", "Tipik Görev"],
+              rows: [
+                ["Cargo pump", "Santrifüj / submerged", "Ana boşaltım"],
+                ["Stripping pump", "Pozitif deplasman", "Tank dibi sıyırma"],
+                ["Booster pump", "Santrifüj", "Terminal basıncını yenmek"],
+                ["Eductor", "Venturi (jet)", "Slop tankı boşaltma"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Pump room atmosferi sürekli ventile edilir; gas detection sistemine bağlıdır.",
+          "Pompa keçesi sıcaklığı pillow block ile sürekli izlenir; aşırı ısınma yangın riskidir.",
+          "Discharge basıncı ve emiş vakumu MARPOL 5 cm/sn akış sınırına göre ayarlanır."
+        ],
+        workingPrinciple: [
+          "Santrifüj pompada impeller döner; merkezkaç kuvveti sıvıyı çevreden volute'e fırlatır ve discharge basıncı oluşur.",
+          "Submerged pompada tank içi pompa motoru hidrolik yağ ile tahrik edilir; sıvı doğrudan pompa içinden riser borusuna yükselir.",
+          "Pozitif deplasmanlı stripping pompası her devirde sabit hacim hareket ettirir; düşük debi ama yüksek vakum sağlar.",
+          "Booster pompa ana pompanın discharge'ını alıp tekrar basınçlandırır."
+        ],
+        operation: [
+          "Tank discharge planına göre suction valfi aç, manifold valfini terminale yönlendir.",
+          "Pump room'u ventile et, gas detection sistemini aktif tut.",
+          "Pompayı düşük rpm'de çalıştır, prime tamamlandığında akışı yavaş yavaş artır.",
+          "Tank seviyesi ~%10'a düştüğünde stripping pompasına geç; vakum-cleared lamp ile kontrol et.",
+          "Boşaltım sonunda hatları nitrogen/inert gazla pürjle, manifold'u bodu içerikle yıka."
+        ],
+        faults: [
+          { fault: "Pompa basınç vermiyor", cause: "Hava emiyor, valf kapalı, impeller aşınmış", action: "Suction line ve valfleri kontrol et, prime al, impeller bakım." },
+          { fault: "Pompa sıcaklık alarmı", cause: "Yatak yağı yetersiz, mekanik conta sızıntı", action: "Yağı kontrol et, mechanical seal değiştir, hemen durdur." },
+          { fault: "Vibrasyon yüksek", cause: "Kavitasyon, hizalama bozuk, impeller dengesiz", action: "NPSH kontrol, hizalamayı yeniden yap, balanslama." },
+          { fault: "Stripping pompa vakum vermiyor", cause: "Vidanın kuru çalışması, conta yıpranmış", action: "Sıvı seal sağla, conta değişimi yap." }
+        ],
+        precautions: [
+          "Pump room'a girmeden önce O₂, LEL ve H₂S ölçümü yapılmalı; gerekirse SCBA kullanılmalı.",
+          "Statik elektrik birikimini önlemek için akış hızı ilk dakikada 1 m/s ile sınırlandırılmalı.",
+          "Acil stop butonları pump room dışında, en az iki ayrı noktada bulunmalı.",
+          "Boşaltım sırasında trim ve heel sürekli izlenmeli; serbest yüzey momenti hesaba katılmalı."
+        ]
+      },
+      {
+        title: "Crude Oil Washing (COW) Sistemi",
+        introduction: "COW, ham petrol tankerlerinde tank duvarlarındaki tortu ve mum birikintilerini, yüke ait sıcak ham petrolün yüksek basınçla püskürtülmesiyle temizleyen IMO/MARPOL onaylı bir yıkama sistemidir. ROB (remaining on board) miktarını azaltır ve tank temizliği için ek ballast/su kullanımını ortadan kaldırır.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Programlı dönen tank washing makineleri (Butterworth, Toftejorg) tank tepesi ve dibinde belirli açı/devirde çalışır.",
+              "COW pompası ham petrolü 8–12 bar basınçla makinelere besler.",
+              "Inert gas sistemi (IGS) tank atmosferinde O₂ < %5 garantisi sağlar; COW sırasında IGS aktif olmak zorundadır.",
+              "Fixed gas freeing fan ve hat purje düzeni, yıkama sonrası tankı gas-free yapar."
+            ],
+            table: {
+              headers: ["Bileşen", "İşlev"],
+              rows: [
+                ["Tank washing machine", "Yüksek basınçla yıkama jeti"],
+                ["COW pump", "Yıkama basıncını sağlar"],
+                ["Stripping system", "Yıkama suyunu/sökülen petrolü tahliye eder"],
+                ["IGS", "O₂ < %5 inert atmosfer"],
+                ["Pressure gauge", "Hat basıncını izler"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MARPOL Reg. 33: 20.000 DWT üzeri ham petrol tankerlerinde COW zorunludur.",
+          "Yıkama sırasında tank atmosferi O₂ < %5 olmalı (patlama önleme).",
+          "Discharge planında COW programı, makine sayısı ve süreleri belirtilmelidir."
+        ],
+        workingPrinciple: [
+          "Tank seviyesi belirli bir oranda boşaltıldıktan sonra COW pompası devreye girer.",
+          "Makine, tank içinde belirli açıda dönerken jet ham petrolü duvarlara çarptırarak tortuyu çözer.",
+          "Çözünen tortu yükle birlikte stripping pompası ile slop tankına aktarılır.",
+          "İkinci aşama (bottom wash) tank dibine odaklanır; ROB minimize edilir."
+        ],
+        operation: [
+          "Tank seviyesi yarıya indiğinde top wash başlat.",
+          "Boşaltım %90 tamamlanınca bottom wash devreye al.",
+          "Yıkama süresince hat basıncını ve makine devrini izle.",
+          "Yıkama sonrası tankı stripping ile boşalt, IGS ile basınçta tut.",
+          "Yıkama kayıtlarını COW Operations Manual ve Oil Record Book'a işle."
+        ],
+        faults: [
+          { fault: "Düşük yıkama basıncı", cause: "Pompa arızası, hat sızıntısı, makine tıkalı", action: "Pompa kontrol, hat sızıntı testi, makine sökerek temizle." },
+          { fault: "Makine dönmüyor", cause: "Türbin kanadı tıkalı, hidrolik motor arızalı", action: "Makineyi sök, türbini temizle veya motoru değiştir." },
+          { fault: "O₂ %5'i geçti", cause: "IGS deficit, blower arızası", action: "COW'u durdur, IGS'i normalleştir, sonra yeniden başlat." }
+        ],
+        precautions: [
+          "COW sırasında O₂ analizör sürekli okuma vermeli; trip seviyesi %8.",
+          "Yıkama makineleri için onaylı operasyonel zarf (envelope) dışına çıkılmamalı.",
+          "Statik şarj birikimini önlemek için yıkama akışı kontrol edilmeli.",
+          "Personel pump room'a girmeden önce H₂S ölçümü yapmalı (özellikle sour crude)."
+        ]
+      },
+      {
+        title: "Tank Seviye Ölçüm ve İzleme Sistemleri",
+        introduction: "Tank gauging sistemleri, kargo ve ballast tanklarındaki sıvı seviyesi, sıcaklık, basınç ve gaz konsantrasyonunu uzaktan ve sürekli izleyen sensör ve ekran ağıdır. UTI (Ullage-Temperature-Interface) cihazı manuel sondaj için kullanılır.",
+        sections: [
+          {
+            heading: "Sensör Tipleri",
+            paragraphs: [
+              "Radar gauge: tank tepesinden mikrodalga sinyaliyle ullage'ı ölçer; ham petrol/ürün tankerlerinde standart.",
+              "Float gauge: şamandıralı mekanik sistem; servisi kolay ama hassasiyeti düşük.",
+              "Pressure gauge (hidrostatik): tank dibi basıncını ölçerek seviye hesaplar; ballast ve double bottom için yaygın.",
+              "Independent overfill alarm (IOA): yüksek seviyede ana sistemden bağımsız alarm verir."
+            ],
+            table: {
+              headers: ["Sensör", "Hassasiyet", "Tipik Yer"],
+              rows: [
+                ["Radar", "± 3 mm", "Kargo tankı"],
+                ["Float", "± 10 mm", "Slop, ballast"],
+                ["Pressure", "± 50 mm", "Double bottom"],
+                ["IOA", "Set point alarm", "Tüm kargo tankları"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MARPOL ve ISGOTT, kargo transferinde bağımsız high-level alarm zorunlu kılar.",
+          "UTI cihazı interface (su/yağ sınırı) ölçümünde kullanılır.",
+          "Tank atmosferi inert ise vapor lock valfinden geçilmeli."
+        ],
+        workingPrinciple: [
+          "Radar gauge, tank tepesindeki anten 6–10 GHz mikrodalga gönderir; sıvı yüzeyinden yansıyan sinyalin gecikmesi ullage'a çevrilir.",
+          "Hidrostatik sensör tank dibindeki basıncı sıvı yoğunluğuna bölerek seviye hesaplar.",
+          "PT100 sıcaklık sensörü tankın 3 farklı yüksekliğinde sıcaklık ortalaması verir.",
+          "Sinyaller CCR (cargo control room) ekranında grafiksel olarak gösterilir."
+        ],
+        operation: [
+          "Yükleme/boşaltım öncesi radar gauge'ı manuel UTI ile çapraz kontrol et.",
+          "High level alarm test butonu ile çalışırlığını doğrula.",
+          "Ullage, sıcaklık ve trim'i CCR'da sürekli izle.",
+          "Inerted tank'a UTI sokmadan önce vapor lock valfi açılmalı, statik bonding sağlanmalı."
+        ],
+        faults: [
+          { fault: "Radar okuması atlamalı", cause: "Anten kirli, vapor space yoğun buhar", action: "Anteni temizle, kalibrasyon yap." },
+          { fault: "Yüksek seviye alarmı çalışmıyor", cause: "Sensör arızalı, kablo kopuk", action: "Sensörü test et, hattı ölç, yedek devreye al." },
+          { fault: "Sıcaklık okuması düşük", cause: "PT100 contact resistance", action: "Bağlantıyı sıkı, gerekirse PT100 değiştir." }
+        ],
+        precautions: [
+          "UTI manuel ölçümde statik bonding kablosu mutlaka takılmalı.",
+          "Yükleme sırasında bağımsız overfill alarm fonksiyonel olmalı.",
+          "Tank ullage planı ve sıcaklık logu shift bazlı tutulmalı.",
+          "Sensör kalibrasyon sertifikası periyodik olarak yenilenmelidir."
+        ]
+      },
+      {
+        title: "Hatch Cover (Ambar Kapağı) Sistemi",
+        introduction: "Hatch cover, kuru yük gemilerinde ambar ağzını kapatan; yük emniyetini, su geçirmezliği ve yapısal mukavemeti sağlayan büyük çelik kapak sistemidir. Folding, side-rolling, piggyback ve pontoon tipleri yaygındır.",
+        sections: [
+          {
+            heading: "Tipleri",
+            paragraphs: [
+              "Folding (katlanır) tip: hidrolik silindirlerle kapak panelleri açılarak ambar başına katlanır.",
+              "Side-rolling tip: panel raylar üzerinde yana doğru kayar; kapasiteler büyük, container gemilerinde yaygın.",
+              "Pontoon tip: tek parça paneller vinçle kaldırılır; küçük gemilerde tercih edilir.",
+              "Piggyback: iki panel arka arkaya kayar, üstüste biner."
+            ],
+            table: {
+              headers: ["Tip", "Kullanım", "Avantaj"],
+              rows: [
+                ["Folding", "Bulker", "Hızlı açılma"],
+                ["Side-rolling", "Container/bulker", "Büyük açıklık"],
+                ["Pontoon", "Genel kuru yük", "Basit, ucuz"],
+                ["Piggyback", "Küçük gemiler", "Az alan ihtiyacı"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "ICLL ve SOLAS Reg. II-1/16: weathertight integrity için Class testleri zorunlu.",
+          "Sızdırmazlık testi: hose test (≥ 2 bar) veya ultrasonic test.",
+          "Ambar kapağı yük taşıma kapasitesi (kPa) yük tipine göre belirlenir."
+        ],
+        workingPrinciple: [
+          "Hidrolik güç ünitesi (HPU), silindirleri ve kilit mekanizmalarını çalıştırır.",
+          "Açma sırasında: kilitler açılır → kapak yükselir → silindir paneli yana/aşağı katlar.",
+          "Sızdırmazlık coaming çevresindeki rubber gasket ile sağlanır; kapak kapanırken bastırılır.",
+          "Drainage channel sızan suyu over-board veya bilge'a yönlendirir."
+        ],
+        operation: [
+          "Açmadan önce kapağın üstündeki yük ve buz/kar temizlenmeli.",
+          "HPU'yu çalıştır, basıncı set değere getir.",
+          "Kilitleri sırasıyla aç, kapak hareketi sırasında kimseyi yaklaştırma.",
+          "Kapatma sonrası gasket'in tam oturduğunu kontrol et, kilitleri sık.",
+          "Denize çıkmadan önce hose test ile sızdırmazlığı doğrula."
+        ],
+        faults: [
+          { fault: "Kapak tam kapanmıyor", cause: "Coaming üzerinde tortu, hidrolik basınç düşük", action: "Coaming temizle, HPU basıncı kontrol et." },
+          { fault: "Sızıntı tespit edildi", cause: "Gasket aşınmış, kompresyon bar bozuk", action: "Gasket yenile, kompresyon bar düzelt." },
+          { fault: "Hidrolik silindir hareket etmiyor", cause: "Hava kilidi, valf arızası, sızıntı", action: "Sistemi havadan al, valf ve seal kontrol et." }
+        ],
+        precautions: [
+          "Açık kapak fırtınalı havada operasyon yapılmamalı.",
+          "Kapak üzerinde personel çalışacaksa kilit emniyeti (chock pin) takılmalı.",
+          "Periyodik gasket kontrolü ve hose/ultrasonic test kayıtları tutulmalı.",
+          "Hatch cover load capacity stowage planında dikkate alınmalı."
+        ]
+      },
+      {
+        title: "Lashing & Securing (Bağlama ve Sabitleme) Donanımı",
+        introduction: "Konteyner ve özel yük gemilerinde yükün denizde hareket etmesini önlemek amacıyla kullanılan twist-lock, lashing rod, turnbuckle, stacking cone ve buzzbar gibi ekipmanların bütünüdür. Cargo Securing Manual (CSM) zorunlu referanstır.",
+        sections: [
+          {
+            heading: "Ekipmanlar",
+            paragraphs: [
+              "Twist-lock: container köşelerine geçen, kilitlenebilir bağlantı; semi-automatic ve fully-automatic varyantları vardır.",
+              "Lashing rod: container köşesinden güverte D-ring'e uzanan çelik çubuk; turnbuckle ile gerilir.",
+              "Turnbuckle: lashing rod'un gerilimini ayarlayan vidalı germe elemanı.",
+              "Stacking cone: container'ları üst üste hizalayan pasif eleman.",
+              "Bridge fitting: yan yana iki container'ı üst köşelerinden birbirine kilitler."
+            ],
+            table: {
+              headers: ["Ekipman", "Yük (MSL)", "Tipik Kullanım"],
+              rows: [
+                ["Twist-lock", "250 kN", "Tüm kat seviyeleri"],
+                ["Lashing rod (uzun)", "245 kN", "2. ve 3. kat"],
+                ["Turnbuckle", "245 kN", "Rod germe"],
+                ["Stacking cone", "—", "İstifleme hizalama"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MSL (Maximum Securing Load) = breaking load × 0.5 (genel kural).",
+          "Lashing planı CSM'e göre kapasite, hava şartı ve istif yüksekliğine göre yapılır.",
+          "Periyodik MPI/visual inspection ile çatlak, korozyon ve deformasyon takip edilir."
+        ],
+        workingPrinciple: [
+          "Twist-lock üst container'ın corner casting'ine girer ve 90° döndürülerek kilitlenir.",
+          "Lashing rod'un alt ucu D-ring'e takılır, üst ucu container köşesine; turnbuckle ile gerdirilir.",
+          "Yükün eylemsizliği (acceleration × mass), lashing'in MSL toplamından küçük olmalı.",
+          "CSM, geminin GM ve roll periyoduna göre lashing kuvveti hesabı verir."
+        ],
+        operation: [
+          "Yükleme öncesi tüm ekipman görsel kontrolden geçirilir.",
+          "Stowage planına göre twist-lock'lar konteyner altına yerleştirilir.",
+          "Container indirilip locked edildikten sonra lashing rod'lar takılır.",
+          "Turnbuckle hand-tight + 1/2 tur ile sıkılır, gevşeklik kontrolü deniz seyri sırasında günlük yapılır.",
+          "Heavy weather raporu sonrası lashing kontrolü tekrarlanır."
+        ],
+        faults: [
+          { fault: "Twist-lock kilitlenmiyor", cause: "Yay arızası, kir, deformasyon", action: "Yedek twist-lock ile değiştir, arızalıyı servise gönder." },
+          { fault: "Turnbuckle gevşiyor", cause: "Self-loosening, vibrasyon", action: "Locknut/wire ile emniyete al, periyodik sıkma." },
+          { fault: "Lashing rod eğilmiş", cause: "Aşırı yük, çarpma", action: "Hemen değiştir, MPI testi." }
+        ],
+        precautions: [
+          "Lashing operasyonu sırasında baret, eldiven ve emniyet ayakkabısı zorunlu.",
+          "Yüksek seviyelere lashing eldiveni ile mast climber/cherry picker kullanılmalı.",
+          "Aşırı sıkmaktan kaçın; turnbuckle thread bozulur.",
+          "Heavy weather durumunda güverteye lashing kontrolü için çıkış yasaklanabilir."
+        ]
+      },
+      {
+        title: "Reefer Container Plug ve Soğutma Devresi",
+        introduction: "Reefer (refrigerated) container'lar, gemi şebekesinden 380–460 V / 60 Hz beslenen, kendi kompresörlü soğutma ünitesi olan kapalı container'lardır. Sıcaklık aralığı genellikle -30 °C ile +30 °C arasıdır.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Reefer plug socket: 32 A / 4 pin / 440 V CEE-form; her container'ın güç bağlantısı için.",
+              "Reefer monitoring system (RMS): set sıcaklık, return-air, supply-air ve alarm durumlarını izler.",
+              "Power management system (PMS): toplam reefer yükünü jeneratör kapasitesine göre dengeler.",
+              "Container içi ünitede kompresör, kondenser, evaporatör ve fan bulunur."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Şebeke: 60 Hz reefer için karada/gemide 60 Hz besleme zorunludur (50 Hz ünite verimini düşürür).",
+          "RMS uyarıları en az 4 saatte bir kontrol edilmeli ve loglanmalıdır.",
+          "Reefer manifest'i: container no, set sıcaklık, vent açıklığı, ürün tipi içerir."
+        ],
+        workingPrinciple: [
+          "Plug bağlantısı yapıldığında container içi PLC sıcaklığı set değere getirmek için kompresörü çalıştırır.",
+          "Soğutucu gaz (R-134a, R-404A vb.) kompresörde sıkıştırılır → kondenserde dış havayla yoğuşur → expansion valve'de basınç düşer → evaporatörde container içi havayı soğutur.",
+          "Defrost cycle (otomatik) periyodik olarak evaporatördeki buzu eritir.",
+          "RMS, alarmları gemi şebekesine ethernet/PLC üzerinden iletir."
+        ],
+        operation: [
+          "Container'ı plug'a takmadan önce socket voltajını ölçerek kontrol et.",
+          "Set sıcaklık, vent ve hava değişim oranını manifest'e göre ayarla.",
+          "Pre-trip inspection (PTI) raporunu doğrula.",
+          "Günlük RMS kontrolü yap; alarm varsa yedek socket'e bağla.",
+          "Boşaltımdan önce sıcaklık logu çıktısını al."
+        ],
+        faults: [
+          { fault: "Container'a güç gitmiyor", cause: "Soketin sigortası attı, kablo arızalı", action: "Sigortayı reset et, kabloyu test et." },
+          { fault: "Yüksek return air alarm", cause: "Kondenser tıkalı, kompresör arızalı", action: "Kondenseri temizle, gaz şarjını kontrol et." },
+          { fault: "Defrost çalışmıyor", cause: "Heater arızalı, defrost kontrolü bozuk", action: "Heater test, kontrol kartı kontrol." },
+          { fault: "PMS reefer yükü trip", cause: "Toplam yük jeneratör kapasitesini aştı", action: "Reefer'leri kademeli devreye al, PMS limit ayarı." }
+        ],
+        precautions: [
+          "Plug ve cable bağlantısı yapılırken eldiven ve yalıtkan ayakkabı kullanılmalı.",
+          "IMDG sınıfı tehlikeli yük varsa reefer'lar segregation kurallarına göre dağıtılmalı.",
+          "Yangın riski: reefer plug yangınları sıkça görülür; sigorta panosu ısı izlenmeli.",
+          "RMS kayıtları konişmento (BL) için kanıt niteliğindedir, korunmalıdır."
+        ]
+      },
+      {
+        title: "Ramp ve Cargo Door (Ro-Ro)",
+        introduction: "Ro-Ro gemilerinde araç/yük yüklemesi için kullanılan stern ramp, side ramp, bow visor ve interior ramp sistemleri; hidrolik tahrikli, weathertight kapanan büyük çelik konstrüksiyonlardır. Estonia kazasından sonra bow visor güvenliği SOLAS ile sıkılaştırılmıştır.",
+        sections: [
+          {
+            heading: "Tipler ve İşlevler",
+            paragraphs: [
+              "Stern ramp: kıç tarafta açılan, en yaygın yükleme rampası; quarter ramp varyantı belirli açıyla yana açılır.",
+              "Side ramp: gemi yan tarafından açılır, terminal yapısına bağlı kullanılır.",
+              "Bow visor + ramp: baş tarafta açılan kapaklar; visor weathertight koruma, ramp yükleme sağlar.",
+              "Internal ramp: güverteler arası araç hareketi için sabit veya hareketli rampalar."
+            ],
+            table: {
+              headers: ["Tip", "Yer", "Tipik Yük"],
+              rows: [
+                ["Stern ramp", "Kıç", "Tır, otomobil, MAFI"],
+                ["Quarter ramp", "Kıç-yan", "Heavy lift, trailer"],
+                ["Side ramp", "Yan", "Otomobil"],
+                ["Internal ramp", "Decks arası", "Geçiş"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "SOLAS Reg. II-1/17: weathertight closure ve closure indicator zorunlu.",
+          "Ramp eğimi tipik 1:6 – 1:8; aşırı eğim araç emniyetini bozar.",
+          "Closure indicator köprüüstünde sürekli izlenir."
+        ],
+        workingPrinciple: [
+          "HPU hidrolik silindirleri besler; ramp menteşelerinden açılır.",
+          "Locking pinler kapalı pozisyonda otomatik veya manuel kilitlenir.",
+          "Weathertight gasket coaming üzerinde sızdırmazlığı sağlar.",
+          "Inclination ve closure switch sinyali bridge alarm sistemine gider."
+        ],
+        operation: [
+          "Açmadan önce trim/list kontrol et, ramp ucu rıhtıma denk gelmeli.",
+          "Kilitleri açıp HPU'yu devreye al; ramp'ı yavaş indir.",
+          "Yükleme sonrası ramp'ı kaldır, kilitle ve sızdırmazlığı kontrol et.",
+          "Closure indicator'ın 'closed' sinyali bridge'te görünmeli.",
+          "Denizde fırtınada ramp ekstra securing pin/wire ile emniyete alınır."
+        ],
+        faults: [
+          { fault: "Ramp inmiyor", cause: "HPU basıncı yok, kilit takılı, kontrol valfi arızalı", action: "HPU ve kilitleri kontrol et, valfi devre dışı bırakıp manuel hareket dene." },
+          { fault: "Closure indicator alarmı", cause: "Switch arızalı, kapak tam oturmamış", action: "Switch test, kapak yeniden kapatma." },
+          { fault: "Sızıntı (su girişi)", cause: "Gasket aşınmış, locking gevşek", action: "Gasket yenile, kilit sık." }
+        ],
+        precautions: [
+          "Ramp altında personel/araç bulunduğunda hareket yasaktır.",
+          "Bow ramp/visor weathertight integrity'si denize çıkış öncesi mutlaka doğrulanır.",
+          "Trim ve list ramp eğiminden ±2° aşmamalı.",
+          "Yıllık class survey kapsamında ramp yapısal muayenesi yapılmalıdır."
+        ]
+      },
+      {
+        title: "Cargo Gear (Vinç ve Derikler)",
+        introduction: "Genel kuru yük ve heavy lift gemilerinde yük elleçleme için kullanılan ship's cargo gear; deck crane, derrick (Stülcken, swinging), heavy lift derrick ve gantry crane gibi türlerdir. SWL (Safe Working Load) ve register testleri zorunludur.",
+        sections: [
+          {
+            heading: "Tipler",
+            paragraphs: [
+              "Deck crane: 360° döner, hidrolik tahrikli; bulker ve general cargo gemilerinde 25–60 t SWL.",
+              "Derrick: tek veya çift halatlı sistem; basit, hafif yükler için.",
+              "Stülcken derrick: iki direk arasında ağır yükleri (200+ t) elleçleyebilir.",
+              "Gantry crane: konteyner gemilerinde rays üzerinde hareket eder."
+            ]
+          }
+        ],
+        keyPoints: [
+          "ILO 152 ve Register of Cargo Gear yıllık tutulmalı, sertifikalar geçerli olmalı.",
+          "Yıllık thorough examination, 5 yılda bir proof load test (1.25 × SWL).",
+          "SWL plate vinç üzerinde okunaklı olmalı."
+        ],
+        workingPrinciple: [
+          "Hidrolik motor → ana tambur (hoist) → wire rope → blok → kanca akışı.",
+          "Slewing (dönüş) hidrolik veya elektrik motor + dişli üzerinden sağlanır.",
+          "Luffing silindiri bom açısını değiştirir (SWL bom açısına göre değişir).",
+          "Limit switch'ler aşırı yük, aşırı yükselme ve son nokta korumasını sağlar."
+        ],
+        operation: [
+          "Vinci çalıştırmadan önce yağ seviyesi, tel halat ve kanca emniyetini kontrol et.",
+          "Yük ağırlığını SWL × açı tablosundan doğrula.",
+          "Slewing sırasında ani durdurmadan kaçın; yük salınımı engellenir.",
+          "Tag line (rehber halat) ile yük dönüşü kontrol edilir.",
+          "Operasyon bitince bom kavrama bracket'ine yerleştirilir."
+        ],
+        faults: [
+          { fault: "Hoist çalışmıyor", cause: "Hidrolik basınç düşük, valf bobin arızası", action: "Pompa basıncını kontrol et, bobini değiştir." },
+          { fault: "Slewing salınımlı", cause: "Bearing aşınmış, yağ kontamine", action: "Slewing bearing yağı kontrol, gerektiğinde değişim." },
+          { fault: "Tel halat çatlağı", cause: "Aşınma, korozyon, yorulma", action: "Halatı segment olarak inceleme, kriter aşıldıysa değiştir." },
+          { fault: "Limit switch trip", cause: "Yanlış kalibrasyon, mekanik takıntı", action: "Limit switch ayarı, mekanik mafsal kontrol." }
+        ],
+        precautions: [
+          "Yük altında veya salınım yörüngesinde personel bulunamaz.",
+          "Rüzgar > 15 m/s veya gemi list > 5° iken cargo gear durdurulur.",
+          "Tel halat NDT (MPI/UT) periyodik yapılmalı; greasing aylık.",
+          "Sertifikalı operatör + sinyalist ile çalışılmalı; el işaretleri standardize edilmiş olmalı."
+        ]
+      },
+      {
+        title: "Tank Temizleme ve Slop / Eductor Sistemi",
+        introduction: "Tank cleaning, kargo değişimleri sırasında veya yard girişi öncesi tank içi yıkama, gas freeing ve atık yönetimi operasyonudur. Tankerlerde slop tankı ve eductor sistemi atık yönetiminin merkezindedir.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Tank washing makineleri (portable Butterworth veya fixed) sıcak/soğuk su veya kimyasal çözeltiyle yıkama yapar.",
+              "Slop tankı, yıkama suyunu ve yağlı atığı bir süre tutarak ayrışmasını sağlar (decanting).",
+              "Eductor (jet pump): yıkama suyunu vakum ile çekip slop'a aktarır; mekanik parça yoktur.",
+              "Heated washing line, viskoz ürünler için 60–80 °C su sağlar."
+            ]
+          }
+        ],
+        keyPoints: [
+          "MARPOL Annex I Reg. 34: load on top (LOT) prosedürü ile slop dekantasyonu yapılır.",
+          "Yıkama suyu doğrudan denize basılamaz; ODME (Oil Discharge Monitoring) zorunludur.",
+          "Sıcaklık 60 °C'yi geçince statik şarj riski artar; controlled flow gerekir."
+        ],
+        workingPrinciple: [
+          "Yıkama makinesi yüksek basınçlı suyu tank duvarlarına püskürtür.",
+          "Yıkama suyu tank dibinde toplanır; eductor venturi etkisi ile bu suyu emer ve slop'a basar.",
+          "Slop'ta yağ-su faz ayrışması için en az 24 saat dinlendirme yapılır.",
+          "Üstteki yağ tabakası bir sonraki yüke karıştırılır (LOT), alttaki su ODME ile kontrollü deşarj edilir."
+        ],
+        operation: [
+          "Yıkama programını cargo planına göre hazırla (sıcak/soğuk, kimyasal vs.).",
+          "İnert atmosferi koru (O₂ < %5).",
+          "Yıkama makinesini 90° açıyla sırayla pozisyonla.",
+          "Slop dekantasyonu için yeterli süre tanı; ODME ile deşarj başlat.",
+          "Tank gas free yapılmadan girişe izin verme; permit-to-enter düzenle."
+        ],
+        faults: [
+          { fault: "Eductor vakum vermiyor", cause: "Driving water basıncı düşük, nozül tıkalı", action: "Pompa basıncı, nozül söküm temizlik." },
+          { fault: "Yıkama makinesi dönmüyor", cause: "Türbin yatak arızası, tortu", action: "Sökerek bakım, yatak değişimi." },
+          { fault: "ODME yüksek ppm okuyor", cause: "Filtre tıkalı, sensor kalibrasyon", action: "Filtre temizliği, sensör kalibrasyon ve test." }
+        ],
+        precautions: [
+          "Tank içi giriş Enclosed Space Entry permit ile, gas test sonuçları olumlu olmalı.",
+          "Statik şarj kontrolü için tankı yıkamadan önce 30 dk dinlendir (settling time).",
+          "ODME logu Oil Record Book'a işlenir; PSC kontrolünde sorulur.",
+          "Sıcak yıkamada personel yanık önlemi (PPE) almalı."
+        ]
+      }
+    ]
   }
 };
+
