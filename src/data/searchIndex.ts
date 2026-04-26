@@ -38,7 +38,7 @@ export const searchIndex: SearchItem[] = [
   { title: "Stabilite Kuralları", path: "/stability/rules", category: "Stabilite" },
   { title: "Stabilite Formülleri", path: "/stability/formulas", category: "Stabilite" },
   { title: "Stabilite Quiz", path: "/stability/quiz", category: "Stabilite" },
-  { title: "Stabilite Asistanı", path: "/stability/assistant", category: "Stabilite", keywords: ["AI", "yapay zeka"] },
+  { title: "Stabilite Asistanı", path: "/stability/assistant", category: "Stabilite", keywords: ["danışman", "GM", "GZ"] },
   { title: "Pratik Stabilite", path: "/stability/practical", category: "Stabilite" },
   { title: "FWA Hesaplama", path: "/stability/practical/fwa", category: "Stabilite", keywords: ["fresh water allowance", "tatlı su"] },
   { title: "Tank Hesabı", path: "/stability/practical/tank", category: "Stabilite" },
