@@ -22,7 +22,8 @@
     "android:build": "npm run build && npx cap sync && cd android && ./gradlew assembleDebug",
     "lovable:update": "node scripts/lovable-update.cjs && npm run build:prod",
     "lovable:deploy": "node scripts/lovable-deploy.cjs",
-    "check:topic-coverage": "node scripts/check-topic-coverage.mjs"
+    "check:topic-coverage": "node scripts/check-topic-coverage.mjs",
+    "check:topic-schema": "node scripts/check-topic-content-schema.mjs"
   },
   "dependencies": {
     "@capacitor-community/admob": "^6.0.1",
