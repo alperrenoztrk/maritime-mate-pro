@@ -39,6 +39,17 @@ import photoKnotsDisplay from "@/assets/seamanship/knots-display.jpg";
 import photoShipPartsOverview from "@/assets/seamanship/ship-parts-overview.jpg";
 import photoMooringEquipment from "@/assets/seamanship/mooring-equipment.jpg";
 import photoWindlass from "@/assets/seamanship/windlass.jpg";
+// Etap 1B - eklenen gerçekçi fotoğraflar
+import photoFireExtinguishers from "@/assets/seamanship/fire-extinguishers.jpg";
+import photoCo2System from "@/assets/seamanship/co2-system.jpg";
+import photoLifeboatEnclosed from "@/assets/seamanship/lifeboat-enclosed.jpg";
+import photoLiferaftCanister from "@/assets/seamanship/liferaft-canister.jpg";
+import photoLsaPersonal from "@/assets/seamanship/lsa-personal.jpg";
+import photoRudderPropeller from "@/assets/seamanship/rudder-propeller.jpg";
+import photoSteeringGear from "@/assets/seamanship/steering-gear.jpg";
+import photoDeckCrane from "@/assets/seamanship/deck-crane.jpg";
+import photoHatchCovers from "@/assets/seamanship/hatch-covers.jpg";
+import photoBridgeWatch from "@/assets/seamanship/bridge-watch.jpg";
 
 interface SeamanshipSubTopic {
   id: string;
