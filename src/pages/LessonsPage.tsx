@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
-import { BookOpen, ChevronDown, ChevronRight, ArrowLeft, GraduationCap, Ship, Wrench } from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowLeft, GraduationCap, Ship, Wrench } from "lucide-react";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function LessonsPage() {
@@ -88,7 +88,6 @@ export default function LessonsPage() {
                     </span>
                     <span className="flex flex-col">
                       <span className="text-lg font-bold text-foreground">{group.title}</span>
-                      <span className="text-xs text-muted-foreground">{group.subtitle}</span>
                     </span>
                   </span>
                   <ChevronDown
@@ -114,7 +113,6 @@ export default function LessonsPage() {
                             </div>
                             <div>
                               <h2 className="text-lg font-bold text-foreground">{category.title}</h2>
-                              <p className="text-xs text-muted-foreground">{category.subtitle}</p>
                             </div>
                           </div>
 
@@ -162,12 +160,7 @@ export default function LessonsPage() {
           })}
         </div>
 
-        <div className="flex justify-center pt-2">
-          <div className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur">
-            <BookOpen className="h-4 w-4" />
-            Ders modülleri aynı sekmede açılır.
-          </div>
-        </div>
+
       </div>
       <BottomNavigation />
     </div>
