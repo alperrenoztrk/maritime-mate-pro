@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { shipSystemImages } from "@/data/shipSystemImages";
 import { MobileLayout } from "@/components/MobileLayout";
@@ -9,8 +9,23 @@ import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 
 export default function ShipSystemDetailPage() {
   const { sectionId } = useParams<{ sectionId: string }>();
-  const [expandedTopic, setExpandedTopic] = useState<number | null>(0);
+  const [searchParams] = useSearchParams();
+  const initialTopic = (() => {
+    const t = parseInt(searchParams.get("topic") ?? "", 10);
+    return Number.isFinite(t) && t >= 0 ? t : 0;
+  })();
+  const [expandedTopic, setExpandedTopic] = useState<number | null>(initialTopic);
   const [viewerImage, setViewerImage] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    setExpandedTopic(initialTopic);
+    // scroll target topic into view after render
+    const id = requestAnimationFrame(() => {
+      const el = document.getElementById(`ship-topic-${initialTopic}`);
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [initialTopic, sectionId]);
 
   const section = sectionId ? shipSystemsData[sectionId] : null;
   const images = sectionId ? shipSystemImages[sectionId] || [] : [];
@@ -39,7 +54,7 @@ export default function ShipSystemDetailPage() {
             const isOpen = expandedTopic === idx;
             const topicImage = images[idx];
             return (
-              <div key={idx} className="rounded-xl border border-border/30 bg-card/60 overflow-hidden">
+              <div key={idx} id={`ship-topic-${idx}`} className="rounded-xl border border-border/30 bg-card/60 overflow-hidden scroll-mt-20">
                 <button
                   onClick={() => setExpandedTopic(isOpen ? null : idx)}
                   className="flex w-full items-center gap-3 p-4 text-left transition hover:bg-card/80"
