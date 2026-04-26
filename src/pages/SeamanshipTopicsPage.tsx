@@ -1544,6 +1544,14 @@ Bu kanallarda özel seyir kuralları ve hız limitleri uygulanır. Pilot alımı
   "deck-cranes": {
     title: "Güverte Vinçleri ve Boom'lar",
     introduction: "Güverte vinçleri, yük operasyonlarında kullanılan hidrolik veya elektro-hidrolik kaldırma donanımıdır.",
+    photos: [
+      {
+        src: photoDeckCrane,
+        title: "Güverte üzerindeki pedestal (sütunlu) vinç",
+        caption: "Modern bir kuru yük gemisinin güvertesinde, uzatılmış bumbası ve kanca takımıyla pedestal vinç. SWL (Safe Working Load) en zayıf elemana göre belirlenir; her vincin yıllık load test ve sertifikasyonu zorunludur.",
+        alt: "Açık denizde bir kuru yük gemisinin güvertesinde uzun gri pedestal vinç; bumbası uzatılmış ve kancası ambar üzerinde sarkıyor.",
+      },
+    ],
     content: `VİNÇ TİPLERİ:
 
 Deck Crane (Güverte Vinci): Modern kargo gemilerinin çoğunda kullanılır. Hidrolik tahrikli, 360° dönebilen yapıdadır. SWL genellikle 25-35 ton arasıdır. Tandem operasyonuyla iki vinç birlikte çalıştırılarak kapasite artırılabilir.
@@ -1609,6 +1617,14 @@ Bumba operasyonlarında SWL'nin en zayıf elemanı (halat, blok, şakla) belirle
   "hatch-covers": {
     title: "Ambar Kapakları ve Tipleri",
     introduction: "Ambar kapakları, yük ambarlarının su geçirmez şekilde kapatılmasını sağlayan yapısal elemanlardır ve gemi emniyeti açısından kritik öneme sahiptir.",
+    photos: [
+      {
+        src: photoHatchCovers,
+        title: "Folding tipi (katlanır) çelik ambar kapakları",
+        caption: "Bir dökme yük gemisinde mavi boyalı katlanır (folding) ambar kapakları; hidrolik aktüatörlerle açılıp kapanır. Su geçirmezlik için coaming üzerine oturan rubber gasket ve compression bar sistemi kullanılır.",
+        alt: "Dökme yük gemisi güvertesinde büyük mavi katlanır ambar kapakları, hidrolik silindirler ve hatch coaming görünüyor.",
+      },
+    ],
     content: `AMBAR KAPAĞI TİPLERİ:
 
 1. Hydraulic Folding (Hidrolik Katlanır): Paneller hidrolik silindirlerle katlanarak açılır. Modern dökme yük gemilerinde yaygındır.
@@ -1723,6 +1739,14 @@ ISM Code gereği tüm bakım faaliyetleri PMS kapsamında planlanır, uygulanır
   "lifeboat-types": {
     title: "Cankurtaran Sandal Tipleri ve Donanımı",
     introduction: "Cankurtaran sandalları, gemi terk durumunda mürettebat ve yolcuların hayatını korumak için tasarlanmış SOLAS onaylı tahlisiye araçlarıdır.",
+    photos: [
+      {
+        src: photoLifeboatEnclosed,
+        title: "Tamamen kapalı cankurtaran sandalı (TEMPSC) — davit asılı",
+        caption: "Bir kargo gemisinin sandal güvertesinde davitlere asılmış, parlak turuncu, tamamen kapalı (TEMPSC) tipi cankurtaran sandalı. SOLAS, her bordada toplam mürettebatın %100'ünü taşıyacak kapasiteyi şart koşar.",
+        alt: "Geminin yan tarafında davit'e asılı, parlak turuncu boyalı tamamen kapalı tipi cankurtaran sandalı; gemi gri gövdesi arka planda.",
+      },
+    ],
     content: `SANDAL TİPLERİ:
 
 1. Open Lifeboat: Üstü açık sandal. Eski standarttır; yeni inşa gemilerde artık kullanılmaz.
@@ -1764,6 +1788,14 @@ Her iki bordada toplam gemi personelinin %100'ünü alabileceek kapasite. Bir bo
   "liferaft-types": {
     title: "Cankurtaran Salı ve SOLAS Gereksinimleri",
     introduction: "Cankurtaran salları, sandalların kullanılamaması durumunda hayatta kalma aracı olarak hizmet veren şişirilebilir veya rijit yapılardır.",
+    photos: [
+      {
+        src: photoLiferaftCanister,
+        title: "Şişirilebilir cankurtaran salı kanisteri (HRU ile)",
+        caption: "Beyaz fiberglas silindirik kanister içinde paketlenmiş şişme sal; cradle üzerine monte edilmiş ve hidrostatik release unit (HRU) ile painter line bağlıdır. Gemi 4 m derinliğe battığında HRU otomatik serbest bırakır.",
+        alt: "Bir geminin güvertesinde cradle üzerinde duran beyaz silindirik cankurtaran salı kanisteri; HRU ve kırmızı painter halatı görünür.",
+      },
+    ],
     content: `SAL TİPLERİ:
 
 1. Inflatable Life Raft (Şişme Sal): En yaygın tiptir. Fiberglas kapsül (canister) içinde depolanır. Denize atıldığında veya hidrostatik serbest bırakma ile otomatik olarak şişer. Kapasite: 6-150 kişi.
@@ -1865,6 +1897,14 @@ Her ay kurtarma botu tatbikatı yapılmalıdır. Kurtarma botu mürettebatı öz
   "life-saving-appliances": {
     title: "Kişisel Can Kurtarma Teçhizatı",
     introduction: "SOLAS Bölüm III, her gemide bulunması gereken kişisel can kurtarma araçlarını ve bunların standartlarını belirler.",
+    photos: [
+      {
+        src: photoLsaPersonal,
+        title: "SOLAS kişisel can kurtarma teçhizatı seti",
+        caption: "Turuncu SOLAS can yeleği (düdük + ışık), kırmızı immersion suit, EPIRB acil radyo işaretçisi, can simidi (self-igniting light + buoyant line) bir arada. Her can yeleği kişi başı min. 100 N kaldırma kuvveti sağlar.",
+        alt: "Gemi güvertesine dizilmiş kişisel can kurtarma teçhizatı: turuncu can yeleği, kırmızı immersion suit, kırmızı EPIRB ve beyaz çizgili can simidi.",
+      },
+    ],
     content: `KİŞİSEL TEÇHİZAT:
 
 Can Yeleği (Life Jacket): Her kişi için bir adet. Bilinçsiz kişiyi sırt üstü çevirebilmeli. Düdük ve ışık takılıdır. Çocuk yelekleri ayrıca bulundurulur.
@@ -2000,6 +2040,14 @@ SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fi
   "portable-extinguishers": {
     title: "Taşınabilir Söndürücüler",
     introduction: "Taşınabilir yangın söndürücüler, yangının başlangıç aşamasında ilk müdahale için kullanılan birincil söndürme araçlarıdır.",
+    photos: [
+      {
+        src: photoFireExtinguishers,
+        title: "Gemi koridorunda taşınabilir söndürücü istasyonu",
+        caption: "Sol: kırmızı CO₂ (B-E sınıfı, elektrik yangınları için güvenli). Orta: kırmızı kuru toz / ABC çok amaçlı. Sağ: krem renkli AFFF köpük (B sınıfı). Yıllık muayene + 5 yılda bir hidrostatik test SOLAS gereğidir.",
+        alt: "Beyaz boyalı bir gemi perdesine monte edilmiş üç taşınabilir yangın söndürücü; kırmızı CO₂, kırmızı kuru toz ve krem renkli köpük tipi, yanlarında A-B-C sınıf etiketleri.",
+      },
+    ],
     table: {
       title: "Taşınabilir Söndürücü Tipleri ve Kullanım Alanları",
       headers: ["Söndürücü Tipi", "Söndürme Maddesi", "Yangın Sınıfı", "Menzil (m)", "Dikkat"],
@@ -2034,6 +2082,14 @@ SOLAS II-2/10'a göre her kaçış yolunda, her yaşam alanında ve her makine d
   "fixed-systems": {
     title: "Sabit Söndürme Sistemleri (CO₂, Foam, Su)",
     introduction: "Sabit yangın söndürme sistemleri, makine dairesi, yük ambarları ve pompa daireleri gibi büyük alanlardaki yangınları kontrol altına almak için tasarlanmıştır.",
+    photos: [
+      {
+        src: photoCo2System,
+        title: "Sabit CO₂ söndürme sistemi cylinder room",
+        caption: "Makine dairesi yangınları için tasarlanmış sabit CO₂ sistemi: yüksek basınçlı kırmızı CO₂ tüpleri manifold ve aktivasyon valflerine bağlı. Boşaltma öncesi sesli/görsel uyarı + 20 sn gecikme ile personel tahliyesi sağlanır.",
+        alt: "Beyaz tavanlı bir makine içinde iki sıra hâlinde dizilmiş büyük kırmızı yüksek basınçlı CO₂ tüpleri ve manifold borulamaları.",
+      },
+    ],
     content: `SABİT SİSTEMLER:
 
 1. CO₂ Sistemi: Makine dairesi ve yük ambarlarında kullanılır. CO₂ tüpleri ayrı bir CO₂ odasında depolanır. Sistem tetiklendiğinde alanda bulunan tüm personelin tahliye edilmesi zorunludur (ölüm riski). Çift güvenlik mekanizması (two-man release) bulunur.
@@ -2168,6 +2224,14 @@ VARDİYA ZABİTİ SORUMLULUKLARI:
   "bridge-organization": {
     title: "Köprüüstü Organizasyonu (BRM)",
     introduction: "Bridge Resource Management (BRM), köprüüstü ekibinin koordineli ve etkin çalışmasını sağlayan yönetim sistemidir.",
+    photos: [
+      {
+        src: photoBridgeWatch,
+        title: "Modern köprüüstü ve seyir vardiyası",
+        caption: "Üniformalı vardiya zabiti, ECDIS ve X/S-band radarları ile çevre değerlendirmesi yapıyor. Köprüüstü ekipmanları: ECDIS, ARPA radar, GPS, AIS, autopilot ve VHF — STCW BRM standartlarına göre düzenlenmiştir.",
+        alt: "Modern bir geminin köprüüstü iç görünümü; radar ve ECDIS ekranları, ahşap dümen, üniformalı zabit pencereden ufka bakıyor.",
+      },
+    ],
     content: `BRM İLKELERİ:
 
 1. Ekip Çalışması: Kaptan, vardiya zabiti ve gözcü arasında açık iletişim ve görev paylaşımı.
