@@ -54,7 +54,7 @@ export default function ShipSystemDetailPage() {
             const isOpen = expandedTopic === idx;
             const topicImage = images[idx];
             return (
-              <div key={idx} className="rounded-xl border border-border/30 bg-card/60 overflow-hidden">
+              <div key={idx} id={`ship-topic-${idx}`} className="rounded-xl border border-border/30 bg-card/60 overflow-hidden scroll-mt-20">
                 <button
                   onClick={() => setExpandedTopic(isOpen ? null : idx)}
                   className="flex w-full items-center gap-3 p-4 text-left transition hover:bg-card/80"
