@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Anchor, Compass, Wrench, Gauge, ArrowRight } from "lucide-react";
+import { Anchor, Compass, Wrench, Gauge, Flame, ArrowRight } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
@@ -35,6 +35,14 @@ const SECTIONS = [
     icon: Gauge,
     to: "/ship-systems/auxiliary",
     color: "from-purple-500/20 to-violet-500/10",
+  },
+  {
+    id: "fire-safety",
+    title: "Yangın ve Emniyet Sistemleri",
+    desc: "CO₂, foam, sprinkler, fire pump, EEBD/SCBA, dedektörler ve seyyar söndürücüler",
+    icon: Flame,
+    to: "/ship-systems/fire-safety",
+    color: "from-red-500/20 to-rose-500/10",
   },
 ];
 
