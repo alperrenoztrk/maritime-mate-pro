@@ -27,6 +27,19 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";
+
+// Etap 1B - meteoroloji gerçekçi fotoğraflar
+import photoCumulonimbus from "@/assets/meteorology/cumulonimbus.jpg";
+import photoCirrus from "@/assets/meteorology/cirrus.jpg";
+import photoCumulus from "@/assets/meteorology/cumulus.jpg";
+import photoSeaFog from "@/assets/meteorology/sea-fog.jpg";
+import photoStormWaves from "@/assets/meteorology/storm-waves.jpg";
+import photoBarometer from "@/assets/meteorology/barometer.jpg";
+import photoAnemometer from "@/assets/meteorology/anemometer.jpg";
+import photoHurricaneSatellite from "@/assets/meteorology/hurricane-satellite.jpg";
+import photoWaterspout from "@/assets/meteorology/waterspout.jpg";
+import photoColdFront from "@/assets/meteorology/cold-front.jpg";
 
 interface MeteoSubTopic {
   id: string;
@@ -209,6 +222,7 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  photos?: GalleryPhoto[];
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
