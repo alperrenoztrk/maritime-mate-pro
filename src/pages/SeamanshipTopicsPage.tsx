@@ -1309,6 +1309,14 @@ Dümen başlangıç etkisi (initial turning effect) pruva tarafına değil, kı�
   "steering-gear": {
     title: "Dümen Makinesi Sistemleri",
     introduction: "Dümen makinesi, köprüüstünden verilen dümen komutlarını mekanik kuvvete dönüştürerek dümen palasını hareket ettiren sistemdir.",
+    photos: [
+      {
+        src: photoSteeringGear,
+        title: "Hidrolik ram tipi dümen makinesi dairesi",
+        caption: "Yeşil boyalı hidrolik silindirler (ram'ler) tiller koluna bağlıdır; arka planda hidrolik güç paketleri ve elektrik motorları bulunur. SOLAS, dümen makinesinin 35°'den karşı 30°'ye en fazla 28 saniyede ulaşmasını şart koşar.",
+        alt: "Bir geminin dümen makinesi dairesi; iki büyük yeşil hidrolik ram silindiri tiller koluna bağlanmış, çevresinde hidrolik pompa ve göstergeler.",
+      },
+    ],
     content: `DÜMEN MAKİNESİ TİPLERİ:
 
 1. Ram Type (Pistonlu): Hidrolik silindirler yardımıyla dümen yelpazesini (tiller) hareket ettirir. İki veya dört silindir kullanılır. Büyük gemilerde yaygındır.
