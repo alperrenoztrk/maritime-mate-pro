@@ -2812,6 +2812,11 @@ export default function MeteorologyTopicsPage() {
                   </p>
                 </div>
 
+                {/* Photo Gallery */}
+                {currentContent.photos && currentContent.photos.length > 0 && (
+                  <PhotoGallery photos={currentContent.photos} topicTitle={currentContent.title} />
+                )}
+
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
                   <div className="text-foreground leading-relaxed whitespace-pre-line">
