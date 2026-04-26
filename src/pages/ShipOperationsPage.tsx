@@ -30,10 +30,16 @@ export default function ShipOperationsPage() {
                 to={`/ship-operations/${ship.id}`}
                 className="group flex items-center gap-4 rounded-2xl border border-border/30 bg-card/60 p-4 backdrop-blur-sm transition-all duration-200 hover:border-primary/30 hover:bg-card/80 active:scale-[0.98]"
               >
-                <div
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${ship.color}`}
-                >
-                  <span className="text-2xl">{ship.emoji}</span>
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-border/30">
+                  <img
+                    src={ship.image}
+                    alt={`${ship.label} gemisi`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div
+                    className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${ship.color} mix-blend-overlay`}
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground leading-tight">
