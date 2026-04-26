@@ -1269,6 +1269,14 @@ SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dok�
     title: "Dümen Tipleri ve Yapıları",
     image: "/diagrams/seamanship/dumen-tipleri.svg",
     introduction: "Dümen, geminin yön değiştirmesini sağlayan birincil manevra elemanıdır; tipi ve boyutu geminin manevra kabiliyetini doğrudan etkiler.",
+    photos: [
+      {
+        src: photoRudderPropeller,
+        title: "Yarı dengeli (semi-balanced) spade dümen ve pervane",
+        caption: "Drydock'ta ticari bir geminin kıçı: mavi boyalı semi-balanced spade dümen ve beş kanatlı bronz pervane bir arada görülür. Pervane çapına oranla dümenin alanı tipik olarak sualtı yüzeyinin %1,5-2'si kadardır.",
+        alt: "Kuru havuzdaki büyük bir geminin kıç görünümü; mavi semi-balanced spade dümen ve büyük bronz beş kanatlı pervane, çevresinde işçiler ve iskele.",
+      },
+    ],
     content: `BAŞLICA DÜMEN TİPLERİ:
 
 1. Balanced Rudder (Dengeli Dümen): Dümen alanının bir kısmı (%20-25) döndürme ekseni önünde kalır. Bu tasarım, dümen torku gereksinimini azaltır. Modern ticaret gemilerinde standarttır.
