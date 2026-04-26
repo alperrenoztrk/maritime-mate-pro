@@ -170,9 +170,9 @@ const Formulas = () => {
             </div>
             <CardDescription className="text-xs sm:text-sm leading-relaxed px-1">
               <span data-translatable>
-                {geminiApiStatus === 'working'
-                  ? "Maritime mühendisliği analizi ve formül danışmanlığı."
-                  : "Çevrimdışı yerel referans modu aktif."
+                {geminiApiStatus === 'working' 
+                  ? "Google Gemini AI ile gelişmiş maritime mühendisliği analizi."
+                  : "Lovable Environment Variables'da GEMINI_API_KEY ekleyin."
                 }
               </span>
             </CardDescription>

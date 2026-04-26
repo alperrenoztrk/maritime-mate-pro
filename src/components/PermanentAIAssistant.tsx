@@ -153,22 +153,25 @@ ETA = ETD + (Distance / Speed)`
     // Find matching knowledge
     for (const [key, answer] of Object.entries(localKnowledge)) {
       if (lowerQuestion.includes(key)) {
-        return answer;
+        return answer + "\n\n*🤖 Local Maritime AI Database*";
       }
     }
 
-    return `**Denizcilik Referans Danışmanı**
+    return `**Maritime Mühendisliği AI Asistanı**
 
-Aşağıdaki konularda referans bilgi ve hesaplama desteği sunulur:
+Size maritime mühendisliği konularında yardımcı olmaya hazırım!
 
+**Uzmanlık Alanlarım:**
 • **Stabilite**: GM, GZ, metasantır hesaplamaları
-• **Seyir**: Mesafe, hız, rota hesaplamaları
+• **Seyir**: Mesafe, hız, rota hesaplamaları  
 • **Hidrodinamik**: Direnç, güç, itme analizi
 • **Yapısal**: Mukavemet, gerilme hesaplamaları
 • **Güvenlik**: IMO, SOLAS kriterleri
 • **Ekonomik**: Maliyet, yakıt optimizasyonu
 
-Detaylı bir soru girin; ilgili formül ve açıklama sunulur.`;
+Detaylı bir soru sorun, size özel hesaplama ve açıklamalar sunayım!
+
+*🤖 Maritime AI Ready*`;
   };
 
   const handleAskAI = async () => {
@@ -258,7 +261,7 @@ Detaylı bir soru girin; ilgili formül ve açıklama sunulur.`;
             {apiStatus === 'testing' && (
               <div className="flex items-center gap-2 text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span className="text-sm font-medium">Bağlanıyor</span>
+                <span className="text-sm font-medium">Hazırlanıyor</span>
               </div>
             )}
           </div>

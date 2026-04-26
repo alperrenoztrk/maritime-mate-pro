@@ -16,13 +16,16 @@ export default function MachineTopicDetailPage() {
   if (!topicConfig || !content) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <Link
-          to={`/machine/${topicSlug ?? ""}/topics`}
-          className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Geri Dön
-        </Link>
+        <div className="text-center space-y-3">
+          <p className="text-muted-foreground">İçerik hazırlanıyor...</p>
+          <Link
+            to={`/machine/${topicSlug}/topics`}
+            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Geri Dön
+          </Link>
+        </div>
       </div>
     );
   }
