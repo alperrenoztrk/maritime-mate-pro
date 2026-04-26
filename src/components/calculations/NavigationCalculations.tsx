@@ -2071,11 +2071,6 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Input type="number" step="0.1" placeholder="2.5" />
                     </div>
                   </div>
-                  <div className="mt-4">
-                    <Button variant="outline" disabled className="gap-2">
-                      Yakında: Mevki Hesapla
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
@@ -2104,11 +2099,6 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                       <Label>Gemi Hızı (kn)</Label>
                       <Input type="number" step="0.1" value={data.speed} onChange={(e) => updateData('speed', e.target.value === '' ? Number.NaN : parseFloat(e.target.value))} />
                     </div>
-                  </div>
-                  <div className="mt-4">
-                    <Button variant="outline" disabled className="gap-2">
-                      Yakında: Koçanlı Mevki Hesapla
-                    </Button>
                   </div>
                 </CardContent>
               </Card>

@@ -64,8 +64,8 @@ export const DiagramViewer = ({
       if (response.success && response.diagram) {
         setDiagram(response.diagram);
         toast({
-          title: "Diyagram Oluşturuldu! 🎉",
-          description: "AI destekli diyagramınız başarıyla hazırlandı.",
+          title: "Diyagram Oluşturuldu",
+          description: "Diyagramınız başarıyla hazırlandı.",
         });
       } else {
         throw new Error(response.error || 'Diagram generation failed');

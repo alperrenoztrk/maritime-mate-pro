@@ -260,7 +260,7 @@ export const ContentAutoWriterController = () => {
           <span data-translatable>Toplu Konu Anlatımı Üretimi</span>
         </CardTitle>
         <CardDescription>
-          <span data-translatable>Eksik alt başlıkları toplu olarak AI ile tamamlayın.</span>
+          <span data-translatable>Eksik alt başlıkları toplu olarak tamamlayın.</span>
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -275,8 +275,6 @@ export const ContentAutoWriterController = () => {
               <SelectContent>
                 <SelectItem value="navigation">Seyir (Navigation)</SelectItem>
                 <SelectItem value="stability" disabled>Stabilite (Tamamlandı)</SelectItem>
-                <SelectItem value="cargo" disabled>Kargo (Yakında)</SelectItem>
-                <SelectItem value="meteorology" disabled>Meteoroloji (Yakında)</SelectItem>
               </SelectContent>
             </Select>
           </div>

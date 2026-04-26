@@ -245,7 +245,7 @@ export default function BetaWorkHoursTool() {
       const res = data as ExtractResponse;
       const built = buildPeople(res);
       if (!built.length) {
-        toast.error("AI hiçbir kayıt çıkaramadı, fotoğrafları kontrol edin");
+        toast.error("Hiçbir kayıt çıkarılamadı, fotoğrafları kontrol edin");
         return;
       }
       setPeople(built);
@@ -256,8 +256,8 @@ export default function BetaWorkHoursTool() {
       if (msg.includes("429"))
         toast.error("Çok fazla istek. Bir dakika bekleyin.");
       else if (msg.includes("402"))
-        toast.error("AI kredisi bitti. Workspace ayarlarından kredi ekleyin.");
-      else toast.error("AI okuma başarısız. Tekrar deneyin.");
+        toast.error("Servis kotası doldu. Lütfen daha sonra tekrar deneyin.");
+      else toast.error("Okuma başarısız. Tekrar deneyin.");
       console.error(e);
     } finally {
       setLoading(false);
@@ -322,7 +322,7 @@ export default function BetaWorkHoursTool() {
           <div className="flex items-start gap-2">
             <AlertTriangle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             <div>
-              AI çıktıları her zaman %100 doğru olmaz. İndirmeden önce her
+              Otomatik çıkarım her zaman %100 doğru olmaz. İndirmeden önce her
               hücreyi inceleyin. Jurnal okunaklı, düz açıyla ve iyi ışıkta
               fotoğraflanmalı.
             </div>
@@ -391,7 +391,7 @@ export default function BetaWorkHoursTool() {
               ) : (
                 <>
                   <Sparkles className="mr-2 h-4 w-4" />
-                  AI ile çıkar
+                  Otomatik çıkar
                 </>
               )}
             </Button>

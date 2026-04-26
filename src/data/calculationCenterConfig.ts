@@ -304,7 +304,7 @@ export const calculationCategories: CategoryConfig[] = [
       {
         id: "assistant",
         label: "Asistan",
-        description: "Stabilite danışmanı ve AI destekli öneriler",
+        description: "Stabilite danışmanı ve operasyonel öneriler",
         status: "live",
         badge: "Hazır",
         href: "/stability/assistant",
@@ -409,7 +409,7 @@ export const calculationCategories: CategoryConfig[] = [
       {
         id: "assistant",
         label: "Asistan",
-        description: "AI ile yükleme sırası ve trim danışmanlığı",
+        description: "Yükleme sırası ve trim için operasyonel danışmanlık",
         status: "live",
         badge: "Hazır",
         href: "/cargo/assistant",
@@ -612,7 +612,7 @@ export const calculationCategories: CategoryConfig[] = [
       {
         id: "assistant",
         label: "Asistan",
-        description: "Risk değerlendirme ve denetim hazırlığı için AI",
+        description: "Risk değerlendirme ve denetim hazırlığı için danışman",
         status: "live",
         badge: "Hazır",
         href: "/safety/assistant",
@@ -709,26 +709,12 @@ export const calculationCategories: CategoryConfig[] = [
         href: "/economics",
       },
       {
-        id: "assistant",
-        label: "Asistan",
-        description: "Kârlılık senaryoları için prompt setleri",
-        status: "upcoming",
-        badge: "Yakında",
-      },
-      {
         id: "rules",
         label: "Kurallar",
         description: "Charter party ve lojistik sözleşme kontrol listesi",
         status: "info",
         badge: "Bilgi",
         href: "/economics",
-      },
-      {
-        id: "quiz",
-        label: "Quiz",
-        description: "Navlun hesap soruları ve mini senaryolar",
-        status: "upcoming",
-        badge: "Yakında",
       },
     ],
   },
