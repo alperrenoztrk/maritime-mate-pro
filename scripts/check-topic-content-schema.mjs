@@ -180,16 +180,20 @@ function validateTopicContent(key, contentNode, sf, fileLabel) {
   }
 }
 
-function validateFile(filePath) {
+function validateFile({ filePath, variableName }) {
   const parsed = parseSource(filePath);
   if (!parsed) {
     warnings.push(`${filePath}: file not found, skipping`);
     return;
   }
   const fileLabel = path.basename(filePath);
-  const map = findVariable(parsed.sourceFile, "topicContents");
+  const map = findVariable(parsed.sourceFile, variableName);
   if (!map) {
-    warnings.push(`${fileLabel}: no "topicContents" variable found, skipping`);
+    warnings.push(`${fileLabel}: no "${variableName}" variable found, skipping`);
+    return;
+  }
+  if (!ts.isObjectLiteralExpression(map)) {
+    errors.push(`${fileLabel}: "${variableName}" is not an object literal`);
     return;
   }
   if (!ts.isObjectLiteralExpression(map)) {
