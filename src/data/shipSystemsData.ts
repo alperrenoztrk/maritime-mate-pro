@@ -3007,6 +3007,589 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ]
       }
     ]
+  },
+  "gmdss-lsa": {
+    title: "GMDSS ve Can Kurtarma Sistemleri",
+    description: "GMDSS telsiz cihazları, EPIRB, SART, BNWAS, VDR, can filikası, davit, liferaft ve rescue boat",
+    topics: [
+      {
+        title: "GMDSS Genel Mimarisi ve Sea Areas",
+        introduction: "GMDSS (Global Maritime Distress and Safety System), denizde tehlike haberleşmesi, MSI (Maritime Safety Information) yayını ve genel haberleşmeyi otomatik ve standardize eden IMO/SOLAS sistemidir. Geminin sefer yaptığı sea area'ya göre taşıması zorunlu cihazlar belirlenir.",
+        sections: [
+          {
+            heading: "Sea Area Tanımları ve Cihaz Zorunluluğu",
+            paragraphs: [
+              "A1: VHF DSC kıyı istasyonu menzili (~20–30 NM). Zorunlu cihaz: VHF/DSC + EPIRB + SART + NAVTEX.",
+              "A2: MF DSC menzili (~100–150 NM). Ek olarak: MF/DSC.",
+              "A3: Inmarsat geostationary kapsama (yaklaşık 70°N–70°S). Ek olarak: Inmarsat-C (veya MF/HF).",
+              "A4: Kutup bölgeleri (Inmarsat dışı). Zorunlu: MF/HF (DSC + radyo teleks)."
+            ],
+            table: {
+              headers: ["Sea Area", "Kapsama", "Ek Zorunluluk"],
+              rows: [
+                ["A1", "VHF/DSC sahil", "—"],
+                ["A2", "MF/DSC sahil", "MF/DSC"],
+                ["A3", "Inmarsat geostat", "Inmarsat-C veya HF"],
+                ["A4", "Kutup", "MF/HF (DSC + NBDP)"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Tüm GMDSS cihazlarında battery backup minimum 1 saat (acil jeneratörlü gemide), 6 saat (acil jeneratörsüz).",
+          "Duplicate equipment veya shore-based maintenance + at-sea maintenance opsiyonları class kuralı ile seçilir.",
+          "Radio log her vardiya doldurulur; tehlike, acil ve emniyet trafiği kayıt edilir.",
+          "GMDSS Operator (GOC veya ROC) sertifikalı kişi olmadan tehlike haberleşmesi yapılamaz."
+        ],
+        workingPrinciple: [
+          "Tehlike çağrısı DSC ile (kim, nerede, ne tür tehlike) tek tuşla otomatik gönderilir.",
+          "Sahil istasyonu / yakın gemiler DSC alarmı ile uyarılır ve ses kanalında detay alır.",
+          "MSI (NAVTEX, SafetyNET) otomatik olarak hava raporu, NAVAREA uyarısı, SAR yayını basar.",
+          "EPIRB ve SART'ın aktivasyonu uydu/Radar ile arama kurtarma birimine yönlendirme sağlar."
+        ],
+        operation: [
+          "Vardiya başında battery, antenler, lambalar ve printer kağıdı kontrol.",
+          "Günlük DSC self-test (test çağrısı sahile değil, internal test).",
+          "Haftalık DSC live test bir sahil istasyonuna (ack alınmalı).",
+          "Aylık EPIRB self-test, SART self-test, batter expiry kontrol.",
+          "Radio log'a tüm test ve tehlike trafiği kayıt edilir."
+        ],
+        faults: [
+          { fault: "DSC çağrı gönderilmiyor", cause: "GPS feed yok, MMSI girilmemiş, anten arızası", action: "GPS bağlantı, MMSI kontrol, antenna VSWR ölçümü." },
+          { fault: "NAVTEX yayın almıyor", cause: "Anten kopuk, kanal seçimi yanlış (518 kHz Eng), squelch yüksek", action: "Antenna ve preamp test, frekans/lang ayarı." },
+          { fault: "Battery düşük alarm", cause: "Şarj devresi arızalı, battery ömrü dolmuş", action: "Charger ölçüm, battery load test, gerekirse değişim." }
+        ],
+        precautions: [
+          "Tehlike butonuna kazara basılırsa hemen sahil istasyonuna sesli iptal mesajı gönderilir (DSC cancel).",
+          "EPIRB hidrostatik release ünitesi (HRU) son kullanma tarihi geçmemeli.",
+          "Telsiz odasında reserve power source ve battery sürekli şarjlı tutulmalı.",
+          "Radyo arıza günlüğü ve onarım kayıtları PSC inspeksiyonunda istenir."
+        ]
+      },
+      {
+        title: "VHF / DSC Telsizi",
+        introduction: "VHF (Very High Frequency) DSC telsizi, GMDSS A1 alanında temel tehlike ve genel haberleşme cihazıdır. 156–174 MHz bandında çalışır, 25 W çıkışlı sabit set ile yaklaşık 20–30 NM menzil sağlar. DSC modülü Channel 70'i sürekli izleyerek otomatik tehlike çağrısı gönderir/alır.",
+        sections: [
+          {
+            heading: "Önemli Kanallar",
+            paragraphs: [
+              "Ch 16: tehlike, acil ve çağrı kanalı (156.800 MHz).",
+              "Ch 70: DSC tehlike kanalı (156.525 MHz) — sesli kullanım yasak.",
+              "Ch 13: bridge-to-bridge gemi manevra haberleşmesi (156.650 MHz).",
+              "Ch 6, 8, 72, 77: gemi-gemi çalışma kanalları."
+            ],
+            table: {
+              headers: ["Kanal", "Frekans (MHz)", "Kullanım"],
+              rows: [
+                ["16", "156.800", "Distress & calling"],
+                ["70", "156.525", "DSC distress"],
+                ["13", "156.650", "Bridge-to-bridge"],
+                ["06", "156.300", "Inter-ship"],
+                ["AIS 1/2", "161.975/162.025", "AIS"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MMSI 9 haneli numara; gemi kayıtlı bayrağa göre üretilir (örn. TR: 271xxxxxx).",
+          "Output power 25 W (yüksek) / 1 W (alçak); liman içinde 1 W kullanılır.",
+          "DSC test çağrısı yakın sahil istasyonuna haftada 1 yapılır; ack alınması zorunlu.",
+          "Dual watch / scan modu Ch 16 ile başka kanalı eş zamanlı dinler."
+        ],
+        workingPrinciple: [
+          "DSC çağrısı: sender MMSI, alıcı MMSI/all ships, çağrı tipi (distress/urgency/safety/routine), pozisyon, nature.",
+          "Tehlike çağrısı 5 kez ardışık tekrarlanır; ack alana kadar 3.5–4.5 dk sonra tekrarlar.",
+          "Distress alert sonrasında telsiz Ch 16'ya otomatik geçer ve sesli MAYDAY beklenir."
+        ],
+        operation: [
+          "Power on, GPS feed ve self-test kontrol.",
+          "Ch 16 ve Ch 70 daima açık (silent watch).",
+          "Çağrı için: Ch seç → 'press to talk' → 3 sn bekle → konuş.",
+          "Distress için: kapağı aç → 5 sn distress button bas (nature seçilebilir).",
+          "Test: weekly DSC test call → coast station'dan ack."
+        ],
+        faults: [
+          { fault: "Ses gelmiyor", cause: "Volume/squelch, hoparlör arızası", action: "Ayar test, hoparlör değişim." },
+          { fault: "Çağrıda parazit", cause: "Anten/connection korozyon, başka cihaz interferansı", action: "Anten konnektör temizlik, EMI kaynak izole." },
+          { fault: "DSC çağrı gönderilmiyor", cause: "MMSI yok, GPS feed yok, Ch 70 başka cihazda kullanımda", action: "MMSI ayar, GPS bağlantı, conflict çöz." }
+        ],
+        precautions: [
+          "Ch 16 sürekli dinlenmeli (silent watch).",
+          "Yanlış DSC çağrısı: hemen Ch 16'da sesli iptal mesajı yayınla, log'a yaz.",
+          "Antenna VSWR > 2.0 ise transmitter zarar görür; yıllık VSWR test."
+        ]
+      },
+      {
+        title: "MF/HF DSC Telsizi (Inmarsat Alternatifi)",
+        introduction: "MF/HF DSC telsizi, A2/A3/A4 sea area'larında uzun mesafe tehlike ve genel haberleşme için kullanılır. MF (1605–4000 kHz) ve HF (4–27 MHz) bantlarında çalışır, ground wave (yakın) ve sky wave (uzak) yayılım özelliklerinden faydalanır. NBDP (Narrow Band Direct Printing / radyo teleks) modülü ile teleks mesajı da gönderilir.",
+        sections: [
+          {
+            heading: "Tehlike Frekansları",
+            paragraphs: [
+              "MF DSC: 2187.5 kHz; MF voice: 2182 kHz.",
+              "HF DSC: 4207.5 / 6312 / 8414.5 / 12577 / 16804.5 kHz.",
+              "HF voice: 4125 / 6215 / 8291 / 12290 / 16420 kHz.",
+              "NBDP: 2174.5 / 4177.5 / 6268 / 8376.5 / 12520 / 16695 kHz."
+            ],
+            table: {
+              headers: ["Band", "DSC (kHz)", "Voice (kHz)"],
+              rows: [
+                ["MF", "2187.5", "2182"],
+                ["HF 4", "4207.5", "4125"],
+                ["HF 8", "8414.5", "8291"],
+                ["HF 12", "12577", "12290"],
+                ["HF 16", "16804.5", "16420"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MF gece daha uzak menzil verir (ionosphere D katmanı zayıflar).",
+          "HF gündüz/gece propogation farklı; 4-8 MHz gündüz, 12-16 MHz uzun menzil.",
+          "NBDP otomatik error correction ile teleks mesajı; printer çıktısı kayıt için.",
+          "ATU (antenna tuning unit) anteni çalışılan frekansa otomatik tune eder."
+        ],
+        workingPrinciple: [
+          "Frekans seçilir, ATU ground plane ile anteni 50 Ω'a tune eder.",
+          "DSC modülü tehlike çağrısını dijital olarak modüle eder (PSK).",
+          "Sahil veya gemi DSC alarmı ile uyarılır; voice channel'da MAYDAY alınır.",
+          "NBDP mod: ARQ (otomatik tekrar isteği) ile error-free teleks alışverişi."
+        ],
+        operation: [
+          "Gemi pozisyonuna göre uygun band seç (yakın MF, uzak HF).",
+          "Self-test günlük; haftalık live DSC test sahile.",
+          "Distress: kapak aç → 5 sn distress bas → nature seç → send.",
+          "Ack alındıktan sonra voice frekansa geç ve detay ver."
+        ],
+        faults: [
+          { fault: "ATU tune etmiyor", cause: "Anten kopuk, ground bağlantısı zayıf, ATU arıza", action: "Anten süreklilik, ground bond temizlik, ATU servis." },
+          { fault: "Yayın güçsüz (low forward power)", cause: "Final amplifier zayıflamış, anten verim düşük", action: "PA test, anten VSWR ölçüm." },
+          { fault: "NBDP printer kağıt sıkışıyor", cause: "Mekanik veya kağıt rulosu", action: "Kağıt yenile, mekanik temizlik." }
+        ],
+        precautions: [
+          "Yüksek voltajlı PA modülü; servis sırasında kapasitör boşaltma şart.",
+          "Anten yakın çalışan personel için RF radyasyon riski; transmit sırasında uzak dur.",
+          "Frekans çakışmasını önlemek için ITU plana uyulmalı."
+        ]
+      },
+      {
+        title: "Inmarsat-C / Mini-C Sistemi",
+        introduction: "Inmarsat-C, A3 sea area'sında veri tabanlı tehlike, EGC (Enhanced Group Call), MSI ve genel teleks/email haberleşmesi için kullanılan store-and-forward uydu terminaldir. SafetyNET (MSI) ve FleetNET (ticari grup mesajı) yayınlarını otomatik alır.",
+        sections: [
+          {
+            heading: "Servisler ve Mesaj Tipleri",
+            paragraphs: [
+              "Distress alert: tek tuş ile gemi MMSI, pozisyon, nature ve UTC ile RCC'ye gönderilir.",
+              "EGC SafetyNET: NAVAREA uyarısı, SAR mesajı, hava raporu otomatik.",
+              "EGC FleetNET: armatör veya ticari grup mesajı.",
+              "Genel haberleşme: e-posta, teleks, SMS (LES — Land Earth Station üzerinden)."
+            ],
+            table: {
+              headers: ["Servis", "Mesaj", "Yön"],
+              rows: [
+                ["Distress", "Tehlike alert", "Gemi → RCC"],
+                ["SafetyNET", "MSI", "Sahil → gemi"],
+                ["FleetNET", "Ticari grup", "Sahil → gemi"],
+                ["Mesaj", "E-posta/teleks", "Çift yön"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Inmarsat-C anten omnidirectional, küçük dome; manevradan etkilenmez.",
+          "Mini-C aynı servisleri sunar, fiziksel olarak daha küçüktür.",
+          "EGC alıcı sürekli açık; SafetyNET kapatılamaz (SOLAS).",
+          "Position update otomatik 4 saatte bir LES'e gönderilir (LRIT için)."
+        ],
+        workingPrinciple: [
+          "GPS pozisyonu otomatik enjekte; mesajla birlikte gönderilir.",
+          "Store-and-forward: gemi LES'e iletir, LES alıcıya iletir; gerçek-zamanlı değil.",
+          "Distress: tek tuş ile RCC'ye iletilir, ack alınır."
+        ],
+        operation: [
+          "Login durumu ve LES seçimi günlük kontrol.",
+          "EGC mesajları printer çıktısı veya screen log; her vardiya kontrol.",
+          "Position report otomatik; manuel test ayda 1.",
+          "Distress test: gemi VHF'inden RCC'ye telefon ile bilgi vererek live test mümkün."
+        ],
+        faults: [
+          { fault: "Mesaj gönderilmiyor", cause: "Login yok, LES dışında, anten obstruction", action: "Login yap, LES seç, anten önündeki obstruction kaldır." },
+          { fault: "Printer çıktı vermiyor", cause: "Kağıt/kartuş bitmiş, port arızası", action: "Sarf yenile, port test." },
+          { fault: "GPS feed yok", cause: "GPS receiver arızası, kablo gevşek", action: "GPS testi, kablo kontrol." }
+        ],
+        precautions: [
+          "Mesaj iletim ücretli; uzun mesaj LES tarifesi yüksek olabilir.",
+          "EGC otomatik yayını kapatma yetkisi sadece SOLAS dışı geminin var.",
+          "Antenna 360° serbest açıya sahip olmalı; bayrak direği veya baca arkasına monte etme."
+        ]
+      },
+      {
+        title: "EPIRB (406 MHz Cospas-Sarsat)",
+        introduction: "EPIRB (Emergency Position Indicating Radio Beacon), gemi terk edildiğinde otomatik veya manuel olarak aktive olarak 406 MHz frekansından gemi MMSI ve GPS pozisyonunu Cospas-Sarsat uydularına ileten beacon cihazıdır. SOLAS gemilerinde köprünün dışında, hızlı erişimli bracket'ta hidrostatik release ünitesi (HRU) ile monte edilir.",
+        sections: [
+          {
+            heading: "Yapı ve Aktivasyon",
+            paragraphs: [
+              "406 MHz dijital beacon: gemi kimlik, pozisyon ve emergency type yayın yapar.",
+              "121.5 MHz homing beacon: SAR helikopter/gemi tarafından yön bulma için.",
+              "Built-in GPS: pozisyon doğruluğu < 100 m; uydudan da Doppler ile çapraz hesaplanır.",
+              "HRU (Hydrostatic Release Unit): 1.5-4 m derinliğe ulaştığında brackat serbest bırakır, EPIRB yüzeye çıkar ve su ile aktive olur."
+            ],
+            table: {
+              headers: ["Komponent", "Görev"],
+              rows: [
+                ["406 MHz Tx", "Cospas-Sarsat uydusuna alert"],
+                ["121.5 MHz Tx", "Homing beacon"],
+                ["GPS", "Pozisyon"],
+                ["HRU", "Otomatik serbest bırakma"],
+                ["Battery", "Lityum, ≥48 saat çalışma"],
+                ["Strobe light", "Görsel arama"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MMSI veya hex ID gemi register'a kayıtlı olmalı; bayrak değişiminde re-program.",
+          "Battery 5 yıllık ömür; expiry date case üzerinde basılı.",
+          "HRU 2 yıllık expiry; süre dolmadan değişim.",
+          "Yıllık shore-based test (annual test) yetkili servis tarafından yapılır."
+        ],
+        workingPrinciple: [
+          "Su ile temas → switch kapanır → 50 sn içinde 406 MHz alert + 121.5 MHz homing yayını başlar.",
+          "Cospas-Sarsat uyduları (LEO + GEO + MEO) sinyali alır, RCC'ye iletir.",
+          "RCC gemi sahibini ve son pozisyonu doğrulayıp SAR aktive eder."
+        ],
+        operation: [
+          "Aylık görsel inspeksiyon: bracket sağlam, expiry date kontrol, HRU sağlam.",
+          "Aylık self-test: butonuna bas, LED yeşil → OK (1-2 sn).",
+          "Yıllık servis: yetkili tarafından battery, GPS, transmit power test.",
+          "Gemi terk durumunda: bracket'tan al, su atıl veya manuel switch ile aktif et."
+        ],
+        faults: [
+          { fault: "Self-test kırmızı LED", cause: "Battery zayıf, transmit arıza", action: "Servise gönder, gerekirse değişim." },
+          { fault: "Yanlış aktivasyon", cause: "Suya düşmüş, manuel butona basılmış", action: "EPIRB'i çıkar, kapat (manuel switch off), RCC'ye telefonla iptal bildir." },
+          { fault: "HRU paslı/kilitli", cause: "Korozyon, expire", action: "HRU değiştir." }
+        ],
+        precautions: [
+          "Yanlış alarm SAR kaynaklarını gereksiz bağlar; test sırasında 5 sn üzeri tutmama.",
+          "EPIRB'i seyir köprüsünün dışına, suyun ulaşabileceği yere monte et (terk durumunda HRU çalışmalı).",
+          "Bracket etrafını boyama (HRU sıkışır)."
+        ]
+      },
+      {
+        title: "SART (Search and Rescue Transponder)",
+        introduction: "SART, can filikası veya radyo arıza halinde X-Band radarın (9.2-9.5 GHz) sinyalini algılayıp yanıt vererek arama gemisinin radar ekranında 12 noktadan oluşan parlak çizgi (blip line) oluşturan transponder cihazıdır. Radar SART (eski) ve AIS-SART (yeni) tipleri mevcuttur.",
+        sections: [
+          {
+            heading: "Tipler ve Çalışma",
+            paragraphs: [
+              "Radar SART: 9 GHz X-band radarın sweep'ini algılar, 12 darbe geri gönderir; radar ekranında 0.6 NM aralıklı 12 nokta SART pozisyonundan radar yönünde uzanır.",
+              "AIS-SART: AIS sinyali yayınlar, AIS receiver'da MOB sembolü gösterir; menzil daha az ama dijital pozisyon verir.",
+              "Lifeboat içinde özel bracket veya raftaki konteyner içinde bulundurulur."
+            ],
+            table: {
+              headers: ["Özellik", "Radar SART", "AIS-SART"],
+              rows: [
+                ["Frekans", "9.2-9.5 GHz", "161.975/162.025 MHz"],
+                ["Menzil", "5-8 NM (gemi), 30 NM (uçak)", "5-10 NM"],
+                ["Ekran", "12 nokta blip line", "MOB sembolü"],
+                ["Battery", "≥96 saat standby + 8 saat tx", "Aynı"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Yüksek monte (≥1 m su seviyesi üstü) menzili artırır.",
+          "SART tepkisi sadece 9 GHz radarda görülür; 3 GHz S-band radarda görünmez.",
+          "Battery 5 yıllık ömür; expiry kontrol şart.",
+          "Lifeboat'ta minimum 1 SART zorunlu (300+ GT); 500+ GT için 2 SART."
+        ],
+        workingPrinciple: [
+          "Radar pulse SART'a ulaştığında SART aynı frekansta 12 darbeli yanıt yayınlar.",
+          "Yanıt PRF artarken tek noktaya, azalırken çizgiye dönüşür (yaklaşıldığında konsantrik daireler).",
+          "AIS-SART aynı şekilde GPS pozisyonu ile periyodik AIS mesajı yayınlar."
+        ],
+        operation: [
+          "Aylık görsel: bracket, switch, expiry kontrol.",
+          "Aylık self-test: butona bas, LED + sesli alarm → OK.",
+          "Aktivasyon: switch açılır, 9 GHz pulse algılayınca yanıt verir.",
+          "Yüksek bir yere asılır (lifeboat tepe veya raft içi mast)."
+        ],
+        faults: [
+          { fault: "Self-test arızalı", cause: "Battery zayıf, devre arızası", action: "Servis veya değişim." },
+          { fault: "Radar ekranında görünmüyor", cause: "Çok alçak monte, 3 GHz radar kullanımı, SART aktivasyonsuz", action: "Yüksek monte, X-band radar, switch kontrol." }
+        ],
+        precautions: [
+          "Self-test çok kısa olmalı (1-2 sn); uzun test SAR aktive eder.",
+          "Yanlış aktivasyonda hemen kapat, RCC'ye iptal bildir.",
+          "Test sırasında diğer geminin radar ekranında SART belirebilir; uyarı yapılır."
+        ]
+      },
+      {
+        title: "BNWAS (Bridge Navigational Watch Alarm System)",
+        introduction: "BNWAS, köprüde nöbetçi zabitin uyanık ve fonksiyonel olduğunu doğrulamak için periyodik onay isteyen, alınmazsa kademeli alarm veren SOLAS V/19 zorunlu sistemdir. 150 GT üzeri tüm gemilerde 2014'ten itibaren zorunlu hale gelmiştir.",
+        sections: [
+          {
+            heading: "Alarm Kademeleri",
+            paragraphs: [
+              "Stage 1: 3-12 dk reset interval; sessiz görsel uyarı (köprüde flash light).",
+              "Stage 2: 15 sn içinde reset olmazsa köprüde sesli alarm.",
+              "Stage 3: 1.5 dk içinde reset yok → kaptan kamarası ve back-up officer'da alarm.",
+              "Stage 4: 3 dk yok → tüm gemide call alarm (mess room, makine dairesi vb.)."
+            ],
+            table: {
+              headers: ["Stage", "Süre", "Alarm Yeri"],
+              rows: [
+                ["1", "3-12 dk", "Görsel köprü"],
+                ["2", "+15 sn", "Sesli köprü"],
+                ["3", "+1.5 dk", "Kaptan + back-up"],
+                ["4", "+3 dk", "Mess, makine"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "On/off anahtarı kilitli kutuda; sadece kaptan açabilir.",
+          "Reset cihazları köprüde nöbetçinin görüş alanında, hareket edilen tüm noktalarda olmalı.",
+          "Motion sensor + manuel reset butonu kombinasyonu yaygın.",
+          "Limanda kaptan tarafından devre dışı bırakılabilir; seyirde mutlaka aktif."
+        ],
+        workingPrinciple: [
+          "Reset interval boyunca nöbetçinin reset (manuel buton veya motion sensor) yapması beklenir.",
+          "Reset alınmazsa sırayla stage 2, 3, 4 alarmları tetiklenir.",
+          "Gemi ECDIS, AIS gibi sistemlerden bilgi almaz; bağımsız çalışır."
+        ],
+        operation: [
+          "Vardiya başında BNWAS aktif olduğunu doğrula.",
+          "Reset interval kaptan tarafından belirlenir (genelde 6-9 dk).",
+          "Limanda devre dışı; seyir başında tekrar aktif et.",
+          "Aylık operational test: stage 1-4 alarmlarının çalıştığını doğrula."
+        ],
+        faults: [
+          { fault: "Stage alarmı tetiklenmiyor", cause: "Hoparlör arıza, kablo bağlantı, ayar yanlış", action: "Hoparlör test, hat kontrol, ayar onar." },
+          { fault: "Sürekli alarm veriyor", cause: "Reset switch arızalı, motion sensor takılı", action: "Switch test, sensor temizlik/değişim." }
+        ],
+        precautions: [
+          "BNWAS'ı kalıcı devre dışı bırakmak SOLAS ihlali; PSC ağır deficiency.",
+          "Reset için sahte düzenek (bantlı buton vb.) yasak.",
+          "Stage 4 alarm tüm mürettebata duyulmalı; test sırasında uyar."
+        ]
+      },
+      {
+        title: "VDR / S-VDR (Voyage Data Recorder)",
+        introduction: "VDR, geminin son 12 saatlik (yeni: 30 gün dahili memory + 720 saat ek capsule) seyir, makine, köprü ses, radar görüntüsü, AIS, ECDIS, alarm ve gemi konum verilerini kaydeden 'kara kutu' sistemidir. SOLAS V/20 ile tüm yolcu ve 3000 GT üzeri yük gemilerinde zorunludur.",
+        sections: [
+          {
+            heading: "Kayıt Edilen Veriler",
+            paragraphs: [
+              "Köprü mikrofonları: en az 4 mikrofon, tüm konuşmalar.",
+              "VHF haberleşmesi: ana telsiz audio.",
+              "Radar görüntüsü: en az 1 radar ekranı snapshot.",
+              "ECDIS, AIS, gyro, GPS, log, depth, rudder, engine telegraph, alarm.",
+              "Capsule (Hardened/Float-free): yangın/su/derinliğe dayanıklı; pinger ile lokasyon bildirir."
+            ],
+            table: {
+              headers: ["Veri Kaynağı", "Saklama Süresi", "Notlar"],
+              rows: [
+                ["Köprü ses (mikrofon)", "Son 30 gün dahili", "Capsule: son 48 saat"],
+                ["Radar/ECDIS image", "30 gün", "1 frame/15 sn"],
+                ["AIS, gyro, GPS", "30 gün", "Sürekli"],
+                ["Alarm log", "30 gün", "Sürekli"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Float-free capsule HRU ile gemi 4 m suya battığında otomatik serbest bırakılır.",
+          "Capsule pinger 37.5 kHz, 30 gün çalışma; sualtı arama için.",
+          "Kazadan sonra 'data save' butonuna basılır (override-protect).",
+          "Yıllık APT (Annual Performance Test) yetkili servis tarafından yapılır."
+        ],
+        workingPrinciple: [
+          "Tüm veri kaynakları VDR concentrator unit'e bağlanır.",
+          "Concentrator dahili memory'ye sürekli yazar (FIFO).",
+          "Aynı zamanda capsule'a son 48 saatlik kritik veri yazılır.",
+          "Kazada save butonu basılırsa tüm memory yazma korumalı hale gelir."
+        ],
+        operation: [
+          "Power on durumu ve LED'leri günlük kontrol.",
+          "Mikrofon test (test mode) aylık.",
+          "Capsule pinger test yıllık (APT içinde).",
+          "Kaza sonrası save butonu BAS, recording'i koru, yetkili indirme yapsın."
+        ],
+        faults: [
+          { fault: "Mikrofon kayıt yok", cause: "Kablo, mikrofon arızası, audio level düşük", action: "Mikrofon test, kablo kontrol, ayar." },
+          { fault: "Radar/ECDIS frame eksik", cause: "Video grabber arıza, kablo", action: "Grabber test, kablo değiştir." },
+          { fault: "Capsule alarm", cause: "Capsule connection broken, HRU expire", action: "Bağlantı, HRU değişim." }
+        ],
+        precautions: [
+          "VDR memory'ye doğrudan müdahale yasak; yetkili olmayan personel veri silmemeli.",
+          "Kaza sonrası save edilmemiş VDR cezai sorumluluk doğurur.",
+          "Capsule yangın korumalı (1100 °C/1 saat), basınç dayanımı 6000 m derinlik."
+        ]
+      },
+      {
+        title: "Can Filikası (Lifeboat) ve Davit",
+        introduction: "Lifeboat, gemi terk emrinde mürettebat ve yolcuları taşıyıp güvenli bölgeye ulaştıran SOLAS LSA Code uyumlu kapalı veya yarı kapalı tekneye verilen addır. Davit, lifeboat'u embarkation deck'ten su seviyesine indiren mekanik sistemdir. Free-fall davit ve gravity davit ana tipleridir.",
+        sections: [
+          {
+            heading: "Lifeboat Tipleri",
+            paragraphs: [
+              "Totally Enclosed Lifeboat (TEL): tam kapalı, motor + air supply + sprinkler (tanker için fire-protected).",
+              "Free-fall lifeboat: tankers ve bulk için yaygın; eğimli rampa üzerinden suya düşer.",
+              "Partially Enclosed: yolcu gemilerinde, daha hızlı binme.",
+              "Davit: Gravity (gravity-roller veya luffing arm) veya Free-fall ramp."
+            ],
+            table: {
+              headers: ["Tip", "Avantaj", "Tipik Gemi"],
+              rows: [
+                ["TEL gravity", "Genel amaçlı", "Cargo, container"],
+                ["Free-fall", "Hızlı, otomatik", "Tanker, bulk"],
+                ["Fire-protected", "Yangın koruması", "Tanker"],
+                ["Partially enclosed", "Yolcu binme kolay", "Yolcu gemisi"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Lifeboat kapasitesi gemideki tüm POB'u (Persons On Board) karşılamalı; ek olarak iskele ve sancakta birer adet (her biri %100 kapasiteli).",
+          "Tankerlerde fire-protected lifeboat (sprinkler + air supply) zorunlu.",
+          "Aylık launching drill (yarım indirme), 3 ayda bir launching to water (free-fall hariç simülasyon).",
+          "Annual on-load release test ve davit load test (5 yılda 1 SWL × 1.1 ile)."
+        ],
+        workingPrinciple: [
+          "Davit gravity tipi: brake bırakılır, davit gravity ile dışa salınır, winch wire ile kontrollü iniş.",
+          "Free-fall: release handle çekilir, lifeboat kızak üzerinden suya düşer; girişte burnu öne dalar, sonra yüzeye çıkar.",
+          "On-load release: lifeboat suda yüklü iken hook serbest bırakılır (eski sistem riskli; SOLAS değişiklikleri ile FPD on-load release standardı geldi).",
+          "Off-load release: gerilim kaldırıldığında otomatik açılır."
+        ],
+        operation: [
+          "Embarkation: launch alarm → muster station → lifeboat yetkili kişi binmeyi yönetir.",
+          "Davit fren bırak → davit dışarı sallanır → wire ile suya kadar indir.",
+          "Suda hook'u off-load release ile çöz, motor başlat, gemiden uzaklaş.",
+          "Free-fall: tüm personel kemerli, başlık geri, release handle çekilir, su girişi sonrası motor."
+        ],
+        faults: [
+          { fault: "Davit fren tutmuyor", cause: "Fren balata aşınmış, ayar bozuk", action: "Balata değişim, fren ayarı." },
+          { fault: "Wire hasarlı (kink/korozyon)", cause: "Yağ eksik, deniz suyu", action: "Wire değişim (5 yılda 1 zorunlu turn end-for-end)." },
+          { fault: "Motor çalışmıyor", cause: "Battery zayıf, yakıt eski/su girmiş", action: "Battery şarj, yakıt drain ve yenile." },
+          { fault: "On-load release açmıyor", cause: "Hidrostatik kilit takılı, hook korozyon", action: "Hook bakım, hidrostatik mekanizma test." }
+        ],
+        precautions: [
+          "Lifeboat drill kazaları en yüksek mürettebat ölüm sebebidir; hook test sırasında 'maintenance pendant' kullan.",
+          "Free-fall release sırasında baş ve boyun arkayı destekli; PFD takılı olmalı.",
+          "Davit altındaki bölgede personel olmasın (limit switch yoksa düşme riski).",
+          "Yağlama düzenli; korozyon ve sıkışma kazaya yol açar."
+        ]
+      },
+      {
+        title: "Liferaft ve HRU (Hydrostatic Release Unit)",
+        introduction: "Liferaft, lifeboat dışında veya lifeboat ulaşılmaz ise kullanılan, CO₂/N₂ ile şişerek otomatik açılan, içinde survival ekipmanı bulunan inflatable can salıdır. SOLAS LSA Code'a göre minimum 6, 8, 10, 12, 16, 20, 25 kişilik tipleri vardır. HRU, gemi battığında otomatik release sağlar.",
+        sections: [
+          {
+            heading: "Yapı ve İçerik",
+            paragraphs: [
+              "Sert plastik konteyner (canister) içinde valise: CO₂/N₂ tüpü, tube + canopy, painter line.",
+              "İçeride: SOLAS A pack (uzun mesafe, ≥24 saat sefer için: yiyecek, su, first aid, paddle, sea anchor, signal, fishing kit).",
+              "B pack (kısa mesafe): minimum içerik.",
+              "Painter line: konteyner içindeki ipin ucu gemiye bağlı; gemi battığında gergin olur, raft şişer."
+            ],
+            table: {
+              headers: ["Bileşen", "Görev"],
+              rows: [
+                ["Canister", "Koruyucu kabuk"],
+                ["CO₂/N₂ tüp", "Şişirme"],
+                ["Painter", "Otomatik açılma kordonu"],
+                ["HRU", "4 m derinlikte release"],
+                ["Sea anchor", "Drift azaltma"],
+                ["Pyrotechnic", "Sinyal (rocket, hand flare, smoke)"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "HRU 2 yıllık expiry; tüm raftlarda kontrol şart.",
+          "Liferaft yıllık servis (SOLAS V/20): yetkili istasyonda açma, basınç testi, içerik yenileme.",
+          "Toplam liferaft kapasitesi gemideki POB × 2 (her bord %100).",
+          "Davit-launched liferaft: yolcu gemisinde davit ile indirilebilir."
+        ],
+        workingPrinciple: [
+          "Manuel: painter line gemiden serbest bırakılır, raft denize fırlatılır, painter güçlü çekilince CO₂ valfi açılır → şişer.",
+          "Otomatik (HRU): gemi 4 m suya battığında HRU bıçağı painter halatını keser, raft yüzeye çıkar, painter gemi battığında gergin olur, CO₂ valfi açılır.",
+          "Şişme süresi 1-3 dk; canopy ile çadır oluşur, ışık yanar, içeriden kapı açılır."
+        ],
+        operation: [
+          "Aylık görsel: canister sağlam, painter bağlı, HRU expiry, lashing bracket sağlam.",
+          "Yıllık servis: yetkili istasyona gönder, sertifika al.",
+          "Drill'de manuel atış simülasyonu (gerçek deploy değil — pahalı).",
+          "Kullanım: lashing aç, denize at, painter çek (3-4 m), şişme bekle, içeriye atla."
+        ],
+        faults: [
+          { fault: "Canister hasarlı", cause: "Korozyon, vurma", action: "Servis." },
+          { fault: "HRU eksik/expire", cause: "Süre dolmuş", action: "Yenile." },
+          { fault: "Painter gevşek/kopuk", cause: "Bağlantı zayıf", action: "Yeniden bağla, weak link kontrol." }
+        ],
+        precautions: [
+          "Liferaft konteyneri etrafında istif/eşya bulunmamalı; gemi battığında serbest yüzmeli (free-floating).",
+          "HRU 'weak link' painter ile gemi arasındadır; gemi battığında painter çekilir, raft şişer ve weak link kopar (raft kurtulur).",
+          "Pyrotechnic son kullanma tarihi geçmiş olmasın (5 yıl); süresi dolmuş yerel yetkiliye teslim.",
+          "Liferaft yıllık servis sertifikası gemide bulundurulmalı (PSC kontrolü)."
+        ]
+      },
+      {
+        title: "Rescue Boat ve Fast Rescue Boat (FRB)",
+        introduction: "Rescue boat, denizden insan kurtarma ve liferaft toplamak amacıyla kullanılan rigid veya inflatable hızlı tekneye verilen addır. Lifeboat'tan ayrı olarak konumlandırılır ve daha hızlı (≥6 knot, FRB ≥20 knot) launch edilebilir. SOLAS Chapter III ile tüm yük gemilerinde minimum 1 rescue boat zorunludur.",
+        sections: [
+          {
+            heading: "Tipler ve Donanım",
+            paragraphs: [
+              "Rescue boat: rigid (RIB) veya inflatable; 5+ kişi kapasiteli.",
+              "Fast Rescue Boat (FRB): yolcu gemilerinde zorunlu; ≥20 knot, ≥4 saat dayanım.",
+              "Davit: tek nokta veya çift nokta; hızlı launch için single-fall davit yaygın.",
+              "Donanım: outboard veya inboard motor, fender, painter, paddle, first aid, light, anchor."
+            ],
+            table: {
+              headers: ["Özellik", "Rescue Boat", "FRB"],
+              rows: [
+                ["Hız", "≥6 knot", "≥20 knot"],
+                ["Kapasite", "5 kişi + sedye", "5 kişi + sedye"],
+                ["Launch süresi", "<5 dk", "<5 dk"],
+                ["Crew", "Eğitimli mürettebat", "Sertifikalı FRB crew"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Lifeboat aynı zamanda rescue boat olarak da onaylıysa ayrı rescue boat zorunlu değil (yük gemileri).",
+          "Aylık operational test: launch, motor start, manevra, recovery.",
+          "FRB özel eğitim sertifikası mürettebat için zorunlu.",
+          "Outboard motor yakıtı ayrı tank, taze, su kontaminasyonsuz olmalı."
+        ],
+        workingPrinciple: [
+          "Davit gravity ile veya hidrolik ile boat'u dışa salar.",
+          "Single-fall davit ile hızlı iniş; suda quick-release ile fall serbest bırakılır.",
+          "Motor start, mürettebat MOB veya raft'a yönelir.",
+          "Recovery: boat altına horse-collar, hook bağlanır, davit ile yukarı çekilir."
+        ],
+        operation: [
+          "Vardiya başı: motor yakıt, battery, lashing, painter kontrol.",
+          "Launch alarm: 2 kişi rescue boat'a, davit operatörü hidrolik açar, boat suya iner.",
+          "Suda motor start, görev yap, geri dön, hook tak, davit ile çek.",
+          "Aylık launch + drive test, yıllık load test."
+        ],
+        faults: [
+          { fault: "Outboard motor start vermiyor", cause: "Yakıt eski, buji kirli, primer pump hatalı", action: "Yakıt yenile, buji temizlik, pump test." },
+          { fault: "Hidrolik davit yavaş", cause: "Yağ az, pompa zayıf, valf takılı", action: "Yağ ekle, pompa servis, valf bakım." },
+          { fault: "Quick-release açmıyor", cause: "Korozyon, mekanizma takılı", action: "Bakım, yağlama, test." }
+        ],
+        precautions: [
+          "Boat altında personel olmamalı; düşme riski.",
+          "Outboard motor egzozu CO içerir; uzun süre boş çalıştırma kapalı alanda yapılmamalı.",
+          "Recovery sırasında dalga koşullarına dikkat; hook çıkması ölümcül.",
+          "FRB drill'inde lifejacket + thermal protection + helmet zorunlu."
+        ]
+      }
+    ]
   }
 };
 

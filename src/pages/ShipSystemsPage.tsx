@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Anchor, Compass, Wrench, Gauge, Flame, Package, Leaf, ArrowRight, Search, X } from "lucide-react";
+import { Anchor, Compass, Wrench, Gauge, Flame, Package, Leaf, Radio, ArrowRight, Search, X } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { shipSystemsData } from "@/data/shipSystemsData";
@@ -61,6 +61,14 @@ const SECTIONS = [
     icon: Leaf,
     to: "/ship-systems/environmental-auxiliary",
     color: "from-green-500/20 to-emerald-500/10",
+  },
+  {
+    id: "gmdss-lsa",
+    title: "GMDSS ve Can Kurtarma Sistemleri",
+    desc: "GMDSS, EPIRB, SART, BNWAS, VDR, lifeboat, davit, liferaft ve rescue boat",
+    icon: Radio,
+    to: "/ship-systems/gmdss-lsa",
+    color: "from-sky-500/20 to-indigo-500/10",
   },
 ];
 
