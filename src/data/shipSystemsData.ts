@@ -2505,6 +2505,508 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ]
       }
     ]
+  },
+  "environmental-auxiliary": {
+    title: "Çevre ve Yardımcı Sistemler",
+    description: "BWMS, OWS, sewage treatment, insinerator, HVAC, hidrofor, soğuk depo, sıkıştırılmış hava ve buhar sistemleri",
+    topics: [
+      {
+        title: "Balast Suyu Yönetim Sistemi (BWMS)",
+        introduction: "BWMS (Ballast Water Management System), gemilerin aldığı balast suyundaki istilacı türleri (planktonik organizmalar, bakteri, virüs) IMO BWM Convention D-2 standardına göre arındıran sistemdir. Genellikle filtre + UV veya filtre + elektroklorinasyon prensibiyle çalışır.",
+        sections: [
+          {
+            heading: "Sistem Tipleri",
+            paragraphs: [
+              "Filtre + UV (ultraviyole) sistemleri: 40 µm disk/screen filtre büyük organizmaları tutar; UV reaktör DNA hasarı vererek üreme yeteneğini ortadan kaldırır. Tatlı/tuzlu su ayrımı gerektirmez.",
+              "Filtre + Elektroklorinasyon (EC) sistemleri: deniz suyundan elektrolizle aktif klor üretir; tankta klor ile dezenfeksiyon olur. Deballast'ta nötralizasyon (sodyum tiyosülfat) gerekir.",
+              "Kimyasal dozajlı sistemler: peraset asit veya klordioksit dozajıyla çalışır; rezerv kimyasal stoklanır."
+            ],
+            table: {
+              headers: ["Sistem", "Avantaj", "Dezavantaj"],
+              rows: [
+                ["Filtre + UV", "Kimyasal yok, basit", "Bulanık suda verim düşer"],
+                ["Filtre + EC", "Tüm su tiplerinde", "Nötralizasyon, korozyon riski"],
+                ["Kimyasal dozaj", "Sürekli etkin", "Kimyasal lojistik"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "D-2 standardı: <10 canlı organizma/m³ (≥50 µm) ve <10 canlı organizma/mL (10–50 µm) sınırı.",
+          "BWRB (Ballast Water Record Book) her balast/deballast operasyonunda doldurulur.",
+          "USCG onayı IMO onayından farklıdır; ABD sularına girecek gemide USCG type-approved sistem gerekir."
+        ],
+        workingPrinciple: [
+          "Ballast in: deniz suyu pompası → filtre (40 µm) → UV reaktör veya EC ünitesi → balast tankı.",
+          "Ballast out: tank → bypass filtre → UV (gerekirse tekrar) → nötralizasyon (EC için) → overboard.",
+          "UV reaktörde lambalar yüksek yoğunluklu UV-C üretir; sensör şiddet ve transmittansı izler.",
+          "EC ünitesinde elektrotlar deniz suyunu elektrolize eder; üretilen TRO (Total Residual Oxidant) 2–10 mg/L tutulur."
+        ],
+        operation: [
+          "Operasyon öncesi BWMS'i hazırla, lamba ısınma süresini bekle (UV sistemleri).",
+          "Pompa başlat, akış BWMS rated capacity altında tutulmalı.",
+          "TRO/UV intensity sensörlerini izle; alarm halinde bypass moduna alınmaz, operasyon durdurulur.",
+          "Deballast sonunda nötralizasyon ünitesini çalıştır (EC sistemlerde) ve overboard TRO < 0.1 mg/L doğrula.",
+          "BWRB'a tarih, koordinat, hacim, yapılan işlem ve sistem durumunu yaz."
+        ],
+        faults: [
+          { fault: "UV intensity düşük alarmı", cause: "Lamba ömrü dolmuş, kuvars kılıf kirli", action: "Lambaları değiştir, kuvars kılıfları temizle (asit yıkama)." },
+          { fault: "Filtre yüksek diferansiyel basınç", cause: "Sediment/biota tıkamış", action: "Otomatik backflush devrede mi kontrol et, manuel temizlik yap." },
+          { fault: "EC ünitesi TRO üretmiyor", cause: "Düşük tuzluluk, elektrot kireçlenmiş", action: "Tuzluluk ölç, asit yıkama yap, elektrot kontrol." },
+          { fault: "Sistem bypass moduna geçti", cause: "Kritik sensor arızası", action: "Operasyonu durdur, PSC bildirim ve servis çağır." }
+        ],
+        precautions: [
+          "UV lambalarına çıplak gözle bakma (göz hasarı); bakım sırasında lamba enerjisi kesilmiş olmalı.",
+          "EC ünitesinde hidrojen birikimi olabilir; havalandırma her zaman çalışır olmalı (patlama riski).",
+          "Kimyasal nötralizasyon ürünleri (sodyum tiyosülfat) MSDS'e göre depolanmalı.",
+          "Sistem arızasında 'Contingency Measure' (port state'e bildirim, alternatif liman) prosedürü uygulanır."
+        ]
+      },
+      {
+        title: "Sintine Separatörü (OWS / 15 ppm Bilge Separator)",
+        introduction: "OWS (Oily Water Separator), makine dairesi sintinesindeki yağlı suyun MARPOL Annex I gereği denize basılmadan önce yağ içeriğinin 15 ppm altına düşürülmesini sağlayan sistemdir. Yer çekimi ayırma + koalesan filtre + bazen membran teknolojisi ile çalışır ve 15 ppm alarm/stop ünitesine bağlıdır.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "1. kademe (gravity separator): yoğunluk farkıyla serbest yağ ve büyük damlacıklar üstte ayrışır.",
+              "2. kademe (coalescer / filter): emülsifiye damlacıklar koalesan ortamda birleştirilip ayrılır.",
+              "15 ppm bilge alarm (OCM — Oil Content Monitor): IMO MEPC.107(49) onaylı; ≥15 ppm olduğunda 3-yollu valfi tank tarafına yönlendirir.",
+              "Sludge ve yağ toplama tankı (slop/sludge tank) ve overboard hattı."
+            ],
+            table: {
+              headers: ["Kademe", "Amaç", "Tipik Verim"],
+              rows: [
+                ["Gravity stage", "Serbest yağ ayrımı", ">100 ppm → 50–100 ppm"],
+                ["Coalescer", "Emülsiyon kırma", "<15 ppm"],
+                ["Polishing filter", "Son kademe", "<5 ppm"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MARPOL Annex I: kıyıdan >12 NM, gemi seyir halinde, 15 ppm altında ise tahliye serbest.",
+          "Özel alanlarda (Akdeniz, Karadeniz, Baltık vb.) ek kısıtlamalar uygulanır.",
+          "ORB (Oil Record Book) Bölüm I'de her separatör operasyonu kayıt altına alınır.",
+          "Magic pipe (bypass) kullanımı ağır cezai yaptırım gerektirir."
+        ],
+        workingPrinciple: [
+          "Sintine pompası yağlı suyu separatöre besler; ilk hücrede serbest yağ üst kısma çıkar ve toplama tankına alınır.",
+          "Su, koalesan filtre elemanından geçer; mikron damlacıklar birleşip yüzeye çıkar.",
+          "Çıkış suyu OCM'den geçer; numune sürekli ölçülür ve veri loglanır.",
+          "≥15 ppm okumada 3-yollu solenoid valf otomatik olarak çıkışı bilge tankına geri çevirir, alarm verir."
+        ],
+        operation: [
+          "Çalıştırmadan önce sealing water hattını aç (bazı modellerde gerekli).",
+          "Pompa başlat, ilk birkaç dakika resirkülasyon modunda OCM'yi prime et.",
+          "OCM yeşil ışık verince 3-yollu valf overboard'a açılır; akışı düşük tut.",
+          "Operasyon süresince ORB'yi anlık doldur (start/stop saati, miktar, pozisyon).",
+          "Bitirince hatları temiz su ile flush et, OCM sensörünü temiz tut."
+        ],
+        faults: [
+          { fault: "Sürekli 15 ppm alarmı", cause: "OCM sensörü kirli, koalesan element doymuş", action: "OCM cell temizliği, koalesan element değişimi." },
+          { fault: "Pompa basınç vermiyor", cause: "Sintine kuyusu boş, hava emiyor", action: "Suction kontrol, hava al, valfleri kontrol." },
+          { fault: "Yağ toplama tankı dolu alarmı", cause: "Slop tank dolmuş", action: "Sludge tankına transfer et, ORB'a yaz." },
+          { fault: "OCM kalibrasyon hatası", cause: "Lamba/optik bozuk, sıfır kalibrasyon kayıp", action: "Üretici prosedürüne göre temiz su ile zero, span kalibrasyonu." }
+        ],
+        precautions: [
+          "OCM mührü (seal) PSC inspeksiyonunda kontrol edilir; mühür kırılmış olmamalı.",
+          "Bypass hattı veya sahte OCM bağlantısı kesinlikle yapılmaz; ağır ceza ve hapis cezası vardır.",
+          "Numune hattı sürekli akışlı olmalı; tıkanma alarm üretmez ama hatalı düşük okuma yapar.",
+          "Slop tankı transferi shore reception facility'ye verilirken receipt ORB'ye yapıştırılır."
+        ]
+      },
+      {
+        title: "Sewage Treatment Plant (STP)",
+        introduction: "Sewage Treatment Plant, gemideki tuvalet (black water) ve bazen mutfak/lavabo (grey water) atık sularını MARPOL Annex IV ve IMO MEPC.227(64) standardına göre arındıran sistemdir. Biyolojik (aerobik aktif çamur), elektroliz veya MBR (membran bioreaktör) tipinde olabilir.",
+        sections: [
+          {
+            heading: "Sistem Tipleri",
+            paragraphs: [
+              "Biyolojik (extended aeration): 3 hücreli — aerobik (mikroorganizma sindirimi) → settling (çökelti) → klorinasyon → discharge. Geleneksel ve yaygın tip.",
+              "Elektrolitik: deniz suyu elektrolizle hipoklorit üretir; doğrudan kimyasal dezenfeksiyon yapar.",
+              "MBR (Membrane Bioreactor): biyolojik proses + ultrafiltrasyon membran; çıkış suyu çok yüksek kalitede olur."
+            ],
+            table: {
+              headers: ["Parametre", "MARPOL IV Limit", "Tipik MBR Çıkış"],
+              rows: [
+                ["Fekal koliform", "<100 CFU/100mL", "<10"],
+                ["TSS (askıda katı)", "<35 mg/L", "<10"],
+                ["BOD5", "<25 mg/L", "<10"],
+                ["pH", "6–8.5", "7–8"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Onaysız/işlenmemiş sewage: kıyıdan ≥12 NM, ≥4 knot hızla, kontrollü oranda boşaltılabilir.",
+          "Onaylı STP çıkışı: ≥3 NM (komminutor + dezenfeksiyon ile) veya doğrudan (uyumlu STP ile).",
+          "Özel alanda (Baltık) hiç boşaltım yapılamaz; shore reception zorunlu.",
+          "ISPP (International Sewage Pollution Prevention) sertifikası 5 yıllık."
+        ],
+        workingPrinciple: [
+          "Aerobik tankta blower hava verir; aktif çamur içindeki bakteriler organik maddeyi CO₂ ve H₂O'ya çevirir.",
+          "Settling tankında çamur çöker; dipte biriken çamur aerobik tanka geri sirküle edilir.",
+          "Üst sıvı kontak tankında klor (kalsiyum hipoklorit tableti veya elektrolitik) ile dezenfekte edilir.",
+          "Discharge pompası işlenmiş su tankından deniz tarafına basar; level switch otomatik kontrol sağlar."
+        ],
+        operation: [
+          "Aerobik tank seviyesini kontrol et (genelde 50–70%).",
+          "Blower'ı 24/7 çalıştır; durdurulursa bakteriler ölür ve sistem 'patlar' (kötü koku, verimsizlik).",
+          "Klor tabletini düzenli ekle (tablet feeder dolu olmalı).",
+          "Discharge pompasını kıyıdan açıkta ve seyir halinde devreye al.",
+          "Haftalık olarak çamur seviyesini ölç; gerekirse fazla çamuru sludge tankına al."
+        ],
+        faults: [
+          { fault: "Ağır koku, tank köpürüyor", cause: "Blower yetersiz, aşırı yükleme, deterjan fazla", action: "Hava debisini artır, mutfak greywater'ı bypass et, mikroorganizma kültürü ekle." },
+          { fault: "Çıkış bulanık, koliform yüksek", cause: "Klor bitmiş, settling bozuk", action: "Klor tabletini doldur, settling'i temizle, sistemi yeniden seed et." },
+          { fault: "Discharge pompa çalışmıyor", cause: "Level switch arızalı, impeller tıkalı (peçete vb.)", action: "Switch test, pompa söküm temizlik." },
+          { fault: "Blower aşırı sıcak", cause: "Hava filtresi tıkalı, kayış gevşek", action: "Filtre değiştir, kayış gerginlik kontrolü." }
+        ],
+        precautions: [
+          "STP girişine wet wipe, peçete, bez atılmamalı; pompa ve nozülleri tıkar.",
+          "Klorlama bölmesinde gas mask + eldiven kullanılmalı (klor gazı solunum yoluyla zararlı).",
+          "Sistem 24+ saat durduğunda bakteri kültürü ölebilir; tekrar devreye almada seed gerekebilir.",
+          "Holding tank kapasitesi her gemide 2–3 günlük olmalı; kıyıya yakın seyirde dolmamasına dikkat."
+        ]
+      },
+      {
+        title: "İnsinerator (Atık Yakma Fırını)",
+        introduction: "Insinerator, gemide üretilen sludge (atık yağ), oily rags, plastik dışı katı atık ve sewage çamurunu IMO MEPC.244(66) standardına göre yakarak hacmini ve çevresel etkisini azaltan ekipmandır. 850–1200 °C aralığında çalışır ve baca gazı emisyonları regule edilir.",
+        sections: [
+          {
+            heading: "Yapı ve Bileşenler",
+            paragraphs: [
+              "Yanma odası refrakter tuğla ile kaplı, sludge tank, dosing pompası, brulor (burner) ve hava fanı içerir.",
+              "Sludge için ön ısıtma 90 °C; viskozite düşürülür ve atomizer ile odaya püskürtülür.",
+              "Katı atık (kağıt, gıda) charge door'dan yüklenir; ön ısıtma sonrası alev yakar.",
+              "Baca: cyclone/scrubber + sıcaklık sensörü + emisyon kontrolü."
+            ],
+            table: {
+              headers: ["Atık", "Yakma Sıcaklığı", "Süre"],
+              rows: [
+                ["Sludge oil", "850–1100 °C", "Sürekli"],
+                ["Katı atık", "850–1000 °C", "Batch / döngü"],
+                ["Sewage çamuru", "850 °C minimum", "Sürekli"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Plastik, PVC, halojenli atık, askeryı, akü, civa içerikli atık YAKILMAZ (MARPOL Annex VI).",
+          "Limanda ve özel alanlarda insinerator çalıştırılması yasaktır (port state regulation).",
+          "Garbage Record Book (Part I) yakılan atık türü ve miktarı kayıt altına alınır.",
+          "Yakma odası sıcaklığı 850 °C altına düşerse otomatik shutdown devreye girer."
+        ],
+        workingPrinciple: [
+          "Brulor diesel/sludge karışımıyla ön ısıtma yapar, oda sıcaklığı 850 °C'ye ulaşır.",
+          "Sludge dosing pompası ısıtılmış sludge'ı atomize ederek yanma odasına püskürtür.",
+          "Hava fanı yanma için yeterli oksijen sağlar; oran kontrol edilir.",
+          "Baca gazı sıcaklık sensörüyle izlenir; düşerse oto-shutdown."
+        ],
+        operation: [
+          "Sludge tankı seviyesini, yakıt tankını ve hava fanını kontrol et.",
+          "Brulor ile ön ısıtma başlat; oda sıcaklığı 700 °C üzerine çıktığında sludge dosingi devreye al.",
+          "Sıcaklığı 850–1000 °C bandında tut; aşırı dosingten kaçın (siyah duman = eksik yanma).",
+          "Çalışma sonunda dosingi kes, brulor ile odayı temiz yakıtla soğut (purge).",
+          "Garbage Record Book'a tür, hacim, başlangıç-bitiş saati yaz."
+        ],
+        faults: [
+          { fault: "Brulor ateşlemiyor", cause: "Yakıt yok, ignition elektrot kirli, fotosel arızalı", action: "Yakıt valfini aç, elektrotları temizle, fotoseli kontrol et." },
+          { fault: "Siyah duman çıkıyor", cause: "Hava yetersiz, atomizer tıkalı, sludge çok viskoz", action: "Hava fanı debisi artır, atomizer söküm temizlik, sludge ön ısıtma kontrol." },
+          { fault: "Oda sıcaklığı düşük alarmı", cause: "Refrakter hasarı, fazla sludge dosingi, yakıt düşük kalori", action: "Refrakter inspeksiyon, dosing kıs, yakıtı pis sludge ile karıştırma." },
+          { fault: "Charge door kilit alarm", cause: "Limit switch arızalı, contası eskimiş", action: "Switch ve conta değişimi, kilit test." }
+        ],
+        precautions: [
+          "Çalışırken charge door kesinlikle açılmaz; alev geri tepme (flashback) riski.",
+          "Plastik veya PVC içeren atık dioxin/furan üretir, sağlığa ve çevreye zararlıdır.",
+          "Refrakter tuğla şok soğumadan zarar görür; cool-down minimum 4 saat.",
+          "Stack çıkışı çevresinde personel olmamalı; soğuk havada görünmeyen sıcak gaz tehlikesi."
+        ]
+      },
+      {
+        title: "HVAC ve Klima Sistemi",
+        introduction: "HVAC (Heating, Ventilation, Air Conditioning), gemideki yaşam mahalleri, köprü, control room ve yük mahallerinde sıcaklık, nem ve hava kalitesini kontrol eden sistemdir. Genellikle merkezi chiller + AHU (Air Handling Unit) + kanal sistemi şeklinde tasarlanır.",
+        sections: [
+          {
+            heading: "Sistem Mimarisi",
+            paragraphs: [
+              "Chiller: R134a/R407C/R513A soğutucu akışkanla soğuk su (chilled water 7 °C) üretir.",
+              "AHU: chilled water coil + ısıtıcı (steam veya elektrik) + nemlendirici + filtre + fan içerir.",
+              "Kanal sistemi: supply ve return; her mahalde grille/diffuser ve damper.",
+              "Reefer kompartmanı (provision room) ayrı ekspansiyon devresi ile -20 °C ila +5 °C arası tutulur."
+            ],
+            table: {
+              headers: ["Mahal", "Sıcaklık", "Bağıl Nem"],
+              rows: [
+                ["Yaşam mahalleri", "22 ± 2 °C", "%50 ± 10"],
+                ["Köprü", "22 °C", "%50"],
+                ["MCC / Switchboard", "<35 °C", "<%60"],
+                ["Provision room (et)", "-18 °C", "—"],
+                ["Provision (sebze)", "+4 °C", "%85"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "F-gas regülasyonu: ozon delici (R22) yasaklı, GWP'si yüksek gazlar (R404A) kademeli azaltılıyor.",
+          "Yangın damperleri (fire damper) kanallarda otomatik kapanmalı (fusible link 70 °C).",
+          "Re-circulation oranı %30 dış hava + %70 dönüş tipik; CO₂ sensörüyle ayarlanır.",
+          "Lejyonella riski için nemlendirici suyu düzenli temizlenmeli."
+        ],
+        workingPrinciple: [
+          "Chiller kompresörü gaz sıkıştırır → kondenser deniz suyuyla soğutulur (sıvı) → ekspansiyon valfi → evaporator (chilled water soğutur).",
+          "Chilled water pompa ile AHU coil'lerine basılır; coil hava akışını soğutur ve nemini düşürür.",
+          "AHU fanı şartlandırılmış havayı kanallara basar, mahallerde diffuser dağıtır.",
+          "Termostat oda sıcaklığını okur; chilled water valve veya damperı modüle eder."
+        ],
+        operation: [
+          "Sezon başında chiller'ı start et; oil heater'ı 24 saat önce devreye al (kompresor koruması).",
+          "Deniz suyu hattı pump filter temizliği yap.",
+          "Chilled water pompa ve expansion tank seviyesini kontrol et.",
+          "Filtreleri 1–3 ayda bir temizle/değiştir; tıkanan filtre fan motorunu yorar.",
+          "Yıllık leak test, oil analizi ve refrakometre ile glikol kontrolü."
+        ],
+        faults: [
+          { fault: "Mahal soğutmuyor", cause: "Filtre tıkalı, gaz kaçağı, valf kapalı", action: "Filtre, gaz şarj kontrol, valf testi." },
+          { fault: "Chiller HP (yüksek basınç) trip", cause: "Deniz suyu akışı düşük, kondenser kireçli", action: "SW pompa, strainer kontrol; kondenser asit yıkama." },
+          { fault: "Chiller LP (düşük basınç) trip", cause: "Gaz kaçağı, expansion valf arızalı, evap kirli", action: "Sızdırmazlık testi, valf bakım, evap temizlik." },
+          { fault: "Kanaldan damlama", cause: "Kondensat tahliye tıkalı, izolasyon bozuk", action: "Drain pan temizliği, izolasyon onarımı." }
+        ],
+        precautions: [
+          "Soğutucu gaz sızıntısında ortam ventile edilmeli; yüksek konsantrasyon boğulma yapar.",
+          "Chiller machinery space gaz dedektörüyle korunmalı (R134a için).",
+          "Bakım sırasında sistem boşaltma için 'recovery unit' kullan; gaz atmosfere salınmaz.",
+          "Provision room'a giren personel için içeriden kapı açma kolu mutlaka çalışır olmalı."
+        ]
+      },
+      {
+        title: "Hidrofor ve Tatlı Su Dağıtım Sistemi",
+        introduction: "Hidrofor sistemi, gemide tatlı su tankından alınan suyu basınçlandırarak yaşam mahallerindeki musluk, duş, mutfak ve servis noktalarına sabit basınçta dağıtan sistemdir. Genellikle pompa + basınç tankı (pressure vessel) + presostat + UV sterilizatör kombinasyonu ile çalışır.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Tatlı su tankı (FWT): soğuk su deposu; epoxy boyalı veya stainless steel.",
+              "Hidrofor pompası: santrifüj, tipik 4–6 bar discharge.",
+              "Basınç tankı (pressure vessel): membran tipi; 100–500 L hacim, hava yastığı pompa start/stop sıklığını azaltır.",
+              "Presostat (pressure switch): genellikle 3 bar start, 5 bar stop.",
+              "Kalorifer (calorifier): elektrik veya buhar tahrikli sıcak su tankı.",
+              "UV sterilizator ve mineral dozaj: içme suyu kalitesi için."
+            ],
+            table: {
+              headers: ["Komponent", "Tipik Değer"],
+              rows: [
+                ["Hidrofor pompa basıncı", "3–6 bar"],
+                ["Basınç tankı ön doluş havası", "Stop basıncının %90'ı"],
+                ["Sıcak su sıcaklığı", "60–65 °C (lejyonella koruması)"],
+                ["UV doz", "≥40 mJ/cm²"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "İçme suyu IMO/WHO standardına uygun olmalı: koliform 0/100mL, klor rezidü 0.2 mg/L.",
+          "FWT'ye giriş bağlantıları air gap ile ters akışı önlemeli (cross-connection yasağı).",
+          "Yıllık tank temizliği ve sertifikalı su analizi şart.",
+          "Pressure tank ön havası periyodik kontrol edilir; yoksa pompa sürekli çalışıp yanar."
+        ],
+        workingPrinciple: [
+          "Pompa FWT'den suyu alır, basınç tankına basar; hava yastığı sıkışır ve enerji depolar.",
+          "Musluklar açıldığında basınç tankından su akar, basınç düşer.",
+          "Stop basıncının (örn. 3 bar) altına düşünce presostat pompayı çalıştırır; üst basınca (örn. 5 bar) ulaşınca durdurur.",
+          "UV sterilizator akış sırasında suyu sterilize eder."
+        ],
+        operation: [
+          "FWT seviyesini günlük kontrol et; hidrofor pompası kuru çalıştırılmaz (mekanik conta yanar).",
+          "Basınç tankı ön havasını ayda bir kontrol et (manometre ile, su tarafı boş).",
+          "Klor dozaj veya UV lambasını çalışır tut.",
+          "Calorifier sıcaklığını 60 °C üzerinde tut (lejyonella).",
+          "Pompa start/stop sıklığını izle; >6/dk ise tank ön havası eksik demektir."
+        ],
+        faults: [
+          { fault: "Pompa sürekli çalışıyor", cause: "Pressure tank ön havası boş, kaçak var, presostat ayarsız", action: "Tank havası şarj, hat sızdırmazlık, presostat ayarı." },
+          { fault: "Musluktan kesik kesik su", cause: "Hava emiyor, basınç tankı membranı yırtık", action: "Suction line kontrol, membran değişim." },
+          { fault: "Sıcak su akmıyor", cause: "Calorifier rezistansı bozuk, termostat arızalı", action: "Rezistans test, termostat değişim." },
+          { fault: "İçme suyu kötü tat/koku", cause: "Tank kirli, klor düşük, UV bozuk", action: "Tank temizlik, klor şoku, UV lamba değişim." }
+        ],
+        precautions: [
+          "Tank inspeksiyonu enclosed space entry permit ile, gas test (O₂) yapılarak.",
+          "Pres tank şarj havası kompresörden alınmamalı (yağ kontaminasyonu); pure N₂ veya temiz hava.",
+          "FWT giriş hatlarında non-return valve sağlam olmalı (kontaminasyon riski).",
+          "Calorifier elektrik rezistansı kuruda enerjilendirilmez (yanar)."
+        ]
+      },
+      {
+        title: "Provision Refrigeration (Soğuk Depo) Sistemi",
+        introduction: "Provision refrigeration, gemide kumanya odalarının (et, balık, sebze, süt ürünleri) belirli sıcaklıkta tutulmasını sağlayan ekipmandır. Tipik olarak R404A/R407F/R513A soğutucu akışkan, kompresör, kondenser, ekspansiyon valfi ve her oda için ayrı evaporator içerir.",
+        sections: [
+          {
+            heading: "Oda Sıcaklıkları ve Komponentler",
+            paragraphs: [
+              "Et odası -18 °C, balık -25 °C, sebze +4 °C, süt ürünü +2 °C, kuru kumanya +10 °C tipik.",
+              "Genellikle iki kompresör (duty/standby), bir kondenser (su soğutmalı), ekspansiyon valfli her oda.",
+              "Defrost: sıcak gaz veya elektrikli rezistans ile periyodik buz çözme.",
+              "Solenoid valf, oda termostatına göre evaporator'a gaz akışını açar/kapar."
+            ],
+            table: {
+              headers: ["Oda", "Sıcaklık", "Bağıl Nem"],
+              rows: [
+                ["Et (frozen)", "-18 °C", "—"],
+                ["Balık (frozen)", "-25 °C", "—"],
+                ["Sebze/meyve", "+4 °C", "%85–90"],
+                ["Süt ürünü", "+2 °C", "%80"],
+                ["Kuru kumanya", "+10 °C", "%50"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Kapı içeride bulunan personel için içeriden açma kolu (panic release) zorunludur (SOLAS).",
+          "Düşük sıcaklık alarmı bridge ve ECR'da görünür olmalı.",
+          "Defrost sırasında oda sıcaklığı geçici olarak yükselir; defrost frekansı ayarlanmalı.",
+          "Et ve balık odası ayrı evaporator gerektirir; çapraz koku önlemi."
+        ],
+        workingPrinciple: [
+          "Kompresör soğutucu gazı sıkıştırır → kondenser deniz suyuyla yoğunlaştırır (sıvı) → likit receiver → ekspansiyon valfi (basınç düşer) → evaporator (oda havasını soğutur, gaz olur) → kompresör.",
+          "Termostat oda sıcaklığını okur; set noktasına ulaşınca solenoid valfi kapatır, kompresör pump-down yapar.",
+          "Defrost timer/sensör tetiklendiğinde sıcak gaz veya elektrik rezistansı evaporator'a yönlendirilir."
+        ],
+        operation: [
+          "Sefere çıkmadan kumanya yüklendiğinde tüm odalar set sıcaklığa indirilir.",
+          "Günlük sıcaklık kontrol log'u tutulur (HACCP zorunluluğu).",
+          "Evaporator coil'inde aşırı buz birikimi varsa defrost manuel başlatılır.",
+          "Refrigerant level (sight glass) ve oil level (kompressor) kontrol edilir.",
+          "Kondenser deniz suyu strainer'ı haftalık temizlenir."
+        ],
+        faults: [
+          { fault: "Oda soğumuyor", cause: "Gaz kaçağı, evaporator buzlu, solenoid valf kapalı", action: "Sızdırmazlık, defrost, solenoid test." },
+          { fault: "Kompresör kısa devirli (short-cycle)", cause: "LP switch ayarsız, gaz az, sıvı geri dönüşü", action: "Switch ayar, gaz şarj, ekspansiyon valf bakım." },
+          { fault: "Kapıda buzlanma", cause: "Conta bozuk, defrost yetersiz", action: "Conta değişim, defrost frekansı artır." },
+          { fault: "HP trip", cause: "Deniz suyu yok, kondenser kirli", action: "SW pompa, strainer, kondenser temizlik." }
+        ],
+        precautions: [
+          "Soğuk depoya tek başına girilmez; içeride mahsur kalma riski (panic alarm + radio).",
+          "Defrost sırasında üretilen sıvı drain hattı tıkanmamalı (don/sızıntı).",
+          "Soğutucu gaz sızıntısı oda atmosferinde O₂ azaltır; gaz dedektör zorunlu.",
+          "Kompresör çalışırken suction valf kapatılmaz (sıvı kompresyon = kırılma)."
+        ]
+      },
+      {
+        title: "Sıkıştırılmış Hava Sistemi (Start / Control / Working Air)",
+        introduction: "Gemide üç ana basınçlı hava sistemi vardır: ana makine ilk hareketi için 25–30 bar start air, otomasyon ve enstrümantasyon için 7 bar control air, atölye ve servis için 7 bar working air. Kompresör + air cooler + receiver tank + dryer + filter sistemi ile sağlanır.",
+        sections: [
+          {
+            heading: "Sistem Hiyerarşisi",
+            paragraphs: [
+              "Ana hava kompresörü (main air compressor): 2 kademeli, 30 bar; ana receiver tankını şarj eder.",
+              "Start air receiver: SOLAS gereği 12 ardışık reverse start için yeterli olacak hacim (genellikle 2 adet).",
+              "Reducing valve: 30 bar → 7 bar control/working air için.",
+              "Air dryer: refrigerant veya desiccant tipi; çiğ noktası -20 ila -40 °C.",
+              "Acil kompresör (emergency air compressor): elektrik kesintisinde dizel veya emergency switchboard'dan beslenen küçük kompresör; ana makine ilk start için."
+            ],
+            table: {
+              headers: ["Sistem", "Basınç", "Kullanım"],
+              rows: [
+                ["Start air", "25–30 bar", "Ana makine, jeneratör start"],
+                ["Control air", "7 bar", "Pnömatik valf, governor"],
+                ["Working air", "7 bar", "Atölye, temizlik"],
+                ["Whistle air", "7–10 bar", "Tipik ses cihazı (whistle)"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Receiver tank ve emniyet valfi 5 yılda bir survey gerektirir (class).",
+          "Tank içinde su birikimi olur; her vardiya altta drain açılarak boşaltılır.",
+          "Yağ buharı patlama riski; kompresör çıkış sıcaklığı izlenir (140 °C üzeri tehlike).",
+          "Control air kuru ve yağsız olmalı; yoksa pnömatik instrumentation arızalanır."
+        ],
+        workingPrinciple: [
+          "Kompresör atmosferden hava çeker, 1. kademede 5–7 bara sıkıştırır, intercooler'da soğutulur.",
+          "2. kademede 30 bara çıkarılır, aftercooler'da soğutulur ve nem ayrıştırılır.",
+          "Receiver'a basılır; tank dolduğunda unloader devreye girer veya kompresör durur.",
+          "Dryer adsorpsiyon (silica gel) veya refrigeration ile suyu uzaklaştırır."
+        ],
+        operation: [
+          "Kompresör start öncesi yağ seviyesi, soğutma suyu, drain kontrol.",
+          "Otomatik mod: receiver tank basıncı düştüğünde otomatik start.",
+          "Drain valflerini her 4 saatte bir aç (tank dibinde su birikmemeli).",
+          "Start air valfi izolasyonu kontrol et; kazara start olabilir.",
+          "Aftercooler ve intercooler tube tarafı yıllık temizlik."
+        ],
+        faults: [
+          { fault: "Kompresör basınç vermiyor", cause: "Suction filter tıkalı, kafa contası, kapakçık kırık", action: "Filtre, kafa söküm, valf bakım." },
+          { fault: "Yüksek discharge sıcaklığı", cause: "Soğutma suyu yok, kondenser kirli, intercooler tıkalı", action: "SW kontrol, temizlik." },
+          { fault: "Receiver basınç tutmuyor", cause: "Emniyet valfi sızdırıyor, drain valfi açık, hat kaçağı", action: "Valf reseat, hatta sızdırmazlık testi." },
+          { fault: "Dryer çiğ noktası yüksek", cause: "Desiccant doymuş, regenerasyon arızası", action: "Desiccant değişim, regen heater kontrol." }
+        ],
+        precautions: [
+          "Receiver tank üzerinde safety valve mutlaka çalışır; manuel test düzenli yapılır.",
+          "Yüksek basınç hattında çatlak/sızıntıya yaklaşırken vücudu açık tutmayın (yüksek hızlı jet kesik yapar).",
+          "Bakım öncesi tank tamamen depressurize edilmeli, izolasyon ve kilit-etiket (LOTO) uygulanmalı.",
+          "Yağlı kompresörde aşırı yağ taşkını patlama riski oluşturur; yağ filtresi ve seperator düzenli kontrol."
+        ]
+      },
+      {
+        title: "Buhar ve Kondens Sistemi",
+        introduction: "Gemide buhar sistemi, kazanlardan üretilen buharın yakıt ısıtma, calorifier, tank ısıtma, tank temizleme, mutfak ve HFO arıtma için kullanıldığı sistemdir. Saturated buhar (genellikle 7 bar) üretilir, kullanım yerlerine dağıtılır ve kondens (yoğuşmuş su) hot well'e dönüp tekrar kazana beslenir.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "Auxiliary boiler: yakıtlı (HFO/MGO) veya egzoz gazı ekonomajör; 7–10 bar saturated buhar üretir.",
+              "Buhar kollektörü ve dağıtım hatları: izole, drain valfli.",
+              "Steam trap (kondens kapanı): kondensi ayırır, buhar kaçağını önler.",
+              "Hot well tank: kondensi toplar, sıcaklığını kontrol eder (oksijen tutucu için).",
+              "Feed water pompası: hot well'den kazana su basar.",
+              "Deaerator: feed water'dan O₂ ve CO₂ uzaklaştırır."
+            ],
+            table: {
+              headers: ["Tüketici", "Buhar Sıcaklığı", "Tipik Kullanım"],
+              rows: [
+                ["HFO ısıtma (ana tank)", "120 °C / 7 bar", "40–50 °C tank"],
+                ["HFO settling/service", "120 °C", "75–90 °C"],
+                ["HFO purifier ısıtıcı", "120 °C", "98 °C"],
+                ["Calorifier", "120 °C", "65 °C su"],
+                ["Tank cleaning (COW)", "saturated", "60–80 °C"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Feed water pH 8.5–10.5, sertlik <5 ppm; kazan suyu phosphate/sülfit dozajı yapılır.",
+          "Hot well sıcaklığı 60–80 °C; çok soğuk olursa O₂ çözünür ve kazan korozyonu yapar.",
+          "Steam trap arızası buhar kaybı + verim düşüşüdür; düzenli ultrasonik test yapılır.",
+          "Egzoz gazı ekonomajörü manevrada/limanda az çalışır; soot fire riski için fan ile temizlenir."
+        ],
+        workingPrinciple: [
+          "Yakıtlı kazanda brulor su yüzeyini ısıtır; su buharlaşır, üst kısımdan kuru buhar alınır.",
+          "Buhar kollektörden tüketicilere dağıtılır; kullanım yerinde ısı verirken yoğuşur.",
+          "Kondens steam trap üzerinden kondens hattına geçer ve hot well'e dönüş yapar.",
+          "Feed water pompası hot well'den kazana basar; level controller drum seviyesini sabit tutar."
+        ],
+        operation: [
+          "Kazanı çalıştırmadan önce su seviyesi (gauge glass) ve safety valve test.",
+          "Brulor yakıt valfini yavaş aç; alev tutuşunu (flame eye) kontrol et.",
+          "Drum basıncı yükselirken çıkış valfini kademeli aç (thermal shock önlemi).",
+          "Operasyon sırasında pH, klorür, fosfat, salinity testleri günlük yapılır.",
+          "Blow-down: kazan suyundaki çamur ve tuzu boşaltmak için altta surface ve bottom blow-down."
+        ],
+        faults: [
+          { fault: "Brulor ateşlemiyor", cause: "Yakıt soğuk, ignition arızası, fotosel kirli", action: "HFO ısıt, ignition kontrol, fotosel temizlik." },
+          { fault: "Drum seviye dalgalı (priming/foaming)", cause: "Kazan suyu kirli, yüksek TDS, alkalinity yüksek", action: "Blow-down yap, kimyasal dozaj kontrol." },
+          { fault: "Kondens dönüşü düşük", cause: "Steam trap takılı kalmış, kondens hattında kaçak", action: "Trap test, hat sızdırmazlık." },
+          { fault: "Soot fire (egzoz ekonomajörü)", cause: "Soot birikimi, düşük yük, alkali yakıt", action: "Soot blow düzenli yap, yangın halinde steam smothering veya CO₂." }
+        ],
+        precautions: [
+          "Buhar hattı çalıştırılırken yavaş ısıtılmalı; ani açma water hammer yapar (boru patlatabilir).",
+          "Safety valve manuel test düzenli yapılır; tıkanması facia.",
+          "Sıcak yüzey yanığı için hatlar izole edilmeli; çıplak el ile temas yasak.",
+          "Boş çalışan kazan (low water) overheating ve patlama riski; level alarmları hassas tutulmalı."
+        ]
+      }
+    ]
   }
 };
 
