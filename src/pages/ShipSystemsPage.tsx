@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Anchor, Compass, Wrench, Gauge, Flame, Package, ArrowRight, Search, X } from "lucide-react";
+import { Anchor, Compass, Wrench, Gauge, Flame, Package, Leaf, ArrowRight, Search, X } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { shipSystemsData } from "@/data/shipSystemsData";
@@ -53,6 +53,14 @@ const SECTIONS = [
     icon: Package,
     to: "/ship-systems/cargo-systems",
     color: "from-yellow-500/20 to-amber-500/10",
+  },
+  {
+    id: "environmental-auxiliary",
+    title: "Çevre ve Yardımcı Sistemler",
+    desc: "BWMS, OWS, sewage, insinerator, HVAC, hidrofor, soğuk depo, sıkıştırılmış hava ve buhar",
+    icon: Leaf,
+    to: "/ship-systems/environmental-auxiliary",
+    color: "from-green-500/20 to-emerald-500/10",
   },
 ];
 
