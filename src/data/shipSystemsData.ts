@@ -1,5 +1,11 @@
 // Gemi Sistemleri ve Ekipmanları — Alt konu içerikleri
 
+export interface ShipSystemFault {
+  fault: string;
+  cause: string;
+  action: string;
+}
+
 export interface ShipSystemTopic {
   title: string;
   introduction: string;
@@ -12,6 +18,10 @@ export interface ShipSystemTopic {
     example?: { problem: string; steps: string[]; result: string };
   }[];
   keyPoints: string[];
+  workingPrinciple?: string[];
+  operation?: string[];
+  faults?: ShipSystemFault[];
+  precautions?: string[];
 }
 
 export interface ShipSystemCategory {
@@ -85,6 +95,34 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Funda hızı genellikle 5-9 şakel/dakika, vira hızı 2 şakel/dakikadır.",
           "Fren bandı kuru tutulmalıdır; yağlı fren tutma kapasitesini kaybeder.",
           "Demir fundası sırasında zincir hızı kontrol altında tutulmalıdır; serbest funda kayıp demire neden olabilir."
+        ],
+        workingPrinciple: [
+          "Elektrik veya hidrolik motor, redüktör üzerinden zincir dişlisini (wildcat) döndürür.",
+          "Wildcat dişleri zincir baklalarına geçerek funda/vira hareketini sağlar.",
+          "Bant freni (band brake) ve disk fren, motor durduğunda yükü tutar.",
+          "Kavrama (clutch) wildcat'i şafttan ayırarak serbest funda yapılmasına izin verir.",
+          "Hidrolik tipte yön valfi yağ akışını yönlendirerek dönüş yönü ve hızı belirler."
+        ],
+        operation: [
+          "Çalıştırmadan önce lokal kumandayı, yağ seviyelerini ve fren durumunu kontrol et.",
+          "Hidrolik sistemi devreye al, basınç yükselene kadar bekle.",
+          "Frenleri aç, kavramayı bağla; köprüden veya lokal panelden komut ver.",
+          "Funda sırasında her şak (shackle) geçişinde hız düşür; vira sırasında ampermetreyi izle.",
+          "İşlem bitince kavramayı boşa al, bant freni sık, devre dışı bırak ve emniyet kilidini tak."
+        ],
+        faults: [
+          { fault: "Wildcat dönmüyor", cause: "Elektrik beslemesi yok / hidrolik basınç düşük / fren sıkışık", action: "Şalter ve sigortayı kontrol et, pompa basıncını ölç, freni gevşet." },
+          { fault: "Vira sırasında aşırı ısınma", cause: "Aşırı yük, yetersiz yağlama, yatak aşıntısı", action: "İşlemi durdur, soğut, yağ seviyesini ve yatakları kontrol et." },
+          { fault: "Zincir kaymalı funda yapıyor", cause: "Bant fren balatası aşınmış veya yağlı", action: "Funda durdur, freni temizle/balata değiştir, kuru havada test et." },
+          { fault: "Hidrolik yağ kaçağı", cause: "Hortum/keçe arızası, yüksek basınç darbesi", action: "Sistem basıncını boşalt, hortum/keçe değiştir, yağ seviyesini tamamla." },
+          { fault: "Wildcat zincirden atlıyor", cause: "Diş aşıntısı veya yanlış zincir kalibresi", action: "İşlemi durdur, wildcat ve zincir kalibresini kontrol et, gerekirse değiştir." }
+        ],
+        precautions: [
+          "Çalışma alanında baret, eldiven, çelik burunlu bot ve gözlük kullan.",
+          "Funda sırasında zincir uçuşma alanına kimse girmemeli; bow stopper devrede tutulmalı.",
+          "Bakım öncesi enerji izolasyonu (LOTO) yap, hidrolik basıncı tahliye et.",
+          "Soğuk havada operasyondan önce yağı sirküle ettirerek ısıt.",
+          "Demir kontrolünü kaybetmemek için her zaman bant fren elinin altında olmalı."
         ]
       },
       {
@@ -144,6 +182,33 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Bumbayı düşük açıda (yüksekte) kullanmak momenti azaltır; güvenlik artar.",
           "Vinç operatörü sertifikalı olmalıdır.",
           "Halat, kanca ve blok gibi donanımlar yıllık muayenede kontrol edilir."
+        ],
+        workingPrinciple: [
+          "Elektrik veya hidrolik motor, kaldırma (hoist) ve dönme (slewing) hareketlerini sağlar.",
+          "Halat tamburu üzerinde sarılan tel halat, makaralar üzerinden kanca/grab'a iletilir.",
+          "Limit anahtarları yüksek/alçak limit ve dönüş açısını sınırlar.",
+          "Aşırı yük (overload) sensörü SWL aşıldığında motoru otomatik durdurur."
+        ],
+        operation: [
+          "Operasyon öncesi SWL etiketini, halat ve sapan durumunu, fren testini doğrula.",
+          "Hidrolik/elektrik sistemini ısıtarak çalıştır.",
+          "Yükü dengeli sapanla bağla, ağırlık merkezini doğrula, yavaşça gerdir.",
+          "Kaldırma sırasında ani durmalardan kaçın, sallanmayı kontrol et.",
+          "İşlem sonunda kancayı emniyetli pozisyona al, frenleri sık, sistemi devre dışı bırak."
+        ],
+        faults: [
+          { fault: "Kaldırma yapamıyor", cause: "Aşırı yük koruması devrede / hidrolik basınç düşük", action: "Yükü kontrol et, sensörü sıfırla, basıncı doğrula." },
+          { fault: "Yük serbest düşüyor", cause: "Fren arızası, balata aşıntısı", action: "Operasyonu durdur, frenleri test et ve değiştir." },
+          { fault: "Slewing tutukluk", cause: "Slewing yatağı yağsız veya hasarlı", action: "Greslenmesini yap, hasarlıysa değiştir." },
+          { fault: "Halat üzerinde kuş yuvası (kink)", cause: "Hatalı sarım, gevşek tambur", action: "Halatı kontrol et, hasarlıysa değiştir, doğru sarım yap." },
+          { fault: "Aşırı titreşim", cause: "Yatak aşıntısı, dengesiz tambur", action: "Yatakları ve tamburu incele, gerekirse değiştir." }
+        ],
+        precautions: [
+          "SWL kesinlikle aşılmamalı; rüzgâr hızı limitinde operasyon durdurulmalı.",
+          "Yük altında ve dönüş alanında personel bulunmamalı.",
+          "Tel halatlar yıllık görsel + periyodik NDT kontrolünden geçmeli.",
+          "Operasyon sırasında haberleşme (telsiz/işaret) sürekli olmalı.",
+          "Sertifikalı sapan ve kanca kullan, etiketi okunamayan ekipmanı kullanma."
         ]
       },
       {
@@ -180,6 +245,32 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Snap-back zone'larda durulmamalıdır.",
           "OCIMF MEG4 mooring ekipmanları için kılavuz standarttır.",
           "Mooring plan, geminin boyuna ve rüzgâr/akıntı koşullarına göre hazırlanır."
+        ],
+        workingPrinciple: [
+          "Tambur (drum) bağlama halatını sarar; tension modunda halat gerginliğini otomatik ayarlar.",
+          "Warping head (gypsy) ek bağlama halatlarının elle çekilmesinde kullanılır.",
+          "Render tipi vinç, ayarlanan tension aşıldığında halatı kontrollü serbest bırakır.",
+          "Self-tensioning sistem, gel-git veya draft değişimine göre halat boyunu otomatik ayarlar."
+        ],
+        operation: [
+          "Operasyon öncesi halat durumu, fren ve tension ayarını kontrol et.",
+          "Halatı doğru fairlead üzerinden geçir, tambura düzgün sar.",
+          "Bağlama tamamlandığında bant freni sıkıca uygula ve tamburu kavramadan ayır.",
+          "Auto-tension modunda set değerini gemi ve liman koşullarına göre belirle.",
+          "Gel-git ve hava değişikliklerinde halat gerginliğini periyodik kontrol et."
+        ],
+        faults: [
+          { fault: "Halat tension'ı tutmuyor", cause: "Fren balatası aşınmış / kavrama gevşek", action: "Frenleri ayarla/değiştir, kavramayı kontrol et." },
+          { fault: "Auto-tension devreye girmiyor", cause: "Sensör/PLC arızası, basınç düşük", action: "Sensörü kalibre et, hidrolik basıncı kontrol et." },
+          { fault: "Halat tambur üzerinde sıkışıyor", cause: "Düzgün sarılmamış halat", action: "Halatı tamamen boşalt ve yeniden düzgün sar." },
+          { fault: "Snap-back zonunda halat kopması", cause: "Aşırı tension, eski halat", action: "Operasyonu durdur, halatı değiştir, snap-back zonunu boşalt." }
+        ],
+        precautions: [
+          "Snap-back zonu boyalı olarak işaretli olmalı; bu alanda kimse durmamalı.",
+          "MEG4 standardına uygun halat ve fairlead kullan.",
+          "Halatı koruyucu (chafing gear) ile aşıntıdan koru.",
+          "Tüm vardiyalarda mooring kontrolü yap, kayıt tut.",
+          "Acil durumda halat kesme baltası (axe) erişilebilir olmalı."
         ]
       },
       {
@@ -215,6 +306,32 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "IACS UR S21, hatch cover dayanımını dalga yüküne göre belirler.",
           "Contalar düzenli olarak kontrol edilmeli, sertleşmiş veya hasarlı contalar değiştirilmelidir.",
           "Quick-acting cleats düzgün sıkılmazsa conta sıkıştırma yetersiz kalır."
+        ],
+        workingPrinciple: [
+          "Hidrolik silindirler kapak panellerini açma/kapama yönünde hareket ettirir.",
+          "Folding tip kapaklar menteşeli olarak katlanır; rolling tip ray üzerinde yuvarlanır.",
+          "Lastik conta (rubber packing) ve clip/cleat sistemi su sızdırmazlığı sağlar.",
+          "Coaming (mezarna) yüksekliği denizden gelecek suyun ambara girmesini engeller."
+        ],
+        operation: [
+          "Açmadan önce coaming üstünü ve drenajları temizle.",
+          "Hidrolik sistemi devreye al, basıncı kontrol et.",
+          "Kapağı yavaş aç, hareket eden parçalara dikkat et.",
+          "Kapatmadan önce conta yüzeyini kontrol et, hortum testi (hose test) yap.",
+          "Tüm cleat/clip ve cross joint'leri sıkıca tespit et."
+        ],
+        faults: [
+          { fault: "Su sızıntısı", cause: "Conta aşınmış, cleat gevşek, drenaj tıkalı", action: "Conta değişimi, cleat sıkma, drenaj temizliği yap." },
+          { fault: "Hidrolik açma yapmıyor", cause: "Basınç düşük, valf arızalı", action: "Pompa ve valfleri kontrol et." },
+          { fault: "Panel rayda sıkışıyor", cause: "Pas, kir, deformasyon", action: "Rayı temizle, hasarlı tekerleri değiştir." },
+          { fault: "Coaming üstü çatlak", cause: "Yorulma, korozyon", action: "Hasarı kayıt altına al, sınıf onayı ile tamir et." }
+        ],
+        precautions: [
+          "Kapak hareketi sırasında ambar ağzında kimse bulunmamalı.",
+          "Yükleme öncesi/sonrası ultrasonik veya hose test ile sızdırmazlık doğrulanmalı.",
+          "Conta yüzeyi yağ ve kir içermemeli; hasarlı conta hemen değiştirilmeli.",
+          "Açık konumda emniyet pimleri (safety pins) takılmalı.",
+          "Hidrolik bakım öncesi basınç tahliye edilmeli (LOTO)."
         ]
       },
       {
@@ -269,6 +386,29 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Halat sarım sayısı arttıkça tutma kuvveti üstel olarak artar.",
           "Bollard SWL değeri, bağlanan halatın kopma yükünün en az %80'i olmalıdır.",
           "Fairlead açısı halatın aşırı bükülmesini engelleyecek şekilde seçilmelidir."
+        ],
+        workingPrinciple: [
+          "Capstan, dikey eksenli warping head'tir; halat çekme işlemini operatör eli ile yönlendirir.",
+          "Elektrik veya hidrolik motorla tahrik edilir.",
+          "Bollard, fairlead, chock, panama klips ve roller halatın güvenli yönlendirilmesini sağlar.",
+          "Halat durdurucu (stopper) bağlama halatını vinçten bollard'a aktarırken kullanılır."
+        ],
+        operation: [
+          "Capstan'ı çalıştırmadan önce alanı boşalt, halat üzerinde el eldivenli olmalı.",
+          "Halatı capstan üzerinde 3-4 sarım yap, sürekli gergin tut.",
+          "Halat yönlendirilmesinde fairlead ve chock kullan; keskin köşelerden kaçın.",
+          "Halatı bollard'a 'figure of eight' (sekiz) şeklinde sar."
+        ],
+        faults: [
+          { fault: "Capstan dönmüyor", cause: "Motor arızası, kontaktör problemi", action: "Elektrik/hidrolik beslemeyi kontrol et." },
+          { fault: "Halat capstan üzerinde dönüyor (ride)", cause: "Yetersiz sarım, yağlı halat", action: "Halatı serbest bırak, yeniden doğru sar." },
+          { fault: "Bollard çatlağı", cause: "Aşırı yük, korozyon", action: "Kullanımı durdur, sınıf onayı ile tamir/değiştir." }
+        ],
+        precautions: [
+          "Capstan üzerinde halat varken motoru durdurma; halat sıkışabilir.",
+          "Eldiven halat dolanma riski yarattığından sıkı kavrama yapılmamalı.",
+          "Snap-back alanında durulmamalı.",
+          "Tüm güverte donanımı periyodik NDT/görsel muayeneye tabi tutulmalı."
         ]
       }
     ]
@@ -336,6 +476,32 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Paralel index tekniği ile kıyı seyrinde güvenli rota takibi yapılır.",
           "Radar reflektör (RTE) küçük hedeflerin algılanmasını kolaylaştırır.",
           "EBL (Electronic Bearing Line) ve VRM (Variable Range Marker) temel ölçüm araçlarıdır."
+        ],
+        workingPrinciple: [
+          "Magnetron veya solid-state verici, X-band (9 GHz) veya S-band (3 GHz) mikrodalga darbe üretir.",
+          "Anten dönerken darbeyi yayar; hedeflerden yansıyan eko alıcıya döner.",
+          "Gidiş-dönüş süresinden mesafe, anten azimutundan kerteriz hesaplanır.",
+          "ARPA, hedefleri otomatik takip ederek CPA/TCPA hesaplar."
+        ],
+        operation: [
+          "Stand-by'dan transmit'e geç; magnetron için warm-up süresini bekle.",
+          "Range, gain, sea clutter ve rain clutter'ı koşula göre ayarla.",
+          "EBL/VRM ile kerteriz ve mesafe ölçümü yap.",
+          "ARPA'da hedefi acquire et, vector ve trail göster.",
+          "Trip sonunda vericiyi stand-by'a al, anten frenini sık."
+        ],
+        faults: [
+          { fault: "Eko zayıf veya yok", cause: "Magnetron yaşlanmış, antenna feed arızalı", action: "Magnetron performansını ölç, gerekirse değiştir." },
+          { fault: "Anten dönmüyor", cause: "Motor/redüktör arızası, fren takılı", action: "Motoru kontrol et, freni serbest bırak." },
+          { fault: "Aşırı parazit (clutter)", cause: "Hatalı tuning, çevre koşulları", action: "Sea/rain clutter ve gain'i ayarla, FTC/STC kullan." },
+          { fault: "ARPA hedef kayıp", cause: "Heading/speed input kesik, gyro/log arızası", action: "Sensör girdisi ve kabloyu kontrol et." },
+          { fault: "Ekran karanlık", cause: "Güç beslemesi/PSU arızası", action: "Sigorta ve PSU'yu kontrol et." }
+        ],
+        precautions: [
+          "Anten alanında çalışırken vericiyi stand-by'a al ve LOTO uygula.",
+          "Mikrodalga radyasyon riskine karşı yakın mesafede durma.",
+          "Performance Monitor (PM) ile periyodik performans kontrolü yap.",
+          "Sigorta değişiminde sadece üreticinin tipini kullan."
         ]
       },
       {
@@ -371,6 +537,31 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Over-reliance (aşırı güven) en büyük tehlikedir; her zaman pencereden dışarı bakılmalıdır.",
           "Datum uyumsuzluğu (harita datumu ile GPS datumu farkı) konumlandırma hatasına neden olabilir.",
           "ECDIS type-specific training sertifikası zorunludur."
+        ],
+        workingPrinciple: [
+          "ENC (Electronic Navigational Chart) verisi vektörel olarak yüklenir.",
+          "GPS, gyro, log, AIS, radar, echo sounder girdileri sensör entegrasyonu ile gösterilir.",
+          "Route planning ve monitoring fonksiyonu safety contour, no-go area uyarılarını sağlar.",
+          "Voyage data ve alarms VDR'a kaydedilir."
+        ],
+        operation: [
+          "Trip öncesi ENC update'lerini yükle (haftalık).",
+          "Safety depth, safety contour ve XTD değerlerini gemi draftına göre ayarla.",
+          "Rotayı planla; hesap kontrolü (route check) ile uyarıları çöz.",
+          "Voyage'da monitoring modunda alarmları izle, gerekirse manuel position fix yap.",
+          "Backup ECDIS veya kâğıt harita prosedürünü hazır tut."
+        ],
+        faults: [
+          { fault: "Pozisyon donuk/kayıp", cause: "GPS girdisi kesik", action: "GPS antenini ve kabloyu kontrol et, secondary GPS'e geç." },
+          { fault: "ENC güncel değil uyarısı", cause: "Update yapılmamış", action: "Hemen güncelleme yükle, rota güvenliğini doğrula." },
+          { fault: "Sistem donuyor", cause: "Yazılım hatası, bellek yetersiz", action: "Yedek üniteye geç, sistemi yeniden başlat." },
+          { fault: "Alarm sürekli ötüyor", cause: "Hatalı safety değerleri", action: "Parametreleri yeniden gözden geçir." }
+        ],
+        precautions: [
+          "İki onaylı ECDIS yoksa kâğıt harita yedeği bulundur.",
+          "Sadece eğitim sertifikalı (Type Specific) zabitler kullanmalı.",
+          "Sistem yazılımı IHO S-52/S-63 standardında olmalı.",
+          "ENC'leri sadece resmi (HO) kaynaklardan yükle."
         ]
       },
       {
@@ -410,6 +601,27 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Yanlış veya güncellenmeyen AIS verileri güvenlik riski oluşturur.",
           "Balıkçı tekneleri ve küçük teknelerin çoğunda AIS bulunmaz; radar taraması gereklidir.",
           "AIS SART, MOB durumunda kişisel konumlandırma için kullanılır."
+        ],
+        workingPrinciple: [
+          "VHF üzerinden 161.975 ve 162.025 MHz'de SOTDMA protokolü ile veri yayını yapar.",
+          "GPS, gyro ve log'dan aldığı dinamik veriyi statik veriyle birlikte yayınlar.",
+          "Class A (SOLAS gemi) ve Class B (küçük tekne) cihazları farklı güç/oranda yayın yapar."
+        ],
+        operation: [
+          "Trip öncesi statik veriyi (MMSI, ad, IMO, tip, draft) doğrula.",
+          "Voyage data: destination, ETA, navigational status'u güncelle.",
+          "Liman manevrası sırasında durumu 'moored' veya 'underway' olarak değiştir.",
+          "Anormal hedef veya spoofing şüphesinde radar ile çapraz doğrula."
+        ],
+        faults: [
+          { fault: "Diğer gemilerden veri alınmıyor", cause: "VHF anten/kablo arızası, alıcı arızası", action: "Anteni ve kabloyu kontrol et, BIT testi yap." },
+          { fault: "Pozisyon yayınlanmıyor", cause: "GPS kayıp", action: "GPS girdisini kontrol et." },
+          { fault: "Statik veri hatalı", cause: "Yanlış programlama", action: "Yetkili teknisyenle güncelle." }
+        ],
+        precautions: [
+          "AIS'i sadece güvenlik nedeni varsa (kaptan kararı) kapat; kapatma deftere işlenmeli.",
+          "MMSI ve gemi bilgisi her sefer kontrol edilmeli.",
+          "AIS, çatışmadan kaçınmada radar/görsel gözlemi tek başına ikame etmez."
         ]
       },
       {
@@ -450,6 +662,27 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "GPS spoofing ve jamming tehditlerinden haberdar olunmalıdır.",
           "Konum bilgisi WGS-84 datumundadır; harita datumu ile uyumsuzluk kontrol edilmelidir.",
           "IMO, Multi-system alıcıları (GPS+GLONASS) tavsiye eder."
+        ],
+        workingPrinciple: [
+          "Alıcı, en az 4 uydudan zaman sinyali alır ve trilateration ile pozisyon hesaplar.",
+          "DGPS, kıyı istasyonundan düzeltme alarak doğruluğu metre altına indirir.",
+          "GNSS, GPS + GLONASS + Galileo + BeiDou'yu birlikte kullanarak güvenilirliği artırır."
+        ],
+        operation: [
+          "Anteni gölgesiz açık alana monte et.",
+          "Cold start sonrası ilk fix 12 dakikaya kadar sürebilir.",
+          "DGPS düzeltmesi varsa devreye al; HDOP değerini izle (< 4 iyi).",
+          "Pozisyonu radar/celestial ile periyodik çapraz doğrula."
+        ],
+        faults: [
+          { fault: "Pozisyon yok / kayıp", cause: "Anten arızası, gölgeleme, jamming", action: "Anteni kontrol et, secondary GPS'e geç, celestial fix kullan." },
+          { fault: "Pozisyonda atlama (jump)", cause: "Multipath, spoofing", action: "Radar/visual fix ile doğrula, raporla." },
+          { fault: "HDOP yüksek", cause: "Az uydu görüş, kötü geometri", action: "Bekle, antenin önündeki engelleri kontrol et." }
+        ],
+        precautions: [
+          "GPS tek başına primer pozisyon kaynağı olarak değil, çapraz kontrol ile kullanılmalı.",
+          "Anten kabloları periyodik kontrol edilmeli.",
+          "Spoofing/jamming şüphesinde derhal alternatif pozisyon yöntemine geçilmeli."
         ]
       },
       {
@@ -495,6 +728,30 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Gyro error her vardiyada astronomik veya transit kerteriz ile kontrol edilir.",
           "Manyetik pusula yedek pusula olarak daima çalışır durumda tutulmalıdır.",
           "Deviation tablosu düzenli olarak (yılda bir) güncellenmelidir."
+        ],
+        workingPrinciple: [
+          "Gyro pusula, hızla dönen rotorun hareketsizlik (gyroscopic inertia) prensibiyle gerçek kuzeyi bulur.",
+          "Sıvı veya elektrostatik damping ile salınımı söndürür.",
+          "Manyetik pusula, kart üzerindeki mıknatısın yer manyetik alanına yönelmesi ile manyetik kuzeyi gösterir.",
+          "Compass error = Variation + Deviation."
+        ],
+        operation: [
+          "Gyro'yu trip öncesi en az 4 saat önce çalıştır (settling time).",
+          "Latitude ve speed correction'ı manuel ayar gerektiriyorsa gir.",
+          "Manyetik pusulayı periyodik (her vardiya) deviation kontrolü için kerteriz al.",
+          "Repeater'ları (köprü, dümen, pelorus) gyro ile senkron tut."
+        ],
+        faults: [
+          { fault: "Gyro yön hatası büyük (drift)", cause: "Latitude/speed correction hatalı, follow-up arızası", action: "Düzeltmeleri kontrol et, servis çağır." },
+          { fault: "Repeater senkron değil", cause: "Step motor/sigorta arızası", action: "Sigortayı değiştir, manuel sync yap." },
+          { fault: "Manyetik pusula sıvısı kabarcıklı", cause: "Sıvı kaçağı, sıcaklık", action: "Sıvı tamamla, conta değiştir." },
+          { fault: "Deviation kart eski", cause: "Manyetik değişim, yeni demir kütlesi", action: "Deviation kartını yetkili kişiyle yeniden çıkart (compass adjuster)." }
+        ],
+        precautions: [
+          "Manyetik pusula çevresine demir/manyetik malzeme yerleştirilmemeli.",
+          "Gyro alarmı (power failure) sürekli izlenmeli.",
+          "Yıllık compass adjustment yapılmalı.",
+          "Acil durumda manyetik pusula primer kaynak olduğundan her zaman çalışır durumda olmalı."
         ]
       },
       {
@@ -536,6 +793,27 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Çift frekanslı (dual-frequency) echo sounder hem sığ hem derin su ölçümü yapabilir.",
           "Yanlış ses hızı ayarı hatalı derinlik okumasına neden olur.",
           "Seyir planında echo sounder düzenli olarak kaydedilir."
+        ],
+        workingPrinciple: [
+          "Transducer, su altına ses darbesi (genellikle 50/200 kHz) yayar.",
+          "Deniz dibinden yansıyan eko alınır; gidiş-dönüş süresinden derinlik hesaplanır.",
+          "Derinlik = (ses hızı × süre) / 2; ses hızı suda ~1500 m/s kabul edilir."
+        ],
+        operation: [
+          "Trip öncesi gain ve range ayarını yap.",
+          "Shallow water alarm değerini draft + UKC marjı ile ayarla.",
+          "Frekans seçimini su derinliği ve dip yapısına göre yap (sığ: 200 kHz, derin: 50 kHz).",
+          "Voyage boyunca derinlik kaydını VDR'a aktarmayı sürdür."
+        ],
+        faults: [
+          { fault: "Derinlik okuması yok", cause: "Transducer kirli/arızalı, kablo kopuk", action: "Transducer'ı kontrol et, kabloyu izole et." },
+          { fault: "Hatalı/zıplayan derinlik", cause: "Hava kabarcığı, balık sürüsü, ikincil yansıma", action: "Gain'i ayarla, çapraz kontrol için çift frekans kullan." },
+          { fault: "Alarm çalmıyor", cause: "Alarm devre dışı veya hatalı set", action: "Alarm setini ve hoparlörü kontrol et." }
+        ],
+        precautions: [
+          "Echo sounder UKC izleme için zorunlu; sığ sularda sürekli açık kalmalı.",
+          "Transducer havuzlamada sürekli su altında kalmalı.",
+          "Derinlik bilgisi tek başına yeterli değil; harita ve gel-git ile birlikte değerlendirilmeli."
         ]
       }
     ]
@@ -594,6 +872,33 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Silindir yağlaması ayrı bir yağlama sistemiyle (alpha lubricator veya pulse jet) yapılır.",
           "Scavenge fire (süpürme yangını), süpürme havasındaki yağ birikimiyle oluşur; scavenge drain düzenli boşaltılmalıdır.",
           "SFOC (Specific Fuel Oil Consumption) genellikle 160-180 g/kWh arasındadır."
+        ],
+        workingPrinciple: [
+          "Her krank turunda bir iş çevrimi (emme+sıkıştırma+iş+egzoz) tamamlanır.",
+          "Egzoz uniflow scavenging ile silindirin üst tarafından, hava süpürme alttan yapılır.",
+          "Direct drive olarak doğrudan pervaneyi döndürür (50-120 rpm).",
+          "Crosshead yapısı sayesinde piston kuvveti yan kuvvete çevrilmeden krank şaftına iletilir."
+        ],
+        operation: [
+          "Start havası basıncını (~30 bar) ve yağ basıncını kontrol et.",
+          "Pre-lub pompasını çalıştırarak yatakları yağla.",
+          "Turning gear'ı devre dışı bırak, indicator cock'lar açık iken blow-through yap.",
+          "Kademeli olarak dead slow → slow → half → full ahead'e çık.",
+          "Stop sonrası turning gear ile soğuma süresince çevir."
+        ],
+        faults: [
+          { fault: "Start havası ile dönmüyor", cause: "Hava basıncı düşük, distribütör arızası", action: "Kompresör ve hava distribütörünü kontrol et." },
+          { fault: "Egzoz sıcaklığı bir silindirde yüksek", cause: "Yakıt enjektör arızası, supap problemi", action: "Enjektörü ve supabı kontrol et/değiştir." },
+          { fault: "Crankcase yüksek sıcaklık alarmı", cause: "Yatak sürtünmesi, oil mist", action: "ACİL slow down, oil mist detector ve yatakları kontrol et." },
+          { fault: "Scavenge fire", cause: "Yağ ve kömür birikimi + yüksek sıcaklık", action: "Yakıtı kes, scavenge space söndürme sistemini devreye al, soğut." },
+          { fault: "Turbocharger surging", cause: "Tıkalı egzoz/yakıt sorunu", action: "Yükü düşür, egzoz ve T/C'yi kontrol et." }
+        ],
+        precautions: [
+          "Crankcase açma sonrası en az 20 dakika bekle (oil mist patlama riski).",
+          "Tüm enerji kaynakları izole edilip turning gear takılmadan müdahale yapma.",
+          "Yakıt sıcaklık ve viskozitesi spec içinde tutulmalı.",
+          "Sülfür içeriğine göre uygun silindir yağı (BN) seçilmeli.",
+          "Periyodik bumper, eksantrik ve yatak clearance ölçümü yapılmalı."
         ]
       },
       {
@@ -625,6 +930,30 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Yardımcı makine olarak da jeneratör tahrikinde yaygın kullanılır.",
           "Dual-fuel (DF) versiyonları LNG ve dizel ile çalışabilir.",
           "Turbocharger arızası motor gücünü önemli ölçüde düşürür."
+        ],
+        workingPrinciple: [
+          "İki krank turunda bir iş çevrimi tamamlanır (emme, sıkıştırma, iş, egzoz).",
+          "Trunk piston yapısı; eksantrik mili krank devrinin yarısında döner.",
+          "Genellikle 400-1000 rpm arası çalışır; redüktör veya jeneratör tahriki yapar."
+        ],
+        operation: [
+          "Yağ ve soğutma suyu sıcaklığını çalıştırma öncesi kontrol et.",
+          "Pre-lub yap, jacket water'ı sirküle ettir.",
+          "Start havası veya elektrik marş ile çalıştır.",
+          "Yükü kademeli artır, exhaust temp ve T/C basıncını izle.",
+          "Stop sonrası soğutma sirkülasyonunu sürdür."
+        ],
+        faults: [
+          { fault: "Çalışmıyor", cause: "Yakıt yok, hava karışık, rack tutuk", action: "Yakıt sistemini havasız al, rack'i serbestleştir." },
+          { fault: "Karter basıncı yüksek", cause: "Piston ring kaçırma, yağ buharı", action: "Yükü düşür, ring/yatak kontrolü yap." },
+          { fault: "Knocking", cause: "Hatalı injection timing, su girişi", action: "Timing ve enjektörü kontrol et." },
+          { fault: "Yağ basıncı düşük", cause: "Filtre tıkalı, pompa aşıntısı", action: "Filtre değiştir, pompa kontrolü yap." }
+        ],
+        precautions: [
+          "Yakıt değişiminde sıcaklık-viskozite eğrisini takip et (HFO/MGO geçişi).",
+          "Karter kapağı açma 20 dk soğuma sonrası yapılmalı.",
+          "Periyodik valve clearance ayarı kritiktir.",
+          "Aşırı yüklemeden kaçın; turbo aşıntısını hızlandırır."
         ]
       },
       {
@@ -675,6 +1004,28 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "İtme yatağı arızası geminin seyir kabiliyetini tamamen ortadan kaldırır.",
           "Şaft muylu aşınması periyodik olarak mikrometre ile ölçülür.",
           "Stern tube yağ seviyesi ve sızdırmazlık sürekli izlenmelidir."
+        ],
+        workingPrinciple: [
+          "Ana motorun krank şaftı, intermediate ve tail shaft üzerinden pervaneye torku aktarır.",
+          "Stern tube yatakları (white metal veya su yağlamalı) şaftı destekler.",
+          "Thrust bearing pervaneden gelen ileri/geri itkiyi gemiye aktarır.",
+          "Stern tube seal (Simplex tipi) yağ kaçağını ve deniz suyu girişini engeller."
+        ],
+        operation: [
+          "Trip öncesi yatak sıcaklıkları, yağ seviyesi ve seal hava basıncını kontrol et.",
+          "Vibrasyon ölçümünü periyodik yap.",
+          "Stern tube yağ tankı seviyesini ve sıcaklığını izle."
+        ],
+        faults: [
+          { fault: "Stern tube yağ tüketimi yüksek", cause: "Aft seal aşıntısı", action: "Havuzlamada seal değişimi planla." },
+          { fault: "Thrust bearing sıcaklık alarmı", cause: "Yağ akışı yetersiz, white metal aşıntısı", action: "Yağ basıncını kontrol et, gerekirse motoru durdur." },
+          { fault: "Aşırı titreşim", cause: "Pervane hasarı, şaft eğikliği, hizalama bozukluğu", action: "Devri düşür, dalgıç ile pervane kontrolü, alignment ölç." },
+          { fault: "Yağ kontaminasyonu (su)", cause: "Aft seal kaçağı", action: "Yağ analizi yap, seal bakımı/değişimi planla." }
+        ],
+        precautions: [
+          "Stern tube yağ tankı head pressure'ı sea draft üstünde tutulmalı.",
+          "Periyodik shaft alignment ve crank deflection ölçümü yapılmalı.",
+          "Tüm yatak alarmları kritik sayılmalı; alarmda hız düşürülmeli."
         ]
       },
       {
@@ -711,6 +1062,26 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Pervane parlatması (polishing) düzenli aralıklarla yapılarak verim korunur.",
           "Azimuth thruster hem itme hem yönlendirme sağlar; ayrı dümen gerektirmez.",
           "Pervane yüzeyi sualtı muayenesinde (diving inspection) kontrol edilir."
+        ],
+        workingPrinciple: [
+          "Sabit yapraklı (FPP) pervane, motor devri ile itki üretir; yön değişimi motor reverse ile yapılır.",
+          "Kontrol edilebilir pillaki (CPP) pervane, yaprak açısı (pitch) hidrolik mekanizma ile değiştirilerek itki kontrol edilir.",
+          "Kavitasyon, yaprak üzerinde basınç düşüşüyle oluşan buhar kabarcıklarının patlamasıdır; aşıntı ve titreşime yol açar."
+        ],
+        operation: [
+          "CPP pitch göstergesini kontrol et; hidrolik basıncı izle.",
+          "Manevra sırasında ani pitch değişiminden kaçın.",
+          "Devir/pitch kombinasyonunu yakıt verimliliği için optimize et."
+        ],
+        faults: [
+          { fault: "CPP pitch yanıt vermiyor", cause: "Hidrolik basınç düşük, OD kutusu arızası", action: "Basıncı kontrol et, OD box bakımı yap." },
+          { fault: "Aşırı titreşim", cause: "Pervane yaprağı hasarlı, balansı bozulmuş", action: "Dalış/havuzlama ile incele, gerekirse değiştir." },
+          { fault: "Kavitasyon erozyonu", cause: "Hatalı yaprak profili, aşırı yük", action: "Yaprak yüzeyini kontrol et, profil restorasyonu yap." }
+        ],
+        precautions: [
+          "Pervane civarında dalış öncesi şaft kilitlenmeli.",
+          "CPP hidrolik yağı temiz tutulmalı; analiz periyodik yapılmalı.",
+          "Sığ sularda squat etkisi nedeniyle kavitasyon riskine dikkat."
         ]
       },
       {
@@ -769,6 +1140,30 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Dar sularda her iki dümen pompası birlikte çalıştırılır.",
           "Dümen açı göstergesi köprüüstü ve dümen dairesinde bulunmalıdır.",
           "NFU (Non-Follow-Up) kumanda acil durumda doğrudan dümen kontrolü sağlar."
+        ],
+        workingPrinciple: [
+          "Hidrolik silindir veya rotary vane aktüatör, tiller üzerinden dümen şaftını döndürür.",
+          "İki bağımsız güç ünitesi (steering gear power unit) yedeklilik sağlar.",
+          "Otopilot, gyro/heading sensörü ile dümen makinesi arasında PID kontrolü yapar.",
+          "Emergency steering, dümen makinesi dairesinden lokal manuel kontrolle yapılır."
+        ],
+        operation: [
+          "Trip öncesi (departure öncesi 12 saat içinde) steering gear testini yap (her iki ünite, lokal/uzaktan).",
+          "Heading lock veya track modunu deniz koşullarına göre seç.",
+          "Manevra alanlarında her iki pompayı paralel çalıştır.",
+          "Periyodik olarak emergency steering tatbikatı yap."
+        ],
+        faults: [
+          { fault: "Dümen verilen komuta tepki vermiyor", cause: "Hidrolik basınç düşük, follow-up arızası, valf sıkışması", action: "Diğer üniteye geç, emergency steering'e al, hidrolik sistemi kontrol et." },
+          { fault: "Dümen kendi başına hareket ediyor (hunting)", cause: "Sensör/feedback arızası", action: "Otopilotu manuele al, sensörü kalibre et." },
+          { fault: "Hidrolik yağ kaçağı", cause: "Conta/silindir arızası", action: "Acilen kaçağı durdur, basıncı düşür, contayı değiştir." },
+          { fault: "Heading sapması (otopilot)", cause: "Gyro arızası, rüzgâr/akıntı", action: "Manuele geç, gyro hatalıysa manyetik pusula ile manuel kullan." }
+        ],
+        precautions: [
+          "SOLAS gereği steering gear testleri kayıt altına alınmalı.",
+          "Emergency steering haberleşmesi (telefon/telsiz) test edilmeli.",
+          "Hidrolik yağ seviyesi ve sıcaklığı sürekli izlenmeli.",
+          "Köprüden lokal kontrole geçiş prosedürü tüm zabitler tarafından bilinmelidir."
         ]
       }
     ]
@@ -827,6 +1222,31 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Acil jeneratör su hattının üzerinde ve ana makine dairesinin dışında konumlandırılmalıdır.",
           "Blackout recovery prosedürü tüm personel tarafından bilinmelidir.",
           "Preferential trip sistemi, aşırı yüklenme durumunda kritik olmayan tüketicileri otomatik keser."
+        ],
+        workingPrinciple: [
+          "Dizel motor, alternatörü tahrik ederek 3-faz AC üretir (genelde 440 V, 60 Hz).",
+          "AVR (Automatic Voltage Regulator) çıkış voltajını sabit tutar.",
+          "Governor, motor devri kontrolü ile frekansı sabit tutar.",
+          "Paralel çalışmada synchroscope veya auto-sync ile bara ile faz uyumu sağlanır."
+        ],
+        operation: [
+          "Çalıştırmadan önce yağ, su, yakıt seviyelerini kontrol et.",
+          "Motoru rölantide ısıt; voltaj ve frekans nominal değere geldiğinde paralele al.",
+          "Yük dağılımını eşitle (governor droop ayarı).",
+          "Devre dışı alırken önce yükü diğer jeneratörlere aktar, breaker'ı aç, motoru rölantide soğut."
+        ],
+        faults: [
+          { fault: "Çalışmıyor", cause: "Yakıt yok, marş yok, low oil pressure trip", action: "Yakıt hattını havasız al, akü/marşı kontrol et, alarmı sıfırla." },
+          { fault: "Reverse power trip", cause: "Yük transferi sırasında geri besleme", action: "Breaker açıldıysa motoru kontrol et, sebebi araştır." },
+          { fault: "Yük kabul etmiyor", cause: "Governor arızası, AVR sorunu", action: "Manuel governor moda geç, AVR'yi kontrol et." },
+          { fault: "Bobinaj sıcaklığı yüksek", cause: "Aşırı yük, soğutma fan arızası", action: "Yükü azalt, fan/filtre kontrolü yap." },
+          { fault: "Black-out", cause: "Tüm jen trip, ESD aktivasyonu", action: "Emergency generator otomatik devreye girmeli; manuel reset ve restart prosedürünü uygula." }
+        ],
+        precautions: [
+          "Senkronizasyonda phase sequence aynı olmalı.",
+          "Kara şalter (breaker) açma/kapama sırası prosedüre uygun olmalı.",
+          "Yakıt değişimi ve viskozite kontrolü düzenli yap.",
+          "Emergency generator haftalık otomatik test ile çalıştırılmalı."
         ]
       },
       {
@@ -870,6 +1290,31 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Dry firing (susuz ateşleme) mutlak olarak önlenmelidir.",
           "Blowdown (kazan dip tahliyesi) düzenli yapılarak çamur ve tortu uzaklaştırılır.",
           "Egzoz ekonomizer kurum yangını (soot fire) riski taşır; düzenli su yıkama gerekir."
+        ],
+        workingPrinciple: [
+          "Yakıt brulörde yakılarak baca gazıyla su borularını ısıtır; su kaynayarak buhar üretir.",
+          "Atık ısı kazanı (composite/economiser), ana motor egzoz gazı ile buhar üretir.",
+          "Buhar tamburu (steam drum), buhar ve suyu ayırır.",
+          "Safety valve, set basıncın üstünde otomatik açarak basıncı tahliye eder."
+        ],
+        operation: [
+          "Yakmadan önce furnace purge (en az 3 dakika) yap.",
+          "Brulörü tutuştur, alev güvenlik sensörü ile alevi izle.",
+          "Su seviyesini gauge glass ile sürekli kontrol et.",
+          "Basıncı yavaş yükselt; set basınçta safety valve testini periyodik yap.",
+          "Soot blowing'i belirli aralıklarla yap."
+        ],
+        faults: [
+          { fault: "Düşük su seviyesi alarmı", cause: "Besleme pompası arızası, kaçak", action: "Brulörü kes, sebebi bul, su tamamla; kuru çalışma kazanı yakar." },
+          { fault: "Yüksek basınç alarmı", cause: "Buhar tüketimi düşük, basınç kontrolü arızalı", action: "Yakıt akışını kıs, safety valve setini kontrol et." },
+          { fault: "Alev tutuşmuyor", cause: "İgnition arızası, yakıt basıncı düşük, atomizer tıkalı", action: "Igniter'ı kontrol et, atomizer'ı temizle, yakıt basıncı." },
+          { fault: "Tüp patlaması (tube failure)", cause: "Korozyon, aşırı sıcaklık, scaling", action: "Hemen yakıtı kes, izole et, su besleme kapat, soğut." }
+        ],
+        precautions: [
+          "Su kalitesi (chloride, pH, oxygen) periyodik analiz edilmeli.",
+          "Safety valve test sertifikası geçerli olmalı.",
+          "Furnace açılmadan önce tam soğuma ve havalandırma şart.",
+          "Brulör bakımı sırasında yakıt vanaları çift izolasyonla kapatılmalı."
         ]
       },
       {
@@ -923,6 +1368,31 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Otomatik desludge (çamur boşaltma) zamanlaması yakıt kalitesine göre ayarlanır.",
           "Separatör dengesi (balance) bozulursa titreşim ve mekanik hasar oluşur.",
           "Yağ arıtmada su oranı %0.1'in altında tutulmalıdır."
+        ],
+        workingPrinciple: [
+          "Yüksek devirde dönen bowl içinde merkezkaç kuvvet ile yağ-su-tortu ayrışır.",
+          "Yoğun olan su ve tortu çevreye, hafif olan yağ merkeze yönelir.",
+          "Gravity disc çapı, yakıt-su arayüzü konumunu belirler; yakıt yoğunluğuna göre seçilir.",
+          "Otomatik desludging sistemi tortu boşaltma kapağını periyodik açar."
+        ],
+        operation: [
+          "Yakıt ön ısıtmasını ayarla (HFO için ~98 °C).",
+          "Pre-water seal yap, sonra yakıtı bowl'a al.",
+          "Akış debisini ve sıcaklığı izle.",
+          "Periyodik desludging zamanını yakıta göre ayarla.",
+          "Stop'tan önce su ile yıka."
+        ],
+        faults: [
+          { fault: "Vibration alarm", cause: "Bowl dengesizliği, yatak aşıntısı", action: "Hemen durdur, bowl ve yatakları kontrol et." },
+          { fault: "Çıkış yakıtında su", cause: "Hatalı gravity disc, yüksek debi", action: "Doğru gravity disc seç, debiyi düşür." },
+          { fault: "Desludging gerçekleşmiyor", cause: "Operasyon suyu basıncı düşük, valf arızası", action: "Operasyon suyunu kontrol et, valfleri temizle." },
+          { fault: "Düşük devir", cause: "Kayış aşıntısı, motor problemi, fren takılı", action: "Kayış/motor/freni kontrol et." }
+        ],
+        precautions: [
+          "Bowl açılmadan önce tam durma onaylanmalı (rotation indicator).",
+          "Bowl montajında işaretler (matchmark) hizalanmalı; aksi halde patlama riski.",
+          "PPE: kulaklık zorunlu; sıcak yakıt ile çalışırken eldiven.",
+          "Periyodik bowl açıp temizleme (overhaul) yapılmalı."
         ]
       },
       {
@@ -962,6 +1432,30 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Hava şişesi iç muayenesi sınıf kurallarına göre periyodik yapılır.",
           "Kompresör yağ taşıması (oil carry-over) hava şişesinde patlama riski oluşturur.",
           "Kontrol havası kurutucu arızası otomasyon sistem arızalarına neden olabilir."
+        ],
+        workingPrinciple: [
+          "Pistonlu (reciprocating) kompresör, krank-piston ile havayı emer ve sıkıştırır.",
+          "İki kademeli sıkıştırma + intercooler ile ısıyı düşürür.",
+          "Hava deposu (air receiver) start havası için 30 bar civarında basınçlı hava bulundurur.",
+          "Otomatik drain ve safety valve ile su ve aşırı basınç tahliye edilir."
+        ],
+        operation: [
+          "Yağ seviyesi, soğutma suyu, drenaj durumunu kontrol et.",
+          "Otomatik modda alt basınçta start, üst basınçta stop yapar; manuel modda izle.",
+          "Air receiver'ı günlük drenaj yap.",
+          "Çıkış sıcaklığını izle (yüksek sıcaklık = intercooler veya valve sorunu)."
+        ],
+        faults: [
+          { fault: "Basınç yükselmiyor", cause: "Suction/discharge valve aşıntısı, ring kaçak", action: "Valveleri ve ring'leri kontrol et/değiştir." },
+          { fault: "Aşırı sıcaklık", cause: "Soğutma yetersiz, valve aşıntısı", action: "Cooler temizle, valve revizyonu yap." },
+          { fault: "Yağ basıncı düşük", cause: "Filtre tıkalı, pompa aşıntısı", action: "Filtre değiştir, pompa kontrol et." },
+          { fault: "Karter patlaması", cause: "Yağ buharı + sıcaklık + kıvılcım", action: "Acil durdur; ring/yatak inceleme; karter havalandırma kontrolü." }
+        ],
+        precautions: [
+          "Air receiver safety valve test sertifikası güncel olmalı.",
+          "Discharge sıcaklığı 140 °C'nin altında tutulmalı.",
+          "Bakım sırasında basınç tam olarak tahliye edilmeli.",
+          "Yağ kalitesi ve değişim periyodu üretici tavsiyesinde olmalı."
         ]
       },
       {
@@ -1014,6 +1508,30 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Pozitif deplasmanli pompalar (dişli, vidalı) basınçtan bağımsız sabit debi sağlar.",
           "Kavitasyon, NPSH yetersiz olduğunda pompa performansını düşürür.",
           "Acil yangın pompası ana makine dairesinin dışında konumlandırılmalıdır."
+        ],
+        workingPrinciple: [
+          "Santrifüj pompa, impeller dönüşü ile sıvıya kinetik enerji verir; volüt'te basınca dönüşür.",
+          "Pozitif deplasmanlı pompa (gear, screw, vida) sabit hacmi her devirde basar.",
+          "Eductor (jet pump), yüksek hızlı sıvının basınç düşürmesiyle vakum oluşturarak sıvı çeker.",
+          "Pompa kavitasyonu, emiş tarafında basıncın buhar basıncının altına düşmesi sonucu oluşur."
+        ],
+        operation: [
+          "Çalıştırmadan önce pompayı priming ile doldur (santrifüj kuru çalışmamalı).",
+          "Suction/discharge valflerini doğru sırayla aç.",
+          "Çıkış basıncını ve akımı izle.",
+          "Stop ederken önce discharge valve, sonra motor kapat (water hammer'ı önlemek için)."
+        ],
+        faults: [
+          { fault: "Suction yapamıyor", cause: "Hava girişi, foot valve arızası, filtre tıkalı", action: "Hava sızıntısını kapat, foot valve/filtre kontrolü." },
+          { fault: "Düşük basınç", cause: "Impeller aşıntısı, ring clearance büyük, kavitasyon", action: "Impeller değiştir, suction koşullarını iyileştir." },
+          { fault: "Aşırı titreşim", cause: "Misalignment, yatak aşıntısı, kavitasyon", action: "Alignment kontrolü, yatak değişimi, NPSH kontrolü." },
+          { fault: "Mekanik salmastra kaçağı", cause: "Yüzey aşıntısı, kuru çalışma", action: "Salmastrayı değiştir, soğutma akışını sağla." }
+        ],
+        precautions: [
+          "Yangın pompası ve emergency fire pump haftalık test edilmeli.",
+          "Tank içine kuru pompa salmamak için seviyeyi izle.",
+          "Pompa motoru elektriksel izolasyon ve LOTO ile bakıma alınmalı.",
+          "Yağlı/zehirli sıvı pompalarında salmastra kaçağı kayıt altına alınmalı."
         ]
       },
       {
@@ -1042,6 +1560,29 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "WHO standartlarına göre içme suyu klorür < 250 ppm, pH 6.5-8.5 olmalıdır.",
           "Mineral dozajı üretilen suyun pH'ını yükseltir ve korozif etkisini azaltır.",
           "UV sterilizasyon veya klorlama dezenfeksiyon için kullanılır."
+        ],
+        workingPrinciple: [
+          "Vakum evaporatörü, deniz suyunu düşük basınç altında ~50 °C'de buharlaştırır.",
+          "Buhar yoğuşturucuda (condenser) deniz suyu ile soğutularak tatlı suya dönüşür.",
+          "Salinometer, üretilen suyun tuzluluğunu izler; eşik üzerindeyse dump valve devreye girer.",
+          "Reverse osmosis (RO) sistemleri, yarı geçirgen membran ile yüksek basınç altında saf su üretir."
+        ],
+        operation: [
+          "Vakum pompasını çalıştır, vakum -90 kPa civarına ulaştır.",
+          "Jacket water'ı buharlaştırıcıya yönlendir.",
+          "Salinometer kalibrasyonunu kontrol et.",
+          "Üretilen suyu ilk dakikalarda dump'a al, kalite stabilize olunca tank'a yönlendir."
+        ],
+        faults: [
+          { fault: "Üretim düşük", cause: "Vakum yetersiz, evaporatör scaling", action: "Vakum pompasını kontrol et, evaporatörü asit ile temizle." },
+          { fault: "Yüksek tuzluluk alarmı", cause: "Demister arızası, salinometer kalibrasyon", action: "Demister kontrol, sensör kalibre, dump devre." },
+          { fault: "RO membran düşük debi", cause: "Membran tıkanma, basınç düşük", action: "Membranı temizle, gerekirse değiştir." }
+        ],
+        precautions: [
+          "Liman ve kıyıya yakın bölgelerde (kirli su) FWG çalıştırılmamalı.",
+          "Üretilen su içme amaçlı kullanılacaksa UV/silver/klorlama yapılmalı.",
+          "Periyodik mikrobiyolojik analiz yapılmalı.",
+          "Asit temizliğinde uygun PPE (yüz maskesi, eldiven) kullanılmalı."
         ]
       }
     ]
