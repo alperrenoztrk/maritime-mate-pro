@@ -279,7 +279,12 @@ STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her s
     introduction: "Geminin yapısal elemanlarının ve bölümlerinin doğru terminoloji ile bilinmesi, güverte operasyonlarının etkin yürütülmesi için temel gereksinimdir.",
     image: "/diagrams/seamanship/gemi-kisimlari.svg",
     photos: [
-      { src: photoShipPartsOverview, caption: "Modern dökme yük gemisi: bulbous bow, kasara, ambar kapakları, akomodasyon ve baca yapısı" },
+      {
+        src: photoShipPartsOverview,
+        title: "Modern dökme yük gemisi (yan görünüm)",
+        caption: "Bulbous bow, yükseltilmiş baş kasara, ambar kapakları, kıçta akomodasyon bloğu, köprüüstü ve baca yapısı tek karede görülür.",
+        alt: "Açık denizde seyir halinde büyük bir dökme yük gemisinin yan profili; kırmızı su altı gövdesi, siyah borda, beyaz akomodasyon bloğu ve düz ambar kapakları belirgin.",
+      },
     ],
     content: `GEMİ ANA BÖLÜMLER:
 
@@ -453,7 +458,12 @@ Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifi
     introduction: "Gemilerde kullanılan halatlar, malzemelerine ve yapılarına göre sınıflandırılır; her tür farklı mekanik özelliklere ve kullanım alanlarına sahiptir.",
     image: "/diagrams/seamanship/halat-yapilari.svg",
     photos: [
-      { src: photoRopeTypes, caption: "Yaygın halat türleri: naylon (beyaz), polipropilen (sarı), manila (kahverengi), polyester (mavi)" },
+      {
+        src: photoRopeTypes,
+        title: "Yaygın halat malzemeleri (yan yana)",
+        caption: "Aynı çapta dört farklı halat: beyaz çift örgülü naylon, sarı polipropilen (suda yüzer), kahverengi manila doğal lifi ve mavi polyester. Yapı ve büküm farkları net.",
+        alt: "Ahşap güverte üzerinde yan yana uzanan dört farklı halat: naylon, polipropilen, manila ve polyester; her biri farklı renk ve büküm yapısında.",
+      },
     ],
     table: {
       title: "Halat Malzeme Karşılaştırma Tablosu",
@@ -508,7 +518,12 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
     title: "Çelik Teller ve Yapıları",
     introduction: "Çelik teller, yüksek çekme dayanımı gerektiren güverte operasyonlarında kullanılır; tel yapısı, kullanım amacına göre seçilir.",
     photos: [
-      { src: photoWireRope, caption: "6×36 IWRC çelik tel kesiti: kollar (strands) ve bağımsız tel çekirdek (IWRC) yapısı" },
+      {
+        src: photoWireRope,
+        title: "6×36 IWRC çelik tel kesiti",
+        caption: "Altı dış kol (strand) ve bağımsız çelik tel çekirdek (IWRC); her kolda çok sayıda ince telcik. IWRC, fiber çekirdeğe göre %7-10 daha yüksek kırılma yükü sağlar.",
+        alt: "Bir gemi güvertesinde duran galvanizli çelik halatın kesiti; iç içe geçmiş kollar ve ortadaki tel çekirdek açıkça görülüyor, yanında bir splice aleti var.",
+      },
     ],
     table: {
       title: "Çelik Tel Tipleri Karşılaştırması",
@@ -604,7 +619,12 @@ ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım
     title: "Düğümler ve Bağlamalar (Knots & Bends)",
     introduction: "Denizcilik düğümleri, halatların belirli amaçlarla birleştirilmesi veya sabitlenmesi için kullanılan standart bağlama tekniklerdir.",
     photos: [
-      { src: photoKnotsDisplay, caption: "Temel denizcilik düğümleri: bowline, figure-eight, clove hitch, reef knot, sheet bend, round turn & two half hitches" },
+      {
+        src: photoKnotsDisplay,
+        title: "Temel denizcilik düğümleri (toplu görünüm)",
+        caption: "Bowline (kaymayan ilmek), figure-eight (durdurucu), clove hitch (volta), reef knot (yassı düğüm), sheet bend (kıstırma) ve round turn & two half hitches; en sık kullanılan altı düğüm bir arada.",
+        alt: "Ahşap zemin üzerinde beyaz halatla atılmış altı farklı denizcilik düğümü; her düğüm net şekilde görülüyor.",
+      },
     ],
     content: `TEMEL DÜĞÜMLER (KNOTS):
 
@@ -736,7 +756,12 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
     introduction: "Gemilerde kullanılan demirler, yapılarına ve tutma kuvvetlerine göre farklı tiplerde üretilir; seçim deniz tabanı yapısına ve gemi tonajına göre yapılır.",
     image: "/diagrams/seamanship/demir-tipleri.svg",
     photos: [
-      { src: photoAnchorTypes, caption: "Yaygın demir tipleri yan yana: Hall stockless, AC-14 high holding power, Danforth fluke, Admiralty stocked" },
+      {
+        src: photoAnchorTypes,
+        title: "Yaygın demir tipleri karşılaştırması",
+        caption: "Soldan sağa: Hall stockless (ticaret gemisi standardı), AC-14 high holding power (modern HHP), Danforth fluke (yumuşak zeminde tutuş), Admiralty stocked (klasik kollu).",
+        alt: "Bir rıhtımda yan yana dizilmiş dört farklı denizcilik demiri; her birinin gövde, kol (fluke) ve stok yapısı farklı.",
+      },
     ],
     content: `BAŞLICA DEMİR TİPLERİ:
 
@@ -772,8 +797,18 @@ Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demi
     introduction: "Demir zinciri, demiri gemiye bağlayan ve demirleme sırasında tutma kuvvetini artıran ağır çelik zincirdir.",
     image: "/diagrams/seamanship/zincir-isaretleme.svg",
     photos: [
-      { src: photoAnchorChain, caption: "Stud-link demir zinciri ve renkli shackle işaretlemesi (beyaz/kırmızı/mavi); arka planda windlass" },
-      { src: photoWindlass, caption: "Demir vinci (windlass): wildcat, fren bandı, chain stopper ve hawse pipe" },
+      {
+        src: photoAnchorChain,
+        title: "Stud-link demir zinciri ve shackle işaretlemesi",
+        caption: "Her bakla içindeki takviye çubuğu (stud) baklanın ezilmesini önler. Renkli boyalar (beyaz/kırmızı/mavi) shackle (27,5 m) sınırlarını gösterir; son shackle tamamen kırmızıdır.",
+        alt: "Bir geminin baş kasarasında windlass'a giden ağır stud-link demir zinciri; baklalardan biri kırmızı, biri mavi, biri beyaz boyalı ve üzerinde shackle numarası var.",
+      },
+      {
+        src: photoWindlass,
+        title: "Demir vinci (windlass) yakın çekim",
+        caption: "Wildcat (gypsy) baklaları yuvalarına oturtarak zinciri çeker; fren bandı, chain stopper ve hawse pipe görünür. Ana güverte üstündeki standart baş kasara donanımıdır.",
+        alt: "Geminin baş kasarasında, zinciri çeken büyük çelik wildcat tamburu, fren mekanizması ve hawse pipe deliği görülen demir vinci yakın çekim.",
+      },
     ],
     content: `ZİNCİR YAPISI:
 
@@ -988,7 +1023,12 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
     introduction: "Geminin rıhtıma güvenli bağlanması için kullanılan palamar halatları, konumlarına ve görevlerine göre adlandırılır.",
     image: "/diagrams/seamanship/palamar-duzeni.svg",
     photos: [
-      { src: photoMooringEquipment, caption: "Hidrolik palamar vinci, halat tamburu, babalar (bollards) ve kıç güverte palamar düzeni" },
+      {
+        src: photoMooringEquipment,
+        title: "Hidrolik palamar vinci ve kıç güverte düzeni",
+        caption: "Halat tamburuna sarılı palamar halatı, çevresinde babalar (bollards) ve fairlead'ler. Modern gemilerde split-drum vinçler hem depolama hem çekme görevi görür.",
+        alt: "Yük gemisinin kıç güvertesinde büyük hidrolik palamar vinci; tamburuna sarılı kalın halat ve etrafındaki siyah babalar görülüyor.",
+      },
     ],
     table: {
       title: "Palamar Halatları Görev Tablosu",
