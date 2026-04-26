@@ -1,5 +1,11 @@
 // Gemi Sistemleri ve Ekipmanları — Alt konu içerikleri
 
+export interface ShipSystemFault {
+  fault: string;
+  cause: string;
+  action: string;
+}
+
 export interface ShipSystemTopic {
   title: string;
   introduction: string;
@@ -12,6 +18,10 @@ export interface ShipSystemTopic {
     example?: { problem: string; steps: string[]; result: string };
   }[];
   keyPoints: string[];
+  workingPrinciple?: string[];
+  operation?: string[];
+  faults?: ShipSystemFault[];
+  precautions?: string[];
 }
 
 export interface ShipSystemCategory {
