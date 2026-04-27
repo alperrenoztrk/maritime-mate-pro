@@ -322,7 +322,19 @@ export const findParentPath = (pathname: string): string => {
 
 /**
  * Hook that handles browser/mobile back button navigation
- * according to logical menu hierarchy instead of browser history
+ * according to logical menu hierarchy instead of browser history.
+ *
+ * Single source of truth for back-button behaviour across the app:
+ *  - Web: hijacks `popstate` so the browser back button walks up the
+ *    logical hierarchy (not arbitrary history).
+ *  - Android (Capacitor): the same handler is wired to the hardware
+ *    back button. NOTE: `useAndroidFeatures` must NOT register its
+ *    own `backButton` listener — that would race with this one.
+ *
+ * Top-level pages (any path whose logical parent is `/`, including
+ * `/` itself) trigger an exit-confirmation dialog instead of jumping
+ * to the parent — so the user must explicitly confirm before the
+ * app closes. This prevents the "two taps and we're out" bug.
  */
 export const useNavigationHierarchy = () => {
   const navigate = useNavigate();
@@ -331,15 +343,28 @@ export const useNavigationHierarchy = () => {
   // Unused ref kept to avoid breaking existing callers if any
   const _lastBackPressAtRef = useRef(0);
 
+  const isTopLevel = useCallback((path: string) => {
+    if (path === '/') return true;
+    return findParentPath(path) === '/';
+  }, []);
+
   const navigateToParent = useCallback(() => {
     const parentPath = findParentPath(location.pathname);
     if (location.pathname === '/') {
-      // On home screen — show exit confirmation dialog
       setShowExitDialog(true);
       return;
     }
     navigate(parentPath, { replace: true });
   }, [location.pathname, navigate]);
+
+  const handleBack = useCallback(() => {
+    if (isTopLevel(location.pathname)) {
+      // Don't leave the app silently — ask first.
+      setShowExitDialog(true);
+      return;
+    }
+    navigate(findParentPath(location.pathname), { replace: true });
+  }, [isTopLevel, location.pathname, navigate]);
 
   const closeExitDialog = useCallback(() => {
     setShowExitDialog(false);
@@ -352,36 +377,55 @@ export const useNavigationHierarchy = () => {
     }
   }, []);
 
+  // Capacitor hardware back button — owned exclusively here.
   useEffect(() => {
-    // Handle mobile back button (Capacitor)
-    let backButtonListener: { remove: () => void } | undefined;
-    if (Capacitor.isNativePlatform()) {
-      CapacitorApp.addListener('backButton', () => {
-        navigateToParent();
-      }).then(listener => {
-        backButtonListener = listener;
-      });
+    if (!Capacitor.isNativePlatform()) return;
+    let listener: { remove: () => void } | undefined;
+    CapacitorApp.addListener('backButton', () => {
+      handleBack();
+    }).then((l) => {
+      listener = l;
+    });
+    return () => {
+      listener?.remove();
+    };
+  }, [handleBack]);
+
+  // Web/PWA browser back button — intercept via a single sentinel
+  // history entry per route. We push exactly ONE extra entry on mount
+  // (and re-push after each pop), so the back button always fires
+  // popstate here instead of leaving the app.
+  useEffect(() => {
+    if (Capacitor.isNativePlatform()) return;
+
+    const sentinelKey = '__hierarchy_back__';
+
+    // Only push a sentinel if the current entry isn't already one.
+    if (window.history.state?.[sentinelKey] !== true) {
+      window.history.pushState(
+        { ...(window.history.state ?? {}), [sentinelKey]: true },
+        '',
+        location.pathname + location.search,
+      );
     }
 
-    // Handle browser back button (popstate)
-    // Push an extra history entry so we can intercept the back press
-    const handlePopState = (e: PopStateEvent) => {
-      // Prevent default browser back and navigate to logical parent instead
-      e.preventDefault();
-      // Re-push state so the next back press is also intercepted
-      window.history.pushState(null, '', location.pathname);
-      navigateToParent();
+    const handlePopState = () => {
+      // Re-arm the sentinel before navigating, so the next back press
+      // is also captured (otherwise we'd fall off the stack).
+      window.history.pushState(
+        { [sentinelKey]: true },
+        '',
+        location.pathname + location.search,
+      );
+      handleBack();
     };
 
-    // Push a state entry so popstate fires on back press
-    window.history.pushState(null, '', location.pathname);
     window.addEventListener('popstate', handlePopState);
-
     return () => {
-      backButtonListener?.remove();
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [location.pathname, navigateToParent]);
+  }, [location.pathname, location.search, handleBack]);
 
   return { showExitDialog, closeExitDialog, confirmExit };
 };
+
