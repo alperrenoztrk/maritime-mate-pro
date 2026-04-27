@@ -1,47 +1,36 @@
-# Geri tuşu davranışını düzelt
+# Hub menüsünden geri tuşunda çıkış sorununu çöz
 
 ## Sorun
 
-Şu an "geri" davranışı **üç ayrı yerden** kontrol ediliyor ve hepsi history yığınına müdahale ediyor:
+Ekran görüntüsündeki menüden (`/hub/machine` — Makine hub'ı) geri tuşuna **tek basışta** uygulamadan atılıyor. Beklenen davranış: ana sayfaya dönmek.
 
-1. **`BackButton`** → `<Link to=...>` kullanıyor (push). Yani üst sayfaya dönerken history'de yeni bir kayıt bırakıyor. History yığını: `Index → Calculations → Detail → Calculations`. Sonraki "geri" basışı `Detail`'a, ondan sonraki basış `Calculations`'a, sonraki Index'e... Sonuçta birkaç basıştan sonra uygulamadan çıkıyor.
-2. **`useNavigationHierarchy`** her route değişiminde `window.history.pushState` ile fazladan kayıt ekliyor; `popstate`'i yakalayıp parent'a gönderiyor — ama Link tıklamaları popstate tetiklemediği için bu mantık `BackButton`'la senkronize çalışmıyor.
-3. **`useAndroidFeatures`** ayrı bir Capacitor `backButton` listener'ı daha kuruyor ve `window.history.back()` çağırıyor — `useNavigationHierarchy`'deki listener ile yarışıyor. (Hook şu an `App.tsx`'de import edilmese de ileride bir yerde import edildiğinde sessizce kırılır.)
+## Kök neden
 
-İki "geri" basışında uygulamanın atması bu üç katmanın aynı history yığını üzerinde birbirini ezmesinden kaynaklanıyor.
+Bir önceki turda `useNavigationHierarchy.ts`'deki sentinel `pushState` çağrısı performans için `queueMicrotask` ile ertelendi. Bu bir **yarış koşulu** yarattı:
+
+1. React route'u commit ediyor (ör. `/hub/machine`).
+2. Sentinel push microtask'a kuyruklanıyor — henüz çalışmadı.
+3. Kullanıcı bu arada tarayıcının/Android'in geri tuşuna basıyor.
+4. `popstate` ateşliyor ama history'de bizim sentinel marker'ımız yok.
+5. Tarayıcı bizim popstate handler'ımızı çağırırken aynı anda **bir önceki gerçek sayfaya** düşüyor — yani hub'a gelmeden önceki Lovable preview/uygulama dışı sayfaya gidiyor → uygulamadan atılma efekti.
+
+Bu bug yalnızca microtask gecikmesi sırasında geri tuşuna basıldığında tetiklendiği için "bazen oluyor, bazen olmuyor" şeklinde gözüküyor.
 
 ## Çözüm
 
-Tek doğru kaynak ilkesini uygulayalım:
+`useNavigationHierarchy.ts` içinde sentinel `pushState`'i **senkron** hâle çevir (microtask kuyruğuna alma). Maliyet: route başına bir adet `pushState` çağrısı — pratikte ölçülemeyecek kadar küçük. Kazanç: yarış koşulu tamamen ortadan kalkıyor, geri tuşu **her zaman** mantıksal hiyerarşiye uyuyor.
 
-- **BackButton, push yerine replace yapsın** — üst sayfaya geçerken history'ye yeni kayıt eklemesin, mevcut kaydı değiştirsin. Böylece `Index → Calculations → Detail` zincirinde BackButton'a basınca history `Index → Calculations` olur; native geri tuşu mantıklı şekilde Index'e götürür, bir basış daha çıkış onayı gösterir.
-- **Çakışan Capacitor listener'ı kaldıralım** — `useAndroidFeatures` artık `backButton` dinlemesin. Tek yetkili `useNavigationHierarchy` olsun.
-- **`useNavigationHierarchy` çift kayıt eklemesin** — şu anki `pushState` döngüsünü "yalnızca bir kez" garanti eden bir mantığa çevirelim ve native ortamda (Capacitor) **çıkış onay diyaloğu** gerçekten gösterilsin (zaten state'i var, sadece tetikleyelim).
+Hiyerarşi zaten doğru:
+- `/hub/machine` → `/calculations` → `/` → çıkış onay diyaloğu
 
-Sonuç:
-- Web/PWA: Tarayıcı geri tuşu → mantıksal parent. Tekrar basılırsa parent'ın parent'ı. Ana sayfada basılırsa tarayıcı geçmişine düşer (normal davranış).
-- Android (Capacitor): Donanım geri tuşu → parent. Ana sayfada basılınca **çıkış onay diyaloğu** çıkar; "Hayır" derse uygulamada kalır. Yani iki kez basınca artık ASLA atılmaz.
+Yani sentinel yarışı düzelince kullanıcı `/hub/machine`'den geri basınca önce `/calculations`'a, ikinci basışta `/`'a, üçüncüde "çıkmak istiyor musunuz?" diyaloğuna ulaşacak — uygulamadan asla **istemeden** atılmayacak.
 
-## Yapılacak değişiklikler
+## Yapılacak değişiklik
 
-**1. `src/components/BackButton.tsx`**
-- `<Link to>` yerine `useNavigate` + `navigate(to, { replace: true })` kullan. Görsel ve API (`to`, `variant`, `label`) aynı kalır — çağrı tarafında hiçbir şey değişmez.
-
-**2. `src/hooks/useAndroidFeatures.ts`**
-- `App.addListener('backButton', ...)` bloğunu tamamen kaldır. Diğer özellikler (klavye, haptik) aynen kalır.
-
-**3. `src/hooks/useNavigationHierarchy.ts`**
-- Her route değişiminde tek bir sentinel `pushState` ekle, popstate yakalanınca:
-  - Eğer mevcut sayfa zaten bir top-level hub (`/`, `/calculations`, `/lessons`, vb.) ise → çıkış diyaloğunu aç (Capacitor'da `setShowExitDialog(true)`, web'de hiçbir şey yapma → tarayıcı normal davransın).
-  - Aksi halde → `navigateToParent()`.
-- Capacitor `backButton` listener'ı aynı mantığı paylaşsın (tek fonksiyona delege edilsin) — top-level'de diyalog, alt sayfada parent'a git.
-
-**4. Doğrulama**
-- Ship Operations Detail referans akışı (zaten doğru çalışıyor) bozulmamalı.
-- Build alıp önceki PWA kurulumunun bozulmadığını teyit et.
+**`src/hooks/useNavigationHierarchy.ts`** — sentinel push effect'inde `queueMicrotask(...)` sarmasını kaldır, `pushState` çağrısını doğrudan senkron yap. Cancellation flag'i ve geri-dönüş cleanup'ı da artık gerekmiyor.
 
 ## Etki
 
-- Hiçbir sayfanın görsel düzeni değişmiyor.
-- BackButton API'si değişmiyor — kullanan 8+ sayfada kod düzenlemesi gerekmez.
-- "İki kez basınca uygulamadan atılma" tamamen ortadan kalkar.
+- Hiçbir görsel değişiklik yok.
+- Diğer optimizasyonlar (tek-listener pattern, ref-based handler, parent path cache, useMemo return) aynen korunuyor.
+- Geri tuşu "atıyor" bug'ı bitiyor.
