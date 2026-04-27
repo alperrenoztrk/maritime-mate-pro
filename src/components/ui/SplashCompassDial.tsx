@@ -318,10 +318,6 @@ const SplashCompassDial: React.FC<SplashCompassDialProps> = ({ headingDeg = 0, c
         </g>
         
         {/* Cardinal direction letters */}
-        <text x="200" y="95" fill="#ffd700" fontSize="24" fontFamily="Georgia, serif" fontWeight="bold" textAnchor="middle" filter={`url(#glow-${safeUid})`}>N</text>
-        <text x="200" y="318" fill="#c0c0c0" fontSize="20" fontFamily="Georgia, serif" fontWeight="bold" textAnchor="middle">S</text>
-        <text x="88" y="206" fill="#c0c0c0" fontSize="20" fontFamily="Georgia, serif" fontWeight="bold" textAnchor="middle">W</text>
-        <text x="312" y="206" fill="#c0c0c0" fontSize="20" fontFamily="Georgia, serif" fontWeight="bold" textAnchor="middle">E</text>
         
         {/* Intercardinal direction letters */}
         <text x="270" y="135" fill="rgba(192,192,192,0.7)" fontSize="13" fontFamily="Georgia, serif" fontWeight="bold" textAnchor="middle">NE</text>
