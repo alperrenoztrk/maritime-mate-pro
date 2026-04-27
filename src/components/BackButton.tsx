@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type BackButtonProps = {
   /**
    * The logical parent route this page belongs to.
-   * The button always navigates here (never uses browser history),
-   * so the user gets a single, predictable jump back to the parent
-   * regardless of how they reached the current page.
+   * The button always navigates here using REPLACE (not push) so the
+   * current entry is swapped out instead of stacking. This keeps the
+   * browser/native history short and predictable: the user gets a
+   * single, predictable jump back to the parent regardless of how
+   * they reached the current page, and the device's hardware back
+   * button never re-enters the page they just left.
    *
-   * Mirrors the pattern in `ShipOperationsDetail.tsx` which is the
-   * reference implementation for the whole app.
+   * Reference implementation: `src/pages/ShipOperationsDetail.tsx`.
    */
   to: string;
   /**
@@ -35,10 +37,21 @@ export function BackButton({
   className,
   ariaLabel = "Geri",
 }: BackButtonProps) {
+  const navigate = useNavigate();
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // REPLACE (not push) so we don't extend the history stack.
+    // Without this, repeatedly tapping back would walk through every
+    // intermediate "parent" entry instead of going up the hierarchy.
+    navigate(to, { replace: true });
+  };
+
   if (variant === "pill") {
     return (
-      <Link
-        to={to}
+      <button
+        type="button"
+        onClick={handleClick}
         aria-label={ariaLabel}
         className={cn(
           "inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card",
@@ -47,13 +60,14 @@ export function BackButton({
       >
         <ArrowLeft className="h-4 w-4" />
         {label ?? "Geri"}
-      </Link>
+      </button>
     );
   }
 
   return (
-    <Link
-      to={to}
+    <button
+      type="button"
+      onClick={handleClick}
       aria-label={ariaLabel}
       className={cn(
         "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/30 bg-card/60 text-muted-foreground transition-colors hover:text-foreground",
@@ -61,7 +75,7 @@ export function BackButton({
       )}
     >
       <ArrowLeft className="h-4 w-4" />
-    </Link>
+    </button>
   );
 }
 
