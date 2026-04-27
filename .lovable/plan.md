@@ -1,85 +1,60 @@
-## Plan
+## Goal
+Add a "Google Play Yayın Kontrol Listesi" (Android Release Checklist) section inside the existing Settings page so the project's release readiness (version, build, permissions, privacy text) is visible in-app.
 
-Uygulama genelinde geri gelme davranışını test ettim ve birkaç kök problem tespit ettim. Bunları tek merkezden düzelteceğim.
+## Scope
+- Pure UI addition. No native code changes, no Capacitor config changes.
+- Read-only informational panel + a copy/expand surface for privacy text.
 
-### Tespit edilen sorunlar
+## Where it goes
+File: `src/pages/Settings.tsx`
+- Add a new `Card` block at the bottom of the existing settings grid, after the language card.
+- Keep the existing styling tokens (`shadow-lg`, dark/nature variants) and `data-translatable` spans for i18n consistency.
 
-1. **Bazı geri hedefleri uygulamada tanımlı değil**
-   - `useNavigationHierarchy.ts` içinde `/hub/cargo`, `/hub/navigation`, `/hub/machine`, `/hub/meteorology`, `/hub/environment`, `/hub/solas`, `/seamanship-menu`, `/safety-menu`, `/weather-menu` gibi hedefler var.
-   - Ancak `App.tsx` içinde bu rotaların çoğu yok. Bu yüzden geri tuşu bazen bilinmeyen rotaya gidip wildcard ile ana sayfaya düşüyor veya beklenmeyen davranıyor.
+## What the checklist card contains
 
-2. **Hesaplama/Ders menü akışı tutarsız**
-   - Örneğin bir hesaplama detayından geri gelince kullanıcı mantıken “Hesaplamalar” merkezine veya ilgili kategori menüsüne dönmeli.
-   - Şu an bazı hesaplama sayfalarında parent rota `/hub/...` gibi olmayan bir rota olduğu için geri zinciri kararsızlaşıyor.
+1. **Sürüm Bilgileri (Version & Build)**
+   - App name: `Marine Expert Pro` (from branding memory)
+   - Version: read from `package.json` via Vite `import.meta.env` — expose with a small `src/lib/appVersion.ts` constant (`APP_VERSION = "2.5.70"`, `BUILD_NUMBER = 1`, `PACKAGE_ID` from capacitor config `appId`).
+   - Min Android SDK: 23, Target SDK: 34 (Play Console 2024 requirement).
 
-3. **Browser/PWA sentinel yaklaşımı gerçek geçmişle karışıyor**
-   - Testte, detay sayfasındayken browser geri davranışının her zaman mantıksal parent’a dönmediğini gördüm.
-   - Mevcut sentinel yaklaşımı history stack’i yakalamaya çalışıyor ama route değişimleri ve replace/push karışınca bazı durumlarda beklenen geri zinciri bozuluyor.
+2. **İzinler (Permissions declared / used)**
+   Static list rendered from a typed array. Items reflect what the app actually uses:
+   - INTERNET — maritime news, AI, weather
+   - ACCESS_NETWORK_STATE — offline detection
+   - VIBRATE — Haptics plugin
+   - POST_NOTIFICATIONS — PushNotifications plugin
+   - (No camera / location / contacts — explicitly noted as "kullanılmıyor" so the reviewer-facing checklist is honest)
 
-4. **Eksik rota eşleşmeleri var**
-   - `/beta/work-hours`, `/cargo/formulas`, `/economics`, `/empty-page`, bazı top-level ve bazı ders/hub sayfaları parent haritasında net değil.
-   - Bu eksikler kullanıcı iki kere geri bastığında “uygulamadan çıkma / ana sayfaya atma / beklenmeyen sayfaya dönme” hissi oluşturuyor.
+   Each row: icon + permission name + short Turkish purpose + a green/red status dot for "kullanılıyor / kullanılmıyor".
 
-### Yapılacak düzeltme
+3. **Gizlilik Metni (Privacy text for Play Console)**
+   Collapsible block (`Accordion` from `@/components/ui/accordion`) containing the Turkish + English short privacy statement, ready to paste into Play Console "Data safety" form. Includes:
+   - Veri toplama: hesap (e-posta, ad), kullanım analitiği yok
+   - Üçüncü taraf servisler: Lovable Cloud (Supabase) – auth & content storage; Lovable AI Gateway – soru/cevap
+   - Verilerin şifrelenmesi: HTTPS + Supabase RLS
+   - Veri silme talebi: in-app + e-posta adresi
+   - Çocuklar için uygun mu: 13+
+   - "Kopyala" button using `navigator.clipboard.writeText` + `toast.success`.
 
-1. **Tek ve güvenilir parent route haritası oluşturacağım**
-   - `src/hooks/useNavigationHierarchy.ts` içindeki `navigationRules` tüm mevcut `App.tsx` rotalarıyla uyumlu hale getirilecek.
-   - Tanımsız hedefler kaldırılacak veya gerçek rotalara bağlanacak:
-     - `/hub/cargo` → `/calculations` veya ilgili gerçek kargo sayfası
-     - `/hub/navigation` → `/calculations`
-     - `/hub/machine` → `/calculations` veya `/lessons` bağlamına göre gerçek üst sayfa
-     - `/seamanship-menu`, `/safety-menu`, `/weather-menu` → gerçek mevcut rotalar
-   - Kullanıcı açısından hedef: her geri basışı bir üst mantıksal menüye götürsün, tanımsız sayfaya düşmesin.
+4. **Yayın Hazırlık Kontrol Listesi (Pre-submission checklist)**
+   Static check list (read-only, not user-toggleable) showing items already done vs pending, each as `<CheckCircle2 />` (done) or `<Circle />` (todo):
+   - Capacitor Android platformu eklenmiş
+   - Uygulama ikonu ve splash ekranı
+   - `appId` benzersiz (`app.lovable.c91ef2fa…`)
+   - Release keystore yapılandırması (capacitor.config – şu an boş, todo işaretli)
+   - ProGuard / R8 (todo)
+   - Privacy Policy URL (todo — not yet hosted)
+   - Play Store ekran görüntüleri (todo)
+   - İçerik derecelendirmesi formu (todo)
 
-2. **Geri akışını netleştireceğim**
-   Genel hedef akış:
-   ```text
-   Detay / alt araç sayfası
-     → ilgili kategori / modül sayfası
-     → Hesaplamalar veya Dersler ana sekmesi
-     → Ana sayfa
-     → yalnızca burada çıkış onayı
-   ```
+## Technical notes
+- New helper file: `src/lib/appVersion.ts` exporting constants — avoids importing `package.json` directly into the bundle.
+- New component (optional, kept inline if small): `src/components/settings/ReleaseChecklistCard.tsx` to keep `Settings.tsx` tidy.
+- Uses existing icons from `lucide-react`: `Smartphone`, `ShieldCheck`, `FileText`, `CheckCircle2`, `Circle`, `Copy`.
+- No new dependencies. No backend changes. No translations file changes — relies on `data-translatable` spans like the rest of the page.
+- Does NOT modify `capacitor.config.ts` or any native Android files (out of scope for in-app surface).
 
-   Örnekler:
-   ```text
-   /cargo/calculations/draft-survey → /cargo/calculations → /calculations → /
-   /navigation/calc/tides        → /navigation       → /calculations → /
-   /machine/diesel-engines/topics/x → /machine/diesel-engines/topics → /lessons → /
-   /stability/formulas/id        → /stability/formulas → /stability → /calculations veya /lessons bağlamı yerine güvenli üst menü
-   ```
-
-3. **Web/PWA geri yakalamayı daha deterministik yapacağım**
-   - Sentinel state’i sadece “var mı yok mu” kontrolüyle değil, route’a bağlı marker ile yöneteceğim.
-   - Popstate geldiğinde önce sentinel tekrar kurulacak, sonra `handleBack()` mantıksal parent’a `replace` ile yönlendirecek.
-   - Aynı route için gereksiz `pushState` tekrarlarını önleyeceğim.
-   - Top-level sayfalarda uygulama doğrudan kapanmayacak; sadece çıkış onayı açılacak.
-
-4. **Android donanım geri tuşu için aynı mantığı koruyacağım**
-   - `useAndroidFeatures.ts` içine ikinci back listener eklenmeyecek.
-   - `useNavigationHierarchy` tek sahip kalacak.
-   - Android’de her geri basışı aynı parent haritasını kullanacak.
-
-5. **Sayfa içi geri butonları ile sistem geri tuşunu eşitleyeceğim**
-   - Mevcut `BackButton` zaten `replace` kullanıyor; bunu koruyacağım.
-   - Gerekirse bazı sayfalardaki `BackButton to` değerlerini parent haritasıyla uyumlu hale getireceğim.
-
-6. **Test edeceğim**
-   Mobil viewportta şu akışları kontrol edeceğim:
-   - `/calculations → /cargo/calculations/draft-survey → back`
-   - `/calculations → /navigation → /navigation/calc/... → back`
-   - `/lessons → machine topic → topic detail → back`
-   - `/ship-systems/:id → back`
-   - `/crew/:roleSlug → back`
-   - `/ship-operations/:shipType → back`
-   - top-level sayfalarda geri basınca çıkış onayı açılıyor mu
-
-### Teknik dosyalar
-
-- Ana değişiklik: `src/hooks/useNavigationHierarchy.ts`
-- Gerekirse küçük uyumluluk düzeltmeleri:
-  - `src/components/BackButton.tsx`
-  - belirli sayfalardaki yanlış `BackButton to` hedefleri
-- Otomatik dosyalar olan Supabase client/types ve `.env` dosyalarına dokunulmayacak.
-
-Onaydan sonra bu düzeltmeleri uygulayıp geri navigasyonu yeniden test edeceğim.
+## Out of scope (explicit)
+- Generating Play Store assets, signing keys, or uploading to Play Console.
+- Editing AndroidManifest.xml.
+- Hosting a real Privacy Policy URL.
