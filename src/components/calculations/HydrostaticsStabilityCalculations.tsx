@@ -27,6 +27,7 @@ import {
   CrossCurves
 } from "../../types/hydrostatic";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { BackButton } from "@/components/BackButton";
 
 
 type StabilitySection = 'hydrostatic' | 'stability' | 'trimlist' | 'analysis' | 'bonjean' | 'draft' | 'damage' | 'practical';
@@ -1408,6 +1409,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
   return (
     <div className="space-y-6">
+      {singleMode && (
+        <div className="flex items-center gap-3">
+          <BackButton to="/stability/calculations" />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Stabilite Hesaplamaları
+          </span>
+        </div>
+      )}
       {/* Kapsamlı Denizcilik Hesaplamaları */}
       <ComprehensiveMaritimeCalculations showLongitudinal={section !== 'stability' && section !== 'trimlist'} showDraftSurvey={section !== 'stability' && section !== 'trimlist'} />
       
