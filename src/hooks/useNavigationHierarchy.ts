@@ -456,9 +456,12 @@ export const useNavigationHierarchy = () => {
     };
   }, [handleBack]);
 
-  // Sentinel push — runs only when the actual pathname changes, and is
-  // deferred to a microtask so it doesn't pile work onto the same frame
-  // that just rendered the new route.
+  // Sentinel push — runs SYNCHRONOUSLY on every pathname change so the
+  // back button is intercepted from the very first render. Deferring this
+  // (microtask/raf) creates a race: if the user taps back before the
+  // sentinel lands, popstate fires without our marker and the browser
+  // walks off the app entirely (looks like the app "exits" unexpectedly).
+  // The cost of one synchronous pushState per navigation is negligible.
   useEffect(() => {
     if (Capacitor.isNativePlatform()) return;
     if (typeof window === 'undefined') return;
@@ -466,22 +469,15 @@ export const useNavigationHierarchy = () => {
     const state = window.history.state as Record<string, unknown> | null;
     if (state?.[SENTINEL_KEY] === true) return;
 
-    let cancelled = false;
-    queueMicrotask(() => {
-      if (cancelled) return;
-      try {
-        window.history.pushState(
-          { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
-          '',
-          pathnameRef.current + searchRef.current,
-        );
-      } catch {
-        /* ignore */
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
+    try {
+      window.history.pushState(
+        { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
+        '',
+        pathnameRef.current + searchRef.current,
+      );
+    } catch {
+      /* pushState can throw in rare iframe/security contexts; ignore. */
+    }
   }, [location.pathname]);
 
   // Stable return reference: only changes when `showExitDialog` flips.
