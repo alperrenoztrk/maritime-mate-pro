@@ -1,80 +1,88 @@
-## Hedef
+## Amaç
 
-`Gemi Sistemleri ve Ekipmanları` modülünü, gemideki **tüm** cihaz ve ekipmanları kapsayacak şekilde genişletmek. Her ekipman için **çalışma prensibi, kullanım, olası arızalar, arıza durumunda yapılacaklar ve önlemler** standart olarak eklenecek.
+`ShipOperationsDetail` sayfasındaki geri-tuşu mantığını uygulamanın tamamına yaymak: **bir tıkla, kullanıcının nereden geldiğine bakmaksızın, sayfanın mantıksal parent rotasına dön.**
 
-İçerik çok geniş olduğu için **5 parçalı (faz) teslim** önerilir. Bu plan onaylandığında **Faz 1** uygulanır; sonraki fazlar için onayınızı tek tek alırım.
+## Operasyon Sayfasındaki Mantık (Referans)
 
-## Mevcut Durum (Tespit)
+`src/pages/ShipOperationsDetail.tsx` (satır 62-67):
 
-`src/data/shipSystemsData.ts` içindeki 4 kategoride şu konular var:
-
-- **Güverte Makineleri (5):** Windlass, Yük Vinçleri, Mooring Vinçleri, Hatch Cover, Capstan
-- **Seyir Sistemleri (6):** Radar, ECDIS, AIS, GPS, Pusula, Echo Sounder
-- **Ana Makine (5):** 2-zamanlı, 4-zamanlı, Şaft Hattı, Pervane, Dümen Sistemi
-- **Yardımcı Makineler (6):** Jeneratör, Kazan, Separatör, Kompresör, Pompa, Tatlı Su Üretici
-
-Eksikler çok geniş (yangın, yük, soğutma, atık, IGS, balast, OWS, emniyet, telsiz, vb.).
-
-## Yeni Standart İçerik Şablonu
-
-`ShipSystemTopic` arayüzüne 3 yeni opsiyonel section tipi eklenecek (mevcut alanlar korunur — geriye dönük uyumlu):
-
-```ts
-workingPrinciple?: string[];   // Çalışma prensibi
-operation?: string[];          // Kullanım / işletme adımları
-faults?: { fault: string; cause: string; action: string }[];  // Arıza tablosu
-precautions?: string[];        // Önlemler / emniyet tedbirleri
+```tsx
+<Link
+  to="/ship-operations"          // ← Sabit parent rota
+  className="...rounded-full..."
+>
+  <ArrowLeft className="h-4 w-4" />
+</Link>
 ```
 
-`ShipSystemDetailPage.tsx` bu yeni alanları renderlayacak (kart + tablo + liste, mevcut tasarım dilinde, açıklama metni eklemeden — sadece terim ve içerik).
+Önemli noktalar:
+- `navigate(-1)` veya `history.back()` **kullanılmıyor** (browser history zincirine bağlı kalmaz, döngüye girmez).
+- Sayfa nereden açılırsa açılsın hep aynı parent'a döner → tahmin edilebilir.
+- Tek tıkla çalışır; ara index sayfalarında durmaz.
+- Bu yaklaşım `mem://navigation/logical-hierarchy-back-button` kuralıyla da örtüşüyor.
 
-## Faz Planı
+## Tespit Edilen Sorunlar
 
-### Faz 1 — Şablon altyapısı + mevcut 22 konunun zenginleştirilmesi
-- `shipSystemsData.ts` içindeki tüm mevcut 22 topic'e `workingPrinciple`, `operation`, `faults`, `precautions` alanları eklenir.
-- `ShipSystemDetailPage.tsx` yeni alanları renderlayacak şekilde güncellenir.
+Yaklaşık 76 sayfa `ArrowLeft` ikonu kullanıyor. Tarama sonucu üç ana problem var:
 
-### Faz 2 — Yeni Kategori: Yangın & Emniyet Sistemleri
-- CO₂ sistemi, Köpük sistemi (foam), Sprinkler, Su sisi (water mist), Yangın devriye/dedektörler, Yangın pompası & emergency fire pump, EEBD, SCBA, Fireman's outfit, Hyper-mist, Fixed gas detection.
+1. **Tıklanabilir değil** — ikon var ama `<Link>` sarmalayıcı yok, dolayısıyla geri çalışmıyor. Örnek: `StabilityGM.tsx`, `StabilityGZ.tsx`, `MachineQuiz.tsx` (sadece `import { ArrowLeft }` var, JSX'te kullanılmıyor ya da pasif).
+2. **Yanlış/uyumsuz hedef** — bazı detay sayfaları kullanıcıyı parent yerine ana hesaplama merkezine atıyor. Örn. `BridgeDeviceDetail.tsx` → "Hesaplama Merkezine dön" diyor; oysa parent `/bridge-devices` olmalı.
+3. **Belirsiz "Geri" etiketi** — `Glossary`, `LessonsPage`, `ShipTaskDetailPage`'de buton "Geri" diyor ama hedefi muğlak / browser history bazlı değil ama metin yanıltıcı.
 
-### Faz 3 — Yeni Kategori: Yük Sistemleri (gemi tipine göre)
-- Tanker: IGS (Inert Gas), COW, Cargo pumps, P/V valves, Vapour return, Ullage/temp/pressure system.
-- Bulk: Hold ventilation, Bilge wells, Hatch sealing.
-- Konteyner: Lashing, Reefer plug, Twist locks.
-- Ro-Ro: Stern/bow ramp, ventilation, deck drains.
+## Yapılacaklar
 
-### Faz 4 — Yeni Kategori: Çevre & Yardımcı Sistemler
-- Balast (BWMS), OWS (15 ppm), Sewage treatment plant, Insinerator, Garbage compactor, MARPOL ekipmanları, Sıkıştırılmış hava sistemi (start air/control air/working air), Hidrofor, Soğuk depo (provision refrigeration), HVAC, Klima, Buhar/kondens hattı.
+### 1. Ortak `BackButton` bileşeni oluştur
 
-### Faz 5 — Yeni Kategori: Köprüüstü & Telsiz/Can Kurtarma
-- GMDSS: MF/HF, Inmarsat-C, EPIRB, SART, Two-way VHF.
-- Köprü: BNWAS, VDR, Speed log, Anemometer, Rate of turn, Course recorder, Sound reception, Whistle/Daylight signal.
-- Can kurtarma: Lifeboat & davits, Liferaft & HRU, Rescue boat, MOB, LSA aydınlatma.
+`src/components/BackButton.tsx` — Operasyon sayfasındaki yuvarlak ok stilini bire bir taşıyan, tek prop'lu bir bileşen:
 
-## Faz 1 Teknik Detay (bu onaydan sonra uygulanacak)
+```tsx
+type Props = { to: string; label?: string };
+```
 
-**1. `src/data/shipSystemsData.ts`**
-- `ShipSystemTopic` arayüzüne 4 yeni opsiyonel alan eklenir.
-- Her 22 topic'e ortalama:
-  - `workingPrinciple`: 3-5 madde (sade teknik, AI dili yok)
-  - `operation`: 4-6 madde (start/stop/normal işletme)
-  - `faults`: 5-8 satırlık tablo (Arıza | Sebep | Yapılacak)
-  - `precautions`: 4-6 madde (PPE, kilitleme, izolasyon vb.)
+- Yuvarlak ikon-only varyant (header'larda).
+- Opsiyonel etiketli "pill" varyant (sayfa boş-state'lerinde).
+- İçeride `<Link to={to}>` kullanır — `navigate(-1)` **asla**.
 
-**2. `src/pages/ShipSystemDetailPage.tsx`**
-- Mevcut `topic.sections.map` bloğunun altına 4 yeni blok eklenir:
-  - "Çalışma Prensibi" — madde listesi
-  - "Kullanım" — madde listesi
-  - "Olası Arızalar" — 3 sütunlu tablo
-  - "Önlemler" — madde listesi
-- Var olan tasarım tokenları kullanılır (`bg-card/60`, `border-border/30`, `text-primary` vb.). Yeni stil eklenmez.
-- Hiçbir alan yoksa o blok render edilmez (boş "içerik yok" yazısı yazılmaz — kullanıcı tercihi).
+### 2. Sayfa → parent rota eşlemesi
 
-## Dosya Etkisi (Faz 1)
-- `src/data/shipSystemsData.ts` — interface + 22 topic veri eklemesi (~+800 satır)
-- `src/pages/ShipSystemDetailPage.tsx` — render bloğu eklemesi
+Mantıksal hiyerarşiye göre standart parent eşlemesi:
 
-## Kapsam Dışı (bu fazda)
-- Yeni kategoriler (Faz 2-5'te).
-- Görsel asset eklemesi (mevcut `shipSystemImages` korunur; yeni görseller sonraki fazlarda).
-- Bridge devices (`bridgeDevices.ts`) ayrı modül olduğundan dokunulmaz; Faz 5'te ele alınacak.
+| Sayfa grubu | Parent rota |
+|---|---|
+| `ShipOperationsDetail` | `/ship-operations` (zaten doğru) |
+| `ShipSystemDetailPage` | `/ship-systems` |
+| `ShipTaskDetailPage` | `/ship-tasks` |
+| `CrewRoleDetail` | `/crew` |
+| `BridgeDeviceDetail` | `/bridge-devices` (mevcut: `/calculations` — yanlış) |
+| `Stability*` (GM, GZ, Trim, List, Loll, vs.) | `/calculations/stability` |
+| `DraftSurvey*` | `/calculations/draft-survey` |
+| `Machine*` (Quiz, Rules, Formulas) | `/lessons/machine` (veya `/calculations/machine` hangisi parent ise) |
+| `Seamanship*` | `/lessons/seamanship` |
+| `Cargo*`, `Safety*`, `Emission*` | İlgili lesson/calculation parent'ı |
+| `Glossary`, `Converter`, `Formulas`, `LocationSelector` | `/calculations` (giriş noktası) |
+| `LessonsPage`, `BetaFeaturesPage` | `/` (ana sayfa) |
+
+Eşleme tablosunu kodda tek bir yerde (`src/lib/parentRoutes.ts`) tutmak, ileride bakım kolaylığı sağlar.
+
+### 3. Sayfaları tek tek güncelle
+
+Her sayfada:
+- `ArrowLeft` ikonu içeren mevcut header bloğunu `<BackButton to="...">` ile değiştir.
+- Görsel stil (`rounded-full`, `border`, boyut) birebir Operasyon sayfası gibi olsun.
+- Tıklanabilir olmayan ikonları kaldır / aktif hale getir.
+- "Geri Dön", "Tüm İşler", "Hesaplama Merkezine dön" gibi karışık etiketler yerine tek standart: ikon-only buton.
+
+### 4. Doğrulama
+
+- Her sayfada elle gezinme testi: detay sayfasını farklı yollardan aç → tek tıkla parent'a döndüğünü doğrula.
+- Android cihazda donanım geri tuşu (`useAndroidFeatures`'taki `backButton` listener) zaten `window.history.back()` çağırıyor; bu davranışı değiştirmiyoruz, sadece ekran içi UI butonunu standartlaştırıyoruz.
+
+## Memory Güncellemesi
+
+`mem://navigation/logical-hierarchy-back-button` memory'sini yeni standardı (ortak `BackButton` bileşeni + `parentRoutes` haritası) yansıtacak şekilde güncelle.
+
+## Kapsam Dışı
+
+- Donanım geri tuşu (Android) davranışı — değişmiyor.
+- Browser history yönetimi — değişmiyor.
+- Modal'lar içindeki kapatma butonları — bu plan sadece sayfa düzeyinde geri butonlarını kapsıyor.
