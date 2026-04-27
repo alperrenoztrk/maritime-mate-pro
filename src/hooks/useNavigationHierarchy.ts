@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef, useState } from 'react';
+import { useEffect, useCallback, useRef, useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
@@ -310,61 +310,93 @@ const navigationRules: NavigationRule[] = [
   },
 ];
 
+/**
+ * Memoised parent-path lookup. Most navigations revisit the same handful
+ * of routes, so a tiny LRU-ish cache avoids re-running the regex chain
+ * on every back press / route change.
+ */
+const parentPathCache = new Map<string, string>();
+const PARENT_CACHE_MAX = 64;
+
 export const findParentPath = (pathname: string): string => {
+  const cached = parentPathCache.get(pathname);
+  if (cached !== undefined) return cached;
+
+  let result = '/';
   for (const rule of navigationRules) {
     const match = pathname.match(rule.pattern);
     if (match) {
-      return rule.parent(match);
+      result = rule.parent(match);
+      break;
     }
   }
-  return '/';
+
+  if (parentPathCache.size >= PARENT_CACHE_MAX) {
+    // Drop oldest entry (Map preserves insertion order).
+    const firstKey = parentPathCache.keys().next().value;
+    if (firstKey !== undefined) parentPathCache.delete(firstKey);
+  }
+  parentPathCache.set(pathname, result);
+  return result;
 };
+
+const SENTINEL_KEY = '__hierarchy_back__';
 
 /**
  * Hook that handles browser/mobile back button navigation
  * according to logical menu hierarchy instead of browser history.
  *
- * Single source of truth for back-button behaviour across the app:
+ * Performance design:
+ *  - System listeners (Capacitor `backButton` + window `popstate`) are
+ *    registered exactly ONCE for the lifetime of the app. They read the
+ *    current pathname through refs, so route changes never tear down /
+ *    re-add native listeners — important on low-end Android.
+ *  - The sentinel `pushState` only runs when the actual pathname changes
+ *    (not on every render) and is deferred to a microtask so it never
+ *    contends with the React commit phase that just produced this route.
+ *  - The returned object is memoised so consumers don't re-render unless
+ *    `showExitDialog` actually flips.
+ *
+ * Behaviour:
  *  - Web: hijacks `popstate` so the browser back button walks up the
  *    logical hierarchy (not arbitrary history).
- *  - Android (Capacitor): the same handler is wired to the hardware
- *    back button. NOTE: `useAndroidFeatures` must NOT register its
- *    own `backButton` listener — that would race with this one.
- *
- * Top-level pages (any path whose logical parent is `/`, including
- * `/` itself) trigger an exit-confirmation dialog instead of jumping
- * to the parent — so the user must explicitly confirm before the
- * app closes. This prevents the "two taps and we're out" bug.
+ *  - Android (Capacitor): same handler is wired to the hardware back
+ *    button. NOTE: `useAndroidFeatures` must NOT register its own
+ *    `backButton` listener — that would race with this one.
+ *  - Top-level pages → exit-confirmation dialog instead of leaving
+ *    the app silently.
  */
 export const useNavigationHierarchy = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showExitDialog, setShowExitDialog] = useState(false);
-  // Unused ref kept to avoid breaking existing callers if any
-  const _lastBackPressAtRef = useRef(0);
 
-  const isTopLevel = useCallback((path: string) => {
-    if (path === '/') return true;
-    return findParentPath(path) === '/';
-  }, []);
+  // Refs let the long-lived listeners read the latest values
+  // without being re-created on every navigation.
+  const pathnameRef = useRef(location.pathname);
+  const searchRef = useRef(location.search);
+  const navigateRef = useRef(navigate);
 
-  const navigateToParent = useCallback(() => {
-    const parentPath = findParentPath(location.pathname);
-    if (location.pathname === '/') {
-      setShowExitDialog(true);
-      return;
-    }
-    navigate(parentPath, { replace: true });
-  }, [location.pathname, navigate]);
+  // Keep refs current. Plain assignment in render is the React-recommended
+  // pattern for this case and is cheaper than a useEffect.
+  pathnameRef.current = location.pathname;
+  searchRef.current = location.search;
+  navigateRef.current = navigate;
 
   const handleBack = useCallback(() => {
-    if (isTopLevel(location.pathname)) {
-      // Don't leave the app silently — ask first.
+    const path = pathnameRef.current;
+    const parent = findParentPath(path);
+    if (path === '/' || parent === '/' && path === parent) {
       setShowExitDialog(true);
       return;
     }
-    navigate(findParentPath(location.pathname), { replace: true });
-  }, [isTopLevel, location.pathname, navigate]);
+    if (parent === path) {
+      // Defensive: don't loop on a self-referencing rule.
+      setShowExitDialog(true);
+      return;
+    }
+    navigateRef.current(parent, { replace: true });
+  }, []);
 
   const closeExitDialog = useCallback(() => {
     setShowExitDialog(false);
@@ -377,46 +409,44 @@ export const useNavigationHierarchy = () => {
     }
   }, []);
 
-  // Capacitor hardware back button — owned exclusively here.
+  // Capacitor hardware back button — registered ONCE for the app's
+  // lifetime. Reads the latest pathname/navigate via refs.
   useEffect(() => {
     if (!Capacitor.isNativePlatform()) return;
     let listener: { remove: () => void } | undefined;
+    let cancelled = false;
     CapacitorApp.addListener('backButton', () => {
       handleBack();
     }).then((l) => {
-      listener = l;
+      if (cancelled) {
+        l.remove();
+      } else {
+        listener = l;
+      }
     });
     return () => {
+      cancelled = true;
       listener?.remove();
     };
   }, [handleBack]);
 
-  // Web/PWA browser back button — intercept via a single sentinel
-  // history entry per route. We push exactly ONE extra entry on mount
-  // (and re-push after each pop), so the back button always fires
-  // popstate here instead of leaving the app.
+  // Web/PWA browser back button — register popstate ONCE.
   useEffect(() => {
     if (Capacitor.isNativePlatform()) return;
 
-    const sentinelKey = '__hierarchy_back__';
-
-    // Only push a sentinel if the current entry isn't already one.
-    if (window.history.state?.[sentinelKey] !== true) {
-      window.history.pushState(
-        { ...(window.history.state ?? {}), [sentinelKey]: true },
-        '',
-        location.pathname + location.search,
-      );
-    }
-
     const handlePopState = () => {
-      // Re-arm the sentinel before navigating, so the next back press
-      // is also captured (otherwise we'd fall off the stack).
-      window.history.pushState(
-        { [sentinelKey]: true },
-        '',
-        location.pathname + location.search,
-      );
+      // Re-arm the sentinel before navigating so the next back press is
+      // also captured. Use the refs so we always reference the current
+      // route, not the route at listener-registration time.
+      try {
+        window.history.pushState(
+          { [SENTINEL_KEY]: true },
+          '',
+          pathnameRef.current + searchRef.current,
+        );
+      } catch {
+        /* pushState can throw in rare iframe contexts; ignore. */
+      }
       handleBack();
     };
 
@@ -424,8 +454,42 @@ export const useNavigationHierarchy = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [location.pathname, location.search, handleBack]);
+  }, [handleBack]);
 
-  return { showExitDialog, closeExitDialog, confirmExit };
+  // Sentinel push — runs only when the actual pathname changes, and is
+  // deferred to a microtask so it doesn't pile work onto the same frame
+  // that just rendered the new route.
+  useEffect(() => {
+    if (Capacitor.isNativePlatform()) return;
+    if (typeof window === 'undefined') return;
+
+    const state = window.history.state as Record<string, unknown> | null;
+    if (state?.[SENTINEL_KEY] === true) return;
+
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      try {
+        window.history.pushState(
+          { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
+          '',
+          pathnameRef.current + searchRef.current,
+        );
+      } catch {
+        /* ignore */
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [location.pathname]);
+
+  // Stable return reference: only changes when `showExitDialog` flips.
+  // Prevents downstream re-renders on every navigation.
+  return useMemo(
+    () => ({ showExitDialog, closeExitDialog, confirmExit }),
+    [showExitDialog, closeExitDialog, confirmExit],
+  );
 };
+
 
