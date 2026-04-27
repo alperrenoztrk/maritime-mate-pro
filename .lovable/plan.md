@@ -1,88 +1,47 @@
-## Amaç
+# Geri tuşu davranışını düzelt
 
-`ShipOperationsDetail` sayfasındaki geri-tuşu mantığını uygulamanın tamamına yaymak: **bir tıkla, kullanıcının nereden geldiğine bakmaksızın, sayfanın mantıksal parent rotasına dön.**
+## Sorun
 
-## Operasyon Sayfasındaki Mantık (Referans)
+Şu an "geri" davranışı **üç ayrı yerden** kontrol ediliyor ve hepsi history yığınına müdahale ediyor:
 
-`src/pages/ShipOperationsDetail.tsx` (satır 62-67):
+1. **`BackButton`** → `<Link to=...>` kullanıyor (push). Yani üst sayfaya dönerken history'de yeni bir kayıt bırakıyor. History yığını: `Index → Calculations → Detail → Calculations`. Sonraki "geri" basışı `Detail`'a, ondan sonraki basış `Calculations`'a, sonraki Index'e... Sonuçta birkaç basıştan sonra uygulamadan çıkıyor.
+2. **`useNavigationHierarchy`** her route değişiminde `window.history.pushState` ile fazladan kayıt ekliyor; `popstate`'i yakalayıp parent'a gönderiyor — ama Link tıklamaları popstate tetiklemediği için bu mantık `BackButton`'la senkronize çalışmıyor.
+3. **`useAndroidFeatures`** ayrı bir Capacitor `backButton` listener'ı daha kuruyor ve `window.history.back()` çağırıyor — `useNavigationHierarchy`'deki listener ile yarışıyor. (Hook şu an `App.tsx`'de import edilmese de ileride bir yerde import edildiğinde sessizce kırılır.)
 
-```tsx
-<Link
-  to="/ship-operations"          // ← Sabit parent rota
-  className="...rounded-full..."
->
-  <ArrowLeft className="h-4 w-4" />
-</Link>
-```
+İki "geri" basışında uygulamanın atması bu üç katmanın aynı history yığını üzerinde birbirini ezmesinden kaynaklanıyor.
 
-Önemli noktalar:
-- `navigate(-1)` veya `history.back()` **kullanılmıyor** (browser history zincirine bağlı kalmaz, döngüye girmez).
-- Sayfa nereden açılırsa açılsın hep aynı parent'a döner → tahmin edilebilir.
-- Tek tıkla çalışır; ara index sayfalarında durmaz.
-- Bu yaklaşım `mem://navigation/logical-hierarchy-back-button` kuralıyla da örtüşüyor.
+## Çözüm
 
-## Tespit Edilen Sorunlar
+Tek doğru kaynak ilkesini uygulayalım:
 
-Yaklaşık 76 sayfa `ArrowLeft` ikonu kullanıyor. Tarama sonucu üç ana problem var:
+- **BackButton, push yerine replace yapsın** — üst sayfaya geçerken history'ye yeni kayıt eklemesin, mevcut kaydı değiştirsin. Böylece `Index → Calculations → Detail` zincirinde BackButton'a basınca history `Index → Calculations` olur; native geri tuşu mantıklı şekilde Index'e götürür, bir basış daha çıkış onayı gösterir.
+- **Çakışan Capacitor listener'ı kaldıralım** — `useAndroidFeatures` artık `backButton` dinlemesin. Tek yetkili `useNavigationHierarchy` olsun.
+- **`useNavigationHierarchy` çift kayıt eklemesin** — şu anki `pushState` döngüsünü "yalnızca bir kez" garanti eden bir mantığa çevirelim ve native ortamda (Capacitor) **çıkış onay diyaloğu** gerçekten gösterilsin (zaten state'i var, sadece tetikleyelim).
 
-1. **Tıklanabilir değil** — ikon var ama `<Link>` sarmalayıcı yok, dolayısıyla geri çalışmıyor. Örnek: `StabilityGM.tsx`, `StabilityGZ.tsx`, `MachineQuiz.tsx` (sadece `import { ArrowLeft }` var, JSX'te kullanılmıyor ya da pasif).
-2. **Yanlış/uyumsuz hedef** — bazı detay sayfaları kullanıcıyı parent yerine ana hesaplama merkezine atıyor. Örn. `BridgeDeviceDetail.tsx` → "Hesaplama Merkezine dön" diyor; oysa parent `/bridge-devices` olmalı.
-3. **Belirsiz "Geri" etiketi** — `Glossary`, `LessonsPage`, `ShipTaskDetailPage`'de buton "Geri" diyor ama hedefi muğlak / browser history bazlı değil ama metin yanıltıcı.
+Sonuç:
+- Web/PWA: Tarayıcı geri tuşu → mantıksal parent. Tekrar basılırsa parent'ın parent'ı. Ana sayfada basılırsa tarayıcı geçmişine düşer (normal davranış).
+- Android (Capacitor): Donanım geri tuşu → parent. Ana sayfada basılınca **çıkış onay diyaloğu** çıkar; "Hayır" derse uygulamada kalır. Yani iki kez basınca artık ASLA atılmaz.
 
-## Yapılacaklar
+## Yapılacak değişiklikler
 
-### 1. Ortak `BackButton` bileşeni oluştur
+**1. `src/components/BackButton.tsx`**
+- `<Link to>` yerine `useNavigate` + `navigate(to, { replace: true })` kullan. Görsel ve API (`to`, `variant`, `label`) aynı kalır — çağrı tarafında hiçbir şey değişmez.
 
-`src/components/BackButton.tsx` — Operasyon sayfasındaki yuvarlak ok stilini bire bir taşıyan, tek prop'lu bir bileşen:
+**2. `src/hooks/useAndroidFeatures.ts`**
+- `App.addListener('backButton', ...)` bloğunu tamamen kaldır. Diğer özellikler (klavye, haptik) aynen kalır.
 
-```tsx
-type Props = { to: string; label?: string };
-```
+**3. `src/hooks/useNavigationHierarchy.ts`**
+- Her route değişiminde tek bir sentinel `pushState` ekle, popstate yakalanınca:
+  - Eğer mevcut sayfa zaten bir top-level hub (`/`, `/calculations`, `/lessons`, vb.) ise → çıkış diyaloğunu aç (Capacitor'da `setShowExitDialog(true)`, web'de hiçbir şey yapma → tarayıcı normal davransın).
+  - Aksi halde → `navigateToParent()`.
+- Capacitor `backButton` listener'ı aynı mantığı paylaşsın (tek fonksiyona delege edilsin) — top-level'de diyalog, alt sayfada parent'a git.
 
-- Yuvarlak ikon-only varyant (header'larda).
-- Opsiyonel etiketli "pill" varyant (sayfa boş-state'lerinde).
-- İçeride `<Link to={to}>` kullanır — `navigate(-1)` **asla**.
+**4. Doğrulama**
+- Ship Operations Detail referans akışı (zaten doğru çalışıyor) bozulmamalı.
+- Build alıp önceki PWA kurulumunun bozulmadığını teyit et.
 
-### 2. Sayfa → parent rota eşlemesi
+## Etki
 
-Mantıksal hiyerarşiye göre standart parent eşlemesi:
-
-| Sayfa grubu | Parent rota |
-|---|---|
-| `ShipOperationsDetail` | `/ship-operations` (zaten doğru) |
-| `ShipSystemDetailPage` | `/ship-systems` |
-| `ShipTaskDetailPage` | `/ship-tasks` |
-| `CrewRoleDetail` | `/crew` |
-| `BridgeDeviceDetail` | `/bridge-devices` (mevcut: `/calculations` — yanlış) |
-| `Stability*` (GM, GZ, Trim, List, Loll, vs.) | `/calculations/stability` |
-| `DraftSurvey*` | `/calculations/draft-survey` |
-| `Machine*` (Quiz, Rules, Formulas) | `/lessons/machine` (veya `/calculations/machine` hangisi parent ise) |
-| `Seamanship*` | `/lessons/seamanship` |
-| `Cargo*`, `Safety*`, `Emission*` | İlgili lesson/calculation parent'ı |
-| `Glossary`, `Converter`, `Formulas`, `LocationSelector` | `/calculations` (giriş noktası) |
-| `LessonsPage`, `BetaFeaturesPage` | `/` (ana sayfa) |
-
-Eşleme tablosunu kodda tek bir yerde (`src/lib/parentRoutes.ts`) tutmak, ileride bakım kolaylığı sağlar.
-
-### 3. Sayfaları tek tek güncelle
-
-Her sayfada:
-- `ArrowLeft` ikonu içeren mevcut header bloğunu `<BackButton to="...">` ile değiştir.
-- Görsel stil (`rounded-full`, `border`, boyut) birebir Operasyon sayfası gibi olsun.
-- Tıklanabilir olmayan ikonları kaldır / aktif hale getir.
-- "Geri Dön", "Tüm İşler", "Hesaplama Merkezine dön" gibi karışık etiketler yerine tek standart: ikon-only buton.
-
-### 4. Doğrulama
-
-- Her sayfada elle gezinme testi: detay sayfasını farklı yollardan aç → tek tıkla parent'a döndüğünü doğrula.
-- Android cihazda donanım geri tuşu (`useAndroidFeatures`'taki `backButton` listener) zaten `window.history.back()` çağırıyor; bu davranışı değiştirmiyoruz, sadece ekran içi UI butonunu standartlaştırıyoruz.
-
-## Memory Güncellemesi
-
-`mem://navigation/logical-hierarchy-back-button` memory'sini yeni standardı (ortak `BackButton` bileşeni + `parentRoutes` haritası) yansıtacak şekilde güncelle.
-
-## Kapsam Dışı
-
-- Donanım geri tuşu (Android) davranışı — değişmiyor.
-- Browser history yönetimi — değişmiyor.
-- Modal'lar içindeki kapatma butonları — bu plan sadece sayfa düzeyinde geri butonlarını kapsıyor.
+- Hiçbir sayfanın görsel düzeni değişmiyor.
+- BackButton API'si değişmiyor — kullanan 8+ sayfada kod düzenlemesi gerekmez.
+- "İki kez basınca uygulamadan atılma" tamamen ortadan kalkar.
