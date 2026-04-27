@@ -10,15 +10,6 @@ import { DensityProvider } from "@/contexts/DensityContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { useFrameRate } from "@/hooks/useFrameRate";
 import Index from "./pages/Index";
 import CalculationsMenu from "./pages/CalculationsMenu";
