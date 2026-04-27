@@ -4,8 +4,12 @@ import './index.css'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { weatherPreloader } from './services/weatherPreloader'
 import { LocationProvider } from './contexts/LocationContext'
+import { registerOfflineSupport } from './serviceWorkerRegistration'
 
 console.log('[Main] Starting Maritime Calculator App v2...');
+
+// Register service worker for offline support (production only — skipped in dev/iframe).
+registerOfflineSupport();
 
 const container = document.getElementById("root");
 if (!container) {
