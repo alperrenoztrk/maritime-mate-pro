@@ -8,6 +8,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageFlag } from "@/utils/languages";
 import { toast } from "sonner";
+import { ReleaseChecklistCard } from "@/components/settings/ReleaseChecklistCard";
 
 const Settings = () => {
   const { theme, setTheme } = useTheme();
@@ -143,6 +144,9 @@ const Settings = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Android Release Checklist */}
+            <ReleaseChecklistCard />
 
           </div>
 
