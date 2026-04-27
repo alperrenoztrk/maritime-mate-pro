@@ -9,7 +9,7 @@ type NavigationRule = {
 };
 
 const navigationRules: NavigationRule[] = [
-  // Lessons
+  // ── Lessons ────────────────────────────────────────────────
   {
     pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
     parent: (match) => `/lessons/${match[1]}/topics`,
@@ -23,111 +23,64 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/',
   },
 
-  // Crew & Bridge
-  {
-    pattern: /^\/crew\/([^/]+)$/,
-    parent: () => '/crew',
-  },
-  {
-    pattern: /^\/crew$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/bridge\/([^/]+)$/,
-    parent: () => '/bridge',
-  },
-  {
-    pattern: /^\/bridge$/,
-    parent: () => '/',
-  },
+  // ── Crew & Bridge ──────────────────────────────────────────
+  { pattern: /^\/crew\/([^/]+)$/, parent: () => '/crew' },
+  { pattern: /^\/crew$/, parent: () => '/' },
+  { pattern: /^\/bridge\/([^/]+)$/, parent: () => '/bridge' },
+  { pattern: /^\/bridge$/, parent: () => '/' },
 
-  // Ship Systems
-  {
-    pattern: /^\/ship-systems\/([^/]+)$/,
-    parent: () => '/ship-systems',
-  },
-  {
-    pattern: /^\/ship-systems$/,
-    parent: () => '/',
-  },
+  // ── Ship Systems ───────────────────────────────────────────
+  { pattern: /^\/ship-systems\/([^/]+)$/, parent: () => '/ship-systems' },
+  { pattern: /^\/ship-systems$/, parent: () => '/' },
 
-  // Ship Tasks
-  {
-    pattern: /^\/ship-tasks\/([^/]+)$/,
-    parent: () => '/ship-tasks',
-  },
-  {
-    pattern: /^\/ship-tasks$/,
-    parent: () => '/',
-  },
+  // ── Ship Tasks ─────────────────────────────────────────────
+  { pattern: /^\/ship-tasks\/([^/]+)$/, parent: () => '/ship-tasks' },
+  { pattern: /^\/ship-tasks$/, parent: () => '/' },
 
-  // Ship Operations
-  {
-    pattern: /^\/ship-operations\/([^/]+)$/,
-    parent: () => '/ship-operations',
-  },
-  {
-    pattern: /^\/ship-operations$/,
-    parent: () => '/',
-  },
+  // ── Ship Operations ────────────────────────────────────────
+  { pattern: /^\/ship-operations\/([^/]+)$/, parent: () => '/ship-operations' },
+  { pattern: /^\/ship-operations$/, parent: () => '/' },
 
-  // Machine topic sub-routes
+  // ── Machine: topic detayları ───────────────────────────────
+  // /machine/<topic>/topics/<sub> → /machine/<topic>/topics
   {
     pattern: /^\/machine\/([^/]+)\/topics\/([^/]+)$/,
     parent: (match) => `/machine/${match[1]}/topics`,
   },
+  // /machine/<topic>/(topics|calculations|...) → /lessons (Dersler)
+  // Çünkü makine konuları Dersler menüsünden açılıyor.
   {
     pattern: /^\/machine\/([^/]+)\/(topics|calculations|formulas|rules|assistant|quiz)$/,
-    parent: () => '/hub/machine',
+    parent: () => '/lessons',
   },
-
-  // Machine hub-level
+  // Eski /machine/<section> sayfaları → Hesaplamalar
   {
     pattern: /^\/machine\/(calculations|formulas|rules|assistant|quiz)$/,
-    parent: () => '/hub/machine',
-  },
-  {
-    pattern: /^\/machine-calculations$/,
-    parent: () => '/hub/machine',
-  },
-
-  // Calculations hub
-  {
-    pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
-    parent: (match) => `/hub/${match[1]}`,
-  },
-  {
-    pattern: /^\/hub\/([^/]+)$/,
     parent: () => '/calculations',
   },
+  { pattern: /^\/machine-calculations$/, parent: () => '/calculations' },
+  { pattern: /^\/machinery$/, parent: () => '/' },
 
-  // Navigation
+  // ── Calculations hub ───────────────────────────────────────
+  // /calculations/<cat>/<sec> → /calculations
   {
-    pattern: /^\/navigation\/calc\/([^/]+)$/,
-    parent: () => '/navigation',
+    pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
+    parent: () => '/calculations',
   },
-  {
-    pattern: /^\/navigation\/tide-tutorial$/,
-    parent: () => '/navigation',
-  },
-  {
-    pattern: /^\/navigation\/colreg-presentation$/,
-    parent: () => '/navigation',
-  },
-  {
-    pattern: /^\/navigation\/meteorology$/,
-    parent: () => '/navigation',
-  },
+  { pattern: /^\/calculations$/, parent: () => '/' },
+
+  // ── Navigation (Seyir) ─────────────────────────────────────
+  { pattern: /^\/navigation\/calc\/([^/]+)$/, parent: () => '/navigation' },
+  { pattern: /^\/navigation\/tide-tutorial$/, parent: () => '/navigation' },
+  { pattern: /^\/navigation\/colreg-presentation$/, parent: () => '/navigation' },
+  { pattern: /^\/navigation\/meteorology$/, parent: () => '/navigation' },
   {
     pattern: /^\/navigation\/(formulas|rules|assistant|quiz)$/,
-    parent: () => '/hub/navigation',
+    parent: () => '/navigation',
   },
-  {
-    pattern: /^\/navigation$/,
-    parent: () => '/hub/navigation',
-  },
+  { pattern: /^\/navigation$/, parent: () => '/calculations' },
 
-  // Stability
+  // ── Stability ──────────────────────────────────────────────
   {
     pattern: /^\/stability\/formulas\/([^/]+)$/,
     parent: () => '/stability/formulas',
@@ -136,178 +89,92 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/stability\/practical\/(tank|fwa|ghm)$/,
     parent: () => '/stability/practical',
   },
+  // Tüm stability alt sayfaları → Hesaplamalar (üst menü)
   {
     pattern: /^\/stability\/(assistant|rules|gz-imo|advanced|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
-    parent: () => '/stability',
+    parent: () => '/calculations',
   },
-  {
-    pattern: /^\/stability$/,
-    parent: () => '/',
-  },
+  { pattern: /^\/stability$/, parent: () => '/calculations' },
 
-  // Cargo
+  // ── Cargo ──────────────────────────────────────────────────
   {
-    pattern: /^\/cargo\/calculations\/(draft-survey|preloading|intermediate|postdischarge|comparative|ballast|density|bunker)$/,
-    parent: () => '/hub/cargo',
+    pattern: /^\/cargo\/calculations\/([^/]+)$/,
+    parent: () => '/cargo/calculations',
   },
-  {
-    pattern: /^\/cargo\/calculations$/,
-    parent: () => '/hub/cargo',
-  },
+  { pattern: /^\/cargo\/calculations$/, parent: () => '/calculations' },
   {
     pattern: /^\/cargo\/(rules|assistant|quiz|formulas)$/,
-    parent: () => '/hub/cargo',
+    parent: () => '/calculations',
   },
 
-  // Meteorology
+  // ── Meteorology ────────────────────────────────────────────
   {
     pattern: /^\/meteorology\/(formulas|rules|assistant|quiz|topics)$/,
-    parent: () => '/hub/meteorology',
+    parent: () => '/calculations',
   },
 
-  // Seamanship
+  // ── Seamanship ─────────────────────────────────────────────
   {
     pattern: /^\/seamanship\/calculations\/([^/]+)$/,
     parent: () => '/seamanship/calculations',
   },
   {
     pattern: /^\/seamanship\/(calculations|formulas|rules|assistant|quiz|knots)$/,
-    parent: () => '/seamanship-menu',
+    parent: () => '/calculations',
   },
 
-  // Safety
-  {
-    pattern: /^\/safety\/(formulas|rules|assistant|quiz)$/,
-    parent: () => '/safety-menu',
-  },
+  // ── Safety ─────────────────────────────────────────────────
+  { pattern: /^\/safety\/(formulas|rules|assistant|quiz)$/, parent: () => '/calculations' },
+  { pattern: /^\/safety$/, parent: () => '/calculations' },
 
-  // Environment
+  // ── Environment / Emissions ────────────────────────────────
   {
     pattern: /^\/environment\/(calculations|formulas|rules|assistant|quiz)$/,
-    parent: () => '/hub/environment',
+    parent: () => '/calculations',
   },
+  { pattern: /^\/emissions$/, parent: () => '/calculations' },
 
-  // SOLAS
+  // ── SOLAS ──────────────────────────────────────────────────
   {
     pattern: /^\/solas\/(regulations|certificates|ship-requirements|safety-equipment)$/,
-    parent: () => '/hub/solas',
-  },
-
-  // Regulations
-  {
-    pattern: /^\/regulations\/([^/]+)$/,
-    parent: () => '/regulations',
-  },
-  {
-    pattern: /^\/regulations$/,
-    parent: () => '/',
-  },
-
-  // Calculation sub-pages
-  {
-    pattern: /^\/ballast$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/tank$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/safety$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/engine$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/structural$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/special-ships$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/emissions$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/economics$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/hydrodynamics$/,
-    parent: () => '/calculations',
-  },
-  {
-    pattern: /^\/converter$/,
     parent: () => '/calculations',
   },
 
-  // Weather
-  {
-    pattern: /^\/weather-forecast$/,
-    parent: () => '/weather-menu',
-  },
+  // ── Regulations ────────────────────────────────────────────
+  { pattern: /^\/regulations\/([^/]+)$/, parent: () => '/regulations' },
+  { pattern: /^\/regulations$/, parent: () => '/' },
 
-  // Top-level pages → home
-  {
-    pattern: /^\/location-selector$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/sunrise-times$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/sunset-times$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/settings$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/maritime-news$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/widgets$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/calculations$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/passage-plan$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/machinery$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/glossary$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/exam-preparation$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/moon-phases$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/clock$/,
-    parent: () => '/',
-  },
-  {
-    pattern: /^\/formulas$/,
-    parent: () => '/',
-  },
+  // ── Diğer hesaplama sayfaları ──────────────────────────────
+  { pattern: /^\/ballast$/, parent: () => '/calculations' },
+  { pattern: /^\/tank$/, parent: () => '/calculations' },
+  { pattern: /^\/engine$/, parent: () => '/calculations' },
+  { pattern: /^\/structural$/, parent: () => '/calculations' },
+  { pattern: /^\/special-ships$/, parent: () => '/calculations' },
+  { pattern: /^\/economics$/, parent: () => '/calculations' },
+  { pattern: /^\/hydrodynamics$/, parent: () => '/calculations' },
+  { pattern: /^\/converter$/, parent: () => '/calculations' },
+
+  // ── Beta ───────────────────────────────────────────────────
+  { pattern: /^\/beta\/([^/]+)$/, parent: () => '/beta' },
+  { pattern: /^\/beta$/, parent: () => '/' },
+
+  // ── Weather / Konum ────────────────────────────────────────
+  { pattern: /^\/weather-forecast$/, parent: () => '/' },
+  { pattern: /^\/location-selector$/, parent: () => '/' },
+  { pattern: /^\/sunrise-times$/, parent: () => '/' },
+  { pattern: /^\/sunset-times$/, parent: () => '/' },
+  { pattern: /^\/moon-phases$/, parent: () => '/' },
+  { pattern: /^\/clock$/, parent: () => '/' },
+
+  // ── Genel üst seviye ───────────────────────────────────────
+  { pattern: /^\/settings$/, parent: () => '/' },
+  { pattern: /^\/maritime-news$/, parent: () => '/' },
+  { pattern: /^\/widgets$/, parent: () => '/' },
+  { pattern: /^\/passage-plan$/, parent: () => '/' },
+  { pattern: /^\/glossary$/, parent: () => '/' },
+  { pattern: /^\/exam-preparation$/, parent: () => '/' },
+  { pattern: /^\/formulas$/, parent: () => '/' },
+  { pattern: /^\/empty-page$/, parent: () => '/' },
 ];
 
 /**
