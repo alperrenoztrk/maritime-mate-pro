@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Sparkles } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 import { bridgeDeviceMap, type BridgeDeviceId } from "@/data/bridgeDevices";
 
 const SectionList = ({ title, items }: { title: string; items: string[] }) => (
@@ -27,10 +28,7 @@ export default function BridgeDeviceDetailPage() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-12 text-center dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
         <p className="text-lg font-semibold text-foreground">Cihaz bulunamadı</p>
-        <Link to="/calculations" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
-          <ArrowLeft className="h-4 w-4" />
-          Hesaplama Merkezine dön
-        </Link>
+        <BackButton to="/bridge" variant="pill" label="Köprüüstü Aygıtlarına Dön" />
       </div>
     );
   }
@@ -46,13 +44,7 @@ export default function BridgeDeviceDetailPage() {
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
         <div className="flex flex-col gap-3">
-          <Link
-            to="/calculations"
-            className="group inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition hover:translate-x-[-2px]"
-          >
-            <ArrowLeft className="h-4 w-4 transition group-hover:-translate-x-1" />
-            Hesaplama Merkezine dön
-          </Link>
+          <BackButton to="/bridge" variant="pill" label="Köprüüstü Aygıtları" className="w-fit" />
 
           <div className="flex items-center gap-3">
             <span className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${device.accent} text-white shadow-lg`}>

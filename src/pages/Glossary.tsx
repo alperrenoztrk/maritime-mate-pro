@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpenText, Search } from "lucide-react";
+import { BookOpenText, Search } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
@@ -46,13 +47,7 @@ const Glossary = () => {
             {glossaryTerms.length} terim · {glossaryCategories.length} kategori
           </p>
           <div className="flex justify-center">
-            <Link
-              to="/calculations"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Geri
-            </Link>
+            <BackButton to="/" variant="pill" label="Ana Sayfa" />
           </div>
         </header>
 
