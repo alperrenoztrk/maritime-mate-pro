@@ -252,14 +252,16 @@ export const useNavigationHierarchy = () => {
 
   const handleBack = useCallback(() => {
     const path = pathnameRef.current;
-    const parent = findParentPath(path);
-    if (path === '/' || parent === '/' && path === parent) {
-      setShowExitDialog(true);
+    // HARD RULE: back button MUST NEVER exit the app, no matter how many
+    // times the user presses it. On the home route we deliberately do
+    // nothing — staying put is the desired behaviour.
+    if (path === '/') {
       return;
     }
-    if (parent === path) {
-      // Defensive: don't loop on a self-referencing rule.
-      setShowExitDialog(true);
+    const parent = findParentPath(path);
+    // Self-referencing rule or unmapped route → fall back to home, never exit.
+    if (!parent || parent === path) {
+      navigateRef.current('/', { replace: true });
       return;
     }
     navigateRef.current(parent, { replace: true });
@@ -269,11 +271,10 @@ export const useNavigationHierarchy = () => {
     setShowExitDialog(false);
   }, []);
 
+  // Kept for backwards compatibility with consumers, but the back button
+  // never triggers an exit dialog anymore — so this is effectively a no-op.
   const confirmExit = useCallback(() => {
     setShowExitDialog(false);
-    if (Capacitor.isNativePlatform()) {
-      CapacitorApp.exitApp();
-    }
   }, []);
 
   // Capacitor hardware back button — registered ONCE for the app's
