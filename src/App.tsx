@@ -166,29 +166,12 @@ const queryClient = new QueryClient();
 const AnimatedRoutes = () => {
   const location = useLocation();
 
-  // Apply hierarchical navigation
-  const { showExitDialog, closeExitDialog, confirmExit } = useNavigationHierarchy();
+  // Wire up hierarchical back-button handling. The back button never
+  // exits the app — see useNavigationHierarchy for the policy.
+  useNavigationHierarchy();
 
   return (
     <>
-    <Dialog open={showExitDialog} onOpenChange={closeExitDialog}>
-      <DialogContent className="max-w-[320px] rounded-xl">
-        <DialogHeader>
-          <DialogTitle>Uygulamadan Çık</DialogTitle>
-          <DialogDescription>
-            Çıkmak istediğinize emin misiniz?
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter className="flex-row justify-end gap-2">
-          <Button variant="outline" onClick={closeExitDialog}>
-            İptal
-          </Button>
-          <Button variant="destructive" onClick={confirmExit}>
-            Evet, Çık
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
