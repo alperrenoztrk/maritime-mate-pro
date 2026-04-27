@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
-import { ArrowLeft, ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
+import { ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { useState } from "react";
@@ -23,12 +24,7 @@ export default function CrewRoleDetailPage() {
             İstediğiniz personel kaydı bulunamadı. Lütfen listeden geçerli bir rol seçin.
           </p>
         </div>
-        <Link
-          to="/crew"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-        >
-          <ArrowLeft className="h-4 w-4" /> Gemi Personeline Dön
-        </Link>
+        <BackButton to="/crew" variant="pill" label="Gemi Personeline Dön" />
       </div>
     );
   }
@@ -43,13 +39,7 @@ export default function CrewRoleDetailPage() {
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
         {/* Navigation */}
         <div className="flex flex-wrap items-center gap-3">
-          <Link
-            to="/crew"
-            className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground backdrop-blur transition hover:border-primary/40 hover:bg-card"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Gemi Personeli
-          </Link>
+          <BackButton to="/crew" variant="pill" label="Gemi Personeli" />
         </div>
 
         {/* Header Card */}

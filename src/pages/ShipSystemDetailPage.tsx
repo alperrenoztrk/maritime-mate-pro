@@ -6,6 +6,7 @@ import { MobileLayout } from "@/components/MobileLayout";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 
 export default function ShipSystemDetailPage() {
   const { sectionId } = useParams<{ sectionId: string }>();
@@ -45,8 +46,13 @@ export default function ShipSystemDetailPage() {
     <MobileLayout>
       <div className="min-h-screen bg-background pb-24">
         <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur">
-          <h1 className="text-lg font-bold text-foreground">{section.title}</h1>
-          <p className="text-xs text-muted-foreground">{section.description}</p>
+          <div className="flex items-start gap-3">
+            <BackButton to="/ship-systems" />
+            <div className="min-w-0 flex-1">
+              <h1 className="text-lg font-bold text-foreground">{section.title}</h1>
+              <p className="text-xs text-muted-foreground">{section.description}</p>
+            </div>
+          </div>
         </div>
 
         <div className="mx-auto max-w-2xl px-4 py-4 space-y-3">

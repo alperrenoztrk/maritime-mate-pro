@@ -1,7 +1,8 @@
 
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, Shield, ClipboardCheck, Lightbulb, Users, Scale } from "lucide-react";
+import { BookOpen, Shield, ClipboardCheck, Lightbulb, Users, Scale } from "lucide-react";
 import { getShipTaskBySlug } from "@/data/shipTaskDetailData";
+import { BackButton } from "@/components/BackButton";
 
 export default function ShipTaskDetailPage() {
   const { taskSlug } = useParams<{ taskSlug: string }>();
@@ -12,13 +13,7 @@ export default function ShipTaskDetailPage() {
       <div className="flex min-h-screen items-center justify-center bg-background px-4">
         <div className="text-center space-y-4">
           <h1 className="text-xl font-bold text-foreground">İş bulunamadı</h1>
-          <Link
-            to="/ship-tasks"
-            className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Geri Dön
-          </Link>
+          <BackButton to="/ship-tasks" variant="pill" label="Geri Dön" />
         </div>
       </div>
     );
@@ -41,13 +36,7 @@ export default function ShipTaskDetailPage() {
           </div>
           <h1 className="text-2xl font-bold text-foreground">{task.title}</h1>
           <div className="flex justify-center">
-            <Link
-              to="/ship-tasks"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Tüm İşler
-            </Link>
+            <BackButton to="/ship-tasks" variant="pill" label="Tüm İşler" />
           </div>
         </header>
 
