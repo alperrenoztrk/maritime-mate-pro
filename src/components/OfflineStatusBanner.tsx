@@ -22,7 +22,7 @@ export function OfflineStatusBanner() {
     <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 shadow-sm dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-100">
       <div className="flex flex-wrap items-center gap-2 font-medium">
         <WifiOff className="h-4 w-4" />
-        Offline mod: yerel veri setleri kullanılıyor.
+        Çevrimdışı modu: Hesaplama sayfaları ve yerel veri setleri kullanılabilir.
       </div>
       <div className="mt-1 flex items-center gap-2 text-xs opacity-90">
         <AlertTriangle className="h-3 w-3" />
