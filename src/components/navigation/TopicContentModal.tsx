@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { useState } from "react";
 import { TopicDetailContent } from "@/data/navigationTopicContents";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
+import { LessonImage } from "@/components/ui/LessonImage";
 
 interface TopicContentModalProps {
   content: TopicDetailContent;
