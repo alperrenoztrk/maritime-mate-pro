@@ -57,11 +57,10 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
 
                 {section.image && (
                   <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40 group relative">
-                    <img
+                    <LessonImage
                       src={section.image}
                       alt={section.imageAlt || section.title}
                       className="h-48 w-full object-contain bg-muted/30 cursor-pointer hover:opacity-80 transition-opacity"
-                      loading="lazy"
                       onClick={() => handleImageClick(section.image!, section.imageAlt || section.title)}
                     />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -81,11 +80,10 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
                     ),
                     img: ({ src, alt }) => (
                       <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40 group relative">
-                        <img
-                          src={src}
+                        <LessonImage
+                          src={src || ''}
                           alt={alt || section.title}
                           className="h-48 w-full object-contain bg-muted/30 cursor-pointer hover:opacity-80 transition-opacity"
-                          loading="lazy"
                           onClick={() => handleImageClick(src || '', alt || section.title)}
                         />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">

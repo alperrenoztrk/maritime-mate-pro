@@ -1,6 +1,7 @@
-import { X, ZoomIn, ZoomOut, RotateCw } from "lucide-react";
-import { useState } from "react";
+import { X, ZoomIn, ZoomOut, RotateCw, ImageOff } from "lucide-react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { withImageProxy } from "./LessonImage";
 
 interface ImageViewerModalProps {
   src: string;
@@ -12,6 +13,19 @@ interface ImageViewerModalProps {
 export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModalProps) {
   const [scale, setScale] = useState(1);
   const [rotation, setRotation] = useState(0);
+  const [stage, setStage] = useState<"proxy" | "direct" | "failed">("proxy");
+
+  useEffect(() => {
+    const isExternal =
+      !!src && !src.startsWith("/") && !src.startsWith("data:") && !src.startsWith("blob:");
+    setStage(isExternal ? "proxy" : "direct");
+  }, [src]);
+
+  const displaySrc = stage === "proxy" ? withImageProxy(src) : src;
+  const handleImgError = () => {
+    if (stage === "proxy") setStage("direct");
+    else if (stage === "direct") setStage("failed");
+  };
 
   const handleZoomIn = () => setScale(prev => Math.min(prev + 0.25, 3));
   const handleZoomOut = () => setScale(prev => Math.max(prev - 0.25, 0.5));
@@ -76,20 +90,32 @@ export function ImageViewerModal({ src, alt, isOpen, onClose }: ImageViewerModal
           </div>
 
           {/* Image */}
-          <motion.img
-            src={src}
-            alt={alt || "Görsel"}
-            className="max-h-[90vh] max-w-[90vw] object-contain select-none"
-            style={{
-              transform: `scale(${scale}) rotate(${rotation}deg)`,
-              transition: "transform 0.2s ease-out",
-            }}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            draggable={false}
-          />
+          {stage === "failed" ? (
+            <div className="flex flex-col items-center justify-center gap-3 rounded-xl bg-white/5 p-10 text-white/80">
+              <ImageOff className="h-12 w-12 opacity-70" />
+              <span className="max-w-xs text-center text-sm">
+                {alt ? `Görsel yüklenemedi: ${alt}` : "Görsel yüklenemedi"}
+              </span>
+            </div>
+          ) : (
+            <motion.img
+              key={stage}
+              src={displaySrc}
+              alt={alt || "Görsel"}
+              onError={handleImgError}
+              referrerPolicy="no-referrer"
+              className="max-h-[90vh] max-w-[90vw] object-contain select-none"
+              style={{
+                transform: `scale(${scale}) rotate(${rotation}deg)`,
+                transition: "transform 0.2s ease-out",
+              }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              draggable={false}
+            />
+          )}
 
           {/* Alt text */}
           {alt && (
