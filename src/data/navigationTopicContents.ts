@@ -78,6 +78,13 @@ import navtexReceiver from "@/assets/navigation/navtex-receiver.svg";
 import autopilotControl from "@/assets/navigation/autopilot-control.svg";
 import vhfRadio from "@/assets/navigation/vhf-radio.svg";
 import safetyEquipment from "@/assets/navigation/safety-equipment.svg";
+import compassImg from "@/assets/navigation/compass.svg";
+import ialaLateralMarks from "@/assets/navigation/iala-lateral-marks.svg";
+import cardinalMarks from "@/assets/navigation/cardinal-marks.svg";
+import safeWaterMark from "@/assets/navigation/safe-water-mark.svg";
+import isolatedDangerMark from "@/assets/navigation/isolated-danger-mark.svg";
+import greatCircleVsRhumb from "@/assets/navigation/great-circle-vs-rhumb.svg";
+import sextantSvg from "@/assets/navigation/sextant.svg";
 
 export interface TopicSection {
   title: string;
