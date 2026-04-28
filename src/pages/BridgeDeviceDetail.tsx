@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
+import { LessonImage } from "@/components/ui/LessonImage";
 import { bridgeDeviceMap, type BridgeDeviceId } from "@/data/bridgeDevices";
 
 const SectionList = ({ title, items }: { title: string; items: string[] }) => (
@@ -83,10 +84,9 @@ export default function BridgeDeviceDetailPage() {
                 className="group overflow-hidden rounded-xl border border-border/60 bg-gradient-to-br from-background/80 to-card shadow-sm"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <LessonImage
                     src={url}
                     alt={`${device.name} örnek görsel ${index + 1}`}
-                    loading="lazy"
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-60" />
