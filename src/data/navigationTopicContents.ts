@@ -1356,25 +1356,25 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Rota–Hız–Mesafe Üçlüsü",
         content: "Rota, yön kavramının seyirdeki uygulamasıdır ve her zaman bir açı değeri olarak ifade edilir. Hız denizcilikte knot birimiyle kullanılır ve bir knot saatte bir deniz miline eşittir. Mesafe ise deniz mili cinsindendir. Bu birim uyumu, seyir hesaplarının sade ve doğrudan yapılabilmesini sağlar. Rota olmadan mesafe yönsüz, hız olmadan rota anlamsız, mesafe olmadan hız işlevsizdir; bu nedenle üçü birlikte değerlendirilir.",
-        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/i008726a3101f5495/version/1604741284/image.jpg",
+        image: greatCircleVsRhumb,
         imageAlt: "Rota, hız ve mesafe ilişkisini gösteren şema"
       },
       {
         title: "Ölü Hesap Mevkiinin Temeli",
         content: "Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir. Bu durumda alınan mesafe, hız ile geçen zamanın çarpımıdır. Bu formül, seyirde kullanılan en temel bağıntıdır ve hızın birim zamanda alınan yol olması ilkesine dayanır.",
-        image: "https://www.marinepublic.com/_next/image?q=75&url=https%3A%2F%2Fik.imagekit.io%2Fmwakqpfup%2Fdead_reckoning_explained_example-diagram_cpxrvu.jpg&w=3840",
+        image: greatCircleVsRhumb,
         imageAlt: "Ölü hesap (dead reckoning) örneği"
       },
       {
         title: "Birim Uyumu ve Zaman Üçgeni",
         content: "Hız = Mesafe ÷ Zaman ve Zaman = Mesafe ÷ Hız bağıntıları, bilinmeyen büyüklüğe göre temel formülün yeniden düzenlenmiş hâlidir. Bu üçlü bağıntı, ETA hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
-        image: "https://www.marinerescueportjackson.com.au/images/timetriangle.png",
+        image: greatCircleVsRhumb,
         imageAlt: "Zaman üçgeni (mesafe-hız-zaman)"
       },
       {
         title: "Temel Bağıntı",
         content: "Mesafe, hız ile geçen zamanın çarpımıdır. Aynı bağıntı bilinmeyen büyüklüğe göre düzenlenerek hız veya zaman hesabında da kullanılır.",
-        image: "https://www.tradewindssailing.com/wordpress/wp-content/uploads/2018/07/DST-2.jpg",
+        image: greatCircleVsRhumb,
         imageAlt: "Mesafe-hız-zaman diyagramı",
         formula: {
           text: "Mesafe = Hız × Zaman",
@@ -1384,43 +1384,43 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Rüzgâr ve Akıntı Varsayımı",
         content: "Bu hesapların geçerli olabilmesi için hızın gerçekten sabit kalması gerekir. Dış etkilerin (akıntı, rüzgâr, dalga) ihmal edilemeyecek düzeyde olduğu durumlarda rota ve hız değerleri güncellenmelidir.",
-        image: "https://www.nauticed.org/blog/wp-content/uploads/2009/02/true-wind.jpg",
+        image: yonWindDrift,
         imageAlt: "Rüzgârın seyire etkisi"
       },
       {
         title: "Ölü Hesap Şeması",
         content: "Başlangıç mevkii bilinen bir gemi, belirli bir hakiki rota ve hızla hareket ettiğinde, geçen zaman sonunda ulaştığı mevki bu ilişkiyle hesaplanır.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Dead-reckoning.svg",
+        image: greatCircleVsRhumb,
         imageAlt: "Ölü hesap (dead reckoning) şeması"
       },
       {
         title: "Düzgün Doğrusal Hareket Modeli",
         content: "Bu ilişkinin matematiksel temeli düzgün doğrusal harekete dayanır. Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir.",
-        image: "https://teachengineering.org/content/cub_/lessons/cub_images/cub_navigation_lesson02_activity1_clipart1.jpg",
+        image: greatCircleVsRhumb,
         imageAlt: "Düzgün doğrusal hareket şeması"
       },
       {
         title: "ETA ve Seyir Planlaması",
         content: "Bu üçlü bağıntı, varış zamanı (ETA) hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
-        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/i008726a3101f5495/version/1604741284/image.jpg",
+        image: greatCircleVsRhumb,
         imageAlt: "Hız ve mesafe ilişkisi görseli"
       },
       {
         title: "ETA Diyagramı",
         content: "ETA hesapları, hız ve mesafe değerlerinin sahada düzenli kontrolü ile güncellenir. Bu nedenle seyir boyunca zaman, hız ve mesafe üçgeni sürekli izlenir.",
-        image: "https://www.marineinsight.com/wp-content/uploads/2021/01/ETDA-USE.png",
+        image: radarDisplay,
         imageAlt: "ETA ve mesafe diyagramı"
       },
       {
         title: "Seyir Günlüğü ve Kayıt",
         content: "Ölü hesap mevkiinde alınan her mesafe, seyir günlüğüne kaydedilerek güvenli takip ve geriye dönük kontrol sağlanır.",
-        image: "https://cdn.vertex42.com/ExcelTemplates/Images/running-log_scr.png",
+        image: chartPlotting,
         imageAlt: "Seyir günlüğü örneği"
       },
       {
         title: "Sayısal Örnek",
         content: "Bir geminin hakiki rotası sabit kabul edilsin ve hızı 14 knot olsun. Gemi bu hızla 3,5 saat seyir yaptığında alınan mesafe 49 deniz milidir. Aynı geminin 70 deniz millik bir mesafeyi alması için gereken süre 5 saattir. Bu tür hesaplamalar, varış zamanı tahminlerinde temel alınır.",
-        image: "https://www.myseatime.com/blogadm/wp-content/uploads/2018/02/Doppler-effect-graph.jpg",
+        image: radarDisplay,
         imageAlt: "Hız ölçümünde değişkenlik örneği",
         bulletPoints: [
           "Mesafe = 14 × 3,5 = 49 deniz mili",
@@ -1431,31 +1431,31 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Hızın Değişkenliği",
         content: "Hız, makine devri, deniz durumu ve yükleme gibi etkenlere bağlı olarak değişebilir. Bu nedenle gerçek zamanlı hız takibi, rota ve mesafe hesaplarının doğruluğu açısından kritiktir. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
-        image: "https://www.mastersystems.com/wp-content/uploads/2024/08/speed-log-furuno1717127956.png",
+        image: radarDisplay,
         imageAlt: "Seyirde hız takibini gösteren speed log ekranı"
       },
       {
         title: "Makine Performansı Etkisi",
         content: "Makine torku ve güç eğrileri, geminin hızını doğrudan etkiler. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
-        image: "https://www.epi-eng.com/images/Engine/ET-TqCrv3.gif",
+        image: radarDisplay,
         imageAlt: "Makine torku ve hız ilişkisi"
       },
       {
         title: "Vektörel Anlam",
         content: "Rota, hız ve mesafe ilişkisi yalnızca doğrusal bir hesap değildir; vektörel bir anlam taşır. Mesafe, yönsüz bir büyüklüktür. Bu mesafe ancak belirli bir rota doğrultusunda uygulandığında geminin mevkiini değiştirir. Aynı mesafe farklı rotalarda alındığında gemi tamamen farklı bir noktaya ulaşır.",
-        image: "https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png",
+        image: chartPlotting,
         imageAlt: "Ölü hesap (DR) çizimi"
       },
       {
         title: "Harita Üzerinde Uygulama",
         content: "Başlangıç mevkii bilinen bir geminin, belirli bir hakiki rota ve hızla belirli bir süre sonunda ulaşacağı mevki, mesafenin rota doğrultusunda harita üzerine taşınmasıyla bulunur. Bu işlemde rota açısı kadar mesafe büyüklüğü de kritik öneme sahiptir.",
-        image: "https://uscaptainstraining.com/wp-content/uploads/parallel-ruler-chart-plot-tool.png",
+        image: chartPlotting,
         imageAlt: "Paralel cetvelle rota çizimi"
       },
       {
         title: "Hata Birikimi ve Sapmalar",
         content: "Küçük hız hataları zaman uzadıkça büyük mesafe sapmalarına dönüşür. Benzer şekilde rotadaki birkaç derecelik bir hata, uzun seyirlerde geminin planlanan hattın ciddi şekilde dışına çıkmasına neden olur. Bu nedenle düzlem seyirde rota, hız ve mesafe hesapları yalnızca birer formül olarak değil, sürekli kontrol edilmesi gereken dinamik büyüklükler olarak ele alınır.",
-        image: "https://threepointsofthecompass.com/wp-content/uploads/2021/11/possible_edited-1.jpg",
+        image: chartPlotting,
         imageAlt: "Rota sapmalarına dair örnek"
       }
     ],
@@ -1473,25 +1473,25 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Temel Kavram",
         content: "Rota doğrultusunda alınan mesafe, sabit hız ve geçen zamanla doğrusal olarak artar; hız düşürüldüğünde aynı mesafeye ulaşmak için daha fazla zaman gerekir. Hızın birim zamanda alınan yol olması, ilişkiyi sezgisel hâle getirir: süre arttıkça mesafe, hızla doğru orantılı olarak büyür.",
-        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/i008726a3101f5495/version/1604741284/image.jpg",
+        image: greatCircleVsRhumb,
         imageAlt: "Zaman–mesafe–hız ilişkisini gösteren şema"
       },
       {
         title: "Birim Sistemi ve Knot",
         content: "Denizcilikte hız knot cinsinden ifade edilir ve 1 knot, saatte 1 deniz miline eşittir. Mesafe deniz mili, zaman saat olarak kullanılır. Bu birim uyumu, dönüşüm hatalarını azaltır ve hesapların doğrudan yapılmasını sağlar.",
-        image: "https://maritimesa.org/grade-10/wp-content/uploads/sites/2/2015/10/02_Voyage_calculations.png",
+        image: chartPlotting,
         imageAlt: "Seyir hesaplamaları için birim uyumu"
       },
       {
         title: "Birim Uyumunun Görsel Mantığı",
         content: "Birimlerin birbirine doğrudan oturması, seyirde hızlı ve hatasız hesap yapmayı mümkün kılar. Bu nedenle hızın knot olarak, mesafenin deniz mili ve zamanın saat olarak kullanılması temel standarttır.",
-        image: "https://maritimesa.org/grade-10/wp-content/uploads/sites/2/2015/10/01_Voyage_calculations_R.png",
+        image: chartPlotting,
         imageAlt: "Zaman-mesafe-hız birim uyumu"
       },
       {
         title: "Bağıntının Formülleri",
         content: "Bağıntı üç eşdeğer formülle ifade edilir. Hız, birim zamanda alınan yol olduğundan mesafe, hız ile zamanın çarpımıdır. Bilinmeyen büyüklüğe göre formül düzenlenir. Bu üç formül, ETA hesaplarının temel dayanağıdır.",
-        image: "https://www.mastersystems.com/wp-content/uploads/2024/08/speed-log-furuno1717127956.png",
+        image: radarDisplay,
         imageAlt: "Zaman-mesafe-hız formülleri",
         formula: {
           text: "Mesafe = Hız × Zaman",
@@ -1501,7 +1501,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Sayısal Örnek",
         content: "Bir geminin hızı 16 knot olsun. Gemi bu hızla 2 saat 30 dakika (2,5 saat) seyir yaptığında alınan mesafe 40 deniz milidir. Aynı geminin 100 deniz millik bir mesafeyi alması için gereken süre 6,25 saat yani 6 saat 15 dakikadır. Bu tür dönüşümler, ETA hesaplarında doğru zaman planlaması yapılabilmesi için zorunludur.",
-        image: "https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/START.png",
+        image: chartPlotting,
         imageAlt: "Zaman-mesafe-hız formül şeması",
         bulletPoints: [
           "Mesafe = 16 × 2,5 = 40 deniz mili",
@@ -1512,31 +1512,31 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Ölçüm Cihazları ve Hız Bilgisi",
         content: "Pratikte hız bilgisi log cihazlarıyla elde edilir. Hız ölçümü ne kadar doğruysa, zaman–mesafe hesabı da o kadar güvenilir olur.",
-        image: "https://www.myseatime.com/blogadm/wp-content/uploads/2018/02/doppler-log-working.jpg",
+        image: radarDisplay,
         imageAlt: "Doppler log çalışma prensibi"
       },
       {
         title: "Hız Değişiminin Zaman Üzerindeki Etkisi",
         content: "Uzun mesafeli seyirlerde hızın yalnızca 1–2 knot düşmesi, varış zamanında saatlerce gecikmeye neden olabilir. Kısa mesafelerde yapılan hız artışları ise beklenen zaman kazancını her zaman sağlamaz. Bu nedenle hız planlaması, mesafe ve zaman birlikte değerlendirilerek yapılmalıdır.",
-        image: "https://images.marinelink.com/images/maritime/-99700.jpg",
+        image: chartPlotting,
         imageAlt: "Seyirde hız planlaması"
       },
       {
         title: "Geriye Dönük Analiz",
         content: "Seyir sonrası değerlendirmelerde, belirli bir sürede kat edilen mesafeden ortalama hız hesaplanır. Bu hız, makine performansı, deniz durumu ve akıntı etkilerinin dolaylı bir göstergesi olarak yorumlanır.",
-        image: "https://www.researchgate.net/publication/256503418/figure/fig3/AS%3A297700613476363%401447988765994/Speed-time-graph-arriving-as-late-as-possible.png",
+        image: radarDisplay,
         imageAlt: "Seyir ve hız verilerinin değerlendirilmesi"
       },
       {
         title: "Vektörel Rota ve Harita Üzerinde Uygulama",
         content: "Hesaplanan mesafe yalnızca bir rota doğrultusunda harita üzerine taşındığında geminin mevkiini değiştirir. Sayısal hesapların doğru olması tek başına yeterli değildir; mesafenin doğru rota doğrultusunda uygulanması gerekir. Aksi hâlde elde edilen mevki matematiksel olarak tutarlı görünse bile fiziksel olarak yanlıştır.",
-        image: "https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png",
+        image: chartPlotting,
         imageAlt: "Ölü hesap (DR) çizimi"
       },
       {
         title: "Rota Doğrultusu ve Mevki Aktarımı",
         content: "Hesaplanan mesafenin harita üzerinde doğru rota doğrultusunda taşınması, ölü hesap mevkiinin güvenilirliğini belirler. Bu aşamada rota açısı ve ölçüm hassasiyeti kritik önemdedir.",
-        image: "https://image.jimcdn.com/app/cms/image/transf/none/path/sd6ea49279f075268/image/ia488bbe2ca937abc/version/1604740630/image.png",
+        image: chartPlotting,
         imageAlt: "Rota doğrultusunda mevki aktarımı"
       }
     ],
@@ -1608,37 +1608,37 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Tanım ve Temel Referans",
         content: "Denizcilikte hakiki kuzey, teorik hesapların başlangıç noktasıdır. Haritalar, meridyenler, paraleller ve göksel seyir tabloları hakiki kuzey esas alınarak hazırlanır. Bu nedenle hakiki kuzey, diğer tüm kuzey türlerinin başlangıç noktası kabul edilir.",
-        image: "https://images.theconversation.com/files/292137/original/file-20190912-190065-q685ai.jpg?auto=format&fit=clip&ixlib=rb-4.1.0&q=45&w=1000",
+        image: yonNorthTypes,
         imageAlt: "Coğrafi kuzey kutbu ve Dünya ekseni"
       },
       {
         title: "Sabit ve Evrensel Bir Doğrultu",
         content: "Hakiki kuzey, manyetik alanlardan, gemi yapısından veya çevresel etkilerden etkilenmeyen tek ve sabit bir referans sunar. Uzun mesafeli seyirlerde ve göksel gözlemlerde bu sabitlik vazgeçilmezdir.",
-        image: "https://mapscaping.com/wp-content/uploads/2024/09/image-691.png",
+        image: compassImg,
         imageAlt: "Gerçek kuzey ve yön doğrultuları"
       },
       {
         title: "Meridyenler ve Hakiki Kuzey Doğrultusu",
         content: "Harita üzerindeki her dikey meridyen çizgisi, hakiki kuzey–hakiki güney doğrultusunu temsil eder. Bu çizgiler, yön ölçümünün geometrik temelini oluşturur.",
-        image: "https://www.geographyrealm.com/wp-content/uploads/2021/05/Magnetic-North-Pole-Positions-cavit.jpg",
+        image: yonNorthTypes,
         imageAlt: "Kuzey referansları ve meridyenler"
       },
       {
         title: "Hakiki Yönlerin Ölçümü",
         content: "Hakiki kuzey referans alınarak ölçülen tüm yönler hakiki olarak adlandırılır. Bir doğrultu, meridyen ile yaptığı saat yönündeki açıyla ifade edilir ve bu açı 0° ile 360° arasındadır.",
-        image: "https://mathspace-production-media.mathspace.co/media/upload/images/11-bearings/true-acute-bearing.png",
+        image: yonTrueBearing,
         imageAlt: "Hakiki yön ölçümü"
       },
       {
         title: "Hakiki Rota ve Hakiki Kerteriz",
         content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Hakiki kerteriz ise gemiden bir hedefe olan doğrultunun hakiki kuzeye göre ölçülen açısıdır.",
-        image: "https://blog.mytimezero.com/wp-content/uploads/2017/12/art-blog-course-heading-fr.png",
+        image: yonHeadingBearing,
         imageAlt: "Hakiki rota ve kerteriz ilişkisi"
       },
       {
         title: "Hakiki Kerteriz Hesap Bağıntısı",
         content: "Hakiki kerteriz, nispi gözlemin hakiki sisteme taşınmasıyla elde edilir. Nispi kerteriz sancak yönünde ölçülmüşse pozitif, iskele yönünde ölçülmüşse negatif kabul edilir. Sonuç 360°’yi aşarsa 360° çıkarılır, 0°’nin altına düşerse 360° eklenir.",
-        image: "https://tdgil.com/wp-content/uploads/2020/09/Compass-Rose.png",
+        image: yonCompassRose,
         imageAlt: "Pusula gülü ve yön sistemi",
         formula: {
           text: "Hakiki Kerteriz = Hakiki Rota + Nispi Kerteriz",
@@ -1648,7 +1648,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Sayısal Örnek",
         content: "Bir geminin hakiki rotası 120°T olsun. Hedef sancakta nispi 35° ile görülüyor olsun. Nispi kerteriz pozitif kabul edilir ve hakiki rotaya eklenir. Aynı durumda hedef iskele tarafından nispi 25° ile görülseydi, nispi kerteriz negatif alınırdı.",
-        image: "https://sailingissues.com/drie/magnetic-course-true-course.png",
+        image: compassImg,
         imageAlt: "Hakiki rota ve kerteriz örneği",
         bulletPoints: [
           "Hakiki Kerteriz = 120° + 035° = 155°",
@@ -1659,7 +1659,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Ölü Hesap ve Hakiki Kuzey",
         content: "Ölü hesap mevkiinde başlangıç noktası bilinir; hakiki rota ve hız sabit kabul edilerek geçen zaman sonunda alınan mesafe hesaplanır. Bu mesafe, hakiki rota doğrultusunda harita üzerinde taşınarak yeni mevki bulunur.",
-        image: "https://tdgil.com/wp-content/uploads/2020/04/DR-Plot.png",
+        image: chartPlotting,
         imageAlt: "Ölü hesap mevkiinde hakiki rota kullanımı"
       }
     ],
@@ -1678,25 +1678,25 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Tanım ve Temel Referans",
         content: "Manyetik pusula, elektriksel veya elektronik sistemlere ihtiyaç duymadan yön tayini sağlar. Bu pratiklik, değişken bir referansla çalışıldığı gerçeğini ortadan kaldırmaz; manyetik kuzey daima değişen bir doğrultudur.",
-        image: "https://images.theconversation.com/files/292137/original/file-20190912-190065-q685ai.jpg?auto=format&fit=clip&ixlib=rb-4.1.0&q=45&w=1000",
+        image: yonNorthTypes,
         imageAlt: "Manyetik kuzey kutbu ve Dünya ekseni"
       },
       {
         title: "Dünya Manyetik Alanı ve Kutup Hareketi",
         content: "Dünya manyetik alanı dinamik bir yapıya sahiptir. Yer kabuğu altındaki erimiş metallerin hareketi nedeniyle manyetik kutuplar her yıl küçük miktarlarda yer değiştirir. Bu değişim, deniz haritalarında variation ve yıllık değişim değeri olarak belirtilir.",
-        image: "https://www.researchgate.net/publication/279446083/figure/fig1/AS%3A294387369168900%401447198826980/The-Earths-magnetic-field-the-geomagnetic-field-Notice-that-the-southern-and-northern.png",
+        image: yonNorthTypes,
         imageAlt: "Dünya manyetik alanı ve manyetik kutuplar"
       },
       {
         title: "Variation Haritaları",
         content: "Seyir hesaplarında kullanılan manyetik yönlerin doğruluğu, variation bilgisinin doğru okunmasına ve güncel yıla uyarlanmasına doğrudan bağlıdır. Haritalar üzerinde yer alan izogon çizgileri, variation değerlerinin bölgesel dağılımını gösterir.",
-        image: "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/Pattern%20of%20Magetic%20Declination.jpg?itok=DeuBC1o5",
+        image: compassImg,
         imageAlt: "Manyetik variation haritası"
       },
       {
         title: "Variation Yönü: Doğu ve Batı",
         content: "Hakiki kuzey ile manyetik kuzey arasındaki açısal fark variation olarak adlandırılır. Manyetik kuzey hakiki kuzeyin doğusunda yer alıyorsa variation doğu, batısında yer alıyorsa variation batıdır. Bu yönlendirme, hesaplamalarda işaretin doğru seçilmesi açısından belirleyicidir.",
-        image: "https://i.sstatic.net/W91Fr.png",
+        image: compassImg,
         imageAlt: "Variation doğu/batı yönleri",
         bulletPoints: [
           "Variation doğu ise pozitif kabul edilir",
@@ -1707,7 +1707,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Manyetik Sistem ve Yönler",
         content: "Manyetik sistemde ölçülen tüm yönler manyetik olarak adlandırılır ve M harfi ile gösterilir. Manyetik rota, geminin manyetik kuzeye göre izlediği doğrultudur. Manyetik kerteriz ise bir hedefin manyetik kuzeye göre ölçülen doğrultusudur.",
-        image: "https://gisgeography.com/wp-content/uploads/2015/06/Magnetic-North-300x297.png",
+        image: yonNorthTypes,
         imageAlt: "Manyetik kuzey ve yön farkı",
         bulletPoints: [
           "Manyetik rota: 110°M gibi ifade edilir",
@@ -1718,7 +1718,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Hakiki–Manyetik Dönüşüm",
         content: "Hakiki ve manyetik sistemler arasındaki ilişki doğrusal bir açı dönüşümüne dayanır. Dönüşüm, bilinen variation kadar açı ekleme veya çıkarma işlemidir.",
-        image: "https://sailingissues.com/drie/convert-east-west-magnetic-variation-true-courses.png",
+        image: compassImg,
         imageAlt: "Manyetik ve hakiki rota dönüşümü",
         formula: {
           text: "Hakiki Rota = Manyetik Rota + Variation",
@@ -1728,7 +1728,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Sayısal Örnek",
         content: "Variation 7° doğu ise ve geminin manyetik rotası 110°M olarak belirlenmişse, hakiki rota hesaplamasında variation manyetik rotaya eklenir. Variation 5° batı olsaydı çıkarma işlemi yapılırdı.",
-        image: "https://sailingissues.com/drie/magnetic-course-true-course.png",
+        image: compassImg,
         imageAlt: "Manyetik rotadan hakiki rotaya örnek",
         bulletPoints: [
           "Hakiki Rota = 110° + 007° = 117°",
@@ -1738,7 +1738,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Manyetik Kerteriz Bağıntısı",
         content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır.",
-        image: "https://www.researchgate.net/publication/341492181/figure/fig1/AS%3A892957544681472%401589909077213/Magnetic-bearings-and-relative-bearings-4.jpg",
+        image: yonRelativeBearing,
         imageAlt: "Manyetik kerteriz ve nispi kerteriz ilişkisi",
         formula: {
           text: "Manyetik Kerteriz = Manyetik Rota + Nispi Kerteriz",
@@ -1748,7 +1748,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Seyirde Risk ve İhmal",
         content: "Manyetik kuzeyle yapılan seyirdeki temel risk, variation bilgisinin ihmal edilmesidir. Küçük görünen birkaç derecelik bir hata, uzun mesafelerde ciddi mevki sapmalarına dönüşür. Bu nedenle manyetik pusuladan elde edilen her yön bilgisi variation düzeltilmeden harita üzerinde kullanılmamalıdır.",
-        image: "https://cockpitcards.co.uk/wp-content/uploads/2020/07/Deviation-and-Variation-sums.jpg",
+        image: compassImg,
         imageAlt: "Variation ve deviation etkileri"
       }
     ],
@@ -1850,49 +1850,49 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       {
         title: "Datum Modelleri: Clarke 1866, WGS-84 ve GRS80",
         content: "Farklı datum’lar, dünyanın farklı bölgelerinde daha doğru sonuç verecek şekilde tanımlanmış elipsoidlere dayanır. Aynı coğrafi nokta farklı datum’larda farklı enlem–boylam değerlerine sahip olabilir. Bu nedenle kullanılan datum’un harita kenar bilgisinde kontrol edilmesi zorunludur.",
-        image: "https://vdatum.noaa.gov/images/docs/clarke1866_wgs84_grs80.gif",
+        image: mercatorProjection,
         imageAlt: "Clarke 1866, WGS-84 ve GRS80 datum karşılaştırması"
       },
       {
         title: "Chart Datum ve Gelgit Referansları",
         content: "Deniz haritalarında derinlikler belirli bir referans su seviyesine (chart datum) göre verilir. Bu referans, gelgit düzeyleriyle ilişkilidir ve harita kenarındaki datum notlarında belirtilir. Gelgit referansları doğru anlaşılmadan yapılan sığlık ve emniyet hesabı ciddi risk doğurabilir.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Tide_legal_use.gif",
+        image: tideCurrent,
         imageAlt: "Gelgit seviyeleri ve chart datum ilişkisi"
       },
       {
         title: "Yatay ve Düşey Datum Ayrımı",
         content: "Datum kavramı yalnızca yatay koordinatları değil, düşey ölçümleri de etkiler. Yükseklikler ve derinlikler farklı düşey datumlara bağlıdır. Harita üzerinde verilen yükseklik ve derinliklerin hangi referansa göre ölçüldüğü net biçimde okunmalıdır.",
-        image: "https://vdatum.noaa.gov/images/docs/heights.gif",
+        image: tideCurrent,
         imageAlt: "Yatay ve düşey datumların gösterimi"
       },
       {
         title: "Harita Kenar Bilgilerinde Datum Notları",
         content: "Datum bilgisi harita kenarında açıkça belirtilir. Bazı haritalarda datum dönüşümü için yön ve mesafe düzeltmeleri verilir. Bu notlar uygulanmadığında, GPS’ten alınan mevki harita üzerinde yanlış konuma taşınır.",
-        image: "https://www.mibsar.com/LandNav/Datums/2002MNRDatumLegend.jpg",
+        image: mercatorProjection,
         imageAlt: "Harita kenarında datum bilgisi örneği"
       },
       {
         title: "Nautical Chart Datum Blok Örneği",
         content: "Nautical chart datum blokları, haritanın hangi datum’a göre hazırlandığını ve varsa dönüşüm notlarını gösterir. Harita kenarındaki bu blok, datum uyumluluğunu kontrol etmek için ilk bakılması gereken yerdir.",
-        image: "https://geographic.org/nautical_charts/mcd/nNTC_Block.jpg",
+        image: mercatorProjection,
         imageAlt: "Nautical chart datum blok örneği"
       },
       {
         title: "Datum Uyuşmazlığının Seyre Etkisi",
         content: "Datum uyuşmazlığı özellikle kıyıya yakın seyirlerde ve dar sularda kritik hâle gelir. Gerçek mevki ile harita üzerinde işaretlenen mevki arasında onlarca hatta yüzlerce metre fark oluşabilir. Açık denizde fark küçük görünse de liman girişleri ve sığ sularda bu sapma tehlike doğurur.",
-        image: "https://static.wixstatic.com/media/43d115_a2b4984a4a1b49628452db55424f4f78~mv2.png/v1/fill/w_568%2Ch_276%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/43d115_a2b4984a4a1b49628452db55424f4f78~mv2.png",
+        image: mercatorProjection,
         imageAlt: "Datum uyuşmazlığı kaynaklı konum sapması örneği"
       },
       {
         title: "GPS Datum Ayarı ve Dönüşüm Uygulamaları",
         content: "GPS alıcıları datum ayarı sunar. Harita datum’u WGS-84 ise GPS de aynı datum’a ayarlanmalıdır. Farklı datum kullanılan haritalarda, harita üzerinde belirtilen düzeltme değerleri dikkatle uygulanmalıdır.",
-        image: "https://www.siranah.de/pictures/sail022e_A.gif",
+        image: mercatorProjection,
         imageAlt: "GPS datum ayarı ve harita mevki düzeltmesi örneği"
       },
       {
         title: "Dönüşüm Notları ve Emniyetli Uygulama",
         content: "Bazı haritalarda datum dönüşüm notları doğu–batı ve kuzey–güney yönlerinde metre cinsinden verilir. Bu düzeltmeler uygulanmadığında mevki işaretleme hatası kaçınılmaz hâle gelir. Datum bilgisi, seyir emniyetinin temel yapı taşlarından biridir.",
-        image: "https://sailingissues.com/chart-symbols/clearing-heights-chart-datums-opt.svg",
+        image: mercatorProjection,
         imageAlt: "Datum dönüşüm notları ve chart datum sembolleri"
       },
       {
@@ -2131,7 +2131,7 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
         title: "Doğruluğu Belirleyen Hata Kaynakları",
         content:
           "GPS alıcısında oluşan toplam konum hatası, farklı hata bileşenlerinin birleşimidir. Uydu saat ve yörünge hataları, atmosferik gecikmeler (iyonosfer/troposfer), alıcı saat hatası, çok yollu (multipath) yansıma ve alıcı gürültüsü toplam hatayı büyütür. Uydu geometrisinin zayıf olduğu anlarda (yüksek DOP) aynı hata büyüklüğü konumda daha büyük sapma üretir.",
-        image: "https://electronics.drotek.com/wp-content/uploads/2023/01/multipath-errors.png",
+        image: gpsSatellites,
         imageAlt: "Multipath kaynaklı GPS hata oluşumu"
       },
       {
@@ -2146,7 +2146,7 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
         title: "Tipik Doğruluk Seviyeleri",
         content:
           "Sivil GPS alıcılarında yatay doğruluk genellikle metre mertebesindedir. Açık denizde bu seviye çoğu zaman yeterlidir; ancak liman yaklaşmaları ve manevra sahalarında aynı doğruluk seviyesi operasyonel risk oluşturabilir. Bu nedenle denizcilikte DGPS/SBAS destekli sistemler, radar mesafeleri ve görsel mevki tayini gibi doğrulama yöntemleri birlikte kullanılır.",
-        image: "https://www.oc.nps.edu/oc2902w/images/gpsacc.gif",
+        image: gpsSatellites,
         imageAlt: "GPS doğruluk dağılımı ve hata yüzdeleri"
       },
       {
@@ -2658,61 +2658,61 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       {
         title: "Harita dilinin amacı ve temel okuma mantığı",
         content: "Bir işaretin anlamı yalnız renk veya isimle bitmez; şekil, üst marka, ışık karakteri, ses işareti, radar/elektronik tanıtıcıları ve haritadaki kısaltma dizilimi birlikte okunur. “Aşırı detay” gibi görünen bu yapı, pratikte tereddütü azaltıp kazayı engellemek için vardır; bu başlık ezberletmek için değil, sahada karar verdiren bir dil gibi öğretilmelidir.",
-        image: "https://www.skippertips.com/members/images/211c.png?cb=20250701053020",
+        image: sembolDangers,
         imageAlt: "Deniz haritası sembolleri örneği"
       },
       {
         title: "Sembol standardı: Chart No.1",
         content: "Chart No.1, deniz haritalarında kullanılan sembollerin ve kısaltmaların standart referansıdır. Eğitimde ve pratik okumada bu görsel dilin aynı şekilde anlaşılması için temel kaynaktır.",
-        image: "https://nauticalcharts.noaa.gov/updates/wp-content/uploads/2019/05/Chart-No-1.jpg",
+        image: sembolDangers,
         imageAlt: "Chart No.1 sembol standardı"
       },
       {
         title: "IALA sistemi ve şamandıra mantığı",
         content: "Şamandıra sistemi IALA düzenine göre yorumlanır ve dünya iki ana bölgeye ayrılır. Türkiye ve Avrupa suları IALA Bölge A mantığını kullanır; limana girişte kırmızı iskelede, yeşil sancakta kalır. Buradaki kritik nokta, bu ifadenin bir renk cümlesi değil, bir geçiş talimatı olmasıdır. Aynı renk farklı bölgede farklı tarafı ifade edebildiği için haritadaki bir şamandıra sembolünü gördüğünde ilk refleks, “hangi IALA bölgesindeyim” sorusunu içgüdü hâline getirmektir. Harita şamandırayı çoğu zaman bir nokta gibi çizse bile, o nokta bir koridorun kenarını, bir tehlikenin dolaşma yönünü veya yaklaşım hattının teyidini temsil eder; dolayısıyla sembolün amacı bilgi vermek değil, hareket ettirmektir.",
-        image: "https://sailtrain.org.uk/wp-content/uploads/2017/10/iala_buoys_channel.jpg",
+        image: sembolIalaBuoyage,
         imageAlt: "IALA şamandıra mantığı"
       },
       {
         title: "IALA A şamandıra örnekleri",
         content: "IALA A bölgesinde renk, şekil ve üst marka bir bütün hâlinde okunur. Limana girişte kırmızının iskelede kalması kuralı, sahada doğrudan bir geçiş talimatına dönüşür.",
-        image: "https://safe-skipper.com/wp-content/uploads/2015/11/IALA-A-buoyage.jpg",
+        image: sembolIalaBuoyage,
         imageAlt: "IALA A şamandıra düzeni"
       },
       {
         title: "Lateral işaretler ve haritadaki gösterimi",
         content: "Lateral işaretler, bir kanalın veya geçiş hattının kenarlarını tarif eder ve emniyetli suyu çizgisel olarak tanımlar. IALA A’da iskele işareti kırmızıdır ve tipik olarak silindirik (can) biçim ve buna karşılık gelen üst marka mantığını taşır; sancak işareti yeşildir ve tipik olarak konik (conical) biçim ve üst marka mantığı ile eşleştirilir. Haritada lateral işaretin sembolü, bunun şamandıra mı yoksa sabit beacon mı olduğunu, ışıklı mı ışıksız mı olduğunu ve bazen işaretin karakterini tek bakışta ayırmaya yarayacak şekilde çizilir. Lateral işaretin ışığı varsa haritada yanında ışık karakteristiği yazılır; bu yazı “yanıyor” demek değildir, gece ayırt etmenin şifresidir.",
-        image: "https://sailingissues.com/light/lateral-marks-IALA-A-3x.png",
+        image: ialaLateralMarks,
         imageAlt: "Lateral işaretler ve ışıkları"
       },
       {
         title: "Lateral ışık karakterlerini okuma",
         content: "Bir lateral işareti okurken pratik karar akışı, önce işaretin türü ve rengi, sonra varsa şekli ve üst markası, ardından ışık karakteri ve periyodu, en son nominal görünme mesafesi mantığıyla çözülür. Haritada “Fl R 5s” kırmızı çakarlı ışığın 5 saniyelik periyotla tekrar ettiğini anlarsın. “Q G” hızlı çakarlı yeşil ışığı ifade eder. “Oc” ışığın çoğunlukla yandığı, kısa süre söndüğü karakterdir. “Iso” yanma ve sönme sürelerinin eşit olduğunu anlatır. Aynı bölgede birden fazla ışıklı işaret varken bu ayrım, “hangisi hangisi” sorusunu saniyeler içinde çözer. Gece gözlemin haritadaki ritimle uyuşmaması, çoğu kazada ilk işarettir; burada doğru refleks, rotayı körlemesine düzeltmek değil, varsayımı sorgulayıp işareti yeniden teşhis etmektir.",
-        image: "https://marinegyaan.com/wp-content/uploads/2016/06/Untitled-14.jpg",
+        image: ialaLateralMarks,
         imageAlt: "Lateral şamandıra şekil eşleşmeleri"
       },
       {
         title: "Kardinal işaretler ve emniyetli su yönü",
         content: "Kardinal işaretler kanal kenarı anlatmaz; bir tehlikenin çevresinde emniyetli su yönünü tarif eder. Mantık yönseldir: kuzey kardinali tehlikenin kuzeyinden geç der, doğu kardinali doğusundan geç der, güney kardinali güneyinden geç der, batı kardinali batısından geç der. Bu işaretlerin haritadaki sembolü renk bandını ve üst markayı ima eder; fakat sahada en kritik kısım gece tanımadır, çünkü ışık ritmi yön bilgisini taşır.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Cardinal_Marks.gif",
+        image: cardinalMarks,
         imageAlt: "Kardinal işaretlerin renk ve üst marka mantığı"
       },
       {
         title: "Kardinal ışık imzaları",
         content: "Kuzey kardinal, pratikte “kesintisiz seri” hissi veren bir ritimle tanınır ve haritada çoğunlukla Q veya VQ ile ifade edilir. Doğu kardinalin imzası üçlü gruptur; Fl(3), Q(3) veya VQ(3). Güney kardinalin imzası altılı grup artı uzun çakardır; Q(6)+LFl veya VQ(6)+LFl. Batı kardinalin imzası dokuzlu gruptur; Q(9) veya VQ(9). Haritada bir kardinal işaret yanında “VQ(6)+LFl 15s” yazdığını düşünelim. Bu ifade güney kardinali işaret eder. 15 saniyelik periyot içinde altı kısa çok hızlı çakar ve bir uzun çakar vardır; düzen tekrar eder. Buradaki doğru karar, “işareti nasıl bırakırım” gibi slogan düzeyinde değil, “tehlikenin güneyinden emniyetli geçiş yapılır” mantığıyla verilir. Harita üzerindeki tehlike sembolüyle birlikte okunduğunda, geçiş hattı netleşir.",
-        image: "https://sailingissues.com/light/cardinal-buoys%2Blights-3x.png",
+        image: sembolCardinalMarks,
         imageAlt: "Kardinal ışık karakterleri"
       },
       {
         title: "İzole tehlike, emniyetli su ve özel işaretler",
         content: "İzole tehlike işareti, çevresinde dolaşılabilir su bulunan tekil bir tehlikeyi işaret eder; batık, kaya, sığlık gibi “noktadan” doğan riskler için kullanılır. Harita sembolünde bu işaret, tehlikenin üzerinde veya hemen yanında görülür ve ışık karakteri çoğu kez “Fl(2) W” şeklinde yazılır; iki beyaz çakar, gece ayırt etmenin en güçlü imzasıdır. Bu işaretin verdiği mesaj “burada tekil bir tehlike var, etrafı dolaşılabilir”dir; emniyetli taraf, yerel derinlik, izobatlar ve geminin draft’ı ile birlikte seçilir.",
-        image: "https://www.zazbuoys.com/static/upload/image/20250815/1755250955703110.jpg",
+        image: sembolCardinalMarks,
         imageAlt: "İzole tehlike işareti"
       },
       {
         title: "Emniyetli su işareti örneği",
         content: "Emniyetli su işareti, kanal orta hattını, yaklaşım hattını veya çevresi emniyetli suyu tarif eden bir referans noktayı işaret eder. Haritada kırmızı-beyaz dikey bantlı görünümü çağrıştıran sembolle ve beyaz ışık karakteristiğiyle gösterilir; Iso, Oc veya LFl gibi karakterler sık görülür. Bu işaretin değeri, “geçiş talimatı” vermekten çok “doğru yerdeyim” teyidi sağlamasıdır; yaklaşımda hedeflenen hattın üzerinde olunduğunu güçlü biçimde doğrular.",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Limfjord_safe_water_mark.jpg/250px-Limfjord_safe_water_mark.jpg",
+        image: safeWaterMark,
         imageAlt: "Emniyetli su işareti"
       },
       {
@@ -2746,31 +2746,31 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       {
         title: "Leading lights örneği",
         content: "Leading lights, iki ayrı fenerin aynı doğrultuda hizalanmasıyla bir range oluşturur. Haritada iki ışık sembolü ve aralarındaki hat çizgisiyle gösterilir. Gemide iki ışık üst üste geldiğinde hat üzerindesindir; biri sağa kayarsa hattın bir tarafına, sola kayarsa diğer tarafına çıkmışsındır. Dar yaklaşım kanallarında bu yöntem, pusula değerinden daha hızlı ve daha güvenilir bir hat tutma teyidi üretir.",
-        image: "https://safe-skipper.com/wp-content/uploads/2020/06/leading-lights.jpg",
+        image: sembolSectorLights,
         imageAlt: "Leading lights örneği"
       },
       {
         title: "Radar ve elektronik tanıtıcılar: RACON, AIS AtoN",
         content: "Haritalarda bazı işaretler yalnız gözle değil, radar ve AIS üzerinden tanınacak şekilde donatılmıştır. RACON, radar ekranında mors kodlu bir yanıt üreten işarettir ve haritada özel bir sembolle gösterilir; mesajı, “radarda şu imzayı vereceğim”dir. AIS AtoN ise AIS üzerinden fiziksel veya sanal seyir yardımını yayınlar; haritada bu bilgi ilgili işaretin yanında belirtilir.",
-        image: "https://marinegyaan.com/wp-content/uploads/2016/06/RACON.jpg",
+        image: sembolRacon,
         imageAlt: "RACON örneği"
       },
       {
         title: "AIS AtoN ve harita sembolleri",
         content: "Bu semboller elektronik seyirde mevki doğrulama ve hedef teşhisini güçlendirir; ancak yanlış yorumlandığında “radarda gördüğüm doğru şey mi” sorusunu yanıtsız bırakır ve hatalı teşhis zinciri oluşturur.",
-        image: "https://marine-charts.com/wp-content/uploads/Abbreviations-symbols-used-nautical-charts-1.jpg",
+        image: sembolDangers,
         imageAlt: "Harita sembolleri ve kısaltmalar örneği"
       },
       {
         title: "Tehlike sembolleri: kayalar, sığlıklar, batıklar",
         content: "Kayalar ve sığlıklar, harita dilinde “su üstünde, su seviyesinde, su altında” ayrımıyla anlatılır. Bir kayanın sürekli su üstünde olmasıyla, dalgaya bağlı olarak örtünüp açılması veya tamamen su altında kalması aynı değildir; sembol bu farkı taşır. Sığlıkların tarama deseni ve izobat yapısı, geminin draft’ı ile birlikte riskin büyüklüğünü belirler. Batıklar da aynı şekilde tek tip değildir; bazıları üzerinde yeterli su bulunan bilgi batığı gibi gösterilirken, bazıları tehlikeli batık olarak vurgulanır ve çoğu kez en az derinlik değeri belirtilir. Least depth bilgisi varsa, bu sayı batığın en sığ noktasındaki suyu temsil eder ve planlamada doğrudan kullanılır.",
-        image: "https://charts.gc.ca/images/publications/chart1-carte1/k-rocks/k12-iho.svg",
+        image: sembolDangers,
         imageAlt: "Kaya sembolleri örnekleri"
       },
       {
         title: "Sığlık ve batık örnekleri",
         content: "Bu bölümdeki en yaygın hata, tek bir sembolü mutlak tehlike sanmaktır. Haritada tehlikenin türü, derinlik rakamı, izobatların sıkılığı, bölgenin tarama kalitesi ve geminin su çekimi birlikte değerlendirilmeden karar verilmez. Harita dili tek işaretle hüküm vermez; bağlamla hüküm verir.",
-        image: "https://www.skippertips.com/members/images/831b.jpg?cb=20250701052844",
+        image: sembolDangers,
         imageAlt: "Sığlık ve batık sembolleri"
       },
       {
