@@ -1,55 +1,97 @@
-## Sorun
+# Personel İşleri için Uzun-Form Detaylı Anlatım Sistemi
 
-Ders modallarında (özellikle Seyir derslerinde) bir kısım görseller yüklenmiyor / kırık görünüyor.
+## Mevcut Durum
 
-**Kök neden — denetim sonucu:**
-- `src/data/navigationTopicContents.ts` içinde **178 görsel** referansı var: 110'u yerel asset (sorunsuz), **68'i dış URL** (sailingissues.com, marinegyaan.com, skippertips.com, researchgate.net, jimcdn.com, sstatic.net vb.).
-- Bu siteler tarayıcıda **hotlink/Referer koruması, CORS veya 403** döndürüyor (örn. researchgate.net → 403). Sunucu HEAD isteği 200 dönse bile `<img>` etiketi `Referer` başlığı yüzünden tarayıcıda yüklenmiyor.
-- `TopicContentModal.tsx` içindeki `<img>` etiketlerinde **`onError` fallback yok** → kırık görsel olduğu gibi kalıyor, kullanıcı boş kutu görüyor.
-- Diğer ders dosyaları (meteoroloji, stabilite, makine, haberleşme, genel `topicContents.ts`) `image:` alanı kullanmadığı için onlarda eksiklik yok — sadece Seyir dersleri etkileniyor.
+`src/pages/CrewRoleDetail.tsx` her personel rolü (Kaptan, 1. Zabit, Başmühendis, ETO, Aşçı vb. — toplam **16 rol**) için bir accordion listesi gösteriyor. Her rolde ortalama **10–15 iş** (`tasks[]`) var ve her iş şu an `crewRoleDetails.ts` içinde **3–6 cümlelik tek paragraflık `description`** ile tanımlı (toplam ~180 iş).
 
-Aynı sorun maritime news için daha önce `images.weserv.nl` proxy ile çözülmüştü (mem://performance/maritime-news-image-optimization). Aynı yaklaşımı derslere de uygulayacağız.
+İstek: Her bir iş **20–30 sayfa** uzunluğunda, çok detaylı, kitap-bölümü düzeyinde anlatılsın.
 
-## Plan
+## Ölçek Gerçeği (Önemli)
 
-### 1. Ortak görsel bileşeni (yeni dosya)
-`src/components/ui/LessonImage.tsx` oluştur:
-- `src` URL'si dış kaynaksa otomatik olarak `https://images.weserv.nl/?url=<encoded>&w=800&output=webp` proxy'sine sar (yerel `/src/assets/...` veya `/diagrams/...` ise dokunma).
-- `onError` ile **iki kademeli fallback**:
-  1. İlk hata → proxy'siz orijinal URL'ye düş (proxy bazen kaynağı çekemiyor).
-  2. İkinci hata → `bg-muted` + ortada ikon (Lucide `ImageOff`) + alt metni göster ("Görsel yüklenemedi: <imageAlt>"). Böylece kullanıcı boş kutu yerine düzgün bir placeholder görür.
-- `loading="lazy"`, `referrerPolicy="no-referrer"`, `crossOrigin` ayarları.
-- Mevcut `object-contain`, ImageViewerModal `onClick`, hover overlay davranışlarını korur.
+180 iş × 25 sayfa ≈ **4500 sayfa içerik**. Bu, statik olarak elle yazılırsa:
+- Tek dosyaya sığmaz (TS/Vite build patlatır)
+- Tek bir AI çağrısıyla üretilemez (token limiti)
+- Tek seferde gönderilirse uygulama bundle'ı 50–100 MB olur
 
-### 2. TopicContentModal entegrasyonu
-`src/components/navigation/TopicContentModal.tsx`:
-- İki yerdeki ham `<img>` (section.image bloğu + ReactMarkdown `img` override) `LessonImage` ile değiştir.
-- ImageViewerModal'a tıklama davranışı aynen kalır (büyük gösterim için yine proxy'li URL kullanılır).
+Bu nedenle **iki katmanlı** bir mimari öneriyorum: (1) içerik depolama + okuma sistemi, (2) içerik üretim altyapısı (parça parça, kontrollü).
 
-### 3. ImageViewerModal'a fallback
-`src/components/ui/ImageViewerModal.tsx` içinde tam ekran görüntüleyiciye de aynı `onError` mantığını ekle ki büyütülen görsel de kırık kalmasın.
+## Mimari Plan
 
-### 4. Bilinen kırık URL'lerin yerel asset ile değiştirilmesi
-`src/assets/navigation/` içinde zaten kullanılmayan ama konuya uygun yerel görseller var (örn. `sembol-cardinal-marks.png`, `sembol-iala-buoyage.jpg`, `sembol-racon.jpg`, `sembol-sector-lights.jpg`, `sembol-light-characteristics.jpg`, `sembol-isolated-danger.jpg`, `sembol-dangers.jpg`, `iala-lateral-marks.svg`, `cardinal-marks.svg`, `safe-water-mark.svg`, `isolated-danger-mark.svg`, `mercator-projection.svg`, `gnomonic-projection.svg`, `great-circle-vs-rhumb.svg`, `compass.svg`, `radar-display.svg`, `gps-satellites.svg`, `tide-current.svg`, `weather-systems.svg`, `chart-plotting.jpg`, vb.).
-- `navigationTopicContents.ts` içindeki **68 dış URL**'yi gözden geçir; konusu eşleşen yerel asset olanları yerel import ile değiştir (örn. RACON, IALA buoyage, kardinal markalar, sektör ışıkları, GPS, mercator/gnomonik projeksiyon, dead reckoning, manyetik kuzey, gelgit/akıntı vb.). Tahminen **30-40 görsel** birebir yerel asset ile değiştirilebilir.
-- Yerel karşılığı olmayan dış URL'ler (örn. spesifik fotoğraflar, formül diyagramları) proxy + fallback ile çalışmaya devam edecek.
+### 1. Veri Modelinde Genişletme
 
-### 5. Diğer ders modüllerinin denetimi (doğrulama)
-- Meteoroloji, stabilite, makine, haberleşme ve `topicContents.ts` taranınca `image:` alanı bulunamadı; bu modüllerde "yüklenmeyen görsel" sorunu yok. Eğer ileride eklenirse aynı `LessonImage` bileşeni hazır olacak.
-- `BridgeDeviceDetail` zaten `<img>` ile dış görseller kullanıyor — aynı `LessonImage` bileşenini orada da kullan ki tutarlı fallback olsun.
+`crewRoleDetails.ts` içinde `tasks[]` türünü genişletiyoruz — kısa açıklama korunuyor (liste görünümü için), bunun yanında **opsiyonel `longForm`** alanı eklenecek:
 
-## Değişecek Dosyalar
+```ts
+tasks: {
+  title: string;
+  description: string;        // mevcut özet (accordion preview)
+  longForm?: {
+    chapters: {
+      heading: string;
+      sections: { subheading: string; paragraphs: string[] }[];
+      callouts?: { type: 'warning'|'reference'|'tip'; text: string }[];
+      regulations?: string[]; // SOLAS V/34 vb.
+    }[];
+    estimatedPages: number;
+    sources?: string[];       // SOLAS, ISM, MARPOL atıfları
+  };
+}
+```
 
-- **Yeni:** `src/components/ui/LessonImage.tsx`
-- **Düzenle:** `src/components/navigation/TopicContentModal.tsx`
-- **Düzenle:** `src/components/ui/ImageViewerModal.tsx`
-- **Düzenle:** `src/data/navigationTopicContents.ts` (yerel asset eşlemeleri — sadece `image:` satırları)
-- **Düzenle:** `src/pages/BridgeDeviceDetail.tsx` (img → LessonImage)
+Her iş için içerik **kendi modül dosyasında** tutulacak: `src/data/crewTasks/{role-slug}/{task-index}.ts`. Böylece tree-shaking + lazy loading mümkün olur.
 
-## Beklenen Sonuç
+### 2. Lazy Loading ile Yükleme
 
-- Tüm ders görselleri ya yerel asset'ten ya da `weserv.nl` proxy üzerinden yüklenir → hotlink/Referer/CORS hataları ortadan kalkar.
-- Yine de yüklenemeyen tek tük görsel için, kullanıcı boş kutu yerine "Görsel yüklenemedi" placeholder'ı görür.
-- Mobil cihazlarda webp dönüşümü ile bant genişliği de düşer.
+Liste ekranında sadece `title` + `description` görünür. Kullanıcı bir işin "Detaylı Anlatımı Aç" butonuna bastığında ilgili dosya `import()` ile dinamik yüklenir. Böylece başlangıç bundle'ı şişmez.
 
-Onayınızla uygulamaya geçeyim.
+### 3. Yeni Okuma Ekranı: `CrewTaskDeepDive`
+
+Yeni route: `/crew/:roleSlug/task/:taskIndex`
+
+Özellikler:
+- Bölüm bölüm (chapter) navigasyon (sol kenar / üst sticky tabs)
+- Tahmini okuma süresi + sayfa sayısı
+- "Önceki / Sonraki bölüm" düğmeleri
+- Mevzuat atıfları için renkli callout kutuları (uyarı / referans / ipucu)
+- İlerleme çubuğu (scroll progress)
+- Mobilde okunabilir tipografi (prose, satır aralığı, max-width)
+
+### 4. İçerik Üretimi (Aşamalı)
+
+180 işin tamamını tek mesajda üretmek imkânsız. Şu yaklaşımı öneriyorum:
+
+**Faz 1 — Çatı + Pilot İçerik (bu turda yapılacak):**
+- Veri modeli + lazy loading + yeni okuma ekranı + route kurulur
+- **Pilot olarak 4 iş** seçip tam 20–30 sayfa uzunluğunda elle yazılmış içerikle doldururum:
+  - Kaptan → "Seyir emniyetinin nihai sorumluluğu"
+  - 1. Zabit → "Yük operasyonları planlama ve yürütme"
+  - Başmühendis → "Ana makine işletim sorumluluğu"
+  - Bosun (Reis) → "Güverte bakım planlaması"
+- Bu 4 iş, hem kalite şablonu hem de UI doğrulaması olur
+
+**Faz 2 — Toplu Üretim (sonraki turlarda, onayınızla):**
+- Her turda 1 rolün tüm işlerini AI Gateway ile (Gemini 2.5 Pro / GPT-5) yapılandırılmış JSON çıktı olarak üretip statik dosyaya dönüştürürüm
+- Her tur 1 rol = ~10-15 iş = ~250-400 sayfa içerik
+- 16 rol = ~16 ek tur
+
+Bu zorunlu çünkü tek mesajda üretirsek hem token aşımı olur hem de kalite kontrol edilemez.
+
+## Bu Turda Teslim Edilecekler
+
+1. `src/data/crewTasks/` klasörü + tip tanımları (`types.ts`)
+2. `crewRoleDetails.ts` içindeki tip genişletmesi (geriye uyumlu — `longForm` opsiyonel)
+3. **4 pilot iş için tam 20–30 sayfa içerik** (`kaptan/0.ts`, `birinci-zabit/X.ts`, `bas-muhendis/X.ts`, `reis-bosun/X.ts`)
+4. Yeni `CrewTaskDeepDive.tsx` sayfası + route (`App.tsx`)
+5. `CrewRoleDetail.tsx` içindeki accordion'a "Detaylı anlatımı aç →" butonu (sadece `longForm` olan işlerde görünür); olmayanlarda "Detaylı içerik hazırlanıyor" rozeti
+6. İçerik üretiminin Türkçe, doğru, mevzuat atıflı (SOLAS/ISM/MARPOL/STCW/MLC) ve denizcilik pratiğine sadık olması
+
+## Teknik Notlar
+
+- Yeni dosyalar dışında değişen dosyalar: `crewRoleDetails.ts` (tip), `App.tsx` (route), `CrewRoleDetail.tsx` (buton)
+- Bundle etkisi: pilot içerikler dynamic import ile yükleneceği için ana bundle'a eklenmez
+- Erişilebilirlik: prose tipografi + dark mode korunur, mevcut `BackButton` ve `BottomNavigation` desenleri kullanılır
+- Mevcut `crewRoleDetails.ts` (1586 satır) bozulmaz — sadece tip eklenir
+
+## Onaylarsanız sıradaki adımlar
+
+Onay sonrası bu turda yukarıdaki 6 maddeyi uygularım. Pilot 4 iş bitince diğer 176 işi rol-rol üretmek için (her tur 1 rol) yeniden onayınızı isterim. Bu tempo, hem kalite kontrolünüzü kaybetmemenizi hem de uygulamanın sağlıklı kalmasını sağlar.
