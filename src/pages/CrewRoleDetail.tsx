@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { crewRoleMap } from "@/data/crewHierarchy";
+import { hasCrewTaskLongForm } from "@/data/crewTasks/types";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
 import { ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
@@ -156,6 +157,18 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
                   <p className="pl-10 text-sm leading-relaxed text-foreground/85 dark:text-slate-300">
                     {task.description}
                   </p>
+                  {hasCrewTaskLongForm(detail.slug, i) ? (
+                    <Link
+                      to={`/crew/${detail.slug}/task/${i}`}
+                      className="ml-10 mt-3 inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20"
+                    >
+                      📖 Detaylı Anlatımı Aç (20-30 sayfa) →
+                    </Link>
+                  ) : (
+                    <span className="ml-10 mt-3 inline-flex items-center gap-1.5 rounded-lg bg-muted/40 px-3 py-1.5 text-[11px] text-muted-foreground">
+                      Detaylı anlatım yakında eklenecek
+                    </span>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
