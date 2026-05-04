@@ -139,6 +139,7 @@ import WidgetPage from "./pages/WidgetPage";
 import MaritimeNews from "./pages/MaritimeNews";
 
 import CrewRoleDetailPage from "./pages/CrewRoleDetail";
+import CrewTaskDeepDive from "./pages/CrewTaskDeepDive";
 import LessonTopicsPage from "./pages/LessonTopicsPage";
 import LessonTopicDetailPage from "./pages/LessonTopicDetailPage";
 
@@ -190,6 +191,7 @@ const AnimatedRoutes = () => {
         <Route path="/ship-operations" element={<PageTransition><ShipOperationsPage /></PageTransition>} />
         <Route path="/ship-operations/:shipType" element={<PageTransition><ShipOperationsDetail /></PageTransition>} />
         <Route path="/crew/:roleSlug" element={<PageTransition><CrewRoleDetailPage /></PageTransition>} />
+        <Route path="/crew/:roleSlug/task/:taskIndex" element={<PageTransition><CrewTaskDeepDive /></PageTransition>} />
         <Route path="/bridge/:deviceId" element={<PageTransition><BridgeDeviceDetailPage /></PageTransition>} />
         <Route path="/passage-plan" element={<PageTransition><PassagePlanPage /></PageTransition>} />
         <Route path="/ship-systems" element={<PageTransition><ShipSystemsPage /></PageTransition>} />
