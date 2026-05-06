@@ -1,97 +1,100 @@
-# Personel İşleri için Uzun-Form Detaylı Anlatım Sistemi
+## Amaç
 
-## Mevcut Durum
+Güverte (seyir, denizcilik, stabilite, emniyet, haberleşme, kargo, meteoroloji) ve Makine derslerindeki **konu anlatımları, formüller, quiz soruları ve kurallar**ı güncel uluslararası denizcilik regülasyonlarıyla (SOLAS, MARPOL, STCW, COLREG, IMO MSC/MEPC kararları, ISM, ISPS, MLC 2006, Load Lines, IMDG, IBC, IGC, MARPOL Annex VI, EEDI/EEXI/CII vb.) bire bir uyumlu hale getirmek.
 
-`src/pages/CrewRoleDetail.tsx` her personel rolü (Kaptan, 1. Zabit, Başmühendis, ETO, Aşçı vb. — toplam **16 rol**) için bir accordion listesi gösteriyor. Her rolde ortalama **10–15 iş** (`tasks[]`) var ve her iş şu an `crewRoleDetails.ts` içinde **3–6 cümlelik tek paragraflık `description`** ile tanımlı (toplam ~180 iş).
+## Kapsam (mevcut dosyalar)
 
-İstek: Her bir iş **20–30 sayfa** uzunluğunda, çok detaylı, kitap-bölümü düzeyinde anlatılsın.
+**Güverte tarafı:**
+- `src/data/navigationQuestions.ts`, `seamanshipQuestions.ts`, `stabilityQuestions.ts`, `safetyQuestions.ts`, `meteorologyQuestions.ts`, `cargoQuestions.ts`
+- `src/data/topicContents.ts`, `navigationTopicContents.ts`, `communicationTopicContents.ts`
+- `src/data/regulations/*` (IMO, safety codes, environmental, regional, survey)
+- `src/data/solas2024.ts`, `shipOperations/*`
+- `src/data/formulas/stability.json`, `hydrostatics.json`
 
-## Ölçek Gerçeği (Önemli)
+**Makine tarafı:**
+- `src/data/machineQuestions.ts`, `machineQuizData1.ts`, `machineQuizDataIndex.ts`
+- `src/data/machineTopicData.ts`, `machineTopicLessonData.ts`, `machineTopicDetailContent9.ts`
+- `src/pages/MachineTopicFormulasPage.tsx` (formül listesi)
+- `docs/gemi_makineleri.md`
 
-180 iş × 25 sayfa ≈ **4500 sayfa içerik**. Bu, statik olarak elle yazılırsa:
-- Tek dosyaya sığmaz (TS/Vite build patlatır)
-- Tek bir AI çağrısıyla üretilemez (token limiti)
-- Tek seferde gönderilirse uygulama bundle'ı 50–100 MB olur
+## Yaklaşım: 3 fazlı denetim ve düzeltme
 
-Bu nedenle **iki katmanlı** bir mimari öneriyorum: (1) içerik depolama + okuma sistemi, (2) içerik üretim altyapısı (parça parça, kontrollü).
+### Faz 1 — Regülasyon Referans Matrisi
+Her ders konusunu, ilgili olduğu yürürlükteki regülasyon maddesine eşleyen kanonik bir kaynak dosyası oluşturulur:
 
-## Mimari Plan
+`src/data/compliance/regulationMatrix.ts`
 
-### 1. Veri Modelinde Genişletme
-
-`crewRoleDetails.ts` içinde `tasks[]` türünü genişletiyoruz — kısa açıklama korunuyor (liste görünümü için), bunun yanında **opsiyonel `longForm`** alanı eklenecek:
-
-```ts
-tasks: {
-  title: string;
-  description: string;        // mevcut özet (accordion preview)
-  longForm?: {
-    chapters: {
-      heading: string;
-      sections: { subheading: string; paragraphs: string[] }[];
-      callouts?: { type: 'warning'|'reference'|'tip'; text: string }[];
-      regulations?: string[]; // SOLAS V/34 vb.
-    }[];
-    estimatedPages: number;
-    sources?: string[];       // SOLAS, ISM, MARPOL atıfları
-  };
-}
+İçerik (örnek):
+```text
+COLREG Rule 5      → seamanshipQuestions / nöbet, gözcülük
+COLREG Rule 13–18  → çatışmayı önleme soruları
+SOLAS II-1         → stabilite, hasar stabilitesi (2020 amendments)
+SOLAS II-2 Reg.10  → CO2 hacim hesabı (mCO₂ = V × 0.56)
+SOLAS III          → can kurtarma, drill periyotları
+SOLAS V            → seyir teçhizatı, ECDIS, BNWAS
+MARPOL Annex I     → OWS 15 ppm, ODMCS
+MARPOL Annex VI    → SOx (%0.5 global, %0.1 ECA), NOx Tier I/II/III
+IMO 2020 + 2023    → CII, EEXI, SEEMP Part III
+STCW A-VIII/1      → 10 saat / 24 sa, 77 saat / 7 gün dinlenme
+MLC 2006           → çalışma süreleri
+Load Lines 1966/88 → fribord, mevsim bölgeleri
+IAMSAR             → SAR prosedürleri
+IMDG / IBC / IGC   → tehlikeli yük
 ```
 
-Her iş için içerik **kendi modül dosyasında** tutulacak: `src/data/crewTasks/{role-slug}/{task-index}.ts`. Böylece tree-shaking + lazy loading mümkün olur.
+Bu matris hem denetim referansı hem de "Bu konu hangi regülasyondan geliyor?" rozeti için UI tarafından kullanılabilir.
 
-### 2. Lazy Loading ile Yükleme
+### Faz 2 — İçerik Denetimi ve Düzeltme
 
-Liste ekranında sadece `title` + `description` görünür. Kullanıcı bir işin "Detaylı Anlatımı Aç" butonuna bastığında ilgili dosya `import()` ile dinamik yüklenir. Böylece başlangıç bundle'ı şişmez.
+Her dosya için aşağıdaki adımlar:
 
-### 3. Yeni Okuma Ekranı: `CrewTaskDeepDive`
+1. **Konu anlatımları** (`*TopicContents.ts`, `machineTopicLessonData.ts`):
+   - Bahsedilen kuralın güncel versiyonu (ör. SOLAS 2020/2024 değişiklikleri, MARPOL Annex VI 2020 sülfür sınırı, EEXI/CII 2023) kontrol edilir
+   - Eski/yanlış değerler düzeltilir (örn. "MARPOL %3.5 sülfür" → "global %0.5, ECA %0.1")
+   - Her konu sonuna "Regülasyon kaynağı" bölümü eklenir (madde numarası ile)
 
-Yeni route: `/crew/:roleSlug/task/:taskIndex`
+2. **Formüller** (`MachineTopicFormulasPage.tsx`, `formulas/*.json`):
+   - EEDI/EEXI/CII formülleri MEPC.328(76) ve MEPC.336(76) ile karşılaştırılır
+   - SOLAS II-2 yangın söndürme hesapları (CO₂ %40, köpük) kontrol edilir
+   - STCW dinlenme saatleri formülleri doğrulanır
+   - Stabilite kriterleri (IS Code 2008): GM ≥ 0.15 m, GZ@30°≥ 0.20 m, GZmax ≥ 25°, vb.
+   - Yanlış/eksik formüller düzeltilir, kaynak madde eklenir
 
-Özellikler:
-- Bölüm bölüm (chapter) navigasyon (sol kenar / üst sticky tabs)
-- Tahmini okuma süresi + sayfa sayısı
-- "Önceki / Sonraki bölüm" düğmeleri
-- Mevzuat atıfları için renkli callout kutuları (uyarı / referans / ipucu)
-- İlerleme çubuğu (scroll progress)
-- Mobilde okunabilir tipografi (prose, satır aralığı, max-width)
+3. **Quiz soruları** (`*Questions.ts`):
+   - Her sorunun cevabı yürürlükteki kurala göre tekrar doğrulanır
+   - `explanation` alanına ilgili regülasyon maddesi eklenir
+   - Eski rakam/değerler güncellenir (özellikle MARPOL Annex VI, BWM, CII)
+   - Kategori bazında sayım korunur (memory: 50 soru/topic standardı)
 
-### 4. İçerik Üretimi (Aşamalı)
+4. **Kurallar/Kod listeleri** (`regulations/*`, `solas2024.ts`):
+   - Yürürlük tarihleri, son değişiklikler (amendments) güncellenir
+   - 2023–2026 IMO kararları (MEPC 80/81, MSC 107/108) eklenir
 
-180 işin tamamını tek mesajda üretmek imkânsız. Şu yaklaşımı öneriyorum:
+### Faz 3 — UI'da Regülasyon İzlenebilirliği
+- Konu kartlarına ve quiz açıklamalarına küçük "📜 SOLAS V/19" rozeti
+- Deep-dive modallarında "İlgili regülasyon" bölümü
+- Memory kuralı eklenir: *"Tüm güverte/makine içerikleri compliance/regulationMatrix.ts ile bağlantılı olmalı."*
 
-**Faz 1 — Çatı + Pilot İçerik (bu turda yapılacak):**
-- Veri modeli + lazy loading + yeni okuma ekranı + route kurulur
-- **Pilot olarak 4 iş** seçip tam 20–30 sayfa uzunluğunda elle yazılmış içerikle doldururum:
-  - Kaptan → "Seyir emniyetinin nihai sorumluluğu"
-  - 1. Zabit → "Yük operasyonları planlama ve yürütme"
-  - Başmühendis → "Ana makine işletim sorumluluğu"
-  - Bosun (Reis) → "Güverte bakım planlaması"
-- Bu 4 iş, hem kalite şablonu hem de UI doğrulaması olur
+## Teslim sırası (her tur ≈ 1 modül)
 
-**Faz 2 — Toplu Üretim (sonraki turlarda, onayınızla):**
-- Her turda 1 rolün tüm işlerini AI Gateway ile (Gemini 2.5 Pro / GPT-5) yapılandırılmış JSON çıktı olarak üretip statik dosyaya dönüştürürüm
-- Her tur 1 rol = ~10-15 iş = ~250-400 sayfa içerik
-- 16 rol = ~16 ek tur
+1. **Tur 1 — Altyapı:** `compliance/regulationMatrix.ts` + denetim raporu (`docs/regulation-audit.md`) — hangi içerikte hangi tutarsızlık var, tüm liste.
+2. **Tur 2 — Makine formülleri & lesson:** `MachineTopicFormulasPage.tsx`, `machineTopicLessonData.ts`, `machineQuestions.ts` (EEDI/EEXI/CII, SOx/NOx, SOLAS II-2 hesapları).
+3. **Tur 3 — Stabilite & hidrostatik:** IS Code 2008, SOLAS II-1 hasar stabilitesi (`stability.json`, `stabilityQuestions.ts`).
+4. **Tur 4 — Seyir & COLREG:** `navigationTopicContents.ts`, `navigationQuestions.ts`, SOLAS V.
+5. **Tur 5 — Emniyet & SAR:** SOLAS II-2/III, IAMSAR (`safetyQuestions.ts`).
+6. **Tur 6 — Denizcilik, kargo, meteoroloji, haberleşme:** kalan modüller.
+7. **Tur 7 — UI rozetleri & memory güncellemesi.**
 
-Bu zorunlu çünkü tek mesajda üretirsek hem token aşımı olur hem de kalite kontrol edilemez.
-
-## Bu Turda Teslim Edilecekler
-
-1. `src/data/crewTasks/` klasörü + tip tanımları (`types.ts`)
-2. `crewRoleDetails.ts` içindeki tip genişletmesi (geriye uyumlu — `longForm` opsiyonel)
-3. **4 pilot iş için tam 20–30 sayfa içerik** (`kaptan/0.ts`, `birinci-zabit/X.ts`, `bas-muhendis/X.ts`, `reis-bosun/X.ts`)
-4. Yeni `CrewTaskDeepDive.tsx` sayfası + route (`App.tsx`)
-5. `CrewRoleDetail.tsx` içindeki accordion'a "Detaylı anlatımı aç →" butonu (sadece `longForm` olan işlerde görünür); olmayanlarda "Detaylı içerik hazırlanıyor" rozeti
-6. İçerik üretiminin Türkçe, doğru, mevzuat atıflı (SOLAS/ISM/MARPOL/STCW/MLC) ve denizcilik pratiğine sadık olması
+Her tur sonunda kullanıcı onayı alınır; bir sonraki tura geçilir. Bu, hem doğruluk gözden geçirmenizi hem de uygulamanın stabilitesini korur.
 
 ## Teknik Notlar
 
-- Yeni dosyalar dışında değişen dosyalar: `crewRoleDetails.ts` (tip), `App.tsx` (route), `CrewRoleDetail.tsx` (buton)
-- Bundle etkisi: pilot içerikler dynamic import ile yükleneceği için ana bundle'a eklenmez
-- Erişilebilirlik: prose tipografi + dark mode korunur, mevcut `BackButton` ve `BottomNavigation` desenleri kullanılır
-- Mevcut `crewRoleDetails.ts` (1586 satır) bozulmaz — sadece tip eklenir
+- Tüm değişiklikler mevcut tip yapılarıyla uyumlu kalacak (ek alan yerine `metadata?: { regulation?: string }` gibi opsiyonel alanlar tercih edilir).
+- AI üretimi minimum tutulacak; veriler IMO/EMSA/USCG resmi yayınlarına dayandırılacak (memory kuralı ile uyumlu).
+- Hiçbir mevcut quiz silinmez; yalnızca cevap/açıklama düzeltilir → soru sayıları korunur (50/topic).
 
-## Onaylarsanız sıradaki adımlar
+## Onayınız sonrası ilk tur
 
-Onay sonrası bu turda yukarıdaki 6 maddeyi uygularım. Pilot 4 iş bitince diğer 176 işi rol-rol üretmek için (her tur 1 rol) yeniden onayınızı isterim. Bu tempo, hem kalite kontrolünüzü kaybetmemenizi hem de uygulamanın sağlıklı kalmasını sağlar.
+İlk tur olarak **regulationMatrix.ts + tam denetim raporu (`docs/regulation-audit.md`)** üretilir; rapor; her dosyada bulunan tutarsızlıkların listesini içerir. Sonraki turlarda bu rapora göre düzeltmeler uygulanır.
+
+Devam etmemi onaylar mısınız?
