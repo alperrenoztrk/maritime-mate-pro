@@ -82,15 +82,10 @@ export default function LessonTopicDetailPage() {
   }
   const fallbackContent: TopicDetailContent = {
     title: decodedTitle || "Konu Detayı",
-    introduction:
-      "Bu konu başlığı için içerik hazırlanmaktadır. Şimdilik sayfa iskeleti yayınlandı; görseller ve ayrıntılı anlatım en kısa sürede eklenecektir.",
-    sections: [
-      {
-        title: "İçerik hazırlanıyor",
-        content:
-          "Bu başlık için örnekler, tablolar ve görseller hazırlanıyor. Güncel sürümde bu sayfa, yeni içerikler eklendikçe otomatik olarak zenginleşecektir."
-      }
-    ]
+    introduction: decodedTitle
+      ? `${decodedTitle} konusuna ilişkin temel kavramlar, formüller ve uygulama örnekleri.`
+      : "Konu detayı.",
+    sections: []
   };
   const categoryContents = getTopicContentsByCategory(categoryId);
   const content = categoryContents[decodedTitle] ?? fallbackContent;
@@ -99,10 +94,11 @@ export default function LessonTopicDetailPage() {
   if (!categoryId || !decodedTitle) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">İçerik bulunamadı</p>
+        <p className="text-muted-foreground">Konu bulunamadı</p>
       </div>
     );
   }
+
 
   return (
     <div className="min-h-screen bg-background">
