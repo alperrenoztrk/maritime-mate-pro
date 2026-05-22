@@ -117,14 +117,14 @@ export default function MachineTopicLessonsPage() {
                             <Wrapper
                               key={subIndex}
                               {...linkProps}
-                              className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition-colors ${hasContent ? "border-primary/20 bg-card/60 hover:border-primary/40 hover:bg-card" : "border-transparent bg-card/60 opacity-70"}`}
+                              className="flex items-center gap-2 rounded-lg border border-primary/20 bg-card/60 px-3 py-2 text-left text-sm transition-colors hover:border-primary/40 hover:bg-card"
                             >
-                              <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${hasContent ? "bg-primary" : "bg-muted-foreground"}`} />
+                              <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                               <span className="flex-1 text-foreground/90">{sub.title}</span>
-                              {hasContent && <span className="text-xs text-primary">✓</span>}
                             </Wrapper>
                           );
                         })}
+
                       </div>
                     </div>
                   )}
