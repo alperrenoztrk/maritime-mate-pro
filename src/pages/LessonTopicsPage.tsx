@@ -661,17 +661,8 @@ export default function LessonTopicsPage() {
                             >
                               <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                               <span className="text-foreground/90 flex-1">{sub.title}</span>
-                              {(isNavigation || categoryId === "meteorology") && (
-                                <span
-                                  className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
-                                    hasContent
-                                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200"
-                                      : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200"
-                                  }`}
-                                >
-                                  {hasContent ? "İçerik var" : "Eksik"}
-                                </span>
-                              )}
+                              {/* status badge removed per request */}
+
                               <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
                             </Link>
                               );
