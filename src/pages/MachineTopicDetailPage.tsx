@@ -17,7 +17,7 @@ export default function MachineTopicDetailPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center space-y-3">
-          <p className="text-muted-foreground">İçerik hazırlanıyor...</p>
+          <p className="text-muted-foreground">{decodedTitle || "Konu detayı"}</p>
           <Link
             to={`/machine/${topicSlug}/topics`}
             className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
