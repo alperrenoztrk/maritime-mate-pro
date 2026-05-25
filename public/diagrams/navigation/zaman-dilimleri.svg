@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="system-ui,sans-serif">
+  <rect width="900" height="460" fill="#f1f5f9"/>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Zaman Dilimleri ve Boylam İlişkisi</text>
+  <text x="450" y="50" text-anchor="middle" font-size="13" fill="#475569">15° boylam = 1 saat | Greenwich = 0° başlangıç meridyeni</text>
+  <!-- world strip -->
+  <g transform="translate(60,100)">
+    <rect width="780" height="240" fill="#e2e8f0" stroke="#94a3b8"/>
+    <!-- meridians every 15° (24 strips) -->
+    <g stroke="#cbd5e1" stroke-width="1">
+      <line x1="32.5" y1="0" x2="32.5" y2="240"/>
+      <line x1="65" y1="0" x2="65" y2="240"/>
+      <line x1="97.5" y1="0" x2="97.5" y2="240"/>
+      <line x1="130" y1="0" x2="130" y2="240"/>
+      <line x1="162.5" y1="0" x2="162.5" y2="240"/>
+      <line x1="195" y1="0" x2="195" y2="240"/>
+      <line x1="227.5" y1="0" x2="227.5" y2="240"/>
+      <line x1="260" y1="0" x2="260" y2="240"/>
+      <line x1="292.5" y1="0" x2="292.5" y2="240"/>
+      <line x1="325" y1="0" x2="325" y2="240"/>
+      <line x1="357.5" y1="0" x2="357.5" y2="240"/>
+      <line x1="422.5" y1="0" x2="422.5" y2="240"/>
+      <line x1="455" y1="0" x2="455" y2="240"/>
+      <line x1="487.5" y1="0" x2="487.5" y2="240"/>
+      <line x1="520" y1="0" x2="520" y2="240"/>
+      <line x1="552.5" y1="0" x2="552.5" y2="240"/>
+      <line x1="585" y1="0" x2="585" y2="240"/>
+      <line x1="617.5" y1="0" x2="617.5" y2="240"/>
+      <line x1="650" y1="0" x2="650" y2="240"/>
+      <line x1="682.5" y1="0" x2="682.5" y2="240"/>
+      <line x1="715" y1="0" x2="715" y2="240"/>
+      <line x1="747.5" y1="0" x2="747.5" y2="240"/>
+    </g>
+    <!-- Greenwich meridian highlight -->
+    <line x1="390" y1="0" x2="390" y2="240" stroke="#dc2626" stroke-width="3"/>
+    <text x="390" y="-8" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">Greenwich 0°</text>
+    <!-- Date line -->
+    <line x1="0" y1="0" x2="0" y2="240" stroke="#7c3aed" stroke-width="3"/>
+    <line x1="780" y1="0" x2="780" y2="240" stroke="#7c3aed" stroke-width="3"/>
+    <text x="10" y="-8" font-size="12" font-weight="700" fill="#7c3aed">180° (Tarih Değiştirme Hattı)</text>
+    <!-- hour labels -->
+    <g font-size="10" fill="#0f172a" text-anchor="middle">
+      <text x="32.5" y="260">-11</text><text x="97.5" y="260">-9</text><text x="162.5" y="260">-7</text>
+      <text x="227.5" y="260">-5</text><text x="292.5" y="260">-3</text><text x="357.5" y="260">-1</text>
+      <text x="390" y="260" font-weight="700">UTC</text>
+      <text x="422.5" y="260">+1</text><text x="487.5" y="260">+3</text><text x="552.5" y="260">+5</text>
+      <text x="617.5" y="260">+7</text><text x="682.5" y="260">+9</text><text x="747.5" y="260">+11</text>
+    </g>
+    <!-- arrows -->
+    <path d="M 200 110 L 380 110" stroke="#0284c7" stroke-width="2" marker-end="url(#a2)"/>
+    <text x="290" y="100" text-anchor="middle" font-size="12" fill="#0284c7">Batı: saat geri</text>
+    <path d="M 580 130 L 400 130" stroke="#059669" stroke-width="2" marker-end="url(#a2)"/>
+    <text x="490" y="150" text-anchor="middle" font-size="12" fill="#059669">Doğu: saat ileri</text>
+    <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+  </g>
+  <text x="450" y="410" text-anchor="middle" font-size="12" fill="#475569">Dünya 24 saatte 360° döner → 1 saatte 15° → 1° boylam = 4 dakika</text>
+</svg>
