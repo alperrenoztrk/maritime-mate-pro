@@ -1,0 +1,36 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="e3" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </radialGradient>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .p{stroke:#fbbf24;stroke-width:1.6;fill:none}
+      .eq{stroke:#dc2626;stroke-width:3;fill:none}
+    </style>
+  </defs>
+  <rect width="600" height="600" fill="#f8fafc"/>
+  <text x="300" y="30" text-anchor="middle" class="ttl">Enlem Paralelleri (Küçük Daireler)</text>
+  <g transform="translate(300 310)">
+    <circle r="230" fill="url(#e3)"/>
+    <!-- Equator (great circle) -->
+    <ellipse rx="230" ry="40" class="eq"/>
+    <!-- Parallels (small circles) -->
+    <ellipse rx="222" ry="78" cy="-30" class="p"/>
+    <ellipse rx="200" ry="115" cy="-65" class="p"/>
+    <ellipse rx="160" ry="145" cy="-105" class="p"/>
+    <ellipse rx="100" ry="160" cy="-150" class="p"/>
+    <ellipse rx="222" ry="78" cy="30" class="p"/>
+    <ellipse rx="200" ry="115" cy="65" class="p"/>
+    <ellipse rx="160" ry="145" cy="105" class="p"/>
+    <ellipse rx="100" ry="160" cy="150" class="p"/>
+    <!-- Axis -->
+    <line x1="0" y1="-245" x2="0" y2="245" stroke="#0f172a" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="0" cy="-230" r="5" fill="#fbbf24"/>
+    <circle cx="0" cy="230" r="5" fill="#fbbf24"/>
+  </g>
+  <text x="300" y="560" text-anchor="middle" class="lbl">Ekvator tek büyük dairedir (R = R_dünya)</text>
+  <text x="300" y="582" text-anchor="middle" class="lbl">Diğer tüm paraleller küçük dairelerdir: r = R · cos(φ)</text>
+</svg>

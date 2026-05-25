@@ -1,0 +1,44 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="earth" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#5ba3d0"/>
+      <stop offset="60%" stop-color="#1e4d72"/>
+      <stop offset="100%" stop-color="#0a2540"/>
+    </radialGradient>
+    <style>
+      .lbl{font:14px sans-serif;fill:#0a2540;font-weight:600}
+      .axis{stroke:#dc2626;stroke-width:2.5;fill:none}
+      .merid{stroke:#1e3a8a;stroke-width:1.2;fill:none;opacity:.65}
+      .para{stroke:#1e3a8a;stroke-width:1.2;fill:none;opacity:.65}
+    </style>
+  </defs>
+  <rect width="600" height="600" fill="#f8fafc"/>
+  <text x="300" y="32" text-anchor="middle" class="lbl" font-size="18">Coğrafi Koordinat Sistemi</text>
+  <g transform="translate(300 310)">
+    <circle r="220" fill="url(#earth)"/>
+    <!-- Parallels (ellipses) -->
+    <ellipse rx="220" ry="35" class="para"/>
+    <ellipse rx="210" ry="70" class="para"/>
+    <ellipse rx="195" ry="105" class="para"/>
+    <ellipse rx="170" ry="140" class="para"/>
+    <ellipse rx="135" ry="170" class="para"/>
+    <!-- Meridians -->
+    <ellipse rx="35" ry="220" class="merid"/>
+    <ellipse rx="80" ry="220" class="merid"/>
+    <ellipse rx="130" ry="220" class="merid"/>
+    <ellipse rx="180" ry="220" class="merid"/>
+    <!-- Equator highlight -->
+    <ellipse rx="220" ry="35" stroke="#dc2626" stroke-width="3" fill="none"/>
+    <!-- Prime meridian -->
+    <ellipse rx="3" ry="220" stroke="#dc2626" stroke-width="3" fill="none"/>
+    <!-- Axis -->
+    <line x1="0" y1="-245" x2="0" y2="245" class="axis" stroke-dasharray="4 4"/>
+    <!-- Poles -->
+    <circle cx="0" cy="-220" r="5" fill="#fbbf24"/>
+    <circle cx="0" cy="220" r="5" fill="#fbbf24"/>
+  </g>
+  <text x="300" y="55" text-anchor="middle" class="lbl" fill="#dc2626">Ekvator (0° enlem) ve Greenwich Meridyeni (0° boylam)</text>
+  <text x="300" y="80" text-anchor="middle" class="lbl">Paraleller (yatay) enlem · Meridyenler (dikey) boylam</text>
+  <text x="300" y="555" text-anchor="middle" class="lbl">Kuzey Kutbu: +90° N · Güney Kutbu: 90° S</text>
+  <text x="300" y="575" text-anchor="middle" class="lbl">Boylam: 180° W → 0° → 180° E</text>
+</svg>

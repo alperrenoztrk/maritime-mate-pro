@@ -1,0 +1,41 @@
+<svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="100%" r="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <style>
+      .lbl{font:13px sans-serif;fill:#fff;font-weight:600}
+      .lbl2{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+    </style>
+  </defs>
+  <rect width="700" height="500" fill="#fff"/>
+  <text x="350" y="28" text-anchor="middle" class="ttl">Enlem ve Kutup Yıldızı Yüksekliği</text>
+  <!-- Sky dome -->
+  <path d="M 50 380 A 300 300 0 0 1 650 380 Z" fill="url(#sky)"/>
+  <!-- Horizon -->
+  <line x1="40" y1="380" x2="660" y2="380" stroke="#92400e" stroke-width="3"/>
+  <text x="55" y="397" class="lbl2">Ufuk</text>
+  <!-- Observer -->
+  <circle cx="350" cy="380" r="6" fill="#dc2626"/>
+  <text x="360" y="397" class="lbl2">Gözlemci</text>
+  <!-- Polaris -->
+  <g transform="translate(485 215)">
+    <polygon points="0,-12 3,-3 12,0 3,3 0,12 -3,3 -12,0 -3,-3" fill="#fbbf24"/>
+    <text x="14" y="4" class="lbl">Kutup Yıldızı (Polaris)</text>
+  </g>
+  <!-- Line of sight -->
+  <line x1="350" y1="380" x2="485" y2="215" stroke="#fbbf24" stroke-width="2"/>
+  <!-- Horizontal reference -->
+  <line x1="350" y1="380" x2="540" y2="380" stroke="#fff" stroke-width="1" stroke-dasharray="4 3"/>
+  <!-- Altitude arc -->
+  <path d="M 410 380 A 60 60 0 0 0 396 343" stroke="#16a34a" stroke-width="2.5" fill="none"/>
+  <text x="420" y="355" class="lbl" fill="#16a34a">h = φ</text>
+  <!-- Formula -->
+  <g transform="translate(40 420)">
+    <rect width="620" height="60" rx="6" fill="#f1f5f9" stroke="#0f172a"/>
+    <text x="20" y="25" class="lbl2">Pratik kural: Kutup Yıldızı'nın ufuktan yüksekliği ≈ gözlemcinin enlemi (φ)</text>
+    <text x="20" y="48" class="lbl2">Düzeltme: φ = Ho − (q · cos(LHA)) — Nautical Almanac'tan q tablosu</text>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .para{stroke:#0891b2;stroke-width:1.5;fill:none}
+      .merid{stroke:#7c3aed;stroke-width:1.5;fill:none}
+      .eq{stroke:#dc2626;stroke-width:3;fill:none}
+      .pm{stroke:#dc2626;stroke-width:3;fill:none}
+    </style>
+  </defs>
+  <rect width="700" height="500" fill="#fff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Paraleller ve Meridyenler</text>
+  <!-- Mercator-style grid -->
+  <g transform="translate(50 60)">
+    <rect width="600" height="380" fill="#e0f2fe" stroke="#0f172a"/>
+    <!-- Parallels -->
+    <line x1="0" y1="38" x2="600" y2="38" class="para"/>
+    <line x1="0" y1="95" x2="600" y2="95" class="para"/>
+    <line x1="0" y1="190" x2="600" y2="190" class="eq"/>
+    <line x1="0" y1="285" x2="600" y2="285" class="para"/>
+    <line x1="0" y1="342" x2="600" y2="342" class="para"/>
+    <!-- Meridians -->
+    <line x1="100" y1="0" x2="100" y2="380" class="merid"/>
+    <line x1="200" y1="0" x2="200" y2="380" class="merid"/>
+    <line x1="300" y1="0" x2="300" y2="380" class="pm"/>
+    <line x1="400" y1="0" x2="400" y2="380" class="merid"/>
+    <line x1="500" y1="0" x2="500" y2="380" class="merid"/>
+    <!-- Labels -->
+    <text x="-5" y="42" text-anchor="end" class="lbl">60°N</text>
+    <text x="-5" y="99" text-anchor="end" class="lbl">30°N</text>
+    <text x="-5" y="194" text-anchor="end" class="lbl" fill="#dc2626">0° Ekvator</text>
+    <text x="-5" y="289" text-anchor="end" class="lbl">30°S</text>
+    <text x="-5" y="346" text-anchor="end" class="lbl">60°S</text>
+    <text x="100" y="395" text-anchor="middle" class="lbl">60°W</text>
+    <text x="200" y="395" text-anchor="middle" class="lbl">30°W</text>
+    <text x="300" y="395" text-anchor="middle" class="lbl" fill="#dc2626">0° Greenwich</text>
+    <text x="400" y="395" text-anchor="middle" class="lbl">30°E</text>
+    <text x="500" y="395" text-anchor="middle" class="lbl">60°E</text>
+    <!-- Sample point -->
+    <circle cx="350" cy="118" r="6" fill="#dc2626"/>
+    <text x="362" y="115" class="lbl">P (24°N, 15°E)</text>
+  </g>
+  <text x="350" y="475" text-anchor="middle" class="lbl">Paraleller (mavi) = enlem · Meridyenler (mor) = boylam · Kesişim noktası = tekil mevki</text>
+</svg>

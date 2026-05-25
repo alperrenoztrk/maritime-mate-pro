@@ -11,14 +11,14 @@ const earthTimezone1 = "/diagrams/navigation/zaman-dilimleri.svg";
 const earthTimezone2 = "/diagrams/navigation/zaman-dilimleri.svg";
 
 
-// Import images - Coğrafi Koordinat Sistemi
-import coordinateSystem1 from "@/assets/navigation/coordinate-system-1.jpg";
-import coordinateSystem2 from "@/assets/navigation/coordinate-system-2.jpg";
-import coordinateSystem3 from "@/assets/navigation/coordinate-system-3.jpg";
-import latitudeParallels from "@/assets/navigation/latitude-parallels.jpg";
-import latitudeConcept from "@/assets/navigation/latitude-concept.jpg";
-import latitudeMeasurement1 from "@/assets/navigation/latitude-measurement-1.jpg";
-import latitudeMeasurement2 from "@/assets/navigation/latitude-measurement-2.jpg";
+// Coğrafi Koordinat Sistemi + Enlem — Tur 2: Teknik SVG diyagramlar (AI görseller değiştirildi)
+const coordinateSystem1 = "/diagrams/navigation/koordinat-sistemi.svg";
+const coordinateSystem2 = "/diagrams/navigation/paraleller-meridyenler.svg";
+const coordinateSystem3 = "/diagrams/navigation/enlem-bolgeleri.svg";
+const latitudeParallels = "/diagrams/navigation/enlem-paralelleri.svg";
+const latitudeConcept = "/diagrams/navigation/enlem-tanimi.svg";
+const latitudeMeasurement1 = "/diagrams/navigation/enlem-gokyuzu.svg";
+const latitudeMeasurement2 = "/diagrams/navigation/enlem-gokyuzu.svg";
 import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import longitudeTime1 from "@/assets/navigation/longitude-time-1.png";
 import longitudeTime2 from "@/assets/navigation/longitude-time-2.png";
@@ -26,13 +26,13 @@ import chartPlotting from "@/assets/navigation/chart-plotting.jpg";
 import longitudeDistance1 from "@/assets/navigation/longitude-distance-1.jpg";
 import longitudeDistance2 from "@/assets/navigation/longitude-distance-2.jpg";
 
-// Import images - Enlem
-import enlemParallels from "@/assets/navigation/enlem-parallels.jpg";
-import enlemDefinition from "@/assets/navigation/enlem-definition.jpg";
-import enlemRegions from "@/assets/navigation/enlem-regions.jpg";
-import enlemNauticalMile from "@/assets/navigation/enlem-nautical-mile.jpg";
-import enlemPlaneSailing from "@/assets/navigation/enlem-plane-sailing.jpg";
-import enlemNewOrleans from "@/assets/navigation/enlem-new-orleans.jpg";
+// Enlem — Tur 2 teknik diyagramlar
+const enlemParallels = "/diagrams/navigation/enlem-paralelleri.svg";
+const enlemDefinition = "/diagrams/navigation/enlem-tanimi.svg";
+const enlemRegions = "/diagrams/navigation/enlem-bolgeleri.svg";
+const enlemNauticalMile = "/diagrams/navigation/deniz-mili.svg";
+const enlemPlaneSailing = "/diagrams/navigation/duzlem-seyir.svg";
+const enlemNewOrleans = "/diagrams/navigation/enlem-bolgeleri.svg";
 
 // Import images - Boylam
 import boylamWorldMap from "@/assets/navigation/boylam-world-map.jpg";

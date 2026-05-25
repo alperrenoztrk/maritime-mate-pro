@@ -1,0 +1,38 @@
+<svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="e2" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </radialGradient>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+    </style>
+  </defs>
+  <rect width="600" height="500" fill="#f8fafc"/>
+  <text x="300" y="30" text-anchor="middle" class="ttl">Enlemin Tanımı (φ)</text>
+  <g transform="translate(300 260)">
+    <circle r="180" fill="url(#e2)"/>
+    <!-- Equatorial plane -->
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="#dc2626" stroke-width="2.5"/>
+    <text x="205" y="5" class="lbl" fill="#dc2626">Ekvator düzlemi</text>
+    <!-- Center -->
+    <circle r="4" fill="#0f172a"/>
+    <text x="-25" y="16" class="lbl">O</text>
+    <!-- Radius to point P at lat 40° -->
+    <line x1="0" y1="0" x2="138" y2="-116" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="138" cy="-116" r="6" fill="#dc2626"/>
+    <text x="148" y="-118" class="lbl">P (gözlemci)</text>
+    <!-- Projection on equator -->
+    <line x1="138" y1="-116" x2="138" y2="0" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <!-- Angle arc -->
+    <path d="M 50 0 A 50 50 0 0 0 38.3 -32.1" stroke="#16a34a" stroke-width="2.5" fill="none"/>
+    <text x="62" y="-20" class="lbl" fill="#16a34a">φ = 40°N</text>
+    <!-- Axis -->
+    <line x1="0" y1="-200" x2="0" y2="200" stroke="#0f172a" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="6" y="-190" class="lbl">N</text>
+    <text x="6" y="205" class="lbl">S</text>
+  </g>
+  <text x="300" y="460" text-anchor="middle" class="lbl">Enlem (φ): Bir noktanın yarıçapı ile ekvator düzlemi arasındaki açı</text>
+  <text x="300" y="482" text-anchor="middle" class="lbl">Ekvator → 0° · Kutup → 90° · Kuzey (+) / Güney (−)</text>
+</svg>
