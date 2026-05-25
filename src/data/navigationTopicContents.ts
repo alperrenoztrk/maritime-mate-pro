@@ -1,13 +1,15 @@
 // Navigation topic detailed content
-// Import images - Dünya'nın Şekli
-import earthShape1 from "@/assets/navigation/earth-shape-1.jpg";
-import earthShape2 from "@/assets/navigation/earth-shape-2.jpg";
-import earthOblate from "@/assets/navigation/earth-oblate.jpg";
-import earthRotation from "@/assets/navigation/earth-rotation.jpg";
-import earthTilt from "@/assets/navigation/earth-tilt.jpg";
-import earthSeasons from "@/assets/navigation/earth-seasons.jpg";
-import earthTimezone1 from "@/assets/navigation/earth-timezone-1.png";
-import earthTimezone2 from "@/assets/navigation/earth-timezone-2.png";
+// Import images - Dünya'nın Şekli (gerçek NASA fotoğrafları + teknik SVG diyagramlar)
+import earthBlueMarble from "@/assets/navigation/real/earth-blue-marble.jpg";
+import earthNightLights from "@/assets/navigation/real/earth-night-lights.jpg";
+const earthOblate = earthBlueMarble; // NASA Apollo-tip Earth görüntüsü
+const earthShape1 = earthBlueMarble;
+const earthRotation = earthNightLights;
+const earthTilt = "/diagrams/navigation/eksen-egikligi.svg";
+const earthSeasons = "/diagrams/navigation/mevsimler.svg";
+const earthTimezone1 = "/diagrams/navigation/zaman-dilimleri.svg";
+const earthTimezone2 = "/diagrams/navigation/zaman-dilimleri.svg";
+
 
 // Import images - Coğrafi Koordinat Sistemi
 import coordinateSystem1 from "@/assets/navigation/coordinate-system-1.jpg";
