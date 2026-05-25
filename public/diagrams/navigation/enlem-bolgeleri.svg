@@ -1,0 +1,42 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </radialGradient>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .ln{stroke:#dc2626;stroke-width:2;fill:none}
+      .ln2{stroke:#f59e0b;stroke-width:1.5;fill:none;stroke-dasharray:4 4}
+    </style>
+  </defs>
+  <rect width="600" height="600" fill="#f8fafc"/>
+  <text x="300" y="30" text-anchor="middle" class="ttl">Enlem Bölgeleri</text>
+  <g transform="translate(300 320)">
+    <circle r="230" fill="url(#g)"/>
+    <!-- Equator -->
+    <ellipse rx="230" ry="0" class="ln"/>
+    <!-- Tropics (~23.5°) -->
+    <ellipse rx="225" ry="0" cy="-92" class="ln2"/>
+    <ellipse rx="225" ry="0" cy="92" class="ln2"/>
+    <!-- Polar circles (~66.5°) -->
+    <ellipse rx="92" ry="0" cy="-211" class="ln2"/>
+    <ellipse rx="92" ry="0" cy="211" class="ln2"/>
+    <!-- Pole markers -->
+    <circle cx="0" cy="-230" r="4" fill="#fbbf24"/>
+    <circle cx="0" cy="230" r="4" fill="#fbbf24"/>
+  </g>
+  <!-- Labels right side -->
+  <text x="540" y="100" text-anchor="end" class="lbl">Kuzey Kutbu 90°N</text>
+  <text x="540" y="135" text-anchor="end" class="lbl">Kuzey Kutup Dairesi 66.5°N</text>
+  <text x="540" y="218" text-anchor="end" class="lbl">Yengeç Dönencesi 23.5°N</text>
+  <text x="540" y="325" text-anchor="end" class="lbl" fill="#dc2626">Ekvator 0°</text>
+  <text x="540" y="418" text-anchor="end" class="lbl">Oğlak Dönencesi 23.5°S</text>
+  <text x="540" y="500" text-anchor="end" class="lbl">Güney Kutup Dairesi 66.5°S</text>
+  <text x="540" y="540" text-anchor="end" class="lbl">Güney Kutbu 90°S</text>
+  <!-- Region bands left -->
+  <text x="60" y="220" class="lbl">Kuzey ılıman</text>
+  <text x="60" y="325" class="lbl" fill="#dc2626">Tropik kuşak</text>
+  <text x="60" y="420" class="lbl">Güney ılıman</text>
+</svg>

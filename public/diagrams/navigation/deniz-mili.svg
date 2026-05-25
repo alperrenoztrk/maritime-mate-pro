@@ -1,0 +1,44 @@
+<svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .arc{stroke:#1e3a8a;stroke-width:2;fill:none}
+      .rad{stroke:#7c3aed;stroke-width:1.5;fill:none}
+      .hi{stroke:#dc2626;stroke-width:3;fill:none}
+    </style>
+  </defs>
+  <rect width="700" height="500" fill="#fff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">1 Dakika Enlem = 1 Deniz Mili (1852 m)</text>
+  <g transform="translate(180 260)">
+    <!-- Earth quarter -->
+    <path d="M 0 0 L 250 0 A 250 250 0 0 0 0 -250 Z" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+    <!-- Center -->
+    <circle r="4" fill="#0f172a"/>
+    <text x="-12" y="14" class="lbl">O (merkez)</text>
+    <!-- Radius -->
+    <line x1="0" y1="0" x2="250" y2="0" class="rad"/>
+    <line x1="0" y1="0" x2="245.7" y2="-45" class="rad"/>
+    <!-- Highlighted 1° arc -->
+    <path d="M 250 0 A 250 250 0 0 0 245.7 -45" class="hi"/>
+    <!-- Angle marker -->
+    <path d="M 40 0 A 40 40 0 0 0 39.3 -7.2" stroke="#dc2626" stroke-width="2" fill="none"/>
+    <text x="55" y="-5" class="lbl" fill="#dc2626">1°</text>
+    <!-- Labels -->
+    <text x="260" y="5" class="lbl">Ekvator</text>
+    <text x="255" y="-50" class="lbl">+1° kuzey</text>
+    <!-- Arc length label -->
+    <text x="260" y="-25" class="lbl" fill="#dc2626">60 NM</text>
+  </g>
+  <!-- Formula box -->
+  <g transform="translate(380 100)">
+    <rect width="280" height="180" rx="8" fill="#f1f5f9" stroke="#0f172a"/>
+    <text x="140" y="30" text-anchor="middle" class="lbl" font-size="15">Temel İlişki</text>
+    <text x="20" y="65" class="lbl">1° enlem = 60 NM</text>
+    <text x="20" y="90" class="lbl">1′ (dakika) enlem = 1 NM</text>
+    <text x="20" y="115" class="lbl">1 NM = 1852 m</text>
+    <text x="20" y="140" class="lbl">1 NM ≈ 1.151 statute mile</text>
+    <text x="20" y="165" class="lbl">Harita ölçeği: enlem kenarı</text>
+  </g>
+  <text x="350" y="460" text-anchor="middle" class="lbl">Harita üzerinde mesafe daima dikey (enlem) kenardan ölçülür — boylam kenarı yanıltır.</text>
+</svg>

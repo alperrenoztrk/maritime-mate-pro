@@ -1,0 +1,51 @@
+<svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .grid{stroke:#cbd5e1;stroke-width:1;fill:none}
+      .track{stroke:#dc2626;stroke-width:3;fill:none}
+    </style>
+  </defs>
+  <rect width="700" height="500" fill="#fff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Düzlem Seyir Üçgeni</text>
+  <g transform="translate(70 70)">
+    <!-- grid -->
+    <rect width="500" height="350" fill="#f0f9ff" stroke="#0f172a"/>
+    <g class="grid">
+      <line x1="0" y1="70" x2="500" y2="70"/>
+      <line x1="0" y1="140" x2="500" y2="140"/>
+      <line x1="0" y1="210" x2="500" y2="210"/>
+      <line x1="0" y1="280" x2="500" y2="280"/>
+      <line x1="100" y1="0" x2="100" y2="350"/>
+      <line x1="200" y1="0" x2="200" y2="350"/>
+      <line x1="300" y1="0" x2="300" y2="350"/>
+      <line x1="400" y1="0" x2="400" y2="350"/>
+    </g>
+    <!-- Right triangle: A bottom-left, B bottom-right (departure), C top -->
+    <line x1="60" y1="290" x2="420" y2="290" stroke="#7c3aed" stroke-width="2.5"/>
+    <line x1="420" y1="290" x2="420" y2="80" stroke="#0891b2" stroke-width="2.5"/>
+    <line x1="60" y1="290" x2="420" y2="80" class="track"/>
+    <!-- Right angle -->
+    <rect x="408" y="278" width="12" height="12" fill="none" stroke="#0f172a"/>
+    <!-- Course angle at A -->
+    <path d="M 95 290 A 35 35 0 0 0 88 269" stroke="#16a34a" stroke-width="2" fill="none"/>
+    <text x="105" y="278" class="lbl" fill="#16a34a">C (rota)</text>
+    <!-- Points -->
+    <circle cx="60" cy="290" r="5" fill="#0f172a"/>
+    <text x="38" y="305" class="lbl">A</text>
+    <circle cx="420" cy="80" r="5" fill="#0f172a"/>
+    <text x="430" y="78" class="lbl">B</text>
+    <circle cx="420" cy="290" r="5" fill="#0f172a"/>
+    <text x="430" y="305" class="lbl">B′</text>
+    <!-- Side labels -->
+    <text x="240" y="308" class="lbl" fill="#7c3aed" text-anchor="middle">Dep (departure, NM)</text>
+    <text x="438" y="190" class="lbl" fill="#0891b2">dLat (NM)</text>
+    <text x="200" y="170" class="lbl" fill="#dc2626" transform="rotate(-30 200 170)">Distance (mesafe)</text>
+  </g>
+  <!-- Formulas -->
+  <g transform="translate(80 440)">
+    <text class="lbl">dLat = D · cos(C) · · · Dep = D · sin(C) · · · DLong = Dep / cos(L_orta)</text>
+  </g>
+  <text x="350" y="478" text-anchor="middle" class="lbl">Düzlem seyir kısa mesafelerde geçerlidir; Dünya düz kabul edilir.</text>
+</svg>
