@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 // Some remixed/deployed environments can intermittently miss Vite-injected env vars.
 // We keep a safe fallback so the app never boots with an undefined supabaseUrl.
@@ -14,7 +15,7 @@ export const backendPublishableKey =
 // database table types (Database.public.Tables is `never`).
 export const supabase = createClient(backendUrl, backendPublishableKey, {
   auth: {
-    storage: localStorage,
+    storage: safeLocalStorage,
     persistSession: true,
     autoRefreshToken: true,
   },
