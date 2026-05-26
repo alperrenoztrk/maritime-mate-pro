@@ -26,39 +26,25 @@ function Root() {
   );
 }
 
-// Start preloading weather data during splash screen
-console.log('🌤️ [Main] Hava durumu preload başlatılıyor...');
-weatherPreloader.preloadWeatherData();
+// Background weather preload — never blocks the splash screen.
+try {
+  weatherPreloader.preloadWeatherData();
+} catch (e) {
+  console.warn('[Main] Weather preload başlatılamadı:', e);
+}
 
 createRoot(container).render(<Root />);
 
-// Hide splash screen only after weather data is preloaded or timeout
 const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
-    console.log('✅ [Main] Splash screen gizleniyor...');
     splash.classList.add('splash-hide');
-    // Remove from DOM after transition
-    setTimeout(() => splash.remove(), 600);
+    setTimeout(() => splash.remove(), 400);
   }
 };
 
-// Wait for preload to complete or timeout
-const checkPreloadStatus = () => {
-  if (weatherPreloader.isPreloadComplete()) {
-    console.log('✅ [Main] Hava durumu preload tamamlandı, splash screen gizleniyor');
-    setTimeout(hideSplash, 500); // Short delay for smooth transition
-  } else {
-    // Check again in 100ms
-    setTimeout(checkPreloadStatus, 100);
-  }
-};
+// Hide as soon as React mounts (effectively immediate).
+requestAnimationFrame(() => setTimeout(hideSplash, 100));
 
-// Start checking after minimum splash time (600ms)
-setTimeout(checkPreloadStatus, 600);
-
-// GUARANTEED: Force hide after 2.5 seconds max
-setTimeout(() => {
-  console.log('⏱️ [Main] Splash screen timeout kontrolü...');
-  hideSplash();
-}, 2500);
+// Hard safety net in case the rAF callback never fires.
+setTimeout(hideSplash, 1200);
