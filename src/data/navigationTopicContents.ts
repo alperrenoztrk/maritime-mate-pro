@@ -11663,6 +11663,82 @@ Kesişim noktası = Running Fix (10:30)
       "Yedek > 200 m = baklava; balıkçı = uçları birbirine bakan iki koni.",
     ]
   },
+  "Dar kanallar ve trafik ayırım düzenleri (Kural 9-10)": {
+    title: "Dar Kanallar (Kural 9) ve Trafik Ayırım Düzenleri (Kural 10)",
+    introduction:
+      "COLREG Kural 9 ve 10, sınırlı seyir alanlarında çatışma riskini azaltan özel davranış kurallarıdır. Kural 9 dar kanal ve su yollarında, Kural 10 ise IMO tarafından kabul edilmiş trafik ayırım düzenlerinde (Traffic Separation Scheme, TSS) uygulanır. Bu kurallar, manevra hiyerarşisinden (Kural 18) bağımsız olarak belirli gemilere 'engel olmama' (not to impede) yükümlülüğü getirir.",
+    sections: [
+      {
+        title: "Kural 9 — Dar Kanallar",
+        content:
+          "Dar bir kanal veya su yolunda seyreden gemi, güvenli ve uygulanabilir olduğu sürece kanalın sancak tarafındaki dış sınırına yakın seyreder. 20 m'den kısa gemiler, yelkenli gemiler ve balıkçı gemileri, yalnızca kanal içinde güvenle seyredebilen bir geminin geçişini engellemez. Bir gemi, ancak böyle bir geminin güvenli geçişini engellemiyorsa dar kanalı geçebilir; şüphe halinde geçişi etkilenen gemi beş kısa ve hızlı düdükle (Kural 34(d)) uyarı verir.",
+        bulletPoints: [
+          "Kanalın sancak dış sınırına yakın seyret (Kural 9(a)).",
+          "< 20 m, yelkenli ve balıkçı gemiler kanal içi geminin geçişini engellemez (9(b), 9(c)).",
+          "Görüşü kapayan dönemeçlere yaklaşırken bir uzun düdük; karşıdan gelen bir uzun düdükle cevap verir (Kural 9(f)).",
+          "Dar kanalda geçme (overtaking): geçen gemi 2 uzun + 1 kısa (sancaktan) veya 2 uzun + 2 kısa (iskeleden) çalar; geçilen gemi onay için 1 uzun-1 kısa-1 uzun-1 kısa çalar (Kural 9(e), 34(c)).",
+          "Mümkünse dar kanalda demirlemekten kaçın (Kural 9(g)).",
+        ],
+      },
+      {
+        title: "Kural 10 — Trafik Ayırım Düzenleri (TSS)",
+        content:
+          "Kural 10, IMO tarafından kabul edilen trafik ayırım düzenlerinde uygulanır; ancak gemiyi diğer kurallardaki yükümlülüklerinden muaf tutmaz. Düzeni kullanan gemi, uygun trafik şeridinde trafiğin genel akış yönünde ilerler; ayırım hattından veya ayırım bölgesinden uzak durur. Şeride yanlardan girerken/çıkarken mümkün olan en küçük açıyla, uçlardan ise normal şekilde girer/çıkar. Şeridi geçmek zorunda kalınırsa, genel trafik akış yönüne mümkün olduğunca dik bir pruva ile geçilir.",
+        bulletPoints: [
+          "Uygun şeritte, trafiğin genel akış yönünde seyret; ayırım hattı/bölgesinden uzak dur (10(b)).",
+          "Şeridi geçmek zorundaysan akış yönüne mümkün olduğunca DİK pruva ile geç (10(c)).",
+          "Kıyı trafik bölgesini (inshore traffic zone) normalde geçiş trafiği kullanmaz; < 20 m, yelkenli, balıkçı ve acil durumdaki gemiler kullanabilir (10(d)).",
+          "TSS'yi kullanmayan gemi, düzenden mümkün olduğunca geniş bir mesafeyle kaçınır (10(h)).",
+          "Balıkçı, < 20 m ve yelkenli gemiler bir şeridi takip eden geminin güvenli geçişini engellemez (10(i), 10(j)).",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Kural 9: sancak dış sınıra yakın seyret; dönemeçte bir uzun düdük.",
+      "< 20 m, yelkenli ve balıkçı gemiler kanal/şerit içi geminin geçişini engellemez.",
+      "Kural 10: akış yönünde seyret; geçmek zorundaysan akışa dik pruva ile geç.",
+      "Bu kurallar 'engel olmama' yükümlülüğü getirir; yol verme hiyerarşisinden bağımsızdır.",
+    ]
+  },
+  "SOLAS V seyir cihazı taşıma gereklilikleri": {
+    title: "SOLAS V/19: Seyir Cihazı Taşıma Gereklilikleri",
+    introduction:
+      "SOLAS Bölüm V Kural 19, gemilerde bulundurulması zorunlu seyir sistem ve cihazlarını gemi tonajına ve tipine göre belirler. Eşik değerler (GT) ezberlenmesi gereken temel köprüüstü bilgisidir; donanım, geminin tonajı büyüdükçe artar. Aşağıdaki listeler ilgili eşiğe ve daha büyük gemilere uygulanır.",
+    sections: [
+      {
+        title: "Tonaja Göre Taşıma Eşikleri",
+        content:
+          "Cihaz gereklilikleri kümülatiftir: bir gemi kendi eşiğinin ve altındaki tüm eşiklerin donanımını taşır. Yolcu gemileri, tonajdan bağımsız olarak yük gemisi eşiklerinin çoğuna tabidir.",
+        bulletPoints: [
+          "Tüm gemiler (boy/tonaj fark etmeksizin): manyetik pusula, kerteriz aleti (pelorus), hakiki yöne çevirme imkânı, deniz haritaları ve yayınlar (ECDIS kabul edilir) + yedek, GNSS/karasal seyir alıcısı.",
+          "≥ 150 GT: yedek manyetik pusula, gündüz işaret feneri (daylight signalling lamp).",
+          "≥ 300 GT ve tüm yolcu gemileri: 9 GHz (X-bant) radar, ARPA/otomatik iz sürme yardımcısı, iskandil cihazı (echo sounder), su içi hız/mesafe cihazı (log).",
+          "AIS: uluslararası seferde ≥ 300 GT, uluslararası olmayan seferde ≥ 500 GT ve tüm yolcu gemileri.",
+          "≥ 500 GT: cayro pusula + cayro yön/kerteriz tekrarlayıcıları, dümen açı göstergesi, pervane devir/hatve göstergesi.",
+          "≥ 3000 GT: ikinci ve bağımsız radar (tercihen 3 GHz S-bant) ve ikinci ARPA.",
+          "≥ 10000 GT: tam ARPA.",
+          "≥ 50000 GT: dönüş hızı (rate-of-turn, ROT) göstergesi ve yer üstü (over-ground) çift eksenli hız/mesafe cihazı.",
+        ],
+      },
+      {
+        title: "Aşamalı/Tip Bazlı Cihazlar",
+        content:
+          "Bazı cihazlar tonajın yanı sıra gemi tipi ve inşa tarihine göre aşamalı olarak zorunlu kılınmıştır.",
+        bulletPoints: [
+          "ECDIS: zorunlu taşıma gemi tipi ve büyüklüğüne göre 2012-2018 arasında kademeli getirildi (faz tamamlandı; 2018).",
+          "BNWAS (Köprüüstü Seyir Vardiyası Alarm Sistemi): yük gemilerinde ≥ 150 GT ve yolcu gemilerinde (SOLAS V/19.2.2.3).",
+          "VDR (Voyage Data Recorder): yolcu gemileri ve ≥ 3000 GT yük gemileri; mevcut yük gemilerinde S-VDR kabul edilir (SOLAS V/20).",
+          "LRIT (Uzun Menzilli Tanımlama ve İzleme): uluslararası seferdeki yolcu gemileri, ≥ 300 GT yük gemileri ve MODU'lar (SOLAS V/19-1).",
+        ],
+      },
+    ],
+    keyPoints: [
+      "≥ 300 GT ve tüm yolcu gemileri: 9 GHz radar, ARPA, iskandil, hız logu, AIS.",
+      "≥ 500 GT: cayro pusula ve tekrarlayıcıları; ≥ 3000 GT: ikinci bağımsız radar.",
+      "≥ 50000 GT: ROT göstergesi + yer üstü çift eksenli hız cihazı.",
+      "ECDIS faz-geçişi 2018'de tamamlandı; BNWAS ≥ 150 GT yük ve yolcu gemilerinde.",
+    ]
+  },
   "Gerçek çatışma kazaları": {
     title: "Gerçek Çatışma Kazaları: Vaka İncelemeleri",
     introduction:

@@ -722,7 +722,7 @@ Zorunlu donanım listesi (kısmi):
 - Pusula ve deniz haritası
 - Yiyecek (10.000 kJ/kişi) ve tatlı su (3 litre/kişi)
 - İlk yardım seti
-- Piroteknik işaretler (6 paraşüt fişeği, 4 el meşalesi, 2 yüzen duman işareti)
+- Piroteknik işaretler (4 paraşüt fişeği, 6 el meşalesi, 2 yüzen duman işareti — LSA Code 4.4.8)
 - Radar reflektörü veya SART
 - El feneri ve pil
 - Denizaltı fişeği (2 adet)
@@ -811,7 +811,14 @@ Performans gereksinimleri: Bilinci kapalı kişiyi 5 saniye içinde ağzı su y�
 
 CAN SİMİDİ (LIFE BUOY):
 
-Minimum 4 can simidi zorunludur (gemi uzunluğuna göre artabilir). En az 2 adedi her bordada, hızla denize bırakılabilir konumda. En az 2 adedi MOB ışığı ve otomatik duman işareti ile donatılmış. En az 1 adedi 30 metre halatlı (buoyant line).
+Asgari can simidi sayısı gemi boyuna göre belirlenir. En az 2 adedi her bordada, hızla denize bırakılabilir konumda. En az yarısı MOB (man-overboard) ışığı ile, en az 2 adedi ayrıca otomatik duman işareti ile donatılmış olmalı; en az 1 adedi 30 metre yüzer halatlı (buoyant line) olmalıdır.
+
+Asgari sayı tablosu (SOLAS III):
+- Yük gemileri (Kural 32): <100 m = 8; 100-150 m = 10; 150-200 m = 12; ≥200 m = 14.
+- Yolcu gemileri (Kural 22): <60 m = 8; 60-120 m = 12; 120-180 m = 18; 180-240 m = 24; ≥240 m = 30.
+
+PİROTEKNİK İŞARETLER (Gemi seviyesi):
+Köprüüstünde veya yakınında en az 12 paraşütlü işaret fişeği (rocket parachute flare) bulundurulur (SOLAS III/6.3). Bu, her filikada bulunan piroteknik donanımdan (4 paraşütlü işaret fişeği, 6 el maytabı, 2 yüzer duman işareti) ayrıdır.
 
 DALMA ELBİSESİ (IMMERSION SUIT):
 

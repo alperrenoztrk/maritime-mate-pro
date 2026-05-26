@@ -2817,11 +2817,12 @@ EK I - PETROL KİRLİLİĞİ:
 - Slop tank yönetimi
 - Oil Record Book kayıtları
 
-EK II - ZARARLI SIVI MADDELER:
-- Kimyasal tanker yük artıkları
-- Kategorilere göre boşaltma limitleri (X, Y, Z)
-- Tank yıkama gereksinimleri
-- Cargo Record Book
+EK II - ZARARLI SIVI MADDELER (NLS):
+- Kimyasal tanker yük artıkları; her madde IBC Code'da bir kategoriye atanır.
+- Kategoriler: X (büyük zarar — denize boşaltım yasak, ön yıkama/prewash zorunlu ve atık kabul tesisine verilir), Y (zarar — sınırlı boşaltım), Z (küçük zarar — daha az kısıtlı), OS (Other Substances — değerlendirilmiş ve Ek II kapsamı dışı; kirlilik riski yok).
+- Genel boşaltım koşulları: gemi yolda (≥7 knot self-propelled), kıyıdan ≥12 deniz mili, su derinliği ≥25 m, su altı çıkışından.
+- Kategori X için ön yıkama (prewash) ve kalıntı konsantrasyonu doğrulaması gereklidir.
+- Tank yıkama gereksinimleri ve Cargo Record Book kaydı.
 
 EK III - AMBALAJLI ZARARLI MADDELER:
 - Deniz kirliliği işareti (Marine Pollutant)
