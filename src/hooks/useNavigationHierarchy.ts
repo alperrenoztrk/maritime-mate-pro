@@ -244,31 +244,40 @@ export const useNavigationHierarchy = () => {
   const searchRef = useRef(location.search);
   const navigateRef = useRef(navigate);
 
-  // Keep refs current. Plain assignment in render is the React-recommended
-  // pattern for this case and is cheaper than a useEffect.
   pathnameRef.current = location.pathname;
   searchRef.current = location.search;
   navigateRef.current = navigate;
 
-  const handleBack = useCallback(() => {
-    // Read the LIVE url, not React state. react-router's `replace`
-    // navigation updates window.location synchronously, but the
-    // location-derived ref only catches up on the next render. During a
-    // rapid burst of back presses ("ard arda iki basma") that lag would
-    // make every press re-target the SAME parent; reading window.location
-    // lets each consecutive press climb one real level instead.
+  // Re-entrancy / debounce guard. Rapid double-taps of the hardware back
+  // button used to race: the 2nd press could fire before react-router
+  // finished committing the 1st navigate, reading a stale path. A short
+  // cooldown (~250 ms) collapses bursts into a single climb-one-level.
+  const lastBackAtRef = useRef(0);
+  const BACK_COOLDOWN_MS = 250;
+
+  const handleBack = useCallback((event?: { preventDefault?: () => void }) => {
+    // Defensive: tell Capacitor we own this event. No-op in Cap 7 where
+    // listener presence already suppresses default, but harmless.
+    try { event?.preventDefault?.(); } catch { /* ignore */ }
+
+    const now = Date.now();
+    if (now - lastBackAtRef.current < BACK_COOLDOWN_MS) {
+      // Swallow rapid repeat press — prevents the race that used to look
+      // like "app exits after two presses".
+      return;
+    }
+    lastBackAtRef.current = now;
+
     const path =
       typeof window !== 'undefined'
         ? window.location.pathname
         : pathnameRef.current;
     // HARD RULE: the back button MUST NEVER exit the app, no matter how many
-    // times it is pressed. On the home route we deliberately do nothing —
-    // staying put is the desired behaviour.
+    // times it is pressed. On the home route we deliberately do nothing.
     if (path === '/') {
       return;
     }
     const parent = findParentPath(path);
-    // Self-referencing rule or unmapped route → fall back to home, never exit.
     if (!parent || parent === path) {
       navigateRef.current('/', { replace: true });
       return;
@@ -280,20 +289,17 @@ export const useNavigationHierarchy = () => {
     setShowExitDialog(false);
   }, []);
 
-  // Kept for backwards compatibility with consumers, but the back button
-  // never triggers an exit dialog anymore — so this is effectively a no-op.
   const confirmExit = useCallback(() => {
     setShowExitDialog(false);
   }, []);
 
-  // Capacitor hardware back button — registered ONCE for the app's
-  // lifetime. Reads the latest pathname/navigate via refs.
+  // Capacitor hardware back button — registered ONCE for the app's lifetime.
   useEffect(() => {
     if (!Capacitor.isNativePlatform()) return;
     let listener: { remove: () => void } | undefined;
     let cancelled = false;
-    CapacitorApp.addListener('backButton', () => {
-      handleBack();
+    CapacitorApp.addListener('backButton', (event) => {
+      handleBack(event as { preventDefault?: () => void });
     }).then((l) => {
       if (cancelled) {
         l.remove();
@@ -312,13 +318,6 @@ export const useNavigationHierarchy = () => {
     if (Capacitor.isNativePlatform()) return;
 
     const handlePopState = () => {
-      // A back press just consumed our sentinel entry. Walk up the logical
-      // hierarchy first (navigate uses `replace`, so window.location updates
-      // synchronously), then IMMEDIATELY re-arm a fresh sentinel for the
-      // route we landed on. Re-arming synchronously here — instead of waiting
-      // for the route-change effect below — closes the tiny window in which a
-      // rapid second back press could pop past the sentinel and walk the
-      // browser/PWA right out of the app (the "exits after two presses" bug).
       handleBack();
       try {
         window.history.pushState(
@@ -337,14 +336,12 @@ export const useNavigationHierarchy = () => {
     };
   }, [handleBack]);
 
-  // Sentinel push — runs SYNCHRONOUSLY on every pathname change so the
-  // back button is intercepted from the very first render. Deferring this
-  // (microtask/raf) creates a race: if the user taps back before the
-  // sentinel lands, popstate fires without our marker and the browser
-  // walks off the app entirely (looks like the app "exits" unexpectedly).
-  // The cost of one synchronous pushState per navigation is negligible.
+  // Sentinel push — runs on every pathname change so back is intercepted
+  // from the very first render. Now ALSO active on native: if Android's
+  // WebView ever falls through to its default goBack() (plugin race during
+  // cold start), the sentinel entry is consumed instead of the app being
+  // minimized.
   useEffect(() => {
-    if (Capacitor.isNativePlatform()) return;
     if (typeof window === 'undefined') return;
 
     const state = window.history.state as Record<string, unknown> | null;
@@ -361,12 +358,11 @@ export const useNavigationHierarchy = () => {
     }
   }, [location.pathname]);
 
-  // Stable return reference: only changes when `showExitDialog` flips.
-  // Prevents downstream re-renders on every navigation.
   return useMemo(
     () => ({ showExitDialog, closeExitDialog, confirmExit }),
     [showExitDialog, closeExitDialog, confirmExit],
   );
 };
+
 
 
