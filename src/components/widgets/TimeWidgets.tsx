@@ -74,7 +74,7 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
 
       {/* Sunrise Card */}
       <Card
-        className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center cursor-pointer group"
+        className="glass-widget glass-widget-hover weather-widget-clickable relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center cursor-pointer group"
         onClick={() => navigate("/sunrise-times")}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -92,7 +92,7 @@ const TimeWidgets: React.FC<TimeWidgetsProps> = ({
 
       {/* Sunset Card */}
       <Card
-        className="glass-widget glass-widget-hover relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center cursor-pointer group"
+        className="glass-widget glass-widget-hover weather-widget-clickable relative overflow-hidden rounded-xl p-4 shadow-lg aspect-square flex flex-col items-center justify-center cursor-pointer group"
         onClick={() => navigate("/sunset-times")}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

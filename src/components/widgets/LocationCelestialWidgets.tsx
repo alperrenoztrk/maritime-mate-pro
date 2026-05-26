@@ -63,8 +63,8 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-destructive/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
           {/* Header with location info */}
-          <div 
-            className="relative p-5 cursor-pointer glass-widget-hover"
+          <div
+            className="relative p-5 cursor-pointer glass-widget-hover weather-widget-clickable"
             onClick={() => navigate("/location-selector")}
           >
             <div className="flex items-start gap-4">
@@ -116,7 +116,7 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
                   e.stopPropagation();
                   setMapDialogOpen(true);
                 }}
-                className="absolute bottom-6 right-8 glass-widget glass-widget-hover p-2 rounded-lg group/btn"
+                className="absolute bottom-6 right-8 glass-widget glass-widget-hover weather-widget-clickable p-2 rounded-lg group/btn"
               >
                 <Maximize2 className="h-4 w-4 text-primary group-hover/btn:scale-110 transition-transform" />
               </button>
