@@ -11556,6 +11556,98 @@ Kesişim noktası = Running Fix (10:30)
       "Görsel temas başlar başlamaz Kural 19'dan çıkılır ve ilgili COLREG kuralı devreye girer."
     ]
   },
+  "Seyir fenerleri: yay ve menzil": {
+    title: "Seyir Fenerleri: Yay ve Menzil (COLREG Kural 20-22)",
+    introduction:
+      "Seyir fenerleri, gece ve kısıtlı görüşte bir geminin tipini, durumunu ve hareket yönünü diğer gemilere bildiren temel görsel iletişim aracıdır. COLREG Kural 20, fenerlerin gün batımından gün doğumuna ve kısıtlı görüşte gösterilmesini zorunlu kılar. Kural 21 her fenerin renk ve ufuk üzerindeki görünürlük yayını (sektör), Kural 22 ise gemi boyuna göre asgari görünürlük menzilini tanımlar. Yay ve menzilleri doğru bilmek, karşılaşılan geminin aspektini (baş/kıç/borda) ve yol verme yükümlülüğünü gece doğru değerlendirmenin ön koşuludur.",
+    sections: [
+      {
+        title: "Fener Yayları (Kural 21)",
+        content:
+          "Her seyir feneri, ufuk üzerinde belirli bir yay (sektör) boyunca kesintisiz ışık gösterecek şekilde yerleştirilir. Yan fenerlerin dış sınırı ile silyon fenerinin dış sınırı kemere hattının 22.5° kıçında birleşir; bu hattın gerisi yalnızca kıç fenerinin yayıdır. Yan + silyon (225°) ile kıç (135°) yaylarının toplamı 360°'yi tamamlar.",
+        bulletPoints: [
+          "Silyon (direk) feneri — beyaz, 225°: baş bodoslamadan her iki yanda kemerenin 22.5° kıçına kadar.",
+          "Yan fenerler — sancak yeşil / iskele kırmızı, her biri 112.5°: baş bodoslamadan ilgili yanda kemerenin 22.5° kıçına kadar.",
+          "Kıç feneri — beyaz, 135°: tam kıçtan her iki yanda 67.5°.",
+          "Yedekleme (towing) feneri — sarı, 135°: kıç feneri ile aynı özelliklerde, onun üzerinde gösterilir.",
+          "Her yönden görünür (all-round) fener — 360°: demir, NUC, RAM, CBD, balıkçı, kılavuz vb. işaretlerde kullanılır.",
+          "Çakar (flashing) fener — 360°, dakikada 120 veya daha fazla düzenli çakış.",
+        ],
+      },
+      {
+        title: "Görünürlük Menzilleri (Kural 22)",
+        content:
+          "Asgari görünürlük menzili gemi boyuna göre belirlenir; fener şiddeti bu menzili sağlayacak şekilde hesaplanır (Ek I). 50 m ve üzeri gemilerde silyon feneri en uzaktan görülmesi gereken fenerdir (6 NM). Aşağıdaki değerler asgari (minimum) değerlerdir.",
+        bulletPoints: [
+          "≥ 50 m gemiler: silyon 6 NM, yan fenerler 3 NM, kıç 3 NM, yedekleme 3 NM, all-round 3 NM.",
+          "12 m – 50 m gemiler: silyon 5 NM (boy < 20 m ise 3 NM), yan fenerler 2 NM, kıç 2 NM, yedekleme 2 NM, all-round 2 NM.",
+          "< 12 m gemiler: silyon 2 NM, yan fenerler 1 NM, kıç 2 NM, yedekleme 2 NM, all-round 2 NM.",
+          "Belirsiz, kısmen batık yedeklenen gemi/cisimler: beyaz all-round fener 3 NM.",
+        ],
+      },
+      {
+        title: "Tipik Fener Düzenleri (Kural 23-31)",
+        content:
+          "Fenerlerin renk, sayı ve düşey diziliş kombinasyonu geminin tipini ve durumunu belirtir. Aşağıda en sık karşılaşılan düzenler özetlenmiştir; 'kırmızı üstünde kırmızı' (NUC) gibi kalıplar ezberlenmelidir.",
+        bulletPoints: [
+          "Motorlu gemi yolda (Kural 23): silyon feneri/fenerleri (≥ 50 m'de önde-arkada iki silyon), yan fenerler ve kıç feneri.",
+          "Demirde gemi (Kural 30): bir beyaz all-round (≥ 50 m'de önde yüksek, kıçta alçak iki adet); ≥ 100 m'de güverteler ayrıca aydınlatılır.",
+          "Karaya oturmuş gemi (Kural 30): demir fenerleri + düşey iki kırmızı all-round.",
+          "Kumanda altında değil (NUC, Kural 27): düşey iki kırmızı all-round; yol varsa ayrıca yan + kıç fenerleri.",
+          "Manevra kabiliyeti kısıtlı (RAM, Kural 27): düşey kırmızı-beyaz-kırmızı all-round.",
+          "Draftından kısıtlı (CBD, Kural 28): düşey üç kırmızı all-round (motorlu gemi fenerlerine ek).",
+          "Balıkçı — trol (Kural 26): yeşil üstünde beyaz all-round; trol dışı balıkçı: kırmızı üstünde beyaz.",
+          "Kılavuz gemisi (Kural 29): beyaz üstünde kırmızı all-round.",
+          "Yelkenli (Kural 25): yan fenerler + kıç feneri; isteğe bağlı direk başında kırmızı üstünde yeşil.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Yaylar: silyon 225°, yan fenerler 112.5° (her biri), kıç 135°, all-round 360° (Kural 21).",
+      "Yan + silyon yayları kemerenin 22.5° kıçında biter; gerisi kıç feneri yayıdır.",
+      "≥ 50 m'de silyon 6 NM, yan fenerler 3 NM, kıç 3 NM (Kural 22).",
+      "Renk/diziliş kalıpları gemi tipini belirtir: NUC kırmızı-kırmızı, RAM kırmızı-beyaz-kırmızı, CBD üç kırmızı.",
+    ]
+  },
+  "Gündüz işaretleri (top/koni/silindir)": {
+    title: "Gündüz İşaretleri: Top, Koni, Silindir ve Baklava (COLREG Kural 24-30)",
+    introduction:
+      "Gündüz, fenerlerin yerine geminin durumunu bildiren siyah şekiller (gündüz işaretleri) gösterilir. COLREG Ek I/6, şekillerin siyah renkte ve asgari boyutlarda olmasını şart koşar (top çapı ≥ 0.6 m; şekiller arası düşey aralık ≥ 1.5 m). Dört temel şekil vardır: top (küre), koni (külah), silindir ve baklava (eşkenar dörtgen). Bu şekillerin sayısı ve düşey dizilişi, gece gösterilen fener kalıplarının gündüz karşılığıdır.",
+    sections: [
+      {
+        title: "Temel Şekiller ve Anlamları",
+        content:
+          "Her şeklin tek başına veya kombinasyon hâlinde belirli bir anlamı vardır. Şekiller en iyi görülecek yerde, düşey hatta gösterilir.",
+        bulletPoints: [
+          "Top (küre): tek top = demirde gemi; düşey iki top = kumanda altında değil (NUC); düşey üç top = karaya oturmuş.",
+          "Top-baklava-top (düşey): manevra kabiliyeti kısıtlı (RAM).",
+          "Silindir: draftından kısıtlı gemi (CBD).",
+          "Koni: yelkenle + makineyle giden gemide sivri ucu aşağı bakan koni; balıkçıda ucu yukarı koni (av takımı yönünü gösterir).",
+          "Baklava (eşkenar dörtgen): boyu 200 m'yi aşan yedek dizisinde hem çeken hem çekilen gemide gösterilir.",
+        ],
+      },
+      {
+        title: "Kurallara Göre Gündüz İşaretleri",
+        content:
+          "Aşağıdaki eşleşmeler, ilgili COLREG kurallarındaki gündüz işaretlerini özetler. Gece fener kalıbı ile gündüz şekli birbirinin karşılığıdır (ör. NUC gece kırmızı-kırmızı, gündüz iki top).",
+        bulletPoints: [
+          "Kural 24 (yedekleme): yedek dizisinin boyu > 200 m ise hem çeken hem çekilen gemide bir baklava şekli.",
+          "Kural 25 (yelkenli + makine): baş tarafta sivri ucu aşağı bakan bir koni — gemi hem yelken hem makineyle ilerliyor demektir.",
+          "Kural 26 (balıkçı): düşey, uçları birbirine bakan iki koni (boyu < 20 m gemi bir sepet gösterebilir); av takımı yatayda 150 m'den fazla uzanıyorsa o yöne ucu yukarı bir koni.",
+          "Kural 27 (NUC): düşey iki top; (RAM): düşey top-baklava-top; tarama/sualtı işinde engel olan tarafta iki top, geçilebilir tarafta iki baklava.",
+          "Kural 28 (CBD): bir silindir.",
+          "Kural 30 (demir): baş tarafta bir top; (karaya oturmuş): düşey üç top.",
+          "Kural 27 (mayın tarama): biri direk başında, ikisi ön seren uçlarında olmak üzere üç top.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Şekiller siyahtır; top çapı ≥ 0.6 m, düşey aralık ≥ 1.5 m (Ek I/6).",
+      "Demir = 1 top, NUC = 2 top, karaya oturmuş = 3 top.",
+      "RAM = top-baklava-top, CBD = silindir, motorsailer = ucu aşağı koni.",
+      "Yedek > 200 m = baklava; balıkçı = uçları birbirine bakan iki koni.",
+    ]
+  },
   "Gerçek çatışma kazaları": {
     title: "Gerçek Çatışma Kazaları: Vaka İncelemeleri",
     introduction:

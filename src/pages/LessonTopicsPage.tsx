@@ -252,6 +252,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Head-on", hasContent: true },
           { title: "Overtaking", hasContent: true },
           { title: "Restricted visibility", hasContent: true },
+          { title: "Seyir fenerleri: yay ve menzil", hasContent: true },
+          { title: "Gündüz işaretleri (top/koni/silindir)", hasContent: true },
           { title: "Gerçek çatışma kazaları", hasContent: true },
           { title: "Neden – sonuç – ihlal – önlem analizi", hasContent: true }
         ]
