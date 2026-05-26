@@ -670,7 +670,7 @@ const content2: ContentMap = {
       title: "SEEMP (Ship Energy Efficiency Management Plan)",
       introduction: "SEEMP, geminin enerji verimliliğini sürekli iyileştirmek için hazırlanan zorunlu yönetim planıdır.",
       sections: [
-        { heading: "SEEMP Yapısı", paragraphs: ["Part I: Enerji verimliliği tedbirleri planı (tüm gemiler). Hız optimizasyonu, trim optimizasyonu, bakım, rota planlaması gibi operasyonel tedbirleri kapsar.", "Part II: Yakıt tüketimi veri toplama ve raporlama (5000 GT üzeri). Yıllık CII hesabı ve derecelendirmesi. D veya E derecesi durumunda düzeltici eylem planı."] }
+        { heading: "SEEMP Yapısı", paragraphs: ["Part I: Enerji verimliliği tedbirleri planı (≥400 GT tüm gemiler). Hız optimizasyonu, trim optimizasyonu, bakım, rota planlaması gibi operasyonel tedbirleri kapsar.", "Part II: Yakıt tüketimi veri toplama ve raporlama planı — IMO DCS (Data Collection System), 5000 GT üzeri gemiler.", "Part III (MEPC.346(78)): CII uygulama planı — 5000 GT üzeri gemiler. Hedef yıllık CII derecesine ulaşmak için uygulanacak tedbirleri içerir; üst üste 3 yıl D veya 1 yıl E derecesi alan gemiler için düzeltici eylem planı zorunludur."] }
       ],
       keyPoints: ["SEEMP gemide bulundurulması zorunlu belgedir.", "PSC denetimlerinde kontrol edilir.", "Sürekli iyileştirme döngüsü (Plan-Do-Check-Act) uygulanır."]
     }

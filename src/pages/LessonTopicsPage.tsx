@@ -363,7 +363,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "VHF-DSC Operasyonları", hasContent: true },
           { title: "Tehlike, Aciliyet ve Emniyet Haberleşmesi", hasContent: true },
           { title: "NAVTEX, SafetyNET ve MSI", hasContent: true },
-          { title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu", hasContent: true }
+          { title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu", hasContent: true },
+          { title: "SMCP - Standart Deniz Haberleşme İfadeleri", hasContent: true }
         ]
       }
     ],

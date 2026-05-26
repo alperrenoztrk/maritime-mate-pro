@@ -9998,7 +9998,7 @@ Kesişim noktası = Running Fix (10:30)
   "Radar prensibi": {
     title: "Radar Prensibi",
     introduction:
-      "Radar (Radio Detection And Ranging), mikro dalga bandında (tipik olarak 3 GHz / X-bandı veya 9 GHz / S-bandı) elektromanyetik enerji darbelerini hedef yönüne yayımlayan ve yansıyan sinyali analiz ederek hedefin mesafesini, kerterizini ve hareket bilgilerini çıkaran aktif bir algılama sistemidir. Deniz radarı, görüş mesafesinden bağımsız olarak çalışır; sis, yağmur, karanlık veya yoğun deniz püskürtüsü koşullarında bile hedef tespiti yapabilir.\n\nDenizcilik radarı, köprüüstünün en kritik elektronik aracıdır. COLREG Kural 5 ve 7 kapsamında uygun gözcülük ve çatışma riski değerlendirmesi için radar kullanımı zorunlu tutulmuştur. SOLAS Bölüm V, 500 GT ve üzeri gemilerde en az iki bağımsız radar bulundurulmasını şart koşar. Modern ARPA (Automatic Radar Plotting Aid) sistemleri, hedefleri otomatik olarak izler, CPA ve TCPA hesaplar ve çatışma riski konusunda alarm üretir.",
+      "Radar (Radio Detection And Ranging), mikro dalga bandında (tipik olarak 3 GHz / S-bandı veya 9 GHz / X-bandı) elektromanyetik enerji darbelerini hedef yönüne yayımlayan ve yansıyan sinyali analiz ederek hedefin mesafesini, kerterizini ve hareket bilgilerini çıkaran aktif bir algılama sistemidir. Deniz radarı, görüş mesafesinden bağımsız olarak çalışır; sis, yağmur, karanlık veya yoğun deniz püskürtüsü koşullarında bile hedef tespiti yapabilir.\n\nDenizcilik radarı, köprüüstünün en kritik elektronik aracıdır. COLREG Kural 5 ve 7 kapsamında uygun gözcülük ve çatışma riski değerlendirmesi için radar kullanımı zorunlu tutulmuştur. SOLAS Bölüm V, 500 GT ve üzeri gemilerde en az iki bağımsız radar bulundurulmasını şart koşar. Modern ARPA (Automatic Radar Plotting Aid) sistemleri, hedefleri otomatik olarak izler, CPA ve TCPA hesaplar ve çatışma riski konusunda alarm üretir.",
     sections: [
       {
         title: "Radar Çalışma Prensibi: Zaman-Mesafe İlişkisi",
@@ -11329,7 +11329,7 @@ Kesişim noktası = Running Fix (10:30)
         bulletPoints: [
           "NUC (Not Under Command): manevra kabiliyetini yitirmiş gemi — en üst öncelik",
           "RAM (Restricted in Ability to Manoeuvre): manevra kabiliyeti kısıtlı gemi",
-          "CBD (Constrained by Draught): derin su gemisi — yalnızca dar su yollarında geçerli",
+          "CBD (Constrained by Draught): draftı nedeniyle, içinde seyrettiği suyun derinliği ve genişliği ile orantılı olarak rotasından sapma kabiliyeti ciddi ölçüde kısıtlı motorlu gemi (Kural 3(h)) — yalnızca dar kanallarla sınırlı değildir",
           "Balıkçı (fishing): olta değil, ağ veya trol kullanan gemi",
           "Yelken altında seyreden gemi: motor gemisine karşı öncelikli, kendi üstündeki sınıflara yol verir"
         ]
@@ -11452,7 +11452,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "COLREG Kural 13: Tanım ve Sınırlar",
         content:
-          "Kural 13(b) overtaking’i geometrik olarak tanımlar: bir gemi, diğerinin kıç doğrultusu ışığının (sternlight, 135° kapsam alanı) içinden yaklaşıyorsa overtaking durumu söz konusudur. Gündüzleri bu 22.5° kıç omuz yayının içinden yaklaşmak anlamına gelir. Kural 13(c) ise kritik bir hüküm içerir: overtaking durumundan şüphe edildikçe, gemi overtaking durumunda olduğunu varsaymalıdır. Kural 13(d) ise geçme manevrası başladıktan sonra iki geminin konumsal ilişkisi crossing konumuna geçse bile Kural 13’ün geçerliliğini koruduğunu açıklar — böylece overtaking gemisi kural değiştirme yoluyla sorumluluğu üzerinden atamaz.",
+          "Kural 13(b) overtaking’i geometrik olarak tanımlar: bir gemi, diğerine kemere hattının (beam) 22.5°’den daha gerisinden — yani yalnızca kıç fenerini (sternlight, 135° kapsam alanı) görebileceği bir doğrultudan — yaklaşıyorsa overtaking durumu söz konusudur. Geceleri bu, diğer geminin yan fenerlerini değil yalnızca kıç fenerini görmek demektir; gündüzleri ise kemerenin 22.5° kıçından daha geriden yaklaşmak anlamına gelir. Kural 13(c) ise kritik bir hüküm içerir: overtaking durumundan şüphe edildikçe, gemi overtaking durumunda olduğunu varsaymalıdır. Kural 13(d) ise geçme manevrası başladıktan sonra iki geminin konumsal ilişkisi crossing konumuna geçse bile Kural 13’ün geçerliliğini koruduğunu açıklar — böylece overtaking gemisi kural değiştirme yoluyla sorumluluğu üzerinden atamaz.",
         image: aisTargets,
         imageAlt: "Overtaking — Kural 13 geçme manevrası senaryosu",
         bulletPoints: [
@@ -11480,8 +11480,8 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Kural 9 (Dar Kanallar), overtaking senaryosunu kısıtlayan ek düzenlemeler içerir. Dar kanallarda geçme manevrası yalnızca güvenli ve pratik olduğunda yapılabilir; geçilen geminin de manevra için yeterli alan açması gerekmektedir. Bu durum, overtaking gemisinin Kural 9(e)(i) uyarınca ses sinyali vermesini — 2 uzun 1 kısa — ve geçilen geminin onay vermesini — 2 uzun 2 kısa — zorunlu kılar. Geçilen gemi itiraz edebilir: 5 kısa hızlı düdük tehlike veya şüphe sinyali olarak kullanılır. Pilot alınan sularda pilot, overtaking kararını limancı otoritesi kuralları ve kanal trafik düzenlemeleri çerçevesinde verir; ancak sorumluluk yasal olarak hâlâ kaptana aittir.",
         formula: {
-          text: "Overtaking Tanımı: Açı < 22.5° kıç omuz yayı (her iki taraf) → Overtaking durumu",
-          description: "22.5°, kıç ışığının kapsam yarı açısıdır; bu açı içinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir"
+          text: "Overtaking Tanımı: Kemere hattının 22.5°’den daha gerisinden (kıç fenerinin 135° yayı içinden) yaklaşma → Overtaking durumu",
+          description: "22.5° kıç-omuz hattı, yan fenerlerin (her biri 112.5°) bittiği ve yalnızca kıç fenerinin (135°) görüldüğü sınırdır; bu hattın gerisinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir"
         }
       }
     ],

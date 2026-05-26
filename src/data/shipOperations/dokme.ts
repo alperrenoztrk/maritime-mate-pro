@@ -99,7 +99,7 @@ export const dokme: ShipType = {
           "Berth-to-berth + bulk routes (ore + grain corridors).",
           ["ENC + NtM güncel.", "Safety contour + UKC.", "Heavy weather avoidance."],
           ["SOLAS V/34"],
-          ["TML > moisture content cargo liquefaction."],
+          ["Nem oranı (moisture content) > TML ise kargo sıvılaşması (liquefaction) riski."],
           ["Passage Plan"],
         ),
         op(

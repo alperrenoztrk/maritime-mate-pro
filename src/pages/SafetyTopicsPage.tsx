@@ -507,7 +507,7 @@ Makine dairesi ve yük ambarlarında kullanılır. Yangını oksijen konsantrasy
 
 CO₂ sistemi bileşenleri: Yüksek basınçlı CO₂ tüpleri (genellikle CO₂ odasında), pilot tüp, ana valf, alarm sistemi, dağıtım boruları ve nozullar. Makine dairesinde boşaltma öncesi 20 saniyelik sesli ve görsel ön alarm verilir.
 
-CO₂ miktarı hesabı: Makine dairesi hacminin minimum %35'i, yük ambarı hacminin minimum %30'u oranında CO₂ gereklidir. İlk 2 dakikada hacmin %85'ine ulaşmalıdır.
+CO₂ miktarı hesabı (FSS Code Bölüm 5): Makine dairesi için, en büyük makine mahallinin brüt hacminin %40'ı (kapsam/casing hariç) veya toplam hacminin %35'i (casing dahil) — hangisi büyükse o esas alınır; yük ambarları için en büyük ambar brüt hacminin %30'u oranında CO₂ gereklidir. Makine mahallinde gerekli gazın %85'i ilk 2 dakikada boşaltılabilmelidir.
 
 KÖPÜK (FOAM) SİSTEMİ:
 
@@ -637,6 +637,15 @@ Yangın söndürüldükten sonra sıcak yüzeyler soğumadan bölme açılırsa 
 
 SOLAS Bölüm III, Kural 19.3: Yangın tatbikatı en az ayda bir yapılmalıdır. Herhangi bir limandan kalkışta mürettebatın %25'inden fazlası değişmişse, kalkıştan sonraki 24 saat içinde tatbikat yapılmalıdır.
 
+ZORUNLU TATBİKAT TAKVİMİ (SOLAS III/19.3):
+- Gemiyi terk (abandon ship) tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
+- Yangın tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
+- Her cankurtarma sandalı denize indirilip suda manevra ettirilmeli: en az 3 ayda 1.
+- Kurtarma botu (rescue boat) denize indirilip manevra ettirilmeli: mümkün olduğunca ayda 1.
+- Serbest düşüşlü (free-fall) sandal: en az 6 ayda 1 fiili veya benzetilmiş (simulated) indirme tatbikatı.
+- Kapalı alana giriş ve kurtarma tatbikatı: en az 2 ayda 1 (SOLAS III/19.3.3).
+- Her mürettebat üyesi 1 ay içinde bir gemiyi terk tatbikatına katılmalıdır.
+
 TATBİKAT İÇERİĞİ:
 
 1. Genel alarm çalınması ve mürettebatın yangın istasyonlarına toplanması
@@ -744,7 +753,7 @@ SOLAS B Tipi (Atmalı): Geminin borda yüksekliğinden denize atılarak şişiri
 
 HİDROSTATİK SERBEST BIRAKMA (HRU):
 
-HRU, gemi 2-4 metre derinliğe battığında su basıncı ile otomatik olarak aktive olur. Bağlama kelepçesini serbest bırakır, sal yüzeye çıkar ve painter halatının gerilmesiyle otomatik şişer. HRU 12 ayda bir bakım ve 24 ayda bir yenilenmek zorundadır.
+HRU, gemi 2-4 metre derinliğe battığında su basıncı ile otomatik olarak aktive olur. Bağlama kelepçesini serbest bırakır, sal yüzeye çıkar ve painter halatının gerilmesiyle otomatik şişer. Can salı her 12 ayda bir yetkili serviste bakımdan geçirilir; HRU ise bakımı yapılmayan (disposable) bir parçadır ve üzerinde işaretli son kullanma tarihinde, normalde 2 yılda bir yenilenir.
 
 SAL DONANIMI:
 
@@ -757,7 +766,7 @@ BAKIM VE SERVİS:
 Şişirilebilir sallar 12 ayda bir yetkili servis istasyonunda bakıma tabi tutulmalıdır. 5 yılda bir tam test. HRU periyodik olarak değiştirilir. Bakımlar sertifikalı personel tarafından yapılmalıdır.`,
     keyPoints: [
       "HRU, gemi 2-4 m derinliğe battığında otomatik olarak salı serbest bırakır",
-      "HRU 12 ayda bir bakım, 24 ayda bir yenileme gerektirir",
+      "Can salı 12 ayda bir serviste bakım görür; HRU bakımsız (disposable) parçadır, normalde 2 yılda bir yenilenir",
       "Sallar 12 ayda bir yetkili serviste bakım görmelidir",
       "SOLAS Pack A: 24+ saat, Pack B: 24 saate kadar hayatta kalma donanımı",
     ],
@@ -798,7 +807,7 @@ Kurtarma botu, davit sistemi ile hızlıca indirilebilmelidir. SOLAS gereği 5 d
 
 SOLAS gereği gemideki her kişi için bir can yeleği, ayrıca vardiya pozisyonlarında ek yelek bulundurulmalıdır. Yolcu gemilerinde çocuk yelekleri de zorunludur.
 
-Performans gereksinimleri: Bilinci kapalı kişiyi 5 saniye içinde yüzüstü pozisyona getirebilmeli. En az 15.5 kg kaldırma kuvveti. Düdük, ışık (1 cd, 8 saat) ve retroreflektif bant ile donatılmış olmalı.
+Performans gereksinimleri: Bilinci kapalı kişiyi 5 saniye içinde ağzı su yüzeyinin üstünde kalacak şekilde yüzü yukarı (sırtüstü) güvenli pozisyona çevirebilmeli. En az 15.5 kg kaldırma kuvveti. Düdük, ışık (1 cd, 8 saat) ve retroreflektif bant ile donatılmış olmalı.
 
 CAN SİMİDİ (LIFE BUOY):
 

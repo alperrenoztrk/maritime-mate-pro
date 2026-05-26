@@ -250,7 +250,7 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Gelişim Evreleri",
         content:
-          "Tropikal sistem dört evrede sınıflandırılır: (1) Tropikal Bozukluk — organize olmamış konveksiyon alanı, sürekli rüzgâr hızı < 34 knot. (2) Tropikal Fırtına — organize dolaşım, 34–63 knot sürekli rüzgâr; bu evrede sisteme resmi isim verilir. (3) Şiddetli Tropikal Fırtına — 48–63 knot rüzgâr hızı (bazı havzalarda ayrı kategori). (4) Tropikal Siklon / Tayfun / Kasırga — sürekli rüzgâr ≥ 64 knot; net bir göz yapısı oluşmuştur. Saffir-Simpson skalası (Kategoriler 1–5), kasırga şiddetini rüzgâr hızına göre sınıflar. Kategori 5'te rüzgâr 137 knotu aşar.",
+          "Tropikal sistem dört evrede sınıflandırılır: (1) Tropikal Bozukluk — organize olmamış konveksiyon alanı, sürekli rüzgâr hızı < 34 knot. (2) Tropikal Fırtına — organize dolaşım, 34–47 knot sürekli rüzgâr; bu evrede sisteme resmi isim verilir. (3) Şiddetli Tropikal Fırtına — 48–63 knot rüzgâr hızı (bazı havzalarda ayrı kategori). (4) Tropikal Siklon / Tayfun / Kasırga — sürekli rüzgâr ≥ 64 knot; net bir göz yapısı oluşmuştur. Saffir-Simpson skalası (Kategoriler 1–5), kasırga şiddetini rüzgâr hızına göre sınıflar. Kategori 5'te rüzgâr 137 knotu aşar.",
       },
       {
         title: "Yapısal Öğeler",

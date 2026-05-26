@@ -9,7 +9,7 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Deniz Alanları (Sea Area) Sınıflandırması",
         content:
-          "GMDSS dört deniz alanı tanımlar ve her alan, kapsama sağlayan altyapı teknolojisine göre belirlenir. A1 alanı, en az bir VHF kıyı istasyonunun DSC (Digital Selective Calling) kapsaması altındaki bölgedir; tipik menzili 20–30 deniz milidir. A2 alanı, A1 dışında kalan ancak bir MF (Medium Frequency) kıyı istasyonunun DSC kapsaması altındaki bölgedir; menzili yaklaşık 150–250 deniz miline kadar uzanır. A3 alanı, A1 ve A2 dışında kalan ancak Inmarsat uydu kapsaması altındaki bölgedir; bu kapsama yaklaşık 70°K – 70°G enlemleri arasını içerir. A4 alanı, A1, A2 ve A3 dışında kalan bölgeleri kapsar; esas olarak kutup bölgeleridir ve burada HF (High Frequency) radyo haberleşmesi temel iletişim aracıdır.",
+          "GMDSS dört deniz alanı tanımlar ve her alan, kapsama sağlayan altyapı teknolojisine göre belirlenir. A1 alanı, en az bir VHF kıyı istasyonunun DSC (Digital Selective Calling) kapsaması altındaki bölgedir; tipik menzili 20–30 deniz milidir. A2 alanı, A1 dışında kalan ancak bir MF (Medium Frequency) kıyı istasyonunun DSC kapsaması altındaki bölgedir; menzili tipik olarak yaklaşık 100–150 deniz miline kadar uzanır. A3 alanı, A1 ve A2 dışında kalan ancak Inmarsat uydu kapsaması altındaki bölgedir; bu kapsama yaklaşık 70°K – 70°G enlemleri arasını içerir. A4 alanı, A1, A2 ve A3 dışında kalan bölgeleri kapsar; esas olarak kutup bölgeleridir ve burada HF (High Frequency) radyo haberleşmesi temel iletişim aracıdır.",
       },
       {
         title: "Ekipman Gereklilikleri",
@@ -171,6 +171,51 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       "EPIRB kayıt bilgileri güncel tutulmalıdır; güncel olmayan kayıt SAR'ı geciktirir.",
       "AIS-SART, geleneksel radar SART'a göre daha iyi menzil ve tespit kolaylığı sağlar.",
       "Aylık test ve tatbikat entegrasyonu operasyonel hazırlığın ön koşuludur.",
+    ],
+  },
+  "SMCP - Standart Deniz Haberleşme İfadeleri": {
+    title: "SMCP — Standart Deniz Haberleşme İfadeleri",
+    introduction:
+      "IMO Standard Marine Communication Phrases (SMCP), IMO A.918(22) kararıyla kabul edilen ve denizde güvenlikle ilgili sözlü haberleşmede dil engelini ve yanlış anlamayı en aza indirmek için standartlaştırılmış ifadeler bütünüdür. SMCP, STCW Sözleşmesi gereği seyir vardiyasından sorumlu zabitlerin İngilizce kullanım yeterliliğinin bir parçasıdır ve köprüüstü-köprüüstü, gemi-VTS, gemi içi ve SAR haberleşmesinde temel araçtır.",
+    sections: [
+      {
+        title: "Mesaj İşaretleri (Message Markers)",
+        content:
+          "Yanlış anlamayı önlemek için, özellikle VTS haberleşmesinde, bir mesajın türü baştan belirtilir. SMCP sekiz mesaj işareti tanımlar. İşaret, mesajın amacını net biçimde ortaya koyar ve alıcının doğru tepki vermesini sağlar.",
+        bulletPoints: [
+          "Instruction (Talimat): Alıcıya yönelik zorunlu/emredici bir gereklilik bildirir.",
+          "Advice (Tavsiye): Alıcıya yönelik bir öneri/tavsiye bildirir.",
+          "Warning (İkaz): Bir tehlike hakkında uyarır.",
+          "Information (Bilgi): Yalnızca bilgi aktarır.",
+          "Question (Soru): Mesajın soru niteliğinde olduğunu ve cevap beklendiğini gösterir.",
+          "Answer (Cevap): Mesajın bir önceki soruya verilen yanıt olduğunu gösterir.",
+          "Request (İstek): Bir şey (eylem, izin vb.) talep edildiğini bildirir.",
+          "Intention (Niyet): Konuşanın yapmayı düşündüğü acil seyir hareketini bildirir.",
+        ],
+      },
+      {
+        title: "Hece Kodu, Sayılar ve Tekrar Protokolü",
+        content:
+          "SMCP, ITU/ICAO fonetik alfabesini (Alfa, Bravo, Charlie ...) harf kodlaması için kullanır. Sayılar tek tek okunur (ör. 150 = 'one-five-zero'); ondalık nokta 'decimal', mevki ve mesafe için 'kilometres', 'nautical miles' gibi birimler açıkça belirtilir. Önemli mesajların doğru alındığını teyit etmek için kapalı döngü haberleşme (closed-loop) uygulanır: 'Say again' (tekrar et), 'Read back' (okuyarak teyit et), 'I say again' (tekrar ediyorum), 'Stand by' (bekle), 'No more' (mesaj bitti). Bir mesajın yanlış anlaşılması riskinde 'Mistake' denir ve doğru bilgi tekrarlanır.",
+        bulletPoints: [
+          "Fonetik alfabe: Alfa, Bravo, Charlie, Delta ... Zulu (harf belirtmede).",
+          "Sayılar rakam rakam okunur; ondalık için 'decimal'.",
+          "'Say again' = tekrarla; 'Read back' = okuyarak teyit et.",
+          "'Affirmative' = evet/onaylıyorum; 'Negative' = hayır.",
+          "Tehlike/aciliyet/emniyet önceliği: MAYDAY, PAN-PAN, SÉCURITÉ.",
+        ],
+      },
+      {
+        title: "Kullanım Alanları",
+        content:
+          "SMCP; çatışmadan kaçınma manevralarında köprüüstü-köprüüstü görüşmede, VTS bölgelerinde mevki/niyet bildiriminde, kılavuz alma-bırakma, römorkaj, demirleme ve yanaşma operasyonlarında, gemi içi komutlarda (dümen ve makine komutları, mooring komutları) ve arama-kurtarma koordinasyonunda kullanılır. Standart dümen komutları örnekleri: 'Hard-a-starboard' (alabanda sancak), 'Midships' (ortala), 'Steady' / 'Steady as she goes' (rotada tut). Standart ifadelerin dışına çıkmak, özellikle çok uluslu mürettebatta, yanlış anlama ve emniyet riskini artırır.",
+      },
+    ],
+    keyPoints: [
+      "SMCP, IMO A.918(22) ile kabul edilmiştir ve STCW İngilizce yeterliliğinin parçasıdır.",
+      "Sekiz mesaj işareti: Instruction, Advice, Warning, Information, Question, Answer, Request, Intention.",
+      "Sayılar rakam rakam, harfler fonetik alfabeyle okunur.",
+      "Kapalı döngü teyit (read back / say again) yanlış anlamayı önler.",
     ],
   },
 };

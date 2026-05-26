@@ -593,7 +593,7 @@ const content5: ContentMap = {
       introduction: "Annex VI, gemi emisyonlarının (SOx, NOx, GHG, ODS, VOC) kontrolünü düzenler. 2020 kükürt limiti revizyonu en önemli değişikliktir.",
       sections: [
         { heading: "Kükürt Limitleri", paragraphs: [], table: { headers: ["Bölge", "Limit (2020 sonrası)", "Yürürlük"], rows: [["Global", "%0.50 m/m", "1 Ocak 2020"], ["ECA (SOx)", "%0.10 m/m", "1 Ocak 2015"], ["Liman (AB)", "%0.10 m/m", "2010"]] } },
-        { heading: "Diğer Emisyon Kuralları", paragraphs: ["NOx: Tier I (<2000), Tier II (2011+), Tier III (ECA 2016+).", "ODS: Halonlar ve CFC kullanımı yasak; HCFC faz-out.", "Shipboard incinerator: IMO standartlarına uygun olmalı.", "VOC: Tankerlerden uçucu organik bileşik kontrolü."] }
+        { heading: "Diğer Emisyon Kuralları", paragraphs: ["NOx: Tier I (2000-2010), Tier II (2011+), Tier III (NOx ECA'da 2016+).", "ODS: Halonlar ve CFC kullanımı yasak; HCFC faz-out.", "Shipboard incinerator: IMO standartlarına uygun olmalı.", "VOC: Tankerlerden uçucu organik bileşik kontrolü."] }
       ],
       keyPoints: ["IAPP sertifikası Annex VI uyumunu belgeler.", "Scrubber kullanımında wash water deşarj kuralları uygulanır.", "Yanlış yakıt beyanı ağır cezai yaptırımlara tabidir."]
     },
