@@ -9,6 +9,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { DensityProvider } from "@/contexts/DensityContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
+import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
 import Index from "./pages/Index";
@@ -337,6 +338,7 @@ const App = () => {
                 <AskAIPopup />
                 <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
                   <BrowserRouter>
+                    <RouteTranslationGate />
                     <AnimatedRoutes />
                   </BrowserRouter>
                 </div>
