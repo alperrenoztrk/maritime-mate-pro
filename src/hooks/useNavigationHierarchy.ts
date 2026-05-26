@@ -251,10 +251,19 @@ export const useNavigationHierarchy = () => {
   navigateRef.current = navigate;
 
   const handleBack = useCallback(() => {
-    const path = pathnameRef.current;
-    // HARD RULE: back button MUST NEVER exit the app, no matter how many
-    // times the user presses it. On the home route we deliberately do
-    // nothing — staying put is the desired behaviour.
+    // Read the LIVE url, not React state. react-router's `replace`
+    // navigation updates window.location synchronously, but the
+    // location-derived ref only catches up on the next render. During a
+    // rapid burst of back presses ("ard arda iki basma") that lag would
+    // make every press re-target the SAME parent; reading window.location
+    // lets each consecutive press climb one real level instead.
+    const path =
+      typeof window !== 'undefined'
+        ? window.location.pathname
+        : pathnameRef.current;
+    // HARD RULE: the back button MUST NEVER exit the app, no matter how many
+    // times it is pressed. On the home route we deliberately do nothing —
+    // staying put is the desired behaviour.
     if (path === '/') {
       return;
     }
@@ -303,19 +312,23 @@ export const useNavigationHierarchy = () => {
     if (Capacitor.isNativePlatform()) return;
 
     const handlePopState = () => {
-      // Re-arm the sentinel before navigating so the next back press is
-      // also captured. Use the refs so we always reference the current
-      // route, not the route at listener-registration time.
+      // A back press just consumed our sentinel entry. Walk up the logical
+      // hierarchy first (navigate uses `replace`, so window.location updates
+      // synchronously), then IMMEDIATELY re-arm a fresh sentinel for the
+      // route we landed on. Re-arming synchronously here — instead of waiting
+      // for the route-change effect below — closes the tiny window in which a
+      // rapid second back press could pop past the sentinel and walk the
+      // browser/PWA right out of the app (the "exits after two presses" bug).
+      handleBack();
       try {
         window.history.pushState(
-          { [SENTINEL_KEY]: true },
+          { ...(window.history.state ?? {}), [SENTINEL_KEY]: true },
           '',
-          pathnameRef.current + searchRef.current,
+          window.location.pathname + window.location.search,
         );
       } catch {
         /* pushState can throw in rare iframe contexts; ignore. */
       }
-      handleBack();
     };
 
     window.addEventListener('popstate', handlePopState);
