@@ -705,4 +705,39 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       "Vardiya devrinde risk haritası üzerinden brifing BRM kalitesini artırır.",
     ],
   },
+  "SOLAS V tehlike mesajları ve hava raporlama": {
+    title: "SOLAS V: Tehlike Mesajları ve Meteorolojik Raporlama Yükümlülüğü",
+    introduction:
+      "SOLAS Bölüm V (Seyir Güvenliği), kaptana belirli tehlikeli hava ve seyir koşullarını yakındaki gemilere ve yetkili otoritelere bildirme yükümlülüğü getirir. Bu raporlar ücretsizdir ve denizde ortak güvenliğin temelini oluşturur. Ayrıca gemiler gönüllü gözlem (VOS) kapsamında düzenli hava raporu göndererek küresel tahmin ağına katkı sağlar.",
+    sections: [
+      {
+        title: "Tehlike Mesajları (SOLAS V/31)",
+        content:
+          "Tehlikeli buz, tehlikeli terk edilmiş gemi (derelict) veya seyre doğrudan tehlike oluşturan başka bir engelle karşılaşan; tropikal fırtınaya rastlayan; üst yapılarda ağır buzlanmaya yol açan, fırtına şiddetinde rüzgârla birlikte donma altı hava sıcaklığı yaşayan; ya da hakkında fırtına ihbarı alınmamış 10 Bofor ve üzeri rüzgârla karşılaşan her geminin kaptanı, bu bilgiyi elindeki tüm imkânlarla yakındaki gemilere ve ilk ulaşabildiği yetkili makama iletmekle yükümlüdür.",
+        bulletPoints: [
+          "Tehlikeli buz / buzdağı.",
+          "Tehlikeli terk edilmiş gemi (derelict) veya seyir engeli.",
+          "Tropikal fırtına ile karşılaşma.",
+          "Ağır buzlanmaya yol açan, fırtına rüzgârıyla birlikte donma altı sıcaklık.",
+          "İhbar edilmemiş 10 Bofor ve üzeri rüzgâr.",
+        ],
+      },
+      {
+        title: "Mesaj İçeriği (SOLAS V/32)",
+        content:
+          "Tehlike mesajının formatı standarttır. Buz, derelict ve diğer doğrudan tehlikeler için: tehlikenin türü, mevkii ve gözlem zamanı (UTC) verilir. Tropikal fırtına için ek olarak: bir tropikal fırtına ile karşılaşıldığının beyanı; zaman/mevki (UTC); düzeltilmiş barometre basıncı ve 3 saatlik basınç eğilimi (tendency); gerçek rüzgâr yönü ve Bofor cinsinden şiddeti; deniz durumu ve ölü deniz (swell); geminin rota ve hızı bildirilir. Buzlanma riskinde hava/deniz sıcaklığı ve rüzgâr da eklenir. Mümkünse takip gözlemleri gönderilir.",
+      },
+      {
+        title: "Sefer Planlaması ve Hava Servisleri (SOLAS V/34 ve V/5)",
+        content:
+          "SOLAS V/34, seferin uygun harita ve yayınlarla, IMO kılavuzları (Karar A.893(21)) doğrultusunda — güncel meteorolojik bilgi ve hava rotalaması (weather routing) dâhil — önceden planlanmasını gerektirir. SOLAS V/5 uyarınca Âkit Hükümetler meteorolojik servis ve uyarıları sağlar; gemiler Gönüllü Gözlem Gemileri (VOS) programı kapsamında düzenli hava gözlemi yapıp raporlayarak küresel tahmin doğruluğuna katkıda bulunur. Meteorolojik uyarılar (gale/storm warning) NAVTEX, SafetyNET ve telsiz yayınlarıyla alınır.",
+      },
+    ],
+    keyPoints: [
+      "SOLAS V/31: buz, derelict, tropikal fırtına, ağır buzlanma ve ihbarsız ≥10 Bofor rüzgâr bildirilmelidir.",
+      "Tehlike mesajları ücretsizdir ve tüm imkânlarla derhâl iletilir.",
+      "V/32: tropikal fırtına mesajında basınç + 3 saatlik eğilim, gerçek rüzgâr, deniz durumu, rota/hız bulunur.",
+      "V/34 sefer planlaması hava bilgisini içerir; V/5 ile gemiler VOS kapsamında hava raporlar.",
+    ],
+  },
 };

@@ -2721,7 +2721,7 @@ Karaya oturma durumunda yakıt sızıntısı ve çevre kirliliği en büyük ris
     introduction: "COLREG (Collision Regulations), denizde çatışmayı önlemek amacıyla tüm gemilerin uyması gereken uluslararası kurallar bütünüdür.",
     content: `COLREG'İN YAPISI:
 
-COLREG 1972 (International Regulations for Preventing Collisions at Sea) beş bölüm ve 41 kuraldan oluşur:
+COLREG 1972 (International Regulations for Preventing Collisions at Sea) beş bölüm (A-E), 38 kural ve 4 ekten (Annex I-IV) oluşur:
 
 Bölüm A: Genel (Kural 1-3): Uygulama alanı ve tanımlar
 Bölüm B: Yön ve seyir kuralları (Kural 4-19): Manevra kuralları
@@ -2765,11 +2765,11 @@ Bölge B: Kuzey/Güney Amerika, Japonya, Kore, Filipinler
    Bölge A: Kırmızı = iskele (sol), Yeşil = sancak (sağ) [limana girerken]
    Bölge B: Tam tersi
 
-2. Kardinal İşaretler (Cardinal Marks):
-   Kuzey: Üstte iki yukarı ok → tehlikenin kuzeyinden geç
-   Güney: Üstte iki aşağı ok → güneyinden geç
-   Doğu: Üstte yukarı+aşağı → doğusundan geç
-   Batı: Üstte aşağı+yukarı → batısından geç
+2. Kardinal İşaretler (Cardinal Marks): Sarı-siyah renkli; tepe işareti (topmark) iki siyah koniden oluşur. Koni yönü hangi yöne "geçileceğini" gösterir.
+   Kuzey: İki koni de yukarı bakar (▲▲); siyah üstte, sarı altta → tehlikenin kuzeyinden geç.
+   Güney: İki koni de aşağı bakar (▼▼); sarı üstte, siyah altta → güneyinden geç.
+   Doğu: Koniler tabana taban, uçları ayrık (▲▼); siyah-sarı-siyah → doğusundan geç.
+   Batı: Koniler uç uca, "kadeh" şekli (▼▲); sarı-siyah-sarı → batısından geç.
 
 3. Ayrılmış Tehlike İşareti (Isolated Danger): Siyah-kırmızı-siyah yatay çizgili. Tehlike üzerinde konumlandırılır.
 

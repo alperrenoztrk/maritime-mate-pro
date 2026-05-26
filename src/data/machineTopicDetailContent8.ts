@@ -446,11 +446,11 @@ const content8: ContentMap = {
             steps: [
               "ΔV = 440 × 0,06 = 26,4 V",
               "ρ (bakır) = 0,0175 Ω·mm²/m",
-              "A = (√3 × 50 × 80 × 0,8 × 0,0175) / (26,4 × 1000)",
-              "A = (1,732 × 50 × 80 × 0,8 × 0,0175) / 26400",
-              "A = 96,89 / 26400 ≈ 0,00367 → düzeltme: formülde L çift yol"
+              "A = (√3 × I × L × ρ × cosφ) / ΔV",
+              "A = (1,732 × 50 × 80 × 0,8 × 0,0175) / 26,4",
+              "A = 96,99 / 26,4 ≈ 3,67 mm²"
             ],
-            result: "Hesaplanan kesit yaklaşık 4 mm²'dir; standart kesit olarak 6 mm² seçilir."
+            result: "Gerilim düşümü kriterine göre hesaplanan kesit yaklaşık 3,67 mm²'dir; bir üst standart kesit olan 4 mm² seçilir (akım taşıma kapasitesi ayrıca kontrol edilmelidir)."
           }
         },
         {

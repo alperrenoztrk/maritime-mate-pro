@@ -1738,6 +1738,21 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         ]
       },
       {
+        title: "Deviation (Pusula Sapması) ve Tam Pusula Düzeltmesi",
+        content: "Pusula kuzeyi ile manyetik kuzey arasındaki açıya deviation (pusula sapması) denir. Deviation, geminin kendi çeliği ve elektrikli ekipmanının yarattığı yerel manyetik alandan kaynaklanır; bu nedenle gemiye özgüdür ve geminin pruva yönüne (heading) göre değişir. Her gemi için her pruvada ölçülen deviation değerleri bir deviasyon kartında (deviation card/table) tutulur. Tam dönüşüm zinciri şöyledir: Pusula Rotası → (deviation uygulanır) → Manyetik Rota → (variation uygulanır) → Hakiki Rota. Variation ile deviation'ın cebirsel toplamı toplam pusula hatasını (compass error) verir. İşaret kuralı: doğu (E) değerler pozitif, batı (W) değerler negatiftir.",
+        image: compassImg,
+        imageAlt: "Pusula-manyetik-hakiki dönüşüm zinciri ve deviation",
+        formula: {
+          text: "Hakiki Rota = Pusula Rotası + Deviation + Variation | Pusula Hatası = Deviation + Variation",
+          description: "Doğu (+), batı (−). Anımsatıcı: 'Hata doğu, pusula düşük; hata batı, pusula yüksek' (Error East, compass least)."
+        },
+        bulletPoints: [
+          "Örnek: Pusula Rotası 100°, deviation 3°W, variation 7°E → Hakiki Rota = 100° − 3° + 7° = 104°.",
+          "Deviation gemiye özgüdür ve pruva yönüne göre değişir; variation mevkiye bağlıdır.",
+          "Deviation deviasyon kartından okunur; pusula hatası transit/azimut gözlemiyle kontrol edilir.",
+        ]
+      },
+      {
         title: "Manyetik Kerteriz Bağıntısı",
         content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır.",
         image: yonRelativeBearing,

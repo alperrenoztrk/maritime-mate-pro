@@ -343,7 +343,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Synoptik harita sembolleri", hasContent: true },
           { title: "Cephe analizi ve hareket tahmini", hasContent: true },
           { title: "Rüzgar/deniz tahmini çıkarımı", hasContent: true },
-          { title: "Rota üzerinde risk işaretleme", hasContent: true }
+          { title: "Rota üzerinde risk işaretleme", hasContent: true },
+          { title: "SOLAS V tehlike mesajları ve hava raporlama", hasContent: true }
         ]
       }
     ],

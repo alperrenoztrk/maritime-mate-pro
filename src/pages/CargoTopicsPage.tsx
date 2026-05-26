@@ -2244,7 +2244,8 @@ TOPLAM VHM:
 Tüm ambarların VHM değerleri toplanarak geminin toplam VHM'si bulunur.
 
 GHM HESABI:
-GHM (Grain Heeling Moment) = Toplam VHM × SF (stowage factor)
+GHM (Grain Heeling Moment) = Toplam VHM ÷ SF (stowage factor, m³/t)
+Birim kontrolü: VHM (m⁴) ÷ SF (m³/t) = t·m (gerçek ağırlık momenti).
 veya
 GHM hesaplanmış ise doğrudan kullanılır.
 
