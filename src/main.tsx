@@ -1,3 +1,7 @@
+// MUST be first: installs a crash-proof Web Storage guard before any other
+// module touches localStorage at import time (preview iframes can make storage
+// access throw, which otherwise crashes the app before React mounts).
+import './lib/safeStorage'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
