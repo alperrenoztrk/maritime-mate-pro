@@ -17,9 +17,9 @@ const config: CapacitorConfig = {
       resize: 'body',
       style: 'DARK'
     },
-    App: {
-      skipBackButton: true
-    },
+    // App: Capacitor 7'de `skipBackButton` opsiyonu yok. JS tarafında
+    // `backButton` dinleyicisinin varlığı zaten default davranışı bastırır
+    // (bkz. src/hooks/useNavigationHierarchy.ts).
     Haptics: {},
     // Firebase & Google Services Configuration
     GoogleAuth: {
