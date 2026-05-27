@@ -10143,6 +10143,17 @@ Kesişim noktası = Running Fix (10:30)
         ]
       },
       {
+        title: "ENC, RNC ve Güven Bölgesi (CATZOC)",
+        content:
+          "ENC (Electronic Navigational Chart): yetkili hidrografik kurumların ürettiği, IHO S-57 veri standardına göre kodlanmış vektörel haritadır; ECDIS bunu S-52 sunum standardıyla görüntüler ve S-63 ile şifreler/korur. Yalnızca güncel ENC kullanan ECDIS, kağıt haritanın resmi yerine geçer.\n\nRNC (Raster Navigational Chart): kağıt haritanın taranmış görüntüsüdür; katman/sorgu özelliği yoktur. ENC bulunmayan bölgelerde, uygun kağıt harita yedeğiyle RCDS modunda kullanılabilir.\n\nCATZOC (Category of Zone of Confidence): ENC verisinin konum ve derinlik doğruluğunun güvenilirlik derecesidir (A1, A2, B, C, D ve U=değerlendirilmemiş). Düşük CATZOC alanlarında UKC payı artırılmalı ve dikkatli olunmalıdır.",
+        bulletPoints: [
+          "ENC = vektör (S-57/S-52/S-63); RNC = raster (taranmış kağıt harita).",
+          "Resmi kağıtsız seyir için: tip onaylı ECDIS + güncel ENC + onaylı yedek (ikinci ECDIS veya kağıt).",
+          "CATZOC yıldız sembolüyle gösterilir; düşük güven = daha fazla UKC payı.",
+          "İki ana mod: Rota Planlama (route planning) ve Rota İzleme (route monitoring).",
+        ]
+      },
+      {
         title: "ECDIS Kazaları ve Öğrenilen Dersler",
         content:
           "Uluslararası kazalar ve MAIB raporları, ECDIS hatalarının belli örüntüler izlediğini gösterir: yanlış safety contour ayarı, ENC güncellemelerinin yapılmaması, alarm sesini kapatma ve ECDIS'e körce güven. 2013'te İskoçya açıklarında MV Ovit'in karaya oturması, safety contour değerinin geminin drafının altında ayarlanmasından kaynaklanmıştır – ECDIS alarm vermemiş çünkü yanlış parametre girilmişti.\n\nBu nedenle STCW ve IMO, her zabitin kendi gemisindeki ECDIS sisteminin tip eğitimini (manufacturer-specific training) almış olmasını şart koşar. Genel ECDIS eğitimi yeterli değildir; farklı üreticilerin arayüz ve alarm yönetimleri önemli farklılıklar gösterir."

@@ -183,6 +183,7 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  image?: string;
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
@@ -1318,6 +1319,7 @@ SRU (Search and Rescue Unit): Arama ve kurtarma birimi.`,
   "sar-patterns": {
     title: "Arama Desenleri (Search Patterns)",
     introduction: "SAR operasyonlarında kullanılan arama desenleri, kayıp kişi veya nesnenin olası konumuna, arama alanının genişliğine ve mevcut araçlara göre seçilir.",
+    image: "/diagrams/seamanship/arama-desenleri.svg",
     content: `ARAMA DESENLERİ:
 
 EXPANDING SQUARE SEARCH (SS): Genişleyen kare arama. Tek araçla aramada kullanılır. Kayıp konumunun nispeten kesin bilindiği durumlarda etkilidir. Merkez noktadan başlayarak giderek büyüyen kare spiral şeklinde arama yapılır.
@@ -2279,6 +2281,17 @@ export default function SafetyTopicsPage() {
                     {currentContent.introduction}
                   </p>
                 </div>
+
+                {currentContent.image && (
+                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                    <img
+                      src={currentContent.image}
+                      alt={currentContent.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 <div className="prose prose-sm max-w-none">
                   <div className="text-foreground leading-relaxed whitespace-pre-line">
