@@ -11667,6 +11667,57 @@ Kesişim noktası = Running Fix (10:30)
       "Yedek > 200 m = baklava; balıkçı = uçları birbirine bakan iki koni.",
     ]
   },
+  "Ses ve işaret kuralları (Kural 32-37)": {
+    title: "Ses ve Işık İşaretleri (COLREG Kural 32-37)",
+    introduction:
+      "COLREG Bölüm D, gemilerin niyet ve durumlarını sesle (ve ışıkla) bildirmesini düzenler. Kural 32 tanımları (kısa düdük ≈ 1 sn; uzun düdük 4-6 sn), Kural 33 ses cihazlarını, Kural 34 görüş içinde manevra/uyarı işaretlerini, Kural 35 kısıtlı görüşte verilecek işaretleri, Kural 36 dikkat çekme işaretlerini ve Kural 37 (Ek IV) tehlike işaretlerini kapsar. Bu işaretler, fener ve gündüz şekilleriyle birlikte denizde 'sessiz dil'in tamamlayıcısıdır.",
+    sections: [
+      {
+        title: "Manevra ve Uyarı İşaretleri (Kural 34)",
+        content:
+          "Görüş içindeki gemiler arasında, motorlu bir gemi izin verilen/gerekli bir manevra yaparken niyetini düdükle bildirir. Bu ses işaretleri, all-round beyaz ışıkla aynı sayıda çakışla desteklenebilir. Şüphe duyulduğunda en az beş kısa ve hızlı düdük (şüphe/ikaz işareti) verilir.",
+        image: "/diagrams/navigation/ses-isaretleri.svg",
+        imageAlt: "COLREG ses işaretleri: manevra (Kural 34) ve kısıtlı görüş (Kural 35) işaretleri",
+        bulletPoints: [
+          "1 kısa: Rotamı sancağa değiştiriyorum.",
+          "2 kısa: Rotamı iskeleye değiştiriyorum.",
+          "3 kısa: Tornistan (geri) çalışıyorum.",
+          "≥ 5 kısa ve hızlı: Şüphe/ikaz — yeterli önlem alındığından şüpheliyim (Kural 34(d)).",
+          "1 uzun: Görüşü kapalı bir dönemece/alana yaklaşırken; karşıdan 1 uzun ile cevap verilir (Kural 34(e)).",
+          "Dar kanalda geçme: sancaktan ▬▬● / iskeleden ▬▬●● ; geçilen geminin onayı ▬●▬● (Morse 'C').",
+        ],
+      },
+      {
+        title: "Kısıtlı Görüşte Ses İşaretleri (Kural 35)",
+        content:
+          "Kısıtlı görüş alanında veya yakınında, gece-gündüz fark etmeksizin aşağıdaki işaretler en fazla 2 dakika arayla verilir. Demirde ve karaya oturmuş gemiler için çan/gong kullanılır.",
+        bulletPoints: [
+          "Yolda olan motorlu gemi: 1 uzun (≤ 2 dk).",
+          "Durmuş, yol almayan motorlu gemi: 2 uzun (aralarında ~2 sn) (≤ 2 dk).",
+          "NUC, RAM, CBD, yelkenli, balıkçı, çeken/iten gemi: 1 uzun + 2 kısa (≤ 2 dk).",
+          "Çekilen (manlı) gemi, dizinin sonuncusu: 1 uzun + 3 kısa.",
+          "Demirde: ~5 sn hızlı çan çalma (≤ 1 dk); ≥ 100 m'de önde çan, kıçta gong.",
+          "Karaya oturmuş: çan işaretine ek olarak hızlı çalmadan önce ve sonra 3 ayrı vuruş.",
+        ],
+      },
+      {
+        title: "Cihazlar, Dikkat Çekme ve Tehlike İşaretleri (Kural 33, 36, 37)",
+        content:
+          "Kural 33: 12 m ve üzeri gemilerde düdük; 20 m ve üzeri gemilerde ayrıca çan; 100 m ve üzeri gemilerde ek olarak gong bulunur. Kural 36: başka bir gemiyi uyarmak için karıştırılmayacak ışık/ses işaretleri verilebilir. Kural 37 ve Ek IV: tehlike (distress) işaretleri — sürekli sis düdüğü, 1 dakika arayla top atışı, MAYDAY telsiz çağrısı, kırmızı paraşütlü işaret fişeği, SOS, NC kod bayrakları, kare bayrak + top, alev/duman, kollarını yavaşça indirip kaldırma vb.",
+        bulletPoints: [
+          "< 12 m gemi yukarıdaki işaretleri vermek zorunda değildir; ancak ≤ 2 dk'da başka etkili bir ses işareti vermelidir.",
+          "Kılavuz gemisi kimlik işareti olarak 4 kısa düdük verebilir (Kural 35(k)).",
+          "Tehlike işaretleri yalnızca gerçek tehlikede ve yardım talebinde kullanılır (Kural 37).",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Kısa düdük ≈ 1 sn, uzun düdük 4-6 sn (Kural 32).",
+      "Görüş içinde: 1/2/3 kısa = sancak/iskele/tornistan; 5 kısa = şüphe.",
+      "Kısıtlı görüşte: yolda 1 uzun; durmuş 2 uzun; NUC/RAM/CBD/yelken/balıkçı/çeken 1 uzun + 2 kısa (≤ 2 dk).",
+      "Cihazlar: düdük (≥12 m), çan (≥20 m), gong (≥100 m).",
+    ]
+  },
   "Dar kanallar ve trafik ayırım düzenleri (Kural 9-10)": {
     title: "Dar Kanallar (Kural 9) ve Trafik Ayırım Düzenleri (Kural 10)",
     introduction:
@@ -11745,6 +11796,40 @@ Kesişim noktası = Running Fix (10:30)
       "≥ 500 GT: cayro pusula ve tekrarlayıcıları; ≥ 3000 GT: ikinci bağımsız radar.",
       "≥ 50000 GT: ROT göstergesi + yer üstü çift eksenli hız cihazı.",
       "ECDIS faz-geçişi 2018'de tamamlandı; BNWAS ≥ 150 GT yük ve yolcu gemilerinde.",
+    ]
+  },
+  "Cayro pusula ve hataları": {
+    title: "Cayro Pusula (Gyrocompass) ve Hataları",
+    introduction:
+      "Cayro pusula, hızla dönen bir cayroskobun jiroskopik atalet ve presesyon özelliklerinin yerçekimi kontrolü ve sönümleme ile değiştirilmesiyle hakiki kuzeyi (meridyeni) arayan bir cihazdır. Manyetik pusuladan farklı olarak Dünya'nın manyetik alanından etkilenmez; doğrudan HAKİKİ kuzeyi gösterir ve yönü otopilot, radar/ARPA ve ECDIS gibi sistemlere tekrarlayıcılarla (repeater) dağıtır. SOLAS V/19 gereği 500 GT ve üzeri gemilerde zorunludur.",
+    sections: [
+      {
+        title: "Çalışma Prensibi",
+        content:
+          "Serbest bir cayroskop, dönme ekseninin yönünü uzayda korur (jiroskopik atalet). Dünya'nın dönüşü nedeniyle bu eksen gözlemciye göre kayar; cayroya yerçekimi kontrolü (üst/alt ağırlık veya sıvı bağlantı) eklenerek eksen meridyene doğru salınır ve sönümleme (damping) ile hakiki kuzeyde 'oturur' (settle). Bu nedenle cayro, manyetik kuzey değil hakiki kuzey referansı verir; variation ve deviation düzeltmesi gerektirmez.",
+      },
+      {
+        title: "Başlıca Hatalar",
+        content:
+          "Cayro pusulanın hataları öngörülebilir ve büyük ölçüde düzeltilebilir. Bunlar enlem, hız ve gemi hareketine bağlıdır.",
+        bulletPoints: [
+          "Enlem/sönümleme hatası (settling/latitude error): sönümlemeden kaynaklanır, enlemle (tan φ ile) artar; enlem düzeltmesiyle giderilir.",
+          "Hız hatası (steaming/speed error): geminin kuzey-güney hız bileşeninden doğar. Kuzey hemisferde kuzeye giderken batı, güneye giderken doğu yönünde sapma oluşur; büyüklüğü hız, rota ve enlemle değişir.",
+          "Balistik sapma (ballistic deflection): hız veya rota ani değiştiğinde oluşan geçici hatadır; doğru tasarımda sönümlenir.",
+          "Yalpa/gimbal hatası (rolling error): gemi yalpalarken cayro meridyenden saparsa oluşur; tasarımla en aza indirilir.",
+        ],
+      },
+      {
+        title: "Kontrol, Avantaj ve Modern Sistemler",
+        content:
+          "Cayro hatası transit, gök cismi azimutu veya GPS COG karşılaştırmasıyla düzenli kontrol edilir ve hata kartına işlenir. Avantajları: hakiki kuzeyi gösterir, yüksek enlemlerde ve çelik gövde etkisinde manyetik pusuladan güvenilirdir, tekrarlayıcılarla köprüüstüne yön dağıtır. Modern gemilerde fiber-optik (FOG) ve halka-lazer (RLG) katı-hal cayrolar ile GPS uydu pusulaları yaygınlaşmıştır; yine de manyetik pusula yasal yedek olarak bulundurulur.",
+      },
+    ],
+    keyPoints: [
+      "Cayro hakiki kuzeyi gösterir; variation/deviation gerektirmez (SOLAS V/19: ≥ 500 GT).",
+      "Hız hatası: K hemisferde kuzeye giderken batı, güneye giderken doğu sapması.",
+      "Enlem hatası tan φ ile artar; enlem düzeltmesiyle giderilir.",
+      "Hata transit/azimut/GPS COG ile kontrol edilip hata kartına işlenir.",
     ]
   },
   "Gerçek çatışma kazaları": {

@@ -196,6 +196,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Turn radius", hasContent: true },
           { title: "Elektronik seyirde çapraz kontrol", hasContent: true },
           { title: "GPS'in seyirde kullanımı ve sensör entegrasyonu", hasContent: true },
+          { title: "Cayro pusula ve hataları", hasContent: true },
           { title: "SOLAS V seyir cihazı taşıma gereklilikleri", hasContent: true }
         ]
       },
@@ -256,6 +257,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Dar kanallar ve trafik ayırım düzenleri (Kural 9-10)", hasContent: true },
           { title: "Seyir fenerleri: yay ve menzil", hasContent: true },
           { title: "Gündüz işaretleri (top/koni/silindir)", hasContent: true },
+          { title: "Ses ve işaret kuralları (Kural 32-37)", hasContent: true },
           { title: "Gerçek çatışma kazaları", hasContent: true },
           { title: "Neden – sonuç – ihlal – önlem analizi", hasContent: true }
         ]

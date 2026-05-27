@@ -1787,6 +1787,21 @@ TAŞINAN YÜKLER:
 - Çiçekler
 - Bazı kimyasallar
 
+TİPİK TAŞIMA SICAKLIKLARI (yaklaşık, gönderici talimatı esastır):
+- Muz: +13°C ile +14°C (12°C altında soğuk hasarı/chilling injury)
+- Elma, armut: 0°C ile +1°C
+- Narenciye: +4°C ile +8°C
+- Taze (soğutulmuş) et: -1°C ile +2°C
+- Dondurulmuş et/balık: -18°C ve altı (derin dondurma -25°C)
+- Taze balık: 0°C ile +2°C
+- Süt ürünleri: +2°C ile +4°C
+- Dondurma: -25°C
+- Kesme çiçek: +2°C ile +8°C
+- İlaç/aşı: +2°C ile +8°C (bazıları -20°C)
+- Çikolata: +12°C ile +18°C
+
+Not: Kontrollü/değiştirilmiş atmosfer (CA/MA) ile O₂ ve CO₂ seviyeleri ayarlanarak meyve-sebze raf ömrü uzatılır. "Chilled" (soğutulmuş, donma noktası üstü) ile "frozen" (dondurulmuş) ayrımı kritiktir.
+
 OPERASYONEL KONTROLLER:
 1. Yükleme öncesi: PTI (Pre-Trip Inspection) kontrolü
 2. Sıcaklık ayarı: Yük spesifikasyonuna göre
