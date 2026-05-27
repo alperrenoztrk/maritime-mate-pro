@@ -11715,6 +11715,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "Tonaja Göre Taşıma Eşikleri",
         content:
           "Cihaz gereklilikleri kümülatiftir: bir gemi kendi eşiğinin ve altındaki tüm eşiklerin donanımını taşır. Yolcu gemileri, tonajdan bağımsız olarak yük gemisi eşiklerinin çoğuna tabidir.",
+        image: "/diagrams/navigation/solas-v-tasima.svg",
+        imageAlt: "SOLAS V/19 tonaja göre seyir cihazı taşıma eşikleri ladder diyagramı",
         bulletPoints: [
           "Tüm gemiler (boy/tonaj fark etmeksizin): manyetik pusula, kerteriz aleti (pelorus), hakiki yöne çevirme imkânı, deniz haritaları ve yayınlar (ECDIS kabul edilir) + yedek, GNSS/karasal seyir alıcısı.",
           "≥ 150 GT: yedek manyetik pusula, gündüz işaret feneri (daylight signalling lamp).",
