@@ -81,6 +81,7 @@ const meteorologyTopics: MeteoMainTopic[] = [
       { id: "wind-forces", title: "Rüzgârı etkileyen kuvvetler", hasContent: true },
       { id: "wind-types", title: "Genel rüzgâr dolaşımı ve yerel rüzgârlar", hasContent: true },
       { id: "beaufort-scale", title: "Beaufort Skalası", hasContent: true },
+      { id: "itcz-trade-winds", title: "ITCZ ve alize rüzgârları (küresel dolaşım hücreleri)", hasContent: true },
     ],
   },
   {
@@ -94,6 +95,7 @@ const meteorologyTopics: MeteoMainTopic[] = [
       { id: "cloud-formation", title: "Bulut oluşumu ve sınıflandırması", hasContent: true },
       { id: "cloud-types", title: "Bulut türleri ve seviyeleri", hasContent: true },
       { id: "precipitation-types", title: "Yağış türleri ve oluşumu", hasContent: true },
+      { id: "thunderstorm-squall", title: "Gök gürültülü fırtına ve squall (ani şiddetli rüzgâr)", hasContent: true },
     ],
   },
   {
@@ -148,6 +150,8 @@ const meteorologyTopics: MeteoMainTopic[] = [
       { id: "sea-state-scale", title: "Deniz durumu skalası (Douglas)", hasContent: true },
       { id: "significant-wave", title: "Anlamlı dalga yüksekliği (Hs)", hasContent: true },
       { id: "wave-ship-interaction", title: "Dalga-gemi etkileşimi", hasContent: true },
+      { id: "tsunami", title: "Tsunami ve uzun dalga tehlikeleri", hasContent: true },
+      { id: "ship-icing", title: "Gemi üst yapı buzlanması (ice accretion)", hasContent: true },
     ],
   },
   {
@@ -2712,6 +2716,176 @@ ALINAN DERSLER:
     warnings: [
       "Hava uyarılarını görmezden gelmek hayati sonuçlar doğurur",
       "Ağır hava kararları gecikmeden verilmelidir",
+    ],
+  },
+
+  "thunderstorm-squall": {
+    title: "Gök Gürültülü Fırtına ve Squall",
+    introduction: "Gök gürültülü fırtınalar (thunderstorm), kümülonimbus (Cb) bulutlarıyla ilişkili, şimşek, sağanak, dolu ve ani şiddetli rüzgâr (squall) üreten yoğun konvektif hava olaylarıdır. Denizde ani rüzgâr değişimleri ve görüş düşmesiyle ciddi risk oluştururlar.",
+    content: `OLUŞUM:
+
+Gök gürültülü fırtına, kararsız atmosferde nemli havanın hızla yükselmesiyle (konveksiyon) oluşan kümülonimbus bulutunda gelişir. Üç temel koşul gerekir: nem, atmosferik kararsızlık ve yükseltici bir tetikleyici (ısınma, cephe, orografik kaldırma).
+
+GELİŞİM EVRELERİ:
+
+1. Kümülüs (gelişme) evresi: Güçlü yukarı akımlar (updraft) bulutu büyütür.
+2. Olgun evre: Hem yukarı hem aşağı akım (downdraft) bir arada; en şiddetli evredir. Şimşek, sağanak, dolu ve squall bu evrede görülür.
+3. Dağılma evresi: Aşağı akımlar baskın hâle gelir, yukarı akım kesilir, fırtına zayıflar.
+
+SQUALL (ANİ ŞİDDETLİ RÜZGÂR):
+
+Squall, kısa süreli ama ani ve şiddetli rüzgâr artışıdır. Kümülonimbus altındaki soğuk aşağı akımın yere çarpıp yatay yayılmasıyla oluşan "gust front" (squall line) denizde aniden gelir; rüzgâr yönü ve hızı saniyeler içinde köklü değişir. Beaufort tanımında squall, belirli bir süre devam eden ani rüzgâr sıçramasıdır.
+
+DENİZCİLİK RİSKLERİ:
+
+- Ani rüzgâr sıçraması küçük tekneleri devirebilir, yelkenliyi tehlikeye atar.
+- Görüş sağanakla aniden düşer.
+- Şimşek elektronik/anten hasarı ve yangın riski doğurur.
+- Dolu ve yoğun yağış güverte operasyonlarını tehlikeye atar.
+
+ÖNLEMLER:
+
+Radar (yağış ekosu) ve gökyüzü gözlemiyle Cb bulutları erken fark edilir; mümkünse fırtına hücresinden uzak durulur. Güverte işleri durdurulur, açık ekipman emniyete alınır, hız/rota squall'a göre ayarlanır.`,
+    bulletPoints: [
+      "Kümülonimbus (Cb) + kararsızlık + nem + tetikleyici ile oluşur.",
+      "Olgun evre en şiddetlidir (updraft + downdraft birlikte).",
+      "Squall: gust front kaynaklı ani şiddetli rüzgâr sıçraması.",
+      "Şimşek, dolu, sağanak ve görüş düşmesi başlıca risklerdir.",
+    ],
+    keyPoints: [
+      "Squall, Cb altındaki aşağı akımın yayılmasıyla aniden gelir.",
+      "Radar yağış ekosu ile Cb hücreleri erken tespit edilir.",
+      "Güverte işleri durdurulur, ekipman emniyete alınır.",
+    ],
+    warnings: [
+      "Squall rüzgârı saniyeler içinde köklü değişir; küçük tekneler için ölümcül olabilir",
+      "Şimşek riskinde açık güvertede çalışmaktan kaçınılmalıdır",
+    ],
+  },
+
+  "itcz-trade-winds": {
+    title: "ITCZ ve Alize Rüzgârları (Küresel Dolaşım Hücreleri)",
+    introduction: "Dünya atmosferi, ekvator ile kutuplar arasındaki ısı farkından kaynaklanan büyük ölçekli dolaşım hücreleriyle (Hadley, Ferrel, Polar) dengelenir. Bu dolaşım, alize rüzgârlarını ve ITCZ (Inter-Tropical Convergence Zone) gibi denizcilik açısından önemli kuşakları oluşturur.",
+    content: `KÜRESEL DOLAŞIM HÜCRELERİ:
+
+- Hadley hücresi (0°-30°): Ekvatorda ısınan hava yükselir, üst troposferde kutba doğru akar, ~30° enlemlerde alçalır.
+- Ferrel hücresi (30°-60°): Orta enlem dolaşımı.
+- Polar hücre (60°-90°): Kutup bölgesi dolaşımı.
+
+ITCZ (EKVATORAL KAVUŞMA KUŞAĞI):
+
+ITCZ, kuzey ve güney yarımküre alizelerinin ekvator yakınında karşılaştığı (convergence) kuşaktır. Burada hava yükselir; bol bulut, sağanak ve gök gürültülü fırtına görülür. Tarihsel olarak rüzgârın zayıf ve değişken olduğu bu bölge "doldrums" (durgunluk kuşağı) olarak anılır. ITCZ, güneşin yıllık hareketiyle mevsimsel olarak kuzey-güney kayar.
+
+ALİZE RÜZGÂRLARI (TRADE WINDS):
+
+Subtropikal yüksek basınçtan (~30°) ekvatora doğru esen, Coriolis etkisiyle saptırılan sürekli rüzgârlardır: Kuzey yarımkürede kuzeydoğu alizeleri (NE trades), güney yarımkürede güneydoğu alizeleri (SE trades). Düzenli ve güvenilir oldukları için yelkenli çağında okyanus geçişlerinin temeliydi.
+
+DİĞER KUŞAKLAR:
+
+- Subtropikal yüksekler (Horse Latitudes, ~30°): Alçalan hava, sakin ve kuru.
+- Batı rüzgârları (Westerlies, 30°-60°): Orta enlemlerde baskın batılı rüzgârlar; gezici depresyonlar bu kuşakta hareket eder.
+
+DENİZCİLİK ÖNEMİ:
+
+Rota planlamada hâkim rüzgâr kuşakları ve ITCZ'nin konumu dikkate alınır; alize kuşağı destekleyici, doldrums ise yavaşlatıcı olabilir. Mevsimsel pilot kartları (routeing charts) bu dağılımı gösterir.`,
+    bulletPoints: [
+      "Hadley/Ferrel/Polar hücreleri küresel dolaşımı oluşturur.",
+      "ITCZ: alizelerin kavuştuğu, bol yağışlı/fırtınalı, rüzgârın zayıf olduğu kuşak (doldrums).",
+      "Alizeler: KY'de NE, GY'de SE; düzenli ve güvenilir.",
+      "Westerlies kuşağında gezici depresyonlar hareket eder.",
+    ],
+    keyPoints: [
+      "ITCZ güneşle mevsimsel olarak kuzey-güney kayar.",
+      "Alize rüzgârları Coriolis etkisiyle saptırılmış sürekli rüzgârlardır.",
+      "Routeing charts hâkim rüzgâr ve ITCZ dağılımını gösterir.",
+    ],
+  },
+
+  "tsunami": {
+    title: "Tsunami ve Uzun Dalga Tehlikeleri",
+    introduction: "Tsunami, deniz tabanındaki ani bir yer değiştirmenin (deprem, denizaltı heyelanı, volkanik patlama) su kütlesine aktardığı enerjiyle oluşan, çok uzun dalga boylu deniz dalgalarıdır. Rüzgâr dalgalarından temelde farklıdır ve kıyıda yıkıcı olabilir.",
+    content: `OLUŞUM NEDENLERİ:
+
+- Denizaltı depremleri (en yaygın neden; özellikle dalma-batma zonlarındaki büyük depremler).
+- Denizaltı heyelanları.
+- Volkanik patlamalar ve çöküntüler.
+- Nadiren göktaşı etkisi.
+
+TSUNAMİNİN ÖZELLİKLERİ:
+
+Tsunami, rüzgâr dalgasından farklı olarak çok uzun dalga boyuna (yüzlerce km) ve uzun periyoda (dakikalar) sahiptir. Açık (derin) denizde dalga yüksekliği genellikle 1 metrenin altındadır ve fark edilmez; ancak hızı çok yüksektir (derin okyanusta jet uçağı hızına yaklaşır). Sığ suya/kıyıya yaklaşırken hız düşer, enerji korunduğu için dalga yüksekliği dramatik biçimde artar (shoaling) ve kıyıyı basar.
+
+AÇIK DENİZ vs KIYI:
+
+Derin denizdeki bir gemi, altından geçen tsunamiyi genellikle hissetmez (yükseklik küçük, dalga boyu çok uzun). Bu yüzden tsunami uyarısı alındığında, limandaki/sığ sudaki gemiler için en güvenli seçenek çoğunlukla DERİN SUYA AÇILMAKtır. Liman içinde kalmak, ani su çekilmesi/basması ve akıntılar nedeniyle çok tehlikelidir.
+
+UYARI İŞARETLERİ VE SİSTEMLER:
+
+- Doğal uyarı: Kıyıda denizin aniden olağandışı çekilmesi yaklaşan tsunaminin habercisi olabilir.
+- Tsunami uyarı merkezleri (örn. Pasifik Tsunami Uyarı Merkezi) sismik veriyle uyarı yayınlar; MSI (NAVTEX/SafetyNET) kanallarıyla denizcilere ulaşır.
+
+DENİZCİ TEDBİRLERİ:
+
+Uyarı alındığında: liman otoritesi talimatları izlenir; mümkünse derin suya açılır; demirleme/bağlama yeniden değerlendirilir; kıyı ve liman içi akıntı/su seviyesi değişimlerine karşı hazırlıklı olunur.`,
+    bulletPoints: [
+      "Neden: denizaltı depremi, heyelan, volkanik patlama.",
+      "Açık denizde küçük yükseklik + çok yüksek hız; kıyıda shoaling ile büyür.",
+      "Derin denizdeki gemi tsunamiyi genelde hissetmez.",
+      "Uyarıda limandaki gemiler için genelde en güvenlisi derin suya açılmaktır.",
+    ],
+    keyPoints: [
+      "Tsunami rüzgâr dalgası değildir; çok uzun dalga boyu ve periyoda sahiptir.",
+      "Denizin ani çekilmesi doğal bir tsunami uyarı işaretidir.",
+      "Uyarılar MSI (NAVTEX/SafetyNET) ile yayınlanır.",
+    ],
+    warnings: [
+      "Tsunami uyarısında limanda/sığ suda kalmak yıkıcı olabilir",
+      "Denizin olağandışı çekilmesinde derhal yüksek/güvenli alana veya derin suya yönelinmelidir",
+    ],
+  },
+
+  "ship-icing": {
+    title: "Gemi Üst Yapı Buzlanması (Ice Accretion)",
+    introduction: "Gemi buzlanması, soğuk havada deniz serpintisi, sis veya yağışın gemi üst yapısında donarak birikmesidir. Üstte biriken buz, ağırlık merkezini yükseltip ağırlık ekleyerek stabiliteyi ciddi biçimde tehdit eder ve küçük gemilerde devrilmeye yol açabilir.",
+    content: `BUZLANMA TÜRLERİ:
+
+1. Deniz serpintisi buzlanması (sea spray icing): En tehlikeli türdür. Soğuk havada (deniz suyu donma noktası altı hava + soğuk deniz) dalga ve serpinti güverteye/üst yapıya çarpıp donar. Hızlı ve yoğun birikim yapar.
+2. Atmosferik buzlanma: Donan yağmur (freezing rain), sis veya kar kaynaklı; serpinti buzlanmasından genellikle daha yavaştır.
+
+OLUŞUM KOŞULLARI:
+
+Tehlike, hava sıcaklığı yaklaşık -2°C altına indiğinde ve özellikle kuvvetli rüzgâr + düşük deniz sıcaklığı bir aradayken artar. Sıcaklık düştükçe ve rüzgâr arttıkça buzlanma hızı yükselir.
+
+STABİLİTEYE ETKİSİ:
+
+- Üst yapıda biriken buz, ek ağırlığı YÜKSEKTE oluşturur → G (ağırlık merkezi) yükselir → GM (metasantr yüksekliği) azalır.
+- Asimetrik buzlanma kalıcı meyil (list) yaratabilir.
+- Serbest yüzey benzeri etkiler ve rüzgâr alanı artışı durumu kötüleştirir.
+- Küçük balıkçı gemileri ve düşük fribordlu tekneler en yüksek risktedir; tarihte buzlanma kaynaklı devrilmeler yaşanmıştır.
+
+MÜCADELE:
+
+- Buz fiziksel olarak temizlenir (tokmak, kazıma, sıcak su/buhar); önce üst kısımlardaki buz öncelikli alınır.
+- Rota/hız değiştirilerek serpinti azaltılır (rüzgâr/dalgaya göre yönelim).
+- Şiddetli buzlanma tahmininde bölgeden kaçınılır; buzlanma uyarıları (MSI) izlenir.
+
+İLGİLİ DÜZENLEME:
+
+Yüksek enlem/kutup seferlerinde Polar Code, buzlanmayı operasyonel risk olarak ele alır ve buz temizleme imkânı/teçhizatını gerektirir.`,
+    bulletPoints: [
+      "Sea spray icing en tehlikeli ve hızlı birikim yapan türdür.",
+      "Risk: hava ≈ -2°C altı + kuvvetli rüzgâr + soğuk deniz.",
+      "Üstte biriken buz G'yi yükseltir, GM'yi azaltır; asimetrik buz list yaratır.",
+      "Küçük/düşük fribordlu gemiler en yüksek risktedir.",
+    ],
+    keyPoints: [
+      "Buzlanma üst yapıda yüksekte ağırlık ekleyerek stabiliteyi bozar.",
+      "Buz öncelikli olarak üst kısımlardan temizlenir.",
+      "Rota/hız ile serpinti azaltılır; buzlanma uyarıları izlenir.",
+    ],
+    warnings: [
+      "Hızlı buzlanma küçük gemilerde kısa sürede devrilmeye yol açabilir",
+      "Üst yapıdaki buz birikimi geciktirilmeden temizlenmelidir",
     ],
   },
 };

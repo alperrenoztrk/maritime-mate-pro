@@ -105,6 +105,7 @@ const econTopics: EconMainTopic[] = [
       { id: "ship-acquisition", title: "Gemi edinim yöntemleri", hasContent: true },
       { id: "ship-valuation", title: "Gemi değerleme yöntemleri", hasContent: true },
       { id: "depreciation", title: "Amortisman hesaplaması", hasContent: true },
+      { id: "ship-sale-purchase", title: "Gemi alım-satımı (S&P) ve Saleform/MOA", hasContent: true },
     ],
   },
   {
@@ -116,6 +117,7 @@ const econTopics: EconMainTopic[] = [
       { id: "hull-machinery", title: "Tekne ve Makine (H&M) sigortası", hasContent: true },
       { id: "pi-club", title: "P&I Kulüpleri ve sorumluluk sigortası", hasContent: true },
       { id: "cargo-insurance", title: "Yük sigortası ve klozlar", hasContent: true },
+      { id: "general-average", title: "Müşterek Avarya ve York-Antwerp Kuralları", hasContent: true },
     ],
   },
   {
@@ -127,6 +129,7 @@ const econTopics: EconMainTopic[] = [
       { id: "charter-party", title: "Charter party formları", hasContent: true },
       { id: "bill-of-lading", title: "Konşimento (Bill of Lading)", hasContent: true },
       { id: "maritime-claims", title: "Denizcilik alacakları ve tahkim", hasContent: true },
+      { id: "incoterms", title: "Incoterms ve teslim şekilleri", hasContent: true },
     ],
   },
 ];
@@ -1395,6 +1398,120 @@ Başlıca tahkim merkezleri:
       "Mürettebat alacakları en öncelikli denizcilik alacaklarındandır",
       "Tahkim kararları 1958 New York Sözleşmesi ile uluslararası uygulanabilir",
       "Charter party'deki arbitration klozu yargı yetkisini belirler",
+    ],
+  },
+
+  // =====================================================
+  // EK BAŞLIKLAR (2. tur domain taraması)
+  // =====================================================
+  "incoterms": {
+    title: "Incoterms ve Teslim Şekilleri",
+    introduction: "Incoterms (International Commercial Terms), ICC tarafından yayımlanan ve uluslararası ticarette alıcı ile satıcı arasında masraf, risk ve sorumlulukların hangi noktada el değiştirdiğini standartlaştıran teslim kurallarıdır. Navlun, sigorta ve risk kimde sorusunun yanıtını belirler.",
+    content: `NEDEN ÖNEMLİ?
+
+Incoterms; taşıma masrafını kimin ödeyeceğini, malın hasar/kayıp riskinin alıcıya hangi noktada geçtiğini ve sigortayı kimin yaptıracağını net biçimde tanımlar. Denizcilikte navlun sözleşmesi ve konşimento ile birlikte ticari akışın temelini oluşturur.
+
+DENİZ TAŞIMACILIĞINA ÖZGÜ TERİMLER:
+
+- FAS (Free Alongside Ship): satıcı malı gemi yanına getirir; bu noktadan sonra risk alıcıda.
+- FOB (Free On Board): satıcı malı gemiye yükler; mal gemide olunca risk alıcıya geçer. Navlun ve sigorta alıcıya aittir.
+- CFR (Cost and Freight): satıcı navlunu öder ama risk yükleme limanında alıcıya geçer.
+- CIF (Cost, Insurance and Freight): CFR + satıcı asgari sigortayı da yaptırır; risk yine yükleme limanında geçer.
+
+TÜM TAŞIMA TÜRLERİ İÇİN TERİMLER:
+
+EXW, FCA, CPT, CIP, DAP, DPU, DDP — konteyner/multimodal taşımada FOB/CIF yerine FCA/CIP önerilir.
+
+RİSK ve MASRAF AYRIMI:
+
+Önemli incelik: bazı terimlerde (CFR/CIF) satıcı navlunu/sigortayı ödese de RİSK çok daha erken (yüklemede) alıcıya geçer; masrafın ve riskin geçiş noktaları farklı olabilir.`,
+    bulletPoints: [
+      "Incoterms masraf, risk ve sigorta sorumluluğunun geçiş noktasını tanımlar.",
+      "FAS/FOB/CFR/CIF deniz taşımacılığına özgü terimlerdir.",
+      "Konteyner/multimodalde FCA/CIP tercih edilir.",
+      "CFR/CIF'te risk yüklemede geçer ama navlun satıcıdadır.",
+    ],
+    keyPoints: [
+      "Incoterms 'navlun/sigorta/risk kimde?' sorusunu standartlaştırır.",
+      "Masraf ve risk geçiş noktaları farklı olabilir (özellikle CIF/CFR).",
+      "ICC tarafından yayımlanır ve sözleşmede açıkça atıf yapılır.",
+    ],
+  },
+  "general-average": {
+    title: "Müşterek Avarya ve York-Antwerp Kuralları",
+    introduction: "Müşterek avarya (General Average – GA), ortak deniz sefer macerasını (gemi + yük) bir tehlikeden kurtarmak için bilerek ve makul biçimde yapılan olağanüstü fedakârlık ve masrafların, kurtarılan tüm menfaatler (gemi, yük, navlun) arasında oranlı olarak paylaşılması ilkesidir.",
+    content: `TEMEL İLKE:
+
+Bir tehlike anında (örn. karaya oturmada yükün bir kısmının denize atılması, yangında suyla verilen hasar, kurtarma için yapılan masraf) yapılan kasıtlı fedakârlık yalnızca bir tarafa yüklenmez; çünkü fedakârlık ortak menfaati kurtarmak içindir. Bu nedenle masraf, kurtarılan tüm değerler arasında paylaştırılır.
+
+GA OLABİLMESİNİN KOŞULLARI:
+
+- Gerçek ve ortak bir tehlike bulunmalı.
+- Fedakârlık kasıtlı (voluntary) ve makul (reasonable) olmalı.
+- Olağanüstü (extraordinary) nitelikte olmalı.
+- Ortak macerayı kurtarma amacı taşımalı.
+
+YORK-ANTWERP KURALLARI:
+
+GA hesaplaması ve uygulaması, uluslararası kabul görmüş York-Antwerp Rules (YAR) çerçevesinde yapılır. Çoğu charter party ve konşimento, GA'nın YAR'a göre düzenleneceğine atıf yapar.
+
+UYGULAMA SÜRECİ:
+
+- Average Adjuster (avarya dispeççisi) fedakârlık ve masrafları belirler, katkı değerlerini hesaplar.
+- Genel avarya garantisi/depozitosu (GA bond / GA deposit) alınmadan yük teslim edilmeyebilir.
+- Yük sahipleri genellikle yük sigortası kapsamında GA katkısını karşılar.
+
+ÖZEL AVARYA İLE FARKI:
+
+Özel avarya (particular average), yalnızca zarar gören tarafın üstlendiği kazara hasardır; paylaştırılmaz. GA ise kasıtlı fedakârlığın paylaşımıdır.`,
+    bulletPoints: [
+      "GA: ortak tehlikede yapılan kasıtlı fedakârlığın tüm menfaatlerce paylaşımı.",
+      "Koşullar: gerçek ortak tehlike + kasıtlı + makul + olağanüstü.",
+      "York-Antwerp Rules GA hesaplama çerçevesidir.",
+      "Average adjuster katkı paylarını hesaplar; GA bond/deposit alınır.",
+    ],
+    keyPoints: [
+      "GA kasıtlı fedakârlığı paylaştırır; özel avarya paylaştırılmaz.",
+      "Çoğu sözleşme GA için York-Antwerp Rules'a atıf yapar.",
+      "GA katkısı genellikle yük sigortasınca karşılanır.",
+    ],
+  },
+  "ship-sale-purchase": {
+    title: "Gemi Alım-Satımı (S&P) ve Saleform/MOA",
+    introduction: "İkinci el gemi alım-satımı (Sale and Purchase – S&P), denizcilik piyasasının önemli bir koludur. İşlem, üzerinde anlaşılan bir satış sözleşmesi (Memorandum of Agreement – MOA, genellikle Norwegian Saleform) ile yürütülür.",
+    content: `S&P SÜRECİ:
+
+1. Piyasa araştırması ve aday gemi belirleme (broker aracılığıyla).
+2. Fiyat ve şartlarda ön anlaşma (recap / subjects).
+3. MOA imzalanması (genellikle standart form: Norwegian Saleform – NSF, ya da Nipponsale vb.).
+4. Geminin muayenesi (inspection): belge incelemesi, fiziksel survey ve sınıf kayıtları.
+5. Sualtı/havuz muayenesi (divers' inspection veya drydocking) — gerekiyorsa.
+6. Teslim (delivery): paranın ödenmesi ve geminin protokolle (Protocol of Delivery and Acceptance) devri.
+
+MOA'NIN TEMEL UNSURLARI:
+
+- Fiyat ve ödeme şartları (deposit – genellikle %10 emanet hesaba).
+- Muayene şartları ve red hakkı.
+- Teslim yeri/zamanı ve teslimde geminin durumu (sınıf, sertifikalar geçerli, ipotek/haciz yok).
+- Bunker/yağ devri, stok devri.
+
+TESLİMDE DİKKAT:
+
+Gemi 'class maintained, free of encumbrances' (sınıfı korunmuş, ipotek/hacizden ari) teslim edilmelidir. Bayrak değişimi, yeni tescil ve ipotek terkini teslim anında eşgüdümlü yürütülür.
+
+DEĞERLEME İLE İLİŞKİ:
+
+S&P fiyatı; piyasa durumu, geminin yaşı/tipi/durumu ve gelir potansiyeline göre belirlenir (gemi değerleme yöntemleriyle bağlantılıdır).`,
+    bulletPoints: [
+      "S&P işlemi MOA (genellikle Norwegian Saleform) ile yürütülür.",
+      "Muayene + sınıf/belge incelemesi + (gerekirse) havuzlama yapılır.",
+      "Deposit genellikle %10; teslim Protocol of Delivery ile olur.",
+      "Gemi sınıfı korunmuş ve ipotek/hacizden ari teslim edilir.",
+    ],
+    keyPoints: [
+      "MOA fiyat, muayene, teslim ve durum şartlarını belirler.",
+      "Teslimde bayrak/tescil/ipotek işlemleri eşgüdümlü yürür.",
+      "S&P fiyatı gemi değerleme ve piyasa ile bağlantılıdır.",
     ],
   },
 };

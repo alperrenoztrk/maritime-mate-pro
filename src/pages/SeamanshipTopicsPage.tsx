@@ -134,6 +134,9 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
       { id: "stopping-distance", title: "Durma mesafesi ve Crash Stop", hasContent: true },
       { id: "squat-effect", title: "Squat etkisi ve sığ su etkileri", hasContent: true },
       { id: "bank-effect", title: "Kıyı etkisi (bank effect) ve kanal seyri", hasContent: true },
+      { id: "helm-orders", title: "Dümen komutları ve standart manevra emirleri", hasContent: true },
+      { id: "mob-maneuvers", title: "Denize adam düştü manevraları (Williamson/Anderson/Scharnow)", hasContent: true },
+      { id: "ship-handling-tugs", title: "Yanaşma/kalkış manevraları ve römorkör kullanımı", hasContent: true },
     ],
   },
   {
@@ -147,6 +150,8 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
       { id: "hatch-covers", title: "Ambar kapakları ve tipleri", hasContent: true },
       { id: "ventilation-systems", title: "Havalandırma sistemleri", hasContent: true },
       { id: "deck-maintenance", title: "Güverte bakımı ve boyama", hasContent: true },
+      { id: "pilot-transfer", title: "Pilot transferi ve pilot çarmıhı (pilot ladder)", hasContent: true },
+      { id: "means-of-access", title: "Gemiye iniş-biniş donanımı (gangway/accommodation ladder)", hasContent: true },
     ],
   },
   {
@@ -2976,6 +2981,213 @@ Etkili emniyet kültürünün göstergeleri:
       "ISM Code SOLAS IX ile zorunludur",
       "Emniyet kültürü = emniyetin kişisel değer olarak benimsenmesi",
       "Risk değerlendirmesi tüm operasyonlar öncesi yapılmalıdır",
+    ],
+  },
+
+  // =====================================================
+  // EK BAŞLIKLAR (2. tur domain taraması)
+  // =====================================================
+  "helm-orders": {
+    title: "Dümen Komutları ve Standart Manevra Emirleri",
+    introduction: "Köprüüstünde manevra sırasında dümenci (helmsman) ile komutu veren zabit (conning officer) arasındaki iletişim, yanlış anlaşılmayı önlemek için standart dümen komutları (helm orders) ve kapalı döngü teyit ile yürütülür. Komutlar IMO SMCP ile standartlaştırılmıştır.",
+    content: `STANDART DÜMEN KOMUTLARI:
+
+- "Hard a-port / Hard a-starboard": dümen sonuna kadar iskele/sancak.
+- "Port / Starboard twenty (ten/five)": belirtilen derecede iskele/sancak dümen.
+- "Midships": dümeni ortala (sıfır).
+- "Steady / Steady as she goes": gemiyi o anki baş yönünde tut.
+- "Ease to ten/five": dümen açısını belirtilen değere azalt.
+- "Meet her": dönüşü durdurmak için karşı dümen ver.
+- "Nothing to port / Nothing to starboard": o tarafa düşmesine izin verme.
+- "Steer one-eight-zero": belirtilen pruvaya (rakam rakam) dümen tut.
+
+KAPALI DÖNGÜ (CLOSED-LOOP) TEYİT:
+
+Dümenci her komutu yüksek sesle tekrarlar (read-back), uygular ve uygulandığını bildirir (örn. "Hard a-starboard" → uygular → "Wheel hard a-starboard"; ortalı/istenen başa gelince "Steady on one-eight-zero"). Bu döngü, komutun doğru alındığını ve uygulandığını garanti eder.
+
+SAYILARIN OKUNUŞU:
+
+Pruva ve dümen açıları rakam rakam okunur (örn. 5 derece "five", 180 "one-eight-zero") — yanlış anlamayı önlemek için.
+
+MAKİNE (TELGRAF) KOMUTLARI:
+
+Hız için telgraf komutları kullanılır (Dead Slow / Slow / Half / Full Ahead-Astern, Stop). Manevra başlangıcında dümenci ve makine arasında komut disiplini test edilir (steering gear testi dahil).
+
+SORUMLULUK:
+
+Conning officer net ve tek komut verir; aynı anda yalnız bir kişi komut verir. Pilot gemideyken bile sorumluluk kaptandadır; komutlar yine standart biçimde verilir ve teyit edilir.`,
+    bulletPoints: [
+      "Komutlar IMO SMCP'ye göre standarttır (Hard a-port, Midships, Steady...).",
+      "Dümenci her komutu tekrarlar ve uygulandığını bildirir (closed-loop).",
+      "Pruva/açılar rakam rakam okunur (180 = one-eight-zero).",
+      "Aynı anda yalnız bir kişi komut verir.",
+    ],
+    keyPoints: [
+      "Standart komut + read-back yanlış manevrayı önler.",
+      "'Steady as she goes' o anki başı korumak demektir.",
+      "Pilot gemideyken de sorumluluk kaptandadır.",
+    ],
+    warnings: [
+      "Belirsiz/çift komut çatışma veya karaya oturmaya yol açabilir",
+      "Komut teyidi (read-back) atlanmamalıdır",
+    ],
+  },
+  "mob-maneuvers": {
+    title: "Denize Adam Düştü Manevraları (Williamson/Anderson/Scharnow)",
+    introduction: "Denize adam düşmesi (Man Overboard – MOB) durumunda gemiyi en kısa sürede kazazedeye geri getirmek için standart dönüş manevraları kullanılır. Doğru manevra seçimi; görüş, durumun fark edilme zamanı ve geminin manevra kabiliyetine bağlıdır.",
+    content: `İLK ANDA YAPILACAKLAR:
+
+1. "Man overboard!" diye bağır, köprüyü uyar.
+2. Dümeni kazazedenin düştüğü tarafa bas (pervane akıntısını kişiden uzaklaştırmak için).
+3. Can simidini (ışıklı/dumanlı) derhal denize at — referans noktası oluşturur.
+4. MOB butonuna bas (GPS mevkii işaretlenir), gözcü ata (kişiyi gözden kaybetme).
+5. Genel alarm, makine stand-by, kurtarma botu ekibini hazırla, çevre gemileri uyar.
+
+DÖNÜŞ MANEVRALARI:
+
+- Williamson Turn: Dümen olay tarafına basılır; pruva ilk rotadan ~60° saptıktan sonra dümen karşı tarafa sonuna kadar basılır; gemi eski izine (track) ters yönde döner. Görüşün kısıtlı olduğu veya kazazedenin gözden kaybolduğu durumlarda en güvenilirdir; gemiyi tam ters rotada eski iz üzerine getirir. En kesin ama nispeten yavaştır.
+
+- Anderson Turn (tek dönüş): Dümen olay tarafına sonuna kadar basılır ve gemi ~250° dönerek doğrudan kazazedeye yönelir. En hızlı dönüştür; kazazede görülüyorsa ve gemi çevik ise idealdir, ancak yaklaşmada hassasiyet gerektirir.
+
+- Scharnow Turn: Kazazede bir süre önce düşmüş ve gemiden uzaktaysa kullanılır; gemiyi kendi dümen suyu (wake) üzerine geri getirir. Olay hemen fark edilmemişse uygundur; anlık müdahale için uygun değildir.
+
+YAKLAŞMA VE KURTARMA:
+
+Kazazedeye rüzgârüstünden yaklaşılıp gemi rüzgâraltında siper olacak şekilde durdurulur; kurtarma botu veya kurtarma donanımıyla alınır. IAMSAR ve gemi prosedürleri esas alınır.`,
+    bulletPoints: [
+      "İlk an: dümeni olay tarafına bas, can simidi at, MOB butonu, gözcü.",
+      "Williamson: eski iz üzerine ters rota; kısıtlı görüş/gözden kayıpta en güvenilir.",
+      "Anderson: tek/hızlı dönüş; kazazede görünüyorsa ve gemi çevikse ideal.",
+      "Scharnow: kendi dümen suyuna döner; geç fark edilen MOB'da kullanılır.",
+    ],
+    keyPoints: [
+      "Dümen kazazede tarafına basılır (pervaneyi uzaklaştırmak için).",
+      "Manevra seçimi görüş, zaman ve manevra kabiliyetine bağlıdır.",
+      "Kazazedeye rüzgârüstünden yaklaşılır; gemi siper olur.",
+    ],
+    warnings: [
+      "Gözcü kazazedeyi sürekli işaret etmeli; gözden kaybetmek kurtarmayı zorlaştırır",
+      "Scharnow anlık müdahale için uygun değildir",
+    ],
+  },
+  "ship-handling-tugs": {
+    title: "Yanaşma/Kalkış Manevraları ve Römorkör Kullanımı",
+    introduction: "Liman manevralarında (yanaşma/berthing ve kalkış/unberthing) gemi; römorkörler, baş/kıç iticiler (thruster), halatlar ve makine/dümen kullanımıyla kontrol edilir. Rüzgâr, akıntı ve dönme noktası (pivot point) etkileri dikkatle yönetilir.",
+    content: `DÖNME NOKTASI (PIVOT POINT):
+
+Gemi döndüğünde etrafında döndüğü nokta ileri harekette pruvaya yakın, geri harekette kıça yakındır. Dümen ve römorkör kuvvetlerinin yarattığı dönme momenti pivot point'e göre değerlendirilir.
+
+RÖMORKÖR KULLANIMI:
+
+- Römorkörler baştan ve/veya kıçtan bağlanır (make-fast) veya iter (push) / çeker (pull).
+- Yanaşmada römorkörler gemiyi iskeleye paralel getirir ve yaklaşmayı yavaşlatır.
+- Escort römorkörü, dar suda dümen/itki desteği sağlar.
+- GIRTING (girding/tripping) RİSKİ: çeken römorkörün, çekme halatı bordaya doğru açılandığında devrilmesi riskidir; ölümcül olabilir. Hız ve halat açısı kontrol edilir, gerekirse halat hızla bırakılır (gog rope/quick release).
+
+İTİCİLER (THRUSTER):
+
+Baş/kıç iticiler, düşük hızda gemiyi yanal hareket ettirir veya döndürür; ileri hız arttıkça etkinlikleri azalır. İticiler römorkör ihtiyacını azaltabilir.
+
+HALAT KULLANIMI (SPRING):
+
+Spring halatları (ileri/geri spring) gemiyi iskele boyunca ileri-geri hareketten alıkoyar ve makineyle birlikte gemiyi iskeleye sıvıştırma (springing on/off) için kullanılır.
+
+RÜZGÂR/AKINTI VE PLANLAMA:
+
+Yanaşma planı; rüzgâr, akıntı, gelgit, su derinliği (UKC) ve iskele düzenine göre yapılır. Manevra brifingi (master/pilot exchange) ile roller ve plan paylaşılır.`,
+    bulletPoints: [
+      "Pivot point: ileride pruvaya, geride kıça yakındır; dönme momentini belirler.",
+      "Römorkör itme/çekme/escort; girting (devrilme) riski ölümcüldür.",
+      "Baş/kıç iticiler düşük hızda etkilidir, hız arttıkça zayıflar.",
+      "Spring halatları + makine ile gemi iskeleye sıvıştırılır.",
+    ],
+    keyPoints: [
+      "Manevra rüzgâr, akıntı, UKC ve pivot point dikkate alınarak planlanır.",
+      "Girting riskine karşı halat açısı/hız kontrol edilir, hızlı bırakma hazırdır.",
+      "Master/pilot exchange ile plan ve roller paylaşılır.",
+    ],
+    warnings: [
+      "Römorkör girting'i (devrilme) ani ve ölümcül olabilir",
+      "Aşırı hızda römorköre bağlanmak halat kopması/girting riskini artırır",
+    ],
+  },
+  "pilot-transfer": {
+    title: "Pilot Transferi ve Pilot Çarmıhı (Pilot Ladder)",
+    introduction: "Kılavuz kaptanın (pilot) gemiye güvenli iniş-binişi, SOLAS Bölüm V Kural 23 ve IMO standartlarına uygun donatılan pilot çarmıhı (pilot ladder) ile sağlanır. Hatalı donatım, ölümcül düşme kazalarının başlıca nedenidir.",
+    content: `YASAL DAYANAK:
+
+SOLAS V/23 ve ilgili IMO kararları, pilot transfer donanımının yapısını, donatımını ve bakımını düzenler. Donanım onaylı ve işaretli olmalıdır.
+
+PİLOT ÇARMIHI DONATIMI:
+
+- Çarmıh, su yüzeyinden binme noktasına kadar düzgün gerilmiş ve gemiye sağlam bağlanmış olmalı.
+- Basamaklar yatay, eşit aralıklı; kaymaz; bükülmeyi önleyen geniş basamaklar (spreader steps) belirli aralıklarla.
+- Yan halatlar (side ropes) sağlam ve uygun çapta.
+- Tutamak kolları (man-ropes), uygun aydınlatma (gece), can simidi (ışıklı), heaving line ve yakında bir gözcü/sorumlu zabit bulunmalı.
+
+KOMBİNE ÇARMIH (COMBINATION LADDER):
+
+Binme yüksekliği (freeboard) 9 metreyi aştığında, pilot çarmıhı bir borda iskelesi (accommodation ladder) ile birlikte kombine düzende kullanılır; geçiş noktası güvenli ve düzgün olmalı.
+
+SORUMLU ZABİT VE GÜVENLİK:
+
+Transfer sırasında sorumlu bir zabit gözetim yapar; köprüyle telsiz iletişimi kurulur. Gemi pilota uygun rüzgâraltı (lee) oluşturacak şekilde manevra eder. Donanım her kullanım öncesi kontrol edilir; arızalı çarmıh kullanılmaz.`,
+    bulletPoints: [
+      "SOLAS V/23 ve IMO standartlarına uygun, onaylı donanım kullanılır.",
+      "Spreader steps, sağlam yan halatlar, man-rope, aydınlatma, can simidi şart.",
+      "Freeboard > 9 m ise kombine çarmıh (accommodation + pilot ladder).",
+      "Sorumlu zabit gözetir; gemi pilota rüzgâraltı oluşturur.",
+    ],
+    keyPoints: [
+      "Hatalı pilot çarmıhı donatımı ölümcül düşme kazalarının başlıca nedenidir.",
+      "Donanım her kullanım öncesi kontrol edilir; arızalıysa kullanılmaz.",
+      "Transfer sırasında köprüyle iletişim ve gözetim zorunludur.",
+    ],
+    warnings: [
+      "Gevşek/aşınmış çarmıh veya yanlış spreader pilotun düşmesine yol açabilir",
+      "Can simidi ve heaving line transfer noktasında hazır bulundurulmalıdır",
+    ],
+  },
+  "means-of-access": {
+    title: "Gemiye İniş-Biniş Donanımı (Gangway/Accommodation Ladder)",
+    introduction: "Personel ve ziyaretçilerin gemiye güvenli iniş-binişi; borda iskelesi (accommodation ladder) veya gangway ile sağlanır. SOLAS II-1/3-9, güvenli erişim araçlarını (means of access) düzenler.",
+    content: `DONANIM TÜRLERİ:
+
+- Accommodation ladder (borda iskelesi): gemi bordasından rıhtıma/su seviyesine inen, eğimli, korkuluklu merdiven.
+- Gangway (iskele): gemi ile rıhtım arasına yatay/az eğimli kurulan geçiş köprüsü.
+
+GÜVENLİK GEREKSİNİMLERİ (SOLAS II-1/3-9):
+
+- Donanım onaylı, SWL'si işaretli ve sertifikalı olmalı.
+- İki yanda sağlam korkuluk (handrail/stanchion) bulunmalı.
+- Altına güvenlik ağı (safety net) gerilmeli (düşmeyi yakalamak için).
+- Uygun aydınlatma sağlanmalı.
+- Eğim açısı güvenli sınırlar içinde tutulmalı; gelgitle birlikte ayarlanmalı.
+
+GANGWAY NÖBETİ VE EMNİYET:
+
+- Gangway watch (güverte nöbetçisi) giriş-çıkışı kontrol eder (ISPS güvenliği dâhil).
+- Geçiş noktasında ışıklı can simidi + halat (lifebuoy with line) hazır bulundurulur.
+- Aşırı yük bindirilmez (SWL/kişi sayısı sınırı).
+- Bağlantı uçları düşmeye karşı emniyete alınır; gelgit/draft değişiminde konum/eğim sık kontrol edilir.
+
+BAKIM:
+
+Halatlar/teller, mafsallar, basamaklar ve korkuluklar düzenli kontrol edilir; aşınmış donanım kullanılmaz ve kayıt tutulur.`,
+    bulletPoints: [
+      "Accommodation ladder (eğimli merdiven) ve gangway (yatay geçiş) kullanılır.",
+      "SOLAS II-1/3-9: korkuluk, güvenlik ağı, aydınlatma, işaretli SWL.",
+      "Geçişte ışıklı can simidi + halat hazır bulundurulur.",
+      "Gelgit/draft değişiminde konum ve eğim sık kontrol edilir.",
+    ],
+    keyPoints: [
+      "Güvenli erişim (means of access) SOLAS gereğidir ve sertifikalıdır.",
+      "Altındaki güvenlik ağı düşmeye karşı koruma sağlar.",
+      "Gangway nöbeti giriş-çıkış ve güvenlik kontrolünü sağlar.",
+    ],
+    warnings: [
+      "Güvenlik ağı/korkuluk olmadan kullanım düşme/boğulma riski yaratır",
+      "Gelgitle ayarlanmayan iskele tehlikeli eğime gelebilir",
     ],
   },
 };

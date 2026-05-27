@@ -232,4 +232,202 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       "Kapalı döngü teyit (read back / say again) yanlış anlamayı önler.",
     ],
   },
+
+  "Fonetik Alfabe ve Telsiz Konuşma Disiplini": {
+    title: "Fonetik Alfabe ve Telsiz Konuşma Disiplini",
+    introduction:
+      "Telsiz haberleşmesinde harf ve sayıların yanlış anlaşılması ciddi emniyet sonuçları doğurabilir. ITU/IMO tarafından standartlaştırılan fonetik alfabe (NATO alfabesi) ve procedure word'ler (prosedür sözcükleri), gürültülü ve parazitli ortamda mesajın doğru iletilmesini sağlar.",
+    sections: [
+      {
+        title: "Uluslararası Fonetik Alfabe",
+        content:
+          "Harfler tek tek söylenmek yerine standart kelimelerle kodlanır: A-Alfa, B-Bravo, C-Charlie, D-Delta, E-Echo, F-Foxtrot, G-Golf, H-Hotel, I-India, J-Juliett, K-Kilo, L-Lima, M-Mike, N-November, O-Oscar, P-Papa, Q-Quebec, R-Romeo, S-Sierra, T-Tango, U-Uniform, V-Victor, W-Whiskey, X-X-ray, Y-Yankee, Z-Zulu. Bu alfabe çağrı işaretleri (call sign), gemi adları ve kritik kelimelerin hecelenmesinde kullanılır. Örnek: 'TCA' çağrı işareti 'Tango Charlie Alfa' olarak okunur.",
+      },
+      {
+        title: "Sayıların ve Ondalıkların Okunması",
+        content:
+          "Sayılar rakam rakam okunur: 'Channel 16' → 'Channel one six'. Ondalık ayraç 'decimal' (veya bazı uygulamalarda 'point') olarak söylenir: 156.8 MHz → 'one five six decimal eight'. Yanlış anlamayı önlemek için kritik sayılar tekrar ettirilir (read back). Bu disiplin özellikle frekans/kanal, mevki (enlem-boylam), rota ve hız bilgilerinde hayati önemdedir.",
+      },
+      {
+        title: "Procedure Word'ler (Prosedür Sözcükleri)",
+        content:
+          "Standart prosedür sözcükleri konuşma trafiğini kısaltır ve netleştirir: OVER (mesajım bitti, cevap bekliyorum), OUT (haberleşme sona erdi, cevap beklemiyorum), ROGER (mesajınızı aldım), AFFIRMATIVE/NEGATIVE (evet/hayır), SAY AGAIN (tekrarlayın), I SAY AGAIN (tekrar ediyorum), READ BACK (geri okuyun), STANDBY (bekleyin), WILCO (anladım ve uygulayacağım), CORRECTION (düzeltme). 'OVER' ve 'OUT' asla birlikte kullanılmaz.",
+        bulletPoints: [
+          "OVER: mesaj bitti, cevap bekleniyor.",
+          "OUT: haberleşme bitti, cevap beklenmiyor (OVER ile birlikte kullanılmaz).",
+          "SAY AGAIN: tekrar isteme; 'repeat' kullanılmaz (askeri çağrışım).",
+          "READ BACK / I READ BACK: kritik mesajın doğruluğunu teyit eder.",
+        ],
+      },
+      {
+        title: "Kanal ve Konuşma Disiplini",
+        content:
+          "Telsizde gereksiz uzun konuşma, kanal işgali ve standart dışı ifadeler emniyeti düşürür. Konuşmadan önce kanal dinlenir (başka trafik var mı?), basılı tut-konuş (PTT) düğmesine basıldıktan kısa bir an sonra konuşulur, cümleler kısa ve standart tutulur. Köprüüstü-köprüüstü manevra haberleşmesinde SMCP ifadeleri ve kapalı döngü teyit (closed-loop) kullanılır. Mesaj formatı genellikle: çağrılan istasyon adı + 'this is' + kendi adı + mesaj + OVER.",
+      },
+    ],
+    keyPoints: [
+      "NATO fonetik alfabesi harf karışıklığını önler (Alfa, Bravo, Charlie...).",
+      "Sayılar rakam rakam, ondalık 'decimal' olarak okunur.",
+      "OVER ve OUT birlikte kullanılmaz; 'say again' tercih edilir.",
+      "Kritik bilgiler read back ile teyit edilir.",
+    ],
+  },
+
+  "Telsiz Nöbeti ve Radyo Log Defteri": {
+    title: "Telsiz Nöbeti ve Radyo Log Defteri",
+    introduction:
+      "GMDSS gemileri belirli kanal ve frekansları sürekli dinlemek (nöbet/watch) ve haberleşme olaylarını radyo log defterine kaydetmekle yükümlüdür. Doğru nöbet ve kayıt disiplini, tehlike çağrılarının kaçırılmamasını ve denetimlerde uyumun kanıtlanmasını sağlar.",
+    sections: [
+      {
+        title: "Sürekli Nöbet (Continuous Watch) Yükümlülükleri",
+        content:
+          "SOLAS Bölüm IV gereği gemi, seyir halindeyken şu nöbetleri sürekli tutar: VHF Ch.70 DSC otomatik izleme; sefer alanına göre MF Ch.2187.5 kHz DSC ve/veya HF DSC tehlike frekansları; NAVTEX (518 kHz) otomatik alım; ve uygun olduğunda Inmarsat MSI alımı. Ch.16 sesli dinleme, DSC'ye geçişten sonra da pek çok gemide sürdürülür. Nöbet, ekipmanın açık ve doğru ayarlı tutulmasıyla otomatik olarak sağlanır; operatör alarmlara tepki vermekle yükümlüdür.",
+      },
+      {
+        title: "Radyo Log Defteri (Radio Log)",
+        content:
+          "Tüm tehlike, aciliyet ve emniyet haberleşmeleri; cihaz testleri (DSC test çağrısı, EPIRB/SART testi, batarya kontrolü); ve önemli olaylar tarih-saat (UTC) ile radyo log defterine kaydedilir. Kayıtlar, kimin nöbette olduğunu ve hangi işlemin yapıldığını gösterir. Yanlış alarm iptalleri de kayda geçer. Log defteri PSC denetiminde ilk kontrol edilen belgelerdendir.",
+        bulletPoints: [
+          "Tehlike/aciliyet/emniyet trafiği UTC ile kaydedilir.",
+          "Haftalık DSC test çağrısı ve EPIRB/SART testleri loglanır.",
+          "Batarya ve ekipman durumu kontrolleri kayıt altına alınır.",
+          "Yanlış alarm ve iptali mutlaka kaydedilir.",
+        ],
+      },
+      {
+        title: "Güç Kaynağı ve Yedekleme",
+        content:
+          "GMDSS ekipmanı ana güç, acil güç (jeneratör) ve yedek güç kaynağı (akü/batarya) ile beslenir. Yedek akü, ana ve acil güç kesildiğinde GMDSS ekipmanını belirli bir süre (genellikle 1 veya 6 saat) çalıştıracak kapasitede olmalıdır. Akü durumu düzenli test edilir ve sonuçlar loglanır. Antenler, sigortalar ve bağlantılar fiziksel olarak kontrol edilir.",
+      },
+      {
+        title: "Operatör Sorumluluğu",
+        content:
+          "Atanmış bir radyo haberleşme sorumlusu (genellikle bir güverte zabiti), tehlike anında haberleşmeyi yürütmekle görevlidir. Nöbet sırasında DSC alarmı geldiğinde operatör derhal değerlendirir, gerekiyorsa Ch.16'ya geçer ve prosedürü uygular. Personelin GOC/ROC belgesi ve düzenli tatbikat bu sorumluluğun ön koşuludur.",
+      },
+    ],
+    keyPoints: [
+      "VHF Ch.70 DSC, MF/HF DSC ve NAVTEX sürekli nöbet tutulur (SOLAS IV).",
+      "Tüm tehlike/test/önemli olaylar UTC ile radyo log'a kaydedilir.",
+      "Yedek akü ana/acil güç kesilince GMDSS'i belirli süre besler.",
+      "Radyo log PSC denetiminde ilk kontrol edilen belgelerdendir.",
+    ],
+  },
+
+  "Inmarsat ve Uydu Haberleşme Sistemleri": {
+    title: "Inmarsat ve Uydu Haberleşme Sistemleri",
+    introduction:
+      "Kıyıdan uzakta (A3 deniz alanı) gemiler, tehlike ve genel haberleşme için uydu sistemlerine dayanır. Inmarsat ve uydu temelli MSI yayını, açık deniz seyrinin haberleşme omurgasını oluşturur. Son yıllarda GMDSS uydu sağlayıcılarına Iridium da eklenmiştir.",
+    sections: [
+      {
+        title: "Inmarsat Sistemi ve Kapsama",
+        content:
+          "Inmarsat, jeostatik (yer-sabit) uydularla yaklaşık 70°K – 70°G enlemleri arasını (A3 alanı) kapsar; kutuplar (A4) kapsama dışıdır. Jeostatik yörünge nedeniyle çok yüksek enlemlerde uydu ufka çok alçaldığından bağlantı zorlaşır. GMDSS kapsamında Inmarsat-C, tehlike alarmı, MSI alımı ve mesajlaşma için tanınan bir hizmettir.",
+      },
+      {
+        title: "Inmarsat-C ve Fleet/FleetBroadband",
+        content:
+          "Inmarsat-C, düşük hızlı ama güvenilir bir store-and-forward (depola-ilet) mesaj sistemidir; metin tabanlı tehlike alarmı, e-posta, telex benzeri mesajlaşma ve EGC (Enhanced Group Call) ile MSI alımı sağlar. Küçük omnidirectional (her yöne) anten kullanır; gemi yalpalasa da bağlantı korunur. Fleet ve FleetBroadband ise daha yüksek bant genişliği sunan, ses + IP veri (internet) hizmetleri sağlayan sistemlerdir; operasyonel ve idari haberleşme, hava/rota verisi indirme için kullanılır.",
+        bulletPoints: [
+          "Inmarsat-C: düşük hızlı, store-and-forward, tehlike + MSI (EGC) + mesaj.",
+          "FleetBroadband: yüksek hızlı ses/IP veri, operasyonel haberleşme.",
+          "Inmarsat-C anteni omnidirectional; stabilize anten gerektirmez.",
+        ],
+      },
+      {
+        title: "EGC: SafetyNET ve FleetNET",
+        content:
+          "EGC (Enhanced Group Call), Inmarsat-C üzerinden grup çağrısı yayınıdır. SafetyNET, MSI (seyir/meteoroloji uyarıları, SAR bilgisi) yayınında kullanılan uluslararası hizmettir ve NAVTEX kapsamı dışındaki açık deniz alanlarında MSI'nin temel kaynağıdır. FleetNET ise ticari/idari grup mesajları (filo duyuruları) içindir. SafetyNET mesajları coğrafi alana (NAVAREA/METAREA) göre adreslenebilir.",
+      },
+      {
+        title: "Iridium ve GMDSS'e Eklenmesi",
+        content:
+          "Iridium, alçak yörüngeli (LEO) uydu takımyıldızıyla KUTUPLAR DAHİL tüm dünyayı kapsar; bu nedenle A4 alanında da hizmet verebilir. IMO, Iridium'u GMDSS uydu hizmet sağlayıcısı olarak tanımıştır (GMDSS hizmeti onaylı terminallerle sunulur). Bu, özellikle kutup sularında (Polar Code) haberleşme kapsamasını genişletir.",
+      },
+    ],
+    keyPoints: [
+      "Inmarsat jeostatik uydularla A3 (~70°K-70°G) kapsar; kutuplar (A4) hariç.",
+      "Inmarsat-C tehlike + MSI (EGC/SafetyNET) + mesaj; FleetBroadband yüksek hızlı veri.",
+      "SafetyNET açık denizde MSI'nin temel kaynağıdır (NAVTEX dışı alanlar).",
+      "Iridium LEO takımyıldızı kutuplar dahil küresel kapsama sağlar (A4).",
+    ],
+  },
+
+  "Görsel İşaretleşme: Bayraklar ve Mors Lambası": {
+    title: "Görsel İşaretleşme: Bayraklar ve Mors Lambası",
+    introduction:
+      "Telsiz haberleşmesinin yanı sıra denizciler, telsiz sessizliği veya arıza durumunda da iletişim kurabilmek için görsel işaretleşme yöntemlerini bilmek zorundadır. Uluslararası İşaret Kodu (International Code of Signals) bayraklar, mors lambası ve ses ile mesaj iletimini standartlaştırır.",
+    sections: [
+      {
+        title: "Uluslararası İşaret Kodu (ICS)",
+        content:
+          "International Code of Signals (ICS), dil engelini aşmak için tasarlanmış, özellikle emniyet ve seyir konularını kapsayan standart bir koddur. 26 harf bayrağı, 10 rakam flaması ve yardımcı flamalar ile tek harfli, iki harfli ve üç harfli kodlanmış anlamlar iletilir. Mesajlar bayrakla (flag hoist), mors lambasıyla veya sesle iletilebilir.",
+      },
+      {
+        title: "Tek Harfli İşaretlerden Önemli Örnekler",
+        content:
+          "Bazı tek harfli bayrak işaretleri acil ve sık kullanıldığından ezbere bilinmelidir. Örnekler: A (Alfa) – 'Dalgıcım var, yavaş ve dikkatli geç'; B (Bravo) – 'Tehlikeli yük yüklüyor/boşaltıyor/taşıyorum'; D (Delta) – 'Beni uzak tutun, güçlükle manevra yapıyorum'; G (Golf) – 'Kılavuz istiyorum'; H (Hotel) – 'Gemimde kılavuz var'; O (Oscar) – 'Denize adam düştü' (Man overboard); P (Papa/Blue Peter) – limanda 'gemi denize çıkmak üzere'; Q (Quebec) – 'Gemim sağlıklı, serbest pratika talep ediyorum'; U (Uniform) – 'Tehlikeye doğru gidiyorsunuz'; W (Whiskey) – 'Tıbbi yardım istiyorum'.",
+        bulletPoints: [
+          "O (Oscar): Denize adam düştü (man overboard).",
+          "G: 'Kılavuz istiyorum' — H: 'Gemimde kılavuz var'.",
+          "Q (Quebec): serbest pratika talebi.",
+          "U: 'Tehlikeye doğru gidiyorsunuz' — uyarı.",
+        ],
+      },
+      {
+        title: "Mors Lambası (Aldis Lamp) ile Haberleşme",
+        content:
+          "Mors lambası (signalling/Aldis lamp), ışığın kısa (dot) ve uzun (dash) yakılmasıyla mors alfabesi üzerinden mesaj iletir. Çağrı işareti, gemiler arası kısa mesaj ve telsiz arızasında alternatif iletişim için kullanılır. Alıcı, anladığını her kelime/harf grubundan sonra teyit eder; anlamadığında tekrar ister. Gece görüş ve karartma (blackout) koşullarında dahi kullanılabilir olması önemli bir avantajdır.",
+      },
+      {
+        title: "Diğer Görsel İşaretler",
+        content:
+          "Semafor (kollarla/bayraklarla işaret) tarihsel olarak kullanılmıştır ancak günümüzde nadirdir. Ayrıca COLREG kapsamındaki gündüz işaretleri (toplar, koniler, silindirler) ve seyir fenerleri de görsel iletişimin bir parçasıdır; bunlar geminin durumunu (demirde, kumandadan aciz, balıkçılık vb.) bildirir. Görsel işaretleşme bilgisi, STCW kapsamında köprüüstü zabitinden beklenen bir yetkinliktir.",
+      },
+    ],
+    keyPoints: [
+      "International Code of Signals dil engelini aşan standart işaret kodudur.",
+      "Tek harfli işaretler (O=MOB, G/H=kılavuz, Q=pratika) ezbere bilinmelidir.",
+      "Mors lambası telsiz arızasında ve karartmada alternatif iletişim sağlar.",
+      "Görsel işaretleşme STCW köprüüstü yetkinliğinin parçasıdır.",
+    ],
+  },
+
+  "Telsiz Mevzuatı ve Operatör Lisansları": {
+    title: "Telsiz Mevzuatı ve Operatör Lisansları",
+    introduction:
+      "Deniz telsiz haberleşmesi, ITU Radyo Tüzüğü (Radio Regulations), SOLAS Bölüm IV ve STCW çerçevesinde düzenlenir. Gemi telsiz istasyonunun ruhsatı ve operatörün yeterlilik belgesi, yasal ve emniyetli haberleşmenin ön koşuludur.",
+    sections: [
+      {
+        title: "ITU Radyo Tüzüğü ve Frekans Yönetimi",
+        content:
+          "ITU (Uluslararası Telekomünikasyon Birliği) Radyo Tüzüğü, deniz hizmetine ayrılan frekans bantlarını, tehlike/çağrı frekanslarını ve kullanım kurallarını belirler. Gemi telsizi yalnızca tahsis edilen frekans/kanallarda ve izin verilen güçte yayın yapabilir. Tehlike frekanslarında (Ch.16, Ch.70, 2182/2187.5 kHz vb.) gereksiz yayın yasaktır. Yanlış/kötü niyetli tehlike çağrısı (false distress) ciddi yaptırımlara tabidir.",
+      },
+      {
+        title: "Gemi İstasyon Ruhsatı ve Kimlikler",
+        content:
+          "Her gemi telsiz istasyonu, bayrak devleti idaresince verilen bir İstasyon Ruhsatı (Ship Station Licence) ile çalışır. Gemiye benzersiz kimlikler atanır: Çağrı işareti (call sign), MMSI (Maritime Mobile Service Identity – DSC ve AIS'te kullanılır) ve gerekiyorsa Inmarsat numarası. Bu kimliklerin doğru programlanması (özellikle MMSI) DSC çağrılarının ve EPIRB tescilinin doğruluğu için kritiktir.",
+        bulletPoints: [
+          "Call sign: geminin telsiz çağrı işareti.",
+          "MMSI: DSC ve AIS'te kullanılan 9 haneli benzersiz kimlik.",
+          "EPIRB, geminin kimliğiyle ilişkili olarak tescil edilir (registration).",
+        ],
+      },
+      {
+        title: "Operatör Yeterlilik Belgeleri",
+        content:
+          "GMDSS ekipmanını kullanacak personel uygun belgeye sahip olmalıdır: GOC (General Operator's Certificate) – tüm deniz alanları ve tüm GMDSS ekipmanı için; ROC (Restricted Operator's Certificate) – yalnızca A1 (VHF) alanında çalışan gemiler için. Ayrıca daha eski/özel sertifikalar (örn. LRC/SRC gibi eğlence/kısa menzil belgeleri) farklı kapsamlar için vardır. STCW, köprüüstü zabitlerinin GMDSS yetkinliğini ve İngilizce (SMCP dahil) yeterliliğini şart koşar.",
+      },
+      {
+        title: "Gizlilik, Kayıt ve Denetim",
+        content:
+          "Telsiz haberleşmesinde haberleşme gizliliği (öğrenilen mesajların ifşa edilmemesi) yasal bir ilkedir; tehlike trafiği bunun istisnasıdır. İstasyon ruhsatı, operatör belgeleri ve radyo log defteri gemide bulundurulur ve PSC denetiminde kontrol edilir. Belgelerin geçerliliği, ekipmanın çalışırlığı ve kimliklerin doğruluğu uyumun temel göstergeleridir.",
+      },
+    ],
+    keyPoints: [
+      "ITU Radyo Tüzüğü deniz frekanslarını ve kullanım kurallarını belirler.",
+      "Gemi telsizi İstasyon Ruhsatı ile çalışır; MMSI/call sign doğru olmalıdır.",
+      "GOC tüm alanlar, ROC yalnızca A1 (VHF) için geçerlidir.",
+      "Yanlış tehlike çağrısı yasaktır ve yaptırıma tabidir.",
+    ],
+  },
 };

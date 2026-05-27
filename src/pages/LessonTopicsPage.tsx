@@ -139,7 +139,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Fix by Horizontal Angles", hasContent: true },
           { title: "Running fix (klasik)", hasContent: true },
           { title: "Paralel indeks", hasContent: true },
-          { title: "Kıyı seyri teknikleri", hasContent: true }
+          { title: "Kıyı seyri teknikleri", hasContent: true },
+          { title: "Demirleme ve demir tarama hesapları", hasContent: true }
         ]
       },
       {
@@ -195,9 +196,13 @@ const topicsData: Record<string, TopicContent> = {
           { title: "ETA", hasContent: true },
           { title: "Turn radius", hasContent: true },
           { title: "Elektronik seyirde çapraz kontrol", hasContent: true },
-          { title: "GPS'in seyirde kullanımı ve sensör entegrasyonu", hasContent: true },
+          { title: "GPS’in seyirde kullanımı ve sensör entegrasyonu", hasContent: true },
           { title: "Cayro pusula ve hataları", hasContent: true },
-          { title: "SOLAS V seyir cihazı taşıma gereklilikleri", hasContent: true }
+          { title: "SOLAS V seyir cihazı taşıma gereklilikleri", hasContent: true },
+          { title: "Manyetik pusula deviasyonu ve tashihi", hasContent: true },
+          { title: "Echo sounder (iskandil)", hasContent: true },
+          { title: "Hız parakete (speed log) tipleri", hasContent: true },
+          { title: "AIS - Otomatik Tanımlama Sistemi", hasContent: true }
         ]
       },
       {
@@ -209,7 +214,7 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Chart datum (LAT)", hasContent: true },
           { title: "Tidal table okuma", hasContent: true },
           { title: "Height of tide hesapları", hasContent: true },
-          { title: "12'ler kuralı", hasContent: true },
+          { title: "12’ler kuralı", hasContent: true },
           { title: "İnterpolasyon", hasContent: true },
           { title: "Tidal stream", hasContent: true },
           { title: "Set – drift", hasContent: true },
@@ -228,7 +233,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Rüzgâr + akıntı + gemi hareketi", hasContent: true },
           { title: "Dalga etkileri", hasContent: true },
           { title: "Heavy weather navigation", hasContent: true },
-          { title: "Fırtınada rota ve hız kararı", hasContent: true }
+          { title: "Fırtınada rota ve hız kararı", hasContent: true },
+          { title: "Buz ve kutup bölgesi seyri (Polar Code)", hasContent: true }
         ]
       },
       {
@@ -374,6 +380,17 @@ const topicsData: Record<string, TopicContent> = {
           { title: "NAVTEX, SafetyNET ve MSI", hasContent: true },
           { title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu", hasContent: true },
           { title: "SMCP - Standart Deniz Haberleşme İfadeleri", hasContent: true }
+        ]
+      },
+      {
+        title: "Operasyonel Haberleşme ve İşaretleşme",
+        description: "Telsiz konuşma disiplini, nöbet, uydu sistemleri, görsel işaretler ve mevzuat",
+        subTopics: [
+          { title: "Fonetik Alfabe ve Telsiz Konuşma Disiplini", hasContent: true },
+          { title: "Telsiz Nöbeti ve Radyo Log Defteri", hasContent: true },
+          { title: "Inmarsat ve Uydu Haberleşme Sistemleri", hasContent: true },
+          { title: "Görsel İşaretleşme: Bayraklar ve Mors Lambası", hasContent: true },
+          { title: "Telsiz Mevzuatı ve Operatör Lisansları", hasContent: true }
         ]
       }
     ],
