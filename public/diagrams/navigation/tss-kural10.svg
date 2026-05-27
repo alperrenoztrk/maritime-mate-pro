@@ -1,0 +1,56 @@
+<svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .lbl{font:12px sans-serif;fill:#0f172a;font-weight:600}
+      .sm{font:11px sans-serif;fill:#334155}
+      .flow{stroke:#1e3a8a;stroke-width:3;fill:none}
+      .head{fill:#1e3a8a}
+      .cross{stroke:#dc2626;stroke-width:3;fill:none}
+    </style>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#f59e0b" stroke-width="3"/>
+    </pattern>
+  </defs>
+  <rect width="700" height="460" fill="#ffffff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Trafik Ayırım Düzeni (TSS) — COLREG Kural 10</text>
+
+  <!-- zones -->
+  <rect x="40" y="60" width="60" height="350" fill="#d6c19a"/>
+  <rect x="100" y="60" width="80" height="350" fill="#e0f2fe" stroke="#94a3b8" stroke-dasharray="5 4"/>
+  <rect x="180" y="60" width="110" height="350" fill="#f8fafc" stroke="#cbd5e1"/>
+  <rect x="290" y="60" width="50" height="350" fill="url(#hatch)" stroke="#b45309"/>
+  <rect x="340" y="60" width="110" height="350" fill="#f8fafc" stroke="#cbd5e1"/>
+  <rect x="450" y="60" width="210" height="350" fill="#dbeafe"/>
+
+  <!-- flow arrows lane 1 (up) cx=235 -->
+  <g class="flow">
+    <line x1="235" y1="380" x2="235" y2="320"/><line x1="235" y1="270" x2="235" y2="210"/><line x1="235" y1="160" x2="235" y2="100"/>
+  </g>
+  <path class="head" d="M 228 332 L 235 320 L 242 332 Z"/>
+  <path class="head" d="M 228 222 L 235 210 L 242 222 Z"/>
+  <path class="head" d="M 228 112 L 235 100 L 242 112 Z"/>
+
+  <!-- flow arrows lane 2 (down) cx=395 -->
+  <g class="flow">
+    <line x1="395" y1="90" x2="395" y2="150"/><line x1="395" y1="200" x2="395" y2="260"/><line x1="395" y1="310" x2="395" y2="370"/>
+  </g>
+  <path class="head" d="M 388 138 L 395 150 L 402 138 Z"/>
+  <path class="head" d="M 388 248 L 395 260 L 402 248 Z"/>
+  <path class="head" d="M 388 358 L 395 370 L 402 358 Z"/>
+
+  <!-- crossing vessel at right angles -->
+  <line x1="150" y1="235" x2="470" y2="235" class="cross"/>
+  <path d="M 470 235 L 456 228 L 456 242 Z" fill="#dc2626"/>
+  <text x="200" y="226" class="lbl" fill="#dc2626">Geçen gemi — akışa dik (~90°)</text>
+
+  <!-- labels -->
+  <text x="70" y="430" text-anchor="middle" class="sm">Kara</text>
+  <text x="140" y="430" text-anchor="middle" class="sm">Kıyı trafik</text>
+  <text x="140" y="444" text-anchor="middle" class="sm">bölgesi</text>
+  <text x="235" y="430" text-anchor="middle" class="lbl">Şerit (akış ↑)</text>
+  <text x="315" y="430" text-anchor="middle" class="sm">Ayırım</text>
+  <text x="315" y="444" text-anchor="middle" class="sm">bölgesi</text>
+  <text x="395" y="430" text-anchor="middle" class="lbl">Şerit (akış ↓)</text>
+  <text x="555" y="430" text-anchor="middle" class="sm">Açık deniz</text>
+</svg>

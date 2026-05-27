@@ -118,16 +118,16 @@ export const stabilityQuestions: QuizQuestion[] = [
     id: 10,
     question: "Δ = 12,000 t, GM = 0.90 m ve üç slack tank için FSM toplamı 240 tm ise GMcorr kaç m'dir?",
     options: ["0.70", "0.88", "0.90", "1.10"],
-    correctAnswer: 0,
-    explanation: "FSC = ΣFSM/Δ = 240/12,000 = 0.020 m; GMcorr = 0.90 − 0.020 = 0.88 m değil! Dikkat: 240 tm/12,000 t = 0.020 m ⇒ doğru cevap 0.88 m.",
+    correctAnswer: 1,
+    explanation: "Serbest yüzey düzeltmesi FSC = ΣFSM/Δ = 240/12.000 = 0.020 m; GMcorr = GM − FSC = 0.90 − 0.020 = 0.88 m.",
     category: "Serbest Yüzey (Sayısal)"
   },
   {
     id: 11,
     question: "Δ = 12,000 t, GM = 0.90 m ve FSM toplamı 480 tm ise GMcorr kaç m'dir?",
     options: ["0.70", "0.86", "0.90", "1.02"],
-    correctAnswer: 0,
-    explanation: "FSC = 480/12,000 = 0.040 m; GMcorr = 0.90 − 0.040 = 0.86 m değil; 0.86 m seçeneği var ama hesap 0.86 m ⇒ doğru 0.86 m. (Kontrol)",
+    correctAnswer: 1,
+    explanation: "Serbest yüzey düzeltmesi FSC = ΣFSM/Δ = 480/12.000 = 0.040 m; GMcorr = GM − FSC = 0.90 − 0.040 = 0.86 m.",
     category: "Serbest Yüzey (Sayısal)"
   },
   {
@@ -148,11 +148,10 @@ export const stabilityQuestions: QuizQuestion[] = [
   },
   {
     id: 14,
-    question: "KN(30°) = 6.8 m, KG = 7.4 m ise GZ(30°) yaklaşık kaç m'dir?",
+    question: "KN(30°) = 4.05 m, KG = 7.4 m ise GZ(30°) yaklaşık kaç m'dir?",
     options: ["−0.35", "0.35", "0.60", "1.20"],
     correctAnswer: 1,
-    explanation: "GZ ≈ KN − KG·sinθ = 6.8 − 7.4·0.5 = 6.8 − 3.7 = 3.1? Dikkat: KN ve KG aynı referansa göre olmalı. Tipik formül GZ = KN − KG·sinθ ⇒ 6.8 − 7.4×0.5 = 3.1 m (opsiyon yok). Bu soru iptale uygun."
-    ,
+    explanation: "GZ = KN − KG·sinθ = 4.05 − 7.4×sin30° = 4.05 − 7.4×0.5 = 4.05 − 3.70 = 0.35 m. KN çapraz eğri (cross curve) değerinden KG·sinθ çıkarılarak doğru kaldıraç kolu bulunur.",
     category: "GZ/KN (İleri)"
   },
   {

@@ -89,7 +89,7 @@ export const tanker: ShipType = {
         op(
           "Gas freeing prosedürü",
           "Tank cleaning sonrası tankın insan girişi için ventile edilmesi.",
-          ["Inert → purge (HC < %2 LFL) → gas free (O2 21%, HC < %1 LFL).", "Sürekli gaz ölçümü.", "Enclosed space entry permit."],
+          ["Inert → purge (HC < %2 hacimce, kritik dilüsyon hattı altına) → gas free (O2 %21, HC < %1 LFL).", "Sürekli gaz ölçümü.", "Enclosed space entry permit."],
           ["ISGOTT", "IMO MSC.1/Circ.1401"],
           ["Direct ventilation patlayıcı atmosfer yaratabilir; önce purge."],
           ["Gas free certificate", "Enclosed space entry permit"],

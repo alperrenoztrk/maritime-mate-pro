@@ -175,6 +175,7 @@ const cargoTopics: CargoMainTopic[] = [
     icon: Ship,
     subtopics: [
       { id: "timber-deck", title: "Kereste güverte yükleri", hasContent: true },
+      { id: "load-line-marks", title: "Yükleme hattı işaretleri (TF/F/T/S/W/WNA)", hasContent: true },
       { id: "livestock", title: "Canlı hayvan taşımacılığı", hasContent: true },
       { id: "ro-ro-cargo", title: "Ro-Ro yük operasyonları", hasContent: true },
       { id: "steel-cargo", title: "Çelik ve ağır yük taşıma", hasContent: true },
@@ -213,6 +214,7 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  image?: string;
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
@@ -1487,6 +1489,7 @@ Maddenin IMDG Code'daki resmi taşıma adı.
   "imdg-segregation": {
     title: "Ayrım Tablosu (Segregation Table)",
     introduction: "IMDG Code segregation table, farklı sınıftaki tehlikeli yüklerin gemide birbirine olan minimum uzaklığını belirler.",
+    image: "/diagrams/seamanship/imdg-ayrim.svg",
     content: `AYRIM SEVİYELERİ (En düşükten en yükseğe):
 
 1. "AWAY FROM" (Uzak tut):
@@ -1787,6 +1790,21 @@ TAŞINAN YÜKLER:
 - Çiçekler
 - Bazı kimyasallar
 
+TİPİK TAŞIMA SICAKLIKLARI (yaklaşık, gönderici talimatı esastır):
+- Muz: +13°C ile +14°C (12°C altında soğuk hasarı/chilling injury)
+- Elma, armut: 0°C ile +1°C
+- Narenciye: +4°C ile +8°C
+- Taze (soğutulmuş) et: -1°C ile +2°C
+- Dondurulmuş et/balık: -18°C ve altı (derin dondurma -25°C)
+- Taze balık: 0°C ile +2°C
+- Süt ürünleri: +2°C ile +4°C
+- Dondurma: -25°C
+- Kesme çiçek: +2°C ile +8°C
+- İlaç/aşı: +2°C ile +8°C (bazıları -20°C)
+- Çikolata: +12°C ile +18°C
+
+Not: Kontrollü/değiştirilmiş atmosfer (CA/MA) ile O₂ ve CO₂ seviyeleri ayarlanarak meyve-sebze raf ömrü uzatılır. "Chilled" (soğutulmuş, donma noktası üstü) ile "frozen" (dondurulmuş) ayrımı kritiktir.
+
 OPERASYONEL KONTROLLER:
 1. Yükleme öncesi: PTI (Pre-Trip Inspection) kontrolü
 2. Sıcaklık ayarı: Yük spesifikasyonuna göre
@@ -1918,17 +1936,27 @@ Yapısal hasar, CSC plakası eksikliği, su sızdırması veya güvenlik riski t
 
 5. LPG TANKERLERİ:
 - Basınçlı veya yarı soğutmalı
-- Propan, bütan taşıma`,
+- Propan, bütan taşıma
+
+GAZ TAŞIYICI TANK TİPLERİ (IGC Code):
+Gaz taşıyıcılarda yük muhafaza (containment) sistemi tipi, ikincil bariyer gereksinimini belirler. -10°C altında taşınan yükler ikincil bariyer gerektirir.
+
+- Bağımsız Tip A (Independent Type A): prizmatik, gemi inşa standartlarına göre tasarlanır. TAM ikincil bariyer zorunludur. Tasarım buhar basıncı < 0.7 bar. Tam soğutmalı (fully refrigerated) LPG/etilen taşır.
+- Bağımsız Tip B (Independent Type B): ileri analiz (yorulma, çatlak ilerlemesi) ve model testi ile tasarlanır; yalnızca KISMİ ikincil bariyer (damlama tepsisi) gerekir. Klasik örnek: küresel Moss tankı; ayrıca prizmatik SPB. Tasarım basıncı < 0.7 bar.
+- Bağımsız Tip C (Independent Type C): basınçlı kap (silindirik/küresel); tasarım buhar basıncı genellikle ≥ 2 bar. İKİNCİL BARİYER GEREKMEZ. Tam basınçlı/yarı basınçlı LPG ve etilen taşıyan küçük-orta gaz gemilerinde kullanılır.
+- Membran (Membrane) tanklar: ince çelik/invar membran (birincil bariyer) izolasyonla desteklenir; TAM ikincil bariyer içerir. LNG taşıyıcılarda yaygın (GTT Mark III, NO96). Tasarım basıncı düşüktür (< 0.25 bar).`,
     bulletPoints: [
       "Ham petrol, ürün, kimyasal, LNG ve LPG ana tanker tipleridir",
       "VLCC 200,000 DWT üzeri en büyük tankerdir",
       "Kimyasal tankerler IMO Tip 1, 2 ve 3 olarak sınıflandırılır",
       "LNG tankerleri -162°C'de yük taşır",
+      "IGC tank tipleri: A (tam ikincil bariyer), B (kısmi), C (basınçlı, bariyer yok), membran (LNG)",
     ],
     keyPoints: [
       "Her tanker tipi farklı uluslararası koda tabidir",
       "Tank kaplamalar yük uyumluluğunu belirler",
       "Tanker personeli özel eğitim almalıdır (STCW)",
+      "Tip C ikincil bariyer gerektirmez; Tip A tam, Tip B kısmi bariyer ister",
     ],
   },
   "loading-discharging": {
@@ -2244,7 +2272,8 @@ TOPLAM VHM:
 Tüm ambarların VHM değerleri toplanarak geminin toplam VHM'si bulunur.
 
 GHM HESABI:
-GHM (Grain Heeling Moment) = Toplam VHM × SF (stowage factor)
+GHM (Grain Heeling Moment) = Toplam VHM ÷ SF (stowage factor, m³/t)
+Birim kontrolü: VHM (m⁴) ÷ SF (m³/t) = t·m (gerçek ağırlık momenti).
 veya
 GHM hesaplanmış ise doğrudan kullanılır.
 
@@ -2425,6 +2454,42 @@ Kereste güverte yükü taşıyan gemilere daha derin yükleme izni verilir (ek 
       "Kereste ıslandığında GM tehlikeli seviyelere düşebilir",
       "Seyir sırasında bağlama sıklıkla kontrol edilmelidir",
       "Güvenli geçiş yolları korunmalıdır",
+    ],
+  },
+  "load-line-marks": {
+    title: "Yükleme Hattı İşaretleri (TF/F/T/S/W/WNA)",
+    introduction: "Yükleme hattı (load line / Plimsoll) işaretleri, Uluslararası Yükleme Hattı Sözleşmesi (1966 / 1988 Protokolü) uyarınca geminin farklı bölge ve mevsimlerde izin verilen azami yükleme draftını (asgari fribordu) gösterir.",
+    image: "/diagrams/seamanship/load-line-isaretleri.svg",
+    content: `YÜKLEME HATTI İŞARETİ:
+Bordada amidships'te bulunan disk (halka), merkezinden geçen yatay çizgi ile Yaz (Summer, S) hattını gösterir. Diskin yanında atayan klas kuruluşunun baş harfleri yer alır. Diske bağlı dikey çizginin önündeki yatay "tarak" hatları mevsim/bölge yükleme hatlarıdır.
+
+HATLAR (yukarıdan aşağıya):
+- TF — Tropik Tatlı Su (Tropical Fresh): en derin yükleme.
+- F — Tatlı Su (Fresh)
+- T — Tropik (Tropical)
+- S — Yaz (Summer): referans hat, disk merkezinden geçer.
+- W — Kış (Winter)
+- WNA — Kış Kuzey Atlantik (Winter North Atlantic): en sığ yükleme.
+
+ARALIKLAR:
+- T, S'nin üstünde; W, S'nin altında: her biri yaz draftının 1/48'i kadar.
+- F = S + FWA (tatlı su payı); TF = T + FWA.
+- WNA = W − 50 mm (boyu ≤ 100 m gemilerde).
+- FWA (mm) = Deplasman / (4 × TPC).
+
+DECK LINE VE FRİBORD:
+Güverte hattı (deck line) ile yaz (S) hattı arasındaki düşey mesafe yaz fribordudur. Yükleme hatları, dünya haritasındaki mevsim bölgeleriyle (tropik, yaz, kış, mevsimsel bölgeler) birlikte kullanılır; gemi içinde bulunduğu bölge ve mevsime uygun hattı aşmamalıdır.`,
+    bulletPoints: [
+      "S (Yaz) hattı referanstır ve diskin merkezinden geçer",
+      "TF en derin, WNA en sığ yükleme hattıdır",
+      "T ve W, S'den yaz draftının 1/48'i kadar uzaktadır",
+      "FWA = Deplasman / (4 × TPC); tatlı suda draft FWA kadar artar",
+    ],
+    keyPoints: [
+      "Yükleme Hattı Sözleşmesi 1966 / 1988 Protokolü kapsamındadır",
+      "Disk yanındaki harfler atayan klas kuruluşunu gösterir",
+      "Gemi, bulunduğu bölge ve mevsimin yükleme hattını aşamaz",
+      "Yeterli fribord = yeterli rezerv sephiye (reserve buoyancy)",
     ],
   },
   "livestock": {
@@ -2816,11 +2881,12 @@ EK I - PETROL KİRLİLİĞİ:
 - Slop tank yönetimi
 - Oil Record Book kayıtları
 
-EK II - ZARARLI SIVI MADDELER:
-- Kimyasal tanker yük artıkları
-- Kategorilere göre boşaltma limitleri (X, Y, Z)
-- Tank yıkama gereksinimleri
-- Cargo Record Book
+EK II - ZARARLI SIVI MADDELER (NLS):
+- Kimyasal tanker yük artıkları; her madde IBC Code'da bir kategoriye atanır.
+- Kategoriler: X (büyük zarar — denize boşaltım yasak, ön yıkama/prewash zorunlu ve atık kabul tesisine verilir), Y (zarar — sınırlı boşaltım), Z (küçük zarar — daha az kısıtlı), OS (Other Substances — değerlendirilmiş ve Ek II kapsamı dışı; kirlilik riski yok).
+- Genel boşaltım koşulları: gemi yolda (≥7 knot self-propelled), kıyıdan ≥12 deniz mili, su derinliği ≥25 m, su altı çıkışından.
+- Kategori X için ön yıkama (prewash) ve kalıntı konsantrasyonu doğrulaması gereklidir.
+- Tank yıkama gereksinimleri ve Cargo Record Book kaydı.
 
 EK III - AMBALAJLI ZARARLI MADDELER:
 - Deniz kirliliği işareti (Marine Pollutant)
@@ -3147,6 +3213,18 @@ export default function CargoTopicsPage() {
                     {currentContent.introduction}
                   </p>
                 </div>
+
+                {/* Topic Image/Diagram */}
+                {currentContent.image && (
+                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                    <img
+                      src={currentContent.image}
+                      alt={currentContent.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">

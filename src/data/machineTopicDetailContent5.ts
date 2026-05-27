@@ -214,7 +214,7 @@ const content5: ContentMap = {
       introduction: "Kazan suyunun kimyasal özelliklerinin kontrol altında tutulması, kazan ömrü ve güvenliği için kritiktir. Yanlış su kimyası korozyon, kireçlenme ve köpürmeye yol açar.",
       sections: [
         { heading: "Kontrol Parametreleri", paragraphs: [], table: { headers: ["Parametre", "Kabul Aralığı", "Yüksekliğinde Etki"], rows: [["pH", "10.5-11.5", "Düşükse korozyon, yüksekse köpürme"], ["Klorür (Cl⁻)", "< 300 ppm", "Yüksekse deniz suyu sızıntısı"], ["Toplam sertlik (TH)", "< 5 ppm CaCO₃", "Yüksekse kireçlenme"], ["Fosfat (PO₄)", "20-40 ppm", "Düşükse yetersiz koruma"], ["Alkalinite (P)", "100-300 ppm CaCO₃", "Yüksekse köpürme"], ["Çözünmüş oksijen", "< 0.02 ppm", "Yüksekse pitting korozyonu"]] } },
-        { heading: "Kimyasal İşlem", paragraphs: ["Su yumuşatma: Kalsiyum ve magnezyum iyonlarının uzaklaştırılması.", "Oksijen giderme: Sodyum sülfat veya hidrazin (termal de-aerator ile birlikte).", "Alkalilik kontrolü: Sodyum hidroksit veya trisodyum fosfat dozajı.", "Blowdown: Çözünmüş katıların konsantrasyonunu kontrol etmek için kazan suyunun bir kısmının tahliye edilmesi."] }
+        { heading: "Kimyasal İşlem", paragraphs: ["Su yumuşatma: Kalsiyum ve magnezyum iyonlarının uzaklaştırılması.", "Oksijen giderme: Sodyum sülfit (Na₂SO₃) veya hidrazin (termal de-aerator ile birlikte). Sülfit, oksijenle reaksiyona girerek sülfata dönüşür.", "Alkalilik kontrolü: Sodyum hidroksit veya trisodyum fosfat dozajı.", "Blowdown: Çözünmüş katıların konsantrasyonunu kontrol etmek için kazan suyunun bir kısmının tahliye edilmesi."] }
       ],
       keyPoints: ["Günlük su testi zorunludur.", "Deniz suyu sızıntısı en tehlikeli durumdur (klorür kontrolü).", "Kimyasal dozaj otomatik veya manuel yapılabilir."]
     },
@@ -593,7 +593,7 @@ const content5: ContentMap = {
       introduction: "Annex VI, gemi emisyonlarının (SOx, NOx, GHG, ODS, VOC) kontrolünü düzenler. 2020 kükürt limiti revizyonu en önemli değişikliktir.",
       sections: [
         { heading: "Kükürt Limitleri", paragraphs: [], table: { headers: ["Bölge", "Limit (2020 sonrası)", "Yürürlük"], rows: [["Global", "%0.50 m/m", "1 Ocak 2020"], ["ECA (SOx)", "%0.10 m/m", "1 Ocak 2015"], ["Liman (AB)", "%0.10 m/m", "2010"]] } },
-        { heading: "Diğer Emisyon Kuralları", paragraphs: ["NOx: Tier I (<2000), Tier II (2011+), Tier III (ECA 2016+).", "ODS: Halonlar ve CFC kullanımı yasak; HCFC faz-out.", "Shipboard incinerator: IMO standartlarına uygun olmalı.", "VOC: Tankerlerden uçucu organik bileşik kontrolü."] }
+        { heading: "Diğer Emisyon Kuralları", paragraphs: ["NOx: Tier I (2000-2010), Tier II (2011+), Tier III (NOx ECA'da 2016+).", "ODS: Halonlar ve CFC kullanımı yasak; HCFC faz-out.", "Shipboard incinerator: IMO standartlarına uygun olmalı.", "VOC: Tankerlerden uçucu organik bileşik kontrolü."] }
       ],
       keyPoints: ["IAPP sertifikası Annex VI uyumunu belgeler.", "Scrubber kullanımında wash water deşarj kuralları uygulanır.", "Yanlış yakıt beyanı ağır cezai yaptırımlara tabidir."]
     },

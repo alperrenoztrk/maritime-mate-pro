@@ -183,6 +183,7 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  image?: string;
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
@@ -507,7 +508,7 @@ Makine dairesi ve yük ambarlarında kullanılır. Yangını oksijen konsantrasy
 
 CO₂ sistemi bileşenleri: Yüksek basınçlı CO₂ tüpleri (genellikle CO₂ odasında), pilot tüp, ana valf, alarm sistemi, dağıtım boruları ve nozullar. Makine dairesinde boşaltma öncesi 20 saniyelik sesli ve görsel ön alarm verilir.
 
-CO₂ miktarı hesabı: Makine dairesi hacminin minimum %35'i, yük ambarı hacminin minimum %30'u oranında CO₂ gereklidir. İlk 2 dakikada hacmin %85'ine ulaşmalıdır.
+CO₂ miktarı hesabı (FSS Code Bölüm 5): Makine dairesi için, en büyük makine mahallinin brüt hacminin %40'ı (kapsam/casing hariç) veya toplam hacminin %35'i (casing dahil) — hangisi büyükse o esas alınır; yük ambarları için en büyük ambar brüt hacminin %30'u oranında CO₂ gereklidir. Makine mahallinde gerekli gazın %85'i ilk 2 dakikada boşaltılabilmelidir.
 
 KÖPÜK (FOAM) SİSTEMİ:
 
@@ -637,6 +638,15 @@ Yangın söndürüldükten sonra sıcak yüzeyler soğumadan bölme açılırsa 
 
 SOLAS Bölüm III, Kural 19.3: Yangın tatbikatı en az ayda bir yapılmalıdır. Herhangi bir limandan kalkışta mürettebatın %25'inden fazlası değişmişse, kalkıştan sonraki 24 saat içinde tatbikat yapılmalıdır.
 
+ZORUNLU TATBİKAT TAKVİMİ (SOLAS III/19.3):
+- Gemiyi terk (abandon ship) tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
+- Yangın tatbikatı: yük gemilerinde ayda en az 1; yolcu gemilerinde haftada 1.
+- Her cankurtarma sandalı denize indirilip suda manevra ettirilmeli: en az 3 ayda 1.
+- Kurtarma botu (rescue boat) denize indirilip manevra ettirilmeli: mümkün olduğunca ayda 1.
+- Serbest düşüşlü (free-fall) sandal: en az 6 ayda 1 fiili veya benzetilmiş (simulated) indirme tatbikatı.
+- Kapalı alana giriş ve kurtarma tatbikatı: en az 2 ayda 1 (SOLAS III/19.3.3).
+- Her mürettebat üyesi 1 ay içinde bir gemiyi terk tatbikatına katılmalıdır.
+
 TATBİKAT İÇERİĞİ:
 
 1. Genel alarm çalınması ve mürettebatın yangın istasyonlarına toplanması
@@ -713,7 +723,7 @@ Zorunlu donanım listesi (kısmi):
 - Pusula ve deniz haritası
 - Yiyecek (10.000 kJ/kişi) ve tatlı su (3 litre/kişi)
 - İlk yardım seti
-- Piroteknik işaretler (6 paraşüt fişeği, 4 el meşalesi, 2 yüzen duman işareti)
+- Piroteknik işaretler (4 paraşüt fişeği, 6 el meşalesi, 2 yüzen duman işareti — LSA Code 4.4.8)
 - Radar reflektörü veya SART
 - El feneri ve pil
 - Denizaltı fişeği (2 adet)
@@ -744,7 +754,7 @@ SOLAS B Tipi (Atmalı): Geminin borda yüksekliğinden denize atılarak şişiri
 
 HİDROSTATİK SERBEST BIRAKMA (HRU):
 
-HRU, gemi 2-4 metre derinliğe battığında su basıncı ile otomatik olarak aktive olur. Bağlama kelepçesini serbest bırakır, sal yüzeye çıkar ve painter halatının gerilmesiyle otomatik şişer. HRU 12 ayda bir bakım ve 24 ayda bir yenilenmek zorundadır.
+HRU, gemi 2-4 metre derinliğe battığında su basıncı ile otomatik olarak aktive olur. Bağlama kelepçesini serbest bırakır, sal yüzeye çıkar ve painter halatının gerilmesiyle otomatik şişer. Can salı her 12 ayda bir yetkili serviste bakımdan geçirilir; HRU ise bakımı yapılmayan (disposable) bir parçadır ve üzerinde işaretli son kullanma tarihinde, normalde 2 yılda bir yenilenir.
 
 SAL DONANIMI:
 
@@ -757,7 +767,7 @@ BAKIM VE SERVİS:
 Şişirilebilir sallar 12 ayda bir yetkili servis istasyonunda bakıma tabi tutulmalıdır. 5 yılda bir tam test. HRU periyodik olarak değiştirilir. Bakımlar sertifikalı personel tarafından yapılmalıdır.`,
     keyPoints: [
       "HRU, gemi 2-4 m derinliğe battığında otomatik olarak salı serbest bırakır",
-      "HRU 12 ayda bir bakım, 24 ayda bir yenileme gerektirir",
+      "Can salı 12 ayda bir serviste bakım görür; HRU bakımsız (disposable) parçadır, normalde 2 yılda bir yenilenir",
       "Sallar 12 ayda bir yetkili serviste bakım görmelidir",
       "SOLAS Pack A: 24+ saat, Pack B: 24 saate kadar hayatta kalma donanımı",
     ],
@@ -798,11 +808,18 @@ Kurtarma botu, davit sistemi ile hızlıca indirilebilmelidir. SOLAS gereği 5 d
 
 SOLAS gereği gemideki her kişi için bir can yeleği, ayrıca vardiya pozisyonlarında ek yelek bulundurulmalıdır. Yolcu gemilerinde çocuk yelekleri de zorunludur.
 
-Performans gereksinimleri: Bilinci kapalı kişiyi 5 saniye içinde yüzüstü pozisyona getirebilmeli. En az 15.5 kg kaldırma kuvveti. Düdük, ışık (1 cd, 8 saat) ve retroreflektif bant ile donatılmış olmalı.
+Performans gereksinimleri: Bilinci kapalı kişiyi 5 saniye içinde ağzı su yüzeyinin üstünde kalacak şekilde yüzü yukarı (sırtüstü) güvenli pozisyona çevirebilmeli. En az 15.5 kg kaldırma kuvveti. Düdük, ışık (1 cd, 8 saat) ve retroreflektif bant ile donatılmış olmalı.
 
 CAN SİMİDİ (LIFE BUOY):
 
-Minimum 4 can simidi zorunludur (gemi uzunluğuna göre artabilir). En az 2 adedi her bordada, hızla denize bırakılabilir konumda. En az 2 adedi MOB ışığı ve otomatik duman işareti ile donatılmış. En az 1 adedi 30 metre halatlı (buoyant line).
+Asgari can simidi sayısı gemi boyuna göre belirlenir. En az 2 adedi her bordada, hızla denize bırakılabilir konumda. En az yarısı MOB (man-overboard) ışığı ile, en az 2 adedi ayrıca otomatik duman işareti ile donatılmış olmalı; en az 1 adedi 30 metre yüzer halatlı (buoyant line) olmalıdır.
+
+Asgari sayı tablosu (SOLAS III):
+- Yük gemileri (Kural 32): <100 m = 8; 100-150 m = 10; 150-200 m = 12; ≥200 m = 14.
+- Yolcu gemileri (Kural 22): <60 m = 8; 60-120 m = 12; 120-180 m = 18; 180-240 m = 24; ≥240 m = 30.
+
+PİROTEKNİK İŞARETLER (Gemi seviyesi):
+Köprüüstünde veya yakınında en az 12 paraşütlü işaret fişeği (rocket parachute flare) bulundurulur (SOLAS III/6.3). Bu, her filikada bulunan piroteknik donanımdan (4 paraşütlü işaret fişeği, 6 el maytabı, 2 yüzer duman işareti) ayrıdır.
 
 DALMA ELBİSESİ (IMMERSION SUIT):
 
@@ -1302,6 +1319,7 @@ SRU (Search and Rescue Unit): Arama ve kurtarma birimi.`,
   "sar-patterns": {
     title: "Arama Desenleri (Search Patterns)",
     introduction: "SAR operasyonlarında kullanılan arama desenleri, kayıp kişi veya nesnenin olası konumuna, arama alanının genişliğine ve mevcut araçlara göre seçilir.",
+    image: "/diagrams/seamanship/arama-desenleri.svg",
     content: `ARAMA DESENLERİ:
 
 EXPANDING SQUARE SEARCH (SS): Genişleyen kare arama. Tek araçla aramada kullanılır. Kayıp konumunun nispeten kesin bilindiği durumlarda etkilidir. Merkez noktadan başlayarak giderek büyüyen kare spiral şeklinde arama yapılır.
@@ -2263,6 +2281,17 @@ export default function SafetyTopicsPage() {
                     {currentContent.introduction}
                   </p>
                 </div>
+
+                {currentContent.image && (
+                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                    <img
+                      src={currentContent.image}
+                      alt={currentContent.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 <div className="prose prose-sm max-w-none">
                   <div className="text-foreground leading-relaxed whitespace-pre-line">

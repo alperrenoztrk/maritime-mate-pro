@@ -1738,6 +1738,21 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
         ]
       },
       {
+        title: "Deviation (Pusula Sapması) ve Tam Pusula Düzeltmesi",
+        content: "Pusula kuzeyi ile manyetik kuzey arasındaki açıya deviation (pusula sapması) denir. Deviation, geminin kendi çeliği ve elektrikli ekipmanının yarattığı yerel manyetik alandan kaynaklanır; bu nedenle gemiye özgüdür ve geminin pruva yönüne (heading) göre değişir. Her gemi için her pruvada ölçülen deviation değerleri bir deviasyon kartında (deviation card/table) tutulur. Tam dönüşüm zinciri şöyledir: Pusula Rotası → (deviation uygulanır) → Manyetik Rota → (variation uygulanır) → Hakiki Rota. Variation ile deviation'ın cebirsel toplamı toplam pusula hatasını (compass error) verir. İşaret kuralı: doğu (E) değerler pozitif, batı (W) değerler negatiftir.",
+        image: "/diagrams/navigation/pusula-duzeltme.svg",
+        imageAlt: "Hakiki, manyetik ve pusula kuzeyi; variation ve deviation açıları ile dönüşüm zinciri",
+        formula: {
+          text: "Hakiki Rota = Pusula Rotası + Deviation + Variation | Pusula Hatası = Deviation + Variation",
+          description: "Doğu (+), batı (−). Anımsatıcı: 'Hata doğu, pusula düşük; hata batı, pusula yüksek' (Error East, compass least)."
+        },
+        bulletPoints: [
+          "Örnek: Pusula Rotası 100°, deviation 3°W, variation 7°E → Hakiki Rota = 100° − 3° + 7° = 104°.",
+          "Deviation gemiye özgüdür ve pruva yönüne göre değişir; variation mevkiye bağlıdır.",
+          "Deviation deviasyon kartından okunur; pusula hatası transit/azimut gözlemiyle kontrol edilir.",
+        ]
+      },
+      {
         title: "Manyetik Kerteriz Bağıntısı",
         content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır.",
         image: yonRelativeBearing,
@@ -9998,7 +10013,7 @@ Kesişim noktası = Running Fix (10:30)
   "Radar prensibi": {
     title: "Radar Prensibi",
     introduction:
-      "Radar (Radio Detection And Ranging), mikro dalga bandında (tipik olarak 3 GHz / X-bandı veya 9 GHz / S-bandı) elektromanyetik enerji darbelerini hedef yönüne yayımlayan ve yansıyan sinyali analiz ederek hedefin mesafesini, kerterizini ve hareket bilgilerini çıkaran aktif bir algılama sistemidir. Deniz radarı, görüş mesafesinden bağımsız olarak çalışır; sis, yağmur, karanlık veya yoğun deniz püskürtüsü koşullarında bile hedef tespiti yapabilir.\n\nDenizcilik radarı, köprüüstünün en kritik elektronik aracıdır. COLREG Kural 5 ve 7 kapsamında uygun gözcülük ve çatışma riski değerlendirmesi için radar kullanımı zorunlu tutulmuştur. SOLAS Bölüm V, 500 GT ve üzeri gemilerde en az iki bağımsız radar bulundurulmasını şart koşar. Modern ARPA (Automatic Radar Plotting Aid) sistemleri, hedefleri otomatik olarak izler, CPA ve TCPA hesaplar ve çatışma riski konusunda alarm üretir.",
+      "Radar (Radio Detection And Ranging), mikro dalga bandında (tipik olarak 3 GHz / S-bandı veya 9 GHz / X-bandı) elektromanyetik enerji darbelerini hedef yönüne yayımlayan ve yansıyan sinyali analiz ederek hedefin mesafesini, kerterizini ve hareket bilgilerini çıkaran aktif bir algılama sistemidir. Deniz radarı, görüş mesafesinden bağımsız olarak çalışır; sis, yağmur, karanlık veya yoğun deniz püskürtüsü koşullarında bile hedef tespiti yapabilir.\n\nDenizcilik radarı, köprüüstünün en kritik elektronik aracıdır. COLREG Kural 5 ve 7 kapsamında uygun gözcülük ve çatışma riski değerlendirmesi için radar kullanımı zorunlu tutulmuştur. SOLAS Bölüm V, 500 GT ve üzeri gemilerde en az iki bağımsız radar bulundurulmasını şart koşar. Modern ARPA (Automatic Radar Plotting Aid) sistemleri, hedefleri otomatik olarak izler, CPA ve TCPA hesaplar ve çatışma riski konusunda alarm üretir.",
     sections: [
       {
         title: "Radar Çalışma Prensibi: Zaman-Mesafe İlişkisi",
@@ -10125,6 +10140,17 @@ Kesişim noktası = Running Fix (10:30)
           "Alarm yorgunluğu: aşırı alarm köprüüstü zabitinin önemli uyarıları görmezden gelmesine neden olabilir",
           "ECDIS Paper Chart ile çapraz kontrol edilmeli; ne ECDIS ne de kağıt harita tek başına yeterlidir",
           "ECDIS tip onayı: her ECDIS markası ayrı eğitim ve tip onayı gerektirir (STCW zorunluluğu)"
+        ]
+      },
+      {
+        title: "ENC, RNC ve Güven Bölgesi (CATZOC)",
+        content:
+          "ENC (Electronic Navigational Chart): yetkili hidrografik kurumların ürettiği, IHO S-57 veri standardına göre kodlanmış vektörel haritadır; ECDIS bunu S-52 sunum standardıyla görüntüler ve S-63 ile şifreler/korur. Yalnızca güncel ENC kullanan ECDIS, kağıt haritanın resmi yerine geçer.\n\nRNC (Raster Navigational Chart): kağıt haritanın taranmış görüntüsüdür; katman/sorgu özelliği yoktur. ENC bulunmayan bölgelerde, uygun kağıt harita yedeğiyle RCDS modunda kullanılabilir.\n\nCATZOC (Category of Zone of Confidence): ENC verisinin konum ve derinlik doğruluğunun güvenilirlik derecesidir (A1, A2, B, C, D ve U=değerlendirilmemiş). Düşük CATZOC alanlarında UKC payı artırılmalı ve dikkatli olunmalıdır.",
+        bulletPoints: [
+          "ENC = vektör (S-57/S-52/S-63); RNC = raster (taranmış kağıt harita).",
+          "Resmi kağıtsız seyir için: tip onaylı ECDIS + güncel ENC + onaylı yedek (ikinci ECDIS veya kağıt).",
+          "CATZOC yıldız sembolüyle gösterilir; düşük güven = daha fazla UKC payı.",
+          "İki ana mod: Rota Planlama (route planning) ve Rota İzleme (route monitoring).",
         ]
       },
       {
@@ -11329,7 +11355,7 @@ Kesişim noktası = Running Fix (10:30)
         bulletPoints: [
           "NUC (Not Under Command): manevra kabiliyetini yitirmiş gemi — en üst öncelik",
           "RAM (Restricted in Ability to Manoeuvre): manevra kabiliyeti kısıtlı gemi",
-          "CBD (Constrained by Draught): derin su gemisi — yalnızca dar su yollarında geçerli",
+          "CBD (Constrained by Draught): draftı nedeniyle, içinde seyrettiği suyun derinliği ve genişliği ile orantılı olarak rotasından sapma kabiliyeti ciddi ölçüde kısıtlı motorlu gemi (Kural 3(h)) — yalnızca dar kanallarla sınırlı değildir",
           "Balıkçı (fishing): olta değil, ağ veya trol kullanan gemi",
           "Yelken altında seyreden gemi: motor gemisine karşı öncelikli, kendi üstündeki sınıflara yol verir"
         ]
@@ -11342,6 +11368,81 @@ Kesişim noktası = Running Fix (10:30)
       "Kural 7–8: çatışma riski sabit pusula yönü + azalan mesafeyle belirlenir; manevra erken, büyük açılı ve net yapılır.",
       "Kural 2: iyi denizcilik uygulamaları — kurallara körü körüne bağlılık yerine durumu bütünüyle değerlendiren kaptan profili.",
       "Hiyerarşi: NUC > RAM > CBD > Balıkçı > Yelken > Motor gemisi; yol verme yükümlülüğü alt sınıftaki gemidedir."
+    ]
+  },
+  "Emniyetli hız (Kural 6)": {
+    title: "Emniyetli Hız (COLREG Kural 6)",
+    introduction:
+      "COLREG Kural 6, her geminin her zaman emniyetli (güvenli) bir hızla seyretmesini ister; öyle ki çatışmayı önlemek için uygun ve etkili önlem alabilsin ve mevcut koşullara uygun bir mesafede durabilsin. 'Emniyetli hız' mutlak bir sayı değil, koşullara bağlı bir değerlendirmedir. Kural, tüm gemiler için dikkate alınacak etkenleri ve ayrıca radarlı gemiler için ek etkenleri sıralar.",
+    sections: [
+      {
+        title: "Tüm Gemiler İçin Dikkate Alınacak Etkenler",
+        content:
+          "Emniyetli hız belirlenirken aşağıdaki etkenler birlikte değerlendirilir. Görüş azaldıkça, trafik yoğunlaştıkça veya manevra alanı daraldıkça emniyetli hız düşer.",
+        bulletPoints: [
+          "Görüş durumu (sis, yağmur, karanlık).",
+          "Trafik yoğunluğu (balıkçı veya diğer gemi kümeleri dâhil).",
+          "Geminin manevra kabiliyeti — özellikle durma mesafesi ve dönme yeteneği.",
+          "Gece, kıyı ışıkları veya kendi ışıklarının geri saçılımı gibi arka plan ışığı.",
+          "Rüzgâr, deniz ve akıntı durumu ile seyir tehlikelerine yakınlık.",
+          "Draftın mevcut su derinliğine oranı (squat ve dipten emniyet payı).",
+        ],
+      },
+      {
+        title: "Radarlı Gemiler İçin Ek Etkenler",
+        content:
+          "Radar bulunan gemilerde, emniyetli hız belirlenirken radarın yetenek ve sınırlamaları da hesaba katılır. Radarın varlığı tek başına yüksek hızı haklı çıkarmaz.",
+        bulletPoints: [
+          "Radarın özellikleri, verimliliği ve sınırlamaları.",
+          "Kullanılan radar menzil kademesinin getirdiği kısıtlar.",
+          "Deniz durumu, hava ve diğer parazitlerin radar tespitine etkisi.",
+          "Küçük tekne, buz ve yüzen cisimlerin yeterli menzilde tespit edilememe ihtimali.",
+          "Radarla tespit edilen gemilerin sayısı, konumu ve hareketi.",
+          "Radar mesafe ölçümünün görüşün daha kesin değerlendirilmesini sağlayabilmesi.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Emniyetli hız = uygun önlem alıp uygun mesafede durabilecek hız.",
+      "Görüş, trafik, manevra kabiliyeti, arka plan ışığı, hava ve UKC dikkate alınır.",
+      "Radar varlığı yüksek hızı haklı çıkarmaz; radar sınırlamaları da değerlendirilir.",
+      "Kısıtlı görüşte emniyetli hız belirgin biçimde düşürülür (Kural 19 ile birlikte).",
+    ]
+  },
+  "Çatışmadan kaçınma manevrası (Kural 8)": {
+    title: "Çatışmadan Kaçınma Manevrası (COLREG Kural 8)",
+    introduction:
+      "COLREG Kural 8, çatışmayı önlemek için yapılan manevranın nasıl olması gerektiğini düzenler. Önlem; koşullar elveriyorsa olumlu (belirgin), zamanında ve iyi gemicilik kurallarına uygun olmalıdır. Manevra, karşı gemiden görsel veya radarla kolayca fark edilecek kadar büyük olmalı; küçük ve ardışık değişikliklerden kaçınılmalıdır.",
+    sections: [
+      {
+        title: "Manevranın Nitelikleri",
+        content:
+          "Kural 8'in temel ilkesi, niyetin karşı gemi tarafından açıkça anlaşılmasıdır. Bu nedenle rota ve/veya hız değişiklikleri yeterince büyük yapılır.",
+        bulletPoints: [
+          "8(a): Önlem koşullar elveriyorsa olumlu, zamanında (ample time) ve iyi gemicilikle alınır.",
+          "8(b): Rota ve/veya hız değişikliği, görsel veya radarla kolayca fark edilecek kadar büyük olmalı; ardışık küçük değişiklikler yapılmaz.",
+          "8(c): Yeterli deniz alanı varsa, tek başına rota değişikliği en etkili önlem olabilir — yeter ki zamanında, belirgin olsun ve yeni bir yakın geçiş durumu yaratmasın.",
+          "8(d): Önlem, karşı gemiyi emniyetli mesafede geçirecek şekilde olmalı; etkisi gemi tamamen geçip uzaklaşana kadar kontrol edilir.",
+          "8(e): Gerekirse hız azaltılır veya makineyi durdurup/tornistanla tüm yol kesilir.",
+        ],
+      },
+      {
+        title: "Engel Olmama (8(f)) ve Stand-on İlişkisi",
+        content:
+          "Bazı kurallar bir gemiye 'diğerinin geçişini engellememe' yükümlülüğü verir. Kural 8(f) bunun nasıl uygulanacağını açıklar ve yol hakkına sahip (stand-on) geminin sorumluluklarını ortadan kaldırmaz.",
+        bulletPoints: [
+          "Geçişi engellememekle yükümlü gemi, yeterli deniz alanı bırakmak için erken önlem alır.",
+          "Bu yükümlülük, risk doğduğunda diğer kurallara uyma zorunluluğunu kaldırmaz.",
+          "Geçişi engellenmeyecek gemi de çatışma riski doğduğunda kurallara tam olarak uymakla yükümlüdür.",
+          "Şüphe halinde hızı azaltmak veya durmak meşru ve çoğu zaman en güvenli seçenektir.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Manevra olumlu, zamanında ve iyi gemicilikle yapılır (8(a)).",
+      "Rota/hız değişikliği büyük ve fark edilebilir olmalı; ardışık küçük değişikliklerden kaçınılır (8(b)).",
+      "Emniyetli mesafede geçiş sağlanmalı; etki 'geçip uzaklaşana kadar' kontrol edilir (8(d)).",
+      "Gerekirse hız kesilir veya tüm yol durdurulur (8(e)).",
     ]
   },
   "Crossing": {
@@ -11452,7 +11553,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "COLREG Kural 13: Tanım ve Sınırlar",
         content:
-          "Kural 13(b) overtaking’i geometrik olarak tanımlar: bir gemi, diğerinin kıç doğrultusu ışığının (sternlight, 135° kapsam alanı) içinden yaklaşıyorsa overtaking durumu söz konusudur. Gündüzleri bu 22.5° kıç omuz yayının içinden yaklaşmak anlamına gelir. Kural 13(c) ise kritik bir hüküm içerir: overtaking durumundan şüphe edildikçe, gemi overtaking durumunda olduğunu varsaymalıdır. Kural 13(d) ise geçme manevrası başladıktan sonra iki geminin konumsal ilişkisi crossing konumuna geçse bile Kural 13’ün geçerliliğini koruduğunu açıklar — böylece overtaking gemisi kural değiştirme yoluyla sorumluluğu üzerinden atamaz.",
+          "Kural 13(b) overtaking’i geometrik olarak tanımlar: bir gemi, diğerine kemere hattının (beam) 22.5°’den daha gerisinden — yani yalnızca kıç fenerini (sternlight, 135° kapsam alanı) görebileceği bir doğrultudan — yaklaşıyorsa overtaking durumu söz konusudur. Geceleri bu, diğer geminin yan fenerlerini değil yalnızca kıç fenerini görmek demektir; gündüzleri ise kemerenin 22.5° kıçından daha geriden yaklaşmak anlamına gelir. Kural 13(c) ise kritik bir hüküm içerir: overtaking durumundan şüphe edildikçe, gemi overtaking durumunda olduğunu varsaymalıdır. Kural 13(d) ise geçme manevrası başladıktan sonra iki geminin konumsal ilişkisi crossing konumuna geçse bile Kural 13’ün geçerliliğini koruduğunu açıklar — böylece overtaking gemisi kural değiştirme yoluyla sorumluluğu üzerinden atamaz.",
         image: aisTargets,
         imageAlt: "Overtaking — Kural 13 geçme manevrası senaryosu",
         bulletPoints: [
@@ -11480,8 +11581,8 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Kural 9 (Dar Kanallar), overtaking senaryosunu kısıtlayan ek düzenlemeler içerir. Dar kanallarda geçme manevrası yalnızca güvenli ve pratik olduğunda yapılabilir; geçilen geminin de manevra için yeterli alan açması gerekmektedir. Bu durum, overtaking gemisinin Kural 9(e)(i) uyarınca ses sinyali vermesini — 2 uzun 1 kısa — ve geçilen geminin onay vermesini — 2 uzun 2 kısa — zorunlu kılar. Geçilen gemi itiraz edebilir: 5 kısa hızlı düdük tehlike veya şüphe sinyali olarak kullanılır. Pilot alınan sularda pilot, overtaking kararını limancı otoritesi kuralları ve kanal trafik düzenlemeleri çerçevesinde verir; ancak sorumluluk yasal olarak hâlâ kaptana aittir.",
         formula: {
-          text: "Overtaking Tanımı: Açı < 22.5° kıç omuz yayı (her iki taraf) → Overtaking durumu",
-          description: "22.5°, kıç ışığının kapsam yarı açısıdır; bu açı içinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir"
+          text: "Overtaking Tanımı: Kemere hattının 22.5°’den daha gerisinden (kıç fenerinin 135° yayı içinden) yaklaşma → Overtaking durumu",
+          description: "22.5° kıç-omuz hattı, yan fenerlerin (her biri 112.5°) bittiği ve yalnızca kıç fenerinin (135°) görüldüğü sınırdır; bu hattın gerisinden yaklaşan gemi overtaking gemisidir ve her zaman give-way yükümlülüğündedir"
         }
       }
     ],
@@ -11554,6 +11655,267 @@ Kesişim noktası = Running Fix (10:30)
       "Sis prosedürleri: makine hazır, ses sinyalleri başlat, ek gözcü al, tüm fenerleri yak.",
       "ARPA CPA/TCPA analizi kısıtlı görüşte temel navigasyon aracıdır; seçici manevra prensibine uyulur.",
       "Görsel temas başlar başlamaz Kural 19'dan çıkılır ve ilgili COLREG kuralı devreye girer."
+    ]
+  },
+  "Seyir fenerleri: yay ve menzil": {
+    title: "Seyir Fenerleri: Yay ve Menzil (COLREG Kural 20-22)",
+    introduction:
+      "Seyir fenerleri, gece ve kısıtlı görüşte bir geminin tipini, durumunu ve hareket yönünü diğer gemilere bildiren temel görsel iletişim aracıdır. COLREG Kural 20, fenerlerin gün batımından gün doğumuna ve kısıtlı görüşte gösterilmesini zorunlu kılar. Kural 21 her fenerin renk ve ufuk üzerindeki görünürlük yayını (sektör), Kural 22 ise gemi boyuna göre asgari görünürlük menzilini tanımlar. Yay ve menzilleri doğru bilmek, karşılaşılan geminin aspektini (baş/kıç/borda) ve yol verme yükümlülüğünü gece doğru değerlendirmenin ön koşuludur.",
+    sections: [
+      {
+        title: "Fener Yayları (Kural 21)",
+        content:
+          "Her seyir feneri, ufuk üzerinde belirli bir yay (sektör) boyunca kesintisiz ışık gösterecek şekilde yerleştirilir. Yan fenerlerin dış sınırı ile silyon fenerinin dış sınırı kemere hattının 22.5° kıçında birleşir; bu hattın gerisi yalnızca kıç fenerinin yayıdır. Yan + silyon (225°) ile kıç (135°) yaylarının toplamı 360°'yi tamamlar.",
+        image: "/diagrams/navigation/seyir-fenerleri-yaylar.svg",
+        imageAlt: "Seyir fenerleri kapsam yayları: silyon 225°, yan fenerler 112.5°, kıç feneri 135°",
+        bulletPoints: [
+          "Silyon (direk) feneri — beyaz, 225°: baş bodoslamadan her iki yanda kemerenin 22.5° kıçına kadar.",
+          "Yan fenerler — sancak yeşil / iskele kırmızı, her biri 112.5°: baş bodoslamadan ilgili yanda kemerenin 22.5° kıçına kadar.",
+          "Kıç feneri — beyaz, 135°: tam kıçtan her iki yanda 67.5°.",
+          "Yedekleme (towing) feneri — sarı, 135°: kıç feneri ile aynı özelliklerde, onun üzerinde gösterilir.",
+          "Her yönden görünür (all-round) fener — 360°: demir, NUC, RAM, CBD, balıkçı, kılavuz vb. işaretlerde kullanılır.",
+          "Çakar (flashing) fener — 360°, dakikada 120 veya daha fazla düzenli çakış.",
+        ],
+      },
+      {
+        title: "Görünürlük Menzilleri (Kural 22)",
+        content:
+          "Asgari görünürlük menzili gemi boyuna göre belirlenir; fener şiddeti bu menzili sağlayacak şekilde hesaplanır (Ek I). 50 m ve üzeri gemilerde silyon feneri en uzaktan görülmesi gereken fenerdir (6 NM). Aşağıdaki değerler asgari (minimum) değerlerdir.",
+        bulletPoints: [
+          "≥ 50 m gemiler: silyon 6 NM, yan fenerler 3 NM, kıç 3 NM, yedekleme 3 NM, all-round 3 NM.",
+          "12 m – 50 m gemiler: silyon 5 NM (boy < 20 m ise 3 NM), yan fenerler 2 NM, kıç 2 NM, yedekleme 2 NM, all-round 2 NM.",
+          "< 12 m gemiler: silyon 2 NM, yan fenerler 1 NM, kıç 2 NM, yedekleme 2 NM, all-round 2 NM.",
+          "Belirsiz, kısmen batık yedeklenen gemi/cisimler: beyaz all-round fener 3 NM.",
+        ],
+      },
+      {
+        title: "Tipik Fener Düzenleri (Kural 23-31)",
+        content:
+          "Fenerlerin renk, sayı ve düşey diziliş kombinasyonu geminin tipini ve durumunu belirtir. Aşağıda en sık karşılaşılan düzenler özetlenmiştir; 'kırmızı üstünde kırmızı' (NUC) gibi kalıplar ezberlenmelidir.",
+        bulletPoints: [
+          "Motorlu gemi yolda (Kural 23): silyon feneri/fenerleri (≥ 50 m'de önde-arkada iki silyon), yan fenerler ve kıç feneri.",
+          "Demirde gemi (Kural 30): bir beyaz all-round (≥ 50 m'de önde yüksek, kıçta alçak iki adet); ≥ 100 m'de güverteler ayrıca aydınlatılır.",
+          "Karaya oturmuş gemi (Kural 30): demir fenerleri + düşey iki kırmızı all-round.",
+          "Kumanda altında değil (NUC, Kural 27): düşey iki kırmızı all-round; yol varsa ayrıca yan + kıç fenerleri.",
+          "Manevra kabiliyeti kısıtlı (RAM, Kural 27): düşey kırmızı-beyaz-kırmızı all-round.",
+          "Draftından kısıtlı (CBD, Kural 28): düşey üç kırmızı all-round (motorlu gemi fenerlerine ek).",
+          "Balıkçı — trol (Kural 26): yeşil üstünde beyaz all-round; trol dışı balıkçı: kırmızı üstünde beyaz.",
+          "Kılavuz gemisi (Kural 29): beyaz üstünde kırmızı all-round.",
+          "Yelkenli (Kural 25): yan fenerler + kıç feneri; isteğe bağlı direk başında kırmızı üstünde yeşil.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Yaylar: silyon 225°, yan fenerler 112.5° (her biri), kıç 135°, all-round 360° (Kural 21).",
+      "Yan + silyon yayları kemerenin 22.5° kıçında biter; gerisi kıç feneri yayıdır.",
+      "≥ 50 m'de silyon 6 NM, yan fenerler 3 NM, kıç 3 NM (Kural 22).",
+      "Renk/diziliş kalıpları gemi tipini belirtir: NUC kırmızı-kırmızı, RAM kırmızı-beyaz-kırmızı, CBD üç kırmızı.",
+    ]
+  },
+  "Gündüz işaretleri (top/koni/silindir)": {
+    title: "Gündüz İşaretleri: Top, Koni, Silindir ve Baklava (COLREG Kural 24-30)",
+    introduction:
+      "Gündüz, fenerlerin yerine geminin durumunu bildiren siyah şekiller (gündüz işaretleri) gösterilir. COLREG Ek I/6, şekillerin siyah renkte ve asgari boyutlarda olmasını şart koşar (top çapı ≥ 0.6 m; şekiller arası düşey aralık ≥ 1.5 m). Dört temel şekil vardır: top (küre), koni (külah), silindir ve baklava (eşkenar dörtgen). Bu şekillerin sayısı ve düşey dizilişi, gece gösterilen fener kalıplarının gündüz karşılığıdır.",
+    sections: [
+      {
+        title: "Temel Şekiller ve Anlamları",
+        content:
+          "Her şeklin tek başına veya kombinasyon hâlinde belirli bir anlamı vardır. Şekiller en iyi görülecek yerde, düşey hatta gösterilir.",
+        image: "/diagrams/navigation/gunduz-isaretleri.svg",
+        imageAlt: "Gündüz işaretleri: demir 1 top, NUC 2 top, karaya oturmuş 3 top, RAM top-baklava-top, CBD silindir, balıkçı çift koni",
+        bulletPoints: [
+          "Top (küre): tek top = demirde gemi; düşey iki top = kumanda altında değil (NUC); düşey üç top = karaya oturmuş.",
+          "Top-baklava-top (düşey): manevra kabiliyeti kısıtlı (RAM).",
+          "Silindir: draftından kısıtlı gemi (CBD).",
+          "Koni: yelkenle + makineyle giden gemide sivri ucu aşağı bakan koni; balıkçıda ucu yukarı koni (av takımı yönünü gösterir).",
+          "Baklava (eşkenar dörtgen): boyu 200 m'yi aşan yedek dizisinde hem çeken hem çekilen gemide gösterilir.",
+        ],
+      },
+      {
+        title: "Kurallara Göre Gündüz İşaretleri",
+        content:
+          "Aşağıdaki eşleşmeler, ilgili COLREG kurallarındaki gündüz işaretlerini özetler. Gece fener kalıbı ile gündüz şekli birbirinin karşılığıdır (ör. NUC gece kırmızı-kırmızı, gündüz iki top).",
+        bulletPoints: [
+          "Kural 24 (yedekleme): yedek dizisinin boyu > 200 m ise hem çeken hem çekilen gemide bir baklava şekli.",
+          "Kural 25 (yelkenli + makine): baş tarafta sivri ucu aşağı bakan bir koni — gemi hem yelken hem makineyle ilerliyor demektir.",
+          "Kural 26 (balıkçı): düşey, uçları birbirine bakan iki koni (boyu < 20 m gemi bir sepet gösterebilir); av takımı yatayda 150 m'den fazla uzanıyorsa o yöne ucu yukarı bir koni.",
+          "Kural 27 (NUC): düşey iki top; (RAM): düşey top-baklava-top; tarama/sualtı işinde engel olan tarafta iki top, geçilebilir tarafta iki baklava.",
+          "Kural 28 (CBD): bir silindir.",
+          "Kural 30 (demir): baş tarafta bir top; (karaya oturmuş): düşey üç top.",
+          "Kural 27 (mayın tarama): biri direk başında, ikisi ön seren uçlarında olmak üzere üç top.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Şekiller siyahtır; top çapı ≥ 0.6 m, düşey aralık ≥ 1.5 m (Ek I/6).",
+      "Demir = 1 top, NUC = 2 top, karaya oturmuş = 3 top.",
+      "RAM = top-baklava-top, CBD = silindir, motorsailer = ucu aşağı koni.",
+      "Yedek > 200 m = baklava; balıkçı = uçları birbirine bakan iki koni.",
+    ]
+  },
+  "Ses ve işaret kuralları (Kural 32-37)": {
+    title: "Ses ve Işık İşaretleri (COLREG Kural 32-37)",
+    introduction:
+      "COLREG Bölüm D, gemilerin niyet ve durumlarını sesle (ve ışıkla) bildirmesini düzenler. Kural 32 tanımları (kısa düdük ≈ 1 sn; uzun düdük 4-6 sn), Kural 33 ses cihazlarını, Kural 34 görüş içinde manevra/uyarı işaretlerini, Kural 35 kısıtlı görüşte verilecek işaretleri, Kural 36 dikkat çekme işaretlerini ve Kural 37 (Ek IV) tehlike işaretlerini kapsar. Bu işaretler, fener ve gündüz şekilleriyle birlikte denizde 'sessiz dil'in tamamlayıcısıdır.",
+    sections: [
+      {
+        title: "Manevra ve Uyarı İşaretleri (Kural 34)",
+        content:
+          "Görüş içindeki gemiler arasında, motorlu bir gemi izin verilen/gerekli bir manevra yaparken niyetini düdükle bildirir. Bu ses işaretleri, all-round beyaz ışıkla aynı sayıda çakışla desteklenebilir. Şüphe duyulduğunda en az beş kısa ve hızlı düdük (şüphe/ikaz işareti) verilir.",
+        image: "/diagrams/navigation/ses-isaretleri.svg",
+        imageAlt: "COLREG ses işaretleri: manevra (Kural 34) ve kısıtlı görüş (Kural 35) işaretleri",
+        bulletPoints: [
+          "1 kısa: Rotamı sancağa değiştiriyorum.",
+          "2 kısa: Rotamı iskeleye değiştiriyorum.",
+          "3 kısa: Tornistan (geri) çalışıyorum.",
+          "≥ 5 kısa ve hızlı: Şüphe/ikaz — yeterli önlem alındığından şüpheliyim (Kural 34(d)).",
+          "1 uzun: Görüşü kapalı bir dönemece/alana yaklaşırken; karşıdan 1 uzun ile cevap verilir (Kural 34(e)).",
+          "Dar kanalda geçme: sancaktan ▬▬● / iskeleden ▬▬●● ; geçilen geminin onayı ▬●▬● (Morse 'C').",
+        ],
+      },
+      {
+        title: "Kısıtlı Görüşte Ses İşaretleri (Kural 35)",
+        content:
+          "Kısıtlı görüş alanında veya yakınında, gece-gündüz fark etmeksizin aşağıdaki işaretler en fazla 2 dakika arayla verilir. Demirde ve karaya oturmuş gemiler için çan/gong kullanılır.",
+        bulletPoints: [
+          "Yolda olan motorlu gemi: 1 uzun (≤ 2 dk).",
+          "Durmuş, yol almayan motorlu gemi: 2 uzun (aralarında ~2 sn) (≤ 2 dk).",
+          "NUC, RAM, CBD, yelkenli, balıkçı, çeken/iten gemi: 1 uzun + 2 kısa (≤ 2 dk).",
+          "Çekilen (manlı) gemi, dizinin sonuncusu: 1 uzun + 3 kısa.",
+          "Demirde: ~5 sn hızlı çan çalma (≤ 1 dk); ≥ 100 m'de önde çan, kıçta gong.",
+          "Karaya oturmuş: çan işaretine ek olarak hızlı çalmadan önce ve sonra 3 ayrı vuruş.",
+        ],
+      },
+      {
+        title: "Cihazlar, Dikkat Çekme ve Tehlike İşaretleri (Kural 33, 36, 37)",
+        content:
+          "Kural 33: 12 m ve üzeri gemilerde düdük; 20 m ve üzeri gemilerde ayrıca çan; 100 m ve üzeri gemilerde ek olarak gong bulunur. Kural 36: başka bir gemiyi uyarmak için karıştırılmayacak ışık/ses işaretleri verilebilir. Kural 37 ve Ek IV: tehlike (distress) işaretleri — sürekli sis düdüğü, 1 dakika arayla top atışı, MAYDAY telsiz çağrısı, kırmızı paraşütlü işaret fişeği, SOS, NC kod bayrakları, kare bayrak + top, alev/duman, kollarını yavaşça indirip kaldırma vb.",
+        bulletPoints: [
+          "< 12 m gemi yukarıdaki işaretleri vermek zorunda değildir; ancak ≤ 2 dk'da başka etkili bir ses işareti vermelidir.",
+          "Kılavuz gemisi kimlik işareti olarak 4 kısa düdük verebilir (Kural 35(k)).",
+          "Tehlike işaretleri yalnızca gerçek tehlikede ve yardım talebinde kullanılır (Kural 37).",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Kısa düdük ≈ 1 sn, uzun düdük 4-6 sn (Kural 32).",
+      "Görüş içinde: 1/2/3 kısa = sancak/iskele/tornistan; 5 kısa = şüphe.",
+      "Kısıtlı görüşte: yolda 1 uzun; durmuş 2 uzun; NUC/RAM/CBD/yelken/balıkçı/çeken 1 uzun + 2 kısa (≤ 2 dk).",
+      "Cihazlar: düdük (≥12 m), çan (≥20 m), gong (≥100 m).",
+    ]
+  },
+  "Dar kanallar ve trafik ayırım düzenleri (Kural 9-10)": {
+    title: "Dar Kanallar (Kural 9) ve Trafik Ayırım Düzenleri (Kural 10)",
+    introduction:
+      "COLREG Kural 9 ve 10, sınırlı seyir alanlarında çatışma riskini azaltan özel davranış kurallarıdır. Kural 9 dar kanal ve su yollarında, Kural 10 ise IMO tarafından kabul edilmiş trafik ayırım düzenlerinde (Traffic Separation Scheme, TSS) uygulanır. Bu kurallar, manevra hiyerarşisinden (Kural 18) bağımsız olarak belirli gemilere 'engel olmama' (not to impede) yükümlülüğü getirir.",
+    sections: [
+      {
+        title: "Kural 9 — Dar Kanallar",
+        content:
+          "Dar bir kanal veya su yolunda seyreden gemi, güvenli ve uygulanabilir olduğu sürece kanalın sancak tarafındaki dış sınırına yakın seyreder. 20 m'den kısa gemiler, yelkenli gemiler ve balıkçı gemileri, yalnızca kanal içinde güvenle seyredebilen bir geminin geçişini engellemez. Bir gemi, ancak böyle bir geminin güvenli geçişini engellemiyorsa dar kanalı geçebilir; şüphe halinde geçişi etkilenen gemi beş kısa ve hızlı düdükle (Kural 34(d)) uyarı verir.",
+        bulletPoints: [
+          "Kanalın sancak dış sınırına yakın seyret (Kural 9(a)).",
+          "< 20 m, yelkenli ve balıkçı gemiler kanal içi geminin geçişini engellemez (9(b), 9(c)).",
+          "Görüşü kapayan dönemeçlere yaklaşırken bir uzun düdük; karşıdan gelen bir uzun düdükle cevap verir (Kural 9(f)).",
+          "Dar kanalda geçme (overtaking): geçen gemi 2 uzun + 1 kısa (sancaktan) veya 2 uzun + 2 kısa (iskeleden) çalar; geçilen gemi onay için 1 uzun-1 kısa-1 uzun-1 kısa çalar (Kural 9(e), 34(c)).",
+          "Mümkünse dar kanalda demirlemekten kaçın (Kural 9(g)).",
+        ],
+      },
+      {
+        title: "Kural 10 — Trafik Ayırım Düzenleri (TSS)",
+        content:
+          "Kural 10, IMO tarafından kabul edilen trafik ayırım düzenlerinde uygulanır; ancak gemiyi diğer kurallardaki yükümlülüklerinden muaf tutmaz. Düzeni kullanan gemi, uygun trafik şeridinde trafiğin genel akış yönünde ilerler; ayırım hattından veya ayırım bölgesinden uzak durur. Şeride yanlardan girerken/çıkarken mümkün olan en küçük açıyla, uçlardan ise normal şekilde girer/çıkar. Şeridi geçmek zorunda kalınırsa, genel trafik akış yönüne mümkün olduğunca dik bir pruva ile geçilir.",
+        image: "/diagrams/navigation/tss-kural10.svg",
+        imageAlt: "Trafik ayırım düzeni: zıt yönlü iki şerit, ayırım bölgesi, kıyı trafik bölgesi ve akışa dik geçen gemi",
+        bulletPoints: [
+          "Uygun şeritte, trafiğin genel akış yönünde seyret; ayırım hattı/bölgesinden uzak dur (10(b)).",
+          "Şeridi geçmek zorundaysan akış yönüne mümkün olduğunca DİK pruva ile geç (10(c)).",
+          "Kıyı trafik bölgesini (inshore traffic zone) normalde geçiş trafiği kullanmaz; < 20 m, yelkenli, balıkçı ve acil durumdaki gemiler kullanabilir (10(d)).",
+          "TSS'yi kullanmayan gemi, düzenden mümkün olduğunca geniş bir mesafeyle kaçınır (10(h)).",
+          "Balıkçı, < 20 m ve yelkenli gemiler bir şeridi takip eden geminin güvenli geçişini engellemez (10(i), 10(j)).",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Kural 9: sancak dış sınıra yakın seyret; dönemeçte bir uzun düdük.",
+      "< 20 m, yelkenli ve balıkçı gemiler kanal/şerit içi geminin geçişini engellemez.",
+      "Kural 10: akış yönünde seyret; geçmek zorundaysan akışa dik pruva ile geç.",
+      "Bu kurallar 'engel olmama' yükümlülüğü getirir; yol verme hiyerarşisinden bağımsızdır.",
+    ]
+  },
+  "SOLAS V seyir cihazı taşıma gereklilikleri": {
+    title: "SOLAS V/19: Seyir Cihazı Taşıma Gereklilikleri",
+    introduction:
+      "SOLAS Bölüm V Kural 19, gemilerde bulundurulması zorunlu seyir sistem ve cihazlarını gemi tonajına ve tipine göre belirler. Eşik değerler (GT) ezberlenmesi gereken temel köprüüstü bilgisidir; donanım, geminin tonajı büyüdükçe artar. Aşağıdaki listeler ilgili eşiğe ve daha büyük gemilere uygulanır.",
+    sections: [
+      {
+        title: "Tonaja Göre Taşıma Eşikleri",
+        content:
+          "Cihaz gereklilikleri kümülatiftir: bir gemi kendi eşiğinin ve altındaki tüm eşiklerin donanımını taşır. Yolcu gemileri, tonajdan bağımsız olarak yük gemisi eşiklerinin çoğuna tabidir.",
+        image: "/diagrams/navigation/solas-v-tasima.svg",
+        imageAlt: "SOLAS V/19 tonaja göre seyir cihazı taşıma eşikleri ladder diyagramı",
+        bulletPoints: [
+          "Tüm gemiler (boy/tonaj fark etmeksizin): manyetik pusula, kerteriz aleti (pelorus), hakiki yöne çevirme imkânı, deniz haritaları ve yayınlar (ECDIS kabul edilir) + yedek, GNSS/karasal seyir alıcısı.",
+          "≥ 150 GT: yedek manyetik pusula, gündüz işaret feneri (daylight signalling lamp).",
+          "≥ 300 GT ve tüm yolcu gemileri: 9 GHz (X-bant) radar, ARPA/otomatik iz sürme yardımcısı, iskandil cihazı (echo sounder), su içi hız/mesafe cihazı (log).",
+          "AIS: uluslararası seferde ≥ 300 GT, uluslararası olmayan seferde ≥ 500 GT ve tüm yolcu gemileri.",
+          "≥ 500 GT: cayro pusula + cayro yön/kerteriz tekrarlayıcıları, dümen açı göstergesi, pervane devir/hatve göstergesi.",
+          "≥ 3000 GT: ikinci ve bağımsız radar (tercihen 3 GHz S-bant) ve ikinci ARPA.",
+          "≥ 10000 GT: tam ARPA.",
+          "≥ 50000 GT: dönüş hızı (rate-of-turn, ROT) göstergesi ve yer üstü (over-ground) çift eksenli hız/mesafe cihazı.",
+        ],
+      },
+      {
+        title: "Aşamalı/Tip Bazlı Cihazlar",
+        content:
+          "Bazı cihazlar tonajın yanı sıra gemi tipi ve inşa tarihine göre aşamalı olarak zorunlu kılınmıştır.",
+        bulletPoints: [
+          "ECDIS: zorunlu taşıma gemi tipi ve büyüklüğüne göre 2012-2018 arasında kademeli getirildi (faz tamamlandı; 2018).",
+          "BNWAS (Köprüüstü Seyir Vardiyası Alarm Sistemi): yük gemilerinde ≥ 150 GT ve yolcu gemilerinde (SOLAS V/19.2.2.3).",
+          "VDR (Voyage Data Recorder): yolcu gemileri ve ≥ 3000 GT yük gemileri; mevcut yük gemilerinde S-VDR kabul edilir (SOLAS V/20).",
+          "LRIT (Uzun Menzilli Tanımlama ve İzleme): uluslararası seferdeki yolcu gemileri, ≥ 300 GT yük gemileri ve MODU'lar (SOLAS V/19-1).",
+        ],
+      },
+    ],
+    keyPoints: [
+      "≥ 300 GT ve tüm yolcu gemileri: 9 GHz radar, ARPA, iskandil, hız logu, AIS.",
+      "≥ 500 GT: cayro pusula ve tekrarlayıcıları; ≥ 3000 GT: ikinci bağımsız radar.",
+      "≥ 50000 GT: ROT göstergesi + yer üstü çift eksenli hız cihazı.",
+      "ECDIS faz-geçişi 2018'de tamamlandı; BNWAS ≥ 150 GT yük ve yolcu gemilerinde.",
+    ]
+  },
+  "Cayro pusula ve hataları": {
+    title: "Cayro Pusula (Gyrocompass) ve Hataları",
+    introduction:
+      "Cayro pusula, hızla dönen bir cayroskobun jiroskopik atalet ve presesyon özelliklerinin yerçekimi kontrolü ve sönümleme ile değiştirilmesiyle hakiki kuzeyi (meridyeni) arayan bir cihazdır. Manyetik pusuladan farklı olarak Dünya'nın manyetik alanından etkilenmez; doğrudan HAKİKİ kuzeyi gösterir ve yönü otopilot, radar/ARPA ve ECDIS gibi sistemlere tekrarlayıcılarla (repeater) dağıtır. SOLAS V/19 gereği 500 GT ve üzeri gemilerde zorunludur.",
+    sections: [
+      {
+        title: "Çalışma Prensibi",
+        content:
+          "Serbest bir cayroskop, dönme ekseninin yönünü uzayda korur (jiroskopik atalet). Dünya'nın dönüşü nedeniyle bu eksen gözlemciye göre kayar; cayroya yerçekimi kontrolü (üst/alt ağırlık veya sıvı bağlantı) eklenerek eksen meridyene doğru salınır ve sönümleme (damping) ile hakiki kuzeyde 'oturur' (settle). Bu nedenle cayro, manyetik kuzey değil hakiki kuzey referansı verir; variation ve deviation düzeltmesi gerektirmez.",
+      },
+      {
+        title: "Başlıca Hatalar",
+        content:
+          "Cayro pusulanın hataları öngörülebilir ve büyük ölçüde düzeltilebilir. Bunlar enlem, hız ve gemi hareketine bağlıdır.",
+        bulletPoints: [
+          "Enlem/sönümleme hatası (settling/latitude error): sönümlemeden kaynaklanır, enlemle (tan φ ile) artar; enlem düzeltmesiyle giderilir.",
+          "Hız hatası (steaming/speed error): geminin kuzey-güney hız bileşeninden doğar. Kuzey hemisferde kuzeye giderken batı, güneye giderken doğu yönünde sapma oluşur; büyüklüğü hız, rota ve enlemle değişir.",
+          "Balistik sapma (ballistic deflection): hız veya rota ani değiştiğinde oluşan geçici hatadır; doğru tasarımda sönümlenir.",
+          "Yalpa/gimbal hatası (rolling error): gemi yalpalarken cayro meridyenden saparsa oluşur; tasarımla en aza indirilir.",
+        ],
+      },
+      {
+        title: "Kontrol, Avantaj ve Modern Sistemler",
+        content:
+          "Cayro hatası transit, gök cismi azimutu veya GPS COG karşılaştırmasıyla düzenli kontrol edilir ve hata kartına işlenir. Avantajları: hakiki kuzeyi gösterir, yüksek enlemlerde ve çelik gövde etkisinde manyetik pusuladan güvenilirdir, tekrarlayıcılarla köprüüstüne yön dağıtır. Modern gemilerde fiber-optik (FOG) ve halka-lazer (RLG) katı-hal cayrolar ile GPS uydu pusulaları yaygınlaşmıştır; yine de manyetik pusula yasal yedek olarak bulundurulur.",
+      },
+    ],
+    keyPoints: [
+      "Cayro hakiki kuzeyi gösterir; variation/deviation gerektirmez (SOLAS V/19: ≥ 500 GT).",
+      "Hız hatası: K hemisferde kuzeye giderken batı, güneye giderken doğu sapması.",
+      "Enlem hatası tan φ ile artar; enlem düzeltmesiyle giderilir.",
+      "Hata transit/azimut/GPS COG ile kontrol edilip hata kartına işlenir.",
     ]
   },
   "Gerçek çatışma kazaları": {

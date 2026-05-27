@@ -195,7 +195,9 @@ const topicsData: Record<string, TopicContent> = {
           { title: "ETA", hasContent: true },
           { title: "Turn radius", hasContent: true },
           { title: "Elektronik seyirde çapraz kontrol", hasContent: true },
-          { title: "GPS'in seyirde kullanımı ve sensör entegrasyonu", hasContent: true }
+          { title: "GPS'in seyirde kullanımı ve sensör entegrasyonu", hasContent: true },
+          { title: "Cayro pusula ve hataları", hasContent: true },
+          { title: "SOLAS V seyir cihazı taşıma gereklilikleri", hasContent: true }
         ]
       },
       {
@@ -248,10 +250,16 @@ const topicsData: Record<string, TopicContent> = {
         description: "Denizde çatışmadan kaçınma kuralları ve kaza analizleri",
         subTopics: [
           { title: "COLREG temel prensipleri", hasContent: true },
+          { title: "Emniyetli hız (Kural 6)", hasContent: true },
+          { title: "Çatışmadan kaçınma manevrası (Kural 8)", hasContent: true },
           { title: "Crossing", hasContent: true },
           { title: "Head-on", hasContent: true },
           { title: "Overtaking", hasContent: true },
           { title: "Restricted visibility", hasContent: true },
+          { title: "Dar kanallar ve trafik ayırım düzenleri (Kural 9-10)", hasContent: true },
+          { title: "Seyir fenerleri: yay ve menzil", hasContent: true },
+          { title: "Gündüz işaretleri (top/koni/silindir)", hasContent: true },
+          { title: "Ses ve işaret kuralları (Kural 32-37)", hasContent: true },
           { title: "Gerçek çatışma kazaları", hasContent: true },
           { title: "Neden – sonuç – ihlal – önlem analizi", hasContent: true }
         ]
@@ -341,7 +349,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Synoptik harita sembolleri", hasContent: true },
           { title: "Cephe analizi ve hareket tahmini", hasContent: true },
           { title: "Rüzgar/deniz tahmini çıkarımı", hasContent: true },
-          { title: "Rota üzerinde risk işaretleme", hasContent: true }
+          { title: "Rota üzerinde risk işaretleme", hasContent: true },
+          { title: "SOLAS V tehlike mesajları ve hava raporlama", hasContent: true }
         ]
       }
     ],
@@ -363,7 +372,8 @@ const topicsData: Record<string, TopicContent> = {
           { title: "VHF-DSC Operasyonları", hasContent: true },
           { title: "Tehlike, Aciliyet ve Emniyet Haberleşmesi", hasContent: true },
           { title: "NAVTEX, SafetyNET ve MSI", hasContent: true },
-          { title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu", hasContent: true }
+          { title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu", hasContent: true },
+          { title: "SMCP - Standart Deniz Haberleşme İfadeleri", hasContent: true }
         ]
       }
     ],

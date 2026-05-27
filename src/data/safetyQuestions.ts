@@ -3,10 +3,10 @@ import type { QuizQuestion } from "@/types/quiz";
 export const safetyQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question: "SOLAS'a göre yolcu gemilerinde haftalık olarak yapılması zorunlu tatbikat nedir?",
-    options: ["Yangın tatbikatı", "Can salı tatbikatı", "Muster ve cankurtarma tatbikatı", "ISPS güvenlik tatbikatı"],
+    question: "SOLAS'a göre yolcu gemilerinde haftalık olarak yapılması zorunlu tatbikatlar hangileridir?",
+    options: ["Yalnızca yangın tatbikatı", "Yalnızca can salı tatbikatı", "Gemiyi terk (abandon ship) ve yangın tatbikatı", "ISPS güvenlik tatbikatı"],
     correctAnswer: 2,
-    explanation: "SOLAS III/19 kapsamında muster ve cankurtarma tatbikatları düzenli yapılır.",
+    explanation: "SOLAS III/19.3.2: yolcu gemilerinde her hafta bir gemiyi terk (abandon ship) tatbikatı ve bir yangın tatbikatı yapılmalıdır. Ayrıca yeni binen yolcular için kalkıştan önceki 24 saat içinde toplanma (muster) düzenlenir.",
     category: "SOLAS/LSA"
   },
   {

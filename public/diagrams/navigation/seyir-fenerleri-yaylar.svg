@@ -1,0 +1,58 @@
+<svg viewBox="0 0 700 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .sm{font:11px sans-serif;fill:#334155}
+      .dash{stroke:#64748b;stroke-width:1.5;stroke-dasharray:6 5;fill:none}
+    </style>
+  </defs>
+  <rect width="700" height="540" fill="#ffffff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Seyir Fenerleri Kapsam Yayları (COLREG Kural 21)</text>
+  <text x="350" y="50" text-anchor="middle" class="sm">Üstten görünüş — baş (pruva) yukarı</text>
+
+  <!-- sectors, center 350,250 R=150 -->
+  <!-- starboard sidelight green 0..112.5 -->
+  <path d="M 350 250 L 350 100 A 150 150 0 0 1 488.58 307.40 Z" fill="#16a34a" fill-opacity="0.45" stroke="#15803d" stroke-width="1"/>
+  <!-- port sidelight red 0..-112.5 -->
+  <path d="M 350 250 L 350 100 A 150 150 0 0 0 211.42 307.40 Z" fill="#dc2626" fill-opacity="0.45" stroke="#b91c1c" stroke-width="1"/>
+  <!-- stern light white/grey 112.5..247.5 -->
+  <path d="M 350 250 L 488.58 307.40 A 150 150 0 0 1 211.42 307.40 Z" fill="#e2e8f0" fill-opacity="0.85" stroke="#94a3b8" stroke-width="1"/>
+
+  <!-- masthead outer arc 225 (white) -->
+  <path d="M 185.55 318.12 A 178 178 0 1 1 514.45 318.12" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+
+  <!-- beam reference dashed lines -->
+  <line x1="350" y1="250" x2="520" y2="250" class="dash"/>
+  <line x1="350" y1="250" x2="180" y2="250" class="dash"/>
+  <text x="524" y="254" class="sm">İskele/sancak kemere hattı (90°)</text>
+
+  <!-- 22.5 abaft beam boundary markers (the sector edges at 112.5) -->
+  <line x1="350" y1="250" x2="488.58" y2="307.40" stroke="#0f172a" stroke-width="1.5"/>
+  <line x1="350" y1="250" x2="211.42" y2="307.40" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- vessel silhouette, bow up -->
+  <path d="M 350 214 L 362 238 L 362 286 L 338 286 L 338 238 Z" fill="#0f172a"/>
+  <text x="350" y="206" text-anchor="middle" class="sm">PRUVA</text>
+
+  <!-- labels -->
+  <text x="455" y="190" class="lbl" fill="#15803d">Sancak yan feneri</text>
+  <text x="455" y="206" class="sm" fill="#15803d">Yeşil — 112.5°</text>
+  <text x="150" y="190" text-anchor="end" class="lbl" fill="#b91c1c">İskele yan feneri</text>
+  <text x="150" y="206" text-anchor="end" class="sm" fill="#b91c1c">Kırmızı — 112.5°</text>
+  <text x="350" y="360" text-anchor="middle" class="lbl">Kıç feneri (beyaz) — 135°</text>
+  <text x="350" y="92" text-anchor="middle" class="lbl" fill="#1e3a8a">Silyon feneri (beyaz) — 225°</text>
+
+  <!-- 22.5 callouts -->
+  <text x="500" y="320" class="sm" fill="#0f172a">22.5° kemere kıçı</text>
+  <text x="200" y="320" text-anchor="end" class="sm" fill="#0f172a">22.5° kemere kıçı</text>
+
+  <!-- range table -->
+  <g transform="translate(40 410)">
+    <rect width="620" height="100" rx="8" fill="#f1f5f9" stroke="#0f172a"/>
+    <text x="14" y="24" class="lbl">Asgari görünürlük menzili (Kural 22):</text>
+    <text x="14" y="48" class="sm">≥ 50 m: silyon 6 NM · yan fener 3 NM · kıç 3 NM · all-round 3 NM</text>
+    <text x="14" y="70" class="sm">12–50 m: silyon 5 NM (&lt;20 m ise 3) · yan 2 · kıç 2 · all-round 2 NM</text>
+    <text x="14" y="92" class="sm">&lt; 12 m: silyon 2 NM · yan fener 1 NM · kıç 2 NM · all-round 2 NM</text>
+  </g>
+</svg>

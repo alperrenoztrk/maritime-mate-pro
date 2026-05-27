@@ -103,6 +103,7 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
       { id: "anchor-chain", title: "Demir zinciri ve bağlantıları", hasContent: true },
       { id: "anchor-windlass", title: "Irgatlar ve demir donanımı", hasContent: true },
       { id: "anchoring-procedure", title: "Demirleme prosedürü", hasContent: true },
+      { id: "anchoring-maneuvers", title: "Demirleme manevra teknikleri", hasContent: true },
       { id: "anchor-watch", title: "Demir vardiyası ve tarama kontrolü", hasContent: true },
       { id: "anchor-dragging", title: "Demir taraması ve alınacak tedbirler", hasContent: true },
     ],
@@ -1023,6 +1024,48 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
     warnings: [
       "Tarama anında vakit kaybedilmemeli; makine derhal hazır tutulmalıdır",
       "Sığ suda veya kalabalık demirlemede tarama = çatışma riski",
+    ],
+  },
+  "anchoring-maneuvers": {
+    title: "Demirleme Manevra Teknikleri",
+    introduction: "Demirleme manevrası; salınım alanı, dip tutuşu, hava/akıntı ve liman düzenine göre farklı tekniklerle yapılır. Doğru teknik, geminin emniyetli salınımını ve sağlam tutuşunu belirler.",
+    image: "/diagrams/seamanship/demirleme-manevralari.svg",
+    content: `YAKLAŞMA İLKESİ:
+Gemi demirleme noktasına daima rüzgâr veya akıntının güçlü olanına KARŞI (head to wind/current) yaklaşır. Nokta üzerinde gemi durdurulur ya da çok hafif tornistan (sternway) alırken demir funda edilir; böylece zincir geminin üstüne yığılmaz. Zincir kontrollü verilir (snub) ve demirin tuttuğu (brought up) doğrulanır.
+
+TEK DEMİRLE SALINIMLI DEMİRLEME (Single / Swinging Moor):
+En yaygın yöntem. Tek demir atılır, gemi rüzgâr/akıntıyla demir etrafında salınır. Geniş salınım alanı gerektirir. Zincir boyu = derinliğin 5-7 katı (fırtınada 8-10).
+
+AKARAK DEMİRLEME (Running Moor):
+Gemi ileri yol alırken birinci demir funda edilir, ileri gidilmeye devam edilip fazla zincir verilir; ikinci demir atılır ve gemi geri çekilerek zincirler eşitlenir. İki demir, salınımı kısıtlar ve güçlü tutuş sağlar. Kalabalık/akıntılı demir yerlerinde tercih edilir.
+
+DURARAK DEMİRLEME (Standing Moor):
+Gemi durur veya hafif sternway alır; birinci demir atılır, gemi geri kayarken zincir verilir; ikinci demir atılır ve birinci zincir hisa edilerek gemi iki demir arasında ortalanır. Akarak demirlemenin tersi sıradır.
+
+AKDENİZ USULÜ (Mediterranean Moor):
+Gemi kıça doğru rıhtıma yanaşır; baştan iki demir (sancak ve iskele) açıyla atılır, kıçtan halatlarla rıhtıma bağlanır. Kalabalık Akdeniz limanlarında çok sayıda gemiyi sığdırmak için kullanılır.
+
+BALTIK USULÜ (Baltic Moor):
+Rıhtımdan denize doğru esen kuvvetli rüzgârda, dış borda demiri + bir palamar halatı birlikte kullanılarak gemi rıhtıma yaklaştırılır ve emniyetle yanaşık tutulur.
+
+AÇIK DEMİRLEME (Open Moor):
+İki demir 60-90° açıyla atılır; akıntı/rüzgâr yön değiştirdiğinde salınımı sınırlar ve tutuşu artırır.`,
+    bulletPoints: [
+      "Yaklaşma daima rüzgâr/akıntıya karşı; nokta üzerinde funda",
+      "Running moor: ileri yolda 1. demir → ikinci demir → geri çekip eşitle",
+      "Standing moor: dur/geri kay → 1. demir → 2. demir → ortala",
+      "Akdeniz usulü: kıç rıhtıma, baştan iki demir açıyla",
+      "Baltik usulü: dış borda demiri + palamar halatı birlikte",
+    ],
+    keyPoints: [
+      "İki demirli moor (running/standing) salınımı kısıtlar ve tutuşu artırır",
+      "Tek demir geniş salınım alanı ister; kalabalıkta uygun değildir",
+      "Funda anında gemi durmuş veya çok hafif sternway almış olmalı",
+      "Manevra köprüüstü-baş kasara arası sürekli iletişimle yürütülür",
+    ],
+    warnings: [
+      "İleri yolda demir atmak zinciri ve ırgatı zorlar; running moor'da hız çok düşük olmalı",
+      "Akdeniz usulünde demir zincirlerinin çapraz/karışması (foul) riskine dikkat",
     ],
   },
 
@@ -2721,7 +2764,7 @@ Karaya oturma durumunda yakıt sızıntısı ve çevre kirliliği en büyük ris
     introduction: "COLREG (Collision Regulations), denizde çatışmayı önlemek amacıyla tüm gemilerin uyması gereken uluslararası kurallar bütünüdür.",
     content: `COLREG'İN YAPISI:
 
-COLREG 1972 (International Regulations for Preventing Collisions at Sea) beş bölüm ve 41 kuraldan oluşur:
+COLREG 1972 (International Regulations for Preventing Collisions at Sea) beş bölüm (A-E), 38 kural ve 4 ekten (Annex I-IV) oluşur:
 
 Bölüm A: Genel (Kural 1-3): Uygulama alanı ve tanımlar
 Bölüm B: Yön ve seyir kuralları (Kural 4-19): Manevra kuralları
@@ -2752,6 +2795,7 @@ Kural 18 - Gemiler arası sorumluluk: Manevra kabiliyetine göre öncelik sıras
   "buoyage-iala": {
     title: "IALA Şamandıra Sistemi",
     introduction: "IALA (International Association of Marine Aids to Navigation) şamandıra sistemi, seyir yardımcılarının dünya genelinde standart olarak uygulanmasını sağlar.",
+    image: "/diagrams/seamanship/kardinal-samandiralar.svg",
     content: `IALA BÖLGELERİ:
 
 Bölge A: Avrupa, Afrika, Asya'nın büyük bölümü, Avustralya
@@ -2765,11 +2809,11 @@ Bölge B: Kuzey/Güney Amerika, Japonya, Kore, Filipinler
    Bölge A: Kırmızı = iskele (sol), Yeşil = sancak (sağ) [limana girerken]
    Bölge B: Tam tersi
 
-2. Kardinal İşaretler (Cardinal Marks):
-   Kuzey: Üstte iki yukarı ok → tehlikenin kuzeyinden geç
-   Güney: Üstte iki aşağı ok → güneyinden geç
-   Doğu: Üstte yukarı+aşağı → doğusundan geç
-   Batı: Üstte aşağı+yukarı → batısından geç
+2. Kardinal İşaretler (Cardinal Marks): Sarı-siyah renkli; tepe işareti (topmark) iki siyah koniden oluşur. Koni yönü hangi yöne "geçileceğini" gösterir.
+   Kuzey: İki koni de yukarı bakar (▲▲); siyah üstte, sarı altta → tehlikenin kuzeyinden geç.
+   Güney: İki koni de aşağı bakar (▼▼); sarı üstte, siyah altta → güneyinden geç.
+   Doğu: Koniler tabana taban, uçları ayrık (▲▼); siyah-sarı-siyah → doğusundan geç.
+   Batı: Koniler uç uca, "kadeh" şekli (▼▲); sarı-siyah-sarı → batısından geç.
 
 3. Ayrılmış Tehlike İşareti (Isolated Danger): Siyah-kırmızı-siyah yatay çizgili. Tehlike üzerinde konumlandırılır.
 

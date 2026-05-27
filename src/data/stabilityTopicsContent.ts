@@ -1657,7 +1657,7 @@ GZ eğrisinin 0° civarındaki eğimi, GM değerini verir:
 - GZ'nin ulaştığı en yüksek değer
 - Geminin en güçlü doğrultma momentini gösterir
 - Tipik olarak 25° - 40° arasında oluşur
-- IMO kriteri: GZ_max ≥ 0.20 m (25° veya ötesinde)
+- IMO/IS Code 2008 kriteri: 30° veya daha büyük bir meyil açısında GZ ≥ 0.20 m olmalıdır
 
 **3. Maksimum GZ Açısı (θ_max)**
 - GZ_max'ın oluştuğu açı

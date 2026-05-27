@@ -248,10 +248,12 @@ const content2: ContentMap = {
       title: "Ateş Borulu ve Su Borulu Kazanlar",
       introduction: "Gemi buhar kazanları, yapılarına göre ateş borulu (fire tube) ve su borulu (water tube) olarak iki ana gruba ayrılır.",
       sections: [
-        { heading: "Ateş Borulu Kazan", paragraphs: ["Sıcak gazlar boruların içinden, su boruların dışından geçer. Büyük su hacmi sayesinde ani yük değişimlerini karşılayabilir. Basit yapı ve kolay bakım avantajı vardır.", "Basınç genellikle 7-10 bar ile sınırlıdır. Yardımcı kazan olarak yaygın kullanılır."] },
-        { heading: "Su Borulu Kazan", paragraphs: ["Su boruların içinden, sıcak gazlar dışından geçer. Yüksek basınç (60+ bar) ve kapasite için uygundur. Hızlı buhar üretimi mümkündür ancak su kalitesi kritiktir.", "LNG taşıyıcılarda ana tahrik kazanı olarak kullanılır."] }
+        { heading: "Ateş Borulu Kazan (Fire/Smoke Tube)", paragraphs: ["Sıcak gazlar boruların içinden, su boruların dışından geçer. Büyük su hacmi sayesinde ani yük değişimlerini karşılayabilir ve buhar basıncını sabit tutar. Basit yapı, kolay bakım ve düşük su kalitesi toleransı avantajıdır.", "Basınç genellikle 7-18 bar ile sınırlıdır; buhar üretim hızı düşüktür. Yardımcı (auxiliary) kazan ve egzoz gazı ekonomizeri olarak yaygın kullanılır.", "Örnekler: Scotch marine (yatay, çok geçişli), Cochran (dikey), kompozit (hem yakıt hem egzoz gazı) kazanlar."] },
+        { heading: "Su Borulu Kazan (Water Tube)", paragraphs: ["Su boruların içinden, sıcak gazlar dışından geçer. Yüksek basınç (60+ bar) ve büyük kapasite için uygundur. Küçük su hacmi nedeniyle hızlı buhar üretir ve patlama enerjisi düşüktür; ancak su kalitesi (oksijen, sertlik, pH) kritiktir.", "Buhar gemilerinde ve LNG taşıyıcılarda ana tahrik kazanı olarak kullanılır; süperısıtıcı (superheater) ile kızgın buhar üretir.", "Örnekler: D-tipi (iki kazanlı: buhar kazanı + su kazanı), header tipi, radyant tip."] },
+        { heading: "Karşılaştırma", paragraphs: [], table: { headers: ["Özellik", "Ateş Borulu", "Su Borulu"], rows: [["Basınç", "≤ 18 bar", "60+ bar"], ["Buhar üretim hızı", "Yavaş", "Hızlı"], ["Su hacmi", "Büyük", "Küçük"], ["Su kalitesi hassasiyeti", "Düşük", "Yüksek"], ["Patlama riski/enerjisi", "Yüksek (büyük su hacmi)", "Düşük"], ["Kullanım", "Yardımcı kazan", "Ana tahrik / yüksek basınç"]] } },
+        { heading: "Egzoz Gazı Ekonomizeri (EGE)", paragraphs: ["Motorlu gemilerde ana makine egzoz gazının atık ısısı, ateş borulu/su borulu bir ekonomizerde buhar üretmek için kullanılır. Seyirde yardımcı kazanın yakıt tüketimini büyük ölçüde azaltır.", "Düşük yük/yavaş seyirde kurum birikmesi ve 'soot fire' (kurum yangını) riski izlenmelidir."] }
       ],
-      keyPoints: ["Ateş borulu kazanlar daha güvenlidir (büyük su hacmi, düşük basınç).", "Su borulu kazanlar yüksek buhar üretim hızına sahiptir.", "Tüm kazanlarda emniyet supabı, gözetleme camı ve düşük su seviye alarmı zorunludur."]
+      keyPoints: ["Ateş borulu: büyük su hacmi, düşük basınç, yardımcı kazan; örn. Scotch, Cochran.", "Su borulu: yüksek basınç, hızlı buhar, ana tahrik; örn. D-tipi.", "Su borulu kazanda feed water kalitesi (deaerasyon, sülfit, fosfat) kritiktir.", "EGE seyirde atık ısıdan buhar üretip yakıttan tasarruf sağlar.", "Tüm kazanlarda emniyet supabı, gözetleme camı ve düşük su seviye alarmı zorunludur."]
     },
     "Vakumlu evaporatör çalışma prensibi": {
       title: "Vakumlu Evaporatör Çalışma Prensibi",
@@ -670,7 +672,7 @@ const content2: ContentMap = {
       title: "SEEMP (Ship Energy Efficiency Management Plan)",
       introduction: "SEEMP, geminin enerji verimliliğini sürekli iyileştirmek için hazırlanan zorunlu yönetim planıdır.",
       sections: [
-        { heading: "SEEMP Yapısı", paragraphs: ["Part I: Enerji verimliliği tedbirleri planı (tüm gemiler). Hız optimizasyonu, trim optimizasyonu, bakım, rota planlaması gibi operasyonel tedbirleri kapsar.", "Part II: Yakıt tüketimi veri toplama ve raporlama (5000 GT üzeri). Yıllık CII hesabı ve derecelendirmesi. D veya E derecesi durumunda düzeltici eylem planı."] }
+        { heading: "SEEMP Yapısı", paragraphs: ["Part I: Enerji verimliliği tedbirleri planı (≥400 GT tüm gemiler). Hız optimizasyonu, trim optimizasyonu, bakım, rota planlaması gibi operasyonel tedbirleri kapsar.", "Part II: Yakıt tüketimi veri toplama ve raporlama planı — IMO DCS (Data Collection System), 5000 GT üzeri gemiler.", "Part III (MEPC.346(78)): CII uygulama planı — 5000 GT üzeri gemiler. Hedef yıllık CII derecesine ulaşmak için uygulanacak tedbirleri içerir; üst üste 3 yıl D veya 1 yıl E derecesi alan gemiler için düzeltici eylem planı zorunludur."] }
       ],
       keyPoints: ["SEEMP gemide bulundurulması zorunlu belgedir.", "PSC denetimlerinde kontrol edilir.", "Sürekli iyileştirme döngüsü (Plan-Do-Check-Act) uygulanır."]
     }
