@@ -1,0 +1,57 @@
+<svg viewBox="0 0 700 440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .sm{font:11px sans-serif;fill:#334155}
+      .arc{fill:none;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="700" height="440" fill="#ffffff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Pusula Düzeltmesi: Hakiki – Manyetik – Pusula</text>
+  <text x="220" y="52" text-anchor="middle" class="sm">(açılar gösterim için abartılmıştır)</text>
+
+  <!-- center -->
+  <circle cx="230" cy="300" r="5" fill="#0f172a"/>
+
+  <!-- True north (up) -->
+  <line x1="230" y1="300" x2="230" y2="115" stroke="#0f172a" stroke-width="3"/>
+  <path d="M 223 130 L 230 115 L 237 130 Z" fill="#0f172a"/>
+  <text x="230" y="105" text-anchor="middle" class="lbl">Hakiki K (T)</text>
+
+  <!-- Magnetic north (+25 east) -->
+  <line x1="230" y1="300" x2="303.96" y2="141.4" stroke="#7c3aed" stroke-width="3"/>
+  <path d="M 290 148 L 303.96 141.4 L 297 157 Z" fill="#7c3aed"/>
+  <text x="330" y="138" class="lbl" fill="#7c3aed">Manyetik K (M)</text>
+
+  <!-- Compass north (+40) -->
+  <line x1="230" y1="300" x2="329.6" y2="181.3" stroke="#dc2626" stroke-width="3"/>
+  <path d="M 315 184 L 329.6 181.3 L 322 196 Z" fill="#dc2626"/>
+  <text x="345" y="186" class="lbl" fill="#dc2626">Pusula K (C)</text>
+
+  <!-- variation arc (T..M) r60 -->
+  <path d="M 230 240 A 60 60 0 0 1 255.4 245.6" class="arc" stroke="#7c3aed"/>
+  <text x="243" y="232" class="sm" fill="#7c3aed">Variation</text>
+
+  <!-- deviation arc (M..C) r92 -->
+  <path d="M 268.9 218.4 A 92 92 0 0 1 289.1 230.6" class="arc" stroke="#dc2626"/>
+  <text x="300" y="226" class="sm" fill="#dc2626">Deviation</text>
+
+  <!-- chain box -->
+  <g transform="translate(420 90)">
+    <rect width="250" height="270" rx="10" fill="#f1f5f9" stroke="#0f172a"/>
+    <text x="125" y="30" text-anchor="middle" class="lbl">Dönüşüm Zinciri</text>
+    <text x="20" y="62" class="sm">Pusula Rotası</text>
+    <text x="20" y="82" class="sm">  ↓  + Deviation</text>
+    <text x="20" y="102" class="sm">Manyetik Rota</text>
+    <text x="20" y="122" class="sm">  ↓  + Variation</text>
+    <text x="20" y="142" class="sm">Hakiki Rota</text>
+    <line x1="20" y1="158" x2="230" y2="158" stroke="#cbd5e1"/>
+    <text x="20" y="180" class="sm">Pusula hatası = Dev + Var</text>
+    <text x="20" y="202" class="sm">İşaret: Doğu (+), Batı (−)</text>
+    <line x1="20" y1="216" x2="230" y2="216" stroke="#cbd5e1"/>
+    <text x="20" y="238" class="sm">Örnek: 100° + (−3° W) + 7° E</text>
+    <text x="20" y="258" class="sm" font-weight="700" fill="#0f172a">= Hakiki Rota 104°</text>
+  </g>
+  <text x="230" y="420" text-anchor="middle" class="sm">Anımsatıcı: "Hata doğu, pusula düşük; hata batı, pusula yüksek"</text>
+</svg>

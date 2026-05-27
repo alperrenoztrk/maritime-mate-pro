@@ -1740,8 +1740,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Deviation (Pusula Sapması) ve Tam Pusula Düzeltmesi",
         content: "Pusula kuzeyi ile manyetik kuzey arasındaki açıya deviation (pusula sapması) denir. Deviation, geminin kendi çeliği ve elektrikli ekipmanının yarattığı yerel manyetik alandan kaynaklanır; bu nedenle gemiye özgüdür ve geminin pruva yönüne (heading) göre değişir. Her gemi için her pruvada ölçülen deviation değerleri bir deviasyon kartında (deviation card/table) tutulur. Tam dönüşüm zinciri şöyledir: Pusula Rotası → (deviation uygulanır) → Manyetik Rota → (variation uygulanır) → Hakiki Rota. Variation ile deviation'ın cebirsel toplamı toplam pusula hatasını (compass error) verir. İşaret kuralı: doğu (E) değerler pozitif, batı (W) değerler negatiftir.",
-        image: compassImg,
-        imageAlt: "Pusula-manyetik-hakiki dönüşüm zinciri ve deviation",
+        image: "/diagrams/navigation/pusula-duzeltme.svg",
+        imageAlt: "Hakiki, manyetik ve pusula kuzeyi; variation ve deviation açıları ile dönüşüm zinciri",
         formula: {
           text: "Hakiki Rota = Pusula Rotası + Deviation + Variation | Pusula Hatası = Deviation + Variation",
           description: "Doğu (+), batı (−). Anımsatıcı: 'Hata doğu, pusula düşük; hata batı, pusula yüksek' (Error East, compass least)."
@@ -11580,6 +11580,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "Fener Yayları (Kural 21)",
         content:
           "Her seyir feneri, ufuk üzerinde belirli bir yay (sektör) boyunca kesintisiz ışık gösterecek şekilde yerleştirilir. Yan fenerlerin dış sınırı ile silyon fenerinin dış sınırı kemere hattının 22.5° kıçında birleşir; bu hattın gerisi yalnızca kıç fenerinin yayıdır. Yan + silyon (225°) ile kıç (135°) yaylarının toplamı 360°'yi tamamlar.",
+        image: "/diagrams/navigation/seyir-fenerleri-yaylar.svg",
+        imageAlt: "Seyir fenerleri kapsam yayları: silyon 225°, yan fenerler 112.5°, kıç feneri 135°",
         bulletPoints: [
           "Silyon (direk) feneri — beyaz, 225°: baş bodoslamadan her iki yanda kemerenin 22.5° kıçına kadar.",
           "Yan fenerler — sancak yeşil / iskele kırmızı, her biri 112.5°: baş bodoslamadan ilgili yanda kemerenin 22.5° kıçına kadar.",
@@ -11633,6 +11635,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "Temel Şekiller ve Anlamları",
         content:
           "Her şeklin tek başına veya kombinasyon hâlinde belirli bir anlamı vardır. Şekiller en iyi görülecek yerde, düşey hatta gösterilir.",
+        image: "/diagrams/navigation/gunduz-isaretleri.svg",
+        imageAlt: "Gündüz işaretleri: demir 1 top, NUC 2 top, karaya oturmuş 3 top, RAM top-baklava-top, CBD silindir, balıkçı çift koni",
         bulletPoints: [
           "Top (küre): tek top = demirde gemi; düşey iki top = kumanda altında değil (NUC); düşey üç top = karaya oturmuş.",
           "Top-baklava-top (düşey): manevra kabiliyeti kısıtlı (RAM).",
@@ -11684,6 +11688,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "Kural 10 — Trafik Ayırım Düzenleri (TSS)",
         content:
           "Kural 10, IMO tarafından kabul edilen trafik ayırım düzenlerinde uygulanır; ancak gemiyi diğer kurallardaki yükümlülüklerinden muaf tutmaz. Düzeni kullanan gemi, uygun trafik şeridinde trafiğin genel akış yönünde ilerler; ayırım hattından veya ayırım bölgesinden uzak durur. Şeride yanlardan girerken/çıkarken mümkün olan en küçük açıyla, uçlardan ise normal şekilde girer/çıkar. Şeridi geçmek zorunda kalınırsa, genel trafik akış yönüne mümkün olduğunca dik bir pruva ile geçilir.",
+        image: "/diagrams/navigation/tss-kural10.svg",
+        imageAlt: "Trafik ayırım düzeni: zıt yönlü iki şerit, ayırım bölgesi, kıyı trafik bölgesi ve akışa dik geçen gemi",
         bulletPoints: [
           "Uygun şeritte, trafiğin genel akış yönünde seyret; ayırım hattı/bölgesinden uzak dur (10(b)).",
           "Şeridi geçmek zorundaysan akış yönüne mümkün olduğunca DİK pruva ile geç (10(c)).",
