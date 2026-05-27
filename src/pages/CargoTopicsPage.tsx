@@ -1489,6 +1489,7 @@ Maddenin IMDG Code'daki resmi taşıma adı.
   "imdg-segregation": {
     title: "Ayrım Tablosu (Segregation Table)",
     introduction: "IMDG Code segregation table, farklı sınıftaki tehlikeli yüklerin gemide birbirine olan minimum uzaklığını belirler.",
+    image: "/diagrams/seamanship/imdg-ayrim.svg",
     content: `AYRIM SEVİYELERİ (En düşükten en yükseğe):
 
 1. "AWAY FROM" (Uzak tut):

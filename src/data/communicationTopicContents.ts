@@ -56,6 +56,18 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
           "VHF-DSC ile tehlike çağrısı yapılırken şu adımlar izlenir: (1) DSC cihazında tehlike (distress) butonu açılır (genellikle koruyucu kapak altında), (2) tehlike tipi seçilir (batma, yangın, terk-i gemi, çatışma vb.), (3) GPS bağlıysa mevki otomatik eklenir, değilse manuel girilir, (4) tehlike çağrı butonu basılı tutularak çağrı Ch.70 üzerinden gönderilir. Çağrı gönderildikten sonra, (5) Ch.16'ya geçilir ve sesli MAYDAY mesajı prosedüre uygun şekilde verilir: 'MAYDAY MAYDAY MAYDAY, This is [gemi adı] [çağrı işareti] [MMSI], MAYDAY [gemi adı], my position is [...], I am [tehlike türü], I require [yardım talebi], [kişi sayısı] persons on board, over.' Teyit alınana kadar mesaj tekrarlanır.",
       },
       {
+        title: "Aciliyet, Emniyet Çağrıları ve Tehlike Teyidi/Aktarımı",
+        content:
+          "Tehlike dışındaki öncelikler de DSC ve sesle yürütülür. Aciliyet (urgency) çağrısı, gemi veya bir kişinin güvenliğiyle ilgili ancak ani-ölümcül olmayan durumlarda kullanılır ve seste 'PAN-PAN' üç kez tekrarlanır (ör. tıbbi yardım, makine arızası, sürüklenme). Emniyet (safety) çağrısı seyir veya meteorolojik uyarılar içindir ve seste 'SÉCURITÉ' üç kez tekrarlanır. Her ikisi de DSC ile ilgili öncelik seçilerek duyurulur, ardından bir çalışma kanalında sesli mesaj verilir.\n\nBir DSC tehlike alarmı ALAN gemi, alarmı hemen DSC ile teyit ETMEZ (aksi hâlde alarmın yayılması durur); Ch.16'yı dinler. Bir kıyı istasyonu teyidi DSC ile yapar. Yaklaşık 5 dakika içinde hiçbir kıyı istasyonu teyit etmemişse ve gemi yardım edebilecek durumdaysa, teyidi DSC ile değil Ch.16'da TELSİZ TELEFONLA verir ve MRCC'ye bildirir. Başka bir geminin tehlikesine tanık olunup o gemi yayın yapamıyorsa, onun adına DSC 'tehlike aktarımı' (distress relay) gönderilebilir.\n\nYanlışlıkla gönderilen tehlike alarmı DERHÂL iptal edilmelidir: cihaz kapatılmaz; Ch.16'da sesli olarak yanlış alarm iptali yapılır (gemi adı, çağrı işareti, MMSI ve 'cancel my distress alert' bildirimi).",
+        bulletPoints: [
+          "Aciliyet: 'PAN-PAN' ×3 (gemi/kişi güvenliği, ölümcül-acil değil).",
+          "Emniyet: 'SÉCURITÉ' ×3 (seyir/meteoroloji uyarısı).",
+          "DSC tehlike alarmını gemi hemen DSC ile teyit etmez; Ch.16 dinlenir.",
+          "Kıyı istasyonu DSC ile teyit eder; ~5 dk sonra gemi Ch.16'da telsizle teyit edebilir.",
+          "Yanlış alarm Ch.16'da sesli olarak derhâl iptal edilir.",
+        ],
+      },
+      {
         title: "Test ve Bakım",
         content:
           "VHF-DSC cihazının haftalık test çağrısı yapılması ve sonucunun radyo log defterine kaydedilmesi standart prosedürdür. Test çağrısı 'routine' önceliğinde yapılır ve yakındaki bir kıyı istasyonu veya başka bir gemiyle gerçekleştirilir. GPS bağlantısının çalıştığı, MMSI'nin doğru programlandığı ve antenin sağlam olduğu kontrol edilir. Yedek VHF setlerinin batarya durumu ve kanal ayarları düzenli olarak doğrulanır. DSC dışında, ses kalitesi (squelch ayarı, anten performansı) da operasyonel haberleşme kalitesini doğrudan etkiler.",

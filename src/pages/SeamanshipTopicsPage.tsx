@@ -103,6 +103,7 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
       { id: "anchor-chain", title: "Demir zinciri ve bağlantıları", hasContent: true },
       { id: "anchor-windlass", title: "Irgatlar ve demir donanımı", hasContent: true },
       { id: "anchoring-procedure", title: "Demirleme prosedürü", hasContent: true },
+      { id: "anchoring-maneuvers", title: "Demirleme manevra teknikleri", hasContent: true },
       { id: "anchor-watch", title: "Demir vardiyası ve tarama kontrolü", hasContent: true },
       { id: "anchor-dragging", title: "Demir taraması ve alınacak tedbirler", hasContent: true },
     ],
@@ -1023,6 +1024,48 @@ Ağır hava beklentisinde iki demir atılabilir. İki yöntem:
     warnings: [
       "Tarama anında vakit kaybedilmemeli; makine derhal hazır tutulmalıdır",
       "Sığ suda veya kalabalık demirlemede tarama = çatışma riski",
+    ],
+  },
+  "anchoring-maneuvers": {
+    title: "Demirleme Manevra Teknikleri",
+    introduction: "Demirleme manevrası; salınım alanı, dip tutuşu, hava/akıntı ve liman düzenine göre farklı tekniklerle yapılır. Doğru teknik, geminin emniyetli salınımını ve sağlam tutuşunu belirler.",
+    image: "/diagrams/seamanship/demirleme-manevralari.svg",
+    content: `YAKLAŞMA İLKESİ:
+Gemi demirleme noktasına daima rüzgâr veya akıntının güçlü olanına KARŞI (head to wind/current) yaklaşır. Nokta üzerinde gemi durdurulur ya da çok hafif tornistan (sternway) alırken demir funda edilir; böylece zincir geminin üstüne yığılmaz. Zincir kontrollü verilir (snub) ve demirin tuttuğu (brought up) doğrulanır.
+
+TEK DEMİRLE SALINIMLI DEMİRLEME (Single / Swinging Moor):
+En yaygın yöntem. Tek demir atılır, gemi rüzgâr/akıntıyla demir etrafında salınır. Geniş salınım alanı gerektirir. Zincir boyu = derinliğin 5-7 katı (fırtınada 8-10).
+
+AKARAK DEMİRLEME (Running Moor):
+Gemi ileri yol alırken birinci demir funda edilir, ileri gidilmeye devam edilip fazla zincir verilir; ikinci demir atılır ve gemi geri çekilerek zincirler eşitlenir. İki demir, salınımı kısıtlar ve güçlü tutuş sağlar. Kalabalık/akıntılı demir yerlerinde tercih edilir.
+
+DURARAK DEMİRLEME (Standing Moor):
+Gemi durur veya hafif sternway alır; birinci demir atılır, gemi geri kayarken zincir verilir; ikinci demir atılır ve birinci zincir hisa edilerek gemi iki demir arasında ortalanır. Akarak demirlemenin tersi sıradır.
+
+AKDENİZ USULÜ (Mediterranean Moor):
+Gemi kıça doğru rıhtıma yanaşır; baştan iki demir (sancak ve iskele) açıyla atılır, kıçtan halatlarla rıhtıma bağlanır. Kalabalık Akdeniz limanlarında çok sayıda gemiyi sığdırmak için kullanılır.
+
+BALTIK USULÜ (Baltic Moor):
+Rıhtımdan denize doğru esen kuvvetli rüzgârda, dış borda demiri + bir palamar halatı birlikte kullanılarak gemi rıhtıma yaklaştırılır ve emniyetle yanaşık tutulur.
+
+AÇIK DEMİRLEME (Open Moor):
+İki demir 60-90° açıyla atılır; akıntı/rüzgâr yön değiştirdiğinde salınımı sınırlar ve tutuşu artırır.`,
+    bulletPoints: [
+      "Yaklaşma daima rüzgâr/akıntıya karşı; nokta üzerinde funda",
+      "Running moor: ileri yolda 1. demir → ikinci demir → geri çekip eşitle",
+      "Standing moor: dur/geri kay → 1. demir → 2. demir → ortala",
+      "Akdeniz usulü: kıç rıhtıma, baştan iki demir açıyla",
+      "Baltik usulü: dış borda demiri + palamar halatı birlikte",
+    ],
+    keyPoints: [
+      "İki demirli moor (running/standing) salınımı kısıtlar ve tutuşu artırır",
+      "Tek demir geniş salınım alanı ister; kalabalıkta uygun değildir",
+      "Funda anında gemi durmuş veya çok hafif sternway almış olmalı",
+      "Manevra köprüüstü-baş kasara arası sürekli iletişimle yürütülür",
+    ],
+    warnings: [
+      "İleri yolda demir atmak zinciri ve ırgatı zorlar; running moor'da hız çok düşük olmalı",
+      "Akdeniz usulünde demir zincirlerinin çapraz/karışması (foul) riskine dikkat",
     ],
   },
 
