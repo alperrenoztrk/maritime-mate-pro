@@ -2752,6 +2752,7 @@ Kural 18 - Gemiler arası sorumluluk: Manevra kabiliyetine göre öncelik sıras
   "buoyage-iala": {
     title: "IALA Şamandıra Sistemi",
     introduction: "IALA (International Association of Marine Aids to Navigation) şamandıra sistemi, seyir yardımcılarının dünya genelinde standart olarak uygulanmasını sağlar.",
+    image: "/diagrams/seamanship/kardinal-samandiralar.svg",
     content: `IALA BÖLGELERİ:
 
 Bölge A: Avrupa, Afrika, Asya'nın büyük bölümü, Avustralya

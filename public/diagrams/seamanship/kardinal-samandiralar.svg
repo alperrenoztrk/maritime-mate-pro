@@ -1,0 +1,60 @@
+<svg viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .nm{font:13px sans-serif;fill:#0f172a;font-weight:700}
+      .sm{font:11px sans-serif;fill:#334155}
+      .k{fill:#0f172a}
+      .y{fill:#facc15}
+      .body{stroke:#0f172a;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="700" height="560" fill="#ffffff"/>
+  <text x="350" y="28" text-anchor="middle" class="ttl">IALA Kardinal Şamandıralar</text>
+  <text x="350" y="47" text-anchor="middle" class="sm">Sarı-siyah; tepe işareti iki siyah koni — koni yönü "hangi yöne geçileceğini" gösterir</text>
+
+  <!-- center hazard -->
+  <g transform="translate(350 280)">
+    <g stroke="#dc2626" stroke-width="3">
+      <line x1="-14" y1="0" x2="14" y2="0"/><line x1="0" y1="-14" x2="0" y2="14"/>
+      <line x1="-10" y1="-10" x2="10" y2="10"/><line x1="-10" y1="10" x2="10" y2="-10"/>
+    </g>
+    <text x="0" y="32" text-anchor="middle" class="sm" fill="#dc2626" font-weight="700">TEHLİKE</text>
+  </g>
+
+  <!-- NORTH cx=350: cones both UP, black top/yellow bottom (BY) -->
+  <path class="k" d="M 340 58 L 360 58 L 350 40 Z"/>
+  <path class="k" d="M 340 80 L 360 80 L 350 62 Z"/>
+  <rect class="body k" x="337" y="86" width="26" height="40"/>
+  <rect class="body y" x="337" y="126" width="26" height="40"/>
+  <text x="350" y="150" text-anchor="middle" class="nm">KUZEY</text>
+  <text x="350" y="166" text-anchor="middle" class="sm">koniler ↑↑ · siyah üstte · kuzeyinden geç</text>
+
+  <!-- SOUTH cx=350: cones both DOWN, yellow top/black bottom (YB) -->
+  <path class="k" d="M 340 360 L 360 360 L 350 378 Z"/>
+  <path class="k" d="M 340 382 L 360 382 L 350 400 Z"/>
+  <rect class="body y" x="337" y="406" width="26" height="40"/>
+  <rect class="body k" x="337" y="446" width="26" height="40"/>
+  <text x="350" y="506" text-anchor="middle" class="nm">GÜNEY</text>
+  <text x="350" y="522" text-anchor="middle" class="sm">koniler ↓↓ · siyah altta · güneyinden geç</text>
+
+  <!-- EAST cx=560: cones base-to-base (apart), black-yellow-black (BYB) -->
+  <path class="k" d="M 550 214 L 570 214 L 560 196 Z"/>
+  <path class="k" d="M 550 216 L 570 216 L 560 234 Z"/>
+  <rect class="body k" x="547" y="240" width="26" height="26"/>
+  <rect class="body y" x="547" y="266" width="26" height="26"/>
+  <rect class="body k" x="547" y="292" width="26" height="26"/>
+  <text x="560" y="338" text-anchor="middle" class="nm">DOĞU</text>
+  <text x="560" y="354" text-anchor="middle" class="sm">koniler ▲▼ ayrık · doğusundan geç</text>
+
+  <!-- WEST cx=140: cones point-to-point (wineglass), yellow-black-yellow (YBY) -->
+  <path class="k" d="M 130 196 L 150 196 L 140 214 Z"/>
+  <path class="k" d="M 130 234 L 150 234 L 140 216 Z"/>
+  <rect class="body y" x="127" y="240" width="26" height="26"/>
+  <rect class="body k" x="127" y="266" width="26" height="26"/>
+  <rect class="body y" x="127" y="292" width="26" height="26"/>
+  <text x="140" y="338" text-anchor="middle" class="nm">BATI</text>
+  <text x="140" y="354" text-anchor="middle" class="sm">koniler ▼▲ birleşik (kadeh) · batısından geç</text>
+
+  <text x="350" y="548" text-anchor="middle" class="sm">Anımsatıcı: siyah bant, konilerin gösterdiği yöndedir (K: üst, G: alt, D: üst+alt, B: orta)</text>
+</svg>

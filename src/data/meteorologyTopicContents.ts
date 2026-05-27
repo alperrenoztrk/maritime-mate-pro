@@ -714,6 +714,8 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
         title: "Tehlike Mesajları (SOLAS V/31)",
         content:
           "Tehlikeli buz, tehlikeli terk edilmiş gemi (derelict) veya seyre doğrudan tehlike oluşturan başka bir engelle karşılaşan; tropikal fırtınaya rastlayan; üst yapılarda ağır buzlanmaya yol açan, fırtına şiddetinde rüzgârla birlikte donma altı hava sıcaklığı yaşayan; ya da hakkında fırtına ihbarı alınmamış 10 Bofor ve üzeri rüzgârla karşılaşan her geminin kaptanı, bu bilgiyi elindeki tüm imkânlarla yakındaki gemilere ve ilk ulaşabildiği yetkili makama iletmekle yükümlüdür.",
+        image: "/diagrams/meteorology/solas-v-tehlike-mesajlari.svg",
+        imageAlt: "SOLAS V/31 bildirilecek tehlikeler ve V/32 tropikal fırtına mesaj içeriği",
         bulletPoints: [
           "Tehlikeli buz / buzdağı.",
           "Tehlikeli terk edilmiş gemi (derelict) veya seyir engeli.",

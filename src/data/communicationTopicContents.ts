@@ -182,6 +182,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
         title: "Mesaj İşaretleri (Message Markers)",
         content:
           "Yanlış anlamayı önlemek için, özellikle VTS haberleşmesinde, bir mesajın türü baştan belirtilir. SMCP sekiz mesaj işareti tanımlar. İşaret, mesajın amacını net biçimde ortaya koyar ve alıcının doğru tepki vermesini sağlar.",
+        image: "/diagrams/communication/smcp-mesaj-isaretleri.svg",
+        imageAlt: "SMCP sekiz mesaj işareti: Instruction, Advice, Warning, Information, Question, Answer, Request, Intention",
         bulletPoints: [
           "Instruction (Talimat): Alıcıya yönelik zorunlu/emredici bir gereklilik bildirir.",
           "Advice (Tavsiye): Alıcıya yönelik bir öneri/tavsiye bildirir.",
