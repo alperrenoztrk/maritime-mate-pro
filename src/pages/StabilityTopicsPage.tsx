@@ -166,6 +166,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "tpc", title: "TPC (Ton Per Centimeter)", hasContent: true },
       { id: "km-values", title: "KM değerleri", hasContent: true },
       { id: "hydrostatic-tables-usage", title: "Hidrostatik tabloların kullanımı", hasContent: true },
+      { id: "inclining-experiment", title: "Meyil deneyi (Inclining Experiment)", hasContent: true },
     ],
   },
   {
@@ -207,6 +208,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "asymmetric-flooding", title: "Asimetrik flooding", hasContent: true },
       { id: "progressive-flooding", title: "Progressive flooding", hasContent: true },
       { id: "damaged-gm-gz", title: "Hasarlı GM ve GZ", hasContent: true },
+      { id: "probabilistic-damage-stability", title: "Olasılıksal hasar stabilitesi (deterministik vs olasılıksal)", hasContent: true },
     ],
   },
   {
@@ -221,6 +223,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "ballast-operations", title: "Balast operasyonları", hasContent: true },
       { id: "cargo-shift", title: "Kargo kayması", hasContent: true },
       { id: "icing-effect", title: "Buzlanma etkisi", hasContent: true },
+      { id: "drydocking-stability", title: "Havuzlama (drydocking) stabilitesi", hasContent: true },
     ],
   },
   {
@@ -3088,6 +3091,140 @@ Tutulma: Kritik bulgularda gemi kalkmaya izin verilmez.`,
     warnings: [
       "Tutulma mali ve operasyonel kayıp demektir",
       "ISM Code gereği önleyici prosedürler uygulanmalıdır",
+    ],
+  },
+
+  "inclining-experiment": {
+    title: "Meyil Deneyi (Inclining Experiment)",
+    introduction: "Meyil deneyi, geminin boş (lightship) durumdaki ağırlık merkezi yüksekliğini (KG) ve boş gemi deplasmanını deneysel olarak belirlemek için yapılan kontrollü bir testtir. Tüm stabilite hesaplarının dayandığı KG değeri bu deneyle elde edilir.",
+    content: `AMAÇ:
+
+Bir geminin stabilite hesapları, boş gemi (lightship) ağırlığı ve bu ağırlığın merkezinin yüksekliği (KG) bilinmeden yapılamaz. Meyil deneyi, gemiyi bilinen ağırlıklarla kontrollü biçimde yatırarak KG'yi doğrudan ölçer. Yeni inşa edilen veya büyük değişiklik geçiren gemilerde zorunludur.
+
+YÖNTEM:
+
+Güvertede bilinen bir ağırlık (w) enine olarak bilinen bir mesafe (d) kadar kaydırılır. Bu, gemiye bir yatırma momenti uygular ve gemi küçük bir açı (θ) kadar meyleder. Meyil, sarkaç (plumb line/pendulum) veya U-borusu (manometer) ile ölçülür. Ölçülen meyilden geminin metasantr yüksekliği (GM) hesaplanır; KM hidrostatik tablolardan bilindiğinden KG = KM − GM bulunur.
+
+FORMÜL:
+
+Yatırma momenti = w × d. Bu moment, GM ve meyil açısıyla ilişkilidir.
+
+DENEY KOŞULLARI (DOĞRULUK İÇİN):
+
+- Gemi mümkün olduğunca boş ve "as nearly complete as possible" durumda olmalı.
+- Sıvı tankları ya tam dolu/boş olmalı (serbest yüzey etkisini sıfırlamak için) ya da serbest yüzey düzeltmesi yapılmalı.
+- Rüzgâr, akıntı ve bağlama gerginliği minimumda; gemi serbestçe meyledebilmeli.
+- Birkaç farklı ağırlık ve yönde tekrar yapılarak ortalama alınır.
+- Bilinmeyen ağırlıklar (artık yük, su, atık) kaydedilir ve düzeltilir.
+
+SONUÇ:
+
+Deneyden elde edilen lightship deplasmanı ve KG, geminin Stability Booklet'ine işlenir; tüm yükleme durumlarının stabilite hesapları bu temel değerlere göre yapılır.`,
+    formula: {
+      name: "Metasantr Yüksekliği (meyil deneyi)",
+      expression: "GM = (w × d) / (W × tan θ)   →   KG = KM − GM",
+      description: "w: kaydırılan ağırlık, d: kaydırma mesafesi, W: toplam deplasman, θ: meyil açısı, KM: hidrostatik tablodan.",
+    },
+    bulletPoints: [
+      "Lightship deplasmanı ve KG'yi deneysel olarak belirler.",
+      "Bilinen ağırlık enine kaydırılır, meyil sarkaç/U-borusuyla ölçülür.",
+      "GM ölçülür, KM bilindiğinden KG = KM − GM bulunur.",
+      "Serbest yüzey ve dış etkiler minimize edilir; tekrarla ortalama alınır.",
+    ],
+    keyPoints: [
+      "Tüm stabilite hesaplarının temeli KG'dir; meyil deneyi KG'yi verir.",
+      "Yeni inşa/büyük değişiklik sonrası zorunludur.",
+      "Tank serbest yüzeyi ve dış kuvvetler doğruluğu doğrudan etkiler.",
+    ],
+    warnings: [
+      "Serbest yüzeyli tanklar veya bağlama gerginliği sonucu ciddi biçimde saptırır",
+      "Hatalı KG, tüm yükleme stabilite hesaplarını güvenilmez kılar",
+    ],
+  },
+
+  "probabilistic-damage-stability": {
+    title: "Olasılıksal Hasar Stabilitesi",
+    introduction: "Hasar stabilitesinin değerlendirilmesinde iki yaklaşım vardır: deterministik (belirli hasar senaryolarına göre) ve olasılıksal (hasarın istatistiksel olasılığına göre). SOLAS, kuru yük ve yolcu gemilerinde olasılıksal yöntemi (probabilistic damage stability) esas alır.",
+    content: `İKİ YAKLAŞIM:
+
+DETERMİNİSTİK YÖNTEM:
+Önceden tanımlanmış belirli hasar senaryoları (örn. bir/iki bölmenin su alması) ele alınır ve gemi her senaryoda belirli kriterleri sağlamalıdır. "Bir bölme/iki bölme standardı" (one/two-compartment standard) bu mantığın klasik ifadesidir. Anlaşılması kolaydır ancak gerçek hasarın çeşitliliğini tam yansıtmaz.
+
+OLASILIKSAL YÖNTEM (SOLAS II-1):
+Gerçek çatışma/hasar istatistiklerine dayanır. Hasarın gemi boyunca herhangi bir yerde, çeşitli boyut ve derinlikte oluşabileceği olasılıkları dikkate alınır. Temel ölçüt, "Attained Subdivision Index (A)" değerinin gerekli "Required Subdivision Index (R)" değerinden büyük/eşit olmasıdır.
+
+A ve R İNDEKSLERİ:
+
+- R (Required Index): Geminin tipine ve büyüklüğüne (yolcu sayısı, boy) bağlı olarak belirlenen, sağlanması gereken asgari bölmelendirme düzeyidir.
+- A (Attained Index): Geminin gerçek bölmelendirme düzenine göre hesaplanan, hasar sonrası hayatta kalma olasılığını yansıtan değerdir. A, her bölme/bölme grubu için hasar olasılığı (p) ile o hasardan sonra hayatta kalma olasılığının (s) çarpımlarının toplamı olarak hesaplanır.
+
+ÖLÇÜT:
+
+A ≥ R sağlanmalıdır. Ayrıca belirli kısmi indeksler ve en kötü durum koşulları da kontrol edilir.
+
+DENİZCİLİK ÖNEMİ:
+
+Olasılıksal yaklaşım, tasarımcıya bölmelendirmede esneklik tanırken istatistiksel olarak daha güvenli gemiler üretmeyi hedefler. Zabit açısından önemli olan, geminin onaylı yükleme/hasar durumlarının Stability Booklet ve hasar kontrol bilgilerinde tanımlı olduğunu ve bunlara uyulması gerektiğini bilmektir.`,
+    formula: {
+      name: "Ulaşılan Bölmelendirme İndeksi",
+      expression: "A = Σ (pᵢ × sᵢ) ≥ R",
+      description: "pᵢ: i bölgesinin hasar görme olasılığı, sᵢ: o hasardan sonra hayatta kalma olasılığı, R: gerekli indeks.",
+    },
+    bulletPoints: [
+      "Deterministik: belirli senaryolar (bir/iki bölme standardı).",
+      "Olasılıksal: hasar istatistiğine dayalı; SOLAS II-1 esas alır.",
+      "Ölçüt: Attained Index A ≥ Required Index R.",
+      "A = Σ(p×s); p hasar olasılığı, s hayatta kalma olasılığı.",
+    ],
+    keyPoints: [
+      "SOLAS, kuru yük/yolcu gemilerinde olasılıksal yöntemi kullanır.",
+      "A ≥ R sağlanmalıdır.",
+      "Onaylı yükleme/hasar durumlarına uyulması zabitin sorumluluğudur.",
+    ],
+  },
+
+  "drydocking-stability": {
+    title: "Havuzlama (Drydocking) Stabilitesi",
+    introduction: "Havuzlama sırasında gemi kuru havuz blokları üzerine oturmaya başladığında, blokların uyguladığı yukarı tepki kuvveti geminin etkin stabilitesini azaltır. En kritik an, kıç omurganın bloklara ilk temas ettiği andır.",
+    content: `OLAY:
+
+Gemi kuru havuza alınırken su boşaltılır; gemi alçalır ve önce (genellikle trim nedeniyle) kıç omurga bloklara temas eder. Bu temas noktasında bloklar yukarı doğru bir tepki kuvveti (P) uygular. Bu kuvvet, etkin olarak omurga hizasından aşağı bir noktadan yukarı destek anlamına gelir ve geminin metasantr yüksekliğini (GM) AZALTIR; yani sanki KG yükselmiş gibi davranır.
+
+KRİTİK AN:
+
+En tehlikeli an, geminin tam olarak oturmadan önce, ağırlığın bir kısmının hâlâ yüzme ile bir kısmının bloklarla taşındığı geçiş anıdır. Bu anda GM yetersiz kalırsa gemi havuz içinde devrilebilir veya bloklardan kayabilir. Bu yüzden havuzlama öncesi yeterli başlangıç GM ve uygun trim sağlanmalıdır.
+
+P KUVVETİ VE GM KAYBI:
+
+Blokların uyguladığı tepki kuvveti P, su seviyesi düştükçe artar. P'nin neden olduğu sanal KG artışı (ve GM kaybı), P × KM / W ile orantılı olarak değerlendirilir. Bu nedenle:
+- Havuzlamaya küçük bir kıç trimi ile girilir (temas kontrollü olsun diye).
+- Aşırı trim, tek noktada büyük P oluşturup riski artırır.
+- Yeterli başlangıç GM şarttır.
+
+ÖNLEMLER:
+
+- Havuzlama öncesi yükleme/balast ayarıyla uygun trim ve yeterli GM sağlanır.
+- Yan destek blokları (side/bilge blocks) ve payandalar (shores) gemi oturdukça devreye girer.
+- Stabilite, geminin tüm ağırlığı bloklara binene (fully landed) kadar izlenir; tam oturduktan sonra gemi stabildir.`,
+    formula: {
+      name: "Havuzlamada GM Kaybı (yaklaşık)",
+      expression: "GM kaybı ≈ (P × KM) / W",
+      description: "P: blokların yukarı tepki kuvveti, KM: metasantr yüksekliği, W: deplasman. P arttıkça etkin GM azalır.",
+    },
+    bulletPoints: [
+      "Bloklara temasta yukarı tepki kuvveti (P) etkin GM'yi azaltır.",
+      "En kritik an: kıç omurga oturmaya başladığı geçiş anı.",
+      "Küçük kıç trimi + yeterli başlangıç GM ile havuzlanır.",
+      "Tam oturunca (landed) gemi tekrar stabildir.",
+    ],
+    keyPoints: [
+      "Havuzlama etkin stabiliteyi geçici olarak düşürür.",
+      "Aşırı trim tek noktada büyük P → daha çok GM kaybı.",
+      "Yan bloklar ve payandalar oturma sırasında destek sağlar.",
+    ],
+    warnings: [
+      "Yetersiz GM veya aşırı trim ile havuzlama, gemi bloklardan kayabilir/devrilebilir",
+      "Geçiş anında stabilite sürekli izlenmelidir",
     ],
   },
 };

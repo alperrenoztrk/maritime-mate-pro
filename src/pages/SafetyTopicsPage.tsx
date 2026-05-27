@@ -21,6 +21,7 @@ import {
   BookMarked,
   Eye,
   Siren,
+  HardHat,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -67,6 +68,12 @@ const safetyTopics: SafetyMainTopic[] = [
       { id: "fire-fighting-proc", title: "Yangınla mücadele prosedürleri", hasContent: true },
       { id: "engine-room-fire", title: "Makine dairesi yangınları", hasContent: true },
       { id: "fire-drills", title: "Yangın tatbikatları ve SOLAS gereksinimleri", hasContent: true },
+      { id: "eebd", title: "EEBD – Acil Kaçış Solunum Cihazı", hasContent: true },
+      { id: "scba", title: "SCBA – Bağımsız Solunum Cihazı", hasContent: true },
+      { id: "firemans-outfit", title: "İtfaiyeci teçhizatı (Fireman's Outfit)", hasContent: true },
+      { id: "fire-fighting-equipment", title: "Yangın devresi, hidrant, hortum ve nozullar", hasContent: true },
+      { id: "structural-fire-protection", title: "Yapısal yangın koruması (A/B/C sınıfı bölmeler)", hasContent: true },
+      { id: "fire-control-plan", title: "Yangın kontrol planı (Fire Control Plan)", hasContent: true },
     ],
   },
   {
@@ -82,6 +89,9 @@ const safetyTopics: SafetyMainTopic[] = [
       { id: "personal-lsa", title: "Kişisel can kurtarma teçhizatı", hasContent: true },
       { id: "pyrotechnics", title: "Piroteknik işaret araçları", hasContent: true },
       { id: "lsa-maintenance", title: "LSA bakım ve muayene", hasContent: true },
+      { id: "immersion-suit-tpa", title: "Dalma elbisesi ve termal koruyucu (TPA)", hasContent: true },
+      { id: "mes", title: "Deniz tahliye sistemi (MES)", hasContent: true },
+      { id: "line-throwing", title: "Halat atma aparatı (Line-Throwing Appliance)", hasContent: true },
     ],
   },
   {
@@ -175,6 +185,19 @@ const safetyTopics: SafetyMainTopic[] = [
       { id: "entry-permit", title: "Giriş izin sistemi (Entry Permit)", hasContent: true },
       { id: "atmosphere-testing", title: "Atmosfer testi ve ölçüm cihazları", hasContent: true },
       { id: "rescue-from-enclosed", title: "Kapalı alandan kurtarma prosedürü", hasContent: true },
+    ],
+  },
+  {
+    id: "occupational-safety",
+    number: 11,
+    title: "İş Sağlığı ve Güvenliği",
+    icon: HardHat,
+    subtopics: [
+      { id: "ppe", title: "Kişisel koruyucu donanım (KKD/PPE)", hasContent: true },
+      { id: "permit-to-work", title: "Çalışma izni sistemi ve sıcak iş izni", hasContent: true },
+      { id: "risk-assessment", title: "Risk değerlendirmesi ve JSA", hasContent: true },
+      { id: "damage-control", title: "Hasar kontrolü ve su geçirmez bütünlük", hasContent: true },
+      { id: "mooring-safety-snapback", title: "Bağlama güvenliği ve snap-back bölgeleri", hasContent: true },
     ],
   },
 ];
@@ -2113,6 +2136,554 @@ Kapalı alan giriş prosedürü, ekipman durumu ve tatbikat kayıtları PSC dene
     warnings: [
       "Eğitimsiz kurtarma girişimi en sık ölüm nedenidir",
       "EEBD kurtarma operasyonu için KESİNLİKLE yeterli değildir",
+    ],
+  },
+
+  // =====================================================
+  // BÖLÜM 2/3 EKİ - YANGIN VE LSA EKİPMANLARI
+  // =====================================================
+  "eebd": {
+    title: "EEBD – Acil Kaçış Solunum Cihazı",
+    introduction: "EEBD (Emergency Escape Breathing Device), duman veya zehirli gazla dolu bir mahalden GÜVENLİ bir bölgeye KAÇIŞ için kullanılan, kısa süreli solunum havası sağlayan taşınabilir bir cihazdır. Yangın söndürme veya kurtarma için KULLANILMAZ.",
+    content: `EEBD NEDİR?
+
+EEBD, bir kişinin tehlikeli atmosferden (duman, sıcak gaz, oksijen yetersizliği) acil kaçışı sırasında solunum havası sağlar. Genellikle bir hava/oksijen kaynağı ve başı tamamen örten bir başlık (hood) veya yüz maskesinden oluşur. Başlık, gözleri ve yüzü dumandan korur.
+
+YASAL DAYANAK:
+
+SOLAS Bölüm II-2, Kural 13 (kaçış yolları) ve FSS Code Bölüm 3 EEBD gereksinimlerini düzenler. EEBD'ler en az 10 dakika kullanım süresi sağlamalıdır.
+
+TAŞIMA GEREKSİNİMLERİ:
+
+- Yaşam mahallerinde (accommodation) acil kaçış için EEBD bulundurulur.
+- Makine mahallerinde en az iki adet EEBD, normal çalışma istasyonlarına yakın ve çıkış yollarında bulunur.
+- Her EEBD'nin konumu yangın kontrol planında işaretlenir.
+- Eğitim amaçlı ayrı bir EEBD (training unit) bulundurulur; servis ömrünü tüketmemek için gerçek cihazlar tatbikatta kullanılmaz.
+
+EEBD KULLANIM İLKELERİ:
+
+1. Başlığı tak ve hava akışını başlat.
+2. Eğilerek, en kısa kaçış yolundan güvenli bölgeye ilerle.
+3. Süre kısıtlıdır (≈10-15 dk); zaman kaybetme.
+4. Güvenli bölgeye ulaşınca cihazı çıkar.
+
+EEBD ile SCBA FARKI:
+
+EEBD yalnızca KAÇIŞ içindir; kapalı/oksijensiz mahalle GİRİŞ, yangın söndürme veya kurtarma operasyonu için KULLANILMAZ. Bu amaçlar için SCBA (bağımsız solunum cihazı) gereklidir. EEBD'nin süresi ve koruması bu görevler için yetersizdir.
+
+BAKIM VE KONTROL:
+
+EEBD basınç göstergesi (varsa) düzenli kontrol edilir, mühür (seal) sağlamlığı denetlenir, son kullanma/servis tarihi takip edilir. Mühür kırıksa veya basınç düşükse cihaz "out of service" işaretlenir ve değiştirilir.`,
+    keyPoints: [
+      "EEBD yalnızca KAÇIŞ içindir – yangın söndürme/kurtarma için kullanılmaz",
+      "En az 10 dakika solunum havası sağlar (FSS Code Bölüm 3)",
+      "Makine mahallerinde en az 2 adet, kaçış yollarında bulunur",
+      "Eğitim için ayrı training unit kullanılır; gerçek cihaz tatbikatta tüketilmez",
+    ],
+    warnings: [
+      "EEBD ile oksijensiz/kapalı mahalle GİRİLMEZ – bu SCBA görevidir",
+      "Mührü kırık veya basıncı düşük EEBD derhal değiştirilmelidir",
+    ],
+  },
+  "scba": {
+    title: "SCBA – Bağımsız Solunum Cihazı",
+    introduction: "SCBA (Self-Contained Breathing Apparatus), kullanıcının ortam havasından bağımsız olarak basınçlı hava soluduğu, yangın söndürme ve kapalı/tehlikeli mahalle giriş için kullanılan tam korumalı solunum cihazıdır.",
+    content: `SCBA BİLEŞENLERİ:
+
+- Yüksek basınçlı hava tüpü (genellikle 6-9 litre, 200-300 bar).
+- Basınç düşürücü regülatör ve talep valfi (demand valve).
+- Tam yüz maskesi (full face mask).
+- Sırt taşıma sistemi (harness ve back plate).
+- Basınç göstergesi ve düşük basınç düdüğü (low-pressure warning whistle).
+
+KAPASİTE VE SÜRE:
+
+FSS Code Bölüm 3'e göre SCBA en az 1200 litre serbest hava veya 30 dakika kullanım kapasitesine sahip olmalıdır. Gerçek kullanım süresi; iş yükü, solunum hızı ve kişiye göre değişir; ağır eforda süre belirgin biçimde kısalır.
+
+İTFAİYECİ TEÇHİZATININ PARÇASI:
+
+SCBA, itfaiyeci teçhizatının (fireman's outfit) zorunlu parçasıdır. Her teçhizat için yeterli yedek dolum/şişe bulundurulur (gemide en az 2 yedek dolu tüp veya dolum kompresörü).
+
+KULLANIM PRENSİPLERİ:
+
+1. Giriş öncesi tüp basıncını ve maske sızdırmazlığını kontrol et.
+2. Düşük basınç düdüğünün çaldığı eşiği bil (dönüş için kalan süre).
+3. Buddy system (ikili çalışma) zorunludur; ekip dışarıdan kontrol edilir.
+4. Hava yarıya inmeden dönüş planı yap (içeri girişte harcanan = dönüşte gereken).
+5. Kullanım sonrası tüpü doldur, maske ve regülatörü temizle/dezenfekte et.
+
+BAKIM:
+
+Tüpler periyodik hidrostatik teste (genellikle 5 yılda bir) tabidir. Maske, regülatör ve düdük her kullanım öncesi/sonrası kontrol edilir. Kayıtlar tutulur.`,
+    keyPoints: [
+      "SCBA en az 1200 L hava / 30 dk kapasiteli olmalıdır (FSS Code Bölüm 3)",
+      "İtfaiyeci teçhizatının zorunlu parçasıdır; yedek dolum bulundurulur",
+      "Buddy system ve düşük basınç düdüğü güvenliğin temelidir",
+      "Tüpler periyodik hidrostatik teste tabidir",
+    ],
+    warnings: [
+      "Hava yarıya inmeden dönüş başlatılmalı – giriş kadar dönüş havası gerekir",
+      "Maske sızdırmazlık kontrolü yapılmadan tehlikeli atmosfere girilmez",
+    ],
+  },
+  "firemans-outfit": {
+    title: "İtfaiyeci Teçhizatı (Fireman's Outfit)",
+    introduction: "İtfaiyeci teçhizatı, yangına müdahale eden personeli ısı, alev ve dumandan koruyan kişisel koruyucu giysi ile solunum cihazından oluşan zorunlu bir setdir (SOLAS II-2 / FSS Code Bölüm 3).",
+    content: `TEÇHİZAT BİLEŞENLERİ:
+
+A) Kişisel donanım:
+- Isıya ve dumana dayanıklı koruyucu giysi (yüzeyden ısı iletimini sınırlar, su geçirmez dış katman).
+- Çizme ve eldiven (elektrik yalıtkanı, ısıya dayanıklı).
+- Kafa, boyun ve yanları koruyan kask (helmet).
+- Elektrikli emniyet lambası: en az 3 saat çalışma süreli.
+- Yangın baltası (fireman's axe), elektrik yalıtkan saplı.
+
+B) Solunum cihazı:
+- SCBA (bağımsız basınçlı hava solunum cihazı).
+
+C) Cankurtaran hattı (lifeline):
+- Ateşe dayanıklı, en az 30 m, kanca ile teçhizata bağlanabilir; ekiple iletişim/geri çekme için.
+
+GEMİDE BULUNDURULMASI GEREKEN SAYI:
+
+SOLAS II-2 Kural 10.10, gemi tipi ve büyüklüğüne göre asgari teçhizat sayısını belirler. Yük gemilerinde genellikle en az 2 itfaiyeci teçhizatı bulunur; yolcu gemilerinde mahal/uzunluğa göre sayı artar. Tankerlerde ek teçhizat gerekebilir.
+
+SAKLAMA VE ERİŞİM:
+
+Teçhizatlar birbirinden uzak, kolay erişilebilir ve işaretli konumlarda saklanır; biri bir yangında erişilemez olursa diğeri kullanılabilsin diye dağıtılır. Konumları yangın kontrol planında gösterilir.
+
+BAKIM VE KONTROL:
+
+Giysi, eldiven, çizme ve kaskın bütünlüğü; lamba şarjı ve süresi; SCBA tüp basıncı ve maske durumu düzenli kontrol edilir ve kayıt tutulur.`,
+    keyPoints: [
+      "Set = koruyucu giysi + çizme/eldiven + kask + emniyet lambası (≥3 saat) + balta + SCBA + lifeline",
+      "SOLAS II-2/10.10 asgari sayıyı belirler; yük gemisinde genellikle ≥2",
+      "Teçhizatlar birbirinden uzak, işaretli konumlarda saklanır",
+      "Lifeline ateşe dayanıklı ve ekiple geri çekme için kullanılır",
+    ],
+  },
+  "fire-fighting-equipment": {
+    title: "Yangın Devresi, Hidrant, Hortum ve Nozullar",
+    introduction: "Gemideki sabit yangın su devresi (fire main); pompalar, ana boru hattı, hidrantlar, hortumlar ve nozullar ile uluslararası sahil bağlantısından oluşur ve yangına su ile müdahalenin temelini sağlar (SOLAS II-2 Kural 10).",
+    content: `YANGIN POMPALARI:
+
+- Ana yangın pompaları: Gemi tipine göre sayı ve kapasitesi belirlenir; gerekli debiyi ve hidrant basıncını sağlar.
+- Acil yangın pompası (emergency fire pump): Makine dairesi devre dışı kalsa bile su sağlayabilmek için makine dairesi dışında, ayrı bir mahalde ve bağımsız güç kaynaklı olarak bulunur.
+
+YANGIN ANA DEVRESİ (FIRE MAIN):
+
+Pompalardan beslenen, güverteler boyunca uzanan basınçlı su hattıdır. İzolasyon valfleri ile hasarlı bölüm ayrılabilir, devre çalışmaya devam eder.
+
+HİDRANTLAR:
+
+Hidrantlar, gemideki herhangi bir noktaya en az iki su jeti ulaşacak şekilde yerleştirilir (biri tek hortum boyundan). Her hidrantta gerekli minimum basınç sağlanmalıdır.
+
+HORTUMLAR VE NOZULLAR:
+
+- Yangın hortumları her hidrantın yanında, bağlantıya hazır bulunur. Uzunlukları mahale göre standarttır.
+- Nozullar çift amaçlıdır (dual-purpose): tam jet (jet) ve sprey/sis (spray) modları. Standart nozul çapları yaklaşık 12 mm, 16 mm ve 19 mm'dir. Kapatma (shut-off) özelliği bulunur.
+
+ULUSLARARASI SAHİL BAĞLANTISI (INTERNATIONAL SHORE CONNECTION):
+
+Gemi yangın devresine karadan veya başka bir gemiden su basılabilmesi için standart ölçülü bir bağlantı flanşıdır. Her gemide en az bir adet bulunur. Standart boyutları (dış çap 178 mm, cıvata daire çapı 132 mm vb.) tüm dünyada aynıdır; böylece liman/itfaiye teçhizatı gemiye bağlanabilir.
+
+KONTROL VE BAKIM:
+
+Pompalar, izolasyon valfleri, hidrant valfleri, hortum contaları ve nozullar haftalık/aylık kontrol edilir. Sızıntı, çatlak veya korozyon defect olarak raporlanır.`,
+    keyPoints: [
+      "Acil yangın pompası makine dairesi dışında, bağımsız güç kaynaklıdır",
+      "Her noktaya en az iki su jeti ulaşmalı (SOLAS II-2/10)",
+      "Nozullar çift amaçlı (jet + sprey) ve kapatma özelliklidir",
+      "Uluslararası sahil bağlantısı standart ölçülüdür; gemide en az 1 adet",
+    ],
+  },
+  "structural-fire-protection": {
+    title: "Yapısal Yangın Koruması (A/B/C Sınıfı Bölmeler)",
+    introduction: "Yapısal yangın koruması, geminin perde ve güvertelerinin yangının yayılmasını geciktirecek şekilde sınıflandırılması ve yalıtılması prensibine dayanır (SOLAS II-2). Amaç, yangını kaynağında sınırlamak ve kaçış yollarını korumaktır.",
+    content: `BÖLME SINIFLARI:
+
+A SINIFI (A-Class) bölmeler:
+- Çelik veya eşdeğer malzemeden yapılır, uygun şekilde takviyelidir.
+- 60 dakikalık standart yangın testi boyunca duman ve alev geçişini önler (bütünlük).
+- Yalıtım seviyesine göre alt sınıflara ayrılır: A-60, A-30, A-15, A-0. Sayı, test başlangıcından itibaren ısının diğer yüzde ortalama 140°C (veya herhangi bir noktada 180°C) artışını geciktirdiği DAKİKA sayısıdır. A-0'da yalıtım şartı yoktur (yalnız bütünlük).
+
+B SINIFI (B-Class) bölmeler:
+- Yanmaz malzemeden yapılır; 30 dakika boyunca alev geçişini önler.
+- Yalıtıma göre B-15 ve B-0 olarak ayrılır.
+
+C SINIFI (C-Class) bölmeler:
+- Yanmaz malzemeden yapılır; ısı geçişi veya alev için belirli bir süre şartı yoktur.
+
+ANA DİKEY BÖLGELER (MAIN VERTICAL ZONES):
+
+Gemi, A sınıfı bölmelerle ana dikey yangın bölgelerine ayrılır (yolcu gemilerinde uzunluk ve alan sınırı vardır). Böylece bir bölgedeki yangın komşu bölgelere kolayca yayılamaz.
+
+YANGIN KAPILARI VE DAMPERLER:
+
+- Yangın kapıları (fire doors): A/B sınıfı bölmelerdeki geçişlerde, kendiliğinden kapanan ve köprüden uzaktan kapatılabilen tiptedir.
+- Yangın damperleri (fire dampers): Havalandırma kanallarında, yangın bölmesi sınırından geçişte yangının kanal üzerinden yayılmasını önler.
+
+KAÇIŞ YOLLARININ KORUNMASI:
+
+Merdiven kovaları ve kaçış yolları, yangın bölmeleriyle korunarak duman ve aleve karşı güvenli tahliye sağlanır.`,
+    keyPoints: [
+      "A sınıfı: çelik, 60 dk bütünlük; A-60/A-30/A-15/A-0 ısı geçişi süresine göre",
+      "B sınıfı: 30 dk, B-15/B-0; C sınıfı: yanmaz, süre şartı yok",
+      "Ana dikey bölgeler A sınıfı bölmelerle ayrılır",
+      "Yangın kapıları kendiliğinden kapanır, damperler kanal yayılımını önler",
+    ],
+  },
+  "fire-control-plan": {
+    title: "Yangın Kontrol Planı (Fire Control Plan)",
+    introduction: "Yangın kontrol planı, geminin yangın güvenliği düzeneğini gösteren, her güverte için kalıcı olarak sergilenen bir şemadır. Acil durumda mürettebata ve karadan gelen itfaiyecilere yol gösterir (SOLAS II-2 Kural 15).",
+    content: `PLANDA NELER GÖSTERİLİR?
+
+- Kontrol istasyonları (control stations).
+- A ve B sınıfı bölmelerle ayrılmış yangın bölümleri.
+- Yangın algılama ve alarm sistemleri.
+- Sprinkler ve sabit söndürme (CO₂, köpük vb.) sistemleri.
+- Taşınabilir söndürücüler, hidrantlar, hortumlar ve uluslararası sahil bağlantısı.
+- Kaçış yolları, merdiven kovaları ve toplanma istasyonları.
+- Havalandırma sistemleri, fan kumandaları ve yangın damperlerinin konumu.
+- EEBD, SCBA ve itfaiyeci teçhizatının konumu.
+
+SEMBOLLER:
+
+Plan, IMO tarafından standartlaştırılmış grafik semboller (IMO Kararı A.952(23)) ile çizilir; böylece her milletten itfaiyeci planı okuyabilir.
+
+KARA İTFAİYESİ İÇİN KOPYA:
+
+SOLAS II-2/15.2.4 gereği planın bir kopyası, güverte evi (deckhouse) dışında, belirgin işaretli ve hava şartlarına dayanıklı (weathertight) bir muhafaza içinde bulundurulur. Böylece karadan gelen itfaiye ekibi gemiye girmeden plana ulaşabilir.
+
+GÜNCELLİK:
+
+Plan, gemide yapılan değişikliklerle (ekipman ekleme/çıkarma) güncel tutulmalıdır. Eski/yanlış plan denetimde bulgu doğurur ve acil durumda yanıltıcıdır.
+
+KULLANIM:
+
+Familiarization sırasında yeni mürettebata yangın istasyonları, kaçış yolları ve ekipman konumları plan üzerinden gösterilir.`,
+    keyPoints: [
+      "Yangın kontrol planı her güvertede kalıcı sergilenir (SOLAS II-2/15)",
+      "IMO A.952(23) standart sembolleri kullanılır",
+      "Kara itfaiyesi için weathertight kutuda dış kopya bulundurulur (15.2.4)",
+      "Değişikliklerle güncel tutulmalı; familiarization'da kullanılır",
+    ],
+  },
+  "immersion-suit-tpa": {
+    title: "Dalma Elbisesi ve Termal Koruyucu (TPA)",
+    introduction: "Dalma elbisesi (immersion suit) ve termal koruyucu (Thermal Protective Aid – TPA), soğuk suda hipotermiyi geciktirerek hayatta kalma süresini uzatan kişisel ısı koruma araçlarıdır (LSA Code Bölüm 2).",
+    content: `DALMA ELBİSESİ (IMMERSION SUIT):
+
+Su geçirmez, ısı yalıtımlı, tüm vücudu (eller ve ayaklar dahil) örten tek parça elbisedir. Soğuk suda vücut ısısının korunmasını sağlar.
+
+Performans gereksinimleri (LSA Code 2.3):
+- Yardımsız olarak 2 dakika içinde giyilebilmeli.
+- Giyildikten sonra 5 metre yükseklikten suya atlanabilmeli; su girişi olmamalı.
+- İçinde yüzülebilmeli, can salına çıkılabilmeli.
+- Yalıtımlı tip: 0-2°C suda 1 saat boyunca vücut iç sıcaklığının 2°C'den fazla düşmesini önlemeli.
+- Yalıtımsız (yalnız su geçirmez) tipte ayrıca uygun can yeleği gerekebilir; yalıtımlı tip yeterli yüzdürmeyi sağlayabilir.
+
+Bulundurma: SOLAS gereği genellikle gemideki her kişi için bir dalma elbisesi; ayrıca vardiya/uzak çalışma istasyonları için ek elbiseler.
+
+TERMAL KORUYUCU (TPA – THERMAL PROTECTIVE AID):
+
+Düşük ısı iletkenliğine sahip, su geçirmez malzemeden yapılan, başı hariç tüm vücudu örten bir tulum/örtüdür. Can salı veya filikada, ıslak olmayan kazazedede konveksiyon ve buharlaşma yoluyla ısı kaybını azaltır.
+
+Özellikleri (LSA Code 2.5):
+- -30°C ile +20°C hava sıcaklıklarında kullanılabilmeli.
+- Can salı/filikadaki donanım listesinde belirli sayıda bulundurulur.
+- Dalma elbisesinin yerine geçmez; TPA esas olarak sudan çıkmış kazazede içindir.
+
+FARK:
+
+Dalma elbisesi SUDA korur; TPA sudan çıkmış (sal/filika içindeki) kişide ısı kaybını azaltır.`,
+    keyPoints: [
+      "Dalma elbisesi 2 dakikada yardımsız giyilebilmeli (LSA Code 2.3)",
+      "Yalıtımlı tip: 0-2°C suda 1 saatte iç sıcaklık düşüşü <2°C",
+      "TPA su geçirmez örtüdür; sal/filikadaki kuru kazazedede ısı kaybını azaltır",
+      "TPA dalma elbisesinin yerine geçmez",
+    ],
+    warnings: [
+      "Islak kişide TPA tek başına yetersizdir; önce kuruluk/su tahliyesi sağlanmalı",
+    ],
+  },
+  "mes": {
+    title: "Deniz Tahliye Sistemi (MES)",
+    introduction: "MES (Marine Evacuation System), çok sayıda kişinin gemiden can sallarına hızlı ve güvenli biçimde inmesini sağlayan, kaydırak (slide) veya tahliye kanalı (chute) ile platform/can sallarından oluşan bir tahliye sistemidir (LSA Code Bölüm 6). Özellikle yüksek fribordlu yolcu gemilerinde kullanılır.",
+    content: `MES NEDİR?
+
+Yüksek bordalı gemilerde kişilerin doğrudan can sallarına inmesi zordur. MES, gemi ile deniz seviyesi arasında bir kaydırak veya kapalı kanal kurar; kişiler bu yoldan bir platforma veya doğrudan büyük kapasiteli can sallarına iner.
+
+TİPLER:
+
+- Kaydıraklı (slide) sistem: Şişme bir kaydırak ile kişiler platforma/sala iner.
+- Kanal (chute) sistem: Dikey, kapalı esnek bir kanal içinden kontrollü iniş yapılır; yüksek fribordlarda tercih edilir.
+
+PERFORMANS:
+
+LSA Code 6.2, MES'in belirli süre içinde gerekli sayıda kişiyi tahliye edebilmesini, deniz koşullarında çalışmasını ve şişme/kurulum sürelerini şart koşar. Sistem köprüden/güverteden hızla devreye alınabilmelidir.
+
+KULLANIM AKIŞI:
+
+1. Toplanma istasyonunda yolcular yönlendirilir.
+2. MES devreye alınır; platform/sallar şişer ve konumlanır.
+3. Kişiler kaydırak/kanaldan platforma/sala iner.
+4. Sallar dolunca gemiden ayrılır.
+
+BAKIM:
+
+MES periyodik servis ve testlere tabidir (yıllık kontroller, 5 yıllık load test dahil). Servis yetkili istasyonlarca yapılır; kayıtlar tutulur.
+
+AVANTAJI:
+
+Çok sayıda kişiyi kısa sürede ve filika indirme manevrası gerektirmeden tahliye eder; özellikle büyük yolcu gemilerinde kritik öneme sahiptir.`,
+    keyPoints: [
+      "MES = kaydırak/kanal + platform/can salı; yüksek fribordlu yolcu gemilerinde",
+      "Slide ve chute tipleri vardır; chute yüksek bordada tercih edilir",
+      "LSA Code Bölüm 6 tahliye süresi ve performansı şart koşar",
+      "Yıllık servis ve 5 yıllık load test'e tabidir",
+    ],
+  },
+  "line-throwing": {
+    title: "Halat Atma Aparatı (Line-Throwing Appliance)",
+    introduction: "Halat atma aparatı, tehlikedeki bir gemiye, kişiye veya kıyıya ince bir halat (ip) ulaştırarak ardından daha kalın halat/çekme bağlantısı kurulmasını sağlayan bir kurtarma aracıdır (LSA Code Bölüm 7).",
+    content: `KULLANIM AMACI:
+
+İlk ince halatın hedefe ulaştırılması, ardından bu halatla daha kalın bir halatın veya çekme/transfer hattının çekilmesini sağlar. Gemiden gemiye veya gemiden kıyıya bağlantı, yedekleme ve kurtarma operasyonlarında kullanılır.
+
+GEREKSİNİMLER (LSA Code 7.1):
+
+- Atış mesafesi: Sakin havada en az 230 metre halatı yeterli doğrulukla atabilmeli.
+- Donanım: En az 4 adet fırlatma roketi/projektili ve 4 adet halat (line) bulundurulur.
+- Halatların kopma mukavemeti yeterli olmalı; nemden korunmalı.
+- Su geçirmez muhafazada saklanır; kullanım talimatı paket üzerinde ve okunaklı olmalı.
+
+TİPLER:
+
+- Roketle (rocket-type) çalışan piroteknik aparatlar yaygındır.
+- Bazı tiplerde tabanca benzeri fırlatıcı kullanılır.
+
+GÜVENLİK:
+
+- Piroteknik içerdiği için yalnız eğitimli personel kullanmalı.
+- Atış doğrultusunda insan/parlayıcı madde bulunmamalı.
+- Son kullanma tarihi takip edilir; süresi dolan üniteler usulüne uygun bertaraf edilir.
+
+BAKIM:
+
+Su geçirmez ambalaj bütünlüğü, son kullanma tarihi ve adet sayımı periyodik olarak (LSA envanter kontrolünde) doğrulanır.`,
+    keyPoints: [
+      "Sakin havada en az 230 m halat atabilmeli (LSA Code 7.1)",
+      "En az 4 roket/projektil ve 4 halat bulundurulur",
+      "Önce ince halat, sonra kalın halat/çekme hattı çekilir",
+      "Piroteknik içerir; yalnız eğitimli personel kullanır",
+    ],
+    warnings: [
+      "Atış doğrultusunda kişi veya parlayıcı madde bulunmamalı",
+      "Son kullanma tarihi geçmiş üniteler güvenle bertaraf edilmeli",
+    ],
+  },
+
+  // =====================================================
+  // BÖLÜM 11 - İŞ SAĞLIĞI VE GÜVENLİĞİ
+  // =====================================================
+  "ppe": {
+    title: "Kişisel Koruyucu Donanım (KKD/PPE)",
+    introduction: "Kişisel koruyucu donanım (PPE), iş kazalarına karşı son savunma hattıdır. Tehlike kaynağında giderilemediğinde kişiyi korur; ancak hiçbir zaman mühendislik/yönetimsel önlemlerin yerine geçmez.",
+    content: `KKD KATEGORİLERİ:
+
+- Baş koruması: Baret (helmet) – düşen cisim, çarpma.
+- Ayak koruması: Çelik burunlu güvenlik ayakkabısı/çizme – ezilme, kayma, delinme.
+- El koruması: Eldiven – kesik, ısı, kimyasal, titreşim (göreve uygun tip).
+- Göz/yüz koruması: Gözlük, yüz siperi – kıvılcım, talaş, kimyasal sıçrama.
+- İşitme koruması: Kulak tıkacı/kulaklık – >85 dBA gürültü ortamlarında (makine dairesi).
+- Solunum koruması: Toz maskesi, yarım/tam yüz maskesi, SCBA (tehlikeye göre).
+- Vücut koruması: Tulum/iş elbisesi, alev geciktirici giysi, kimyasal tulum.
+- Yüksekte çalışma: Tam vücut emniyet kemeri (full body harness) ve bağlantı/lanyard.
+- Görünürlük: Reflektörlü yelek (güverte/liman operasyonları).
+- Su üstü çalışma: Can yeleği / çalışma yelekleri (work vest).
+
+KONTROL HİYERARŞİSİ İÇİNDE YERİ:
+
+Risk kontrolünde sıralama: 1) Tehlikeyi yok et, 2) İkame et, 3) Mühendislik önlemi, 4) Yönetimsel önlem, 5) PPE. PPE EN SON sıradadır; tek başına yeterli sayılmaz.
+
+YASAL/SİSTEMSEL DAYANAK:
+
+ISM Code kapsamındaki güvenlik yönetim sistemi (SMS) ve MLC 2006, uygun PPE sağlanmasını, eğitimini ve kullanımını şart koşar. PPE ücretsiz sağlanır.
+
+DOĞRU KULLANIM:
+
+- Göreve ve tehlikeye uygun tip seçilir (örn. kaynakta kaynak maskesi + alev geciktirici giysi).
+- Doğru beden/uyum; hasarlı PPE kullanılmaz, değiştirilir.
+- Bakım, temizlik ve saklama talimatlara uygun yapılır.
+- Toolbox talk ve familiarization ile kullanım pekiştirilir.`,
+    keyPoints: [
+      "PPE kontrol hiyerarşisinde EN SON önlemdir; tek başına yeterli değildir",
+      "Göreve uygun tip seçilir; hasarlı PPE kullanılmaz",
+      "ISM/SMS ve MLC 2006 uygun PPE sağlanmasını şart koşar",
+      ">85 dBA ortamda işitme koruması, yüksekte çalışmada harness zorunludur",
+    ],
+  },
+  "permit-to-work": {
+    title: "Çalışma İzni Sistemi ve Sıcak İş İzni",
+    introduction: "Çalışma izni (permit-to-work) sistemi, yüksek riskli işlerin ancak tehlikeler değerlendirilip kontrol altına alındıktan sonra, yazılı izinle ve sorumluların onayıyla yapılmasını güvence altına alan resmi bir kontrol mekanizmasıdır.",
+    content: `İZİN GEREKTİREN BAŞLICA İŞLER:
+
+- Sıcak iş (hot work): Kaynak, taşlama, kesme – kıvılcım/alev üreten işler.
+- Kapalı/tank mahalline giriş (enclosed space entry).
+- Yüksekte ve borda dışında çalışma (working aloft / overside).
+- Elektrik işleri ve enerji izolasyonu (Lock-Out/Tag-Out – LOTO).
+- Soğutucu/kimyasal hatlarda iş, basınçlı sistemlerde iş.
+
+SICAK İŞ İZNİ (HOT WORK PERMIT):
+
+- Belirlenmiş atölye dışındaki tüm sıcak işler için izin gerekir.
+- Tankerlerde ve yanıcı atmosfer riskli mahallerde gaz ölçümü (gas-free / gaz testi) zorunludur; "gas-free certificate" alınır.
+- Çevredeki yanıcı maddeler uzaklaştırılır, yangın nöbetçisi (fire watch) ve söndürücü hazır bulunur.
+- İş bitiminde alan kontrol edilir; gizli tutuşma (smouldering) için bekleme süresi uygulanır.
+
+İZİN AKIŞI:
+
+1. İşi yapacak kişi izin talep eder.
+2. Tehlikeler ve kontroller (risk assessment) belirlenir.
+3. Yetkili kişi (genellikle ilgili zabit/Master onayı) kontrolleri doğrular ve izni verir.
+4. İzin süre ve kapsamla sınırlıdır; koşullar değişirse iptal edilir.
+5. İş bitince izin kapatılır ve kayıt tutulur.
+
+ENERJİ İZOLASYONU (LOTO):
+
+Bakımdan önce makine/elektrik enerjisi kesilir, kilitlenir ve etiketlenir; yanlışlıkla devreye girmesi önlenir. İş bitiminde sadece izolasyonu yapan kişi kilidi açar.
+
+GEMİ-KARA ARAYÜZÜ:
+
+İzin sistemi, ISM/SMS prosedürleriyle ve PSC denetimleriyle uyumlu yürütülür; kayıtlar denetlenir.`,
+    keyPoints: [
+      "Permit-to-work yüksek riskli işleri yazılı izin ve onayla kontrol eder",
+      "Atölye dışı sıcak iş için izin + gaz testi (tankerde gas-free) zorunludur",
+      "Fire watch ve söndürücü hazır; iş sonrası gizli tutuşma için bekleme",
+      "Enerji izolasyonu LOTO ile yapılır; kilidi yalnız uygulayan açar",
+    ],
+    warnings: [
+      "İzinsiz sıcak iş veya kapalı mahal girişi ciddi kaza/ölüm nedenidir",
+      "Koşullar değişirse izin derhal iptal edilmeli",
+    ],
+  },
+  "risk-assessment": {
+    title: "Risk Değerlendirmesi ve JSA",
+    introduction: "Risk değerlendirmesi, bir işteki tehlikeleri önceden belirleyip olasılık ve şiddetine göre değerlendirerek uygun kontrol önlemlerini almak için yapılan sistematik bir süreçtir. ISM Code gemilerde risk değerlendirmesini zorunlu kılar.",
+    content: `TEMEL KAVRAMLAR:
+
+- Tehlike (hazard): Zarar verme potansiyeli olan kaynak/durum (örn. dönen parça, yüksek basınç, kaygan zemin).
+- Risk: Zararın gerçekleşme olasılığı ile şiddetinin birleşimi (Risk = Olasılık × Şiddet).
+
+RİSK DEĞERLENDİRME ADIMLARI:
+
+1. Tehlikeleri belirle.
+2. Kimin/neyin zarar görebileceğini belirle.
+3. Riski değerlendir (olasılık × şiddet; risk matrisi kullanılır).
+4. Kontrol önlemlerine karar ver (kontrol hiyerarşisi).
+5. Bulguları kaydet ve uygula.
+6. Gözden geçir ve güncelle (koşul değişince).
+
+KONTROL HİYERARŞİSİ:
+
+1) Tehlikeyi yok et → 2) İkame et → 3) Mühendislik kontrolü (koruma, havalandırma) → 4) Yönetimsel kontrol (prosedür, eğitim, izin) → 5) PPE. Üst sıradaki önlemler tercih edilir.
+
+JSA / JHA (Job Safety/Hazard Analysis):
+
+Belirli bir işi adımlara ayırıp her adımın tehlikesini ve kontrolünü inceleyen pratik bir yöntemdir. Genellikle işten hemen önce, ilgili ekip tarafından doldurulur.
+
+TOOLBOX TALK:
+
+İşe başlamadan ekiple yapılan kısa güvenlik brifingidir; JSA sonuçları, izinler ve özel tehlikeler paylaşılır.
+
+ISM BAĞLANTISI:
+
+ISM Code, şirketten ve gemiden faaliyetlerine ilişkin riskleri değerlendirmesini ve önlem almasını ister. Risk değerlendirme kayıtları SMS'in parçasıdır ve denetlenir.`,
+    keyPoints: [
+      "Risk = Olasılık × Şiddet; risk matrisi ile değerlendirilir",
+      "Kontrol hiyerarşisi: yok et > ikame > mühendislik > yönetimsel > PPE",
+      "JSA işi adımlara ayırır; toolbox talk işten önce brifing verir",
+      "ISM Code risk değerlendirmesini zorunlu kılar; kayıtlar SMS'in parçasıdır",
+    ],
+  },
+  "damage-control": {
+    title: "Hasar Kontrolü ve Su Geçirmez Bütünlük",
+    introduction: "Hasar kontrolü, çarpışma, karaya oturma veya su alma sonrası geminin batmadan ve devrilmeden kalmasını sağlamak için su geçirmez bütünlüğün korunması ve su girişinin sınırlandırılması faaliyetlerini kapsar (SOLAS Bölüm II-1).",
+    content: `SU GEÇİRMEZ BÜTÜNLÜK:
+
+Gemi, su geçirmez perdelerle (bulkhead) bölmelere ayrılır. Bir bölme su alsa bile diğerleri kuru kalır ve gemi yüzer durumda kalır (rezerv sephiye/reserve buoyancy).
+
+- Çatışma perdesi (collision bulkhead): Baş taraftaki ilk su geçirmez perde; baş çarpışmada su girişini sınırlar.
+- Su geçirmez kapılar (watertight doors): Köprüden uzaktan kapatılabilir; konum göstergesi köprüdedir. Denizde kapalı tutulması esastır.
+
+YÜZME GÜVENLİĞİ KAVRAMLARI:
+
+- Rezerv sephiye (reserve buoyancy): Su hattı üstündeki su geçirmez hacim; su alındığında batmayı geciktirir.
+- Bölmelendirme (subdivision) ve hasar stabilitesi: Belirli sayıda bölme su alsa da geminin ayakta kalmasını sağlayacak şekilde tasarlanır.
+- Çapraz su basma (cross-flooding): Tek bordadan su alındığında karşı bölmeye kontrollü su alarak meyli azaltma düzeni.
+
+HASAR KONTROL PLANI VE EL KİTABI:
+
+SOLAS II-1 Kural 19 gereği gemide hasar kontrol planı (damage control plan) ve el kitabı (booklet) bulunur. Bunlarda su geçirmez sınırlar, açıklıklar, kapatma düzenekleri ve bilge/balast düzenlemeleri gösterilir.
+
+MÜDAHALE FAALİYETLERİ:
+
+1. Su girişini tespit et ve sınırla (kapatma, takviye, geçici tıkaç/yama).
+2. Su geçirmez kapı/açıklıkları kapat.
+3. Bilge ve balast pompalarıyla su tahliyesi/dengeleme.
+4. Stabilite ve trimi izle; gerekirse yetkili otoriteyi/şirketi bilgilendir.
+
+BİLGE SİSTEMİ:
+
+Bilge sistemi, bölmelerde biriken suyu tahliye eder; alarmlar ve pompalar düzenli test edilir.`,
+    keyPoints: [
+      "Su geçirmez bölmelendirme + rezerv sephiye batmayı önler (SOLAS II-1)",
+      "Çatışma perdesi baş çarpışmada su girişini sınırlar",
+      "Su geçirmez kapılar denizde kapalı tutulur, köprüden izlenir",
+      "Hasar kontrol planı/el kitabı (SOLAS II-1/19) gemide bulundurulur",
+    ],
+    warnings: [
+      "Açık bırakılan su geçirmez kapı, kademeli su basmaya ve hızlı batmaya yol açar",
+    ],
+  },
+  "mooring-safety-snapback": {
+    title: "Bağlama Güvenliği ve Snap-Back Bölgeleri",
+    introduction: "Bağlama (mooring) operasyonları, gemide en sık ciddi yaralanma yaşanan işlerden biridir. Gergin halatın kopması (snap-back) ve yüksek gerilim altındaki ekipman ölümcül kazalara yol açabilir. OCIMF MEG4 bu alanda referans kılavuzdur.",
+    content: `SNAP-BACK NEDİR?
+
+Gergin bir bağlama halatı koptuğunda, biriken elastik enerji açığa çıkar ve halatın uçları kırbaç gibi geri savrulur (snap-back). Bu savrulma ölümcül olabilir. Sentetik halatlar yüksek enerji depolar; çelik teller daha az gerilir ama kopmada yine tehlikelidir.
+
+SNAP-BACK BÖLGELERİ:
+
+Halat geometrisine (makara/fairlead, kapstan/winch hizası) göre, kopan halatın savrulabileceği tehlikeli alanlardır. Bu bölgelerde durulmaz. Not: Modern yaklaşımda (MEG4) güvertenin TAMAMI potansiyel tehlike alanı sayılır; eski tip boyalı "snap-back zone" işaretleri yanıltıcı olabileceğinden genel farkındalık esastır.
+
+GÜVENLİK İLKELERİ:
+
+- Gergin halatın "bight" (kıvrımı) içinde veya doğrultusunda durma.
+- Yük altındaki halata el/ayak yaklaştırma; eldiven sıkışmasına dikkat et.
+- Winch freni doğru ayarlı olmalı; fren ilk kayma noktasında halatı koruyacak şekilde test edilmeli.
+- Halat ve kuyruk (tail) durumu kontrol edilir; aşınmış/yorulmuş halat değiştirilir.
+- Uygun PPE: baret, güvenlik ayakkabısı, eldiven, reflektörlü yelek.
+
+İLETİŞİM VE ORGANİZASYON:
+
+- Baş/kıç istasyonları ile köprü arasında net iletişim (telsiz) kurulur.
+- Operasyon öncesi toolbox talk: roller, tehlike alanları, kaçış yolları.
+- Yeterli ve dinlenmiş personel; aceleye getirilmez.
+
+EKİPMAN:
+
+Bitt, fairlead, roller, winch, stoper (stopper) ve halat kuyrukları düzenli kontrol/bakım görür; sertifikalı ekipman kullanılır.`,
+    keyPoints: [
+      "Snap-back: kopan gergin halatın ölümcül geri savrulmasıdır",
+      "MEG4 yaklaşımında tüm güverte tehlike alanı sayılır – bight içinde durulmaz",
+      "Winch freni doğru ayarlanır ve düzenli test edilir",
+      "Net iletişim, toolbox talk ve uygun PPE esastır",
+    ],
+    warnings: [
+      "Gergin halatın doğrultusunda/bight içinde durmak ölümcüldür",
+      "Aşınmış/yorulmuş halat ve yanlış fren ayarı kopma riskini artırır",
     ],
   },
 };

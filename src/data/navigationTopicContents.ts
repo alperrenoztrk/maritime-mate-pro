@@ -12074,4 +12074,227 @@ Kesişim noktası = Running Fix (10:30)
       "Tahminler güncellenmedikçe plan geçerliliğini hızla kaybeder."
     ]
   },
+
+  "Manyetik pusula deviasyonu ve tashihi": {
+    title: "Manyetik Pusula Deviasyonu ve Tashihi",
+    introduction: "Manyetik pusula, basit ve güç gerektirmeyen yapısıyla cayro pusulanın yedeği olarak hâlâ zorunludur. Ancak hem Dünya'nın manyetik alanı (variation) hem de geminin kendi manyetizması (deviation) pusulayı gerçek kuzeyden saptırır. Doğru seyir için bu hataların bilinmesi ve düzeltilmesi gerekir.",
+    sections: [
+      {
+        title: "Variation (Manyetik Sapma)",
+        content: "Variation, manyetik kuzey ile hakiki (true) kuzey arasındaki açıdır. Konuma ve zamana göre değişir; deniz haritasının pusula gülünde (compass rose) ve yıllık değişim oranıyla birlikte verilir. Doğu (E) variation pozitif, batı (W) variation negatif kabul edilir.",
+      },
+      {
+        title: "Deviation (Gemi Sapması)",
+        content: "Deviation, geminin kendi demir kütlesi ve elektrikli ekipmanlarının oluşturduğu manyetik alan nedeniyle, manyetik kuzey ile pusula kuzeyi arasında oluşan açıdır. Geminin BAŞ yönüne (heading) göre değişir; her gemi için bir deviation kartı/eğrisi (deviation card) çıkarılır. Deviation, geminin baş yönüyle değiştiği için sabit değildir; variation ise konuma bağlıdır.",
+      },
+      {
+        title: "Pusula Hatası ve Dönüşümler",
+        content: "Toplam pusula hatası (compass error), variation ve deviation'ın cebirsel toplamıdır. Hakiki, manyetik ve pusula yönleri arasında dönüşüm yapılırken doğu hataları eklenir, batı hataları çıkarılır. Yaygın hatırlatıcı: 'True → Magnetic → Compass' yönünde batı hataları eklenir (Compass'tan True'ya giderken doğu eklenir).",
+        formula: {
+          text: "Compass Error = Variation + Deviation",
+          description: "E (doğu) hatalar +, W (batı) hatalar − alınır. True = Compass ± Compass Error.",
+        },
+      },
+      {
+        title: "Tashih (Compass Adjustment) ve Katsayılar",
+        content: "Pusula sapması, pusula etrafına yerleştirilen düzeltici mıknatıs ve yumuşak demir parçalarıyla azaltılır. Sapma matematiksel olarak katsayılarla (A, B, C, D, E) ifade edilir. B ve C katsayıları kalıcı mıknatıslarla, D katsayısı yanlardaki yumuşak demir küreler (quadrantal spheres) ile, dikey indüklenmiş manyetizma ise Flinders bar ile düzeltilir. Yalpa hatası için heeling mıknatısı kullanılır. Kalan sapma, gemi tüm yönlere döndürülerek (swinging ship) ölçülür ve deviation kartına işlenir.",
+        bulletPoints: [
+          "B, C katsayıları: kalıcı mıknatıslarla düzeltilir.",
+          "D katsayısı: yanal yumuşak demir küreler (spheres) ile düzeltilir.",
+          "Flinders bar: dikey indüklenmiş manyetizmayı düzeltir.",
+          "Swinging ship: kalan sapmayı ölçüp deviation kartı çıkarmak için.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Variation konuma/zamana, deviation geminin baş yönüne bağlıdır.",
+      "Compass Error = Variation + Deviation (E +, W −).",
+      "Deviation kartı, gemi tüm yönlere döndürülerek (swinging) çıkarılır.",
+      "Katsayılar B/C mıknatıs, D küreler, dikey manyetizma Flinders bar ile düzeltilir.",
+    ],
+  },
+
+  "Echo sounder (iskandil)": {
+    title: "Echo Sounder (İskandil)",
+    introduction: "Echo sounder (iskandil cihazı), su altına gönderilen ses dalgasının dipten yansıyıp geri dönme süresini ölçerek su derinliğini belirler. UKC (keel altı boşluğu) takibi ve sığ su seyrinde temel emniyet cihazıdır; SOLAS Bölüm V kapsamında zorunludur.",
+    sections: [
+      {
+        title: "Çalışma Prensibi",
+        content: "Gemi dibindeki bir transdüser (transducer) kısa bir akustik darbe gönderir; ses dalgası deniz dibinden yansıyarak geri döner. Cihaz, gidiş-dönüş süresini ölçer ve deniz suyundaki ses hızını (yaklaşık 1500 m/s) kullanarak derinliği hesaplar.",
+        formula: {
+          text: "Derinlik = (Ses hızı × Geçen süre) / 2",
+          description: "Süre gidiş-dönüş olduğu için ikiye bölünür. Deniz suyunda ses hızı ~1500 m/s.",
+        },
+      },
+      {
+        title: "Datum (Referans) Ayarı",
+        content: "Gösterilen derinliğin neyi ifade ettiği önemlidir: derinlik omurga (keel) altından mı, su hattından mı yoksa transdüserden mi ölçülüyor? Doğru UKC değerlendirmesi için datum doğru ayarlanmalı; özellikle 'keel altı' ayarı UKC takibinde tercih edilir.",
+      },
+      {
+        title: "Hatalar ve Yanıltıcı Yankılar",
+        content: "Echo sounder okumaları çeşitli nedenlerle yanıltıcı olabilir: havalanma (aeration – pervane/dalga kabarcıkları), yumuşak çamur (gerçek dipten önce bir yankı), termoklin veya yoğun balık sürüsünden gelen sahte yankılar ve ses hızının sıcaklık/tuzlulukla değişmesi. Kritik sığ sularda okuma, harita derinliği ve gelgit hesabıyla çapraz kontrol edilmelidir.",
+        bulletPoints: [
+          "Aeration: pervane/kabarcık kaynaklı sinyal kaybı.",
+          "Yumuşak çamur: gerçek dipten önce zayıf yankı.",
+          "Termoklin/balık sürüsü: sahte (false) yankı.",
+          "Ses hızı sıcaklık ve tuzlulukla değişir.",
+        ],
+      },
+      {
+        title: "Operasyonel Kullanım",
+        content: "Echo sounder, kıyı/sığ su seyrinde sürekli izlenir ve sığ su alarmı (shallow water alarm) uygun derinliğe ayarlanır. Kayıt (depth log) özelliği, karaya oturma incelemelerinde ve mevki teyidinde (derinlik konturu ile) kullanılır.",
+      },
+    ],
+    keyPoints: [
+      "Derinlik = (ses hızı × süre)/2; deniz suyunda ses ~1500 m/s.",
+      "Datum (keel/su hattı/transdüser) doğru ayarlanmalıdır.",
+      "Aeration, yumuşak çamur ve sahte yankılar okumayı bozar.",
+      "SOLAS V zorunlu cihazıdır; UKC takibinin temelidir.",
+    ],
+  },
+
+  "Hız parakete (speed log) tipleri": {
+    title: "Hız Parakete (Speed Log) Tipleri",
+    introduction: "Parakete (log), geminin hızını ve kat edilen mesafeyi ölçen cihazdır. 'Suya göre hız' (STW) ile 'yere göre hız' (SOG) ayrımı, akıntılı sularda seyir hesapları için kritiktir. Modern gemilerde Doppler ve elektromanyetik paraketeler yaygındır.",
+    sections: [
+      {
+        title: "STW ve SOG Ayrımı",
+        content: "STW (Speed Through Water), geminin içinden geçtiği SU kütlesine göre hızıdır; akıntıdan etkilenir. SOG (Speed Over Ground), geminin YERE (deniz dibine/coğrafi konuma) göre gerçek hızıdır. SOG − STW farkı, akıntının rota yönündeki bileşenini verir. Hesaplı seyirde (DR) STW, ETA/yer takibinde SOG kullanılır.",
+      },
+      {
+        title: "Elektromanyetik (EM) Parakete",
+        content: "Faraday indüksiyon yasasına dayanır: gemi gövdesindeki bir sensör manyetik alan oluşturur, içinden geçen su (iletken) bir gerilim indükler ve bu gerilim suya göre hızla orantılıdır. Yalnızca STW ölçer; basit ve yaygındır.",
+      },
+      {
+        title: "Doppler Parakete",
+        content: "Su altına gönderilen akustik sinyalin Doppler kaymasını ölçer. Sığ suda dipten yankı alarak (bottom track) SOG, derin suda su katmanından yankı alarak (water track) STW ölçer. Çift eksenli (dual-axis) tipler hem boyuna hem enine hız bileşenini verir; yanaşma/manevrada çok değerlidir.",
+        bulletPoints: [
+          "Bottom track (sığ su): yere göre hız (SOG).",
+          "Water track (derin su): suya göre hız (STW).",
+          "Dual-axis: boyuna + enine hız (manevra/yanaşma için).",
+        ],
+      },
+      {
+        title: "Diğer Tipler ve Hatalar",
+        content: "Pitot/basınç (pitometer) paraketeler dinamik su basıncından hız çıkarır. Eski çekme tipi (towed/Walker patent log) bir pervaneli rotorun dönüşünü sayar; bugün tarihsel kalmıştır. GPS, yere göre hızı (SOG) doğrudan verir ve genellikle çapraz kontrol için kullanılır. Paraketeler kirlenme (fouling), kalibrasyon kayması ve sığ/derin geçiş hatalarına maruz kalır; düzenli kalibrasyon ve çapraz kontrol gerekir.",
+      },
+    ],
+    keyPoints: [
+      "STW suya göre, SOG yere göre hızdır; farkları akıntıyı gösterir.",
+      "EM parakete yalnız STW; Doppler hem SOG (bottom) hem STW (water) ölçer.",
+      "Dual-axis Doppler manevra/yanaşmada enine hızı da verir.",
+      "GPS SOG çapraz kontrol için kullanılır; cihazlar kalibrasyon gerektirir.",
+    ],
+  },
+
+  "AIS - Otomatik Tanımlama Sistemi": {
+    title: "AIS – Otomatik Tanımlama Sistemi",
+    introduction: "AIS (Automatic Identification System), gemilerin kimlik, konum ve hareket bilgilerini VHF üzerinden otomatik olarak yayınlayıp çevredeki gemilerden alan bir sistemdir. Çatışmadan kaçınma ve durumsal farkındalığı artırır; SOLAS Bölüm V kapsamında belirli gemilerde zorunludur. Ancak radar ve gözcülüğün YERİNE geçmez.",
+    sections: [
+      {
+        title: "Çalışma Prensibi ve Kanallar",
+        content: "AIS, iki özel VHF kanalı (AIS 1: 161.975 MHz, AIS 2: 162.025 MHz) üzerinden veri yayınlar. SOTDMA (Self-Organising Time Division Multiple Access) yöntemiyle gemiler zaman dilimlerini kendi aralarında paylaşır, böylece çakışma olmadan sık güncelleme yapılır. Menzil tipik olarak VHF görüş hattı kadardır (~20-40 mil).",
+      },
+      {
+        title: "Yayınlanan Bilgi Türleri",
+        content: "AIS üç tür bilgi taşır: Statik (MMSI, gemi adı, çağrı işareti, IMO no, tip, boyutlar) – nadiren değişir; Dinamik (konum, COG, SOG, hakiki baş/heading, dönüş oranı/ROT, seyir durumu) – sık güncellenir; Sefer (Voyage) bilgisi (su çekimi/draft, varış limanı, ETA, tehlikeli yük durumu) – manuel girilir ve güncel tutulmalıdır.",
+        bulletPoints: [
+          "Statik: MMSI, ad, IMO no, tip, boyutlar.",
+          "Dinamik: konum, COG, SOG, heading, ROT, durum.",
+          "Sefer: draft, varış, ETA, tehlikeli yük (manuel girilir).",
+        ],
+      },
+      {
+        title: "Sınıflar ve Özel AIS Cihazları",
+        content: "Class A: SOLAS gemileri için, yüksek güçlü ve öncelikli; Class B: balıkçı/yat gibi SOLAS dışı tekneler için, düşük güçlü. Ayrıca AIS-SART (arama-kurtarmada konum yayını), AIS AtoN (sanal/gerçek seyir yardımcısı işareti) ve MOB-AIS cihazları vardır.",
+      },
+      {
+        title: "Sınırlamalar (Önemli)",
+        content: "AIS, gözcülük ve radarın yerine geçmez. Konum bilgisi geminin kendi GPS'ine bağlıdır (hatalı/manipüle olabilir); manuel girilen sefer verisi yanlış olabilir; bazı tekneler AIS taşımaz veya cihazı kapatabilir. Sefer verisi (draft/ETA/destination) güncel tutulmazsa yanıltıcıdır. AIS hedefleri, COLREG manevra kararlarında tek başına esas alınmamalı; radar/ARPA ve görsel gözlemle teyit edilmelidir.",
+      },
+    ],
+    keyPoints: [
+      "AIS iki VHF kanalında SOTDMA ile otomatik veri paylaşır.",
+      "Statik + dinamik + sefer bilgisi taşır; sefer verisi manuel girilir.",
+      "Class A (SOLAS) ve Class B; ayrıca AIS-SART ve AIS AtoN vardır.",
+      "AIS radar/gözcülüğün yerine geçmez; konum gemi GPS'ine bağlıdır.",
+    ],
+  },
+
+  "Demirleme ve demir tarama hesapları": {
+    title: "Demirleme ve Demir Tarama Hesapları",
+    introduction: "Güvenli demirleme; uygun kaloma (chain scope) verilmesi, salınım dairesinin (swinging circle) hesaplanması ve demir taramasının (dragging) erken tespiti ile sağlanır. Yanlış demirleme, karaya oturma veya başka gemiyle temas riskini doğurur.",
+    sections: [
+      {
+        title: "Kaloma (Scope) ve Tutma",
+        content: "Demirin tutması büyük ölçüde zincirin deniz dibine YATAY bir çekme uygulamasına bağlıdır. Bu nedenle verilen zincir uzunluğu (kaloma), su derinliğinin birkaç katı olmalıdır. İyi havada tipik kural su derinliğinin yaklaşık 5-6 katı zincir; kötü havada daha fazla (7+ kat) verilir. Zincirin ağırlığı (catenary) çekmeyi yatay tutar ve tutma gücünü artırır.",
+        formula: {
+          text: "Kaloma ≈ 5-6 × su derinliği (iyi hava), 7+ × (kötü hava)",
+          description: "Zincirin dibe yatay çekme uygulaması tutmayı sağlar; sığ açıda tutma artar.",
+        },
+      },
+      {
+        title: "Salınım Dairesi (Swinging Circle)",
+        content: "Demirli gemi, rüzgâr ve akıntıyla demir etrafında döner. Salınım dairesinin yarıçapı, demirin konumundan gemi kıçına kadar olan mesafedir: yaklaşık verilen zincir uzunluğunun yatay izdüşümü artı geminin boyu (LOA). Demir yeri seçilirken bu daire içinde sığlık, başka gemi veya tehlike bulunmamalıdır.",
+        formula: {
+          text: "Salınım yarıçapı ≈ (yatay zincir mesafesi) + LOA",
+          description: "Daire içine sığlık, diğer gemiler ve engeller girmemelidir.",
+        },
+      },
+      {
+        title: "Demir Tarama (Dragging) Tespiti",
+        content: "Demirin tutmayıp sürüklenmesi (dragging) şu yöntemlerle izlenir: sabit bir nesneye/kara hedefine kerteriz alıp değişimi izlemek (transit/clearing bearing), GPS demir nöbeti (anchor watch) alarmı, echo sounder ile derinlik değişimi ve zincirin ani gerilip titremesi (vibration). Tarama tespitinde daha fazla kaloma verilir veya makine/yeniden demirleme ile müdahale edilir.",
+        bulletPoints: [
+          "Sabit hedefe kerteriz / transit izleme.",
+          "GPS anchor watch alarmı.",
+          "Derinlik değişimi (echo sounder).",
+          "Zincirde ani gerilme/titreşim.",
+        ],
+      },
+      {
+        title: "Demir Nöbeti (Anchor Watch)",
+        content: "Demirde köprüüstü nöbeti sürdürülür; mevki, salınım dairesi, hava durumu ve diğer gemiler izlenir. Tarama riskinde makine hazır (stand-by) tutulur. Yeterli kaloma, uygun dip yapısı (tutma için kum/çamur iyidir; kaya zayıftır) ve sağlam nöbet güvenli demirlemenin temelidir.",
+      },
+    ],
+    keyPoints: [
+      "Kaloma su derinliğinin ~5-6 katı (iyi hava), kötü havada daha fazla.",
+      "Salınım dairesi = yatay zincir mesafesi + LOA; içine tehlike girmemeli.",
+      "Tarama, kerteriz/GPS anchor watch/derinlik ile erken tespit edilir.",
+      "Demir nöbeti ve makine hazır bulundurma riski azaltır.",
+    ],
+  },
+
+  "Buz ve kutup bölgesi seyri (Polar Code)": {
+    title: "Buz ve Kutup Bölgesi Seyri (Polar Code)",
+    introduction: "Kutup sularında seyir; düşük sıcaklık, buz, uzaklık, sınırlı harita/haberleşme ve manyetik pusula güvenilmezliği gibi kendine özgü riskler taşır. IMO Polar Code (SOLAS Bölüm XIV ve MARPOL kapsamında), bu sularda emniyetli ve çevreye duyarlı seyir için zorunlu kuralları belirler.",
+    sections: [
+      {
+        title: "Polar Code ve Belgeler",
+        content: "Polar Code, kutup sularında işletilen gemilere ek yapısal, donanımsal ve operasyonel gereksinimler getirir. Gemi, Polar Ship Certificate taşımalı ve geminin kapasite/limitlerini, risk değerlendirmesini ve operasyonel prosedürleri içeren Polar Water Operational Manual (PWOM) bulundurmalıdır.",
+      },
+      {
+        title: "Buz Tipleri ve Tehlikeleri",
+        content: "Deniz buzu yaşına göre sınıflanır: birinci yıl buzu (first-year), çok yıllık buz (multi-year, daha sert ve tehlikeli). Buzdağından kopan parçalar growler (su seviyesinde, radarda zor görünür) ve bergy bit olarak adlandırılır; küçük olmalarına rağmen ciddi hasar verebilirler. Ayrıca gemi üst yapısında buz birikmesi (ice accretion) stabiliteyi tehdit eder.",
+        bulletPoints: [
+          "First-year vs multi-year buz: çok yıllık buz daha serttir.",
+          "Growler/bergy bit: küçük ama radarda zor görünür, tehlikelidir.",
+          "Üst yapı buzlanması (icing) stabiliteyi bozar.",
+        ],
+      },
+      {
+        title: "Seyir ve Cihaz Sınırlamaları",
+        content: "Yüksek enlemlerde manyetik pusula güvenilmezdir (manyetik kutba yakınlık); cayro pusula da çok yüksek enlemde hassasiyet kaybeder. Harita kapsaması ve doğruluğu sınırlı olabilir, derinlik verisi eksik olabilir. GMDSS'te Inmarsat (jeostatik) kutupları kapsamadığından (A4), Iridium gibi LEO uydu hizmetleri kritik önem kazanır.",
+      },
+      {
+        title: "Operasyonel Teknikler",
+        content: "Buzlu sularda hız azaltılır; açık su koridorları (leads) takip edilir; buza dik ve kontrollü yaklaşılır, kalın buza ramming'den kaçınılır. Gerekirse buzkıran (icebreaker) eskortundan yararlanılır ve konvoy mesafe disiplini uygulanır. Mürettebat soğuk hava koruması, ek hayatta kalma teçhizatı (grup hayatta kalma araçları, TPA) ve buzlanmayla mücadele için eğitilir.",
+      },
+    ],
+    keyPoints: [
+      "Polar Code: Polar Ship Certificate + PWOM zorunludur (SOLAS XIV).",
+      "Growler/bergy bit radarda zor görünür; çok yıllık buz serttir.",
+      "Yüksek enlemde manyetik/cayro pusula güvenilirliği düşer.",
+      "Inmarsat kutupları kapsamaz; Iridium (A4) ve buzkıran eskortu önemlidir.",
+    ],
+  },
 };
