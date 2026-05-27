@@ -2724,36 +2724,46 @@ Bu kriterler hasarsız (intact) stabilite içindir. Hasarlı stabilite kriterler
   },
   "intact-stability-code": {
     title: "Intact Stability Code",
-    introduction: "Intact Stability Code (IS Code), hasarsız gemiler için kapsamlı stabilite gereksinimlerini ve hesap yöntemlerini içerir.",
+    introduction: "Intact Stability Code (IS Code), hasarsız gemiler için kapsamlı stabilite gereksinimlerini ve hesap yöntemlerini içerir. 2008 IS Code (MSC.267(85)) ile kabul edilmiş olup SOLAS ve Yük Hattı Sözleşmesi kapsamında zorunludur.",
     content: `Intact Stability Code (2008 IS Code), MSC.267(85) kararıyla kabul edilmiştir.
 
-İÇERİK:
-Bölüm 1: Genel hükümler
-Bölüm 2: Stabilite kriterleri
-Bölüm 3: Özel gemi tipleri
-Bölüm 4: Operasyonel önlemler
+YAPISI:
+Bölüm A (zorunlu): genel kriterler ve özel gemi tipi kriterleri.
+Bölüm B (tavsiye): ek tedbirler ve rehberlik.
 
-GEMİ TİPLERİ:
-- Yük gemileri (≥ 24 m)
-- Yolcu gemileri
-- Özel amaçlı gemiler
-- Tankerler
-- Konteyner gemileri
+GENEL KRİTERLER (Part A, 2.2 – tüm gemiler için):
+GZ eğrisi altındaki alanlar ve GZ değerleri için asgari şartlar:
+- 0°–30° arası GZ eğrisi altındaki alan ≥ 0,055 m·rad
+- 0°–40° (veya downflooding açısı θf daha küçükse 0°–θf) arası alan ≥ 0,090 m·rad
+- 30°–40° (veya 30°–θf) arası alan ≥ 0,030 m·rad
+- Doğrultma kolu GZ, 30° veya üzeri bir açıda ≥ 0,20 m olmalı
+- Maksimum GZ, tercihen 30°'den büyük bir açıda oluşmalı (en az 25°)
+- Başlangıç metasantr yüksekliği GM₀ ≥ 0,15 m
 
-ZORUNLU VE TAVSİYE HÜKÜMLER:
-Kod A bölümü zorunlu, B bölümü tavsiye niteliğindedir.
+HAVA KRİTERİ (Weather Criterion, Part A 2.3):
+Gemi, sabit yan rüzgâr (basınç kolu lw1) ve üzerine bindirilen yalpa + sağnak rüzgâr (lw2) altında devrilmeye karşı yeterli enerji rezervine sahip olmalı. Rüzgâr momentine karşı koyan alan (b), rüzgâr momentinin uyguladığı alandan (a) büyük/eşit olmalıdır (b ≥ a).
 
-Gemi tasarımında ve operasyonda IS Code gereksinimleri esas alınır.`,
+ÖZEL GEMİ TİPLERİ:
+Yolcu gemileri (yolcu kalabalığı ve dönüş momenti kriterleri), tahıl taşıyanlar (Grain Code), kereste güverte yükü, yüksek hızlı tekneler, offshore vb. için ek/özel kriterler tanımlanır.
+
+UYGULAMA:
+Her yükleme durumu, geminin onaylı Stability Booklet'inde bu kriterlere göre kontrol edilir; bayrak devleti ve PSC uyumu denetler.`,
     bulletPoints: [
-      "IS Code 2008 tüm ticari gemileri kapsar",
-      "Zorunlu (A) ve tavsiye (B) hükümleri içerir",
-      "Gemi tiplerine göre özel gereksinimler tanımlar",
-      "Tasarım ve operasyon için referanstır",
+      "Genel kriter: 0-30° alan ≥0,055; 0-40° ≥0,090; 30-40° ≥0,030 m·rad",
+      "GZ ≥ 0,20 m (≥30°'de); GZ maks ≥25-30°'de; GM₀ ≥ 0,15 m",
+      "Weather criterion: rüzgâr+yalpa altında b ≥ a (enerji dengesi)",
+      "Tahıl, yolcu, kereste, HSC için özel kriterler vardır",
     ],
+    formula: {
+      name: "Weather Criterion (hava kriteri)",
+      expression: "b ≥ a",
+      description: "Devrilmeye karşı koyan GZ alanı (b), rüzgâr+yalpa momentinin uyguladığı alandan (a) büyük/eşit olmalı.",
+    },
     keyPoints: [
-      "IS Code stabilite kitapçığının temelidir",
-      "Tüm hesaplar bu kod referans alınarak yapılır",
-      "Bayrak devletleri uyumu denetler",
+      "IS Code stabilite kitapçığı kriterlerinin temelidir.",
+      "Genel kriterler alan, GZ ve GM₀ için sayısal sınır koyar.",
+      "Weather criterion rüzgâr/yalpa altında enerji rezervini güvence altına alır.",
+      "Bayrak devleti ve PSC uyumu denetler.",
     ],
   },
   "wind-criteria": {

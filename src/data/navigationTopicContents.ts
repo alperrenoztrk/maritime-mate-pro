@@ -9569,175 +9569,263 @@ Kesişim noktası = Running Fix (10:30)
   "Harita datum": {
     title: "Harita Datum",
     introduction:
-      "Harita datum, coğrafi koordinatların (enlem–boylam) hangi referans elipsoidine göre verildiğini ifade eder. Aynı koordinat değerleri, farklı datumlarda farklı coğrafi noktaları gösterebilir.",
+      "Harita datum, coğrafi koordinatların (enlem–boylam) hangi referans elipsoidine ve başlangıç noktasına göre verildiğini ifade eder. Aynı enlem-boylam değerleri, farklı datumlarda yüzlerce metre uzaklıktaki farklı coğrafi noktaları gösterebilir; bu nedenle datum, mevki emniyetinin doğrudan bir parçasıdır.",
     sections: [
       {
         title: "Datum Nedir?",
         content:
-          "Datum; harita ve elektronik sistemlerin kullandığı referans modelidir. WGS-84, modern GPS ve ECDIS sistemlerinde standart datumdur.",
+          "Dünya gerçekte düzgün olmayan (geoit) bir şekle sahiptir; haritalar bunu matematiksel bir referans elipsoidiyle modeller. Datum, bu elipsoidin boyutunu ve Dünya'ya göre konumlandırılışını tanımlar. Yatay datum (enlem-boylam referansı) ile düşey datum (derinlik/yükseklik referansı, ör. Chart Datum) birbirinden ayrıdır.",
         image: chartPlotting,
         imageAlt: "Harita datum ve mevki referansı"
       },
       {
-        title: "Seyirde Etkisi",
+        title: "WGS-84 ve Yerel Datumlar",
         content:
-          "Haritada yazan datum ile cihaz datumunun uyuşmaması, mevkiyi yüzlerce metre kaydırabilir. Bu nedenle GPS/ECDIS datum ayarı, kullanılan kağıt haritanın datumuna eşitlenmelidir.",
+          "WGS-84 (World Geodetic System 1984), GPS, GNSS ve ECDIS sistemlerinde kullanılan küresel standart datumdur. Birçok eski kağıt harita ise yerel/bölgesel datumlarda (ör. ED50, OSGB36, çeşitli ulusal datumlar) basılmıştır. Eski haritalarda GPS mevkisi doğrudan işaretlenmeden önce datum farkı (datum shift) düzeltmesi gerekir.",
+        bulletPoints: [
+          "WGS-84: GPS/ECDIS standart küresel datumu",
+          "Yerel datumlar: bölgeye özgü, eski haritalarda yaygın",
+          "Harita üzerindeki 'satellite-derived positions' notu datum kaymasını verir"
+        ]
+      },
+      {
+        title: "Seyirde Etkisi ve Düzeltme",
+        content:
+          "Haritada yazan datum ile cihaz datumunun uyuşmaması, mevkiyi yüzlerce metre kaydırabilir; sığ su/kıyı seyrinde bu, karaya oturma riski demektir. Modern kağıt haritalarda 'Satellite-derived positions should be moved X′ to ...' notu, WGS-84 mevkisinin haritaya işaretlenmeden önce ne kadar kaydırılacağını söyler. ECDIS'te ENC'ler WGS-84 tabanlı olduğundan bu sorun büyük ölçüde ortadan kalkar; yine de raster (RNC) ve eski veride dikkat gerekir.",
         bulletPoints: [
           "Harita kenar bilgisinden datum kontrol edilir",
-          "Cihaz datum ayarı doğrulanır",
-          "Farklı datumlar arasında offset düzeltmesi yapılır"
+          "GPS/ECDIS datum ayarı, kullanılan haritanın datumuna eşitlenir",
+          "Eski haritada GPS mevkisi, belirtilen offset kadar kaydırılarak işaretlenir",
+          "ENC (vektör) veriler WGS-84 tabanlıdır"
         ]
       }
     ],
     keyPoints: [
-      "Datum, koordinatların referans modelidir.",
+      "Datum, koordinatların referans elipsoidi ve başlangıcıdır.",
       "WGS-84, güncel navigasyon sistemlerinde standarttır.",
-      "Yanlış datum ayarı mevkiyi kaydırır."
+      "Datum uyuşmazlığı mevkiyi yüzlerce metre kaydırabilir.",
+      "Eski haritalarda GPS mevkisi, harita notundaki offset kadar düzeltilerek işaretlenir."
     ]
   },
   "Mesafe ölçümü": {
     title: "Mesafe Ölçümü",
     introduction:
-      "Deniz haritalarında mesafe ölçümü, haritanın kenarındaki enlem skalası üzerinden yapılır. Çünkü 1′ enlem = 1 deniz milidir.",
+      "Deniz haritalarında mesafe, haritanın yan (sol/sağ) kenarındaki enlem skalası üzerinden ölçülür; çünkü Mercator haritasında 1′ enlem ≈ 1 deniz miline karşılık gelir. Boylam (alt/üst) skalası mesafe ölçümü için KULLANILMAZ.",
     sections: [
+      {
+        title: "Neden Enlem Skalası?",
+        content:
+          "Bir deniz mili, meridyen üzerinde 1′ (bir açı dakikası) yayın uzunluğu olarak tanımlanır (1 NM = 1852 m). Mercator projeksiyonunda enlem skalası enleme bağlı olarak gerilir; bu nedenle mesafe, ölçülecek bölgenin BULUNDUĞU enlemdeki skala parçasından okunmalıdır. Boylam skalası ise enlemle daralıp genişlediğinden mesafe için uygun değildir.",
+        image: chartPlotting,
+        imageAlt: "Harita üzerinde mesafe ölçümü",
+        formula: {
+          text: "1′ enlem ≈ 1 deniz mili = 1852 m",
+          description: "Mesafe daima yan kenardaki enlem skalasından, ölçülen bölgenin enleminde okunur."
+        }
+      },
       {
         title: "Doğru Ölçüm Pratiği",
         content:
-          "Mesafe ölçerken parakete veya pergel ucu, ölçüm yapılacak enleme yakın yerleştirilir. Böylece ölçek hatası minimize edilir.",
-        image: chartPlotting,
-        imageAlt: "Harita üzerinde mesafe ölçümü"
+          "Pergel (dividers) açıklığı, ölçülecek iki nokta arasına ayarlanır ve bu açıklık, aynı enlem hizasındaki enlem skalasına taşınarak deniz mili olarak okunur. Uzun mesafelerde harita küçük ölçekliyse, pergel sabit bir açıklığa (ör. 10 mil) ayarlanıp rota boyunca 'adımlanarak' toplam bulunur.",
+        bulletPoints: [
+          "Pergel, ölçülen noktanın hizasındaki enlem skalasında okunur",
+          "Uzun mesafe sabit açıklıkla adımlanarak toplanır",
+          "Büyük ölçekli (detaylı) haritada hassasiyet daha yüksektir"
+        ]
       },
       {
-        title: "Sık Hatalar",
+        title: "Sık Yapılan Hatalar",
         content:
-          "Boylam skalası mesafe için kullanılmaz. Harita ölçeği büyüdükçe ölçüm hassasiyeti artar.",
+          "En yaygın hata boylam skalasından mesafe okumaktır; bu yüksek enlemlerde belirgin hata üretir. İkinci hata, mesafeyi haritanın ortasındaki sabit bir skaladan okuyup enlem farkını ihmal etmektir.",
         bulletPoints: [
-          "Enlem skalası kullanılır",
-          "Ölçüm, en yakın enlemde yapılır",
+          "Boylam skalası mesafe için kullanılmaz",
+          "Ölçüm, hedef bölgenin enleminde yapılır",
           "Ölçek büyüdükçe hassasiyet artar"
         ]
       }
     ],
     keyPoints: [
-      "1′ enlem = 1 deniz mili kabul edilir.",
-      "Mesafe, enlem skalasından ölçülür.",
-      "Boylam skalası mesafe ölçümü için uygun değildir."
+      "1′ enlem ≈ 1 deniz mili (1852 m) kabul edilir.",
+      "Mesafe, ölçülen bölgenin hizasındaki enlem skalasından okunur.",
+      "Boylam skalası mesafe ölçümü için uygun değildir.",
+      "Uzun mesafe sabit pergel açıklığıyla adımlanarak ölçülür."
     ]
   },
   "Boylam değişimi hesapları": {
     title: "Boylam Değişimi Hesapları",
     introduction:
-      "Boylam değişimi, seyredilen doğu–batı mesafenin enleme bağlı olarak boylama çevrilmesiyle bulunur. Enlem arttıkça 1′ boylamın uzunluğu küçülür.",
+      "Boylam değişimi (DLong), seyredilen doğu–batı mesafenin (departure) enleme bağlı olarak boylama çevrilmesiyle bulunur. Enlem arttıkça meridyenler birbirine yaklaştığından 1′ boylamın yatay uzunluğu küçülür; bu yüzden departure ile DLong aynı değer değildir.",
     sections: [
       {
-        title: "Temel Mantık",
+        title: "Departure – DLong İlişkisi",
         content:
-          "Doğu–batı mesafe (departure), ortalama enlemdeki boylam dakikasıyla ilişkilidir. Bu ilişki, orta enlem seyri hesaplarının temelidir.",
+          "Departure (doğu–batı kat edilen mesafe, deniz mili) ile boylam değişimi (DLong, açı dakikası) arasındaki bağıntı, ortalama enlemin kosinüsü üzerinden kurulur. Ekvatorda (enlem 0°) departure = DLong; enlem büyüdükçe aynı DLong için kat edilen departure küçülür.",
         image: mercatorProjection,
-        imageAlt: "Boylam değişimi ve Mercator projeksiyonu"
+        imageAlt: "Boylam değişimi ve Mercator projeksiyonu",
+        formula: {
+          text: "Departure = DLong × cos(enlem)   →   DLong = Departure / cos(enlem_ort)",
+          description: "Departure deniz mili, DLong açı dakikası; orta enlem seyrinde ortalama enlem kullanılır."
+        }
       },
       {
-        title: "Uygulama Notu",
+        title: "Sayısal Örnek",
         content:
-          "Boylam değişimi hesaplarında enlem işareti ve doğu–batı yönü doğru yorumlanmalıdır.",
+          "Bir gemi 48° ortalama enlemde 120 NM doğuya gitsin. DLong = Departure / cos(48°) = 120 / 0,6691 ≈ 179,3′ ≈ 2°59,3′ E. Yani 120 millik doğu hareketi, bu enlemde yaklaşık 3° boylam değişimine karşılık gelir (ekvatorda yalnızca 2° olurdu).",
+        bulletPoints: [
+          "cos(48°) ≈ 0,6691",
+          "DLong = 120 / 0,6691 ≈ 179,3′",
+          "Yüksek enlemde aynı DLong daha az departure demektir"
+        ]
+      },
+      {
+        title: "İşaret ve Uygulama Notu",
+        content:
+          "Doğuya hareket boylamı artırır (E +), batıya hareket azaltır (W −). 180° boylam (tarih çizgisi) geçişlerinde işaret ve toplam dikkatle yorumlanmalı; hesap sonucu harita üzerinde doğrulanmalıdır.",
         bulletPoints: [
           "Ortalama enlem kullanılır",
           "Doğu (+) / Batı (−) yönü belirtilir",
-          "Harita üzerinde doğrulama yapılır"
+          "180° meridyen geçişinde dikkatli yorum gerekir"
         ]
       }
     ],
     keyPoints: [
-      "Boylam değişimi enleme bağlıdır.",
-      "Ortalama enlem üzerinden hesaplanır.",
-      "Yön işareti doğru verilmelidir."
+      "DLong = Departure / cos(ortalama enlem).",
+      "Ekvatorda departure = DLong; enlem büyüdükçe ayrışırlar.",
+      "Yön işareti (E +, W −) doğru verilmelidir.",
+      "Sonuç harita çizimiyle doğrulanır."
     ]
   },
   "Sayısal orta enlem seyri uygulamaları": {
     title: "Sayısal Orta Enlem Seyri Uygulamaları",
     introduction:
-      "Orta enlem seyri, iki mevki arasındaki kurs ve mesafenin hesaplandığı pratik bir yöntemdir. Sayısal uygulama, teorik adımların hesapla doğrulanmasını sağlar.",
+      "Orta enlem seyri (mid-latitude sailing), iki mevki arasındaki rota (kurs) ve mesafenin pratik biçimde hesaplandığı yöntemdir. Burada teorik adımlar tam çözümlü bir sayısal örnekle gösterilir.",
     sections: [
       {
-        title: "Adım Adım Hesap",
+        title: "Temel Bağıntılar",
         content:
-          "DLat, departure ve ortalama enlem kullanılarak kurs ve mesafe bulunur. Bulunan değerler, haritada kontrol edilerek doğrulanır.",
+          "Enlem farkı (DLat) ve boylam farkı (DLong) açı dakikası olarak bulunur. DLong, ortalama enlemde departure'a çevrilir. Kurs ve mesafe, DLat ile departure'dan dik üçgen bağıntılarıyla hesaplanır.",
         image: chartPlotting,
-        imageAlt: "Orta enlem seyri uygulaması"
+        imageAlt: "Orta enlem seyri uygulaması",
+        formula: {
+          text: "Departure = DLong × cos(Lat_ort);  tan(Kurs) = Departure / DLat;  Mesafe = DLat / cos(Kurs)",
+          description: "DLat ve DLong dakika; departure ve mesafe deniz mili."
+        }
       },
       {
-        title: "Doğrulama",
+        title: "Tam Çözümlü Örnek",
         content:
-          "Hesap sonucu rota çizimiyle uyuşmuyorsa, işaret hatası veya yanlış enlem kullanımı kontrol edilir.",
+          "A: 36°00′N 005°00′W, B: 38°00′N 002°00′W. DLat = 2°00′ = 120′ N. DLong = 3°00′ = 180′ E. Ortalama enlem = 37°00′. Departure = 180 × cos 37° = 180 × 0,7986 ≈ 143,7 NM. tan(Kurs) = 143,7 / 120 = 1,1978 → Kurs ≈ N50,1°E ≈ 050°. Mesafe = 120 / cos 50,1° = 120 / 0,6414 ≈ 187,1 NM.",
+        bulletPoints: [
+          "DLat = 120′ N, DLong = 180′ E",
+          "Departure = 180 × cos37° ≈ 143,7 NM",
+          "Kurs ≈ 050°, Mesafe ≈ 187 NM"
+        ]
+      },
+      {
+        title: "Doğrulama ve Sık Hatalar",
+        content:
+          "Hesap sonucu rota çizimiyle uyuşmuyorsa; DLat/DLong işaretleri, ortalama enlemin doğru alınıp alınmadığı ve hesap makinesinin derece/radyan modu kontrol edilir. Orta enlem seyri kısa-orta mesafelerde doğrudur; çok uzun okyanus geçişlerinde büyük daire seyri tercih edilir.",
         bulletPoints: [
           "DLat ve departure işaretleri kontrol edilir",
-          "Ortalama enlem doğru alınır",
-          "Harita çizimiyle karşılaştırılır"
+          "Ortalama enlem doğru hesaplanır",
+          "Çok uzun mesafede büyük daire seyri tercih edilir"
         ]
       }
     ],
     keyPoints: [
-      "Sayısal uygulama, teoriyi doğrular.",
-      "Ortalama enlem hatası sonucu bozar.",
-      "Harita kontrolü zorunludur."
+      "tan(Kurs) = Departure / DLat; Mesafe = DLat / cos(Kurs).",
+      "DLong, ortalama enlemde departure'a çevrilir.",
+      "Ortalama enlem hatası kurs ve mesafeyi bozar.",
+      "Uzun okyanus geçişinde büyük daire seyri daha doğrudur."
     ]
   },
   "Kerterizle mevki tayini": {
     title: "Kerterizle Mevki Tayini",
     introduction:
-      "Kerterizle mevki tayini, sabit ve tanınabilir iki veya üç noktadan alınan kerterizlerin kesişimiyle gemi mevkisinin bulunmasıdır.",
+      "Kerterizle mevki tayini (fix by bearings), sabit ve haritada tanınabilir iki veya üç noktadan alınan kerterizlerin (bearing) haritada kesiştirilmesiyle gemi mevkisinin bulunmasıdır. Kıyı seyrinin temel ve en sık kullanılan mevki yöntemidir.",
     sections: [
       {
-        title: "Temel Yöntem",
+        title: "Temel Yöntem ve Hakiki Kerterize Çevirme",
         content:
-          "En az iki kerteriz alınır ve haritada ilgili doğrular çizilir. Kesişim noktası gemi mevkisidir.",
+          "Pusula ile alınan kerterizler, pusula hatası (variation + deviation) düzeltilerek HAKİKİ kerterize çevrilir; ardından haritada ilgili nirengiden çizilir. En az iki kerterizin kesişimi gemi mevkisini verir. Cayro pusula kullanılıyorsa cayro hatası düzeltilir.",
         image: chartPlotting,
-        imageAlt: "Kerterizlerle mevki tayini"
+        imageAlt: "Kerterizlerle mevki tayini",
+        formula: {
+          text: "Hakiki kerteriz = Pusula kerterizi + pusula hatası (E +, W −)",
+          description: "Çizimden önce tüm kerterizler hakiki değere çevrilir."
+        }
       },
       {
-        title: "Hata Kaynakları",
+        title: "Nesne Seçimi ve Kesişim Açısı",
         content:
-          "Kerteriz açılarının küçük olması, pusula hatası ve zaman farkı mevkiyi etkiler.",
+          "İki kerteriz için ideal kesişim açısı 90°'ye yakın olmalıdır; çok dar (veya çok geniş) açı, küçük bir kerteriz hatasını mevkide büyük kaymaya çevirir. Üç kerteriz alındığında, kerterizler 60°'şer aralıklı seçilir; nesneler belirgin, doğru tanımlanmış ve mümkünse yakın olmalıdır.",
         bulletPoints: [
-          "Kerterizler mümkün olduğunca geniş açıyla alınır",
-          "Zaman farkı minimize edilir",
-          "Pusula sapmaları düzeltilir"
+          "İki kerterizde kesişim açısı ~90° hedeflenir",
+          "Üç kerterizde nesneler ~60° aralıklı seçilir",
+          "Nesneler haritada kesin tanımlanabilir olmalı"
+        ]
+      },
+      {
+        title: "Cocked Hat (Hata Üçgeni) ve Zaman Farkı",
+        content:
+          "Üç kerteriz çizildiğinde genellikle küçük bir üçgen (cocked hat) oluşur; küçük üçgen iyi mevki demektir, büyük üçgen hata (pusula hatası, yanlış tanıma, zaman farkı) işaretidir. Gemi hareket ettiğinden kerterizler hızlı ardışık alınmalı; en hızlı değişen (kıça/başa yakın) kerteriz EN SON alınır.",
+        bulletPoints: [
+          "Küçük cocked hat = güvenilir mevki",
+          "Büyük üçgen → pusula hatası/yanlış tanıma kontrol edilir",
+          "En hızlı değişen kerteriz en son alınır",
+          "Tek nesne varsa zamana bağlı (running fix) yöntemine geçilir"
         ]
       }
     ],
     keyPoints: [
-      "İki veya üç kerterizle fix yapılır.",
-      "Açı ne kadar genişse doğruluk artar.",
-      "Zaman farkı azaltılmalıdır."
+      "Kerterizler önce hakiki değere çevrilir, sonra çizilir.",
+      "İki kerterizde ~90°, üç kerterizde ~60° aralık idealdir.",
+      "Cocked hat büyükse hata aranır.",
+      "Hızlı değişen kerteriz en son alınır; zaman farkı azaltılır."
     ]
   },
   "Mesafe + kerteriz fix": {
     title: "Mesafe + Kerteriz Fix",
     introduction:
-      "Tek bir sabit objeye olan mesafe ve kerteriz birlikte kullanılarak gemi mevkisi belirlenir.",
+      "Tek bir sabit nesneye olan mesafe (range) ile kerteriz (bearing) birlikte kullanılarak gemi mevkisi belirlenir. İkinci bir nesne bulunmadığında veya hızlı mevki kontrolü gerektiğinde çok pratiktir.",
     sections: [
       {
-        title: "Uygulama",
+        title: "Yöntem: Mesafe Kavsi + Kerteriz Doğrusu",
         content:
-          "Objeye olan mesafe, radar veya görsel yöntemlerle ölçülür; kerterizle birleştirilerek haritada tek bir nokta bulunur.",
+          "Nesneye olan mesafe, haritada o nesne merkezli bir DAİRE YAYI (range arc) olarak; kerteriz ise nesneden çizilen bir DOĞRU olarak işaretlenir. Yayın ile doğrunun kesişimi gemi mevkisidir. Mesafe; radar (en yaygın), düşey sekstant açısı veya fenerin 'görünme/kaybolma' (dipping) mesafesiyle bulunur.",
         image: radarDisplay,
         imageAlt: "Mesafe ve kerterizle mevki tayini"
       },
       {
-        title: "Kullanım Alanı",
+        title: "Mesafe Bulma Yöntemleri",
         content:
-          "Kıyıya yakın seyirlerde veya sınırlı NAVAID bulunan bölgelerde hızlı mevki kontrolü sağlar.",
+          "Radar mesafesi genellikle kerterizinden daha doğrudur; bu yüzden tek nesneli fix'te radar mesafesi + görsel kerteriz iyi bir kombinasyondur. Yüksekliği bilinen bir fenere düşey sekstant açısıyla da mesafe hesaplanır; fenerin ufukta belirme/kaybolma anında ise 'dipping range' tablodan bulunur.",
         bulletPoints: [
-          "Radar mesafesi + pusula kerterizi",
-          "Hızlı doğrulama amacıyla kullanılır",
-          "Tek objeye bağlı olduğundan dikkat gerektirir"
+          "Radar mesafesi + pusula/görsel kerterizi",
+          "Düşey sekstant açısı ile bilinen yükseklikten mesafe",
+          "Fener belirme/kaybolma (dipping) mesafesi"
+        ],
+        formula: {
+          text: "Mesafe (NM) ≈ 1,856 × Yükseklik(m) / Düşey açı(dakika)",
+          description: "Bilinen yükseklikteki bir nesneye düşey sekstant açısından yaklaşık mesafe."
+        }
+      },
+      {
+        title: "Doğruluk ve Dikkat",
+        content:
+          "Fix tek nesneye bağlı olduğundan, o nesnenin yanlış tanınması doğrudan yanlış mevki demektir. Radar mesafesi doğru ama kerteriz şüpheliyse, daha güvenilir bir yöntem AYNI nesneye iki farklı mesafe (iki range) veya başka bir nesne eklemektir. Mevki, mümkünse echo sounder derinliğiyle çapraz kontrol edilir.",
+        bulletPoints: [
+          "Tek nesneye bağlılık hata riskini artırır",
+          "Radar mesafesi genelde kerterizden daha doğrudur",
+          "Mümkünse derinlik/ikinci nesne ile çapraz kontrol"
         ]
       }
     ],
     keyPoints: [
-      "Mesafe ve kerteriz aynı anda alınmalıdır.",
-      "Radar ölçümü yaygın kullanılır.",
-      "Tek objeye bağlılık hata riskini artırır."
+      "Range arc (mesafe yayı) ile kerteriz doğrusunun kesişimi mevkidir.",
+      "Mesafe radar, düşey sekstant açısı veya dipping ile bulunur.",
+      "Radar mesafesi çoğunlukla kerterizden daha doğrudur.",
+      "Tek nesneye bağlılık nedeniyle çapraz kontrol önerilir."
     ]
   },
   "Paralel indeks": {
