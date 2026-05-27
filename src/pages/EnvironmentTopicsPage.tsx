@@ -48,6 +48,7 @@ const environmentTopics: EnvironmentMainTopic[] = [
       { id: "marpol-structure", title: "MARPOL yapısı ve ekleri", hasContent: true },
       { id: "marpol-certificates", title: "MARPOL sertifikaları", hasContent: true },
       { id: "marpol-surveys", title: "Sörvey ve denetimler", hasContent: true },
+      { id: "port-reception", title: "Liman atık kabul tesisleri (Port Reception Facilities)", hasContent: true },
     ],
   },
   {
@@ -119,6 +120,8 @@ const environmentTopics: EnvironmentMainTopic[] = [
       { id: "eca-seca", title: "ECA/SECA bölgeleri ve gereksinimleri", hasContent: true },
       { id: "ods-regulations", title: "Ozon tabakasını incelten maddeler", hasContent: true },
       { id: "voc-regulations", title: "VOC (Uçucu Organik Bileşikler) kontrolü", hasContent: true },
+      { id: "scrubber-egcs", title: "Egzoz gazı temizleme sistemleri (Scrubber/EGCS)", hasContent: true },
+      { id: "incinerator", title: "Gemide atık yakma (incinerator) ve Ek VI", hasContent: true },
     ],
   },
   {
@@ -132,6 +135,7 @@ const environmentTopics: EnvironmentMainTopic[] = [
       { id: "seemp", title: "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)", hasContent: true },
       { id: "eu-ets", title: "EU ETS ve FuelEU Maritime", hasContent: true },
       { id: "alternative-fuels", title: "Alternatif yakıtlar (LNG, metanol, amonyak)", hasContent: true },
+      { id: "imo-ghg-strategy", title: "IMO Sera Gazı (GHG) Stratejisi ve net-zero hedefleri", hasContent: true },
     ],
   },
   {
@@ -1710,6 +1714,150 @@ AB, Hong Kong Sözleşmesi'ni beklemeden kendi Gemi Geri Dönüşüm Düzenlemes
       "IHM Part I: yapısal zararlı maddeler (asbest, PCB, TBT, ODS vb.)",
       "Geri dönüşüm tesisleri yetkili otorite tarafından onaylanmalıdır",
       "Beaching yöntemi (karaya çıkarma) çevre ve işçi güvenliği riskleri nedeniyle tartışmalıdır",
+    ],
+  },
+
+  // =====================================================
+  // EK BAŞLIKLAR (2. tur domain taraması)
+  // =====================================================
+  "port-reception": {
+    title: "Liman Atık Kabul Tesisleri (Port Reception Facilities)",
+    introduction: "MARPOL, gemilerin deşarj edemediği atıkları (yağlı atık, slop, çöp, pis su, kargo artığı) karaya güvenle teslim edebilmesi için liman devletlerinin yeterli atık kabul tesisi (Port Reception Facility – PRF) sağlamasını şart koşar.",
+    content: `NEDEN GEREKLİ?
+
+MARPOL ekleri pek çok atığın denize deşarjını yasaklar veya sıkı sınırlandırır. Geminin bu atıkları (sintine yağı, slop, çamur/sludge, çöp, pis su, kargo yıkama artığı) bir yerde biriktirip karaya teslim etmesi gerekir. PRF, bu teslimi mümkün kılan liman altyapısıdır; PRF olmadan MARPOL uyumu pratikte sağlanamaz.
+
+GEMİNİN SORUMLULUĞU:
+
+- Atıkları ilgili ekin kayıt defterine (ORB, Garbage Record Book vb.) işlemek.
+- PRF'ye teslimde teslim makbuzu (waste delivery receipt) almak ve saklamak.
+- Atık yönetim planlarına (Garbage Management Plan vb.) uymak.
+
+LİMAN DEVLETİNİN SORUMLULUĞU:
+
+Taraf devletler, gemilere gereksiz gecikme yaşatmadan yeterli kapasitede PRF sağlamakla yükümlüdür. Yetersiz PRF, denize yasa dışı deşarjı teşvik ettiği için ciddi bir uyum boşluğudur.
+
+AB ÖZELİ:
+
+AB'de PRF Direktifi, gemilerin atıklarını limana teslim etmesini ve atık ücretinin liman ücretine dâhil edilmesini düzenler (deşarj teşvikini azaltmak için).`,
+    bulletPoints: [
+      "PRF, gemilerin MARPOL atıklarını karaya güvenle teslim etmesini sağlar.",
+      "Teslimde waste delivery receipt alınır ve saklanır.",
+      "Liman devleti yeterli PRF sağlamakla yükümlüdür.",
+      "Yetersiz PRF yasa dışı deşarjı teşvik eder.",
+    ],
+    keyPoints: [
+      "PRF olmadan MARPOL uyumu pratikte mümkün değildir.",
+      "Teslim makbuzu uyum kanıtıdır ve denetimde sorulur.",
+      "AB PRF Direktifi atık ücretini liman ücretine dâhil eder.",
+    ],
+  },
+  "scrubber-egcs": {
+    title: "Egzoz Gazı Temizleme Sistemleri (Scrubber/EGCS)",
+    introduction: "EGCS (Exhaust Gas Cleaning System / scrubber), egzoz gazındaki kükürt oksitlerini (SOx) yıkayarak gidermek için kullanılır ve MARPOL Ek VI kükürt sınırına 'eşdeğer tedbir' olarak yüksek kükürtlü yakıt (HSFO) kullanımına imkân verir.",
+    content: `ÇALIŞMA PRENSİBİ:
+
+Scrubber, egzoz gazını su (genellikle deniz suyu) ile yıkar; SOx suda çözünerek gazdan ayrılır. Böylece bacadan çıkan SOx, düşük kükürtlü yakıt kullanılmış gibi sınır altına iner. Uyum, eşdeğer SO2/CO2 oranı ölçümüyle sürekli izlenir.
+
+TİPLER:
+
+- Açık devre (open loop): deniz suyu doğal alkalinitesiyle yıkar, yıkama suyu (washwater) izleme sonrası denize deşarj edilir.
+- Kapalı devre (closed loop): tatlı su + alkali (kostik) ile yıkar; washwater devridaim eder, çamur (sludge) karaya verilir. Deşarj kısıtı olan bölgeler için uygundur.
+- Hibrit: her iki modda çalışabilir.
+
+WASHWATER VE KISITLAR:
+
+Açık devre deşarj suyu için MARPOL Ek VI kriterleri (pH, PAH, bulanıklık, nitrat) izlenir. Bazı liman/bölgeler açık devre washwater deşarjını yasaklar; bu durumda kapalı devreye geçilir.
+
+UYUM VE DİĞER YOLLAR:
+
+Scrubber, düşük kükürtlü yakıt (VLSFO/MGO) ve LNG ile birlikte Ek VI kükürt uyumunun üç ana yolundan biridir. Sürekli izleme verileri ve onay belgeleri (SECC/onaylı SO2/CO2 oranı) tutulur.`,
+    bulletPoints: [
+      "Scrubber egzozdaki SOx'i suyla yıkayarak giderir.",
+      "Açık devre (deniz suyu), kapalı devre (tatlı su+alkali), hibrit tipleri vardır.",
+      "Washwater MARPOL Ek VI kriterlerine (pH/PAH/bulanıklık) göre izlenir.",
+      "Bazı bölgeler açık devre deşarjını yasaklar.",
+    ],
+    keyPoints: [
+      "Scrubber, HSFO ile Ek VI kükürt sınırına eşdeğer uyum sağlar.",
+      "Uyum SO2/CO2 oranının sürekli izlenmesiyle kanıtlanır.",
+      "Deşarj kısıtlı bölgelerde kapalı devre kullanılır.",
+    ],
+  },
+  "incinerator": {
+    title: "Gemide Atık Yakma (Incinerator) ve Ek VI",
+    introduction: "Gemi insineratörü; atık yağ (sludge), yağlı paçavra, belirli çöp ve katı atıkları yakarak hacmini azaltır. MARPOL Ek VI, gemide yakmayı düzenler ve bazı maddelerin yakılmasını yasaklar.",
+    content: `KULLANIM AMACI:
+
+Gemide biriken yanabilir atıklar (yağlı çamur/sludge, yağ artığı, bazı çöpler) insineratörde yakılarak hacmi azaltılır; bu, karaya teslim edilecek atık miktarını düşürür.
+
+MARPOL EK VI GEREKSİNİMLERİ:
+
+- Onaylı tip insineratör (IMO standardına uygun) kullanılmalı; yanma odası sıcaklığı izlenmelidir.
+- Belirli maddelerin gemide yakılması YASAKTIR: örn. MARPOL ekleri kapsamındaki belirli kalıntılar, PCB içerenler, ağır metal içeren çöpler ve halojenli bileşikler.
+- Limanlarda/iç sularda yakma çoğunlukla yasaktır veya kısıtlıdır; liman kuralları önceliklidir.
+
+OPERASYON VE GÜVENLİK:
+
+- Yakma kayıtları (yakılan atık türü/miktarı) Garbage Record Book / ilgili kayıtlara işlenir.
+- Yanma sıcaklığı ve baca emisyonu izlenir.
+- Yangın ve patlama riski nedeniyle düzgün besleme ve bakım gerekir.
+
+ALTERNATİF:
+
+Yakılamayan veya yakılması yasak atıklar liman atık kabul tesislerine (PRF) teslim edilir.`,
+    bulletPoints: [
+      "İnsineratör yanabilir atık (sludge, bazı çöpler) hacmini azaltır.",
+      "Onaylı tip insineratör ve sıcaklık izleme gerekir (Ek VI).",
+      "PCB/ağır metal/halojenli bazı maddelerin yakılması yasaktır.",
+      "Yakma kayıtları kayıt defterine işlenir.",
+    ],
+    keyPoints: [
+      "Ek VI gemide yakmayı düzenler ve bazı maddeleri yasaklar.",
+      "Liman/iç sularda yakma çoğunlukla kısıtlı/yasaktır.",
+      "Yakılamayan atık PRF'ye teslim edilir.",
+    ],
+    warnings: [
+      "Yasak maddelerin yakılması ağır yaptırım doğurur",
+      "Yanlış besleme/bakım yangın ve patlama riski yaratır",
+    ],
+  },
+  "imo-ghg-strategy": {
+    title: "IMO Sera Gazı (GHG) Stratejisi ve Net-Zero Hedefleri",
+    introduction: "IMO'nun gemicilik sera gazı stratejisi, uluslararası deniz taşımacılığından kaynaklanan GHG emisyonlarını azaltmak için hedefler ve tedbirler belirler. EEDI/CII gibi araçlar bu stratejinin uygulama mekanizmalarıdır.",
+    content: `STRATEJİNİN ÇERÇEVESİ:
+
+IMO'nun revize GHG Stratejisi (2023), uluslararası gemiciliğin emisyonlarını 2050 civarında net-sıfıra (net-zero) ulaştırmayı amaçlar ve yol boyunca ara kontrol noktaları (gösterge hedefler) tanımlar; ayrıca düşük/sıfır karbonlu yakıtların payının artırılmasını hedefler.
+
+TEDBİR TÜRLERİ:
+
+- Teknik tedbirler: yakıtların karbon yoğunluğunu sınırlayan kurallar (ör. yakıt standardı) ve gemi verimliliği gereksinimleri.
+- Ekonomik tedbirler: karbon fiyatlandırması/ücretlendirme gibi piyasa temelli mekanizmalar (üzerinde çalışılan).
+
+UYGULAMA ARAÇLARI (mevcut):
+
+- EEDI/EEXI: tasarım/var olan gemi verimlilik indeksleri.
+- CII: operasyonel karbon yoğunluğu derecelendirmesi (A–E).
+- SEEMP: gemi enerji verimliliği yönetim planı.
+Bunlar stratejinin somut uygulama araçlarıdır.
+
+BÖLGESEL ETKİLEŞİM:
+
+AB'nin EU ETS ve FuelEU Maritime düzenlemeleri, IMO çerçevesiyle paralel/ek baskı oluşturur. Gemi işletmeleri hem küresel (IMO) hem bölgesel (AB) gereksinimleri birlikte yönetir.
+
+OPERASYONEL ETKİ:
+
+Hız optimizasyonu (slow steaming), rota/trim optimizasyonu, enerji tasarruf cihazları ve alternatif yakıtlar, hedeflere ulaşmada başlıca operasyonel kaldıraçlardır.`,
+    bulletPoints: [
+      "Revize IMO GHG Stratejisi (2023) ~2050 net-zero hedefler.",
+      "Teknik (yakıt/verim) ve ekonomik (karbon fiyatı) tedbirler içerir.",
+      "Uygulama araçları: EEDI/EEXI, CII, SEEMP.",
+      "EU ETS / FuelEU Maritime bölgesel olarak paralel baskı yapar.",
+    ],
+    keyPoints: [
+      "Strateji, gemiciliği net-sıfıra götüren çerçeveyi tanımlar.",
+      "EEDI/CII/SEEMP stratejinin somut araçlarıdır.",
+      "Slow steaming ve alternatif yakıtlar başlıca azaltım kaldıraçlarıdır.",
     ],
   },
 };

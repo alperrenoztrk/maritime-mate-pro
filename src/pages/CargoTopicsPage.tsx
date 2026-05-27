@@ -54,6 +54,7 @@ const cargoTopics: CargoMainTopic[] = [
       { id: "cargo-planning", title: "Yük planlaması esasları", hasContent: true },
       { id: "cargo-docs", title: "Yük belgeleri ve dokümantasyon", hasContent: true },
       { id: "cargo-safety-general", title: "Yükleme operasyonlarında güvenlik", hasContent: true },
+      { id: "cargo-gear-swl", title: "Gemi yük donanımı, vinç/derrick ve SWL", hasContent: true },
     ],
   },
   {
@@ -110,6 +111,8 @@ const cargoTopics: CargoMainTopic[] = [
       { id: "group-a-cargoes", title: "Grup A yükler (liquefiable)", hasContent: true },
       { id: "group-b-cargoes", title: "Grup B yükler (kimyasal tehlike)", hasContent: true },
       { id: "trimming-bulk", title: "Dökme yük trimlenmesi", hasContent: true },
+      { id: "blu-code", title: "BLU Code: dökme yük yükleme/boşaltma ve gemi-sahil kontrolü", hasContent: true },
+      { id: "hold-preparation", title: "Ambar hazırlığı ve temizliği", hasContent: true },
     ],
   },
   {
@@ -152,6 +155,8 @@ const cargoTopics: CargoMainTopic[] = [
       { id: "cargo-calc-tanker", title: "Tanker yük hesaplamaları", hasContent: true },
       { id: "tank-cleaning", title: "Tank temizliği ve COW", hasContent: true },
       { id: "ig-system", title: "Inert gas sistemi", hasContent: true },
+      { id: "gas-carrier-igc", title: "Gaz taşıyıcılar ve IGC Code (LNG/LPG)", hasContent: true },
+      { id: "isgott-tanker-safety", title: "ISGOTT ve tanker emniyeti (statik elektrik, gaz, ship-shore checklist)", hasContent: true },
     ],
   },
   {
@@ -3036,6 +3041,205 @@ Tatbikatlar düzenli yapılmalıdır.`,
     warnings: [
       "Güvenlik kuralları can kayıplarından sonra yazılmıştır",
       "Kurallara uyum sağlanması hayat kurtarır",
+    ],
+  },
+
+  // =====================================================
+  // EK BAŞLIKLAR (2. tur domain taraması)
+  // =====================================================
+  "cargo-gear-swl": {
+    title: "Gemi Yük Donanımı, Vinç/Derrick ve SWL",
+    introduction: "Gemi yük donanımı; vinçler (crane), bumbalar (derrick) ve bunların aksesuarlarından (halat, makara, kanca, kilit) oluşur. Her bir donanımın güvenle kaldırabileceği yük, SWL (Safe Working Load) ile sınırlandırılmıştır ve kayıt altına alınır.",
+    content: `SWL (SAFE WORKING LOAD):
+
+SWL, bir kaldırma donanımının normal kullanımda güvenle taşıyabileceği maksimum yüktür. Donanımın kopma yüküne (breaking load) bir güvenlik katsayısı uygulanarak belirlenir; donanım üzerinde okunaklı biçimde işaretlenir.
+
+YÜK DONANIMI BİLEŞENLERİ:
+
+- Vinç (crane) / bumba (derrick): yükü kaldıran ana donanım.
+- Tel/halat (wire/rope), makaralar (blocks), kilitler (shackle), kancalar (hook): aksesuarlar; her birinin kendi SWL'si vardır.
+- En zayıf eleman tüm sistemin kapasitesini belirler.
+
+CARGO GEAR REGISTER (YÜK DONANIMI SİCİLİ):
+
+Gemideki tüm kaldırma donanımı ve aksesuarları, sertifikalarıyla birlikte bir Cargo Gear Register'da (yük donanımı sicili / Register of Lifting Appliances) kayıtlıdır. ILO 152 Sözleşmesi ve SOLAS gerekleri kapsamında bu kayıtlar PSC denetiminde kontrol edilir.
+
+TEST VE MUAYENE:
+
+- Proof load test (yük testi): donanım, SWL'sinin üzerinde bir test yüküyle (örn. SWL'ye bağlı olarak belirlenen oranda) test edilir. Genellikle 5 yılda bir tekrarlanır.
+- Yıllık ayrıntılı muayene (thorough examination): yetkili kişi tarafından yapılır.
+- Görsel kontrol: her kullanımdan önce halat, kanca ve kilitlerin durumu kontrol edilir.
+
+GÜVENLİ KULLANIM:
+
+SWL aşılmamalı; yük asılıyken altında durulmamalı; ani yükleme (shock load) yapılmamalı; açılı kaldırmada bacaklardaki kuvvet artışı dikkate alınmalıdır.`,
+    bulletPoints: [
+      "SWL, donanımın güvenle kaldırabileceği maksimum yüktür ve işaretlenir.",
+      "Sistemin kapasitesini en zayıf eleman belirler.",
+      "Tüm donanım Cargo Gear Register'da sertifikalı olarak kayıtlıdır.",
+      "Proof load test ~5 yılda bir, ayrıntılı muayene yıllık yapılır.",
+    ],
+    keyPoints: [
+      "SWL aşılmaz; kopma yüküne güvenlik katsayısı uygulanır.",
+      "ILO 152 ve SOLAS, kaldırma donanımı kayıt ve testini gerektirir.",
+      "Açılı kaldırmada bacak kuvvetleri artar.",
+    ],
+    warnings: [
+      "Asılı yükün altında durulmaz; shock load donanımı koparabilir",
+      "Sertifikasız/test edilmemiş donanım kullanılmaz",
+    ],
+  },
+  "blu-code": {
+    title: "BLU Code: Dökme Yük Yükleme/Boşaltma ve Gemi-Sahil Kontrolü",
+    introduction: "BLU Code (Code of Practice for the Safe Loading and Unloading of Bulk Carriers), dökme yük gemilerinde aşırı/dengesiz yüklemenin neden olduğu yapısal hasar ve batma kazalarını önlemek için gemi ile terminal arasındaki güvenli yükleme/boşaltma uygulamasını düzenler.",
+    content: `AMAÇ:
+
+Dökme yük gemilerinde hızlı ve dengesiz yükleme; aşırı kesme kuvveti (shear force) ve eğilme momenti (bending moment) oluşturarak gövde yapısını zorlayabilir, hatta gemiyi kırabilir. BLU Code bu riskleri yönetmek için gemi-terminal koordinasyonunu standartlaştırır.
+
+YÜKLEME/BOŞALTMA PLANI:
+
+Kaptan ve terminal temsilcisi, üzerinde anlaşılan bir yükleme/boşaltma planı hazırlar: her ambar için yük miktarı, sıra (sequence), yükleme hızı ve balast suyu boşaltma (deballasting) eşgüdümü. Plan, geminin yükleme bilgisayarında (loading computer) izin verilen kesme kuvveti/eğilme momenti sınırları içinde tutulmasını sağlar.
+
+GEMİ-SAHİL EMNİYET KONTROL LİSTESİ:
+
+Ship-Shore Safety Checklist doldurulur; iletişim yöntemi, acil durdurma sinyali, yükleme hızı ve haberleşme net biçimde belirlenir.
+
+YÜKLEME SIRASI VE STRES KONTROLÜ:
+
+- Ambarlar belirli bir sırayla, dengeli doldurulur (alternate hold loading kısıtlarına dikkat edilir).
+- Balast suyu boşaltması yükleme hızıyla senkron yürütülür.
+- Loading computer ile her aşamada draft, trim, shear force ve bending moment izlenir.
+- Yükleme hızı, deballasting kapasitesini aşmayacak şekilde ayarlanır.
+
+KAZALARDAN DERS:
+
+Birçok dökme yük gemisi kaybı, yanlış yükleme sırası ve aşırı yerel yüklenme kaynaklıdır; BLU Code bu deneyimlerden doğmuştur.`,
+    bulletPoints: [
+      "Hızlı/dengesiz yükleme aşırı shear force ve bending moment oluşturur.",
+      "Gemi-terminal üzerinde anlaşılan yükleme planı hazırlar.",
+      "Ship-Shore Safety Checklist ve net iletişim zorunludur.",
+      "Loading computer ile stres limitleri sürekli izlenir.",
+    ],
+    keyPoints: [
+      "BLU Code dökme yük yükleme/boşaltmasında yapısal güvenliği hedefler.",
+      "Yükleme hızı deballasting kapasitesiyle senkronize edilir.",
+      "Alternate hold loading kısıtlarına uyulmalıdır.",
+    ],
+    warnings: [
+      "Plan dışı/aşırı yerel yükleme gövdeyi kalıcı deforme edebilir veya kırabilir",
+      "Acil durdurma sinyali ve iletişim önceden netleştirilmelidir",
+    ],
+  },
+  "hold-preparation": {
+    title: "Ambar Hazırlığı ve Temizliği",
+    introduction: "Yeni yük öncesi ambar hazırlığı; yük hasarını, kontaminasyonu ve yük taleplerini (claims) önlemenin temelidir. Gerekli temizlik standardı, taşınacak yüke ve önceki yüke göre belirlenir.",
+    content: `TEMİZLİK STANDARTLARI:
+
+- Hastane temiz (hospital clean / grain clean): en yüksek standart; ambar tamamen temiz, kuru, kokusuz, pas ve önceki yük artığından arınmış. Tahıl ve hassas yükler için gereklidir.
+- Normal temiz (normal clean): süpürülmüş, önceki yük artıkları alınmış; benzer yükler için yeterli.
+- Yük yüklenebilir (load on top / shovel clean): kaba temizlik; bazı dökme yükler arasında yeterli olabilir.
+
+HAZIRLIK ADIMLARI:
+
+1. Önceki yük artıklarının tamamen alınması (süpürme/yıkama).
+2. Gerekiyorsa tatlı/deniz suyuyla yıkama ve ardından kurutma (tuz kalıntısı bazı yüklerde sorun yaratır).
+3. Sintine (bilge) kuyularının temizliği, test edilmesi ve süzgeçlerin (strum box) kontrolü.
+4. Ambar boyası/pas durumunun kontrolü; gerekiyorsa onarım.
+5. Havalandırma ve koku kontrolü.
+6. Ambar kapağı (hatch cover) sızdırmazlık testi.
+
+KONTROL VE ONAY:
+
+Bazı yüklerde (özellikle tahıl) bağımsız sörveyör ambarı kontrol edip uygunluk verir. Yetersiz hazırlık, yük hasarı ve kontaminasyon nedeniyle ciddi tazminat taleplerine yol açar.`,
+    bulletPoints: [
+      "Standartlar: hospital/grain clean > normal clean > shovel clean.",
+      "Önceki yük artığı, tuz ve nem hassas yüklerde hasar yaratır.",
+      "Sintine kuyuları ve süzgeçler temizlenip test edilir.",
+      "Hatch cover sızdırmazlığı kontrol edilir.",
+    ],
+    keyPoints: [
+      "Gerekli temizlik standardı yeni yüke göre belirlenir.",
+      "Tahıl/hassas yüklerde sörveyör onayı gerekebilir.",
+      "Yetersiz hazırlık yük hasarı ve tazminat talebi doğurur.",
+    ],
+  },
+  "gas-carrier-igc": {
+    title: "Gaz Taşıyıcılar ve IGC Code (LNG/LPG)",
+    introduction: "Sıvılaştırılmış gaz taşıyıcılar (LNG/LPG), gazı düşük sıcaklık ve/veya yüksek basınçta sıvı hâlde taşır. Bu gemiler IGC Code (International Code for the Construction and Equipment of Ships Carrying Liquefied Gases in Bulk) gereksinimlerine tabidir.",
+    content: `KARGO KOŞULLARI:
+
+- Tam basınçlı (fully pressurized): gaz ortam sıcaklığında, yüksek basınçlı tanklarda (genellikle küçük LPG gemileri).
+- Yarı basınçlı/yarı soğutmalı (semi-pressurized): orta basınç + kısmi soğutma.
+- Tam soğutmalı (fully refrigerated): atmosfer basıncında, çok düşük sıcaklıkta (LNG ≈ -163 °C; LPG ≈ -42 °C).
+
+TANK TİPLERİ (containment):
+
+- Bağımsız tanklar Type A, B, C (C: basınçlı silindirik/küresel).
+- Membran (membrane) sistemleri: özellikle büyük LNG gemilerinde, ince çelik membran + yalıtım.
+- İkincil bariyer (secondary barrier): sızıntıda gövdeyi düşük sıcaklıktan korur.
+
+BOIL-OFF VE RELİKİFAKSİYON:
+
+Soğutmalı taşımada ısı girişi nedeniyle bir miktar gaz buharlaşır (boil-off gas, BOG). LPG gemilerinde reliquefaction (yeniden sıvılaştırma) tesisi BOG'u geri sıvılaştırır; LNG gemilerinde BOG çoğunlukla yakıt olarak makinede kullanılır.
+
+TEHLİKELER VE EMNİYET:
+
+- Parlayıcılık ve patlama (flammable vapour); gaz dedeksiyonu ve havalandırma kritik.
+- Çok düşük sıcaklık (cryogenic): cilt yanığı ve çelik gevrekleşmesi (brittle fracture) riski.
+- Boğulma (asphyxiation): gaz oksijeni yer değiştirir.
+- ESD (Emergency Shutdown) sistemi, gaz dedektörleri ve özel KKD zorunludur.`,
+    bulletPoints: [
+      "Koşullar: tam basınçlı / yarı basınçlı / tam soğutmalı.",
+      "Tank tipleri: Type A/B/C ve membran; ikincil bariyer şarttır.",
+      "Boil-off: LPG'de reliquefaction, LNG'de yakıt olarak kullanım.",
+      "IGC Code yapı ve donanım gereksinimlerini belirler.",
+    ],
+    keyPoints: [
+      "LNG ≈ -163 °C, LPG ≈ -42 °C taşınır.",
+      "Başlıca tehlikeler: parlayıcılık, kriyojenik soğuk, boğulma.",
+      "ESD, gaz dedeksiyonu ve özel KKD zorunludur.",
+    ],
+    warnings: [
+      "Kriyojenik sıvı teması ağır yanık ve çelikte gevrek kırılma yapar",
+      "Gaz birikimi patlama ve boğulma riski oluşturur",
+    ],
+  },
+  "isgott-tanker-safety": {
+    title: "ISGOTT ve Tanker Emniyeti",
+    introduction: "ISGOTT (International Safety Guide for Oil Tankers and Terminals), petrol tankerleri ve terminallerinde güvenli operasyonun endüstri standardı rehberidir. Statik elektrik, parlayıcı buhar ve gemi-sahil arayüzü kaynaklı riskleri yönetir.",
+    content: `STATİK ELEKTRİK TEHLİKESİ:
+
+Akışkanın boru/tank içinde hareketi statik yük biriktirir. Yük birikimi bir kıvılcımla (spark) boşaldığında parlayıcı buhar ortamında tutuşmaya yol açabilir. Önlemler: yükleme hızını başlangıçta sınırlama (initial slow loading), serbest düşme/sıçramayı önleme, ölçüm cihazlarının (sounding) statik açıdan güvenli kullanımı ve uygun bekleme süreleri.
+
+PARLAYICI ORTAM VE INERT GAS:
+
+Tank atmosferi parlayıcı (flammable) aralıkta olmamalıdır. Inert gas sistemi (IGS) tank içi oksijeni düşürerek (genellikle %8 hacim altına) ortamı yanmaz hâle getirir; ISGOTT operasyonlarının temelidir.
+
+GEMİ-SAHİL EMNİYET KONTROL LİSTESİ:
+
+Ship/Shore Safety Check List doldurulur: bağlantıların (manifold) sağlamlığı, acil durdurma (ESD), haberleşme, yangın söndürme hazırlığı, sigara/açık alev yasağı, kapalı mahal kuralları ve sıcak iş kontrolü.
+
+OPERASYONEL ÖNLEMLER:
+
+- No smoking / açık alev ve kıvılcım kaynaklarının kontrolü.
+- Bonding/topraklama ve uygun hortum/manifold bağlantısı.
+- Gaz ölçümü ve kapalı mahal giriş izni.
+- Aşırı dolum (overflow) ve dökülme önleme; drip tray ve scupper tıkaçları.
+- Sürekli güverte nöbeti ve hızlı müdahale hazırlığı.`,
+    bulletPoints: [
+      "Statik elektrik birikimi parlayıcı ortamda tutuşma riski yaratır.",
+      "Inert gas, tank oksijenini düşürerek yanmayı önler (ISGOTT temeli).",
+      "Ship/Shore Safety Check List operasyon öncesi doldurulur.",
+      "İlk yükleme yavaş yapılır (initial slow loading).",
+    ],
+    keyPoints: [
+      "ISGOTT petrol tankeri/terminal operasyonlarının endüstri rehberidir.",
+      "Statik, parlayıcı buhar ve gemi-sahil arayüzü ana risklerdir.",
+      "Inert gas ve gaz ölçümü emniyetin temelidir.",
+    ],
+    warnings: [
+      "Parlayıcı buhar + kıvılcım = patlama; tutuşma kaynakları sıkı kontrol edilir",
+      "Inert gas/kapalı mahal kuralları ihlali ölümcüldür",
     ],
   },
 };
