@@ -1051,45 +1051,66 @@ Alan hesabı pratikte sayısal integrasyon veya stabilite yazılımı ile yapıl
   },
   "capsizing-angle": {
     title: "Devrilme Açısı (Vanishing Stability Angle)",
-    introduction: "Devrilme açısı, GZ eğrisinin tekrar sıfıra düştüğü ve geminin doğrultma momenti üretmeyi bıraktığı açıdır.",
-    content: `GZ eğrisi, belirli bir açıdan sonra azalır ve bir noktada sıfıra ulaşır. Bu açı, geminin doğrultma yeteneğinin sona erdiği sınırdır ve vanishing stability angle olarak adlandırılır.
+    introduction: "Devrilme açısı (Angle of Vanishing Stability – AVS), GZ eğrisinin pozitif bölgeden çıkıp tekrar sıfıra düştüğü ve geminin doğrultma momenti üretmeyi bıraktığı açıdır. Bu açıdan sonra GZ negatif olur ve gemi geri dönemez (devrilir).",
+    content: `AVS VE STABİLİTE ARALIĞI:
+GZ eğrisi tepe yaptıktan sonra azalır ve bir açıda sıfıra iner; bu açı AVS'dir. Orijinden AVS'ye kadar olan aralık "pozitif stabilite aralığı" (range of positive stability) olarak adlandırılır. Aralık ne kadar genişse gemi büyük yatmalardan o kadar geri dönebilir.
 
-Bu açıdan sonra GZ negatif olur ve gemi devrilme eğilimine girer. Devrilme açısı, geminin güvenli stabilite aralığını tanımlar ve yükleme durumuna göre değişir.`,
+NEYE BAĞLI:
+- KG yükselmesi ve serbest yüzey GZ eğrisini düşürür → AVS küçülür.
+- Yüksek fribord ve su geçirmez kapalı üst yapı → AVS büyür (eğri daha geç sıfırlanır).
+- Hasar (su alma) durumunda eğri düşer → AVS belirgin küçülür.
+
+DOWNFLOODING AÇISI (θf) — PRATİK SINIR:
+Gemideki kapatılamayan açıklıklar (hava firarı, fan girişi, kapı) belirli bir yatma açısında suya girer; bu "downflooding angle" (θf). Su girmeye başladığında gemi hızla stabilite kaybeder. Bu nedenle PRATİK güvenli aralık, AVS değil, AVS ile θf'den HANGİSİ KÜÇÜKSE odur. IMO alan/aralık kriterleri çoğu zaman θf'ye göre kesilir.`,
     bulletPoints: [
-      "GZ = 0 olduğu açı güvenli stabilite sınırıdır",
-      "Bu açıdan sonra devrilme riski hızla artar",
-      "Yükleme ve KG değişimleri devrilme açısını etkiler",
+      "AVS: GZ'nin sıfıra döndüğü açı; sonrası negatif (devrilme)",
+      "Pozitif stabilite aralığı = orijinden AVS'ye kadar",
+      "KG↑/FSE AVS'yi küçültür; fribord/kapalı üst yapı büyütür",
+      "Pratik sınır = min(AVS, downflooding açısı θf)",
     ],
     keyPoints: [
-      "Devrilme açısı ne kadar büyükse o kadar güvenlidir",
-      "Freeboard ve downflooding açıklıkları bu açıyı sınırlayabilir",
-      "Hasarlı stabilitede devrilme açısı daha küçüktür",
+      "Geniş pozitif aralık = büyük yatmalardan geri dönebilme.",
+      "Downflooding açısı çoğu zaman AVS'den önce gelir ve gerçek sınırdır.",
+      "Hasarlı stabilitede AVS belirgin küçülür.",
     ],
     warnings: [
-      "Açıklıkların suya girmesi devrilme açısını pratikte düşürür",
-      "Downflooding açısı, GZ eğrisinden önce sınır olabilir",
+      "Açıklıkların suya girmesi (θf) devrilme açısını pratikte düşürür",
+      "Downflooding başladığında stabilite hızla kaybedilir",
     ],
   },
   "gz-curve-interpretation": {
     title: "GZ Eğrisinin Yorumu",
-    introduction: "GZ eğrisi, geminin farklı yatma açılarına karşı stabilite davranışını görsel olarak ortaya koyar.",
-    content: `GZ eğrisi üzerinde aşağıdaki noktalar birlikte değerlendirilir:
-- Eğrinin başlangıç eğimi (GM ile ilişkili)
-- Maksimum GZ değeri ve oluştuğu açı
-- Pozitif GZ aralığı (stabilite aralığı)
-- Alan büyüklükleri (dinamik stabilite)
+    introduction: "GZ eğrisi (statik stabilite eğrisi), geminin farklı yatma açılarındaki doğrultma kolunu (GZ) gösterir ve geminin tüm stabilite karakterini tek bir grafikte özetler. Eğriden GM, maksimum GZ, stabilite aralığı ve dinamik stabilite birlikte okunur.",
+    content: `EĞRİDEN OKUNAN BAŞLICA BÜYÜKLÜKLER:
 
-Yükleme değiştiğinde eğri de değişir. Üst yüklerin artması eğriyi aşağı çeker; serbest yüzey etkisi başlangıç eğimini düşürür; genişlik artışı veya düşük KG eğriyi yukarı taşır.`,
+1) BAŞLANGIÇ EĞİMİ → GM: Eğrinin orijindeki teğeti GM'yi verir. Teğet, 1 radyan (57,3°) apsisine kadar uzatılırsa kestiği GZ değeri sayısal olarak GM'ye eşittir. Küçük açılarda GZ ≈ GM · sinθ.
+
+2) MAKSİMUM GZ ve AÇISI: Eğrinin tepe noktası, geminin ürettiği en büyük doğrultma koludur. IMO, GZ_max'ın tercihen ≥30°'de (en az 25°) oluşmasını ister.
+
+3) DECK EDGE IMMERSION (güverte kenarı suya girişi): Güverte kenarı suya girdiğinde su hattı genişliği azalır, BM düşer ve eğrinin eğimi değişir (genelde bir bükülme/dönüm noktası). Bu noktadan sonra GZ daha yavaş artar veya azalmaya başlar.
+
+4) STABİLİTE ARALIĞI (range): Eğrinin pozitif olduğu açı aralığı; sıfıra döndüğü açı AVS (devrilme açısı).
+
+5) ALAN → DİNAMİK STABİLİTE: Eğri altındaki alan, doğrultma enerjisini (dinamik stabilite) temsil eder; IMO alan kriterleri buna dayanır.
+
+EĞRİYİ NE DEĞİŞTİRİR:
+Üst ağırlık artışı (KG↑) ve serbest yüzey (FSE) eğriyi aşağı çeker ve başlangıç eğimini (GM) düşürür; genişlik artışı ve düşük KG eğriyi yukarı taşır; fribord/kapalı üst yapı stabilite aralığını uzatır.`,
     bulletPoints: [
-      "Eğrinin başlangıcı GM'yi yansıtır",
-      "Tepe noktası maksimum doğrultma kapasitesidir",
-      "Eğrinin sıfıra indiği açı güvenli sınırdır",
-      "Alanlar dinamik stabiliteyi temsil eder",
+      "Orijin teğeti 57,3°'de GM'yi verir; küçük açıda GZ ≈ GM·sinθ",
+      "Tepe = maksimum GZ (tercihen ≥30°'de)",
+      "Deck edge immersion eğride bükülme noktası yaratır",
+      "Eğri altı alan = dinamik stabilite (enerji)",
     ],
+    formula: {
+      name: "GZ ve GM ilişkisi (küçük açı / teğet)",
+      expression: "GZ ≈ GM · sinθ  ;  GM = orijin teğetinin 57,3°'deki değeri",
+      description: "Başlangıç eğimi GM'yi verir; eğrinin tamamı büyük açı davranışını gösterir.",
+    },
     keyPoints: [
-      "Tek bir değer yerine eğrinin tüm şekli okunmalıdır",
-      "Yükleme senaryoları arasında kıyaslama yapılmalıdır",
-      "GZ eğrisi, operasyonel limitlerin temel dayanağıdır",
+      "Tek bir değer değil, eğrinin tüm şekli okunmalıdır.",
+      "GM (eğim), GZ_max, range ve alan birlikte değerlendirilir.",
+      "KG↑ ve FSE eğriyi düşürür; fribord aralığı uzatır.",
+      "GZ eğrisi, IMO kriterlerinin ve operasyonel limitlerin temelidir.",
     ],
   },
   // =====================================================
@@ -1359,25 +1380,40 @@ Küçük açı yaklaşımı sin θ ≈ θ (radyan) olarak da yazılabilir. Ancak
   },
   "large-angle-stability": {
     title: "Büyük Açılar İçin Stabilite",
-    introduction: "Büyük yatma açılarında metasantr sabit değildir ve stabilite analizi tam GZ eğrisi ile yapılır.",
-    content: `10°'nin üzerindeki açılarda metasantr (M) konumu değişir ve küçük açı yaklaşımı geçerliliğini yitirir. Bu nedenle büyük açı stabilitesi doğrudan GZ eğrisi üzerinden incelenir.
+    introduction: "Yaklaşık 10°'nin üzerindeki yatma açılarında metasantr (M) sabit kalmaz ve GZ = GM·sinθ küçük açı yaklaşımı geçerliliğini yitirir. Büyük açı stabilitesi, kaldırma merkezinin (B) gerçek hareketi dikkate alınarak doğrudan GZ eğrisinden incelenir.",
+    content: `NEDEN KÜÇÜK AÇI YAKLAŞIMI BOZULUR:
+Küçük açılarda M neredeyse sabittir ve GZ ≈ GM·sinθ kullanılabilir. Açı büyüdükçe batık hacmin şekli (dolayısıyla B'nin konumu) belirgin değişir; M aşağı kayar ve GZ, basit sinüs bağıntısından sapar.
 
-GZ eğrisi, geminin tüm yatma aralığındaki stabilite davranışını gösterir. Eğri üzerinde maksimum GZ, stabilite alanları ve devrilme açısı değerlendirilir.
+WALL-SIDED (DİK BORDA) FORMÜLÜ:
+Güverte kenarı suya girmeden ve omurga sudan çıkmadan, dik bordalı gövde varsayımıyla GZ yaklaşık olarak şöyle hesaplanır:
 
-IMO kriterleri büyük açılar için minimum gereksinimler tanımlar:
-- Maksimum GZ ≥ 0.20 m (bazı gemi tipleri için)
-- GZ_max açısı ≥ 25°
-- Alan kriterleri`,
+GZ = sinθ · ( GM + ½ · BM · tan²θ )
+
+Buradaki ½·BM·tan²θ terimi, büyük açıda doğrultma koluna yapılan ek katkıdır (form etkisi) ve gemiyi küçük açı tahmininden daha "stabil" gösterebilir.
+
+DECK EDGE IMMERSION:
+Güverte kenarı suya girdikten sonra su hattı alanı daralır, BM düşer ve GZ'nin artışı yavaşlar/durur; eğri tepe yapar ve düşmeye başlar.
+
+IMO BÜYÜK AÇI KRİTERLERİ:
+- GZ ≥ 0,20 m (genellikle ≥30°'de)
+- GZ_max açısı ≥ 25° (tercihen ≥30°)
+- 0-30°, 0-40° ve 30-40° alan kriterleri (IS Code).`,
     bulletPoints: [
-      "10° üzerinde tam GZ analizi gerekir",
-      "Metasantr konumu değişkendir",
-      "GZ eğrisi tüm stabilite profilini verir",
-      "IMO kriterleri büyük açı gereksinimleri tanımlar",
+      "10° üzerinde GZ = GM·sinθ yetersizdir; tam GZ analizi gerekir",
+      "Wall-sided: GZ = sinθ·(GM + ½·BM·tan²θ)",
+      "Deck edge immersion sonrası GZ artışı yavaşlar",
+      "IMO: GZ≥0,20m, GZ_max açısı ≥25°",
     ],
+    formula: {
+      name: "Wall-sided GZ formülü",
+      expression: "GZ = sinθ · (GM + ½ · BM · tan²θ)",
+      description: "Dik bordalı gövdede, güverte kenarı suya girmeden geçerli yaklaşık büyük açı bağıntısı.",
+    },
     keyPoints: [
-      "Büyük açı stabilitesi operasyonel güvenlik için kritiktir",
-      "GZ eğrisi her yükleme durumu için oluşturulmalıdır",
-      "Hasarlı stabilite büyük açılarda daha kritiktir",
+      "Büyük açıda M sabit değildir; B'nin gerçek hareketi esastır.",
+      "Form stabilitesi (½·BM·tan²θ) büyük açıda GZ'ye katkı yapar.",
+      "GZ eğrisi her yükleme durumu için oluşturulmalıdır.",
+      "Hasarlı durumda büyük açı stabilitesi daha kritiktir.",
     ],
   },
   // =====================================================
@@ -2090,30 +2126,35 @@ Alan hesabı sayısal integrasyon veya trapez kuralı ile yapılır.`,
   },
   "static-vs-dynamic": {
     title: "Statik ve Dinamik Stabilite Farkı",
-    introduction: "Statik stabilite anlık dengeyi, dinamik stabilite ise hareket halinde enerji dengesini inceler.",
-    content: `Statik ve dinamik stabilite birbirini tamamlar:
+    introduction: "Statik stabilite, belirli bir yatma açısındaki anlık doğrultma kuvvetini (GZ/moment) inceler. Dinamik stabilite ise gemiyi o açıya yatırmak için yapılan İŞİ (enerji) inceler ve GZ eğrisi altındaki alanla ölçülür. İkisi farklı şeyleri ölçer ve birlikte değerlendirilmelidir.",
+    content: `STATİK STABİLİTE:
+- Belirli açıda anlık denge: doğrultma kolu GZ ve doğrultma momenti (Δ·GZ).
+- Küçük açıda GM, büyük açıda GZ eğrisi ile değerlendirilir.
+- Soru: "Bu açıda gemi ne kadar kuvvetle doğrulur?"
 
-STATİK STABİLİTE:
-- Belirli bir açıda anlık denge analizi
-- GZ değerleri ve GM kontrolü
-- Küçük açılarda GM, büyük açılarda GZ eğrisi
+DİNAMİK STABİLİTE (ENERJİ):
+- Gemiyi 0'dan θ açısına yatırmak için gereken iş, GZ eğrisi altındaki alandır.
+- Dinamik stabilite = Δ × (GZ eğrisi altındaki alan); birimi tonne·metre·radyan (enerji).
+- Soru: "Gemiyi devirmek için ne kadar ENERJİ gerekir / ne kadar enerji rezervi var?"
 
-DİNAMİK STABİLİTE:
-- Hareket boyunca enerji dengesi
-- GZ eğrisi altındaki alanlar
-- Dalga ve rüzgâr etkisi altında davranış
-
-Her iki analiz de gereklidir. Statik kriterlerin sağlanması dinamik güvenliği garanti etmez; alan kriterleri de kontrol edilmelidir.`,
+NEDEN İKİSİ DE GEREKLİ:
+Bir rüzgâr sağnağı veya dalga, gemiye İŞ (enerji) aktarır. Gemi, bu enerjiyi karşılayacak yeterli "rezerv dinamik stabiliteye" (eğri altı alan) sahip değilse, anlık GZ pozitif olsa bile devrilebilir. IMO weather criterion tam olarak bu enerji (alan) dengesini (b ≥ a) kontrol eder. Bu yüzden statik kriterlerin sağlanması tek başına yeterli değildir.`,
     bulletPoints: [
-      "Statik: Anlık denge, GZ ve GM",
-      "Dinamik: Enerji dengesi, alanlar",
-      "Her ikisi de IMO tarafından zorunludur",
-      "Statik yeterlilik dinamik güvenliği garanti etmez",
+      "Statik: anlık kuvvet/moment (GZ, Δ·GZ).",
+      "Dinamik: iş/enerji = eğri altı alan.",
+      "Dinamik stabilite = Δ × (GZ eğrisi altı alan).",
+      "Rüzgâr/dalga gemiye enerji aktarır; rezerv alan bunu karşılamalı.",
     ],
+    formula: {
+      name: "Dinamik stabilite (enerji)",
+      expression: "Dinamik stabilite = Δ × ∫₀^θ GZ dθ  (eğri altı alan)",
+      description: "GZ eğrisi altındaki alan, gemiyi o açıya yatırmak için yapılan işi (enerji rezervini) verir.",
+    },
     keyPoints: [
-      "Stabilite değerlendirmesi her iki analizi kapsar",
-      "GZ eğrisi hem statik hem dinamik bilgi verir",
-      "Kritik operasyonlarda dinamik analiz önceliklidir",
+      "Statik = kuvvet, dinamik = enerji; ikisi farklı şeyi ölçer.",
+      "Dinamik stabilite GZ eğrisi altındaki alanla ölçülür.",
+      "Weather criterion (b≥a) bir dinamik/enerji kriteridir.",
+      "Statik yeterlilik dinamik güvenliği garanti etmez.",
     ],
   },
   "wave-effect": {
@@ -2839,39 +2880,38 @@ Operasyonel önlemler: rota ve hız değişikliği.`,
   },
   "min-gm-requirements": {
     title: "Minimum GM Şartları",
-    introduction: "Minimum GM değerleri gemi tipi ve yükleme durumuna göre belirlenir ve operasyonda aşılamaz alt sınırlardır.",
-    content: `Minimum GM gereksinimleri gemi tipine göre değişir:
+    introduction: "Minimum GM değerleri, IMO IS Code kriterlerinden türetilir ve gemi tipi ile yükleme durumuna göre stabilite kitapçığında belirtilen, operasyonda aşılamaz alt sınırlardır. Ancak GM yalnızca 'ne kadar büyük o kadar iyi' değildir; çok yüksek GM de tehlikelidir.",
+    content: `MINIMUM GM'NİN KAYNAĞI:
+IS Code başlangıç metasantr yüksekliği için GM₀ ≥ 0,15 m şartı koyar. Pratikte her yükleme durumu için gereken minimum GM, KG limiti eğrisi (maximum KG / minimum GM curve) üzerinden kitapçıkta verilir; bu eğri tüm IMO kriterlerini (alan, GZ, weather criterion) aynı anda sağlayan sınırı temsil eder.
 
-GENEL YÜKGEMISI:
-- Minimum GM ≥ 0.15 m
+GEMİ TİPİNE GÖRE:
+- Genel yük gemisi: GM₀ ≥ 0,15 m (ve KG limit eğrisi).
+- Yolcu gemileri: ek dönüş/yolcu kalabalığı kriterleri.
+- Tankerler: balast durumunda genellikle daha yüksek GM.
+- Konteyner gemileri: parametrik yalpa riski nedeniyle yükleme durumuna özel hesap.
 
-YOLCU GEMİLERİ:
-- Döner yolcu gemileri: GM ≥ 0.15 m
-- Ek gereksinimler yolcu sayısına bağlı
-
-TANKERLER:
-- Yüklü durumda: Stabilite kitapçığına göre
-- Ballast durumda: Genellikle daha yüksek GM
-
-KONTEYNER GEMİLERİ:
-- Yükleme durumuna özel hesap
-- Parametrik yalpalama riski dikkate alınır
-
-Stabilite kitapçığı her yükleme durumu için minimum GM değerini belirtir.`,
+STIFF (KATI) ve TENDER (YUMUŞAK) GEMİ:
+GM ile yalpa periyodu ters ilişkilidir. Çok yüksek GM → kısa periyot, sert ve ani (violent) yalpa → yük/ekipman hasarı ve konfor kaybı; ayrıca kısa periyot dalga periyoduna yaklaşırsa rezonans. Çok düşük GM → uzun, sluggish yalpa, küçük emniyet payı, takip eden denizde tehlikeli. Bu yüzden hedef, kriterleri sağlayan ancak aşırı yüksek olmayan bir GM'dir.`,
     bulletPoints: [
-      "Genel minimum GM ≥ 0.15 m",
-      "Gemi tipine göre daha yüksek değerler gerekebilir",
-      "Stabilite kitapçığı referans kaynaktır",
-      "Operasyonda minimum GM aşılmamalıdır",
+      "GM₀ ≥ 0,15 m (IS Code) + KG limiti eğrisi her yükleme için sınır verir",
+      "Stiff (yüksek GM): kısa/sert yalpa, hasar ve rezonans riski",
+      "Tender (düşük GM): uzun yalpa, küçük emniyet payı",
+      "Konteyner gemilerinde parametrik yalpa için ek dikkat",
     ],
+    formula: {
+      name: "Yalpa periyodu – GM ilişkisi",
+      expression: "T_roll = 2π · k / √(g · GM)",
+      description: "k: jirasyon yarıçapı. GM arttıkça periyot kısalır (gemi sertleşir); GM azaldıkça periyot uzar.",
+    },
     keyPoints: [
-      "Minimum GM sınırları mutlaktır",
-      "Yükleme planı GM kontrolü içermelidir",
-      "GM azaltıcı operasyonlar öncesi hesap yapılmalıdır",
+      "Minimum GM, IMO kriterlerini sağlayan KG limit eğrisinden gelir.",
+      "Hem çok düşük hem çok yüksek GM tehlikelidir.",
+      "Yalpa periyodu GM'nin pratik göstergesidir (T = 2πk/√(gGM)).",
+      "GM azaltıcı operasyon öncesi hesap yapılmalıdır.",
     ],
     warnings: [
-      "Minimum GM altında seyir tehlikelidir",
-      "Yakıt tüketimi GM'yi etkileyebilir",
+      "Minimum GM altında seyir devrilme riski taşır",
+      "Aşırı yüksek GM sert yalpayla yük kaymasına/hasara yol açabilir",
     ],
   },
   "operational-limits": {
