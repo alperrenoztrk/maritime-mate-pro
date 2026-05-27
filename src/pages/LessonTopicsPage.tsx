@@ -250,6 +250,8 @@ const topicsData: Record<string, TopicContent> = {
         description: "Denizde çatışmadan kaçınma kuralları ve kaza analizleri",
         subTopics: [
           { title: "COLREG temel prensipleri", hasContent: true },
+          { title: "Emniyetli hız (Kural 6)", hasContent: true },
+          { title: "Çatışmadan kaçınma manevrası (Kural 8)", hasContent: true },
           { title: "Crossing", hasContent: true },
           { title: "Head-on", hasContent: true },
           { title: "Overtaking", hasContent: true },

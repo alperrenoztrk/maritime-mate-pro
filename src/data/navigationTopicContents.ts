@@ -11359,6 +11359,81 @@ Kesişim noktası = Running Fix (10:30)
       "Hiyerarşi: NUC > RAM > CBD > Balıkçı > Yelken > Motor gemisi; yol verme yükümlülüğü alt sınıftaki gemidedir."
     ]
   },
+  "Emniyetli hız (Kural 6)": {
+    title: "Emniyetli Hız (COLREG Kural 6)",
+    introduction:
+      "COLREG Kural 6, her geminin her zaman emniyetli (güvenli) bir hızla seyretmesini ister; öyle ki çatışmayı önlemek için uygun ve etkili önlem alabilsin ve mevcut koşullara uygun bir mesafede durabilsin. 'Emniyetli hız' mutlak bir sayı değil, koşullara bağlı bir değerlendirmedir. Kural, tüm gemiler için dikkate alınacak etkenleri ve ayrıca radarlı gemiler için ek etkenleri sıralar.",
+    sections: [
+      {
+        title: "Tüm Gemiler İçin Dikkate Alınacak Etkenler",
+        content:
+          "Emniyetli hız belirlenirken aşağıdaki etkenler birlikte değerlendirilir. Görüş azaldıkça, trafik yoğunlaştıkça veya manevra alanı daraldıkça emniyetli hız düşer.",
+        bulletPoints: [
+          "Görüş durumu (sis, yağmur, karanlık).",
+          "Trafik yoğunluğu (balıkçı veya diğer gemi kümeleri dâhil).",
+          "Geminin manevra kabiliyeti — özellikle durma mesafesi ve dönme yeteneği.",
+          "Gece, kıyı ışıkları veya kendi ışıklarının geri saçılımı gibi arka plan ışığı.",
+          "Rüzgâr, deniz ve akıntı durumu ile seyir tehlikelerine yakınlık.",
+          "Draftın mevcut su derinliğine oranı (squat ve dipten emniyet payı).",
+        ],
+      },
+      {
+        title: "Radarlı Gemiler İçin Ek Etkenler",
+        content:
+          "Radar bulunan gemilerde, emniyetli hız belirlenirken radarın yetenek ve sınırlamaları da hesaba katılır. Radarın varlığı tek başına yüksek hızı haklı çıkarmaz.",
+        bulletPoints: [
+          "Radarın özellikleri, verimliliği ve sınırlamaları.",
+          "Kullanılan radar menzil kademesinin getirdiği kısıtlar.",
+          "Deniz durumu, hava ve diğer parazitlerin radar tespitine etkisi.",
+          "Küçük tekne, buz ve yüzen cisimlerin yeterli menzilde tespit edilememe ihtimali.",
+          "Radarla tespit edilen gemilerin sayısı, konumu ve hareketi.",
+          "Radar mesafe ölçümünün görüşün daha kesin değerlendirilmesini sağlayabilmesi.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Emniyetli hız = uygun önlem alıp uygun mesafede durabilecek hız.",
+      "Görüş, trafik, manevra kabiliyeti, arka plan ışığı, hava ve UKC dikkate alınır.",
+      "Radar varlığı yüksek hızı haklı çıkarmaz; radar sınırlamaları da değerlendirilir.",
+      "Kısıtlı görüşte emniyetli hız belirgin biçimde düşürülür (Kural 19 ile birlikte).",
+    ]
+  },
+  "Çatışmadan kaçınma manevrası (Kural 8)": {
+    title: "Çatışmadan Kaçınma Manevrası (COLREG Kural 8)",
+    introduction:
+      "COLREG Kural 8, çatışmayı önlemek için yapılan manevranın nasıl olması gerektiğini düzenler. Önlem; koşullar elveriyorsa olumlu (belirgin), zamanında ve iyi gemicilik kurallarına uygun olmalıdır. Manevra, karşı gemiden görsel veya radarla kolayca fark edilecek kadar büyük olmalı; küçük ve ardışık değişikliklerden kaçınılmalıdır.",
+    sections: [
+      {
+        title: "Manevranın Nitelikleri",
+        content:
+          "Kural 8'in temel ilkesi, niyetin karşı gemi tarafından açıkça anlaşılmasıdır. Bu nedenle rota ve/veya hız değişiklikleri yeterince büyük yapılır.",
+        bulletPoints: [
+          "8(a): Önlem koşullar elveriyorsa olumlu, zamanında (ample time) ve iyi gemicilikle alınır.",
+          "8(b): Rota ve/veya hız değişikliği, görsel veya radarla kolayca fark edilecek kadar büyük olmalı; ardışık küçük değişiklikler yapılmaz.",
+          "8(c): Yeterli deniz alanı varsa, tek başına rota değişikliği en etkili önlem olabilir — yeter ki zamanında, belirgin olsun ve yeni bir yakın geçiş durumu yaratmasın.",
+          "8(d): Önlem, karşı gemiyi emniyetli mesafede geçirecek şekilde olmalı; etkisi gemi tamamen geçip uzaklaşana kadar kontrol edilir.",
+          "8(e): Gerekirse hız azaltılır veya makineyi durdurup/tornistanla tüm yol kesilir.",
+        ],
+      },
+      {
+        title: "Engel Olmama (8(f)) ve Stand-on İlişkisi",
+        content:
+          "Bazı kurallar bir gemiye 'diğerinin geçişini engellememe' yükümlülüğü verir. Kural 8(f) bunun nasıl uygulanacağını açıklar ve yol hakkına sahip (stand-on) geminin sorumluluklarını ortadan kaldırmaz.",
+        bulletPoints: [
+          "Geçişi engellememekle yükümlü gemi, yeterli deniz alanı bırakmak için erken önlem alır.",
+          "Bu yükümlülük, risk doğduğunda diğer kurallara uyma zorunluluğunu kaldırmaz.",
+          "Geçişi engellenmeyecek gemi de çatışma riski doğduğunda kurallara tam olarak uymakla yükümlüdür.",
+          "Şüphe halinde hızı azaltmak veya durmak meşru ve çoğu zaman en güvenli seçenektir.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Manevra olumlu, zamanında ve iyi gemicilikle yapılır (8(a)).",
+      "Rota/hız değişikliği büyük ve fark edilebilir olmalı; ardışık küçük değişikliklerden kaçınılır (8(b)).",
+      "Emniyetli mesafede geçiş sağlanmalı; etki 'geçip uzaklaşana kadar' kontrol edilir (8(d)).",
+      "Gerekirse hız kesilir veya tüm yol durdurulur (8(e)).",
+    ]
+  },
   "Crossing": {
     title: "Crossing: COLREG Kural 15",
     introduction:

@@ -175,6 +175,7 @@ const cargoTopics: CargoMainTopic[] = [
     icon: Ship,
     subtopics: [
       { id: "timber-deck", title: "Kereste güverte yükleri", hasContent: true },
+      { id: "load-line-marks", title: "Yükleme hattı işaretleri (TF/F/T/S/W/WNA)", hasContent: true },
       { id: "livestock", title: "Canlı hayvan taşımacılığı", hasContent: true },
       { id: "ro-ro-cargo", title: "Ro-Ro yük operasyonları", hasContent: true },
       { id: "steel-cargo", title: "Çelik ve ağır yük taşıma", hasContent: true },
@@ -213,6 +214,7 @@ interface TopicContent {
   title: string;
   introduction: string;
   content: string;
+  image?: string;
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
   formula?: { name: string; expression: string; description: string };
@@ -1933,17 +1935,27 @@ Yapısal hasar, CSC plakası eksikliği, su sızdırması veya güvenlik riski t
 
 5. LPG TANKERLERİ:
 - Basınçlı veya yarı soğutmalı
-- Propan, bütan taşıma`,
+- Propan, bütan taşıma
+
+GAZ TAŞIYICI TANK TİPLERİ (IGC Code):
+Gaz taşıyıcılarda yük muhafaza (containment) sistemi tipi, ikincil bariyer gereksinimini belirler. -10°C altında taşınan yükler ikincil bariyer gerektirir.
+
+- Bağımsız Tip A (Independent Type A): prizmatik, gemi inşa standartlarına göre tasarlanır. TAM ikincil bariyer zorunludur. Tasarım buhar basıncı < 0.7 bar. Tam soğutmalı (fully refrigerated) LPG/etilen taşır.
+- Bağımsız Tip B (Independent Type B): ileri analiz (yorulma, çatlak ilerlemesi) ve model testi ile tasarlanır; yalnızca KISMİ ikincil bariyer (damlama tepsisi) gerekir. Klasik örnek: küresel Moss tankı; ayrıca prizmatik SPB. Tasarım basıncı < 0.7 bar.
+- Bağımsız Tip C (Independent Type C): basınçlı kap (silindirik/küresel); tasarım buhar basıncı genellikle ≥ 2 bar. İKİNCİL BARİYER GEREKMEZ. Tam basınçlı/yarı basınçlı LPG ve etilen taşıyan küçük-orta gaz gemilerinde kullanılır.
+- Membran (Membrane) tanklar: ince çelik/invar membran (birincil bariyer) izolasyonla desteklenir; TAM ikincil bariyer içerir. LNG taşıyıcılarda yaygın (GTT Mark III, NO96). Tasarım basıncı düşüktür (< 0.25 bar).`,
     bulletPoints: [
       "Ham petrol, ürün, kimyasal, LNG ve LPG ana tanker tipleridir",
       "VLCC 200,000 DWT üzeri en büyük tankerdir",
       "Kimyasal tankerler IMO Tip 1, 2 ve 3 olarak sınıflandırılır",
       "LNG tankerleri -162°C'de yük taşır",
+      "IGC tank tipleri: A (tam ikincil bariyer), B (kısmi), C (basınçlı, bariyer yok), membran (LNG)",
     ],
     keyPoints: [
       "Her tanker tipi farklı uluslararası koda tabidir",
       "Tank kaplamalar yük uyumluluğunu belirler",
       "Tanker personeli özel eğitim almalıdır (STCW)",
+      "Tip C ikincil bariyer gerektirmez; Tip A tam, Tip B kısmi bariyer ister",
     ],
   },
   "loading-discharging": {
@@ -2441,6 +2453,42 @@ Kereste güverte yükü taşıyan gemilere daha derin yükleme izni verilir (ek 
       "Kereste ıslandığında GM tehlikeli seviyelere düşebilir",
       "Seyir sırasında bağlama sıklıkla kontrol edilmelidir",
       "Güvenli geçiş yolları korunmalıdır",
+    ],
+  },
+  "load-line-marks": {
+    title: "Yükleme Hattı İşaretleri (TF/F/T/S/W/WNA)",
+    introduction: "Yükleme hattı (load line / Plimsoll) işaretleri, Uluslararası Yükleme Hattı Sözleşmesi (1966 / 1988 Protokolü) uyarınca geminin farklı bölge ve mevsimlerde izin verilen azami yükleme draftını (asgari fribordu) gösterir.",
+    image: "/diagrams/seamanship/load-line-isaretleri.svg",
+    content: `YÜKLEME HATTI İŞARETİ:
+Bordada amidships'te bulunan disk (halka), merkezinden geçen yatay çizgi ile Yaz (Summer, S) hattını gösterir. Diskin yanında atayan klas kuruluşunun baş harfleri yer alır. Diske bağlı dikey çizginin önündeki yatay "tarak" hatları mevsim/bölge yükleme hatlarıdır.
+
+HATLAR (yukarıdan aşağıya):
+- TF — Tropik Tatlı Su (Tropical Fresh): en derin yükleme.
+- F — Tatlı Su (Fresh)
+- T — Tropik (Tropical)
+- S — Yaz (Summer): referans hat, disk merkezinden geçer.
+- W — Kış (Winter)
+- WNA — Kış Kuzey Atlantik (Winter North Atlantic): en sığ yükleme.
+
+ARALIKLAR:
+- T, S'nin üstünde; W, S'nin altında: her biri yaz draftının 1/48'i kadar.
+- F = S + FWA (tatlı su payı); TF = T + FWA.
+- WNA = W − 50 mm (boyu ≤ 100 m gemilerde).
+- FWA (mm) = Deplasman / (4 × TPC).
+
+DECK LINE VE FRİBORD:
+Güverte hattı (deck line) ile yaz (S) hattı arasındaki düşey mesafe yaz fribordudur. Yükleme hatları, dünya haritasındaki mevsim bölgeleriyle (tropik, yaz, kış, mevsimsel bölgeler) birlikte kullanılır; gemi içinde bulunduğu bölge ve mevsime uygun hattı aşmamalıdır.`,
+    bulletPoints: [
+      "S (Yaz) hattı referanstır ve diskin merkezinden geçer",
+      "TF en derin, WNA en sığ yükleme hattıdır",
+      "T ve W, S'den yaz draftının 1/48'i kadar uzaktadır",
+      "FWA = Deplasman / (4 × TPC); tatlı suda draft FWA kadar artar",
+    ],
+    keyPoints: [
+      "Yükleme Hattı Sözleşmesi 1966 / 1988 Protokolü kapsamındadır",
+      "Disk yanındaki harfler atayan klas kuruluşunu gösterir",
+      "Gemi, bulunduğu bölge ve mevsimin yükleme hattını aşamaz",
+      "Yeterli fribord = yeterli rezerv sephiye (reserve buoyancy)",
     ],
   },
   "livestock": {
@@ -3164,6 +3212,18 @@ export default function CargoTopicsPage() {
                     {currentContent.introduction}
                   </p>
                 </div>
+
+                {/* Topic Image/Diagram */}
+                {currentContent.image && (
+                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                    <img
+                      src={currentContent.image}
+                      alt={currentContent.title}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 {/* Main Content */}
                 <div className="prose prose-sm max-w-none">
