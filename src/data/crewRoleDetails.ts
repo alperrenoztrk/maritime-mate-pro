@@ -78,6 +78,22 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Uyuşturucu ve alkol (Drug & Alcohol) politikasının uygulanması",
         description: `ISM Code ve çoğu şirketin SMS'i kapsamında gemide sıfır toleranslı bir D&A politikası uygulanması zorunludur. Kaptanın sorumluluğu; yeni katılan personelin D&A testinin yaptırılması, rastgele (random) test programının koordinasyonu, pozitif test sonucunda kişinin göreve son verilmesi ve şirkete derhal bildirilmesi, limanlardan kaynaklanan D&A talebi denetimlerine hazır olunmasıdır. USCG, Paris MOU ve diğer liman devleti otoritelerinin D&A denetimleri giderek yaygınlaşmaktadır; hazırlıksız olmak gemi tutulmasına neden olur.`
+      },
+      {
+        title: "Sigorta (H&M, P&I) koordinasyonu ve hukuki muhataplık",
+        description: `Olay sonrası Hull & Machinery (gemi/makine) ve P&I (sorumluluk) sigortacılarına zamanında bildirim yapılması, surveyor atanması ve hasar tespit raporlarının koordinasyonu kaptanın sorumluluğundadır. Salvage, towage, general average gibi süreçlerde Lloyd's Open Form veya benzeri sözleşmelerin imzalanması yine kaptanın yetkisindedir. Hukuki tebligat, mahkeme yazışmaları ve sworn statement süreçlerinde geminin birincil muhatabıdır.`
+      },
+      {
+        title: "Yorgunluk (fatigue) yönetimi ve dinlenme saatleri denetimi",
+        description: `STCW A-VIII/1 ve MLC 2006 gereğince mürettebatın asgari dinlenme saatleri (24 saatte en az 10 saat, 7 günde en az 77 saat) ihlal edilemez. Kaptan kadronun yorgunluk seviyesini takip eder, kritik operasyonlar öncesi dinlenmenin sağlandığını doğrular ve rest hours kayıtlarının dürüst tutulmasını denetler. PSC'de en sık çıkan MLC bulgularından biri rest hour ihlalidir.`
+      },
+      {
+        title: "Stowaway, piracy ve security olaylarının yönetimi",
+        description: `Kaçak yolcu (stowaway) tespitinde IMO Resolution A.1117(30) prosedürleri uygulanır: kişisel güvenlik, kimlik tespiti, bayrak/liman devleti ve şirket bildirimi, beyan formları. Piracy/armed robbery riski olan bölgelerde BMP5 (Best Management Practices) uygulanır: citadel hazırlığı, anti-piracy watch, MSCHOA/UKMTO raporlaması. ISPS kapsamında security incident bildirimi de kaptanın görevidir.`
+      },
+      {
+        title: "Karantina, sağlık beyanı ve liman sağlık prosedürleri",
+        description: `Maritime Declaration of Health (MDoH) ve Ship Sanitation Certificate'ın güncel tutulması, bulaşıcı hastalık şüphesinde IHR 2005 (International Health Regulations) kapsamında liman sağlık otoritesine bildirim yapılması kaptanın sorumluluğundadır. Aşılama kayıtlarının (özellikle sarı humma, kolera bölgesi geçişleri için) düzenli tutulması ve karantina bayrağının (Q flag) doğru kullanımı bu görevin parçasıdır.`
       }
     ],
     equipment: [
@@ -116,6 +132,56 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Ballast Water Record Book",
           "Cargo Record Book (tankerler için)",
           "GMDSS log"
+        ]
+      },
+      {
+        title: "Köprüüstü acil ve karar destek ekipmanları",
+        checkpoints: [
+          "BNWAS (Bridge Navigational Watch Alarm) — operasyonel ve kayıt",
+          "VDR/S-VDR — kayıt sürekliliği, annual performance test sertifikası",
+          "SSAS (Ship Security Alert System) — gizli buton test kaydı",
+          "LRIT terminal — günlük poll testi sonucu",
+          "GMDSS distress butonları (DSC, Inmarsat, EPIRB) — erişim ve mühür",
+          "Manoeuvring booklet ve wheelhouse poster — güncel ve görünür"
+        ]
+      },
+      {
+        title: "SOPEP / SMPEP ve kirlilik müdahale teçhizatı",
+        checkpoints: [
+          "SOPEP locker — emici malzeme, kürek, kova, kişisel koruyucu",
+          "SMPEP (tankerlerde) güncel ve onaylı kopya",
+          "Pollution response checklist ve iletişim listesi (kıyı devleti, P&I, charterer)",
+          "Bunker manifold drip tray, oil boom hazırlığı",
+          "Garbage segregation ve incinerator operasyon kayıtları"
+        ]
+      },
+      {
+        title: "Güvenlik (ISPS) ekipmanı ve dokümantasyonu",
+        checkpoints: [
+          "Ship Security Plan (SSP) — onaylı, gizli, sadece SSO/Master erişimi",
+          "Continuous Synopsis Record (CSR) — güncel revizyon",
+          "Security level changes log ve drill kayıtları",
+          "Restricted area işaretlemeleri ve kilitleme düzeni",
+          "Citadel (piracy bölgeleri) — iletişim, su, gıda hazırlığı"
+        ]
+      },
+      {
+        title: "Master safe, gemi kasası ve hassas evrak",
+        checkpoints: [
+          "Crew passport ve seaman book teslim-iade kayıtları",
+          "Gemi nakit kasası ve avans defteri (cash advance log)",
+          "Sertifika asıllarının (Class, Flag, Trading) saklanması",
+          "Confidential evrak (SSP, audit findings) erişim kontrolü"
+        ]
+      },
+      {
+        title: "MLC 2006 yaşam koşulları denetim noktaları",
+        checkpoints: [
+          "Kamara, sanitasyon ve havalandırma — MLC standartları",
+          "İçme suyu ve gıda analizi sertifikaları",
+          "Rest hour kayıtları (ILO 180 formatı) — son 12 ay arşivi",
+          "Mürettebat şikâyet (complaint) prosedürü — pano ve kayıt",
+          "Wage account ve allotment kayıtları"
         ]
       }
     ],
@@ -179,6 +245,22 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Hazırlık bildirisi (NOR) ve yük belgeleri yönetimi",
         description: `Notice of Readiness (NOR), geminin yükleme/boşaltmaya hazır olduğunun charterer veya terminal operatörüne resmi bildirimidir. NOR'un zamanında ve doğru biçimde verilmesi, taşıma sözleşmesi (charter party) kapsamında laycan hesabını doğrudan etkiler; geç verilen NOR demurrage kaybına yol açar. Statement of Facts (SoF), tüm port operasyonunun kayıt altına alındığı zaman çizelgesidir: NOR veriliş, operasyon başlangıç-bitiş, draftlar, vardiya değişimleri. Birinci Zabit bu belgeleri hazırlar ve imzalar. Mate's Receipt düzenleyerek kargo miktarını ve görünür durumunu teyit eder; şüpheli yük için zamanında Letter of Protest yazılmasını koordine eder.`
+      },
+      {
+        title: "Cargo Securing Manual (CSM) ve lashing denetimi",
+        description: `IMO Resolution A.714(17) ve Code of Safe Practice for Cargo Stowage and Securing kapsamında onaylanmış CSM'nin gemideki tek uygulayıcısı Birinci Zabittir. Her sefer öncesi lashing ekipmanının (twistlock, lashing rod, turnbuckle, D-ring, wire/chain) uygunluğu, SWL etiketleri ve aşınma durumu kontrol edilir. Konteyner gemilerinde stack weight ve corner casting load limitleri, bulker'da grain/concentrate stability, RoRo'da decking ve lashing point sayısı CSM'e göre doğrulanır.`
+      },
+      {
+        title: "Enclosed Space Entry Permit yönetimi ve atmosfer testi",
+        description: `Cargo hold, ballast tank, void space, cofferdam, pump room ve duct keel gibi alanlara giriş, IMO Resolution A.1050(27) çerçevesinde sadece Birinci Zabit imzalı Enclosed Space Entry Permit ile yapılır. O₂ (en az %19.5, en fazla %23.5), LEL/HC, H₂S ve CO ölçümleri kalibre cihazla yapılır; havalandırma yeterliliği, rescue plan ve standby kişi atanır. Test cihazlarının kalibrasyon sertifikası bir yılı aşmamalıdır.`
+      },
+      {
+        title: "Garbage Management Plan ve atık ayrıştırma",
+        description: `MARPOL Ek V kapsamında onaylı Garbage Management Plan'ın gemide uygulanması ve Garbage Record Book Part I/II kayıtlarının doğruluğundan Birinci Zabit sorumludur. Plastik, gıda, kâğıt, cam, metal, e-waste ve cargo residue kategorilerinin ayrı toplanması, etiketli bin'lerin güvertede konumlandırılması ve shore reception facility'ye teslim makbuzlarının saklanması gerekir.`
+      },
+      {
+        title: "Tehlikeli yük (IMDG/IMSBC) operasyonları yönetimi",
+        description: `IMDG Code (paketli) ve IMSBC Code (dökme) kurallarına göre yükün class, UN no, packing group ve segregation tablosuna uygun stowage'ı sağlanır. Dangerous Goods Manifest, MFAG (Medical First Aid Guide) ve EmS (Emergency Schedule) köprüüstünde bulundurulur. Self-heating yükler (kömür, DRI) için sıcaklık monitörü ve oksijen ölçümü planı uygulanır.`
       }
     ],
     equipment: [
@@ -221,6 +303,54 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Pyrotechnics, EPIRB, SART tarih ve sayı kontrolü",
           "Drill kayıtları ve sonraki drill planı",
           "Muster list güncelliği"
+        ]
+      },
+      {
+        title: "Tank, void ve cofferdam giriş ekipmanı",
+        checkpoints: [
+          "Portable gas detector (O₂/LEL/H₂S/CO) — kalibrasyon sertifikası",
+          "SCBA / SAA seti — basınç, mask seal, by-pass",
+          "Resuscitator (oksijen seti) — tüp basıncı, mask",
+          "Tripod, winch ve rescue harness — SWL etiketi",
+          "ATEX uyumlu el feneri ve haberleşme (intrinsically safe radio)"
+        ]
+      },
+      {
+        title: "Lashing ve cargo securing ekipmanları",
+        checkpoints: [
+          "Twistlock, semi-auto twistlock — kilitleme testi, aşınma",
+          "Lashing bar, turnbuckle — SWL marking, çatlak",
+          "Wire/chain lashing — tel kırığı, korozyon",
+          "D-ring, lashing pot — güverte kaynağı, deformasyon",
+          "CSM kayıtları ve ekipman envanteri güncel mi"
+        ]
+      },
+      {
+        title: "Ballast Water Management ekipmanı",
+        checkpoints: [
+          "BWMS (treatment unit) — alarm, by-pass, filter durumu",
+          "Ballast Water Record Book — D-2 standardı kayıtları",
+          "Sampling point ve sample bottle hazırlığı",
+          "Crystallization/UV lamba değişim tarihleri"
+        ]
+      },
+      {
+        title: "Tankerlerde yük donanımı (varsa)",
+        checkpoints: [
+          "Inert Gas System (IGS) — O₂ < %5, deck seal",
+          "Cargo manifold, presentation flange, drip tray",
+          "Vapor return ve P/V valve — set basıncı",
+          "Tank level, pressure, temperature alarmları (radar/UTI tape)",
+          "ESD (Emergency Shut Down) butonu çalışırlığı"
+        ]
+      },
+      {
+        title: "Çevre ve kirlilik müdahale",
+        checkpoints: [
+          "SOPEP locker (güverte) — emici, kürek, kova, koruyucu",
+          "Scupper plug / save-all — bunker hazırlığı",
+          "Garbage segregation bin'leri ve etiketleme",
+          "Incinerator (varsa) — sertifika ve operasyon log"
         ]
       }
     ],
@@ -272,6 +402,22 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Revir (sick bay) ve tıbbi malzeme sorumluluğu",
         description: `İkinci Zabit, uluslararası pratikte geminin tıbbi sorumlusu (Medical Officer) olarak görev yapar. SOLAS Chapter III ve MLC 2006 Kural 4.1 gereğince gemide yeterli tıbbi ekipman ve ilaç bulundurulması zorunludur. Tıbbi chest envanterinin güncel tutulması, ilaç ve malzeme son kullanma tarihlerinin kontrolü, medical log book'un tutulması ve limanda ikmal listelerinin hazırlanması bu görevin kapsamındadır. Mürettebat hastalığı veya yaralanması durumunda TMAS (Telemedical Assistance Service) ile iletişim, hasta değerlendirmesi ve gerektiğinde medevac koordinasyonu İkinci Zabit tarafından yürütülür. Medical emergency drill ve ilk yardım tatbikatlarını organize eder.`
+      },
+      {
+        title: "Buz seyri (ice navigation) hazırlığı",
+        description: `Yüksek enlemlerde veya kış aylarında buzlu sulara geçişlerde Polar Code (SOLAS XIV) ve IMO Guidelines for Ships Operating in Polar Waters kapsamında özel hazırlık yapılır. İkinci Zabit buz raporlarını (NAVTEX ice bulletin, IceNet, BSH) takip eder, route alternatiflerini analiz eder, sea ice concentration ve thickness verilerine göre passage plan revize eder. Ice class sertifikası, ice search radar ayarı ve düşük sıcaklıkta donmaması gereken hatların (BWMS, fire main, deck washing) izolasyonu kontrol edilir.`
+      },
+      {
+        title: "Saat değişimi (clock change) ve seyir defteri zaman yönetimi",
+        description: `Doğu-batı eksenli seyirlerde zaman dilimi geçişleri (saat ileri/geri alma) deck logbook, GMDSS log, rest hour kayıtları ve ETA hesaplamalarına eksiksiz yansıtılmalıdır. İkinci Zabit kaptan onayıyla saat değişim planını hazırlar, mürettebata duyurur ve MLC rest hour ihlali oluşmamasını sağlar. UTC referansının her zaman sabit tutulması ve LMT/zone time çevrimlerinin doğru yapılması esastır.`
+      },
+      {
+        title: "Tropical Revolving Storm (TRS) ve typhoon avoidance",
+        description: `Hint Okyanusu, Pasifik ve Atlantik'te tropical cyclone, typhoon ve hurricane sezonlarında özel takip yapılır. İkinci Zabit JMA, NHC, JTWC raporlarını ve EGC mesajlarını izler; storm center'a göre 1-2-3 kuralı (limit lines), dangerous semicircle/navigable semicircle değerlendirmesini yapar. Buys Ballot kuralı ile basınç eğilimine göre kasırga merkezinin yönünü belirler. Kaçınma rotası önerisi kaptana sunulur ve karar verme kaptana aittir.`
+      },
+      {
+        title: "ECDIS official update ve T&P notice yönetimi",
+        description: `IMO Resolution MSC.232(82) ve A.817(19) kapsamında ECDIS kullanan gemilerde resmi ENC (Electronic Navigational Chart) servis aboneliği (UKHO, NOAA, Primar) güncel tutulmalı, weekly update CD/online indirilip yüklenmelidir. T&P Notice (Temporary & Preliminary) bilgileri ECDIS Manual Update layer'ına işlenir. ECDIS backup sistemi (ikinci independent ECDIS veya kâğıt harita yedeği) operasyonel tutulur ve denetimde bu sürecin kayıtları sunulur.`
       }
     ],
     equipment: [
@@ -320,6 +466,46 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "NP yayınları (ATT, NP100, List of Lights vb.) güncel mi",
           "T&P Notice'lar işlenmiş mi",
           "Chart catalogue ve chart index mevcut mu"
+        ]
+      },
+      {
+        title: "Meteoroloji ve buz seyri ekipmanı",
+        checkpoints: [
+          "NAVTEX yazıcı (518/490 kHz) — kâğıt rulo, mesaj filtre ayarı",
+          "Weather fax / EGC receiver — synoptic chart çıktısı",
+          "Barometer (aneroid + barograph) — kalibrasyon ve traseler",
+          "Anemometer ve wind vane — sensor doğruluğu",
+          "Ice search radar ayarı (yüksek enlemlerde)"
+        ]
+      },
+      {
+        title: "Manyetik pusula ve azimuth ekipmanı",
+        checkpoints: [
+          "Magnetic compass — bowl sıvı seviyesi, kabarcık",
+          "Deviation card — son swing tarihi, tüm headings",
+          "Azimuth circle / pelorus — operasyonel",
+          "Standard compass illumination — emergency power",
+          "Compass error logbook — gün/gece error kayıtları"
+        ]
+      },
+      {
+        title: "Steering ve emergency steering",
+        checkpoints: [
+          "Steering gear test — limanda her seferden önce (SOLAS V/26)",
+          "Emergency steering değişim süresi (45 saniye)",
+          "Bridge-to-steering room iletişim (telefon + repeater)",
+          "Rudder angle indicator — bridge ve steering room",
+          "Steering gear room — emergency lighting, escape route"
+        ]
+      },
+      {
+        title: "Seyir kayıtları ve resmi defterler",
+        checkpoints: [
+          "Bridge deck log — vardiya bazlı eksiksiz kayıt",
+          "GMDSS radio log — daily/weekly/monthly testler",
+          "Compass observation book — gyro/magnetic error",
+          "Movement book (limanda) — pilot on/off, line ashore",
+          "Master's standing order ve night order book"
         ]
       }
     ],
@@ -652,6 +838,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Kayıt ve dokümantasyon desteği",
         description: `Deck logbook girişlerine destek, seyir kayıtlarının düzenlenmesi, emniyet kontrol formlarının doldurulması ve drill raporlarının hazırlanmasına katkı. Doğru kayıt tutma alışkanlığını bu dönemde kazanır.`
+      },
+      {
+        title: "Cargo hold inspection ve hazırlık desteği",
+        description: `Yükleme öncesi cargo hold inspection'a katılır: hold cleanliness, bilge well temizliği, hatch coaming/cover bütünlüğü, hold ladder güvenliği ve light fixture kontrolleri. Hold preparation standartlarına (washed, swept, hospital clean, grain clean) göre temizlik düzeyinin doğrulanmasına destek verir. Önceki yük artığı (taint risk) ve kötü koku riskinin raporlanması.`
+      },
+      {
+        title: "GMDSS distress drill ve haberleşme testlerine katılım",
+        description: `İkinci Zabit'in liderliğinde haftalık VHF DSC test, aylık MF/HF DSC test ve abandon ship drill'inde portable VHF kullanımına katılım. Pyrotechnics tatbikat (expired flare) atışlarında güvenlik perimetresi kurulumu. EPIRB ve SART self-test gözlemi ve eğitim alımı.`
+      },
+      {
+        title: "Loglogbook ve seyir kayıtlarına eksiksiz katılım",
+        description: `Bridge logbook girdileri (saat başı pozisyon, hava verisi, traffic, vessel movements), compass error observation, course alteration ve özel olayların doğru ve okunaklı kaydedilmesi. Vardiya devir-teslimde önceki/sonraki zabitle kontrol listesi paylaşımı ve eksiksiz handover.`
       }
     ],
     equipment: [
@@ -674,6 +872,35 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Portatif yangın söndürücüler — basınç, pin/seal, korozyon",
           "Yangın hortum dolapları — hortum, nozzle, hydrant durumu",
           "Kaçış yolu aydınlatması ve işaretlemeleri"
+        ]
+      },
+      {
+        title: "Yük operasyon destek ekipmanları",
+        checkpoints: [
+          "Sounding tape (UTI/MMC) — tape durumu, paste",
+          "Draft mark spotting — dürbün, ışık, gözlem konumu",
+          "Cargo hold ladder ve light — güvenli erişim",
+          "Hatch cover greasing pompası ve gres stokları",
+          "Tally counter ve cargo notebook"
+        ]
+      },
+      {
+        title: "Yangın & emniyet ekipmanları (haftalık tur)",
+        checkpoints: [
+          "Fire station signage ve photoluminescent markings",
+          "Escape route — engelleyici malzeme yok",
+          "EEBD lockerları — mühür, expiry",
+          "Lifebuoy light/smoke — bracket release",
+          "Muster list okunaklığı ve last update tarihi"
+        ]
+      },
+      {
+        title: "GMDSS ve haberleşme (öğrenim odaklı)",
+        checkpoints: [
+          "Portable VHF (3 adet) — battery şarj seviyesi",
+          "EPIRB float-free arrangement görsel kontrolü",
+          "SART konum ve grab bag içeriği",
+          "Distress button bracket ve cover bütünlüğü"
         ]
       }
     ],
@@ -729,6 +956,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Kapalı mekan girişi (enclosed space entry) için ekip hazırlığı",
         description: `Cargo hold, ballast tank, void space, cofferdam ve pump room gibi kapalı mekânlara giriş, SOLAS ve ISM Code açısından en yüksek riskli çalışmalar arasındadır. Reis, Birinci Zabitten alınan Enclosed Space Entry Permit'e uygun olarak ekibi hazırlar: standby kişinin atanması, atmosfer ölçüm cihazının (O2, HC, H2S, CO) kullanımı, SCBA veya SAA hazırlığı, kurtarma hattı ve lifeline düzenlemesi. Çalışma süresince dışarıda standby tutar, periyodik kontroller yapar ve iletişimi sürdürür. "Sadece bakayım" refleksiyle kapalı mekâna giren ve kurtarmaya koşan personelin hayatını kaybettiği vakalar sıkça belgelenmiştir.`
+      },
+      {
+        title: "Cargo hold preparation ve temizlik operasyonu liderliği",
+        description: `Yükleme öncesi cargo hold hazırlığını (hold cleaning) ekiple birlikte yürütür: süpürme, yıkama (deniz suyu/tatlı su), kuruluğun sağlanması, hatch coaming/track temizliği ve önceki yük artıklarının (taint) tamamen giderilmesi. Bulker'da grain/concentrate/coal/iron ore farklı temizlik standartları gerektirir; reis bu standartları bilir ve uygular. Hold ladder, light fixture ve bilge well temizliği bu işin parçasıdır.`
+      },
+      {
+        title: "Hatch cover ve weather deck sızdırmazlık bakımı",
+        description: `Hatch cover rubber gasket'lerinin temizliği, drain channel'ların açık tutulması, cleating mekanizmasının yağlanması ve compression bar kontrolü reisin gözetimindedir. Ultrasonic veya hose test öncesi cover'ların sızdırmazlık hazırlığını yapar. Tank vent, sounding pipe head, manhole cover gibi weather deck noktalarının bütünlüğünü periyodik kontrol eder.`
+      },
+      {
+        title: "Painting program ve corrosion management",
+        description: `Birinci Zabitin onayladığı paint scheme'e uygun olarak surface preparation (chipping, grinding, descaling), primer, intermediate ve topcoat uygulamalarını yönetir. Boya stoku takibi, batch number kayıtları, dew point ve hava sıcaklığı koşullarına göre uygulama planı yapar. Salt contamination testi, blast cleanliness (SA 2.5 vb.) standartlarını bilir.`
       }
     ],
     equipment: [
@@ -769,6 +1008,45 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Windlass — brake test, clutch, hydraulic/electric",
           "Chain stopper ve lashing",
           "Anchor ball/light hazırlığı"
+        ]
+      },
+      {
+        title: "Hatch cover ve weathertight ekipman",
+        checkpoints: [
+          "Rubber gasket — kesilme, sertleşme, kompresyon izi",
+          "Drain channel ve drain valve — açıklık",
+          "Cleating ve quick acting cleat — yağlama",
+          "Hydraulic pack (varsa) — yağ seviyesi, leak",
+          "Hatch coaming pas durumu ve boya"
+        ]
+      },
+      {
+        title: "Cargo hold ve weather deck",
+        checkpoints: [
+          "Hold ladder ve safety cage — bütünlük",
+          "Hold light fixture — su geçirmezlik, lamba",
+          "Bilge well ve strum box — temizlik, screen",
+          "Tank vent head, sounding pipe cap — bütünlük",
+          "Manhole cover ve dogs — gasket durumu"
+        ]
+      },
+      {
+        title: "Boya, kaplama ve yüzey hazırlık aletleri",
+        checkpoints: [
+          "Pneumatic chipping hammer, needle gun — hava hatları",
+          "Disc grinder, sander — disk stoku, guard",
+          "Airless spray pump (varsa) — nozzle, hortum basıncı",
+          "Boya karıştırıcı, viskozite ölçer (Zahn cup)",
+          "Dew point meter ve yüzey nem ölçer"
+        ]
+      },
+      {
+        title: "Acil yangın ve sızıntı kit'i (deck)",
+        checkpoints: [
+          "International shore connection — konum, civata seti",
+          "Foam applicator ve foam tank seviye",
+          "Sand box ve curl-up emici malzeme",
+          "Fire blanket (deck stationları)"
         ]
       }
     ],
@@ -816,6 +1094,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Kapalı mekan girişlerinde standby ve kurtarma desteği",
         description: `Enclosed space entry operasyonlarında AB, reisten alınan talimata göre dışarıda standby görevi üstlenir. Lifeline tutar, iletişimi sürdürür, atmosfer ölçüm cihazını kullanmayı bilir ve içerideki kişinin rahat bölgeden çıkması durumunda alarm verir. Kurtarma gerekirse içeri girmeden önce SCBA takarak ve ek personel çağırarak hareket eder — "kahraman kurtarma" girişimi, makine dairesi boğulma vakalarının önemli bir kısmında hayatı kurtarmak yerine ikinci kurban yaratmıştır.`
+      },
+      {
+        title: "Yüksekte ve overside çalışma",
+        description: `Mast, funnel, kargo vinçleri, hatch coaming ve bordo üstü gibi yüksek/overside alanlarda Permit to Work'e bağlı çalışma yürütür. Safety harness'in çift karabinalı (twin lanyard) doğru bağlanması, fall arrest sistemi, life buoy + line standby (overside çalışmada) ve hava/deniz koşullarının uygunluğu zorunludur. Adam denize düşme riski en yüksek operasyonlardan biridir.`
+      },
+      {
+        title: "Tank temizliği ve butterworth operasyonları (tankerde)",
+        description: `Crude oil washing (COW), butterworth tank cleaning ve gas freeing operasyonlarında özel risk doğar. AB, atmosfer testleri tamamlanmadan tanka girmez, statik elektrik riskine karşı uygun PPE kullanır, hose ve cleaning machine bağlantılarını topraklar. Inert gas seviyesi (%5 O₂'nin altı) sürekli izlenir.`
+      },
+      {
+        title: "Anchor watch ve mooring watch nöbeti",
+        description: `Demirde veya limanda bağlı iken belirlenen aralıklarla pozisyon, hava, çevre trafiği ve mooring rope durumu kontrol edilir ve köprüüstüne raporlanır. Drag anchor (demir tarama) belirtisi (pozisyon değişimi, chain'in jerk hareketi) erken tespit edilmelidir. Mooring watch'ta swell veya tide nedeniyle aşırı gerilen halatlar fısıltılarak (snap-back zone'dan uzak) gevşetilir.`
       }
     ],
     equipment: [
@@ -844,6 +1134,35 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Hardhat, safety shoes, gloves, goggles",
           "Safety harness — yüksekte çalışma için",
           "EEBD — konum ve donning bilgisi"
+        ]
+      },
+      {
+        title: "Yüksekte/overside çalışma ekipmanı",
+        checkpoints: [
+          "Full body safety harness — webbing, buckle, D-ring",
+          "Twin lanyard, shock absorber, karabiner",
+          "Bosun chair, gantline ve overhauling",
+          "Rescue line, life buoy + light (overside standby)",
+          "Helmet chin strap ve eye protection"
+        ]
+      },
+      {
+        title: "Mooring ve manevra ekipmanı (operatör seviyesi)",
+        checkpoints: [
+          "Heaving line — monkey fist ağırlığı, ip durumu",
+          "Stoppers (carpenter / chain stopper) — durum",
+          "Bollard ve fairlead — keskin köşe, pas",
+          "Mooring winch local control — fren, valve",
+          "Pilot ladder + man rope — basamak, securing"
+        ]
+      },
+      {
+        title: "Lookout ve seyir destek ekipmanı",
+        checkpoints: [
+          "Binocular (dürbün) — lens, ayar",
+          "Aldis lamp / signal lamp — operasyonel",
+          "Sound signal düdüğü (manuel) — yedek olarak",
+          "Storm lantern ve el feneri (intrinsically safe)"
         ]
       }
     ],
@@ -891,6 +1210,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Deniz hizmet belgesi (Sea Service Certificate) ve sertifika süreci",
         description: `Stajyer, gemide geçirdiği her seyir dönemini resmi Sea Service Certificate (deniz hizmet belgesi) ile belgelemek zorundadır. Bu belge, kaptan tarafından imzalanır ve tarihleri, gemi adını, seyir bölgesini ve görev tanımını içerir. STCW'nin OICNW (Officer in Charge of Navigational Watch) yeterlilik belgesi için gereken 12 aylık deniz hizmetinin ispatında bu belgeler temel kanıttır. Stajyerin kendi sorumluluğu: belgeleri doğru talep etmek, kayıpsız saklamak ve her liman değişiminde yeniden başlatmak. Eksik veya hatalı belgeler ileride sertifika sınavına girebilme hakkını tehlikeye atabilir.`
+      },
+      {
+        title: "Stabilite ve yük hesabına eğitim katılımı",
+        description: `Birinci Zabit gözetiminde loading calculator/stability software ile basit yükleme senaryolarının çalışılması, GM ve trim hesaplarının takibi, free surface effect ve bending moment kavramlarının pratiğe dökülmesi. Draft survey gözlemi ve hidrostatik tablo okumayı öğrenme.`
+      },
+      {
+        title: "Manevra ve bağlama operasyonlarına gözlem",
+        description: `Köprüüstünden veya bağlama istasyonundan tüm manevra evrelerinin (pilot boarding, swing, berthing, line ashore, tug operations) gözlemi ve TRB'ye not alımı. Pilot card içeriği, manoeuvring booklet, turning circle/stopping distance verilerinin öğrenilmesi.`
       }
     ],
     equipment: [
@@ -911,6 +1238,33 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "EEBD — konum ve kullanım prosedürü",
           "PPE — hardhat, safety shoes, gloves, goggles",
           "Safety harness — yüksekte çalışma koşullarında"
+        ]
+      },
+      {
+        title: "Seyir destek araçları (öğrenim)",
+        checkpoints: [
+          "Sextant — basit yükseklik ölçümü pratiği",
+          "Chronometer ve nautical almanac kullanımı",
+          "Parallel ruler, divider, plotting tools",
+          "Hand bearing compass — bearing alma"
+        ]
+      },
+      {
+        title: "Emniyet ekipmanı tanıma",
+        checkpoints: [
+          "Fire extinguisher tipleri (A/B/C/F) — kullanım alanları",
+          "SCBA donning prosedürü (gözetim altında)",
+          "Lifeboat envanter listesi ve konum öğrenimi",
+          "Liferaft HRU, painter, hydrostatic release çalışma prensibi"
+        ]
+      },
+      {
+        title: "Cargo ekipman tanıma",
+        checkpoints: [
+          "Hatch cover türleri (single pull, folding, piggy back)",
+          "Lashing ekipman tipleri ve SWL marking",
+          "Crane/derrick SWL plate, runner wire, hook",
+          "Sounding tape ve UTI/MMC kullanım gözlemi"
         ]
       }
     ],
@@ -982,6 +1336,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Yağlama yağı analiz programı (LO analysis)",
         description: `Ana makine, jeneratörler ve yardımcı ekipmanlara ait yağlama yağlarının periyodik olarak analiz edilmesi Baş Mühendisin gözetiminde yürütülür. Yağ numuneleri belirlenen aralıklarla alınır, sertifikalı bir laboratuvara gönderilir ve sonuçlar (viskozite, TBN, TAN, metal içerikleri, su kirliliği, soot) değerlendirilir. Anormal bulgu (örneğin yüksek demir ya da bakır içeriği) erken aşamada iç aşınma veya soğutma sistemi arızasına işaret eder. Yağ değişim kararı saat-bazlı rutine değil, analiz sonuçlarına göre verilmesi hem ekipman ömrünü uzatır hem de maliyet etkinliği sağlar. Analiz sonuçları PMS kayıtlarına işlenir ve klas society veya Superintendent talebi halinde sunulur.`
+      },
+      {
+        title: "EEDI / EEXI / CII karbon performans yönetimi",
+        description: `MARPOL Ek VI Bölüm 4 kapsamında geminin Energy Efficiency Existing Ship Index (EEXI), Carbon Intensity Indicator (CII) ve SEEMP (Ship Energy Efficiency Management Plan) Part III uyumluluğu Baş Mühendisin teknik sorumluluğundadır. Hız optimizasyonu, trim optimization, hull/propeller cleaning periyodu, waste heat recovery ve alternatif yakıt opsiyonları (LNG, biofuel) gibi enerji verimliliği önlemlerinin teknik değerlendirmesini yapar. CII rating (A/B/C/D/E) sonucu D üst üste 3 yıl veya E ise gemi corrective action plan (CAP) hazırlamak zorundadır.`
+      },
+      {
+        title: "Şaft ve pervane sistemi (stern tube) yönetimi",
+        description: `Stern tube bearing yağlama sistemi (white metal/oil lubricated veya water lubricated), aft seal/fore seal sızdırmazlığı, stern tube oil sampling ve analiz programı, propeller boss cap injection (sea water leak takibi) kritik öğelerdir. Şaft alignment, weardown measurement ve sürekli titreşim izleme programı planlanır. Stern tube oil pollution riski MARPOL Ek I kapsamındadır; sızıntı tespiti durumunda ORB kaydı zorunludur.`
+      },
+      {
+        title: "Hyperbaric ve sualtı bakım (in-water survey) koordinasyonu",
+        description: `Klas tarafından onaylı dalgıçlarla yapılan in-water survey, propeller polishing, hull cleaning ve cathodic protection (sacrificial anode) kontrolü Baş Mühendisin koordinasyonunda yürütülür. Dalış güvenliği, dive plan, lockout/tagout (thrusters, sea suction valve, side thruster) sıkı uygulanmalıdır. Anode wastage ölçümleri ve impressed current cathodic protection (ICCP) sistem performansı kayıt altına alınır.`
       }
     ],
     equipment: [
@@ -1023,6 +1389,48 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Quick closing valves — remote operation",
           "Emergency stop buttons — ana makine, fuel pump, fan",
           "Ventilation flap remote close — çalışırlık testi"
+        ]
+      },
+      {
+        title: "Şaft, stern tube ve pervane sistemi",
+        checkpoints: [
+          "Stern tube aft/fore seal — sızdırmazlık, sıcaklık",
+          "Stern tube oil sump — seviye, analiz sonucu",
+          "Şaft earthing brush — temas, aşınma",
+          "Intermediate bearing — sıcaklık, vibration",
+          "Propeller boss — sızıntı, ICCP akım kaydı"
+        ]
+      },
+      {
+        title: "Çevre koruma ve MARPOL ekipmanı",
+        checkpoints: [
+          "Oily Water Separator + 15 ppm bilge alarm — kalibrasyon",
+          "Sludge incinerator — operasyon kaydı, exhaust",
+          "Sewage Treatment Plant (STP) — chemical, discharge",
+          "Garbage compactor / incinerator — record",
+          "BWMS — UV lamba, filter, by-pass",
+          "EGCS/Scrubber (varsa) — washwater monitor"
+        ]
+      },
+      {
+        title: "Yakıt sistemi ve bunker hazırlığı",
+        checkpoints: [
+          "Bunker manifold — flange, blank, drip tray",
+          "Save-all ve scupper plug",
+          "Sounding pipe, gauge ve high-level alarm test",
+          "Bunker SOPEP kit — emici, kürek, KKD",
+          "Bunker Delivery Note (BDN) arşivi 3 yıl",
+          "MARPOL sample — etiketli, 1 yıl saklama"
+        ]
+      },
+      {
+        title: "Acil müdahale ve emergency response",
+        checkpoints: [
+          "Emergency generator — haftalık no-load + monthly load test",
+          "Emergency fire pump — uzak start, basınç",
+          "Emergency air compressor — start",
+          "Emergency steering — değişim süresi 45 sn",
+          "Emergency bilge suction (main sea suction) — valf çalışması"
         ]
       }
     ],
@@ -1074,6 +1482,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Soğutma suyu analizi ve kimyasal dozajlama",
         description: `Ana makine ve jeneratörlerde jacket cooling water (tatlı su soğutma) sisteminin su kalitesinin düzenli analiz edilmesi İkinci Mühendisin sorumluluğundadır. Nitrit, pH, klorür ve toplam sertlik değerleri kriter aralıklarında tutulmazsa corrosion inhibitor etkinliği düşer ve liner/cylinder cover'da korozyon başlar. Soğutma suyu analiz kiti kullanılarak periyodik testler yapılır, sonuçlar log'a kaydedilir ve gerektiğinde inhibitor (DCA/corrosion inhibitor) ilave edilir. Kapsamlı analiz için shore-side test laboratuarına numune gönderilmesi de bu görevin parçasıdır.`
+      },
+      {
+        title: "Cylinder lubrication ve scrape-down analizi",
+        description: `Ana makine cylinder lub oil feed rate'in (g/kWh) yük ve sulfur content'e göre optimize edilmesi, scrape-down sample alımı ve laboratuvar analizi (Fe içeriği, BN reserve) ile cylinder condition izlenmesi İkinci Mühendisin sorumluluğundadır. Scavenge port inspection ile piston ring condition, ring zone deposit ve liner glazing/scuffing belirtileri tespit edilir. Erken tespit edilen scuffing'e müdahale edilmezse seizure riski doğar.`
+      },
+      {
+        title: "Scavenge ve under-piston bölge inspection",
+        description: `Belirli çalışma saatlerinde (genelde 500-1000 saatte bir) ana makine scavenge inspection programlanır. Piston crown carbon deposit, ring condition, liner wear, cylinder cover under-side condition gözlemlenir. Scavenge fire belirtisi (sıcaklık artışı, alarm) ciddiye alınır; tespit halinde derhal yük azaltılır, scavenge port kapatılır ve söndürme uygulanır.`
+      },
+      {
+        title: "Crankcase inspection ve oil mist takibi",
+        description: `Programlı veya alarm sonrası ana makine crankcase inspection'ında main/crank bearing, crank pin, crosshead bearing condition, tie bolt durumu ve white metal smear belirtileri kontrol edilir. Oil mist detector alarm verdiğinde crankcase explosion riski nedeniyle minimum 30 dakika cooling beklenir, bearing temperature stabilize olmadan crankcase açılmaz.`
       }
     ],
     equipment: [
@@ -1104,6 +1524,36 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "LT/HT cooler — cleaning schedule",
           "Engine room ventilation fans — operation, filter",
           "AC/refrigeration plant — refrigerant level, compressor"
+        ]
+      },
+      {
+        title: "Bunker ve yakıt transfer ekipmanı",
+        checkpoints: [
+          "Bunker hose, flange ve coupling — etiket, hidrostatik test",
+          "Manifold valve, bonnet, blind flange",
+          "Drip tray ve save-all — temiz, hazır",
+          "Sample collection cock ve sample bottle (4 adet IMO)",
+          "Tank gauge (radar/float) — kalibrasyon"
+        ]
+      },
+      {
+        title: "Kazan ve yardımcı sistem",
+        checkpoints: [
+          "Boiler gauge glass — blow-down test (vardiyada)",
+          "Safety valve set pressure (annual lift test)",
+          "Burner — flame eye, atomizer, ignition",
+          "Feed water pump ve hot well",
+          "Water sampling kit — TDS, pH, hardness"
+        ]
+      },
+      {
+        title: "Vardiya devir-teslim ve performans izleme",
+        checkpoints: [
+          "Engine room log — saatlik parametreler",
+          "Performance monitoring system — trend ekranı",
+          "Daily/noon report verisi — yakıt, miles, slip",
+          "Standing order ve standing instructions",
+          "Watchkeeper handover checklist"
         ]
       }
     ],
@@ -1151,6 +1601,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "UMS (Unmanned Machinery Space) gece hazırlıkları",
         description: `Makine dairesi UMS onaylı gemilerde gece periyodunda düzenli mühendis nöbeti tutulmaz; bunun yerine kapsamlı bir hazırlık yapılır ve otomatik alarm sistemi izler. Bu hazırlık genellikle 3. veya 4. Mühendis tarafından yürütülür: tüm alarm setpoint'lerinin doğrulanması, beklenen sarf miktarlarına göre servis tank seviyelerinin kontrolü, otomatik start/stop sistemlerinin aktif olduğunun doğrulanması, bilge alarm ve high-level switch testleri, güverte ve makine dairesi arasındaki haberleşme kanalının hazır tutulması. UMS periyodunda alarm çalması durumunda kısa sürede makine dairesine inebilecek nöbetçi mühendisin hazır bulunması gerekir.`
+      },
+      {
+        title: "Soğutucu (refrigeration) ve klima sistemi günlük kontrolü",
+        description: `Provision refrigeration (et/sebze/sıvı soğuk hava deposu), AC ve gerekirse reefer cargo plant'larının kondenser/evaporator basınçları, expansion valve operasyonu, refrigerant level sight glass, kompresör yağ basıncı ve sıcaklık değerleri vardiya sırasında izlenir. Kaçak (frost belirtisi, ses, sıcaklık dengesizliği) tespitinde Baş Mühendis'e raporlanır.`
+      },
+      {
+        title: "Hydraulic ve steering gear günlük kontrol",
+        description: `Steering gear (telemotor/electro-hydraulic) yağ seviye, leak, ram seal, hydraulic pressure ve emergency steering pump test. Deck machinery hydraulic pack (hatch cover, crane, windlass) yağ seviyesi ve filter ΔP. Limanda steering gear test SOLAS V/26 kapsamında her seferden 12 saat önce kaydedilir.`
       }
     ],
     equipment: [
@@ -1180,6 +1638,33 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Bearing temperature sensors — calibration",
           "Over-speed trip device — test prosedürü",
           "Emergency shut-down buttons — lokasyon ve çalışırlık"
+        ]
+      },
+      {
+        title: "Soğutma ve klima sistemleri",
+        checkpoints: [
+          "Provision plant — kondenser, evaporator, refrigerant",
+          "AC compressor — yağ basıncı, vibration",
+          "Cooling water expansion tank — seviye, header",
+          "Heat exchanger (plate/shell&tube) — ΔP, leak"
+        ]
+      },
+      {
+        title: "Steering gear ve hidrolik sistemler",
+        checkpoints: [
+          "Steering gear — yağ seviye, ram seal, otomatik pump start",
+          "Emergency steering pump — manuel start",
+          "Hatch cover hydraulic — yağ seviye, leak",
+          "Deck crane / windlass — relief valve set"
+        ]
+      },
+      {
+        title: "Vardiya rutin ekipmanları",
+        checkpoints: [
+          "Engine room round flashlight (intrinsically safe)",
+          "Portable temperature meter (IR)",
+          "Vibration pen ve sound stick",
+          "Vardiya logbook ve standing orders dosyası"
         ]
       }
     ],
@@ -1235,6 +1720,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "VSAT ve uydu haberleşme sistemleri bakımı",
         description: `Modern gemilerde VSAT (Very Small Aperture Terminal) uydu sistemi; operasyonel iletişim, navigasyon veri iletimi, şirket raporlaması ve mürettebat refahı (internet) için kritik öneme sahiptir. ETO; VSAT anteni (anten stabilizasyon sistemi, uydu izleme mekanizması), modem, router ve ağ anahtarlarının bakımından sorumludur. Sistem kesintilerinde arıza teşhisi, servis sağlayıcı ile teknik koordinasyon ve yedek bağlantı (Inmarsat, MF/HF) geçiş prosedürleri de bu kapsamdadır. Ayrıca gemi ağının (LAN/WLAN) yönetimi, IT güvenliği (güvenlik duvarı, erişim kontrolü) ve siber güvenlik politikasının uygulanması ISM Code'un siber risk yönetimi (Resolution MSC-FAL.1/Circ.3) gerekliliklerine göre ETO'nun görev alanındadır.`
+      },
+      {
+        title: "Batarya bankaları ve enerji depolama yönetimi",
+        description: `Lead-acid (vented/VRLA), Ni-Cd ve modern Li-ion batarya banklarının (GMDSS, emergency, engine start, UPS) elektrolit seviye, spesifik gravite, terminal voltajı, charging rate ve discharge capacity test programı ETO tarafından yönetilir. Battery room ventilation (H₂ birikimi riski), gas detector (varsa) ve ignition-free ekipman zorunludur. Li-ion sistemlerde thermal runaway izleme ve özel yangın söndürme prosedürleri uygulanır.`
+      },
+      {
+        title: "Cybersecurity ve OT (Operational Technology) yönetimi",
+        description: `IMO Resolution MSC.428(98) gereğince geminin SMS'i cyber risk yönetimini içermek zorundadır. ETO, OT sistemlerinin (ECDIS, AMS, IAS, propulsion control, cargo control) ağ segmentasyonu, USB/portable media kontrolü, yazılım/firmware update yönetimi, yetki erişim kontrolü ve incident response sürecini yönetir. Sınıf cyber notation gereklilikleri ve port USB scanner sistemleri ile koordinasyon kurar.`
+      },
+      {
+        title: "Yüksek gerilim (HV) sistemleri ve switchboard çalışması",
+        description: `Modern büyük gemilerde (kruvaziyer, LNG, FPSO) 6.6 kV veya 11 kV HV sistemi bulunabilir. ETO, HV switchgear üzerinde çalışırken Permit to Work, sequence of operation, earthing procedure, voltage detector kullanımı ve insulated PPE (Class 2/3 gloves, arc-flash suit) kurallarına eksiksiz uyar. Step-up/step-down transformer, GIS (Gas Insulated Switchgear) bakımı vendor onaylı eğitim gerektirir.`
       }
     ],
     equipment: [
@@ -1276,6 +1773,45 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Deck lighting — weather deck, cargo area",
           "Cable tray ve gland condition — watertight integrity",
           "Earthing system — continuity, clamp condition"
+        ]
+      },
+      {
+        title: "Batarya ve UPS sistemleri",
+        checkpoints: [
+          "Engine start battery — voltaj, elektrolit, terminal",
+          "GMDSS battery — kapasite testi, charging current",
+          "Emergency battery (24V/110V) — discharge test",
+          "UPS — inverter, by-pass, batarya yedek süresi",
+          "Battery room ventilation ve H₂ tahliyesi"
+        ]
+      },
+      {
+        title: "Yangın algılama ve alarm sistemi",
+        checkpoints: [
+          "Fire detection panel — fault, isolated zone",
+          "Smoke/heat/flame detector — temizlik, fonksiyon test",
+          "Manual call point (MCP) — cam, button",
+          "Sounder ve flasher — desibel, görünürlük",
+          "Loop continuity ve battery backup"
+        ]
+      },
+      {
+        title: "Motor kontrol ve VFD",
+        checkpoints: [
+          "DOL/star-delta starter — kontaktör, overload",
+          "Soft starter ve VFD — parametre backup, cooling fan",
+          "Motor IR (megger) — kayıt trendi",
+          "Junction box — IP rating, gland"
+        ]
+      },
+      {
+        title: "Cyber & OT güvenlik",
+        checkpoints: [
+          "USB whitelisted device listesi",
+          "ECDIS / AMS yazılım versiyon ve update kaydı",
+          "Network firewall log ve IDS uyarıları",
+          "Yedekleme (backup) testleri — restore drill",
+          "Vendor remote access — VPN, log kaydı"
         ]
       }
     ],
@@ -1319,6 +1855,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Kaldırma ve taşıma ekipmanlarının (rigging/lifting gear) güvenlik kontrolü",
         description: `Fitter, makine dairesindeki chain block'lar, wire sling'ler, tekstil sling'ler, shackle'lar, eye bolt'lar ve overhead crane/monorail gibi kaldırma ekipmanlarının periyodik güvenlik kontrolünü yapar. SWL (Safe Working Load) işaretlerinin okunurluğu, tel sling'lerde broken wire ve kink tespiti, tekstil sling'lerde yırtık, deformasyon ve renk bozulması, shackle pin güvenliği ve zincir bloklarda mekanik çalışırlık bu kontrolün kapsamındadır. Hasarlı veya etiket tarihi geçmiş ekipman derhal hizmet dışına alınmalıdır. Kaldırma ekipmanlarıyla yapılan işlerin log'u tutulur; bakım kayıtları klas society denetiminde sunulabilmelidir.`
+      },
+      {
+        title: "Bunker, transfer ve sintine operasyonlarına saha desteği",
+        description: `Bunker alımı sırasında manifold ve tank gözcülüğü, sample alımına yardım, scupper kontrolü, drip tray boşaltma ve SOPEP malzeme hazırlığı. FO/DO transfer sırasında tank seviye gözlemi, valf açma/kapama operasyonu. Bilge transfer ve sludge tank operasyonlarında OWS başında bekleme, by-pass alarm dinleme ve ORB kayıtlarının doldurulmasına gözlem desteği.`
+      },
+      {
+        title: "Separator (purifier) günlük bakımı",
+        description: `FO/LO/sludge separator'ların (Alfa Laval, Westfalia vb.) günlük desludging, bowl temizliği, disc stack ayırma ve seal ring kontrolü. Gravity disc seçimi (oil density'e göre), water seal kontrolü ve operating water sistemi. Backwash valve operasyonu ve discharge sıcaklığının izlenmesi.`
       }
     ],
     equipment: [
@@ -1348,6 +1892,36 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Heat-resistant gloves — sıcak yüzey çalışması",
           "Safety harness — tank içi veya yüksekte çalışma",
           "EEBD — konum ve kullanım bilgisi"
+        ]
+      },
+      {
+        title: "Separator (purifier) operasyon ekipmanı",
+        checkpoints: [
+          "Gravity disc set (oil density tablosuna göre)",
+          "Disc stack ve distributor — temizlik, deformasyon",
+          "Seal ring, o-ring ve gasket stoku",
+          "Operating water tank ve solenoid valf",
+          "Sludge tank seviye ve drain valf"
+        ]
+      },
+      {
+        title: "Bunker ve transfer operasyon ekipmanı",
+        checkpoints: [
+          "Manifold hose, flange, gasket — etiket",
+          "Sample bottle ve seal — IMO 4 numune",
+          "Scupper plug — köpük/lastik, sayı",
+          "Drip tray ve save-all temiz mi",
+          "Manuel emisyon ve overflow alarm test"
+        ]
+      },
+      {
+        title: "Kaldırma ve taşıma (lifting gear)",
+        checkpoints: [
+          "Chain block, lever hoist — SWL, çark kilitlenme",
+          "Wire sling — broken wire, kink, thimble",
+          "Synthetic sling — kesik, renkli stripe (yıllık kod)",
+          "Shackle — pin, mousing wire",
+          "Engine room overhead crane — fren testi"
         ]
       }
     ],
@@ -1391,6 +1965,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Deniz hizmet belgesi (Sea Service Certificate) ve sertifika süreci",
         description: `Makine stajyeri, gemide geçirdiği her seyir dönemini kaptan tarafından imzalanan resmi Sea Service Certificate ile belgelemek zorundadır. STCW'nin OOW (Officer of the Watch — Machinery) yeterlilik belgesi için gereken deniz hizmeti süresinin ispatında bu belgeler temel kanıttır. Ayrıca Watchkeeping Certificate for Engine Department için STCW tablo A-III/1 kapsamındaki tüm yetkinlik alanlarının TRB'de tamamlanmış ve eğitmen mühendis tarafından onaylanmış olması gerekir. Belgelerin kaybolması, staj süresinin tanınmaması veya sınava girebilme hakkının ertelenmesi anlamına gelebilir.`
+      },
+      {
+        title: "Yakıt ve yağlama sistemi öğrenimi",
+        description: `Bunker, FO/DO settling/service tank sistemleri, purifier operasyonu, LO sump ve sirkülasyon devresinin pratik takibi. Sample alma, viskozite ve density ölçümü gözlemi. ORB Part I formatının okunması ve doldurma mantığının öğrenilmesi.`
+      },
+      {
+        title: "Acil sistemler (emergency systems) ve test eğitimi",
+        description: `Emergency generator, emergency fire pump, emergency air compressor ve emergency steering gear testlerine gözlemci olarak katılım. Quick closing valve, emergency stop ve ventilation flap remote operation prensiplerini öğrenme. Blackout recovery prosedürünün adım adım izlenmesi.`
       }
     ],
     equipment: [
@@ -1411,6 +1993,35 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "EEBD — konum ve kullanım prosedürü",
           "Can yeleği — konum ve giyme süresi",
           "Safety harness — tank içi çalışma koşullarında"
+        ]
+      },
+      {
+        title: "Ölçüm ve kalibrasyon aletleri (öğrenim)",
+        checkpoints: [
+          "Sounding tape + paste — yakıt/ballast tank okuma",
+          "Manometer ve digital pressure gauge",
+          "Infrared termometre ve temas tipi prob",
+          "Megger (insulation tester) — kullanım gözlemi",
+          "Viskozimetre / hidrometre"
+        ]
+      },
+      {
+        title: "Acil sistem komponentleri (tanıma)",
+        checkpoints: [
+          "Emergency generator paneli — start/stop, ATS",
+          "Emergency fire pump uzak start butonu",
+          "Quick closing valve master kollar",
+          "CO₂ release station ve alarm",
+          "EEBD ve SCBA konumları"
+        ]
+      },
+      {
+        title: "Çevre & MARPOL ekipman tanıma",
+        checkpoints: [
+          "Oily Water Separator ve 15 ppm monitor",
+          "Sludge incinerator — kontrol paneli",
+          "STP (sewage treatment) — disinfection",
+          "ORB ve Garbage Record Book formatları"
         ]
       }
     ],
@@ -1462,6 +2073,18 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Sağlık ve moral katkısı",
         description: `Mürettebatın beslenme kalitesi doğrudan iş performansı ve morale etki eder. Özel günlerde (doğum günü, bayram, festival) özel menü hazırlama. Mürettebat geri bildirimlerini dikkate alma ve menü çeşitliliğini artırma.`
+      },
+      {
+        title: "İçme suyu ve gıda kalite kontrolü",
+        description: `MLC 2006 Kural 3.2 ve WHO Guide to Ship Sanitation kapsamında içme suyunun klor rezidüel testi (0.2 mg/L minimum), pH ve bakteriyolojik analiz gereklilikleri aşçının takibindedir. Soğuk depo, dondurucu ve kuru erzak depo sıcaklıklarının günlük kayıt altına alınması (cold chain log), gıda numunesi saklama (numune 48 saat referans için) ve potable water tank kalibrasyonu kayıtları MLC denetiminde sunulur.`
+      },
+      {
+        title: "Pest control ve haşere yönetimi",
+        description: `Gemide haşere (kemirgen, hamamböceği, hububat böcekleri, sinek) kontrolü mutfağın temizliği ile doğrudan ilişkilidir. Rat guard'ların liman bağlama hatlarında doğru kurulumu, sticky trap ve bait station yerleşimi, ULV (ultra low volume) fumigasyon koordinasyonu ve Deratting Certificate / Ship Sanitation Control Exemption Certificate'ın güncel tutulması bu görevin parçasıdır. Bulaşma tespitinde derhal kaptan ve liman sağlık otoritesine bildirim yapılır.`
+      },
+      {
+        title: "Mürettebat beslenme kalitesi ve bütçe yönetimi",
+        description: `MLC tarafından kişi başı günlük gıda bütçesi (USD/day victualling rate) çerçevesinde dengeli ve çeşitli menü hazırlanır. Protein, karbonhidrat, vitamin ve mineral dengesi gözetilir; uzun seyirlerde scurvy ve nutritional deficiency önlemek için taze meyve/sebze stoku planlanır. Mürettebat memnuniyet anketleri ve menu rotation sistemi gemide moral'i doğrudan etkiler.`
       }
     ],
     equipment: [
@@ -1493,6 +2116,44 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Haşere kontrol sistemi — tuzak, kayıt",
           "Kesme tahtaları — renk kodlaması, durum",
           "Kişisel hijyen malzemeleri — eldiven, bone, önlük"
+        ]
+      },
+      {
+        title: "İçme suyu ve sanitasyon",
+        checkpoints: [
+          "Klor rezidüel test kiti (DPD)",
+          "pH ve toplam sertlik test kiti",
+          "UV sterilizer / silver ionizer — lamba/anod kondisyon",
+          "Potable water tank hatchway, mührü ve etiket",
+          "Drinking water tap aerator ve filtre"
+        ]
+      },
+      {
+        title: "Pest control ekipmanı",
+        checkpoints: [
+          "Rat guards — sayı, kondisyon",
+          "Sticky trap, snap trap, bait station envanteri",
+          "Insect spray (ULV) ve uygulayıcı",
+          "Fumigation sertifikası ve uygulama kaydı",
+          "Ship Sanitation Control Certificate güncel"
+        ]
+      },
+      {
+        title: "Atık ve geri dönüşüm",
+        checkpoints: [
+          "Gıda atığı macerator (3 NM dışı discharge)",
+          "Kullanılmış yemeklik yağ toplama kabı",
+          "Plastic/glass/metal segregation bin",
+          "Garbage compactor — operasyon kaydı"
+        ]
+      },
+      {
+        title: "Kumanya depolama",
+        checkpoints: [
+          "Reefer/freezer alarm ve auto-defrost",
+          "Kuru erzak nem ölçer ve havalandırma",
+          "Sebze/meyve raf düzeni (FIFO)",
+          "Pallet ve raf güvenliği (kötü havada düşme önleme)"
         ]
       }
     ],
@@ -1544,6 +2205,14 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       {
         title: "Revir (sick bay) temizliği ve tıbbi yardım desteği",
         description: `Gemi reviri MLC 2006 ve SOLAS gerekliliklerine göre her an temiz, düzenli ve kullanıma hazır tutulmalıdır. Kamarot, revirin günlük temizliğini (zemin, yatak, tezgah, aletler) ve sanitasyon kontrolünü yürütür. Denetimde kirli veya düzensiz bir revir doğrudan MLC non-compliance bulgusuna yol açar. Hasta mürettebata yemek, içecek ve temel ihtiyaçları taşıma, hasta odasının havalandırmasını ve konforunu sağlama görevleri de kamarotun sorumluluğundadır. Bulaşıcı hastalık şüphesinde artan dezenfeksiyon protokolleri (özellikle tuvalet ve ortak yüzeyler) kamarot tarafından uygulanır.`
+      },
+      {
+        title: "Kamara ve ortak alanlarda yangın/sigara güvenliği",
+        description: `Yaşam mahallerinde sigara izni verilen alanların temizliği, kül tablası kontrolü, fire door'ların kapalı tutulması ve yangın detektör kapaklarının açık bulundurulması kamarotun denetimindedir. Kamaralarda izinsiz elektrikli alet, kontrol dışı çoklu priz veya açık ateş kaynaklarının tespiti durumunda derhal raporlanır. Tek başına çalışma sırasında yangın belirtisi (duman, koku, sıcaklık) ilk fark edilen kişi kamarot olabilir.`
+      },
+      {
+        title: "Çamaşırhane ve depo kimyasal güvenliği",
+        description: `Çamaşır deterjanı, ağartıcı (sodyum hipoklorit), dezenfektan ve temizlik kimyasallarının SDS (Safety Data Sheet) bilgisine uygun depolanması, ayrı tutulması (asit-baz, oksidanlar) ve etiketlenmesi. Çamaşır makinesinde lint birikiminden kaynaklı yangın riski bilinciyle filter haftalık temizliği. Çamaşırhane fire damper ve detector kontrolüne katılım.`
       }
     ],
     equipment: [
@@ -1572,6 +2241,45 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
           "Çatal/bıçak/kaşık — sayı ve durum",
           "İçecek servisi ekipmanları — bardak, termos",
           "Yemek ısıtma/sıcak tutma ekipmanı"
+        ]
+      },
+      {
+        title: "Yatakhane ve kamara konfor ekipmanı",
+        checkpoints: [
+          "Çarşaf, nevresim, havlu — stok ve durumu",
+          "Yatak şilte ve yastık — hijyen",
+          "Kamara aydınlatma ve okuma lambası",
+          "AC vent ve hava akışı temizliği",
+          "Kapı kilit ve emergency exit erişimi"
+        ]
+      },
+      {
+        title: "Revir (sick bay) temizlik ekipmanı",
+        checkpoints: [
+          "Disposable eldiven, maske, önlük stoku",
+          "Hospital grade dezenfektan",
+          "Tıbbi atık (sharps box, biohazard bag)",
+          "Revir çarşaf ve battaniye yedeği",
+          "Quarantine işaretleme ve havalandırma"
+        ]
+      },
+      {
+        title: "Yangın ve emniyet farkındalığı",
+        checkpoints: [
+          "Yaşam mahalli fire door — kapalılık",
+          "Smoke detector — boya/toz örtmesi yok",
+          "Escape route ve EEBD konum",
+          "Cabin sprinkler head — engelleyici eşya yok",
+          "Sigara izni alanları — kül tablası, kontrol"
+        ]
+      },
+      {
+        title: "Kimyasal ve sarf güvenliği",
+        checkpoints: [
+          "Temizlik kimyasalları — SDS dosyası",
+          "Etiketleme ve orijinal kapta saklama",
+          "Asit / baz / oksidan ayrı raflar",
+          "Çamaşır makinesi lint filter (yangın riski)"
         ]
       }
     ],
