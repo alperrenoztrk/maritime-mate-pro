@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,153 +9,164 @@ import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { DensityProvider } from "@/contexts/DensityContext";
 import { AnimatePresence } from "framer-motion";
+import { ShipWheel } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
+
+// Eager: initial route only — keeps first paint fast on mobile preview.
 import Index from "./pages/Index";
-import CalculationsMenu from "./pages/CalculationsMenu";
-import LessonsPage from "./pages/LessonsPage";
-import CrewHierarchyPage from "./pages/CrewHierarchyPage";
-import BridgeDevicesPage from "./pages/BridgeDevicesPage";
-import MachineryHubPage from "./pages/MachineryHubPage";
-import ShipTasksPage from "./pages/ShipTasksPage";
-import ShipTaskDetailPage from "./pages/ShipTaskDetailPage";
-import ShipOperationsPage from "./pages/ShipOperationsPage";
-import ShipOperationsDetail from "./pages/ShipOperationsDetail";
-import CalculationSectionPage from "./pages/CalculationSectionPage";
-import Navigation from "./pages/Navigation";
-import NavigationCalculationPage from "./pages/NavigationCalculation";
-import TideCalculationTutorial from "./pages/TideCalculationTutorial";
-// import NavigationCalculationsPage from "./pages/NavigationCalculationsPage";
-import Economics from "./pages/Economics";
-import StabilityAssistantPage from "./pages/StabilityAssistant";
-import StabilityGZIMO from "./pages/StabilityGZIMO";
-import StabilityRules from "./pages/StabilityRules";
-import StabilityAdvancedPage from "./pages/StabilityAdvanced";
-import StabilityGrainPage from "./pages/StabilityGrain";
-import StabilityGMPage from "./pages/StabilityGM";
-import StabilityWeightShiftPage from "./pages/StabilityWeightShift";
-import StabilityFreeSurfacePage from "./pages/StabilityFreeSurface";
-import StabilityGZPage from "./pages/StabilityGZ";
-import SailorKnotsPage from "./pages/SailorKnots";
-import StabilityAnalysisPage from "./pages/StabilityAnalysis";
-import StableTalesPage from "./pages/StableTales";
-import EmptyPage from "./pages/EmptyPage";
-import ConverterPage from "./pages/Converter";
-import PassagePlanPage from "./pages/PassagePlanPage";
-import MoonPhases from "./pages/MoonPhases";
-import Settings from "./pages/Settings";
-import Formulas from "./pages/Formulas";
-import Regulations from "./pages/Regulations";
-import StabilityFormulasPage from "./pages/StabilityFormulas";
-import Glossary from "./pages/Glossary";
 
-import StabilityFormulaDetailPage from "./pages/StabilityFormulaDetail";
-import NavigationFormulasPage from "./pages/NavigationFormulas";
+// Lazy: every other page is code-split so the mobile preview can render
+// the first screen without pulling in the entire app graph upfront.
+const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
+const LessonsPage = lazy(() => import("./pages/LessonsPage"));
+const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
+const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
+const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
+const ShipTasksPage = lazy(() => import("./pages/ShipTasksPage"));
+const ShipTaskDetailPage = lazy(() => import("./pages/ShipTaskDetailPage"));
+const ShipOperationsPage = lazy(() => import("./pages/ShipOperationsPage"));
+const ShipOperationsDetail = lazy(() => import("./pages/ShipOperationsDetail"));
+const CalculationSectionPage = lazy(() => import("./pages/CalculationSectionPage"));
+const Navigation = lazy(() => import("./pages/Navigation"));
+const NavigationCalculationPage = lazy(() => import("./pages/NavigationCalculation"));
+const TideCalculationTutorial = lazy(() => import("./pages/TideCalculationTutorial"));
+const Economics = lazy(() => import("./pages/Economics"));
+const StabilityAssistantPage = lazy(() => import("./pages/StabilityAssistant"));
+const StabilityGZIMO = lazy(() => import("./pages/StabilityGZIMO"));
+const StabilityRules = lazy(() => import("./pages/StabilityRules"));
+const StabilityAdvancedPage = lazy(() => import("./pages/StabilityAdvanced"));
+const StabilityGrainPage = lazy(() => import("./pages/StabilityGrain"));
+const StabilityGMPage = lazy(() => import("./pages/StabilityGM"));
+const StabilityWeightShiftPage = lazy(() => import("./pages/StabilityWeightShift"));
+const StabilityFreeSurfacePage = lazy(() => import("./pages/StabilityFreeSurface"));
+const StabilityGZPage = lazy(() => import("./pages/StabilityGZ"));
+const SailorKnotsPage = lazy(() => import("./pages/SailorKnots"));
+const StabilityAnalysisPage = lazy(() => import("./pages/StabilityAnalysis"));
+const StableTalesPage = lazy(() => import("./pages/StableTales"));
+const EmptyPage = lazy(() => import("./pages/EmptyPage"));
+const ConverterPage = lazy(() => import("./pages/Converter"));
+const PassagePlanPage = lazy(() => import("./pages/PassagePlanPage"));
+const MoonPhases = lazy(() => import("./pages/MoonPhases"));
+const Settings = lazy(() => import("./pages/Settings"));
+const Formulas = lazy(() => import("./pages/Formulas"));
+const Regulations = lazy(() => import("./pages/Regulations"));
+const StabilityFormulasPage = lazy(() => import("./pages/StabilityFormulas"));
+const Glossary = lazy(() => import("./pages/Glossary"));
+const StabilityFormulaDetailPage = lazy(() => import("./pages/StabilityFormulaDetail"));
+const NavigationFormulasPage = lazy(() => import("./pages/NavigationFormulas"));
+const DetailedMeteorology = lazy(() => import("./pages/DetailedMeteorology"));
+const COLREGPresentation = lazy(() => import("./pages/COLREGPresentation"));
+const NavigationRulesPage = lazy(() => import("./pages/NavigationRules"));
+const StabilityCalculationsPage = lazy(() => import("./pages/StabilityCalculations"));
+const StabilityQuizPage = lazy(() => import("./pages/StabilityQuiz"));
+const StabilityShearingBendingPage = lazy(() => import("./pages/StabilityShearingBending"));
+const NavigationQuizPage = lazy(() => import("./pages/NavigationQuiz"));
+const NavigationAssistantPage = lazy(() => import("./pages/NavigationAssistant"));
+const ClockPage = lazy(() => import("./pages/Clock"));
+const AuthCallback = lazy(() => import("./pages/AuthCallback"));
+const StabilityPracticalPage = lazy(() => import("./pages/StabilityPractical"));
+const StabilityPracticalTankPage = lazy(() => import("./pages/StabilityPracticalTank"));
+const StabilityPracticalFWAPage = lazy(() => import("./pages/StabilityPracticalFWA"));
+const StabilityPracticalGHMPage = lazy(() => import("./pages/StabilityPracticalGHM"));
+const StabilityGrainCalculationPage = lazy(() => import("./pages/StabilityGrainCalculation"));
+const StabilityGZCurvePage = lazy(() => import("./pages/StabilityGZCurve"));
+const StabilityWindWeatherPage = lazy(() => import("./pages/StabilityWindWeather"));
+const StabilityIMOCriteriaPage = lazy(() => import("./pages/StabilityIMOCriteria"));
+const SafetyCalculationsPage = lazy(() => import("./pages/SafetyCalculations"));
+const TankCalculationsPage = lazy(() => import("./pages/TankCalculations"));
+const BallastPage = lazy(() => import("./pages/Ballast"));
+const EnginePage = lazy(() => import("./pages/Engine"));
+const HydrodynamicsPage = lazy(() => import("./pages/Hydrodynamics"));
+const StructuralCalculationsPage = lazy(() => import("./pages/StructuralCalculations"));
+const SpecialShipCalculationsPage = lazy(() => import("./pages/SpecialShipCalculations"));
+const EmissionCalculationsPage = lazy(() => import("./pages/EmissionCalculationsPage"));
+const MachineTopicCalculationsPage = lazy(() => import("./pages/MachineTopicCalculationsPage"));
+const MachineTopicFormulasPage = lazy(() => import("./pages/MachineTopicFormulasPage"));
+const MachineTopicRulesPage = lazy(() => import("./pages/MachineTopicRulesPage"));
+const MachineTopicAssistantPage = lazy(() => import("./pages/MachineTopicAssistantPage"));
+const MachineTopicQuizPage = lazy(() => import("./pages/MachineTopicQuizPage"));
+const MachineTopicLessonsPage = lazy(() => import("./pages/MachineTopicLessonsPage"));
+const MachineTopicDetailPage = lazy(() => import("./pages/MachineTopicDetailPage"));
+const EmissionFormulas = lazy(() => import("./pages/EmissionFormulas"));
+const EmissionRules = lazy(() => import("./pages/EmissionRules"));
+const EmissionAssistant = lazy(() => import("./pages/EmissionAssistant"));
+const EmissionQuiz = lazy(() => import("./pages/EmissionQuiz"));
+const SOLASRegulationsPage = lazy(() => import("./pages/SOLASRegulations"));
+const SOLASCertificatesPage = lazy(() => import("./pages/SOLASCertificates"));
+const SOLASShipRequirementsPage = lazy(() => import("./pages/SOLASShipRequirements"));
+const SOLASSafetyEquipmentPage = lazy(() => import("./pages/SOLASSafetyEquipment"));
+const BridgeDeviceDetailPage = lazy(() => import("./pages/BridgeDeviceDetail"));
+const WeatherForecast = lazy(() => import("./pages/WeatherForecast"));
+const SunsetTimes = lazy(() => import("./pages/SunsetTimes"));
+const SunriseTimes = lazy(() => import("./pages/SunriseTimes"));
+const LocationSelector = lazy(() => import("./pages/LocationSelector"));
+const DraftSurveyCalculator = lazy(() => import("./pages/DraftSurveyCalculator"));
+const DraftSurveyStandard = lazy(() => import("./pages/DraftSurveyStandard"));
+const DraftSurveyPreloading = lazy(() => import("./pages/DraftSurveyPreloading"));
+const DraftSurveyIntermediate = lazy(() => import("./pages/DraftSurveyIntermediate"));
+const DraftSurveyPostdischarge = lazy(() => import("./pages/DraftSurveyPostdischarge"));
+const DraftSurveyComparative = lazy(() => import("./pages/DraftSurveyComparative"));
+const DraftSurveyBallast = lazy(() => import("./pages/DraftSurveyBallast"));
+const DraftSurveyDensity = lazy(() => import("./pages/DraftSurveyDensity"));
+const DraftSurveyBunker = lazy(() => import("./pages/DraftSurveyBunker"));
+const CargoCalculationsPage = lazy(() => import("./pages/CargoCalculations"));
+const CargoRulesPage = lazy(() => import("./pages/CargoRules"));
+const CargoAssistantPage = lazy(() => import("./pages/CargoAssistant"));
+const CargoQuizPage = lazy(() => import("./pages/CargoQuiz"));
+const MeteorologyFormulasPage = lazy(() => import("./pages/MeteorologyFormulas"));
+const MeteorologyRulesPage = lazy(() => import("./pages/MeteorologyRules"));
+const MeteorologyAssistantPage = lazy(() => import("./pages/MeteorologyAssistant"));
+const MeteorologyQuizPage = lazy(() => import("./pages/MeteorologyQuiz"));
+const SeamanshipCalculationsPage = lazy(() =>
+  import("./pages/SeamanshipCalculations").then((m) => ({ default: m.default }))
+);
+const SeamanshipCalculationDetailPage = lazy(() =>
+  import("./pages/SeamanshipCalculations").then((m) => ({ default: m.SeamanshipCalculationDetailPage }))
+);
+const SeamanshipFormulasPage = lazy(() => import("./pages/SeamanshipFormulas"));
+const SeamanshipRulesPage = lazy(() => import("./pages/SeamanshipRules"));
+const SeamanshipAssistantPage = lazy(() => import("./pages/SeamanshipAssistant"));
+const SeamanshipQuizPage = lazy(() => import("./pages/SeamanshipQuiz"));
+const SafetyFormulasPage = lazy(() => import("./pages/SafetyFormulas"));
+const SafetyRulesPage = lazy(() => import("./pages/SafetyRules"));
+const SafetyAssistantPage = lazy(() => import("./pages/SafetyAssistant"));
+const SafetyQuizPage = lazy(() => import("./pages/SafetyQuiz"));
+const MachineAssistantPage = lazy(() => import("./pages/MachineAssistant"));
+const MachineCalculationsPage = lazy(() => import("./pages/MachineCalculationsPage"));
+const MachineFormulasPage = lazy(() => import("./pages/MachineFormulas"));
+const MachineQuizPage = lazy(() => import("./pages/MachineQuiz"));
+const MachineRulesPage = lazy(() => import("./pages/MachineRules"));
+const RegulationDetailPage = lazy(() => import("./pages/RegulationDetailPage"));
+const ExamPreparationPage = lazy(() => import("./pages/ExamPreparationPage"));
+const WidgetPage = lazy(() => import("./pages/WidgetPage"));
+const MaritimeNews = lazy(() => import("./pages/MaritimeNews"));
+const CrewRoleDetailPage = lazy(() => import("./pages/CrewRoleDetail"));
+const CrewTaskDeepDive = lazy(() => import("./pages/CrewTaskDeepDive"));
+const LessonTopicsPage = lazy(() => import("./pages/LessonTopicsPage"));
+const LessonTopicDetailPage = lazy(() => import("./pages/LessonTopicDetailPage"));
+const ShipSystemsPage = lazy(() => import("./pages/ShipSystemsPage"));
+const ShipSystemDetailPage = lazy(() => import("./pages/ShipSystemDetailPage"));
+const StabilityTopicsPage = lazy(() => import("./pages/StabilityTopicsPage"));
+const CargoTopicsPage = lazy(() => import("./pages/CargoTopicsPage"));
+const SeamanshipTopicsPage = lazy(() => import("./pages/SeamanshipTopicsPage"));
+const SafetyTopicsPage = lazy(() => import("./pages/SafetyTopicsPage"));
+const EnvironmentTopicsPage = lazy(() => import("./pages/EnvironmentTopicsPage"));
+const EconomicsTopicsPage = lazy(() => import("./pages/EconomicsTopicsPage"));
+const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
+const BetaWorkHoursTool = lazy(() => import("./pages/BetaWorkHoursTool"));
 
-import DetailedMeteorology from "./pages/DetailedMeteorology";
-import COLREGPresentation from "./pages/COLREGPresentation";
-import NavigationRulesPage from "./pages/NavigationRules";
-import StabilityCalculationsPage from "./pages/StabilityCalculations";
-import StabilityQuizPage from "./pages/StabilityQuiz";
-import StabilityShearingBendingPage from "./pages/StabilityShearingBending";
-import NavigationQuizPage from "./pages/NavigationQuiz";
-import NavigationAssistantPage from "./pages/NavigationAssistant";
-import ClockPage from "./pages/Clock";
-import AuthCallback from "./pages/AuthCallback";
-import StabilityPracticalPage from "./pages/StabilityPractical";
-import StabilityPracticalTankPage from "./pages/StabilityPracticalTank";
-import StabilityPracticalFWAPage from "./pages/StabilityPracticalFWA";
-import StabilityPracticalGHMPage from "./pages/StabilityPracticalGHM";
-import StabilityGrainCalculationPage from "./pages/StabilityGrainCalculation";
-import StabilityGZCurvePage from "./pages/StabilityGZCurve";
-import StabilityWindWeatherPage from "./pages/StabilityWindWeather";
-import StabilityIMOCriteriaPage from "./pages/StabilityIMOCriteria";
-import SafetyCalculationsPage from "./pages/SafetyCalculations";
-import TankCalculationsPage from "./pages/TankCalculations";
-import BallastPage from "./pages/Ballast";
-import EnginePage from "./pages/Engine";
-import HydrodynamicsPage from "./pages/Hydrodynamics";
-import StructuralCalculationsPage from "./pages/StructuralCalculations";
-import SpecialShipCalculationsPage from "./pages/SpecialShipCalculations";
-import EmissionCalculationsPage from "./pages/EmissionCalculationsPage";
-import MachineTopicCalculationsPage from "./pages/MachineTopicCalculationsPage";
-import MachineTopicFormulasPage from "./pages/MachineTopicFormulasPage";
-import MachineTopicRulesPage from "./pages/MachineTopicRulesPage";
-import MachineTopicAssistantPage from "./pages/MachineTopicAssistantPage";
-import MachineTopicQuizPage from "./pages/MachineTopicQuizPage";
-import MachineTopicLessonsPage from "./pages/MachineTopicLessonsPage";
-import MachineTopicDetailPage from "./pages/MachineTopicDetailPage";
-
-import EmissionFormulas from "./pages/EmissionFormulas";
-import EmissionRules from "./pages/EmissionRules";
-import EmissionAssistant from "./pages/EmissionAssistant";
-import EmissionQuiz from "./pages/EmissionQuiz";
-import SOLASRegulationsPage from "./pages/SOLASRegulations";
-import SOLASCertificatesPage from "./pages/SOLASCertificates";
-import SOLASShipRequirementsPage from "./pages/SOLASShipRequirements";
-import SOLASSafetyEquipmentPage from "./pages/SOLASSafetyEquipment";
-import BridgeDeviceDetailPage from "./pages/BridgeDeviceDetail";
-import WeatherForecast from "./pages/WeatherForecast";
-import SunsetTimes from "./pages/SunsetTimes";
-import SunriseTimes from "./pages/SunriseTimes";
-import LocationSelector from "./pages/LocationSelector";
-import DraftSurveyCalculator from "./pages/DraftSurveyCalculator";
-import DraftSurveyStandard from "./pages/DraftSurveyStandard";
-import DraftSurveyPreloading from "./pages/DraftSurveyPreloading";
-import DraftSurveyIntermediate from "./pages/DraftSurveyIntermediate";
-import DraftSurveyPostdischarge from "./pages/DraftSurveyPostdischarge";
-import DraftSurveyComparative from "./pages/DraftSurveyComparative";
-import DraftSurveyBallast from "./pages/DraftSurveyBallast";
-import DraftSurveyDensity from "./pages/DraftSurveyDensity";
-import DraftSurveyBunker from "./pages/DraftSurveyBunker";
-import CargoCalculationsPage from "./pages/CargoCalculations";
-
-import CargoRulesPage from "./pages/CargoRules";
-import CargoAssistantPage from "./pages/CargoAssistant";
-import CargoQuizPage from "./pages/CargoQuiz";
-import MeteorologyFormulasPage from "./pages/MeteorologyFormulas";
-import MeteorologyRulesPage from "./pages/MeteorologyRules";
-import MeteorologyAssistantPage from "./pages/MeteorologyAssistant";
-import MeteorologyQuizPage from "./pages/MeteorologyQuiz";
-import SeamanshipCalculationsPage, { SeamanshipCalculationDetailPage } from "./pages/SeamanshipCalculations";
-import SeamanshipFormulasPage from "./pages/SeamanshipFormulas";
-import SeamanshipRulesPage from "./pages/SeamanshipRules";
-import SeamanshipAssistantPage from "./pages/SeamanshipAssistant";
-import SeamanshipQuizPage from "./pages/SeamanshipQuiz";
-
-import SafetyFormulasPage from "./pages/SafetyFormulas";
-import SafetyRulesPage from "./pages/SafetyRules";
-import SafetyAssistantPage from "./pages/SafetyAssistant";
-import SafetyQuizPage from "./pages/SafetyQuiz";
-import MachineAssistantPage from "./pages/MachineAssistant";
-import MachineCalculationsPage from "./pages/MachineCalculationsPage";
-import MachineFormulasPage from "./pages/MachineFormulas";
-import MachineQuizPage from "./pages/MachineQuiz";
-import MachineRulesPage from "./pages/MachineRules";
-import RegulationDetailPage from "./pages/RegulationDetailPage";
-import ExamPreparationPage from "./pages/ExamPreparationPage";
-
-import WidgetPage from "./pages/WidgetPage";
-import MaritimeNews from "./pages/MaritimeNews";
-
-import CrewRoleDetailPage from "./pages/CrewRoleDetail";
-import CrewTaskDeepDive from "./pages/CrewTaskDeepDive";
-import LessonTopicsPage from "./pages/LessonTopicsPage";
-import LessonTopicDetailPage from "./pages/LessonTopicDetailPage";
-
-import ShipSystemsPage from "./pages/ShipSystemsPage";
-import ShipSystemDetailPage from "./pages/ShipSystemDetailPage";
-import StabilityTopicsPage from "./pages/StabilityTopicsPage";
-import CargoTopicsPage from "./pages/CargoTopicsPage";
-import SeamanshipTopicsPage from "./pages/SeamanshipTopicsPage";
-import SafetyTopicsPage from "./pages/SafetyTopicsPage";
-import EnvironmentTopicsPage from "./pages/EnvironmentTopicsPage";
-import EconomicsTopicsPage from "./pages/EconomicsTopicsPage";
-import BetaFeaturesPage from "./pages/BetaFeaturesPage";
-import BetaWorkHoursTool from "./pages/BetaWorkHoursTool";
 const queryClient = new QueryClient();
+
+const RouteFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="animate-spin">
+      <ShipWheel className="h-10 w-10 text-primary" />
+    </div>
+  </div>
+);
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -164,7 +176,7 @@ const AnimatedRoutes = () => {
   useNavigationHierarchy();
 
   return (
-    <>
+    <Suspense fallback={<RouteFallback />}>
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
@@ -319,7 +331,7 @@ const AnimatedRoutes = () => {
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
     </AnimatePresence>
-    </>
+    </Suspense>
   );
 };
 
