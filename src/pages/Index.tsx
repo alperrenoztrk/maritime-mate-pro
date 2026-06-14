@@ -207,15 +207,29 @@ const Index = () => {
         <Settings className="w-6 h-6 text-white/70" />
       </button>
 
-      {/* Left arrow indicator */}
-      <div className="fixed left-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none opacity-30">
-        <ChevronLeft className="w-6 h-6 text-white drop-shadow-lg animate-pulse" />
-      </div>
+      {/* Left navigation button → Maritime News */}
+      <button
+        onClick={(e) => { e.stopPropagation(); navigate('/maritime-news'); }}
+        aria-label="Denizcilik Haberleri"
+        className="fixed left-2 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 group"
+      >
+        <div className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-200 group-hover:bg-white/25 group-active:scale-90">
+          <ChevronLeft className="w-5 h-5 text-white drop-shadow-lg" />
+        </div>
+        <span className="text-[9px] text-white/50 font-medium leading-tight max-w-[48px] text-center">Haberler</span>
+      </button>
 
-      {/* Right arrow indicator */}
-      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none opacity-30">
-        <ChevronRight className="w-6 h-6 text-white drop-shadow-lg animate-pulse" />
-      </div>
+      {/* Right navigation button → Widgets */}
+      <button
+        onClick={(e) => { e.stopPropagation(); navigate('/widgets'); }}
+        aria-label="Araçlar"
+        className="fixed right-2 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 group"
+      >
+        <div className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-200 group-hover:bg-white/25 group-active:scale-90">
+          <ChevronRight className="w-5 h-5 text-white drop-shadow-lg" />
+        </div>
+        <span className="text-[9px] text-white/50 font-medium leading-tight max-w-[48px] text-center">Araçlar</span>
+      </button>
 
       {/* Main content */}
       <div className="relative z-10 flex min-h-[100svh] flex-col items-center px-6 text-center">
