@@ -12,6 +12,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
+import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import Index from "./pages/Index";
 import CalculationsMenu from "./pages/CalculationsMenu";
 import LessonsPage from "./pages/LessonsPage";
@@ -165,6 +166,7 @@ const AnimatedRoutes = () => {
 
   return (
     <>
+    <FloatingNavButtons />
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
