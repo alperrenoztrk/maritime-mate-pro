@@ -1,0 +1,68 @@
+# Marine Expert Pro
+
+> Interactive maritime learning platform with calculators, lessons, and reference tools for sailors and maritime students.
+
+Marine Expert Pro offers professional ship stability and cargo calculations, navigation and meteorology lessons, COLREG references, ship systems and operations guides, and animated educational content used by maritime students and active seafarers.
+
+## Pages
+
+- [Home](/): Overview of Marine Expert Pro's tools and lessons.
+- [Calculations Hub](/calculations): Entry point for all maritime calculation tools.
+- [Lessons](/lessons): Interactive maritime course content.
+- [Maritime Glossary](/glossary): Definitions of maritime terms.
+- [Crew & Personnel Hierarchy](/crew): Ship personnel roles, duties, and equipment.
+- [Ship Systems](/ship-systems): Reference for onboard mechanical, electrical, and auxiliary systems.
+- [Ship Operations](/ship-operations): Mooring, anchoring, departure procedures.
+- [Bridge Equipment](/bridge): Radar, AIS, ECDIS, GPS and other bridge instruments.
+- [Passage Plan](/passage-plan): Voyage planning workflow.
+- [Maritime News](/maritime-news): Curated maritime industry news.
+
+## Navigation
+
+- [Navigation Calculations](/hub/navigation): Position, course, and sailing computations.
+- [Navigation Lessons](/lessons/navigation/topics): Coastal, celestial, and electronic navigation.
+- [COLREG](/colreg): Collision regulation presentations.
+
+## Stability
+
+- [Stability Calculations](/stability/calculations): GM, GZ, free surface and related computations.
+- [Stability Lessons](/lessons/stability/topics): Ship stability theory and practice.
+- [Stability Formulas](/stability/formulas): Reference formulas.
+- [Stability Rules](/stability/rules): IMO stability criteria.
+
+## Cargo
+
+- [Cargo Calculations Hub](/hub/cargo): Draft survey, density, ballast, bunker calculators.
+- [Draft Survey](/cargo/calculations/draft-survey): Pre-loading, intermediate, post-discharge surveys.
+- [Cargo Lessons](/lessons/cargo/topics): Cargo handling and stowage.
+- [Cargo Formulas](/cargo/formulas): Reference formulas.
+
+## Meteorology
+
+- [Meteorology Lessons](/meteorology/topics): Weather systems, wind, pressure, clouds.
+- [Meteorology Formulas](/meteorology/formulas): Reference formulas.
+
+## Safety & Environment
+
+- [Safety Calculations](/safety): Safety-related computations.
+- [SOLAS Regulations](/solas/regulations): Reference summaries.
+- [Safety Lessons](/lessons/safety/topics): Safety topics.
+- [Emissions](/emissions): CO2, CII, EEXI calculators.
+- [Environment Rules](/environment/rules): MARPOL and related rules.
+
+## Engineering
+
+- [Engine Calculations](/engine): Engine-room calculations.
+- [Machinery Reference](/machinery): Machinery overview.
+- [Tank Calculations](/tank): Sounding and volume tools.
+- [Ballast](/ballast): Ballast water management.
+- [Hydrodynamics](/hydrodynamics): Flow and resistance.
+- [Structural](/structural): Structural strength calculations.
+- [Special Ships](/special-ships): Tanker, container, passenger ship calculators.
+
+## Optional
+
+- [Seamanship Lessons](/lessons/seamanship/topics): Knots, mooring, maneuvering.
+- [Economics Lessons](/lessons/economics/topics): Maritime economics.
+- [Widgets](/widgets): Weather and almanac widgets.
+- [Ship Tasks](/ship-tasks): Daily shipboard task references.
