@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, FlaskConical, Clock4 } from "lucide-react";
+import { ArrowLeft, FlaskConical, Clock4, ClipboardCheck } from "lucide-react";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 const FEATURES = [
@@ -9,6 +9,14 @@ const FEATURES = [
     description:
       "Jurnal, önceki ay tablosu ve personel listesi fotoğraflarından MLC/STCW formatında çalışma saati tablosu üretir. Excel olarak indirilir.",
     icon: Clock4,
+    badge: "Yeni",
+  },
+  {
+    to: "/beta/psc-checklist",
+    title: "PSC Denetim Hazırlık Listesi",
+    description:
+      "Liman Devleti Kontrolü öncesi sertifika, can kurtarma, yangın, seyir, MARPOL ve MLC maddelerini madde madde kontrol edin. Excel rapor olarak indirilir.",
+    icon: ClipboardCheck,
     badge: "Yeni",
   },
 ];

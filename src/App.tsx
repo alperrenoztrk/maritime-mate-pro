@@ -155,6 +155,7 @@ import EnvironmentTopicsPage from "./pages/EnvironmentTopicsPage";
 import EconomicsTopicsPage from "./pages/EconomicsTopicsPage";
 import BetaFeaturesPage from "./pages/BetaFeaturesPage";
 import BetaWorkHoursTool from "./pages/BetaWorkHoursTool";
+import BetaPscChecklist from "./pages/BetaPscChecklist";
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
@@ -177,6 +178,7 @@ const AnimatedRoutes = () => {
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
         <Route path="/beta/work-hours" element={<PageTransition><BetaWorkHoursTool /></PageTransition>} />
+        <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
         
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
         <Route path="/lessons/cargo/topics" element={<PageTransition><CargoTopicsPage /></PageTransition>} />
