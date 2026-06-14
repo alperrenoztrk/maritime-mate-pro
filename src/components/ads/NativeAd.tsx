@@ -15,7 +15,7 @@ export const NativeAd = ({ className = "" }: NativeAdProps) => {
     description: "Professional ship design and stability analysis software used by leading shipyards worldwide.",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop",
     badge: "Sponsored",
-    cta: "Learn More",
+    cta: "View Software Details",
     rating: 4.8,
     features: ["SOLAS Compliance", "Real-time Analysis", "Global Standards"],
     company: "NaviTech Marine"

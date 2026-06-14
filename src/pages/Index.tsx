@@ -237,6 +237,7 @@ const Index = () => {
           >
             <span className="block text-[clamp(2.5rem,9vw,4.5rem)] leading-tight">MARINE</span>
             <span className="block text-[clamp(2.5rem,9vw,4.5rem)] leading-tight">EXPERT PRO</span>
+            <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
           </h1>
         </div>
 
