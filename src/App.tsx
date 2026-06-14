@@ -82,6 +82,8 @@ import SpecialShipCalculationsPage from "./pages/SpecialShipCalculations";
 import EmissionCalculationsPage from "./pages/EmissionCalculationsPage";
 import MachineTopicCalculationsPage from "./pages/MachineTopicCalculationsPage";
 import MachineTopicFormulasPage from "./pages/MachineTopicFormulasPage";
+import CourseFormulasPage from "./pages/CourseFormulasPage";
+import CourseCalculationsPage from "./pages/CourseCalculationsPage";
 import MachineTopicRulesPage from "./pages/MachineTopicRulesPage";
 import MachineTopicAssistantPage from "./pages/MachineTopicAssistantPage";
 import MachineTopicQuizPage from "./pages/MachineTopicQuizPage";
@@ -186,6 +188,8 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/safety/topics" element={<PageTransition><SafetyTopicsPage /></PageTransition>} />
         <Route path="/lessons/environment/topics" element={<PageTransition><EnvironmentTopicsPage /></PageTransition>} />
         <Route path="/lessons/economics/topics" element={<PageTransition><EconomicsTopicsPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/formulas" element={<PageTransition><CourseFormulasPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/calculations" element={<PageTransition><CourseCalculationsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />

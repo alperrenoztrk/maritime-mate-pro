@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
+import { hasCourseTopic } from "@/data/courseContent";
 import { ChevronDown, ChevronRight, GraduationCap, Ship, Wrench } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 import { BottomNavigation } from "@/components/BottomNavigation";
@@ -97,6 +98,8 @@ export default function LessonsPage() {
                       // Extract slug for machine topics
                       const isMachineTopic = (category.id as string).startsWith("machine-");
                       const machineSlug = isMachineTopic ? (category.id as string).replace("machine-", "") : null;
+                      // Birleşik tek-kaynak registry anahtarı (makine = slug, güverte = id)
+                      const topicKey = isMachineTopic ? machineSlug : (category.id as string);
 
                       return (
                         <div key={category.id} className="space-y-3">
@@ -128,10 +131,18 @@ export default function LessonsPage() {
 
                             {category.sections.map((section) => {
                               const SectionIcon = sectionIconMap[section.id];
+                              // Konu tek kaynak registry'de ise Formüller/Hesaplamalar
+                              // birleşik sayfalara yönlendirilir (tek tasarım + bağlı içerik).
+                              const useUnified =
+                                hasCourseTopic(topicKey ?? undefined) &&
+                                (section.id === "formulas" || section.id === "calculations");
+                              const sectionHref = useUnified
+                                ? `/lessons/${topicKey}/${section.id}`
+                                : section.href || "#";
                               return (
                                 <Link
                                   key={`${category.id}-${section.id}`}
-                                  to={section.href || "#"}
+                                  to={sectionHref}
                                   className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
                                 >
                                   <div
