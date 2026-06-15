@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { getMaritimeTranslationOverride } from '@/utils/maritimeGlossary';
 
 interface SupportedLanguage {
   language: string;
@@ -173,6 +174,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const cacheKey = `${languageCode}:${normalizedText}`;
     const cached = translationCacheRef.current.get(cacheKey);
     if (cached) return cached;
+
+    // Maritime terminology takes precedence over generic machine translation,
+    // so the core nautical vocabulary is always rendered with the correct
+    // professional term (e.g. "Sancak Tarafı" -> "Starboard side", not "Banner").
+    const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
+    if (maritimeOverride) {
+      translationCacheRef.current.set(cacheKey, maritimeOverride);
+      return maritimeOverride;
+    }
 
     try {
       const response = await fetch(
