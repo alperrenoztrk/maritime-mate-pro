@@ -22,6 +22,8 @@ import { meteorology } from "./meteorology";
 import { seamanship } from "./seamanship";
 import { safety } from "./safety";
 import { environment } from "./environment";
+import { communication } from "./communication";
+import { economics } from "./economics";
 
 export type { CourseEntry, CourseTopic } from "./types";
 
@@ -56,6 +58,8 @@ export const courseTopics: Record<string, CourseTopic> = {
   seamanship,
   safety,
   environment,
+  communication,
+  economics,
 };
 
 /** Verilen anahtara karşılık gelen konuyu döndürür (yoksa null). */
