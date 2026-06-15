@@ -17,8 +17,11 @@ import { erm } from "./erm";
 import { energyEfficiency } from "./energy-efficiency";
 import { stability } from "./stability";
 import { navigation } from "./navigation";
+import { cargo } from "./cargo";
 import { meteorology } from "./meteorology";
+import { seamanship } from "./seamanship";
 import { safety } from "./safety";
+import { environment } from "./environment";
 
 export type { CourseEntry, CourseTopic } from "./types";
 
@@ -48,8 +51,11 @@ export const courseTopics: Record<string, CourseTopic> = {
   // Güverte
   stability,
   navigation,
+  cargo,
   meteorology,
+  seamanship,
   safety,
+  environment,
 };
 
 /** Verilen anahtara karşılık gelen konuyu döndürür (yoksa null). */
