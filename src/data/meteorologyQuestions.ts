@@ -200,6 +200,339 @@ export const meteorologyQuestions: QuizQuestion[] = [
     correctAnswer: 1,
     explanation: "Swell: uzak fırtınaların ürettiği, uzun periyotlu düzenli dalga sistemidir.",
     category: "Dalgalar"
+  },
+  {
+    id: 26,
+    question: "Sinoptik haritada izobarların çok sık (birbirine yakın) çizildiği bölge neyi gösterir?",
+    options: [
+      "Zayıf rüzgâr",
+      "Güçlü basınç gradyanı ve dolayısıyla kuvvetli rüzgâr",
+      "Sis bölgesi",
+      "Sakin deniz"
+    ],
+    correctAnswer: 1,
+    explanation: "Sık izobarlar büyük basınç gradyanı demektir; gradyan ne kadar büyükse rüzgâr o kadar şiddetlidir.",
+    category: "Sinoptik Harita"
+  },
+  {
+    id: 27,
+    question: "Buys Ballot yasası Güney yarımkürede nasıl uygulanır?",
+    options: [
+      "Sırtı rüzgâra verince alçak basınç solda kalır",
+      "Yüzü rüzgâra dönünce alçak basınç solda kalır; sırtı rüzgâra verince alçak sağdadır",
+      "Alçak basınç her zaman önde kalır",
+      "Yasa GH'de geçersizdir"
+    ],
+    correctAnswer: 1,
+    explanation: "GH'de Coriolis ters yönlüdür; sırtınızı rüzgâra verdiğinizde alçak basınç sağ tarafta kalır (KH'nin tersi).",
+    category: "Sinoptik Harita"
+  },
+  {
+    id: 28,
+    question: "Sinoptik haritada 'ridge' (sırt) terimi neyi ifade eder?",
+    options: [
+      "Alçak basıncın uzantısı",
+      "Yüksek basıncın uzantısı; genellikle sakin/açık hava",
+      "Cephe çizgisi",
+      "İzoterm"
+    ],
+    correctAnswer: 1,
+    explanation: "Ridge, yüksek basınç alanının dışarı doğru uzantısıdır ve genellikle stabil, açık hava ile ilişkilidir.",
+    category: "Sinoptik Harita"
+  },
+  {
+    id: 29,
+    question: "Sinoptik haritada 'trough' (oluk/çukur) neyi gösterir?",
+    options: [
+      "Yüksek basınç sırtı",
+      "Alçak basıncın uzantısı; genellikle bulutlu ve yağışlı hava",
+      "Sabit basınç hattı",
+      "Sakin deniz"
+    ],
+    correctAnswer: 1,
+    explanation: "Trough, alçak basıncın dışa uzantısıdır; bozuk, bulutlu, yağışlı hava ve rüzgâr değişimleriyle ilişkilidir.",
+    category: "Sinoptik Harita"
+  },
+  {
+    id: 30,
+    question: "Beaufort skalasında 12. kuvvet neyi ifade eder?",
+    options: [
+      "Kuvvetli esinti",
+      "Fırtına (storm)",
+      "Orkan/Hurricane (≥ 64 knot)",
+      "Sakin"
+    ],
+    correctAnswer: 2,
+    explanation: "Beaufort 12 = Hurricane force; rüzgâr 64 knot ve üzeridir.",
+    category: "Beaufort"
+  },
+  {
+    id: 31,
+    question: "Beaufort 0 (Calm) hangi deniz durumunu tanımlar?",
+    options: [
+      "Ayna gibi düz deniz, rüzgâr < 1 knot",
+      "Küçük dalgalar",
+      "Köpüklü tepeler",
+      "Kırılan dalgalar"
+    ],
+    correctAnswer: 0,
+    explanation: "Beaufort 0: rüzgâr 1 knot'tan az; deniz ayna gibidir.",
+    category: "Beaufort"
+  },
+  {
+    id: 32,
+    question: "Sirrus (Ci) bulutları aşağıdakilerden hangisiyle tanımlanır?",
+    options: [
+      "Yüksek seviyede buz kristallerinden oluşan ince, tüy benzeri bulutlar",
+      "Alçak seviye yağmur bulutları",
+      "Dikey gelişen fırtına bulutları",
+      "Yer seviyesi sis"
+    ],
+    correctAnswer: 0,
+    explanation: "Sirrus, yüksek troposferde buz kristallerinden oluşan ince beyaz lifli bulutlardır; sıklıkla cephe yaklaşımının ilk işaretidir.",
+    category: "Bulutlar"
+  },
+  {
+    id: 33,
+    question: "Stratus (St) bulutu tipik olarak hangi havayla ilişkilidir?",
+    options: [
+      "Şiddetli gök gürültülü fırtına",
+      "Düşük, gri, örtü gibi bulut; çiseleme ve düşük görüş",
+      "Açık ve güneşli hava",
+      "Dolu fırtınası"
+    ],
+    correctAnswer: 1,
+    explanation: "Stratus alçak, gri tabaka bulutudur; çiseleme ve azalan görüşle ilişkilidir.",
+    category: "Bulutlar"
+  },
+  {
+    id: 34,
+    question: "Bulut yükseklik sınıflandırmasında 'alto' öneki hangi seviyeyi belirtir?",
+    options: [
+      "Alçak seviye",
+      "Orta seviye bulutlar (yaklaşık 2–7 km)",
+      "Yüksek seviye",
+      "Yer seviyesi"
+    ],
+    correctAnswer: 1,
+    explanation: "Altocumulus ve altostratus orta seviye (genelde 2–7 km) bulutlarıdır.",
+    category: "Bulutlar"
+  },
+  {
+    id: 35,
+    question: "Oklüzyon (occluded) cephesi nasıl oluşur?",
+    options: [
+      "İki yüksek basıncın birleşmesiyle",
+      "Hızlı ilerleyen soğuk cephenin önündeki sıcak cepheye yetişip sıcak havayı yukarı kaldırmasıyla",
+      "Sıcak cephenin yok olmasıyla",
+      "Sadece tropik bölgelerde"
+    ],
+    correctAnswer: 1,
+    explanation: "Soğuk cephe sıcak cepheye yetişir, sıcak sektör yerden kaldırılır ve oklüzyon cephesi oluşur.",
+    category: "Cepheler"
+  },
+  {
+    id: 36,
+    question: "Soğuk cephe geçtikten sonra rüzgâr yönü Kuzey yarımkürede tipik olarak nasıl değişir?",
+    options: [
+      "Geri döner (backing)",
+      "Saat yönünde döner (veering), örn. güneybatıdan kuzeybatıya",
+      "Tamamen kesilir",
+      "Hiç değişmez"
+    ],
+    correctAnswer: 1,
+    explanation: "KH'de soğuk cephe geçişinde rüzgâr genellikle veer eder (saat yönünde), basınç yükselir ve hava temizlenir.",
+    category: "Cepheler"
+  },
+  {
+    id: 37,
+    question: "Sıcak cephenin eğimi (slope) soğuk cepheye göre nasıldır?",
+    options: [
+      "Daha dik",
+      "Daha az eğimli (yatık); bu yüzden yağış bandı geniş ve uzun sürelidir",
+      "Tamamen dikey",
+      "Aynıdır"
+    ],
+    correctAnswer: 1,
+    explanation: "Sıcak cephe yatık eğimlidir; geniş ve uzun süreli tabaka bulutu/yağış üretir. Soğuk cephe diktir ve dar konvektif yağış verir.",
+    category: "Cepheler"
+  },
+  {
+    id: 38,
+    question: "Radyasyon (yer) sisi tipik olarak hangi koşulda oluşur?",
+    options: [
+      "Rüzgârlı ve bulutlu gecelerde",
+      "Açık, sakin (hafif rüzgârlı) gecelerde karada yüzeyin ışınımla soğumasıyla",
+      "Öğle vakti güçlü güneşte",
+      "Fırtına sırasında"
+    ],
+    correctAnswer: 1,
+    explanation: "Radyasyon sisi açık, sakin gecelerde karada yüzey soğumasıyla oluşur; gündüz ısınınca dağılır. Denizde nadirdir.",
+    category: "Sis"
+  },
+  {
+    id: 39,
+    question: "Buharlaşma (steam/arctic sea smoke) sisi nasıl oluşur?",
+    options: [
+      "Sıcak hava soğuk su üstüne geldiğinde",
+      "Çok soğuk hava nispeten sıcak su üzerine geldiğinde, sudan buharlaşan nemin yoğuşmasıyla",
+      "Yağmurdan sonra",
+      "Yüksek basınçta"
+    ],
+    correctAnswer: 1,
+    explanation: "Soğuk hava sıcak su üstüne gelince su yüzeyinden buharlaşan nem hemen yoğuşur; 'sea smoke' (deniz dumanı) oluşur.",
+    category: "Sis"
+  },
+  {
+    id: 40,
+    question: "Tropikal dönen fırtınada (TRS) 'tehlikeli yarım daire' (dangerous semicircle) Kuzey yarımkürede neresidir?",
+    options: [
+      "Fırtınanın ilerleme yönüne göre sol taraf",
+      "Fırtınanın ilerleme yönüne göre sağ taraf",
+      "Tam merkez",
+      "Arka taraf"
+    ],
+    correctAnswer: 1,
+    explanation: "KH'de fırtınanın hareket yönüne göre sağ yarım dairede rüzgâr hızı ve ilerleme hızı toplandığından en tehlikeli bölgedir.",
+    category: "Tropikal Fırtına"
+  },
+  {
+    id: 41,
+    question: "Kuzey yarımkürede tehlikeli yarım dairede bulunan bir gemi için klasik kaçınma manevrası nedir?",
+    options: [
+      "Rüzgârı kıçtan alıp merkeze gitmek",
+      "Rüzgârı sancak baş omuzluğunda tutarak (starboard bow) mümkün olan en yüksek hızla uzaklaşmak",
+      "Demir atmak",
+      "Rüzgâra doğru dönmek"
+    ],
+    correctAnswer: 1,
+    explanation: "KH tehlikeli yarım dairede gemi rüzgârı sancak baş omuzluğunda tutup hız yaparak fırtına izinden çıkmaya çalışır.",
+    category: "Tropikal Fırtına"
+  },
+  {
+    id: 42,
+    question: "Barometrede sürekli ve belirgin düşüşle birlikte uzun periyotlu swell gelmesi okyanusta neyin habercisi olabilir?",
+    options: [
+      "Yaklaşan tropikal dönen fırtına",
+      "Sakin hava",
+      "Sis",
+      "Yüksek basınç"
+    ],
+    correctAnswer: 0,
+    explanation: "Olağandışı uzun periyotlu swell ve düşen basınç, ufuktaki bir TRS'nin erken işaretleri olabilir.",
+    category: "Tropikal Fırtına"
+  },
+  {
+    id: 43,
+    question: "Kuzey Atlantik ve Kuzey Pasifik'te tropikal dönen fırtınalara verilen yaygın adlar nelerdir?",
+    options: [
+      "Sırasıyla hurricane ve typhoon",
+      "İkisinde de cyclone",
+      "Sırasıyla typhoon ve hurricane",
+      "İkisinde de willy-willy"
+    ],
+    correctAnswer: 0,
+    explanation: "Kuzey Atlantik/Doğu Pasifik'te 'hurricane', Kuzeybatı Pasifik'te 'typhoon' adı kullanılır.",
+    category: "Tropikal Fırtına"
+  },
+  {
+    id: 44,
+    question: "Hava routeing (weather routeing) servislerinin temel amacı nedir?",
+    options: [
+      "Yakıt fiyatını belirlemek",
+      "Tahmini hava/deniz koşullarına göre en güvenli ve verimli rotayı önererek hasar, gecikme ve yakıt tüketimini azaltmak",
+      "Limanı seçmek",
+      "Mürettebatı planlamak"
+    ],
+    correctAnswer: 1,
+    explanation: "Weather routeing, meteoroloji tahminlerini kullanarak en uygun rotayı önerir; güvenlik, zaman ve yakıt optimizasyonu sağlar.",
+    category: "Hava Routeing"
+  },
+  {
+    id: 45,
+    question: "Swell ile rüzgâr (sea) dalgaları arasındaki temel fark nedir?",
+    options: [
+      "Swell yerel rüzgârla oluşur, sea uzaktan gelir",
+      "Sea yerel rüzgârla oluşan kısa-düzensiz dalga; swell uzaktaki sistemden gelen uzun periyotlu düzenli dalgadır",
+      "İkisi tamamen aynıdır",
+      "Swell sadece sığ suda olur"
+    ],
+    correctAnswer: 1,
+    explanation: "Sea, mevcut yerel rüzgârın ürettiği kısa ve düzensiz dalgalardır; swell ise alandan uzaklaşmış, uzun ve düzenli dalgalardır.",
+    category: "Dalgalar"
+  },
+  {
+    id: 46,
+    question: "Dalga oluşumunda 'fetch' (kabarma mesafesi) neyi ifade eder?",
+    options: [
+      "Dalga yüksekliği",
+      "Rüzgârın aynı yön ve şiddette estiği açık su uzunluğu",
+      "Dalga periyodu",
+      "Su derinliği"
+    ],
+    correctAnswer: 1,
+    explanation: "Fetch, rüzgârın kesintisiz estiği mesafedir; fetch, rüzgâr hızı ve süresi arttıkça dalga yüksekliği büyür.",
+    category: "Dalgalar"
+  },
+  {
+    id: 47,
+    question: "Anemometre hangi büyüklüğü ölçer?",
+    options: ["Basınç", "Rüzgâr hızı", "Nem", "Sıcaklık"],
+    correctAnswer: 1,
+    explanation: "Anemometre rüzgâr hızını (ve genellikle yönünü) ölçen alettir.",
+    category: "Ölçüm"
+  },
+  {
+    id: 48,
+    question: "Geostrofik rüzgâr (geostrophic wind) hangi iki kuvvetin dengesiyle açıklanır?",
+    options: [
+      "Sürtünme ve yerçekimi",
+      "Basınç gradyan kuvveti ile Coriolis kuvveti",
+      "Gelgit ve rüzgâr",
+      "Sadece Coriolis"
+    ],
+    correctAnswer: 1,
+    explanation: "Yüksek atmosferde sürtünmenin ihmal edildiği yerde rüzgâr, basınç gradyan kuvveti ve Coriolis dengesinde izobarlara paralel eser.",
+    category: "Dinamik"
+  },
+  {
+    id: 49,
+    question: "Yüzey rüzgârı, sürtünme nedeniyle geostrofik rüzgâra göre izobarlara göre nasıl davranır?",
+    options: [
+      "İzobarlara tam dik eser",
+      "Sürtünme yönü saptırır; rüzgâr izobarları keserek alçak basınca doğru hafif açıyla eser",
+      "İzobarlara tam paralel eser",
+      "Hiç değişmez"
+    ],
+    correctAnswer: 1,
+    explanation: "Yüzeyde sürtünme rüzgârı yavaşlatır ve alçak basınca doğru izobarları belirli bir açıyla kesmesine yol açar.",
+    category: "Dinamik"
+  },
+  {
+    id: 50,
+    question: "Denizcilikte 'significant wave height' (belirgin dalga yüksekliği, Hs) ne anlama gelir?",
+    options: [
+      "En yüksek tek dalga",
+      "En yüksek üçte birlik dalga grubunun ortalama yüksekliği",
+      "Ortalama tüm dalgalar",
+      "En düşük dalga"
+    ],
+    correctAnswer: 1,
+    explanation: "Hs, gözlenen dalgaların en yüksek 1/3'ünün ortalama yüksekliğidir; deneyimli gözlemcinin tahminine yakındır.",
+    category: "Dalgalar"
+  },
+  {
+    id: 51,
+    question: "Sinoptik haritada cephe sembollerinde sıcak cephe nasıl gösterilir?",
+    options: [
+      "Mavi üçgenlerle",
+      "Kırmızı yarım dairelerle (ilerleme yönüne dönük)",
+      "Mor karışık sembollerle",
+      "Kesik çizgiyle"
+    ],
+    correctAnswer: 1,
+    explanation: "Sıcak cephe kırmızı yarım dairelerle, soğuk cephe mavi üçgenlerle, oklüzyon mor (üçgen+yarım daire) ile gösterilir.",
+    category: "Sinoptik Harita"
   }
 ];
 

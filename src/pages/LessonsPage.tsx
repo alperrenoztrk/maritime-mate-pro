@@ -135,7 +135,10 @@ export default function LessonsPage() {
                               // birleşik sayfalara yönlendirilir (tek tasarım + bağlı içerik).
                               const useUnified =
                                 hasCourseTopic(topicKey ?? undefined) &&
-                                (section.id === "formulas" || section.id === "calculations");
+                                (section.id === "formulas" ||
+                                  section.id === "calculations" ||
+                                  section.id === "rules" ||
+                                  section.id === "quiz");
                               const sectionHref = useUnified
                                 ? `/lessons/${topicKey}/${section.id}`
                                 : section.href || "#";

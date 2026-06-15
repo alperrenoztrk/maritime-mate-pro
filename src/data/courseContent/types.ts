@@ -55,6 +55,19 @@ export interface CourseEntry {
   calculate?: (vals: Record<string, number>) => CalcResult[];
 }
 
+/** Bir kural grubunun alt başlığı + madde listesi. */
+export interface RuleSection {
+  subtitle: string;
+  content: string[];
+}
+
+/** Kural kategorisi (mevcut makine RuleCategory şekliyle uyumlu). */
+export interface RuleGroup {
+  title: string;
+  source?: SourceRef;
+  rules: RuleSection[];
+}
+
 export interface CourseTopic {
   /** Birleşik registry anahtarı: makine = slug, güverte = kategori id. */
   key: string;

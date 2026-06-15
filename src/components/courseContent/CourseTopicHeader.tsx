@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Calculator, Sigma } from "lucide-react";
+import { ArrowLeft, BookOpen, Calculator, ListChecks, Sigma } from "lucide-react";
 import type { CourseTopic } from "@/data/courseContent/types";
 
 /**
@@ -11,11 +11,17 @@ export function CourseTopicHeader({
   section,
 }: {
   topic: CourseTopic;
-  section: "formulas" | "calculations";
+  section: "formulas" | "calculations" | "rules" | "quiz";
 }) {
   const TopicIcon = topic.icon;
-  const SectionIcon = section === "formulas" ? Sigma : Calculator;
-  const sectionLabel = section === "formulas" ? "Formüller" : "Hesaplamalar";
+  const sectionMeta = {
+    formulas: { icon: Sigma, label: "Formüller" },
+    calculations: { icon: Calculator, label: "Hesaplamalar" },
+    rules: { icon: BookOpen, label: "Kurallar" },
+    quiz: { icon: ListChecks, label: "Quiz" },
+  }[section];
+  const SectionIcon = sectionMeta.icon;
+  const sectionLabel = sectionMeta.label;
 
   return (
     <header className="space-y-3">

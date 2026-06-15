@@ -13,7 +13,7 @@ interface RuleCategory {
   rules: RuleSection[];
 }
 
-const topicRules: Record<string, RuleCategory[]> = {
+export const machineTopicRules: Record<string, RuleCategory[]> = {
   thermodynamics: [
     { title: "SOLAS – Makine Dairesi Isı Yönetimi", rules: [
       { subtitle: "Isı Yalıtımı", content: ["Yüzey sıcaklığı 220°C'yi aşan borular ve yüzeyler yalıtılmalıdır (SOLAS II-2/Reg.4)", "Yakıt sızıntısının sıcak yüzeylere temasını önleyecek koruma sacları gereklidir", "Egzoz manifold ve turboşarjer çevreleri düzenli kontrol edilmelidir"] },
@@ -119,7 +119,7 @@ const topicRules: Record<string, RuleCategory[]> = {
 export default function MachineTopicRulesPage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
   const topic = topicSlug ? machineTopicBySlug[topicSlug] : null;
-  const rules = topicSlug ? topicRules[topicSlug] : null;
+  const rules = topicSlug ? machineTopicRules[topicSlug] : null;
 
   if (!topic || !rules) {
     return (
