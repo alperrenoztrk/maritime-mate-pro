@@ -1,0 +1,195 @@
+import { Fuel } from "lucide-react";
+import type { CourseTopic } from "./types";
+
+/**
+ * Yardımcı Makineler — tek kaynak ders içeriği.
+ * Formüller ve hesaplayıcılar TEK listede birleştirildi; `calculate` taşıyan
+ * girdiler hem Formüller hem Hesaplamalar sayfasında görünür.
+ */
+export const auxiliary: CourseTopic = {
+  key: "auxiliary",
+  title: "Yardımcı Makineler",
+  icon: Fuel,
+  accent: "from-amber-500 via-orange-500 to-red-500",
+  group: "machine",
+  intro:
+    "Jeneratörler, kazanlar, separatörler, kompresörler ve tatlı su üreticileri. " +
+    "Her formülün altında, aynı formülü kullanan hesaplayıcı yer alır.",
+  entries: [
+    {
+      id: "generator-power",
+      name: "Jeneratör Gücü (3 Faz)",
+      group: "Jeneratör Hesapları",
+      formula: "P = √3 × V × I × cos(φ)",
+      variables: [
+        { symbol: "V", label: "Hat gerilimi", unit: "V" },
+        { symbol: "I", label: "Hat akımı", unit: "A" },
+        { symbol: "cos(φ)", label: "Güç faktörü" },
+      ],
+      source: { code: "Üç fazlı aktif güç bağıntısı" },
+      note: "Sonuç W cinsinden çıkar, kW'a çevrilir (÷1000). Görünür güç S = √3 × V × I.",
+      inputs: [
+        { key: "v", label: "Hat Gerilimi (V)", unit: "V", placeholder: "440" },
+        { key: "i", label: "Hat Akımı (I)", unit: "A", placeholder: "500" },
+        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+      ],
+      calculate: (vals) => {
+        const p = Math.sqrt(3) * vals.v * vals.i * vals.pf;
+        return [
+          { label: "Aktif Güç (P)", value: `${(p / 1000).toFixed(1)} kW` },
+          { label: "Görünür Güç (S)", value: `${(Math.sqrt(3) * vals.v * vals.i / 1000).toFixed(1)} kVA` },
+        ];
+      },
+    },
+    {
+      id: "frequency-speed",
+      name: "Frekans-Devir İlişkisi",
+      group: "Jeneratör Hesapları",
+      formula: "f = (p × n) / 60",
+      variables: [
+        { symbol: "f", label: "Frekans", unit: "Hz" },
+        { symbol: "p", label: "Kutup çifti sayısı" },
+        { symbol: "n", label: "Devir", unit: "rpm" },
+      ],
+      source: { code: "Senkron makine frekans-devir bağıntısı" },
+    },
+    {
+      id: "generator-efficiency",
+      name: "Jeneratör Verimi",
+      group: "Jeneratör Hesapları",
+      formula: "η = P_elektrik / P_mekanik",
+      variables: [
+        { symbol: "P_elektrik", label: "Elektriksel çıkış gücü", unit: "kW" },
+        { symbol: "P_mekanik", label: "Mekanik giriş gücü", unit: "kW" },
+      ],
+      source: { code: "Elektrik makinesi verim tanımı (tipik %92–96)" },
+    },
+    {
+      id: "boiler-steam-production",
+      name: "Kazan Buhar Üretimi",
+      group: "Kazan Hesapları",
+      formula: "ṁ_buhar = (Q̇ × η) / Δh",
+      variables: [
+        { symbol: "Q̇", label: "Yakıt ısıl gücü", unit: "kW" },
+        { symbol: "η", label: "Kazan verimi" },
+        { symbol: "Δh", label: "Buharlaşma entalpisi (h_fg)", unit: "kJ/kg" },
+      ],
+      source: { code: "Kazan enerji dengesi (buhar üretimi)" },
+      note: "Verim % girilir, hesapta orana çevrilir. Sonuç kg/saat için ×3600.",
+      inputs: [
+        { key: "q", label: "Yakıt Isıl Gücü", unit: "kW", placeholder: "2000" },
+        { key: "eta", label: "Kazan Verimi", unit: "%", placeholder: "85" },
+        { key: "hfg", label: "Buharlaşma Isısı", unit: "kJ/kg", placeholder: "2257" },
+      ],
+      calculate: (v) => {
+        const steam = (v.q * (v.eta / 100) * 3600) / (v.hfg);
+        return [{ label: "Buhar Üretimi", value: `${steam.toFixed(0)} kg/saat` }];
+      },
+    },
+    {
+      id: "boiler-efficiency",
+      name: "Kazan Verimi",
+      group: "Kazan Hesapları",
+      formula: "η = (ṁ_buhar × Δh) / (ṁ_yakıt × Hu)",
+      variables: [
+        { symbol: "ṁ_buhar", label: "Buhar debisi", unit: "kg/s" },
+        { symbol: "Δh", label: "Entalpi farkı", unit: "kJ/kg" },
+        { symbol: "ṁ_yakıt", label: "Yakıt debisi", unit: "kg/s" },
+        { symbol: "Hu", label: "Yakıtın alt ısıl değeri", unit: "kJ/kg" },
+      ],
+      source: { code: "Kazan verimi (doğrudan/girdi-çıktı yöntemi)" },
+    },
+    {
+      id: "separator-capacity",
+      name: "Separatör Kapasitesi",
+      group: "Separatör",
+      formula: "Q = (FC × 24 × k) / t",
+      variables: [
+        { symbol: "FC", label: "Yakıt tüketimi", unit: "litre/saat" },
+        { symbol: "k", label: "Güvenlik faktörü" },
+        { symbol: "t", label: "Günlük çalışma süresi", unit: "saat/gün" },
+      ],
+      source: { code: "Santrifüj separatör boyutlandırma (günlük tüketim bazlı)" },
+      note: "Günlük tüketim (FC × 24) güvenlik faktörüyle çarpılıp çalışma süresine bölünür.",
+      inputs: [
+        { key: "fc", label: "Yakıt Tüketimi", unit: "litre/saat", placeholder: "3000" },
+        { key: "factor", label: "Güvenlik Faktörü", unit: "", placeholder: "1.2" },
+        { key: "hours", label: "Çalışma Süresi", unit: "saat/gün", placeholder: "20" },
+      ],
+      calculate: (v) => {
+        const capacity = (v.fc * 24 * v.factor) / v.hours;
+        return [{ label: "Gerekli Kapasite", value: `${capacity.toFixed(0)} litre/saat` }];
+      },
+    },
+    {
+      id: "stokes-law",
+      name: "Stokes Yasası (Ayrışma Hızı)",
+      group: "Separatör",
+      formula: "v = d²·(ρ_w − ρ_o)·g / (18·μ)",
+      variables: [
+        { symbol: "d", label: "Parçacık çapı", unit: "m" },
+        { symbol: "ρ_w", label: "Su yoğunluğu", unit: "kg/m³" },
+        { symbol: "ρ_o", label: "Yağ yoğunluğu", unit: "kg/m³" },
+        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
+        { symbol: "μ", label: "Dinamik viskozite", unit: "Pa·s" },
+      ],
+      source: { code: "Stokes yasası (laminer çökelme hızı)" },
+    },
+    {
+      id: "compressor-volume-flow",
+      name: "Kompresör Hacimsel Debisi",
+      group: "Kompresör",
+      formula: "Q = (π·D²/4)·L·n·k·η_v",
+      variables: [
+        { symbol: "D", label: "Silindir çapı", unit: "mm" },
+        { symbol: "L", label: "Strok", unit: "mm" },
+        { symbol: "n", label: "Devir", unit: "rpm" },
+        { symbol: "k", label: "Silindir sayısı" },
+        { symbol: "η_v", label: "Hacimsel verim" },
+      ],
+      source: { code: "Pistonlu kompresör süpürme hacmi debisi" },
+      note: "Çap ve strok mm girilir, hesapta m'ye çevrilir (÷1000). Sonuç m³/dk → m³/saat için ×60.",
+      inputs: [
+        { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "250" },
+        { key: "stroke", label: "Strok", unit: "mm", placeholder: "200" },
+        { key: "n", label: "Devir", unit: "rpm", placeholder: "1000" },
+        { key: "k", label: "Silindir Sayısı", unit: "", placeholder: "2" },
+        { key: "etav", label: "Hacimsel Verim", unit: "%", placeholder: "85" },
+      ],
+      calculate: (v) => {
+        const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000);
+        const qTheory = vs * v.n * v.k; // m³/min
+        const qActual = qTheory * (v.etav / 100);
+        return [
+          { label: "Teorik Debi", value: `${(qTheory * 60).toFixed(2)} m³/saat` },
+          { label: "Gerçek Debi", value: `${(qActual * 60).toFixed(2)} m³/saat` },
+        ];
+      },
+    },
+    {
+      id: "fresh-water-generator",
+      name: "Tatlı Su Üretimi (Evaporatör)",
+      group: "Tatlı Su Üreteci",
+      formula: "ṁ_su = (Q̇ × η) / h_fg",
+      variables: [
+        { symbol: "Q̇", label: "Kullanılabilir ısı", unit: "kW" },
+        { symbol: "η", label: "Evaporatör verimi" },
+        { symbol: "h_fg", label: "Buharlaşma ısısı (vakumda)", unit: "kJ/kg" },
+      ],
+      source: { code: "Vakumlu evaporatör enerji dengesi" },
+      note: "Verim % girilir, orana çevrilir. Saatlik üretim için ×3600; günlük ton için ×24/1000.",
+      inputs: [
+        { key: "qAvail", label: "Kullanılabilir Isı", unit: "kW", placeholder: "300" },
+        { key: "hfg", label: "Buharlaşma Isısı (vakumda)", unit: "kJ/kg", placeholder: "2400" },
+        { key: "eta", label: "Evaporatör Verimi", unit: "%", placeholder: "80" },
+      ],
+      calculate: (v) => {
+        const production = (v.qAvail * (v.eta / 100) * 3600) / v.hfg;
+        return [
+          { label: "Su Üretimi", value: `${production.toFixed(0)} kg/saat` },
+          { label: "Günlük Üretim", value: `${(production * 24 / 1000).toFixed(1)} ton/gün` },
+        ];
+      },
+    },
+  ],
+};

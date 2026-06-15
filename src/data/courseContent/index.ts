@@ -1,6 +1,24 @@
 import type { CourseEntry, CourseTopic } from "./types";
 import { thermodynamics } from "./thermodynamics";
+import { fluidMechanics } from "./fluid-mechanics";
+import { machineElements } from "./machine-elements";
+import { dieselEngines } from "./diesel-engines";
+import { shipSystems } from "./ship-systems";
+import { auxiliary } from "./auxiliary";
+import { fuelTechnology } from "./fuel-technology";
+import { coolingHvac } from "./cooling-hvac";
+import { electrical } from "./electrical";
+import { automation } from "./automation";
+import { engineRoomOps } from "./engine-room-ops";
+import { maintenance } from "./maintenance";
+import { engineRoomSafety } from "./engine-room-safety";
+import { environmentMachine } from "./environment-machine";
+import { erm } from "./erm";
+import { energyEfficiency } from "./energy-efficiency";
 import { stability } from "./stability";
+import { navigation } from "./navigation";
+import { meteorology } from "./meteorology";
+import { safety } from "./safety";
 
 export type { CourseEntry, CourseTopic } from "./types";
 
@@ -8,12 +26,30 @@ export type { CourseEntry, CourseTopic } from "./types";
  * Birleşik ders içeriği registry'si (tek kaynak).
  * Anahtar eşlemesi: makine konuları = slug (örn. "thermodynamics"),
  * güverte konuları = kategori id (örn. "stability"). Çakışma yoktur.
- *
- * Yeni konular bu turdan sonra aynı kalıpla buraya eklenir.
  */
 export const courseTopics: Record<string, CourseTopic> = {
+  // Makine
   thermodynamics,
+  "fluid-mechanics": fluidMechanics,
+  "machine-elements": machineElements,
+  "diesel-engines": dieselEngines,
+  "ship-systems": shipSystems,
+  auxiliary,
+  "fuel-technology": fuelTechnology,
+  "cooling-hvac": coolingHvac,
+  electrical,
+  automation,
+  "engine-room-ops": engineRoomOps,
+  maintenance,
+  "engine-room-safety": engineRoomSafety,
+  "environment-machine": environmentMachine,
+  erm,
+  "energy-efficiency": energyEfficiency,
+  // Güverte
   stability,
+  navigation,
+  meteorology,
+  safety,
 };
 
 /** Verilen anahtara karşılık gelen konuyu döndürür (yoksa null). */
