@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { getMaritimeTranslationOverride } from '@/utils/maritimeGlossary';
+import {
+  getMaritimeTranslationOverride,
+  getMaritimeCorrectionMatcher,
+  applyMaritimeCorrections,
+} from '@/utils/maritimeGlossary';
 
 interface SupportedLanguage {
   language: string;
@@ -83,10 +87,19 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const scriptLoadedRef = useRef(false);
   const translationCacheRef = useRef<Map<string, string>>(new Map());
   const translationRunIdRef = useRef(0);
+  const maritimeObserverRef = useRef<MutationObserver | null>(null);
+  const maritimeFlushHandleRef = useRef<number | null>(null);
+  const maritimePendingNodesRef = useRef<Set<Text>>(new Set());
+  // Keeps the long-lived MutationObserver/flush callbacks reading the active
+  // language instead of a value captured when the observer was created.
+  const currentLanguageRef = useRef<string>(DEFAULT_LANGUAGE);
 
   // RTL languages
   const rtlLanguages = ['ar', 'he', 'fa', 'ur'];
   const isRTL = rtlLanguages.includes(currentLanguage);
+
+  // Always expose the latest language to the long-lived observer callbacks.
+  currentLanguageRef.current = currentLanguage;
 
   useEffect(() => {
     // Simple initialization without DOM manipulation
@@ -240,6 +253,111 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
   };
 
+  // ── Maritime terminology correction layer (on top of page-wide translation) ──
+  // The Google Translate widget translates the whole DOM but cannot be given a
+  // maritime glossary. This layer scans the translated text nodes and fixes
+  // maritime terms (e.g. leftover Turkish "Pruva" -> "Bow") in every language.
+  const MARITIME_SKIP_TAGS = new Set([
+    'SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'SELECT',
+    'OPTION', 'CODE', 'PRE', 'KBD', 'SAMP',
+  ]);
+
+  const shouldSkipTextNode = (node: Text): boolean => {
+    let el: HTMLElement | null = node.parentElement;
+    if (!el) return true;
+    while (el) {
+      if (MARITIME_SKIP_TAGS.has(el.tagName)) return true;
+      if (el.isContentEditable) return true;
+      const id = el.id;
+      const className = typeof el.className === 'string' ? el.className : '';
+      if (id === 'google_translate_element') return true;
+      // Skip the Google Translate UI/banner chrome.
+      if (className.includes('skiptranslate') || className.includes('goog-te')) return true;
+      if (el.hasAttribute('data-no-translate')) return true;
+      el = el.parentElement;
+    }
+    return false;
+  };
+
+  const correctTextNodes = (nodes: Iterable<Text>, languageCode: string) => {
+    const observer = maritimeObserverRef.current;
+    // Detach while we mutate so our own edits don't re-trigger the observer.
+    observer?.disconnect();
+    try {
+      for (const node of nodes) {
+        if (!node.isConnected) continue;
+        const value = node.nodeValue;
+        if (!value || !value.trim()) continue;
+        if (shouldSkipTextNode(node)) continue;
+        const corrected = applyMaritimeCorrections(value, languageCode);
+        if (corrected !== value) node.nodeValue = corrected;
+      }
+    } finally {
+      if (observer && typeof document !== 'undefined') {
+        observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+      }
+    }
+  };
+
+  const flushMaritimeCorrections = () => {
+    maritimeFlushHandleRef.current = null;
+    const pending = maritimePendingNodesRef.current;
+    if (pending.size === 0) return;
+    const nodes = Array.from(pending);
+    pending.clear();
+    correctTextNodes(nodes, currentLanguageRef.current);
+  };
+
+  const scheduleMaritimeFlush = () => {
+    if (maritimeFlushHandleRef.current !== null) return;
+    const schedule = (cb: FrameRequestCallback): number =>
+      typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function'
+        ? window.requestAnimationFrame(cb)
+        : window.setTimeout(() => cb(performance.now()), 50);
+    maritimeFlushHandleRef.current = schedule(() => flushMaritimeCorrections());
+  };
+
+  const collectTextNodes = (root: Node, into: Set<Text>) => {
+    if (root.nodeType === Node.TEXT_NODE) {
+      into.add(root as Text);
+      return;
+    }
+    if (root.nodeType !== Node.ELEMENT_NODE) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let current = walker.nextNode();
+    while (current) {
+      into.add(current as Text);
+      current = walker.nextNode();
+    }
+  };
+
+  // Full-document correction pass (used on language change / first run).
+  const runFullMaritimeCorrection = (languageCode: string) => {
+    if (typeof document === 'undefined' || !document.body) return;
+    if (!getMaritimeCorrectionMatcher(languageCode)) return;
+    const nodes = new Set<Text>();
+    collectTextNodes(document.body, nodes);
+    correctTextNodes(nodes, languageCode);
+  };
+
+  const ensureMaritimeObserver = () => {
+    if (typeof document === 'undefined' || maritimeObserverRef.current) return;
+    const observer = new MutationObserver((mutations) => {
+      if (!getMaritimeCorrectionMatcher(currentLanguageRef.current)) return;
+      const pending = maritimePendingNodesRef.current;
+      for (const mutation of mutations) {
+        if (mutation.type === 'characterData' && mutation.target.nodeType === Node.TEXT_NODE) {
+          pending.add(mutation.target as Text);
+        } else if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((added) => collectTextNodes(added, pending));
+        }
+      }
+      if (pending.size > 0) scheduleMaritimeFlush();
+    });
+    maritimeObserverRef.current = observer;
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  };
+
   const changeLanguage = (languageCode: string) => {
     if (languageCode === currentLanguage) return;
 
@@ -273,6 +391,35 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     if (isLoading) return;
     translateMarkedContent(currentLanguage);
   }, [currentLanguage, isLoading]);
+
+  // Maritime terminology correction: observe DOM and fix terms app-wide.
+  useEffect(() => {
+    if (typeof document === 'undefined' || isLoading) return;
+    ensureMaritimeObserver();
+    // Re-run a full pass shortly after a language switch so it lands after the
+    // Google widget has retranslated the page.
+    runFullMaritimeCorrection(currentLanguage);
+    const timers = [150, 600, 1500].map((delay) =>
+      window.setTimeout(() => runFullMaritimeCorrection(currentLanguage), delay)
+    );
+
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentLanguage, isLoading]);
+
+  // Tear down the observer when the provider unmounts.
+  useEffect(() => {
+    return () => {
+      maritimeObserverRef.current?.disconnect();
+      maritimeObserverRef.current = null;
+      if (maritimeFlushHandleRef.current !== null && typeof window !== 'undefined') {
+        window.cancelAnimationFrame?.(maritimeFlushHandleRef.current);
+        window.clearTimeout(maritimeFlushHandleRef.current);
+      }
+    };
+  }, []);
 
   const getLanguageName = (code: string): string => {
     return SUPPORTED_LANGUAGES.find(lang => lang.language === code)?.displayName || code;

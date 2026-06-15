@@ -28,6 +28,14 @@ export interface MaritimeTerm {
    * Turkish ("tr") is the source and therefore never overridden.
    */
   translations: Partial<Record<string, string>>;
+  /**
+   * When `false`, this term is NOT used for in-text (inline) replacement of
+   * leftover Turkish words inside longer translated strings — only for exact
+   * whole-string overrides. Use it for Turkish words that also carry a common
+   * non-maritime meaning (e.g. "Baca" = chimney, "Akıntı" = flow) to avoid
+   * false positives. Defaults to `true`.
+   */
+  inline?: boolean;
 }
 
 // Languages we provide hand-verified maritime equivalents for.
@@ -110,6 +118,8 @@ export const maritimeTerms: MaritimeTerm[] = [
   {
     tr: 'Baca',
     aliases: ['Baca (Funnel)'],
+    // "Baca" also means a household chimney; restrict to whole-string overrides.
+    inline: false,
     translations: {
       en: 'Funnel', de: 'Schornstein', fr: 'Cheminée', es: 'Chimenea',
       it: 'Fumaiolo', pt: 'Chaminé', nl: 'Schoorsteen', ru: 'Дымовая труба',
@@ -343,6 +353,8 @@ export const maritimeTerms: MaritimeTerm[] = [
   {
     tr: 'Meyil',
     aliases: ['Bayılma'],
+    // Generic Turkish "meyil" = slope/inclination; whole-string overrides only.
+    inline: false,
     translations: {
       en: 'Heel', de: 'Krängung', fr: 'Gîte', es: 'Escora',
       it: 'Sbandamento', pt: 'Adernamento', nl: 'Slagzij', ru: 'Крен',
@@ -360,9 +372,148 @@ export const maritimeTerms: MaritimeTerm[] = [
   },
   {
     tr: 'Akıntı',
+    // Generic Turkish "akıntı" = flow/leak; whole-string overrides only.
+    inline: false,
     translations: {
       en: 'Current', de: 'Strömung', fr: 'Courant', es: 'Corriente',
       it: 'Corrente', pt: 'Corrente', nl: 'Stroming', ru: 'Течение',
+    },
+  },
+
+  // ── Course categories / section titles ─────────────────────────────
+  {
+    tr: 'Gemicilik',
+    translations: {
+      en: 'Seamanship', de: 'Seemannschaft', fr: 'Matelotage', es: 'Marinería',
+      it: 'Arte marinaresca', pt: 'Marinharia', nl: 'Zeemanschap', ru: 'Морское дело',
+    },
+  },
+  {
+    tr: 'Halatçılık',
+    translations: {
+      en: 'Marlinespike seamanship', de: 'Tauwerksarbeit', fr: 'Matelotage',
+      es: 'Trabajo de cabos', it: 'Lavorazione delle cime',
+      pt: 'Trabalho com cabos', nl: 'Touwwerk', ru: 'Такелажное дело',
+    },
+  },
+  {
+    tr: 'Seyir ve Manevra',
+    aliases: ['Seyir & Manevra'],
+    translations: {
+      en: 'Navigation and Maneuvering', de: 'Navigation und Manövrieren',
+      fr: 'Navigation et manœuvre', es: 'Navegación y maniobra',
+      it: 'Navigazione e manovra', pt: 'Navegação e manobra',
+      nl: 'Navigatie en manoeuvreren', ru: 'Судовождение и маневрирование',
+    },
+  },
+  {
+    tr: 'Liman ve Manevra',
+    aliases: ['Liman & Manevra'],
+    translations: {
+      en: 'Port and Maneuvering', de: 'Hafen und Manövrieren',
+      fr: 'Port et manœuvre', es: 'Puerto y maniobra',
+      it: 'Porto e manovra', pt: 'Porto e manobra',
+      nl: 'Haven en manoeuvreren', ru: 'Порт и маневрирование',
+    },
+  },
+
+  // ── Maneuvering & helm commands ────────────────────────────────────
+  {
+    tr: 'Alabanda',
+    translations: {
+      en: 'Hard over', de: 'Hart Ruder', fr: 'La barre toute',
+      es: 'Toda la caña', it: 'Tutta la barra', pt: 'Todo o leme',
+      nl: 'Hard roer', ru: 'Право/лево на борт',
+    },
+  },
+  {
+    tr: 'Avara',
+    aliases: ['Avara Etmek'],
+    translations: {
+      en: 'Cast off', de: 'Ablegen', fr: 'Larguer les amarres',
+      es: 'Largar amarras', it: 'Mollare gli ormeggi',
+      pt: 'Largar amarras', nl: 'Losgooien', ru: 'Отшвартоваться',
+    },
+  },
+  {
+    tr: 'Aborda',
+    aliases: ['Aborda Olmak'],
+    translations: {
+      en: 'Alongside', de: 'Längsseits', fr: 'À couple',
+      es: 'De costado', it: 'Sottobordo', pt: 'A contrabordo',
+      nl: 'Langszij', ru: 'Лагом',
+    },
+  },
+  {
+    tr: 'Apiko',
+    translations: {
+      en: 'At short stay', de: 'Anker steht senkrecht', fr: 'À pic',
+      es: 'A pique', it: 'A picco', pt: 'A pique', nl: 'Anker is kort',
+      ru: 'Панер',
+    },
+  },
+  {
+    tr: 'Funda',
+    aliases: ['Funda Demir'],
+    translations: {
+      en: 'Let go anchor', de: 'Anker fallen lassen', fr: 'Mouiller l’ancre',
+      es: 'Fondear el ancla', it: 'Dare fondo', pt: 'Largar a âncora',
+      nl: 'Anker laten vallen', ru: 'Отдать якорь',
+    },
+  },
+
+  // ── Rigging, spars & sails ─────────────────────────────────────────
+  {
+    tr: 'Matafora',
+    translations: {
+      en: 'Davit', de: 'Davit', fr: 'Bossoir', es: 'Pescante',
+      it: 'Gru di bordo', pt: 'Turco', nl: 'Davit', ru: 'Шлюпбалка',
+    },
+  },
+  {
+    tr: 'Çarmık',
+    translations: {
+      en: 'Shroud', de: 'Want', fr: 'Hauban', es: 'Obenque',
+      it: 'Sartia', pt: 'Enxárcia', nl: 'Want', ru: 'Ванта',
+    },
+  },
+  {
+    tr: 'Grandi',
+    translations: {
+      en: 'Mainsail', de: 'Großsegel', fr: 'Grand-voile', es: 'Vela mayor',
+      it: 'Randa', pt: 'Vela grande', nl: 'Grootzeil', ru: 'Грот',
+    },
+  },
+  {
+    tr: 'Gabya',
+    translations: {
+      en: 'Topsail', de: 'Marssegel', fr: 'Hunier', es: 'Gavia',
+      it: 'Gabbia', pt: 'Gávea', nl: 'Marszeil', ru: 'Марсель',
+    },
+  },
+  {
+    tr: 'Babafingo',
+    translations: {
+      en: 'Topgallant sail', de: 'Bramsegel', fr: 'Perroquet',
+      es: 'Juanete', it: 'Velaccio', pt: 'Joanete',
+      nl: 'Bramzeil', ru: 'Брамсель',
+    },
+  },
+  {
+    tr: 'Cunda',
+    translations: {
+      en: 'Yardarm', de: 'Rahnock', fr: 'Bout de vergue',
+      es: 'Penol', it: 'Penna del pennone', pt: 'Penol',
+      nl: 'Ra-nok', ru: 'Нок рея',
+    },
+  },
+  {
+    tr: 'İskandil',
+    aliases: ['Iskandil'],
+    translations: {
+      en: 'Sounding lead', de: 'Lot', fr: 'Sonde à plomb',
+      es: 'Escandallo', it: 'Scandaglio', pt: 'Sonda de prumo',
+      nl: 'Dieplood', ru: 'Лот',
     },
   },
 ];
@@ -409,4 +560,116 @@ export const getMaritimeTranslationOverride = (
 ): string | null => {
   if (!sourceText || !languageCode) return null;
   return overrideIndex.get(`${languageCode}::${normalize(sourceText)}`) ?? null;
+};
+
+// -----------------------------------------------------------------------------
+// In-text correction rules (applied on top of the page-wide machine translation)
+// -----------------------------------------------------------------------------
+// Generic page translation (Google widget) often leaves niche Turkish maritime
+// terms UNTRANSLATED (e.g. "Pruva", "Sancak", "Lostromo", "Vardiya") or renders
+// them non-maritime. These rules fix such terms inside already-translated text.
+//
+// The primary, false-positive-free mechanism is "leftover source term": if the
+// original Turkish maritime word still appears in the translated output, it is
+// almost certainly the maritime term, so we replace it with the correct word in
+// the active language. A small, conservative set of curated "wrong -> right"
+// corrections complements this for the highest-confidence cases.
+
+export interface MaritimeCorrectionRule {
+  pattern: RegExp;
+  replacement: string;
+}
+
+const escapeRegExp = (value: string): string =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// Word boundaries that also respect Unicode letters/digits (incl. Turkish ones),
+// so "Pruva" matches but "Pruvalar" or a substring does not.
+const wordRule = (source: string, replacement: string): MaritimeCorrectionRule => ({
+  pattern: new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegExp(source)}(?![\\p{L}\\p{N}])`, 'giu'),
+  replacement,
+});
+
+// Curated, high-confidence "wrong machine output -> correct maritime term".
+// Keep these strict (exact tokens that are unlikely to occur in any other,
+// non-maritime context) to avoid false positives.
+const curatedCorrections: Record<string, Array<[string, string]>> = {
+  en: [
+    // Google frequently transliterates these Ottoman/Turkish-rooted terms.
+    ['Sanjak', 'Starboard'],
+  ],
+};
+
+const correctionRulesCache = new Map<string, MaritimeCorrectionRule[]>();
+
+/**
+ * Returns ordered maritime correction rules for a target language. Rules are
+ * sorted so that longer (multi-word) source phrases are applied before shorter
+ * ones. Returns an empty array for the source language (Turkish) where no
+ * correction is needed.
+ */
+export const getMaritimeCorrectionRules = (languageCode: string): MaritimeCorrectionRule[] => {
+  if (!languageCode || languageCode === 'tr') return [];
+  const cached = correctionRulesCache.get(languageCode);
+  if (cached) return cached;
+
+  const rules: Array<{ source: string; rule: MaritimeCorrectionRule }> = [];
+
+  for (const term of maritimeTerms) {
+    if (term.inline === false) continue;
+    const translation = term.translations[languageCode];
+    if (!translation) continue;
+    // Only the canonical Turkish term is used for inline replacement; aliases
+    // may include ambiguous generic words and are reserved for whole-string
+    // overrides via getMaritimeTranslationOverride().
+    rules.push({ source: term.tr, rule: wordRule(term.tr, translation) });
+  }
+
+  for (const [wrong, right] of curatedCorrections[languageCode] ?? []) {
+    rules.push({ source: wrong, rule: wordRule(wrong, right) });
+  }
+
+  // Longer source phrases first so "Seyir ve Manevra" wins over "Seyir".
+  rules.sort((a, b) => b.source.length - a.source.length);
+
+  const ordered = rules.map((entry) => entry.rule);
+  correctionRulesCache.set(languageCode, ordered);
+  return ordered;
+};
+
+const matcherCache = new Map<string, RegExp | null>();
+
+/**
+ * Returns a single combined (non-global) regex used as a cheap pre-check so the
+ * caller can skip the full rule set for text that contains no maritime term.
+ * Returns `null` when there are no rules for the language.
+ */
+export const getMaritimeCorrectionMatcher = (languageCode: string): RegExp | null => {
+  if (matcherCache.has(languageCode)) return matcherCache.get(languageCode) ?? null;
+  const rules = getMaritimeCorrectionRules(languageCode);
+  const matcher = rules.length
+    ? new RegExp(rules.map((rule) => rule.pattern.source).join('|'), 'iu')
+    : null;
+  matcherCache.set(languageCode, matcher);
+  return matcher;
+};
+
+/**
+ * Applies maritime correction rules to a single string and returns the
+ * corrected string (unchanged if no rule matched).
+ */
+export const applyMaritimeCorrections = (text: string, languageCode: string): string => {
+  if (!text) return text;
+  const matcher = getMaritimeCorrectionMatcher(languageCode);
+  if (!matcher || !matcher.test(text)) return text;
+
+  let result = text;
+  for (const { pattern, replacement } of getMaritimeCorrectionRules(languageCode)) {
+    pattern.lastIndex = 0;
+    if (pattern.test(result)) {
+      pattern.lastIndex = 0;
+      result = result.replace(pattern, replacement);
+    }
+  }
+  return result;
 };
