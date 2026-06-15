@@ -20,7 +20,7 @@ export const fuelTechnology: CourseTopic = {
       id: "ccai",
       name: "CCAI (Aromatiklik İndeksi)",
       group: "Yakıt Özellikleri",
-      formula: "CCAI = D − 81,703·log(log(ν₅₀ + 0,85)) − 483,5",
+      formula: "CCAI = D − 140,7·log(log(ν₅₀ + 0,85)) − 80,6",
       variables: [
         { symbol: "D", label: "Yoğunluk 15°C", unit: "kg/m³" },
         { symbol: "ν₅₀", label: "50°C kinematik viskozite", unit: "cSt" },
@@ -31,7 +31,7 @@ export const fuelTechnology: CourseTopic = {
         { key: "v", label: "Viskozite 50°C (ν)", unit: "cSt", placeholder: "380" },
       ],
       calculate: (vals) => {
-        const ccai = vals.d - 81.703 * Math.log10(Math.log10(vals.v + 0.85)) - 483.5;
+        const ccai = vals.d - 140.7 * Math.log10(Math.log10(vals.v + 0.85)) - 80.6;
         const quality = ccai < 840 ? "İyi" : ccai < 870 ? "Kabul edilebilir" : "Zayıf tutuşma";
         return [
           { label: "CCAI", value: ccai.toFixed(0) },

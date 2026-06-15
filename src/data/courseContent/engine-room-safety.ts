@@ -32,20 +32,21 @@ export const engineRoomSafety: CourseTopic = {
       id: "co2-quantity",
       name: "CO₂ Miktarı (Hacme Göre)",
       group: "Yangın Güvenliği",
-      formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)",
+      formula: "mCO₂ = (Vhacim × %40) / 0,56 m³/kg",
       variables: [
         { symbol: "Vhacim", label: "Korunan hacim", unit: "m³" },
-        { symbol: "0,56", label: "Yoğunluk faktörü (min %40 hacimsel CO₂)", unit: "kg/m³" },
+        { symbol: "%40", label: "Minimum serbest CO₂ hacim oranı", unit: "—" },
+        { symbol: "0,56", label: "CO₂ özgül hacmi", unit: "m³/kg" },
         { symbol: "mCO₂", label: "Gerekli CO₂ kütlesi", unit: "kg" },
       ],
       source: { code: "Sabit CO₂ söndürme sistemi (SOLAS Ch. II-2 / FSS Code)" },
-      note: "Standart tüp kapasitesi 45 kg alınır; tüp sayısı yukarı yuvarlanır.",
+      note: "Makine dairesi için serbest CO₂ hacmi ≥ brüt hacmin %40'ı; CO₂ özgül hacmi 0,56 m³/kg. Standart tüp kapasitesi 45 kg alınır; tüp sayısı yukarı yuvarlanır.",
       inputs: [
         { key: "vol", label: "Korunan Hacim", unit: "m³", placeholder: "2000" },
-        { key: "factor", label: "Yoğunluk Faktörü", unit: "kg/m³", placeholder: "0.56" },
+        { key: "ratio", label: "Serbest CO₂ Hacim Oranı", unit: "%", placeholder: "40" },
       ],
       calculate: (v) => {
-        const mass = v.vol * v.factor;
+        const mass = (v.vol * (v.ratio / 100)) / 0.56;
         const bottles = Math.ceil(mass / 45); // 45 kg standart tüp
         return [
           { label: "Gerekli CO₂ Miktarı", value: `${mass.toFixed(0)} kg` },

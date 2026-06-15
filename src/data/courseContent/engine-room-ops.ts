@@ -55,11 +55,12 @@ export const engineRoomOps: CourseTopic = {
       id: "lube-oil-consumption",
       name: "Yağ Tüketimi Takibi",
       group: "Operasyon Parametreleri",
-      formula: "SLOC = Yağ tüketimi (g/h) / BHP (kW)",
+      formula: "Yağtüketimi = SLOC × BHP × t",
       variables: [
         { symbol: "SLOC", label: "Özgül yağ tüketimi", unit: "g/kW·h" },
         { symbol: "BHP", label: "Motor gücü", unit: "kW" },
         { symbol: "t", label: "Çalışma süresi", unit: "saat" },
+        { symbol: "Yağtüketimi", label: "Toplam yağ tüketimi", unit: "g (→ kg/ton)" },
       ],
       source: { code: "Özgül yağ tüketimi (SLOC) takibi", detail: "Normal: 0,6–1,2 g/kW·h" },
       inputs: [

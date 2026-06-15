@@ -49,23 +49,22 @@ export const safety: CourseTopic = {
       id: "co2-quantity",
       name: "CO₂ Miktarı (Korunan Hacim)",
       group: "Yangın Söndürme",
-      formula: "M = 1.5 × V × (ρ_gas / ρ_liq)",
+      formula: "M = V × f × 1.5",
       variables: [
         { symbol: "M", label: "Gerekli CO₂ miktarı", unit: "kg" },
         { symbol: "V", label: "Korunan hacim", unit: "m³" },
-        { symbol: "ρ_gas", label: "Gaz yoğunluğu (20°C'de ≈ 1,84)", unit: "kg/m³" },
-        { symbol: "ρ_liq", label: "Sıvı yoğunluğu (15°C'de ≈ 770)", unit: "kg/m³" },
+        { symbol: "f", label: "Doldurma faktörü (makine dairesi 0,40)" },
+        { symbol: "1.5", label: "CO₂ yoğunluk katsayısı (≈ 1/0,56 m³/kg)", unit: "kg/m³" },
       ],
       source: { code: "SOLAS II-2 / FSS Code", detail: "Sabit CO₂ söndürme sistemi" },
-      note: "Pratik: makine dairesi için hacmin %40'ı × 1,5 kg/m³.",
+      note: "SOLAS: serbest CO₂ gazı hacmi ≥ korunan hacmin %40'ı. 1,5 kg/m³ ≈ 1/0,56 m³/kg özgül hacim.",
       inputs: [
         { key: "vol", label: "Korunan Hacim (V)", unit: "m³", placeholder: "2000" },
-        { key: "rhoGas", label: "Gaz Yoğunluğu (ρ_gas)", unit: "kg/m³", placeholder: "1.84" },
-        { key: "rhoLiq", label: "Sıvı Yoğunluğu (ρ_liq)", unit: "kg/m³", placeholder: "770" },
+        { key: "factor", label: "Doldurma Faktörü (f)", unit: "", placeholder: "0.40" },
       ],
       calculate: (v) => {
-        if (v.rhoLiq <= 0) return [{ label: "Hata", value: "Sıvı yoğunluğu pozitif olmalı" }];
-        const m = 1.5 * v.vol * (v.rhoGas / v.rhoLiq);
+        if (v.vol <= 0) return [{ label: "Hata", value: "Hacim pozitif olmalı" }];
+        const m = v.vol * v.factor * 1.5;
         return [{ label: "Gerekli CO₂ (M)", value: `${m.toFixed(1)} kg` }];
       },
     },

@@ -21,17 +21,21 @@ export const seamanship: CourseTopic = {
       id: "working-load",
       name: "Çalışma Yükü (SWL)",
       group: "Palamar ve Halat",
-      formula: "ÇY (kN) = (SWL × Güvenlik Katsayısı) / 1000",
+      formula: "SWL (kN) = Kırılma Yükü / (Güvenlik Katsayısı × 1000)",
       variables: [
-        { symbol: "SWL", label: "Güvenli çalışma yükü", unit: "N" },
+        { symbol: "Kırılma Yükü", label: "Halat/donanım kırılma yükü (MBL)", unit: "N" },
         { symbol: "Güvenlik Kat.", label: "Güvenlik katsayısı" },
       ],
-      source: { code: "Halat/donanım güvenli çalışma yükü (SWL)" },
+      source: { code: "Halat/donanım güvenli çalışma yükü: SWL = MBL / SF" },
+      note: "SWL = Kırılma Yükü (MBL) / Güvenlik Katsayısı. Girdi N, sonuç kN (÷1000).",
       inputs: [
-        { key: "swl", label: "SWL", unit: "N", placeholder: "200000" },
+        { key: "mbl", label: "Kırılma Yükü (MBL)", unit: "N", placeholder: "300000" },
         { key: "sf", label: "Güvenlik Katsayısı", unit: "", placeholder: "1.5" },
       ],
-      calculate: (v) => [{ label: "Çalışma Yükü", value: `${((v.swl * v.sf) / 1000).toFixed(2)} kN` }],
+      calculate: (v) => {
+        if (v.sf <= 0) return [{ label: "Hata", value: "Güvenlik katsayısı pozitif olmalı" }];
+        return [{ label: "Güvenli Çalışma Yükü (SWL)", value: `${(v.mbl / (v.sf * 1000)).toFixed(2)} kN` }];
+      },
     },
     {
       id: "wind-force",

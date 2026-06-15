@@ -117,6 +117,7 @@ export const erm: CourseTopic = {
         { symbol: "Vardiya", label: "Vardiya süresi", unit: "saat" },
         { symbol: "Görev", label: "Günlük rutin görev", unit: "adet" },
         { symbol: "Olay", label: "Aylık olay sayısı", unit: "adet" },
+        { symbol: "GörevYükü", label: "Kişi başı görev yükü (= Görev / Personel)", unit: "görev/kişi" },
       ],
       source: { code: "STCW vardiya tutma esasları (Bölüm VIII) — operasyonel etkinlik göstergesi" },
       note: "Etkinlik skoru bağıntısı hesaplayıcıdan türetilmiştir; kişi başı görev yükü = görev / personel.",

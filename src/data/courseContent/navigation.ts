@@ -204,7 +204,7 @@ export const navigation: CourseTopic = {
         { symbol: "Δφ, Δλ", label: "Enlem/boylam farkı", unit: "°" },
         {
           symbol: "q",
-          label: "Genişletilmiş enlem oranı = ln(tan(π/4+φ₂/2)/tan(π/4+φ₁/2)) / Δφ",
+          label: "Genişletilmiş enlem oranı = Δφ / ln(tan(π/4+φ₂/2)/tan(π/4+φ₁/2))",
         },
       ],
       source: { code: "Mercator seyri (rhumb line)" },

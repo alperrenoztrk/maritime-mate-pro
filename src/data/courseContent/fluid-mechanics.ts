@@ -107,6 +107,7 @@ export const fluidMechanics: CourseTopic = {
         { symbol: "L", label: "Boru uzunluğu", unit: "m" },
         { symbol: "D", label: "Çap", unit: "m" },
         { symbol: "v", label: "Akış hızı", unit: "m/s" },
+        { symbol: "g", label: "Yerçekimi", unit: "m/s²" },
       ],
       source: { code: "Darcy-Weisbach denklemi (boru sürtünme kaybı)" },
       inputs: [
@@ -160,6 +161,7 @@ export const fluidMechanics: CourseTopic = {
         { symbol: "Patm", label: "Atmosfer basıncı" },
         { symbol: "Pvap", label: "Buhar basıncı" },
         { symbol: "ρ", label: "Yoğunluk", unit: "kg/m³" },
+        { symbol: "g", label: "Yerçekimi", unit: "m/s²" },
         { symbol: "zs", label: "Emiş yüksekliği", unit: "m" },
         { symbol: "hf", label: "Emiş hattı kaybı", unit: "m" },
       ],

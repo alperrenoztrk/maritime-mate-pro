@@ -44,10 +44,11 @@ export const electrical: CourseTopic = {
       id: "reactive-power",
       name: "Reaktif Güç",
       group: "Elektrik Temel",
-      formula: "Q = √3 × V_L × I_L × sin(φ)",
+      formula: "Q = P × tan(φ),  S = P / cos(φ)",
       variables: [
         { symbol: "P", label: "Aktif güç", unit: "kW" },
         { symbol: "cos(φ)", label: "Güç faktörü" },
+        { symbol: "tan(φ)", label: "Reaktif/aktif oranı" },
         { symbol: "Q", label: "Reaktif güç", unit: "kVAR" },
         { symbol: "S", label: "Görünür güç", unit: "kVA" },
       ],

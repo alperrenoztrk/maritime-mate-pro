@@ -77,7 +77,7 @@ export const shipSystems: CourseTopic = {
       id: "lube-oil-flow",
       name: "Yağ Debisi",
       group: "Yağlama Sistemi",
-      formula: "Q = (BHP × SLOC) / (ρ × 10⁶)",
+      formula: "Q = (BHP × SLOC) / (ρ × 10³)",
       variables: [
         { symbol: "BHP", label: "Fren gücü", unit: "kW" },
         { symbol: "SLOC", label: "Özgül yağ tüketimi", unit: "g/kW·h" },
