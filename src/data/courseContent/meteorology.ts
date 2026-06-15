@@ -234,7 +234,7 @@ export const meteorology: CourseTopic = {
         { symbol: "Cd", label: "Sürükleme katsayısı (tipik 0,8)" },
       ],
       source: { code: "Aerodinamik sürükleme (WeatherCalculations)" },
-      note: "Rüzgâr hızı knot girilir, hesapta m/s'ye çevrilir (×0,514). A = boy × freeboard.",
+      note: "Rüzgâr hızı knot girilir, hesapta m/s'ye çevrilir (×0,5144). A = boy × freeboard.",
       inputs: [
         { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.225" },
         { key: "vkn", label: "Bağıl Rüzgâr Hızı (V)", unit: "kn", placeholder: "25" },
@@ -243,7 +243,7 @@ export const meteorology: CourseTopic = {
         { key: "cd", label: "Sürükleme Katsayısı (Cd)", unit: "", placeholder: "0.8" },
       ],
       calculate: (v) => {
-        const vms = v.vkn * 0.514;
+        const vms = v.vkn * 0.5144;
         const area = v.length * v.freeboard;
         const force = 0.5 * v.rho * vms * vms * area * v.cd;
         return [
