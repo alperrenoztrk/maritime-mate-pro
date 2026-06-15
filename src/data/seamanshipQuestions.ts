@@ -277,7 +277,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
     id: 35,
     question: "Demir zinciri uzunluğu 'shackle' (kilit) ile ölçülür; 1 shackle kaç fathom/metredir?",
     options: ["10 fathom / ~18,3 m", "15 fathom / ~27,5 m", "20 fathom / ~36,6 m", "25 fathom / ~45,7 m"],
-    correctAnswer: 2,
+    correctAnswer: 1,
     explanation: "1 shackle = 15 fathom = 27,5 m (genelde 27,5 m kabul edilir).",
     category: "Demirleme"
   },

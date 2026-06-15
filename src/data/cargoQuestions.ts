@@ -387,7 +387,7 @@ export const cargoQuestions: QuizQuestion[] = [
     id: 40,
     question: "Tahıl stabilite kriterinde, heeling arm ile righting arm eğrileri arasındaki rezidüel alan (0°–40° veya downflooding) en az kaç metre-radyan olmalıdır?",
     options: ["0.055 m·rad", "0.075 m·rad", "0.090 m·rad", "0.20 m·rad"],
-    correctAnswer: 2,
+    correctAnswer: 1,
     explanation: "Grain Code, iki eğri arasındaki rezidüel dinamik stabilite alanının en az 0.075 m·rad olmasını ister.",
     category: "Grain"
   },

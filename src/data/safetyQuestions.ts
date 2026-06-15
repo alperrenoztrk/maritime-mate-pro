@@ -278,7 +278,7 @@ export const safetyQuestions: QuizQuestion[] = [
     question: "Pyrotechnic (işaret fişeği) türlerinden 'rocket parachute flare' hangi renkte yanar ve ne süre görünür kalır?",
     options: ["Yeşil, 10 sn", "Kırmızı, yaklaşık 40 saniye paraşütle iner", "Beyaz, 5 sn", "Mavi, 2 dk"],
     correctAnswer: 1,
-    explanation: "LSA Code: paraşütlü işaret fişeği kırmızı yanar, en az 240 m yükseğe çıkar ve paraşütle en az 40 saniye süreyle yanarak iner.",
+    explanation: "LSA Code: paraşütlü işaret fişeği kırmızı yanar, en az 300 m yükseğe çıkar ve paraşütle en az 40 saniye süreyle yanarak iner.",
     category: "SOLAS/LSA"
   },
   {
