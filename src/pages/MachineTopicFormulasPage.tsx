@@ -2,6 +2,9 @@ import { useParams, Link } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { ArrowLeft, Sigma } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getCourseTopic } from "@/data/courseContent";
+import { CourseTopicHeader } from "@/components/courseContent/CourseTopicHeader";
+import { FormulaList } from "@/components/courseContent/FormulaList";
 
 interface FormulaItem {
   name: string;
@@ -321,6 +324,31 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
 
 export default function MachineTopicFormulasPage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
+
+  // Tek kaynak (registry) varsa birleşik tasarımı kullan; yoksa eski sabit veri.
+  const courseTopic = getCourseTopic(topicSlug);
+  if (courseTopic) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+        <div className="container mx-auto max-w-4xl space-y-6 p-4">
+          <CourseTopicHeader topic={courseTopic} section="formulas" />
+          <FormulaList
+            entries={courseTopic.entries}
+            calcHref={`/lessons/${courseTopic.key}/calculations`}
+          />
+          <div className="flex justify-center pt-4">
+            <Link
+              to="/lessons"
+              className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
+            >
+              Tüm Derslere Dön
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const topic = topicSlug ? machineTopicBySlug[topicSlug] : null;
   const formulas = topicSlug ? topicFormulas[topicSlug] : null;
 

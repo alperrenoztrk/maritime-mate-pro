@@ -86,6 +86,10 @@ const SpecialShipCalculationsPage = lazy(() => import("./pages/SpecialShipCalcul
 const EmissionCalculationsPage = lazy(() => import("./pages/EmissionCalculationsPage"));
 const MachineTopicCalculationsPage = lazy(() => import("./pages/MachineTopicCalculationsPage"));
 const MachineTopicFormulasPage = lazy(() => import("./pages/MachineTopicFormulasPage"));
+const CourseFormulasPage = lazy(() => import("./pages/CourseFormulasPage"));
+const CourseCalculationsPage = lazy(() => import("./pages/CourseCalculationsPage"));
+const CourseRulesPage = lazy(() => import("./pages/CourseRulesPage"));
+const CourseQuizPage = lazy(() => import("./pages/CourseQuizPage"));
 const MachineTopicRulesPage = lazy(() => import("./pages/MachineTopicRulesPage"));
 const MachineTopicAssistantPage = lazy(() => import("./pages/MachineTopicAssistantPage"));
 const MachineTopicQuizPage = lazy(() => import("./pages/MachineTopicQuizPage"));
@@ -202,6 +206,10 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/safety/topics" element={<PageTransition><SafetyTopicsPage /></PageTransition>} />
         <Route path="/lessons/environment/topics" element={<PageTransition><EnvironmentTopicsPage /></PageTransition>} />
         <Route path="/lessons/economics/topics" element={<PageTransition><EconomicsTopicsPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/formulas" element={<PageTransition><CourseFormulasPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/calculations" element={<PageTransition><CourseCalculationsPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/rules" element={<PageTransition><CourseRulesPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/quiz" element={<PageTransition><CourseQuizPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
