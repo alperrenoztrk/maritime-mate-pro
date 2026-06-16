@@ -1,70 +1,27 @@
+## Anladığım
 
-## Amaç
+Görsellerdeki gibi alt kısımda **tek bir iOS pill butonu** olacak:
 
-Anasayfa, iOS/Android ana ekran benzeri 6 ikonlu uygulama grid'ine dönüşecek. Alttaki bottom navigation tamamen kaldırılacak. Widget sayfası kaldırılıp, kullanıcı widget'ları Ayarlar'dan seçip anasayfada (ikonların arasında) gösterebilecek.
+- **Durağan halde** (IMG_0322): Pill üzerinde `🔍 Ara` yazıyor. Tıklayınca `GlobalSearch` dialog'u açılıyor.
+- **Hareket halinde / swipe sırasında** (IMG_0323 + IMG_0321): Pill üzerinde 3 nokta görünüyor — ortadaki (aktif sayfanın) parlak beyaz daire, kenardakiler yarı saydam. Mevcut sayfa hangisiyse o nokta vurgulu.
+- Swipe bitip sayfa oturduktan kısa süre sonra (~600 ms) pill tekrar `Ara` görünümüne döner.
 
-## 1) Anasayfa (`src/pages/Index.tsx`)
+Ayrıca: **Ana sayfanın üst kısmındaki arama kutusu** (`<GlobalSearch />` blok) tamamen kaldırılır. Arama yalnızca alttaki bu pill üzerinden açılır.
 
-iOS Home Screen paralelinde yeniden tasarım:
+## Değişiklikler — yalnızca `src/pages/Index.tsx`
 
-- Üstte mevcut başlık (MARINE EXPERT PRO) küçültülerek korunur; pusula kaldırılır (anasayfa artık launcher gibi davranır).
-- Ortada 3 sütunlu (mobil) / 4 sütunlu (tablet) **app icon grid**:
-  - Hesaplamalar → `/calculations` (Calculator)
-  - Dersler → `/lessons` (BookOpen)
-  - Personel → `/crew` (Users)
-  - Gemi Sistemleri → `/ship-systems` (Ship)
-  - Operasyonlar → `/ship-operations` (ClipboardList)
-  - Beta → `/beta` (FlaskConical)
-- Her ikon: yuvarlatılmış kare (rounded-[22%], iOS squircle benzeri), gradient zemin, lucide ikon, altında label. Tap-hold/scale aktif animasyon.
-- Aşağıda **Widget alanı**: kullanıcının Ayarlar'dan seçtiği widget'lar ikonların altında/arasında çıkar. Boşsa hiçbir şey gösterilmez (ipucu metni gizli).
-- Üstte GlobalSearch (iOS Spotlight çubuğu gibi pill arama), sağ üstte Ayarlar ikonu korunur.
-- Mevcut sol/sağ swipe (haberler/widgets) kaldırılır; widgets rotası artık yok.
-- "Keşfetmeye Başla" CTA kaldırılır (launcher mantığıyla gereksiz).
-- Okyanus dalga arka planı korunur (görsellik için).
+1. Üstteki header bloğundaki `<GlobalSearch />` ve onu saran `<div className="mt-5 px-4 pointer-events-auto">` kaldırılır.
+2. Alt kısımdaki mevcut "page indicator dots" satırı (3 ayrı buton) **tek bir glassmorphism pill** ile değiştirilir:
+   - Konum: `bottom-[max(1rem,env(safe-area-inset-bottom))]`, ortalanmış.
+   - Stil: `rounded-full`, `bg-white/10`, `backdrop-blur-2xl`, `border border-white/20`, hafif gölge — Ayarlar butonuyla aynı dil.
+   - İçerik state'e göre:
+     - `isScrolling === false` → `Search` ikonu + `Ara` etiketi. `onClick` → `GlobalSearch` aç.
+     - `isScrolling === true` → 3 nokta; `activePage` index'ine göre aktif olan beyaz/opak, diğerleri `bg-white/35`. Hepsi aynı boyut (~7px daire).
+3. `isScrolling` state'i pager'ın `scroll` event'inde `true` yapılır; debounce timer (~500 ms scroll durduğunda) ile `false`'a döner. Tek nokta tıklaması artık olmadığı için sayfa atlamayı pill içindeki noktalara değil pager swipe'ına bırakıyoruz (kullanıcı zaten parmakla kaydırıyor).
+4. `GlobalSearch` bileşeni şu an kendi tetik butonunu render ediyor. Pill'in tetikleyici olarak çalışması için iki seçenek var:
+   - **A)** Tek dosya değişikliği: `GlobalSearch`'ü görünmez tutup pill `onClick`'inde global bir custom event (`window.dispatchEvent(new Event('open-global-search'))`) dispatch et; `GlobalSearch` bu event'i dinleyip açılsın. (Küçük bir ek — `src/components/GlobalSearch.tsx` içine event listener.)
+   - **B)** `GlobalSearch`'ü `open` kontrollü prop'a çevirip Index'ten yönet (daha geniş refaktör).
+   
+   **A** önerilir — minimal değişiklik.
 
-## 2) Bottom navigation kaldırma
-
-`src/components/BottomNavigation.tsx` kullanan **15 sayfadan** import + `<BottomNavigation />` kullanımı silinir. Bileşen dosyası tamamen silinir. `MobileLayout` zaten bottom bar render etmiyor; sadece sayfaların alt padding'i (pb-20 vb.) gerekirse temizlenir.
-
-## 3) Widget yönetimi → Ayarlar
-
-Mevcut `/widgets` sayfası (`src/pages/WidgetPage.tsx`) ve tüm widget bileşenleri (`TimeWidgets`, `WeatherInfoWidgets`, `LocationCelestialWidgets`) korunur ama route kaldırılır. Yerine:
-
-- **Yeni: `src/components/widgets/HomeWidgetGrid.tsx`** — localStorage'daki `home-widgets-enabled` listesini okur, ilgili widget kartlarını anasayfada render eder (kompakt iOS widget boyutları: small/medium).
-- **Yeni: `src/pages/SettingsWidgets.tsx`** veya mevcut `Settings` sayfasına eklenen bölüm: kullanılabilir widget'ları toggle ile aç/kapat ve sıralayabilen liste (drag handle ile basit yukarı/aşağı butonları).
-- localStorage key: `marine-home-widgets-v1` → `[{ id: "clock-national", enabled: true, order: 0 }, ...]`.
-- Mevcut widget bileşenleri "compact" prop alacak şekilde küçük adapte edilir (kart boyutu için).
-
-Kullanılabilir widget'lar (ilk sürüm):
-- Saat (Ulusal / GMT / LMT / ZT)
-- Hava durumu (sıcaklık + ikon)
-- Rüzgar (yön + hız)
-- Konum (enlem/boylam DMS)
-- Güneş (doğuş/batış)
-
-## 4) Routing
-
-`src/App.tsx`'te:
-- `/widgets` route'u kaldırılır.
-- `Settings` içinde widget yönetimi bölümü açılır (ayrı route gerekmez).
-
-## 5) Tasarım dili (iOS paralel)
-
-- İkon kareleri: `aspect-square rounded-[22px]`, hafif iç gölge + dış gölge, semantik gradient (her modül için farklı maritime ton: deep blue, teal, slate, ocean).
-- Label: `text-xs font-medium text-white/90`, ikon altında 6px boşluk.
-- Grid: `grid-cols-3 gap-x-4 gap-y-6 px-6`.
-- Tap feedback: `active:scale-95 transition-transform`.
-- Widget kartları: glassmorphism (`bg-white/8 backdrop-blur-xl border border-white/15 rounded-3xl`).
-
-## Teknik notlar
-
-- Mevcut semantik token kuralı korunur; hardcoded hex sadece anasayfa launcher gradient'lerinde (mevcut pattern ile uyumlu) kullanılır.
-- Compass listener Index'ten kaldırılır (artık dial yok) → sensör dinleme maliyeti düşer.
-- Widget verisi için `useCurrentWeather` hook'u anasayfada bir kez çağrılır ve enabled widget'lara prop ile aktarılır (duplicate fetch yok).
-- `WidgetPage.tsx` dosyası silinir; tutorial localStorage anahtarları temizlenmez (zararsız).
-
-## Etkilenen dosyalar
-
-- Değişen: `src/pages/Index.tsx`, `src/App.tsx`, `src/pages/Settings.tsx` (widget bölümü), 15 sayfadan `BottomNavigation` kaldırma.
-- Yeni: `src/components/home/AppIconGrid.tsx`, `src/components/widgets/HomeWidgetGrid.tsx`, `src/components/settings/WidgetSettings.tsx`, `src/hooks/useHomeWidgets.ts`.
-- Silinen: `src/components/BottomNavigation.tsx`, `src/pages/WidgetPage.tsx`.
+Hiçbir başka sayfa veya bileşen etkilenmez.

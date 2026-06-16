@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Settings } from "lucide-react";
+import { Search, Settings } from "lucide-react";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { NewsPanel } from "@/components/home/NewsPanel";
+
 
 const PAGES = ["news", "home", "widgets"] as const;
 type PageId = (typeof PAGES)[number];
@@ -13,6 +14,9 @@ const Index = () => {
   const navigate = useNavigate();
   const pagerRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState<PageId>("home");
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimerRef = useRef<number | null>(null);
+
 
   // Start centered on the home page
   useEffect(() => {
@@ -27,6 +31,9 @@ const Index = () => {
     if (!el) return;
     let ticking = false;
     const onScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = window.setTimeout(() => setIsScrolling(false), 500);
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
@@ -37,15 +44,14 @@ const Index = () => {
       });
     };
     el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
+    };
+
   }, []);
 
-  const goToPage = (id: PageId) => {
-    const el = pagerRef.current;
-    if (!el) return;
-    const idx = PAGES.indexOf(id);
-    el.scrollTo({ left: idx * el.clientWidth, behavior: "smooth" });
-  };
+
 
   return (
     <div
@@ -128,10 +134,8 @@ const Index = () => {
               Professional Maritime Solutions
             </p>
           </div>
-          <div className="mt-5 px-4 pointer-events-auto">
-            <GlobalSearch />
-          </div>
         </div>
+
       )}
 
       {/* Horizontal swipeable pager — snap-stop always so one swipe = one page */}
@@ -165,21 +169,40 @@ const Index = () => {
         </section>
       </main>
 
-      {/* Page indicator dots */}
-      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 z-20 flex justify-center gap-2">
-        {PAGES.map((p) => (
-          <button
-            key={p}
-            type="button"
-            onClick={() => goToPage(p)}
-            aria-label={`${p} sayfasına git`}
-            className={
-              "h-1.5 rounded-full transition-all duration-200 " +
-              (activePage === p ? "w-6 bg-white/90" : "w-1.5 bg-white/35 hover:bg-white/55")
-            }
-          />
-        ))}
+      {/* iOS-style pill: idle = Search, scrolling = page dots */}
+      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 z-20 flex justify-center pointer-events-none">
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new Event("open-global-search"))}
+          aria-label={isScrolling ? `Sayfa ${PAGES.indexOf(activePage) + 1} / ${PAGES.length}` : "Ara"}
+          className="pointer-events-auto flex h-11 min-w-[120px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 backdrop-blur-2xl shadow-[0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-200 hover:bg-white/15 active:scale-95"
+        >
+          {isScrolling ? (
+            <div className="flex items-center gap-2">
+              {PAGES.map((p) => (
+                <span
+                  key={p}
+                  className={
+                    "h-2 w-2 rounded-full transition-all duration-200 " +
+                    (activePage === p ? "bg-white scale-110" : "bg-white/40")
+                  }
+                />
+              ))}
+            </div>
+          ) : (
+            <>
+              <Search className="h-4 w-4 text-white" strokeWidth={2.25} />
+              <span className="text-[15px] font-medium text-white">Ara</span>
+            </>
+          )}
+        </button>
       </div>
+
+      {/* Hidden mount for GlobalSearch dialog (triggered by event) */}
+      <div className="hidden">
+        <GlobalSearch />
+      </div>
+
 
       <style>{`
         @keyframes home-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
