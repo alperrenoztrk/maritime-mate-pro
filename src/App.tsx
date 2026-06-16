@@ -31,7 +31,6 @@ const CalculationSectionPage = lazy(() => import("./pages/CalculationSectionPage
 const Navigation = lazy(() => import("./pages/Navigation"));
 const NavigationCalculationPage = lazy(() => import("./pages/NavigationCalculation"));
 const TideCalculationTutorial = lazy(() => import("./pages/TideCalculationTutorial"));
-// import NavigationCalculationsPage from "./pages/NavigationCalculationsPage";
 const Economics = lazy(() => import("./pages/Economics"));
 const StabilityAssistantPage = lazy(() => import("./pages/StabilityAssistant"));
 const StabilityGZIMO = lazy(() => import("./pages/StabilityGZIMO"));
