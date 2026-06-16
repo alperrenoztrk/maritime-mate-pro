@@ -30,7 +30,7 @@ function proxyImg(url?: string): string | undefined {
 export function NewsPanel() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["maritime-news", "home-panel"],
-    queryFn: fetchMaritimeNews,
+    queryFn: () => fetchMaritimeNews(),
     staleTime: 5 * 60 * 1000,
     gcTime: 15 * 60 * 1000,
   });
