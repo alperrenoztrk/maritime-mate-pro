@@ -232,7 +232,7 @@ const Index = () => {
       </button>
 
       {/* Main content */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center px-6 text-center">
+      <main className="relative z-10 flex min-h-[100svh] flex-col items-center px-6 text-center" aria-label="Marine Expert Pro home">
         {/* Title */}
         <div className="pt-12 sm:pt-16">
           <h1
