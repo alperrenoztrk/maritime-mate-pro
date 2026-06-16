@@ -1,38 +1,47 @@
 ## Sorun
 
-Telefonun donanım geri tuşuna **ard arda hızlı iki defa** basıldığında uygulama beklenmedik şekilde kapanıyor / arka plana atılıyor. Tek basışta üst menüye dönme doğru çalışıyor.
+Lovable mobil uygulamasındaki preview WebView "this project couldn't render correctly in the mobile preview" diyor. Kodda runtime error veya console error yok — yani uygulama aslında çalışıyor (tarayıcıda açtığında sorunsuz). Sorun **ilk paint süresi**: Lovable mobil preview, sayfa belirli bir süre içinde anlamlı içerik göstermezse "couldn't render" fallback'ine düşüyor.
 
-## Kök Neden Analizi
+Suçlu: `index.html` içindeki splash ekranı.
 
-`useNavigationHierarchy` Capacitor `backButton` dinleyicisini doğru kuruyor, ama iki ince problem var:
+`index.html` 33 KB / 619 satır ve şu anda inline olarak şunları çalıştırıyor:
+- 200 yıldızlı canvas starfield + sürekli rAF döngüsü + shooting stars
+- 2 katmanlı blur'lu aurora (filter: blur(60px))
+- 2 katmanlı fog drift animasyonu
+- 4 katmanlı sürekli hareket eden dalga
+- Dönen lighthouse beacon ışınları + glow
+- 200×200 compass rose SVG
+- Ay + krater + glow pulse
+- SVG gemi + duman + köprü pencereleri
+- Particle sparkle layer
+- Çoklu cubic-bezier title reveal + divider + loader
 
-1. **`capacitor.config.ts` içindeki `App.skipBackButton: true` opsiyonu Capacitor 7'de yok** (Cap 6 kalıntısı). Bu yüzden bazı cihazlarda native taraf, JS dinleyici çalışsa bile WebView'in kendi geri geçmişini (`webView.goBack()`) tüketmeye çalışıyor; geçmiş tükendiğinde Android Activity'yi minimize ediyor — kullanıcıya "uygulama kapandı" gibi görünüyor.
-2. **Yarış (race) durumu**: İki tıklama 100–200 ms arayla geldiğinde `handleBack` arka arkaya iki kez çağrılıyor; navigate işlemi React commit'iyle çakışırken ikinci `handleBack` aynı path'i tekrar okuyabiliyor. Re-entrancy koruması yok.
-3. **Native tarafta sentinel yok**: `popstate` sentinel'i sadece web/PWA için ekleniyor. Native'de WebView geçmişinde "tüketilebilir" bir dummy entry olmadığı için sistem default davranışı tetiklenince geçmiş hemen tükeniyor.
+Bu, mobil WebView'da ilk frame'i hem CPU hem GPU açısından bloke ediyor — yüksek bundle indirme + canvas rAF + birçok blurred composite layer üst üste binince Lovable shell timeout süresini geçiyor ve "couldn't render" diyor.
 
-## Yapılacaklar
+## Çözüm
 
-### 1. `capacitor.config.ts`
-- Geçersiz olan `App.skipBackButton: true` opsiyonunu kaldır. Capacitor 7'de `backButton` dinleyicisinin varlığı zaten default'u bastırır; bu opsiyon parser'da uyarıya yol açıyor olabilir.
+`index.html` splash ekranını **çok daha hafif** bir versiyona indir. Görsel kimlik (Marine Expert Pro markası, deniz teması, altın aksanlı) korunsun ama:
 
-### 2. `src/hooks/useNavigationHierarchy.ts`
-- **Re-entrancy guard**: `isHandlingBackRef` (boolean) ile aynı tick içinde ikinci `handleBack` çağrısı yapılırsa atla. ~250 ms'lik soft-cooldown ile rapid double-tap'i debounce et — ikinci basış kuyrukta tutulup ilk navigate tamamlandıktan sonra çalışsın (kaybolmasın).
-- **Native sentinel**: `Capacitor.isNativePlatform()` durumunda da her route değişiminde `window.history.pushState` ile dummy bir entry yerleştir. Böylece WebView olası bir default `goBack()` denerse sentinel'i tüketir, app foreground'da kalır.
-- **Defansif preventDefault**: Dinleyiciye gelen `event` argümanını `(event?.preventDefault?.())` ile koruma altına al (Cap 7'de no-op, ileride yardımcı).
-- **HARD GUARD — '/'** üzerinde geri basıldığında `App.exitApp` çağrılmamasını sağlamak için açık bir `return` zaten var; yorum güçlendirilecek ve guard'ın test edilmesi için bir console.debug log eklenecek (geliştirme aşamasında).
+- Canvas starfield ve shooting-star rAF döngüsü **kaldırılsın**
+- Blur'lu aurora ve fog katmanları **kaldırılsın**
+- Beacon rotation, particle sparkles, multi-layer waves **kaldırılsın**
+- Lighthouse / ship / compass / moon SVG'leri **kaldırılsın**
+- Yalnızca şunlar kalsın: koyu deniz arka planı (sade gradient), küçük çapa/pusula ikonu, "MARINE EXPERT PRO" başlığı + tagline, ince loader bar
+- Tek hafif fade-in animasyonu (transform/opacity, GPU-cheap)
 
-### 3. `useAndroidFeatures.ts`
-- Değişiklik yok; yalnızca yorum güncellenerek bu hook'un asla `backButton` dinleyicisi eklemeyeceği vurgulanacak (regression koruması).
+Splash'in zaten React mount olur olmaz (`requestAnimationFrame` + 100ms) gizlendiğini biliyoruz — yani kullanıcı görsel olarak fark etmeyecek kadar kısa sürede kayboluyor zaten. Splash içindeki bütün zengin animasyonlar pratikte kimseye gösterilmiyor, sadece ilk paint'i geciktiriyor.
 
-## Test Planı (kullanıcıya talimat)
+Sonuç: `index.html` ~33 KB'tan ~3-4 KB'a düşecek, canvas rAF tamamen gidecek, blur composite layer kalmayacak. Mobil preview'in timeout'unun altına rahat ineceğiz.
 
-Yerel cihazda denemek için:
-1. `git pull` → `npm install` → `npx cap sync android`
-2. `npx cap run android` ile cihazda aç.
-3. Ana ekrandan herhangi bir alt sayfaya (örn. Dersler → Seyir → Enlem) git, sonra donanım geri tuşuna hızlı 2–3 kez bas. Uygulama her basışta bir üst seviyeye çıkmalı; ana ekrana ulaşınca takılı kalmalı, **asla minimize olmamalı**.
+### Etkilenen dosyalar
 
-## Teknik Notlar
+- `index.html` — splash bölümü (50-614. satırlar) sadeleştirilecek. `<head>` (SEO meta'ları, JSON-LD, fontlar) ve sayfanın geri kalanı aynen korunacak.
 
-- Capacitor 7 App plugin'inde listener varlığı default'u suppress eder, fakat `server.url` (remote URL) kullanıldığında WebView başlangıç geçmişi 1 entry olduğu için ekstra defansif sentinel önemli.
-- Hash router'a geçmek alternatif bir çözüm olurdu ama mevcut yapıda tüm route'lar BrowserRouter'a göre yazılmış — refactor riski yüksek, bu yüzden tercih edilmiyor.
-- Değişiklikler yalnızca presentation/navigation katmanı; iş mantığı ve veri akışı etkilenmez.
+### Yapılmayacaklar
+
+- React tarafına dokunulmayacak (`src/main.tsx`, `App.tsx`, rotalar aynen kalacak).
+- Capacitor / native config'e dokunulmayacak.
+- Backend, business logic, ders/hesaplama içeriği etkilenmeyecek.
+- Splash'in zengin animasyonlu hali istenirse sonradan **React içine** (mount sonrası, sadece bir kez gösterilen bir loading overlay olarak) ayrı bir görevde taşınabilir — ama bu görevin kapsamında değil.
+
+Onaylarsan uygulayayım.
