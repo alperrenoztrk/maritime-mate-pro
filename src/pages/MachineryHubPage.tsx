@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowLeft,
   ArrowRight,
   Anchor,
   Battery,
@@ -356,17 +355,6 @@ export default function MachineryHubPage() {
             </p>
           </motion.div>
         </div>
-      </div>
-
-      {/* ── Back button ── */}
-      <div className="mx-auto flex max-w-6xl justify-start px-4 pt-4">
-        <Link
-          to="/calculations"
-          className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/80 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Geri
-        </Link>
       </div>
 
       <div className="mx-auto max-w-6xl space-y-6 px-4 pb-12 pt-4">
