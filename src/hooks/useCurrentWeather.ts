@@ -299,14 +299,23 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       return dataRef.current;
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Bilinmeyen hata";
-      console.error("❌ Hava durumu hatası:", message);
-      setError(message);
+      console.warn("⚠️ Konum/hava alınamadı, İstanbul fallback kullanılıyor:", message);
+      // Fallback to Istanbul so widgets remain functional even without geolocation permission
+      const lat = 41.0082;
+      const lon = 28.9784;
+      lastPositionRef.current = { lat, lon };
+      setLocationLabel("İstanbul");
       setIsFallbackLocation(true);
-      return null;
+      await Promise.allSettled([
+        fetchWeather(lat, lon),
+        reverseGeocode ? fetchReverse(lat, lon) : Promise.resolve(),
+      ]);
+      setError(null);
+      return dataRef.current;
     } finally {
       setLoading(false);
     }
-  }, [fetchReverse, fetchWeather]);
+  }, [fetchReverse, fetchWeather, reverseGeocode]);
 
   const dataRef = useRef<WeatherData | null>(null);
   useEffect(() => { dataRef.current = data; }, [data]);
