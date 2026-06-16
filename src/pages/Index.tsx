@@ -139,10 +139,8 @@ const Index = () => {
               Professional Maritime Solutions
             </p>
           </div>
-          <div className="mt-5 px-4 pointer-events-auto">
-            <GlobalSearch />
-          </div>
         </div>
+
       )}
 
       {/* Horizontal swipeable pager — snap-stop always so one swipe = one page */}
