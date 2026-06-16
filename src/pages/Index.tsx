@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Search, Settings } from "lucide-react";
+import { Search } from "lucide-react";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
@@ -11,7 +10,7 @@ const PAGES = ["news", "home", "widgets"] as const;
 type PageId = (typeof PAGES)[number];
 
 const Index = () => {
-  const navigate = useNavigate();
+
   const pagerRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState<PageId>("home");
   const [isScrolling, setIsScrolling] = useState(false);
@@ -96,16 +95,8 @@ const Index = () => {
         </svg>
       </div>
 
-      {/* Settings button — only on home (center) page, glassmorphism iOS style */}
-      {activePage === "home" && (
-        <button
-          onClick={() => navigate("/settings")}
-          className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-150 hover:bg-white/15 active:scale-90"
-          aria-label="Ayarlar"
-        >
-          <Settings className="h-5 w-5 text-white" strokeWidth={2} />
-        </button>
-      )}
+
+
 
       {/* Header — only on home page */}
       {activePage === "home" && (
