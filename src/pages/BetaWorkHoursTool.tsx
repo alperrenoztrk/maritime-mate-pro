@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import {
-  ArrowLeft,
   Upload,
   FileImage,
   Sparkles,
@@ -302,13 +300,6 @@ export default function BetaWorkHoursTool() {
     >
       <div className="mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-2">
-          <Link
-            to="/beta"
-            className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm hover:border-primary/40"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Beta
-          </Link>
           <h1 className="text-xl font-bold text-foreground">
             Otomatik Çalışma Saati Tablosu
           </h1>

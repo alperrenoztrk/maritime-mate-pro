@@ -1,8 +1,7 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { BookOpen } from "lucide-react";
 
 type Detail = {
   title: string;
@@ -190,17 +189,9 @@ export default function StabilityFormulaDetailPage() {
   return (
     <MobileLayout>
       <div className="space-y-4" data-no-translate>
-        <div className="flex items-center justify-between">
-          <Link to="/stability/formulas">
-            <Button variant="ghost" size="sm" className="gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Formüller
-            </Button>
-          </Link>
-          <div className="text-sm text-muted-foreground flex items-center gap-2">
-            <BookOpen className="h-4 w-4" />
-            Stabilite Formülleri
-          </div>
+        <div className="text-sm text-muted-foreground flex items-center gap-2">
+          <BookOpen className="h-4 w-4" />
+          Stabilite Formülleri
         </div>
 
         {!detail ? (

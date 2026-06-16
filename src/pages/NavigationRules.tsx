@@ -4,7 +4,7 @@ import { BottomNavigation } from "@/components/BottomNavigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronUp, Anchor, Navigation, Shield, AlertTriangle, Eye } from "lucide-react";
+import { BookOpen, ChevronDown, ChevronUp, Anchor, Navigation, Shield, AlertTriangle, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface RuleSection {
@@ -121,16 +121,9 @@ export default function NavigationRulesPage() {
     <MobileLayout>
       <div className="min-h-screen bg-background px-4 pb-24 pt-6">
         <div className="mx-auto max-w-lg space-y-4">
-          <div className="flex items-center gap-3">
-            <Link to="/lessons">
-              <Button variant="ghost" size="icon" className="h-8 w-8">
-                <ArrowLeft className="h-4 w-4" />
-              </Button>
-            </Link>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-foreground">Seyir Kuralları</h1>
-              <p className="text-xs text-muted-foreground">COLREG, IALA ve seyir güvenliği kuralları</p>
-            </div>
+          <div>
+            <h1 className="text-xl font-bold tracking-tight text-foreground">Seyir Kuralları</h1>
+            <p className="text-xs text-muted-foreground">COLREG, IALA ve seyir güvenliği kuralları</p>
           </div>
 
           <div className="space-y-2.5">

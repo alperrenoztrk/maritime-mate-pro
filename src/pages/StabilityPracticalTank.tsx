@@ -1,7 +1,7 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Wrench, Anchor } from "lucide-react";
+import { Wrench, Anchor } from "lucide-react";
 import { HydrostaticsStabilityCalculations } from "@/components/calculations/HydrostaticsStabilityCalculations";
 
 export default function StabilityPracticalTankPage() {

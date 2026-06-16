@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, FlaskConical, Clock4, ClipboardCheck } from "lucide-react";
+import { FlaskConical, Clock4, ClipboardCheck } from "lucide-react";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 const FEATURES = [
@@ -42,15 +42,6 @@ export default function BetaFeaturesPage() {
           <p className="text-sm text-muted-foreground">
             Test aşamasındaki araçlar. Çıktıları daima manuel doğrulayın.
           </p>
-          <div className="flex justify-center">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Ana sayfa
-            </Link>
-          </div>
         </header>
 
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-800 dark:text-amber-200">

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
-  ArrowLeft,
   Anchor,
   Wrench,
   Target,
@@ -33,13 +32,6 @@ export default function ShipOperationsDetail() {
       <MobileLayout>
         <div className="relative min-h-screen bg-background px-4 pb-24 pt-6 flex flex-col items-center justify-center gap-4">
           <p className="text-muted-foreground text-sm">Gemi tipi bulunamadı.</p>
-          <Link
-            to="/ship-operations"
-            className="flex items-center gap-1.5 text-xs text-primary"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Geri dön
-          </Link>
         </div>
         <BottomNavigation />
       </MobileLayout>
@@ -59,12 +51,6 @@ export default function ShipOperationsDetail() {
         <div className="relative z-10 mx-auto flex max-w-lg flex-col gap-5">
           {/* Header */}
           <div className="flex items-center gap-3">
-            <Link
-              to="/ship-operations"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/30 bg-card/60 text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
             <div className="flex items-center gap-3 min-w-0">
               <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-border/30">
                 <img

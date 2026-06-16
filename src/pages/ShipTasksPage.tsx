@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
 
 interface TaskRow {
   task: string;

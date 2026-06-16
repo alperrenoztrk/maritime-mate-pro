@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { crewHierarchy } from "@/data/crewHierarchy";
-import { ArrowLeft } from "lucide-react";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function CrewHierarchyPage() {
@@ -32,15 +31,6 @@ export default function CrewHierarchyPage() {
           <p className="text-xs text-muted-foreground">
             Köprüüstü, makine ve ikmal departmanlarında görev yapan gemi personelinin hiyerarşik yapısı.
           </p>
-          <div className="flex justify-center">
-            <Link
-              to="/calculations"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Geri
-            </Link>
-          </div>
         </header>
 
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
