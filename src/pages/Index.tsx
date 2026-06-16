@@ -14,6 +14,9 @@ const Index = () => {
   const navigate = useNavigate();
   const pagerRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState<PageId>("home");
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimerRef = useRef<number | null>(null);
+
 
   // Start centered on the home page
   useEffect(() => {
