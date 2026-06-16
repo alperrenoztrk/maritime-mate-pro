@@ -80,6 +80,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
   const [data, setData] = useState<WeatherData | null>(null);
   const [locationLabel, setLocationLabel] = useState<string | null>(null);
   const [isFallbackLocation, setIsFallbackLocation] = useState<boolean>(false);
+  const [accuracyMeters, setAccuracyMeters] = useState<number | null>(null);
+  const [locationSource, setLocationSource] = useState<"gps" | "ip" | "manual" | null>(null);
+  const [positionTimestamp, setPositionTimestamp] = useState<number | null>(null);
 
   const lastPositionRef = useRef<{ lat: number; lon: number } | null>(null);
   const lastReverseRef = useRef<{ lat: number; lon: number; label: string | null } | null>(null);
