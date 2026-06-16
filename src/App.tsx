@@ -363,6 +363,7 @@ const App = () => {
               <DensityProvider>
                 <Toaster />
                 <AskAIPopup />
+                <LanguageChangeOverlay />
                 <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
                   <BrowserRouter>
                     <RouteTranslationGate />
@@ -370,6 +371,7 @@ const App = () => {
                   </BrowserRouter>
                 </div>
               </DensityProvider>
+
             </ThemeProvider>
           </TooltipProvider>
         </LanguageProvider>
