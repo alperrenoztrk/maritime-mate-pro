@@ -26,6 +26,8 @@
     "check:topic-schema": "node scripts/check-topic-content-schema.mjs",
     "i18n:extract": "node scripts/i18n/extract-strings.mjs",
     "i18n:pretranslate": "npx tsx scripts/i18n/pretranslate.mjs",
+    "i18n:generate": "npx tsx scripts/i18n/generate-locales-gtx.mjs",
+    "i18n:generate:ui": "npx tsx scripts/i18n/generate-locales-gtx.mjs --ui-only",
     "i18n:check": "node scripts/i18n/check-coverage.mjs"
   },
   "dependencies": {
