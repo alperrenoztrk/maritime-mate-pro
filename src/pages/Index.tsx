@@ -90,8 +90,6 @@ const Index = () => {
         </svg>
       </div>
 
-      {/* Settings button (only on center page) */}
-      <button
       {/* Settings button — only on home (center) page, glassmorphism iOS style */}
       {activePage === "home" && (
         <button
