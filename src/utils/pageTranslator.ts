@@ -21,6 +21,11 @@ export const ATTR_SELECTOR = TRANSLATABLE_ATTRS.map(({ attr }) => `[${attr}]`).j
 
 export const hasLetters = (value: string): boolean => /\p{L}/u.test(value);
 
+// Canonical source-string normalization shared by the runtime translator and
+// the build-time pre-translation pipeline (scripts/i18n/*). Both MUST use this
+// so that pre-translated dictionary keys match runtime lookup keys exactly.
+export const normalizeSource = (value: string): string => value.trim();
+
 const elementClassName = (el: Element): string =>
   typeof el.className === 'string'
     ? el.className

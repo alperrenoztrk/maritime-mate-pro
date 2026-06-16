@@ -9,7 +9,9 @@ import {
   TranslationUnit,
   collectTranslationUnits,
   runWithConcurrency,
+  normalizeSource,
 } from '@/utils/pageTranslator';
+import { loadStaticDictionary, getStaticTranslation } from '@/utils/staticTranslations';
 
 interface SupportedLanguage {
   language: string;
@@ -130,13 +132,22 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // ── Core string translator (glossary-aware) ────────────────────────────────
   // 1) Exact maritime override  2) machine translation  3) inline maritime fixes
   const translateText = async (text: string, languageCode: string): Promise<string> => {
-    const normalizedText = text.trim();
+    const normalizedText = normalizeSource(text);
     if (!normalizedText) return text;
     if (languageCode === SOURCE_LANGUAGE) return normalizedText;
 
     const cacheKey = `${languageCode}:${normalizedText}`;
     const cached = translationCacheRef.current.get(cacheKey);
     if (cached !== undefined) return cached;
+
+    // Build-time pre-translated static content: instant, network-free hit. The
+    // dictionary is generated with the maritime override + corrections already
+    // applied, so it is safe to consult before the live engine.
+    const staticTranslation = getStaticTranslation(normalizedText, languageCode);
+    if (staticTranslation !== null) {
+      translationCacheRef.current.set(cacheKey, staticTranslation);
+      return staticTranslation;
+    }
 
     // Maritime terminology takes precedence over generic machine translation, so
     // the core nautical vocabulary is always rendered with the correct term
@@ -322,8 +333,16 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   useEffect(() => {
     if (typeof document === 'undefined' || isLoading) return;
     const runId = ++translationRunIdRef.current;
+    const language = currentLanguage;
     ensureObserver();
-    void translatePage(currentLanguage, runId);
+    // Load the build-time static dictionary FIRST so the bulk of the content is
+    // served instantly from it (no network), then run the full translation pass.
+    // The dictionary is a same-origin, SW-cached asset, so this is fast. If it is
+    // missing/empty the pass simply falls back to the live translator.
+    void (async () => {
+      await loadStaticDictionary(language);
+      if (translationRunIdRef.current === runId) void translatePage(language, runId);
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLanguage, isLoading]);
 

@@ -33,3 +33,7 @@ android/capacitor-cordova-android-plugins/.gradle/
 # Capacitor
 capacitor.config.json
 .env
+
+# i18n build-time pre-translation (regenerable intermediates; ship public/locales/*.json)
+scripts/i18n/source-strings.json
+scripts/i18n/.cache/
