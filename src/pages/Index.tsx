@@ -31,6 +31,9 @@ const Index = () => {
     if (!el) return;
     let ticking = false;
     const onScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = window.setTimeout(() => setIsScrolling(false), 500);
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
@@ -41,7 +44,11 @@ const Index = () => {
       });
     };
     el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
+    };
+
   }, []);
 
   const goToPage = (id: PageId) => {
