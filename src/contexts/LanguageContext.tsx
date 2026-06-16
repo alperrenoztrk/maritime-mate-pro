@@ -579,6 +579,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     resetLanguagePreferences,
     isChangingLanguage,
     changeProgress,
+    changePhase,
   };
 
   return (
