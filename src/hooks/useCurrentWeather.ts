@@ -80,6 +80,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
   const [data, setData] = useState<WeatherData | null>(null);
   const [locationLabel, setLocationLabel] = useState<string | null>(null);
   const [isFallbackLocation, setIsFallbackLocation] = useState<boolean>(false);
+  const [accuracyMeters, setAccuracyMeters] = useState<number | null>(null);
+  const [locationSource, setLocationSource] = useState<"gps" | "ip" | "manual" | null>(null);
+  const [positionTimestamp, setPositionTimestamp] = useState<number | null>(null);
 
   const lastPositionRef = useRef<{ lat: number; lon: number } | null>(null);
   const lastReverseRef = useRef<{ lat: number; lon: number; label: string | null } | null>(null);
@@ -205,6 +208,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
     setIsFallbackLocation(false);
+    setAccuracyMeters(typeof pos.coords.accuracy === "number" ? pos.coords.accuracy : null);
+    setLocationSource("gps");
+    setPositionTimestamp(pos.timestamp ?? Date.now());
     const prev = lastPositionRef.current;
     lastPositionRef.current = { lat, lon };
     if (!prev) {
@@ -289,6 +295,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       lastPositionRef.current = { lat, lon };
+      setAccuracyMeters(typeof position.coords.accuracy === "number" ? position.coords.accuracy : null);
+      setLocationSource("gps");
+      setPositionTimestamp(position.timestamp ?? Date.now());
       console.log("🌤️ Hava durumu ve konum verisi alınıyor...");
       await Promise.allSettled([
         fetchWeather(lat, lon),
@@ -299,14 +308,38 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       return dataRef.current;
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Bilinmeyen hata";
-      console.error("❌ Hava durumu hatası:", message);
-      setError(message);
-      setIsFallbackLocation(true);
-      return null;
+      console.warn("⚠️ GPS reddedildi, IP tabanlı konum deneniyor:", message);
+      // IP-based geolocation fallback — far more accurate than a hardcoded city
+      try {
+        const ipRes = await fetch("https://ipapi.co/json/");
+        if (!ipRes.ok) throw new Error(`ipapi ${ipRes.status}`);
+        const ipJson = await ipRes.json();
+        const lat = Number(ipJson.latitude);
+        const lon = Number(ipJson.longitude);
+        if (!Number.isFinite(lat) || !Number.isFinite(lon)) throw new Error("ipapi invalid coords");
+        lastPositionRef.current = { lat, lon };
+        setAccuracyMeters(null);
+        setLocationSource("ip");
+        setPositionTimestamp(Date.now());
+        const label = [ipJson.city, ipJson.region].filter(Boolean).join(", ") || ipJson.country_name || null;
+        if (label) setLocationLabel(label);
+        setIsFallbackLocation(true);
+        await Promise.allSettled([
+          fetchWeather(lat, lon),
+          reverseGeocode ? fetchReverse(lat, lon) : Promise.resolve(),
+        ]);
+        setError(null);
+        return dataRef.current;
+      } catch (ipErr) {
+        console.error("❌ IP tabanlı konum da başarısız:", ipErr);
+        setError(message);
+        setIsFallbackLocation(true);
+        return null;
+      }
     } finally {
       setLoading(false);
     }
-  }, [fetchReverse, fetchWeather]);
+  }, [fetchReverse, fetchWeather, reverseGeocode]);
 
   const dataRef = useRef<WeatherData | null>(null);
   useEffect(() => { dataRef.current = data; }, [data]);
@@ -324,6 +357,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         lastPositionRef.current = { lat: selectedLocation.latitude, lon: selectedLocation.longitude };
         setLocationLabel(selectedLocation.locationLabel);
         setIsFallbackLocation(false);
+        setAccuracyMeters(null);
+        setLocationSource("manual");
+        setPositionTimestamp(Date.now());
         await fetchWeather(selectedLocation.latitude, selectedLocation.longitude);
         setLoading(false);
       })();
@@ -390,7 +426,10 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     data,
     locationLabel,
     isFallbackLocation,
+    accuracyMeters,
+    locationSource,
+    positionTimestamp,
     refresh,
     requestOnce,
-  }), [data, error, isFallbackLocation, loading, locationLabel, refresh, requestOnce]);
+  }), [data, error, isFallbackLocation, loading, locationLabel, accuracyMeters, locationSource, positionTimestamp, refresh, requestOnce]);
 }

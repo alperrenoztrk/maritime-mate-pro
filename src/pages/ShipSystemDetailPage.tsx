@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { shipSystemImages } from "@/data/shipSystemImages";
 import { MobileLayout } from "@/components/MobileLayout";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 
@@ -37,7 +36,6 @@ export default function ShipSystemDetailPage() {
         <div className="flex min-h-screen items-center justify-center bg-background">
           <p className="text-muted-foreground">İçerik bulunamadı.</p>
         </div>
-        <BottomNavigation />
       </MobileLayout>
     );
   }
@@ -206,7 +204,6 @@ export default function ShipSystemDetailPage() {
           })}
         </div>
       </div>
-      <BottomNavigation />
 
       {/* Image Viewer Modal */}
       <ImageViewerModal

@@ -3,10 +3,12 @@ import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
+
 import { DensityProvider } from "@/contexts/DensityContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
@@ -149,7 +151,6 @@ const MachineRulesPage = lazy(() => import("./pages/MachineRules"));
 const RegulationDetailPage = lazy(() => import("./pages/RegulationDetailPage"));
 const ExamPreparationPage = lazy(() => import("./pages/ExamPreparationPage"));
 
-const WidgetPage = lazy(() => import("./pages/WidgetPage"));
 const MaritimeNews = lazy(() => import("./pages/MaritimeNews"));
 
 const CrewRoleDetailPage = lazy(() => import("./pages/CrewRoleDetail"));
@@ -191,7 +192,6 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
-        <Route path="/widgets" element={<PageTransition><WidgetPage /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
@@ -343,6 +343,7 @@ const AnimatedRoutes = () => {
         <Route path="/exam-preparation" element={<PageTransition><ExamPreparationPage /></PageTransition>} />
         <Route path="/converter" element={<PageTransition><ConverterPage /></PageTransition>} />
         <Route path="/machine-calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
+        <Route path="/widgets" element={<Navigate to="/" replace />} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
       </Suspense>
@@ -364,6 +365,7 @@ const App = () => {
               <DensityProvider>
                 <Toaster />
                 <AskAIPopup />
+                <LanguageChangeOverlay />
                 <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
                   <BrowserRouter>
                     <RouteTranslationGate />
@@ -371,6 +373,7 @@ const App = () => {
                   </BrowserRouter>
                 </div>
               </DensityProvider>
+
             </ThemeProvider>
           </TooltipProvider>
         </LanguageProvider>

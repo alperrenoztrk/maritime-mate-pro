@@ -160,28 +160,54 @@ serve(async (req: Request) => {
       );
     }
 
-    // Fetch the article
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+    // Fetch the article (with Jina Reader fallback for blocked sources)
+    const fetchWithTimeout = async (target: string, ms: number) => {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), ms);
+      try {
+        return await fetch(target, {
+          signal: controller.signal,
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            Accept:
+              "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cache-Control": "no-cache",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "Sec-Fetch-User": "?1",
+            "Upgrade-Insecure-Requests": "1",
+          },
+          redirect: "follow",
+        });
+      } finally {
+        clearTimeout(timeout);
+      }
+    };
 
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Cache-Control": "no-cache",
-        "Sec-Fetch-Dest": "document",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "none",
-        "Sec-Fetch-User": "?1",
-        "Upgrade-Insecure-Requests": "1",
-      },
-      redirect: "follow",
-    });
+    let response = await fetchWithTimeout(url, 15000);
 
-    clearTimeout(timeout);
+    // If the source blocks us (403/451/406/429) or fails, try Jina Reader proxy
+    if (!response.ok && [401, 403, 406, 429, 451, 503].includes(response.status)) {
+      const proxied = `https://r.jina.ai/${url}`;
+      const proxyRes = await fetchWithTimeout(proxied, 20000);
+      if (proxyRes.ok) {
+        const text = await proxyRes.text();
+        // Jina returns markdown-like text with "Title:" / "URL Source:" / "Markdown Content:" preamble
+        const titleMatch = text.match(/^Title:\s*(.+)$/m);
+        const contentSplit = text.split(/Markdown Content:\s*/);
+        const content = (contentSplit[1] || text).trim();
+        return new Response(
+          JSON.stringify({
+            title: titleMatch?.[1]?.trim() || "",
+            content,
+          }),
+          { headers: { ...corsHeaders, "content-type": "application/json" } }
+        );
+      }
+    }
 
     if (!response.ok) {
       return new Response(
@@ -198,6 +224,7 @@ serve(async (req: Request) => {
         { status: 502, headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }
+
 
     const article = extractArticleContent(html, url);
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, ChevronDown, ChevronUp, Anchor, Navigation, Shield, AlertTriangle, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -162,7 +161,6 @@ export default function NavigationRulesPage() {
           </div>
         </div>
       </div>
-      <BottomNavigation />
     </MobileLayout>
   );
 }

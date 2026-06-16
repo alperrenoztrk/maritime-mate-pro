@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
 import { hasCourseTopic } from "@/data/courseContent";
 import { ChevronDown, ChevronRight, GraduationCap, Ship, Wrench } from "lucide-react";
-import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function LessonsPage() {
   const highRefreshRateStyles: CSSProperties = {
@@ -167,7 +166,6 @@ export default function LessonsPage() {
 
 
       </div>
-      <BottomNavigation />
     </div>
   );
 }

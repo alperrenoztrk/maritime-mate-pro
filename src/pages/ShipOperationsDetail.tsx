@@ -10,7 +10,6 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import {
   Accordion,
   AccordionContent,
@@ -33,7 +32,6 @@ export default function ShipOperationsDetail() {
         <div className="relative min-h-screen bg-background px-4 pb-24 pt-6 flex flex-col items-center justify-center gap-4">
           <p className="text-muted-foreground text-sm">Gemi tipi bulunamadı.</p>
         </div>
-        <BottomNavigation />
       </MobileLayout>
     );
   }
@@ -202,7 +200,6 @@ export default function ShipOperationsDetail() {
           )}
         </div>
       </div>
-      <BottomNavigation />
     </MobileLayout>
   );
 }

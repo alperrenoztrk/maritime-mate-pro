@@ -1,47 +1,54 @@
-## Sorun
+## Hedef
 
-Lovable mobil uygulamasındaki preview WebView "this project couldn't render correctly in the mobile preview" diyor. Kodda runtime error veya console error yok — yani uygulama aslında çalışıyor (tarayıcıda açtığında sorunsuz). Sorun **ilk paint süresi**: Lovable mobil preview, sayfa belirli bir süre içinde anlamlı içerik göstermezse "couldn't render" fallback'ine düşüyor.
+Dil değiştirildikten sonra **uygulamadaki tüm sayfaların** çevrilmiş olması — kullanıcı sayfaya gidince hiçbir çeviri flicker'ı görmemeli.
 
-Suçlu: `index.html` içindeki splash ekranı.
+Seçilen strateji: **Agresif bulk — tüm route'ları arka planda gez, metinleri topla, hepsini önceden çevir.**
 
-`index.html` 33 KB / 619 satır ve şu anda inline olarak şunları çalıştırıyor:
-- 200 yıldızlı canvas starfield + sürekli rAF döngüsü + shooting stars
-- 2 katmanlı blur'lu aurora (filter: blur(60px))
-- 2 katmanlı fog drift animasyonu
-- 4 katmanlı sürekli hareket eden dalga
-- Dönen lighthouse beacon ışınları + glow
-- 200×200 compass rose SVG
-- Ay + krater + glow pulse
-- SVG gemi + duman + köprü pencereleri
-- Particle sparkle layer
-- Çoklu cubic-bezier title reveal + divider + loader
+## Yaklaşım
 
-Bu, mobil WebView'da ilk frame'i hem CPU hem GPU açısından bloke ediyor — yüksek bundle indirme + canvas rAF + birçok blurred composite layer üst üste binince Lovable shell timeout süresini geçiyor ve "couldn't render" diyor.
+Dil değiştirildiğinde overlay açıkken, gizli bir off-screen iframe içinde uygulamanın tüm route'larını sırayla yükle, her route'da DOM'dan metinleri topla, sonra hepsini Google Translate ile toplu çevir. İşlem bitince cache'i kaydet ve dili gerçek anlamda değiştir. Sonraki ziyaretlerde her sayfa cache'den anında çevrilmiş gelir → flicker yok.
 
-## Çözüm
+### Mimari
 
-`index.html` splash ekranını **çok daha hafif** bir versiyona indir. Görsel kimlik (Marine Expert Pro markası, deniz teması, altın aksanlı) korunsun ama:
+1. **Route manifest** (`src/utils/routeManifest.ts` — yeni):
+   - `src/App.tsx`'teki tüm static path'leri tek bir dizi olarak listele (`/`, `/calculations`, `/lessons`, vs.).
+   - Dinamik path'ler (`:param` içerenler) için bilinen örnek değerlerle somut URL'ler üret. Örnek: `/lessons/:topicKey/formulas` → `/lessons/stability/formulas`, `/lessons/cargo/formulas`, vs. (kategori/topic listeleri zaten kod tabanında mevcut — onlardan üretilir.)
+   - Sonuç: ~150-200 somut URL'lik düz bir liste.
 
-- Canvas starfield ve shooting-star rAF döngüsü **kaldırılsın**
-- Blur'lu aurora ve fog katmanları **kaldırılsın**
-- Beacon rotation, particle sparkles, multi-layer waves **kaldırılsın**
-- Lighthouse / ship / compass / moon SVG'leri **kaldırılsın**
-- Yalnızca şunlar kalsın: koyu deniz arka planı (sade gradient), küçük çapa/pusula ikonu, "MARINE EXPERT PRO" başlığı + tagline, ince loader bar
-- Tek hafif fade-in animasyonu (transform/opacity, GPU-cheap)
+2. **Harvest iframe** (`src/utils/routeHarvester.ts` — yeni):
+   - `document.body`'ye 1x1 piksel, `aria-hidden`, `pointer-events:none`, `position:fixed; top:-9999px` bir iframe ekle.
+   - URL'leri tek tek `iframe.src = origin + path` yaparak yükle.
+   - Her route için: `load` event + 800ms ek bekleme (lazy content için) → iframe.contentDocument.body üzerinde `collectTranslationUnits` çalıştır → toplanan source string'leri parent'taki seen-set'e ekle.
+   - Hata/timeout (5sn) → o route'u atla, devam et.
+   - İşlem boyunca progress yayınla (örn. `routesDone/routesTotal * 50%` ilk yarı).
+   - Hassas route'ları (`/auth/callback`) listenin dışında tut.
 
-Splash'in zaten React mount olur olmaz (`requestAnimationFrame` + 100ms) gizlendiğini biliyoruz — yani kullanıcı görsel olarak fark etmeyecek kadar kısa sürede kayboluyor zaten. Splash içindeki bütün zengin animasyonlar pratikte kimseye gösterilmiyor, sadece ilk paint'i geciktiriyor.
+3. **`LanguageContext.tsx` değişiklikleri**:
+   - `runBulkTranslation` başlangıcında, henüz harvest yapılmamış bir dil için `harvestAllRoutes()` çağır (progress 0-50%).
+   - Sonra mevcut bulk çeviri pass'i (Google batch) çalışsın (progress 50-100%).
+   - `bulkCompletedLanguagesRef` ve cache-only davranışını **koru** — çünkü artık seen-set tüm uygulamayı içerecek, cache miss neredeyse hiç olmayacak → flicker yok ve canlı fetch'e gerek yok.
+   - Harvest sonucunu `localStorage`'a kalıcı yaz (`mt-routes-harvested-v1` flag'i) → kullanıcı tekrar başka bir dile geçerse harvest tekrar çalışmasın, sadece bulk çeviri yapılsın. Yeni uygulama sürümünde flag sıfırlanabilsin diye basit bir version key kullan.
 
-Sonuç: `index.html` ~33 KB'tan ~3-4 KB'a düşecek, canvas rAF tamamen gidecek, blur composite layer kalmayacak. Mobil preview'in timeout'unun altına rahat ineceğiz.
+4. **Overlay (`LanguageChangeOverlay.tsx`)**:
+   - İki fazlı progress mesajı: "Sayfalar taranıyor… (X/Y)" → "Çeviriler hazırlanıyor… (%Z)".
+   - `LanguageContext`'e `changePhase` state ekle (`'harvest' | 'translate'`).
 
-### Etkilenen dosyalar
+### Riskler ve çözümler
 
-- `index.html` — splash bölümü (50-614. satırlar) sadeleştirilecek. `<head>` (SEO meta'ları, JSON-LD, fontlar) ve sayfanın geri kalanı aynen korunacak.
+- **Iframe sandbox / aynı origin**: Aynı origin olduğu için `contentDocument`'a erişim sorunsuz.
+- **Auth / yan etki**: Iframe içindeki uygulama da auth context'i kullanacak; sorun yok. Network'e yazma yapan route var mı diye `routeManifest`'ten harvest sırasında hariç tutulacaklar (auth callback, ödeme vs.) işaretlenir.
+- **Süre**: ~150 route × ~1sn = ~2.5 dk. Kullanıcıya overlay'de açıkça gösterilecek + iptal butonu eklenebilir (opsiyonel).
+- **Bellek**: Iframe sıralı kullanılıyor (sadece 1 tane), her route arası `src` değişiyor.
 
-### Yapılmayacaklar
+### Dosyalar
 
-- React tarafına dokunulmayacak (`src/main.tsx`, `App.tsx`, rotalar aynen kalacak).
-- Capacitor / native config'e dokunulmayacak.
-- Backend, business logic, ders/hesaplama içeriği etkilenmeyecek.
-- Splash'in zengin animasyonlu hali istenirse sonradan **React içine** (mount sonrası, sadece bir kez gösterilen bir loading overlay olarak) ayrı bir görevde taşınabilir — ama bu görevin kapsamında değil.
+- `src/utils/routeManifest.ts` (yeni)
+- `src/utils/routeHarvester.ts` (yeni)
+- `src/contexts/LanguageContext.tsx` (harvest entegrasyonu, faz state'i)
+- `src/components/LanguageChangeOverlay.tsx` (iki fazlı mesaj/progress)
 
-Onaylarsan uygulayayım.
+### Sonuç davranışı
+
+- İlk dil değişimi: 1-3 dakika overlay (tek seferlik harvest + tam bulk çeviri).
+- Sonraki dil değişimleri: sadece bulk çeviri (harvest atlanır, ~30sn).
+- Her sayfa açılışı: cache hit → anında çevrilmiş, sıfır flicker.

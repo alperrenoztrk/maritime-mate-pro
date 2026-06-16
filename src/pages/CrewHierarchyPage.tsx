@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { crewHierarchy } from "@/data/crewHierarchy";
-import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function CrewHierarchyPage() {
   const highRefreshRateStyles: CSSProperties = {
@@ -77,7 +76,6 @@ export default function CrewHierarchyPage() {
           </div>
         </section>
       </div>
-      <BottomNavigation />
     </div>
   );
 }

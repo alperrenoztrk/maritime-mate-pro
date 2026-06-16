@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { BookOpenText, Search } from "lucide-react";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
 const Glossary = () => {
@@ -118,7 +117,6 @@ const Glossary = () => {
           )}
         </section>
       </div>
-      <BottomNavigation />
     </div>
   );
 };

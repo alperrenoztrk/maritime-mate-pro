@@ -8,7 +8,6 @@ import {
   AlertTriangle,
   MinusCircle,
 } from "lucide-react";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -289,7 +288,6 @@ export default function BetaPscChecklist() {
         </div>
       </div>
 
-      <BottomNavigation />
     </div>
   );
 }
