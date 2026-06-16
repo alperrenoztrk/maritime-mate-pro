@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { ExternalLink, Newspaper, ArrowRight } from "lucide-react";
+import { Newspaper, ArrowRight } from "lucide-react";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
+import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
 
 function formatRelative(iso?: string): string {
   if (!iso) return "";
@@ -28,6 +30,9 @@ function proxyImg(url?: string): string | undefined {
 }
 
 export function NewsPanel() {
+  const [selected, setSelected] = useState<MaritimeNewsItem | null>(null);
+  const [open, setOpen] = useState(false);
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["maritime-news", "home-panel"],
     queryFn: () => fetchMaritimeNews(),
@@ -35,7 +40,7 @@ export function NewsPanel() {
     gcTime: 15 * 60 * 1000,
   });
 
-  const items: MaritimeNewsItem[] = (data?.items ?? []).slice(0, 8);
+  const items: MaritimeNewsItem[] = (data?.items ?? []).slice(0, 10);
 
   return (
     <section
@@ -90,11 +95,13 @@ export function NewsPanel() {
             const img = proxyImg(item.imageUrl);
             return (
               <li key={item.link}>
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex gap-3 rounded-2xl p-2.5 transition-colors hover:bg-white/10 active:bg-white/15"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelected(item);
+                    setOpen(true);
+                  }}
+                  className="flex w-full gap-3 rounded-2xl p-2.5 text-left transition-colors hover:bg-white/10 active:bg-white/15"
                 >
                   {img ? (
                     <img
@@ -112,19 +119,25 @@ export function NewsPanel() {
                     <p className="line-clamp-2 text-[12px] font-medium leading-snug text-white">
                       {item.title}
                     </p>
-                    <div className="mt-1 flex items-center gap-1.5 text-[10px] text-white/55">
-                      <span className="truncate">{item.source}</span>
-                      <span>·</span>
-                      <span className="flex-shrink-0">{formatRelative(item.publishedAt)}</span>
-                      <ExternalLink className="ml-auto h-3 w-3 flex-shrink-0 text-white/40" />
+                    <div className="mt-1 text-[10px] text-white/55">
+                      {formatRelative(item.publishedAt)}
                     </div>
                   </div>
-                </a>
+                </button>
               </li>
             );
           })}
         </ul>
       </div>
+
+      <NewsReaderDialog
+        open={open}
+        onOpenChange={(o) => {
+          setOpen(o);
+          if (!o) setSelected(null);
+        }}
+        item={selected}
+      />
     </section>
   );
 }
