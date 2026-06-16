@@ -292,6 +292,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       lastPositionRef.current = { lat, lon };
+      setAccuracyMeters(typeof position.coords.accuracy === "number" ? position.coords.accuracy : null);
+      setLocationSource("gps");
+      setPositionTimestamp(position.timestamp ?? Date.now());
       console.log("🌤️ Hava durumu ve konum verisi alınıyor...");
       await Promise.allSettled([
         fetchWeather(lat, lon),
