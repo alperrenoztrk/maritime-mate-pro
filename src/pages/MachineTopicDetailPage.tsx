@@ -35,18 +35,10 @@ export default function MachineTopicDetailPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
-        <Link
-          to={`/machine/${topicSlug}/topics`}
-          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Geri
-        </Link>
-        <h1 className="text-sm font-bold text-foreground sm:text-base text-center flex-1 mx-4 line-clamp-1">
+      <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
+        <h1 className="text-sm font-bold text-foreground sm:text-base line-clamp-1">
           {content.title}
         </h1>
-        <div className="w-12" />
       </div>
 
       <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">

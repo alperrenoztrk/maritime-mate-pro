@@ -1,6 +1,6 @@
-import { ChevronLeft, Lightbulb } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { getTopicContentsByCategory } from "@/data/topicContents";
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
@@ -102,16 +102,8 @@ export default function LessonTopicDetailPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
-        <Link
-          to={`/lessons/${categoryId}/topics`}
-          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Geri
-        </Link>
+      <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
         <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
-        <div className="w-12" />
       </div>
 
       <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
