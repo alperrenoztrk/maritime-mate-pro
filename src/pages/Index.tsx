@@ -92,12 +92,16 @@ const Index = () => {
 
       {/* Settings button (only on center page) */}
       <button
-        onClick={() => navigate("/settings")}
-        className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
-        aria-label="Ayarlar"
-      >
-        <Settings className="w-6 h-6 text-white/80" />
-      </button>
+      {/* Settings button — only on home (center) page, glassmorphism iOS style */}
+      {activePage === "home" && (
+        <button
+          onClick={() => navigate("/settings")}
+          className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-150 hover:bg-white/15 active:scale-90"
+          aria-label="Ayarlar"
+        >
+          <Settings className="h-5 w-5 text-white" strokeWidth={2} />
+        </button>
+      )}
 
       {/* Header — only on home page */}
       {activePage === "home" && (
