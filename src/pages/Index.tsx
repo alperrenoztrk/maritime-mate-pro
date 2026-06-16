@@ -90,14 +90,16 @@ const Index = () => {
         </svg>
       </div>
 
-      {/* Settings button (only on center page) */}
-      <button
-        onClick={() => navigate("/settings")}
-        className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
-        aria-label="Ayarlar"
-      >
-        <Settings className="w-6 h-6 text-white/80" />
-      </button>
+      {/* Settings button — only on home (center) page, glassmorphism iOS style */}
+      {activePage === "home" && (
+        <button
+          onClick={() => navigate("/settings")}
+          className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-2xl shadow-[0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-150 hover:bg-white/15 active:scale-90"
+          aria-label="Ayarlar"
+        >
+          <Settings className="h-5 w-5 text-white" strokeWidth={2} />
+        </button>
+      )}
 
       {/* Header — only on home page */}
       {activePage === "home" && (
@@ -132,25 +134,25 @@ const Index = () => {
         </div>
       )}
 
-      {/* Horizontal swipeable pager */}
+      {/* Horizontal swipeable pager — snap-stop always so one swipe = one page */}
       <main
         ref={pagerRef}
-        className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar"
+        className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar overscroll-x-contain"
         style={{ scrollSnapType: "x mandatory" }}
         aria-label="Marine Expert Pro"
       >
         {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <NewsPanel />
         </section>
 
         {/* CENTER — Icon launcher */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col justify-start overflow-y-auto px-2 pt-[max(11rem,calc(env(safe-area-inset-top)+10rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col justify-start overflow-y-auto px-2 pt-[max(11rem,calc(env(safe-area-inset-top)+10rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <div className="mb-4 px-4">
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
               Widget'lar

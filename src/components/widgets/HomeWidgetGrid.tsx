@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useHomeWidgets, type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
-import { Clock, Globe2, Cloud, Wind, MapPin, Sun } from "lucide-react";
+import { Clock, Globe2, Cloud, Wind, MapPin, Sun, Pencil } from "lucide-react";
+import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 
 function degreesToCompass(degrees: number): string {
   const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
@@ -56,6 +57,8 @@ export function HomeWidgetGrid() {
   const { enabled } = useHomeWidgets();
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
   const [now, setNow] = useState(new Date());
+  const [manualOpen, setManualOpen] = useState(false);
+
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
@@ -151,13 +154,23 @@ export function HomeWidgetGrid() {
           locationSource === "ip" ? "text-amber-300" : "text-white/70";
         return (
           <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
                 <MapPin className="h-3 w-3" /> Konum
               </div>
-              <span className={`text-[10px] font-semibold uppercase tracking-wider ${sourceColor}`}>
-                {sourceLabel} · {accuracyLabel}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className={`text-[10px] font-semibold uppercase tracking-wider ${sourceColor}`}>
+                  {sourceLabel} · {accuracyLabel}
+                </span>
+                <button
+                  type="button"
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setManualOpen(true); }}
+                  className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-white/80 hover:bg-white/20 active:scale-90 transition"
+                  aria-label="Konumu manuel gir"
+                >
+                  <Pencil className="h-3 w-3" />
+                </button>
+              </div>
             </div>
             <div className="mt-1 truncate text-sm font-medium">{locationLabel ?? "—"}</div>
             <div className="mt-1.5 grid grid-cols-2 gap-2 text-[10px] text-white/70">
@@ -215,8 +228,11 @@ export function HomeWidgetGrid() {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-3 px-4 sm:grid-cols-4">
-      {enabled.map(render)}
-    </div>
+    <>
+      <div className="grid grid-cols-2 gap-3 px-4 sm:grid-cols-4">
+        {enabled.map(render)}
+      </div>
+      <ManualLocationDialog open={manualOpen} onOpenChange={setManualOpen} />
+    </>
   );
 }
