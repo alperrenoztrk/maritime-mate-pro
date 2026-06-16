@@ -51,12 +51,7 @@ const Index = () => {
 
   }, []);
 
-  const goToPage = (id: PageId) => {
-    const el = pagerRef.current;
-    if (!el) return;
-    const idx = PAGES.indexOf(id);
-    el.scrollTo({ left: idx * el.clientWidth, behavior: "smooth" });
-  };
+
 
   return (
     <div
