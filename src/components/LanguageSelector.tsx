@@ -29,8 +29,8 @@ export const LanguageSelector = () => {
           className="gap-2 min-w-[120px]"
         >
           <Globe className="w-4 h-4" />
-          <span className="hidden xs:inline">{currentLang.displayName}</span>
-          <span className="xs:hidden">{currentLang.language.toUpperCase()}</span>
+          <span className="hidden xs:inline" data-no-translate>{currentLang.displayName}</span>
+          <span className="xs:hidden" data-no-translate>{currentLang.language.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent 
@@ -44,7 +44,7 @@ export const LanguageSelector = () => {
             className="flex items-center justify-between cursor-pointer"
           >
             <div className="flex items-center gap-2">
-              <span>{language.displayName}</span>
+              <span data-no-translate>{language.displayName}</span>
             </div>
             {currentLanguage === language.language && (
               <Check className="w-4 h-4 text-primary" />
