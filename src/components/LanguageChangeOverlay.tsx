@@ -2,10 +2,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Loader2 } from "lucide-react";
 
 export function LanguageChangeOverlay() {
-  const { isChangingLanguage, changeProgress } = useLanguage();
+  const { isChangingLanguage, changeProgress, changePhase } = useLanguage();
   if (!isChangingLanguage) return null;
 
   const pct = Math.max(0, Math.min(100, Math.round(changeProgress)));
+
+  const title =
+    changePhase === 'harvest'
+      ? 'Sayfalar taranıyor…'
+      : 'Çeviriler hazırlanıyor…';
+  const subtitle =
+    changePhase === 'harvest'
+      ? 'Uygulamanın tüm sayfaları taranıyor (tek seferlik, 1–3 dk)'
+      : 'Tüm metinler önbelleğe alınıyor — sonraki gezinmelerde bekleme olmayacak';
 
   return (
     <div
@@ -22,10 +31,8 @@ export function LanguageChangeOverlay() {
       >
         <Loader2 className="h-9 w-9 animate-spin text-sky-300" strokeWidth={2.25} />
         <div className="text-center">
-          <p className="text-base font-semibold text-white">Dil değiştiriliyor…</p>
-          <p className="mt-1 text-[12px] text-white/60">
-            İlk seferde 10–30 saniye sürebilir
-          </p>
+          <p className="text-base font-semibold text-white">{title}</p>
+          <p className="mt-1 text-[12px] text-white/60">{subtitle}</p>
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
           <div
