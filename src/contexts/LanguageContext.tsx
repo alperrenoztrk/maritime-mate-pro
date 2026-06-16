@@ -493,6 +493,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // Allow the effect-driven page pass a tick to run, then dismiss.
     window.setTimeout(() => {
       setIsChangingLanguage(false);
+      setChangePhase('idle');
       const titleTr = 'Dil Değiştirildi';
       const descTr = `Uygulama dili ${getLanguageNameLocal(languageCode)} olarak değiştirildi`;
       toast({
