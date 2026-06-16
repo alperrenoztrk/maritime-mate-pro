@@ -357,6 +357,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         lastPositionRef.current = { lat: selectedLocation.latitude, lon: selectedLocation.longitude };
         setLocationLabel(selectedLocation.locationLabel);
         setIsFallbackLocation(false);
+        setAccuracyMeters(null);
+        setLocationSource("manual");
+        setPositionTimestamp(Date.now());
         await fetchWeather(selectedLocation.latitude, selectedLocation.longitude);
         setLoading(false);
       })();
