@@ -290,9 +290,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     setCurrentLanguage(languageCode);
     localStorage.setItem('preferredLanguage', languageCode);
 
-    toast({
-      title: 'Dil Değiştirildi',
-      description: `Uygulama dili ${getLanguageName(languageCode)} olarak değiştirildi`,
+    // Pre-load the static dictionary for the new language so toast strings can
+    // be translated instantly instead of waiting for the live translator.
+    void loadStaticDictionary(languageCode).then(() => {
+      const titleTr = 'Dil Değiştirildi';
+      const descTr  = `Uygulama dili ${getLanguageName(languageCode)} olarak değiştirildi`;
+      toast({
+        title: getStaticTranslation(titleTr, languageCode) ?? titleTr,
+        description: getStaticTranslation(descTr, languageCode) ?? descTr,
+      });
     });
   };
 
@@ -303,9 +309,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     localStorage.removeItem('preferredLanguage');
     setCurrentLanguage(DEFAULT_LANGUAGE);
 
+    const titleTr = 'Ayarlar Sıfırlandı';
+    const descTr  = 'Dil ayarları varsayılan değerlere döndürüldü';
     toast({
-      title: 'Ayarlar Sıfırlandı',
-      description: 'Dil ayarları varsayılan değerlere döndürüldü',
+      title: getStaticTranslation(titleTr, DEFAULT_LANGUAGE) ?? titleTr,
+      description: getStaticTranslation(descTr, DEFAULT_LANGUAGE) ?? descTr,
     });
   };
 

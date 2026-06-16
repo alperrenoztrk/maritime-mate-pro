@@ -129,9 +129,23 @@ const TOPIC_PAGES = [
   'CargoTopicsPage', 'SafetyTopicsPage', 'EnvironmentTopicsPage', 'EconomicsTopicsPage',
 ].map((name) => path.join(repoRoot, 'src/pages', `${name}.tsx`)).filter(fs.existsSync);
 
+// UI component files that contain hardcoded Turkish strings (JSX text and specific
+// prop values) that the data-file walker would otherwise miss.
+const UI_COMPONENT_FILES = [
+  'src/components/courseContent/CourseQuiz.tsx',
+  'src/components/courseContent/CourseTopicHeader.tsx',
+  'src/components/courseContent/CalculatorCard.tsx',
+  'src/components/courseContent/CalculatorList.tsx',
+  'src/components/courseContent/CourseRulesList.tsx',
+  'src/components/FloatingNavButtons.tsx',
+  'src/components/ui/language-selector.tsx',
+  'src/contexts/LanguageContext.tsx',
+].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
+
 const files = [
   ...listFiles(path.join(repoRoot, 'src/data'), ['.ts', '.tsx']),
   ...TOPIC_PAGES,
+  ...UI_COMPONENT_FILES,
 ];
 
 for (const file of files) {
