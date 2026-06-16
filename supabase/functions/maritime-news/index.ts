@@ -39,47 +39,55 @@ type NewsItem = {
 };
 
 const FEEDS: FeedSource[] = [
-  {
-    id: "gcaptain",
-    name: "gCaptain",
-    url: "https://gcaptain.com/feed/",
-  },
-  {
-    id: "marinelink",
-    name: "MarineLink",
-    url: "https://www.marinelink.com/rss",
-  },
-  {
-    id: "splash247",
-    name: "Splash247",
-    url: "https://splash247.com/feed/",
-  },
-  {
-    id: "offshore-energy",
-    name: "Offshore Energy",
-    url: "https://www.offshore-energy.biz/feed/",
-  },
-  {
-    id: "worldmaritimenews",
-    name: "World Maritime News",
-    url: "https://worldmaritimenews.com/feed/",
-  },
-  {
-    id: "marinelog",
-    name: "Marine Log",
-    url: "https://www.marinelog.com/feed/",
-  },
-  {
-    id: "theloadstar",
-    name: "The Loadstar",
-    url: "https://theloadstar.com/feed/",
-  },
-  {
-    id: "seatrade-maritime",
-    name: "Seatrade Maritime",
-    url: "https://www.seatrade-maritime.com/rss.xml",
-  },
+  { id: "gcaptain", name: "gCaptain", url: "https://gcaptain.com/feed/" },
+  { id: "marinelink", name: "MarineLink", url: "https://www.marinelink.com/rss" },
+  { id: "splash247", name: "Splash247", url: "https://splash247.com/feed/" },
+  { id: "offshore-energy", name: "Offshore Energy", url: "https://www.offshore-energy.biz/feed/" },
+  { id: "worldmaritimenews", name: "World Maritime News", url: "https://worldmaritimenews.com/feed/" },
+  { id: "marinelog", name: "Marine Log", url: "https://www.marinelog.com/feed/" },
+  { id: "theloadstar", name: "The Loadstar", url: "https://theloadstar.com/feed/" },
+  { id: "seatrade-maritime", name: "Seatrade Maritime", url: "https://www.seatrade-maritime.com/rss.xml" },
+  { id: "maritime-executive", name: "The Maritime Executive", url: "https://www.maritime-executive.com/articles.rss" },
+  { id: "hellenic-shipping", name: "Hellenic Shipping News", url: "https://www.hellenicshippingnews.com/feed/" },
+  { id: "safety4sea", name: "Safety4Sea", url: "https://safety4sea.com/feed/" },
+  { id: "container-news", name: "Container News", url: "https://container-news.com/feed/" },
+  { id: "riviera", name: "Riviera Maritime Media", url: "https://www.rivieramm.com/rss" },
+  { id: "ship-technology", name: "Ship Technology", url: "https://www.ship-technology.com/feed/" },
+  { id: "lloydslist-news", name: "Lloyd's List", url: "https://www.lloydslist.com/rss/news" },
+  { id: "porttechnology", name: "Port Technology", url: "https://www.porttechnology.org/feed/" },
 ];
+
+// Importance scoring — higher means more important / breaking
+const IMPORTANCE_KEYWORDS: Array<{ re: RegExp; weight: number }> = [
+  { re: /\b(sinks?|sunk|sinking|capsiz|capsized|foundered)\b/i, weight: 50 },
+  { re: /\b(explosion|explodes?|blast|fire|ablaze|burning)\b/i, weight: 45 },
+  { re: /\b(collision|collid|allision|grounded|grounding|aground)\b/i, weight: 45 },
+  { re: /\b(missile|drone|attack|attacked|struck|hit by|houthi|piracy|pirate|hijack|hijacked|seized)\b/i, weight: 50 },
+  { re: /\b(killed|dead|fatalit|casualt|missing|injured|rescue|rescued|evacuat|abandon ship|mayday|distress)\b/i, weight: 40 },
+  { re: /\b(oil spill|pollution|leak|leaking|salvage|salvor)\b/i, weight: 35 },
+  { re: /\b(red sea|suez|bab[- ]?el[- ]?mandeb|strait of hormuz|black sea|panama canal)\b/i, weight: 25 },
+  { re: /\b(imo|marpol|solas|stcw|mlc|amendment|regulation|sanction|ban|banned|embargo|tariff)\b/i, weight: 20 },
+  { re: /\b(tanker|container ship|bulk carrier|lng carrier|cruise|ferry|vlcc|vlsfo)\b/i, weight: 8 },
+  { re: /\b(decarbon|emissions?|net[- ]?zero|ets|cii|eexi|ammonia|methanol|biofuel)\b/i, weight: 10 },
+  { re: /\b(strike|union|seafarer|crew change|port congestion|blank sail|blank sailing)\b/i, weight: 12 },
+  { re: /\b(billion|record|surge|plunge|soar)\b/i, weight: 6 },
+];
+
+function scoreItem(item: NewsItem): number {
+  const text = `${item.title} ${item.summary ?? ""}`;
+  let score = 0;
+  for (const { re, weight } of IMPORTANCE_KEYWORDS) {
+    if (re.test(text)) score += weight;
+  }
+  const ts = item.publishedAt ? new Date(item.publishedAt).getTime() : 0;
+  if (ts > 0) {
+    const ageHours = Math.max(0, (Date.now() - ts) / 3_600_000);
+    const recency = Math.max(0, 60 - ageHours * (60 / (24 * 7)));
+    score += recency;
+  }
+  if (item.imageUrl) score += 5;
+  return score;
+}
 
 function stripHtml(input: string): string {
   return input
