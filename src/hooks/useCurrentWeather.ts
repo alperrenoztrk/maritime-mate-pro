@@ -208,6 +208,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
     setIsFallbackLocation(false);
+    setAccuracyMeters(typeof pos.coords.accuracy === "number" ? pos.coords.accuracy : null);
+    setLocationSource("gps");
+    setPositionTimestamp(pos.timestamp ?? Date.now());
     const prev = lastPositionRef.current;
     lastPositionRef.current = { lat, lon };
     if (!prev) {
