@@ -315,6 +315,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         const lon = Number(ipJson.longitude);
         if (!Number.isFinite(lat) || !Number.isFinite(lon)) throw new Error("ipapi invalid coords");
         lastPositionRef.current = { lat, lon };
+        setAccuracyMeters(null);
+        setLocationSource("ip");
+        setPositionTimestamp(Date.now());
         const label = [ipJson.city, ipJson.region].filter(Boolean).join(", ") || ipJson.country_name || null;
         if (label) setLocationLabel(label);
         setIsFallbackLocation(true);
