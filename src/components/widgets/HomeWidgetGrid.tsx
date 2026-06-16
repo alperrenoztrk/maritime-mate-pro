@@ -228,8 +228,11 @@ export function HomeWidgetGrid() {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-3 px-4 sm:grid-cols-4">
-      {enabled.map(render)}
-    </div>
+    <>
+      <div className="grid grid-cols-2 gap-3 px-4 sm:grid-cols-4">
+        {enabled.map(render)}
+      </div>
+      <ManualLocationDialog open={manualOpen} onOpenChange={setManualOpen} />
+    </>
   );
 }
