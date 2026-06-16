@@ -423,7 +423,10 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     data,
     locationLabel,
     isFallbackLocation,
+    accuracyMeters,
+    locationSource,
+    positionTimestamp,
     refresh,
     requestOnce,
-  }), [data, error, isFallbackLocation, loading, locationLabel, refresh, requestOnce]);
+  }), [data, error, isFallbackLocation, loading, locationLabel, accuracyMeters, locationSource, positionTimestamp, refresh, requestOnce]);
 }
