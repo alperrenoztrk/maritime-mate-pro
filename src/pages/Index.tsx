@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Settings } from "lucide-react";
+import { Search, Settings } from "lucide-react";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { NewsPanel } from "@/components/home/NewsPanel";
+
 
 const PAGES = ["news", "home", "widgets"] as const;
 type PageId = (typeof PAGES)[number];
