@@ -522,6 +522,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // ── Effects ────────────────────────────────────────────────────────────────
   useEffect(() => {
+    if (IS_HARVEST_FRAME) {
+      // Inside the hidden harvester iframe: force source language, no caches,
+      // no observers, no translation passes. The parent window harvests the
+      // raw DOM text from this frame.
+      setCurrentLanguage(SOURCE_LANGUAGE);
+      setIsLoading(false);
+      return;
+    }
     loadCacheFromStorage();
     const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
     const validLanguage = SUPPORTED_LANGUAGES.find((lang) => lang.language === savedLanguage)
@@ -539,6 +547,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   }, [currentLanguage, isRTL]);
 
   useEffect(() => {
+    if (IS_HARVEST_FRAME) return;
     if (typeof document === 'undefined' || isLoading) return;
     const runId = ++translationRunIdRef.current;
     const language = currentLanguage;
