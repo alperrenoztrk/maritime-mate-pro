@@ -54,7 +54,7 @@ function WidgetCard({ size, children }: CardProps) {
 
 export function HomeWidgetGrid() {
   const { enabled } = useHomeWidgets();
-  const { data, locationLabel } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
+  const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
@@ -134,19 +134,56 @@ export function HomeWidgetGrid() {
             </div>
           </WidgetCard>
         );
-      case "location":
+      case "location": {
+        const sourceLabel =
+          locationSource === "gps" ? "GPS" :
+          locationSource === "ip" ? "IP" :
+          locationSource === "manual" ? "Manuel" : "—";
+        const accuracyLabel =
+          accuracyMeters == null ? "—" :
+          accuracyMeters < 1000 ? `±${Math.round(accuracyMeters)} m` :
+          `±${(accuracyMeters / 1000).toFixed(1)} km`;
+        const fixedAt = positionTimestamp
+          ? new Date(positionTimestamp).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+          : "—";
+        const sourceColor =
+          locationSource === "gps" ? "text-emerald-300" :
+          locationSource === "ip" ? "text-amber-300" : "text-white/70";
         return (
           <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-              <MapPin className="h-3 w-3" /> Konum
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
+                <MapPin className="h-3 w-3" /> Konum
+              </div>
+              <span className={`text-[10px] font-semibold uppercase tracking-wider ${sourceColor}`}>
+                {sourceLabel} · {accuracyLabel}
+              </span>
             </div>
             <div className="mt-1 truncate text-sm font-medium">{locationLabel ?? "—"}</div>
-            <div className="mt-1 grid grid-cols-2 gap-2 text-[10px] text-white/70">
-              <div>{data?.latitude !== undefined ? decimalToDMS(data.latitude, true) : "—"}</div>
-              <div>{data?.longitude !== undefined ? decimalToDMS(data.longitude, false) : "—"}</div>
+            <div className="mt-1.5 grid grid-cols-2 gap-2 text-[10px] text-white/70">
+              <div>
+                <div className="text-white/45">Enlem</div>
+                <div className="font-medium text-white/85">
+                  {data?.latitude !== undefined ? decimalToDMS(data.latitude, true) : "—"}
+                </div>
+                <div className="font-mono text-[9px] text-white/50 tabular-nums">
+                  {data?.latitude !== undefined ? data.latitude.toFixed(6) + "°" : ""}
+                </div>
+              </div>
+              <div>
+                <div className="text-white/45">Boylam</div>
+                <div className="font-medium text-white/85">
+                  {data?.longitude !== undefined ? decimalToDMS(data.longitude, false) : "—"}
+                </div>
+                <div className="font-mono text-[9px] text-white/50 tabular-nums">
+                  {data?.longitude !== undefined ? data.longitude.toFixed(6) + "°" : ""}
+                </div>
+              </div>
             </div>
+            <div className="mt-1.5 text-[9px] text-white/40">Son güncelleme: {fixedAt}</div>
           </WidgetCard>
         );
+      }
       case "sun": {
         const sunrise = data?.sunriseIso
           ? new Date(data.sunriseIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
