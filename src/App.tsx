@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -341,6 +341,7 @@ const AnimatedRoutes = () => {
         <Route path="/exam-preparation" element={<PageTransition><ExamPreparationPage /></PageTransition>} />
         <Route path="/converter" element={<PageTransition><ConverterPage /></PageTransition>} />
         <Route path="/machine-calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
+        <Route path="/widgets" element={<Navigate to="/" replace />} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
       </Suspense>
