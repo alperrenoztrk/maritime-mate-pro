@@ -13,6 +13,7 @@ import {
 } from '@/utils/pageTranslator';
 import { loadStaticDictionary, getStaticTranslation } from '@/utils/staticTranslations';
 import {
+  HARVEST_MESSAGE_TYPE,
   harvestAllRoutes,
   hasHarvestedFor,
   markHarvestedFor,
@@ -538,6 +539,78 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     setCurrentLanguage(validLanguage);
     setIsLoading(false);
+  }, []);
+
+  // Inside the harvest iframe: wait until the DOM has been quiet for a short
+  // window (≥ QUIET_MS with no mutations), then sweep source strings and
+  // postMessage them to the parent harvester. A hard cap ensures we always
+  // report something even if the page mutates continuously.
+  useEffect(() => {
+    if (!IS_HARVEST_FRAME) return;
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
+    const QUIET_MS = 800;
+    const HARD_CAP_MS = 8000;
+    const pathname = window.location.pathname;
+    let quietTimer: number | null = null;
+    let reported = false;
+
+    const report = () => {
+      if (reported) return;
+      reported = true;
+      try {
+        const units = collectTranslationUnits(
+          document.body,
+          new WeakMap<Text, string>(),
+        );
+        const sources: string[] = [];
+        const seen = new Set<string>();
+        for (const u of units) {
+          if (!u.source || seen.has(u.source)) continue;
+          seen.add(u.source);
+          sources.push(u.source);
+        }
+        window.parent?.postMessage(
+          { type: HARVEST_MESSAGE_TYPE, pathname, sources },
+          '*',
+        );
+      } catch {
+        window.parent?.postMessage(
+          { type: HARVEST_MESSAGE_TYPE, pathname, sources: [] },
+          '*',
+        );
+      }
+    };
+
+    const scheduleQuiet = () => {
+      if (quietTimer !== null) window.clearTimeout(quietTimer);
+      quietTimer = window.setTimeout(report, QUIET_MS);
+    };
+
+    const observer = new MutationObserver(() => scheduleQuiet());
+    const start = () => {
+      if (!document.body) return;
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+      scheduleQuiet();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start, { once: true });
+    } else {
+      start();
+    }
+
+    const hardStop = window.setTimeout(report, HARD_CAP_MS);
+
+    return () => {
+      observer.disconnect();
+      if (quietTimer !== null) window.clearTimeout(quietTimer);
+      window.clearTimeout(hardStop);
+    };
   }, []);
 
   useEffect(() => {

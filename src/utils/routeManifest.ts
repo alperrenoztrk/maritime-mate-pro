@@ -1,10 +1,10 @@
 // Concrete URL list for the language-switch harvester. We enumerate every
-// static route in src/App.tsx and substitute a small set of representative
-// values for the most useful dynamic routes. Routes that have nothing to
-// translate (auth/callback, redirects), or that are heavy/known to crash in
-// an off-screen iframe, are excluded.
+// route declared in src/App.tsx and substitute a small set of representative
+// values for the dynamic segments so the harvester actually renders real
+// content. Routes that have nothing to translate (auth callbacks, redirects)
+// are excluded.
 
-const TOPIC_KEYS = [
+const LESSON_TOPIC_KEYS = [
   'stability',
   'cargo',
   'seamanship',
@@ -13,7 +13,35 @@ const TOPIC_KEYS = [
   'economics',
 ];
 
+// Used for /lessons/:categoryId/topics/:topicTitle — picking one real-looking
+// title per category is enough to exercise the page's translation surface.
+const LESSON_CATEGORY_TOPIC_SAMPLES: Record<string, string> = {
+  stability: 'gm',
+  cargo: 'draft-survey',
+  seamanship: 'knots',
+  safety: 'lifeboat',
+  environment: 'marpol',
+  economics: 'freight',
+};
+
 const MACHINE_TOPICS = ['engine', 'pump', 'boiler', 'generator', 'compressor'];
+
+const MACHINE_SUBTOPIC_SAMPLE = 'overview';
+
+const CREW_ROLES = ['captain', 'chief-officer', 'chief-engineer', 'bosun'];
+const SHIP_TYPES = ['bulk-carrier', 'tanker', 'container'];
+const SHIP_TASK_SLUGS = ['mooring', 'anchoring', 'cargo-loading'];
+const BRIDGE_DEVICE_IDS = ['radar', 'gps', 'ecdis', 'gyro-compass'];
+const SHIP_SYSTEM_SECTIONS = ['engine-room', 'deck', 'navigation-bridge'];
+const REGULATION_SLUGS = ['solas', 'marpol', 'stcw', 'colreg'];
+const STABILITY_FORMULA_IDS = ['gm', 'gz', 'bm'];
+const NAVIGATION_CALC_IDS = ['great-circle', 'rhumb-line', 'mercator'];
+const SEAMANSHIP_CALC_TOOLS = ['rope-load', 'anchor-holding', 'turning-circle'];
+const CALCULATION_SECTION_SAMPLES: Array<[string, string]> = [
+  ['stability', 'gm'],
+  ['cargo', 'draft-survey'],
+  ['navigation', 'great-circle'],
+];
 
 const STATIC_ROUTES: string[] = [
   '/',
@@ -158,12 +186,21 @@ const STATIC_ROUTES: string[] = [
 
 const dynamicRoutes = (): string[] => {
   const out: string[] = [];
-  for (const t of TOPIC_KEYS) {
+
+  // /lessons/:topicKey/{formulas,calculations,rules,quiz}
+  for (const t of LESSON_TOPIC_KEYS) {
     out.push(`/lessons/${t}/formulas`);
     out.push(`/lessons/${t}/calculations`);
     out.push(`/lessons/${t}/rules`);
     out.push(`/lessons/${t}/quiz`);
   }
+
+  // /lessons/:categoryId/topics/:topicTitle
+  for (const [cat, topic] of Object.entries(LESSON_CATEGORY_TOPIC_SAMPLES)) {
+    out.push(`/lessons/${cat}/topics/${topic}`);
+  }
+
+  // /machine/:topicSlug/...
   for (const m of MACHINE_TOPICS) {
     out.push(`/machine/${m}/topics`);
     out.push(`/machine/${m}/calculations`);
@@ -171,12 +208,49 @@ const dynamicRoutes = (): string[] => {
     out.push(`/machine/${m}/rules`);
     out.push(`/machine/${m}/assistant`);
     out.push(`/machine/${m}/quiz`);
+    out.push(`/machine/${m}/topics/${MACHINE_SUBTOPIC_SAMPLE}`);
   }
+
+  // /crew/:roleSlug and /crew/:roleSlug/task/:taskIndex
+  for (const role of CREW_ROLES) {
+    out.push(`/crew/${role}`);
+    out.push(`/crew/${role}/task/0`);
+  }
+
+  // /ship-operations/:shipType
+  for (const s of SHIP_TYPES) out.push(`/ship-operations/${s}`);
+
+  // /ship-tasks/:taskSlug
+  for (const s of SHIP_TASK_SLUGS) out.push(`/ship-tasks/${s}`);
+
+  // /bridge/:deviceId
+  for (const d of BRIDGE_DEVICE_IDS) out.push(`/bridge/${d}`);
+
+  // /ship-systems/:sectionId
+  for (const s of SHIP_SYSTEM_SECTIONS) out.push(`/ship-systems/${s}`);
+
+  // /regulations/:slug
+  for (const s of REGULATION_SLUGS) out.push(`/regulations/${s}`);
+
+  // /stability/formulas/:id
+  for (const id of STABILITY_FORMULA_IDS) out.push(`/stability/formulas/${id}`);
+
+  // /navigation/calc/:id
+  for (const id of NAVIGATION_CALC_IDS) out.push(`/navigation/calc/${id}`);
+
+  // /seamanship/calculations/:tool
+  for (const t of SEAMANSHIP_CALC_TOOLS) out.push(`/seamanship/calculations/${t}`);
+
+  // /calculations/:categoryId/:sectionId
+  for (const [cat, sec] of CALCULATION_SECTION_SAMPLES) {
+    out.push(`/calculations/${cat}/${sec}`);
+  }
+
   return out;
 };
 
 // Routes that must NOT be harvested (auth callbacks, redirects, etc).
-const EXCLUDED = new Set<string>(['/auth/callback', '/widgets']);
+const EXCLUDED = new Set<string>(['/auth/callback', '/widgets', '/empty-page']);
 
 export const getHarvestRoutes = (): string[] => {
   const all = [...STATIC_ROUTES, ...dynamicRoutes()];
@@ -191,4 +265,6 @@ export const getHarvestRoutes = (): string[] => {
   return out;
 };
 
-export const HARVEST_VERSION = 'v1';
+// Bump this string whenever the manifest meaningfully changes so the
+// `mt-harvest-done-*` flag is invalidated and a fresh harvest runs.
+export const HARVEST_VERSION = 'v2';
