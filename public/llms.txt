@@ -64,5 +64,4 @@ Marine Expert Pro offers professional ship stability and cargo calculations, nav
 
 - [Seamanship Lessons](/lessons/seamanship/topics): Knots, mooring, maneuvering.
 - [Economics Lessons](/lessons/economics/topics): Maritime economics.
-- [Widgets](/widgets): Weather and almanac widgets.
 - [Ship Tasks](/ship-tasks): Daily shipboard task references.
