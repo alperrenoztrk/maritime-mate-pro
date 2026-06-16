@@ -1,5 +1,4 @@
 import { Anchor, FileText } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const fourStages = [
   { emoji: "1️⃣", title: "APPRAISAL (DEĞERLENDİRME)", description: "Seyre çıkmadan önce neyle karşılaşılacağını değerlendirme." },

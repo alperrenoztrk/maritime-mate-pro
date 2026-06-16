@@ -1,23 +1,14 @@
 import { MobileLayout } from "@/components/MobileLayout";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Waves } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Waves } from "lucide-react";
 
 const TideCalculationTutorial = () => {
-  const navigate = useNavigate();
-
   return (
     <MobileLayout>
       <div className="space-y-4" data-no-translate>
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-muted-foreground flex items-center gap-2">
-            <Waves className="h-4 w-4" /> Gelgit Hesabı — Hesabın Yapılışı
-          </div>
-          <Button variant="outline" size="sm" onClick={() => navigate("/navigation/calc/tides")}>
-            <ArrowLeft className="h-4 w-4" /> Geri Dön
-          </Button>
+        <div className="text-sm text-muted-foreground flex items-center gap-2">
+          <Waves className="h-4 w-4" /> Gelgit Hesabı — Hesabın Yapılışı
         </div>
 
         <Card className="shadow">
