@@ -341,6 +341,7 @@ const AnimatedRoutes = () => {
         <Route path="/exam-preparation" element={<PageTransition><ExamPreparationPage /></PageTransition>} />
         <Route path="/converter" element={<PageTransition><ConverterPage /></PageTransition>} />
         <Route path="/machine-calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
+        <Route path="/widgets" element={<Navigate to="/" replace />} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
       </Routes>
       </Suspense>
