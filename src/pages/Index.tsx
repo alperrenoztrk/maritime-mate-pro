@@ -1,51 +1,11 @@
-import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Settings } from "lucide-react";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
-import { NewsPanel } from "@/components/home/NewsPanel";
-
-const PAGES = ["news", "home", "widgets"] as const;
-type PageId = (typeof PAGES)[number];
 
 const Index = () => {
   const navigate = useNavigate();
-  const pagerRef = useRef<HTMLDivElement>(null);
-  const [activePage, setActivePage] = useState<PageId>("home");
-
-  // Start centered on the home page
-  useEffect(() => {
-    const el = pagerRef.current;
-    if (!el) return;
-    el.scrollTo({ left: el.clientWidth, behavior: "auto" });
-  }, []);
-
-  // Track which page is in view
-  useEffect(() => {
-    const el = pagerRef.current;
-    if (!el) return;
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const idx = Math.round(el.scrollLeft / el.clientWidth);
-        const clamped = Math.max(0, Math.min(PAGES.length - 1, idx));
-        setActivePage(PAGES[clamped]);
-        ticking = false;
-      });
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const goToPage = (id: PageId) => {
-    const el = pagerRef.current;
-    if (!el) return;
-    const idx = PAGES.indexOf(id);
-    el.scrollTo({ left: idx * el.clientWidth, behavior: "smooth" });
-  };
 
   return (
     <div
@@ -90,101 +50,66 @@ const Index = () => {
         </svg>
       </div>
 
-      {/* Settings button (only on center page) */}
+      {/* Settings button */}
       <button
         onClick={() => navigate("/settings")}
-        className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
+        className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
         aria-label="Ayarlar"
       >
         <Settings className="w-6 h-6 text-white/80" />
       </button>
 
-      {/* Header — only on home page */}
-      {activePage === "home" && (
-        <div className="absolute top-0 left-0 right-0 z-20 px-2 pt-8 sm:pt-12 pointer-events-none">
-          <div className="px-4 text-center">
-            <h1
-              className="select-none font-black tracking-wider notranslate"
-              translate="no"
-              lang="en"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)",
-                backgroundSize: "200% auto",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "title-shine 3s linear infinite",
-                textShadow: "0 0 32px rgba(56,189,248,0.3)",
-              }}
-            >
-              <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
-                MARINE EXPERT PRO
-              </span>
-              <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
-            </h1>
-            <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-white/55">
-              Professional Maritime Solutions
-            </p>
-          </div>
-          <div className="mt-5 px-4 pointer-events-auto">
-            <GlobalSearch />
-          </div>
-        </div>
-      )}
-
-      {/* Horizontal swipeable pager */}
+      {/* Main content */}
       <main
-        ref={pagerRef}
-        className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar"
-        style={{ scrollSnapType: "x mandatory" }}
-        aria-label="Marine Expert Pro"
+        className="relative z-10 flex min-h-[100svh] flex-col px-2 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:pt-12"
+        aria-label="Marine Expert Pro home"
       >
-        {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
-          <NewsPanel />
-        </section>
+        {/* Title */}
+        <div className="px-4 text-center">
+          <h1
+            className="select-none font-black tracking-wider notranslate"
+            translate="no"
+            lang="en"
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)",
+              backgroundSize: "200% auto",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              animation: "title-shine 3s linear infinite",
+              textShadow: "0 0 32px rgba(56,189,248,0.3)",
+            }}
+          >
+            <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
+              MARINE EXPERT PRO
+            </span>
+            <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
+          </h1>
+          <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-white/55">
+            Professional Maritime Solutions
+          </p>
+        </div>
 
-        {/* CENTER — Icon launcher */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col justify-start overflow-y-auto px-2 pt-[max(11rem,calc(env(safe-area-inset-top)+10rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        {/* Search */}
+        <div className="mt-5 px-4">
+          <GlobalSearch />
+        </div>
+
+        {/* App icon grid */}
+        <div className="mt-8">
           <AppIconGrid />
-        </section>
+        </div>
 
-        {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
-          <div className="mb-4 px-4">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
-              Widget'lar
-            </h2>
-            <p className="mt-0.5 text-[11px] text-white/55">
-              Ana sayfa widget'larını Ayarlar'dan özelleştir.
-            </p>
-          </div>
+        {/* Widgets */}
+        <div className="mt-8">
           <HomeWidgetGrid />
-        </section>
+        </div>
       </main>
-
-      {/* Page indicator dots */}
-      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 z-20 flex justify-center gap-2">
-        {PAGES.map((p) => (
-          <button
-            key={p}
-            type="button"
-            onClick={() => goToPage(p)}
-            aria-label={`${p} sayfasına git`}
-            className={
-              "h-1.5 rounded-full transition-all duration-200 " +
-              (activePage === p ? "w-6 bg-white/90" : "w-1.5 bg-white/35 hover:bg-white/55")
-            }
-          />
-        ))}
-      </div>
 
       <style>{`
         @keyframes home-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes home-drift-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         @keyframes title-shine { to { background-position: 200% center; } }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
       `}</style>
     </div>
   );
