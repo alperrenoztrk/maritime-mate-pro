@@ -100,6 +100,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [isLoading, setIsLoading] = useState(true);
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [changeProgress, setChangeProgress] = useState(0);
+  const [changePhase, setChangePhase] = useState<LanguageChangePhase>('idle');
   const { toast } = useToast();
 
   const translationCacheRef = useRef<Map<string, string>>(new Map());
