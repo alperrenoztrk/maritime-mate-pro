@@ -57,6 +57,8 @@ export function HomeWidgetGrid() {
   const { enabled } = useHomeWidgets();
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
   const [now, setNow] = useState(new Date());
+  const [manualOpen, setManualOpen] = useState(false);
+
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
