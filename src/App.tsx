@@ -149,7 +149,6 @@ const MachineRulesPage = lazy(() => import("./pages/MachineRules"));
 const RegulationDetailPage = lazy(() => import("./pages/RegulationDetailPage"));
 const ExamPreparationPage = lazy(() => import("./pages/ExamPreparationPage"));
 
-const WidgetPage = lazy(() => import("./pages/WidgetPage"));
 const MaritimeNews = lazy(() => import("./pages/MaritimeNews"));
 
 const CrewRoleDetailPage = lazy(() => import("./pages/CrewRoleDetail"));
@@ -191,7 +190,6 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
-        <Route path="/widgets" element={<PageTransition><WidgetPage /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
