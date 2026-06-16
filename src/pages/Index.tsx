@@ -134,25 +134,25 @@ const Index = () => {
         </div>
       )}
 
-      {/* Horizontal swipeable pager */}
+      {/* Horizontal swipeable pager — snap-stop always so one swipe = one page */}
       <main
         ref={pagerRef}
-        className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar"
+        className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar overscroll-x-contain"
         style={{ scrollSnapType: "x mandatory" }}
         aria-label="Marine Expert Pro"
       >
         {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <NewsPanel />
         </section>
 
         {/* CENTER — Icon launcher */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col justify-start overflow-y-auto px-2 pt-[max(11rem,calc(env(safe-area-inset-top)+10rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col justify-start overflow-y-auto px-2 pt-[max(11rem,calc(env(safe-area-inset-top)+10rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <div className="mb-4 px-4">
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
               Widget'lar
