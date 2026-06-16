@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useHomeWidgets, type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
-import { Clock, Globe2, Cloud, Wind, MapPin, Sun } from "lucide-react";
+import { Clock, Globe2, Cloud, Wind, MapPin, Sun, Pencil } from "lucide-react";
+import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 
 function degreesToCompass(degrees: number): string {
   const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
