@@ -45,6 +45,7 @@ interface LanguageContextType {
   resetLanguagePreferences: () => void;
   isChangingLanguage: boolean;
   changeProgress: number;
+  changePhase: LanguageChangePhase;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
