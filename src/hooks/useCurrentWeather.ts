@@ -315,7 +315,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     } finally {
       setLoading(false);
     }
-  }, [fetchReverse, fetchWeather]);
+  }, [fetchReverse, fetchWeather, reverseGeocode]);
 
   const dataRef = useRef<WeatherData | null>(null);
   useEffect(() => { dataRef.current = data; }, [data]);
