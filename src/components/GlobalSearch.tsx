@@ -50,7 +50,7 @@ export function GlobalSearch() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
 
-  // Keyboard shortcut
+  // Keyboard shortcut + global open event
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -58,9 +58,15 @@ export function GlobalSearch() {
         setOpen(true);
       }
     };
+    const openHandler = () => setOpen(true);
     window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    window.addEventListener("open-global-search", openHandler);
+    return () => {
+      window.removeEventListener("keydown", handler);
+      window.removeEventListener("open-global-search", openHandler);
+    };
   }, []);
+
 
   const results = useMemo(() => {
     if (!query.trim()) return searchIndex.slice(0, 8);
