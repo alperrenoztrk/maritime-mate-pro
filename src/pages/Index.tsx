@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Search, Settings } from "lucide-react";
+import { Search } from "lucide-react";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
@@ -11,7 +10,7 @@ const PAGES = ["news", "home", "widgets"] as const;
 type PageId = (typeof PAGES)[number];
 
 const Index = () => {
-  const navigate = useNavigate();
+
   const pagerRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState<PageId>("home");
   const [isScrolling, setIsScrolling] = useState(false);
