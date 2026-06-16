@@ -12,6 +12,22 @@ import {
   normalizeSource,
 } from '@/utils/pageTranslator';
 import { loadStaticDictionary, getStaticTranslation } from '@/utils/staticTranslations';
+import {
+  harvestAllRoutes,
+  hasHarvestedFor,
+  markHarvestedFor,
+} from '@/utils/routeHarvester';
+import { HARVEST_VERSION } from '@/utils/routeManifest';
+
+// True when this window is the hidden harvester iframe. In that case the
+// LanguageProvider must stay in source language and skip all translation work
+// so the harvested DOM text reflects the original (TR) source strings.
+const IS_HARVEST_FRAME =
+  typeof window !== 'undefined' &&
+  window.self !== window.top &&
+  /[?&]_mtHarvest=1\b/.test(window.location.search);
+
+export type LanguageChangePhase = 'idle' | 'harvest' | 'translate';
 
 interface SupportedLanguage {
   language: string;
@@ -29,6 +45,7 @@ interface LanguageContextType {
   resetLanguagePreferences: () => void;
   isChangingLanguage: boolean;
   changeProgress: number;
+  changePhase: LanguageChangePhase;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -83,6 +100,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [isLoading, setIsLoading] = useState(true);
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [changeProgress, setChangeProgress] = useState(0);
+  const [changePhase, setChangePhase] = useState<LanguageChangePhase>('idle');
   const { toast } = useToast();
 
   const translationCacheRef = useRef<Map<string, string>>(new Map());
@@ -361,14 +379,39 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return;
     }
 
+    // 0) Off-screen harvest of every route's source text (once per language).
+    // This guarantees that the seen-set covers the whole app, so that when
+    // the user later navigates to a page they never visited before, all of
+    // its text is already in the cache — no flicker, no missing translations.
+    const needsHarvest = !hasHarvestedFor(languageCode, HARVEST_VERSION);
+    if (needsHarvest) {
+      setChangePhase('harvest');
+      setChangeProgress(0);
+      try {
+        const harvested = await harvestAllRoutes({
+          onProgress: (done, total) => {
+            if (total > 0) setChangeProgress(Math.min(50, Math.round((done / total) * 50)));
+          },
+        });
+        for (const src of harvested) recordSeen(src);
+        markHarvestedFor(languageCode, HARVEST_VERSION);
+      } catch (error) {
+        console.warn('Route harvest sırasında hata:', error);
+      }
+    }
+
+    setChangePhase('translate');
+    const progressFloor = needsHarvest ? 50 : 0;
+    const progressSpan = needsHarvest ? 50 : 100;
+    setChangeProgress(progressFloor);
+
     // 1) Seed cache from static dictionary (all entries).
     const dict = await loadStaticDictionary(languageCode);
     for (const [src, dst] of Object.entries(dict)) {
       translationCacheRef.current.set(`${languageCode}:${src}`, dst);
     }
 
-    // 2) Also harvest the strings currently visible in the DOM (these may not
-    // be in the seen-set yet on the very first language switch of a session).
+    // 2) Also harvest the strings currently visible in the DOM.
     if (typeof document !== 'undefined' && document.body) {
       const units = collectTranslationUnits(document.body, originalTextRef.current);
       for (const u of units) recordSeen(u.source);
@@ -414,9 +457,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         }
       }
       done += 1;
-      // Throttle setState a bit to avoid render storms.
       if (done % 5 === 0 || done === total) {
-        setChangeProgress(Math.min(99, Math.round((done / total) * 100)));
+        setChangeProgress(
+          Math.min(99, progressFloor + Math.round((done / total) * progressSpan)),
+        );
       }
     });
 
@@ -424,6 +468,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     bulkCompletedLanguagesRef.current.add(languageCode);
     setChangeProgress(100);
   };
+
 
   // ── Public API ─────────────────────────────────────────────────────────────
   const changeLanguage = useCallback(async (languageCode: string) => {
@@ -448,6 +493,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // Allow the effect-driven page pass a tick to run, then dismiss.
     window.setTimeout(() => {
       setIsChangingLanguage(false);
+      setChangePhase('idle');
       const titleTr = 'Dil Değiştirildi';
       const descTr = `Uygulama dili ${getLanguageNameLocal(languageCode)} olarak değiştirildi`;
       toast({
@@ -476,6 +522,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // ── Effects ────────────────────────────────────────────────────────────────
   useEffect(() => {
+    if (IS_HARVEST_FRAME) {
+      // Inside the hidden harvester iframe: force source language, no caches,
+      // no observers, no translation passes. The parent window harvests the
+      // raw DOM text from this frame.
+      setCurrentLanguage(SOURCE_LANGUAGE);
+      setIsLoading(false);
+      return;
+    }
     loadCacheFromStorage();
     const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
     const validLanguage = SUPPORTED_LANGUAGES.find((lang) => lang.language === savedLanguage)
@@ -493,6 +547,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   }, [currentLanguage, isRTL]);
 
   useEffect(() => {
+    if (IS_HARVEST_FRAME) return;
     if (typeof document === 'undefined' || isLoading) return;
     const runId = ++translationRunIdRef.current;
     const language = currentLanguage;
@@ -534,6 +589,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     resetLanguagePreferences,
     isChangingLanguage,
     changeProgress,
+    changePhase,
   };
 
   return (
