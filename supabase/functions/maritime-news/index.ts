@@ -380,11 +380,7 @@ serve(async (req) => {
           const xml = await fetchWithTimeout(feed.url, 12_000);
           const items = parseRssOrAtom(xml, feed.name)
             .map((i) => ({ ...i, source: feed.name }))
-            .sort((a, b) => {
-              const aTs = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-              const bTs = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-              return bTs - aTs;
-            })
+            .sort((a, b) => scoreItem(b) - scoreItem(a))
             .slice(0, perSourceLimit);
           return { feed, items, error: null as string | null };
         } catch (e) {
