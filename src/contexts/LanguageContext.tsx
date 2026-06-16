@@ -379,14 +379,39 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return;
     }
 
+    // 0) Off-screen harvest of every route's source text (once per language).
+    // This guarantees that the seen-set covers the whole app, so that when
+    // the user later navigates to a page they never visited before, all of
+    // its text is already in the cache — no flicker, no missing translations.
+    const needsHarvest = !hasHarvestedFor(languageCode, HARVEST_VERSION);
+    if (needsHarvest) {
+      setChangePhase('harvest');
+      setChangeProgress(0);
+      try {
+        const harvested = await harvestAllRoutes({
+          onProgress: (done, total) => {
+            if (total > 0) setChangeProgress(Math.min(50, Math.round((done / total) * 50)));
+          },
+        });
+        for (const src of harvested) recordSeen(src);
+        markHarvestedFor(languageCode, HARVEST_VERSION);
+      } catch (error) {
+        console.warn('Route harvest sırasında hata:', error);
+      }
+    }
+
+    setChangePhase('translate');
+    const progressFloor = needsHarvest ? 50 : 0;
+    const progressSpan = needsHarvest ? 50 : 100;
+    setChangeProgress(progressFloor);
+
     // 1) Seed cache from static dictionary (all entries).
     const dict = await loadStaticDictionary(languageCode);
     for (const [src, dst] of Object.entries(dict)) {
       translationCacheRef.current.set(`${languageCode}:${src}`, dst);
     }
 
-    // 2) Also harvest the strings currently visible in the DOM (these may not
-    // be in the seen-set yet on the very first language switch of a session).
+    // 2) Also harvest the strings currently visible in the DOM.
     if (typeof document !== 'undefined' && document.body) {
       const units = collectTranslationUnits(document.body, originalTextRef.current);
       for (const u of units) recordSeen(u.source);
@@ -432,9 +457,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         }
       }
       done += 1;
-      // Throttle setState a bit to avoid render storms.
       if (done % 5 === 0 || done === total) {
-        setChangeProgress(Math.min(99, Math.round((done / total) * 100)));
+        setChangeProgress(
+          Math.min(99, progressFloor + Math.round((done / total) * progressSpan)),
+        );
       }
     });
 
@@ -442,6 +468,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     bulkCompletedLanguagesRef.current.add(languageCode);
     setChangeProgress(100);
   };
+
 
   // ── Public API ─────────────────────────────────────────────────────────────
   const changeLanguage = useCallback(async (languageCode: string) => {
