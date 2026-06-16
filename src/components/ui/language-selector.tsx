@@ -77,7 +77,7 @@ export const LanguageSelector = ({
             >
               <div className="flex items-center gap-2">
                 <span>{getLanguageFlag(lang.language)}</span>
-                <span>{lang.displayName || getLanguageName(lang.language)}</span>
+                <span data-no-translate>{lang.displayName || getLanguageName(lang.language)}</span>
               </div>
               {currentLanguage === lang.language && (
                 <Check className="h-4 w-4 text-green-600" />
@@ -101,7 +101,7 @@ export const LanguageSelector = ({
             <span className="text-lg">{getLanguageFlag(currentLanguage)}</span>
             <Languages className="h-4 w-4" />
             {showLabel && (
-              <span className="hidden sm:inline">
+              <span className="hidden sm:inline" data-no-translate>
                 {getLanguageName(currentLanguage)}
               </span>
             )}
@@ -123,7 +123,7 @@ export const LanguageSelector = ({
             <span>Şu anki dil:</span>
             <div className="flex items-center gap-1">
               <span>{getLanguageFlag(currentLanguage)}</span>
-              <span className="font-medium">{getLanguageName(currentLanguage)}</span>
+              <span className="font-medium" data-no-translate>{getLanguageName(currentLanguage)}</span>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@ export const LanguageSelector = ({
               <div className="flex items-center gap-3">
                 <span className="text-lg">{getLanguageFlag(lang.language)}</span>
                 <div className="flex flex-col">
-                  <span className="font-medium">
+                  <span className="font-medium" data-no-translate>
                     {lang.displayName || getLanguageName(lang.language)}
                   </span>
                 </div>

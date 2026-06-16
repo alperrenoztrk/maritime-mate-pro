@@ -139,7 +139,7 @@ const Settings = () => {
                     <span data-translatable>Seçilen dil tüm uygulamada geçerli olacaktır</span>
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    <span data-translatable>Çeviriler Google Translate altyapısı ile uygulanır</span>
+                    <span data-translatable>Çeviriler denizcilik terminolojisine uygun olarak uygulanır</span>
                   </p>
                 </div>
               </CardContent>

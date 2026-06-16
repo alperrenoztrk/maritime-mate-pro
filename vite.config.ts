@@ -57,10 +57,24 @@ export default defineConfig(({ mode }) => ({
         // Allow large assets (diagrams, PDFs, images)
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
         globPatterns: ["**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,woff2,json}"],
+        // Pre-translation dictionaries are lazy-loaded per language at runtime
+        // (only the selected language is downloaded), so keep them out of the
+        // precache and cache them on demand via runtimeCaching below.
+        globIgnores: ["**/locales/*.json"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,
         runtimeCaching: [
+          {
+            // Per-language static translation dictionaries (public/locales/*.json)
+            urlPattern: ({ url }) => url.pathname.includes("/locales/") && url.pathname.endsWith(".json"),
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "translation-locales",
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 90 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             // Google Fonts stylesheets
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

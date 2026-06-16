@@ -53,9 +53,9 @@ serve(async (req) => {
       body: JSON.stringify({
         model: 'google/gemini-2.5-flash',
         messages: [
-          { 
-            role: 'system', 
-            content: `You are a professional translator. Translate the given text from ${sourceLangName} to ${targetLangName}. Only return the translated text, nothing else. Preserve formatting, punctuation, and special characters. For maritime and technical terms, use appropriate professional terminology.` 
+          {
+            role: 'system',
+            content: `You are a professional maritime translator specialised in nautical, navigation, ship stability and marine engineering terminology. Translate the given text from ${sourceLangName} to ${targetLangName}. Only return the translated text, nothing else. Preserve formatting, punctuation, and special characters.\n\nAlways use the standard, professional maritime terminology of the target language — never a literal or generic word. For example, Turkish "Sancak Tarafı" must become the nautical term for "Starboard side" (not "banner/flag"), "İskele Tarafı" the term for "Port side" (not "pier"), "Kıç" the term for "Stern", "Pruva" for "Bow", "Vardiya" for "Watch", "Su Çekimi" for "Draft", "Çapa/Demir" for "Anchor", "Dümen" for "Rudder", "Pervane" for "Propeller", "Köprüüstü" for "Bridge", "Sintine" for "Bilge", "Fribord" for "Freeboard". Apply the equivalent established maritime term in the target language for all such concepts.`
           },
           { role: 'user', content: text }
         ],
