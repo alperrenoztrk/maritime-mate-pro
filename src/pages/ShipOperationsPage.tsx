@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { shipTypes } from "@/data/shipOperationsData";
 
 export default function ShipOperationsPage() {
@@ -55,7 +54,6 @@ export default function ShipOperationsPage() {
           </div>
         </div>
       </div>
-      <BottomNavigation />
     </MobileLayout>
   );
 }

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -171,7 +170,6 @@ export default function NavigationRulesPage() {
           </div>
         </div>
       </div>
-      <BottomNavigation />
     </MobileLayout>
   );
 }

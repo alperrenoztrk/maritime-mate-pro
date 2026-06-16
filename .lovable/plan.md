@@ -1,47 +1,70 @@
-## Sorun
 
-Lovable mobil uygulamasındaki preview WebView "this project couldn't render correctly in the mobile preview" diyor. Kodda runtime error veya console error yok — yani uygulama aslında çalışıyor (tarayıcıda açtığında sorunsuz). Sorun **ilk paint süresi**: Lovable mobil preview, sayfa belirli bir süre içinde anlamlı içerik göstermezse "couldn't render" fallback'ine düşüyor.
+## Amaç
 
-Suçlu: `index.html` içindeki splash ekranı.
+Anasayfa, iOS/Android ana ekran benzeri 6 ikonlu uygulama grid'ine dönüşecek. Alttaki bottom navigation tamamen kaldırılacak. Widget sayfası kaldırılıp, kullanıcı widget'ları Ayarlar'dan seçip anasayfada (ikonların arasında) gösterebilecek.
 
-`index.html` 33 KB / 619 satır ve şu anda inline olarak şunları çalıştırıyor:
-- 200 yıldızlı canvas starfield + sürekli rAF döngüsü + shooting stars
-- 2 katmanlı blur'lu aurora (filter: blur(60px))
-- 2 katmanlı fog drift animasyonu
-- 4 katmanlı sürekli hareket eden dalga
-- Dönen lighthouse beacon ışınları + glow
-- 200×200 compass rose SVG
-- Ay + krater + glow pulse
-- SVG gemi + duman + köprü pencereleri
-- Particle sparkle layer
-- Çoklu cubic-bezier title reveal + divider + loader
+## 1) Anasayfa (`src/pages/Index.tsx`)
 
-Bu, mobil WebView'da ilk frame'i hem CPU hem GPU açısından bloke ediyor — yüksek bundle indirme + canvas rAF + birçok blurred composite layer üst üste binince Lovable shell timeout süresini geçiyor ve "couldn't render" diyor.
+iOS Home Screen paralelinde yeniden tasarım:
 
-## Çözüm
+- Üstte mevcut başlık (MARINE EXPERT PRO) küçültülerek korunur; pusula kaldırılır (anasayfa artık launcher gibi davranır).
+- Ortada 3 sütunlu (mobil) / 4 sütunlu (tablet) **app icon grid**:
+  - Hesaplamalar → `/calculations` (Calculator)
+  - Dersler → `/lessons` (BookOpen)
+  - Personel → `/crew` (Users)
+  - Gemi Sistemleri → `/ship-systems` (Ship)
+  - Operasyonlar → `/ship-operations` (ClipboardList)
+  - Beta → `/beta` (FlaskConical)
+- Her ikon: yuvarlatılmış kare (rounded-[22%], iOS squircle benzeri), gradient zemin, lucide ikon, altında label. Tap-hold/scale aktif animasyon.
+- Aşağıda **Widget alanı**: kullanıcının Ayarlar'dan seçtiği widget'lar ikonların altında/arasında çıkar. Boşsa hiçbir şey gösterilmez (ipucu metni gizli).
+- Üstte GlobalSearch (iOS Spotlight çubuğu gibi pill arama), sağ üstte Ayarlar ikonu korunur.
+- Mevcut sol/sağ swipe (haberler/widgets) kaldırılır; widgets rotası artık yok.
+- "Keşfetmeye Başla" CTA kaldırılır (launcher mantığıyla gereksiz).
+- Okyanus dalga arka planı korunur (görsellik için).
 
-`index.html` splash ekranını **çok daha hafif** bir versiyona indir. Görsel kimlik (Marine Expert Pro markası, deniz teması, altın aksanlı) korunsun ama:
+## 2) Bottom navigation kaldırma
 
-- Canvas starfield ve shooting-star rAF döngüsü **kaldırılsın**
-- Blur'lu aurora ve fog katmanları **kaldırılsın**
-- Beacon rotation, particle sparkles, multi-layer waves **kaldırılsın**
-- Lighthouse / ship / compass / moon SVG'leri **kaldırılsın**
-- Yalnızca şunlar kalsın: koyu deniz arka planı (sade gradient), küçük çapa/pusula ikonu, "MARINE EXPERT PRO" başlığı + tagline, ince loader bar
-- Tek hafif fade-in animasyonu (transform/opacity, GPU-cheap)
+`src/components/BottomNavigation.tsx` kullanan **15 sayfadan** import + `<BottomNavigation />` kullanımı silinir. Bileşen dosyası tamamen silinir. `MobileLayout` zaten bottom bar render etmiyor; sadece sayfaların alt padding'i (pb-20 vb.) gerekirse temizlenir.
 
-Splash'in zaten React mount olur olmaz (`requestAnimationFrame` + 100ms) gizlendiğini biliyoruz — yani kullanıcı görsel olarak fark etmeyecek kadar kısa sürede kayboluyor zaten. Splash içindeki bütün zengin animasyonlar pratikte kimseye gösterilmiyor, sadece ilk paint'i geciktiriyor.
+## 3) Widget yönetimi → Ayarlar
 
-Sonuç: `index.html` ~33 KB'tan ~3-4 KB'a düşecek, canvas rAF tamamen gidecek, blur composite layer kalmayacak. Mobil preview'in timeout'unun altına rahat ineceğiz.
+Mevcut `/widgets` sayfası (`src/pages/WidgetPage.tsx`) ve tüm widget bileşenleri (`TimeWidgets`, `WeatherInfoWidgets`, `LocationCelestialWidgets`) korunur ama route kaldırılır. Yerine:
 
-### Etkilenen dosyalar
+- **Yeni: `src/components/widgets/HomeWidgetGrid.tsx`** — localStorage'daki `home-widgets-enabled` listesini okur, ilgili widget kartlarını anasayfada render eder (kompakt iOS widget boyutları: small/medium).
+- **Yeni: `src/pages/SettingsWidgets.tsx`** veya mevcut `Settings` sayfasına eklenen bölüm: kullanılabilir widget'ları toggle ile aç/kapat ve sıralayabilen liste (drag handle ile basit yukarı/aşağı butonları).
+- localStorage key: `marine-home-widgets-v1` → `[{ id: "clock-national", enabled: true, order: 0 }, ...]`.
+- Mevcut widget bileşenleri "compact" prop alacak şekilde küçük adapte edilir (kart boyutu için).
 
-- `index.html` — splash bölümü (50-614. satırlar) sadeleştirilecek. `<head>` (SEO meta'ları, JSON-LD, fontlar) ve sayfanın geri kalanı aynen korunacak.
+Kullanılabilir widget'lar (ilk sürüm):
+- Saat (Ulusal / GMT / LMT / ZT)
+- Hava durumu (sıcaklık + ikon)
+- Rüzgar (yön + hız)
+- Konum (enlem/boylam DMS)
+- Güneş (doğuş/batış)
 
-### Yapılmayacaklar
+## 4) Routing
 
-- React tarafına dokunulmayacak (`src/main.tsx`, `App.tsx`, rotalar aynen kalacak).
-- Capacitor / native config'e dokunulmayacak.
-- Backend, business logic, ders/hesaplama içeriği etkilenmeyecek.
-- Splash'in zengin animasyonlu hali istenirse sonradan **React içine** (mount sonrası, sadece bir kez gösterilen bir loading overlay olarak) ayrı bir görevde taşınabilir — ama bu görevin kapsamında değil.
+`src/App.tsx`'te:
+- `/widgets` route'u kaldırılır.
+- `Settings` içinde widget yönetimi bölümü açılır (ayrı route gerekmez).
 
-Onaylarsan uygulayayım.
+## 5) Tasarım dili (iOS paralel)
+
+- İkon kareleri: `aspect-square rounded-[22px]`, hafif iç gölge + dış gölge, semantik gradient (her modül için farklı maritime ton: deep blue, teal, slate, ocean).
+- Label: `text-xs font-medium text-white/90`, ikon altında 6px boşluk.
+- Grid: `grid-cols-3 gap-x-4 gap-y-6 px-6`.
+- Tap feedback: `active:scale-95 transition-transform`.
+- Widget kartları: glassmorphism (`bg-white/8 backdrop-blur-xl border border-white/15 rounded-3xl`).
+
+## Teknik notlar
+
+- Mevcut semantik token kuralı korunur; hardcoded hex sadece anasayfa launcher gradient'lerinde (mevcut pattern ile uyumlu) kullanılır.
+- Compass listener Index'ten kaldırılır (artık dial yok) → sensör dinleme maliyeti düşer.
+- Widget verisi için `useCurrentWeather` hook'u anasayfada bir kez çağrılır ve enabled widget'lara prop ile aktarılır (duplicate fetch yok).
+- `WidgetPage.tsx` dosyası silinir; tutorial localStorage anahtarları temizlenmez (zararsız).
+
+## Etkilenen dosyalar
+
+- Değişen: `src/pages/Index.tsx`, `src/App.tsx`, `src/pages/Settings.tsx` (widget bölümü), 15 sayfadan `BottomNavigation` kaldırma.
+- Yeni: `src/components/home/AppIconGrid.tsx`, `src/components/widgets/HomeWidgetGrid.tsx`, `src/components/settings/WidgetSettings.tsx`, `src/hooks/useHomeWidgets.ts`.
+- Silinen: `src/components/BottomNavigation.tsx`, `src/pages/WidgetPage.tsx`.

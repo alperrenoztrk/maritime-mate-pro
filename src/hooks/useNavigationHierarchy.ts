@@ -169,7 +169,6 @@ const navigationRules: NavigationRule[] = [
   // ── Genel üst seviye ───────────────────────────────────────
   { pattern: /^\/settings$/, parent: () => '/' },
   { pattern: /^\/maritime-news$/, parent: () => '/' },
-  { pattern: /^\/widgets$/, parent: () => '/' },
   { pattern: /^\/passage-plan$/, parent: () => '/' },
   { pattern: /^\/glossary$/, parent: () => '/' },
   { pattern: /^\/exam-preparation$/, parent: () => '/' },

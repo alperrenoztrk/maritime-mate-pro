@@ -11,7 +11,6 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import {
   Accordion,
   AccordionContent,
@@ -41,7 +40,6 @@ export default function ShipOperationsDetail() {
             Geri dön
           </Link>
         </div>
-        <BottomNavigation />
       </MobileLayout>
     );
   }
@@ -216,7 +214,6 @@ export default function ShipOperationsDetail() {
           )}
         </div>
       </div>
-      <BottomNavigation />
     </MobileLayout>
   );
 }

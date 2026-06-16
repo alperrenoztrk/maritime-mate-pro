@@ -5,7 +5,6 @@ import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
 import { ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { useState } from "react";
 
 export default function CrewRoleDetailPage() {
@@ -67,7 +66,6 @@ export default function CrewRoleDetailPage() {
         )}
 
       </div>
-      <BottomNavigation />
     </div>
   );
 }

@@ -104,5 +104,4 @@ export const searchIndex: SearchItem[] = [
   { title: "Denizcilik Haberleri", path: "/maritime-news", category: "Genel", keywords: ["haber", "news"] },
   
   // Widget
-  { title: "Araçlar & Widget'lar", path: "/widgets", category: "Genel", keywords: ["hava durumu", "almanak"] },
 ];
