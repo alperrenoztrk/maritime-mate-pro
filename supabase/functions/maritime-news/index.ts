@@ -402,17 +402,16 @@ serve(async (req) => {
       if (r.error) errors.push({ source: r.feed.name, error: r.error });
     }
 
-    // Filter to only include items with images, then sort by date
+    // Filter to only include items with images, then sort by importance score
     const sorted = allItems
       .filter((i) => Boolean(i.imageUrl))
       .map((i) => ({
         ...i,
-        publishedAt: i.publishedAt,
-        _ts: i.publishedAt ? new Date(i.publishedAt).getTime() : 0,
+        _score: scoreItem(i),
       }))
-      .sort((a, b) => b._ts - a._ts)
+      .sort((a, b) => b._score - a._score)
       .slice(0, limit)
-      .map(({ _ts, ...rest }) => rest);
+      .map(({ _score, ...rest }) => rest);
 
     return new Response(
       JSON.stringify({
