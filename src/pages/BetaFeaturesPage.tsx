@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, FlaskConical, Clock4, ClipboardCheck } from "lucide-react";
-import { BottomNavigation } from "@/components/BottomNavigation";
 
 const FEATURES = [
   {
@@ -92,7 +91,6 @@ export default function BetaFeaturesPage() {
         </div>
       </div>
 
-      <BottomNavigation />
     </div>
   );
 }
