@@ -299,19 +299,31 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       return dataRef.current;
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Bilinmeyen hata";
-      console.warn("⚠️ Konum/hava alınamadı, İstanbul fallback kullanılıyor:", message);
-      // Fallback to Istanbul so widgets remain functional even without geolocation permission
-      const lat = 41.0082;
-      const lon = 28.9784;
-      lastPositionRef.current = { lat, lon };
-      setLocationLabel("İstanbul");
-      setIsFallbackLocation(true);
-      await Promise.allSettled([
-        fetchWeather(lat, lon),
-        reverseGeocode ? fetchReverse(lat, lon) : Promise.resolve(),
-      ]);
-      setError(null);
-      return dataRef.current;
+      console.warn("⚠️ GPS reddedildi, IP tabanlı konum deneniyor:", message);
+      // IP-based geolocation fallback — far more accurate than a hardcoded city
+      try {
+        const ipRes = await fetch("https://ipapi.co/json/");
+        if (!ipRes.ok) throw new Error(`ipapi ${ipRes.status}`);
+        const ipJson = await ipRes.json();
+        const lat = Number(ipJson.latitude);
+        const lon = Number(ipJson.longitude);
+        if (!Number.isFinite(lat) || !Number.isFinite(lon)) throw new Error("ipapi invalid coords");
+        lastPositionRef.current = { lat, lon };
+        const label = [ipJson.city, ipJson.region].filter(Boolean).join(", ") || ipJson.country_name || null;
+        if (label) setLocationLabel(label);
+        setIsFallbackLocation(true);
+        await Promise.allSettled([
+          fetchWeather(lat, lon),
+          reverseGeocode ? fetchReverse(lat, lon) : Promise.resolve(),
+        ]);
+        setError(null);
+        return dataRef.current;
+      } catch (ipErr) {
+        console.error("❌ IP tabanlı konum da başarısız:", ipErr);
+        setError(message);
+        setIsFallbackLocation(true);
+        return null;
+      }
     } finally {
       setLoading(false);
     }
