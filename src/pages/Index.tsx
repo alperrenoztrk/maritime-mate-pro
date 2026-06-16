@@ -292,7 +292,8 @@ const Index = () => {
             </Button>
           </Link>
         </div>
-      </div>
+      </main>
+
 
       {/* CSS Animations */}
       <style>{`
