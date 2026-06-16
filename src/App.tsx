@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
+
 import { DensityProvider } from "@/contexts/DensityContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
@@ -363,6 +365,7 @@ const App = () => {
               <DensityProvider>
                 <Toaster />
                 <AskAIPopup />
+                <LanguageChangeOverlay />
                 <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
                   <BrowserRouter>
                     <RouteTranslationGate />
@@ -370,6 +373,7 @@ const App = () => {
                   </BrowserRouter>
                 </div>
               </DensityProvider>
+
             </ThemeProvider>
           </TooltipProvider>
         </LanguageProvider>
