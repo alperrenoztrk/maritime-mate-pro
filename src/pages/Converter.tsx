@@ -7,9 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeftRight, Ruler, Gauge, Thermometer, Droplets, Wind } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
 
 /* ─── Conversion definitions ─── */
 type UnitDef = { label: string; toBase: (v: number) => number; fromBase: (v: number) => number };
@@ -177,16 +174,9 @@ export default function ConverterPage() {
     <MobileLayout>
       <div className="min-h-screen bg-background px-4 pb-24 pt-6">
         <div className="mx-auto max-w-lg space-y-5">
-          <div className="flex items-center gap-3">
-            <Link to="/calculations">
-              <Button variant="ghost" size="icon" className="h-8 w-8">
-                <ArrowLeft className="h-4 w-4" />
-              </Button>
-            </Link>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-foreground">Birim Dönüştürücü</h1>
-              <p className="text-xs text-muted-foreground">Denizcilik birim çevirme aracı</p>
-            </div>
+          <div>
+            <h1 className="text-xl font-bold tracking-tight text-foreground">Birim Dönüştürücü</h1>
+            <p className="text-xs text-muted-foreground">Denizcilik birim çevirme aracı</p>
           </div>
 
           <Tabs defaultValue="distance">
