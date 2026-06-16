@@ -54,7 +54,7 @@ function WidgetCard({ size, children }: CardProps) {
 
 export function HomeWidgetGrid() {
   const { enabled } = useHomeWidgets();
-  const { data, locationLabel } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
+  const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
