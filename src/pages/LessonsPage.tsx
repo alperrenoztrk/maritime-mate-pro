@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
 import { hasCourseTopic } from "@/data/courseContent";
 import { ChevronDown, ChevronRight, GraduationCap, Ship, Wrench } from "lucide-react";
-import { BackButton } from "@/components/BackButton";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function LessonsPage() {
@@ -60,9 +59,6 @@ export default function LessonsPage() {
             Hesaplama Merkezi
           </div>
           <h1 className="text-2xl font-bold text-foreground">Dersler</h1>
-          <div className="flex justify-center">
-            <BackButton to="/" variant="pill" label="Ana Sayfa" />
-          </div>
         </header>
 
         <div className="flex flex-col gap-6">

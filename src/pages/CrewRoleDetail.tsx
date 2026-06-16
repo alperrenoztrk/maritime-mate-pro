@@ -3,7 +3,6 @@ import { crewRoleMap } from "@/data/crewHierarchy";
 import { hasCrewTaskLongForm } from "@/data/crewTasks/types";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
 import { ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
-import { BackButton } from "@/components/BackButton";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { useState } from "react";
@@ -25,7 +24,6 @@ export default function CrewRoleDetailPage() {
             İstediğiniz personel kaydı bulunamadı. Lütfen listeden geçerli bir rol seçin.
           </p>
         </div>
-        <BackButton to="/crew" variant="pill" label="Gemi Personeline Dön" />
       </div>
     );
   }

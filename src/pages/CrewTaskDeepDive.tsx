@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { BookOpen, AlertTriangle, BookMarked, Lightbulb, Scale, FileText, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { BackButton } from "@/components/BackButton";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails } from "@/data/crewRoleDetails";

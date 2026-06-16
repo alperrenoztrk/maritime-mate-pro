@@ -2,8 +2,6 @@
 import { useParams, Link } from "react-router-dom";
 import { BookOpen, Shield, ClipboardCheck, Lightbulb, Users, Scale } from "lucide-react";
 import { getShipTaskBySlug } from "@/data/shipTaskDetailData";
-import { BackButton } from "@/components/BackButton";
-
 export default function ShipTaskDetailPage() {
   const { taskSlug } = useParams<{ taskSlug: string }>();
   const task = taskSlug ? getShipTaskBySlug(taskSlug) : undefined;
@@ -13,7 +11,6 @@ export default function ShipTaskDetailPage() {
       <div className="flex min-h-screen items-center justify-center bg-background px-4">
         <div className="text-center space-y-4">
           <h1 className="text-xl font-bold text-foreground">İş bulunamadı</h1>
-          <BackButton to="/ship-tasks" variant="pill" label="Geri Dön" />
         </div>
       </div>
     );
@@ -35,9 +32,6 @@ export default function ShipTaskDetailPage() {
             {task.categoryIcon} {task.category}
           </div>
           <h1 className="text-2xl font-bold text-foreground">{task.title}</h1>
-          <div className="flex justify-center">
-            <BackButton to="/ship-tasks" variant="pill" label="Tüm İşler" />
-          </div>
         </header>
 
         {/* Definition & Importance */}

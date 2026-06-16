@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { BookOpenText, Search } from "lucide-react";
-import { BackButton } from "@/components/BackButton";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
@@ -46,9 +45,6 @@ const Glossary = () => {
           <p className="text-xs text-muted-foreground">
             {glossaryTerms.length} terim · {glossaryCategories.length} kategori
           </p>
-          <div className="flex justify-center">
-            <BackButton to="/" variant="pill" label="Ana Sayfa" />
-          </div>
         </header>
 
         {/* Search & Filter */}
