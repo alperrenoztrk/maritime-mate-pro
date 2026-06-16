@@ -12,6 +12,22 @@ import {
   normalizeSource,
 } from '@/utils/pageTranslator';
 import { loadStaticDictionary, getStaticTranslation } from '@/utils/staticTranslations';
+import {
+  harvestAllRoutes,
+  hasHarvestedFor,
+  markHarvestedFor,
+} from '@/utils/routeHarvester';
+import { HARVEST_VERSION } from '@/utils/routeManifest';
+
+// True when this window is the hidden harvester iframe. In that case the
+// LanguageProvider must stay in source language and skip all translation work
+// so the harvested DOM text reflects the original (TR) source strings.
+const IS_HARVEST_FRAME =
+  typeof window !== 'undefined' &&
+  window.self !== window.top &&
+  /[?&]_mtHarvest=1\b/.test(window.location.search);
+
+export type LanguageChangePhase = 'idle' | 'harvest' | 'translate';
 
 interface SupportedLanguage {
   language: string;
