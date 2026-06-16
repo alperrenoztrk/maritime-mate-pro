@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowLeft,
   ClipboardCheck,
   Download,
   RotateCcw,
@@ -114,13 +113,6 @@ export default function BetaPscChecklist() {
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-6">
         <header className="space-y-3">
-          <Link
-            to="/beta"
-            className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Beta Özellikler
-          </Link>
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 p-3 text-white shadow-md">
               <ClipboardCheck className="h-6 w-6" />

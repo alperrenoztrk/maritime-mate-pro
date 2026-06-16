@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { regulationItems, type RegulationCategory } from "@/data/regulationItems";
-import { ArrowLeft, Scale } from "lucide-react";
+import { Scale } from "lucide-react";
 
 const Regulations = () => {
   const highRefreshRateStyles: CSSProperties = {
@@ -53,15 +53,6 @@ const Regulations = () => {
             <h1 className="text-2xl font-bold text-foreground">Regülasyonlar</h1>
           </div>
           <p className="text-xs text-muted-foreground">Uluslararası ve ulusal denizcilik regülasyonları</p>
-          <div className="flex justify-center">
-            <Link
-              to="/calculations"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Geri
-            </Link>
-          </div>
         </header>
 
         <section className="space-y-4 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">

@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, ListChecks, Shuffle } from "lucide-react";
+import { ListChecks, Shuffle } from "lucide-react";
 import { StabilityQuiz as Quiz } from "@/components/stability/StabilityQuiz";
 import type { QuizQuestion } from "@/types/quiz";
 
@@ -160,12 +160,6 @@ export default function MachineTopicQuizPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="container mx-auto p-4 space-y-4 max-w-4xl">
-        <div className="flex items-center gap-2">
-          <Link to="/lessons" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="h-4 w-4" /> Derslere Dön
-          </Link>
-        </div>
-
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">

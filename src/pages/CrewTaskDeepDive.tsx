@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { BookOpen, AlertTriangle, BookMarked, Lightbulb, Scale, FileText, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { BackButton } from "@/components/BackButton";
 import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails } from "@/data/crewRoleDetails";
 import { loadCrewTaskLongForm, type CrewTaskLongForm, type CrewTaskCallout } from "@/data/crewTasks/types";
@@ -36,7 +35,6 @@ export default function CrewTaskDeepDive() {
     return (
       <div className="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-4 px-4 text-center">
         <h1 className="text-xl font-bold">Görev bulunamadı</h1>
-        <BackButton to={`/crew/${roleSlug ?? ""}`} variant="pill" label="Geri" />
       </div>
     );
   }
@@ -44,14 +42,13 @@ export default function CrewTaskDeepDive() {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 pb-32 py-8 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-5">
-        <div className="flex items-center justify-between gap-2">
-          <BackButton to={`/crew/${roleSlug}`} variant="pill" label={role.rank} />
-          {content && (
+        {content && (
+          <div className="flex justify-end">
             <span className="rounded-full border border-border/40 bg-card/70 px-3 py-1 text-xs text-muted-foreground">
               ~{content.estimatedPages} sayfa
             </span>
-          )}
-        </div>
+          </div>
+        )}
 
         <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md backdrop-blur dark:bg-slate-900/60">
           <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">

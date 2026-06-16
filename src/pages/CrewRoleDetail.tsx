@@ -3,7 +3,6 @@ import { crewRoleMap } from "@/data/crewHierarchy";
 import { hasCrewTaskLongForm } from "@/data/crewTasks/types";
 import { crewRoleDetails, type CrewRoleDetail } from "@/data/crewRoleDetails";
 import { ShieldCheck, Sparkles, Wrench, AlertTriangle, CheckCircle2, Anchor } from "lucide-react";
-import { BackButton } from "@/components/BackButton";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 
@@ -24,7 +23,6 @@ export default function CrewRoleDetailPage() {
             İstediğiniz personel kaydı bulunamadı. Lütfen listeden geçerli bir rol seçin.
           </p>
         </div>
-        <BackButton to="/crew" variant="pill" label="Gemi Personeline Dön" />
       </div>
     );
   }
@@ -37,11 +35,6 @@ export default function CrewRoleDetailPage() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
-        {/* Navigation */}
-        <div className="flex flex-wrap items-center gap-3">
-          <BackButton to="/crew" variant="pill" label="Gemi Personeli" />
-        </div>
-
         {/* Header Card */}
         <div className="rounded-2xl border border-border/60 bg-card/80 p-6 shadow-xl backdrop-blur dark:border-border/40 dark:bg-slate-900/70">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

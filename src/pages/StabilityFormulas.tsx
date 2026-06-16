@@ -1,25 +1,15 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, Calculator, Sigma } from "lucide-react";
+import { BookOpen, Calculator, Sigma } from "lucide-react";
 
 export default function StabilityFormulasPage() {
 
   return (
     <MobileLayout>
       <div className="space-y-4" data-no-translate>
-        <div className="flex items-center justify-between">
-          <Link to="/lessons">
-            <Button variant="ghost" size="sm" className="gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Stabilite
-            </Button>
-          </Link>
-          <div className="text-sm text-muted-foreground flex items-center gap-2">
-            <BookOpen className="h-4 w-4" />
-            Formüller Rehberi
-          </div>
+        <div className="text-sm text-muted-foreground flex items-center gap-2">
+          <BookOpen className="h-4 w-4" />
+          Formüller Rehberi
         </div>
 
         {/* İçindekiler – başlık başına ayrı sayfa butonları */}

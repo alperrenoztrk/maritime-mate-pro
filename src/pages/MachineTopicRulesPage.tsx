@@ -1,6 +1,6 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
-import { ArrowLeft, BookOpen, ShieldCheck } from "lucide-react";
+import { BookOpen, ShieldCheck } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface RuleSection {
@@ -135,9 +135,6 @@ export default function MachineTopicRulesPage() {
     <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="container mx-auto max-w-4xl p-4 space-y-6">
         <header className="space-y-3">
-          <Link to="/lessons" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-            <ArrowLeft className="h-4 w-4" /> Derslere Dön
-          </Link>
           <div className="flex items-center gap-3">
             <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${topic.accent} text-white shadow-lg`}>
               <TopicIcon className="h-5 w-5" />
