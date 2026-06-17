@@ -143,7 +143,6 @@ const content: CrewTaskLongForm = {
       sections: [
         {
           subheading: "5.1 Liman yangın güvenliği",
-          paramaphsPlaceholder: undefined,
           paragraphs: [
             `Limanda yangın riski yüksektir: kaynak/kesim işleri (hot work), sigara, elektrik bağlantıları, yük operasyonu kaynaklı statik elektrik. Dördüncü Zabit, gemideki hot work'lerin yetkili permit ile yapıldığını, yangın nöbetçisinin (fire watch) bulunduğunu ve yangın söndürme ekipmanının hazır olduğunu kontrol eder.`,
             `Liman yangın devriyesi düzenli yapılır; özellikle yük bölgeleri, makine dairesi yakını ve yaşam mahalli kontrol edilir. Şore bağlantısı (shore connection) ve international shore connection flange'in hazır olması, kara yangın suyu desteği için önemlidir.`,
