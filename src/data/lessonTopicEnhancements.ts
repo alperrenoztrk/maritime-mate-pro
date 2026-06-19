@@ -634,6 +634,762 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       "Anemometre kalibrasyonu için: gemi durdururken ölçülen AW = TW olmalıdır; sapma varsa servise verin.",
     ],
   },
+
+  // ════════════════════════════════════════════════════════════════════
+  // FAZ B — Gelgit / Akıntı / ETA / Termodinamik çevrimler
+  // ════════════════════════════════════════════════════════════════════
+
+  // ──────────────────────────────────────────────────────────────────────
+  // SEYİR — ETA Hesabı
+  // ──────────────────────────────────────────────────────────────────────
+  "navigation|ETA": {
+    deepDive:
+      "ETA (Estimated Time of Arrival), kalan mesafe ile ortalama yer hızının (SOG) oranı kadar süre sonra geminin varış noktasında olacağı tahmini saattir. Doğru ETA, bağlama saati randevusu, pilot/tug ayarlaması, vardiya planı ve yakıt sarfiyatı yönetimi için kritik bir operasyonel girdidir. Akıntı, hava, sığ su (squat), trafik ve hız ayarı dolayısıyla SOG sürekli değişir; bu yüzden ETA dinamik olarak güncellenmeli ve önemli sapmalarda agent/charterer'a 'ETA Update' mesajı geçilmelidir.",
+    coreFormula: {
+      text: "Süre (sa) = Mesafe (nm) / Hız (kn)    |    ETA = ETD + Toplam Süre",
+      description:
+        "Bağımsız bacaklar için her bacağı kendi SOG'u ile çöz, sonra topla. UTC ↔ yerel saat dönüşümünü ihmal etme.",
+    },
+    steps: [
+      {
+        title: "1. Kalan mesafeyi waypoint bazında çıkar",
+        description:
+          "Rotayı bacaklara böl (great circle veya rhumb line); her bacak için mesafeyi nm cinsinden topla.",
+      },
+      {
+        title: "2. Her bacak için planlanan SOG'u belirle",
+        description:
+          "Açık deniz, kıyı yaklaşımı, kanal/pilotage farklı hızlar gerektirir. Akıntı tahminini SOG'a dahil et (CTS hesabıyla).",
+      },
+      {
+        title: "3. Bacak sürelerini hesapla ve topla",
+        description:
+          "t = d / V. Saat → saat-dakika dönüşümünü yap (0.5 sa = 30 dk).",
+      },
+      {
+        title: "4. ETD + toplam süreyi UTC olarak topla",
+        description:
+          "Dilim değişimleri (zaman dilimi geçişleri ve DST) varsa ekle/çıkar. Sonuç hem UTC hem yerel saat olarak yaz.",
+      },
+      {
+        title: "5. Geç sapma kontrolü (ETA update)",
+        description:
+          "Mevcut SOG ile yeniden hesapla; ±15 dk veya şirket SMS'inde belirtilen eşik aşılırsa Master/agent/charterer'a ETA Update gönder.",
+      },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "Gemi 13:30 UTC'de bir mevkidedir; bağlamaya 186 nm kalmıştır. Planlanan ortalama SOG 12.5 kn. ETA?",
+        given: [
+          { label: "Saat (UTC)", value: "13:30" },
+          { label: "Kalan mesafe", value: "186 nm" },
+          { label: "Planlanan SOG", value: "12.5 kn" },
+        ],
+        solution: [
+          {
+            step: "Süre = Mesafe / SOG",
+            expression: "186 / 12.5",
+            result: "14.88 sa = 14 sa 53 dk",
+          },
+          {
+            step: "ETA = 13:30 + 14:53",
+            result: "28:23 → ertesi gün 04:23 UTC",
+          },
+        ],
+        answer: "ETA ≈ 04:23 UTC (ertesi gün). Yerel saat +3 ise 07:23 LT.",
+      },
+      {
+        scenario:
+          "İki bacaklı rota: 80 nm @ 14 kn (açık deniz) + 22 nm @ 8 kn (pilotage). ETD 06:00 UTC.",
+        given: [
+          { label: "Bacak 1", value: "80 nm @ 14 kn" },
+          { label: "Bacak 2", value: "22 nm @ 8 kn" },
+          { label: "ETD", value: "06:00 UTC" },
+        ],
+        solution: [
+          { step: "t₁ = 80/14", result: "5.714 sa = 5 sa 43 dk" },
+          { step: "t₂ = 22/8", result: "2.750 sa = 2 sa 45 dk" },
+          { step: "Toplam", result: "8 sa 28 dk" },
+          { step: "ETA", expression: "06:00 + 08:28", result: "14:28 UTC" },
+        ],
+        answer: "ETA 14:28 UTC. Pilot boarding zamanı bacak 2'nin başlangıcı (11:43 UTC) olarak planla.",
+      },
+    ],
+    commonMistakes: [
+      "STW (su üzerinde hız) ile SOG'u (yer üzerinde hız) karıştırmak — ETA daima SOG ile hesaplanır.",
+      "Zaman dilimi geçişlerini unutmak (E'den W'ya geçişte saat geri alınır).",
+      "Pilotage/kanal bacakları için ortalama SOG yerine seyir SOG'unu kullanmak.",
+      "Akıntı/sığ su etkisini SOG'a katmamak.",
+    ],
+    criticalNotes: [
+      "ETA değişimi ±15 dk'yi aşarsa şirket/charterer'a 'ETA Update' geç; demurrage/laytime hesabı bu mesaja bağlıdır.",
+      "Tahmini varış saati, NOR (Notice of Readiness) tendering için yasal önem taşır.",
+      "Yakıt planlamasında ETA × ortalama sarfiyat = toplam yakıt; %5 emniyet payı bırak.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // SEYİR — Akıntılı Seyir (CTS / Set & Drift)
+  // ──────────────────────────────────────────────────────────────────────
+  "navigation|Akıntılı seyir hesapları": {
+    deepDive:
+      "Akıntı, geminin pruvasına bakmaksızın yerden hareketini etkileyen su kütlesi hareketidir. 'Set' akıntının geldiği değil GİTTİĞİ yöndür (000°–360° T); 'Drift' akıntının hızıdır (knot). Akıntı varlığında pruva (heading) ile yer üzerinde gerçek rota (COG/track) farklıdır. CTS (Course To Steer) hesabı, istenen track açısını korumak için pruvanın hangi yöne yönlendirileceğini vektörel olarak bulur. Yöntem: track vektörünü (track açısı, planlanan zamanda alınacak mesafe), akıntı vektörünü (set, drift × zaman) ve gemi su üzerinde hız vektörünü (CTS, STW × zaman) bir vektör üçgeninde çözmektir.",
+    coreFormula: {
+      text: "Track = Heading + Akıntı (vektörel)    |    STW vektörü ile CTS bulunur",
+      description:
+        "Çizim: 1) track yönü/uzunluğu çiz, 2) başlangıçtan set yönünde drift×t çiz, 3) bu uçtan track ucuna STW×t uzunluğunda çiz → bu vektörün yönü CTS'dir.",
+    },
+    steps: [
+      {
+        title: "1. Akıntı bilgisini topla",
+        description:
+          "Set (yön, °T) ve Drift (kn) — Atlas of Pilot Charts, Admiralty Tidal Stream Atlas veya gerçek zamanlı oşinografik veriden alınır.",
+      },
+      {
+        title: "2. Track ve süreyi belirle",
+        description:
+          "Track = istenen yer üzerinde rota (°T). Süre t (sa) = bacak süresi. Bacak mesafesi = track yönünde gidilecek nm.",
+      },
+      {
+        title: "3. Vektör üçgenini çiz (kâğıt / pergel)",
+        description:
+          "Başlangıç noktasından track açısı yönünde 't' saatte istenen mesafeyi (track vektörü) işaretle. Aynı başlangıçtan set yönünde drift×t kadar çiz; bu noktadan track ucuna birleştirilen vektör, gemi su üzerindeki hareketini gösterir. Bu vektörün açısı CTS, uzunluğu / t = STW'dir.",
+      },
+      {
+        title: "4. Analitik çözüm (sinüs teoremi)",
+        description:
+          "sin(CTS−Track) / Drift = sin(Set−Track) / STW. CTS − Track = δ (akıntı düzeltmesi). δ = asin((Drift × sin(Set−Track)) / STW). CTS = Track + δ.",
+      },
+      {
+        title: "5. SOG'u bul",
+        description:
+          "Vektör üçgeninde track vektörünün uzunluğu / t = SOG. Veya: SOG² = STW² + Drift² + 2·STW·Drift·cos(Set−CTS).",
+      },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "İstenen track 090° T, STW 10 kn. Set 180° T, Drift 2 kn. CTS ve SOG nedir?",
+        given: [
+          { label: "Track", value: "090° T" },
+          { label: "STW", value: "10 kn" },
+          { label: "Set", value: "180° T" },
+          { label: "Drift", value: "2 kn" },
+        ],
+        solution: [
+          {
+            step: "Akıntı–track açı farkı",
+            expression: "Set − Track = 180 − 90 = 90°",
+            result: "Akıntı tam sancak traverstan geliyor",
+          },
+          {
+            step: "δ = asin(Drift × sin(90°) / STW)",
+            expression: "asin(2 × 1 / 10) = asin(0.2)",
+            result: "δ ≈ 11.5°",
+          },
+          {
+            step: "Akıntı sancağa sürüklüyor → pruva iskeleye düzeltilir",
+            expression: "CTS = Track − δ = 090° − 11.5°",
+            result: "CTS ≈ 078.5° T",
+          },
+          {
+            step: "SOG (kosinüs teoremi)",
+            expression: "√(10² + 2² − 2·10·2·cos(180−11.5))",
+            result: "√(100 + 4 + 39.2) ≈ √143.2 ≈ 11.97 ≈ 9.8 kn",
+          },
+        ],
+        answer: "CTS ≈ 079° T  |  SOG ≈ 9.8 kn",
+        note: "Akıntı tam yan traverstan olduğu için SOG'u biraz düşürür (geminin enerjisinin bir kısmı drift'i yenmek için harcanır).",
+      },
+      {
+        scenario:
+          "Track 045°, STW 12 kn, Set 225° (akıntı gemiye karşı), Drift 1.5 kn.",
+        given: [
+          { label: "Track", value: "045°" },
+          { label: "STW", value: "12 kn" },
+          { label: "Set − Track", value: "225 − 45 = 180° (tam karşı)" },
+        ],
+        solution: [
+          {
+            step: "δ = asin(1.5·sin 180° / 12)",
+            expression: "asin(0)",
+            result: "δ = 0° (akıntı doğrudan ters yönde)",
+          },
+          {
+            step: "CTS = Track",
+            result: "045°",
+          },
+          {
+            step: "SOG = STW − Drift",
+            result: "12 − 1.5 = 10.5 kn",
+          },
+        ],
+        answer: "CTS 045°, SOG 10.5 kn. Pruva değişmez, sadece zemin hızı düşer.",
+      },
+    ],
+    commonMistakes: [
+      "'Set' yönünü akıntının geldiği yön sanmak — daima gittiği yöndür.",
+      "δ düzeltmesini ters işaretle uygulamak: akıntı sancağa sürüklerse pruvayı İSKELEYE çevirirsin (CTS = Track − δ).",
+      "STW yerine SOG ile CTS hesaplamak — gemi suya göre hareket eder, akıntı suyu hareket ettirir.",
+      "Bacak süresini hesaba katmadan tek vektör üçgeniyle çözmek; ETA için süre kritiktir.",
+    ],
+    criticalNotes: [
+      "Tidal stream'in yönü ve hızı her saat değişebilir; uzun bacaklarda saatlik olarak akıntı vektörünü güncelle.",
+      "Sığ sularda akıntı tahmini büyük hata içerebilir; ECDIS overlay'i yerel pilot bilgisiyle teyit et.",
+      "Akıntıya karşı seyirde yakıt sarfiyatı artar — yakıt planında bu farkı hesaba kat.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // SEYİR — Gelgit Yüksekliği (Height of Tide)
+  // ──────────────────────────────────────────────────────────────────────
+  "navigation|Height of tide hesapları": {
+    deepDive:
+      "Gelgit yüksekliği, herhangi bir anda chart datum (LAT — Lowest Astronomical Tide) seviyesinin üzerindeki su seviyesidir. UKC (Under-Keel Clearance) ve liman yaklaşımı kararları doğrudan bu değere bağlıdır. Hesaplamada iki kaynak kullanılır: (1) Standard Port için Admiralty Tide Tables (ATT) Bölüm I, (2) Secondary Port için Bölüm II düzeltmeleri. İki yöntem yaygındır — 'Rule of Twelfths' (kabaca, yarı diurnal regimler için) ve ATT Tablo III (gerçek interpolasyon).",
+    coreFormula: {
+      text: "Onikiler Kuralı: 1/12, 2/12, 3/12, 3/12, 2/12, 1/12 (saatlik artış)",
+      description:
+        "HW–LW farkı (range) 6 eşit saate dağıtılır. Toplam range = HW − LW. Hedef saatteki yükseklik = LW + (Σ payı) × range veya HW − (Σ kalan) × range.",
+    },
+    steps: [
+      {
+        title: "1. HW ve LW saat & yüksekliklerini bul",
+        description:
+          "ATT Bölüm I'den standard port için. Secondary port ise time/height düzeltmelerini (Bölüm II) uygula.",
+      },
+      {
+        title: "2. Range ve duration hesapla",
+        description:
+          "Range = HW height − LW height. Duration = HW saat − LW saat (yükselen gelgit) veya tersi. ~6 saatlik olduğunu varsay (onikiler kuralı için).",
+      },
+      {
+        title: "3. Hedef saatin LW'ye veya HW'ye göre konumu",
+        description:
+          "Hedef saat − LW saat = geçen süre (sa, dk). Bu süreyi 6 eşit dilime böl (her dilim ~ duration/6).",
+      },
+      {
+        title: "4. Onikiler kuralıyla payı topla",
+        description:
+          "1. saat 1/12, 2. saat 2/12, 3. saat 3/12, 4. saat 3/12, 5. saat 2/12, 6. saat 1/12. Hedefe kadar olan dilimlerin paylarını topla (kısmi dilim için orantı).",
+      },
+      {
+        title: "5. Hedef yüksekliği hesapla",
+        description:
+          "Yükseklik = LW height + (Σ pay / 12) × range. UKC için: Mevcut derinlik = Charted depth + Yükseklik.",
+      },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "Liverpool için HW 06:30 LT, yükseklik 9.2 m. LW 12:30, yükseklik 1.0 m. 09:30 LT'de gelgit yüksekliği nedir?",
+        given: [
+          { label: "HW", value: "06:30 / 9.2 m" },
+          { label: "LW", value: "12:30 / 1.0 m" },
+          { label: "Range", value: "9.2 − 1.0 = 8.2 m (düşen gelgit)" },
+          { label: "Duration", value: "6 sa" },
+          { label: "Hedef saat", value: "09:30 (HW'den 3 saat sonra)" },
+        ],
+        solution: [
+          {
+            step: "HW'den itibaren düşüş payları: 1/12 + 2/12 + 3/12 = 6/12",
+            result: "Toplam pay = 6/12 = 0.5",
+          },
+          {
+            step: "Düşüş miktarı",
+            expression: "0.5 × 8.2",
+            result: "4.1 m",
+          },
+          {
+            step: "Yükseklik = HW − düşüş",
+            expression: "9.2 − 4.1",
+            result: "5.1 m",
+          },
+        ],
+        answer: "09:30 LT'de gelgit yüksekliği = 5.1 m (chart datum üzerinde).",
+        note: "Charted depth 4.0 m bir noktada o anki gerçek derinlik 4.0 + 5.1 = 9.1 m'dir.",
+      },
+      {
+        scenario:
+          "LW 02:00 / 0.5 m, HW 08:00 / 5.5 m. Saat 05:00'te yükseklik?",
+        given: [
+          { label: "Range", value: "5.0 m (yükselen)" },
+          { label: "LW + 3 sa", value: "05:00" },
+        ],
+        solution: [
+          {
+            step: "LW'den itibaren yükseliş payları: 1/12 + 2/12 + 3/12",
+            result: "6/12 = 0.5",
+          },
+          {
+            step: "Yükseliş miktarı",
+            expression: "0.5 × 5.0",
+            result: "2.5 m",
+          },
+          {
+            step: "Yükseklik = LW + yükseliş",
+            result: "0.5 + 2.5 = 3.0 m",
+          },
+        ],
+        answer: "05:00'te yükseklik 3.0 m.",
+      },
+    ],
+    commonMistakes: [
+      "Onikiler kuralını duration ≈ 6 sa olmayan rejimlerde kullanmak — diurnal/mixed gelgit bölgelerinde ATT Tablo III gerekir.",
+      "Secondary port düzeltmelerini (time/height shift) atlamak.",
+      "Saatleri yerel saat ↔ UTC ↔ standart port saat dilimine çevirmeden kullanmak.",
+      "Chart datum dışındaki referansları (MSL, MLLW) karıştırmak.",
+    ],
+    criticalNotes: [
+      "UKC kararı için onikiler kuralının ±20 cm hata payı vardır; sığ liman yaklaşımlarında ATT tam interpolasyonu kullan.",
+      "Meteorolojik etki (storm surge, atmosferik basınç, rüzgâr) gelgiti ±0.5 m'ye kadar değiştirebilir; tabloyu sahil istasyonu gerçek ölçümüyle teyit et.",
+      "Squat ve heel etkilerini ayrı hesapla; gerçek UKC = Charted depth + Tide − Draught − Squat − Heel margin.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // SEYİR — UKC & Gelgit Birleşik Hesabı
+  // ──────────────────────────────────────────────────────────────────────
+  "navigation|UKC + gelgit hesapları": {
+    deepDive:
+      "Under-Keel Clearance (UKC), geminin omurgası ile deniz tabanı arasındaki anlık serbest derinliktir. UKC karar süreci dört bileşenin toplamıdır: (1) charted depth, (2) gelgit yüksekliği, (3) eksiltici faktörler (draught, squat, heel, dalga-trough, atmosferik basınç, swell), (4) güvenlik marjı (şirket SMS politikası; tipik %10 draught veya minimum 0.5–1.0 m). IMO MSC.232(82) ve birçok bayrak idaresi minimum UKC politikasını şart koşar. Squat — sığ ve dar sularda hızla artan dinamik çökme — kritik tehlikedir; Barrass formülü pratikte en yaygın kullanılan tahmindir.",
+    coreFormula: {
+      text: "UKC = Charted depth + Tide − Draught − Squat − Heel − Safety Margin",
+      description:
+        "Squat (Barrass): δ ≈ Cb · V² / 100 (açık sığ su), δ ≈ Cb · V² × Cs / 100 (kanal/kısıtlı). V = knot, sonuç metre.",
+    },
+    steps: [
+      {
+        title: "1. Karar noktasında charted depth'i tespit et",
+        description:
+          "ECDIS/harita üzerinde geçilecek en sığ noktayı (critical point) seç. Datum altındaki en küçük değer kullanılır.",
+      },
+      {
+        title: "2. O an için gelgit yüksekliğini hesapla",
+        description:
+          "Onikiler kuralı veya ATT ile karar saatindeki yüksekliği bul. Met düzeltmesi (storm surge, basınç) ekle/çıkar.",
+      },
+      {
+        title: "3. Geminin mevcut draught'unu al",
+        description:
+          "En derin nokta (maksimum draught) — trim varsa pruva veya kıç en derini hangisiyse o. Saltwater allowance da göz önünde tut.",
+      },
+      {
+        title: "4. Squat'ı hesapla",
+        description:
+          "Barrass: δ = Cb · V² / 100 (open shallow), δ = Cb · V² × 2 / 100 (canal). Cb tipik bulk/tanker 0.80, container 0.65, ferry 0.55. V = SOG kn.",
+      },
+      {
+        title: "5. Heel ve dalga marjı ekle, son UKC kontrolü",
+        description:
+          "Heel etkisi ≈ (B/2) · sin θ (B = beam). Dalga trough etkisi ≈ Hs/2. Tüm eksilticilerden sonra kalan UKC, SMS minimumunu (örn. %10 draught) sağlamalı.",
+      },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "Charted depth 12.0 m. Tide 3.5 m. Draught 11.5 m, Cb = 0.80, SOG 10 kn (kanal). SMS min UKC = %10 draught. Geçit emniyetli mi?",
+        given: [
+          { label: "Charted depth", value: "12.0 m" },
+          { label: "Tide", value: "3.5 m" },
+          { label: "Draught", value: "11.5 m" },
+          { label: "Cb", value: "0.80 (bulk)" },
+          { label: "V", value: "10 kn (kanalda)" },
+          { label: "SMS min UKC", value: "%10 × 11.5 = 1.15 m" },
+        ],
+        solution: [
+          {
+            step: "Toplam derinlik = Charted + Tide",
+            expression: "12.0 + 3.5",
+            result: "15.5 m",
+          },
+          {
+            step: "Squat (Barrass kanal): Cb·V²·2 / 100",
+            expression: "0.80 × 100 × 2 / 100",
+            result: "1.60 m",
+          },
+          {
+            step: "UKC = 15.5 − 11.5 − 1.60 − 0 (heel ihmal)",
+            result: "2.40 m",
+          },
+          {
+            step: "SMS karşılaştırma",
+            expression: "2.40 m > 1.15 m",
+            result: "EMNİYETLİ ✓",
+          },
+        ],
+        answer: "Geçit emniyetli (UKC 2.4 m > min 1.15 m). Yine de hızı 8 kn'ye düşürmek squat'ı 1.02 m'ye indirir; ek güvenlik.",
+      },
+      {
+        scenario:
+          "Aynı bölge, V = 14 kn'ye çıkarılırsa?",
+        given: [
+          { label: "V", value: "14 kn" },
+        ],
+        solution: [
+          {
+            step: "Squat = 0.80 × 14² × 2 / 100",
+            expression: "0.80 × 196 × 2 / 100",
+            result: "3.14 m",
+          },
+          {
+            step: "UKC = 15.5 − 11.5 − 3.14",
+            result: "0.86 m",
+          },
+          {
+            step: "SMS karşılaştırma",
+            expression: "0.86 m < 1.15 m",
+            result: "EMNİYETSİZ ✗",
+          },
+        ],
+        answer: "Hızı düşür veya gelgit penceresini bekle. Squat hıza karesel bağımlıdır; küçük hız artışı büyük UKC kaybıdır.",
+      },
+    ],
+    commonMistakes: [
+      "Squat'ı ihmal etmek — 12+ kn hızda büyük gemilerde 1–3 m'i bulur ve karaya oturma ana sebebidir.",
+      "Charted depth'i datum dışında ölçeklendirmek (MSL'i CD ile karıştırmak).",
+      "Trim varsa ortalama draught yerine en derin uçtaki draught'u kullanmamak.",
+      "Atmosferik basınç ve rüzgârın yarattığı 'negative surge'u hesaba katmamak (tipik −0.3 m).",
+    ],
+    criticalNotes: [
+      "MSC.232(82) ECDIS safety contour'unu draught + minimum UKC'ye göre ayarla; otomatik anti-grounding alarmı çalışsın.",
+      "Kanal/dar geçişlerde 'bank effect' ve 'ship-to-ship interaction' UKC'yi etkilemez ama manevra güvenliğini ek olarak sınırlar.",
+      "Şüpheli durumlarda gelgit penceresini bekle veya pilotage talebi yap; UKC kararı kaptanın 'overriding authority' alanındadır.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // MAKİNE — Carnot Çevrimi
+  // ──────────────────────────────────────────────────────────────────────
+  "machine|Carnot Çevrimi ve Teorik Verim": {
+    deepDive:
+      "Carnot çevrimi, iki sabit sıcaklık (TH ve TC) arasında çalışan tüm ısı makinelerinin teorik üst verim sınırını veren ideal tersinir çevrimdir. Dört süreçten oluşur: (1) izotermik genişleme (TH'de ısı alımı QH), (2) adyabatik genişleme (TH→TC), (3) izotermik sıkıştırma (TC'de ısı atımı QC), (4) adyabatik sıkıştırma (TC→TH). Pratikte hiçbir gerçek makine Carnot verimine ulaşamaz; ancak bu, gerçek motorların termik verimini değerlendirmek için bir referans noktasıdır.",
+    coreFormula: {
+      text: "η_Carnot = 1 − T_C / T_H    (Mutlak sıcaklık, Kelvin)",
+      description:
+        "T_H: sıcak kaynağın mutlak sıcaklığı (K). T_C: soğuk kaynağın (kondenser/çevre) mutlak sıcaklığı (K). Hiçbir gerçek çevrim bu verimi aşamaz (2. yasa).",
+    },
+    steps: [
+      {
+        title: "1. Sıcaklıkları Kelvin'e çevir",
+        description: "T(K) = T(°C) + 273.15. Carnot formülü mutlak sıcaklık gerektirir; °C ile hesap büyük hata verir.",
+      },
+      {
+        title: "2. Carnot verimini hesapla",
+        description: "η_C = 1 − T_C/T_H. Sonuç ondalıktır; %'ye çevirmek için ×100.",
+      },
+      {
+        title: "3. Gerçek çevrimle karşılaştır",
+        description:
+          "Reel motor verimi η_real / η_C oranı 'Carnot relative efficiency' olarak adlandırılır. Tipik deniz dizel motoru için η_real ≈ %50, η_C ≈ %65 → relative ≈ %77.",
+      },
+      {
+        title: "4. İş ve ısı miktarlarını ilişkilendir",
+        description:
+          "W_net = QH − QC. η = W_net/QH. Carnot için ayrıca QH/QC = TH/TC bağıntısı tersinir özellikten gelir.",
+      },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "Bir gemi dizel motorunun silindir gaz sıcaklığı 1450°C, egzoz çıkışı 380°C. Carnot teorik verimi nedir?",
+        given: [
+          { label: "T_H", value: "1450°C = 1723.15 K" },
+          { label: "T_C", value: "380°C = 653.15 K" },
+        ],
+        solution: [
+          {
+            step: "η_C = 1 − T_C/T_H",
+            expression: "1 − 653.15 / 1723.15 = 1 − 0.3791",
+            result: "0.6209 → %62.1",
+          },
+          {
+            step: "Gerçek motor verimi tipik %48–52",
+            result: "Carnot oranı ≈ 0.50 / 0.621 ≈ %80",
+          },
+        ],
+        answer: "Carnot teorik verim ≈ %62.1. Gerçek motor (%50) bunun yaklaşık %80'i kadar performans gösteriyor.",
+      },
+      {
+        scenario:
+          "Buhar türbinli sistemde TH = 540°C (kazan), TC = 35°C (kondenser). Carnot verimi?",
+        given: [
+          { label: "T_H", value: "540°C = 813.15 K" },
+          { label: "T_C", value: "35°C = 308.15 K" },
+        ],
+        solution: [
+          {
+            step: "η_C = 1 − 308.15/813.15",
+            expression: "1 − 0.3790",
+            result: "0.6210 → %62.1",
+          },
+          {
+            step: "Gerçek Rankine çevrimi (~%38)",
+            result: "Carnot oranı ≈ 0.61",
+          },
+        ],
+        answer: "Carnot ≈ %62.1; gerçek Rankine ≈ %38 (yeniden ısıtma ve regenerasyonla yükseltilir).",
+      },
+    ],
+    commonMistakes: [
+      "Sıcaklıkları Celsius olarak formüle koymak (özellikle düşük TC'de büyük hata).",
+      "TH'yi yakıt yanma sıcaklığı sanmak; gerçek silindir tepe sıcaklığı çok daha düşüktür.",
+      "Carnot verimini gerçek hedef olarak görmek; ideal sınırdır, ulaşılamaz.",
+    ],
+    criticalNotes: [
+      "TC'yi düşürmek (örn. soğuk deniz suyuyla daha iyi kondenser) η_C'yi TH'yi yükseltmekten daha çok artırır.",
+      "Carnot verimi yalnızca ısı makinelerinin ÜST sınırıdır; mekanik kayıplar, sürtünme, yanmama dahil değildir.",
+      "2. yasa: η < 1 her zaman; TC = 0 K olmadıkça tüm ısı işe çevrilemez.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // MAKİNE — Diesel Çevrimi
+  // ──────────────────────────────────────────────────────────────────────
+  "machine|Diesel Çevrimi": {
+    deepDive:
+      "Diesel çevrimi, sabit basınçta ısı eklenen ideal hava-standart çevrimdir. Dört süreçten oluşur: (1) izentropik sıkıştırma, (2) sabit basınçta ısı ekleme (yakıt enjeksiyonu), (3) izentropik genişleme (iş zamanı), (4) sabit hacimde ısı atımı (egzoz). Modern büyük deniz dizel motorları bu ideal çevrime yakın çalışır; verim sıkıştırma oranı (r) ve cut-off oranı (rc) ile belirlenir.",
+    coreFormula: {
+      text: "η_Diesel = 1 − (1/r^(k−1)) · ((r_c^k − 1) / (k · (r_c − 1)))",
+      description:
+        "r = sıkıştırma oranı (V₁/V₂), rc = cut-off oranı (V₃/V₂, ısı eklemenin sonundaki/başındaki hacim), k = cp/cv (hava için ≈ 1.4).",
+    },
+    steps: [
+      {
+        title: "1. Sıkıştırma oranı (r) ve cut-off (rc) belirle",
+        description:
+          "r = V₁/V₂ (alt ölü nokta / üst ölü nokta hacim). rc = V₃/V₂ — yakıt enjeksiyonu başlangıcı ile bitişi arasındaki hacim oranı. r tipik 14–22, rc tipik 1.5–3.",
+      },
+      {
+        title: "2. k ve diğer sabitleri kontrol et",
+        description:
+          "Hava için k ≈ 1.4. Gerçek yanma ürünleri için k ≈ 1.35; ideal hava-standart varsayım için 1.4 kullanılır.",
+      },
+      {
+        title: "3. Verim formülünü uygula",
+        description:
+          "Aşamalı hesap kolaylığı için: A = r^(k−1), B = r_c^k − 1, C = k·(r_c − 1). η = 1 − B/(A·C).",
+      },
+      {
+        title: "4. Otto ile karşılaştır",
+        description:
+          "η_Otto = 1 − 1/r^(k−1). Aynı r için η_Diesel < η_Otto (cut-off cezası); ancak Diesel daha yüksek r kullanabildiği için pratik verim daha yüksek.",
+      },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "İdeal Diesel çevrimi: r = 18, rc = 2.2, k = 1.4. Termik verim?",
+        given: [
+          { label: "r", value: "18" },
+          { label: "rc", value: "2.2" },
+          { label: "k", value: "1.4" },
+        ],
+        solution: [
+          {
+            step: "r^(k−1) = 18^0.4",
+            result: "≈ 3.177",
+          },
+          {
+            step: "rc^k = 2.2^1.4",
+            result: "≈ 2.929",
+          },
+          {
+            step: "Pay: rc^k − 1",
+            result: "1.929",
+          },
+          {
+            step: "Payda: k·(rc − 1) = 1.4 × 1.2",
+            result: "1.68",
+          },
+          {
+            step: "η = 1 − (1.929)/(3.177 × 1.68)",
+            expression: "1 − 1.929 / 5.337 = 1 − 0.3614",
+            result: "0.6386 → %63.9",
+          },
+        ],
+        answer: "İdeal Diesel verimi ≈ %63.9. Gerçek deniz dizelinde bu %48–52'ye düşer (mekanik kayıplar, yanma süresi, ısı kaybı).",
+      },
+      {
+        scenario:
+          "İki zamanlı düşük devirli deniz dizeli: r = 14, rc = 2.0. Verim?",
+        given: [
+          { label: "r", value: "14" },
+          { label: "rc", value: "2.0" },
+        ],
+        solution: [
+          { step: "r^0.4 = 14^0.4", result: "≈ 2.871" },
+          { step: "rc^1.4 = 2^1.4", result: "≈ 2.639" },
+          { step: "η = 1 − (2.639−1) / (2.871 × 1.4 × 1)", expression: "1 − 1.639 / 4.019", result: "0.5921 → %59.2" },
+        ],
+        answer: "İdeal η ≈ %59.2.",
+      },
+    ],
+    commonMistakes: [
+      "Sıkıştırma oranı r ile basınç oranını karıştırmak (basınç oranı ≈ r^k).",
+      "Cut-off'u küçük rc = 1 sanmak (rc = 1 olursa Otto çevrimine indirgenir).",
+      "k = 1.4 yerine yanma sonrası gaz değerini (1.30–1.33) kullanıp formülün ideal sürümünü bozmak.",
+    ],
+    criticalNotes: [
+      "Rc arttıkça (uzun yanma) verim DÜŞER; kısa, ani yanma daha verimli.",
+      "Sıkıştırma oranı artarsa verim artar ama termal/mekanik stres katlanır — modern motorlar r = 18–22 dengesini tutar.",
+      "Gerçek motorda turbocharging, common-rail enjeksiyon ve atık ısı geri kazanımı η'yı %50+ değerine çıkarır.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // MAKİNE — Otto Çevrimi
+  // ──────────────────────────────────────────────────────────────────────
+  "machine|Otto Çevrimi (Benzinli Motor)": {
+    deepDive:
+      "Otto çevrimi, sabit hacimde ısı eklenen ideal hava-standart çevrimdir; kıvılcımla ateşlenen (SI) benzinli motorların modelidir. Süreçler: izentropik sıkıştırma → sabit hacim ısı ekleme (kıvılcım) → izentropik genişleme → sabit hacim ısı atımı. Termik verimi sadece sıkıştırma oranına bağlıdır; ancak benzin için vuruntu (knock) sıkıştırma oranını ~10–12 ile sınırlar.",
+    coreFormula: {
+      text: "η_Otto = 1 − 1 / r^(k−1)",
+      description: "r = sıkıştırma oranı, k = cp/cv ≈ 1.4.",
+    },
+    steps: [
+      { title: "1. r'yi belirle", description: "V₁/V₂ — silindir hacmi alt ölü nokta / üst ölü nokta." },
+      { title: "2. r^(k−1) hesapla", description: "Cep hesaplayıcısıyla doğrudan ya da log yardımıyla." },
+      { title: "3. Verim çıkar", description: "η = 1 − 1/r^(k−1). Sonucu ×100 ile %'ye çevir." },
+      { title: "4. Yakıt türü sınırını kontrol et", description: "Benzin için r > 12 vuruntu riski; LPG/CNG için 13–15 mümkün." },
+    ],
+    workedExamples: [
+      {
+        scenario: "r = 9, k = 1.4 olan ideal Otto çevriminin verimi?",
+        given: [{ label: "r", value: "9" }, { label: "k", value: "1.4" }],
+        solution: [
+          { step: "r^0.4 = 9^0.4", result: "≈ 2.408" },
+          { step: "η = 1 − 1/2.408", expression: "1 − 0.4152", result: "0.5848 → %58.5" },
+        ],
+        answer: "İdeal Otto η ≈ %58.5. Gerçek benzinli motorda %25–30 (pompa kaybı, ısı kaybı, eksik yanma).",
+      },
+      {
+        scenario: "Yüksek performans yardımcı jeneratör r = 11.",
+        given: [{ label: "r", value: "11" }],
+        solution: [
+          { step: "11^0.4", result: "≈ 2.626" },
+          { step: "η = 1 − 1/2.626", result: "≈ 0.619 → %61.9" },
+        ],
+        answer: "İdeal %61.9.",
+      },
+    ],
+    commonMistakes: [
+      "Diesel formülünü Otto yerine kullanmak (Otto'da cut-off yok).",
+      "k değerini sıcak yanma ürünleri için düşürmek (ideal hava-standart için 1.4 sabittir).",
+      "Sıkıştırma oranını yakıt antiknock indeksiyle dengelemeden artırmak.",
+    ],
+    criticalNotes: [
+      "Aynı r için η_Otto > η_Diesel; ancak Diesel daha yüksek r kullanabildiği için pratikte daha verimli.",
+      "Gerçek SI motorda volumetrik verim, ateşleme zamanlaması ve karışım oranı η'yı ideal değerin yarısına indirir.",
+      "Deniz uygulamasında benzinli motorlar yangın riski nedeniyle sınırlıdır; ana güç dizel olarak verilir.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // MAKİNE — Rankine Çevrimi
+  // ──────────────────────────────────────────────────────────────────────
+  "machine|Rankine Çevrimi (Buhar Türbini)": {
+    deepDive:
+      "Rankine çevrimi, buhar türbin sistemlerinin (LNG carrier'lar, eski steam ship'ler, atık ısı geri kazanım WHRS) temel termodinamik çevrimidir. Süreçler: (1) izentropik pompalama (sıvı), (2) sabit basınçta ısı ekleme (kazanda buhar üretimi), (3) izentropik genişleme (türbinde iş üretimi), (4) sabit basınçta ısı atımı (kondenserde yoğuşma). Verim, türbin giriş sıcaklığı/basıncı yükseldikçe ve kondenser basıncı düştükçe artar; yeniden ısıtma (reheat) ve regenerasyon (feed-water heating) eklenerek %38–42'ye çıkarılır.",
+    coreFormula: {
+      text: "η_Rankine = (W_T − W_P) / Q_H ≈ (h₃ − h₄) / (h₃ − h₂)",
+      description:
+        "h₃: türbin girişi entalpi, h₄: türbin çıkışı, h₂: kazan girişi (pompa sonrası). W_P pompa işi genellikle ihmal edilebilir mertebede küçüktür.",
+    },
+    steps: [
+      { title: "1. Türbin giriş ve çıkış basıncını belirle", description: "Kazan basıncı (örn. 60 bar) ve kondenser basıncı (örn. 0.05 bar)." },
+      { title: "2. Entalpi değerlerini buhar tablosundan oku", description: "Türbin girişi: yüksek basınç + kızgın buhar (h₃). Türbin çıkışı: kondenser basıncında, izentropik genişlemeyle bulunan x kalitesine göre h₄." },
+      { title: "3. Türbin işi ve pompa işini hesapla", description: "W_T = h₃ − h₄. W_P = v_f · (P₂ − P₁) (v_f doymuş sıvı özgül hacmi)." },
+      { title: "4. Kazan ısısı ve net iş", description: "Q_H = h₃ − h₂. W_net = W_T − W_P. η = W_net / Q_H." },
+      { title: "5. Reheat/regen iyileştirmeleri", description: "Reheat: türbin orta basıncında buharı kazana geri gönderip yeniden ısıt. Regen: türbinden alınan ekstraksiyon buharıyla besleme suyunu ısıt; η %3–5 artar." },
+    ],
+    workedExamples: [
+      {
+        scenario:
+          "Basit Rankine: kazan 60 bar / 500°C, kondenser 0.05 bar. h₃ = 3422 kJ/kg, h₄ ≈ 2107 kJ/kg (izentropik), h₂ ≈ 144 kJ/kg.",
+        given: [
+          { label: "h₃", value: "3422 kJ/kg" },
+          { label: "h₄", value: "2107 kJ/kg" },
+          { label: "h₂", value: "144 kJ/kg" },
+          { label: "W_P", value: "≈ 6 kJ/kg (ihmal)" },
+        ],
+        solution: [
+          { step: "W_T = h₃ − h₄", expression: "3422 − 2107", result: "1315 kJ/kg" },
+          { step: "Q_H = h₃ − h₂", expression: "3422 − 144", result: "3278 kJ/kg" },
+          { step: "η = W_T / Q_H", expression: "1315 / 3278", result: "0.4012 → %40.1" },
+        ],
+        answer: "Basit Rankine η ≈ %40.1.",
+      },
+      {
+        scenario: "Düşük kondenser basıncının etkisi: kondenser 0.10 bar olsa h₄ ≈ 2200, h₂ ≈ 192.",
+        given: [{ label: "Yeni h₄", value: "2200" }, { label: "Yeni h₂", value: "192" }],
+        solution: [
+          { step: "W_T", result: "3422 − 2200 = 1222 kJ/kg" },
+          { step: "Q_H", result: "3422 − 192 = 3230 kJ/kg" },
+          { step: "η", expression: "1222 / 3230", result: "0.3784 → %37.8" },
+        ],
+        answer: "Kondenser basıncını ikiye katlamak verimi %40.1 → %37.8'e düşürür.",
+      },
+    ],
+    commonMistakes: [
+      "Pompa işini büyük sanıp türbinden çıkarmak — pompa işi tipik %1–2'dir.",
+      "Türbin çıkışında izentropik varsaymadan h₄'ü doğrudan tablodan almak (gerçekte η_turbine düzeltmesi gerekir).",
+      "Kondenser sıcaklığını basınç yerine doğrudan kullanmak; doymuş tablo basınç–sıcaklık çiftiyle çalışır.",
+    ],
+    criticalNotes: [
+      "Düşük kondenser basıncı = düşük TC → η artar (Carnot mantığı); soğutma suyu sıcaklığı kritiktir.",
+      "Reheat çevrimi türbin son kademe nemlik (x) sorununu hem çözer hem verimi artırır.",
+      "WHRS (egzoz gazı kazanı + buhar türbini) deniz dizel sisteminin tepesine bindirilerek genel verim %3–8 yükseltilir.",
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────────────────
+  // MAKİNE — Brayton Çevrimi
+  // ──────────────────────────────────────────────────────────────────────
+  "machine|Brayton Çevrimi (Gaz Türbini)": {
+    deepDive:
+      "Brayton (Joule) çevrimi, gaz türbinli motorların ideal hava-standart çevrimidir. Süreçler: (1) izentropik sıkıştırma (kompresörde), (2) sabit basınçta ısı ekleme (yanma odasında), (3) izentropik genişleme (türbinde), (4) sabit basınçta ısı atımı (egzoz). Hızlı feribot, fast ferry, LNG carrier ve askeri gemilerde tercih edilir. Verim basınç oranına (rp) ve k'ya bağlıdır.",
+    coreFormula: {
+      text: "η_Brayton = 1 − 1 / rp^((k−1)/k)",
+      description: "rp = P₂/P₁ (basınç oranı, kompresör çıkış/giriş), k = 1.4 (hava-standart).",
+    },
+    steps: [
+      { title: "1. Basınç oranı rp belirle", description: "Kompresör girişi (atmosferik) ile yanma odası basıncı oranı. Marine gas turbine rp = 15–25." },
+      { title: "2. (k−1)/k üssü hesapla", description: "Hava için (1.4−1)/1.4 ≈ 0.2857." },
+      { title: "3. η = 1 − 1/rp^0.2857 uygula", description: "Verim sadece rp'ye bağlı (ideal). Pratikte rp arttıkça türbin giriş sıcaklığı (TIT) sınırı baskılar." },
+      { title: "4. Regeneratör ve intercooler iyileştirmeleri", description: "Egzoz ısısıyla yanma havasını ön ısıtmak η'yı %5–8 artırır. Multi-stage kompresyon + intercooler iş tüketimini azaltır." },
+    ],
+    workedExamples: [
+      {
+        scenario: "Gas turbine rp = 16, k = 1.4. Verim?",
+        given: [{ label: "rp", value: "16" }, { label: "k", value: "1.4" }],
+        solution: [
+          { step: "16^0.2857", result: "≈ 2.297" },
+          { step: "η = 1 − 1/2.297", result: "0.5647 → %56.5" },
+        ],
+        answer: "İdeal η ≈ %56.5. Gerçek deniz gaz türbini %35–40 (yanma kaybı, kompresör/türbin verimi).",
+      },
+      {
+        scenario: "rp = 25 (modern aero-derivative).",
+        given: [{ label: "rp", value: "25" }],
+        solution: [
+          { step: "25^0.2857", result: "≈ 2.622" },
+          { step: "η = 1 − 1/2.622", result: "0.6186 → %61.9" },
+        ],
+        answer: "İdeal %61.9; aero-derivative türbinler gerçek %42–45'e ulaşır.",
+      },
+    ],
+    commonMistakes: [
+      "Basınç oranı yerine basınç farkı kullanmak.",
+      "Üs (k−1)/k yerine doğrudan (k−1) yazmak; Brayton ve Otto formüllerini karıştırmak.",
+      "Türbin giriş sıcaklığı (TIT) sınırını ihmal edip aşırı yüksek rp seçmek.",
+    ],
+    criticalNotes: [
+      "Aynı rp için Brayton ile Otto formülleri benzer; fark sıkıştırma süreci (Brayton sürekli akış, Otto piston).",
+      "Combined cycle: Brayton egzozu + Rankine WHRS sistemi birleşik verim %55+ verir.",
+      "Yüksek rp + yüksek TIT, malzeme/soğutma teknolojisiyle dengelenir; aşırı rp turbin kanatları için risklidir.",
+    ],
+  },
 };
 
 /**
