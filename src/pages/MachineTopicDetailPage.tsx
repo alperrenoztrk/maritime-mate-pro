@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { getMachineSubTopicContent, MachineSubTopicContent } from "@/data/machineTopicDetailContent";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
+import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
+import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 
 export default function MachineTopicDetailPage() {
   const [viewerImage, setViewerImage] = useState<string | null>(null);
