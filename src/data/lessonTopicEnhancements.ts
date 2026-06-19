@@ -1407,6 +1407,18 @@ const topicAliases: Record<string, string> = {
   "navigation|Büyük daire başlangıç kursu": "navigation|Büyük daire kavramı",
   "navigation|Büyük daire mesafesi": "navigation|Büyük daire kavramı",
   "navigation|Manyetik pusula deviasyonu ve tashihi": "navigation|Pusula düzeltme",
+
+  // Faz B alias'ları
+  "navigation|Akıntı vektörleri": "navigation|Akıntılı seyir hesapları",
+  "navigation|Course to Steer (CTS) with Current": "navigation|Akıntılı seyir hesapları",
+  "navigation|Akıntının ETA ve yakıta etkisi": "navigation|Akıntılı seyir hesapları",
+  "navigation|Set ve drift değerlendirmesi": "navigation|Akıntılı seyir hesapları",
+  "navigation|Gelgitin fiziksel mantığı": "navigation|Height of tide hesapları",
+  "navigation|Spring tide – Neap tide": "navigation|Height of tide hesapları",
+  "navigation|Rota hız ve mesafe ilişkisi": "navigation|ETA",
+  "navigation|Zaman – mesafe – hız bağıntısı": "navigation|ETA",
+  "machine|Dizel Çevrimi": "machine|Diesel Çevrimi",
+  "machine|Dizel çevrimi ve sıkıştırma ile ateşleme": "machine|Diesel Çevrimi",
 };
 
 export const getLessonTopicEnhancement = (
