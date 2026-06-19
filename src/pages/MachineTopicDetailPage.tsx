@@ -14,6 +14,7 @@ export default function MachineTopicDetailPage() {
   const decodedTitle = subTopicTitle ? decodeURIComponent(subTopicTitle) : "";
   const topicConfig = topicSlug ? machineTopicBySlug[topicSlug] : null;
   const content = topicSlug ? getMachineSubTopicContent(topicSlug, decodedTitle) : null;
+  const enhancement = getLessonTopicEnhancement("machine", decodedTitle);
 
   if (!topicConfig || !content) {
     return (
