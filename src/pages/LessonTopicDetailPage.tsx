@@ -1,4 +1,4 @@
-import { AlertTriangle, CheckCircle2, Lightbulb, Sigma } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
@@ -8,13 +8,8 @@ import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
 import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
 import { buildSectionKey, type ContentCategory } from "@/services/topicContentOverrides";
 import { resolveLessonImage } from "@/utils/lessonImageFallbacks";
-import { getLessonTopicEnhancement, type LessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
+import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
