@@ -1848,3 +1848,99 @@ div[id="google_translate_element"] {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+/* ================================================================
+   GLOBAL MARITIME DESIGN LANGUAGE
+   Mounted via <GlobalMaritimeBackground /> + body.marine-global in App.tsx.
+   Neutralizes per-page light backgrounds so the fixed ocean shell shows
+   through on every route — without having to edit 100+ pages.
+   Opt out on a per-page basis by adding the `marine-keep` class.
+   ================================================================ */
+
+/* The chrome wrapper from App.tsx must not paint over the fixed bg layer. */
+body.marine-global { background: transparent !important; }
+
+/* Neutralize opaque page-shell backgrounds on top-level page containers
+   (anything with a min-h-screen / min-h-[100svh]-style class).
+   Inner cards/components keep their own backgrounds — we only target
+   the page root by combining min-h with a bg- class on the same element. */
+body.marine-global :where(.min-h-screen, [class*="min-h-[100"], [class*="min-h-[100svh]"], [class*="min-h-[100vh]"]):not(.marine-keep):not(.marine-shell) {
+  background: transparent !important;
+}
+
+/* Strip gradient-to-* and bg-{color}-{50..200} on those page roots too,
+   covering the light-tinted layouts (blue-50, amber-50, rose-50, etc.). */
+body.marine-global
+  :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep):not(.marine-shell)
+  :where(
+    [class*="bg-gradient-to"],
+    .bg-white, .bg-slate-50, .bg-slate-100,
+    .bg-gray-50, .bg-gray-100,
+    .bg-zinc-50, .bg-zinc-100,
+    .bg-neutral-50, .bg-neutral-100,
+    .bg-stone-50, .bg-stone-100,
+    .bg-blue-50, .bg-blue-100,
+    .bg-sky-50, .bg-sky-100,
+    .bg-cyan-50, .bg-cyan-100,
+    .bg-indigo-50, .bg-indigo-100,
+    .bg-amber-50, .bg-amber-100,
+    .bg-orange-50, .bg-orange-100,
+    .bg-rose-50, .bg-rose-100,
+    .bg-yellow-50, .bg-yellow-100,
+    .bg-green-50, .bg-green-100,
+    .bg-emerald-50, .bg-emerald-100,
+    .bg-teal-50, .bg-teal-100
+  ) {
+  background: transparent !important;
+}
+
+/* Same neutralization applied directly to the page root itself when it
+   carries a gradient/light bg AND a min-h class. */
+body.marine-global
+  :where(.min-h-screen, [class*="min-h-[100"]):where(
+    [class*="bg-gradient-to"],
+    .bg-white, .bg-slate-50, .bg-slate-100,
+    .bg-gray-50, .bg-gray-100,
+    .bg-blue-50, .bg-blue-100, .bg-blue-100\/30,
+    .bg-sky-50, .bg-amber-50, .bg-orange-50, .bg-rose-50,
+    .bg-yellow-50, .bg-green-50, .bg-emerald-50, .bg-teal-50,
+    .bg-cyan-50, .bg-indigo-50, .bg-neutral-50, .bg-stone-50
+  ):not(.marine-keep):not(.marine-shell) {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Readable text on the dark maritime gradient.
+   Mirrors MobileLayout's per-page overrides so legacy pages stay legible. */
+body.marine-global :where(
+    .text-slate-900,.text-slate-800,.text-slate-700,
+    .text-gray-900,.text-gray-800,.text-gray-700,
+    .text-zinc-900,.text-zinc-800,.text-zinc-700,
+    .text-neutral-900,.text-neutral-800,.text-neutral-700,
+    .text-stone-900,.text-stone-800,.text-stone-700,
+    .text-black
+  ) {
+  color: rgb(241 245 249) !important;
+}
+body.marine-global :where(
+    .text-slate-600,.text-slate-500,
+    .text-gray-600,.text-gray-500,
+    .text-zinc-600,.text-zinc-500,
+    .text-neutral-600,.text-neutral-500
+  ) {
+  color: rgb(203 213 225) !important;
+}
+body.marine-global :where(.text-slate-400,.text-gray-400,.text-zinc-400) {
+  color: rgb(148 163 184) !important;
+}
+
+/* White cards on light pages would now float as bright blocks on the deep
+   gradient — soften them into glassy maritime cards by default.
+   Pages can opt-out with `marine-keep` on the card itself. */
+body.marine-global :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep)
+  :where(.bg-white, .bg-slate-50, .bg-gray-50):not(.marine-keep) {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255,255,255,0.1) !important;
+}
