@@ -128,9 +128,16 @@ export const resolveLessonImage = (
   replaceExternal: boolean = true,
 ): string | undefined => {
   if (!src) return undefined;
+  const haystack = `${alt ?? ""} ${sectionTitle ?? ""} ${topicTitle ?? ""}`.toLowerCase();
+
+  // Phase B: konseptsel override, src kaynağı ne olursa olsun uygulanır.
+  const phaseB = phaseBOverrides.find((item) =>
+    item.keywords.some((k) => haystack.includes(k.toLowerCase())),
+  );
+  if (phaseB) return phaseB.src;
+
   if (!replaceExternal || !src.startsWith("http")) return src;
   const table = (categoryId && tablesByCategory[categoryId]) || navigationFallbacks;
-  const haystack = `${alt ?? ""} ${sectionTitle ?? ""} ${topicTitle ?? ""}`.toLowerCase();
   const match = table.find((item) =>
     item.keywords.some((k) => haystack.includes(k.toLowerCase())),
   );
