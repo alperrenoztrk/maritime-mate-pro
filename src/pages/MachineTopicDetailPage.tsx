@@ -154,6 +154,8 @@ export default function MachineTopicDetailPage() {
           </section>
         ))}
 
+        {enhancement && <LessonEnhancementBlock data={enhancement} />}
+
         {/* Key Points */}
         {content.keyPoints && content.keyPoints.length > 0 && (
           <section className="rounded-xl border border-border/40 bg-card/60 p-5">
