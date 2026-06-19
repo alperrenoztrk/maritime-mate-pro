@@ -1,48 +1,70 @@
-# Ana sayfa tasarım dilini tüm uygulamaya yayma
+## Amaç
 
-## Hedef
-Ana sayfanın görsel dilini (derin maritime gradyan + animasyonlu dalgalar + üst radial glow + cam efektli butonlar + açık tipografi) uygulamadaki **tüm** sayfalara taşımak — sayfaları tek tek elden geçirmeden.
+Personel modülünde (`crewRoleDetails` + `CrewRoleDetail` sayfası) ulaştığımız "uzun girizgâh + numaralı detay başlıkları + checkpoint listeleri + kritik uyarılar" derinliğini, **konu anlatımları** (Seyir / Meteoroloji / Haberleşme / Makine / Stabilite vb.) için de uygulamak. Özellikle **hesaplama içeren konularda** her formülü adım-adım çözülmüş **sayısal örnekle** anlatmak ve **konuyla ilgisiz görselleri doğrularıyla** değiştirmek.
 
-## Mevcut Durum
-- `MobileLayout` zaten aynı maritime shell'i sunuyor (gradyan + dalgalar) — fakat **31/138** sayfa kullanıyor.
-- **107 sayfa** kendi arka planını çiziyor (örn. `bg-gradient-to-br from-blue-50 to-blue-100`, `bg-amber-50…`, `bg-white`, açık tema kartları). Bu yüzden görsel dil birbirini tutmuyor.
-- Tek tek 107 sayfayı yeniden yazmak yerine **global bir shell + CSS örtbas (neutralize)** stratejisi kullanılacak.
+## Mevcut durum
 
-## Strateji (3 adım, ~3 dosya)
+- `TopicSection` şu an sadece `content / image / bulletPoints / formula{text, description}` taşıyor. Personeldeki "tasks (accordion) + equipment (checkpoints) + criticalNotes" zenginliği yok.
+- `LessonTopicDetailPage` markdown'ı düz akıyor; örnek/adım/uyarı kutusu yok.
+- `navigationTopicContents.ts` (12k satır), `meteorologyTopicContents.ts`, `communicationTopicContents.ts`, `machineTopicDetailContent*.ts` modüler ama içerikler ağırlıklı 2–3 cümlelik özet.
+- Seyir için `navigationImageFallbacks` haritası zaten var (yanlış/HTTP görseli yerel SVG'ye çeviriyor) — diğer kategorilerde yok.
 
-### 1. Global Maritime Shell — `src/components/GlobalMaritimeBackground.tsx` (yeni)
-- `position:fixed; inset:0; z-index:-1` katmanı.
-- Ana sayfayla **birebir aynı** öğeleri içerir:
-  - Derin gradyan: `hsl(214 84% 8%) → hsl(214 84% 15%) → hsl(200 80% 18%)`
-  - Üst radial glow: `rgba(56,189,248,0.14)`
-  - Alt animasyonlu çift dalga (22s + 16s, ters yönlü)
-- `App.tsx`'de `<BrowserRouter>` öncesinde **tek sefer** mount edilir.
+## Plan
 
-### 2. CSS Neutralize Katmanı — `src/index.css`'e eklenecek `body.marine-global` kuralları
-- 107 sayfanın yazdığı opak arka planları **şeffaflaştırır** ki global shell görünsün:
-  - `:where(.bg-white, .bg-slate-50, .bg-gray-50, .bg-blue-50, .bg-amber-50, …, [class*="bg-gradient-to"]:not(.marine-keep))` → `background: transparent !important`
-  - Sadece sayfa kökündeki `min-h-screen` taşıyan konteynerleri hedefler (iç kartlar etkilenmez): `:where(.min-h-screen, [class*="min-h-["])` kombinasyonu.
-- Açık tema metinlerini (slate-900, gray-700 vb.) maritime'a uygun açık renge çevirir — `MobileLayout`'taki `.marine-shell__content` kuralının global versiyonu.
-- Açıkça korunmak istenen sayfalar `marine-keep` sınıfı ekleyerek dışarda kalabilir (örn. modal/print sayfaları).
+### 1) Şema genişletmesi (`navigationTopicContents.ts`)
+`TopicSection`'a opsiyonel alanlar ekle (geriye dönük uyumlu, eski içerikler çalışmaya devam eder):
+- `deepDive?: string` — kavramın "neden / nasıl / pratik" uzun anlatımı (personel `intro` muadili)
+- `steps?: { title: string; description: string }[]` — formül uygulamasının adımları (accordion)
+- `workedExamples?: { scenario: string; given: { label: string; value: string }[]; solution: { step: string; expression?: string; result?: string }[]; answer: string; note?: string }[]`
+- `commonMistakes?: string[]`, `criticalNotes?: string[]`, `references?: string[]`
+- `imageAlt` zorunlu hâle gelmese de doldurma kuralı
 
-### 3. App.tsx Entegrasyonu
-- `<body>`'ye `marine-global` sınıfını ekle (tek useEffect).
-- `<GlobalMaritimeBackground />` mount et.
-- `MobileLayout` kullanan sayfalar otomatik çakışmaz — onun arka planı global'in üstüne yazar, aynı görsel olduğu için fark edilmez (veya `MobileLayout`'taki kendi `background` stilini kaldırıp global'e bırakabiliriz — daha temiz).
+### 2) Sayfa render katmanı (`LessonTopicDetailPage.tsx`)
+- `deepDive` → personeldeki "Genel Bakış" kartı stili
+- `steps` → numaralı accordion (CrewRoleDetail tasks deseni)
+- `workedExamples` → "Verilenler → Çözüm adımları → Sonuç" 3 kolonlu kart, sonuç vurgulu
+- `commonMistakes` → amber `AlertTriangle` kartı
+- `criticalNotes` → emerald `CheckCircle2` kartı
+- Eski tek `formula` alanı korunur; yeni alanlar yoksa görünüm değişmez.
 
-## Etki
-- 107 sayfa **tek satır değiştirilmeden** maritime tema kazanır.
-- Cam efektli butonlar, gradyan başlıklar gibi noktasal Index detayları **bu adımda değil** — sonraki opsiyonel pass'te eklenir (çünkü her sayfanın H1/button anatomisi farklı; doğru kapsam ayrı bir görev).
+### 3) Görsel düzeltme altyapısı (tüm kategoriler)
+Mevcut `navigationImageFallbacks` mantığını ortak util'e taşı:
+- `src/utils/lessonImageFallbacks.ts` — `{ navigation, meteorology, communication, machine, stability }` keyword→yerel asset eşlemeleri.
+- `LessonTopicDetailPage` ve `MachineTopicDetailPage` aynı resolver'ı kullansın.
+- Eksik temalarda gerekli SVG'leri `public/diagrams/<category>/` altından bağla (mevcut diagram dosyalarını kullan — yeni asset üretmeye gerek yok).
+- HTTP-dış görseller + alt/title eşleşmesi yanlışsa otomatik doğrusuyla değiştirilir.
 
-## Riskler
-- Açık tema kartlı sayfalarda (Ballast, BetaFeatures) kartların okunabilirliği test edilmeli — kartlar için `bg-white/10 backdrop-blur` türü override gerekebilir, bunu da global CSS'e ekleyeceğim.
-- Print / Auth ekranları için `marine-keep` istisnası eklenir.
+### 4) İçerik zenginleştirme — fazlı yaklaşım
+İçerik hacmi büyük (12k+ satır). Tek seferde değil, **öncelik sırasıyla** ve hesaplama yoğunluğuna göre:
 
-## Dosyalar
-- yeni: `src/components/GlobalMaritimeBackground.tsx`
-- düzenlenir: `src/App.tsx` (mount + body class)
-- düzenlenir: `src/index.css` (neutralize + text override kuralları)
-- düzenlenir: `src/components/MobileLayout.tsx` (kendi gradyanını kaldır, global'i kullansın — opsiyonel temizlik)
+**Faz A — Pilot (bu PR):** Hesaplama ağırlıklı 6 konu, tam personel kalitesinde, her birinde ≥2 adım-adım çözülmüş sayısal örnek + yaygın hatalar + kritik uyarılar:
+1. Seyir / **Düzlem seyir (plane sailing)**
+2. Seyir / **Merkator seyri**
+3. Seyir / **Büyük daire & Loksodrom**
+4. Seyir / **Pusula düzeltmeleri (CDMVT)** — mem://technical/compass-mnemonic-cdmvt kuralına uygun
+5. Meteoroloji / **Gerçek rüzgâr–görünen rüzgâr**
+6. Stabilite / **GM ve GZ hesabı**
 
-## Onaylarsanız
-Bu 4 dosyayı tek pass'te yazarım. Sonradan istediğiniz sayfaya `marine-keep` ekleyebilir veya kart stilini ince ayar yapabilirim.
+**Faz B (sonraki turlar, onay ile):** Gelgit, akıntı düzeltmesi, ETA/hız-mesafe, draft survey, FSC, trim, termodinamik çevrimler, vb.
+
+### 5) Görsel doğrulama (pilot konular için)
+Her pilot konunun mevcut görselleri kontrol edilir; `navigationImageFallbacks` haritasına eksik anahtarlar eklenir; konuyla ilgisiz olanlar yerel SVG'lere çevrilir. Yeni asset gerekirse `public/diagrams/...` altındaki mevcut çizimler bağlanır.
+
+## Dokunulacak dosyalar (Faz A)
+
+- `src/data/navigationTopicContents.ts` — `TopicSection` tipini genişlet + 4 seyir konusunun içeriklerini zenginleştir
+- `src/data/meteorologyTopicContents.ts` — gerçek rüzgâr konusu
+- `src/data/stabilityTopicsContent.ts` — GM/GZ konusu
+- `src/pages/LessonTopicDetailPage.tsx` — yeni alanları render et + ortak image resolver'ı kullan
+- `src/pages/MachineTopicDetailPage.tsx` — ortak image resolver'ı bağla
+- `src/utils/lessonImageFallbacks.ts` (yeni) — kategori bazlı keyword→asset haritası
+
+## Çıkmayacak şeyler
+
+- Yapay zekâ ile içerik üretimi (mem: yapay zekâ izi minimumda). Tüm içerik elle, doğruluk öncelikli yazılır; formüller mevcut hesaplama araçlarındaki kaynaklarla birebir eşleşir (mem: calculation-formula-synchronization).
+- Tasarım dili değişikliği yok; mevcut maritime global shell ve semantik tokenlar korunur.
+- Personel modülüne dokunulmaz.
+
+## Onayınız sonrası
+
+Faz A'yı tek seferde uygulayıp size geri dönerim; Faz B konularını siz onayladıkça aynı şablonla genişletiriz.
