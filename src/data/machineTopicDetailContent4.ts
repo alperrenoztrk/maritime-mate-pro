@@ -206,7 +206,8 @@ const content4: ContentMap = {
             "2→3 sabit basınçta ısı ekleme sırasında yanma odası basınç kayıpları oluşur. Bu kayıp, çevrim net işini doğrudan azaltır.",
             "3→4 türbinde genleşme ile güç üretilir; türbinin bir kısmı kompresörü sürmek için harcanır, kalan kısım faydalı şaft gücüdür.",
             "4→1 çevrim kapanışı ideal modelde çevreye ısı atımıdır; gerçek makinede egzoz ısısı WHRS ile geri kazanılabilir."
-          ]
+          ],
+          diagram: { src: "/diagrams/machine/brayton-cevrimi.svg", alt: "Brayton çevrimi P-v diyagramı", caption: "Şekil: Brayton çevrimi — kompresör, yanma odası, türbin" }
         },
         {
           heading: "Verim, Basınç Oranı ve Özgül İş",
