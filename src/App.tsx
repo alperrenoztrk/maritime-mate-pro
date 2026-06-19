@@ -29,6 +29,7 @@ const ShipTasksPage = lazy(() => import("./pages/ShipTasksPage"));
 const ShipTaskDetailPage = lazy(() => import("./pages/ShipTaskDetailPage"));
 const ShipOperationsPage = lazy(() => import("./pages/ShipOperationsPage"));
 const ShipOperationsDetail = lazy(() => import("./pages/ShipOperationsDetail"));
+const ShipOperationDeepDive = lazy(() => import("./pages/ShipOperationDeepDive"));
 const CalculationSectionPage = lazy(() => import("./pages/CalculationSectionPage"));
 const Navigation = lazy(() => import("./pages/Navigation"));
 const NavigationCalculationPage = lazy(() => import("./pages/NavigationCalculation"));
@@ -218,6 +219,7 @@ const AnimatedRoutes = () => {
         <Route path="/ship-tasks/:taskSlug" element={<PageTransition><ShipTaskDetailPage /></PageTransition>} />
         <Route path="/ship-operations" element={<PageTransition><ShipOperationsPage /></PageTransition>} />
         <Route path="/ship-operations/:shipType" element={<PageTransition><ShipOperationsDetail /></PageTransition>} />
+        <Route path="/ship-operations/:shipType/:dept/:opIndex" element={<PageTransition><ShipOperationDeepDive /></PageTransition>} />
         <Route path="/crew/:roleSlug" element={<PageTransition><CrewRoleDetailPage /></PageTransition>} />
         <Route path="/crew/:roleSlug/task/:taskIndex" element={<PageTransition><CrewTaskDeepDive /></PageTransition>} />
         <Route path="/bridge/:deviceId" element={<PageTransition><BridgeDeviceDetailPage /></PageTransition>} />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   Anchor,
   Wrench,
@@ -191,6 +191,13 @@ export default function ShipOperationsDetail() {
                             </ul>
                           </Section>
                         )}
+
+                        <Link
+                          to={`/ship-operations/${shipType}/${activeDept}/${idx}`}
+                          className="mt-1 inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20"
+                        >
+                          📖 Detaylı Anlatımı Aç (20-30 sayfa) →
+                        </Link>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
