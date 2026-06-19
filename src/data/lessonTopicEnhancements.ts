@@ -636,10 +636,29 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
   },
 };
 
+/**
+ * Alias eşlemesi: konu başlığı veri dosyalarında farklı yazılmış olabilir
+ * (örn. "Düzlem seyirin sınırları" → "Düzlem seyir" enhancement'ına bağlanır).
+ * Aynı enhancement bloğunun birden fazla benzer konuda görünmesini sağlar.
+ */
+const topicAliases: Record<string, string> = {
+  "navigation|Düzlem seyirin sınırları": "navigation|Düzlem seyir",
+  "navigation|Düzlem seyir varsayımı": "navigation|Düzlem seyir",
+  "navigation|Mercator projeksiyonu": "navigation|Mercator seyri",
+  "navigation|Mercator – rhumb line ilişkisi": "navigation|Mercator seyri",
+  "navigation|Büyük Daire ve Rhumb Line Seyri": "navigation|Büyük daire kavramı",
+  "navigation|Büyük daire geometrisi": "navigation|Büyük daire kavramı",
+  "navigation|Büyük daire başlangıç kursu": "navigation|Büyük daire kavramı",
+  "navigation|Büyük daire mesafesi": "navigation|Büyük daire kavramı",
+  "navigation|Manyetik pusula deviasyonu ve tashihi": "navigation|Pusula düzeltme",
+};
+
 export const getLessonTopicEnhancement = (
   categoryId: string | undefined,
   topicTitle: string | undefined,
 ): LessonTopicEnhancement | undefined => {
   if (!categoryId || !topicTitle) return undefined;
-  return lessonTopicEnhancements[`${categoryId}|${topicTitle}`];
+  const key = `${categoryId}|${topicTitle}`;
+  const resolved = topicAliases[key] ?? key;
+  return lessonTopicEnhancements[resolved];
 };
