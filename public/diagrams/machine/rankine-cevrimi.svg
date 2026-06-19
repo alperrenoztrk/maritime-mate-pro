@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <rect width="600" height="400" rx="8" fill="#f1f5f9"/>
+  <text x="300" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a" font-family="Arial">Rankine Çevrimi (T-s Diyagramı)</text>
+
+  <!-- Eksenler -->
+  <line x1="80" y1="340" x2="540" y2="340" stroke="#334155" stroke-width="2"/>
+  <line x1="80" y1="340" x2="80" y2="50" stroke="#334155" stroke-width="2"/>
+  <path d="M540 340 L530 334 L530 346 Z" fill="#334155"/>
+  <path d="M80 50 L74 60 L86 60 Z" fill="#334155"/>
+  <text x="310" y="375" text-anchor="middle" font-size="13" fill="#334155" font-family="Arial">Entropi s (kJ/kg·K)</text>
+  <text x="30" y="200" text-anchor="middle" font-size="13" fill="#334155" font-family="Arial" transform="rotate(-90 30 200)">Sıcaklık T (K)</text>
+
+  <!-- Doyma kubbesi -->
+  <path d="M170 300 Q230 80 310 80 Q400 80 470 300" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="220" y="180" font-size="10" fill="#64748b" font-family="Arial">Doymuş sıvı</text>
+  <text x="410" y="180" font-size="10" fill="#64748b" font-family="Arial">Doymuş buhar</text>
+
+  <!-- Çevrim noktaları (T-s):
+       1 doymuş sıvı (kondenser çıkışı, alçak basınç),
+       2 sıkıştırılmış sıvı (pompa çıkışı, yüksek basınç),
+       3 kızgın buhar (kazan çıkışı),
+       4 türbin çıkışı (alçak basınç, çift fazlı). -->
+  <!-- 1→2 pompa (izentropik, dikey, küçük) -->
+  <line x1="200" y1="300" x2="200" y2="270" stroke="#16a34a" stroke-width="3"/>
+  <!-- 2→3 kazan (sabit basınç, ekonomizer+buharlaştırma+kızdırma) -->
+  <path d="M200 270 Q260 270 300 130 Q340 90 420 90" fill="none" stroke="#ef4444" stroke-width="3"/>
+  <!-- 3→4 türbin (izentropik, dikey aşağı) -->
+  <line x1="420" y1="90" x2="420" y2="300" stroke="#2563eb" stroke-width="3"/>
+  <!-- 4→1 kondenser (sabit basınç, sabit T düz çizgi) -->
+  <line x1="420" y1="300" x2="200" y2="300" stroke="#f59e0b" stroke-width="3"/>
+
+  <!-- Köşe noktaları -->
+  <circle cx="200" cy="300" r="5" fill="#0f172a"/><text x="180" y="318" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">1</text>
+  <circle cx="200" cy="270" r="5" fill="#0f172a"/><text x="180" y="266" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">2</text>
+  <circle cx="420" cy="90" r="5" fill="#0f172a"/><text x="428" y="86" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">3</text>
+  <circle cx="420" cy="300" r="5" fill="#0f172a"/><text x="428" y="316" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">4</text>
+
+  <!-- Verim formülü -->
+  <rect x="120" y="335" width="360" height="28" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1"/>
+  <text x="300" y="354" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a" font-family="Arial">η_th = (w_türbin − w_pompa) / q_kazan</text>
+
+  <!-- Lejant -->
+  <circle cx="470" cy="120" r="4" fill="#16a34a"/><text x="478" y="124" font-size="9" fill="#334155" font-family="Arial">1→2 Pompa</text>
+  <circle cx="470" cy="140" r="4" fill="#ef4444"/><text x="478" y="144" font-size="9" fill="#334155" font-family="Arial">2→3 Kazan</text>
+  <circle cx="470" cy="160" r="4" fill="#2563eb"/><text x="478" y="164" font-size="9" fill="#334155" font-family="Arial">3→4 Türbin</text>
+  <circle cx="470" cy="180" r="4" fill="#f59e0b"/><text x="478" y="184" font-size="9" fill="#334155" font-family="Arial">4→1 Kondenser</text>
+</svg>
