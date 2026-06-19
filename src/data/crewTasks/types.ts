@@ -54,17 +54,26 @@ export type CrewTaskLongForm = {
 /**
  * Dinamik içerik kaydı.
  * Anahtar formatı: `${roleSlug}/${taskIndex}` (örn. "kaptan/0").
- * Her değer, ilgili `CrewTaskLongForm` modülünü döndüren bir loader.
+ *
+ * Kayıt, `crewTasks/{roleSlug}/{taskIndex}.ts` dosyalarını Vite'ın
+ * `import.meta.glob` mekanizmasıyla otomatik keşfeder. Her görev için yeni
+ * bir dosya eklemek yeterlidir; manuel kayıt gerekmez. Dosyalar dynamic
+ * import ile (lazy) yüklendiğinden ana bundle şişmez ve kod-split korunur.
  */
+const longFormModules = import.meta.glob<{ default: CrewTaskLongForm }>(
+  "./*/[0-9]*.ts",
+);
+
 export const crewTaskLongFormRegistry: Record<
   string,
   () => Promise<{ default: CrewTaskLongForm }>
-> = {
-  "kaptan/0": () => import("./kaptan/0"),
-  "birinci-zabit/0": () => import("./birinci-zabit/0"),
-  "bas-muhendis/0": () => import("./bas-muhendis/0"),
-  "reis-bosun/1": () => import("./reis-bosun/1"),
-};
+> = Object.fromEntries(
+  Object.entries(longFormModules).map(([path, loader]) => {
+    // "./kaptan/0.ts" -> "kaptan/0"
+    const key = path.replace(/^\.\//, "").replace(/\.ts$/, "");
+    return [key, loader];
+  }),
+);
 
 export function hasCrewTaskLongForm(
   roleSlug: string,
