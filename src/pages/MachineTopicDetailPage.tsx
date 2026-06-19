@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { getMachineSubTopicContent, MachineSubTopicContent } from "@/data/machineTopicDetailContent";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
+import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
+import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 
 export default function MachineTopicDetailPage() {
   const [viewerImage, setViewerImage] = useState<string | null>(null);
@@ -12,6 +14,7 @@ export default function MachineTopicDetailPage() {
   const decodedTitle = subTopicTitle ? decodeURIComponent(subTopicTitle) : "";
   const topicConfig = topicSlug ? machineTopicBySlug[topicSlug] : null;
   const content = topicSlug ? getMachineSubTopicContent(topicSlug, decodedTitle) : null;
+  const enhancement = getLessonTopicEnhancement("machine", decodedTitle);
 
   if (!topicConfig || !content) {
     return (
@@ -150,6 +153,8 @@ export default function MachineTopicDetailPage() {
             )}
           </section>
         ))}
+
+        {enhancement && <LessonEnhancementBlock data={enhancement} />}
 
         {/* Key Points */}
         {content.keyPoints && content.keyPoints.length > 0 && (
