@@ -1,4 +1,5 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { GlobalMaritimeBackground } from "@/components/GlobalMaritimeBackground";
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -356,6 +357,15 @@ const App = () => {
   // Prefer maximum smoothness on high refresh displays (e.g. 120Hz)
   useFrameRate();
 
+  // Apply the global maritime design language to every page.
+  // Adds a body-scoped class that neutralizes per-page light backgrounds
+  // (see index.css .marine-global rules) so the fixed shell shows through.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    document.body.classList.add("marine-global");
+    return () => document.body.classList.remove("marine-global");
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
@@ -366,7 +376,8 @@ const App = () => {
                 <Toaster />
                 <AskAIPopup />
                 <LanguageChangeOverlay />
-                <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+                <GlobalMaritimeBackground />
+                <div className="min-h-screen text-foreground overflow-x-hidden">
                   <BrowserRouter>
                     <RouteTranslationGate />
                     <AnimatedRoutes />

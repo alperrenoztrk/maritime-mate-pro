@@ -1,54 +1,48 @@
+# Ana sayfa tasarım dilini tüm uygulamaya yayma
+
 ## Hedef
+Ana sayfanın görsel dilini (derin maritime gradyan + animasyonlu dalgalar + üst radial glow + cam efektli butonlar + açık tipografi) uygulamadaki **tüm** sayfalara taşımak — sayfaları tek tek elden geçirmeden.
 
-Dil değiştirildikten sonra **uygulamadaki tüm sayfaların** çevrilmiş olması — kullanıcı sayfaya gidince hiçbir çeviri flicker'ı görmemeli.
+## Mevcut Durum
+- `MobileLayout` zaten aynı maritime shell'i sunuyor (gradyan + dalgalar) — fakat **31/138** sayfa kullanıyor.
+- **107 sayfa** kendi arka planını çiziyor (örn. `bg-gradient-to-br from-blue-50 to-blue-100`, `bg-amber-50…`, `bg-white`, açık tema kartları). Bu yüzden görsel dil birbirini tutmuyor.
+- Tek tek 107 sayfayı yeniden yazmak yerine **global bir shell + CSS örtbas (neutralize)** stratejisi kullanılacak.
 
-Seçilen strateji: **Agresif bulk — tüm route'ları arka planda gez, metinleri topla, hepsini önceden çevir.**
+## Strateji (3 adım, ~3 dosya)
 
-## Yaklaşım
+### 1. Global Maritime Shell — `src/components/GlobalMaritimeBackground.tsx` (yeni)
+- `position:fixed; inset:0; z-index:-1` katmanı.
+- Ana sayfayla **birebir aynı** öğeleri içerir:
+  - Derin gradyan: `hsl(214 84% 8%) → hsl(214 84% 15%) → hsl(200 80% 18%)`
+  - Üst radial glow: `rgba(56,189,248,0.14)`
+  - Alt animasyonlu çift dalga (22s + 16s, ters yönlü)
+- `App.tsx`'de `<BrowserRouter>` öncesinde **tek sefer** mount edilir.
 
-Dil değiştirildiğinde overlay açıkken, gizli bir off-screen iframe içinde uygulamanın tüm route'larını sırayla yükle, her route'da DOM'dan metinleri topla, sonra hepsini Google Translate ile toplu çevir. İşlem bitince cache'i kaydet ve dili gerçek anlamda değiştir. Sonraki ziyaretlerde her sayfa cache'den anında çevrilmiş gelir → flicker yok.
+### 2. CSS Neutralize Katmanı — `src/index.css`'e eklenecek `body.marine-global` kuralları
+- 107 sayfanın yazdığı opak arka planları **şeffaflaştırır** ki global shell görünsün:
+  - `:where(.bg-white, .bg-slate-50, .bg-gray-50, .bg-blue-50, .bg-amber-50, …, [class*="bg-gradient-to"]:not(.marine-keep))` → `background: transparent !important`
+  - Sadece sayfa kökündeki `min-h-screen` taşıyan konteynerleri hedefler (iç kartlar etkilenmez): `:where(.min-h-screen, [class*="min-h-["])` kombinasyonu.
+- Açık tema metinlerini (slate-900, gray-700 vb.) maritime'a uygun açık renge çevirir — `MobileLayout`'taki `.marine-shell__content` kuralının global versiyonu.
+- Açıkça korunmak istenen sayfalar `marine-keep` sınıfı ekleyerek dışarda kalabilir (örn. modal/print sayfaları).
 
-### Mimari
+### 3. App.tsx Entegrasyonu
+- `<body>`'ye `marine-global` sınıfını ekle (tek useEffect).
+- `<GlobalMaritimeBackground />` mount et.
+- `MobileLayout` kullanan sayfalar otomatik çakışmaz — onun arka planı global'in üstüne yazar, aynı görsel olduğu için fark edilmez (veya `MobileLayout`'taki kendi `background` stilini kaldırıp global'e bırakabiliriz — daha temiz).
 
-1. **Route manifest** (`src/utils/routeManifest.ts` — yeni):
-   - `src/App.tsx`'teki tüm static path'leri tek bir dizi olarak listele (`/`, `/calculations`, `/lessons`, vs.).
-   - Dinamik path'ler (`:param` içerenler) için bilinen örnek değerlerle somut URL'ler üret. Örnek: `/lessons/:topicKey/formulas` → `/lessons/stability/formulas`, `/lessons/cargo/formulas`, vs. (kategori/topic listeleri zaten kod tabanında mevcut — onlardan üretilir.)
-   - Sonuç: ~150-200 somut URL'lik düz bir liste.
+## Etki
+- 107 sayfa **tek satır değiştirilmeden** maritime tema kazanır.
+- Cam efektli butonlar, gradyan başlıklar gibi noktasal Index detayları **bu adımda değil** — sonraki opsiyonel pass'te eklenir (çünkü her sayfanın H1/button anatomisi farklı; doğru kapsam ayrı bir görev).
 
-2. **Harvest iframe** (`src/utils/routeHarvester.ts` — yeni):
-   - `document.body`'ye 1x1 piksel, `aria-hidden`, `pointer-events:none`, `position:fixed; top:-9999px` bir iframe ekle.
-   - URL'leri tek tek `iframe.src = origin + path` yaparak yükle.
-   - Her route için: `load` event + 800ms ek bekleme (lazy content için) → iframe.contentDocument.body üzerinde `collectTranslationUnits` çalıştır → toplanan source string'leri parent'taki seen-set'e ekle.
-   - Hata/timeout (5sn) → o route'u atla, devam et.
-   - İşlem boyunca progress yayınla (örn. `routesDone/routesTotal * 50%` ilk yarı).
-   - Hassas route'ları (`/auth/callback`) listenin dışında tut.
+## Riskler
+- Açık tema kartlı sayfalarda (Ballast, BetaFeatures) kartların okunabilirliği test edilmeli — kartlar için `bg-white/10 backdrop-blur` türü override gerekebilir, bunu da global CSS'e ekleyeceğim.
+- Print / Auth ekranları için `marine-keep` istisnası eklenir.
 
-3. **`LanguageContext.tsx` değişiklikleri**:
-   - `runBulkTranslation` başlangıcında, henüz harvest yapılmamış bir dil için `harvestAllRoutes()` çağır (progress 0-50%).
-   - Sonra mevcut bulk çeviri pass'i (Google batch) çalışsın (progress 50-100%).
-   - `bulkCompletedLanguagesRef` ve cache-only davranışını **koru** — çünkü artık seen-set tüm uygulamayı içerecek, cache miss neredeyse hiç olmayacak → flicker yok ve canlı fetch'e gerek yok.
-   - Harvest sonucunu `localStorage`'a kalıcı yaz (`mt-routes-harvested-v1` flag'i) → kullanıcı tekrar başka bir dile geçerse harvest tekrar çalışmasın, sadece bulk çeviri yapılsın. Yeni uygulama sürümünde flag sıfırlanabilsin diye basit bir version key kullan.
+## Dosyalar
+- yeni: `src/components/GlobalMaritimeBackground.tsx`
+- düzenlenir: `src/App.tsx` (mount + body class)
+- düzenlenir: `src/index.css` (neutralize + text override kuralları)
+- düzenlenir: `src/components/MobileLayout.tsx` (kendi gradyanını kaldır, global'i kullansın — opsiyonel temizlik)
 
-4. **Overlay (`LanguageChangeOverlay.tsx`)**:
-   - İki fazlı progress mesajı: "Sayfalar taranıyor… (X/Y)" → "Çeviriler hazırlanıyor… (%Z)".
-   - `LanguageContext`'e `changePhase` state ekle (`'harvest' | 'translate'`).
-
-### Riskler ve çözümler
-
-- **Iframe sandbox / aynı origin**: Aynı origin olduğu için `contentDocument`'a erişim sorunsuz.
-- **Auth / yan etki**: Iframe içindeki uygulama da auth context'i kullanacak; sorun yok. Network'e yazma yapan route var mı diye `routeManifest`'ten harvest sırasında hariç tutulacaklar (auth callback, ödeme vs.) işaretlenir.
-- **Süre**: ~150 route × ~1sn = ~2.5 dk. Kullanıcıya overlay'de açıkça gösterilecek + iptal butonu eklenebilir (opsiyonel).
-- **Bellek**: Iframe sıralı kullanılıyor (sadece 1 tane), her route arası `src` değişiyor.
-
-### Dosyalar
-
-- `src/utils/routeManifest.ts` (yeni)
-- `src/utils/routeHarvester.ts` (yeni)
-- `src/contexts/LanguageContext.tsx` (harvest entegrasyonu, faz state'i)
-- `src/components/LanguageChangeOverlay.tsx` (iki fazlı mesaj/progress)
-
-### Sonuç davranışı
-
-- İlk dil değişimi: 1-3 dakika overlay (tek seferlik harvest + tam bulk çeviri).
-- Sonraki dil değişimleri: sadece bulk çeviri (harvest atlanır, ~30sn).
-- Her sayfa açılışı: cache hit → anında çevrilmiş, sıfır flicker.
+## Onaylarsanız
+Bu 4 dosyayı tek pass'te yazarım. Sonradan istediğiniz sayfaya `marine-keep` ekleyebilir veya kart stilini ince ayar yapabilirim.

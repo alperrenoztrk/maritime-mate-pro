@@ -1,5 +1,6 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Anchor, Waves, BarChart3 } from "lucide-react";
 
 export default function StabilityPracticalPage() {
