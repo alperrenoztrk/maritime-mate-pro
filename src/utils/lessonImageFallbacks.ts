@@ -28,8 +28,27 @@ import latitudeParallels from "@/assets/navigation/latitude-parallels.jpg";
 import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
+// Phase B (Tide / UKC) specific local assets
+import ruleOfTwelfths from "@/assets/tides/rule-of-twelfths.svg";
+import tideTableExcerpt from "@/assets/tides/tide-table-excerpt.svg";
+import ukcStack from "@/assets/tides/ukc-stack.svg";
 
 type Fallback = { keywords: string[]; src: string };
+
+/**
+ * Phase B concept overrides — section/topic/alt metni bu anahtar kelimeleri
+ * içerdiğinde mevcut src ne olursa olsun (yerel veya http) doğru görsele
+ * zorla geçilir. Çünkü Faz B konularında (ETA, akıntı, gelgit, UKC) kaynak
+ * veriler tarihi olarak yanlış/ilgisiz görseller içeriyor.
+ */
+const phaseBOverrides: Fallback[] = [
+  { keywords: ["onikiler", "twelfths", "rule of twelfths"], src: ruleOfTwelfths },
+  { keywords: ["tide table", "gelgit tablo", "att", "admiralty tide"], src: tideTableExcerpt },
+  { keywords: ["ukc", "under-keel", "under keel", "squat", "barrass"], src: ukcStack },
+  { keywords: ["gelgit", "tide", "tidal", "chart datum", "lat (lowest", "spring tide", "neap tide", "yükseklik"], src: tideCurrent },
+  { keywords: ["akıntılı seyir", "set ve drift", "set & drift", "akıntı vektör", "vektör üçgen", "cts (course to steer)", "course to steer"], src: tideCurrent },
+  { keywords: ["eta diyagram", "eta hesab", "eta ve seyir", "estimated time of arrival"], src: chartPlotting },
+];
 
 const navigationFallbacks: Fallback[] = [
   { keywords: ["pusula düzelt", "compass correction", "cdmvt", "deviation", "variation"], src: "/diagrams/navigation/pusula-duzeltme.svg" },
@@ -109,9 +128,16 @@ export const resolveLessonImage = (
   replaceExternal: boolean = true,
 ): string | undefined => {
   if (!src) return undefined;
+  const haystack = `${alt ?? ""} ${sectionTitle ?? ""} ${topicTitle ?? ""}`.toLowerCase();
+
+  // Phase B: konseptsel override, src kaynağı ne olursa olsun uygulanır.
+  const phaseB = phaseBOverrides.find((item) =>
+    item.keywords.some((k) => haystack.includes(k.toLowerCase())),
+  );
+  if (phaseB) return phaseB.src;
+
   if (!replaceExternal || !src.startsWith("http")) return src;
   const table = (categoryId && tablesByCategory[categoryId]) || navigationFallbacks;
-  const haystack = `${alt ?? ""} ${sectionTitle ?? ""} ${topicTitle ?? ""}`.toLowerCase();
   const match = table.find((item) =>
     item.keywords.some((k) => haystack.includes(k.toLowerCase())),
   );
