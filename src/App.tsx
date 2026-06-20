@@ -162,6 +162,7 @@ const LessonTopicDetailPage = lazy(() => import("./pages/LessonTopicDetailPage")
 
 const ShipSystemsPage = lazy(() => import("./pages/ShipSystemsPage"));
 const ShipSystemDetailPage = lazy(() => import("./pages/ShipSystemDetailPage"));
+const ShipSystemDeepDive = lazy(() => import("./pages/ShipSystemDeepDive"));
 const StabilityTopicsPage = lazy(() => import("./pages/StabilityTopicsPage"));
 const CargoTopicsPage = lazy(() => import("./pages/CargoTopicsPage"));
 const SeamanshipTopicsPage = lazy(() => import("./pages/SeamanshipTopicsPage"));
@@ -227,6 +228,7 @@ const AnimatedRoutes = () => {
         <Route path="/passage-plan" element={<PageTransition><PassagePlanPage /></PageTransition>} />
         <Route path="/ship-systems" element={<PageTransition><ShipSystemsPage /></PageTransition>} />
         <Route path="/ship-systems/:sectionId" element={<PageTransition><ShipSystemDetailPage /></PageTransition>} />
+        <Route path="/ship-systems/:sectionId/:topicIndex" element={<PageTransition><ShipSystemDeepDive /></PageTransition>} />
         <Route path="/calculations/:categoryId/:sectionId" element={<PageTransition><CalculationSectionPage /></PageTransition>} />
         {/* Stability sub-routes */}
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />

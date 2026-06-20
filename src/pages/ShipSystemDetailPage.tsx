@@ -1,7 +1,8 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { shipSystemImages } from "@/data/shipSystemImages";
+import { hasShipSystemLongForm } from "@/data/shipSystems/longform/types";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
@@ -196,6 +197,15 @@ export default function ShipSystemDetailPage() {
                           <p key={ki} className="text-[12px] text-foreground/70">• {kp}</p>
                         ))}
                       </div>
+                    )}
+
+                    {sectionId && hasShipSystemLongForm(sectionId, idx) && (
+                      <Link
+                        to={`/ship-systems/${sectionId}/${idx}`}
+                        className="mt-1 inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20"
+                      >
+                        📖 Detaylı Anlatımı Aç (20-30 sayfa) →
+                      </Link>
                     )}
                   </div>
                 )}
