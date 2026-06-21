@@ -214,7 +214,7 @@ Bu kazalar sonucunda:
         title: "2.0. Kaldırma Kuvveti (Buoyancy Force)",
         content: `![Image](https://aceboater.com/hubfs/courses/pcoc2021/images/buoyancy-in-action.png)
 
-![Image](https://www.researchgate.net/publication/361466819/figure/fig1/AS%3A11431281279002086%401726775838949/Archimedes-principle-aShip-floating-on-water-Buoyancy-as-upward-force-exerted-by-the.png)
+![Kaldırma kuvveti ve Arşimet prensibi şeması](/diagrams/kaldirma-merkezi.svg)
 
 ![Image](https://www.engineeringtoolbox.com/docs/documents/1286/centre-gravity-buoyancy.png)
 
@@ -286,9 +286,7 @@ Ağırlık merkezinin düşey konumu arttıkça, doğrultma kolları küçülür
 
 ![Image](https://www.engineeringtoolbox.com/docs/documents/1286/centre-gravity-buoyancy.png)
 
-![Image](https://www.researchgate.net/publication/372539796/figure/fig3/AS%3A11431281176747947%401690252118375/Shifting-of-center-of-buoyancy-due-to-heel-and-the-resulting-moment-arm.png)
-
-![Image](https://www.researchgate.net/publication/372539796/figure/fig3/AS%3A11431281176747947%401690252118375/Shifting-of-center-of-buoyancy-due-to-heel-and-the-resulting-moment-arm_Q320.jpg)
+![Yatma ile kaldırma merkezinin yer değiştirmesi ve doğan moment kolu](/diagrams/dogrultma-kolu.svg)
 
 Kaldırma merkezi, kaldırma kuvvetinin gemi üzerinde etkidiği noktayı tanımlar ve gemi stabilitesinin geometrik temel taşlarından biridir. Fiziksel olarak kaldırma merkezi, geminin su altında kalan hacminin ağırlık merkezidir. Bu nokta, yer değiştiren su hacminin geometrik dağılımına bağlıdır ve geminin ağırlık merkezinden tamamen bağımsızdır.
 
@@ -310,7 +308,7 @@ Teorik olarak kaldırma merkezinin konumu, geminin su altında kalan hacminin bi
         title: "2.3. Yüzerlik Şartı (Condition of Floatation)",
         content: `![Image](https://www.cruisetraveller.com.au/wp-content/uploads/2023/02/1024px-How_a_ship_floats-diagram-Lonniefan1-Wikimedia-Commons.jpg)
 
-![Image](https://www.researchgate.net/publication/361466819/figure/fig1/AS%3A11431281279002086%401726775838949/Archimedes-principle-aShip-floating-on-water-Buoyancy-as-upward-force-exerted-by-the.png)
+![Yüzerlik dengesi: ağırlık ve kaldırma kuvveti](/diagrams/kaldirma-merkezi.svg)
 
 ![Image](https://www.hawaii-marine.com/templates/Article.pic/TRIMDIAG.jpg)
 
@@ -520,7 +518,7 @@ GM değeri, geminin küçük açılarda ne kadar stabil olduğunu gösterir:
 
 ![Image](https://plato.is/plato-is/userfiles/images/namskeid/fristundaskip/stodugleiki/stodugleiki_39.jpg)
 
-![Image](https://maritime.org/doc/dc/img/fig4-3.jpg)
+![Doğrultma kolu ve metasentrik ilişki (GZ = GM·sinθ)](/diagrams/metasentrik.svg)
 
 ![Image](https://cdn.practical-sailor.com/wp-content/uploads/2021/02/1a.-monohull-stability-righting-moment-data-with-lines-and-text.jpg.optimal.jpg)
 
