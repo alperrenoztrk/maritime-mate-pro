@@ -210,5 +210,61 @@ export const fluidMechanics: CourseTopic = {
         ];
       },
     },
+    {
+      id: "hydrostatic-pressure",
+      name: "Hidrostatik Basınç",
+      group: "Hidrostatik",
+      formula: "P = P₀ + ρ·g·h",
+      variables: [
+        { symbol: "P", label: "Toplam (mutlak) basınç", unit: "Pa" },
+        { symbol: "P₀", label: "Yüzeydeki basınç (atmosfer)", unit: "Pa" },
+        { symbol: "ρ", label: "Akışkan yoğunluğu", unit: "kg/m³" },
+        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
+        { symbol: "h", label: "Derinlik", unit: "m" },
+      ],
+      source: { code: "Hidrostatik temel denklem (Pascal)" },
+      note: "Deniz suyu ρ ≈ 1025 kg/m³, tatlı su 1000 kg/m³. P₀ atmosfer için ≈ 101325 Pa; yalnızca gösterge basıncı isteniyorsa P₀ = 0 girin.",
+      inputs: [
+        { key: "p0", label: "Yüzey Basıncı (P₀)", unit: "Pa", placeholder: "101325" },
+        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "h", label: "Derinlik (h)", unit: "m", placeholder: "10" },
+      ],
+      calculate: (v) => {
+        if (v.h < 0 || v.rho <= 0) return [{ label: "Hata", value: "Yoğunluk pozitif, derinlik ≥ 0 olmalı" }];
+        const p = v.p0 + v.rho * 9.81 * v.h;
+        return [
+          { label: "Basınç (P)", value: `${(p / 1000).toFixed(2)} kPa` },
+          { label: "Basınç", value: `${(p / 1e5).toFixed(3)} bar` },
+        ];
+      },
+    },
+    {
+      id: "hydrostatic-force",
+      name: "Hidrostatik Kuvvet (Düzlem Yüzey)",
+      group: "Hidrostatik",
+      formula: "F = ρ·g·h_c·A",
+      variables: [
+        { symbol: "F", label: "Bileşke hidrostatik kuvvet", unit: "N" },
+        { symbol: "ρ", label: "Akışkan yoğunluğu", unit: "kg/m³" },
+        { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
+        { symbol: "h_c", label: "Yüzey ağırlık merkezinin derinliği", unit: "m" },
+        { symbol: "A", label: "Islak yüzey alanı", unit: "m²" },
+      ],
+      source: { code: "Düzlem yüzeye etkiyen hidrostatik kuvvet" },
+      note: "h_c, yüzeyin geometrik merkezinin sıvı yüzeyinden derinliğidir (gösterge basıncı esas alınır). Kapak/perde/tank cidarı hesaplarında kullanılır.",
+      inputs: [
+        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "hc", label: "Merkez Derinliği (h_c)", unit: "m", placeholder: "3" },
+        { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "2" },
+      ],
+      calculate: (v) => {
+        if (v.rho <= 0 || v.hc < 0 || v.a <= 0) return [{ label: "Hata", value: "ρ ve A pozitif, h_c ≥ 0 olmalı" }];
+        const f = v.rho * 9.81 * v.hc * v.a;
+        return [
+          { label: "Hidrostatik Kuvvet (F)", value: `${(f / 1000).toFixed(2)} kN` },
+          { label: "Kuvvet", value: `${f.toFixed(0)} N` },
+        ];
+      },
+    },
   ],
 };

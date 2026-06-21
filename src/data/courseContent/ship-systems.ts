@@ -258,5 +258,35 @@ export const shipSystems: CourseTopic = {
         ];
       },
     },
+    {
+      id: "propulsive-efficiency",
+      name: "Propulsif (Pervane) Verim",
+      group: "Dümen ve Sevk",
+      formula: "η_D = η₀ · η_H · η_R",
+      variables: [
+        { symbol: "η_D", label: "Toplam propulsif (quasi-propulsive) verim" },
+        { symbol: "η₀", label: "Açık su pervane verimi" },
+        { symbol: "η_H", label: "Tekne (hull) verimi" },
+        { symbol: "η_R", label: "Bağıl dönme (relative rotative) verimi" },
+      ],
+      source: { code: "Sevk teorisi — propulsif verim bileşenleri" },
+      note: "Tipik aralıklar: η₀ ≈ 0,55–0,70 ; η_H ≈ 1,0–1,15 ; η_R ≈ 0,98–1,02. İstenirse efektif güçten (PE) sevk gücü PD = PE/η_D bulunur.",
+      inputs: [
+        { key: "eta0", label: "Açık Su Verimi (η₀)", unit: "", placeholder: "0.65" },
+        { key: "etah", label: "Tekne Verimi (η_H)", unit: "", placeholder: "1.05" },
+        { key: "etar", label: "Bağıl Dönme Verimi (η_R)", unit: "", placeholder: "1.0" },
+        { key: "pe", label: "Efektif Güç (PE) — opsiyonel", unit: "kW", placeholder: "0" },
+      ],
+      calculate: (v) => {
+        const etaD = v.eta0 * v.etah * v.etar;
+        const out = [
+          { label: "Propulsif Verim (η_D)", value: `${etaD.toFixed(3)}  (${(etaD * 100).toFixed(1)} %)` },
+        ];
+        if (v.pe > 0 && etaD > 0) {
+          out.push({ label: "Sevk Gücü (PD = PE/η_D)", value: `${(v.pe / etaD).toFixed(0)} kW` });
+        }
+        return out;
+      },
+    },
   ],
 };

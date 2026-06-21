@@ -192,5 +192,87 @@ export const cargo: CourseTopic = {
         ];
       },
     },
+    {
+      id: "cargo-deadweight",
+      name: "Taşınabilir Yük (Deadweight Balansı)",
+      group: "Yük Planlama",
+      formula: "Yük = DWT − (Yakıt + Tatlı Su + Kumanya + Constant)",
+      variables: [
+        { symbol: "DWT", label: "Yaz deadweight (DWT)", unit: "t" },
+        { symbol: "Yakıt", label: "Yakıt + yağ (bunker)", unit: "t" },
+        { symbol: "Tatlı Su", label: "Tatlı su", unit: "t" },
+        { symbol: "Kumanya", label: "Kumanya + stores", unit: "t" },
+        { symbol: "Constant", label: "Gemi sabiti (constant)", unit: "t" },
+      ],
+      source: { code: "Deadweight (DWT) balansı — yük kapasitesi" },
+      note: "Maksimum yüklenebilecek kargo, yaz DWT'sinden tüm değişmez ağırlıkların (deadweight kalemleri) düşülmesiyle bulunur.",
+      inputs: [
+        { key: "dwt", label: "Yaz DWT", unit: "t", placeholder: "25000" },
+        { key: "fuel", label: "Yakıt + Yağ", unit: "t", placeholder: "1200" },
+        { key: "fw", label: "Tatlı Su", unit: "t", placeholder: "300" },
+        { key: "stores", label: "Kumanya + Stores", unit: "t", placeholder: "100" },
+        { key: "constant", label: "Constant", unit: "t", placeholder: "250" },
+      ],
+      calculate: (v) => {
+        const cargo = v.dwt - (v.fuel + v.fw + v.stores + v.constant);
+        return [
+          { label: "Taşınabilir Yük", value: `${cargo.toFixed(0)} t` },
+          { label: "Durum", value: cargo > 0 ? "Uygun" : "Deadweight aşıldı" },
+        ];
+      },
+    },
+    {
+      id: "deck-load-intensity",
+      name: "Güverte/Tank Top Yük Yoğunluğu",
+      group: "Yük Planlama",
+      formula: "p = W / A  (≤ izin verilen güverte yükü)",
+      variables: [
+        { symbol: "p", label: "Yük yoğunluğu", unit: "t/m²" },
+        { symbol: "W", label: "Yük ağırlığı", unit: "t" },
+        { symbol: "A", label: "Taban temas alanı", unit: "m²" },
+      ],
+      source: { code: "Güverte/tank top mukavemeti — izin verilen yük yoğunluğu" },
+      note: "Hesaplanan yoğunluk, geminin izin verilen güverte/tank top yük limitini (t/m²) aşmamalıdır.",
+      inputs: [
+        { key: "w", label: "Yük Ağırlığı (W)", unit: "t", placeholder: "60" },
+        { key: "a", label: "Temas Alanı (A)", unit: "m²", placeholder: "20" },
+        { key: "limit", label: "İzin Verilen Yük", unit: "t/m²", placeholder: "5" },
+      ],
+      calculate: (v) => {
+        if (v.a <= 0) return [{ label: "Hata", value: "Alan pozitif olmalı" }];
+        const p = v.w / v.a;
+        const status = v.limit > 0 ? (p <= v.limit ? "Uygun" : "Limit aşıldı") : "—";
+        return [
+          { label: "Yük Yoğunluğu (p)", value: `${p.toFixed(2)} t/m²` },
+          { label: "Durum", value: status },
+        ];
+      },
+    },
+    {
+      id: "cargo-shift-list",
+      name: "Yük Kayması Meyil Açısı",
+      group: "Yük Planlama",
+      formula: "θ = (w × d) / (Δ × GM) × 57.3",
+      variables: [
+        { symbol: "θ", label: "Meyil açısı", unit: "°" },
+        { symbol: "w", label: "Kayan/transfer edilen yük", unit: "t" },
+        { symbol: "d", label: "Enine yer değiştirme mesafesi", unit: "m" },
+        { symbol: "Δ", label: "Deplasman", unit: "t" },
+        { symbol: "GM", label: "Düzeltilmiş GM", unit: "m" },
+      ],
+      source: { code: "Stabilite — enine ağırlık kaymasından meyil" },
+      note: "Küçük açı yaklaşımı (tan θ ≈ θ). Büyük açılarda tam çözüm gerekir.",
+      inputs: [
+        { key: "w", label: "Kayan Yük (w)", unit: "t", placeholder: "200" },
+        { key: "d", label: "Enine Mesafe (d)", unit: "m", placeholder: "8" },
+        { key: "disp", label: "Deplasman (Δ)", unit: "t", placeholder: "12000" },
+        { key: "gm", label: "GM", unit: "m", placeholder: "1.5" },
+      ],
+      calculate: (v) => {
+        if (v.disp <= 0 || v.gm <= 0) return [{ label: "Hata", value: "Δ ve GM pozitif olmalı" }];
+        const theta = ((v.w * v.d) / (v.disp * v.gm)) * 57.3;
+        return [{ label: "Meyil Açısı (θ)", value: `${theta.toFixed(2)} °` }];
+      },
+    },
   ],
 };

@@ -359,5 +359,62 @@ export const meteorology: CourseTopic = {
         ];
       },
     },
+    {
+      id: "geostrophic-wind",
+      name: "Geostrofik Rüzgâr",
+      group: "Rüzgâr",
+      formula: "Vg = (1 / (ρ·f)) · (ΔP / Δn) ,  f = 2Ω·sin φ",
+      variables: [
+        { symbol: "Vg", label: "Geostrofik rüzgâr hızı", unit: "m/s" },
+        { symbol: "ρ", label: "Hava yoğunluğu", unit: "kg/m³" },
+        { symbol: "f", label: "Coriolis parametresi", unit: "1/s" },
+        { symbol: "ΔP/Δn", label: "Yatay basınç gradyanı", unit: "Pa/m" },
+        { symbol: "φ", label: "Enlem", unit: "°" },
+      ],
+      source: { code: "Dinamik meteoroloji — geostrofik denge" },
+      note: "Ω = 7,292×10⁻⁵ rad/s. Basınç gradyanı hPa/100km girilir, hesapta Pa/m'ye çevrilir (1 hPa/100km = 10⁻³ Pa/m). Ekvatorda (φ=0) geçersizdir.",
+      inputs: [
+        { key: "rho", label: "Hava Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "1.225" },
+        { key: "grad", label: "Basınç Gradyanı", unit: "hPa/100km", placeholder: "3" },
+        { key: "lat", label: "Enlem (φ)", unit: "°", placeholder: "45" },
+      ],
+      calculate: (v) => {
+        const phi = Math.abs(v.lat);
+        if (phi < 1) return [{ label: "Hata", value: "Ekvator yakınında geostrofik denge geçersiz (φ ≥ 1°)" }];
+        if (v.rho <= 0) return [{ label: "Hata", value: "Yoğunluk pozitif olmalı" }];
+        const f = 2 * 7.292e-5 * Math.sin((phi * Math.PI) / 180);
+        const gradPaPerM = v.grad * 1e-3; // hPa/100km → Pa/m
+        const vg = gradPaPerM / (v.rho * f);
+        return [
+          { label: "Coriolis Parametresi (f)", value: `${f.toExponential(3)} 1/s` },
+          { label: "Geostrofik Rüzgâr (Vg)", value: `${vg.toFixed(1)} m/s` },
+          { label: "Geostrofik Rüzgâr", value: `${(vg * 1.94384).toFixed(1)} kn` },
+        ];
+      },
+    },
+    {
+      id: "relative-humidity",
+      name: "Bağıl Nem (Çiy Noktasından)",
+      group: "Atmosfer",
+      formula: "RH = 100 · e(Td) / e(T) ,  e(T) = 6.112·exp(17.62·T/(243.12+T))",
+      variables: [
+        { symbol: "RH", label: "Bağıl nem", unit: "%" },
+        { symbol: "T", label: "Hava sıcaklığı (kuru termometre)", unit: "°C" },
+        { symbol: "Td", label: "Çiy noktası sıcaklığı", unit: "°C" },
+        { symbol: "e", label: "Buhar basıncı", unit: "hPa" },
+      ],
+      source: { code: "Magnus-Tetens doyma buhar basıncı bağıntısı (WMO)" },
+      note: "RH, çiy noktasındaki doyma buhar basıncının hava sıcaklığındaki doyma buhar basıncına oranıdır. Td ≤ T olmalıdır.",
+      inputs: [
+        { key: "t", label: "Hava Sıcaklığı (T)", unit: "°C", placeholder: "25" },
+        { key: "td", label: "Çiy Noktası (Td)", unit: "°C", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        if (v.td > v.t) return [{ label: "Hata", value: "Çiy noktası hava sıcaklığından büyük olamaz" }];
+        const es = (t: number) => 6.112 * Math.exp((17.62 * t) / (243.12 + t));
+        const rh = (es(v.td) / es(v.t)) * 100;
+        return [{ label: "Bağıl Nem (RH)", value: `${rh.toFixed(1)} %` }];
+      },
+    },
   ],
 };

@@ -137,5 +137,89 @@ export const seamanship: CourseTopic = {
         return [{ label: "Gerekli BP", value: `${((v.disp * v.v * v.v) / v.k).toFixed(1)} t` }];
       },
     },
+    {
+      id: "tackle-mechanical-advantage",
+      name: "Palanga Mekanik Avantajı",
+      group: "Palamar ve Halat",
+      formula: "MA = n  ;  F = W / (MA × η)",
+      variables: [
+        { symbol: "MA", label: "Mekanik avantaj (taşıyan halat sayısı)" },
+        { symbol: "n", label: "Hareketli makaradaki halat sayısı" },
+        { symbol: "W", label: "Kaldırılacak yük", unit: "kN" },
+        { symbol: "η", label: "Palanga verimi (sürtünme)" },
+        { symbol: "F", label: "Gerekli çekme kuvveti", unit: "kN" },
+      ],
+      source: { code: "Palanga (tackle) mekanik avantajı" },
+      note: "İdeal MA, yükü taşıyan halat kollarının sayısına eşittir. Verim η ile sürtünme kaybı hesaba katılır (tipik makara başına ~%4 kayıp).",
+      inputs: [
+        { key: "n", label: "Taşıyan Halat Sayısı (n)", unit: "", placeholder: "4" },
+        { key: "w", label: "Yük (W)", unit: "kN", placeholder: "20" },
+        { key: "eta", label: "Verim (η)", unit: "", placeholder: "0.9" },
+      ],
+      calculate: (v) => {
+        if (v.n <= 0) return [{ label: "Hata", value: "Halat sayısı pozitif olmalı" }];
+        const eta = v.eta > 0 ? v.eta : 1;
+        const force = v.w / (v.n * eta);
+        return [
+          { label: "Mekanik Avantaj (MA)", value: `${v.n.toFixed(0)} : 1` },
+          { label: "Gerekli Çekme Kuvveti (F)", value: `${force.toFixed(2)} kN` },
+        ];
+      },
+    },
+    {
+      id: "current-force",
+      name: "Akıntı Kuvveti",
+      group: "Rüzgâr ve Akıntı",
+      formula: "F = ½ · ρ · Cd · A · V²",
+      variables: [
+        { symbol: "ρ", label: "Deniz suyu yoğunluğu", unit: "kg/m³" },
+        { symbol: "Cd", label: "Sürükleme katsayısı" },
+        { symbol: "A", label: "Su altı (ıslak) profil alanı", unit: "m²" },
+        { symbol: "V", label: "Akıntı hızı", unit: "m/s" },
+      ],
+      source: { code: "Hidrodinamik sürükleme kuvveti bağıntısı" },
+      note: "Deniz suyu ρ ≈ 1025 kg/m³. Akıntı hızı m/s girilir (1 kn ≈ 0,514 m/s). Demirleme/palamar yük analizinde rüzgâr kuvvetiyle birlikte kullanılır.",
+      inputs: [
+        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
+        { key: "cd", label: "Cd", unit: "", placeholder: "1.0" },
+        { key: "a", label: "Islak Alan (A)", unit: "m²", placeholder: "300" },
+        { key: "v", label: "Akıntı Hızı (V)", unit: "m/s", placeholder: "1.5" },
+      ],
+      calculate: (v) => {
+        if (v.rho <= 0 || v.a <= 0) return [{ label: "Hata", value: "ρ ve A pozitif olmalı" }];
+        const f = 0.5 * v.rho * v.cd * v.a * v.v * v.v;
+        return [
+          { label: "Akıntı Kuvveti (F)", value: `${(f / 1000).toFixed(1)} kN` },
+          { label: "Kuvvet", value: `${f.toFixed(0)} N` },
+        ];
+      },
+    },
+    {
+      id: "required-cable-length",
+      name: "Gerekli Zincir Boyu",
+      group: "Demirleme",
+      formula: "Zincir = Scope × Su Derinliği",
+      variables: [
+        { symbol: "Scope", label: "Hedef kaloma oranı (tipik 5–7)" },
+        { symbol: "Derinlik", label: "Su derinliği (gel-git dahil)", unit: "m" },
+        { symbol: "Zincir", label: "Gerekli zincir boyu", unit: "m" },
+      ],
+      source: { code: "Demirleme planlama — gerekli kaloma boyu" },
+      note: "Su derinliğine baş bordasının su üstü yüksekliği (freeboard) eklenerek scope ile çarpılır. 1 kilit (shackle) ≈ 27,5 m.",
+      inputs: [
+        { key: "scope", label: "Hedef Scope", unit: "", placeholder: "6" },
+        { key: "depth", label: "Su Derinliği", unit: "m", placeholder: "25" },
+        { key: "freeboard", label: "Baş Borda Yüksekliği", unit: "m", placeholder: "8" },
+      ],
+      calculate: (v) => {
+        if (v.scope <= 0) return [{ label: "Hata", value: "Scope pozitif olmalı" }];
+        const totalDepth = v.depth + (v.freeboard > 0 ? v.freeboard : 0);
+        const length = v.scope * totalDepth;
+        return [
+          { label: "Gerekli Zincir Boyu", value: `${length.toFixed(1)} m` },
+          { label: "Yaklaşık Kilit Sayısı", value: `${(length / 27.5).toFixed(1)} kilit` },
+        ];
+      },
+    },
   ],
 };

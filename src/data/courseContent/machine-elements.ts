@@ -232,5 +232,61 @@ export const machineElements: CourseTopic = {
         ];
       },
     },
+    {
+      id: "youngs-modulus",
+      name: "Hooke Yasası / Elastisite Modülü",
+      group: "Mukavemet ve Gerilme",
+      formula: "σ = E·ε    →    E = σ / ε ,  ε = ΔL / L₀",
+      variables: [
+        { symbol: "σ", label: "Gerilme", unit: "MPa" },
+        { symbol: "E", label: "Elastisite (Young) modülü", unit: "MPa" },
+        { symbol: "ε", label: "Birim şekil değişimi (uzama)" },
+        { symbol: "ΔL", label: "Boy uzaması", unit: "mm" },
+        { symbol: "L₀", label: "İlk boy", unit: "mm" },
+      ],
+      source: { code: "Mukavemet — Hooke yasası (elastik bölge)" },
+      note: "Elastik bölgede geçerlidir. Çelik için E ≈ 210000 MPa. Birim şekil değişimi ε = ΔL/L₀ boyutsuzdur.",
+      inputs: [
+        { key: "sigma", label: "Gerilme (σ)", unit: "MPa", placeholder: "150" },
+        { key: "dl", label: "Boy Uzaması (ΔL)", unit: "mm", placeholder: "1.5" },
+        { key: "l0", label: "İlk Boy (L₀)", unit: "mm", placeholder: "2000" },
+      ],
+      calculate: (v) => {
+        if (v.l0 <= 0) return [{ label: "Hata", value: "İlk boy pozitif olmalı" }];
+        const eps = v.dl / v.l0;
+        if (eps === 0) return [{ label: "Hata", value: "Uzama sıfır olamaz" }];
+        const e = v.sigma / eps;
+        return [
+          { label: "Birim Şekil Değişimi (ε)", value: `${eps.toExponential(3)}` },
+          { label: "Elastisite Modülü (E)", value: `${(e / 1000).toFixed(0)} GPa` },
+        ];
+      },
+    },
+    {
+      id: "lewis-gear-stress",
+      name: "Lewis Dişli Eğilme Gerilmesi",
+      group: "Mil ve Yatak",
+      formula: "σ = Ft / (b·m·Y)",
+      variables: [
+        { symbol: "σ", label: "Diş dibi eğilme gerilmesi", unit: "MPa" },
+        { symbol: "Ft", label: "Teğetsel (çevresel) kuvvet", unit: "N" },
+        { symbol: "b", label: "Diş genişliği", unit: "mm" },
+        { symbol: "m", label: "Modül", unit: "mm" },
+        { symbol: "Y", label: "Lewis form faktörü" },
+      ],
+      source: { code: "Dişli mukavemeti — Lewis eğilme denklemi" },
+      note: "Y, diş sayısına bağlı form faktörüdür (tipik 0,3–0,45). Ft = 2T/d ile bulunabilir.",
+      inputs: [
+        { key: "ft", label: "Teğetsel Kuvvet (Ft)", unit: "N", placeholder: "3000" },
+        { key: "b", label: "Diş Genişliği (b)", unit: "mm", placeholder: "40" },
+        { key: "m", label: "Modül (m)", unit: "mm", placeholder: "4" },
+        { key: "y", label: "Lewis Faktörü (Y)", unit: "", placeholder: "0.38" },
+      ],
+      calculate: (v) => {
+        if (v.b <= 0 || v.m <= 0 || v.y <= 0) return [{ label: "Hata", value: "b, m, Y pozitif olmalı" }];
+        const sigma = v.ft / (v.b * v.m * v.y);
+        return [{ label: "Eğilme Gerilmesi (σ)", value: `${sigma.toFixed(1)} MPa` }];
+      },
+    },
   ],
 };

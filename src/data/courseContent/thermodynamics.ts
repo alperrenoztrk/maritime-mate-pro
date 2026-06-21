@@ -323,5 +323,265 @@ export const thermodynamics: CourseTopic = {
         return [{ label: "Gerekli Alan (A)", value: `${area.toFixed(2)} m²` }];
       },
     },
+    {
+      id: "absolute-pressure",
+      name: "Mutlak Basınç",
+      group: "Temel Kavramlar",
+      formula: "P_abs = P_gauge + P_atm",
+      variables: [
+        { symbol: "P_abs", label: "Mutlak basınç", unit: "bar" },
+        { symbol: "P_gauge", label: "Gösterge (manometre) basıncı", unit: "bar" },
+        { symbol: "P_atm", label: "Atmosfer basıncı", unit: "bar" },
+      ],
+      source: { code: "Mutlak/gösterge basınç tanımı" },
+      note: "Deniz seviyesinde P_atm ≈ 1,013 bar. Vakum durumunda gösterge basıncı negatif girilir.",
+      inputs: [
+        { key: "pg", label: "Gösterge Basıncı (P_gauge)", unit: "bar", placeholder: "6" },
+        { key: "patm", label: "Atmosfer Basıncı (P_atm)", unit: "bar", placeholder: "1.013" },
+      ],
+      calculate: (v) => {
+        const pabs = v.pg + v.patm;
+        return [
+          { label: "Mutlak Basınç (P_abs)", value: `${pabs.toFixed(3)} bar` },
+          { label: "Mutlak Basınç", value: `${(pabs * 100).toFixed(1)} kPa` },
+        ];
+      },
+    },
+    {
+      id: "specific-volume",
+      name: "Özgül Hacim",
+      group: "Temel Kavramlar",
+      formula: "v = V / m = 1 / ρ",
+      variables: [
+        { symbol: "v", label: "Özgül hacim", unit: "m³/kg" },
+        { symbol: "V", label: "Hacim", unit: "m³" },
+        { symbol: "m", label: "Kütle", unit: "kg" },
+        { symbol: "ρ", label: "Yoğunluk", unit: "kg/m³" },
+      ],
+      source: { code: "Özgül hacim tanımı (yoğunluğun tersi)" },
+      note: "Yoğunluk biliniyorsa v = 1/ρ; kütle ve hacim biliniyorsa v = V/m. Yoğunluk girilirse hacim/kütle alanları boş bırakılabilir.",
+      inputs: [
+        { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1.2" },
+        { key: "vol", label: "Hacim (V) — opsiyonel", unit: "m³", placeholder: "0" },
+        { key: "m", label: "Kütle (m) — opsiyonel", unit: "kg", placeholder: "0" },
+      ],
+      calculate: (v) => {
+        if (v.vol > 0 && v.m > 0) {
+          return [{ label: "Özgül Hacim (v)", value: `${(v.vol / v.m).toFixed(5)} m³/kg` }];
+        }
+        if (v.rho > 0) {
+          return [{ label: "Özgül Hacim (v)", value: `${(1 / v.rho).toFixed(5)} m³/kg` }];
+        }
+        return [{ label: "Hata", value: "Yoğunluk veya hacim+kütle pozitif girilmeli" }];
+      },
+    },
+    {
+      id: "internal-energy",
+      name: "İç Enerji Değişimi",
+      group: "Termodinamik Yasaları",
+      formula: "ΔU = m · cv · ΔT",
+      variables: [
+        { symbol: "m", label: "Kütle", unit: "kg" },
+        { symbol: "cv", label: "Sabit hacimde özgül ısı", unit: "kJ/kg·K" },
+        { symbol: "ΔT", label: "Sıcaklık farkı", unit: "K" },
+      ],
+      source: { code: "İdeal gaz iç enerji değişimi" },
+      note: "Hava için cv ≈ 0,718 kJ/kg·K. ΔT = T₂ − T₁.",
+      inputs: [
+        { key: "m", label: "Kütle (m)", unit: "kg", placeholder: "2" },
+        { key: "cv", label: "Özgül Isı (cv)", unit: "kJ/kg·K", placeholder: "0.718" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "K", placeholder: "150" },
+      ],
+      calculate: (v) => {
+        const du = v.m * v.cv * v.dt;
+        return [{ label: "İç Enerji Değişimi (ΔU)", value: `${du.toFixed(2)} kJ` }];
+      },
+    },
+    {
+      id: "enthalpy-change",
+      name: "Entalpi Değişimi",
+      group: "Termodinamik Yasaları",
+      formula: "ΔH = m · cp · ΔT",
+      variables: [
+        { symbol: "m", label: "Kütle", unit: "kg" },
+        { symbol: "cp", label: "Sabit basınçta özgül ısı", unit: "kJ/kg·K" },
+        { symbol: "ΔT", label: "Sıcaklık farkı", unit: "K" },
+      ],
+      source: { code: "İdeal gaz entalpi değişimi" },
+      note: "Hava için cp ≈ 1,005 kJ/kg·K. ΔT = T₂ − T₁.",
+      inputs: [
+        { key: "m", label: "Kütle (m)", unit: "kg", placeholder: "2" },
+        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "1.005" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "K", placeholder: "150" },
+      ],
+      calculate: (v) => {
+        const dh = v.m * v.cp * v.dt;
+        return [{ label: "Entalpi Değişimi (ΔH)", value: `${dh.toFixed(2)} kJ` }];
+      },
+    },
+    {
+      id: "gas-constant-relation",
+      name: "Özgül Isılar İlişkisi (Mayer)",
+      group: "Termodinamik Yasaları",
+      formula: "cp − cv = R    ;    γ = cp / cv",
+      variables: [
+        { symbol: "cp", label: "Sabit basınçta özgül ısı", unit: "kJ/kg·K" },
+        { symbol: "cv", label: "Sabit hacimde özgül ısı", unit: "kJ/kg·K" },
+        { symbol: "R", label: "Özgül gaz sabiti", unit: "kJ/kg·K" },
+        { symbol: "γ", label: "Özgül ısı oranı (adyabatik üs)" },
+      ],
+      source: { code: "Mayer bağıntısı (ideal gaz)" },
+      note: "Hava için cp ≈ 1,005 ; cv ≈ 0,718 ; R ≈ 0,287 kJ/kg·K ; γ ≈ 1,4.",
+      inputs: [
+        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "1.005" },
+        { key: "cv", label: "Özgül Isı (cv)", unit: "kJ/kg·K", placeholder: "0.718" },
+      ],
+      calculate: (v) => {
+        if (v.cv <= 0) return [{ label: "Hata", value: "cv pozitif olmalı" }];
+        const r = v.cp - v.cv;
+        const gamma = v.cp / v.cv;
+        return [
+          { label: "Gaz Sabiti (R)", value: `${r.toFixed(4)} kJ/kg·K` },
+          { label: "Özgül Isı Oranı (γ)", value: `${gamma.toFixed(3)}` },
+        ];
+      },
+    },
+    {
+      id: "exergy",
+      name: "Ekserji (Kullanılabilir Enerji)",
+      group: "Termodinamik Yasaları",
+      formula: "Ex = (H − H₀) − T₀ · (S − S₀)",
+      variables: [
+        { symbol: "Ex", label: "Akış ekserjisi", unit: "kJ" },
+        { symbol: "H − H₀", label: "Entalpi farkı (ölü hale göre)", unit: "kJ" },
+        { symbol: "T₀", label: "Çevre (ölü hal) sıcaklığı", unit: "K" },
+        { symbol: "S − S₀", label: "Entropi farkı (ölü hale göre)", unit: "kJ/K" },
+      ],
+      source: { code: "Termodinamiğin İkinci Yasası (ekserji analizi)" },
+      note: "T₀ çevre sıcaklığıdır; °C girilir, hesapta K'ye çevrilir. Ölü hal = çevre ile dengedeki durum.",
+      inputs: [
+        { key: "dh", label: "Entalpi Farkı (H − H₀)", unit: "kJ", placeholder: "500" },
+        { key: "t0", label: "Çevre Sıcaklığı (T₀)", unit: "°C", placeholder: "25" },
+        { key: "ds", label: "Entropi Farkı (S − S₀)", unit: "kJ/K", placeholder: "0.8" },
+      ],
+      calculate: (v) => {
+        const t0K = v.t0 + 273.15;
+        const ex = v.dh - t0K * v.ds;
+        return [{ label: "Ekserji (Ex)", value: `${ex.toFixed(2)} kJ` }];
+      },
+    },
+    {
+      id: "isothermal-work",
+      name: "İzotermal İş (İdeal Gaz)",
+      group: "Çevrimler",
+      formula: "W = m · R · T · ln(V₂ / V₁)",
+      variables: [
+        { symbol: "W", label: "Yapılan iş", unit: "kJ" },
+        { symbol: "m", label: "Kütle", unit: "kg" },
+        { symbol: "R", label: "Özgül gaz sabiti", unit: "kJ/kg·K" },
+        { symbol: "T", label: "Mutlak sıcaklık (sabit)", unit: "K" },
+        { symbol: "V₂/V₁", label: "Hacim oranı" },
+      ],
+      source: { code: "İzotermal hal değişimi işi (ideal gaz)" },
+      note: "Sıcaklık sabittir; °C girilir, hesapta K'ye çevrilir. Hava için R ≈ 0,287 kJ/kg·K. Genleşmede (V₂>V₁) iş pozitiftir.",
+      inputs: [
+        { key: "m", label: "Kütle (m)", unit: "kg", placeholder: "1" },
+        { key: "r", label: "Gaz Sabiti (R)", unit: "kJ/kg·K", placeholder: "0.287" },
+        { key: "t", label: "Sıcaklık (T)", unit: "°C", placeholder: "300" },
+        { key: "v1", label: "Başlangıç Hacmi (V₁)", unit: "m³", placeholder: "0.1" },
+        { key: "v2", label: "Son Hacim (V₂)", unit: "m³", placeholder: "0.3" },
+      ],
+      calculate: (v) => {
+        if (v.v1 <= 0 || v.v2 <= 0) return [{ label: "Hata", value: "Hacimler pozitif olmalı" }];
+        const tK = v.t + 273.15;
+        const w = v.m * v.r * tK * Math.log(v.v2 / v.v1);
+        return [{ label: "İzotermal İş (W)", value: `${w.toFixed(2)} kJ` }];
+      },
+    },
+    {
+      id: "cylindrical-conduction",
+      name: "Silindirik İletim (Boru/Duvar)",
+      group: "Isı Transferi",
+      formula: "Q̇ = 2π·k·L·(T₁ − T₂) / ln(r₂ / r₁)",
+      variables: [
+        { symbol: "k", label: "Isıl iletkenlik", unit: "W/m·K" },
+        { symbol: "L", label: "Silindir (boru) uzunluğu", unit: "m" },
+        { symbol: "T₁ − T₂", label: "İç-dış sıcaklık farkı", unit: "K" },
+        { symbol: "r₁, r₂", label: "İç ve dış yarıçap", unit: "m" },
+      ],
+      source: { code: "Silindirik koordinatlarda Fourier ısı iletimi" },
+      note: "İzole borularda/silindir cidarlarda radyal ısı kaybı. r₂ > r₁ olmalıdır.",
+      inputs: [
+        { key: "k", label: "Isıl İletkenlik (k)", unit: "W/m·K", placeholder: "0.04" },
+        { key: "l", label: "Uzunluk (L)", unit: "m", placeholder: "10" },
+        { key: "dt", label: "Sıcaklık Farkı (T₁−T₂)", unit: "°C", placeholder: "120" },
+        { key: "r1", label: "İç Yarıçap (r₁)", unit: "m", placeholder: "0.05" },
+        { key: "r2", label: "Dış Yarıçap (r₂)", unit: "m", placeholder: "0.08" },
+      ],
+      calculate: (v) => {
+        if (v.r1 <= 0 || v.r2 <= v.r1) return [{ label: "Hata", value: "r₂ > r₁ > 0 olmalı" }];
+        const q = (2 * Math.PI * v.k * v.l * v.dt) / Math.log(v.r2 / v.r1);
+        return [
+          { label: "Isı Akısı (Q̇)", value: `${q.toFixed(1)} W` },
+          { label: "Isı Akısı", value: `${(q / 1000).toFixed(3)} kW` },
+        ];
+      },
+    },
+    {
+      id: "overall-heat-transfer",
+      name: "Toplam Isı Transfer Katsayısı (U)",
+      group: "Isı Transferi",
+      formula: "1/U = 1/h₁ + L/k + 1/h₂",
+      variables: [
+        { symbol: "U", label: "Toplam ısı geçiş katsayısı", unit: "W/m²·K" },
+        { symbol: "h₁, h₂", label: "İç-dış taşınım katsayıları", unit: "W/m²·K" },
+        { symbol: "L", label: "Duvar kalınlığı", unit: "m" },
+        { symbol: "k", label: "Duvar ısıl iletkenliği", unit: "W/m·K" },
+      ],
+      source: { code: "Seri ısıl dirençler (düzlem duvar)" },
+      note: "Toplam ısıl direncin tersi. Eşanjör/cidar analizinde Q̇ = U·A·ΔT ile birlikte kullanılır.",
+      inputs: [
+        { key: "h1", label: "İç Taşınım Katsayısı (h₁)", unit: "W/m²·K", placeholder: "500" },
+        { key: "l", label: "Duvar Kalınlığı (L)", unit: "m", placeholder: "0.01" },
+        { key: "k", label: "Duvar İletkenliği (k)", unit: "W/m·K", placeholder: "50" },
+        { key: "h2", label: "Dış Taşınım Katsayısı (h₂)", unit: "W/m²·K", placeholder: "2000" },
+      ],
+      calculate: (v) => {
+        if (v.h1 <= 0 || v.h2 <= 0 || v.k <= 0) return [{ label: "Hata", value: "h₁, h₂, k pozitif olmalı" }];
+        const rTotal = 1 / v.h1 + v.l / v.k + 1 / v.h2;
+        const u = 1 / rTotal;
+        return [{ label: "Toplam Katsayı (U)", value: `${u.toFixed(2)} W/m²·K` }];
+      },
+    },
+    {
+      id: "hx-effectiveness",
+      name: "Eşanjör Etkinliği (ε-NTU)",
+      group: "Isı Transferi",
+      formula: "ε = Q / Q_max = Q / [C_min · (T_h,in − T_c,in)]",
+      variables: [
+        { symbol: "ε", label: "Eşanjör etkinliği (0-1)" },
+        { symbol: "Q", label: "Gerçek ısı transferi", unit: "kW" },
+        { symbol: "C_min", label: "Küçük ısı kapasite debisi (ṁ·cp)", unit: "kW/K" },
+        { symbol: "T_h,in − T_c,in", label: "Giriş sıcaklık farkı", unit: "K" },
+      ],
+      source: { code: "Isı eşanjörü etkinlik-NTU yöntemi" },
+      note: "Q_max = C_min·(T_sıcak,giriş − T_soğuk,giriş). Etkinlik 0-1 aralığındadır.",
+      inputs: [
+        { key: "q", label: "Gerçek Isı Transferi (Q)", unit: "kW", placeholder: "300" },
+        { key: "cmin", label: "C_min (ṁ·cp)", unit: "kW/K", placeholder: "12" },
+        { key: "thi", label: "Sıcak Akışkan Giriş", unit: "°C", placeholder: "90" },
+        { key: "tci", label: "Soğuk Akışkan Giriş", unit: "°C", placeholder: "20" },
+      ],
+      calculate: (v) => {
+        const dt = v.thi - v.tci;
+        if (v.cmin <= 0 || dt <= 0) return [{ label: "Hata", value: "C_min ve giriş farkı pozitif olmalı" }];
+        const qmax = v.cmin * dt;
+        const eps = v.q / qmax;
+        return [
+          { label: "Q_max", value: `${qmax.toFixed(1)} kW` },
+          { label: "Etkinlik (ε)", value: `${eps.toFixed(3)}  (${(eps * 100).toFixed(1)} %)` },
+        ];
+      },
+    },
   ],
 };
