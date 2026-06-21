@@ -20,7 +20,7 @@ export default function CalculationSectionPage() {
           <CardContent className="space-y-4 text-sm text-muted-foreground">
             <p>İstediğiniz kategori veya bölüm mevcut değil.</p>
             <Button asChild>
-              <Link to="/calculations">Hesaplama Merkezine Dön</Link>
+              <Link to="/calculations">Hesaplamalara Dön</Link>
             </Button>
           </CardContent>
         </Card>
