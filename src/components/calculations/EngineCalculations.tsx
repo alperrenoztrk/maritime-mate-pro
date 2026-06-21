@@ -470,7 +470,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings className="h-5 w-5" />
-            Gelişmiş Makine Hesaplamaları
+            Makine Hesaplamaları
           </CardTitle>
           <CardDescription>
             MARPOL Annex VI uyumlu emisyon, verimlilik, ısı değiştiricisi ve tank hesaplamaları
@@ -843,7 +843,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
           <div className="mt-6">
             <Button onClick={calculate} className="w-full">
               <Calculator className="mr-2 h-4 w-4" />
-              Gelişmiş Hesaplama Yap
+              Hesapla
             </Button>
           </div>
         </CardContent>

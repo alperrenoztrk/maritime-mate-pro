@@ -72,7 +72,6 @@ const STATIC_ROUTES: string[] = [
   '/stability/assistant',
   '/stability/rules',
   '/stability/gz-imo',
-  '/stability/advanced',
   '/stability/grain',
   '/stability/gm',
   '/stability/weight-shift',
