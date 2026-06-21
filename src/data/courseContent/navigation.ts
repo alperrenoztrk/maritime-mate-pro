@@ -538,5 +538,183 @@ export const navigation: CourseTopic = {
         return [{ label: "Amplitude (A)", value: `${a.toFixed(2)} ° (E/W'den)` }];
       },
     },
+    // ---- Konu anlatımından eklenen hesaplayıcılar ----
+    {
+      id: "arc-time",
+      name: "Boylam ↔ Zaman Dönüşümü",
+      group: "Enlem-Boylam ve Mesafe",
+      formula: "λ(°) = ZF × 15 ;  Boylam(°) × 4 = ZF(dk)",
+      variables: [
+        { symbol: "λ", label: "Boylam (yay)", unit: "°" },
+        { symbol: "ZF", label: "Zaman farkı", unit: "sa" },
+      ],
+      source: { code: "Göksel seyir — yay/zaman dönüşümü", detail: "360° = 24 sa, 1° = 4 dk" },
+      note: "Boylam derecesi gir → eşdeğer zaman farkı (Greenwich'e göre) hesaplanır.",
+      inputs: [{ key: "lon", label: "Boylam (λ)", unit: "°", placeholder: "45" }],
+      calculate: (v) => {
+        const totalMin = Math.abs(v.lon) * 4;
+        const h = Math.floor(totalMin / 60);
+        const m = totalMin - h * 60;
+        return [
+          { label: "Zaman Farkı (ondalık)", value: `${(totalMin / 60).toFixed(3)} sa` },
+          { label: "Zaman Farkı (sa:dk)", value: `${h} sa ${m.toFixed(1)} dk` },
+        ];
+      },
+    },
+    {
+      id: "dip",
+      name: "Ufuk Çukurlaşması (Dip)",
+      group: "Göksel Seyir",
+      formula: "Dip = 1.76 × √h  (h metre, Dip dakika)",
+      variables: [{ symbol: "h", label: "Göz yüksekliği", unit: "m" }],
+      source: { code: "Nautical Almanac — dip of the horizon" },
+      note: "Sekstant irtifa düzeltmesinde gözlemcinin göz yüksekliğinden kaynaklanan çukurlaşma.",
+      inputs: [{ key: "h", label: "Göz Yüksekliği (h)", unit: "m", placeholder: "12" }],
+      calculate: (v) => {
+        if (v.h < 0) return [{ label: "Hata", value: "Yükseklik negatif olamaz" }];
+        const dip = 1.76 * Math.sqrt(v.h);
+        return [{ label: "Dip", value: `${dip.toFixed(1)} ′ (dakika)` }];
+      },
+    },
+    {
+      id: "sextant-correction",
+      name: "Sekstant İrtifa Düzeltmesi (Ho)",
+      group: "Göksel Seyir",
+      formula: "Ho = Hs ± IE − Dip ± R ± SD ± P",
+      variables: [
+        { symbol: "Hs", label: "Sekstant irtifası", unit: "°" },
+        { symbol: "IE", label: "Endeks hatası (E: −, W: +)", unit: "′" },
+        { symbol: "Dip", label: "Ufuk çukurlaşması", unit: "′" },
+        { symbol: "R", label: "Toplam düzeltme (refraksiyon + SD + P)", unit: "′" },
+      ],
+      source: { code: "Nautical Almanac — sight reduction (apparent → observed altitude)" },
+      note: "IE ve toplam düzeltme dakika (′) girilir. Endeks hatası işaretiyle, dip her zaman çıkarılır, ana düzeltme R işaretiyle eklenir.",
+      inputs: [
+        { key: "hs", label: "Sekstant İrtifası (Hs)", unit: "°", placeholder: "45.5" },
+        { key: "ie", label: "Endeks Hatası (IE)", unit: "′", placeholder: "-1.5" },
+        { key: "dip", label: "Dip", unit: "′", placeholder: "6.1" },
+        { key: "r", label: "Ana Düzeltme (R)", unit: "′", placeholder: "14.5" },
+      ],
+      calculate: (v) => {
+        const hoMin = v.hs * 60 + v.ie - v.dip + v.r;
+        const ho = hoMin / 60;
+        return [{ label: "Gözlenen İrtifa (Ho)", value: `${ho.toFixed(3)} °` }];
+      },
+    },
+    {
+      id: "intercept",
+      name: "Yükseklik Farkı (Intercept)",
+      group: "Göksel Seyir",
+      formula: "a = Ho − Hc",
+      variables: [
+        { symbol: "Ho", label: "Gözlenen yükseklik", unit: "°" },
+        { symbol: "Hc", label: "Hesaplanan yükseklik", unit: "°" },
+      ],
+      source: { code: "Marcq St-Hilaire — intercept yöntemi" },
+      note: "Pozitif (Toward) → cisme doğru, negatif (Away) → cisimden uzağa. 1′ = 1 NM.",
+      inputs: [
+        { key: "ho", label: "Gözlenen Yükseklik (Ho)", unit: "°", placeholder: "45.30" },
+        { key: "hc", label: "Hesaplanan Yükseklik (Hc)", unit: "°", placeholder: "45.10" },
+      ],
+      calculate: (v) => {
+        const aMin = (v.ho - v.hc) * 60;
+        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        return [
+          { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM` },
+          { label: "Yön", value: yon },
+        ];
+      },
+    },
+    {
+      id: "meridian-passage-lat",
+      name: "Öğle Boyu Enlemi (Meridian Passage)",
+      group: "Göksel Seyir",
+      formula: "Z = 90° − Ho ;  φ = Z ± δ",
+      variables: [
+        { symbol: "Ho", label: "Meridyen geçişi gözlenen yükseklik", unit: "°" },
+        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+      ],
+      source: { code: "Göksel seyir — meridyen geçişi enlem hesabı" },
+      note: "Zenit mesafesi (Z) ve deklinasyon aynı adda ise toplanır, zıt adda ise çıkarılır. Güney değerler (−) girilerek otomatik hesaplanır.",
+      inputs: [
+        { key: "ho", label: "Gözlenen Yükseklik (Ho)", unit: "°", placeholder: "68.5" },
+        { key: "dec", label: "Deklinasyon (δ, S: −)", unit: "°", placeholder: "20" },
+        { key: "bearing", label: "Cisim Yönü (1=Güney/Zenit güneyde, −1=Kuzey)", unit: "", placeholder: "1" },
+      ],
+      calculate: (v) => {
+        const z = 90 - v.ho;
+        // Zenit güneyde ise (cisim meridyeni güneyde) enlem = δ + Z, kuzeyde ise δ − Z
+        const sign = v.bearing >= 0 ? 1 : -1;
+        const lat = v.dec + sign * z;
+        const hemis = lat >= 0 ? "N" : "S";
+        return [
+          { label: "Zenit Mesafesi (Z)", value: `${z.toFixed(2)} °` },
+          { label: "Enlem (φ)", value: `${Math.abs(lat).toFixed(2)} ° ${hemis}` },
+        ];
+      },
+    },
+    {
+      id: "gc-vertex-lat",
+      name: "Büyük Daire Tepe Enlemi (Vertex)",
+      group: "Enlem-Boylam ve Mesafe",
+      formula: "sin φv = |sin C₁| × cos φ₁",
+      variables: [
+        { symbol: "C₁", label: "Başlangıç (ilk) kurs", unit: "°" },
+        { symbol: "φ₁", label: "Başlangıç enlemi", unit: "°" },
+      ],
+      source: { code: "Büyük daire seyri — vertex (tepe noktası)" },
+      note: "Vertex, büyük dairenin ulaştığı en yüksek enlemdir (kursun 090°/270° olduğu nokta).",
+      inputs: [
+        { key: "c1", label: "İlk Kurs (C₁)", unit: "°", placeholder: "60" },
+        { key: "lat1", label: "Başlangıç Enlemi (φ₁)", unit: "°", placeholder: "35" },
+      ],
+      calculate: (v) => {
+        const rad = (x: number) => (x * Math.PI) / 180;
+        const sinPv = Math.abs(Math.sin(rad(v.c1))) * Math.cos(rad(v.lat1));
+        const pv = (Math.asin(Math.min(1, sinPv)) * 180) / Math.PI;
+        return [{ label: "Tepe Enlemi (φv)", value: `${pv.toFixed(2)} °` }];
+      },
+    },
+    {
+      id: "distance-vertical-angle",
+      name: "Düşey Açıyla Mesafe (Distance Off)",
+      group: "Radar ve Manevra",
+      formula: "Mesafe (NM) ≈ 1.856 × Yükseklik(m) / Düşey Açı(′)",
+      variables: [
+        { symbol: "H", label: "Nesnenin (fener vb.) yüksekliği", unit: "m" },
+        { symbol: "α", label: "Sekstantla ölçülen düşey açı", unit: "′" },
+      ],
+      source: { code: "Admiralty — distance by vertical sextant angle" },
+      note: "Yüksekliği bilinen nesnenin (deniz feneri, tepe) düşey açısından mesafe; nesne ufuk içindeyse geçerlidir.",
+      inputs: [
+        { key: "h", label: "Yükseklik (H)", unit: "m", placeholder: "80" },
+        { key: "angle", label: "Düşey Açı (α)", unit: "′", placeholder: "12" },
+      ],
+      calculate: (v) => {
+        if (v.angle <= 0) return [{ label: "Hata", value: "Düşey açı pozitif olmalı" }];
+        const dist = (1.856 * v.h) / v.angle;
+        return [{ label: "Mesafe", value: `${dist.toFixed(2)} NM` }];
+      },
+    },
+    {
+      id: "echo-sounder-depth",
+      name: "İskandil (Echo Sounder) Derinliği",
+      group: "Seyir Emniyeti",
+      formula: "Derinlik = (Ses Hızı × Geçen Süre) / 2",
+      variables: [
+        { symbol: "c", label: "Suda ses hızı (≈1500 m/s)", unit: "m/s" },
+        { symbol: "t", label: "Sinyalin gidiş-dönüş süresi", unit: "s" },
+      ],
+      source: { code: "Elektronik seyir — echo sounder (yankı iskandil)" },
+      inputs: [
+        { key: "c", label: "Ses Hızı (c)", unit: "m/s", placeholder: "1500" },
+        { key: "t", label: "Gidiş-Dönüş Süresi (t)", unit: "s", placeholder: "0.04" },
+      ],
+      calculate: (v) => {
+        if (v.t < 0) return [{ label: "Hata", value: "Süre negatif olamaz" }];
+        const depth = (v.c * v.t) / 2;
+        return [{ label: "Derinlik", value: `${depth.toFixed(1)} m` }];
+      },
+    },
   ],
 };
