@@ -27,6 +27,15 @@ export const thermodynamics: CourseTopic = {
         { symbol: "W", label: "Sistemin yaptığı iş", unit: "kJ" },
       ],
       source: { code: "Termodinamiğin Birinci Yasası (enerjinin korunumu)" },
+      note: "İç enerji değişimi ve yapılan iş girilir; sisteme verilen ısı Q = ΔU + W hesaplanır.",
+      inputs: [
+        { key: "du", label: "İç Enerji Değişimi (ΔU)", unit: "kJ", placeholder: "300" },
+        { key: "w", label: "Yapılan İş (W)", unit: "kJ", placeholder: "120" },
+      ],
+      calculate: (v) => {
+        const q = v.du + v.w;
+        return [{ label: "Sisteme Verilen Isı (Q)", value: `${q.toFixed(2)} kJ` }];
+      },
     },
     {
       id: "carnot-efficiency",
@@ -86,6 +95,22 @@ export const thermodynamics: CourseTopic = {
         { symbol: "T", label: "Mutlak sıcaklık", unit: "K" },
       ],
       source: { code: "İdeal gaz hal denklemi" },
+      note: "Sıcaklık °C girilir, hesapta K'ye çevrilir (R = 8,314 J/mol·K). Basınç P = n·R·T / V hesaplanır.",
+      inputs: [
+        { key: "n", label: "Mol Sayısı (n)", unit: "mol", placeholder: "100" },
+        { key: "vol", label: "Hacim (V)", unit: "m³", placeholder: "2" },
+        { key: "t", label: "Sıcaklık (T)", unit: "°C", placeholder: "25" },
+      ],
+      calculate: (v) => {
+        if (v.vol <= 0) return [{ label: "Hata", value: "Hacim pozitif olmalı" }];
+        const tK = v.t + 273.15;
+        if (tK <= 0) return [{ label: "Hata", value: "Sıcaklık mutlak sıfırın üstünde olmalı" }];
+        const pPa = (v.n * 8.314 * tK) / v.vol;
+        return [
+          { label: "Basınç (P)", value: `${(pPa / 1000).toFixed(2)} kPa` },
+          { label: "Basınç", value: `${(pPa / 1e5).toFixed(3)} bar` },
+        ];
+      },
     },
     {
       id: "sensible-heat",
@@ -215,6 +240,15 @@ export const thermodynamics: CourseTopic = {
         { symbol: "ΔT", label: "Sıcaklık farkı", unit: "K" },
       ],
       source: { code: "Newton soğuma yasası" },
+      inputs: [
+        { key: "h", label: "Taşınım Katsayısı (h)", unit: "W/m²·K", placeholder: "150" },
+        { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "3" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "°C", placeholder: "40" },
+      ],
+      calculate: (v) => {
+        const q = v.h * v.a * v.dt;
+        return [{ label: "Isı Akısı (Q̇)", value: `${(q / 1000).toFixed(2)} kW` }];
+      },
     },
     {
       id: "stefan-boltzmann",
@@ -228,6 +262,18 @@ export const thermodynamics: CourseTopic = {
         { symbol: "T", label: "Mutlak sıcaklık", unit: "K" },
       ],
       source: { code: "Stefan-Boltzmann ışınım yasası" },
+      note: "σ = 5,67×10⁻⁸ W/m²·K⁴. Sıcaklık °C girilir, hesapta K'ye çevrilir.",
+      inputs: [
+        { key: "eps", label: "Yayma Katsayısı (ε)", unit: "", placeholder: "0.85" },
+        { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "2" },
+        { key: "t", label: "Yüzey Sıcaklığı (T)", unit: "°C", placeholder: "400" },
+      ],
+      calculate: (v) => {
+        const tK = v.t + 273.15;
+        if (tK <= 0) return [{ label: "Hata", value: "Sıcaklık mutlak sıfırın üstünde olmalı" }];
+        const q = v.eps * 5.67e-8 * v.a * Math.pow(tK, 4);
+        return [{ label: "Işınım Gücü (Q̇)", value: `${(q / 1000).toFixed(2)} kW` }];
+      },
     },
     {
       id: "lmtd",

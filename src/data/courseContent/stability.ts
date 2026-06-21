@@ -426,6 +426,20 @@ export const stability: CourseTopic = {
         { symbol: "yᵢ", label: "Ordinat değerleri (örn. GZ)" },
       ],
       source: { code: "Sayısal integrasyon (GZ eğrisi altı alan)" },
+      note: "Simpson 1. kuralı, 5 eşit aralıklı ordinat (y₀…y₄) ile: A = (h/3)·(y₀ + 4y₁ + 2y₂ + 4y₃ + y₄).",
+      inputs: [
+        { key: "h", label: "Aralık (h)", unit: "", placeholder: "0.2" },
+        { key: "y0", label: "Ordinat y₀", unit: "", placeholder: "0" },
+        { key: "y1", label: "Ordinat y₁", unit: "", placeholder: "0.15" },
+        { key: "y2", label: "Ordinat y₂", unit: "", placeholder: "0.28" },
+        { key: "y3", label: "Ordinat y₃", unit: "", placeholder: "0.33" },
+        { key: "y4", label: "Ordinat y₄", unit: "", placeholder: "0.30" },
+      ],
+      calculate: (v) => {
+        if (v.h <= 0) return [{ label: "Hata", value: "Aralık (h) pozitif olmalı" }];
+        const area = (v.h / 3) * (v.y0 + 4 * v.y1 + 2 * v.y2 + 4 * v.y3 + v.y4);
+        return [{ label: "Alan (A)", value: area.toFixed(4) }];
+      },
     },
   ],
 };

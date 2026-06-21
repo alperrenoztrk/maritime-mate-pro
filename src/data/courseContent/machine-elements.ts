@@ -26,6 +26,16 @@ export const machineElements: CourseTopic = {
         { symbol: "A", label: "Kesit alanı", unit: "m²" },
       ],
       source: { code: "Mukavemet — normal (çekme/basma) gerilmesi tanımı" },
+      note: "Kuvvet kN, alan mm² girilir; sonuç MPa (N/mm²) olarak verilir.",
+      inputs: [
+        { key: "f", label: "Kuvvet (F)", unit: "kN", placeholder: "150" },
+        { key: "a", label: "Kesit Alanı (A)", unit: "mm²", placeholder: "1200" },
+      ],
+      calculate: (v) => {
+        if (v.a <= 0) return [{ label: "Hata", value: "Alan pozitif olmalı" }];
+        const sigma = (v.f * 1000) / v.a;
+        return [{ label: "Gerilme (σ)", value: `${sigma.toFixed(1)} MPa` }];
+      },
     },
     {
       id: "shear-stress",
@@ -37,6 +47,16 @@ export const machineElements: CourseTopic = {
         { symbol: "A", label: "Kayma alanı", unit: "m²" },
       ],
       source: { code: "Mukavemet — kayma gerilmesi tanımı" },
+      note: "Kuvvet kN, alan mm² girilir; sonuç MPa (N/mm²) olarak verilir.",
+      inputs: [
+        { key: "f", label: "Kayma Kuvveti (F)", unit: "kN", placeholder: "80" },
+        { key: "a", label: "Kayma Alanı (A)", unit: "mm²", placeholder: "1000" },
+      ],
+      calculate: (v) => {
+        if (v.a <= 0) return [{ label: "Hata", value: "Alan pozitif olmalı" }];
+        const tau = (v.f * 1000) / v.a;
+        return [{ label: "Kayma Gerilmesi (τ)", value: `${tau.toFixed(1)} MPa` }];
+      },
     },
     {
       id: "bending-stress",
@@ -49,6 +69,17 @@ export const machineElements: CourseTopic = {
         { symbol: "I", label: "Atalet momenti", unit: "m⁴" },
       ],
       source: { code: "Mukavemet — eğilme (flexure) formülü" },
+      note: "Moment N·m, y mm, atalet momenti mm⁴ girilir; sonuç MPa olarak verilir.",
+      inputs: [
+        { key: "m", label: "Eğilme Momenti (M)", unit: "N·m", placeholder: "5000" },
+        { key: "y", label: "Nötr Eksenden Uzaklık (y)", unit: "mm", placeholder: "50" },
+        { key: "i", label: "Atalet Momenti (I)", unit: "mm⁴", placeholder: "2000000" },
+      ],
+      calculate: (v) => {
+        if (v.i <= 0) return [{ label: "Hata", value: "Atalet momenti pozitif olmalı" }];
+        const sigma = (v.m * 1000 * v.y) / v.i;
+        return [{ label: "Eğilme Gerilmesi (σ)", value: `${sigma.toFixed(1)} MPa` }];
+      },
     },
     {
       id: "torsional-stress",
@@ -61,6 +92,17 @@ export const machineElements: CourseTopic = {
         { symbol: "J", label: "Polar atalet momenti", unit: "m⁴" },
       ],
       source: { code: "Mukavemet — burulma (torsiyon) formülü" },
+      note: "Tork N·m, yarıçap mm, polar atalet momenti mm⁴ girilir; sonuç MPa olarak verilir.",
+      inputs: [
+        { key: "t", label: "Tork (T)", unit: "N·m", placeholder: "8000" },
+        { key: "r", label: "Yarıçap (r)", unit: "mm", placeholder: "40" },
+        { key: "j", label: "Polar Atalet Momenti (J)", unit: "mm⁴", placeholder: "4000000" },
+      ],
+      calculate: (v) => {
+        if (v.j <= 0) return [{ label: "Hata", value: "Polar atalet momenti pozitif olmalı" }];
+        const tau = (v.t * 1000 * v.r) / v.j;
+        return [{ label: "Burulma Gerilmesi (τ)", value: `${tau.toFixed(1)} MPa` }];
+      },
     },
     {
       id: "shaft-diameter-torsion",
@@ -93,6 +135,16 @@ export const machineElements: CourseTopic = {
         { symbol: "g", label: "Yerçekimi", unit: "m/s²" },
       ],
       source: { code: "Rotor dinamiği — kritik devir (Dunkerley/Rayleigh yaklaşımı)" },
+      note: "Statik sehim mm girilir, hesapta m'ye çevrilir (g = 9,81 m/s²). Sonuç rpm olarak verilir.",
+      inputs: [
+        { key: "delta", label: "Statik Sehim (δst)", unit: "mm", placeholder: "0.5" },
+      ],
+      calculate: (v) => {
+        const deltaM = v.delta / 1000;
+        if (deltaM <= 0) return [{ label: "Hata", value: "Sehim pozitif olmalı" }];
+        const ncr = (60 / (2 * Math.PI)) * Math.sqrt(9.81 / deltaM);
+        return [{ label: "Kritik Devir (ncr)", value: `${ncr.toFixed(0)} rpm` }];
+      },
     },
     {
       id: "bearing-life-l10",

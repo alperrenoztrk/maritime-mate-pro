@@ -63,16 +63,37 @@ export const environmentMachine: CourseTopic = {
     },
     {
       id: "nox-emission",
-      name: "NOx Emisyonu",
+      name: "NOx Emisyonu (Tier Sınırları)",
       group: "Emisyon Hesapları",
-      formula: "E_NOx = f(T_yanma, λ, t_yanma)",
+      formula: "Tier II: 44·n⁻⁰·²³  (130 ≤ n < 2000 rpm)",
       variables: [
-        { symbol: "T_yanma", label: "Yanma sıcaklığı", unit: "K" },
-        { symbol: "λ", label: "Hava fazlalık katsayısı" },
-        { symbol: "t_yanma", label: "Yanma süresi", unit: "s" },
+        { symbol: "n", label: "Motor anma devri", unit: "rpm" },
+        { symbol: "Tier I", label: "n<130:17,0 · 130–2000:45·n⁻⁰·² · n≥2000:9,8", unit: "g/kWh" },
+        { symbol: "Tier II", label: "n<130:14,4 · 130–2000:44·n⁻⁰·²³ · n≥2000:7,7", unit: "g/kWh" },
+        { symbol: "Tier III", label: "n<130:3,4 · 130–2000:9·n⁻⁰·² · n≥2000:2,0 (ECA)", unit: "g/kWh" },
       ],
       source: { code: "MARPOL Annex VI Reg.13 (NOx Tier I/II/III sınırları)" },
-      note: "NOx oluşumu yanma sıcaklığı, hava fazlalığı ve yanma süresiyle orantılıdır; kapalı analitik bağıntı yoktur (NOx Technical Code test çevrimi ile ölçülür).",
+      note: "NOx oluşumu kapalı analitik bağıntıyla hesaplanmaz; uygunluk NOx Technical Code test çevrimi ile ölçülen ağırlıklı NOx değerinin devre bağlı Tier sınırıyla karşılaştırılmasıyla belirlenir.",
+      inputs: [
+        { key: "n", label: "Motor Anma Devri (n)", unit: "rpm", placeholder: "500" },
+        { key: "measured", label: "Ölçülen NOx (opsiyonel)", unit: "g/kWh", placeholder: "10" },
+      ],
+      calculate: (v) => {
+        const limit = (a: number, b: number, c: number) =>
+          v.n < 130 ? a : v.n < 2000 ? b * Math.pow(v.n, -0.23) : c;
+        const t1 = v.n < 130 ? 17.0 : v.n < 2000 ? 45 * Math.pow(v.n, -0.2) : 9.8;
+        const t2 = limit(14.4, 44, 7.7);
+        const t3 = v.n < 130 ? 3.4 : v.n < 2000 ? 9 * Math.pow(v.n, -0.2) : 2.0;
+        const out = [
+          { label: "Tier I Sınırı", value: `${t1.toFixed(2)} g/kWh` },
+          { label: "Tier II Sınırı", value: `${t2.toFixed(2)} g/kWh` },
+          { label: "Tier III Sınırı (ECA)", value: `${t3.toFixed(2)} g/kWh` },
+        ];
+        if (v.measured > 0) {
+          out.push({ label: "Tier II Uygunluğu", value: v.measured <= t2 ? "UYGUN" : "AŞIM" });
+        }
+        return out;
+      },
     },
     {
       id: "ows-capacity",
@@ -107,7 +128,24 @@ export const environmentMachine: CourseTopic = {
         { symbol: "BOD₅", label: "5 günlük biyokimyasal oksijen ihtiyacı (çıkış)", unit: "mg/L" },
       ],
       source: { code: "MARPOL Annex IV (onaylı arıtma tesisi çıkış kalitesi)" },
-      note: "Onaylı sewage arıtma tesisi çıkışı için tipik kalite kriteri; deşarj limitleri MEPC.227(64) ile belirlenir.",
+      note: "MEPC.227(64) çıkış kriterleri: BOD₅ ≤ 25 mg/L, TSS ≤ 35 mg/L, termotolerant koliform ≤ 100/100 mL. Ölçülen değerler girilir, uygunluk değerlendirilir.",
+      inputs: [
+        { key: "bod", label: "BOD₅ (çıkış)", unit: "mg/L", placeholder: "20" },
+        { key: "tss", label: "Askıda Katı Madde (TSS)", unit: "mg/L", placeholder: "30" },
+        { key: "coli", label: "Termotolerant Koliform", unit: "/100 mL", placeholder: "80" },
+      ],
+      calculate: (v) => {
+        const bodOk = v.bod <= 25;
+        const tssOk = v.tss <= 35;
+        const coliOk = v.coli <= 100;
+        const ok = bodOk && tssOk && coliOk;
+        return [
+          { label: "BOD₅", value: `${v.bod} mg/L → ${bodOk ? "Uygun" : "AŞIM"}` },
+          { label: "TSS", value: `${v.tss} mg/L → ${tssOk ? "Uygun" : "AŞIM"}` },
+          { label: "Koliform", value: `${v.coli}/100mL → ${coliOk ? "Uygun" : "AŞIM"}` },
+          { label: "Genel", value: ok ? "DEŞARJA UYGUN" : "DEŞARJA UYGUN DEĞİL" },
+        ];
+      },
     },
     {
       id: "ballast-treatment-capacity",

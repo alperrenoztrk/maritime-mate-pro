@@ -27,6 +27,23 @@ export const engineRoomSafety: CourseTopic = {
         { symbol: "Isı", label: "Tutuşma enerjisi" },
       ],
       source: { code: "Yangın üçgeni — yanma prensibi", detail: "Bir elemanın kaldırılması yangını söndürür" },
+      note: "Üç elemanın varlığı 1 (var) / 0 (yok) olarak girilir; oksijen ortam yüzdesi alınır. Üçü birden mevcutsa yangın riski oluşur.",
+      inputs: [
+        { key: "fuel", label: "Yanıcı Madde (1=var, 0=yok)", unit: "", placeholder: "1" },
+        { key: "o2", label: "Oksijen Oranı", unit: "%", placeholder: "20.9" },
+        { key: "heat", label: "Tutuşma Kaynağı (1=var, 0=yok)", unit: "", placeholder: "1" },
+      ],
+      calculate: (v) => {
+        const fuelOk = v.fuel >= 1;
+        const oxyOk = v.o2 >= 15; // ~%15 altında çoğu yanma sürmez
+        const heatOk = v.heat >= 1;
+        const risk = fuelOk && oxyOk && heatOk;
+        const present = [fuelOk && "Yakıt", oxyOk && "Oksijen", heatOk && "Isı"].filter(Boolean).join(" + ") || "—";
+        return [
+          { label: "Mevcut Elemanlar", value: present },
+          { label: "Yangın Riski", value: risk ? "VAR (üçgen tamam)" : "Yok (eleman eksik)" },
+        ];
+      },
     },
     {
       id: "co2-quantity",
@@ -65,6 +82,19 @@ export const engineRoomSafety: CourseTopic = {
         { symbol: "applicationrate", label: "Uygulama debisi", unit: "L/m²·dk" },
       ],
       source: { code: "Sabit köpük söndürme sistemi tasarımı (SOLAS / FSS Code)" },
+      note: "Köpük solüsyonu hacmi = alan × süre × uygulama debisi (L olarak verilir; ÷1000 = m³).",
+      inputs: [
+        { key: "a", label: "Korunan Alan (A)", unit: "m²", placeholder: "300" },
+        { key: "t", label: "Uygulama Süresi (t)", unit: "dk", placeholder: "5" },
+        { key: "rate", label: "Uygulama Debisi", unit: "L/m²·dk", placeholder: "6.5" },
+      ],
+      calculate: (v) => {
+        const vol = v.a * v.t * v.rate;
+        return [
+          { label: "Köpük Solüsyonu", value: `${vol.toFixed(0)} L` },
+          { label: "Köpük Solüsyonu", value: `${(vol / 1000).toFixed(2)} m³` },
+        ];
+      },
     },
     {
       id: "engine-room-ventilation",
@@ -102,6 +132,22 @@ export const engineRoomSafety: CourseTopic = {
         { symbol: "UEL", label: "Üst patlama sınırı (yakıt buharı ~%6)", unit: "% hacim" },
       ],
       source: { code: "Patlama sınırları (LEL/UEL) — yanıcı buhar konsantrasyonu" },
+      note: "Ölçülen buhar konsantrasyonu LEL ile UEL arasında ise patlayıcı (tehlikeli) karışım vardır.",
+      inputs: [
+        { key: "conc", label: "Ölçülen Konsantrasyon", unit: "% hacim", placeholder: "3" },
+        { key: "lel", label: "Alt Patlama Sınırı (LEL)", unit: "% hacim", placeholder: "1" },
+        { key: "uel", label: "Üst Patlama Sınırı (UEL)", unit: "% hacim", placeholder: "6" },
+      ],
+      calculate: (v) => {
+        let status: string;
+        if (v.conc < v.lel) status = "Fakir (LEL altı) — tutuşmaz";
+        else if (v.conc > v.uel) status = "Zengin (UEL üstü) — tutuşmaz";
+        else status = "PATLAYICI ARALIK — TEHLİKELİ";
+        return [
+          { label: "Konsantrasyon", value: `${v.conc} % hacim` },
+          { label: "Değerlendirme", value: status },
+        ];
+      },
     },
     {
       id: "flash-point",
@@ -112,6 +158,18 @@ export const engineRoomSafety: CourseTopic = {
         { symbol: "Tflash", label: "Parlama noktası", unit: "°C" },
       ],
       source: { code: "Yakıt parlama noktası gerekliliği (SOLAS II-2/Reg.4)", detail: "HFO: ~65°C, MGO: ~60°C (minimum gereksinim)" },
+      note: "Yakıt parlama noktası ≥ 60°C olmalıdır (acil jeneratör gibi istisnalar ≥ 43°C). Ölçülen değerin sınıra marjı hesaplanır.",
+      inputs: [
+        { key: "tflash", label: "Ölçülen Parlama Noktası", unit: "°C", placeholder: "65" },
+        { key: "limit", label: "Gereken Minimum", unit: "°C", placeholder: "60" },
+      ],
+      calculate: (v) => {
+        const margin = v.tflash - v.limit;
+        return [
+          { label: "Sınıra Marj", value: `${margin.toFixed(1)} °C` },
+          { label: "Uygunluk", value: margin >= 0 ? "UYGUN" : "UYGUNSUZ (sınır altı)" },
+        ];
+      },
     },
     {
       id: "enclosed-space-oxygen",

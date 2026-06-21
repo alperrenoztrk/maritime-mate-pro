@@ -84,6 +84,20 @@ export const shipSystems: CourseTopic = {
         { symbol: "ρ", label: "Yağ yoğunluğu", unit: "kg/m³" },
       ],
       source: { code: "Yağlama sistemi — yağ tüketim debisi bağıntısı" },
+      note: "BHP × SLOC = g/saat; yoğunluğa bölünerek hacimsel debi (L/saat, m³/saat) bulunur.",
+      inputs: [
+        { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "15000" },
+        { key: "sloc", label: "Özgül Yağ Tüketimi (SLOC)", unit: "g/kW·h", placeholder: "0.8" },
+        { key: "rho", label: "Yağ Yoğunluğu (ρ)", unit: "kg/m³", placeholder: "900" },
+      ],
+      calculate: (v) => {
+        if (v.rho <= 0) return [{ label: "Hata", value: "Yoğunluk pozitif olmalı" }];
+        const m3h = (v.bhp * v.sloc) / (v.rho * 1000);
+        return [
+          { label: "Yağ Debisi", value: `${(m3h * 1000).toFixed(1)} L/saat` },
+          { label: "Yağ Debisi", value: `${m3h.toFixed(3)} m³/saat` },
+        ];
+      },
     },
     {
       id: "oil-film-thickness",
@@ -127,6 +141,16 @@ export const shipSystems: CourseTopic = {
         { symbol: "ΔT", label: "Sıcaklık farkı", unit: "K" },
       ],
       source: { code: "Soğutma sistemi — duyulur ısı atım balansı" },
+      note: "Kütle debisi kg/s girilir; atılan ısı Q̇ = ṁ·cp·ΔT (kW) hesaplanır.",
+      inputs: [
+        { key: "mdot", label: "Kütle Debisi (ṁ)", unit: "kg/s", placeholder: "30" },
+        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "4.18" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "K", placeholder: "8" },
+      ],
+      calculate: (v) => {
+        const q = v.mdot * v.cp * v.dt;
+        return [{ label: "Atılan Isı (Q̇)", value: `${q.toFixed(1)} kW` }];
+      },
     },
     {
       id: "cooling-water-flow",
@@ -139,6 +163,21 @@ export const shipSystems: CourseTopic = {
         { symbol: "ΔT", label: "Sıcaklık farkı (HT 5–8°C, LT 10–15°C)", unit: "K" },
       ],
       source: { code: "Soğutma sistemi — soğutma suyu debisi (ısı balansından)" },
+      note: "Isı yükü kW girilir; gerekli debi ṁ = Q̇/(cp·ΔT) (kg/s). Su için ≈ m³/saat = kg/s × 3,6.",
+      inputs: [
+        { key: "q", label: "Atılan Isı (Q̇)", unit: "kW", placeholder: "1000" },
+        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "4.18" },
+        { key: "dt", label: "Sıcaklık Farkı (ΔT)", unit: "K", placeholder: "8" },
+      ],
+      calculate: (v) => {
+        const denom = v.cp * v.dt;
+        if (denom <= 0) return [{ label: "Hata", value: "cp ve ΔT pozitif olmalı" }];
+        const mdot = v.q / denom;
+        return [
+          { label: "Kütle Debisi (ṁ)", value: `${mdot.toFixed(2)} kg/s` },
+          { label: "Hacimsel Debi (su)", value: `${(mdot * 3.6).toFixed(1)} m³/saat` },
+        ];
+      },
     },
     {
       id: "rudder-torque",

@@ -53,6 +53,21 @@ export const erm: CourseTopic = {
         { symbol: "Risk_sonrası", label: "Önlem sonrası risk puanı" },
       ],
       source: { code: "Risk azaltma değerlendirmesi (RRF > 1: önlem etkili)" },
+      note: "Önlem öncesi ve sonrası risk puanı girilir; RRF > 1 ise önlem etkilidir.",
+      inputs: [
+        { key: "before", label: "Önce Risk Puanı", unit: "", placeholder: "16" },
+        { key: "after", label: "Sonra Risk Puanı", unit: "", placeholder: "4" },
+      ],
+      calculate: (v) => {
+        if (v.after <= 0) return [{ label: "Hata", value: "Sonraki risk puanı pozitif olmalı" }];
+        const rrf = v.before / v.after;
+        const redux = ((v.before - v.after) / v.before) * 100;
+        return [
+          { label: "Risk Azaltma Faktörü (RRF)", value: rrf.toFixed(2) },
+          { label: "Risk Azalması", value: `${redux.toFixed(0)} %` },
+          { label: "Değerlendirme", value: rrf > 1 ? "Önlem etkili" : "Önlem yetersiz" },
+        ];
+      },
     },
     {
       id: "ltif",
