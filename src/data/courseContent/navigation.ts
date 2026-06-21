@@ -499,6 +499,21 @@ export const navigation: CourseTopic = {
         { symbol: "Hc", label: "Hesaplanan yükseklik", unit: "°" },
       ],
       source: { code: "Sight reduction — azimut" },
+      note: "Deklinasyon, enlem ve hesaplanan yükseklik derece girilir; azimut açısı Z (0–180°) hesaplanır.",
+      inputs: [
+        { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
+        { key: "lat", label: "Gözlemci Enlemi (φ)", unit: "°", placeholder: "41" },
+        { key: "hc", label: "Hesaplanan Yükseklik (Hc)", unit: "°", placeholder: "35" },
+      ],
+      calculate: (v) => {
+        const r = Math.PI / 180;
+        const denom = Math.cos(v.lat * r) * Math.cos(v.hc * r);
+        if (Math.abs(denom) < 1e-9) return [{ label: "Hata", value: "Payda sıfıra yakın (φ veya Hc = 90°)" }];
+        let cosZ = (Math.sin(v.dec * r) - Math.sin(v.lat * r) * Math.sin(v.hc * r)) / denom;
+        cosZ = Math.max(-1, Math.min(1, cosZ));
+        const Z = Math.acos(cosZ) / r;
+        return [{ label: "Azimut Açısı (Z)", value: `${Z.toFixed(1)}°` }];
+      },
     },
     {
       id: "amplitude",

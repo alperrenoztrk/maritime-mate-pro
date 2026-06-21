@@ -50,6 +50,19 @@ export const coolingHvac: CourseTopic = {
         { symbol: "W_comp", label: "Kompresör işi", unit: "kW" },
       ],
       source: { code: "Isı pompası performans katsayısı tanımı" },
+      note: "Isıtma kapasitesi ve kompresör gücü girilir; COP_HP = Q_H/W ve COP_soğutma = COP_HP − 1.",
+      inputs: [
+        { key: "qh", label: "Isıtma Kapasitesi (Q_H)", unit: "kW", placeholder: "65" },
+        { key: "wc", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        if (v.wc <= 0) return [{ label: "Hata", value: "Kompresör gücü pozitif olmalı" }];
+        const cop = v.qh / v.wc;
+        return [
+          { label: "COP (Isı Pompası)", value: cop.toFixed(2) },
+          { label: "COP (Soğutma)", value: (cop - 1).toFixed(2) },
+        ];
+      },
     },
     {
       id: "carnot-cop-cooling",
@@ -84,6 +97,16 @@ export const coolingHvac: CourseTopic = {
         { symbol: "h₄", label: "Evaporatör girişi entalpi", unit: "kJ/kg" },
       ],
       source: { code: "Evaporatör enerji dengesi (soğutma etkisi)" },
+      note: "Akışkan debisi kg/s girilir; soğutma kapasitesi Q̇ = ṁ × (h₁ − h₄) (kW).",
+      inputs: [
+        { key: "mdot", label: "Akışkan Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
+        { key: "h1", label: "Evaporatör Çıkışı (h₁)", unit: "kJ/kg", placeholder: "400" },
+        { key: "h4", label: "Evaporatör Girişi (h₄)", unit: "kJ/kg", placeholder: "250" },
+      ],
+      calculate: (v) => {
+        const q = v.mdot * (v.h1 - v.h4);
+        return [{ label: "Soğutma Kapasitesi (Q̇)", value: `${q.toFixed(2)} kW` }];
+      },
     },
     {
       id: "refrigerant-mass-flow",

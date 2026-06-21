@@ -49,6 +49,17 @@ export const fuelTechnology: CourseTopic = {
         { symbol: "Hu", label: "Alt ısıl değer", unit: "MJ/kg" },
       ],
       source: { code: "ISO 8217 — yoğunluk bazlı alt ısıl değer yaklaşımı" },
+      note: "Yoğunluk kg/L (örn. 0,991) girilir; alt ısıl değer Hu MJ/kg olarak tahmin edilir.",
+      inputs: [
+        { key: "d", label: "Yoğunluk @15°C (d)", unit: "kg/L", placeholder: "0.991" },
+      ],
+      calculate: (v) => {
+        const hu = 46.704 - 8.802 * v.d * v.d + 3.167 * v.d;
+        return [
+          { label: "Alt Isıl Değer (Hu)", value: `${hu.toFixed(2)} MJ/kg` },
+          { label: "Alt Isıl Değer", value: `${(hu * 1000).toFixed(0)} kJ/kg` },
+        ];
+      },
     },
     {
       id: "viscosity-conversion",
@@ -59,6 +70,17 @@ export const fuelTechnology: CourseTopic = {
         { symbol: "ν", label: "Kinematik viskozite", unit: "cSt = mm²/s" },
       ],
       source: { code: "Kinematik viskozite birim eşitliği (Redwood No.1 ≈ 4,05 × cSt)" },
+      note: "1 cSt = 1 mm²/s. Yaklaşık dönüşümler: Redwood No.1 ≈ 4,05 × cSt; Saybolt Universal (SSU) ≈ 4,635 × cSt.",
+      inputs: [
+        { key: "v", label: "Kinematik Viskozite (ν)", unit: "cSt", placeholder: "380" },
+      ],
+      calculate: (v) => {
+        return [
+          { label: "mm²/s", value: `${v.v.toFixed(1)} mm²/s` },
+          { label: "Redwood No.1 (≈)", value: `${(v.v * 4.05).toFixed(0)} s` },
+          { label: "Saybolt SSU (≈)", value: `${(v.v * 4.635).toFixed(0)} s` },
+        ];
+      },
     },
     {
       id: "fuel-heating-temperature",
@@ -115,6 +137,16 @@ export const fuelTechnology: CourseTopic = {
         { symbol: "ΔT", label: "Sıcaklık artışı", unit: "K" },
       ],
       source: { code: "Duyulur ısı bağıntısı (yakıt ön ısıtma)" },
+      note: "Yakıt debisi kg/s girilir; gerekli ısıtma gücü Q̇ = ṁ·c_p·ΔT (kW) hesaplanır.",
+      inputs: [
+        { key: "mdot", label: "Yakıt Debisi (ṁ)", unit: "kg/s", placeholder: "0.5" },
+        { key: "cp", label: "Özgül Isı (c_p)", unit: "kJ/kg·K", placeholder: "2.0" },
+        { key: "dt", label: "Sıcaklık Artışı (ΔT)", unit: "K", placeholder: "90" },
+      ],
+      calculate: (v) => {
+        const q = v.mdot * v.cp * v.dt;
+        return [{ label: "Isıtma Gücü (Q̇)", value: `${q.toFixed(1)} kW` }];
+      },
     },
     {
       id: "settling-tank-time",
@@ -125,6 +157,17 @@ export const fuelTechnology: CourseTopic = {
         { symbol: "t", label: "Çökeltme süresi", unit: "saat" },
       ],
       source: { code: "ISO 8217 — settling tank uygulaması (HFO 70°C, yerçekimiyle çökme)" },
+      note: "HFO için önerilen çökeltme süresi ≥ 24 saattir. Planlanan süre girilir; sınıra göre uygunluk değerlendirilir.",
+      inputs: [
+        { key: "t", label: "Planlanan Çökeltme Süresi", unit: "saat", placeholder: "24" },
+      ],
+      calculate: (v) => {
+        const margin = v.t - 24;
+        return [
+          { label: "Sınıra Marj", value: `${margin.toFixed(1)} saat` },
+          { label: "Uygunluk", value: margin >= 0 ? "UYGUN (≥24 saat)" : "YETERSİZ (<24 saat)" },
+        ];
+      },
     },
     {
       id: "bunker-quantity",

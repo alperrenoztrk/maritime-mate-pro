@@ -196,6 +196,18 @@ export const dieselEngines: CourseTopic = {
         { symbol: "Psilindir", label: "Silindir basıncı", unit: "Pa" },
       ],
       source: { code: "Yakıt enjeksiyon sistemi (300–1000 bar mekanik, 1500–2500 bar common rail)" },
+      note: "Yay kuvveti N, iğne alanı mm², silindir basıncı bar girilir; açılma basıncı bar olarak verilir.",
+      inputs: [
+        { key: "fspring", label: "Yay Kuvveti (F_yay)", unit: "N", placeholder: "4000" },
+        { key: "area", label: "İğne Kesit Alanı (A)", unit: "mm²", placeholder: "20" },
+        { key: "pcyl", label: "Silindir Basıncı (P_silindir)", unit: "bar", placeholder: "150" },
+      ],
+      calculate: (v) => {
+        if (v.area <= 0) return [{ label: "Hata", value: "İğne alanı pozitif olmalı" }];
+        const pSpringBar = v.fspring / (v.area * 1e-6) / 1e5;
+        const pInj = pSpringBar + v.pcyl;
+        return [{ label: "Enjeksiyon Basıncı (P_inj)", value: `${pInj.toFixed(0)} bar` }];
+      },
     },
     {
       id: "thermal-efficiency",

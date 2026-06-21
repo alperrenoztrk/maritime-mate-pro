@@ -186,6 +186,19 @@ export const energyEfficiency: CourseTopic = {
         { symbol: "FC_sonrası", label: "Önlem sonrası yakıt tüketimi", unit: "ton" },
       ],
       source: { code: "SEEMP — Ship Energy Efficiency Management Plan (MARPOL Annex VI Reg.22)" },
+      note: "Önlem öncesi ve sonrası yakıt tüketimi girilir; tasarruf yüzdesi ve mutlak tasarruf hesaplanır.",
+      inputs: [
+        { key: "before", label: "Önce (FC_öncesi)", unit: "ton", placeholder: "1000" },
+        { key: "after", label: "Sonra (FC_sonrası)", unit: "ton", placeholder: "920" },
+      ],
+      calculate: (v) => {
+        if (v.before <= 0) return [{ label: "Hata", value: "Öncesi tüketim pozitif olmalı" }];
+        const saving = ((v.before - v.after) / v.before) * 100;
+        return [
+          { label: "Tasarruf", value: `${saving.toFixed(1)} %` },
+          { label: "Mutlak Tasarruf", value: `${(v.before - v.after).toFixed(1)} ton` },
+        ];
+      },
     },
   ],
 };

@@ -27,6 +27,19 @@ export const engineRoomOps: CourseTopic = {
         { symbol: "FCrate", label: "Tüketim hızı", unit: "ton/gün veya ton/saat" },
       ],
       source: { code: "Operasyonel yakıt tüketim takibi" },
+      note: "Toplam tüketim ton, süre gün girilir; günlük ve saatlik tüketim hızı hesaplanır.",
+      inputs: [
+        { key: "total", label: "Toplam Yakıt (FC_toplam)", unit: "ton", placeholder: "180" },
+        { key: "days", label: "Seyir Süresi", unit: "gün", placeholder: "12" },
+      ],
+      calculate: (v) => {
+        if (v.days <= 0) return [{ label: "Hata", value: "Süre pozitif olmalı" }];
+        const perDay = v.total / v.days;
+        return [
+          { label: "Günlük Tüketim", value: `${perDay.toFixed(2)} ton/gün` },
+          { label: "Saatlik Tüketim", value: `${(perDay / 24).toFixed(3)} ton/saat` },
+        ];
+      },
     },
     {
       id: "remaining-fuel-range",

@@ -300,6 +300,25 @@ export const safety: CourseTopic = {
         { symbol: "F/K", label: "Pişirme yağları (mutfak)" },
       ],
       source: { code: "SOLAS II-2 / FSS Code", detail: "Taşınabilir söndürücü tipleri" },
+      note: "Yangın sınıfı seçilir (1=A katı, 2=B sıvı, 3=C gaz/elektrik, 4=D metal, 5=F/K yağ); uygun söndürücü önerilir.",
+      inputs: [
+        { key: "cls", label: "Yangın Sınıfı (1=A,2=B,3=C,4=D,5=F/K)", unit: "", placeholder: "2" },
+      ],
+      calculate: (v) => {
+        const map: Record<number, { name: string; agent: string }> = {
+          1: { name: "A — Katı (ahşap, kâğıt, kumaş)", agent: "Su, köpük, ABC kuru kimyevi" },
+          2: { name: "B — Yanıcı sıvı (yakıt, yağ, boya)", agent: "Köpük, CO₂, ABC/BC kuru kimyevi" },
+          3: { name: "C — Gaz / elektrikli ekipman", agent: "CO₂, kuru kimyevi (SU KULLANMA)" },
+          4: { name: "D — Yanıcı metal", agent: "Özel D tozu (kum/grafit); su/CO₂ YASAK" },
+          5: { name: "F/K — Pişirme yağı (mutfak)", agent: "Islak kimyevi (wet chemical); su YASAK" },
+        };
+        const sel = map[Math.round(v.cls)];
+        if (!sel) return [{ label: "Hata", value: "Sınıf 1–5 arasında olmalı" }];
+        return [
+          { label: "Yangın Sınıfı", value: sel.name },
+          { label: "Önerilen Söndürücü", value: sel.agent },
+        ];
+      },
     },
   ],
 };

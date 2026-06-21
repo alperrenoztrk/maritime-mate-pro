@@ -27,6 +27,18 @@ export const electrical: CourseTopic = {
         { symbol: "R", label: "Direnç", unit: "Ω" },
       ],
       source: { code: "Ohm yasası" },
+      note: "Akım ve direnç girilir; gerilim V = I × R ve güç P = V × I hesaplanır.",
+      inputs: [
+        { key: "i", label: "Akım (I)", unit: "A", placeholder: "10" },
+        { key: "r", label: "Direnç (R)", unit: "Ω", placeholder: "22" },
+      ],
+      calculate: (v) => {
+        const volt = v.i * v.r;
+        return [
+          { label: "Gerilim (V)", value: `${volt.toFixed(2)} V` },
+          { label: "Güç (P = V·I)", value: `${(volt * v.i).toFixed(1)} W` },
+        ];
+      },
     },
     {
       id: "three-phase-power",
@@ -39,6 +51,20 @@ export const electrical: CourseTopic = {
         { symbol: "cos(φ)", label: "Güç faktörü" },
       ],
       source: { code: "Üç fazlı aktif güç bağıntısı" },
+      note: "Sonuç W çıkar, kW'a çevrilir. Görünür güç S = √3 × V_L × I_L.",
+      inputs: [
+        { key: "v", label: "Hat Gerilimi (V_L)", unit: "V", placeholder: "440" },
+        { key: "i", label: "Hat Akımı (I_L)", unit: "A", placeholder: "200" },
+        { key: "pf", label: "Güç Faktörü (cos φ)", unit: "", placeholder: "0.8" },
+      ],
+      calculate: (v) => {
+        const p = Math.sqrt(3) * v.v * v.i * v.pf;
+        const s = Math.sqrt(3) * v.v * v.i;
+        return [
+          { label: "Aktif Güç (P)", value: `${(p / 1000).toFixed(1)} kW` },
+          { label: "Görünür Güç (S)", value: `${(s / 1000).toFixed(1)} kVA` },
+        ];
+      },
     },
     {
       id: "reactive-power",
@@ -80,6 +106,19 @@ export const electrical: CourseTopic = {
         { symbol: "S", label: "Görünür güç", unit: "kVA" },
       ],
       source: { code: "Güç üçgeni (görünür güç)" },
+      note: "Aktif ve reaktif güç girilir; görünür güç S = √(P² + Q²) ve güç faktörü cos(φ) = P/S hesaplanır.",
+      inputs: [
+        { key: "p", label: "Aktif Güç (P)", unit: "kW", placeholder: "240" },
+        { key: "q", label: "Reaktif Güç (Q)", unit: "kVAR", placeholder: "180" },
+      ],
+      calculate: (v) => {
+        const s = Math.sqrt(v.p * v.p + v.q * v.q);
+        const pf = s > 0 ? v.p / s : 0;
+        return [
+          { label: "Görünür Güç (S)", value: `${s.toFixed(1)} kVA` },
+          { label: "Güç Faktörü (cos φ)", value: pf.toFixed(3) },
+        ];
+      },
     },
     {
       id: "generator-frequency",

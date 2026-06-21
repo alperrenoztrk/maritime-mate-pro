@@ -52,6 +52,15 @@ export const auxiliary: CourseTopic = {
         { symbol: "n", label: "Devir", unit: "rpm" },
       ],
       source: { code: "Senkron makine frekans-devir bağıntısı" },
+      note: "Kutup çifti sayısı ve devir girilir; frekans f = (p × n) / 60 hesaplanır.",
+      inputs: [
+        { key: "p", label: "Kutup Çifti Sayısı (p)", unit: "", placeholder: "2" },
+        { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "1800" },
+      ],
+      calculate: (v) => {
+        const f = (v.p * v.n) / 60;
+        return [{ label: "Frekans (f)", value: `${f.toFixed(2)} Hz` }];
+      },
     },
     {
       id: "generator-efficiency",
@@ -63,6 +72,19 @@ export const auxiliary: CourseTopic = {
         { symbol: "P_mekanik", label: "Mekanik giriş gücü", unit: "kW" },
       ],
       source: { code: "Elektrik makinesi verim tanımı (tipik %92–96)" },
+      note: "Elektriksel çıkış ve mekanik giriş gücü (kW) girilir; verim ve kayıp hesaplanır.",
+      inputs: [
+        { key: "pe", label: "Elektriksel Çıkış (P_elektrik)", unit: "kW", placeholder: "920" },
+        { key: "pm", label: "Mekanik Giriş (P_mekanik)", unit: "kW", placeholder: "1000" },
+      ],
+      calculate: (v) => {
+        if (v.pm <= 0) return [{ label: "Hata", value: "Mekanik giriş gücü pozitif olmalı" }];
+        const eta = (v.pe / v.pm) * 100;
+        return [
+          { label: "Verim (η)", value: `${eta.toFixed(1)} %` },
+          { label: "Kayıp", value: `${(v.pm - v.pe).toFixed(1)} kW` },
+        ];
+      },
     },
     {
       id: "boiler-steam-production",
@@ -98,6 +120,19 @@ export const auxiliary: CourseTopic = {
         { symbol: "Hu", label: "Yakıtın alt ısıl değeri", unit: "kJ/kg" },
       ],
       source: { code: "Kazan verimi (doğrudan/girdi-çıktı yöntemi)" },
+      note: "Buhar ve yakıt debileri kg/s girilir; verim = (ṁ_buhar × Δh) / (ṁ_yakıt × Hu).",
+      inputs: [
+        { key: "ms", label: "Buhar Debisi (ṁ_buhar)", unit: "kg/s", placeholder: "1.2" },
+        { key: "dh", label: "Entalpi Farkı (Δh)", unit: "kJ/kg", placeholder: "2600" },
+        { key: "mf", label: "Yakıt Debisi (ṁ_yakıt)", unit: "kg/s", placeholder: "0.09" },
+        { key: "hu", label: "Alt Isıl Değer (Hu)", unit: "kJ/kg", placeholder: "40000" },
+      ],
+      calculate: (v) => {
+        const denom = v.mf * v.hu;
+        if (denom <= 0) return [{ label: "Hata", value: "Yakıt debisi ve ısıl değer pozitif olmalı" }];
+        const eta = ((v.ms * v.dh) / denom) * 100;
+        return [{ label: "Kazan Verimi (η)", value: `${eta.toFixed(1)} %` }];
+      },
     },
     {
       id: "separator-capacity",
@@ -134,6 +169,21 @@ export const auxiliary: CourseTopic = {
         { symbol: "μ", label: "Dinamik viskozite", unit: "Pa·s" },
       ],
       source: { code: "Stokes yasası (laminer çökelme hızı)" },
+      note: "Parçacık çapı µm girilir, hesapta m'ye çevrilir (g = 9,81 m/s²). Sonuç mm/s olarak verilir.",
+      inputs: [
+        { key: "d", label: "Parçacık Çapı (d)", unit: "µm", placeholder: "30" },
+        { key: "rw", label: "Su Yoğunluğu (ρ_w)", unit: "kg/m³", placeholder: "1025" },
+        { key: "ro", label: "Yağ Yoğunluğu (ρ_o)", unit: "kg/m³", placeholder: "900" },
+        { key: "mu", label: "Dinamik Viskozite (μ)", unit: "Pa·s", placeholder: "0.5" },
+      ],
+      calculate: (v) => {
+        if (v.mu <= 0) return [{ label: "Hata", value: "Viskozite pozitif olmalı" }];
+        const dM = v.d * 1e-6;
+        const vel = (dM * dM * (v.rw - v.ro) * 9.81) / (18 * v.mu);
+        return [
+          { label: "Ayrışma Hızı (v)", value: `${(vel * 1000).toFixed(4)} mm/s` },
+        ];
+      },
     },
     {
       id: "compressor-volume-flow",
