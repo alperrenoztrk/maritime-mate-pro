@@ -16,7 +16,7 @@ export type ShipOpCallout = {
 
 export type ShipOpSection = {
   subheading: string;
-  paragraphs: string[];
+  paragraphs?: string[];
   /** Madde listesi (sayılı veya sayısız) */
   bullets?: string[];
   /** Kanun, yönetmelik veya pratik notlar için renkli kutucuklar */
