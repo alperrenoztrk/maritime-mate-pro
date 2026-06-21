@@ -419,3 +419,61 @@ KURALLAR:
     language,
   );
 }
+
+/**
+ * "Dersler Beta" — gömülü adaptif ders eğitmeni.
+ *
+ * Eğitmen, o anda açık olan dersin İÇERİĞİNE topraklanır (lessonText bağlam
+ * olarak gönderilir) ve öğrencinin seviyesine göre öğretir. Halüsinasyonu
+ * azaltmak için: verilen içerik + bilinen denizcilik standartları dışına
+ * çıkmaması, emin olmadığında kaynağa yönlendirmesi istenir. Tüm çağrılar
+ * mevcut `gemini-chat` edge function üzerinden geçer (callGemini).
+ */
+export type TutorLevel = 'basit' | 'normal' | 'ileri';
+
+export interface LessonTutorContext {
+  topicTitle: string;
+  /** Dersin bölüm metinlerinin özeti (read-only, mevcut anlatımdan). */
+  lessonText: string;
+  level?: TutorLevel;
+}
+
+const LEVEL_GUIDANCE: Record<TutorLevel, string> = {
+  basit:
+    'Öğrenci seviyesi: TEMEL. Çok sade bir dille, günlük benzetmelerle, kısa cümlelerle anlat. Ağır terimlerden kaçın; kullanırsan hemen tanımla.',
+  normal:
+    'Öğrenci seviyesi: ORTA. Denizcilik fakültesi öğrencisine uygun, dengeli teknik derinlikte anlat.',
+  ileri:
+    'Öğrenci seviyesi: İLERİ. Zabit adayına uygun, kural/standart atıflı ve pratik gemi uygulamasına odaklı anlat.',
+};
+
+export async function askLessonTutor(
+  context: LessonTutorContext,
+  messages: AIMessage[],
+  language: string = 'tr',
+): Promise<string> {
+  const langName = getLanguageDisplayName(language);
+  const level = context.level ?? 'normal';
+
+  const system = `Sen denizcilik fakültesinde ders veren deneyimli bir eğitmensin (güverte ve makine dersleri). Şu anda öğrenciye "${context.topicTitle}" konusunu öğretiyorsun.
+
+GÖREVİN: Öğrencinin bu konuyu OKULDAN DAHA İYİ kavramasını sağlamak; teoriyi gemi pratiğine bağlamak.
+
+KURALLAR:
+- Yanıtlarını ÖNCELİKLE aşağıda verilen DERS İÇERİĞİNE ve bilinen denizcilik standartlarına (COLREG, SOLAS, STCW, IMO yayınları) dayandır.
+- Ders içeriğinde olmayan bir şey sorulursa ve emin değilsen UYDURMA; "bu ders içeriğinde yok" de ve doğru kaynağa/yayına yönlendir.
+- Sayı, kural numarası veya formül verirken doğru ol; emin değilsen belirt.
+- ${LEVEL_GUIDANCE[level]}
+- Kısa ve öğretici tut: gerektiğinde madde madde. Mümkünse "gemide bunun anlamı" şeklinde pratik bir bağ kur.
+- ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.
+
+DERS İÇERİĞİ ("${context.topicTitle}"):
+${context.lessonText}`;
+
+  try {
+    return await callGemini([{ role: 'system', content: system }, ...messages]);
+  } catch (e) {
+    console.error('Lesson tutor AI error:', e);
+    return 'Şu anda eğitmen asistanına ulaşılamıyor. Lütfen biraz sonra tekrar deneyin. Bu arada ders anlatımını ve çözümlü örnekleri inceleyebilirsiniz.';
+  }
+}
