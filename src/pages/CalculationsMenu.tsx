@@ -50,9 +50,9 @@ const FILTERS: { key: Category; label: string }[] = [
 
 const QUICK_TOOLS: CalcTool[] = [
   { id: "draft", title: "Draft Hesabı", desc: "Draft survey hesapları", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "trim", title: "Stabilite / Trim", desc: "Trim ve stabilite analizi", icon: Scale, to: "/lessons", category: "stability" },
-  { id: "fuel", title: "Yakıt Tüketimi", desc: "Sefer yakıt hesaplama", icon: Flame, to: "/machine-calculations", category: "machine" },
-  { id: "voyage", title: "Sefer Süresi", desc: "ETA ve süre hesabı", icon: Timer, to: "/navigation", category: "navigation" },
+  { id: "trim", title: "Stabilite / Trim", desc: "Trim ve stabilite analizi", icon: Scale, to: "/stability/calculations", category: "stability" },
+  { id: "fuel", title: "Yakıt Tüketimi", desc: "Sefer yakıt hesaplama", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+  { id: "voyage", title: "Sefer Süresi", desc: "ETA ve süre hesabı", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
   { id: "cargo", title: "Yük Dağılımı", desc: "Yük planı ve dağılım", icon: Layers, to: "/cargo/calculations", category: "stability" },
   { id: "converter", title: "Birim Dönüştürücü", desc: "Denizcilik birimleri", icon: Zap, to: "/converter", category: "converter" },
 ];
@@ -76,34 +76,36 @@ const CATEGORIZED: { title: string; cat: Category; items: CalcTool[] }[] = [
     title: "Navigasyon ve Seyir",
     cat: "navigation",
     items: [
-      { id: "nav-calc", title: "Seyir Hesapları", desc: "Rota, mesafe, mevki", icon: Navigation, to: "/navigation", category: "navigation" },
+      { id: "nav-calc", title: "Seyir Hesapları", desc: "Rota, mesafe, mevki, ETA", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
       { id: "passage", title: "Passage Plan", desc: "Seyir planı oluşturma", icon: Compass, to: "/passage-plan", category: "navigation" },
-      { id: "tides", title: "Gelgit Hesabı", desc: "Gelgit yükseklik tahminleri", icon: BarChart3, to: "/navigation", category: "navigation" },
-      { id: "hydrodynamics", title: "Hidrodinamik", desc: "Squat, UKC, hız kaybı", icon: Droplets, to: "/hydrodynamics", category: "navigation" },
+      { id: "tides", title: "Gelgit Hesabı", desc: "Gelgit ve onikiler kuralı", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },
+      { id: "seamanship-calc", title: "Gemicilik Hesapları", desc: "UKC, squat, donme dairesi", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
     ],
   },
   {
     title: "Makine ve Tüketim",
     cat: "machine",
     items: [
-      { id: "engine", title: "Motor Hesapları", desc: "Güç, devir, performans", icon: Wrench, to: "/engine", category: "machine" },
-      { id: "machine-calc", title: "Makine Hesaplamaları", desc: "Yakıt, yağ, soğutma", icon: Gauge, to: "/machine-calculations", category: "machine" },
-      { id: "emissions", title: "Emisyon Hesabı", desc: "CO₂, SOx, NOx hesapları", icon: Flame, to: "/emissions", category: "machine" },
-      { id: "structural", title: "Yapısal Hesaplar", desc: "Gemi yapısı dayanım", icon: Layers, to: "/structural", category: "machine" },
+      { id: "diesel-engines", title: "Dizel Motorlar", desc: "Güç, devir, performans", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
+      { id: "thermodynamics", title: "Termodinamik", desc: "Çevrim ve ısı hesapları", icon: Thermometer, to: "/machine/thermodynamics/calculations", category: "machine" },
+      { id: "fuel-technology", title: "Yakıt Teknolojisi", desc: "Yakıt tüketim hesapları", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+      { id: "cooling-hvac", title: "Soğutma & HVAC", desc: "Soğutma ve iklimlendirme", icon: Gauge, to: "/machine/cooling-hvac/calculations", category: "machine" },
+      { id: "machine-elements", title: "Makine Elemanları", desc: "Şaft, dişli, kayış", icon: Layers, to: "/machine/machine-elements/calculations", category: "machine" },
+      { id: "emissions-machine", title: "Emisyon & Çevre", desc: "CO₂, SOx, NOx hesapları", icon: Flame, to: "/machine/environment-machine/calculations", category: "machine" },
     ],
   },
   {
     title: "Gemi Sistemleri ve Ekipmanları",
     cat: "ship-systems" as Category,
     items: [
-      { id: "deck-machinery", title: "Güverte Makineleri", desc: "Vinç, ırgat, mooring winch", icon: Anchor, to: "/machine-topics/ship-systems/topic/deck-machinery", category: "ship-systems" as Category },
-      { id: "nav-systems", title: "Seyir Sistemleri ve Cihazları", desc: "Radar, ECDIS, AIS, GPS", icon: Compass, to: "/machine-topics/ship-systems/topic/nav-systems", category: "ship-systems" as Category },
-      { id: "main-engine", title: "Ana Makine / Tahrik Sistemi", desc: "Ana motor, şaft, pervane", icon: Wrench, to: "/machine-topics/ship-systems/topic/main-engine", category: "ship-systems" as Category },
-      { id: "auxiliary", title: "Yardımcı Makineler", desc: "Jeneratör, kompresör, pompa", icon: Gauge, to: "/machine-topics/ship-systems/topic/auxiliary", category: "ship-systems" as Category },
+      { id: "deck-machinery", title: "Güverte Makineleri", desc: "Vinç, ırgat, mooring winch", icon: Anchor, to: "/ship-systems/deck-machinery", category: "ship-systems" as Category },
+      { id: "nav-systems", title: "Seyir Sistemleri ve Cihazları", desc: "Radar, ECDIS, AIS, GPS", icon: Compass, to: "/ship-systems/nav-systems", category: "ship-systems" as Category },
+      { id: "main-engine", title: "Ana Makine / Tahrik Sistemi", desc: "Ana motor, şaft, pervane", icon: Wrench, to: "/ship-systems/main-engine", category: "ship-systems" as Category },
+      { id: "auxiliary", title: "Yardımcı Makineler", desc: "Jeneratör, kompresör, pompa", icon: Gauge, to: "/ship-systems/auxiliary", category: "ship-systems" as Category },
     ],
   },
   {
-    title: "Dönüştürücüler",
+    title: "Formüller ve Dönüştürücüler",
     cat: "converter",
     items: [
       { id: "unit-conv", title: "Birim Dönüştürücü", desc: "Uzunluk, ağırlık, hacim", icon: Zap, to: "/converter", category: "converter" },
