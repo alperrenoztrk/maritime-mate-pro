@@ -5,6 +5,7 @@ export interface AIMessage {
 }
 
 import { supabase } from '@/integrations/supabase/safeClient';
+import type { CalcStep, CourseEntry } from '@/data/courseContent/types';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'tr': 'Turkish',
@@ -348,4 +349,73 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
       'Hangi hesaplama için yardım istiyorsunuz?'
     ].join('\n');
   }
+}
+
+/**
+ * Bir formülün adım adım çözümünü yapay zekaya açıklatır.
+ *
+ * Deterministik adımlar (CalcStep[]) ve girilen değerler bağlam olarak
+ * gönderilir; yapay zeka YENİ sayı üretmez, yalnızca mevcut doğru adımların
+ * "neden/nasıl" yapıldığını öğretici biçimde açıklar. Tüm AI çağrıları mevcut
+ * `gemini-chat` edge function üzerinden geçer (callNavigationAssistant).
+ *
+ * @param entry    İlgili formül girdisi (CourseEntry)
+ * @param vals     Kullanıcının girdiği değerler
+ * @param steps    Deterministik üretilmiş çözüm adımları
+ * @param language Yanıt dili (kod, örn. "tr")
+ * @param question İSTEĞE BAĞLI öğrenci sorusu; verilmezse genel açıklama istenir.
+ */
+export async function explainCalculation(
+  entry: Pick<CourseEntry, 'name' | 'formula' | 'note'>,
+  vals: Record<string, number>,
+  steps: CalcStep[],
+  language: string = 'tr',
+  question?: string,
+): Promise<string> {
+  const langName = getLanguageDisplayName(language);
+
+  const system = `Sen denizcilik fakültesinde (güverte ve makine dersleri: seyir, gemi stabilitesi, meteoroloji, yük işlemleri, emniyet, termodinamik, akışkanlar mekaniği, dizel makineler, elektrik vb.) ders veren deneyimli bir eğitmensin. Görevin, öğrenciye verilen formülü ve çözüm adımlarını SADE, anlaşılır ve öğretici biçimde açıklamak.
+
+KURALLAR:
+- SANA VERİLEN sayısal adımlar ve sonuçlar DOĞRUDUR; bunları DEĞİŞTİRME, yeni sayı UYDURMA.
+- Her adımın NEDEN yapıldığını (mantığını) ve denizcilik pratiğindeki anlamını açıkla.
+- Kısa tut: madde madde, gereksiz tekrar yok. Formüldeki sembolleri ve birimleri açıkça tanımla.
+- Yaygın öğrenci hatalarına (işaret kuralları, birim dönüşümleri, varsayımlar) dikkat çek.
+- ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.`;
+
+  const stepsText = steps
+    .map((s, i) => {
+      const parts = [`${i + 1}. ${s.title}`];
+      if (s.expression) parts.push(`   İfade: ${s.expression}`);
+      if (s.result) parts.push(`   Sonuç: ${s.result}`);
+      return parts.join('\n');
+    })
+    .join('\n');
+
+  const inputsText = Object.entries(vals)
+    .map(([k, v]) => `${k} = ${v}`)
+    .join(', ');
+
+  const userContent = [
+    `Formül: ${entry.name} → ${entry.formula}`,
+    entry.note ? `Not: ${entry.note}` : '',
+    inputsText ? `Girilen değerler: ${inputsText}` : '',
+    '',
+    'Deterministik çözüm adımları:',
+    stepsText,
+    '',
+    question
+      ? `Öğrencinin sorusu: ${question}`
+      : 'Bu formülü ve yukarıdaki adımları öğrenciye aşama aşama açıkla.',
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  return callNavigationAssistant(
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: userContent },
+    ],
+    language,
+  );
 }

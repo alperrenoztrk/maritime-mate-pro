@@ -32,6 +32,22 @@ export interface CalcResult {
   value: string;
 }
 
+/**
+ * Tek bir çözüm adımı. `steps()` üreteci girilen değerlerden sıralı ara
+ * adımları döndürür; her adım deterministiktir (kodla hesaplanır, AI üretmez).
+ *
+ *  - `title`      → adım başlığı, örn. "1) Yerel Saat Açısı (LHA)".
+ *  - `expression` → değerleri yerine konmuş ifade, örn. "LHA = GHA + λ = 158.5°".
+ *  - `result`     → o adımın ara sonucu (vurgulanır).
+ *  - `hint`       → kısa "neden" açıklaması (sabit, öğretici metin).
+ */
+export interface CalcStep {
+  title: string;
+  expression?: string;
+  result?: string;
+  hint?: string;
+}
+
 /** Gerçek standart/kaynak referansı (uydurma kural/formül engellemek için). */
 export interface SourceRef {
   code: string;
@@ -53,6 +69,13 @@ export interface CourseEntry {
   /** Bağlı hesaplayıcı girdileri (calculate ile birlikte verilir). */
   inputs?: CalcInput[];
   calculate?: (vals: Record<string, number>) => CalcResult[];
+  /**
+   * İSTEĞE BAĞLI adım adım çözüm üreteci. `calculate` ile aynı girdilerden
+   * çalışır ve daima aynı büyüklüğü aynı birimde üretir (son adımın sonucu
+   * `calculate` sonucuyla birebir aynıdır). Tanımlıysa hesaplayıcı kartında
+   * "Çözümü Adım Adım Göster" seçeneği belirir.
+   */
+  steps?: (vals: Record<string, number>) => CalcStep[];
 }
 
 /** Bir kural grubunun alt başlığı + madde listesi. */

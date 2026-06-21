@@ -487,6 +487,41 @@ export const navigation: CourseTopic = {
         const hc = (Math.asin(Math.max(-1, Math.min(1, sinHc))) * 180) / Math.PI;
         return [{ label: "Hesaplanan Yükseklik (Hc)", value: `${hc.toFixed(2)} °` }];
       },
+      steps: (v) => {
+        const rad = (x: number) => (x * Math.PI) / 180;
+        const term1 = Math.sin(rad(v.lat)) * Math.sin(rad(v.dec));
+        const term2 = Math.cos(rad(v.lat)) * Math.cos(rad(v.dec)) * Math.cos(rad(v.lha));
+        const sinHc = term1 + term2;
+        const hc = (Math.asin(Math.max(-1, Math.min(1, sinHc))) * 180) / Math.PI;
+        return [
+          {
+            title: "Verileri yerleştir",
+            expression: `φ = ${v.lat}°, δ = ${v.dec}°, LHA = ${v.lha}°`,
+            hint: "Güney enlem ve deklinasyon (−) işaretli girilir; LHA daima 0–360° aralığında.",
+          },
+          {
+            title: "1. terim: sinφ · sinδ",
+            expression: `sin(${v.lat}°) · sin(${v.dec}°) = ${Math.sin(rad(v.lat)).toFixed(4)} · ${Math.sin(rad(v.dec)).toFixed(4)}`,
+            result: `${term1.toFixed(4)}`,
+          },
+          {
+            title: "2. terim: cosφ · cosδ · cos(LHA)",
+            expression: `cos(${v.lat}°) · cos(${v.dec}°) · cos(${v.lha}°)`,
+            result: `${term2.toFixed(4)}`,
+          },
+          {
+            title: "Toplam = sin(Hc)",
+            expression: `${term1.toFixed(4)} + ${term2.toFixed(4)}`,
+            result: `sin(Hc) = ${sinHc.toFixed(4)}`,
+          },
+          {
+            title: "Ters sinüs (arcsin) ile Hc",
+            expression: `Hc = arcsin(${sinHc.toFixed(4)})`,
+            result: `Hc = ${hc.toFixed(2)}°`,
+            hint: "Hc, gözlemcinin varsayılan mevkisinden (AP) cismin teorik yüksekliğidir; Ho ile karşılaştırılarak intercept bulunur.",
+          },
+        ];
+      },
     },
     {
       id: "celestial-azimuth",
@@ -514,6 +549,43 @@ export const navigation: CourseTopic = {
         const Z = Math.acos(cosZ) / r;
         return [{ label: "Azimut Açısı (Z)", value: `${Z.toFixed(1)}°` }];
       },
+      steps: (v) => {
+        const r = Math.PI / 180;
+        const denom = Math.cos(v.lat * r) * Math.cos(v.hc * r);
+        if (Math.abs(denom) < 1e-9)
+          return [{ title: "Hata", result: "Payda sıfıra yakın (φ veya Hc = 90°)" }];
+        const numer = Math.sin(v.dec * r) - Math.sin(v.lat * r) * Math.sin(v.hc * r);
+        let cosZ = numer / denom;
+        cosZ = Math.max(-1, Math.min(1, cosZ));
+        const Z = Math.acos(cosZ) / r;
+        return [
+          {
+            title: "Verileri yerleştir",
+            expression: `δ = ${v.dec}°, φ = ${v.lat}°, Hc = ${v.hc}°`,
+          },
+          {
+            title: "Pay: sinδ − sinφ · sinHc",
+            expression: `sin(${v.dec}°) − sin(${v.lat}°)·sin(${v.hc}°)`,
+            result: `${numer.toFixed(4)}`,
+          },
+          {
+            title: "Payda: cosφ · cosHc",
+            expression: `cos(${v.lat}°) · cos(${v.hc}°)`,
+            result: `${denom.toFixed(4)}`,
+          },
+          {
+            title: "Bölüm = cos(Z)",
+            expression: `${numer.toFixed(4)} / ${denom.toFixed(4)}`,
+            result: `cos(Z) = ${cosZ.toFixed(4)}`,
+          },
+          {
+            title: "Ters kosinüs (arccos) ile Z",
+            expression: `Z = arccos(${cosZ.toFixed(4)})`,
+            result: `Z = ${Z.toFixed(1)}°`,
+            hint: "Z açısı (0–180°), cismin yönüne göre N/S ve E/W ile gerçek azimuta (Zn) çevrilir.",
+          },
+        ];
+      },
     },
     {
       id: "amplitude",
@@ -536,6 +608,31 @@ export const navigation: CourseTopic = {
         if (Math.abs(ratio) > 1) return [{ label: "Hata", value: "Bu enlemde cisim doğmaz/batmaz" }];
         const a = (Math.asin(ratio) * 180) / Math.PI;
         return [{ label: "Amplitude (A)", value: `${a.toFixed(2)} ° (E/W'den)` }];
+      },
+      steps: (v) => {
+        const rad = (x: number) => (x * Math.PI) / 180;
+        const ratio = Math.sin(rad(v.dec)) / Math.cos(rad(v.lat));
+        if (Math.abs(ratio) > 1)
+          return [{ title: "Hata", result: "Bu enlemde cisim doğmaz/batmaz (|sinδ/cosφ| > 1)" }];
+        const a = (Math.asin(ratio) * 180) / Math.PI;
+        return [
+          {
+            title: "Verileri yerleştir",
+            expression: `δ = ${v.dec}°, φ = ${v.lat}°`,
+            hint: "Amplitude, doğuş/batışta cismin gerçek azimutudur; pusula hatası kontrolünde kullanılır.",
+          },
+          {
+            title: "Oran: sinδ / cosφ",
+            expression: `sin(${v.dec}°) / cos(${v.lat}°) = ${Math.sin(rad(v.dec)).toFixed(4)} / ${Math.cos(rad(v.lat)).toFixed(4)}`,
+            result: `${ratio.toFixed(4)}`,
+          },
+          {
+            title: "Ters sinüs (arcsin) ile A",
+            expression: `A = arcsin(${ratio.toFixed(4)})`,
+            result: `A = ${a.toFixed(2)}° (E/W'den)`,
+            hint: "Doğuda E, batıda W'den ölçülür; deklinasyon N ise kuzeye, S ise güneye doğru.",
+          },
+        ];
       },
     },
     // ---- Konu anlatımından eklenen hesaplayıcılar ----
@@ -575,6 +672,27 @@ export const navigation: CourseTopic = {
         const dip = 1.76 * Math.sqrt(v.h);
         return [{ label: "Dip", value: `${dip.toFixed(1)} ′ (dakika)` }];
       },
+      steps: (v) => {
+        if (v.h < 0) return [{ title: "Hata", result: "Yükseklik negatif olamaz" }];
+        const dip = 1.76 * Math.sqrt(v.h);
+        return [
+          {
+            title: "Göz yüksekliğini yerleştir",
+            expression: `h = ${v.h} m`,
+            hint: "h, gözlemcinin deniz seviyesinden göz yüksekliğidir (köprüüstü vb.).",
+          },
+          {
+            title: "Karekök al",
+            expression: `√${v.h} = ${Math.sqrt(v.h).toFixed(3)}`,
+          },
+          {
+            title: "Katsayı ile çarp",
+            expression: `Dip = 1.76 × ${Math.sqrt(v.h).toFixed(3)}`,
+            result: `Dip = ${dip.toFixed(1)} ′`,
+            hint: "Dip, sekstant düzeltmesinde Hs'den DAİMA çıkarılır (ufuk gözün altında görünür).",
+          },
+        ];
+      },
     },
     {
       id: "sextant-correction",
@@ -600,6 +718,43 @@ export const navigation: CourseTopic = {
         const ho = hoMin / 60;
         return [{ label: "Gözlenen İrtifa (Ho)", value: `${ho.toFixed(3)} °` }];
       },
+      steps: (v) => {
+        const hsMin = v.hs * 60;
+        const afterIe = hsMin + v.ie;
+        const afterDip = afterIe - v.dip;
+        const hoMin = afterDip + v.r;
+        const ho = hoMin / 60;
+        return [
+          {
+            title: "Hs'yi dakikaya çevir",
+            expression: `${v.hs}° × 60 = ${hsMin.toFixed(1)} ′`,
+            hint: "Tüm düzeltmeler dakika (′) cinsinden yapılır; 1° = 60′.",
+          },
+          {
+            title: "Endeks hatasını (IE) uygula",
+            expression: `${hsMin.toFixed(1)} ′ + (${v.ie}) ′`,
+            result: `${afterIe.toFixed(1)} ′`,
+            hint: "IE işaretiyle eklenir (on-the-arc: −, off-the-arc: +).",
+          },
+          {
+            title: "Dip'i çıkar",
+            expression: `${afterIe.toFixed(1)} ′ − ${v.dip} ′`,
+            result: `${afterDip.toFixed(1)} ′  (görünen irtifa, Ha)`,
+          },
+          {
+            title: "Ana düzeltmeyi (R) uygula",
+            expression: `${afterDip.toFixed(1)} ′ + (${v.r}) ′`,
+            result: `${hoMin.toFixed(1)} ′`,
+            hint: "R = refraksiyon + yarıçap (SD) + paralaks (P), Almanac'tan alınır.",
+          },
+          {
+            title: "Dereceye geri çevir",
+            expression: `${hoMin.toFixed(1)} ′ ÷ 60`,
+            result: `Ho = ${ho.toFixed(3)}°`,
+            hint: "Ho (gözlenen irtifa), Hc ile karşılaştırılarak intercept (a) bulunur.",
+          },
+        ];
+      },
     },
     {
       id: "intercept",
@@ -622,6 +777,35 @@ export const navigation: CourseTopic = {
         return [
           { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM` },
           { label: "Yön", value: yon },
+        ];
+      },
+      steps: (v) => {
+        const diff = v.ho - v.hc;
+        const aMin = diff * 60;
+        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        return [
+          {
+            title: "Verileri yerleştir",
+            expression: `Ho = ${v.ho}°, Hc = ${v.hc}°`,
+            hint: "Ho gözlenen, Hc hesaplanan (AP'ye göre) irtifadır.",
+          },
+          {
+            title: "Farkı al (Ho − Hc)",
+            expression: `${v.ho}° − ${v.hc}°`,
+            result: `${diff.toFixed(3)}°`,
+          },
+          {
+            title: "Deniz miline çevir (× 60)",
+            expression: `${diff.toFixed(3)}° × 60 ′/° = ${aMin.toFixed(1)} ′`,
+            result: `a = ${Math.abs(aMin).toFixed(1)} NM`,
+            hint: "1 yay dakikası = 1 deniz mili.",
+          },
+          {
+            title: "Yönü belirle",
+            expression: aMin >= 0 ? "Ho > Hc → cisme doğru" : "Ho < Hc → cisimden uzağa",
+            result: yon,
+            hint: "Mevki hattı (LOP), AP'den azimut yönünde a kadar bu yöne kaydırılarak çizilir.",
+          },
         ];
       },
     },
@@ -650,6 +834,133 @@ export const navigation: CourseTopic = {
         return [
           { label: "Zenit Mesafesi (Z)", value: `${z.toFixed(2)} °` },
           { label: "Enlem (φ)", value: `${Math.abs(lat).toFixed(2)} ° ${hemis}` },
+        ];
+      },
+      steps: (v) => {
+        const z = 90 - v.ho;
+        const sign = v.bearing >= 0 ? 1 : -1;
+        const lat = v.dec + sign * z;
+        const hemis = lat >= 0 ? "N" : "S";
+        return [
+          {
+            title: "Verileri yerleştir",
+            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, yön = ${v.bearing >= 0 ? "Zenit güneyde" : "Zenit kuzeyde"}`,
+            hint: "Öğle boyu (meridyen geçişi) anında cisim gözlemcinin meridyenindedir.",
+          },
+          {
+            title: "Zenit mesafesi: Z = 90° − Ho",
+            expression: `90° − ${v.ho}°`,
+            result: `Z = ${z.toFixed(2)}°`,
+          },
+          {
+            title: "Enlem: φ = δ ± Z",
+            expression: `${v.dec}° ${sign >= 0 ? "+" : "−"} ${z.toFixed(2)}°`,
+            result: `φ = ${Math.abs(lat).toFixed(2)}° ${hemis}`,
+            hint: "Z ile δ aynı adda ise toplanır, zıt adda ise çıkarılır (işaretler otomatik).",
+          },
+        ];
+      },
+    },
+    {
+      id: "sight-reduction",
+      name: "Mevki Hattı Zinciri (Sight Reduction)",
+      group: "Göksel Seyir",
+      formula: "GHA → LHA = GHA±λ → Hc, Z → Ho = Hs±düzeltme → a = Ho−Hc",
+      variables: [
+        { symbol: "GHA", label: "Greenwich saat açısı", unit: "°" },
+        { symbol: "λ", label: "Boylam (E: +, W: −)", unit: "°" },
+        { symbol: "φ", label: "AP enlemi", unit: "°" },
+        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+        { symbol: "Hs", label: "Sekstant irtifası", unit: "°" },
+        { symbol: "a", label: "Intercept (yükseklik farkı)", unit: "NM" },
+      ],
+      source: { code: "Marcq St-Hilaire — tam sight reduction zinciri (AP → LOP)" },
+      note: "Almanac'tan GHA ve δ alınır. Güney enlem/deklinasyon (−), batı boylam (−) girilir. Tüm düzeltmeler dakika (′).",
+      inputs: [
+        { key: "gha", label: "GHA", unit: "°", placeholder: "130.5" },
+        { key: "lon", label: "Boylam (λ, E:+ W:−)", unit: "°", placeholder: "28" },
+        { key: "lat", label: "AP Enlemi (φ)", unit: "°", placeholder: "40" },
+        { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
+        { key: "hs", label: "Sekstant İrtifası (Hs)", unit: "°", placeholder: "45.5" },
+        { key: "ie", label: "Endeks Hatası (IE)", unit: "′", placeholder: "-1.5" },
+        { key: "dip", label: "Dip", unit: "′", placeholder: "6.1" },
+        { key: "r", label: "Ana Düzeltme (R)", unit: "′", placeholder: "14.5" },
+      ],
+      calculate: (v) => {
+        const rad = (x: number) => (x * Math.PI) / 180;
+        const norm = (x: number) => ((x % 360) + 360) % 360;
+        const lha = norm(v.gha + v.lon);
+        const sinHc =
+          Math.sin(rad(v.lat)) * Math.sin(rad(v.dec)) +
+          Math.cos(rad(v.lat)) * Math.cos(rad(v.dec)) * Math.cos(rad(lha));
+        const hc = (Math.asin(Math.max(-1, Math.min(1, sinHc))) * 180) / Math.PI;
+        const denom = Math.cos(rad(v.lat)) * Math.cos(rad(hc));
+        let z = 0;
+        if (Math.abs(denom) >= 1e-9) {
+          let cosZ = (Math.sin(rad(v.dec)) - Math.sin(rad(v.lat)) * Math.sin(rad(hc))) / denom;
+          cosZ = Math.max(-1, Math.min(1, cosZ));
+          z = (Math.acos(cosZ) * 180) / Math.PI;
+        }
+        const ho = (v.hs * 60 + v.ie - v.dip + v.r) / 60;
+        const aMin = (ho - hc) * 60;
+        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        return [
+          { label: "LHA", value: `${lha.toFixed(2)} °` },
+          { label: "Hesaplanan İrtifa (Hc)", value: `${hc.toFixed(2)} °` },
+          { label: "Azimut Açısı (Z)", value: `${z.toFixed(1)} °` },
+          { label: "Gözlenen İrtifa (Ho)", value: `${ho.toFixed(3)} °` },
+          { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM ${yon}` },
+        ];
+      },
+      steps: (v) => {
+        const rad = (x: number) => (x * Math.PI) / 180;
+        const norm = (x: number) => ((x % 360) + 360) % 360;
+        const lha = norm(v.gha + v.lon);
+        const sinHc =
+          Math.sin(rad(v.lat)) * Math.sin(rad(v.dec)) +
+          Math.cos(rad(v.lat)) * Math.cos(rad(v.dec)) * Math.cos(rad(lha));
+        const hc = (Math.asin(Math.max(-1, Math.min(1, sinHc))) * 180) / Math.PI;
+        const denom = Math.cos(rad(v.lat)) * Math.cos(rad(hc));
+        let cosZ = 0;
+        let z = 0;
+        if (Math.abs(denom) >= 1e-9) {
+          cosZ = Math.max(-1, Math.min(1, (Math.sin(rad(v.dec)) - Math.sin(rad(v.lat)) * Math.sin(rad(hc))) / denom));
+          z = (Math.acos(cosZ) * 180) / Math.PI;
+        }
+        const ho = (v.hs * 60 + v.ie - v.dip + v.r) / 60;
+        const aMin = (ho - hc) * 60;
+        const yon = aMin >= 0 ? "Toward (cisme doğru)" : "Away (cisimden uzağa)";
+        return [
+          {
+            title: "1) Yerel Saat Açısı (LHA) = GHA ± λ",
+            expression: `${v.gha}° + (${v.lon}°) = ${(v.gha + v.lon).toFixed(2)}° → 0–360° normalize`,
+            result: `LHA = ${lha.toFixed(2)}°`,
+            hint: "Doğu boylam (+) eklenir, batı boylam (−) çıkarılır. Sonuç 0–360° aralığına indirgenir.",
+          },
+          {
+            title: "2) Hesaplanan İrtifa (Hc)",
+            expression: `sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA) = ${sinHc.toFixed(4)}`,
+            result: `Hc = arcsin(${sinHc.toFixed(4)}) = ${hc.toFixed(2)}°`,
+            hint: "AP (varsayılan mevki) enlemi ile cismin teorik yüksekliği.",
+          },
+          {
+            title: "3) Azimut Açısı (Z)",
+            expression: `cos(Z) = (sinδ − sinφ·sinHc)/(cosφ·cosHc) = ${cosZ.toFixed(4)}`,
+            result: `Z = ${z.toFixed(1)}°`,
+            hint: "Z, mevki hattının (LOP) çiziminde kullanılan azimut yönüdür.",
+          },
+          {
+            title: "4) Gözlenen İrtifa (Ho) = Hs ± düzeltmeler",
+            expression: `${v.hs}° + (${v.ie}′ IE) − ${v.dip}′ Dip + ${v.r}′ R`,
+            result: `Ho = ${ho.toFixed(3)}°`,
+            hint: "Sekstant okuması Hs, endeks hatası/dip/ana düzeltme ile gerçek irtifaya çevrilir.",
+          },
+          {
+            title: "5) Intercept (a) = Ho − Hc",
+            expression: `(${ho.toFixed(3)}° − ${hc.toFixed(2)}°) × 60 = ${aMin.toFixed(1)} ′`,
+            result: `a = ${Math.abs(aMin).toFixed(1)} NM — ${yon}`,
+            hint: "AP'den azimut (Zn) yönünde a kadar bu yöne gidilerek mevki hattı (LOP) çizilir; iki LOP kesişimi mevkidir.",
+          },
         ];
       },
     },

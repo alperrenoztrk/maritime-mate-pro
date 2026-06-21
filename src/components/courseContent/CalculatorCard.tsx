@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Calculator } from "lucide-react";
+import { Calculator, ListOrdered } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import type { CourseEntry } from "@/data/courseContent/types";
+import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
+import { StepByStepSolution } from "./StepByStepSolution";
+import { buildAutoSteps } from "./autoSteps";
 
 /**
  * Tek bir bağlı hesaplayıcı kartı. Üstte formülü gösterir (Formüller
@@ -17,19 +19,27 @@ import type { CourseEntry } from "@/data/courseContent/types";
 export function CalculatorCard({ entry }: { entry: CourseEntry }) {
   const [vals, setVals] = useState<Record<string, string>>({});
   const [results, setResults] = useState<{ label: string; value: string }[] | null>(null);
+  const [steps, setSteps] = useState<CalcStep[] | null>(null);
+  const [showSteps, setShowSteps] = useState(false);
+  const [numVals, setNumVals] = useState<Record<string, number>>({});
 
   const inputs = entry.inputs ?? [];
 
   const handleCalc = () => {
     if (!entry.calculate) return;
-    const numVals: Record<string, number> = {};
+    const computed: Record<string, number> = {};
     for (const inp of inputs) {
       const v = parseFloat(vals[inp.key] || "0");
       if (isNaN(v)) return;
-      numVals[inp.key] = v;
+      computed[inp.key] = v;
     }
-    const r = entry.calculate(numVals);
-    setResults(Array.isArray(r) ? r : [r]);
+    const r = entry.calculate(computed);
+    const resultList = Array.isArray(r) ? r : [r];
+    setResults(resultList);
+    setNumVals(computed);
+    // Elle yazılmış zengin adımlar önceliklidir; yoksa genel otomatik adımlar.
+    setSteps(entry.steps ? entry.steps(computed) : buildAutoSteps(entry, computed, resultList));
+    setShowSteps(false);
   };
 
   return (
@@ -70,6 +80,22 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
               </div>
             ))}
           </div>
+        )}
+        {results && steps && steps.length > 0 && (
+          <>
+            <Button
+              onClick={() => setShowSteps((s) => !s)}
+              size="sm"
+              variant="ghost"
+              className="w-full gap-2 text-primary"
+            >
+              <ListOrdered className="h-4 w-4" />
+              {showSteps ? "Adımları Gizle" : "Çözümü Adım Adım Göster"}
+            </Button>
+            {showSteps && (
+              <StepByStepSolution entry={entry} vals={numVals} steps={steps} />
+            )}
+          </>
         )}
         {entry.source && (
           <p className="text-[11px] text-muted-foreground">

@@ -148,6 +148,25 @@ const files = [
   ...UI_COMPONENT_FILES,
 ];
 
+// Fixed UI strings that live as plain JSX text / string-literal expressions in
+// components (not ALLOWED_PROPS props, not [data-translatable]), so the AST
+// walker above would miss them. Kept here verbatim (must match source byte-for-
+// byte after trim, or the runtime dictionary lookup misses). Sources:
+//   - src/components/courseContent/autoSteps.ts
+//   - src/components/courseContent/StepByStepSolution.tsx
+//   - src/components/courseContent/CalculatorCard.tsx
+const UI_SEED_STRINGS = [
+  'Verilen değerler',
+  'Uygulanan formül',
+  'Adım Adım Çözüm',
+  'Çözümü Adım Adım Göster',
+  'Adımları Gizle',
+  'Bu işlemi yapay zekaya sor',
+  'Yapay Zeka Açıklaması',
+  'Hazırlanıyor...',
+  'Açıklama alınamadı. Lütfen tekrar deneyin.',
+];
+
 for (const file of files) {
   const text = fs.readFileSync(file, 'utf8');
   const sf = ts.createSourceFile(
@@ -187,6 +206,8 @@ for (const file of files) {
   };
   walk(sf);
 }
+
+for (const seed of UI_SEED_STRINGS) addSegment(seed);
 
 const list = [...strings].sort((a, b) => a.localeCompare(b, 'tr'));
 fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
