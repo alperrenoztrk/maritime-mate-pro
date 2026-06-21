@@ -9,7 +9,7 @@ export interface SearchItem {
 export const searchIndex: SearchItem[] = [
   // Ana Sayfalar
   { title: "Ana Sayfa", path: "/", category: "Genel" },
-  { title: "Hesaplama Merkezi", path: "/calculations", category: "Genel", keywords: ["calculator", "hesap"] },
+  { title: "Hesaplamalar", path: "/calculations", category: "Genel", keywords: ["calculator", "hesap"] },
   { title: "Dersler", path: "/lessons", category: "Genel", keywords: ["ders", "konu", "eğitim"] },
   { title: "Denizcilik Sözlüğü", path: "/glossary", category: "Genel", keywords: ["sözlük", "terim", "kelime"] },
   { title: "Personel Hiyerarşisi", path: "/crew", category: "Genel", keywords: ["mürettebat", "kaptan", "zabitan"] },

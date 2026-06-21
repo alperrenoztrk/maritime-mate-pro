@@ -250,7 +250,7 @@ export default function CalculationsMenu() {
         <div className="relative z-10 mx-auto flex max-w-lg flex-col gap-5">
           {/* Header */}
           <header className="space-y-1">
-            <h1 className="text-xl font-bold tracking-tight text-foreground">Hesaplama Merkezi</h1>
+            <h1 className="text-xl font-bold tracking-tight text-foreground">Hesaplamalar</h1>
             <p className="text-xs text-muted-foreground">Draft, stabilite, yük, rota, zaman ve tüketim hesapları</p>
           </header>
 
