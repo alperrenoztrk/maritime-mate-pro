@@ -25,15 +25,6 @@ export default function CourseCalculationsPage() {
       <div className="container mx-auto max-w-4xl space-y-6 p-4">
         <CourseTopicHeader topic={topic} section="calculations" />
 
-        {topic.advancedTool && (
-          <Link
-            to={topic.advancedTool.href}
-            className="flex items-center justify-between rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm transition-colors hover:bg-primary/10"
-          >
-            <span className="font-medium text-foreground">{topic.advancedTool.label}</span>
-            <ArrowRight className="h-4 w-4 text-primary" />
-          </Link>
-        )}
 
         <CalculatorList topic={topic} />
 
