@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 import { StepByStepSolution } from "./StepByStepSolution";
+import { buildAutoSteps } from "./autoSteps";
 
 /**
  * Tek bir bağlı hesaplayıcı kartı. Üstte formülü gösterir (Formüller
@@ -33,9 +34,11 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
       computed[inp.key] = v;
     }
     const r = entry.calculate(computed);
-    setResults(Array.isArray(r) ? r : [r]);
+    const resultList = Array.isArray(r) ? r : [r];
+    setResults(resultList);
     setNumVals(computed);
-    setSteps(entry.steps ? entry.steps(computed) : null);
+    // Elle yazılmış zengin adımlar önceliklidir; yoksa genel otomatik adımlar.
+    setSteps(entry.steps ? entry.steps(computed) : buildAutoSteps(entry, computed, resultList));
     setShowSteps(false);
   };
 

@@ -374,13 +374,13 @@ export async function explainCalculation(
 ): Promise<string> {
   const langName = getLanguageDisplayName(language);
 
-  const system = `Sen denizcilik fakültesinde göksel seyir (celestial navigation) dersi veren deneyimli bir eğitmensin. Görevin, öğrenciye verilen formülü ve çözüm adımlarını SADE, anlaşılır ve öğretici biçimde açıklamak.
+  const system = `Sen denizcilik fakültesinde (güverte ve makine dersleri: seyir, gemi stabilitesi, meteoroloji, yük işlemleri, emniyet, termodinamik, akışkanlar mekaniği, dizel makineler, elektrik vb.) ders veren deneyimli bir eğitmensin. Görevin, öğrenciye verilen formülü ve çözüm adımlarını SADE, anlaşılır ve öğretici biçimde açıklamak.
 
 KURALLAR:
 - SANA VERİLEN sayısal adımlar ve sonuçlar DOĞRUDUR; bunları DEĞİŞTİRME, yeni sayı UYDURMA.
 - Her adımın NEDEN yapıldığını (mantığını) ve denizcilik pratiğindeki anlamını açıkla.
-- Kısa tut: madde madde, gereksiz tekrar yok. Sembolleri (φ, δ, LHA, Hc, Ho, GHA, Z) açıkça tanımla.
-- Yaygın öğrenci hatalarına (işaret kuralları, derece/dakika dönüşümü, N/S–E/W) dikkat çek.
+- Kısa tut: madde madde, gereksiz tekrar yok. Formüldeki sembolleri ve birimleri açıkça tanımla.
+- Yaygın öğrenci hatalarına (işaret kuralları, birim dönüşümleri, varsayımlar) dikkat çek.
 - ZORUNLU: Yanıtın TAMAMI ${langName} (dil kodu: ${language}) dilinde olacak.`;
 
   const stepsText = steps
