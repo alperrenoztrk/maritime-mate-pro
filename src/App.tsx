@@ -39,7 +39,6 @@ const Economics = lazy(() => import("./pages/Economics"));
 const StabilityAssistantPage = lazy(() => import("./pages/StabilityAssistant"));
 const StabilityGZIMO = lazy(() => import("./pages/StabilityGZIMO"));
 const StabilityRules = lazy(() => import("./pages/StabilityRules"));
-const StabilityAdvancedPage = lazy(() => import("./pages/StabilityAdvanced"));
 const StabilityGrainPage = lazy(() => import("./pages/StabilityGrain"));
 const StabilityGMPage = lazy(() => import("./pages/StabilityGM"));
 const StabilityWeightShiftPage = lazy(() => import("./pages/StabilityWeightShift"));
@@ -234,7 +233,6 @@ const AnimatedRoutes = () => {
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />
         <Route path="/stability/rules" element={<PageTransition><StabilityRules /></PageTransition>} />
         <Route path="/stability/gz-imo" element={<PageTransition><StabilityGZIMO /></PageTransition>} />
-        <Route path="/stability/advanced" element={<PageTransition><StabilityAdvancedPage /></PageTransition>} />
         <Route path="/stability/grain" element={<PageTransition><StabilityGrainPage /></PageTransition>} />
         <Route path="/stability/gm" element={<PageTransition><StabilityGMPage /></PageTransition>} />
         <Route path="/stability/weight-shift" element={<PageTransition><StabilityWeightShiftPage /></PageTransition>} />

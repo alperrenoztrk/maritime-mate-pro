@@ -4791,34 +4791,6 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Calculator className="h-5 w-5" />
-                Gelişmiş Hesaplamalar
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Spheroidal Mesafe</Label>
-                  <p className="text-lg font-semibold text-info">{result.spheroidalDistance.toFixed(3)} nm</p>
-                  <p className="text-xs text-muted-foreground">WGS84 elipsoidi</p>
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Yakıt Maliyeti</Label>
-                  <p className="text-lg font-semibold text-success">${result.totalFuelCost.toFixed(0)}</p>
-                  <p className="text-xs text-muted-foreground">Tahmini maliyet</p>
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Hava Gecikmesi</Label>
-                  <p className="text-lg font-semibold text-warning">{result.alternateETA}</p>
-                  <p className="text-xs text-muted-foreground">Hava koşulları ile</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
                 <Wind className="h-5 w-5" />
                 Hava Durumu Analizi
               </CardTitle>
@@ -4842,35 +4814,6 @@ export const NavigationCalculations = ({ initialTab }: { initialTab?: string } =
                 <div className="space-y-2 p-3 bg-muted/50 rounded-lg">
                   <Label className="text-sm font-medium text-muted-foreground">Güvenli Rota</Label>
                   <p className="text-lg font-semibold">{result.safeCourse.toFixed(1)}°</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Waves className="h-5 w-5" />
-                Gelişmiş Gelgit Analizi
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Spring/Neap Faktörü</Label>
-                  <p className="text-lg font-semibold">{result.springNeapFactor.toFixed(2)}</p>
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Akımı Doğrultusu</Label>
-                  <p className="text-lg font-semibold">{result.tidalStreamDirection.toFixed(1)}°</p>
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Değişim Hızı</Label>
-                  <p className="text-lg font-semibold">{result.tidalAcceleration.toFixed(2)} m/sa</p>
-                </div>
-                <div className="space-y-1">
-                  <Label className="text-sm font-medium text-muted-foreground">Gelgit Akımı</Label>
-                  <p className="text-lg font-semibold">{result.tidalStream.toFixed(1)} knot</p>
                 </div>
               </div>
             </CardContent>

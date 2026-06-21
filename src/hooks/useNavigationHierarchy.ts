@@ -91,7 +91,7 @@ const navigationRules: NavigationRule[] = [
   },
   // Tüm stability alt sayfaları → Hesaplamalar (üst menü)
   {
-    pattern: /^\/stability\/(assistant|rules|gz-imo|advanced|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
+    pattern: /^\/stability\/(assistant|rules|gz-imo|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
     parent: () => '/calculations',
   },
   { pattern: /^\/stability$/, parent: () => '/calculations' },

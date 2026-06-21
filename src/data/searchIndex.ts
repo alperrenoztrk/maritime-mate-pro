@@ -42,7 +42,6 @@ export const searchIndex: SearchItem[] = [
   { title: "Pratik Stabilite", path: "/stability/practical", category: "Stabilite" },
   { title: "FWA Hesaplama", path: "/stability/practical/fwa", category: "Stabilite", keywords: ["fresh water allowance", "tatlı su"] },
   { title: "Tank Hesabı", path: "/stability/practical/tank", category: "Stabilite" },
-  { title: "İleri Stabilite", path: "/stability/advanced", category: "Stabilite" },
   { title: "Stabilite Analizi", path: "/stability/analysis", category: "Stabilite" },
   
   // Meteoroloji
