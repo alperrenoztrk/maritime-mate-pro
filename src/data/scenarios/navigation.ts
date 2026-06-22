@@ -340,4 +340,225 @@ export const navigationScenarios: Scenario[] = [
     debrief:
       "İki direk feneri bir hatta + her iki borda feneri birlikte görünüyorsa durum HEAD-ON'dur (Kural 14). Çözüm: her iki gemi de SANCAĞA döner ve İSKELE-İSKELE (port-to-port) geçer. Manevra erken/belirgin olmalı ve 'bir kısa düdük' ile bildirilmelidir (Kural 34(a)). Head-on'da stand-on gemi yoktur — yükümlülük karşılıklıdır.",
   },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    id: "stand-on-rule17",
+    topicKey: "navigation",
+    title: "Yol Tutan Gemi (Stand-on): Karşı Manevra Yapmıyor",
+    level: "officer",
+    briefing:
+      "Açık görüşte vardiyadasınız, rota 000°T, 14 knot. İSKELE tarafınızdan (nispi 315°) bir gemi kavşak rotasıyla yaklaşıyor; çatışma riski var. Kavşak kuralına göre yol verme yükümlüsü O gemidir; siz yol tutan (stand-on) gemisiniz.",
+    learningGoals: [
+      "Kavşakta stand-on (yol tutan) gemiyi tanımak",
+      "Kural 17'nin aşamalı yetkisini doğru uygulamak",
+      "İskele tarafındaki gemiye iskeleye dönmemek (Kural 17(c))",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Gemi iskelenizde ve kavşak rotasında; yol verme yükümlüsü o. Henüz herhangi bir manevra yapmadı.",
+        question: "İlk aşamada doğru davranış nedir?",
+        choices: [
+          {
+            text: "Yol tutan gemiyim; rota ve hızımı korurum",
+            outcome: "safe",
+            feedback:
+              "Doğru. Başlangıçta stand-on gemi rota ve hızını korur ki karşı gemi durumu doğru değerlendirip manevra yapabilsin.",
+            source: { code: "COLREG Kural 17(a)(i)", detail: "Stand-on: rota/hızı koru" },
+            next: "step2",
+          },
+          {
+            text: "Hemen ben manevra yaparım, yol veririm",
+            outcome: "risky",
+            feedback:
+              "Erken. Bu aşamada beklenmeyen bir manevra, karşı geminin değerlendirmesini bozabilir. Başlangıçta rotayı korumalısınız.",
+            source: { code: "COLREG Kural 17(a)(i)", detail: "Önce rotayı koru" },
+            next: "step2",
+          },
+          {
+            text: "Yol verme yükümlüsü benim, hızı keserim",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Gemi iskelenizde olduğundan yol verme yükümlüsü O. Stand-on rolünü doğru tanımlamalısınız.",
+            source: { code: "COLREG Kural 15", detail: "Give-way / stand-on ayrımı" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation:
+          "Mesafe kapanıyor ama yol verme yükümlüsü gemi hâlâ hiçbir manevra yapmıyor. Stand-on yetkiniz değişiyor.",
+        question: "Şimdi ne yaparsınız?",
+        choices: [
+          {
+            text: "Yol verenin manevra yapmadığı belli oldu; çatışmayı önlemek için kendim manevra yaparım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Kural 17(a)(ii) yol verenin gerekeni yapmadığı belli olduğunda stand-on gemiye tek başına manevra yapma yetkisi verir.",
+            source: { code: "COLREG Kural 17(a)(ii)", detail: "Stand-on manevra yapabilir" },
+            next: "step3",
+          },
+          {
+            text: "Kural kural; sonuna kadar rotamı korurum",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Rotayı körü körüne korumak çatışmaya götürür. Kural 17 bu noktada manevraya İZİN/EMİR verir.",
+            source: { code: "COLREG Kural 17(a)(ii)-(b)", detail: "Gerektiğinde manevra et" },
+            next: "step3",
+          },
+          {
+            text: "VHF'ten karşıyı arayıp 'rotamı koruyorum' derim",
+            outcome: "risky",
+            feedback:
+              "Yetersiz. VHF anlaşmasına güvenmek yerine kurala uygun fiziksel manevra hazırlığı yapın.",
+            source: { code: "COLREG Kural 17 / MGN", detail: "VHF'e güvenme" },
+            next: "step3",
+          },
+        ],
+      },
+      {
+        id: "step3",
+        situation:
+          "Tek başına manevra yapacaksınız. Karşı gemi sizin İSKELE tarafınızda.",
+        question: "Hangi manevra Kural 17'ye uygundur?",
+        choices: [
+          {
+            text: "Sancağa dönerim veya hızı keserim; iskeleye dönmem",
+            outcome: "safe",
+            feedback:
+              "Doğru. Kural 17(c), kavşakta manevra yapan güçle yürüyen geminin, iskelesindeki gemi için iskeleye dönmemesini söyler. Sancağa dönüş veya hız kesme uygundur.",
+            source: { code: "COLREG Kural 17(c)", detail: "İskeledeki gemiye iskele yasak" },
+          },
+          {
+            text: "İskeleye dönerim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. İskele tarafınızdaki gemiye doğru iskeleye dönmek tam da kaçınılması gereken manevradır.",
+            source: { code: "COLREG Kural 17(c)", detail: "İskele dönüş yasak" },
+          },
+          {
+            text: "Hiçbir şey yapmam, çarpışmayı karşı gemi önlesin",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Çatışma yalnızca karşı geminin eylemiyle önlenemeyecek hâle geldiğinde stand-on gemi de çatışmayı önleyecek en iyi manevrayı yapmak ZORUNDADIR.",
+            source: { code: "COLREG Kural 17(b)", detail: "Stand-on da önlem almak zorundadır" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Kavşakta gemiyi İSKELENİZDE görüyorsanız stand-on (yol tutan) gemisiniz. Aşama aşama Kural 17: önce rota/hızı koru (17(a)(i)); yol veren gerekeni yapmıyorsa kendin manevra yapabilirsin (17(a)(ii)); çatışma tek başına önlenemeyecekse manevra yapmak ZORUNDASIN (17(b)); ve iskelendeki gemi için İSKELEYE DÖNME (17(c)) — sancağa dön veya hızı kes.",
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    id: "overtaking-rule13",
+    topicKey: "navigation",
+    title: "Geçme Durumu (Overtaking)",
+    level: "cadet",
+    briefing:
+      "Geceleyin, daha yavaş bir gemiye arkadan yetişiyorsunuz. Geminin yalnızca beyaz PUPA fenerini görüyorsunuz (borda fenerlerini görmüyorsunuz) ve ona kıçından, kıç bordasının 22.5°'sinden daha geriden yaklaşıyorsunuz.",
+    learningGoals: [
+      "Fener görünümünden geçme (overtaking) durumunu tanımak",
+      "Kural 13'e göre geçen geminin yol verme yükümlülüğünü bilmek",
+      "Tamamen geçip açılana dek yükümlülüğün sürdüğünü kavramak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Önünüzdeki gemiden yalnızca pupa (kıç) fenerini görüyorsunuz; ona kıç tarafından yetişiyorsunuz.",
+        question: "Bu durum nedir?",
+        choices: [
+          {
+            text: "Geçme durumu (overtaking)",
+            outcome: "safe",
+            feedback:
+              "Doğru. Bir gemiye kıç bordasının 22.5°'sinden daha geriden yaklaşıyor ve yalnızca pupa fenerini görüyorsanız, geçen (overtaking) gemisinizdir.",
+            source: { code: "COLREG Kural 13(b)", detail: "Pupa feneri görünümü = geçme" },
+            next: "step2",
+          },
+          {
+            text: "Kavşak durumu (crossing)",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Kavşakta borda feneri (kırmızı/yeşil) görürsünüz. Yalnızca pupa feneri görüyorsanız durum geçmedir.",
+            source: { code: "COLREG Kural 13(c)", detail: "Şüphe varsa geçme kabul et" },
+            next: "step2",
+          },
+          {
+            text: "Pruva pruvaya (head-on)",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Head-on'da iki borda fenerini birlikte görürsünüz. Tek pupa feneri geçme durumudur.",
+            source: { code: "COLREG Kural 14", detail: "Head-on fener görünümü farklıdır" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Geçme durumunu teyit ettiniz.",
+        question: "Yükümlülüğünüz nedir?",
+        choices: [
+          {
+            text: "Geçen gemi olarak yol veririm; geçilen gemiden uzak dururum",
+            outcome: "safe",
+            feedback:
+              "Doğru. Geçen gemi, geçilen gemiye yol vermek zorundadır; geçilen gemi rota ve hızını korur.",
+            source: { code: "COLREG Kural 13(a)", detail: "Geçen gemi yol verir" },
+            next: "step3",
+          },
+          {
+            text: "Ben hızlıyım, geçilen gemi bana yol versin",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Yol verme yükümlüsü daima geçen gemidir; geçilen gemi stand-on'dır.",
+            source: { code: "COLREG Kural 13(a)", detail: "Yükümlülük geçen gemide" },
+            next: "step3",
+          },
+          {
+            text: "Kavşak gibi davranır, sancaktaki kural neyse onu uygularım",
+            outcome: "risky",
+            feedback:
+              "Hatalı çerçeve. Bu bir geçme durumudur; kavşak kuralları değil Kural 13 geçerlidir.",
+            source: { code: "COLREG Kural 13", detail: "Geçme, kavşaktan ayrıdır" },
+            next: "step3",
+          },
+        ],
+      },
+      {
+        id: "step3",
+        situation:
+          "Geçerken iki gemi arasındaki kerteriz yavaşça değişti ve gemi artık baş omuzluğunuza düşmeye başladı.",
+        question: "Kerteriz değiştiğine göre durum kavşağa mı döndü?",
+        choices: [
+          {
+            text: "Hayır; tamamen geçip açılana dek geçen gemi olarak yol vermeye devam ederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Kural 13(d): sonradan kerterizin değişmesi durumu kavşağa çevirmez; geçen gemi tamamen geçip açılana dek yükümlüdür.",
+            source: { code: "COLREG Kural 13(d)", detail: "Kerteriz değişimi durumu değiştirmez" },
+          },
+          {
+            text: "Evet; artık kavşak oldu, stand-on gemi benim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Kerteriz değişimi geçmeyi kavşağa çevirmez; yükümlülüğünüz sürer. Aksini düşünmek kazaya yol açar.",
+            source: { code: "COLREG Kural 13(d)", detail: "Geçme yükümlülüğü sürer" },
+          },
+          {
+            text: "Geçişi hızlandırmak için geçilen geminin hemen önünden keserim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yeterli mesafe bırakmadan önden kesmek çatışma riski yaratır; emniyetli mesafede geçip açılmalısınız.",
+            source: { code: "COLREG Kural 13(a) & 8", detail: "Emniyetli mesafede geç" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Bir gemiye kıç bordasının 22.5°'sinden geriden yaklaşıp yalnızca PUPA fenerini görüyorsanız durum GEÇME'dir (Kural 13). Geçen gemi yol verir; geçilen gemi rota/hızını korur. En kritik nokta: sonradan kerteriz değişse bile durum kavşağa DÖNMEZ (13(d)) — tamamen geçip açılana dek yükümlülüğünüz sürer.",
+  },
 ];
