@@ -1,19 +1,19 @@
 import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
-import { getTopicContentsByCategory } from "@/data/topicContents";
+import { getBetaTopicTitles } from "@/data/betaLessons";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
 import { getScenariosByTopic } from "@/data/scenarios";
 import { BookOpen, ChevronRight, GraduationCap, Play, Ship, Sparkles } from "lucide-react";
 
 /**
- * "Dersler Beta" — bir kategorinin (pilot: Seyir) konu listesi.
+ * "Dersler Beta" — bir kategorinin (güverte veya makine) konu listesi.
  * Rehberli (Duolingo) dersleri, senaryoları ve tüm konu anlatımlarını sunar.
- * İçerik mevcut veri kaynağından (read-only) gelir.
+ * İçerik mevcut veri kaynağından (read-only, normalize) gelir.
  */
 export default function LessonBetaTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = calculationCategories.find((c) => c.id === categoryId);
-  const readingTitles = Object.keys(getTopicContentsByCategory(categoryId));
+  const readingTitles = getBetaTopicTitles(categoryId);
   const flows = getLessonFlowsByTopic(categoryId);
   const flowTitles = new Set(flows.map((f) => f.topicTitle));
   const scenarios = getScenariosByTopic(categoryId);
@@ -43,7 +43,7 @@ export default function LessonBetaTopicsPage() {
             <h1 className="text-2xl font-bold text-foreground">{category.title} · Beta</h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            Rehberli ders (önce anlat → karışık sor), gerçek vardiya senaryoları ve AI eğitmen.
+            Rehberli ders, gerçek senaryolar ve AI eğitmen · {readingTitles.length} konu
           </p>
         </header>
 
@@ -66,12 +66,12 @@ export default function LessonBetaTopicsPage() {
           </Link>
         )}
 
-        {/* Rehberli dersler (Duolingo) */}
+        {/* Rehberli dersler (Duolingo akışı yazılmış konular) */}
         {flows.length > 0 && (
           <section className="space-y-3">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-violet-500" />
-              <h2 className="text-lg font-semibold text-foreground">Rehberli Dersler</h2>
+              <h2 className="text-lg font-semibold text-foreground">Rehberli Dersler (Anlat → Karışık Sor)</h2>
             </div>
             {flows.map((flow) => (
               <div
@@ -102,7 +102,7 @@ export default function LessonBetaTopicsPage() {
         )}
 
         {/* Tüm konu anlatımları (read-only içerik) */}
-        {readingTitles.length > 0 && (
+        {readingTitles.length > 0 ? (
           <section className="space-y-3">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-primary" />
@@ -127,6 +127,11 @@ export default function LessonBetaTopicsPage() {
               ))}
             </div>
           </section>
+        ) : (
+          <p className="rounded-xl border border-border/40 bg-card/60 p-5 text-center text-sm text-muted-foreground">
+            Bu kategori için konu anlatımı içeriği yakında eklenecek. Şimdilik klasik Dersler
+            bölümündeki formül, hesaplama, kural ve quizleri kullanabilirsiniz.
+          </p>
         )}
 
         <div className="flex justify-center pt-2">

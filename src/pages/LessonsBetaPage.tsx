@@ -1,25 +1,72 @@
 import { Link } from "react-router-dom";
-import { calculationCategories } from "@/data/calculationCenterConfig";
+import { getBetaCategories, type BetaCategory } from "@/data/betaLessons";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
 import { hasScenarios } from "@/data/scenarios";
-import { ChevronRight, FlaskConical, GraduationCap, Sparkles } from "lucide-react";
+import { ChevronRight, FlaskConical, GraduationCap, Ship, Sparkles, Wrench } from "lucide-react";
 
 /**
  * "Dersler Beta" giriş sayfası.
  *
- * Orijinal `LessonsPage`'in beta muadili: aynı kategori verisini kullanır ama
- * beta route'larına yönlendirir ve yeni deneyimi (Duolingo akışı, senaryolar,
- * AI eğitmen) tanıtır. Pilot: yalnızca Seyir aktiftir.
+ * Orijinal "Dersler"e dokunmadan, tüm güverte ve makine kategorilerini listeler.
+ * İçeriği olan kategoriler açılabilir; konu anlatımı henüz olmayanlar "yakında".
  */
 export default function LessonsBetaPage() {
-  const deckCategories = calculationCategories.filter(
-    (category) =>
-      (!category.group || category.group === "deck") &&
-      !(category.id as string).startsWith("machine-"),
-  );
+  const categories = getBetaCategories();
+  const deck = categories.filter((c) => c.group === "deck");
+  const machine = categories.filter((c) => c.group === "machine");
 
-  const isEnabled = (categoryId: string) =>
-    getLessonFlowsByTopic(categoryId).length > 0 || hasScenarios(categoryId);
+  const renderCategory = (category: BetaCategory) => {
+    const CategoryIcon = category.icon;
+    const flowCount = getLessonFlowsByTopic(category.key).length;
+    const scn = hasScenarios(category.key);
+
+    const inner = (
+      <div className="flex items-center gap-3">
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}>
+          <CategoryIcon className="h-5 w-5" />
+        </div>
+        <div className="flex-1">
+          <div className="flex items-center gap-2">
+            <span className="text-base font-bold text-foreground">{category.title}</span>
+            {category.enabled ? (
+              <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300">
+                {category.topicCount} konu
+              </span>
+            ) : (
+              <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Yakında
+              </span>
+            )}
+          </div>
+          {category.enabled && (
+            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Sparkles className="h-3 w-3" />
+              {flowCount > 0 ? `${flowCount} rehberli ders · ` : ""}
+              {scn ? "senaryolar · " : ""}AI eğitmen
+            </span>
+          )}
+        </div>
+        {category.enabled && <ChevronRight className="h-5 w-5 text-muted-foreground" />}
+      </div>
+    );
+
+    return category.enabled ? (
+      <Link
+        key={category.key}
+        to={`/lessons-beta/${category.key}/topics`}
+        className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:border-violet-400/40 hover:bg-card"
+      >
+        {inner}
+      </Link>
+    ) : (
+      <div
+        key={category.key}
+        className="cursor-not-allowed rounded-2xl border border-border/40 bg-card/50 p-4 opacity-70"
+      >
+        {inner}
+      </div>
+    );
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 pb-24 pt-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
@@ -36,64 +83,25 @@ export default function LessonsBetaPage() {
           <h1 className="text-2xl font-bold text-foreground">Dersler Beta</h1>
           <p className="mx-auto max-w-xl text-sm text-muted-foreground">
             Önce anlat, sonra karışık sor (Duolingo tarzı) · gerçek vardiya senaryoları ·
-            sana özel AI eğitmen. Okuldan daha iyi öğrenmen için.
+            sana özel AI eğitmen. Güverte ve makine derslerinde okuldan daha iyi öğren.
           </p>
         </header>
 
-        <div className="flex flex-col gap-3">
-          {deckCategories.map((category) => {
-            const CategoryIcon = category.icon;
-            const enabled = isEnabled(category.id);
-            const flowCount = getLessonFlowsByTopic(category.id).length;
+        <section className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Ship className="h-5 w-5 text-blue-500" />
+            <h2 className="text-lg font-semibold text-foreground">Güverte</h2>
+          </div>
+          <div className="flex flex-col gap-3">{deck.map(renderCategory)}</div>
+        </section>
 
-            const inner = (
-              <div className="flex items-center gap-3">
-                <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}
-                >
-                  <CategoryIcon className="h-5 w-5" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-foreground">{category.title}</span>
-                    {enabled ? (
-                      <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300">
-                        Hazır
-                      </span>
-                    ) : (
-                      <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                        Yakında
-                      </span>
-                    )}
-                  </div>
-                  {enabled && (
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Sparkles className="h-3 w-3" /> {flowCount} rehberli ders · senaryolar · AI eğitmen
-                    </span>
-                  )}
-                </div>
-                {enabled && <ChevronRight className="h-5 w-5 text-muted-foreground" />}
-              </div>
-            );
-
-            return enabled ? (
-              <Link
-                key={category.id}
-                to={`/lessons-beta/${category.id}/topics`}
-                className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:border-violet-400/40 hover:bg-card"
-              >
-                {inner}
-              </Link>
-            ) : (
-              <div
-                key={category.id}
-                className="cursor-not-allowed rounded-2xl border border-border/40 bg-card/50 p-4 opacity-70"
-              >
-                {inner}
-              </div>
-            );
-          })}
-        </div>
+        <section className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Wrench className="h-5 w-5 text-slate-500" />
+            <h2 className="text-lg font-semibold text-foreground">Makine</h2>
+          </div>
+          <div className="flex flex-col gap-3">{machine.map(renderCategory)}</div>
+        </section>
 
         <div className="flex justify-center pt-2">
           <Link

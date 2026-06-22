@@ -1,14 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BookOpen, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { getLessonFlow } from "@/data/lessonFlow";
 import type { RecapQuestion } from "@/data/lessonFlow";
-import { getTopicContentsByCategory } from "@/data/topicContents";
-import type { TopicSection } from "@/data/navigationTopicContents";
+import { getBetaTopic, type BetaSection } from "@/data/betaLessons";
 
 /** Fisher-Yates karıştırma. */
 function shuffle<T>(arr: T[]): T[] {
@@ -21,37 +20,42 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 type FlowItem =
-  | { kind: "teach"; section: TopicSection }
+  | { kind: "teach"; section: BetaSection }
   | { kind: "quiz"; question: RecapQuestion };
 
 /**
- * "Dersler Beta" — Duolingo tarzı rehberli ders oturumu.
- * ÖNCE ANLAT (bölüm kartları) → SONRA ANLATILANI KARIŞIK SOR. Yanlışlar sonda
- * tekrar sorulur. İçerik mevcut anlatımlardan (read-only) gelir.
+ * "Dersler Beta" — rehberli ders oturumu (güverte + makine, tüm konular).
+ * Akış (lessonFlow) yazılmış konularda Duolingo modu: ÖNCE ANLAT → KARIŞIK SOR,
+ * yanlışlar sonda tekrar. Akışı henüz olmayan konularda REHBERLİ OKUMA modu:
+ * bölümler sırayla öğretilir (içerik mevcut anlatımdan, read-only).
  */
 export default function GuidedLessonSession() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
   const flow = getLessonFlow(categoryId, decodedTitle);
-  const content = getTopicContentsByCategory(categoryId)[decodedTitle];
+  const content = getBetaTopic(categoryId, decodedTitle);
+  const hasFlow = !!flow;
 
-  // Oturum öğeleri: blok blok öğret → blok sorularını karıştırıp sor.
+  // Oturum öğeleri: akış varsa blok blok öğret → karışık sor; yoksa sadece öğret.
   const mainItems = useMemo<FlowItem[]>(() => {
-    if (!flow || !content) return [];
+    if (!content) return [];
     const items: FlowItem[] = [];
-    const sectionByTitle = new Map(content.sections.map((s) => [s.title, s]));
-    for (const block of flow.blocks) {
-      for (const title of block.sectionTitles) {
-        const section = sectionByTitle.get(title);
-        if (section) items.push({ kind: "teach", section });
+    if (flow) {
+      const sectionByTitle = new Map(content.sections.map((s) => [s.title, s]));
+      for (const block of flow.blocks) {
+        for (const title of block.sectionTitles) {
+          const section = sectionByTitle.get(title);
+          if (section) items.push({ kind: "teach", section });
+        }
+        const blockQs = shuffle(
+          flow.questions.filter((q) => block.sectionTitles.includes(q.sectionRef)),
+        );
+        for (const question of blockQs) items.push({ kind: "quiz", question });
       }
-      const blockQs = shuffle(
-        flow.questions.filter((q) => block.sectionTitles.includes(q.sectionRef)),
-      );
-      for (const question of blockQs) items.push({ kind: "quiz", question });
+    } else {
+      for (const section of content.sections) items.push({ kind: "teach", section });
     }
     return items;
-    // flow/content kararlı olduğundan oturum başına bir kez kurulur.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [decodedTitle, categoryId]);
 
@@ -66,15 +70,15 @@ export default function GuidedLessonSession() {
 
   useEffect(() => setAnsweredThisStep(false), [pos, sessionKey]);
 
-  if (!flow || !content) {
+  if (!content || content.sections.length === 0) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
-        <p className="text-muted-foreground">Bu konu için rehberli oturum henüz hazırlanmadı.</p>
+        <p className="text-muted-foreground">Bu konu için anlatım içeriği henüz hazırlanmadı.</p>
         <Link
-          to={`/lessons-beta/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}
+          to={`/lessons-beta/${categoryId}/topics`}
           className="text-sm text-primary underline"
         >
-          Konu anlatımına dön
+          Konulara dön
         </Link>
       </div>
     );
@@ -101,7 +105,6 @@ export default function GuidedLessonSession() {
       setPos((p) => p + 1);
       return;
     }
-    // Ana akış bitti — yanlışlar varsa pekiştirme turunu ekle.
     if (repeatItems === null && wrong.length > 0) {
       setRepeatItems(shuffle(wrong).map((question) => ({ kind: "quiz", question })));
       setPos(mainItems.length);
@@ -123,10 +126,11 @@ export default function GuidedLessonSession() {
 
   const percent = answeredTotal > 0 ? Math.round((correct / answeredTotal) * 100) : 0;
   const weakSections = Array.from(new Set(wrong.map((q) => q.sectionRef)));
+  const isTeachStep = current?.kind === "teach";
+  const lastStep = pos === allItems.length - 1 && (repeatItems !== null || wrong.length === 0);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
-      {/* Üst bar: ilerleme + can */}
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur">
         <div className="mx-auto flex max-w-2xl items-center gap-3">
           <Link
@@ -137,9 +141,13 @@ export default function GuidedLessonSession() {
             <ArrowLeft className="h-5 w-5" />
           </Link>
           <Progress value={finished ? 100 : progress} className="h-3 flex-1" />
-          <span className="flex items-center gap-1 text-sm font-semibold text-rose-500">
-            <Heart className="h-4 w-4 fill-rose-500" /> {hearts}
-          </span>
+          {hasFlow ? (
+            <span className="flex items-center gap-1 text-sm font-semibold text-rose-500">
+              <Heart className="h-4 w-4 fill-rose-500" /> {hearts}
+            </span>
+          ) : (
+            <span className="text-xs font-medium text-muted-foreground">Rehberli Okuma</span>
+          )}
         </div>
       </div>
 
@@ -150,42 +158,46 @@ export default function GuidedLessonSession() {
 
         {finished ? (
           <div className="rounded-2xl border border-border/60 bg-card/85 p-6 text-center shadow-md backdrop-blur">
-            <Trophy className="mx-auto h-16 w-16 text-amber-500" />
-            <h2 className="mt-4 text-2xl font-bold text-foreground">Oturum Tamamlandı!</h2>
-            <div className="mt-3 text-5xl font-bold text-primary">%{percent}</div>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {correct} / {answeredTotal} doğru
-            </p>
-
-            {weakSections.length > 0 ? (
-              <div className="mt-5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-left">
-                <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
-                  Tekrar etmen iyi olur
-                </p>
-                <ul className="mt-2 space-y-1">
-                  {weakSections.map((s) => (
-                    <li key={s} className="text-sm text-foreground/85">• {s}</li>
-                  ))}
-                </ul>
-              </div>
+            {hasFlow ? (
+              <>
+                <Trophy className="mx-auto h-16 w-16 text-amber-500" />
+                <h2 className="mt-4 text-2xl font-bold text-foreground">Oturum Tamamlandı!</h2>
+                <div className="mt-3 text-5xl font-bold text-primary">%{percent}</div>
+                <p className="mt-2 text-sm text-muted-foreground">{correct} / {answeredTotal} doğru</p>
+                {weakSections.length > 0 ? (
+                  <div className="mt-5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-left">
+                    <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
+                      Tekrar etmen iyi olur
+                    </p>
+                    <ul className="mt-2 space-y-1">
+                      {weakSections.map((s) => (
+                        <li key={s} className="text-sm text-foreground/85">• {s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <p className="mt-4 text-sm text-emerald-600 dark:text-emerald-400">
+                    Harika! Tüm soruları doğru bildin. 🎉
+                  </p>
+                )}
+              </>
             ) : (
-              <p className="mt-4 text-sm text-emerald-600 dark:text-emerald-400">
-                Harika! Tüm soruları doğru bildin. 🎉
-              </p>
+              <>
+                <CheckCircle2 className="mx-auto h-16 w-16 text-emerald-500" />
+                <h2 className="mt-4 text-2xl font-bold text-foreground">Konuyu Tamamladın!</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Tüm bölümleri okudun. Pekiştirmek için AI eğitmene soru sorabilirsin.
+                </p>
+              </>
             )}
 
             <div className="mt-6 flex flex-col gap-2">
               <Button onClick={restart} className="w-full">
-                <RotateCcw className="mr-2 h-4 w-4" /> Tekrar Dene
+                <RotateCcw className="mr-2 h-4 w-4" /> Tekrar Başla
               </Button>
               <Button asChild variant="outline" className="w-full">
                 <Link to={`/lessons-beta/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}>
                   <Sparkles className="mr-2 h-4 w-4" /> AI Eğitmene Sor
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="w-full">
-                <Link to={`/lessons-beta/${categoryId}/scenarios`}>
-                  <BookOpen className="mr-2 h-4 w-4" /> İlgili Senaryoyu Dene
                 </Link>
               </Button>
             </div>
@@ -198,7 +210,7 @@ export default function GuidedLessonSession() {
               </div>
             )}
 
-            {current?.kind === "teach" ? (
+            {isTeachStep && current?.kind === "teach" ? (
               <>
                 <LessonTeachCard
                   section={current.section}
@@ -206,7 +218,7 @@ export default function GuidedLessonSession() {
                   topicTitle={content.title}
                 />
                 <Button onClick={advance} className="mt-6 w-full">
-                  Anladım, devam <ArrowRight className="ml-2 h-4 w-4" />
+                  {lastStep ? "Bitir" : "Anladım, devam"} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </>
             ) : current?.kind === "quiz" ? (
@@ -222,7 +234,7 @@ export default function GuidedLessonSession() {
                 />
                 {answeredThisStep && (
                   <Button onClick={advance} className="mt-5 w-full">
-                    Devam <ArrowRight className="ml-2 h-4 w-4" />
+                    {lastStep ? "Sonucu Gör" : "Devam"} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 )}
               </>

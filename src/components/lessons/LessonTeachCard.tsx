@@ -1,21 +1,21 @@
 import ReactMarkdown from "react-markdown";
-import type { TopicSection } from "@/data/navigationTopicContents";
+import type { BetaSection } from "@/data/betaLessons";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { resolveLessonImage } from "@/utils/lessonImageFallbacks";
 
 /**
- * Tek bir ders bölümünün (TopicSection) anlatım kartı.
+ * Tek bir normalize ders bölümünün (BetaSection) anlatım kartı.
  *
- * `LessonTopicDetailPage`'in bölüm render mantığı buraya ayrıştırıldı; hem beta
- * detay sayfası hem de Duolingo `GuidedLessonSession` "teach" adımı bunu kullanır.
- * Anlatım içeriği mevcut veri kaynağından gelir; burada YENİDEN yazılmaz.
+ * Hem güverte (nav/meteo/comm/stabilite) hem makine içeriğini render eder:
+ * metin, görsel, madde listesi, formül, çözümlü örnek ve tablo. Beta detay
+ * sayfası ve Duolingo `GuidedLessonSession` "teach" adımı bunu kullanır.
  */
 export function LessonTeachCard({
   section,
   categoryId,
   topicTitle,
 }: {
-  section: TopicSection;
+  section: BetaSection;
   categoryId: string;
   topicTitle: string;
 }) {
@@ -34,25 +34,27 @@ export function LessonTeachCard({
         </div>
       )}
 
-      <ReactMarkdown
-        components={{
-          p: ({ children }) => (
-            <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
-          ),
-          img: ({ src, alt }) => (
-            <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-              <img
-                src={resolveLessonImage(categoryId, src, section.title, topicTitle, alt)}
-                alt={alt || section.title}
-                className="h-48 w-full bg-muted/30 object-contain"
-                loading="lazy"
-              />
-            </div>
-          ),
-        }}
-      >
-        {stripDollarSigns(section.content)}
-      </ReactMarkdown>
+      {section.content && (
+        <ReactMarkdown
+          components={{
+            p: ({ children }) => (
+              <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
+            ),
+            img: ({ src, alt }) => (
+              <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
+                <img
+                  src={resolveLessonImage(categoryId, src, section.title, topicTitle, alt)}
+                  alt={alt || section.title}
+                  className="h-48 w-full bg-muted/30 object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ),
+          }}
+        >
+          {stripDollarSigns(section.content)}
+        </ReactMarkdown>
+      )}
 
       {section.bulletPoints && section.bulletPoints.length > 0 && (
         <ul className="space-y-2 pl-1">
@@ -73,7 +75,62 @@ export function LessonTeachCard({
           <p className="font-mono text-sm font-medium text-amber-700 dark:text-amber-400">
             {section.formula.text}
           </p>
-          <p className="mt-2 text-xs text-muted-foreground">{section.formula.description}</p>
+          {section.formula.description && (
+            <p className="mt-2 text-xs text-muted-foreground">{section.formula.description}</p>
+          )}
+        </div>
+      )}
+
+      {section.table && section.table.headers.length > 0 && (
+        <div className="overflow-x-auto rounded-lg border border-border/40">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-muted/50">
+              <tr>
+                {section.table.headers.map((h, i) => (
+                  <th key={i} className="px-3 py-2 font-semibold text-foreground">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.table.rows.map((row, ri) => (
+                <tr key={ri} className="border-t border-border/40">
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="px-3 py-2 text-foreground/80">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {section.example && (
+        <div className="overflow-hidden rounded-xl border border-sky-500/30 bg-sky-500/5">
+          <div className="bg-sky-500/10 px-4 py-2">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">
+              Çözümlü Örnek
+            </p>
+          </div>
+          <div className="space-y-2 p-4">
+            <p className="text-sm font-medium text-foreground">{section.example.problem}</p>
+            {section.example.steps && section.example.steps.length > 0 && (
+              <ol className="space-y-1 pl-1">
+                {section.example.steps.map((st, i) => (
+                  <li key={i} className="text-xs leading-relaxed text-foreground/80">
+                    {i + 1}. {st}
+                  </li>
+                ))}
+              </ol>
+            )}
+            {section.example.solution && (
+              <p className="text-xs leading-relaxed text-foreground/80">{section.example.solution}</p>
+            )}
+            {section.example.result && (
+              <p className="rounded-md bg-emerald-500/10 px-3 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300">
+                Sonuç: {section.example.result}
+              </p>
+            )}
+          </div>
         </div>
       )}
     </section>

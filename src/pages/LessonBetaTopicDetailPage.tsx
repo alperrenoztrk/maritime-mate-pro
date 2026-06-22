@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { Lightbulb, Play } from "lucide-react";
 import { stripMarkdown } from "@/utils/cleanText";
-import { getTopicContentsByCategory } from "@/data/topicContents";
+import { getBetaTopic } from "@/data/betaLessons";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { getLessonFlow } from "@/data/lessonFlow";
 import type { QuizQuestion } from "@/types/quiz";
@@ -11,14 +11,14 @@ import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { LessonAITutor } from "@/components/lessons/LessonAITutor";
 
 /**
- * "Dersler Beta" — konu detayı (anlatım korunur).
- * Mevcut anlatım + çözümlü örnekler + bölüm-arası bilgi kontrolü + AI eğitmen.
- * "Öğrenmeye Başla" ile Duolingo oturumuna geçilir.
+ * "Dersler Beta" — konu detayı (güverte + makine, tüm konular).
+ * Mevcut anlatım (normalize edilmiş) + bölüm-arası bilgi kontrolü + AI eğitmen.
+ * Akış yazılmış konularda "Öğrenmeye Başla" (Duolingo) butonu görünür.
  */
 export default function LessonBetaTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
-  const content = getTopicContentsByCategory(categoryId)[decodedTitle];
+  const content = getBetaTopic(categoryId, decodedTitle);
   const enhancement = getLessonTopicEnhancement(categoryId, decodedTitle);
   const flow = getLessonFlow(categoryId, decodedTitle);
 
@@ -42,9 +42,11 @@ export default function LessonBetaTopicDetailPage() {
 
   // AI eğitmeni için ders metni (read-only anlatımdan üretilir).
   const lessonText = [
-    content.introduction,
+    content.introduction ?? "",
     ...content.sections.map((s) =>
-      [s.title, s.content, ...(s.bulletPoints ?? []), s.formula?.text].filter(Boolean).join(" "),
+      [s.title, s.content, ...(s.bulletPoints ?? []), s.formula?.text, s.example?.problem, s.example?.result]
+        .filter(Boolean)
+        .join(" "),
     ),
   ].join("\n");
 
@@ -60,18 +62,19 @@ export default function LessonBetaTopicDetailPage() {
       </div>
 
       <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
-        <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-          <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
-        </div>
-
-        {flow && (
-          <Link
-            to={`/lessons-beta/${categoryId}/topics/${encodeURIComponent(decodedTitle)}/learn`}
-            className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
-          >
-            <Play className="h-4 w-4" /> Öğrenmeye Başla (önce anlat → karışık sor)
-          </Link>
+        {content.introduction && (
+          <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
+            <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
+          </div>
         )}
+
+        <Link
+          to={`/lessons-beta/${categoryId}/topics/${encodeURIComponent(decodedTitle)}/learn`}
+          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+        >
+          <Play className="h-4 w-4" />
+          {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
+        </Link>
 
         {content.sections.map((section, index) => (
           <div key={`${section.title}-${index}`} className="space-y-6">
