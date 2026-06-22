@@ -3829,4 +3829,247 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "SOLAS gereği acil jeneratör ne sıklıkla test çalıştırması yapılır?", options: ["Haftalık", "Yıllık", "Günlük", "Beş yılda bir"], correctAnswer: 0, explanation: "SOLAS gereği acil jeneratör haftalık test edilir; otomatik başlatma, yük alma ve alarm fonksiyonları doğrulanır." },
     ],
   },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Kişisel koruyucu donanım (KKD) türleri",
+    blocks: [{ sectionTitles: ["KKD Kategorileri", "Makine Dairesi Zorunlu KKD"] }],
+    questions: [
+      { id: 1, sectionRef: "KKD Kategorileri", category: MAK, question: "Kulak koruyucu hangi gürültü seviyesinin üzerinde gereklidir?", options: ["85 dBA üzeri", "40 dBA üzeri", "120 dBA üzeri", "Gerekmez"], correctAnswer: 0, explanation: "Kulak koruyucu (EN 352) gürültü 85 dBA üzerinde gereklidir; baret EN 397, gözlük EN 166 standardındadır." },
+      { id: 2, sectionRef: "Makine Dairesi Zorunlu KKD", category: MAK, question: "Makine dairesine girerken minimum hangi KKD giyilmelidir?", options: ["Baret, koruyucu gözlük, kulak koruyucu, güvenlik ayakkabısı ve iş elbisesi", "Sadece eldiven", "Sadece baret", "Hiçbir KKD gerekmez"], correctAnswer: 0, explanation: "Minimum baret, gözlük, kulak koruyucu, güvenlik ayakkabısı ve iş elbisesi giyilir; işe özel ek KKD risk değerlendirmesine göre belirlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Yangın üçgeni ve yangın sınıfları",
+    blocks: [{ sectionTitles: ["Yangın Üçgeni", "Yangın Sınıfları", "Makine Dairesi Yangın Riskleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Yangın Üçgeni", category: MAK, question: "Yangın üçgeninin bir kenarı kaldırılırsa ne olur?", options: ["Yangın söner (yakıt, oksijen veya ısı kesilir)", "Yangın büyür", "Hiçbir şey olmaz", "Patlama olur"], correctAnswer: 0, explanation: "Yangın üçgeninin herhangi bir kenarı (yakıt/oksijen/ısı) kaldırılırsa yangın söner: yakıt kesilir (QCV), oksijen kesilir (CO₂/köpük) veya sıcaklık düşürülür (su)." },
+      { id: 2, sectionRef: "Yangın Sınıfları", category: MAK, question: "Yanıcı sıvılar (yakıt, yağ, boya) hangi yangın sınıfındadır?", options: ["B sınıfı", "A sınıfı", "D sınıfı", "C sınıfı"], correctAnswer: 0, explanation: "A katılar, B yanıcı sıvılar (yakıt/yağ), C yanıcı gazlar, D yanıcı metaller, E/F elektrik/pişirme yağıdır. Makine dairesi en yüksek B sınıfı riskine sahiptir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Makine dairesi sabit söndürme (CO₂, FM200)",
+    blocks: [{ sectionTitles: ["CO₂ Sistemi", "FM200 (HFC-227ea)", "Devreye Alma Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "CO₂ Sistemi", category: MAK, question: "CO₂ sistemi yangını nasıl söndürür?", options: ["Oksijen konsantrasyonunu %21'den %15'in altına düşürerek boğar", "Suyla soğutarak", "Köpükle örterek", "Yakıtı emerek"], correctAnswer: 0, explanation: "CO₂ boşaltılarak oksijen %21'den %15'in altına düşürülür ve yangın boğulur; boşaltma öncesi personel sayımı en kritik adımdır." },
+      { id: 2, sectionRef: "Devreye Alma Prosedürü", category: MAK, question: "Sabit söndürme devreye alınmadan önce hangi adım yapılır?", options: ["Makine dairesi tahliye edilip personel sayılır, kapı/havalandırma kapatılır", "Havalandırma açılır", "Yakıt pompası çalıştırılır", "Personel içeride kalır"], correctAnswer: 0, explanation: "Alarm verilir, daire tahliye edilip personel sayılır, fanlar durdurulup damperler kapatılır, QCV'ler kapatılır, uyarı alarmından sonra kaptan/sorumlu zabit onayıyla boşaltılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Kapalı alan tanımı ve tehlikeler",
+    blocks: [{ sectionTitles: ["Gemide Kapalı Alanlar", "Tehlikeler", "Güvenli Giriş Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Tehlikeler", category: MAK, question: "Kapalı alanda korozyon (paslanma) en çok hangi tehlikeyi yaratır?", options: ["Oksijen eksikliği (bilinç kaybı, ölüm)", "Aşırı oksijen", "Soğuk", "Gürültü"], correctAnswer: 0, explanation: "Korozyon oksijen tüketerek oksijen eksikliği yaratır; ayrıca H₂S gibi zehirli gaz ve hidrokarbon buharı patlayıcı atmosfer oluşturur." },
+      { id: 2, sectionRef: "Güvenli Giriş Prosedürü", category: MAK, question: "Kapalı alana güvenli giriş için hangi adım zorunludur?", options: ["Giriş izni alıp atmosfer testi (O₂ %20.9, H₂S <10 ppm, HC <%1 LFL) yapmak ve sürekli izlemek", "Doğrudan girmek", "Sadece el feneri almak", "Havalandırmayı kapatmak"], correctAnswer: 0, explanation: "Risk değerlendirmesi, giriş izni, mekanik havalandırma, atmosfer testi ve sürekli izleme yapılır; dışarıda en az 2 kişilik kurtarma ekibi hazır bekler. İzinsiz giriş ölümcüldür." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "ISM Code gereklilikleri",
+    blocks: [{ sectionTitles: ["Temel Unsurlar", "SMS (Safety Management System)"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Unsurlar", category: MAK, question: "ISM Code kapsamında karadaki güvenlik sorumlusu kimdir?", options: ["Designated Person Ashore (DPA)", "Liman başkanı", "Klas sörveyörü", "Acente"], correctAnswer: 0, explanation: "ISM Code (SOLAS Ch. IX) DPA atanmasını zorunlu kılar; DPA şirket ile gemi arasında güvenlik köprüsüdür." },
+      { id: 2, sectionRef: "SMS (Safety Management System)", category: MAK, question: "ISM kapsamında gemiye verilen sertifika hangisidir?", options: ["SMC (Safety Management Certificate)", "DOC", "COC", "GMDSS sertifikası"], correctAnswer: 0, explanation: "DOC (Document of Compliance) şirkete, SMC (Safety Management Certificate) gemiye verilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Risk değerlendirme (Risk Assessment)",
+    blocks: [{ sectionTitles: ["Risk Matrisi", "Kontrol Hiyerarşisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Risk Matrisi", category: MAK, question: "Risk nasıl hesaplanır?", options: ["Risk = Olasılık × Şiddet", "Risk = Olasılık + Şiddet", "Risk = Şiddet / Olasılık", "Risk = sabit"], correctAnswer: 0, explanation: "Risk = Olasılık × Şiddet formülüyle hesaplanır; yaygın olarak 5×5 matris kullanılır ve yüksek riskli işler ek onay gerektirir." },
+      { id: 2, sectionRef: "Kontrol Hiyerarşisi", category: MAK, question: "Tehlike kontrol hiyerarşisinde en etkili (ilk) yöntem hangisidir?", options: ["Eliminasyon (tehlikeyi tamamen ortadan kaldırma)", "KKD", "İdari kontrol", "İşareti"], correctAnswer: 0, explanation: "Öncelik sırası: eliminasyon → yerine koyma → mühendislik kontrolü → idari kontrol → KKD. KKD son savunma hattıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "İş izin sistemi (Permit to Work)",
+    blocks: [{ sectionTitles: ["PTW Gerektiren İşler", "PTW Süreci"] }],
+    questions: [
+      { id: 1, sectionRef: "PTW Gerektiren İşler", category: MAK, question: "Aşağıdakilerden hangisi PTW (iş izni) gerektirir?", options: ["Sıcak çalışma (kaynak, kesme, taşlama)", "Rutin tank seviyesi okuma", "Köprüde nöbet", "Yemek hazırlama"], correctAnswer: 0, explanation: "Sıcak iş, kapalı alan girişi, yüksek gerilim, yüksekte çalışma, basınçlı ekipman ve asbest işleri PTW gerektirir." },
+      { id: 2, sectionRef: "PTW Süreci", category: MAK, question: "PTW sürecinde enerji izolasyonunun fiziksel garantisi nedir?", options: ["Lock Out / Tag Out (LOTO)", "Sadece sözlü uyarı", "Renkli bant", "El feneri"], correctAnswer: 0, explanation: "Risk değerlendirmesi yapılıp izin formu Chief Engineer/Master tarafından onaylanır; saha LOTO ile izole edilir, iş bitince izin kapatılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Yangın algılama sistemi",
+    blocks: [{ sectionTitles: ["Dedektör Tipleri", "Sistem Yapısı"] }],
+    questions: [
+      { id: 1, sectionRef: "Dedektör Tipleri", category: MAK, question: "Makine dairesinde duman dedektörü yerine genellikle hangileri kullanılır?", options: ["Isı ve alev (UV/IR) dedektörleri", "Sadece optik duman", "Sadece manuel buton", "Nem sensörü"], correctAnswer: 0, explanation: "Makine dairesinin normal ortamı duman dedektöründe yanlış alarm verebilir; bu yüzden ısı ve alev (UV/IR) dedektörleri kullanılır." },
+      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "Yangın algılama paneli nerede bulunur?", options: ["Köprüüstünde, tüm bölgeleri izleyerek", "Sadece makine dairesinde", "Yakıt tankında", "Pervane şaftında"], correctAnswer: 0, explanation: "Yangın algılama paneli köprüüstündedir, tüm bölgelerin dedektörlerini izler ve alarmda sesli/ışıklı uyarı verir; bağımsız güç kaynağına sahiptir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "MSDS (Güvenlik Bilgi Formu) okuma",
+    blocks: [{ sectionTitles: ["MSDS Bölümleri (16 Bölüm - GHS)", "Makine Dairesi Kimyasalları"] }],
+    questions: [
+      { id: 1, sectionRef: "MSDS Bölümleri (16 Bölüm - GHS)", category: MAK, question: "MSDS (SDS) kaç standart bölümden oluşur?", options: ["16 bölüm (GHS)", "3 bölüm", "50 bölüm", "1 bölüm"], correctAnswer: 0, explanation: "MSDS, GHS'e göre 16 standart bölümden oluşur (madde tanımı, tehlike, ilk yardım, yangın, depolama, KKD vb.)." },
+      { id: 2, sectionRef: "Makine Dairesi Kimyasalları", category: MAK, question: "MSDS nerede bulundurulmalıdır?", options: ["Çalışma alanına yakın ve kolay erişilebilir yerde", "Sadece şirket merkezinde", "Kilitli kasada", "Köprüüstünde gizli"], correctAnswer: 0, explanation: "Soğutma/kazan kimyasalları, solvent, boya gibi her kimyasalın MSDS'i kolay erişilebilir olmalı; döküntüde MSDS'e göre hareket edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Portatif söndürücü tipleri",
+    blocks: [{ sectionTitles: ["Söndürücü Tipleri ve Uygunluk", "Kullanım Tekniği (PASS)"] }],
+    questions: [
+      { id: 1, sectionRef: "Söndürücü Tipleri ve Uygunluk", category: MAK, question: "Elektrik yangınlarında hangi söndürücü güvenlidir?", options: ["CO₂ veya kuru kimyevi toz (ABC)", "Su", "Köpük (AFFF)", "Sadece kum"], correctAnswer: 0, explanation: "CO₂ söndürücü elektrik yangınlarında güvenlidir; kuru toz en çok yönlü tiptir ancak ekipmana zarar verebilir. Su ve köpük elektrikte kullanılmaz." },
+      { id: 2, sectionRef: "Kullanım Tekniği (PASS)", category: MAK, question: "PASS tekniğinde nozül nereye yöneltilir?", options: ["Alevlerin tabanına (Aim)", "Alevin tepesine", "Tavana", "Rastgele"], correctAnswer: 0, explanation: "PASS: Pull (pim çek), Aim (nozülü alevlerin tabanına yönelt), Squeeze (tetiği sık), Sweep (süpürme hareketi)." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "İşitme koruması (gürültü maruziyeti)",
+    blocks: [{ sectionTitles: ["Gürültü Seviyeleri", "Koruma Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Gürültü Seviyeleri", category: MAK, question: "Kaç dB(A) üzerinde işitme koruması zorunludur?", options: ["85 dB(A)", "40 dB(A)", "120 dB(A)", "20 dB(A)"], correctAnswer: 0, explanation: "Makine dairesi gürültüsü 90-110 dB(A) olup 85 dB(A) üzerinde işitme koruması zorunludur; kontrol odası max 75 dB(A)'dır." },
+      { id: 2, sectionRef: "Koruma Yöntemleri", category: MAK, question: "Kulaklık (ear muff) yaklaşık ne kadar azaltma sağlar?", options: ["20-35 dB", "1-2 dB", "60-80 dB", "Azaltmaz"], correctAnswer: 0, explanation: "Kulaklık 20-35 dB, kulak tıkacı 15-30 dB azaltma sağlar; ayrıca titreşim yalıtımı gibi mühendislik önlemleri uygulanır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Göz ve yüz koruması",
+    blocks: [{ sectionTitles: ["Koruma Ekipmanları", "Acil Göz Yıkama"] }],
+    questions: [
+      { id: 1, sectionRef: "Koruma Ekipmanları", category: MAK, question: "Genel makine çalışmasında güvenlik gözlüğü hangi standarttadır?", options: ["EN 166", "EN 397", "EN 361", "DIN 4-13"], correctAnswer: 0, explanation: "Güvenlik gözlüğü ve yüz siperi EN 166; kaynak maskesi EN 175 (DIN 4-13) standardındadır." },
+      { id: 2, sectionRef: "Acil Göz Yıkama", category: MAK, question: "Kimyasal sıçramasında göz en az ne kadar yıkanmalıdır?", options: ["En az 15 dakika temiz suyla", "10 saniye", "1 dakika", "Yıkanmaz"], correctAnswer: 0, explanation: "Kimyasal sıçramasında en az 15 dakika temiz su ile göz yıkanmalıdır; makine dairesinde acil göz yıkama istasyonu bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Koruyucu giysi ve eldiven",
+    blocks: [{ sectionTitles: ["Giysi Türleri", "Eldiven Seçimi"] }],
+    questions: [
+      { id: 1, sectionRef: "Giysi Türleri", category: MAK, question: "Tulum (overall) neden dar kesim olmalıdır?", options: ["Dönen parçalara takılmayı önlemek için", "Daha şık görünmek için", "Daha sıcak tutmak için", "Önemi yok"], correctAnswer: 0, explanation: "Tulum dönen parçalara takılmayı önlemek için dar kesim olmalıdır; sıcak işlerde ısı dayanımlı, kimyasal işlerde dayanımlı önlük kullanılır." },
+      { id: 2, sectionRef: "Eldiven Seçimi", category: MAK, question: "Kimyasal (asit, solvent) kullanımında hangi eldiven uygundur?", options: ["Nitril/neopren", "Deri", "Kevlar (kesilmez)", "Pamuk"], correctAnswer: 0, explanation: "Nitril/neopren kimyasala, NBR yağa, Kevlar kesilmeye, deri mekanik işe uygundur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Güvenlik ayakkabısı standartları",
+    blocks: [{ sectionTitles: ["Sınıflandırma", "Makine Dairesi Gereklilikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Makine dairesi için standart güvenlik ayakkabısı sınıfı hangisidir?", options: ["S3 (delinmeye dayanıklı taban dahil)", "S1", "S5 yalnızca", "Sınıfsız"], correctAnswer: 0, explanation: "S3 (S2 + delinmeye dayanıklı taban) makine dairesi standardıdır; ıslak/sintine ortamı için S5 çizme kullanılır." },
+      { id: 2, sectionRef: "Makine Dairesi Gereklilikleri", category: MAK, question: "Güvenlik ayakkabısı burnu hangi darbe dayanımına sahip olmalıdır?", options: ["200 J (çelik/kompozit burun)", "10 J", "5 J", "Dayanım gerekmez"], correctAnswer: 0, explanation: "Çelik/kompozit burun 200 J darbe dayanımına sahip olmalı, taban yağ/yakıta dayanıklı ve antistatik olmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Hızlı kapatma vanası (quick closing valve)",
+    blocks: [{ sectionTitles: ["Sistem Yapısı", "Operasyon ve Test"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Hızlı kapatma vanaları nerede ve nasıl kapatılır?", options: ["Yakıt/yağ tankı çıkışında; makine dairesi dışından uzaktan", "Sadece tank içinden", "Köprüden GPS ile", "Kapatılamaz"], correctAnswer: 0, explanation: "Her yakıt/yağ tankı çıkışında QCV bulunur ve makine dairesi dışından (A sınıfı güverte) pnömatik/mekanik olarak uzaktan kapatılır (SOLAS Reg. II-2/4)." },
+      { id: 2, sectionRef: "Operasyon ve Test", category: MAK, question: "Uzaktan kapama mekanizması ne sıklıkla test edilir?", options: ["Haftalık", "Yıllık", "Beş yılda bir", "Hiç"], correctAnswer: 0, explanation: "Haftalık uzaktan kapama testi, aylık tam kapanma doğrulaması yapılır; yangın tatbikatında tüm QCV kapatma prosedürü uygulanır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Yangın tatbikatı ve muster",
+    blocks: [{ sectionTitles: ["SOLAS Gereklilikleri", "Yangın Ekibi Görevleri"] }],
+    questions: [
+      { id: 1, sectionRef: "SOLAS Gereklilikleri", category: MAK, question: "Yangın tatbikatı en az ne sıklıkla yapılmalıdır?", options: ["Ayda en az bir kez", "Yılda bir", "Haftada üç", "Beş yılda bir"], correctAnswer: 0, explanation: "Yangın tatbikatı ayda en az bir kez yapılır; personelin %25'inden fazlası değiştiyse limandan ayrılıştan itibaren 24 saat içinde tatbikat yapılır." },
+      { id: 2, sectionRef: "Yangın Ekibi Görevleri", category: MAK, question: "Kapalı/dumanlı alana hangi ekipmanla girilir?", options: ["SCBA (hava tüpü)", "Sadece maske", "Çıplak", "El feneriyle"], correctAnswer: 0, explanation: "Hava tüpü operatörü SCBA ile kapalı alana girer; ekipte lider, nozülcü, yedek nozülcü, sınır soğutma ve ilk yardım ekibi bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Atmosfer testi (O₂, LEL, H₂S)",
+    blocks: [{ sectionTitles: ["Test Parametreleri", "Test Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Test Parametreleri", category: MAK, question: "Kapalı alanda güvenli oksijen seviyesi nedir?", options: ["%20.9 (minimum %19.5)", "%10", "%30", "%5"], correctAnswer: 0, explanation: "O₂ %20.9 (min %19.5), LEL <%1, H₂S <10 ppm, CO <25 ppm güvenli sınırlardır." },
+      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "Atmosfer testi nasıl yapılmalıdır?", options: ["Cihaz kalibre edilip alanın üst, orta ve alt seviyelerinde ölçülerek", "Sadece girişte bir kez", "Sadece üst seviyede", "Gözle"], correctAnswer: 0, explanation: "Cihaz kalibre edilir, farklı seviyelerde (üst/orta/alt) ölçülür, forma kaydedilir ve giriş boyunca sürekli izleme yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Giriş izin sistemi (PTW)",
+    blocks: [{ sectionTitles: ["PTW Gerektiren İşler", "PTW Süreci"] }],
+    questions: [
+      { id: 1, sectionRef: "PTW Gerektiren İşler", category: MAK, question: "Aşağıdakilerden hangisi giriş/iş izni gerektirir?", options: ["Kapalı alan girişi", "Köprüde nöbet", "Rutin round", "Yemek"], correctAnswer: 0, explanation: "Kapalı alan girişi, sıcak iş, yüksekte çalışma, izolasyon gerektiren elektrik işi ve basınçlı sistem açma izin gerektirir." },
+      { id: 2, sectionRef: "PTW Süreci", category: MAK, question: "İş iznini kim imzalar/onaylar?", options: ["Yetkili kişi (responsible officer)", "Herhangi bir tayfa", "Yolcu", "Acente"], correctAnswer: 0, explanation: "Risk değerlendirmesi ve önlemler belirlenir, yetkili kişi izni imzalar, iş bitince alan kontrol edilip izin kapatılır ve kopya saklanır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Havalandırma gereklilikleri",
+    blocks: [{ sectionTitles: ["Makine Dairesi Havalandırma", "Kapalı Alan Havalandırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Makine Dairesi Havalandırma", category: MAK, question: "Makine dairesi sıcaklığı dış ortama göre en fazla ne kadar yüksek olabilir?", options: ["15°C", "50°C", "100°C", "Sınır yok"], correctAnswer: 0, explanation: "SOLAS gereği makine dairesi sıcaklığı dış ortam sıcaklığının 15°C üzerini geçmemelidir; havalandırma yanma havası ve ısı atımını sağlar." },
+      { id: 2, sectionRef: "Kapalı Alan Havalandırma", category: MAK, question: "Kapalı alan girişten önce ne kadar havalandırılmalıdır?", options: ["En az hacminin 10 katı taze hava ile", "Hacminin yarısı kadar", "Havalandırma gerekmez", "1 katı"], correctAnswer: 0, explanation: "Giriş öncesi mekanik havalandırma ile en az hacmin 10 katı taze hava değiştirilir; havalandırma kesintisiz sürer, fan arızasında çalışma durdurulur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Kurtarma prosedürü ve ekipman",
+    blocks: [{ sectionTitles: ["Kurtarma Ekipmanları", "Kurtarma Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Kurtarma Ekipmanları", category: MAK, question: "Bağımsız solunum cihazı hangisidir?", options: ["SCBA (Self-Contained Breathing Apparatus)", "EEBD yalnızca kaçış için", "Toz maske", "Cerrahi maske"], correctAnswer: 0, explanation: "SCBA bağımsız solunum cihazıdır; EEBD kaçış içindir. Ayrıca kurtarma halatı, tripod/vinç, sedye ve oksijen ünitesi bulunur." },
+      { id: 2, sectionRef: "Kurtarma Prosedürü", category: MAK, question: "Kapalı alanda kazazedeyi kurtarmak için ne yapılmamalıdır?", options: ["Eğitimsiz ve donanımsız olarak alana girmek", "Alarm vermek", "SCBA kuşanmak", "Havalandırmayı artırmak"], correctAnswer: 0, explanation: "Kesinlikle eğitimsiz/donanımsız girilmez (en yaygın ölüm senaryosu); alarm verilir, SCBA kuşanılıp halat bağlanır, havalandırma artırılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Asbest ve yasaklı malzemeler",
+    blocks: [{ sectionTitles: ["Asbest Tehlikesi", "Asbest Yönetimi"] }],
+    questions: [
+      { id: 1, sectionRef: "Asbest Tehlikesi", category: MAK, question: "Asbest lifleri solunduğunda ne olur?", options: ["Akciğerde birikip asbetoz, akciğer kanseri ve mezotelyomaya yol açar (10-40 yıl gecikmeli)", "Anında iyileşir", "Hiçbir etkisi yok", "Sadece öksürük"], correctAnswer: 0, explanation: "Asbest lifleri ölümcül hastalıklara neden olur; etkiler 10-40 yıl sonra çıkabilir. 2011 sonrası gemilerde kullanımı tamamen yasaktır." },
+      { id: 2, sectionRef: "Asbest Yönetimi", category: MAK, question: "Gemideki tehlikeli malzemeleri listeleyen envanter hangisidir?", options: ["IHM (Inventory of Hazardous Materials)", "BDN", "MSDS", "Engine Log Book"], correctAnswer: 0, explanation: "Sağlam asbest yerinde bırakılabilir (encapsulation); IHM tüm tehlikeli malzemeleri listeler ve Hong Kong Sözleşmesi/EU SRR ile zorunludur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Kimyasal depolama kuralları",
+    blocks: [{ sectionTitles: ["Temel Kurallar", "GHS Piktogramları"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "Uyumsuz kimyasallar nasıl depolanır?", options: ["Ayrı bölmelerde (asitler ve bazlar ayrı)", "Aynı rafta", "Karıştırılarak", "Açıkta"], correctAnswer: 0, explanation: "Uyumsuz kimyasallar ayrı bölmelerde tutulur; etiketli/sağlam kaplarda, havalandırmalı ve sızıntı paletli alanda saklanır, sigara/açık alev yasaktır." },
+      { id: 2, sectionRef: "GHS Piktogramları", category: MAK, question: "GHS sistemi neyi sağlar?", options: ["Tehlikeli kimyasalları standart sembollerle etiketleme", "Yakıt fiyatı belirleme", "Hız ölçümü", "Rota planlama"], correctAnswer: 0, explanation: "GHS (Küresel Uyumlaştırılmış Sistem) ile kimyasallar alev, patlama, korozyon, toksisite gibi standart sembollerle etiketlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Basınçlı gaz tüpü güvenliği",
+    blocks: [{ sectionTitles: ["Güvenlik Kuralları", "Taşıma ve Kullanım"] }],
+    questions: [
+      { id: 1, sectionRef: "Güvenlik Kuralları", category: MAK, question: "Oksijen ve asetilen tüpleri nasıl depolanır?", options: ["Birbirinden en az 6 metre uzakta veya ateşe dayanıklı duvarla ayrılmış", "Yan yana yatık", "Aynı kelepçede", "Güneşte"], correctAnswer: 0, explanation: "Tüpler düşey ve bağlı depolanır; oksijen ve asetilen en az 6 m uzakta veya yangın duvarıyla ayrılır; renk kodları farklıdır (O₂ beyaz/mavi, asetilen kırmızı)." },
+      { id: 2, sectionRef: "Taşıma ve Kullanım", category: MAK, question: "Oksijen ve yakıcı gaz hatlarında hangi cihaz zorunludur?", options: ["Geri tepme valfi (flashback arrestor)", "Barometre", "Termostat", "Filtre yok"], correctAnswer: 0, explanation: "Tüpler el arabasıyla taşınır (yuvarlanmaz/sürüklenmez), vana yavaşça açılır; oksijen ve yakıcı gaz hatlarında flashback arrestor zorunludur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Kaza raporlama ve kök neden analizi",
+    blocks: [{ sectionTitles: ["Raporlama Süreci", "Kök Neden Analizi"] }],
+    questions: [
+      { id: 1, sectionRef: "Raporlama Süreci", category: MAK, question: "Kaza sonrası ilk adım nedir?", options: ["İlk müdahale ve acil tedavi", "Sigorta araması", "Sosyal medya paylaşımı", "Olay yerini temizleme"], correctAnswer: 0, explanation: "Önce ilk müdahale/tedavi yapılır, olay yeri güvenceye alınır, ilk rapor (ne/nerede/ne zaman/kim/nasıl) hazırlanır, DPA'ya ve ciddi kazada bayrak devletine bildirilir." },
+      { id: 2, sectionRef: "Kök Neden Analizi", category: MAK, question: "Yüzeysel nedenlerden kök nedene ulaşmak için hangi yöntem kullanılır?", options: ["5 Neden (5 Why)", "Kura çekme", "Tahmin", "Anket"], correctAnswer: 0, explanation: "5 Why ve Ishikawa (balık kılçığı) diyagramı kullanılır; kök neden genellikle prosedür eksikliği, eğitim yetersizliği veya tasarım hatası gibi sistemiktir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Toolbox meeting ve güvenlik brifingi",
+    blocks: [{ sectionTitles: ["Toolbox Meeting İçeriği", "Güvenlik Brifingi"] }],
+    questions: [
+      { id: 1, sectionRef: "Toolbox Meeting İçeriği", category: MAK, question: "Toolbox meeting'te aşağıdakilerden hangisi ele alınır?", options: ["İş tanımı, risk değerlendirmesi, gerekli KKD ve PTW kontrolü", "Sadece yemek menüsü", "Liman ücretleri", "Tatil planı"], correctAnswer: 0, explanation: "Toolbox meeting iş tanımı/kapsamı, risk paylaşımı, KKD belirleme, PTW kontrolü, acil durum hatırlatması ve soru-cevabı kapsar." },
+      { id: 2, sectionRef: "Güvenlik Brifingi", category: MAK, question: "Güvenlik brifingi ne zaman yapılır?", options: ["Vardiya başında veya operasyonel değişikliklerde", "Sadece yılda bir", "Hiç", "Sadece limanda"], correctAnswer: 0, explanation: "Vardiya başında/operasyon değişikliğinde kısa brifing yapılır: güncel tehlikeler, devam eden bakım, hava/deniz etkisi ve özel dikkat konuları." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Near-miss raporlama",
+    blocks: [{ sectionTitles: ["Önemi", "Raporlama Sistemi"] }],
+    questions: [
+      { id: 1, sectionRef: "Önemi", category: MAK, question: "Near-miss raporlamanın temel faydası nedir?", options: ["Kaza gerçekleşmeden tehlikeleri tespit edip önlem almak", "Personeli cezalandırmak", "Evrak çoğaltmak", "Hiçbir faydası yok"], correctAnswer: 0, explanation: "Heinrich piramidine göre her ciddi kaza öncesi ~300 near-miss yaşanır; near-miss raporlama tehlikeleri kaza olmadan tespit ettirir ve güvenlik kültürü olgunluğunu gösterir." },
+      { id: 2, sectionRef: "Raporlama Sistemi", category: MAK, question: "Near-miss raporları nasıl ele alınır?", options: ["DPA tarafından analiz edilip filoya güvenlik bülteni olarak dağıtılır", "Çöpe atılır", "Gizli tutulur", "Sadece kaptanda kalır"], correctAnswer: 0, explanation: "Raporlar anonim veya isimli yapılabilir; olay tanımı, yeri, zamanı, olası sonuç ve önerilen önlemi içerir; DPA analiz edip tüm filoya dağıtır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-safety",
+    topicTitle: "Biyolojik tehlikeler ve önlemler",
+    blocks: [{ sectionTitles: ["Biyolojik Tehlike Kaynakları", "Önlemler"] }],
+    questions: [
+      { id: 1, sectionRef: "Biyolojik Tehlike Kaynakları", category: MAK, question: "Soğutma kuleleri ve klima sistemlerinde üreyen tehlikeli bakteri hangisidir?", options: ["Legionella", "Laktobasil", "Maya", "Hiçbiri"], correctAnswer: 0, explanation: "Legionella soğutma kuleleri/klimada ürer ve Legionella hastalığına yol açar; pis su, kemirgen, küf ve vücut sıvıları diğer biyolojik tehlikelerdir." },
+      { id: 2, sectionRef: "Önlemler", category: MAK, question: "Legionella kontrolü için su sistemi nasıl yönetilir?", options: ["60°C üzeri sıcaklık veya klorlama", "Suyu ılık tutmak", "Hiç dokunmamak", "Tuz eklemek"], correctAnswer: 0, explanation: "Legionella kontrolü için su 60°C üzerinde tutulur veya klorlanır; kişisel hijyen, uygun KKD ve ilk yardımda tek kullanımlık eldiven gereklidir." },
+    ],
+  },
 ];
