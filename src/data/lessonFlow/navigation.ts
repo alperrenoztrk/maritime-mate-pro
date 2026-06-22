@@ -1049,4 +1049,291 @@ export const navigationLessonFlows: LessonFlow[] = [
       },
     ],
   },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Öğle mevkii (enlem)",
+    blocks: [
+      {
+        sectionTitles: [
+          "Aşama 1: Yerel öğle anının tespiti",
+          "Aşama 2: En büyük yükseklikten Ho’nun elde edilmesi",
+        ],
+      },
+      {
+        sectionTitles: [
+          "Aşama 3: Zenit uzaklığının (Z) kurulması",
+          "Aşama 4: Enlemin belirlenmesi (kuzey/güney yorumu)",
+        ],
+      },
+      {
+        sectionTitles: ["Örnek Uygulama"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Aşama 1: Yerel öğle anının tespiti",
+        category: NAV,
+        question: "Yerel öğle anı nasıl belirlenir?",
+        options: [
+          "Güneş'in yüksekliğinin en BÜYÜK olduğu an",
+          "Saatin tam 12:00 olduğu an",
+          "Güneş'in battığı an",
+          "Kronometrenin sıfırlandığı an",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Yerel öğle, Güneş'in yüksekliğinin maksimuma ulaştığı (meridyen geçişi) andır; saat bilgisine göre değil.",
+      },
+      {
+        id: 2,
+        sectionRef: "Aşama 3: Zenit uzaklığının (Z) kurulması",
+        category: NAV,
+        question: "Zenit uzaklığı (Z) hangi bağıntıyla bulunur?",
+        options: ["Z = 90° − Ho", "Z = Ho − 90°", "Z = 90° + Ho", "Z = Ho ÷ 2"],
+        correctAnswer: 0,
+        explanation: "Z = 90° − Ho; Ho meridyendeki düzeltilmiş yüksekliktir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Aşama 4: Enlemin belirlenmesi (kuzey/güney yorumu)",
+        category: NAV,
+        question: "Güneş ve gözlemci AYNI yarımkürede ise enlem nasıl bulunur?",
+        options: ["φ = Z + δ", "φ = Z − δ", "φ = δ − Z", "φ = 90° − δ"],
+        correctAnswer: 0,
+        explanation: "Aynı yarımkürede φ = Z + δ; karşı yarımkürede φ = Z − δ (işaret meridyen geçiş yönüne göre).",
+      },
+      {
+        id: 4,
+        sectionRef: "Örnek Uygulama",
+        category: NAV,
+        question: "Ho = 63°20.0′ ölçülürse zenit uzaklığı Z kaçtır?",
+        options: ["26°40.0′", "63°20.0′", "36°40.0′", "16°40.0′"],
+        correctAnswer: 0,
+        explanation: "Z = 90° − 63°20.0′ = 26°40.0′.",
+      },
+      {
+        id: 5,
+        sectionRef: "Örnek Uygulama",
+        category: NAV,
+        question: "Z = 26°40.0′, δ = 18°10.0′N ve Güneş güneyde geçiyorsa enlem nedir?",
+        options: ["08°30.0′ N", "44°50.0′ N", "18°10.0′ N", "26°40.0′ N"],
+        correctAnswer: 0,
+        explanation: "Bu durumda φ = Z − δ = 26°40.0′ − 18°10.0′ = 08°30.0′ N.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Büyük daire mesafesi",
+    blocks: [
+      {
+        sectionTitles: ["Büyük Daire Mesafesinin Geometrisi", "Merkez Açı Formülü (Küresel Kosinüs)"],
+      },
+      {
+        sectionTitles: ["Merkez Açıdan Mesafeye Geçiş", "Örnek Hesap (Adım Adım)"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Büyük Daire Mesafesinin Geometrisi",
+        category: NAV,
+        question: "Büyük daire mesafesi nedir?",
+        options: [
+          "Küre üzerinde iki nokta arasındaki en kısa yüzey yolu",
+          "İki nokta arası sabit kerterizli rota",
+          "Haritadaki düz çizgi mesafesi",
+          "İki meridyen arası uzaklık",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Büyük daire, küre üzerinde iki mevki arasındaki en kısa yüzey yoludur; Dünya merkezindeki merkez açıyla tanımlanır.",
+      },
+      {
+        id: 2,
+        sectionRef: "Merkez Açı Formülü (Küresel Kosinüs)",
+        category: NAV,
+        question: "Merkez açı (θ) hangi teoremle bulunur?",
+        options: [
+          "cos θ = sin φ₁·sin φ₂ + cos φ₁·cos φ₂·cos Δλ",
+          "θ = Mesafe × sin Kurs",
+          "tan θ = Departure ÷ DLat",
+          "θ = 90° − Ho",
+        ],
+        correctAnswer: 0,
+        explanation: "Küresel kosinüs teoremi merkez açıyı doğrudan verir; düzlem trigonometrisi yetersizdir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Merkez Açıdan Mesafeye Geçiş",
+        category: NAV,
+        question: "Merkez açı θ'dan büyük daire mesafesi nasıl bulunur?",
+        options: ["Mesafe (NM) = θ × 60", "Mesafe = θ ÷ 60", "Mesafe = θ × 6", "Mesafe = θ²"],
+        correctAnswer: 0,
+        explanation: "1° büyük daire yayı = 60 NM kabulüyle Mesafe = θ(derece) × 60.",
+      },
+      {
+        id: 4,
+        sectionRef: "Örnek Hesap (Adım Adım)",
+        category: NAV,
+        question: "Merkez açı θ ≈ 53.4° bulunduysa büyük daire mesafesi yaklaşık kaçtır?",
+        options: ["≈ 3204 NM", "≈ 534 NM", "≈ 890 NM", "≈ 6408 NM"],
+        correctAnswer: 0,
+        explanation: "53.4 × 60 ≈ 3204 NM (teorik en kısa deniz yolu).",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "12’ler kuralı",
+    blocks: [
+      {
+        sectionTitles: ["12’ler Kuralının Adım Adım Uygulaması"],
+      },
+      {
+        sectionTitles: ["Kural Sınırları ve Ne Zaman Tidal Curve Kullanılmalı"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "12’ler Kuralının Adım Adım Uygulaması",
+        category: NAV,
+        question: "12'ler kuralında saatlik değişim oranları nedir?",
+        options: ["1 – 2 – 3 – 3 – 2 – 1 (×1/12 Range)", "2 – 2 – 2 – 2 – 2 – 2", "1 – 1 – 1 – 3 – 3 – 3", "3 – 2 – 1 – 1 – 2 – 3"],
+        correctAnswer: 0,
+        explanation: "Her saatte sırasıyla 1/12, 2/12, 3/12, 3/12, 2/12, 1/12 değişir; toplam 12/12 = tam range.",
+      },
+      {
+        id: 2,
+        sectionRef: "12’ler Kuralının Adım Adım Uygulaması",
+        category: NAV,
+        question: "Height of tide hangi bağıntıyla bulunur?",
+        options: [
+          "LW yüksekliği + (Kümülatif oran × Range)",
+          "HW yüksekliği × Kümülatif oran",
+          "Range ÷ 12",
+          "LW + HW",
+        ],
+        correctAnswer: 0,
+        explanation: "Height of tide = LW + (kümülatif oran × Range); kümülatif: 1/12, 3/12, 6/12, 9/12, 11/12, 12/12.",
+      },
+      {
+        id: 3,
+        sectionRef: "12’ler Kuralının Adım Adım Uygulaması",
+        category: NAV,
+        question: "LW=0.6 m, HW=5.4 m (Range 4.8 m) için LW'den 3 saat sonraki height of tide kaçtır?",
+        options: ["3.0 m", "2.4 m", "4.2 m", "5.4 m"],
+        correctAnswer: 0,
+        explanation: "0.6 + (6/12 × 4.8) = 0.6 + 2.4 = 3.0 m.",
+      },
+      {
+        id: 4,
+        sectionRef: "Kural Sınırları ve Ne Zaman Tidal Curve Kullanılmalı",
+        category: NAV,
+        question: "12'ler kuralı ne zaman yetersiz kalır ve tidal curve gerekir?",
+        options: [
+          "Periyot 6 saatten farklıysa, asimetrik gelgitte veya kritik UKC hesabında",
+          "Her zaman yeterlidir",
+          "Yalnızca gündüz hesaplarında",
+          "Yalnızca spring tide'da",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Kural 6 saatlik simetrik döngü varsayar; periyot farklıysa/asimetrikse veya UKC marjı dar ise tidal curve kullanılır.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Intercept yöntemi",
+    blocks: [
+      {
+        sectionTitles: ["Yöntemin Temel Mantığı", "Adım 1: Varsayılan Mevki (AP) Seçimi"],
+      },
+      {
+        sectionTitles: [
+          "Adım 2: GHA, LHA ve Deklinasyon Hesabı",
+          "Adım 4: Intercept (a) Hesabı",
+          "Adım 5: Toward / Away Kuralı",
+        ],
+      },
+      {
+        sectionTitles: ["Adım 6: LOP Çizimi", "Tam Hesap Örneği"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Yöntemin Temel Mantığı",
+        category: NAV,
+        question: "Intercept yöntemi temelde hangi soruyu yanıtlar?",
+        options: [
+          "Varsayılan mevkiye göre gözlenen ve hesaplanan yükseklik arasındaki sapma nedir?",
+          "Geminin tam boylamı nedir?",
+          "Akıntının seti nedir?",
+          "Geminin hızı nedir?",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Yöntem, AP'ye göre Hc ile Ho farkını bularak mevki hattı (LOP) verir; doğrudan mevki vermez.",
+      },
+      {
+        id: 2,
+        sectionRef: "Adım 1: Varsayılan Mevki (AP) Seçimi",
+        category: NAV,
+        question: "Varsayılan mevki (AP) nasıl seçilir?",
+        options: [
+          "DR mevkiine yakın, tam derece enlem ve tam dakika boylam olarak",
+          "Rastgele herhangi bir noktada",
+          "Daima ekvatorda",
+          "Gök cisminin tam altında",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "AP, DR yakınında tam derece değerlerle seçilir (Sight Reduction tabloları tam giriş ister); fark tipik olarak 30–60 NM altında tutulur.",
+      },
+      {
+        id: 3,
+        sectionRef: "Adım 4: Intercept (a) Hesabı",
+        category: NAV,
+        question: "Intercept (a) hangi bağıntıyla bulunur ve birimi nedir?",
+        options: ["a = Ho − Hc (1′ = 1 NM)", "a = Hc − Ho (derece)", "a = 90° − Ho", "a = Zn ÷ 2"],
+        correctAnswer: 0,
+        explanation: "a = Ho − Hc; dakika cinsinden çıkar ve 1′ = 1 NM olarak mesafeye dönüşür.",
+      },
+      {
+        id: 4,
+        sectionRef: "Adım 5: Toward / Away Kuralı",
+        category: NAV,
+        question: "Ho > Hc (a > 0) ise LOP hangi yöne taşınır?",
+        options: ["TOWARD (gök cismine doğru)", "AWAY (gök cisminden uzağa)", "Daima kuzeye", "Daima Zn'ye dik geriye"],
+        correctAnswer: 0,
+        explanation: "Ho > Hc → gemi gök cismine daha yakın → TOWARD. (Hafıza: HoMoTo — Ho More, Toward.)",
+      },
+      {
+        id: 5,
+        sectionRef: "Adım 6: LOP Çizimi",
+        category: NAV,
+        question: "LOP hangi doğrultuda çizilir?",
+        options: ["Azimuta dik: Zn ± 90°", "Azimutla aynı: Zn", "Daima 000°–180°", "Rota doğrultusunda"],
+        correctAnswer: 0,
+        explanation: "LOP daima azimut (Zn) doğrultusuna diktir; intercept mesafesi Zn boyunca taşınır.",
+      },
+      {
+        id: 6,
+        sectionRef: "Tam Hesap Örneği",
+        category: NAV,
+        question: "Örnekte Ho = 41°33.3′, Hc = 41°26.8′ ise intercept nedir?",
+        options: ["+6.5′ = 6.5 NM TOWARD", "−6.5′ = 6.5 NM AWAY", "+10′ = 10 NM TOWARD", "0 NM (mevki AP'de)"],
+        correctAnswer: 0,
+        explanation: "a = 41°33.3′ − 41°26.8′ = +6.5′ → 6.5 NM TOWARD (Ho > Hc).",
+      },
+    ],
+  },
 ];
