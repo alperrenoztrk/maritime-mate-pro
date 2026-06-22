@@ -3287,4 +3287,329 @@ export const machineLessonFlows: LessonFlow[] = [
       },
     ],
   },
+  // ─────────────────────────── Dizel Motorlar ────────────────────────────
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Dizel çevrimi ve sıkıştırma ile ateşleme",
+    blocks: [{ sectionTitles: ["Sıkıştırma ile Ateşleme Prensibi", "İdeal Dizel Çevrimi"] }],
+    questions: [
+      { id: 1, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorda yakıt nasıl tutuşur?", options: ["Sıkıştırılan havanın 600-900°C'ye ulaşması, yakıtın kendiliğinden tutuşması", "Buji kıvılcımı", "Elektrikli ısıtıcı", "Dışarıdan alev"], correctAnswer: 0, explanation: "Sıkıştırma oranı 12:1–24:1; sıkıştırma sonu sıcaklığı yakıtın tutuşma noktasının (250-350°C) üzerindedir." },
+      { id: 2, sectionRef: "İdeal Dizel Çevrimi", category: MAK, question: "İdeal dizel çevriminde ısı alımı nasıl modellenir?", options: ["Sabit basınçta (2→3, enjeksiyon süresince)", "Sabit hacimde", "Sabit sıcaklıkta", "Adyabatik"], correctAnswer: 0, explanation: "1→2 adyabatik sıkıştırma, 2→3 sabit basınçta ısı alımı, 3→4 adyabatik genleşme, 4→1 sabit hacimde ısı atımı." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "İki zamanlı motor çalışma prensibi",
+    blocks: [{ sectionTitles: ["Çalışma Döngüsü", "Uniflow Süpürme"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Döngüsü", category: MAK, question: "İki zamanlı motorda kaç krank devrinde bir güç stroku üretilir?", options: ["Her devirde bir", "İki devirde bir", "Dört devirde bir", "Yarım devirde bir"], correctAnswer: 0, explanation: "Büyük deniz ana motorları çoğunlukla iki zamanlıdır; her devir bir güç stroku verir." },
+      { id: 2, sectionRef: "Uniflow Süpürme", category: MAK, question: "Modern iki zamanlı motorlarda hangi süpürme tipi kullanılır?", options: ["Uniflow (alt port giriş, üst egzoz valfi)", "Cross", "Loop", "Hiçbiri"], correctAnswer: 0, explanation: "Uniflow en etkin süpürmeyi sağlar; taze hava alttan, egzoz üst valften çıkar." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Dört zamanlı motor çalışma prensibi",
+    blocks: [{ sectionTitles: ["Dört Strok", "Supap Mekanizması"] }],
+    questions: [
+      { id: 1, sectionRef: "Dört Strok", category: MAK, question: "Dört zamanlı motorda strok sırası nedir?", options: ["Emme → Sıkıştırma → Yanma-Genleşme → Egzoz", "Egzoz → Emme → Yanma → Sıkıştırma", "Sıkıştırma → Emme → Egzoz → Yanma", "Yanma → Egzoz → Emme → Sıkıştırma"], correctAnswer: 0, explanation: "İki tam devirde bir güç stroku; yardımcı/jeneratör motorlarında yaygındır." },
+      { id: 2, sectionRef: "Supap Mekanizması", category: MAK, question: "Dört zamanlı motorda kam mili krank miline göre hangi hızda döner?", options: ["Yarı hızında", "Aynı hızda", "İki katı hızda", "Dört katı"], correctAnswer: 0, explanation: "İki devirde bir çevrim olduğundan kam mili krank milinin yarı hızında döner." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Düşük, orta ve yüksek devirli motorlar",
+    blocks: [{ sectionTitles: ["Sınıflandırma", "Seçim Kriterleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Büyük gemilerde ana makine olarak hangi tip kullanılır?", options: ["Düşük devirli iki zamanlı crosshead (80-200 rpm)", "Yüksek devirli dört zamanlı", "Orta devirli benzinli", "Türbin"], correctAnswer: 0, explanation: "Düşük devirli motorlar en yüksek verim ve en düşük SFOC'u sağlar; direkt pervane tahriki." },
+      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Devir azaldıkça motor boyutu/ağırlığı nasıl değişir?", options: ["Artar (ama verim de artar)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "Düşük devirli motorlar büyük ve ağırdır ama verimi %50'yi aşabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Crosshead ve trunk piston motor farkları",
+    blocks: [{ sectionTitles: ["Crosshead Motor", "Trunk Piston Motor"] }],
+    questions: [
+      { id: 1, sectionRef: "Crosshead Motor", category: MAK, question: "Crosshead motorlarda yanma odası ile karter ilişkisi nasıldır?", options: ["Tamamen ayrı (silindir ve karter yağlaması bağımsız)", "Ortak", "Yarı ortak", "Hiç yağlanmaz"], correctAnswer: 0, explanation: "Ayrı olduğundan düşük kaliteli yüksek BN silindir yağı kullanılabilir; karter güvenliği yüksektir." },
+      { id: 2, sectionRef: "Trunk Piston Motor", category: MAK, question: "Trunk piston motorda silindir ve karter yağı nasıldır?", options: ["Aynı sistem (ortak)", "Tamamen ayrı", "Yağ kullanılmaz", "Su ile yağlanır"], correctAnswer: 0, explanation: "Piston doğrudan biyele bağlı, çapraz kuvvetleri taşır; karter patlama riski daha yüksektir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Silindir kapağı (cylinder head)",
+    blocks: [{ sectionTitles: ["Görevleri ve Bileşenleri", "Malzeme ve Soğutma"] }],
+    questions: [
+      { id: 1, sectionRef: "Görevleri ve Bileşenleri", category: MAK, question: "Silindir kapağı üzerinde hangi bileşen bulunur?", options: ["Egzoz valfi, yakıt enjektörü, emniyet valfi, indikatör vanası", "Krank mili", "Turboşarjer", "Pervane"], correctAnswer: 0, explanation: "İki zamanlıda emme supabı yoktur (portlar gömlektedir); dört zamanlıda emme+egzoz supapları kapaktadır." },
+      { id: 2, sectionRef: "Malzeme ve Soğutma", category: MAK, question: "Silindir kapağında en yaygın arıza tipi nedir?", options: ["Termal çatlak (özellikle egzoz valfi etrafı)", "Korozyon yok", "Elektrik arızası", "Yağ kaçağı yok"], correctAnswer: 0, explanation: "Yetersiz soğutma termal çatlağa yol açar; kapak hidrolik germe ile sıkılır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Silindir gömleği (liner) ve aşınma",
+    blocks: [{ sectionTitles: ["Yapı ve Malzeme", "Aşınma Tipleri"] }, { sectionTitles: ["Ölçüm ve Limitler"] }],
+    questions: [
+      { id: 1, sectionRef: "Aşınma Tipleri", category: MAK, question: "Liner alt bölgesindeki korozif aşınmanın nedeni nedir?", options: ["Kükürt asidi (H₂SO₄) yoğunlaşması", "Katalizör tanecikleri", "Yetersiz yağlama", "Yüksek devir"], correctAnswer: 0, explanation: "Üst bölgede abrazif (Al+Si), genelde adhezif (yetersiz yağ), üst ölü nokta civarı erozif aşınma görülür." },
+      { id: 2, sectionRef: "Ölçüm ve Limitler", category: MAK, question: "Korozif aşınmayı önlemek için liner sıcaklığı nasıl tutulmalıdır?", options: ["180°C'nin altına düşürülmemeli (asit yoğunlaşma)", "Mümkün olduğunca düşük", "Sabit 50°C", "Önemsiz"], correctAnswer: 0, explanation: "Silindir yağ BN değeri yakıt kükürt oranına göre seçilir; tipik aşınma 0.05-0.10 mm/1000 saat." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Piston ve segman tasarımı",
+    blocks: [{ sectionTitles: ["Piston Yapısı", "Segman Tipleri"] }, { sectionTitles: ["Aşınma Göstergeleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Segman Tipleri", category: MAK, question: "Sıkıştırma segmanının görevi nedir?", options: ["Gaz sızdırmazlığı", "Yağı kazıma", "Soğutma", "Yakıt enjeksiyonu"], correctAnswer: 0, explanation: "Kazıyıcı ve yağ segmanları yağ kontrolü yapar; piston tacı 400-450°C'yi aşmamalıdır." },
+      { id: 2, sectionRef: "Aşınma Göstergeleri", category: MAK, question: "Aşınmış segmanların belirtisi nedir?", options: ["Yağ tüketimi artışı, kompresyon kaybı, egzoz dumanı", "Yakıt tasarrufu", "Sıcaklık düşüşü", "Belirti yoktur"], correctAnswer: 0, explanation: "Butt gap ve side clearance ölçülür; segman rotasyonu eşit aşınma için gereklidir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Biyel kolu ve krank mili",
+    blocks: [{ sectionTitles: ["Biyel Kolu", "Krank Mili"] }],
+    questions: [
+      { id: 1, sectionRef: "Krank Mili", category: MAK, question: "Krank mili hizalaması hangi ölçümle kontrol edilir?", options: ["Deflection ölçümü", "Basınç ölçümü", "Sıcaklık ölçümü", "Debi ölçümü"], correctAnswer: 0, explanation: "Yatak aşınması veya gövde deformasyonu hizalamayı bozar; her bakım döneminde deflection ölçülmelidir." },
+      { id: 2, sectionRef: "Biyel Kolu", category: MAK, question: "Biyel kolunun büyük ucu (big end) neye bağlanır?", options: ["Krank pinine", "Pervaneye", "Silindir kapağına", "Turboşarjere"], correctAnswer: 0, explanation: "Küçük uç crosshead/piston pinine; büyük uç yatağı ikiye bölünür, boşluk hassas ayarlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Mekanik yakıt enjeksiyon sistemi",
+    blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Enjeksiyon Zamanlaması"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik yakıt pompasında yakıt miktarını ne kontrol eder?", options: ["Plunger'ın helisel oluğu (helix)", "Elektronik valf", "Basınç sensörü", "Turboşarjer"], correctAnswer: 0, explanation: "Kam mili tahrikli plunger pompa; basit ve güvenilirdir, basınç 300-600 bar." },
+      { id: 2, sectionRef: "Enjeksiyon Zamanlaması", category: MAK, question: "Düşük yüklerde yanma kalitesi nasıl korunur?", options: ["VIT ile zamanlamayı ilerleterek", "Hız artırarak", "Yakıtı keserek", "Soğutmayı durdurarak"], correctAnswer: 0, explanation: "Enjeksiyon ÜÖN'den 10-20° önce başlar; modern motorlarda yerini common rail alıyor." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Common rail enjeksiyon sistemi",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Avantajlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Common rail sisteminde yakıt nerede yüksek basınçta tutulur?", options: ["Ortak boru (rail) akümülatöründe, ECU kontrolünde", "Sadece enjektörde", "Karterde", "Egzoz manifoldunda"], correctAnswer: 0, explanation: "800-2000 bar; pilot/ana/post enjeksiyon ve silindir başına bağımsız kontrol mümkündür." },
+      { id: 2, sectionRef: "Avantajlar", category: MAK, question: "Common rail'in NOx avantajı neye dayanır?", options: ["Pilot enjeksiyon basınç artış hızını azaltır", "Yakıtı ısıtır", "Hızı düşürür", "Soğutmayı keser"], correctAnswer: 0, explanation: "MAN ME-C ve Wärtsilä RT-flex common rail kullanır; düşük SFOC ve titreşim sağlar." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Enjektör (nozzle) tipleri ve püskürtme",
+    blocks: [{ sectionTitles: ["Nozzle Tipleri", "Atomizasyon Parametreleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Nozzle Tipleri", category: MAK, question: "Büyük motorlarda hangi nozzle tipi iyi atomizasyon sağlar?", options: ["Çok delikli (multi-hole, 4-10 delik)", "Pintle (tek delik)", "Deliksiz", "Slide type yalnızca"], correctAnswer: 0, explanation: "Damlacık boyutu basınç, delik çapı ve viskoziteye bağlıdır; pop test ile açma basıncı kontrol edilir." },
+      { id: 2, sectionRef: "Atomizasyon Parametreleri", category: MAK, question: "Düşük enjektör açma basıncı neye yol açar?", options: ["Kötü atomizasyon", "Daha iyi yanma", "Yakıt tasarrufu", "Hiçbir etki"], correctAnswer: 0, explanation: "Yüksek basınç ise enjeksiyon gecikmesine neden olur; arızalı enjektör yüksek egzoz sıcaklığı/duman verir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Yanma aşamaları ve gecikme süresi",
+    blocks: [{ sectionTitles: ["Dört Yanma Aşaması"] }],
+    questions: [
+      { id: 1, sectionRef: "Dört Yanma Aşaması", category: MAK, question: "Tutuşma gecikmesi (ignition delay) nedir?", options: ["Enjeksiyon başladıktan tutuşmaya kadar geçen süre (1-3 ms)", "Egzoz açılma süresi", "Sıkıştırma süresi", "Soğutma süresi"], correctAnswer: 0, explanation: "Gecikme uzarsa kontrolsüz yanma (diesel knock) artar; düşük setan yakıtlar gecikmeyi uzatır." },
+      { id: 2, sectionRef: "Dört Yanma Aşaması", category: MAK, question: "Son yanma (late combustion) neye yol açar?", options: ["Verim kaybı ve egzoz sıcaklığı artışı", "Daha yüksek verim", "Soğuma", "Hiçbir etki"], correctAnswer: 0, explanation: "Enjeksiyon bittikten sonra kalan yakıtın yanması; pilot enjeksiyon gecikme etkilerini azaltır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "İndike güç (indicated power) hesabı",
+    blocks: [{ sectionTitles: ["Hesap Formülü"] }],
+    questions: [
+      { id: 1, sectionRef: "Hesap Formülü", category: MAK, question: "İndike güç formülünde k katsayısı ne ifade eder?", options: ["İki zamanlı için 1, dört zamanlı için 1/2", "Silindir sayısı", "Devir", "Basınç"], correctAnswer: 0, explanation: "Pᵢ = (Pm × A × L × n × k)/60; Pm ortalama indike basınçtır (MEP)." },
+      { id: 2, sectionRef: "Hesap Formülü", category: MAK, question: "MEP=20 bar, A=0.1257 m², L=0.54 m, n=600 rpm, dört zamanlı bir silindirde indike güç yaklaşık kaçtır?", options: ["≈ 680 kW", "≈ 1360 kW", "≈ 68 kW", "≈ 340 kW"], correctAnswer: 0, explanation: "Pᵢ = (20×10⁵×0.1257×0.54×600×0.5)/60 ≈ 680 kW (bir silindir)." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Fren gücü (brake power) ve mekanik verim",
+    blocks: [{ sectionTitles: ["Formüller"] }],
+    questions: [
+      { id: 1, sectionRef: "Formüller", category: MAK, question: "Mekanik verim nasıl tanımlanır?", options: ["η_mek = P_b / P_i (fren gücü / indike güç)", "η_mek = P_i / P_b", "η_mek = P_b × P_i", "η_mek = P_i − P_b"], correctAnswer: 0, explanation: "Tipik 0.85-0.95; sürtünme gücü = P_i − P_b." },
+      { id: 2, sectionRef: "Formüller", category: MAK, question: "İndike güç 5000 kW, mekanik verim %90 ise fren gücü kaçtır?", options: ["4500 kW", "5555 kW", "500 kW", "4500 W"], correctAnswer: 0, explanation: "P_b = 0.90×5000 = 4500 kW; sürtünme = 500 kW." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Ortalama efektif basınç (MEP)",
+    blocks: [{ sectionTitles: ["Tanım ve Hesap"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanım ve Hesap", category: MAK, question: "MEP neyi ifade eder?", options: ["Strok boyunca sabit uygulandığında aynı işi üreten sanal basınç", "Maksimum yanma basıncı", "Atmosfer basıncı", "Turboşarjer basıncı"], correctAnswer: 0, explanation: "IMEP indike güçten, BMEP fren gücünden hesaplanır; büyük iki zamanlıda tipik 18-21 bar." },
+      { id: 2, sectionRef: "Tanım ve Hesap", category: MAK, question: "Yüksek MEP neyi gösterir?", options: ["Kompakt ve verimli motor", "Düşük verim", "Arıza", "Düşük güç"], correctAnswer: 0, explanation: "MEP artışı turboşarj teknolojisiyle sınırlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Özgül yakıt tüketimi (SFOC)",
+    blocks: [{ sectionTitles: ["Formül ve Birim", "SFOC'u Etkileyen Faktörler"] }],
+    questions: [
+      { id: 1, sectionRef: "Formül ve Birim", category: MAK, question: "12500 kW güç üretirken saatte 2.5 ton yakıt tüketen motorun SFOC'u kaçtır?", options: ["200 g/kWh", "100 g/kWh", "250 g/kWh", "500 g/kWh"], correctAnswer: 0, explanation: "SFOC = 2.500.000 g / 12500 kW = 200 g/kWh; modern büyük iki zamanlıda referans 155-175 g/kWh." },
+      { id: 2, sectionRef: "SFOC'u Etkileyen Faktörler", category: MAK, question: "Hangi yük oranında SFOC minimumdur?", options: ["%75-85", "%10-20", "%100", "%5"], correctAnswer: 0, explanation: "Turboşarjer kirliliği +3-8 g/kWh, şarj havası sıcaklığı +0.5 g/kWh/°C artırır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Performans izleme ve trend analizi",
+    blocks: [{ sectionTitles: ["İzlenen Parametreler", "Trend Analizi"] }],
+    questions: [
+      { id: 1, sectionRef: "İzlenen Parametreler", category: MAK, question: "Bir silindirin egzoz sıcaklığı >50°C sapma gösterirse olası neden nedir?", options: ["Enjektör arızası veya valf kaçağı", "Normal davranış", "Yakıt tasarrufu", "Turboşarjer iyileşmesi"], correctAnswer: 0, explanation: "Pmax >5 bar sapma enjeksiyon zamanlaması/sıkıştırma kaybı; SFOC >%5 artış turboşarjer/enjektör." },
+      { id: 2, sectionRef: "Trend Analizi", category: MAK, question: "Performans verileri karşılaştırma için nasıl işlenir?", options: ["Referans (ISO) koşullara düzeltilir", "Ham haliyle bırakılır", "Yalnızca ortalaması alınır", "Atılır"], correctAnswer: 0, explanation: "Kademeli bozulma bakımı, ani değişim arıza teşhisini tetikler; performans izleme kestirimci bakımın temelidir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Turboşarjer çalışma prensibi",
+    blocks: [{ sectionTitles: ["Çalışma Mekanizması", "Verimlilik"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Mekanizması", category: MAK, question: "Turboşarjer türbinini ne döndürür?", options: ["Egzoz gazları (aynı şaftta kompresör havayı sıkıştırır)", "Elektrik motoru", "Pervane", "Yakıt pompası"], correctAnswer: 0, explanation: "Devir 10.000-40.000 rpm; motor gücünü ve verimini artırır." },
+      { id: 2, sectionRef: "Verimlilik", category: MAK, question: "Modern turboşarjer toplam verimi yaklaşık nedir?", options: ["%65-72", "%20-30", "%95-99", "%40-45"], correctAnswer: 0, explanation: "Toplam = türbin × kompresör × mekanik verim; arıza motor gücünü dramatik düşürür." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Türbin ve kompresör karakteristikleri",
+    blocks: [{ sectionTitles: ["Kompresör Haritası", "Türbin"] }],
+    questions: [
+      { id: 1, sectionRef: "Kompresör Haritası", category: MAK, question: "Motor çalışma noktası kompresör haritasında nereye göre konumlanmalıdır?", options: ["Surge line'dan yeterli uzaklıkta (surge margin)", "Surge line üzerinde", "Choke line'da", "Önemsiz"], correctAnswer: 0, explanation: "Harita basınç oranı-debi grafiğidir; surge (sol) ve choke (sağ) sınırları içerir." },
+      { id: 2, sectionRef: "Türbin", category: MAK, question: "Büyük turboşarjerlerde hangi türbin tipi yüksek verim verir?", options: ["Aksiyel türbin", "Radyal türbin", "Pistonlu türbin", "Hiçbiri"], correctAnswer: 0, explanation: "Radyal küçük turboşarjerlerde; VTA (değişken türbin alanı) düşük yükte verim sağlar." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Süpürme (scavenging) tipleri: uniflow, loop",
+    blocks: [{ sectionTitles: ["Süpürme Tipleri", "Uniflow Süpürme Detayları"] }],
+    questions: [
+      { id: 1, sectionRef: "Süpürme Tipleri", category: MAK, question: "Hangi süpürme tipi en yüksek verimi (%90+) sağlar?", options: ["Uniflow (tek yönlü)", "Loop (döngüsel)", "Cross (çapraz)", "Hiçbiri"], correctAnswer: 0, explanation: "Loop %80-85, cross %70-75 verim verir." },
+      { id: 2, sectionRef: "Uniflow Süpürme Detayları", category: MAK, question: "Süpürme havası debisi yanma havasının kaç katıdır?", options: ["1.5-1.8 katı (fazla hava soğutmaya da katkı)", "0.5 katı", "10 katı", "Eşit"], correctAnswer: 0, explanation: "Süpürme havası basıncı 0.2-0.4 bar (gauge); scavenge fire risk yönetimi kritiktir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Şarj havası soğutucusu",
+    blocks: [{ sectionTitles: ["Amaç ve Etki", "Yapı"] }],
+    questions: [
+      { id: 1, sectionRef: "Amaç ve Etki", category: MAK, question: "Şarj havası soğutucusu motor gücünü nasıl artırır?", options: ["Havayı soğutup yoğunluğunu artırır → silindire daha fazla hava → daha fazla yakıt", "Hızı artırarak", "Yakıtı ısıtarak", "Egzozu kapatarak"], correctAnswer: 0, explanation: "Sıkıştırma sonu hava 150-200°C'den 35-50°C'ye düşürülür; NOx de azalır." },
+      { id: 2, sectionRef: "Yapı", category: MAK, question: "Şarj havası soğutucusu kirliliği neye yol açar?", options: ["Motor performansının doğrudan düşmesi", "Performans artışı", "Hiçbir etki", "Yakıt tasarrufu"], correctAnswer: 0, explanation: "Hava (fin) ve su (tube) tarafı periyodik temizlik gerektirir; çıkış sıcaklığı izlenmelidir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Turboşarj surging",
+    blocks: [{ sectionTitles: ["Surging Mekanizması", "Önleme ve Müdahale"] }],
+    questions: [
+      { id: 1, sectionRef: "Surging Mekanizması", category: MAK, question: "Surging ne zaman oluşur?", options: ["Debi düşerken basınç oranı yüksek kaldığında (surge line solu)", "Yüksek debide", "Motor durunca", "Soğuk havada"], correctAnswer: 0, explanation: "Akış periyodik ileri-geri salınır; güçlü titreşim/gürültü/sıcaklık artışı olur." },
+      { id: 2, sectionRef: "Önleme ve Müdahale", category: MAK, question: "Surging devam ederse ne yapılır?", options: ["Yükü azalt, hava filtresi kontrol et, by-pass valfini aç", "Yükü artır", "Yakıtı artır", "Hiçbir şey", ], correctAnswer: 0, explanation: "Ani yük artışı veya bir silindir misfiring surging tetikleyebilir; yatak/kanat hasarı riski vardır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Turboşarj yardımcı üfleyici (auxiliary blower)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Yardımcı üfleyici ne zaman devreye girer?", options: ["Motor yükü %25-35'in altında olduğunda", "Tam yükte", "Motor dururken", "Sürekli"], correctAnswer: 0, explanation: "Turboşarjer yeterli basıncı sağlayamadığında süpürme havası temin eder; çek valf ters akışı önler." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Genellikle kaç yardımcı üfleyici bulunur?", options: ["İki (yedeklilik için)", "Bir", "Beş", "Hiç"], correctAnswer: 0, explanation: "Üfleyici arızası düşük yükte çalışmayı imkansız kılar; çalıştırmadan önce devreye alınmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "VIT (Variable Injection Timing)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Mekanik ve Elektronik VIT"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "VIT düşük yükte enjeksiyon zamanlamasını ne yapar?", options: ["İlerletir (advance) — yanma ÜÖN civarında", "Geciktirir", "Durdurur", "Değiştirmez"], correctAnswer: 0, explanation: "Yüksek yükte Pmax limiti aşılmasın diye zamanlama geri alınır (retard)." },
+      { id: 2, sectionRef: "Mekanik ve Elektronik VIT", category: MAK, question: "VIT kısmi yükte SFOC'u ne kadar düşürebilir?", options: ["3-5 g/kWh", "100 g/kWh", "Hiç", "50 g/kWh"], correctAnswer: 0, explanation: "ME motorlarında elektronik VIT her silindir için bağımsız ayar yapar; Pmax limiti korunmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Anormal yanma: knocking ve misfiring",
+    blocks: [{ sectionTitles: ["Diesel Knock", "Misfiring"] }],
+    questions: [
+      { id: 1, sectionRef: "Diesel Knock", category: MAK, question: "Diesel knock neden oluşur?", options: ["Uzun tutuşma gecikmesi sonrası biriken yakıtın ani tutuşması (yüksek dp/dθ)", "Yetersiz yakıt", "Yüksek soğutma", "Düşük devir"], correctAnswer: 0, explanation: "Düşük setan yakıt, düşük sıkıştırma sıcaklığı, erken enjeksiyon, soğuk çalıştırma tetikler." },
+      { id: 2, sectionRef: "Misfiring", category: MAK, question: "Misfiring'in tehlikeli sonucu nedir?", options: ["Yanmamış yakıtın egzoza geçmesi (karter patlaması riski)", "Yakıt tasarrufu", "Daha sessiz çalışma", "Soğuma"], correctAnswer: 0, explanation: "Arızalı enjektör, yakıt pompası arızası, düşük sıkıştırma misfiring nedenleridir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "İndikatör diyagramı ve P-V analizi",
+    blocks: [{ sectionTitles: ["Diyagram Tipleri", "Teşhis Örüntüleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Diyagram Tipleri", category: MAK, question: "Güç kartının (power card) alanı neyle orantılıdır?", options: ["İndike güçle", "Yakıt tüketimiyle", "Devirle", "Sıcaklıkla"], correctAnswer: 0, explanation: "P-θ (draw card) enjeksiyon zamanlaması ve Pmax'ı; light spring düşük basınç bölgesini gösterir." },
+      { id: 2, sectionRef: "Teşhis Örüntüleri", category: MAK, question: "Düşük Pmax neyin göstergesidir?", options: ["Sıkıştırma kaybı veya geç enjeksiyon", "Erken enjeksiyon", "Aşırı yakıt", "Normal"], correctAnswer: 0, explanation: "Modern motorlarda elektronik indikatör (PMI) kullanılır; tüm silindirler karşılaştırılır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Yatak (bearing) tipleri ve ölçüm",
+    blocks: [{ sectionTitles: ["Yatak Tipleri", "Yatak Boşluk Ölçümü"] }],
+    questions: [
+      { id: 1, sectionRef: "Yatak Tipleri", category: MAK, question: "Beyaz metal (Babbitt) yatak malzemesinin avantajı nedir?", options: ["Düşük sürtünme katsayısı ve iyi gömme özelliği", "Yüksek sertlik", "Elektrik iletkenliği", "Manyetiklik"], correctAnswer: 0, explanation: "Üç metal yatak (çelik+bronz+beyaz metal); thrust yatak tilting pad tipidir." },
+      { id: 2, sectionRef: "Yatak Boşluk Ölçümü", category: MAK, question: "Yatak boşluğu hangi araçla ölçülür?", options: ["Lead wire, plastigage veya feeler gauge", "Termometre", "Barometre", "Voltmetre"], correctAnswer: 0, explanation: "Aşırı boşluk yağ basıncı düşüşü, yetersiz boşluk ısınma yapar; sıcaklık alarmı 65-75°C." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Supap mekanizması ve zamanlaması",
+    blocks: [{ sectionTitles: ["Mekanizma Bileşenleri", "Supap Zamanlama Diyagramı"] }],
+    questions: [
+      { id: 1, sectionRef: "Mekanizma Bileşenleri", category: MAK, question: "İki zamanlı motorda hangi supap bulunur?", options: ["Yalnızca egzoz supabı (süpürme portlar gömlekte)", "Yalnızca emme supabı", "Her ikisi de", "Hiçbiri"], correctAnswer: 0, explanation: "Dört zamanlıda emme+egzoz; ME motorlarında hidrolik supap tahriği kullanılır." },
+      { id: 2, sectionRef: "Supap Zamanlama Diyagramı", category: MAK, question: "Egzoz supabı neden AÖN'den önce açılır (blowdown)?", options: ["Silindir basıncını düşürmek için", "Yakıt eklemek için", "Soğutma için", "Hızı artırmak için"], correctAnswer: 0, explanation: "Supaplar tam ÜÖN/AÖN'de açılıp kapanmaz; erken açma/geç kapama uygulanır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Bedplate ve frame yapısı",
+    blocks: [{ sectionTitles: ["Bedplate", "Frame (A-Frame)"] }],
+    questions: [
+      { id: 1, sectionRef: "Bedplate", category: MAK, question: "Ana yataklar motorun hangi yapısal parçası üzerindedir?", options: ["Bedplate (taban plakası)", "Silindir kapağı", "Turboşarjer", "Pervane"], correctAnswer: 0, explanation: "Bedplate cross/longitudinal girderlerle bütünlük sağlar; bearing pocket yüzeyleri hassas işlenir." },
+      { id: 2, sectionRef: "Frame (A-Frame)", category: MAK, question: "Tie rod sistemi ne sağlar?", options: ["Bedplate-frame-silindir bloğunu gerilmeli yapısal bütünlük", "Yakıt iletimi", "Soğutma", "Yağlama"], correctAnswer: 0, explanation: "Tie rod ön gerilimi yapısal bütünlük için kritiktir; bedplate çatlağı motor toplam kaybı verebilir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Silindir performans dengesizliği",
+    blocks: [{ sectionTitles: ["Dengesizlik Göstergeleri", "Dengeleme Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Dengesizlik Göstergeleri", category: MAK, question: "Pmax farkı için tipik kabul sınırı nedir?", options: ["±3-5 bar", "±50 bar", "±0.1 bar", "Sınır yok"], correctAnswer: 0, explanation: "Egzoz sıcaklık farkı ±30-50°C; dengesizlik düzeltmesi enjeksiyon zamanlaması/yakıt miktarı ile yapılır." },
+      { id: 2, sectionRef: "Dengeleme Prosedürü", category: MAK, question: "Dengeleme prosedürünün ilk adımı nedir?", options: ["Tüm silindirlerin indikatör diyagramlarını almak", "Yakıtı kesmek", "Motoru durdurmak", "Turboşarjeri sökmek"], correctAnswer: 0, explanation: "ME/RT-flex motorlarında otomatik dengeleme yapılır; dengesizlik titreşimi artırır." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Liner ve piston aşınması",
+    blocks: [{ sectionTitles: ["Aşınma Mekanizmaları", "Aşınma İzleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Aşınma Mekanizmaları", category: MAK, question: "Cold corrosion (korozif aşınma) nasıl oluşur?", options: ["Kükürt → SO₃ → su buharıyla H₂SO₄; liner sıcaklığı çiy noktası altına düşünce", "Yüksek devirle", "Elektrikle", "Manyetizmayla"], correctAnswer: 0, explanation: "VLSFO'da cold corrosion riski artmıştır; liner sıcaklık yönetimi kritiktir." },
+      { id: 2, sectionRef: "Aşınma İzleme", category: MAK, question: "Scrapedown yağ analizinde hangi element asit korozyonunu gösterir?", options: ["S (kükürt)", "Fe yalnızca", "Ca yalnızca", "Su yok"], correctAnswer: 0, explanation: "Fe aşınmayı, Ca yağ kalıntısını gösterir; iyi koşulda aşınma 0.03-0.05 mm/1000 saat." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Egzoz sıcaklık sapmaları",
+    blocks: [{ sectionTitles: ["Teşhis Tablosu"] }],
+    questions: [
+      { id: 1, sectionRef: "Teşhis Tablosu", category: MAK, question: "Tek bir silindirin egzoz sıcaklığı yüksekse olası neden nedir?", options: ["Arızalı enjektör veya egzoz valfi kaçağı", "Düşük yük", "Yüksek süpürme havası", "Sensör kalibrasyonu sadece"], correctAnswer: 0, explanation: "Tüm silindirler yüksekse turboşarjer kirliliği/yüksek yük; tek silindir düşükse yakıt pompası arızası." },
+      { id: 2, sectionRef: "Teşhis Tablosu", category: MAK, question: "Yüksek egzoz sıcaklığının riski nedir?", options: ["Turbin kanat hasarı", "Yakıt tasarrufu", "Daha iyi yanma", "Soğuma"], correctAnswer: 0, explanation: "Egzoz sıcaklık trendi performans izlemenin temel aracıdır; sensör kalibrasyonu da kontrol edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Yatak arızaları ve sıcaklık kontrolü",
+    blocks: [{ sectionTitles: ["Arıza Nedenleri", "Sıcaklık İzleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Arıza Nedenleri", category: MAK, question: "Yağ basıncı düşüşü yatak arızasına nasıl yol açar?", options: ["Yetersiz yağ filmi → metal teması", "Aşırı yağlama", "Soğutma artışı", "Hiçbir etki"], correctAnswer: 0, explanation: "Yağ kirliliği, aşırı yük, misalignment ve boşluk hatası diğer nedenlerdir." },
+      { id: 2, sectionRef: "Sıcaklık İzleme", category: MAK, question: "Karter patlaması öncesi aşırı ısınmayı ne tespit eder?", options: ["Oil mist detector (yağ bulutu algılayıcı)", "Barometre", "GPS", "Pusula"], correctAnswer: 0, explanation: "Normal yatak 50-65°C; alarm 70-75°C, shutdown ~85°C. Yatak sıcaklık trendi en güvenilir göstergedir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Silindir yağlama sistemi sorunları",
+    blocks: [{ sectionTitles: ["Yağlama Sistemi", "Sorunlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Yağlama Sistemi", category: MAK, question: "Silindir yağı BN (Base Number) değeri neye göre seçilir?", options: ["Yakıtın kükürt oranına (yüksek S → yüksek BN)", "Devire", "Sıcaklığa", "Renge"], correctAnswer: 0, explanation: "Yüksek kükürtte BN 70-100, düşük kükürtte 25-40; alfa yağlama piston hareketiyle senkronizedir." },
+      { id: 2, sectionRef: "Sorunlar", category: MAK, question: "Aşırı yağlama (yüksek feed rate) neye yol açar?", options: ["Yanma odası birikinti ve port tıkanması", "Hızlı aşınma", "Yakıt tasarrufu", "Hiçbir etki"], correctAnswer: 0, explanation: "Yetersiz yağlama scuffing'e; yanlış BN korozyon veya kireçlenmeye yol açar; drain oil analizi liner durumunu gösterir." },
+    ],
+  },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Yük dengeleme (load balancing)",
+    blocks: [{ sectionTitles: ["Dengeleme Yöntemi", "Kontrol Parametreleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Dengeleme Yöntemi", category: MAK, question: "Silindir yük dengeleme nasıl yapılır?", options: ["İndikatör diyagramından güç hesaplanıp yakıt miktarı (fuel rack) ayarlanır", "Hız değiştirilerek", "Soğutmayla", "Turboşarjerle"], correctAnswer: 0, explanation: "ME motorlarda ECU her silindirin fuel index'ini bağımsız ayarlar." },
+      { id: 2, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Pmax ve MEP eşitleme hangi ayarlarla yapılır?", options: ["Pmax: enjeksiyon zamanlaması, MEP: yakıt miktarı (iteratif)", "İkisi de soğutma", "İkisi de hız", "Ayar gerekmez"], correctAnswer: 0, explanation: "İki ayar birbirini etkiler; yük dengesizliği torsiyonel titreşimi artırır." },
+    ],
+  },
 ];
