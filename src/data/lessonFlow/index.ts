@@ -1,10 +1,11 @@
 import type { LessonFlow } from "./types";
 import { navigationLessonFlows } from "./navigation";
+import { meteorologyLessonFlows } from "./meteorology";
 
 export type { LessonFlow, LessonBlock, RecapQuestion } from "./types";
 
-/** Tüm rehberli akışlar (beta). Pilot: yalnızca seyir doludur. */
-const ALL_FLOWS: LessonFlow[] = [...navigationLessonFlows];
+/** Tüm rehberli akışlar (beta). Seyir + Meteoroloji doludur. */
+const ALL_FLOWS: LessonFlow[] = [...navigationLessonFlows, ...meteorologyLessonFlows];
 
 /** Bir kategoriye (topicKey) ait tüm rehberli akışları döndürür. */
 export const getLessonFlowsByTopic = (topicKey?: string): LessonFlow[] =>

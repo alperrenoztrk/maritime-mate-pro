@@ -800,4 +800,253 @@ export const navigationLessonFlows: LessonFlow[] = [
       },
     ],
   },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Departure (Doğu–batı mesafesi)",
+    blocks: [
+      {
+        sectionTitles: [
+          "Departure (Doğu–Batı Mesafesi) Genel Tanım",
+          "Departure’ın Tanımı ve Yön İşareti",
+        ],
+      },
+      {
+        sectionTitles: [
+          "Mesafe ve Kurs Kullanılarak Departure Hesabı",
+          "Sayısal Örnek: Mesafe ve Kurs ile Departure",
+        ],
+      },
+      {
+        sectionTitles: [
+          "DLat ile Departure Arasındaki Geometrik İlişki",
+          "Departure’ın Düzlem Seyirde Kullanım Alanı",
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Departure’ın Tanımı ve Yön İşareti",
+        category: NAV,
+        question: "Departure hangi doğrultudaki mesafedir?",
+        options: ["Doğu–batı (yatay)", "Kuzey–güney (düşey)", "Düşey derinlik", "Toplam seyir mesafesi"],
+        correctAnswer: 0,
+        explanation:
+          "Departure, düzlem seyirde doğu–batı doğrultusundaki yatay mesafedir (deniz mili). DLat ise kuzey–güney bileşenidir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Departure’ın Tanımı ve Yön İşareti",
+        category: NAV,
+        question: "Doğuya doğru seyirde departure işareti nasıl alınır?",
+        options: ["Pozitif (doğu)", "Negatif (batı)", "Daima sıfır", "Enleme göre değişir"],
+        correctAnswer: 0,
+        explanation: "Doğu yönlü departure pozitif, batı yönlü negatif kabul edilir; yanlış işaret geometrik hata üretir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Mesafe ve Kurs Kullanılarak Departure Hesabı",
+        category: NAV,
+        question: "Departure hangi bağıntıyla hesaplanır?",
+        options: ["Departure = Mesafe × sin Kurs", "Departure = Mesafe × cos Kurs", "Departure = Mesafe ÷ sin Kurs", "Departure = Hız × Zaman"],
+        correctAnswer: 0,
+        explanation: "Departure = Mesafe × sin(Kurs); DLat = Mesafe × cos(Kurs). Dik üçgenin yatay kenarıdır.",
+      },
+      {
+        id: 4,
+        sectionRef: "Sayısal Örnek: Mesafe ve Kurs ile Departure",
+        category: NAV,
+        question: "40 NM mesafe ve 060° rota için departure yaklaşık kaçtır?",
+        options: ["34.6 NM", "20 NM", "40 NM", "60 NM"],
+        correctAnswer: 0,
+        explanation: "Departure = 40 × sin(60°) = 40 × 0.866 ≈ 34.6 NM doğu.",
+      },
+      {
+        id: 5,
+        sectionRef: "DLat ile Departure Arasındaki Geometrik İlişki",
+        category: NAV,
+        question: "DLat ve departure bilindiğinde kurs hangi bağıntıyla bulunur?",
+        options: ["tan Kurs = Departure ÷ DLat", "tan Kurs = DLat ÷ Departure", "cos Kurs = Departure ÷ DLat", "Kurs = Departure × DLat"],
+        correctAnswer: 0,
+        explanation: "tan(Kurs) = Departure ÷ DLat; dik üçgende yatay/düşey bileşen oranıdır.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Set ve drift",
+    blocks: [
+      {
+        sectionTitles: ["Set ve Drift Kavramı", "Set ve Drift Kaynakları"],
+      },
+      {
+        sectionTitles: ["Akıntı Vektörü Tanımı"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Set ve Drift Kavramı",
+        category: NAV,
+        question: "Set ve drift sırasıyla neyi ifade eder?",
+        options: [
+          "Set = akıntının yönü, Drift = akıntının hızı",
+          "Set = akıntının hızı, Drift = akıntının yönü",
+          "Set = rüzgâr yönü, Drift = gemi hızı",
+          "Set = gemi rotası, Drift = gemi sürati",
+        ],
+        correctAnswer: 0,
+        explanation: "Set akıntının hakiki yönü (derece), drift ise akıntının hızıdır (knot).",
+      },
+      {
+        id: 2,
+        sectionRef: "Set ve Drift Kaynakları",
+        category: NAV,
+        question: "Akıntı seti neye göre tanımlanır?",
+        options: ["Hakiki kuzeye göre", "Geminin pruvasına göre", "Manyetik kuzeye göre", "Rüzgâr yönüne göre"],
+        correctAnswer: 0,
+        explanation:
+          "Set hakiki kuzeye göre tanımlanır ve geminin hangi yöne gittiğinden bağımsızdır.",
+      },
+      {
+        id: 3,
+        sectionRef: "Set ve Drift Kaynakları",
+        category: NAV,
+        question: "Set 135° olan bir akıntı hangi yöne akar?",
+        options: ["Güneydoğuya", "Kuzeybatıya", "Güneybatıya", "Kuzeydoğuya"],
+        correctAnswer: 0,
+        explanation: "135° hakiki = güneydoğu yönü; akıntı su kütlesini güneydoğuya taşır.",
+      },
+      {
+        id: 4,
+        sectionRef: "Akıntı Vektörü Tanımı",
+        category: NAV,
+        question: "Akıntı vektörü hangi iki bilgiyle temsil edilir?",
+        options: ["(Set, Drift)", "(COG, SOG)", "(Heading, STW)", "(Variation, Deviation)"],
+        correctAnswer: 0,
+        explanation: "Akıntı Vektörü = (Set, Drift): set yön, drift hız bilgisidir.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Akıntı vektörleri",
+    blocks: [
+      {
+        sectionTitles: ["Akıntı Vektörlerinin Görsel Mantığı", "Temel Vektör Eşitliği"],
+      },
+      {
+        sectionTitles: ["Bileşenlere Ayırma", "Bileşenden Büyüklük ve Yön"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Temel Vektör Eşitliği",
+        category: NAV,
+        question: "Geminin yer hız vektörü (COG/SOG) nasıl bulunur?",
+        options: [
+          "Suya göre hız vektörü + akıntı vektörü",
+          "Suya göre hız vektörü − rüzgâr vektörü",
+          "Akıntı vektörü − suya göre hız vektörü",
+          "Heading + Variation",
+        ],
+        correctAnswer: 0,
+        explanation: "Yer Hız Vektörü = Suya Göre Hız Vektörü + Akıntı Vektörü.",
+      },
+      {
+        id: 2,
+        sectionRef: "Bileşenlere Ayırma",
+        category: NAV,
+        question: "Bir vektörün doğu (E) bileşeni nasıl bulunur?",
+        options: ["Hız × sin(Yön)", "Hız × cos(Yön)", "Hız ÷ sin(Yön)", "Hız + Yön"],
+        correctAnswer: 0,
+        explanation: "Doğu bileşeni = Hız × sin(Yön); kuzey bileşeni = Hız × cos(Yön) (hakiki kuzey referansı).",
+      },
+      {
+        id: 3,
+        sectionRef: "Bileşenden Büyüklük ve Yön",
+        category: NAV,
+        question: "N ve E bileşenleri toplandıktan sonra SOG nasıl bulunur?",
+        options: ["SOG = √(N² + E²)", "SOG = N + E", "SOG = N × E", "SOG = E ÷ N"],
+        correctAnswer: 0,
+        explanation: "SOG = √(N² + E²); COG ise tan(COG) = E ÷ N ile bulunur.",
+      },
+      {
+        id: 4,
+        sectionRef: "Bileşenden Büyüklük ve Yön",
+        category: NAV,
+        question: "Yer vektörünün yönü (COG) hangi bağıntıyla bulunur?",
+        options: ["tan(COG) = E ÷ N", "tan(COG) = N ÷ E", "cos(COG) = E ÷ N", "COG = N × E"],
+        correctAnswer: 0,
+        explanation: "tan(COG) = E ÷ N; sonucun çeyreği N ve E işaretlerinden belirlenir.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Leeway",
+    blocks: [
+      {
+        sectionTitles: ["Detaylı Anlatım"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Detaylı Anlatım",
+        category: NAV,
+        question: "Leeway nedir?",
+        options: [
+          "Rüzgâr etkisiyle dümenlenen rota (CTS) ile gerçek ilerleme (CMG) arasındaki açısal fark",
+          "Akıntının gemiyi taşıdığı mesafe",
+          "Pusula ile manyetik kuzey arası açı",
+          "İki kerteriz arasındaki fark",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Leeway, rüzgârın yanal sürüklemesi sonucu dümenlenen rota ile gerçek ilerleme doğrultusu arasında oluşan açıdır.",
+      },
+      {
+        id: 2,
+        sectionRef: "Detaylı Anlatım",
+        category: NAV,
+        question: "Rüzgâr iskele tarafından gelirse gemi hangi yöne sürüklenir?",
+        options: ["Sancağa (rüzgâr altına)", "İskeleye", "İleriye", "Geriye"],
+        correctAnswer: 0,
+        explanation: "Leeway daima rüzgâr altına doğrudur; rüzgâr iskeleden gelirse gemi sancağa sürüklenir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Detaylı Anlatım",
+        category: NAV,
+        question: "Gerçek ilerleme (CMG) ile dümenlenen rota (CTS) ilişkisi nedir?",
+        options: ["CMG = CTS ± Leeway", "CMG = CTS × Leeway", "CMG = CTS + Variation", "CMG = CTS − Drift"],
+        correctAnswer: 0,
+        explanation: "CMG = CTS ± Leeway. Rüzgâr iskeleden → CTS − L; rüzgâr sancaktan → CTS + L.",
+      },
+      {
+        id: 4,
+        sectionRef: "Detaylı Anlatım",
+        category: NAV,
+        question: "CTS 090°T, rüzgâr iskeleden, leeway 5° ise CMG nedir?",
+        options: ["085°T", "095°T", "090°T", "080°T"],
+        correctAnswer: 0,
+        explanation: "Rüzgâr iskeleden → gemi sancağa kayar → CMG = 090° − 5° = 085°T.",
+      },
+      {
+        id: 5,
+        sectionRef: "Detaylı Anlatım",
+        category: NAV,
+        question: "İstenen CMG 090°T, rüzgâr iskeleden, leeway 5° ise dümenlenecek rota (CTS) nedir?",
+        options: ["095°T", "085°T", "090°T", "100°T"],
+        correctAnswer: 0,
+        explanation: "Sürüklenmeyi telafi için rüzgâr üstüne düzeltilir: CTS = 090° + 5° = 095°T → gemi 090° CMG'ye oturur.",
+      },
+    ],
+  },
 ];
