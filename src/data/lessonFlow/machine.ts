@@ -982,11 +982,11 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-fuel-technology",
     topicTitle: "HFO (Heavy Fuel Oil) özellikleri",
-    blocks: [{ sectionTitles: ["Temel Özellikler"] }],
+    blocks: [{ sectionTitles: ["Fiziksel Özellikler"] }],
     questions: [
       {
         id: 1,
-        sectionRef: "Temel Özellikler",
+        sectionRef: "Fiziksel Özellikler",
         category: MAK,
         question: "HFO enjeksiyon için yaklaşık kaç °C'ye ısıtılır?",
         options: ["130–150°C (viskozite 10–15 cSt'ye düşer)", "40–50°C", "200–250°C", "Isıtma gerekmez"],
@@ -995,7 +995,7 @@ export const machineLessonFlows: LessonFlow[] = [
       },
       {
         id: 2,
-        sectionRef: "Temel Özellikler",
+        sectionRef: "Fiziksel Özellikler",
         category: MAK,
         question: "HFO'nun 15°C'deki yoğunluğu tipik olarak hangi aralıktadır?",
         options: ["960–991 kg/m³", "700–750 kg/m³", "500–600 kg/m³", "1100–1200 kg/m³"],
@@ -1007,11 +1007,11 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-fuel-technology",
     topicTitle: "VLSFO (Very Low Sulphur Fuel Oil)",
-    blocks: [{ sectionTitles: ["Özellikler ve Zorluklar"] }],
+    blocks: [{ sectionTitles: ["Özellikler", "Operasyonel Zorluklar"] }],
     questions: [
       {
         id: 1,
-        sectionRef: "Özellikler ve Zorluklar",
+        sectionRef: "Özellikler",
         category: MAK,
         question: "VLSFO nasıl üretilir?",
         options: [
@@ -1025,7 +1025,7 @@ export const machineLessonFlows: LessonFlow[] = [
       },
       {
         id: 2,
-        sectionRef: "Özellikler ve Zorluklar",
+        sectionRef: "Operasyonel Zorluklar",
         category: MAK,
         question: "VLSFO ile çalışırken en önemli risk nedir?",
         options: [
@@ -1042,11 +1042,11 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-fuel-technology",
     topicTitle: "ISO 8217 yakıt standartları",
-    blocks: [{ sectionTitles: ["Sınıflandırma"] }],
+    blocks: [{ sectionTitles: ["Yakıt Sınıflandırması", "Temel Parametre Limitleri (RMG 380)"] }],
     questions: [
       {
         id: 1,
-        sectionRef: "Sınıflandırma",
+        sectionRef: "Yakıt Sınıflandırması",
         category: MAK,
         question: "ISO 8217'ye göre distile yakıt sınıfları hangileridir?",
         options: ["DMA (MGO), DMB, DMC", "RMG, RMK", "HFO-1, HFO-2", "A, B, C"],
@@ -1055,7 +1055,7 @@ export const machineLessonFlows: LessonFlow[] = [
       },
       {
         id: 2,
-        sectionRef: "Sınıflandırma",
+        sectionRef: "Yakıt Sınıflandırması",
         category: MAK,
         question: "Kalıntı yakıtlar (RMA…RMK) hangi parametreye göre sınıflandırılır?",
         options: ["Viskozite", "Renk", "Üretici ülke", "Tank numarası"],
@@ -1092,11 +1092,11 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-fuel-technology",
     topicTitle: "Settling tank ve servis tank",
-    blocks: [{ sectionTitles: ["Tank Sistemi"] }],
+    blocks: [{ sectionTitles: ["Settling Tank", "Servis Tank (Day Tank)"] }],
     questions: [
       {
         id: 1,
-        sectionRef: "Tank Sistemi",
+        sectionRef: "Servis Tank (Day Tank)",
         category: MAK,
         question: "Yakıtın motora ulaşana kadarki doğru akış sırası nedir?",
         options: [
@@ -1110,7 +1110,7 @@ export const machineLessonFlows: LessonFlow[] = [
       },
       {
         id: 2,
-        sectionRef: "Tank Sistemi",
+        sectionRef: "Settling Tank",
         category: MAK,
         question: "Settling tankının temel işlevi nedir?",
         options: [
@@ -1247,11 +1247,11 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-cooling-hvac",
     topicTitle: "COP (Performans Katsayısı) hesabı",
-    blocks: [{ sectionTitles: ["COP Hesabı"] }],
+    blocks: [{ sectionTitles: ["Soğutma COP"] }],
     questions: [
       {
         id: 1,
-        sectionRef: "COP Hesabı",
+        sectionRef: "Soğutma COP",
         category: MAK,
         question: "Soğutma COP'u hangi bağıntıyla bulunur?",
         options: [
@@ -1265,7 +1265,7 @@ export const machineLessonFlows: LessonFlow[] = [
       },
       {
         id: 2,
-        sectionRef: "COP Hesabı",
+        sectionRef: "Soğutma COP",
         category: MAK,
         question: "h₁=400, h₂=450, h₄=250 kJ/kg ise COP kaçtır?",
         options: ["3.0", "0.33", "1.5", "9.0"],
@@ -3291,37 +3291,37 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Dizel çevrimi ve sıkıştırma ile ateşleme",
-    blocks: [{ sectionTitles: ["Sıkıştırma ile Ateşleme Prensibi", "İdeal Dizel Çevrimi"] }],
+    blocks: [{ sectionTitles: ["Sıkıştırma ile Ateşleme Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorda yakıt nasıl tutuşur?", options: ["Sıkıştırılan havanın 600-900°C'ye ulaşması, yakıtın kendiliğinden tutuşması", "Buji kıvılcımı", "Elektrikli ısıtıcı", "Dışarıdan alev"], correctAnswer: 0, explanation: "Sıkıştırma oranı 12:1–24:1; sıkıştırma sonu sıcaklığı yakıtın tutuşma noktasının (250-350°C) üzerindedir." },
-      { id: 2, sectionRef: "İdeal Dizel Çevrimi", category: MAK, question: "İdeal dizel çevriminde ısı alımı nasıl modellenir?", options: ["Sabit basınçta (2→3, enjeksiyon süresince)", "Sabit hacimde", "Sabit sıcaklıkta", "Adyabatik"], correctAnswer: 0, explanation: "1→2 adyabatik sıkıştırma, 2→3 sabit basınçta ısı alımı, 3→4 adyabatik genleşme, 4→1 sabit hacimde ısı atımı." },
+      { id: 1, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorda yakıt nasıl tutuşur?", options: ["Sıkıştırma sonunda hava 700-900°C'ye ulaşır ve enjekte edilen yakıt kendiliğinden tutuşur", "Buji kıvılcımı", "Elektrikli ısıtıcı", "Dışarıdan alev"], correctAnswer: 0, explanation: "Emmede silindire yalnızca hava alınır; sıkıştırma sonu sıcaklığı 700-900°C'ye ulaşır ve enjekte edilen yakıt kendiliğinden tutuşur." },
+      { id: 2, sectionRef: "Sıkıştırma ile Ateşleme Prensibi", category: MAK, question: "Dizel motorlarda sıkıştırma oranı genellikle hangi aralıktadır?", options: ["12-20", "2-4", "30-40", "1-2"], correctAnswer: 0, explanation: "Sıkıştırma oranı genellikle 12-20 arasındadır; yüksek sıkıştırma oranı daha iyi ateşleme güvenilirliği sağlar." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "İki zamanlı motor çalışma prensibi",
-    blocks: [{ sectionTitles: ["Çalışma Döngüsü", "Uniflow Süpürme"] }],
+    blocks: [{ sectionTitles: ["Çalışma Prensipleri", "Avantajlar ve Dezavantajlar"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Döngüsü", category: MAK, question: "İki zamanlı motorda kaç krank devrinde bir güç stroku üretilir?", options: ["Her devirde bir", "İki devirde bir", "Dört devirde bir", "Yarım devirde bir"], correctAnswer: 0, explanation: "Büyük deniz ana motorları çoğunlukla iki zamanlıdır; her devir bir güç stroku verir." },
-      { id: 2, sectionRef: "Uniflow Süpürme", category: MAK, question: "Modern iki zamanlı motorlarda hangi süpürme tipi kullanılır?", options: ["Uniflow (alt port giriş, üst egzoz valfi)", "Cross", "Loop", "Hiçbiri"], correctAnswer: 0, explanation: "Uniflow en etkin süpürmeyi sağlar; taze hava alttan, egzoz üst valften çıkar." },
+      { id: 1, sectionRef: "Çalışma Prensipleri", category: MAK, question: "İki zamanlı motorda taze hava silindire nasıl dolar?", options: ["Piston aşağı inerken süpürme portları açılır; süpürme havası turboşarj/yardımcı üfleyiciyle sağlanır", "Buji ile", "Emme supabı ile (4 supap)", "Egzozdan geri"], correctAnswer: 0, explanation: "Piston aşağı inerken süpürme portları açılır, taze hava dolar ve yanmış gaz egzoz supabı/portlarıyla atılır; uniflow tipte yalnız egzoz supabı vardır." },
+      { id: 2, sectionRef: "Avantajlar ve Dezavantajlar", category: MAK, question: "İki zamanlı motorun başlıca avantajı nedir?", options: ["Düşük devir, yüksek tork ve verim; pervane ile direkt tahrik", "Çok hafif yapı", "Süpürme havası gerektirmemesi", "Çok sayıda hareketli parça"], correctAnswer: 0, explanation: "Avantaj: düşük devir, yüksek tork/verim, direkt tahrik, basit supap mekanizması. Dezavantaj: büyük/ağır yapı ve süpürme havası için ek enerji." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Dört zamanlı motor çalışma prensibi",
-    blocks: [{ sectionTitles: ["Dört Strok", "Supap Mekanizması"] }],
+    blocks: [{ sectionTitles: ["Dört Zaman", "Karşılaştırma"] }],
     questions: [
-      { id: 1, sectionRef: "Dört Strok", category: MAK, question: "Dört zamanlı motorda strok sırası nedir?", options: ["Emme → Sıkıştırma → Yanma-Genleşme → Egzoz", "Egzoz → Emme → Yanma → Sıkıştırma", "Sıkıştırma → Emme → Egzoz → Yanma", "Yanma → Egzoz → Emme → Sıkıştırma"], correctAnswer: 0, explanation: "İki tam devirde bir güç stroku; yardımcı/jeneratör motorlarında yaygındır." },
-      { id: 2, sectionRef: "Supap Mekanizması", category: MAK, question: "Dört zamanlı motorda kam mili krank miline göre hangi hızda döner?", options: ["Yarı hızında", "Aynı hızda", "İki katı hızda", "Dört katı"], correctAnswer: 0, explanation: "İki devirde bir çevrim olduğundan kam mili krank milinin yarı hızında döner." },
+      { id: 1, sectionRef: "Dört Zaman", category: MAK, question: "Dört zamanlı motorda strok sırası nedir?", options: ["Emme → Sıkıştırma → Yanma-Genleşme → Egzoz", "Egzoz → Emme → Yanma → Sıkıştırma", "Sıkıştırma → Emme → Egzoz → Yanma", "Yanma → Egzoz → Emme → Sıkıştırma"], correctAnswer: 0, explanation: "Emme (hava dolar), sıkıştırma (supaplar kapalı), yanma-genleşme (güç üretir), egzoz (gazlar atılır) sırasıyla gerçekleşir." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Dört zamanlı motorlar tipik olarak hangi devir aralığında çalışır ve nerede kullanılır?", options: ["400-1000 rpm; jeneratör veya redüktörlü orta hızlı ana motor", "80-120 rpm; direkt tahrikli ana motor", "10-20 rpm; dümen", "5000 rpm; pervane"], correctAnswer: 0, explanation: "İki zamanlı 80-120 rpm direkt tahrikliyken dört zamanlı 400-1000 rpm olup redüktörlü ana motor veya jeneratör tahrikinde kullanılır." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Düşük, orta ve yüksek devirli motorlar",
-    blocks: [{ sectionTitles: ["Sınıflandırma", "Seçim Kriterleri"] }],
+    blocks: [{ sectionTitles: ["Sınıflandırma"] }],
     questions: [
-      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Büyük gemilerde ana makine olarak hangi tip kullanılır?", options: ["Düşük devirli iki zamanlı crosshead (80-200 rpm)", "Yüksek devirli dört zamanlı", "Orta devirli benzinli", "Türbin"], correctAnswer: 0, explanation: "Düşük devirli motorlar en yüksek verim ve en düşük SFOC'u sağlar; direkt pervane tahriki." },
-      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Devir azaldıkça motor boyutu/ağırlığı nasıl değişir?", options: ["Artar (ama verim de artar)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "Düşük devirli motorlar büyük ve ağırdır ama verimi %50'yi aşabilir." },
+      { id: 1, sectionRef: "Sınıflandırma", category: MAK, question: "Büyük gemilerde direkt tahrikli ana makine olarak hangi tip kullanılır?", options: ["Düşük devirli (80-120 rpm) iki zamanlı crosshead", "Yüksek devirli dört zamanlı", "Orta devirli benzinli", "Türbin"], correctAnswer: 0, explanation: "Düşük devirli (80-120 rpm) iki zamanlı crosshead motorlar direkt pervane tahrikinde kullanılır." },
+      { id: 2, sectionRef: "Sınıflandırma", category: MAK, question: "Yüksek devirli (>1000 rpm) motorlar nerede kullanılır?", options: ["Küçük jeneratör ve bot motoru", "Büyük gemi ana motoru", "Direkt pervane tahriki", "Kazan"], correctAnswer: 0, explanation: "Yüksek devirli dört zamanlı motorlar küçük jeneratör ve bot motorlarında; orta devirli (400-1000 rpm) trunk piston motorlar redüktörlü ana motor/jeneratör olarak kullanılır." },
     ],
   },
   {
@@ -3336,28 +3336,28 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Silindir kapağı (cylinder head)",
-    blocks: [{ sectionTitles: ["Görevleri ve Bileşenleri", "Malzeme ve Soğutma"] }],
+    blocks: [{ sectionTitles: ["Yapı ve Görevleri"] }],
     questions: [
-      { id: 1, sectionRef: "Görevleri ve Bileşenleri", category: MAK, question: "Silindir kapağı üzerinde hangi bileşen bulunur?", options: ["Egzoz valfi, yakıt enjektörü, emniyet valfi, indikatör vanası", "Krank mili", "Turboşarjer", "Pervane"], correctAnswer: 0, explanation: "İki zamanlıda emme supabı yoktur (portlar gömlektedir); dört zamanlıda emme+egzoz supapları kapaktadır." },
-      { id: 2, sectionRef: "Malzeme ve Soğutma", category: MAK, question: "Silindir kapağında en yaygın arıza tipi nedir?", options: ["Termal çatlak (özellikle egzoz valfi etrafı)", "Korozyon yok", "Elektrik arızası", "Yağ kaçağı yok"], correctAnswer: 0, explanation: "Yetersiz soğutma termal çatlağa yol açar; kapak hidrolik germe ile sıkılır." },
+      { id: 1, sectionRef: "Yapı ve Görevleri", category: MAK, question: "Silindir kapağı üzerinde hangi bileşenler bulunur?", options: ["Egzoz supabı, yakıt enjektörü, başlatma havası supabı, güvenlik supabı ve indikatör musluğu", "Krank mili", "Turboşarjer", "Pervane"], correctAnswer: 0, explanation: "Kapak üzerinde egzoz supabı, yakıt enjektörü, başlatma havası supabı, güvenlik supabı ve indikatör musluğu yer alır." },
+      { id: 2, sectionRef: "Yapı ve Görevleri", category: MAK, question: "Silindir kapağı hangi basınç ve sıcaklığa dayanmalıdır?", options: ["150-200 bar ve 400-500°C", "5 bar ve 50°C", "2 bar ve 100°C", "1000 bar ve 1500°C"], correctAnswer: 0, explanation: "Kapak 150-200 bar basınç ve 400-500°C sıcaklığa dayanmalıdır; dökme demir/çelik dökümden üretilir ve içinde soğutma suyu kanalları bulunur." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Silindir gömleği (liner) ve aşınma",
-    blocks: [{ sectionTitles: ["Yapı ve Malzeme", "Aşınma Tipleri"] }, { sectionTitles: ["Ölçüm ve Limitler"] }],
+    blocks: [{ sectionTitles: ["Aşınma Mekanizmaları", "Liner Ölçümü"] }],
     questions: [
-      { id: 1, sectionRef: "Aşınma Tipleri", category: MAK, question: "Liner alt bölgesindeki korozif aşınmanın nedeni nedir?", options: ["Kükürt asidi (H₂SO₄) yoğunlaşması", "Katalizör tanecikleri", "Yetersiz yağlama", "Yüksek devir"], correctAnswer: 0, explanation: "Üst bölgede abrazif (Al+Si), genelde adhezif (yetersiz yağ), üst ölü nokta civarı erozif aşınma görülür." },
-      { id: 2, sectionRef: "Ölçüm ve Limitler", category: MAK, question: "Korozif aşınmayı önlemek için liner sıcaklığı nasıl tutulmalıdır?", options: ["180°C'nin altına düşürülmemeli (asit yoğunlaşma)", "Mümkün olduğunca düşük", "Sabit 50°C", "Önemsiz"], correctAnswer: 0, explanation: "Silindir yağ BN değeri yakıt kükürt oranına göre seçilir; tipik aşınma 0.05-0.10 mm/1000 saat." },
+      { id: 1, sectionRef: "Aşınma Mekanizmaları", category: MAK, question: "Korozif aşınmanın nedeni nedir?", options: ["Yakıttaki kükürt yanma sonucu sülfürik asit oluşturur ve liner yüzeyini aşındırır", "Katalizör tanecikleri", "Yüksek devir", "Aşırı yağlama"], correctAnswer: 0, explanation: "Korozif aşınma kükürtten oluşan sülfürik asitten; abrazif partiküllerden; adhesif ise yetersiz yağlamadan (metal-metal teması) kaynaklanır. Doğru TBN'li yağ kontrolü sağlar." },
+      { id: 2, sectionRef: "Liner Ölçümü", category: MAK, question: "Liner iç çapı hangi aletle ölçülür ve aşınma limiti nedir?", options: ["Bore gauge ile; nominal çapın yaklaşık %0.5-1.0'i", "Termometre ile; %50", "Voltmetre ile; %10", "Barometre ile; %0.01"], correctAnswer: 0, explanation: "İç çap bore gauge ile ölçülür; aşınma limiti nominal çapın %0.5-1.0'i kadardır. Ovalizasyon ve koniklik (taper) de kontrol edilir." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Piston ve segman tasarımı",
-    blocks: [{ sectionTitles: ["Piston Yapısı", "Segman Tipleri"] }, { sectionTitles: ["Aşınma Göstergeleri"] }],
+    blocks: [{ sectionTitles: ["Piston Yapısı", "Segman Tipleri"] }],
     questions: [
-      { id: 1, sectionRef: "Segman Tipleri", category: MAK, question: "Sıkıştırma segmanının görevi nedir?", options: ["Gaz sızdırmazlığı", "Yağı kazıma", "Soğutma", "Yakıt enjeksiyonu"], correctAnswer: 0, explanation: "Kazıyıcı ve yağ segmanları yağ kontrolü yapar; piston tacı 400-450°C'yi aşmamalıdır." },
-      { id: 2, sectionRef: "Aşınma Göstergeleri", category: MAK, question: "Aşınmış segmanların belirtisi nedir?", options: ["Yağ tüketimi artışı, kompresyon kaybı, egzoz dumanı", "Yakıt tasarrufu", "Sıcaklık düşüşü", "Belirti yoktur"], correctAnswer: 0, explanation: "Butt gap ve side clearance ölçülür; segman rotasyonu eşit aşınma için gereklidir." },
+      { id: 1, sectionRef: "Segman Tipleri", category: MAK, question: "Sıkıştırma segmanının görevi nedir?", options: ["Gaz sızdırmazlığı", "Yağı kazıma (yağ filmi kontrolü)", "Soğutma", "Yakıt enjeksiyonu"], correctAnswer: 0, explanation: "Sıkıştırma segmanları gaz sızdırmazlığı, yağ segmanları liner üzerindeki yağ filmini kontrol eder. Ağız boşluğu (gap) aşırı artarsa blow-by olur." },
+      { id: 2, sectionRef: "Piston Yapısı", category: MAK, question: "Büyük iki zamanlı motorlarda piston nasıl yapılır?", options: ["İki parça: ısıya dayanıklı çelik taç (crown) + daha hafif etek (skirt)", "Tek parça plastik", "İçi boş alüminyum", "Seramik blok"], correctAnswer: 0, explanation: "Büyük iki zamanlı pistonlar çelik taç (crown) ve daha hafif etekten (skirt) oluşur; taç içinde soğutma yağı/su sirkülasyonu bulunur." },
     ],
   },
   {
@@ -3372,19 +3372,19 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Mekanik yakıt enjeksiyon sistemi",
-    blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Enjeksiyon Zamanlaması"] }],
+    blocks: [{ sectionTitles: ["Sistem Bileşenleri"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik yakıt pompasında yakıt miktarını ne kontrol eder?", options: ["Plunger'ın helisel oluğu (helix)", "Elektronik valf", "Basınç sensörü", "Turboşarjer"], correctAnswer: 0, explanation: "Kam mili tahrikli plunger pompa; basit ve güvenilirdir, basınç 300-600 bar." },
-      { id: 2, sectionRef: "Enjeksiyon Zamanlaması", category: MAK, question: "Düşük yüklerde yanma kalitesi nasıl korunur?", options: ["VIT ile zamanlamayı ilerleterek", "Hız artırarak", "Yakıtı keserek", "Soğutmayı durdurarak"], correctAnswer: 0, explanation: "Enjeksiyon ÜÖN'den 10-20° önce başlar; modern motorlarda yerini common rail alıyor." },
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik yakıt pompasında yakıt miktarını ne kontrol eder?", options: ["Plunjer helisinin dönme açısı", "Elektronik valf", "Basınç sensörü", "Turboşarjer"], correctAnswer: 0, explanation: "Kam mili → kam takipçisi → plunjer pompa zinciri ile çalışır; plunjer helisinin dönme açısıyla yakıt miktarı ayarlanır." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Mekanik enjeksiyon basıncı tipik olarak hangi aralıktadır?", options: ["300-1000 bar", "5-10 bar", "20-50 bar", "5000-8000 bar"], correctAnswer: 0, explanation: "Enjeksiyon basıncı 300-1000 bar aralığındadır; nozül genellikle çok deliklidir ve delik sayısı/çapı püskürtme kalitesini belirler." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Common rail enjeksiyon sistemi",
-    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Avantajlar"] }],
+    blocks: [{ sectionTitles: ["Sistem Yapısı"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Common rail sisteminde yakıt nerede yüksek basınçta tutulur?", options: ["Ortak boru (rail) akümülatöründe, ECU kontrolünde", "Sadece enjektörde", "Karterde", "Egzoz manifoldunda"], correctAnswer: 0, explanation: "800-2000 bar; pilot/ana/post enjeksiyon ve silindir başına bağımsız kontrol mümkündür." },
-      { id: 2, sectionRef: "Avantajlar", category: MAK, question: "Common rail'in NOx avantajı neye dayanır?", options: ["Pilot enjeksiyon basınç artış hızını azaltır", "Yakıtı ısıtır", "Hızı düşürür", "Soğutmayı keser"], correctAnswer: 0, explanation: "MAN ME-C ve Wärtsilä RT-flex common rail kullanır; düşük SFOC ve titreşim sağlar." },
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Common rail sisteminde yakıt nerede yüksek basınçta tutulur?", options: ["Yüksek basınç pompasının sürekli 800-1000 bar bastığı ortak rail'de, ECU kontrolünde", "Sadece enjektörde", "Karterde", "Egzoz manifoldunda"], correctAnswer: 0, explanation: "Yüksek basınç pompası yakıtı sürekli 800-1000 bar basınçta ortak rail'e basar; her silindir için bağımsız enjektör ECU komutuyla açılır/kapanır (örn. MAN B&W ME-C)." },
+      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "Common rail'in sağladığı avantaj hangisidir?", options: ["Çoklu enjeksiyon (pilot/main/post), düşük NOx ve kam milinin kaldırıldığı kompakt yapı", "Daha fazla titreşim", "Yükle değişen düşük basınç", "Daha fazla hareketli parça"], correctAnswer: 0, explanation: "Enjeksiyon basıncı yükten bağımsız yüksek tutulabilir; çoklu enjeksiyon, düşük NOx ve pürüzsüz yanma sağlanır; kam mili kaldırıldığından motor kompakttır." },
     ],
   },
   {
@@ -3408,10 +3408,10 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "İndike güç (indicated power) hesabı",
-    blocks: [{ sectionTitles: ["Hesap Formülü"] }],
+    blocks: [{ sectionTitles: ["Hesap Yöntemi"] }],
     questions: [
-      { id: 1, sectionRef: "Hesap Formülü", category: MAK, question: "İndike güç formülünde k katsayısı ne ifade eder?", options: ["İki zamanlı için 1, dört zamanlı için 1/2", "Silindir sayısı", "Devir", "Basınç"], correctAnswer: 0, explanation: "Pᵢ = (Pm × A × L × n × k)/60; Pm ortalama indike basınçtır (MEP)." },
-      { id: 2, sectionRef: "Hesap Formülü", category: MAK, question: "MEP=20 bar, A=0.1257 m², L=0.54 m, n=600 rpm, dört zamanlı bir silindirde indike güç yaklaşık kaçtır?", options: ["≈ 680 kW", "≈ 1360 kW", "≈ 68 kW", "≈ 340 kW"], correctAnswer: 0, explanation: "Pᵢ = (20×10⁵×0.1257×0.54×600×0.5)/60 ≈ 680 kW (bir silindir)." },
+      { id: 1, sectionRef: "Hesap Yöntemi", category: MAK, question: "İndike güç hesabında ilk olarak hangi değer belirlenir?", options: ["İndikatör diyagramından ortalama indike basınç (MIP)", "Pervane hatvesi", "Deniz suyu sıcaklığı", "Yakıt rengi"], correctAnswer: 0, explanation: "İndikatör diyagramından ortalama indike basınç (MIP) belirlenir; ardından Pi = (MIP × A × L × N × n)/(60 × k) ile indike güç hesaplanır." },
+      { id: 2, sectionRef: "Hesap Yöntemi", category: MAK, question: "İndike güç formülünde 'A' ve 'L' neyi temsil eder?", options: ["A: piston alanı, L: strok (kurs) uzunluğu", "A: devir, L: yük", "A: sıcaklık, L: basınç", "A: yakıt, L: hava"], correctAnswer: 0, explanation: "Pi = (MIP × A × L × N × n)/(60 × k) formülünde A piston alanı, L strok uzunluğu, N devir, n silindir sayısı, k ise zaman katsayısıdır." },
     ],
   },
   {
@@ -3435,10 +3435,10 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Özgül yakıt tüketimi (SFOC)",
-    blocks: [{ sectionTitles: ["Formül ve Birim", "SFOC'u Etkileyen Faktörler"] }],
+    blocks: [{ sectionTitles: ["Tanım ve Hesap"] }],
     questions: [
-      { id: 1, sectionRef: "Formül ve Birim", category: MAK, question: "12500 kW güç üretirken saatte 2.5 ton yakıt tüketen motorun SFOC'u kaçtır?", options: ["200 g/kWh", "100 g/kWh", "250 g/kWh", "500 g/kWh"], correctAnswer: 0, explanation: "SFOC = 2.500.000 g / 12500 kW = 200 g/kWh; modern büyük iki zamanlıda referans 155-175 g/kWh." },
-      { id: 2, sectionRef: "SFOC'u Etkileyen Faktörler", category: MAK, question: "Hangi yük oranında SFOC minimumdur?", options: ["%75-85", "%10-20", "%100", "%5"], correctAnswer: 0, explanation: "Turboşarjer kirliliği +3-8 g/kWh, şarj havası sıcaklığı +0.5 g/kWh/°C artırır." },
+      { id: 1, sectionRef: "Tanım ve Hesap", category: MAK, question: "12500 kW güç üretirken saatte 2.5 ton yakıt tüketen motorun SFOC'u kaçtır?", options: ["200 g/kWh", "100 g/kWh", "250 g/kWh", "500 g/kWh"], correctAnswer: 0, explanation: "SFOC = yakıt tüketimi (g/h) / fren gücü (kW) = 2.500.000 g / 12500 kW = 200 g/kWh." },
+      { id: 2, sectionRef: "Tanım ve Hesap", category: MAK, question: "SFOC hangi formülle hesaplanır?", options: ["Yakıt tüketimi (g/h) / Fren gücü (kW)", "Fren gücü / Yakıt tüketimi", "Yakıt × güç", "Güç − yakıt"], correctAnswer: 0, explanation: "SFOC = Yakıt tüketimi (g/h) / Fren gücü (kW); birimi g/kWh'dir." },
     ],
   },
   {
@@ -3453,10 +3453,10 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Turboşarjer çalışma prensibi",
-    blocks: [{ sectionTitles: ["Çalışma Mekanizması", "Verimlilik"] }],
+    blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Çalışma Mekanizması", category: MAK, question: "Turboşarjer türbinini ne döndürür?", options: ["Egzoz gazları (aynı şaftta kompresör havayı sıkıştırır)", "Elektrik motoru", "Pervane", "Yakıt pompası"], correctAnswer: 0, explanation: "Devir 10.000-40.000 rpm; motor gücünü ve verimini artırır." },
-      { id: 2, sectionRef: "Verimlilik", category: MAK, question: "Modern turboşarjer toplam verimi yaklaşık nedir?", options: ["%65-72", "%20-30", "%95-99", "%40-45"], correctAnswer: 0, explanation: "Toplam = türbin × kompresör × mekanik verim; arıza motor gücünü dramatik düşürür." },
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Turboşarjer türbinini ne döndürür?", options: ["Egzoz gazları (aynı şaftta kompresör emme havasını sıkıştırır)", "Elektrik motoru", "Pervane", "Yakıt pompası"], correctAnswer: 0, explanation: "Egzoz gazları türbin çarkını döndürür; aynı şaft üzerindeki kompresör emme havasını sıkıştırır. Çark devri 10.000-30.000 rpm'dir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Turboşarjerde basınç oranı ve sıkıştırılan havanın işlemi nedir?", options: ["Basınç oranı 2.5-4.5; hava intercooler'da soğutularak yoğunluğu artırılır", "Basınç oranı 0.5; hava ısıtılır", "Basınç oranı 50; hava nemlendirilir", "Basınç değişmez"], correctAnswer: 0, explanation: "Basınç oranı 2.5-4.5 aralığındadır; sıkıştırılan hava şarj havası soğutucusunda (intercooler) soğutularak yoğunluğu artırılır." },
     ],
   },
   {
@@ -3534,28 +3534,28 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Yatak (bearing) tipleri ve ölçüm",
-    blocks: [{ sectionTitles: ["Yatak Tipleri", "Yatak Boşluk Ölçümü"] }],
+    blocks: [{ sectionTitles: ["Yatak Tipleri", "Yatak Boşluğu Ölçümü"] }],
     questions: [
-      { id: 1, sectionRef: "Yatak Tipleri", category: MAK, question: "Beyaz metal (Babbitt) yatak malzemesinin avantajı nedir?", options: ["Düşük sürtünme katsayısı ve iyi gömme özelliği", "Yüksek sertlik", "Elektrik iletkenliği", "Manyetiklik"], correctAnswer: 0, explanation: "Üç metal yatak (çelik+bronz+beyaz metal); thrust yatak tilting pad tipidir." },
-      { id: 2, sectionRef: "Yatak Boşluk Ölçümü", category: MAK, question: "Yatak boşluğu hangi araçla ölçülür?", options: ["Lead wire, plastigage veya feeler gauge", "Termometre", "Barometre", "Voltmetre"], correctAnswer: 0, explanation: "Aşırı boşluk yağ basıncı düşüşü, yetersiz boşluk ısınma yapar; sıcaklık alarmı 65-75°C." },
+      { id: 1, sectionRef: "Yatak Tipleri", category: MAK, question: "Büyük dizel motorlarda yatak malzemesi genellikle nedir?", options: ["Beyaz metal (tin-based babbitt) veya Al-Sn alaşımı", "Saf çelik", "Seramik", "Plastik"], correctAnswer: 0, explanation: "Ana yataklar krank ana muylularını, krank pini yatakları biyel alt ucunu taşır; malzeme beyaz metal (babbitt) veya Al-Sn alaşımıdır." },
+      { id: 2, sectionRef: "Yatak Boşluğu Ölçümü", category: MAK, question: "Yatak boşluğu hangi araçla ölçülür?", options: ["Kurşun tel (lead wire) veya feeler gauge", "Termometre", "Barometre", "Voltmetre"], correctAnswer: 0, explanation: "Yatak boşluğu kurşun tel (lead wire) veya feeler gauge ile ölçülür; aşırı boşluk düşük yağ basıncına ve çarpmaya neden olur." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Supap mekanizması ve zamanlaması",
-    blocks: [{ sectionTitles: ["Mekanizma Bileşenleri", "Supap Zamanlama Diyagramı"] }],
+    blocks: [{ sectionTitles: ["Supap Zamanlaması"] }],
     questions: [
-      { id: 1, sectionRef: "Mekanizma Bileşenleri", category: MAK, question: "İki zamanlı motorda hangi supap bulunur?", options: ["Yalnızca egzoz supabı (süpürme portlar gömlekte)", "Yalnızca emme supabı", "Her ikisi de", "Hiçbiri"], correctAnswer: 0, explanation: "Dört zamanlıda emme+egzoz; ME motorlarında hidrolik supap tahriği kullanılır." },
-      { id: 2, sectionRef: "Supap Zamanlama Diyagramı", category: MAK, question: "Egzoz supabı neden AÖN'den önce açılır (blowdown)?", options: ["Silindir basıncını düşürmek için", "Yakıt eklemek için", "Soğutma için", "Hızı artırmak için"], correctAnswer: 0, explanation: "Supaplar tam ÜÖN/AÖN'de açılıp kapanmaz; erken açma/geç kapama uygulanır." },
+      { id: 1, sectionRef: "Supap Zamanlaması", category: MAK, question: "İki zamanlı motorda hangi supap bulunur ve nasıl tahrik edilir?", options: ["Yalnızca egzoz supabı; hidrolik veya pnömatik olarak tahrik edilir", "Yalnızca emme supabı; elle", "Her ikisi de; bujiyle", "Hiçbiri"], correctAnswer: 0, explanation: "İki zamanlı motorlarda yalnızca egzoz supabı vardır ve hidrolik/pnömatik tahrik edilir." },
+      { id: 2, sectionRef: "Supap Zamanlaması", category: MAK, question: "Dört zamanlı motorlarda supaplar nasıl çalıştırılır?", options: ["Emme ve egzoz supapları kam mili (camshaft) ile mekanik olarak", "Sadece yerçekimiyle", "Elektrik mıknatısla (tümü)", "Egzoz basıncıyla"], correctAnswer: 0, explanation: "Dört zamanlıda emme ve egzoz supapları kam mili (camshaft) ile mekanik çalıştırılır; ME tipi elektronik motorlarda zamanlama yüke göre optimize edilir." },
     ],
   },
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Bedplate ve frame yapısı",
-    blocks: [{ sectionTitles: ["Bedplate", "Frame (A-Frame)"] }],
+    blocks: [{ sectionTitles: ["Yapısal Bileşenler"] }],
     questions: [
-      { id: 1, sectionRef: "Bedplate", category: MAK, question: "Ana yataklar motorun hangi yapısal parçası üzerindedir?", options: ["Bedplate (taban plakası)", "Silindir kapağı", "Turboşarjer", "Pervane"], correctAnswer: 0, explanation: "Bedplate cross/longitudinal girderlerle bütünlük sağlar; bearing pocket yüzeyleri hassas işlenir." },
-      { id: 2, sectionRef: "Frame (A-Frame)", category: MAK, question: "Tie rod sistemi ne sağlar?", options: ["Bedplate-frame-silindir bloğunu gerilmeli yapısal bütünlük", "Yakıt iletimi", "Soğutma", "Yağlama"], correctAnswer: 0, explanation: "Tie rod ön gerilimi yapısal bütünlük için kritiktir; bedplate çatlağı motor toplam kaybı verebilir." },
+      { id: 1, sectionRef: "Yapısal Bileşenler", category: MAK, question: "Ana yataklar motorun hangi yapısal parçası üzerindedir?", options: ["Bedplate (yatak tablası)", "Silindir kapağı", "Turboşarjer", "Pervane"], correctAnswer: 0, explanation: "Bedplate, A-frame ve silindir bloğu motorun ana yapısını oluşturur; ana yataklar bedplate üzerindedir." },
+      { id: 2, sectionRef: "Yapısal Bileşenler", category: MAK, question: "Tie rod (gerilme cıvataları) ne sağlar?", options: ["Bedplate-frame-silindir bloğunu sıkıştırma altında tutan yapısal bütünlük", "Yakıt iletimi", "Soğutma", "Yağlama"], correctAnswer: 0, explanation: "Tüm yapı uzun gerilme cıvataları (tie rod/stay bolt) ile birbirine bağlanarak sıkıştırma altında tutulur; A-frame bedplate ile silindir bloğu arasında bağlantı sağlar." },
     ],
   },
   {
@@ -3615,10 +3615,10 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-diesel-engines",
     topicTitle: "Ana motor ve yardımcı motor ayrımı",
-    blocks: [{ sectionTitles: ["Karşılaştırma"] }],
+    blocks: [{ sectionTitles: ["Ana Motor", "Yardımcı Motor"] }],
     questions: [
-      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Ana motor (main engine) ile yardımcı motorun temel görev farkı nedir?", options: ["Ana motor pervaneyi tahrik eder, yardımcı motor elektrik üretir", "İkisi de elektrik üretir", "İkisi de pervaneyi tahrik eder", "Ana motor sadece ısıtma yapar"], correctAnswer: 0, explanation: "Ana motor pervane tahriki için, yardımcı motorlar jeneratör tahriki (elektrik üretimi) içindir." },
-      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Devir (rpm) açısından ana motor ile yardımcı motor nasıl karşılaştırılır?", options: ["Ana motor düşük devirli (80-120 rpm), yardımcı motor yüksek devirli (720-900 rpm)", "İkisi de aynı devirde çalışır", "Ana motor yüksek, yardımcı düşük devirli", "Devir farkı yoktur"], correctAnswer: 0, explanation: "Büyük gemilerde ana motor iki zamanlı düşük devirli, yardımcı motorlar dört zamanlı yüksek devirlidir; acil jeneratör SOLAS gereği makine dairesi dışındadır." },
+      { id: 1, sectionRef: "Ana Motor", category: MAK, question: "Ana motorun (main engine) görevi ve güç aralığı nedir?", options: ["Pervaneyi çevirip itme sağlar; 5000-80000 kW", "Elektrik üretir; 500 kW", "Sadece ısıtma; 50 kW", "Dümeni döndürür; 10 kW"], correctAnswer: 0, explanation: "Ana motor pervaneyi çevirerek itme sağlar; düşük devirli iki zamanlı veya orta devirli dört zamanlı olabilir, güç 5000-80000 kW arasındadır." },
+      { id: 2, sectionRef: "Yardımcı Motor", category: MAK, question: "Yardımcı motorlar ne işe yarar ve gemide kaç adet bulunur?", options: ["Jeneratör tahrik ederek elektrik üretir; genellikle 3-4 adet", "Pervaneyi çevirir; 1 adet", "Sadece yedek; 10 adet", "Dümen tahriki; 2 adet"], correctAnswer: 0, explanation: "Yardımcı motorlar jeneratör tahrik ederek elektrik üretir (dört zamanlı orta/yüksek devirli); genellikle 3-4 adet bulunur, seyirde 1-2, limanda 2-3 çalışır." },
     ],
   },
   {
@@ -3670,19 +3670,19 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-engine-room-ops",
     topicTitle: "Engine room check list",
-    blocks: [{ sectionTitles: ["Kalkış Kontrol Listesi", "Varış Kontrol Listesi"] }],
+    blocks: [{ sectionTitles: ["Temel Kontrol Listeleri", "Kullanım Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Kalkış Kontrol Listesi", category: MAK, question: "Kalkış kontrol listesinde başlatma havası basıncı en az ne olmalıdır?", options: ["≥ 18 bar", "≥ 2 bar", "≥ 50 bar", "≥ 0,5 bar"], correctAnswer: 0, explanation: "Kalkış listesinde başlatma havası basıncının yeterli (≥ 18 bar) olduğu, dümen testi, alarmlar ve silindir yağlamanın hazır olduğu doğrulanır." },
-      { id: 2, sectionRef: "Varış Kontrol Listesi", category: MAK, question: "Varışta hangi bağlantı hazırlanır?", options: ["Kıyı bağlantısı (shore connection)", "Turboşarjer", "Acil dümen", "Demir ırgadı freni"], correctAnswer: 0, explanation: "Varışta ana makine soğutma süresi beklenir, izolasyonlar yapılır, kıyı bağlantısı (shore connection) ve liman jeneratör konfigürasyonu hazırlanır." },
+      { id: 1, sectionRef: "Temel Kontrol Listeleri", category: MAK, question: "Aşağıdakilerden hangisi temel makine dairesi kontrol listelerinden biridir?", options: ["Seyir hazırlık (Departure) kontrol listesi", "Yolcu eğlence listesi", "Menü planı", "Liman vergi formu"], correctAnswer: 0, explanation: "Temel listeler: departure, manevra, UMS geçiş (makine dairesi terk), acil durum (yangın/blackout/su sızıntısı), bunker ve bakım öncesi (LOTO) kontrol listeleridir." },
+      { id: 2, sectionRef: "Kullanım Prensibi", category: MAK, question: "Kontrol listesinin (checklist) temel işlevi nedir?", options: ["Prosedürün tamamlandığının kanıtıdır; prosedürün yerini almaz", "Prosedürün yerine geçer", "Sadece süslemedir", "Sadece denetçi için doldurulur"], correctAnswer: 0, explanation: "Her madde fiziksel olarak kontrol edilip imzalanır; kontrol listesi prosedürün yerini almaz, tamamlandığının kanıtıdır. ISM Code güvenlik kritik operasyonlarda kullanımını zorunlu kılar." },
     ],
   },
   {
     topicKey: "machine-engine-room-ops",
     topicTitle: "Makine vardiyası devir-teslim",
-    blocks: [{ sectionTitles: ["Devir-Teslim Prosedürü"] }],
+    blocks: [{ sectionTitles: ["Devir-Teslim İçeriği", "Kontrol Turu"] }],
     questions: [
-      { id: 1, sectionRef: "Devir-Teslim Prosedürü", category: MAK, question: "Devralan vardiyacı devir-teslimde ne yapar?", options: ["Round atarak ana/yardımcı makine, kazan ve tank durumunu kontrol eder", "Hemen istirahate çekilir", "Sadece imza atar", "Ana makineyi durdurur"], correctAnswer: 0, explanation: "Devralan vardiyacı round atarak durumu kontrol eder; devreden vardiyacı çalışan ekipman, bakım ve alarm geçmişini aktarır." },
-      { id: 2, sectionRef: "Devir-Teslim Prosedürü", category: MAK, question: "Devir-teslim nereye kayıt edilir?", options: ["Engine Log Book", "Yük planına", "Manevra kartına", "Hava raporu defterine"], correctAnswer: 0, explanation: "Devir-teslim sözlü ve yazılı olarak yapılır ve Engine Log Book'a kayıt edilir." },
+      { id: 1, sectionRef: "Devir-Teslim İçeriği", category: MAK, question: "Giden vardiya mühendisi devir-teslimde aşağıdakilerden hangisini aktarır?", options: ["Ana makine/jeneratör durumu, devam eden bakım işleri ve alarm geçmişi", "Sadece kendi vardiya saatini", "Yalnızca yemek menüsünü", "Köprüüstü personel listesini"], correctAnswer: 0, explanation: "Giden vardiya; ekipman durumu, devam eden bakım, alarm geçmişi, transfer operasyonları ve köprüüstü talimatlarını aktarır." },
+      { id: 2, sectionRef: "Kontrol Turu", category: MAK, question: "Vardiya devir-teslimi nereye kaydedilir?", options: ["Engine Log Book'a, her iki mühendisin imzasıyla", "Sadece sözlü kalır", "Yük planına", "Köprü jurnaline"], correctAnswer: 0, explanation: "Gelen vardiyacı kapsamlı kontrol turu (round) yapar; devir-teslim Engine Log Book'a kaydedilir ve her iki mühendis tarafından imzalanır." },
     ],
   },
   {
@@ -3760,10 +3760,10 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-engine-room-ops",
     topicTitle: "Acil durma ve geri yol",
-    blocks: [{ sectionTitles: ["Acil Durma (Crash Stop)", "Geri Yol (Astern)"] }],
+    blocks: [{ sectionTitles: ["Acil Durma", "Acil Geri Yol (Crash Astern)"] }],
     questions: [
-      { id: 1, sectionRef: "Acil Durma (Crash Stop)", category: MAK, question: "Crash stop'ta geminin durma mesafesi yaklaşık ne kadardır?", options: ["Gemi boyunun 5-15 katı", "Gemi boyunun yarısı kadar", "Tam 100 metre", "Hiç durmaz"], correctAnswer: 0, explanation: "Tam yol ileri → stop komutunda yakıt kesilir; durma mesafesi gemi boyunun 5-15 katı kadardır ve deplasman, hız ve deniz durumuna bağlıdır." },
-      { id: 2, sectionRef: "Geri Yol (Astern)", category: MAK, question: "Değişken hatveli pervanede (CPP) geri itme kuvveti nasıl oluşturulur?", options: ["Pervane kanat açısı geri yöne çevrilir, motor devri değişmez", "Motor durdurulup geri yönde başlatılır", "Dümen ters çevrilir", "Turboşarjer durdurulur"], correctAnswer: 0, explanation: "CPP'de motor durdurulmadan kanat açısı geri yöne çevrilerek daha hızlı geçiş sağlanır; sabit hatveli pervanede motor durdurulup geri yönde başlatılır." },
+      { id: 1, sectionRef: "Acil Durma", category: MAK, question: "Acil durmada ana makine nasıl durdurulur?", options: ["Yakıt kesilerek (2 zamanlıda krank kısa sürede durur)", "Soğutma artırılarak", "Dümen kırılarak", "Turboşarjer hızlandırılarak"], correctAnswer: 0, explanation: "Acil durmada yakıt kesilir; iki zamanlı motorda krank mili kısa sürede, dört zamanlıda atalet nedeniyle biraz daha geç durur. Buton köprü ve dairede bulunur." },
+      { id: 2, sectionRef: "Acil Geri Yol (Crash Astern)", category: MAK, question: "Değişken hatveli (CPP) gemide crash astern nasıl gerçekleşir?", options: ["Motor devri sabit kalır, pervane hatvesi negatife çevrilir", "Motor durdurulup ters yönde başlatılır", "Turboşarjer sökülür", "Sadece dümenle yapılır"], correctAnswer: 0, explanation: "İki zamanlıda motor durdurulup starting air ile ters yönde çalıştırılır (15-30 sn); CPP'de devir sabit kalır, hatve negatife çevrilir ve yardımcı üfleyiciler devreye girer." },
     ],
   },
   {
@@ -3778,19 +3778,19 @@ export const machineLessonFlows: LessonFlow[] = [
   {
     topicKey: "machine-engine-room-ops",
     topicTitle: "Makine dairesi yangını",
-    blocks: [{ sectionTitles: ["Müdahale Prosedürü", "Yangın Sonrası"] }],
+    blocks: [{ sectionTitles: ["İlk Müdahale", "Sabit Söndürme Sistemi"] }],
     questions: [
-      { id: 1, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Sabit söndürme sistemini (CO₂/FM200) devreye alma kararı kime aittir?", options: ["Kaptana", "Yağcıya", "Herhangi bir vardiyacıya", "Kıyı istasyonuna"], correctAnswer: 0, explanation: "Yangında alarm çalınır, hızlı kapatma valfleri kapatılır, havalandırma durdurulur; sabit söndürme sistemini devreye alma kararı kaptana aittir." },
-      { id: 2, sectionRef: "Yangın Sonrası", category: MAK, question: "Sabit söndürme sonrası makine dairesi en az ne kadar kapalı tutulur?", options: ["En az 24 saat", "5 dakika", "1 saat", "1 hafta"], correctAnswer: 0, explanation: "Sabit söndürme sonrası en az 24 saat kapalı tutulur; girişten önce atmosfer testi yapılır ve hasar/kök neden analizi yapılır." },
+      { id: 1, sectionRef: "İlk Müdahale", category: MAK, question: "Makine dairesi yangınında ilk müdahale adımları nelerdir?", options: ["Alarm çal, quick closing valve'ları kapat, havalandırma fanlarını durdur ve damperleri kapat", "Önce yemekhaneyi boşalt", "Ana makineyi hızlandır", "Soğutma suyunu artır"], correctAnswer: 0, explanation: "Alarm çalınır ve köprüüstü bilgilendirilir; portatif söndürücüyle ilk müdahale yapılır, hızlı kapama valfleri kapatılır, havalandırma durdurulup damperler kapatılır." },
+      { id: 2, sectionRef: "Sabit Söndürme Sistemi", category: MAK, question: "CO₂/FM200 sabit söndürme sistemi devreye alınmadan önce hangi şart sağlanmalıdır?", options: ["Tüm personel dışarıda ve sayılmış, kapı ve havalandırma kapalı, uyarı alarmı verilmiş olmalı", "Sadece bir kapı kapalı olmalı", "Havalandırma açık kalmalı", "Personel içeride beklemeli"], correctAnswer: 0, explanation: "Makine dairesi tahliye edilip personel sayıldıktan, tüm kapı/havalandırma kapatılıp uyarı alarmı verildikten sonra CO₂ veya FM200 devreye alınabilir." },
     ],
   },
   {
     topicKey: "machine-engine-room-ops",
     topicTitle: "Blackout ve güç geri kazanımı",
-    blocks: [{ sectionTitles: ["Blackout Prosedürü", "Önleme Tedbirleri"] }],
+    blocks: [{ sectionTitles: ["Blackout Nedenleri", "Güç Geri Kazanım Prosedürü"] }],
     questions: [
-      { id: 1, sectionRef: "Blackout Prosedürü", category: MAK, question: "Blackout'ta acil jeneratör ne kadar sürede otomatik devreye girer?", options: ["45 saniye içinde", "10 dakika içinde", "Anında (0 saniye)", "1 saat içinde"], correctAnswer: 0, explanation: "Blackout'ta acil jeneratör 45 saniye içinde otomatik devreye girer; ardından neden tespit edilir ve kritik yükler sırayla beslenir." },
-      { id: 2, sectionRef: "Önleme Tedbirleri", category: MAK, question: "Preferential trip sistemi ne yapar?", options: ["Kritik olmayan yükleri otomatik keser", "Tüm yükleri devre dışı bırakır", "Ana makineyi durdurur", "Yakıt değişimi yapar"], correctAnswer: 0, explanation: "Preferential trip kritik olmayan yükleri otomatik keserek blackout'u önler; PMS yük paylaşımını optimize eder, düzenli tatbikat yapılır." },
+      { id: 1, sectionRef: "Blackout Nedenleri", category: MAK, question: "Aşağıdakilerden hangisi tipik bir blackout nedenidir?", options: ["Çalışan jeneratörün aşırı yüklenip trip etmesi", "Pusula sapması", "Yüksek dış hava sıcaklığı", "Demir ırgadı freni"], correctAnswer: 0, explanation: "Aşırı yük/trip, yakıt veya soğutma/yağ arızası, elektrik kısa devresi ve otomasyon hatası blackout'a yol açar." },
+      { id: 2, sectionRef: "Güç Geri Kazanım Prosedürü", category: MAK, question: "Blackout anında navigasyon ve acil aydınlatma nereden beslenir?", options: ["Akü beslemeli UPS'ten", "Ana baradan", "Turboşarjerden", "Hiçbir yerden"], correctAnswer: 0, explanation: "Blackout'ta navigasyon ve acil aydınlatma UPS'ten, dümen acil güçten beslenir; bir jeneratör manuel başlatılıp baraya alınır ve kritik yükler sırayla devreye girer." },
     ],
   },
   {
