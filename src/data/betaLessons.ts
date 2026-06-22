@@ -172,15 +172,16 @@ export function getBetaCategories(): BetaCategory[] {
   return calculationCategories.map((c) => {
     const key = c.id as string;
     const group: "deck" | "machine" = isMachine(key) ? "machine" : "deck";
-    const enabled = group === "machine" ? true : DECK_CONTENT_KEYS.includes(key);
+    // İçerik odaklı: yalnızca gerçekten açılabilir konusu olan kategori "enabled".
+    const topicCount = getBetaTopicTitles(key).length;
     return {
       key,
       title: c.title,
       icon: c.icon,
       accent: c.accent,
       group,
-      enabled,
-      topicCount: enabled ? getBetaTopicTitles(key).length : 0,
+      enabled: topicCount > 0,
+      topicCount,
     };
   });
 }
