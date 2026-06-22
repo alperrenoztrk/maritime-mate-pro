@@ -127,11 +127,23 @@ function mapStabilityTopic(title: string): BetaTopic | null {
         bulletPoints: [...(sub.practicalTips ?? []), ...(sub.warnings ?? [])],
       },
     ];
-    (sub.formulas ?? []).forEach((f) =>
-      sections.push({ title: "Formül", content: "", formula: { text: f.formula, description: f.description } }),
+    // Başlıklar benzersiz olmalı (GuidedLessonSession section Map'i ve flow eşleşmesi
+    // için): birden çok formül/örnek varsa numaralandırılır.
+    const fs = sub.formulas ?? [];
+    fs.forEach((f, i) =>
+      sections.push({
+        title: fs.length > 1 ? `Formül ${i + 1}` : "Formül",
+        content: "",
+        formula: { text: f.formula, description: f.description },
+      }),
     );
-    (sub.examples ?? []).forEach((e) =>
-      sections.push({ title: "Çözümlü Örnek", content: "", example: { problem: e.problem, solution: e.solution } }),
+    const ex = sub.examples ?? [];
+    ex.forEach((e, i) =>
+      sections.push({
+        title: ex.length > 1 ? `Çözümlü Örnek ${i + 1}` : "Çözümlü Örnek",
+        content: "",
+        example: { problem: e.problem, solution: e.solution },
+      }),
     );
     return { title: sub.title, sections, keyPoints: sub.keyPoints };
   }
