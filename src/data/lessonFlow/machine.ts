@@ -3612,4 +3612,221 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Pmax ve MEP eşitleme hangi ayarlarla yapılır?", options: ["Pmax: enjeksiyon zamanlaması, MEP: yakıt miktarı (iteratif)", "İkisi de soğutma", "İkisi de hız", "Ayar gerekmez"], correctAnswer: 0, explanation: "İki ayar birbirini etkiler; yük dengesizliği torsiyonel titreşimi artırır." },
     ],
   },
+  {
+    topicKey: "machine-diesel-engines",
+    topicTitle: "Ana motor ve yardımcı motor ayrımı",
+    blocks: [{ sectionTitles: ["Karşılaştırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Ana motor (main engine) ile yardımcı motorun temel görev farkı nedir?", options: ["Ana motor pervaneyi tahrik eder, yardımcı motor elektrik üretir", "İkisi de elektrik üretir", "İkisi de pervaneyi tahrik eder", "Ana motor sadece ısıtma yapar"], correctAnswer: 0, explanation: "Ana motor pervane tahriki için, yardımcı motorlar jeneratör tahriki (elektrik üretimi) içindir." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Devir (rpm) açısından ana motor ile yardımcı motor nasıl karşılaştırılır?", options: ["Ana motor düşük devirli (80-120 rpm), yardımcı motor yüksek devirli (720-900 rpm)", "İkisi de aynı devirde çalışır", "Ana motor yüksek, yardımcı düşük devirli", "Devir farkı yoktur"], correctAnswer: 0, explanation: "Büyük gemilerde ana motor iki zamanlı düşük devirli, yardımcı motorlar dört zamanlı yüksek devirlidir; acil jeneratör SOLAS gereği makine dairesi dışındadır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Ana makine seyir hazırlık prosedürü",
+    blocks: [{ sectionTitles: ["Hazırlık Adımları"] }],
+    questions: [
+      { id: 1, sectionRef: "Hazırlık Adımları", category: MAK, question: "Seyir hazırlığında turning gear çıkarıldıktan sonra ana makineye ne yapılır?", options: ["Hava ile döndürülür (blow-through)", "Hemen tam yüke alınır", "Soğutma durdurulur", "Yakıt kesilir"], correctAnswer: 0, explanation: "Blow-through (gösterge muslukları açık hava ile dönüş) silindirlerdeki su ve kalıntı birikimini temizler." },
+      { id: 2, sectionRef: "Hazırlık Adımları", category: MAK, question: "Seyir hazırlığında başlatma havası şişe basıncı en az ne olmalıdır?", options: ["≥ 18-25 bar", "≥ 2 bar", "≥ 6 bar", "≥ 100 bar"], correctAnswer: 0, explanation: "Ana makinenin güvenli başlatılabilmesi için başlatma havası şişe basıncı tipik olarak 18-25 bar ve üzerinde tutulur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Yardımcı makine kontrolü",
+    blocks: [{ sectionTitles: ["Kontrol Prosedürü", "İzleme Parametreleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Kontrol Prosedürü", category: MAK, question: "Çalışan yardımcı jeneratörün hangi elektriksel değerleri ana panoda izlenir?", options: ["Gerilim, frekans ve yük (kW ve kVAr)", "Sadece yağ basıncı", "Sadece egzoz rengi", "Sadece devir"], correctAnswer: 0, explanation: "Jeneratörün gerilim, frekans ve yük (kW/kVAr) değerleri ana panodan izlenir; yedeğin otomatik devreye girme fonksiyonu doğrulanır." },
+      { id: 2, sectionRef: "İzleme Parametreleri", category: MAK, question: "Yardımcı motor yağ basıncı için alarm seviyesi nedir (normal 3-6 bar iken)?", options: ["< 2 bar", "> 90 bar", "60 bar", "±5%"], correctAnswer: 0, explanation: "Yağ basıncı normalde 3-6 bar olup 2 barın altına düştüğünde alarm verir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Yakıt sistemi hazırlığı",
+    blocks: [{ sectionTitles: ["Hazırlık Adımları", "Yakıt Geçişi"] }],
+    questions: [
+      { id: 1, sectionRef: "Hazırlık Adımları", category: MAK, question: "Yakıt sistemi hazırlığında arıtma akışını sağlamak için hangi ekipman çalıştırılır?", options: ["Purifier/clarifier (separatör)", "Turboşarjer", "Dümen makinesi", "Acil jeneratör"], correctAnswer: 0, explanation: "Purifier/clarifier çalıştırılıp arıtma akışı doğrulanır; ısıtıcılar, viskometre ve filtre diferansiyel basıncı da kontrol edilir." },
+      { id: 2, sectionRef: "Yakıt Geçişi", category: MAK, question: "ECA bölgesine girişte yakıt değişimi (changeover) tipik olarak ne kadar sürer?", options: ["1-3 saat", "Birkaç saniye", "24 saat", "1 hafta"], correctAnswer: 0, explanation: "Changeover süresi yakıt sistemi hacmine ve akış hızına bağlıdır; tipik olarak 1-3 saat sürer ve zamanında başlatılmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Soğutma ve yağlama kontrolü",
+    blocks: [{ sectionTitles: ["Soğutma Sistemi", "Yağlama Sistemi", "Karter İzleme ve Patlama Koruması"] }],
+    questions: [
+      { id: 1, sectionRef: "Soğutma Sistemi", category: MAK, question: "HT (yüksek sıcaklık) soğutma devresi neyi soğutur ve hangi sıcaklıkta tutulur?", options: ["Silindir gömleği ve kapak; 75-90°C", "Yağlama yağı; 10°C", "Yakıt; 150°C", "Akü; 25°C"], correctAnswer: 0, explanation: "HT devresi silindir gömleği ve kapak soğutmasını yapar ve sıcaklık 75-90°C arasında tutulur; LT devresi yağ ve şarj havası soğutucusunu besler." },
+      { id: 2, sectionRef: "Karter İzleme ve Patlama Koruması", category: MAK, question: "Oil Mist Detector (OMD) ne işe yarar?", options: ["Karterdeki yağ buharı yoğunluğunu izler, eşik aşılınca motoru yavaşlatır/durdurur", "Yakıt seviyesini ölçer", "Dümen açısını gösterir", "Egzoz rengini ölçer"], correctAnswer: 0, explanation: "Sıcak nokta yağ buharı oluşturur; OMD buhar yoğunluğunu izleyerek karter patlamasını önler. Karter sıcakken kapak hemen açılmaz." },
+      { id: 3, sectionRef: "Yağlama Sistemi", category: MAK, question: "Silindir yağının TBN değeri neye göre seçilir?", options: ["Yakıtın kükürt içeriğine göre", "Deniz suyu sıcaklığına göre", "Gemi boyuna göre", "Devir sayısına göre"], correctAnswer: 0, explanation: "Yüksek kükürtlü yakıtta yüksek TBN gerekir; yağ basıncı 3-6 bar, sıcaklık 40-55°C aralığında tutulur." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Dümen ve güverte makineleri testi",
+    blocks: [{ sectionTitles: ["Dümen Testi (SOLAS Reg. V/26)", "Güverte Makineleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Dümen Testi (SOLAS Reg. V/26)", category: MAK, question: "Ana dümen makinesi tam açıdan tam açıya (35° iskele → 35° sancak) kaç saniyede dönmelidir?", options: ["28 saniye", "5 saniye", "120 saniye", "10 dakika"], correctAnswer: 0, explanation: "SOLAS Reg. V/26 gereği ana dümen makinesi 35° iskeleden 35° sancağa 28 saniye içinde dönüş sağlamalıdır." },
+      { id: 2, sectionRef: "Güverte Makineleri", category: MAK, question: "Demir ırgadında (windlass) hangi test yapılır?", options: ["Fren testi ve kavrama kontrolü", "Egzoz sıcaklık ölçümü", "TBN ölçümü", "Surge testi"], correctAnswer: 0, explanation: "Demir ırgadında fren testi ve kavrama kontrolü; mooring vinçlerinde çalıştırma ve fren testi yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Engine room check list",
+    blocks: [{ sectionTitles: ["Kalkış Kontrol Listesi", "Varış Kontrol Listesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Kalkış Kontrol Listesi", category: MAK, question: "Kalkış kontrol listesinde başlatma havası basıncı en az ne olmalıdır?", options: ["≥ 18 bar", "≥ 2 bar", "≥ 50 bar", "≥ 0,5 bar"], correctAnswer: 0, explanation: "Kalkış listesinde başlatma havası basıncının yeterli (≥ 18 bar) olduğu, dümen testi, alarmlar ve silindir yağlamanın hazır olduğu doğrulanır." },
+      { id: 2, sectionRef: "Varış Kontrol Listesi", category: MAK, question: "Varışta hangi bağlantı hazırlanır?", options: ["Kıyı bağlantısı (shore connection)", "Turboşarjer", "Acil dümen", "Demir ırgadı freni"], correctAnswer: 0, explanation: "Varışta ana makine soğutma süresi beklenir, izolasyonlar yapılır, kıyı bağlantısı (shore connection) ve liman jeneratör konfigürasyonu hazırlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Makine vardiyası devir-teslim",
+    blocks: [{ sectionTitles: ["Devir-Teslim Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Devir-Teslim Prosedürü", category: MAK, question: "Devralan vardiyacı devir-teslimde ne yapar?", options: ["Round atarak ana/yardımcı makine, kazan ve tank durumunu kontrol eder", "Hemen istirahate çekilir", "Sadece imza atar", "Ana makineyi durdurur"], correctAnswer: 0, explanation: "Devralan vardiyacı round atarak durumu kontrol eder; devreden vardiyacı çalışan ekipman, bakım ve alarm geçmişini aktarır." },
+      { id: 2, sectionRef: "Devir-Teslim Prosedürü", category: MAK, question: "Devir-teslim nereye kayıt edilir?", options: ["Engine Log Book", "Yük planına", "Manevra kartına", "Hava raporu defterine"], correctAnswer: 0, explanation: "Devir-teslim sözlü ve yazılı olarak yapılır ve Engine Log Book'a kayıt edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Periyodik kontrol turları (round)",
+    blocks: [{ sectionTitles: ["Round Kapsamı", "Round Sıklığı"] }],
+    questions: [
+      { id: 1, sectionRef: "Round Sıklığı", category: MAK, question: "UMS (insansız) çalışmada round aralığı genellikle ne kadardır?", options: ["4-6 saat (dead man alarm ile desteklenir)", "Her 5 dakikada", "Günde bir", "Haftada bir"], correctAnswer: 0, explanation: "UMS'de round aralığı genellikle 4-6 saattir ve dead man alarm sistemiyle desteklenir; nöbetli çalışmada her 1-2 saatte round atılır." },
+      { id: 2, sectionRef: "Round Kapsamı", category: MAK, question: "Round sırasında ana motorda neler izlenir?", options: ["Egzoz sıcaklıkları, scavenge basıncı, soğutma/yağlama sıcaklık ve basınçları", "Sadece boya durumu", "Sadece köprüüstü saatleri", "Sadece yük planı"], correctAnswer: 0, explanation: "Round'da ana/yardımcı motor, kazan, purifier, pompa ve sintine kuyuları kontrol edilir; sızıntı, anormal gürültü, koku ve titreşime bakılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Performans parametreleri izleme",
+    blocks: [{ sectionTitles: ["İzlenen Parametreler", "Trend Analizi"] }],
+    questions: [
+      { id: 1, sectionRef: "İzlenen Parametreler", category: MAK, question: "SFOC değerindeki sapma neyi gösterir?", options: ["Yanma bozukluğu veya ring aşınması (yakıt verimi kaybı)", "Dümen arızası", "Akü bitmesi", "Pusula sapması"], correctAnswer: 0, explanation: "SFOC yakıt verimi göstergesidir; sapma yanma bozukluğu veya ring aşınmasına işaret eder. Scavenge basıncı turbo verimini, egzoz sıcaklığı yanma kalitesini gösterir." },
+      { id: 2, sectionRef: "Trend Analizi", category: MAK, question: "Performans parametrelerinde kademeli sapma ile ani sapma neyi gösterir?", options: ["Kademeli = fouling/aşınma, ani = arıza", "İkisi de normaldir", "Kademeli = arıza, ani = fouling", "İkisi de ölçüm hatasıdır"], correctAnswer: 0, explanation: "Kademeli sapma fouling veya aşınmayı, ani sapma ise arızayı gösterir; PMI sistemi otomatik analiz sunar." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Günlük kayıt (Engine Log Book)",
+    blocks: [{ sectionTitles: ["Kayıt İçeriği", "Yasal Boyutu"] }],
+    questions: [
+      { id: 1, sectionRef: "Yasal Boyutu", category: MAK, question: "Engine Log Book'ta düzeltmeler nasıl yapılmalıdır?", options: ["Çizilerek (beyaz bantla kapatma yasaktır)", "Beyaz bantla kapatılarak", "Silgiyle silinerek", "Sayfa yırtılarak"], correctAnswer: 0, explanation: "Engine Log Book resmi evraktır; mürekkepli kalemle yazılır, düzeltmeler çizilerek yapılır ve PSC/bayrak denetimlerinde incelenir." },
+      { id: 2, sectionRef: "Kayıt İçeriği", category: MAK, question: "Engine Log Book'a aşağıdakilerden hangisi kaydedilir?", options: ["Ana motor devri, güç ve yakıt tüketimi", "Yalnızca yolcu sayısı", "Yalnızca hava durumu", "Yalnızca seyir feneri durumu"], correctAnswer: 0, explanation: "Kayıt içeriği ana/yardımcı motor değerleri, tank seviyeleri, alarmlar, bakım işleri, bunker ve vardiya notlarını kapsar." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Alarm yönetimi ve müdahale",
+    blocks: [{ sectionTitles: ["Alarm Öncelikleri", "Müdahale Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Alarm Öncelikleri", category: MAK, question: "Kritik (Shutdown) öncelikli alarm ne anlama gelir?", options: ["Motor/ekipman otomatik durur, acil müdahale ve neden araştırma gerekir", "Sadece bilgi amaçlıdır", "Görmezden gelinebilir", "Motor yavaşlar ama durmaz"], correctAnswer: 0, explanation: "Kritik alarm motorun otomatik durmasına yol açar; Ciddi (Slowdown) yavaşlatma, Uyarı parametre sapması, Bilgi ise durum değişikliğidir." },
+      { id: 2, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Alarm geldiğinde sesli uyarıyı susturmak için ne yapılır?", options: ["Alarm kabul edilir (acknowledge)", "Motor durdurulur", "Pano kapatılır", "Sigorta atılır"], correctAnswer: 0, explanation: "Alarm okunup tanındıktan sonra acknowledge edilir (sesli alarm susar), durum yerinde kontrol edilir ve olay Engine Log Book'a kaydedilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "UMS (Unmanned Machinery Space) operasyonu",
+    blocks: [{ sectionTitles: ["UMS Gereklilikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "UMS Gereklilikleri", category: MAK, question: "Dead man alarm sistemi neyi gerektirir?", options: ["Vardiyacının sisteme düzenli olarak yanıt vermesini", "Motorun sürekli tam yükte çalışmasını", "Köprüüstünün boş olmasını", "Yangın sisteminin devre dışı olmasını"], correctAnswer: 0, explanation: "Dead man alarm, vardiyacının düzenli yanıt vermesini gerektirir; yanıt gelmezse alarm yükselir." },
+      { id: 2, sectionRef: "UMS Gereklilikleri", category: MAK, question: "UMS sertifikasyonu için aşağıdakilerden hangisi zorunludur?", options: ["Yangın algılama, otomatik durdurma, uzaktan kontrol ve yedek sistemler", "Sadece ek personel", "Sadece daha büyük motor", "Sadece manuel valfler"], correctAnswer: 0, explanation: "Tüm kritik parametreler köprüüstünden izlenebilmeli; yangın algılama, otomatik durdurma, uzaktan kontrol ve yedek sistemler eksiksiz çalışmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Manevra modu geçiş prosedürü",
+    blocks: [{ sectionTitles: ["Geçiş Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Geçiş Prosedürü", category: MAK, question: "Manevra moduna geçişte dümen makinesi nasıl çalıştırılır?", options: ["Çift pompa çalıştırılır", "Tek pompayla yetinilir", "Tamamen kapatılır", "Manuel mandalla"], correctAnswer: 0, explanation: "Manevra geçişinde yedek jeneratör devreye alınır, gerekirse HFO'dan MGO'ya geçilir ve dümen makinesi çift pompa çalıştırılır." },
+      { id: 2, sectionRef: "Geçiş Prosedürü", category: MAK, question: "Manevra hazırlığı tamamlanınca köprüüstüne ne bildirilir?", options: ["'Stand-by Engine'", "'Finished With Engine'", "'Full Away'", "'Blackout'"], correctAnswer: 0, explanation: "Başlatma havası ve yedek pompalar hazırlandıktan sonra köprüüstüne 'Stand-by Engine' bildirilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Yakıt değiştirme (fuel changeover)",
+    blocks: [{ sectionTitles: ["Kademeli Geçiş Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Kademeli Geçiş Prensibi", category: MAK, question: "HFO-MGO geçişinde sıcaklık neden kontrollü/yavaş bir hızla değiştirilir?", options: ["Ani değişim yakıt pompası/enjektörde sıkışma (scuffing) ve sızıntıya yol açar", "Yakıt rengini bozar", "Pervaneyi yavaşlatır", "Hiçbir nedeni yoktur"], correctAnswer: 0, explanation: "HFO sıcak/viskoz, MGO soğuk/düşük viskozludur; ani sıcaklık değişimi scuffing ve sızıntı yapar, bu yüzden geçiş dakikada birkaç derece ile sınırlanır." },
+      { id: 2, sectionRef: "Kademeli Geçiş Prensibi", category: MAK, question: "MGO viskozitesi çok düşükse ne gerekebilir?", options: ["Soğutma (chiller)", "Ek ısıtma", "Daha yüksek devir", "Daha fazla kükürt"], correctAnswer: 0, explanation: "MGO'nun viskozitesi çok düşükse chiller ile soğutma gerekebilir; geçiş ECA sınırına yeterince önce başlatılır ve kayıt altına alınır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Ana makine hız kontrolü",
+    blocks: [{ sectionTitles: ["Kontrol Yöntemleri", "Yük Programı"] }],
+    questions: [
+      { id: 1, sectionRef: "Kontrol Yöntemleri", category: MAK, question: "Governor (regülatör) ne işe yarar?", options: ["Set devire göre yakıt pompası ayarını otomatik yapar", "Dümeni döndürür", "Soğutma suyu sıcaklığını ayarlar", "Demir ırgadını çalıştırır"], correctAnswer: 0, explanation: "Governor hız düzenleme cihazıdır; set devire göre yakıt enjeksiyon miktarını otomatik ayarlar. Bridge control köprüden, engine room control daireden yapılır." },
+      { id: 2, sectionRef: "Yük Programı", category: MAK, question: "Tipik bir motor için tam yüke çıkış süresi ne kadardır?", options: ["30-60 dakika", "2-3 saniye", "12 saat", "1 hafta"], correctAnswer: 0, explanation: "Yük programı yükleme hızını sınırlar; tam yüke çıkış tipik olarak 30-60 dakika sürer. Ani yük artışı termal stres ve hasar yapabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Acil durma ve geri yol",
+    blocks: [{ sectionTitles: ["Acil Durma (Crash Stop)", "Geri Yol (Astern)"] }],
+    questions: [
+      { id: 1, sectionRef: "Acil Durma (Crash Stop)", category: MAK, question: "Crash stop'ta geminin durma mesafesi yaklaşık ne kadardır?", options: ["Gemi boyunun 5-15 katı", "Gemi boyunun yarısı kadar", "Tam 100 metre", "Hiç durmaz"], correctAnswer: 0, explanation: "Tam yol ileri → stop komutunda yakıt kesilir; durma mesafesi gemi boyunun 5-15 katı kadardır ve deplasman, hız ve deniz durumuna bağlıdır." },
+      { id: 2, sectionRef: "Geri Yol (Astern)", category: MAK, question: "Değişken hatveli pervanede (CPP) geri itme kuvveti nasıl oluşturulur?", options: ["Pervane kanat açısı geri yöne çevrilir, motor devri değişmez", "Motor durdurulup geri yönde başlatılır", "Dümen ters çevrilir", "Turboşarjer durdurulur"], correctAnswer: 0, explanation: "CPP'de motor durdurulmadan kanat açısı geri yöne çevrilerek daha hızlı geçiş sağlanır; sabit hatveli pervanede motor durdurulup geri yönde başlatılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Köprüüstü-makine dairesi iletişim",
+    blocks: [{ sectionTitles: ["İletişim Araçları", "İletişim Protokolü"] }],
+    questions: [
+      { id: 1, sectionRef: "İletişim Protokolü", category: MAK, question: "Köprüüstü-makine iletişiminde kapalı döngü (closed-loop) iletişim nasıl işler?", options: ["Komut verilir → alıcı tekrarlar → verici onaylar", "Komut bir kez verilir, onay aranmaz", "Sadece yazılı verilir", "Sadece düdükle verilir"], correctAnswer: 0, explanation: "Kapalı döngü iletişimde komut verilir, alıcı tekrarlar, verici onaylar; yanlış anlamayı önlemek için standart terminoloji ve sürekli hat kullanılır." },
+      { id: 2, sectionRef: "İletişim Araçları", category: MAK, question: "Hız komutu için kullanılan, kayıt tutan araç hangisidir?", options: ["Makine telgrafı", "El düdüğü", "İnterkom", "SCADA grafiği"], correctAnswer: 0, explanation: "Makine telgrafı (mekanik/elektronik) hız komutu için kullanılır ve komutu kaydeder; kritik komutlar ayrıca Engine Log Book'a yazılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Makine dairesi yangını",
+    blocks: [{ sectionTitles: ["Müdahale Prosedürü", "Yangın Sonrası"] }],
+    questions: [
+      { id: 1, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Sabit söndürme sistemini (CO₂/FM200) devreye alma kararı kime aittir?", options: ["Kaptana", "Yağcıya", "Herhangi bir vardiyacıya", "Kıyı istasyonuna"], correctAnswer: 0, explanation: "Yangında alarm çalınır, hızlı kapatma valfleri kapatılır, havalandırma durdurulur; sabit söndürme sistemini devreye alma kararı kaptana aittir." },
+      { id: 2, sectionRef: "Yangın Sonrası", category: MAK, question: "Sabit söndürme sonrası makine dairesi en az ne kadar kapalı tutulur?", options: ["En az 24 saat", "5 dakika", "1 saat", "1 hafta"], correctAnswer: 0, explanation: "Sabit söndürme sonrası en az 24 saat kapalı tutulur; girişten önce atmosfer testi yapılır ve hasar/kök neden analizi yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Blackout ve güç geri kazanımı",
+    blocks: [{ sectionTitles: ["Blackout Prosedürü", "Önleme Tedbirleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Blackout Prosedürü", category: MAK, question: "Blackout'ta acil jeneratör ne kadar sürede otomatik devreye girer?", options: ["45 saniye içinde", "10 dakika içinde", "Anında (0 saniye)", "1 saat içinde"], correctAnswer: 0, explanation: "Blackout'ta acil jeneratör 45 saniye içinde otomatik devreye girer; ardından neden tespit edilir ve kritik yükler sırayla beslenir." },
+      { id: 2, sectionRef: "Önleme Tedbirleri", category: MAK, question: "Preferential trip sistemi ne yapar?", options: ["Kritik olmayan yükleri otomatik keser", "Tüm yükleri devre dışı bırakır", "Ana makineyi durdurur", "Yakıt değişimi yapar"], correctAnswer: 0, explanation: "Preferential trip kritik olmayan yükleri otomatik keserek blackout'u önler; PMS yük paylaşımını optimize eder, düzenli tatbikat yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Ana makine arızası ile seyir",
+    blocks: [{ sectionTitles: ["Acil Müdahale", "Kısıtlı Güçle Seyir"] }],
+    questions: [
+      { id: 1, sectionRef: "Acil Müdahale", category: MAK, question: "Ana makine devre dışı kaldığında hangi seyir fenerleri gösterilir?", options: ["NUC (Not Under Command) fenerleri", "Demirde fenerleri", "Balıkçı fenerleri", "Hiçbiri"], correctAnswer: 0, explanation: "Köprüüstüne derhal bilgi verilir, NUC fenerleri gösterilir, GMDSS ile trafik uyarılır ve gerekirse demir hazırlığı yapılır." },
+      { id: 2, sectionRef: "Kısıtlı Güçle Seyir", category: MAK, question: "Bazı arızalarda motor nasıl kısıtlı güçle çalıştırılabilir?", options: ["Bir/birkaç silindir izole edilip düşük devirde çalışarak", "Turboşarjer çıkarılarak", "Yakıt iki katına çıkarılarak", "Soğutma kapatılarak"], correctAnswer: 0, explanation: "Silindir izolasyonu ve düşük devirle kısıtlı güçle seyir mümkündür; dizel-elektrik gemilerde yardımcı motorlarla tahrik sağlanabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Deniz suyu sızıntısı",
+    blocks: [{ sectionTitles: ["Sızıntı Kaynakları", "Müdahale Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Sızıntı Kaynakları", category: MAK, question: "Makine dairesinde deniz suyu sızıntısının olası kaynağı hangisidir?", options: ["Stern tube sızdırmazlık arızası ve deniz suyu valf/boru bağlantıları", "Yağ teknesi", "Yakıt enjektörü", "Başlatma havası şişesi"], correctAnswer: 0, explanation: "Kaynaklar arasında deniz suyu valfleri/boruları, stern tube sızdırmazlığı, soğutma borusu korozyonu ve sea chest kapak arızası bulunur." },
+      { id: 2, sectionRef: "Müdahale Prosedürü", category: MAK, question: "Deniz suyu sızıntısında ilk müdahale nedir?", options: ["Kaynağı tespit edip mümkünse izole etmek (vana kapatmak) ve sintine pompalarını devreye almak", "Hemen gemiyi terk etmek", "Ana makineyi hızlandırmak", "Soğutmayı durdurmak"], correctAnswer: 0, explanation: "Önce kaynak izole edilir, sintine pompaları devreye alınır, köprüüstü bilgilendirilir (stabilite) ve geçici onarım uygulanır." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Yüksek sıcaklık ve basınç alarmları",
+    blocks: [{ sectionTitles: ["Yaygın Alarm Senaryoları", "Krank Kutusu Patlaması Riski"] }],
+    questions: [
+      { id: 1, sectionRef: "Yaygın Alarm Senaryoları", category: MAK, question: "Egzoz sıcaklığı yüksek alarmının olası nedeni nedir?", options: ["Enjektör arızası veya aşırı yük", "Akü boşalması", "Pusula sapması", "Düşük dümen açısı"], correctAnswer: 0, explanation: "Yüksek egzoz sıcaklığında yük azaltılır ve enjektör kontrol edilir; yağ/su sıcaklığı, scavenge ve krank basıncı alarmlarının kendi nedenleri vardır." },
+      { id: 2, sectionRef: "Krank Kutusu Patlaması Riski", category: MAK, question: "Krank kutusu (crankcase) yüksek basınç alarmı ne gerektirir?", options: ["Motorun durdurulmasını", "Yükün artırılmasını", "Soğutmanın kapatılmasını", "Yakıt değişimini"], correctAnswer: 0, explanation: "Krank kutusunda yağ buharı birikimi patlama riski yaratır; relief valfi riski azaltır ve yüksek basınç alarmı motorun durdurulmasını gerektirir." },
+    ],
+  },
+  {
+    topicKey: "machine-engine-room-ops",
+    topicTitle: "Acil jeneratör devreye alma",
+    blocks: [{ sectionTitles: ["Otomatik Devreye Girme", "Manuel Devreye Alma", "Test Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Otomatik Devreye Girme", category: MAK, question: "Acil jeneratör ana bara gerilim kaybında ne kadar sürede çalışır?", options: ["45 saniye içinde", "Anında", "5 dakika içinde", "1 saat içinde"], correctAnswer: 0, explanation: "Gerilim kaybını algılayan röle başlatma sinyali verir; motor 45 saniye içinde çalışır ve acil baraya yük alır (hava veya akü ile başlatma)." },
+      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "SOLAS gereği acil jeneratör ne sıklıkla test çalıştırması yapılır?", options: ["Haftalık", "Yıllık", "Günlük", "Beş yılda bir"], correctAnswer: 0, explanation: "SOLAS gereği acil jeneratör haftalık test edilir; otomatik başlatma, yük alma ve alarm fonksiyonları doğrulanır." },
+    ],
+  },
 ];
