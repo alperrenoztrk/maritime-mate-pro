@@ -196,4 +196,211 @@ export const meteorologyLessonFlows: LessonFlow[] = [
       },
     ],
   },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Cephe tipleri ve geçiş etkileri",
+    blocks: [
+      { sectionTitles: ["Soğuk Cephe", "Sıcak Cephe"] },
+      { sectionTitles: ["Oklüde Cephe ve Stasyoner Cephe", "Operasyonel Karar ve Hazırlık"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Soğuk Cephe",
+        category: MET,
+        question: "Soğuk cephe geçişinin tipik özelliği nedir?",
+        options: [
+          "Hızlı, şiddetli ve dar bantlı; geçiş sonrası basınç yükselir, sıcaklık düşer",
+          "Yavaş ve günlerce süren hafif yağış",
+          "Hiç rüzgâr değişimi olmaması",
+          "Sıcaklığın geçişle birlikte yükselmesi",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Soğuk cephe dar/dik yapıdadır; dar bantta şiddetli yağış ve gust verir, geçiş sonrası basınç yükselir ve sıcaklık düşer.",
+      },
+      {
+        id: 2,
+        sectionRef: "Sıcak Cephe",
+        category: MET,
+        question: "Sıcak cephenin denizci için en kritik riski nedir?",
+        options: [
+          "Düşük görüş (adveksiyon sisi) ve yaygın sürekli yağış",
+          "Ani buzlanma",
+          "Rüzgârın tamamen durması",
+          "Basıncın hızla yükselmesi",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Sıcak cephe yavaş ilerler, geniş alanda sürekli yağış verir; en kritik risk düşük görüş ve adveksiyon sisi oluşumudur.",
+      },
+      {
+        id: 3,
+        sectionRef: "Oklüde Cephe ve Stasyoner Cephe",
+        category: MET,
+        question: "Oklüzyon nasıl oluşur?",
+        options: [
+          "Soğuk cephenin sıcak cepheye yetişip sıcak sektörü yüzeyden koparmasıyla",
+          "İki sıcak kütlenin birleşmesiyle",
+          "Cephenin tamamen kaybolmasıyla",
+          "Sadece karada basınç düşmesiyle",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Oklüzyon, soğuk cephenin sıcak cepheye yetişmesiyle oluşur ve karmaşık (hem soğuk hem sıcak cephe) koşullar üretir.",
+      },
+      {
+        id: 4,
+        sectionRef: "Operasyonel Karar ve Hazırlık",
+        category: MET,
+        question: "Cephe geçişine hazırlık ne zaman başlamalıdır?",
+        options: [
+          "Tahmini geçişten en az 2 saat önce",
+          "Cephe geçtikten sonra",
+          "Yalnızca yağış başlayınca",
+          "Hazırlık gerekmez",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Hazırlık en az 2 saat önce başlar: güverte emniyeti artırılır, rüzgâr şifti değerlendirilir, görüş düşecekse Kural 19 prosedürleri hazırlanır.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Sis oluşum türleri",
+    blocks: [
+      { sectionTitles: ["Adveksiyon Sisi", "Radyasyon Sisi"] },
+      { sectionTitles: ["Buharlaşma Sisi ve Diğer Türler", "Köprüüstü Tedbirleri"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Adveksiyon Sisi",
+        category: MET,
+        question: "Adveksiyon sisi nasıl oluşur ve önemi nedir?",
+        options: [
+          "Sıcak nemli havanın soğuk yüzey üzerinden geçmesiyle; en yaygın deniz sisi, günlerce sürebilir",
+          "Gece yüzeyin soğumasıyla; sadece karada",
+          "Soğuk havanın sıcak su üzerinden geçmesiyle; çok kısa sürer",
+          "Yağışın buharlaşmasıyla; yalnızca tropiklerde",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Adveksiyon sisi sıcak/nemli havanın soğuk yüzey üzerinden hareketiyle oluşur; denizde en yaygın türdür ve günlerce sürebilir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Radyasyon Sisi",
+        category: MET,
+        question: "Radyasyon sisi hakkında doğru olan hangisidir?",
+        options: [
+          "Gece yüzey soğumasıyla oluşur, karasal kökenlidir ve güneşle birkaç saatte çözülür",
+          "Açık denizde günlerce sürer",
+          "Soğuk hava-sıcak su etkileşiminden doğar",
+          "Yalnızca fırtınada oluşur",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Radyasyon sisi sakin açık gecelerde yüzey radyasyonla soğuyunca oluşur; karasaldır, liman/kıyıyı etkiler, güneşle 2–4 saatte çözülür.",
+      },
+      {
+        id: 3,
+        sectionRef: "Buharlaşma Sisi ve Diğer Türler",
+        category: MET,
+        question: "Buharlaşma sisi (sea smoke) hangi koşulda oluşur?",
+        options: [
+          "Soğuk havanın sıcak su yüzeyi üzerinden geçmesiyle",
+          "Sıcak havanın soğuk yüzey üzerinden geçmesiyle",
+          "Gece yüzey soğumasıyla",
+          "Yüksek basınç merkezinde",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Buharlaşma sisi (steam fog/sea smoke), soğuk havanın sıcak su üzerinden geçip nemin hızla yoğuşmasıyla oluşur; Arktik/kış aylarında sık görülür.",
+      },
+      {
+        id: 4,
+        sectionRef: "Köprüüstü Tedbirleri",
+        category: MET,
+        question: "Sis tedbirleri ne zaman başlatılmalıdır?",
+        options: [
+          "Görüş fiilen düşmeden önce, meteorolojik göstergeler (SST–çiğ noktası farkı) sis işaret ettiğinde",
+          "Ancak görüş sıfırlandıktan sonra",
+          "Yalnızca gündüz",
+          "Liman dışında hiç gerekmez",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Tedbirler proaktiftir: SST ile hava sıcaklığı/çiğ noktası farkı izlenir, sis beklenince Kural 19 prosedürleri (emniyetli hız, ses işareti, ek gözcü) görüş düşmeden başlatılır.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Gerçek rüzgar ve görünen rüzgar",
+    blocks: [
+      { sectionTitles: ["Tanımlar ve Vektörel İlişki"] },
+      { sectionTitles: ["Operasyonel Önem", "Hesaplama ve Doğrulama"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Tanımlar ve Vektörel İlişki",
+        category: MET,
+        question: "Gemideki anemometre hangi rüzgârı ölçer?",
+        options: [
+          "Görünen rüzgârı (apparent) — gemi hareketi + gerçek rüzgâr bileşeni",
+          "Daima gerçek rüzgârı",
+          "Yalnızca rüzgâr yönünü",
+          "Sadece gerçek rüzgâr hızını",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Anemometre görünen rüzgârı (AW) ölçer; bu, geminin hareket vektörü ile gerçek rüzgârın (TW) bileşimidir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Operasyonel Önem",
+        category: MET,
+        question: "Rüzgâr arkadan eserken gerçek rüzgâr ile görünen rüzgâr ilişkisi nasıldır?",
+        options: [
+          "Gerçek rüzgâr, görünenden önemli ölçüde YÜKSEK olabilir",
+          "Gerçek rüzgâr daima görünene eşittir",
+          "Gerçek rüzgâr daima sıfırdır",
+          "Görünen rüzgâr daima daha yüksektir",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Rüzgâr arkadan eserken görünen rüzgâr düşük okunur; gerçek rüzgâr çok daha yüksek olabilir, bu da rüzgâr momentini küçümsemeye yol açar.",
+      },
+      {
+        id: 3,
+        sectionRef: "Operasyonel Önem",
+        category: MET,
+        question: "Pilot/helikopter operasyon limitleri hangi rüzgâra göre belirlenir?",
+        options: ["Gerçek rüzgâra (true wind)", "Görünen rüzgâra", "Pusula rüzgârına", "Tahmin bültenine"],
+        correctAnswer: 0,
+        explanation: "Operasyon limitleri gerçek rüzgâra göre tanımlanır; görünen rüzgârın doğrudan kullanımı yanıltıcıdır.",
+      },
+      {
+        id: 4,
+        sectionRef: "Hesaplama ve Doğrulama",
+        category: MET,
+        question: "Anemometre kalibrasyonu en kolay ne zaman kontrol edilir?",
+        options: [
+          "Gemi duruyor veya çok düşük hızdayken (ölçülen ≈ gerçek rüzgâr)",
+          "Tam yolda seyrederken",
+          "Fırtına ortasında",
+          "Yalnızca limanda bağlıyken bile imkânsızdır",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Çok düşük hızda/dururken ölçülen rüzgâr gerçek rüzgâra çok yakındır; bu durum kalibrasyon kontrolü için kullanılır.",
+      },
+    ],
+  },
 ];

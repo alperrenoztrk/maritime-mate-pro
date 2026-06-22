@@ -1336,4 +1336,226 @@ export const navigationLessonFlows: LessonFlow[] = [
       },
     ],
   },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "UKC ve squat",
+    blocks: [
+      {
+        sectionTitles: ["Squat Hesabı: Barras Formülü ve Basit Yaklaşım"],
+      },
+      {
+        sectionTitles: ["Squat Yönetimi ve UKC'ye Entegrasyonu"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Squat Hesabı: Barras Formülü ve Basit Yaklaşım",
+        category: NAV,
+        question: "Squat nedir?",
+        options: [
+          "İlerleyen geminin hız nedeniyle normalden fazla suya gömülmesi",
+          "Geminin demir taraması",
+          "Rüzgârla oluşan yana yatma",
+          "Gelgit kaynaklı su yükselmesi",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Squat, hareket halindeki geminin altındaki basıncın azalmasıyla suya normalden fazla gömülmesidir; sığ su ve dar kanalda belirginleşir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Squat Hesabı: Barras Formülü ve Basit Yaklaşım",
+        category: NAV,
+        question: "Barras formülüne göre açık suda squat nasıl hesaplanır?",
+        options: ["S = Cb × V² / 100", "S = Cb × V / 100", "S = V² / Cb", "S = Cb + V²"],
+        correctAnswer: 0,
+        explanation: "Barras: S = Cb × V² / 100 (Cb block katsayısı, V knot). Hız kareyle etkilidir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Squat Hesabı: Barras Formülü ve Basit Yaklaşım",
+        category: NAV,
+        question: "Cb = 0.80 ve V = 8 knot için squat yaklaşık kaçtır?",
+        options: ["0.51 m", "0.80 m", "0.10 m", "1.28 m"],
+        correctAnswer: 0,
+        explanation: "S = 0.80 × 64 / 100 = 0.51 m.",
+      },
+      {
+        id: 4,
+        sectionRef: "Squat Yönetimi ve UKC'ye Entegrasyonu",
+        category: NAV,
+        question: "Hız iki katına çıkarsa squat nasıl değişir?",
+        options: ["Yaklaşık dört katına çıkar", "İki katına çıkar", "Yarıya iner", "Değişmez"],
+        correctAnswer: 0,
+        explanation: "Squat hızın karesiyle orantılıdır; hız 2 katına çıkınca squat ~4 katına çıkar.",
+      },
+      {
+        id: 5,
+        sectionRef: "Squat Yönetimi ve UKC'ye Entegrasyonu",
+        category: NAV,
+        question: "Squat'ı azaltmanın temel yolu nedir?",
+        options: ["Hızı azaltmak", "Balast almak", "Dümeni ortalamak", "Trim'i değiştirmek"],
+        correctAnswer: 0,
+        explanation: "Squat'ı düşürmenin tek pratik yolu hız azaltmadır; dinamik draft = statik draft + squat.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Bridge Resource Management (BRM)",
+    blocks: [
+      {
+        sectionTitles: ["BRM’nin Temel Bileşenleri: Liderlik, İletişim ve Durumsal Farkındalık"],
+      },
+      {
+        sectionTitles: ["Görev Paylaşımı ve İş Yükü Yönetimi", "Karar Alma Süreçleri ve Hata Yönetimi"],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "BRM’nin Temel Bileşenleri: Liderlik, İletişim ve Durumsal Farkındalık",
+        category: NAV,
+        question: "Aşırı 'otorite gradyanı' neden tehlikelidir?",
+        options: [
+          "Ast personelin kritik bilgileri bildirememesine yol açar",
+          "Kaptanın yetkisini azaltır",
+          "Radar menzilini düşürür",
+          "Yakıt tüketimini artırır",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Aşırı otorite farkı, astların kritik uyarıları iletmesini engeller; BRM bu gradyanı yönetmeyi hedefler.",
+      },
+      {
+        id: 2,
+        sectionRef: "BRM’nin Temel Bileşenleri: Liderlik, İletişim ve Durumsal Farkındalık",
+        category: NAV,
+        question: "Kapalı döngü (read-back/hear-back) iletişim nedir?",
+        options: [
+          "Verilen her talimatın tekrar edilip onaylanması",
+          "Sadece VHF ile konuşmak",
+          "Talimatları yazılı vermek",
+          "Tek kişinin karar vermesi",
+        ],
+        correctAnswer: 0,
+        explanation: "Kapalı döngü iletişimde her talimat tekrar edilip onaylanır; yanlış anlamaları önler.",
+      },
+      {
+        id: 3,
+        sectionRef: "BRM’nin Temel Bileşenleri: Liderlik, İletişim ve Durumsal Farkındalık",
+        category: NAV,
+        question: "'Durumsal farkındalık kaybı' BRM açısından neyi ifade eder?",
+        options: [
+          "Ekibin ortak zihinsel modelinin bozulması — büyük kazaların yaygın öncüsü",
+          "Radarın arızalanması",
+          "Geminin demir taraması",
+          "Yakıt göstergesinin sıfırlanması",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Durumsal farkındalık, ekibin konum/trafik/hava/plan hakkında ortak modelidir; kaybı büyük kazaların en yaygın öncüsüdür.",
+      },
+      {
+        id: 4,
+        sectionRef: "Görev Paylaşımı ve İş Yükü Yönetimi",
+        category: NAV,
+        question: "Seyir haritasını izleyen subay ile VHF trafiğini takip eden subayın FARKLI kişiler olması neyi önler?",
+        options: [
+          "Tek nokta arızasını ve tünel vizyonunu",
+          "Yakıt tüketimini",
+          "Pusula deviasyonunu",
+          "Gelgit hatasını",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Görevlerin paylaşılması, tek kişinin aşırı yüklenmesini (tünel vizyonu) ve tek nokta arızasını önler.",
+      },
+      {
+        id: 5,
+        sectionRef: "Karar Alma Süreçleri ve Hata Yönetimi",
+        category: NAV,
+        question: "TEM (Threat and Error Management) modelinin akışı nedir?",
+        options: ["Tehdit → Hata → Sonuç yönetimi", "Hata → Tehdit → Karar", "Sonuç → Tehdit → Hata", "Karar → Tehdit → Hata"],
+        correctAnswer: 0,
+        explanation: "TEM: önce tehdit tespit edilir, hata önlenemezse sonucu yönetilir (emniyetsiz durum önlenir).",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "navigation",
+    topicTitle: "Restricted visibility",
+    blocks: [
+      {
+        sectionTitles: [
+          "Kural 19: Kapsamı ve Temel Yükümlülükler",
+          "Sis Prosedürleri ve GMDSS Yükümlülükleri",
+        ],
+      },
+      {
+        sectionTitles: [
+          "Radar ARPA Analizi ve Manevra Kısıtlamaları",
+          "Kural 19 ile Diğer Kurallar Arasındaki İlişki",
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Kural 19: Kapsamı ve Temel Yükümlülükler",
+        category: NAV,
+        question: "Kural 19(d)(i)'ye göre, yalnızca radar izine dayanarak baş omuzdan gelen gemiye karşı hangi manevradan kaçınılır?",
+        options: ["Rotayı iskeleye almaktan", "Rotayı sancağa almaktan", "Hız azaltmaktan", "Ses işareti vermekten"],
+        correctAnswer: 0,
+        explanation:
+          "Baş omuzdan gelen hedef için iskeleye dönmekten kaçınılır (iki gemi aynı yöne dönebilir); sancağa dönüş veya hız azaltma tercih edilir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Kural 19: Kapsamı ve Temel Yükümlülükler",
+        category: NAV,
+        question: "Kural 19(e): çatışma kaçınılmaz noktaya gelindiğinde ne yapılır?",
+        options: [
+          "Hız azalt, tam dur veya tornista (astern) ver",
+          "Hızlan ve sıyrıl",
+          "Rotayı koru",
+          "Yalnızca VHF ile anlaş",
+        ],
+        correctAnswer: 0,
+        explanation: "Kural 19(e): hızı asgariye indir, gerekirse tüm yolu kes (dur/astern).",
+      },
+      {
+        id: 3,
+        sectionRef: "Sis Prosedürleri ve GMDSS Yükümlülükleri",
+        category: NAV,
+        question: "Yolda olan motorlu bir gemi kısıtlı görüşte hangi ses işaretini verir (Kural 35a)?",
+        options: ["Her 2 dakikada bir uzun düdük", "Her 1 dakikada 5 saniye çan", "2 dakikada 1 uzun + 2 kısa", "Sürekli düdük"],
+        correctAnswer: 0,
+        explanation: "Yolda motorlu gemi: 2 dakikada bir uzun düdük. (Demirli gemi 1 dakikada çan; NUC/RAM 1 uzun + 2 kısa.)",
+      },
+      {
+        id: 4,
+        sectionRef: "Radar ARPA Analizi ve Manevra Kısıtlamaları",
+        category: NAV,
+        question: "Kısıtlı görüşte çatışma riskini belirlemenin birincil aracı nedir?",
+        options: ["ARPA ile CPA/TCPA analizi", "Sadece görsel gözcü", "El feneri işaretleri", "Sadece AIS isimleri"],
+        correctAnswer: 0,
+        explanation: "ARPA CPA/TCPA analizi temel araçtır; çok hedefte 'seçici manevra' (selective avoidance) uygulanır.",
+      },
+      {
+        id: 5,
+        sectionRef: "Kural 19 ile Diğer Kurallar Arasındaki İlişki",
+        category: NAV,
+        question: "Kural 19 uygulanırken give-way / stand-on ayrımı (Kural 15–17) ne olur?",
+        options: ["Uygulanmaz (devre dışıdır)", "Aynen geçerlidir", "Sadece gündüz geçerlidir", "Yalnızca kavşakta geçerlidir"],
+        correctAnswer: 0,
+        explanation:
+          "Görsel temas yokken Kural 19 geçerlidir ve give-way/stand-on ayrımını ortadan kaldırır; görsel temas başlayınca ilgili kurala geçilir.",
+      },
+    ],
+  },
 ];
