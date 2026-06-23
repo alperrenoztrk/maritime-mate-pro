@@ -36,7 +36,7 @@ interface EconMainTopic {
   subtopics: EconSubTopic[];
 }
 
-const econTopics: EconMainTopic[] = [
+export const econTopics: EconMainTopic[] = [
   {
     id: "shipping-market",
     number: 1,
@@ -145,7 +145,7 @@ interface TopicContent {
   warnings?: string[];
 }
 
-const topicContents: Record<string, TopicContent> = {
+export const topicContents: Record<string, TopicContent> = {
   // =====================================================
   // BÖLÜM 1 - DENİZCİLİK PİYASASI
   // =====================================================

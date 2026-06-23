@@ -40,7 +40,7 @@ interface SafetyMainTopic {
   subtopics: SafetySubTopic[];
 }
 
-const safetyTopics: SafetyMainTopic[] = [
+export const safetyTopics: SafetyMainTopic[] = [
   {
     id: "solas-general",
     number: 1,
@@ -214,7 +214,7 @@ interface TopicContent {
   warnings?: string[];
 }
 
-const topicContents: Record<string, TopicContent> = {
+export const topicContents: Record<string, TopicContent> = {
   // =====================================================
   // BÖLÜM 1 - SOLAS GENEL
   // =====================================================

@@ -4,18 +4,26 @@ import { getTopicContentsByCategory } from "@/data/topicContents";
 import { stabilityTopicsData } from "@/data/stabilityTopicsContent";
 import { machineTopicLessons } from "@/data/machineTopicLessonData";
 import { getMachineSubTopicContent, hasSubTopicContent } from "@/data/machineTopicDetailContent";
+import { topicContents as cargoTopicContents, cargoTopics } from "@/pages/CargoTopicsPage";
+import { topicContents as seamanshipTopicContents, seamanshipTopics } from "@/pages/SeamanshipTopicsPage";
+import { topicContents as safetyTopicContents, safetyTopics } from "@/pages/SafetyTopicsPage";
+import { topicContents as environmentTopicContents, environmentTopics } from "@/pages/EnvironmentTopicsPage";
+import { topicContents as economicsTopicContents, econTopics } from "@/pages/EconomicsTopicsPage";
 
 /**
  * "Dersler Beta" — birleşik (normalize) içerik katmanı.
  *
- * Uygulamada ders içeriği üç farklı şemada tutulur:
+ * Uygulamada ders içeriği farklı şemalarda tutulur:
  *  1) Güverte (navigation/meteorology/communication): `TopicDetailContent`
  *     (section = {title, content, bulletPoints, formula{text,description}, image})
  *  2) Stabilite: `stabilityTopicsData` (subtopic = {content, formulas[], examples[]...})
  *  3) Makine (16 konu): `machineTopicDetailContent` (section = {heading, paragraphs[],
  *     formula{expression,variables}, example{problem,steps,result}, table, diagram})
+ *  4) Sayfa-içi güverte konuları (cargo/seamanship/safety/environment/economics):
+ *     `*TopicsPage.tsx` içindeki `topicContents` (tek `content` metni + formula{name,
+ *     expression,description} + examples[] + warnings[]); konu sırası `*Topics` ağacından.
  *
- * Bu modül üçünü tek bir `BetaTopic`/`BetaSection` şekline indirger; böylece beta
+ * Bu modül hepsini tek bir `BetaTopic`/`BetaSection` şekline indirger; böylece beta
  * sayfaları (liste, detay, Duolingo oturumu, AI eğitmen) TÜM güverte ve makine
  * konularını/alt başlıklarını tek kod yoluyla kapsar. İçerik read-only okunur;
  * orijinal "Dersler" verisine dokunulmaz.
@@ -58,6 +66,45 @@ const DECK_CONTENT_KEYS = ["navigation", "meteorology", "communication", "stabil
 const isMachine = (key: string) => key.startsWith("machine-");
 const machineSlug = (key: string) => key.slice("machine-".length);
 
+// ── Sayfa-içi güverte konuları (cargo/seamanship/safety/environment/economics) ──
+//
+// Bu kategorilerin anlatımı ilgili `*TopicsPage.tsx` dosyalarında `topicContents`
+// (id → içerik) ve `*Topics` (konu ağacı, sıralama) olarak tutulur. Read-only okunur.
+
+interface PageSubTopic {
+  id: string;
+  title: string;
+  hasContent: boolean;
+}
+interface PageMainTopic {
+  subtopics: PageSubTopic[];
+}
+interface PageTopicContent {
+  title: string;
+  introduction?: string;
+  content: string;
+  image?: string;
+  bulletPoints?: string[];
+  examples?: { problem: string; solution: string }[];
+  formula?: { name: string; expression: string; description: string };
+  keyPoints?: string[];
+  warnings?: string[];
+  table?: { title?: string; headers: string[]; rows: string[][] };
+}
+
+interface PageCategory {
+  tree: PageMainTopic[];
+  contents: Record<string, PageTopicContent>;
+}
+
+const PAGE_CATEGORIES: Record<string, PageCategory> = {
+  cargo: { tree: cargoTopics as unknown as PageMainTopic[], contents: cargoTopicContents as unknown as Record<string, PageTopicContent> },
+  seamanship: { tree: seamanshipTopics as unknown as PageMainTopic[], contents: seamanshipTopicContents as unknown as Record<string, PageTopicContent> },
+  safety: { tree: safetyTopics as unknown as PageMainTopic[], contents: safetyTopicContents as unknown as Record<string, PageTopicContent> },
+  environment: { tree: environmentTopics as unknown as PageMainTopic[], contents: environmentTopicContents as unknown as Record<string, PageTopicContent> },
+  economics: { tree: econTopics as unknown as PageMainTopic[], contents: economicsTopicContents as unknown as Record<string, PageTopicContent> },
+};
+
 // ── Konu başlığı listeleri ────────────────────────────────────────────────
 
 /** Bir kategorinin (güverte id veya makine id) açılabilir alt başlık başlıkları. */
@@ -80,6 +127,18 @@ export function getBetaTopicTitles(key?: string): string[] {
   }
   if (DECK_CONTENT_KEYS.includes(key)) {
     return Object.keys(getTopicContentsByCategory(key));
+  }
+  const page = PAGE_CATEGORIES[key];
+  if (page) {
+    const titles: string[] = [];
+    for (const main of page.tree) {
+      for (const sub of main.subtopics) {
+        if (!sub.hasContent) continue;
+        const c = page.contents[sub.id];
+        if (c) titles.push(c.title);
+      }
+    }
+    return titles;
   }
   return [];
 }
@@ -168,12 +227,51 @@ function mapDeckTopic(key: string, title: string): BetaTopic | null {
   };
 }
 
+function mapPageTopic(key: string, title: string): BetaTopic | null {
+  const page = PAGE_CATEGORIES[key];
+  if (!page) return null;
+  const c = Object.values(page.contents).find((x) => x.title === title);
+  if (!c) return null;
+
+  const sections: BetaSection[] = [
+    {
+      title: c.title,
+      content: c.content,
+      bulletPoints: [...(c.bulletPoints ?? []), ...(c.warnings ?? [])],
+      image: c.image,
+      table: c.table ? { headers: c.table.headers, rows: c.table.rows } : undefined,
+    },
+  ];
+  // Başlıklar benzersiz olmalı (GuidedLessonSession section Map'i için).
+  if (c.formula) {
+    sections.push({
+      title: "Formül",
+      content: "",
+      formula: {
+        text: c.formula.expression,
+        description: [c.formula.name, c.formula.description].filter(Boolean).join(" — "),
+      },
+    });
+  }
+  const ex = c.examples ?? [];
+  ex.forEach((e, i) =>
+    sections.push({
+      title: ex.length > 1 ? `Çözümlü Örnek ${i + 1}` : "Çözümlü Örnek",
+      content: "",
+      example: { problem: e.problem, solution: e.solution },
+    }),
+  );
+
+  return { title: c.title, introduction: c.introduction, sections, keyPoints: c.keyPoints };
+}
+
 /** Normalize edilmiş tekil konu içeriği (yoksa null). */
 export function getBetaTopic(key?: string, title?: string): BetaTopic | null {
   if (!key || !title) return null;
   if (isMachine(key)) return mapMachineTopic(machineSlug(key), title);
   if (key === "stability") return mapStabilityTopic(title);
   if (DECK_CONTENT_KEYS.includes(key)) return mapDeckTopic(key, title);
+  if (PAGE_CATEGORIES[key]) return mapPageTopic(key, title);
   return null;
 }
 

@@ -42,7 +42,7 @@ interface CargoMainTopic {
   subtopics: CargoSubTopic[];
 }
 
-const cargoTopics: CargoMainTopic[] = [
+export const cargoTopics: CargoMainTopic[] = [
   {
     id: "cargo-intro",
     number: 1,
@@ -227,7 +227,7 @@ interface TopicContent {
   warnings?: string[];
 }
 
-const topicContents: Record<string, TopicContent> = {
+export const topicContents: Record<string, TopicContent> = {
   // =====================================================
   // BÖLÜM 1 - YÜK ELLEÇLEME TEMELLERİ
   // =====================================================

@@ -37,7 +37,7 @@ interface EnvironmentMainTopic {
   subtopics: EnvironmentSubTopic[];
 }
 
-const environmentTopics: EnvironmentMainTopic[] = [
+export const environmentTopics: EnvironmentMainTopic[] = [
   {
     id: "marpol-general",
     number: 1,
@@ -174,7 +174,7 @@ interface TopicContent {
   warnings?: string[];
 }
 
-const topicContents: Record<string, TopicContent> = {
+export const topicContents: Record<string, TopicContent> = {
   // =====================================================
   // BÖLÜM 1 - MARPOL GENEL
   // =====================================================

@@ -65,7 +65,7 @@ interface SeamanshipMainTopic {
   subtopics: SeamanshipSubTopic[];
 }
 
-const seamanshipTopics: SeamanshipMainTopic[] = [
+export const seamanshipTopics: SeamanshipMainTopic[] = [
   {
     id: "seamanship-basics",
     number: 1,
@@ -252,7 +252,7 @@ interface TopicContent {
   warnings?: string[];
 }
 
-const topicContents: Record<string, TopicContent> = {
+export const topicContents: Record<string, TopicContent> = {
   // =====================================================
   // BÖLÜM 1 - GEMİCİLİK TEMELLERİ
   // =====================================================
