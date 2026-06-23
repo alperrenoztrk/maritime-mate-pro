@@ -4072,4 +4072,247 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Önlemler", category: MAK, question: "Legionella kontrolü için su sistemi nasıl yönetilir?", options: ["60°C üzeri sıcaklık veya klorlama", "Suyu ılık tutmak", "Hiç dokunmamak", "Tuz eklemek"], correctAnswer: 0, explanation: "Legionella kontrolü için su 60°C üzerinde tutulur veya klorlanır; kişisel hijyen, uygun KKD ve ilk yardımda tek kullanımlık eldiven gereklidir." },
     ],
   },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "İzotermik süreç",
+    blocks: [{ sectionTitles: ["Tanım ve Özellikler"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanım ve Özellikler", category: MAK, question: "İdeal gazda izotermik süreçte iç enerji değişimi ne olur?", options: ["Sıfırdır (sıcaklık sabit); verilen ısının tamamı işe dönüşür (Q = W)", "Maksimumdur", "Negatiftir", "Hesaplanamaz"], correctAnswer: 0, explanation: "Sıcaklık sabit olduğundan ideal gazda iç enerji değişimi sıfırdır; birinci yasa gereği Q = W. Boyle yasası (PV = sabit) geçerlidir." },
+      { id: 2, sectionRef: "Tanım ve Özellikler", category: MAK, question: "İzotermik süreçte basınç-hacim ilişkisini hangi yasa verir?", options: ["Boyle yasası (PV = sabit)", "Charles yasası", "Stefan-Boltzmann", "Fourier"], correctAnswer: 0, explanation: "Boyle yasası (PV = sabit) izotermik sürecin basınç-hacim ilişkisini verir; iş W = mRT·ln(V₂/V₁)." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "İzobarik süreç",
+    blocks: [{ sectionTitles: ["Tanım ve İş Hesabı"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanım ve İş Hesabı", category: MAK, question: "Sabit basınçta (izobarik) yapılan iş nasıl hesaplanır?", options: ["W = P·ΔV", "W = 0", "W = mcvΔT", "W = ΔU"], correctAnswer: 0, explanation: "İzobarik süreçte W = P(V₂−V₁) = P·ΔV; verilen ısı entalpi değişimine eşittir: Q = m·cp·ΔT." },
+      { id: 2, sectionRef: "Tanım ve İş Hesabı", category: MAK, question: "İzobarik süreçte verilen ısı neye eşittir?", options: ["Entalpi değişimine (Q = m·cp·ΔT)", "İç enerji değişimine", "Sıfıra", "İşin yarısına"], correctAnswer: 0, explanation: "Sabit basınçta Q = ΔH = m·cp·ΔT'dir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "İzokorik süreç",
+    blocks: [{ sectionTitles: ["Özellikler"] }],
+    questions: [
+      { id: 1, sectionRef: "Özellikler", category: MAK, question: "İzokorik (sabit hacim) süreçte iş ne kadardır?", options: ["Sıfır (W = 0, çünkü ΔV = 0)", "Maksimum", "P·ΔV", "mRT"], correctAnswer: 0, explanation: "Sabit hacimde iş yapılamaz (W = P·ΔV ve ΔV = 0); verilen ısının tamamı iç enerjiye dönüşür: Q = ΔU = m·cv·ΔT." },
+      { id: 2, sectionRef: "Özellikler", category: MAK, question: "Otto çevriminde ısı ekleme/atma süreçleri nasıl modellenir?", options: ["İzokorik (sabit hacim) olarak", "İzobarik olarak", "Adyabatik olarak", "İzotermik olarak"], correctAnswer: 0, explanation: "Otto çevriminde ısı ekleme ve atma süreçleri izokorik (sabit hacim) olarak modellenir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Adyabatik (izentropik) süreç",
+    blocks: [{ sectionTitles: ["Bağıntılar"] }],
+    questions: [
+      { id: 1, sectionRef: "Bağıntılar", category: MAK, question: "Adyabatik süreçte birinci yasa hangi şekli alır?", options: ["W = −ΔU (çünkü Q = 0)", "Q = W", "Q = ΔU", "W = 0"], correctAnswer: 0, explanation: "Adyabatik süreçte Q = 0 olduğundan W = −ΔU; ideal gaz için PV^γ = sabit ve TV^(γ−1) = sabit geçerlidir." },
+      { id: 2, sectionRef: "Bağıntılar", category: MAK, question: "İdeal gaz için adyabatik süreçte hangi bağıntı geçerlidir?", options: ["PV^γ = sabit", "PV = sabit", "P/V = sabit", "P + V = sabit"], correctAnswer: 0, explanation: "Adyabatik (izentropik) süreçte PV^γ = sabit ve TV^(γ−1) = sabittir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Politropik süreç ve n üssü",
+    blocks: [{ sectionTitles: ["Politropik Modelin Fiziksel Anlamı", "Sıcaklık ve İş Bağıntıları"] }],
+    questions: [
+      { id: 1, sectionRef: "Politropik Modelin Fiziksel Anlamı", category: MAK, question: "Deniz kompresörlerinde politropik üs n tipik olarak hangi aralıktadır?", options: ["1 ile γ arasında", "0 ile 1 arasında", "Her zaman 0", "Her zaman sonsuz"], correctAnswer: 0, explanation: "Kompresörlerde n genellikle 1 ile γ arasındadır (gerçek sıkıştırma bölgesi); ara soğutma arttıkça n, 1'e (izotermik) yaklaşır." },
+      { id: 2, sectionRef: "Sıcaklık ve İş Bağıntıları", category: MAK, question: "Aynı basınç oranında n değerinin artması kompresör çıkış sıcaklığını nasıl etkiler?", options: ["Yükseltir (valf, segman ve yağ filmine ek termal yük)", "Düşürür", "Etkilemez", "Sıfırlar"], correctAnswer: 0, explanation: "T₂/T₁ = (P₂/P₁)^((n−1)/n); n arttıkça çıkış sıcaklığı yükselir ve termal yük artar." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Otto çevrimi (benzinli motor)",
+    blocks: [{ sectionTitles: ["Çevrim Aşamaları ve P-V Yorumu", "Termal Verim ve Sıkıştırma Oranı Etkisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Termal Verim ve Sıkıştırma Oranı Etkisi", category: MAK, question: "Otto çevriminin teorik termal verimi neye bağlıdır?", options: ["Yalnızca sıkıştırma oranı (r) ve γ değerine", "Sadece devire", "Sadece silindir sayısına", "Yakıt rengine"], correctAnswer: 0, explanation: "η_Otto = 1 − (1/r)^(γ−1); verim yalnızca sıkıştırma oranı ve γ'ya bağlıdır. Pratikte vuruntu (knock) ve NOx sıkıştırma oranını sınırlar." },
+      { id: 2, sectionRef: "Çevrim Aşamaları ve P-V Yorumu", category: MAK, question: "Otto çevriminde iş üreten strok hangisidir?", options: ["3→4 adyabatik genleşme", "1→2 sıkıştırma", "2→3 ısı alımı", "4→1 ısı atımı"], correctAnswer: 0, explanation: "Çevrim net işinin büyük kısmı 3→4 adyabatik genleşme strokunda üretilir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Sabathe (ikili) çevrimi",
+    blocks: [{ sectionTitles: ["Neden Sabathe Modeli Kullanılır?", "Çevrim Aşamaları", "Verim Parametreleri ve Tasarım Etkisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Neden Sabathe Modeli Kullanılır?", category: MAK, question: "Sabathe çevrimi gerçek deniz dizel motorunu neden daha iyi modeller?", options: ["Yanmayı kısmen sabit hacim, kısmen sabit basınç olarak modeller", "Yanmayı tümüyle izotermik alır", "Hiç ısı alımı varsaymaz", "Sadece egzozu modeller"], correctAnswer: 0, explanation: "Sabathe; hızlı ön-karışım yanmasını sabit hacim, difüzyon kontrollü geç yanmayı sabit basınç olarak modelleyerek indike basınç eğrisine yaklaşır." },
+      { id: 2, sectionRef: "Çevrim Aşamaları", category: MAK, question: "Sabathe çevriminde tepe basıncını hangi aşama belirler?", options: ["2→3 sabit hacimde ısı alımı (ani yanma)", "1→2 sıkıştırma", "4→5 genleşme", "5→1 ısı atımı"], correctAnswer: 0, explanation: "2→3 sabit hacim ısı alımı (ani yanma fazı) tepe basıncını belirler ve mekanik yükleri doğrudan etkiler." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Rankine çevrimi (buhar türbini)",
+    blocks: [{ sectionTitles: ["Çevrim Bileşenleri ve Enerji Akışı", "h-s Diyagramı ile Performans Yorumu"] }],
+    questions: [
+      { id: 1, sectionRef: "Çevrim Bileşenleri ve Enerji Akışı", category: MAK, question: "Deniz uygulamasında Rankine çevriminde kazanın ısı kaynağı genellikle nedir?", options: ["Ana makine egzozu", "Güneş", "Pervane sürtünmesi", "Deniz suyu"], correctAnswer: 0, explanation: "Deniz uygulamasında besi suyu çoğunlukla ana makine egzozuyla ısıtılır/buharlaştırılır; türbin entalpiyi şaft işine çevirir, kondenser çevrimi kapatır." },
+      { id: 2, sectionRef: "h-s Diyagramı ile Performans Yorumu", category: MAK, question: "Türbin çıkışında nem oranı artarsa hangi risk doğar?", options: ["Son kademelerde erozyon (kızdırma/reheat ile azaltılır)", "Verim artışı", "Donma", "Hiçbir risk"], correctAnswer: 0, explanation: "Yüksek nem son türbin kademelerinde erozyon yaratır; kızdırma (superheat) ve yeniden kızdırma (reheat) bu riski azaltır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Brayton çevrimi (gaz türbini)",
+    blocks: [{ sectionTitles: ["Temel Süreçler ve Gerçek Sistem Sapmaları", "Verim, Basınç Oranı ve Özgül İş", "Deniz Uygulaması ve Kombine Çevrim"] }],
+    questions: [
+      { id: 1, sectionRef: "Verim, Basınç Oranı ve Özgül İş", category: MAK, question: "İdeal Brayton verimi basınç oranı arttıkça nasıl değişir?", options: ["Artar (ancak kompresör işi büyür ve malzeme sıcaklık limiti devreye girer)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "η_Brayton = 1 − (1/r_p)^((γ−1)/γ); verim basınç oranıyla artar ama Back Work Ratio (w_c/w_t) ve TIT limiti optimumu belirler." },
+      { id: 2, sectionRef: "Deniz Uygulaması ve Kombine Çevrim", category: MAK, question: "Gaz türbini egzoz ısısı (450-550°C) nasıl değerlendirilir?", options: ["HRSG üzerinden Rankine alt çevrimine verilerek (COGAS/COGES)", "Doğrudan denize atılarak", "Yakıta karıştırılarak", "Hiç kullanılmaz"], correctAnswer: 0, explanation: "Gaz türbini egzozu HRSG ile Rankine alt çevrimine verilerek kombine çevrimde (COGAS/COGES) toplam verim artırılır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Ters çevrimler: soğutma ve ısı pompası",
+    blocks: [{ sectionTitles: ["Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", "COP Kavramı ve Enerji Yorumu"] }],
+    questions: [
+      { id: 1, sectionRef: "Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", category: MAK, question: "Soğutma çevriminin ana güç tüketicisi hangi bileşendir?", options: ["Kompresör", "Evaporatör", "Genleşme valfi", "Kondenser"], correctAnswer: 0, explanation: "Kompresör düşük basınçlı buharı sıkıştırır ve çevrimin ana güç tüketicisidir; evaporatör soğutma etkisini oluşturur." },
+      { id: 2, sectionRef: "COP Kavramı ve Enerji Yorumu", category: MAK, question: "COP'nin 1'den büyük olması neden termodinamiğe aykırı değildir?", options: ["Cihaz ısıyı üretmez; düşük sıcaklıktan çekip yüksek sıcaklığa taşır", "Enerji yoktan var edilir", "Ölçüm hatasıdır", "Aslında aykırıdır"], correctAnswer: 0, explanation: "COP_ısı pompası = COP_soğutma + 1; cihaz ısıyı taşıdığı için COP>1 mümkündür ve termodinamiğe aykırı değildir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Fourier iletim yasası",
+    blocks: [{ sectionTitles: ["Yasa İfadesi", "Isıl İletkenlik Katsayıları"] }],
+    questions: [
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Fourier yasasına göre iletilen ısı miktarı neye bağlıdır?", options: ["Sıcaklık gradyanı, alan ve malzemenin ısıl iletkenliği (k)", "Sadece renge", "Sadece zamana", "Sadece kütleye"], correctAnswer: 0, explanation: "Q̇ = −k·A·(dT/dx); ısı, sıcaklık gradyanı ve alanla doğru orantılı, ısıl iletkenliğe (k) bağlıdır." },
+      { id: 2, sectionRef: "Isıl İletkenlik Katsayıları", category: MAK, question: "Aşağıdaki malzemelerden hangisi en yüksek ısıl iletkenliğe (k) sahiptir?", options: ["Bakır (~385 W/m·K)", "Taş yünü (~0.04)", "Hava (~0.026)", "Asbest (~0.15)"], correctAnswer: 0, explanation: "Bakır ~385 W/m·K ile en yüksek; çelik 45-50, yalıtım malzemeleri çok düşük k değerine sahiptir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Çok katmanlı duvar ve silindirik iletim",
+    blocks: [{ sectionTitles: ["Çok Katmanlı Düz Duvar", "Silindirik Duvar (Boru)"] }],
+    questions: [
+      { id: 1, sectionRef: "Çok Katmanlı Düz Duvar", category: MAK, question: "Çok katmanlı düz duvarda ısı iletimi hangi kavramla hesaplanır?", options: ["Seri ısıl direnç (R_toplam = ΣL_i/k_iA)", "Paralel kapasitans", "Logaritmik basınç", "Newton viskozitesi"], correctAnswer: 0, explanation: "Seri ısıl direnç kullanılır: R_toplam = L₁/k₁A + L₂/k₂A + … ve Q̇ = ΔT_toplam / R_toplam." },
+      { id: 2, sectionRef: "Silindirik Duvar (Boru)", category: MAK, question: "Silindirik (boru) geometride iletim neden logaritmik ifade içerir?", options: ["Yarıçapla ısı transfer alanı değiştiğinden", "Sıcaklık sabit olduğundan", "Basınç değişmediğinden", "Malzeme tek olduğundan"], correctAnswer: 0, explanation: "Silindirik geometride alan yarıçapla değişir; Q̇ = 2πkL(T₁−T₂)/ln(r₂/r₁) ifadesi kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Newton soğuma yasası (taşınım)",
+    blocks: [{ sectionTitles: ["Yasa İfadesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Konvektif (taşınımla) ısı transferi neye bağlıdır?", options: ["Yüzey alanı, sıcaklık farkı ve taşınım katsayısı (h)", "Sadece renk", "Sadece kütle", "Sadece basınç"], correctAnswer: 0, explanation: "Q̇ = h·A·(T_yüzey − T_akışkan); ısı, taşınım katsayısı h, alan ve sıcaklık farkıyla orantılıdır." },
+      { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Newton soğuma yasasında 'h' neyi temsil eder?", options: ["Taşınım (konveksiyon) katsayısı", "Isıl iletkenlik", "Entalpi", "Yükseklik"], correctAnswer: 0, explanation: "h taşınım (konveksiyon) katsayısıdır; akış tipine ve akışkana göre değişir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Doğal ve zorlanmış taşınım",
+    blocks: [{ sectionTitles: ["Doğal Taşınım", "Zorlanmış Taşınım"] }],
+    questions: [
+      { id: 1, sectionRef: "Doğal Taşınım", category: MAK, question: "Doğal taşınım nasıl oluşur?", options: ["Yoğunluk farkından kaynaklanan kaldırma kuvvetiyle (h ≈ 5-25 W/m²·K)", "Pompa ile", "Fan ile", "Kompresör ile"], correctAnswer: 0, explanation: "Doğal taşınım yoğunluk farkıyla oluşur (makine dairesi havalandırması, kazan su sirkülasyonu); h ≈ 5-25 W/m²·K'dir." },
+      { id: 2, sectionRef: "Zorlanmış Taşınım", category: MAK, question: "Zorlanmış taşınımda h değeri yaklaşık hangi aralıktadır?", options: ["100-10000 W/m²·K", "0.01-0.1 W/m²·K", "Doğal taşınımla aynı", "Sıfır"], correctAnswer: 0, explanation: "Pompa/fan/kompresörle oluşan zorlanmış taşınımda h, 100-10000 W/m²·K aralığındadır (eşanjör, silindir soğutması)." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Stefan–Boltzmann ışınım yasası",
+    blocks: [{ sectionTitles: ["Yasa İfadesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Stefan-Boltzmann yasasına göre yayılan ışınım enerjisi sıcaklığın kaçıncı kuvvetiyle orantılıdır?", options: ["Dördüncü kuvveti (T⁴)", "Birinci", "İkinci", "Karekökü"], correctAnswer: 0, explanation: "Q̇ = ε·σ·A·(T₁⁴ − T₂⁴); kara cismin yaydığı enerji mutlak sıcaklığın dördüncü kuvvetiyle orantılıdır." },
+      { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Stefan-Boltzmann ifadesinde ε neyi temsil eder?", options: ["Yüzey yayma katsayısı (kara cisim için ε = 1)", "Mutlak sıcaklık", "Alan", "Basınç"], correctAnswer: 0, explanation: "ε yüzey yayma katsayısıdır; kara cisim için ε = 1, σ ise Stefan-Boltzmann sabitidir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Toplam ısı geçiş katsayısı (U)",
+    blocks: [{ sectionTitles: ["U Hesabı"] }],
+    questions: [
+      { id: 1, sectionRef: "U Hesabı", category: MAK, question: "Toplam ısı geçiş katsayısı (U) hesabında hangi dirençler toplanır?", options: ["İç/dış taşınım, iletim ve fouling dirençleri (1/U = 1/h₁ + ΣL/k + 1/h₂ + R_f)", "Sadece iletim", "Sadece fouling", "Sadece taşınım"], correctAnswer: 0, explanation: "1/U = 1/h_iç + L/k + 1/h_dış + R_fouling; fouling direnci kullanım ömrüne ve temizlik aralığına bağlıdır." },
+      { id: 2, sectionRef: "U Hesabı", category: MAK, question: "Fouling (kirlenme) direnci U değerini nasıl etkiler?", options: ["Toplam direnci artırıp U'yu düşürür", "U'yu artırır", "Etkilemez", "U'yu sıfırlar ama ısı transferini artırır"], correctAnswer: 0, explanation: "R_fouling toplam dirence eklenir; arttıkça U (ve ısı transferi) düşer, bu yüzden periyodik temizlik gerekir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Paralel akış ve ters akış düzenlemeleri",
+    blocks: [{ sectionTitles: ["Karşılaştırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Ters akışlı eşanjör paralel akışa göre neden daha etkilidir?", options: ["Daha yüksek LMTD ve etkinlik sağlar; soğuk akışkan sıcak çıkışın üzerine çıkabilir", "Daha düşük LMTD verir", "Hiç fark yoktur", "Daha az alan gerektirir"], correctAnswer: 0, explanation: "Ters akışta LMTD ve etkinlik daha yüksektir; soğuk akışkan sıcak akışkanın çıkış sıcaklığının üzerine çıkabilir, paralel akışta bu mümkün değildir." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Hangi akış düzenlemesi gemilerde daha yaygın kullanılır?", options: ["Ters akış", "Paralel akış", "İkisi de kullanılmaz", "Sadece çapraz akış"], correctAnswer: 0, explanation: "Daha yüksek etkinlik nedeniyle ters akış yaygın, paralel akış sınırlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "LMTD (logaritmik ortalama sıcaklık farkı)",
+    blocks: [{ sectionTitles: ["LMTD Formülü", "Isı Eşanjörü Temel Denklemi"] }],
+    questions: [
+      { id: 1, sectionRef: "LMTD Formülü", category: MAK, question: "LMTD hangi değerlerden hesaplanır?", options: ["Giriş ve çıkış sıcaklık farkları (ΔT₁, ΔT₂)", "Sadece debi", "Sadece basınç", "Sadece alan"], correctAnswer: 0, explanation: "LMTD = (ΔT₁ − ΔT₂)/ln(ΔT₁/ΔT₂); giriş ve çıkış sıcaklık farklarından hesaplanır." },
+      { id: 2, sectionRef: "Isı Eşanjörü Temel Denklemi", category: MAK, question: "Eşanjörün ısı transfer kapasitesi hangi denklemle bulunur?", options: ["Q = U·A·LMTD", "Q = m·g·h", "Q = P·V", "Q = h·s"], correctAnswer: 0, explanation: "Eşanjör kapasitesi Q = U·A·LMTD ile hesaplanır (U toplam ısı geçiş katsayısı, A alan)." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Plakalı ısı eşanjörleri",
+    blocks: [{ sectionTitles: ["Yapı ve Avantajlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Yapı ve Avantajlar", category: MAK, question: "Plakalı eşanjörlerin kabuk-boruya göre temel avantajı nedir?", options: ["Yüksek türbülans ve geniş alan sayesinde 3-5 kat yüksek U değeri", "Çok daha yüksek basınç dayanımı", "Sınırsız sıcaklık", "Bakım gerektirmemesi"], correctAnswer: 0, explanation: "Yüksek türbülans ve geniş yüzey sayesinde U değeri 3-5 kat yüksektir; plaka ekleme/çıkarma ile kapasite ayarlanır." },
+      { id: 2, sectionRef: "Yapı ve Avantajlar", category: MAK, question: "Plakalı eşanjörlerin temel dezavantajı nedir?", options: ["Basınç ve sıcaklık sınırı (genellikle < 25 bar, < 250°C)", "Düşük verim", "Büyük yer kaplaması", "Ayarlanamaz kapasite"], correctAnswer: 0, explanation: "Plakalı eşanjörler genellikle < 25 bar ve < 250°C ile sınırlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Kabuk–boru (shell & tube) eşanjörler",
+    blocks: [{ sectionTitles: ["Yapı"] }],
+    questions: [
+      { id: 1, sectionRef: "Yapı", category: MAK, question: "Kabuk-boru eşanjörde baffle (şaşırtma) plakalarının görevi nedir?", options: ["Kabuk tarafında çapraz akış oluşturarak ısı transferini artırmak", "Basıncı düşürmek", "Akışı durdurmak", "Boruları soğutmak"], correctAnswer: 0, explanation: "Baffle plakaları kabuk tarafında çapraz akış oluşturarak ısı transferini artırır; boru demeti üzerinden iki akışkan ayrı geçer." },
+      { id: 2, sectionRef: "Yapı", category: MAK, question: "Aşağıdakilerden hangisi tipik olarak kabuk-boru tipinde üretilir?", options: ["Buhar kondenser, yağ soğutucu ve yakıt ısıtıcı", "Sadece plaka filtre", "Pervane", "Dümen"], correctAnswer: 0, explanation: "Buhar kondenserler, yağ soğutucular ve yakıt ısıtıcıları kabuk-boru tipinde üretilir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Fouling ve temizlik etkileri",
+    blocks: [{ sectionTitles: ["Fouling Tipleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Fouling Tipleri", category: MAK, question: "Deniz suyu tarafında en yaygın fouling türü nedir?", options: ["Biyolojik fouling (deniz canlıları) ve mineral çökelme", "Karbon birikimi", "Kurum", "Asit yoğuşması"], correctAnswer: 0, explanation: "Deniz suyu tarafında biyolojik fouling ve mineral çökelme; yağ tarafında karbon/çamur; egzoz tarafında kurum ve asit yoğuşması görülür." },
+      { id: 2, sectionRef: "Fouling Tipleri", category: MAK, question: "Hangi akışkanın fouling direnci (R_f) en yüksektir?", options: ["Egzoz gazı (~0.002 m²·K/W)", "Temiz deniz suyu (~0.00009)", "Motor yağı (~0.0002)", "Hepsi eşit"], correctAnswer: 0, explanation: "Egzoz gazı en yüksek R_f (~0.002) değerine sahiptir; temiz deniz suyu en düşüktür (~0.00009)." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Eşanjör verim hesapları",
+    blocks: [{ sectionTitles: ["NTU-Etkinlik Yöntemi"] }],
+    questions: [
+      { id: 1, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "Eşanjör etkinliği (ε) nasıl tanımlanır?", options: ["Gerçek ısı transferinin maksimum olası transfere oranı (Q/Q_max)", "U × A", "LMTD × debi", "Sadece NTU"], correctAnswer: 0, explanation: "ε = Q_gerçek/Q_max; Q_max = C_min×(T_h,giriş − T_c,giriş). NTU = UA/C_min'dir." },
+      { id: 2, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "NTU arttıkça eşanjör etkinliği nasıl değişir?", options: ["Artar (ancak maliyet de artar)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "NTU = UA/C_min arttıkça etkinlik artar; ancak daha büyük alan/maliyet gerektirir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Egzoz gazı ekonomizeri",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Egzoz gazı ekonomizeri ne sağlar?", options: ["Egzoz ısısıyla su ısıtarak yardımcı kazanın yakıt tüketimini azaltır", "Egzoz basıncını artırır", "Pervaneyi soğutur", "Yakıt deposunu doldurur"], correctAnswer: 0, explanation: "200-350°C egzoz gazı ekonomizer borularından geçip suyu ısıtır; yardımcı kazan yakıt tüketimini azaltır." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Seyirde ana makine yükü yeterli olduğunda ekonomizer ne yapabilir?", options: ["Tek başına tüm buhar ihtiyacını karşılayabilir", "Hiçbir işe yaramaz", "Ana makineyi durdurur", "Yakıt tüketimini artırır"], correctAnswer: 0, explanation: "Seyirde yeterli yükte ekonomizer tek başına tüm buhar ihtiyacını karşılayabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Atık ısı geri kazanım sistemi (WHRS)",
+    blocks: [{ sectionTitles: ["Sistem Bileşenleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Tipik bir WHRS hangi bileşenleri içerebilir?", options: ["Egzoz gazı ekonomizeri, güç türbini ve buhar türbin jeneratörü (ve/veya ORC)", "Sadece pervane", "Sadece dümen", "Sadece akü"], correctAnswer: 0, explanation: "WHRS; egzoz ekonomizeri, güç türbini, buhar türbin-jeneratörü ve/veya ORC ünitesinden oluşur." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Büyük konteyner gemilerinde WHRS ne kadar ek elektrik üretebilir?", options: ["Ana makine gücünün %8-11'i kadar", "%50'si kadar", "%0.1'i kadar", "Hiç"], correctAnswer: 0, explanation: "WHRS, büyük konteyner gemilerinde ana makine gücünün %8-11'i kadar ek elektrik üretebilir." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Buhar jeneratörü ve türbin entegrasyonu",
+    blocks: [{ sectionTitles: ["Entegrasyon Yapısı"] }],
+    questions: [
+      { id: 1, sectionRef: "Entegrasyon Yapısı", category: MAK, question: "Ekonomizerde üretilen buhar nasıl elektriğe çevrilir?", options: ["Buhar türbin-jeneratör setine yönlendirilerek", "Doğrudan aküye basılarak", "Pervaneye verilerek", "Yakıta karıştırılarak"], correctAnswer: 0, explanation: "Egzoz gazı ekonomizerinde üretilen buhar bir buhar türbin-jeneratör setine yönlendirilerek elektrik üretilir; büyük iki zamanlı motorlu gemilerde yaygındır." },
+      { id: 2, sectionRef: "Entegrasyon Yapısı", category: MAK, question: "Bu entegrasyon hangi gemilerde yaygındır?", options: ["Büyük iki zamanlı düşük devirli motorlu gemiler", "Sadece yelkenliler", "Sadece balıkçı tekneleri", "Hiçbiri"], correctAnswer: 0, explanation: "Buhar türbin-jeneratör entegrasyonu özellikle büyük iki zamanlı düşük devirli motorlu gemilerde yaygındır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Kojenerasyon uygulamaları",
+    blocks: [{ sectionTitles: ["Gemi Kojenerasyonu"] }],
+    questions: [
+      { id: 1, sectionRef: "Gemi Kojenerasyonu", category: MAK, question: "Kojenerasyon ile toplam enerji kullanım verimi ne seviyeye çıkabilir?", options: ["%80'in üzerine", "%20'nin altına", "Tam %100", "%5"], correctAnswer: 0, explanation: "Atık ısıdan buhar üretip hem ısıtma hem elektrik için kullanmak kojenerasyondur; toplam verim %80'in üzerine çıkabilir." },
+      { id: 2, sectionRef: "Gemi Kojenerasyonu", category: MAK, question: "Kojenerasyondan hangi uygulama faydalanır?", options: ["Yakıt ısıtma, yaşam mahalli ısıtma ve tatlı su üretimi", "Pervane imalatı", "Boya kurutma", "Hiçbiri"], correctAnswer: 0, explanation: "Soğuk iklimlerde yakıt ısıtma, yaşam mahalli ısıtma ve tatlı su üretimi kojenerasyondan faydalanır." },
+    ],
+  },
+  {
+    topicKey: "machine-thermodynamics",
+    topicTitle: "Enerji dönüşüm verimi ve kayıp analizi",
+    blocks: [{ sectionTitles: ["Enerji Akışı ve Kayıplar"] }],
+    questions: [
+      { id: 1, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "İki zamanlı deniz dizel motorunda yakıt enerjisinin yaklaşık ne kadarı şaft gücüne dönüşür?", options: ["%48-52", "%10", "%90", "%25"], correctAnswer: 0, explanation: "Yakıt enerjisinin ~%50'si şaft gücüne, ~%25'i egzoza, ~%15'i soğutma suyuna, kalanı yağ ve ışınım kayıplarına gider." },
+      { id: 2, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "Şaft gücünden sonra en büyük enerji kaybı nereye gider?", options: ["Egzoz gazına (~%23-27)", "Yağlama yağına", "Işınıma", "Tatlı suya"], correctAnswer: 0, explanation: "Egzoz gazı ~%23-27 ile en büyük kayıp kaynağıdır; bu yüzden WHRS/ekonomizer ile geri kazanılır." },
+    ],
+  },
 ];
