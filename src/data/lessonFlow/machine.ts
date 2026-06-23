@@ -5881,4 +5881,256 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Yorumlama", category: MAK, question: "Yağ analizinde yüksek Na (sodyum) neyi gösterir?", options: ["Deniz suyu sızıntısı", "Yatak aşınması", "Yakıt seyreltmesi", "Normal durum"], correctAnswer: 0, explanation: "Yüksek Na deniz suyu sızıntısı; yüksek Fe silindir/piston/dişli aşınması; yüksek Cu yatak aşınması; düşük TBN asit nötralizasyon kapasitesinin tükenmesidir." },
     ],
   },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "MARPOL sözleşmesi tarihçesi",
+    blocks: [{ sectionTitles: ["Tarihsel Gelişim"] }],
+    questions: [
+      { id: 1, sectionRef: "Tarihsel Gelişim", category: MAK, question: "MARPOL kaç ek (Annex) içerir?", options: ["Altı (Annex I-VI)", "İki", "On", "Bir"], correctAnswer: 0, explanation: "MARPOL 73/78 altı ek (Annex I-VI) içerir; her ek farklı kirlilik kaynağını düzenler. Büyük tanker kazaları (Torrey Canyon, Amoco Cadiz) sonrası güçlendirilmiştir." },
+      { id: 2, sectionRef: "Tarihsel Gelişim", category: MAK, question: "MARPOL ne zaman MARPOL 73/78 olarak yürürlüğe girdi?", options: ["1973'te kabul, 1978 protokolüyle birleştirilerek", "1990'da", "2000'de", "1950'de"], correctAnswer: 0, explanation: "1973'te kabul edilip 1978 protokolüyle birleştirilerek MARPOL 73/78 olarak yürürlüğe girmiştir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Ek I – Petrol kirliliği önleme",
+    blocks: [{ sectionTitles: ["Temel Kurallar", "Özel Alanlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Kurallar", category: MAK, question: "15 ppm kuralı neyi ifade eder?", options: ["Sintine suyu yağ içeriği 15 ppm altında olmalı (OWS ile)", "Yakıt kükürdü 15 ppm", "Su sıcaklığı 15°C", "Hız 15 knot"], correctAnswer: 0, explanation: "Sintine suyu yağ içeriği 15 ppm altında olmalıdır (OWS ile); ODMCS, Oil Record Book ve SOPEP de Ek I gerekliliklerindendir." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Aşağıdakilerden hangisi Ek I özel alanıdır?", options: ["Akdeniz, Baltık ve Karadeniz", "Pasifik açıkları", "Atlantik ortası", "Hint Okyanusu açıkları"], correctAnswer: 0, explanation: "Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez, Antarktika ve KB Avrupa suları özel alandır; deşarj kuralları daha sıkıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Ek II – Zararlı sıvı maddeler",
+    blocks: [{ sectionTitles: ["Madde Sınıflandırması"] }],
+    questions: [
+      { id: 1, sectionRef: "Madde Sınıflandırması", category: MAK, question: "Ek II'de X kategorisi maddeler nasıl bertaraf edilir?", options: ["Deşarjı yasak; liman alım tesisine verilir", "Serbestçe denize", "Sınırsız deşarj", "Yakılır"], correctAnswer: 0, explanation: "X kategorisi büyük tehlikedir, deşarjı yasaktır (liman alım tesisi); Y sınırlı/koşullu, Z daha gevşek, OS minimum tehlikedir." },
+      { id: 2, sectionRef: "Madde Sınıflandırması", category: MAK, question: "Hangi kategori en düşük tehlikeyi temsil eder?", options: ["OS (Diğer Maddeler)", "X", "Y", "Z"], correctAnswer: 0, explanation: "OS (Other Substances) minimum tehlikedir, kısıtlama yoktur (genel kurallar); X en yüksek tehlikedir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Ek III – Ambalajlı zararlı maddeler",
+    blocks: [{ sectionTitles: ["Gereklilikler"] }],
+    questions: [
+      { id: 1, sectionRef: "Gereklilikler", category: MAK, question: "Ambalajlı zararlı maddeler hangi koda göre taşınır?", options: ["IMDG Code", "ISO 8217", "MARPOL Ek VI", "SOLAS Reg. V"], correctAnswer: 0, explanation: "Zararlı maddeler IMDG Code'a uygun ambalajlanır, etiketlenir, işaretlenir ve istiflenir; denize düşme riski minimize edilir." },
+      { id: 2, sectionRef: "Gereklilikler", category: MAK, question: "Ek III için hangi doküman gereklidir?", options: ["Manifest veya ayrıntılı istifleme planı", "Oil Record Book", "Garbage Record Book", "Hiçbiri"], correctAnswer: 0, explanation: "Manifest veya ayrıntılı istifleme planı gereklidir; güverte istifi koşulları sağlanmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Ek IV – Pis su (sewage)",
+    blocks: [{ sectionTitles: ["Pis Su Deşarj Kuralları", "STP (Sewage Treatment Plant)"] }],
+    questions: [
+      { id: 1, sectionRef: "Pis Su Deşarj Kuralları", category: MAK, question: "Arıtılmamış (parçalanmış) pis su nereye deşarj edilebilir?", options: ["Kıyıdan 12 nm sonra, 4+ knot hızda", "Her yere", "Kıyıya yakın", "Hiçbir yere asla"], correctAnswer: 0, explanation: "Arıtılmamış parçalanmış pis su kıyıdan 12 nm sonra ve 4+ knot hızda; onaylı STP ile arıtılmışı 3 nm sonra deşarj edilebilir." },
+      { id: 2, sectionRef: "STP (Sewage Treatment Plant)", category: MAK, question: "STP çıkış suyu BOD limiti nedir?", options: ["< 25 mg/L", "< 250 mg/L", "< 5 g/L", "Sınır yok"], correctAnswer: 0, explanation: "STP çıkış suyu: BOD < 25 mg/L, TSS < 35 mg/L, koliform < 100/100 ml; biyolojik (aerobik), MBR veya elektro-kimyasal arıtma kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Ek V – Çöp (garbage)",
+    blocks: [{ sectionTitles: ["Çöp Deşarj Kuralları (2013 Revizyonu)", "Çöp Yönetim Planı"] }],
+    questions: [
+      { id: 1, sectionRef: "Çöp Deşarj Kuralları (2013 Revizyonu)", category: MAK, question: "Plastiğin denize atımı için kural nedir?", options: ["Kesinlikle yasak (her yerde)", "12 nm sonra serbest", "3 nm sonra", "Özel alan dışında serbest"], correctAnswer: 0, explanation: "Plastik her yerde yasaktır; öğütülmüş yemek atığı özel alan dışı 3+ nm, özel alanda 12+ nm seyirde deşarj edilebilir." },
+      { id: 2, sectionRef: "Çöp Yönetim Planı", category: MAK, question: "Garbage Record Book hangi gemilerde zorunludur?", options: ["400+ GT gemilerde", "Tüm gemilerde", "Sadece tankerlerde", "Hiçbirinde"], correctAnswer: 0, explanation: "100+ GT veya 15+ kişi taşıyan gemiler çöp yönetim planı, 400+ GT gemiler ise Garbage Record Book bulundurmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Ek VI – Hava kirliliği ve emisyonlar",
+    blocks: [{ sectionTitles: ["Kükürt Limitleri", "Diğer Emisyon Kuralları"] }],
+    questions: [
+      { id: 1, sectionRef: "Kükürt Limitleri", category: MAK, question: "2020 sonrası global kükürt limiti nedir?", options: ["%0.50 m/m", "%3.5 m/m", "%0.10 m/m", "%1.0 m/m"], correctAnswer: 0, explanation: "Global kükürt limiti 1 Ocak 2020'den itibaren %0.50 m/m; ECA bölgelerinde 2015'ten beri %0.10 m/m'dir." },
+      { id: 2, sectionRef: "Diğer Emisyon Kuralları", category: MAK, question: "NOx Tier III ne zaman ve nerede yürürlüktedir?", options: ["2016+ NOx ECA bölgelerinde", "2000 global", "Hiç yürürlükte değil", "Sadece limanda"], correctAnswer: 0, explanation: "NOx: Tier I (2000-2010), Tier II (2011+), Tier III (NOx ECA'da 2016+); ayrıca ODS yasağı, incinerator standardı ve VOC kontrolü vardır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Yağ-su ayırıcı (OWS) 15 ppm standardı",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "OWS iki aşamalı ayırmada nasıl çalışır?", options: ["Birinci aşama kaba (yerçekimi/koaleser), ikinci aşama ince (membran/absorbsiyon)", "Tek aşamada", "Sadece ısıtmayla", "Sadece filtreyle"], correctAnswer: 0, explanation: "İlk aşamada kaba ayırma (yerçekimi/koaleser), ikinci aşamada ince ayırma (membran/absorbsiyon) yapılır; çıkış ODMCS ile izlenir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "OWS çıkışında 15 ppm aşılırsa ne olur?", options: ["Otomatik resirkülasyon devreye girer, denize deşarj kesilir", "Deşarj devam eder", "Alarm verir ama deşarj sürer", "Motor durur"], correctAnswer: 0, explanation: "15 ppm aşılınca otomatik gemi içi resirkülasyon devreye girer ve denize deşarj kesilir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Yağ deşarj izleme sistemi (ODMCS)",
+    blocks: [{ sectionTitles: ["İşlev ve MARPOL Bağlantısı"] }],
+    questions: [
+      { id: 1, sectionRef: "İşlev ve MARPOL Bağlantısı", category: MAK, question: "ODMCS sınır aşıldığında ne yapar?", options: ["Deşarj valfini otomatik kapatır ve kayıt tutar", "Sadece alarm verir", "Hiçbir şey", "Motoru durdurur"], correctAnswer: 0, explanation: "ODMCS anlık yağ oranı ve toplam deşarjı izler; MARPOL Ek I (Kural 31) sınırları aşılırsa deşarj valfini otomatik kapatır ve kayıt tutar." },
+      { id: 2, sectionRef: "İşlev ve MARPOL Bağlantısı", category: MAK, question: "ODMCS ile OWS (15 ppm) arasındaki fark nedir?", options: ["ODMCS yük tankı deşarjına özgü, OWS sintine içindir", "İkisi de aynı", "ODMCS sintine içindir", "OWS yük tankı içindir"], correctAnswer: 0, explanation: "ODMCS yük tankı deşarjına özgü bir sistemdir; sintine için kullanılan 15 ppm yağlı su ayırıcıdan (OWS) farklıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Yağ kayıt defteri (Oil Record Book)",
+    blocks: [{ sectionTitles: ["Kayıt Gereklilikleri", "Kayıt Formatı"] }],
+    questions: [
+      { id: 1, sectionRef: "Kayıt Gereklilikleri", category: MAK, question: "Oil Record Book Part I neyi kapsar?", options: ["Makine dairesi operasyonları (400+ GT gemiler)", "Kargo operasyonları", "Çöp kaydı", "Balast suyu"], correctAnswer: 0, explanation: "Part I makine dairesi operasyonları (400+ GT), Part II kargo/balast operasyonları (150+ GT tankerler) içindir; sintine tahliyesi, sludge bertarafı vb. kaydedilir." },
+      { id: 2, sectionRef: "Kayıt Formatı", category: MAK, question: "ORB kayıtları gemide ne kadar süre tutulmalıdır?", options: ["Son 3 yıl", "Son 1 ay", "Süresiz değil, 6 ay", "Tutulmaz"], correctAnswer: 0, explanation: "Her kayıt tarih, operasyon kodu, miktar ve imza içerir; ORB PSC'de en sık kontrol edilen belgelerdendir ve son 3 yıllık kayıtlar gemide tutulur." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Slop tank yönetimi",
+    blocks: [{ sectionTitles: ["Operasyon", "Bertaraf"] }],
+    questions: [
+      { id: 1, sectionRef: "Operasyon", category: MAK, question: "Slop tankta settling sonrası ne yapılır?", options: ["Alttaki su OWS'den geçirilip tahliye, üstteki yağ sludge tanka aktarılır", "Tümü denize basılır", "Hiçbir şey", "Yakılır"], correctAnswer: 0, explanation: "OWS'den geçen sintine kalıntısı slop tanka gider; settling sonrası alt su OWS'den geçirilip tahliye edilir, üst yağ sludge tanka aktarılır." },
+      { id: 2, sectionRef: "Bertaraf", category: MAK, question: "Slop tank içeriği nasıl bertaraf edilir?", options: ["Liman alım tesisine teslim edilir, makbuz alınıp ORB'ye kaydedilir", "Denize basılır", "Yakıta karıştırılır", "Atılır"], correctAnswer: 0, explanation: "Slop tank içeriği liman alım tesisine teslim edilir; alım makbuzu alınır ve Oil Record Book'a kaydedilir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Özel deniz alanları ve deşarj kuralları",
+    blocks: [{ sectionTitles: ["Özel Alanlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Özel Alanlar", category: MAK, question: "Annex IV (pis su) özel alanı hangisidir?", options: ["Baltık Denizi", "Akdeniz", "Pasifik", "Hint Okyanusu"], correctAnswer: 0, explanation: "Annex IV özel alanı Baltık Denizi'dir; Annex I yağ için Akdeniz/Baltık/Karadeniz vb., Annex VI SOx ECA için Baltık/Kuzey Denizi/K. Amerika geçerlidir." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Özel alanlarda deşarj kuralları nasıldır?", options: ["Normal alanlardan daha sıkıdır", "Daha gevşektir", "Aynıdır", "Kural yoktur"], correctAnswer: 0, explanation: "Özel deniz alanlarında deşarj kuralları normal alanlara göre daha sıkıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Egzoz gazı yıkama (scrubber) sistemi",
+    blocks: [{ sectionTitles: ["Scrubber Tipleri", "Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Scrubber Tipleri", category: MAK, question: "Açık döngü scrubber'ın dezavantajı nedir?", options: ["Yıkama suyu denize deşarj edilir; bazı limanlarda yasaktır", "Her yerde kullanılabilir", "NaOH gerektirir", "Çok pahalıdır"], correctAnswer: 0, explanation: "Açık döngü deniz suyuyla yıkar ve denize deşarj eder (bazı limanlarda yasak); kapalı döngü NaOH ile her yerde kullanılabilir, hibrit esnektir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Scrubber yıkama suyu çıkış pH'ı ne olmalıdır?", options: ["> 6.5", "< 2", "= 0", "Önemsiz"], correctAnswer: 0, explanation: "Egzoz alkali çözeltiyle temas eder (SO₂ + H₂O + NaOH → Na₂SO₃); yıkama suyu çıkış pH'ı > 6.5 olmalı, PAH ve bulanıklık da izlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "NOx Tier I, II, III standartları",
+    blocks: [{ sectionTitles: ["Tier Seviyeleri", "Tier III Uyum"] }],
+    questions: [
+      { id: 1, sectionRef: "Tier Seviyeleri", category: MAK, question: "Düşük devirli (n < 130 rpm) motor için Tier III NOx limiti nedir?", options: ["3.4 g/kWh", "17.0 g/kWh", "14.4 g/kWh", "9.8 g/kWh"], correctAnswer: 0, explanation: "n < 130 rpm için Tier I 17.0, Tier II 14.4, Tier III 3.4 g/kWh'dir; Tier III en sıkı sınırdır (ECA'da 2016+)." },
+      { id: 2, sectionRef: "Tier III Uyum", category: MAK, question: "Tier III uyumu için hangi teknolojiler kullanılır?", options: ["EGR veya SCR", "Sadece scrubber", "Sadece düşük kükürtlü yakıt", "Hiçbiri"], correctAnswer: 0, explanation: "Tier III uyumu EGR (egzoz gazı resirkülasyonu) veya SCR (üre enjeksiyonlu katalitik indirgeme) ile sağlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "SCR (seçici katalitik indirgeme)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Sistem Bileşenleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "SCR'de NOx dönüşüm verimi yaklaşık nedir?", options: ["%90-95", "%10-20", "%50", "%100'ün üzerinde"], correctAnswer: 0, explanation: "Üre çözeltisi 300-400°C'de amonyağa dönüşür; katalizörde 4NO + 4NH₃ + O₂ → 4N₂ + 6H₂O ile NOx %90-95 verimle giderilir." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "SCR sisteminde hangi bileşen bulunur?", options: ["Üre depolama tankı, dozaj pompası ve SCR reaktör (katalizör)", "Scrubber kulesi", "Buhar türbini", "Pervane"], correctAnswer: 0, explanation: "SCR; üre depolama tankı, dozaj pompası, enjeksiyon nozülü, karıştırma ünitesi, SCR reaktör (katalizör) ve kontrol sisteminden oluşur." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "EGR (egzoz gazı resirkülasyonu)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "SCR ile Karşılaştırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "EGR NOx'i nasıl azaltır?", options: ["Egzoz gazını emmeye geri vererek yanma sıcaklığını düşürür", "Yakıtı ısıtarak", "Hızı artırarak", "Su ekleyerek yalnız"], correctAnswer: 0, explanation: "Egzozun %20-40'ı soğutulup emme manifolduna geri gönderilir; CO₂/su buharının yüksek ısı kapasitesi yanma sıcaklığını düşürür ve NOx (Zeldovich) azalır." },
+      { id: 2, sectionRef: "SCR ile Karşılaştırma", category: MAK, question: "EGR ile SCR'nin NOx azaltma kapasitesi nasıldır?", options: ["EGR %50-80, SCR %90-95", "EGR %95, SCR %50", "İkisi de %100", "İkisi de %10"], correctAnswer: 0, explanation: "EGR %50-80 (ek kimyasal yok, motor üzerinde), SCR %90-95 (üre gerektirir, egzoz hattında) NOx azaltır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "CII (Karbon Yoğunluğu Göstergesi)",
+    blocks: [{ sectionTitles: ["CII Hesabı", "Derecelendirme"] }],
+    questions: [
+      { id: 1, sectionRef: "CII Hesabı", category: MAK, question: "CII nasıl hesaplanır?", options: ["Yıllık CO₂ emisyonu / (DWT × kat edilen mesafe)", "CO₂ × hız", "Yakıt / güç", "DWT × mesafe"], correctAnswer: 0, explanation: "CII = Yıllık CO₂ emisyonu / (DWT × kat edilen mesafe) [gCO₂/ton·nm]; geminin taşıma işi başına karbon yoğunluğunu ölçer." },
+      { id: 2, sectionRef: "Derecelendirme", category: MAK, question: "CII'de D derecesi alan gemi ne yapmalıdır?", options: ["Düzeltici aksiyon planı (3 yıl içinde C'ye getirmeli)", "Hiçbir şey", "Teşvik alır", "Hemen sökülür"], correctAnswer: 0, explanation: "A/B teşvik, C referans (izleme), D düzeltici aksiyon planı (3 yılda C'ye), E acil düzeltici aksiyon planı gerektirir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Balast su sözleşmesi (BWM Convention)",
+    blocks: [{ sectionTitles: ["D-1 ve D-2 Standartları"] }],
+    questions: [
+      { id: 1, sectionRef: "D-1 ve D-2 Standartları", category: MAK, question: "D-1 (değişim) standardı ne gerektirir?", options: ["Açık denizde (200 nm, 200 m+) en az %95 hacimsel balast değişimi", "Arıtma sistemi", "Hiçbir işlem", "Liman teslimi"], correctAnswer: 0, explanation: "D-1 açık denizde (kıyıdan 200 nm, derinlik > 200 m) en az %95 hacimsel değişim; D-2 ise BWTS ile organizma limitlerini sağlar. Tüm gemiler kademeli D-2'ye geçmektedir." },
+      { id: 2, sectionRef: "D-1 ve D-2 Standartları", category: MAK, question: "Hangi standart kalıcı çözümdür?", options: ["D-2 (performans/arıtma standardı)", "D-1 (değişim)", "İkisi de geçici", "Hiçbiri"], correctAnswer: 0, explanation: "D-2 (BWTS ile performans) kalıcı çözümdür; D-1 (değişim) geçicidir ve gemiler kademeli olarak D-2'ye geçer." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "D-1 ve D-2 standartları",
+    blocks: [{ sectionTitles: ["D-1 Standardı (Değişim)", "D-2 Standardı (Performans)"] }],
+    questions: [
+      { id: 1, sectionRef: "D-1 Standardı (Değişim)", category: MAK, question: "D-1 standardında hangi değişim yöntemleri kullanılır?", options: ["Sıralı, akıtmalı (flow-through) veya dilüsyon", "Sadece ısıtma", "Sadece filtre", "Hiçbiri"], correctAnswer: 0, explanation: "D-1, açık denizde (200 nm+, 200 m+) en az %95 değişimdir; sıralı, akıtmalı veya dilüsyon yöntemleri kullanılır ve geçici çözümdür." },
+      { id: 2, sectionRef: "D-2 Standardı (Performans)", category: MAK, question: "D-2 standardında ≥50 μm canlı organizma limiti nedir?", options: ["< 10 / m³", "< 1000 / m³", "Sınır yok", "< 10 / mL"], correctAnswer: 0, explanation: "D-2: ≥50 μm organizma < 10/m³, 10-50 μm < 10/mL, E. coli < 250 cfu/100 mL gibi limitler vardır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Balast su arıtma sistemleri (BWTS)",
+    blocks: [{ sectionTitles: ["Arıtma Yöntemleri ve D-2 Standardı"] }],
+    questions: [
+      { id: 1, sectionRef: "Arıtma Yöntemleri ve D-2 Standardı", category: MAK, question: "BWTS genellikle kaç aşamalıdır?", options: ["İki aşamalı: filtrasyon + dezenfeksiyon", "Tek aşama", "Beş aşama", "Aşamasız"], correctAnswer: 0, explanation: "BWTS genellikle iki aşamalıdır: filtrasyon (büyük organizma/tortu ayırma) + dezenfeksiyon (UV veya elektroklorinasyon/kimyasal)." },
+      { id: 2, sectionRef: "Arıtma Yöntemleri ve D-2 Standardı", category: MAK, question: "BWTS dezenfeksiyonu hangi yöntemlerle yapılır?", options: ["UV ışını veya elektroklorinasyon/kimyasal", "Sadece ısıtma", "Sadece settling", "Filtrasyon yeterli"], correctAnswer: 0, explanation: "Dezenfeksiyon UV ışınıyla veya elektroklorinasyon/kimyasalla yapılır; gemide BWM Planı ve kayıt defteri bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "UV, elektroliz ve filtrasyon yöntemleri",
+    blocks: [{ sectionTitles: ["Arıtma Teknolojileri"] }],
+    questions: [
+      { id: 1, sectionRef: "Arıtma Teknolojileri", category: MAK, question: "UV (orta basınç) arıtmanın avantajı ve dezavantajı nedir?", options: ["Kimyasal bırakmaz; ancak bulanık suda etkinlik düşer", "TRO nötralizasyonu gerekir", "Çok pahalı", "Tek başına yeterli"], correctAnswer: 0, explanation: "UV DNA hasarıyla arıtır, kimyasal bırakmaz ama bulanık suda etkinlik düşer; elektro-klorinasyon yüksek etkin ama TRO nötralizasyonu gerektirir." },
+      { id: 2, sectionRef: "Arıtma Teknolojileri", category: MAK, question: "Filtrasyon (25-50 μm) tek başına neden yetersizdir?", options: ["Sadece büyük organizma/tortu ayırır; dezenfeksiyon gerekir", "Çok pahalıdır", "Kimyasal bırakır", "Hiç ayırmaz"], correctAnswer: 0, explanation: "Filtrasyon basit/güvenilirdir ama tek başına yetersizdir; küçük organizmalar için UV/elektro-klorinasyon/ozon ile dezenfeksiyon gerekir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Balast su değişim bölgeleri",
+    blocks: [{ sectionTitles: ["Değişim Koşulları", "Güvenlik"] }],
+    questions: [
+      { id: 1, sectionRef: "Değişim Koşulları", category: MAK, question: "Balast su değişimi için ana koşul nedir?", options: ["Kıyıdan en az 200 nm uzakta ve 200 m+ derinlikte", "Limanda", "Kıyıya 1 nm yakın", "Herhangi bir yerde"], correctAnswer: 0, explanation: "Değişim kıyıdan 200 nm uzakta ve 200 m+ derinlikte yapılır; mümkün değilse en az 50 nm uzakta ve 200 m+ derinlikte yapılabilir." },
+      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Balast değişiminde stabilite nasıl korunur?", options: ["Sıralı yöntemde tanklar teker teker, her aşamada stabilite kontrol edilerek", "Tüm tanklar aynı anda boşaltılarak", "Kontrol yapılmadan", "Hızlıca"], correctAnswer: 0, explanation: "Değişim stabilite ve yapısal bütünlüğü riske atmamalı; sıralı yöntemde tanklar teker teker boşaltılıp doldurulur, her aşamada stabilite kontrol edilir. Kötü havada kaptan erteleyebilir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Balast su kayıt defteri",
+    blocks: [{ sectionTitles: ["Kayıt Gereklilikleri", "Denetim"] }],
+    questions: [
+      { id: 1, sectionRef: "Kayıt Gereklilikleri", category: MAK, question: "Balast su kayıt defterine ne kaydedilir?", options: ["Her balast alımı, deşarjı, değişimi ve arıtma operasyonu", "Sadece yakıt", "Sadece çöp", "Hiçbir şey"], correctAnswer: 0, explanation: "Her balast operasyonu (tarih, saat, konum, tank no, miktar, arıtma yöntemi) kaydedilir; kaptan/yetkili zabit imzalar." },
+      { id: 2, sectionRef: "Denetim", category: MAK, question: "Balast su kayıt defteri gemide ne kadar tutulur?", options: ["Son 2 yıl", "Son 10 yıl", "1 ay", "Tutulmaz"], correctAnswer: 0, explanation: "PSC denetiminde BWM Plan ve Record Book birlikte incelenir; kayıt defteri son 2 yılı gemide tutulur." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Çöp yönetim planı (Garbage Management Plan)",
+    blocks: [{ sectionTitles: ["Çöp Sınıflandırması", "Özel Alanlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Çöp Sınıflandırması", category: MAK, question: "Öğütülmemiş yiyecek atığı için denize atım kuralı nedir?", options: ["Kıyıdan > 12 mil (öğütülmüş > 3 mil)", "Serbest", "Yasak", "1 mil sonra"], correctAnswer: 0, explanation: "Yiyecek atığı kıyıdan > 12 mil (öğütülmüş > 3 mil) atılabilir; plastik kesinlikle yasaktır, kâğıt/cam/metal > 12 mil." },
+      { id: 2, sectionRef: "Özel Alanlar", category: MAK, question: "Akdeniz/Baltık gibi özel alanlarda çöp kuralı nedir?", options: ["Yiyecek atığı dahil çoğu çöpün denize atımı yasak; liman tesisine verilir", "Serbestçe atılır", "Sadece plastik yasak", "Kural yok"], correctAnswer: 0, explanation: "Özel alanlarda (Akdeniz, Baltık, Karadeniz) yiyecek atığı dahil çoğu çöpün denize atımı yasaktır; tüm atıklar liman alım tesislerine verilir." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Çöp sınıflandırma ve kayıt",
+    blocks: [{ sectionTitles: ["Sınıflandırma ve Kayıt", "Bertaraf Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Sınıflandırma ve Kayıt", category: MAK, question: "Garbage Record Book'a ne kaydedilir?", options: ["Atık türü, miktar, bertaraf yöntemi, tarih, konum, imza", "Sadece yakıt tüketimi", "Sadece hız", "Hiçbir şey"], correctAnswer: 0, explanation: "Her atık türü için ayrı kap ve renk kodlama uygulanır; GRB'ye atık türü, miktar, bertaraf yöntemi, tarih, konum ve imza kaydedilir." },
+      { id: 2, sectionRef: "Bertaraf Yöntemleri", category: MAK, question: "İncinerator'da hangi atıklar yakılabilir?", options: ["Kağıt, ahşap, yağlı paçavra ve sludge", "Plastik (her tür)", "Asbest", "Cam"], correctAnswer: 0, explanation: "İncinerator kağıt, ahşap, yağlı paçavra ve sludge yakar; liman teslimi tüm atıklar için, kompaktör hacim azaltma için kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Incinerator operasyonu",
+    blocks: [{ sectionTitles: ["Operasyon Kuralları"] }],
+    questions: [
+      { id: 1, sectionRef: "Operasyon Kuralları", category: MAK, question: "İncinerator yanma odası minimum sıcaklığı nedir?", options: ["850°C", "200°C", "100°C", "1500°C"], correctAnswer: 0, explanation: "İncinerator IMO MEPC.244(66) standardına uygun olmalı ve yanma odası sıcaklığı minimum 850°C tutulmalıdır." },
+      { id: 2, sectionRef: "Operasyon Kuralları", category: MAK, question: "İncinerator'da aşağıdakilerden hangisi yakılamaz?", options: ["PVC ve asbest içeren malzeme", "Kağıt ve karton", "Yağlı paçavra", "Sludge"], correctAnswer: 0, explanation: "PVC/poliklorlu malzeme, asbest ve rafine ürün kargo kalıntısı yakılamaz; kağıt, ahşap, yağlı paçavra ve sludge yakılabilir. Limanda kullanım yerel kurallara bağlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Pis su arıtma tesisi (STP)",
+    blocks: [{ sectionTitles: ["Arıtma Yöntemleri", "Çıkış Suyu Standartları"] }],
+    questions: [
+      { id: 1, sectionRef: "Arıtma Yöntemleri", category: MAK, question: "MBR (Membran Biyoreaktör) yönteminin özelliği nedir?", options: ["Biyolojik arıtma + membran filtre (çok iyi çıkış kalitesi)", "Sadece settling", "Kimyasal yok", "En kötü kalite"], correctAnswer: 0, explanation: "STP yöntemleri: biyolojik (aerobik), MBR (biyolojik+membran, çok iyi), elektro-kimyasal ve gelişmiş arıtma (yolcu gemisi, en iyi)." },
+      { id: 2, sectionRef: "Çıkış Suyu Standartları", category: MAK, question: "STP çıkış suyu için IMO BOD₅ standardı nedir?", options: ["< 25 mg/L", "< 250 mg/L", "< 5 mg/L", "Sınır yok"], correctAnswer: 0, explanation: "IMO standartları: BOD₅ < 25 mg/L, TSS < 35 mg/L, koliform < 100 cfu/100 mL, pH 6-8.5." },
+    ],
+  },
+  {
+    topicKey: "machine-environment-machine",
+    topicTitle: "Liman atık alım tesisi kullanımı",
+    blocks: [{ sectionTitles: ["Teslim Edilecek Atıklar", "Prosedür"] }],
+    questions: [
+      { id: 1, sectionRef: "Teslim Edilecek Atıklar", category: MAK, question: "Sludge ve atık yağ hangi ek kapsamında zorunlu teslim edilir?", options: ["Annex I", "Annex V", "Annex IV", "Hiçbiri"], correctAnswer: 0, explanation: "Sludge/atık yağ (Annex I), kimyasal kalıntı (Annex II), plastik dahil çöp (Annex V), scrubber kalıntısı ve ODS (Annex VI) zorunlu teslim edilir." },
+      { id: 2, sectionRef: "Prosedür", category: MAK, question: "Atık teslim öncesi ne yapılır?", options: ["Limana önceden bildirim (advance notification) yapılır", "Hiçbir şey", "Sadece denize basılır", "Atık yakılır"], correctAnswer: 0, explanation: "Teslim öncesi limana bildirim yapılır, atık alım makbuzu alınıp ilgili kayıt defterine işlenir; AB limanlarında PRF Direktifi gereği teslim zorunludur." },
+    ],
+  },
 ];
