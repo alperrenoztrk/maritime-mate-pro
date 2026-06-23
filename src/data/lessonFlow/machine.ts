@@ -5017,4 +5017,184 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Düşük basınç durumunda hangi havaya öncelik verilir?", options: ["Kontrol havasına (servis bağlantısı kapatılır)", "Servis havasına", "İkisi de kesilir", "Önceliklendirme yok"], correctAnswer: 0, explanation: "Sistemde kontrol havasına öncelik verilir; düşük basınçta servis havası bağlantısı (alarm/otomatik valf ile) kapatılarak kontrol havası korunur." },
     ],
   },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Yük paylaşımı ve frekans regülasyonu",
+    blocks: [{ sectionTitles: ["Aktif Güç Paylaşımı", "Reaktif Güç Paylaşımı"] }],
+    questions: [
+      { id: 1, sectionRef: "Aktif Güç Paylaşımı", category: MAK, question: "Paralel jeneratörlerde aktif güç (kW) paylaşımı neyle yapılır?", options: ["Frekans (hız/governor droop) kontrolü ile", "Gerilim ile", "Yakıt rengiyle", "Soğutma ile"], correctAnswer: 0, explanation: "Aktif güç paylaşımı governor droop (frekans) ile yapılır; droop ayarı eşit jeneratörler eşit yük paylaşır." },
+      { id: 2, sectionRef: "Reaktif Güç Paylaşımı", category: MAK, question: "Reaktif güç (kVAr) paylaşımı neyle kontrol edilir?", options: ["Gerilim (AVR droop) kontrolü ile", "Frekans ile", "Devir ile", "Egzoz sıcaklığıyla"], correctAnswer: 0, explanation: "Reaktif güç paylaşımı AVR droop (gerilim) ile yapılır; dengesiz paylaşım jeneratör aşırı ısınmasına yol açar." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Acil jeneratör ve SOLAS gereklilikleri",
+    blocks: [{ sectionTitles: ["SOLAS Reg. II-1/42-44 Gereklilikleri", "Beslenmesi Gereken Kritik Yükler"] }],
+    questions: [
+      { id: 1, sectionRef: "SOLAS Reg. II-1/42-44 Gereklilikleri", category: MAK, question: "Acil jeneratör nereye konumlandırılmalıdır?", options: ["Makine dairesi dışında, ana yangın sınırının üzerinde", "Makine dairesinin merkezinde", "Yakıt tankı içinde", "Köprüüstünde"], correctAnswer: 0, explanation: "Acil jeneratör makine dairesi dışında, ana yangın sınırının üzerinde olmalı ve güç kaybından 45 saniye içinde devreye girmelidir; yakıt en az 18 saat (yolcuda 36)." },
+      { id: 2, sectionRef: "Beslenmesi Gereken Kritik Yükler", category: MAK, question: "Aşağıdakilerden hangisi acil jeneratörden beslenmesi gereken kritik yüktür?", options: ["Dümen makinesi (bir set), GMDSS ve seyir fenerleri", "Yüzme havuzu pompası", "Kamara TV'leri", "Mutfak fırını"], correctAnswer: 0, explanation: "Kritik yükler: seyir fenerleri, acil yangın pompası, dümen (bir set), GMDSS, genel alarm/PA, acil aydınlatma, su geçirmez kapılar ve yangın algılama." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Kompozit kazan tasarımı",
+    blocks: [{ sectionTitles: ["Yapı ve Çalışma", "Kapasite Bilgisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Yapı ve Çalışma", category: MAK, question: "Kompozit kazan hangi iki bölümden oluşur?", options: ["Ateş borulu (oil-fired) ve ekonomizer (exhaust gas) bölümleri", "Sadece elektrikli ısıtıcı", "İki ayrı tank", "Pervane ve şaft"], correctAnswer: 0, explanation: "Kompozit kazan oil-fired ve ekonomizer bölümlerinden oluşur; ortak buhar/su alanına sahiptir." },
+      { id: 2, sectionRef: "Kapasite Bilgisi", category: MAK, question: "Tam yük seyirde buhar kaynağı nedir?", options: ["Sadece ekonomizer (yakıt yanma bölümü devre dışı)", "Sadece yakıt yanması", "Elektrik", "Hiçbiri"], correctAnswer: 0, explanation: "Tam yük seyirde sadece ekonomizer buhar üretir (yakıt bölümü kapanır); limanda sadece yakıt yanma bölümü devreye girer." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Egzoz gazı ekonomizeri",
+    blocks: [{ sectionTitles: ["Temel Prensip ve Termodinamik Arka Plan", "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Prensip ve Termodinamik Arka Plan", category: MAK, question: "Egzoz gazı ekonomizerinin amacı nedir?", options: ["Bacadan atılan ısının bir kısmını geri kazanıp yardımcı kazan yakıtını azaltmak", "Egzoz basıncını artırmak", "Pervaneyi soğutmak", "Yakıt deposunu doldurmak"], correctAnswer: 0, explanation: "Ekonomizer (atık ısı kazanı) egzoz entalpisinin bir kısmını geri kazanır: Q = ṁ_gaz·c_p·(T_giriş − T_çıkış); yardımcı kazanın yaktığı yakıtı azaltır." },
+      { id: 2, sectionRef: "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı", category: MAK, question: "Ekonomizer çıkış egzoz sıcaklığı asit çiğ noktasının altına düşerse ne olur?", options: ["Özellikle yüksek sülfürlü yakıtta düşük sıcaklık korozyonu hızlanır", "Verim artar", "Hiçbir şey", "Buhar üretimi durur ama korozyon olmaz"], correctAnswer: 0, explanation: "Çıkış sıcaklığı asit çiğ noktası altına düşerse düşük sıcaklık (asit) korozyonu hızlanır; bu yüzden minimum güvenli sıcaklık limiti korunur. Gaz tarafı ΔP artışı soot fire için erken uyarıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Kazan su kimyası ve işlem",
+    blocks: [{ sectionTitles: ["Kontrol Parametreleri", "Kimyasal İşlem"] }],
+    questions: [
+      { id: 1, sectionRef: "Kontrol Parametreleri", category: MAK, question: "Kazan suyu pH değeri hangi aralıkta tutulur?", options: ["10.5-11.5", "6.5-7.0", "2-3", "13-14"], correctAnswer: 0, explanation: "Kazan suyu pH 10.5-11.5'te tutulur; düşükse korozyon, yüksekse köpürme olur. Çözünmüş oksijen < 0.02 ppm olmalıdır." },
+      { id: 2, sectionRef: "Kimyasal İşlem", category: MAK, question: "Kazan suyunda oksijen giderme nasıl yapılır?", options: ["Sodyum sülfit (Na₂SO₃) veya hidrazin ile (termal de-aerator ile birlikte)", "Klor ekleyerek", "Su ısıtarak yalnız", "Yağ ekleyerek"], correctAnswer: 0, explanation: "Oksijen, sodyum sülfit veya hidrazin ile giderilir (de-aerator ile); sülfit oksijenle reaksiyona girip sülfata döner. Blowdown çözünmüş katıları kontrol eder." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Kazan emniyet düzenleri",
+    blocks: [{ sectionTitles: ["Emniyet Bileşenleri", "Düşük Su Seviyesi Koruması"] }],
+    questions: [
+      { id: 1, sectionRef: "Emniyet Bileşenleri", category: MAK, question: "Kazan emniyet supabı hangi basınçta ayarlanır?", options: ["Çalışma basıncının 1.03-1.1 katı", "Çalışma basıncının yarısı", "10 katı", "Ayar yapılmaz"], correctAnswer: 0, explanation: "Emniyet supabı çalışma basıncının 1.03-1.1 katında açar; ayrıca düşük su alarmı, alev gözetleyici ve basınç şalteri bulunur." },
+      { id: 2, sectionRef: "Düşük Su Seviyesi Koruması", category: MAK, question: "Düşük su seviyesi korumasının ikinci kademesi ne yapar?", options: ["Yakıcıyı (burner) otomatik kapatır", "Sadece alarm verir", "Su ekler", "Basıncı artırır"], correctAnswer: 0, explanation: "İlk kademe alarm verir, ikinci kademe yakıcıyı otomatik kapatır; düşük su seviyesinde çalışma tüp patlamasına yol açabilir (en ciddi kazan kazası)." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Kazan bakım ve muayene",
+    blocks: [{ sectionTitles: ["Periyodik Bakım İşleri", "İç Muayene"] }],
+    questions: [
+      { id: 1, sectionRef: "Periyodik Bakım İşleri", category: MAK, question: "Kazan emniyet supabı testi hangi periyotla yapılır?", options: ["6 ayda bir", "Günlük", "10 yılda bir", "Hiç"], correctAnswer: 0, explanation: "Emniyet supap testi 6 ayda bir, su testi/gauge glass blowdown günlük, iç muayene 2.5 yıl, hidrostatik test 5 yılda bir (klas) yapılır." },
+      { id: 2, sectionRef: "İç Muayene", category: MAK, question: "İç muayenede tüp duvar kalınlığı nasıl kontrol edilir?", options: ["Ultrasonik ölçümle", "Gözle tahmin", "Tartarak", "Termometreyle"], correctAnswer: 0, explanation: "Kazan soğutulup boşaltılır ve havalandırılır; iç yüzey korozyon/pitting/çatlak açısından incelenir, tüp duvar kalınlığı ultrasonik ölçülür." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Ters ozmoz (RO) sistemi",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Sistem Bileşenleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "RO sisteminde deniz suyu hangi basınçla membrana basılır?", options: ["55-70 bar", "2-3 bar", "150 bar", "10 bar"], correctAnswer: 0, explanation: "Deniz suyu 55-70 bar ile yarı geçirgen membrana basılır; su geçer, tuz geride kalır. Geri kazanım oranı %35-45'tir." },
+      { id: 2, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Enerji geri kazanım cihazı RO'da ne yapar?", options: ["Konsantrat (reject) basıncından enerji geri kazanır", "Tuz ekler", "Membranı ısıtır", "Su üretir"], correctAnswer: 0, explanation: "Enerji geri kazanım cihazı yüksek basınçlı konsantrattan enerji geri kazanır; ön filtre, yüksek basınç pompası ve membran modülleri (%98-99.5 tuz ayrımı) sistemi tamamlar." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Su kalitesi standartları",
+    blocks: [{ sectionTitles: ["Kalite Parametreleri", "Dezenfeksiyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Kalite Parametreleri", category: MAK, question: "İçme suyu için TDS (tuzluluk) limiti nedir?", options: ["< 500 ppm", "< 5 ppm", "< 5000 ppm", "Sınır yok"], correctAnswer: 0, explanation: "İçme suyu TDS < 500 ppm, klorür < 250 ppm, pH 6.5-8.5; kazan suyunda ise TDS < 5 ppm, pH 10.5-11.5 olmalıdır." },
+      { id: 2, sectionRef: "Dezenfeksiyon", category: MAK, question: "İçme suyunda bakteri kontrolü nasıl sağlanır?", options: ["UV sterilizasyon, klorlama veya gümüş iyonizasyonu ile", "Sadece soğutma", "Hiç dezenfeksiyon yapılmaz", "Tuz ekleyerek"], correctAnswer: 0, explanation: "UV, klorlama veya gümüş iyonizasyonu ile bakteri kontrol edilir; salinometre tuzluluğu sürekli izler." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Mineral dozajı ve dezenfeksiyon",
+    blocks: [{ sectionTitles: ["Mineralleştirme", "Dezenfeksiyon Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Mineralleştirme", category: MAK, question: "Mineralsiz su (pH < 6) neden içme suyu olarak uygun değildir?", options: ["Boru korozyonuna neden olur", "Çok tatlıdır", "Donar", "Renklidir"], correctAnswer: 0, explanation: "Kalsit filtre/kimyasal dozajla kalsiyum, magnezyum ve bikarbonat eklenir, pH 6.5-8.5'e getirilir; mineralsiz su (pH<6) boru korozyonu yapar." },
+      { id: 2, sectionRef: "Dezenfeksiyon Yöntemleri", category: MAK, question: "UV sterilizasyonun bir dezavantajı nedir?", options: ["Rezidüel (kalıcı) koruma sağlamaz", "Kimyasal bırakır", "Çok ucuzdur", "Bakteri öldürmez"], correctAnswer: 0, explanation: "UV kimyasal bırakmaz ama rezidüel koruma yoktur; klorlama ucuz ama tat/koku sorunlu, gümüş iyonizasyonu uzun süreli ama yavaş etkilidir." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Üretim kapasitesi ve verim",
+    blocks: [{ sectionTitles: ["Kapasite Hesabı"] }],
+    questions: [
+      { id: 1, sectionRef: "Kapasite Hesabı", category: MAK, question: "Mürettebat su tüketimi kişi başına yaklaşık ne kadardır?", options: ["150-200 litre/kişi/gün", "10 litre/kişi/gün", "1000 litre/kişi/gün", "5 litre/kişi/gün"], correctAnswer: 0, explanation: "Mürettebat tüketimi 150-200 litre/kişi/gün; ayrıca kazan besleme 2-5 ton/gün, teknik kullanım 1-3 ton/gün hesaplanır." },
+      { id: 2, sectionRef: "Kapasite Hesabı", category: MAK, question: "Su üretim kapasitesi planlanırken hangi kalemler toplanır?", options: ["Mürettebat tüketimi + kazan besleme + teknik kullanım", "Sadece kazan besleme", "Sadece içme suyu", "Sadece yıkama"], correctAnswer: 0, explanation: "Toplam ihtiyaç mürettebat (150-200 L/kişi), kazan besleme (2-5 t/gün) ve teknik kullanım (1-3 t/gün) toplamından bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Purifier ve clarifier farkı",
+    blocks: [{ sectionTitles: ["Karşılaştırma", "Arıtma Düzeni"] }],
+    questions: [
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Purifier ile clarifier arasındaki temel fark nedir?", options: ["Purifier su ayırır (gravity disc'li); clarifier yalnız temiz yağ çıkarır (su ayırmaz)", "İkisi de aynıdır", "Clarifier su ayırır", "Purifier katı ayırmaz"], correctAnswer: 0, explanation: "Purifier birinci aşamada su+katı ayırır (gravity disc'li); clarifier ikinci aşamada gravity disc'siz çalışıp yalnızca temiz yağ verir, katıyı çok iyi ayırır." },
+      { id: 2, sectionRef: "Arıtma Düzeni", category: MAK, question: "Tipik yakıt arıtma düzeni sırası nedir?", options: ["Settling tank → Purifier → Clarifier → Servis tank", "Servis → Purifier → Settling", "Clarifier → Settling → Purifier", "Sadece servis tank"], correctAnswer: 0, explanation: "Düzen: Settling → Purifier → Clarifier → Servis tank; ALCAP gibi modern sistemlerde ayrım otomatiktir, gravity disc gerekmez." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Gravity disc seçimi",
+    blocks: [{ sectionTitles: ["Seçim Prensibi", "Pratik Uygulama"] }],
+    questions: [
+      { id: 1, sectionRef: "Seçim Prensibi", category: MAK, question: "Gravity disc çapı neye göre seçilir?", options: ["Arıtılacak akışkanın yoğunluğuna (yoğunluk arttıkça büyük çap)", "Renge", "Devire", "Sıcaklığa hiç bakılmaz"], correctAnswer: 0, explanation: "Disc çapı akışkan yoğunluğuna göre seçilir; çok büyük disc → yağ kaybı, çok küçük disc → su yağa karışır (yetersiz ayırma)." },
+      { id: 2, sectionRef: "Pratik Uygulama", category: MAK, question: "Sıcaklık gravity disc seçimini nasıl etkiler?", options: ["Sıcaklık arttıkça yoğunluk düşer; arıtma sıcaklığındaki yoğunluk kullanılır", "Etkilemez", "Sıcaklıkla yoğunluk artar", "Sadece renk değişir"], correctAnswer: 0, explanation: "BDN yoğunluğu ve arıtma sıcaklığındaki yoğunluk üretici nomogramında kullanılır; sıcaklık arttıkça yoğunluk düşer." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Otomatik desludge ve kontrol",
+    blocks: [{ sectionTitles: ["Çalışma Mekanizması", "Operasyonel Parametreler"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Mekanizması", category: MAK, question: "Otomatik desludge nasıl gerçekleşir?", options: ["Slayt pistonlar hidrolik kontrol suyuyla açılır, sludge merkezkaç kuvvetiyle atılır", "Elle kazınarak", "Su ile yıkanarak", "Isıtılarak"], correctAnswer: 0, explanation: "Tambur altındaki sliding pistonlar kontrol suyuyla açılır, biriken sludge merkezkaç kuvvetiyle sludge tanka atılır; modern sistemlerde su sensörü optimum zamanı belirler." },
+      { id: 2, sectionRef: "Operasyonel Parametreler", category: MAK, question: "Desludge aralığı tipik olarak ne kadardır?", options: ["30-90 dakika (yakıta göre)", "1 saniye", "24 saat", "1 hafta"], correctAnswer: 0, explanation: "Desludge aralığı 30-90 dakika (yakıta göre), süresi 0.3-0.5 saniye, kontrol suyu basıncı 2-3 bardır." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Yakıt arıtma sırası ve sıcaklık",
+    blocks: [{ sectionTitles: ["Arıtma Sırası", "Sıcaklık Gereklilikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Arıtma Sırası", category: MAK, question: "Yakıt purifier'da yaklaşık hangi sıcaklıkta arıtılır?", options: ["95-98°C", "20°C", "150°C", "60°C"], correctAnswer: 0, explanation: "Settling 60-70°C'de çökeltir, purifier 95-98°C'de arıtır, ardından clarifier/servis tank gelir; sıra: bunker→settling→purifier→clarifier→servis→motor." },
+      { id: 2, sectionRef: "Sıcaklık Gereklilikleri", category: MAK, question: "HFO motor girişinde enjeksiyon viskozitesi için hangi sıcaklığa getirilir?", options: ["130-150°C (12-15 cSt)", "40-50°C", "200°C", "Isıtılmaz"], correctAnswer: 0, explanation: "HFO motor girişinde 130-150°C'ye ısıtılarak 12-15 cSt enjeksiyon viskozitesi sağlanır; servis tankı 80-90°C'dir." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Yağ arıtma ve su ayrımı",
+    blocks: [{ sectionTitles: ["Yağ Arıtma Sistemi", "Yağ Analizi Parametreleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Yağ Arıtma Sistemi", category: MAK, question: "Yağlama yağı nasıl temizlenir?", options: ["Sürekli by-pass filtrasyon ve santrifüj (purifier/clarifier) arıtmayla", "Hiç temizlenmez", "Sadece elle", "Su ekleyerek"], correctAnswer: 0, explanation: "Yağ sürekli by-pass filtrasyon ve santrifüj arıtmaya tabidir; ana tanktan alınıp purifier/clarifier'dan geçirilip tanka döner. Trunk piston motorlarda arıtma daha kritiktir." },
+      { id: 2, sectionRef: "Yağ Analizi Parametreleri", category: MAK, question: "Yağ analizinde su içeriği limiti nedir ve neyi gösterir?", options: ["< %0.2; sızdırmazlık arızasını", "< %50; normaldir", "Sınır yok", "%10; iyi durumu"], correctAnswer: 0, explanation: "Su < %0.2 (sızdırmazlık arızası göstergesi); BN > 15-20, TAN < 2.5, Fe < 100 ppm (aşınma) izlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Ara soğutma ve son soğutma",
+    blocks: [{ sectionTitles: ["Ara Soğutma (Intercooling)", "Son Soğutma (Aftercooling)"] }],
+    questions: [
+      { id: 1, sectionRef: "Ara Soğutma (Intercooling)", category: MAK, question: "Kompresörde ara soğutma (intercooling) neyi azaltır?", options: ["İkinci kademe sıkıştırma işini (hava soğuyup hacmi küçülür)", "Çıkış basıncını", "Devir sayısını", "Hiçbir şey"], correctAnswer: 0, explanation: "Birinci kademe çıkışındaki sıcak hava eşanjörde soğutulur, hacmi küçülür ve ikinci kademe sıkıştırma işi azalır; ideal ara basınç P_ara = √(P₁·P₂)." },
+      { id: 2, sectionRef: "Son Soğutma (Aftercooling)", category: MAK, question: "Son soğutucu (aftercooler) ne yapar?", options: ["Son kademe çıkışındaki havayı (200-250°C) ortam sıcaklığına yakın düşürür", "Havayı ısıtır", "Yağ ekler", "Basıncı artırır"], correctAnswer: 0, explanation: "Son soğutucu, son kademe çıkışındaki sıcak havayı (200-250°C) ortam sıcaklığına yakın düşürür; oluşan kondens otomatik drenajla atılır." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Otomatik boşaltma (auto-drain)",
+    blocks: [{ sectionTitles: ["Kondens Noktaları", "Bakım"] }],
+    questions: [
+      { id: 1, sectionRef: "Kondens Noktaları", category: MAK, question: "Basınçlı hava sisteminde kondens biriken noktalar hangileridir?", options: ["Ara/son soğutucu çıkışı, hava şişesi alt kısmı ve dağıtım hatları", "Sadece pervane", "Sadece dümen", "Hiçbir yer"], correctAnswer: 0, explanation: "Kondens; ara soğutucu çıkışı, son soğutucu çıkışı, hava şişesi alt kısmı ve dağıtım hatlarında birikir; auto-drain valfleri zamanlayıcı/float ile çalışır." },
+      { id: 2, sectionRef: "Bakım", category: MAK, question: "Auto-drain valfi tıkanırsa ne olur?", options: ["Kondens birikir (sızıntı ise hava kaybı olur)", "Hava daha kuru olur", "Basınç artar ama sorun olmaz", "Hiçbir etki"], correctAnswer: 0, explanation: "Otomatik drenaj valfleri periyodik kontrol edilmelidir; tıkanma kondens birikmesine, sızıntı ise hava kaybına yol açar." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Kompresör bakım ve valf muayenesi",
+    blocks: [{ sectionTitles: ["Bakım İşleri", "Valf Muayenesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Bakım İşleri", category: MAK, question: "Kompresör emme/basma valfi kontrolü hangi periyotla yapılır?", options: ["3000-6000 saat", "Günlük", "10 yılda bir", "Hiç"], correctAnswer: 0, explanation: "Yağ kontrolü günlük, emme/basma valfi 3000-6000 saat, piston/segman 6000-12000 saat, emniyet valfi testi 6 ayda bir yapılır." },
+      { id: 2, sectionRef: "Valf Muayenesi", category: MAK, question: "Kompresör valf arızasının belirtisi nedir?", options: ["Kademe çıkış sıcaklığı artışı, kapasite düşüşü ve anormal ses", "Daha sessiz çalışma", "Yakıt tasarrufu", "Belirti yok"], correctAnswer: 0, explanation: "Emme/basma valfleri verimi doğrudan etkiler; valf plakası çatlağı/aşınması kademe çıkış sıcaklığı artışı, kapasite düşüşü ve anormal sese yol açar." },
+    ],
+  },
+  {
+    topicKey: "machine-auxiliary",
+    topicTitle: "Hava şişesi muayene gereklilikleri",
+    blocks: [{ sectionTitles: ["Muayene Gereklilikleri", "Operasyonel Kontroller"] }],
+    questions: [
+      { id: 1, sectionRef: "Muayene Gereklilikleri", category: MAK, question: "Hava şişesinin hidrostatik testi hangi periyot ve basınçtadır?", options: ["10 yılda bir, 1.5 × çalışma basıncı", "Yılda bir, 0.5 × basınç", "Hiç", "Aylık"], correctAnswer: 0, explanation: "İç muayene 5 yıl, dış muayene 2.5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncı, emniyet valfi testi yıllık yapılır." },
+      { id: 2, sectionRef: "Operasyonel Kontroller", category: MAK, question: "SOLAS gereği başlatma havası şişeleri hangi kapasitede olmalıdır?", options: ["En az 12 ardışık başlatma", "1 başlatma", "100 başlatma", "Kapasite önemsiz"], correctAnswer: 0, explanation: "Şişeler her zaman dolu tutulur ve SOLAS gereği en az 12 ardışık başlatma kapasitesi olmalıdır; minimum basınç altında ana makine çalıştırılamaz." },
+    ],
+  },
 ];
