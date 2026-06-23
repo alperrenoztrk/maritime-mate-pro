@@ -6133,4 +6133,220 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Prosedür", category: MAK, question: "Atık teslim öncesi ne yapılır?", options: ["Limana önceden bildirim (advance notification) yapılır", "Hiçbir şey", "Sadece denize basılır", "Atık yakılır"], correctAnswer: 0, explanation: "Teslim öncesi limana bildirim yapılır, atık alım makbuzu alınıp ilgili kayıt defterine işlenir; AB limanlarında PRF Direktifi gereği teslim zorunludur." },
     ],
   },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "BRM'den ERM'ye geçiş",
+    blocks: [{ sectionTitles: ["Tarihsel Gelişim", "BRM ve ERM Karşılaştırması"] }],
+    questions: [
+      { id: 1, sectionRef: "Tarihsel Gelişim", category: MAK, question: "ERM hangi düzenlemeyle makine zabitlerinin zorunlu eğitimine eklendi?", options: ["STCW 2010 Manila Değişiklikleri", "MARPOL Ek VI", "SOLAS 1974", "ISM Code"], correctAnswer: 0, explanation: "Havacılıktaki CRM denizciliğe BRM olarak uyarlandı; ERM, STCW 2010 Manila Değişiklikleriyle makine zabitlerinin zorunlu müfredatına eklendi." },
+      { id: 2, sectionRef: "BRM ve ERM Karşılaştırması", category: MAK, question: "ERM'nin BRM'den farkı nedir?", options: ["Makine dairesi operasyonlarına (gürültülü, sıcak, tehlikeli ortam) odaklanır", "Sadece köprüüstüne odaklanır", "İletişim gerektirmez", "Hiçbir fark yok"], correctAnswer: 0, explanation: "BRM köprüüstü operasyonlarına, ERM makine dairesine (gürültülü/sıcak/tehlikeli) odaklanır; ERM STCW A-III/1, III/2 tablolarına dayanır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "İnsan faktörü ve hata yönetimi",
+    blocks: [{ sectionTitles: ["Hata Tipleri", "Hata Yönetimi"] }],
+    questions: [
+      { id: 1, sectionRef: "Hata Tipleri", category: MAK, question: "Doğru niyetle yanlış eylem yapmak (örn. yanlış valfi çevirmek) hangi hata tipidir?", options: ["Slip (kayma)", "Mistake (hata)", "Violation (ihlal)", "Lapse (unutma)"], correctAnswer: 0, explanation: "Slip doğru niyet/yanlış eylem; lapse adım unutma; mistake yanlış plan; violation bilinçli kural ihlalidir (örn. PTW'siz sıcak çalışma)." },
+      { id: 2, sectionRef: "Hata Yönetimi", category: MAK, question: "James Reason'ın 'Swiss Cheese' modeli neyi anlatır?", options: ["Savunma katmanlarındaki boşluklar hizalanınca kaza oluşur", "Tek hata her zaman kazaya yol açar", "Hata önlenemez", "Peynir kalitesini"], correctAnswer: 0, explanation: "Swiss Cheese modelinde her savunma katmanı bir bariyerdir; boşluklar hizalanınca kaza olur. Hata toleranslı tasarım (çift kontrol, interlock, alarm) bunu önler." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Situational awareness (durumsal farkındalık)",
+    blocks: [{ sectionTitles: ["Üç Seviye (Endsley Modeli)", "Farkındalık Kaybı Nedenleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Üç Seviye (Endsley Modeli)", category: MAK, question: "Endsley modelinde Seviye 3 (öngörme) nedir?", options: ["Gelecekte ne olacağını tahmin etmek (önlem alınmazsa arıza)", "Mevcut durumu algılamak", "Bilgiyi anlamak", "Hiçbir şey yapmamak"], correctAnswer: 0, explanation: "Seviye 1 algılama, Seviye 2 anlama, Seviye 3 öngörme (gelecekteki durumu tahmin)dir." },
+      { id: 2, sectionRef: "Farkındalık Kaybı Nedenleri", category: MAK, question: "Aşağıdakilerden hangisi durumsal farkındalık kaybı nedenidir?", options: ["Yorgunluk, otomasyon bağımlılığı (complacency) ve stres", "İyi uyku", "Düşük iş yükü her zaman iyidir", "Dikkatli olmak"], correctAnswer: 0, explanation: "Yorgunluk, dikkat dağıtıcılar, aşırı bilgi yükü/monotonluk, otomasyon bağımlılığı (complacency) ve stres farkındalık kaybına yol açar." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "STCW ERM gereklilikleri",
+    blocks: [{ sectionTitles: ["Yeterlilik Tabloları", "Eğitim Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Yeterlilik Tabloları", category: MAK, question: "ERM yeterlilikleri hangi STCW tablolarında tanımlanır?", options: ["A-III/1 (vardiya mühendisi) ve A-III/2 (baş mühendis)", "A-II/1, II/2", "A-IV/2", "A-VI/1"], correctAnswer: 0, explanation: "ERM yeterlilikleri STCW A-III/1 ve A-III/2 tablolarındadır: kaynak yönetimi, liderlik, durumsal farkındalık, iş yükü/stres yönetimi ve etkili iletişim." },
+      { id: 2, sectionRef: "Eğitim Yöntemleri", category: MAK, question: "ERM eğitiminde hangi yöntemler kullanılır?", options: ["Simülatör senaryoları (blackout, yangın), vaka analizi ve debriefing", "Sadece kitap okuma", "Sadece sınav", "Eğitim yok"], correctAnswer: 0, explanation: "Simülatör tabanlı senaryolar, atölye, vaka analizi ve debriefing kullanılır; ERM sertifikası genellikle 5 yıl geçerli olup tazeleme gerektirir." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Liderlik tarzları ve durumsal liderlik",
+    blocks: [{ sectionTitles: ["Liderlik Tarzları"] }],
+    questions: [
+      { id: 1, sectionRef: "Liderlik Tarzları", category: MAK, question: "Acil durumda (yangın) hangi liderlik tarzı uygundur?", options: ["Otoriter (lider karar verir, sorgulanmaz)", "Demokratik", "Delege eden", "Koçluk"], correctAnswer: 0, explanation: "Acil durumda otoriter tarz uygundur; bakım planlamasında demokratik, rutin işlerde delege eden, eğitimde koçluk tarzı uygundur." },
+      { id: 2, sectionRef: "Liderlik Tarzları", category: MAK, question: "Stajyer ve yeni personel eğitiminde hangi tarz uygundur?", options: ["Koçluk (öğretme ve geliştirme odaklı)", "Otoriter", "Delege eden", "Hiçbiri"], correctAnswer: 0, explanation: "Koçluk tarzı öğretme/geliştirme odaklıdır ve stajyer/yeni personel eğitiminde uygundur." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Etkili iletişim teknikleri",
+    blocks: [{ sectionTitles: ["İletişim Prensipleri", "İletişim Engelleri"] }],
+    questions: [
+      { id: 1, sectionRef: "İletişim Prensipleri", category: MAK, question: "Closed-loop (teyit) iletişimde alıcı ne yapar?", options: ["Mesajı tekrarlayarak anladığını doğrular", "Hiçbir şey demez", "Sadece dinler", "Mesajı değiştirir"], correctAnswer: 0, explanation: "İletişim açık/net, zamanında ve uygun kanaldan olmalı; alıcı mesajı tekrarlayarak doğrular (closed-loop communication)." },
+      { id: 2, sectionRef: "İletişim Engelleri", category: MAK, question: "Makine dairesinde temel iletişim engeli nedir?", options: ["Gürültü (90-110 dBA); kulak koruyucu iletişimi zorlaştırır", "Çok sessizlik", "Aşırı aydınlık", "Düşük sıcaklık"], correctAnswer: 0, explanation: "Gürültü (90-110 dBA), dil bariyeri, otorite gradyanı ve yorgunluk iletişim engelleridir; IMO standart denizcilik İngilizcesi kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Kapalı döngü iletişim (closed-loop)",
+    blocks: [{ sectionTitles: ["Üç Adımlı Süreç", "Önemi"] }],
+    questions: [
+      { id: 1, sectionRef: "Üç Adımlı Süreç", category: MAK, question: "Kapalı döngü iletişimin üç adımı nedir?", options: ["Gönderici iletir → alıcı tekrarlar → gönderici doğrular", "Sadece gönderici konuşur", "Sadece yazılı", "Alıcı karar verir"], correctAnswer: 0, explanation: "Gönderici mesajı iletir, alıcı tekrarlayarak teyit eder, gönderici tekrarı doğrular veya düzeltir." },
+      { id: 2, sectionRef: "Önemi", category: MAK, question: "Kapalı döngü iletişim iletişim hatalarını ne kadar azaltabilir?", options: ["%70'e kadar", "%5", "Hiç", "%1"], correctAnswer: 0, explanation: "Gürültülü/stresli/dil bariyerli ortamlarda iletişim hatalarını %70'e kadar azaltır; acil durum, paralel bağlama ve bakımda kritiktir." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Kültürler arası iletişim",
+    blocks: [{ sectionTitles: ["Kültürel Farklılıklar", "Çözüm Stratejileri"] }],
+    questions: [
+      { id: 1, sectionRef: "Kültürel Farklılıklar", category: MAK, question: "Yüksek güç mesafesi (power distance) olan kültürlerde ne görülür?", options: ["Ast, üstünü sorgulamakta çekinir", "Herkes eşit konuşur", "Otorite yoktur", "Sürekli itiraz edilir"], correctAnswer: 0, explanation: "Yüksek güç mesafesinde ast üstünü sorgulamaktan çekinir; bireyci/toplulukçu, belirsizlikten kaçınma ve zaman algısı da farklılık yaratır." },
+      { id: 2, sectionRef: "Çözüm Stratejileri", category: MAK, question: "Kültürel farklılıklara karşı çözüm nedir?", options: ["Ortak dil olarak İngilizce standart terminoloji ve assertiveness teşviki", "Herkesin kendi dilinde konuşması", "İletişimi kesmek", "Sadece yazılı"], correctAnswer: 0, explanation: "Ortak çalışma dili İngilizce standart terminoloji kullanılır, ast personelin soru sorması/itirazı teşvik edilir; kültürel farkındalık eğitimi ERM parçasıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Asertif davranış ve otorite gradyanı",
+    blocks: [{ sectionTitles: ["Otorite Gradyanı", "Asertif İtiraz Tekniği"] }],
+    questions: [
+      { id: 1, sectionRef: "Otorite Gradyanı", category: MAK, question: "Optimum otorite gradyanı nedir?", options: ["Net liderlik var ama ekip rahatça geri bildirim verebilir", "Dik gradyan (astlar soru soramaz)", "Düz gradyan (otorite belirsiz)", "Otorite yok"], correctAnswer: 0, explanation: "Dik gradyanda üstün hatası düzeltilemez, düz gradyanda karar zorlaşır; optimum gradyanda net liderlik var ama ekip rahatça geri bildirim verir." },
+      { id: 2, sectionRef: "Asertif İtiraz Tekniği", category: MAK, question: "PACE modelinde son (en güçlü) adım nedir?", options: ["E – Emergency (acil müdahale)", "P – Probe", "A – Alert", "C – Challenge"], correctAnswer: 0, explanation: "PACE: Probe (sor) → Alert (uyar) → Challenge (meydan oku) → Emergency (acil, örn. 'düşürmezseniz motoru durduracağım')." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "DECIDE modeli",
+    blocks: [{ sectionTitles: ["Adımlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Adımlar", category: MAK, question: "DECIDE modelinin ilk adımı nedir?", options: ["D – Detect (sorunu/değişikliği tespit et)", "Do (uygula)", "Evaluate (değerlendir)", "Choose (seç)"], correctAnswer: 0, explanation: "DECIDE: Detect → Estimate → Choose → Identify → Do → Evaluate; ilk adım sorunu tespit etmektir." },
+      { id: 2, sectionRef: "Adımlar", category: MAK, question: "DECIDE modelinin son adımı nedir?", options: ["E – Evaluate (sonuçları değerlendir, gerekirse düzelt)", "Detect", "Do", "Choose"], correctAnswer: 0, explanation: "Son adım Evaluate: kararı uyguladıktan sonra sonuçları değerlendirip gerekirse düzeltmektir." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Risk tabanlı karar verme",
+    blocks: [{ sectionTitles: ["Karar Süreci", "Risk Toleransı"] }],
+    questions: [
+      { id: 1, sectionRef: "Karar Süreci", category: MAK, question: "Risk tabanlı karar sürecinde seçenekler belirlendikten sonra ne yapılır?", options: ["Her seçeneğin risk düzeyi değerlendirilir", "Hemen uygulanır", "Görmezden gelinir", "Rastgele seçilir"], correctAnswer: 0, explanation: "Durumu değerlendir → seçenekleri belirle → risk değerlendir → en düşük riskli/uygulanabilir seçeneği seç → uygula ve izle." },
+      { id: 2, sectionRef: "Risk Toleransı", category: MAK, question: "İnsan hayatı tehlikedeyse hangi risk seviyesi geçerlidir?", options: ["Kabul edilemez risk → operasyonu durdur", "ALARP → devam et", "Kabul edilebilir → normal operasyon", "Önemsiz"], correctAnswer: 0, explanation: "Kabul edilemez risk (insan hayatı tehlikede) operasyonu durdurmayı gerektirir; ALARP makul seviyeye indirilmiş riski (izleyerek devam), kabul edilebilir risk normal operasyonu ifade eder." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Zaman baskısı altında karar",
+    blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada yardımcı pompa devreye alma neden 90 saniye gecikti?", options: ["Tek zabit manevraya odaklanırken alarmı gecikmeli değerlendirdi", "Pompa arızalıydı", "Yakıt bitti", "Güç kesildi"], correctAnswer: 0, explanation: "Manevrada tek zabit ardışık komutları uygularken jacket cooling düşük basınç alarmını gecikmeli değerlendirdi; ortak durum resmi oluşmadı." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Zaman baskısında önerilen mini prosedür nedir?", options: ["30-60 sn 'Stop-Think-Act-Review' ve gemi-personel-ekipman emniyeti sırası", "Hızlıca her şeyi yapmak", "Prosedürü atlamak", "Beklemek"], correctAnswer: 0, explanation: "Manevrada 'Stop-Think-Act-Review' mini prosedürü zorunlu olmalı; en az iki kişi (telegraph + alarm takibi) aktif tutulmalı ve kritik komutlarda kapalı döngü iletişim uygulanmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Hata zincirleri ve kırma noktaları",
+    blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada purifier DP alarmının 'geçici' görülmesi neye yol açtı?", options: ["Yakıt viskozitesi düştü, enjektörde düzensiz püskürtme ve yük dalgalanması oluştu", "Hiçbir şey", "Yakıt tasarrufu", "Motor durdu"], correctAnswer: 0, explanation: "Purifier DP alarmı ertelenip settling drain atlanınca viskozite hedefin altına indi, enjektörde düzensiz püskürtme ve ana makinede yük dalgalanması oldu." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Kritik alarm ertelemesi için ne zorunlu olmalıdır?", options: ["Zabit onayı + yazılı gerekçe + yeniden değerlendirme zamanı", "Hiçbir şey", "Sadece susturma", "Otomatik silme"], correctAnswer: 0, explanation: "Kritik alarm ertelemesi zabit onayı, yazılı gerekçe ve yeniden değerlendirme zamanı gerektirmeli; süresi dolan alarm otomatik kritik seviyeye dönmeli, vardiya devrinde açık risk listesi aktarılmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Stres ve yorgunluk etkisi",
+    blocks: [{ sectionTitles: ["Yorgunluk Kaynakları", "Önleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Yorgunluk Kaynakları", category: MAK, question: "Aşağıdakilerden hangisi yorgunluk kaynağıdır?", options: ["Düzensiz vardiya sistemi ve yetersiz uyku", "İyi dinlenme", "Sessiz ortam", "Düşük iş yükü her zaman"], correctAnswer: 0, explanation: "Düzensiz vardiya (4-8 veya 6-6), yetersiz uyku, gürültü/titreşim, monotonluk ve fiziksel iş yükü yorgunluk kaynaklarıdır." },
+      { id: 2, sectionRef: "Önleme", category: MAK, question: "MLC gereği 7 günde minimum dinlenme süresi nedir?", options: ["77 saat (24 saatte min 10 saat)", "40 saat", "100 saat", "Sınır yok"], correctAnswer: 0, explanation: "MLC gereği minimum dinlenme 24 saatte 10 saat, 7 günde 77 saattir; work/rest saatleri kaydedilir ve PSC denetler." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Takım oluşturma ve rol dağılımı",
+    blocks: [{ sectionTitles: ["Rol Dağılımı", "Etkili Takım Özellikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Rol Dağılımı", category: MAK, question: "İkinci mühendisin (2nd engineer) temel sorumluluğu nedir?", options: ["Ana makine sorumlusu, günlük operasyonları koordine eder", "Tüm departman lideri", "Sadece kazanlar", "Sadece temizlik"], correctAnswer: 0, explanation: "Baş mühendis departman lideri; 2. mühendis ana makine sorumlusu; 3. mühendis yardımcı makine/jeneratör/yakıt; 4. mühendis kazan/purifier/su arıtmadır." },
+      { id: 2, sectionRef: "Etkili Takım Özellikleri", category: MAK, question: "Etkili bir takımın özelliği nedir?", options: ["Açık iletişim, karşılıklı güven ve net rol tanımı", "Belirsiz roller", "İletişimsizlik", "Suçlama kültürü"], correctAnswer: 0, explanation: "Etkili takım; ortak amaç, açık iletişim/geri bildirim, karşılıklı güven, net roller, çapraz kontrol ve hata toleranslı öğrenme kültürüne sahiptir." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Brifing ve debrifing teknikleri",
+    blocks: [{ sectionTitles: ["Brifing", "Debrifing"] }],
+    questions: [
+      { id: 1, sectionRef: "Brifing", category: MAK, question: "Brifing ne zaman ve neyi içerir?", options: ["Operasyon öncesi; iş, roller, tehlikeler, önlemler ve acil durum planı", "Operasyon sonrası; suçlama", "Hiç yapılmaz", "Sadece imza"], correctAnswer: 0, explanation: "Brifing operasyon öncesi yapılır; yapılacak iş, roller, tehlikeler, önlemler, acil durum planı ve iletişimi içerir; kısa, net ve interaktif olmalıdır." },
+      { id: 2, sectionRef: "Debrifing", category: MAK, question: "Debrifing'in amacı nedir?", options: ["Öğrenme (suçlama değil); iyi/kötü/iyileştirilebilir noktaları tartışmak", "Suçlu bulmak", "Ceza vermek", "Hiçbir şey"], correctAnswer: 0, explanation: "Debrifing operasyon sonrası değerlendirmedir; suçlama değil öğrenme amaçlıdır, deneyimler kayıt altına alınıp kurumsal hafıza oluşturulur." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Yük paylaşımı (workload management)",
+    blocks: [{ sectionTitles: ["İş Yükü Seviyeleri", "Yönetim Stratejileri"] }],
+    questions: [
+      { id: 1, sectionRef: "İş Yükü Seviyeleri", category: MAK, question: "Düşük iş yükünün riski nedir?", options: ["Dikkat kaybı ve complacency (rehavet)", "Kritik hata", "Aşırı stres", "Hiçbir risk"], correctAnswer: 0, explanation: "Düşük iş yükü monotonluk/complacency (dikkat kaybı), aşırı yük ise kritik hata/kaza riski yaratır; optimum seviye düşük risklidir." },
+      { id: 2, sectionRef: "Yönetim Stratejileri", category: MAK, question: "Yük yönetiminde temel strateji nedir?", options: ["Önceliklendirme (güvenlik kritik görevler önce) ve delegasyon", "Tüm işleri tek kişiye yüklemek", "Yardım istememek", "Hepsini ertelemek"], correctAnswer: 0, explanation: "Önceliklendirme (güvenlik önce), delegasyon, erteleme, destek talebi ve otomasyon kullanımı yük yönetim stratejileridir; yardım istemek profesyonelliktir." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Çapraz kontrol ve karşılıklı izleme",
+    blocks: [{ sectionTitles: ["Uygulama", "Havacılıktan Öğrenilen Dersler"] }],
+    questions: [
+      { id: 1, sectionRef: "Uygulama", category: MAK, question: "Çapraz kontrol nasıl uygulanır?", options: ["Bir kişi vana açarken diğeri doğru vanayı açtığını kontrol eder", "Herkes ayrı çalışır", "Kontrol yapılmaz", "Sadece amir kontrol eder"], correctAnswer: 0, explanation: "Vana/şalter operasyonunda bir kişi yapar diğeri doğrular; tork/ölçüm değerleri ikinci kişiyle teyit edilir. Karşılıklı izleme suçlama değil koruma kültürüdür." },
+      { id: 2, sectionRef: "Havacılıktan Öğrenilen Dersler", category: MAK, question: "Havacılıktaki 'sterile cockpit' kuralının makine dairesindeki karşılığı nedir?", options: ["Manevra sırasında gereksiz konuşmayı önleyip odaklanmayı korumak", "Sürekli sohbet", "Müzik dinlemek", "Hiçbir şey"], correctAnswer: 0, explanation: "Havacılıkta sterile cockpit kritik operasyonlarda gereksiz konuşmayı yasaklar; benzer şekilde manevrada makine dairesinde odaklanma korunur." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Geri bildirim kültürü",
+    blocks: [{ sectionTitles: ["Etkili Geri Bildirim", "Geri Bildirim Alma"] }],
+    questions: [
+      { id: 1, sectionRef: "Etkili Geri Bildirim", category: MAK, question: "Etkili geri bildirim nasıl verilir?", options: ["Spesifik, zamanında ve davranışa odaklı (kişiliğe değil)", "Genel ve gecikmeli", "Kişiliği hedef alarak", "Herkesin önünde eleştirerek"], correctAnswer: 0, explanation: "Geri bildirim spesifik, zamanında, davranışa odaklı (kişiliğe değil) olmalı; eleştiri özel, övgü herkesin önünde verilir (sandwich tekniği)." },
+      { id: 2, sectionRef: "Geri Bildirim Alma", category: MAK, question: "Geri bildirim alırken doğru tutum nedir?", options: ["Savunmaya geçme; dinle, anla, açıklama iste ve teşekkür et", "Hemen itiraz et", "Görmezden gel", "Tartış"], correctAnswer: 0, explanation: "Geri bildirim alırken savunmaya geçmeden dinle, anla, açıklama iste, teşekkür et ve geliştirme planı oluştur." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Makine dairesi yangın kaza örnekleri",
+    blocks: [{ sectionTitles: ["Tipik Senaryo: Yakıt Sızıntısı Yangını", "Çıkarılan Dersler"] }],
+    questions: [
+      { id: 1, sectionRef: "Tipik Senaryo: Yakıt Sızıntısı Yangını", category: MAK, question: "Yakıt sızıntısı yangını tipik olarak nasıl başlar?", options: ["HFO sıcak egzoz manifoldu/turboşarj yüzeyine sıçrayıp anlık tutuşur", "Elektrik kesilince", "Su girince", "Soğuk havada"], correctAnswer: 0, explanation: "Yüksek basınçlı yakıt borusu çatlağı/gevşek enjektör bağlantısından HFO sıcak yüzeye (egzoz/turbo) sıçrar; ateşleme sıcaklığı ~250°C üzerinde olduğundan anlık tutuşur." },
+      { id: 2, sectionRef: "Çıkarılan Dersler", category: MAK, question: "Bu yangından çıkarılan temel ders nedir?", options: ["Yakıt boruları termal kalkan (lagging) ile kaplanmalı ve bağlantı sıkılığı kontrol edilmeli", "Hiçbir önlem", "Daha fazla yakıt", "Yalıtımı çıkarmak"], correctAnswer: 0, explanation: "Yakıt boruları lagging ile kaplanmalı, bağlantılar periyodik sıkılık kontrolüne tabi tutulmalı; QCV testleri ve yangın tatbikatları düzenli yapılmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Blackout senaryoları ve kök nedenler",
+    blocks: [{ sectionTitles: ["Tipik Senaryo", "Kök Neden Analizi"] }],
+    questions: [
+      { id: 1, sectionRef: "Tipik Senaryo", category: MAK, question: "Tek jeneratörle bow thruster devreye alınması neye yol açar?", options: ["Aşırı yük → jeneratör trip → blackout (preferential trip yetersizse)", "Yakıt tasarrufu", "Hiçbir şey", "Daha iyi performans"], correctAnswer: 0, explanation: "Tek jeneratör çalışırken büyük motor (bow thruster) devreye alınması aşırı yük yaratır; preferential trip yetersizse jeneratör trip eder ve blackout olur." },
+      { id: 2, sectionRef: "Kök Neden Analizi", category: MAK, question: "5-Why analizinde blackout'un kök nedeni nedir?", options: ["Köprüüstü-makine iletişim kopukluğu (yedek jeneratör hazırlanmamış)", "Jeneratör eski", "Yakıt kötü", "Şans"], correctAnswer: 0, explanation: "5-Why: blackout → trip → aşırı yük → bow thruster → yedek jeneratör çalıştırılmamış → iletişim kopukluğu. Teknik (yedek hazır değil), organizasyonel (önceden bildirilmemiş) ve insan faktörü (farkındalık kaybı) birleşir." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Kapalı alan kazaları",
+    blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Kapalı alan kazasında ikinci yaralanma neden oluştu?", options: ["İkinci personel donanımsız kurtarma refleksiyle tanka girdi", "Yangın çıktı", "Su bastı", "Elektrik çarptı"], correctAnswer: 0, explanation: "Atmosfer ölçümü sadece kapak ağzında yapıldı (alt/orta test edilmedi); ilk personel baş dönmesi yaşadı, ikinci personel donanımsız kurtarma refleksiyle girince çift yaralanmalı near-miss oluştu." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Kapalı alan girişinde atmosfer testi nasıl yapılmalıdır?", options: ["O₂, H₂S, CO ve LEL üst-orta-alt seviyede ve giriş boyunca periyodik", "Sadece kapak ağzında bir kez", "Hiç ölçülmeden", "Sadece giriş sonrası"], correctAnswer: 0, explanation: "Ölçüm üst-orta-alt seviyede ve giriş boyunca periyodik yapılmalı; standby personel aktif güvenlik bariyeridir, izinsiz ikinci giriş yasaktır ve kurtarma yalnız eğitimli ekipçe yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "İletişim kopukluğuna bağlı olaylar",
+    blocks: [{ sectionTitles: ["Olay Bağlamı", "Önleyici Aksiyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Olay Bağlamı", category: MAK, question: "Vakada 'stand by engine' komutu nasıl yanlış yorumlandı?", options: ["Makine dairesi bunu 'dead slow ahead'a geçiş hazırlığı sandı; şaft devri erken yükseldi", "Komut anlaşıldı", "Ekipman arızalandı", "Yakıt bitti"], correctAnswer: 0, explanation: "Komut tekrar edilmediği için makine dairesi 'stand by engine'i yanlış yorumladı, şaft devri erken yükseldi ve palamar operasyonunda risk oluştu (ekipman arızası yok)." },
+      { id: 2, sectionRef: "Önleyici Aksiyon", category: MAK, question: "Manevra evresinde iletişim için ne zorunlu tutulmalıdır?", options: ["Standart marine communication phrases ve 'komut-tekrar-onay' döngüsü", "Yerel/alışkanlık ifadeleri", "Sessizlik", "Yazılı not yeterli"], correctAnswer: 0, explanation: "Manevrada yalnız standart denizcilik ifadeleri kullanılmalı; her komut 'komut-tekrar-onay' tamamlanmadan uygulanmamalı, manevra öncesi ortak komut seti brifingi yapılmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-erm",
+    topicTitle: "Derslerin operasyona yansıtılması",
+    blocks: [{ sectionTitles: ["Ders Çıkarma Süreci", "Güvenlik Bülteni"] }],
+    questions: [
+      { id: 1, sectionRef: "Ders Çıkarma Süreci", category: MAK, question: "Olaydan ders çıkarma sürecinde kök neden tespitinden sonra ne yapılır?", options: ["Düzeltici aksiyonlar (CAPA) belirlenir ve prosedür (SMS) güncellenir", "Dosya kapatılır", "Hiçbir şey", "Sadece ceza verilir"], correctAnswer: 0, explanation: "Süreç: olay analizi/kök neden → düzeltici aksiyon (CAPA) → prosedür (SMS) güncelleme → eğitim → filoya yayma → takip ve doğrulama." },
+      { id: 2, sectionRef: "Güvenlik Bülteni", category: MAK, question: "Çıkarılan dersler filoya nasıl yayılır?", options: ["Şirket DPA'sı güvenlik bülteni olarak tüm filoya dağıtır", "Gizli tutulur", "Sadece o gemide kalır", "Hiç paylaşılmaz"], correctAnswer: 0, explanation: "Şirket DPA'sı dersleri güvenlik bülteni olarak tüm filoya dağıtır; IMO de MSC/Circ. serisiyle sektörel ders paylaşımı yapar." },
+    ],
+  },
 ];
