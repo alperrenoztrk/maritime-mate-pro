@@ -3,6 +3,7 @@ import { navigationTopicContents, type TopicDetailContent } from "@/data/navigat
 import { communicationTopicContents } from "@/data/communicationTopicContents";
 import { cargoTopicContents } from "@/data/cargoTopicContents";
 import { safetyTopicContents } from "@/data/safetyTopicContents";
+import { environmentTopicContents } from "@/data/environmentTopicContents";
 
 export const topicContentsByCategory: Record<string, Record<string, TopicDetailContent>> = {
   navigation: navigationTopicContents,
@@ -10,6 +11,7 @@ export const topicContentsByCategory: Record<string, Record<string, TopicDetailC
   communication: communicationTopicContents,
   cargo: cargoTopicContents,
   safety: safetyTopicContents,
+  environment: environmentTopicContents,
 };
 
 export const getTopicContentsByCategory = (categoryId?: string) =>
