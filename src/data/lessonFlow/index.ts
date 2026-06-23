@@ -4,16 +4,26 @@ import { meteorologyLessonFlows } from "./meteorology";
 import { machineLessonFlows } from "./machine";
 import { communicationLessonFlows } from "./communication";
 import { stabilityLessonFlows } from "./stability";
+import { cargoLessonFlows } from "./cargo";
+import { safetyLessonFlows } from "./safety";
+import { environmentLessonFlows } from "./environment";
+import { seamanshipLessonFlows } from "./seamanship";
+import { economicsLessonFlows } from "./economics";
 
 export type { LessonFlow, LessonBlock, RecapQuestion } from "./types";
 
-/** Tüm rehberli akışlar (beta). Seyir + Meteoroloji + Makine + Haberleşme + Stabilite. */
+/** Tüm rehberli akışlar (beta). Güverte (Seyir, Meteoroloji, Haberleşme, Stabilite, Yük, Emniyet, Çevre, Gemicilik, Ticari Operasyonlar) + Makine. */
 const ALL_FLOWS: LessonFlow[] = [
   ...navigationLessonFlows,
   ...meteorologyLessonFlows,
   ...machineLessonFlows,
   ...communicationLessonFlows,
   ...stabilityLessonFlows,
+  ...cargoLessonFlows,
+  ...safetyLessonFlows,
+  ...environmentLessonFlows,
+  ...seamanshipLessonFlows,
+  ...economicsLessonFlows,
 ];
 
 /** Bir kategoriye (topicKey) ait tüm rehberli akışları döndürür. */

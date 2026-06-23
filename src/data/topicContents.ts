@@ -1,11 +1,21 @@
 import { meteorologyTopicContents } from "@/data/meteorologyTopicContents";
 import { navigationTopicContents, type TopicDetailContent } from "@/data/navigationTopicContents";
 import { communicationTopicContents } from "@/data/communicationTopicContents";
+import { cargoTopicContents } from "@/data/cargoTopicContents";
+import { safetyTopicContents } from "@/data/safetyTopicContents";
+import { environmentTopicContents } from "@/data/environmentTopicContents";
+import { seamanshipTopicContents } from "@/data/seamanshipTopicContents";
+import { economicsTopicContents } from "@/data/economicsTopicContents";
 
 export const topicContentsByCategory: Record<string, Record<string, TopicDetailContent>> = {
   navigation: navigationTopicContents,
   meteorology: meteorologyTopicContents,
   communication: communicationTopicContents,
+  cargo: cargoTopicContents,
+  safety: safetyTopicContents,
+  environment: environmentTopicContents,
+  seamanship: seamanshipTopicContents,
+  economics: economicsTopicContents,
 };
 
 export const getTopicContentsByCategory = (categoryId?: string) =>
