@@ -4801,4 +4801,220 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Perçin Bağlantıları", category: MAK, question: "Perçinli bağlantılar nasıl tasarlanır?", options: ["Kayma ve ezilme (bearing) gerilmelerine göre (kalıcı bağlantı)", "Sökülebilir olarak", "Sadece eğilmeye göre", "Hesapsız"], correctAnswer: 0, explanation: "Perçin bağlantıları kalıcıdır; kayma ve ezilme gerilmelerine göre tasarlanır. Bugün büyük ölçüde kaynak ve yüksek mukavemetli cıvatalarla yer değiştirmiştir." },
     ],
   },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Dümen kuvveti ve tork hesabı",
+    blocks: [{ sectionTitles: ["Dümen Kuvveti", "Dümen Torku"] }],
+    questions: [
+      { id: 1, sectionRef: "Dümen Kuvveti", category: MAK, question: "Dümen paletine etkiyen normal kuvvet neye (hız açısından) bağlıdır?", options: ["Hızın karesine (V²)", "Hıza doğrusal", "Hızdan bağımsız", "1/V'ye"], correctAnswer: 0, explanation: "Joessel formülü F_N = K·A·V²·sin(α); kuvvet hız karesi, alan ve dümen açısının sinüsüyle artar." },
+      { id: 2, sectionRef: "Dümen Torku", category: MAK, question: "Dengeli (balanced) dümen oranı arttıkça gerekli tork nasıl değişir?", options: ["Azalır", "Artar", "Değişmez", "İkiye katlanır"], correctAnswer: 0, explanation: "Tork T = F_N·d; dengeli dümen oranı arttıkça moment kolu küçülür ve gerekli tork azalır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Elektro-hidrolik dümen makinesi",
+    blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Elektro-hidrolik dümen makinesinde dümen milini (tiller) ne döndürür?", options: ["Çift etkili hidrolik silindir (Rapson slide veya rotary vane)", "Elektrik motoru doğrudan", "Buhar türbini", "Pervane"], correctAnswer: 0, explanation: "HPU (motor + pompa) basıncı üretir; çift etkili silindir (Rapson slide/rotary vane) tiller'ı döndürür." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Dümen istenen açıya gelince akışı ne keser?", options: ["Hunt valfi (dümen sabit kalır)", "Emniyet supabı", "Telemotor", "Pervane"], correctAnswer: 0, explanation: "Telemotor sinyali kontrol valfini sürer; dümen istenen açıya gelince hunt valfi akışı keser ve dümen sabit kalır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Telemotor sistemi",
+    blocks: [{ sectionTitles: ["Hidrolik Telemotor", "Elektrik Telemotor"] }],
+    questions: [
+      { id: 1, sectionRef: "Hidrolik Telemotor", category: MAK, question: "Hidrolik telemotorda köprüden sinyal nasıl iletilir?", options: ["Dümen çarkıyla dönen pistonlu pompa basınçlı yağı borularla alıcıya gönderir", "Radyo dalgasıyla", "Elektrikle", "Mekanik milli"], correctAnswer: 0, explanation: "Köprüdeki verici basınçlı yağı borularla dümen makinesindeki alıcıya iletir; basit ve güvenilirdir." },
+      { id: 2, sectionRef: "Elektrik Telemotor", category: MAK, question: "Elektrik telemotorun avantajı nedir?", options: ["Otopilot entegrasyonu daha kolaydır", "Yağ gerektirir", "Daha yavaştır", "Mekanik bağlantı şarttır"], correctAnswer: 0, explanation: "Köprü kumandası potansiyometre/synchro sinyali üretir, kabloyla iletilir ve servo valfi sürer; otopilot entegrasyonu kolaydır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Dümen testleri ve SOLAS gereklilikleri",
+    blocks: [{ sectionTitles: ["SOLAS Gereklilikleri", "Test Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "SOLAS Gereklilikleri", category: MAK, question: "Ana dümen makinesi 35°-35° dönüşü kaç saniyede yapmalıdır?", options: ["28 saniye", "60 saniye", "10 saniye", "120 saniye"], correctAnswer: 0, explanation: "Ana dümen makinesi 35° bir taraftan 35° diğer tarafa 28 saniyede dönmelidir; yedek 15°-15° için 60 saniye." },
+      { id: 2, sectionRef: "Test Prosedürü", category: MAK, question: "Dümen testleri ne zaman yapılır ve nereye kaydedilir?", options: ["Kalkıştan 12 saat önce; seyir jurnalına", "Yılda bir; hiçbir yere", "Varışta; makine defterine", "Hiç test edilmez"], correctAnswer: 0, explanation: "Kalkıştan 12 saat önce dümen testleri yapılır (yedek geçiş, acil kumanda, alarm) ve SOLAS gereği seyir jurnalına kaydedilir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Yedek dümen sistemi",
+    blocks: [{ sectionTitles: ["Yedek Dümen Alternatifleri", "Geçiş Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Yedek Dümen Alternatifleri", category: MAK, question: "Ana güç kaybından sonra yedek dümen kaç saniye içinde devreye girmelidir?", options: ["45 saniye", "5 dakika", "1 saat", "Hemen değil"], correctAnswer: 0, explanation: "SOLAS gereği ana güç kaybından sonra yedek dümen 45 saniye içinde devreye girmelidir; en yaygın yöntem bağımsız ikinci HPU'dur." },
+      { id: 2, sectionRef: "Geçiş Prosedürü", category: MAK, question: "El pompasıyla dümen çevirme sırasında ne sağlanır?", options: ["Köprüüstü ile makine dairesi arasında sesli iletişim", "Otomatik seyir", "Pervane durdurma", "Yakıt değişimi"], correctAnswer: 0, explanation: "El pompasıyla çalışmada köprü ile makine dairesi arasında sesli iletişim kurulur; geçiş otomatik veya manuel olabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Pervane verimi ve kavitasyon",
+    blocks: [{ sectionTitles: ["Pervane Verimi", "Kavitasyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Pervane Verimi", category: MAK, question: "Toplam pervane verimi (η_D) genellikle hangi aralıktadır?", options: ["%55-75", "%5-10", "%90-99", "%100'ün üzerinde"], correctAnswer: 0, explanation: "η_D = η₀·η_H·η_R; açık su, gövde ve nispi dönme verimlerinin çarpımıyla %55-75 arasındadır." },
+      { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl oluşur?", options: ["Kanat yüzeyinde basınç buharlaşma basıncının altına düşüp buhar kabarcıkları çökünce", "Yakıt yanınca", "Su ısınınca", "Hız sıfırlanınca"], correctAnswer: 0, explanation: "Basınç buharlaşma basıncının altına düşünce oluşan kabarcıklar yüksek basınç bölgesinde çöker; erozyon, gürültü ve verim kaybı yapar." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Şaft hattı düzeni ve bileşenleri",
+    blocks: [{ sectionTitles: ["Bileşenler", "Yataklar ve İtme Yatağı"] }],
+    questions: [
+      { id: 1, sectionRef: "Bileşenler", category: MAK, question: "İtme yatağının (thrust bearing) görevi nedir?", options: ["Pervane itme kuvvetini gemi yapısına aktarmak", "Yakıt basınçlandırmak", "Elektrik üretmek", "Soğutmak"], correctAnswer: 0, explanation: "Thrust bearing pervane itme kuvvetini gemi gövdesine aktarır; Michell tipi kaymalı yatak yaygındır." },
+      { id: 2, sectionRef: "Yataklar ve İtme Yatağı", category: MAK, question: "Michell (tilting-pad) itme yatağında yağ filmi nasıl oluşur?", options: ["Kendi kendine yönlenen pabuçlar hidrodinamik yağ filmi oluşturur", "Elle yağlanır", "Su ile", "Yağ filmi yoktur"], correctAnswer: 0, explanation: "Michell tipinde kendi kendine yönlenen pabuçlar hidrodinamik yağ filmi oluşturur; pabuç sıcaklığı izlenir, aşırı ısınma film kaybını gösterir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Stern tube yağlama ve sızdırmazlık",
+    blocks: [{ sectionTitles: ["Yağ Yağlamalı Stern Tube", "Su Yağlamalı Stern Tube"] }],
+    questions: [
+      { id: 1, sectionRef: "Yağ Yağlamalı Stern Tube", category: MAK, question: "Yağ yağlamalı stern tube'da deniz suyu girişi nasıl engellenir?", options: ["Header tank basınç farkıyla; lip/face seal'ler ile", "Pervane ile", "Filtre ile", "Engellenemez"], correctAnswer: 0, explanation: "Yağ tankı (header tank) basınç farkı deniz suyu girişini engeller; sızdırmazlık elemanları (lip/face seal) bulunur. Su kontaminasyonu yatak hasarı yapar." },
+      { id: 2, sectionRef: "Su Yağlamalı Stern Tube", category: MAK, question: "Su yağlamalı stern tube'un çevresel avantajı nedir?", options: ["Yağ sızıntısı riski yoktur", "Hiç aşınmaz", "Sızdırmazlık gerekmez", "Daha hızlıdır"], correctAnswer: 0, explanation: "Su yağlamalı stern tube (cutless rubber yatak) deniz suyuyla yağlanır; yağ sızıntısı riski yoktur, sızdırmazlık yalnızca makine dairesi tarafında gerekir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Ara yatak ve trust yatak",
+    blocks: [{ sectionTitles: ["Ara Yatak (Intermediate Bearing)", "Trust (İtme) Yatağı"] }],
+    questions: [
+      { id: 1, sectionRef: "Ara Yatak (Intermediate Bearing)", category: MAK, question: "Ara yatak ne işe yarar ve sıcaklık alarm seviyesi nedir?", options: ["Uzun şaftın sarkmasını/titreşimini önler; ~65°C alarm, 75°C durdurma", "Pervaneyi taşır; 200°C alarm", "Elektrik üretir; alarm yok", "Yakıt ısıtır; 40°C"], correctAnswer: 0, explanation: "Ara yatak uzun şaft hatlarında sarkma/titreşimi önler (beyaz metal); 65°C alarm, 75°C durdurma seviyesi tipiktir." },
+      { id: 2, sectionRef: "Trust (İtme) Yatağı", category: MAK, question: "Büyük iki zamanlı motorlarda trust yatağı nerede bulunur?", options: ["Motor bedplate içinde entegre", "Pervane göbeğinde", "Köprüüstünde", "Yakıt tankında"], correctAnswer: 0, explanation: "Michell tipi trust yatağı en yaygındır; büyük iki zamanlı motorlarda motor bedplate içinde entegredir ve itmeyi gemi yapısına aktarır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Demir ırgadı (windlass)",
+    blocks: [{ sectionTitles: ["Yapı ve Çalışma", "Operasyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Yapı ve Çalışma", category: MAK, question: "Demir ırgadında zinciri kavrayıp döndüren eleman hangisidir?", options: ["Zincir tamburu (wildcat/gypsy)", "Bant freni", "Kavrama", "Tahrik motoru"], correctAnswer: 0, explanation: "Wildcat (gypsy) zincir baklalarına uygun profilli tamburdur; zinciri kavrar ve döndürür. Bant fren tutar, kavrama serbest düşüş için açılır." },
+      { id: 2, sectionRef: "Operasyon", category: MAK, question: "Demir atarken serbest düşüşün hızı nasıl kontrol edilir?", options: ["Bant fren ile", "Motor gücüyle", "Kavramayı kapatarak", "Pervaneyle"], correctAnswer: 0, explanation: "Demir atmada kavrama açılır, zincir ağırlığıyla serbest düşer ve hız bant fren ile kontrol edilir; demir almada kavrama kapatılıp motorla toplanır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Yük vinçleri ve kaldırma kapasitesi",
+    blocks: [{ sectionTitles: ["Vinç Tipleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Vinç Tipleri", category: MAK, question: "Konteyner gemilerinde raylar üzerinde hareket eden vinç tipi hangisidir?", options: ["Gantry (portal) vinç (SWL 30-50 ton)", "Tek bom jib", "İkiz bom", "El vinci"], correctAnswer: 0, explanation: "Gantry (portal) vinçler konteyner gemilerinde raylar üzerinde hareket eder, SWL 30-50 ton; jib/goose-neck vinçler genel/kuru kargoda kullanılır." },
+      { id: 2, sectionRef: "Vinç Tipleri", category: MAK, question: "Modern kuru yük gemilerinde standart vinç hangisidir?", options: ["Goose-neck (tek bom, elektro-hidrolik)", "Gantry crane", "Union purchase", "Buharlı vinç"], correctAnswer: 0, explanation: "Goose-neck tek bomlu elektro-hidrolik vinçler modern kuru yük gemilerinde standarttır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Mooring vinçleri ve otomatik gerilim",
+    blocks: [{ sectionTitles: ["Sistem Özellikleri", "Güvenlik"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Özellikleri", category: MAK, question: "Otomatik gerilim (auto-tension) sistemi ne sağlar?", options: ["Halat gerilimini sabit tutar (gelgit/yük hareketlerini kompanse eder)", "Halatı keser", "Hızı artırır", "Yağ basıncını ölçer"], correctAnswer: 0, explanation: "Auto-tension halat gerilimini sabit tutar; gelgit ve yükleme/boşaltma sırasındaki gemi hareketlerini kompanse eder. Bant fren aşırı yüklenmede kayarak korur." },
+      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Mooring operasyonunda 'snap-back zone' nedir?", options: ["Halat koparsa savrulacağı, ölümcül tehlikeli bölge", "Güvenli dinlenme alanı", "Yakıt deposu", "Vinç motoru"], correctAnswer: 0, explanation: "Snap-back zone, halat kopması durumunda savrulma riskinin ölümcül olduğu işaretli bölgedir; halatların aşınma/kopuk tel muayenesi zorunludur." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Kapak (hatch cover) mekanizmaları",
+    blocks: [{ sectionTitles: ["Tipler ve Sızdırmazlık", "Bakım ve Test"] }],
+    questions: [
+      { id: 1, sectionRef: "Tipler ve Sızdırmazlık", category: MAK, question: "Hatch cover sızdırmazlığı nasıl sağlanır?", options: ["Çelik-çeliğe oturma ve çevredeki lastik conta (rubber packing) ile; drenaj kanalları suyu atar", "Sadece boyayla", "Bant ile", "Sızdırmazlık yoktur"], correctAnswer: 0, explanation: "Sızdırmazlık çelik-çeliğe oturma ve lastik conta ile sağlanır; drenaj kanalları ve geri tepme valfli delikler sızan suyu atar. Tipler: folding, rolling, ponton." },
+      { id: 2, sectionRef: "Bakım ve Test", category: MAK, question: "Kapak sızdırmazlığı hangi yöntemlerle test edilir?", options: ["Tebeşir testi, hortum testi veya ultrasonik sızdırmazlık ölçümü", "Sadece gözle", "Yakma testi", "Hiç test edilmez"], correctAnswer: 0, explanation: "Tebeşir, hortum veya ultrasonik testlerle sızdırmazlık kontrol edilir; bozuk conta su girişi ve yük hasarına yol açar, PSC/sörveylerde denetlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Ramp ve asansör sistemleri",
+    blocks: [{ sectionTitles: ["Rampalar ve Asansörler"] }],
+    questions: [
+      { id: 1, sectionRef: "Rampalar ve Asansörler", category: MAK, question: "Rampalar kapalıyken hangi sızdırmazlık sağlanır?", options: ["Weathertight sızdırmazlık ve emniyet kilidi", "Hiçbir sızdırmazlık", "Sadece boya", "Su geçirir"], correctAnswer: 0, explanation: "Kıç/baş/yan rampalar hidrolik silindir ve tel/zincirle hareket eder; kapalıyken weathertight sızdırmazlık ve emniyet kilidi sağlar." },
+      { id: 2, sectionRef: "Rampalar ve Asansörler", category: MAK, question: "Yanlış operasyon nasıl engellenir?", options: ["Aşırı yük, konum sensörleri ve kilit interlock'ları ile", "Sadece uyarı levhasıyla", "Engellenemez", "Manuel dikkatle"], correctAnswer: 0, explanation: "Aşırı yük koruması, konum sensörleri ve kilit interlock'ları yanlış operasyonu engeller; iç rampalar/asansörler güverteler arası araç geçişi sağlar." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hidrolik pompa tipleri",
+    blocks: [{ sectionTitles: ["Pompa Tipleri", "Değişken Deplasanlı Pompalar"] }],
+    questions: [
+      { id: 1, sectionRef: "Pompa Tipleri", category: MAK, question: "Yüksek basınç (max ~700 bar) sistemlerinde hangi pompa kullanılır?", options: ["Radyal pistonlu pompa", "Dişli pompa", "Paletli pompa", "El pompası"], correctAnswer: 0, explanation: "Radyal pistonlu pompalar max ~700 bar ile yüksek basınç sistemlerinde; dişli pompa (max 250 bar) dümen/vinç beslemede kullanılır." },
+      { id: 2, sectionRef: "Değişken Deplasanlı Pompalar", category: MAK, question: "Swash plate (eğik plaka) açısı değiştirilerek ne ayarlanır?", options: ["Debi (0'dan maksimuma) ve akış yönü terslenebilir", "Sadece basınç", "Sadece sıcaklık", "Hiçbir şey"], correctAnswer: 0, explanation: "Aksiyel pistonlu pompada swash plate açısıyla debi 0-maksimum ayarlanır ve yön terslenebilir; modern dümen makineleri ve vinçlerde standarttır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hidrolik silindir ve motor",
+    blocks: [{ sectionTitles: ["Silindir Kuvveti ve Motor Torku"] }],
+    questions: [
+      { id: 1, sectionRef: "Silindir Kuvveti ve Motor Torku", category: MAK, question: "Hidrolik silindirin ürettiği kuvvet nasıl bulunur?", options: ["F = p·A (basınç × piston alanı)", "F = p/A", "F = A/p", "F = p + A"], correctAnswer: 0, explanation: "F = p·A; çift etkili silindirde geri strokta rod tarafı alanı daha küçük olduğundan kuvvet azalır." },
+      { id: 2, sectionRef: "Silindir Kuvveti ve Motor Torku", category: MAK, question: "Hidrolik motorun torku neye bağlıdır?", options: ["Basınç ve deplasmana (T = p·Vd/2π)", "Sadece devire", "Sadece renge", "Yalnız alana"], correctAnswer: 0, explanation: "Hidrolik motor torku basınç ve deplasmana (devir başına hacim) bağlıdır: T = (p·Vd)/(2π)." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Yön kontrol ve basınç kontrol valfleri",
+    blocks: [{ sectionTitles: ["Yön Kontrol Valfleri", "Basınç Kontrol Valfleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Yön Kontrol Valfleri", category: MAK, question: "Pilot çalışmalı çek valf ne amaçla kullanılır?", options: ["Yük tutma (load holding)", "Basınç sınırlama", "Debi ölçme", "Soğutma"], correctAnswer: 0, explanation: "Çek valf tek yönlü akışa izin verir; pilot çalışmalı çek valf yük tutma amacıyla kullanılır. Spool valfler 2/2…4/3 konfigürasyonlarda olur." },
+      { id: 2, sectionRef: "Basınç Kontrol Valfleri", category: MAK, question: "Relief (emniyet) valfinin görevi nedir?", options: ["Sistem basıncını sınırlar; aşırı basınçta akışkanı tanka döndürür", "Akış yönünü değiştirir", "Debiyi artırır", "Yağı ısıtır"], correctAnswer: 0, explanation: "Relief valf basıncı sınırlar; reducing valf düşük basınçlı dala kontrollü basınç verir; sequence valf belirli basınçta ikinci devreyi aktive eder." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hidrolik devre okuma",
+    blocks: [{ sectionTitles: ["Temel Semboller ve Akış"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Semboller ve Akış", category: MAK, question: "Hidrolik devrede akış sırası genellikle nasıldır?", options: ["Pompa → yön valfi → aktüatör; dönüş tank filtresinden geçer", "Aktüatör → pompa → tank", "Tank → aktüatör → pompa", "Sabit, akış yok"], correctAnswer: 0, explanation: "Akış pompadan yön valfine, oradan aktüatöre gider; emniyet valfi basıncı sınırlar, dönüş hattı tank filtresinden geçer." },
+      { id: 2, sectionRef: "Temel Semboller ve Akış", category: MAK, question: "Hidrolik şemada kesik çizgiler neyi gösterir?", options: ["Pilot/kumanda hatlarını", "Ana basınç hattını", "Tankı", "Elektrik kablosunu"], correctAnswer: 0, explanation: "Kesik çizgiler pilot/kumanda hatlarını gösterir; devrede pompa, tank, relief, yön valfi, akış kontrol, çek valf ve aktüatör bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hidrolik yağ bakımı ve filtrasyon",
+    blocks: [{ sectionTitles: ["Kirlilik ve Filtrasyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Kirlilik ve Filtrasyon", category: MAK, question: "Hidrolik yağdaki katı parçacıklar ve nem neye yol açar?", options: ["Parçacık aşınmaya, nem korozyon ve yağ bozulmasına", "Performans artışına", "Yakıt tasarrufuna", "Hiçbir etki"], correctAnswer: 0, explanation: "Katı parçacıklar valf/pompalarda aşınma, nem ise korozyon ve yağ bozulması yapar; temizlik ISO 4406 koduyla ifade edilir." },
+      { id: 2, sectionRef: "Kirlilik ve Filtrasyon", category: MAK, question: "Hidrolik sistemde hangi filtreler kullanılır?", options: ["Basınç hattı, dönüş hattı ve hava firarı (breather) filtreleri", "Sadece yakıt filtresi", "Filtre kullanılmaz", "Sadece hava filtresi"], correctAnswer: 0, explanation: "Basınç, dönüş ve breather filtreleri kullanılır; yağ analizi (su, viskozite, parçacık) periyodik yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hava kompresörleri (pistonlu, vidalı)",
+    blocks: [{ sectionTitles: ["Çok Kademeli Pistonlu Kompresör", "Kapasite ve Gereklilikler"] }],
+    questions: [
+      { id: 1, sectionRef: "Çok Kademeli Pistonlu Kompresör", category: MAK, question: "Ana makine başlatma havası kompresörünün çıkış basıncı nedir?", options: ["25-30 bar", "2-3 bar", "100 bar", "5 bar"], correctAnswer: 0, explanation: "Başlatma havası kompresörü genellikle 2-3 kademeli, su soğutmalı pistonlu tiptir; çıkış 25-30 bar. Kademeler arası intercooler ve su ayırıcı bulunur." },
+      { id: 2, sectionRef: "Kapasite ve Gereklilikler", category: MAK, question: "SOLAS gereği kaç başlatma havası kompresörü bulunmalıdır?", options: ["En az 2 adet", "1 adet", "5 adet", "Gerekmez"], correctAnswer: 0, explanation: "SOLAS gereği en az 2 kompresör bulunur; toplam kapasite şişeleri 1 saatte doldurabilmeli, şişeler ana motoru art arda en az 12 kez çalıştırabilmelidir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hava tankları ve emniyet düzenlemeleri",
+    blocks: [{ sectionTitles: ["Tank Gereklilikleri", "Muayene Takvimi"] }],
+    questions: [
+      { id: 1, sectionRef: "Tank Gereklilikleri", category: MAK, question: "SOLAS gereği başlatma havası şişeleri nasıl olmalıdır?", options: ["En az 2 bağımsız şişe; her biri toplam kapasitenin yarısını sağlamalı", "Tek büyük şişe", "Üç eşit şişe", "Şişe gerekmez"], correctAnswer: 0, explanation: "En az 2 bağımsız şişe bulunur, her biri toplam kapasitenin yarısını sağlar; emniyet supabı, manometre, drenaj ve izolasyon valfleri standarttır." },
+      { id: 2, sectionRef: "Muayene Takvimi", category: MAK, question: "Hava tankının hidrostatik testi hangi periyot ve basınçta yapılır?", options: ["10 yılda bir, 1.5 × çalışma basıncı", "Yılda bir, 0.5 × basınç", "Hiç", "Aylık, çalışma basıncı"], correctAnswer: 0, explanation: "Dış muayene yıllık, iç muayene 5 yıl, hidrostatik test 10 yılda bir 1.5 × çalışma basıncıyla yapılır; emniyet supabı yıllık test edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Hava kurutucu ve filtre üniteleri",
+    blocks: [{ sectionTitles: ["Kurutma ve Filtreleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Kurutma ve Filtreleme", category: MAK, question: "Kompresör sonrası kurutucu (dryer) ne yapar?", options: ["Çiy noktasını düşürerek nemi giderir", "Havayı ısıtır", "Basıncı artırır", "Yağ ekler"], correctAnswer: 0, explanation: "After-cooler yoğuşan suyu ayırır; kurutucu (soğutmalı/desiccant) çiy noktasını düşürerek nemi giderir, coalescing filtreler kontrol havasını temizler." },
+      { id: 2, sectionRef: "Kurutma ve Filtreleme", category: MAK, question: "Hava tanklarında suyu otomatik boşaltan eleman nedir?", options: ["Otomatik kondens tahliyesi (auto-drain)", "Emniyet supabı", "Manometre", "Filtre"], correctAnswer: 0, explanation: "Auto-drain otomatik kondens tahliyeleri hava tanklarındaki suyu boşaltır." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Starting air sistemi",
+    blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Güvenlik"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "Hava distribütörünün görevi nedir?", options: ["Ateşleme sırasına göre doğru silindirlere sırayla hava göndermek", "Yakıt enjekte etmek", "Soğutmak", "Egzoz atmak"], correctAnswer: 0, explanation: "Distribütör, motor ateşleme sırasına göre üst ölü noktaya yakın pistonların silindir başlatma valflerine sırayla hava gönderir." },
+      { id: 2, sectionRef: "Güvenlik", category: MAK, question: "Starting air hattında alev tutucu (flame arrester) neden bulunur?", options: ["Sızıntılı başlatma valfinden sıcak gaz kaçışı ve patlamayı önlemek için", "Basıncı artırmak için", "Soğutma için", "Gürültü için"], correctAnswer: 0, explanation: "Sızdıran başlatma valfi sıcak yanma gazlarını hava hattına kaçırıp patlamaya yol açabilir; flame arrester, emniyet supabı ve patlama diski bunu önler." },
+    ],
+  },
+  {
+    topicKey: "machine-ship-systems",
+    topicTitle: "Kontrol havası ve servis havası",
+    blocks: [{ sectionTitles: ["Ayrım ve Önceliklendirme"] }],
+    questions: [
+      { id: 1, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Kontrol (enstrüman) havası servis havasından nasıl farklıdır?", options: ["Kuru ve yağsız olmalı; ek kurutma/filtrasyondan geçer", "Daha kirli olabilir", "Daha düşük basınçlıdır her zaman", "Fark yoktur"], correctAnswer: 0, explanation: "Kontrol havası pnömatik valf/kontrol için kuru ve yağsız olmalı, ek kurutma/filtrasyondan geçer; servis havası daha düşük kalite tolere eder." },
+      { id: 2, sectionRef: "Ayrım ve Önceliklendirme", category: MAK, question: "Düşük basınç durumunda hangi havaya öncelik verilir?", options: ["Kontrol havasına (servis bağlantısı kapatılır)", "Servis havasına", "İkisi de kesilir", "Önceliklendirme yok"], correctAnswer: 0, explanation: "Sistemde kontrol havasına öncelik verilir; düşük basınçta servis havası bağlantısı (alarm/otomatik valf ile) kapatılarak kontrol havası korunur." },
+    ],
+  },
 ];
