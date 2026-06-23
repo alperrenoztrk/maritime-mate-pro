@@ -53,7 +53,16 @@ export interface BetaCategory {
 }
 
 /** Section düzeyinde anlatım içeriği OLAN güverte kategorileri. */
-const DECK_CONTENT_KEYS = ["navigation", "meteorology", "communication", "stability", "cargo", "safety", "environment"];
+const DECK_CONTENT_KEYS = [
+  "navigation",
+  "meteorology",
+  "communication",
+  "stability",
+  "cargo",
+  "safety",
+  "environment",
+  "seamanship",
+];
 
 const isMachine = (key: string) => key.startsWith("machine-");
 const machineSlug = (key: string) => key.slice("machine-".length);

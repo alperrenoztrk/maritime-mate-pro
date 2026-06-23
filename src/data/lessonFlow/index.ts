@@ -7,10 +7,11 @@ import { stabilityLessonFlows } from "./stability";
 import { cargoLessonFlows } from "./cargo";
 import { safetyLessonFlows } from "./safety";
 import { environmentLessonFlows } from "./environment";
+import { seamanshipLessonFlows } from "./seamanship";
 
 export type { LessonFlow, LessonBlock, RecapQuestion } from "./types";
 
-/** Tüm rehberli akışlar (beta). Seyir + Meteoroloji + Makine + Haberleşme + Stabilite + Yük + Emniyet + Çevre. */
+/** Tüm rehberli akışlar (beta). Seyir + Meteoroloji + Makine + Haberleşme + Stabilite + Yük + Emniyet + Çevre + Gemicilik. */
 const ALL_FLOWS: LessonFlow[] = [
   ...navigationLessonFlows,
   ...meteorologyLessonFlows,
@@ -20,6 +21,7 @@ const ALL_FLOWS: LessonFlow[] = [
   ...cargoLessonFlows,
   ...safetyLessonFlows,
   ...environmentLessonFlows,
+  ...seamanshipLessonFlows,
 ];
 
 /** Bir kategoriye (topicKey) ait tüm rehberli akışları döndürür. */
