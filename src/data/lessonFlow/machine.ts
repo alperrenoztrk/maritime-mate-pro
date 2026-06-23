@@ -4315,4 +4315,256 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Enerji Akışı ve Kayıplar", category: MAK, question: "Şaft gücünden sonra en büyük enerji kaybı nereye gider?", options: ["Egzoz gazına (~%23-27)", "Yağlama yağına", "Işınıma", "Tatlı suya"], correctAnswer: 0, explanation: "Egzoz gazı ~%23-27 ile en büyük kayıp kaynağıdır; bu yüzden WHRS/ekonomizer ile geri kazanılır." },
     ],
   },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Basınç kavramı ve birimleri",
+    blocks: [{ sectionTitles: ["Tanım ve Formül", "Birim Dönüşümleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanım ve Formül", category: MAK, question: "Basınç nasıl tanımlanır?", options: ["P = F/A (birim alana düşen kuvvet)", "P = F·A", "P = A/F", "P = F + A"], correctAnswer: 0, explanation: "Basınç P = F/A bağıntısıyla tanımlanır; SI birimi Pascal (Pa = N/m²), denizcilikte bar ve kg/cm² yaygındır." },
+      { id: 2, sectionRef: "Birim Dönüşümleri", category: MAK, question: "1 bar kaç Pascal'dır?", options: ["100 000 Pa", "1 000 Pa", "98 066 Pa", "6 894 Pa"], correctAnswer: 0, explanation: "1 bar = 10⁵ Pa = 100 000 Pa; 1 atm = 101 325 Pa, 1 psi = 6 894.76 Pa." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Hidrostatik basınç denklemleri",
+    blocks: [{ sectionTitles: ["Temel Denklem"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Denklem", category: MAK, question: "Durgun akışkanda h derinliğindeki basınç nasıl bulunur?", options: ["P = P₀ + ρgh", "P = P₀ − ρgh", "P = ρg/h", "P = P₀·h"], correctAnswer: 0, explanation: "Yüzey basıncına o derinlikteki sıvı sütununun ağırlığı eklenir: P = P₀ + ρgh." },
+      { id: 2, sectionRef: "Temel Denklem", category: MAK, question: "Hidrostatik basınç derinlikle nasıl değişir?", options: ["Derinlik arttıkça doğrusal olarak artar", "Azalır", "Değişmez", "Karekökle artar"], correctAnswer: 0, explanation: "P = P₀ + ρgh; basınç derinlik (h) ile doğrusal artar." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Mutlak ve manometrik basınç",
+    blocks: [{ sectionTitles: ["Tanımlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Mutlak basınç neye göre ölçülür?", options: ["Tam vakuma (sıfır basınca) göre", "Atmosfere göre", "Deniz seviyesine göre", "Manometreye göre"], correctAnswer: 0, explanation: "Mutlak basınç tam vakuma göre, manometrik basınç ise atmosfer basıncına göre ölçülür: P_mutlak = P_manometrik + P_atm." },
+      { id: 2, sectionRef: "Tanımlar", category: MAK, question: "Vakum basıncı neyi ifade eder?", options: ["Atmosfer basıncının altındaki basınçları", "Tam vakumu", "En yüksek basıncı", "Sabit basıncı"], correctAnswer: 0, explanation: "Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır: P_vakum = P_atm − P_mutlak." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Pascal prensibi",
+    blocks: [{ sectionTitles: ["Prensip ve Uygulama"] }],
+    questions: [
+      { id: 1, sectionRef: "Prensip ve Uygulama", category: MAK, question: "Pascal prensibine göre kapalı akışkana uygulanan basınç ne olur?", options: ["Her noktaya ve kap duvarlarına eşit iletilir", "Sadece dibe iletilir", "Kaybolur", "Yarıya iner"], correctAnswer: 0, explanation: "Kapalı kapta durgun akışkana uygulanan basınç her noktaya eşit iletilir; bu, küçük kuvvetle büyük kuvvet üretmeyi sağlar (F₂ = F₁·A₂/A₁)." },
+      { id: 2, sectionRef: "Prensip ve Uygulama", category: MAK, question: "Hidrolik sistemde A₂ pistonu A₁'in 10 katıysa kuvvet nasıl değişir?", options: ["F₂ = 10·F₁ (kuvvet 10 kat büyür)", "Değişmez", "Onda birine düşer", "İki katına çıkar"], correctAnswer: 0, explanation: "F₁/A₁ = F₂/A₂ → F₂ = F₁·(A₂/A₁); alan 10 kat ise kuvvet 10 kat büyür." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Düz ve eğri yüzeylere etkiyen basınç kuvveti",
+    blocks: [{ sectionTitles: ["Düz Yüzeye Etki Eden Kuvvet"] }],
+    questions: [
+      { id: 1, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "Düz yüzeye etkiyen toplam basınç kuvveti nasıl bulunur?", options: ["Ağırlık merkezindeki basınç × yüzey alanı (F = ρg·h_c·A)", "Sadece derinlikle", "Sadece alanla", "F = ρg/A"], correctAnswer: 0, explanation: "Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile alanının çarpımıdır: F = ρg·h_c·A." },
+      { id: 2, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "F = ρg·h_c·A formülünde h_c neyi ifade eder?", options: ["Yüzeyin ağırlık merkezinin derinliği", "Toplam derinlik", "Yüzey yüksekliği", "Basınç"], correctAnswer: 0, explanation: "h_c yüzeyin ağırlık (centroid) merkezinin sıvı yüzeyinden derinliğidir." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Yüzdürme kuvveti (Arşimet)",
+    blocks: [{ sectionTitles: ["Arşimet Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme (buoyancy) kuvveti neye eşittir?", options: ["Batık hacim × akışkan yoğunluğu × g (taşırılan sıvının ağırlığı)", "Cismin ağırlığı", "Yüzey alanı × basınç", "Sıfır"], correctAnswer: 0, explanation: "F_b = ρ_akışkan × g × V_batık; yüzdürme kuvveti taşırılan akışkanın ağırlığına eşittir." },
+      { id: 2, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme kuvveti hangi hacme bağlıdır?", options: ["Cismin batık (su altındaki) hacmine", "Cismin toplam hacmine her zaman", "Yüzeydeki hacme", "Hacimden bağımsızdır"], correctAnswer: 0, explanation: "Yüzdürme kuvveti cismin batık hacmi (V_batık) ile orantılıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Akım çizgileri ve akış tipleri",
+    blocks: [{ sectionTitles: ["Akış Sınıflandırması"] }],
+    questions: [
+      { id: 1, sectionRef: "Akış Sınıflandırması", category: MAK, question: "Kararlı (steady) akış neyi ifade eder?", options: ["Hızın zamanla değişmediği akışı", "Hızın konumla değişmediği akışı", "Türbülanslı akışı", "Durgun akışkanı"], correctAnswer: 0, explanation: "Kararlı akışta hız zamanla değişmez (boru hattında sabit debi); kararsızda değişir (vana açılma anı)." },
+      { id: 2, sectionRef: "Akış Sınıflandırması", category: MAK, question: "Düzgün (uniform) akışta hız neye göre değişmez?", options: ["Konuma göre", "Zamana göre", "Basınca göre", "Hiçbir şeye göre"], correctAnswer: 0, explanation: "Düzgün akışta hız konumla değişmez (sabit kesitli uzun boru); düzgün olmayanda değişir (daralan boru)." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Laminer ve türbülanslı akış",
+    blocks: [{ sectionTitles: ["Rejim Ayrımı"] }],
+    questions: [
+      { id: 1, sectionRef: "Rejim Ayrımı", category: MAK, question: "Boru akışında laminer rejim hangi Reynolds sayısında görülür?", options: ["Re < 2300", "Re > 4000", "Re = 10000", "Re > 100000"], correctAnswer: 0, explanation: "Laminer akış Re < 2300, türbülanslı akış Re > 4000'de görülür; arası geçiş bölgesidir." },
+      { id: 2, sectionRef: "Rejim Ayrımı", category: MAK, question: "Laminer akışta hız profili nasıldır?", options: ["Parabolik", "Tamamen düz", "Sıfır", "Dairesel"], correctAnswer: 0, explanation: "Laminer akışta hız profili paraboliktir ve sürtünme düşüktür; türbülanslıda profil daha düz, sürtünme yüksektir." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Süreklilik denklemi",
+    blocks: [{ sectionTitles: ["Denklem"] }],
+    questions: [
+      { id: 1, sectionRef: "Denklem", category: MAK, question: "Sıkıştırılamaz akışkan için süreklilik denklemi nedir?", options: ["A₁V₁ = A₂V₂ = Q (sabit)", "P₁ = P₂", "V₁ = V₂ her zaman", "A₁ = A₂"], correctAnswer: 0, explanation: "Sıkışmaz akışta hacimsel debi sabittir: A₁V₁ = A₂V₂ = Q." },
+      { id: 2, sectionRef: "Denklem", category: MAK, question: "Boru kesiti daralırsa akış hızı nasıl değişir?", options: ["Artar (debi sabit kaldığı için)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "Q = AV sabit olduğundan alan (A) azalınca hız (V) artar." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Enerji ve momentum denklemleri",
+    blocks: [{ sectionTitles: ["Bernoulli (Enerji) Denklemi", "Momentum Denklemi"] }],
+    questions: [
+      { id: 1, sectionRef: "Bernoulli (Enerji) Denklemi", category: MAK, question: "İdeal akışta Bernoulli denklemine göre ne sabittir?", options: ["Toplam enerji (basınç + hız + yükseklik) bir akım çizgisi boyunca", "Sadece basınç", "Sadece hız", "Sadece sıcaklık"], correctAnswer: 0, explanation: "İdeal akışta p/(ρg) + v²/2g + z = sabit; gerçek akışta sürtünme kaybı (hf) ve pompa eklemesi (hp) terimleri eklenir." },
+      { id: 2, sectionRef: "Momentum Denklemi", category: MAK, question: "Momentum denklemi neyi verir?", options: ["Akışkanın dirsek/daralma/kanada uyguladığı reaksiyon kuvvetini (ΣF = ρQ(v₂−v₁))", "Sadece basıncı", "Sadece debiyi", "Sıcaklığı"], correctAnswer: 0, explanation: "Kontrol hacmine giren/çıkan momentum farkı net kuvvete eşittir: ΣF = ṁ(v₂−v₁) = ρQ(v₂−v₁)." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Darcy–Weisbach denklemi",
+    blocks: [{ sectionTitles: ["Denklem"] }],
+    questions: [
+      { id: 1, sectionRef: "Denklem", category: MAK, question: "Darcy-Weisbach denklemine göre sürtünme kaybı neye bağlıdır?", options: ["Sürtünme katsayısı, L/D oranı ve hız karesi (h_f = f·(L/D)·V²/2g)", "Sadece basınca", "Sadece sıcaklığa", "Sadece debiye"], correctAnswer: 0, explanation: "h_f = f·(L/D)·(V²/2g); sürtünme kaybı boru uzunluğu/çapı, hız karesi ve sürtünme katsayısına bağlıdır." },
+      { id: 2, sectionRef: "Denklem", category: MAK, question: "Akış hızı iki katına çıkarsa sürtünme kaybı nasıl değişir?", options: ["Yaklaşık dört katına çıkar (V² ile orantılı)", "İki katına", "Yarıya iner", "Değişmez"], correctAnswer: 0, explanation: "h_f hız karesiyle (V²) orantılı olduğundan hız 2 katına çıkınca kayıp ~4 katına çıkar." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Moody diyagramı ve sürtünme katsayısı",
+    blocks: [{ sectionTitles: ["Darcy-Weisbach ve Sürtünme Katsayısı", "Moody Diyagramının Kullanımı"] }],
+    questions: [
+      { id: 1, sectionRef: "Darcy-Weisbach ve Sürtünme Katsayısı", category: MAK, question: "Laminer akışta sürtünme katsayısı f nasıl bulunur?", options: ["f = 64/Re (yalnızca Re'ye bağlı)", "f = ε/D", "f sabittir", "f = Re/64"], correctAnswer: 0, explanation: "Laminer akışta (Re < 2300) f = 64/Re; türbülanslıda bağıl pürüzlülük (ε/D) belirleyici olur." },
+      { id: 2, sectionRef: "Moody Diyagramının Kullanımı", category: MAK, question: "Moody diyagramından f'i okumak için hangi değerler gerekir?", options: ["Reynolds sayısı (Re) ve bağıl pürüzlülük (ε/D)", "Sadece sıcaklık", "Sadece basınç", "Sadece debi"], correctAnswer: 0, explanation: "Re ve ε/D bilindiğinde f Moody diyagramından okunur; yüksek Re ve pürüzlülükte f sabitlenir (tam türbülanslı bölge)." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Boru çapı ve hız hesapları",
+    blocks: [{ sectionTitles: ["Süreklilik Denklemi"] }],
+    questions: [
+      { id: 1, sectionRef: "Süreklilik Denklemi", category: MAK, question: "Verilen debi (Q) ve hız (v) için boru çapı nasıl bulunur?", options: ["D = √(4Q/(π·v))", "D = Q·v", "D = π·Q", "D = v/Q"], correctAnswer: 0, explanation: "Q = (π/4)D²·v olduğundan D = √(4Q/(π·v))." },
+      { id: 2, sectionRef: "Süreklilik Denklemi", category: MAK, question: "Boru çapı belirlenirken neden önerilen hız aralıkları kullanılır?", options: ["Erozyon ve basınç kaybını dengelemek için (deniz suyunda sınırlı)", "Sadece estetik için", "Çapı küçültmek için", "Önemi yok"], correctAnswer: 0, explanation: "Emme ~1-2 m/s, basma ~2-3 m/s gibi aralıklar erozyon ve basınç kaybını dengeler; deniz suyu hatlarında erozyonu önlemek için hız sınırlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Lokal kayıplar (dirsek, vana, daralma)",
+    blocks: [{ sectionTitles: ["K Katsayısı Yöntemi"] }],
+    questions: [
+      { id: 1, sectionRef: "K Katsayısı Yöntemi", category: MAK, question: "Yerel (lokal) kayıplar nasıl hesaplanır?", options: ["hL = K·v²/2g (her armatür için K katsayısı)", "hL = f·L/D", "hL = ρgh", "hL = 0"], correctAnswer: 0, explanation: "Her armatür için kayıp katsayısı (K) tanımlanır ve hL = K·v²/2g ile hesaplanır; tüm K'ler toplanır." },
+      { id: 2, sectionRef: "K Katsayısı Yöntemi", category: MAK, question: "Eşdeğer boy (Le) yöntemi neyi sağlar?", options: ["Armatür kaybını eşdeğer düz boru uzunluğuna çevirme (Le = K·D/f)", "Basıncı artırma", "Debiyi ölçme", "Hızı düşürme"], correctAnswer: 0, explanation: "Le = K·D/f ile armatür kaybı eşdeğer boru uzunluğuna çevrilebilir." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Seri ve paralel boru sistemleri",
+    blocks: [{ sectionTitles: ["Seri ve Paralel Davranış"] }],
+    questions: [
+      { id: 1, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Seri bağlı borularda debi ve kayıp nasıldır?", options: ["Debi tüm borularda aynı; toplam kayıp segment kayıplarının toplamı", "Debi toplanır", "Kayıp sabit", "Basınç sıfır"], correctAnswer: 0, explanation: "Seri bağlamada Q sabittir ve hf_toplam = Σhfᵢ." },
+      { id: 2, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Paralel bağlı kollarda ne sabittir?", options: ["Her kol üzerindeki basınç kaybı (Δh); toplam debi kolların toplamı", "Debi her kolda aynı", "Hız sabit", "Hiçbir şey"], correctAnswer: 0, explanation: "Paralel bağlamada Δh sabittir, Q_toplam = ΣQᵢ; düşük dirençli kol daha çok debi taşır." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Boru hattı tasarım prensipleri",
+    blocks: [{ sectionTitles: ["Temel Tasarım Kriterleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Tasarım Kriterleri", category: MAK, question: "Boru hattında ısıl genleşme nasıl karşılanır?", options: ["Kompansatör (expansion bend/bellows) ile", "Vana kapatarak", "Hız artırarak", "Hiçbir önlem alınmaz"], correctAnswer: 0, explanation: "Isıl genleşme kompansatör (expansion bend/bellows) ile karşılanır; destek ve askılar titreşim/sehimi önler." },
+      { id: 2, sectionRef: "Temel Tasarım Kriterleri", category: MAK, question: "Pompa emme tarafında kavitasyonu önlemek için ne sağlanır?", options: ["Yeterli NPSH", "Yüksek hız", "Dar çap", "Açık vent yok"], correctAnswer: 0, explanation: "Emme tarafında NPSH yeterliliği sağlanarak kavitasyon önlenir; eğim, vent ve drenaj hava kilidi/tortuyu önler." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Santrifüj pompa çalışma prensibi",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Pompa Bileşenleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Santrifüj pompada akışkan nasıl basınçlandırılır?", options: ["Çark merkezkaç kuvvetiyle dışa iter; volüt/difüzör hızı basınca çevirir", "Pistonla sıkıştırılır", "Dişlilerle taşınır", "Vakumla çekilir"], correctAnswer: 0, explanation: "Akışkan çarkın merkezinden girer, merkezkaç kuvvetiyle dışa itilir ve volüt/difüzör hız enerjisini basınç enerjisine dönüştürür." },
+      { id: 2, sectionRef: "Pompa Bileşenleri", category: MAK, question: "Santrifüj pompada şaft geçiş noktasında sızdırmazlığı ne sağlar?", options: ["Mekanik salmastra (mekanik seal)", "Çark", "Volüt", "Flanş"], correctAnswer: 0, explanation: "Mekanik salmastra/seal şaft geçişinde sızdırmazlık sağlar; çark enerji aktarır, volüt hızı basınca çevirir." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Pompa karakteristik eğrileri (H-Q)",
+    blocks: [{ sectionTitles: ["Temel Eğriler", "Çalışma Noktası"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Eğriler", category: MAK, question: "H-Q eğrisinde debi arttıkça basma yüksekliği nasıl değişir?", options: ["Düşer", "Artar", "Değişmez", "Sıfırlanır sonra artar"], correctAnswer: 0, explanation: "H-Q eğrisinde debi (Q) arttıkça basma yüksekliği (H) düşer; en yüksek verim BEP noktasındadır." },
+      { id: 2, sectionRef: "Çalışma Noktası", category: MAK, question: "Pompanın çalışma noktası nasıl belirlenir?", options: ["Pompa H-Q eğrisi ile sistem eğrisinin kesişimi", "Sadece pompa eğrisinden", "Sadece sistem eğrisinden", "Rastgele"], correctAnswer: 0, explanation: "Çalışma noktası, pompa H-Q eğrisi ile sistem eğrisinin kesiştiği noktadır; BEP'ten uzaklaştıkça verim düşer, titreşim/aşınma artar." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Sistem eğrisi ve çalışma noktası",
+    blocks: [{ sectionTitles: ["Sistem Eğrisi", "Çalışma Noktasının Kayması"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Eğrisi", category: MAK, question: "Sistem eğrisi hangi bileşenlerden oluşur?", options: ["Statik yük + debinin karesiyle artan dinamik kayıplar (H = H_statik + k·Q²)", "Sadece statik yük", "Sadece sürtünme", "Sabit bir değer"], correctAnswer: 0, explanation: "H_sistem = H_statik + k·Q²; statik yük ile debinin karesiyle artan dinamik kayıpların toplamıdır." },
+      { id: 2, sectionRef: "Çalışma Noktasının Kayması", category: MAK, question: "Vana kısma (throttling) çalışma noktasını nasıl etkiler?", options: ["Sistem eğrisini dikleştirir, düşük debiye kaydırır", "Debiyi artırır", "Eğriyi düzleştirir", "Etkilemez"], correctAnswer: 0, explanation: "Throttling sistem eğrisini dikleştirip düşük debiye kaydırır; VFD ile devir ayarı verimli debi kontrolü sağlar." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Pozitif deplasanlı pompalar (dişli, vidalı)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi ve Tipler", "Emniyet Valfi Zorunluluğu"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi ve Tipler", category: MAK, question: "Pozitif deplasmanlı pompada debi neye bağlıdır?", options: ["Devire (basınçtan neredeyse bağımsız)", "Sadece basınca", "Sadece sıcaklığa", "Debi sabittir"], correctAnswer: 0, explanation: "Dişli/vidalı pompalarda hacimler emmeden basmaya taşınır; debi devirle orantılıdır, basınç arttıkça debi çok az değişir." },
+      { id: 2, sectionRef: "Emniyet Valfi Zorunluluğu", category: MAK, question: "PD pompanın basma tarafında neden emniyet/by-pass valfi zorunludur?", options: ["Kapalı vanaya karşı basınç boruyu/pompayı patlatabileceği için", "Debiyi artırmak için", "Gürültüyü azaltmak için", "Gerekli değildir"], correctAnswer: 0, explanation: "Kapalı vanaya karşı çalışmada basınç tehlikeli yükselir; bu yüzden basma tarafında mutlaka emniyet/by-pass valfi bulunur (santrifüjden temel fark)." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Pompa seçimi ve boyutlandırma",
+    blocks: [{ sectionTitles: ["Seçim Kriterleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Seçim Kriterleri", category: MAK, question: "Kavitasyonu önlemek için hangi koşul sağlanmalıdır?", options: ["NPSHa > NPSHr (emniyet payıyla)", "NPSHa < NPSHr", "Debi maksimum", "Hız sıfır"], correctAnswer: 0, explanation: "Mevcut emme yükü (NPSHa) gereken emme yükünden (NPSHr) büyük olmalıdır; ayrıca çalışma noktası BEP'e yakın seçilir." },
+      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pompa şaft gücü nasıl hesaplanır?", options: ["P_şaft = ρ·g·Q·H / η", "P = Q + H", "P = η·Q", "P = ρ/H"], correctAnswer: 0, explanation: "P_şaft = ρ·g·Q·H/η; debi, basma yükü ve verime bağlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Seri ve paralel pompa çalıştırma",
+    blocks: [{ sectionTitles: ["Seri ve Paralel"] }],
+    questions: [
+      { id: 1, sectionRef: "Seri ve Paralel", category: MAK, question: "Paralel pompa çalıştırma ne sağlar?", options: ["Aynı basma yükünde debilerin toplanması (yüksek debi)", "Aynı debide basınç toplanması", "Debiyi yarıya indirme", "Basıncı sıfırlama"], correctAnswer: 0, explanation: "Paralelde aynı H'de debiler toplanır (yüksek debi için); ancak sistem eğrisi dikse debi artışı sınırlıdır." },
+      { id: 2, sectionRef: "Seri ve Paralel", category: MAK, question: "Seri pompa çalıştırma hangi durumda uygundur?", options: ["Yüksek basınç gerektiren sistemler (aynı debide H toplanır)", "Yüksek debi", "Düşük basınç", "Hiçbiri"], correctAnswer: 0, explanation: "Seride aynı Q'da basma yükleri toplanır (H_top = ΣH); yüksek basınç gerektiren sistemler için uygundur." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Balast boru sistemi",
+    blocks: [{ sectionTitles: ["Sistem Bileşenleri", "Operasyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Bileşenleri", category: MAK, question: "BWM Convention gereği balast sisteminde ne zorunludur?", options: ["Balast su arıtma sistemi (BWTS)", "Üçüncü pompa", "Buhar türbini", "Ekstra sea chest"], correctAnswer: 0, explanation: "Balast sistemi pompalar, sea chest, tanklar ve sensörlerden oluşur; BWM Convention gereği balast su arıtma sistemi (BWTS) zorunludur." },
+      { id: 2, sectionRef: "Operasyon", category: MAK, question: "Balast operasyonu nasıl planlanır?", options: ["Stabilite ve trim sınırları içinde kalacak şekilde", "Mümkün olan en hızlı şekilde sınır gözetmeden", "Sadece limanda", "Rastgele"], correctAnswer: 0, explanation: "Yükleme/boşaltmada stabilite ve trim sınırları korunur; arıtma/değişim yapılmadan deşarj sınırlamaları uygulanır." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Sintine boru sistemi",
+    blocks: [{ sectionTitles: ["Sistem Yapısı", "Çevre Gereklilikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "SOLAS gereği sintine sisteminde ne bulunmalıdır?", options: ["En az iki bağımsız sintine pompası ve acil sintine emişi (direct bilge suction)", "Tek pompa yeterli", "Sadece el pompası", "Hiçbir pompa"], correctAnswer: 0, explanation: "Her bölmede sintine kuyusu, ana hat, çek valfler ve süzgeçler bulunur; SOLAS en az iki bağımsız pompa ve acil sintine emişi ister." },
+      { id: 2, sectionRef: "Çevre Gereklilikleri", category: MAK, question: "Sintine suyu denize basılmadan önce ne yapılmalıdır?", options: ["Yağlı su ayırıcıdan (OWS) geçirilip 15 ppm altına indirilmeli", "Doğrudan basılır", "Isıtılır", "Renklendirilir"], correctAnswer: 0, explanation: "Sintine suyu doğrudan denize basılamaz; OWS ile 15 ppm altına indirilir ve ODMCS sürekli izleme yapar." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Soğutma suyu sistemleri",
+    blocks: [{ sectionTitles: ["Merkezi Soğutma Mimarisi", "Bileşenler ve Kontrol"] }],
+    questions: [
+      { id: 1, sectionRef: "Merkezi Soğutma Mimarisi", category: MAK, question: "Merkezi soğutmada HT ve LT tatlı su devreleri neyi soğutur?", options: ["HT silindir gömleği/kapakları; LT yağ, şarj havası ve yardımcıları", "İkisi de sadece yağı", "İkisi de pervaneyi", "Hiçbirini"], correctAnswer: 0, explanation: "HT devresi silindir gömleği/kapaklarını, LT devresi yağ/şarj havası soğutucusu ve yardımcıları soğutur; tatlı su korozyon/tuz birikimini azaltır." },
+      { id: 2, sectionRef: "Bileşenler ve Kontrol", category: MAK, question: "Soğutma suyu sıcaklığı genellikle hangi eleman ile kontrol edilir?", options: ["Üç yollu termostatik valf", "Manuel kürek", "Turboşarjer", "Buji"], correctAnswer: 0, explanation: "Sıcaklık üç yollu termostatik valf ile kontrol edilir; sistemde plakalı soğutucular, genleşme tankı ve deniz suyu tarafında sea chest/filtre bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Yakıt transfer ve servis hatları",
+    blocks: [{ sectionTitles: ["Yakıt Akış Zinciri", "Viskozite ve Isıtma Kontrolü"] }],
+    questions: [
+      { id: 1, sectionRef: "Yakıt Akış Zinciri", category: MAK, question: "Bunker tankından motora yakıtın doğru akış sırası nedir?", options: ["Bunker → transfer pompası → çöktürme tankı → purifier → servis tankı → booster → makine", "Bunker → makine → purifier", "Servis → bunker → çöktürme", "Purifier → bunker → makine"], correctAnswer: 0, explanation: "Bunker → transfer pompası → settling (çöktürme) → seperatör/purifier → servis tankı → booster ünitesi → makine; booster basınçlandırıp enjeksiyon viskozitesine ısıtır." },
+      { id: 2, sectionRef: "Viskozite ve Isıtma Kontrolü", category: MAK, question: "HFO enjeksiyon viskozitesi nasıl sağlanır?", options: ["Viskozite kontrollü ısıtıcı (viscotherm) ile ~10-15 cSt'ye getirilerek", "Soğutarak", "Su ekleyerek", "Hiç ısıtmadan"], correctAnswer: 0, explanation: "HFO viscotherm ile ~10-15 cSt'ye getirilir; servis tankında seviye alarmları ve hızlı kapama valfleri yangın güvenliği için bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Valf tipleri ve seçim kriterleri",
+    blocks: [{ sectionTitles: ["Başlıca Valf Tipleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Başlıca Valf Tipleri", category: MAK, question: "Akış regülasyonu (kontrol) için hangi valf uygundur?", options: ["Küresel (globe) valf", "Sürgülü (gate) valf", "Çek (check) valf", "Emniyet valfi"], correctAnswer: 0, explanation: "Globe valf akış regülasyonu için iyidir (yüksek basınç kaybı, iyi kontrol); gate valf tam açık/kapalı kapama içindir." },
+      { id: 2, sectionRef: "Başlıca Valf Tipleri", category: MAK, question: "Geri akışı (ters akışı) otomatik önleyen valf hangisidir?", options: ["Çek valf (check/NRV)", "Kelebek valf", "Globe valf", "Gate valf"], correctAnswer: 0, explanation: "Çek valf (NRV) tek yönlü akışa izin verip geri akışı otomatik önler; emniyet valfi aşırı basınca karşı korur." },
+    ],
+  },
+  {
+    topicKey: "machine-fluid-mechanics",
+    topicTitle: "Boru malzemeleri ve standartlar",
+    blocks: [{ sectionTitles: ["Yaygın Malzemeler", "Standart ve Sınıf Kuralları"] }],
+    questions: [
+      { id: 1, sectionRef: "Yaygın Malzemeler", category: MAK, question: "Deniz suyu hatları için tercih edilen malzeme hangisidir?", options: ["Bakır-nikel (CuNi 90/10)", "Karbon çeliği", "Adi demir", "Plastik PVC"], correctAnswer: 0, explanation: "CuNi 90/10 deniz suyu hatlarında korozyon ve marine growth direnci nedeniyle tercih edilir; yakıt/yağ/buharda karbon çeliği kullanılır." },
+      { id: 2, sectionRef: "Standart ve Sınıf Kuralları", category: MAK, question: "Borular hangi parametrelerle tanımlanır?", options: ["DN (nominal çap) ve schedule (et kalınlığı)", "Sadece renk", "Sadece uzunluk", "Sadece ağırlık"], correctAnswer: 0, explanation: "Borular DN ve schedule ile tanımlanır; taşıdığı akışkana göre sınıf kurallarınca sınıflara ayrılır (yüksek risk → daha sıkı test)." },
+    ],
+  },
 ];
