@@ -5368,4 +5368,157 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Kalite Uyuşmazlığı", category: MAK, question: "Off-spec yakıt kullanılmak zorunda kalınırsa ne yapılır?", options: ["Purifier akış hızı düşürülür, filtrasyon artırılır, motor parametreleri sıkı izlenir", "Hiçbir önlem alınmaz", "Yakıt ısıtılmaz", "Motor tam yüke alınır"], correctAnswer: 0, explanation: "Analiz ISO 8217'yi aşarsa off-spec claim açılır; kullanım zorunluysa purifier akışı düşürülür, filtrasyon artırılır ve motor parametreleri sıkı izlenir (motor güvenliği önceliklidir)." },
     ],
   },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Kompresör tipleri (pistonlu, vidalı)",
+    blocks: [{ sectionTitles: ["Pistonlu Kompresör", "Vidalı Kompresör"] }],
+    questions: [
+      { id: 1, sectionRef: "Pistonlu Kompresör", category: MAK, question: "İki kademeli pistonlu kompresör hangi uygulamada kullanılır?", options: ["Düşük sıcaklık (−35°C ve altı) uygulamalarında", "Sadece yüksek sıcaklık", "Sadece klima", "Hiçbir yerde"], correctAnswer: 0, explanation: "Pistonlu kompresör gemi soğutmasında en yaygındır; tek kademeli düşük basınç oranları, iki kademeli düşük sıcaklık (−35°C ve altı) için kullanılır." },
+      { id: 2, sectionRef: "Vidalı Kompresör", category: MAK, question: "Vidalı kompresörde kapasite nasıl kontrol edilir?", options: ["Sürgü valf (slide valve) ile sürekli (%10-100)", "Sadece açma-kapama", "Devir sabit, kontrol yok", "Yağ ile"], correctAnswer: 0, explanation: "Vidalı kompresör iki helisel rotorla sürekli/düzgün basınç sağlar; kapasite slide valve ile %10-100 arası sürekli ayarlanır, titreşimi düşüktür." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Kondenser ve evaporatör",
+    blocks: [{ sectionTitles: ["Kondenser", "Evaporatör"] }],
+    questions: [
+      { id: 1, sectionRef: "Kondenser", category: MAK, question: "Deniz suyu giriş sıcaklığı kondenser performansını nasıl etkiler?", options: ["Tropikal bölgelerde (32°C) kapasite düşer", "Etkilemez", "Sıcaklık arttıkça kapasite artar", "Sadece basıncı etkiler"], correctAnswer: 0, explanation: "Gemi soğutmasında genellikle shell & tube kondenser kullanılır; deniz suyu giriş sıcaklığı performansı doğrudan etkiler, tropikte (32°C) kapasite düşer." },
+      { id: 2, sectionRef: "Evaporatör", category: MAK, question: "Direkt genleşme (DX) evaporatöründe soğutucu akışkan nerede akar?", options: ["Boruların içinde; dışarıdaki hava/sıvıyı soğutur", "Kabuk tarafında", "Borular dışında", "Akmaz"], correctAnswer: 0, explanation: "DX evaporatörde soğutucu boruların içinden geçip dışarıdaki havayı/sıvıyı soğutur; shell & tube tipte ise brine/glikol borularda akar." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Genleşme valfi (TXV, EEV)",
+    blocks: [{ sectionTitles: ["Termostatik Genleşme Valfi (TXV)", "Elektronik Genleşme Valfi (EEV)"] }],
+    questions: [
+      { id: 1, sectionRef: "Termostatik Genleşme Valfi (TXV)", category: MAK, question: "TXV açıklığını neye göre ayarlar?", options: ["Evaporatör çıkışındaki kızgınlık derecesine (superheat, ~5-8 K)", "Kondenser basıncına", "Devire", "Renge"], correctAnswer: 0, explanation: "TXV, evaporatör çıkışındaki kızgınlığa göre açar; termik ampul sıcaklığı algılar. Kızgınlık ~5-8 K; düşükse sıvı dönüşü, yüksekse evaporatör yetersiz kullanımı olur." },
+      { id: 2, sectionRef: "Elektronik Genleşme Valfi (EEV)", category: MAK, question: "EEV'nin TXV'ye göre avantajı nedir?", options: ["PID ile daha hassas kontrol ve daha geniş çalışma aralığı", "Daha ucuz ve basit", "Sensör gerektirmez", "Daha az hassas"], correctAnswer: 0, explanation: "EEV step/pulse motorla tahrik edilir ve PID algoritmasıyla kızgınlığı hassas kontrol eder; daha geniş aralık sağlar ve modern sistemlerde yaygınlaşır." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Doğal soğutucu akışkanlar (CO₂, NH₃)",
+    blocks: [{ sectionTitles: ["CO₂ (R-744)", "Amonyak (R-717)"] }],
+    questions: [
+      { id: 1, sectionRef: "CO₂ (R-744)", category: MAK, question: "CO₂ (R-744) soğutucu akışkanın özelliği nedir?", options: ["Transkritik çevrimde çalışır, yüksek basınç (80-130 bar) gerektirir; toksik/yanıcı değildir", "Çok düşük basınçlı", "Yanıcıdır", "Ozon tabakasına zararlı"], correctAnswer: 0, explanation: "CO₂ transkritik çalışır (kritik 31°C, 73.8 bar), 80-130 bar yüksek basınç gerektirir; toksik/yanıcı değildir, reefer sistemlerinde yaygınlaşmaktadır (ODP 0, GWP 1)." },
+      { id: 2, sectionRef: "Amonyak (R-717)", category: MAK, question: "Amonyak (R-717) neden makine dairesi dışında konumlandırılır?", options: ["Toksik ve yanıcı olduğu için (SOLAS Reg. II-2)", "Çok ucuz olduğu için", "Düşük COP nedeniyle", "Ozon zararı nedeniyle"], correctAnswer: 0, explanation: "Amonyağın COP'si yüksektir (mükemmel termodinamik) ama toksik ve hafif yanıcı olduğundan SOLAS Reg. II-2 gereği makine dairesi dışında konumlandırılır." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "ODP ve GWP kavramları",
+    blocks: [{ sectionTitles: ["ODP (Ozone Depletion Potential)", "GWP (Global Warming Potential)"] }],
+    questions: [
+      { id: 1, sectionRef: "ODP (Ozone Depletion Potential)", category: MAK, question: "ODP neyi ölçer ve referansı nedir?", options: ["Ozon tabakasına zararı; R-11 (ODP=1.0) referans alınır", "Küresel ısınmayı; CO₂ referans", "Basıncı", "Toksisiteyi"], correctAnswer: 0, explanation: "ODP, maddenin ozona zararını R-11 (ODP=1.0) ile karşılaştırır; klor/brom içerenler zarar verir, HFC ve doğal akışkanların ODP'si sıfırdır." },
+      { id: 2, sectionRef: "GWP (Global Warming Potential)", category: MAK, question: "GWP neyi ifade eder?", options: ["100 yıllık periyotta tutulan ısının CO₂ (GWP=1) ile karşılaştırması", "Ozon zararını", "Basıncı", "Viskoziteyi"], correctAnswer: 0, explanation: "GWP, maddenin 100 yıllık ısı tutma etkisini CO₂ (GWP=1) ile karşılaştırır; Kigali (2016) ile HFC'ler %80-85 azaltılacaktır." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Montreal ve Kigali protokolleri",
+    blocks: [{ sectionTitles: ["Montreal Protokolü (1987)", "Kigali Değişikliği (2016)"] }],
+    questions: [
+      { id: 1, sectionRef: "Montreal Protokolü (1987)", category: MAK, question: "Montreal Protokolü neyi hedefler?", options: ["CFC ve HCFC'lerin kademeli yasaklanmasını (ozon koruması)", "HFC azaltımını", "Kükürt sınırını", "CO₂ azaltımını"], correctAnswer: 0, explanation: "Montreal Protokolü (1987) CFC'leri (1996) ve HCFC'leri (2030) kademeli yasaklar; denizcilikte R-12/R-22 sistemlerinin dönüştürülmesi zorunludur." },
+      { id: 2, sectionRef: "Kigali Değişikliği (2016)", category: MAK, question: "Kigali Değişikliği neyi azaltmayı hedefler?", options: ["HFC'lerin üretim ve tüketimini (küresel ısınma için)", "CFC'leri", "Kükürdü", "Azot oksitleri"], correctAnswer: 0, explanation: "Kigali (2016) HFC'lerin kademeli azaltımını öngörür; gelişmiş ülkeler 2036'ya kadar %85, gelişmekte olanlar 2045-2047'ye kadar %80 azaltım hedefler." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Soğutucu akışkan şarj ve geri kazanım",
+    blocks: [{ sectionTitles: ["Şarj Prosedürü", "Geri Kazanım"] }],
+    questions: [
+      { id: 1, sectionRef: "Şarj Prosedürü", category: MAK, question: "Soğutucu sistemde aşırı şarj neye yol açar?", options: ["Yüksek kondenser basıncı ve kompresör aşırı yüklenmesi", "Düşük soğutma", "Hiçbir şey", "Kızgınlık artışı"], correctAnswer: 0, explanation: "Aşırı şarj yüksek kondenser basıncı ve kompresör aşırı yüklenmesine, yetersiz şarj ise düşük kapasite ve kızgınlık artışına yol açar." },
+      { id: 2, sectionRef: "Geri Kazanım", category: MAK, question: "Soğutucu akışkan atmosfere salınabilir mi?", options: ["Hayır; onaylı geri kazanım ünitesiyle toplanmalıdır", "Evet, serbestçe", "Sadece azı salınır", "Sadece limanda"], correctAnswer: 0, explanation: "Soğutucu atmosfere salınamaz; onaylı geri kazanım ünitesiyle toplanır, arıtılıp tekrar kullanılır veya imha edilir (EU 517/2014 ve MARPOL gereği kaçak kontrolü zorunlu)." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Provizyon soğuk hane sistemi",
+    blocks: [{ sectionTitles: ["Soğutma Bölmeleri", "Sistem Özellikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Soğutma Bölmeleri", category: MAK, question: "Et/balık odası tipik olarak hangi sıcaklıkta tutulur?", options: ["−18 ila −25°C", "+2 ila +4°C", "+8 ila +12°C", "+20°C"], correctAnswer: 0, explanation: "Et odası −18 ila −25°C, soğuk oda (chill) +2 ila +4°C, sebze odası +8 ila +12°C'de tutulur." },
+      { id: 2, sectionRef: "Sistem Özellikleri", category: MAK, question: "Soğuk hane kapılarında hangi güvenlik özelliği bulunur?", options: ["İçten açılabilen acil çıkış mekanizması ve alarm butonu", "Sadece dıştan kilit", "Hiçbir güvenlik", "Cam pencere"], correctAnswer: 0, explanation: "Her bölme bağımsız evaporatör/termostatla kontrol edilir, defrost otomatiktir; kapılar izoleli/manyetik contalı olup içten açılan acil çıkış ve alarm butonuna sahiptir." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Konteyner (reefer) soğutma",
+    blocks: [{ sectionTitles: ["Reefer Konteyner Özellikleri", "Gemi Elektrik Yükü"] }],
+    questions: [
+      { id: 1, sectionRef: "Reefer Konteyner Özellikleri", category: MAK, question: "Reefer konteyner nasıl beslenir?", options: ["Gemi prizlerinden (440V/60Hz veya 380V/50Hz); kendi soğutma ünitesine sahip", "Sadece akü", "Gemi havasından", "Beslenmez"], correctAnswer: 0, explanation: "Her reefer kendi kompresör/kondenser/evaporatör/kontrol ünitesine sahiptir ve gemi prizlerinden (440V/60Hz) beslenir; ayar aralığı −30 ile +30°C." },
+      { id: 2, sectionRef: "Gemi Elektrik Yükü", category: MAK, question: "Çok sayıda reefer konteyner gemi için neden kritiktir?", options: ["Jeneratör kapasitesini doğrudan etkiler; yük dengeleme gerekir", "Hiçbir etkisi yok", "Sadece estetik", "Yakıt üretir"], correctAnswer: 0, explanation: "Büyük gemiler 1000+ reefer prizi taşıyabilir; bu, jeneratör kapasitesini doğrudan etkiler ve reefer yük planlaması elektrik yük dengeleme açısından kritiktir." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Merkezi soğutma suyu sistemi",
+    blocks: [{ sectionTitles: ["Sistem Yapısı", "Avantajlar"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "LT (düşük sıcaklık) devresi sıcaklığı genellikle kaç derece tutulur?", options: ["36°C civarında", "85°C", "10°C", "100°C"], correctAnswer: 0, explanation: "LT devresi (yağ/şarj havası/klima kondenseri) 36°C civarında, HT devresi (silindir kapağı/liner) 80-85°C civarında tutulur." },
+      { id: 2, sectionRef: "Avantajlar", category: MAK, question: "Merkezi soğutmanın avantajı nedir?", options: ["Deniz suyuyla temas eden ekipman azalır, korozyon riski düşer", "Daha fazla ekipman", "Daha çok korozyon", "Daha pahalı su"], correctAnswer: 0, explanation: "Merkezi soğutmada deniz suyuyla temas eden ekipman azaltılarak korozyon riski düşürülür; soğutma suyu kalitesi kimyasal işlemle kontrol edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Ana makine ve yardımcı soğutma",
+    blocks: [{ sectionTitles: ["Ana Makine Soğutma Devreleri", "Yardımcı Makine Soğutma"] }],
+    questions: [
+      { id: 1, sectionRef: "Ana Makine Soğutma Devreleri", category: MAK, question: "Ana makine HT devresi neyi soğutur ve çıkış sıcaklığı nedir?", options: ["Silindir kapağı, liner ve turboşarj; çıkış 80-85°C", "Yağ soğutucu; 10°C", "Yakıt; 150°C", "Akü; 25°C"], correctAnswer: 0, explanation: "HT devresi silindir kapağı/liner/turboşarjı soğutur (çıkış 80-85°C); LT devresi yağ ve şarj havası soğutucusunu (giriş 36°C) besler." },
+      { id: 2, sectionRef: "Yardımcı Makine Soğutma", category: MAK, question: "Yardımcı motor soğutma suyunda hangi koruma bulunur?", options: ["Sıcaklık alarmı ve otomatik yavaşlama/durdurma", "Hiçbir koruma", "Sadece manometre", "Sadece renk göstergesi"], correctAnswer: 0, explanation: "Yardımcı motorlar kendi HT/LT devresine sahip veya merkezi sisteme bağlıdır; soğutma suyu sıcaklık alarmı ve otomatik yavaşlama/durdurma koruması bulunur." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Soğutma sistemi alarm ve korumaları",
+    blocks: [{ sectionTitles: ["Tipik Alarmlar", "Otomatik Korumalar"] }],
+    questions: [
+      { id: 1, sectionRef: "Tipik Alarmlar", category: MAK, question: "Yüksek basma basıncı alarmının olası nedeni nedir?", options: ["Kirli kondenser veya fazla şarj", "Yetersiz şarj", "Düşük yağ", "Soğuk hava"], correctAnswer: 0, explanation: "Yüksek basma basıncı kirli kondenser/fazla şarjdan; düşük emme basıncı yetersiz şarj/TXV arızasından kaynaklanır." },
+      { id: 2, sectionRef: "Otomatik Korumalar", category: MAK, question: "Yüksek basınç kesici (HP cutout) ne yapar?", options: ["Kompresörü durdurur", "Şarj ekler", "Kondenseri ısıtır", "Hiçbir şey"], correctAnswer: 0, explanation: "HP/LP cutout, yağ basınç fark kesici ve motor aşırı yük koruması kompresörü gerektiğinde durdurur." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Hava işleme ünitesi (AHU)",
+    blocks: [{ sectionTitles: ["AHU Bileşenleri", "Kontrol"] }],
+    questions: [
+      { id: 1, sectionRef: "AHU Bileşenleri", category: MAK, question: "AHU'da karışım bölümü ne yapar?", options: ["Taze hava ile resirkülasyon havasını karıştırır", "Yakıt karıştırır", "Su ayırır", "Egzoz atar"], correctAnswer: 0, explanation: "AHU; filtre (G4-F7), soğutma/ısıtma serpantini, fan ve karışım bölümünden oluşur; karışım bölümü taze hava ile resirkülasyon havasını karıştırır." },
+      { id: 2, sectionRef: "Kontrol", category: MAK, question: "AHU çıkış havası sıcaklığı nasıl ayarlanır?", options: ["Termostatik kontrol valfi veya VFD fan hız kontrolü ile", "Sadece elle", "Ayarlanamaz", "Pervaneyle"], correctAnswer: 0, explanation: "Çıkış havası sıcaklığı termostatik kontrol valfi veya VFD fan hız kontrolüyle ayarlanır; resirkülasyon oranı enerji tasarrufu için optimize edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Soğutma ve ısıtma serpantinleri",
+    blocks: [{ sectionTitles: ["Soğutma Serpantini", "Isıtma Serpantini"] }],
+    questions: [
+      { id: 1, sectionRef: "Soğutma Serpantini", category: MAK, question: "Soğutma serpantininde hava soğurken ne gerçekleşir?", options: ["Nem yoğuşması (dehumidification); yoğuşan su drenaj tavasına akar", "Hava ısınır", "Nem artar", "Hiçbir şey"], correctAnswer: 0, explanation: "İçinden chilled water (6-12°C) geçen serpantinde hava soğur ve nem yoğuşur (dehumidification); yoğuşan su drenaj tavasına akar." },
+      { id: 2, sectionRef: "Isıtma Serpantini", category: MAK, question: "Buhar ısıtma serpantininde yoğuşan su nasıl toplanır?", options: ["Steam trap (kondens pot) ile", "Drenaj yapılmaz", "Pervaneyle", "Filtreyle"], correctAnswer: 0, explanation: "Isıtma serpantini sıcak su (80-90°C) veya düşük basınçlı buharla çalışır; buhar serpantinlerinde yoğuşan su steam trap ile toplanır." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Nemlilik kontrolü",
+    blocks: [{ sectionTitles: ["Nem Alma (Dehumidification)", "Nemlendirme (Humidification)"] }],
+    questions: [
+      { id: 1, sectionRef: "Nem Alma (Dehumidification)", category: MAK, question: "Soğutmayla nem alma nasıl gerçekleşir?", options: ["Serpantin yüzeyi çiy noktası altına düşürülünce nem yoğuşur", "Hava ısıtılarak", "Su püskürtülerek", "Basınç artırılarak"], correctAnswer: 0, explanation: "Serpantin yüzey sıcaklığı çiy noktası altına düşünce nem yoğuşur (cooling dehumidification); alternatif olarak silika jel/lityum klorürlü absorpsiyonlu sistemler kullanılır." },
+      { id: 2, sectionRef: "Nemlendirme (Humidification)", category: MAK, question: "Konfor için bağıl nem hangi aralıkta tutulur?", options: ["%40-60", "%5-10", "%90-100", "Önemsiz"], correctAnswer: 0, explanation: "Kuru iklimlerde buhar enjeksiyonu/ultrasonik nemlendirici kullanılır; konfor için bağıl nem %40-60 arasında tutulur." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Kanal sistemi tasarımı",
+    blocks: [{ sectionTitles: ["Kanal Tipleri", "Tasarım Prensipleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Kanal Tipleri", category: MAK, question: "Gemilerde standart kanal malzemesi nedir?", options: ["Galvanizli çelik (yalıtımlı yoğuşmayı önler)", "Plastik PVC", "Ahşap", "Bakır"], correctAnswer: 0, explanation: "Galvanizli çelik kanallar standarttır; yalıtılmış kanallar yoğuşma ve enerji kaybını önler. Basma kanalları AHU'dan bölmelere, emiş kanalları geri taşır." },
+      { id: 2, sectionRef: "Tasarım Prensipleri", category: MAK, question: "Gürültü kontrolü için ana kanal hava hızı nasıl sınırlanır?", options: ["Ana kanalda 6-10 m/s, dal kanallarda 3-5 m/s", "50 m/s", "0.5 m/s", "Sınır yok"], correctAnswer: 0, explanation: "Gürültü kontrolü için ana kanalda 6-10 m/s, dal kanallarda 3-5 m/s sınırlanır; boyutlandırmada eşit sürtünme yöntemi yaygındır." },
+    ],
+  },
+  {
+    topicKey: "machine-cooling-hvac",
+    topicTitle: "Taze hava ve egzoz havalandırma",
+    blocks: [{ sectionTitles: ["Taze Hava Gereklilikleri", "Egzoz Havalandırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Taze Hava Gereklilikleri", category: MAK, question: "Yaşam alanlarında kişi başına minimum taze hava ne kadar olmalıdır?", options: ["30 m³/h", "1 m³/h", "300 m³/h", "Gerekmez"], correctAnswer: 0, explanation: "IMO/SOLAS kurallarına göre yaşam alanlarında kişi başına minimum 30 m³/h taze hava sağlanır; makine dairesi havalandırması yanma havası ihtiyacı için de gereklidir." },
+      { id: 2, sectionRef: "Egzoz Havalandırma", category: MAK, question: "Makine dairesi ventilation flap (havalandırma kapağı) neden zorunludur?", options: ["Yangında CO₂ söndürme etkinliğini sağlamak için", "Soğutma için", "Estetik için", "Hiçbir nedenle"], correctAnswer: 0, explanation: "Tuvalet/mutfak/atölye bağımsız egzoz havalandırmaya sahiptir; makine dairesi acil havalandırma kapanması (flap) yangında CO₂ söndürme etkinliği için zorunludur." },
+    ],
+  },
 ];
