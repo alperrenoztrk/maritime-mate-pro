@@ -6349,4 +6349,193 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Güvenlik Bülteni", category: MAK, question: "Çıkarılan dersler filoya nasıl yayılır?", options: ["Şirket DPA'sı güvenlik bülteni olarak tüm filoya dağıtır", "Gizli tutulur", "Sadece o gemide kalır", "Hiç paylaşılmaz"], correctAnswer: 0, explanation: "Şirket DPA'sı dersleri güvenlik bülteni olarak tüm filoya dağıtır; IMO de MSC/Circ. serisiyle sektörel ders paylaşımı yapar." },
     ],
   },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "IMO GHG stratejisi ve hedefler",
+    blocks: [{ sectionTitles: ["Hedefler"] }],
+    questions: [
+      { id: 1, sectionRef: "Hedefler", category: MAK, question: "2023 IMO GHG stratejisinin uzun vadeli hedefi nedir?", options: ["2050'ye kadar net sıfır emisyon", "2030'da sıfır emisyon", "Hiçbir hedef yok", "Emisyonu artırmak"], correctAnswer: 0, explanation: "2023 stratejisi 2008'e göre 2030'a kadar GHG'de en az %20 (hedef %30) azalma ve 2050'ye kadar net sıfır emisyon hedefler." },
+      { id: 2, sectionRef: "Hedefler", category: MAK, question: "Strateji nasıl bir yaklaşım izler?", options: ["Kısa (EEXI/CII), orta (karbon vergi/alt. yakıt) ve uzun vadeli (sıfır karbon yakıt) tedbirler", "Sadece tek bir tedbir", "Hiçbir tedbir", "Sadece hız sınırı"], correctAnswer: 0, explanation: "Kısa vadeli (EEXI, CII), orta vadeli (karbon vergilendirme, alternatif yakıtlar) ve uzun vadeli (sıfır karbonlu yakıtlar) aşamalı yaklaşım izlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "EEDI (Enerji Verimliliği Tasarım İndeksi)",
+    blocks: [{ sectionTitles: ["EEDI Formülü", "Faz Gereklilikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "EEDI Formülü", category: MAK, question: "EEDI temel olarak neyi ölçer?", options: ["Taşıma işi başına CO₂ emisyonu (g CO₂/ton·mil)", "Yakıt fiyatını", "Hızı", "Mürettebat sayısını"], correctAnswer: 0, explanation: "EEDI = (P × SFC × C_F)/(DWT × V_ref) [g CO₂/ton·mil]; yeni gemilerin tasarım enerji verimliliğini ölçer." },
+      { id: 2, sectionRef: "Faz Gereklilikleri", category: MAK, question: "EEDI Faz 3 (2025) indirim oranı nedir?", options: ["%30-50 (gemi tipine göre)", "%0", "%5", "%100"], correctAnswer: 0, explanation: "Faz 0 (2013) referans, Faz 1 (2015) %10, Faz 2 (2020) %20, Faz 3 (2025) %30-50 indirim gerektirir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "EEXI (Mevcut Gemi Enerji Verimliliği İndeksi)",
+    blocks: [{ sectionTitles: ["EEXI Hesaplaması", "Uyum Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "EEXI Hesaplaması", category: MAK, question: "EEXI ile EEDI arasındaki temel fark nedir?", options: ["EEXI mevcut geminin gerçek motor gücü/performans verilerini kullanır", "EEXI yeni gemiler içindir", "İkisi de aynıdır", "EEXI yakıt fiyatını ölçer"], correctAnswer: 0, explanation: "EEXI hesaplaması EEDI formülüne benzer ama mevcut geminin gerçek motor gücü ve performans verilerini kullanır; değer referans çizgisinin altında olmalıdır." },
+      { id: 2, sectionRef: "Uyum Yöntemleri", category: MAK, question: "EEXI uyumu için en düşük maliyetli yöntem hangisidir?", options: ["Engine Power Limitation (EPL) / ShaPoLi", "LNG'ye dönüşüm", "WHRS kurulumu", "Yeni gemi almak"], correctAnswer: 0, explanation: "EPL (motor gücü sınırlama) ve ShaPoLi (şaft gücü sınırlama) düşük maliyetli uyum yöntemleridir; WHRS ve LNG dönüşümü daha pahalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "CII derecelendirme sistemi (A–E)",
+    blocks: [{ sectionTitles: ["Derecelendirme"] }],
+    questions: [
+      { id: 1, sectionRef: "Derecelendirme", category: MAK, question: "CII referans çizgisi her yıl nasıl değişir?", options: ["Yaklaşık %2 düşürülür (her yıl daha sıkı gereksinim)", "%50 yükseltilir", "Sabit kalır", "Kaldırılır"], correctAnswer: 0, explanation: "Her gemi tipi için referans çizgisi yıllık ~%2 düşürülür, bu da her yıl daha sıkı gereksinim demektir." },
+      { id: 2, sectionRef: "Derecelendirme", category: MAK, question: "CII'de D derecesi 3 yıl üst üste alınırsa ne olur?", options: ["Düzeltici eylem planı gerekir", "Teşvik alır", "Hiçbir şey", "Gemi sökülür"], correctAnswer: 0, explanation: "A/B teşvik, C minimum kabul; D 3 yıl üst üste veya E hemen düzeltici eylem planı gerektirir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "SEEMP (Gemi Enerji Verimliliği Yönetim Planı)",
+    blocks: [{ sectionTitles: ["SEEMP Yapısı"] }],
+    questions: [
+      { id: 1, sectionRef: "SEEMP Yapısı", category: MAK, question: "SEEMP Part II neyi kapsar?", options: ["IMO DCS yakıt tüketimi veri toplama ve raporlama planı (5000+ GT)", "Hız optimizasyonu", "Mürettebat planı", "Yangın planı"], correctAnswer: 0, explanation: "Part I enerji verimliliği tedbirleri (≥400 GT), Part II IMO DCS veri toplama (5000+ GT), Part III CII uygulama planıdır (5000+ GT)." },
+      { id: 2, sectionRef: "SEEMP Yapısı", category: MAK, question: "SEEMP Part III hangi gemiler için zorunlu düzeltici eylem planı gerektirir?", options: ["3 yıl üst üste D veya 1 yıl E derecesi alan gemiler", "Tüm gemiler", "Sadece A derecesi", "Hiçbiri"], correctAnswer: 0, explanation: "Part III (MEPC.346(78)) CII uygulama planıdır; 3 yıl üst üste D veya 1 yıl E alan gemiler için düzeltici eylem planı zorunludur." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Trim optimizasyonu",
+    blocks: [{ sectionTitles: ["Trim Etkisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Trim Etkisi", category: MAK, question: "Yanlış trim yakıt tüketimini ne kadar artırabilir?", options: ["%2-5", "%0.01", "%50", "Hiç etkilemez"], correctAnswer: 0, explanation: "Optimum trim genellikle hafif kıç trimidir (0.5-1.5 m); yanlış trim %2-5 yakıt artışına neden olabilir." },
+      { id: 2, sectionRef: "Trim Etkisi", category: MAK, question: "Optimum trim nasıl belirlenir?", options: ["Model deneyleri veya CFD analizleriyle hazırlanan trim tabloları", "Tahminle", "Sabit değer kullanarak", "Rastgele"], correctAnswer: 0, explanation: "Optimum trim yükleme durumu, hız ve deniz koşuluna göre değişir; model deneyleri/CFD ile belirlenen trim tabloları kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Rota optimizasyonu (weather routing)",
+    blocks: [{ sectionTitles: ["Prensip", "Tasarruf Potansiyeli"] }],
+    questions: [
+      { id: 1, sectionRef: "Prensip", category: MAK, question: "En kısa mesafe (great circle) neden her zaman en ekonomik değildir?", options: ["Şiddetli rüzgâr, dalga ve akıntılar hız kaybı/yakıt artışı yapar", "Mesafe yanlış ölçülür", "Pusula bozulur", "Her zaman en ekonomiktir"], correctAnswer: 0, explanation: "Great circle en kısa olsa da şiddetli rüzgâr/dalga/akıntı hız kaybı ve yakıt artışı yapar; weather routing minimum yakıt/süre rotasını hesaplar." },
+      { id: 2, sectionRef: "Tasarruf Potansiyeli", category: MAK, question: "Weather routing tipik yakıt tasarrufu nedir?", options: ["%2-5 (bazı koşullarda %10'a kadar)", "%50", "%0", "%80"], correctAnswer: 0, explanation: "Tipik tasarruf %2-5, bazı koşullarda %10'a kadardır; kötü havadan kaçınma yük/gemi hasarını da önler." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Fouling etkisi ve tekne temizliği",
+    blocks: [{ sectionTitles: ["Fouling Etkileri", "Önleme ve Temizlik"] }],
+    questions: [
+      { id: 1, sectionRef: "Fouling Etkileri", category: MAK, question: "Makro fouling (yosun, midye) direnci ne kadar artırabilir?", options: ["%10-40", "%1-2", "%0.1", "Azaltır"], correctAnswer: 0, explanation: "Mikro fouling (slime) %1-5, makro fouling (yosun/midye/deniz lalesi) %10-40 direnç artışı yapar; SFOC artışı ve hız düşüşüyle görülür." },
+      { id: 2, sectionRef: "Önleme ve Temizlik", category: MAK, question: "Tam tekne temizliği ve boya yenileme ne sıklıkla yapılır?", options: ["Kuru havuzda, genellikle 5 yılda bir", "Her gün", "10 yılda bir", "Hiç"], correctAnswer: 0, explanation: "Antifouling boya (SPC/silikon foul-release) yapışmayı önler; su altı temizliği periyodik, tam temizlik+boya yenileme kuru havuzda genellikle 5 yılda bir yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Pervane parlatma ve kavitasyon kontrolü",
+    blocks: [{ sectionTitles: ["Pervane Parlatma", "Kavitasyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Pervane Parlatma", category: MAK, question: "Pürüzlü pervane ne kadar fazla yakıt tüketir?", options: ["%3-5", "%50", "%0.01", "Daha az tüketir"], correctAnswer: 0, explanation: "Deniz canlıları/korozyon pervane pürüzlülüğünü artırır; pürüzlü pervane %3-5 fazla yakıt tüketir. Dalgıç sualtında 6-12 ayda bir parlatır." },
+      { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl kontrol edilir?", options: ["Uygun pervane tasarımı, doğru hatve (CPP), temiz gövde ve uygun trim", "Hızı artırarak", "Yakıt değiştirerek", "Kontrol edilemez"], correctAnswer: 0, explanation: "Lokal basınç düşüşü kabarcık oluşturur, çökünce erozyon yapar; kontrol uygun tasarım, doğru hatve, temiz gövde ve uygun trim ile sağlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Yakıt tüketimi izleme ve raporlama",
+    blocks: [{ sectionTitles: ["İzleme Yöntemleri", "Raporlama"] }],
+    questions: [
+      { id: 1, sectionRef: "İzleme Yöntemleri", category: MAK, question: "En yüksek doğrulukta yakıt izleme yöntemi hangisidir?", options: ["Flowmetre (Coriolis/ultrasonik, %0.1-0.5)", "Tank sounding (%2-5)", "BDN bazlı tahmin", "Gözle"], correctAnswer: 0, explanation: "Flowmetre %0.1-0.5 doğruluk sağlar; tank sounding %2-5 hata payı taşır, BDN bazlı dönemsel hesaptır." },
+      { id: 2, sectionRef: "Raporlama", category: MAK, question: "Noon report neyi içerir?", options: ["Günlük seyir verisi (mesafe, hız, yakıt tüketimi, hava durumu)", "Sadece yakıt fiyatı", "Mürettebat menüsü", "Hiçbir şey"], correctAnswer: 0, explanation: "Noon report günlük mesafe/hız/yakıt/hava verisini şirkete raporlar; IMO DCS ve EU MRV kapsamında yıllık yakıt ve CO₂ raporlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Atık ısı geri kazanım (WHRS)",
+    blocks: [{ sectionTitles: ["Sistem Konfigürasyonları", "Verim Artışı"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Konfigürasyonları", category: MAK, question: "En basit WHRS formu hangisidir?", options: ["Egzoz ekonomizeri (egzoz ısısıyla buhar üretimi)", "Kombine sistem", "Güç türbini yalnız", "Buhar türbini yalnız"], correctAnswer: 0, explanation: "Egzoz ekonomizeri en basit WHRS formudur; güç türbini, buhar türbini ve kombine sistem daha gelişmiş konfigürasyonlardır." },
+      { id: 2, sectionRef: "Verim Artışı", category: MAK, question: "WHRS ile elektrik üretiminde ne kadar yakıt tasarrufu mümkündür?", options: ["%8-12", "%0.1", "%50", "Tasarruf yok"], correctAnswer: 0, explanation: "WHRS ile ana motor toplam verimi %50'den %55-60'a çıkar; elektrik üretiminde %8-12 yakıt tasarrufu mümkündür." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Hava yağlama (air lubrication) sistemi",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Sistem Gereksinimleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Hava yağlama sistemi sürtünmeyi nasıl azaltır?", options: ["Gövde altında mikro kabarcık tabakası oluşturarak (%5-10 azaltma)", "Gövdeyi ısıtarak", "Hızı düşürerek", "Su ekleyerek"], correctAnswer: 0, explanation: "Gövde altı dağıtıcılardan düşük basınçlı hava verilir; mikro kabarcık tabakası düşük sürtünmeli arayüz oluşturur (%5-10 azaltma), düz tabanlı gemilerde en etkilidir." },
+      { id: 2, sectionRef: "Sistem Gereksinimleri", category: MAK, question: "Hava yağlama net tasarrufu hesaplanırken ne dikkate alınmalıdır?", options: ["Kompresör enerji tüketimi net tasarruftan düşülmelidir", "Sadece hız", "Sadece yakıt fiyatı", "Hiçbir şey"], correctAnswer: 0, explanation: "Kompresör kapasitesi, dağıtım boruları ve kontrol sistemi gerekir; kompresörün enerji tüketimi net tasarruftan düşülmelidir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Rüzgâr destekli itme (rotor sail, wing sail)",
+    blocks: [{ sectionTitles: ["Rotor Sail (Flettner Rotoru)", "Wing Sail ve Kite"] }],
+    questions: [
+      { id: 1, sectionRef: "Rotor Sail (Flettner Rotoru)", category: MAK, question: "Rotor sail (Flettner rotoru) itme kuvvetini nasıl üretir?", options: ["Magnus etkisiyle (dönen silindir rüzgâra dik kuvvet oluşturur)", "Yakıt yakarak", "Pervane ile", "Elektrikle"], correctAnswer: 0, explanation: "Dikey dönen silindir Magnus etkisiyle rüzgârdan itme üretir; tipik %5-20 yakıt tasarrufu sağlar (rota/rüzgâra bağlı)." },
+      { id: 2, sectionRef: "Wing Sail ve Kite", category: MAK, question: "Kite (uçurtma) sisteminin avantajı nedir?", options: ["Yüksek irtifadaki güçlü rüzgârı yakalar (%10-30 tasarruf)", "Motor gerektirir", "Güverte alanı kaplar çok", "Rüzgârsız çalışır"], correctAnswer: 0, explanation: "Kite pruvadan uçurulup yüksek irtifa rüzgârını yakalar (%10-30 tasarruf, operasyonel karmaşıklık); wing sail rijit kanat profillidir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Değişken frekanslı tahrik (VFD) kullanımı",
+    blocks: [{ sectionTitles: ["Tasarruf Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Tasarruf Prensibi", category: MAK, question: "Pompa/fan güç tüketimi hıza göre nasıl değişir?", options: ["Hızın küpüyle orantılı (P ∝ N³)", "Hızla doğru orantılı", "Hızdan bağımsız", "Hızın karekökü"], correctAnswer: 0, explanation: "P ∝ N³; pompa/fan gücü hızın küpüyle orantılıdır, bu yüzden VFD ile hız düşürmek büyük tasarruf sağlar." },
+      { id: 2, sectionRef: "Tasarruf Prensibi", category: MAK, question: "Hız %20 düşürülürse güç tüketimi ne kadar azalır?", options: ["Yaklaşık %49", "%20", "%5", "Değişmez"], correctAnswer: 0, explanation: "P₂/P₁ = (N₂/N₁)³; hız %20 düşünce (0.8³ = 0.512) güç ~%49 azalır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "LED aydınlatma dönüşümü",
+    blocks: [{ sectionTitles: ["Enerji Tasarrufu", "Uygulama"] }],
+    questions: [
+      { id: 1, sectionRef: "Enerji Tasarrufu", category: MAK, question: "LED, akkor lambalara göre ne kadar az enerji tüketir?", options: ["%80-90", "%5", "%10", "Daha çok tüketir"], correctAnswer: 0, explanation: "LED floresana göre %40-60, akkora göre %80-90 daha az tüketir ve ömrü (50000+ saat) çok daha uzundur." },
+      { id: 2, sectionRef: "Uygulama", category: MAK, question: "Gemide hangi LED armatürler kullanılmalıdır?", options: ["Denizcilik sertifikalı (IP65/67, titreşim dayanımlı)", "Herhangi bir ev tipi", "Sadece akkor", "Sertifikasız ucuz"], correctAnswer: 0, explanation: "Yaşam alanı, makine dairesi, güverte ve seyir fenerleri LED'e dönüştürülebilir; denizcilik sertifikalı (IP65/67, titreşim dayanımlı) armatürler kullanılmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Pervane enerji tasarrufu cihazları",
+    blocks: [{ sectionTitles: ["Cihaz Tipleri", "Seçim Kriterleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Cihaz Tipleri", category: MAK, question: "Boss cap fin hangi prensiple tasarruf sağlar?", options: ["Hub vortex azaltma (%1-3)", "Akış yönlendirme stator", "Dönme enerjisi geri kazanım", "Kanal hızlandırma"], correctAnswer: 0, explanation: "Boss cap fin pervane göbeğinde hub vortex azaltır (%1-3); pre-swirl stator/duct akış yönlendirir (%3-7), contra-rotating/gate rudder dönme enerjisini geri kazanır (%5-8)." },
+      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pervane tasarruf cihazı seçimi neye göre yapılır?", options: ["Gemi tipi, pervane tasarımı, operasyon profili (CFD ile tahmin)", "Sadece renk", "Sadece fiyat", "Rastgele"], correctAnswer: 0, explanation: "Gemi tipi, pervane tasarımı, operasyon profili ve hız aralığı seçimi etkiler; performans CFD simülasyonuyla tahmin edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "IMO DCS (veri toplama sistemi)",
+    blocks: [{ sectionTitles: ["Raporlanan Veriler", "Süreç"] }],
+    questions: [
+      { id: 1, sectionRef: "Raporlanan Veriler", category: MAK, question: "IMO DCS kapsamında hangi veri raporlanır?", options: ["Yıllık yakıt tüketimi, kat edilen mesafe ve seyir saati", "Mürettebat maaşı", "Yolcu sayısı", "Liman ücretleri"], correctAnswer: 0, explanation: "IMO DCS; gemi tanımı, yıllık yakıt tüketimi (yakıt tipine göre), kat edilen mesafe, seyir saati ve DWT/GT kapasitesini raporlar." },
+      { id: 2, sectionRef: "Süreç", category: MAK, question: "DCS verileri nereye aktarılır?", options: ["Doğrulama sonrası IMO GISIS veritabanına (CII hesabında kullanılır)", "Sadece gemide kalır", "Sosyal medyaya", "Hiçbir yere"], correctAnswer: 0, explanation: "Gemi SEEMP Part II'ye göre veri toplar, yıl sonunda bayrak devleti/RO'ya sunar; doğrulama sonrası IMO GISIS'e aktarılır ve CII hesabında kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "EU MRV regülasyonu",
+    blocks: [{ sectionTitles: ["Gereksinimler", "EU ETS ile İlişki"] }],
+    questions: [
+      { id: 1, sectionRef: "Gereksinimler", category: MAK, question: "EU MRV emisyon raporu nasıl doğrulanır?", options: ["Akredite doğrulayıcı kuruluşça doğrulanıp THETIS-MRV'ye yüklenir", "Doğrulanmaz", "Sadece kaptan onaylar", "Sözlü beyan"], correctAnswer: 0, explanation: "AB limanlarına/limanlarından seferlerde yakıt ve CO₂ izlenir; yıllık rapor akredite doğrulayıcıca doğrulanıp THETIS-MRV sistemine yüklenir." },
+      { id: 2, sectionRef: "EU ETS ile İlişki", category: MAK, question: "MRV verilerinin EU ETS ile ilişkisi nedir?", options: ["MRV verileri ETS yükümlülüklerinin temelini oluşturur", "İlişkisizdir", "ETS'i iptal eder", "Sadece istatistik"], correctAnswer: 0, explanation: "2024'ten itibaren denizcilik EU ETS kapsamındadır; MRV verileri ETS yükümlülüklerinin temelini oluşturur (karbon ücreti 2024 %40, 2025 %70, 2026 %100)." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "EU ETS (emisyon ticaret sistemi)",
+    blocks: [{ sectionTitles: ["Uygulama", "Maliyet Etkisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Uygulama", category: MAK, question: "EU ETS hangi gemiler ve seferler için emisyon hakkı gerektirir?", options: ["5000+ GT; AB içi seferlerin %100'ü, AB-dışı seferlerin %50'si", "Tüm gemiler %100", "Hiçbiri", "Sadece tankerler"], correctAnswer: 0, explanation: "5000+ GT gemiler AB içi seferlerin %100'ü ve AB-dışı seferlerin %50'si için emisyon hakkı (allowance) satın alır; kademeli geçiş 2024 %40, 2025 %70, 2026 %100." },
+      { id: 2, sectionRef: "Maliyet Etkisi", category: MAK, question: "Karbon fiyatı yakıt maliyetine yaklaşık ne kadar ek yük getirir (HFO bazında)?", options: ["180-280 $/ton", "1 $/ton", "1000 $/ton", "Etki yok"], correctAnswer: 0, explanation: "2024 başı karbon fiyatı ~60-90 €/ton CO₂; bu HFO bazında ton başına ~180-280 $/ton ek yük getirir." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Yakıt tüketimi veri doğrulama",
+    blocks: [{ sectionTitles: ["Doğrulama Yöntemleri", "Denetim"] }],
+    questions: [
+      { id: 1, sectionRef: "Doğrulama Yöntemleri", category: MAK, question: "Kütle dengesi (mass balance) doğrulaması nasıl olmalıdır?", options: ["Alınan yakıt − ROB − tüketim = sıfır (tolerans dahilinde)", "Her zaman pozitif", "Önemsiz", "Sadece BDN yeterli"], correctAnswer: 0, explanation: "Doğrulama; BDN-tank karşılaştırması, flowmetre kalibrasyonu, kütle dengesi (alınan − ROB − tüketim = 0) ve SFOC×güç×süre cross-check ile yapılır." },
+      { id: 2, sectionRef: "Denetim", category: MAK, question: "DCS/MRV raporlarında uyumsuzluk olursa ne olur?", options: ["Gemi SoC (uygunluk belgesi) alamaz", "Hiçbir şey", "Otomatik onay", "Ödül"], correctAnswer: 0, explanation: "Bayrak devleti/akredite doğrulayıcı raporları denetler; eksik veri, tutarsız rakam veya belge eksikliğinde gemi SoC alamaz." },
+    ],
+  },
+  {
+    topicKey: "machine-energy-efficiency",
+    topicTitle: "Yıllık verimlilik raporu hazırlama",
+    blocks: [{ sectionTitles: ["Rapor İçeriği", "Hazırlama Süreci"] }],
+    questions: [
+      { id: 1, sectionRef: "Rapor İçeriği", category: MAK, question: "Yıllık verimlilik raporunda hangi değer mutlaka yer alır?", options: ["Hesaplanan CII değeri ve derecelendirme (A-E)", "Mürettebat menüsü", "Yolcu memnuniyeti", "Liman manzarası"], correctAnswer: 0, explanation: "Rapor; gemi tanımı, yıllık yakıt tüketimi, toplam CO₂, mesafe, seyir saati, hesaplanan CII ve derecesi (A-E), önceki yıl karşılaştırması ve (D/E ise) düzeltici plan içerir." },
+      { id: 2, sectionRef: "Hazırlama Süreci", category: MAK, question: "Doğrulama sonrası ne düzenlenir?", options: ["SoC (Statement of Compliance) — gemide bulundurulur", "Hiçbir belge", "Sadece fatura", "Yeni gemi sertifikası"], correctAnswer: 0, explanation: "Takvim yılı sonunda veriler derlenip rapor bayrak devletine sunulur; doğrulama sonrası SoC (Statement of Compliance) düzenlenir ve gemide bulundurulur." },
+    ],
+  },
 ];
