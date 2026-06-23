@@ -5521,4 +5521,184 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Egzoz Havalandırma", category: MAK, question: "Makine dairesi ventilation flap (havalandırma kapağı) neden zorunludur?", options: ["Yangında CO₂ söndürme etkinliğini sağlamak için", "Soğutma için", "Estetik için", "Hiçbir nedenle"], correctAnswer: 0, explanation: "Tuvalet/mutfak/atölye bağımsız egzoz havalandırmaya sahiptir; makine dairesi acil havalandırma kapanması (flap) yangında CO₂ söndürme etkinliği için zorunludur." },
     ],
   },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Basınç ölçüm cihazları (Bourdon, piezoelektrik)",
+    blocks: [{ sectionTitles: ["Bourdon Tüp Manometre", "Diğer Basınç Sensörleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Bourdon Tüp Manometre", category: MAK, question: "Bourdon tüp manometre nasıl çalışır?", options: ["Basınçta düzleşen C şekilli tüpün hareketi ibreye aktarılır", "Kristal gerilimiyle", "Ses dalgasıyla", "Manyetik alanla"], correctAnswer: 0, explanation: "Oval kesitli C şekilli tüp basınçta düzleşir; hareket mekanik bağlantıyla ibreye aktarılır. 0.5-1000 bar aralığında, basit ve ucuzdur." },
+      { id: 2, sectionRef: "Diğer Basınç Sensörleri", category: MAK, question: "Silindir dinamik basıncı (hızlı değişen) hangi sensörle ölçülür?", options: ["Piezoelektrik (kristal deformasyonu)", "Bourdon tüp", "Float", "Sight glass"], correctAnswer: 0, explanation: "Piezoelektrik sensör kristal deformasyonunu gerilime çevirir ve dinamik basınç (silindir) ölçümünde 0-2000 bar aralığında kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Seviye ölçüm yöntemleri",
+    blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Uzaktan Okuma"] }],
+    questions: [
+      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğrulukta (±1 mm) seviye ölçüm yöntemi hangisidir?", options: ["Radar (mikrodalga yansıması)", "Float tip", "Sight glass", "Hidrostatik basınç"], correctAnswer: 0, explanation: "Radar ±1 mm ile en hassastır; float ±5 mm, kapasitif/ultrasonik ±3 mm, hidrostatik ±10 mm doğruluktadır." },
+      { id: 2, sectionRef: "Uzaktan Okuma", category: MAK, question: "Modern gemilerde tank seviyeleri için hangi alarmlar programlanır?", options: ["Yüksek, düşük ve yüksek-yüksek seviye alarmları", "Sadece sıcaklık", "Sadece basınç", "Alarm yok"], correctAnswer: 0, explanation: "Tank seviyeleri merkezi izlemeye aktarılır ve yüksek/düşük/yüksek-yüksek alarmları programlanır; kargo tankları closed/restricted/open olarak sınıflandırılır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Akış ölçüm cihazları (orifis, Coriolis)",
+    blocks: [{ sectionTitles: ["Akış Ölçüm Prensipleri", "Yakıt Tüketim Ölçümü"] }],
+    questions: [
+      { id: 1, sectionRef: "Akış Ölçüm Prensipleri", category: MAK, question: "Orifis plaka akış ölçer hangi prensiple çalışır?", options: ["Basınç düşüşü (ΔP)", "Kütle akışı (Coriolis)", "Faraday yasası", "Ses hızı"], correctAnswer: 0, explanation: "Orifis ve venturi ΔP ile ölçer (±1-2%); elektromanyetik Faraday yasasıyla, Coriolis kütle akışıyla (±0.1%) çalışır." },
+      { id: 2, sectionRef: "Yakıt Tüketim Ölçümü", category: MAK, question: "IMO DCS için yakıt ölçümünde en yüksek doğruluğu hangi cihaz sağlar?", options: ["Coriolis debimetre (kütle akışı, düzeltme gerektirmez)", "Orifis plaka", "Sight glass", "Türbin metre"], correctAnswer: 0, explanation: "IMO DCS için Coriolis debimetre en yüksek doğruluğu sağlar; kütle akışı ölçtüğünden sıcaklık ve yoğunluk düzeltmesi gerektirmez." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Devir ve hız ölçümü",
+    blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Motor Devri İzleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "Ana motor/jeneratör devri için yaygın yöntem hangisidir?", options: ["Manyetik pick-up (dişli geçişinde manyetik alan değişimi)", "Sight glass", "Termometre", "Manometre"], correctAnswer: 0, explanation: "Manyetik pick-up dişli geçişindeki manyetik alan değişimiyle devri ölçer; encoder hassas hız kontrolü, proximity sensör turboşarjer devri için kullanılır." },
+      { id: 2, sectionRef: "Motor Devri İzleme", category: MAK, question: "Barred speed range (kritik hız aralığı) ne gerektirir?", options: ["Sürekli çalışmaya uygun değildir; hızla geçilmelidir", "Sürekli o devirde çalışılmalı", "Motor durdurulmalı", "Hiçbir önlem gerekmez"], correctAnswer: 0, explanation: "Ana motor devri governor/otomasyonla izlenir; kritik hız aralıkları (barred speed range) torsiyonel titreşim nedeniyle sürekli çalışmaya uygun değildir, hızla geçilir." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Sinyal dönüştürücüler (4-20 mA, 0-10V)",
+    blocks: [{ sectionTitles: ["Standart Sinyal Tipleri", "4-20 mA Avantajı"] }],
+    questions: [
+      { id: 1, sectionRef: "Standart Sinyal Tipleri", category: MAK, question: "4-20 mA akım sinyalinin temel avantajı nedir?", options: ["Kablo kaybından etkilenmez ve kablo kopuğu (0 mA) algılanır", "En ucuzdur", "Sadece kısa mesafe", "Dijitaldir"], correctAnswer: 0, explanation: "4-20 mA akım sinyali kablo direncinden etkilenmez ve 0 mA kablo kopukluğunu gösterir; 0-10 V gerilim sinyali ise kablo direncine duyarlıdır." },
+      { id: 2, sectionRef: "4-20 mA Avantajı", category: MAK, question: "4-20 mA sinyalinde 4 mA ve 20 mA neyi ifade eder?", options: ["4 mA = %0, 20 mA = %100 ölçüm aralığı", "4 mA = %100, 20 mA = %0", "İkisi de hata", "Sabit değer"], correctAnswer: 0, explanation: "4 mA = ölçüm aralığının %0'ı, 20 mA = %100'ü; 0 mA sinyal kopukluğudur. İki kablolu bağlantıda güç ve sinyal aynı kablodan taşınır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Açık ve kapalı döngü kontrol",
+    blocks: [{ sectionTitles: ["Açık Döngü", "Kapalı Döngü"] }],
+    questions: [
+      { id: 1, sectionRef: "Açık Döngü", category: MAK, question: "Açık döngü kontrolün özelliği nedir?", options: ["Geri besleme yoktur; çıkış izlenmez (dış etkilere hassas)", "Çıkış sürekli ölçülür", "En hassas yöntemdir", "Hata düzeltir"], correctAnswer: 0, explanation: "Açık döngüde çıkış izlenmez ve geri besleme yoktur (örn. zamanlayıcılı sintine pompası); basit ama dış etkilere hassastır." },
+      { id: 2, sectionRef: "Kapalı Döngü", category: MAK, question: "Kapalı döngü kontrol nasıl çalışır?", options: ["Çıkış ölçülür, referansla karşılaştırılır, hata düzeltme sinyaline dönüşür", "Geri besleme yoktur", "Sadece zamanlayıcı", "Operatör manuel kontrol eder"], correctAnswer: 0, explanation: "Kapalı döngüde çıkış sürekli ölçülüp referansla karşılaştırılır; fark (hata) düzeltme sinyaline dönüşür (sıcaklık, basınç, hız kontrolü)." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "P, I, D parametrelerinin etkileri",
+    blocks: [{ sectionTitles: ["Parametre Etkileri", "Ayar Stratejisi"] }],
+    questions: [
+      { id: 1, sectionRef: "Parametre Etkileri", category: MAK, question: "İntegral (I) terimi artırılınca ne olur?", options: ["Kalıcı hata sıfırlanır ama salınım riski artar", "Kalıcı hata kalır", "Sadece hız artar", "Hiçbir etki"], correctAnswer: 0, explanation: "I terimi kalıcı hatayı sıfırlar fakat salınım riskini artırır ve yavaş kararlılaşır; P hızlı tepki/salınım, D salınım azaltma sağlar." },
+      { id: 2, sectionRef: "Ayar Stratejisi", category: MAK, question: "Ziegler-Nichols yönteminde ilk adım nedir?", options: ["Sadece P ile kararlılık sınırı (Ku, Tu) bulunur", "Önce D ayarlanır", "I maksimuma alınır", "Tüm parametreler sıfırlanır"], correctAnswer: 0, explanation: "Ziegler-Nichols'ta önce sadece P ile kararlılık sınırı (Ku, Tu) bulunur, sonra P/I/D hesaplanır; pratikte önce P, sonra I, son olarak D eklenir." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Kontrol döngüsü ayarı (tuning)",
+    blocks: [{ sectionTitles: ["Ayar Yöntemleri", "Performans Kriterleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Ayar Yöntemleri", category: MAK, question: "Gemide en yaygın kontrol döngüsü ayar yöntemi hangisidir?", options: ["Manuel ayar (P, I, D sırayla deneyimle)", "Sadece Cohen-Coon", "Hiç ayar yapılmaz", "Rastgele"], correctAnswer: 0, explanation: "Ziegler-Nichols ve Cohen-Coon yöntemleri vardır ama gemide en yaygın pratik manuel ayardır (P, I, D sırayla deneyimle ayarlanır)." },
+      { id: 2, sectionRef: "Performans Kriterleri", category: MAK, question: "Overshoot için tipik kabul sınırı nedir?", options: ["< %10-15", "%50", "%100", "Sınır yok"], correctAnswer: 0, explanation: "Overshoot (set değerinin aşılması) genellikle <%10-15 kabul edilir; settling time ±%2 bandına girme süresidir, kalıcı hata I ile sıfırlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Kaskad ve ileri besleme kontrol",
+    blocks: [{ sectionTitles: ["Kaskad Kontrol", "İleri Besleme (Feedforward)"] }],
+    questions: [
+      { id: 1, sectionRef: "Kaskad Kontrol", category: MAK, question: "Kaskad kontrol nasıl yapılandırılır?", options: ["İki iç içe döngü: dış (master) ana değişkeni, iç (slave) ara değişkeni kontrol eder", "Tek döngü", "Geri besleme yok", "Sadece zamanlayıcı"], correctAnswer: 0, explanation: "Kaskad kontrolde dış (master) döngü ana değişkeni, iç (slave) döngü ara değişkeni kontrol eder; iç döngü bozucu etkilere hızlı tepki verir." },
+      { id: 2, sectionRef: "İleri Besleme (Feedforward)", category: MAK, question: "İleri besleme (feedforward) kontrol ne yapar?", options: ["Bozucu etkiyi ölçüp kontrol eylemine önceden yansıtır", "Sadece geçmişe bakar", "Hata oluşmasını bekler", "Çıkışı ölçmez"], correctAnswer: 0, explanation: "Feedforward bozucu etkiyi ölçüp kontrole önceden yansıtır (geri beslemeyle birlikte); örn. kazan yük değişiminde buhar talebi önceden ölçülüp yakıcı ayarlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "PLC donanım yapısı ve I/O",
+    blocks: [{ sectionTitles: ["Donanım Bileşenleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Donanım Bileşenleri", category: MAK, question: "Sıcaklık sensörü (4-20 mA) PLC'nin hangi modülüne bağlanır?", options: ["Analog giriş", "Dijital çıkış", "CPU", "Haberleşme modülü"], correctAnswer: 0, explanation: "Sıcaklık/basınç/seviye sensörleri (4-20 mA) analog girişe bağlanır; dijital giriş ON/OFF sinyalleri, analog çıkış VFD/valf komutu için kullanılır." },
+      { id: 2, sectionRef: "Donanım Bileşenleri", category: MAK, question: "PLC'nin üst sistemle bağlantısını hangi modül sağlar?", options: ["Haberleşme modülü (Modbus, Profibus, Ethernet)", "Dijital giriş", "Analog çıkış", "CPU yalnız"], correctAnswer: 0, explanation: "Haberleşme modülü Modbus/Profibus/Ethernet ile üst sisteme bağlanır; CPU program/mantık işlemlerini yürütür." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Ladder diyagram programlama",
+    blocks: [{ sectionTitles: ["Temel Elemanlar", "Programlama Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Elemanlar", category: MAK, question: "Ladder diyagramında '−| |−' sembolü neyi ifade eder?", options: ["Normalde açık kontak (NO) — sinyal aktifse geçirir", "Çıkış bobini", "Timer", "Normalde kapalı kontak"], correctAnswer: 0, explanation: "−| |− normalde açık kontaktır (giriş aktifse geçirir); −|/|− normalde kapalı, −( )− çıkış bobini, −[TON]− timer'dır." },
+      { id: 2, sectionRef: "Programlama Prensibi", category: MAK, question: "Ladder mantığında seri bağlı kontaklar hangi mantığı oluşturur?", options: ["AND mantığı", "OR mantığı", "NOT mantığı", "XOR mantığı"], correctAnswer: 0, explanation: "Seri bağlı kontaklar AND, paralel bağlı kontaklar OR mantığıdır; self-holding (tutma) devresinde çıkış kendi kontağıyla kendini tutar." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Alarm ve izleme sistemi (AMS)",
+    blocks: [{ sectionTitles: ["Sistem Yapısı"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "AMS'de kritik bir alarmda ne devreye girebilir?", options: ["Otomatik durdurma (shutdown) veya yavaşlatma (slowdown)", "Sadece kayıt", "Hiçbir şey", "Motor hızlanması"], correctAnswer: 0, explanation: "Set değeri aşılınca sesli/görsel alarm verilir; kritik alarmlarda otomatik shutdown veya slowdown devreye girer." },
+      { id: 2, sectionRef: "Sistem Yapısı", category: MAK, question: "UMS sertifikası için AMS gereksinimi nedir?", options: ["Zorunludur; alarm köprüüstüne ve yaşam alanlarına uzatılmalıdır", "İsteğe bağlıdır", "Gerekmez", "Sadece limanda"], correctAnswer: 0, explanation: "UMS (insansız makine dairesi) sertifikası için AMS zorunludur ve alarm köprüüstü ile yaşam alanlarına uzatılmalıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Dağıtık kontrol sistemi (DCS)",
+    blocks: [{ sectionTitles: ["DCS Mimarisi", "DCS vs PLC"] }],
+    questions: [
+      { id: 1, sectionRef: "DCS Mimarisi", category: MAK, question: "DCS'in temel güvenilirlik avantajı nedir?", options: ["Her kontrolcü bağımsız çalışabilir; merkez düşse bile yerel kontrol sürer", "Tek merkezi işlemci her şeyi yapar", "Yedeklilik yoktur", "Sadece manuel kontrol"], correctAnswer: 0, explanation: "Sahadan gelen sinyaller yerel kontrolcülere bağlanır; her kontrolcü bağımsız çalışır, merkezi istasyon devre dışı kalsa bile yerel kontrol devam eder." },
+      { id: 2, sectionRef: "DCS vs PLC", category: MAK, question: "DCS ile PLC'nin odak farkı nedir?", options: ["DCS sürekli proses kontrolü, PLC mantık ve sıralı kontrol", "İkisi de aynı", "PLC büyük ölçek, DCS küçük", "PLC yedekli, DCS tekil"], correctAnswer: 0, explanation: "DCS sürekli proses kontrolüne (büyük ölçek, yedekli), PLC mantık/sıralı kontrole (küçük-orta) odaklıdır; büyük gemiler/FPSO'da DCS yaygındır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Gemi entegre otomasyon sistemi (IAS)",
+    blocks: [{ sectionTitles: ["Entegre Fonksiyonlar", "Üretici Sistemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Entegre Fonksiyonlar", category: MAK, question: "IAS hangi fonksiyonları tek sistemde birleştirir?", options: ["AMS, PMS, makine kontrolü, kargo kontrol ve yangın algılama", "Sadece navigasyon", "Sadece kargo", "Sadece alarm"], correctAnswer: 0, explanation: "IAS; alarm/izleme (AMS), güç yönetimi (PMS), makine kontrolü, kargo kontrol, yangın algılama ve navigasyon veri entegrasyonunu birleştirir." },
+      { id: 2, sectionRef: "Üretici Sistemleri", category: MAK, question: "Kongsberg'in IAS sistemi hangisidir?", options: ["K-Chief / AutoChief", "Experion Marine", "CENTUM VP", "Ability Marine"], correctAnswer: 0, explanation: "Kongsberg K-Chief/AutoChief; ABB Ability Marine, Wärtsilä NACOS, Honeywell Experion, Yokogawa CENTUM VP Marine üretici sistemleridir." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Uzaktan izleme ve tanı",
+    blocks: [{ sectionTitles: ["Sistem Yapısı", "Uygulamalar"] }],
+    questions: [
+      { id: 1, sectionRef: "Sistem Yapısı", category: MAK, question: "Gemi verileri kıyıya nasıl iletilir?", options: ["VSAT veya Fleet Broadband üzerinden kıyı sunucularına", "Posta ile", "Hiç iletilmez", "Sadece limanda USB ile"], correctAnswer: 0, explanation: "Gemideki data server sensör/otomasyon verilerini toplar ve VSAT/Fleet Broadband ile kıyı sunucularına iletir; uzmanlar analiz eder." },
+      { id: 2, sectionRef: "Uygulamalar", category: MAK, question: "Uzaktan izlemenin bir faydası nedir?", options: ["Kestirimci bakımla plansız duruşu azaltma", "Yakıt tüketimini artırma", "Mürettebatı azaltma zorunluluğu", "Hiçbir fayda"], correctAnswer: 0, explanation: "Motor performans izleme (erken arıza), enerji verimlilik (CII), kestirimci bakım (plansız duruş azaltma) ve uzaktan destek başlıca uygulamalardır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Diyot ve thyristor (SCR)",
+    blocks: [{ sectionTitles: ["Diyot", "Thyristor (SCR)"] }],
+    questions: [
+      { id: 1, sectionRef: "Diyot", category: MAK, question: "Güç diyotunun temel işlevi nedir?", options: ["AC'yi DC'ye çevirmek (tek yönlü akım)", "DC'yi AC'ye çevirmek", "Gerilim yükseltmek", "Frekans değiştirmek"], correctAnswer: 0, explanation: "Diyot tek yönlü akım geçirir (anot+/katot−); güç diyotları doğrultucu devrelerde AC'yi DC'ye çevirir." },
+      { id: 2, sectionRef: "Thyristor (SCR)", category: MAK, question: "SCR (thyristor) çıkış gerilimi nasıl ayarlanır?", options: ["Tetikleme açısı (firing angle) değiştirilerek", "Diyot eklenerek", "Frekansla", "Sıcaklıkla"], correctAnswer: 0, explanation: "SCR üç terminallidir (anot/katot/gate), gate sinyaliyle tetiklenir; kontrollü doğrultucularda tetikleme açısı değiştirilerek çıkış gerilimi ayarlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Doğrultucu devreler",
+    blocks: [{ sectionTitles: ["Doğrultucu Tipleri", "Filtreleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Doğrultucu Tipleri", category: MAK, question: "Büyük VFD'lerde harmonik azaltmak için hangi doğrultucu kullanılır?", options: ["12 darbeli (3-fazlı) — çok düşük dalgalanma", "Yarım dalga (1-fazlı)", "Tam dalga köprü (1-fazlı)", "Tek diyot"], correctAnswer: 0, explanation: "12 darbeli doğrultucu çok düşük dalgalanma sağlar ve büyük VFD'lerde harmonik azaltma için kullanılır; 6 darbeli genel endüstriyeldir." },
+      { id: 2, sectionRef: "Filtreleme", category: MAK, question: "Doğrultulmuş DC gerilimi düzleştirmek için ne kullanılır?", options: ["Kondansatör (kapasitif) veya bobin (endüktif) filtre", "Diyot", "Transformatör", "Sigorta"], correctAnswer: 0, explanation: "DC gerilimi düzleştirmek için kapasitif (kondansatör) veya endüktif (bobin) filtre kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "İnvertör ve frekans dönüştürücü",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "VFD Blok Diyagramı"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "İnvertör DC gerilimi değişken frekanslı AC'ye nasıl çevirir?", options: ["IGBT anahtarlama elemanları PWM tekniğiyle", "Diyotlarla", "Manyetik alanla", "Mekanik anahtarla"], correctAnswer: 0, explanation: "IGBT elemanları PWM (Pulse Width Modulation) ile DC'yi değişken frekanslı AC'ye çevirir; PWM frekansı (2-16 kHz) yükseldikçe dalga sinüse yaklaşır." },
+      { id: 2, sectionRef: "VFD Blok Diyagramı", category: MAK, question: "VFD'de V/f kontrolünün amacı nedir?", options: ["Gerilim/frekans oranını sabit tutarak motor manyetik akısını korumak", "Frekansı sabit tutmak", "Gerilimi sıfırlamak", "Tork kontrolü yapmamak"], correctAnswer: 0, explanation: "VFD blok: AC → doğrultucu → DC bus → invertör → motor. V/f kontrolü gerilim/frekans oranını sabit tutup akıyı korur; vektör kontrol tork/akıyı bağımsız kontrol eder." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Yumuşak yol verici (soft starter)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "VFD ile Karşılaştırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Soft starter motor gerilimini nasıl kontrol eder?", options: ["Anti-paralel SCR çiftleriyle tetikleme açısını azaltarak kademeli yükseltir", "Frekansı değiştirerek", "Diyotla", "Mekanik şalterle"], correctAnswer: 0, explanation: "Soft starter anti-paralel SCR çiftleriyle tetikleme açısını azaltıp gerilimi kademeli yükseltir; sonra SCR tam iletime geçer veya bypass kontaktör devreye girer." },
+      { id: 2, sectionRef: "VFD ile Karşılaştırma", category: MAK, question: "Soft starter ile VFD arasındaki temel fark nedir?", options: ["Soft starter yalnız kalkışta, VFD sürekli hız kontrolü yapar", "İkisi de sürekli hız kontrolü yapar", "VFD sadece kalkışta", "Fark yok"], correctAnswer: 0, explanation: "Soft starter yalnızca kalkışta (başlangıç akımı 2-4×Iₙ) çalışır; VFD sürekli hız kontrolü (~Iₙ) sağlar ve değişken hız gereken her uygulamada kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-automation",
+    topicTitle: "Harmonik bozulma ve filtreleme",
+    blocks: [{ sectionTitles: ["Harmonik Etkileri", "Harmonik Azaltma Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Harmonik Etkileri", category: MAK, question: "Gemi elektrik sistemlerinde THD sınırı nedir?", options: ["<%8 (klas kuralları)", "%50", "%100", "Sınır yok"], correctAnswer: 0, explanation: "THD (Total Harmonic Distortion) harmonik kirliliğin ölçüsüdür; klas kuralları gereği gemi sistemlerinde THD <%8 olmalıdır. Harmonikler trafo/motor ısınması ve yanlış trip yapar." },
+      { id: 2, sectionRef: "Harmonik Azaltma Yöntemleri", category: MAK, question: "En düşük THD'ye (<%5) hangi yöntem ulaşır?", options: ["Aktif filtre", "Line reactor", "Tek diyot", "Hiçbiri"], correctAnswer: 0, explanation: "Aktif filtre THD'yi <%5'e indirir (yüksek maliyet); 12 darbeli doğrultucu %10'a, line reactor %15-20'ye düşürür." },
+    ],
+  },
 ];
