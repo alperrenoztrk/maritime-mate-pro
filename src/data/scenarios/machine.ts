@@ -1087,4 +1087,1084 @@ export const machineScenarios: Scenario[] = [
     debrief:
       "Yakıt tüketimi yaklaşık hızın küpüyle arttığından, zaman uygunsa hızı düşürmek (slow steaming) hem büyük yakıt tasarrufu hem daha iyi CII (karbon yoğunluğu) sağlar; 'just-in-time' varışla demirde bekleme önlenir. Ancak çok düşük yük üretici sınırları, yetersiz yanma/fouling ve yardımcı kazan kararsızlığı yaratabilir; bu nedenle verimlilik daima makine emniyeti ve üretici sınırlarıyla dengelenir.",
   },
+
+  // ─── Termodinamik (2) ──────────────────────────────────────────────────
+  {
+    id: "mac-thermo-econ-soot-fire",
+    topicKey: "machine-thermodynamics",
+    title: "Egzoz Gazı Ekonomizeri: Kurum Yangını",
+    level: "officer",
+    briefing:
+      "Uzun süre düşük yükte seyrettikten sonra egzoz gazı ekonomizeri (atık ısı kazanı) çıkış sıcaklığı beklenmedik şekilde yükseldi; baca tarafında parlama belirtisi var. Düşük yükte biriken kurum tutuşmuş olabilir (soot fire).",
+    learningGoals: [
+      "Atık ısı kazanında kurum yangını (soot/iron fire) riskini ve nedenini kavramak",
+      "Doğru söndürme ve önleyici (soot blowing) bakımı anlamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Ekonomizer sıcaklığı normalin çok üstünde; düşük yükte biriken kurum tutuşmuş olabilir. Su sirkülasyonu kritik.",
+        question: "İlk müdahale nedir?",
+        choices: [
+          {
+            text: "Su sirkülasyonunu sürdürür/artırır, yükü/ekzoz sıcaklığını yönetir ve üretici prosedürüne göre su yıkama (water washing) uygularım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Soot fire'da su sirkülasyonu sürdürülerek boru aşırı ısınması önlenir; üretici prosedürüne göre söndürme/yıkama yapılır.",
+            source: { code: "Üretici prosedürü / iyi uygulama", detail: "Su sirkülasyonu + kontrollü söndürme" },
+            next: "step2",
+          },
+          {
+            text: "Su sirkülasyonunu durdururum",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Sirkülasyon kesilirse borular aşırı ısınıp deforme olur; yangın 'iron fire'a dönüşebilir.",
+            source: { code: "Atık ısı kazanı", detail: "Sirkülasyon kesilmez" },
+            next: "step2",
+          },
+          {
+            text: "Hava ile üfleyip alevi büyütmeyi denerim",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Hava (oksijen) yangını besler; soot fire'da hava verilmez.",
+            source: { code: "Soot fire", detail: "Oksijen yangını besler" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Yangın söndü. Kök neden düşük yükte kurum birikimi.",
+        question: "Tekrarı önlemek için ne yaparsınız?",
+        choices: [
+          {
+            text: "Düzenli soot blowing/su yıkaması yapar, düşük yük seyrinde kurum birikimini izler ve kaydederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Düzenli kurum üfleme/yıkama ve düşük yük yönetimi birikimi önler; PMS kaydı tutulur.",
+            source: { code: "PMS / bakım", detail: "Düzenli soot blowing" },
+          },
+          {
+            text: "Bir şey olmaz diye bakımı ertelerim",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Kurum birikimi devam ederse yangın tekrarlar ve boru hasarı/iron fire riski artar.",
+            source: { code: "Önleyici bakım", detail: "Birikim tekrar yangın yapar" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Düşük yük seyrinde egzoz gazı ekonomizerinde biriken kurum tutuşabilir (soot fire). Doğru tepki: su sirkülasyonunu SÜRDÜR (boru aşırı ısınmasını ve iron fire'a dönüşmeyi önler), üretici prosedürüne göre söndür/su yıka; asla hava verme. Önleme: düzenli soot blowing/su yıkama ve düşük yük seyrinde kurum birikiminin izlenmesi.",
+  },
+
+  // ─── Akışkanlar Mekaniği (2) ───────────────────────────────────────────
+  {
+    id: "mac-fluid-water-hammer",
+    topicKey: "machine-fluid-mechanics",
+    title: "Su Darbesi (Water Hammer): Valf Açma",
+    level: "cadet",
+    briefing:
+      "Uzun bir su hattını devreye alıyorsunuz. Bir gemici basma valfini hızlıca tam açtı ve hatta sert bir 'çekiç' sesi ve titreşim oluştu (water hammer). Boru bağlantıları zorlanıyor.",
+    learningGoals: [
+      "Su darbesinin nedenini (ani hız değişimi) ve hasarını kavramak",
+      "Valfleri kademeli açıp kapatmanın önemini anlamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Ani valf hareketi, hareketli su kütlesinin momentumunu aniden değiştirerek basınç darbesi (water hammer) yarattı.",
+        question: "Ne yaparsınız?",
+        choices: [
+          {
+            text: "Valfi yavaş/kademeli açıp kapatırım; ani hareketten kaçınır, hava cebi/yetersiz hava firarını kontrol ederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Su darbesi ani hız değişiminden doğar; valfler kademeli açılır/kapatılır, hatta hava ceplerinin tahliyesi sağlanır.",
+            source: { code: "Akışkanlar mekaniği (water hammer)", detail: "Kademeli valf hareketi" },
+            next: "step2",
+          },
+          {
+            text: "Darbeyi durdurmak için valfi bir anda tam kapatırım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Ani kapatma daha büyük bir basınç darbesi yaratır; boru/conta patlaması riskini artırır.",
+            source: { code: "Water hammer", detail: "Ani kapatma darbeyi büyütür" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Darbe sırasında bir flanştan hafif sızıntı oluştu.",
+        question: "Sonra ne yaparsınız?",
+        choices: [
+          {
+            text: "Hattı emniyete alır, bağlantıyı kontrol/tahkim eder ve gelecekte kademeli operasyon talimatı veririm",
+            outcome: "safe",
+            feedback:
+              "Doğru. Zorlanan bağlantı kontrol edilir; tekrarı önlemek için valf operasyon disiplini (kademeli) uygulanır.",
+            source: { code: "Bakım / operasyon", detail: "Bağlantı kontrolü + kademeli operasyon" },
+          },
+          {
+            text: "Sızıntı küçük diye yok sayarım",
+            outcome: "risky",
+            feedback:
+              "Riskli. Tekrarlayan darbeler sızıntıyı büyütüp boru/flanş arızasına yol açabilir.",
+            source: { code: "Bakım", detail: "Küçük sızıntı büyür" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Su darbesi (water hammer), hareketli su kütlesinin hızının ani değişiminden (hızlı valf açma/kapama) doğan basınç darbesidir ve boru/conta hasarı yapar. Önlem: valfleri kademeli açıp kapatmak ve hattaki hava ceplerini tahliye etmektir. Ani tam kapatma darbeyi büyütür. Zorlanan bağlantılar kontrol edilir ve kademeli operasyon disiplini yerleştirilir.",
+  },
+
+  // ─── Makine Elemanları (2) ─────────────────────────────────────────────
+  {
+    id: "mac-elements-bolt-torque",
+    topicKey: "machine-machine-elements",
+    title: "Cıvata Bağlantısı: Tork ve Yorulma",
+    level: "officer",
+    briefing:
+      "Tekrarlayan titreşime maruz bir kapak/flanş bağlantısında cıvatalar gevşemiş ve birinde yorulma çatlağı belirtisi var. Gemici 'mümkün olduğunca sık' (aşırı) torkla sıkmak istiyor.",
+    learningGoals: [
+      "Doğru ön yükleme/tork ve yorulma ilişkisini kavramak",
+      "Aşırı/yetersiz sıkmanın ikisinin de zararını anlamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Bağlantı titreşimle gevşemiş; bir cıvatada yorulma belirtisi var. Doğru sıkma kritik.",
+        question: "Nasıl sıkarsınız?",
+        choices: [
+          {
+            text: "Üretici tork değerine, tork anahtarı ve doğru sırayla (çapraz/aşamalı) sıkar, hasarlı cıvatayı değiştiririm",
+            outcome: "safe",
+            feedback:
+              "Doğru. Doğru ön yükleme üretici torkuyla, kalibre tork anahtarıyla ve doğru sırayla sağlanır; çatlak cıvata yenilenir.",
+            source: { code: "İyi mühendislik uygulaması", detail: "Üretici tork + doğru sıra" },
+            next: "step2",
+          },
+          {
+            text: "Gevşememesi için mümkün olduğunca aşırı sıkarım",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Aşırı tork cıvatayı akma sınırının ötesine zorlayıp kopma/yorulmaya yol açar; ön yükleme kontrollü olmalıdır.",
+            source: { code: "Cıvata ön yüklemesi", detail: "Aşırı tork = kopma riski" },
+            next: "step2",
+          },
+          {
+            text: "Çatlak cıvatayı yerinde bırakıp diğerlerini sıkarım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yorulma çatlağı olan cıvata ilerleyip kopar; mutlaka değiştirilir.",
+            source: { code: "Yorulma", detail: "Çatlak cıvata değiştirilir" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Bağlantı yine titreşime maruz kalacak.",
+        question: "Gevşemeyi önlemek için ne yaparsınız?",
+        choices: [
+          {
+            text: "Uygun emniyet (kilit pul/somun, locking wire) kullanır ve periyodik tork kontrolünü PMS'e eklerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Titreşimli bağlantılarda kilitleme yöntemi ve periyodik tork kontrolü gevşemeyi önler.",
+            source: { code: "PMS / bağlantı emniyeti", detail: "Kilitleme + periyodik kontrol" },
+          },
+          {
+            text: "Sıktım, bir daha bakmaya gerek yok derim",
+            outcome: "risky",
+            feedback:
+              "Riskli. Titreşim zamanla yine gevşetir; periyodik kontrol gereklidir.",
+            source: { code: "PMS", detail: "Titreşim tekrar gevşetir" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Titreşimli cıvata bağlantısında doğru ön yükleme, üretici tork değeriyle, kalibre tork anahtarıyla ve doğru (çapraz/aşamalı) sırayla sağlanır. Aşırı tork cıvatayı akma sınırının ötesine zorlar; yorulma çatlağı olan cıvata mutlaka değiştirilir. Gevşemeyi önlemek için kilitleme (kilit pul/locking wire) kullanılır ve periyodik tork kontrolü PMS'e eklenir.",
+  },
+
+  // ─── Dizel Makineler (2) ───────────────────────────────────────────────
+  {
+    id: "mac-diesel-crankcase-explosion",
+    topicKey: "machine-diesel-engines",
+    title: "Karter Patlaması Riski: Oil Mist Alarmı",
+    level: "officer",
+    briefing:
+      "Ana makinede oil mist detector (yağ buğusu dedektörü) alarm verdi ve bir ana yatak bölgesi sıcaklığı yüksek. Sıcak nokta, karterde yağı buharlaştırıp patlayıcı bir yağ buğusu (oil mist) oluşturuyor olabilir — karter patlaması riski.",
+    learningGoals: [
+      "Karter patlaması mekanizmasını (sıcak nokta → oil mist) kavramak",
+      "Karter kapaklarını AÇMAMAK ve doğru sırayı uygulamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Oil mist alarmı + sıcak yatak. Karter kapağını hemen açmak ikinci patlama (hava girişi) riski yaratır.",
+        question: "İlk müdahale nedir?",
+        choices: [
+          {
+            text: "Köprüüstüne bildirip yükü azaltır/durdurur, makineyi soğumaya bırakır ve karter kapaklarını AÇMADAN beklerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Devri/yükü düşürüp durdurmak ısı girişini keser; karter sıcak ve buğu doluyken kapak açmak hava girişiyle ikincil patlama yaratır.",
+            source: { code: "Üretici / SOLAS (oil mist)", detail: "Yük↓/durdur, kapak açma, soğut" },
+            next: "step2",
+          },
+          {
+            text: "Hemen karter kapağını açıp içeriye bakarım",
+            outcome: "danger",
+            feedback:
+              "Ölümcül. Sıcak karterdeki yağ buğusuna ani hava girişi şiddetli ikincil patlamaya yol açar; kapak açılmaz.",
+            source: { code: "Karter patlaması", detail: "Sıcak karterde kapak = ikincil patlama" },
+            next: "step2",
+          },
+          {
+            text: "Yükü artırıp 'sıcaklığı dağıtmayı' denerim",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Yük artışı sıcak noktayı ve buğu üretimini artırır; patlama riskini büyütür.",
+            source: { code: "Oil mist", detail: "Yük artışı riski büyütür" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Makine durdu ve yeterince soğudu.",
+        question: "Karteri ne zaman/nasıl açarsınız?",
+        choices: [
+          {
+            text: "Yeterli soğuma süresinden sonra dikkatle açar, sıcak noktanın (yatak/segman) nedenini bulur ve onarmadan çalıştırmam",
+            outcome: "safe",
+            feedback:
+              "Doğru. Yeterli soğumadan sonra açılır; sıcak nokta nedeni (yetersiz yağlama, yatak hasarı) giderilmeden makine çalıştırılmaz.",
+            source: { code: "İyi uygulama", detail: "Soğut, neden bul, onar" },
+          },
+          {
+            text: "Soğumayı beklemeden açıp hızla toparlarım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yeterince soğumadan açmak hâlâ ikincil patlama riski taşır; üretici soğuma süresine uyulur.",
+            source: { code: "Karter patlaması", detail: "Yeterli soğuma süresi şart" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Oil mist alarmı + sıcak yatak, bir sıcak noktanın karterde patlayıcı yağ buğusu oluşturduğunu gösterir (karter patlaması riski). Doğru tepki: köprüüstüne bildir, yükü azalt/durdur ve makineyi soğumaya bırak. Karter sıcak ve buğu doluyken kapak AÇILMAZ — ani hava girişi şiddetli ikincil patlama yaratır. Yeterli soğumadan sonra açılır, sıcak nokta nedeni (yağlama/yatak) giderilmeden çalıştırılmaz.",
+  },
+
+  // ─── Gemi Sistemleri (2) ───────────────────────────────────────────────
+  {
+    id: "mac-shipsys-bilge-flooding",
+    topicKey: "machine-ship-systems",
+    title: "Makine Dairesi Su Basması: Yüksek Sintine Alarmı",
+    level: "officer",
+    briefing:
+      "Makine dairesi sintine yüksek seviye alarmı çaldı ve seviye yükseliyor. Bir deniz suyu hattında/soğutucuda kaçaktan şüpheleniliyor. Su girişi devam ediyor.",
+    learningGoals: [
+      "Su basmasında kaynağı izole etme ve sintine pompalamasının sırasını kavramak",
+      "Köprüüstü bilgilendirme ve gerekirse acil sintine emişini bilmek",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Sintine seviyesi yükseliyor; muhtemel kaynak bir deniz suyu kaçağı. Su girişi sürüyor.",
+        question: "İlk doğru aksiyon nedir?",
+        choices: [
+          {
+            text: "Köprüüstüne bildirir, kaynağı bulup izole eder (ilgili deniz suyu valfini kapatır) ve sintineyi pompalarım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Önce su girişi durdurulmalı (kaynağı izole et), ardından pompalama etkili olur; köprüüstü anında bilgilendirilir.",
+            source: { code: "Su basması müdahalesi", detail: "Kaynağı izole et + pompala + köprüye bildir" },
+            next: "step2",
+          },
+          {
+            text: "Kaynağı bulmadan sadece pompalarım",
+            outcome: "risky",
+            feedback:
+              "Yetersiz. Giriş durdurulmazsa pompa yetişemez; önce kaynağı izole etmek gerekir.",
+            source: { code: "Su basması", detail: "Önce kaynağı durdur" },
+            next: "step2",
+          },
+          {
+            text: "Seviye yükselirken müdahaleyi geciktiririm",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Su seviyesi elektrik panoları/makinelere ulaşırsa blackout ve ağır hasar olur; gecikilmez.",
+            source: { code: "Su basması", detail: "Gecikme = pano/makine hasarı" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Normal sintine pompası giriş debisine yetişemiyor.",
+        question: "Ne yaparsınız?",
+        choices: [
+          {
+            text: "Ek/acil sintine emişini (emergency bilge suction) devreye alır ve durumu köprüyle/şirketle paylaşırım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Acil sintine emişi büyük pompanın doğrudan makine dairesinden su basmasını sağlar; durum tırmanırsa şirkete/MRCC'ye bildirilir.",
+            source: { code: "Acil sintine emişi", detail: "Emergency bilge suction kullan" },
+          },
+          {
+            text: "Tek pompayla devam edip beklerim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yetersiz pompalama su seviyesinin yükselmesine ve kritik ekipman kaybına izin verir.",
+            source: { code: "Su basması", detail: "Yetersiz kapasiteyle bekleme" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Makine dairesi su basmasında öncelik su GİRİŞİNİ durdurmaktır: kaynağı bul ve ilgili deniz suyu valfini kapatarak izole et; sonra sintineyi pompala ve köprüüstünü hemen bilgilendir. Normal pompa yetişmezse acil sintine emişi (emergency bilge suction) devreye alınır. Gecikme, suyun elektrik panolarına/makinelere ulaşıp blackout ve ağır hasar yaratmasına yol açar; durum tırmanırsa şirket/MRCC bilgilendirilir.",
+  },
+
+  // ─── Yardımcı Makineler (2) ────────────────────────────────────────────
+  {
+    id: "mac-aux-starting-air",
+    topicKey: "machine-auxiliary",
+    title: "Manevra Öncesi: Başlatma Havası ve Patlama Riski",
+    level: "officer",
+    briefing:
+      "Manevra hazırlığı yapıyorsunuz. Başlatma havası (starting air) tüplerinin basıncı düşük ve bir hava tüpünde su/yağ birikimi olabilir. Köprüüstü kısa süre sonra makineyi isteyecek.",
+    learningGoals: [
+      "Manevra öncesi yeterli başlatma havası hazırlığını kavramak",
+      "Başlatma havası hattında yağ/su birikiminin patlama riskini anlamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Manevra çok sayıda start/stop demektir; yeterli hava tüpü basıncı gerekir. Tüplerde su/yağ birikimi tehlikelidir.",
+        question: "Hazırlık için ne yaparsınız?",
+        choices: [
+          {
+            text: "Kompresörlerle tüpleri doldurur, tüpleri/separatörleri drenajlar (su+yağ alır) ve sistemi kontrol ederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Yeterli hava basıncı sağlanır; tüp ve hat drenajı yağ/su birikimini alır — bu birikim başlatma havası hattı patlamasının nedenidir.",
+            source: { code: "Manevra hazırlığı / iyi uygulama", detail: "Tüpleri doldur + drenajla" },
+            next: "step2",
+          },
+          {
+            text: "Düşük basınçla idare ederim, drenaja gerek yok",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yetersiz hava manevrada makineyi başlatamamaya; yağ/su birikimi ise hava hattı patlamasına yol açar.",
+            source: { code: "Başlatma havası", detail: "Düşük basınç + birikim = risk" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Manevra sırasında sık start gerekiyor; basınç düşüyor.",
+        question: "Ne yaparsınız?",
+        choices: [
+          {
+            text: "Kompresörleri otomatik/manuel devrede tutar, basıncı izler ve yeterli rezervi korurum",
+            outcome: "safe",
+            feedback:
+              "Doğru. Manevrada kompresörler hazır tutulur ve hava rezervi izlenerek başlatma kabiliyeti garanti edilir.",
+            source: { code: "Manevra / hava yönetimi", detail: "Kompresör hazır + rezerv izleme" },
+          },
+          {
+            text: "Tüm tüpleri boşaltana kadar start atmaya devam ederim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Hava biterse makine manevranın ortasında başlatılamaz; bu, kontrol kaybı demektir.",
+            source: { code: "Hava yönetimi", detail: "Rezervi tüketme" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Manevra çok sayıda start/stop gerektirir; öncesinde başlatma havası tüpleri yeterli basınca doldurulur ve drenajlanır. Tüp/hatlardaki yağ ve su birikimi, başlatma havası hattı patlamalarının başlıca nedenidir; bu yüzden düzenli drenaj kritiktir. Manevra boyunca kompresörler hazır tutulur ve hava rezervi izlenerek makinenin her an başlatılabilmesi güvence altına alınır.",
+  },
+
+  // ─── Yakıt Teknolojisi (2) ─────────────────────────────────────────────
+  {
+    id: "mac-fuel-bad-bunker",
+    topicKey: "machine-fuel-technology",
+    title: "Kötü Bunker: Cat Fines ve Su",
+    level: "officer",
+    briefing:
+      "Yeni bunker aldınız. Numune analizinden önce ana makine yakıt pompalarında aşınma ve filtre tıkanması artışı fark ediliyor. Yakıtta yüksek katalitik kalıntı (cat fines, Al+Si) ve su şüphesi var.",
+    learningGoals: [
+      "Cat fines ve suyun makineye zararını ve separatörün rolünü kavramak",
+      "Numune/BDN ile uyuşmazlık ve doğru yakıt yönetimini anlamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Yakıtta cat fines/su şüphesi var; bunlar silindir gömleği ve enjeksiyon ekipmanını hızla aşındırır.",
+        question: "Ne yaparsınız?",
+        choices: [
+          {
+            text: "Separatörü (purifier) doğru debide/sıcaklıkta çalıştırır, settling/service tank drenajı yapar ve numuneyi laboratuvara gönderirim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Cat fines ve su, doğru çalıştırılan separatör ve settling tankı ile büyük ölçüde alınır; numune analizle doğrulanır.",
+            source: { code: "ISO 8217 / yakıt yönetimi", detail: "Separatör + settling + numune" },
+            next: "step2",
+          },
+          {
+            text: "Yakıtı doğrudan makineye verir, sorun çıkarsa bakarım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Cat fines silindir/segman ve enjektörleri hızla aşındırır; arıtılmadan yakılması ağır hasar yapar.",
+            source: { code: "Cat fines", detail: "Arıtılmadan yakma = aşınma" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Laboratuvar, cat fines'in spesifikasyon (ISO 8217) sınırını aştığını doğruladı.",
+        question: "Ticari/operasyonel olarak ne yaparsınız?",
+        choices: [
+          {
+            text: "BDN/numuneyle resmî olarak bildirir (off-spec yakıt), şirket/tedarikçiyle süreci yürütür ve arıtmayı yoğunlaştırırım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Off-spec yakıt mühürlü numune ve BDN ile belgelenip raporlanır; bu sırada separatör performansı en üst düzeyde tutulur.",
+            source: { code: "ISO 8217 / BDN", detail: "Off-spec bildirimi + numune" },
+          },
+          {
+            text: "Sorunu kayıt dışı bırakıp idare ederim",
+            outcome: "risky",
+            feedback:
+              "Riskli. Belgelenmeyen off-spec yakıt hem hasar hem ticari talep hakkı kaybı demektir; resmî süreç işletilir.",
+            source: { code: "Yakıt yönetimi", detail: "Belgeleme ticari hak için şart" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Yüksek cat fines (Al+Si) ve su, silindir gömleği, segman ve enjeksiyon ekipmanını hızla aşındırır. Doğru tepki: separatörü doğru debi/sıcaklıkta çalıştırmak, settling/service tank drenajı yapmak ve numuneyi laboratuvara göndermektir. Off-spec doğrulanırsa mühürlü numune ve BDN ile resmî bildirim yapılır (ticari talep hakkı için), ve arıtma yoğunlaştırılır. Arıtılmadan yakmak ağır makine hasarına yol açar.",
+  },
+
+  // ─── Soğutma ve HVAC (2) ───────────────────────────────────────────────
+  {
+    id: "mac-cooling-sw-high-temp",
+    topicKey: "machine-cooling-hvac",
+    title: "Merkezi Soğutma: Deniz Suyu Tarafı Sıcaklık Artışı",
+    level: "officer",
+    briefing:
+      "Tropik sularda merkezi soğutma sisteminde tatlı su (low-temp) çıkış sıcaklığı yükseliyor. Deniz suyu (sea water) tarafı debisi düşmüş olabilir; deniz suyu filtresi/soğutucu kirli ya da sea chest tıkalı olabilir.",
+    learningGoals: [
+      "Merkezi soğutmada ısı transferi düşüşünün nedenlerini tanımak",
+      "Doğru müdahale (filtre, sea chest geçişi, debi) seçmek",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Tatlı su sıcaklığı yükseliyor; deniz suyu tarafı ısıyı yeterince çekmiyor. Filtre/soğutucu kirliliği veya tıkanma olabilir.",
+        question: "Önce ne kontrol edersiniz?",
+        choices: [
+          {
+            text: "Deniz suyu filtresini/strainer'ı kontrol-temizler, gerekirse diğer sea chest'e geçer ve debiyi doğrularım",
+            outcome: "safe",
+            feedback:
+              "Doğru. SW debisi düşüşü genelde tıkalı filtre/sea chest'tendir; temizlik veya alternatif sea chest debiyi geri kazandırır.",
+            source: { code: "Merkezi soğutma / iyi uygulama", detail: "SW filtre + sea chest kontrolü" },
+            next: "step2",
+          },
+          {
+            text: "Tatlı su tarafına soğuk su eklerim",
+            outcome: "risky",
+            feedback:
+              "Yetersiz. Sorun ısının atılamamasıdır (SW tarafı); tatlı su eklemek kök nedeni çözmez.",
+            source: { code: "Soğutma sistemi", detail: "Sorun SW tarafında" },
+            next: "step2",
+          },
+          {
+            text: "Sıcaklık artışını yok sayarım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yetersiz soğutma ana makine/yardımcıların aşırı ısınmasına yol açar.",
+            source: { code: "Soğutma sistemi", detail: "İhmal = aşırı ısınma" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Filtre temizlendi ama soğutucu (cooler) plakaları da kirli/foul görünüyor.",
+        question: "Sonra ne yaparsınız?",
+        choices: [
+          {
+            text: "Soğutucuyu (plakalı eşanjör) plana göre temizler ve sıcaklık trendini izlerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Fouling ısı transferini düşürür; eşanjör temizliği ve trend izleme performansı geri getirir.",
+            source: { code: "Eşanjör bakımı (fouling)", detail: "Temizlik + trend izleme" },
+          },
+          {
+            text: "Gemi soğuk sulara girince düzelir diye beklerim",
+            outcome: "risky",
+            feedback:
+              "Riskli. Fouling kalıcıdır; tropik dışında 'gizlenen' sorun yük arttığında yine ortaya çıkar.",
+            source: { code: "Eşanjör bakımı", detail: "Fouling kendiliğinden geçmez" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Merkezi soğutmada tatlı su sıcaklığının yükselmesi genelde deniz suyu tarafının ısıyı atamamasından kaynaklanır: tıkalı SW filtresi/sea chest veya foul olmuş soğutucu. Doğru sıra: SW filtresini/strainer'ı temizle, gerekirse alternatif sea chest'e geç ve debiyi doğrula; ardından foul eşanjörü plana göre temizle ve sıcaklık trendini izle. Tatlı su tarafına müdahale kök nedeni çözmez.",
+  },
+
+  // ─── Elektrik (2) ──────────────────────────────────────────────────────
+  {
+    id: "mac-elec-earth-fault",
+    topicKey: "machine-electrical",
+    title: "Toprak (Earth) Arızası: İzole Sistem",
+    level: "officer",
+    briefing:
+      "Ana panodaki toprak (earth) arıza lambaları/izleme cihazı bir fazda toprak arızası gösteriyor. Gemi elektrik sistemi izole (IT) tiptir: tek toprak arızası sistemi hemen durdurmaz ama ikinci bir arıza kısa devre/yangın yaratır.",
+    learningGoals: [
+      "İzole (IT) sistemde tek/çift toprak arızası riskini kavramak",
+      "Arızalı devreyi güvenli izole etme yöntemini bilmek",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Tek toprak arızası var; sistem hâlâ çalışıyor ama ikinci arıza tehlikeli kısa devre yaratır. Arızalı devre bulunmalı.",
+        question: "Nasıl ilerlersiniz?",
+        choices: [
+          {
+            text: "Arızayı bulmak için devreleri (kritik olmayanlardan başlayarak, prosedüre uygun) sırayla izole ederek izole monitörünü izlerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Sistematik devre izolasyonu ile arızalı fider bulunur; kritik tüketiciler korunarak prosedüre uyulur.",
+            source: { code: "İzole (IT) sistem / earth fault", detail: "Sistematik fider izolasyonu" },
+            next: "step2",
+          },
+          {
+            text: "Tek arıza tehlikesiz diye yok sayarım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. İkinci bir toprak arızası faz-faz kısa devresi, ark ve yangın yaratır; arıza derhâl bulunmalıdır.",
+            source: { code: "IT sistem", detail: "İkinci arıza = kısa devre/yangın" },
+            next: "step2",
+          },
+          {
+            text: "Ana şalteri açıp tüm gemiyi karartırım",
+            outcome: "risky",
+            feedback:
+              "Aşırı/yanlış. Tek toprak arızası tüm sistemi karartmayı gerektirmez; seyir/manevra için gereksiz blackout yaratır.",
+            source: { code: "Earth fault", detail: "Gereksiz blackout" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Arızalı devre (nemli bir aydınlatma/ısıtıcı devresi) bulundu.",
+        question: "Ne yaparsınız?",
+        choices: [
+          {
+            text: "Arızalı devreyi izole eder, nem/yalıtım sorununu giderir (kurutma/onarım) ve izolasyon direncini ölçerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Arızalı devre izole edilip yalıtım onarılır; megger ile izolasyon direnci doğrulanır.",
+            source: { code: "Bakım / izolasyon ölçümü", detail: "İzole et, onar, megger ölç" },
+          },
+          {
+            text: "Devreyi köprüler (jumper) ve çalışır tutarım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Arızayı köprülemek toprak arızasını gizler ve yangın/elektrik çarpması riskini sürdürür.",
+            source: { code: "Elektrik güvenliği", detail: "Arıza köprüleme yasak" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "İzole (IT) gemi sisteminde tek toprak arızası sistemi durdurmaz, ama İKİNCİ bir arıza faz-faz kısa devresi, ark ve yangın yaratır — bu yüzden arıza derhâl bulunmalıdır. Yöntem: kritik olmayan devrelerden başlayarak prosedüre uygun sistematik fider izolasyonu ile arızalı devreyi bulmak. Bulunan devre izole edilir, yalıtım/nem sorunu onarılır ve izolasyon direnci megger ile doğrulanır; arıza asla köprülenmez.",
+  },
+
+  // ─── Otomasyon (2) ─────────────────────────────────────────────────────
+  {
+    id: "mac-auto-governor-hunting",
+    topicKey: "machine-automation",
+    title: "Devir Salınımı: Governor Hunting",
+    level: "officer",
+    briefing:
+      "Bir jeneratörün devri/frekansı sürekli salınıyor (hunting): yük sabitken devir bir artıp bir azalıyor. Governor (hız regülatörü) ayarı agresif olabilir veya yakıt/yük bağlantısında sorun olabilir.",
+    learningGoals: [
+      "Kontrol döngüsü kararsızlığını (hunting) ve PID etkisini kavramak",
+      "Doğru teşhis ve güvenli ayar yaklaşımı",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Devir salınıyor (hunting). Aşırı agresif kontrol (yüksek kazanç) veya mekanik gevşeklik/yakıt sorunu olabilir.",
+        question: "Önce ne yaparsınız?",
+        choices: [
+          {
+            text: "Yükü/yakıt bağlantısını ve governor parametrelerini kontrol eder, salınımın kaynağını (kontrol mü mekanik mi) ayırt ederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Hunting hem agresif PID ayarından hem mekanik gevşeklik/yakıt sorunundan olabilir; önce kaynak ayırt edilir.",
+            source: { code: "Kontrol döngüsü (PID/governor)", detail: "Kaynağı ayırt et" },
+            next: "step2",
+          },
+          {
+            text: "Parametreleri rastgele büyük adımlarla değiştiririm",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Kör/agresif değişiklik salınımı büyütüp jeneratörü trip ettirebilir; sistematik ayar gerekir.",
+            source: { code: "Tuning", detail: "Kör/büyük adım kararsızlığı artırır" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Sorun governor kazancının (gain) çok yüksek olmasıymış.",
+        question: "Ayarı nasıl yaparsınız?",
+        choices: [
+          {
+            text: "Üretici yöntemine göre kazancı kademeli azaltır/integral-türev dengesini ayarlar ve kararlılığı izlerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Aşırı oransal kazanç salınım yapar; kademeli ve yöntemli ayar (üretici/Ziegler-Nichols mantığı) kararlılık sağlar.",
+            source: { code: "PID tuning", detail: "Kademeli, yöntemli ayar" },
+          },
+          {
+            text: "Salınımı görmezden gelir, yükü artırırım",
+            outcome: "risky",
+            feedback:
+              "Riskli. Kararsız governor, paralel çalışmada yük paylaşımını bozar ve trip/blackout'a yol açabilir.",
+            source: { code: "Güç yönetimi", detail: "Kararsız governor = trip riski" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Sabit yükte sürekli devir/frekans salınımı (hunting), kontrol döngüsü kararsızlığıdır; nedeni aşırı agresif governor ayarı (yüksek oransal kazanç) olabileceği gibi mekanik gevşeklik veya yakıt sorunu da olabilir. Doğru yol: önce kaynağı ayırt etmek, sonra üretici yöntemine göre kazancı/PID dengesini KADEMELİ ayarlamaktır. Kör/büyük parametre değişimleri salınımı büyütür; kararsız governor paralel çalışmada yük paylaşımını bozup trip/blackout yaratabilir.",
+  },
+
+  // ─── Makine Dairesi Operasyonları (2) ──────────────────────────────────
+  {
+    id: "mac-ops-manoeuvring-prep",
+    topicKey: "machine-engine-room-ops",
+    title: "Manevra Hazırlığı: Stand-by Engine",
+    level: "officer",
+    briefing:
+      "Köprüüstü bir saat içinde manevra için 'stand-by engine' isteyecek. Gemi uzun süredir tam yol seyir (full away) modunda. Manevraya geçiş bir dizi hazırlık gerektirir.",
+    learningGoals: [
+      "Seyirden manevra moduna geçiş hazırlıklarını sıralamak",
+      "Köprü-makine telgraf/iletişim teyidini kavramak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Manevra çok sayıda start/stop ve hız değişimi demektir; makine ve yardımcılar hazırlanmalı.",
+        question: "Hangi hazırlıkları yaparsınız?",
+        choices: [
+          {
+            text: "Yeterli jeneratörü paralele alır, başlatma havasını doldurur, yağlama/soğutmayı manevra moduna geçirir ve ileri/geri deneme yaparım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Stand-by öncesi güç, başlatma havası, yağlama/soğutma ayarlanır; telgraf testi ve ileri/geri deneme start yapılır.",
+            source: { code: "Manevra hazırlığı", detail: "Güç+hava+yağlama+telgraf testi" },
+            next: "step2",
+          },
+          {
+            text: "Hiçbir ön hazırlık yapmadan beklerim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Hazırlıksız manevra; yetersiz güç/hava ve gecikmiş tepki nedeniyle kontrol kaybına yol açar.",
+            source: { code: "Manevra hazırlığı", detail: "Hazırlıksız manevra riski" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "'Stand-by engine' geldi; köprü telgrafla komut veriyor.",
+        question: "Telgraf komutlarını nasıl yönetirsiniz?",
+        choices: [
+          {
+            text: "Her komutu teyit eder (telgraf cevabı), uygular ve parametreleri yakından izlerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Telgraf komutları teyitle uygulanır; manevra boyunca devir, sıcaklık, hava basıncı izlenir.",
+            source: { code: "Köprü-makine iletişimi", detail: "Telgraf teyidi + izleme" },
+          },
+          {
+            text: "Komutları teyitsiz, tahmine göre uygularım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Teyitsiz uygulama yanlış yön/devir komutuna ve kazaya yol açabilir.",
+            source: { code: "İletişim", detail: "Teyitsiz komut = hata" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Seyirden manevraya geçişte 'stand-by engine' öncesi hazırlık şarttır: yeterli jeneratörü paralele al, başlatma havası tüplerini doldur, yağlama/soğutmayı manevra moduna geçir ve telgraf testi ile ileri/geri deneme start yap. Manevra sırasında her telgraf komutu teyitle (telgraf cevabı) uygulanır ve devir, sıcaklık, hava basıncı yakından izlenir. Hazırlıksız veya teyitsiz manevra kontrol kaybı riskidir.",
+  },
+
+  // ─── Bakım (2) ─────────────────────────────────────────────────────────
+  {
+    id: "mac-maint-hot-work",
+    topicKey: "machine-maintenance",
+    title: "Sıcak İş: Makine Dairesinde Kaynak",
+    level: "officer",
+    briefing:
+      "Makine dairesinde bir destek elemanını kaynakla onaracaksınız. Yakınlarda yakıt/yağ hatları ve yağlı yüzeyler var. Bir gemici 'hızlı bir kaynak, izne gerek yok' diyor.",
+    learningGoals: [
+      "Sıcak iş izni ve yangın önlemlerini uygulamak",
+      "Kıvılcım/ısı ile yakıt-yağ yakınlığı riskini yönetmek",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Kaynak kıvılcım ve ısı üretir; yakındaki yakıt/yağ tutuşabilir. İzin ve önlem kritik.",
+        question: "İşe başlamadan önce ne yaparsınız?",
+        choices: [
+          {
+            text: "Sıcak iş izni alır, alanı yanıcılardan temizler/örter, yangın gözcüsü ve söndürücü bulundurur, atmosferi kontrol ederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Sıcak iş izni; yanıcı uzaklaştırma/koruma, yangın gözcüsü (fire watch), hazır söndürücü ve gerekiyorsa gaz ölçümü ister.",
+            source: { code: "Sıcak iş izni / SOLAS-ISM", detail: "İzin + fire watch + söndürücü" },
+            next: "step2",
+          },
+          {
+            text: "İzinsiz, hızlıca kaynağı yaparım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. 'Hızlı kaynak' yakıt/yağ tutuşmasıyla makine dairesi yangınına yol açabilir; sıcak iş izinsiz yapılmaz.",
+            source: { code: "Sıcak iş", detail: "İzinsiz sıcak iş yasak" },
+            next: "step2",
+          },
+          {
+            text: "Sadece yanımda bir söndürücü bulundururum",
+            outcome: "risky",
+            feedback:
+              "Yetersiz. Söndürücü tek başına yeterli değil; izin, alan hazırlığı, gözcü ve atmosfer kontrolü de gerekir.",
+            source: { code: "Sıcak iş izni", detail: "Tek önlem yeterli değil" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Kaynak bitti.",
+        question: "İş sonrası ne yaparsınız?",
+        choices: [
+          {
+            text: "Alanı bir süre gözetler (kor/yeniden tutuşma kontrolü), söndükten emin olur ve izni kapatırım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Sıcak iş sonrası gizli kor/yeniden tutuşmaya karşı alan bir süre gözetlenir; sonra izin kapatılır.",
+            source: { code: "Sıcak iş sonrası", detail: "İş sonrası gözetim + izin kapatma" },
+          },
+          {
+            text: "İş bitti deyip hemen ayrılırım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Gizli kor saatler sonra yangın çıkarabilir; iş sonrası gözetim atlanmaz.",
+            source: { code: "Sıcak iş sonrası", detail: "Gizli kor riski" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Makine dairesinde kaynak (sıcak iş), kıvılcım ve ısı ürettiğinden yakıt/yağ yakınında yüksek yangın riskidir. 'Hızlı iş' gerekçesiyle izinsiz yapılmaz: sıcak iş izni alınır, alan yanıcılardan temizlenir/örtülür, yangın gözcüsü ve hazır söndürücü bulundurulur, gerekirse atmosfer ölçülür. İş bittikten sonra gizli kor/yeniden tutuşmaya karşı alan bir süre gözetlenir ve izin öyle kapatılır.",
+  },
+
+  // ─── Makine Dairesi Emniyeti (2) ───────────────────────────────────────
+  {
+    id: "mac-ersafety-oil-leak-ignition",
+    topicKey: "machine-engine-room-safety",
+    title: "Yangın Önleme: Sıcak Yüzeye Yakıt Sıçraması",
+    level: "officer",
+    briefing:
+      "Yüksek basınçlı yakıt hattındaki bir bağlantıda fine spray (ince püskürme) sızıntısı var ve yakında yalıtımı hasarlı sıcak bir egzoz yüzeyi bulunuyor. Henüz yangın yok ama tutuşma çok yakın bir risk.",
+    learningGoals: [
+      "Makine dairesi yangınlarının başlıca nedenini (sıcak yüzey + yakıt sızıntısı) önlemek",
+      "Sıcak yüzey yalıtımı ve sızıntı kontrolünün önemini kavramak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Yüksek basınçlı yakıt spreyi + açıkta sıcak yüzey = klasik makine dairesi yangını senaryosu. Henüz tutuşmadı.",
+        question: "İlk doğru aksiyon nedir?",
+        choices: [
+          {
+            text: "Sızıntıyı durdurur (basıncı düşür/hattı izole et), sıcak yüzeyi yakıttan uzak tutar ve bağlantıyı onarırım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Yangın üçgeninin yakıt kenarı kaldırılır: sızıntı durdurulur ve sıcak yüzeyle teması engellenir; sonra kalıcı onarım yapılır.",
+            source: { code: "SOLAS II-2 / yangın önleme", detail: "Sızıntıyı durdur + sıcak yüzeyi koru" },
+            next: "step2",
+          },
+          {
+            text: "Sızıntı küçük diye seyre devam ederim",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Yüksek basınçlı yakıt spreyi açık sıcak yüzeyde kolayca tutuşur; bu en sık makine dairesi yangını nedenidir.",
+            source: { code: "Yangın önleme", detail: "Yakıt spreyi + sıcak yüzey = yangın" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Sızıntı kontrol altında. Egzoz yalıtımı hasarlı.",
+        question: "Kalıcı önlem olarak ne yaparsınız?",
+        choices: [
+          {
+            text: "Hasarlı sıcak yüzey yalıtımını onarır, yakıt hattı bağlantılarını/sprey kalkanlarını kontrol eder ve kaydederim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Açık sıcak yüzeyler yalıtılır, yüksek basınçlı yakıt hatları kontrol edilir ve gerekiyorsa sprey koruma/ekran sağlanır.",
+            source: { code: "SOLAS II-2 (sıcak yüzey yalıtımı)", detail: "Yalıtım + sprey koruması" },
+          },
+          {
+            text: "Yalıtımı sonra yaparım, şimdilik açık kalsın",
+            outcome: "risky",
+            feedback:
+              "Riskli. Açık sıcak yüzey, bir sonraki sızıntıda tutuşma kaynağı olmaya devam eder; öncelikli onarılmalıdır.",
+            source: { code: "Yangın önleme", detail: "Açık sıcak yüzey tutuşma kaynağı" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Makine dairesi yangınlarının en sık nedeni, yüksek basınçlı yakıt/yağ sızıntısının açıktaki sıcak bir yüzeyde (örn. yalıtımı hasarlı egzoz) tutuşmasıdır. Önce yangın üçgeninin yakıt kenarını kaldır: sızıntıyı durdur (basınç düşür/izole et) ve sıcak yüzeyle teması engelle, sonra bağlantıyı onar. Kalıcı önlem: sıcak yüzey yalıtımını onarmak, yakıt hatlarını kontrol etmek ve sprey koruması/ekran sağlamaktır.",
+  },
+
+  // ─── Çevre (Makine) (2) ────────────────────────────────────────────────
+  {
+    id: "mac-env-garbage-incinerator",
+    topicKey: "machine-environment-machine",
+    title: "Atık Yönetimi: Incinerator ve MARPOL Ek V",
+    level: "officer",
+    briefing:
+      "Makine dairesi atıkları (yağlı bez, plastik ambalaj, gıda atığı, sludge) birikti. Bir gemici 'hepsini incinerator'da yakalım ya da denize atalım' diyor. Gemi kıyıya yakın seyirde.",
+    learningGoals: [
+      "MARPOL Ek V çöp kurallarını ve plastik yasağını makine atıklarına uygulamak",
+      "Incinerator sınırları ve Garbage Record Book disiplinini kavramak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Atıklar karışık: plastik, yağlı bez, gıda, sludge. Plastik denize atılamaz; incinerator'da her şey yakılamaz.",
+        question: "Atığı nasıl yönetirsiniz?",
+        choices: [
+          {
+            text: "Kaynağında ayrıştırır; plastiği denize atmaz, uygun atığı onaylı incinerator'da yakar, geri kalanı karaya/alım tesisine veririm",
+            outcome: "safe",
+            feedback:
+              "Doğru. Plastik denize atılamaz; çöp ayrıştırılıp uygun olan onaylı incinerator'da yakılır, kalan karaya verilir ve GRB'ye kaydedilir.",
+            source: { code: "MARPOL Ek V", detail: "Plastik yasak; ayrıştır + GRB" },
+            next: "step2",
+          },
+          {
+            text: "Kıyıya yakın da olsa hepsini denize atarım",
+            outcome: "danger",
+            feedback:
+              "Ağır ihlal. Plastik her yerde yasak; kıyıya yakın tahliye çoğu çöp için yasaktır. Ciddi ceza doğurur.",
+            source: { code: "MARPOL Ek V", detail: "Plastik/yakın kıyı tahliyesi yasak" },
+            next: "step2",
+          },
+          {
+            text: "Sludge dâhil her şeyi incinerator'da yakarım",
+            outcome: "risky",
+            feedback:
+              "Hatalı. Incinerator yalnızca onaylı tip ve belirli atıklar içindir; bazı maddeler (örn. belirli kalıntılar) yakılamaz ve özel alanlarda yakma kısıtlıdır.",
+            source: { code: "MARPOL Ek VI (incineration)", detail: "Onaylı tip + yakılabilir atık" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Bir kısım atık karaya verilecek.",
+        question: "Kayıt açısından ne yaparsınız?",
+        choices: [
+          {
+            text: "Her işlemi (yakma, karaya verme) Garbage Record Book'a kategori/miktar/mevki ile yazar, teslim makbuzunu saklarım",
+            outcome: "safe",
+            feedback:
+              "Doğru. GRB kayıtları ve alım tesisi makbuzları uyum kanıtıdır; denetimde ilk bunlar incelenir.",
+            source: { code: "MARPOL Ek V (GRB)", detail: "Kayıt + teslim makbuzu" },
+          },
+          {
+            text: "Kayıt tutmadan teslim ederim",
+            outcome: "risky",
+            feedback:
+              "Riskli. Kayıt/makbuz olmadan uyum kanıtlanamaz; GRB eksikliği denetimde sorun yaratır.",
+            source: { code: "MARPOL Ek V", detail: "Kayıt zorunlu" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Makine dairesi atıkları MARPOL Ek V'e tabidir: plastik HER ZAMAN denize atılamaz; çöp kaynağında ayrıştırılır, uygun olanlar yalnızca ONAYLI incinerator'da yakılır (bazı atıklar yakılamaz, özel alanlarda kısıtlıdır), kalan karaya/alım tesisine verilir. Her yakma ve karaya verme işlemi Garbage Record Book'a kategori, miktar ve mevki ile kaydedilir ve teslim makbuzları saklanır — bunlar uyumun kanıtıdır.",
+  },
+
+  // ─── ERM (2) ───────────────────────────────────────────────────────────
+  {
+    id: "mac-erm-alarm-overload",
+    topicKey: "machine-erm",
+    title: "Alarm Yağmuru: Önceliklendirme",
+    level: "officer",
+    briefing:
+      "Kısa süre içinde aynı anda birçok alarm geldi: düşük yağ basıncı, yüksek soğutma suyu sıcaklığı, bir jeneratör uyarısı ve birkaç ikincil alarm. Panik yapmadan önceliklendirme gerekiyor.",
+    learningGoals: [
+      "Çoklu alarmda önceliklendirme (güvenlik > makine koruması > ikincil) yapmak",
+      "ERM'de iletişim ve görev dağılımının önemini kavramak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Aynı anda birçok alarm var. Hepsi aynı önemde değil; bazıları diğerlerinin sonucu (kök) olabilir.",
+        question: "Nasıl ilerlersiniz?",
+        choices: [
+          {
+            text: "Önce can/yangın güvenliği ve ana makine korumasını (örn. düşük yağ basıncı) ele alır, kök alarmı belirler, gerekirse yardım çağırırım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Önceliklendirme: önce güvenlik ve makineyi koruyan kritik alarmlar; alarmlardan biri diğerlerinin kök nedeni olabilir. Gerekirse baş mühendis çağrılır.",
+            source: { code: "ERM / alarm yönetimi", detail: "Güvenlik > makine koruması > ikincil" },
+            next: "step2",
+          },
+          {
+            text: "Alarmları geldiği sırayla, ayrım yapmadan susturmaya çalışırım",
+            outcome: "danger",
+            feedback:
+              "Tehlikeli. Ayrımsız susturma kritik alarmı (örn. düşük yağ basıncı) gözden kaçırıp ağır hasara yol açar.",
+            source: { code: "Alarm yönetimi", detail: "Önceliklendirmesiz susturma" },
+            next: "step2",
+          },
+          {
+            text: "Panikleyip tüm sistemi aniden durdururum",
+            outcome: "risky",
+            feedback:
+              "Aceleci. Plansız toplu durdurma (özellikle seyirde) yeni riskler yaratır; önce önceliklendirme ve gerekirse koordineli durdurma gelir.",
+            source: { code: "ERM", detail: "Plansız durdurma yeni risk" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Düşük yağ basıncı ana makineyi tehdit ediyor; diğer alarmlar ikincil görünüyor.",
+        question: "Ne yaparsınız?",
+        choices: [
+          {
+            text: "Ana makine korumasını önceler (yük azalt/gerekirse durdur), köprüüstünü bilgilendirir ve görevleri ekibe dağıtırım",
+            outcome: "safe",
+            feedback:
+              "Doğru. En ağır sonuçlu (yatak hasarı) alarm önce ele alınır; köprü bilgilendirilir ve ERM gereği görevler paylaşılır.",
+            source: { code: "ERM", detail: "Kritik koruma + görev dağılımı + köprü" },
+          },
+          {
+            text: "Önce kolay/ikincil alarmlarla uğraşırım",
+            outcome: "danger",
+            feedback:
+              "Yanlış. İkincil alarmlarla başlamak, ana makineyi tehdit eden kritik alarmın hasara dönüşmesine izin verir.",
+            source: { code: "Önceliklendirme", detail: "Kritik alarm önce" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Çoklu alarm 'yağmurunda' panik değil, önceliklendirme gerekir: önce can/yangın güvenliği ve ana makineyi koruyan kritik alarmlar (örn. düşük yağ basıncı) ele alınır; alarmlardan biri diğerlerinin kök nedeni olabilir. Köprüüstü bilgilendirilir, görevler ekibe dağıtılır ve gerekirse baş mühendis çağrılır. Ayrımsız susturma veya plansız toplu durdurma yeni riskler yaratır.",
+  },
+
+  // ─── Enerji Verimliliği (2) ────────────────────────────────────────────
+  {
+    id: "mac-energy-fouling-trim",
+    topicKey: "machine-energy-efficiency",
+    title: "Verimlilik: Gövde Kirlenmesi ve Trim",
+    level: "officer",
+    briefing:
+      "Aynı hız için yakıt tüketimi son haftalarda kademeli arttı (artan şaft gücü). Gemi bir süredir sıcak, biyolojik aktif sularda bekledi; gövde/pervane biyo-kirlenmesi (fouling) ve trim optimizasyonu gündemde.",
+    learningGoals: [
+      "Biofouling'in sürtünme/yakıt etkisini ve trim optimizasyonunu kavramak",
+      "Operasyonel verimlilik önlemlerini doğru sıralamak",
+    ],
+    steps: [
+      {
+        id: "step1",
+        situation:
+          "Aynı hızda güç/yakıt artışı, genelde artan gövde sürtünmesini (fouling) gösterir.",
+        question: "Olası nedeni nasıl değerlendirirsiniz?",
+        choices: [
+          {
+            text: "Gövde/pervane fouling'ini değerlendirir, performans trendini izler ve hat/pervane temizliği planlarım",
+            outcome: "safe",
+            feedback:
+              "Doğru. Fouling sürtünmeyi ve yakıtı artırır; performans izleme ve uygun aralıkta hat/pervane temizliği verimi geri kazandırır.",
+            source: { code: "Enerji verimliliği / biofouling", detail: "Fouling izleme + temizlik" },
+            next: "step2",
+          },
+          {
+            text: "Hızı artırarak farkı kapatmaya çalışırım",
+            outcome: "danger",
+            feedback:
+              "Yanlış. Hız artışı yakıtı (~hızın küpü) daha da yükseltir; sorun gövde sürtünmesidir, hız değil.",
+            source: { code: "Enerji verimliliği", detail: "Hız artışı yakıtı büyütür" },
+            next: "step2",
+          },
+        ],
+      },
+      {
+        id: "step2",
+        situation: "Bir sonraki sefer için yükleme planı yapılıyor.",
+        question: "Trim ile nasıl tasarruf sağlarsınız?",
+        choices: [
+          {
+            text: "Optimum trim tablolarına göre yükü/balastı ayarlar, hız ve yük durumuna uygun trimi seçerim",
+            outcome: "safe",
+            feedback:
+              "Doğru. Optimum trim (model/CFD tabanlı trim tabloları) sevk direncini düşürüp yakıt tasarrufu sağlar.",
+            source: { code: "Trim optimizasyonu", detail: "Optimum trim tabloları" },
+          },
+          {
+            text: "Trim önemsizdir, rastgele yüklerim",
+            outcome: "risky",
+            feedback:
+              "Riskli. Uygun olmayan trim sevk direncini ve yakıtı artırır; trim optimizasyonu ölçülebilir tasarruf sağlar.",
+            source: { code: "Trim optimizasyonu", detail: "Yanlış trim = fazla yakıt" },
+          },
+        ],
+      },
+    ],
+    debrief:
+      "Aynı hız için artan güç/yakıt tüketimi genelde gövde/pervane biyo-kirlenmesini (fouling) gösterir; fouling sürtünmeyi ve yakıtı artırır. Çözüm hızı artırmak değil (bu yakıtı ~hızın küpüyle büyütür), performansı izleyip uygun aralıkta hat/pervane temizliği yapmaktır. Ayrıca optimum trim (model/CFD tabanlı trim tabloları) seçimi sevk direncini düşürerek ölçülebilir yakıt tasarrufu sağlar.",
+  },
 ];
