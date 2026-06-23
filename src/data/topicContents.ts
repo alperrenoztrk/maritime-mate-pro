@@ -5,6 +5,7 @@ import { cargoTopicContents } from "@/data/cargoTopicContents";
 import { safetyTopicContents } from "@/data/safetyTopicContents";
 import { environmentTopicContents } from "@/data/environmentTopicContents";
 import { seamanshipTopicContents } from "@/data/seamanshipTopicContents";
+import { economicsTopicContents } from "@/data/economicsTopicContents";
 
 export const topicContentsByCategory: Record<string, Record<string, TopicDetailContent>> = {
   navigation: navigationTopicContents,
@@ -14,6 +15,7 @@ export const topicContentsByCategory: Record<string, Record<string, TopicDetailC
   safety: safetyTopicContents,
   environment: environmentTopicContents,
   seamanship: seamanshipTopicContents,
+  economics: economicsTopicContents,
 };
 
 export const getTopicContentsByCategory = (categoryId?: string) =>

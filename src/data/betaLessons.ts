@@ -62,6 +62,7 @@ const DECK_CONTENT_KEYS = [
   "safety",
   "environment",
   "seamanship",
+  "economics",
 ];
 
 const isMachine = (key: string) => key.startsWith("machine-");
