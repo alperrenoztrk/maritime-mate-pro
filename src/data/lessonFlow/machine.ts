@@ -4567,4 +4567,238 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Standart ve Sınıf Kuralları", category: MAK, question: "Borular hangi parametrelerle tanımlanır?", options: ["DN (nominal çap) ve schedule (et kalınlığı)", "Sadece renk", "Sadece uzunluk", "Sadece ağırlık"], correctAnswer: 0, explanation: "Borular DN ve schedule ile tanımlanır; taşıdığı akışkana göre sınıf kurallarınca sınıflara ayrılır (yüksek risk → daha sıkı test)." },
     ],
   },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kayma gerilmesi",
+    blocks: [{ sectionTitles: ["Tanım ve Burulma"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanım ve Burulma", category: MAK, question: "Burulma altındaki dairesel şaftta kayma gerilmesi nerede maksimumdur?", options: ["Yüzeyde (dış yarıçapta)", "Merkezde", "Her yerde eşit", "Eksende sıfır dışında belirsiz"], correctAnswer: 0, explanation: "Kayma gerilmesi yarıçapla doğru orantılı artar ve yüzeyde (r maksimum) en büyüktür: τ = T·r/J." },
+      { id: 2, sectionRef: "Tanım ve Burulma", category: MAK, question: "Doğrudan kesme gerilmesi nasıl tanımlanır?", options: ["Kuvvetin kesite oranı (τ = F/A)", "Kuvvet × alan", "Alan / kuvvet", "Sıfır"], correctAnswer: 0, explanation: "Doğrudan kesme gerilmesi τ = F/A; burulmada ise τ = T·r/J (J = πd⁴/32)." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Burulma gerilmesi",
+    blocks: [{ sectionTitles: ["Burulma Formülü"] }],
+    questions: [
+      { id: 1, sectionRef: "Burulma Formülü", category: MAK, question: "Dairesel milde burulma gerilmesi hangi formülle bulunur?", options: ["τ = T·r/J", "τ = F/A", "τ = M/I", "τ = P·V"], correctAnswer: 0, explanation: "Burulma gerilmesi τ = T·r/J; T tork, r yarıçap, J polar atalet momentidir." },
+      { id: 2, sectionRef: "Burulma Formülü", category: MAK, question: "Mil çapı artarsa aynı tork için burulma gerilmesi nasıl değişir?", options: ["Hızla azalır (J ~ d⁴ ile artar)", "Artar", "Değişmez", "Doğrusal artar"], correctAnswer: 0, explanation: "J = πd⁴/32 olduğundan çap arttıkça J büyür ve τ = T·r/J belirgin biçimde düşer." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Bileşik gerilme ve Von Mises kriteri",
+    blocks: [{ sectionTitles: ["Eşdeğer (Von Mises) Gerilme"] }],
+    questions: [
+      { id: 1, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Düzlem gerilmede Von Mises eşdeğer gerilmesi nasıl bulunur?", options: ["σ_vm = √(σ² + 3τ²)", "σ_vm = σ + τ", "σ_vm = σ·τ", "σ_vm = √(σ² − τ²)"], correctAnswer: 0, explanation: "Normal ve kayma gerilmesi bir aradayken σ_vm = √(σ² + 3τ²) hesaplanır ve akma sınırıyla karşılaştırılır." },
+      { id: 2, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Von Mises kriterine göre güvenli tasarım koşulu nedir?", options: ["σ_vm < σ_akma / SF", "σ_vm > σ_akma", "σ_vm = σ_akma", "SF gerekmez"], correctAnswer: 0, explanation: "Eşdeğer gerilme, akma sınırının güvenlik katsayısına bölümünden küçük olmalıdır: σ_vm < σ_akma/SF." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Güvenlik katsayısı ve emniyet gerilmesi",
+    blocks: [{ sectionTitles: ["Tanım ve Seçim"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanım ve Seçim", category: MAK, question: "Emniyet gerilmesi nasıl bulunur?", options: ["Akma (veya kopma/yorulma) sınırının güvenlik katsayısına bölünmesiyle (σ_akma/SF)", "Akma × SF", "Sadece çalışma gerilmesi", "SF / σ_akma"], correctAnswer: 0, explanation: "σ_emniyet = σ_akma/SF; SF, σ_akma/σ_çalışma oranıdır." },
+      { id: 2, sectionRef: "Tanım ve Seçim", category: MAK, question: "Güvenlik katsayısı (SF) seçiminde hangi faktör etkilidir?", options: ["Yük tipi (statik/dinamik), süneklik, sonuçların ciddiyeti ve sınıf kuralları", "Sadece renk", "Sadece fiyat", "Hiçbiri"], correctAnswer: 0, explanation: "SF; yük tipi, malzeme sünekliği, arızanın ciddiyeti ve sınıf kurallarına göre seçilir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Mil çapı hesabı (burulma ve eğilme)",
+    blocks: [{ sectionTitles: ["Bileşik Yükleme"] }],
+    questions: [
+      { id: 1, sectionRef: "Bileşik Yükleme", category: MAK, question: "Gerçek çalışmada miller hangi yüklere aynı anda maruz kalır?", options: ["Hem eğilme (M) hem burulma (T)", "Sadece eğilme", "Sadece burulma", "Sadece eksenel"], correctAnswer: 0, explanation: "Miller eğilme ve burulmaya birlikte maruz kalır; eşdeğer moment veya Von Mises kriteri kullanılır." },
+      { id: 2, sectionRef: "Bileşik Yükleme", category: MAK, question: "Bileşik yüklemede mil çapı hangi büyüklüklere bağlıdır?", options: ["Eğilme momenti (M), tork (T) ve izin verilen kayma gerilmesi", "Sadece renk", "Sadece uzunluk", "Sadece ağırlık"], correctAnswer: 0, explanation: "d ≥ ³√(16/(π·τ_izin)·√(M²+T²)); çap M, T ve τ_izin'e bağlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Pervane şaftı boyutlandırma (IACS UR M68)",
+    blocks: [{ sectionTitles: ["Çap Formülünün Mantığı"] }],
+    questions: [
+      { id: 1, sectionRef: "Çap Formülünün Mantığı", category: MAK, question: "Pervane şaftı esas olarak hangi yükü taşır ve çapı neye bağlıdır?", options: ["Burulma (tork); güç/devir, malzeme dayanımı ve tasarım faktörüne", "Sadece eksenel yük; renge", "Sadece eğilme; sıcaklığa", "Hiçbir yük; debiye"], correctAnswer: 0, explanation: "Şaft esas olarak torku taşır; tork güç/devir oranıyla artar. Kural çapı P, n, Rm ve tasarım faktörüne bağlı verir." },
+      { id: 2, sectionRef: "Çap Formülünün Mantığı", category: MAK, question: "Kuyruk şaftı neden ara şafttan daha büyük çapta olur?", options: ["Ek eğilme ve korozyon etkisi nedeniyle", "Daha hafif olsun diye", "Daha ucuz olsun diye", "Fark yoktur"], correctAnswer: 0, explanation: "Kuyruk şaftı ek eğilme ve deniz suyu korozyonu nedeniyle ara şafttan daha büyük çapta tasarlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Ara şaft ve kıç boru şaftı",
+    blocks: [{ sectionTitles: ["Şaft Hattı Bölümleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Şaft Hattı Bölümleri", category: MAK, question: "Ara şaftın görevi nedir?", options: ["Makine ile kuyruk şaftı arasında torku iletmek (ara yataklarla desteklenir)", "Pervaneyi taşımak", "Elektrik üretmek", "Soğutma yapmak"], correctAnswer: 0, explanation: "Ara şaft makine ile kuyruk şaftı arasında torku iletir ve ara yataklarla desteklenir." },
+      { id: 2, sectionRef: "Şaft Hattı Bölümleri", category: MAK, question: "Kuyruk şaftı korozyona karşı nasıl korunur?", options: ["Koruyucu kovan (liner) ile kaplanır", "Boyanmaz", "Isıtılır", "Hiç korunmaz"], correctAnswer: 0, explanation: "Kuyruk şaftı kıç boru içinde deniz suyu/yağ ortamında döner; çoğu zaman koruyucu kovan (liner) ile kaplanarak korozyona karşı korunur." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kaymalı yatak (stern tube bearing)",
+    blocks: [{ sectionTitles: ["Yağ ve Su Yağlamalı Tipler"] }],
+    questions: [
+      { id: 1, sectionRef: "Yağ ve Su Yağlamalı Tipler", category: MAK, question: "Yağ yağlamalı kıç boru yatağında deniz suyunu dışarıda ne tutar?", options: ["Uçlardaki yağ keçeleri (lip seals)", "Pervane", "Filtre", "Hiçbir şey"], correctAnswer: 0, explanation: "Yağ yağlamalı sistemde beyaz metal yatak kıç boru yağıyla yağlanır; uçlardaki lip seals deniz suyunu dışarıda tutar, baş/kıç tank ile basınç kontrol edilir." },
+      { id: 2, sectionRef: "Yağ ve Su Yağlamalı Tipler", category: MAK, question: "Su yağlamalı sistemin avantajı nedir?", options: ["Çevreye yağ kaçağı riski yoktur", "Hiç aşınma olmaz", "Clearance takibi gerekmez", "Yağ tüketimi yüksektir"], correctAnswer: 0, explanation: "Su yağlamalı yatakta deniz suyu yağlar; yağ kaçağı riski yoktur ancak aşınma ve clearance takibi gerekir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Rulman seçimi ve ömür hesabı",
+    blocks: [{ sectionTitles: ["L10 Ömür Formülü"] }],
+    questions: [
+      { id: 1, sectionRef: "L10 Ömür Formülü", category: MAK, question: "L10 rulman ömrü neyi ifade eder?", options: ["Rulmanların %90'ının yorulmadan ulaşacağı ömür", "Tüm rulmanların ömrü", "Yağ ömrü", "Mil ömrü"], correctAnswer: 0, explanation: "L10, rulmanların %90'ının yorulma olmadan ulaşacağı ömürdür: L10 = (C/P)^p × 10⁶ devir." },
+      { id: 2, sectionRef: "L10 Ömür Formülü", category: MAK, question: "Bilyalı rulmanda yük iki katına çıkarsa ömür nasıl değişir?", options: ["Yaklaşık 1/8'ine düşer (küpsel ilişki, p=3)", "Yarıya düşer", "İki katına çıkar", "Değişmez"], correctAnswer: 0, explanation: "L10 = (C/P)³ (bilyalı p=3); yük 2 katına çıkınca ömür 1/2³ = 1/8'ine düşer." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Şaft hizalama (alignment)",
+    blocks: [{ sectionTitles: ["Hizalama Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Hizalama Yöntemleri", category: MAK, question: "Geleneksel şaft hizalama yöntemi hangisidir?", options: ["Sag-and-gap (flanş açıklığı ve sapması) ölçümü", "Sadece gözle bakma", "Yağ analizi", "Termometre"], correctAnswer: 0, explanation: "Geleneksel sag-and-gap ve modern yatak reaksiyonu (jack-up) ölçümü kullanılır; amaç tüm yatakların kabul edilebilir reaksiyon aralığında kalmasıdır." },
+      { id: 2, sectionRef: "Hizalama Yöntemleri", category: MAK, question: "Büyük gemilerde hizalama hesabına hangi etkiler katılır?", options: ["Gövde deformasyonu ve sıcaklık etkisi", "Sadece pervane rengi", "Sadece yakıt tipi", "Hiçbiri"], correctAnswer: 0, explanation: "Büyük gemilerde gövde deformasyonu ve sıcaklık etkisi de hesaba katılır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Düz dişli hesapları",
+    blocks: [{ sectionTitles: ["Temel Parametreler", "Lewis Eğilme Gerilmesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Temel Parametreler", category: MAK, question: "Dişli modülü (m) nasıl tanımlanır?", options: ["m = d/z (bölüm çapı / diş sayısı)", "m = d·z", "m = z/d", "m = a/2"], correctAnswer: 0, explanation: "Modül m = d/z diş büyüklüğü ölçüsüdür; bölüm çapı d = m·z, dişli oranı i = z₂/z₁ = n₁/n₂." },
+      { id: 2, sectionRef: "Lewis Eğilme Gerilmesi", category: MAK, question: "Lewis formülü dişlide neyi belirler?", options: ["Diş dibi eğilme gerilmesini (kırılma mukavemeti)", "Yağlama miktarını", "Devir sayısını", "Rengi"], correctAnswer: 0, explanation: "Lewis eğilme gerilmesi σ = Ft/(b·m·Y); diş dibi eğilme dayanımını belirler." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Helisel dişli ve pervane redüktörü",
+    blocks: [{ sectionTitles: ["Helisel Dişli ve Redüksiyon"] }],
+    questions: [
+      { id: 1, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Helisel dişlinin düz dişliye göre avantajı ve dezavantajı nedir?", options: ["Daha sessiz ve yüksek yük taşır; ancak eksenel itki oluşturur", "Daha gürültülü; itki yok", "Daha az yük; eksenel itki yok", "Hiç fark yok"], correctAnswer: 0, explanation: "Eğimli dişler kademeli temas sayesinde daha sessiz ve yüksek yük taşır, ancak eksenel itki oluşturur." },
+      { id: 2, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Pervane redüktörü ne işe yarar?", options: ["Motor devrini pervanenin verimli çalıştığı düşük devire indirir", "Devri artırır", "Yakıt pompalar", "Elektrik üretir"], correctAnswer: 0, explanation: "Redüksiyon oranı i = n_giriş/n_çıkış; motor devrini pervanenin verimli düşük devrine indirir. Çift girişli kutular iki makineyi tek pervaneye bağlayabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kayış ve zincir tahrik sistemleri",
+    blocks: [{ sectionTitles: ["Karşılaştırma"] }],
+    questions: [
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "Senkron (kaymasız) tahrik için hangisi uygundur?", options: ["Zincir veya triger kayış", "Düz V-kayış", "Sürtünmeli kavrama", "Hiçbiri"], correctAnswer: 0, explanation: "Zincir kaymaz (senkron); V-kayış kayabilir, triger kayış kaymaz. Zincir yüksek yük taşır ama daha gürültülü ve yağlama ister." },
+      { id: 2, sectionRef: "Karşılaştırma", category: MAK, question: "Zincir tahrikin bakım ihtiyacı kayışa göre nasıldır?", options: ["Yağlama + gerginlik gerektirir (daha fazla)", "Hiç bakım istemez", "Sadece boya", "Kayıştan az"], correctAnswer: 0, explanation: "Zincir yağlama ve gerginlik ayarı gerektirir; kayış genelde sadece gerginlik ayarı ister ve daha sessizdir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kaplin tipleri (esnek, rijit)",
+    blocks: [{ sectionTitles: ["Rijit ve Esnek Kaplinler"] }],
+    questions: [
+      { id: 1, sectionRef: "Rijit ve Esnek Kaplinler", category: MAK, question: "Rijit (flanşlı) kaplin hangi koşulu gerektirir?", options: ["Mükemmel hizalama (kaçıklığa izin vermez)", "Büyük kaçıklık", "Yağlama", "Esnek eleman"], correctAnswer: 0, explanation: "Rijit kaplinler hiçbir kaçıklığa izin vermez ve mükemmel hizalama gerektirir (şaft hattı flanşları)." },
+      { id: 2, sectionRef: "Rijit ve Esnek Kaplinler", category: MAK, question: "Esnek kaplinin avantajı nedir?", options: ["Kaçıklığı tolere eder, torsiyonel şokları sönümler ve titreşimi azaltır", "Hiç tork iletmez", "Hizalama gerektirir", "Daha rijittir"], correctAnswer: 0, explanation: "Esnek kaplinler (lastik/dişli/disk) açısal/paralel/eksenel kaçıklığı tolere eder, şokları sönümler ve titreşim iletimini azaltır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kavrama (clutch) mekanizmaları",
+    blocks: [{ sectionTitles: ["Kavrama Tipleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Kavrama Tipleri", category: MAK, question: "Sürtünmeli (friction) kavrama ne sağlar?", options: ["Yük altında kademeli bağlanma", "Yalnız durağanda bağlanma", "Tek yön otomatik bağlanma", "Hiç bağlanmama"], correctAnswer: 0, explanation: "Sürtünmeli kavramalar (çok plakalı, hidrolik/pnömatik) yük altında kademeli bağlanma sağlar." },
+      { id: 2, sectionRef: "Kavrama Tipleri", category: MAK, question: "Pozitif (dişli/tırnak) kavrama ne zaman bağlanır?", options: ["Yalnız durağan/düşük devirde (ama kaymadan tam tork iletir)", "Her devirde", "Sadece yüksek devirde", "Bağlanmaz"], correctAnswer: 0, explanation: "Pozitif kavramalar yalnız durağan/düşük devirde bağlanır fakat kaymadan tam tork iletir; SSS/freewheel tipi tek yönde otomatik bağlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Yorulma ömrü ve S-N eğrisi",
+    blocks: [{ sectionTitles: ["S-N Eğrisi (Wöhler Eğrisi)", "Yorulma Kırılmasını Etkileyen Faktörler"] }],
+    questions: [
+      { id: 1, sectionRef: "S-N Eğrisi (Wöhler Eğrisi)", category: MAK, question: "Çelikler için yorulma dayanımı çekme dayanımının yaklaşık ne kadarıdır?", options: ["%40-50'si", "%5'i", "%100'ü", "%200'ü"], correctAnswer: 0, explanation: "S-N eğrisi gerilme genliği ile kırılma çevrim sayısını gösterir; çelikte yorulma dayanımı çekme dayanımının ~%40-50'sidir." },
+      { id: 2, sectionRef: "Yorulma Kırılmasını Etkileyen Faktörler", category: MAK, question: "Deniz ortamı yorulma dayanımını nasıl etkiler?", options: ["Korozyon nedeniyle önemli ölçüde azaltır (korozyon yorulması)", "Artırır", "Etkilemez", "Sonsuz yapar"], correctAnswer: 0, explanation: "Korozyon, çentikler, pürüzlü yüzey, boyut etkisi ve yüksek sıcaklık yorulma ömrünü kısaltır; deniz ortamında korozyon yorulması belirgindir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Yorulma sınırı ve gerilme yoğunlaşması",
+    blocks: [{ sectionTitles: ["S-N Eğrisi ve Çentik Etkisi"] }],
+    questions: [
+      { id: 1, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Kesit değişimleri gerilmeyi nasıl etkiler?", options: ["Kt (stres konsantrasyon faktörü) kadar büyütür (σ_max = Kt·σ_nominal)", "Azaltır", "Etkilemez", "Sıfırlar"], correctAnswer: 0, explanation: "Kesit değişimleri gerilmeyi Kt kadar büyütür; keskin köşe yerine kavisli geçiş (fillet) ile azaltılır." },
+      { id: 2, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Çeliklerde yorulma sınırının altındaki gerilmede ne mümkündür?", options: ["Sonsuz ömür", "Anında kırılma", "Hızlı aşınma", "Erime"], correctAnswer: 0, explanation: "Çeliklerde belirli bir gerilme genliğinin (yorulma sınırı) altında sonsuz ömür mümkündür." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Torsiyonel titreşim ve barred speed range",
+    blocks: [{ sectionTitles: ["Rezonans ve Yasak Bölge"] }],
+    questions: [
+      { id: 1, sectionRef: "Rezonans ve Yasak Bölge", category: MAK, question: "Barred speed range (yasak devir bölgesi) neden tanımlanır?", options: ["Tahrik frekansı doğal burulma frekansına yaklaşıp rezonans/şaft kırılması riski yarattığı için", "Yakıt tasarrufu için", "Gürültü için", "Keyfi olarak"], correctAnswer: 0, explanation: "Tahrik frekansı doğal burulma frekansına yaklaşınca titreşim büyür (rezonans) ve şaft yorulabilir; bu devir aralığında sürekli çalışma yasaklanır, hızla geçilir." },
+      { id: 2, sectionRef: "Rezonans ve Yasak Bölge", category: MAK, question: "Torsiyonel titreşim genliklerini azaltmak için ne kullanılır?", options: ["Torsiyonel sönümleyici (damper)", "Daha fazla yakıt", "Ekstra pervane", "Soğutucu"], correctAnswer: 0, explanation: "Torsiyonel sönümleyici (damper) rezonans genliklerini azaltmak için kullanılır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Aksiyel titreşim",
+    blocks: [{ sectionTitles: ["Kaynak ve Etkiler"] }],
+    questions: [
+      { id: 1, sectionRef: "Kaynak ve Etkiler", category: MAK, question: "Aksiyel (eksenel) titreşimin kaynağı nedir?", options: ["Pervane kanatlarının değişken yük altında ürettiği itki dalgalanması", "Yakıt basıncı", "Soğutma suyu", "Elektrik"], correctAnswer: 0, explanation: "Pervane kanatlarının itki dalgalanması şaftı eksenel uyarır; rezonansta thrust bearing, redüktör ve gövde aşırı yüklenir." },
+      { id: 2, sectionRef: "Kaynak ve Etkiler", category: MAK, question: "Aksiyel titreşim nasıl çözülür?", options: ["Eksenel doğal frekansı çalışma devrinden uzak tasarlamak veya eksenel damper kullanmak", "Pervaneyi büyütmek", "Yakıtı artırmak", "Hiçbir şey"], correctAnswer: 0, explanation: "Eksenel doğal frekansı çalışma devrinden uzak tasarlamak ya da eksenel damper kullanmak çözümdür." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Lateral titreşim ve kritik hız",
+    blocks: [{ sectionTitles: ["Kritik Hız"] }],
+    questions: [
+      { id: 1, sectionRef: "Kritik Hız", category: MAK, question: "Lateral (enine) titreşime ne yol açar?", options: ["Dengesizlik (unbalance) ve yatak esnekliği", "Yakıt kalitesi", "Soğutma", "Egzoz"], correctAnswer: 0, explanation: "Dengesizlik ve yatak esnekliği şaftı enine titreştirir; kritik hızda rezonansla sehim büyür." },
+      { id: 2, sectionRef: "Kritik Hız", category: MAK, question: "Kritik hız ile çalışma devri arasında nasıl bir ilişki istenir?", options: ["Çalışma devri kritik hızdan uzak tutulur", "Eşit olmalı", "Çalışma devri kritik hıza yakın olmalı", "İlişki yok"], correctAnswer: 0, explanation: "n_kritik ∝ √(k/m); çalışma devri kritik hızdan uzak tutulur. Yatak konumu/sayısı ve şaft rijitliği kritik hızı belirler." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Elektrik ark kaynağı (SMAW)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Elektrot Seçimi"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "SMAW'da elektrot örtüsünün görevi nedir?", options: ["Erir, koruyucu gaz ve cüruf oluşturarak kaynak banyosunu atmosferden korur", "Sadece renk verir", "Akımı keser", "Hiçbir işlevi yoktur"], correctAnswer: 0, explanation: "Ark her iki metali eritir; elektrot örtüsü erir ve koruyucu gaz/cüruf ile banyoyu atmosferden korur. DCEP daha derin nüfuziyet sağlar." },
+      { id: 2, sectionRef: "Elektrot Seçimi", category: MAK, question: "Kritik birleşimlerde yüksek mukavemet için hangi elektrot tercih edilir?", options: ["E7018 (bazik, düşük hidrojen)", "E6013 (rutil)", "E6010 (selülozik)", "Hiçbiri"], correctAnswer: 0, explanation: "E7018 bazik (düşük H₂) elektrottur, yüksek mukavemet/kritik birleşimlerde kullanılır; E6010 boru kökü, E6013 genel amaçlıdır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Gazaltı kaynağı (MIG/MAG, TIG)",
+    blocks: [{ sectionTitles: ["MIG/MAG ve TIG Farkı"] }],
+    questions: [
+      { id: 1, sectionRef: "MIG/MAG ve TIG Farkı", category: MAK, question: "MIG/MAG kaynağında elektrot nasıldır?", options: ["Sürekli beslenen tel elektrot (hızlı ve verimli)", "Erimeyen tungsten", "Örtülü çubuk", "Elektrot yoktur"], correctAnswer: 0, explanation: "MIG (inert gaz) ve MAG (aktif gaz) sürekli beslenen tel elektrot kullanır; hızlı ve verimlidir." },
+      { id: 2, sectionRef: "MIG/MAG ve TIG Farkı", category: MAK, question: "TIG kaynağının özelliği nedir?", options: ["Erimeyen tungsten ve ayrı dolgu teli; yavaş ama çok temiz/hassas (paslanmaz, alüminyum)", "Çok hızlı ve kaba", "Elektrot erir", "Gaz gerekmez"], correctAnswer: 0, explanation: "TIG erimeyen tungsten elektrot ve ayrı dolgu teli kullanır; yavaş ama temiz/hassas dikiş verir, ince kesit ve paslanmaz/alüminyumda idealdir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kaynak dikişi hesapları",
+    blocks: [{ sectionTitles: ["Köşe Kaynağı Gerilmesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Köşe Kaynağı Gerilmesi", category: MAK, question: "Köşe kaynağında boğaz kalınlığı (a) dikiş bacağına (z) göre nedir?", options: ["a ≈ 0,707·z", "a = 2·z", "a = z", "a = z²"], correctAnswer: 0, explanation: "Köşe kaynağında boğaz kalınlığı bacağın yaklaşık 0,707 katıdır: a = 0,707·z." },
+      { id: 2, sectionRef: "Köşe Kaynağı Gerilmesi", category: MAK, question: "Köşe kaynağındaki gerilme nasıl hesaplanır?", options: ["Yük / etkin kesit alanı (τ = F/(a·L))", "Yük × alan", "Sadece bacak uzunluğu", "Yük / hacim"], correctAnswer: 0, explanation: "Gerilme, yükün etkin kesit alanına (boğaz × uzunluk) bölünmesiyle bulunur: τ = F/(a·L) ve izin verilen değerle karşılaştırılır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Kaynak hataları ve muayene yöntemleri",
+    blocks: [{ sectionTitles: ["Yaygın Kaynak Hataları", "NDT Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Yaygın Kaynak Hataları", category: MAK, question: "Aşağıdaki kaynak hatalarından hangisi en tehlikelidir?", options: ["Çatlak (hızlı soğuma, hidrojen, gerilme)", "Hafif renk değişimi", "Fazla parlaklık", "Düz yüzey"], correctAnswer: 0, explanation: "Çatlak en tehlikeli hatadır; gözeneklilik dayanımı düşürür, undercut çentik etkisi yaratır, nüfuziyet eksikliği mekanik kayıp verir." },
+      { id: 2, sectionRef: "NDT Yöntemleri", category: MAK, question: "İç (yüzey altı) hataları tespit için hangi yöntem kullanılır?", options: ["Ultrasonik (UT) veya radyografik (RT) muayene", "Sadece görsel (VT)", "Sadece penetrant (PT)", "Hiçbiri"], correctAnswer: 0, explanation: "UT iç hataları ve kalınlığı, RT film üzerinde iç kusurları tespit eder; VT/PT/MT ise yüzey kusurları içindir." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "NDT (tahribatsız muayene) teknikleri",
+    blocks: [{ sectionTitles: ["Başlıca Yöntemler"] }],
+    questions: [
+      { id: 1, sectionRef: "Başlıca Yöntemler", category: MAK, question: "Manyetik parçacık (MT) yöntemi hangi malzemelerde kullanılır?", options: ["Yalnızca ferromanyetik (manyetik) malzemelerde", "Tüm malzemelerde", "Sadece plastikte", "Sadece alüminyumda"], correctAnswer: 0, explanation: "MT yüzey/yüzey altı kusurları yalnızca ferromanyetik malzemelerde tespit eder; PT iletken olmayanlar dahil yüzey çatlaklarına uygundur." },
+      { id: 2, sectionRef: "Başlıca Yöntemler", category: MAK, question: "Radyografi (RT) uygulanırken hangi önlem gerekir?", options: ["Radyasyon güvenliği", "Su soğutması", "Yağlama", "Hiçbiri"], correctAnswer: 0, explanation: "RT iç kusurları film/dijital görüntüyle tespit eder ancak radyasyon güvenliği gerektirir; UT derin ve hassastır." },
+    ],
+  },
+  {
+    topicKey: "machine-machine-elements",
+    topicTitle: "Cıvata ve perçin bağlantıları",
+    blocks: [{ sectionTitles: ["Ön Gerilme ve Tork", "Perçin Bağlantıları"] }],
+    questions: [
+      { id: 1, sectionRef: "Ön Gerilme ve Tork", category: MAK, question: "Cıvatada ön gerilme (preload) neyi önler?", options: ["Bağlantının yük altında ayrılmasını ve cıvatanın yorulmasını", "Sızdırmazlığı", "Isınmayı", "Hiçbir şeyi"], correctAnswer: 0, explanation: "Ön gerilme bağlantının ayrılmasını ve cıvata yorulmasını önler; uygulanan tork ile T ≈ K·F·d ilişkisi vardır." },
+      { id: 2, sectionRef: "Perçin Bağlantıları", category: MAK, question: "Perçinli bağlantılar nasıl tasarlanır?", options: ["Kayma ve ezilme (bearing) gerilmelerine göre (kalıcı bağlantı)", "Sökülebilir olarak", "Sadece eğilmeye göre", "Hesapsız"], correctAnswer: 0, explanation: "Perçin bağlantıları kalıcıdır; kayma ve ezilme gerilmelerine göre tasarlanır. Bugün büyük ölçüde kaynak ve yüksek mukavemetli cıvatalarla yer değiştirmiştir." },
+    ],
+  },
 ];
