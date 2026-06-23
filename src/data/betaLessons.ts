@@ -227,21 +227,63 @@ function mapDeckTopic(key: string, title: string): BetaTopic | null {
   };
 }
 
+/** Bir satırın ALL-CAPS "BÖLÜM BAŞLIĞI:" kalıbına uyup uymadığı (tr-aware). */
+function isPageHeading(line: string): boolean {
+  const t = line.trim();
+  if (!/:$/.test(t)) return false;
+  const core = t.replace(/:+\s*$/, "").trim();
+  if (core.length === 0 || core.length > 70) return false;
+  if (!/[A-ZÇĞİÖŞÜ]/.test(core)) return false; // en az bir harf
+  // Tamamı büyük harf olmalı (gövde metni satır içine kaçmasın diye).
+  return core === core.toLocaleUpperCase("tr-TR");
+}
+
+/**
+ * Tek `content` metnini ALL-CAPS başlık satırlarından bölümlere ayırır.
+ * İlk başlıktan önceki giriş metni konu başlığı altında toplanır. Veri
+ * kaybı olmaz: hiç başlık yoksa tek bölüm döner.
+ */
+function splitPageContent(title: string, content: string): { title: string; body: string }[] {
+  const out: { title: string; body: string[]; synthetic: boolean }[] = [];
+  let current = { title, body: [] as string[], synthetic: true };
+  const flush = () => {
+    const hasBody = current.body.join("\n").trim().length > 0;
+    if (hasBody || !current.synthetic) out.push(current);
+  };
+  for (const raw of content.split("\n")) {
+    if (isPageHeading(raw)) {
+      flush();
+      current = { title: raw.trim().replace(/:+\s*$/, "").trim(), body: [], synthetic: false };
+    } else {
+      current.body.push(raw);
+    }
+  }
+  flush();
+  return out.map((s) => ({ title: s.title, body: s.body.join("\n").trim() }));
+}
+
 function mapPageTopic(key: string, title: string): BetaTopic | null {
   const page = PAGE_CATEGORIES[key];
   if (!page) return null;
   const c = Object.values(page.contents).find((x) => x.title === title);
   if (!c) return null;
 
-  const sections: BetaSection[] = [
-    {
-      title: c.title,
-      content: c.content,
-      bulletPoints: [...(c.bulletPoints ?? []), ...(c.warnings ?? [])],
-      image: c.image,
-      table: c.table ? { headers: c.table.headers, rows: c.table.rows } : undefined,
-    },
-  ];
+  // Sayfa-içi konular anlatımı tek bir `content` metninde tutar; bu metin
+  // ALL-CAPS "BAŞLIK:" satırlarıyla bölümlere ayrılır → rehberli okuma adım adım
+  // ilerler (akış olmayan kategorilerde "Rehberli Okuma" deneyimi). Başlıklar
+  // olduğu gibi korunur (SOLAS/MARPOL gibi kısaltmalar bozulmasın diye).
+  const contentSections = splitPageContent(c.title, c.content);
+  const sections: BetaSection[] =
+    contentSections.length > 0
+      ? contentSections.map((s) => ({ title: s.title, content: s.body }))
+      : [{ title: c.title, content: c.content }];
+
+  // Görsel/tablo ilk bölüme; madde + uyarılar son anlatım bölümüne eklenir.
+  if (c.image) sections[0].image = c.image;
+  if (c.table) sections[0].table = { headers: c.table.headers, rows: c.table.rows };
+  const bullets = [...(c.bulletPoints ?? []), ...(c.warnings ?? [])];
+  if (bullets.length) sections[sections.length - 1].bulletPoints = bullets;
+
   // Başlıklar benzersiz olmalı (GuidedLessonSession section Map'i için).
   if (c.formula) {
     sections.push({
