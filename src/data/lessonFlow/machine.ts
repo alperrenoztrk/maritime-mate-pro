@@ -5701,4 +5701,184 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Harmonik Azaltma Yöntemleri", category: MAK, question: "En düşük THD'ye (<%5) hangi yöntem ulaşır?", options: ["Aktif filtre", "Line reactor", "Tek diyot", "Hiçbiri"], correctAnswer: 0, explanation: "Aktif filtre THD'yi <%5'e indirir (yüksek maliyet); 12 darbeli doğrultucu %10'a, line reactor %15-20'ye düşürür." },
     ],
   },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Arıza sonrası bakım (corrective)",
+    blocks: [{ sectionTitles: ["Özellikler"] }],
+    questions: [
+      { id: 1, sectionRef: "Özellikler", category: MAK, question: "Arıza sonrası (corrective) bakım ne zaman uygulanır?", options: ["Ekipman çalışamaz hale geldiğinde müdahale edilir", "Önceden planlanır", "Sürekli izlenir", "Hiç yapılmaz"], correctAnswer: 0, explanation: "Corrective bakımda ekipman bozulunca müdahale edilir; yedek parça bulunurluğu, onarım süresi ve güvenlik riskleri kritiktir." },
+      { id: 2, sectionRef: "Özellikler", category: MAK, question: "Arıza sonrası bakım hangi ekipmanlarda kabul edilemez?", options: ["Ana makine, jeneratör gibi kritik sistemlerde", "Kritik olmayan ekipmanda", "Hiçbir yerde", "Tüm ekipmanlarda kabul edilebilir"], correctAnswer: 0, explanation: "Kritik olmayan ekipmanlarda kabul edilebilir ama ana makine/jeneratör gibi kritik sistemlerde kabul edilemez." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Planlı bakım (planned/preventive)",
+    blocks: [{ sectionTitles: ["Uygulama"] }],
+    questions: [
+      { id: 1, sectionRef: "Uygulama", category: MAK, question: "Planlı bakım aralıkları neye göre belirlenir?", options: ["Motor üreticisi tavsiyeleri ve klas gereklilikleri", "Rastgele", "Sadece arıza olunca", "Mürettebat keyfine göre"], correctAnswer: 0, explanation: "Aralıklar üretici tavsiyeleri ve klas gerekliliklerine göre belirlenir (örn. yağ filtresi 250-500 saat, piston çıkarma 16000-24000 saat)." },
+      { id: 2, sectionRef: "Uygulama", category: MAK, question: "PMS yazılımı planlı bakımda ne yapar?", options: ["İş emri oluşturur, geçmişi kaydeder, yaklaşan bakımları hatırlatır", "Sadece alarm verir", "Motoru çalıştırır", "Yakıt ölçer"], correctAnswer: 0, explanation: "PMS yazılımı iş emirleri oluşturur, bakım geçmişini kaydeder ve yaklaşan bakımları hatırlatır." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Durum bazlı bakım (condition-based)",
+    blocks: [{ sectionTitles: ["Prensipler", "Uygulama Örnekleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Prensipler", category: MAK, question: "Durum bazlı (CBM) bakımın avantajı nedir?", options: ["Gereksiz bakım önlenir ve ekipman ömrü uzar", "Hiç ölçüm gerektirmez", "En ucuz yöntemdir", "Personel gerektirmez"], correctAnswer: 0, explanation: "CBM'de titreşim/sıcaklık/yağ kalitesi trend izlenip eşik aşılınca bakım planlanır; over-maintenance önlenir ama izleme ekipmanı ve uzman gerektirir." },
+      { id: 2, sectionRef: "Uygulama Örnekleri", category: MAK, question: "Yataklarda yağ analizinde hangi eşik bakım sinyalidir?", options: ["Fe > 100 ppm", "Fe > 1 ppm", "Hiçbir değer", "Sadece renk"], correctAnswer: 0, explanation: "Yataklarda yağ analizinde Fe > 100 ppm eşik örneğidir; ana motorda egzoz sıcaklığı nominal ±25°C sapma izlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Kestirimci bakım (predictive)",
+    blocks: [{ sectionTitles: ["İzleme Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "İzleme Yöntemleri", category: MAK, question: "Titreşim analizi hangi arızayı tespit eder?", options: ["Yatak aşınması ve dengesizlik", "Yakıt rengini", "Su seviyesini", "Hiçbir şeyi"], correctAnswer: 0, explanation: "Titreşim analizi (frekans/genlik) yatak aşınması ve dengesizliği; yağ analizi aşınma/kontaminasyonu; termal görüntüleme aşırı ısınmayı tespit eder." },
+      { id: 2, sectionRef: "İzleme Yöntemleri", category: MAK, question: "Korozyon ve erozyonu hangi yöntem tespit eder?", options: ["Ultrasonik kalınlık ölçümü", "Performans izleme", "Yağ analizi", "Titreşim"], correctAnswer: 0, explanation: "Ultrasonik ölçüm kalınlık takibiyle korozyon/erozyonu tespit eder; performans izleme (SFOC, egzoz sıcaklığı) yanma bozukluğunu gösterir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Güvenilirlik merkezli bakım (RCM)",
+    blocks: [{ sectionTitles: ["RCM Analiz Süreci", "RCM Karar Mantığı"] }],
+    questions: [
+      { id: 1, sectionRef: "RCM Analiz Süreci", category: MAK, question: "RCM analizinde arıza modlarının etkileri hangi yöntemle analiz edilir?", options: ["FMEA (arıza modu ve etki analizi)", "Sadece tahmin", "Kura", "Anket"], correctAnswer: 0, explanation: "RCM: fonksiyonları tanımla → fonksiyonel arızaları belirle → arıza modlarını listele → FMEA ile etkilerini analiz et → sonuçları değerlendir → uygun bakım görevini seç." },
+      { id: 2, sectionRef: "RCM Karar Mantığı", category: MAK, question: "Gizli arızalar (hidden failures) için RCM ne önerir?", options: ["Periyodik fonksiyon testi (örn. emniyet supabı testi)", "Hiçbir şey", "Arıza sonrası bakım", "Tasarım değişikliği zorunlu"], correctAnswer: 0, explanation: "Güvenlik/çevre etkili arızalarda önleyici/kestirimci bakım şart; gizli arızalarda periyodik fonksiyon testi (emniyet supabı testi gibi) yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "PMS yazılımı ve iş emri yönetimi",
+    blocks: [{ sectionTitles: ["Yazılım Fonksiyonları", "Klas Gerekliliklerine Uyum"] }],
+    questions: [
+      { id: 1, sectionRef: "Yazılım Fonksiyonları", category: MAK, question: "PMS yazılımında ekipman ağacı nedir?", options: ["Tüm makine ve alt bileşenlerin hiyerarşik kaydı", "Yedek parça faturası", "Yakıt deposu", "Personel listesi"], correctAnswer: 0, explanation: "Ekipman ağacı makine ve alt bileşenleri hiyerarşik tutar; PMS iş emri yönetimi, bakım geçmişi ve yedek parça stok yönetimi sağlar." },
+      { id: 2, sectionRef: "Klas Gerekliliklerine Uyum", category: MAK, question: "Onaylı PMS kullanımının klas avantajı nedir?", options: ["Bazı survey'ler PMS kayıtlarına dayanarak uzatılabilir (credit sistemi)", "Hiçbir avantaj", "Survey gerekmez", "Sadece ek maliyet"], correctAnswer: 0, explanation: "Klas onaylı PMS'i teşvik eder; bazı survey'ler PMS kayıtlarına dayanarak uzatılabilir/ertelenebilir. AMOS, Star IPS, TM Master yaygın yazılımlardır." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Bakım aralıkları ve çalışma saatleri",
+    blocks: [{ sectionTitles: ["Tipik Bakım Aralıkları", "Çalışma Saati Takibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Tipik Bakım Aralıkları", category: MAK, question: "Piston çıkarma bakımı tipik olarak hangi aralıkta yapılır?", options: ["16000-24000 saat", "250 saat", "100000 saat", "Her gün"], correctAnswer: 0, explanation: "Piston çıkarma 16000-24000 saat, silindir kapağı revizyonu 8000-16000 saat, yağ filtresi değişimi 250-500 saat aralığındadır." },
+      { id: 2, sectionRef: "Çalışma Saati Takibi", category: MAK, question: "Klas survey takvimi genellikle kaç yıllık döngüdedir?", options: ["5 yıl (annual, intermediate, special)", "1 yıl", "10 yıl", "20 yıl"], correctAnswer: 0, explanation: "Her motorun running hour sayacı vardır; PMS bakım eşiğinde uyarır. Klas survey takvimi 5 yıllık döngüdedir (annual/intermediate/special)." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Klas gereklilikleri ve survey takvimi",
+    blocks: [{ sectionTitles: ["Survey Tipleri", "Continuous Survey (CMS)"] }],
+    questions: [
+      { id: 1, sectionRef: "Survey Tipleri", category: MAK, question: "Special Survey (Class Renewal) hangi aralıkla yapılır?", options: ["5 yıl (kapsamlı muayene, kalınlık ölçümü)", "Her yıl", "2.5 yıl", "10 yıl"], correctAnswer: 0, explanation: "Annual her yıl, Intermediate 2.5 yıl, Special (Class Renewal) 5 yılda bir kapsamlı muayene ve kalınlık ölçümüyle yapılır." },
+      { id: 2, sectionRef: "Continuous Survey (CMS)", category: MAK, question: "Continuous Machinery Survey (CMS) nasıl çalışır?", options: ["5 yıllık döngüde her yıl kalemlerin %20'si kontrol edilir", "Tüm makine bir günde survey edilir", "Survey yapılmaz", "Sadece kuru havuzda"], correctAnswer: 0, explanation: "CMS, 5 yıllık döngüde bileşenlerin parça parça survey edilmesine imkân tanır; her yıl kalemlerin %20'si kontrol edilir, uzun kuru havuz ihtiyacı azalır." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Kritik ekipman tanımlaması",
+    blocks: [{ sectionTitles: ["Kritik Ekipman Listesi", "Bakım Önceliği"] }],
+    questions: [
+      { id: 1, sectionRef: "Kritik Ekipman Listesi", category: MAK, question: "Kritik ekipman listesi hangi kural gereği bulunur?", options: ["ISM Code gereği (risk değerlendirmesine dayalı)", "Hiçbir kural", "Sadece sigorta", "Liman talebiyle"], correctAnswer: 0, explanation: "ISM Code gereği her geminin risk değerlendirmesine dayalı kritik ekipman listesi (ana motor, dümen, jeneratörler, yangın pompası vb.) bulunur." },
+      { id: 2, sectionRef: "Bakım Önceliği", category: MAK, question: "Kritik ekipman için bakım nasıl yönetilir?", options: ["Öncelikli planlanır, yedek parça stoklanır, acil onarım prosedürü hazırdır", "En son yapılır", "Hiç bakım yapılmaz", "Sadece arızada"], correctAnswer: 0, explanation: "Kritik ekipman bakımı öncelikli planlanır, yedek parça stoklanır ve acil onarım prosedürleri önceden belirlenir; klas condition monitoring isteyebilir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Yedek parça envanteri ve min-max seviye",
+    blocks: [{ sectionTitles: ["Stok Yönetimi", "Klas Gereklilikleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Stok Yönetimi", category: MAK, question: "Min-max stok sisteminde sipariş ne zaman oluşturulur?", options: ["Stok minimum seviyeye düştüğünde", "Maksimuma ulaşınca", "Her gün", "Hiç"], correctAnswer: 0, explanation: "Her parça için minimum (sipariş tetikleme) ve maksimum (depolama) seviyesi belirlenir; stok minimuma düşünce sipariş oluşturulur." },
+      { id: 2, sectionRef: "Klas Gereklilikleri", category: MAK, question: "Zorunlu yedek parça eksikliği survey'de neye yol açabilir?", options: ["Koşullu onay (condition of class) konulmasına", "Hiçbir şeye", "Geminin batmasına", "Yakıt kaybına"], correctAnswer: 0, explanation: "Klas belirli yedek parçaların (silindir kapağı, piston, enjektör nozül, yatak) bulundurulmasını zorunlu kılar; eksiklik condition of class'a yol açabilir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Silindir kapağı söküm ve revizyon",
+    blocks: [{ sectionTitles: ["Söküm Prosedürü"] }],
+    questions: [
+      { id: 1, sectionRef: "Söküm Prosedürü", category: MAK, question: "Silindir kapağı sökümünde ilk adım nedir?", options: ["İlgili silindiri izole etmek (yakıt, hava, soğutma suyu kapatma)", "Hemen cıvataları sökmek", "Pistonu çekmek", "Motoru çalıştırmak"], correctAnswer: 0, explanation: "Önce silindir izole edilir (yakıt/hava/soğutma kapatma), indikatör musluğu açılır, başlatma havası valfi kapatılır; sonra kapak cıvataları tork sırasıyla gevşetilir." },
+      { id: 2, sectionRef: "Söküm Prosedürü", category: MAK, question: "Silindir kapağı revizyonunda hangi muayene yapılır?", options: ["Çatlak kontrolü (PT veya MPI) ve supap oturma yüzeyi taşlama", "Sadece boyama", "Hiçbir muayene", "Sadece tartma"], correctAnswer: 0, explanation: "Hidrolik jack ile kapak kaldırılır, enjektör/supaplar sökülür, soğutma kanalları temizlenir, çatlak kontrolü (PT/MPI) yapılır ve supap yüzeyi taşlanır (lapping)." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Piston ve segman değişimi",
+    blocks: [{ sectionTitles: ["Söküm ve Kontrol", "Segman Değerlendirmesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Söküm ve Kontrol", category: MAK, question: "Piston tacı (crown) hangi muayeneye alınır?", options: ["Çatlak kontrolü (PT/MPI) ve soğutma kanalı basınç testi", "Sadece tartma", "Hiçbiri", "Sadece boyama"], correctAnswer: 0, explanation: "Piston özel aletle çekilir, segman ağız boşluğu ölçülür, crown çatlak kontrolüne (PT/MPI) alınır ve soğutma kanalları basınç testine tabi tutulur." },
+      { id: 2, sectionRef: "Segman Değerlendirmesi", category: MAK, question: "Segman ağız boşluğu (butt gap) artarsa ne olur?", options: ["Blow-by artar; limit aşılırsa segman değiştirilir", "Yakıt tasarrufu olur", "Hiçbir etki", "Soğuma artar"], correctAnswer: 0, explanation: "Aşınmayla butt gap artar; limit aşılırsa yeni segmanla değiştirilir. Radyal boşluk gaz kaçağını, crown çatlağı piston değişimini gösterir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Liner muayene ve ölçüm",
+    blocks: [{ sectionTitles: ["Ölçüm Yöntemi", "Aşınma Değerlendirmesi"] }],
+    questions: [
+      { id: 1, sectionRef: "Ölçüm Yöntemi", category: MAK, question: "Liner iç çapı nasıl ölçülür?", options: ["Bore gauge ile farklı yükseklik ve yönlerde", "Termometreyle", "Tartarak", "Gözle"], correctAnswer: 0, explanation: "Bore gauge ile genellikle 4 yükseklik (TDC, port, orta, alt) ve 2 yönde (fore-aft, port-stbd) ölçülür; ovalizasyon = aynı yükseklikteki iki yön farkıdır." },
+      { id: 2, sectionRef: "Aşınma Değerlendirmesi", category: MAK, question: "Liner aşınma limiti genellikle nedir?", options: ["Nominal çapın %0.5-1.0'i", "%50", "%0.01", "Limit yok"], correctAnswer: 0, explanation: "Normal aşınma 0.02-0.10 mm/1000h; limit nominal çapın %0.5-1.0'idir. Clover-leafing (yonca yaprağı aşınması) anti-polishing ring ile önlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Supap taşlama ve ayar",
+    blocks: [{ sectionTitles: ["Taşlama İşlemi", "Supap Ayarı"] }],
+    questions: [
+      { id: 1, sectionRef: "Taşlama İşlemi", category: MAK, question: "Supap oturma yüzeyi temas kontrolü nasıl yapılır?", options: ["Prusya mavisi (Prussian blue) ile temas şeridi kontrol edilir", "Sadece gözle", "Tartarak", "Termometreyle"], correctAnswer: 0, explanation: "Kaba (80-120 grit) ve ince (200-400 grit) taşlama sonrası Prussian blue ile temas şeridi kontrol edilir; gazyağı testiyle sızdırmazlık doğrulanır." },
+      { id: 2, sectionRef: "Supap Ayarı", category: MAK, question: "Supap boşluğu (tappet clearance) nasıl ölçülür?", options: ["Feeler gauge ile, üretici spesifikasyonuna göre ayarlanır", "Bore gauge ile", "Tahminle", "Ölçülmez"], correctAnswer: 0, explanation: "Supap zamanlaması kam profiline göre ayarlanır (ME tipte yazılımla); supap boşluğu feeler gauge ile ölçülüp üretici değerine göre ayarlanır." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Enjektör test ve bakım",
+    blocks: [{ sectionTitles: ["Enjektör Testi", "Bakım"] }],
+    questions: [
+      { id: 1, sectionRef: "Enjektör Testi", category: MAK, question: "Enjektör testinde açma basıncı (opening pressure) tipik aralığı nedir?", options: ["250-350 bar", "10-20 bar", "1000-2000 bar", "Test edilmez"], correctAnswer: 0, explanation: "Test tezgahında açma basıncı (250-350 bar), püskürtme kalitesi (ince/homojen koni) ve sızdırmazlık (açma basıncının %80'inde 10 sn damlamasız) kontrol edilir." },
+      { id: 2, sectionRef: "Bakım", category: MAK, question: "Nozül iğne (needle) ve gövde nasıl değiştirilir?", options: ["Çiftler halinde (karıştırılamaz)", "Tek tek, karışık", "Hiç değiştirilmez", "Sadece iğne"], correctAnswer: 0, explanation: "Karbon birikintileri ultrasonik/tel fırça ile giderilir; nozül iğne ve gövde çiftler halinde değiştirilir (karıştırılamaz), O-ring ve bakır conta her sökümde yenilenir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Görsel muayene prosedürleri",
+    blocks: [{ sectionTitles: ["Muayene Yöntemi", "Kontrol Noktaları"] }],
+    questions: [
+      { id: 1, sectionRef: "Muayene Yöntemi", category: MAK, question: "Erişilemeyen bölgeler (silindir içi, kazan boruları) nasıl muayene edilir?", options: ["Endoskop (borescope) ile dolaylı görsel muayene", "Sadece çıplak gözle", "Tartarak", "Hiç muayene edilmez"], correctAnswer: 0, explanation: "Doğrudan görsel muayene çıplak göz/büyüteçle (min 500 lux); erişilemeyen bölgeler endoskop (borescope) ile dolaylı muayene edilir." },
+      { id: 2, sectionRef: "Kontrol Noktaları", category: MAK, question: "Görsel muayenede aşağıdakilerden hangisi kontrol edilir?", options: ["Yüzey çatlakları, sızıntı izleri, cıvata gevşekliği", "Sadece renk", "Sadece ağırlık", "Yakıt fiyatı"], correctAnswer: 0, explanation: "Yüzey çatlakları/korozyon, kaynak dikişi düzensizlikleri, cıvata gevşekliği, conta/O-ring durumu ve sızıntı izleri (yağ/su/yakıt/hava) kontrol edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Ultrasonik kalınlık ölçümü",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Ultrasonik kalınlık ölçümü hangi prensiple çalışır?", options: ["Ses dalgasının arka yüzeyden yansıma süresinden kalınlık hesabı", "Manyetik alanla", "Renkle", "Ağırlıkla"], correctAnswer: 0, explanation: "Ses dalgaları malzeme içinde ilerleyip arka yüzeyden yansır; gönderme ve yansıma arasındaki zaman farkından kalınlık hesaplanır." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Ultrasonik kalınlık ölçümü gemide nerede kullanılır?", options: ["Boru hatları, tank duvarları, kazan boruları ve liner", "Sadece pervane", "Sadece dümen", "Hiçbir yer"], correctAnswer: 0, explanation: "Boru hatları, tank duvarları, kazan boruları ve liner kalınlık ölçümlerinde yaygın kullanılır (korozyon/erozyon takibi)." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Manyetik parçacık muayenesi (MT)",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Uygulama Alanları"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "MT yönteminde çatlak nasıl görünür hale gelir?", options: ["Çatlaktaki manyetik alan kaçağına biriken demir tozuyla", "Boyayla", "Isıtmayla", "Su ile"], correctAnswer: 0, explanation: "Parça manyetize edilir; çatlak bölgesindeki manyetik alan kaçağına serpilen manyetik parçacıklar (demir tozu) birikerek çatlağı görünür kılar. Floresan parçacık UV altında daha hassastır." },
+      { id: 2, sectionRef: "Uygulama Alanları", category: MAK, question: "MT gemide hangi parçada kullanılır?", options: ["Krank mili fillet bölgesi ve biyel kolu çatlak kontrolü", "Yakıt deposu içi", "Pervane suyu", "Akü"], correctAnswer: 0, explanation: "MT; krank mili fillet, biyel kolu, şaft/pin, kaynak dikişi ve dişli diş dibi çatlak kontrolünde kullanılır (yalnız ferromanyetik malzeme)." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Sıvı penetrant muayenesi (PT)",
+    blocks: [{ sectionTitles: ["Uygulama Adımları", "Gemi Uygulamaları"] }],
+    questions: [
+      { id: 1, sectionRef: "Uygulama Adımları", category: MAK, question: "PT'de geliştirici (developer) ne işe yarar?", options: ["Çatlaktaki penetranti emerek kırmızı iz oluşturur", "Yüzeyi temizler", "Penetranti çatlağa iter", "Hiçbir işlev"], correctAnswer: 0, explanation: "Adımlar: temizlik → penetrant → bekleme (5-20 dk) → fazla penetrant temizliği → developer → değerlendirme. Developer çatlaktaki penetranti emip kırmızı çizgi oluşturur." },
+      { id: 2, sectionRef: "Gemi Uygulamaları", category: MAK, question: "PT gemide hangi parçada kullanılır?", options: ["Silindir kapağı çatlağı, supap yüzeyi, pervane kanat yüzeyi", "Yakıt deposu seviyesi", "Akü gerilimi", "Hava basıncı"], correctAnswer: 0, explanation: "PT; silindir kapağı çatlak kontrolü, supap oturma yüzeyleri, kaynak dikişleri, pervane kanatları ve boru bağlantılarında kullanılır (iletken olmayan dahil yüzey çatlakları)." },
+    ],
+  },
+  {
+    topicKey: "machine-maintenance",
+    topicTitle: "Yağ analizi ve durum izleme",
+    blocks: [{ sectionTitles: ["Analiz Parametreleri", "Yorumlama"] }],
+    questions: [
+      { id: 1, sectionRef: "Analiz Parametreleri", category: MAK, question: "Yağ analizinde TBN neyi gösterir?", options: ["Nötralizasyon (asit giderme) kapasitesini", "Su içeriğini", "Viskoziteyi", "Rengi"], correctAnswer: 0, explanation: "TBN nötralizasyon kapasitesini, TAN oksidasyon seviyesini, viskozite yakıt seyreltme/oksidasyonu, metal parçacıklar (spektrometri) aşınma kaynağını gösterir." },
+      { id: 2, sectionRef: "Yorumlama", category: MAK, question: "Yağ analizinde yüksek Na (sodyum) neyi gösterir?", options: ["Deniz suyu sızıntısı", "Yatak aşınması", "Yakıt seyreltmesi", "Normal durum"], correctAnswer: 0, explanation: "Yüksek Na deniz suyu sızıntısı; yüksek Fe silindir/piston/dişli aşınması; yüksek Cu yatak aşınması; düşük TBN asit nötralizasyon kapasitesinin tükenmesidir." },
+    ],
+  },
 ];
