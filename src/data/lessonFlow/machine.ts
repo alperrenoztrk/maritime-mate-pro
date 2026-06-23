@@ -5197,4 +5197,175 @@ export const machineLessonFlows: LessonFlow[] = [
       { id: 2, sectionRef: "Operasyonel Kontroller", category: MAK, question: "SOLAS gereği başlatma havası şişeleri hangi kapasitede olmalıdır?", options: ["En az 12 ardışık başlatma", "1 başlatma", "100 başlatma", "Kapasite önemsiz"], correctAnswer: 0, explanation: "Şişeler her zaman dolu tutulur ve SOLAS gereği en az 12 ardışık başlatma kapasitesi olmalıdır; minimum basınç altında ana makine çalıştırılamaz." },
     ],
   },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "MGO ve MDO ayrımı",
+    blocks: [{ sectionTitles: ["Karşılaştırma", "Kullanım Alanları"] }],
+    questions: [
+      { id: 1, sectionRef: "Karşılaştırma", category: MAK, question: "MGO (DMA) ile MDO (DMB) arasındaki temel fark nedir?", options: ["MGO artık bileşen içermez ve daha düşük kükürtlüdür (<%0.10)", "MDO en pahalısıdır", "MGO çok viskozdur", "İkisi de aynıdır"], correctAnswer: 0, explanation: "MGO (DMA) artık bileşen içermez, kükürt <%0.10; MDO (DMB) az miktarda artık içerebilir, kükürt <%0.50." },
+      { id: 2, sectionRef: "Kullanım Alanları", category: MAK, question: "ECA bölgelerine girişte hangi yakıta geçilir?", options: ["MGO'ya", "HFO'ya", "LNG'ye zorunlu", "Hiçbir değişiklik"], correctAnswer: 0, explanation: "ECA bölgelerine girişte MGO'ya geçilir; acil jeneratör genellikle MDO/MGO ile çalışır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "LNG yakıt kullanımı",
+    blocks: [{ sectionTitles: ["LNG'nin Yakıt Olarak Özellikleri", "Yakıt Gaz Tedarik Sistemi (FGSS)"] }],
+    questions: [
+      { id: 1, sectionRef: "LNG'nin Yakıt Olarak Özellikleri", category: MAK, question: "LNG'nin başlıca emisyon avantajı nedir?", options: ["SOx neredeyse sıfır, PM ihmal edilebilir; NOx Tier III'e yaklaşır", "CO₂ sıfırdır", "Hiç yakıt gerektirmez", "Su üretir"], correctAnswer: 0, explanation: "LNG ağırlıklı metandır (−162°C'de sıvı); SOx sıfıra yakın, PM ihmal edilebilir, NOx ek arıtmasız Tier III'e yaklaşır. Hacimsel enerjisi HFO'nun ~%60'ı olduğundan büyük tank gerekir." },
+      { id: 2, sectionRef: "Yakıt Gaz Tedarik Sistemi (FGSS)", category: MAK, question: "Düşük basınçlı LNG sisteminde gaz basıncı ve metan kayması nasıldır?", options: ["5-8 bar; yüksek metan kayması (%2-4)", "300 bar; sıfır kaçak", "100 bar; düşük kaçak", "1 bar; kaçak yok"], correctAnswer: 0, explanation: "Düşük basınçlı sistem (4 zamanlı Otto) 5-8 bar ve yüksek metan kayması (%2-4); yüksek basınçlı (~300 bar, 2 zamanlı Diesel) çok düşük kayma. Güvenlik IGF Code ile belirlenir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Metanol ve amonyak yakıtlar",
+    blocks: [{ sectionTitles: ["Metanol", "Amonyak"] }],
+    questions: [
+      { id: 1, sectionRef: "Metanol", category: MAK, question: "Metanolün dikkat gerektiren özelliği nedir?", options: ["Flash point'i çok düşüktür (12°C), özel güvenlik önlemleri gerekir", "Çok yüksek flash point", "Karbon içermez", "Toksik değildir hiç"], correctAnswer: 0, explanation: "Metanol oda sıcaklığında sıvıdır ama flash point'i 12°C olduğundan özel önlem gerekir; SOx sıfır, biyolojik olarak parçalanabilir, enerji yoğunluğu HFO'nun ~yarısı." },
+      { id: 2, sectionRef: "Amonyak", category: MAK, question: "Amonyak yakıtın temel riski ve gereksinimi nedir?", options: ["Toksik gazdır ve düşük yanma hızı nedeniyle pilot yakıt gerektirir", "Çok yüksek enerji yoğunluğu", "Karbon salar", "Risksizdir"], correctAnswer: 0, explanation: "Amonyak karbon içermez (yanma ürünü N₂ ve H₂O) ama toksiktir, yavaş yanar ve pilot yakıt (MGO/H₂) gerektirir; N₂O (güçlü sera gazı) oluşum riski vardır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Yoğunluk ve API gravity",
+    blocks: [{ sectionTitles: ["Yoğunluk Ölçümü", "API Gravity"] }],
+    questions: [
+      { id: 1, sectionRef: "Yoğunluk Ölçümü", category: MAK, question: "Deniz yakıtlarında yoğunluk hangi referans sıcaklıkta verilir?", options: ["15°C", "0°C", "50°C", "100°C"], correctAnswer: 0, explanation: "Yoğunluk 15°C'de kg/m³ olarak verilir; HFO tipik 960-991, MGO 830-890 kg/m³'tür. Hidrometre veya dijital ölçer kullanılır." },
+      { id: 2, sectionRef: "API Gravity", category: MAK, question: "API gravity ölçeği yoğunlukla nasıl ilişkilidir?", options: ["Ters ilişkilidir; hafif yakıtlar yüksek API değerine sahiptir", "Doğru orantılıdır", "İlişkisizdir", "Sadece sıcaklığa bağlıdır"], correctAnswer: 0, explanation: "API = (141.5/SG₆₀°F) − 131.5; ters yoğunluk ölçeğidir, hafif yakıtlar yüksek API'ye sahiptir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Pour point ve cloud point",
+    blocks: [{ sectionTitles: ["Tanımlar", "Operasyonel Önemi"] }],
+    questions: [
+      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Cloud point neyi ifade eder?", options: ["Parafin kristallerinin oluşmaya başladığı (yakıtın bulanıklaştığı) sıcaklık", "Yakıtın donduğu nokta", "Yanma sıcaklığı", "Flash point"], correctAnswer: 0, explanation: "Cloud point parafin kristallerinin oluşup yakıtın bulanıklaştığı sıcaklıktır (filtre tıkanması başlar); pour point yakıtın akışkanlığını yitirdiği sıcaklıktır (cloud point'ten 6-10°C düşük)." },
+      { id: 2, sectionRef: "Operasyonel Önemi", category: MAK, question: "Yakıt tank sıcaklığı pour point'e göre nasıl tutulmalıdır?", options: ["Pour point'in en az 10°C üzerinde", "Pour point'in altında", "Tam pour point'te", "Önemsiz"], correctAnswer: 0, explanation: "Depolama/transfer sıcaklığı pour point'in en az 10°C üzerinde tutulur; donmuş yakıt akışı engeller ve pompalar kavitasyon yapar." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Flash point ve tutuşma noktası",
+    blocks: [{ sectionTitles: ["Flash Point", "Tutuşma ve Ateşleme Noktaları"] }],
+    questions: [
+      { id: 1, sectionRef: "Flash Point", category: MAK, question: "SOLAS gereği gemi yakıt tankındaki yakıtın flash point'i en az kaç olmalıdır?", options: ["60°C", "12°C", "100°C", "30°C"], correctAnswer: 0, explanation: "SOLAS gereği yakıt flash point'i en az 60°C olmalıdır (MGO, HFO, VLSFO dahil); kapalı kap (Pensky-Martens) yöntemiyle ölçülür." },
+      { id: 2, sectionRef: "Tutuşma ve Ateşleme Noktaları", category: MAK, question: "Auto-ignition (kendiliğinden tutuşma) sıcaklığı nedir?", options: ["Dış ateşleme kaynağı olmadan kendiliğinden yanmanın başladığı sıcaklık (HFO ~250-300°C)", "Flash point ile aynı", "Pour point", "Donma noktası"], correctAnswer: 0, explanation: "Auto-ignition, dış kaynak olmadan kendiliğinden yanmanın başladığı sıcaklıktır (HFO ~250-300°C); fire point flash point'ten 5-10°C yüksektir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "CCAI ve CII (yakıt kalite indeksleri)",
+    blocks: [{ sectionTitles: ["CCAI Hesabı", "Değerlendirme"] }],
+    questions: [
+      { id: 1, sectionRef: "CCAI Hesabı", category: MAK, question: "CCAI neyi gösterir?", options: ["Yoğunluk ve viskoziteden hesaplanan ateşleme kalitesini (düşük CCAI = iyi)", "Kükürt oranını", "Su içeriğini", "Yoğunluğu doğrudan"], correctAnswer: 0, explanation: "CCAI yakıtın yoğunluğu ve viskozitesinden hesaplanır; düşük değer iyi ateşleme kalitesidir: CCAI = ρ₁₅ − 81 − 141·log₁₀(log₁₀(ν₅₀+0.85))." },
+      { id: 2, sectionRef: "Değerlendirme", category: MAK, question: "CCAI > 870 değeri ne anlama gelir?", options: ["Kötü ateşleme kalitesi; ateşleme problemleri beklenir", "Mükemmel kalite", "Normal çalışma", "Su yok"], correctAnswer: 0, explanation: "CCAI < 830 iyi, 830-860 kabul edilebilir, > 870 kötü ateşleme kalitesidir (ateşleme problemleri beklenir)." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Katalizör incelikleri (Al+Si)",
+    blocks: [{ sectionTitles: ["Cat Fines Sorunu", "Arıtma Yöntemleri"] }],
+    questions: [
+      { id: 1, sectionRef: "Cat Fines Sorunu", category: MAK, question: "Cat fines (Al+Si) neden tehlikelidir?", options: ["Çelikten sert (Mohs 6-7) parçacıklar abrazif aşınma yapar", "Yakıtı renklendirir", "Yanmayı kolaylaştırır", "Zararsızdır"], correctAnswer: 0, explanation: "FCC kaynaklı 1-20 μm cat fines çelikten serttir; enjektör, plunjer, liner ve segmanlarda hızlı abrazif aşınma yapar. ISO 8217 Al+Si max 60 ppm, motor girişinde <15 ppm hedeflenir." },
+      { id: 2, sectionRef: "Arıtma Yöntemleri", category: MAK, question: "Cat fines uzaklaştırmada en etkili yöntem hangisidir?", options: ["Separatör (purifier), 98°C ve düşük akış hızında", "Sadece gözle ayıklama", "Isıtma", "Renklendirme"], correctAnswer: 0, explanation: "Purifier en etkili yöntemdir (98°C, düşük akış); settling 24-48 saat ve filtrasyon (10-25 μm) tamamlar. Motor girişi hedefi <15 ppm." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Su ve sediment oranı",
+    blocks: [{ sectionTitles: ["Su İçeriği", "Sediment"] }],
+    questions: [
+      { id: 1, sectionRef: "Su İçeriği", category: MAK, question: "ISO 8217 kalıntı yakıtlarda maksimum su içeriği nedir?", options: ["%0.50", "%5", "%0.01", "Sınır yok"], correctAnswer: 0, explanation: "Max su içeriği %0.50'dir; yüksek su enjeksiyon dalgalanması, yanma gecikmesi ve liner korozyonu yapar. Karl Fischer titrasyonuyla ölçülür." },
+      { id: 2, sectionRef: "Sediment", category: MAK, question: "Toplam sediment (TSP) yüksekliği neye yol açar?", options: ["Filtre tıkanması ve purifier verimsizliği", "Yakıt tasarrufu", "Daha iyi yanma", "Hiçbir şey"], correctAnswer: 0, explanation: "TSP standardı max %0.10; yüksek sediment filtre tıkanması ve purifier verimsizliği yapar. Uyumsuz yakıtların karıştırılması sediment oluşumunu hızlandırır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Yakıt ısıtma ve viskozite kontrolü",
+    blocks: [{ sectionTitles: ["Isıtma Aşamaları", "Viskometre Kontrolü"] }],
+    questions: [
+      { id: 1, sectionRef: "Isıtma Aşamaları", category: MAK, question: "Purifier öncesi yakıt hangi sıcaklığa ısıtılır?", options: ["95-98°C (optimum santrifüj ayırma için)", "40°C", "150°C", "Isıtılmaz"], correctAnswer: 0, explanation: "Depolama 40-50°C, settling 60-70°C, purifier öncesi 95-98°C, motor öncesi 130-150°C (10-15 cSt) ısıtma aşamalarıdır." },
+      { id: 2, sectionRef: "Viskometre Kontrolü", category: MAK, question: "Online viskometre ne yapar?", options: ["Viskoziteyi sürekli ölçer ve buhar ısıtıcıyı otomatik kontrol eder", "Yakıt rengini ölçer", "Debiyi sayar", "Basıncı düşürür"], correctAnswer: 0, explanation: "Servis tankı ile motor arasındaki viskometre viskoziteyi sürekli ölçüp ısıtıcıyı otomatik kontrol eder, set değerinden sapmada alarm verir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Purifier ile arıtma",
+    blocks: [{ sectionTitles: ["Purifier Operasyonu", "Purifier – Clarifier Düzeni"] }],
+    questions: [
+      { id: 1, sectionRef: "Purifier Operasyonu", category: MAK, question: "Purifier ayırma verimi nasıl artırılır?", options: ["Düşük akış hızı (nominal kapasitenin %60-70'i) ile", "Yüksek akış hızı", "Soğuk yakıt", "Disc çıkararak"], correctAnswer: 0, explanation: "Yakıt 95-98°C'ye ısıtılır; düşük akış hızı (nominal %60-70) ayırma verimini artırır. Doğru gravity disc seçimi zorunludur." },
+      { id: 2, sectionRef: "Purifier – Clarifier Düzeni", category: MAK, question: "Modern ALCAP/EPC sistemlerinin avantajı nedir?", options: ["Gravity disc gerektirmez; otomatik faz algılamayla çalışır", "Daha yavaştır", "Su ayırmaz", "Isıtma gerektirmez"], correctAnswer: 0, explanation: "Seri düzende purifier (su+katı) sonra clarifier (katı) çalışır; ALCAP/EPC sistemleri gravity disc gerektirmez, otomatik faz algılamayla çalışır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Otojen filtrasyon ve oto-filter",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Oto-filtre (self-cleaning) ne zaman kendini temizler?", options: ["ΔP belirli eşiği aşınca otomatik ters yıkama (backflush) yapar", "Her gün elle", "Hiç temizlenmez", "Yılda bir"], correctAnswer: 0, explanation: "Filtre üzerindeki ΔP eşiği aşınca sistem otomatik backflush yapar veya kendi temizleme mekanizmasını devreye alır; yüksek ΔP alarmı tıkanmayı bildirir." },
+      { id: 2, sectionRef: "Çalışma Prensibi", category: MAK, question: "Oto-filtre sisteminde genellikle ne birlikte çalışır?", options: ["İnce oto-filtre ile koruyucu kaba filtre", "İki pompa", "İki enjektör", "İki kazan"], correctAnswer: 0, explanation: "Genellikle bir ince oto-filtre ile koruyucu kaba filtre birlikte çalışır; biriken tortu otomatik tahliye edilir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Homojenizerler",
+    blocks: [{ sectionTitles: ["Çalışma Prensibi", "Faydaları"] }],
+    questions: [
+      { id: 1, sectionRef: "Çalışma Prensibi", category: MAK, question: "Homojenizer yakıttaki su damlacıklarını ne yapar?", options: ["1-5 μm boyutuna indirir (yanma odasında hızla buharlaşır)", "Büyütür", "Tamamen yok eder", "Isıtır"], correctAnswer: 0, explanation: "Yüksek basınçlı (100-400 bar) pompa yakıtı dar aralıktan geçirir; kesme kuvvetleri su damlacıklarını 1-5 μm'ye indirir, bunlar yanma odasında hızla buharlaşır. Purifier sonrası, motor öncesi konumlanır." },
+      { id: 2, sectionRef: "Faydaları", category: MAK, question: "Homojenizerin faydalarından biri nedir?", options: ["Cat fines'ı kısmen parçalar ve enjektör tıkanma riskini azaltır", "Yakıt tüketimini iki katına çıkarır", "Kükürt ekler", "Su miktarını artırır"], correctAnswer: 0, explanation: "Homojenizer yanma verimini artırır, emisyonları azaltır, cat fines'ı kısmen parçalar, yakıt stabilitesini iyileştirir ve enjektör tıkanma riskini azaltır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Yakıt değiştirme (fuel changeover) prosedürü",
+    blocks: [{ sectionTitles: ["HFO → MGO Geçişi", "Dikkat Edilecek Noktalar"] }],
+    questions: [
+      { id: 1, sectionRef: "HFO → MGO Geçişi", category: MAK, question: "HFO → MGO geçişinde ilk adım nedir?", options: ["Yakıt sıcaklığını kademeli düşürmek (termal şok önleme)", "Hemen MGO'ya geçmek", "Motoru durdurmak", "Isıtıcıyı açmak"], correctAnswer: 0, explanation: "Önce sıcaklık kademeli düşürülür, servis tankı MGO'ya geçirilir, viskometre izlenir ve geçiş zamanı/pozisyonu log book'a işlenir." },
+      { id: 2, sectionRef: "Dikkat Edilecek Noktalar", category: MAK, question: "Changeover'da sıcaklık değişim hızı en fazla ne olmalıdır?", options: ["Dakikada 2°C (2°C/dakika)", "Dakikada 50°C", "Anında", "Sınır yok"], correctAnswer: 0, explanation: "Hızlı sıcaklık değişimi pompa/enjeksiyon contalarına zarar verir; değişim hızı en fazla 2°C/dakika olmalıdır. MARPOL gereği prosedür ve kayıt zorunludur." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Bunker planlama ve sipariş",
+    blocks: [{ sectionTitles: ["Planlama"] }],
+    questions: [
+      { id: 1, sectionRef: "Planlama", category: MAK, question: "Sefer için gerekli yakıt nasıl hesaplanır?", options: ["Tüketim = SFOC × Güç × Süre (+ güvenlik payı)", "Sadece tank hacmi", "Rastgele", "Sadece hız"], correctAnswer: 0, explanation: "Gerekli yakıt = SFOC × Güç × Süre / 10⁶ + güvenlik payı (%10-15) + kötü hava/bekleme payı; ECA için düşük kükürtlü yakıt ayrıca planlanır." },
+      { id: 2, sectionRef: "Planlama", category: MAK, question: "Bunker planlamasında hangi paylar eklenir?", options: ["Güvenlik payı (%10-15), kötü hava ve bekleme süreleri", "Sadece vergi", "Hiçbir pay", "Sadece liman ücreti"], correctAnswer: 0, explanation: "Hesaplanan tüketime güvenlik payı (%10-15), kötü hava payı ve bekleme süreleri eklenir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Bunker miktarı ölçüm yöntemleri",
+    blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Hacim-Kütle Dönüşümü"] }],
+    questions: [
+      { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğruluğa sahip bunker ölçüm yöntemi hangisidir?", options: ["Coriolis flowmetre (±0.1-0.5%)", "Tank sounding (±1-2%)", "Ullage (±1-2%)", "Gözle tahmin"], correctAnswer: 0, explanation: "Coriolis flowmetre ±0.1-0.5% ile en hassastır; tank sounding/ullage ±1-2%, barge tank ölçümü ±0.5-1% doğruluktadır." },
+      { id: 2, sectionRef: "Hacim-Kütle Dönüşümü", category: MAK, question: "Ölçülen hacim kütleye (metrik ton) nasıl çevrilir?", options: ["Ölçüm sıcaklığındaki yoğunlukla çarpılıp sıcaklık düzeltmesi yapılarak", "Sadece 1000'e bölünerek", "Hacimle aynıdır", "Çevrilemez"], correctAnswer: 0, explanation: "Kütle (mt) = Hacim (m³) × ρ_t/1000; sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "MARPOL Annex VI kükürt uyumu",
+    blocks: [{ sectionTitles: ["Sınırlar ve Uyum Yolları", "Belgeler ve Denetim"] }],
+    questions: [
+      { id: 1, sectionRef: "Sınırlar ve Uyum Yolları", category: MAK, question: "MARPOL Annex VI küresel ve ECA kükürt sınırları nedir?", options: ["Küresel %0,50; ECA %0,10 m/m", "Küresel %3,5; ECA %1,0", "İkisi de %0,10", "Sınır yok"], correctAnswer: 0, explanation: "Küresel kükürt sınırı %0,50 m/m, ECA bölgelerinde %0,10 m/m'dir. Uyum: düşük kükürtlü yakıt, scrubber (EGCS) ile HFO veya LNG gibi alternatif yakıtlarla sağlanır." },
+      { id: 2, sectionRef: "Belgeler ve Denetim", category: MAK, question: "Kükürt uyumu hangi belgelerle kanıtlanır?", options: ["IAPP sertifikası, BDN kayıtları ve yakıt numuneleri", "Sadece sözlü beyan", "Hiçbir belge", "Sadece fatura"], correctAnswer: 0, explanation: "Uyum IAPP sertifikası, BDN kayıtları, yakıt numuneleri ve (scrubber varsa) izleme sistemleriyle kanıtlanır; ECA öncesi changeover tamamlanıp kaydedilir." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Yakıt numunesi alma prosedürü",
+    blocks: [{ sectionTitles: ["Numune Tipleri", "Alma Yöntemi"] }],
+    questions: [
+      { id: 1, sectionRef: "Numune Tipleri", category: MAK, question: "MARPOL numunesi (PSC kükürt doğrulaması) hangi özelliktedir?", options: ["Min 400 mL, mühürlü", "Açık, 1 mL", "Etiketsiz", "Numune gerekmez"], correctAnswer: 0, explanation: "MARPOL numunesi min 400 mL ve mühürlüdür (PSC kükürt doğrulaması); tedarikçi/gemi/karşılaştırma numuneleri 2-5 litredir." },
+      { id: 2, sectionRef: "Alma Yöntemi", category: MAK, question: "Bunker numunesi nasıl alınmalıdır?", options: ["Manifolda bağlı sürekli damlama (drip sampling) ile tüm operasyon boyunca", "Sadece başta bir kez", "Sadece sonda", "Tank dibinden"], correctAnswer: 0, explanation: "Numune manifold hattına bağlı sürekli damlama (drip) yöntemiyle tüm operasyon boyunca alınır; nokta numune yalnız drip mümkün değilse kabul edilir. Şişe etiketlenip mühürlenir ve imzalanır." },
+    ],
+  },
+  {
+    topicKey: "machine-fuel-technology",
+    topicTitle: "Bunker uyuşmazlık yönetimi",
+    blocks: [{ sectionTitles: ["Miktar Uyuşmazlığı", "Kalite Uyuşmazlığı"] }],
+    questions: [
+      { id: 1, sectionRef: "Miktar Uyuşmazlığı", category: MAK, question: "Gemi ölçümü ile BDN farkı %0.5'i aşarsa ne yapılır?", options: ["Uyuşmazlık bildirilir; BDN'ye 'received under protest' notu düşülür", "Görmezden gelinir", "Yakıt geri verilir", "Hemen ödeme yapılır"], correctAnswer: 0, explanation: "Fark %0.5'i aşarsa uyuşmazlık bildirilir ve BDN'ye 'received under protest' yazılır; bağımsız bunker surveyor atanır, sıcaklık/trim düzeltmeleri kontrol edilir." },
+      { id: 2, sectionRef: "Kalite Uyuşmazlığı", category: MAK, question: "Off-spec yakıt kullanılmak zorunda kalınırsa ne yapılır?", options: ["Purifier akış hızı düşürülür, filtrasyon artırılır, motor parametreleri sıkı izlenir", "Hiçbir önlem alınmaz", "Yakıt ısıtılmaz", "Motor tam yüke alınır"], correctAnswer: 0, explanation: "Analiz ISO 8217'yi aşarsa off-spec claim açılır; kullanım zorunluysa purifier akışı düşürülür, filtrasyon artırılır ve motor parametreleri sıkı izlenir (motor güvenliği önceliklidir)." },
+    ],
+  },
 ];
