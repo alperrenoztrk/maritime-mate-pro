@@ -10,6 +10,9 @@ import {
   collectTranslationUnits,
   runWithConcurrency,
   normalizeSource,
+  buildTranslationBatches,
+  splitBatchResult,
+  BATCH_SEPARATOR,
 } from '@/utils/pageTranslator';
 import { loadStaticDictionary, getStaticTranslation } from '@/utils/staticTranslations';
 import {
@@ -94,7 +97,6 @@ const SEEN_STRINGS_KEY = 'mt-seen-strings-v1';
 const TRANSLATION_CACHE_MAX = 12000;
 const SEEN_STRINGS_MAX = 8000;
 const BULK_CONCURRENCY = 8;
-const PAGE_CONCURRENCY = 6;
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<string>(DEFAULT_LANGUAGE);
@@ -105,7 +107,6 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const { toast } = useToast();
 
   const translationCacheRef = useRef<Map<string, string>>(new Map());
-  const inFlightRef = useRef<Map<string, Promise<string>>>(new Map());
   const translationRunIdRef = useRef(0);
   const observerRef = useRef<MutationObserver | null>(null);
   const pendingNodesRef = useRef<Set<Node>>(new Set());
@@ -203,18 +204,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   // ── Core string translator (glossary-aware) ────────────────────────────────
-  const translateText = async (
-    text: string,
-    languageCode: string,
-    options: { allowLive?: boolean } = {}
-  ): Promise<string> => {
-    const { allowLive = true } = options;
-    const normalizedText = normalizeSource(text);
-    if (!normalizedText) return text;
-    if (languageCode === SOURCE_LANGUAGE) return normalizedText;
-
-    recordSeen(normalizedText);
-
+  // Resolves a source string without any network access: cache → static
+  // dictionary → curated maritime override. Returns undefined when only a live
+  // fetch could translate it. Caches static/override hits for next time.
+  const resolveLocally = (normalizedText: string, languageCode: string): string | undefined => {
     const cacheKey = `${languageCode}:${normalizedText}`;
     const cached = translationCacheRef.current.get(cacheKey);
     if (cached !== undefined) return cached;
@@ -231,37 +224,63 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return maritimeOverride;
     }
 
-    // After bulk completion, never live-fetch on route changes — keep source so
-    // the user doesn't see a flicker / half-translated page.
-    if (!allowLive || bulkCompletedLanguagesRef.current.has(languageCode)) {
-      return normalizedText;
+    return undefined;
+  };
+
+  // Translates a batch of source strings in a single network round-trip. On any
+  // failure (or a response that can't be split back to the batch shape) it falls
+  // back to translating each source on its own so a single bad string never
+  // poisons the whole batch.
+  const fetchTranslationBatch = async (
+    batch: string[],
+    languageCode: string
+  ): Promise<Map<string, string>> => {
+    const out = new Map<string, string>();
+    const query = batch.join(BATCH_SEPARATOR);
+    try {
+      const response = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`
+      );
+      const data = await response.json();
+      if (!Array.isArray(data?.[0])) throw new Error('unexpected response');
+      const joined = data[0].map((item: [string]) => item[0] ?? '').join('');
+      const parts = splitBatchResult(joined, batch.length);
+      if (parts) {
+        batch.forEach((source, i) => {
+          out.set(source, applyMaritimeCorrections(parts[i].trim(), languageCode));
+        });
+        return out;
+      }
+    } catch {
+      // fall through to per-string fallback below
     }
 
-    const inFlight = inFlightRef.current.get(cacheKey);
-    if (inFlight) return inFlight;
+    if (batch.length === 1) return out; // single failed → leave unset (keep source)
 
-    const request = (async (): Promise<string> => {
-      try {
-        const response = await fetch(
-          `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(normalizedText)}`
-        );
-        const data = await response.json();
-        const machine = Array.isArray(data?.[0])
-          ? data[0].map((item: [string]) => item[0]).join('')
-          : normalizedText;
-        const corrected = applyMaritimeCorrections(machine, languageCode);
-        translationCacheRef.current.set(cacheKey, corrected);
-        return corrected;
-      } catch (error) {
-        console.error('Metin çevirisi alınamadı:', error);
-        return normalizedText;
-      } finally {
-        inFlightRef.current.delete(cacheKey);
-      }
-    })();
+    await runWithConcurrency(batch, BULK_CONCURRENCY, async (source) => {
+      const single = await fetchTranslationBatch([source], languageCode);
+      const value = single.get(source);
+      if (value !== undefined) out.set(source, value);
+    });
+    return out;
+  };
 
-    inFlightRef.current.set(cacheKey, request);
-    return request;
+  // Translates many source strings, packing them into as few network requests as
+  // possible. Returns source → translated for every string that resolved.
+  const networkTranslateMany = async (
+    sources: string[],
+    languageCode: string,
+    onResolved?: (count: number) => void
+  ): Promise<Map<string, string>> => {
+    const result = new Map<string, string>();
+    const unique = Array.from(new Set(sources));
+    const batches = buildTranslationBatches(unique);
+    await runWithConcurrency(batches, BULK_CONCURRENCY, async (batch) => {
+      const translated = await fetchTranslationBatch(batch, languageCode);
+      for (const [source, value] of translated) result.set(source, value);
+      onResolved?.(batch.length);
+    });
+    return result;
   };
 
   // ── DOM application ────────────────────────────────────────────────────────
@@ -290,6 +309,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return;
     }
 
+    const { allowLive = true } = options;
+
     const bySource = new Map<string, Array<(t: string) => void>>();
     for (const unit of units) {
       recordSeen(unit.source);
@@ -298,15 +319,36 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       else bySource.set(unit.source, [unit.apply]);
     }
 
-    const sources = Array.from(bySource.keys());
-    await runWithConcurrency(sources, PAGE_CONCURRENCY, async (source) => {
-      const translated = await translateText(source, languageCode, options);
-      if (translationRunIdRef.current !== runId) return;
+    const applyTranslation = (source: string, translated: string) => {
       if (translated === source) return;
       const appliers = bySource.get(source);
       if (!appliers) return;
       writeWithoutObserving(() => appliers.forEach((apply) => apply(translated)));
-    });
+    };
+
+    // 1) Apply everything we can resolve without the network right away. This is
+    // synchronous, so cached/static/glossary text never flickers.
+    const networkSources: string[] = [];
+    const canLiveFetch = allowLive && !bulkCompletedLanguagesRef.current.has(languageCode);
+    for (const source of bySource.keys()) {
+      const local = resolveLocally(source, languageCode);
+      if (local !== undefined) {
+        applyTranslation(source, local);
+      } else if (canLiveFetch) {
+        networkSources.push(source);
+      }
+      // else: leave in source language (cache-only mode after a bulk pass).
+    }
+
+    // 2) Translate the remainder in as few batched requests as possible.
+    if (networkSources.length > 0) {
+      const translations = await networkTranslateMany(networkSources, languageCode);
+      if (translationRunIdRef.current !== runId) return;
+      for (const [source, translated] of translations) {
+        translationCacheRef.current.set(`${languageCode}:${source}`, translated);
+        applyTranslation(source, translated);
+      }
+    }
 
     persistCacheSoon();
   };
@@ -438,32 +480,19 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return;
     }
 
-    // 4) Translate via Google in parallel; update progress.
+    // 4) Translate via Google in as few batched requests as possible; update
+    // progress as each batch resolves. Strings left untranslated (network
+    // failures) stay uncached and fall back to source on render.
     let done = 0;
-    await runWithConcurrency(pool, BULK_CONCURRENCY, async (source) => {
-      const cacheKey = `${languageCode}:${source}`;
-      if (!translationCacheRef.current.has(cacheKey)) {
-        try {
-          const response = await fetch(
-            `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(source)}`
-          );
-          const data = await response.json();
-          const machine = Array.isArray(data?.[0])
-            ? data[0].map((item: [string]) => item[0]).join('')
-            : source;
-          const corrected = applyMaritimeCorrections(machine, languageCode);
-          translationCacheRef.current.set(cacheKey, corrected);
-        } catch {
-          // leave uncached — will fall back to source on render
-        }
-      }
-      done += 1;
-      if (done % 5 === 0 || done === total) {
-        setChangeProgress(
-          Math.min(99, progressFloor + Math.round((done / total) * progressSpan)),
-        );
-      }
+    const translations = await networkTranslateMany(pool, languageCode, (count) => {
+      done += count;
+      setChangeProgress(
+        Math.min(99, progressFloor + Math.round((done / total) * progressSpan)),
+      );
     });
+    for (const [source, value] of translations) {
+      translationCacheRef.current.set(`${languageCode}:${source}`, value);
+    }
 
     persistCacheSoon();
     bulkCompletedLanguagesRef.current.add(languageCode);

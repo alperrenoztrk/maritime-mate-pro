@@ -1,9 +1,15 @@
-// Loads every route in routeManifest into a hidden off-screen iframe in order
+// Loads every route in routeManifest into hidden off-screen iframes in order
 // to harvest user-visible source text from the rendered DOM. The harvest
 // iframe self-reports its strings via postMessage once its DOM has been
 // quiet long enough to be considered fully rendered. If postMessage never
 // arrives within `perRouteTimeoutMs`, we fall back to reading the iframe's
 // contentDocument directly so a slow/non-cooperative page still contributes.
+//
+// Routes are processed by a small pool of iframes running concurrently, so the
+// harvest wall-time is roughly (route count / concurrency) × per-route time
+// instead of being fully sequential. Each in-flight iframe is matched to its
+// own postMessage by comparing `event.source` to the iframe's contentWindow,
+// which is reliable even when several routes are loading at once.
 
 import { collectTranslationUnits } from '@/utils/pageTranslator';
 import { getHarvestRoutes } from '@/utils/routeManifest';
@@ -13,16 +19,17 @@ interface HarvestOptions {
   signal?: AbortSignal;
   perRouteTimeoutMs?: number;
   harvestFlag?: string;
+  concurrency?: number;
 }
 
 const DEFAULT_TIMEOUT = 9000;
+const DEFAULT_CONCURRENCY = 3;
 
 export const HARVEST_MESSAGE_TYPE = 'mt-harvest-strings';
 
 const harvestRoute = (
   iframe: HTMLIFrameElement,
   url: string,
-  pathname: string,
   timeoutMs: number,
   signal?: AbortSignal,
 ): Promise<string[]> =>
@@ -59,6 +66,10 @@ const harvestRoute = (
     };
 
     onMessage = (event: MessageEvent) => {
+      // Match the message to THIS iframe by its source window. This is robust
+      // even when multiple routes are harvested concurrently (pathname matching
+      // would be ambiguous and breaks on redirects / query normalization).
+      if (event.source !== iframe.contentWindow) return;
       const data = event.data;
       if (
         !data ||
@@ -67,10 +78,7 @@ const harvestRoute = (
       ) {
         return;
       }
-      const payload = data as { pathname?: string; sources?: unknown };
-      // Match by pathname rather than full URL — iframe's window.location.href
-      // may differ from the URL we set due to redirects / normalization.
-      if (typeof payload.pathname !== 'string' || payload.pathname !== pathname) return;
+      const payload = data as { sources?: unknown };
       const sources = Array.isArray(payload.sources)
         ? (payload.sources.filter((s) => typeof s === 'string') as string[])
         : [];
@@ -107,6 +115,7 @@ export const harvestAllRoutes = async (
     signal,
     perRouteTimeoutMs = DEFAULT_TIMEOUT,
     harvestFlag = '_mtHarvest=1',
+    concurrency = DEFAULT_CONCURRENCY,
   } = options;
 
   const routes = getHarvestRoutes();
@@ -114,37 +123,58 @@ export const harvestAllRoutes = async (
   const collected = new Set<string>();
   const origin = window.location.origin;
 
-  const iframe = document.createElement('iframe');
-  iframe.setAttribute('aria-hidden', 'true');
-  iframe.setAttribute('tabindex', '-1');
-  iframe.title = 'mt-harvester';
-  // A real-ish viewport so responsive components mount their full markup
-  // (mobile + desktop branches differ for some pages).
-  iframe.style.cssText =
-    'position:fixed;left:-9999px;top:-9999px;width:1280px;height:900px;border:0;opacity:0;pointer-events:none;';
-  document.body.appendChild(iframe);
+  const createIframe = (): HTMLIFrameElement => {
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('aria-hidden', 'true');
+    iframe.setAttribute('tabindex', '-1');
+    iframe.title = 'mt-harvester';
+    // A real-ish viewport so responsive components mount their full markup
+    // (mobile + desktop branches differ for some pages).
+    iframe.style.cssText =
+      'position:fixed;left:-9999px;top:-9999px;width:1280px;height:900px;border:0;opacity:0;pointer-events:none;';
+    document.body.appendChild(iframe);
+    return iframe;
+  };
 
-  try {
-    for (let i = 0; i < routes.length; i++) {
+  // Bound concurrency so we never spin up more iframes than there are routes.
+  const poolSize = Math.max(1, Math.min(concurrency, total || 1));
+  const iframes = Array.from({ length: poolSize }, createIframe);
+
+  let cursor = 0;
+  let done = 0;
+
+  // Each worker owns one iframe and pulls routes off a shared cursor until the
+  // list (or the abort signal) is exhausted.
+  const worker = async (iframe: HTMLIFrameElement) => {
+    while (true) {
       if (signal?.aborted) break;
-      const path = routes[i];
+      const index = cursor++;
+      if (index >= routes.length) break;
+      const path = routes[index];
       const sep = path.includes('?') ? '&' : '?';
       const url = `${origin}${path}${sep}${harvestFlag}`;
       try {
-        const sources = await harvestRoute(iframe, url, path, perRouteTimeoutMs, signal);
+        const sources = await harvestRoute(iframe, url, perRouteTimeoutMs, signal);
         for (const s of sources) if (s) collected.add(s);
       } catch {
         // ignore per-route errors and move on
       }
-      onProgress?.(i + 1, total);
+      done += 1;
+      onProgress?.(done, total);
     }
+  };
+
+  try {
+    await Promise.all(iframes.map((iframe) => worker(iframe)));
   } finally {
-    try {
-      iframe.src = 'about:blank';
-    } catch {
-      /* ignore */
+    for (const iframe of iframes) {
+      try {
+        iframe.src = 'about:blank';
+      } catch {
+        /* ignore */
+      }
+      iframe.remove();
     }
-    iframe.remove();
   }
 
   return Array.from(collected);

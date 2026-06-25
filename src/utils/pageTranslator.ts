@@ -57,6 +57,67 @@ export const shouldSkipTextNode = (node: Text): boolean => {
   return isNoTranslateZone(parent);
 };
 
+// ── Network batching ─────────────────────────────────────────────────────────
+// The runtime translator sends source strings to a machine-translation endpoint
+// that accepts one `q` per request. Issuing one request per string is the main
+// cost of a language switch, so we pack many strings into a single request by
+// joining them with a separator and splitting the response back apart.
+//
+// `\n` is used as the separator because the gtx endpoint emits one response
+// segment per newline, so the joined order is preserved. Any source that itself
+// contains the separator can't be reconstructed this way, so it is emitted as
+// its own singleton batch and translated alone.
+export const BATCH_SEPARATOR = '\n';
+
+// Groups source strings into batches whose joined query stays within the given
+// item-count and character limits, so each batch is one network round-trip.
+export const buildTranslationBatches = (
+  sources: string[],
+  maxChars = 1200,
+  maxItems = 48,
+): string[][] => {
+  const batches: string[][] = [];
+  let current: string[] = [];
+  let currentChars = 0;
+
+  const flush = () => {
+    if (current.length > 0) {
+      batches.push(current);
+      current = [];
+      currentChars = 0;
+    }
+  };
+
+  for (const source of sources) {
+    // Sources containing the separator (or longer than a whole batch) cannot be
+    // safely co-located with others — translate them on their own.
+    if (source.includes(BATCH_SEPARATOR) || source.length >= maxChars) {
+      flush();
+      batches.push([source]);
+      continue;
+    }
+    const projected =
+      current.length === 0 ? source.length : currentChars + BATCH_SEPARATOR.length + source.length;
+    if (current.length >= maxItems || (current.length > 0 && projected > maxChars)) {
+      flush();
+    }
+    currentChars = current.length === 0 ? source.length : currentChars + BATCH_SEPARATOR.length + source.length;
+    current.push(source);
+  }
+  flush();
+  return batches;
+};
+
+// Splits a separator-joined translated response back into per-source strings.
+// Returns null when the segment count doesn't line up with the batch, signalling
+// the caller to fall back to translating each source individually.
+export const splitBatchResult = (joined: string, expectedCount: number): string[] | null => {
+  if (expectedCount <= 1) return [joined];
+  const parts = joined.split(BATCH_SEPARATOR);
+  if (parts.length !== expectedCount) return null;
+  return parts;
+};
+
 // Runs an async task over items with a bounded number of concurrent workers.
 export const runWithConcurrency = async <T,>(
   items: T[],
