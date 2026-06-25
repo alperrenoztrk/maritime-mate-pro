@@ -24,7 +24,7 @@ type FlowItem =
   | { kind: "quiz"; question: RecapQuestion };
 
 /**
- * "Dersler Beta" — rehberli ders oturumu (güverte + makine, tüm konular).
+ * "Alıştırmalar" — rehberli ders oturumu (güverte + makine, tüm konular).
  * Akış (lessonFlow) yazılmış konularda Duolingo modu: ÖNCE ANLAT → KARIŞIK SOR,
  * yanlışlar sonda tekrar. Akışı henüz olmayan konularda REHBERLİ OKUMA modu:
  * bölümler sırayla öğretilir (içerik mevcut anlatımdan, read-only).
@@ -75,7 +75,7 @@ export default function GuidedLessonSession() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
         <p className="text-muted-foreground">Bu konu için anlatım içeriği henüz hazırlanmadı.</p>
         <Link
-          to={`/lessons-beta/${categoryId}/topics`}
+          to={`/exercises/${categoryId}/topics`}
           className="text-sm text-primary underline"
         >
           Konulara dön
@@ -134,7 +134,7 @@ export default function GuidedLessonSession() {
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur">
         <div className="mx-auto flex max-w-2xl items-center gap-3">
           <Link
-            to={`/lessons-beta/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}
+            to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}
             className="text-muted-foreground transition-colors hover:text-foreground"
             aria-label="Çıkış"
           >
@@ -196,7 +196,7 @@ export default function GuidedLessonSession() {
                 <RotateCcw className="mr-2 h-4 w-4" /> Tekrar Başla
               </Button>
               <Button asChild variant="outline" className="w-full">
-                <Link to={`/lessons-beta/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}>
+                <Link to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}>
                   <Sparkles className="mr-2 h-4 w-4" /> AI Eğitmene Sor
                 </Link>
               </Button>

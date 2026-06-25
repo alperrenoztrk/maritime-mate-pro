@@ -10,7 +10,7 @@ interface AppIcon {
 
 const APPS: AppIcon[] = [
   { label: "Dersler", to: "/lessons", Icon: BookOpen, gradient: "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)" },
-  { label: "Dersler Beta", to: "/lessons-beta", Icon: Sparkles, gradient: "linear-gradient(135deg, #a855f7 0%, #4f46e5 100%)" },
+  { label: "Alıştırmalar", to: "/exercises", Icon: Sparkles, gradient: "linear-gradient(135deg, #a855f7 0%, #4f46e5 100%)" },
   { label: "Personel", to: "/crew", Icon: Users, gradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)" },
   { label: "Gemi Sistemleri", to: "/ship-systems", Icon: Ship, gradient: "linear-gradient(135deg, #f59e0b 0%, #b45309 100%)" },
   { label: "Operasyonlar", to: "/ship-operations", Icon: ClipboardList, gradient: "linear-gradient(135deg, #ec4899 0%, #be185d 100%)" },

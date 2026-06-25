@@ -5,12 +5,12 @@ import { hasScenarios } from "@/data/scenarios";
 import { ChevronRight, FlaskConical, GraduationCap, Ship, Sparkles, Wrench } from "lucide-react";
 
 /**
- * "Dersler Beta" giriş sayfası.
+ * "Alıştırmalar" giriş sayfası.
  *
  * Orijinal "Dersler"e dokunmadan, tüm güverte ve makine kategorilerini listeler.
  * İçeriği olan kategoriler açılabilir; konu anlatımı henüz olmayanlar "yakında".
  */
-export default function LessonsBetaPage() {
+export default function ExercisesPage() {
   const categories = getBetaCategories();
   const deck = categories.filter((c) => c.group === "deck");
   const machine = categories.filter((c) => c.group === "machine");
@@ -53,7 +53,7 @@ export default function LessonsBetaPage() {
     return category.enabled ? (
       <Link
         key={category.key}
-        to={`/lessons-beta/${category.key}/topics`}
+        to={`/exercises/${category.key}/topics`}
         className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:border-violet-400/40 hover:bg-card"
       >
         {inner}
@@ -80,7 +80,7 @@ export default function LessonsBetaPage() {
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-violet-600 backdrop-blur dark:text-violet-300">
             <FlaskConical className="h-3.5 w-3.5" /> Beta
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Dersler Beta</h1>
+          <h1 className="text-2xl font-bold text-foreground">Alıştırmalar</h1>
           <p className="mx-auto max-w-xl text-sm text-muted-foreground">
             Önce anlat, sonra karışık sor (Duolingo tarzı) · gerçek vardiya senaryoları ·
             sana özel AI eğitmen. Güverte ve makine derslerinde okuldan daha iyi öğren.
