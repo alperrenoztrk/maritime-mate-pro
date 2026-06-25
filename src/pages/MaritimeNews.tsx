@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
@@ -110,15 +109,8 @@ const MaritimeNews = () => {
       </div>
 
       <div className="mx-auto w-full max-w-5xl space-y-4">
-        <div className="flex items-center justify-between gap-3">
+        <div>
           <h1 className="text-2xl font-bold tracking-tight text-white">Denizcilik Haberleri</h1>
-          <Button
-            variant="outline"
-            className="border-white/20 bg-transparent text-white hover:bg-white/10"
-            onClick={() => navigate("/")}
-          >
-            Ana Sayfa
-          </Button>
         </div>
 
         <Separator className="bg-white/10" />

@@ -1,4 +1,4 @@
-import { X, ChevronLeft, Lightbulb } from "lucide-react";
+import { X, Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { useState } from "react";
 import { TopicDetailContent } from "@/data/navigationTopicContents";
@@ -22,14 +22,7 @@ export function TopicContentModal({ content, onClose }: TopicContentModalProps) 
       <div className="fixed inset-0 z-50 flex flex-col bg-background">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border/40 bg-card/80 px-4 py-3 sm:px-6 sm:py-4">
-          <button
-            onClick={onClose}
-            className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Geri
-          </button>
-          <h2 className="text-base sm:text-lg font-bold text-foreground text-center flex-1 mx-4 line-clamp-1">{content.title}</h2>
+          <h2 className="text-base sm:text-lg font-bold text-foreground text-center flex-1 line-clamp-1">{content.title}</h2>
           <button
             onClick={onClose}
             className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
