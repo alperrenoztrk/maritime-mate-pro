@@ -51,8 +51,8 @@ Topladığımız veriler:
 • Konum, kişiler, fotoğraf, mikrofon: Toplanmaz.
 
 Üçüncü taraf servisler:
-• Lovable Cloud (Supabase) – kimlik doğrulama, içerik depolama.
-• Lovable AI Gateway – soru/cevap özellikleri için (kullanıcı içeriği geçici olarak işlenir, saklanmaz).
+• Supabase – kimlik doğrulama, içerik depolama.
+• Gemini AI – soru/cevap özellikleri için (kullanıcı içeriği geçici olarak işlenir, saklanmaz).
 
 Güvenlik:
 • Tüm veri aktarımı HTTPS üzerinden şifrelenir.
@@ -71,8 +71,8 @@ Data we collect:
 • Location, contacts, photos, microphone: none.
 
 Third-party services:
-• Lovable Cloud (Supabase) – authentication and content storage.
-• Lovable AI Gateway – Q&A features (user content processed transiently, not stored).
+• Supabase – authentication and content storage.
+• Gemini AI – Q&A features (user content processed transiently, not stored).
 
 Security:
 • All traffic is encrypted via HTTPS.

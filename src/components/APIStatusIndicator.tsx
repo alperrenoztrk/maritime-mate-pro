@@ -12,10 +12,10 @@ interface APIStatus {
 
 export function APIStatusIndicator() {
   const [apis, setApis] = useState<APIStatus[]>([
-    { name: 'Lovable Cloud', status: 'checking', description: 'Backend ve veritabanı servisi' },
+    { name: 'Supabase', status: 'checking', description: 'Backend ve veritabanı servisi' },
     { name: 'Google Auth', status: 'checking', description: 'Google ile giriş' },
     { name: 'Stripe', status: 'checking', description: 'Ödeme sistemi' },
-    { name: 'Lovable AI', status: 'checking', description: 'AI özellikleri' },
+    { name: 'Gemini AI', status: 'checking', description: 'AI özellikleri' },
   ]);
 
   useEffect(() => {
@@ -25,17 +25,17 @@ export function APIStatusIndicator() {
   const checkAPIs = async () => {
     const updatedApis: APIStatus[] = [];
 
-    // Check Lovable Cloud (Supabase)
+    // Check Supabase
     try {
       const { error } = await supabase.auth.getSession();
       updatedApis.push({
-        name: 'Lovable Cloud',
+        name: 'Supabase',
         status: error ? 'error' : 'active',
         description: 'Backend ve veritabanı servisi'
       });
     } catch {
       updatedApis.push({
-        name: 'Lovable Cloud',
+        name: 'Supabase',
         status: 'error',
         description: 'Backend ve veritabanı servisi'
       });
@@ -77,20 +77,20 @@ export function APIStatusIndicator() {
       });
     }
 
-    // Check Lovable AI (check if edge function exists and is configured)
+    // Check Gemini AI (check if edge function exists and is configured)
     try {
       const { data, error } = await supabase.functions.invoke('gemini-chat', {
         body: { test: true }
       });
       const isConfigured = data?.status === 'configured';
       updatedApis.push({
-        name: 'Lovable AI',
+        name: 'Gemini AI',
         status: isConfigured ? 'active' : 'inactive',
         description: 'AI özellikleri'
       });
     } catch {
       updatedApis.push({
-        name: 'Lovable AI',
+        name: 'Gemini AI',
         status: 'inactive',
         description: 'AI özellikleri'
       });
