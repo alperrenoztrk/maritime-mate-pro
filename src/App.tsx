@@ -158,10 +158,10 @@ const CrewRoleDetailPage = lazy(() => import("./pages/CrewRoleDetail"));
 const CrewTaskDeepDive = lazy(() => import("./pages/CrewTaskDeepDive"));
 const LessonTopicsPage = lazy(() => import("./pages/LessonTopicsPage"));
 const LessonTopicDetailPage = lazy(() => import("./pages/LessonTopicDetailPage"));
-// Dersler Beta (orijinal Dersler'e dokunmadan, ayrı sayfalar)
-const LessonsBetaPage = lazy(() => import("./pages/LessonsBetaPage"));
-const LessonBetaTopicsPage = lazy(() => import("./pages/LessonBetaTopicsPage"));
-const LessonBetaTopicDetailPage = lazy(() => import("./pages/LessonBetaTopicDetailPage"));
+// Alıştırmalar (orijinal Dersler'e dokunmadan, ayrı sayfalar)
+const ExercisesPage = lazy(() => import("./pages/ExercisesPage"));
+const ExerciseTopicsPage = lazy(() => import("./pages/ExerciseTopicsPage"));
+const ExerciseTopicDetailPage = lazy(() => import("./pages/ExerciseTopicDetailPage"));
 const CourseBetaScenariosPage = lazy(() => import("./pages/CourseBetaScenariosPage"));
 const GuidedLessonSession = lazy(() => import("./components/lessons/GuidedLessonSession"));
 
@@ -219,12 +219,12 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/:topicKey/quiz" element={<PageTransition><CourseQuizPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
-        {/* Dersler Beta — orijinal /lessons route'larına dokunulmadan eklendi */}
-        <Route path="/lessons-beta" element={<PageTransition><LessonsBetaPage /></PageTransition>} />
-        <Route path="/lessons-beta/:categoryId/topics" element={<PageTransition><LessonBetaTopicsPage /></PageTransition>} />
-        <Route path="/lessons-beta/:categoryId/topics/:topicTitle" element={<PageTransition><LessonBetaTopicDetailPage /></PageTransition>} />
-        <Route path="/lessons-beta/:categoryId/topics/:topicTitle/learn" element={<PageTransition><GuidedLessonSession /></PageTransition>} />
-        <Route path="/lessons-beta/:topicKey/scenarios" element={<PageTransition><CourseBetaScenariosPage /></PageTransition>} />
+        {/* Alıştırmalar — orijinal /lessons route'larına dokunulmadan eklendi */}
+        <Route path="/exercises" element={<PageTransition><ExercisesPage /></PageTransition>} />
+        <Route path="/exercises/:categoryId/topics" element={<PageTransition><ExerciseTopicsPage /></PageTransition>} />
+        <Route path="/exercises/:categoryId/topics/:topicTitle" element={<PageTransition><ExerciseTopicDetailPage /></PageTransition>} />
+        <Route path="/exercises/:categoryId/topics/:topicTitle/learn" element={<PageTransition><GuidedLessonSession /></PageTransition>} />
+        <Route path="/exercises/:topicKey/scenarios" element={<PageTransition><CourseBetaScenariosPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />
         <Route path="/machinery" element={<PageTransition><MachineryHubPage /></PageTransition>} />

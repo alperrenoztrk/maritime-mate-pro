@@ -10,7 +10,7 @@ const LEVEL_LABEL: Record<Scenario["level"], string> = {
 };
 
 /**
- * "Dersler Beta" — senaryo liste + oynatıcı sayfası.
+ * "Alıştırmalar" — senaryo liste + oynatıcı sayfası.
  * Kategorinin (pilot: Seyir) vardiya/COLREG vakalarını listeler.
  */
 export default function CourseBetaScenariosPage() {
@@ -22,7 +22,7 @@ export default function CourseBetaScenariosPage() {
     <div className="relative min-h-screen bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50 px-4 py-8 dark:from-[hsl(350,40%,8%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(35,40%,9%)]">
       <div className="mx-auto flex max-w-2xl flex-col gap-6">
         <Link
-          to={`/lessons-beta/${topicKey}/topics`}
+          to={`/exercises/${topicKey}/topics`}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" /> Konulara Dön

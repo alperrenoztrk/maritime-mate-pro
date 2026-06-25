@@ -6,11 +6,11 @@ import { getScenariosByTopic } from "@/data/scenarios";
 import { BookOpen, ChevronRight, GraduationCap, Play, Ship, Sparkles } from "lucide-react";
 
 /**
- * "Dersler Beta" — bir kategorinin (güverte veya makine) konu listesi.
+ * "Alıştırmalar" — bir kategorinin (güverte veya makine) konu listesi.
  * Rehberli (Duolingo) dersleri, senaryoları ve tüm konu anlatımlarını sunar.
  * İçerik mevcut veri kaynağından (read-only, normalize) gelir.
  */
-export default function LessonBetaTopicsPage() {
+export default function ExerciseTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = calculationCategories.find((c) => c.id === categoryId);
   const readingTitles = getBetaTopicTitles(categoryId);
@@ -28,9 +28,9 @@ export default function LessonBetaTopicsPage() {
 
   const CategoryIcon = category.icon;
   const detailLink = (title: string) =>
-    `/lessons-beta/${categoryId}/topics/${encodeURIComponent(title)}`;
+    `/exercises/${categoryId}/topics/${encodeURIComponent(title)}`;
   const learnLink = (title: string) =>
-    `/lessons-beta/${categoryId}/topics/${encodeURIComponent(title)}/learn`;
+    `/exercises/${categoryId}/topics/${encodeURIComponent(title)}/learn`;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 py-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
@@ -40,7 +40,7 @@ export default function LessonBetaTopicsPage() {
             <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}>
               <CategoryIcon className="h-6 w-6" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground">{category.title} · Beta</h1>
+            <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
           <p className="text-sm text-muted-foreground">
             Rehberli ders, gerçek senaryolar ve AI eğitmen · {readingTitles.length} konu
@@ -50,7 +50,7 @@ export default function LessonBetaTopicsPage() {
         {/* Senaryolar */}
         {scenarios.length > 0 && (
           <Link
-            to={`/lessons-beta/${categoryId}/scenarios`}
+            to={`/exercises/${categoryId}/scenarios`}
             className="group flex items-center gap-3 rounded-2xl border border-rose-500/30 bg-rose-500/5 p-4 shadow-sm transition hover:border-rose-500/50 hover:bg-rose-500/10"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow">
@@ -136,10 +136,10 @@ export default function LessonBetaTopicsPage() {
 
         <div className="flex justify-center pt-2">
           <Link
-            to="/lessons-beta"
+            to="/exercises"
             className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
           >
-            <GraduationCap className="h-4 w-4" /> Tüm Beta Dersleri
+            <GraduationCap className="h-4 w-4" /> Tüm Alıştırmalar
           </Link>
         </div>
       </div>
