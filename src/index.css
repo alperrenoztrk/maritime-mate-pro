@@ -8,6 +8,10 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* User-adjustable typography scale (Settings → Yazı Boyutu). Multiplied
+       against the base html font-size so all rem-based text scales together. */
+    --font-scale: 1;
+
     /* Maritime color palette */
     --background: 210 20% 98%;
     --foreground: 210 12% 16%;
@@ -243,10 +247,15 @@ All colors MUST be HSL.
     padding-right: env(safe-area-inset-right);
   }
 
+  /* Base typography scales with the user-selected font size. */
+  html {
+    font-size: calc(16px * var(--font-scale, 1));
+  }
+
   /* Mobile optimizations */
   @media (max-width: 768px) {
     html {
-      font-size: 14px;
+      font-size: calc(14px * var(--font-scale, 1));
     }
     
     .container {
@@ -1152,10 +1161,21 @@ All colors MUST be HSL.
   body {
     width: 100%;
     max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Prevent any text from overflowing its container or the page. Long words,
+     URLs, formulas and numbers wrap instead of forcing horizontal scroll. This
+     keeps the layout intact at every user-selected font size. */
+  h1, h2, h3, h4, h5, h6, p, span, a, li, label, button,
+  td, th, dt, dd, figcaption, blockquote {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 }
 
