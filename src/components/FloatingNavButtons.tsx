@@ -92,7 +92,7 @@ export function FloatingNavButtons() {
             <button
               onClick={() => navigate(parent, { replace: true })}
               aria-label="Geri"
-              className="flex items-center gap-1 rounded-full border border-white/15 bg-slate-900/70 px-2.5 py-1.5 text-xs font-medium text-slate-200 shadow-lg backdrop-blur-md transition-all hover:border-primary/40 hover:text-white active:scale-95"
+              className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2.5 py-1.5 text-xs font-medium text-slate-100 shadow-lg backdrop-blur-xl transition-all hover:border-primary/40 hover:bg-white/20 hover:text-white active:scale-95"
             >
               <ChevronLeft className="h-3.5 w-3.5 shrink-0" />
               {/* Label only when at the top; collapses to an icon while scrolled. */}
@@ -115,7 +115,7 @@ export function FloatingNavButtons() {
               <button
                 onClick={() => navigate("/", { replace: true })}
                 aria-label="Ana Sayfa"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-slate-900/70 text-slate-200 shadow-lg backdrop-blur-md transition-all hover:border-primary/40 hover:text-white active:scale-95"
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-slate-100 shadow-lg backdrop-blur-xl transition-all hover:border-primary/40 hover:bg-white/20 hover:text-white active:scale-95"
               >
                 <Home className="h-3.5 w-3.5" />
               </button>
