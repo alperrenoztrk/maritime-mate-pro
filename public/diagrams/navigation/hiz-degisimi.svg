@@ -1,0 +1,44 @@
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .sub{font:12px sans-serif;fill:#475569}
+      .axis{stroke:#0f172a;stroke-width:2}
+      .grid{stroke:#e2e8f0;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="700" height="420" fill="#ffffff"/>
+  <text x="350" y="32" text-anchor="middle" class="ttl">Hızın Zamana Göre Değişimi</text>
+
+  <!-- grid -->
+  <g class="grid">
+    <line x1="90" y1="100" x2="630" y2="100"/>
+    <line x1="90" y1="160" x2="630" y2="160"/>
+    <line x1="90" y1="220" x2="630" y2="220"/>
+    <line x1="90" y1="280" x2="630" y2="280"/>
+  </g>
+
+  <!-- axes -->
+  <line x1="90" y1="60" x2="90" y2="340" class="axis"/>
+  <line x1="90" y1="340" x2="640" y2="340" class="axis"/>
+  <text x="60" y="200" class="lbl" transform="rotate(-90 60 200)" text-anchor="middle">Hız (knot)</text>
+  <text x="365" y="372" class="lbl" text-anchor="middle">Zaman (saat)</text>
+
+  <!-- planned speed line -->
+  <line x1="90" y1="160" x2="630" y2="160" stroke="#16a34a" stroke-width="2" stroke-dasharray="7,5"/>
+  <text x="600" y="152" class="sub" fill="#16a34a" text-anchor="end">Planlanan hız (14 kn)</text>
+
+  <!-- actual speed curve (varying) -->
+  <polyline points="90,170 160,150 230,158 300,200 370,210 440,180 510,235 580,215 630,190"
+            fill="none" stroke="#dc2626" stroke-width="3"/>
+  <text x="300" y="240" class="sub" fill="#dc2626">Gerçek hız (deniz durumu, makine, yük)</text>
+
+  <!-- y ticks -->
+  <text x="80" y="105" class="sub" text-anchor="end">16</text>
+  <text x="80" y="165" class="sub" text-anchor="end">14</text>
+  <text x="80" y="225" class="sub" text-anchor="end">12</text>
+  <text x="80" y="285" class="sub" text-anchor="end">10</text>
+
+  <text x="350" y="402" text-anchor="middle" class="sub">Ortalama hız = Toplam mesafe ÷ Toplam zaman · küçük sapmalar uzun seyirde ETA'yı kaydırır</text>
+</svg>

@@ -88,6 +88,14 @@ import isolatedDangerMark from "@/assets/navigation/isolated-danger-mark.svg";
 import greatCircleVsRhumb from "@/assets/navigation/great-circle-vs-rhumb.svg";
 import sextantSvg from "@/assets/navigation/sextant.svg";
 
+// Konuya özel diyagramlar — yanlış kullanılan dolgu görsellerin yerine (public/diagrams/navigation)
+const speedDistanceTime = "/diagrams/navigation/mesafe-hiz-zaman.svg";
+const deadReckoningPlot = "/diagrams/navigation/olu-hesap.svg";
+const etaDiagram = "/diagrams/navigation/eta-diyagrami.svg";
+const speedVariation = "/diagrams/navigation/hiz-degisimi.svg";
+const dopplerLog = "/diagrams/navigation/doppler-log.svg";
+const chartDatumModel = "/diagrams/navigation/harita-datum.svg";
+
 export interface TopicSection {
   title: string;
   content: string;
@@ -1358,25 +1366,25 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Rota–Hız–Mesafe Üçlüsü",
         content: "Rota, yön kavramının seyirdeki uygulamasıdır ve her zaman bir açı değeri olarak ifade edilir. Hız denizcilikte knot birimiyle kullanılır ve bir knot saatte bir deniz miline eşittir. Mesafe ise deniz mili cinsindendir. Bu birim uyumu, seyir hesaplarının sade ve doğrudan yapılabilmesini sağlar. Rota olmadan mesafe yönsüz, hız olmadan rota anlamsız, mesafe olmadan hız işlevsizdir; bu nedenle üçü birlikte değerlendirilir.",
-        image: greatCircleVsRhumb,
+        image: speedDistanceTime,
         imageAlt: "Rota, hız ve mesafe ilişkisini gösteren şema"
       },
       {
         title: "Ölü Hesap Mevkiinin Temeli",
         content: "Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir. Bu durumda alınan mesafe, hız ile geçen zamanın çarpımıdır. Bu formül, seyirde kullanılan en temel bağıntıdır ve hızın birim zamanda alınan yol olması ilkesine dayanır.",
-        image: greatCircleVsRhumb,
+        image: deadReckoningPlot,
         imageAlt: "Ölü hesap (dead reckoning) örneği"
       },
       {
         title: "Birim Uyumu ve Zaman Üçgeni",
         content: "Hız = Mesafe ÷ Zaman ve Zaman = Mesafe ÷ Hız bağıntıları, bilinmeyen büyüklüğe göre temel formülün yeniden düzenlenmiş hâlidir. Bu üçlü bağıntı, ETA hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
-        image: greatCircleVsRhumb,
+        image: speedDistanceTime,
         imageAlt: "Zaman üçgeni (mesafe-hız-zaman)"
       },
       {
         title: "Temel Bağıntı",
         content: "Mesafe, hız ile geçen zamanın çarpımıdır. Aynı bağıntı bilinmeyen büyüklüğe göre düzenlenerek hız veya zaman hesabında da kullanılır.",
-        image: greatCircleVsRhumb,
+        image: speedDistanceTime,
         imageAlt: "Mesafe-hız-zaman diyagramı",
         formula: {
           text: "Mesafe = Hız × Zaman",
@@ -1392,25 +1400,25 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Ölü Hesap Şeması",
         content: "Başlangıç mevkii bilinen bir gemi, belirli bir hakiki rota ve hızla hareket ettiğinde, geçen zaman sonunda ulaştığı mevki bu ilişkiyle hesaplanır.",
-        image: greatCircleVsRhumb,
+        image: deadReckoningPlot,
         imageAlt: "Ölü hesap (dead reckoning) şeması"
       },
       {
         title: "Düzgün Doğrusal Hareket Modeli",
         content: "Bu ilişkinin matematiksel temeli düzgün doğrusal harekete dayanır. Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir.",
-        image: greatCircleVsRhumb,
+        image: deadReckoningPlot,
         imageAlt: "Düzgün doğrusal hareket şeması"
       },
       {
         title: "ETA ve Seyir Planlaması",
         content: "Bu üçlü bağıntı, varış zamanı (ETA) hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
-        image: greatCircleVsRhumb,
+        image: etaDiagram,
         imageAlt: "Hız ve mesafe ilişkisi görseli"
       },
       {
         title: "ETA Diyagramı",
         content: "ETA hesapları, hız ve mesafe değerlerinin sahada düzenli kontrolü ile güncellenir. Bu nedenle seyir boyunca zaman, hız ve mesafe üçgeni sürekli izlenir.",
-        image: radarDisplay,
+        image: etaDiagram,
         imageAlt: "ETA ve mesafe diyagramı"
       },
       {
@@ -1422,8 +1430,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Sayısal Örnek",
         content: "Bir geminin hakiki rotası sabit kabul edilsin ve hızı 14 knot olsun. Gemi bu hızla 3,5 saat seyir yaptığında alınan mesafe 49 deniz milidir. Aynı geminin 70 deniz millik bir mesafeyi alması için gereken süre 5 saattir. Bu tür hesaplamalar, varış zamanı tahminlerinde temel alınır.",
-        image: radarDisplay,
-        imageAlt: "Hız ölçümünde değişkenlik örneği",
+        image: speedDistanceTime,
+        imageAlt: "Mesafe = Hız × Zaman sayısal örneği",
         bulletPoints: [
           "Mesafe = 14 × 3,5 = 49 deniz mili",
           "Zaman = 70 ÷ 14 = 5 saat",
@@ -1433,14 +1441,14 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Hızın Değişkenliği",
         content: "Hız, makine devri, deniz durumu ve yükleme gibi etkenlere bağlı olarak değişebilir. Bu nedenle gerçek zamanlı hız takibi, rota ve mesafe hesaplarının doğruluğu açısından kritiktir. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
-        image: radarDisplay,
-        imageAlt: "Seyirde hız takibini gösteren speed log ekranı"
+        image: speedVariation,
+        imageAlt: "Hızın zamana göre değişimini gösteren grafik"
       },
       {
         title: "Makine Performansı Etkisi",
         content: "Makine torku ve güç eğrileri, geminin hızını doğrudan etkiler. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
-        image: radarDisplay,
-        imageAlt: "Makine torku ve hız ilişkisi"
+        image: speedVariation,
+        imageAlt: "Makine performansının hıza etkisi grafiği"
       },
       {
         title: "Vektörel Anlam",
@@ -1475,25 +1483,25 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Temel Kavram",
         content: "Rota doğrultusunda alınan mesafe, sabit hız ve geçen zamanla doğrusal olarak artar; hız düşürüldüğünde aynı mesafeye ulaşmak için daha fazla zaman gerekir. Hızın birim zamanda alınan yol olması, ilişkiyi sezgisel hâle getirir: süre arttıkça mesafe, hızla doğru orantılı olarak büyür.",
-        image: greatCircleVsRhumb,
+        image: speedDistanceTime,
         imageAlt: "Zaman–mesafe–hız ilişkisini gösteren şema"
       },
       {
         title: "Birim Sistemi ve Knot",
         content: "Denizcilikte hız knot cinsinden ifade edilir ve 1 knot, saatte 1 deniz miline eşittir. Mesafe deniz mili, zaman saat olarak kullanılır. Bu birim uyumu, dönüşüm hatalarını azaltır ve hesapların doğrudan yapılmasını sağlar.",
-        image: chartPlotting,
-        imageAlt: "Seyir hesaplamaları için birim uyumu"
+        image: speedDistanceTime,
+        imageAlt: "Knot, deniz mili ve saat birim uyumu"
       },
       {
         title: "Birim Uyumunun Görsel Mantığı",
         content: "Birimlerin birbirine doğrudan oturması, seyirde hızlı ve hatasız hesap yapmayı mümkün kılar. Bu nedenle hızın knot olarak, mesafenin deniz mili ve zamanın saat olarak kullanılması temel standarttır.",
-        image: chartPlotting,
+        image: speedDistanceTime,
         imageAlt: "Zaman-mesafe-hız birim uyumu"
       },
       {
         title: "Bağıntının Formülleri",
         content: "Bağıntı üç eşdeğer formülle ifade edilir. Hız, birim zamanda alınan yol olduğundan mesafe, hız ile zamanın çarpımıdır. Bilinmeyen büyüklüğe göre formül düzenlenir. Bu üç formül, ETA hesaplarının temel dayanağıdır.",
-        image: radarDisplay,
+        image: speedDistanceTime,
         imageAlt: "Zaman-mesafe-hız formülleri",
         formula: {
           text: "Mesafe = Hız × Zaman",
@@ -1503,7 +1511,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Sayısal Örnek",
         content: "Bir geminin hızı 16 knot olsun. Gemi bu hızla 2 saat 30 dakika (2,5 saat) seyir yaptığında alınan mesafe 40 deniz milidir. Aynı geminin 100 deniz millik bir mesafeyi alması için gereken süre 6,25 saat yani 6 saat 15 dakikadır. Bu tür dönüşümler, ETA hesaplarında doğru zaman planlaması yapılabilmesi için zorunludur.",
-        image: chartPlotting,
+        image: speedDistanceTime,
         imageAlt: "Zaman-mesafe-hız formül şeması",
         bulletPoints: [
           "Mesafe = 16 × 2,5 = 40 deniz mili",
@@ -1514,20 +1522,20 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Ölçüm Cihazları ve Hız Bilgisi",
         content: "Pratikte hız bilgisi log cihazlarıyla elde edilir. Hız ölçümü ne kadar doğruysa, zaman–mesafe hesabı da o kadar güvenilir olur.",
-        image: radarDisplay,
+        image: dopplerLog,
         imageAlt: "Doppler log çalışma prensibi"
       },
       {
         title: "Hız Değişiminin Zaman Üzerindeki Etkisi",
         content: "Uzun mesafeli seyirlerde hızın yalnızca 1–2 knot düşmesi, varış zamanında saatlerce gecikmeye neden olabilir. Kısa mesafelerde yapılan hız artışları ise beklenen zaman kazancını her zaman sağlamaz. Bu nedenle hız planlaması, mesafe ve zaman birlikte değerlendirilerek yapılmalıdır.",
-        image: chartPlotting,
-        imageAlt: "Seyirde hız planlaması"
+        image: speedVariation,
+        imageAlt: "Hız değişiminin varış zamanına etkisi"
       },
       {
         title: "Geriye Dönük Analiz",
         content: "Seyir sonrası değerlendirmelerde, belirli bir sürede kat edilen mesafeden ortalama hız hesaplanır. Bu hız, makine performansı, deniz durumu ve akıntı etkilerinin dolaylı bir göstergesi olarak yorumlanır.",
-        image: radarDisplay,
-        imageAlt: "Seyir ve hız verilerinin değerlendirilmesi"
+        image: speedVariation,
+        imageAlt: "Ortalama hız ve seyir verilerinin değerlendirilmesi"
       },
       {
         title: "Vektörel Rota ve Harita Üzerinde Uygulama",
@@ -1864,7 +1872,7 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       {
         title: "Datum Modelleri: Clarke 1866, WGS-84 ve GRS80",
         content: "Farklı datum’lar, dünyanın farklı bölgelerinde daha doğru sonuç verecek şekilde tanımlanmış elipsoidlere dayanır. Aynı coğrafi nokta farklı datum’larda farklı enlem–boylam değerlerine sahip olabilir. Bu nedenle kullanılan datum’un harita kenar bilgisinde kontrol edilmesi zorunludur.",
-        image: mercatorProjection,
+        image: chartDatumModel,
         imageAlt: "Clarke 1866, WGS-84 ve GRS80 datum karşılaştırması"
       },
       {
@@ -1882,31 +1890,31 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       {
         title: "Harita Kenar Bilgilerinde Datum Notları",
         content: "Datum bilgisi harita kenarında açıkça belirtilir. Bazı haritalarda datum dönüşümü için yön ve mesafe düzeltmeleri verilir. Bu notlar uygulanmadığında, GPS’ten alınan mevki harita üzerinde yanlış konuma taşınır.",
-        image: mercatorProjection,
+        image: chartDatumModel,
         imageAlt: "Harita kenarında datum bilgisi örneği"
       },
       {
         title: "Nautical Chart Datum Blok Örneği",
         content: "Nautical chart datum blokları, haritanın hangi datum’a göre hazırlandığını ve varsa dönüşüm notlarını gösterir. Harita kenarındaki bu blok, datum uyumluluğunu kontrol etmek için ilk bakılması gereken yerdir.",
-        image: mercatorProjection,
+        image: chartDatumModel,
         imageAlt: "Nautical chart datum blok örneği"
       },
       {
         title: "Datum Uyuşmazlığının Seyre Etkisi",
         content: "Datum uyuşmazlığı özellikle kıyıya yakın seyirlerde ve dar sularda kritik hâle gelir. Gerçek mevki ile harita üzerinde işaretlenen mevki arasında onlarca hatta yüzlerce metre fark oluşabilir. Açık denizde fark küçük görünse de liman girişleri ve sığ sularda bu sapma tehlike doğurur.",
-        image: mercatorProjection,
+        image: chartDatumModel,
         imageAlt: "Datum uyuşmazlığı kaynaklı konum sapması örneği"
       },
       {
         title: "GPS Datum Ayarı ve Dönüşüm Uygulamaları",
         content: "GPS alıcıları datum ayarı sunar. Harita datum’u WGS-84 ise GPS de aynı datum’a ayarlanmalıdır. Farklı datum kullanılan haritalarda, harita üzerinde belirtilen düzeltme değerleri dikkatle uygulanmalıdır.",
-        image: mercatorProjection,
+        image: chartDatumModel,
         imageAlt: "GPS datum ayarı ve harita mevki düzeltmesi örneği"
       },
       {
         title: "Dönüşüm Notları ve Emniyetli Uygulama",
         content: "Bazı haritalarda datum dönüşüm notları doğu–batı ve kuzey–güney yönlerinde metre cinsinden verilir. Bu düzeltmeler uygulanmadığında mevki işaretleme hatası kaçınılmaz hâle gelir. Datum bilgisi, seyir emniyetinin temel yapı taşlarından biridir.",
-        image: mercatorProjection,
+        image: chartDatumModel,
         imageAlt: "Datum dönüşüm notları ve chart datum sembolleri"
       },
       {
