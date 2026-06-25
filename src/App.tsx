@@ -16,7 +16,6 @@ import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
-import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -194,7 +193,6 @@ const AnimatedRoutes = () => {
 
   return (
     <>
-    <FloatingNavButtons />
     <AnimatePresence mode="wait">
       <Suspense fallback={<RouteFallback />}>
       <Routes location={location} key={location.pathname}>
