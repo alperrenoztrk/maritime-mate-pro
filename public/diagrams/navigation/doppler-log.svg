@@ -1,0 +1,52 @@
+<svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:13px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .sub{font:12px sans-serif;fill:#475569}
+      .beam{stroke:#1d4ed8;stroke-width:2.5;fill:none}
+      .ret{stroke:#dc2626;stroke-width:2.5;fill:none;stroke-dasharray:5,4}
+    </style>
+    <marker id="db" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="dr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect width="700" height="420" fill="#ffffff"/>
+  <text x="350" y="32" text-anchor="middle" class="ttl">Doppler Log – Çalışma Prensibi</text>
+
+  <!-- sea surface -->
+  <rect x="0" y="70" width="700" height="20" fill="#bfdbfe"/>
+  <text x="40" y="64" class="sub">Deniz yüzeyi</text>
+
+  <!-- hull with transducer -->
+  <path d="M 280 70 Q 350 70 420 70 L 405 105 L 295 105 Z" fill="#475569"/>
+  <text x="350" y="92" class="sub" fill="#fff" text-anchor="middle">Gemi</text>
+  <rect x="338" y="103" width="24" height="12" fill="#0f172a"/>
+  <text x="350" y="132" class="lbl" text-anchor="middle">Transduser</text>
+
+  <!-- seabed -->
+  <path d="M 40 330 Q 200 312 350 330 T 660 326 L 660 360 L 40 360 Z" fill="#a16207"/>
+  <text x="600" y="350" class="sub" fill="#fff" text-anchor="end">Deniz tabanı</text>
+
+  <!-- transmitted beams -->
+  <line x1="350" y1="115" x2="230" y2="320" class="beam" marker-end="url(#db)"/>
+  <line x1="350" y1="115" x2="470" y2="320" class="beam" marker-end="url(#db)"/>
+  <!-- returned (Doppler-shifted) -->
+  <line x1="235" y1="320" x2="345" y2="125" class="ret" marker-end="url(#dr)"/>
+
+  <text x="195" y="240" class="sub" fill="#1d4ed8">Gönderilen f₀</text>
+  <text x="475" y="240" class="sub" fill="#1d4ed8">f₀</text>
+  <text x="300" y="215" class="sub" fill="#dc2626" transform="rotate(60 300 215)">Dönen f₀±Δf</text>
+
+  <!-- readout -->
+  <g transform="translate(470 130)">
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#0f172a"/>
+    <text x="90" y="30" font="13px sans-serif" fill="#94a3b8" text-anchor="middle" class="sub" style="fill:#94a3b8">SOG / STW</text>
+    <text x="90" y="56" font="22px monospace" fill="#22c55e" text-anchor="middle" style="font:22px monospace;fill:#22c55e">14.2 kn</text>
+  </g>
+
+  <text x="350" y="400" text-anchor="middle" class="sub">Frekans kayması (Doppler etkisi) hız ile orantılıdır: Δf ∝ hız</text>
+</svg>

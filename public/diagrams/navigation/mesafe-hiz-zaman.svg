@@ -1,0 +1,42 @@
+<svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .lbl{font:14px sans-serif;fill:#0f172a;font-weight:600}
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .sub{font:12px sans-serif;fill:#475569}
+      .big{font:26px sans-serif;fill:#0f172a;font-weight:700;text-anchor:middle}
+      .frm{font:15px sans-serif;fill:#0f172a;font-weight:600;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="700" height="460" fill="#ffffff"/>
+  <text x="350" y="34" text-anchor="middle" class="ttl">Mesafe – Hız – Zaman Üçgeni</text>
+
+  <!-- Triangle -->
+  <g transform="translate(190 230)">
+    <path d="M 0 -130 L 150 110 L -150 110 Z" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2.5"/>
+    <!-- horizontal divider (D over S x T) -->
+    <line x1="-150" y1="-10" x2="150" y2="-10" stroke="#1e3a8a" stroke-width="2.5"/>
+    <!-- vertical divider in lower half -->
+    <line x1="0" y1="-10" x2="0" y2="110" stroke="#1e3a8a" stroke-width="2.5"/>
+    <!-- letters -->
+    <text x="0" y="-55" class="big" fill="#dc2626">M</text>
+    <text x="-75" y="75" class="big" fill="#1d4ed8">H</text>
+    <text x="75" y="75" class="big" fill="#7c3aed">Z</text>
+  </g>
+  <text x="190" y="385" text-anchor="middle" class="sub">M = Mesafe (deniz mili) · H = Hız (knot) · Z = Zaman (saat)</text>
+
+  <!-- Formulas -->
+  <g transform="translate(440 120)">
+    <rect x="0" y="0" width="230" height="52" rx="8" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
+    <text x="115" y="32" class="frm">Mesafe = Hız × Zaman</text>
+
+    <rect x="0" y="70" width="230" height="52" rx="8" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
+    <text x="115" y="102" class="frm">Hız = Mesafe ÷ Zaman</text>
+
+    <rect x="0" y="140" width="230" height="52" rx="8" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
+    <text x="115" y="172" class="frm">Zaman = Mesafe ÷ Hız</text>
+  </g>
+
+  <text x="555" y="345" text-anchor="middle" class="sub">1 knot = 1 deniz mili / saat</text>
+  <text x="350" y="430" text-anchor="middle" class="lbl">Üçgende bilinmeyeni kapat: kalan iki harf formülü verir</text>
+</svg>
