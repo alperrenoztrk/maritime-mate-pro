@@ -2,15 +2,29 @@
 // module touches localStorage at import time (preview iframes can make storage
 // access throw, which otherwise crashes the app before React mounts).
 import './lib/safeStorage'
+import { safeLocalStorage } from './lib/safeStorage'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { ErrorBoundary } from './components/ErrorBoundary'
+import { FONT_SCALES, type FontSizeKey } from './contexts/FontSizeContext'
 import { weatherPreloader } from './services/weatherPreloader'
 import { LocationProvider } from './contexts/LocationContext'
 import { registerOfflineSupport } from './serviceWorkerRegistration'
 
 console.log('[Main] Starting Maritime Calculator App v2...');
+
+// Apply the saved font-size scale before first paint to avoid a flash of
+// unscaled text. The FontSizeProvider keeps it in sync afterwards.
+try {
+  const storedFontSize = safeLocalStorage.getItem('maritime-ui-font-size') as FontSizeKey | null;
+  if (storedFontSize && storedFontSize in FONT_SCALES) {
+    document.documentElement.style.setProperty('--font-scale', String(FONT_SCALES[storedFontSize]));
+    document.documentElement.setAttribute('data-font-size', storedFontSize);
+  }
+} catch (e) {
+  console.warn('[Main] Yazı boyutu uygulanamadı:', e);
+}
 
 // Register service worker for offline support (production only — skipped in dev/iframe).
 registerOfflineSupport();

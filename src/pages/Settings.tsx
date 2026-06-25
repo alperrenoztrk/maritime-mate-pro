@@ -1,10 +1,11 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Moon, Sun, Globe, Settings2 as SettingsIcon, Palette } from "lucide-react";
+import { Moon, Sun, Globe, Settings2 as SettingsIcon, Palette, Type } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { useTheme } from "@/hooks/useTheme";
 // Density settings removed from Settings page; provider remains app-wide
+import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageFlag } from "@/utils/languages";
 import { toast } from "sonner";
@@ -13,6 +14,7 @@ import { WidgetSettings } from "@/components/settings/WidgetSettings";
 
 const Settings = () => {
   const { theme, setTheme } = useTheme();
+  const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
 
   // Neon and Nature themes are no longer available in Settings
@@ -31,6 +33,18 @@ const Settings = () => {
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
     toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
+  };
+
+  const fontSizeLabels: Record<FontSizeKey, string> = {
+    small: "Küçük",
+    normal: "Normal",
+    large: "Büyük",
+    xlarge: "Çok Büyük",
+  };
+
+  const handleFontSizeChange = (value: string) => {
+    setFontSize(value as FontSizeKey);
+    toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
   };
 
   return (
@@ -93,6 +107,45 @@ const Settings = () => {
                   </div>
                   <p className="text-sm text-muted-foreground">
                     <span data-translatable>Seçilen tema tüm uygulamada geçerli olacaktır</span>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Font Size Settings */}
+            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Type className="w-5 h-5" />
+                  <span data-translatable>Yazı Boyutu</span>
+                </CardTitle>
+                <CardDescription>
+                  <span data-translatable>Uygulamadaki yazı boyutunu ayarlayın</span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="font-size-select">
+                      <span data-translatable>Yazı Boyutu</span>
+                    </Label>
+                    <Select value={fontSize} onValueChange={handleFontSizeChange}>
+                      <SelectTrigger id="font-size-select">
+                        <SelectValue>
+                          <span data-translatable>{fontSizeLabels[fontSize]}</span>
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {FONT_SIZE_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.key} value={opt.key}>
+                            <span data-translatable>{opt.labelTr}</span>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    <span data-translatable>Seçilen yazı boyutu tüm uygulamada geçerli olacaktır</span>
                   </p>
                 </div>
               </CardContent>
