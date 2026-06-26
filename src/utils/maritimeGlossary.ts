@@ -177,9 +177,9 @@ export const maritimeTerms: MaritimeTerm[] = [
     translations: {
       en: 'Freeboard', de: 'Freibord', fr: 'Franc-bord', es: 'Francobordo',
       it: 'Bordo libero', pt: 'Borda livre', nl: 'Vrijboord', ru: 'Надводный борт',
-      ja: '乾舷', ko: '건현', 'zh-CN': '干舷', ar: 'الشاهي', sv: 'Fribord',
+      ja: '乾舷', ko: '건현', 'zh-CN': '干舷', sv: 'Fribord',
       no: 'Fribord', da: 'Fribord', fi: 'Varalaita', pl: 'Wolna burta', cs: 'Volný bok',
-      hu: 'Szabadoldal', ro: 'Bord liber', el: 'Ύφαλο', bg: 'Надводен борд', uk: 'Надводний борт',
+      hu: 'Szabadoldal', ro: 'Bord liber', el: 'Έξαλα', bg: 'Надводен борд', uk: 'Надводний борт',
     },
   },
 
@@ -781,7 +781,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Verricello salpa àncora', pt: 'Molinete', nl: 'Ankerlier', ru: 'Брашпиль',
       ja: '揚錨機', ko: '양묘기', 'zh-CN': '起锚机', ar: 'ونش المرساة', sv: 'Ankarspel',
       no: 'Ankerspill', da: 'Ankerspil', fi: 'Ankkuripeli', pl: 'Winda kotwiczna', cs: 'Kotevní vratidlo',
-      hu: 'Horgonycsörlő', ro: 'Vinci de ancoră', el: 'Εργάτης άγκυρας', bg: 'Шпил', uk: 'Брашпиль',
+      hu: 'Horgonycsörlő', ro: 'Vinci de ancoră', el: 'Εργάτης άγκυρας', bg: 'Брашпил', uk: 'Брашпиль',
     },
   },
   {
@@ -826,8 +826,8 @@ export const maritimeTerms: MaritimeTerm[] = [
       en: 'Fender', de: 'Fender', fr: 'Défense', es: 'Defensa',
       it: 'Parabordo', pt: 'Defensa', nl: 'Stootwil', ru: 'Кранец',
       ja: '防舷材', ko: '방현재', 'zh-CN': '碰垫', ar: 'مصد', sv: 'Fender',
-      no: 'Fender', da: 'Fender', fi: 'Lepuuttaja', pl: 'Odbijacz', cs: 'Bok-fendr',
-      hu: 'Ütköző', ro: 'Baboul', el: 'Μπαλόνι', bg: 'Кранец', uk: 'Кранець',
+      no: 'Fender', da: 'Fender', fi: 'Lepuuttaja', pl: 'Odbijacz', cs: 'Fendr',
+      hu: 'Ütköző', ro: 'Apărătoare de bordaj', el: 'Μπαλόνι', bg: 'Кранец', uk: 'Кранець',
     },
   },
   {
@@ -1088,7 +1088,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Grappino', pt: 'Fateixa', nl: 'Dreg', ru: 'Кошка',
       ja: 'グラプネル', ko: '갈고리 닻', 'zh-CN': '抓锚', sv: 'Dragg', no: 'Dregg',
       da: 'Dræg', fi: 'Ankkuriharava', pl: 'Kotwica czterołapowa', cs: 'Lodní hák', ro: 'Ancoră cu gheare',
-      el: 'Αρπάγη', bg: 'Котва-котва', uk: 'Кішка',
+      el: 'Αρπάγη', bg: 'Котвичка', uk: 'Кішка',
     },
   },
   {
