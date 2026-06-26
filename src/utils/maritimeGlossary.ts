@@ -177,9 +177,9 @@ export const maritimeTerms: MaritimeTerm[] = [
     translations: {
       en: 'Freeboard', de: 'Freibord', fr: 'Franc-bord', es: 'Francobordo',
       it: 'Bordo libero', pt: 'Borda livre', nl: 'Vrijboord', ru: 'Надводный борт',
-      ja: '乾舷', ko: '건현', 'zh-CN': '干舷', ar: 'الشاهي', sv: 'Fribord',
+      ja: '乾舷', ko: '건현', 'zh-CN': '干舷', sv: 'Fribord',
       no: 'Fribord', da: 'Fribord', fi: 'Varalaita', pl: 'Wolna burta', cs: 'Volný bok',
-      hu: 'Szabadoldal', ro: 'Bord liber', el: 'Ύφαλο', bg: 'Надводен борд', uk: 'Надводний борт',
+      hu: 'Szabadoldal', ro: 'Bord liber', el: 'Έξαλα', bg: 'Надводен борд', uk: 'Надводний борт',
     },
   },
 
@@ -610,7 +610,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       es: 'De costado', it: 'Sottobordo', pt: 'A contrabordo',
       nl: 'Langszij', ru: 'Лагом',
       ja: '横付け', ko: '접안', 'zh-CN': '靠帮', sv: 'Långsides', no: 'Langs siden',
-      da: 'Langs siden', fi: 'Sivuttain', pl: 'Burta w burtę', cs: 'Bok po boku', ro: 'La ureche',
+      da: 'Langs siden', fi: 'Sivuttain', pl: 'Burta w burtę', cs: 'Bok po boku', ro: 'Bord la bord',
       el: 'Παραβολή', bg: 'Борд до борд', uk: 'Лагом',
     },
   },
@@ -781,7 +781,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Verricello salpa àncora', pt: 'Molinete', nl: 'Ankerlier', ru: 'Брашпиль',
       ja: '揚錨機', ko: '양묘기', 'zh-CN': '起锚机', ar: 'ونش المرساة', sv: 'Ankarspel',
       no: 'Ankerspill', da: 'Ankerspil', fi: 'Ankkuripeli', pl: 'Winda kotwiczna', cs: 'Kotevní vratidlo',
-      hu: 'Horgonycsörlő', ro: 'Vinci de ancoră', el: 'Εργάτης άγκυρας', bg: 'Шпил', uk: 'Брашпиль',
+      hu: 'Horgonycsörlő', ro: 'Vinci de ancoră', el: 'Εργάτης άγκυρας', bg: 'Брашпил', uk: 'Брашпиль',
     },
   },
   {
@@ -826,8 +826,8 @@ export const maritimeTerms: MaritimeTerm[] = [
       en: 'Fender', de: 'Fender', fr: 'Défense', es: 'Defensa',
       it: 'Parabordo', pt: 'Defensa', nl: 'Stootwil', ru: 'Кранец',
       ja: '防舷材', ko: '방현재', 'zh-CN': '碰垫', ar: 'مصد', sv: 'Fender',
-      no: 'Fender', da: 'Fender', fi: 'Lepuuttaja', pl: 'Odbijacz', cs: 'Bok-fendr',
-      hu: 'Ütköző', ro: 'Baboul', el: 'Μπαλόνι', bg: 'Кранец', uk: 'Кранець',
+      no: 'Fender', da: 'Fender', fi: 'Lepuuttaja', pl: 'Odbijacz', cs: 'Fendr',
+      hu: 'Ütköző', ro: 'Apărătoare de bordaj', el: 'Μπαλόνι', bg: 'Кранец', uk: 'Кранець',
     },
   },
   {
@@ -871,7 +871,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Paranco', pt: 'Talha', nl: 'Talie', ru: 'Тали',
       ja: 'テークル', ko: '태클', 'zh-CN': '滑车组', ar: 'بكرة مركبة', sv: 'Talja',
       no: 'Talje', da: 'Talje', fi: 'Taljat', pl: 'Wielokrążek', cs: 'Kladkostroj',
-      hu: 'Csiga', ro: 'Palanc', el: 'Παλάγκο', bg: 'Паланка', uk: 'Талі',
+      hu: 'Csiga', ro: 'Palanc', el: 'Παλάγκο', bg: 'Полиспаст', uk: 'Талі',
     },
   },
   {
@@ -1078,7 +1078,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Arganello', pt: 'Destorcedor', nl: 'Wartel', ru: 'Вертлюг',
       ja: 'スイベル', ko: '스위벨', 'zh-CN': '转环', sv: 'Lekare', no: 'Svivel',
       da: 'Svirvel', fi: 'Pyörre', pl: 'Krętlik', cs: 'Obratlík', ro: 'Vârtej',
-      el: 'Στρόφιγγα', bg: 'Въртележка', uk: 'Вертлюг',
+      el: 'Στρόφιγγα', bg: 'Вертлюг', uk: 'Вертлюг',
     },
   },
   {
@@ -1087,8 +1087,8 @@ export const maritimeTerms: MaritimeTerm[] = [
       en: 'Grapnel', de: 'Draggen', fr: 'Grappin', es: 'Rezón',
       it: 'Grappino', pt: 'Fateixa', nl: 'Dreg', ru: 'Кошка',
       ja: 'グラプネル', ko: '갈고리 닻', 'zh-CN': '抓锚', sv: 'Dragg', no: 'Dregg',
-      da: 'Dræg', fi: 'Ankkuriharava', pl: 'Kotwica czterołapowa', cs: 'Lodní hák', ro: 'Ancoră cu gheare',
-      el: 'Αρπάγη', bg: 'Котва-котва', uk: 'Кішка',
+      da: 'Dræg', fi: 'Ankkuriharava', pl: 'Kotwica czterołapowa', cs: 'Drapák', ro: 'Ancoră cu gheare',
+      el: 'Αρπάγη', bg: 'Котвичка', uk: 'Кішка',
     },
   },
   {
@@ -1145,7 +1145,7 @@ export const maritimeTerms: MaritimeTerm[] = [
       it: 'Fiamma', pt: 'Flâmula', nl: 'Wimpel', ru: 'Вымпел',
       ja: 'ペナント', ko: '페넌트', 'zh-CN': '三角旗', ar: 'راية', sv: 'Vimpel',
       no: 'Vimpel', da: 'Vimpel', fi: 'Viiri', pl: 'Proporzec', cs: 'Vlajka úzká',
-      hu: 'Árbócszalag', ro: 'Flamură', el: 'Επισείων', bg: 'Флаг', uk: 'Вимпел',
+      hu: 'Árbócszalag', ro: 'Flamură', el: 'Επισείων', bg: 'Вимпел', uk: 'Вимпел',
     },
   },
   {
