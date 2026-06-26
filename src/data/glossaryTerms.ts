@@ -22,7 +22,7 @@ export const glossaryCategories = [
 export const glossaryTerms: GlossaryTerm[] = [
   // ── Gemicilik Terimleri ──
   { title: "Abramak", category: "Gemicilik", description: "Yelkenin açısını rüzgâra göre ayarlamak; genellikle yelkeni rüzgâra daha yakın çekmek anlamında kullanılır." },
-  { title: "Viyalamak", category: "Gemicilik", description: "Bir halatı veya zinciri serbest bırakmak, çözmek ya da boşa vermek." },
+  { title: "Viyalamak", category: "Gemicilik", description: "Dümeni, geminin başını verilen rotada tutacak şekilde ortalamak; 'Viya!' komutu dümenciye 'rotada sabit dur, böyle devam et' anlamında verilir." },
   { title: "Küpeşte", category: "Gemicilik", description: "Güvertenin kenarında bulunan korkuluk veya parmaklık; gemidekilerin denize düşmesini önler." },
   { title: "Borda", category: "Gemicilik", description: "Geminin yan yüzeyi; iskele veya sancak borda olarak belirtilir." },
   { title: "İskele", category: "Gemicilik", description: "Geminin sol tarafı; kırmızı seyir feneri ile işaretlenir." },

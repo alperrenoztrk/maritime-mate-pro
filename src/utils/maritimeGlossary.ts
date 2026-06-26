@@ -516,6 +516,220 @@ export const maritimeTerms: MaritimeTerm[] = [
       nl: 'Dieplood', ru: 'Лот',
     },
   },
+
+  // ── Helm & sailing commands ────────────────────────────────────────
+  {
+    // "Viya!" is the Turkish helm command for "Steady!"; "viyalamak" means to
+    // hold the heading. Generic MT renders it as the verb "to lick" (yalamak).
+    tr: 'Viyalamak',
+    aliases: ['Viya', 'Viyala', 'Viya Etmek'],
+    translations: {
+      en: 'Steady the helm', de: 'Recht so steuern', fr: 'Maintenir le cap',
+      es: 'Mantener el rumbo', it: 'Mantenere la rotta', pt: 'Manter o rumo',
+      nl: 'Koers houden', ru: 'Так держать',
+    },
+  },
+  {
+    tr: 'Orsalamak',
+    aliases: ['Orsa', 'Orsa Etmek'],
+    translations: {
+      en: 'To luff', de: 'Anluven', fr: 'Lofer', es: 'Orzar',
+      it: 'Orzare', pt: 'Orçar', nl: 'Oploeven', ru: 'Приводиться к ветру',
+    },
+  },
+  {
+    tr: 'Abramak',
+    // Also a generic verb ("to manage/cope"); whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Haul the wind', fr: 'Serrer le vent', es: 'Ceñir el viento',
+      it: 'Stringere il vento', pt: 'Cingir o vento',
+    },
+  },
+  {
+    tr: 'Alesta',
+    aliases: ['Alesta!'],
+    translations: {
+      en: 'Stand by', de: 'Klarmachen', fr: 'Paré', es: 'Listo',
+      it: 'Pronti', pt: 'Pronto', nl: 'Gereedstaan', ru: 'Приготовиться',
+    },
+  },
+
+  // ── Deck equipment & fittings ──────────────────────────────────────
+  {
+    tr: 'Küpeşte',
+    translations: {
+      en: 'Bulwark', de: 'Schanzkleid', fr: 'Pavois', es: 'Amurada',
+      it: 'Impavesata', pt: 'Borda-falsa', nl: 'Verschansing', ru: 'Фальшборт',
+    },
+  },
+  {
+    tr: 'Bocurgat',
+    aliases: ['Bocurgat (Windlass)', 'Ircat', 'Irgat'],
+    translations: {
+      en: 'Windlass', de: 'Ankerspill', fr: 'Guindeau', es: 'Molinete',
+      it: 'Verricello salpa àncora', pt: 'Molinete', nl: 'Ankerlier', ru: 'Брашпиль',
+    },
+  },
+  {
+    tr: 'Yeke',
+    translations: {
+      en: 'Tiller', de: 'Ruderpinne', fr: 'Barre franche', es: 'Caña del timón',
+      it: 'Barra del timone', pt: 'Cana do leme', nl: 'Helmstok', ru: 'Румпель',
+    },
+  },
+  {
+    tr: 'Baba',
+    aliases: ['Baba (Bollard)'],
+    // "Baba" also means "father"; restrict to whole-string overrides.
+    inline: false,
+    translations: {
+      en: 'Bollard', de: 'Poller', fr: 'Bitte d’amarrage', es: 'Bita',
+      it: 'Bitta', pt: 'Cabeço de amarração', nl: 'Bolder', ru: 'Кнехт',
+    },
+  },
+  {
+    tr: 'Bite',
+    aliases: ['Bite (Bitt)'],
+    // Matches the English word "bite"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Bitt', de: 'Poller', fr: 'Bitte', es: 'Bita',
+      it: 'Bitta', pt: 'Abita', nl: 'Beting', ru: 'Битенг',
+    },
+  },
+  {
+    tr: 'Usturmaça',
+    translations: {
+      en: 'Fender', de: 'Fender', fr: 'Défense', es: 'Defensa',
+      it: 'Parabordo', pt: 'Defensa', nl: 'Stootwil', ru: 'Кранец',
+    },
+  },
+  {
+    tr: 'Lumboz',
+    aliases: ['Lumboz (Porthole)'],
+    translations: {
+      en: 'Porthole', de: 'Bullauge', fr: 'Hublot', es: 'Portilla',
+      it: 'Oblò', pt: 'Vigia', nl: 'Patrijspoort', ru: 'Иллюминатор',
+    },
+  },
+  {
+    tr: 'Forkastel',
+    aliases: ['Forkastel (Forecastle)'],
+    translations: {
+      en: 'Forecastle', de: 'Back', fr: 'Gaillard d’avant', es: 'Castillo de proa',
+      it: 'Castello di prua', pt: 'Castelo de proa', nl: 'Bak', ru: 'Бак',
+    },
+  },
+
+  // ── Mooring, rigging & lifting ─────────────────────────────────────
+  {
+    tr: 'Palamar',
+    translations: {
+      en: 'Mooring line', de: 'Festmacherleine', fr: 'Amarre', es: 'Amarra',
+      it: 'Cima d’ormeggio', pt: 'Espia', nl: 'Meertros', ru: 'Швартов',
+    },
+  },
+  {
+    tr: 'Palanga',
+    translations: {
+      en: 'Tackle', de: 'Talje', fr: 'Palan', es: 'Aparejo',
+      it: 'Paranco', pt: 'Talha', nl: 'Talie', ru: 'Тали',
+    },
+  },
+  {
+    tr: 'Makara',
+    aliases: ['Makara (Block)'],
+    // Also a generic "reel/spool/pulley"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Block', de: 'Block', fr: 'Poulie', es: 'Motón',
+      it: 'Bozzello', pt: 'Moitão', nl: 'Blok', ru: 'Блок',
+    },
+  },
+  {
+    tr: 'Sapan',
+    aliases: ['Sapan (Sling)'],
+    // Also means "slingshot"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Sling', de: 'Anschlagseil', fr: 'Élingue', es: 'Eslinga',
+      it: 'Braca', pt: 'Linga', nl: 'Strop', ru: 'Строп',
+    },
+  },
+  {
+    tr: 'Arma',
+    aliases: ['Arma (Rig)'],
+    // Matches "arma" (weapon/coat-of-arms) in several languages; overrides only.
+    inline: false,
+    translations: {
+      en: 'Rigging', de: 'Takelage', fr: 'Gréement', es: 'Aparejo',
+      it: 'Attrezzatura velica', pt: 'Mastreação', nl: 'Tuigage', ru: 'Такелаж',
+    },
+  },
+  {
+    tr: 'Posa',
+    aliases: ['Posa (Shackle)'],
+    // Length of anchor chain (27.5 m); also a common word, so overrides only.
+    inline: false,
+    translations: {
+      en: 'Shackle', de: 'Kettenlänge', ru: 'Смычка',
+    },
+  },
+
+  // ── Sails & vessel types ───────────────────────────────────────────
+  {
+    tr: 'Mayıstra',
+    translations: {
+      en: 'Mainsail', de: 'Großsegel', fr: 'Grand-voile', es: 'Vela mayor',
+      it: 'Randa', pt: 'Vela grande', nl: 'Grootzeil', ru: 'Грот',
+    },
+  },
+  {
+    tr: 'Uskuna',
+    aliases: ['Uskuna (Schooner)'],
+    translations: {
+      en: 'Schooner', de: 'Schoner', fr: 'Goélette', es: 'Goleta',
+      it: 'Goletta', pt: 'Escuna', nl: 'Schoener', ru: 'Шхуна',
+    },
+  },
+
+  // ── Operations & incidents ─────────────────────────────────────────
+  {
+    tr: 'Demir Taramak',
+    aliases: ['Demir taramak'],
+    translations: {
+      en: 'Dragging anchor', de: 'Vor Anker treiben', fr: 'Chasser sur l’ancre',
+      es: 'Garrear', it: 'Arare l’ancora', pt: 'Garrar',
+      nl: 'Anker krabben', ru: 'Дрейфовать на якоре',
+    },
+  },
+  {
+    tr: 'Alabora',
+    translations: {
+      en: 'Capsize', de: 'Kentern', fr: 'Chavirage', es: 'Zozobra',
+      it: 'Capovolgimento', pt: 'Emborcamento', nl: 'Kapseizen', ru: 'Опрокидывание',
+    },
+  },
+  {
+    tr: 'Çatma',
+    aliases: ['Çatışma'],
+    // "Çatma" also has non-nautical senses; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Collision', de: 'Kollision', fr: 'Abordage', es: 'Abordaje',
+      it: 'Collisione', pt: 'Abalroamento', nl: 'Aanvaring', ru: 'Столкновение',
+    },
+  },
+  {
+    tr: 'Kamarot',
+    // Also a generic loanword; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Steward', de: 'Steward', fr: 'Garçon de cabine', es: 'Camarero',
+      it: 'Cameriere di bordo', pt: 'Taifeiro', nl: 'Hofmeester', ru: 'Стюард',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
