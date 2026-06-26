@@ -119,10 +119,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const persistHandleRef = useRef<number | null>(null);
   const originalTextRef = useRef<WeakMap<Text, string>>(new WeakMap());
   const currentLanguageRef = useRef<string>(DEFAULT_LANGUAGE);
-  // After the bulk pass for a language completes we lock route-time translation
-  // to cache-only: never trigger live fetches on navigation, so the user never
-  // sees half-translated pages. Unseen strings stay in the source language and
-  // get added to the seen-set for the next switch.
+  // Tracks languages whose upfront bulk pass has already run. NOTE: this no
+  // longer gates live translation. The shipped static packs only cover ~40 UI
+  // strings (menus/buttons/labels), NOT the app's body content (lessons,
+  // longform articles, dynamic text), so live translation must stay enabled at
+  // route time — otherwise everything outside those few labels would render in
+  // the source language ("interface-only" translation). The static pack + the
+  // persistent cache keep already-seen strings instant; anything new is
+  // live-translated on view and then cached for next time.
   const bulkCompletedLanguagesRef = useRef<Set<string>>(new Set());
   // Persistent registry of every source string the app has ever rendered.
   const seenStringsRef = useRef<Set<string>>(new Set());
@@ -334,7 +338,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // 1) Apply everything we can resolve without the network right away. This is
     // synchronous, so cached/static/glossary text never flickers.
     const networkSources: string[] = [];
-    const canLiveFetch = allowLive && !bulkCompletedLanguagesRef.current.has(languageCode);
+    // Live fetch whatever the static pack/cache/glossary can't resolve, so the
+    // WHOLE app (not just the ~40 packaged UI strings) gets translated. Results
+    // are cached + persisted below, so the next time the same string is seen it
+    // resolves instantly with no network.
+    const canLiveFetch = allowLive;
     for (const source of bySource.keys()) {
       const local = resolveLocally(source, languageCode);
       if (local !== undefined) {
@@ -385,11 +393,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     if (pending.size === 0) return;
     const roots = Array.from(pending);
     pending.clear();
-    // After a language switch, route-change DOM is translated CACHE-ONLY: no
-    // live fetches → no flicker, no partial pages. Unseen strings stay in
-    // source language and are recorded for the next switch.
-    const allowLive = !bulkCompletedLanguagesRef.current.has(currentLanguageRef.current);
-    void translateRoots(roots, currentLanguageRef.current, translationRunIdRef.current, { allowLive });
+    // Route-change / newly-rendered DOM is translated live: dictionary + cache
+    // hits apply synchronously (no flicker), and anything new (body content,
+    // article text, dynamic strings) is fetched and cached so the entire app
+    // ends up translated, not just the packaged UI labels.
+    void translateRoots(roots, currentLanguageRef.current, translationRunIdRef.current, { allowLive: true });
   };
 
   const scheduleFlush = () => {
@@ -421,10 +429,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   // ── Language activation ──────────────────────────────────────────────────
-  // Fast path: every shipped language now ships a COMPLETE static pack
-  // (scripts/i18n/* + the precached public/locales/*.json), so switching just
-  // loads that pack — instant and fully offline — and the page pass resolves
-  // every string from it. No route harvest, no live machine translation.
+  // Fast path: load the language's static pack (scripts/i18n/* → precached
+  // public/locales/*.json). The pack seeds INSTANT, offline translation of the
+  // UI strings it covers, then we translate the current page live so its body
+  // content is translated too (the packs intentionally only ship the common UI
+  // labels, not the whole app's content). Subsequent navigation is translated
+  // live on view and cached, so the entire app — not just the interface — ends
+  // up translated.
   //
   // Fallback path (kept for safety): if a language's pack is missing/empty
   // (e.g. it failed to load), fall back to the legacy harvest + live gtx flow.
@@ -440,11 +451,16 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const dict = await loadStaticDictionary(languageCode);
 
     if (isDictionaryComplete(languageCode)) {
-      // The pack covers the whole app: nothing to fetch, nothing to harvest.
-      // Free other languages' (large) packs to cap memory; the files remain in
-      // the PWA precache so a later switch re-loads instantly.
+      // The static pack loaded. It seeds instant UI translation, but it does NOT
+      // cover the app's body content, so translate the page the user is looking
+      // at right now — live, body included — under the overlay. That way the
+      // page is fully translated the instant the overlay lifts instead of
+      // flipping from source a beat later. Anything new the user navigates to
+      // afterwards is translated live on view (see flushPending / page-pass).
       releaseDictionariesExcept([languageCode]);
       bulkCompletedLanguagesRef.current.add(languageCode);
+      const runId = ++translationRunIdRef.current;
+      await translatePage(languageCode, runId, { allowLive: true });
       setChangeProgress(100);
       return;
     }
@@ -684,11 +700,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     void (async () => {
       await loadStaticDictionary(language);
       if (translationRunIdRef.current !== runId) return;
-      // Live fetches only allowed if we haven't yet run a bulk pass for this
-      // language (e.g. first session load). After a user-initiated change,
-      // bulkCompletedLanguagesRef is set → page passes stay cache-only.
-      const allowLive = !bulkCompletedLanguagesRef.current.has(language);
-      void translatePage(language, runId, { allowLive });
+      // Always allow live fetches so the full page (body content included) is
+      // translated, not just the strings present in the small static pack.
+      void translatePage(language, runId, { allowLive: true });
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLanguage, isLoading]);
