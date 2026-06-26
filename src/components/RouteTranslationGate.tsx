@@ -8,9 +8,9 @@ const SOURCE_LANGUAGE = "tr";
 
 // Timing knobs (ms). Give the Google Translate widget time to start, then reveal
 // once the page DOM goes quiet — capped so navigation never hangs.
-const MIN_HOLD = 250;
-const QUIET_WINDOW = 150;
-const MAX_HOLD = 900;
+const MIN_HOLD = 80;
+const QUIET_WINDOW = 60;
+const MAX_HOLD = 350;
 
 export const RouteTranslationGate = () => {
   const location = useLocation();
