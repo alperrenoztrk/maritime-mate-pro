@@ -20,6 +20,11 @@ import {
   getMaritimeTranslationOverride,
   applyMaritimeCorrections,
 } from '../../src/utils/maritimeGlossary.ts';
+import {
+  BATCH_SEPARATOR,
+  buildTranslationBatches,
+  splitBatchResult,
+} from '../../src/utils/pageTranslator.ts';
 
 const repoRoot = process.cwd();
 const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
@@ -27,9 +32,12 @@ const CACHE_DIR   = path.join(repoRoot, 'scripts/i18n/.cache');
 const OUT_DIR     = path.join(repoRoot, 'public/locales');
 
 const GTX_ENDPOINT = 'https://translate.googleapis.com/translate_a/single';
-const CONCURRENCY = 40;   // parallel fetch workers
-const RETRY_MAX   = 3;
-const RETRY_DELAY = 1500; // ms between retries on 429
+// Each request now carries a whole BATCH (~up to 48 strings / 1200 chars), so a
+// lower worker count keeps us well under gtx's informal rate limits while still
+// translating the large corpus in a reasonable wall-time.
+const CONCURRENCY = 15;    // parallel batch-fetch workers
+const RETRY_MAX   = 4;
+const RETRY_DELAY = 1500;  // ms between retries on 429 (grows linearly)
 
 // Manual corrections for strings where the GTX engine is known to produce bad
 // output. Key = Turkish source string, value = map of langCode → correct translation.
@@ -195,19 +203,44 @@ async function translateLanguage(langCode, sources) {
   }
 
   const limited = Number.isFinite(limit) ? pending.slice(0, limit) : pending;
+  // Pack many strings into each gtx request (joined with BATCH_SEPARATOR and
+  // split back) — the same contract the runtime translator uses — to cut the
+  // request count ~40x. This is the main rate-limit mitigation for the large
+  // corpus. A batch whose response can't be split cleanly falls back to
+  // per-string translation so one bad string never poisons the batch.
+  const batches = buildTranslationBatches(limited);
   let done = 0;
   const total = limited.length;
-  if (total > 0) process.stdout.write(`  ${langCode}: translating ${total} strings via gtx...\r`);
+  if (total > 0) {
+    process.stdout.write(`  ${langCode}: translating ${total} strings in ${batches.length} batches via gtx...\r`);
+  }
 
-  await runWithConcurrency(limited, CONCURRENCY, async (source) => {
+  const translateOne = async (source) => {
     const raw = await gtxTranslate(source, langCode);
     if (raw !== null) {
       cache[source] = applyMaritimeCorrections(raw, langCode);
       gtxCount++;
     }
     // If gtx failed, leave uncached so the runtime live-translator handles it.
-    done++;
-    if (done % 500 === 0 || done === total) {
+  };
+
+  await runWithConcurrency(batches, CONCURRENCY, async (batch) => {
+    if (batch.length === 1) {
+      await translateOne(batch[0]);
+    } else {
+      const joined = await gtxTranslate(batch.join(BATCH_SEPARATOR), langCode);
+      const parts = joined === null ? null : splitBatchResult(joined, batch.length);
+      if (parts) {
+        batch.forEach((source, i) => {
+          cache[source] = applyMaritimeCorrections(parts[i].trim(), langCode);
+          gtxCount++;
+        });
+      } else {
+        for (const source of batch) await translateOne(source);
+      }
+    }
+    done += batch.length;
+    if (done % 500 < batch.length || done === total) {
       process.stdout.write(`  ${langCode}: ${done}/${total} (gtx)          \r`);
     }
   });

@@ -76,3 +76,30 @@ export const getStaticTranslation = (
   if (!dict) return null;
   return dict[normalizedSource] ?? null;
 };
+
+/**
+ * True when a non-empty static dictionary is already loaded in memory for the
+ * language. Because every shipped language now ships a COMPLETE pack (see
+ * scripts/i18n + the PWA precache of public/locales/*.json), a loaded, non-empty
+ * dictionary means the runtime can translate the whole app offline from it — no
+ * harvest, no live machine translation. The caller must `loadStaticDictionary`
+ * first (it resolves instantly from the precache, even offline).
+ */
+export const isDictionaryComplete = (languageCode: string): boolean => {
+  if (!languageCode || languageCode === 'tr') return true; // source language
+  const dict = loadedDictionaries[languageCode];
+  return !!dict && Object.keys(dict).length > 0;
+};
+
+/**
+ * Frees loaded dictionaries other than the ones listed, to cap memory. The full
+ * packs are large (the whole app translated), so keeping every visited language
+ * resident would balloon the heap on long sessions / mobile webviews. The files
+ * stay on disk in the PWA precache, so a later switch re-loads instantly.
+ */
+export const releaseDictionariesExcept = (keep: string[]): void => {
+  const keepSet = new Set(keep);
+  for (const code of Object.keys(loadedDictionaries)) {
+    if (!keepSet.has(code)) delete loadedDictionaries[code];
+  }
+};

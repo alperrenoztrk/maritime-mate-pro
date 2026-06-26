@@ -124,29 +124,48 @@ function listFiles(dir, exts, out = []) {
   return out;
 }
 
-const TOPIC_PAGES = [
-  'SeamanshipTopicsPage', 'MeteorologyTopicsPage', 'StabilityTopicsPage',
-  'CargoTopicsPage', 'SafetyTopicsPage', 'EnvironmentTopicsPage', 'EconomicsTopicsPage',
-].map((name) => path.join(repoRoot, 'src/pages', `${name}.tsx`)).filter(fs.existsSync);
-
 // UI component files that contain hardcoded Turkish strings (JSX text and specific
-// prop values) that the data-file walker would otherwise miss.
+// prop values) that the data-file walker would otherwise miss. These live outside
+// the broadly-walked src/pages + src/components/courseContent trees.
 const UI_COMPONENT_FILES = [
-  'src/components/courseContent/CourseQuiz.tsx',
-  'src/components/courseContent/CourseTopicHeader.tsx',
-  'src/components/courseContent/CalculatorCard.tsx',
-  'src/components/courseContent/CalculatorList.tsx',
-  'src/components/courseContent/CourseRulesList.tsx',
   'src/components/FloatingNavButtons.tsx',
+  'src/components/LanguageSelector.tsx',
   'src/components/ui/language-selector.tsx',
   'src/contexts/LanguageContext.tsx',
 ].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
 
-const files = [
-  ...listFiles(path.join(repoRoot, 'src/data'), ['.ts', '.tsx']),
-  ...TOPIC_PAGES,
-  ...UI_COMPONENT_FILES,
+// Dev / diagnostic / admin components whose strings real users never see. They
+// use [data-translatable] for internal tooling, so we skip them by basename to
+// keep the shipped dictionaries lean.
+const EXCLUDE_BASENAMES = new Set([
+  'ContentAutoWriterController.tsx',
+  'ContentAuditController.tsx',
+  'APIStatusIndicator.tsx',
+  'SupabaseStatusIndicator.tsx',
+  'ReleaseChecklistCard.tsx',
+  'TestCalculation.tsx',
+  'TestGeminiAI.tsx',
+]);
+
+// High-traffic content component directories rendered into the lesson/topic UI.
+const CONTENT_COMPONENT_DIRS = [
+  path.join(repoRoot, 'src/components/courseContent'),
 ];
+const EXTRA_COMPONENT_FILES = [
+  'src/components/navigation/TopicContentModal.tsx',
+].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
+
+// Canonical walk set: all static content (src/data) + every page + the lesson
+// content components + a few curated UI files. Deduped, minus dev/admin files.
+const files = [
+  ...new Set([
+    ...listFiles(path.join(repoRoot, 'src/data'), ['.ts', '.tsx']),
+    ...listFiles(path.join(repoRoot, 'src/pages'), ['.tsx']),
+    ...CONTENT_COMPONENT_DIRS.flatMap((d) => listFiles(d, ['.ts', '.tsx'])),
+    ...EXTRA_COMPONENT_FILES,
+    ...UI_COMPONENT_FILES,
+  ]),
+].filter((f) => !EXCLUDE_BASENAMES.has(path.basename(f)));
 
 // Fixed UI strings that live as plain JSX text / string-literal expressions in
 // components (not ALLOWED_PROPS props, not [data-translatable]), so the AST
@@ -191,14 +210,16 @@ for (const file of files) {
         }
       }
     }
-    // Static text inside [data-translatable] JSX elements.
-    if (ts.isJsxElement(node)) {
-      const hasDataTranslatable = node.openingElement.attributes.properties.some(
-        (a) => ts.isJsxAttribute(a) && a.name.getText() === 'data-translatable',
-      );
-      if (hasDataTranslatable) {
-        for (const child of node.children) {
-          if (ts.isJsxText(child)) consider(child.text, 'text');
+    // Every static JSX text child renders to a DOM text node at runtime, so we
+    // collect them all (the old [data-translatable] opt-in is no longer needed).
+    // String-literal expression children like {"Bir metin"} are captured too.
+    if (ts.isJsxElement(node) || ts.isJsxFragment(node)) {
+      for (const child of node.children) {
+        if (ts.isJsxText(child)) {
+          consider(child.text, 'text');
+        } else if (ts.isJsxExpression(child) && child.expression) {
+          const lit = stringLiteralText(child.expression);
+          if (lit !== null) consider(lit, 'text');
         }
       }
     }

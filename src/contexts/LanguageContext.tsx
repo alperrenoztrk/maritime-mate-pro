@@ -14,7 +14,12 @@ import {
   splitBatchResult,
   BATCH_SEPARATOR,
 } from '@/utils/pageTranslator';
-import { loadStaticDictionary, getStaticTranslation } from '@/utils/staticTranslations';
+import {
+  loadStaticDictionary,
+  getStaticTranslation,
+  isDictionaryComplete,
+  releaseDictionariesExcept,
+} from '@/utils/staticTranslations';
 import {
   HARVEST_MESSAGE_TYPE,
   harvestAllRoutes,
@@ -415,13 +420,36 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   };
 
-  // ── Bulk pre-translation (the heart of "no flicker on later pages") ───────
+  // ── Language activation ──────────────────────────────────────────────────
+  // Fast path: every shipped language now ships a COMPLETE static pack
+  // (scripts/i18n/* + the precached public/locales/*.json), so switching just
+  // loads that pack — instant and fully offline — and the page pass resolves
+  // every string from it. No route harvest, no live machine translation.
+  //
+  // Fallback path (kept for safety): if a language's pack is missing/empty
+  // (e.g. it failed to load), fall back to the legacy harvest + live gtx flow.
   const runBulkTranslation = async (languageCode: string) => {
     if (languageCode === SOURCE_LANGUAGE) {
       bulkCompletedLanguagesRef.current.add(languageCode);
       return;
     }
 
+    // Load the (precached) pack first — resolves instantly from cache, offline.
+    setChangePhase('translate');
+    setChangeProgress(0);
+    const dict = await loadStaticDictionary(languageCode);
+
+    if (isDictionaryComplete(languageCode)) {
+      // The pack covers the whole app: nothing to fetch, nothing to harvest.
+      // Free other languages' (large) packs to cap memory; the files remain in
+      // the PWA precache so a later switch re-loads instantly.
+      releaseDictionariesExcept([languageCode]);
+      bulkCompletedLanguagesRef.current.add(languageCode);
+      setChangeProgress(100);
+      return;
+    }
+
+    // ── Fallback: legacy harvest + live translation (no complete pack) ───────
     // 0) Off-screen harvest of every route's source text (once per language).
     // This guarantees that the seen-set covers the whole app, so that when
     // the user later navigates to a page they never visited before, all of
@@ -448,8 +476,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const progressSpan = needsHarvest ? 50 : 100;
     setChangeProgress(progressFloor);
 
-    // 1) Seed cache from static dictionary (all entries).
-    const dict = await loadStaticDictionary(languageCode);
+    // 1) Seed cache from whatever partial static dictionary loaded above.
     for (const [src, dst] of Object.entries(dict)) {
       translationCacheRef.current.set(`${languageCode}:${src}`, dst);
     }
