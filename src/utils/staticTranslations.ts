@@ -17,6 +17,12 @@ const META_PREFIX = '__';
 
 const loadedDictionaries: Record<string, StaticDictionary> = {};
 const inFlightLoads: Record<string, Promise<StaticDictionary>> = {};
+// Whether a loaded pack covers the WHOLE app (the build-time generator sets the
+// reserved `__complete: true` flag only when it translated the full extracted
+// corpus with high coverage). UI-only / partial packs lack the flag, so they
+// are treated as incomplete and the runtime falls back to the live harvest +
+// machine-translation path that translates the rest of the app.
+const dictionaryComplete: Record<string, boolean> = {};
 
 const baseUrl = (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/';
 
@@ -41,6 +47,7 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
       const response = await fetch(dictionaryUrl(languageCode), { cache: 'force-cache' });
       if (!response.ok) {
         loadedDictionaries[languageCode] = {};
+        dictionaryComplete[languageCode] = false;
         return {};
       }
       const raw = (await response.json()) as Record<string, unknown>;
@@ -50,10 +57,12 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
         if (typeof value === 'string') dict[key] = value;
       }
       loadedDictionaries[languageCode] = dict;
+      dictionaryComplete[languageCode] = raw.__complete === true;
       return dict;
     } catch {
       // Network/parse failure: degrade gracefully to the live translator.
       loadedDictionaries[languageCode] = {};
+      dictionaryComplete[languageCode] = false;
       return {};
     } finally {
       delete inFlightLoads[languageCode];
@@ -78,17 +87,21 @@ export const getStaticTranslation = (
 };
 
 /**
- * True when a non-empty static dictionary is already loaded in memory for the
- * language. Because every shipped language now ships a COMPLETE pack (see
- * scripts/i18n + the PWA precache of public/locales/*.json), a loaded, non-empty
- * dictionary means the runtime can translate the whole app offline from it — no
- * harvest, no live machine translation. The caller must `loadStaticDictionary`
+ * True only when the loaded pack covers the WHOLE app — i.e. it was generated
+ * from the full extracted corpus and carries the `__complete: true` flag. In
+ * that case the runtime can translate everything offline from the pack, with no
+ * harvest and no live machine translation.
+ *
+ * A partial / UI-only pack (the default shipped today) lacks the flag and
+ * therefore returns false, so the caller falls back to the live harvest +
+ * machine-translation path that translates the rest of the app. This prevents a
+ * tiny UI-only pack from being mistaken for a full translation and leaving most
+ * of the app stuck in the source language. The caller must `loadStaticDictionary`
  * first (it resolves instantly from the precache, even offline).
  */
 export const isDictionaryComplete = (languageCode: string): boolean => {
   if (!languageCode || languageCode === 'tr') return true; // source language
-  const dict = loadedDictionaries[languageCode];
-  return !!dict && Object.keys(dict).length > 0;
+  return dictionaryComplete[languageCode] === true;
 };
 
 /**
@@ -100,6 +113,9 @@ export const isDictionaryComplete = (languageCode: string): boolean => {
 export const releaseDictionariesExcept = (keep: string[]): void => {
   const keepSet = new Set(keep);
   for (const code of Object.keys(loadedDictionaries)) {
-    if (!keepSet.has(code)) delete loadedDictionaries[code];
+    if (!keepSet.has(code)) {
+      delete loadedDictionaries[code];
+      delete dictionaryComplete[code];
+    }
   }
 };

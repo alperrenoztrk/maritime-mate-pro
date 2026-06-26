@@ -421,13 +421,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   // ── Language activation ──────────────────────────────────────────────────
-  // Fast path: every shipped language now ships a COMPLETE static pack
-  // (scripts/i18n/* + the precached public/locales/*.json), so switching just
-  // loads that pack — instant and fully offline — and the page pass resolves
-  // every string from it. No route harvest, no live machine translation.
+  // Fast path: when a language ships a COMPLETE static pack (generated from the
+  // full extracted corpus and flagged `__complete` — see scripts/i18n/* + the
+  // precached public/locales/*.json), switching just loads that pack — instant
+  // and fully offline — and the page pass resolves every string from it. No
+  // route harvest, no live machine translation.
   //
-  // Fallback path (kept for safety): if a language's pack is missing/empty
-  // (e.g. it failed to load), fall back to the legacy harvest + live gtx flow.
+  // Fallback path: when the pack is partial/UI-only (the default shipped today)
+  // or failed to load, we run the harvest + live gtx flow so the WHOLE app gets
+  // translated — not just the interface strings the small pack happens to cover.
   const runBulkTranslation = async (languageCode: string) => {
     if (languageCode === SOURCE_LANGUAGE) {
       bulkCompletedLanguagesRef.current.add(languageCode);

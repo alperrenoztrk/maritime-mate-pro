@@ -257,10 +257,19 @@ async function translateLanguage(langCode, sources) {
   for (const source of sources) {
     if (cache[source] !== undefined) { dict[source] = cache[source]; covered++; }
   }
+  // Mark the pack COMPLETE only when it was generated from the full extracted
+  // corpus (not --ui-only) AND nearly every string resolved. The runtime reads
+  // this flag (staticTranslations.isDictionaryComplete) to decide whether it can
+  // translate the whole app offline from the pack, or must fall back to the live
+  // harvest + machine-translation path. A UI-only / low-coverage pack is left
+  // unflagged so it never masquerades as a full translation.
+  const coverage = sources.length ? covered / sources.length : 0;
+  if (!uiOnly && coverage >= 0.98) dict.__complete = true;
+
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(path.join(OUT_DIR, `${langCode}.json`), JSON.stringify(dict, null, 0) + '\n');
 
-  const pct = ((covered / sources.length) * 100).toFixed(1);
+  const pct = (coverage * 100).toFixed(1);
   console.log(
     `✅ ${langCode.padEnd(6)} ${covered.toString().padStart(6)}/${sources.length} (${pct}%)` +
     `  override:${overrideCount}  gtx:${gtxCount}  cached:${skipCount}`
