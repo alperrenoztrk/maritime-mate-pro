@@ -161,7 +161,7 @@ export const maritimeTerms: MaritimeTerm[] = [
   // ── Anchoring & mooring ────────────────────────────────────────────
   {
     tr: 'Çapa',
-    aliases: ['Demir (Çapa)'],
+    aliases: ['Demir (Çapa)', 'Çıpa', 'Çıpa (Anchor)'],
     translations: {
       en: 'Anchor', de: 'Anker', fr: 'Ancre', es: 'Ancla',
       it: 'Àncora', pt: 'Âncora', nl: 'Anker', ru: 'Якорь',
@@ -728,6 +728,161 @@ export const maritimeTerms: MaritimeTerm[] = [
     translations: {
       en: 'Steward', de: 'Steward', fr: 'Garçon de cabine', es: 'Camarero',
       it: 'Cameriere di bordo', pt: 'Taifeiro', nl: 'Hofmeester', ru: 'Стюард',
+    },
+  },
+
+  // ── Hull structure (frames, posts, openings) ───────────────────────
+  {
+    tr: 'Postalar',
+    aliases: ['Postalar (Frames)', 'Posta'],
+    translations: {
+      en: 'Frames', de: 'Spanten', fr: 'Membrures', es: 'Cuadernas',
+      it: 'Ordinate', pt: 'Cavernas', nl: 'Spanten', ru: 'Шпангоуты',
+    },
+  },
+  {
+    tr: 'Baş Bodoslama',
+    aliases: ['Baş bodoslama'],
+    translations: {
+      en: 'Stem', de: 'Vorsteven', fr: 'Étrave', es: 'Roda',
+      it: 'Ruota di prua', pt: 'Roda de proa', nl: 'Voorsteven', ru: 'Форштевень',
+    },
+  },
+  {
+    tr: 'Kıç Bodoslama',
+    aliases: ['Kıç bodoslama'],
+    translations: {
+      en: 'Sternpost', de: 'Achtersteven', fr: 'Étambot', es: 'Codaste',
+      it: 'Dritto di poppa', pt: 'Cadaste', nl: 'Achtersteven', ru: 'Ахтерштевень',
+    },
+  },
+  {
+    tr: 'Ayna Kıç',
+    aliases: ['Ayna kıç'],
+    translations: {
+      en: 'Transom stern', de: 'Spiegelheck', fr: 'Tableau arrière',
+      es: 'Popa de espejo', it: 'Poppa a specchio', pt: 'Painel de popa',
+      nl: 'Spiegel', ru: 'Транцевая корма',
+    },
+  },
+  {
+    tr: 'Biça',
+    // Raised edge around a hatch/opening (coaming).
+    inline: false,
+    translations: {
+      en: 'Coaming', de: 'Süll', fr: 'Surbau', es: 'Brazola', pt: 'Braçola',
+    },
+  },
+  {
+    tr: 'Manika',
+    translations: {
+      en: 'Cowl ventilator', de: 'Lüfterkopf', fr: 'Manche à air',
+      es: 'Manguerote de ventilación', it: 'Manica a vento',
+      pt: 'Manga de ventilação', nl: 'Windkoker', ru: 'Раструб вентилятора',
+    },
+  },
+
+  // ── Anchoring gear & ground tackle ─────────────────────────────────
+  {
+    tr: 'Dönence',
+    // Also the geographic "tropic"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Swivel', de: 'Wirbel', fr: 'Émerillon', es: 'Grillete giratorio',
+      it: 'Arganello', pt: 'Destorcedor', nl: 'Wartel', ru: 'Вертлюг',
+    },
+  },
+  {
+    tr: 'Merimek',
+    translations: {
+      en: 'Grapnel', de: 'Draggen', fr: 'Grappin', es: 'Rezón',
+      it: 'Grappino', pt: 'Fateixa', nl: 'Dreg', ru: 'Кошка',
+    },
+  },
+  {
+    tr: 'Safra',
+    aliases: ['Safra (Ballast)'],
+    // "Safra" also means "bile"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Ballast', de: 'Ballast', fr: 'Lest', es: 'Lastre',
+      it: 'Zavorra', pt: 'Lastro', nl: 'Ballast', ru: 'Балласт',
+    },
+  },
+  {
+    tr: 'Duba',
+    translations: {
+      en: 'Pontoon', de: 'Ponton', fr: 'Ponton', es: 'Pontón',
+      it: 'Pontone', pt: 'Pontão', nl: 'Ponton', ru: 'Понтон',
+    },
+  },
+
+  // ── Deck fittings & rigging ────────────────────────────────────────
+  {
+    tr: 'Koçboynuzu',
+    aliases: ['Koç Boynuzu', 'Koç boynuzu'],
+    translations: {
+      en: 'Cleat', de: 'Klampe', fr: 'Taquet', es: 'Cornamusa',
+      it: 'Galloccia', pt: 'Cunho', nl: 'Kikker', ru: 'Утка',
+    },
+  },
+  {
+    tr: 'Boğma',
+    // Also "strangling"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Whipping', de: 'Takling', fr: 'Surliure', es: 'Falcaceadura',
+      pt: 'Falcaça',
+    },
+  },
+  {
+    tr: 'Flama',
+    translations: {
+      en: 'Pennant', de: 'Wimpel', fr: 'Flamme', es: 'Gallardete',
+      it: 'Fiamma', pt: 'Flâmula', nl: 'Wimpel', ru: 'Вымпел',
+    },
+  },
+  {
+    tr: 'Trinket',
+    // Identical to the English word "trinket"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Foresail', de: 'Fock', fr: 'Misaine', es: 'Trinquete',
+      it: 'Trinchetto', pt: 'Traquete', nl: 'Fok', ru: 'Фок',
+    },
+  },
+
+  // ── Crew & pilotage ────────────────────────────────────────────────
+  {
+    tr: 'Gemiadamı',
+    aliases: ['Gemi Adamı', 'Gemi adamı'],
+    translations: {
+      en: 'Seafarer', de: 'Seemann', fr: 'Marin', es: 'Gente de mar',
+      it: 'Marittimo', pt: 'Marítimo', nl: 'Zeevarende', ru: 'Моряк',
+    },
+  },
+  {
+    tr: 'Tayfa',
+    // Colloquial for "crew/gang"; whole-string overrides only.
+    inline: false,
+    translations: {
+      en: 'Rating', de: 'Matrose', fr: 'Matelot', es: 'Marinero',
+      it: 'Marinaio', pt: 'Marinheiro', nl: 'Matroos', ru: 'Матрос',
+    },
+  },
+  {
+    tr: 'Kılavuz Kaptan',
+    aliases: ['Kılavuz Kaptan (Pilot)', 'Kılavuz kaptan'],
+    translations: {
+      en: 'Maritime pilot', de: 'Lotse', fr: 'Pilote', es: 'Práctico',
+      it: 'Pilota', pt: 'Prático', nl: 'Loods', ru: 'Лоцман',
+    },
+  },
+  {
+    tr: 'Römorkör',
+    translations: {
+      en: 'Tug', de: 'Schlepper', fr: 'Remorqueur', es: 'Remolcador',
+      it: 'Rimorchiatore', pt: 'Rebocador', nl: 'Sleepboot', ru: 'Буксир',
     },
   },
 ];
