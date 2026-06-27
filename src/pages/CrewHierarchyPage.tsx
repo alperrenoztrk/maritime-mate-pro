@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { ShieldAlert, ArrowRight } from "lucide-react";
 import { crewHierarchy } from "@/data/crewHierarchy";
 
 export default function CrewHierarchyPage() {
@@ -28,6 +29,23 @@ export default function CrewHierarchyPage() {
             Köprüüstü, makine ve ikmal departmanlarında görev yapan gemi personelinin hiyerarşik yapısı.
           </p>
         </header>
+
+        <Link
+          to="/crew/muster-list"
+          className="group flex items-center gap-4 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-sky-50/60 p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md dark:via-card dark:to-slate-900/40"
+        >
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white shadow-md">
+            <ShieldAlert className="h-6 w-6" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <h2 className="text-sm font-semibold text-foreground">Rol Cetveli / Muster List</h2>
+            <p className="text-xs text-muted-foreground">
+              Acil durumlarda her personelin toplanma istasyonu ve görevleri (yangın, gemiyi
+              terk, denize adam düşmesi).
+            </p>
+          </div>
+          <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5" />
+        </Link>
 
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
           <div className="grid gap-3 md:grid-cols-3">
