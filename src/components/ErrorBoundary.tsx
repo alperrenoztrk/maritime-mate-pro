@@ -6,6 +6,14 @@ import { AlertTriangle, RefreshCw } from 'lucide-react';
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;
+  /**
+   * When this value changes, a boundary that is currently showing its error
+   * state automatically resets and re-renders its children. Pass the current
+   * route (e.g. location.pathname) so that navigating away from a page that
+   * crashed recovers the app instead of leaving the user stuck on the error
+   * screen until a manual reload.
+   */
+  resetKey?: unknown;
 }
 
 interface State {
@@ -29,6 +37,15 @@ export class ErrorBoundary extends Component<Props, State> {
       error,
       errorInfo
     });
+  }
+
+  public componentDidUpdate(prevProps: Props) {
+    // Recover automatically when the caller signals a context change (e.g. the
+    // user navigated to a different route). Without this, a single crashing
+    // page would keep the error screen up across navigations.
+    if (this.state.hasError && prevProps.resetKey !== this.props.resetKey) {
+      this.setState({ hasError: false, error: undefined, errorInfo: undefined });
+    }
   }
 
   private handleReload = () => {
