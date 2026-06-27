@@ -129,8 +129,6 @@ function listFiles(dir, exts, out = []) {
 // the broadly-walked src/pages + src/components/courseContent trees.
 const UI_COMPONENT_FILES = [
   'src/components/FloatingNavButtons.tsx',
-  'src/components/LanguageSelector.tsx',
-  'src/components/ui/language-selector.tsx',
   'src/contexts/LanguageContext.tsx',
 ].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
 
@@ -138,13 +136,7 @@ const UI_COMPONENT_FILES = [
 // use [data-translatable] for internal tooling, so we skip them by basename to
 // keep the shipped dictionaries lean.
 const EXCLUDE_BASENAMES = new Set([
-  'ContentAutoWriterController.tsx',
-  'ContentAuditController.tsx',
-  'APIStatusIndicator.tsx',
-  'SupabaseStatusIndicator.tsx',
   'ReleaseChecklistCard.tsx',
-  'TestCalculation.tsx',
-  'TestGeminiAI.tsx',
 ]);
 
 // High-traffic content component directories rendered into the lesson/topic UI.
@@ -152,7 +144,6 @@ const CONTENT_COMPONENT_DIRS = [
   path.join(repoRoot, 'src/components/courseContent'),
 ];
 const EXTRA_COMPONENT_FILES = [
-  'src/components/navigation/TopicContentModal.tsx',
 ].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
 
 // Canonical walk set: all static content (src/data) + every page + the lesson
