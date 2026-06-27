@@ -1249,6 +1249,47 @@ export const maritimeTerms: MaritimeTerm[] = [
       uk: 'Буксир',
     },
   },
+  {
+    // Engine-room rating who lubricates machinery. MT leaves it as "Yağcı"
+    // or renders the generic "greaser".
+    tr: 'Yağcı',
+    translations: {
+      en: 'Oiler', de: 'Schmierer', fr: 'Graisseur', es: 'Engrasador',
+      it: 'Ingrassatore', pt: 'Lubrificador', nl: 'Olieman', ru: 'Моторист-смазчик',
+      ja: 'オイラー', ko: '오일러', 'zh-CN': '机舱机工', ar: 'مزيّت', hi: 'ऑयलर',
+      sv: 'Smörjare', no: 'Smører', da: 'Smører', fi: 'Voitelija', pl: 'Smarownik',
+      cs: 'Mazač', hu: 'Olajozó', ro: 'Ungător', el: 'Λιπαντής', bg: 'Масльор',
+      uk: 'Моторист-мастильник',
+    },
+  },
+  {
+    // Whole-phrase override so it does not become "celestial cruise".
+    tr: 'Göksel Seyir',
+    aliases: ['Göksel Seyri', 'Göksel Navigasyon', 'Göksel Navigasyonu'],
+    translations: {
+      en: 'Celestial navigation', de: 'Astronavigation', fr: 'Navigation astronomique',
+      es: 'Navegación astronómica', it: 'Navigazione astronomica', pt: 'Navegação astronômica',
+      nl: 'Astronomische navigatie', ru: 'Астрономическая навигация',
+      ja: '天文航法', ko: '천문항법', 'zh-CN': '天文导航', ar: 'الملاحة الفلكية', hi: 'खगोलीय नौवहन',
+      sv: 'Astronomisk navigation', no: 'Astronomisk navigasjon', da: 'Astronomisk navigation',
+      fi: 'Astronominen navigointi', pl: 'Nawigacja astronomiczna', cs: 'Astronomická navigace',
+      hu: 'Csillagászati navigáció', ro: 'Navigație astronomică', el: 'Αστρονομική ναυσιπλοΐα',
+      bg: 'Астрономическа навигация', uk: 'Астрономічна навігація',
+    },
+  },
+  {
+    // Bare adjective: always "celestial" in this app; MT treats it as the
+    // proper name "Göksel" or renders "heavenly".
+    tr: 'Göksel',
+    translations: {
+      en: 'Celestial', de: 'Astronomisch', fr: 'Céleste', es: 'Astronómica',
+      it: 'Astronomica', pt: 'Celeste', nl: 'Astronomisch', ru: 'Астрономическая',
+      ja: '天測', ko: '천측', 'zh-CN': '天文', ar: 'فلكي', hi: 'खगोलीय',
+      sv: 'Astronomisk', no: 'Astronomisk', da: 'Astronomisk', fi: 'Astronominen', pl: 'Astronomiczna',
+      cs: 'Astronomická', hu: 'Csillagászati', ro: 'Astronomică', el: 'Αστρονομικός', bg: 'Астрономическа',
+      uk: 'Астрономічна',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
@@ -1343,6 +1384,10 @@ const curatedCorrections: Record<string, Array<[string, string]>> = {
     // only the mooring phrases are corrected to avoid touching real "father".
     ['to the father', 'to the bollard'],
     ['from the father', 'from the bollard'],
+    // Meteorological "cephe" (weather front) sometimes becomes "façade".
+    ['façade', 'front'],
+    // "Kazık bağı" (clove hitch) becomes the literal "stake tie".
+    ['stake tie', 'clove hitch'],
   ],
 };
 
