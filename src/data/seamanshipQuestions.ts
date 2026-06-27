@@ -108,7 +108,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 14,
     question: "Denizde çatışma önlemede 'stand-on vessel' için doğru ifade hangisidir?",
-    options: ["Her zaman rota/hız değiştirir", "Mümkün olduğunca rota ve hızını muhafaza eder", "Daima iskeleye döner", "Hiç manevra yapamaz"],
+    options: ["Her zaman rota/hız değiştirir", "Mümkün olduğunca rota ve hızını muhafaza eder", "Daima iskele tarafına döner", "Hiç manevra yapamaz"],
     correctAnswer: 1,
     explanation: "COLREG: Stand-on, şartlar elverdiğince rota/hızını korur; risk devam ederse manevra yapabilir.",
     category: "COLREG"
@@ -220,7 +220,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 28,
     question: "'Steady as she goes' dümen komutu neyi ister?",
-    options: ["Mevcut pruva hattını koru", "Hızlandır", "İskeleye dön", "Demir at"],
+    options: ["Mevcut pruva hattını koru", "Hızlandır", "İskele tarafına dön", "Demir at"],
     correctAnswer: 0,
     explanation: "Komut anındaki rotayı (heading) tutmak ve o pruvada sabit gitmek demektir.",
     category: "Dümen Komutları"
@@ -244,7 +244,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 31,
     question: "İki güçle yürüyen geminin pruva pruvaya (head-on) karşılaşmasında COLREG Kural 14 ne der?",
-    options: ["Her ikisi de iskeleye döner", "Her ikisi de sancağa döner", "Biri durur", "Hiçbiri dönmez"],
+    options: ["Her ikisi de iskele tarafına döner", "Her ikisi de sancağa döner", "Biri durur", "Hiçbiri dönmez"],
     correctAnswer: 1,
     explanation: "Rule 14: Head-on durumda her iki gemi sancağa dönerek birbirinin iskelesinden geçer.",
     category: "COLREG"
@@ -260,7 +260,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 33,
     question: "İki güçle yürüyen gemi çapraz (crossing) durumda iken COLREG Kural 15 ne der?",
-    options: ["Diğer gemiyi sancağında gören yol verir", "Diğer gemiyi iskelesinde gören yol verir", "İkisi de durur", "İkisi de iskeleye döner"],
+    options: ["Diğer gemiyi sancağında gören yol verir", "Diğer gemiyi iskele tarafında gören yol verir", "İkisi de durur", "İkisi de iskele tarafına döner"],
     correctAnswer: 0,
     explanation: "Rule 15: Diğer gemiyi kendi sancak tarafında bulunduran gemi give-way vessel'dır.",
     category: "COLREG"
@@ -444,7 +444,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 56,
     question: "COLREG Kural 9 (dar kanallar) için doğru ifade hangisidir?",
-    options: ["Gemiler kanalın ortasından gider", "Gemiler kanalın sancak (sağ) dış kenarına yakın seyreder", "Gemiler iskele kenarından gider", "Dar kanalda demir atılır"],
+    options: ["Gemiler kanalın ortasından gider", "Gemiler kanalın sancak (sağ) dış kenarına yakın seyreder", "Gemiler iskele tarafındaki kenardan gider", "Dar kanalda demir atılır"],
     correctAnswer: 1,
     explanation: "Rule 9: Dar kanal/geçitte gemi, güvenli ve uygulanabilir olduğunca kanalın sancak dış kenarına yakın seyreder.",
     category: "COLREG"
@@ -460,7 +460,7 @@ export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 58,
     question: "COLREG Kural 17 (stand-on) gemi, çatışma yakınsa ne yapabilir?",
-    options: ["Hiçbir şey", "Yalnız manevrayla çatışmayı önleyecek aksiyonu alır", "Sadece iskeleye döner", "Demir atar"],
+    options: ["Hiçbir şey", "Yalnız manevrayla çatışmayı önleyecek aksiyonu alır", "Sadece iskele tarafına döner", "Demir atar"],
     correctAnswer: 1,
     explanation: "Rule 17: Give-way manevra yapmazsa stand-on gemi çatışmayı önlemek için aksiyon alabilir/almalıdır.",
     category: "COLREG"

@@ -121,7 +121,7 @@ export const crewHierarchy: CrewGroup[] = [
         generalTasks: [
           "Koruyucu boya, halat, tel ve güverte donanımlarının bakımının organize edilmesi",
           "Acemilik eğitimlerinin desteklenmesi ve işbaşı risk değerlendirmelerinin iletilmesi",
-          "Emniyetli erişim, merdiven ve iskele kurulumlarının kontrol edilmesi",
+          "Emniyetli erişim, merdiven ve borda iskelesi kurulumlarının kontrol edilmesi",
           "Atık, sintine ve güverte düzeni kayıtlarının tutulmasına yardımcı olunması",
         ],
       },
@@ -138,7 +138,7 @@ export const crewHierarchy: CrewGroup[] = [
         ],
         generalTasks: [
           "Boyama, yıkama, halat bakımı ve çelik tel kontrollerinin yapılması",
-          "Iskele, merdiven ve güvenlik bariyerlerinin kurulmasına destek",
+          "Borda iskelesi, merdiven ve güvenlik bariyerlerinin kurulmasına destek",
           "Acil durum ekipmanlarının yerlerinin ve kullanımının öğrenilmesi",
           "Limanda ve seyirde köprüüstü iletişimlerine destek verilmesi",
         ],

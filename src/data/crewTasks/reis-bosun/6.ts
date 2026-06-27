@@ -1,7 +1,7 @@
 import type { CrewTaskLongForm } from "../types";
 
 const content: CrewTaskLongForm = {
-  title: "İskele, merdiven ve erişim ekipmanlarının bakımı",
+  title: "Borda iskelesi, merdiven ve erişim ekipmanlarının bakımı",
   roleSlug: "reis-bosun",
   taskIndex: 6,
   estimatedPages: 23,
@@ -128,7 +128,7 @@ const content: CrewTaskLongForm = {
             `Yağlama, yük testi ve kontroller kayıtlı mı?`,
           ],
           paragraphs: [
-            `İskele, merdiven ve erişim ekipmanları bakımı, Reisin doğrudan can güvenliğiyle ilgili en hassas görevlerindendir. Sertifikalı ekipman, doğru kurulum, ikinci emniyet hattı ve sürekli gözetim; her iniş-binişin ve her borda dışı işin güvenle tamamlanmasını sağlar.`,
+            `Borda iskelesi, merdiven ve erişim ekipmanları bakımı, Reisin doğrudan can güvenliğiyle ilgili en hassas görevlerindendir. Sertifikalı ekipman, doğru kurulum, ikinci emniyet hattı ve sürekli gözetim; her iniş-binişin ve her borda dışı işin güvenle tamamlanmasını sağlar.`,
           ],
         },
       ],

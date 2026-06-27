@@ -2877,7 +2877,7 @@ ZW: Römorkör istiyorum`,
     content: `MANEVRA İŞARETLERİ (Kural 34):
 
 Bir kısa düdük (•): Rotamı sancağa değiştiriyorum
-İki kısa düdük (••): Rotamı iskeleye değiştiriyorum
+İki kısa düdük (••): Rotamı iskele tarafına değiştiriyorum
 Üç kısa düdük (•••): Makinelerimi tornistana alıyorum
 
 Dar kanal/geçitte:

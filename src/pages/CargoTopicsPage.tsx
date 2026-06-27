@@ -952,12 +952,12 @@ Draft survey, dökme yüklerin ticari miktar tespitinde en yaygın yöntemdir.`,
   },
   "draft-reading": {
     title: "Draft Okuma Teknikleri",
-    introduction: "Draft okumaları, geminin prova, pupa ve orta noktalarında sancak ve iskele tarafından yapılan su çekimi ölçümleridir.",
+    introduction: "Draft okumaları, geminin pruva (baş), pupa (kıç) ve orta noktalarında sancak ve iskele tarafından yapılan su çekimi ölçümleridir.",
     content: `OKUMA NOKTALARI:
 6 noktadan draft okunur:
-- Prova sancak (F_S), Prova iskele (F_P)
-- Orta sancak (M_S), Orta iskele (M_P)
-- Pupa sancak (A_S), Pupa iskele (A_P)
+- Pruva sancak (F_S), Pruva iskele tarafı (F_P)
+- Orta sancak (M_S), Orta iskele tarafı (M_P)
+- Pupa sancak (A_S), Pupa iskele tarafı (A_P)
 
 ORTALAMALAR:
 d_F = (F_S + F_P) / 2
@@ -1018,7 +1018,7 @@ Quarter mean draft özellikle belirgin hogging veya sagging durumlarında daha d
     formula: {
       name: "Quarter Mean Draft",
       expression: "d_QM = (d_F + 6 × d_M + d_A) / 8",
-      description: "d_QM: Quarter mean draft, d_F: Prova draft, d_M: Orta draft, d_A: Pupa draft",
+      description: "d_QM: Quarter mean draft, d_F: Pruva (baş) draft, d_M: Orta draft, d_A: Pupa draft",
     },
     examples: [
       {
@@ -1750,14 +1750,14 @@ BAY (Boyuna konum):
 ROW (Enine konum):
 - Merkez hattı: 00
 - Sancak: 01, 03, 05... (tek)
-- İskele: 02, 04, 06... (çift)
+- İskele tarafı: 02, 04, 06... (çift)
 
 TIER (Düşey konum):
 - Ambar içi: 02, 04, 06... (alttan yukarı)
 - Güverte üstü: 82, 84, 86... (alttan yukarı)
 
 ÖRNEK: 140682
-Bay 14, Row 06 (iskele 3. sıra), Tier 82 (güverte üstü 1. kat)
+Bay 14, Row 06 (iskele tarafı 3. sıra), Tier 82 (güverte üstü 1. kat)
 
 PLANLAMA KRİTERLERİ:
 - Ağırlık dağılımı (ağır altlara)
@@ -1768,7 +1768,7 @@ PLANLAMA KRİTERLERİ:
     bulletPoints: [
       "Bay-Row-Tier üç boyutlu konum sistemidir",
       "Tek bay = 20', çift bay = 40'",
-      "Sancak tek, iskele çift row numarası alır",
+      "Sancak tek, iskele tarafı çift row numarası alır",
       "Ambar içi tier 02'den, güverte üstü 82'den başlar",
     ],
     keyPoints: [

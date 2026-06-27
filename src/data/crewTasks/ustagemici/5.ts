@@ -1,7 +1,7 @@
 import type { CrewTaskLongForm } from "../types";
 
 const content: CrewTaskLongForm = {
-  title: "İskele ve erişim ekipmanlarının kurulumu",
+  title: "Borda iskelesi ve erişim ekipmanlarının kurulumu",
   roleSlug: "ustagemici",
   taskIndex: 5,
   estimatedPages: 24,
@@ -225,7 +225,7 @@ const content: CrewTaskLongForm = {
             `Operasyon sonrası ekipman kontrol edilip kuru saklandı mı?`,
           ],
           paragraphs: [
-            `İskele ve erişim ekipmanlarının kurulumu, sıradan görünen ama ihmali doğrudan ölümle sonuçlanabilen bir görevdir. AB'nin disiplini; pilot ladder'ın her basamağını, gangway'in her korkuluğunu ve güvenlik ağının her bağını kuralına uygun kurmasında somutlaşır. Bir pilotun, bir personelin ya da bir misafirin gemiye güvenle çıkıp inmesi; AB'nin "yaklaşık değil, tam doğru" kurulum anlayışına bağlıdır.`,
+            `Borda iskelesi ve erişim ekipmanlarının kurulumu, sıradan görünen ama ihmali doğrudan ölümle sonuçlanabilen bir görevdir. AB'nin disiplini; pilot ladder'ın her basamağını, gangway'in her korkuluğunu ve güvenlik ağının her bağını kuralına uygun kurmasında somutlaşır. Bir pilotun, bir personelin ya da bir misafirin gemiye güvenle çıkıp inmesi; AB'nin "yaklaşık değil, tam doğru" kurulum anlayışına bağlıdır.`,
           ],
         },
       ],

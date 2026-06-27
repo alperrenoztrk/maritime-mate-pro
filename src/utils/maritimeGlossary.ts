@@ -276,6 +276,46 @@ export const maritimeTerms: MaritimeTerm[] = [
       uk: 'Буй',
     },
   },
+  {
+    // A 27.5 m length of anchor chain, or the U-shaped chain connector.
+    // Generic MT renders it as the currency "shekel".
+    tr: 'Şakel',
+    aliases: ['Kilit (zincir)'],
+    translations: {
+      en: 'Shackle', de: 'Schäkel', fr: 'Manille', es: 'Grillete',
+      it: 'Grillo', pt: 'Manilha', nl: 'Sluiting', ru: 'Скоба',
+      ja: 'シャックル', ko: '섀클', 'zh-CN': '卸扣', ar: 'شاكل', hi: 'शैकल',
+      sv: 'Schackel', no: 'Sjakkel', da: 'Sjækel', fi: 'Sakkeli', pl: 'Szakla',
+      cs: 'Třmen', hu: 'Sékli', ro: 'Cheie de lanț', el: 'Κλειδί', bg: 'Шегел',
+      uk: 'Скоба',
+    },
+  },
+
+  // ── Knots ──────────────────────────────────────────────────────────
+  {
+    tr: 'İzbarço',
+    aliases: ['İzbarço Bağı', 'İzbarço düğümü'],
+    translations: {
+      en: 'Bowline', de: 'Palstek', fr: 'Nœud de chaise', es: 'As de guía',
+      it: 'Gassa d’amante', pt: 'Lais de guia', nl: 'Paalsteek', ru: 'Беседочный узел',
+      ja: 'もやい結び', ko: '바우라인 매듭', 'zh-CN': '称人结', ar: 'عقدة بولين', hi: 'बोलाइन गाँठ',
+      sv: 'Pålstek', no: 'Pålestikk', da: 'Pælestik', fi: 'Paalusolmu', pl: 'Węzeł ratowniczy',
+      cs: 'Dračí smyčka', hu: 'Palstek', ro: 'Nod de scaun', el: 'Καντηλίτσα', bg: 'Беседочен възел',
+      uk: 'Беседковий вузол',
+    },
+  },
+  {
+    tr: 'Kazık Bağı',
+    aliases: ['Kazık bağı', 'Kazık Düğümü'],
+    translations: {
+      en: 'Clove hitch', de: 'Webleinstek', fr: 'Nœud de cabestan', es: 'Ballestrinque',
+      it: 'Nodo parlato', pt: 'Volta de fiel', nl: 'Mastworp', ru: 'Выбленочный узел',
+      ja: '巻き結び', ko: '까베스땅 매듭', 'zh-CN': '卷结', ar: 'عقدة الخشبة', hi: 'क्लोव हिच',
+      sv: 'Dubbelt halvslag', no: 'Dobbelt halvstikk', da: 'Dobbelt halvstik', fi: 'Siansorkka', pl: 'Wyblinka',
+      cs: 'Lodní uzel', hu: 'Szorítóhurok', ro: 'Nod de parâmă', el: 'Σταυρόκομπος', bg: 'Избленъчен възел',
+      uk: 'Вибленковий вузол',
+    },
+  },
 
   // ── Navigation ─────────────────────────────────────────────────────
   {
@@ -1290,6 +1330,19 @@ const curatedCorrections: Record<string, Array<[string, string]>> = {
   en: [
     // Google frequently transliterates these Ottoman/Turkish-rooted terms.
     ['Sanjak', 'Starboard'],
+    // "Kıç" (stern) is rendered as the vulgar literal "ass" inside sentences;
+    // standalone "ass" never has a legitimate maritime meaning in this corpus.
+    ['ass', 'stern'],
+    // "Funda" (let go / drop the anchor) becomes the plant name "heather".
+    ['heather', 'letting go'],
+    // "Şakel" (shackle — a 27.5 m length of anchor chain, or a chain connector)
+    // is mistranslated as the currency "shekel".
+    ['shekel', 'shackle'],
+    ['shekels', 'shackles'],
+    // "Baba" (mooring bollard/bitt) is mistranslated as the relative "father";
+    // only the mooring phrases are corrected to avoid touching real "father".
+    ['to the father', 'to the bollard'],
+    ['from the father', 'from the bollard'],
   ],
 };
 
