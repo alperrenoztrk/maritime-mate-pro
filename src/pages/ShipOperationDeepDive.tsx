@@ -31,6 +31,7 @@ export default function ShipOperationDeepDive() {
     setActiveChapter(0);
     loadShipOpLongForm(shipType, dept, idx)
       .then((c) => setContent(c))
+      .catch(() => setContent(null))
       .finally(() => setLoading(false));
   }, [shipType, dept, idx]);
 
@@ -130,7 +131,7 @@ export default function ShipOperationDeepDive() {
                       {ch.sections.map((sec, si) => (
                         <section key={si} className="mb-7">
                           <h3 className="mb-2 text-base font-semibold text-foreground">{sec.subheading}</h3>
-                          {sec.paragraphs.map((p, pi) => (
+                          {sec.paragraphs?.map((p, pi) => (
                             <p key={pi} className="mb-3 text-sm leading-relaxed text-foreground/85 dark:text-slate-300">
                               {p}
                             </p>
