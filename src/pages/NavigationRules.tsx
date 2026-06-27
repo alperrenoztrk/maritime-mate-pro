@@ -30,7 +30,7 @@ const sections: RuleSection[] = [
       "Kural 16 — Yol Veren Gemi: Yol veren gemi, diğer gemiden uzak durmalıdır; erken ve geniş manevra yapmalıdır.",
       "Kural 17 — Yolunu Koruyan Gemi: Yolunu koruyan gemi, rotasını ve hızını korumalıdır; ancak yol veren gemi yeterli manevra yapmıyorsa kendi de kaçma manevrası yapmalıdır.",
       "Kural 18 — Sorumluluklar: Motorlu gemi; yelkenli, balıkçı, manevra kabiliyeti kısıtlı ve draftıyla kısıtlı gemilere yol vermelidir.",
-      "Kural 19 — Kısıtlı Görüşte Seyir: Emniyetli hıza düşülmeli; radar ile tespit edilen gemilerden sancağa dönülerek kaçılmalı, 090°'nin kıçtan gelen gemiyi iskeleye dönülerek kaçılmamalıdır.",
+      "Kural 19 — Kısıtlı Görüşte Seyir: Emniyetli hıza düşülmeli; radar ile tespit edilen gemilerden sancağa dönülerek kaçılmalı, 090°'nin kıçtan gelen gemiyi iskele tarafına dönülerek kaçılmamalıdır.",
     ],
   },
   {
@@ -54,8 +54,8 @@ const sections: RuleSection[] = [
     icon: Anchor,
     source: "IALA Maritime Buoyage System",
     rules: [
-      "Lateral İşaretler (Bölge A): İskele — kırmızı silindir/teneke, sancak — yeşil koni.",
-      "Lateral İşaretler (Bölge B): Renkler ters; iskele — yeşil, sancak — kırmızı.",
+      "Lateral İşaretler (Bölge A): İskele tarafı — kırmızı silindir/teneke, sancak — yeşil koni.",
+      "Lateral İşaretler (Bölge B): Renkler ters; iskele tarafı — yeşil, sancak — kırmızı.",
       "Kardinal İşaretler: Tehlikenin bulunduğu yöne göre (N-E-S-W) siyah-sarı renk ve tepesi işaretler.",
       "Kuzey Kardinal: Üstte siyah, altta sarı; iki koni yukarı bakan. Geçiş: tehlikenin kuzeyinden.",
       "Güney Kardinal: Üstte sarı, altta siyah; iki koni aşağı bakan. Geçiş: tehlikenin güneyinden.",

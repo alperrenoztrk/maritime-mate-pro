@@ -1317,12 +1317,12 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Örnek Hesaplama 2 - İskele Tarafı",
-        content: "Aynı örnekte fener iskele tarafından nispi 20° ile görülseydi, nispi kerteriz −020° olarak alınır ve hakiki rotadan çıkarma işlemi yapılır.",
+        content: "Aynı örnekte fener iskele tarafında nispi 20° ile görülseydi, nispi kerteriz −020° olarak alınır ve hakiki rotadan çıkarma işlemi yapılır.",
         image: yonDiagram2,
         imageAlt: "İskele kerteriz hesabı örneği",
         bulletPoints: [
           "Hakiki Rota: 065°T",
-          "Nispi Kerteriz: −20° (iskele)",
+          "Nispi Kerteriz: −20° (iskele tarafı)",
           "Hakiki Kerteriz = 065° − 020° = 045°",
           "Sonuç: Fener hakiki kuzeye göre 045° doğrultusundadır"
         ]
@@ -1657,7 +1657,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Sayısal Örnek",
-        content: "Bir geminin hakiki rotası 120°T olsun. Hedef sancakta nispi 35° ile görülüyor olsun. Nispi kerteriz pozitif kabul edilir ve hakiki rotaya eklenir. Aynı durumda hedef iskele tarafından nispi 25° ile görülseydi, nispi kerteriz negatif alınırdı.",
+        content: "Bir geminin hakiki rotası 120°T olsun. Hedef sancakta nispi 35° ile görülüyor olsun. Nispi kerteriz pozitif kabul edilir ve hakiki rotaya eklenir. Aynı durumda hedef iskele tarafında nispi 25° ile görülseydi, nispi kerteriz negatif alınırdı.",
         image: compassImg,
         imageAlt: "Hakiki rota ve kerteriz örneği",
         bulletPoints: [
@@ -2694,7 +2694,7 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       },
       {
         title: "IALA A şamandıra örnekleri",
-        content: "IALA A bölgesinde renk, şekil ve üst marka bir bütün hâlinde okunur. Limana girişte kırmızının iskelede kalması kuralı, sahada doğrudan bir geçiş talimatına dönüşür.",
+        content: "IALA A bölgesinde renk, şekil ve üst marka bir bütün hâlinde okunur. Limana girişte kırmızının iskele tarafında kalması kuralı, sahada doğrudan bir geçiş talimatına dönüşür.",
         image: sembolIalaBuoyage,
         imageAlt: "IALA A şamandıra düzeni"
       },
@@ -6746,7 +6746,7 @@ CTS₍final₎
 ════════════════════
 
 * Rüzgâr sancaktan → iskeleye düzelt
-* Rüzgâr iskeleden → sancağa düzelt
+* Rüzgâr iskele tarafından → sancağa düzelt
 
 ---
 
@@ -7086,8 +7086,8 @@ doğrudur
 CMG = CTS ± Leeway
 ════════════════════
 
-* Rüzgâr sancaktan → **CTS + L** (iskeleye düzelt)
-* Rüzgâr iskeleden → **CTS − L** (sancağa düzelt)
+* Rüzgâr sancaktan → **CTS + L** (iskele tarafına düzelt)
+* Rüzgâr iskele tarafından → **CTS − L** (sancağa düzelt)
 
 ---
 
@@ -7145,7 +7145,7 @@ CMG = 085°T
 **Verilenler**
 
 * İstenen rota (**CMG**) = **090°T**
-* Rüzgâr: **030°T** (iskele)
+* Rüzgâr: **030°T** (iskele tarafında)
 * Leeway = **5°**
 
 ---
@@ -10891,13 +10891,13 @@ Kesişim noktası = Running Fix (10:30)
         imageAlt: "Leeway hesabı: GPS COG ve gyro heading karşılaştırması",
         formula: {
           text: "Leeway açısı ≈ COG − Heading (akıntı etkisi sıfır veya biliniyorsa düzeltilmiş)",
-          description: "Pozitif fark: sancak leeway (sancağa kayma); negatif fark: iskele leeway"
+          description: "Pozitif fark: sancak leeway (sancağa kayma); negatif fark: iskele tarafı leeway"
         }
       },
       {
         title: "Heading Düzeltmesi ve Rota Planlaması",
         content:
-          "Leeway açısı belirlendikten sonra, hedeflenen COG'u elde etmek için heading şu şekilde düzeltilir:\n\nHeading = Hedeflenen COG − Leeway açısı (sol leeway için: heading sağa, yani rüzgâr üstüne)\n\nÖrnek: Hedeflenen COG 180° (güneye). Rüzgâr doğudan (sancaktan) esiyor. Leeway açısı 6°. Gemi batıya (iskeleye) doğru kayıyor. Düzeltme: heading = 180° − 6° = 174° (biraz doğuya / sancağa yönelmek gerekiyor). Böylece gerçek iz hedeflenen 180°'ye yaklaşır.\n\nBu düzeltme, statik bir değer değildir; rüzgâr güçlenince leeway artar ve heading düzeltmesi güncellenmeli; rüzgâr kesilince düzeltme azaltılmalıdır. ECDIS veya GPS COG sürekli izlenerek heading anlık olarak optimize edilir.",
+          "Leeway açısı belirlendikten sonra, hedeflenen COG'u elde etmek için heading şu şekilde düzeltilir:\n\nHeading = Hedeflenen COG − Leeway açısı (sol leeway için: heading sağa, yani rüzgâr üstüne)\n\nÖrnek: Hedeflenen COG 180° (güneye). Rüzgâr doğudan (sancaktan) esiyor. Leeway açısı 6°. Gemi batıya (iskele tarafına) doğru kayıyor. Düzeltme: heading = 180° − 6° = 174° (biraz doğuya / sancağa yönelmek gerekiyor). Böylece gerçek iz hedeflenen 180°'ye yaklaşır.\n\nBu düzeltme, statik bir değer değildir; rüzgâr güçlenince leeway artar ve heading düzeltmesi güncellenmeli; rüzgâr kesilince düzeltme azaltılmalıdır. ECDIS veya GPS COG sürekli izlenerek heading anlık olarak optimize edilir.",
         bulletPoints: [
           "Heading = Hedeflenen COG − Leeway açısı (rüzgâr üstüne düzeltme)",
           "GPS COG ile heading karşılaştırması, fiili leeway + akıntı toplamını verir",
@@ -11547,7 +11547,7 @@ Kesişim noktası = Running Fix (10:30)
           "Stand-on gemisi Kural 17(a)(i) kapsamında rota ve hızını korumalıdır. Kural 17(a)(ii), stand-on gemisinin kendi manevrası sonucunda çatışmayı önleyemeyeceği anlaşılırsa harekete geçebileceğini söyler. Kural 17(b) ise çatışma kaçınılmaz hale geldiğinde stand-on gemisine en etkili manevrayı yapma zorunluluğu getirir. Bu hiyerarşik yapı kritiktir: stand-on gemisi erkenden müdahale ederek give-way gemisinin manevralarını karıştırmamalı; ancak son an geldiğinde çatışmayı önlemek için harekete geçmelidir. Mahkemeler, her iki geminin de kusurlu bulunduğu pek çok çatışma davasında stand-on gemisinin Kural 17 kapsamındaki gecikmiş eylemsizliğini de sorumluluk faktörü olarak değerlendirmiştir.",
         formula: {
           text: "Crossing Riski: Sabit Bearing (°) + Azalan Range (nm) + Sancak Tarafı → Give-way gemisi belirlenir",
-          description: "Give-way gemisi: diğerini sancağında gören | Stand-on gemisi: diğerini iskelesinde gören — Kural 17 kapsamında rota/hız korur"
+          description: "Give-way gemisi: diğerini sancağında gören | Stand-on gemisi: diğerini iskele tarafında gören — Kural 17 kapsamında rota/hız korur"
         }
       }
     ],
@@ -11582,11 +11582,11 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Manevra Uygulaması ve Sık Yapılan Hatalar",
         content:
-          "Head-on senaryosunda her iki gemi de sancağa (sağa) dönerek birbirlerinin sancak tarafından geçer; bu simetrik manevra, trafik ayrım düzenlemelerine (TSS) benzer şekilde 'sağda kal' prensibini pekiştirer. Manevradan doğan sık hatalar şunlardır: (1) gemilerin farklı yönde dönmesi — biri sancağa, diğeri iskeleye dönerse mesafe kapanır; (2) küçük dümen değişiklikleri — 5°'lik bir değişimi karşı gemi fark etmez ve crossing ile baş omuz etkisi yaratılır; (3) VHF üzerinden 'iskeleye iskeleye' gibi kural dışı anlaşmalar yapılması. IMO rehberlerine göre yalnızca Kural 14 uygulanmalı; VHF üzerinden 'hangi tarafa' sorgusu COLREG'in yerini alamaz çünkü iletişim hatası halinde riski artırır.",
+          "Head-on senaryosunda her iki gemi de sancağa (sağa) dönerek birbirlerinin sancak tarafından geçer; bu simetrik manevra, trafik ayrım düzenlemelerine (TSS) benzer şekilde 'sağda kal' prensibini pekiştirer. Manevradan doğan sık hatalar şunlardır: (1) gemilerin farklı yönde dönmesi — biri sancağa, diğeri iskele tarafına dönerse mesafe kapanır; (2) küçük dümen değişiklikleri — 5°'lik bir değişimi karşı gemi fark etmez ve crossing ile baş omuz etkisi yaratılır; (3) VHF üzerinden 'iskeleye iskeleye' gibi kural dışı anlaşmalar yapılması. IMO rehberlerine göre yalnızca Kural 14 uygulanmalı; VHF üzerinden 'hangi tarafa' sorgusu COLREG'in yerini alamaz çünkü iletişim hatası halinde riski artırır.",
         bulletPoints: [
           "Her iki gemi sancağa döner — asimetrik manevra çatışma riskini artırır",
           "Manevra büyük açılı yapılmalı: en az 15–20° dümen değişimi, karşı gemi tarafından görünür olmalı",
-          "VHF 'iskele geçişi' anlaşması: güvenli görünse de COLREG'i override edemez — kaçınılmalı",
+          "VHF 'iskele tarafından geçiş' anlaşması: güvenli görünse de COLREG'i override edemez — kaçınılmalı",
           "Geç fark edilen head-on: radar P-PI (parallel index) ile yaklaşma geometrisi erken analiz edilmeli",
           "Sound signal: iki kısa düdük (port side passing) vs bir kısa düdük (starboard side passing) — Kural 34"
         ]
@@ -11606,7 +11606,7 @@ Kesişim noktası = Running Fix (10:30)
       "Her iki gemi de sancağa döner — simetrik yükümlülük, diğer kuralların aksine her iki gemiye eşit uygulanır.",
       "Kural 14(c): şüphe halinde head-on varsayılır ve her iki gemi sancağa döner.",
       "Manevralar büyük açılı ve erken yapılmalı; küçük dümen değişiklikleri karşı gemiyi yanıltır.",
-      "VHF ile 'iskele geçişi' anlaşması COLREG'in yerini alamaz; kuralın uygulanması esastır.",
+      "VHF ile 'iskele tarafından geçiş' anlaşması COLREG'in yerini alamaz; kuralın uygulanması esastır.",
       "Head-on ve crossing sınırındaki senaryolarda Kural 14(c) gri alanı yönetir: şüphe = head-on varsayımı."
     ]
   },
@@ -11694,7 +11694,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Radar ARPA Analizi ve Manevra Kısıtlamaları",
         content:
-          "Kısıtlı görüşte ARPA, çatışma riskini belirlemenin birincil aracıdır. Her hedefin CPA ve TCPA değerleri izlenmeli; hedefler arasında öncelik sıralaması yapılmalıdır. Kural 19(d)(i)'nin 'iskeleye dönme' kısıtlaması, ARPA'da hangi yönden yaklaştığı belli olduğunda uygulanır: baş omuzdan gelen hedef için sancağa ya da hız azaltma tercih edilmelidir. 'Seçici manevra' (selective avoidance) prensibi: ARPA'da birden fazla hedef olduğunda, en yakın ve en tehlikeli hedefe yönelik manevra diğerlerine zarar vermemelidir. Simülatör eğitimlerinde sıklıkla sis senaryoları uygulanır; öğrencilerden çoklu hedeflerde doğru CPA/TCPA analizi ve Kural 19'a uygun manevra kararı beklenir.",
+          "Kısıtlı görüşte ARPA, çatışma riskini belirlemenin birincil aracıdır. Her hedefin CPA ve TCPA değerleri izlenmeli; hedefler arasında öncelik sıralaması yapılmalıdır. Kural 19(d)(i)'nin 'iskele tarafına dönme' kısıtlaması, ARPA'da hangi yönden yaklaştığı belli olduğunda uygulanır: baş omuzdan gelen hedef için sancağa ya da hız azaltma tercih edilmelidir. 'Seçici manevra' (selective avoidance) prensibi: ARPA'da birden fazla hedef olduğunda, en yakın ve en tehlikeli hedefe yönelik manevra diğerlerine zarar vermemelidir. Simülatör eğitimlerinde sıklıkla sis senaryoları uygulanır; öğrencilerden çoklu hedeflerde doğru CPA/TCPA analizi ve Kural 19'a uygun manevra kararı beklenir.",
         formula: {
           text: "Sis Güvenli Hızı: V_sis ≤ (R_radar × 60) / T_stop_dk",
           description: "R_radar = kullanılan radar menzili (nm); T_stop = tam durdurma süresi (dk); geminin tam durdurma mesafesi radar menzilin yarısını geçmemeli kuralı pratikte kullanılır"
@@ -11716,7 +11716,7 @@ Kesişim noktası = Running Fix (10:30)
     keyPoints: [
       "Kural 19, birbirini göremeyen gemilere uygulanır; give-way/stand-on ayrımını ortadan kaldırır.",
       "Güvenli hız radar menziline orantılı olmalı ve tam durdurma mesafesi içinde kalınmalıdır.",
-      "Kural 19(d)(i): yalnızca radar izine dayanarak baş omuzdan gelen gemiye karşı iskeleye dönülmez.",
+      "Kural 19(d)(i): yalnızca radar izine dayanarak baş omuzdan gelen gemiye karşı iskele tarafına dönülmez.",
       "Sis prosedürleri: makine hazır, ses sinyalleri başlat, ek gözcü al, tüm fenerleri yak.",
       "ARPA CPA/TCPA analizi kısıtlı görüşte temel navigasyon aracıdır; seçici manevra prensibine uyulur.",
       "Görsel temas başlar başlamaz Kural 19'dan çıkılır ve ilgili COLREG kuralı devreye girer."
@@ -11831,7 +11831,7 @@ Kesişim noktası = Running Fix (10:30)
         imageAlt: "COLREG ses işaretleri: manevra (Kural 34) ve kısıtlı görüş (Kural 35) işaretleri",
         bulletPoints: [
           "1 kısa: Rotamı sancağa değiştiriyorum.",
-          "2 kısa: Rotamı iskeleye değiştiriyorum.",
+          "2 kısa: Rotamı iskele tarafına değiştiriyorum.",
           "3 kısa: Tornistan (geri) çalışıyorum.",
           "≥ 5 kısa ve hızlı: Şüphe/ikaz — yeterli önlem alındığından şüpheliyim (Kural 34(d)).",
           "1 uzun: Görüşü kapalı bir dönemece/alana yaklaşırken; karşıdan 1 uzun ile cevap verilir (Kural 34(e)).",

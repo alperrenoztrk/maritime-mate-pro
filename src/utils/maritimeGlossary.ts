@@ -276,6 +276,46 @@ export const maritimeTerms: MaritimeTerm[] = [
       uk: 'Буй',
     },
   },
+  {
+    // A 27.5 m length of anchor chain, or the U-shaped chain connector.
+    // Generic MT renders it as the currency "shekel".
+    tr: 'Şakel',
+    aliases: ['Kilit (zincir)'],
+    translations: {
+      en: 'Shackle', de: 'Schäkel', fr: 'Manille', es: 'Grillete',
+      it: 'Grillo', pt: 'Manilha', nl: 'Sluiting', ru: 'Скоба',
+      ja: 'シャックル', ko: '섀클', 'zh-CN': '卸扣', ar: 'شاكل', hi: 'शैकल',
+      sv: 'Schackel', no: 'Sjakkel', da: 'Sjækel', fi: 'Sakkeli', pl: 'Szakla',
+      cs: 'Třmen', hu: 'Sékli', ro: 'Cheie de lanț', el: 'Κλειδί', bg: 'Шегел',
+      uk: 'Скоба',
+    },
+  },
+
+  // ── Knots ──────────────────────────────────────────────────────────
+  {
+    tr: 'İzbarço',
+    aliases: ['İzbarço Bağı', 'İzbarço düğümü'],
+    translations: {
+      en: 'Bowline', de: 'Palstek', fr: 'Nœud de chaise', es: 'As de guía',
+      it: 'Gassa d’amante', pt: 'Lais de guia', nl: 'Paalsteek', ru: 'Беседочный узел',
+      ja: 'もやい結び', ko: '바우라인 매듭', 'zh-CN': '称人结', ar: 'عقدة بولين', hi: 'बोलाइन गाँठ',
+      sv: 'Pålstek', no: 'Pålestikk', da: 'Pælestik', fi: 'Paalusolmu', pl: 'Węzeł ratowniczy',
+      cs: 'Dračí smyčka', hu: 'Palstek', ro: 'Nod de scaun', el: 'Καντηλίτσα', bg: 'Беседочен възел',
+      uk: 'Беседковий вузол',
+    },
+  },
+  {
+    tr: 'Kazık Bağı',
+    aliases: ['Kazık bağı', 'Kazık Düğümü'],
+    translations: {
+      en: 'Clove hitch', de: 'Webleinstek', fr: 'Nœud de cabestan', es: 'Ballestrinque',
+      it: 'Nodo parlato', pt: 'Volta de fiel', nl: 'Mastworp', ru: 'Выбленочный узел',
+      ja: '巻き結び', ko: '까베스땅 매듭', 'zh-CN': '卷结', ar: 'عقدة الخشبة', hi: 'क्लोव हिच',
+      sv: 'Dubbelt halvslag', no: 'Dobbelt halvstikk', da: 'Dobbelt halvstik', fi: 'Siansorkka', pl: 'Wyblinka',
+      cs: 'Lodní uzel', hu: 'Szorítóhurok', ro: 'Nod de parâmă', el: 'Σταυρόκομπος', bg: 'Избленъчен възел',
+      uk: 'Вибленковий вузол',
+    },
+  },
 
   // ── Navigation ─────────────────────────────────────────────────────
   {
@@ -1209,6 +1249,47 @@ export const maritimeTerms: MaritimeTerm[] = [
       uk: 'Буксир',
     },
   },
+  {
+    // Engine-room rating who lubricates machinery. MT leaves it as "Yağcı"
+    // or renders the generic "greaser".
+    tr: 'Yağcı',
+    translations: {
+      en: 'Oiler', de: 'Schmierer', fr: 'Graisseur', es: 'Engrasador',
+      it: 'Ingrassatore', pt: 'Lubrificador', nl: 'Olieman', ru: 'Моторист-смазчик',
+      ja: 'オイラー', ko: '오일러', 'zh-CN': '机舱机工', ar: 'مزيّت', hi: 'ऑयलर',
+      sv: 'Smörjare', no: 'Smører', da: 'Smører', fi: 'Voitelija', pl: 'Smarownik',
+      cs: 'Mazač', hu: 'Olajozó', ro: 'Ungător', el: 'Λιπαντής', bg: 'Масльор',
+      uk: 'Моторист-мастильник',
+    },
+  },
+  {
+    // Whole-phrase override so it does not become "celestial cruise".
+    tr: 'Göksel Seyir',
+    aliases: ['Göksel Seyri', 'Göksel Navigasyon', 'Göksel Navigasyonu'],
+    translations: {
+      en: 'Celestial navigation', de: 'Astronavigation', fr: 'Navigation astronomique',
+      es: 'Navegación astronómica', it: 'Navigazione astronomica', pt: 'Navegação astronômica',
+      nl: 'Astronomische navigatie', ru: 'Астрономическая навигация',
+      ja: '天文航法', ko: '천문항법', 'zh-CN': '天文导航', ar: 'الملاحة الفلكية', hi: 'खगोलीय नौवहन',
+      sv: 'Astronomisk navigation', no: 'Astronomisk navigasjon', da: 'Astronomisk navigation',
+      fi: 'Astronominen navigointi', pl: 'Nawigacja astronomiczna', cs: 'Astronomická navigace',
+      hu: 'Csillagászati navigáció', ro: 'Navigație astronomică', el: 'Αστρονομική ναυσιπλοΐα',
+      bg: 'Астрономическа навигация', uk: 'Астрономічна навігація',
+    },
+  },
+  {
+    // Bare adjective: always "celestial" in this app; MT treats it as the
+    // proper name "Göksel" or renders "heavenly".
+    tr: 'Göksel',
+    translations: {
+      en: 'Celestial', de: 'Astronomisch', fr: 'Céleste', es: 'Astronómica',
+      it: 'Astronomica', pt: 'Celeste', nl: 'Astronomisch', ru: 'Астрономическая',
+      ja: '天測', ko: '천측', 'zh-CN': '天文', ar: 'فلكي', hi: 'खगोलीय',
+      sv: 'Astronomisk', no: 'Astronomisk', da: 'Astronomisk', fi: 'Astronominen', pl: 'Astronomiczna',
+      cs: 'Astronomická', hu: 'Csillagászati', ro: 'Astronomică', el: 'Αστρονομικός', bg: 'Астрономическа',
+      uk: 'Астрономічна',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
@@ -1290,6 +1371,23 @@ const curatedCorrections: Record<string, Array<[string, string]>> = {
   en: [
     // Google frequently transliterates these Ottoman/Turkish-rooted terms.
     ['Sanjak', 'Starboard'],
+    // "Kıç" (stern) is rendered as the vulgar literal "ass" inside sentences;
+    // standalone "ass" never has a legitimate maritime meaning in this corpus.
+    ['ass', 'stern'],
+    // "Funda" (let go / drop the anchor) becomes the plant name "heather".
+    ['heather', 'letting go'],
+    // "Şakel" (shackle — a 27.5 m length of anchor chain, or a chain connector)
+    // is mistranslated as the currency "shekel".
+    ['shekel', 'shackle'],
+    ['shekels', 'shackles'],
+    // "Baba" (mooring bollard/bitt) is mistranslated as the relative "father";
+    // only the mooring phrases are corrected to avoid touching real "father".
+    ['to the father', 'to the bollard'],
+    ['from the father', 'from the bollard'],
+    // Meteorological "cephe" (weather front) sometimes becomes "façade".
+    ['façade', 'front'],
+    // "Kazık bağı" (clove hitch) becomes the literal "stake tie".
+    ['stake tie', 'clove hitch'],
   ],
 };
 

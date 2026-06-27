@@ -39,7 +39,7 @@ export const navigationScenarios: Scenario[] = [
             text: "Yol tutma yükümlüsüyüm (stand-on), rotamı korurum",
             outcome: "danger",
             feedback:
-              "Yanlış. Sancağınızdaki gemiye yol vermek zorundasınız. Stand-on durumu, gemiyi iskelenizde gördüğünüzde geçerli olurdu.",
+              "Yanlış. Sancağınızdaki gemiye yol vermek zorundasınız. Stand-on durumu, gemiyi iskele tarafınızda gördüğünüzde geçerli olurdu.",
             source: { code: "COLREG Kural 15", detail: "Give-way / stand-on ayrımı" },
             next: "step2",
           },
@@ -68,10 +68,10 @@ export const navigationScenarios: Scenario[] = [
             next: "step3",
           },
           {
-            text: "İskeleye dönerim",
+            text: "İskele tarafına dönerim",
             outcome: "danger",
             feedback:
-              "Tehlikeli. İskeleye dönmek sizi karşı geminin önüne sokar ve çatışma riskini artırır. Kavşakta give-way gemi karşının önünden geçmekten kaçınmalıdır.",
+              "Tehlikeli. İskele tarafına dönmek sizi karşı geminin önüne sokar ve çatışma riskini artırır. Kavşakta give-way gemi karşının önünden geçmekten kaçınmalıdır.",
             source: { code: "COLREG Kural 15", detail: "Önünden geçmekten kaçınma" },
             next: "step3",
           },
@@ -116,7 +116,7 @@ export const navigationScenarios: Scenario[] = [
       },
     ],
     debrief:
-      "Kavşak durumunda gemiyi SANCAĞINIZDA görüyorsanız yol verme (give-way) yükümlüsüsünüz (Kural 15). Çözüm: SANCAĞA erken ve belirgin bir rota değişikliği yaparak karşı geminin KIÇINDAN geçmek (Kural 8 & 15). Karşının önünden geçmekten ve iskeleye dönmekten kaçının; manevrayı VHF anlaşmasına değil, kurallara ve ARPA teyidine dayandırın.",
+      "Kavşak durumunda gemiyi SANCAĞINIZDA görüyorsanız yol verme (give-way) yükümlüsüsünüz (Kural 15). Çözüm: SANCAĞA erken ve belirgin bir rota değişikliği yaparak karşı geminin KIÇINDAN geçmek (Kural 8 & 15). Karşının önünden geçmekten ve iskele tarafına dönmekten kaçının; manevrayı VHF anlaşmasına değil, kurallara ve ARPA teyidine dayandırın.",
   },
   // ──────────────────────────────────────────────────────────────────────
   {
@@ -128,7 +128,7 @@ export const navigationScenarios: Scenario[] = [
       "Yoğun sis bandına girdiniz, görüş ~0.5 nm. Radar/ARPA baş omuzlukta (nispi 030°, forward of the beam) bir hedef gösteriyor; 6 nm'den kapanıyor, CPA düşük. Görsel temas yok.",
     learningGoals: [
       "Kısıtlı görüşte COLREG Kural 19'u uygulamak",
-      "Baş omuzluktaki hedefe iskeleye dönmekten kaçınmak",
+      "Baş omuzluktaki hedefe iskele tarafına dönmekten kaçınmak",
       "Emniyetli hız ve ses işaretlerini kullanmak (Kural 6 ve 35)",
     ],
     steps: [
@@ -155,10 +155,10 @@ export const navigationScenarios: Scenario[] = [
             next: "step2",
           },
           {
-            text: "Hemen iskeleye büyük bir alarkın yaparım",
+            text: "Hemen iskele tarafına büyük bir alarkın yaparım",
             outcome: "danger",
             feedback:
-              "Tehlikeli. Baş omuzluktaki (forward of the beam) bir hedef için iskeleye dönmekten kaçınılır. Önce hız ve plot.",
+              "Tehlikeli. Baş omuzluktaki (forward of the beam) bir hedef için iskele tarafına dönmekten kaçınılır. Önce hız ve plot.",
             source: { code: "COLREG Kural 19(d)(i)", detail: "Forward of beam hedefe iskele yasak" },
             next: "step2",
           },
@@ -175,14 +175,14 @@ export const navigationScenarios: Scenario[] = [
             outcome: "safe",
             feedback:
               "Doğru. Baş omuzluktaki (geçme durumu hariç) hedef için iskeleden kaçınılır; sancağa belirgin alaргın uygundur.",
-            source: { code: "COLREG Kural 19(d)(i)", detail: "İskeleye dönmekten kaçın" },
+            source: { code: "COLREG Kural 19(d)(i)", detail: "İskele tarafına dönmekten kaçın" },
             next: "step3",
           },
           {
-            text: "İskeleye dönerim",
+            text: "İskele tarafına dönerim",
             outcome: "danger",
             feedback:
-              "Tehlikeli. Kural 19(d)(i) baş omuzluktaki hedef için iskeleye dönmeyi yasaklar (geçilen gemi durumu dışında).",
+              "Tehlikeli. Kural 19(d)(i) baş omuzluktaki hedef için iskele tarafına dönmeyi yasaklar (geçilen gemi durumu dışında).",
             source: { code: "COLREG Kural 19(d)(i)", detail: "Forward of beam: iskele yasak" },
             next: "step3",
           },
@@ -290,10 +290,10 @@ export const navigationScenarios: Scenario[] = [
             next: "step3",
           },
           {
-            text: "İskeleye dönerim",
+            text: "İskele tarafına dönerim",
             outcome: "danger",
             feedback:
-              "Tehlikeli. İskeleye dönmek karşı geminin sancak manevrasıyla çakışır ve çatışmaya yol açar.",
+              "Tehlikeli. İskele tarafına dönmek karşı geminin sancak manevrasıyla çakışır ve çatışmaya yol açar.",
             source: { code: "COLREG Kural 14", detail: "İskele dönüş yasak" },
             next: "step3",
           },
@@ -328,10 +328,10 @@ export const navigationScenarios: Scenario[] = [
             source: { code: "COLREG Kural 8(a)", detail: "Erken eylem" },
           },
           {
-            text: "İskeleye kaçarım",
+            text: "İskele tarafına kaçarım",
             outcome: "danger",
             feedback:
-              "Tehlikeli. Head-on'da iskeleye dönmek kuralın tam tersidir ve çatışma riskini artırır.",
+              "Tehlikeli. Head-on'da iskele tarafına dönmek kuralın tam tersidir ve çatışma riskini artırır.",
             source: { code: "COLREG Kural 14", detail: "Sancağa dön" },
           },
         ],
@@ -351,13 +351,13 @@ export const navigationScenarios: Scenario[] = [
     learningGoals: [
       "Kavşakta stand-on (yol tutan) gemiyi tanımak",
       "Kural 17'nin aşamalı yetkisini doğru uygulamak",
-      "İskele tarafındaki gemiye iskeleye dönmemek (Kural 17(c))",
+      "İskele tarafındaki gemiye iskele tarafına dönmemek (Kural 17(c))",
     ],
     steps: [
       {
         id: "step1",
         situation:
-          "Gemi iskelenizde ve kavşak rotasında; yol verme yükümlüsü o. Henüz herhangi bir manevra yapmadı.",
+          "Gemi iskele tarafınızda ve kavşak rotasında; yol verme yükümlüsü o. Henüz herhangi bir manevra yapmadı.",
         question: "İlk aşamada doğru davranış nedir?",
         choices: [
           {
@@ -380,7 +380,7 @@ export const navigationScenarios: Scenario[] = [
             text: "Yol verme yükümlüsü benim, hızı keserim",
             outcome: "danger",
             feedback:
-              "Yanlış. Gemi iskelenizde olduğundan yol verme yükümlüsü O. Stand-on rolünü doğru tanımlamalısınız.",
+              "Yanlış. Gemi iskele tarafınızda olduğundan yol verme yükümlüsü O. Stand-on rolünü doğru tanımlamalısınız.",
             source: { code: "COLREG Kural 15", detail: "Give-way / stand-on ayrımı" },
             next: "step2",
           },
@@ -425,17 +425,17 @@ export const navigationScenarios: Scenario[] = [
         question: "Hangi manevra Kural 17'ye uygundur?",
         choices: [
           {
-            text: "Sancağa dönerim veya hızı keserim; iskeleye dönmem",
+            text: "Sancağa dönerim veya hızı keserim; iskele tarafına dönmem",
             outcome: "safe",
             feedback:
-              "Doğru. Kural 17(c), kavşakta manevra yapan güçle yürüyen geminin, iskelesindeki gemi için iskeleye dönmemesini söyler. Sancağa dönüş veya hız kesme uygundur.",
+              "Doğru. Kural 17(c), kavşakta manevra yapan güçle yürüyen geminin, iskele tarafındaki gemi için iskele tarafına dönmemesini söyler. Sancağa dönüş veya hız kesme uygundur.",
             source: { code: "COLREG Kural 17(c)", detail: "İskeledeki gemiye iskele yasak" },
           },
           {
-            text: "İskeleye dönerim",
+            text: "İskele tarafına dönerim",
             outcome: "danger",
             feedback:
-              "Tehlikeli. İskele tarafınızdaki gemiye doğru iskeleye dönmek tam da kaçınılması gereken manevradır.",
+              "Tehlikeli. İskele tarafınızdaki gemiye doğru iskele tarafına dönmek tam da kaçınılması gereken manevradır.",
             source: { code: "COLREG Kural 17(c)", detail: "İskele dönüş yasak" },
           },
           {
@@ -449,7 +449,7 @@ export const navigationScenarios: Scenario[] = [
       },
     ],
     debrief:
-      "Kavşakta gemiyi İSKELENİZDE görüyorsanız stand-on (yol tutan) gemisiniz. Aşama aşama Kural 17: önce rota/hızı koru (17(a)(i)); yol veren gerekeni yapmıyorsa kendin manevra yapabilirsin (17(a)(ii)); çatışma tek başına önlenemeyecekse manevra yapmak ZORUNDASIN (17(b)); ve iskelendeki gemi için İSKELEYE DÖNME (17(c)) — sancağa dön veya hızı kes.",
+      "Kavşakta gemiyi İSKELE TARAFINIZDA görüyorsanız stand-on (yol tutan) gemisiniz. Aşama aşama Kural 17: önce rota/hızı koru (17(a)(i)); yol veren gerekeni yapmıyorsa kendin manevra yapabilirsin (17(a)(ii)); çatışma tek başına önlenemeyecekse manevra yapmak ZORUNDASIN (17(b)); ve iskele tarafındaki gemi için İSKELE TARAFINA DÖNME (17(c)) — sancağa dön veya hızı kes.",
   },
   // ──────────────────────────────────────────────────────────────────────
   {

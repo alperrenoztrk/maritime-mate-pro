@@ -942,7 +942,7 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
         description: `Bosun's store envanterinin takibi: halatlar, teller, boya, macun, temizlik malzemeleri, el aletleri, shackle/turnbuckle ve diğer güverte malzemeleri. İhtiyaç listelerinin hazırlanması ve Birinci Zabit'e iletilmesi. Malzeme israfının önlenmesi.`
       },
       {
-        title: "İskele, merdiven ve erişim ekipmanlarının bakımı",
+        title: "Borda iskelesi, merdiven ve erişim ekipmanlarının bakımı",
         description: `Pilot ladder, accommodation ladder, gangway, bosun's chair ve güverte erişim ekipmanlarının bakımı, kontrolü ve güvenli kullanımı. SOLAS Chapter V pilot transfer arrangement gerekliliklerine uygun hazırlık.`
       },
       {
@@ -1084,7 +1084,7 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
         description: `Muster station'da hazır bulunma, tatbikatlarda verilen görevleri yerine getirme (filika ekibi, yangın partisi, boundary cooling vb.). Can yeleği, EEBD kullanımı ve kaçış yollarını bilme. Kendi emniyet ekipmanlarının bakımına destek.`
       },
       {
-        title: "İskele ve erişim ekipmanlarının kurulumu",
+        title: "Borda iskelesi ve erişim ekipmanlarının kurulumu",
         description: `Pilot ladder, gangway ve accommodation ladder kurulumu ve toplanmasına destek. Güvenlik ağı, can simidi ve aydınlatma düzeninin hazırlanması. Pilot boarding arrangement'ın SOLAS gerekliliklerine uygun hazırlanmasına yardım.`
       },
       {

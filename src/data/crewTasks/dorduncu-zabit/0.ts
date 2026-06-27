@@ -97,7 +97,7 @@ const content: CrewTaskLongForm = {
             caption: `COLREG Karşılaşma Durumları ve Yükümlülük (Power-driven vessels)`,
             headers: ["Durum", "Kural", "Bizim rolümüz", "Eylem"],
             rows: [
-              ["Head-on", "14", "Her iki gemi", "İskeleye dönerek sancaktan geç"],
+              ["Head-on", "14", "Her iki gemi", "İskele tarafına dönerek sancaktan geç"],
               ["Crossing", "15", "Sağdaki gemi 'stand-on'", "Soldaki 'give-way' olur"],
               ["Overtaking", "13", "Geçen gemi 'give-way'", "Açık geç, sorumluluk geçende"],
               ["Give-way vessel", "16", "Yol veren", "Erken ve belirgin manevra"],
@@ -108,7 +108,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "3.2 Sınırlı görüş kuralları (Kural 19)",
           paragraphs: [
-            `Sınırlı görüşte (sis, yağmur, kar) "stand-on/give-way" ayrımı geçerli değildir; her gemi güvenli hızda seyreder ve makineleri manevraya hazır tutar. Radarda tespit edilen bir hedef için, mümkünse iskeleye dönüş (sancaktaki gemiye doğru hariç) ve önündeki gemiye doğru rota değişikliği gibi yasaklanmış manevralardan kaçınılır.`,
+            `Sınırlı görüşte (sis, yağmur, kar) "stand-on/give-way" ayrımı geçerli değildir; her gemi güvenli hızda seyreder ve makineleri manevraya hazır tutar. Radarda tespit edilen bir hedef için, mümkünse iskele tarafına dönüş (sancaktaki gemiye doğru hariç) ve önündeki gemiye doğru rota değişikliği gibi yasaklanmış manevralardan kaçınılır.`,
             `Sınırlı görüşe girildiğinde Dördüncü Zabit derhal Kaptan'ı çağırır, ek gözcü ister, sis düdüğü çalmaya başlar (Kural 35), seyir fenerlerini yakar, manuel dümene geçer ve makineye standby bilgisi verir. Hız, görüş mesafesine ve stopping distance'a göre azaltılır.`,
           ],
           callouts: [
