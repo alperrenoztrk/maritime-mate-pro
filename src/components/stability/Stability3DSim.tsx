@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, PerspectiveCamera } from "@react-three/drei";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -170,19 +170,31 @@ export const Stability3DSim = () => {
       <CardContent className="space-y-4">
         {/* 3D viewport */}
         <div className="relative h-[340px] overflow-hidden rounded-xl border border-border/60 bg-slate-950">
-          <Canvas shadows dpr={[1, 2]}>
-            <PerspectiveCamera makeDefault position={[7, 5, 7]} fov={42} />
-            <Environment preset="city" />
-            <StabilityScene
-              targetHeel={targetHeel}
-              draftOffset={draftOffset}
-              stability={stability}
-              kg={kgInput}
-              onHeelUpdate={handleHeelUpdate}
-              gm={stability.gm}
-              bm={stability.bm}
-            />
-          </Canvas>
+          {/* The outer Suspense keeps any async loader inside <Canvas> from
+              bubbling up to the route-level Suspense — otherwise a slow/blocked
+              external HDR fetch (drei <Environment preset>) would suspend and
+              hide the ENTIRE page behind the full-screen route spinner. */}
+          <Suspense fallback={<SimLoadingFallback />}>
+            <Canvas shadows dpr={[1, 2]}>
+              <PerspectiveCamera makeDefault position={[7, 5, 7]} fov={42} />
+              {/* Inner Suspense (fallback={null}) lets the ship, water and
+                  lights render immediately; the IBL environment simply pops in
+                  if/when the HDR loads, and is skipped gracefully if it can't
+                  be reached (offline / CDN blocked). */}
+              <Suspense fallback={null}>
+                <Environment preset="city" />
+              </Suspense>
+              <StabilityScene
+                targetHeel={targetHeel}
+                draftOffset={draftOffset}
+                stability={stability}
+                kg={kgInput}
+                onHeelUpdate={handleHeelUpdate}
+                gm={stability.gm}
+                bm={stability.bm}
+              />
+            </Canvas>
+          </Suspense>
 
           {/* Live readout - top left */}
           <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-[11px] shadow-md backdrop-blur-sm">
@@ -283,6 +295,17 @@ export const Stability3DSim = () => {
 };
 
 /* ─── sub-components ─── */
+function SimLoadingFallback() {
+  return (
+    <div className="flex h-full items-center justify-center">
+      <div className="text-center">
+        <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+        <p className="text-xs text-muted-foreground">3D simülasyon yükleniyor…</p>
+      </div>
+    </div>
+  );
+}
+
 function Row({ label, value, color }: { label: string; value: string; color?: string }) {
   return (
     <div className="flex justify-between gap-3">
