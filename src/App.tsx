@@ -179,6 +179,7 @@ const EconomicsTopicsPage = lazy(() => import("./pages/EconomicsTopicsPage"));
 const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
 const BetaWorkHoursTool = lazy(() => import("./pages/BetaWorkHoursTool"));
 const BetaPscChecklist = lazy(() => import("./pages/BetaPscChecklist"));
+const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
 const queryClient = new QueryClient();
 
 const RouteFallback = () => (
@@ -208,6 +209,7 @@ const AnimatedRoutes = () => {
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
         <Route path="/beta/work-hours" element={<PageTransition><BetaWorkHoursTool /></PageTransition>} />
         <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
+        <Route path="/beta/ship-simulator" element={<PageTransition><BetaShipSimulator /></PageTransition>} />
 
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
         <Route path="/lessons/cargo/topics" element={<PageTransition><CargoTopicsPage /></PageTransition>} />

@@ -52,6 +52,7 @@ const STATIC_ROUTES: string[] = [
   '/beta',
   '/beta/work-hours',
   '/beta/psc-checklist',
+  '/beta/ship-simulator',
 
   '/lessons/stability/topics',
   '/lessons/cargo/topics',
