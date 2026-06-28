@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ShieldAlert, Flame, LifeBuoy, Waves, Bell } from "lucide-react";
+import { ArrowLeft, ShieldAlert, Flame, LifeBuoy, Waves, Bell, MapPin, Users } from "lucide-react";
 import { crewHierarchy } from "@/data/crewHierarchy";
 import {
   musterEmergencies,
@@ -118,6 +118,17 @@ export default function MusterListPage() {
             <span className="text-sm font-medium text-foreground">{activeEmergency.signal}</span>
           </div>
           <p className="mt-2 text-xs text-muted-foreground">{activeEmergency.description}</p>
+          <div className="mt-3 flex items-start gap-2 rounded-xl border border-primary/20 bg-primary/5 p-3">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <p className="text-[11px] leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">Toplanma kuralı:</span> Alarm
+              duyulduğunda tüm personel can yeleğiyle{" "}
+              <span className="font-semibold text-foreground">Muster (toplanma) İstasyonunda</span>{" "}
+              toplanır; yoklama alındıktan sonra ekipler görev yerlerine (köprüüstü, makine
+              dairesi, olay yeri, filika istasyonu) yönlendirilir. Yalnızca köprüüstü komuta/seyir
+              ekibi doğrudan köprüüstünde toplanır.
+            </p>
+          </div>
         </div>
 
         {/* Departman bazlı rol görevleri */}
@@ -138,10 +149,15 @@ export default function MusterListPage() {
                       to={`/crew/${assignment.roleSlug}`}
                       className="group flex flex-col gap-2 rounded-xl border border-border/40 bg-background/80 p-3 shadow-xs transition hover:border-primary/40 hover:bg-card"
                     >
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="font-semibold text-foreground">{assignment.rank}</div>
-                        <span className="shrink-0 rounded-md bg-slate-100 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-700 transition group-hover:bg-primary/15 group-hover:text-primary dark:bg-slate-800 dark:text-slate-200">
+                      <div className="font-semibold text-foreground">{assignment.rank}</div>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                          <MapPin className="h-3 w-3 shrink-0" />
                           {assignment.musterStation}
+                        </span>
+                        <span className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-2 py-1 text-[10px] font-medium text-primary">
+                          <Users className="h-3 w-3 shrink-0" />
+                          {assignment.emergencyTeam}
                         </span>
                       </div>
                       <p className="text-xs leading-relaxed text-muted-foreground">{duty}</p>
