@@ -1290,6 +1290,130 @@ export const maritimeTerms: MaritimeTerm[] = [
       uk: 'Астрономічна',
     },
   },
+
+  // ── Glossary terms that generic MT leaves untranslated or mangles ───
+  // Audit of the in-app glossary (src/data/glossaryTerms.ts) showed Google
+  // rendering these niche Turkish nautical terms wrong in English
+  // (e.g. "Camadan" -> "glass", "Karakol" -> "police station", "Tonoz" ->
+  // "vault", "Istinga" -> "istinga"). Each is an obscure, often-ambiguous
+  // Turkish word, so they are whole-string overrides only (inline: false).
+  // Translations are provided for the languages we can verify; the rest fall
+  // back to machine translation.
+  {
+    // Floating position/danger mark — synonymous with Şamandıra (Buoy).
+    tr: 'Bova',
+    inline: false,
+    translations: {
+      en: 'Buoy', de: 'Boje', fr: 'Bouée', es: 'Boya',
+      it: 'Boa', pt: 'Boia', nl: 'Boei', ru: 'Буй',
+      ja: 'ブイ', ko: '부표', 'zh-CN': '浮标', ar: 'عوامة', hi: 'प्लव',
+      sv: 'Boj', no: 'Bøye', da: 'Bøje', fi: 'Poiju', pl: 'Boja',
+      cs: 'Bóje', hu: 'Bója', ro: 'Geamandură', el: 'Σημαδούρα', bg: 'Шамандура',
+      uk: 'Буй',
+    },
+  },
+  {
+    // Scraping/cleaning the hull below the waterline.
+    tr: 'Kalyata',
+    inline: false,
+    translations: {
+      en: 'Careening', de: 'Kielholen', fr: 'Carénage', es: 'Carenado',
+      it: 'Carenaggio', pt: 'Carenagem', nl: 'Kielhalen', ru: 'Кренгование',
+    },
+  },
+  {
+    // Rowing pivot/pin on the gunwale of a small boat.
+    tr: 'Iskarmoz',
+    inline: false,
+    translations: {
+      en: 'Thole pin', de: 'Dolle', fr: 'Tolet', es: 'Tolete',
+      it: 'Scalmo', pt: 'Tolete', nl: 'Dol', ru: 'Уключина',
+    },
+  },
+  {
+    // Metal/plastic eye worked into a rope end (per the in-app definition).
+    tr: 'Camadan',
+    inline: false,
+    translations: {
+      en: 'Thimble', de: 'Kausche', fr: 'Cosse', es: 'Guardacabo',
+      it: 'Redancia', pt: 'Sapatilho', nl: 'Kous', ru: 'Коуш',
+    },
+  },
+  {
+    // Lookout/observation watch kept for navigational safety.
+    tr: 'Karakol',
+    inline: false,
+    translations: {
+      en: 'Lookout watch', de: 'Ausguck', fr: 'Veille', es: 'Vigía',
+      it: 'Vedetta', pt: 'Vigia', nl: 'Uitkijk', ru: 'Наблюдательная вахта',
+    },
+  },
+  {
+    // Multi-sheave block-and-tackle / heavy purchase.
+    tr: 'Dongaloz',
+    inline: false,
+    translations: {
+      en: 'Block and tackle', de: 'Talje', fr: 'Palan', es: 'Aparejo',
+      it: 'Paranco', pt: 'Talha', nl: 'Takel', ru: 'Тали',
+    },
+  },
+  {
+    // Domestic coastal trade between a country's own ports.
+    tr: 'Küçük Kabotaj',
+    inline: false,
+    translations: {
+      en: 'Coastal cabotage', de: 'Kleine Kabotage', fr: 'Petit cabotage',
+      es: 'Pequeño cabotaje', it: 'Piccolo cabotaggio', pt: 'Pequena cabotagem',
+      ru: 'Малый каботаж',
+    },
+  },
+  {
+    // Trade with/between foreign ports.
+    tr: 'Büyük Kabotaj',
+    inline: false,
+    translations: {
+      en: 'International cabotage', de: 'Große Kabotage', fr: 'Grand cabotage',
+      es: 'Gran cabotaje', it: 'Gran cabotaggio', pt: 'Grande cabotagem',
+      ru: 'Большой каботаж',
+    },
+  },
+  {
+    // Thin line/wire for hoisting flags and pennants.
+    tr: 'Istinga',
+    inline: false,
+    translations: {
+      en: 'Signal halyard', de: 'Signalleine', fr: 'Drisse de signaux',
+      es: 'Driza de señales', it: 'Drizza dei segnali', pt: 'Adriça de sinais',
+      nl: 'Seinlijn', ru: 'Сигнальный фал',
+    },
+  },
+  {
+    // A rope chafing against an obstacle (wear / risk of parting).
+    tr: 'Dirseklemek',
+    inline: false,
+    translations: {
+      en: 'Chafing', de: 'Scheuern', fr: 'Ragage', es: 'Roce',
+      it: 'Sfregamento', pt: 'Roçadura', nl: 'Schavielen', ru: 'Перетирание',
+    },
+  },
+  {
+    // Securing a rope by taking a round turn on a bollard/bitt.
+    tr: 'Volta',
+    inline: false,
+    translations: {
+      en: 'Round turn', de: 'Rundtörn', fr: 'Tour mort',
+      it: 'Volta tonda', ru: 'Шлаг',
+    },
+  },
+  {
+    // Applying opposite helm ("kontra dümen" = counter-rudder).
+    tr: 'Kontra',
+    inline: false,
+    translations: {
+      en: 'Counter-rudder', de: 'Gegenruder', fr: 'Contre-barre',
+      es: 'Contratimón', it: 'Controtimone', pt: 'Contraleme', nl: 'Tegenroer',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
