@@ -159,6 +159,7 @@ const MaritimeNews = lazyWithReload(() => import("./pages/MaritimeNews"));
 
 const CrewRoleDetailPage = lazyWithReload(() => import("./pages/CrewRoleDetail"));
 const CrewTaskDeepDive = lazyWithReload(() => import("./pages/CrewTaskDeepDive"));
+const MusterListPage = lazyWithReload(() => import("./pages/MusterListPage"));
 const LessonTopicsPage = lazyWithReload(() => import("./pages/LessonTopicsPage"));
 const LessonTopicDetailPage = lazyWithReload(() => import("./pages/LessonTopicDetailPage"));
 // Alıştırmalar (orijinal Dersler'e dokunmadan, ayrı sayfalar)
@@ -260,6 +261,7 @@ const AnimatedRoutes = () => {
         <Route path="/exercises/:categoryId/topics/:topicTitle/learn" element={<PageTransition><GuidedLessonSession /></PageTransition>} />
         <Route path="/exercises/:topicKey/scenarios" element={<PageTransition><CourseBetaScenariosPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
+        <Route path="/crew/muster-list" element={<PageTransition><MusterListPage /></PageTransition>} />
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />
         <Route path="/machinery" element={<PageTransition><MachineryHubPage /></PageTransition>} />
         <Route path="/ship-tasks" element={<PageTransition><ShipTasksPage /></PageTransition>} />
