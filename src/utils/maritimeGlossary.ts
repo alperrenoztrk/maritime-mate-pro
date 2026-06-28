@@ -1414,6 +1414,90 @@ export const maritimeTerms: MaritimeTerm[] = [
       es: 'Contratimón', it: 'Controtimone', pt: 'Contraleme', nl: 'Tegenroer',
     },
   },
+
+  // ── High-value terms promoted from the glossary audit ──────────────
+  // These were found mistranslated in the generated English dictionary (e.g.
+  // "Doğrultucu Moment" -> "Rectifying Torque", weather "Cephe" -> "facade").
+  // The same errors occur in the other 23 languages at runtime, so they are
+  // promoted to curated overrides here. All are multi-word phrases (safe for
+  // inline replacement). Languages we could not verify fall back to MT.
+  {
+    // Stability: righting moment (M = Δ × GZ). MT often returns the electrical
+    // "rectifier moment" instead of the naval-architecture term.
+    tr: 'Doğrultucu Moment',
+    aliases: ['Doğrultma Momenti', 'Geri Doğrultucu Moment'],
+    translations: {
+      en: 'Righting moment', de: 'Aufrichtendes Moment', fr: 'Moment de redressement',
+      es: 'Momento adrizante', it: 'Momento raddrizzante', pt: 'Momento de endireitamento',
+      nl: 'Oprichtend moment', ru: 'Восстанавливающий момент',
+      ja: '復原モーメント', ko: '복원 모멘트', 'zh-CN': '复原力矩',
+      sv: 'Rätande moment', no: 'Rettende moment', da: 'Oprettende moment', fi: 'Oikaiseva momentti',
+      pl: 'Moment prostujący', cs: 'Vzpřimující moment', ro: 'Moment de redresare',
+      el: 'Ροπή επαναφοράς', bg: 'Възстановяващ момент', uk: 'Відновлювальний момент',
+    },
+  },
+  {
+    // Load line / Plimsoll mark on the ship's side.
+    tr: 'Plimsoll Markası',
+    aliases: ['Plimsoll Marka', 'Yükleme Hattı Markası', 'Fribord Markası'],
+    translations: {
+      en: 'Plimsoll mark', de: 'Freibordmarke', fr: 'Marque de franc-bord',
+      es: 'Marca de francobordo', it: 'Marca del bordo libero', pt: 'Marca de bordo livre',
+      nl: 'Uitwateringsmerk', ru: 'Грузовая марка',
+      ja: '満載喫水線標', ko: '만재흘수선표', 'zh-CN': '载重线标志',
+      sv: 'Lastmärke', no: 'Lastemerke', da: 'Lastemærke', fi: 'Lastimerkki',
+      pl: 'Znak wolnej burty', cs: 'Nákladová značka', ro: 'Marca de bord liber',
+      el: 'Σήμα Πλίμσολ', bg: 'Товарна марка', uk: 'Вантажна марка',
+    },
+  },
+  {
+    // Meteorology: cold front. MT renders Turkish "Cephe" as "facade".
+    tr: 'Soğuk Cephe',
+    translations: {
+      en: 'Cold front', de: 'Kaltfront', fr: 'Front froid', es: 'Frente frío',
+      it: 'Fronte freddo', pt: 'Frente fria', nl: 'Koufront', ru: 'Холодный фронт',
+      ja: '寒冷前線', ko: '한랭전선', 'zh-CN': '冷锋',
+      sv: 'Kallfront', no: 'Kaldfront', da: 'Koldfront', fi: 'Kylmä rintama',
+      pl: 'Front chłodny', cs: 'Studená fronta', hu: 'Hidegfront', ro: 'Front rece',
+      el: 'Ψυχρό μέτωπο', bg: 'Студен фронт', uk: 'Холодний фронт',
+    },
+  },
+  {
+    // Meteorology: warm front.
+    tr: 'Sıcak Cephe',
+    translations: {
+      en: 'Warm front', de: 'Warmfront', fr: 'Front chaud', es: 'Frente cálido',
+      it: 'Fronte caldo', pt: 'Frente quente', nl: 'Warmtefront', ru: 'Тёплый фронт',
+      ja: '温暖前線', ko: '온난전선', 'zh-CN': '暖锋',
+      sv: 'Varmfront', no: 'Varmfront', da: 'Varmfront', fi: 'Lämmin rintama',
+      pl: 'Front ciepły', cs: 'Teplá fronta', hu: 'Melegfront', ro: 'Front cald',
+      el: 'Θερμό μέτωπο', bg: 'Топъл фронт', uk: 'Теплий фронт',
+    },
+  },
+  {
+    // Meteorology: occluded front.
+    tr: 'Oklüzyon Cephesi',
+    aliases: ['Oklüde Cephe', 'Oklüzyon Cephe'],
+    translations: {
+      en: 'Occluded front', de: 'Okklusionsfront', fr: 'Front occlus', es: 'Frente ocluido',
+      it: 'Fronte occluso', pt: 'Frente oclusa', nl: 'Occlusiefront', ru: 'Фронт окклюзии',
+      ja: '閉塞前線', ko: '폐색전선', 'zh-CN': '锢囚锋',
+      sv: 'Ocklusionsfront', no: 'Okklusjonsfront', da: 'Okklusionsfront', fi: 'Okkluusiorintama',
+      pl: 'Front okluzji', cs: 'Okluzní fronta', hu: 'Okklúziós front', ro: 'Front ocluit',
+      el: 'Μέτωπο σύμφυσης', bg: 'Оклюзионен фронт', uk: 'Фронт оклюзії',
+    },
+  },
+  {
+    // Rope work: eye splice (a permanent loop worked into a rope's end).
+    tr: 'Kasa Bağı',
+    aliases: ['Gözlü Ek', 'Kasa Bağ'],
+    inline: false,
+    translations: {
+      en: 'Eye splice', de: 'Augspleiß', fr: 'Épissure à œil', es: 'Costura de gaza',
+      it: 'Impiombatura ad occhio', pt: 'Costura de olhal', nl: 'Oogsplits', ru: 'Огон',
+      sv: 'Ögonsplits', no: 'Øyespleis', da: 'Øjesplejsning', fi: 'Silmäpleissi',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
