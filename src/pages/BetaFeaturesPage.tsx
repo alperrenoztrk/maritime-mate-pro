@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FlaskConical, Clock4, ClipboardCheck } from "lucide-react";
+import { FlaskConical, Clock4, ClipboardCheck, Ship } from "lucide-react";
 
 const FEATURES = [
   {
@@ -16,6 +16,14 @@ const FEATURES = [
     description:
       "Liman Devleti Kontrolü öncesi sertifika, can kurtarma, yangın, seyir, MARPOL ve MLC maddelerini madde madde kontrol edin. Excel rapor olarak indirilir.",
     icon: ClipboardCheck,
+    badge: "Yeni",
+  },
+  {
+    to: "/beta/ship-simulator",
+    title: "3D Gemi Stabilite Simülasyonu",
+    description:
+      "GM ve KG değerlerini değiştirerek geminin meyil davranışını gerçek zamanlı izleyin. IMO kriterleri ve GZ eğrisi anlık hesaplanır.",
+    icon: Ship,
     badge: "Yeni",
   },
 ];
