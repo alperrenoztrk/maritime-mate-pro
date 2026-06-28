@@ -1290,6 +1290,214 @@ export const maritimeTerms: MaritimeTerm[] = [
       uk: 'Астрономічна',
     },
   },
+
+  // ── Glossary terms that generic MT leaves untranslated or mangles ───
+  // Audit of the in-app glossary (src/data/glossaryTerms.ts) showed Google
+  // rendering these niche Turkish nautical terms wrong in English
+  // (e.g. "Camadan" -> "glass", "Karakol" -> "police station", "Tonoz" ->
+  // "vault", "Istinga" -> "istinga"). Each is an obscure, often-ambiguous
+  // Turkish word, so they are whole-string overrides only (inline: false).
+  // Translations are provided for the languages we can verify; the rest fall
+  // back to machine translation.
+  {
+    // Floating position/danger mark — synonymous with Şamandıra (Buoy).
+    tr: 'Bova',
+    inline: false,
+    translations: {
+      en: 'Buoy', de: 'Boje', fr: 'Bouée', es: 'Boya',
+      it: 'Boa', pt: 'Boia', nl: 'Boei', ru: 'Буй',
+      ja: 'ブイ', ko: '부표', 'zh-CN': '浮标', ar: 'عوامة', hi: 'प्लव',
+      sv: 'Boj', no: 'Bøye', da: 'Bøje', fi: 'Poiju', pl: 'Boja',
+      cs: 'Bóje', hu: 'Bója', ro: 'Geamandură', el: 'Σημαδούρα', bg: 'Шамандура',
+      uk: 'Буй',
+    },
+  },
+  {
+    // Scraping/cleaning the hull below the waterline.
+    tr: 'Kalyata',
+    inline: false,
+    translations: {
+      en: 'Careening', de: 'Kielholen', fr: 'Carénage', es: 'Carenado',
+      it: 'Carenaggio', pt: 'Carenagem', nl: 'Kielhalen', ru: 'Кренгование',
+    },
+  },
+  {
+    // Rowing pivot/pin on the gunwale of a small boat.
+    tr: 'Iskarmoz',
+    inline: false,
+    translations: {
+      en: 'Thole pin', de: 'Dolle', fr: 'Tolet', es: 'Tolete',
+      it: 'Scalmo', pt: 'Tolete', nl: 'Dol', ru: 'Уключина',
+    },
+  },
+  {
+    // Metal/plastic eye worked into a rope end (per the in-app definition).
+    tr: 'Camadan',
+    inline: false,
+    translations: {
+      en: 'Thimble', de: 'Kausche', fr: 'Cosse', es: 'Guardacabo',
+      it: 'Redancia', pt: 'Sapatilho', nl: 'Kous', ru: 'Коуш',
+    },
+  },
+  {
+    // Lookout/observation watch kept for navigational safety.
+    tr: 'Karakol',
+    inline: false,
+    translations: {
+      en: 'Lookout watch', de: 'Ausguck', fr: 'Veille', es: 'Vigía',
+      it: 'Vedetta', pt: 'Vigia', nl: 'Uitkijk', ru: 'Наблюдательная вахта',
+    },
+  },
+  {
+    // Multi-sheave block-and-tackle / heavy purchase.
+    tr: 'Dongaloz',
+    inline: false,
+    translations: {
+      en: 'Block and tackle', de: 'Talje', fr: 'Palan', es: 'Aparejo',
+      it: 'Paranco', pt: 'Talha', nl: 'Takel', ru: 'Тали',
+    },
+  },
+  {
+    // Domestic coastal trade between a country's own ports.
+    tr: 'Küçük Kabotaj',
+    inline: false,
+    translations: {
+      en: 'Coastal cabotage', de: 'Kleine Kabotage', fr: 'Petit cabotage',
+      es: 'Pequeño cabotaje', it: 'Piccolo cabotaggio', pt: 'Pequena cabotagem',
+      ru: 'Малый каботаж',
+    },
+  },
+  {
+    // Trade with/between foreign ports.
+    tr: 'Büyük Kabotaj',
+    inline: false,
+    translations: {
+      en: 'International cabotage', de: 'Große Kabotage', fr: 'Grand cabotage',
+      es: 'Gran cabotaje', it: 'Gran cabotaggio', pt: 'Grande cabotagem',
+      ru: 'Большой каботаж',
+    },
+  },
+  {
+    // Thin line/wire for hoisting flags and pennants.
+    tr: 'Istinga',
+    inline: false,
+    translations: {
+      en: 'Signal halyard', de: 'Signalleine', fr: 'Drisse de signaux',
+      es: 'Driza de señales', it: 'Drizza dei segnali', pt: 'Adriça de sinais',
+      nl: 'Seinlijn', ru: 'Сигнальный фал',
+    },
+  },
+  {
+    // A rope chafing against an obstacle (wear / risk of parting).
+    tr: 'Dirseklemek',
+    inline: false,
+    translations: {
+      en: 'Chafing', de: 'Scheuern', fr: 'Ragage', es: 'Roce',
+      it: 'Sfregamento', pt: 'Roçadura', nl: 'Schavielen', ru: 'Перетирание',
+    },
+  },
+  {
+    // Securing a rope by taking a round turn on a bollard/bitt.
+    tr: 'Volta',
+    inline: false,
+    translations: {
+      en: 'Round turn', de: 'Rundtörn', fr: 'Tour mort',
+      it: 'Volta tonda', ru: 'Шлаг',
+    },
+  },
+  {
+    // Applying opposite helm ("kontra dümen" = counter-rudder).
+    tr: 'Kontra',
+    inline: false,
+    translations: {
+      en: 'Counter-rudder', de: 'Gegenruder', fr: 'Contre-barre',
+      es: 'Contratimón', it: 'Controtimone', pt: 'Contraleme', nl: 'Tegenroer',
+    },
+  },
+
+  // ── High-value terms promoted from the glossary audit ──────────────
+  // These were found mistranslated in the generated English dictionary (e.g.
+  // "Doğrultucu Moment" -> "Rectifying Torque", weather "Cephe" -> "facade").
+  // The same errors occur in the other 23 languages at runtime, so they are
+  // promoted to curated overrides here. All are multi-word phrases (safe for
+  // inline replacement). Languages we could not verify fall back to MT.
+  {
+    // Stability: righting moment (M = Δ × GZ). MT often returns the electrical
+    // "rectifier moment" instead of the naval-architecture term.
+    tr: 'Doğrultucu Moment',
+    aliases: ['Doğrultma Momenti', 'Geri Doğrultucu Moment'],
+    translations: {
+      en: 'Righting moment', de: 'Aufrichtendes Moment', fr: 'Moment de redressement',
+      es: 'Momento adrizante', it: 'Momento raddrizzante', pt: 'Momento de endireitamento',
+      nl: 'Oprichtend moment', ru: 'Восстанавливающий момент',
+      ja: '復原モーメント', ko: '복원 모멘트', 'zh-CN': '复原力矩',
+      sv: 'Rätande moment', no: 'Rettende moment', da: 'Oprettende moment', fi: 'Oikaiseva momentti',
+      pl: 'Moment prostujący', cs: 'Vzpřimující moment', ro: 'Moment de redresare',
+      el: 'Ροπή επαναφοράς', bg: 'Възстановяващ момент', uk: 'Відновлювальний момент',
+    },
+  },
+  {
+    // Load line / Plimsoll mark on the ship's side.
+    tr: 'Plimsoll Markası',
+    aliases: ['Plimsoll Marka', 'Yükleme Hattı Markası', 'Fribord Markası'],
+    translations: {
+      en: 'Plimsoll mark', de: 'Freibordmarke', fr: 'Marque de franc-bord',
+      es: 'Marca de francobordo', it: 'Marca del bordo libero', pt: 'Marca de bordo livre',
+      nl: 'Uitwateringsmerk', ru: 'Грузовая марка',
+      ja: '満載喫水線標', ko: '만재흘수선표', 'zh-CN': '载重线标志',
+      sv: 'Lastmärke', no: 'Lastemerke', da: 'Lastemærke', fi: 'Lastimerkki',
+      pl: 'Znak wolnej burty', cs: 'Nákladová značka', ro: 'Marca de bord liber',
+      el: 'Σήμα Πλίμσολ', bg: 'Товарна марка', uk: 'Вантажна марка',
+    },
+  },
+  {
+    // Meteorology: cold front. MT renders Turkish "Cephe" as "facade".
+    tr: 'Soğuk Cephe',
+    translations: {
+      en: 'Cold front', de: 'Kaltfront', fr: 'Front froid', es: 'Frente frío',
+      it: 'Fronte freddo', pt: 'Frente fria', nl: 'Koufront', ru: 'Холодный фронт',
+      ja: '寒冷前線', ko: '한랭전선', 'zh-CN': '冷锋',
+      sv: 'Kallfront', no: 'Kaldfront', da: 'Koldfront', fi: 'Kylmä rintama',
+      pl: 'Front chłodny', cs: 'Studená fronta', hu: 'Hidegfront', ro: 'Front rece',
+      el: 'Ψυχρό μέτωπο', bg: 'Студен фронт', uk: 'Холодний фронт',
+    },
+  },
+  {
+    // Meteorology: warm front.
+    tr: 'Sıcak Cephe',
+    translations: {
+      en: 'Warm front', de: 'Warmfront', fr: 'Front chaud', es: 'Frente cálido',
+      it: 'Fronte caldo', pt: 'Frente quente', nl: 'Warmtefront', ru: 'Тёплый фронт',
+      ja: '温暖前線', ko: '온난전선', 'zh-CN': '暖锋',
+      sv: 'Varmfront', no: 'Varmfront', da: 'Varmfront', fi: 'Lämmin rintama',
+      pl: 'Front ciepły', cs: 'Teplá fronta', hu: 'Melegfront', ro: 'Front cald',
+      el: 'Θερμό μέτωπο', bg: 'Топъл фронт', uk: 'Теплий фронт',
+    },
+  },
+  {
+    // Meteorology: occluded front.
+    tr: 'Oklüzyon Cephesi',
+    aliases: ['Oklüde Cephe', 'Oklüzyon Cephe'],
+    translations: {
+      en: 'Occluded front', de: 'Okklusionsfront', fr: 'Front occlus', es: 'Frente ocluido',
+      it: 'Fronte occluso', pt: 'Frente oclusa', nl: 'Occlusiefront', ru: 'Фронт окклюзии',
+      ja: '閉塞前線', ko: '폐색전선', 'zh-CN': '锢囚锋',
+      sv: 'Ocklusionsfront', no: 'Okklusjonsfront', da: 'Okklusionsfront', fi: 'Okkluusiorintama',
+      pl: 'Front okluzji', cs: 'Okluzní fronta', hu: 'Okklúziós front', ro: 'Front ocluit',
+      el: 'Μέτωπο σύμφυσης', bg: 'Оклюзионен фронт', uk: 'Фронт оклюзії',
+    },
+  },
+  {
+    // Rope work: eye splice (a permanent loop worked into a rope's end).
+    tr: 'Kasa Bağı',
+    aliases: ['Gözlü Ek', 'Kasa Bağ'],
+    inline: false,
+    translations: {
+      en: 'Eye splice', de: 'Augspleiß', fr: 'Épissure à œil', es: 'Costura de gaza',
+      it: 'Impiombatura ad occhio', pt: 'Costura de olhal', nl: 'Oogsplits', ru: 'Огон',
+      sv: 'Ögonsplits', no: 'Øyespleis', da: 'Øjesplejsning', fi: 'Silmäpleissi',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
