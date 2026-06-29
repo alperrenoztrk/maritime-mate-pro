@@ -29,7 +29,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";
-import KnotTyingAnimation from "@/components/lessons/KnotTyingAnimation";
+import KnotMediaPlayer from "@/components/lessons/KnotMediaPlayer";
 
 // Gemicilik gerçekçi fotoğraflar
 import photoRopeTypes from "@/assets/seamanship/rope-types.jpg";
@@ -3395,12 +3395,12 @@ export default function SeamanshipTopicsPage() {
                       <h3 className="font-semibold text-foreground">Adım Adım Bağ Yapımı</h3>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Her bağın nasıl atıldığını adım adım izleyin. Oynat/duraklat, baştan al veya çubuğu
-                      sürükleyerek istediğiniz adımda durun.
+                      Her bağın nasıl atıldığını adım adım izleyin. Oynat/duraklat, ileri-geri gidin
+                      veya çubuğu sürükleyerek istediğiniz adımda durun.
                     </p>
                     <div className="grid gap-4 sm:grid-cols-2">
                       {currentContent.knotAnimations.map((knotId) => (
-                        <KnotTyingAnimation key={knotId} knotId={knotId} />
+                        <KnotMediaPlayer key={knotId} knotId={knotId} />
                       ))}
                     </div>
                     <Link
