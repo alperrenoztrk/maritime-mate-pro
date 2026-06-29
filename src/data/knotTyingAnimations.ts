@@ -36,11 +36,15 @@ export interface KnotTyingDef {
   steps: KnotStep[];
 }
 
-// Helper: build the default placeholder frame paths for a knot (one SVG per
-// step). Replace these by dropping real images into /public/knots/<id>/ and
-// pointing `frames` at them (see README).
-const placeholderFrames = (id: string, count: number): string[] =>
-  Array.from({ length: count }, (_, i) => `/knots/${id}/step-${i + 1}.svg`);
+// Helper: build frame paths for a knot's photo sequence.
+// frame-1.jpg, frame-2.jpg, ... under /public/knots/<id>/ (see README).
+const frames = (id: string, count: number): string[] =>
+  Array.from({ length: count }, (_, i) => `/knots/${id}/frame-${i + 1}.jpg`);
+
+// Helper: repeat a single composite image once per step, so the player steps
+// through the captions while showing the same all-in-one diagram/photo.
+const composite = (id: string, steps: number): string[] =>
+  Array.from({ length: steps }, () => `/knots/${id}/frame-1.jpg`);
 
 export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
   {
@@ -50,7 +54,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     difficulty: "Orta",
     use: "Halatın ucunda yük altında sıkışmayan, kolayca çözülebilen sabit bir ilmek oluşturur. En önemli denizcilik düğümüdür.",
     strengthLoss: "~%40 dayanım kaybı",
-    media: { kind: "frames", frames: placeholderFrames("bowline", 4) },
+    media: {
+      kind: "frames",
+      frames: frames("bowline", 5),
+      attribution: "Patricio Lorente — CC BY-SA 2.5, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Beden ve ilmek", description: "Bedeni (standing part) serili tutun ve üzerinde küçük bir ilmek (tavşan deliği) oluşturun." },
       { title: "2 · Delikten yukarı", description: "Çalışan ucu (tavşan) deliğin içinden aşağıdan yukarıya geçirin." },
@@ -65,7 +73,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     difficulty: "Kolay",
     use: "Halatın bloktan veya makaradan kaçmasını önleyen durdurucu (stopper) düğümdür. Düğümler arasında en az dayanım kaybına yol açar.",
     strengthLoss: "~%25 dayanım kaybı",
-    media: { kind: "frames", frames: placeholderFrames("figure-eight", 3) },
+    media: {
+      kind: "frames",
+      frames: frames("figure-eight", 5),
+      attribution: "Airatique — CC BY-SA 3.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · İlk ilmek", description: "Çalışan uçla bedenin üzerinde bir ilmek oluşturun." },
       { title: "2 · Ucu arkadan dolayın", description: "Ucu bedenin arkasından dolayarak sekiz şeklini başlatın." },
@@ -78,7 +90,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     nameEn: "Clove Hitch",
     difficulty: "Kolay",
     use: "Halatı bir babaya, baraya veya direğe geçici olarak bağlamak için kullanılır. Tek başına güvenilir değildir; ek emniyet dönüşleriyle desteklenir.",
-    media: { kind: "frames", frames: placeholderFrames("clove-hitch", 3) },
+    media: {
+      kind: "frames",
+      frames: composite("clove-hitch", 3),
+      attribution: "USCG (PTC Developer) — CC0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · İlk volta", description: "Halatı direğin etrafından bir kez dolayın." },
       { title: "2 · Çaprazlayıp ikinci volta", description: "İlk dönüşün üzerinden çaprazlayarak ikinci voltayı atın." },
@@ -92,7 +108,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     difficulty: "Kolay",
     use: "Aynı çaptaki iki halat ucunu birleştirir. Yelken/branda toplamada yaygındır. Farklı çaplarda kayabileceği için güvenilir değildir.",
     strengthLoss: "~%55 dayanım kaybı",
-    media: { kind: "frames", frames: placeholderFrames("reef-knot", 3) },
+    media: {
+      kind: "frames",
+      frames: composite("reef-knot", 3),
+      attribution: "USCG PTC Developer — CC BY-SA 4.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Sol ucu sağ ucun üzerinden", description: "Sol ucu sağ ucun üzerinden alıp altından geçirin." },
       { title: "2 · Sağ ucu sol ucun üzerinden", description: "Sağ ucu sol ucun üzerinden alıp altından geçirin." },
@@ -106,7 +126,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     difficulty: "Orta",
     use: "Farklı çaptaki iki halatı birleştirir. Kalın halatla bir gözcük (bight) yapılır, ince halat içinden geçirilir. Çift kıstırma daha güvenlidir.",
     strengthLoss: "~%45 dayanım kaybı",
-    media: { kind: "frames", frames: placeholderFrames("sheet-bend", 4) },
+    media: {
+      kind: "frames",
+      frames: frames("sheet-bend", 4),
+      attribution: "„Der Barbar\" — CC BY-SA 4.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Kalın halatla gözcük", description: "Kalın halatla bir gözcük (bight) oluşturun." },
       { title: "2 · İnce halatı içinden geçirin", description: "İnce halatı gözcüğün içinden aşağıdan yukarı geçirin." },
@@ -120,7 +144,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     nameEn: "Round Turn & Two Half Hitches",
     difficulty: "Orta",
     use: "Bir halatı baraya, ringe veya babaya emniyetle bağlar. Round turn (tam tur) yükü taşır, iki yarım anele (half hitch) düğümü kilitler.",
-    media: { kind: "frames", frames: placeholderFrames("round-turn-two-half-hitches", 3) },
+    media: {
+      kind: "frames",
+      frames: frames("round-turn-two-half-hitches", 3),
+      attribution: "„Der Barbar\" — CC BY 4.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Tam tur (round turn)", description: "Halatı baranın etrafından iki kez dolayın; bu tur yükü taşır." },
       { title: "2 · Birinci yarım anele", description: "Ucu beden halatının etrafından bir kez dolayarak ilk yarım aneleyi atın." },
