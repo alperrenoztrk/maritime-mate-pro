@@ -29,7 +29,6 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";
-import KnotMediaPlayer from "@/components/lessons/KnotMediaPlayer";
 
 // Gemicilik gerçekçi fotoğraflar
 import photoRopeTypes from "@/assets/seamanship/rope-types.jpg";
@@ -650,7 +649,7 @@ ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım
 
 Yassı Düğüm (Reef Knot / Square Knot): Aynı çaptaki iki halat ucunu birleştirmek için kullanılır. Yelken toplarken yaygın olarak uygulanır. Farklı çaptaki halatlarda güvenilir değildir; kayabilir.
 
-Kazık Bağı (Bowline): Halatın ucunda kaymayan bir ilmek oluşturur. Denizcilik düğümlerinin en önemlisidir. Yük altında sıkışmaz ve kolayca çözülebilir. Cankurtarma operasyonlarında, palamar geçirmede ve genel amaçlı kullanılır.
+İzbarço Bağı (Bowline): Halatın ucunda kaymayan bir ilmek oluşturur. Denizcilik düğümlerinin en önemlisidir. Yük altında sıkışmaz ve kolayca çözülebilir. Cankurtarma operasyonlarında, palamar geçirmede ve genel amaçlı kullanılır.
 
 Sekizli Düğüm (Figure-of-Eight Knot): Halatın bloktan veya makaradan kaymasını önlemek için ucuna atılır. Basit ve etkili bir durdurucu düğümdür.
 
@@ -3387,28 +3386,23 @@ export default function SeamanshipTopicsPage() {
                   <PhotoGallery photos={currentContent.photos} topicTitle={currentContent.title} />
                 )}
 
-                {/* Knot-tying animations */}
+                {/* Knot-tying — bütün bağlar tek bir yerde, Gemici Bağları sayfasında toplanmıştır */}
                 {currentContent.knotAnimations && currentContent.knotAnimations.length > 0 && (
-                  <div className="space-y-3">
+                  <div className="space-y-2 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
                     <div className="flex items-center gap-2">
                       <Anchor className="h-5 w-5 text-amber-500" />
                       <h3 className="font-semibold text-foreground">Adım Adım Bağ Yapımı</h3>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Her bağın nasıl atıldığını adım adım izleyin. Oynat/duraklat, ileri-geri gidin
-                      veya çubuğu sürükleyerek istediğiniz adımda durun.
+                      Tüm denizci bağları (düğümler, bağlar ve eklemeler) tek bir yerde toplanmıştır.
+                      Fotoğraflı aşamalar ve adım adım açıklamalar için Gemici Bağları sayfasını açın.
                     </p>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      {currentContent.knotAnimations.map((knotId) => (
-                        <KnotMediaPlayer key={knotId} knotId={knotId} />
-                      ))}
-                    </div>
                     <Link
                       to="/seamanship/knots"
-                      className="group inline-flex items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/5 px-4 py-2.5 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-500/10 dark:text-amber-400"
+                      className="group inline-flex items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-500/20 dark:text-amber-400"
                     >
                       <Eye className="h-4 w-4" />
-                      Bağları 3D olarak incele
+                      Gemici Bağları'nı aç
                       <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </div>
