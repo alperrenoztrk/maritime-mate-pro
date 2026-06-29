@@ -92,17 +92,21 @@ export default function KnotCard({ knotId }: KnotCardProps) {
             className="aspect-[16/10] w-full rounded-lg border border-border/40 object-contain"
             loading="lazy"
           />
-        ) : photoFrames.length > 0 ? (
+        ) : photoFrames.length > 1 ? (
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
             {photoFrames.map((src, i) => (
               <FramePhoto
                 key={src}
                 src={src}
                 alt={`${def.name} — ${i + 1}. aşama`}
-                label={photoFrames.length > 1 ? `${i + 1} / ${photoFrames.length}` : def.name}
+                label={`${i + 1} / ${photoFrames.length}`}
                 name={def.name}
               />
             ))}
+          </div>
+        ) : photoFrames.length === 1 ? (
+          <div className="mx-auto max-w-md">
+            <FramePhoto src={photoFrames[0]} alt={def.name} label={def.name} name={def.name} />
           </div>
         ) : (
           <FramePlaceholder name={def.name} />

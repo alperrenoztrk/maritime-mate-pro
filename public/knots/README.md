@@ -18,33 +18,34 @@ açılır-kapanır bir kart olarak gösterilir.
 
 | knotId                          | Bağ                       | Kategori   | Görsel                |
 | ------------------------------- | ------------------------- | ---------- | --------------------- |
-| `figure-eight`                  | Sekizli Düğüm             | Durdurucu  | placeholder (`none`)  |
+| `figure-eight`                  | Sekizli Düğüm             | Durdurucu  | `frame-1.jpg`         |
 | `reef-knot`                     | Yassı Düğüm (Camadan)     | Durdurucu  | `frame-1.jpg`         |
 | `bowline`                       | İzbarço Bağı              | İlmek      | `frame-1..5.jpg`      |
 | `bowline-on-bight`              | Çifte İzbarço             | İlmek      | placeholder (`none`)  |
 | `clove-hitch`                   | Kazık Bağı (Volta)        | Bağ        | `frame-1.jpg`         |
-| `two-half-hitches`              | İki Yarım Anele           | Bağ        | placeholder (`none`)  |
+| `two-half-hitches`              | İki Yarım Anele           | Bağ        | `frame-1.jpg`         |
 | `round-turn-two-half-hitches`   | Camadan Voltası           | Bağ        | `frame-1..3.jpg`      |
-| `rolling-hitch`                 | Gronof Bağı               | Bağ        | placeholder (`none`)  |
-| `cleat-hitch`                   | Koç Boynuzuna Volta       | Bağ        | placeholder (`none`)  |
-| `anchor-bend`                   | Demir Bağı                | Bağ        | placeholder (`none`)  |
+| `rolling-hitch`                 | Gronof Bağı               | Bağ        | `frame-1.jpg`         |
+| `cleat-hitch`                   | Koç Boynuzuna Volta       | Bağ        | `frame-1.jpg`         |
+| `anchor-bend`                   | Demir Bağı                | Bağ        | `frame-1.jpg`         |
 | `sheet-bend`                    | Kıstırma Düğümü           | Ekleme     | `frame-1..4.jpg`      |
-| `double-sheet-bend`             | Çifte Kıstırma            | Ekleme     | placeholder (`none`)  |
-| `carrick-bend`                  | Kropi Bağı                | Ekleme     | placeholder (`none`)  |
+| `double-sheet-bend`             | Çifte Kıstırma            | Ekleme     | `frame-1.jpg`         |
+| `carrick-bend`                  | Kropi Bağı                | Ekleme     | `frame-1.jpg`         |
 
 Kart, mevcut tüm kareleri numaralı bir galeri olarak ve adımları sıralı bir liste olarak
 gösterir — ileri/geri (önceki/sonraki) tuşu yoktur.
 
 ## Şu Anki Durum
 
-Yalnızca **tekniği gerçekten doğru gösteren** Wikimedia Commons fotoğrafları kullanılır
-(`frame-N.jpg`): izbarço, kazık bağı, yassı düğüm, kıstırma ve camadan voltası. Henüz doğrulanmış
-görseli olmayan bağlar (`media.kind: "none"`) markalı bir placeholder gösterir; metin adımları
-yine de eksiksiz ve doğrudur — yanıltıcı görsel asla gösterilmez.
+`bowline-on-bight` (Çifte İzbarço) dışındaki tüm bağlar artık **tekniği gerçekten doğru gösteren**,
+tek tek görsel olarak doğrulanmış Wikimedia Commons fotoğrafları kullanır (`frame-N.jpg`). Henüz
+doğrulanmış görseli olmayan bağ (`media.kind: "none"`) markalı bir placeholder gösterir; metin
+adımları yine de eksiksiz ve doğrudur — yanıltıcı görsel asla gösterilmez.
 
-> Not: `figure-eight` için mevcut „Noeud gibus" fotoğrafları basit durdurucu sekizli yerine
-> çift ilmekli (dekoratif) bir sekizli gösterdiğinden bilerek placeholder'a alınmıştır. Basit
-> durdurucu sekizliyi gösteren serbest lisanslı bir fotoğraf bulununca `frames` olarak eklenebilir.
+> Not: `figure-eight` için eski „Noeud gibus" fotoğrafları basit durdurucu yerine çift ilmekli
+> (dekoratif) bir sekizli gösterdiğinden kaldırıldı; yerine „Der Barbar"ın gerçek durdurucu sekizli
+> (Endacht) fotoğrafı kondu. `bowline-on-bight` için mevcut tek serbest lisanslı fotoğraf iki ilmeği
+> net göstermediğinden bilerek placeholder'da bırakıldı.
 
 Atıf bilgileri `src/data/knotTyingAnimations.ts` içindeki `media.attribution` alanında ve
 aşağıdaki CREDITS bölümünde tutulur.
@@ -90,25 +91,56 @@ Tümü Wikimedia Commons. 640px web boyutuna küçültülmüştür; orijinaller 
 - Kaynak: `File:As de guia 1.jpg` … `As de guia 5.jpg`
   https://commons.wikimedia.org/wiki/File:As_de_guia_1.jpg
 
-### figure-eight (Sekizli) — `frame-1..5.jpg`
-- Yazar: **Airatique** · Lisans: **CC BY-SA 3.0**
-- Kaynak: `File:Noeud gibus s2 01.JPG` … `Noeud gibus s2 05.JPG`
-  https://commons.wikimedia.org/wiki/File:Noeud_gibus_s2_01.JPG
+### figure-eight (Sekizli — durdurucu) — `frame-1.jpg`
+- Yazar: **„Der Barbar"** · Lisans: **CC BY-SA 4.0**
+- Kaynak: `File:Barb. Endacht 01.jpg`
+  https://commons.wikimedia.org/wiki/File:Barb._Endacht_01.jpg
+- Not: Eski „Noeud gibus" (Airatique) fotoğrafları çift ilmekli dekoratif sekizli olduğu için kaldırıldı.
 
-### clove-hitch (Kazık Bağı) — `frame-1.jpg` (birleşik, 3 adımda tekrarlanır)
+### clove-hitch (Kazık Bağı) — `frame-1.jpg`
 - Yazar: **USCG (PTC Developer)** · Lisans: **CC0**
 - Kaynak: `File:Clove Hitch - ABoK 11 - USCG.jpg`
   https://commons.wikimedia.org/wiki/File:Clove_Hitch_-_ABoK_11_-_USCG.jpg
 
-### reef-knot (Yassı Düğüm) — `frame-1.jpg` (birleşik, 3 adımda tekrarlanır)
+### reef-knot (Yassı Düğüm) — `frame-1.jpg`
 - Yazar: **USCG PTC Developer** · Lisans: **CC BY-SA 4.0**
 - Kaynak: `File:Knot-square-ABoK 1204-USCG.jpg`
   https://commons.wikimedia.org/wiki/File:Knot-square-ABoK_1204-USCG.jpg
+
+### two-half-hitches (İki Yarım Anele) — `frame-1.jpg`
+- Yazar: **USCG PTC Developer** · Lisans: **CC BY-SA 4.0**
+- Kaynak: `File:Hitch-two half-ABoK 1710-USCG.jpg`
+  https://commons.wikimedia.org/wiki/File:Hitch-two_half-ABoK_1710-USCG.jpg
+
+### rolling-hitch (Gronof Bağı) — `frame-1.jpg`
+- Yazar: **USCG PTC Developer** · Lisans: **CC BY-SA 4.0**
+- Kaynak: `File:Hitch-rolling-ABoK 1681-USCG.jpg`
+  https://commons.wikimedia.org/wiki/File:Hitch-rolling-ABoK_1681-USCG.jpg
+
+### cleat-hitch (Koç Boynuzuna Volta) — `frame-1.jpg`
+- Yazar: **Markus Bärlocher** · Lisans: **Public Domain**
+- Kaynak: `File:Belegen auf der Klampe.jpg`
+  https://commons.wikimedia.org/wiki/File:Belegen_auf_der_Klampe.jpg
+
+### anchor-bend (Demir Bağı) — `frame-1.jpg`
+- Yazar: **Chris 73** · Lisans: **CC BY-SA 3.0**
+- Kaynak: `File:AnchorBend FinalKnot.jpg`
+  https://commons.wikimedia.org/wiki/File:AnchorBend_FinalKnot.jpg
 
 ### sheet-bend (Kıstırma) — `frame-1..4.jpg`
 - Yazar: **„Der Barbar"** · Lisans: **CC BY-SA 4.0**
 - Kaynak: `File:Barb. Schotstek 01/03/05/07.jpg`
   https://commons.wikimedia.org/wiki/File:Barb._Schotstek_01.jpg
+
+### double-sheet-bend (Çifte Kıstırma) — `frame-1.jpg`
+- Yazar: **USCG PTC Developer** · Lisans: **CC0**
+- Kaynak: `File:Double Sheet Bend - ABoK 1434 - USCG.jpg`
+  https://commons.wikimedia.org/wiki/File:Double_Sheet_Bend_-_ABoK_1434_-_USCG.jpg
+
+### carrick-bend (Kropi Bağı) — `frame-1.jpg`
+- Yazar: **USCG PTC Developer** · Lisans: **CC BY-SA 4.0**
+- Kaynak: `File:Carrick Bend - ABoK 1439 - USCG.jpg`
+  https://commons.wikimedia.org/wiki/File:Carrick_Bend_-_ABoK_1439_-_USCG.jpg
 
 ### round-turn-two-half-hitches (Camadan Voltası) — `frame-1..3.jpg`
 - Yazar: **„Der Barbar"** · Lisans: **CC BY 4.0**

@@ -83,9 +83,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     difficulty: "Kolay",
     use: "Halatın ucuna atılan durdurucu (stopper) düğümdür; halatın bloktan, makaradan veya kilometreden kaçmasını önler. Düğümler arasında en az dayanım kaybına yol açar ve yük altında bile kolay çözülür.",
     strengthLoss: "~%25 dayanım kaybı",
-    // Mevcut Wikimedia fotoğrafları basit durdurucu değil çift ilmekli (dekoratif)
-    // bir sekizli gösteriyor; yanıltmamak için placeholder kullanılıyor.
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("figure-eight", 1),
+      attribution: "„Der Barbar\" — CC BY-SA 4.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · İlmek oluştur", description: "Çalışan uçla beden halatının (standing part) üzerinde bir ilmek oluşturun." },
       { title: "2 · Ucu arkadan dolayın", description: "Çalışan ucu bedenin arkasından dolayarak '8' şeklini başlatın." },
@@ -176,7 +178,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     category: "bag",
     difficulty: "Kolay",
     use: "Halatı bir ringe, baraya veya babaya bağlamanın hızlı yoludur. Çalışan uç, beden halatının etrafına aynı yönde atılan iki yarım anele ile kilitlenir.",
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("two-half-hitches", 1),
+      attribution: "USCG PTC Developer — CC BY-SA 4.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Nesnenin etrafından geçirin", description: "Halatı ringin/baranın etrafından geçirin." },
       { title: "2 · Birinci yarım anele", description: "Çalışan ucu beden halatının etrafından dolayıp oluşan ilmeğin içinden geçirin." },
@@ -214,7 +220,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
       { title: "2 · Üçüncü dönüşü ters yana", description: "Üçüncü dönüşü yük yönünün ters tarafına, ilk iki dönüşün dışına çaprazlayarak atın." },
       { title: "3 · Altından geçirip sıkın", description: "Ucu bu son dönüşün altından geçirip çekerek sıkın; yük çekildiğinde dönüşler kilitlenir." },
     ],
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("rolling-hitch", 1),
+      attribution: "USCG PTC Developer — CC BY-SA 4.0, Wikimedia Commons",
+    },
   },
   {
     id: "cleat-hitch",
@@ -223,7 +233,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     category: "bag",
     difficulty: "Kolay",
     use: "Palamar, şamandıra veya yat halatını güverte koç boynuzuna (cleat) emniyetle bağlar. Yük altında sıkıca tutar, gerektiğinde hızlıca çözülür.",
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("cleat-hitch", 1),
+      attribution: "Markus Bärlocher — Public Domain, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Uzak boynuzdan tam tur", description: "Halatı önce koç boynuzunun uzak (karşı) boynuzundan dolayarak tam bir tur atın." },
       { title: "2 · Sekiz şeklinde sarımlar", description: "Halatı boynuzların üzerine '8' şeklinde çapraz sarımlar atın." },
@@ -237,7 +251,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     category: "bag",
     difficulty: "Orta",
     use: "Halatı demir bedenine (anchor) veya ringe güvenle bağlar. Islanınca ve yük altında sıkışmaz; sarsıntılı yüke dayanıklıdır.",
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("anchor-bend", 1),
+      attribution: "Chris 73 — CC BY-SA 3.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Ringden iki kez geçir", description: "Halatı ring/demir içinden iki kez geçirerek bir tam tur (round turn) oluşturun; turu gevşek bırakın." },
       { title: "2 · İlk aneleyi turun içinden", description: "Çalışan ucu beden halatının etrafından dolayıp az önce oluşan turların içinden geçirin." },
@@ -274,7 +292,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     difficulty: "Orta",
     use: "Çapları çok farklı veya kaygan iki halatı birleştirir. Tek kıstırmanın daha güvenli hâlidir; ikinci dönüş kavramayı artırır.",
     strengthLoss: "~%45 dayanım kaybı",
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("double-sheet-bend", 1),
+      attribution: "USCG PTC Developer — CC0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · Kalın halatla gözcük", description: "Kalın halatla bir gözcük (bight) oluşturun." },
       { title: "2 · İnce halatı geçirip dolayın", description: "İnce halatı gözcüğün içinden geçirip iki bacağın arkasından dolayın ve kendi bedeninin altına kıstırın." },
@@ -289,7 +311,11 @@ export const KNOT_TYING_ANIMATIONS: KnotTyingDef[] = [
     category: "ekleme",
     difficulty: "Zor",
     use: "Kalın palamar ve yedek halatlarını birleştirir. Yük altında sıkışmaz, ıslanınca bile kolay çözülür ve düz oturduğu için makara/bloktan geçebilir.",
-    media: { kind: "none" },
+    media: {
+      kind: "frames",
+      frames: frames("carrick-bend", 1),
+      attribution: "USCG PTC Developer — CC BY-SA 4.0, Wikimedia Commons",
+    },
     steps: [
       { title: "1 · İlk halatla ilmek", description: "Bir halatla bir ilmek (gözcük) oluşturun; çalışan uç beden halatının üstünde kalsın." },
       { title: "2 · İkinci halatı altından getirin", description: "İkinci halatı ilk ilmeğin altından getirin." },
