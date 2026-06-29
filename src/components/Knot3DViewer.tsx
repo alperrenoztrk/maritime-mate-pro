@@ -6,6 +6,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { RopeSimulation, pointOnPolylineAt } from '@/utils/ropeSimulation';
+import { buildBowlinePoints, buildFigureEightPoints, buildCloveHitchPoints } from '@/utils/knotGeometry';
 import gsap from 'gsap';
 
 interface Knot3DViewerProps {
@@ -56,108 +57,22 @@ export default function Knot3DViewer({ title, knot, defaultSpeed = 1 }: Knot3DVi
     return /Mobi|Android/i.test(navigator.userAgent);
   }, []);
 
-  const bowlinePoints = useMemo(() => {
-    // Refined bowline tying path: approach, form loop, around standing part, back through
-    const pts: THREE.Vector3[] = [];
-    // Standing part, slight sag
-    for (let x = -6; x <= -2; x += 0.4) pts.push(new THREE.Vector3(x, -0.1 + 0.06 * Math.sin((x + 6) * 0.5), 0));
-    // Form the small loop (the "rabbit hole")
-    for (let t = 0; t <= Math.PI * 1.1; t += Math.PI / 22) {
-      const r = 2.7;
-      const cx = -1.8; const cy = 1.9;
-      const px = cx + r * Math.cos(t);
-      const py = cy + r * Math.sin(t);
-      const pz = t < Math.PI * 0.55 ? 0.18 : -0.18; // over then under
-      pts.push(new THREE.Vector3(px, py, pz));
-    }
-    // Working end comes up through the loop
-    for (let s = 0; s <= 1; s += 1 / 18) {
-      const x = -2 + s * 2.0;
-      const y = 0.1 + s * 2.2;
-      const z = s < 0.5 ? -0.2 : 0.2;
-      pts.push(new THREE.Vector3(x, y, z));
-    }
-    // Circle around the standing part
-    for (let t = -Math.PI * 0.1; t <= Math.PI * 1.1; t += Math.PI / 24) {
-      const r = 2.9;
-      const cx = 0.1; const cy = 1.3;
-      const px = cx + r * Math.cos(t);
-      const py = cy + r * Math.sin(t) * 0.9;
-      const pz = t < Math.PI * 0.6 ? 0.2 : -0.2; // over then under the crossing
-      pts.push(new THREE.Vector3(px, py, pz));
-    }
-    // Back down through the loop and exit as tail
-    for (let s = 0; s <= 1; s += 1 / 16) {
-      const x = 0.8 + s * 2.6;
-      const y = 0.5 - s * 1.0;
-      const z = s < 0.5 ? -0.18 : 0.18;
-      pts.push(new THREE.Vector3(x, y, z));
-    }
-    for (let x = 3.4; x <= 7.0; x += 0.35) pts.push(new THREE.Vector3(x, -0.4, 0));
-    return pts;
-  }, []);
+  // Tying paths are authored in the shared, dependency-free knotGeometry module
+  // (also used by the 2D lesson animation) and mapped to THREE.Vector3 here.
+  const bowlinePoints = useMemo(
+    () => buildBowlinePoints().map((p) => new THREE.Vector3(p.x, p.y, p.z)),
+    [],
+  );
 
-  const figureEightPoints = useMemo(() => {
-    // Approximate a figure-eight shape (two loops) with slight over/under Z
-    const pts: THREE.Vector3[] = [];
-    // Left loop centered at (-2, 0)
-    const lcx = -2, lcy = 0, lr = 2.4;
-    for (let t = Math.PI * 0.1; t <= Math.PI * 2.1; t += Math.PI / 28) {
-      const x = lcx + lr * Math.cos(t);
-      const y = lcy + lr * Math.sin(t) * 0.8;
-      const z = t < Math.PI ? 0.14 : -0.14;
-      pts.push(new THREE.Vector3(x, y, z));
-    }
-    // Transition across the center
-    for (let s = 0; s <= 1; s += 0.1) {
-      const x = -0.5 + s * 1.0;
-      const y = 0.2 - s * 0.4;
-      const z = s < 0.5 ? -0.16 : 0.16; // cross over/under
-      pts.push(new THREE.Vector3(x, y, z));
-    }
-    // Right loop centered at (2, 0)
-    const rcx = 2, rcy = 0, rr = 2.4;
-    for (let t = Math.PI * 1.1; t <= Math.PI * 3.1; t += Math.PI / 28) {
-      const x = rcx + rr * Math.cos(t);
-      const y = rcy + rr * Math.sin(t) * 0.8;
-      const z = t < Math.PI * 2 ? 0.14 : -0.14;
-      pts.push(new THREE.Vector3(x, y, z));
-    }
-    // Tail out
-    for (let x = 4; x <= 8; x += 0.4) pts.push(new THREE.Vector3(x, -0.2, 0));
-    return pts;
-  }, []);
+  const figureEightPoints = useMemo(
+    () => buildFigureEightPoints().map((p) => new THREE.Vector3(p.x, p.y, p.z)),
+    [],
+  );
 
-  const cloveHitchPoints = useMemo(() => {
-    // Clove hitch tying sequence: two half-hitches opposing on a post
-    const pts: THREE.Vector3[] = [];
-    const R = 2.0; // post radius
-    // Approach
-    for (let x = R + 3.2; x >= R + 0.08; x -= 0.08) pts.push(new THREE.Vector3(x, -1.4, 0));
-    // First wrap upward, then crossing
-    const upH = 1.7; const steps1 = 100;
-    for (let i = 0; i <= steps1; i++) {
-      const t = (i / steps1) * (Math.PI * 2);
-      const y = -1.4 + (upH * i) / steps1;
-      const x = Math.cos(t) * (R + 0.02);
-      const z = Math.sin(t) * (R + 0.02);
-      const zOff = i < steps1 * 0.35 ? 0.14 : -0.14; // over then under near crossing
-      pts.push(new THREE.Vector3(x, y, z + zOff));
-    }
-    // Second wrap downward with phase shift to intersect properly
-    const downH = 1.5; const steps2 = 100;
-    for (let i = 0; i <= steps2; i++) {
-      const t = (i / steps2) * (Math.PI * 2) + Math.PI * 0.9;
-      const y = 0.3 - (downH * i) / steps2;
-      const x = Math.cos(t) * (R + 0.02);
-      const z = Math.sin(t) * (R + 0.02);
-      const zOff = i < steps2 * 0.45 ? -0.16 : 0.16;
-      pts.push(new THREE.Vector3(x, y, z + zOff));
-    }
-    // Tail exit
-    for (let x = R + 0.08; x <= R + 3.8; x += 0.08) pts.push(new THREE.Vector3(x, -1.15, 0));
-    return pts;
-  }, []);
+  const cloveHitchPoints = useMemo(
+    () => buildCloveHitchPoints().map((p) => new THREE.Vector3(p.x, p.y, p.z)),
+    [],
+  );
 
   const getCurvePoints = useMemo(() => {
     return (k: typeof knot) => {

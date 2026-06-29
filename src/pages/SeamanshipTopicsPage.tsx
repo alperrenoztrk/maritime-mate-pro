@@ -29,6 +29,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";
+import KnotTyingAnimation from "@/components/lessons/KnotTyingAnimation";
 
 // Gemicilik gerçekçi fotoğraflar
 import photoRopeTypes from "@/assets/seamanship/rope-types.jpg";
@@ -244,6 +245,7 @@ interface TopicContent {
   content: string;
   image?: string;
   photos?: GalleryPhoto[];
+  knotAnimations?: string[];
   table?: { title: string; headers: string[]; rows: string[][] };
   bulletPoints?: string[];
   examples?: { problem: string; solution: string }[];
@@ -635,6 +637,7 @@ ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım
   "knots-bends": {
     title: "Düğümler ve Bağlamalar (Knots & Bends)",
     introduction: "Denizcilik düğümleri, halatların belirli amaçlarla birleştirilmesi veya sabitlenmesi için kullanılan standart bağlama tekniklerdir.",
+    knotAnimations: ["bowline", "figure-eight", "reef-knot", "sheet-bend"],
     photos: [
       {
         src: photoKnotsDisplay,
@@ -680,6 +683,7 @@ Her düğüm, halatın kırılma yükünü düşürür. Ortalama dayanım kaybı
   "hitches-splices": {
     title: "Bağlar ve Eklemeler (Hitches & Splices)",
     introduction: "Bağlar (hitches) halatı bir nesneye sabitlemek, eklemeler (splices) ise iki halat ucunu kalıcı olarak birleştirmek için kullanılan tekniklerdir.",
+    knotAnimations: ["clove-hitch", "round-turn-two-half-hitches"],
     content: `BAĞLAR (HITCHES):
 
 Volta (Clove Hitch): Halatı bir babaya veya baraya geçici olarak bağlamak için kullanılır. Tek başına güvenilir değildir; uçlar serbest bırakılırsa çözülebilir. Genellikle ek güvenlik dönüşleriyle desteklenir.
@@ -3381,6 +3385,33 @@ export default function SeamanshipTopicsPage() {
                 {/* Real Photographs Gallery */}
                 {currentContent.photos && currentContent.photos.length > 0 && (
                   <PhotoGallery photos={currentContent.photos} topicTitle={currentContent.title} />
+                )}
+
+                {/* Knot-tying animations */}
+                {currentContent.knotAnimations && currentContent.knotAnimations.length > 0 && (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <Anchor className="h-5 w-5 text-amber-500" />
+                      <h3 className="font-semibold text-foreground">Adım Adım Bağ Yapımı</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Her bağın nasıl atıldığını adım adım izleyin. Oynat/duraklat, baştan al veya çubuğu
+                      sürükleyerek istediğiniz adımda durun.
+                    </p>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {currentContent.knotAnimations.map((knotId) => (
+                        <KnotTyingAnimation key={knotId} knotId={knotId} />
+                      ))}
+                    </div>
+                    <Link
+                      to="/seamanship/knots"
+                      className="group inline-flex items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/5 px-4 py-2.5 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-500/10 dark:text-amber-400"
+                    >
+                      <Eye className="h-4 w-4" />
+                      Bağları 3D olarak incele
+                      <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </div>
                 )}
 
                 {/* Main Content */}
