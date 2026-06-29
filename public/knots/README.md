@@ -12,28 +12,42 @@ public/knots/<knotId>/step-2.svg
 ...
 ```
 
-`<knotId>` değerleri `src/data/knotTyingAnimations.ts` ile birebir aynıdır:
+`<knotId>` değerleri `src/data/knotTyingAnimations.ts` ile birebir aynıdır. Bağlar artık
+Gemici Bağları sayfasında (`src/pages/SailorKnots.tsx`) kategorilere ayrılır ve her biri
+açılır-kapanır bir kart olarak gösterilir.
 
-| knotId                          | Bağ                                  |
-| ------------------------------- | ------------------------------------ |
-| `bowline`                       | İzbarço Bağı                          |
-| `figure-eight`                  | Sekizli Düğüm                         |
-| `clove-hitch`                   | Kazık Bağı                            |
-| `reef-knot`                     | Yassı Düğüm                           |
-| `sheet-bend`                    | Kıstırma Düğümü                       |
-| `round-turn-two-half-hitches`   | Camadan Voltası                       |
+| knotId                          | Bağ                       | Kategori   | Görsel                |
+| ------------------------------- | ------------------------- | ---------- | --------------------- |
+| `figure-eight`                  | Sekizli Düğüm             | Durdurucu  | placeholder (`none`)  |
+| `reef-knot`                     | Yassı Düğüm (Camadan)     | Durdurucu  | `frame-1.jpg`         |
+| `bowline`                       | İzbarço Bağı              | İlmek      | `frame-1..5.jpg`      |
+| `bowline-on-bight`              | Çifte İzbarço             | İlmek      | placeholder (`none`)  |
+| `clove-hitch`                   | Kazık Bağı (Volta)        | Bağ        | `frame-1.jpg`         |
+| `two-half-hitches`              | İki Yarım Anele           | Bağ        | placeholder (`none`)  |
+| `round-turn-two-half-hitches`   | Camadan Voltası           | Bağ        | `frame-1..3.jpg`      |
+| `rolling-hitch`                 | Gronof Bağı               | Bağ        | placeholder (`none`)  |
+| `cleat-hitch`                   | Koç Boynuzuna Volta       | Bağ        | placeholder (`none`)  |
+| `anchor-bend`                   | Demir Bağı                | Bağ        | placeholder (`none`)  |
+| `sheet-bend`                    | Kıstırma Düğümü           | Ekleme     | `frame-1..4.jpg`      |
+| `double-sheet-bend`             | Çifte Kıstırma            | Ekleme     | placeholder (`none`)  |
+| `carrick-bend`                  | Kropi Bağı                | Ekleme     | placeholder (`none`)  |
 
-Her bağ için ideal kare sayısı, o bağın adım (`steps`) sayısı kadardır; böylece her kare bir
-adımla eşleşir.
+Kart, mevcut tüm kareleri numaralı bir galeri olarak ve adımları sıralı bir liste olarak
+gösterir — ileri/geri (önceki/sonraki) tuşu yoktur.
 
 ## Şu Anki Durum
 
-Tüm bağlar artık **Wikimedia Commons'tan serbest lisanslı gerçek halat görselleri** kullanır
-(`frame-N.jpg`). Ayrı adım dizisi olan bağlar (izbarço, sekizli, kıstırma, camadan voltası)
-kareler arasında ilerler; tek birleşik görsel kullanılan bağlar (kazık bağı, yassı düğüm)
-görseli sabit tutup adım başlıklarını döndürür. Görsel stilleri kaynaklar farklı olduğu için
-bağdan bağa değişebilir. Atıf bilgileri `src/data/knotTyingAnimations.ts` içindeki
-`media.attribution` alanında ve aşağıdaki CREDITS bölümünde tutulur.
+Yalnızca **tekniği gerçekten doğru gösteren** Wikimedia Commons fotoğrafları kullanılır
+(`frame-N.jpg`): izbarço, kazık bağı, yassı düğüm, kıstırma ve camadan voltası. Henüz doğrulanmış
+görseli olmayan bağlar (`media.kind: "none"`) markalı bir placeholder gösterir; metin adımları
+yine de eksiksiz ve doğrudur — yanıltıcı görsel asla gösterilmez.
+
+> Not: `figure-eight` için mevcut „Noeud gibus" fotoğrafları basit durdurucu sekizli yerine
+> çift ilmekli (dekoratif) bir sekizli gösterdiğinden bilerek placeholder'a alınmıştır. Basit
+> durdurucu sekizliyi gösteren serbest lisanslı bir fotoğraf bulununca `frames` olarak eklenebilir.
+
+Atıf bilgileri `src/data/knotTyingAnimations.ts` içindeki `media.attribution` alanında ve
+aşağıdaki CREDITS bölümünde tutulur.
 
 ## Gerçek Görselleri Ekleme
 
