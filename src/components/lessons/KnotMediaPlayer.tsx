@@ -1,11 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Play, Pause, RotateCcw, ChevronLeft, ChevronRight, Gauge, ImageOff } from "lucide-react";
+import { useState, type KeyboardEvent } from "react";
+import { RotateCcw, ChevronLeft, ChevronRight, ImageOff } from "lucide-react";
 import { KNOT_TYING_BY_ID, type KnotTyingDef } from "@/data/knotTyingAnimations";
 
 interface KnotMediaPlayerProps {
   knotId: string;
-  /** Seconds each frame is held at 1x speed. */
-  frameSeconds?: number;
 }
 
 const DIFFICULTY_BADGE: Record<KnotTyingDef["difficulty"], string> = {
@@ -39,50 +37,16 @@ function FramePlaceholder({ name, stepLabel }: { name: string; stepLabel: string
   );
 }
 
-export default function KnotMediaPlayer({ knotId, frameSeconds = 1.6 }: KnotMediaPlayerProps) {
+export default function KnotMediaPlayer({ knotId }: KnotMediaPlayerProps) {
   const def = KNOT_TYING_BY_ID[knotId];
-
-  const prefersReducedMotion = useMemo(() => {
-    if (typeof window === "undefined" || !("matchMedia" in window)) return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }, []);
 
   const isFrames = def?.media.kind === "frames";
   const frames = def && def.media.kind === "frames" ? def.media.frames : [];
   const frameCount = Math.max(frames.length, def?.steps.length ?? 1);
 
-  const [index, setIndex] = useState(prefersReducedMotion ? frameCount - 1 : 0);
-  const [isPlaying, setIsPlaying] = useState(isFrames && !prefersReducedMotion);
-  const [speed, setSpeed] = useState(1);
+  // Fully manual stepping — the player never advances on its own.
+  const [index, setIndex] = useState(0);
   const [failed, setFailed] = useState<Record<number, boolean>>({});
-
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const visibleRef = useRef(true);
-  const timerRef = useRef<number | null>(null);
-
-  // Pause the loop while scrolled off-screen.
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => (visibleRef.current = e.isIntersecting)),
-      { threshold: 0.05 },
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  // Frame auto-advance loop.
-  useEffect(() => {
-    if (!isFrames || !isPlaying || frameCount <= 1) return;
-    const stepMs = Math.max(250, (frameSeconds / speed) * 1000);
-    const id = window.setInterval(() => {
-      if (!visibleRef.current) return;
-      setIndex((i) => (i + 1) % frameCount);
-    }, stepMs);
-    timerRef.current = id;
-    return () => window.clearInterval(id);
-  }, [isFrames, isPlaying, frameCount, speed, frameSeconds]);
 
   if (!def) return null;
 
@@ -91,22 +55,35 @@ export default function KnotMediaPlayer({ knotId, frameSeconds = 1.6 }: KnotMedi
   const showPlaceholder = !isFrames ? false : !frameSrc || failed[index];
 
   const goTo = (i: number) => {
-    setIsPlaying(false);
     setIndex(Math.max(0, Math.min(frameCount - 1, i)));
   };
 
   const handleRestart = () => {
     setIndex(0);
-    if (isFrames) setIsPlaying(true);
+  };
+
+  // Step through frames with the keyboard arrows when the card is focused.
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!isFrames || frameCount <= 1) return;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      goTo(index + 1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      goTo(index - 1);
+    }
   };
 
   const attribution = def.media.attribution;
 
   return (
     <div
-      ref={containerRef}
-      className="flex flex-col rounded-xl border border-border/50 bg-card/80 overflow-hidden"
+      className="flex flex-col rounded-xl border border-border/50 bg-card/80 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60"
       data-no-translate
+      tabIndex={isFrames && frameCount > 1 ? 0 : undefined}
+      onKeyDown={handleKeyDown}
+      role={isFrames && frameCount > 1 ? "group" : undefined}
+      aria-label={isFrames && frameCount > 1 ? `${def.name} — adımlar arasında ok tuşlarıyla gezinin` : undefined}
     >
       {/* Title row */}
       <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 border-b border-border/40 bg-muted/30">
@@ -169,44 +146,41 @@ export default function KnotMediaPlayer({ knotId, frameSeconds = 1.6 }: KnotMedi
         <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{activeStep.description}</p>
       </div>
 
-      {/* Controls — only meaningful for frame sequences */}
-      {isFrames && (
-        <div className="flex items-center gap-2 px-3 py-2 border-t border-border/40 bg-muted/20">
-          <button
-            type="button"
-            onClick={() => setIsPlaying((p) => !p)}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-amber-600 transition-colors"
-            aria-label={isPlaying ? "Duraklat" : "Oynat"}
-          >
-            {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-            {isPlaying ? "Duraklat" : "Oynat"}
-          </button>
-          <button
-            type="button"
-            onClick={() => goTo(index - 1)}
-            className="inline-flex items-center justify-center rounded-lg border border-border/60 p-1.5 text-foreground hover:bg-muted transition-colors disabled:opacity-40"
-            disabled={index <= 0}
-            aria-label="Önceki adım"
-          >
-            <ChevronLeft className="h-3.5 w-3.5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => goTo(index + 1)}
-            className="inline-flex items-center justify-center rounded-lg border border-border/60 p-1.5 text-foreground hover:bg-muted transition-colors disabled:opacity-40"
-            disabled={index >= frameCount - 1}
-            aria-label="Sonraki adım"
-          >
-            <ChevronRight className="h-3.5 w-3.5" />
-          </button>
-          <button
-            type="button"
-            onClick={handleRestart}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 px-2.5 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors"
-            aria-label="Baştan oynat"
-          >
-            <RotateCcw className="h-3.5 w-3.5" />
-          </button>
+      {/* Controls — manual stepping only; the player never auto-advances. */}
+      {isFrames && frameCount > 1 && (
+        <div className="flex flex-col gap-2 px-3 py-2 border-t border-border/40 bg-muted/20">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => goTo(index - 1)}
+              className="inline-flex items-center gap-1 rounded-lg border border-border/60 px-2.5 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              disabled={index <= 0}
+              aria-label="Önceki adım"
+            >
+              <ChevronLeft className="h-3.5 w-3.5" />
+              Önceki
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(index + 1)}
+              className="inline-flex items-center gap-1 rounded-lg bg-amber-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-amber-500"
+              disabled={index >= frameCount - 1}
+              aria-label="Sonraki adım"
+            >
+              Sonraki
+              <ChevronRight className="h-3.5 w-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={handleRestart}
+              className="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-border/60 px-2.5 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              disabled={index <= 0}
+              aria-label="Baştan başlat"
+            >
+              <RotateCcw className="h-3.5 w-3.5" />
+              Baştan
+            </button>
+          </div>
 
           {/* Scrubber */}
           <input
@@ -216,24 +190,9 @@ export default function KnotMediaPlayer({ knotId, frameSeconds = 1.6 }: KnotMedi
             step={1}
             value={index}
             onChange={(e) => goTo(parseInt(e.target.value, 10))}
-            className="flex-1 min-w-[50px] accent-amber-500"
+            className="w-full accent-amber-500"
             aria-label="Adım çubuğu"
           />
-
-          <div className="flex items-center gap-1 text-muted-foreground" title="Hız">
-            <Gauge className="h-3.5 w-3.5" />
-            <select
-              value={speed}
-              onChange={(e) => setSpeed(parseFloat(e.target.value))}
-              className="bg-transparent text-xs text-foreground outline-none"
-              aria-label="Animasyon hızı"
-            >
-              <option value={0.5}>0.5x</option>
-              <option value={1}>1x</option>
-              <option value={1.5}>1.5x</option>
-              <option value={2}>2x</option>
-            </select>
-          </div>
         </div>
       )}
 
