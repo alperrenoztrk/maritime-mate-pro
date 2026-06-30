@@ -1,18 +1,18 @@
 import { Lightbulb } from "lucide-react";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SAILOR_KNOTS_BY_ID } from "@/data/sailorKnots";
+import KnotVideo from "./KnotVideo";
 
 interface KnotCardProps {
   knotId: string;
 }
 
 /**
- * One maritime knot rendered as a collapsible accordion item. Shows a verified
- * diagram, the alternate names, step-by-step instructions (çıma / beden / kasa
- * terminolojisiyle), usage, strength loss and a practical tip. The diagram is a
- * self-hosted SVG under /public/knots/, so every knot looks consistent and
- * there are no missing or mismatched images. Must be rendered inside an
- * <Accordion>.
+ * One maritime knot rendered as a collapsible accordion item. Shows a real,
+ * verified knot-tying video (click-to-play), the alternate names, step-by-step
+ * instructions (çıma / beden / kasa terminolojisiyle), usage, strength loss and
+ * a practical tip. Every video is sourced from a reputable channel and was
+ * checked to be live and embeddable. Must be rendered inside an <Accordion>.
  */
 export default function KnotCard({ knotId }: KnotCardProps) {
   const def = SAILOR_KNOTS_BY_ID[knotId];
@@ -28,22 +28,13 @@ export default function KnotCard({ knotId }: KnotCardProps) {
       </AccordionTrigger>
 
       <AccordionContent className="px-3">
-        {/* Diagram */}
-        <figure className="mx-auto mb-3 max-w-sm">
-          <div className="overflow-hidden rounded-xl border border-border/40 bg-white">
-            <img
-              src={def.image}
-              alt={`${def.name} (${def.nameEn}) bağının şeması`}
-              className="aspect-[4/3] w-full object-contain"
-              loading="lazy"
-            />
-          </div>
-          {def.credit && (
-            <figcaption className="mt-1 text-center text-[10px] text-muted-foreground/70">
-              Şema: {def.credit}
-            </figcaption>
-          )}
-        </figure>
+        {/* Knot-tying video (click to play) */}
+        <KnotVideo
+          videoId={def.videoId}
+          title={`${def.name} (${def.nameEn})`}
+          poster={def.image}
+          credit={def.videoCredit}
+        />
 
         {/* Alternate names */}
         {def.aka && def.aka.length > 0 && (

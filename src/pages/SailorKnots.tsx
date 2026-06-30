@@ -57,9 +57,9 @@ export default function SailorKnotsPage() {
           <h1 className="text-3xl font-bold md:text-4xl">Gemici Bağları</h1>
         </div>
         <p className="mb-5 text-sm text-muted-foreground">
-          Temel denizci bağları kategorilere ayrılmıştır. Bir bağı incelemek için başlığına dokunarak
-          açın; adım adım yapılışı, kullanımı ve püf noktası görünür. Aramak için yazın ya da kategori
-          seçin.
+          Denizcilikte en çok kullanılan temel bağlar kategorilere ayrılmıştır. Bir bağı incelemek için
+          başlığına dokunarak açın; gerçek bağ atma videosunu oynatın, adım adım yapılışı, kullanımı ve
+          püf noktasını görün. Aramak için yazın ya da kategori seçin.
         </p>
 
         {/* Search */}
