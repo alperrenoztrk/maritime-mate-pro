@@ -219,6 +219,31 @@ export const safetyCodes: RegulationItem[] = [
         body:
           "Kod yalnızca sıvılaşmayı değil, her yükün kendine özgü taşıma koşullarını da düzenler: 350'den fazla yük için ayrı profiller, istif faktörleri, havalandırma ihtiyaçları, yangın ve reaktivite önlemlerini listeler. Trimming (yükün ambar içinde düzgün yayılması) hem stabilite hem yapısal yük dağılımı için kritiktir. Bazı yükler kapalı havalandırma ister (oksijenle reaksiyona girmemesi için), bazıları ise zehirli/yanıcı gaz biriktirebileceği için sürekli havalandırma ve gaz ölçümü gerektirir. Mürettebat yükleme sırasında yükün görsel durumunu (nem belirtileri, su sızması) izler ve şüphe halinde operasyonu durdurur. Tahıl bu koddan ayrıdır ve ayrı Grain Code ile düzenlenir.",
       },
+      {
+        heading: "Üç yük grubunun derinlemesine mantığı",
+        body:
+          "IMSBC Code'un tüm sınıflandırması üç grup etrafında kurulur ve her grup farklı bir tehlike felsefesini temsil eder. Grup A, nem içerdiğinde sıvılaşabilen (liquefaction) yüklerdir; ana risk dengenin aniden kaybıdır. Grup B, kimyasal tehlike taşıyan yüklerdir; bunlar yangın çıkarabilir, oksijeni tüketerek ambarı boğucu hale getirebilir, zehirli veya yanıcı gaz yayabilir ya da su/havayla tehlikeli reaksiyona girebilir. Grup C, ne sıvılaşan ne de kimyasal tehlike taşıyan, görece zararsız yüklerdir (ancak bunlar bile yapısal aşırı yükleme ve toz gibi riskler taşıyabilir). Bazı yükler hem A hem B özelliği gösterir (A&B). Bir yükün hangi grupta olduğunu bilmek, alınacak tüm önlemleri (havalandırma açık mı kapalı mı, gaz ölçümü gerekli mi, nem testi şart mı) belirler; bu yüzden yükleme öncesi grup teyidi kritik ilk adımdır.",
+      },
+      {
+        heading: "TML, akış nem noktası ve test yöntemleri",
+        body:
+          "Grup A yüklerinin güvenli taşınması, nem kontrolüne dayanır. Yükün gerçek nem oranı, Taşınabilir Nem Limiti'nin (TML) altında olmalıdır; TML genellikle akış nem noktasının (Flow Moisture Point – FMP) %90'ı olarak belirlenir. FMP, yükün katı davranıştan akışkan davranışa geçtiği nem eşiğidir. Bu değerleri belirlemek için akredite laboratuvar testleri kullanılır: Proctor/Fagerberg testi, flow table testi ve penetrasyon testi gibi yöntemler farklı yük tipleri için uygundur. Sahada hızlı bir ön kontrol olarak 'can test' (numuneyi bir kaba koyup tokmaklama) uygulanabilir, ancak laboratuvar testinin yerini tutmaz. Yükleyici, gemiye TML ve gerçek nem değerlerini içeren imzalı bir yük bilgi formu (cargo declaration) vermek zorundadır ve bu belge ile testler en fazla belirli gün öncesine ait olmalıdır; aksi halde yük reddedilir.",
+      },
+      {
+        heading: "Grup B kimyasal tehlikeleri (derinlemesine)",
+        body:
+          "Grup B yükleri çok çeşitli kimyasal riskler taşır ve her biri farklı önlem gerektirir. Bazı yükler (örneğin doğrudan indirgenmiş demir – DRI) havayla ve özellikle suyla temas ettiğinde ısınır ve hidrojen açığa çıkararak patlama riski yaratır; bunlar inert atmosfer ve sıkı sızdırmazlık ister. Kömür gibi yükler hem kendiliğinden ısınma (self-heating) hem metan yayma riski taşır; bu yüzden yüzey havalandırması, sıcaklık ve gaz (metan, CO) izlemesi gerekir, ancak derin havalandırma ısınmayı körükleyebileceği için dengeli yapılır. Sülfür ve bazı konsantreler toz patlaması veya korozyon riski taşır. Oksijen tüketen yükler (bazı tarımsal ürünler, metal konsantreleri) ambarı insan için ölümcül hale getirebilir; bu nedenle kapalı mahal giriş prosedürleri ve gaz ölçümü hayatidir. Her yükün profilinde bu tehlikeler ve karşı önlemler tek tek listelenir.",
+      },
+      {
+        heading: "Yük profilleri, BLU Code ve trimming",
+        body:
+          "IMSBC Code'un pratik omurgası, 350'den fazla dökme yük için ayrı ayrı hazırlanmış yük profilleridir (schedules). Her profil; yükün tanımını, grubunu, istif faktörünü, taşıma sırasındaki tehlikelerini, havalandırma ve gaz ölçüm gerekliliklerini, yükleme/boşaltma önlemlerini ve acil durum prosedürlerini içerir. Listelenmeyen yeni bir yük taşınacaksa, yetkili idarelerden geçici taşıma izni alınması gerekir. Trimming (yükün ambar içinde düzgün yayılması) hem stabilite hem yapısal yük dağılımı açısından zorunludur; özellikle sıvılaşabilen yüklerde ve yapısal stresi önlemek için kritiktir. Yükleme operasyonu, gemi ile terminal arasındaki iletişimi ve yükleme planını standartlaştıran BLU Code ile koordine edilir; dengesiz veya çok hızlı yükleme gövdeye zararlı eğilme/burulma gerilmesi bindirebilir, bu yüzden yükleme sırası ve oranı yükleme bilgisayarıyla izlenir.",
+      },
+      {
+        heading: "Operasyonel uygulama ve diğer kodlarla ilişki",
+        body:
+          "IMSBC uyumu, bir dizi günlük disiplinden oluşur: yük bilgi formunun ve TML belgelerinin doğrulanması, şüpheli Grup A yüklerinde bağımsız sörveyörle nem testi yaptırılması, yükleme sırasında yükün görsel durumunun (nem belirtileri, su sızması) izlenmesi, ambar havalandırmasının yük profiline göre açık veya kapalı tutulması ve gerektiğinde düzenli gaz ölçümü. Tüm bunlar kaza önlemenin yanı sıra hukuki sorumluluğun da temelidir: TML aşımıyla yükleme yapmak alıkoyma ve kazada cezai sorumluluk doğurur. IMSBC Code, kapsamı bakımından komşu kodlardan ayrılır: tahıl, sıvılaşma yerine kayma riski taşıdığı için ayrı Grain Code ile; ambalajlı tehlikeli maddeler ise IMDG Code ile düzenlenir. Böylece dökme katı yük, kendi özel kuralları olan ayrı bir disiplin oluşturur.",
+      },
     ],
     relatedSlugs: ["solas", "bc-code", "css-code"],
     resources: [{ label: "IMO IMSBC Code", href: "https://www.imo.org/en/Publications/Pages/IMSBC-Code.aspx" }],
@@ -942,5 +967,90 @@ export const safetyCodes: RegulationItem[] = [
     ],
     relatedSlugs: ["sar-convention", "solas"],
     resources: [{ label: "IAMSAR bilgi", href: "https://www.imo.org/en/OurWork/Safety/Pages/IAMSARManual.aspx" }],
+  },
+  {
+    slug: "isgott",
+    label: "ISGOTT – Petrol Tankeri ve Terminal Emniyet Rehberi",
+    category: "Emniyet Kodları",
+    overview:
+      "Petrol ve ürün tankerleri ile bunlara hizmet veren terminallerde güvenli operasyonun endüstri standardı kabul edilen rehberi; gemi-sahil arayüzü, statik elektrik, gaz tehlikeleri, kargo/bunker operasyonları ve yangın önlemeyi kapsar.",
+    history:
+      "ISGOTT (International Safety Guide for Oil Tankers and Terminals), OCIMF (Oil Companies International Marine Forum), ICS (International Chamber of Shipping) ve IAPH (International Association of Ports and Harbors) tarafından ortaklaşa yayımlanır. Kökeni 1970'lerdeki Tanker Safety Guide ve terminal güvenlik kılavuzlarının birleştirilmesine dayanır. Zorunlu bir IMO sözleşmesi değil, fakat fiilen küresel standart kabul edilen bir endüstri rehberidir; SOLAS, MARPOL ve IGS Code gibi düzenlemeleri pratik operasyona çevirir. En güncel baskı, 2020'de yayımlanan 6. Edisyon'dur (ISGOTT 6); insan faktörü, gemi-sahil iletişimi ve güncellenmiş Ship-Shore Safety Checklist (SSSCL) yaklaşımıyla öne çıkar.",
+    applicability: [
+      "Ham petrol ve petrol ürünleri taşıyan tüm tankerler",
+      "Tankerlere hizmet veren petrol terminalleri ve iskeleler",
+      "Bunker barçları ve bunkering operasyonları (transfer güvenlik prensipleri)",
+      "Gemi-sahil ve gemi-gemi (STS) transfer operasyonları",
+      "Vetting (SIRE) denetimlerinde fiili referans standardı",
+    ],
+    essentials: [
+      "Gemi-sahil arayüzü (ship-shore interface) güvenliği ve Ship-Shore Safety Checklist (SSSCL)",
+      "Statik elektrik tehlikeleri ve kontrolü (bonding, yükleme hızı sınırları, splash filling önlenmesi)",
+      "Petrol buharı/gaz tehlikeleri: parlama noktası, LEL/UEL, flammable range, gas freeing ve tank atmosferi yönetimi",
+      "İnert gaz sistemi ile entegrasyon (oksijen < %8, pozitif basınç)",
+      "Kapalı/sınırlı mahal girişi (enclosed space entry) prosedürleri ve atmosfer testi",
+      "Sıcak çalışma (hot work) izin sistemi ve güvenli iş izinleri (work permit)",
+      "Kargo operasyonları: pre-transfer toplantısı, debi (rate) ve maksimum basınç, topping-up, ESD (Emergency Shut Down)",
+      "Bunkering güvenliği ve dökülme (spill) önleme – SOPEP ile bağ",
+      "Halatlama/bağlama (mooring) emniyeti, snap-back zonları ve halat yönetimi",
+      "Yangın önleme, elektrik güvenliği ve manifold/hortum bağlantı güvenliği",
+    ],
+    actions: [
+      "Berthing sonrası Ship-Shore Safety Checklist'i terminal ile birlikte doldur ve her vardiya teyit et",
+      "Transfer öncesi pre-transfer toplantısı yap: başlangıç/maks debi, topping-up debisi, haberleşme, ESD sinyali, max basınç",
+      "Tank atmosferini ve inert gaz oksijen seviyesini sürekli izle ve kaydet",
+      "Statik elektrik önlemlerini uygula: başlangıçta düşük debi, splash filling'den kaçınma, bonding",
+      "Kapalı mahal girişinde atmosfer testi (O₂, hidrokarbon, toksik gaz) yap ve giriş iznini düzenle",
+      "Sıcak çalışma için risk değerlendirmesi ve work permit sistemi uygula",
+      "Manifold ve hortum bağlantılarında kaçak/overflow izlemesini sürekli yap; tek damla dökülmede SOPEP'i devreye al",
+      "Mooring sırasında snap-back zonlarını işaretle ve personeli bu bölgelerden uzak tut",
+    ],
+    amendments: [
+      { year: "1978", description: "İlk ISGOTT baskısı – Tanker Safety Guide ve terminal kılavuzlarının birleştirilmesi" },
+      { year: "2006", description: "ISGOTT 5. Edisyon yayımlandı" },
+      { year: "2020", description: "ISGOTT 6. Edisyon – insan faktörü, gemi-sahil iletişimi ve yeni Ship-Shore Safety Checklist yaklaşımı" },
+      { year: "2024", description: "Ek kılavuzlar: alternatif yakıt ve dekarbonizasyon kaynaklı operasyonel riskler tartışmaları" },
+    ],
+    keyArticles: [
+      { id: "Bölüm 1-2", title: "Genel Bilgiler ve Petrol Tehlikeleri", summary: "Petrol/buhar özellikleri, parlama noktası, flammable range, statik elektrik ve toksisite temelleri." },
+      { id: "Bölüm 4-7", title: "Gemi ve Terminal Emniyeti", summary: "Atmosfer kontrolü, inert gaz, kapalı mahal girişi, sıcak çalışma ve elektrik güvenliği." },
+      { id: "Bölüm 11-13", title: "Kargo ve Bunker Operasyonları", summary: "Yükleme/boşaltma planlaması, debi/basınç kontrolü, ESD ve bunkering güvenliği." },
+      { id: "Ship-Shore Safety Checklist", title: "Gemi-Sahil Güvenlik Kontrol Listesi", summary: "Transfer öncesi ve sırasında gemi ile terminal arasında mutabık kalınan güvenlik koşullarının teyidi." },
+    ],
+    penalties: [
+      "ISGOTT bir endüstri rehberi olduğundan doğrudan yasal ceza içermez; ancak fiili standart olduğu için uyumsuzluk ciddi sonuçlar doğurur",
+      "Vetting (SIRE) denetiminde ISGOTT uygulamalarına uymama olumsuz gözlem ve ticari red sebebidir",
+      "Terminallerin ISGOTT checklist'i tamamlanmadan transfere izin vermemesi (operasyon durur)",
+      "ISGOTT prosedürlerinin ihmali kaynaklı yangın/patlama veya dökülmede cezai ve hukuki sorumluluk (SOLAS/MARPOL kapsamında)",
+    ],
+    detailedSections: [
+      {
+        heading: "Neden ISGOTT: regülasyonu operasyona çeviren rehber",
+        body:
+          "ISGOTT, zorunlu bir sözleşme değil, ama petrol tankeri ve terminal dünyasında fiilen uyulması beklenen 'altın standart'tır. SOLAS, MARPOL ve IGS Code gibi düzenlemeler ne yapılması gerektiğini söyler; ISGOTT ise bunu sahada nasıl güvenle yapacağını adım adım anlatır. Tankerlerde tehlike eşsiz biçimde yüksektir: yük hem yanıcı hem zehirli hem çevreye zararlıdır, operasyonun büyük kısmı gemi ile sahilin (veya başka bir geminin) ortak sorumluluğunda yürür ve tek bir hata felakete dönüşebilir. ISGOTT bu ortak sorumluluğu standartlaştırır; OCIMF, ICS ve IAPH'ın birlikte yayımlaması, hem gemi hem terminal tarafının aynı dili konuşmasını sağlar. Bu yüzden vetting denetimlerinde ISGOTT uygulamaları fiili referans olarak aranır.",
+      },
+      {
+        heading: "Gemi-sahil arayüzü ve Ship-Shore Safety Checklist",
+        body:
+          "ISGOTT'un kalbi, gemi ile terminal arasındaki kritik arayüzün yönetimidir. Bir transfere başlamadan önce taraflar bir pre-transfer (pre-cargo) toplantısı yapar: başlangıç ve maksimum debi (pumping rate), topping-up sırasındaki düşük debi, kullanılacak haberleşme yöntemi (VHF kanalı ve yedeği), acil durdurma (ESD) sinyali, izin verilen maksimum manifold basıncı ve haberleşme kesilirse uygulanacak prosedür netleştirilir. Tüm güvenlik koşulları, gemi ve terminal temsilcisinin birlikte doldurup imzaladığı Ship-Shore Safety Checklist (SSSCL) ile teyit edilir. ISGOTT 6, bu listeyi bir 'kutu doldurma' formalitesi olmaktan çıkarıp, her maddenin gerçekten doğrulandığı ve belirli aralıklarla yeniden teyit edildiği bir süreç olarak yeniden tasarlamıştır.",
+      },
+      {
+        heading: "Statik elektrik, gaz tehlikeleri ve tank atmosferi",
+        body:
+          "Petrol operasyonlarında tutuşma kaynaklarının en sinsisi statik elektriktir. Yüksek hızlı yükleme, sıçratmalı doldurma (splash filling) ve filtre/karışım gibi süreçler statik yük biriktirir; ISGOTT bu yüzden başlangıçta düşük debi, sıçramanın önlenmesi, ekipmanın topraklanması (bonding) ve belirli bekleme süreleri gibi önlemleri tanımlar. Gaz tehlikesi ise yük buharının havayla karışımının yanıcı aralıkta (LEL ile UEL arasında) olmasından doğar. ISGOTT, tank atmosferini bu tehlikeli aralığın dışında tutmayı hedefler: en yaygın yöntem, inert gaz sistemiyle oksijeni yanmanın imkânsız olduğu seviyenin (genel kural %8) altına indirmek ve tankı pozitif basınçta tutmaktır. Petrol buharının aynı zamanda zehirli olduğu (özellikle H₂S ve benzen içeren yükler) ve oksijeni tükettiği de sürekli akılda tutulur.",
+      },
+      {
+        heading: "Kapalı mahal girişi ve sıcak çalışma izinleri",
+        body:
+          "Tankerlerdeki ölümlü kazaların önemli bölümü kapalı/sınırlı mahallere (enclosed space) hazırlıksız girişten kaynaklanır; bu mahaller oksijensiz, zehirli veya yanıcı bir atmosfere sahip olabilir ve hiçbir uyarı vermez. ISGOTT, girişten önce atmosferin test edilmesini (yeterli oksijen, hidrokarbon ve toksik gazların güvenli sınırın altında olması), girişin yazılı bir izinle (entry permit) yapılmasını, sürekli havalandırma ve gözcü bulundurulmasını şart koşar. Benzer biçimde, kıvılcım veya ısı üreten her sıcak çalışma (hot work – kaynak, taşlama) ciddi bir tutuşma riskidir; ISGOTT bunu risk değerlendirmesine dayalı bir iş izni (work permit) sistemine bağlar: çalışma alanının gaz-free olması, yakındaki tankların durumu ve yangın söndürme hazırlığı önceden doğrulanır. Bu izin sistemleri, geminin ISM/SMS prosedürleriyle bütünleşir.",
+      },
+      {
+        heading: "Kargo/bunker operasyonu, halatlama ve dökülme önleme",
+        body:
+          "Transfer sırasında ISGOTT, sürekli izleme kültürünü zorunlu kılar: manifold ve hortum bağlantılarında kaçak, taşma (overflow) ve damlama anbean gözlenir; debi ve basınç sınırların içinde tutulur; topping-up (tankı doldurmanın son aşaması) en dikkatli evredir ve düşük debiyle yapılır. Acil durumda transferi saniyeler içinde durduran ESD sistemi her zaman hazırdır. Tek damla petrolün denize dökülmesi bile SOPEP'i devreye sokar ve terminal/liman otoritesi anında bilgilendirilir. Bunkering de aynı prensiplere tabidir ve bunker güvenlik kontrol listesiyle yürütülür. Halatlama (mooring) ise ayrı bir fiziksel tehlikedir: gerilen bir halatın kopması, 'snap-back' bölgesinde duran personel için ölümcüldür; ISGOTT bu bölgelerin tanımlanmasını, işaretlenmesini ve halat yönetiminin güvenli yapılmasını düzenler. Böylece ISGOTT, tankerin yanaşmasından ayrılmasına kadar tüm operasyonel zinciri tek bir güvenlik çerçevesinde toplar.",
+      },
+    ],
+    relatedSlugs: ["igs-code", "solas", "marpol", "ics-code", "vetting"],
+    resources: [{ label: "OCIMF ISGOTT", href: "https://www.ocimf.org/publications/books/isgott-6" }],
   },
 ];

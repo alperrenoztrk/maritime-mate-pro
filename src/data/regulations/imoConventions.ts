@@ -91,6 +91,51 @@ export const imoConventions: RegulationItem[] = [
         body:
           "SOLAS yalnızca donanım değil, organizasyonu da düzenler. Chapter IX, ISM Code'u zorunlu kılarak her şirketin yazılı bir Emniyet Yönetim Sistemi (SMS) kurmasını, risk değerlendirmesi yapmasını ve sürekli iyileştirmeyi belgelendirmesini ister. Chapter XI-1 deniz emniyetini iyileştiren ek önlemleri (IMO numarası, CSR, ESP) içerirken XI-2 ISPS Code ile gemi/liman güvenliğini ve güvenlik seviyelerini düzenler. Polar Code'u zorunlu kılan Chapter XIV, kutup sularında buz, düşük sıcaklık ve uzaklık kaynaklı ek riskleri ele alır. Pratikte bir gemi adamı için SOLAS, ayrı ayrı ezberlenecek kurallar yığını değil; sörvey takvimi, sertifika geçerliliği, tatbikat döngüsü ve ekipman bakımıyla günlük operasyona gömülmüş yaşayan bir çerçevedir.",
       },
+      {
+        heading: "Chapter I – Sörvey, sertifikasyon ve zımni kabul",
+        body:
+          "SOLAS'ın birinci bölümü, tüm sözleşmenin işletim sistemidir. Geminin uyumunu kanıtlayan sertifikaları (Passenger Ship Safety Certificate; kargo gemileri için Safety Construction, Safety Equipment ve Safety Radio sertifikaları) ve bunları doğrulayan sörvey türlerini tanımlar: ilk (initial), yıllık (annual), ara (intermediate), periyodik (periodical) ve yenileme (renewal). Uyumlaştırılmış Sörvey ve Sertifikasyon Sistemi (HSSC), farklı sözleşmelerin sörveylerini ortak bir beş yıllık takvimde ve pencerelerde (±3 ay) toplar, böylece gemi tek ziyarette çoklu sörvey görebilir. Bölüm ayrıca bayrak devleti ile liman devleti kontrolünün yetkilerini, klas kuruluşlarının (RO) bayrak adına nasıl çalışacağını ve sertifikaların geçerlilik/onay koşullarını belirler. Sözleşmenin teknolojiyle güncel kalmasını sağlayan 'zımni kabul' (tacit acceptance) mekanizması da buraya dayanır: kabul edilen bir değişiklik, belirlenen tarihe kadar yeterli sayıda taraf devlet itiraz etmedikçe otomatik yürürlüğe girer.",
+      },
+      {
+        heading: "Chapter II-1 – Bölmeleme, hasar stabilitesi ve makine emniyeti (derinlemesine)",
+        body:
+          "II-1, geminin su altı bütünlüğünü çok katmanlı biçimde güvence altına alır. Bölmeleme (subdivision) ilkesi gemiyi su geçirmez perdelerle kompartımanlara böler; amaç, bir veya daha fazla bölme su aldığında geminin yüzer ve dengede kalmasıdır. 2009 sonrası yolcu ve kargo gemilerinde, hasar senaryolarını olasılıklarıyla birlikte değerlendiren probabilistik hasar stabilite yöntemi (gerekli A indeksi ≥ ulaşılan A indeksi) esas alınır. Bölüm; su geçirmez kapıların tipini ve kapanma sürelerini, çift dip (double bottom) gerekliliklerini, hasar kontrol planlarını ve sintine/balast pompalama düzenlerini kapsar. Makine ve elektrik tarafında ise ana ve yardımcı makinelerin, acil güç kaynaklarının (emergency generator), dümen donanımının (steering gear – ana ve yardımcı sistem, test gereklilikleri) ve dümen kontrolünün yedekliliğini düzenler; amaç tek bir arızanın gemiyi yönetilemez hale getirmemesidir.",
+      },
+      {
+        heading: "Chapter II-2 – Yangın güvenliği (derinlemesine)",
+        body:
+          "II-2, yangını üç stratejiyle ele alır: önleme, sınırlama ve söndürme. Önleme; yanıcı malzemelerin kısıtlanması, yakıt/yağ sistemlerinin güvenli tasarımı ve tutuşma kaynaklarının kontrolüyle sağlanır. Sınırlama, gemiyi A ve B sınıfı yangın bölmeleriyle (A-60'tan A-0'a kadar farklı dayanım süreleri) ana dikey bölgelere ayırarak bir mahaldeki yangının komşu mahallere geçmesini geciktirir; yangın kapıları, damperler ve havalandırmanın acil durdurulması bu sistemi tamamlar. Algılama; duman ve ısı dedektörleri, manuel alarm noktaları ve köprüüstündeki merkezi panellerle yangının yerini anında belirler. Söndürme ise mahalle göre değişir: makine dairesi için sabit CO₂/köpük/su sisi, yaşam mahalleri için sprinkler, güverte için köpük monitörleri. Bölüm ayrıca kaçış yollarının tasarımını, acil aydınlatmayı, itfaiyeci teçhizatını (SCBA, EEBD) ve tankerlere özgü ek önlemleri (inert gaz, köpük) düzenler.",
+      },
+      {
+        heading: "Chapter III – Can kurtarma ve tatbikat düzeni (derinlemesine)",
+        body:
+          "III, kazadan sonra hayatta kalmayı hem donanım hem organizasyon olarak düzenler. Donanım tarafında survival craft (tamamen kapalı, serbest düşüşlü filikalar, can salları), kurtarma botu (rescue boat), indirme düzenekleri (davit) ve kişisel teçhizat (can yeleği, immersion suit, TPA) sayı ve performans olarak belirlenir; yolcu gemilerinde hızlı tahliye için Marine Evacuation System (MES) öngörülür. Organizasyon tarafında ise her geminin bir muster list (yangın yeri cetveli) bulundurması, her mürettebat üyesinin acil durumdaki görevini bilmesi ve toplanma istasyonlarının işaretlenmesi zorunludur. Tatbikatlar bu bölümün kalbidir: terk gemi (abandon ship) ve yangın tatbikatları düzenli aralıklarla, can filikalarının suya indirilmesi belirli periyotlarla yapılır ve kaydedilir; yeni katılan personele familiarization eğitimi verilir. Teknik standartların ayrıntısı LSA Code'a bırakılır.",
+      },
+      {
+        heading: "Chapter IV ve V – GMDSS ve seyir emniyeti (derinlemesine)",
+        body:
+          "Chapter IV, Küresel Deniz Tehlike ve Emniyet Sistemini (GMDSS) kurar ve donanımı geminin seyrettiği deniz alanına göre belirler: kıyıya yakın A1 (VHF DSC), A2 (MF ilave), A3 (HF veya uydu/Inmarsat), açık okyanus A4 (HF DSC zorunlu). Amaç, tehlike çağrısının her konumdan otomatik ulaşmasıdır; EPIRB, SART, NAVTEX ve yedeklilik gereklilikleri bunu destekler. Chapter V ise boyut sınırı olmaksızın neredeyse tüm gemilere uygulanan seyir emniyeti bölümüdür ve modern köprüüstünün omurgasını tanımlar: zorunlu ECDIS, AIS, VDR/S-VDR, BNWAS (vardiya uyarı sistemi), jiropusula ve radar; sefer planlamasının dört aşaması (appraisal, planning, execution, monitoring); gözcü tutma; meteorolojik ve seyir uyarılarının (NAVTEX, MSI) alınması; LRIT ile uzun menzilli takip; buzdan kaçınma ve tehlike bildirimi; ve kaptanın emniyet kararlarındaki nihai yetkisinin (hiçbir ticari baskının bunu sınırlayamayacağı) açıkça korunması.",
+      },
+      {
+        heading: "Chapter VI–VII – Yük ve tehlikeli madde taşımacılığı (derinlemesine)",
+        body:
+          "Chapter VI, dökme katı ve diğer yüklerin güvenli taşınmasını düzenler ve IMSBC Code ile Grain Code'a bağlanır; istif, trimming, yük bilgi formu ve özellikle konteyner yüklerinde doğrulanmış brüt ağırlık (VGM – Verified Gross Mass) zorunluluğu bu bölümden gelir. VGM, yanlış beyan edilen konteyner ağırlıklarının yol açtığı istif çökmesi ve gemi stabilite sorunlarını önlemeyi amaçlar. Chapter VII, ambalajlı ve dökme tehlikeli yükleri kapsar ve dört temel koda köprü kurar: ambalajlı tehlikeli maddeler için IMDG Code, dökme kimyasallar için IBC Code, sıvılaştırılmış gazlar için IGC Code ve ışınlanmış nükleer yakıt için INF Code. Bu sayede SOLAS, tehlikeli yükün sınıflandırılmasından ambalajlanmasına, ayrımına (segregation) ve acil müdahale bilgisine kadar tüm zinciri ilgili uzman koda yönlendirir; gemi ise yükün tipine göre hangi kodun geçerli olduğunu bilmek ve uygulamakla yükümlüdür.",
+      },
+      {
+        heading: "Chapter XI-1 / XI-2 – Emniyet ve güvenlik ek önlemleri (derinlemesine)",
+        body:
+          "Chapter XI, 11 Eylül sonrası ikiye ayrılmıştır. XI-1 deniz emniyetini güçlendiren önlemleri içerir: geminin ömür boyu değişmeyen IMO numarası (kimlik), gemi-bayrak-klas geçmişini gösteren Continuous Synopsis Record (CSR), tanker ve dökme yük gemilerinde zorunlu Enhanced Survey Programme (ESP) ve klas kuruluşlarının yetkilendirilmesine ilişkin gereklilikler. XI-2 ise ISPS Code'u zorunlu kılarak güvenliği (security) düzenler: gemi güvenlik değerlendirmesi (SSA), gemi güvenlik planı (SSP), atanmış sorumlular (SSO, CSO, PFSO), gizli güvenlik alarm sistemi (SSAS) ve üç kademeli güvenlik seviyesi sistemi. Bu bölüm, gemiyi yalnızca kazalara karşı değil kasıtlı saldırılara karşı da korur ve liman tesisleriyle birlikte bütünleşik bir güvenlik arayüzü kurar; güvenlik seviyesi değişimlerinde gemi planında tanımlı önlemleri anında devreye almak zorundadır.",
+      },
+      {
+        heading: "Chapter XII ve XIV – Dökme yük gemileri ve kutup suları",
+        body:
+          "Chapter XII, denizdeki en yüksek kayıp oranına sahip gemi tiplerinden biri olan dökme yük gemilerine özel ek gereklilikler getirir: 150 m üzeri gemilerde bir ambarın su alması durumunda hayatta kalmayı sağlayan güçlendirilmiş perde ve çift cidar yapıları, her ambarda su seviyesi algılama ve alarm sistemleri ile yapısal dayanım kriterleri. Bu kurallar, Derbyshire gibi gemilerin uyarı bile veremeden batmasının ardından geliştirilmiştir. Chapter XIV ise kutup sularında seyreden gemiler için Polar Code'u zorunlu kılar; buz yükü, aşırı düşük sıcaklık, karanlık dönemler, sınırlı haberleşme ve uzak SAR kapsamı gibi ek riskleri hedefleyen yapısal, donanımsal ve operasyonel gereklilikleri içerir. Bu iki bölüm, SOLAS'ın 'tek beden herkese uyar' yaklaşımından çıkıp belirli gemi tipleri ve seyir bölgeleri için özelleşmiş rejimler kurabildiğini gösterir.",
+      },
+      {
+        heading: "Modern eklentiler: GBS, Safe Return to Port, siber güvenlik",
+        body:
+          "SOLAS, zımni kabul mekanizması sayesinde sürekli evrilir ve son yıllarda klasik donanım kurallarının ötesine geçen modern katmanlar kazanmıştır. Goal-Based Standards (GBS), yeni gemi inşa kurallarını ayrıntılı reçeteler yerine ulaşılması gereken hedef performanslara bağlar ve klas kurallarının bu hedeflere uygunluğunu denetler. Yolcu gemileri için Safe Return to Port (SRtP), belirli bir hasar veya yangından sonra geminin kendi gücüyle güvenli bir limana dönebilmesini ve temel sistemlerin çalışmaya devam etmesini şart koşar; böylece gemi 'kendi en iyi cankurtaran filikası' olarak tasarlanır. ISM Code ile entegre edilen siber güvenlik gereklilikleri ise dijital sistemlerin (ECDIS, otomasyon, haberleşme) tehditlere karşı risk yönetimini emniyet yönetiminin parçası haline getirir. Bu yüzden bir gemi yönetimi için SOLAS uyumu statik değildir: MSC sirkülerlerinin ve değişikliklerin sürekli takip edilip uygulanmasını gerektirir.",
+      },
     ],
     relatedSlugs: ["ism-code", "isps-code", "lsa-code", "fss-code", "stcw", "colreg"],
     resources: [
@@ -178,6 +223,36 @@ export const imoConventions: RegulationItem[] = [
         heading: "Ek VI: hava kirliliği ve karbon boyutu",
         body:
           "Ek VI, MARPOL'ün son eklenen ve günümüzde en hızlı evrilen bölümüdür. Kükürt oksitleri (SOx) için küresel %0.50 ve Emisyon Kontrol Alanlarında (ECA) %0.10 yakıt kükürt limiti getirir; bu limit ya düşük kükürtlü yakıtla ya da egzoz gazı temizleme sistemiyle (scrubber) sağlanır. Azot oksitleri (NOx) için motor üretim yılına ve seyir bölgesine bağlı Tier I-II-III limitleri vardır. Ek VI ayrıca enerji verimliliği rejiminin de evidir: yeni gemiler için EEDI, mevcut gemiler için EEXI tasarım verimliliğini, CII ise yıllık operasyonel karbon yoğunluğunu ölçer; SEEMP bu performansın yönetim planıdır. Böylece Ek VI, klasik kirlilik kontrolünden sera gazı azaltımına uzanan bir köprü işlevi görür.",
+      },
+      {
+        heading: "Ek I – Petrol kirliliği (derinlemesine)",
+        body:
+          "Ek I, MARPOL'ün en eski ve en ayrıntılı ekidir; petrolün hem makine dairesinden hem kargo bölgesinden denize karışmasını ayrı rejimlerle önler. Makine dairesi tarafında sintine suyu, ancak yağ-su ayırıcıdan (OWS) geçirilip yağ içeriği 15 ppm'in altına indirildikten sonra basılabilir; 15 ppm alarmı ve otomatik durdurma bunu güvence altına alır. Kargo bölgesinde ise tankerler için yük petrol deşarjını izleyen ODME (Oil Discharge Monitoring Equipment), kirli yıkama sularını toplayan slop tank düzeni ve ham petrol tankerlerinde tankı kendi yüküyle yıkayarak kalıntıyı azaltan Crude Oil Washing (COW) sistemleri öngörülür. Ayrılmış balast tankları (SBT) balast suyunun petrolle temas etmesini engeller. 1990'lardan sonra zorunlu kılınan çift cidar (double hull) yapısı, çarpışma ve karaya oturmalarda yük tankının yırtılma riskini azaltır. Tüm bu operasyonlar Yağ Kayıt Defterine (ORB Part I – makine, Part II – kargo) işlenir.",
+      },
+      {
+        heading: "Ek II – Zararlı sıvı maddeler (derinlemesine)",
+        body:
+          "Ek II, dökme olarak taşınan zararlı sıvı maddeleri (NLS) çevreye verdikleri zarara göre dört kategoriye ayırır: X (en zararlı, deşarjı yasak), Y, Z ve OS (other substances – ihmal edilebilir zarar). Her kategori için tank yıkama, kalıntı deşarjı ve ön yıkama (prewash) kuralları farklıdır; bazı maddelerde tankın liman tesisine boşaltılması ve onaylı bir ön yıkamadan geçirilmesi zorunludur. Bu işlemlerin nasıl yapılacağı, geminin Procedures and Arrangements (P&A) Manual'inde tanımlanır ve her operasyon Cargo Record Book'a kaydedilir. Ek II, kimyasal tankerlerin emniyet tasarımını düzenleyen IBC Code ile iç içe çalışır: biri çevreyi (kirlilik), diğeri gemiyi ve mürettebatı (emniyet) korur; bu yüzden bir kimyasal tankerin uyumu her iki rejimi birden gerektirir.",
+      },
+      {
+        heading: "Ek III, IV ve V – Ambalajlı maddeler, kanalizasyon ve çöp",
+        body:
+          "Ek III, denizi kirletici (marine pollutant) olarak işaretlenen ambalajlı zararlı maddelerin taşınmasını düzenler ve uygulamada IMDG Code'a bağlanır: doğru ambalajlama, işaretleme, etiketleme ve belgelendirme gereklilikleri buradan gelir. Ek IV, gemi kaynaklı kanalizasyonun (sewage) yönetimini ele alır; deşarj ancak onaylı bir arıtma tesisinden geçirilerek veya kıyıdan belirli mesafelerde ve asgari hızlarda (parçalanmış/dezenfekte edilmiş için daha yakın, ham için daha uzak) yapılabilir. Ek V, çöp konusunda 'deşarj istisnadır' yaklaşımını benimser: plastik hiçbir koşulda denize atılamaz, diğer çöp türleri yalnızca belirli mesafe ve işleme koşullarında boşaltılabilir. Her gemi bir Çöp Yönetim Planı (Garbage Management Plan) hazırlar, çöpü kategorilere ayırır ve tüm işlemleri Çöp Kayıt Defterine (Garbage Record Book) işler.",
+      },
+      {
+        heading: "Ek VI – Hava kirliliği ve enerji verimliliği (derinlemesine)",
+        body:
+          "Ek VI, MARPOL'ün en hızlı evrilen bölümüdür ve birkaç ayrı rejimi barındırır. Kükürt oksitleri (SOx) için yakıt kükürt limiti küresel %0,50, Emisyon Kontrol Alanlarında (ECA/SECA) %0,10'dur; bu, düşük kükürtlü yakıtla veya egzoz gazı temizleme sistemiyle (scrubber) sağlanır. Azot oksitleri (NOx) için motorun üretim yılına ve seyir bölgesine bağlı Tier I-II-III limitleri vardır; Tier III yalnızca NECA bölgelerinde uygulanır. Bölüm ayrıca ozon tabakasını incelten maddelerin (ODS – halon, CFC) kontrolünü, ham petrol tankerleri için VOC yönetim planını ve onaylı gemi yakıcılarını (incinerator) düzenler. En önemlisi, enerji verimliliği rejiminin evidir: yeni gemiler için EEDI, mevcut gemiler için EEXI tasarım verimliliğini; CII yıllık operasyonel karbon yoğunluğunu ölçer; SEEMP ise bu performansın yönetim planıdır. Böylece Ek VI, klasik kirlilik kontrolünden sera gazı azaltımına uzanan bir köprü kurar.",
+      },
+      {
+        heading: "Özel Alanlar ve emisyon kontrol bölgeleri",
+        body:
+          "MARPOL, bazı denizlerin ekolojik hassasiyeti veya kapalı yapısı nedeniyle daha sıkı korunmasını sağlamak için 'Özel Alanlar' (Special Areas) ve emisyon kontrol bölgeleri tanımlar. Petrol (Ek I), zararlı sıvılar (Ek II) ve çöp (Ek V) için Akdeniz, Baltık, Karadeniz, Kızıldeniz ve Körfez gibi alanlarda deşarj kuralları neredeyse sıfır toleransa kadar sıkılaşır. Hava kirliliği tarafında SOx Emisyon Kontrol Alanları (SECA/ECA – Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip; Akdeniz 2028) yakıt kükürdünü, NOx Emisyon Kontrol Alanları (NECA) ise yeni motorların azot oksit emisyonunu sınırlar. Bu bölgesel katmanlar, gemilerin rota planlamasını doğrudan etkiler: gemi bir ECA'ya girerken yakıt değişimi (changeover) yapar ve bunu Yağ Kayıt Defterine işler. Özel alan kuralları, küresel kuralların üzerine eklenen ve ihmal edildiğinde ağır cezalara yol açan bir uyum katmanıdır.",
+      },
+      {
+        heading: "Sörvey, sertifikalar ve denetim",
+        body:
+          "MARPOL uyumu bir dizi sertifikayla belgelenir ve sörveylerle doğrulanır: petrol için IOPP, zararlı sıvılar için NLS/ISPP, hava emisyonları için IAPP, kanalizasyon için ISPP (sewage) sertifikaları gemide bulundurulur ve beş yıllık döngüde yıllık/ara sörveylerle güncel tutulur. Uyumun en güçlü teminatı kayıt defterleridir: Yağ Kayıt Defteri, Cargo Record Book ve Garbage Record Book, denetimde ilk bakılan belgelerdir çünkü deşarjların nerede, ne zaman ve nasıl yapıldığını gösterir. Liman devleti kontrolünde MARPOL eksiklikleri sık görülür ve ciddi olanlar alıkoymaya yol açar. En ağır ihlaller ise donanım değil, kayıt sahteciliği ve bypass etrafında döner: yağ-su ayırıcıyı atlatan 'magic pipe' düzenekleri ve bunların ORB'de gizlenmesi, özellikle ABD'de APPS kapsamında milyonlarca dolar para ve hapis cezasıyla sonuçlanır; ihbarcı (whistleblower) programları bu ihlallerin ortaya çıkmasını teşvik eder.",
       },
     ],
     relatedSlugs: ["iopp-cert", "iapp-cert", "eexi", "cii", "imo-2020", "imo-dcs"],
@@ -574,6 +649,36 @@ export const imoConventions: RegulationItem[] = [
         heading: "Kısıtlı görüş, ışıklar ve sinyaller",
         body:
           "Kural 19, sis veya yağmurda görüşün kısıtlandığı durumları ayrı ele alır: bu koşulda 'birbirini gören gemiler' kuralları geçmez, gemiler radara dayanır, hızı emniyetli düzeye indirir ve gerektiğinde durmaya hazır olur. Sözleşmenin ekleri teknik dili tamamlar: Ek I seyir ışıklarının renk, açı ve menzilini; Ek III ses sinyali cihazlarının özelliklerini; Ek IV ise tehlike işaretlerini tanımlar. Gece bir geminin tipini, yönünü ve durumunu yalnızca ışık düzeninden okumak; gündüz ise şekillerden ve düdük işaretlerinden niyetini anlamak, vardiya zabitinin temel becerisidir. Bu yüzden COLREG, STCW vardiya gereklilikleriyle doğrudan iç içedir.",
+      },
+      {
+        heading: "Part A – Kural 1-3: kapsam, sorumluluk ve tanımlar",
+        body:
+          "COLREG'in giriş bölümü, kuralların nasıl yorumlanacağını belirler. Kural 1 uygulama kapsamını çizer: açık denizler ve bunlara bağlı, deniz gemilerinin seyrettiği tüm sular. Kural 2 (sorumluluk) sözleşmenin ruhudur: hiçbir kural, gemiyi, kaptanı veya mürettebatı kuralları ihmal etmenin sonuçlarından muaf tutmaz; ayrıca özel koşullar (yakın tehlike, dar su, manevra kısıtı) gerektirdiğinde kurallardan ayrılmak bile bir çatışmayı önlemek için meşrudur. Bu, COLREG'i körü körüne ezberlenecek bir liste olmaktan çıkarıp durum değerlendirmesine dayalı bir denizcilik disiplinine dönüştürür. Kural 3 ise tüm sözleşmede kullanılan terimleri (güçle yürüyen gemi, yelkenli, manevra kabiliyeti sınırlı gemi, kumanda altında olmayan gemi, birbirini görme, kısıtlı görüş) tanımlar; bu tanımlar sonraki kuralların doğru uygulanmasının anahtarıdır.",
+      },
+      {
+        heading: "Kural 4-7: gözcülük, emniyetli hız ve çatışma riski",
+        body:
+          "Her koşulda geçerli olan bu kurallar, çatışmayı daha doğmadan tespit etmeyi hedefler. Kural 5 (gözcülük), görme ve işitmenin yanı sıra radar ve AIS dahil tüm uygun araçlarla sürekli ve tam bir gözcülük tutmayı emreder. Kural 6 (emniyetli hız), hızın görüş, trafik yoğunluğu, manevra kabiliyeti, gece koşulları, rüzgâr/deniz durumu ve radar kısıtları gibi faktörlere göre ayarlanmasını ister; 'emniyetli hız' sabit bir sayı değil, o anki koşulda durabilecek ve kaçınma yapabilecek hızdır. Kural 7 (çatışma riski), riski belirlemenin yöntemini verir: özellikle yaklaşan bir geminin pusula kerterizinin belirgin biçimde değişmemesi çatışma riskinin işaretidir; radar varsa sistematik gözlem ve plotting (CPA/TCPA değerlendirmesi) yapılmalı, eksik bilgiyle varsayımda bulunulmamalıdır.",
+      },
+      {
+        heading: "Kural 8-10: kaçınma manevrası, dar kanallar ve TSS",
+        body:
+          "Kural 8 (kaçınma eylemi), bir manevranın nasıl yapılacağını tanımlar: yeterince erken, belirgin (karşı gemiden çıplak gözle veya radarla net görülecek kadar büyük) ve tereddütsüz olmalı; bir dizi küçük rota/hız değişikliği yerine net bir değişiklik tercih edilmeli ve manevra etkili olana kadar sürdürülmelidir. Kural 9 (dar kanallar), gemilerin kanalın kendi sancak tarafına yakın seyretmesini ve büyük gemilerin geçişini engellememesini düzenler. Kural 10 (Trafik Ayırım Düzenleri – TSS), yoğun trafik bölgelerinde gemilerin doğru trafik şeridini uygun yönde kullanmasını, ayırım hattını mümkünse dik açıyla geçmesini ve ayırım bölgelerinden kaçınmasını şart koşar. TSS'lerin uluslararası düzeyde zorunlu kılınması, COLREG'in 1972'deki en önemli yeniliklerinden biridir.",
+      },
+      {
+        heading: "Kural 11-18: birbirini gören gemiler ve sorumluluk hiyerarşisi",
+        body:
+          "Bu kurallar, görüş alanındaki gemiler arasındaki üç klasik karşılaşmayı çözer. Yetişme (overtaking, Kural 13): arkadan yaklaşan gemi yol vermek zorundadır ve bir gemi yetişme durumundaysa sonradan çapraz duruma dönse bile bu yükümlülük sürer. Pruvadan pruvaya (head-on, Kural 14): karşılıklı gelen iki güçle yürüyen gemi, her ikisi de sancağa dönerek iskele bordalarından geçer. Çapraz geçiş (crossing, Kural 15): diğer gemiyi sancağında gören gemi yol verir. Kural 16 yol veren geminin (give-way) erken ve belirgin manevra yapmasını, Kural 17 yolu olan geminin (stand-on) başlangıçta rota ve hızını korumasını ama çatışma kaçınılmaz hale gelirse kendi manevrasını yapmasını düzenler. Kural 18, gemiler arası öncelik hiyerarşisini kurar: kumanda altında olmayan ve manevra kabiliyeti sınırlı gemiler en çok korunur; onları balıkçı gemileri ve yelkenliler izler; güçle yürüyen normal bir gemi çoğu duruma yol vermek zorundadır.",
+      },
+      {
+        heading: "Kural 19: kısıtlı görüşte seyir",
+        body:
+          "Kural 19, sis, yağmur veya kar nedeniyle görüşün kısıtlandığı durumları ayrı bir mantıkla ele alır; çünkü bu koşulda gemiler birbirini göremez ve 'birbirini gören gemiler' kuralları (give-way/stand-on) geçmez. Bu durumda her gemi emniyetli hıza iner, makineleri manevraya hazır tutar ve radarla sistematik gözlem yapar. Yalnızca radarla saptanan bir gemiye karşı manevra yapılırken iki davranıştan kaçınılmalıdır: kendinden önde (önden geçen hariç) bir gemiye iskeleye dönmek ve kendine kabin/borda hizasında veya kıçında bir gemiye yaklaşmak için rota değiştirmek. Görüş kısıtlıyken ayrıca uygun sis sinyalleri verilir. Kural 19, kazaların büyük kısmının kötü görüşte yaşandığı gerçeği nedeniyle pratikte en kritik kurallardandır ve STCW'nin radar/ARPA eğitim gereklilikleriyle doğrudan bağlantılıdır.",
+      },
+      {
+        heading: "Part C ve D – Işıklar, şekiller ve sesli sinyaller",
+        body:
+          "Sözleşmenin son bölümleri, gemilerin niyetini ve durumunu görsel/işitsel olarak 'okumayı' sağlar. Part C (Kural 20-31), seyir ışıklarını ve gündüz şekillerini düzenler: bir geminin tipi, boyutu, yönü ve özel durumu (demirde, kumanda altında değil, çekme yapıyor, balık avlıyor, manevra kabiliyeti sınırlı) yalnızca ışık düzeninden gece anlaşılabilir. Pruva feneri, kıç feneri, borda fenerleri ve direk fenerlerinin renkleri, görüş açıları ve menzilleri kesin tanımlanır. Part D (Kular 32-37), sesli ve ışıklı sinyalleri kapsar: manevra ve uyarı sinyalleri (bir kısa düdük – sancağa dönüyorum, iki kısa – iskeleye, beş kısa – niyetinizi anlamıyorum/şüphe), kısıtlı görüşte sis sinyalleri ve tehlike (distress) sinyalleri. Vardiya zabitinin gece bir ışık demetinden geminin durumunu, gündüz bir düdük dizisinden niyetini çözebilmesi, COLREG'in pratikteki temel becerisidir.",
       },
     ],
     relatedSlugs: ["solas", "stcw"],
