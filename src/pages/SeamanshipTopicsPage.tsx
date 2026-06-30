@@ -3395,7 +3395,7 @@ export default function SeamanshipTopicsPage() {
                     </div>
                     <p className="text-sm text-muted-foreground">
                       Tüm denizci bağları (düğümler, bağlar ve eklemeler) tek bir yerde toplanmıştır.
-                      Fotoğraflı aşamalar ve adım adım açıklamalar için Gemici Bağları sayfasını açın.
+                      Şema, adım adım yapılış, kullanım ve püf noktaları için Gemici Bağları sayfasını açın.
                     </p>
                     <Link
                       to="/seamanship/knots"
