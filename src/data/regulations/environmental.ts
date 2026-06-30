@@ -66,6 +66,21 @@ export const environmentalRegulations: RegulationItem[] = [
         body:
           "EEXI uyumu, hesapları ve uygulanan kısıtlamaları içeren bir EEXI Technical File ile belgelenir ve gemide bulundurulur. Uyum onayı, ilk yıllık/ara/yenileme sörveyinde IAPP sertifikasına işlenir. EPL veya SHAPOLI uygulandıysa, acil durum ve manevra gibi durumlarda güç sınırının geçici aşılmasına izin veren override koşulları prosedürlere yazılır ve mürettebat bu konuda eğitilir. EEXI uyumu sağlanmazsa IAPP sertifikası yenilenmez ve sertifikasız gemi uluslararası sefer yapamaz; PSC denetiminde uyumsuzluk alıkoyma riski doğurur. EEXI, operasyonel performansı ölçen CII ile birlikte MARPOL Ek VI'nın karbon verimliliği rejiminin iki ayağından biridir.",
       },
+      {
+        heading: "EEXI hesaplamasının derinlemesine mantığı",
+        body:
+          "EEXI'nin temelinde, geminin teorik karbon verimliliğini ölçen bir formül yatar: payda, ana ve yardımcı makinelerin gücüne, bunların özgül yakıt tüketimine ve yakıtın karbon faktörüne dayanan toplam CO₂ emisyonunu; payda ise geminin taşıma kapasitesi (DWT veya GT) ile referans hızının (Vref) çarpımını temsil eder. Sonuç gCO₂/ton·mil cinsinden 'ulaşılan EEXI'dir ve gemi tipi ile büyüklüğüne göre belirlenmiş 'gerekli EEXI' referans çizgisini aşmamalıdır; bu referans çizgisi EEDI fazlarındaki azaltma faktörlerine dayanır. Hesaba çeşitli düzeltme faktörleri girer: kapasite düzeltmesi (fi), kübik kapasite düzeltmesi (fc) ve buz sınıfı/hava koşulu gibi faktörler. EEXI, geminin gerçek seyir verisini değil, tasarımının teorik verimliliğini değerlendiren tek seferlik sabit bir eşiktir.",
+      },
+      {
+        heading: "Uyum yöntemleri: EPL, SHAPOLI ve enerji tasarrufu cihazları",
+        body:
+          "Birçok mevcut gemi, makinesi olduğu gibiyken gerekli EEXI'yi karşılayamaz; en yaygın çözüm güç kısıtlamasıdır. Engine Power Limitation (EPL) motor gücünü, Shaft Power Limitation (SHAPOLI) ise şaft gücünü sınırlandırır; her ikisi de referans hızı ve dolayısıyla emisyonu düşürür ve pratikte 'yapısal slow steaming' anlamına gelir. Ancak gücü kısmanın bir riski vardır: gemi şiddetli hava ve akıntıda (adverse conditions) manevra ve rota tutma kabiliyetini kaybetmemelidir; bu yüzden EPL/SHAPOLI uygulanan gemilerde asgari sevk gücü (minimum propulsion power) değerlendirmesi yapılır ve acil durumlar için güç sınırının geçici aşılmasına izin veren override koşulları prosedürlere yazılır. Alternatif olarak enerji tasarrufu cihazları (pervane başlık kanatçıkları, akış yönlendirici duct'lar, hat optimizasyonu) verimliliği fiziksel olarak artırarak güç kısmaya gerek kalmadan uyum sağlayabilir.",
+      },
+      {
+        heading: "Belgelendirme ve EEDI ile ilişki",
+        body:
+          "EEXI uyumu, hesapları ve uygulanan güç kısıtlamalarını içeren bir EEXI Technical File ile belgelenir ve gemide bulundurulur; uyum onayı ilk yıllık/ara/yenileme sörveyinde IAPP sertifikasına işlenir. EEXI, yeni gemiler için zorunlu olan EEDI'nin mevcut filoya uyarlanmış kardeşidir: EEDI gemi tasarlanırken bir kez hesaplanırken, EEXI hâlihazırda denizde olan gemilere tek seferlik bir eşik olarak uygulanır. İkisi de tasarım (teknik) verimliliğini ölçtüğü için, geminin yıllık operasyonel performansını ölçen CII ile birlikte düşünülmelidir: EEXI 'gemi ne kadar verimli tasarlanmış', CII ise 'gemi gerçekte ne kadar verimli işletiliyor' sorusuna yanıt verir. Uyum sağlanmazsa IAPP sertifikası yenilenmez ve gemi uluslararası sefer yapamaz.",
+      },
     ],
     relatedSlugs: ["cii", "marpol", "iapp-cert", "imo-dcs"],
     resources: [{ label: "IMO EEXI rehberi", href: "https://www.imo.org/en/OurWork/Environment/Pages/EEXI.aspx" }],
@@ -135,6 +150,21 @@ export const environmentalRegulations: RegulationItem[] = [
         heading: "İyileştirme yöntemleri ve ticari baskı",
         body:
           "CII'yi iyileştirmenin yolları çoğunlukla operasyoneldir: hız optimizasyonu (slow steaming), hava durumuna göre rota planlaması (weather routing), trim optimizasyonu, gövde ve pervane temizliğiyle sürtünmenin azaltılması, limanda gereksiz beklemeyi azaltan 'tam zamanında varış' (just-in-time). Bu çabalar SEEMP Part III adlı yönetim planında belgelenir. CII'nin yaptırımı yalnızca regülatif değil, güçlü biçimde ticaridir: kiracılar (charterer) düşük dereceli gemilerden kaçınır, bu da navlun gelirini ve geminin değerini düşürür; sigorta ve finansman koşulları da dereceden etkilenebilir. CII, IMO DCS verilerine dayanır ve 2026'da metodolojisinin gözden geçirilmesi beklenmektedir.",
+      },
+      {
+        heading: "AER hesaplaması ve metriklerin derinlemesine yapısı",
+        body:
+          "CII'nin en yaygın metriği AER'dir (Annual Efficiency Ratio): bir takvim yılında yakılan tüm yakıttan hesaplanan toplam CO₂ emisyonunun, geminin taşıma kapasitesi (DWT) ile o yıl kat ettiği toplam mesafenin çarpımına bölünmesiyle bulunur ve gCO₂/(dwt·mil) cinsinden ifade edilir. AER, kapasite olarak fiilen taşınan yükü değil tasarım taşıma kapasitesini kullandığı için, boş veya yarı dolu seyreden gemileri 'cezalandırır' ve bu, metodolojinin tartışılan yönlerinden biridir. Yolcu ve ro-ro gemileri gibi bazı tipler için brüt tonaj veya yolcu/mesafe esaslı alternatif metrikler (cgDIST, clDIST) kullanılır. Hesaba giren veriler IMO DCS kapsamında toplandığı için CII, DCS'nin doğrudan bir çıktısıdır; kurtarma, buz seyri veya STS gibi bazı özel durumlar için sefer düzeltmeleri (voyage adjustment) emisyondan düşülebilir.",
+      },
+      {
+        heading: "A-E derecelendirme ve yıllık sıkılaşan referans çizgileri",
+        body:
+          "Hesaplanan yıllık CII, gemi tipi ve büyüklüğüne özgü bir referans çizgisiyle karşılaştırılarak A'dan E'ye bir dereceye dönüştürülür: A üstün, B iyi, C orta (kabul edilebilir), D zayıf, E çok zayıf performansı temsil eder. Sistemin kritik dinamiği, gerekli CII (referans çizgisi) değerinin her yıl belirli bir oranda sıkılaşmasıdır; bu, bir geminin bugünkü C performansının birkaç yıl sonra hiçbir şey değişmeden D'ye düşebileceği anlamına gelir. Yaptırım kademelidir: üst üste üç yıl D veya herhangi bir yıl E derecesi alan gemi, SEEMP Part III kapsamında bir düzeltici eylem planı (corrective action plan) hazırlayıp bayrak devletine sunmak zorundadır. Bu mekanizma, filoyu sürekli ve artan biçimde iyileşmeye iter.",
+      },
+      {
+        heading: "İyileştirme yöntemleri, ticari ve finansal etkiler",
+        body:
+          "CII'yi iyileştirmenin yolları büyük ölçüde operasyoneldir ve doğrudan kaptan/operatör kararlarına bağlıdır: hız optimizasyonu (slow steaming), hava ve akıntıya göre rota planlaması (weather routing), trim optimizasyonu, gövde ve pervane temizliğiyle sürtünmenin azaltılması, limanda gereksiz beklemeyi azaltan 'tam zamanında varış' (just-in-time arrival) ve mümkünse karadan elektrik kullanımı. Bu çabalar SEEMP Part III yönetim planında belgelenir. CII'nin yaptırımı yalnızca regülatif değil, güçlü biçimde ticaridir: kiracılar (charterer) düşük dereceli gemilerden kaçınır, bu da navlun gelirini ve geminin ikinci el değerini düşürür; finansman ve sigorta koşulları da dereceden etkilenebilir; RightShip gibi platformların GHG değerlendirmeleri bu baskıyı pekiştirir. CII metodolojisinin 2026'da kapsamlı biçimde gözden geçirilmesi beklenmektedir.",
       },
     ],
     relatedSlugs: ["eexi", "imo-dcs", "marpol", "ghg-strategy"],
@@ -483,6 +513,21 @@ export const environmentalRegulations: RegulationItem[] = [
         body:
           "Kutup ekosistemleri kırılgan ve yavaş iyileşendir, bu yüzden Polar Code çevre kurallarını sertleştirir: Antarktik'te neredeyse tüm deşarjlar yasaktır ve ağır yakıt (HFO) kullanımı uzun süredir yasaktır; Arktik'te de HFO yasağı muafiyetlerle yürürlüğe girmiştir. Donanım tarafında gemiler buz seyir radarı, düşük sıcaklığa dayanıklı can kurtarma teçhizatı, grup hayatta kalma ekipmanı ve kış sağ kalma kitleri taşımak zorundadır. Mürettebat, STCW kapsamında Temel ve İleri Polar Code eğitimi alır. Buz raporları (ice charts) ve SAR koordinasyonu sefer planlamasına entegre edilir. Sertifika veya PWOM olmadan kutup sularına giriş yasaktır.",
       },
+      {
+        heading: "Polar Class, buz sınıfı ve yapısal güçlendirme",
+        body:
+          "Polar Code, gemileri buzla başa çıkma kabiliyetlerine göre yedi Polar Class (PC1-PC7) ile derecelendirir; bu IACS Birleşik Gereklilikleri'ne dayanır. PC1 yıl boyu tüm kutup sularında en kalın çok yıllık buzda çalışabilirken, PC7 yalnızca yazın ince birinci yıl buzunda çalışabilir. Yüksek sınıflar daha kalın gövde sacı, güçlendirilmiş çerçeve yapısı, buz takviyeli pervane ve dümen ile düşük sıcaklığa dayanıklı çelik gerektirir. Bu sınıflandırma, gemi kategorileriyle birleşir: Category A en zorlu koşullarda (PC1-5), Category B daha ince buzda (PC6-7), Category C ise buz takviyesi gerektirmeyen açık sularda çalışır. Bir gemi yalnızca Polar Ship Certificate'ında belirtilen buz ve sıcaklık koşullarında seyredebilir; bu, kaptanın hangi bölgeye hangi koşulda girebileceğini somut olarak sınırlar.",
+      },
+      {
+        heading: "PWOM, operasyonel sınırlar ve seyir planlaması",
+        body:
+          "Polar Water Operational Manual (PWOM), Polar Code'un operasyonel kalbidir ve geminin kutup sularında nasıl güvenle çalışacağını önceden tanımlar. Manual; geminin buz, sıcaklık ve görüş açısından operasyonel sınırlarını, bu sınırlara ulaşıldığında alınacak önlemleri, buzdan kaçınma ve buzkıran desteği prosedürlerini, SAR koordinasyonunu, iletişim planını ve karanlık dönem ile uzak konum kaynaklı kısıtlamaları kapsar. Seyir planlaması, güncel buz haritalarını (ice charts), buz devriyesi bilgilerini ve hava tahminlerini içerir; çünkü kutupta koşullar hızla değişir ve geri dönüş seçenekleri sınırlıdır. Düşük sıcaklık, ekipmanın (vinçler, valfler, can kurtarma araçları) donmasına yol açabileceği için tüm donanımın çalışma sıcaklığı (polar service temperature) önceden değerlendirilir.",
+      },
+      {
+        heading: "Çevre koruma, can kurtarma ve mürettebat eğitimi",
+        body:
+          "Kutup ekosistemleri kırılgan ve yavaş iyileşen olduğu için Polar Code çevre kurallarını sertleştirir: Antarktik'te (60°S güneyi) neredeyse tüm deşarjlar yasaktır ve ağır yakıt (HFO) kullanımı uzun süredir yasaktır; Arktik'te de HFO kullanım ve taşıma yasağı muafiyetlerle yürürlüğe girmiştir. Can kurtarma ve hayatta kalma donanımı normal gemilerden farklıdır: aşırı soğuk ve uzun kurtarma sürelerine dayanacak grup hayatta kalma ekipmanı, ek termal koruma ve uzatılmış erzak gerekir, çünkü yardımın ulaşması günler alabilir. Mürettebat, STCW kapsamında Temel ve İleri Polar Code eğitimi alarak buz koşullarında seyir, buz manevrası ve kutup acil durumlarına hazırlanır. Polar Ship Certificate veya PWOM olmadan kutup sularına giriş yasaktır; Antarktik'te çevre ihlalleri Antarctic Treaty kapsamında ağır yaptırımlara tabidir.",
+      },
     ],
     relatedSlugs: ["solas", "marpol"],
     resources: [{ label: "Polar Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/polar-code.aspx" }],
@@ -752,6 +797,21 @@ export const environmentalRegulations: RegulationItem[] = [
         heading: "Kayıt, sertifika ve ABD farkı",
         body:
           "Operasyonel uyum, her balast alımı, deşarjı, değişimi ve arıtmasının Ballast Water Record Book'a işlenmesini, sistemin düzenli bakımını ve gemiye özel bir BWM Plan'ının uygulanmasını gerektirir. Uyum, beş yıl geçerli IBWM Certificate ile belgelenir; liman devleti denetiminde balast suyundan numune alınıp analiz edilebilir. Kritik bir uyarı ABD'dir: USCG, IMO'dan ayrı ve genellikle daha katı bir tip onay rejimi uygular; bir BWMS IMO onaylı olsa bile ABD'de uyumsuz sayılabilir, bu yüzden ABD'ye uğrayan gemiler her iki onayı da kontrol etmelidir. Sertifika eksikliği veya D-2 uyumsuzluğu PSC denetiminde alıkoymaya yol açabilir.",
+      },
+      {
+        heading: "D-1 ve D-2 standartlarının derinlemesine karşılaştırması",
+        body:
+          "BWM Sözleşmesi iki standart tanımlar ve sektör birinden diğerine geçmiştir. D-1 (balast suyu değişimi), açık denizde balast hacminin en az %95'inin değiştirilmesini (veya hacmin üç katı pompalanmasını) öngörür; bu, kıyıdan en az 200 mil açıkta ve 200 m derinlikte yapılır. D-1 geçici ve kısmi bir çözümdür: değişim her zaman tam etkili değildir, hava koşullarına bağlıdır ve geminin yapısal güvenliğini zorlayabilir. D-2 (performans standardı) ise kalıcı çözümdür ve deşarj edilen sudaki canlı organizma yoğunluğunu çok düşük sayısal limitlere indirir: ≥50 mikron boyutlu organizmalardan metreküpte en fazla 10, 10-50 mikron arası organizmalardan mililitrede en fazla 10 ve belirli indikatör bakteriler (toksijenik kolera, E. coli, enterokok) için ayrı limitler. Bunu sağlayan bir arıtma sistemi (BWMS) gemiye kurulur.",
+      },
+      {
+        heading: "BWMS teknolojileri ve onay süreci",
+        body:
+          "Balast Suyu Arıtma Sistemleri tipik olarak iki aşamalı çalışır: önce bir filtre büyük partikülleri ve organizmaları mekanik olarak ayırır, ardından bir dezenfeksiyon kademesi kalan canlıları etkisiz hale getirir. Dezenfeksiyon yöntemleri farklıdır: ultraviyole (UV) ışınlama organizmaların üremesini engeller; elektroklorinasyon ve ozonlama gibi kimyasal yöntemler aktif madde üretir (ancak deşarjda nötralizasyon ve kalıntı kontrolü gerektirir). Her yöntemin avantaj ve sınırları vardır; örneğin UV'nin etkinliği suyun bulanıklığına, kimyasal yöntemlerinki ise su sıcaklığı ve tuzluluğuna bağlıdır. Sistemin, zorunlu BWMS Code uyarınca tip onayı taşıması, kurulumdan sonra commissioning testiyle doğrulanması ve yıllık sörveylerle izlenmesi gerekir; bu testler arıtmanın gerçekten standardı sağladığını kanıtlar.",
+      },
+      {
+        heading: "Kayıt, sertifika, denetim ve ABD farkı",
+        body:
+          "Operasyonel uyum sürekli bir disiplindir: her balast alımı, deşarjı, değişimi ve arıtması Ballast Water Record Book'a işlenir; gemiye özel bir BWM Plan uygulanır; UV lambaları ve filtreler zamanında değiştirilir, sensörler kalibre edilir ve sediment yönetimi yapılır. Uyum, beş yıl geçerli bir IBWM Certificate ile belgelenir ve yıllık/ara sörveylerle güncel tutulur; liman devleti denetiminde balast suyundan üç kademeli (gösterge, ayrıntılı, laboratuvar) numune alınıp analiz edilebilir. En sık yapılan hata, IMO onayını yeterli sanmaktır: ABD sularına giren gemiler için USCG, IMO'dan bağımsız ve genellikle daha katı bir tip onay rejimi uygular; bir BWMS IMO onaylı olsa bile USCG onaylı değilse ABD'de uyumsuz sayılabilir. Bu yüzden ABD'ye uğrayan gemiler her iki onayı da kontrol etmek zorundadır. Sistemin çalışmaması, kurulu olmaması veya kayıt eksikliği PSC'de alıkoymaya yol açabilir.",
       },
     ],
     relatedSlugs: ["marpol", "uscg"],

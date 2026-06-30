@@ -362,6 +362,21 @@ export const safetyCodes: RegulationItem[] = [
         body:
           "Her tehlikeli yük sevkiyatı eksiksiz belgelenmek zorundadır: DG manifest, konteyner/araç paketleme sertifikası ve çok modlu tehlikeli madde formu yükün ne olduğunu, nasıl paketlendiğini ve nerede istiflendiğini gösterir. Kaza anına hazırlık için iki kılavuz hayati önemdedir: EmS (Emergency Schedules) yangın ve dökülme durumunda yapılacakları, MFAG (Medical First Aid Guide) ise maruz kalan kişiye uygulanacak ilk yardımı tanımlar. Konteyner ve araçların güvenli paketlenmesi CTU Code ile düzenlenir. Bu belge ve kılavuzlar köprüüstü ile makine dairesinde erişilebilir tutulur, mürettebata düzenli tehlikeli madde eğitimi verilir.",
       },
+      {
+        heading: "Dokuz tehlike sınıfının derinlemesine yapısı",
+        body:
+          "IMDG Code'un sınıflandırması, her maddenin baskın tehlikesini gösteren dokuz sınıf etrafında kurulur ve birçoğu alt bölümlere ayrılır. Sınıf 1 (patlayıcılar) altı uyumluluk alt bölümüne; Sınıf 2 gazlara (2.1 yanıcı, 2.2 yanıcı olmayan/zehirsiz, 2.3 zehirli); Sınıf 3 yanıcı sıvılara; Sınıf 4 yanıcı katılar, kendiliğinden yanan maddeler ve suyla temas ettiğinde yanıcı gaz çıkaranlara (4.1/4.2/4.3); Sınıf 5 oksitleyiciler ve organik peroksitlere (5.1/5.2); Sınıf 6 zehirli ve bulaşıcı maddelere (6.1/6.2); Sınıf 7 radyoaktif maddelere; Sınıf 8 korozif maddelere; Sınıf 9 diğer tehlikeli maddelere (lityum piller, deniz kirleticileri dahil) ayrılır. Ambalaj grupları (I yüksek, II orta, III düşük tehlike) ise tehlikenin derecesini ve gereken ambalaj dayanımını belirler. Bu iki boyut birlikte, bir maddenin nasıl paketlenip elleçleneceğini tanımlar.",
+      },
+      {
+        heading: "Ayrım (segregation) ve istif kuralları (derinlemesine)",
+        body:
+          "IMDG'nin en hayati operasyonel bölümü, birbiriyle tehlikeli reaksiyona girebilecek maddelerin birlikte taşınmasını engelleyen ayrım (segregation) kurallarıdır. Ayrım tablosu, hangi sınıfların 'uzak tutulacağı', 'ayrılacağı', 'bir bölme/ambar arayla ayrılacağı' veya 'boyuna bir bölme arayla ayrılacağı'nı belirler; örneğin asitlerle siyanürler, oksitleyicilerle yanıcılar belirli mesafelerde tutulmalıdır, aksi halde tek başına zararsız iki yük birleşerek yangın veya zehirli gaz üretebilir. İstif (stowage) kuralları ise her maddenin güverte altında mı üstünde mi, ısı kaynaklarından ve yaşam mahallerinden ne kadar uzakta taşınacağını ve hangi havalandırma koşullarını gerektirdiğini düzenler. Konteyner ve araçların güvenli paketlenmesi CTU Code ile, taşıma sırasındaki bağlama ise CSS Code ile koordine edilir.",
+      },
+      {
+        heading: "Belgelendirme, acil müdahale ve eğitim",
+        body:
+          "Her tehlikeli yük sevkiyatı eksiksiz belgelenir: tehlikeli yük taşıma belgesi (UN numarası, uygun taşıma adı, sınıf, ambalaj grubu, miktar), konteyner/araç paketleme sertifikası ve gerektiğinde çok modlu form, yükün ne olduğunu ve nasıl istiflendiğini gösterir; gemide bir tehlikeli yük manifestosu veya istif planı bulundurulur. Kaza anına hazırlık için iki kılavuz hayatidir: EmS (Emergency Schedules) yangın ve dökülme durumunda yapılacakları, MFAG (Medical First Aid Guide) ise maruz kalan kişiye uygulanacak tıbbi ilk yardımı tanımlar. Limited ve excepted quantities (sınırlı/istisnai miktarlar) gibi düzenlemeler düşük riskli küçük sevkiyatlara esneklik tanır. Tehlikeli yükle çalışan tüm personelin görevine uygun eğitim alması zorunludur; yanlış beyan veya gizleme ağır biçimde cezalandırılır ve denetimde ayrım ihlali geminin alıkonmasına yol açar.",
+      },
     ],
     relatedSlugs: ["solas", "marpol"],
     resources: [{ label: "IMO IMDG Code", href: "https://www.imo.org/en/Publications/Pages/IMDG-Code.aspx" }],
@@ -772,6 +787,21 @@ export const safetyCodes: RegulationItem[] = [
         body:
           "Bir can filikasının kendisi kadar onu güvenle suya indiren matafora (davit) düzeneği de kritiktir; geçmişte pek çok kaza, indirme sırasında kancanın (on-load release hook) erken açılmasından kaynaklanmıştır, bu yüzden kod bu mekanizmaların güvenliğini özellikle sıkılaştırmıştır. LSA donanımı ancak düzenli bakım ve testle güvenilir kalır: can salları yıllıkservise gönderilir, filika motorları haftalık çalıştırılır, matafora ve vinçler beş yıllık yük testinden geçer, hidrostatik serbest bırakma üniteleri (HRU) zamanında değiştirilir. Bu bakım döngüsü ihmal edilirse PSC eksiklikleri ve alıkoyma doğar; donanım kâğıt üstünde var olsa bile gerçekte işlevsiz kalabilir.",
       },
+      {
+        heading: "Can filikası tipleri ve performans gereklilikleri",
+        body:
+          "LSA Code, can filikalarını tasarım felsefelerine göre ayrıntılı standartlara bağlar. Tamamen kapalı filikalar (TELB), içindekileri deniz, soğuk ve yangın radyasyonundan korur ve devrilse bile kendiliğinden doğrulabilir (self-righting). Serbest düşüşlü filikalar (freefall), gemiden belirli bir açıyla suya bırakılarak hızlı ve güvenilir bir tahliye sağlar; özellikle dökme yük ve tanker gemilerinde yaygındır. Yangına karşı korumalı filikalar (fire-protected – FPLB), su püskürtme sistemi ve hava beslemesiyle yanan petrol üzerinden geçebilir; tankerlerde gereklidir. Kod, her filika için asgari kişi kapasitesini, dayanımı, motor performansını (belirli süre belirli hızda seyir), su ve kumanya stoklarını, işaret ve haberleşme donanımını ve denize indirme/çekme kabiliyetini tek tek belirler.",
+      },
+      {
+        heading: "Can salları, kişisel teçhizat ve görsel sinyaller",
+        body:
+          "Can salları (liferaft), atılabilir (throw-overboard) veya matafora ile indirilen (davit-launched) tiplerdedir ve içlerinde SOLAS A veya B paketi (su, kumanya, ilk yardım, işaret fişekleri, onarım kiti) bulunur; hidrostatik serbest bırakma ünitesi (HRU) sayesinde gemi batarsa otomatik yüzeye çıkıp şişer. Kişisel teçhizat, bireyin sudaki hayatta kalma süresini uzatır: farklı kaldırma sınıflarında can yelekleri (ışık ve düdükle), can simitleri (bazıları otomatik ışık ve duman sinyalli), soğuk suda hipotermiyi geciktiren dalma elbiseleri (immersion suit) ve termal koruyucu yardımcılar (TPA). Görsel sinyaller – paraşüt işaret fişeği, el fişeği ve yüzen duman sinyali – kazazedenin yerini arama-kurtarma birimlerine bildirir. Kodun her bir kalem için renk, görüş menzili, yanma süresi gibi performans kriterleri vardır.",
+      },
+      {
+        heading: "İndirme düzenekleri, bakım, test ve tatbikat",
+        body:
+          "Bir can kurtarma aracı, ancak güvenle suya indirilebildiği ölçüde işe yarar; bu yüzden LSA Code matafora (davit) ve vinç düzeneklerine özel önem verir. Geçmişte pek çok ölümlü kaza, indirme sırasında yük altındaki serbest bırakma kancasının (on-load release hook) yanlışlıkla açılmasından kaynaklanmıştır; kod bu mekanizmaların güvenliğini özellikle sıkılaştırmıştır. Donanım ancak düzenli bakım ve testle güvenilir kalır: can salları yıllık akredite servise gönderilir, filika motorları haftalık çalıştırılır, matafora ve vinçler beş yıllık dinamik/statik yük testinden geçer, HRU'lar zamanında değiştirilir. Tatbikatlar bu sistemin canlı tutulmasını sağlar: terk gemi tatbikatları düzenli yapılır ve filikalar belirli periyotlarla denize indirilip çalıştırılır. Servis süresi geçmiş veya test edilmemiş teçhizat PSC denetiminde doğrudan eksiklik, hatta alıkoyma sebebidir.",
+      },
     ],
     relatedSlugs: ["solas", "safety-equipment-cert"],
     resources: [{ label: "LSA Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/LifeSavingAppliances.aspx" }],
@@ -837,6 +867,21 @@ export const safetyCodes: RegulationItem[] = [
         heading: "Yangın bütünlüğü, teçhizat ve bakım",
         body:
           "Aktif söndürme kadar yangının yayılmasını sınırlamak da önemlidir. Yangın kapıları, damperler ve bölme sınıfları (A-60'tan A-0'a, B-15, B-0) bir mahalde çıkan yangının belirli süre boyunca komşu mahallere geçmesini engeller; bu sayede tahliye ve müdahale için zaman kazanılır. İtfaiyeci teçhizatı (SCBA solunum cihazı, ısıya dayanıklı elbise, yaşam hattı) ekibin yangına yaklaşabilmesini sağlar. Tüm bu sistemler ancak düzenli testle güvenilir kalır: CO₂ tüplerinin ağırlık kontrolü, alarm panellerinin haftalık testi, yangın kapısı ve damper fonksiyon kontrolleri, SCBA tüplerinin basınç testleri ihmal edilemez. Şarjı eksik bir CO₂ sistemi veya test edilmemiş bir alarm, PSC denetiminde ciddi eksiklik ve alıkoyma doğurur.",
+      },
+      {
+        heading: "Sabit söndürme sistemleri (derinlemesine)",
+        body:
+          "FSS Code, her mahallin riskine uygun sabit söndürme sistemini ayrıntılı standartlara bağlar. Makine dairesi gibi yüksek riskli kapalı hacimler için sabit gazlı sistemler (CO₂ ve eşdeğeri) oksijeni boğarak yangını söndürür; bu sistemlerde, insanların tahliyesi için sesli/görsel uyarı ve zorunlu zaman gecikmesi vardır, çünkü ortama salınan gaz insan için boğucudur. Köpük sistemleri, yanan sıvı yüzeyini bir film tabakasıyla kaplayarak yakıtı havadan keser ve makine daireleriyle tanker güvertelerinde kullanılır. Su sisi (water mist) sistemleri, çok küçük su damlacıklarıyla hem soğutma hem buharlaşma yoluyla oksijen seyreltmesi sağlar ve halon yasağı sonrası giderek yaygınlaşmıştır. Kod, her sistem için ajan miktarını, kapsama oranını, boşaltma süresini ve alarm gerekliliklerini hesaplama yöntemleriyle birlikte tanımlar.",
+      },
+      {
+        heading: "Algılama, alarm ve yapısal yangın bütünlüğü",
+        body:
+          "Yangının erken tespiti, söndürmek kadar önemlidir. FSS Code, otomatik algılama sistemlerini düzenler: duman, ısı ve alev dedektörleri mahallin tipine göre seçilir ve zonlar/loop'lar halinde örgütlenir, böylece köprüüstündeki merkezi panelden yangının yeri anında okunur. Manuel alarm noktaları, otomatik sistem yetişmeden insan müdahalesini başlatır. Söndürmenin yanı sıra yangının yayılmasını sınırlamak da kritiktir: gemi, farklı dayanım sürelerine sahip yangın bölmeleriyle (A-60'tan A-0'a, B-15, B-0) ana dikey bölgelere ayrılır; yangın kapıları ve damperler bir mahaldeki yangının komşu mahallere geçmesini geciktirir. Bu pasif koruma, tahliye ve müdahale için hayati zaman kazandırır ve sabit söndürme sistemleriyle birlikte çok katmanlı bir savunma kurar.",
+      },
+      {
+        heading: "Yangın devresi, itfaiyeci teçhizatı ve bakım",
+        body:
+          "FSS Code, manuel müdahale araçlarını da standardize eder: yangın ana hattı (fire main), hidrantlar, hortumlar ve uygun kapasitede yangın pompaları (acil yangın pompası dahil) ile taşınabilir söndürücüler her gemide bulunur. İtfaiyeci teçhizatı – bağımsız solunum cihazı (SCBA), ısıya dayanıklı elbise, kask, eldiven, yaşam hattı ve acil kaçış solunum cihazları (EEBD) – ekibin yangına yaklaşabilmesini sağlar. Bu sistemlerin tamamı ancak düzenli testle güvenilir kalır: CO₂ tüplerinin yıllık ağırlık kontrolü, alarm panellerinin haftalık fonksiyon testi, yangın kapısı ve damperlerin periyodik açma/kapama testi, SCBA tüplerinin basınç kontrolü ve taşınabilir söndürücülerin servisi ihmal edilemez. Şarjı eksik bir CO₂ sistemi veya çalışmayan bir alarm, PSC denetiminde ciddi eksiklik ve alıkoyma doğurur; FSS Code böylece SOLAS Chapter II-2'nin teknik teminatını oluşturur.",
       },
     ],
     relatedSlugs: ["solas", "safety-equipment-cert", "safety-construction-cert"],

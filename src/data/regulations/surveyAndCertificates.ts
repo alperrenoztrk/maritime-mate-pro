@@ -70,6 +70,26 @@ export const surveyRegulations: RegulationItem[] = [
         body:
           "Denetimde bulunan her eksiklik standart kodlarla kayda geçer ve bir aksiyon atanır: kimi yerinde düzeltilir, kimi sonraki limana veya belirli bir süreye ertelenir. En ağır sonuç alıkoymadır (detention): gemi, ciddi eksiklikler giderilene kadar seferden alıkonur ve bu süre boyunca ticari kayıp yaşar. Tekrarlayan alıkoymalar geminin bölgesel giriş yasağına (ban) kadar gidebilir. Sonuçlar tek gemiyle de sınırlı değildir: alıkoymalar bayrak devletinin White/Grey/Black liste sıralamasını etkiler, bu da o bayrağın tüm gemilerinin denetim sıklığını belirler. Bu yüzden gemiler limana girmeden iç denetim (pre-PSC) yapar ve eksiklikleri önceden kapatır.",
       },
+      {
+        heading: "Denetim türleri ve aşamaları (derinlemesine)",
+        body:
+          "PSC denetimi tek tip değildir; bir piramit gibi derinleşir. İlk denetim (initial inspection) sertifikaların geçerliliğini, geminin genel durumunu ve mürettebatın temel uyumunu kontrol eder; çoğu denetim burada başlar ve biter. Ancak denetçi 'clear grounds' (daha derin incelemeyi haklı kılan somut bulgular – örneğin eksik sertifika, hasarlı ekipman, bilgisiz mürettebat) tespit ederse daha ayrıntılı denetime (more detailed inspection) geçer ve gemiyi sistematik olarak inceler. Tanker, yolcu gemisi ve dökme yük gemisi gibi yüksek riskli tipler ile yüksek riskli gemilerde genişletilmiş denetim (expanded inspection) zorunludur; bu, yapısal alanlardan operasyonel sistemlere kadar geniş bir kapsamı kapsar. Denetim yalnızca belge incelemesi değildir: yangın ve can kurtarma tatbikatı, dümen testi ve acil jeneratör çalıştırma gibi operasyonel kontroller de yapılabilir.",
+      },
+      {
+        heading: "Eksiklik kodları ve aksiyonlar",
+        body:
+          "Denetimde bulunan her eksiklik, standartlaştırılmış bir kodla kayda geçer ve ona bir düzeltme aksiyonu atanır. Bazı eksiklikler yerinde düzeltilir (kod 10), bazıları sonraki limanda (kod 15) veya belirli bir süre içinde (kod 16, örneğin 14 gün) giderilmek üzere ertelenir, bazıları bayrak devletine veya klas kuruluşuna bildirilir (kod 17/45). En ağır aksiyon alıkoymadır (kod 30): gemi, ciddi eksiklikler giderilip emniyetli hale gelene kadar limandan ayrılamaz. Eksiklikler 17 ana kategoride toplanır (sertifikalar, yapısal güvenlik, yangın güvenliği, can kurtarma, seyir güvenliği, MARPOL, ISM, ISPS, MLC, BWM vb.) ve yüzlerce alt kod içerir. Bu standartlaşma, dünyanın her limanındaki denetçinin aynı dili konuşmasını ve sonuçların bölgesel veritabanlarında (THETIS, APCIS) tutarlı biçimde paylaşılmasını sağlar.",
+      },
+      {
+        heading: "CIC kampanyaları ve hazırlık stratejisi",
+        body:
+          "Bölgesel MoU'lar, yılda bir veya iki kez Yoğunlaştırılmış Denetim Kampanyaları (CIC – Concentrated Inspection Campaign) düzenler. Bunlar, belirli bir konuya (örneğin balast suyu yönetimi, STCW dinlenme saatleri, yangın güvenliği, kapalı mahal girişi) odaklanan ve genellikle birkaç ay süren özel denetim dönemleridir; kampanya sırasında o konu standart denetime ek bir soru listesiyle derinlemesine incelenir. Gemiler için en akılcı yaklaşım, yürürlükteki CIC temasını önceden öğrenmek, ilgili prosedür ve kayıtları gözden geçirmek ve mürettebatla birlikte hazırlanmaktır. Daha genel olarak, denetime hazırlık proaktiftir: gemiler limana girmeden bir iç denetim (pre-PSC checklist) yapar, sertifika ve servis tarihlerini kontrol eder, geçmiş denetim raporlarındaki tekrar eden eksiklikleri giderir ve risk profillerini bölgesel portallardan izler.",
+      },
+      {
+        heading: "Alıkoyma, ban ve bayrak performansının sonuçları",
+        body:
+          "PSC'nin yaptırım gücü kademeli ama ağırdır. Alıkoyma (detention), geminin doğrudan ticari kaybına yol açar ve eksiklikler giderilip masraflar (ek denetim dahil) karşılanana kadar sürer. Tekrarlayan alıkoymalar bölgesel giriş yasağına (ban/refusal of access) kadar gider; örneğin Paris MoU'da belirli sayıda alıkoymadan sonra gemi giderek uzayan sürelerle, hatta kalıcı olarak bölgeye alınmaz. Sonuçlar tek gemiyle sınırlı değildir: alıkoyma oranları bayrak devletlerinin White/Grey/Black liste sıralamasını belirler ve bu sıralama, o bayrağın tüm gemilerinin denetlenme sıklığını ve risk profilini etkiler. Aynı şekilde klas kuruluşlarının (RO) performansı da izlenir. Böylece PSC, tek bir denetimi aşan, bayrak ve klas düzeyinde sistemik bir kalite baskısı yaratır; standart altı işletmecilik ticari olarak da sürdürülemez hale gelir.",
+      },
     ],
     relatedSlugs: ["paris-mou", "tokyo-mou", "ism-code", "solas", "marpol"],
     resources: [
