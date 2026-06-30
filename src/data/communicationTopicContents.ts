@@ -667,4 +667,274 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       "SEELONCE/PRUDONCE/FEENEE telsiz sessizliğini yönetir; tüm trafik UTC ile loglanır.",
     ],
   },
+
+  "Cospas-Sarsat ve MEOSAR Uydu Tespit Sistemi": {
+    title: "Cospas-Sarsat ve MEOSAR Uydu Tespit Sistemi",
+    introduction:
+      "Cospas-Sarsat, 406 MHz acil durum vericilerinden (EPIRB, ELT, PLB) gelen tehlike sinyallerini uydularla algılayıp arama-kurtarma birimlerine ulaştıran uluslararası bir uydu sistemidir. EPIRB gemide tehlike alarmını başlatan cihazken, Cospas-Sarsat o alarmı uzaydan yakalayıp konumlandıran ve doğru MRCC'ye yönlendiren küresel altyapıdır. Sistem, son yıllarda MEOSAR teknolojisine geçerek tespit hızını ve konum doğruluğunu büyük ölçüde artırmıştır.",
+    sections: [
+      {
+        title: "Sistem Mimarisi: LEOSAR, GEOSAR ve MEOSAR",
+        content:
+          "Cospas-Sarsat üç uydu katmanı kullanır. LEOSAR, alçak kutupsal yörüngedeki uydularla çalışır; Doppler kayması üzerinden konum hesaplar ancak uydu o anda kapsama alanında değilse beklemek (gecikme) gerekir. GEOSAR, sabit (jeostasyoner) uydularla anında alarm sağlar fakat tek başına konum üretemez (vericide GNSS yoksa). MEOSAR (Medium Earth Orbit), GPS/Galileo/GLONASS gibi navigasyon uydularına yerleştirilen SAR yükleriyle çalışır; geniş, sürekli kapsama ve birden çok uydudan eşzamanlı alımla hızlı ve hassas konumlandırma sunar. Modern sistemde GEOSAR'ın anlık alarmı ile MEOSAR'ın hızlı bağımsız konumlandırması birlikte kullanılır.",
+        bulletPoints: [
+          "LEOSAR: kutupsal yörünge, Doppler konumu, olası bekleme süresi.",
+          "GEOSAR: anlık alarm, tek başına konum üretemez.",
+          "MEOSAR: navigasyon uydularında SAR yükü; hızlı, sürekli, hassas konum.",
+        ],
+      },
+      {
+        title: "Tehlike Sinyalinin Yolu: Cihazdan MRCC'ye",
+        content:
+          "Bir 406 MHz vericisi etkinleştiğinde sinyal uydular tarafından alınır ve yer istasyonlarına (LUT – Local User Terminal) iletilir. LUT, sinyali çözer ve konumu hesaplar; ardından bilgi bir MCC'ye (Mission Control Centre) gönderilir. MCC, vericinin kayıtlı kimliğine ve konumuna göre alarmı sorumlu SAR bölgesindeki MRCC'ye yönlendirir. Bu zincir sayesinde, tehlikedeki bir gemi telsiz menzili dışında olsa bile alarm dakikalar içinde doğru kurtarma merkezine ulaşır. 406 MHz dijital mesajı, vericinin benzersiz kimliğini (15 haneli hex kimlik) ve varsa entegre GNSS konumunu taşır.",
+        bulletPoints: [
+          "Zincir: Verici → Uydu → LUT → MCC → MRCC.",
+          "LUT konumu hesaplar; MCC doğru MRCC'ye yönlendirir.",
+          "Dijital mesaj benzersiz cihaz kimliği ve (varsa) GNSS konumu içerir.",
+        ],
+      },
+      {
+        title: "Beacon Kaydı ve Yanlış Alarmların Önlenmesi",
+        content:
+          "Her 406 MHz vericisinin bayrak devleti veya ulusal otorite nezdinde kaydedilmesi zorunludur. Kayıt; gemi adı, MMSI, irtibat bilgileri ve acil durum temaslarını içerir ve SAR birimlerinin alarmı hızla doğrulamasını sağlar. Kaydın güncel tutulması (gemi satışı, sahip değişikliği, irtibat değişikliği) kritik öneme sahiptir. Cospas-Sarsat alarmlarının büyük bölümü yanlış alarmdır; yanlış aktivasyon yapıldığında derhâl ilgili MRCC aranarak iptal bildirilmelidir. Cihazın yanlışlıkla tetiklenmemesi için doğru saklanması, test düğmesinin amacına uygun kullanılması ve hidrostatik bırakma düzeneğinin kontrolü önemlidir.",
+        bulletPoints: [
+          "406 MHz cihazlar zorunlu olarak kaydedilir; kayıt güncel tutulur.",
+          "Kayıt, SAR'ın alarmı hızla doğrulamasını sağlar.",
+          "Yanlış alarm derhâl ilgili MRCC aranarak iptal edilmelidir.",
+        ],
+      },
+      {
+        title: "121.5 MHz Yön Bulma ve Geri Bağlantı (RLS)",
+        content:
+          "406 MHz uydu sinyaline ek olarak cihazlar düşük güçlü bir 121.5 MHz homing (yön bulma) işareti yayar; arama birimleri ve helikopterler olay yerine yaklaşırken bu işaretle cihazı yön bularak bulur. Yeni nesil MEOSAR yeteneklerinden biri Geri Bağlantı Hizmeti'dir (RLS – Return Link Service): sistem, alarmın alındığını ve işlendiğini cihaza geri bildirebilir; böylece tehlikedeki kişi yardımın yolda olduğunu (örneğin cihaz üzerindeki bir gösterge ile) teyit eder; bu, moral ve karar verme açısından değerlidir. AIS-SART ve EPIRB-AIS gibi tamamlayıcı işaretler de olay yerinde yakın menzilli konumlandırmayı destekler.",
+        bulletPoints: [
+          "121.5 MHz homing sinyali, olay yerinde yön bulmayı sağlar.",
+          "RLS (Return Link Service): alarmın alındığı cihaza geri bildirilebilir.",
+          "AIS-SART/EPIRB-AIS yakın menzilli konumlandırmayı tamamlar.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Cospas-Sarsat, 406 MHz tehlike sinyallerini uyduyla algılayıp MRCC'ye ulaştırır.",
+      "MEOSAR (navigasyon uydularında SAR yükü) hızlı, sürekli ve hassas konumlandırma sağlar.",
+      "Alarm zinciri: Verici → Uydu → LUT → MCC → MRCC.",
+      "Beacon kaydı zorunludur; yanlış alarm derhâl MRCC'ye iptal ettirilir.",
+    ],
+  },
+
+  "GMDSS Modernizasyonu ve E-Navigasyon": {
+    title: "GMDSS Modernizasyonu ve E-Navigasyon",
+    introduction:
+      "GMDSS, 1990'lardaki teknolojiyle tasarlandı; aradan geçen sürede uydu ve dijital haberleşme büyük ölçüde gelişti. IMO, GMDSS'i çağa uyarlamak için kapsamlı bir modernizasyon programı yürütmektedir. Bu konu; yeni uydu servis sağlayıcılarının tanınması, NAVDAT gibi yeni dijital yayın sistemleri ve e-navigasyon vizyonu çerçevesinde haberleşmenin geleceğini ele alır.",
+    sections: [
+      {
+        title: "Modernizasyonun Gerekçesi ve Kapsamı",
+        content:
+          "GMDSS modernizasyonu; eskiyen teknolojileri güncellemeyi, sistemin yeni uydu sağlayıcılarına açılmasını, dijital veri yayınını yaygınlaştırmayı ve gereksiz çakışan zorunlulukları sadeleştirmeyi amaçlar. SOLAS Bölüm IV ve ilgili performans standartları bu doğrultuda revize edilmektedir. Hedef; tehlike ve emniyet haberleşmesinin güvenilirliğini korurken modern ekipmanın getirdiği hız, kapasite ve esneklikten yararlanmaktır. Modernizasyon kademeli yürür; gemiler ve idareler için geçiş takvimleri ve uyum gereklilikleri belirlenir.",
+        bulletPoints: [
+          "Amaç: eskiyen teknolojiyi güncellemek ve sistemi yeni sağlayıcılara açmak.",
+          "SOLAS Bölüm IV ve performans standartları revize edilmektedir.",
+          "Güvenilirlik korunurken modern ekipmanın hız ve kapasitesi kazanılır.",
+        ],
+      },
+      {
+        title: "Yeni Uydu Sağlayıcılar ve Kapsama",
+        content:
+          "Uzun süre Inmarsat tek tanınmış GMDSS uydu sağlayıcısıydı. Modernizasyonla birlikte ek mobil uydu servisleri de GMDSS hizmeti sunmak üzere tanınmaya başlamıştır; özellikle alçak yörünge takımyıldızı kullanan ve kutuplar dâhil küresel kapsama sunabilen sistemler, geleneksel jeostasyoner uyduların kutup boşluğunu (A4 sorunu) kapatma potansiyeli taşır. Birden fazla tanınmış sağlayıcı; rekabet, yedeklilik ve daha geniş coğrafi kapsama anlamına gelir. Gemilerin hangi servisi taşıyacağı, sefer bölgesine ve bayrak devleti onayına bağlı olarak belirlenir.",
+        bulletPoints: [
+          "GMDSS artık birden fazla tanınmış uydu sağlayıcıya açılmaktadır.",
+          "Kutupları da kapsayan takımyıldızlar A4 boşluğunu kapatabilir.",
+          "Çok sağlayıcı: rekabet, yedeklilik ve daha geniş kapsama.",
+        ],
+      },
+      {
+        title: "NAVDAT ve Dijital MSI Yayını",
+        content:
+          "NAVTEX, on yıllardır metin tabanlı Denizcilik Emniyet Bilgisi (MSI) yayınının temeli olmuştur fakat düşük veri hızı ve yalnızca metin desteği sınırlayıcıdır. NAVDAT (Navigational Data), 500 kHz bandında çalışan yeni nesil dijital yayın sistemidir; NAVTEX'ten çok daha yüksek veri hızıyla yalnızca metin değil grafik, harita düzeltmeleri, hava haritaları ve dosya türü içeriği de yayınlayabilir. NAVDAT, MSI dağıtımını zenginleştirip otomatikleştirme yolunda önemli bir adımdır ve NAVTEX ile bir süre birlikte var olması beklenir.",
+        bulletPoints: [
+          "NAVDAT: 500 kHz'de yüksek hızlı dijital MSI yayını.",
+          "Metnin yanı sıra grafik, harita düzeltmesi ve dosya yayınlayabilir.",
+          "NAVTEX'i tamamlar; geçiş döneminde birlikte kullanılır.",
+        ],
+      },
+      {
+        title: "E-Navigasyon Vizyonu ve Bütünleşme",
+        content:
+          "E-navigasyon, gemi içi ve kıyıdaki seyir/haberleşme bilgilerinin uyumlu (harmonize) biçimde toplanması, değişimi ve sunulmasıdır; amaç emniyeti artırmak ve operatör iş yükünü azaltmaktır. Bu vizyonda GMDSS haberleşmesi; ECDIS, AIS, VTS ve kıyı servisleriyle bütünleşik bir bilgi akışının parçası olur. Standart veri biçimleri (ortak deniz veri yapısı), maritime tek pencere (single window) uygulamaları ve siber güvenlik, e-navigasyonun temel bileşenleridir. Modern haberleşmenin getirdiği bağlanabilirlik arttıkça, sistemlerin siber tehditlere karşı korunması ve yedekli/çalışır tutulması giderek daha kritik hâle gelir.",
+        bulletPoints: [
+          "E-navigasyon: seyir/haberleşme bilgisinin uyumlu toplanıp paylaşılması.",
+          "GMDSS, ECDIS/AIS/VTS ile bütünleşik bilgi akışının parçası olur.",
+          "Standart veri biçimleri ve siber güvenlik temel bileşenlerdir.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "GMDSS modernizasyonu sistemi güncel uydu ve dijital teknolojiye uyarlar.",
+      "Artık birden fazla uydu sağlayıcı tanınır; kutup kapsaması iyileşir.",
+      "NAVDAT, NAVTEX'ten çok daha zengin dijital MSI yayını sağlar.",
+      "E-navigasyon, haberleşmeyi seyir sistemleriyle bütünleştirir; siber güvenlik kritiktir.",
+    ],
+  },
+
+  "SSAS - Gemi Güvenlik Alarm Sistemi": {
+    title: "SSAS - Gemi Güvenlik Alarm Sistemi",
+    introduction:
+      "SSAS (Ship Security Alert System), ISPS Kodu kapsamında zorunlu kılınan, gemiye yönelik bir güvenlik tehdidinde (korsanlık, terör, kaçırma) sessiz bir alarm gönderen sistemdir. Tehlike haberleşmesinin aksine SSAS GİZLİ çalışır: gemideki saldırganları uyarmadan, kıyıdaki yetkililere geminin tehdit altında olduğunu bildirir. Bu yönüyle GMDSS tehlike alarmından temelde farklı bir amaca ve mantığa sahiptir.",
+    sections: [
+      {
+        title: "Amaç ve ISPS Çerçevesi",
+        content:
+          "SSAS, 11 Eylül sonrası getirilen SOLAS Bölüm XI-2 ve ISPS Kodu kapsamında, çoğu uluslararası sefer yapan gemi için zorunlu hâle getirilmiştir. Amaç, geminin güvenliği ihlal edildiğinde veya tehdit altındayken kıyıdaki idareye sessiz bir uyarı iletmektir. Tehlike alarmından (GMDSS) farkı: SSAS, çevredeki gemilere veya saldırganlara açık bir alarm vermez; yalnızca önceden tanımlanmış kara muhataplarına gizli bildirim gönderir. Böylece kaçırma veya korsanlık girişimi sırasında müdahale planları güvenlik içinde başlatılabilir.",
+        bulletPoints: [
+          "SOLAS XI-2 / ISPS Kodu kapsamında zorunludur.",
+          "Geminin güvenlik ihlali/tehdidini kıyıya GİZLİCE bildirir.",
+          "GMDSS tehlike alarmının aksine açık yayın yapmaz.",
+        ],
+      },
+      {
+        title: "Çalışma Mantığı ve Tetikleme Noktaları",
+        content:
+          "SSAS, gemide gizli konumlandırılmış en az iki tetikleme noktasıyla (activation point) etkinleştirilir; bunlardan biri genellikle köprüüstündedir. Tetiklendiğinde sistem sessizce bir uyarı mesajı yayınlar: alarm gemide hiçbir sesli/görsel işaret üretmez ve gemideki haberleşme ekipmanını uyarmaz. Mesaj, geminin kimliğini, konumunu ve güvenlik alarmı durumunu içerir; bu bilgi otomatik olarak ve düzenli aralıklarla güncellenerek gönderilebilir. Sistem yanlışlıkla kapatılamayacak veya kolayca devre dışı bırakılamayacak şekilde tasarlanır.",
+        bulletPoints: [
+          "En az iki gizli tetikleme noktası (biri köprüüstünde) bulunur.",
+          "Tetiklendiğinde gemide sesli/görsel uyarı ÜRETMEZ.",
+          "Mesaj gemi kimliği, konum ve güvenlik durumunu taşır.",
+        ],
+      },
+      {
+        title: "Alarmın Yönlendirilmesi ve Muhataplar",
+        content:
+          "SSAS alarmı, GMDSS gibi tüm denize değil; bayrak devletinin belirlediği yetkililere (Şirket Güvenlik Sorumlusu/CSO ve/veya idare) gönderilir. Önemli bir nokta, alarmın doğru kara muhataplarına ulaşmasının düzenli test edilmesidir. Test çağrıları, gerçek bir güvenlik alarmıyla karıştırılmamak için ilgili merkezlerle önceden koordine edilerek yapılır. Mesaj genellikle uydu haberleşme kanalı üzerinden iletilir; gemi-kıyı zinciri ve irtibat bilgileri Gemi Güvenlik Planı'nda (SSP) tanımlıdır.",
+        bulletPoints: [
+          "Alarm tüm denize değil, önceden tanımlı kara muhataplarına gider.",
+          "Muhataplar genellikle CSO ve/veya bayrak devleti idaresidir.",
+          "Testler gerçek alarmla karışmaması için önceden koordine edilir.",
+        ],
+      },
+      {
+        title: "Korsanlık Bölgesinde Uygulama (BMP)",
+        content:
+          "Yüksek riskli korsanlık bölgelerinde SSAS, en iyi yönetim uygulamaları (BMP – Best Management Practices) çerçevesinde bir savunma katmanıdır. Gemi, bölgeye girmeden önce ilgili askeri/koordinasyon merkezlerine kayıt olur ve raporlama yapar; saldırı anında mürettebat güvenli mahale (citadel) çekilirken SSAS tetiklenir ve durum kıyıya iletilir. SSAS tek başına yeterli değildir; fiziksel önlemler, gözcülük, tatbikatlar ve doğru raporlama ile birlikte bütünsel bir güvenlik yaklaşımının parçası olarak çalışır. Mürettebatın tetikleme noktalarının yerini ve prosedürü tatbikatla bilmesi esastır.",
+        bulletPoints: [
+          "Yüksek riskli bölgelerde BMP'nin bir parçasıdır.",
+          "Saldırıda citadel'e çekilirken SSAS tetiklenir.",
+          "Fiziksel önlem, gözcülük ve tatbikatla birlikte etkilidir.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "SSAS, ISPS kapsamında zorunlu, gizli (sessiz) bir güvenlik alarm sistemidir.",
+      "GMDSS'in aksine açık yayın yapmaz; yalnızca tanımlı kara muhataplarına bildirir.",
+      "En az iki gizli tetikleme noktası vardır ve gemide uyarı üretmez.",
+      "Korsanlık bölgelerinde BMP ve citadel uygulamalarıyla birlikte kullanılır.",
+    ],
+  },
+
+  "LRIT - Uzun Menzilli Tanımlama ve İzleme": {
+    title: "LRIT - Uzun Menzilli Tanımlama ve İzleme",
+    introduction:
+      "LRIT (Long-Range Identification and Tracking), gemilerin küresel ölçekte uzaktan tanımlanması ve izlenmesi için SOLAS kapsamında kurulan bir sistemdir. AIS yerel/menzil içi bir yayın sistemiyken, LRIT bir geminin kimliğini ve konumunu uydu üzerinden, yetkili devletlere kapalı (gizli) bir veri akışı olarak iletir. Bu yönüyle LRIT, açık yayın yapan AIS'ten hem amaç hem de mahremiyet açısından ayrılır.",
+    sections: [
+      {
+        title: "Amaç ve Yasal Dayanak",
+        content:
+          "LRIT, SOLAS Bölüm V (Seyir Güvenliği) kapsamında, çoğu uluslararası sefer yapan yolcu gemisi, yüksek hızlı tekne, 300 GT ve üzeri yük gemisi ile mobil açıkdeniz sondaj birimleri için zorunludur. Amaç; emniyet, güvenlik (security) ve deniz çevresinin korunması maksadıyla devletlerin kendi bayraklı, kıyılarına yaklaşan veya limanlarına gelecek gemileri izleyebilmesidir. LRIT bir 'izleme' (tracking) sistemidir; çatışmadan kaçınma gibi anlık seyir amaçlı değildir. Veriler yetkili merkezler arasında kontrollü biçimde paylaşılır.",
+        bulletPoints: [
+          "SOLAS Bölüm V kapsamında belirli gemi türleri için zorunludur.",
+          "Amaç: emniyet, güvenlik ve çevre koruma için uzaktan izleme.",
+          "Çatışmadan kaçınma için değil, devlet düzeyinde izleme içindir.",
+        ],
+      },
+      {
+        title: "İletilen Bilgi ve Raporlama Sıklığı",
+        content:
+          "LRIT cihazı, geminin kimliğini, konumunu (enlem/boylam) ve konumun alındığı tarih-saati otomatik olarak iletir. Standart raporlama tipik olarak günde birkaç kez (ör. 6 saatte bir) yapılır; ancak veri merkezleri, izleyen devletin talebine göre raporlama sıklığını uzaktan artırabilir veya konum bilgisini anlık talep edebilir (on-demand polling). Bu esneklik, bir gemi belirli bir bölgeye yaklaştığında veya özel bir durumda daha sık takip imkânı verir. AIS'in aksine LRIT verisi herkese açık değildir; yalnızca yetkili taraflar erişebilir.",
+        bulletPoints: [
+          "İletilen veri: gemi kimliği, konum ve zaman damgası.",
+          "Tipik raporlama birkaç saatte bir; uzaktan artırılabilir/anlık sorgulanabilir.",
+          "AIS'in aksine veri açık değildir; yalnızca yetkililer erişir.",
+        ],
+      },
+      {
+        title: "Sistem Mimarisi: Veri Merkezleri ve IDE",
+        content:
+          "LRIT, gemilerdeki uydu terminalleri ile birbirine bağlı bir Veri Merkezleri (Data Centre) ağı üzerine kuruludur. Her bayrak devleti bir Ulusal/Bölgesel/Kooperatif veya Uluslararası Veri Merkezi kullanır. Veri merkezleri arasındaki bilgi akışı, IMO tarafından yönetilen Uluslararası Veri Değişim noktası (IDE – International Data Exchange) üzerinden yönlendirilir. Bir devletin hangi gemi verisine erişebileceği, IMO'nun belirlediği Veri Dağıtım Planı'na (DDP – Data Distribution Plan) göre düzenlenir; böylece her devlet yalnızca kendi bayraklı, kıyısına yaklaşan veya limanına gelecek gemilerin verisine erişir.",
+        bulletPoints: [
+          "Veri Merkezleri ağı + IDE (Uluslararası Veri Değişimi) mimarisi.",
+          "Erişim hakları Veri Dağıtım Planı (DDP) ile düzenlenir.",
+          "Devletler yalnızca yetkili oldukları gemi verisine erişir.",
+        ],
+      },
+      {
+        title: "LRIT ve AIS Karşılaştırması",
+        content:
+          "LRIT ile AIS sıkça karıştırılır ancak farklı sorunları çözer. AIS, VHF üzerinden yerel ve açık yayın yapar; menzili telsiz ufkuyla sınırlıdır ve esas amacı çatışmadan kaçınma ile yerel durum farkındalığıdır (herkes dinleyebilir). LRIT ise uydu üzerinden küresel kapsama sağlar, daha seyrek rapor üretir ve verisi gizlidir/yalnızca yetkili devletlere açıktır. Özetle AIS 'gemiler birbirini görsün' içindir; LRIT 'devletler gemileri uzaktan izlesin' içindir. İkisi birbirinin yerine geçmez, birbirini tamamlar.",
+        bulletPoints: [
+          "AIS: VHF, yerel, açık yayın, anlık çatışmadan kaçınma.",
+          "LRIT: uydu, küresel, gizli veri, seyrek devlet düzeyi izleme.",
+          "Birbirinin yerini almaz; farklı amaçlara hizmet eder.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "LRIT, gemileri uydu üzerinden küresel ve gizli biçimde izleyen SOLAS sistemidir.",
+      "Gemi kimliği, konum ve zaman iletir; raporlama sıklığı uzaktan ayarlanabilir.",
+      "Veri Merkezleri + IDE mimarisiyle çalışır; erişim DDP ile sınırlanır.",
+      "AIS yerel/açık iken LRIT küresel/gizlidir; ikisi birbirini tamamlar.",
+    ],
+  },
+
+  "Telsiz Anten Sistemleri ve Acil Güç Kaynakları": {
+    title: "Telsiz Anten Sistemleri ve Acil Güç Kaynakları",
+    introduction:
+      "En iyi telsiz bile, antenine ve güç kaynağına bağlıdır. GMDSS ekipmanının her koşulda — özellikle ana güç kesildiğinde — çalışır kalması, tehlike haberleşmesinin temel güvencesidir. Bu konu; telsiz antenlerinin türleri ve bakımı ile GMDSS'in zorunlu kıldığı yedek (acil) enerji kaynaklarını ele alır.",
+    sections: [
+      {
+        title: "Anten Türleri ve Frekansa Göre Tasarım",
+        content:
+          "Anten boyutu ve tipi, çalıştığı frekans bandıyla doğrudan ilişkilidir. VHF için kısa, çubuk (whip) tipi anteni yeterlidir; tipik olarak direk veya köprüüstü üstünde, mümkün olan en yüksek ve açık konuma yerleştirilir (telsiz ufku yükseklikle artar). MF/HF için çok daha uzun teller veya kamçı antenler ve bir anten tuneri (ATU – Antenna Tuning Unit) gerekir; bu antenler genellikle gemi gövdesini topraklama düzlemi olarak kullanır. Uydu (Inmarsat/diğer) terminalleri ise yönlü/sabit kubbe antenler kullanır; bazı sistemler uyduyu sürekli takip eden stabilize antene ihtiyaç duyarken, alçak yörünge takımyıldızları daha basit antenlerle çalışabilir.",
+        bulletPoints: [
+          "VHF: kısa whip anten, mümkün olan en yüksek konum.",
+          "MF/HF: uzun tel/kamçı + ATU; gövde topraklama düzlemi.",
+          "Uydu: kubbe/yönlü anten; sistemine göre stabilizasyon gerekebilir.",
+        ],
+      },
+      {
+        title: "Anten Bakımı ve Yaygın Arızalar",
+        content:
+          "Anten ve besleme hattı sorunları, haberleşme arızalarının sık görülen ve gözden kaçan nedenidir. Deniz ortamında tuz, nem ve titreşim; konnektörlerde korozyona, kablo girişlerinde su kaçağına ve mekanik gevşemelere yol açar. Düzenli kontrol noktaları: konnektörlerin temiz ve sızdırmaz olması, anten izolatörlerinin kırık/kirli olmaması, topraklama bağlantılarının sağlamlığı ve antenin fiziksel bütünlüğü. Anten sisteminin sağlığı dolaylı olarak verici-alıcı performansından (zayıf menzil, yüksek gürültü) anlaşılabilir; haftalık test çağrılarında alınan/verilen sinyal kalitesi bu açıdan da değerlidir.",
+        bulletPoints: [
+          "Tuz/nem/titreşim: korozyon, su kaçağı ve gevşeme yapar.",
+          "Konnektör, izolatör, topraklama ve fiziksel bütünlük düzenli kontrol edilir.",
+          "Zayıf menzil/yüksek gürültü çoğu zaman anten/besleme sorununa işaret eder.",
+        ],
+      },
+      {
+        title: "GMDSS İçin Yedek (Acil) Enerji Kaynağı",
+        content:
+          "SOLAS Bölüm IV, GMDSS ekipmanının ana ve acil güç kaynaklarına ek olarak bir yedek enerji kaynağıyla (reserve source of energy) beslenmesini zorunlu kılar. Bu yedek kaynak (genellikle aküler), gemideki ana ve acil jeneratörlerin ikisi de devre dışı kaldığında dahi tehlike haberleşmesini sürdürebilmelidir. Yedek kaynak; geminin acil jeneratörü varsa en az 1 saat, yoksa en az 6 saat boyunca GMDSS yükünü (asgari tehlike/emniyet haberleşmesi) besleyecek kapasitede olmak zorundadır. Bu kapasite, ekipmanın yarısının verici, yarısının alıcı durumunda çekeceği güce göre hesaplanır.",
+        bulletPoints: [
+          "GMDSS için ana/acil güce ek bir yedek enerji kaynağı zorunludur.",
+          "Acil jeneratör varsa ≥1 saat, yoksa ≥6 saat besleme kapasitesi.",
+          "Kapasite, tehlike/emniyet haberleşmesi yükü esas alınarak hesaplanır.",
+        ],
+      },
+      {
+        title: "Akü Bakımı ve Testleri",
+        content:
+          "Yedek enerji kaynağının çalışırlığı, ancak düzenli bakım ve testle güvence altına alınır. Aküler için günlük/haftalık/aylık kontroller tanımlıdır: terminal gerilimi ölçümü, şarj akımının doğrulanması, elektrolit seviyesi/yoğunluğu (sulu tip akülerde), terminallerin temiz ve korozyonsuz olması ve havalandırmanın yeterliliği. Akülerin kapasite (deşarj) testi belirli aralıklarla yapılır ve sonuçlar radyo log defterine kaydedilir; düşen kapasiteli aküler zamanında değiştirilir. PSC denetimlerinde GMDSS yedek güç kayıtları sık kontrol edilen alanlardandır; bu nedenle test ve değişim disiplini doğrudan uyumluluğu etkiler.",
+        bulletPoints: [
+          "Akülerde günlük/haftalık/aylık kontroller standarttır (gerilim, şarj, elektrolit).",
+          "Periyodik kapasite (deşarj) testi yapılır ve log'a kaydedilir.",
+          "Düşük kapasiteli aküler zamanında değiştirilir; PSC bu kayıtları kontrol eder.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Anten tipi frekansa bağlıdır: VHF whip, MF/HF tel+ATU, uydu kubbe anteni.",
+      "Anten/besleme arızaları (korozyon, su kaçağı) haberleşme sorunlarının sık nedenidir.",
+      "GMDSS için yedek enerji kaynağı zorunludur: acil jeneratör varsa ≥1, yoksa ≥6 saat.",
+      "Akü bakımı, kapasite testi ve log kaydı uyumluluğun ön koşuludur.",
+    ],
+  },
 };

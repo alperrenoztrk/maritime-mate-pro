@@ -397,6 +397,23 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Görsel İşaretleşme: Bayraklar ve Mors Lambası", hasContent: true },
           { title: "Telsiz Mevzuatı ve Operatör Lisansları", hasContent: true }
         ]
+      },
+      {
+        title: "Uydu Tespit, Güvenlik ve İzleme Sistemleri",
+        description: "Cospas-Sarsat/MEOSAR uydu tespiti, SSAS güvenlik alarmı ve LRIT uzaktan izleme",
+        subTopics: [
+          { title: "Cospas-Sarsat ve MEOSAR Uydu Tespit Sistemi", hasContent: true },
+          { title: "SSAS - Gemi Güvenlik Alarm Sistemi", hasContent: true },
+          { title: "LRIT - Uzun Menzilli Tanımlama ve İzleme", hasContent: true }
+        ]
+      },
+      {
+        title: "Ekipman Altyapısı ve Sistemin Geleceği",
+        description: "Telsiz anten/güç sistemleri ile GMDSS modernizasyonu ve e-navigasyon",
+        subTopics: [
+          { title: "Telsiz Anten Sistemleri ve Acil Güç Kaynakları", hasContent: true },
+          { title: "GMDSS Modernizasyonu ve E-Navigasyon", hasContent: true }
+        ]
       }
     ],
     resources: [
