@@ -1,22 +1,18 @@
 import { Lightbulb } from "lucide-react";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SAILOR_KNOTS_BY_ID, type SailorKnot } from "@/data/sailorKnots";
+import { SAILOR_KNOTS_BY_ID } from "@/data/sailorKnots";
 
 interface KnotCardProps {
   knotId: string;
 }
 
-const DIFFICULTY_BADGE: Record<SailorKnot["difficulty"], string> = {
-  Kolay: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-  Orta: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
-  Zor: "bg-rose-500/15 text-rose-600 dark:text-rose-400",
-};
-
 /**
- * One maritime knot rendered as a collapsible accordion item. Fully text-based
- * — names, difficulty, step-by-step instructions, usage, strength loss and a
- * practical tip. No imagery, so every knot looks identical and consistent.
- * Must be rendered inside an <Accordion>.
+ * One maritime knot rendered as a collapsible accordion item. Shows a verified
+ * diagram, the alternate names, step-by-step instructions (çıma / beden / kasa
+ * terminolojisiyle), usage, strength loss and a practical tip. The diagram is a
+ * self-hosted SVG under /public/knots/, so every knot looks consistent and
+ * there are no missing or mismatched images. Must be rendered inside an
+ * <Accordion>.
  */
 export default function KnotCard({ knotId }: KnotCardProps) {
   const def = SAILOR_KNOTS_BY_ID[knotId];
@@ -28,15 +24,27 @@ export default function KnotCard({ knotId }: KnotCardProps) {
         <div className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 pr-2 text-left">
           <span className="text-sm font-semibold text-foreground">{def.name}</span>
           <span className="text-[11px] text-muted-foreground">{def.nameEn}</span>
-          <span
-            className={`ml-auto text-[10px] font-medium px-2 py-0.5 rounded-full ${DIFFICULTY_BADGE[def.difficulty]}`}
-          >
-            {def.difficulty}
-          </span>
         </div>
       </AccordionTrigger>
 
       <AccordionContent className="px-3">
+        {/* Diagram */}
+        <figure className="mx-auto mb-3 max-w-sm">
+          <div className="overflow-hidden rounded-xl border border-border/40 bg-white">
+            <img
+              src={def.image}
+              alt={`${def.name} (${def.nameEn}) bağının şeması`}
+              className="aspect-[4/3] w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          {def.credit && (
+            <figcaption className="mt-1 text-center text-[10px] text-muted-foreground/70">
+              Şema: {def.credit}
+            </figcaption>
+          )}
+        </figure>
+
         {/* Alternate names */}
         {def.aka && def.aka.length > 0 && (
           <div className="mb-3 flex flex-wrap items-center gap-1.5">
