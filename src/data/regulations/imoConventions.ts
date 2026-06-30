@@ -340,6 +340,31 @@ export const imoConventions: RegulationItem[] = [
         body:
           "Sözleşme yalnızca bireyi değil, organizasyonu da bağlar. Gemi, bayrak devletinin verdiği Safe Manning Document'te belirtilen sayı ve nitelikte personelle donatılmalıdır; aksi halde sefere çıkamaz. Her yeni gemiye katılan personel için familiarization (tanıtım) eğitimi zorunludur, böylece kişi göreve başlamadan önce o geminin can kurtarma ve acil durum düzenini öğrenir. Şirket, sertifika geçerlilik tarihlerini, tanker endorsement sürelerini ve zorunlu kursların yenilenmesini takip eden bir sistem kurmak zorundadır. STCW bu yönüyle ISM Code ile iç içe geçer: yeterlilik yönetimi, emniyet yönetim sisteminin ayrılmaz bir parçasıdır.",
       },
+      {
+        heading: "Yeterlilik tabloları, fonksiyonlar ve seviyeler",
+        body:
+          "STCW Code'un teknik kalbi, yeterliliği ölçülebilir kılan competence (yeterlilik) tablolarıdır. Her görev için 'yeterlilik – bilgi/anlayış/beceri – gösterme yöntemi – değerlendirme kriteri' sütunlarından oluşan tablolar tanımlanır; böylece 'iyi bir vardiya zabiti' soyut bir nitelik olmaktan çıkıp, sayılabilir ve sınanabilir yetkinliklere indirgenir. Sözleşme görevleri yedi fonksiyona ayırır (seyir, yük elleçleme, gemi operasyonu/can güvenliği, makine, elektrik, bakım-onarım, telsiz) ve her fonksiyonu üç sorumluluk seviyesinde ele alır: operasyonel (vardiya zabiti), yönetim (kaptan/başmühendis ve birinci zabitler) ve destek (yardımcı personel – ratings). Bir kişinin sertifikası, hangi fonksiyonda hangi seviyede yetkin olduğunu gösterir; bu yapı, dünya genelinde tutarlı bir yeterlilik dili kurar.",
+      },
+      {
+        heading: "Chapter II ve III – Güverte ve makine yeterlilikleri",
+        body:
+          "Chapter II, köprüüstü hiyerarşisinin yeterliliklerini basamak basamak tanımlar: vardiya zabiti (OOW) operasyonel seviyede seyir, yük ve gemi operasyonunu yürütebilmeli; birinci zabit ve kaptan ise yönetim seviyesinde sefer planlaması, stabilite, hasar kontrolü, hukuki yükümlülükler ve kriz yönetimini de kapsamalıdır. Chapter III makine bölümü için aynı mantığı uygular: vardiya mühendisi, ikinci mühendis ve başmühendis için makine operasyonu, elektrik/elektronik sistemler, bakım ve gemi sistemleri yönetimi yetkinlikleri tanımlanır. Ayrı bir kategori olan Elektro-Teknik Zabiti (ETO), modern gemilerin artan otomasyon ve elektronik karmaşıklığına yanıt olarak Manila değişiklikleriyle resmileştirilmiştir. Bu bölümler ayrıca her seviye için gereken asgari deniz hizmeti süresini ve onaylı eğitim/değerlendirme gerekliliklerini belirler.",
+      },
+      {
+        heading: "Chapter V ve VI – Özel ve zorunlu emniyet eğitimleri",
+        body:
+          "Chapter V, belirli gemi tipleri için ek eğitimleri zorunlu kılar: tanker personeli için temel ve ileri petrol/kimyasal/gaz tanker eğitimleri (basic ve advanced training), gaz yakıtlı gemiler için IGF Code eğitimi, kutup sularında seyir için Polar Code eğitimi ve yolcu gemisi personeli için kalabalık yönetimi (crowd management) ile kriz yönetimi eğitimleri. Chapter VI ise tüm gemi adamları için ortak emniyet ve güvenlik eğitimlerini düzenler: Temel Emniyet Eğitimi (BST – yangın söndürme, kişisel hayatta kalma teknikleri, ilk yardım, kişisel güvenlik ve sosyal sorumluluk), survival craft ve rescue boat kullanımı (PSCRB), ileri yangın söndürme, tıbbi ilk yardım/tıbbi bakım ve ISPS kapsamındaki güvenlik farkındalığı ile atanmış güvenlik görevleri eğitimleri. Bu eğitimler, sertifikanın görünmeyen ama hayati tabanını oluşturur.",
+      },
+      {
+        heading: "Chapter VIII – Vardiya, dinlenme ve göreve uygunluk",
+        body:
+          "Chapter VIII, yorgunluğu açık bir emniyet riski olarak ele alır ve hem köprüüstü hem makine vardiyalarının nasıl tutulacağını düzenler. Asgari dinlenme saatleri kesindir: 24 saatlik herhangi bir dilimde en az 10 saat ve 7 günlük herhangi bir dilimde en az 77 saat dinlenme; dinlenme en fazla iki parçaya bölünebilir ve bir parçası en az 6 saat olmalıdır. Bu saatler kayıt altına alınır ve liman devleti kontrolünde sıkça incelenir. 'Göreve uygunluk' (fitness for duty) ilkesi, alkol ve uyuşturucu politikasını da kapsar; STCW, vardiya görevlilerine standart bir azami kan alkol sınırı (0,05% BAC veya 0,25 mg/L soluk) getirir. Bölüm ayrıca vardiya devir-teslimini, gözcü tutmayı ve köprüüstü/makine dairesi vardiya düzenini tanımlar; bu kurallar COLREG'in gözcülük gereklilikleriyle ve geminin ISM emniyet yönetim sistemiyle doğrudan örtüşür.",
+      },
+      {
+        heading: "Sertifika güvenilirliği: değerlendirme, yenileme ve denetim",
+        body:
+          "STCW'nin gücü, sertifikaların gerçekten güvenilir olmasından gelir; bu yüzden sözleşme yalnızca eğitimi değil, eğitimin kalite kontrolünü de düzenler. Yeterlilikler onaylı simülatör (ECDIS, ARPA, makine dairesi), gemide yapılandırılmış staj kayıtları (training record book) ve standartlaştırılmış değerlendirmelerle kanıtlanır. Sertifikalar süresizdir değil: tipik olarak beş yılda bir, yeterli deniz hizmeti veya onaylı tazeleme kursuyla yenilenmeleri (revalidation) gerekir; özellikle tanker endorsement ve emniyet eğitimleri belirli periyotlarla tazelenir. Sistemin bütünlüğünü korumak için IMO, gerekliliklere etkin biçimde uyan ülkeleri bir 'beyaz liste'de tutar; bir gemi adamının sertifikası ayrıca onu istihdam eden bayrağın onay belgesiyle (endorsement) tanınmalıdır. Sahte sertifika kullanımı ağır biçimde kovuşturulur ve liman devleti denetiminde sertifika/dinlenme kaydı uyumsuzlukları geminin alıkonmasına yol açabilir.",
+      },
     ],
     relatedSlugs: ["solas", "ism-code", "colreg"],
     resources: [

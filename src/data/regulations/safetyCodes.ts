@@ -78,6 +78,31 @@ export const safetyCodes: RegulationItem[] = [
         body:
           "ISM uyumu iki sertifikayla kanıtlanır: şirkete verilen Document of Compliance (DOC) ve her gemiye verilen Safety Management Certificate (SMC). Bu sertifikalar dış denetimlerle (audit) doğrulanır ve beş yıllık döngüde yenilenir. Denetimde tespit edilen büyük uygunsuzluk (major non-conformity) kapatılmazsa sertifika askıya alınabilir ve gemi sefere çıkamaz. Kaza soruşturmalarında SMS eksiklikleri tespit edilirse şirketin hukuki sorumluluğu doğar. Bu yönüyle ISM, SOLAS Chapter IX olarak zorunlu olmasının ötesinde, modern gemi işletmeciliğinin organizasyonel omurgasıdır.",
       },
+      {
+        heading: "Madde 1-3: amaçlar, politika ve şirket sorumluluğu",
+        body:
+          "ISM Code'un ilk maddeleri, sistemin zeminini döşer. Madde 1, kodun amacını net biçimde tanımlar: denizde emniyeti sağlamak, can kaybı ve yaralanmaları önlemek ve çevreye (özellikle deniz çevresine) zarar vermekten kaçınmak; bunun için her şirketin emniyet hedefleri belirlemesini ister. Madde 2, şirketin yazılı bir emniyet ve çevre koruma politikası oluşturmasını ve bunu organizasyonun her seviyesinde uygulamasını şart koşar. Madde 3, 'şirket' kavramını tanımlar ve kritik bir gerçeği vurgular: ISM yalnızca gemiyi değil, onu işleten kıyı organizasyonunu da kapsar. Geminin sahibi ile işleteni farklıysa, gemiyi fiilen yöneten taraf ISM yükümlülüklerini üstlenir ve bunu bayrak devletine bildirir. Böylece emniyet sorumluluğu belirsiz bırakılmaz, somut bir tüzel kişiye bağlanır.",
+      },
+      {
+        heading: "Madde 4-5: Atanmış Kişi (DPA) ve kaptan yetkisi",
+        body:
+          "Bu iki madde, ISM'in en özgün düzenlemeleridir. Madde 4, en az bir Designated Person Ashore (DPA) atanmasını zorunlu kılar: bu kişi, gemi ile şirketin en üst yönetimi arasında doğrudan, hiyerarşik engellere takılmayan bir emniyet bağıdır; her geminin emniyet ve çevre koruma operasyonunu izler ve gerektiğinde yeterli kaynağın sağlanmasını talep eder. Madde 5, kaptanın rolünü ve özellikle 'üst yetki'sini (overriding authority) tanımlar: kaptan, emniyet ve kirlilik önleme konusunda ticari veya başka hiçbir baskıya tabi olmaksızın nihai karar verme yetkisine sahiptir ve şirket bu yetkiyi açıkça yazılı olarak desteklemek zorundadır. Bu iki madde birlikte, emniyet kararlarının ne kıyıdaki kâr kaygısına ne de gemideki yalnızlığa kurban edilmesini engeller.",
+      },
+      {
+        heading: "Madde 6-8: kaynaklar, gemi operasyonları ve acil duruma hazırlık",
+        body:
+          "Madde 6, kaynak ve personel yönetimini düzenler: kaptanın gerekli niteliklere sahip olması, mürettebatın yeterli ve sertifikalı olması, yeni personele tanıtım (familiarization) eğitimi verilmesi ve herkesin SMS'i anlayabileceği bir dilde bilgilendirilmesi zorunludur. Madde 7, gemideki kritik operasyonlar için yazılı plan ve talimatlar hazırlanmasını ister; örneğin kapalı mahal girişi, sıcak çalışma, yük operasyonları, köprüüstü ve makine vardiyası gibi yüksek riskli işler önceden tanımlanmış prosedürlere bağlanır. Madde 8, acil duruma hazırlığı kapsar: olası acil durumlar (yangın, çatışma, su alma, kirlilik, adam denize, terk gemi) tanımlanır, müdahale planları yazılır ve düzenli tatbikatlarla denenir; ayrıca kıyı organizasyonunun bir acil durumda gemiye nasıl destek vereceği önceden planlanır.",
+      },
+      {
+        heading: "Madde 9-10: raporlama, analiz ve bakım",
+        body:
+          "Madde 9, ISM'i bir öğrenme sistemine dönüştüren maddedir: uygunsuzluklar (non-conformity), kazalar ve tehlikeli durumlar (ramak kala – near miss) raporlanır, kök neden analizine tabi tutulur ve düzeltici aksiyonlarla kapatılır. Bu kültür, suçlama yerine öğrenmeye dayanır; near-miss raporlamasının teşvik edilmesi, küçük işaretlerin büyük kazalara dönüşmeden yakalanmasını sağlar. Madde 10, gemi ve teçhizatın bakımını düzenler: bir Planlı Bakım Sistemi (PMS) kurulur, kurallara uygunluk düzenli denetimlerle sağlanır ve özellikle aniden arızalanması tehlikeli sonuç doğurabilecek 'kritik ekipman' belirlenip bu ekipmanın güvenilirliğini artıracak özel önlemler (test, yedeklilik) alınır. Böylece bakım, reaktif bir tamir faaliyeti olmaktan çıkıp önleyici bir emniyet aracına dönüşür.",
+      },
+      {
+        heading: "Madde 11-13: dokümantasyon, denetim ve sertifikasyon",
+        body:
+          "Son maddeler, sistemin belgelenmesini ve doğrulanmasını ele alır. Madde 11, doküman kontrolünü düzenler: geçerli belgelerin ilgili tüm yerlerde bulunması, güncel olmayan belgelerin kaldırılması ve değişikliklerin gözden geçirilip onaylanması gerekir. Madde 12, şirketin kendi sistemini iç denetimlerle (en az yılda bir) doğrulamasını, bulguları yönetime raporlamasını ve düzenli yönetim gözden geçirmesi (management review) yapmasını ister; bu, sürekli iyileştirme döngüsünü tamamlar. Madde 13, sertifikasyonu tanımlar: şirkete dış denetim sonrası Document of Compliance (DOC), her gemiye ise Safety Management Certificate (SMC) verilir; bunlar beş yıllık döngüde ara doğrulamalarla yenilenir. Kapatılmayan bir büyük uygunsuzluk (major non-conformity) sertifikanın askıya alınmasına ve geminin sefer yapamamasına yol açabilir. 2021 sonrası siber risk yönetimi de bu sisteme entegre edilerek dijital tehditler emniyet yönetiminin parçası olmuştur.",
+      },
     ],
     relatedSlugs: ["solas", "smc", "isps-code"],
     resources: [{ label: "IMO ISM Code", href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx" }],
@@ -150,6 +175,26 @@ export const safetyCodes: RegulationItem[] = [
         heading: "Belgelendirme ve uyum",
         body:
           "Geminin ISPS uyumu, International Ship Security Certificate (ISSC) ile belgelenir; bu sertifika olmadan veya geçersizken gemi alıkonabilir ve limana giriş reddedilebilir. Güvenlik tatbikatları (her üç ayda bir tatbikat, yılda bir kapsamlı egzersiz) planın işlerliğini doğrular. CCTV, alarm, erişim kontrolü ve aydınlatma gibi güvenlik ekipmanları düzenli test edilir. ISPS, ISM Code ile yakın akrabadır: her ikisi de yazılı plan, atanmış sorumlu, tatbikat ve denetim mantığıyla çalışır; biri emniyeti, diğeri güvenliği yönetir ve birlikte geminin organizasyonel savunma katmanını oluşturur.",
+      },
+      {
+        heading: "SSA – Gemi Güvenlik Değerlendirmesi (derinlemesine)",
+        body:
+          "ISPS uyumu bir değerlendirmeyle başlar: Ship Security Assessment (SSA), geminin maruz kalabileceği tehditleri ve bunlara karşı zafiyetlerini sistematik olarak analiz eder. CSO (Şirket Güvenlik Görevlisi) sorumluluğunda yürütülen bu çalışma; kritik ekipman ve alanları (köprüüstü, makine dairesi, kargo kontrol, erişim noktaları) belirler, olası tehdit senaryolarını (yetkisiz giriş, kaçak yolcu, sabotaj, silah/patlayıcı kaçakçılığı, geminin silah olarak kullanılması) değerlendirir ve mevcut önlemlerdeki boşlukları ortaya koyar. SSA, geminin güvenlik planının temelini oluşturur; iyi yapılmamış bir değerlendirme, üzerine kurulan tüm planı temelsiz bırakır. Bu yüzden SSA, somut bir saha incelemesi ve risk analizini birleştiren disiplinli bir süreçtir.",
+      },
+      {
+        heading: "SSP – Gemi Güvenlik Planı (derinlemesine)",
+        body:
+          "Ship Security Plan (SSP), SSA'nın bulgularını somut prosedürlere çeviren ve bayrak devletince (veya yetkili RSO) onaylanan gizli bir belgedir. Plan; her güvenlik seviyesi için erişim kontrolünü, kısıtlı bölgelerin (restricted areas) tanımını ve korunmasını, kargo ile gemi kumanyasının elleçlenmesindeki güvenlik önlemlerini, güvenlik ekipmanının kullanımını, tehdit ve güvenlik ihlallerine müdahaleyi, tahliye prosedürlerini ve eğitim/tatbikat programını içerir. SSP'nin gizliliği esastır: yetkisiz kişilerin erişimine kapalıdır, çünkü plan aynı zamanda geminin zayıf noktalarını da gösterir. Plan değiştiğinde onay yenilenir; gemide her zaman onaylı ve güncel bir nüsha bulundurulur ve mürettebat planın kendisini ilgilendiren kısımlarını bilir.",
+      },
+      {
+        heading: "Güvenlik organizasyonu, erişim kontrolü ve kısıtlı bölgeler",
+        body:
+          "ISPS, güvenliği atanmış sorumluluklar ve günlük uygulamalarla somutlaştırır. Gemide SSO planın uygulanmasından, kıyıda CSO şirket düzeyindeki koordinasyondan, liman tarafında PFSO tesis güvenliğinden sorumludur; bu üçlü, gemi-liman arayüzünde güvenliğin kesintisiz olmasını sağlar. Günlük operasyonda erişim kontrolü merkezdedir: gemiye binen herkesin kimliği doğrulanır, ziyaretçiler ve yükleniciler kaydedilir, gangway sürekli gözetlenir. Kısıtlı bölgeler (köprüüstü, makine dairesi, telsiz odası, kargo kontrol) yetkisiz erişime kapatılır ve işaretlenir. Güvenlik ekipmanları – gizli alarm sistemi (SSAS), AIS, CCTV, aydınlatma ve erişim kontrol donanımı – düzenli test edilir. SSAS özellikle kritiktir: bir saldırı anında gemiyi uyarmadan, sessizce kıyıdaki yetkilileri haberdar eder.",
+      },
+      {
+        heading: "DoS, CSR, tatbikatlar ve denetim",
+        body:
+          "ISPS'in işleyişini birkaç araç tamamlar. Declaration of Security (DoS), gemi ile bir liman tesisi (veya başka bir gemi) arasında güvenlik sorumluluklarının netleştirilmesi gerektiğinde – örneğin taraflardan biri daha yüksek güvenlik seviyesindeyse – imzalanan bir mutabakattır. Continuous Synopsis Record (CSR), geminin bayrak, isim, sahip ve sınıf geçmişini izleyerek kimlik sürekliliğini sağlar ve ISSC ile birlikte gemide bulundurulur. Planın kâğıt üstünde kalmaması için düzenli tatbikatlar (drills – tipik olarak üç ayda bir) ve daha kapsamlı egzersizler (exercises – yılda bir) yapılır. Sistem, periyodik iç ve dış doğrulamalarla denetlenir ve uyum International Ship Security Certificate (ISSC) ile belgelenir. ISSC veya SSP eksikliği PSC'de alıkoymaya, güvenlik ihlalleri ise limana kabul edilmemeye yol açabilir; ISPS bu yönüyle ISM Code'un emniyet (safety) yönetimiyle simetrik bir güvenlik (security) yönetim sistemidir.",
       },
     ],
     relatedSlugs: ["solas", "issc", "ism-code"],
@@ -638,6 +683,26 @@ export const safetyCodes: RegulationItem[] = [
         heading: "Boil-off, ESD ve mürettebat yetkinliği",
         body:
           "Kriyojenik kargo sürekli az miktarda buharlaşır; bu boil-off gazının (BOG) yönetimi IGC operasyonunun ayrılmaz parçasıdır: gaz ya yeniden sıvılaştırılır (reliquefaction) ya da geminin yakıtı olarak kullanılır, böylece tank basıncı güvenli aralıkta tutulur. Acil durumlar için Emergency Shutdown (ESD) ve Emergency Release System (ERS) kargo transferini saniyeler içinde güvenle durdurur ve ayırır. Bu sistemlerin karmaşıklığı nedeniyle mürettebatın STCW gaz tanker endorsement'ı (A-V/1-2) ile özel olarak eğitilmesi zorunludur. Gaz algılama, basınç ve sıcaklık sürekli izlenir; sistemde ciddi arıza kargo operasyonunu durdurur ve vetting denetimlerinde ticari sonuç doğurur.",
+      },
+      {
+        heading: "Tank tipleri ve malzeme seçiminin derinlemesine mantığı",
+        body:
+          "IGC Code, kargo tanklarını taşıdıkları basınç/sıcaklık rejimine ve sızıntı yönetimi felsefesine göre sınıflandırır. Bağımsız tanklar üç alt tiptedir: Tip C, basınç kabı olarak tasarlanır ve genellikle ikincil bariyer gerektirmez (LPG ve etilen gemilerinde yaygın); Tip A ve B daha düşük basınçlı, daha büyük hacimli, kriyojenik yükler için uygundur ve ikincil bariyer gerektirir (Tip B kısmi, Tip A tam ikincil bariyer). Membran tanklar (GTT Mark III, NO96), gemi gövdesi tarafından desteklenen ince bir bariyer ve yalıtım katmanları sistemidir ve büyük LNG taşıyıcılarında standarttır. Malzeme seçimi kriyojenik koşullarda kritiktir: sıradan çelik aşırı soğukta kırılganlaşır, bu yüzden kargoyla temas eden yüzeylerde özel düşük sıcaklık çelikleri, nikel alaşımları veya paslanmaz çelik kullanılır. Tank tipi, geminin tüm hasar stabilite ve yerleşim tasarımını da belirler.",
+      },
+      {
+        heading: "İkincil bariyer ve sızıntı izleme",
+        body:
+          "IGC'nin temel emniyet ilkesi, soğuk kargonun hiçbir koşulda gemi gövdesine ulaşmamasıdır; çünkü kriyojenik bir sızıntı çeliği anında kırılganlaştırıp yapısal çöküşe yol açabilir. Bu yüzden birincil tankın sızdırması halinde devreye giren bir ikincil bariyer öngörülür ve bu bariyer, belirli bir süre boyunca sızan sıvıyı güvenle tutabilmelidir. Birincil ve ikincil bariyer arasındaki boşluk (interbarrier space) ile çevredeki mahaller sürekli sıcaklık ve gaz açısından izlenir; ani bir sıcaklık düşüşü veya gaz tespiti, en küçük bir sızıntıyı erkenden haber verir. Bu izleme ağı, kargo kontrol sisteminin ayrılmaz parçasıdır ve mürettebata bir sorunu felakete dönüşmeden müdahale etme imkânı tanır.",
+      },
+      {
+        heading: "Kargo kontrolü, ESD ve emniyet sistemleri",
+        body:
+          "Gaz tankerlerinde kargo, kapsamlı bir enstrümantasyon ağıyla yönetilir: tank seviyesi, basınç ve sıcaklık sürekli ölçülür; aşırı dolum (overfill) alarmları ve bağımsız yüksek seviye kesme sistemleri vardır. Acil durumda transferi saniyeler içinde güvenle durduran Emergency Shutdown (ESD) sistemi ve gemi ile terminali fiziksel olarak ayıran Emergency Release System (ERS) zorunludur; bunlar yanlış manevra, yangın veya kopma durumunda büyük bir gaz salımını önler. Gaz algılama sistemleri kapalı mahallerde ve tehlikeli bölgelerde sızıntıyı sürekli izler; belirlenen eşik aşıldığında alarm ve otomatik önlemler devreye girer. Elektrikli ekipman, tehlikeli bölge sınıflandırmasına uygun (ex-proof) seçilir; havalandırma sistemleri yanıcı gaz birikmesini önler.",
+      },
+      {
+        heading: "Boil-off yönetimi, yangın güvenliği ve ürün listesi",
+        body:
+          "Kriyojenik kargo sürekli az miktarda buharlaşır; bu boil-off gazının (BOG) yönetimi IGC operasyonunun ayrılmaz parçasıdır. Gaz ya yeniden sıvılaştırılır (reliquefaction – özellikle LPG'de), ya geminin yakıtı olarak kullanılır, ya da kontrollü biçimde yakılır; amaç tank basıncını her zaman güvenli aralıkta tutmaktır. Yangın güvenliği gaz tankerlerine özgüdür: güverte ve kritik alanlar su püskürtme (water spray) sistemiyle soğutulur, kuru kimyasal (dry chemical powder) söndürme sistemleri yangına müdahale eder ve kargo bölgesi yaşam mahallerinden yalıtılır. Personel koruması için göz/yüz koruyucular, koruyucu giysi ve solunum cihazları bulundurulur. Kodun Chapter 19'u, taşınabilen tüm gazları listeler ve her ürün için asgari tank tipi, malzeme, sıcaklık/basınç koşulları ve özel önlemleri belirtir; bir gemi yalnızca Certificate of Fitness'inde izin verilen ürünleri taşıyabilir.",
       },
     ],
     relatedSlugs: ["solas", "igf-code", "igs-code"],
