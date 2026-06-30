@@ -57,6 +57,28 @@ export const safetyCodes: RegulationItem[] = [
       "Kaza soruşturmalarında SMS eksikliklerinin tespitinde hukuki sorumluluk",
       "Major non-conformity kapatılmadığında sertifika askıya alınması",
     ],
+    detailedSections: [
+      {
+        heading: "Donanımdan kültüre: emniyetin yönetilmesi",
+        body:
+          "ISM Code, denizcilik emniyetinde bir paradigma değişimini temsil eder. Kendinden önceki sözleşmeler gemiye 'ne kadar ekipman, hangi yapı' sorusunu sorarken ISM 'bu sistem nasıl yönetiliyor, kim sorumlu, hata olunca ne öğreniliyor' sorusunu sorar. Herald of Free Enterprise faciasının ardından, kazaların kök nedeninin çoğu zaman donanım değil zayıf organizasyon ve belirsiz sorumluluk olduğu kabul edildi. ISM bu boşluğu, her şirketin yazılı bir Emniyet Yönetim Sistemi (SMS) kurmasını zorunlu kılarak doldurur. SMS, emniyet politikasından kritik operasyon talimatlarına kadar her şeyin belgelendiği, denetlendiği ve sürekli iyileştirildiği yaşayan bir çerçevedir.",
+      },
+      {
+        heading: "Kıyı-gemi köprüsü: DPA ve kaptan yetkisi",
+        body:
+          "ISM'in en özgün katkılarından biri, gemi ile şirket merkezi arasında doğrudan bir emniyet hattı kurmasıdır. Her şirket bir Designated Person Ashore (DPA) atar; bu kişi, hiyerarşik engellere takılmadan en üst yönetime erişebilen, emniyet ve çevre konularını izleyen bağımsız bir bağdır. Buna karşılık Madde 5, kaptanın emniyet ve çevre koruma konusunda nihai ve bağımsız karar yetkisini (override authority) açıkça güvence altına alır: ticari baskı ne olursa olsun kaptan emniyet için gerekli kararı alabilir. Bu iki düzenleme birlikte, emniyet kararlarının ne kıyıdaki ticari kaygıya ne de gemideki yalnızlığa kurban edilmemesini sağlar.",
+      },
+      {
+        heading: "Sürekli iyileştirme döngüsü",
+        body:
+          "SMS statik bir el kitabı değil, bir öğrenme makinesidir. Uygunsuzluklar (non-conformity), kazalar ve ramak kala (near-miss) olayları raporlanır, analiz edilir ve düzeltici aksiyonlarla kapatılır. İç denetimler sistemin kâğıt üstünde değil gerçekte işlediğini doğrular; yönetim gözden geçirmesi (management review) bulguları stratejik kararlara dönüştürür. Planlı Bakım Sistemi (PMS) ekipman güvenilirliğini, doküman kontrolü ise herkesin güncel prosedürle çalışmasını sağlar. 2021 sonrası siber güvenlik risk yönetimi de SMS'e entegre edilmiş, böylece dijital tehditler de emniyet yönetiminin parçası olmuştur.",
+      },
+      {
+        heading: "Belgelendirme ve denetim sonuçları",
+        body:
+          "ISM uyumu iki sertifikayla kanıtlanır: şirkete verilen Document of Compliance (DOC) ve her gemiye verilen Safety Management Certificate (SMC). Bu sertifikalar dış denetimlerle (audit) doğrulanır ve beş yıllık döngüde yenilenir. Denetimde tespit edilen büyük uygunsuzluk (major non-conformity) kapatılmazsa sertifika askıya alınabilir ve gemi sefere çıkamaz. Kaza soruşturmalarında SMS eksiklikleri tespit edilirse şirketin hukuki sorumluluğu doğar. Bu yönüyle ISM, SOLAS Chapter IX olarak zorunlu olmasının ötesinde, modern gemi işletmeciliğinin organizasyonel omurgasıdır.",
+      },
+    ],
     relatedSlugs: ["solas", "smc", "isps-code"],
     resources: [{ label: "IMO ISM Code", href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx" }],
   },
@@ -107,6 +129,28 @@ export const safetyCodes: RegulationItem[] = [
       "SSP ihlallerinde bayrak devleti yaptırımları",
       "Güvenlik seviyesi 3'te uyumsuzluk durumunda geminin limana giriş yasağı",
       "Güvenlik ihlali sonrası operasyonel kontrol kaybında cezai sorumluluk",
+    ],
+    detailedSections: [
+      {
+        heading: "11 Eylül sonrası deniz güvenliği",
+        body:
+          "ISPS Code, emniyet (safety – kazalardan korunma) ile güvenlik (security – kasıtlı saldırılardan korunma) arasındaki ayrımı denizcilik mevzuatına netçe taşıyan ilk büyük düzenlemedir. 11 Eylül 2001 saldırılarının ardından, ticari gemilerin ve limanların bir terör aracı veya hedefi olabileceği endişesiyle hızla geliştirilmiştir. SOLAS Chapter XI-2'ye bağlı olarak çalışır ve risk temelli bir yaklaşım benimser: önce tehdit ve zafiyetler değerlendirilir (SSA), sonra bunlara karşı somut önlemler bir plana (SSP) bağlanır. Kod, gemiyi izole bir birim olarak değil, liman tesisleriyle birlikte bir güvenlik sistemi olarak ele alır.",
+      },
+      {
+        heading: "Güvenlik organizasyonu: SSO, CSO, PFSO",
+        body:
+          "ISPS, güvenliği belirli kişilere atanmış sorumluluklarla somutlaştırır. Gemide Ship Security Officer (SSO) güvenlik planının uygulanmasından sorumludur; kıyıda Company Security Officer (CSO) şirket düzeyinde koordinasyonu sağlar; liman tarafında ise Port Facility Security Officer (PFSO) tesis güvenliğini yönetir. Bu üçlü, gemi-liman arayüzünde güvenliğin kesintisiz olmasını sağlar. Gemi ile liman arasındaki sorumlulukların netleştirilmesi gerektiğinde bir Declaration of Security (DoS) imzalanır. Geminin güvenlik geçmişi ise Continuous Synopsis Record (CSR) ile izlenir.",
+      },
+      {
+        heading: "Üç güvenlik seviyesi ve uygulanışı",
+        body:
+          "ISPS'in operasyonel kalbi üç kademeli güvenlik seviyesi sistemidir. Seviye 1 normal koşulları temsil eder ve sürekli uygulanan asgari önlemleri (erişim kontrolü, kimlik denetimi, devriye) içerir. Seviye 2, somut bir tehdit istihbaratı olduğunda devreye girer ve ek önlemleri (artırılmış arama, sınırlı erişim noktaları) zorunlu kılar. Seviye 3, bir güvenlik olayının olası veya yakın olduğu olağanüstü durumlarda uygulanır ve genellikle yetkili makamlarla koordineli özel önlemler gerektirir. Güvenlik seviyesini bayrak veya liman devleti belirler; gemi bu değişimlere planında tanımlı prosedürlerle anında uyum sağlamak zorundadır.",
+      },
+      {
+        heading: "Belgelendirme ve uyum",
+        body:
+          "Geminin ISPS uyumu, International Ship Security Certificate (ISSC) ile belgelenir; bu sertifika olmadan veya geçersizken gemi alıkonabilir ve limana giriş reddedilebilir. Güvenlik tatbikatları (her üç ayda bir tatbikat, yılda bir kapsamlı egzersiz) planın işlerliğini doğrular. CCTV, alarm, erişim kontrolü ve aydınlatma gibi güvenlik ekipmanları düzenli test edilir. ISPS, ISM Code ile yakın akrabadır: her ikisi de yazılı plan, atanmış sorumlu, tatbikat ve denetim mantığıyla çalışır; biri emniyeti, diğeri güvenliği yönetir ve birlikte geminin organizasyonel savunma katmanını oluşturur.",
+      },
     ],
     relatedSlugs: ["solas", "issc", "ism-code"],
     resources: [{ label: "IMO ISPS Code", href: "https://www.imo.org/en/OurWork/Security/Pages/ISPS-Code.aspx" }],
@@ -159,6 +203,23 @@ export const safetyCodes: RegulationItem[] = [
       "Cargo declaration eksikliğinde PSC denetim eksikliği",
       "Group A yükte nem testi yapılmadan yükleme kabul edilmez",
     ],
+    detailedSections: [
+      {
+        heading: "Görünmeyen tehlike: sıvılaşma",
+        body:
+          "IMSBC Code'un varlık nedeni, dökme katı yüklerin masum görünümünün ardındaki ölümcül risklerdir. En kritik tehlike sıvılaşmadır (liquefaction): nem içeren ince taneli yükler (nikel cevheri, boksit, bazı konsantreler) geminin titreşimi ve hareketiyle aniden sıvı gibi davranmaya başlayabilir. Bu durumda yük ambar içinde kayar, geminin meyil dengesini bozar ve dakikalar içinde alabora olmaya yol açabilir. Kod, yükleri tehlike özelliklerine göre üç gruba ayırır: Grup A sıvılaşabilen yükler, Grup B kimyasal tehlike (yangın, zehirli gaz, oksijen tüketimi) taşıyanlar, Grup C ise her iki riski de taşımayanlardır.",
+      },
+      {
+        heading: "Nem limiti ve test rejimi",
+        body:
+          "Grup A yükleri için kodun en önemli sayısal kavramı Transportable Moisture Limit'tir (TML): yükün güvenle taşınabileceği azami nem oranı, tipik olarak akış nem noktasının (FMP) %90'ı olarak belirlenir. Yükün gerçek nem oranı bu sınırın altında olmalıdır. Bunu doğrulamak için laboratuvar testleri (Proctor/Fagerberg, flow table) ve sahada hızlı bir 'can/should test' kullanılır. Yükleyici, gemiye TML ve gerçek nem değerlerini içeren bir yük bilgi formu (cargo declaration) vermek zorundadır; bu belge olmadan veya nem testi yapılmadan Grup A yük kabul edilmemelidir.",
+      },
+      {
+        heading: "İstif, trimming ve operasyonel önlemler",
+        body:
+          "Kod yalnızca sıvılaşmayı değil, her yükün kendine özgü taşıma koşullarını da düzenler: 350'den fazla yük için ayrı profiller, istif faktörleri, havalandırma ihtiyaçları, yangın ve reaktivite önlemlerini listeler. Trimming (yükün ambar içinde düzgün yayılması) hem stabilite hem yapısal yük dağılımı için kritiktir. Bazı yükler kapalı havalandırma ister (oksijenle reaksiyona girmemesi için), bazıları ise zehirli/yanıcı gaz biriktirebileceği için sürekli havalandırma ve gaz ölçümü gerektirir. Mürettebat yükleme sırasında yükün görsel durumunu (nem belirtileri, su sızması) izler ve şüphe halinde operasyonu durdurur. Tahıl bu koddan ayrıdır ve ayrı Grain Code ile düzenlenir.",
+      },
+    ],
     relatedSlugs: ["solas", "bc-code", "css-code"],
     resources: [{ label: "IMO IMSBC Code", href: "https://www.imo.org/en/Publications/Pages/IMSBC-Code.aspx" }],
   },
@@ -210,6 +271,28 @@ export const safetyCodes: RegulationItem[] = [
       "Ayrım kuralı ihlalinde geminin alıkonması",
       "Kaza sonucu tehlikeli madde sızıntısında çevre ve sorumluluk tazminatı",
     ],
+    detailedSections: [
+      {
+        heading: "Tehlikeli yükü ortak bir dile çevirmek",
+        body:
+          "IMDG Code, deniz yoluyla taşınan binlerce tehlikeli maddeyi tek bir uluslararası sistemle yönetilebilir kılar. Her maddeye bir UN numarası ve standart bir Uygun Taşıma Adı (PSN) atanır; böylece bir kimyasalın ticari adı ne olursa olsun, dünyanın her limanında aynı şekilde tanınır ve aynı kurallara tabi olur. Kodun temel mantığı, tehlikeyi önce sınıflandırmak, sonra bu sınıfa uygun ambalaj, işaret, belge ve istif kurallarını uygulamaktır. Bu standartlaşma, farklı diller ve mevzuatlar arasında taşınan tehlikeli yüklerin kazalara yol açmadan elleçlenmesini sağlar.",
+      },
+      {
+        heading: "Dokuz tehlike sınıfı ve ambalaj grupları",
+        body:
+          "Maddeler taşıdıkları başlıca riske göre dokuz sınıfa ayrılır: patlayıcılar (1), gazlar (2), yanıcı sıvılar (3), yanıcı katılar (4), oksitleyiciler (5), zehirli ve bulaşıcı maddeler (6), radyoaktifler (7), korozifler (8) ve diğer tehlikeli maddeler (9). Bu sınıflar tehlikenin türünü gösterirken, ambalaj grupları (I yüksek, II orta, III düşük tehlike) tehlikenin derecesini gösterir ve gereken ambalaj dayanımını belirler. Sınıf ve ambalaj grubu birlikte, bir maddenin nasıl paketleneceğini, etiketleneceğini ve ne kadar dikkatle elleçleneceğini tanımlar.",
+      },
+      {
+        heading: "Ayrım (segregation) ve istif kuralları",
+        body:
+          "IMDG'nin en hayati operasyonel bölümü ayrım (segregation) kurallarıdır: birbiriyle tehlikeli reaksiyona girebilecek maddeler (örneğin asitlerle siyanürler, oksitleyicilerle yanıcılar) belirli mesafelerde veya ayrı bölmelerde taşınmak zorundadır. Ayrım tablosu ve özel hükümler, hangi maddelerin yan yana, hangilerinin ayrı tutulacağını belirler. İstif planı bu kurallara göre yapılır; güverte altı/üstü, ısı kaynaklarından uzaklık ve havalandırma da dikkate alınır. Yanlış bir ayrım, tek başına zararsız iki yükün birleşerek yangın veya zehirli gaz üretmesine yol açabilir.",
+      },
+      {
+        heading: "Belgelendirme ve acil durum hazırlığı",
+        body:
+          "Her tehlikeli yük sevkiyatı eksiksiz belgelenmek zorundadır: DG manifest, konteyner/araç paketleme sertifikası ve çok modlu tehlikeli madde formu yükün ne olduğunu, nasıl paketlendiğini ve nerede istiflendiğini gösterir. Kaza anına hazırlık için iki kılavuz hayati önemdedir: EmS (Emergency Schedules) yangın ve dökülme durumunda yapılacakları, MFAG (Medical First Aid Guide) ise maruz kalan kişiye uygulanacak ilk yardımı tanımlar. Konteyner ve araçların güvenli paketlenmesi CTU Code ile düzenlenir. Bu belge ve kılavuzlar köprüüstü ile makine dairesinde erişilebilir tutulur, mürettebata düzenli tehlikeli madde eğitimi verilir.",
+      },
+    ],
     relatedSlugs: ["solas", "marpol"],
     resources: [{ label: "IMO IMDG Code", href: "https://www.imo.org/en/Publications/Pages/IMDG-Code.aspx" }],
   },
@@ -255,6 +338,23 @@ export const safetyCodes: RegulationItem[] = [
       "IG sistemi çalışmıyorken kargo operasyonu yapılması yasaktır – alıkoyma sebebi",
       "IG sistemi arızasında kargo operasyonunun durdurulması zorunludur",
       "Vetting denetimlerinde IG sistemi eksiklikleri ticari red sebebidir",
+    ],
+    detailedSections: [
+      {
+        heading: "Yangın üçgenini kırmak: neden inert gaz",
+        body:
+          "Bir tankerde en büyük tehlike, boşaltma sonrası kargo tanklarında kalan yanıcı hidrokarbon buharlarının havayla karışarak patlayıcı bir atmosfer oluşturmasıdır. Yanma için gereken üç unsur (yakıt, oksijen, ateş kaynağı) bir arada olduğunda en küçük bir kıvılcım felakete yol açabilir; 1969-1978 arasındaki büyük tanker patlamaları bunu acı biçimde göstermiştir. İnert gaz sistemi bu üçgeni oksijeni hedef alarak kırar: tank atmosferindeki oksijen seviyesini yanmanın imkânsız hale geldiği düzeye (genel kural olarak %8'in, kritik operasyonlarda %5'in altına) indirir. Böylece tankta yanıcı buhar bulunsa bile tutuşma gerçekleşemez.",
+      },
+      {
+        heading: "Sistem bileşenleri ve inert gaz kaynağı",
+        body:
+          "İnert gaz iki yoldan üretilir: ya kazan veya bağımsız bir yakıcının baca gazından (flue gas, düşük oksijenli) ya da bir azot jeneratöründen. Baca gazı önce bir scrubber'da yıkanarak kükürt ve kurum partiküllerinden arındırılır, sonra bloweler (fanlar) ile tanklara basılır. Sistemin geri kaçışı önleyen kritik bir emniyet katmanı vardır: deck water seal ve non-return düzenekleri, tanktaki yanıcı gazın makine dairesine geri dönmesini engeller; P/V breaker tankı aşırı basınç ve vakumdan korur. Oksijen analizörleri ve basınç sensörleri sistemi sürekli izler ve sınır aşımında alarm verir.",
+      },
+      {
+        heading: "Operasyonel prosedürler ve uyum",
+        body:
+          "İnert gaz yalnızca bir donanım değil, bir dizi prosedürdür: purging (tankı inert gazla süpürme), inerting (oksijeni düşürme) ve gas-freeing (insan girişi için tankı havalandırma) farklı amaçlarla, sıkı sırayla uygulanır. Yükleme/boşaltma boyunca tank her zaman pozitif basınçta ve düşük oksijende tutulur. Mürettebat oksijen seviyesini düzenli ölçer ve kaydeder, scrubber/blower bakımını yapar, deck seal su seviyesini kontrol eder. İnert gaz sistemi çalışmazken kargo operasyonu yapmak kesinlikle yasaktır ve bu durum PSC alıkoyma ile vetting (SIRE) denetimlerinde ticari red sebebidir.",
+      },
     ],
     relatedSlugs: ["solas", "ics-code"],
     resources: [{ label: "IMO IGS Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/IGS-Code.aspx" }],
@@ -305,6 +405,23 @@ export const safetyCodes: RegulationItem[] = [
       "Gaz sızıntısı tespit sisteminde arıza durumunda seferin durdurulması",
       "PSC denetiminde IGF Code ihlali tespitinde alıkoyma",
     ],
+    detailedSections: [
+      {
+        heading: "Alternatif yakıt çağının emniyet çerçevesi",
+        body:
+          "IGF Code, gemilerin geleneksel fuel oil yerine LNG ve diğer düşük parlama noktalı yakıtlara geçişiyle ortaya çıkan yeni riskleri yönetmek için kurulmuştur. Bu yakıtların çevresel avantajı vardır ancak emniyet açısından zorludur: gaz halinde sızdığında hızla yayılır, çok düşük sıcaklıkta depolanır ve dar bir aralıkta patlayıcı karışım oluşturur. Kodun ayırt edici yaklaşımı, her ayrıntıyı önceden yazmak yerine risk temelli (goal-based) olmasıdır: tasarımcı, sistemin güvenliğini HAZID/HAZOP gibi yapılandırılmış risk analizleriyle kanıtlamak ve idare/klas onayını almak zorundadır. Bu esneklik, henüz olgunlaşmamış yakıt teknolojilerinin güvenle gelişmesine olanak tanır.",
+      },
+      {
+        heading: "Çift bariyer ilkesi ve gaz güvenliği",
+        body:
+          "IGF'nin temel mühendislik felsefesi 'çift bariyer'dir: yakıtın tutulduğu her noktada, tek bir arıza durumunda bile gazın insanların bulunduğu alanlara ulaşmaması için iki bağımsız koruma katmanı bulunur. Yakıt tankları, boru hatları ve bağlantılar bu mantıkla tasarlanır; çift cidarlı borular, gaz sızıntısını yakalayıp güvenli biçimde dışarı atan havalandırılmış mahfazalar kullanılır. Makine dairesi 'gaz güvenli' ve 'gaz tehlikeli' bölgelere ayrılır; elektrikli ekipman bu sınıflandırmaya uygun seçilir. Gaz algılama sistemleri sürekli izler ve eşik aşımında otomatik acil kapatma (ESD) devreye girerek yakıt akışını anında keser.",
+      },
+      {
+        heading: "Bunkering, eğitim ve uyum",
+        body:
+          "Gaz yakıt almak (bunkering), konvansiyonel yakıt almaktan çok daha riskli ve prosedürel bir operasyondur; her adım bir kontrol listesiyle yürütülür, sızıntı ve statik elektrik önlemleri alınır, acil ayrılma düzenekleri hazır tutulur. Mürettebatın STCW A-V/3 kapsamında özel gaz yakıt eğitimi alması zorunludur, çünkü bu sistemleri güvenle işletmek özel bilgi gerektirir. Gaz sızıntısı senaryoları düzenli tatbik edilir, ESD ve gaz algılama sistemleri periyodik test edilir. IGF gerekliliklerini karşılamayan gemiye sertifika verilmez; algılama sisteminin arızası seferin durdurulmasını gerektirir. Kod şu an ağırlıkla LNG'yi kapsasa da metanol ve amonyak gibi yakıtlar için kılavuzlarla genişlemektedir.",
+      },
+    ],
     relatedSlugs: ["solas", "stcw", "igc-code"],
     resources: [{ label: "IMO IGF Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/IGF-Code.aspx" }],
   },
@@ -350,6 +467,23 @@ export const safetyCodes: RegulationItem[] = [
       "Loading instrument çalışmıyorken yükleme yapılması PSC alıkoyma sebebi",
       "Yapısal hasarın raporlanmaması klas askıya alınması sebebi",
       "Ambar kapağı su geçirmezlik ihlali PSC detention sebebi",
+    ],
+    detailedSections: [
+      {
+        heading: "Neden dökme yük gemileri özel ilgi gerektirir",
+        body:
+          "Dökme yük gemileri, denizdeki en yüksek kayıp oranına sahip gemi tiplerinden biri olmuştur. Derbyshire ve benzeri kayıplarda görülen örüntü ürkütücüydü: gemiler çoğu zaman bir tehlike çağrısı bile yapamadan, çok kısa sürede battı. Nedeni, ağır ve yoğun yüklerin ambar yapısını zorlaması, bir ambarın su almasının hızla yapısal çöküşe ve batmaya yol açmasıydı. Bu kayıplar SOLAS Chapter XII'nin eklenmesini ve dökme yük gemilerine özel ek yapısal ve operasyonel gerekliliklerin getirilmesini sağladı. BC Code ve onu izleyen düzenlemeler, bu gemilerin hem yapısal dayanımını hem de yükleme operasyonlarını sıkı kurallara bağlar.",
+      },
+      {
+        heading: "Yapısal dayanım ve hasar sonrası hayatta kalma",
+        body:
+          "Chapter XII'nin özü, bir ambarın su alması durumunda geminin yine de yüzer kalabilmesini sağlamaktır. 150 m üzeri gemiler için hasar stabilite ve yapısal dayanım kriterleri tanımlanır: en öndeki ambar su alsa bile geminin batmaması, perdelerin ve çift cidar yapılarının bu yükü taşıyabilmesi beklenir. Her ambara su seviyesi algılama ve alarm sistemi konur, böylece sessiz bir su girişi erkenden fark edilir. Çift cidar düzenlemeleri ve güçlendirilmiş perde yapıları, tek noktadan başlayan bir hasarın domino etkisiyle tüm gemiyi batırmasını önler.",
+      },
+      {
+        heading: "Yükleme operasyonu ve BLU Code",
+        body:
+          "Dökme yük gemilerinde tehlike yalnızca denizde değil, limanda yükleme/boşaltma sırasında da vardır: dengesiz veya çok hızlı yükleme, gövdeye aşırı eğilme ve burulma gerilmesi bindirerek yapısal hasara yol açabilir. Bu yüzden her yükleme bir loading instrument (yükleme bilgisayarı) ile izlenir ve hesaplanan gerilme limitleri asla aşılmaz. BLU Code, gemi ile terminal arasındaki iletişimi, üzerinde mutabık kalınan bir yükleme planını ve güvenlik prosedürlerini standartlaştırır; yükleme sırası, oranı ve denge gözetilerek gövde dengeli yüklenir. Loading instrument çalışmazken yükleme yapmak PSC alıkoyma sebebidir.",
+      },
     ],
     relatedSlugs: ["solas", "imsbc-code", "esp"],
     resources: [{ label: "IMO BC Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/BulkCarriers.aspx" }],
@@ -399,6 +533,23 @@ export const safetyCodes: RegulationItem[] = [
       "Prewash ihlalinde MARPOL Ek II kapsamında ceza",
       "Cargo compatibility ihlali kazaya yol açtığında cezai sorumluluk",
     ],
+    detailedSections: [
+      {
+        heading: "Kimyasal tankerin tasarım mantığı",
+        body:
+          "IBC Code, dökme tehlikeli kimyasal taşıyan gemileri yükün yarattığı riske göre tasarlama prensibine dayanır. Mantık şudur: taşınan madde ne kadar tehlikeliyse (zehirlilik, yanıcılık, çevreye zarar), geminin hayatta kalma kabiliyeti o kadar yüksek olmalıdır. Bu nedenle gemiler Tip 1, 2 ve 3 olarak sınıflandırılır; Tip 1 en tehlikeli yükleri taşır ve en sıkı bölmeleme, hasar stabilite ve tank yerleşim gerekliliklerine tabidir (tankları gövde dışına en uzak, hacimleri sınırlı). Böylece bir çarpışma veya karaya oturmada en tehlikeli yükün çevreye ve gemiye verebileceği zarar en aza indirilir.",
+      },
+      {
+        heading: "Tank malzemesi, uyumluluk ve transfer",
+        body:
+          "Kimyasalların büyük kısmı taşındıkları tankla veya birbirleriyle reaksiyona girebilir; bu yüzden IBC Code malzeme ve uyumluluğa özel önem verir. Tanklar yükün kimyasına göre paslanmaz çelik veya özel kaplamalarla (zinc silicate, epoxy) korunur. P&A Manual (Procedures and Arrangements Manual), her yükün hangi tankta, hangi boru sistemiyle taşınacağını ve yükleme/boşaltma sonrası tank temizleme ile kalıntı yönetimini tanımlar. Birbiriyle uyumsuz yükler ayrı tanklarda ve ayrı boru sistemlerinde tutulur. Kargo ısıtma/soğutma ve sıcaklık kontrolü, bazı maddelerin donmasını veya tehlikeli biçimde ısınmasını önler.",
+      },
+      {
+        heading: "Ürün listeleri ve çifte rejim",
+        body:
+          "Kodun pratik kalbi Chapter 17 ve 18'deki ürün listeleridir: her kimyasal için asgari gemi tipi, tank gereklilikleri, özel önlemler ve operasyonel kısıtlamalar tek tek belirtilir; bir gemi yalnızca sertifikasında (Certificate of Fitness) izin verilen ürünleri taşıyabilir. IBC Code aynı zamanda iki sözleşmeyi birden hizalar: emniyet açısından SOLAS Chapter VII, çevre açısından MARPOL Ek II. Bu yüzden tank yıkama, ön yıkama (prewash) ve kalıntı deşarjı hem emniyet hem kirlilik kurallarına tabidir. 1986 öncesi gemiler benzer ama daha eski bir rejim olan BCH Code kapsamındadır.",
+      },
+    ],
     relatedSlugs: ["marpol", "igs-code"],
     resources: [{ label: "IMO IBC Code", href: "https://www.imo.org/en/Publications/Pages/IBC-Code.aspx" }],
   },
@@ -446,6 +597,23 @@ export const safetyCodes: RegulationItem[] = [
       "IGC Code uyumsuzluğunda sertifika düzenlenmez/askıya alınır",
       "Gaz algılama sistemi arızasında kargo operasyonunun durdurulması",
       "Vetting denetimlerinde (SIRE) ciddi bulgu durumunda ticari red",
+    ],
+    detailedSections: [
+      {
+        heading: "Sıvılaştırılmış gaz taşımacılığının özel riskleri",
+        body:
+          "IGC Code, LNG, LPG, etilen ve amonyak gibi sıvılaştırılmış gazları taşıyan tankerlerin kendine özgü tehlikelerini yönetir. Bu yükler ya çok düşük sıcaklıkta (kriyojenik, LNG için yaklaşık -163°C) ya da yüksek basınç altında sıvı halde tutulur; sızdıklarında hızla genleşip yanıcı veya zehirli bulutlar oluşturabilir, aşırı soğuklarıyla çelik gövdeyi kırılganlaştırabilir. Kod, bu gemileri en üst düzey teknik standartlarla tasarlar ve gaz tankerlerini denizdeki en sofistike ve en sıkı denetlenen gemiler haline getirir. Temel amaç, kargonun her koşulda kontrol altında ve insanın bulunduğu alanlardan izole tutulmasıdır.",
+      },
+      {
+        heading: "Tank tipleri ve ikincil bariyer",
+        body:
+          "IGC'nin teknik kalbi kargo tankı tasarımıdır. Tanklar bağımsız (A, B, C tipi), membran veya integral olabilir; her tip farklı bir basınç/sıcaklık ve sızıntı yönetimi felsefesine dayanır. Kritik kavram ikincil bariyerdir: birincil tank sızdırırsa, soğuk sıvının gemi gövdesine ulaşıp onu kırılganlaştırmasını önleyecek ikinci bir koruma katmanı bulunur. Bariyerler arası boşluk (interbarrier space) sürekli sıcaklık ve gaz açısından izlenir, böylece en küçük bir sızıntı erkenden tespit edilir. Membran tankların (GTT Mark III, NO96) tasarımı bu çift koruma ilkesinin en gelişmiş örneğidir.",
+      },
+      {
+        heading: "Boil-off, ESD ve mürettebat yetkinliği",
+        body:
+          "Kriyojenik kargo sürekli az miktarda buharlaşır; bu boil-off gazının (BOG) yönetimi IGC operasyonunun ayrılmaz parçasıdır: gaz ya yeniden sıvılaştırılır (reliquefaction) ya da geminin yakıtı olarak kullanılır, böylece tank basıncı güvenli aralıkta tutulur. Acil durumlar için Emergency Shutdown (ESD) ve Emergency Release System (ERS) kargo transferini saniyeler içinde güvenle durdurur ve ayırır. Bu sistemlerin karmaşıklığı nedeniyle mürettebatın STCW gaz tanker endorsement'ı (A-V/1-2) ile özel olarak eğitilmesi zorunludur. Gaz algılama, basınç ve sıcaklık sürekli izlenir; sistemde ciddi arıza kargo operasyonunu durdurur ve vetting denetimlerinde ticari sonuç doğurur.",
+      },
     ],
     relatedSlugs: ["solas", "igf-code", "igs-code"],
     resources: [{ label: "IMO IGC Code", href: "https://www.imo.org/en/Publications/Pages/IGC-Code.aspx" }],
@@ -498,6 +666,23 @@ export const safetyCodes: RegulationItem[] = [
       "Servis süresi geçmiş teçhizat için PSC eksikliği",
       "On-load release hook güvenlik iyileştirmesi yapılmamış davit için alıkoyma",
     ],
+    detailedSections: [
+      {
+        heading: "Son savunma hattı: hayatta kalma donanımı",
+        body:
+          "LSA Code, SOLAS Chapter III'ün soyut gerekliliklerini ölçülebilir tasarım ve performans standartlarına çevirir. Mantığı, geminin terk edilmesi gibi en kötü senaryoda bile insanların hayatta kalmasını sağlayacak donanımın güvenilir, test edilmiş ve her an kullanıma hazır olmasıdır. Kod, bir can yeleğinin kaç Newton kaldırma kuvveti vereceğinden, bir can filikasının hangi sıcaklık ve deniz koşullarında işlev göreceğine kadar her ayrıntıyı standardize eder. Böylece dünyanın neresinde üretilirse üretilsin, bir can kurtarma aracının asgari bir performansı garanti edilir.",
+      },
+      {
+        heading: "Survival craft ve kişisel teçhizat",
+        body:
+          "Donanım iki ana grupta toplanır. Survival craft, kazazedeleri sudan uzak tutan araçlardır: tamamen kapalı can filikaları (TELB), serbest düşüşlü filikalar (freefall), yangına karşı korumalı tipler ve can salları (atılabilir veya matafora ile indirilen). Kişisel teçhizat ise bireyi korur: farklı kaldırma sınıflarında can yelekleri, can simitleri, soğuk suda hipotermiyi geciktiren dalma elbiseleri (immersion suit) ve termal koruyucular (TPA). Yolcu gemilerinde hızlı toplu tahliye için Marine Evacuation System (MES) kullanılır. Her donanımın sayısı gemideki kişi sayısıyla eşleşmek zorundadır.",
+      },
+      {
+        heading: "İndirme düzenekleri, bakım ve test",
+        body:
+          "Bir can filikasının kendisi kadar onu güvenle suya indiren matafora (davit) düzeneği de kritiktir; geçmişte pek çok kaza, indirme sırasında kancanın (on-load release hook) erken açılmasından kaynaklanmıştır, bu yüzden kod bu mekanizmaların güvenliğini özellikle sıkılaştırmıştır. LSA donanımı ancak düzenli bakım ve testle güvenilir kalır: can salları yıllıkservise gönderilir, filika motorları haftalık çalıştırılır, matafora ve vinçler beş yıllık yük testinden geçer, hidrostatik serbest bırakma üniteleri (HRU) zamanında değiştirilir. Bu bakım döngüsü ihmal edilirse PSC eksiklikleri ve alıkoyma doğar; donanım kâğıt üstünde var olsa bile gerçekte işlevsiz kalabilir.",
+      },
+    ],
     relatedSlugs: ["solas", "safety-equipment-cert"],
     resources: [{ label: "LSA Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/LifeSavingAppliances.aspx" }],
   },
@@ -547,6 +732,23 @@ export const safetyCodes: RegulationItem[] = [
       "CO₂ sistemi şarj eksikliğinde sertifika askıya alınması",
       "Yangın kapısı ve damper test eksikliğinde PSC eksikliği",
     ],
+    detailedSections: [
+      {
+        heading: "Yangınla mücadelenin teknik standardı",
+        body:
+          "FSS Code, SOLAS Chapter II-2'nin 'yangınla nasıl savaşılır' sorusuna verdiği teknik cevaptır. Gemideki bir yangın, karadan yardım gelmesi imkânsız olduğu için ilk dakikalardan itibaren gemi kaynaklarıyla kontrol altına alınmak zorundadır; bu yüzden söndürme, algılama ve alarm sistemlerinin tasarımı, performansı ve hazır bulunma durumu hayati önemdedir. Kod, her sistemin nasıl boyutlandırılacağını, nereye yerleştirileceğini, nasıl test edileceğini ve bakımının nasıl yapılacağını standartlaştırır. Böylece geminin pasif koruması (yapısal yangın bölmeleri) ile aktif koruması (söndürme sistemleri) birbirini tamamlayan bir savunma kurar.",
+      },
+      {
+        heading: "Söndürme, algılama ve alarm sistemleri",
+        body:
+          "FSS Code çeşitli söndürme yöntemlerini farklı mahaller için düzenler: makine dairesi gibi yüksek riskli kapalı alanlar için sabit CO₂ veya köpük sistemleri (boğma prensibi), yaşam mahalleri için otomatik sprinkler ve su sisi sistemleri, kargo alanları için güverte köpük monitörleri kullanılır. CO₂ gibi boğucu sistemlerde, insanların tahliyesi için sesli/görsel uyarı ve zaman gecikmesi zorunludur. Algılama tarafında duman ve ısı dedektörleri zonlar ve loop'lar halinde düzenlenir; bir yangının yeri köprüüstündeki panelden anında görülebilir. Manuel alarm noktaları, otomatik sistem yetişmeden insan müdahalesini başlatır.",
+      },
+      {
+        heading: "Yangın bütünlüğü, teçhizat ve bakım",
+        body:
+          "Aktif söndürme kadar yangının yayılmasını sınırlamak da önemlidir. Yangın kapıları, damperler ve bölme sınıfları (A-60'tan A-0'a, B-15, B-0) bir mahalde çıkan yangının belirli süre boyunca komşu mahallere geçmesini engeller; bu sayede tahliye ve müdahale için zaman kazanılır. İtfaiyeci teçhizatı (SCBA solunum cihazı, ısıya dayanıklı elbise, yaşam hattı) ekibin yangına yaklaşabilmesini sağlar. Tüm bu sistemler ancak düzenli testle güvenilir kalır: CO₂ tüplerinin ağırlık kontrolü, alarm panellerinin haftalık testi, yangın kapısı ve damper fonksiyon kontrolleri, SCBA tüplerinin basınç testleri ihmal edilemez. Şarjı eksik bir CO₂ sistemi veya test edilmemiş bir alarm, PSC denetiminde ciddi eksiklik ve alıkoyma doğurur.",
+      },
+    ],
     relatedSlugs: ["solas", "safety-equipment-cert", "safety-construction-cert"],
     resources: [{ label: "FSS Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/FireProtection.aspx" }],
   },
@@ -594,6 +796,23 @@ export const safetyCodes: RegulationItem[] = [
       "Lashing yetersizliği nedeniyle kargo kayması ve geminin alıkonması",
       "Kargo hasar tazminat davaları ve P&I sorumluluk",
     ],
+    detailedSections: [
+      {
+        heading: "Hareketli denizde yükü yerinde tutmak",
+        body:
+          "CSS Code, denizin asla durağan olmadığı gerçeğinden doğar. Gemi yalpalar, baş-kıç vurur, savrulur; bu hareketler yükün üzerine geminin kendi ağırlığının katları kadar atalet kuvveti bindirir. Yeterince sabitlenmemiş bir yük kayar, devrilir veya denize düşer; bu hem mürettebat için ölümcül hem de geminin stabilitesi için yıkıcı olabilir. Kod, yükün güvenli istiflenmesi ve bağlanması (lashing) için genel ilkeleri ve hesaplama yöntemlerini belirler. Her gemi, kendi tipine ve taşıdığı yük türlerine özgü bir Cargo Securing Manual (CSM) taşımak ve uygulamak zorundadır.",
+      },
+      {
+        heading: "Kuvvet hesabı ve bağlama ekipmanı",
+        body:
+          "Doğru bağlama bir tahmin işi değil, mühendislik hesabıdır. Kodun Ek 13'ü, yüke etki eden boyuna, enine ve düşey kuvvetleri (geminin ivmesi, rüzgâr ve dalga etkisiyle) hesaplamayı ve bunlara karşı koyacak bağlama düzenini tasarlamayı öğretir. Her bağlama elemanının bir Maximum Securing Load (MSL) değeri vardır ve toplam bağlama kapasitesi beklenen kuvvetleri güvenlik payıyla aşmalıdır. Konteynerler twistlock, köprü bağlantısı ve lashing bar'larla; araçlar zincir lashing, web kayış ve takoz'larla sabitlenir. Hasarlı veya aşınmış ekipman kullanım dışı bırakılır, çünkü zincirin en zayıf halkası tüm sistemi belirler.",
+      },
+      {
+        heading: "Operasyonel uygulama ve sorumluluk",
+        body:
+          "CSS uyumu kâğıt üstünde bitmez; yükleme sırasında bağlama düzeni CSM ile eşleştirilir, fotoğraflarla belgelenir ve seyir boyunca özellikle kötü havada periyodik kontrol edilir. Ağır hava beklendiğinde ek bağlama önlemleri alınır. Ağır ve proje yüklerinin bağlanması özel analiz ve klas onayı gerektirir. Bağlama yetersizliği yalnızca emniyet sorunu değil, ticari ve hukuki bir risktir: kargo kayması PSC alıkoymasına, kargo hasarı P&I sorumluluğuna ve tazminat davalarına yol açar. Kod, Ro-Ro araçlarından konteyner istiflerine kadar her yük tipi için bu disiplini zorunlu kılar.",
+      },
+    ],
     relatedSlugs: ["solas", "imsbc-code"],
     resources: [{ label: "CSS Code rehberi", href: "https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx" }],
   },
@@ -638,6 +857,23 @@ export const safetyCodes: RegulationItem[] = [
       "Document of Authorization eksik gemilerin tahıl yüklemesi yapamaması",
       "Tahıl stabilite kriterlerini karşılamayan yükleme planlarının reddedilmesi",
       "Tahıl kayması nedeniyle oluşan kazalarda cezai sorumluluk",
+    ],
+    detailedSections: [
+      {
+        heading: "Tahılın akışkan davranışı ve stabilite riski",
+        body:
+          "Grain Code, dökme tahılın kendine özgü bir tehlikesini ele alır: tahıl, akışkan bir madde gibi davranır ve gemi meyil yaptığında ambar içinde bir tarafa kayar. Yüklemeden sonra tahıl bir miktar oturur ve üstte boşluk bırakır; gemi yalpaladığında bu boşluğa doğru kayan tahıl, ağırlık merkezini bir tarafa taşır ve geminin o tarafa kalıcı bir meyil almasına yol açar. Bu meyil dengeyi bozar ve üst üste binen yalpalarda alabora riskine kadar gidebilir. Kod, bu kayma momentini hesaplamayı ve geminin yine de yeterli stabiliteye sahip olmasını güvence altına almayı amaçlar.",
+      },
+      {
+        heading: "Stabilite kriterleri ve hesaplama",
+        body:
+          "Kodun teknik özü, tahıl kaymasından doğan meyil momentinin (heeling moment) hesaplanması ve buna karşı geminin stabilite rezervinin yeterli olduğunun kanıtlanmasıdır. Belirli sayısal eşikler vardır: kaymadan doğan meyil açısı belirli bir sınırı (yaklaşık 12° veya güverte kenarının suya girme açısı, hangisi küçükse) aşmamalı ve kalan dinamik stabilite alanı asgari bir değerin (0,075 m·rad) altına düşmemelidir. Hesap, kısmen dolu ve tam dolu ambarlar için farklı boşluk varsayımlarıyla yapılır. Gemi, bu hesapları içeren onaylı bir grain loading booklet ve tahıl taşıma yetkinliğini gösteren Document of Authorization taşımak zorundadır.",
+      },
+      {
+        heading: "Kaymayı önleyen fiziksel önlemler",
+        body:
+          "Hesabın yanı sıra fiziksel önlemler de tahıl kaymasını azaltır. Ambar ortasına yerleştirilen boyuna bölmeler (shifting board / longitudinal division) tahılın bir taraftan diğerine geçmesini engeller. Üst yüzeyin düzgün trim edilmesi ve boşlukların doldurulması (feeding, overstowing) kayma momentini azaltır; ağ ve bağlama (strapping, bundling) yöntemleriyle üst tabaka sabitlenir. Yükleme öncesi stabilite hesabı doğrulanmadan ve Document of Authorization geçerli olmadan tahıl yüklemesi yapılamaz. Bu yönüyle Grain Code, IMSBC Code'dan ayrı tutulan ancak onunla aynı 'dökme yükü kontrol altında tutma' felsefesini paylaşan özel bir rejimdir.",
+      },
     ],
     relatedSlugs: ["solas", "imsbc-code"],
     resources: [{ label: "Grain Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/Grain.aspx" }],
@@ -686,6 +922,23 @@ export const safetyCodes: RegulationItem[] = [
     penalties: [
       "SAR durumunda kaptanın yardım yükümlülüğünü yerine getirmemesi cezai suç",
       "SOLAS V/33.1 ihlalinde bayrak devleti soruşturması",
+    ],
+    detailedSections: [
+      {
+        heading: "SAR sözleşmesinin uygulama el kitabı",
+        body:
+          "IAMSAR, SAR Sözleşmesinin soyut yükümlülüklerini sahada uygulanabilir prosedürlere çeviren ortak IMO/ICAO rehberidir. 'Aeronautical and Maritime' adındaki ikilik anlamlıdır: arama kurtarma operasyonları çoğu zaman hem hava hem deniz vasıtalarını içerir ve bu rehber ikisini ortak bir dilde koordine eder. Üç ciltten oluşur ve her cilt farklı bir aktöre hitap eder: Cilt I devletlere ve sistem kurucularına, Cilt II kurtarma koordinasyon merkezlerine, Cilt III ise doğrudan olay yerindeki gemilere ve hava araçlarına yöneliktir. Bu yüzden bir ticaret gemisi için en kritik olan Cilt III'tür.",
+      },
+      {
+        heading: "Arama şekilleri ve datum hesabı",
+        body:
+          "Denizde bir kişiyi veya cismi bulmak rastgele dolaşmakla değil, sistematik arama şekilleriyle yapılır. IAMSAR; genişleyen kare (expanding square), sektör araması (sector search), paralel tarama (parallel track) ve sürünen hat (creeping line) gibi standart modelleri tanımlar; her biri farklı belirsizlik ve alan koşuluna uygundur. Aramanın başlangıç noktası 'datum' ise sabit değildir: kazazede veya cismin akıntı ve rüzgârla sürüklendiği dikkate alınarak olası güncel konum hesaplanır. Olay yerinde birden fazla vasıta varsa bir On-Scene Coordinator (OSC) atanır ve aramayı koordine eder.",
+      },
+      {
+        heading: "Gemiden yapılacak ilk müdahale",
+        body:
+          "Bir tehlike çağrısına en hızlı yanıtı genellikle yakındaki ticaret gemisi verir; bu yüzden IAMSAR Cilt III köprüüstünde erişilebilir tutulur. Adam denize düştüğünde kullanılan standart dönüş manevraları (Williamson, Anderson, Scharnow) hem kazazedeye geri dönmeyi hem de onu kaybetmemeyi sağlar; her birinin farklı görüş ve zaman koşullarına uygunluğu vardır ve düzenli tatbik edilmelidir. Rehber ayrıca SAR haberleşme formatlarını GMDSS ile, AIS-SART ve PLB gibi modern konum cihazlarını arama planıyla entegre eder. Kaptanın tehlikedeki kişilere yardım yükümlülüğü SOLAS V/33 ile bağlayıcıdır; IAMSAR bu yükümlülüğün nasıl etkili biçimde yerine getirileceğinin pratik rehberidir.",
+      },
     ],
     relatedSlugs: ["sar-convention", "solas"],
     resources: [{ label: "IAMSAR bilgi", href: "https://www.imo.org/en/OurWork/Safety/Pages/IAMSARManual.aspx" }],

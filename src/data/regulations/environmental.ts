@@ -50,6 +50,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "PSC denetimlerinde EEXI uyumsuzluğu tespitinde alıkoyma riski",
       "Bayrak devleti tarafından geminin seferden men edilmesi",
     ],
+    detailedSections: [
+      {
+        heading: "Tasarım verimliliğini ölçen sabit eşik",
+        body:
+          "EEXI, mevcut gemilerin teknik (tasarım) enerji verimliliğini tek bir sayıyla ölçen ve bu sayıyı bir üst sınıra bağlayan bir düzenlemedir. Yeni gemiler için zaten zorunlu olan EEDI'nin mantığını, halihazırda denizde olan filoya uyarlar. Temel fikir basittir: bir gemi taşıdığı her ton yükü her deniz mili boyunca taşırken ne kadar CO₂ üretiyor? Bu oran (gCO₂/ton·mil) hesaplanan 'attained EEXI' değeridir ve gemi tipi/büyüklüğüne göre belirlenmiş 'required EEXI' eşiğini aşmamalıdır. EEXI bir kez sağlanması gereken statik bir eşiktir; geminin yıl içindeki gerçek performansını değil, tasarımının teorik verimliliğini değerlendirir.",
+      },
+      {
+        heading: "Uyumun sağlanması: EPL ve SHAPOLI",
+        body:
+          "Birçok mevcut gemi, motoru olduğu gibiyken EEXI eşiğini karşılayamaz. En yaygın uyum yöntemi motor gücünü kısıtlamaktır: Engine Power Limitation (EPL) veya Shaft Power Limitation (SHAPOLI) ile geminin azami gücü sınırlandırılır, böylece referans hızı ve emisyonu düşer. Bu pratikte 'yapısal slow steaming'dir. Ancak gücü kısmak bir riski beraberinde getirir: gemi şiddetli hava ve akıntıda (adverse conditions) manevra ve rota tutma kabiliyetini kaybetmemelidir. Bu yüzden EPL uygulanan gemilerde asgari sevk gücü (minimum propulsion power) değerlendirmesi yapılır. Alternatif olarak enerji tasarrufu cihazları (pervane başlık kanatçıkları, akış yönlendirici duct'lar) verimliliği fiziksel olarak artırabilir.",
+      },
+      {
+        heading: "Belgelendirme ve denetim",
+        body:
+          "EEXI uyumu, hesapları ve uygulanan kısıtlamaları içeren bir EEXI Technical File ile belgelenir ve gemide bulundurulur. Uyum onayı, ilk yıllık/ara/yenileme sörveyinde IAPP sertifikasına işlenir. EPL veya SHAPOLI uygulandıysa, acil durum ve manevra gibi durumlarda güç sınırının geçici aşılmasına izin veren override koşulları prosedürlere yazılır ve mürettebat bu konuda eğitilir. EEXI uyumu sağlanmazsa IAPP sertifikası yenilenmez ve sertifikasız gemi uluslararası sefer yapamaz; PSC denetiminde uyumsuzluk alıkoyma riski doğurur. EEXI, operasyonel performansı ölçen CII ile birlikte MARPOL Ek VI'nın karbon verimliliği rejiminin iki ayağından biridir.",
+      },
+    ],
     relatedSlugs: ["cii", "marpol", "iapp-cert", "imo-dcs"],
     resources: [{ label: "IMO EEXI rehberi", href: "https://www.imo.org/en/OurWork/Environment/Pages/EEXI.aspx" }],
   },
@@ -102,6 +119,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Ticari etki: charterer'ların düşük CII rating'e sahip gemileri tercih etmemesi, charter oranlarında düşüş",
       "Finansal etki: düşük CII rating'li gemilerin sigorta primlerinde artış riski",
       "PSC denetimlerinde SEEMP Part III eksikliği veya CII uyumsuzluğu tespitinde eksiklik kaydı",
+    ],
+    detailedSections: [
+      {
+        heading: "Operasyonel karbon performansının ölçüsü",
+        body:
+          "CII, EEXI'nin tamamlayıcısıdır: EEXI geminin tasarımının ne kadar verimli olduğunu ölçerken CII, geminin gerçekte denizde nasıl çalıştığını ölçer. Bir yıl boyunca yakılan toplam yakıttan hesaplanan CO₂, taşınan kapasite ve kat edilen mesafeye bölünerek yıllık karbon yoğunluğu (tipik olarak AER – Annual Efficiency Ratio) bulunur. Aynı gemi, hızlı seyrederse, çok beklerse veya boş seyrederse kötü; optimize edilirse iyi CII alır. Böylece CII, kâğıt üstündeki verimliliği değil, kaptanın ve operatörün günlük kararlarının karbon sonucunu görünür kılar.",
+      },
+      {
+        heading: "A-E derecelendirme ve sıkılaşan çizgiler",
+        body:
+          "Her gemi yıllık performansına göre A'dan E'ye bir derece alır: A en iyi, E en kötü performansı temsil eder; C kabul edilebilir orta seviyedir. Bu derecelendirmenin kritik özelliği referans çizgilerinin her yıl sıkılaşmasıdır: dünkü C performansı, gereken azaltma nedeniyle birkaç yıl sonra D'ye düşebilir, yani gemi sadece aynı kalarak geride kalır. Üst üste üç yıl D veya herhangi bir yıl E alan gemi, zorunlu bir düzeltici eylem planı (corrective action plan) hazırlamak zorundadır. Bu mekanizma, filoyu sürekli iyileşmeye iter.",
+      },
+      {
+        heading: "İyileştirme yöntemleri ve ticari baskı",
+        body:
+          "CII'yi iyileştirmenin yolları çoğunlukla operasyoneldir: hız optimizasyonu (slow steaming), hava durumuna göre rota planlaması (weather routing), trim optimizasyonu, gövde ve pervane temizliğiyle sürtünmenin azaltılması, limanda gereksiz beklemeyi azaltan 'tam zamanında varış' (just-in-time). Bu çabalar SEEMP Part III adlı yönetim planında belgelenir. CII'nin yaptırımı yalnızca regülatif değil, güçlü biçimde ticaridir: kiracılar (charterer) düşük dereceli gemilerden kaçınır, bu da navlun gelirini ve geminin değerini düşürür; sigorta ve finansman koşulları da dereceden etkilenebilir. CII, IMO DCS verilerine dayanır ve 2026'da metodolojisinin gözden geçirilmesi beklenmektedir.",
+      },
     ],
     relatedSlugs: ["eexi", "imo-dcs", "marpol", "ghg-strategy"],
     resources: [{ label: "IMO CII rehberi", href: "https://www.imo.org/en/OurWork/Environment/Pages/CII.aspx" }],
@@ -159,6 +193,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Doğrulama raporundaki tutarsızlıklar için ek denetim ve ceza riski",
       "Administrating authority değişikliğinde geçiş dönemi yükümlülükleri",
     ],
+    detailedSections: [
+      {
+        heading: "Karbona fiyat koyan bölgesel mekanizma",
+        body:
+          "EU ETS, denizciliğe getirilen ilk büyük karbon fiyatlandırma sistemidir ve IMO dışı, bölgesel bir AB düzenlemesi olması yönüyle özeldir. Mantığı 'kirleten öder' ilkesine dayanır: bir gemi AB kapsamında ürettiği her ton CO₂ için piyasada işlem gören bir emisyon kotası (EUA – EU Allowance) satın alıp teslim etmek zorundadır. Böylece karbon emisyonu artık bedava değil, fiyatı olan bir maliyet kalemine dönüşür ve gemi operatörü emisyonu azaltarak bu maliyetten kaçınmaya teşvik edilir. Sistem 2018'den beri veri toplayan EU MRV altyapısının üzerine kurulmuştur.",
+      },
+      {
+        heading: "Kapsam, kademeli uygulama ve coğrafi sınırlar",
+        body:
+          "EU ETS denizcilikte kademeli devreye girer: yükümlülük 2024'te emisyonların %40'ını, 2025'te %70'ini, 2026'dan itibaren %100'ünü kapsar; ayrıca 2026'dan sonra CO₂'ye ek olarak metan ve diazot oksit de dahil edilir. Coğrafi kapsam ince ayarlıdır: iki AB limanı arasındaki seferlerin emisyonunun tamamı, bir AB limanı ile AB dışı liman arasındaki seferlerin yarısı, AB limanında demirde geçen sürenin tamamı kapsanır. Bu tasarım, AB'nin yargı yetkisini aşmadan kaçağı (carbon leakage) sınırlamayı amaçlar. Her gemi, son yıllarda en çok uğradığı AB devletini 'yöneten otorite' olarak alır.",
+      },
+      {
+        heading: "Uyum döngüsü ve yaptırımlar",
+        body:
+          "EU ETS yıllık bir takvimle işler: yıl boyunca emisyon izlenir, takip eden yılın 31 Mart'ına kadar bağımsız doğrulayıcıya onaylatılmış emisyon raporu sunulur ve 30 Eylül'e kadar yeterli sayıda EUA teslim edilir. Bu yükümlülüklerin maliyeti önemlidir ve charter sözleşmelerinde kimin (armatör mi kiracı mı) ödeyeceği açıkça düzenlenmek zorundadır. Yaptırımlar serttir: eksik teslim edilen her ton için ceza ödenir ve kota teslim borcu yine de devam eder; iki yıldan fazla süren uyumsuzluk geminin AB limanlarından men edilmesine (expulsion order) kadar gidebilir. EU ETS, aynı kapsamdaki FuelEU Maritime ile birlikte AB'nin 'Fit for 55' denizcilik ayağını oluşturur.",
+      },
+    ],
     relatedSlugs: ["fueleu-maritime", "imo-dcs", "cii"],
     resources: [{ label: "EU ETS denizcilik", href: "https://climate.ec.europa.eu/eu-action/transport/reducing-emissions-shipping-sector_en" }],
   },
@@ -214,6 +265,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Uyum belgesi düzenlenmemesi halinde AB limanlarına giriş kısıtlamaları",
       "Raporlama ve doğrulama eksikliklerinde idari yaptırımlar",
     ],
+    detailedSections: [
+      {
+        heading: "Karbon fiyatı yerine yakıt standardı",
+        body:
+          "FuelEU Maritime, EU ETS ile aynı gemileri hedefler ama farklı bir kaldıraç kullanır. EU ETS emisyona fiyat koyarken FuelEU, geminin kullandığı enerjinin sera gazı yoğunluğuna doğrudan bir üst limit koyar (gCO₂eq/MJ). Yani 'ne kadar kirletirsen öde' yerine 'kullandığın yakıt giderek daha temiz olmak zorunda' der. Bu yaklaşım, operatörleri zamanla daha düşük karbonlu yakıtlara (biyoyakıt, e-yakıtlar, yeşil metanol/amonyak) geçmeye zorlar. İki düzenleme birlikte çalışır: biri fiyat sinyaliyle, diğeri standart zorunluluğuyla aynı dekarbonizasyon hedefine baskı uygular.",
+      },
+      {
+        heading: "Well-to-Wake bakışı ve kademeli azaltma",
+        body:
+          "FuelEU'nun en ayırt edici yönü Well-to-Wake (kuyudan pervaneye) yaklaşımıdır: yakıtın yalnızca gemide yanarken (Tank-to-Wake) çıkardığı emisyon değil, üretiminden taşınmasına kadar tüm yaşam döngüsü emisyonu hesaba katılır. Bu önemlidir çünkü bir yakıt gemide temiz yansa bile üretiminde çok karbon salınmış olabilir; WtW bakışı bu 'gizli' emisyonu görünür kılar. İzin verilen GHG yoğunluğu 2025'ten 2050'ye kadar giderek sıkılaşır (%2'den başlayıp %80 azalmaya kadar). Yenilenebilir e-yakıtların (RFNBO) kullanımı çarpan bonuslarıyla, rüzgâr destekli sevk sistemleri de avantajlarla ödüllendirilir.",
+      },
+      {
+        heading: "Esneklik mekanizmaları ve OPS",
+        body:
+          "FuelEU katı bir yıllık limit dayatmak yerine esneklik araçları sunar. Compliance balance ile bir yıl fazladan yapılan iyileştirme (surplus) sonraki yıla devredilebilir veya eksik kalan (deficit) ödünç alınabilir. Pooling mekanizması ise gemiler arası takasa izin verir: çok temiz çalışan bir gemi, fazlasını standardın altında kalan başka bir gemiye kredi olarak aktarabilir; bu özellikle filo yönetiminde güçlü bir araçtır. Ayrı bir zorunluluk olarak, 2030'dan itibaren konteyner ve yolcu gemileri AB limanlarında demirdeyken karadan elektrik (Onshore Power Supply – OPS) kullanmak zorundadır, böylece limanda motor çalıştırma kaynaklı emisyon ve hava kirliliği ortadan kalkar. Deficit durumunda VLSFO eşdeğeri üzerinden hesaplanan cezalar uygulanır.",
+      },
+    ],
     relatedSlugs: ["eu-ets", "ghg-strategy", "imo-2020"],
     resources: [{ label: "FuelEU Maritime", href: "https://climate.ec.europa.eu/eu-action/transport/reducing-emissions-shipping-sector/fueleu-maritime_en" }],
   },
@@ -262,6 +330,18 @@ export const environmentalRegulations: RegulationItem[] = [
       "Veri raporlama eksikliğinde bayrak devleti tarafından sertifika askıya alma riski",
       "PSC denetimlerinde SoC veya SEEMP Part II eksikliğinde eksiklik kaydı ve potansiyel alıkoyma",
       "CII rating hesaplanamaz → SEEMP Part III uyumsuzluğu",
+    ],
+    detailedSections: [
+      {
+        heading: "Karbon yönetiminin veri temeli",
+        body:
+          "IMO DCS, denizcilik dekarbonizasyonunun görünmeyen ama vazgeçilmez altyapısıdır: 'ölçmediğini yönetemezsin' ilkesini hayata geçirir. 5000 GT üzeri gemiler, yıllık yakıt tüketimlerini her yakıt türü için ayrı ayrı, kat ettikleri toplam mesafeyi ve seyirde geçen toplam saati raporlamak zorundadır. Bu veriler hem IMO'nun küresel emisyon envanterini oluşturmasını sağlar hem de CII derecelendirmesinin doğrudan girdisidir. AB'nin MRV sistemiyle benzer amaca hizmet eder, ancak DCS küresel kapsamlıdır ve toplanan veriler anonimleştirilerek IMO GISIS veritabanında yayımlanır.",
+      },
+      {
+        heading: "Toplama, doğrulama ve belgelendirme",
+        body:
+          "DCS, bir veri kalite zinciri olarak tasarlanmıştır. Gemi, verilerini nasıl toplayacağını ve hesaplayacağını önceden SEEMP Part II adlı bir planda tanımlar ve bunu bayrak devletine veya yetkili klas kuruluşuna onaylatır. Yakıt tüketimi BDN (Bunker Delivery Note), tank iskandili veya akış ölçerle ölçülür; mesafe ve çalışma saati GPS/AIS loglarıyla tutarlı olmalıdır. Takvim yılı bitiminde veriler 31 Mart'a kadar raporlanır, bağımsızca doğrulanır ve uyum kanıtı olarak bir Statement of Compliance (SoC) düzenlenir. SoC gemide bulundurulmak zorundadır; olmadan uluslararası sefer yapılamaz ve PSC denetiminde eksikliği alıkoymaya kadar gidebilir.",
+      },
     ],
     relatedSlugs: ["cii", "eexi", "marpol"],
     resources: [{ label: "IMO DCS", href: "https://www.imo.org/en/OurWork/Environment/Pages/Data-Collection-System.aspx" }],
@@ -319,6 +399,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Singapur'da ilk ihlalde 10.000 SGD, tekrarında 50.000+ SGD ceza",
       "Carriage ban ihlalinde yakıtın tahliyesi zorunluluğu ve ek cezalar",
     ],
+    detailedSections: [
+      {
+        heading: "Yakıt piyasasını dönüştüren kükürt limiti",
+        body:
+          "IMO 2020 olarak anılan düzenleme, gemi yakıtındaki kükürt içeriğini küresel ölçekte %3,50'den %0,50'ye düşürerek denizcilik tarihinin en büyük yakıt geçişlerinden birini tetiklemiştir. Amacı insan sağlığı ve çevredir: yakıttaki kükürt yandığında kükürt oksitleri (SOx) ve ince partikül madde oluşturur; bunlar asit yağmuruna, solunum hastalıklarına ve erken ölümlere yol açar. Düzenleme, Emisyon Kontrol Alanlarında (ECA – Baltık, Kuzey Denizi, Kuzey Amerika) zaten yürürlükte olan %0,10 limitinin yanına, dünyanın geri kalanı için %0,50'lik küresel bir tavan koyar. Akdeniz de 2028'de SOx ECA olacaktır.",
+      },
+      {
+        heading: "Üç uyum yolu",
+        body:
+          "Gemiler limite üç yoldan uyabilir. Birincisi, kükürdü zaten düşük yakıt kullanmaktır: VLSFO (%0,50), LSFO veya ECA için MGO/MDO (%0,10). İkincisi, yüksek kükürtlü ucuz yakıtı kullanmaya devam edip egzozu bir scrubber (EGCS) ile temizlemektir; açık devre, kapalı devre ve hibrit tipleri vardır, ancak yıkama suyu (washwater) deşarjı pH, PAH ve bulanıklık kriterlerine tabidir ve bazı limanlar açık devre deşarjını yasaklar. Üçüncüsü, LNG veya metanol gibi kükürt içermeyen alternatif yakıtlara geçmektir. Her yolun maliyet, yatırım ve operasyonel sonuçları farklıdır.",
+      },
+      {
+        heading: "Carriage ban, numune ve denetim",
+        body:
+          "Düzenlemenin denetlenebilirliğini güçlendiren kilit hüküm 'carriage ban'dir: scrubber'ı olmayan gemilerin %0,50 üstü kükürtlü yakıtı sadece kullanması değil, gemide bulundurması bile yasaktır; bu, denetimi basitleştirir. Uyum, BDN'ler (3 yıl saklanır) ve mühürlü yakıt numuneleriyle (12 ay saklanır) belgelenir. ECA'ya giriş-çıkışta yakıt değişimi (changeover) prosedüre uygun yapılır ve yağ kayıt defterine (ORB) işlenir. Uyumlu yakıt hiç bulunamazsa FONAR (Fuel Oil Non-Availability Report) ile bayrak ve liman devleti bilgilendirilir. İhlaller ülkeye göre ağır para cezalarına, alıkoymaya ve ABD'de APPS kapsamında hapse kadar varan yaptırımlara yol açar.",
+      },
+    ],
     relatedSlugs: ["marpol", "iapp-cert"],
     resources: [{ label: "IMO 2020 sulphur limit", href: "https://www.imo.org/en/MediaCentre/HotTopics/Pages/Sulphur-2020.aspx" }],
   },
@@ -370,6 +467,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Antarktik'te çevre ihlallerinde Antarctic Treaty kapsamında ağır yaptırımlar",
       "HFO yasağı ihlalinde bayrak devleti ve kıyı devleti cezaları",
     ],
+    detailedSections: [
+      {
+        heading: "Kutup sularının kendine özgü zorlukları",
+        body:
+          "Polar Code, buzlu sularda seyrin sıradan denizcilikten kökten farklı olduğu gerçeğinden doğar. Kutup bölgelerinde gemiler buz yükü, aşırı düşük sıcaklıklar, uzun karanlık dönemler, sınırlı haritalama, zayıf haberleşme ve en yakın yardımın günlerce uzakta olabildiği bir izolasyonla karşı karşıyadır. Bir kaza, ılıman sularda yönetilebilir olsa da kutupta ölümcül olabilir. Kod bu yüzden hem emniyeti (SOLAS Chapter XIV) hem çevre korumasını (MARPOL ekleri) tek bir çerçevede birleştirir ve gemileri 'her şey yolundayken' değil, 'en kötü koşulda hayatta kalacak' biçimde donatmayı hedefler.",
+      },
+      {
+        heading: "Gemi kategorileri, buz sınıfı ve PWOM",
+        body:
+          "Kod, gemileri buzda çalışma kabiliyetine göre kategorize eder: Category A en zorlu buz koşullarında (Polar Class PC1-5), Category B daha ince buzda (PC6-7), Category C ise buz takviyesi gerektirmeyen açık sularda çalışır. Polar Class, geminin gövdesinin ne kadar güçlendirildiğini gösterir. Her gemi iki kritik belge taşır: buzda seyir yetkinliğini gösteren Polar Ship Certificate ve rotaya özgü buz/hava koşullarını, SAR kapsamını, iletişim ve kaçış planını içeren Polar Water Operational Manual (PWOM). PWOM, kaptanın kutupta hangi koşulda nasıl hareket edeceğini önceden tanımlayan operasyonel pusulasıdır.",
+      },
+      {
+        heading: "Çevre koruma, donanım ve eğitim",
+        body:
+          "Kutup ekosistemleri kırılgan ve yavaş iyileşendir, bu yüzden Polar Code çevre kurallarını sertleştirir: Antarktik'te neredeyse tüm deşarjlar yasaktır ve ağır yakıt (HFO) kullanımı uzun süredir yasaktır; Arktik'te de HFO yasağı muafiyetlerle yürürlüğe girmiştir. Donanım tarafında gemiler buz seyir radarı, düşük sıcaklığa dayanıklı can kurtarma teçhizatı, grup hayatta kalma ekipmanı ve kış sağ kalma kitleri taşımak zorundadır. Mürettebat, STCW kapsamında Temel ve İleri Polar Code eğitimi alır. Buz raporları (ice charts) ve SAR koordinasyonu sefer planlamasına entegre edilir. Sertifika veya PWOM olmadan kutup sularına giriş yasaktır.",
+      },
+    ],
     relatedSlugs: ["solas", "marpol"],
     resources: [{ label: "Polar Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/polar-code.aspx" }],
   },
@@ -418,6 +532,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "GHG stratejisinin kendisi doğrudan ceza mekanizması içermez – uygulamalar EEXI, CII ve gelecekteki MBM ile sağlanır",
       "MBM yürürlüğe girdiğinde karbon maliyeti ödeme zorunluluğu (tahmini 50-150 $/ton CO₂)",
       "GHG yakıt standardı yürürlüğe girdiğinde uyumsuz yakıt kullanımında MARPOL kapsamında yaptırımlar uygulanacak",
+    ],
+    detailedSections: [
+      {
+        heading: "Denizciliğin iklim yol haritası",
+        body:
+          "IMO GHG Stratejisi, tek tek kurallardan çok, denizcilik sektörünün karbonsuzlaşma yönünü ve hızını belirleyen bir çerçevedir. Sektör küresel CO₂'nin yaklaşık %2,5-3'ünden sorumludur ve büyümeye devam etmektedir; bu nedenle Paris Anlaşması hedeflerinin denizcilik karşılığı olarak bu strateji oluşturulmuştur. 2018'deki ilk strateji, 2023'te MEPC 80'de köklü biçimde güçlendirilmiş ve 2050 dolaylarında net sıfır emisyon hedefi benimsenmiştir. Strateji, bağlayıcı tek bir metinden ziyade, somut düzenlemelerin (EEXI, CII ve gelecekteki yakıt standardı/karbon ücreti) türetildiği bir üst çatı işlevi görür.",
+      },
+      {
+        heading: "Kısa, orta ve uzun vadeli önlemler",
+        body:
+          "Strateji önlemleri zaman ufkuna göre katmanlar. Kısa vadeli önlemler hâlihazırda yürürlüktedir: mevcut filonun verimliliğini ölçen EEXI ve CII ile güçlendirilmiş SEEMP. Orta vadeli önlemler geliştirme aşamasındadır ve iki ayaklıdır: yakıtın sera gazı yoğunluğuna küresel bir limit koyan IMO GHG Fuel Standard ve emisyona fiyat koyan piyasa tabanlı bir önlem (karbon ücreti/levy veya emisyon ticareti). Uzun vadede ise sıfıra yakın emisyonlu yakıtlar ve teknolojiler hedeflenir. 2030 ve 2040 için belirlenen ara kontrol noktaları (örneğin 2030'da toplam emisyonda %20-30 azalma), ilerlemenin ölçülmesini sağlar.",
+      },
+      {
+        heading: "Alternatif yakıtlar ve filo için anlamı",
+        body:
+          "Net sıfır hedefine yalnızca verimlilikle ulaşılamaz; yakıtın kendisinin değişmesi gerekir. Strateji, yeşil amonyak, yeşil metanol, e-LNG, biyoyakıt ve hidrojen gibi seçenekleri masaya koyar; her birinin Well-to-Wake emisyonu, güvenliği, maliyeti ve altyapı olgunluğu farklıdır. Rüzgâr destekli sevk (Flettner rotor, kite, yelken), pil-hibrit sistemler ve karbon yakalama da yol haritasının parçasıdır. Gemi sahipleri için bunun pratik sonucu, bugün verilen yeni gemi (newbuilding) ve retrofit kararlarının 2030-2040 düzenlemelerine ve gelecekteki karbon maliyetine göre alınması gerektiğidir; çünkü bir gemi 20-25 yıl hizmet verecek ve bu sürede regülasyon kökten değişecektir.",
+      },
     ],
     relatedSlugs: ["eexi", "cii", "fueleu-maritime", "imo-dcs"],
     resources: [{ label: "IMO GHG Strategy", href: "https://www.imo.org/en/OurWork/Environment/Pages/2023-IMO-Strategy-on-Reduction-of-GHG-Emissions-from-Ships.aspx" }],
@@ -471,6 +602,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Kirlilik olayında yetersiz müdahale durumunda armatör sorumluluğu (CLC/FUND kapsamında)",
       "Kasıtlı veya ihmalden kaynaklanan kirlilikte cezai sorumluluk",
     ],
+    detailedSections: [
+      {
+        heading: "Önlemeden hazırlığa: kirlilikle mücadelenin ikinci ayağı",
+        body:
+          "MARPOL kirliliği önlemeyi düzenlerken OPRC, önlem yetmediğinde ne yapılacağını düzenler. Exxon Valdez felaketi, bir büyük sızıntıya hazırlıksız yakalanmanın yıkıcı sonuçlarını gösterdi: müdahale ekipmanı, planı ve koordinasyonu olmadığında petrol kıyıları ve ekosistemleri onarılamaz biçimde tahrip eder. OPRC bu yüzden hem gemi hem ulusal düzeyde önceden hazırlık yapmayı zorunlu kılar. Sözleşme, kirliliği bir 'eğer olursa' değil 'olduğunda' meselesi olarak ele alır ve herkesin rolünü önceden tanımlar. 2000 tarihli OPRC-HNS Protokolü kapsamı tehlikeli ve zararlı maddelere de genişletmiştir.",
+      },
+      {
+        heading: "SOPEP/SMPEP ve bildirim zinciri",
+        body:
+          "OPRC'nin gemi düzeyindeki somut çıktısı, her geminin taşıdığı acil müdahale planıdır: petrol için SOPEP, petrol ve tehlikeli maddeleri birleştiren entegre versiyonu ise SMPEP. Bu planlar, bir sızıntı anında kimin ne yapacağını, hangi vananın kapatılacağını, ekipmanın nerede olduğunu ve kimin aranacağını adım adım tanımlar. Bildirim hayati önemdedir: bir kirlilik olayı derhal en yakın kıyı devletine, standart bir formatta (kirlilik tipi, tahmini miktar, hava/deniz koşulları, alınan önlemler) raporlanmalıdır; erken bildirim, müdahale kaynaklarının zamanında seferber edilmesini sağlar.",
+      },
+      {
+        heading: "Ekipman, tatbikat ve uluslararası işbirliği",
+        body:
+          "Plan ancak uygulanabilirse anlamlıdır. Gemide sorbent malzeme, bariyer (boom), dispersant ve kişisel koruyucu donanım bulundurulur; bunların envanteri ve son kullanma tarihleri düzenli kontrol edilir. Mürettebat SOPEP prosedürlerini yılda en az bir kez tatbik eder ve bu tatbikatlar belgelenir. Ulusal düzeyde her taraf devlet bir kirlilik müdahale sistemi kurar; büyük olaylarda sınır aşan kirliliğe karşı devletler arası karşılıklı yardım, bilgi paylaşımı ve ortak tatbikat mekanizmaları devreye girer. Böylece OPRC, tek bir geminin müdahale kapasitesini küresel bir hazırlık ağının parçası haline getirir.",
+      },
+    ],
     relatedSlugs: ["marpol", "iopp-cert"],
     resources: [{ label: "OPRC Convention", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Oil-Pollution-Preparedness,-Response-and-Co-Operation-(OPRC).aspx" }],
   },
@@ -517,6 +665,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "AFS Certificate/Declaration olmadan uluslararası sefer yapılamaz",
       "PSC denetimlerinde AFS uyumsuzluğu tespitinde eksiklik ve alıkoyma riski",
       "Yasaklı madde içeren boya kullanımında bayrak devleti cezaları",
+    ],
+    detailedSections: [
+      {
+        heading: "Gövde boyasının görünmez zararı",
+        body:
+          "AFS Sözleşmesi, ilk bakışta teknik bir ayrıntı gibi görünen ama ciddi bir çevre sorunu olan gemi su altı boyalarını düzenler. Gemilerin gövdesine deniz canlılarının (midye, yosun, kabuklu) yapışmasını önlemek için anti-fouling boyalar kullanılır; bu boyalar sürtünmeyi azaltarak yakıt tasarrufu sağlar. Ancak geçmişte yaygın kullanılan TBT (tributyltin) bileşikleri suya sızarak hedefin çok ötesinde zarar verdi: deniz salyangozlarında cinsiyet bozulmaları, istiridye kabuklarında deformasyonlar ve ekosistemde geniş tahribat. AFS, bu zararlı biyositleri yasaklayarak boyanın faydasını çevresel maliyetinden ayırmayı amaçlar.",
+      },
+      {
+        heading: "Yasaklı maddeler ve geçiş süreçleri",
+        body:
+          "Sözleşmenin özü, belirlenen zararlı anti-fouling maddelerinin kademeli olarak yasaklanmasıdır. TBT içeren boyaların önce uygulanması, sonra gemide bulundurulması yasaklanmıştır. Sözleşme statik değildir; yeni kanıtlar ortaya çıktıkça liste genişler: cybutryne (bir başka biyosit) de yasaklı maddeler arasına eklenmiş ve mevcut boyalarda ya üzerinin kapatılması (sealant) ya da sökülmesi için bir geçiş süresi tanınmıştır. Bu yaklaşım, sektöre uyum için makul zaman tanırken zararlı maddelerin denizden tedricen temizlenmesini sağlar.",
+      },
+      {
+        heading: "Belgelendirme ve denetim",
+        body:
+          "AFS uyumu belge düzeyinde de izlenir. 400 GT ve üzeri uluslararası sefer gemileri Uluslararası Anti-fouling Sistem Sertifikası (AFS Certificate), daha küçük gemiler ise AFS Declaration taşımak zorundadır; bu belgeler kullanılan boyanın tipini, uygulama tarihini ve uyumunu gösterir. Boya değiştirildiğinde veya havuz döneminde (dry-dock) sörvey yapılır ve sertifika güncellenir. Sertifika veya beyan olmadan uluslararası sefer yapılamaz; PSC denetiminde yasaklı madde veya belge uyumsuzluğu tespit edilirse eksiklik kaydı ve alıkoyma riski doğar. Böylece AFS, çevresel bir yasağı denetlenebilir bir uyum yükümlülüğüne dönüştürür.",
+      },
     ],
     relatedSlugs: ["marpol", "bwm"],
     resources: [{ label: "AFS Convention", href: "https://www.imo.org/en/OurWork/Environment/Pages/Anti-fouling.aspx" }],
@@ -571,6 +736,23 @@ export const environmentalRegulations: RegulationItem[] = [
       "Balast suyu deşarj ihlallerinde kıyı devleti cezaları (çevre kirliliği kapsamında)",
       "ABD'de USCG BWM kuralları ihlalinde ek para cezaları ve gemi alıkoyma",
       "Ballast Water Record Book eksikliği veya yanlışlığında PSC eksiklik kaydı",
+    ],
+    detailedSections: [
+      {
+        heading: "İstilacı türlere karşı küresel bir savunma",
+        body:
+          "BWM Sözleşmesi, gemilerin denge için aldığı balast suyuyla bir denizden diğerine taşıdığı organizmaların yarattığı çevresel tehdidi yönetir. Bir bölgede zararsız olan türler, doğal düşmanı olmayan başka bir ekosisteme taşındığında patlama yaparak yerli yaşamı, balıkçılığı ve altyapıyı tahrip edebilir; kolera gibi patojenler bile bu yolla yayılabilir. Sözleşmenin çözümü, balast suyunu deşarjdan önce ya açık denizde değiştirmek (D-1) ya da içindeki canlıları öldürecek/uzaklaştıracak biçimde arıtmak (D-2) zorunluluğudur. 2004'te kabul edilen sözleşme, yeterli onaya ancak 2017'de ulaşarak yürürlüğe girmiştir.",
+      },
+      {
+        heading: "D-2 standardı ve arıtma sistemleri",
+        body:
+          "Kalıcı çözüm olan D-2 standardı, deşarj edilen balast suyundaki canlı organizma yoğunluğunu çok düşük sayısal limitlere indirir (boyut sınıfına göre metreküp veya mililitre başına izin verilen organizma sayısı, ayrıca koliform/enterokok limitleri). Bunu sağlayan Balast Suyu Arıtma Sistemi (BWMS), tipik olarak filtreleme ve ardından UV, elektroklorinasyon veya ozonlama gibi bir dezenfeksiyon kademesini birleştirir. Sistemin, zorunlu BWMS Code uyarınca tip onaylı olması, kurulumdan sonra commissioning testiyle doğrulanması ve sörveylerle izlenmesi gerekir. Mevcut gemiler IOPP yenileme takvimine bağlı olarak D-1'den D-2'ye kademeli geçmiştir.",
+      },
+      {
+        heading: "Kayıt, sertifika ve ABD farkı",
+        body:
+          "Operasyonel uyum, her balast alımı, deşarjı, değişimi ve arıtmasının Ballast Water Record Book'a işlenmesini, sistemin düzenli bakımını ve gemiye özel bir BWM Plan'ının uygulanmasını gerektirir. Uyum, beş yıl geçerli IBWM Certificate ile belgelenir; liman devleti denetiminde balast suyundan numune alınıp analiz edilebilir. Kritik bir uyarı ABD'dir: USCG, IMO'dan ayrı ve genellikle daha katı bir tip onay rejimi uygular; bir BWMS IMO onaylı olsa bile ABD'de uyumsuz sayılabilir, bu yüzden ABD'ye uğrayan gemiler her iki onayı da kontrol etmelidir. Sertifika eksikliği veya D-2 uyumsuzluğu PSC denetiminde alıkoymaya yol açabilir.",
+      },
     ],
     relatedSlugs: ["marpol", "uscg"],
     resources: [{ label: "BWM Convention", href: "https://www.imo.org/en/OurWork/Environment/Pages/BallastWaterManagement.aspx" }],
