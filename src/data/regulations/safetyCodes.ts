@@ -440,6 +440,16 @@ export const safetyCodes: RegulationItem[] = [
         body:
           "İnert gaz yalnızca bir donanım değil, bir dizi prosedürdür: purging (tankı inert gazla süpürme), inerting (oksijeni düşürme) ve gas-freeing (insan girişi için tankı havalandırma) farklı amaçlarla, sıkı sırayla uygulanır. Yükleme/boşaltma boyunca tank her zaman pozitif basınçta ve düşük oksijende tutulur. Mürettebat oksijen seviyesini düzenli ölçer ve kaydeder, scrubber/blower bakımını yapar, deck seal su seviyesini kontrol eder. İnert gaz sistemi çalışmazken kargo operasyonu yapmak kesinlikle yasaktır ve bu durum PSC alıkoyma ile vetting (SIRE) denetimlerinde ticari red sebebidir.",
       },
+      {
+        heading: "Tank atmosferi ve oksijen kontrolünün derinlemesine mantığı",
+        body:
+          "İnert gaz sisteminin tüm amacı, tank atmosferini yanmanın imkânsız olduğu bölgede tutmaktır. Bir hidrokarbon-hava karışımı ancak yanıcı aralıkta (alt patlama sınırı LEL ile üst sınır UEL arasında) tutuşabilir; ancak oksijen oranı belirli bir eşiğin altına indirildiğinde, karışımdaki yakıt oranı ne olursa olsun tutuşma gerçekleşemez. İnert gaz bu 'kritik seyreltme hattının' altına inerek tankı emniyete alır: genel kural olarak basılan inert gazda oksijen %5'in, tank atmosferinde ise yükleme/boşaltma öncesi %8'in altında tutulur. Tank her zaman hafif pozitif basınçta tutulur, böylece dışarıdan hava (ve dolayısıyla oksijen) sızmaz. Bu mantık, neden sürekli oksijen ölçümü ve basınç izlemenin operasyonun kalbinde olduğunu açıklar.",
+      },
+      {
+        heading: "Operasyonel modlar ve emniyet cihazları",
+        body:
+          "İnert gaz sistemi farklı amaçlarla, sıkı bir sırayla işletilir: inerting (tanktaki oksijeni düşürme), purging (yanıcı buharı inert gazla süpürerek seyreltme), gas-freeing (insan girişi için tankı havalandırarak güvenli hale getirme) ve topping-up (deşarj/seyir sırasında pozitif basıncı koruma). Sistemi güvenli kılan kritik emniyet cihazları vardır: deck water seal yanıcı gazın makine dairesine geri kaçmasını sıvı bir bariyerle önler, non-return valf ek bir geri akış engeli sağlar, P/V breaker (basınç/vakum kırıcı) tankı aşırı basınç ve vakumdan korur. Oksijen analizörleri ve basınç sensörleri sürekli izler ve sınır aşımında alarm verir. İnert gaz ya kazan/baca gazından (scrubber'da yıkanıp) ya da bağımsız bir azot jeneratöründen üretilir; sistem çalışmazken kargo operasyonu kesinlikle yasaktır ve bu durum hem PSC hem vetting denetiminde ciddi bulgudur.",
+      },
     ],
     relatedSlugs: ["solas", "ics-code"],
     resources: [{ label: "IMO IGS Code", href: "https://www.imo.org/en/OurWork/Safety/Pages/IGS-Code.aspx" }],
@@ -505,6 +515,16 @@ export const safetyCodes: RegulationItem[] = [
         heading: "Bunkering, eğitim ve uyum",
         body:
           "Gaz yakıt almak (bunkering), konvansiyonel yakıt almaktan çok daha riskli ve prosedürel bir operasyondur; her adım bir kontrol listesiyle yürütülür, sızıntı ve statik elektrik önlemleri alınır, acil ayrılma düzenekleri hazır tutulur. Mürettebatın STCW A-V/3 kapsamında özel gaz yakıt eğitimi alması zorunludur, çünkü bu sistemleri güvenle işletmek özel bilgi gerektirir. Gaz sızıntısı senaryoları düzenli tatbik edilir, ESD ve gaz algılama sistemleri periyodik test edilir. IGF gerekliliklerini karşılamayan gemiye sertifika verilmez; algılama sisteminin arızası seferin durdurulmasını gerektirir. Kod şu an ağırlıkla LNG'yi kapsasa da metanol ve amonyak gibi yakıtlar için kılavuzlarla genişlemektedir.",
+      },
+      {
+        heading: "Yakıt depolama, bunkering istasyonu ve teknik düzen",
+        body:
+          "IGF Code, gaz yakıtın gemide depolanmasını ve dağıtılmasını ayrıntılı teknik gerekliliklere bağlar. LNG genellikle yalıtımlı Tip C basınç tanklarında kriyojenik sıcaklıkta tutulur; tank yerleşimi, çarpışma ve karaya oturmada hasar görmeyecek şekilde gövdeden belirli mesafede konumlandırılır. Yakıt hazırlama odası (fuel preparation room) ve makine dairesindeki yakıt valf üniteleri (TVU/GVU), gazın basınç ve sıcaklığını kontrol eder. Bunkering istasyonu, yakıt alımının güvenli bir noktadan, sızıntı toplama ve acil ayrılma düzenekleriyle yapılmasını sağlar. Tüm bu sistemler 'çift bariyer' ilkesiyle tasarlanır: gazın tutulduğu her noktada, tek bir arıza durumunda bile gazın insanların bulunduğu alanlara ulaşmaması için iki bağımsız koruma katmanı (örneğin çift cidarlı boru ve havalandırılmış mahfaza) bulunur.",
+      },
+      {
+        heading: "Risk-temelli onay ve alternatif yakıtlar",
+        body:
+          "IGF Code'un ayırt edici yönü, her ayrıntıyı önceden reçeteye bağlamak yerine hedef-temelli (goal-based) ve risk-temelli olmasıdır. Tasarımcı, sistemin güvenliğini HAZID ve HAZOP gibi yapılandırılmış risk analizleriyle kanıtlamak ve idare/klas onayını almak zorundadır; bu esneklik, henüz olgunlaşmamış yakıt teknolojilerinin güvenle gelişmesine olanak tanır. Kod şu an ağırlıkla LNG'yi kapsasa da, dekarbonizasyonla birlikte yeni yakıtlar gündeme gelmektedir: metanol için geçici kılavuzlar mevcuttur, amonyak (toksisitesi nedeniyle ek zorluklar taşır) ve hidrojen için gereklilikler geliştirilmektedir. Her yeni yakıt kendine özgü tehlikeler getirir (parlama noktası, toksisite, alev hızı, depolama sıcaklığı) ve IGF'nin risk-temelli çerçevesi bu çeşitliliği yönetmenin yoludur. Mürettebatın STCW kapsamında özel gaz yakıt eğitimi alması zorunludur.",
       },
     ],
     relatedSlugs: ["solas", "stcw", "igc-code"],
@@ -633,6 +653,16 @@ export const safetyCodes: RegulationItem[] = [
         heading: "Ürün listeleri ve çifte rejim",
         body:
           "Kodun pratik kalbi Chapter 17 ve 18'deki ürün listeleridir: her kimyasal için asgari gemi tipi, tank gereklilikleri, özel önlemler ve operasyonel kısıtlamalar tek tek belirtilir; bir gemi yalnızca sertifikasında (Certificate of Fitness) izin verilen ürünleri taşıyabilir. IBC Code aynı zamanda iki sözleşmeyi birden hizalar: emniyet açısından SOLAS Chapter VII, çevre açısından MARPOL Ek II. Bu yüzden tank yıkama, ön yıkama (prewash) ve kalıntı deşarjı hem emniyet hem kirlilik kurallarına tabidir. 1986 öncesi gemiler benzer ama daha eski bir rejim olan BCH Code kapsamındadır.",
+      },
+      {
+        heading: "Gemi tipleri ve hasar sonrası hayatta kalma (derinlemesine)",
+        body:
+          "IBC Code'un tasarım mantığı, geminin hayatta kalma kabiliyetini taşıdığı yükün tehlikesine göre belirlemektir. Tip 1 gemiler en tehlikeli yükleri taşır ve en sıkı gerekliliklere tabidir: tankları gövdeden en uzakta konumlandırılır, hacimleri sınırlanır ve hasar stabilite kriterleri en katıdır; amaç, bir çarpışma veya karaya oturmada en tehlikeli yükün dökülme olasılığını en aza indirmektir. Tip 2 ve Tip 3 gemiler, daha az tehlikeli yükler için kademeli olarak gevşeyen gerekliliklere sahiptir. Her yük, Chapter 17'deki listede asgari hangi gemi tipini gerektirdiğiyle birlikte tanımlanır; bir gemi yalnızca sertifikasında (Certificate of Fitness) izin verilen ürünleri ve yalnızca gerektirdikleri gemi tipi koşulları karşılanıyorsa taşıyabilir. Bölmeleme, çift cidar ve hasar stabilite hesapları bu sınıflandırmanın temelini oluşturur.",
+      },
+      {
+        heading: "Kargo uyumluluğu, sıcaklık kontrolü ve inhibitörler",
+        body:
+          "Kimyasal yükler hem birbirleriyle hem taşındıkları malzemeyle tehlikeli reaksiyona girebilir; bu yüzden IBC Code uyumluluğa özel önem verir. P&A Manual, hangi yükün hangi tankta ve hangi boru sistemiyle taşınacağını, uyumsuz yüklerin nasıl ayrılacağını (ayrı tank, ayrı pompa/boru hattı) ve yükleme sonrası tank temizleme ile kalıntı yönetimini tanımlar. Bazı yükler ısıtma veya soğutma gerektirir: donma noktası yüksek maddeler ısıtılır, kararsız maddeler ise belirli sıcaklığın altında tutulur. Bazı reaktif monomerler taşıma sırasında kendiliğinden polimerleşmeyi (tehlikeli ısı/basınç artışı) önlemek için inhibitör katkısı ister ve bu inhibitörün etkinliği sıcaklık ve oksijen koşullarına bağlıdır; mürettebat inhibitör sertifikasını ve koşullarını dikkatle izler. Tüm kargo operasyonları Cargo Record Book'a kaydedilir ve tank yıkama/ön yıkama MARPOL Ek II ile uyumlu yapılır.",
       },
     ],
     relatedSlugs: ["marpol", "igs-code"],
@@ -947,6 +977,16 @@ export const safetyCodes: RegulationItem[] = [
         body:
           "CSS uyumu kâğıt üstünde bitmez; yükleme sırasında bağlama düzeni CSM ile eşleştirilir, fotoğraflarla belgelenir ve seyir boyunca özellikle kötü havada periyodik kontrol edilir. Ağır hava beklendiğinde ek bağlama önlemleri alınır. Ağır ve proje yüklerinin bağlanması özel analiz ve klas onayı gerektirir. Bağlama yetersizliği yalnızca emniyet sorunu değil, ticari ve hukuki bir risktir: kargo kayması PSC alıkoymasına, kargo hasarı P&I sorumluluğuna ve tazminat davalarına yol açar. Kod, Ro-Ro araçlarından konteyner istiflerine kadar her yük tipi için bu disiplini zorunlu kılar.",
       },
+      {
+        heading: "Konteyner istif ve bağlama sistemleri (derinlemesine)",
+        body:
+          "Konteyner gemilerinde bağlama, hem güverte altı hem güverte üstü istifleri yönetir. Güverte altında konteynerler hücre kılavuzlarıyla (cell guides) yerinde tutulurken, güverte üstü istifler twistlock'lar (köşe kilitleri), köprü bağlantıları (bridge fittings), lashing bar'lar ve gerdirme elemanlarıyla sabitlenir. İstif yüksekliği arttıkça atalet kuvvetleri ve devrilme momenti büyür; bu yüzden her gemi için onaylı bir lashing planı, hangi pozisyonda kaç sıra ve kaç ton ağırlığa izin verildiğini belirler. Geminin metasantr yüksekliği (GM) kritik bir parametredir: çok yüksek GM, geminin sert ve hızlı yalpalamasına (stiff ship) yol açarak bağlama elemanlarına aşırı yük bindirir; bu yüzden konteyner gemilerinde stabilite ile bağlama dayanımı birlikte değerlendirilir. Yanlış beyan edilen konteyner ağırlıkları (SOLAS VGM kuralının çözmeyi amaçladığı sorun) istif çökmesinin başlıca nedenidir.",
+      },
+      {
+        heading: "Ro-Ro araç bağlama ve ağır/proje yükler",
+        body:
+          "Ro-Ro gemilerinde araçlar ve tekerlekli yükler, kendi ağırlık merkezleri yüksek ve fren/lastik sürtünmesi sınırlı olduğu için özel bağlama gerektirir. Zincir lashing'ler, web kayışlar ve takozlar (chock) araçları güverteye sabitler; bağlama noktaları ve açıları, geminin yalpa ve baş-kıç vurma kuvvetlerine karşı koyacak şekilde hesaplanır. Ağır ve proje yükler (jeneratör, türbin, yat, endüstriyel modül) ise standart bağlamanın ötesinde, yüke özel mühendislik analizi ve genellikle klas onayı gerektirir; bu analiz yükün ağırlık merkezini, bağlama elemanlarının dayanımını ve geminin o yükleme durumundaki hareket ivmelerini birlikte değerlendirir. Tüm bağlama düzenleri Cargo Securing Manual ile eşleştirilir, fotoğraflarla belgelenir ve seyir boyunca özellikle kötü havada periyodik kontrol edilir; hasarlı ekipman derhal devre dışı bırakılır, çünkü zincirin en zayıf halkası tüm sistemin dayanımını belirler.",
+      },
     ],
     relatedSlugs: ["solas", "imsbc-code"],
     resources: [{ label: "CSS Code rehberi", href: "https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx" }],
@@ -1008,6 +1048,16 @@ export const safetyCodes: RegulationItem[] = [
         heading: "Kaymayı önleyen fiziksel önlemler",
         body:
           "Hesabın yanı sıra fiziksel önlemler de tahıl kaymasını azaltır. Ambar ortasına yerleştirilen boyuna bölmeler (shifting board / longitudinal division) tahılın bir taraftan diğerine geçmesini engeller. Üst yüzeyin düzgün trim edilmesi ve boşlukların doldurulması (feeding, overstowing) kayma momentini azaltır; ağ ve bağlama (strapping, bundling) yöntemleriyle üst tabaka sabitlenir. Yükleme öncesi stabilite hesabı doğrulanmadan ve Document of Authorization geçerli olmadan tahıl yüklemesi yapılamaz. Bu yönüyle Grain Code, IMSBC Code'dan ayrı tutulan ancak onunla aynı 'dökme yükü kontrol altında tutma' felsefesini paylaşan özel bir rejimdir.",
+      },
+      {
+        heading: "Heeling moment hesabı ve kayma geometrisi (derinlemesine)",
+        body:
+          "Grain Code'un teknik özü, tahıl kaymasından doğan devirme momentinin (heeling moment) hesaplanması ve geminin stabilite rezervinin buna yeterli geldiğinin kanıtlanmasıdır. Hesap, ambar geometrisine dayalı volumetrik bir yöntem kullanır: tam dolu ambarlarda tahıl oturduktan sonra üstte kalan boşluğa doğru belirli bir açıyla (varsayılan olarak yaklaşık 15°) kayacağı, kısmen dolu ambarlarda ise daha büyük bir kaymanın (yaklaşık 25°) mümkün olduğu varsayılır. Bu varsayılan kaymalar, her ambar için bir devirme momenti üretir ve toplam moment geminin stabilite eğrisiyle karşılaştırılır. Kısmen dolu ambarlar bu yüzden en risklidir; mümkün olduğunca tam doldurma ve düzgün trimming tercih edilir. Geminin onaylı grain loading booklet'i, farklı yükleme durumları için bu hesapları içerir ve kaptan yükleme planını buna göre yapar.",
+      },
+      {
+        heading: "Stabilite kriterleri ve fiziksel önlemler",
+        body:
+          "Tahıl yükünün güvenli kabul edilmesi için belirli sayısal stabilite kriterleri sağlanmalıdır: kaymadan doğan devirme açısı belirli bir sınırı (yaklaşık 12° veya güverte kenarının suya girme açısı, hangisi küçükse) aşmamalı, devirme momenti eğrisi ile doğrultucu moment eğrisi arasındaki kalan dinamik stabilite alanı asgari bir değerin (0,075 metre·radyan) altına düşmemeli ve başlangıç metasantr yüksekliği (GM) yeterli olmalıdır. Hesaba ek olarak fiziksel önlemler kaymayı doğrudan azaltır: ambar ortasına yerleştirilen boyuna bölmeler (shifting board / longitudinal division) tahılın bir taraftan diğerine geçmesini engeller; üst yüzeyin düzgün trim edilmesi, boşlukların doldurulması (feeding/overstowing) ve üst tabakanın ağ veya bağlamayla sabitlenmesi (strapping/bundling) kaymayı sınırlar. Gemi, tahıl taşıma yetkinliğini gösteren geçerli bir Document of Authorization olmadan tahıl yükleyemez.",
       },
     ],
     relatedSlugs: ["solas", "imsbc-code"],

@@ -444,6 +444,16 @@ export const imoConventions: RegulationItem[] = [
         body:
           "Title 5, sözleşmenin kâğıt üstünde kalmamasını sağlayan denetim mimarisini kurar. 500 GT ve üzeri uluslararası sefer gemileri, bayrak devletinin verdiği Maritime Labour Certificate ve şirketin uyum beyanını içeren DMLC (Bölüm I devlet gerekliliklerini, Bölüm II şirket önlemlerini gösterir) taşımak zorundadır. Gemi adamlarının hem gemide hem kıyıda işleyen, misilleme korumalı şikâyet prosedürlerine erişimi olmalıdır. Liman devleti kontrolünde MLC ihlalleri (ödenmemiş ücret, aşırı çalışma, kötü konaklama) eksiklik olarak kaydedilir ve ciddi durumlarda gemi alıkonabilir. Böylece MLC, gemi adamı haklarını soyut bir bildirge olmaktan çıkarıp denetlenebilir bir uyum sistemine dönüştürür.",
       },
+      {
+        heading: "Beş Title'ın derinlemesine yapısı",
+        body:
+          "MLC 2006, beş Title etrafında örgütlenir ve her biri denizcinin yaşamının farklı bir boyutunu güvence altına alır. Title 1, gemide çalışmanın asgari koşullarını belirler: asgari yaş (16, gece ve tehlikeli işlerde daha sıkı sınırlarla), geçerli sağlık sertifikası, mesleki eğitim ve düzenlenmiş işe alma/yerleştirme hizmetleri. Title 2, istihdam koşullarını kapsar: yazılı Deniz İş Sözleşmesi (SEA), düzenli ücret ödemesi, çalışma/dinlenme saatleri, izin hakkı ve geri dönüş (repatriation). Title 3, geminin bir yaşam alanı olduğu gerçeğini düzenler: kabin, havalandırma, aydınlatma, yemek ve rekreasyon standartları. Title 4, sağlık korumasını, tıbbi bakımı, iş güvenliğini ve sosyal güvenliği kapsar. Title 5 ise uyum ve uygulamayı (sertifikasyon, denetim, şikâyet mekanizmaları) düzenler. Her Title, bağlayıcı Standard'lar (Part A) ile rehber Guideline'lardan (Part B) oluşur.",
+      },
+      {
+        heading: "Denetim, sertifikasyon ve şikâyet hakkı",
+        body:
+          "MLC'nin gücü, denetlenebilir olmasından gelir. 500 GT ve üzeri uluslararası sefer gemileri, bayrak devletinin verdiği Maritime Labour Certificate ve iki parçalı DMLC (Bölüm I devlet gerekliliklerini, Bölüm II şirket önlemlerini gösterir) taşımak zorundadır; bunlar beş yıl geçerlidir ve ara denetimden geçer. Sözleşmenin kapsamını güçlendiren ilke 'no more favourable treatment'tır: MLC'yi onaylamamış bir bayrağın gemisi bile MLC üyesi limanda denetlenir, böylece standart altı işletmeciler avantaj sağlayamaz. Denizciye doğrudan güç veren şikâyet mekanizmaları hem gemide hem kıyıda işler ve misillemeye karşı korunur; bir denizci, ödenmemiş ücret veya kötü koşulları liman devletine bildirerek bir denetimi tetikleyebilir. MLC, liman devleti kontrolünde en sık eksiklik bulunan alanlardan biridir ve ciddi ihlaller geminin alıkonmasına yol açar; 2014 değişiklikleriyle eklenen zorunlu finansal güvence, armatörün iflası veya denizcinin terk edilmesi durumunda devreye girer.",
+      },
     ],
     relatedSlugs: ["mlc-cert", "dmlc", "psc"],
     resources: [
@@ -589,6 +599,16 @@ export const imoConventions: RegulationItem[] = [
         heading: "Hesaplama, su geçirmezlik ve sörvey",
         body:
           "Freeboard, geminin boyu, blok katsayısı, derinliği ve üst yapıları dikkate alınarak tablo değerleri ve düzeltme faktörleriyle hesaplanır; Tip A (sıvı dökme yük) ve Tip B gemiler için farklı temel değerler kullanılır. Ancak hesaplanan freeboard ancak geminin su geçirmezliği korunduğu sürece anlamlıdır: ambar kapakları, contalar, havalandırma ve hava firar boruları, lumbar ağızları gibi açıklıkların su sızdırmazlığı düzenli denetlenmelidir. Geminin Uluslararası Yük Hattı Sertifikası bu uygunluğu belgeler ve periyodik sörveylerle yenilenir.",
+      },
+      {
+        heading: "Freeboard hesabının derinlemesine yöntemi",
+        body:
+          "Yük hattı, keyfi bir çizgi değil, ayrıntılı bir mühendislik hesabının sonucudur. Hesap, geminin tipine göre bir tablo (tabular) freeboard değeriyle başlar: Tip A gemiler (sıvı dökme yük taşıyan, küçük güverte açıklıklı tankerler) daha düşük freeboard'a izin verecek şekilde, Tip B gemiler (diğerleri) daha yüksek freeboard ile değerlendirilir. Bu temel değer bir dizi düzeltme faktörüyle ayarlanır: blok katsayısı (Cb) düzeltmesi, geminin derinliği (D) düzeltmesi, üst yapıların (superstructure) ve kasaraların kapalı uzunluğuna göre indirim, geminin kavisi (sheer) ve baş yüksekliği. Sonuçta belirlenen freeboard, geminin rezerv sintine hacmini ve dolayısıyla denizde batmadan kalma kabiliyetini temsil eder. Bu hesap, geminin Yük Hattı Sertifikasında belgelenir ve bordadaki işaretlerin konumunu belirler.",
+      },
+      {
+        heading: "Mevsimsel zonlar ve su geçirmezlik koşulu",
+        body:
+          "Aynı gemi her denizde aynı derinliğe yüklenemez; çünkü su yoğunluğu ve beklenen hava koşulları değişir. Sözleşme dünyayı yük hattı zonlarına ayırır ve bordadaki işaret bu zonlara karşılık gelen birden çok çizgi içerir: Tropical (T), Summer (S), Winter (W) ve özellikle sert koşulları olan Winter North Atlantic (WNA). Tatlı suda gemi daha derine batacağı için ayrıca Fresh (F) ve Tropical Fresh (TF) çizgileri bulunur; tatlı su düzeltmesi (Fresh Water Allowance), limandan denize çıkışta draftın nasıl değişeceğini hesaplar. Kaptan, yükleme planını geminin seyir boyunca gireceği en kısıtlayıcı zona uyacak şekilde yapar. Ancak hesaplanan freeboard, ancak geminin su geçirmezliği korunduğu sürece anlamlıdır: ambar kapakları, contalar, havalandırma ve hava firar boruları, lumbar ağızları gibi tüm açıklıkların sızdırmazlığı düzenli denetlenir; aksi halde rezerv sintine hacmi tehlikeye girer. Kereste taşıyan gemiler için ayrı timber load line koşulları uygulanır.",
       },
     ],
     relatedSlugs: ["solas", "tonnage-cert"],
@@ -768,6 +788,16 @@ export const imoConventions: RegulationItem[] = [
         body:
           "Tonaj, bir geminin yaşam döngüsü boyunca aldığı pek çok kararı sessizce yönetir: hangi sertifikalara tabi olacağı, kaç kişiyle donatılacağı, limanda ne kadar harç ödeyeceği ve sigorta priminin nasıl hesaplanacağı GT/NT üzerinden kurulur. Geminin yapısında kalıcı bir değişiklik yapılırsa (örneğin kapalı hacim eklenirse) tonajın yeniden hesaplanması ve sertifikanın güncellenmesi gerekir. Süveyş ve Panama kanalları ise kendi ticari amaçlarıyla ITC 69'dan ayrı tonaj sistemleri (SCNT, PC/UMS) uygular; bu nedenle bu kanalları geçecek gemiler ayrı kanal tonaj sertifikalarını da geçerli tutmak zorundadır.",
       },
+      {
+        heading: "GT ve NT formüllerinin derinlemesine mantığı",
+        body:
+          "ITC 69, tonajı ölçen idareye göre değişen bir tahmin olmaktan çıkarıp doğrulanabilir bir matematiksel sonuca dönüştürür. Brüt tonaj (GT), geminin toplam kapalı hacmine (V, metreküp) logaritmik bir katsayı uygulanarak hesaplanır: GT = K₁ × V, burada K₁ = 0,2 + 0,02 × log₁₀V. Logaritmik katsayı, büyük gemilerde hacmin tonaja katkısının orantılı biçimde azalmasını sağlar. Net tonaj (NT) ise yalnızca gelir getiren (yük/yolcu) hacmi temsil eder ve daha karmaşık bir formülle hesaplanır: yük hacmi, draft/derinlik oranının karesi ve yolcu sayısı parametrelerini içerir; NT belirli alt sınırların altına inemez. Önemli olan, bu değerlerin hacim esaslı ve boyutsuz olmasıdır; geçmişteki tutarsız ulusal sistemlerin (eski Moorsom yöntemi) aksine tüm dünyada aynı formülle hesaplanır ve Uluslararası Tonaj Sertifikasıyla belgelenir.",
+      },
+      {
+        heading: "Eşik etkisi, süreklilik ve kanal tonajları",
+        body:
+          "Tonaj, bir geminin yaşam döngüsü boyunca aldığı pek çok kararı sessizce yönetir. GT, pek çok uluslararası düzenlemenin uygulanıp uygulanmayacağını belirleyen 'eşik' değeridir: 300 GT'de AIS, 400 GT'de MARPOL Ek VI ve MLC, 500 GT'de SOLAS kargo gereklilikleri gibi sınırlar GT üzerinden işler; ayrıca mürettebat sayısı, emniyet gereklilikleri ve liman harçları da tonaja bağlanır. Bu yüzden geminin yapısında kalıcı bir değişiklik (kapalı hacim ekleme/çıkarma) yapılırsa tonaj yeniden hesaplanmalı ve sertifika güncellenmelidir; aksi halde sertifika geçersiz olur. Süveyş ve Panama kanalları kendi ticari amaçlarıyla ITC 69'dan ayrı tonaj sistemleri (SCNT, PC/UMS) uygular; bu kanalları geçecek gemiler, geçiş ücretlerinin hesabında kullanılan ayrı kanal tonaj sertifikalarını da geçerli tutmak zorundadır. Yanlış tonaj beyanıyla harç kaçırma idari yaptırıma yol açar.",
+      },
     ],
     relatedSlugs: ["tonnage-cert", "llc"],
     resources: [{ label: "ITC 69 bilgi sayfası", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Tonnage-Measurement-of-Ships.aspx" }],
@@ -828,6 +858,16 @@ export const imoConventions: RegulationItem[] = [
         heading: "Gemiye düşen görevler ve IAMSAR ile bağ",
         body:
           "SAR Sözleşmesi devlet yükümlülüklerini düzenlese de pratikte ilk müdahaleyi çoğu zaman olay yerine en yakın ticari gemi yapar. Bu yüzden kaptanın tehlikedeki kişilere yardım yükümlülüğü SOLAS V/33 ile pekiştirilir. Gemiler için bu, geçilen SRR'lerin MRCC iletişim bilgilerini hazır tutmak, GMDSS cihazlarının alarm fonksiyonlarını test etmek, EPIRB ve SART'ın çalışırlığını doğrulamak ve adam denize (MOB) manevralarını tatbik etmek anlamına gelir. Operasyonel ayrıntılar, denizcilik ve havacılık kurtarmasını birleştiren IAMSAR Manual'de tanımlanır; SAR Sözleşmesi çerçeveyi, IAMSAR ise uygulama el kitabını sağlar.",
+      },
+      {
+        heading: "Tehlike aşamaları ve arama planlaması (derinlemesine)",
+        body:
+          "SAR Sözleşmesi, bir durumun ne zaman ve nasıl müdahale gerektirdiğini üç tehlike aşamasıyla tanımlar. Belirsizlik aşaması (uncertainty/INCERFA), bir gemiden veya kişiden beklenen haberin alınamaması gibi şüphe durumudur. Alarm aşaması (alert/ALERFA), belirsizliğin sürmesi ve endişenin artmasıdır; bu aşamada arama hazırlıkları başlatılır. Tehlike aşaması (distress/DETRESFA), bir gemi veya kişinin ciddi ve yakın tehlike altında olduğu, derhal yardım gerektiren durumdur. MRCC her aşamada artan yoğunlukta eylem alır: bilgi toplar, bölgedeki vasıtaları uyarır ve gerektiğinde tam bir arama-kurtarma operasyonu başlatır. Arama, kazazedenin akıntı ve rüzgârla sürüklendiği güncel olası konum (datum) üzerinden, standart arama şekilleriyle (genişleyen kare, sektör, paralel tarama) sistemli biçimde planlanır.",
+      },
+      {
+        heading: "Devletlerarası işbirliği ve güvenli yere teslim",
+        body:
+          "SAR'ın etkinliği, sınırların ötesinde işbirliğine dayanır. Sözleşme, komşu SRR'lerden sorumlu devletlerin kurtarma koordinasyon merkezleri (MRCC) arasında bilgi paylaşımı, karşılıklı yardım ve bir devletin SAR vasıtalarının diğerinin sularına girmesine izin verme protokolleri kurar; çünkü bir tehlike, bir bölgenin sınırında veya birden çok bölgeyi kapsayacak biçimde gerçekleşebilir. Sözleşmenin zamanla güçlenen bir boyutu, denizde kurtarılan kişilerin (özellikle toplu göç ve sığınmacı kurtarma olaylarında) güvenli bir yere teslim edilmesi yükümlülüğüdür; kaptanın yardım yükümlülüğü ile kıyı devletlerinin kurtarılanları kabul sorumluluğu arasındaki koordinasyon bu kapsamda düzenlenir. Operasyonel ayrıntılar, denizcilik ve havacılık kurtarmasını birleştiren IAMSAR Manual'de tanımlanır; SAR Sözleşmesi çerçeveyi, IAMSAR ise uygulama el kitabını sağlar.",
       },
     ],
     relatedSlugs: ["solas", "iamsar"],
@@ -896,6 +936,16 @@ export const imoConventions: RegulationItem[] = [
         body:
           "FAL'ın son yıllardaki en önemli atılımı, Maritime Single Window (MSW) zorunluluğudur: gemiyle ilgili tüm bildirimlerin tek bir elektronik giriş noktasından, bir kez yapılarak ilgili tüm kurumlarla paylaşılması. Bu, kâğıt formların ve aynı bilginin farklı dairelere defalarca verilmesinin sonunu getirir. En güncel revizyonlar dijital sertifika değişimini ve süreçlerde otomasyonu da kapsamaktadır. Gemi yönetimi açısından FAL uyumu; ön varış bildirimlerini zamanında göndermek, MSW sistemlerine entegre olmak ve mürettebata kaçak yolcu prosedürlerini öğretmek anlamına gelir.",
       },
+      {
+        heading: "Varış, kalış ve ayrılış prosedürleri (derinlemesine)",
+        body:
+          "FAL Sözleşmesi, bir geminin limanla etkileşimindeki tüm idari süreci standartlaştırır. Varıştan önce, gemi ön bildirim (pre-arrival notification) ile yük, mürettebat, tehlikeli madde ve sağlık durumu bilgilerini iletir; bu, liman ve sınır otoritelerinin önceden hazırlanmasını sağlar. Limanda kalış sırasında gümrük, göç, sağlık ve liman idarelerinin isteyebileceği bilgiler, sözleşmenin azami olarak izin verdiği belge setiyle sınırlandırılır; sözleşme, kamu otoritelerinin gereksiz veya tekrarlayan belge istemesini engellemeyi amaçlar. Ayrılışta da benzer biçimde formaliteler asgariye indirilir. Bu standartlaşmanın temel aracı, dünya çapında tanınan FAL formlarıdır (Genel Beyanname, Yük, Kumanya, Mürettebat Eşyası, Mürettebat ve Yolcu listeleri, Tehlikeli Yük Manifestosu); aynı veri her limanda yeniden farklı formatta hazırlanmak zorunda kalmaz.",
+      },
+      {
+        heading: "Dijitalleşme, tek pencere ve kaçak yolcu",
+        body:
+          "FAL'ın çağdaş atılımı, kâğıt formalitelerini elektronik veri değişimine taşımaktır. Maritime Single Window (MSW), gemiyle ilgili tüm bildirimlerin tek bir elektronik giriş noktasından, bir kez yapılarak ilgili tüm kurumlarla paylaşılmasını sağlar; bu, aynı bilginin farklı dairelere defalarca verilmesinin sonunu getirir ve gemiyi limanda bekleten bürokrasiyi azaltır. En güncel revizyonlar dijital sertifika değişimini ve süreçlerde otomasyonu da kapsar. Sözleşme ayrıca insani bir boyut taşır: kaçak yolcu (stowaway) konusunda, kaçak yolcunun tespiti, gemide insani koşullarda barındırılması, bayrak/liman/uğranacak liman devletleri arasında sorumluluğun paylaşılması ve geri gönderilmesine ilişkin standart prosedürler tanımlanır. Böylece FAL, ticareti hızlandırırken hem verimlilik hem insani standartları bir arada gözetir.",
+      },
     ],
     relatedSlugs: ["isps-code"],
     resources: [{ label: "FAL Convention", href: "https://www.imo.org/en/About/Conventions/Pages/Convention-on-Facilitation-of-International-Maritime-Traffic-(FAL).aspx" }],
@@ -956,6 +1006,16 @@ export const imoConventions: RegulationItem[] = [
         heading: "Korsanlıkla mücadelede pratik uygulama",
         body:
           "SUA hukuki çatıyı kurarken, denizdeki günlük korunma BMP (Best Management Practices) gibi operasyonel kılavuzlarla sağlanır. Aden Körfezi, Batı Afrika ve Güneydoğu Asya gibi yüksek riskli bölgelerde gemiler hız ve rota önlemleri alır, dikenli tel ve su topu gibi fiziksel engeller kurar, mürettebatın sığınabileceği bir citadel (güvenli oda) hazırlar ve saldırı durumunda kıyı ve bayrak devletini derhal uyarır. SUA, bu önlemlerin işe yaramadığı ve bir saldırı gerçekleştiği durumda saldırganların kovuşturulmasını ve cezasız kalmamasını güvence altına alan hukuki üst yapıdır; ISPS Code ile birlikte deniz güvenliğinin iki tamamlayıcı ayağını oluşturur.",
+      },
+      {
+        heading: "2005 Protokolü ve boarding yetkileri (derinlemesine)",
+        body:
+          "SUA'nın 2005 Protokolü, sözleşmeyi 11 Eylül sonrası tehdit ortamına uyarlayarak kapsamını önemli ölçüde genişletmiştir. Yeni suçlar arasında bir gemiyi kitle imha silahı (nükleer, kimyasal, biyolojik) veya bunların yapımına yarayan malzemeleri taşımak için kullanmak, gemiyi bir silah olarak (örneğin bir tesise çarptırmak için) kullanmak ve gemiden tehlikeli madde yayarak ölüm/ciddi yaralanma tehdidi oluşturmak yer alır. Protokolün en pratik yeniliği, Madde 8bis ile getirilen boarding (gemiye çıkma) prosedürleridir: bir devlet, başka bir devletin bayrağını taşıyan ve SUA suçuna karıştığından şüphelenilen bir gemiyi açık denizde durdurup arayabilmek için bayrak devletinden izin isteyebilir; bayrak devleti bu talebe nasıl ve ne sürede yanıt vereceğini önceden belirleyebilir. Bu mekanizma, açık denizde devlet egemenliğini ihlal etmeden yasadışı taşımacılığa müdahale etmenin hukuki yolunu açar.",
+      },
+      {
+        heading: "Yargı yetkisi, iade ve korsanlıkla ilişki",
+        body:
+          "SUA'nın temel ilkesi 'ya yargıla ya iade et' (aut dedere aut judicare) kuralıdır: taraf devletler, ülkesinde bulunan bir SUA suçlusunu ya kendi mahkemelerinde yargılamak ya da yargılayacak başka bir devlete iade etmek zorundadır; böylece bu suçların cezasız kalmasının önüne geçilir. Sözleşme; bayrak, ülke ve vatandaşlık bağına dayalı yargı yetkisi kuralları ile devletlerarası karşılıklı hukuki yardım mekanizmalarını tanımlar. SUA, korsanlıkla mücadelede önemli bir tamamlayıcıdır: UNCLOS'taki klasik korsanlık tanımı (özel çıkar amacıyla, açık denizde, bir gemiden diğerine) pek çok modern saldırıyı (karasularındaki olaylar, siyasi saldırılar, tek gemi içindeki eylemler) kapsamaz; SUA bu boşluğu doldurarak gemiye yönelik şiddeti suç sayar. Denizdeki günlük korunma ise BMP gibi operasyonel kılavuzlarla sağlanır; SUA, bu önlemlerin yetersiz kaldığı ve bir saldırı gerçekleştiği durumda saldırganların kovuşturulmasını güvence altına alan hukuki üst yapıdır.",
       },
     ],
     relatedSlugs: ["isps-code", "solas"],

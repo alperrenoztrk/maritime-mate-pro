@@ -565,6 +565,16 @@ export const certificateRegulations: RegulationItem[] = [
         body:
           "SMC beş yıl geçerlidir, ancak bu süre boyunca pasif kalmaz: 2. ve 3. yıl arasında zorunlu bir ara doğrulama (intermediate verification) yapılır ve sistemin canlı tutulduğu denetlenir. Denetimlerde bulunan uygunsuzluklar ağırlığına göre ele alınır; küçük uygunsuzluklar belirli sürede kapatılır, ancak büyük bir uygunsuzluk (major non-conformity) sistemde ciddi bir kırılmaya işaret eder ve kapatılmazsa SMC askıya alınabilir. SMC olmadan gemi uluslararası sefer yapamaz ve ISM uyumsuzluğu, PSC'de en ağır eksiklik kategorilerinden biri olduğu için doğrudan alıkoymaya yol açabilir. Bu yüzden iç denetimler, DPA iletişimi ve yönetim gözden geçirmesi sürekli yürütülür.",
       },
+      {
+        heading: "Geçici (interim) sertifikalar ve geçiş durumları",
+        body:
+          "SMC ve DOC sistemi, yeni kurulan şirketleri ve filoya yeni katılan gemileri de kapsayacak esnekliğe sahiptir. Yeni bir şirket faaliyete geçtiğinde veya yeni bir gemi tipi işletmeye başladığında, henüz tam SMC/DOC için gereken işletme geçmişi oluşmadan, sınırlı süreli (genellikle 6-12 ay) geçici (interim) belgeler düzenlenir; bu süre içinde sistemin gerçek koşullarda işlediği doğrulanır ve ardından tam sertifikaya geçilir. Gemi sahibi veya işleteni değiştiğinde ya da bayrak değiştiğinde de geçici belgeler köprü işlevi görür. Bu mekanizma, emniyet yönetim sisteminin kurulması ile geminin sefere çıkması arasında bir boşluk oluşmasını engeller; ancak geçici belge, sistemin asgari unsurlarının (DPA atanması, temel prosedürler, acil durum hazırlığı, mürettebatın temel familiarizasyonu) hazır olmasını şart koşar.",
+      },
+      {
+        heading: "SMC denetiminin kapsamı ve nesnel kanıt",
+        body:
+          "SMC denetimi (audit) bir belge incelemesinden çok daha fazlasıdır; denetçi 'nesnel kanıt' (objective evidence) arar, yani sistemin yazıldığı gibi gerçekten uygulandığını gösteren somut işaretler ister. Bu kapsamda kayıtlar (tatbikat kayıtları, bakım kayıtları, near-miss raporları), mürettebatla görüşmeler ve operasyonel gözlemler bir arada değerlendirilir; örneğin bir tatbikatın gerçekten yapılıp yapılmadığı, mürettebatın acil durumdaki görevini bilip bilmediği veya kritik ekipmanın test edilip edilmediği yerinde sınanır. Bulunan uyumsuzluklar ağırlığına göre sınıflandırılır: küçük uyumsuzluk (minor non-conformity) belirli sürede kapatılır, büyük uyumsuzluk (major non-conformity) ise sistemde ciddi bir kırılmaya işaret eder ve kapatılmazsa SMC askıya alınabilir. Bu yüzden SMC, geminin emniyet kültürünün kâğıt üstünde değil sahada işlediğinin teminatıdır.",
+      },
     ],
     relatedSlugs: ["ism-code", "solas"],
     resources: [{ label: "ISM Code", href: "https://www.imo.org/en/OurWork/HumanElement/Pages/ISMCode.aspx" }],
@@ -630,6 +640,16 @@ export const certificateRegulations: RegulationItem[] = [
         heading: "Planın ve donanımın arkasındaki sistem",
         body:
           "ISSC, kâğıt üstünde bir izin değil, işleyen bir sistemin sonucudur. Temelinde, geminin tehdit ve zafiyetlerini değerlendiren Gemi Güvenlik Değerlendirmesi (SSA) ve buna dayanan gizli Gemi Güvenlik Planı (SSP) yatar. Planı sahada gemideki SSO, kıyıda CSO ve liman tarafında PFSO uygular. Gemi; SSAS (gizli güvenlik alarmı), AIS, erişim kontrolü ve CCTV gibi donanımları işler tutmak, üç güvenlik seviyesi arasındaki geçişlere anında uyum sağlamak ve düzenli tatbikatlar yapmak zorundadır. ISSC veya SSP eksikliği PSC'de alıkoymaya, güvenlik ihlalleri ise limana kabul edilmemeye yol açabilir; geminin geçmişini izleyen CSR de ISSC ile birlikte gemide bulundurulur.",
+      },
+      {
+        heading: "RSO, geçici ISSC ve doğrulama döngüsü",
+        body:
+          "ISSC, bayrak devleti tarafından veya onun yetkilendirdiği bir Tanınmış Güvenlik Kuruluşu (RSO – genellikle bir klas kuruluşu) tarafından düzenlenir; ancak bazı hassas güvenlik kararları (örneğin güvenlik seviyesinin belirlenmesi) devredilemez ve bayrak devletinde kalır. Beş yıllık geçerlilik döngüsünde, dönem ortasında en az bir ara doğrulama (intermediate verification) yapılır ve geminin güvenlik planının hâlâ uygulandığı teyit edilir. Yeni inşa edilen veya bayrak/işletmeci değiştiren gemiler için, tam denetim tamamlanana kadar sınırlı süreli geçici ISSC düzenlenebilir. Bu yapı, SMC sertifikasyon mantığıyla simetriktir: biri emniyet yönetimini (ISM), diğeri güvenlik yönetimini (ISPS) doğrular ve her ikisi de eksik olduğunda gemi sefer yapamaz.",
+      },
+      {
+        heading: "Güvenlik tatbikatları, eğitim ve denetim hazırlığı",
+        body:
+          "ISSC'nin geçerliliği, planın yaşatılmasına bağlıdır. Mürettebat düzenli güvenlik tatbikatları (drills – tipik olarak üç ayda bir) ve daha kapsamlı egzersizler (exercises – yılda bir) yapar; bunlar erişim kontrolü, kısıtlı bölgelerin korunması, silah/patlayıcı tehdidi, kaçak yolcu ve geminin güvenlik seviyeleri arasındaki geçişi içerir. Güvenlik donanımı (SSAS, AIS, CCTV, aydınlatma, erişim kontrol) periyodik test edilir ve kayıtları tutulur. Denetime hazırlık, gemi güvenlik kayıtlarının (DoS örnekleri, tatbikat kayıtları, ziyaretçi/yük güvenlik kayıtları) güncel ve erişilebilir olmasını gerektirir. ISSC veya onaylı SSP eksikliği PSC denetiminde alıkoymaya, ciddi güvenlik ihlalleri ise geminin limana kabul edilmemesine yol açabilir; bu yüzden güvenlik, emniyet kadar günlük operasyonun parçasıdır.",
       },
     ],
     relatedSlugs: ["isps-code", "solas"],
@@ -700,6 +720,16 @@ export const certificateRegulations: RegulationItem[] = [
         body:
           "MLC, liman devleti kontrolünde en sık eksiklik bulunan alanlardan biridir; çünkü ödenmemiş ücret, aşırı çalışma, yetersiz yemek veya kötü konaklama gibi sorunlar somut ve kolayca tespit edilebilir. Ciddi MLC ihlalleri geminin alıkonmasına kadar gidebilir. Ayrıca MLC, denizciye doğrudan bir güç verir: gemideki ve kıyıdaki şikâyet mekanizmaları aracılığıyla bir denizci liman devletini harekete geçirebilir ve bu bir denetimi tetikleyebilir. Bu yüzden gemiler DMLC Part II'yi güncel tutar, çalışma saati kayıtlarını düzenli işler ve PSC MLC denetimlerine her zaman hazırlıklı olur.",
       },
+      {
+        heading: "Çalışma/dinlenme saatleri ve kayıt disiplini",
+        body:
+          "MLC sertifikasyonunda en sık denetlenen ve en sık eksiklik bulunan alan çalışma/dinlenme saatleridir. Kural, ya azami çalışma (24 saatte en fazla 14, 7 günde en fazla 72 saat) ya da asgari dinlenme (24 saatte en az 10, 7 günde en az 77 saat) sınırıyla uygulanır; dinlenme en fazla iki parçaya bölünebilir ve bir parçası en az 6 saat olmalıdır. Bu saatler her denizci için günlük olarak kaydedilir ve denizciye bir kopyası verilir. Kayıtların gerçeği yansıtması esastır: kâğıt üstünde uyumlu görünen ama fiilen aşırı çalışmayı gizleyen kayıtlar, hem MLC hem STCW ihlalidir ve PSC denetiminde ciddi sonuç doğurur. Bu kurallar STCW'nin yorgunluk hükümleriyle birebir örtüşür; çünkü yorgunluk hem bir denizci hakkı meselesi hem de doğrudan bir emniyet riskidir.",
+      },
+      {
+        heading: "Finansal güvence ve repatriation",
+        body:
+          "MLC'nin denizciyi en somut biçimde koruyan hükümlerinden biri, geri dönüş (repatriation) hakkı ve bunu destekleyen zorunlu finansal güvencedir. Bir denizci, sözleşmesi bittiğinde, hastalandığında veya gemi/şirket yükümlülüğünü yerine getiremediğinde masrafsız biçimde ülkesine döndürülmek zorundadır. 2014 değişiklikleriyle eklenen finansal güvence (genellikle P&I sigortası yoluyla), armatörün iflası veya denizcinin terk edilmesi (abandonment) durumunda devreye girer: ödenmemiş ücretleri, geri dönüş masraflarını ve temel ihtiyaçları karşılar. Geminin bu finansal güvenceyi gösteren sertifikaları (örneğin terk edilme ve ölüm/uzun süreli iş göremezlik için ayrı belgeler) görünür biçimde gemide bulundurması zorunludur; bunların eksikliği PSC denetiminde eksiklik kaydına yol açar. Bu mekanizma, geçmişte denizcilerin yabancı limanlarda aylarca ücretsiz ve çaresiz bırakıldığı vakalara verilen yanıttır.",
+      },
     ],
     relatedSlugs: ["mlc", "dmlc", "psc"],
     resources: [{ label: "MLC 2006", href: "https://www.ilo.org/global/standards/maritime-labour-convention/lang--en/index.htm" }],
@@ -769,6 +799,16 @@ export const certificateRegulations: RegulationItem[] = [
         body:
           "IOPP rejiminde en ciddi ihlaller donanım değil, kayıt sahteciliği ve bypass etrafında döner. 'Magic pipe' olarak bilinen, yağ-su ayırıcıyı atlatarak sintineyi doğrudan denize basan düzenekler ve bunların Yağ Kayıt Defterinde gizlenmesi, dünya çapında en ağır biçimde cezalandırılan denizcilik suçlarındandır; özellikle ABD'de APPS kapsamında milyonlarca dolar para cezası ve hapis cezasıyla sonuçlanır. Bu yüzden ORB'nin doğru, eksiksiz ve dürüst tutulması hayati önemdedir. IOPP olmadan gemi sefer yapamaz, MARPOL Ek I uyumsuzluğu ise PSC'de alıkoymaya yol açar.",
       },
+      {
+        heading: "Supplement (Form A/B) ve ekipman uyumu",
+        body:
+          "IOPP Certificate'ın ayrılmaz ve aslında en bilgi yüklü parçası, ekidir (supplement): tanker olmayan gemiler için Form A, tankerler için Form B. Bu ek, gemideki tüm petrol kirliliği önleme donanımını tek tek listeler: yağ-su ayırıcının (OWS) kapasitesi ve tipi, 15 ppm izleme ve alarm cihazı, slop tank düzeni, yük petrol kalıntısı izleme cihazı (ODME), ayrılmış balast tankları (SBT) ve ham petrol yıkama (COW) sistemleri. Denetimde, gemideki gerçek donanımın bu listeyle birebir örtüşmesi beklenir; bir ekipman değiştiğinde veya kaldırıldığında supplement güncellenmelidir, aksi halde sertifika ile gerçek durum arasında uyumsuzluk doğar ve bu bir PSC bulgusudur. Supplement, böylece geminin çevre donanımının resmi envanteri ve denetimin yol haritasıdır.",
+      },
+      {
+        heading: "Oil Record Book ve kayıt bütünlüğü",
+        body:
+          "IOPP rejiminin denetlenebilirliğinin kalbi Yağ Kayıt Defteri'dir (ORB): Part I makine dairesi operasyonlarını (sintine ayırma, sludge transferi/yakma, yakıt alımı), Part II ise tankerlerde kargo/balast operasyonlarını kaydeder. Her giriş, operasyonun türünü, miktarını, zamanını ve konumunu gösterir ve sorumlu zabit ile kaptan tarafından imzalanır; defter belirli süre (genellikle üç yıl) gemide saklanır. ORB, denetimde ilk bakılan belgelerdendir çünkü deşarjların nerede ve nasıl yapıldığını ortaya koyar. En ağır ihlaller donanım arızası değil, kayıt sahteciliği ve bypass etrafında döner: yağ-su ayırıcıyı atlatan 'magic pipe' düzenekleri ve bunların ORB'de gizlenmesi, özellikle ABD'de APPS kapsamında milyonlarca dolar para ve hapis cezasıyla sonuçlanır; ihbarcı (whistleblower) ödülleri bu ihlallerin ortaya çıkmasını teşvik eder. Bu yüzden ORB'nin dürüst ve eksiksiz tutulması, IOPP uyumunun en kritik yönüdür.",
+      },
     ],
     relatedSlugs: ["marpol", "oprc"],
     resources: [{ label: "MARPOL Ek I", href: "https://www.imo.org/en/OurWork/Environment/Pages/OilPollution.aspx" }],
@@ -825,6 +865,16 @@ export const certificateRegulations: RegulationItem[] = [
         heading: "Servis döngüsü ve denetlenebilirlik",
         body:
           "Bu sertifikanın asıl zorluğu, kapsadığı donanımın büyük bölümünün düzenli servis gerektirmesidir. Can salları yıllık servise gönderilir, yangın söndürücüler periyodik şarj edilir, EPIRB bataryaları ve piroteknik malzemeler son kullanma tarihine bağlıdır, matafora (davit) düzenekleri beş yıllık yük testinden geçer. Sertifika beş yıl geçerli olsa da yıllık ve ara sörveylerle sürekli denetlenir. PSC denetiminde servis süresi geçmiş bir can salı veya çalışmayan bir yangın pompası doğrudan eksiklik, hatta alıkoyma sebebidir. Bu yüzden teçhizat bakımı, sertifikanın geçerliliğini sürdürmenin ayrılmaz parçasıdır ve LSA/FSS Code'ların standartlarına dayanır.",
+      },
+      {
+        heading: "Record of Equipment (Form E) ve envanter uyumu",
+        body:
+          "Safety Equipment Certificate'ın işlevsel kalbi, ekindeki Record of Equipment'tir (kargo gemileri için Form E). Bu liste, gemideki her bir can kurtarma, yangın ve seyir teçhizatı kalemini sayısıyla birlikte tek tek belgeler: kaç can filikası ve salı, kaç can yeleği ve dalma elbisesi, hangi yangın söndürme sistemleri, hangi seyir cihazları (radar, ECDIS, AIS, VDR) bulunduğu kayıt altındadır. Denetimde, gemideki gerçek donanımın bu liste ile birebir örtüşmesi beklenir; eksik veya listede olmayan bir teçhizat, doğrudan bir PSC bulgusudur. Teçhizat değiştiğinde Form E güncellenmelidir. Bu yapı, sertifikanın yalnızca bir 'uygunluk damgası' değil, geminin emniyet envanterinin denetlenebilir bir kaydı olmasını sağlar.",
+      },
+      {
+        heading: "Servis döngüsü ve operasyonel denetim",
+        body:
+          "Bu sertifikanın kapsadığı donanımın büyük bölümü düzenli servis ve test gerektirir; sertifikanın geçerliliği fiilen bu bakım disiplinine bağlıdır. Can salları yıllık akredite servise gönderilir, yangın söndürücüler periyodik şarj edilir, EPIRB bataryaları ve piroteknik malzemeler son kullanma tarihine bağlıdır, matafora (davit) düzenekleri beş yıllık yük testinden geçer, GMDSS ve seyir cihazları fonksiyon testlerine tabidir. Sertifika beş yıl geçerli olsa da yıllık ve ara (periyodik) sörveylerle sürekli izlenir. Denetimde donanım yalnızca görülmez, çalıştırılır da: yangın pompası basıncı, acil jeneratör, su geçirmez/yangın kapıları ve alarm sistemleri operasyonel olarak sınanabilir. Servis süresi geçmiş bir can salı veya çalışmayan bir yangın pompası doğrudan eksiklik, hatta alıkoyma sebebidir; teknik standartların ayrıntısı LSA ve FSS Code'lara dayanır.",
       },
     ],
     relatedSlugs: ["solas", "lsa-code", "fss-code"],
@@ -885,6 +935,16 @@ export const certificateRegulations: RegulationItem[] = [
         body:
           "GMDSS'in güvenilirliği yedekliliğe dayanır: tehlike anında tek bir cihazın arızası iletişimi kesmemelidir, bu yüzden gemiler kıyı bakımı, deniz bakımı veya cihaz ikileme gibi yöntemlerle yedekleme sağlar. EPIRB (otomatik tehlike vericisi) ve SART (arama-kurtarma transponderi) gibi can alıcı cihazların pil ve hidrostatik serbest bırakma tarihleri izlenir, fonksiyon testleri (haftalık, aylık, yıllık) düzenli yapılır ve kaydedilir. GMDSS bataryası, ana güç kesildiğinde sistemi besleyecek yeterli rezerve sahip olmalıdır. Donanımın yanı sıra, telsizi kullanan kişinin GMDSS operatör sertifikası (GOC) taşıması gerekir; sertifika veya çalışır donanım eksikliği PSC'de alıkoyma riski doğurur.",
       },
+      {
+        heading: "Deniz alanları ve zorunlu donanımın derinlemesine yapısı",
+        body:
+          "Safety Radio Certificate'ın temel mantığı, geminin telsiz donanımını seyrettiği deniz alanına (sea area) göre belirlemektir; çünkü tehlike çağrısını hangi sistemle iletebileceği bulunduğu konuma bağlıdır. A1, bir VHF DSC sahil istasyonunun menzilindeki kıyı sularıdır ve VHF DSC yeterlidir. A2, bir MF DSC istasyonu menzilini ekler. A3, uydu (Inmarsat) veya HF kapsamındaki açık denizleri, A4 ise uydu kapsamı dışındaki kutup bölgelerini kapsar ve HF DSC'yi zorunlu kılar. Her alan, bir öncekinin donanımına yenilerini ekleyerek katmanlı bir yapı oluşturur. Zorunlu GMDSS donanımı; VHF/MF/HF DSC, Inmarsat-C, EPIRB, SART/AIS-SART, NAVTEX ve güvenlik mesajı alıcılarını içerir. Record of Equipment (Form R), bu donanımı tek tek belgeler ve denetimde gemideki gerçek durumla karşılaştırılır.",
+      },
+      {
+        heading: "Yedeklilik, test ve operatör yeterliliği",
+        body:
+          "GMDSS'in güvenilirliği yedekliliğe dayanır: tehlike anında tek bir cihazın arızası iletişimi kesmemelidir, bu yüzden gemiler kıyı bakımı (SBM), deniz bakımı (ASM) veya cihaz ikileme (duplication) gibi yöntemlerle yedekleme sağlar; açık deniz (A3/A4) gemileri genellikle birden çok bağımsız iletişim yolu taşır. Can alıcı cihazların hazır olması düzenli testle güvence altına alınır: EPIRB ve SART'ın pil ile hidrostatik serbest bırakma tarihleri izlenir ve zamanında değiştirilir, fonksiyon testleri (haftalık VHF/DSC, aylık EPIRB/SART, yıllık tam test) yapılır ve telsiz kayıt defterine işlenir. GMDSS bataryası, ana güç kesildiğinde sistemi besleyecek yeterli rezerve sahip olmalıdır. Donanımın yanı sıra operatörün de yeterli olması gerekir: telsizi kullanan kişi geçerli bir GMDSS operatör sertifikası (GOC) taşımalıdır. Çalışmayan donanım, yetersiz yedeklilik veya sertifikasız operatör PSC denetiminde alıkoyma riski doğurur.",
+      },
     ],
     relatedSlugs: ["solas"],
     resources: [{ label: "SOLAS Chapter IV", href: "https://www.imo.org/en/OurWork/Safety/Pages/RadioCommunications.aspx" }],
@@ -944,6 +1004,16 @@ export const certificateRegulations: RegulationItem[] = [
         heading: "Yapısal bütünlük, yangın bölmeleri ve acil sistemler",
         body:
           "Sertifikanın kapsadığı alanlar geminin hayatta kalma kabiliyetinin çekirdeğidir. Su geçirmez kapılar ve perdeler bir bölmenin su almasının tüm gemiye yayılmasını engeller; A ve B sınıfı yangın bölmeleri, yangın kapıları ve damperler bir yangının belirli süre boyunca komşu mahallere geçmesini sınırlar. Onaylı stabilite bilgi kitapçığı, geminin hangi yükleme durumlarında güvenle dengede kalacağını gösterir ve gemide bulundurulur. Acil sistemler (acil yangın pompası, acil jeneratör, acil dümen donanımı), ana sistemler devre dışı kaldığında devreye girer. Yapısal bir değişiklik yapıldığında klas/bayrak onayı gerekir; yetkisiz modifikasyon sertifikayı geçersiz kılabilir, yapısal/yangın bütünlüğü ihlalleri ise PSC'de ciddi eksiklik ve alıkoyma doğurur.",
+      },
+      {
+        heading: "Bölmeleme, hasar stabilitesi ve su geçirmezlik",
+        body:
+          "Safety Construction Certificate'ın kapsadığı en kritik konu, geminin hasar gördüğünde hayatta kalma kabiliyetidir. Su geçirmez perdeler gemiyi kompartımanlara böler ve bir veya daha fazla bölme su aldığında geminin yüzer ve dengede kalmasını sağlar; hasar stabilite hesapları, belirli hasar senaryolarında geminin batmadan ve devrilmeden kalacağını kanıtlamak zorundadır. Su geçirmez kapılar, perde geçişleri ve sintine kuyuları bu bütünlüğü korur; onaylı stabilite bilgi kitapçığı ise hangi yükleme durumlarında geminin güvenle dengede kalacağını gösterir ve gemide bulundurulur. Çift dip ve güçlendirilmiş yapısal elemanlar, tek bir hasarın domino etkisiyle tüm gemiyi batırmasını önler. Bu gereklilikler, klas kuruluşunun yapısal uzmanlığıyla doğrudan örtüştüğü için sertifika genellikle klas tarafından bayrak adına düzenlenir.",
+      },
+      {
+        heading: "Yangın bütünlüğü, acil sistemler ve modifikasyon kontrolü",
+        body:
+          "Sertifika, geminin yangına karşı yapısal direncini de kapsar: A ve B sınıfı yangın bölmeleri (farklı dayanım süreleriyle), yangın kapıları, damperler ve yanmaz/geç tutuşan malzemeler bir mahaldeki yangının komşu mahallere geçmesini geciktirir ve tahliye için zaman kazandırır. Acil sistemler, ana sistemler devre dışı kaldığında devreye girer: acil yangın pompası, acil jeneratör ve acil dümen donanımı bunların başlıcalarıdır ve düzenli test edilir. Sertifikanın geçerliliği, geminin onaylı yapısal durumunu korumasına bağlıdır: yapısal bir değişiklik (üst yapı ekleme, bölme değiştirme, açıklık açma) yapılacaksa önceden klas/bayrak onayı alınmalıdır; yetkisiz modifikasyon sertifikayı geçersiz kılabilir. Yapısal bütünlük sorunları (çatlak, ileri korozyon, deformasyon) veya yangın bütünlüğü ihlalleri PSC denetiminde ciddi eksiklik ve alıkoyma doğurur.",
       },
     ],
     relatedSlugs: ["solas", "class-survey"],
@@ -1018,6 +1088,16 @@ export const certificateRegulations: RegulationItem[] = [
         body:
           "IAPP, klasik kirlilik kontrolünden iklim düzenlemesine uzanan köprüdür. Gemide bulundurulması zorunlu olan SEEMP (Ship Energy Efficiency Management Plan) üç bölümlüdür: genel verimlilik yönetimi (Part I), IMO DCS veri toplama planı (Part II) ve CII yönetim planı (Part III). Böylece IAPP sertifikası altında hem geminin tasarım verimliliği (EEXI) hem operasyonel karbon performansı (CII) izlenir hale gelmiştir. NOx Teknik Dosyasının güncel olmaması, SOx uyumsuzluğu veya SEEMP eksikliği PSC'de eksiklik ve olası alıkoymaya yol açar; sertifika olmadan ise gemi uluslararası sefer yapamaz.",
       },
+      {
+        heading: "NOx Teknik Dosyası ve motor yönetimi",
+        body:
+          "IAPP'nin en teknik unsuru, gemideki 130 kW üzeri her dizel motorun NOx Teknik Dosyası'dır. Bu dosya, motorun azot oksit emisyonunun üretim yılına ve seyir bölgesine göre uygulanan Tier I, II veya III limitlerine uyduğunu belgeler ve motorun emisyonunu etkileyen tüm 'ayarlanabilir bileşenleri' (enjektör, yakıt pompası timing'i, turboşarjer, supap ayarı) tanımlar. Önemli olan, motorun bakımının bu dosyadaki onaylı parametreler içinde tutulmasıdır: bir bakım veya parça değişimi sırasında motorun emisyon karakteristiği değiştirilirse, bu onaylı bir yöntemle (örneğin onboard izleme veya parametre kontrolü) yeniden doğrulanmalıdır. Tier III, yalnızca NOx Emisyon Kontrol Alanlarında (NECA) uygulanır ve genellikle seçici katalitik indirgeme (SCR) veya egzoz gazı resirkülasyonu (EGR) gibi ek teknoloji gerektirir. Dosyanın güncel olmaması PSC'de eksiklik doğurur.",
+      },
+      {
+        heading: "SEEMP, enerji verimliliği ve genişleyen kapsam",
+        body:
+          "IAPP, klasik kirlilik kontrolünden iklim düzenlemesine uzanan köprüdür. Gemide bulundurulması zorunlu olan SEEMP (Ship Energy Efficiency Management Plan) üç bölümlüdür: genel verimlilik yönetimi (Part I), IMO DCS veri toplama planı (Part II) ve CII yönetim planı (Part III). Böylece IAPP sertifikası altında hem geminin tasarım verimliliği (EEXI) hem operasyonel karbon performansı (CII) izlenir. Sertifikanın kapsamı zamanla genişlemiştir: kükürt (SOx) uyumu için yakıt veya scrubber doğrulaması, ozon tabakasını incelten maddelerin (ODS – halon, CFC) kaydı, ham petrol tankerleri için VOC yönetim planı ve onaylı gemi yakıcıları (incinerator) da bu sertifika altında değerlendirilir. NOx dosyasının eksikliği, SOx uyumsuzluğu veya SEEMP eksikliği PSC'de eksiklik ve olası alıkoymaya yol açar; sertifika olmadan gemi uluslararası sefer yapamaz.",
+      },
     ],
     relatedSlugs: ["marpol", "eexi", "imo-2020"],
     resources: [{ label: "MARPOL Ek VI", href: "https://www.imo.org/en/OurWork/Environment/Pages/AirPollution.aspx" }],
@@ -1066,6 +1146,16 @@ export const certificateRegulations: RegulationItem[] = [
         heading: "Eşik etkisi, süreklilik ve kanal tonajları",
         body:
           "Tonajın en pratik işlevi 'eşik belirlemesidir': birçok kural belirli bir GT değerinin üstündeki gemilere uygulanır (örneğin AIS için 300 GT, SOLAS kargo için 500 GT, MARPOL Ek VI için 400 GT). Dolayısıyla bir geminin GT'si, hangi sertifikalara ve emniyet gerekliliklerine tabi olacağını doğrudan belirler. Tonaj sertifikası, yapısal bir değişiklik olmadığı sürece süresiz geçerlidir; ancak kapalı hacmi değiştiren bir modifikasyondan sonra yeniden ölçüm ve yeni sertifika zorunludur. Süveyş ve Panama kanalları kendi ticari tonaj sistemlerini uyguladığı için, bu kanalları geçecek gemiler ayrı kanal tonaj sertifikaları da taşır. Yanlış tonaj beyanı harç kaçırma olarak hukuki yaptırıma yol açar.",
+      },
+      {
+        heading: "Süreklilik, yeniden ölçüm ve denetim",
+        body:
+          "Tonnage Certificate, diğer sertifikalardan farklı olarak süreli değildir: yapısal bir değişiklik olmadığı sürece süresiz geçerli kalır, çünkü ölçtüğü şey (geminin hacmi) değişmedikçe sonuç da değişmez. Ancak geminin kapalı hacmini değiştiren kalıcı bir modifikasyon (üst yapı ekleme/çıkarma, ambar dönüşümü) yapıldığında tonajın yeniden ölçülmesi ve yeni sertifika düzenlenmesi zorunludur; aksi halde sertifika gerçeği yansıtmaz ve geçersiz duruma düşer. Bazı ülkeler, tonaj sertifikası eksik gemilere liman girişini reddedebilir. Denetimde, beyan edilen GT/NT değerlerinin sertifikayla ve geminin diğer belgeleriyle (manning, emniyet eşikleri) tutarlı olması beklenir.",
+      },
+      {
+        heading: "Eşik etkisi ve kanal tonaj sertifikaları",
+        body:
+          "Tonaj sertifikasının asıl işlevi, geminin tabi olacağı düzenlemeleri belirleyen 'eşik' değerlerini resmileştirmektir. GT üzerinden pek çok kural devreye girer: 300 GT'de AIS, 400 GT'de MARPOL Ek VI ve MLC, 500 GT'de SOLAS kargo gereklilikleri ve ISM gibi. Dolayısıyla bir geminin GT'si, hangi sertifikalara, kaç kişilik mürettebata ve hangi emniyet donanımına tabi olacağını doğrudan belirler; NT ise liman harçları ve geçiş ücretlerinin tabanını oluşturur. Süveyş ve Panama kanalları, ITC 69'dan ayrı kendi ticari tonaj sistemlerini (SCNT ve PC/UMS) uyguladığı için bu kanalları geçecek gemiler ayrı kanal tonaj sertifikaları da taşır ve geçiş ücretleri bu özel tonajlar üzerinden hesaplanır. Yanlış tonaj beyanıyla harç kaçırmak idari yaptırıma yol açar.",
       },
     ],
     relatedSlugs: ["itc-69", "llc"],
@@ -1121,6 +1211,16 @@ export const certificateRegulations: RegulationItem[] = [
         heading: "Denetimde söz ile uygulamanın örtüşmesi",
         body:
           "DMLC, PSC denetiminde en çok incelenen belgelerden biridir, çünkü denetçi için doğal bir kontrol listesidir: Part II'de yazılı her prosedürün gemide gerçekten uygulanıp uygulanmadığı kıyaslanır. En kritik risk, beyan ile gerçek arasındaki tutarsızlıktır; örneğin Part II çalışma saati kaydı tutulduğunu söylüyorsa ama kayıtlar eksikse, bu ciddi bir uygunsuzluk ve olası alıkoyma sebebidir. Bu yüzden Part II, şirketin personel politikası veya prosedürleri değiştiğinde güncellenmeli, Part I'deki ulusal gereklilik değişiklikleri izlenmeli ve 14 alanın her biri için somut uyum kanıtları (kayıtlar, sözleşmeler, sertifikalar) gemide hazır tutulmalıdır. MLC Certificate geçersizse DMLC de geçersiz hale gelir.",
+      },
+      {
+        heading: "On dört denetim alanının iki parçalı belgelenmesi",
+        body:
+          "DMLC, MLC'nin 14 denetim alanını hem ulusal gereklilik hem şirket uygulaması düzeyinde belgeler. Bu alanlar bir denizcinin gemideki yaşamının neredeyse tamamını kapsar: asgari yaş, sağlık sertifikası, denizci nitelikleri, iş sözleşmesi (SEA), işe alma hizmetleri, çalışma/dinlenme saatleri, manning seviyesi, konaklama, rekreasyon, yemek/ikram, sağlık ve tıbbi bakım, gemideki şikâyet mekanizması, ücret ödemesi ve mali güvence. Part I, bayrak devletinin her alanda ne gerektirdiğini (ve varsa ulusal eşdeğer farklılıkları) açıklar; Part II ise şirketin bu gereklilikleri fiilen nasıl karşıladığını gösteren uygulama planını ortaya koyar. Böylece DMLC, 'kural ne diyor' ve 'biz bunu nasıl uyguluyoruz' sorularını tek belgede yanıtlar ve denetçi için doğal bir kontrol listesi işlevi görür.",
+      },
+      {
+        heading: "Söz ile uygulamanın örtüşmesi ve güncel tutma",
+        body:
+          "DMLC denetiminin en kritik yönü, Part II'de yazılı her prosedürün gemide gerçekten uygulanıp uygulanmadığının kıyaslanmasıdır. En ciddi risk, beyan ile gerçek arasındaki tutarsızlıktır: örneğin Part II çalışma saati kaydı tutulduğunu söylüyorsa ama kayıtlar eksikse, veya şikâyet mekanizması tanımlanmış ama mürettebat bundan habersizse, bu büyük bir uyumsuzluk ve olası alıkoyma sebebidir. Bu yüzden Part II, şirketin personel politikası veya prosedürleri değiştiğinde güncellenmeli ve bayrak devletine/RO'ya bildirilmeli; Part I'deki ulusal gereklilik değişiklikleri izlenmeli; 14 alanın her biri için somut uyum kanıtları (kayıtlar, sözleşmeler, sertifikalar) gemide hazır tutulmalıdır. DMLC, MLC Certificate ile birlikte anlamlıdır; sertifika geçersiz olursa DMLC de geçersiz hale gelir ve gemi uluslararası sefer yapamaz.",
       },
     ],
     relatedSlugs: ["mlc", "mlc-cert", "psc"],
