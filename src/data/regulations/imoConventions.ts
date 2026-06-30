@@ -70,6 +70,73 @@ export const imoConventions: RegulationItem[] = [
       "PSC denetimlerinde tekrar eden eksikliklerde 'ban' listesine alınma riski",
       "Deniz kazası soruşturmalarında SOLAS ihlalinin tespiti halinde cezai ve hukuki sorumluluk",
     ],
+    detailedSections: [
+      {
+        heading: "Sözleşmenin amacı ve genel mantığı",
+        body:
+          "SOLAS, denizde insan hayatını korumayı tek amaç edinen ve bunu 'asgari standart' mantığıyla kuran şemsiye bir sözleşmedir. Temel felsefesi, bir geminin tasarımından söküme kadar geçen tüm yaşam döngüsünde belirli emniyet eşiklerinin sürekli sağlanmasıdır. Bayrak devleti bu standartları kendi mevzuatına aktarır, klas kuruluşları (RO) adına sörvey yapar ve liman devleti kontrolü (PSC) bağımsız bir denetim katmanı olarak gemiye gelir. Bu üçlü yapı sayesinde tek bir denetim noktasına bağımlı kalınmaz; emniyet zincirinin her halkası diğerini denetler. SOLAS'ın bir diğer ayırt edici yönü 'zımni kabul' mekanizmasıdır: değişiklikler belirli bir tarihte itiraz edilmedikçe otomatik yürürlüğe girer, böylece sözleşme teknolojiyle birlikte güncel kalır.",
+      },
+      {
+        heading: "Yapısal ve teknik emniyet (Chapter II-1 ve II-2)",
+        body:
+          "Sözleşmenin teknik omurgasını iki bölüm oluşturur. Chapter II-1, geminin su altı bütünlüğünü konu alır: bölmeleme yoluyla bir veya daha fazla kompartıman su aldığında geminin yüzer kalmasını sağlayan hasar stabilitesi, su geçirmez perdeler, çift dip ve makine/elektrik tesislerinin güvenliği bu kapsamdadır. 2009 sonrası gemilerde olasılık temelli (probabilistik) hasar stabilitesi yöntemi esas alınır. Chapter II-2 ise yangını üç aşamada ele alır: önleme (yanmaz/geç tutuşan malzemeler, sınırlandırma bölgeleri), algılama (duman/ısı dedektörleri, manuel alarm) ve söndürme (sabit CO₂/köpük/su sisi sistemleri, yangın devreleri). Kaçış yollarının tasarımı, yangın kapıları ve havalandırmanın acil durdurulması da bu bölümün konularıdır.",
+      },
+      {
+        heading: "Can kurtarma, haberleşme ve seyir (Chapter III-IV-V)",
+        body:
+          "Chapter III, kazadan sonra hayatta kalmayı düzenler: can filikaları ve sallarının sayısı/kapasitesi, indirme düzenekleri, kişisel koruyucu teçhizat (can yeleği, immersion suit) ve bunların tatbikatlarla işler tutulması. Chapter IV, GMDSS mimarisini kurar; gemiye, seyrettiği deniz alanına (A1-A4) göre değişen telsiz ekipmanı zorunluluğu getirir ve tehlike çağrılarının her koşulda iletilmesini garanti eder. Chapter V ise tüm gemilere boyut sınırı olmaksızın uygulanan seyir emniyeti bölümüdür: AIS, VDR, ECDIS gibi zorunlu cihazlar, sefer planlaması, gözcü tutma, meteorolojik uyarıların alınması ve kaptanın emniyet kararlarındaki nihai yetkisi burada tanımlanır.",
+      },
+      {
+        heading: "Yönetim, güvenlik ve özel rejimler (Chapter IX, XI, XIV)",
+        body:
+          "SOLAS yalnızca donanım değil, organizasyonu da düzenler. Chapter IX, ISM Code'u zorunlu kılarak her şirketin yazılı bir Emniyet Yönetim Sistemi (SMS) kurmasını, risk değerlendirmesi yapmasını ve sürekli iyileştirmeyi belgelendirmesini ister. Chapter XI-1 deniz emniyetini iyileştiren ek önlemleri (IMO numarası, CSR, ESP) içerirken XI-2 ISPS Code ile gemi/liman güvenliğini ve güvenlik seviyelerini düzenler. Polar Code'u zorunlu kılan Chapter XIV, kutup sularında buz, düşük sıcaklık ve uzaklık kaynaklı ek riskleri ele alır. Pratikte bir gemi adamı için SOLAS, ayrı ayrı ezberlenecek kurallar yığını değil; sörvey takvimi, sertifika geçerliliği, tatbikat döngüsü ve ekipman bakımıyla günlük operasyona gömülmüş yaşayan bir çerçevedir.",
+      },
+      {
+        heading: "Chapter I – Sörvey, sertifikasyon ve zımni kabul",
+        body:
+          "SOLAS'ın birinci bölümü, tüm sözleşmenin işletim sistemidir. Geminin uyumunu kanıtlayan sertifikaları (Passenger Ship Safety Certificate; kargo gemileri için Safety Construction, Safety Equipment ve Safety Radio sertifikaları) ve bunları doğrulayan sörvey türlerini tanımlar: ilk (initial), yıllık (annual), ara (intermediate), periyodik (periodical) ve yenileme (renewal). Uyumlaştırılmış Sörvey ve Sertifikasyon Sistemi (HSSC), farklı sözleşmelerin sörveylerini ortak bir beş yıllık takvimde ve pencerelerde (±3 ay) toplar, böylece gemi tek ziyarette çoklu sörvey görebilir. Bölüm ayrıca bayrak devleti ile liman devleti kontrolünün yetkilerini, klas kuruluşlarının (RO) bayrak adına nasıl çalışacağını ve sertifikaların geçerlilik/onay koşullarını belirler. Sözleşmenin teknolojiyle güncel kalmasını sağlayan 'zımni kabul' (tacit acceptance) mekanizması da buraya dayanır: kabul edilen bir değişiklik, belirlenen tarihe kadar yeterli sayıda taraf devlet itiraz etmedikçe otomatik yürürlüğe girer.",
+      },
+      {
+        heading: "Chapter II-1 – Bölmeleme, hasar stabilitesi ve makine emniyeti (derinlemesine)",
+        body:
+          "II-1, geminin su altı bütünlüğünü çok katmanlı biçimde güvence altına alır. Bölmeleme (subdivision) ilkesi gemiyi su geçirmez perdelerle kompartımanlara böler; amaç, bir veya daha fazla bölme su aldığında geminin yüzer ve dengede kalmasıdır. 2009 sonrası yolcu ve kargo gemilerinde, hasar senaryolarını olasılıklarıyla birlikte değerlendiren probabilistik hasar stabilite yöntemi (gerekli A indeksi ≥ ulaşılan A indeksi) esas alınır. Bölüm; su geçirmez kapıların tipini ve kapanma sürelerini, çift dip (double bottom) gerekliliklerini, hasar kontrol planlarını ve sintine/balast pompalama düzenlerini kapsar. Makine ve elektrik tarafında ise ana ve yardımcı makinelerin, acil güç kaynaklarının (emergency generator), dümen donanımının (steering gear – ana ve yardımcı sistem, test gereklilikleri) ve dümen kontrolünün yedekliliğini düzenler; amaç tek bir arızanın gemiyi yönetilemez hale getirmemesidir.",
+      },
+      {
+        heading: "Chapter II-2 – Yangın güvenliği (derinlemesine)",
+        body:
+          "II-2, yangını üç stratejiyle ele alır: önleme, sınırlama ve söndürme. Önleme; yanıcı malzemelerin kısıtlanması, yakıt/yağ sistemlerinin güvenli tasarımı ve tutuşma kaynaklarının kontrolüyle sağlanır. Sınırlama, gemiyi A ve B sınıfı yangın bölmeleriyle (A-60'tan A-0'a kadar farklı dayanım süreleri) ana dikey bölgelere ayırarak bir mahaldeki yangının komşu mahallere geçmesini geciktirir; yangın kapıları, damperler ve havalandırmanın acil durdurulması bu sistemi tamamlar. Algılama; duman ve ısı dedektörleri, manuel alarm noktaları ve köprüüstündeki merkezi panellerle yangının yerini anında belirler. Söndürme ise mahalle göre değişir: makine dairesi için sabit CO₂/köpük/su sisi, yaşam mahalleri için sprinkler, güverte için köpük monitörleri. Bölüm ayrıca kaçış yollarının tasarımını, acil aydınlatmayı, itfaiyeci teçhizatını (SCBA, EEBD) ve tankerlere özgü ek önlemleri (inert gaz, köpük) düzenler.",
+      },
+      {
+        heading: "Chapter III – Can kurtarma ve tatbikat düzeni (derinlemesine)",
+        body:
+          "III, kazadan sonra hayatta kalmayı hem donanım hem organizasyon olarak düzenler. Donanım tarafında survival craft (tamamen kapalı, serbest düşüşlü filikalar, can salları), kurtarma botu (rescue boat), indirme düzenekleri (davit) ve kişisel teçhizat (can yeleği, immersion suit, TPA) sayı ve performans olarak belirlenir; yolcu gemilerinde hızlı tahliye için Marine Evacuation System (MES) öngörülür. Organizasyon tarafında ise her geminin bir muster list (yangın yeri cetveli) bulundurması, her mürettebat üyesinin acil durumdaki görevini bilmesi ve toplanma istasyonlarının işaretlenmesi zorunludur. Tatbikatlar bu bölümün kalbidir: terk gemi (abandon ship) ve yangın tatbikatları düzenli aralıklarla, can filikalarının suya indirilmesi belirli periyotlarla yapılır ve kaydedilir; yeni katılan personele familiarization eğitimi verilir. Teknik standartların ayrıntısı LSA Code'a bırakılır.",
+      },
+      {
+        heading: "Chapter IV ve V – GMDSS ve seyir emniyeti (derinlemesine)",
+        body:
+          "Chapter IV, Küresel Deniz Tehlike ve Emniyet Sistemini (GMDSS) kurar ve donanımı geminin seyrettiği deniz alanına göre belirler: kıyıya yakın A1 (VHF DSC), A2 (MF ilave), A3 (HF veya uydu/Inmarsat), açık okyanus A4 (HF DSC zorunlu). Amaç, tehlike çağrısının her konumdan otomatik ulaşmasıdır; EPIRB, SART, NAVTEX ve yedeklilik gereklilikleri bunu destekler. Chapter V ise boyut sınırı olmaksızın neredeyse tüm gemilere uygulanan seyir emniyeti bölümüdür ve modern köprüüstünün omurgasını tanımlar: zorunlu ECDIS, AIS, VDR/S-VDR, BNWAS (vardiya uyarı sistemi), jiropusula ve radar; sefer planlamasının dört aşaması (appraisal, planning, execution, monitoring); gözcü tutma; meteorolojik ve seyir uyarılarının (NAVTEX, MSI) alınması; LRIT ile uzun menzilli takip; buzdan kaçınma ve tehlike bildirimi; ve kaptanın emniyet kararlarındaki nihai yetkisinin (hiçbir ticari baskının bunu sınırlayamayacağı) açıkça korunması.",
+      },
+      {
+        heading: "Chapter VI–VII – Yük ve tehlikeli madde taşımacılığı (derinlemesine)",
+        body:
+          "Chapter VI, dökme katı ve diğer yüklerin güvenli taşınmasını düzenler ve IMSBC Code ile Grain Code'a bağlanır; istif, trimming, yük bilgi formu ve özellikle konteyner yüklerinde doğrulanmış brüt ağırlık (VGM – Verified Gross Mass) zorunluluğu bu bölümden gelir. VGM, yanlış beyan edilen konteyner ağırlıklarının yol açtığı istif çökmesi ve gemi stabilite sorunlarını önlemeyi amaçlar. Chapter VII, ambalajlı ve dökme tehlikeli yükleri kapsar ve dört temel koda köprü kurar: ambalajlı tehlikeli maddeler için IMDG Code, dökme kimyasallar için IBC Code, sıvılaştırılmış gazlar için IGC Code ve ışınlanmış nükleer yakıt için INF Code. Bu sayede SOLAS, tehlikeli yükün sınıflandırılmasından ambalajlanmasına, ayrımına (segregation) ve acil müdahale bilgisine kadar tüm zinciri ilgili uzman koda yönlendirir; gemi ise yükün tipine göre hangi kodun geçerli olduğunu bilmek ve uygulamakla yükümlüdür.",
+      },
+      {
+        heading: "Chapter XI-1 / XI-2 – Emniyet ve güvenlik ek önlemleri (derinlemesine)",
+        body:
+          "Chapter XI, 11 Eylül sonrası ikiye ayrılmıştır. XI-1 deniz emniyetini güçlendiren önlemleri içerir: geminin ömür boyu değişmeyen IMO numarası (kimlik), gemi-bayrak-klas geçmişini gösteren Continuous Synopsis Record (CSR), tanker ve dökme yük gemilerinde zorunlu Enhanced Survey Programme (ESP) ve klas kuruluşlarının yetkilendirilmesine ilişkin gereklilikler. XI-2 ise ISPS Code'u zorunlu kılarak güvenliği (security) düzenler: gemi güvenlik değerlendirmesi (SSA), gemi güvenlik planı (SSP), atanmış sorumlular (SSO, CSO, PFSO), gizli güvenlik alarm sistemi (SSAS) ve üç kademeli güvenlik seviyesi sistemi. Bu bölüm, gemiyi yalnızca kazalara karşı değil kasıtlı saldırılara karşı da korur ve liman tesisleriyle birlikte bütünleşik bir güvenlik arayüzü kurar; güvenlik seviyesi değişimlerinde gemi planında tanımlı önlemleri anında devreye almak zorundadır.",
+      },
+      {
+        heading: "Chapter XII ve XIV – Dökme yük gemileri ve kutup suları",
+        body:
+          "Chapter XII, denizdeki en yüksek kayıp oranına sahip gemi tiplerinden biri olan dökme yük gemilerine özel ek gereklilikler getirir: 150 m üzeri gemilerde bir ambarın su alması durumunda hayatta kalmayı sağlayan güçlendirilmiş perde ve çift cidar yapıları, her ambarda su seviyesi algılama ve alarm sistemleri ile yapısal dayanım kriterleri. Bu kurallar, Derbyshire gibi gemilerin uyarı bile veremeden batmasının ardından geliştirilmiştir. Chapter XIV ise kutup sularında seyreden gemiler için Polar Code'u zorunlu kılar; buz yükü, aşırı düşük sıcaklık, karanlık dönemler, sınırlı haberleşme ve uzak SAR kapsamı gibi ek riskleri hedefleyen yapısal, donanımsal ve operasyonel gereklilikleri içerir. Bu iki bölüm, SOLAS'ın 'tek beden herkese uyar' yaklaşımından çıkıp belirli gemi tipleri ve seyir bölgeleri için özelleşmiş rejimler kurabildiğini gösterir.",
+      },
+      {
+        heading: "Modern eklentiler: GBS, Safe Return to Port, siber güvenlik",
+        body:
+          "SOLAS, zımni kabul mekanizması sayesinde sürekli evrilir ve son yıllarda klasik donanım kurallarının ötesine geçen modern katmanlar kazanmıştır. Goal-Based Standards (GBS), yeni gemi inşa kurallarını ayrıntılı reçeteler yerine ulaşılması gereken hedef performanslara bağlar ve klas kurallarının bu hedeflere uygunluğunu denetler. Yolcu gemileri için Safe Return to Port (SRtP), belirli bir hasar veya yangından sonra geminin kendi gücüyle güvenli bir limana dönebilmesini ve temel sistemlerin çalışmaya devam etmesini şart koşar; böylece gemi 'kendi en iyi cankurtaran filikası' olarak tasarlanır. ISM Code ile entegre edilen siber güvenlik gereklilikleri ise dijital sistemlerin (ECDIS, otomasyon, haberleşme) tehditlere karşı risk yönetimini emniyet yönetiminin parçası haline getirir. Bu yüzden bir gemi yönetimi için SOLAS uyumu statik değildir: MSC sirkülerlerinin ve değişikliklerin sürekli takip edilip uygulanmasını gerektirir.",
+      },
+    ],
     relatedSlugs: ["ism-code", "isps-code", "lsa-code", "fss-code", "stcw", "colreg"],
     resources: [
       { label: "IMO SOLAS sayfası", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea-(SOLAS),-1974.aspx" },
@@ -136,6 +203,58 @@ export const imoConventions: RegulationItem[] = [
       "ABD sularında ihlalde APPS (Act to Prevent Pollution from Ships) kapsamında hapis cezası",
       "Çevre kirliliği durumunda tazminat yükümlülüğü (CLC/FUND uygulaması)",
     ],
+    detailedSections: [
+      {
+        heading: "Sözleşmenin yapısı: tek çatı, altı ek",
+        body:
+          "MARPOL'ü anlamanın anahtarı, onu tek bir kural seti değil, her biri farklı bir kirletici türünü hedefleyen altı ekin toplamı olarak görmektir. Ek I petrolü, Ek II zararlı sıvı kimyasalları, Ek III ambalajlı tehlikeli maddeleri, Ek IV kanalizasyonu, Ek V çöpü ve Ek VI hava emisyonlarını düzenler. Bir gemi tipine ve taşıdığı yüke göre bu eklerin bir kısmı veya tamamı uygulanır. Sözleşmenin ortak mantığı 'deşarj standardı' ile 'ekipman/kayıt zorunluluğu'nu birleştirmektir: ne kadarın, nereye, hangi koşulda boşaltılabileceği sayısal limitlerle tanımlanır; bunu sağlayan donanım (OWS, arıtma ünitesi, scrubber) ve bunu kanıtlayan kayıt defterleri (ORB, Garbage Record Book) zorunlu tutulur.",
+      },
+      {
+        heading: "Ek I ve II: petrol ve kimyasal kirliliği",
+        body:
+          "Ek I, gemilerden petrol deşarjını sıkı koşullara bağlar: makine dairesi sintinesi yalnızca 15 ppm altında yağ içerecek şekilde yağ-su ayırıcıdan (OWS) geçirilerek basılabilir, kargo bölgesi deşarjları ise yük petrol kalıntısı izleme cihazı (ODME) ve slop tank düzeniyle kontrol edilir. Çift cidar gerekliliği, Exxon Valdez ve benzeri kazalardan sonra tankerlerin yapısal standardı haline gelmiştir. Ek II, dökme zararlı sıvıları (NLS) çevreye verdikleri zarara göre X, Y, Z ve OS kategorilerine ayırır; her kategori için tank yıkama, ön yıkama (prewash) ve kalıntı deşarj kuralları farklıdır. P&A Manual ve Cargo Record Book bu işlemlerin belgelendirilmesini sağlar.",
+      },
+      {
+        heading: "Ek IV ve V: kanalizasyon ve çöp",
+        body:
+          "Ek IV, gemi kaynaklı kanalizasyonun (sewage) ancak onaylı bir arıtma tesisinden geçirilerek veya kıyıdan belirli mesafelerde ve asgari hızlarda boşaltılabilmesini düzenler. Ek V ise çöp konusunda 'kural istisna değil, deşarj istisnadır' yaklaşımını benimser: plastik her koşulda denize atılamaz, diğer çöp türleri ancak belirli mesafe ve işleme koşullarında boşaltılabilir. Her gemi bir Garbage Management Plan hazırlar, çöpü kategorilere ayırır ve tüm işlemleri Garbage Record Book'a kaydeder. Özel Alanlar'da (Akdeniz, Baltık, Karadeniz, Kızıldeniz, Körfez) kurallar daha da sıkıdır ve neredeyse tüm deşarjlar yasaktır.",
+      },
+      {
+        heading: "Ek VI: hava kirliliği ve karbon boyutu",
+        body:
+          "Ek VI, MARPOL'ün son eklenen ve günümüzde en hızlı evrilen bölümüdür. Kükürt oksitleri (SOx) için küresel %0.50 ve Emisyon Kontrol Alanlarında (ECA) %0.10 yakıt kükürt limiti getirir; bu limit ya düşük kükürtlü yakıtla ya da egzoz gazı temizleme sistemiyle (scrubber) sağlanır. Azot oksitleri (NOx) için motor üretim yılına ve seyir bölgesine bağlı Tier I-II-III limitleri vardır. Ek VI ayrıca enerji verimliliği rejiminin de evidir: yeni gemiler için EEDI, mevcut gemiler için EEXI tasarım verimliliğini, CII ise yıllık operasyonel karbon yoğunluğunu ölçer; SEEMP bu performansın yönetim planıdır. Böylece Ek VI, klasik kirlilik kontrolünden sera gazı azaltımına uzanan bir köprü işlevi görür.",
+      },
+      {
+        heading: "Ek I – Petrol kirliliği (derinlemesine)",
+        body:
+          "Ek I, MARPOL'ün en eski ve en ayrıntılı ekidir; petrolün hem makine dairesinden hem kargo bölgesinden denize karışmasını ayrı rejimlerle önler. Makine dairesi tarafında sintine suyu, ancak yağ-su ayırıcıdan (OWS) geçirilip yağ içeriği 15 ppm'in altına indirildikten sonra basılabilir; 15 ppm alarmı ve otomatik durdurma bunu güvence altına alır. Kargo bölgesinde ise tankerler için yük petrol deşarjını izleyen ODME (Oil Discharge Monitoring Equipment), kirli yıkama sularını toplayan slop tank düzeni ve ham petrol tankerlerinde tankı kendi yüküyle yıkayarak kalıntıyı azaltan Crude Oil Washing (COW) sistemleri öngörülür. Ayrılmış balast tankları (SBT) balast suyunun petrolle temas etmesini engeller. 1990'lardan sonra zorunlu kılınan çift cidar (double hull) yapısı, çarpışma ve karaya oturmalarda yük tankının yırtılma riskini azaltır. Tüm bu operasyonlar Yağ Kayıt Defterine (ORB Part I – makine, Part II – kargo) işlenir.",
+      },
+      {
+        heading: "Ek II – Zararlı sıvı maddeler (derinlemesine)",
+        body:
+          "Ek II, dökme olarak taşınan zararlı sıvı maddeleri (NLS) çevreye verdikleri zarara göre dört kategoriye ayırır: X (en zararlı, deşarjı yasak), Y, Z ve OS (other substances – ihmal edilebilir zarar). Her kategori için tank yıkama, kalıntı deşarjı ve ön yıkama (prewash) kuralları farklıdır; bazı maddelerde tankın liman tesisine boşaltılması ve onaylı bir ön yıkamadan geçirilmesi zorunludur. Bu işlemlerin nasıl yapılacağı, geminin Procedures and Arrangements (P&A) Manual'inde tanımlanır ve her operasyon Cargo Record Book'a kaydedilir. Ek II, kimyasal tankerlerin emniyet tasarımını düzenleyen IBC Code ile iç içe çalışır: biri çevreyi (kirlilik), diğeri gemiyi ve mürettebatı (emniyet) korur; bu yüzden bir kimyasal tankerin uyumu her iki rejimi birden gerektirir.",
+      },
+      {
+        heading: "Ek III, IV ve V – Ambalajlı maddeler, kanalizasyon ve çöp",
+        body:
+          "Ek III, denizi kirletici (marine pollutant) olarak işaretlenen ambalajlı zararlı maddelerin taşınmasını düzenler ve uygulamada IMDG Code'a bağlanır: doğru ambalajlama, işaretleme, etiketleme ve belgelendirme gereklilikleri buradan gelir. Ek IV, gemi kaynaklı kanalizasyonun (sewage) yönetimini ele alır; deşarj ancak onaylı bir arıtma tesisinden geçirilerek veya kıyıdan belirli mesafelerde ve asgari hızlarda (parçalanmış/dezenfekte edilmiş için daha yakın, ham için daha uzak) yapılabilir. Ek V, çöp konusunda 'deşarj istisnadır' yaklaşımını benimser: plastik hiçbir koşulda denize atılamaz, diğer çöp türleri yalnızca belirli mesafe ve işleme koşullarında boşaltılabilir. Her gemi bir Çöp Yönetim Planı (Garbage Management Plan) hazırlar, çöpü kategorilere ayırır ve tüm işlemleri Çöp Kayıt Defterine (Garbage Record Book) işler.",
+      },
+      {
+        heading: "Ek VI – Hava kirliliği ve enerji verimliliği (derinlemesine)",
+        body:
+          "Ek VI, MARPOL'ün en hızlı evrilen bölümüdür ve birkaç ayrı rejimi barındırır. Kükürt oksitleri (SOx) için yakıt kükürt limiti küresel %0,50, Emisyon Kontrol Alanlarında (ECA/SECA) %0,10'dur; bu, düşük kükürtlü yakıtla veya egzoz gazı temizleme sistemiyle (scrubber) sağlanır. Azot oksitleri (NOx) için motorun üretim yılına ve seyir bölgesine bağlı Tier I-II-III limitleri vardır; Tier III yalnızca NECA bölgelerinde uygulanır. Bölüm ayrıca ozon tabakasını incelten maddelerin (ODS – halon, CFC) kontrolünü, ham petrol tankerleri için VOC yönetim planını ve onaylı gemi yakıcılarını (incinerator) düzenler. En önemlisi, enerji verimliliği rejiminin evidir: yeni gemiler için EEDI, mevcut gemiler için EEXI tasarım verimliliğini; CII yıllık operasyonel karbon yoğunluğunu ölçer; SEEMP ise bu performansın yönetim planıdır. Böylece Ek VI, klasik kirlilik kontrolünden sera gazı azaltımına uzanan bir köprü kurar.",
+      },
+      {
+        heading: "Özel Alanlar ve emisyon kontrol bölgeleri",
+        body:
+          "MARPOL, bazı denizlerin ekolojik hassasiyeti veya kapalı yapısı nedeniyle daha sıkı korunmasını sağlamak için 'Özel Alanlar' (Special Areas) ve emisyon kontrol bölgeleri tanımlar. Petrol (Ek I), zararlı sıvılar (Ek II) ve çöp (Ek V) için Akdeniz, Baltık, Karadeniz, Kızıldeniz ve Körfez gibi alanlarda deşarj kuralları neredeyse sıfır toleransa kadar sıkılaşır. Hava kirliliği tarafında SOx Emisyon Kontrol Alanları (SECA/ECA – Baltık, Kuzey Denizi, Kuzey Amerika, ABD Karayip; Akdeniz 2028) yakıt kükürdünü, NOx Emisyon Kontrol Alanları (NECA) ise yeni motorların azot oksit emisyonunu sınırlar. Bu bölgesel katmanlar, gemilerin rota planlamasını doğrudan etkiler: gemi bir ECA'ya girerken yakıt değişimi (changeover) yapar ve bunu Yağ Kayıt Defterine işler. Özel alan kuralları, küresel kuralların üzerine eklenen ve ihmal edildiğinde ağır cezalara yol açan bir uyum katmanıdır.",
+      },
+      {
+        heading: "Sörvey, sertifikalar ve denetim",
+        body:
+          "MARPOL uyumu bir dizi sertifikayla belgelenir ve sörveylerle doğrulanır: petrol için IOPP, zararlı sıvılar için NLS/ISPP, hava emisyonları için IAPP, kanalizasyon için ISPP (sewage) sertifikaları gemide bulundurulur ve beş yıllık döngüde yıllık/ara sörveylerle güncel tutulur. Uyumun en güçlü teminatı kayıt defterleridir: Yağ Kayıt Defteri, Cargo Record Book ve Garbage Record Book, denetimde ilk bakılan belgelerdir çünkü deşarjların nerede, ne zaman ve nasıl yapıldığını gösterir. Liman devleti kontrolünde MARPOL eksiklikleri sık görülür ve ciddi olanlar alıkoymaya yol açar. En ağır ihlaller ise donanım değil, kayıt sahteciliği ve bypass etrafında döner: yağ-su ayırıcıyı atlatan 'magic pipe' düzenekleri ve bunların ORB'de gizlenmesi, özellikle ABD'de APPS kapsamında milyonlarca dolar para ve hapis cezasıyla sonuçlanır; ihbarcı (whistleblower) programları bu ihlallerin ortaya çıkmasını teşvik eder.",
+      },
+    ],
     relatedSlugs: ["iopp-cert", "iapp-cert", "eexi", "cii", "imo-2020", "imo-dcs"],
     resources: [
       { label: "IMO MARPOL sayfası", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Prevention-of-Pollution-from-Ships-(MARPOL).aspx" },
@@ -200,6 +319,53 @@ export const imoConventions: RegulationItem[] = [
       "Kaza soruşturmalarında eğitim eksikliği tespitinde hukuki sorumluluk",
       "Safe Manning Document'e uymayan gemilerin sefere çıkışının engellenmesi",
     ],
+    detailedSections: [
+      {
+        heading: "Neden gerekli: insan faktörü ve standardizasyon",
+        body:
+          "STCW, denizdeki kazaların büyük çoğunluğunun insan kaynaklı olduğu gerçeğinden doğmuştur. Sözleşme öncesinde her ülke kendi yeterlilik standardını uyguluyordu; bir ülkede geçerli olan kaptan belgesi başka bir bayrakta yetersiz sayılabiliyordu. STCW, gemi adamlarının eğitim, belgelendirme ve vardiya standartlarını uluslararası asgari bir tabana oturtarak bu kaosu çözer. Yapısı iki katmanlıdır: zorunlu hükümleri içeren Convention metni ve teknik ayrıntıları veren STCW Code. Code da kendi içinde bağlayıcı Part A ile tavsiye niteliğindeki Part B'ye ayrılır. Bu sayede 'yeterlilik' soyut bir kavram olmaktan çıkıp, ölçülebilir bilgi-beceri-tutum tablolarına (competence tables) indirgenir.",
+      },
+      {
+        heading: "Sertifikasyon mimarisi ve eğitim basamakları",
+        body:
+          "Her gemi adamı, görevine uygun bir Yeterlilik Sertifikası (CoC) ve bunu tanıyan bayrak devletinin onay belgesini (endorsement) taşır. Temel taban herkes için Basic Safety Training'dir (yangın, can kurtarma, ilk yardım, kişisel güvenlik). Bunun üzerine göreve özgü eğitimler eklenir: köprüüstü zabitleri için ARPA, ECDIS ve Bridge Resource Management; makine zabitleri için makine dairesi simülatörü; tanker personeli için petrol/kimyasal/gaz endorsement'ı. Yolcu gemisi personeli kalabalık ve kriz yönetimi eğitimi alır. Yeterlilikler süreklilik gerektirir: tipik olarak beş yılda bir, ya yeterli deniz hizmeti ya da onaylı tazeleme kursuyla güncellenmesi gerekir.",
+      },
+      {
+        heading: "Vardiya, dinlenme ve yorgunluk yönetimi",
+        body:
+          "STCW'nin Chapter VIII'i sadece kimin vardiya tutacağını değil, hangi koşulda tutacağını da düzenler. Yorgunluğun bir emniyet riski olduğu kabulüyle asgari dinlenme saatleri tanımlanır: 24 saatte en az 10 saat ve 7 günde en az 77 saat dinlenme. Bu saatler kayıt altına alınır ve PSC denetimlerinde sıkça kontrol edilir. 'Fitness for duty' ilkesi, alkol/uyuşturucu sınırlarını ve göreve hazır olma yükümlülüğünü kapsar. Vardiya devir-teslim prosedürleri, gözcü tutma ve köprüüstü/makine dairesi vardiya düzeni de bu bölümde tanımlanır; bu kurallar COLREG'in gözcülük gerekliliğiyle doğrudan örtüşür.",
+      },
+      {
+        heading: "Gemi ve şirket için pratik yükümlülükler",
+        body:
+          "Sözleşme yalnızca bireyi değil, organizasyonu da bağlar. Gemi, bayrak devletinin verdiği Safe Manning Document'te belirtilen sayı ve nitelikte personelle donatılmalıdır; aksi halde sefere çıkamaz. Her yeni gemiye katılan personel için familiarization (tanıtım) eğitimi zorunludur, böylece kişi göreve başlamadan önce o geminin can kurtarma ve acil durum düzenini öğrenir. Şirket, sertifika geçerlilik tarihlerini, tanker endorsement sürelerini ve zorunlu kursların yenilenmesini takip eden bir sistem kurmak zorundadır. STCW bu yönüyle ISM Code ile iç içe geçer: yeterlilik yönetimi, emniyet yönetim sisteminin ayrılmaz bir parçasıdır.",
+      },
+      {
+        heading: "Yeterlilik tabloları, fonksiyonlar ve seviyeler",
+        body:
+          "STCW Code'un teknik kalbi, yeterliliği ölçülebilir kılan competence (yeterlilik) tablolarıdır. Her görev için 'yeterlilik – bilgi/anlayış/beceri – gösterme yöntemi – değerlendirme kriteri' sütunlarından oluşan tablolar tanımlanır; böylece 'iyi bir vardiya zabiti' soyut bir nitelik olmaktan çıkıp, sayılabilir ve sınanabilir yetkinliklere indirgenir. Sözleşme görevleri yedi fonksiyona ayırır (seyir, yük elleçleme, gemi operasyonu/can güvenliği, makine, elektrik, bakım-onarım, telsiz) ve her fonksiyonu üç sorumluluk seviyesinde ele alır: operasyonel (vardiya zabiti), yönetim (kaptan/başmühendis ve birinci zabitler) ve destek (yardımcı personel – ratings). Bir kişinin sertifikası, hangi fonksiyonda hangi seviyede yetkin olduğunu gösterir; bu yapı, dünya genelinde tutarlı bir yeterlilik dili kurar.",
+      },
+      {
+        heading: "Chapter II ve III – Güverte ve makine yeterlilikleri",
+        body:
+          "Chapter II, köprüüstü hiyerarşisinin yeterliliklerini basamak basamak tanımlar: vardiya zabiti (OOW) operasyonel seviyede seyir, yük ve gemi operasyonunu yürütebilmeli; birinci zabit ve kaptan ise yönetim seviyesinde sefer planlaması, stabilite, hasar kontrolü, hukuki yükümlülükler ve kriz yönetimini de kapsamalıdır. Chapter III makine bölümü için aynı mantığı uygular: vardiya mühendisi, ikinci mühendis ve başmühendis için makine operasyonu, elektrik/elektronik sistemler, bakım ve gemi sistemleri yönetimi yetkinlikleri tanımlanır. Ayrı bir kategori olan Elektro-Teknik Zabiti (ETO), modern gemilerin artan otomasyon ve elektronik karmaşıklığına yanıt olarak Manila değişiklikleriyle resmileştirilmiştir. Bu bölümler ayrıca her seviye için gereken asgari deniz hizmeti süresini ve onaylı eğitim/değerlendirme gerekliliklerini belirler.",
+      },
+      {
+        heading: "Chapter V ve VI – Özel ve zorunlu emniyet eğitimleri",
+        body:
+          "Chapter V, belirli gemi tipleri için ek eğitimleri zorunlu kılar: tanker personeli için temel ve ileri petrol/kimyasal/gaz tanker eğitimleri (basic ve advanced training), gaz yakıtlı gemiler için IGF Code eğitimi, kutup sularında seyir için Polar Code eğitimi ve yolcu gemisi personeli için kalabalık yönetimi (crowd management) ile kriz yönetimi eğitimleri. Chapter VI ise tüm gemi adamları için ortak emniyet ve güvenlik eğitimlerini düzenler: Temel Emniyet Eğitimi (BST – yangın söndürme, kişisel hayatta kalma teknikleri, ilk yardım, kişisel güvenlik ve sosyal sorumluluk), survival craft ve rescue boat kullanımı (PSCRB), ileri yangın söndürme, tıbbi ilk yardım/tıbbi bakım ve ISPS kapsamındaki güvenlik farkındalığı ile atanmış güvenlik görevleri eğitimleri. Bu eğitimler, sertifikanın görünmeyen ama hayati tabanını oluşturur.",
+      },
+      {
+        heading: "Chapter VIII – Vardiya, dinlenme ve göreve uygunluk",
+        body:
+          "Chapter VIII, yorgunluğu açık bir emniyet riski olarak ele alır ve hem köprüüstü hem makine vardiyalarının nasıl tutulacağını düzenler. Asgari dinlenme saatleri kesindir: 24 saatlik herhangi bir dilimde en az 10 saat ve 7 günlük herhangi bir dilimde en az 77 saat dinlenme; dinlenme en fazla iki parçaya bölünebilir ve bir parçası en az 6 saat olmalıdır. Bu saatler kayıt altına alınır ve liman devleti kontrolünde sıkça incelenir. 'Göreve uygunluk' (fitness for duty) ilkesi, alkol ve uyuşturucu politikasını da kapsar; STCW, vardiya görevlilerine standart bir azami kan alkol sınırı (0,05% BAC veya 0,25 mg/L soluk) getirir. Bölüm ayrıca vardiya devir-teslimini, gözcü tutmayı ve köprüüstü/makine dairesi vardiya düzenini tanımlar; bu kurallar COLREG'in gözcülük gereklilikleriyle ve geminin ISM emniyet yönetim sistemiyle doğrudan örtüşür.",
+      },
+      {
+        heading: "Sertifika güvenilirliği: değerlendirme, yenileme ve denetim",
+        body:
+          "STCW'nin gücü, sertifikaların gerçekten güvenilir olmasından gelir; bu yüzden sözleşme yalnızca eğitimi değil, eğitimin kalite kontrolünü de düzenler. Yeterlilikler onaylı simülatör (ECDIS, ARPA, makine dairesi), gemide yapılandırılmış staj kayıtları (training record book) ve standartlaştırılmış değerlendirmelerle kanıtlanır. Sertifikalar süresizdir değil: tipik olarak beş yılda bir, yeterli deniz hizmeti veya onaylı tazeleme kursuyla yenilenmeleri (revalidation) gerekir; özellikle tanker endorsement ve emniyet eğitimleri belirli periyotlarla tazelenir. Sistemin bütünlüğünü korumak için IMO, gerekliliklere etkin biçimde uyan ülkeleri bir 'beyaz liste'de tutar; bir gemi adamının sertifikası ayrıca onu istihdam eden bayrağın onay belgesiyle (endorsement) tanınmalıdır. Sahte sertifika kullanımı ağır biçimde kovuşturulur ve liman devleti denetiminde sertifika/dinlenme kaydı uyumsuzlukları geminin alıkonmasına yol açabilir.",
+      },
+    ],
     relatedSlugs: ["solas", "ism-code", "colreg"],
     resources: [
       { label: "IMO STCW sayfası", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Standards-of-Training,-Certification-and-Watchkeeping-for-Seafarers-(STCW).aspx" },
@@ -257,6 +423,38 @@ export const imoConventions: RegulationItem[] = [
       "Liman devleti PSC denetimlerinde MLC ihlallerinin raporlanması",
       "Denizcilerin terk edilmesi durumunda finansal güvence mekanizmasının devreye girmesi",
     ],
+    detailedSections: [
+      {
+        heading: "Denizciliğin dördüncü sütunu",
+        body:
+          "MLC 2006, SOLAS, MARPOL ve STCW'nin yanına denizcilik hukukunun 'dördüncü sütunu' olarak yerleşir; çünkü öncekiler gemiyi ve mesleki yeterliliği düzenlerken MLC doğrudan gemi adamının insani çalışma ve yaşam koşullarını korur. ILO bünyesinde 68 ayrı sözleşme ve tavsiyeyi tek bir konsolide metinde birleştirir. Yapısı beş Title etrafında kurulur ve her Title, bağlayıcı Standard'lar (Part A) ile rehber Guideline'lardan (Part B) oluşur. Sözleşmenin gücü, bir gemiyi hem bayrak devleti denetimine hem de liman devleti kontrolüne tabi kılan 'no more favourable treatment' ilkesinden gelir: MLC'yi onaylamamış bir bayrağın gemisi bile MLC üyesi limanda denetlenir.",
+      },
+      {
+        heading: "İstihdam, ücret ve çalışma süreleri",
+        body:
+          "Title 1 ve 2, istihdam ilişkisinin temelini düzenler. Her gemi adamı, görev ve ücret koşullarını net biçimde belirten yazılı bir Deniz İş Sözleşmesine (SEA) sahip olmalıdır; ücret düzenli (genellikle aylık) ödenmeli ve gemi adamına ayrıntılı hesap belgesi verilmelidir. Asgari yaş 16'dır ve gece çalışması ile tehlikeli işlerde daha sıkı sınırlar uygulanır. Çalışma/dinlenme saatleri ya azami çalışma (24 saatte 14, haftada 72 saat) ya da asgari dinlenme (24 saatte 10 saat) sınırıyla yönetilir. Bu sınırlar STCW'nin yorgunluk hükümleriyle uyumludur ve aynı kayıtlarla denetlenir.",
+      },
+      {
+        heading: "Yaşam koşulları, sağlık ve geri dönüş hakkı",
+        body:
+          "Title 3 ve 4, geminin bir işyeri olduğu kadar bir yaşam alanı da olduğu gerçeğini düzenler. Kabin boyutları, havalandırma, aydınlatma, yemek kalitesi ve rekreasyon imkânları asgari standartlara bağlanır. Sağlık koruması; gemide tıbbi bakım, ilaç dolabı, gerektiğinde kıyıdan tıbbi danışma ve ciddi durumlarda tahliye düzenlemelerini kapsar. MLC'nin en güçlü hükümlerinden biri repatriation (geri dönüş) hakkıdır: gemi adamı, sözleşme bittiğinde veya terk edilme gibi durumlarda masrafsız biçimde ülkesine döndürülmek zorundadır. 2014 değişiklikleriyle bu hak, armatörün iflası halinde devreye giren zorunlu finansal güvence ile desteklenmiştir.",
+      },
+      {
+        heading: "Uyum, denetim ve şikâyet mekanizması",
+        body:
+          "Title 5, sözleşmenin kâğıt üstünde kalmamasını sağlayan denetim mimarisini kurar. 500 GT ve üzeri uluslararası sefer gemileri, bayrak devletinin verdiği Maritime Labour Certificate ve şirketin uyum beyanını içeren DMLC (Bölüm I devlet gerekliliklerini, Bölüm II şirket önlemlerini gösterir) taşımak zorundadır. Gemi adamlarının hem gemide hem kıyıda işleyen, misilleme korumalı şikâyet prosedürlerine erişimi olmalıdır. Liman devleti kontrolünde MLC ihlalleri (ödenmemiş ücret, aşırı çalışma, kötü konaklama) eksiklik olarak kaydedilir ve ciddi durumlarda gemi alıkonabilir. Böylece MLC, gemi adamı haklarını soyut bir bildirge olmaktan çıkarıp denetlenebilir bir uyum sistemine dönüştürür.",
+      },
+      {
+        heading: "Beş Title'ın derinlemesine yapısı",
+        body:
+          "MLC 2006, beş Title etrafında örgütlenir ve her biri denizcinin yaşamının farklı bir boyutunu güvence altına alır. Title 1, gemide çalışmanın asgari koşullarını belirler: asgari yaş (16, gece ve tehlikeli işlerde daha sıkı sınırlarla), geçerli sağlık sertifikası, mesleki eğitim ve düzenlenmiş işe alma/yerleştirme hizmetleri. Title 2, istihdam koşullarını kapsar: yazılı Deniz İş Sözleşmesi (SEA), düzenli ücret ödemesi, çalışma/dinlenme saatleri, izin hakkı ve geri dönüş (repatriation). Title 3, geminin bir yaşam alanı olduğu gerçeğini düzenler: kabin, havalandırma, aydınlatma, yemek ve rekreasyon standartları. Title 4, sağlık korumasını, tıbbi bakımı, iş güvenliğini ve sosyal güvenliği kapsar. Title 5 ise uyum ve uygulamayı (sertifikasyon, denetim, şikâyet mekanizmaları) düzenler. Her Title, bağlayıcı Standard'lar (Part A) ile rehber Guideline'lardan (Part B) oluşur.",
+      },
+      {
+        heading: "Denetim, sertifikasyon ve şikâyet hakkı",
+        body:
+          "MLC'nin gücü, denetlenebilir olmasından gelir. 500 GT ve üzeri uluslararası sefer gemileri, bayrak devletinin verdiği Maritime Labour Certificate ve iki parçalı DMLC (Bölüm I devlet gerekliliklerini, Bölüm II şirket önlemlerini gösterir) taşımak zorundadır; bunlar beş yıl geçerlidir ve ara denetimden geçer. Sözleşmenin kapsamını güçlendiren ilke 'no more favourable treatment'tır: MLC'yi onaylamamış bir bayrağın gemisi bile MLC üyesi limanda denetlenir, böylece standart altı işletmeciler avantaj sağlayamaz. Denizciye doğrudan güç veren şikâyet mekanizmaları hem gemide hem kıyıda işler ve misillemeye karşı korunur; bir denizci, ödenmemiş ücret veya kötü koşulları liman devletine bildirerek bir denetimi tetikleyebilir. MLC, liman devleti kontrolünde en sık eksiklik bulunan alanlardan biridir ve ciddi ihlaller geminin alıkonmasına yol açar; 2014 değişiklikleriyle eklenen zorunlu finansal güvence, armatörün iflası veya denizcinin terk edilmesi durumunda devreye girer.",
+      },
+    ],
     relatedSlugs: ["mlc-cert", "dmlc", "psc"],
     resources: [
       { label: "ILO MLC 2006", href: "https://www.ilo.org/global/standards/maritime-labour-convention/lang--en/index.htm" },
@@ -312,6 +510,28 @@ export const imoConventions: RegulationItem[] = [
       "D-2 standardına uyumsuzluk durumunda bayrak devleti yaptırımları",
       "ABD sularında USCG BWMS ihlalinde NANPCA/NISA kapsamında ceza",
     ],
+    detailedSections: [
+      {
+        heading: "Sorun: balast suyuyla taşınan istilacı türler",
+        body:
+          "Gemiler dengelerini korumak için boş seyirde balast suyu alır, yük aldıklarında bu suyu basarlar. Ancak alınan suyla birlikte mikroskobik organizmalar, larvalar ve patojenler bir ekosistemden diğerine taşınır. Hedef bölgede doğal düşmanı olmayan bu türler hızla çoğalarak yerli yaşamı yok edebilir, balıkçılığı ve altyapıyı zarara uğratabilir. BWM Sözleşmesi, bu görünmez ama ciddi çevresel tehdidi yönetmek için kurulmuştur. Çözümün özü, balast suyunu deşarjdan önce ya değiştirmek ya da içindeki canlıları öldürecek/uzaklaştıracak şekilde arıtmaktır.",
+      },
+      {
+        heading: "D-1 ve D-2 standartları arasındaki geçiş",
+        body:
+          "Sözleşme iki kademeli bir standart tanımlar. D-1, açık denizde balast suyu değişimini öngörür: kıyıdan en az 200 mil açıkta ve 200 m derinlikte, balast hacminin en az %95'i değiştirilir. Bu yöntem geçici ve kısmi bir çözümdür çünkü değişim her zaman tam etkili değildir ve hava koşullarına bağlıdır. D-2 ise kalıcı çözümdür: gemiye kurulan bir Balast Suyu Arıtma Sistemi (BWMS), deşarj edilen suda metreküp başına izin verilen canlı organizma sayısını çok düşük limitlere indirir. Filo, IOPP yenileme sörveyi takvimine bağlı olarak kademeli biçimde D-1'den D-2'ye geçmiştir ve bu geçiş büyük ölçüde tamamlanmıştır.",
+      },
+      {
+        heading: "Arıtma teknolojisi ve operasyonel yükümlülükler",
+        body:
+          "BWMS'ler tipik olarak iki aşamalı çalışır: önce bir filtre büyük partikülleri ve organizmaları ayırır, ardından UV ışını veya elektroklorinasyon gibi bir dezenfeksiyon kademesi kalan canlıları etkisiz hale getirir. Sistemin IMO tip onayı taşıması, kurulumdan sonra commissioning testiyle doğrulanması ve yıllık sörveylerle izlenmesi gerekir. Mürettebat için bu, her balast operasyonunun Balast Suyu Kayıt Defterine işlenmesi, UV lambalarının ve filtrelerin zamanında değiştirilmesi, sensörlerin kalibre edilmesi ve sediment yönetimi anlamına gelir. Sistem arızalanırsa alternatif uyum yöntemleri ve raporlama prosedürleri devreye girer.",
+      },
+      {
+        heading: "ABD ayrımı ve uyum riski",
+        body:
+          "BWM uyumunda en sık yapılan hata, IMO onayını yeterli sanmaktır. ABD sularına giren gemiler için USCG, IMO'dan bağımsız ve genellikle daha katı bir tip onay rejimi uygular; bir BWMS hem IMO hem USCG onaylı değilse ABD'de uyumsuz sayılabilir. Bu nedenle ABD'ye uğrayan gemiler her iki onayı da kontrol etmek zorundadır. Genel olarak BWMS'in kurulu olmaması, çalışmaması veya kayıt defterinin eksik olması PSC denetimlerinde alıkoymaya kadar varan sonuçlar doğurabilir. BWM böylece teknik bir kurulum işi olmaktan çıkıp sürekli işletme, bakım ve belgelendirme disiplinine dönüşür.",
+      },
+    ],
     relatedSlugs: ["marpol", "iopp-cert"],
     resources: [
       { label: "IMO BWM Convention", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Control-and-Management-of-Ships'-Ballast-Water-and-Sediments-(BWM).aspx" },
@@ -363,6 +583,33 @@ export const imoConventions: RegulationItem[] = [
       "Sertifika geçersizliğinde geminin alıkonması",
       "Aşırı yükleme nedeniyle kazalarda cezai sorumluluk",
       "Hatch cover su geçirmezlik ihlalinde PSC eksikliği",
+    ],
+    detailedSections: [
+      {
+        heading: "Freeboard kavramı ve Plimsoll mirası",
+        body:
+          "Yük Hattı Sözleşmesinin tüm mantığı tek bir kavrama dayanır: freeboard, yani güverte kenarı ile su yüzeyi arasındaki asgari yükseklik. Bu mesafe geminin rezerv sintine hacmini ve dolayısıyla denizde batmadan kalma kabiliyetini belirler. 19. yüzyılda aşırı yüklenen gemilerin batması üzerine Samuel Plimsoll'un öncülük ettiği mücadele, gemi bordasına çizilen 'Plimsoll markası' ile sonuçlanmıştır. LLC bu fikri uluslararası bir standarda dönüştürür: her gemi için izin verilen azami yükleme, bordadaki yük hattı işaretleriyle görünür kılınır ve hiçbir koşulda bu çizginin altına yüklenemez.",
+      },
+      {
+        heading: "Mevsimsel ve bölgesel yük hatları",
+        body:
+          "Aynı gemi her denizde ve her mevsimde aynı miktarda yüklenemez, çünkü su yoğunluğu ve hava koşulları değişir. Sözleşme dünyayı zonlara ayırır ve borda işaretinde birden çok çizgi tanımlar: Tropical (T), Summer (S), Winter (W) ve özellikle sert koşulları olan Winter North Atlantic (WNA). Tatlı suda gemi daha derine batacağı için ayrıca Fresh water (F) ve Tropical Fresh (TF) çizgileri de bulunur; tatlı su düzeltmesi (FWA) limandan denize çıkışta draftın nasıl değişeceğini hesaplar. Kaptanın yükleme planı, geminin seyir boyunca gireceği zonlara göre en kısıtlayıcı çizgiye uyacak biçimde yapılır.",
+      },
+      {
+        heading: "Hesaplama, su geçirmezlik ve sörvey",
+        body:
+          "Freeboard, geminin boyu, blok katsayısı, derinliği ve üst yapıları dikkate alınarak tablo değerleri ve düzeltme faktörleriyle hesaplanır; Tip A (sıvı dökme yük) ve Tip B gemiler için farklı temel değerler kullanılır. Ancak hesaplanan freeboard ancak geminin su geçirmezliği korunduğu sürece anlamlıdır: ambar kapakları, contalar, havalandırma ve hava firar boruları, lumbar ağızları gibi açıklıkların su sızdırmazlığı düzenli denetlenmelidir. Geminin Uluslararası Yük Hattı Sertifikası bu uygunluğu belgeler ve periyodik sörveylerle yenilenir.",
+      },
+      {
+        heading: "Freeboard hesabının derinlemesine yöntemi",
+        body:
+          "Yük hattı, keyfi bir çizgi değil, ayrıntılı bir mühendislik hesabının sonucudur. Hesap, geminin tipine göre bir tablo (tabular) freeboard değeriyle başlar: Tip A gemiler (sıvı dökme yük taşıyan, küçük güverte açıklıklı tankerler) daha düşük freeboard'a izin verecek şekilde, Tip B gemiler (diğerleri) daha yüksek freeboard ile değerlendirilir. Bu temel değer bir dizi düzeltme faktörüyle ayarlanır: blok katsayısı (Cb) düzeltmesi, geminin derinliği (D) düzeltmesi, üst yapıların (superstructure) ve kasaraların kapalı uzunluğuna göre indirim, geminin kavisi (sheer) ve baş yüksekliği. Sonuçta belirlenen freeboard, geminin rezerv sintine hacmini ve dolayısıyla denizde batmadan kalma kabiliyetini temsil eder. Bu hesap, geminin Yük Hattı Sertifikasında belgelenir ve bordadaki işaretlerin konumunu belirler.",
+      },
+      {
+        heading: "Mevsimsel zonlar ve su geçirmezlik koşulu",
+        body:
+          "Aynı gemi her denizde aynı derinliğe yüklenemez; çünkü su yoğunluğu ve beklenen hava koşulları değişir. Sözleşme dünyayı yük hattı zonlarına ayırır ve bordadaki işaret bu zonlara karşılık gelen birden çok çizgi içerir: Tropical (T), Summer (S), Winter (W) ve özellikle sert koşulları olan Winter North Atlantic (WNA). Tatlı suda gemi daha derine batacağı için ayrıca Fresh (F) ve Tropical Fresh (TF) çizgileri bulunur; tatlı su düzeltmesi (Fresh Water Allowance), limandan denize çıkışta draftın nasıl değişeceğini hesaplar. Kaptan, yükleme planını geminin seyir boyunca gireceği en kısıtlayıcı zona uyacak şekilde yapar. Ancak hesaplanan freeboard, ancak geminin su geçirmezliği korunduğu sürece anlamlıdır: ambar kapakları, contalar, havalandırma ve hava firar boruları, lumbar ağızları gibi tüm açıklıkların sızdırmazlığı düzenli denetlenir; aksi halde rezerv sintine hacmi tehlikeye girer. Kereste taşıyan gemiler için ayrı timber load line koşulları uygulanır.",
+      },
     ],
     relatedSlugs: ["solas", "tonnage-cert"],
     resources: [
@@ -427,6 +674,58 @@ export const imoConventions: RegulationItem[] = [
       "Tehlike sinyalinin kötüye kullanımında cezai yaptırım",
       "Çatışma kazası soruşturmalarında kaptana cezai ve disiplin yaptırımı",
     ],
+    detailedSections: [
+      {
+        heading: "Denizin trafik kuralları olarak COLREG",
+        body:
+          "COLREG, denizdeki çatışmaları önlemek için tüm deniz araçlarının uymak zorunda olduğu evrensel 'trafik kurallarıdır'. Karayolundaki şerit ve trafik ışıklarının deniz karşılığı; seyir ışıkları, şekiller, ses sinyalleri ve manevra kurallarıdır. Sözleşmenin temel ilkesi, her gemicinin denizcilik teamülünü ve sağduyuyu kuralların önüne koyabilmesidir: Kural 2, kuralların hiçbir zaman bir çatışmaya yol açacak biçimde katı uygulanamayacağını, gerektiğinde kurallardan ayrılmanın bile çatışmayı önlemek için meşru olduğunu söyler. Bu yüzden COLREG ezberlenecek 41 madde olmaktan çok, durum değerlendirmesi yapma disiplinidir.",
+      },
+      {
+        heading: "Gözcülük, emniyetli hız ve çatışma riski",
+        body:
+          "Sözleşmenin kalbi, her koşulda uygulanan Kural 5-8'dir. Kural 5, gözle ve kulakla, ayrıca radar/AIS gibi tüm mevcut araçlarla sürekli ve uygun bir gözcülük tutmayı emreder. Kural 6, emniyetli hızı görüş, trafik yoğunluğu, manevra kabiliyeti ve hava gibi faktörlere bağlar; 'emniyetli hız' sabit bir sayı değil, o anki koşullarda durabilecek ve kaçınma yapabilecek hızdır. Kural 7, çatışma riskinin nasıl değerlendirileceğini (özellikle pusula kerterizinin sabit kalması ölçütünü), Kural 8 ise kaçınma manevrasının erken, belirgin ve yeterli olması gerektiğini düzenler.",
+      },
+      {
+        heading: "Gemiler arası ilişki ve sorumluluk sırası",
+        body:
+          "Birbirini gören gemiler için Kural 11-18, üç klasik karşılaşma durumunu tanımlar: aynı yönde yetişme (overtaking), karşı karşıya gelme (head-on) ve çapraz geçiş (crossing). Her durumda hangi geminin yol vereceği (give-way) ve hangisinin rotasını koruyacağı (stand-on) açıkça belirlenir. Kural 18 ise gemiler arasında bir hiyerarşi kurar: manevra kabiliyeti en kısıtlı olan (kumanda altında olmayan, manevra kabiliyeti sınırlı, balıkçı, yelkenli) en çok korunur; güçle yürüyen normal bir gemi çoğu duruma yol vermek zorundadır. Bu sıralama, çatışma anında 'kim kime göre öncelikli' sorusunu net yanıtlar.",
+      },
+      {
+        heading: "Kısıtlı görüş, ışıklar ve sinyaller",
+        body:
+          "Kural 19, sis veya yağmurda görüşün kısıtlandığı durumları ayrı ele alır: bu koşulda 'birbirini gören gemiler' kuralları geçmez, gemiler radara dayanır, hızı emniyetli düzeye indirir ve gerektiğinde durmaya hazır olur. Sözleşmenin ekleri teknik dili tamamlar: Ek I seyir ışıklarının renk, açı ve menzilini; Ek III ses sinyali cihazlarının özelliklerini; Ek IV ise tehlike işaretlerini tanımlar. Gece bir geminin tipini, yönünü ve durumunu yalnızca ışık düzeninden okumak; gündüz ise şekillerden ve düdük işaretlerinden niyetini anlamak, vardiya zabitinin temel becerisidir. Bu yüzden COLREG, STCW vardiya gereklilikleriyle doğrudan iç içedir.",
+      },
+      {
+        heading: "Part A – Kural 1-3: kapsam, sorumluluk ve tanımlar",
+        body:
+          "COLREG'in giriş bölümü, kuralların nasıl yorumlanacağını belirler. Kural 1 uygulama kapsamını çizer: açık denizler ve bunlara bağlı, deniz gemilerinin seyrettiği tüm sular. Kural 2 (sorumluluk) sözleşmenin ruhudur: hiçbir kural, gemiyi, kaptanı veya mürettebatı kuralları ihmal etmenin sonuçlarından muaf tutmaz; ayrıca özel koşullar (yakın tehlike, dar su, manevra kısıtı) gerektirdiğinde kurallardan ayrılmak bile bir çatışmayı önlemek için meşrudur. Bu, COLREG'i körü körüne ezberlenecek bir liste olmaktan çıkarıp durum değerlendirmesine dayalı bir denizcilik disiplinine dönüştürür. Kural 3 ise tüm sözleşmede kullanılan terimleri (güçle yürüyen gemi, yelkenli, manevra kabiliyeti sınırlı gemi, kumanda altında olmayan gemi, birbirini görme, kısıtlı görüş) tanımlar; bu tanımlar sonraki kuralların doğru uygulanmasının anahtarıdır.",
+      },
+      {
+        heading: "Kural 4-7: gözcülük, emniyetli hız ve çatışma riski",
+        body:
+          "Her koşulda geçerli olan bu kurallar, çatışmayı daha doğmadan tespit etmeyi hedefler. Kural 5 (gözcülük), görme ve işitmenin yanı sıra radar ve AIS dahil tüm uygun araçlarla sürekli ve tam bir gözcülük tutmayı emreder. Kural 6 (emniyetli hız), hızın görüş, trafik yoğunluğu, manevra kabiliyeti, gece koşulları, rüzgâr/deniz durumu ve radar kısıtları gibi faktörlere göre ayarlanmasını ister; 'emniyetli hız' sabit bir sayı değil, o anki koşulda durabilecek ve kaçınma yapabilecek hızdır. Kural 7 (çatışma riski), riski belirlemenin yöntemini verir: özellikle yaklaşan bir geminin pusula kerterizinin belirgin biçimde değişmemesi çatışma riskinin işaretidir; radar varsa sistematik gözlem ve plotting (CPA/TCPA değerlendirmesi) yapılmalı, eksik bilgiyle varsayımda bulunulmamalıdır.",
+      },
+      {
+        heading: "Kural 8-10: kaçınma manevrası, dar kanallar ve TSS",
+        body:
+          "Kural 8 (kaçınma eylemi), bir manevranın nasıl yapılacağını tanımlar: yeterince erken, belirgin (karşı gemiden çıplak gözle veya radarla net görülecek kadar büyük) ve tereddütsüz olmalı; bir dizi küçük rota/hız değişikliği yerine net bir değişiklik tercih edilmeli ve manevra etkili olana kadar sürdürülmelidir. Kural 9 (dar kanallar), gemilerin kanalın kendi sancak tarafına yakın seyretmesini ve büyük gemilerin geçişini engellememesini düzenler. Kural 10 (Trafik Ayırım Düzenleri – TSS), yoğun trafik bölgelerinde gemilerin doğru trafik şeridini uygun yönde kullanmasını, ayırım hattını mümkünse dik açıyla geçmesini ve ayırım bölgelerinden kaçınmasını şart koşar. TSS'lerin uluslararası düzeyde zorunlu kılınması, COLREG'in 1972'deki en önemli yeniliklerinden biridir.",
+      },
+      {
+        heading: "Kural 11-18: birbirini gören gemiler ve sorumluluk hiyerarşisi",
+        body:
+          "Bu kurallar, görüş alanındaki gemiler arasındaki üç klasik karşılaşmayı çözer. Yetişme (overtaking, Kural 13): arkadan yaklaşan gemi yol vermek zorundadır ve bir gemi yetişme durumundaysa sonradan çapraz duruma dönse bile bu yükümlülük sürer. Pruvadan pruvaya (head-on, Kural 14): karşılıklı gelen iki güçle yürüyen gemi, her ikisi de sancağa dönerek iskele bordalarından geçer. Çapraz geçiş (crossing, Kural 15): diğer gemiyi sancağında gören gemi yol verir. Kural 16 yol veren geminin (give-way) erken ve belirgin manevra yapmasını, Kural 17 yolu olan geminin (stand-on) başlangıçta rota ve hızını korumasını ama çatışma kaçınılmaz hale gelirse kendi manevrasını yapmasını düzenler. Kural 18, gemiler arası öncelik hiyerarşisini kurar: kumanda altında olmayan ve manevra kabiliyeti sınırlı gemiler en çok korunur; onları balıkçı gemileri ve yelkenliler izler; güçle yürüyen normal bir gemi çoğu duruma yol vermek zorundadır.",
+      },
+      {
+        heading: "Kural 19: kısıtlı görüşte seyir",
+        body:
+          "Kural 19, sis, yağmur veya kar nedeniyle görüşün kısıtlandığı durumları ayrı bir mantıkla ele alır; çünkü bu koşulda gemiler birbirini göremez ve 'birbirini gören gemiler' kuralları (give-way/stand-on) geçmez. Bu durumda her gemi emniyetli hıza iner, makineleri manevraya hazır tutar ve radarla sistematik gözlem yapar. Yalnızca radarla saptanan bir gemiye karşı manevra yapılırken iki davranıştan kaçınılmalıdır: kendinden önde (önden geçen hariç) bir gemiye iskeleye dönmek ve kendine kabin/borda hizasında veya kıçında bir gemiye yaklaşmak için rota değiştirmek. Görüş kısıtlıyken ayrıca uygun sis sinyalleri verilir. Kural 19, kazaların büyük kısmının kötü görüşte yaşandığı gerçeği nedeniyle pratikte en kritik kurallardandır ve STCW'nin radar/ARPA eğitim gereklilikleriyle doğrudan bağlantılıdır.",
+      },
+      {
+        heading: "Part C ve D – Işıklar, şekiller ve sesli sinyaller",
+        body:
+          "Sözleşmenin son bölümleri, gemilerin niyetini ve durumunu görsel/işitsel olarak 'okumayı' sağlar. Part C (Kural 20-31), seyir ışıklarını ve gündüz şekillerini düzenler: bir geminin tipi, boyutu, yönü ve özel durumu (demirde, kumanda altında değil, çekme yapıyor, balık avlıyor, manevra kabiliyeti sınırlı) yalnızca ışık düzeninden gece anlaşılabilir. Pruva feneri, kıç feneri, borda fenerleri ve direk fenerlerinin renkleri, görüş açıları ve menzilleri kesin tanımlanır. Part D (Kular 32-37), sesli ve ışıklı sinyalleri kapsar: manevra ve uyarı sinyalleri (bir kısa düdük – sancağa dönüyorum, iki kısa – iskeleye, beş kısa – niyetinizi anlamıyorum/şüphe), kısıtlı görüşte sis sinyalleri ve tehlike (distress) sinyalleri. Vardiya zabitinin gece bir ışık demetinden geminin durumunu, gündüz bir düdük dizisinden niyetini çözebilmesi, COLREG'in pratikteki temel becerisidir.",
+      },
+    ],
     relatedSlugs: ["solas", "stcw"],
     resources: [
       { label: "IMO COLREG", href: "https://www.imo.org/en/About/Conventions/Pages/COLREG.aspx" },
@@ -473,6 +772,33 @@ export const imoConventions: RegulationItem[] = [
       "Yapısal değişiklik sonrası tonaj güncellenmemesinde sertifika geçersizliği",
       "Yanlış tonaj beyanı ile liman harç kaçırma durumunda idari ceza",
     ],
+    detailedSections: [
+      {
+        heading: "Tonajın iki yüzü: GT ve NT",
+        body:
+          "ITC 69, geminin 'büyüklüğünü' parayla ve emniyetle ilişkili tek bir uluslararası dile çevirir. İki temel ölçü vardır: Brüt Tonaj (GT) geminin tüm kapalı hacmini temsil eder ve emniyet gereklilikleri, mürettebat sayısı, sertifika türleri gibi düzenleyici eşiklerin tabanını oluşturur. Net Tonaj (NT) ise yalnızca gelir getiren (yük/yolcu) hacmi temsil eder ve liman harçları, kanal geçiş ücretleri gibi ticari yüklerin hesabında kullanılır. Önemli olan, bu değerlerin hacim esaslı ve boyutsuz katsayılar olmasıdır; geçmişteki tutarsız ulusal sistemlerin aksine tüm dünyada aynı formülle hesaplanır.",
+      },
+      {
+        heading: "Neden tek bir standart gerekli oldu",
+        body:
+          "Sözleşme öncesinde her ülke tonajı farklı ölçüyordu; bu, aynı geminin farklı limanlarda farklı 'büyüklükte' sayılmasına ve haksız rekabete yol açıyordu. ITC 69, eski Moorsom sisteminin yarattığı bu karmaşayı tek bir matematiksel çerçeveyle sonlandırmıştır. GT logaritmik bir katsayıyla toplam hacme, NT ise yük hacmi, draft/derinlik oranı ve yolcu sayısı gibi parametrelere bağlanır. Böylece tonaj artık ölçen idareye göre değişen bir tahmin değil, doğrulanabilir bir hesap sonucudur ve geminin Uluslararası Tonaj Sertifikasıyla belgelenir.",
+      },
+      {
+        heading: "Pratik etkiler ve kanal istisnaları",
+        body:
+          "Tonaj, bir geminin yaşam döngüsü boyunca aldığı pek çok kararı sessizce yönetir: hangi sertifikalara tabi olacağı, kaç kişiyle donatılacağı, limanda ne kadar harç ödeyeceği ve sigorta priminin nasıl hesaplanacağı GT/NT üzerinden kurulur. Geminin yapısında kalıcı bir değişiklik yapılırsa (örneğin kapalı hacim eklenirse) tonajın yeniden hesaplanması ve sertifikanın güncellenmesi gerekir. Süveyş ve Panama kanalları ise kendi ticari amaçlarıyla ITC 69'dan ayrı tonaj sistemleri (SCNT, PC/UMS) uygular; bu nedenle bu kanalları geçecek gemiler ayrı kanal tonaj sertifikalarını da geçerli tutmak zorundadır.",
+      },
+      {
+        heading: "GT ve NT formüllerinin derinlemesine mantığı",
+        body:
+          "ITC 69, tonajı ölçen idareye göre değişen bir tahmin olmaktan çıkarıp doğrulanabilir bir matematiksel sonuca dönüştürür. Brüt tonaj (GT), geminin toplam kapalı hacmine (V, metreküp) logaritmik bir katsayı uygulanarak hesaplanır: GT = K₁ × V, burada K₁ = 0,2 + 0,02 × log₁₀V. Logaritmik katsayı, büyük gemilerde hacmin tonaja katkısının orantılı biçimde azalmasını sağlar. Net tonaj (NT) ise yalnızca gelir getiren (yük/yolcu) hacmi temsil eder ve daha karmaşık bir formülle hesaplanır: yük hacmi, draft/derinlik oranının karesi ve yolcu sayısı parametrelerini içerir; NT belirli alt sınırların altına inemez. Önemli olan, bu değerlerin hacim esaslı ve boyutsuz olmasıdır; geçmişteki tutarsız ulusal sistemlerin (eski Moorsom yöntemi) aksine tüm dünyada aynı formülle hesaplanır ve Uluslararası Tonaj Sertifikasıyla belgelenir.",
+      },
+      {
+        heading: "Eşik etkisi, süreklilik ve kanal tonajları",
+        body:
+          "Tonaj, bir geminin yaşam döngüsü boyunca aldığı pek çok kararı sessizce yönetir. GT, pek çok uluslararası düzenlemenin uygulanıp uygulanmayacağını belirleyen 'eşik' değeridir: 300 GT'de AIS, 400 GT'de MARPOL Ek VI ve MLC, 500 GT'de SOLAS kargo gereklilikleri gibi sınırlar GT üzerinden işler; ayrıca mürettebat sayısı, emniyet gereklilikleri ve liman harçları da tonaja bağlanır. Bu yüzden geminin yapısında kalıcı bir değişiklik (kapalı hacim ekleme/çıkarma) yapılırsa tonaj yeniden hesaplanmalı ve sertifika güncellenmelidir; aksi halde sertifika geçersiz olur. Süveyş ve Panama kanalları kendi ticari amaçlarıyla ITC 69'dan ayrı tonaj sistemleri (SCNT, PC/UMS) uygular; bu kanalları geçecek gemiler, geçiş ücretlerinin hesabında kullanılan ayrı kanal tonaj sertifikalarını da geçerli tutmak zorundadır. Yanlış tonaj beyanıyla harç kaçırma idari yaptırıma yol açar.",
+      },
+    ],
     relatedSlugs: ["tonnage-cert", "llc"],
     resources: [{ label: "ITC 69 bilgi sayfası", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Tonnage-Measurement-of-Ships.aspx" }],
   },
@@ -516,6 +842,33 @@ export const imoConventions: RegulationItem[] = [
     penalties: [
       "Kaptanın denizde tehlikedeki kişilere yardım etmemesi cezai suç oluşturur",
       "SAR koordinasyonuna katılmayı reddetme durumunda bayrak devleti soruşturması",
+    ],
+    detailedSections: [
+      {
+        heading: "Denizde kurtarma yükümlülüğünün kurumsallaşması",
+        body:
+          "Denizde tehlikedeki kişiye yardım etmek yüzyıllardır denizciliğin ahlaki bir borcudur; SAR Sözleşmesi bu borcu örgütlü, planlı ve uluslararası işbirliğine dayalı bir sisteme dönüştürür. Sözleşmenin amacı, dünyanın hangi noktasında bir tehlike olursa olsun, sorumlu bir kurtarma örgütünün hızla devreye girmesini garanti etmektir. Bunu sağlamak için okyanuslar Arama ve Kurtarma Bölgelerine (SRR) bölünür ve her bölgeden bir devlet sorumlu tutulur. Böylece kurtarma, gemilerin iyi niyetine bırakılan rastlantısal bir çaba olmaktan çıkıp, koordine edilen bir kamu hizmetine dönüşür.",
+      },
+      {
+        heading: "MRCC, OSC ve koordinasyon zinciri",
+        body:
+          "Sistemin merkezinde, her SRR için kurulan Deniz Kurtarma Koordinasyon Merkezleri (MRCC) bulunur. Bir tehlike çağrısı alındığında MRCC durumu üç aşamada değerlendirir: belirsizlik (uncertainty), alarm (alert) ve tehlike (distress). Bölgedeki gemiler ve hava araçları seferber edilir, olay yerinde bir On-Scene Coordinator (OSC) atanır ve arama, standart arama şekilleriyle (sektör, genişleyen kare, paralel tarama) sistemli biçimde yürütülür. MRCC'ler arası uluslararası işbirliği protokolleri, bir bölgeden diğerine geçişte koordinasyonun kopmamasını sağlar.",
+      },
+      {
+        heading: "Gemiye düşen görevler ve IAMSAR ile bağ",
+        body:
+          "SAR Sözleşmesi devlet yükümlülüklerini düzenlese de pratikte ilk müdahaleyi çoğu zaman olay yerine en yakın ticari gemi yapar. Bu yüzden kaptanın tehlikedeki kişilere yardım yükümlülüğü SOLAS V/33 ile pekiştirilir. Gemiler için bu, geçilen SRR'lerin MRCC iletişim bilgilerini hazır tutmak, GMDSS cihazlarının alarm fonksiyonlarını test etmek, EPIRB ve SART'ın çalışırlığını doğrulamak ve adam denize (MOB) manevralarını tatbik etmek anlamına gelir. Operasyonel ayrıntılar, denizcilik ve havacılık kurtarmasını birleştiren IAMSAR Manual'de tanımlanır; SAR Sözleşmesi çerçeveyi, IAMSAR ise uygulama el kitabını sağlar.",
+      },
+      {
+        heading: "Tehlike aşamaları ve arama planlaması (derinlemesine)",
+        body:
+          "SAR Sözleşmesi, bir durumun ne zaman ve nasıl müdahale gerektirdiğini üç tehlike aşamasıyla tanımlar. Belirsizlik aşaması (uncertainty/INCERFA), bir gemiden veya kişiden beklenen haberin alınamaması gibi şüphe durumudur. Alarm aşaması (alert/ALERFA), belirsizliğin sürmesi ve endişenin artmasıdır; bu aşamada arama hazırlıkları başlatılır. Tehlike aşaması (distress/DETRESFA), bir gemi veya kişinin ciddi ve yakın tehlike altında olduğu, derhal yardım gerektiren durumdur. MRCC her aşamada artan yoğunlukta eylem alır: bilgi toplar, bölgedeki vasıtaları uyarır ve gerektiğinde tam bir arama-kurtarma operasyonu başlatır. Arama, kazazedenin akıntı ve rüzgârla sürüklendiği güncel olası konum (datum) üzerinden, standart arama şekilleriyle (genişleyen kare, sektör, paralel tarama) sistemli biçimde planlanır.",
+      },
+      {
+        heading: "Devletlerarası işbirliği ve güvenli yere teslim",
+        body:
+          "SAR'ın etkinliği, sınırların ötesinde işbirliğine dayanır. Sözleşme, komşu SRR'lerden sorumlu devletlerin kurtarma koordinasyon merkezleri (MRCC) arasında bilgi paylaşımı, karşılıklı yardım ve bir devletin SAR vasıtalarının diğerinin sularına girmesine izin verme protokolleri kurar; çünkü bir tehlike, bir bölgenin sınırında veya birden çok bölgeyi kapsayacak biçimde gerçekleşebilir. Sözleşmenin zamanla güçlenen bir boyutu, denizde kurtarılan kişilerin (özellikle toplu göç ve sığınmacı kurtarma olaylarında) güvenli bir yere teslim edilmesi yükümlülüğüdür; kaptanın yardım yükümlülüğü ile kıyı devletlerinin kurtarılanları kabul sorumluluğu arasındaki koordinasyon bu kapsamda düzenlenir. Operasyonel ayrıntılar, denizcilik ve havacılık kurtarmasını birleştiren IAMSAR Manual'de tanımlanır; SAR Sözleşmesi çerçeveyi, IAMSAR ise uygulama el kitabını sağlar.",
+      },
     ],
     relatedSlugs: ["solas", "iamsar"],
     resources: [{ label: "SAR Convention", href: "https://www.imo.org/en/About/Conventions/Pages/International-Convention-on-Maritime-Search-and-Rescue-(SAR).aspx" }],
@@ -567,6 +920,33 @@ export const imoConventions: RegulationItem[] = [
       "Maritime Single Window uyumsuzluğunda ceza mekanizması (liman devletine göre değişir)",
       "Kaçak yolcu prosedürü ihlallerinde sorumluluk",
     ],
+    detailedSections: [
+      {
+        heading: "Bürokrasiyi azaltarak ticareti hızlandırmak",
+        body:
+          "FAL Sözleşmesi, emniyet ya da çevre değil; verimlilik odaklı tek IMO sözleşmesidir. Amacı, bir geminin limana giriş ve çıkışında istenen belge ve formaliteleri en aza indirmek, standartlaştırmak ve mümkün olduğunca elektronik hale getirmektir. Gereksiz evrak ve tekrar eden bildirimler hem gemiyi limanda bekletir hem de ticaret maliyetini artırır. FAL, kamu otoritelerinin (gümrük, sınır, sağlık, liman) gemiden isteyebileceği bilgileri ortak bir forma kavuşturarak bu sürtünmeyi azaltır ve uluslararası deniz ticaretini akıcı kılar.",
+      },
+      {
+        heading: "Standart FAL formları",
+        body:
+          "Sözleşmenin pratik omurgası, dünya çapında tanınan standart beyan formlarıdır: Genel Beyanname (FAL 1), Yük Beyanı (FAL 2), Kumanya Beyanı (FAL 3), Mürettebat Eşyası Beyanı (FAL 4), Mürettebat Listesi (FAL 5), Yolcu Listesi (FAL 6) ve Tehlikeli Yük Manifestosu (FAL 7). Bu standartlaştırma sayesinde aynı bilgi her limanda farklı formatlarda yeniden hazırlanmak zorunda kalmaz; acente ve gemi yönetimi tek bir veri setini farklı otoritelere sunabilir. Sözleşme ayrıca kaçak yolcu (stowaway) tespiti, bakımı ve geri gönderilmesine ilişkin insani prosedürleri de kapsar.",
+      },
+      {
+        heading: "Maritime Single Window ve dijitalleşme",
+        body:
+          "FAL'ın son yıllardaki en önemli atılımı, Maritime Single Window (MSW) zorunluluğudur: gemiyle ilgili tüm bildirimlerin tek bir elektronik giriş noktasından, bir kez yapılarak ilgili tüm kurumlarla paylaşılması. Bu, kâğıt formların ve aynı bilginin farklı dairelere defalarca verilmesinin sonunu getirir. En güncel revizyonlar dijital sertifika değişimini ve süreçlerde otomasyonu da kapsamaktadır. Gemi yönetimi açısından FAL uyumu; ön varış bildirimlerini zamanında göndermek, MSW sistemlerine entegre olmak ve mürettebata kaçak yolcu prosedürlerini öğretmek anlamına gelir.",
+      },
+      {
+        heading: "Varış, kalış ve ayrılış prosedürleri (derinlemesine)",
+        body:
+          "FAL Sözleşmesi, bir geminin limanla etkileşimindeki tüm idari süreci standartlaştırır. Varıştan önce, gemi ön bildirim (pre-arrival notification) ile yük, mürettebat, tehlikeli madde ve sağlık durumu bilgilerini iletir; bu, liman ve sınır otoritelerinin önceden hazırlanmasını sağlar. Limanda kalış sırasında gümrük, göç, sağlık ve liman idarelerinin isteyebileceği bilgiler, sözleşmenin azami olarak izin verdiği belge setiyle sınırlandırılır; sözleşme, kamu otoritelerinin gereksiz veya tekrarlayan belge istemesini engellemeyi amaçlar. Ayrılışta da benzer biçimde formaliteler asgariye indirilir. Bu standartlaşmanın temel aracı, dünya çapında tanınan FAL formlarıdır (Genel Beyanname, Yük, Kumanya, Mürettebat Eşyası, Mürettebat ve Yolcu listeleri, Tehlikeli Yük Manifestosu); aynı veri her limanda yeniden farklı formatta hazırlanmak zorunda kalmaz.",
+      },
+      {
+        heading: "Dijitalleşme, tek pencere ve kaçak yolcu",
+        body:
+          "FAL'ın çağdaş atılımı, kâğıt formalitelerini elektronik veri değişimine taşımaktır. Maritime Single Window (MSW), gemiyle ilgili tüm bildirimlerin tek bir elektronik giriş noktasından, bir kez yapılarak ilgili tüm kurumlarla paylaşılmasını sağlar; bu, aynı bilginin farklı dairelere defalarca verilmesinin sonunu getirir ve gemiyi limanda bekleten bürokrasiyi azaltır. En güncel revizyonlar dijital sertifika değişimini ve süreçlerde otomasyonu da kapsar. Sözleşme ayrıca insani bir boyut taşır: kaçak yolcu (stowaway) konusunda, kaçak yolcunun tespiti, gemide insani koşullarda barındırılması, bayrak/liman/uğranacak liman devletleri arasında sorumluluğun paylaşılması ve geri gönderilmesine ilişkin standart prosedürler tanımlanır. Böylece FAL, ticareti hızlandırırken hem verimlilik hem insani standartları bir arada gözetir.",
+      },
+    ],
     relatedSlugs: ["isps-code"],
     resources: [{ label: "FAL Convention", href: "https://www.imo.org/en/About/Conventions/Pages/Convention-on-Facilitation-of-International-Maritime-Traffic-(FAL).aspx" }],
   },
@@ -610,6 +990,33 @@ export const imoConventions: RegulationItem[] = [
       "SUA kapsamındaki suçlar uluslararası düzeyde ağır cezai yaptırım gerektirir",
       "Korsanlık suçu evrensel yargı yetkisine tabidir (UNCLOS Madde 105)",
       "Bayrak devletinin soruşturma yükümlülüğü",
+    ],
+    detailedSections: [
+      {
+        heading: "Achille Lauro'dan doğan hukuki çerçeve",
+        body:
+          "SUA Sözleşmesi, 1985'te Achille Lauro yolcu gemisinin silahlı kişilerce ele geçirilmesi ve bir yolcunun öldürülmesinin ardından, denizde terörizm ve yasadışı eylemlere karşı uluslararası hukukun yetersiz kalması üzerine kurulmuştur. Korsanlığın klasik tanımı (özel çıkar amacıyla, açık denizde, bir gemiden diğerine) pek çok modern saldırıyı kapsamadığı için bir boşluk vardı. SUA bu boşluğu doldurur: gemiye, mürettebata veya yolculara yönelik şiddet, gemiyi ele geçirme ve seyir güvenliğini tehlikeye atma gibi eylemleri suç olarak tanımlar ve devletleri bu suçları kovuşturmaya zorlar.",
+      },
+      {
+        heading: "Suç tanımları, yargı yetkisi ve iade",
+        body:
+          "Sözleşmenin özü, 'ya yargıla ya iade et' (aut dedere aut judicare) ilkesidir. SUA, hangi eylemlerin suç sayıldığını ayrıntılı tanımlar ve taraf devletlere bayrak, ülke veya vatandaşlık bağına dayalı yargı yetkisi verir. 2005 Protokolü kapsamı genişletmiştir: kitle imha silahlarının deniz yoluyla taşınması, gemiyi bir silah olarak kullanma ve tehlikeli madde yayma da suç kapsamına alınmış; ayrıca devletlerin bayrak devleti izniyle şüpheli gemileri açık denizde durdurup arayabilmesini sağlayan boarding prosedürleri (Madde 8bis) eklenmiştir.",
+      },
+      {
+        heading: "Korsanlıkla mücadelede pratik uygulama",
+        body:
+          "SUA hukuki çatıyı kurarken, denizdeki günlük korunma BMP (Best Management Practices) gibi operasyonel kılavuzlarla sağlanır. Aden Körfezi, Batı Afrika ve Güneydoğu Asya gibi yüksek riskli bölgelerde gemiler hız ve rota önlemleri alır, dikenli tel ve su topu gibi fiziksel engeller kurar, mürettebatın sığınabileceği bir citadel (güvenli oda) hazırlar ve saldırı durumunda kıyı ve bayrak devletini derhal uyarır. SUA, bu önlemlerin işe yaramadığı ve bir saldırı gerçekleştiği durumda saldırganların kovuşturulmasını ve cezasız kalmamasını güvence altına alan hukuki üst yapıdır; ISPS Code ile birlikte deniz güvenliğinin iki tamamlayıcı ayağını oluşturur.",
+      },
+      {
+        heading: "2005 Protokolü ve boarding yetkileri (derinlemesine)",
+        body:
+          "SUA'nın 2005 Protokolü, sözleşmeyi 11 Eylül sonrası tehdit ortamına uyarlayarak kapsamını önemli ölçüde genişletmiştir. Yeni suçlar arasında bir gemiyi kitle imha silahı (nükleer, kimyasal, biyolojik) veya bunların yapımına yarayan malzemeleri taşımak için kullanmak, gemiyi bir silah olarak (örneğin bir tesise çarptırmak için) kullanmak ve gemiden tehlikeli madde yayarak ölüm/ciddi yaralanma tehdidi oluşturmak yer alır. Protokolün en pratik yeniliği, Madde 8bis ile getirilen boarding (gemiye çıkma) prosedürleridir: bir devlet, başka bir devletin bayrağını taşıyan ve SUA suçuna karıştığından şüphelenilen bir gemiyi açık denizde durdurup arayabilmek için bayrak devletinden izin isteyebilir; bayrak devleti bu talebe nasıl ve ne sürede yanıt vereceğini önceden belirleyebilir. Bu mekanizma, açık denizde devlet egemenliğini ihlal etmeden yasadışı taşımacılığa müdahale etmenin hukuki yolunu açar.",
+      },
+      {
+        heading: "Yargı yetkisi, iade ve korsanlıkla ilişki",
+        body:
+          "SUA'nın temel ilkesi 'ya yargıla ya iade et' (aut dedere aut judicare) kuralıdır: taraf devletler, ülkesinde bulunan bir SUA suçlusunu ya kendi mahkemelerinde yargılamak ya da yargılayacak başka bir devlete iade etmek zorundadır; böylece bu suçların cezasız kalmasının önüne geçilir. Sözleşme; bayrak, ülke ve vatandaşlık bağına dayalı yargı yetkisi kuralları ile devletlerarası karşılıklı hukuki yardım mekanizmalarını tanımlar. SUA, korsanlıkla mücadelede önemli bir tamamlayıcıdır: UNCLOS'taki klasik korsanlık tanımı (özel çıkar amacıyla, açık denizde, bir gemiden diğerine) pek çok modern saldırıyı (karasularındaki olaylar, siyasi saldırılar, tek gemi içindeki eylemler) kapsamaz; SUA bu boşluğu doldurarak gemiye yönelik şiddeti suç sayar. Denizdeki günlük korunma ise BMP gibi operasyonel kılavuzlarla sağlanır; SUA, bu önlemlerin yetersiz kaldığı ve bir saldırı gerçekleştiği durumda saldırganların kovuşturulmasını güvence altına alan hukuki üst yapıdır.",
+      },
     ],
     relatedSlugs: ["isps-code", "solas"],
     resources: [{ label: "SUA Convention", href: "https://www.imo.org/en/About/Conventions/Pages/SUA-Treaties.aspx" }],

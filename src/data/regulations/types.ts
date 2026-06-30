@@ -17,6 +17,11 @@ export type RegulationKeyArticle = {
   summary: string;
 };
 
+export type RegulationDetailedSection = {
+  heading: string;
+  body: string;
+};
+
 export type RegulationItem = {
   slug: string;
   label: string;
@@ -32,4 +37,6 @@ export type RegulationItem = {
   keyArticles?: RegulationKeyArticle[];
   penalties?: string[];
   relatedSlugs?: string[];
+  // Geniş özetli konu anlatımı – bölümlerin içeriklerini akıcı biçimde açıklar
+  detailedSections?: RegulationDetailedSection[];
 };

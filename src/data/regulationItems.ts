@@ -1,5 +1,5 @@
 // Re-export types and all regulation items from category-based files
-export type { RegulationCategory, RegulationItem, RegulationAmendment, RegulationKeyArticle } from "./regulations/types";
+export type { RegulationCategory, RegulationItem, RegulationAmendment, RegulationKeyArticle, RegulationDetailedSection } from "./regulations/types";
 export type { RegulationCategory as RegulationCategoryType } from "./regulations/types";
 
 import { imoConventions } from "./regulations/imoConventions";

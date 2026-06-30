@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import { ExternalLink, ShieldCheck, Sparkles, Clock, BookOpen, AlertTriangle, GitBranch, Scale } from "lucide-react";
+import { ExternalLink, ShieldCheck, Sparkles, Clock, BookOpen, AlertTriangle, GitBranch, Scale, GraduationCap } from "lucide-react";
 import { regulationItemMap } from "@/data/regulationItems";
-import type { RegulationAmendment, RegulationKeyArticle } from "@/data/regulationItems";
+import type { RegulationAmendment, RegulationKeyArticle, RegulationDetailedSection } from "@/data/regulationItems";
 
 interface ListProps {
   title: string;
@@ -23,6 +23,28 @@ const DetailList = ({ title, items, icon }: ListProps) => (
         </li>
       ))}
     </ul>
+  </div>
+);
+
+const DetailedSections = ({ sections }: { sections: RegulationDetailedSection[] }) => (
+  <div className="space-y-4 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/[0.07] via-card/70 to-transparent p-4 shadow-sm sm:p-6">
+    <div className="flex items-center gap-2 text-base font-semibold text-foreground">
+      <GraduationCap className="h-5 w-5 text-primary" />
+      <span>Detaylı Konu Anlatımı</span>
+    </div>
+    <div className="space-y-4">
+      {sections.map((section, i) => (
+        <div key={i} className="rounded-xl border border-border/40 bg-background/50 p-4">
+          <h3 className="mb-2 flex items-center gap-2 text-sm font-bold text-primary sm:text-base">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-bold text-primary">
+              {i + 1}
+            </span>
+            {section.heading}
+          </h3>
+          <p className="whitespace-pre-line text-xs leading-relaxed text-muted-foreground sm:text-sm">{section.body}</p>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
@@ -133,6 +155,11 @@ export default function RegulationDetailPage() {
             </div>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">{regulation.history}</p>
           </div>
+        )}
+
+        {/* Detailed lesson-style explanation */}
+        {regulation.detailedSections && regulation.detailedSections.length > 0 && (
+          <DetailedSections sections={regulation.detailedSections} />
         )}
 
         {/* Applicability */}
