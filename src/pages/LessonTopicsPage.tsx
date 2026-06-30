@@ -389,6 +389,11 @@ const topicsData: Record<string, TopicContent> = {
           { title: "Fonetik Alfabe ve Telsiz Konuşma Disiplini", hasContent: true },
           { title: "Telsiz Nöbeti ve Radyo Log Defteri", hasContent: true },
           { title: "Inmarsat ve Uydu Haberleşme Sistemleri", hasContent: true },
+          { title: "MF/HF Telsiz ve Dalga Yayılımı", hasContent: true },
+          { title: "AIS — Otomatik Tanımlama Sistemi", hasContent: true },
+          { title: "VTS ve Gemi Raporlama Sistemleri", hasContent: true },
+          { title: "Gemi İçi Haberleşme Sistemleri", hasContent: true },
+          { title: "Arama-Kurtarma Haberleşmesi ve Olay Yeri Koordinasyonu", hasContent: true },
           { title: "Görsel İşaretleşme: Bayraklar ve Mors Lambası", hasContent: true },
           { title: "Telsiz Mevzuatı ve Operatör Lisansları", hasContent: true }
         ]
