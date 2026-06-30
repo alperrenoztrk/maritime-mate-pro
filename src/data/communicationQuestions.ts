@@ -581,5 +581,200 @@ export const communicationQuestions: QuizQuestion[] = [
     correctAnswer: 1,
     explanation: "GMDSS, bir yöntem arızalansa bile alarm verilebilmesi için bağımsız ve yedekli haberleşme yolları öngörür.",
     category: "GMDSS Genel"
+  },
+  {
+    id: 53,
+    question: "Cospas-Sarsat'ın MEOSAR katmanı nasıl çalışır?",
+    options: [
+      "Yalnızca jeostasyoner tek bir uyduyla",
+      "Yalnızca kutupsal LEO uydularıyla, Doppler ile",
+      "GPS/Galileo/GLONASS navigasyon uydularına yerleştirilen SAR yükleriyle",
+      "VHF kıyı istasyonlarıyla"
+    ],
+    correctAnswer: 2,
+    explanation: "MEOSAR (Medium Earth Orbit), navigasyon uydularındaki SAR yükleriyle çalışır; geniş ve sürekli kapsamayla hızlı, hassas konumlandırma sağlar.",
+    category: "Cospas-Sarsat/MEOSAR"
+  },
+  {
+    id: 54,
+    question: "Bir 406 MHz EPIRB sinyalinin tehlike merkezine ulaşma zinciri hangisidir?",
+    options: [
+      "Verici → Uydu → LUT → MCC → MRCC",
+      "Verici → MRCC → Uydu → Liman",
+      "Verici → VTS → AIS → Radar",
+      "Verici → Kıyı VHF → Acente"
+    ],
+    correctAnswer: 0,
+    explanation: "Sinyal uydularca alınıp LUT'a (Local User Terminal) iletilir; LUT konumu hesaplar, MCC kayıtlı kimliğe göre alarmı sorumlu MRCC'ye yönlendirir.",
+    category: "Cospas-Sarsat/MEOSAR"
+  },
+  {
+    id: 55,
+    question: "Cospas-Sarsat GEOSAR katmanının temel sınırlaması nedir?",
+    options: [
+      "Hiçbir şekilde alarm alamaz",
+      "Anında alarm verir ama vericide GNSS yoksa tek başına konum üretemez",
+      "Yalnızca kutuplarda çalışır",
+      "Sinyali günlerce gecikmeyle iletir"
+    ],
+    correctAnswer: 1,
+    explanation: "GEOSAR jeostasyoner uydularla anında alarm sağlar; ancak vericide GNSS yoksa tek başına konum üretemez. LEOSAR ise Doppler kaymasıyla konumlar.",
+    category: "Cospas-Sarsat/MEOSAR"
+  },
+  {
+    id: 56,
+    question: "SSAS (Ship Security Alert System) hangi düzenleme kapsamında zorunludur?",
+    options: [
+      "MARPOL Ek VI",
+      "COLREG Kural 19",
+      "STCW Bölüm A-VIII",
+      "SOLAS Bölüm XI-2 / ISPS Kodu"
+    ],
+    correctAnswer: 3,
+    explanation: "SSAS, 11 Eylül sonrası getirilen SOLAS Bölüm XI-2 ve ISPS Kodu kapsamında çoğu uluslararası sefer yapan gemi için zorunludur.",
+    category: "SSAS Güvenlik Alarmı"
+  },
+  {
+    id: 57,
+    question: "SSAS tetiklendiğinde gemide ne olur?",
+    options: [
+      "Tüm gemide siren ve ışıklı alarm çalışır",
+      "Gemide sesli/görsel uyarı üretmeden sessizce bir uyarı mesajı yayınlanır",
+      "Genel emniyet alarmı (7 kısa + 1 uzun) verilir",
+      "VHF Ch.16'da açık MAYDAY yayınlanır"
+    ],
+    correctAnswer: 1,
+    explanation: "SSAS gizli çalışır: en az iki gizli tetikleme noktasıyla etkinleşir ve gemide hiçbir sesli/görsel işaret üretmeden mesaj gönderir; saldırganları uyarmaz.",
+    category: "SSAS Güvenlik Alarmı"
+  },
+  {
+    id: 58,
+    question: "SSAS alarmı kime iletilir?",
+    options: [
+      "Çevredeki tüm gemilere açık olarak",
+      "En yakın MRCC'ye GMDSS tehlike alarmı gibi",
+      "Tüm denize değil; önceden tanımlı kara muhataplarına (CSO ve/veya idare)",
+      "Yalnızca saldırganlara"
+    ],
+    correctAnswer: 2,
+    explanation: "GMDSS'in aksine SSAS açık yayın yapmaz; alarm yalnızca bayrak devletinin belirlediği yetkililere (Şirket Güvenlik Sorumlusu/CSO ve/veya idare) gider.",
+    category: "SSAS Güvenlik Alarmı"
+  },
+  {
+    id: 59,
+    question: "LRIT (Long-Range Identification and Tracking) sisteminin temel amacı nedir?",
+    options: [
+      "Emniyet, güvenlik ve çevre için devletlerin gemileri uzaktan izlemesi",
+      "Gemiler arası anlık çatışmadan kaçınma",
+      "Liman içi manevra koordinasyonu",
+      "Yük miktarının hesaplanması"
+    ],
+    correctAnswer: 0,
+    explanation: "LRIT, SOLAS Bölüm V kapsamında devletlerin kendi bayraklı/kıyısına yaklaşan gemileri emniyet, güvenlik ve çevre amacıyla izlemesi içindir; anlık seyir aracı değildir.",
+    category: "LRIT İzleme"
+  },
+  {
+    id: 60,
+    question: "AIS ile LRIT arasındaki temel fark nedir?",
+    options: [
+      "İkisi de VHF üzerinden açık yayın yapar",
+      "AIS yerel ve açık (VHF) iken LRIT küresel ve gizlidir (uydu, yalnızca yetkili taraflara)",
+      "LRIT herkesin dinleyebildiği açık bir yayındır",
+      "AIS uydudan, LRIT VHF'ten çalışır"
+    ],
+    correctAnswer: 1,
+    explanation: "AIS VHF üzerinden yerel/açık gerçek zamanlı yayındır (çatışmadan kaçınma); LRIT uydu üzerinden küresel, gizli ve yalnızca yetkili devletlere açık seyrek izlemedir.",
+    category: "LRIT İzleme"
+  },
+  {
+    id: 61,
+    question: "LRIT cihazı hangi bilgiyi iletir ve raporlama sıklığı nasıldır?",
+    options: [
+      "Yük manifestosu; sabit günlük tek rapor",
+      "Radar görüntüsü; sürekli akış",
+      "Gemi kimliği, konum ve zaman; raporlama uzaktan artırılabilir veya anlık sorgulanabilir",
+      "Yalnızca hava tahmini; haftalık"
+    ],
+    correctAnswer: 2,
+    explanation: "LRIT kimlik, konum (enlem/boylam) ve zaman damgası iletir; tipik raporlama birkaç saatte birdir ama veri merkezleri sıklığı uzaktan artırabilir veya anlık talep edebilir.",
+    category: "LRIT İzleme"
+  },
+  {
+    id: 62,
+    question: "GMDSS yedek (acil) enerji kaynağının besleme kapasitesi ne olmalıdır?",
+    options: [
+      "Her durumda 10 dakika yeterlidir",
+      "Acil jeneratör varsa en az 1 saat, yoksa en az 6 saat GMDSS yükünü beslemeli",
+      "Yalnızca aydınlatmayı beslemeli",
+      "Hiçbir süre şartı yoktur"
+    ],
+    correctAnswer: 1,
+    explanation: "SOLAS IV, ana ve acil güce ek bir yedek kaynak zorunlu kılar; bu kaynak acil jeneratör varsa ≥1 saat, yoksa ≥6 saat tehlike/emniyet haberleşmesini beslemelidir.",
+    category: "Telsiz Anten/Acil Güç"
+  },
+  {
+    id: 63,
+    question: "MF/HF telsiz antenleri verimli yayın için tipik olarak neye ihtiyaç duyar?",
+    options: [
+      "Uzun tel/kamçı anten ve anten uyum birimi (ATU); etkin topraklama",
+      "Yalnızca kısa bir whip anten",
+      "Hiçbir topraklama gerekmez",
+      "Yalnızca uydu kubbe anteni"
+    ],
+    correctAnswer: 0,
+    explanation: "VHF için kısa whip yeterliyken MF/HF çok daha uzun teller/kamçı antenler ve bir ATU ister; kötü topraklama menzili ciddi biçimde düşürür.",
+    category: "Telsiz Anten/Acil Güç"
+  },
+  {
+    id: 64,
+    question: "GMDSS yedek akülerinin çalışırlığı nasıl güvenceye alınır?",
+    options: [
+      "Hiç test edilmez",
+      "Yalnızca arıza anında bakılır",
+      "Yalnızca rengi kontrol edilir",
+      "Düzenli kontroller ve periyodik kapasite (deşarj) testi yapılır, sonuçlar log'a kaydedilir"
+    ],
+    correctAnswer: 3,
+    explanation: "Akülerde günlük/haftalık/aylık kontroller (gerilim, şarj, elektrolit) ve periyodik kapasite testi yapılır; sonuçlar radyo log'a kaydedilir, düşük kapasiteli aküler değiştirilir.",
+    category: "Telsiz Anten/Acil Güç"
+  },
+  {
+    id: 65,
+    question: "NAVDAT, NAVTEX'e göre ne sağlar?",
+    options: [
+      "Yalnızca sesli yayın",
+      "Daha düşük veri hızı ve yalnızca metin",
+      "500 kHz'de yüksek hızlı dijital MSI; metnin yanı sıra grafik, harita düzeltmesi ve dosya yayını",
+      "Yalnızca VHF üzerinden kısa mesaj"
+    ],
+    correctAnswer: 2,
+    explanation: "NAVDAT 500 kHz'de NAVTEX'ten çok daha yüksek veri hızıyla çalışır; yalnızca metin değil grafik, harita düzeltmeleri ve dosya da yayınlayabilir. NAVTEX'i tamamlar.",
+    category: "GMDSS Modernizasyonu"
+  },
+  {
+    id: 66,
+    question: "GMDSS modernizasyonunun temel amacı nedir?",
+    options: [
+      "Eskiyen teknolojiyi güncellemek ve sistemi yeni uydu sağlayıcılara açmak",
+      "GMDSS'i tamamen kaldırmak",
+      "Tehlike haberleşmesini yasaklamak",
+      "Yalnızca VHF kanal sayısını azaltmak"
+    ],
+    correctAnswer: 0,
+    explanation: "Modernizasyon; eskiyen teknolojiyi güncellemeyi, yeni uydu sağlayıcılara açmayı ve dijital veri yayınını yaygınlaştırmayı amaçlar; SOLAS IV ve standartlar revize edilir.",
+    category: "GMDSS Modernizasyonu"
+  },
+  {
+    id: 67,
+    question: "E-navigasyon vizyonu neyi hedefler?",
+    options: [
+      "Tüm elektronik cihazları kaldırıp yalnızca kâğıt harita kullanmak",
+      "Seyir ve haberleşme bilgisinin uyumlu (harmonize) toplanıp paylaşılması; siber güvenlik kritik bileşen",
+      "Haberleşmeyi seyir sistemlerinden tamamen ayırmak",
+      "Yalnızca limanlarda veri paylaşımı"
+    ],
+    correctAnswer: 1,
+    explanation: "E-navigasyonda GMDSS; ECDIS, AIS, VTS ve kıyı servisleriyle bütünleşik bir bilgi akışının parçası olur; standart veri biçimleri ve siber güvenlik temel bileşenlerdir.",
+    category: "GMDSS Modernizasyonu"
   }
 ];
