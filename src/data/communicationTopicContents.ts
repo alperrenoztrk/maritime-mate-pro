@@ -430,4 +430,241 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       "Yanlış tehlike çağrısı yasaktır ve yaptırıma tabidir.",
     ],
   },
+
+  "AIS — Otomatik Tanımlama Sistemi": {
+    title: "AIS — Otomatik Tanımlama Sistemi",
+    introduction:
+      "AIS (Automatic Identification System), gemilerin kimlik, mevki, hız ve seyir bilgilerini VHF bandında otomatik olarak yayınlayıp çevredeki gemiler ve kıyı istasyonlarıyla paylaşmasını sağlayan bir veri haberleşme sistemidir. SOLAS Bölüm V gereği 300 GT ve üzeri uluslararası sefer yapan gemiler, 500 GT ve üzeri tüm gemiler ve tüm yolcu gemileri AIS taşımak zorundadır. AIS; çatışmadan kaçınma, VTS gözetimi, arama-kurtarma ve seyir emniyeti için radarın ve görsel gözcülüğün tamamlayıcısıdır — ancak hiçbirinin yerini almaz.",
+    sections: [
+      {
+        title: "Çalışma Prensibi ve Kanallar",
+        content:
+          "AIS, iki özel VHF deniz kanalında çalışır: AIS 1 (Ch.87B, 161.975 MHz) ve AIS 2 (Ch.88B, 162.025 MHz). Class A transponderler SOTDMA (Self-Organizing Time Division Multiple Access) tekniğiyle zaman dilimlerini kendi aralarında otomatik paylaşır; böylece merkezî bir kontrole gerek kalmadan yüzlerce gemi aynı kanalı çakışmadan kullanabilir. Cihaz GPS/GNSS'ten aldığı mevkiyi ve gemi sensörlerinden (cayro, hız logu) aldığı verileri belirli aralıklarla yayınlar. Yayın aralığı gemi durumuna göre değişir: demirdeyken veya yavaşken birkaç dakikada bir, yüksek hızda veya manevrada birkaç saniyede bir güncellenir.",
+        bulletPoints: [
+          "AIS 1 = Ch.87B (161.975 MHz), AIS 2 = Ch.88B (162.025 MHz).",
+          "Class A: SOTDMA, 12.5 W — SOLAS gemileri için zorunlu.",
+          "Class B: daha düşük güç/öncelik — küçük tekne ve balıkçı gemileri.",
+          "Yayın aralığı hız ve manevraya göre 2 sn ile 3 dk arasında değişir.",
+        ],
+      },
+      {
+        title: "Statik, Dinamik ve Sefer Verileri",
+        content:
+          "AIS üç tür veri yayınlar. Statik veriler gemi kurulumunda bir kez girilir ve nadiren değişir: MMSI, IMO numarası, çağrı işareti, gemi adı, gemi tipi, boyutlar ve anten konumu. Dinamik veriler sensörlerden otomatik gelir: mevki, karaya göre hız (SOG), karaya göre rota (COG), pruva (heading), dönüş oranı (ROT) ve seyir durumu (navigational status — seyirde, demirde, kumandadan aciz vb.). Sefer verileri her sefer başında elle girilir: su çekimi (draught), tehlikeli yük durumu, varış limanı (destination), tahmini varış zamanı (ETA) ve gemideki kişi sayısı. Seyir durumu ve sefer verilerinin elle girildiği için güncel tutulması zabitin sorumluluğundadır.",
+      },
+      {
+        title: "AIS-SART, AIS-MOB ve AtoN",
+        content:
+          "AIS yalnızca gemilere değil, emniyet cihazlarına ve seyir yardımcılarına da uygulanır. AIS-SART, bir can salına yerleştirildiğinde mevkisini AIS ağına yayar ve çevredeki tüm gemilerin ekranında belirgin bir simgeyle görünür; geleneksel radar SART'a göre daha kolay tespit ve daha iyi menzil sağlar. AIS-MOB (man overboard) cihazları, denize düşen kişinin can yeleğine bağlı olarak mevki yayar. AIS AtoN (Aids to Navigation), şamandıra ve fenerlerin gerçek konumunu yayınlayabildiği gibi, fiziksel olarak orada bulunmayan ancak haritada gösterilmesi gereken 'sanal' (virtual) seyir yardımcılarını da temsil edebilir — örneğin yeni bir batık üzerine hızla sanal AtoN tanımlanabilir.",
+        bulletPoints: [
+          "AIS-SART: can salından mevki yayar, çevre gemilerin AIS ekranında görünür.",
+          "AIS-MOB: denize düşen kişinin mevkisini yayar.",
+          "AIS AtoN: gerçek veya sanal (virtual) seyir yardımcısı yayını.",
+        ],
+      },
+      {
+        title: "Sınırlamalar ve Doğru Kullanım",
+        content:
+          "AIS güçlü bir durumsal farkındalık aracıdır ancak ciddi sınırlamaları vardır. Statik ve sefer verileri elle girildiğinden hatalı olabilir (yanlış varış limanı, güncellenmemiş su çekimi, yanlış seyir durumu sık görülür). AIS kapatılabilir veya kasıtlı yanlış bilgi (spoofing) yayınlanabilir; tüm gemiler (özellikle küçük tekneler ve bazı askerî birimler) AIS taşımaz. Bu nedenle COLREG ve iyi denizcilik uygulaması gereği AIS bilgisi tek başına çatışmadan kaçınma kararı için kullanılamaz; radar/ARPA gözlemi ve görsel/işitsel gözcülükle birlikte değerlendirilmelidir. AIS hedef verisi ile radar hedefi arasında tutarsızlık varsa, durum dikkatle teyit edilmelidir.",
+        bulletPoints: [
+          "Veriler elle girilir; hatalı/eski olabilir.",
+          "Kapatılabilir, spoofing yapılabilir; her gemi taşımaz.",
+          "AIS tek başına çatışmadan kaçınma temeli olamaz (COLREG).",
+          "Radar/ARPA ve görsel gözcülükle birlikte değerlendirilir.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "AIS, iki özel VHF kanalında (Ch.87B/88B) otomatik kimlik ve seyir verisi yayınlar.",
+      "Statik (kimlik), dinamik (sensör) ve sefer (elle girilen) verileri ayırt edilmelidir.",
+      "AIS-SART/MOB ve AtoN, emniyet ve seyir yardımcısı uygulamalarıdır.",
+      "AIS radar ve gözcülüğün tamamlayıcısıdır; tek başına çatışmadan kaçınma temeli olamaz.",
+    ],
+  },
+
+  "MF/HF Telsiz ve Dalga Yayılımı": {
+    title: "MF/HF Telsiz ve Dalga Yayılımı",
+    introduction:
+      "VHF kıyıya yakın haberleşmeyi karşılarken, kıyıdan uzakta (A2/A3/A4 alanları) MF (Medium Frequency) ve HF (High Frequency) telsizler devreye girer. Bu bantlarda menzil; frekansa, günün saatine, mevsime ve iyonosfer koşullarına bağlı olarak değişir. MF/HF haberleşmeyi etkin kullanmak için dalga yayılımı (propagation) mantığını ve doğru frekans seçimini bilmek gerekir.",
+    sections: [
+      {
+        title: "MF ve HF Bantları, Tehlike Frekansları",
+        content:
+          "MF bandı 300 kHz – 3 MHz arasıdır; deniz haberleşmesinde 2 MHz civarı kullanılır. MF telsiz telefon tehlike/çağrı frekansı 2182 kHz, MF-DSC tehlike frekansı ise 2187.5 kHz'tir. HF bandı 3 – 30 MHz arasıdır ve deniz hizmetine 4, 6, 8, 12 ve 16 MHz dolaylarında bantlar ayrılmıştır; her bantta ayrı bir DSC tehlike frekansı vardır (örn. 8414.5 kHz). HF, dünya çapında uzun menzil sağlayabildiğinden A4 (kutup) dahil tüm alanlarda temel uzun menzil haberleşme aracıdır. NBDP (Narrow-Band Direct Printing / teleks) de MF/HF bantlarında çalışır.",
+        bulletPoints: [
+          "MF telsiz telefon tehlike/çağrı: 2182 kHz; MF-DSC: 2187.5 kHz.",
+          "HF deniz bantları: ~4/6/8/12/16 MHz; her birinde ayrı DSC frekansı.",
+          "Örnek HF-DSC: 8414.5 kHz.",
+          "HF, A4 (kutup) dahil uzun menzilin temelidir.",
+        ],
+      },
+      {
+        title: "Dalga Yayılımı: Yer Dalgası ve Gök Dalgası",
+        content:
+          "MF ve düşük HF'te sinyal büyük ölçüde 'yer dalgası' (ground wave) olarak yeryüzünü izleyerek yayılır; MF yer dalgası gündüz tipik 100–150 deniz mili, gece daha fazla menzil verir. Daha yüksek frekanslarda 'gök dalgası' (sky wave) baskındır: dalga iyonosfere ulaşıp kırılarak yeryüzüne geri döner ve binlerce mil öteye ulaşabilir. Yer dalgasının bittiği yer ile ilk gök dalgası sıçramasının düştüğü yer arasında sinyalin alınamadığı bir 'ölü bölge' (skip zone) oluşabilir. İyonosfer gündüz/gece, mevsim ve güneş aktivitesiyle değiştiği için kullanılabilir frekanslar da değişir.",
+      },
+      {
+        title: "Frekans Seçimi ve Günün Saati",
+        content:
+          "Doğru frekans seçimi başarılı bağlantının anahtarıdır. Genel kural: düşük frekanslar (4–6 MHz) gece ve kısa-orta mesafe için, yüksek frekanslar (12–16 MHz) gündüz ve uzun mesafe için daha uygundur. İyonosferin gündüz daha yoğun iyonlaşması yüksek frekansların kırılarak geri dönmesini sağlarken, gece düşük frekanslar daha iyi yansır. Bağlantı kurulamadığında, bir üst veya alt banda geçmek çoğu zaman çözüm olur. Pek çok cihazda ITU kanal/çift frekans tabloları tanımlıdır; tehlike trafiği için ilgili bandın DSC ve telsiz telefon tehlike frekansları kullanılır.",
+        bulletPoints: [
+          "Gece + kısa/orta mesafe → düşük bantlar (4–6 MHz).",
+          "Gündüz + uzun mesafe → yüksek bantlar (12–16 MHz).",
+          "Bağlantı yoksa bir üst/alt banda geç.",
+        ],
+      },
+      {
+        title: "Anten, Topraklama ve Kullanım Disiplini",
+        content:
+          "MF/HF vericiler verimli yayın için iyi bir antene, etkin topraklamaya (ground/counterpoise) ve genellikle bir anten uyum birimine (ATU – Antenna Tuning Unit) ihtiyaç duyar; kötü topraklama menzili ciddi biçimde düşürür. Kullanımda SSB (Single Side Band, J3E modu) telsiz telefon için, F1B/J2B teleks (NBDP) için kullanılır. Tehlike frekanslarında gereksiz yayın yasaktır ve bu frekanslarda nöbet tutulur. Modern gemilerde MF/HF-DSC kontrolör, tehlike alarmlarını ilgili bantlarda otomatik olarak izler; alınan DSC tehlike alarmı, ilgili bandın telsiz telefon tehlike frekansında (örn. 2182 kHz) sesli olarak takip edilir.",
+      },
+    ],
+    keyPoints: [
+      "MF tehlike: 2182 kHz (telefon) / 2187.5 kHz (DSC); HF bantlarında ayrı DSC frekansları vardır.",
+      "Yer dalgası kısa menzil, gök dalgası (iyonosfer) uzun menzil sağlar; aralarında ölü bölge oluşabilir.",
+      "Gece düşük, gündüz yüksek bantlar genelde daha iyi çalışır.",
+      "İyi topraklama ve ATU, MF/HF menzili için kritiktir; SSB (J3E) sesli haberleşmede kullanılır.",
+    ],
+  },
+
+  "VTS ve Gemi Raporlama Sistemleri": {
+    title: "VTS ve Gemi Raporlama Sistemleri",
+    introduction:
+      "VTS (Vessel Traffic Service – Gemi Trafik Hizmeti) ve gemi raporlama sistemleri, yoğun veya dar sularda trafik emniyetini ve verimliliğini artırmak için kıyı otoritelerince yürütülen gözetim ve haberleşme hizmetleridir. SOLAS Bölüm V, VTS ve gemi raporlama sistemlerini düzenler. Gemi, VTS bölgesine girerken doğru ve standart raporlama yapmak, talimat/tavsiyelere uymak ve atanmış kanalda nöbet tutmakla yükümlüdür.",
+    sections: [
+      {
+        title: "VTS Hizmet Türleri",
+        content:
+          "VTS, IMO A.857(20) kararı çerçevesinde üç temel hizmet sunar. Bilgi Hizmeti (INS – Information Service): trafik, hava, seyir engelleri gibi emniyet için gerekli bilgilerin belirli zamanlarda veya talep üzerine yayınlanması. Trafik Düzenleme Hizmeti (TOS – Traffic Organization Service): trafiğin akışını düzenlemek için geçiş sırası, hız, bekleme noktaları gibi düzenlemeler. Seyir Yardım Hizmeti (NAS – Navigational Assistance Service): zor seyir veya meteorolojik koşullarda, gemi talebi veya VTS'nin gerekli görmesi hâlinde mevki ve seyir konusunda yardım. VTS talimatları geminin kaptanının seyir sorumluluğunu ortadan kaldırmaz; nihai sorumluluk kaptandadır.",
+        bulletPoints: [
+          "INS: emniyet bilgisi yayını (trafik, hava, engeller).",
+          "TOS: trafik akışının düzenlenmesi (sıra, hız, bekleme).",
+          "NAS: talep/gerek hâlinde seyir yardımı.",
+          "VTS talimatı kaptanın nihai sorumluluğunu kaldırmaz.",
+        ],
+      },
+      {
+        title: "VTS Raporlama ve SMCP Kullanımı",
+        content:
+          "VTS bölgelerinde haberleşme, yanlış anlamayı önlemek için SMCP mesaj işaretleriyle (message markers — Instruction, Advice, Warning, Information, Question, Answer, Request, Intention) yapılmalıdır. Gemi tipik olarak bölgeye giriş (entry) raporu, mevki raporu ve çıkış (final) raporu verir; rapor içeriği gemi adı/çağrı işareti, mevki, rota, hız, varış noktası gibi bilgileri içerir. Atanmış VTS kanalında sürekli nöbet tutulur. Kapalı döngü teyit (read back) ile kritik talimatların doğru alındığı doğrulanır.",
+      },
+      {
+        title: "Zorunlu Gemi Raporlama Sistemleri (SRS)",
+        content:
+          "SOLAS V/11, IMO tarafından onaylanmış zorunlu gemi raporlama sistemlerini (Ship Reporting Systems) düzenler. Belirli hassas bölgelerde (boğazlar, yoğun trafik, çevresel duyarlı alanlar) gemiler bölgeye giriş ve çıkışta standart formatta rapor vermek zorundadır. Standart bir raporlama sistemi; sefer planı (sailing plan), mevki raporu (position report), rota değişikliği ve son rapor (final report) bölümlerinden oluşur. AMVER gibi gönüllü sistemler ise arama-kurtarmayı desteklemek için gemilerin mevkilerini paylaştığı küresel sistemlerdir.",
+      },
+      {
+        title: "LRIT, AIS ve Uzaktan Tanımlama",
+        content:
+          "VTS ve raporlama, modern gemi takibi teknolojileriyle bütünleşir. AIS, VTS merkezlerinin gemileri gerçek zamanlı ve otomatik gözetlemesini sağlar; kıyı AIS istasyonları gemi verilerini doğrudan alır. LRIT (Long-Range Identification and Tracking), gemilerin kimlik ve mevkisini uydu üzerinden bayrak/liman/kıyı devletlerine uzun menzilde iletir ve esas olarak emniyet ve güvenlik amaçlıdır. AIS yerel/açık bir yayınken, LRIT küresel ve yalnızca yetkili taraflara kapalı bir sistemdir; ikisi birbirini tamamlar.",
+        bulletPoints: [
+          "AIS: yerel, açık, gerçek zamanlı VTS gözetimi.",
+          "LRIT: küresel, kapalı, yetkili taraflara uydu üzerinden takip.",
+          "SRS raporları ile birlikte trafik resmini tamamlarlar.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "VTS üç hizmet sunar: INS (bilgi), TOS (trafik düzenleme), NAS (seyir yardımı).",
+      "VTS haberleşmesi SMCP mesaj işaretleriyle ve kapalı döngü teyitle yapılır.",
+      "SOLAS V/11 kapsamındaki zorunlu raporlama sistemleri standart formatta rapor gerektirir.",
+      "AIS yerel/açık, LRIT küresel/kapalı takip sağlar; VTS talimatı kaptanın sorumluluğunu kaldırmaz.",
+    ],
+  },
+
+  "Gemi İçi Haberleşme Sistemleri": {
+    title: "Gemi İçi Haberleşme Sistemleri",
+    introduction:
+      "Denizde haberleşme yalnızca gemiler ve kıyı arasında değil, gemi içinde köprüüstü, makine dairesi, dümen dairesi, baş-kıç istasyonları ve yük operasyon noktaları arasında da kritiktir. Gemi içi haberleşme sistemleri; normal operasyon, manevra ve acil durumlarda güvenilir, anlaşılır ve gerektiğinde elektriksiz çalışabilen iletişim sağlamak üzere tasarlanır. SOLAS, manevra ve acil durumlar için belirli iç haberleşme ve alarm sistemlerini zorunlu kılar.",
+    sections: [
+      {
+        title: "Köprüüstü–Makine Haberleşmesi ve Telgraf",
+        content:
+          "Köprüüstü ile makine dairesi arasındaki ana komut bağlantısı makine telgrafıdır (engine telegraph); modern gemilerde elektronik telgraf, istenen makine komutunu (örn. Half Ahead, Stop, Full Astern) hem köprüüstünde hem makine kontrol odasında eşzamanlı gösterir ve onaylar. Telgrafın yanında köprüüstü ile makine kontrol odası arasında telefon ve interkom bağlantısı bulunur. Köprü-makine komutlarının kapalı döngüyle (komutun makine tarafından tekrar edilip onaylanması) yürütülmesi yanlış manevrayı önler. Manevra sırasında verilen tüm makine komutları otomatik kaydedici (engine movement recorder / bell book) ile kayıt altına alınır.",
+      },
+      {
+        title: "Ses-Güçlü Telefonlar ve İnterkom",
+        content:
+          "Ses-güçlü telefonlar (sound-powered telephones), konuşmacının sesinin ürettiği enerjiyle çalışan, harici güç gerektirmeyen sistemlerdir; bu yüzden tam elektrik kesintisinde (blackout) bile çalışırlar ve acil durumlar için kritik öneme sahiptirler. Tipik olarak köprüüstü, makine dairesi, dümen dairesi ve baş kasara gibi noktalar arasında bağlantı kurarlar. Talkback/interkom sistemleri ise hoparlörlü, eller serbest haberleşme sağlar ve manevra, demirleme, yük operasyonları sırasında istasyonlar arası hızlı iletişim için kullanılır. Acil dümen manevrasında köprüüstü ile dümen dairesi arasında bağımsız bir haberleşme hattı bulunması SOLAS gereğidir.",
+        bulletPoints: [
+          "Ses-güçlü telefon: harici güç gerektirmez, blackout'ta çalışır.",
+          "Köprü–makine–dümen dairesi–baş kasara arası bağlantı sağlar.",
+          "Talkback/interkom: eller serbest, manevra ve yük operasyonları için.",
+          "Köprü–dümen dairesi acil haberleşme hattı SOLAS gereğidir.",
+        ],
+      },
+      {
+        title: "Genel Anons (PA) ve Genel Alarm",
+        content:
+          "Gemide genel anons sistemi (Public Address – PA), kaptanın veya köprüüstünün mürettebata ve yolculara duyuru yapmasını sağlar; tüm yaşam mahalleri, çalışma alanları ve güverteler hoparlörlerle kapsanmalı ve makine sesi üzerinde duyulabilmelidir. Genel emniyet alarmı (general emergency alarm), tüm gemide işitilebilen, yedi kısa + bir uzun düdük/zil işaretiyle verilir ve mürettebatı toplanma istasyonlarına çağırır. Yangın alarmı, terk-i gemi ve diğer acil durum işaretleri Muster List'te (toplanma cetveli) tanımlanır. Bu sistemler düzenli test edilir ve sonuçlar kaydedilir.",
+        bulletPoints: [
+          "Genel emniyet alarmı: 7 kısa + 1 uzun işaret → toplanma istasyonları.",
+          "PA tüm yaşam/çalışma alanlarında makine sesi üstünde duyulmalı.",
+          "Alarm işaretleri ve görevler Muster List'te tanımlanır.",
+        ],
+      },
+      {
+        title: "Taşınabilir Telsizler ve Operasyonel Güvenlik",
+        content:
+          "Manevra, demirleme, palamar ve yük operasyonlarında ekip içi anlık iletişim taşınabilir UHF/VHF el telsizleriyle sağlanır; baş-kıç manevra ekipleri ve köprüüstü arasında net, kısa ve standart komutlar kullanılır. Tankerlerde ve tehlikeli yük taşıyan gemilerde, patlayıcı ortam riski nedeniyle yalnızca kıvılcım güvenli (intrinsically safe / Ex onaylı) telsizler kullanılabilir. GMDSS kapsamında ayrıca, can kurtarma araçlarıyla ve helikopterle haberleşme için onaylı taşınabilir GMDSS VHF setleri (survival craft two-way VHF) bulundurulur; bunlar terk-i gemi durumunda kurtarma birimleriyle iletişim için ayrılmıştır ve rutin işlerde kullanılmaz.",
+      },
+    ],
+    keyPoints: [
+      "Makine telgrafı köprü–makine komutlarını eşzamanlı gösterir ve onaylar; komutlar kaydedilir.",
+      "Ses-güçlü telefonlar harici güç gerektirmez ve blackout'ta çalışır.",
+      "Genel emniyet alarmı 7 kısa + 1 uzun işaretle verilir; görevler Muster List'tedir.",
+      "Tankerlerde yalnızca kıvılcım güvenli (Ex) taşınabilir telsiz kullanılır.",
+    ],
+  },
+
+  "Arama-Kurtarma Haberleşmesi ve Olay Yeri Koordinasyonu": {
+    title: "Arama-Kurtarma Haberleşmesi ve Olay Yeri Koordinasyonu",
+    introduction:
+      "Bir tehlike alarmından sonra başarılı kurtarma, doğru ve disiplinli haberleşmeye bağlıdır. Arama-kurtarma (SAR) operasyonları IAMSAR (International Aeronautical and Maritime Search and Rescue) el kitabına göre yürütülür ve kıyı-deniz birimleri ile yardıma giden gemiler arasındaki haberleşme net bir koordinasyon yapısı içinde işler. Bu konu, tehlike sonrası SAR organizasyonunu, olay yeri haberleşmesini ve tıbbi yardım taleplerini kapsar.",
+    sections: [
+      {
+        title: "SAR Organizasyonu ve MRCC",
+        content:
+          "Dünya denizleri SAR sorumluluk bölgelerine ayrılmıştır; her bölgeyi bir MRCC (Maritime Rescue Coordination Centre) yönetir. Bir tehlike alarmı (DSC, EPIRB, telsiz telefon vb.) MRCC'ye ulaştığında, SAR Görev Koordinatörü (SMC – SAR Mission Coordinator) operasyonu planlar ve yönetir. Tehlike durumu üç aşamada değerlendirilir: belirsizlik (INCERFA – uncertainty), alarm (ALERFA – alert) ve tehlike (DETRESFA – distress). MRCC, bölgedeki gemilere yardım çağrısı yapabilir; SOLAS ve denizcilik geleneği gereği tehlikedeki kişilere yardım, kaptanın temel bir yükümlülüğüdür.",
+        bulletPoints: [
+          "MRCC, SAR bölgesini yönetir; SMC operasyonu koordine eder.",
+          "Tehlike aşamaları: INCERFA (belirsizlik), ALERFA (alarm), DETRESFA (tehlike).",
+          "Tehlikedeki kişilere yardım kaptanın temel yükümlülüğüdür.",
+        ],
+      },
+      {
+        title: "Olay Yeri Koordinatörü (OSC) ve Haberleşme",
+        content:
+          "Olay yerine birden fazla birim katıldığında, MRCC bunlardan birini Olay Yeri Koordinatörü (OSC – On-Scene Coordinator) olarak atar; OSC genellikle ilk varan veya en donanımlı gemidir. OSC, arama düzenini (search pattern) uygular, birimleri yönlendirir ve MRCC ile düzenli durum raporları paylaşır. Olay yeri haberleşmesi belirlenen bir çalışma kanalında yürütülür: gemiler arası tipik olarak VHF Ch.16 ve atanmış bir çalışma kanalı veya MF 2182 kHz; uçaklarla haberleşme için 121.5 MHz ve olay yeri hava frekansları kullanılır. Tüm trafik kısa, standart ve SMCP'ye uygun olmalıdır.",
+        bulletPoints: [
+          "OSC, MRCC adına olay yerindeki birimleri koordine eder.",
+          "Gemi-gemi: VHF Ch.16 + çalışma kanalı veya MF 2182 kHz.",
+          "Gemi-uçak: 121.5 MHz ve olay yeri hava frekansları.",
+          "Arama düzeni ve durum raporları OSC tarafından yönetilir.",
+        ],
+      },
+      {
+        title: "Tıbbi Yardım: MEDICO ve MEDEVAC",
+        content:
+          "Gemide ciddi bir sağlık sorunu olduğunda, kıyıdaki bir tıbbi merkezden uzaktan tıbbi danışma (MEDICO) alınabilir; bu trafik genellikle PAN-PAN (aciliyet) önceliğiyle, bir kıyı istasyonu veya MRCC aracılığıyla yürütülür. Doktor, semptom ve bulgulara göre tedavi önerir. Hastanın gemiden tahliyesi gerekiyorsa MEDEVAC (medical evacuation) düzenlenir; bu, genellikle helikopterle veya hızlı bir deniz birimiyle yapılır ve dikkatli haberleşme ile koordinasyon gerektirir (buluşma noktası, gemi rotası/hızı, rüzgâr, vinç operasyonu için hazırlık). Helikopter operasyonlarında köprüüstü ile helikopter arasındaki haberleşme atanmış frekansta, net ve standart yürütülür.",
+      },
+      {
+        title: "Telsiz Sessizliği ve SAR'da SMCP",
+        content:
+          "Bir tehlike trafiği sürerken, MRCC veya trafiği kontrol eden istasyon 'SEELONCE MAYDAY' diyerek ilgisiz tüm yayınları durdurabilir; ilgisiz bir istasyon bile düzeni korumak için 'SEELONCE DISTRESS' diyebilir. Trafik kısmen rahatladığında 'PRUDONCE' ile sınırlı haberleşmeye izin verilir, tehlike tamamen bittiğinde 'SEELONCE FEENEE' ile normal trafiğe dönülür. SAR haberleşmesinde SMCP'nin standart arama-kurtarma ifadeleri (arama düzeni, varış zamanı, kişi sayısı, hayatta kalan durumu vb.) kullanılır. Tüm SAR trafiği radyo log defterine UTC ile kaydedilir.",
+        bulletPoints: [
+          "SEELONCE MAYDAY / DISTRESS: tehlike trafiğinde telsiz sessizliği.",
+          "PRUDONCE: kısıtlı normal trafiğe izin; FEENEE: sessizliğin sonu.",
+          "SAR trafiğinde standart SMCP ifadeleri kullanılır.",
+          "Tüm SAR haberleşmesi UTC ile radyo log'a kaydedilir.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "SAR, IAMSAR'a göre MRCC/SMC tarafından koordine edilir; aşamalar INCERFA/ALERFA/DETRESFA'dır.",
+      "OSC olay yerindeki birimleri yönetir; haberleşme Ch.16/çalışma kanalı, MF 2182 ve 121.5 MHz üzerinden yürür.",
+      "MEDICO tıbbi danışma PAN-PAN ile alınır; gerekirse MEDEVAC düzenlenir.",
+      "SEELONCE/PRUDONCE/FEENEE telsiz sessizliğini yönetir; tüm trafik UTC ile loglanır.",
+    ],
+  },
 };
