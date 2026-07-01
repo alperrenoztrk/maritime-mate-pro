@@ -532,6 +532,16 @@ export const regionalRegulations: RegulationItem[] = [
         body:
           "Mediterranean MoU, idari kapasite ve düzenleme yaklaşımı bakımından çeşitli bir üyelik tabanına sahiptir: Kuzey Afrika ülkeleri (Cezayir, Mısır, Libya, Fas, Tunus), Doğu Akdeniz ülkeleri (İsrail, Ürdün, Lübnan, Türkiye) ile AB üyesi Malta ve Kıbrıs bir aradadır. Malta ve Kıbrıs'ın aynı zamanda Paris MoU üyesi olması, MoU'nun Paris standartları ve veri sistemleriyle uyumlu çalışmasını sağlar; denetim verileri Med-INFO bölgesel platformu üzerinden ve IMO'nun GISIS sistemiyle entegre biçimde paylaşılır. Bu çeşitlilik nedeniyle bölgeye girecek gemiler, ortak MoU standartlarının yanı sıra özellikle Kuzey Afrika limanlarındaki yerel ek gereklilikleri de önceden kontrol etmelidir. Paris MoU ile koordineli CIC kampanyaları, gemilerin tek bir hazırlıkla her iki rejime uyum sağlamasına olanak tanır.",
       },
+      {
+        heading: "Çifte üyeliğin pekiştirici, tekrarlı olmayan etkisi",
+        body:
+          "Malta ve Kıbrıs gibi AB üyesi Akdeniz devletleri için hem Mediterranean MoU hem de Paris MoU/AB PSC Direktifi kapsamında yer almak, ilk bakışta gereksiz bir çakışma gibi görünebilir; ama pratikte bu iki katman birbirini tekrar etmez, birbirini güçlendirir. Paris MoU çerçevesi, THETIS altyapısı ve NIR risk profili üzerinden Avrupa'nın geniş PSC ağına erişim sağlar; Mediterranean MoU çerçevesi ise aynı gemiyi, Kuzey Afrika ve Doğu Akdeniz'deki AB dışı kıyı devletlerinin oluşturduğu ayrı bir denetim ve veri paylaşım ağına dahil eder. Bir gemi bu iki üye devletin limanına uğradığında, denetim sonucu her iki sisteme de yansır ve hem Avrupa hem de daha geniş Akdeniz havzasındaki denetçiler tarafından görülebilir hale gelir. Bu, tek bir denetimin etkisini iki bölgesel ağa yaymak anlamına gelir; standart altı bir gemi, yalnızca AB limanlarında değil, Cezayir'den Lübnan'a kadar tüm Akdeniz kıyısında da işaretlenmiş olur. Dolayısıyla dual üyelik, denetim yükünü azaltan ama kapsamı ve caydırıcılığı artıran bir mekanizma olarak işler.",
+      },
+      {
+        heading: "Med-INFO ve GISIS entegrasyonunun birlikte işleyişi",
+        body:
+          "Akdeniz'de hem Mediterranean MoU hem de Paris MoU sularında sefer yapan bir gemi için Med-INFO ve GISIS entegrasyonu somut bir pratik fayda sağlar. Med-INFO, Mediterranean MoU üyesi limanlardaki denetim sonuçlarını, eksiklikleri ve alıkoyma kayıtlarını bölgesel düzeyde toplar; GISIS ise IMO'nun küresel veri platformu olarak bu bilgiyi daha geniş bir uluslararası çerçeveye taşır ve diğer MoU'ların (Paris MoU'nun THETIS'i dahil) sistemleriyle dolaylı bir köprü oluşturur. Bu entegrasyon sayesinde, örneğin bir gemi önce bir Paris MoU limanında denetlenip bir eksiklik kaydettirdiğinde, bu bilgi teorik olarak GISIS üzerinden erişilebilir hale gelir ve daha sonra bir Mediterranean MoU limanına (örneğin Fas veya Mısır) uğradığında denetçi bu geçmişten habersiz kalmaz. Pratikte veri aktarımı her zaman anlık olmasa da, bu iki sistemin birlikte işleyişi, Akdeniz'in parçalı idari yapısına (AB üyeleri ile AB dışı kıyı devletleri) rağmen tek bir gemi geçmişinin büyük ölçüde tutarlı biçimde takip edilebilmesini sağlar.",
+      },
     ],
     relatedSlugs: ["psc", "paris-mou"],
     resources: [{ label: "Mediterranean MoU", href: "https://www.medmou.org/" }],
@@ -562,6 +572,11 @@ export const regionalRegulations: RegulationItem[] = [
       "Yerel düzenlemeleri araştır (ülkelere özgü ek gereklilikler olabilir)",
       "Panama bayraklı gemilerde kendi bayrak devleti denetim yükümlülüklerini de göz önünde bulundur",
     ],
+    amendments: [
+      { year: "1992", description: "Viña del Mar Agreement (Acuerdo Latinoamericano) kuruldu – Latin Amerika'nın ilk bölgesel PSC anlaşması" },
+      { year: "1990'lar", description: "IMO PSC Kılavuzlarının ve Paris MoU model prosedürlerinin bölgesel çerçeveye uyarlanması" },
+      { year: "2000'ler", description: "CIALA bilgi sisteminin ve IMO teknik yardım destekli denetçi eğitim programlarının genişletilmesi" },
+    ],
     keyArticles: [
       { id: "Bölüm 2", title: "Denetim Taahhütleri", summary: "Üye devletlerin denetim hedefleri ve koordinasyon mekanizmaları." },
       { id: "Bölüm 3", title: "Denetim Prosedürleri", summary: "Denetim kapsamı, eksiklik sınıflandırması ve alıkoyma kriterleri." },
@@ -591,6 +606,16 @@ export const regionalRegulations: RegulationItem[] = [
         heading: "CIALA, standardizasyon ve teknik yardım",
         body:
           "Latin Amerika'nın ilk PSC anlaşması olan Viña del Mar, Paris MoU modelinden esinlenerek kurulmuş ve 14 üye devletle Güney, Orta Amerika ve Karayipler'deki denetimleri koordine etmektedir. Denetim verileri CIALA (Acuerdo Latinoamericano bilgi merkezi) üzerinden paylaşılır ve alıkoyma kayıtları tüm üyelerce görülebilir. Bölgenin önceliği, üye devletler arasındaki denetim kapasitesi ve standardizasyonu güçlendirmektir; bu amaçla IMO teknik yardım programlarından yararlanılır, denetçi eğitimleri ve ortak prosedürler geliştirilir. Risk tabanlı hedefleme, eksiklik sınıflandırması ve alıkoyma kriterleri IMO PSC Kılavuzlarıyla uyumludur ve diğer MoU'larla koordineli CIC kampanyaları yürütülür. Bölgeye girecek gemiler, yerel düzenlemeleri kontrol etmeli, CIALA denetim trendlerini izlemeli ve CIC temalarına hazırlanmalıdır.",
+      },
+      {
+        heading: "Panama'nın çifte konumu: sicil ve bölge içi liman devleti",
+        body:
+          "Viña del Mar bölgesini diğer MoU'lardan ayıran en çarpıcı özellik, dünyanın en büyük gemi siciline sahip Panama'nın hem bir bayrak devleti hem de coğrafi olarak bu MoU'nun operasyon bölgesinin içinde yer alan bir liman devleti olmasıdır. Çoğu büyük açık sicilde (Panama, Marshall Adaları, Liberya gibi) bayrak devleti işlevi, geminin fiilen sefer ettiği bölgeden coğrafi olarak ayrıdır; ama Panama söz konusu olduğunda bu ayrım ortadan kalkar. Panama Kanalı'ndan geçen ve bölge limanlarına uğrayan Panama bayraklı bir gemi, aynı anda iki farklı denetim merceğinin altındadır: kendi bayrağının sertifikasyon ve denetim sorumluluğu ile Viña del Mar üyesi bir liman devletinin PSC denetimi — ve bu liman devleti çoğu zaman Panama'nın kendisi olabilir. Bu çifte konum, Panama'nın kendi sicilinin kalitesini korumak için ekstra bir motivasyona sahip olmasını sağlar, çünkü sicilindeki bir geminin kendi limanında alıkonması sicilin uluslararası itibarını doğrudan etkiler. Bölgedeki diğer üye devletler için ise bu durum, Panama bayraklı yoğun trafiğin getirdiği hem tanıdıklık hem de dikkatli takip gerekliliğini birlikte doğurur.",
+      },
+      {
+        heading: "Çeşitli bir üyelikte kapasite eşitleme çabası",
+        body:
+          "Viña del Mar Agreement'in 14 üye devleti, denetim kapasitesi ve kaynak düzeyi bakımından geniş bir yelpazeye yayılır: Brezilya ve Meksika gibi büyük ve nispeten gelişmiş denizcilik idarelerinden, daha sınırlı mali ve insan kaynağına sahip küçük Karayip ve Orta Amerika devletlerine kadar farklı kapasiteler bir aradadır. Bu farklılık, denetçi eğitim seviyesinde, denetim ekipmanına erişimde ve hatta risk profili hesaplamalarının ne kadar tutarlı uygulandığında eşitsizliklere yol açabilir. CIALA bu açığı iki şekilde kapatmaya çalışır: birincisi, bölgesel bilgi sistemi üzerinden tüm üyelerin aynı denetim verilerine ve eksiklik kodlarına erişmesini sağlayarak asgari bir ortak dil oluşturur; ikincisi, IMO'nun teknik işbirliği programları aracılığıyla daha deneyimli üye idarelerden denetçi eğitmenleri ve ortak kontrol listeleri sağlanır. Bu çaba doğrusal ve hızlı değildir — kapasite farkları tamamen kapanmış değildir — ama zamanla bölgedeki denetim kalitesini daha tutarlı bir çizgiye yaklaştırmayı hedefler; böylece bir geminin hangi üye limanına uğradığı, karşılaşacağı denetim titizliğini büyük ölçüde değiştirmemelidir.",
       },
     ],
     relatedSlugs: ["psc"],
