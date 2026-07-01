@@ -1,5 +1,12 @@
 // Test script for Gemini API
-const GEMINI_API_KEY = 'AIzaSyDZ81CyuQyQ-FPRgiIx5nULrP-pS8ioZfc';
+// Usage: GEMINI_API_KEY=your_key node test-gemini-api.js
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+if (!GEMINI_API_KEY) {
+  console.error('❌ GEMINI_API_KEY ortam değişkeni tanımlı değil.');
+  console.error('   Kullanım: GEMINI_API_KEY=your_key node test-gemini-api.js');
+  process.exit(1);
+}
 
 async function testGeminiAPI() {
   try {
