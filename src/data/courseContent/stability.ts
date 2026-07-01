@@ -131,11 +131,11 @@ export const stability: CourseTopic = {
       id: "crane-gm",
       name: "Bumba/Kreyn ile Düşey KG Değişimi",
       group: "Enine Denge",
-      formula: "GG₁ = w × (h_cunda − h_yük) / Δ",
+      formula: "GG₁ = w × (hcunda − hyük) / Δ",
       variables: [
         { symbol: "w", label: "Kaldırılan yük", unit: "t" },
-        { symbol: "h_cunda", label: "Matafora/cunda yüksekliği", unit: "m" },
-        { symbol: "h_yük", label: "Yükün ilk yüksekliği", unit: "m" },
+        { symbol: "hcunda", label: "Matafora/cunda yüksekliği", unit: "m" },
+        { symbol: "hyük", label: "Yükün ilk yüksekliği", unit: "m" },
         { symbol: "Δ", label: "Deplasman", unit: "t" },
       ],
       source: { code: "IMO IS Code 2008", detail: "Yük kaldırma etkisi (KG yükselmesi)" },
@@ -154,7 +154,7 @@ export const stability: CourseTopic = {
       id: "angle-of-loll",
       name: "Loll Açısı",
       group: "Enine Denge",
-      formula: "φ_loll = arccos(KG / KM)",
+      formula: "φloll = arccos(KG / KM)",
       variables: [
         { symbol: "KG", label: "Ağırlık merkezi yüksekliği", unit: "m" },
         { symbol: "KM", label: "Metasenter yüksekliği", unit: "m" },
@@ -285,7 +285,7 @@ export const stability: CourseTopic = {
       id: "block-coeff",
       name: "Blok Katsayısı",
       group: "Serbest Yüzey ve Hidrostatik",
-      formula: "C_b = ∇ / (L × B × T)",
+      formula: "Cb = ∇ / (L × B × T)",
       variables: [
         { symbol: "∇", label: "Su altı hacim", unit: "m³" },
         { symbol: "L", label: "Su hattı boyu", unit: "m" },
@@ -303,7 +303,7 @@ export const stability: CourseTopic = {
         const denom = v.l * v.b * v.t;
         if (denom <= 0) return [{ label: "Hata", value: "L, B, T pozitif olmalı" }];
         const cb = v.vol / denom;
-        return [{ label: "Blok Katsayısı (C_b)", value: cb.toFixed(3) }];
+        return [{ label: "Blok Katsayısı (Cb)", value: cb.toFixed(3) }];
       },
     },
     {
@@ -339,7 +339,7 @@ export const stability: CourseTopic = {
       ],
       source: { code: "IMO IS Code 2008", detail: "Hava kriteri — yalpa periyodu" },
       inputs: [
-        { key: "cb", label: "Blok Katsayısı (C_b)", unit: "", placeholder: "0.7" },
+        { key: "cb", label: "Blok Katsayısı (Cb)", unit: "", placeholder: "0.7" },
         { key: "b", label: "Genişlik (B)", unit: "m", placeholder: "22" },
         { key: "gm", label: "GM", unit: "m", placeholder: "1.2" },
       ],
@@ -465,15 +465,15 @@ export const stability: CourseTopic = {
       id: "tpc",
       name: "Santimetre Başına Ton (TPC)",
       group: "Serbest Yüzey ve Hidrostatik",
-      formula: "TPC = A_wp × ρ / 100",
+      formula: "TPC = Awp × ρ / 100",
       variables: [
-        { symbol: "A_wp", label: "Su hattı düzlemi alanı", unit: "m²" },
+        { symbol: "Awp", label: "Su hattı düzlemi alanı", unit: "m²" },
         { symbol: "ρ", label: "Su yoğunluğu", unit: "t/m³" },
       ],
       source: { code: "Gemi hidrostatiği — TPC tanımı" },
       note: "1 cm draft değişimi için gereken ton miktarı.",
       inputs: [
-        { key: "awp", label: "Su Hattı Alanı (A_wp)", unit: "m²", placeholder: "2400" },
+        { key: "awp", label: "Su Hattı Alanı (Awp)", unit: "m²", placeholder: "2400" },
         { key: "rho", label: "Su Yoğunluğu (ρ)", unit: "t/m³", placeholder: "1.025" },
       ],
       calculate: (v) => {
@@ -531,11 +531,11 @@ export const stability: CourseTopic = {
       id: "fresh-water-disp",
       name: "Tatlı Suda Deplasman",
       group: "Serbest Yüzey ve Hidrostatik",
-      formula: "Δ_tatlı = Δ_deniz × (ρ_deniz / ρ_tatlı)",
+      formula: "Δtatlı = Δdeniz × (ρdeniz / ρtatlı)",
       variables: [
-        { symbol: "Δ_deniz", label: "Deniz suyu deplasmanı", unit: "t" },
-        { symbol: "ρ_deniz", label: "Deniz suyu yoğunluğu", unit: "t/m³" },
-        { symbol: "ρ_tatlı", label: "Tatlı su yoğunluğu", unit: "t/m³" },
+        { symbol: "Δdeniz", label: "Deniz suyu deplasmanı", unit: "t" },
+        { symbol: "ρdeniz", label: "Deniz suyu yoğunluğu", unit: "t/m³" },
+        { symbol: "ρtatlı", label: "Tatlı su yoğunluğu", unit: "t/m³" },
       ],
       source: { code: "Gemi hidrostatiği — yoğunluk dönüşümü" },
       inputs: [
@@ -553,7 +553,7 @@ export const stability: CourseTopic = {
       id: "righting-moment",
       name: "Doğrultma Momenti",
       group: "Enine Denge",
-      formula: "M_R = Δ × GZ",
+      formula: "MR = Δ × GZ",
       variables: [
         { symbol: "Δ", label: "Deplasman", unit: "t" },
         { symbol: "GZ", label: "Doğrultma kolu", unit: "m" },
@@ -565,7 +565,7 @@ export const stability: CourseTopic = {
       ],
       calculate: (v) => {
         const mr = v.disp * v.gz;
-        return [{ label: "Doğrultma Momenti (M_R)", value: `${mr.toFixed(0)} t·m` }];
+        return [{ label: "Doğrultma Momenti (MR)", value: `${mr.toFixed(0)} t·m` }];
       },
     },
     {
@@ -643,14 +643,14 @@ export const stability: CourseTopic = {
       id: "bml",
       name: "Boyuna Metasentr Yarıçapı (BML)",
       group: "Boyuna Denge",
-      formula: "BML = I_L / ∇",
+      formula: "BML = IL / ∇",
       variables: [
-        { symbol: "I_L", label: "Su hattı alanının boyuna atalet momenti", unit: "m⁴" },
+        { symbol: "IL", label: "Su hattı alanının boyuna atalet momenti", unit: "m⁴" },
         { symbol: "∇", label: "Su altı hacim", unit: "m³" },
       ],
       source: { code: "Gemi hidrostatiği — boyuna metasentr yarıçapı" },
       inputs: [
-        { key: "il", label: "Boyuna Atalet Momenti (I_L)", unit: "m⁴", placeholder: "2100000" },
+        { key: "il", label: "Boyuna Atalet Momenti (IL)", unit: "m⁴", placeholder: "2100000" },
         { key: "vol", label: "Su Altı Hacim (∇)", unit: "m³", placeholder: "11700" },
       ],
       calculate: (v) => {
@@ -714,19 +714,19 @@ export const stability: CourseTopic = {
       id: "trim-distribution",
       name: "Trim Dağılımı (Baş/Kıç Draft Değişimi)",
       group: "Boyuna Denge",
-      formula: "ΔT_F = ΔTrim × d_a/L ;  ΔT_A = ΔTrim × d_f/L",
+      formula: "ΔTF = ΔTrim × da/L ;  ΔTA = ΔTrim × df/L",
       variables: [
         { symbol: "ΔTrim", label: "Toplam trim değişimi", unit: "cm" },
-        { symbol: "d_f", label: "LCF'nin baş perpendikülerine uzaklığı", unit: "m" },
-        { symbol: "d_a", label: "LCF'nin kıç perpendikülerine uzaklığı", unit: "m" },
+        { symbol: "df", label: "LCF'nin baş perpendikülerine uzaklığı", unit: "m" },
+        { symbol: "da", label: "LCF'nin kıç perpendikülerine uzaklığı", unit: "m" },
         { symbol: "L", label: "Tekne boyu (LBP)", unit: "m" },
       ],
       source: { code: "Gemi hidrostatiği — trim dağılımı (LCF)" },
       note: "Trim değişimi LCF etrafında baş/kıç draftlara dağıtılır.",
       inputs: [
         { key: "dtrim", label: "Trim Değişimi (ΔTrim)", unit: "cm", placeholder: "30" },
-        { key: "df", label: "LCF–Baş Mesafesi (d_f)", unit: "m", placeholder: "72" },
-        { key: "da", label: "LCF–Kıç Mesafesi (d_a)", unit: "m", placeholder: "78" },
+        { key: "df", label: "LCF–Baş Mesafesi (df)", unit: "m", placeholder: "72" },
+        { key: "da", label: "LCF–Kıç Mesafesi (da)", unit: "m", placeholder: "78" },
         { key: "l", label: "Tekne Boyu (L)", unit: "m", placeholder: "150" },
       ],
       calculate: (v) => {
@@ -734,8 +734,8 @@ export const stability: CourseTopic = {
         const dtf = (v.dtrim * v.da) / v.l;
         const dta = (v.dtrim * v.df) / v.l;
         return [
-          { label: "Baş Draft Değişimi (ΔT_F)", value: `${dtf.toFixed(2)} cm` },
-          { label: "Kıç Draft Değişimi (ΔT_A)", value: `${dta.toFixed(2)} cm` },
+          { label: "Baş Draft Değişimi (ΔTF)", value: `${dtf.toFixed(2)} cm` },
+          { label: "Kıç Draft Değişimi (ΔTA)", value: `${dta.toFixed(2)} cm` },
         ];
       },
     },

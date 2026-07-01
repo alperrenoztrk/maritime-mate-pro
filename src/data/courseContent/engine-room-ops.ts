@@ -29,7 +29,7 @@ export const engineRoomOps: CourseTopic = {
       source: { code: "Operasyonel yakıt tüketim takibi" },
       note: "Toplam tüketim ton, süre gün girilir; günlük ve saatlik tüketim hızı hesaplanır.",
       inputs: [
-        { key: "total", label: "Toplam Yakıt (FC_toplam)", unit: "ton", placeholder: "180" },
+        { key: "total", label: "Toplam Yakıt (FCtoplam)", unit: "ton", placeholder: "180" },
         { key: "days", label: "Seyir Süresi", unit: "gün", placeholder: "12" },
       ],
       calculate: (v) => {

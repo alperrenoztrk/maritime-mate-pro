@@ -744,7 +744,7 @@ export default function StabilityGrainCalculationPage() {
                         {correctedGM && (
                           <Alert className={parseFloat(correctedGM) >= 0.30 ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}>
                             <AlertDescription>
-                              <p className="font-semibold">GM_corrected = GM - (FSM / Δ)</p>
+                              <p className="font-semibold">GMcorrected = GM - (FSM / Δ)</p>
                               <p className="text-lg font-bold" style={{ color: parseFloat(correctedGM) >= 0.30 ? '#15803d' : '#991b1b' }}>
                                 Düzeltilmiş GM = {correctedGM} m
                               </p>

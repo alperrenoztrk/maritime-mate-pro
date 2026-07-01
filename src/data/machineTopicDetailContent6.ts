@@ -38,7 +38,7 @@ const content6: ContentMap = {
       title: "Yoğunluk ve API Gravity",
       introduction: "Yakıt yoğunluğu, yakıt miktarının hesaplanması, separatör ayarı ve yanma kalitesinin değerlendirilmesi için temel parametredir.",
       sections: [
-        { heading: "Yoğunluk Ölçümü", paragraphs: ["Deniz yakıtlarında yoğunluk 15°C referans sıcaklıkta kg/m³ cinsinden ifade edilir. Ölçüm hidrometre veya dijital yoğunluk ölçer ile yapılır.", "HFO yoğunluğu tipik olarak 960-991 kg/m³, MGO yoğunluğu 830-890 kg/m³ aralığındadır."], formula: { expression: "ρ₁₅ = ρ_t + k × (t − 15)", variables: ["ρ₁₅: 15°C'deki yoğunluk (kg/m³)", "ρ_t: Ölçüm sıcaklığındaki yoğunluk", "k: Sıcaklık düzeltme katsayısı (ASTM tabloları)", "t: Ölçüm sıcaklığı (°C)"] } },
+        { heading: "Yoğunluk Ölçümü", paragraphs: ["Deniz yakıtlarında yoğunluk 15°C referans sıcaklıkta kg/m³ cinsinden ifade edilir. Ölçüm hidrometre veya dijital yoğunluk ölçer ile yapılır.", "HFO yoğunluğu tipik olarak 960-991 kg/m³, MGO yoğunluğu 830-890 kg/m³ aralığındadır."], formula: { expression: "ρ₁₅ = ρt + k × (t − 15)", variables: ["ρ₁₅: 15°C'deki yoğunluk (kg/m³)", "ρt: Ölçüm sıcaklığındaki yoğunluk", "k: Sıcaklık düzeltme katsayısı (ASTM tabloları)", "t: Ölçüm sıcaklığı (°C)"] } },
         { heading: "API Gravity", paragraphs: ["API gravity, Amerikan Petrol Enstitüsü tarafından tanımlanan ters yoğunluk ölçeğidir. Hafif yakıtlar yüksek API değerine sahiptir."], formula: { expression: "API = (141.5 / SG₆₀°F) − 131.5", variables: ["SG₆₀°F: 60°F'deki (15.56°C) spesifik gravity"] }, example: { problem: "Yoğunluğu 15°C'de 960 kg/m³ olan bir HFO'nun API gravity değerini hesaplayınız.", steps: ["SG = 960 / 999.1 = 0.9609", "API = 141.5 / 0.9609 − 131.5", "API = 147.3 − 131.5 = 15.8"], result: "API gravity değeri 15.8'dir (ağır yakıt)." } }
       ],
       keyPoints: ["Yoğunluk > 991 kg/m³ olan yakıtlar standart separatörlerle arıtılamaz.", "Bunker miktarı hesabında yoğunluk ve sıcaklık düzeltmesi zorunludur.", "API < 10 olan yakıtlar suda batar."]
@@ -138,7 +138,7 @@ const content6: ContentMap = {
       introduction: "Bunker miktarının doğru ölçülmesi, ticari anlaşmazlıkların önlenmesi ve yakıt yönetiminin etkinliği açısından kritiktir.",
       sections: [
         { heading: "Ölçüm Yöntemleri", paragraphs: [], table: { headers: ["Yöntem", "Doğruluk", "Kullanım"], rows: [["Tank sounding (dip çubuğu)", "±1-2%", "Gemi tankları (önce/sonra)"], ["Flowmetre (Coriolis)", "±0.1-0.5%", "Barge veya hat üzerinde"], ["Ullage (boşluk ölçümü)", "±1-2%", "Gemi tankları"], ["Barge tank ölçümü", "±0.5-1%", "Barge survey"]] } },
-        { heading: "Hacim-Kütle Dönüşümü", paragraphs: ["Ölçülen hacim, yakıtın ölçüm sıcaklığındaki yoğunluğu ile çarpılarak kütleye (metrik ton) dönüştürülür. Sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır."], formula: { expression: "Kütle (mt) = Hacim (m³) × ρ_t (kg/m³) / 1000", variables: ["ρ_t: Ölçüm sıcaklığındaki yoğunluk"] } }
+        { heading: "Hacim-Kütle Dönüşümü", paragraphs: ["Ölçülen hacim, yakıtın ölçüm sıcaklığındaki yoğunluğu ile çarpılarak kütleye (metrik ton) dönüştürülür. Sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır."], formula: { expression: "Kütle (mt) = Hacim (m³) × ρt (kg/m³) / 1000", variables: ["ρt: Ölçüm sıcaklığındaki yoğunluk"] } }
       ],
       keyPoints: ["Gemi ve barge ölçümleri arasındaki fark %0.5'i aşmamalıdır.", "Coriolis flowmetre en doğru yöntemdir.", "Trim ve list düzeltmeleri sounding hesaplarında uygulanmalıdır."]
     },

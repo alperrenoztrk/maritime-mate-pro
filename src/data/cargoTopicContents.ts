@@ -26,10 +26,10 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Broken Stowage (Kayıp Hacim)",
         content:
-          "Broken stowage, ambardaki kullanılamayan boşlukların toplam hacme oranıdır. Düzensiz biçimli yüklerde (variller, makineler, ambalajlı kutular) ve gemi yapısındaki braket, perde ve frame'ler nedeniyle ortaya çıkar. Tipik broken stowage oranları: torbalı yükler %10-15, balyalı yük %10, variller %20-30, düzensiz genel yük %25'e kadar. Net istiflenebilir hacim, ambar net hacminden broken stowage düşülerek bulunur: V_net = V_ambar × (1 − BS). Broken stowage, dunnage (istif tahtası) kullanımı, dolgu (filler) yüklerle boşluk doldurma ve dikkatli istif planı ile azaltılır.",
+          "Broken stowage, ambardaki kullanılamayan boşlukların toplam hacme oranıdır. Düzensiz biçimli yüklerde (variller, makineler, ambalajlı kutular) ve gemi yapısındaki braket, perde ve frame'ler nedeniyle ortaya çıkar. Tipik broken stowage oranları: torbalı yükler %10-15, balyalı yük %10, variller %20-30, düzensiz genel yük %25'e kadar. Net istiflenebilir hacim, ambar net hacminden broken stowage düşülerek bulunur: Vnet = Vambar × (1 − BS). Broken stowage, dunnage (istif tahtası) kullanımı, dolgu (filler) yüklerle boşluk doldurma ve dikkatli istif planı ile azaltılır.",
         formula: {
-          text: "V_net = V_ambar × (1 − BS)",
-          description: "V_net: net istiflenebilir hacim, V_ambar: ambar net hacmi, BS: broken stowage oranı (ondalık)",
+          text: "Vnet = Vambar × (1 − BS)",
+          description: "Vnet: net istiflenebilir hacim, Vambar: ambar net hacmi, BS: broken stowage oranı (ondalık)",
         },
       },
       {
@@ -45,7 +45,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
     ],
     keyPoints: [
       "İstif faktörü SF = V/W; düşük SF ağır (deadweight) yük, yüksek SF hacimli (measurement) yüktür.",
-      "Broken stowage kullanılamayan boşluktur; V_net = V_ambar × (1 − BS).",
+      "Broken stowage kullanılamayan boşluktur; Vnet = Vambar × (1 − BS).",
       "Grain kapasitesi toplam iç hacim, bale kapasitesi ambalajlı yük için ~%7-10 daha düşüktür.",
       "Ekonomik hedef 'full and down': ağırlık ve hacim sınırına birlikte ulaşmak.",
     ],
@@ -93,9 +93,9 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Arşimet Prensibi ve Deplasman",
         content:
-          "Yüzen bir gemi, batan hacmi kadar suyun ağırlığına eşit bir kaldırma kuvvetiyle desteklenir. Dolayısıyla geminin toplam ağırlığı (deplasman, Δ), o draftta yer değiştirdiği su ağırlığına eşittir. Draft survey, yükleme öncesi ve sonrası deplasman farkından yük ağırlığını bulur: Yük = Δ_sonra − Δ_önce. Deplasman, geminin hidrostatik tablolarından (ya da deplasman ölçeğinden) ortalama drafta karşılık gelen değer okunarak elde edilir.",
+          "Yüzen bir gemi, batan hacmi kadar suyun ağırlığına eşit bir kaldırma kuvvetiyle desteklenir. Dolayısıyla geminin toplam ağırlığı (deplasman, Δ), o draftta yer değiştirdiği su ağırlığına eşittir. Draft survey, yükleme öncesi ve sonrası deplasman farkından yük ağırlığını bulur: Yük = Δsonra − Δönce. Deplasman, geminin hidrostatik tablolarından (ya da deplasman ölçeğinden) ortalama drafta karşılık gelen değer okunarak elde edilir.",
         formula: {
-          text: "Yük = Δ_sonra − Δ_önce",
+          text: "Yük = Δsonra − Δönce",
           description: "Δ: ilgili draftta okunan deplasman (ton); fark yüklenen/boşaltılan yük miktarıdır",
         },
       },
@@ -107,10 +107,10 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Yoğunluk ve Düzeltmeler",
         content:
-          "Hidrostatik tablolar standart deniz suyu yoğunluğuna (genelde 1.025 t/m³) göredir. Liman suyu yoğunluğu hidrometre ile ölçülür ve deplasman, gerçek yoğunluğa oranlanarak düzeltilir: Δ_gerçek = Δ_tablo × (ρ_gerçek / 1.025). Ayrıca trim için 'first ve second trim correction' uygulanır (LCF'in orta kesitten sapması nedeniyle). Bu düzeltmeler ihmal edilirse birkaç yüz tonluk hata oluşabilir.",
+          "Hidrostatik tablolar standart deniz suyu yoğunluğuna (genelde 1.025 t/m³) göredir. Liman suyu yoğunluğu hidrometre ile ölçülür ve deplasman, gerçek yoğunluğa oranlanarak düzeltilir: Δgerçek = Δtablo × (ρgerçek / 1.025). Ayrıca trim için 'first ve second trim correction' uygulanır (LCF'in orta kesitten sapması nedeniyle). Bu düzeltmeler ihmal edilirse birkaç yüz tonluk hata oluşabilir.",
         formula: {
-          text: "Δ_gerçek = Δ_tablo × (ρ_liman / 1.025)",
-          description: "ρ_liman: hidrometre ile ölçülen liman suyu yoğunluğu (t/m³)",
+          text: "Δgerçek = Δtablo × (ρliman / 1.025)",
+          description: "ρliman: hidrometre ile ölçülen liman suyu yoğunluğu (t/m³)",
         },
       },
       {
@@ -120,7 +120,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       },
     ],
     keyPoints: [
-      "Draft survey, deplasman farkıyla yük miktarını bulur: Yük = Δ_sonra − Δ_önce.",
+      "Draft survey, deplasman farkıyla yük miktarını bulur: Yük = Δsonra − Δönce.",
       "Altı draft okunur; mean-of-means ve trim düzeltmesiyle kavis etkisi giderilir.",
       "Liman suyu yoğunluğu ölçülür ve deplasman ρ/1.025 ile düzeltilir.",
       "Net yük için yakıt, balast, su gibi deductibles farkı çıkarılır.",
@@ -216,9 +216,9 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Sürtünme ve Bağlama Direnci",
         content:
-          "Yükün kaymaya karşı ilk direnci, taban ile yük arasındaki sürtünmedir: F_sürtünme = μ × m × g. Sürtünme katsayısı (μ) yüzey çiftine bağlıdır (çelik-çelik ~0.1, kereste-çelik ~0.3, kauçuk paspas/anti-slip mat ~0.6). Sürtünme yetersiz kaldığında bağlama elemanları (zincir, çelik halat, web lashing) devreye girer. Her bağlama elemanının izin verilen güvenli yükü vardır: MSL (Maximum Securing Load), genellikle kopma yükünün belirli bir oranıdır (örn. çelik halat için kopma yükünün %80'i, zincir için %50'si). Toplam bağlama kapasitesi, atalet kuvvetinden sürtünme direnci düşülen değeri karşılamalıdır.",
+          "Yükün kaymaya karşı ilk direnci, taban ile yük arasındaki sürtünmedir: Fsürtünme = μ × m × g. Sürtünme katsayısı (μ) yüzey çiftine bağlıdır (çelik-çelik ~0.1, kereste-çelik ~0.3, kauçuk paspas/anti-slip mat ~0.6). Sürtünme yetersiz kaldığında bağlama elemanları (zincir, çelik halat, web lashing) devreye girer. Her bağlama elemanının izin verilen güvenli yükü vardır: MSL (Maximum Securing Load), genellikle kopma yükünün belirli bir oranıdır (örn. çelik halat için kopma yükünün %80'i, zincir için %50'si). Toplam bağlama kapasitesi, atalet kuvvetinden sürtünme direnci düşülen değeri karşılamalıdır.",
         formula: {
-          text: "Σ(MSL etkin) ≥ F_atalet − μ × m × g",
+          text: "Σ(MSL etkin) ≥ Fatalet − μ × m × g",
           description: "Bağlamaların etkin direnci, atalet kuvvetinden sürtünme direnci çıkarılan değeri karşılamalı",
         },
       },

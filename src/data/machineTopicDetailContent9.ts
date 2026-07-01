@@ -34,10 +34,10 @@ const content9: ContentMap = {
             "RTD, metalin elektrik direncinin sıcaklıkla orantılı değişmesi prensibine dayanır. Pt100 (0°C'de 100 Ω direnç) en yaygın tiptir. RTD termookuplaara göre daha hassas, tekrarlanabilir ve doğrusaldır; ancak yanıt süresi daha yavaştır."
           ],
           formula: {
-            expression: "R_t = R_0 × (1 + α × ΔT)",
+            expression: "Rt = R0 × (1 + α × ΔT)",
             variables: [
-              "R_t = T sıcaklığındaki direnç (Ω)",
-              "R_0 = 0°C'deki direnç (100 Ω, Pt100 için)",
+              "Rt = T sıcaklığındaki direnç (Ω)",
+              "R0 = 0°C'deki direnç (100 Ω, Pt100 için)",
               "α = sıcaklık katsayısı (0,00385 Ω/Ω/°C, Pt için)",
               "ΔT = sıcaklık değişimi (°C)"
             ]
@@ -45,7 +45,7 @@ const content9: ContentMap = {
           example: {
             problem: "Pt100 sensörde ölçülen direnç 138,5 Ω ise sıcaklığı hesaplayınız.",
             steps: [
-              "R_t = R_0 × (1 + α × ΔT)",
+              "Rt = R0 × (1 + α × ΔT)",
               "138,5 = 100 × (1 + 0,00385 × ΔT)",
               "1,385 = 1 + 0,00385 × ΔT",
               "ΔT = 0,385 / 0,00385"
@@ -175,10 +175,10 @@ const content9: ContentMap = {
             "Orifis plakası, boru içine yerleştirilen delikli bir disk olup akışkanı daraltarak basınç farkı yaratır. Bu fark debi ile orantılıdır. Ucuz ve basit yapılıdır; ancak kalıcı basınç kaybı oluşturur."
           ],
           formula: {
-            expression: "Q = C_d × A₂ × √(2ΔP / ρ)",
+            expression: "Q = Cd × A₂ × √(2ΔP / ρ)",
             variables: [
               "Q = debi (m³/s)",
-              "C_d = deşarj katsayısı (≈0,6-0,65)",
+              "Cd = deşarj katsayısı (≈0,6-0,65)",
               "A₂ = orifis alanı (m²)",
               "ΔP = basınç farkı (Pa)",
               "ρ = akışkan yoğunluğu (kg/m³)"
@@ -281,12 +281,12 @@ const content9: ContentMap = {
             "Akım sinyali, gerilim sinyaline göre kablo uzunluğu ve gürültüden daha az etkilenir."
           ],
           formula: {
-            expression: "I = 4 + (16 × (X − X_min) / (X_max − X_min))",
+            expression: "I = 4 + (16 × (X − Xmin) / (Xmax − Xmin))",
             variables: [
               "I = çıkış akımı (mA)",
               "X = ölçülen değer",
-              "X_min = ölçüm alt sınırı",
-              "X_max = ölçüm üst sınırı"
+              "Xmin = ölçüm alt sınırı",
+              "Xmax = ölçüm üst sınırı"
             ]
           },
           example: {
@@ -372,13 +372,13 @@ const content9: ContentMap = {
             "D (Türev): Hatanın değişim hızını ölçer ve aşımı azaltır. Gürültüye duyarlıdır."
           ],
           formula: {
-            expression: "u(t) = K_p × e(t) + K_i × ∫e(t)dt + K_d × de(t)/dt",
+            expression: "u(t) = Kp × e(t) + Ki × ∫e(t)dt + Kd × de(t)/dt",
             variables: [
               "u(t) = kontrolör çıkışı",
               "e(t) = hata sinyali (SP − PV)",
-              "K_p = orantısal kazanç",
-              "K_i = integral kazancı",
-              "K_d = türev kazancı"
+              "Kp = orantısal kazanç",
+              "Ki = integral kazancı",
+              "Kd = türev kazancı"
             ]
           }
         },
@@ -388,9 +388,9 @@ const content9: ContentMap = {
           table: {
             headers: ["Parametre", "Artırılırsa", "Azaltılırsa"],
             rows: [
-              ["K_p", "Hızlı tepki, olası salınım", "Yavaş tepki, büyük offset"],
-              ["K_i", "Offset giderilir, olası overshoot", "Kalıcı hata kalır"],
-              ["K_d", "Aşım azalır, gürültü hassasiyeti", "Aşım artar"]
+              ["Kp", "Hızlı tepki, olası salınım", "Yavaş tepki, büyük offset"],
+              ["Ki", "Offset giderilir, olası overshoot", "Kalıcı hata kalır"],
+              ["Kd", "Aşım azalır, gürültü hassasiyeti", "Aşım artar"]
             ]
           }
         },
@@ -430,16 +430,16 @@ const content9: ContentMap = {
           heading: "Ziegler-Nichols Ayar Yöntemi",
           paragraphs: [
             "1. I ve D terimlerini devre dışı bırak (Ti = ∞, Td = 0).",
-            "2. Kp'yi sürekli salınım oluşana kadar artır → bu değer K_u (ultimate gain).",
-            "3. Salınım periyodunu ölç → T_u.",
+            "2. Kp'yi sürekli salınım oluşana kadar artır → bu değer Ku (ultimate gain).",
+            "3. Salınım periyodunu ölç → Tu.",
             "4. Tablo değerlerinden PID parametrelerini hesapla."
           ],
           table: {
             headers: ["Kontrolör", "Kp", "Ti", "Td"],
             rows: [
-              ["P", "0,5 × K_u", "—", "—"],
-              ["PI", "0,45 × K_u", "T_u / 1,2", "—"],
-              ["PID", "0,6 × K_u", "T_u / 2", "T_u / 8"]
+              ["P", "0,5 × Ku", "—", "—"],
+              ["PI", "0,45 × Ku", "Tu / 1,2", "—"],
+              ["PID", "0,6 × Ku", "Tu / 2", "Tu / 8"]
             ]
           }
         }
@@ -779,10 +779,10 @@ const content9: ContentMap = {
           heading: "Tetikleme Açısı ve Çıkış",
           paragraphs: [],
           formula: {
-            expression: "V_dc = (V_max / π) × (1 + cosα) — yarım dalga için",
+            expression: "Vdc = (Vmax / π) × (1 + cosα) — yarım dalga için",
             variables: [
-              "V_dc = ortalama DC çıkış gerilimi",
-              "V_max = AC tepe gerilimi",
+              "Vdc = ortalama DC çıkış gerilimi",
+              "Vmax = AC tepe gerilimi",
               "α = tetikleme (ateşleme) açısı (derece)"
             ]
           }
@@ -820,19 +820,19 @@ const content9: ContentMap = {
             "Üç fazlı tam dalga köprü doğrultucu, gemi güç elektroniğinde en yaygın kullanılan tiptir. 6 diyot veya SCR kullanır. Her periyotta 6 darbe üretir ve düşük ripple'lı DC çıkış sağlar."
           ],
           formula: {
-            expression: "V_dc = (3 × √2 / π) × V_LL = 1,35 × V_LL",
+            expression: "Vdc = (3 × √2 / π) × VLL = 1,35 × VLL",
             variables: [
-              "V_dc = ortalama DC çıkış gerilimi",
-              "V_LL = AC hat-hat (line-to-line) gerilimi"
+              "Vdc = ortalama DC çıkış gerilimi",
+              "VLL = AC hat-hat (line-to-line) gerilimi"
             ]
           },
           example: {
             problem: "440V AC üç fazlı sisteme bağlı 6 darbeli doğrultucunun DC çıkışını hesaplayınız.",
             steps: [
-              "V_dc = 1,35 × V_LL",
-              "V_dc = 1,35 × 440"
+              "Vdc = 1,35 × VLL",
+              "Vdc = 1,35 × 440"
             ],
-            result: "V_dc = 594 V. Kontrollü doğrultucuda bu değer tetikleme açısıyla düşürülebilir."
+            result: "Vdc = 594 V. Kontrollü doğrultucuda bu değer tetikleme açısıyla düşürülebilir."
           }
         }
       ],
@@ -932,10 +932,10 @@ const content9: ContentMap = {
           heading: "THD (Total Harmonic Distortion)",
           paragraphs: [],
           formula: {
-            expression: "THD% = √(Σ I_n² ) / I_1 × 100",
+            expression: "THD% = √(Σ In² ) / I1 × 100",
             variables: [
-              "I_n = n. harmonik akım bileşeni",
-              "I_1 = temel frekans akım bileşeni",
+              "In = n. harmonik akım bileşeni",
+              "I1 = temel frekans akım bileşeni",
               "Kabul edilebilir sınır: THD < %5 (IEEE 519)"
             ]
           }

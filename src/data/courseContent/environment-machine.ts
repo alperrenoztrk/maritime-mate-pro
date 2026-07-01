@@ -22,15 +22,15 @@ export const environmentMachine: CourseTopic = {
       id: "co2-emission",
       name: "CO₂ Emisyonu",
       group: "Emisyon Hesapları",
-      formula: "E_CO₂ = FC × C_f",
+      formula: "ECO₂ = FC × Cf",
       variables: [
         { symbol: "FC", label: "Yakıt tüketimi", unit: "ton" },
-        { symbol: "C_f", label: "Karbon faktörü (HFO: 3,114, MDO: 3,206)", unit: "t-CO₂/t-yakıt" },
+        { symbol: "Cf", label: "Karbon faktörü (HFO: 3,114, MDO: 3,206)", unit: "t-CO₂/t-yakıt" },
       ],
       source: { code: "MARPOL Annex VI (IMO DCS / karbon faktörü)" },
       inputs: [
         { key: "fc", label: "Yakıt Tüketimi", unit: "ton", placeholder: "100" },
-        { key: "cf", label: "Karbon Faktörü (C_f)", unit: "t-CO₂/t-yakıt", placeholder: "3.114" },
+        { key: "cf", label: "Karbon Faktörü (Cf)", unit: "t-CO₂/t-yakıt", placeholder: "3.114" },
       ],
       calculate: (v) => {
         return [{ label: "CO₂ Emisyonu", value: `${(v.fc * v.cf).toFixed(1)} ton CO₂` }];
@@ -40,7 +40,7 @@ export const environmentMachine: CourseTopic = {
       id: "sox-emission",
       name: "SOx Emisyonu",
       group: "Emisyon Hesapları",
-      formula: "E_SOx = 2 × (S / 100) × FC",
+      formula: "ESOx = 2 × (S / 100) × FC",
       variables: [
         { symbol: "FC", label: "Yakıt tüketimi", unit: "ton" },
         { symbol: "S", label: "Yakıt kükürt oranı", unit: "%, m/m" },
@@ -99,11 +99,11 @@ export const environmentMachine: CourseTopic = {
       id: "ows-capacity",
       name: "Yağlı Su Separatörü (OWS) Kapasitesi",
       group: "Atık Yönetimi",
-      formula: "Q_OWS = V_sintine / t",
+      formula: "QOWS = Vsintine / t",
       variables: [
-        { symbol: "V_sintine", label: "Günlük sintine üretimi", unit: "m³/gün" },
+        { symbol: "Vsintine", label: "Günlük sintine üretimi", unit: "m³/gün" },
         { symbol: "t", label: "OWS çalışma süresi", unit: "saat/gün" },
-        { symbol: "Q_OWS", label: "Gerekli OWS debisi", unit: "m³/saat" },
+        { symbol: "QOWS", label: "Gerekli OWS debisi", unit: "m³/saat" },
       ],
       source: { code: "MARPOL Annex I Reg.14 (sintine suyu yağ içeriği ≤ 15 ppm)" },
       note: "OWS çıkış yağ konsantrasyonu ≤ 15 ppm olmalıdır (15 ppm alarm + otomatik durdurma).",
@@ -151,10 +151,10 @@ export const environmentMachine: CourseTopic = {
       id: "ballast-treatment-capacity",
       name: "Balast Su Arıtma Kapasitesi",
       group: "Atık Yönetimi",
-      formula: "t = V_balast / Q_pompa",
+      formula: "t = Vbalast / Qpompa",
       variables: [
-        { symbol: "V_balast", label: "Toplam balast hacmi", unit: "m³" },
-        { symbol: "Q_pompa", label: "Balast pompa debisi", unit: "m³/saat" },
+        { symbol: "Vbalast", label: "Toplam balast hacmi", unit: "m³" },
+        { symbol: "Qpompa", label: "Balast pompa debisi", unit: "m³/saat" },
         { symbol: "t", label: "Toplam arıtma süresi", unit: "saat" },
       ],
       source: { code: "Ballast Water Management Convention (BWMC) D-2 standardı" },

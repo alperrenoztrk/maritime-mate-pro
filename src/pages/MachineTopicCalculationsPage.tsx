@@ -23,8 +23,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "Carnot Verimi",
       description: "Sıcak ve soğuk kaynak sıcaklıkları ile Carnot çevrim verimini hesaplar.",
       inputs: [
-        { key: "th", label: "Sıcak Kaynak (T_H)", unit: "°C", placeholder: "500" },
-        { key: "tl", label: "Soğuk Kaynak (T_L)", unit: "°C", placeholder: "30" },
+        { key: "th", label: "Sıcak Kaynak (TH)", unit: "°C", placeholder: "500" },
+        { key: "tl", label: "Soğuk Kaynak (TL)", unit: "°C", placeholder: "30" },
       ],
       calculate: (v) => {
         const TH = v.th + 273.15;
@@ -214,7 +214,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const hf = vals.f * (vals.l / vals.d) * (vals.v * vals.v) / (2 * 9.81);
         const dp = vals.rho * 9.81 * hf;
         return [
-          { label: "Yük Kaybı (h_f)", value: `${hf.toFixed(2)} m` },
+          { label: "Yük Kaybı (hf)", value: `${hf.toFixed(2)} m` },
           { label: "Basınç Kaybı (ΔP)", value: `${(dp / 1000).toFixed(2)} kPa` },
         ];
       },
@@ -231,7 +231,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       ],
       calculate: (v) => {
         const npsha = (v.pa - v.pv) * 1000 / (v.rho * 9.81) + v.hs - v.hf;
-        return [{ label: "NPSH_A", value: `${npsha.toFixed(2)} m` }];
+        return [{ label: "NPSHA", value: `${npsha.toFixed(2)} m` }];
       },
     },
     {
@@ -281,7 +281,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "İndike Güç (IHP)",
       description: "Ana makinenin indike gücünü hesaplar. P = (Pmi × L × A × n × k) / 60",
       inputs: [
-        { key: "pmi", label: "Ortalama İndike Basınç (P_mi)", unit: "bar", placeholder: "18" },
+        { key: "pmi", label: "Ortalama İndike Basınç (Pmi)", unit: "bar", placeholder: "18" },
         { key: "l", label: "Strok (L)", unit: "m", placeholder: "2.5" },
         { key: "a", label: "Piston Alanı (A)", unit: "m²", placeholder: "0.35" },
         { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "100" },
@@ -307,10 +307,10 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Fren Gücü (BHP)",
-      description: "İndike güçten fren gücünü hesaplar: BHP = IHP × η_mek",
+      description: "İndike güçten fren gücünü hesaplar: BHP = IHP × ηmek",
       inputs: [
         { key: "ihp", label: "İndike Güç (IHP)", unit: "kW", placeholder: "12000" },
-        { key: "eta", label: "Mekanik Verim (η_mek)", unit: "%", placeholder: "90" },
+        { key: "eta", label: "Mekanik Verim (ηmek)", unit: "%", placeholder: "90" },
       ],
       calculate: (v) => {
         const bhp = v.ihp * (v.eta / 100);
@@ -323,10 +323,10 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Termal Verim",
-      description: "Motor termal verimini hesaplar: η = (BHP × 3600) / (ṁ_f × LCV)",
+      description: "Motor termal verimini hesaplar: η = (BHP × 3600) / (ṁf × LCV)",
       inputs: [
         { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "10000" },
-        { key: "fc", label: "Yakıt Tüketimi (ṁ_f)", unit: "kg/saat", placeholder: "1850" },
+        { key: "fc", label: "Yakıt Tüketimi (ṁf)", unit: "kg/saat", placeholder: "1850" },
         { key: "lcv", label: "Alt Isıl Değer (LCV)", unit: "kJ/kg", placeholder: "42700" },
       ],
       calculate: (v) => {
@@ -336,7 +336,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Ortalama Efektif Basınç (MEP)",
-      description: "BMEP veya IMEP hesabı: MEP = (P × 60) / (V_s × n × k)",
+      description: "BMEP veya IMEP hesabı: MEP = (P × 60) / (Vs × n × k)",
       inputs: [
         { key: "p", label: "Güç (P)", unit: "kW", placeholder: "10000" },
         { key: "bore", label: "Silindir Çapı", unit: "m", placeholder: "0.5" },
@@ -349,7 +349,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const mep = (v.p * 1000 * 60) / (vs * v.n * v.k); // Pa
         return [
           { label: "MEP", value: `${(mep / 1e5).toFixed(2)} bar` },
-          { label: "Silindir Hacmi (V_s)", value: `${(vs * 1000).toFixed(1)} litre` },
+          { label: "Silindir Hacmi (Vs)", value: `${(vs * 1000).toFixed(1)} litre` },
         ];
       },
     },
@@ -372,13 +372,13 @@ const topicCalculations: Record<string, CalcTool[]> = {
       inputs: [
         { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "500" },
         { key: "stroke", label: "Strok", unit: "mm", placeholder: "2000" },
-        { key: "vc", label: "Ölü Hacim (V_c)", unit: "litre", placeholder: "15" },
+        { key: "vc", label: "Ölü Hacim (Vc)", unit: "litre", placeholder: "15" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000) * 1000; // litre
         const cr = (vs + v.vc) / v.vc;
         return [
-          { label: "Strok Hacmi (V_s)", value: `${vs.toFixed(1)} litre` },
+          { label: "Strok Hacmi (Vs)", value: `${vs.toFixed(1)} litre` },
           { label: "Sıkıştırma Oranı (r)", value: `${cr.toFixed(1)}:1` },
         ];
       },
@@ -442,7 +442,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "rho", label: "Deniz Suyu Yoğunluğu", unit: "kg/m³", placeholder: "1025" },
         { key: "d", label: "Pervane Çapı", unit: "m", placeholder: "6" },
         { key: "n", label: "Devir", unit: "rps", placeholder: "2" },
-        { key: "kt", label: "İtme Katsayısı (K_T)", unit: "", placeholder: "0.18" },
+        { key: "kt", label: "İtme Katsayısı (KT)", unit: "", placeholder: "0.18" },
       ],
       calculate: (v) => {
         // T = K_T × ρ × n² × D⁴
@@ -474,7 +474,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "t1", label: "Sıcaklık T₁", unit: "°C", placeholder: "50" },
         { key: "v2", label: "Viskozite @T₂", unit: "cSt", placeholder: "15" },
         { key: "t2", label: "Sıcaklık T₂", unit: "°C", placeholder: "130" },
-        { key: "tx", label: "Hedef Sıcaklık T_x", unit: "°C", placeholder: "100" },
+        { key: "tx", label: "Hedef Sıcaklık Tx", unit: "°C", placeholder: "100" },
       ],
       calculate: (v) => {
         // Walther equation: log(log(ν+0.7)) = A - B × log(T+273.15)
@@ -624,7 +624,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "Kısa Devre Akımı",
-      description: "Kısa devre akımı hesabı: I_sc = V / Z",
+      description: "Kısa devre akımı hesabı: Isc = V / Z",
       inputs: [
         { key: "v", label: "Hat Gerilimi", unit: "V", placeholder: "440" },
         { key: "z", label: "Empedans (Z)", unit: "Ω", placeholder: "0.05" },
@@ -653,7 +653,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "İzolasyon Direnci",
-      description: "Minimum izolasyon direnci kontrolü. IR = V_test / I_kaçak",
+      description: "Minimum izolasyon direnci kontrolü. IR = Vtest / Ikaçak",
       inputs: [
         { key: "vtest", label: "Test Gerilimi", unit: "V", placeholder: "500" },
         { key: "ileak", label: "Kaçak Akım", unit: "mA", placeholder: "0.5" },
@@ -691,7 +691,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "COP Hesabı",
       description: "Soğutma sistemi performans katsayısını hesaplar.",
       inputs: [
-        { key: "ql", label: "Soğutma Kapasitesi (Q_L)", unit: "kW", placeholder: "50" },
+        { key: "ql", label: "Soğutma Kapasitesi (QL)", unit: "kW", placeholder: "50" },
         { key: "wc", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "15" },
       ],
       calculate: (v) => {
@@ -699,15 +699,15 @@ const topicCalculations: Record<string, CalcTool[]> = {
         const qh = v.ql + v.wc;
         return [
           { label: "COP", value: cop.toFixed(2) },
-          { label: "Isı Atımı (Q_H)", value: `${qh.toFixed(1)} kW` },
+          { label: "Isı Atımı (QH)", value: `${qh.toFixed(1)} kW` },
         ];
       },
     },
     {
       name: "Soğutucu Akışkan Debisi",
-      description: "Soğutucu akışkan kütle debisini hesaplar: ṁ = Q_L / (h₁ - h₄)",
+      description: "Soğutucu akışkan kütle debisini hesaplar: ṁ = QL / (h₁ - h₄)",
       inputs: [
-        { key: "ql", label: "Soğutma Kapasitesi (Q_L)", unit: "kW", placeholder: "50" },
+        { key: "ql", label: "Soğutma Kapasitesi (QL)", unit: "kW", placeholder: "50" },
         { key: "h1", label: "Evaporatör Çıkışı (h₁)", unit: "kJ/kg", placeholder: "400" },
         { key: "h4", label: "Evaporatör Girişi (h₄)", unit: "kJ/kg", placeholder: "250" },
       ],
@@ -739,8 +739,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "Carnot COP (Soğutma)",
       description: "İdeal Carnot soğutma COP değerini hesaplar.",
       inputs: [
-        { key: "tl", label: "Soğuk Ortam (T_L)", unit: "°C", placeholder: "-18" },
-        { key: "th", label: "Sıcak Ortam (T_H)", unit: "°C", placeholder: "35" },
+        { key: "tl", label: "Soğuk Ortam (TL)", unit: "°C", placeholder: "-18" },
+        { key: "th", label: "Sıcak Ortam (TH)", unit: "°C", placeholder: "35" },
       ],
       calculate: (v) => {
         const TL = v.tl + 273.15;
@@ -940,9 +940,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "EEDI Hesabı",
       description: "Enerji Verimlilik Tasarım İndeksini hesaplar.",
       inputs: [
-        { key: "p", label: "Motor Gücü (P_ME)", unit: "kW", placeholder: "15000" },
+        { key: "p", label: "Motor Gücü (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfoc", label: "SFOC", unit: "g/kW·h", placeholder: "175" },
-        { key: "cf", label: "CO₂ Faktörü (C_f)", unit: "", placeholder: "3.114" },
+        { key: "cf", label: "CO₂ Faktörü (Cf)", unit: "", placeholder: "3.114" },
         { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
         { key: "vref", label: "Referans Hız", unit: "knot", placeholder: "14.5" },
       ],
@@ -986,9 +986,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
       name: "EEXI Hesabı",
       description: "Mevcut gemiler için Enerji Verimlilik İndeksini hesaplar.",
       inputs: [
-        { key: "pme", label: "Ana Motor Gücü (P_ME)", unit: "kW", placeholder: "15000" },
+        { key: "pme", label: "Ana Motor Gücü (PME)", unit: "kW", placeholder: "15000" },
         { key: "sfocMe", label: "Ana Motor SFOC", unit: "g/kW·h", placeholder: "175" },
-        { key: "pae", label: "Yardımcı Motor Gücü (P_AE)", unit: "kW", placeholder: "750" },
+        { key: "pae", label: "Yardımcı Motor Gücü (PAE)", unit: "kW", placeholder: "750" },
         { key: "sfocAe", label: "Yardımcı SFOC", unit: "g/kW·h", placeholder: "215" },
         { key: "cf", label: "CO₂ Faktörü", unit: "", placeholder: "3.114" },
         { key: "dwt", label: "DWT", unit: "ton", placeholder: "50000" },
@@ -1006,7 +1006,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "mexh", label: "Egzoz Debisi", unit: "kg/s", placeholder: "30" },
         { key: "texhIn", label: "Egzoz Giriş Sıcaklığı", unit: "°C", placeholder: "350" },
         { key: "texhOut", label: "Egzoz Çıkış Sıcaklığı", unit: "°C", placeholder: "180" },
-        { key: "cp", label: "Özgül Isı (c_p)", unit: "kJ/kg·K", placeholder: "1.05" },
+        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "1.05" },
         { key: "eta", label: "Sistem Verimi", unit: "%", placeholder: "70" },
       ],
       calculate: (v) => {
@@ -1025,7 +1025,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       description: "Yakıt tüketiminden CO₂ emisyonunu hesaplar.",
       inputs: [
         { key: "fc", label: "Yakıt Tüketimi", unit: "ton", placeholder: "100" },
-        { key: "cf", label: "Karbon Faktörü (C_f)", unit: "t-CO₂/t-yakıt", placeholder: "3.114" },
+        { key: "cf", label: "Karbon Faktörü (Cf)", unit: "t-CO₂/t-yakıt", placeholder: "3.114" },
       ],
       calculate: (v) => {
         return [{ label: "CO₂ Emisyonu", value: `${(v.fc * v.cf).toFixed(1)} ton CO₂` }];
@@ -1308,9 +1308,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
     },
     {
       name: "RTD Sıcaklık Hesabı",
-      description: "Pt100 RTD direncinden sıcaklık hesabı: R_t = R₀(1 + αΔT)",
+      description: "Pt100 RTD direncinden sıcaklık hesabı: Rt = R₀(1 + αΔT)",
       inputs: [
-        { key: "rt", label: "Ölçülen Direnç (R_t)", unit: "Ω", placeholder: "138.5" },
+        { key: "rt", label: "Ölçülen Direnç (Rt)", unit: "Ω", placeholder: "138.5" },
         { key: "r0", label: "R₀ (0°C direnci)", unit: "Ω", placeholder: "100" },
         { key: "alpha", label: "α katsayısı", unit: "1/°C", placeholder: "0.00385" },
       ],

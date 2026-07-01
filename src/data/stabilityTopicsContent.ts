@@ -486,7 +486,7 @@ GM değeri, geminin küçük açılarda ne kadar stabil olduğunu gösterir:
             description: "Metasantrik yükseklik (stabilite ölçüsü)"
           },
           {
-            formula: "GM_eff = GM - (FSM / Δ)",
+            formula: "GMeff = GM - (FSM / Δ)",
             description: "Efektif GM (serbest yüzey etkisi dahil)"
           }
         ],
@@ -497,7 +497,7 @@ GM değeri, geminin küçük açılarda ne kadar stabil olduğunu gösterir:
           },
           {
             problem: "KM = 8.5 m olan gemide, minimum GM = 0.50 m için maksimum KG ne olabilir?",
-            solution: "KG_max = KM - GM_min = 8.5 - 0.50 = 8.0 m"
+            solution: "KGmax = KM - GMmin = 8.5 - 0.50 = 8.0 m"
           }
         ],
         keyPoints: [
@@ -605,7 +605,7 @@ Kaldırma kuvveti:
             description: "Batmış hacim hesabı"
           },
           {
-            formula: "Δ_tatlı = Δ_deniz × (ρ_deniz / ρ_tatlı)",
+            formula: "Δtatlı = Δdeniz × (ρdeniz / ρtatlı)",
             description: "Tatlı su dönüşümü"
           }
         ],
@@ -616,7 +616,7 @@ Kaldırma kuvveti:
           },
           {
             problem: "10.000 tonluk gemi, deniz suyundan tatlı suya geçtiğinde ek su çekimi ne olur?",
-            solution: "∇_deniz = 10000/1.025 = 9756 m³, ∇_tatlı = 10000/1.000 = 10000 m³. Fark = 244 m³ (daha fazla batar)"
+            solution: "∇deniz = 10000/1.025 = 9756 m³, ∇tatlı = 10000/1.000 = 10000 m³. Fark = 244 m³ (daha fazla batar)"
           }
         ],
         keyPoints: [
@@ -636,7 +636,7 @@ Deplasman (Δ), geminin ve üzerindeki her şeyin toplam ağırlığıdır. Arş
 **Deplasman Bileşenleri**
 Toplam deplasman şu unsurlardan oluşur:
 
-Δ = Δ_lightship + Deadweight (DWT)
+Δ = Δlightship + Deadweight (DWT)
 
 **Lightship (Hafif Gemi):**
 - Gövde yapısı
@@ -707,22 +707,22 @@ Draft (T), geminin su hattından omurgasına olan dikey mesafedir. Gemi ne kadar
 
 **Draft Ölçüm Noktaları**
 Gemilerde draft genellikle üç noktadan ölçülür:
-- **T_F (Forward Draft):** Baş draftı
-- **T_A (Aft Draft):** Kıç draftı
-- **T_M (Midship Draft):** Orta kesit draftı
+- **TF (Forward Draft):** Baş draftı
+- **TA (Aft Draft):** Kıç draftı
+- **TM (Midship Draft):** Orta kesit draftı
 
 **Ortalama Draft**
-Basit ortalama: T_ort = (T_F + T_A) / 2
-Gerçek ortalama: T_mean = (T_F + 6×T_M + T_A) / 8 (geminin şekline göre)
+Basit ortalama: Tort = (TF + TA) / 2
+Gerçek ortalama: Tmean = (TF + 6×TM + TA) / 8 (geminin şekline göre)
 
 **Trim**
 Trim, baş ve kıç draftları arasındaki farktır:
-Trim = T_A - T_F
+Trim = TA - TF
 
 **Trim Durumları:**
-- **Trim by Stern (Kıça trim):** T_A > T_F (pozitif trim)
-- **Trim by Head (Başa trim):** T_F > T_A (negatif trim)
-- **Even Keel:** T_A = T_F (sıfır trim)
+- **Trim by Stern (Kıça trim):** TA > TF (pozitif trim)
+- **Trim by Head (Başa trim):** TF > TA (negatif trim)
+- **Even Keel:** TA = TF (sıfır trim)
 
 **Draft İşaretleri (Draft Marks)**
 Gemilerin her iki bordosunda ve baş/kıç kesitlerinde draft işaretleri bulunur:
@@ -738,11 +738,11 @@ Draft değişimi stabiliteyi doğrudan etkiler:
 - Hidrostatik tablolar her draft için KM verir`,
         formulas: [
           {
-            formula: "Trim = T_A - T_F",
+            formula: "Trim = TA - TF",
             description: "Trim hesabı (pozitif = kıça trim)"
           },
           {
-            formula: "T_mean = (T_F + 6×T_M + T_A) / 8",
+            formula: "Tmean = (TF + 6×TM + TA) / 8",
             description: "Gerçek ortalama draft (Simpson kuralı)"
           },
           {
@@ -753,7 +753,7 @@ Draft değişimi stabiliteyi doğrudan etkiler:
         examples: [
           {
             problem: "Baş draft = 6.5 m, Kıç draft = 7.3 m. Ortalama draft ve trim?",
-            solution: "T_ort = (6.5 + 7.3) / 2 = 6.9 m. Trim = 7.3 - 6.5 = 0.8 m kıça trim"
+            solution: "Tort = (6.5 + 7.3) / 2 = 6.9 m. Trim = 7.3 - 6.5 = 0.8 m kıça trim"
           }
         ],
         keyPoints: [
@@ -771,10 +771,10 @@ Draft değişimi stabiliteyi doğrudan etkiler:
 TPC, geminin draftını 1 cm artırmak için gerekli ağırlıktır (ton cinsinden). Su hattı alanı ile doğrudan ilişkilidir.
 
 **TPC Formülü**
-TPC = (A_wp × ρ) / 100
+TPC = (Awp × ρ) / 100
 
 Burada:
-- A_wp: Su hattı alanı (m²)
+- Awp: Su hattı alanı (m²)
 - ρ: Su yoğunluğu (t/m³)
 - 100: cm → m dönüşümü
 
@@ -799,12 +799,12 @@ Bu değer yükleme hesaplamalarında önemlidir.
 **Dock Water Allowance (DWA)**
 Liman suyunun yoğunluğu deniz suyundan farklı olabilir:
 
-DWA = FWA × (1025 - ρ_dock) / 25
+DWA = FWA × (1025 - ρdock) / 25
 
-Burada ρ_dock: Liman suyunun yoğunluğu`,
+Burada ρdock: Liman suyunun yoğunluğu`,
         formulas: [
           {
-            formula: "TPC = A_wp × ρ / 100",
+            formula: "TPC = Awp × ρ / 100",
             description: "TPC hesabı (ton/cm)"
           },
           {
@@ -886,11 +886,11 @@ Küçük açılarda (θ < 10-15°):
             description: "Küçük açılarda GZ hesabı (θ < 10-15°)"
           },
           {
-            formula: "M_R = Δ × GZ",
+            formula: "MR = Δ × GZ",
             description: "Sağlama (doğrultucu) momenti"
           },
           {
-            formula: "M_R = Δ × GM × sin(θ)",
+            formula: "MR = Δ × GM × sin(θ)",
             description: "Sağlama momenti (açık formül)"
           }
         ],
@@ -926,11 +926,11 @@ GZ değeri (sağlama kolu):
 - Birim: metre (m)
 
 **Sağlama Momenti**
-Righting moment (M_R):
-M_R = Δ × GZ = Δ × GM × sin(θ)
+Righting moment (MR):
+MR = Δ × GZ = Δ × GM × sin(θ)
 
 Burada:
-- M_R: Sağlama momenti (t·m veya kN·m)
+- MR: Sağlama momenti (t·m veya kN·m)
 - Δ: Deplasman (ton)
 - GZ: Sağlama kolu (m)
 - GM: Metasantrik yükseklik (m)
@@ -944,7 +944,7 @@ Burada:
 **Minimum GM Gereksinimleri**
 IMO tarafından belirlenen tipik minimum GM değerleri:
 - Genel kargo gemileri: GM ≥ 0.15 m
-- Tahıl yüklü gemiler: GM_düzeltilmiş ≥ 0.30 m
+- Tahıl yüklü gemiler: GMdüzeltilmiş ≥ 0.30 m
 - Yolcu gemileri: Özel kriterler uygulanır`,
         formulas: [
           {
@@ -952,7 +952,7 @@ IMO tarafından belirlenen tipik minimum GM değerleri:
             description: "Küçük açılarda temel GZ-GM ilişkisi"
           },
           {
-            formula: "M_R = Δ × GM × sin(θ)",
+            formula: "MR = Δ × GM × sin(θ)",
             description: "Sağlama momenti (tam formül)"
           },
           {
@@ -963,7 +963,7 @@ IMO tarafından belirlenen tipik minimum GM değerleri:
         examples: [
           {
             problem: "Δ = 15000 ton, GM = 1.2 m, θ = 5°. Sağlama momentini hesaplayın.",
-            solution: "GZ = 1.2 × sin(5°) = 1.2 × 0.0872 = 0.105 m. M_R = 15000 × 0.105 = 1575 t·m"
+            solution: "GZ = 1.2 × sin(5°) = 1.2 × 0.0872 = 0.105 m. MR = 15000 × 0.105 = 1575 t·m"
           },
           {
             problem: "GM = 0.8 m, θ = 10° için GZ?",
@@ -973,7 +973,7 @@ IMO tarafından belirlenen tipik minimum GM değerleri:
         keyPoints: [
           "GZ = GM × sin(θ) küçük açılar için geçerlidir",
           "GM büyükse GZ de büyük olur (daha güçlü doğrultma)",
-          "Sağlama momenti M_R = Δ × GZ",
+          "Sağlama momenti MR = Δ × GZ",
           "Minimum GM değerleri IMO tarafından belirlenir"
         ]
       },
@@ -1370,13 +1370,13 @@ GM'deki bu periyodik değişim, gemi rulo periyodunun yarısına eşit olduğund
 
 **Karşılaşma Periyodu İlişkisi:**
 ────────────
-T_e ≈ T_r / 2  veya  T_e ≈ T_r
+Te ≈ Tr / 2  veya  Te ≈ Tr
 ────────────
-(T_e: karşılaşma periyodu, T_r: doğal rulo periyodu)
+(Te: karşılaşma periyodu, Tr: doğal rulo periyodu)
 
 **Hız Etkisi:**
-- Baştan dalgada: Gemi hızı arttıkça T_e azalır
-- Kıçtan dalgada: Gemi hızı arttıkça T_e artar
+- Baştan dalgada: Gemi hızı arttıkça Te azalır
+- Kıçtan dalgada: Gemi hızı arttıkça Te artar
 
 **Yüksek Risk Faktörleri**
 - Düşük GM (yumuşak gemi)
@@ -1389,7 +1389,7 @@ T_e ≈ T_r / 2  veya  T_e ≈ T_r
 
 **1. Hız Değişikliği:**
 - Kritik hızdan kaçının
-- Yavaşlayarak veya hızlanarak T_e'yi değiştirin
+- Yavaşlayarak veya hızlanarak Te'yi değiştirin
 
 **2. Rota Değişikliği:**
 - Dalgalara açı verin (baştan veya kıçtan kaçının)
@@ -1410,11 +1410,11 @@ T_e ≈ T_r / 2  veya  T_e ≈ T_r
             description: "Kritik dalga boyu / gemi boyu oranı"
           },
           {
-            formula: "T_e = T_r / 2",
+            formula: "Te = Tr / 2",
             description: "Ana parametrik rezonans koşulu"
           },
           {
-            formula: "T_e = λ / (V_w ± V_s)",
+            formula: "Te = λ / (Vw ± Vs)",
             description: "Karşılaşma periyodu (baştan/kıçtan dalga)"
           }
         ],
@@ -1541,7 +1541,7 @@ Burada:
         content: `Rulo rezonansı, geminin doğal rulo periyodu ile karşılaşılan dalga periyodunun yakınlaşması sonucu salınım büyümesidir. Parametrik yalpaya benzer riskler doğurabilir, ancak farklı bir mekanizmaya sahiptir.
 
 **Rezonansın Oluşumu**
-- Dalga periyodu (T_w) ≈ Geminin doğal rulo periyodu (T_r)
+- Dalga periyodu (Tw) ≈ Geminin doğal rulo periyodu (Tr)
 - Tekrarlı dalga etkileri ruloyu her çevrimde büyütür
 - Özellikle yan dalga (beam sea) koşullarında kritiktir
 
@@ -1610,7 +1610,7 @@ GZ eğrisi, Cross Curves of Stability (KN eğrileri) kullanılarak hesaplanır:
 Tipik bir GZ eğrisi:
 - 0°'de başlar (GZ = 0)
 - Küçük açılarda lineer yükselir (GM ile orantılı)
-- Bir maksimuma ulaşır (GZ_max)
+- Bir maksimuma ulaşır (GZmax)
 - Daha büyük açılarda azalmaya başlar
 - Bir noktada sıfırı keser (Vanishing Angle)
 
@@ -1625,7 +1625,7 @@ Tipik bir GZ eğrisi:
             description: "GZ hesabı (Cross Curves yöntemi)"
           },
           {
-            formula: "tan(eğim)_θ=0 = GM",
+            formula: "tan(eğim)θ=0 = GM",
             description: "GZ eğrisinin 0°'deki eğimi GM'e eşittir"
           },
           {
@@ -1651,16 +1651,16 @@ GZ eğrisinin 0° civarındaki eğimi, GM değerini verir:
 - Dik eğim = Büyük GM = Sert gemi
 - Yatık eğim = Küçük GM = Yumuşak gemi
 
-**2. Maksimum GZ (GZ_max)**
+**2. Maksimum GZ (GZmax)**
 - GZ'nin ulaştığı en yüksek değer
 - Geminin en güçlü doğrultma momentini gösterir
 - Tipik olarak 25° - 40° arasında oluşur
 - IMO/IS Code 2008 kriteri: 30° veya daha büyük bir meyil açısında GZ ≥ 0.20 m olmalıdır
 
-**3. Maksimum GZ Açısı (θ_max)**
-- GZ_max'ın oluştuğu açı
+**3. Maksimum GZ Açısı (θmax)**
+- GZmax'ın oluştuğu açı
 - Bu açıya kadar gemi güçlü direnç gösterir
-- IMO kriteri: θ_max ≥ 25°
+- IMO kriteri: θmax ≥ 25°
 
 **4. Yok Olma Açısı (Angle of Vanishing Stability)**
 - GZ'nin tekrar sıfıra düştüğü açı
@@ -1682,12 +1682,12 @@ Dinamik stabiliteyi temsil eder:
         examples: [
           {
             problem: "GZ eğrisinde: θ=10°'de GZ=0.18m, θ=30°'de GZ=0.45m, θ=60°'de GZ=0.15m, θ=70°'de GZ=0. Bu gemiyi yorumlayın.",
-            solution: "GM ≈ 0.18/sin(10°) = 1.04 m (iyi). GZ_max yaklaşık 30° civarında 0.45 m (yeterli). Yok olma açısı 70° (yeterli). Genel olarak iyi stabilite."
+            solution: "GM ≈ 0.18/sin(10°) = 1.04 m (iyi). GZmax yaklaşık 30° civarında 0.45 m (yeterli). Yok olma açısı 70° (yeterli). Genel olarak iyi stabilite."
           }
         ],
         keyPoints: [
           "Başlangıç eğimi GM'i gösterir",
-          "GZ_max ve θ_max kritik IMO kriterleridir",
+          "GZmax ve θmax kritik IMO kriterleridir",
           "Yok olma açısı devrilme sınırını belirler",
           "Eğri altı alan dinamik stabiliteyi gösterir"
         ],
@@ -1843,7 +1843,7 @@ Duvar bordolu (wall-sided) gemi, su hattı civarındaki borda yüzeylerinin dike
 **Wall-Sided Formülün Temeli**
 
 Dikey bordalı gemilerde, yatma sırasında:
-- Su hattı alanı (A_w) değişmez
+- Su hattı alanı (Aw) değişmez
 - B noktasının yatay hareketi hesaplanabilir
 - M noktasının yükselişi analitik olarak ifade edilebilir
 
@@ -1947,7 +1947,7 @@ Wall-sided formül şu durumlarda geçerlidir:
 - Bu noktadan sonra güverte üzerindeki açıklıklar daha hızlı su alma riski taşır.
 - Gemi formuna bağlı olarak GZ eğrisinin davranışı değişebilir.
 
-**Downflooding Açısı (θ_df)**
+**Downflooding Açısı (θdf)**
 - Su geçirmez olmayan açıklıkların (kapak, menhol, havalandırma, kapı) su altında kaldığı açıdır.
 - Pozitif stabilite menzilinin pratik sınırıdır.
 - Stabilite kitapçığında, her yükleme durumu için belirlenir.
@@ -1959,28 +1959,28 @@ GZ eğrisi teorik olarak pozitif kalsa bile, downflooding ile su girişi başlad
 - Gerçek stabilite rezervi hızla azalır
 
 **Değerlendirme Prensibi**
-- Pozitif stabilite menzili = min(θ_vanishing, θ_df)
+- Pozitif stabilite menzili = min(θvanishing, θdf)
 - Downflooding açısı düşükse, GZ eğrisi güvenli kabul edilmez
 
 **Operasyonel Sonuç**
 - Açıklıkların kapatılması ve denetlenmesi
 - Yükleme sırasında freeboard ve trim kontrolü
-- GZ eğrisi yorumunda θ_df mutlaka referans alınır`,
+- GZ eğrisi yorumunda θdf mutlaka referans alınır`,
         keyPoints: [
           "Downflooding açısı, pozitif stabilite menzilinin pratik sınırıdır",
           "Deck edge immersion, su giriş riskinin başladığı erken eşiktir",
-          "GZ pozitif olsa bile θ_df düşükse stabilite yetersizdir",
-          "θ_df değeri stabilite kitapçığında yer alır"
+          "GZ pozitif olsa bile θdf düşükse stabilite yetersizdir",
+          "θdf değeri stabilite kitapçığında yer alır"
         ],
         warnings: [
-          "Açıklıklar düzgün kapatılmadıysa θ_df fiilen düşer",
+          "Açıklıklar düzgün kapatılmadıysa θdf fiilen düşer",
           "Düşük freeboard ve aşırı trim, su girişini hızlandırır",
           "Downflooding sonrası GZ eğrisi hızla bozulabilir"
         ],
         practicalTips: [
           "Seyir öncesi tüm su geçirmez kapakları kontrol edin",
           "Trim ve freeboard değerlerini stabilite limitleriyle kıyaslayın",
-          "GZ eğrisi yorumunda θ_df değerini mutlaka işaretleyin"
+          "GZ eğrisi yorumunda θdf değerini mutlaka işaretleyin"
         ]
       },
       {
@@ -1999,7 +1999,7 @@ GZ eğrisi teorik olarak pozitif kalsa bile, downflooding ile su girişi başlad
 
 **IMO Intact Stabilite Kriterleri (Özet)**
 - Pozitif stabilite menzili en az 30° (tercihen 40°)
-- GZ_max ≥ 0.20 m ve genellikle 25° veya üzerindeki bir açıda
+- GZmax ≥ 0.20 m ve genellikle 25° veya üzerindeki bir açıda
 - 0°–30° ve 0°–40° alan kriterleri (dinamik stabilite)
 
 **Menzil Değerlendirme**
@@ -2012,7 +2012,7 @@ GZ eğrisi teorik olarak pozitif kalsa bile, downflooding ile su girişi başlad
 - Serbest yüzey etkisi, menzili görünürde koruyup rezervi azaltabilir`,
         formulas: [
           {
-            formula: "θ_range = min(θ_vanishing, θ_df)",
+            formula: "θrange = min(θvanishing, θdf)",
             description: "Pozitif stabilite menzili sınırı"
           },
           {
@@ -2028,7 +2028,7 @@ GZ eğrisi teorik olarak pozitif kalsa bile, downflooding ile su girişi başlad
         ],
         practicalTips: [
           "Her yükleme durumunda menzil ve alanı birlikte kontrol edin",
-          "GZ eğrisi üzerinde θ_df ve GZ_max noktalarını işaretleyin",
+          "GZ eğrisi üzerinde θdf ve GZmax noktalarını işaretleyin",
           "Dar menzil varsa operasyonel limitleri sıkılaştırın"
         ],
         warnings: [
@@ -2067,7 +2067,7 @@ Bir tank tam dolu veya tamamen boş ise içindeki sıvı sabit bir ağırlık gi
 **Sanal KG Artışı (Virtual Rise of G)**
 Serbest yüzey etkisi, G'nin sanal olarak yükselmiş gibi davrandığı bir modelle ifade edilir:
 - GG₁ = FSM / Δ (G'nin sanal yükselişi)
-- GM_eff = GM - GG₁ (Efektif GM)
+- GMeff = GM - GG₁ (Efektif GM)
 
 Bu yaklaşım, gerçekte G'nin yükselmediğini ancak stabilitenin sanki G yükselmiş gibi azaldığını gösterir.
 
@@ -2097,21 +2097,21 @@ Serbest yüzey etkisi, tankın doluluk oranından bağımsızdır (yaklaşık ol
             description: "G'nin sanal yükselişi (m)"
           },
           {
-            formula: "GM_eff = GM - Σ(FSM) / Δ",
+            formula: "GMeff = GM - Σ(FSM) / Δ",
             description: "Efektif (düzeltilmiş) GM"
           }
         ],
         examples: [
           {
-            problem: "Tank boyutları: 20m × 10m. Deniz suyu (ρ=1.025) ile kısmen dolu. Δ=15000 ton, GM=1.5m. FSM ve GM_eff?",
-            solution: "i = 20 × 10³ / 12 = 1666.7 m⁴. FSM = 1.025 × 1666.7 = 1708.3 t·m. GG₁ = 1708.3 / 15000 = 0.114 m. GM_eff = 1.5 - 0.114 = 1.386 m"
+            problem: "Tank boyutları: 20m × 10m. Deniz suyu (ρ=1.025) ile kısmen dolu. Δ=15000 ton, GM=1.5m. FSM ve GMeff?",
+            solution: "i = 20 × 10³ / 12 = 1666.7 m⁴. FSM = 1.025 × 1666.7 = 1708.3 t·m. GG₁ = 1708.3 / 15000 = 0.114 m. GMeff = 1.5 - 0.114 = 1.386 m"
           }
         ],
         keyPoints: [
           "Kısmen dolu tanklar GM'i düşürür",
           "Etki tankın genişliğinin küpü ile orantılıdır",
           "Doluluk oranı (yaklaşık) etkiyi değiştirmez",
-          "GM_eff = GM - FSM/Δ formülü kullanılır"
+          "GMeff = GM - FSM/Δ formülü kullanılır"
         ],
         warnings: [
           "Geniş tanklar çok büyük serbest yüzey etkisi yaratır",
@@ -2129,7 +2129,7 @@ Serbest yüzey etkisi, tankın doluluk oranından bağımsızdır (yaklaşık ol
 - GG₁ = ΣFSM / Δ
 
 **Efektif GM**
-GM_eff = GM_solid - GG₁ = GM_solid - ΣFSM / Δ
+GMeff = GMsolid - GG₁ = GMsolid - ΣFSM / Δ
 
 **Fiziksel Yorum**
 Serbest yüzeyli bir tank, yattıkça sıvı kütlesini yana kaydırır. Bu kayma:
@@ -2138,28 +2138,28 @@ Serbest yüzeyli bir tank, yattıkça sıvı kütlesini yana kaydırır. Bu kaym
 - Stabilite rezervini düşürür
 
 **Kritik Eşik**
-- GM_eff < 0 → Gemi kararsızdır
-- GM_eff düşük → "yumuşak gemi" ve büyük yalpa
-- GM_eff sınır değerlerin hemen üzerindeyse → dinamik etkilerle kritik hale gelebilir`,
+- GMeff < 0 → Gemi kararsızdır
+- GMeff düşük → "yumuşak gemi" ve büyük yalpa
+- GMeff sınır değerlerin hemen üzerindeyse → dinamik etkilerle kritik hale gelebilir`,
         formulas: [
           {
             formula: "GG₁ = ΣFSM / Δ",
             description: "Serbest yüzey nedeniyle sanal KG artışı"
           },
           {
-            formula: "GM_eff = GM_solid - ΣFSM / Δ",
+            formula: "GMeff = GMsolid - ΣFSM / Δ",
             description: "Efektif GM (serbest yüzey düzeltilmiş)"
           }
         ],
         examples: [
           {
-            problem: "GM_solid = 1.20 m, Δ = 12000 ton. Toplam FSM = 1800 t·m ise GM_eff kaçtır?",
-            solution: "GG₁ = 1800/12000 = 0.15 m. GM_eff = 1.20 - 0.15 = 1.05 m"
+            problem: "GMsolid = 1.20 m, Δ = 12000 ton. Toplam FSM = 1800 t·m ise GMeff kaçtır?",
+            solution: "GG₁ = 1800/12000 = 0.15 m. GMeff = 1.20 - 0.15 = 1.05 m"
           }
         ],
         keyPoints: [
           "Serbest yüzey GM'i doğrudan düşürür",
-          "GM_eff her zaman GM_solid'den küçüktür",
+          "GMeff her zaman GMsolid'den küçüktür",
           "ΣFSM/Δ hesabı minimum GM kontrolü için zorunludur",
           "Küçük GM değerlerinde serbest yüzey kritikleşir"
         ],
@@ -2227,7 +2227,7 @@ Genişlik (b) küp ile girdiği için:
 
 **Boyuna Bölmelendirme (Longitudinal Bulkhead)**
 - Geniş tankları boyuna bölmek FSM'yi dramatik biçimde düşürür.
-- n adet eşit parçaya bölünürse: FSM_toplam = FSM_orijinal / n²
+- n adet eşit parçaya bölünürse: FSMtoplam = FSMorijinal / n²
 
 **Şekil Etkisi**
 - Dar ve derin tanklar avantajlıdır
@@ -2240,7 +2240,7 @@ Genişlik (b) küp ile girdiği için:
 - Çok düşük veya çok yüksek dolulukta etkisi biraz azalır`,
         formulas: [
           {
-            formula: "FSM_n = FSM_0 / n²",
+            formula: "FSMn = FSM0 / n²",
             description: "n parçaya bölünmüş tankta toplam FSM"
           },
           {
@@ -2272,7 +2272,7 @@ Genişlik (b) küp ile girdiği için:
 ΣFSM = FSM₁ + FSM₂ + FSM₃ + ...
 
 **Efektif GM**
-GM_eff = GM_solid - ΣFSM / Δ
+GMeff = GMsolid - ΣFSM / Δ
 
 **Farklı Yoğunluklar**
 - Deniz suyu, tatlı su, yakıt ve yağın yoğunluğu farklıdır
@@ -2292,7 +2292,7 @@ GM_eff = GM_solid - ΣFSM / Δ
             description: "Toplam serbest yüzey momenti"
           },
           {
-            formula: "GM_eff = GM_solid - ΣFSM / Δ",
+            formula: "GMeff = GMsolid - ΣFSM / Δ",
             description: "Toplam serbest yüzey düzeltmesi"
           }
         ],
@@ -2359,18 +2359,18 @@ Toplam FSM = Orijinal FSM / n²
 - Yük tankları (tankerler) için özel dikkat`,
         formulas: [
           {
-            formula: "FSM_bölünmüş = FSM_orijinal / n²",
+            formula: "FSMbölünmüş = FSMorijinal / n²",
             description: "n adet boyuna bölme sonrası toplam FSM"
           },
           {
-            formula: "FSM_2_bölme = FSM / 4",
+            formula: "FSM2bölme = FSM / 4",
             description: "2 bölme ile toplam FSM 1/4'e düşer"
           }
         ],
         examples: [
           {
             problem: "Tek bir tank FSM = 2000 t·m. Ortadan boyuna bölme yapılırsa yeni toplam FSM?",
-            solution: "2 bölme = n² = 4. FSM_yeni = 2000 / 4 = 500 t·m (4 kat azalma!)"
+            solution: "2 bölme = n² = 4. FSMyeni = 2000 / 4 = 500 t·m (4 kat azalma!)"
           }
         ],
         keyPoints: [
@@ -2383,7 +2383,7 @@ Toplam FSM = Orijinal FSM / n²
           "Yükleme planı yaparken minimum kısmen dolu tank hedefleyin",
           "Yakıt tüketimini sıralı tank sistemiyle planlayın",
           "Balast operasyonlarını GM üzerindeki etkiyi düşünerek yapın",
-          "Her durumda GM_eff değerini kontrol edin"
+          "Her durumda GMeff değerini kontrol edin"
         ]
       },
       {
@@ -2409,12 +2409,12 @@ Tüm kısmen dolu tankların FSM değerleri toplanır:
 GG₁ = ΣFSM / Δ
 
 **Adım 4: Efektif GM**
-GM_eff = GM_solid - GG₁ = GM_solid - ΣFSM / Δ
+GMeff = GMsolid - GG₁ = GMsolid - ΣFSM / Δ
 
 **Önemli Notlar**
-1. **GM_solid:** Serbest yüzey yok sayılarak hesaplanan GM
-2. **GM_fluid (GM_eff):** Serbest yüzey düzeltmesi yapılmış GM
-3. IMO kriterleri her zaman GM_eff değerini kontrol eder
+1. **GMsolid:** Serbest yüzey yok sayılarak hesaplanan GM
+2. **GMfluid (GMeff):** Serbest yüzey düzeltmesi yapılmış GM
+3. IMO kriterleri her zaman GMeff değerini kontrol eder
 
 **Örnek Hesap Tablosu**
 
@@ -2425,16 +2425,16 @@ GM_eff = GM_solid - GG₁ = GM_solid - ΣFSM / Δ
 | FO Tank | 10×6 | 0.95 | 180 | 171 |
 | **Toplam** | | | | **1483** |
 
-Δ = 12000 ton, GM_solid = 1.20 m ise:
+Δ = 12000 ton, GMsolid = 1.20 m ise:
 GG₁ = 1483 / 12000 = 0.124 m
-GM_eff = 1.20 - 0.124 = 1.076 m`,
+GMeff = 1.20 - 0.124 = 1.076 m`,
         formulas: [
           {
-            formula: "GM_eff = GM_solid - ΣFSM / Δ",
+            formula: "GMeff = GMsolid - ΣFSM / Δ",
             description: "Efektif GM hesabı"
           },
           {
-            formula: "i_dikdörtgen = l × b³ / 12",
+            formula: "idikdörtgen = l × b³ / 12",
             description: "Dikdörtgen tank atalet momenti"
           },
           {
@@ -2444,15 +2444,15 @@ GM_eff = 1.20 - 0.124 = 1.076 m`,
         ],
         examples: [
           {
-            problem: "Gemi: Δ=20000 ton, GM_solid=1.5m. Tanklar: Tank A (20×12m, HFO ρ=0.95), Tank B (15×10m, SW ρ=1.025). GM_eff?",
-            solution: "i_A = 20×12³/12 = 2880 m⁴, FSM_A = 0.95×2880 = 2736 t·m. i_B = 15×10³/12 = 1250 m⁴, FSM_B = 1.025×1250 = 1281 t·m. ΣFSM = 4017 t·m. GG₁ = 4017/20000 = 0.201 m. GM_eff = 1.5 - 0.201 = 1.299 m"
+            problem: "Gemi: Δ=20000 ton, GMsolid=1.5m. Tanklar: Tank A (20×12m, HFO ρ=0.95), Tank B (15×10m, SW ρ=1.025). GMeff?",
+            solution: "iA = 20×12³/12 = 2880 m⁴, FSMA = 0.95×2880 = 2736 t·m. iB = 15×10³/12 = 1250 m⁴, FSMB = 1.025×1250 = 1281 t·m. ΣFSM = 4017 t·m. GG₁ = 4017/20000 = 0.201 m. GMeff = 1.5 - 0.201 = 1.299 m"
           }
         ],
         keyPoints: [
           "Her kısmen dolu tank için ayrı FSM hesaplanır",
           "Toplam FSM tüm tankların toplamıdır",
-          "GM_eff = GM_solid - ΣFSM/Δ",
-          "IMO kriterleri GM_eff değerini kontrol eder"
+          "GMeff = GMsolid - ΣFSM/Δ",
+          "IMO kriterleri GMeff değerini kontrol eder"
         ],
         warnings: [
           "Serbest yüzey düzeltmesi yapılmamış GM değerleri yanıltıcıdır",
@@ -2493,7 +2493,7 @@ Boyuna stabilite, trim değişimlerini hesaplamak için kullanılır:
 
 **Trim ve Önemi**
 Trim, baş ve kıç draftları arasındaki farktır:
-- Trim = T_A - T_F
+- Trim = TA - TF
 - Pozitif: Kıça trim (stern trim)
 - Negatif: Başa trim (bow trim)
 - Sıfır: Even keel (düz omurga)
@@ -2513,7 +2513,7 @@ Trim, baş ve kıç draftları arasındaki farktır:
             description: "Boyuna metasantrik yarıçap"
           },
           {
-            formula: "Trim = T_A - T_F",
+            formula: "Trim = TA - TF",
             description: "Trim tanımı (m)"
           }
         ],
@@ -2676,20 +2676,20 @@ Tüm momentlerin cebirsel toplamı:
 ΔTrim = ΣM / MCT1cm (cm)
 
 **Adım 4: Baş ve Kıç Draft Değişimleri**
-- ΔT_F = ΔTrim × (L - LCF_from_aft) / L
-- ΔT_A = ΔTrim × (LCF_from_aft) / L
+- ΔTF = ΔTrim × (L - LCF_from_aft) / L
+- ΔTA = ΔTrim × (LCF_from_aft) / L
 
 Veya yaklaşık olarak trim değişimi baş ve kıç arasında orantılı dağılır.
 
 **Draft Sonrası Paralel Batma**
 Toplam ağırlık değişikliği paralel batmaya da neden olur:
-ΔDraft_paralel = Σw / TPC
+ΔDraftparalel = Σw / TPC
 
 Bu da baş ve kıç draftlarına eklenir.
 
 **Toplam Draft Değişimleri**
-Final T_F = Initial T_F + ΔDraft_paralel + ΔT_F
-Final T_A = Initial T_A + ΔDraft_paralel + ΔT_A
+Final TF = Initial TF + ΔDraftparalel + ΔTF
+Final TA = Initial TA + ΔDraftparalel + ΔTA
 
 **LCF (Longitudinal Center of Flotation)**
 - Su hattı alanının geometrik merkezi
@@ -2702,18 +2702,18 @@ Final T_A = Initial T_A + ΔDraft_paralel + ΔT_A
             description: "Toplam trim değişimi (cm)"
           },
           {
-            formula: "ΔT_F = ΔTrim × d_a / L",
-            description: "Baş draft değişimi (d_a: LCF'nin kıçtan mesafesi)"
+            formula: "ΔTF = ΔTrim × da / L",
+            description: "Baş draft değişimi (da: LCF'nin kıçtan mesafesi)"
           },
           {
-            formula: "ΔT_A = ΔTrim × d_f / L",
-            description: "Kıç draft değişimi (d_f: LCF'nin baştan mesafesi)"
+            formula: "ΔTA = ΔTrim × df / L",
+            description: "Kıç draft değişimi (df: LCF'nin baştan mesafesi)"
           }
         ],
         examples: [
           {
-            problem: "L=100m, LCF midship'ten 2m kıçta. MCT=150 t·m/cm, TPC=20 t/cm. 200 ton yük midship'ten 30m başa alınıyor. T_F=6.0m, T_A=7.0m idi. Yeni draftlar?",
-            solution: "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m (midship'ten -2m). ΔT_F = 42.7 × 48/100 = 20.5 cm batma. ΔT_A = 42.7 × 52/100 = 22.2 cm yükselme. Paralel = 200/20 = 10 cm. T_F = 6.0 + 0.10 + 0.205 = 6.305 m. T_A = 7.0 + 0.10 - 0.222 = 6.878 m"
+            problem: "L=100m, LCF midship'ten 2m kıçta. MCT=150 t·m/cm, TPC=20 t/cm. 200 ton yük midship'ten 30m başa alınıyor. TF=6.0m, TA=7.0m idi. Yeni draftlar?",
+            solution: "Moment = 200 × (30 - (-2)) = 200 × 32 = 6400 t·m (başa). ΔTrim = 6400/150 = 42.7 cm başa. LCF kıçtan 48m (midship'ten -2m). ΔTF = 42.7 × 48/100 = 20.5 cm batma. ΔTA = 42.7 × 52/100 = 22.2 cm yükselme. Paralel = 200/20 = 10 cm. TF = 6.0 + 0.10 + 0.205 = 6.305 m. TA = 7.0 + 0.10 - 0.222 = 6.878 m"
           }
         ],
         keyPoints: [
@@ -2759,7 +2759,7 @@ Final T_A = Initial T_A + ΔDraft_paralel + ΔT_A
 1. Lightship verilerini al
 2. Yük ve yakıt miktarlarını belirle
 3. Ağırlıkları dağıt (GM ve trim hedeflerine göre)
-4. Stabilite hesabı yap (GM_eff kontrolü)
+4. Stabilite hesabı yap (GMeff kontrolü)
 5. Trim hesabı yap
 6. Gerekirse düzenleme yap
 7. Yapısal kontroller (shearing force, bending moment)
@@ -2834,10 +2834,10 @@ Burada:
 **Perpendikülerdeki Draft Hesabı**
 
 **Baş Draft (FP'de):**
-T_FP = T_okunan ± (d_baş × Trim / LBP)
+TFP = Tokunan ± (dbaş × Trim / LBP)
 
 **Kıç Draft (AP'de):**
-T_AP = T_okunan ± (d_kıç × Trim / LBP)
+TAP = Tokunan ± (dkıç × Trim / LBP)
 
 İşaret kuralı:
 - Marka perpendikülün içinde ise: Kıça trimde (+), başa trimde (-)
@@ -2846,11 +2846,11 @@ T_AP = T_okunan ± (d_kıç × Trim / LBP)
 **Mean Draft Hesabı**
 
 **True Mean Draft (LCF'deki):**
-T_mean = T_FP + (LCF × Trim / LBP)
+Tmean = TFP + (LCF × Trim / LBP)
 
 veya
 
-T_mean = (T_FP + T_AP) / 2 + (LCF - LBP/2) × Trim / LBP
+Tmean = (TFP + TAP) / 2 + (LCF - LBP/2) × Trim / LBP
 
 **Draft Survey'de Kullanım**
 Draft survey hesaplarında:
@@ -2864,18 +2864,18 @@ Draft survey hesaplarında:
             description: "Draft düzeltme formülü"
           },
           {
-            formula: "T_mean = T_FP + (LCF × Trim / LBP)",
+            formula: "Tmean = TFP + (LCF × Trim / LBP)",
             description: "LCF'deki ortalama draft"
           },
           {
-            formula: "T_corrected = T_okunan ± (d × Trim / LBP)",
+            formula: "Tcorrected = Tokunan ± (d × Trim / LBP)",
             description: "Perpendikülde düzeltilmiş draft"
           }
         ],
         examples: [
           {
             problem: "LBP = 180 m, LCF = 85 m (AP'den). Baş draft markası FP'nin 3 m gerisinde. Okunan baş draft = 6.20 m, kıç draft = 7.80 m. Düzeltilmiş baş draftı bulun.",
-            solution: "Trim = 7.80 - 6.20 = 1.60 m (kıç trimli). Düzeltme = (3 × 1.60) / 180 = 0.027 m. Marka içeride, kıça trim → T_FP = 6.20 + 0.027 = 6.227 m"
+            solution: "Trim = 7.80 - 6.20 = 1.60 m (kıç trimli). Düzeltme = (3 × 1.60) / 180 = 0.027 m. Marka içeride, kıça trim → TFP = 6.20 + 0.027 = 6.227 m"
           }
         ],
         keyPoints: [
@@ -2983,7 +2983,7 @@ Tipik permeabilite değerleri:
 - Permeabilite değeri?
 
 **Adım 2: Kaybedilen Hacmi Hesapla**
-V_lost = Bölme hacmi × μ
+Vlost = Bölme hacmi × μ
 
 **Adım 3: Yeni Dengeyi Bul**
 Gemi, kaybedilen kaldırma kuvvetini telafi etmek için batar:
@@ -3003,7 +3003,7 @@ Gemi, kaybedilen kaldırma kuvvetini telafi etmek için batar:
 **Eklenen Ağırlık Yöntemi (Detaylı)**
 
 **Adım 1: Basan Su Ağırlığını Hesapla**
-w_su = V_bölme × μ × ρ_su
+wsu = Vbölme × μ × ρsu
 
 **Adım 2: Su'nun Ağırlık Merkezini Belirle**
 - kg (dikey)
@@ -3011,34 +3011,34 @@ w_su = V_bölme × μ × ρ_su
 - tcg (enine) - asimetrik hasar için
 
 **Adım 3: Yeni Deplasman ve KG**
-Δ_yeni = Δ_eski + w_su
-KG_yeni = (Δ_eski × KG_eski + w_su × kg_su) / Δ_yeni
+Δyeni = Δeski + wsu
+KGyeni = (Δeski × KGeski + wsu × kgsu) / Δyeni
 
 **Adım 4: Serbest Yüzey Etkisi**
 Hasar görmüş bölme serbest yüzey etkisi yaratabilir:
 FSM = ρ × i (bölme yüzeyi için)
-GM_eff = GM - FSM / Δ
+GMeff = GM - FSM / Δ
 
 **Adım 5: Stabilite Kontrolü**
 IMO hasarlı stabilite kriterlerini kontrol et`,
         formulas: [
           {
-            formula: "V_lost = Bölme hacmi × μ",
+            formula: "Vlost = Bölme hacmi × μ",
             description: "Kaybedilen kaldırma hacmi"
           },
           {
-            formula: "KG_yeni = (Δ_eski × KG_eski + w_su × kg_su) / Δ_yeni",
+            formula: "KGyeni = (Δeski × KGeski + wsu × kgsu) / Δyeni",
             description: "Yeni KG hesabı (eklenen ağırlık yöntemi)"
           },
           {
-            formula: "GM_hasarlı = KM_yeni - KG_yeni - FSM / Δ_yeni",
+            formula: "GMhasarlı = KMyeni - KGyeni - FSM / Δyeni",
             description: "Hasarlı GM hesabı"
           }
         ],
         examples: [
           {
             problem: "Gemi Δ=10000 ton, KG=7.5m. 1000 m³ bölme (μ=0.85) su aldı. Su merkezi kg=3m. Yeni KG?",
-            solution: "w_su = 1000 × 0.85 × 1.025 = 871 ton. Δ_yeni = 10871 ton. KG_yeni = (10000×7.5 + 871×3) / 10871 = 77613 / 10871 = 7.14 m (düştü - su aşağıda olduğu için)"
+            solution: "wsu = 1000 × 0.85 × 1.025 = 871 ton. Δyeni = 10871 ton. KGyeni = (10000×7.5 + 871×3) / 10871 = 77613 / 10871 = 7.14 m (düştü - su aşağıda olduğu için)"
           }
         ],
         keyPoints: [
@@ -3261,7 +3261,7 @@ Burada:
             description: "Su geçiş debisi (m³/s)"
           },
           {
-            formula: "Heel_azalma = (w × d) / (Δ × GM)",
+            formula: "Heelazalma = (w × d) / (Δ × GM)",
             description: "Cross-flooding ile heel düzeltmesi"
           }
         ],
@@ -3306,12 +3306,12 @@ Burada:
 
 **1. GZ Eğrisi Altındaki Alan**
 - A(0°-30°) ≥ 0.055 m·rad
-- A(0°-40°) ≥ 0.090 m·rad (veya θ_flood öncesi)
+- A(0°-40°) ≥ 0.090 m·rad (veya θflood öncesi)
 - A(30°-40°) ≥ 0.030 m·rad
 
 **2. Maksimum GZ**
-- GZ_max ≥ 0.20 m (θ ≥ 30° için)
-- θ_max ≥ 25° (GZ_max'ın oluştuğu açı)
+- GZmax ≥ 0.20 m (θ ≥ 30° için)
+- θmax ≥ 25° (GZmax'ın oluştuğu açı)
 
 **3. Başlangıç GM**
 - GM₀ ≥ 0.15 m (serbest yüzey düzeltmeli)
@@ -3352,7 +3352,7 @@ Burada:
             description: "0-40° arası GZ eğrisi altı alan"
           },
           {
-            formula: "GZ_max ≥ 0.20 m @ θ ≥ 30°",
+            formula: "GZmax ≥ 0.20 m @ θ ≥ 30°",
             description: "Minimum maksimum GZ değeri ve açısı"
           },
           {
@@ -3363,7 +3363,7 @@ Burada:
         keyPoints: [
           "2008 IS Code tüm gemiler için temel standarttır",
           "GZ eğrisi alan kriterleri dinamik stabiliteyi değerlendirir",
-          "Minimum GM ve GZ_max değerleri zorunludur",
+          "Minimum GM ve GZmax değerleri zorunludur",
           "Özel gemi tipleri için ek kriterler uygulanır"
         ]
       },
@@ -3392,9 +3392,9 @@ GZ eğrisi ile lw1 çizgisinin kesiştiği açı
 lw2 = 1.5 × lw1
 
 **Adım 4: Rulo Açısı (θ₁)**
-θ₁ = θ₀ - θ_roll
+θ₁ = θ₀ - θroll
 
-θ_roll, geminin rüzgar tarafına sallanma açısıdır (formülle hesaplanır)
+θroll, geminin rüzgar tarafına sallanma açısıdır (formülle hesaplanır)
 
 **Adım 5: Alan Karşılaştırması**
 - A1: θ₁ ile θ₀ arasındaki alan (GZ - lw2 arasında)
@@ -3448,15 +3448,15 @@ Tahıl:
 
 **Temel Kriterler**
 1. **Başlangıç GM (düzeltilmiş):**
-   GM_fluid ≥ 0.30 m
+   GMfluid ≥ 0.30 m
 
 2. **Maksimum Yatma Açısı:**
    θ ≤ 12° (tahıl kayması sonucu)
 
 3. **GZ Eğrisi Alanı:**
-   A(θ_h ile 40° arası) ≥ 0.075 m·rad
+   A(θh ile 40° arası) ≥ 0.075 m·rad
    
-   θ_h: Tahıl heeling açısı
+   θh: Tahıl heeling açısı
 
 **Tahıl Heeling Moment**
 Tahıl kayması nedeniyle oluşan moment:
@@ -3476,15 +3476,15 @@ Tahıl kayması nedeniyle oluşan moment:
 - Stabilite hesap kitapçığı`,
         formulas: [
           {
-            formula: "GM_fluid ≥ 0.30 m",
+            formula: "GMfluid ≥ 0.30 m",
             description: "Tahıl taşıyan gemiler için minimum GM"
           },
           {
-            formula: "θ_max ≤ 12°",
+            formula: "θmax ≤ 12°",
             description: "Maksimum tahıl kayma açısı"
           },
           {
-            formula: "A(θ_h - 40°) ≥ 0.075 m·rad",
+            formula: "A(θh - 40°) ≥ 0.075 m·rad",
             description: "GZ eğrisi alanı kriteri"
           },
           {
@@ -3666,11 +3666,11 @@ SGISC, beş temel dinamik başarısızlık modunu ele alır:
 - Karar destek sistemleri`,
         formulas: [
           {
-            formula: "RPL = Σ W_i × C_i (Level 2)",
+            formula: "RPL = Σ Wi × Ci (Level 2)",
             description: "Parametrik yalpa olasılık indeksi"
           },
           {
-            formula: "ΔGM / GM_mean < Kritik_Değer",
+            formula: "ΔGM / GMmean < KritikDeğer",
             description: "Level 1 pure loss kontrolü"
           },
           {
@@ -3725,11 +3725,11 @@ Stabilite kitapçığında verilen limitler, geminin güvenli çalışması içi
 - Downflooding açısı düşükse emniyet rezervi azalır`,
         formulas: [
           {
-            formula: "KG_lim = KM - GM_gerekli",
+            formula: "KGlim = KM - GMgerekli",
             description: "Limit KG hesabının temel ilişkisi"
           },
           {
-            formula: "GM_gerekli = GM_min + FSM/Δ",
+            formula: "GMgerekli = GMmin + FSM/Δ",
             description: "Serbest yüzey düzeltmesi ile gerekli GM"
           }
         ],
@@ -3789,7 +3789,7 @@ Burada DWT (Deadweight), kargo, yakıt, tatlı su, balast, kumanya ve personel a
 
 **Sayısal Örnek:**
 
-Lightship = 8 500 ton, KG_ls = 7,30 m olan bir gemi, 12 000 ton kargo (VCG = 5,80 m), 2 200 ton yakıt (VCG = 2,50 m) ve 800 ton tatlı su (VCG = 1,80 m) ile yüklenmiştir.
+Lightship = 8 500 ton, KGls = 7,30 m olan bir gemi, 12 000 ton kargo (VCG = 5,80 m), 2 200 ton yakıt (VCG = 2,50 m) ve 800 ton tatlı su (VCG = 1,80 m) ile yüklenmiştir.
 
 Adım 1 — Toplam deplasman:
 Δ = 8 500 + 12 000 + 2 200 + 800 = 23 500 ton
@@ -3849,14 +3849,14 @@ Kritik durumların tespiti, geminin emniyetli işletimi açısından hayati öne
 Bu durumların analizi için limit VCG/KG eğrisi temel referans aracıdır:
 
 ────────────
-VCG_max = KM − GM_gerekli
+VCGmax = KM − GMgerekli
 ────────────
 
-Burada GM_gerekli, IMO kriterlerini sağlamak için gereken minimum GM değeridir ve serbest yüzey düzeltmesini de içerir. Eğer hesaplanan VCG bu sınırı aşarsa, yükleme planı revize edilmeli veya ek balast alınmalıdır.
+Burada GMgerekli, IMO kriterlerini sağlamak için gereken minimum GM değeridir ve serbest yüzey düzeltmesini de içerir. Eğer hesaplanan VCG bu sınırı aşarsa, yükleme planı revize edilmeli veya ek balast alınmalıdır.
 
 **Hogging ve Sagging Durumları**, boyuna mukavemet açısından kritik senaryolardır. Hogging, geminin orta kısmının yukarı bükülmesidir ve genellikle baş ile kıçta ağır yükleme, ortada hafif yükleme durumunda oluşur. Sagging ise orta kısmın aşağı bükülmesidir ve ortaya ağır yükleme, baş ve kıçta hafif yükleme durumunda meydana gelir. Bu durumlar, geminin kesme kuvveti ve eğilme momenti limitlerini aşabilir ve yapısal hasara yol açabilir.
 
-**Kısmi Yükleme (Part Load) Durumu**, tam dolu olmayan tanklardaki serbest yüzey etkisinin maksimum olduğu dönemdir. Özellikle balast değişimi sırasında, yakıt tüketiminin ara aşamalarında ve kısmi kargo yükleme/boşaltma işlemlerinde, çok sayıda tank kısmen dolu olabilir. Bu durumda toplam FSM değeri hızla artar ve GM_eff kritik seviyelere düşebilir.
+**Kısmi Yükleme (Part Load) Durumu**, tam dolu olmayan tanklardaki serbest yüzey etkisinin maksimum olduğu dönemdir. Özellikle balast değişimi sırasında, yakıt tüketiminin ara aşamalarında ve kısmi kargo yükleme/boşaltma işlemlerinde, çok sayıda tank kısmen dolu olabilir. Bu durumda toplam FSM değeri hızla artar ve GMeff kritik seviyelere düşebilir.
 
 **Tek Taraflı Yükleme**, kargonun iskele veya sancak tarafına dengesiz dağıtılması durumunda oluşur. Bu durum başlangıç yatmasına (initial heel) neden olur ve GZ eğrisini asimetrik hale getirir. Tek taraflı yükleme, özellikle düşük GM durumlarında son derece tehlikelidir; çünkü yatan taraftaki GZ değerleri hızla azalır.
 
@@ -3864,22 +3864,22 @@ Burada GM_gerekli, IMO kriterlerini sağlamak için gereken minimum GM değeridi
 
 Bir konteyner gemisi: Δ = 45 000 ton, KM = 11,20 m. Güverte üstü konteynerler dahil KG = 10,85 m olarak hesaplanmıştır. Toplam FSM = 2 400 t·m.
 
-GM_solid = 11,20 − 10,85 = 0,35 m
+GMsolid = 11,20 − 10,85 = 0,35 m
 GG₁ = 2 400 / 45 000 = 0,053 m
-GM_eff = 0,35 − 0,053 = 0,297 m
+GMeff = 0,35 − 0,053 = 0,297 m
 
 IMO minimum GM₀ ≥ 0,15 m kriterini sağlıyor; ancak güvenlik marjı çok düşüktür. Rüzgâr heeling momenti ve dinamik etkiler hesaba katıldığında bu yükleme durumu kritik olarak değerlendirilir.`,
         formulas: [
           {
-            formula: "GM_kritik = GM_min + Güvenlik_Marjı",
+            formula: "GMkritik = GMmin + GüvenlikMarjı",
             description: "Kritik GM hesabı"
           },
           {
-            formula: "VCG_max = KM - GM_gerekli",
+            formula: "VCGmax = KM - GMgerekli",
             description: "Maksimum izin verilen VCG"
           },
           {
-            formula: "GM_eff = KM - KG - ΣFSM / Δ",
+            formula: "GMeff = KM - KG - ΣFSM / Δ",
             description: "Efektif GM (serbest yüzey dahil)"
           }
         ],
@@ -3920,33 +3920,33 @@ Tank sıralamasının temel prensibi, herhangi bir ara yükleme durumunda gemini
 **Balast Tank Sıralaması** ise trim ve stabilite kontrolü için aktif olarak yönetilen bir süreçtir. Balast alma sırasında önce çift dip tankları doldurulur (stabilite artışı için), ardından baş pik tankı (trim düzeltmesi için) ve son olarak yan tanklar (ince ayar için) doldurulur. Balast boşaltma sırasında önce üst tanklar boşaltılır (GM artışı), ardından yan tanklar (heel kontrolü) ve en son dip tankları (son aşama) boşaltılır.
 
 ────────────
-FSC_toplam = Σ(ρᵢ × iᵢ) / Δ
+FSCtoplam = Σ(ρᵢ × iᵢ) / Δ
 ────────────
 
-Bu formülde her kısmen dolu tankın serbest yüzey momenti ayrı ayrı hesaplanır ve toplam FSC, GM_solid değerinden çıkarılarak operasyonel GM elde edilir. Tank sıralaması, bu toplam değerin her ara durumda kabul edilebilir sınırlar içinde kalmasını hedefler.
+Bu formülde her kısmen dolu tankın serbest yüzey momenti ayrı ayrı hesaplanır ve toplam FSC, GMsolid değerinden çıkarılarak operasyonel GM elde edilir. Tank sıralaması, bu toplam değerin her ara durumda kabul edilebilir sınırlar içinde kalmasını hedefler.
 
 **Sayısal Örnek — Tank Sıralaması Karşılaştırması:**
 
-Δ = 20 000 ton, GM_solid = 1,40 m olan bir tanker, 4 adet büyük yük tankını boşaltacaktır. Her tankın FSM değeri 900 t·m.
+Δ = 20 000 ton, GMsolid = 1,40 m olan bir tanker, 4 adet büyük yük tankını boşaltacaktır. Her tankın FSM değeri 900 t·m.
 
 Kötü sıralama — 4 tankı aynı anda kısmen boşaltma:
 ΣFSM = 4 × 900 = 3 600 t·m
 GG₁ = 3 600 / 20 000 = 0,18 m
-GM_eff = 1,40 − 0,18 = 1,22 m
+GMeff = 1,40 − 0,18 = 1,22 m
 
 İyi sıralama — tankları tek tek tamamen boşaltma:
 ΣFSM = 1 × 900 = 900 t·m (aynı anda yalnızca 1 tank kısmen dolu)
 GG₁ = 900 / 20 000 = 0,045 m
-GM_eff = 1,40 − 0,045 = 1,355 m
+GMeff = 1,40 − 0,045 = 1,355 m
 
 Sıralı boşaltma, serbest yüzey etkisini dört kat azaltır ve stabilite marjını önemli ölçüde korur.`,
         formulas: [
           {
-            formula: "FSC_toplam = Σ(ρᵢ × iᵢ) / Δ",
+            formula: "FSCtoplam = Σ(ρᵢ × iᵢ) / Δ",
             description: "Toplam serbest yüzey düzeltmesi"
           },
           {
-            formula: "GM_net = GM_solid - FSC",
+            formula: "GMnet = GMsolid - FSC",
             description: "Operasyonel GM hesabı"
           }
         ],
@@ -3992,7 +3992,7 @@ Sıralı boşaltma, serbest yüzey etkisini dört kat azaltır ve stabilite marj
 Tahıl taşıyan gemiler için IMO Tahıl Kodu şu temel kriterleri zorunlu kılar:
 
 ────────────
-GM_fluid ≥ 0,30 m
+GMfluid ≥ 0,30 m
 ────────────
 
 Bu değer, genel kargo gemileri için geçerli olan 0,15 m minimumunun iki katıdır ve tahıl kaymasının yarattığı ek riski telafi etmek için daha yüksek tutulmuştur. Tahıl kaymasından dolayı oluşan yatma açısı 12°'yi geçmemelidir ve GZ eğrisinde tahıl heeling arm'ı ile GZ eğrisi arasındaki artık alan en az 0,075 m·rad olmalıdır.
@@ -4012,7 +4012,7 @@ Maden cevherleri taşımacılığında en ciddi risk **sıvılaşma (liquefactio
 **Kömür Kargosu**, kendiliğinden tutuşma, metan gazı oluşumu ve nem absorpsiyonu gibi ek riskler taşır. Kömürün oksidasyonu ısı üretir ve havalandırma yetersiz ise sıcaklık tutuşma noktasına ulaşabilir. Ayrıca kömürden çıkan metan gazı, kapalı ambarlarda patlayıcı karışımlar oluşturabilir. Bu nedenle kömür ambarlarında düzenli sıcaklık ve gaz ölçümü yapılması zorunludur.`,
         formulas: [
           {
-            formula: "GM_fluid ≥ 0,30 m",
+            formula: "GMfluid ≥ 0,30 m",
             description: "Tahıl taşıyan gemiler için minimum GM"
           },
           {
@@ -4020,7 +4020,7 @@ Maden cevherleri taşımacılığında en ciddi risk **sıvılaşma (liquefactio
             description: "Tahıl heeling arm hesabı"
           },
           {
-            formula: "θ_heel ≤ 12°",
+            formula: "θheel ≤ 12°",
             description: "Tahıl kaymasından maksimum yatma açısı"
           }
         ],
@@ -4047,7 +4047,7 @@ Ağır yük tipleri arasında endüstriyel ekipmanlar (transformatörler, jenera
 **Vinç Operasyonu ve Stabilite Etkisi**, ağır yük taşımacılığının en kritik aşamasıdır. Bir yük vinçle kaldırıldığı anda, yükün ağırlığı vincin pivot noktasına transfer olur. Bu transfer, ağırlık merkezinin aniden yukarı ve yana kaymasına neden olur. Kaldırma sırasında oluşan yatırıcı moment şu şekilde hesaplanır:
 
 ────────────
-M_vinç = W × R × cos(θ)
+Mvinç = W × R × cos(θ)
 ────────────
 
 Burada W yükün ağırlığı, R vincin yarıçapı ve θ boom açısıdır. Ancak bunun ötesinde, asılı bir yük serbest yüzey etkisine benzer bir davranış gösterir. Asılı yük, geminin yatmasıyla birlikte sallanır ve ağırlık merkezini yatılan tarafa kaydırır. Bu "asılı yük serbest yüzey etkisi" şu şekilde ifade edilir:
@@ -4061,7 +4061,7 @@ Burada h, yükün asılma noktası ile ağırlık merkezi arasındaki düşey me
 **Sabitleme (Lashing) Hesabı**, seyir sırasında ağır yükün güvenli taşınmasını garanti etmek için zorunludur. IMO CSS Code (Code of Safe Practice for Cargo Stowage and Securing), sabitleme kuvvetlerinin hesaplanması için standart yöntemleri tanımlar. Sabitleme kuvveti şu şekilde hesaplanır:
 
 ────────────
-F_lashing = m × a × SF
+Flashing = m × a × SF
 ────────────
 
 Burada m yükün kütlesi, a beklenen maksimum ivme (gemi hareketlerinden kaynaklanan) ve SF güvenlik faktörüdür. İvme değerleri, geminin rulo, pitch ve heave hareketlerinin bileşimi olarak hesaplanır ve yükün gemideki konumuna göre değişir. Baş ve kıç uçlardaki ivmeler, geminin ortasına göre daha büyüktür.
@@ -4069,7 +4069,7 @@ Burada m yükün kütlesi, a beklenen maksimum ivme (gemi hareketlerinden kaynak
 **Lokal yapısal yük kontrolü**, ağır yüklerin güverte veya ambar tabanına uyguladığı basıncın izin verilen sınırlar içinde kalmasını sağlar. Güverte yük kapasitesi genellikle ton/m² cinsinden ifade edilir ve dunnage (ahşap yastıklar) kullanılarak yük dağılımı optimize edilir.`,
         formulas: [
           {
-            formula: "M_vinç = W × R × cos(θ)",
+            formula: "Mvinç = W × R × cos(θ)",
             description: "Vinç operasyonu yatırıcı momenti"
           },
           {
@@ -4077,7 +4077,7 @@ Burada m yükün kütlesi, a beklenen maksimum ivme (gemi hareketlerinden kaynak
             description: "Asılı yük serbest yüzey etkisi"
           },
           {
-            formula: "F_lashing = m × a × SF",
+            formula: "Flashing = m × a × SF",
             description: "Sabitleme kuvveti hesabı"
           }
         ],
@@ -4108,7 +4108,7 @@ Dökme tehlikeli maddelerde kayma potansiyeli, nem hassasiyeti, kendiliğinden �
 Sıvı tehlikeli maddelerin sıcaklık genleşmesi de dikkate alınmalıdır:
 
 ────────────
-V_genleşme = V₀ × β × ΔT
+Vgenleşme = V₀ × β × ΔT
 ────────────
 
 Burada V₀ başlangıç hacmi, β termal genleşme katsayısı ve ΔT sıcaklık değişimidir. Tankların doluluk oranı, bu genleşmeyi karşılayacak şekilde %98'i geçmemelidir.
@@ -4118,7 +4118,7 @@ IMDG Code'a göre ayrıştırma (segregation) kuralları, uyumsuz maddelerin bir
 Acil durum hazırlığı kapsamında, EmS (Emergency Schedule) prosedürleri her tehlikeli madde için tanımlanmıştır. Yangın söndürme, dökülme müdahalesi ve ilk yardım prosedürleri, geminin stabilite durumunu da göz önünde bulundurmalıdır. Özellikle yangın söndürme suyunun stabilite üzerindeki etkisi önceden hesaplanmalı ve jettison (denize atma) kararı için eşik değerler belirlenmelidir.`,
         formulas: [
           {
-            formula: "V_genleşme = V₀ × β × ΔT",
+            formula: "Vgenleşme = V₀ × β × ΔT",
             description: "Sıvı termal genleşme hesabı"
           },
           {
@@ -4149,7 +4149,7 @@ Standart konteyner boyutları şu şekildedir: 20 ft TEU (6,1 m × 2,4 m × 2,6 
 **Yüksek VCG Problemi**, konteyner gemilerinin en temel stabilite sorunudur. Modern konteyner gemileri, güverte üstünde 6 ila 10 katman konteyner istifleyebilir. Bu istifleme, VCG'yi önemli ölçüde yükseltir ve GM'i düşürür. İstif VCG hesabı şu şekilde yapılır:
 
 ────────────
-VCG_istif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)
+VCGistif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)
 ────────────
 
 Burada her katmandaki (tier) konteynerlerin ağırlıkları ve düşey konumları ayrı ayrı hesaba katılır. Bay-Row-Tier sistemi, her konteynerin gemideki tam konumunu tanımlar ve stabilite yazılımları bu sistemi kullanarak detaylı hesaplamalar yapar.
@@ -4163,11 +4163,11 @@ Burada her katmandaki (tier) konteynerlerin ağırlıkları ve düşey konumlar�
 **Bay Plan Optimizasyonu**, konteyner gemilerinde stabilite yönetiminin pratik aracıdır. Temel prensipler şunlardır: ağır konteynerler mümkün olduğunca alt katmanlara yerleştirilir (VCG düşürülür); reefer konteynerler enerji kaynaklarına yakın konumlandırılır; tehlikeli madde içeren konteynerler IMDG ayrıştırma kurallarına uygun biçimde istiflenir ve boşaltma limanı sırasına göre erişilebilirlik planlanır.`,
         formulas: [
           {
-            formula: "VCG_istif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)",
+            formula: "VCGistif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)",
             description: "İstif VCG hesabı"
           },
           {
-            formula: "Stack_weight ≤ Stacking limit",
+            formula: "Stackweight ≤ Stacking limit",
             description: "Toplam istif ağırlığı sınırı"
           }
         ],
@@ -4252,7 +4252,7 @@ Dördüncü adımda karşılaştırma ve onay yapılır: mevcut ve planlanan dur
 
 Giriş hataları arasında yanlış tank numarası seçimi, yoğunluk değerinin yanlış girilmesi ve birim hataları (metrik ton ile uzun ton karışıklığı) yer alır. Bu hataları önlemek için veri girişi çift kontrol edilmeli ve önceki durumlarla karşılaştırma yapılmalıdır.
 
-Yorumlama hataları arasında uyarıların göz ardı edilmesi, GM yerine GM_fluid kontrolü yapılmaması ve serbest yüzey düzeltmesinin unutulması sayılabilir. Yazılımın ürettiği tüm uyarı ve alarmlar dikkatle değerlendirilmelidir.
+Yorumlama hataları arasında uyarıların göz ardı edilmesi, GM yerine GMfluid kontrolü yapılmaması ve serbest yüzey düzeltmesinin unutulması sayılabilir. Yazılımın ürettiği tüm uyarı ve alarmlar dikkatle değerlendirilmelidir.
 
 Sistem hataları arasında güncel olmayan veri seti, kalibrasyon kayması ve yazılım hataları (bug) bulunur. Yazılımın periyodik olarak güncellenmesi ve kalibrasyonunun doğrulanması bu hataları minimize eder.
 
@@ -4368,9 +4368,9 @@ Adım 2 — Serbest yüzey düzeltmesi:
 GG₁ = ΣFSM / Δ = 2 000 / 15 000 = 0,133 m
 
 Adım 3 — Efektif GM:
-GM_eff = GM_solid − GG₁ = 2,23 − 0,133 = 2,10 m
+GMeff = GMsolid − GG₁ = 2,23 − 0,133 = 2,10 m
 
-Sonuç: GM_eff = 2,10 m. Serbest yüzey etkisi GM'i 0,13 m düşürmüştür; ancak değer hâlâ yeterlidir.
+Sonuç: GMeff = 2,10 m. Serbest yüzey etkisi GM'i 0,13 m düşürmüştür; ancak değer hâlâ yeterlidir.
 
 **Örnek 3 — Yük Ekleme ve Çıkarma**
 
@@ -4403,7 +4403,7 @@ Sonuç: Ağır yükün alt seviyeye yerleştirilmesi KG'yi düşürmüş (6,27 �
             description: "Metasantrik yükseklik"
           },
           {
-            formula: "GM_eff = GM - ΣFSM / Δ",
+            formula: "GMeff = GM - ΣFSM / Δ",
             description: "Serbest yüzey düzeltmeli GM"
           }
         ],
@@ -4421,8 +4421,8 @@ Sonuç: Ağır yükün alt seviyeye yerleştirilmesi KG'yi düşürmüş (6,27 �
 **Örnek 1 — Yükleme Sonrası Trim Değişimi**
 
 Bir kargo gemisinin mevcut durumu:
-— Baş draft (T_F) = 6,50 m
-— Kıç draft (T_A) = 7,20 m
+— Baş draft (TF) = 6,50 m
+— Kıç draft (TA) = 7,20 m
 — LCF = 82,5 m (kıçtan)
 — MCT₁cm = 320 t·m/cm
 — LBP = 160 m
@@ -4430,7 +4430,7 @@ Bir kargo gemisinin mevcut durumu:
 500 ton kargo, kıçtan 120 m mesafeye yüklenecektir.
 
 Adım 1 — Mevcut trim:
-Trim = T_A − T_F = 7,20 − 6,50 = 0,70 m (kıça trim)
+Trim = TA − TF = 7,20 − 6,50 = 0,70 m (kıça trim)
 
 Adım 2 — Yükleme pozisyonu ve LCF'ye göre mesafe:
 d = 120 − 82,5 = 37,5 m (LCF'nin başı tarafında)
@@ -4447,10 +4447,10 @@ Yeni trim = 0,70 − 0,586 = 0,114 m (kıça trim, çok azalmış)
 
 Adım 6 — Baş ve kıç draft değişimleri:
 Paralel batma = w / TPC (TPC verilmemişse ihmal edilebilir)
-ΔT_F = ΔTrim × (LBP − LCF) / LBP = 0,586 × (160 − 82,5) / 160 = 0,586 × 0,484 = 0,284 m (artar)
-ΔT_A = ΔTrim × LCF / LBP = 0,586 × 82,5 / 160 = 0,302 m (azalır)
+ΔTF = ΔTrim × (LBP − LCF) / LBP = 0,586 × (160 − 82,5) / 160 = 0,586 × 0,484 = 0,284 m (artar)
+ΔTA = ΔTrim × LCF / LBP = 0,586 × 82,5 / 160 = 0,302 m (azalır)
 
-Sonuç: Yeni T_F ≈ 6,50 + 0,284 = 6,78 m, Yeni T_A ≈ 7,20 − 0,302 = 6,90 m
+Sonuç: Yeni TF ≈ 6,50 + 0,284 = 6,78 m, Yeni TA ≈ 7,20 − 0,302 = 6,90 m
 
 **Örnek 2 — İstenen Trim İçin Balast Hesabı**
 
@@ -4474,7 +4474,7 @@ Sonuç: Baş pik tankına yaklaşık 209 ton balast alınması gerekir.
 Bu hesap, MCT₁cm değerinin deplasmanla değiştiğini göz ardı eder. Büyük ağırlık değişikliklerinde, eklenen balastın deplasmanı ve dolayısıyla MCT₁cm değerini değiştireceği dikkate alınarak iteratif hesap yapılması gerekebilir.`,
         formulas: [
           {
-            formula: "Trim = T_A − T_F",
+            formula: "Trim = TA − TF",
             description: "Trim hesabı (pozitif = kıça trim)"
           },
           {
@@ -4521,8 +4521,8 @@ IMO A.749 (2008 IS Code) kriterlerini kontrol ediniz.
 **Kriter 1 — GZ₃₀ ≥ 0,20 m:**
 GZ₃₀ = 0,520 m → 0,520 ≥ 0,20 ✓ KARŞILANIYOR
 
-**Kriter 2 — GZ_max en az 25°'de oluşmalı:**
-GZ_max = 0,520 m, 30°'de oluşuyor → 30° ≥ 25° ✓ KARŞILANIYOR
+**Kriter 2 — GZmax en az 25°'de oluşmalı:**
+GZmax = 0,520 m, 30°'de oluşuyor → 30° ≥ 25° ✓ KARŞILANIYOR
 
 **Kriter 3 — Alan 0°–30° ≥ 0,055 m·rad:**
 
@@ -4549,18 +4549,18 @@ GM₀ ≈ 0,180 / sin(10°) = 0,180 / 0,1736 = 1,04 m → 1,04 ≥ 0,15 ✓ KAR�
 **Sonuç:** Tüm IMO 2008 IS Code kriterleri karşılanmaktadır. Vanishing angle (yok olma açısı), GZ'nin sıfırı kestiği yaklaşık 68° civarındadır. Bu değer makul bir stabilite menzili sağlamaktadır; ancak 60°'nin altına düşmemesi tercih edilir.
 
 **Değerlendirme:**
-Bu geminin iyi bir stabilite profili vardır. GZ_max değeri yeterince büyük (0,520 m), maksimum GZ açısı uygun (30°) ve GZ eğrisi altındaki alanlar IMO kriterlerini rahat aşmaktadır. GM₀ = 1,04 m, güvenli ve konforlu seyir aralığındadır.`,
+Bu geminin iyi bir stabilite profili vardır. GZmax değeri yeterince büyük (0,520 m), maksimum GZ açısı uygun (30°) ve GZ eğrisi altındaki alanlar IMO kriterlerini rahat aşmaktadır. GM₀ = 1,04 m, güvenli ve konforlu seyir aralığındadır.`,
         formulas: [
           {
-            formula: "Alan = Σ [(GZ₁ + GZ₂) / 2 × Δθ_rad]",
+            formula: "Alan = Σ [(GZ₁ + GZ₂) / 2 × Δθrad]",
             description: "Trapez kuralı ile GZ eğrisi altı alan (m·rad)"
           },
           {
-            formula: "GM₀ ≈ GZ_θ / sin(θ)",
+            formula: "GM₀ ≈ GZθ / sin(θ)",
             description: "Küçük açılarda GM tahmini"
           },
           {
-            formula: "Δθ_rad = Δθ° × π / 180",
+            formula: "Δθrad = Δθ° × π / 180",
             description: "Derece-radyan dönüşümü"
           }
         ],
@@ -4636,8 +4636,8 @@ Maksimum eğilme momenti: yaklaşık 94 500 t·m (x ≈ 150 m'de)
 
 Gemi, sagging (orta kısım aşağı bükülme) durumundadır çünkü baş ve kıç bölgelerde ağırlık fazlası, orta bölgede kaldırma fazlası vardır. Hesaplanan maksimum değerler, geminin yapısal sınırlarıyla karşılaştırılmalıdır:
 
-— SF_izin = 2 500 ton (varsayım) → SF_max = 1 200 ton → OK
-— BM_izin = 150 000 t·m (varsayım) → BM_max = 94 500 t·m → OK
+— SFizin = 2 500 ton (varsayım) → SFmax = 1 200 ton → OK
+— BMizin = 150 000 t·m (varsayım) → BMmax = 94 500 t·m → OK
 
 Bu basitleştirilmiş örnekte sınırlar aşılmamıştır; ancak gerçek gemilerde yükleme bilgisayarı, her kesit için detaylı hesaplama yapar ve sınır aşımını anlık olarak kontrol eder.`,
         formulas: [
@@ -4684,8 +4684,8 @@ Bu basitleştirilmiş örnekte sınırlar aşılmamıştır; ancak gerçek gemil
 **Sonuç Kontrolü** aşamasında, hesaplanan değerler IMO kriterleriyle ve geminin onaylı limit eğrileriyle karşılaştırılır. Kontrol edilmesi gereken parametreler şunlardır:
 
 — Draft ve trim değerlerinin makul olup olmadığı (gemideki fiili okumayla karşılaştırılır)
-— GM_eff ≥ 0,15 m (IMO minimum) — tercihen ≥ 0,50 m
-— GZ_max ≥ 0,20 m ve en az 25°'de oluşması
+— GMeff ≥ 0,15 m (IMO minimum) — tercihen ≥ 0,50 m
+— GZmax ≥ 0,20 m ve en az 25°'de oluşması
 — GZ eğrisi altı alan kriterleri (0°–30°, 0°–40°, 30°–40°)
 — Boyuna mukavemet limitlerinin aşılmamış olması
 — Yükleme bilgisayarından herhangi bir uyarı veya alarm olmaması
@@ -4862,14 +4862,14 @@ Burada KB omurgadan kaldırma merkezine, BM metasantrik yarıçapı (BM = I / �
 Serbest yüzey düzeltmesi, kısmen dolu tanklardaki sıvıların etkisini hesaba katar:
 
 ────────────
-GM_eff = GM − Σ(ρᵢ × iᵢ) / Δ
+GMeff = GM − Σ(ρᵢ × iᵢ) / Δ
 ────────────
 
 Küçük açılarda doğrultma kolu ve doğrultma momenti:
 
 ────────────
 GZ = GM × sin θ
-M_R = Δ × GZ = Δ × GM × sin θ
+MR = Δ × GZ = Δ × GM × sin θ
 ────────────
 
 Büyük açılarda doğrultma kolu (Cross Curves yöntemi):
@@ -4887,7 +4887,7 @@ GZ = sin θ × (GM + ½ BM × tan² θ)
 **Trim Formülleri**
 
 ────────────
-Trim = T_A − T_F
+Trim = TA − TF
 MCT₁cm = (Δ × GML) / (100 × L)
 ΔTrim = (w × d) / MCT₁cm
 ────────────
@@ -4895,8 +4895,8 @@ MCT₁cm = (Δ × GML) / (100 × L)
 Baş ve kıç draft değişimleri:
 
 ────────────
-ΔT_F = ΔTrim × (LBP − LCF) / LBP
-ΔT_A = ΔTrim × LCF / LBP
+ΔTF = ΔTrim × (LBP − LCF) / LBP
+ΔTA = ΔTrim × LCF / LBP
 ────────────
 
 **Ağırlık ve Moment Formülleri**
@@ -4910,9 +4910,9 @@ LCG = Σ(wᵢ × LCGᵢ) / Σwᵢ
 
 ────────────
 Δ = ρ × ∇
-TPC = (A_wp × ρ) / 100
+TPC = (Awp × ρ) / 100
 FWA = Δ / (4 × TPC)
-DWA = FWA × (1025 − ρ_dock) / 25
+DWA = FWA × (1025 − ρdock) / 25
 ────────────
 
 **Rulo Periyodu**
@@ -4932,7 +4932,7 @@ GM = (w × d) / (Δ × tan θ)
 
 ────────────
 FSM = ρₜ × l × b³ / 12      (dikdörtgen tank)
-FSM_bölünmüş = FSM_orijinal / n²   (n parçaya bölünmüş tank)
+FSMbölünmüş = FSMorijinal / n²   (n parçaya bölünmüş tank)
 ────────────
 
 **IMO Intact Stability Kriterleri (2008 IS Code)**
@@ -4941,8 +4941,8 @@ FSM_bölünmüş = FSM_orijinal / n²   (n parçaya bölünmüş tank)
 Kriter                      Minimum Değer
 ────────────────────────────────────
 GM₀ (serbest yüzey dahil)  ≥ 0,15 m
-GZ_max                      ≥ 0,20 m
-θ(GZ_max)                   ≥ 25°
+GZmax                      ≥ 0,20 m
+θ(GZmax)                   ≥ 25°
 Alan 0°–30°                 ≥ 0,055 m·rad
 Alan 0°–40°                 ≥ 0,090 m·rad
 Alan 30°–40°                ≥ 0,030 m·rad
@@ -4951,7 +4951,7 @@ Alan 30°–40°                ≥ 0,030 m·rad
 Tahıl taşıyan gemiler için ek kriterler:
 
 ────────────────────────────────────
-GM_fluid                    ≥ 0,30 m
+GMfluid                    ≥ 0,30 m
 Tahıl kayma açısı           ≤ 12°
 Artık alan                  ≥ 0,075 m·rad
 ────────────────────────────────────`,
@@ -5024,7 +5024,7 @@ Veri Toplama aşamasında: tüm tank soundingleri alınmış olmalı; kargo mikt
 
 Hesaplama aşamasında: yükleme bilgisayarına tüm veriler girilmiş olmalı; departure durumu hesaplanmış olmalı; arrival durumu hesaplanmış olmalı; kritik ara durumlar kontrol edilmeli.
 
-Değerlendirme aşamasında: GM_eff ≥ 0,15 m tüm durumlarda sağlanmalı; tüm IMO GZ eğrisi alan kriterleri karşılanmalı; kesme kuvveti ve eğilme momenti limitlerin altında olmalı; draft ve trim değerleri uygun olmalı; yükleme bilgisayarından uyarı veya alarm olmamalı.
+Değerlendirme aşamasında: GMeff ≥ 0,15 m tüm durumlarda sağlanmalı; tüm IMO GZ eğrisi alan kriterleri karşılanmalı; kesme kuvveti ve eğilme momenti limitlerin altında olmalı; draft ve trim değerleri uygun olmalı; yükleme bilgisayarından uyarı veya alarm olmamalı.
 
 Onay aşamasında: kaptan stabilite hesaplarını inceleyip onaylamış olmalı; hesap belgesi imzalanmış olmalı; belgeler dosyalanmış olmalı.
 

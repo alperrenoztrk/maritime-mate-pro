@@ -533,7 +533,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       {
         title: "1. Veri topla",
         description:
-          "Görünen rüzgâr hızı (AW, knot), görünen rüzgâr relatif yönü (α, °), geminin SOG'unu (V, knot) ve başını (heading) topla. AW yönü gemi başına göre değil hakiki kuzeye göre verilmişse, önce α = AW_bearing − heading hesapla.",
+          "Görünen rüzgâr hızı (AW, knot), görünen rüzgâr relatif yönü (α, °), geminin SOG'unu (V, knot) ve başını (heading) topla. AW yönü gemi başına göre değil hakiki kuzeye göre verilmişse, önce α = AWbearing − heading hesapla.",
       },
       {
         title: "2. Vektör üçgenini kur",
@@ -1065,9 +1065,9 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
     deepDive:
       "Carnot çevrimi, iki sabit sıcaklık (TH ve TC) arasında çalışan tüm ısı makinelerinin teorik üst verim sınırını veren ideal tersinir çevrimdir. Dört süreçten oluşur: (1) izotermik genişleme (TH'de ısı alımı QH), (2) adyabatik genişleme (TH→TC), (3) izotermik sıkıştırma (TC'de ısı atımı QC), (4) adyabatik sıkıştırma (TC→TH). Pratikte hiçbir gerçek makine Carnot verimine ulaşamaz; ancak bu, gerçek motorların termik verimini değerlendirmek için bir referans noktasıdır.",
     coreFormula: {
-      text: "η_Carnot = 1 − T_C / T_H    (Mutlak sıcaklık, Kelvin)",
+      text: "ηCarnot = 1 − TC / TH    (Mutlak sıcaklık, Kelvin)",
       description:
-        "T_H: sıcak kaynağın mutlak sıcaklığı (K). T_C: soğuk kaynağın (kondenser/çevre) mutlak sıcaklığı (K). Hiçbir gerçek çevrim bu verimi aşamaz (2. yasa).",
+        "TH: sıcak kaynağın mutlak sıcaklığı (K). TC: soğuk kaynağın (kondenser/çevre) mutlak sıcaklığı (K). Hiçbir gerçek çevrim bu verimi aşamaz (2. yasa).",
     },
     steps: [
       {
@@ -1076,17 +1076,17 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       },
       {
         title: "2. Carnot verimini hesapla",
-        description: "η_C = 1 − T_C/T_H. Sonuç ondalıktır; %'ye çevirmek için ×100.",
+        description: "ηC = 1 − TC/TH. Sonuç ondalıktır; %'ye çevirmek için ×100.",
       },
       {
         title: "3. Gerçek çevrimle karşılaştır",
         description:
-          "Reel motor verimi η_real / η_C oranı 'Carnot relative efficiency' olarak adlandırılır. Tipik deniz dizel motoru için η_real ≈ %50, η_C ≈ %65 → relative ≈ %77.",
+          "Reel motor verimi ηreal / ηC oranı 'Carnot relative efficiency' olarak adlandırılır. Tipik deniz dizel motoru için ηreal ≈ %50, ηC ≈ %65 → relative ≈ %77.",
       },
       {
         title: "4. İş ve ısı miktarlarını ilişkilendir",
         description:
-          "W_net = QH − QC. η = W_net/QH. Carnot için ayrıca QH/QC = TH/TC bağıntısı tersinir özellikten gelir.",
+          "Wnet = QH − QC. η = Wnet/QH. Carnot için ayrıca QH/QC = TH/TC bağıntısı tersinir özellikten gelir.",
       },
     ],
     workedExamples: [
@@ -1094,12 +1094,12 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
         scenario:
           "Bir gemi dizel motorunun silindir gaz sıcaklığı 1450°C, egzoz çıkışı 380°C. Carnot teorik verimi nedir?",
         given: [
-          { label: "T_H", value: "1450°C = 1723.15 K" },
-          { label: "T_C", value: "380°C = 653.15 K" },
+          { label: "TH", value: "1450°C = 1723.15 K" },
+          { label: "TC", value: "380°C = 653.15 K" },
         ],
         solution: [
           {
-            step: "η_C = 1 − T_C/T_H",
+            step: "ηC = 1 − TC/TH",
             expression: "1 − 653.15 / 1723.15 = 1 − 0.3791",
             result: "0.6209 → %62.1",
           },
@@ -1114,12 +1114,12 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
         scenario:
           "Buhar türbinli sistemde TH = 540°C (kazan), TC = 35°C (kondenser). Carnot verimi?",
         given: [
-          { label: "T_H", value: "540°C = 813.15 K" },
-          { label: "T_C", value: "35°C = 308.15 K" },
+          { label: "TH", value: "540°C = 813.15 K" },
+          { label: "TC", value: "35°C = 308.15 K" },
         ],
         solution: [
           {
-            step: "η_C = 1 − 308.15/813.15",
+            step: "ηC = 1 − 308.15/813.15",
             expression: "1 − 0.3790",
             result: "0.6210 → %62.1",
           },
@@ -1137,7 +1137,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       "Carnot verimini gerçek hedef olarak görmek; ideal sınırdır, ulaşılamaz.",
     ],
     criticalNotes: [
-      "TC'yi düşürmek (örn. soğuk deniz suyuyla daha iyi kondenser) η_C'yi TH'yi yükseltmekten daha çok artırır.",
+      "TC'yi düşürmek (örn. soğuk deniz suyuyla daha iyi kondenser) ηC'yi TH'yi yükseltmekten daha çok artırır.",
       "Carnot verimi yalnızca ısı makinelerinin ÜST sınırıdır; mekanik kayıplar, sürtünme, yanmama dahil değildir.",
       "2. yasa: η < 1 her zaman; TC = 0 K olmadıkça tüm ısı işe çevrilemez.",
     ],
@@ -1150,7 +1150,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
     deepDive:
       "Diesel çevrimi, sabit basınçta ısı eklenen ideal hava-standart çevrimdir. Dört süreçten oluşur: (1) izentropik sıkıştırma, (2) sabit basınçta ısı ekleme (yakıt enjeksiyonu), (3) izentropik genişleme (iş zamanı), (4) sabit hacimde ısı atımı (egzoz). Modern büyük deniz dizel motorları bu ideal çevrime yakın çalışır; verim sıkıştırma oranı (r) ve cut-off oranı (rc) ile belirlenir.",
     coreFormula: {
-      text: "η_Diesel = 1 − (1/r^(k−1)) · ((r_c^k − 1) / (k · (r_c − 1)))",
+      text: "ηDiesel = 1 − (1/r^(k−1)) · ((rc^k − 1) / (k · (rc − 1)))",
       description:
         "r = sıkıştırma oranı (V₁/V₂), rc = cut-off oranı (V₃/V₂, ısı eklemenin sonundaki/başındaki hacim), k = cp/cv (hava için ≈ 1.4).",
     },
@@ -1168,12 +1168,12 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       {
         title: "3. Verim formülünü uygula",
         description:
-          "Aşamalı hesap kolaylığı için: A = r^(k−1), B = r_c^k − 1, C = k·(r_c − 1). η = 1 − B/(A·C).",
+          "Aşamalı hesap kolaylığı için: A = r^(k−1), B = rc^k − 1, C = k·(rc − 1). η = 1 − B/(A·C).",
       },
       {
         title: "4. Otto ile karşılaştır",
         description:
-          "η_Otto = 1 − 1/r^(k−1). Aynı r için η_Diesel < η_Otto (cut-off cezası); ancak Diesel daha yüksek r kullanabildiği için pratik verim daha yüksek.",
+          "ηOtto = 1 − 1/r^(k−1). Aynı r için ηDiesel < ηOtto (cut-off cezası); ancak Diesel daha yüksek r kullanabildiği için pratik verim daha yüksek.",
       },
     ],
     workedExamples: [
@@ -1244,7 +1244,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
     deepDive:
       "Otto çevrimi, sabit hacimde ısı eklenen ideal hava-standart çevrimdir; kıvılcımla ateşlenen (SI) benzinli motorların modelidir. Süreçler: izentropik sıkıştırma → sabit hacim ısı ekleme (kıvılcım) → izentropik genişleme → sabit hacim ısı atımı. Termik verimi sadece sıkıştırma oranına bağlıdır; ancak benzin için vuruntu (knock) sıkıştırma oranını ~10–12 ile sınırlar.",
     coreFormula: {
-      text: "η_Otto = 1 − 1 / r^(k−1)",
+      text: "ηOtto = 1 − 1 / r^(k−1)",
       description: "r = sıkıştırma oranı, k = cp/cv ≈ 1.4.",
     },
     steps: [
@@ -1279,7 +1279,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
       "Sıkıştırma oranını yakıt antiknock indeksiyle dengelemeden artırmak.",
     ],
     criticalNotes: [
-      "Aynı r için η_Otto > η_Diesel; ancak Diesel daha yüksek r kullanabildiği için pratikte daha verimli.",
+      "Aynı r için ηOtto > ηDiesel; ancak Diesel daha yüksek r kullanabildiği için pratikte daha verimli.",
       "Gerçek SI motorda volumetrik verim, ateşleme zamanlaması ve karışım oranı η'yı ideal değerin yarısına indirir.",
       "Deniz uygulamasında benzinli motorlar yangın riski nedeniyle sınırlıdır; ana güç dizel olarak verilir.",
     ],
@@ -1292,15 +1292,15 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
     deepDive:
       "Rankine çevrimi, buhar türbin sistemlerinin (LNG carrier'lar, eski steam ship'ler, atık ısı geri kazanım WHRS) temel termodinamik çevrimidir. Süreçler: (1) izentropik pompalama (sıvı), (2) sabit basınçta ısı ekleme (kazanda buhar üretimi), (3) izentropik genişleme (türbinde iş üretimi), (4) sabit basınçta ısı atımı (kondenserde yoğuşma). Verim, türbin giriş sıcaklığı/basıncı yükseldikçe ve kondenser basıncı düştükçe artar; yeniden ısıtma (reheat) ve regenerasyon (feed-water heating) eklenerek %38–42'ye çıkarılır.",
     coreFormula: {
-      text: "η_Rankine = (W_T − W_P) / Q_H ≈ (h₃ − h₄) / (h₃ − h₂)",
+      text: "ηRankine = (WT − WP) / QH ≈ (h₃ − h₄) / (h₃ − h₂)",
       description:
-        "h₃: türbin girişi entalpi, h₄: türbin çıkışı, h₂: kazan girişi (pompa sonrası). W_P pompa işi genellikle ihmal edilebilir mertebede küçüktür.",
+        "h₃: türbin girişi entalpi, h₄: türbin çıkışı, h₂: kazan girişi (pompa sonrası). WP pompa işi genellikle ihmal edilebilir mertebede küçüktür.",
     },
     steps: [
       { title: "1. Türbin giriş ve çıkış basıncını belirle", description: "Kazan basıncı (örn. 60 bar) ve kondenser basıncı (örn. 0.05 bar)." },
       { title: "2. Entalpi değerlerini buhar tablosundan oku", description: "Türbin girişi: yüksek basınç + kızgın buhar (h₃). Türbin çıkışı: kondenser basıncında, izentropik genişlemeyle bulunan x kalitesine göre h₄." },
-      { title: "3. Türbin işi ve pompa işini hesapla", description: "W_T = h₃ − h₄. W_P = v_f · (P₂ − P₁) (v_f doymuş sıvı özgül hacmi)." },
-      { title: "4. Kazan ısısı ve net iş", description: "Q_H = h₃ − h₂. W_net = W_T − W_P. η = W_net / Q_H." },
+      { title: "3. Türbin işi ve pompa işini hesapla", description: "WT = h₃ − h₄. WP = vf · (P₂ − P₁) (vf doymuş sıvı özgül hacmi)." },
+      { title: "4. Kazan ısısı ve net iş", description: "QH = h₃ − h₂. Wnet = WT − WP. η = Wnet / QH." },
       { title: "5. Reheat/regen iyileştirmeleri", description: "Reheat: türbin orta basıncında buharı kazana geri gönderip yeniden ısıt. Regen: türbinden alınan ekstraksiyon buharıyla besleme suyunu ısıt; η %3–5 artar." },
     ],
     workedExamples: [
@@ -1311,12 +1311,12 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
           { label: "h₃", value: "3422 kJ/kg" },
           { label: "h₄", value: "2107 kJ/kg" },
           { label: "h₂", value: "144 kJ/kg" },
-          { label: "W_P", value: "≈ 6 kJ/kg (ihmal)" },
+          { label: "WP", value: "≈ 6 kJ/kg (ihmal)" },
         ],
         solution: [
-          { step: "W_T = h₃ − h₄", expression: "3422 − 2107", result: "1315 kJ/kg" },
-          { step: "Q_H = h₃ − h₂", expression: "3422 − 144", result: "3278 kJ/kg" },
-          { step: "η = W_T / Q_H", expression: "1315 / 3278", result: "0.4012 → %40.1" },
+          { step: "WT = h₃ − h₄", expression: "3422 − 2107", result: "1315 kJ/kg" },
+          { step: "QH = h₃ − h₂", expression: "3422 − 144", result: "3278 kJ/kg" },
+          { step: "η = WT / QH", expression: "1315 / 3278", result: "0.4012 → %40.1" },
         ],
         answer: "Basit Rankine η ≈ %40.1.",
       },
@@ -1324,8 +1324,8 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
         scenario: "Düşük kondenser basıncının etkisi: kondenser 0.10 bar olsa h₄ ≈ 2200, h₂ ≈ 192.",
         given: [{ label: "Yeni h₄", value: "2200" }, { label: "Yeni h₂", value: "192" }],
         solution: [
-          { step: "W_T", result: "3422 − 2200 = 1222 kJ/kg" },
-          { step: "Q_H", result: "3422 − 192 = 3230 kJ/kg" },
+          { step: "WT", result: "3422 − 2200 = 1222 kJ/kg" },
+          { step: "QH", result: "3422 − 192 = 3230 kJ/kg" },
           { step: "η", expression: "1222 / 3230", result: "0.3784 → %37.8" },
         ],
         answer: "Kondenser basıncını ikiye katlamak verimi %40.1 → %37.8'e düşürür.",
@@ -1333,7 +1333,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
     ],
     commonMistakes: [
       "Pompa işini büyük sanıp türbinden çıkarmak — pompa işi tipik %1–2'dir.",
-      "Türbin çıkışında izentropik varsaymadan h₄'ü doğrudan tablodan almak (gerçekte η_turbine düzeltmesi gerekir).",
+      "Türbin çıkışında izentropik varsaymadan h₄'ü doğrudan tablodan almak (gerçekte ηturbine düzeltmesi gerekir).",
       "Kondenser sıcaklığını basınç yerine doğrudan kullanmak; doymuş tablo basınç–sıcaklık çiftiyle çalışır.",
     ],
     criticalNotes: [
@@ -1350,7 +1350,7 @@ export const lessonTopicEnhancements: Record<string, LessonTopicEnhancement> = {
     deepDive:
       "Brayton (Joule) çevrimi, gaz türbinli motorların ideal hava-standart çevrimidir. Süreçler: (1) izentropik sıkıştırma (kompresörde), (2) sabit basınçta ısı ekleme (yanma odasında), (3) izentropik genişleme (türbinde), (4) sabit basınçta ısı atımı (egzoz). Hızlı feribot, fast ferry, LNG carrier ve askeri gemilerde tercih edilir. Verim basınç oranına (rp) ve k'ya bağlıdır.",
     coreFormula: {
-      text: "η_Brayton = 1 − 1 / rp^((k−1)/k)",
+      text: "ηBrayton = 1 − 1 / rp^((k−1)/k)",
       description: "rp = P₂/P₁ (basınç oranı, kompresör çıkış/giriş), k = 1.4 (hava-standart).",
     },
     steps: [

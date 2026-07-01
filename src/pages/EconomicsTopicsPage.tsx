@@ -682,7 +682,7 @@ Toplam Yakıt Maliyeti = Toplam Yakıt (ton) × Yakıt Fiyatı ($/ton)
 Denizde geçen gün = Mesafe (NM) / (Hız (knot) × 24)`,
     formula: {
       name: "Yakıt Maliyeti Hesabı",
-      expression: "Yakıt Maliyeti = [(D_deniz × C_deniz) + (D_liman × C_liman)] × Fiyat",
+      expression: "Yakıt Maliyeti = [(Ddeniz × Cdeniz) + (Dliman × Climan)] × Fiyat",
       description: "D: gün sayısı, C: günlük tüketim (ton/gün), Fiyat: $/ton. Yakıt türüne göre ayrı hesaplanmalıdır.",
     },
     examples: [
@@ -1076,7 +1076,7 @@ Benzer tipte yeni gemi siparişi fiyatı. Üst sınır referansıdır.
 
 4. NAKİT AKIŞI YÖNTEMİ (DCF – Discounted Cash Flow):
 Geminin gelecekteki nakit akışlarının bugünkü değere indirgenmesi.
-NPV = ∑ [CF_t / (1+r)^t]
+NPV = ∑ [CFt / (1+r)^t]
 
 5. CHARTER-FREE VALUE:
 Gemi herhangi bir charter taahhüdü olmaksızın değerlendirilir. Gerçek piyasa değerine en yakın ölçümdür.

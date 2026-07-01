@@ -1007,22 +1007,22 @@ Modern uygulamalarda bu süreç stabilite yazılımlarıyla otomatik yapılır; 
     introduction: "Maksimum GZ, doğrultma kolunun en büyük değerini aldığı yatma açısıdır ve geminin stabilite kapasitesinin önemli bir göstergesidir.",
     content: `GZ eğrisi belirli bir açıya kadar artar, ardından azalarak sıfıra yaklaşır. Eğrinin tepe noktası, geminin en yüksek doğrultma kapasitesini gösterir.
 
-IMO 2008 IS Code gibi kriterler, maksimum GZ değerinin ve oluştuğu açının belirli minimumları sağlamasını ister. Örneğin genel kargo gemileri için GZ_max ≥ 0.20 m ve bu maksimumun en az 25°–30° civarında oluşması beklenir (gemi tipine göre değişir).
+IMO 2008 IS Code gibi kriterler, maksimum GZ değerinin ve oluştuğu açının belirli minimumları sağlamasını ister. Örneğin genel kargo gemileri için GZmax ≥ 0.20 m ve bu maksimumun en az 25°–30° civarında oluşması beklenir (gemi tipine göre değişir).
 
 Maksimum GZ'nin çok düşük veya küçük açıda oluşması, yetersiz stabilite göstergesi olabilir.`,
     bulletPoints: [
       "Maksimum GZ stabilite kapasitesinin tepe noktasıdır",
       "Aşırı küçük açıdaki maksimum GZ risklidir",
-      "Gemi tipine göre minimum GZ_max kriterleri vardır",
+      "Gemi tipine göre minimum GZmax kriterleri vardır",
     ],
     keyPoints: [
-      "GZ_max, GM'den bağımsız olarak büyük açılı davranışı temsil eder",
-      "Üst ağırlıkların artması GZ_max'ı düşürür",
-      "GZ_max değeri yükleme planı ile kontrol edilir",
+      "GZmax, GM'den bağımsız olarak büyük açılı davranışı temsil eder",
+      "Üst ağırlıkların artması GZmax'ı düşürür",
+      "GZmax değeri yükleme planı ile kontrol edilir",
     ],
     warnings: [
-      "GZ_max kriteri sağlanmazsa sefer emniyeti risk altındadır",
-      "Güverte yükleri ve serbest yüzey etkisi GZ_max'ı hızlı düşürebilir",
+      "GZmax kriteri sağlanmazsa sefer emniyeti risk altındadır",
+      "Güverte yükleri ve serbest yüzey etkisi GZmax'ı hızlı düşürebilir",
     ],
   },
   "stability-area": {
@@ -1085,7 +1085,7 @@ Gemideki kapatılamayan açıklıklar (hava firarı, fan girişi, kapı) belirli
 
 1) BAŞLANGIÇ EĞİMİ → GM: Eğrinin orijindeki teğeti GM'yi verir. Teğet, 1 radyan (57,3°) apsisine kadar uzatılırsa kestiği GZ değeri sayısal olarak GM'ye eşittir. Küçük açılarda GZ ≈ GM · sinθ.
 
-2) MAKSİMUM GZ ve AÇISI: Eğrinin tepe noktası, geminin ürettiği en büyük doğrultma koludur. IMO, GZ_max'ın tercihen ≥30°'de (en az 25°) oluşmasını ister.
+2) MAKSİMUM GZ ve AÇISI: Eğrinin tepe noktası, geminin ürettiği en büyük doğrultma koludur. IMO, GZmax'ın tercihen ≥30°'de (en az 25°) oluşmasını ister.
 
 3) DECK EDGE IMMERSION (güverte kenarı suya girişi): Güverte kenarı suya girdiğinde su hattı genişliği azalır, BM düşer ve eğrinin eğimi değişir (genelde bir bükülme/dönüm noktası). Bu noktadan sonra GZ daha yavaş artar veya azalmaya başlar.
 
@@ -1108,7 +1108,7 @@ EĞRİYİ NE DEĞİŞTİRİR:
     },
     keyPoints: [
       "Tek bir değer değil, eğrinin tüm şekli okunmalıdır.",
-      "GM (eğim), GZ_max, range ve alan birlikte değerlendirilir.",
+      "GM (eğim), GZmax, range ve alan birlikte değerlendirilir.",
       "KG↑ ve FSE eğriyi düşürür; fribord aralığı uzatır.",
       "GZ eğrisi, IMO kriterlerinin ve operasyonel limitlerin temelidir.",
     ],
@@ -1122,9 +1122,9 @@ EĞRİYİ NE DEĞİŞTİRİR:
     content: `Arşimet prensibine göre bir cisim, yer değiştirdiği sıvının ağırlığı kadar kaldırma kuvveti alır. Yüzerlik şartı bu prensipten türetilir.
 
 Yüzerlik şartı:
-W ≤ ρ × g × ∇_max
+W ≤ ρ × g × ∇max
 
-Burada ∇_max, cismin tamamen batması durumundaki hacmidir. W bu değerin üzerindeyse cisim batar.
+Burada ∇max, cismin tamamen batması durumundaki hacmidir. W bu değerin üzerindeyse cisim batar.
 
 Gemilerde yüzerlik şartı her zaman sağlanmalıdır. Gemi hafif haldeyken bile yeterli batık hacme sahiptir. Yükleme arttıkça draft yükselir ve batık hacim artar. Ancak fribord sınırı aşılırsa tehlike oluşur.
 
@@ -1248,7 +1248,7 @@ Yatma momenti doğrultma momentinden büyük olursa gemi devrilir. Bu nedenle ya
       "HM dış kaynaklı yatma etkisidir",
       "Rüzgâr, dalga, ağırlık kayması HM oluşturur",
       "Denge: HM = RM",
-      "HM > RM_max ise devrilme riski oluşur",
+      "HM > RMmax ise devrilme riski oluşur",
     ],
     formula: {
       name: "Yatma Momenti (Rüzgâr)",
@@ -1396,13 +1396,13 @@ Güverte kenarı suya girdikten sonra su hattı alanı daralır, BM düşer ve G
 
 IMO BÜYÜK AÇI KRİTERLERİ:
 - GZ ≥ 0,20 m (genellikle ≥30°'de)
-- GZ_max açısı ≥ 25° (tercihen ≥30°)
+- GZmax açısı ≥ 25° (tercihen ≥30°)
 - 0-30°, 0-40° ve 30-40° alan kriterleri (IS Code).`,
     bulletPoints: [
       "10° üzerinde GZ = GM·sinθ yetersizdir; tam GZ analizi gerekir",
       "Wall-sided: GZ = sinθ·(GM + ½·BM·tan²θ)",
       "Deck edge immersion sonrası GZ artışı yavaşlar",
-      "IMO: GZ≥0,20m, GZ_max açısı ≥25°",
+      "IMO: GZ≥0,20m, GZmax açısı ≥25°",
     ],
     formula: {
       name: "Wall-sided GZ formülü",
@@ -1461,30 +1461,30 @@ Tüm kısmen dolu tanklar serbest yüzey etkisi yaratır: yakıt, balast, tatlı
     content: `Serbest yüzey etkisi, ağırlık merkezinin sanal olarak yükselmesine (GG' veya virtual rise of G) neden olur. Bu artış GM'yi doğrudan azaltır.
 
 Düzeltilmiş GM:
-GM_fluid = GM_solid - GG'
+GMfluid = GMsolid - GG'
 
 Burada GG' serbest yüzey düzeltmesidir ve FSM/Δ olarak hesaplanır.
 
-Efektif GM (GM_fluid) negatif olursa gemi kararsız hale gelir. Bu nedenle stabilite hesaplarında serbest yüzey düzeltmesi her zaman uygulanır.`,
+Efektif GM (GMfluid) negatif olursa gemi kararsız hale gelir. Bu nedenle stabilite hesaplarında serbest yüzey düzeltmesi her zaman uygulanır.`,
     bulletPoints: [
       "Serbest yüzey KG'yi sanal olarak yükseltir",
-      "GM_fluid = GM_solid - GG'",
+      "GMfluid = GMsolid - GG'",
       "GG' = FSM / Δ",
       "Düşük GM'li gemilerde etki kritiktir",
     ],
     formula: {
       name: "Serbest Yüzey Düzeltmesi",
-      expression: "GM_fluid = GM_solid - (FSM / Δ)",
-      description: "GM_fluid: Düzeltilmiş GM (m), GM_solid: Katı hesaplı GM (m), FSM: Serbest yüzey momenti (t·m), Δ: Deplasman (ton)",
+      expression: "GMfluid = GMsolid - (FSM / Δ)",
+      description: "GMfluid: Düzeltilmiş GM (m), GMsolid: Katı hesaplı GM (m), FSM: Serbest yüzey momenti (t·m), Δ: Deplasman (ton)",
     },
     examples: [
       {
-        problem: "GM_solid = 0.80 m, FSM = 400 t·m, Δ = 8.000 ton ise GM_fluid kaç metredir?",
-        solution: "GG' = FSM / Δ = 400 / 8.000 = 0.05 m. GM_fluid = 0.80 - 0.05 = 0.75 m. Sonuç: Serbest yüzey GM'yi 5 cm azaltır.",
+        problem: "GMsolid = 0.80 m, FSM = 400 t·m, Δ = 8.000 ton ise GMfluid kaç metredir?",
+        solution: "GG' = FSM / Δ = 400 / 8.000 = 0.05 m. GMfluid = 0.80 - 0.05 = 0.75 m. Sonuç: Serbest yüzey GM'yi 5 cm azaltır.",
       },
     ],
     keyPoints: [
-      "Stabilite hesabı her zaman GM_fluid kullanmalıdır",
+      "Stabilite hesabı her zaman GMfluid kullanmalıdır",
       "FSM değerleri tank tablolarından alınır",
       "Birden fazla tank için FSM'ler toplanır",
     ],
@@ -1533,10 +1533,10 @@ FSM değerleri genellikle tank tablolarında verilir. Farklı doluluk oranları 
 FSE = FSM / Δ
 
 Bu değer KG'ye eklenerek efektif KG bulunur:
-KG_fluid = KG_solid + FSE
+KGfluid = KGsolid + FSE
 
 Veya doğrudan GM'den düşülür:
-GM_fluid = GM_solid - FSE
+GMfluid = GMsolid - FSE
 
 Birden fazla serbest yüzeyli tank varsa, tüm FSM'ler toplanır ve toplam FSE hesaplanır.`,
     bulletPoints: [
@@ -1547,7 +1547,7 @@ Birden fazla serbest yüzeyli tank varsa, tüm FSM'ler toplanır ve toplam FSE h
     ],
     formula: {
       name: "Free Surface Effect Hesabı",
-      expression: "FSE = Σ(FSM) / Δ; KG_fluid = KG_solid + FSE",
+      expression: "FSE = Σ(FSM) / Δ; KGfluid = KGsolid + FSE",
       description: "FSE: Serbest yüzey etkisi (m), FSM: Serbest yüzey momenti (t·m), Δ: Deplasman (ton)",
     },
     examples: [
@@ -1583,13 +1583,13 @@ Eğrisel veya konik tanklarda FSM hesabı daha karmaşıktır ve tank tabloları
     ],
     formula: {
       name: "Bölmeli Tank FSM",
-      expression: "FSM_bölmeli = FSM_tam / n²",
+      expression: "FSMbölmeli = FSMtam / n²",
       description: "n: Boyuna bölme sayısı (2 bölme için FSM 1/4 olur)",
     },
     examples: [
       {
         problem: "12 m genişliğinde bir tankın FSM = 800 t·m. Tank ortadan boyuna bölünürse yeni FSM kaç t·m olur?",
-        solution: "Bölme sayısı n = 2. FSM_yeni = 800 / 2² = 800 / 4 = 200 t·m. Sonuç: FSM 1/4'e düşer.",
+        solution: "Bölme sayısı n = 2. FSMyeni = 800 / 2² = 800 / 4 = 200 t·m. Sonuç: FSM 1/4'e düşer.",
       },
     ],
     keyPoints: [
@@ -1710,7 +1710,7 @@ Denge durumunda LCG ve LCB aynı düşey doğru üzerinde olmalıdır. Aksi hald
     title: "Trim Kavramı",
     introduction: "Trim, geminin baş ve kıç draftları arasındaki farkı ifade eder ve boyuna stabiliteyi gösterir.",
     content: `Trim, geminin boyuna yatma durumudur ve iki şekilde ifade edilir:
-1. Fark olarak: Trim = T_kıç - T_baş
+1. Fark olarak: Trim = Tkıç - Tbaş
 2. Açı olarak: θ = arctan(Trim / LBP)
 
 Trim pozitif ise: Kıç trimi (stern trim)
@@ -1726,19 +1726,19 @@ Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığın
       },
     ],
     bulletPoints: [
-      "Trim = T_kıç - T_baş",
+      "Trim = Tkıç - Tbaş",
       "Pozitif trim = Kıç trimi",
       "Negatif trim = Baş trimi",
       "Optimum trim yakıt verimliliğini artırır",
     ],
     formula: {
       name: "Trim Hesabı",
-      expression: "Trim = T_kıç - T_baş",
-      description: "Trim: Baş-kıç draft farkı (m), T_kıç: Kıç draftı (m), T_baş: Baş draftı (m)",
+      expression: "Trim = Tkıç - Tbaş",
+      description: "Trim: Baş-kıç draft farkı (m), Tkıç: Kıç draftı (m), Tbaş: Baş draftı (m)",
     },
     examples: [
       {
-        problem: "T_kıç = 7.2 m, T_baş = 6.8 m ise trim durumu nedir?",
+        problem: "Tkıç = 7.2 m, Tbaş = 6.8 m ise trim durumu nedir?",
         solution: "Trim = 7.2 - 6.8 = 0.4 m. Sonuç: 40 cm kıç trimi (stern trim) vardır.",
       },
     ],
@@ -1796,8 +1796,8 @@ Trim değişimi:
 ΔTrim = (w × d) / MCT
 
 Baş ve kıç draft değişimleri:
-ΔT_baş = (ΔTrim × LCF) / LBP
-ΔT_kıç = ΔTrim - ΔT_baş
+ΔTbaş = (ΔTrim × LCF) / LBP
+ΔTkıç = ΔTrim - ΔTbaş
 
 LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
     bulletPoints: [
@@ -1808,13 +1808,13 @@ LCF (Longitudinal Center of Flotation), yüzme merkezinin boyuna konumudur.`,
     ],
     formula: {
       name: "Trim ve Draft Değişimi",
-      expression: "ΔTrim = (w × d) / MCT; ΔT_baş = ΔTrim × (LBP - LCF) / LBP",
+      expression: "ΔTrim = (w × d) / MCT; ΔTbaş = ΔTrim × (LBP - LCF) / LBP",
       description: "ΔTrim: Trim değişimi (cm), LCF: Yüzme merkezinin kıçtan uzaklığı (m)",
     },
     examples: [
       {
         problem: "w = 200 t, d = 20 m başa, MCT = 400 t·m/cm, LBP = 120 m, LCF = 55 m (kıçtan). Draft değişimleri nedir?",
-        solution: "ΔTrim = (200 × 20) / 400 = 10 cm baş trimi. ΔT_kıç = 10 × 55 / 120 = 4.58 cm azalma. ΔT_baş = 10 - 4.58 = 5.42 cm artış. Sonuç: Baş 5.4 cm batar, kıç 4.6 cm yükselir.",
+        solution: "ΔTrim = (200 × 20) / 400 = 10 cm baş trimi. ΔTkıç = 10 × 55 / 120 = 4.58 cm azalma. ΔTbaş = 10 - 4.58 = 5.42 cm artış. Sonuç: Baş 5.4 cm batar, kıç 4.6 cm yükselir.",
       },
     ],
     keyPoints: [
@@ -1898,7 +1898,7 @@ Deplasman değeri:
 2. Kıç draftı (Aft draft)
 3. Orta draft (Mean draft)
 
-Orta draft = (T_baş + T_kıç) / 2
+Orta draft = (Tbaş + Tkıç) / 2
 
 Draft arttıkça:
 - Deplasman artar
@@ -1914,13 +1914,13 @@ Draft okuması, yükleme hesabının başlangıç noktasıdır.`,
     ],
     formula: {
       name: "Orta Draft",
-      expression: "T_mean = (T_baş + T_kıç) / 2",
-      description: "T_mean: Orta draft (m), T_baş: Baş draftı (m), T_kıç: Kıç draftı (m)",
+      expression: "Tmean = (Tbaş + Tkıç) / 2",
+      description: "Tmean: Orta draft (m), Tbaş: Baş draftı (m), Tkıç: Kıç draftı (m)",
     },
     examples: [
       {
-        problem: "T_baş = 6.4 m, T_kıç = 7.0 m ise orta draft kaç metredir?",
-        solution: "T_mean = (6.4 + 7.0) / 2 = 6.7 m. Sonuç: Orta draft 6.7 metredir.",
+        problem: "Tbaş = 6.4 m, Tkıç = 7.0 m ise orta draft kaç metredir?",
+        solution: "Tmean = (6.4 + 7.0) / 2 = 6.7 m. Sonuç: Orta draft 6.7 metredir.",
       },
     ],
     keyPoints: [
@@ -2193,9 +2193,9 @@ IMO rüzgâr ve dalga kriterleri bu etkileri hesaba katar.`,
     content: `Rüzgâr etkisi, rüzgâra maruz kalan yüzey alanı ve rüzgâr hızına bağlıdır.
 
 Rüzgâr yatma momenti:
-HM_wind = 0.5 × ρ_air × V² × A × h
+HMwind = 0.5 × ρair × V² × A × h
 
-Burada ρ_air hava yoğunluğu, V rüzgâr hızı, A maruz alan, h kaldırma koludur.
+Burada ρair hava yoğunluğu, V rüzgâr hızı, A maruz alan, h kaldırma koludur.
 
 IMO rüzgâr kriteri (Weather Criterion), ani rüzgâr altında geminin devrilmemesini garanti eden stabilite kontrolüdür. Bu kriter GZ eğrisi üzerinde grafiksel olarak uygulanır.`,
     bulletPoints: [
@@ -2251,13 +2251,13 @@ Hasarlı hacim = Gerçek hacim × μ`,
     ],
     formula: {
       name: "Hasarlı Hacim Hesabı",
-      expression: "V_flooded = V_compartment × μ",
-      description: "V_flooded: Dolan hacim (m³), V_compartment: Bölme hacmi (m³), μ: Permeabilite katsayısı",
+      expression: "Vflooded = Vcompartment × μ",
+      description: "Vflooded: Dolan hacim (m³), Vcompartment: Bölme hacmi (m³), μ: Permeabilite katsayısı",
     },
     examples: [
       {
         problem: "Hacmi 500 m³ olan bir kargo ambarı hasar görüyor. Permeabilite μ = 0.60 ise ne kadar su dolar?",
-        solution: "V_flooded = 500 × 0.60 = 300 m³. Sonuç: Ambara 300 m³ su dolar.",
+        solution: "Vflooded = 500 × 0.60 = 300 m³. Sonuç: Ambara 300 m³ su dolar.",
       },
     ],
     keyPoints: [
@@ -2288,13 +2288,13 @@ Modern stabilite bilgisayarları genellikle eklenen ağırlık yöntemini kullan
     ],
     formula: {
       name: "Eklenen Ağırlık Hesabı",
-      expression: "w_added = V_flooded × ρ_water",
-      description: "w_added: Eklenen su ağırlığı (ton), V_flooded: Dolan hacim (m³), ρ_water: Su yoğunluğu (t/m³)",
+      expression: "wadded = Vflooded × ρwater",
+      description: "wadded: Eklenen su ağırlığı (ton), Vflooded: Dolan hacim (m³), ρwater: Su yoğunluğu (t/m³)",
     },
     examples: [
       {
         problem: "Bir bölmeye 400 m³ deniz suyu (ρ = 1.025 t/m³) doluyorsa eklenen ağırlık nedir?",
-        solution: "w_added = 400 × 1.025 = 410 ton. Sonuç: 410 ton ağırlık eklenir.",
+        solution: "wadded = 400 × 1.025 = 410 ton. Sonuç: 410 ton ağırlık eklenir.",
       },
     ],
     keyPoints: [
@@ -2320,7 +2320,7 @@ SOLAS gereksinimleri:
 - Su geçirmez kapı standartları
 
 Rezerv yüzerlik hesabı:
-RB = V_üst yapı + V_fribord
+RB = Vüst yapı + Vfribord
 
 Yeterli rezerv yüzerlik, geminin hasarlı durumda bile yüzmesini sağlar.`,
     bulletPoints: [
@@ -2331,7 +2331,7 @@ Yeterli rezerv yüzerlik, geminin hasarlı durumda bile yüzmesini sağlar.`,
     ],
     formula: {
       name: "Rezerv Yüzerlik",
-      expression: "RB = WPA × Freeboard + V_superstructure",
+      expression: "RB = WPA × Freeboard + Vsuperstructure",
       description: "RB: Rezerv yüzerlik (m³), WPA: Su hattı alanı (m²), Freeboard: Fribord (m)",
     },
     keyPoints: [
@@ -2447,7 +2447,7 @@ SOLAS hasarlı durumda minimum GZ ve alan değerlerini tanımlar.`,
     ],
     formula: {
       name: "Hasarlı GM Tahmini",
-      expression: "GM_damaged = GM_intact - ΔFSE - ΔKG + ΔKM",
+      expression: "GMdamaged = GMintact - ΔFSE - ΔKG + ΔKM",
       description: "Her parametre flooding durumuna göre hesaplanır",
     },
     keyPoints: [
@@ -2466,12 +2466,12 @@ SOLAS hasarlı durumda minimum GZ ve alan değerlerini tanımlar.`,
 
 1. SANAL KG YÜKSELMESİ:
 Yük yerden kalktığında ağırlık merkezi vinç ucuna taşınmış gibi davranır.
-KG_yeni = KG + (w × h) / Δ
+KGyeni = KG + (w × h) / Δ
 h: Kaldırma yüksekliği
 
 2. SERFİ ETKİSİ:
 Asılı yük bir sarkaç gibi hareket eder ve GM'yi azaltır.
-GM_reduced = GM - (w × l²) / (Δ × GM)
+GMreduced = GM - (w × l²) / (Δ × GM)
 l: Sapan uzunluğu
 
 3. LIST OLUŞUMU:
@@ -2512,7 +2512,7 @@ Güvenlik önlemleri:
 
 1. KG YÜKSELMESİ:
 Güverte üstü yükler yüksek KG'ye sahiptir.
-KG_yeni = Σ(wᵢ × KGᵢ) / Σwᵢ
+KGyeni = Σ(wᵢ × KGᵢ) / Σwᵢ
 
 2. GM AZALMASI:
 Yükselen KG, GM'yi düşürür.
@@ -2537,7 +2537,7 @@ Güverte yükü sınırlamaları:
     ],
     formula: {
       name: "Güverte Yükü ile KG",
-      expression: "KG_new = (Δ_old × KG_old + w_deck × KG_deck) / Δ_new",
+      expression: "KGnew = (Δold × KGold + wdeck × KGdeck) / Δnew",
       description: "Ağırlık-moment yöntemiyle yeni KG hesaplanır",
     },
     keyPoints: [
@@ -2563,7 +2563,7 @@ SALINCAK ETKİSİ:
 Asılı yük gemi yattığında dışa salınır ve yatmayı artırır. Bu etki serbest yüzeye benzer.
 
 Asılı yük durumunda GM:
-GM_effective = GM - (w × l²) / (Δ × GM)
+GMeffective = GM - (w × l²) / (Δ × GM)
 l: Sapan uzunluğu`,
     bulletPoints: [
       "Asılı yük KG'yi sanal olarak yükseltir",
@@ -2617,7 +2617,7 @@ Balast değişimi sırası önemlidir - stabilite hiçbir aşamada kritik değer
     ],
     formula: {
       name: "Balast ile KG Değişimi",
-      expression: "KG_new = (Δ × KG + w_ballast × KG_tank) / (Δ + w_ballast)",
+      expression: "KGnew = (Δ × KG + wballast × KGtank) / (Δ + wballast)",
       description: "Balast alındığında yeni KG hesaplanır",
     },
     keyPoints: [
@@ -2689,7 +2689,7 @@ Buz, üst yapılarda, ekipmanlarda ve güvertede birikir.
 
 STABİLİTE ETKİSİ:
 Buz yüksek KG'ye sahiptir.
-ΔKG = (w_ice × KG_ice) / (Δ + w_ice)
+ΔKG = (wice × KGice) / (Δ + wice)
 
 GM hızla azalır ve devrilme riski artar.
 
@@ -2702,13 +2702,13 @@ Buz temizliği kritik öneme sahiptir.`,
     ],
     formula: {
       name: "Buz Ağırlığı ile KG Değişimi",
-      expression: "ΔKG = (m_ice × h_ice) / Δ",
-      description: "ΔKG: KG artışı (m), m_ice: Buz kütlesi (ton), h_ice: Buzun ortalama yüksekliği (m)",
+      expression: "ΔKG = (mice × hice) / Δ",
+      description: "ΔKG: KG artışı (m), mice: Buz kütlesi (ton), hice: Buzun ortalama yüksekliği (m)",
     },
     examples: [
       {
         problem: "Üst yapılarda 50 ton buz birikir, ortalama KG = 15 m. Δ = 5.000 ton, mevcut KG = 7 m ise yeni KG nedir?",
-        solution: "KG_new = (5.000 × 7 + 50 × 15) / 5.050 = (35.000 + 750) / 5.050 = 7.08 m. Sonuç: KG 8 cm yükselir.",
+        solution: "KGnew = (5.000 × 7 + 50 × 15) / 5.050 = (35.000 + 750) / 5.050 = 7.08 m. Sonuç: KG 8 cm yükselir.",
       },
     ],
     keyPoints: [
@@ -2900,7 +2900,7 @@ GM ile yalpa periyodu ters ilişkilidir. Çok yüksek GM → kısa periyot, sert
     ],
     formula: {
       name: "Yalpa periyodu – GM ilişkisi",
-      expression: "T_roll = 2π · k / √(g · GM)",
+      expression: "Troll = 2π · k / √(g · GM)",
       description: "k: jirasyon yarıçapı. GM arttıkça periyot kısalır (gemi sertleşir); GM azaldıkça periyot uzar.",
     },
     keyPoints: [

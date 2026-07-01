@@ -839,9 +839,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Performans Parametreleri",
             paragraphs: [],
             formula: {
-              expression: "BHP = (P_mep × L × A × N × n) / (60 × 1000)",
+              expression: "BHP = (Pmep × L × A × N × n) / (60 × 1000)",
               variables: [
-                "P_mep: Ortalama efektif basınç (kPa)",
+                "Pmep: Ortalama efektif basınç (kPa)",
                 "L: Strok boyu (m)",
                 "A: Piston alanı (m²)",
                 "N: Devir sayısı (rpm)",
@@ -849,7 +849,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               ]
             },
             example: {
-              problem: "6 silindirli, 900 mm çapında, 2 500 mm stroklu, 100 rpm'de çalışan ve P_mep = 1 800 kPa olan bir motorun gücünü hesaplayınız.",
+              problem: "6 silindirli, 900 mm çapında, 2 500 mm stroklu, 100 rpm'de çalışan ve Pmep = 1 800 kPa olan bir motorun gücünü hesaplayınız.",
               steps: [
                 "A = π/4 × 0.9² = 0.6362 m²",
                 "BHP = (1800 × 2.5 × 0.6362 × 100 × 6) / (60 × 1000)",
@@ -973,12 +973,12 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "İtme Gücü Hesabı",
             paragraphs: [],
             formula: {
-              expression: "T = (P_D × η_P) / V_A",
+              expression: "T = (PD × ηP) / VA",
               variables: [
                 "T: İtme kuvveti (N)",
-                "P_D: Pervaneye iletilen güç (W)",
-                "η_P: Pervane verimi",
-                "V_A: İlerleme hızı (m/s)"
+                "PD: Pervaneye iletilen güç (W)",
+                "ηP: Pervane verimi",
+                "VA: İlerleme hızı (m/s)"
               ]
             },
             example: {
@@ -1114,9 +1114,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Dümen Kuvveti Hesabı",
             paragraphs: [],
             formula: {
-              expression: "F_N = K × A × V² × sin(α)",
+              expression: "FN = K × A × V² × sin(α)",
               variables: [
-                "F_N: Dümen normal kuvveti (N)",
+                "FN: Dümen normal kuvveti (N)",
                 "K: Katsayı (≈ 580 N·s²/m⁴ tuzlu suda)",
                 "A: Dümen palet alanı (m²)",
                 "V: Gemi hızı (m/s)",
@@ -1127,9 +1127,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               problem: "10 m² palet alanı, 12 knot hız ve 35° dümen açısında dümen kuvvetini hesaplayınız.",
               steps: [
                 "V = 12 × 0.5144 = 6.17 m/s",
-                "F_N = 580 × 10 × 6.17² × sin(35°)",
-                "F_N = 580 × 10 × 38.07 × 0.574",
-                "F_N = 126 700 N ≈ 126.7 kN"
+                "FN = 580 × 10 × 6.17² × sin(35°)",
+                "FN = 580 × 10 × 38.07 × 0.574",
+                "FN = 126 700 N ≈ 126.7 kN"
               ],
               result: "Dümen paletine etkiyen kuvvet yaklaşık 127 kN'dur."
             }
@@ -1335,21 +1335,21 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               "Gravity disc çapı, yakıtın yoğunluğuna göre seçilir. Yanlış disc seçimi yakıtın su çıkışından kaçmasına veya suyun yakıta karışmasına neden olur."
             ],
             formula: {
-              expression: "r_i = r_o × √(ρ_w / ρ_f)",
+              expression: "ri = ro × √(ρw / ρf)",
               variables: [
-                "r_i: Gravity disc iç yarıçapı",
-                "r_o: Dış yarıçap (sabit)",
-                "ρ_w: Su yoğunluğu (1.025 g/cm³)",
-                "ρ_f: Yakıt yoğunluğu (g/cm³)"
+                "ri: Gravity disc iç yarıçapı",
+                "ro: Dış yarıçap (sabit)",
+                "ρw: Su yoğunluğu (1.025 g/cm³)",
+                "ρf: Yakıt yoğunluğu (g/cm³)"
               ]
             },
             example: {
               problem: "Dış yarıçapı 150 mm olan separatörde 0.960 g/cm³ yoğunluktaki yakıt için gravity disc yarıçapını hesaplayınız.",
               steps: [
-                "r_i = 150 × √(1.025 / 0.960)",
-                "r_i = 150 × √(1.0677)",
-                "r_i = 150 × 1.0333",
-                "r_i = 155.0 mm"
+                "ri = 150 × √(1.025 / 0.960)",
+                "ri = 150 × √(1.0677)",
+                "ri = 150 × 1.0333",
+                "ri = 155.0 mm"
               ],
               result: "155 mm iç yarıçaplı gravity disc kullanılmalıdır. Katalogdan en yakın değer seçilir."
             }

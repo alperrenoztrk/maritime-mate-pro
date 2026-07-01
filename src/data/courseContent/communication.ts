@@ -55,10 +55,10 @@ export const communication: CourseTopic = {
       id: "radio-horizon",
       name: "Telsiz Ufku (VHF Menzili)",
       group: "Kapsama ve Menzil",
-      formula: "d (NM) ≈ 2.23 × (√h_tx + √h_rx)",
+      formula: "d (NM) ≈ 2.23 × (√htx + √hrx)",
       variables: [
-        { symbol: "h_tx", label: "Verici anten yüksekliği", unit: "m" },
-        { symbol: "h_rx", label: "Alıcı anten yüksekliği", unit: "m" },
+        { symbol: "htx", label: "Verici anten yüksekliği", unit: "m" },
+        { symbol: "hrx", label: "Alıcı anten yüksekliği", unit: "m" },
       ],
       source: { code: "Telsiz ufku (radio horizon) yaklaşımı" },
       note: "Optik ufkun ~%15 fazlası; sonuç deniz mili (NM). h metre girilir.",
@@ -76,10 +76,10 @@ export const communication: CourseTopic = {
       id: "decibel-gain",
       name: "Kazanç / Zayıflama (dB)",
       group: "Sinyal Seviyesi",
-      formula: "G (dB) = 10 · log₁₀(P_çıkış / P_giriş)",
+      formula: "G (dB) = 10 · log₁₀(Pçıkış / Pgiriş)",
       variables: [
-        { symbol: "P_çıkış", label: "Çıkış gücü", unit: "W" },
-        { symbol: "P_giriş", label: "Giriş gücü", unit: "W" },
+        { symbol: "Pçıkış", label: "Çıkış gücü", unit: "W" },
+        { symbol: "Pgiriş", label: "Giriş gücü", unit: "W" },
       ],
       source: { code: "Desibel (güç oranı) tanımı" },
       inputs: [
@@ -116,11 +116,11 @@ export const communication: CourseTopic = {
       id: "eirp",
       name: "EIRP (Etkin Yayılan Güç)",
       group: "Sinyal Seviyesi",
-      formula: "EIRP (dBW) = P_verici + G_anten − L_kayıp",
+      formula: "EIRP (dBW) = Pverici + Ganten − Lkayıp",
       variables: [
-        { symbol: "P_verici", label: "Verici gücü", unit: "dBW" },
-        { symbol: "G_anten", label: "Anten kazancı", unit: "dBi" },
-        { symbol: "L_kayıp", label: "Hat/konnektör kaybı", unit: "dB" },
+        { symbol: "Pverici", label: "Verici gücü", unit: "dBW" },
+        { symbol: "Ganten", label: "Anten kazancı", unit: "dBi" },
+        { symbol: "Lkayıp", label: "Hat/konnektör kaybı", unit: "dB" },
       ],
       source: { code: "EIRP tanımı (anten link bütçesi)" },
       inputs: [

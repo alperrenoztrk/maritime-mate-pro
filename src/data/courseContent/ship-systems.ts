@@ -57,7 +57,7 @@ export const shipSystems: CourseTopic = {
         { key: "t1", label: "Sıcaklık T₁", unit: "°C", placeholder: "50" },
         { key: "v2", label: "Viskozite @T₂", unit: "cSt", placeholder: "15" },
         { key: "t2", label: "Sıcaklık T₂", unit: "°C", placeholder: "130" },
-        { key: "tx", label: "Hedef Sıcaklık T_x", unit: "°C", placeholder: "100" },
+        { key: "tx", label: "Hedef Sıcaklık Tx", unit: "°C", placeholder: "100" },
       ],
       calculate: (v) => {
         // Walther equation: log(log(ν+0.7)) = A - B × log(T+273.15)
@@ -220,12 +220,12 @@ export const shipSystems: CourseTopic = {
         { symbol: "n", label: "Devir", unit: "rps" },
         { symbol: "D", label: "Pervane çapı", unit: "m" },
       ],
-      source: { code: "Pervane teorisi — boyutsuz itme katsayısı (K_T) bağıntısı" },
+      source: { code: "Pervane teorisi — boyutsuz itme katsayısı (KT) bağıntısı" },
       inputs: [
         { key: "rho", label: "Deniz Suyu Yoğunluğu", unit: "kg/m³", placeholder: "1025" },
         { key: "d", label: "Pervane Çapı", unit: "m", placeholder: "6" },
         { key: "n", label: "Devir", unit: "rps", placeholder: "2" },
-        { key: "kt", label: "İtme Katsayısı (K_T)", unit: "", placeholder: "0.18" },
+        { key: "kt", label: "İtme Katsayısı (KT)", unit: "", placeholder: "0.18" },
       ],
       calculate: (v) => {
         // T = K_T × ρ × n² × D⁴
@@ -262,28 +262,28 @@ export const shipSystems: CourseTopic = {
       id: "propulsive-efficiency",
       name: "Propulsif (Pervane) Verim",
       group: "Dümen ve Sevk",
-      formula: "η_D = η₀ · η_H · η_R",
+      formula: "ηD = η₀ · ηH · ηR",
       variables: [
-        { symbol: "η_D", label: "Toplam propulsif (quasi-propulsive) verim" },
+        { symbol: "ηD", label: "Toplam propulsif (quasi-propulsive) verim" },
         { symbol: "η₀", label: "Açık su pervane verimi" },
-        { symbol: "η_H", label: "Tekne (hull) verimi" },
-        { symbol: "η_R", label: "Bağıl dönme (relative rotative) verimi" },
+        { symbol: "ηH", label: "Tekne (hull) verimi" },
+        { symbol: "ηR", label: "Bağıl dönme (relative rotative) verimi" },
       ],
       source: { code: "Sevk teorisi — propulsif verim bileşenleri" },
-      note: "Tipik aralıklar: η₀ ≈ 0,55–0,70 ; η_H ≈ 1,0–1,15 ; η_R ≈ 0,98–1,02. İstenirse efektif güçten (PE) sevk gücü PD = PE/η_D bulunur.",
+      note: "Tipik aralıklar: η₀ ≈ 0,55–0,70 ; ηH ≈ 1,0–1,15 ; ηR ≈ 0,98–1,02. İstenirse efektif güçten (PE) sevk gücü PD = PE/ηD bulunur.",
       inputs: [
         { key: "eta0", label: "Açık Su Verimi (η₀)", unit: "", placeholder: "0.65" },
-        { key: "etah", label: "Tekne Verimi (η_H)", unit: "", placeholder: "1.05" },
-        { key: "etar", label: "Bağıl Dönme Verimi (η_R)", unit: "", placeholder: "1.0" },
+        { key: "etah", label: "Tekne Verimi (ηH)", unit: "", placeholder: "1.05" },
+        { key: "etar", label: "Bağıl Dönme Verimi (ηR)", unit: "", placeholder: "1.0" },
         { key: "pe", label: "Efektif Güç (PE) — opsiyonel", unit: "kW", placeholder: "0" },
       ],
       calculate: (v) => {
         const etaD = v.eta0 * v.etah * v.etar;
         const out = [
-          { label: "Propulsif Verim (η_D)", value: `${etaD.toFixed(3)}  (${(etaD * 100).toFixed(1)} %)` },
+          { label: "Propulsif Verim (ηD)", value: `${etaD.toFixed(3)}  (${(etaD * 100).toFixed(1)} %)` },
         ];
         if (v.pe > 0 && etaD > 0) {
-          out.push({ label: "Sevk Gücü (PD = PE/η_D)", value: `${(v.pe / etaD).toFixed(0)} kW` });
+          out.push({ label: "Sevk Gücü (PD = PE/ηD)", value: `${(v.pe / etaD).toFixed(0)} kW` });
         }
         return out;
       },

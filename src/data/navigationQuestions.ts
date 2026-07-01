@@ -592,7 +592,7 @@ export const navigationQuestions: QuizQuestion[] = [
     question: "Radar ufuk mesafesi 20 NM ise radar anten yüksekliği yaklaşık kaç metredir?",
     options: ["8 m", "20 m", "30 m", "45 m"],
     correctAnswer: 2,
-    explanation: "Radar/VHF horizon ≈ 2.23·√h (h metre). 20 = 2.23·√h ⇒ √h ≈ 8.97 ⇒ h ≈ 80.5 m; yalnız kendi anten yüksekliği varsayımıyla d ≈ 2.23·√h olduğu için 20 NM için ~80 m çıkar. Ancak pratikte karşı hedef yüksekliği de katkı verir: d ≈ 2.23(√h₁+√h₂). Hedef ~10 m ise 20 = 2.23(√h_r + 3.16) ⇒ √h_r ≈ 6.06 ⇒ h_r ≈ 36.7 m ≈ 30 m.",
+    explanation: "Radar/VHF horizon ≈ 2.23·√h (h metre). 20 = 2.23·√h ⇒ √h ≈ 8.97 ⇒ h ≈ 80.5 m; yalnız kendi anten yüksekliği varsayımıyla d ≈ 2.23·√h olduğu için 20 NM için ~80 m çıkar. Ancak pratikte karşı hedef yüksekliği de katkı verir: d ≈ 2.23(√h₁+√h₂). Hedef ~10 m ise 20 = 2.23(√hr + 3.16) ⇒ √hr ≈ 6.06 ⇒ hr ≈ 36.7 m ≈ 30 m.",
     category: "Radar Theory"
   },
   {

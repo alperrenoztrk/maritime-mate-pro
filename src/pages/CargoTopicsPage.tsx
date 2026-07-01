@@ -549,13 +549,13 @@ Broken stowage oranı yükseldikçe aynı ambara daha az yük sığar. Yük plan
     ],
     formula: {
       name: "Kullanılabilir Hacim",
-      expression: "V_net = V_ambar × (1 − BS)",
-      description: "V_net: Kullanılabilir hacim, V_ambar: Ambar brüt hacmi, BS: Broken stowage oranı (ondalık)",
+      expression: "Vnet = Vambar × (1 − BS)",
+      description: "Vnet: Kullanılabilir hacim, Vambar: Ambar brüt hacmi, BS: Broken stowage oranı (ondalık)",
     },
     examples: [
       {
         problem: "5000 m³ ambar hacmine kasalı yük yüklenecektir (BS = %20). Kullanılabilir hacim nedir?",
-        solution: "V_net = 5000 × (1 – 0.20) = 5000 × 0.80 = 4000 m³",
+        solution: "Vnet = 5000 × (1 – 0.20) = 5000 × 0.80 = 4000 m³",
       },
     ],
   },
@@ -793,7 +793,7 @@ ANNEX 13 HESAP YÖNTEMİ:
 Toplam Bağlama Kapasitesi ≥ Güvenlik Faktörü × Kayma Kuvveti
 
 KAYMA KUVVETİ:
-F_kayma = m × a − μ × m × g × cos θ
+Fkayma = m × a − μ × m × g × cos θ
 
 Burada:
 m: Yük kütlesi (ton)
@@ -804,7 +804,7 @@ g: Yerçekimi ivmesi (9.81 m/s²)
 
 BAĞLAMA ETKİN KUVVETİ:
 Bağlama halatının yatay düzlemle yaptığı açıya bağlıdır.
-F_etkin = MSL × cos α
+Fetkin = MSL × cos α
 
 α: Bağlama açısı (yatay düzlemle)
 Küçük açı = Yüksek etkin kuvvet
@@ -819,13 +819,13 @@ Büyük açı = Düşük etkin kuvvet
     ],
     formula: {
       name: "Etkin Bağlama Kuvveti",
-      expression: "F_etkin = MSL × cos α",
-      description: "F_etkin: Etkin yatay kuvvet, MSL: Maksimum sabitleme yükü, α: Bağlama açısı",
+      expression: "Fetkin = MSL × cos α",
+      description: "Fetkin: Etkin yatay kuvvet, MSL: Maksimum sabitleme yükü, α: Bağlama açısı",
     },
     examples: [
       {
         problem: "MSL = 100 kN olan bir bağlama kayışı 45° açıyla uygulanmıştır. Etkin kuvvet nedir?",
-        solution: "F_etkin = 100 × cos 45° = 100 × 0.707 = 70.7 kN",
+        solution: "Fetkin = 100 × cos 45° = 100 × 0.707 = 70.7 kN",
       },
     ],
     keyPoints: [
@@ -955,14 +955,14 @@ Draft survey, dökme yüklerin ticari miktar tespitinde en yaygın yöntemdir.`,
     introduction: "Draft okumaları, geminin pruva (baş), pupa (kıç) ve orta noktalarında sancak ve iskele tarafından yapılan su çekimi ölçümleridir.",
     content: `OKUMA NOKTALARI:
 6 noktadan draft okunur:
-- Pruva sancak (F_S), Pruva iskele tarafı (F_P)
-- Orta sancak (M_S), Orta iskele tarafı (M_P)
-- Pupa sancak (A_S), Pupa iskele tarafı (A_P)
+- Pruva sancak (FS), Pruva iskele tarafı (FP)
+- Orta sancak (MS), Orta iskele tarafı (MP)
+- Pupa sancak (AS), Pupa iskele tarafı (AP)
 
 ORTALAMALAR:
-d_F = (F_S + F_P) / 2
-d_M = (M_S + M_P) / 2
-d_A = (A_S + A_P) / 2
+dF = (FS + FP) / 2
+dM = (MS + MP) / 2
+dA = (AS + AP) / 2
 
 OKUMA KURALLARI (METRİK SİSTEM):
 - Rakam altı kenar: Rakam değeri
@@ -994,36 +994,36 @@ Okumaların eş zamanlı yapılması önemlidir. Ballast transferi veya yükleme
     content: `ÜÇ ORTALAMA YÖNTEM:
 
 1. ARİTMETİK ORTALAMA (Mean of Means):
-d_mean = (d_F + d_M + d_A) / 3
+dmean = (dF + dM + dA) / 3
 Sadece geminin düz durumda olduğu hallerde kullanılır.
 
 2. QUARTER MEAN DRAFT:
-d_QM = (d_F + 6 × d_M + d_A) / 8
+dQM = (dF + 6 × dM + dA) / 8
 Hogging veya sagging durumunda daha doğru sonuç verir.
 
 3. DÜZELTILMIŞ ORTALAMA:
 Trim düzeltmesi uygulanmış draft değeridir.
 
 HOGGING VE SAGGING TESPİTİ:
-- Hogging: (d_F + d_A) / 2 > d_M → Gemi ortadan yukarı kalkık
-- Sagging: (d_F + d_A) / 2 < d_M → Gemi ortadan aşağı çökmüş
+- Hogging: (dF + dA) / 2 > dM → Gemi ortadan yukarı kalkık
+- Sagging: (dF + dA) / 2 < dM → Gemi ortadan aşağı çökmüş
 
 Quarter mean draft özellikle belirgin hogging veya sagging durumlarında daha doğru deplasman değeri verir.`,
     bulletPoints: [
       "Düz durumda aritmetik ortalama kullanılır",
       "Hogging/sagging varsa QM draft tercih edilir",
-      "QM = (d_F + 6×d_M + d_A) / 8",
+      "QM = (dF + 6×dM + dA) / 8",
       "Hogging: Ortası yukarı, Sagging: Ortası aşağı",
     ],
     formula: {
       name: "Quarter Mean Draft",
-      expression: "d_QM = (d_F + 6 × d_M + d_A) / 8",
-      description: "d_QM: Quarter mean draft, d_F: Pruva (baş) draft, d_M: Orta draft, d_A: Pupa draft",
+      expression: "dQM = (dF + 6 × dM + dA) / 8",
+      description: "dQM: Quarter mean draft, dF: Pruva (baş) draft, dM: Orta draft, dA: Pupa draft",
     },
     examples: [
       {
-        problem: "d_F = 6.20 m, d_M = 6.50 m, d_A = 7.00 m. Quarter mean draft?",
-        solution: "d_QM = (6.20 + 6×6.50 + 7.00) / 8 = (6.20 + 39.00 + 7.00) / 8 = 52.20 / 8 = 6.525 m",
+        problem: "dF = 6.20 m, dM = 6.50 m, dA = 7.00 m. Quarter mean draft?",
+        solution: "dQM = (6.20 + 6×6.50 + 7.00) / 8 = (6.20 + 39.00 + 7.00) / 8 = 52.20 / 8 = 6.525 m",
       },
     ],
   },
@@ -1031,14 +1031,14 @@ Quarter mean draft özellikle belirgin hogging veya sagging durumlarında daha d
     title: "Trim Düzeltmeleri",
     introduction: "Trim düzeltmeleri, geminin trimli olduğu durumlarda hidrostatik tablolardan okunan deplasmanın doğru değere getirilmesi için uygulanır.",
     content: `TRİM:
-Trim = d_A − d_F
+Trim = dA − dF
 
 İKİ DÜZELTME UYGULANIR:
 
 1. BİRİNCİ TRİM DÜZELTMESİ (Δ₁):
 LCF'nin (Yüzerlik Merkezinin Boyuna Konumu) orta noktadan farkından kaynaklanır.
 
-Δ₁ = (Trim × LCF_ort × TPC × 100) / LBP
+Δ₁ = (Trim × LCFort × TPC × 100) / LBP
 
 Pozitif veya negatif olabilir.
 
@@ -1050,7 +1050,7 @@ Trimli durumda su hattı şeklinin değişmesinden kaynaklanan düzeltmedir.
 Her zaman pozitiftir (deplasmanı artırır).
 
 TOPLAM DEPLASMAN:
-Δ_düzeltilmiş = Δ_tablo + Δ₁ + Δ₂
+Δdüzeltilmiş = Δtablo + Δ₁ + Δ₂
 
 Trim düzeltmeleri özellikle büyük trimlerde (1 metreden fazla) önemli fark yaratır.`,
     bulletPoints: [
@@ -1076,10 +1076,10 @@ Liman suyu farklı yoğunlukta olabilir:
 - Deniz suyu: 1.020 – 1.030 t/m³
 
 YOĞUNLUK DÜZELTMESİ:
-Δ_düzeltilmiş = Δ_tablo × (ρ_dock / 1.025)
+Δdüzeltilmiş = Δtablo × (ρdock / 1.025)
 
 Burada:
-ρ_dock: Liman suyu yoğunluğu (t/m³)
+ρdock: Liman suyu yoğunluğu (t/m³)
 
 Yoğunluk ölçümü:
 - Hidrometre ile ölçülür
@@ -1090,13 +1090,13 @@ Düşük yoğunlukta gemi daha fazla batar (daha büyük draft okur) ancak depla
     bulletPoints: [
       "Tablolar 1.025 t/m³ için hazırlanmıştır",
       "Farklı yoğunlukta düzeltme zorunludur",
-      "Δ_düz = Δ_tablo × (ρ_dock / 1.025)",
+      "Δdüz = Δtablo × (ρdock / 1.025)",
       "Hidrometre ile yoğunluk ölçülür",
     ],
     formula: {
       name: "Yoğunluk Düzeltmesi",
-      expression: "Δ_corrected = Δ_table × (ρ_dock / 1.025)",
-      description: "ρ_dock: Liman suyu yoğunluğu (t/m³). Düşük yoğunlukta deplasman azaltılır.",
+      expression: "Δcorrected = Δtable × (ρdock / 1.025)",
+      description: "ρdock: Liman suyu yoğunluğu (t/m³). Düşük yoğunlukta deplasman azaltılır.",
     },
     examples: [
       {
@@ -1109,7 +1109,7 @@ Düşük yoğunlukta gemi daha fazla batar (daha büyük draft okur) ancak depla
     title: "Düşülen Değerler (Deductibles)",
     introduction: "Draft survey sonucunda hesaplanan deplasmanlardan ballast, yakıt, tatlı su ve diğer sıvıların ağırlığı düşülerek net yük miktarı bulunur.",
     content: `Net yük hesabı:
-Yük = (Δ_final − Δ_initial) − (Deductibles_final − Deductibles_initial)
+Yük = (Δfinal − Δinitial) − (Deductibles_final − Deductibles_initial)
 
 DÜŞÜLEN KALEMLER:
 1. BALLAST SUYU:

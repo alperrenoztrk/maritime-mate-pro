@@ -20,15 +20,15 @@ export const coolingHvac: CourseTopic = {
       id: "cop-cooling",
       name: "COP (Soğutma)",
       group: "Soğutma Çevrimi",
-      formula: "COP = Q_L / W_comp",
+      formula: "COP = QL / Wcomp",
       variables: [
-        { symbol: "Q_L", label: "Soğutma kapasitesi", unit: "kW" },
-        { symbol: "W_comp", label: "Kompresör işi", unit: "kW" },
+        { symbol: "QL", label: "Soğutma kapasitesi", unit: "kW" },
+        { symbol: "Wcomp", label: "Kompresör işi", unit: "kW" },
       ],
       source: { code: "Soğutma çevrimi performans katsayısı (COP) tanımı" },
-      note: "Isı atımı Q_H = Q_L + W_comp (enerji korunumu).",
+      note: "Isı atımı QH = QL + Wcomp (enerji korunumu).",
       inputs: [
-        { key: "ql", label: "Soğutma Kapasitesi (Q_L)", unit: "kW", placeholder: "50" },
+        { key: "ql", label: "Soğutma Kapasitesi (QL)", unit: "kW", placeholder: "50" },
         { key: "wc", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "15" },
       ],
       calculate: (v) => {
@@ -36,7 +36,7 @@ export const coolingHvac: CourseTopic = {
         const qh = v.ql + v.wc;
         return [
           { label: "COP", value: cop.toFixed(2) },
-          { label: "Isı Atımı (Q_H)", value: `${qh.toFixed(1)} kW` },
+          { label: "Isı Atımı (QH)", value: `${qh.toFixed(1)} kW` },
         ];
       },
     },
@@ -44,15 +44,15 @@ export const coolingHvac: CourseTopic = {
       id: "cop-heat-pump",
       name: "COP (Isı Pompası)",
       group: "Soğutma Çevrimi",
-      formula: "COP_HP = Q_H / W_comp = COP_soğutma + 1",
+      formula: "COPHP = QH / Wcomp = COPsoğutma + 1",
       variables: [
-        { symbol: "Q_H", label: "Isıtma kapasitesi", unit: "kW" },
-        { symbol: "W_comp", label: "Kompresör işi", unit: "kW" },
+        { symbol: "QH", label: "Isıtma kapasitesi", unit: "kW" },
+        { symbol: "Wcomp", label: "Kompresör işi", unit: "kW" },
       ],
       source: { code: "Isı pompası performans katsayısı tanımı" },
-      note: "Isıtma kapasitesi ve kompresör gücü girilir; COP_HP = Q_H/W ve COP_soğutma = COP_HP − 1.",
+      note: "Isıtma kapasitesi ve kompresör gücü girilir; COPHP = QH/W ve COPsoğutma = COPHP − 1.",
       inputs: [
-        { key: "qh", label: "Isıtma Kapasitesi (Q_H)", unit: "kW", placeholder: "65" },
+        { key: "qh", label: "Isıtma Kapasitesi (QH)", unit: "kW", placeholder: "65" },
         { key: "wc", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "15" },
       ],
       calculate: (v) => {
@@ -68,16 +68,16 @@ export const coolingHvac: CourseTopic = {
       id: "carnot-cop-cooling",
       name: "Carnot COP (Soğutma)",
       group: "Soğutma Çevrimi",
-      formula: "COP_Carnot = T_L / (T_H − T_L)",
+      formula: "COPCarnot = TL / (TH − TL)",
       variables: [
-        { symbol: "T_L", label: "Soğuk ortam mutlak sıcaklığı", unit: "K" },
-        { symbol: "T_H", label: "Sıcak ortam mutlak sıcaklığı", unit: "K" },
+        { symbol: "TL", label: "Soğuk ortam mutlak sıcaklığı", unit: "K" },
+        { symbol: "TH", label: "Sıcak ortam mutlak sıcaklığı", unit: "K" },
       ],
       source: { code: "Ters Carnot çevrimi (ideal soğutma COP)" },
       note: "Girişler °C alınır, hesaplamada mutlak sıcaklığa (K) çevrilir: T(K) = T(°C) + 273,15.",
       inputs: [
-        { key: "tl", label: "Soğuk Ortam (T_L)", unit: "°C", placeholder: "-18" },
-        { key: "th", label: "Sıcak Ortam (T_H)", unit: "°C", placeholder: "35" },
+        { key: "tl", label: "Soğuk Ortam (TL)", unit: "°C", placeholder: "-18" },
+        { key: "th", label: "Sıcak Ortam (TH)", unit: "°C", placeholder: "35" },
       ],
       calculate: (v) => {
         const TL = v.tl + 273.15;
@@ -112,15 +112,15 @@ export const coolingHvac: CourseTopic = {
       id: "refrigerant-mass-flow",
       name: "Soğutucu Akışkan Debisi",
       group: "Soğutma Çevrimi",
-      formula: "ṁ = Q_L / (h₁ − h₄)",
+      formula: "ṁ = QL / (h₁ − h₄)",
       variables: [
-        { symbol: "Q_L", label: "Soğutma kapasitesi", unit: "kW" },
+        { symbol: "QL", label: "Soğutma kapasitesi", unit: "kW" },
         { symbol: "h₁", label: "Evaporatör çıkışı entalpi", unit: "kJ/kg" },
         { symbol: "h₄", label: "Evaporatör girişi entalpi", unit: "kJ/kg" },
       ],
       source: { code: "Evaporatör enerji dengesinden kütle debisi" },
       inputs: [
-        { key: "ql", label: "Soğutma Kapasitesi (Q_L)", unit: "kW", placeholder: "50" },
+        { key: "ql", label: "Soğutma Kapasitesi (QL)", unit: "kW", placeholder: "50" },
         { key: "h1", label: "Evaporatör Çıkışı (h₁)", unit: "kJ/kg", placeholder: "400" },
         { key: "h4", label: "Evaporatör Girişi (h₄)", unit: "kJ/kg", placeholder: "250" },
       ],
@@ -154,13 +154,13 @@ export const coolingHvac: CourseTopic = {
       id: "cooling-load",
       name: "Soğutma Yükü",
       group: "Klima Hesapları",
-      formula: "Q = U·A·ΔT + Q_hava + Q_iç",
+      formula: "Q = U·A·ΔT + Qhava + Qiç",
       variables: [
         { symbol: "U", label: "Isı geçiş katsayısı", unit: "W/m²·K" },
         { symbol: "A", label: "Duvar alanı", unit: "m²" },
         { symbol: "ΔT", label: "Sıcaklık farkı", unit: "K" },
-        { symbol: "Q_hava", label: "Taze hava yükü", unit: "kW" },
-        { symbol: "Q_iç", label: "İç ısı kaynakları", unit: "kW" },
+        { symbol: "Qhava", label: "Taze hava yükü", unit: "kW" },
+        { symbol: "Qiç", label: "İç ısı kaynakları", unit: "kW" },
       ],
       source: { code: "Soğutma yükü hesabı (iletim + güvenlik payı)" },
       note: "Bu hesaplayıcı iletim yükünü U·A·ΔT ile bulur ve %25 güvenlik payı ekler.",
@@ -184,14 +184,14 @@ export const coolingHvac: CourseTopic = {
       id: "dehumidification",
       name: "Nem Alma Kapasitesi",
       group: "Klima Hesapları",
-      formula: "ṁ_w = ṁ_a × (ω₁ − ω₂)",
+      formula: "ṁw = ṁa × (ω₁ − ω₂)",
       variables: [
-        { symbol: "ṁ_a", label: "Hava kütle debisi", unit: "kg/s" },
+        { symbol: "ṁa", label: "Hava kütle debisi", unit: "kg/s" },
         { symbol: "ω₁", label: "Giriş özgül nem", unit: "g/kg" },
         { symbol: "ω₂", label: "Çıkış özgül nem", unit: "g/kg" },
       ],
       source: { code: "Psikrometrik kütle dengesi (nem alma)" },
-      note: "Hava debisi m³/h girilir; ṁ_a = Q × ρ / 3600 (kg/s). Nem g/kg → kg/kg için ÷1000. Latent yük ≈ ṁ_w × 2450 kJ/kg.",
+      note: "Hava debisi m³/h girilir; ṁa = Q × ρ / 3600 (kg/s). Nem g/kg → kg/kg için ÷1000. Latent yük ≈ ṁw × 2450 kJ/kg.",
       inputs: [
         { key: "q", label: "Hava Debisi", unit: "m³/h", placeholder: "5000" },
         { key: "w1", label: "Giriş Nem Oranı (W₁)", unit: "g/kg", placeholder: "14" },

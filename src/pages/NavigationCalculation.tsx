@@ -2828,7 +2828,7 @@ export default function NavigationCalculationPage() {
                 `Akıntı bileşenleri: Cx = drift×sin(set) = ${drift.toFixed(2)}×sin(${set.toFixed(1)}°) = ${Cx.toFixed(3)}, Cy = drift×cos(set) = ${Cy.toFixed(3)}`,
                 `RHS = (Cy·sinD − Cx·cosD)/V = ${rhs.toFixed(4)} (D=${course.toFixed(1)}°, V=${speed.toFixed(2)} kn)`,
                 `CTS = D + asin(RHS) = ${headingDeg.toFixed(1)}°`,
-                `SOG = proje( V_gemi + C ) = ${currentResults.groundSpeedKn.toFixed(2)} kn`,
+                `SOG = proje( Vgemi + C ) = ${currentResults.groundSpeedKn.toFixed(2)} kn`,
               ]}
             />
           </div>
@@ -3293,7 +3293,7 @@ export default function NavigationCalculationPage() {
           emergencySteps.push(`Sector search: yeni yarıçap = R × √2 = ${emergencyInputs.radius} × 1.414 = ${emergencyResults.newRadiusNm.toFixed(2)} NM`);
         }
         if (emergencyResults.timeToRescueHours !== undefined) {
-          emergencySteps.push(`Kurtarma zamanı = Mesafe / (V_rescue + V_drift) = ${emergencyInputs.distance} / (${emergencyInputs.rescueSpeed} + ${emergencyInputs.driftSpeed}) = ${emergencyResults.timeToRescueHours.toFixed(2)} h`);
+          emergencySteps.push(`Kurtarma zamanı = Mesafe / (Vrescue + Vdrift) = ${emergencyInputs.distance} / (${emergencyInputs.rescueSpeed} + ${emergencyInputs.driftSpeed}) = ${emergencyResults.timeToRescueHours.toFixed(2)} h`);
         }
         return (
           <div className="space-y-3">

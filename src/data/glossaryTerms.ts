@@ -700,7 +700,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   { title: "Hull Efficiency", category: "Hidrodinamik", description: "Gövde verimi; (1-t)/(1-w) formülüyle hesaplanır, t: itme kesintisi, w: iz oranı." },
   { title: "Rudder Area Ratio", category: "Hidrodinamik", description: "Dümen alanının su altı yanal alana oranı; yeterli manevra kabiliyeti için minimum %1.5-2 olmalıdır." },
   { title: "Resistance Test", category: "Hidrodinamik", description: "Model deney havuzunda gemi modelinin çekilerek direncinin ölçülmesi deneyi." },
-  { title: "Propeller Open Water Test", category: "Hidrodinamik", description: "Pervane modelinin açık su koşullarında test edilerek K_T, K_Q ve η₀ değerlerinin belirlenmesi." },
+  { title: "Propeller Open Water Test", category: "Hidrodinamik", description: "Pervane modelinin açık su koşullarında test edilerek KT, KQ ve η₀ değerlerinin belirlenmesi." },
   { title: "Self-Propulsion Test", category: "Hidrodinamik", description: "Model geminin kendi pervanesiyle çalıştırılarak gerçek çalışma koşullarının simüle edilmesi deneyi." },
 
   // ── Elektrik & Elektronik — Ek Terimler ──

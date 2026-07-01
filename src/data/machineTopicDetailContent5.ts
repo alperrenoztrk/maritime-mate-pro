@@ -11,7 +11,7 @@ const content5: ContentMap = {
       title: "Yük Paylaşımı ve Frekans Regülasyonu",
       introduction: "Paralel çalışan jeneratörlerde yük paylaşımı, her jeneratörün kapasitesi oranında güç üretmesini sağlayan kontrol mekanizmasıdır.",
       sections: [
-        { heading: "Aktif Güç Paylaşımı", paragraphs: ["Aktif güç (kW) paylaşımı frekans (hız) kontrolü ile yapılır. Governor droop ayarı eşit olan jeneratörler eşit yük paylaşır.", "Droop kontrol: Yük arttıkça frekans düşer. İki jeneratörün droop eğrileri kesişim noktasında yük paylaşımı belirlenir."], formula: { expression: "Droop (%) = [(f_boş − f_tam yük) / f_nominal] × 100", variables: ["Tipik droop: %3-5", "Eşit droop → eşit yük paylaşımı"] } },
+        { heading: "Aktif Güç Paylaşımı", paragraphs: ["Aktif güç (kW) paylaşımı frekans (hız) kontrolü ile yapılır. Governor droop ayarı eşit olan jeneratörler eşit yük paylaşır.", "Droop kontrol: Yük arttıkça frekans düşer. İki jeneratörün droop eğrileri kesişim noktasında yük paylaşımı belirlenir."], formula: { expression: "Droop (%) = [(fboş − ftam yük) / fnominal] × 100", variables: ["Tipik droop: %3-5", "Eşit droop → eşit yük paylaşımı"] } },
         { heading: "Reaktif Güç Paylaşımı", paragraphs: ["Reaktif güç (kVAr) paylaşımı gerilim (AVR droop) kontrolü ile yapılır. Reactive current compensation veya cross-current compensation kullanılır.", "Dengesiz reaktif güç paylaşımı jeneratör aşırı ısınmasına neden olur."] },
         { heading: "Sayısal Örnek", paragraphs: [], example: { problem: "500 kW ve 750 kW kapasiteli iki jeneratör paralel çalışmaktadır. Toplam yük 800 kW ise her jeneratörün yük paylaşımını bulunuz.", steps: ["Kapasite oranı: 500/(500+750) = 0.4 ve 750/(500+750) = 0.6", "G1 yükü: 0.4 × 800 = 320 kW", "G2 yükü: 0.6 × 800 = 480 kW"], result: "500 kW jeneratör 320 kW (%64), 750 kW jeneratör 480 kW (%64) yük taşır." } }
       ],
@@ -47,12 +47,12 @@ const content5: ContentMap = {
             "Isı geri kazanım performansı; motor yükü, egzoz debisi, egzoz giriş sıcaklığı, gaz/su tarafı kirlenme (fouling), su kimyası, drum seviye kontrol kalitesi ve otomasyon ayarlarının birlikte etkisiyle belirlenir."
           ],
           formula: {
-            expression: "Q = ṁ_gaz · c_p,gaz · (T_giriş − T_çıkış)",
+            expression: "Q = ṁgaz · cp,gaz · (Tgiriş − Tçıkış)",
             variables: [
               "Q: Ekonomizerde geri kazanılan ısı (kW)",
               "ṁ_gaz: Egzoz gazı debisi (kg/s)",
-              "c_p,gaz: Egzoz gazı özgül ısısı (kJ/kg·K)",
-              "T_giriş, T_çıkış: Ekonomizer giriş/çıkış egzoz sıcaklığı (°C)"
+              "cp,gaz: Egzoz gazı özgül ısısı (kJ/kg·K)",
+              "Tgiriş, Tçıkış: Ekonomizer giriş/çıkış egzoz sıcaklığı (°C)"
             ]
           }
         },
@@ -85,7 +85,7 @@ const content5: ContentMap = {
             "Seyir başlangıcında damper pozisyon geri bildirimi ve kontrol loop doğrulaması yapılır.",
             "Yük düşüşlerinde low-water riskine karşı seviye trendi anlık takip edilir.",
             "Liman geçişinde yardımcı kazan devreye alma zamanı buhar tüketim profiline göre planlanır.",
-            "Operatör vardiya notunda EGE ΔP, T_giriş/T_çıkış, drum level ve blowdown durumunu birlikte kaydeder."
+            "Operatör vardiya notunda EGE ΔP, Tgiriş/Tçıkış, drum level ve blowdown durumunu birlikte kaydeder."
           ]
         },
         {
@@ -98,8 +98,8 @@ const content5: ContentMap = {
           table: {
             headers: ["İzlenen Parametre", "Tipik Hedef/Aralık", "Uyarı İşareti", "Potansiyel Sonuç"],
             rows: [
-              ["T_giriş (egzoz)", "220-380°C", "Beklenenden düşük", "Yetersiz buhar üretimi"],
-              ["T_çıkış (egzoz)", "> 160°C (yakıt ve üretici limitine bağlı)", "Hızla düşme", "Asit korozyonu"],
+              ["Tgiriş (egzoz)", "220-380°C", "Beklenenden düşük", "Yetersiz buhar üretimi"],
+              ["Tçıkış (egzoz)", "> 160°C (yakıt ve üretici limitine bağlı)", "Hızla düşme", "Asit korozyonu"],
               ["Gaz tarafı ΔP", "Stabil trend", "Kademeli artış", "Kurum birikimi/yangın riski"],
               ["Drum seviye", "Normal band", "Hunting / ani sıçrama", "Low-level trip veya carry-over"],
               ["Buhar basıncı", "Talebe uygun stabil", "Dalgalanma", "Tüketicilerde performans kaybı"],
@@ -165,19 +165,19 @@ const content5: ContentMap = {
             "Aynı yükte ekonomik karşılaştırma yapılırken, ekonomizer aktif/pasif durumda yardımcı kazan yakıt tüketim farkı (kg/h) ve sefer süresine etkisi değerlendirilir."
           ],
           formula: {
-            expression: "Q = ṁ_gaz · c_p,gaz · (T_giriş − T_çıkış)\nṁ_buhar ≈ Q / h_fg\nYakıt tasarrufu ≈ (Q / η_kazan) / LHV",
+            expression: "Q = ṁgaz · cp,gaz · (Tgiriş − Tçıkış)\nṁbuhar ≈ Q / hfg\nYakıt tasarrufu ≈ (Q / ηkazan) / LHV",
             variables: [
-              "ṁ_buhar: Yaklaşık buhar üretimi (kg/s)",
-              "h_fg: Buharlaşma gizli ısısı (kJ/kg)",
-              "η_kazan: Yardımcı kazan verimi",
+              "ṁbuhar: Yaklaşık buhar üretimi (kg/s)",
+              "hfg: Buharlaşma gizli ısısı (kJ/kg)",
+              "ηkazan: Yardımcı kazan verimi",
               "LHV: Yakıt alt ısıl değeri"
             ]
           },
           example: {
-            problem: "ṁ_gaz = 20 kg/s, c_p,gaz = 1.08 kJ/kg·K, T_giriş = 340°C, T_çıkış = 220°C, h_fg = 2100 kJ/kg için Q ve buhar debisini hesaplayınız.",
+            problem: "ṁ_gaz = 20 kg/s, cp,gaz = 1.08 kJ/kg·K, Tgiriş = 340°C, Tçıkış = 220°C, hfg = 2100 kJ/kg için Q ve buhar debisini hesaplayınız.",
             steps: [
               "Q = 20 × 1.08 × (340 − 220) = 2592 kW",
-              "ṁ_buhar ≈ 2592 / 2100 = 1.234 kg/s",
+              "ṁbuhar ≈ 2592 / 2100 = 1.234 kg/s",
               "Saatlik buhar ≈ 1.234 × 3600 = 4442 kg/h (~4.44 t/h)"
             ],
             result: "Bu çalışma noktasında ekonomizer yaklaşık 2.59 MW geri kazanım ve 4.44 t/h buhar üretim potansiyeli sağlar."
@@ -191,8 +191,8 @@ const content5: ContentMap = {
           table: {
             headers: ["Durum", "İlk Aksiyon", "İkinci Aksiyon", "Takip Edilecek Parametre"],
             rows: [
-              ["ΔP artıyor", "Soot blowing planını sıklaştır", "Offline cleaning planla", "ΔP trendi + T_çıkış"],
-              ["T_çıkış çok düşüyor", "Damper/yük optimizasyonu", "Korozyon kontrol muayenesi", "T_çıkış + metal sıcaklığı"],
+              ["ΔP artıyor", "Soot blowing planını sıklaştır", "Offline cleaning planla", "ΔP trendi + Tçıkış"],
+              ["Tçıkış çok düşüyor", "Damper/yük optimizasyonu", "Korozyon kontrol muayenesi", "Tçıkış + metal sıcaklığı"],
               ["Drum level hunting", "Kontrol loop tuning kontrolü", "Feedwater vana/ölçüm doğrulaması", "Seviye trendi + buhar basıncı"],
               ["Buhar açığı oluştu", "Yardımcı kazan kademeli devreye al", "Buhar tüketicilerini önceliklendir", "Header basıncı + tüketim"],
               ["Soot fire belirtisi", "Prosedüre göre yük azalt/izole et", "Acil durum planını uygula", "Baca sıcaklığı + görsel belirti"]
@@ -203,7 +203,7 @@ const content5: ContentMap = {
       keyPoints: [
         "EGE, yakıt ekonomisi ve MARPOL Annex VI operasyon hedefleri için doğrudan etkili bir ekipmandır; performans kaybı CII sonuçlarına yansır.",
         "Asit çiğ noktası korozyonu, soot birikimi ve drum seviye kontrolü en kritik üç risk alanıdır.",
-        "Trend bazlı izleme (T_giriş/T_çıkış, ΔP, seviye, TDS, buhar basıncı) arıza öncesi erken uyarı sağlar.",
+        "Trend bazlı izleme (Tgiriş/Tçıkış, ΔP, seviye, TDS, buhar basıncı) arıza öncesi erken uyarı sağlar.",
         "Yakıt tipine göre bakım/temizlik stratejisi değiştirilmeli; tek tip periyot yaklaşımından kaçınılmalıdır.",
         "Hızlı enerji dengesi hesabı, yardımcı kazan yük planlamasında pratik karar desteği sunar."
       ]
@@ -268,7 +268,7 @@ const content5: ContentMap = {
       title: "Gravity Disc Seçimi",
       introduction: "Gravity disc (damper ring), purifier modunda çalışan separatörde yağ-su arayüzünün konumunu belirleyen kritik bileşendir.",
       sections: [
-        { heading: "Seçim Prensibi", paragraphs: ["Gravity disc çapı, arıtılacak akışkanın yoğunluğuna göre seçilir. Yoğunluk arttıkça daha büyük çaplı disc kullanılır.", "Yanlış seçim: Çok büyük disc → yağ su çıkışından akar (yağ kaybı). Çok küçük disc → su yağ çıkışına karışır (yetersiz ayırma)."], formula: { expression: "Seçim kriteri: ρ_yakıt / ρ_su oranına göre üretici tablosu", variables: ["ρ_yakıt: 15°C'de yakıt yoğunluğu (kg/m³)", "ρ_su: 1000 kg/m³ (tatlı su)"] } },
+        { heading: "Seçim Prensibi", paragraphs: ["Gravity disc çapı, arıtılacak akışkanın yoğunluğuna göre seçilir. Yoğunluk arttıkça daha büyük çaplı disc kullanılır.", "Yanlış seçim: Çok büyük disc → yağ su çıkışından akar (yağ kaybı). Çok küçük disc → su yağ çıkışına karışır (yetersiz ayırma)."], formula: { expression: "Seçim kriteri: ρyakıt / ρsu oranına göre üretici tablosu", variables: ["ρyakıt: 15°C'de yakıt yoğunluğu (kg/m³)", "ρsu: 1000 kg/m³ (tatlı su)"] } },
         { heading: "Pratik Uygulama", paragraphs: ["Yakıt bunker delivery note (BDN) üzerindeki yoğunluk değeri ve arıtma sıcaklığındaki yoğunluk kullanılarak üretici nomogramından uygun disc seçilir.", "Sıcaklık yoğunluğu etkiler: Sıcaklık arttıkça yoğunluk düşer."] }
       ],
       keyPoints: ["Her yeni yakıt partisinde gravity disc uygunluğu kontrol edilmelidir.", "ALCAP sistemlerde gravity disc değişimi gerekmez.", "Deneme çalıştırma ile su çıkışından yağ gelip gelmediği kontrol edilir."]
@@ -321,7 +321,7 @@ const content5: ContentMap = {
       title: "Ara Soğutma ve Son Soğutma",
       introduction: "Çok kademeli kompresörlerde kademeler arası soğutma (intercooling) ve son kademe sonrası soğutma (aftercooling), verim artışı ve güvenlik için zorunludur.",
       sections: [
-        { heading: "Ara Soğutma (Intercooling)", paragraphs: ["Birinci kademe çıkışındaki sıcak hava, bir ısı eşanjöründen geçirilerek soğutulur. Havanın hacmi küçülür ve ikinci kademe sıkıştırma işi azalır.", "Soğutma ortamı: Tatlı su veya deniz suyu."], formula: { expression: "İdeal ara soğutma basıncı: P_ara = √(P₁ × P₂)", variables: ["P₁: Emme basıncı", "P₂: Son basınç"] } },
+        { heading: "Ara Soğutma (Intercooling)", paragraphs: ["Birinci kademe çıkışındaki sıcak hava, bir ısı eşanjöründen geçirilerek soğutulur. Havanın hacmi küçülür ve ikinci kademe sıkıştırma işi azalır.", "Soğutma ortamı: Tatlı su veya deniz suyu."], formula: { expression: "İdeal ara soğutma basıncı: Para = √(P₁ × P₂)", variables: ["P₁: Emme basıncı", "P₂: Son basınç"] } },
         { heading: "Son Soğutma (Aftercooling)", paragraphs: ["Son kademe çıkışındaki hava 200-250°C olabilir. Son soğutucu bu sıcaklığı ortam sıcaklığına yakın bir değere düşürür.", "Soğutma sonrası oluşan kondens otomatik drenaj vanası ile tahliye edilir."] }
       ],
       keyPoints: ["Yetersiz soğutma yağ tutuşması riskini artırır.", "Soğutucu yüzeyler periyodik temizlenmelidir.", "Kondens birikimi hava şişelerine su girmesine neden olur."]
@@ -716,7 +716,7 @@ const content5: ContentMap = {
       title: "EEDI ve EEXI Gereklilikleri",
       introduction: "EEDI yeni gemiler, EEXI mevcut gemiler için uygulanan enerji verimliliği tasarım indeksleridir. Gemilerin ton-mil başına CO₂ emisyonunu sınırlandırır.",
       sections: [
-        { heading: "EEDI", paragraphs: ["Energy Efficiency Design Index: Yeni gemilerin tasarım aşamasında hesaplanır. Her gemi tipi ve tonaj aralığı için referans çizgisi belirlenmiştir.", "Faz 0 (2013): Referans çizgisi. Faz 1 (2015): %10 azaltma. Faz 2 (2020): %20 azaltma. Faz 3 (2025): %30+ azaltma."], formula: { expression: "EEDI = (P × SFC × C_F) / (DWT × V_ref)  [gCO₂/ton·nm]", variables: ["P: Motor gücü (kW)", "SFC: Özgül yakıt tüketimi (g/kWh)", "C_F: Yakıt karbon dönüşüm faktörü", "DWT: Deadweight tonnage", "V_ref: Referans hız (knot)"] } },
+        { heading: "EEDI", paragraphs: ["Energy Efficiency Design Index: Yeni gemilerin tasarım aşamasında hesaplanır. Her gemi tipi ve tonaj aralığı için referans çizgisi belirlenmiştir.", "Faz 0 (2013): Referans çizgisi. Faz 1 (2015): %10 azaltma. Faz 2 (2020): %20 azaltma. Faz 3 (2025): %30+ azaltma."], formula: { expression: "EEDI = (P × SFC × CF) / (DWT × Vref)  [gCO₂/ton·nm]", variables: ["P: Motor gücü (kW)", "SFC: Özgül yakıt tüketimi (g/kWh)", "CF: Yakıt karbon dönüşüm faktörü", "DWT: Deadweight tonnage", "Vref: Referans hız (knot)"] } },
         { heading: "EEXI", paragraphs: ["Existing Energy Efficiency Index: Mevcut gemilere 2023'ten itibaren uygulanır. EEDI ile benzer hesaplama yapılır.", "Uyumsuz gemiler motor güç sınırlama (EPL/ShaPoLi) veya diğer teknik tedbirlerle uyum sağlar."] }
       ],
       keyPoints: ["IEE (International Energy Efficiency) sertifikası zorunludur.", "EEXI tek seferlik hesaplama ve doğrulamadır.", "EEDI deniz seferinde değil, tasarım koşullarında hesaplanır."]
@@ -725,7 +725,7 @@ const content5: ContentMap = {
       title: "CII (Karbon Yoğunluğu Göstergesi)",
       introduction: "CII, gemilerin operasyonel karbon yoğunluğunu yıllık bazda ölçen ve derecelendiren zorunlu IMO mekanizmasıdır.",
       sections: [
-        { heading: "CII Hesabı", paragraphs: [], formula: { expression: "CII = Yıllık CO₂ emisyonu / (DWT × Kat edilen mesafe)\n[gCO₂/ton·nm]", variables: ["CO₂ = Yakıt tüketimi × C_F", "DWT: Deadweight", "Mesafe: Yıllık toplam seyir mesafesi"] } },
+        { heading: "CII Hesabı", paragraphs: [], formula: { expression: "CII = Yıllık CO₂ emisyonu / (DWT × Kat edilen mesafe)\n[gCO₂/ton·nm]", variables: ["CO₂ = Yakıt tüketimi × CF", "DWT: Deadweight", "Mesafe: Yıllık toplam seyir mesafesi"] } },
         { heading: "Derecelendirme", paragraphs: [], table: { headers: ["Derece", "Performans", "Aksiyon"], rows: [["A", "Çok iyi", "Teşvik"], ["B", "İyi", "Teşvik"], ["C", "Orta (referans)", "İzleme"], ["D", "Kötü", "Düzeltici aksiyon planı (3 yıl içinde C'ye getir)"], ["E", "Çok kötü", "Acil düzeltici aksiyon planı"]] } }
       ],
       keyPoints: ["CII her yıl hesaplanır ve referans değer sıkılaştırılır.", "D veya E alan gemiler SEEMP Part III'te düzeltici plan sunmalıdır.", "Slow steaming, trim optimizasyonu ve WHRS CII'yı iyileştirir."]

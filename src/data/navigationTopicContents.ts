@@ -9684,7 +9684,7 @@ Kesişim noktası = Running Fix (10:30)
         image: chartPlotting,
         imageAlt: "Orta enlem seyri uygulaması",
         formula: {
-          text: "Departure = DLong × cos(Lat_ort);  tan(Kurs) = Departure / DLat;  Mesafe = DLat / cos(Kurs)",
+          text: "Departure = DLong × cos(Latort);  tan(Kurs) = Departure / DLat;  Mesafe = DLat / cos(Kurs)",
           description: "DLat ve DLong dakika; departure ve mesafe deniz mili."
         }
       },
@@ -9893,7 +9893,7 @@ Kesişim noktası = Running Fix (10:30)
         image: mercatorProjection,
         imageAlt: "Loxodromun Mercator haritada düz çizgi olarak gösterimi",
         formula: {
-          text: "D_lox = Δλ · cos φ_m (yaklaşık, orta enlemde) | Gerçek hesap: Mercator sailing formülleri ile",
+          text: "Dlox = Δλ · cos φm (yaklaşık, orta enlemde) | Gerçek hesap: Mercator sailing formülleri ile",
           description: "Loxodrom mesafesi, orta enlem yöntemiyle veya Mercator sailing formülleriyle hesaplanır"
         }
       },
@@ -9973,12 +9973,12 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "GPS’te Trilaterasyonun Uygulanması",
         content:
-          "GPS’te trilaterasyon uygulaması şöyle işler: her uydu kendi konumunu ve sinyal gönderim zamanını içeren bir mesaj yayımlar. Alıcı bu sinyali aldığında, sinyal gecikmesini (Δt) ışık hızıyla (c) çarparak uyduya olan sözde mesafeyi (pseudo-range) hesaplar. Bu sözde mesafe, küre yüzeyini tanımlar ve alıcının bu küre üzerinde bir yerde bulunduğunu gösterir. 3 uyduyla elde edilen 3 kürenin kesişimi teorik olarak iki nokta verir; yeryüzü dışındaki nokta otomatik elenir ve 3D konum elde edilir.\n\nAncak gerçekte 4 uydu zorunludur. Bunun nedeni alıcı saatinin uydu atomik saatleri kadar hassas olmayışıdır. Alıcı saat hatası (dt_r), her ölçüme eşit miktarda hata katar. Dördüncü uyduyla 4 denklemden oluşan bir sistem kurulur ve hem 3D konum (x, y, z) hem de saat hatası (dt_r) bilinmeyeni birlikte çözülür.",
+          "GPS’te trilaterasyon uygulaması şöyle işler: her uydu kendi konumunu ve sinyal gönderim zamanını içeren bir mesaj yayımlar. Alıcı bu sinyali aldığında, sinyal gecikmesini (Δt) ışık hızıyla (c) çarparak uyduya olan sözde mesafeyi (pseudo-range) hesaplar. Bu sözde mesafe, küre yüzeyini tanımlar ve alıcının bu küre üzerinde bir yerde bulunduğunu gösterir. 3 uyduyla elde edilen 3 kürenin kesişimi teorik olarak iki nokta verir; yeryüzü dışındaki nokta otomatik elenir ve 3D konum elde edilir.\n\nAncak gerçekte 4 uydu zorunludur. Bunun nedeni alıcı saatinin uydu atomik saatleri kadar hassas olmayışıdır. Alıcı saat hatası (dtr), her ölçüme eşit miktarda hata katar. Dördüncü uyduyla 4 denklemden oluşan bir sistem kurulur ve hem 3D konum (x, y, z) hem de saat hatası (dtr) bilinmeyeni birlikte çözülür.",
         image: gpsSatellites,
         imageAlt: "GPS trilaterasyon: dört uyduyla konum ve saat hatası çözümü",
         formula: {
-          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dt_r) | i = 1,2,3,4 uydu",
-          description: "Her uydu için bir denklem; 4 denklem 4 bilinmeyeni (x, y, z, dt_r) çözer"
+          text: "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 uydu",
+          description: "Her uydu için bir denklem; 4 denklem 4 bilinmeyeni (x, y, z, dtr) çözer"
         }
       },
       {
@@ -9996,7 +9996,7 @@ Kesişim noktası = Running Fix (10:30)
     keyPoints: [
       "Trilaterasyon, mesafe ölçümünden konum belirleme yöntemidir; triangulasyon açı kullanır.",
       "3 uyduyla 2 olası konum elde edilir; yeryüzü geometrisi gerçekçi olanı seçer.",
-      "4. uydu, alıcı saat hatasını (dt_r) ortadan kaldırmak için zorunludur.",
+      "4. uydu, alıcı saat hatasını (dtr) ortadan kaldırmak için zorunludur.",
       "DOP (Dilution of Precision), uydu geometrisinin konum hatasına katkısını gösterir.",
       "Aşırı belirlenmiş sistemler (4’ten fazla uydu) least squares yöntemiyle daha hassas çözüm üretir."
     ]
@@ -10013,8 +10013,8 @@ Kesişim noktası = Running Fix (10:30)
         image: gpsSatellites,
         imageAlt: "HDOP ve uydu geometrisi ilişkisi",
         formula: {
-          text: "σ_yatay = HDOP × σ_ölçüm",
-          description: "σ_yatay = yatay konum standart sapması; σ_ölçüm = pseudorange ölçüm standart sapması"
+          text: "σyatay = HDOP × σölçüm",
+          description: "σyatay = yatay konum standart sapması; σölçüm = pseudorange ölçüm standart sapması"
         }
       },
       {
@@ -10032,7 +10032,7 @@ Kesişim noktası = Running Fix (10:30)
     ],
     keyPoints: [
       "HDOP, uydu geometrisinin yatay konum hatasını ne kadar büyüttüğünü gösterir.",
-      "σ_yatay = HDOP × σ_ölçüm: DOP düştükçe aynı ölçüm hatası daha küçük konum hatasına yol açar.",
+      "σyatay = HDOP × σölçüm: DOP düştükçe aynı ölçüm hatası daha küçük konum hatasına yol açar.",
       "Uydular gökyüzüne homojen dağıldığında HDOP düşer, doğruluk artar.",
       "Dar limanlarda yüksek yapılar uydulara görüş hattını engelleyerek HDOP'u artırabilir.",
       "HDOP > 4 durumunda GPS mevkiini radar veya görsel yöntemlerle teyit etmek gerekir."
@@ -10317,7 +10317,7 @@ Kesişim noktası = Running Fix (10:30)
         image: chartPlotting,
         imageAlt: "ETA hesabı ve sefer planlaması",
         formula: {
-          text: "ETA = ETD + (D / SOG_ort) + Kılavuz bekleme + TSS gecikmesi",
+          text: "ETA = ETD + (D / SOGort) + Kılavuz bekleme + TSS gecikmesi",
           description: "ETD = kalkış zamanı, D = toplam mesafe, SOG = ortalama zemin hızı. Tampon süreler eklenmeli."
         }
       },
@@ -11224,7 +11224,7 @@ Kesişim noktası = Running Fix (10:30)
         image: safetyEquipment,
         imageAlt: "Squat etkisi ve UKC hesabı",
         formula: {
-          text: "S = Cb × V² / 100 (Barras formülü, açık su) | Kanal içi: S_kanal = S × (1 + As/Ac)",
+          text: "S = Cb × V² / 100 (Barras formülü, açık su) | Kanal içi: Skanal = S × (1 + As/Ac)",
           description: "Cb = block katsayısı; V = hız (knot); As = gemi kesit alanı; Ac = kanal kesit alanı"
         }
       },
@@ -11696,8 +11696,8 @@ Kesişim noktası = Running Fix (10:30)
         content:
           "Kısıtlı görüşte ARPA, çatışma riskini belirlemenin birincil aracıdır. Her hedefin CPA ve TCPA değerleri izlenmeli; hedefler arasında öncelik sıralaması yapılmalıdır. Kural 19(d)(i)'nin 'iskele tarafına dönme' kısıtlaması, ARPA'da hangi yönden yaklaştığı belli olduğunda uygulanır: baş omuzdan gelen hedef için sancağa ya da hız azaltma tercih edilmelidir. 'Seçici manevra' (selective avoidance) prensibi: ARPA'da birden fazla hedef olduğunda, en yakın ve en tehlikeli hedefe yönelik manevra diğerlerine zarar vermemelidir. Simülatör eğitimlerinde sıklıkla sis senaryoları uygulanır; öğrencilerden çoklu hedeflerde doğru CPA/TCPA analizi ve Kural 19'a uygun manevra kararı beklenir.",
         formula: {
-          text: "Sis Güvenli Hızı: V_sis ≤ (R_radar × 60) / T_stop_dk",
-          description: "R_radar = kullanılan radar menzili (nm); T_stop = tam durdurma süresi (dk); geminin tam durdurma mesafesi radar menzilin yarısını geçmemeli kuralı pratikte kullanılır"
+          text: "Sis Güvenli Hızı: Vsis ≤ (Rradar × 60) / T_stop_dk",
+          description: "Rradar = kullanılan radar menzili (nm); Tstop = tam durdurma süresi (dk); geminin tam durdurma mesafesi radar menzilin yarısını geçmemeli kuralı pratikte kullanılır"
         }
       },
       {

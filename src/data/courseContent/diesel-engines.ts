@@ -31,7 +31,7 @@ export const dieselEngines: CourseTopic = {
       source: { code: "Motor teorisi — indike güç bağıntısı" },
       note: "Pmi bar girilir, hesapta 10⁵ Pa'ya çevrilir; sonuç kW olarak verilir.",
       inputs: [
-        { key: "pmi", label: "Ortalama İndike Basınç (P_mi)", unit: "bar", placeholder: "18" },
+        { key: "pmi", label: "Ortalama İndike Basınç (Pmi)", unit: "bar", placeholder: "18" },
         { key: "l", label: "Strok (L)", unit: "m", placeholder: "2.5" },
         { key: "a", label: "Piston Alanı (A)", unit: "m²", placeholder: "0.35" },
         { key: "n", label: "Devir (n)", unit: "rpm", placeholder: "100" },
@@ -56,7 +56,7 @@ export const dieselEngines: CourseTopic = {
       note: "Mekanik verim % girilir.",
       inputs: [
         { key: "ihp", label: "İndike Güç (IHP)", unit: "kW", placeholder: "12000" },
-        { key: "eta", label: "Mekanik Verim (η_mek)", unit: "%", placeholder: "90" },
+        { key: "eta", label: "Mekanik Verim (ηmek)", unit: "%", placeholder: "90" },
       ],
       calculate: (v) => {
         const bhp = v.ihp * (v.eta / 100);
@@ -112,7 +112,7 @@ export const dieselEngines: CourseTopic = {
         const mep = (v.p * 1000 * 60) / (vs * v.n * v.k); // Pa
         return [
           { label: "MEP", value: `${(mep / 1e5).toFixed(2)} bar` },
-          { label: "Silindir Hacmi (V_s)", value: `${(vs * 1000).toFixed(1)} litre` },
+          { label: "Silindir Hacmi (Vs)", value: `${(vs * 1000).toFixed(1)} litre` },
         ];
       },
     },
@@ -130,13 +130,13 @@ export const dieselEngines: CourseTopic = {
       inputs: [
         { key: "bore", label: "Silindir Çapı", unit: "mm", placeholder: "500" },
         { key: "stroke", label: "Strok", unit: "mm", placeholder: "2000" },
-        { key: "vc", label: "Ölü Hacim (V_c)", unit: "litre", placeholder: "15" },
+        { key: "vc", label: "Ölü Hacim (Vc)", unit: "litre", placeholder: "15" },
       ],
       calculate: (v) => {
         const vs = Math.PI * Math.pow(v.bore / 1000, 2) / 4 * (v.stroke / 1000) * 1000; // litre
         const cr = (vs + v.vc) / v.vc;
         return [
-          { label: "Strok Hacmi (V_s)", value: `${vs.toFixed(1)} litre` },
+          { label: "Strok Hacmi (Vs)", value: `${vs.toFixed(1)} litre` },
           { label: "Sıkıştırma Oranı (r)", value: `${cr.toFixed(1)}:1` },
         ];
       },
@@ -198,15 +198,15 @@ export const dieselEngines: CourseTopic = {
       source: { code: "Yakıt enjeksiyon sistemi (300–1000 bar mekanik, 1500–2500 bar common rail)" },
       note: "Yay kuvveti N, iğne alanı mm², silindir basıncı bar girilir; açılma basıncı bar olarak verilir.",
       inputs: [
-        { key: "fspring", label: "Yay Kuvveti (F_yay)", unit: "N", placeholder: "4000" },
+        { key: "fspring", label: "Yay Kuvveti (Fyay)", unit: "N", placeholder: "4000" },
         { key: "area", label: "İğne Kesit Alanı (A)", unit: "mm²", placeholder: "20" },
-        { key: "pcyl", label: "Silindir Basıncı (P_silindir)", unit: "bar", placeholder: "150" },
+        { key: "pcyl", label: "Silindir Basıncı (Psilindir)", unit: "bar", placeholder: "150" },
       ],
       calculate: (v) => {
         if (v.area <= 0) return [{ label: "Hata", value: "İğne alanı pozitif olmalı" }];
         const pSpringBar = v.fspring / (v.area * 1e-6) / 1e5;
         const pInj = pSpringBar + v.pcyl;
-        return [{ label: "Enjeksiyon Basıncı (P_inj)", value: `${pInj.toFixed(0)} bar` }];
+        return [{ label: "Enjeksiyon Basıncı (Pinj)", value: `${pInj.toFixed(0)} bar` }];
       },
     },
     {
@@ -223,7 +223,7 @@ export const dieselEngines: CourseTopic = {
       note: "BHP (kW) × 3600 ile saatlik enerjiye çevrilir; yakıt kg/saat girilir.",
       inputs: [
         { key: "bhp", label: "Fren Gücü (BHP)", unit: "kW", placeholder: "10000" },
-        { key: "fc", label: "Yakıt Tüketimi (ṁ_f)", unit: "kg/saat", placeholder: "1850" },
+        { key: "fc", label: "Yakıt Tüketimi (ṁf)", unit: "kg/saat", placeholder: "1850" },
         { key: "lcv", label: "Alt Isıl Değer (LCV)", unit: "kJ/kg", placeholder: "42700" },
       ],
       calculate: (v) => {
