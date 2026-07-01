@@ -130,6 +130,7 @@ const MeteorologyFormulasPage = lazy(() => import("./pages/MeteorologyFormulas")
 const MeteorologyRulesPage = lazy(() => import("./pages/MeteorologyRules"));
 const MeteorologyAssistantPage = lazy(() => import("./pages/MeteorologyAssistant"));
 const MeteorologyQuizPage = lazy(() => import("./pages/MeteorologyQuiz"));
+const CommunicationAssistantPage = lazy(() => import("./pages/CommunicationAssistant"));
 const SeamanshipCalculationsPage = lazy(() => import("./pages/SeamanshipCalculations"));
 const SeamanshipCalculationDetailPage = lazy(() =>
   import("./pages/SeamanshipCalculations").then((m) => ({
@@ -292,6 +293,7 @@ const AnimatedRoutes = () => {
         <Route path="/meteorology/rules" element={<PageTransition><MeteorologyRulesPage /></PageTransition>} />
         <Route path="/meteorology/assistant" element={<PageTransition><MeteorologyAssistantPage /></PageTransition>} />
         <Route path="/meteorology/quiz" element={<PageTransition><MeteorologyQuizPage /></PageTransition>} />
+        <Route path="/communication/assistant" element={<PageTransition><CommunicationAssistantPage /></PageTransition>} />
         <Route path="/ballast" element={<PageTransition><BallastPage /></PageTransition>} />
         <Route path="/engine" element={<PageTransition><EnginePage /></PageTransition>} />
         <Route path="/hydrodynamics" element={<PageTransition><HydrodynamicsPage /></PageTransition>} />

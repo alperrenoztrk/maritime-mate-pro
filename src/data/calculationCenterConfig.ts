@@ -563,8 +563,9 @@ export const calculationCategories: CategoryConfig[] = [
         id: "assistant",
         label: "Asistan",
         description: "VHF/DSC çağrı metinleri ve acil durum akışı",
-        status: "info",
-        badge: "Plan",
+        status: "live",
+        badge: "Hazır",
+        href: "/communication/assistant",
       },
       {
         id: "quiz",

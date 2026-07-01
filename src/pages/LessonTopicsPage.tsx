@@ -417,9 +417,9 @@ const topicsData: Record<string, TopicContent> = {
       }
     ],
     resources: [
-      { title: "Haberleşme Hesaplamaları", href: "/calculations/communication/calculations" },
-      { title: "Haberleşme Formülleri", href: "/calculations/communication/formulas" },
-      { title: "Haberleşme Kuralları", href: "/calculations/communication/rules" }
+      { title: "Haberleşme Hesaplamaları", href: "/lessons/communication/calculations" },
+      { title: "Haberleşme Formülleri", href: "/lessons/communication/formulas" },
+      { title: "Haberleşme Kuralları", href: "/lessons/communication/rules" }
     ]
   },
   seamanship: {
