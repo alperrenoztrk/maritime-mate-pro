@@ -148,6 +148,16 @@ export const regionalRegulations: RegulationItem[] = [
         body:
           "Tokyo MoU, denetim hacmi bakımından dünyanın en büyük PSC bölgesidir ve dünya gemi trafiğinin çok büyük bir kısmının geçtiği suları kapsar; bu ölçek, hem yoğun bir denetim kapasitesi hem de istatistiksel olarak zengin bir veri tabanı yaratır. Bölgenin bir diğer özelliği, üye devletler arasındaki ekonomik ve idari çeşitliliktir: gelişmiş denetim altyapısına sahip ülkeler (Japonya, Avustralya, Singapur, Güney Kore) ile kapasite geliştirmekte olan ülkeler bir arada bulunur. Bu yüzden Tokyo MoU, ortak standartların yanı sıra denetçi eğitimi ve teknik koordinasyona da önem verir. Bölgeye girecek gemiler için en akılcı yaklaşım, APCIS üzerinden kendi risk profilini önceden kontrol etmek, yürürlükteki CIC temasına hazırlanmak ve geçmiş eksiklikleri gidermektir; Paris MoU ile uyum sayesinde bu hazırlık her iki bölge için geçerlidir.",
       },
+      {
+        heading: "APCIS'in pratikte işleyişi: bölge genelinde görünürlük",
+        body:
+          "APCIS'in gerçek değeri, bir denetçinin gemiye çıkmadan önce yaptığı ön incelemede ortaya çıkar. Denetçi, liman rıhtımına gitmeden APCIS üzerinden geminin bölge genelindeki geçmişini görür: hangi üye limanlarda denetlendiği, hangi eksikliklerin tespit edildiği, varsa alıkoyma kayıtları ve bunların kapatılıp kapatılmadığı. Bu, denetimin tek bir limanın izole bir olayı olmadığı, bölgesel bir sürekliliğin parçası olduğu anlamına gelir: örneğin Vietnam'da yapılan bir denetimde tespit edilip kapatılmamış bir eksiklik, geminin bir ay sonra Avustralya'ya uğradığında denetçinin ekranında hâlâ görünür ve o denetimin kapsamını doğrudan şekillendirir. Aynı mantıkla, bir üye limanda alınan bir alıkoyma kararı gemiyi yalnızca o limanda değil, APCIS'e erişimi olan tüm bölgede etiketler; gemi bir sonraki limanda daha yüksek riskli sayılır ve daha kapsamlı bir denetime tabi tutulma olasılığı artar. Bu bakımdan APCIS, tek tek denetimleri birbirine bağlayan bir hafıza katmanı işlevi görür ve standart altı işletmeciliğin coğrafi olarak unutulmasını önler; bir limanda kazanılan kötü sicil, gemiyle birlikte bölgenin her yerine taşınır.",
+      },
+      {
+        heading: "Tokyo MoU ve Paris MoU risk profillerinin karşılaştırılması",
+        body:
+          "Tokyo MoU ile Paris MoU aynı temel mantığı — HRS/SRS/LRS risk sınıflandırmasını ve buna bağlı denetim aralıklarını — paylaşsa da, sayılar tam örtüşmez. Paris MoU'da düşük riskli bir gemi (LRS) 24-36 aylık bir öncelik penceresine girerken, Tokyo MoU'da bu aralık 18-30 aydır; yani Asya-Pasifik'te düşük riskli sayılan bir gemi bile Avrupa'dakinden biraz daha sık hedeflenebilir. HRS ve SRS bantlarında aralıklar büyük ölçüde benzer olsa da, risk profiline giren bazı ağırlıklandırmalar (örneğin bölgesel bayrak performans listeleri) iki bölgede farklı gemi gruplarını öne çıkarabilir; bir bayrak Paris'te White listede yer alırken Tokyo'da farklı bir sırada olabilir. Bu fark, iki bölge arasında sefer yapan bir işletmeci için pratik bir sonuç doğurur: aynı gemi, aynı gerçek risk seviyesinde olsa bile, hangi bölgede seyrettiğine göre farklı bir denetim sıklığıyla karşılaşabilir. Bu yüzden filo yöneticileri, tek bir genel risk profili değil, her bölgenin kendi eşiklerine göre ayrı ayrı takip yapmalı; bir bölgede LRS statüsüne ulaşmış olmak, diğer bölgede otomatik olarak aynı muameleyi garanti etmez. İki MoU arasındaki veri paylaşımı bu farkı azaltmaya yardımcı olsa da, tamamen ortadan kaldırmaz.",
+      },
     ],
     relatedSlugs: ["psc", "paris-mou"],
     resources: [{ label: "Tokyo MoU", href: "https://www.tokyo-mou.org/" }],
@@ -262,6 +272,11 @@ export const regionalRegulations: RegulationItem[] = [
       "Denetim bulgularını hızlı kapat ve kanıtları hazırla",
       "Bölgedeki terminal/charterer ek gerekliliklerini (SIRE, CDI) karşıla",
     ],
+    amendments: [
+      { year: "2005", description: "Riyadh MoU kuruldu – Körfez bölgesi PSC koordinasyonu başladı" },
+      { year: "2005", description: "IMO'nun uyumlaştırılmış PSC denetim kılavuzlarının (Res. A.1138(31) ve öncülleri) MoU çerçevesine temel alınması" },
+      { year: "2010'lar", description: "Bölgesel bilgi sisteminin geliştirilmesi ve risk/hedefleme kriterlerinin Paris ve Tokyo MoU uygulamalarıyla kademeli olarak uyumlaştırılması" },
+    ],
     keyArticles: [
       { id: "Bölüm 2", title: "Denetim Yükümlülükleri", summary: "Üye devletlerin denetim hedefleri ve koordinasyon mekanizmaları." },
       { id: "Bölüm 3", title: "Denetim Prosedürleri", summary: "PSC denetim kapsamı, eksiklik kodları ve alıkoyma kriterleri." },
@@ -291,6 +306,16 @@ export const regionalRegulations: RegulationItem[] = [
         heading: "Yerel düzenlemeler ve ticari vetting katmanı",
         body:
           "Körfez bölgesinde PSC, çoğu zaman tek denetim katmanı değildir. BAE, Suudi Arabistan ve diğer üye devletlerin kendi ulusal ek gereklilikleri ve liman kuralları olabilir; gemiler giriş öncesi bu yerel düzenlemeleri ayrıca kontrol etmelidir. Ayrıca bölgedeki petrol terminalleri ve charterer'lar, devlet denetiminin üzerine ticari vetting (SIRE, CDI) gerekliliklerini ekler; bir tankerin terminale kabul edilmesi çoğu zaman güncel ve temiz bir vetting raporu gerektirir. Riyadh MoU, denetim standartlarını IMO PSC Kılavuzlarıyla uyumlu yürütür ve diğer büyük MoU'larla (Paris, Tokyo) koordineli CIC kampanyaları yapar. Görece yeni ve küçük bir organizasyon olsa da, bölgenin stratejik önemi nedeniyle denetim kapasitesini ve standardizasyonu sürekli geliştirmektedir.",
+      },
+      {
+        heading: "Hürmüz Boğazı ve tanker/LNG trafiğinin ağırlığı",
+        body:
+          "Riyadh MoU bölgesinin denetim önceliklerini belirleyen en somut coğrafi gerçek, Basra Körfezi'nden çıkan neredeyse tüm deniz trafiğinin Hürmüz Boğazı'nın dar ve sığ sularından geçmek zorunda olmasıdır. Bu koridordan dünya ham petrol ticaretinin ve önemli bir LNG hacminin geçtiği düşünüldüğünde, tek bir kaza veya kirlilik olayının hem çevresel hem jeopolitik sonuçları büyük ölçekli olur. Bu yüzden Riyadh MoU'nun denetim odağı, genel PSC kapsamının ötesinde tanker emniyetine ve kirlilik önlemeye orantısız bir ağırlık verir: inert gaz sistemleri, kargo tankı emniyet donanımı, yağ-su ayırıcıları ve balast suyu yönetimi rutin denetimlerde özellikle sorgulanan kalemlerdir. Boğazın dar geçiş koridoru ve yoğun tanker trafiği, aynı zamanda seyir emniyeti ve köprüüstü prosedürlerinin de sıkı denetlenmesini gerektirir; bir tankerin manevra kabiliyetini veya seyir ekipmanını etkileyen herhangi bir eksiklik, bu dar suyollarında orantısız bir risk taşır. Sonuç olarak bölgeye girecek tanker ve LNG gemileri için PSC hazırlığı, diğer gemi tiplerinden daha kapsamlı ve kargo/çevre odaklı olmalıdır.",
+      },
+      {
+        heading: "Genç bir rejimin kapasite inşası ve harmonizasyonu",
+        body:
+          "Riyadh MoU, Paris veya Tokyo MoU'ya kıyasla hem daha az üyeli hem de kurumsal olgunluk bakımından daha genç bir bölgesel rejimdir; bu, denetim kapasitesinin ve veri altyapısının henüz aynı olgunluk seviyesine erişmediği anlamına gelir. Bu açığı kapatmak için MoU, IMO'nun teknik işbirliği programlarından yoğun biçimde yararlanır: denetçi eğitimi, ortak denetim kılavuzlarının benimsenmesi ve IMO PSC Kılavuzlarıyla (Res. A.1138(31)) tam uyum bu çabanın merkezindedir. Aynı zamanda Riyadh MoU, kendi bölgesel bilgi sistemini ve eksiklik/alıkoyma kriterlerini Paris ve Tokyo MoU'nun daha köklü uygulamalarıyla kademeli olarak uyumlaştırmaya çalışır; bu, hem denetim sonuçlarının uluslararası olarak karşılaştırılabilir olmasını sağlar hem de bölgeye uğrayan gemilerin tek bir tutarlı standarda göre hazırlanabilmesini kolaylaştırır. Görece küçük üye sayısı, aslında bir avantaja da dönüşebilir: yeni uygulamaların ve ortak kılavuzların benimsenmesi, daha büyük ve dağınık MoU'lara kıyasla nispeten hızlı olabilir. Zamanla bu harmonizasyon, bölgenin stratejik önemine uygun bir denetim kapasitesine ulaşmayı hedefler.",
       },
     ],
     relatedSlugs: ["psc"],
@@ -322,6 +347,11 @@ export const regionalRegulations: RegulationItem[] = [
       "Türk Boğazları geçişi öncesi VTS bildirim gerekliliklerini yerine getir",
       "Denetim trendlerini izle ve tekrar eden eksiklikleri önle",
     ],
+    amendments: [
+      { year: "2000", description: "Black Sea MoU kuruldu – Karadeniz kıyı devletleri arasında PSC koordinasyonu başladı" },
+      { year: "2000'ler", description: "IMO'nun uyumlaştırılmış PSC denetim kılavuzlarının MoU çerçevesine temel alınması" },
+      { year: "2010'lar", description: "Paris MoU ile CIC kampanya koordinasyonunun ve BS-INFO veri paylaşımının genişletilmesi" },
+    ],
     keyArticles: [
       { id: "Bölüm 2", title: "Denetim Taahhütleri", summary: "Üye devletlerin yıllık denetim hedefleri ve koordinasyon mekanizmaları." },
       { id: "Bölüm 3", title: "Denetim Prosedürleri", summary: "Initial ve detailed inspection kapsamı, eksiklik ve alıkoyma kriterleri." },
@@ -351,6 +381,16 @@ export const regionalRegulations: RegulationItem[] = [
         heading: "Türk Boğazları ve bölgesel hazırlık",
         body:
           "Karadeniz'e giriş ve çıkış, dünyanın en zorlu seyir geçişlerinden biri olan Türk Boğazları'ndan (İstanbul ve Çanakkale boğazları) geçer; bu, yoğun trafik, keskin dönüşler ve güçlü akıntılar içeren bir koridordur. Geçiş, Türk Boğazları Gemi Trafik Hizmetleri'nin (VTS) bildirim ve raporlama gerekliliklerine ve trafik düzenine uyumu zorunlu kılar; bu, COLREG ve seyir emniyeti uygulamalarının pratikte test edildiği bir bölgedir. PSC açısından gemiler, Karadeniz limanlarına girmeden önce yürürlükteki CIC temalarını mürettebatla gözden geçirmeli, bulgu kapatma kanıtlarını bayrak devleti ve klas kuruluşuyla paylaşmalı ve denetim verilerinin paylaşıldığı BS-INFO sistemindeki kendi kayıtlarını dikkate almalıdır. Bölgenin jeopolitik dinamikleri zaman zaman seyir ve liman erişimini etkileyebilir; bu da rota planlamasında ek bir değişken oluşturur.",
+      },
+      {
+        heading: "Yarı kapalı bir denizin çevresel hassasiyeti",
+        body:
+          "Karadeniz, sınırlı bir su değişimine sahip yarı kapalı bir deniz olması nedeniyle kirliliğe karşı diğer açık deniz bölgelerinden daha hassastır; Bosphorus ve Kerç Boğazı gibi dar geçitler dışında Akdeniz ve Azak Denizi'yle bağlantısı kısıtlıdır ve bu, kirletici maddelerin sudan uzaklaşma hızını düşürür. Bölge aynı zamanda yoğun kuru dökme yük (özellikle tahıl) ve tanker trafiğine ev sahipliği yapar; Ukrayna ve Rusya kaynaklı tahıl ihracatı ile bölgesel ham petrol ve ürün taşımacılığı Karadeniz limanlarını sürekli doldurur. MARPOL çerçevesinde Karadeniz'in çevresel hassasiyetine yönelik özel düzenlemeler ve bölgesel çevre anlaşmaları (Bükreş Sözleşmesi gibi) bulunur; bu çevresel kırılganlık, Black Sea MoU'nun denetim önceliklerini de şekillendirir. Yağ kayıt defteri doğruluğu, balast suyu yönetimi, atık yönetim planları ve kirlilik önleme donanımının çalışır durumda olması, bölge denetimlerinde standart PSC kapsamının üzerinde bir ağırlık taşır. Dökme yük gemileri için ise yapısal bütünlük ve yükleme/istif planları özel bir denetim konusu olarak öne çıkar, çünkü tahıl kargosu uygun olmayan istifte kayma riski taşır.",
+      },
+      {
+        heading: "Küçük bir bloğun veri paylaşım değeri: BS-INFO",
+        body:
+          "Black Sea MoU, yalnızca altı üye devletle Paris veya Tokyo MoU'ya kıyasla küçük bir bloktur; ancak bu küçüklük, veri paylaşımının değerini azaltmaz, tam tersine daha yönetilebilir ve odaklı kılar. BS-INFO sistemi üzerinden paylaşılan denetim sonuçları, eksiklikler ve alıkoyma kayıtları, sınırlı sayıda limanı olan bir bölgede bile önemli bir tekrarı önler: bir gemi Köstence'de denetlenip bir eksiklik tespit edildiğinde, bu bilgi Odessa veya Novorossiysk'teki bir sonraki denetçi için de görünür olur ve gereksiz yeniden denetimden ziyade daha önce tespit edilenlerin takibine odaklanılabilir. Küçük üye sayısı ayrıca koordinasyonu hızlandırır: CIC kampanya temalarının belirlenmesi ve ortak uygulama kararları, çok üyeli MoU'lara göre daha az bürokratik katmandan geçer. Bulgaristan ve Romanya'nın Paris MoU'ya çift üyeliği, BS-INFO'nun THETIS ile dolaylı bir uyum içinde kalmasını sağlar; bu sayede küçük bir bölgesel sistem bile daha büyük Avrupa PSC ağının veri bütünlüğüne katkıda bulunur.",
       },
     ],
     relatedSlugs: ["psc", "paris-mou"],
@@ -382,6 +422,11 @@ export const regionalRegulations: RegulationItem[] = [
       "Yerel düzenlemeleri (Avustralya AMSA, Güney Afrika SAMSA gibi) ayrıca kontrol et",
       "Bölgedeki liman devletlerinin ek gerekliliklerini araştır",
     ],
+    amendments: [
+      { year: "1998", description: "Indian Ocean MoU kuruldu – Hint Okyanusu kıyı devletleri arasında PSC işbirliği başladı" },
+      { year: "2000'ler", description: "IMO'nun uyumlaştırılmış PSC denetim kılavuzlarının benimsenmesi ve üye sayısının kademeli genişlemesi" },
+      { year: "2010'lar", description: "IOMIS bilgi sisteminin ve denetçi kapasite geliştirme programlarının güçlendirilmesi" },
+    ],
     keyArticles: [
       { id: "Bölüm 2", title: "Denetim Yükümlülükleri", summary: "Üye devletlerin denetim taahhütleri ve hedef oranları." },
       { id: "Bölüm 3", title: "Denetim Prosedürleri", summary: "Denetim kapsamı, eksiklik sınıflandırması ve alıkoyma kriterleri." },
@@ -411,6 +456,16 @@ export const regionalRegulations: RegulationItem[] = [
         heading: "Güçlü ulusal rejimlerle katmanlı uyum",
         body:
           "Indian Ocean MoU bölgesinde, MoU'nun ortak kuralları çoğu zaman güçlü ulusal rejimlerle katmanlanır. Avustralya'nın AMSA'sı ve Güney Afrika'nın SAMSA'sı, kendi sıkı uygulamaları ve odak alanlarıyla (örneğin yapısal bütünlük, MLC, çevre uyumu) bilinir; bu ülkelerin limanlarına giren gemiler, bölgesel standartların yanı sıra bu ulusal beklentileri de karşılamalıdır. Dolayısıyla bölgeye girecek gemiler için en akılcı yaklaşım, hem MoU düzeyindeki CIC temalarını hem de uğranacak ülkenin özgül gerekliliklerini önceden araştırmaktır. Bölgesel denetim trendlerini izlemek, geçmiş eksiklikleri gidermek ve bulgu kapatma kanıtlarını hazır tutmak, bu çeşitli rejimler arasında tutarlı bir uyum sağlamanın anahtarıdır.",
+      },
+      {
+        heading: "18 üye arasındaki uçurumu kapatmak",
+        body:
+          "Indian Ocean MoU'nun en zorlu yönetişim sorunu, üyelik tabanının olağanüstü çeşitliliğidir: bir tarafta Avustralya gibi gelişmiş bayrak/liman devleti altyapısına ve deneyimli denetçi kadrosuna sahip ülkeler, diğer tarafta Eritre, Komorlar, Sudan veya Maldivler gibi sınırlı idari ve mali kaynaklara sahip küçük kıyı devletleri bulunur. Bu uçurum, denetim kalitesinde eşitsizlik riski taşır: aynı MoU çerçevesine bağlı olsalar da, bir üye limanın denetçi sayısı, eğitim düzeyi ve teçhizatı diğerinden çok farklı olabilir ve bu da hedeflemenin ve eksiklik tespitinin tutarlılığını tehdit eder. MoU bu riski dengelemek için kapasite geliştirme programlarına yapısal önem verir: deneyimli üye devletlerden denetçi eğitmenleri gönderilir, ortak denetim kılavuzları ve kontrol listeleri standardize edilir, IMO'nun teknik işbirliği fonları küçük üyelerin denetçi eğitimine ve altyapı yatırımına yönlendirilir. Amaç, hangi limana uğranırsa uğranılsın denetimin aynı temel kaliteyi ve tutarlılığı yansıtmasıdır; aksi halde gemi işletmecileri bilinçli olarak daha zayıf denetlenen limanları tercih edebilir ve bu da tüm rejimin güvenilirliğini zayıflatır.",
+      },
+      {
+        heading: "IOMIS ve bölgesel hedeflemenin zinciri",
+        body:
+          "IOMIS veri paylaşımının pratikteki değeri, bir geminin bölge içinde bıraktığı izin kesintisiz takip edilebilmesidir. Örneğin bir gemi Hindistan'daki bir limanda denetlenip ciddi bir yapısal eksiklik nedeniyle yüksek riskli olarak işaretlenirse, bu bilgi IOMIS üzerinden anında diğer üye devletlere ulaşır; aynı gemi bir sonraki seferinde Umman veya Güney Afrika limanına uğradığında, o limanın denetçisi geminin güncel risk durumunu ve önceki bulguyu görerek denetimi buna göre önceliklendirir ve genellikle daha kapsamlı bir denetime tabi tutar. Bu zincirleme mekanizma, tek bir limanın sınırlı kapasitesiyle yakalayamayacağı standart altı gemileri bölge çapında görünür kılar ve gemi işletmecilerinin bir limandaki zayıf performansı diğerinde gizleyebilmesini önler. Risk tabanlı hedefleme bu paylaşılan veriye dayandığı için, IOMIS'in güncelliği ve veri kalitesi tüm sistemin etkinliğini belirler; bu nedenle MoU, üye devletlerin denetim sonuçlarını zamanında ve doğru biçimde sisteme girmesini kapasite geliştirme çalışmalarının ayrılmaz bir parçası olarak görür.",
       },
     ],
     relatedSlugs: ["psc"],
@@ -442,6 +497,11 @@ export const regionalRegulations: RegulationItem[] = [
       "Kuzey Afrika limanlarına giriş öncesi yerel gereklilikleri kontrol et",
       "Akdeniz ECA (2028 yürürlük) SOx gerekliliklerine hazırlan",
     ],
+    amendments: [
+      { year: "1997", description: "Mediterranean MoU kuruldu – Akdeniz kıyı devletleri arasında PSC koordinasyonu başladı" },
+      { year: "2000'ler", description: "IMO'nun uyumlaştırılmış PSC denetim kılavuzlarının benimsenmesi ve Paris MoU ile harmonizasyon çalışmalarının başlaması" },
+      { year: "2010'lar", description: "Med-INFO bilgi sisteminin ve IMO GISIS entegrasyonunun geliştirilmesi" },
+    ],
     keyArticles: [
       { id: "Bölüm 2", title: "Denetim Yükümlülükleri", summary: "Üye devletlerin denetim taahhütleri ve koordinasyon mekanizmaları." },
       { id: "Bölüm 3", title: "Denetim Prosedürleri", summary: "Denetim kapsamı, eksiklik kodları ve alıkoyma kriterleri." },
@@ -471,6 +531,16 @@ export const regionalRegulations: RegulationItem[] = [
         heading: "Kuzey Afrika–Doğu Akdeniz çeşitliliği ve Med-INFO",
         body:
           "Mediterranean MoU, idari kapasite ve düzenleme yaklaşımı bakımından çeşitli bir üyelik tabanına sahiptir: Kuzey Afrika ülkeleri (Cezayir, Mısır, Libya, Fas, Tunus), Doğu Akdeniz ülkeleri (İsrail, Ürdün, Lübnan, Türkiye) ile AB üyesi Malta ve Kıbrıs bir aradadır. Malta ve Kıbrıs'ın aynı zamanda Paris MoU üyesi olması, MoU'nun Paris standartları ve veri sistemleriyle uyumlu çalışmasını sağlar; denetim verileri Med-INFO bölgesel platformu üzerinden ve IMO'nun GISIS sistemiyle entegre biçimde paylaşılır. Bu çeşitlilik nedeniyle bölgeye girecek gemiler, ortak MoU standartlarının yanı sıra özellikle Kuzey Afrika limanlarındaki yerel ek gereklilikleri de önceden kontrol etmelidir. Paris MoU ile koordineli CIC kampanyaları, gemilerin tek bir hazırlıkla her iki rejime uyum sağlamasına olanak tanır.",
+      },
+      {
+        heading: "Çifte üyeliğin pekiştirici, tekrarlı olmayan etkisi",
+        body:
+          "Malta ve Kıbrıs gibi AB üyesi Akdeniz devletleri için hem Mediterranean MoU hem de Paris MoU/AB PSC Direktifi kapsamında yer almak, ilk bakışta gereksiz bir çakışma gibi görünebilir; ama pratikte bu iki katman birbirini tekrar etmez, birbirini güçlendirir. Paris MoU çerçevesi, THETIS altyapısı ve NIR risk profili üzerinden Avrupa'nın geniş PSC ağına erişim sağlar; Mediterranean MoU çerçevesi ise aynı gemiyi, Kuzey Afrika ve Doğu Akdeniz'deki AB dışı kıyı devletlerinin oluşturduğu ayrı bir denetim ve veri paylaşım ağına dahil eder. Bir gemi bu iki üye devletin limanına uğradığında, denetim sonucu her iki sisteme de yansır ve hem Avrupa hem de daha geniş Akdeniz havzasındaki denetçiler tarafından görülebilir hale gelir. Bu, tek bir denetimin etkisini iki bölgesel ağa yaymak anlamına gelir; standart altı bir gemi, yalnızca AB limanlarında değil, Cezayir'den Lübnan'a kadar tüm Akdeniz kıyısında da işaretlenmiş olur. Dolayısıyla dual üyelik, denetim yükünü azaltan ama kapsamı ve caydırıcılığı artıran bir mekanizma olarak işler.",
+      },
+      {
+        heading: "Med-INFO ve GISIS entegrasyonunun birlikte işleyişi",
+        body:
+          "Akdeniz'de hem Mediterranean MoU hem de Paris MoU sularında sefer yapan bir gemi için Med-INFO ve GISIS entegrasyonu somut bir pratik fayda sağlar. Med-INFO, Mediterranean MoU üyesi limanlardaki denetim sonuçlarını, eksiklikleri ve alıkoyma kayıtlarını bölgesel düzeyde toplar; GISIS ise IMO'nun küresel veri platformu olarak bu bilgiyi daha geniş bir uluslararası çerçeveye taşır ve diğer MoU'ların (Paris MoU'nun THETIS'i dahil) sistemleriyle dolaylı bir köprü oluşturur. Bu entegrasyon sayesinde, örneğin bir gemi önce bir Paris MoU limanında denetlenip bir eksiklik kaydettirdiğinde, bu bilgi teorik olarak GISIS üzerinden erişilebilir hale gelir ve daha sonra bir Mediterranean MoU limanına (örneğin Fas veya Mısır) uğradığında denetçi bu geçmişten habersiz kalmaz. Pratikte veri aktarımı her zaman anlık olmasa da, bu iki sistemin birlikte işleyişi, Akdeniz'in parçalı idari yapısına (AB üyeleri ile AB dışı kıyı devletleri) rağmen tek bir gemi geçmişinin büyük ölçüde tutarlı biçimde takip edilebilmesini sağlar.",
       },
     ],
     relatedSlugs: ["psc", "paris-mou"],
@@ -502,6 +572,11 @@ export const regionalRegulations: RegulationItem[] = [
       "Yerel düzenlemeleri araştır (ülkelere özgü ek gereklilikler olabilir)",
       "Panama bayraklı gemilerde kendi bayrak devleti denetim yükümlülüklerini de göz önünde bulundur",
     ],
+    amendments: [
+      { year: "1992", description: "Viña del Mar Agreement (Acuerdo Latinoamericano) kuruldu – Latin Amerika'nın ilk bölgesel PSC anlaşması" },
+      { year: "1990'lar", description: "IMO PSC Kılavuzlarının ve Paris MoU model prosedürlerinin bölgesel çerçeveye uyarlanması" },
+      { year: "2000'ler", description: "CIALA bilgi sisteminin ve IMO teknik yardım destekli denetçi eğitim programlarının genişletilmesi" },
+    ],
     keyArticles: [
       { id: "Bölüm 2", title: "Denetim Taahhütleri", summary: "Üye devletlerin denetim hedefleri ve koordinasyon mekanizmaları." },
       { id: "Bölüm 3", title: "Denetim Prosedürleri", summary: "Denetim kapsamı, eksiklik sınıflandırması ve alıkoyma kriterleri." },
@@ -531,6 +606,16 @@ export const regionalRegulations: RegulationItem[] = [
         heading: "CIALA, standardizasyon ve teknik yardım",
         body:
           "Latin Amerika'nın ilk PSC anlaşması olan Viña del Mar, Paris MoU modelinden esinlenerek kurulmuş ve 14 üye devletle Güney, Orta Amerika ve Karayipler'deki denetimleri koordine etmektedir. Denetim verileri CIALA (Acuerdo Latinoamericano bilgi merkezi) üzerinden paylaşılır ve alıkoyma kayıtları tüm üyelerce görülebilir. Bölgenin önceliği, üye devletler arasındaki denetim kapasitesi ve standardizasyonu güçlendirmektir; bu amaçla IMO teknik yardım programlarından yararlanılır, denetçi eğitimleri ve ortak prosedürler geliştirilir. Risk tabanlı hedefleme, eksiklik sınıflandırması ve alıkoyma kriterleri IMO PSC Kılavuzlarıyla uyumludur ve diğer MoU'larla koordineli CIC kampanyaları yürütülür. Bölgeye girecek gemiler, yerel düzenlemeleri kontrol etmeli, CIALA denetim trendlerini izlemeli ve CIC temalarına hazırlanmalıdır.",
+      },
+      {
+        heading: "Panama'nın çifte konumu: sicil ve bölge içi liman devleti",
+        body:
+          "Viña del Mar bölgesini diğer MoU'lardan ayıran en çarpıcı özellik, dünyanın en büyük gemi siciline sahip Panama'nın hem bir bayrak devleti hem de coğrafi olarak bu MoU'nun operasyon bölgesinin içinde yer alan bir liman devleti olmasıdır. Çoğu büyük açık sicilde (Panama, Marshall Adaları, Liberya gibi) bayrak devleti işlevi, geminin fiilen sefer ettiği bölgeden coğrafi olarak ayrıdır; ama Panama söz konusu olduğunda bu ayrım ortadan kalkar. Panama Kanalı'ndan geçen ve bölge limanlarına uğrayan Panama bayraklı bir gemi, aynı anda iki farklı denetim merceğinin altındadır: kendi bayrağının sertifikasyon ve denetim sorumluluğu ile Viña del Mar üyesi bir liman devletinin PSC denetimi — ve bu liman devleti çoğu zaman Panama'nın kendisi olabilir. Bu çifte konum, Panama'nın kendi sicilinin kalitesini korumak için ekstra bir motivasyona sahip olmasını sağlar, çünkü sicilindeki bir geminin kendi limanında alıkonması sicilin uluslararası itibarını doğrudan etkiler. Bölgedeki diğer üye devletler için ise bu durum, Panama bayraklı yoğun trafiğin getirdiği hem tanıdıklık hem de dikkatli takip gerekliliğini birlikte doğurur.",
+      },
+      {
+        heading: "Çeşitli bir üyelikte kapasite eşitleme çabası",
+        body:
+          "Viña del Mar Agreement'in 14 üye devleti, denetim kapasitesi ve kaynak düzeyi bakımından geniş bir yelpazeye yayılır: Brezilya ve Meksika gibi büyük ve nispeten gelişmiş denizcilik idarelerinden, daha sınırlı mali ve insan kaynağına sahip küçük Karayip ve Orta Amerika devletlerine kadar farklı kapasiteler bir aradadır. Bu farklılık, denetçi eğitim seviyesinde, denetim ekipmanına erişimde ve hatta risk profili hesaplamalarının ne kadar tutarlı uygulandığında eşitsizliklere yol açabilir. CIALA bu açığı iki şekilde kapatmaya çalışır: birincisi, bölgesel bilgi sistemi üzerinden tüm üyelerin aynı denetim verilerine ve eksiklik kodlarına erişmesini sağlayarak asgari bir ortak dil oluşturur; ikincisi, IMO'nun teknik işbirliği programları aracılığıyla daha deneyimli üye idarelerden denetçi eğitmenleri ve ortak kontrol listeleri sağlanır. Bu çaba doğrusal ve hızlı değildir — kapasite farkları tamamen kapanmış değildir — ama zamanla bölgedeki denetim kalitesini daha tutarlı bir çizgiye yaklaştırmayı hedefler; böylece bir geminin hangi üye limanına uğradığı, karşılaşacağı denetim titizliğini büyük ölçüde değiştirmemelidir.",
       },
     ],
     relatedSlugs: ["psc"],
