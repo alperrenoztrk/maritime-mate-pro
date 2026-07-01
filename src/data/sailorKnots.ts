@@ -3,8 +3,10 @@
 //
 // This list is intentionally focused on the knots most used in everyday
 // seamanship (the core set taught by the Turkish Coast Guard and sailing
-// schools): izbarço, kazık bağı, camadan, sancak (iskota), kropi/sekizli,
-// camadan voltası, koç boynuzuna volta and demir bağı.
+// schools): adi düğüm, izbarço, kazık bağı, camadan, sancak (iskota) ve
+// çifte sancak, kropi/sekizli, iki yarım anele, camadan voltası, koç
+// boynuzuna volta, barbarişka, dülger bağı, demir bağı, balıkçı bağı,
+// yoma bağı and margarita (çürük bağı).
 //
 // Each knot is now demonstrated with a real, verified knot-tying VIDEO
 // (`videoId`, a YouTube id) instead of a static diagram. The diagrams under
@@ -23,7 +25,7 @@ export interface KnotStep {
   description: string;
 }
 
-export type KnotCategory = "durdurucu" | "kasa" | "bag" | "ekleme";
+export type KnotCategory = "durdurucu" | "kasa" | "bag" | "ekleme" | "kisaltma";
 
 export interface SailorKnot {
   id: string;
@@ -49,8 +51,17 @@ export interface SailorKnot {
 
 const GROG = "Animated Knots by Grog (YouTube)";
 const BOATUS = "BoatUS (YouTube)";
+const HELPFUL_DIY = "Helpful DIY (YouTube)";
+const HOWCAST = "Howcast (YouTube)";
+const ART_OF_KNOT_TYING = "The Art of Knot Tying (YouTube)";
 
-export const KNOT_CATEGORY_ORDER: KnotCategory[] = ["durdurucu", "kasa", "bag", "ekleme"];
+export const KNOT_CATEGORY_ORDER: KnotCategory[] = [
+  "durdurucu",
+  "kasa",
+  "bag",
+  "ekleme",
+  "kisaltma",
+];
 
 export const KNOT_CATEGORY_LABELS: Record<
   KnotCategory,
@@ -72,10 +83,32 @@ export const KNOT_CATEGORY_LABELS: Record<
     title: "Eklemeler",
     subtitle: "İki ayrı halatı uç uca birleştirir",
   },
+  kisaltma: {
+    title: "Kısaltmalar",
+    subtitle: "Halatı kesmeden kısaltır veya yıpranmış kısmı yükten kurtarır",
+  },
 };
 
 export const SAILOR_KNOTS: SailorKnot[] = [
   // ── Durdurucu ve bağlama düğümleri ───────────────────────────────────────
+  {
+    id: "overhand-knot",
+    name: "Adi Düğüm",
+    nameEn: "Overhand Knot",
+    aka: ["Yarım Düğüm", "Kör Düğüm"],
+    category: "durdurucu",
+    use: "Tüm denizci bağlarının temelini oluşturan en basit durdurucu düğümdür. Çımanın makara/blok gözünden kaçmasını ve halatın fitillerine ayrılıp dağılmasını geçici olarak önler.",
+    strengthLoss: "~%60 dayanım kaybı",
+    videoId: "I0ShGbIR0ZI",
+    videoCredit: GROG,
+    image: "/knots/overhand-knot.jpg",
+    steps: [
+      { title: "Kasa oluştur", description: "Çımayı bedenin üzerinden geçirerek küçük bir kasa (göz) oluşturun." },
+      { title: "Çımayı içinden geçir", description: "Çımayı oluşan kasanın içinden geçirin." },
+      { title: "Çekip sıkın", description: "Çımayı ve bedeni ters yönlerde çekerek düğümü sıkın." },
+    ],
+    tip: "Yük altında çok sıkışır ve zor çözülür; kalıcı durdurucu gerektiğinde sekizli (kropi) düğümü tercih edin. Buna rağmen birçok bağın yapı taşı olduğu için ilk öğrenilmesi gereken düğümdür.",
+  },
   {
     id: "figure-eight",
     name: "Sekizli Düğüm",
@@ -154,6 +187,24 @@ export const SAILOR_KNOTS: SailorKnot[] = [
     tip: "Tek başına güvenilir değildir; çımalar serbest kalırsa veya yük yön değiştirirse çözülebilir. Kritik bağlamada ek emniyet voltasıyla destekleyin.",
   },
   {
+    id: "two-half-hitches",
+    name: "İki Yarım Anele",
+    nameEn: "Two Half Hitches",
+    aka: ["Yarım Anele Bağı"],
+    category: "bag",
+    use: "Halatı bir baraya, ringe, babaya veya ağaca hızlıca bağlar. Kendi bedeni üzerine atılan iki yarım anele, yük bindikçe sıkışarak tutan kayar bir kasa oluşturur.",
+    videoId: "HjNr7i-uA0M",
+    videoCredit: HELPFUL_DIY,
+    image: "/knots/two-half-hitches.jpg",
+    steps: [
+      { title: "Halatı nesneden geçir", description: "Çımayı baranın/ringin etrafından veya içinden geçirin." },
+      { title: "Birinci yarım anele", description: "Çımayı beden halatının etrafından dolayıp oluşan gözden geçirerek ilk yarım aneleyi atın." },
+      { title: "İkinci yarım anele", description: "Aynı yönde ikinci yarım aneleyi atın; beden üzerinde bir kazık bağı oluşur." },
+      { title: "Kaydırıp sıkın", description: "Aneleleri nesneye doğru kaydırıp bedeni çekerek sıkın." },
+    ],
+    tip: "İki anele de mutlaka AYNI yönde atılmalıdır; ters yönde atılırsa zayıf ve güvensiz olur. Ağır veya sürekli yükte önce bir tam tur ekleyin — bu sizi camadan voltasına götürür.",
+  },
+  {
     id: "round-turn-two-half-hitches",
     name: "Camadan Voltası",
     nameEn: "Round Turn & Two Half Hitches",
@@ -185,6 +236,41 @@ export const SAILOR_KNOTS: SailorKnot[] = [
       { title: "Kilit volta ile sabitle", description: "Son sarımda ters bir kasa (kilit volta) atarak çımayı kilitleyin; çıma boynuzdan sarkmasın." },
     ],
     tip: "Tek bir kilit volta yeterlidir; fazlası halatı yük altında çözmeyi zorlaştırır. İlk turu daima uzak boynuzdan başlatın.",
+  },
+  {
+    id: "rolling-hitch",
+    name: "Barbarişka Bağı",
+    nameEn: "Rolling Hitch",
+    aka: ["Stoper Bağı"],
+    category: "bag",
+    use: "Bir halatı, çekiş yönü neredeyse paralelken başka bir gergin halata veya baraya kaymadan bağlar. Irgatta/vinçte sıkışan yüklü bir halatın yükünü almak (stoper koymak) için gemide standart bağdır.",
+    videoId: "f4mHoUNHoO0",
+    videoCredit: GROG,
+    image: "/knots/rolling-hitch.jpg",
+    steps: [
+      { title: "Yük tarafına iki volta", description: "Çımayı ana halatın/baranın etrafına, yükün geleceği tarafa doğru iki kez dolayın; her volta bir öncekinin üzerine binsin." },
+      { title: "Çaprazla ve karşıya geç", description: "Çımayı iki voltanın üzerinden çaprazlayarak yükün ters tarafına geçirin." },
+      { title: "Yarım anele ile kilitle", description: "Kazık bağında olduğu gibi bir yarım anele atıp çımayı altından geçirin ve sıkın." },
+      { title: "Yükü yavaşça bindir", description: "Yükü bindirmeden önce voltaların düzgün oturduğunu kontrol edin; bağ paralel çekişte kaymadan tutar." },
+    ],
+    tip: "İki voltayı daima yükün geleceği tarafa atın — bağın kaymamasını sağlayan bu voltalardır. Modern kaygan (polyester/dyneema) halatlarda bir volta daha ekleyin.",
+  },
+  {
+    id: "timber-hitch",
+    name: "Dülger Bağı",
+    nameEn: "Timber Hitch",
+    category: "bag",
+    use: "Seren, bumba, kütük gibi silindirik cisimleri sarıp çekmek, yedeklemek veya kaldırmak için kullanılır. Yük altında sıkıca tutar, yük kalkınca kendiliğinden gevşeyip kolayca çözülür.",
+    videoId: "WsCU86SDfb4",
+    videoCredit: GROG,
+    image: "/knots/timber-hitch.jpg",
+    steps: [
+      { title: "Cismi dola", description: "Halatı çekilecek cismin (seren, kütük) etrafından dolayın." },
+      { title: "Bedenin etrafından geçir", description: "Çımayı beden halatının etrafından dolayıp geri getirin." },
+      { title: "Kendi voltasına sar", description: "Çımayı kendi voltasının içine, cisim boyunca 3-4 kez sarıp kıstırın." },
+      { title: "Yükleyip kontrol et", description: "Bedeni çekin; sarımlar cisme yapışarak sıkışır ve bağ kilitlenir." },
+    ],
+    tip: "Sarımlar yük binince sıkıştığı için bağın tutması sürekli gerginliğe bağlıdır. Uzun bir cismi yedeklerken çekilen uca ayrıca bir yarım anele atın (dülger + yarım anele).",
   },
   {
     id: "anchor-bend",
@@ -222,6 +308,78 @@ export const SAILOR_KNOTS: SailorKnot[] = [
       { title: "Kendi altına kıstırıp çek", description: "Çımayı kendi beden halatının altına kıstırıp çekin." },
     ],
     tip: "İki çıma AYNI tarafta çıkmalı; ters taraflarda çıkarsa düğüm zayıf 'sol kıstırma' olur ve kayabilir. Yük altında uçları gergin tutun.",
+  },
+  {
+    id: "double-sheet-bend",
+    name: "Çifte Sancak Bağı",
+    nameEn: "Double Sheet Bend",
+    aka: ["Çifte İskota Bağı"],
+    category: "ekleme",
+    use: "Çapları çok farklı, ıslak veya kaygan iki halatı emniyetle ekler. Sancak bağının çift voltalı hâlidir; ikinci volta bağın kayma ihtimalini büyük ölçüde azaltır.",
+    videoId: "9XkB3Wk-57o",
+    videoCredit: ART_OF_KNOT_TYING,
+    image: "/knots/double-sheet-bend.jpg",
+    steps: [
+      { title: "Kalın halatla gözcük", description: "Kalın halatla bir gözcük (bight) oluşturun." },
+      { title: "İnce halatı geçir ve dola", description: "İnce halatın çımasını gözcüğün içinden geçirip iki bacağın arkasından dolayın ve kendi bedeninin altına kıstırın (tek sancak bağı)." },
+      { title: "İkinci voltayı at", description: "Çımayla gözcüğün etrafına aynı yönde bir volta daha atıp yine kendi bedeninin altından geçirin." },
+      { title: "Çekip sıkın", description: "İnce halatın bedenini ve çımasını çekerek her iki voltayı da oturtup sıkın." },
+    ],
+    tip: "Tek sancak bağında olduğu gibi iki çıma AYNI tarafta çıkmalıdır. Halatlar arasındaki çap farkı büyüdükçe veya halatlar ıslak/kayganken çifte volta şarttır.",
+  },
+  {
+    id: "fishermans-knot",
+    name: "Balıkçı Bağı",
+    nameEn: "Fisherman's Knot",
+    category: "ekleme",
+    use: "İki ince halatı, savloyu veya gırcalayı uç uca ekler. Her çıma diğer halatın bedeni üzerine bir adi düğüm atar; yük binince iki düğüm birbirine kenetlenir. Islak ve ince halatta güvenilirdir.",
+    videoId: "TP-8YjOilKA",
+    videoCredit: HOWCAST,
+    image: "/knots/fishermans-knot.jpg",
+    steps: [
+      { title: "Halatları yan yana koy", description: "İki halatın çımalarını birbirine bakacak şekilde yan yana serin." },
+      { title: "Birinci adi düğüm", description: "Birinci halatın çımasıyla, ikinci halatın bedeni üzerine bir adi düğüm atın." },
+      { title: "İkinci adi düğüm", description: "İkinci halatın çımasıyla, birinci halatın bedeni üzerine ters yönde bir adi düğüm atın." },
+      { title: "Bedenleri çekip kenetle", description: "Her iki bedeni ters yönde çekin; iki düğüm kayarak birbirine yaslanır ve kilitlenir." },
+    ],
+    tip: "İki düğüm birbirine tam oturmalı, aralarında boşluk kalmamalıdır. Çok kaygan halatta her adi düğüm yerine çifte düğüm atarak 'çifte balıkçı bağı' yapın.",
+  },
+  {
+    id: "carrick-bend",
+    name: "Yoma Bağı",
+    nameEn: "Carrick Bend",
+    category: "ekleme",
+    use: "Palamar, yedek halatı gibi iki kalın halatı (yomayı) uç uca ekler. Büyük yük altında sıkışsa bile çözülebilen ve ıslakken güvenilirliğini koruyan klasik gemici eklemesidir.",
+    videoId: "GJdJKuQJuYE",
+    videoCredit: GROG,
+    image: "/knots/carrick-bend.jpg",
+    steps: [
+      { title: "Birinci halatla kasa", description: "Birinci halatın çımasıyla, çıma bedenin altında kalacak şekilde bir kasa oluşturun." },
+      { title: "İkinci çımayı örgüye başlat", description: "İkinci halatın çımasını kasanın altından sokup birinci halatın bedeninin üzerinden, çımasının altından geçirin." },
+      { title: "Alt-üst geçişleri tamamla", description: "Çımayı kasanın üzerinden, kendi bedeninin altından ve kasanın diğer kenarının üzerinden geçirerek örgü desenini tamamlayın." },
+      { title: "Çekip oturt", description: "Her iki bedeni çekin; simetrik örgü deseni kendini toplayarak kilitlenir." },
+    ],
+    tip: "Doğru yoma bağında iki çıma birbirine göre çapraz (zıt köşelerde) çıkar. Yük binince düğüm şekil değiştirip bambaşka görünür — bu normaldir, bağ böyle kilitlenir.",
+  },
+
+  // ── Kısaltmalar (shortenings) ─────────────────────────────────────────────
+  {
+    id: "sheepshank",
+    name: "Margarita Bağı",
+    nameEn: "Sheepshank",
+    aka: ["Çürük Bağı"],
+    category: "kisaltma",
+    use: "Uzun bir halatı kesmeden geçici olarak kısaltır veya halatın yıpranmış (çürük) kısmını yük taşımayan orta kata alarak devre dışı bırakır.",
+    videoId: "lopGPwY-sno",
+    videoCredit: GROG,
+    image: "/knots/sheepshank.jpg",
+    steps: [
+      { title: "Halatı üç kat katla", description: "Halatın kısaltılacak kısmını 'S/Z' şeklinde üç kat olacak biçimde katlayın; iki uçta birer gözcük oluşur." },
+      { title: "Birinci gözcüğe yarım anele", description: "Bedenin bir tarafıyla bir yarım anele atıp yakındaki gözcüğün üzerine geçirin ve sıkın." },
+      { title: "İkinci gözcüğe yarım anele", description: "Diğer taraftaki bedenle de ikinci gözcüğün üzerine bir yarım anele atıp sıkın." },
+      { title: "Gerginliği ver", description: "Her iki bedeni çekerek bağı yük altına alın; katlar gerginken bağ formunu korur." },
+    ],
+    tip: "Margarita yalnızca SÜREKLİ gerginlik altında güvenlidir; yük boşalırsa dağılabilir. Çürük kısmı devre dışı bırakırken yıpranmış bölümün ortadaki (yüksüz) katta kalmasına dikkat edin.",
   },
 ];
 
