@@ -123,7 +123,7 @@ const content11: ContentMap = {
             "Seri bağlamada debi tüm borularda aynıdır; toplam kayıp her segmentin kayıplarının toplamıdır. Paralel bağlamada her kol üzerindeki basınç kaybı aynıdır; toplam debi kolların debilerinin toplamıdır (düşük dirençli kol daha çok debi taşır).",
           ],
           formula: {
-            expression: "Seri: Q=sabit, hf_top=Σhfᵢ ;  Paralel: Δh=sabit, Q_top=ΣQᵢ",
+            expression: "Seri: Q=sabit, hftop=Σhfᵢ ;  Paralel: Δh=sabit, Qtop=ΣQᵢ",
           },
         },
       ],
@@ -165,8 +165,8 @@ const content11: ContentMap = {
             "Sistem eğrisi, statik yük (yükseklik + basınç farkı) ile debinin karesiyle artan dinamik kayıplardan oluşur. Pompa eğrisi (H-Q) ile çakıştırıldığında kesişim noktası, sistemin fiilen çalışacağı debi ve yükü verir.",
           ],
           formula: {
-            expression: "H_sistem = H_statik + k·Q²",
-            variables: ["H_statik: yükseklik/basınç farkı", "k·Q²: sürtünme + yerel kayıplar"],
+            expression: "Hsistem = Hstatik + k·Q²",
+            variables: ["Hstatik: yükseklik/basınç farkı", "k·Q²: sürtünme + yerel kayıplar"],
           },
         },
         {
@@ -178,7 +178,7 @@ const content11: ContentMap = {
       ],
       keyPoints: [
         "Çalışma noktası = pompa eğrisi ∩ sistem eğrisi.",
-        "H_sistem = H_statik + k·Q².",
+        "Hsistem = Hstatik + k·Q².",
         "Vana kısma debiyi düşürür; VFD ile verimli kontrol sağlanır.",
       ],
     },
@@ -220,7 +220,7 @@ const content11: ContentMap = {
             "Malzeme: deniz suyu için bronz/CuNi; yakıt/yağ için uygun keçe ve sızdırmazlık.",
           ],
           formula: {
-            expression: "P_şaft = ρ·g·Q·H / η",
+            expression: "Pşaft = ρ·g·Q·H / η",
             variables: ["P: güç (W)", "Q: debi", "H: basma yükü", "η: verim"],
           },
         },
@@ -241,7 +241,7 @@ const content11: ContentMap = {
             "Paralel çalıştırmada aynı basma yükünde debiler toplanır; yüksek debi gerektiren sistemler için uygundur (ancak sistem eğrisi dikse debi artışı sınırlıdır). Seri çalıştırmada aynı debide basma yükleri toplanır; yüksek basınç gerektiren sistemler için uygundur.",
           ],
           formula: {
-            expression: "Paralel: Q_top = ΣQ (H ortak) ;  Seri: H_top = ΣH (Q ortak)",
+            expression: "Paralel: Qtop = ΣQ (H ortak) ;  Seri: Htop = ΣH (Q ortak)",
           },
         },
       ],
@@ -388,18 +388,18 @@ const content11: ContentMap = {
         {
           heading: "Eşdeğer (Von Mises) Gerilme",
           paragraphs: [
-            "Normal (σ) ve kayma (τ) gerilmelerinin bir arada bulunduğu düzlem gerilme durumunda eşdeğer gerilme hesaplanır ve akma sınırıyla karşılaştırılır. σ_vm < σ_akma / SF olmalıdır.",
+            "Normal (σ) ve kayma (τ) gerilmelerinin bir arada bulunduğu düzlem gerilme durumunda eşdeğer gerilme hesaplanır ve akma sınırıyla karşılaştırılır. σvm < σakma / SF olmalıdır.",
           ],
           formula: {
-            expression: "σ_vm = √(σ² + 3τ²)  (düzlem gerilme)",
-            variables: ["σ: normal gerilme", "τ: kayma gerilmesi", "σ_vm: eşdeğer gerilme"],
+            expression: "σvm = √(σ² + 3τ²)  (düzlem gerilme)",
+            variables: ["σ: normal gerilme", "τ: kayma gerilmesi", "σvm: eşdeğer gerilme"],
           },
         },
       ],
       keyPoints: [
         "Bileşik yükte akma riski Von Mises ile değerlendirilir.",
-        "σ_vm = √(σ² + 3τ²).",
-        "σ_vm akma sınırının güvenli kesri altında tutulur.",
+        "σvm = √(σ² + 3τ²).",
+        "σvm akma sınırının güvenli kesri altında tutulur.",
       ],
     },
     "Güvenlik katsayısı ve emniyet gerilmesi": {
@@ -412,7 +412,7 @@ const content11: ContentMap = {
             "Emniyet gerilmesi, malzeme akma (veya kopma/yorulma) sınırının güvenlik katsayısına bölünmesiyle bulunur. SF; yük tipi (statik/dinamik), malzeme süneklik durumu, sonuçların ciddiyeti ve sınıf kurallarına göre seçilir.",
           ],
           formula: {
-            expression: "σ_emniyet = σ_akma / SF  →  SF = σ_akma / σ_çalışma",
+            expression: "σemniyet = σakma / SF  →  SF = σakma / σçalışma",
           },
         },
       ],
@@ -525,7 +525,7 @@ const content11: ContentMap = {
             "Helisel dişlilerde dişler eğimlidir; bu, kademeli temas sayesinde düz dişliye göre daha sessiz ve yüksek yük taşıma sağlar (ancak eksenel itki oluşturur). Redüksiyon oranı, motor devrini pervanenin verimli çalıştığı düşük devire indirir. Çift girişli kutular, iki makineyi tek pervaneye bağlayabilir.",
           ],
           formula: {
-            expression: "i = n_giriş / n_çıkış = z_çıkış / z_giriş",
+            expression: "i = ngiriş / nçıkış = zçıkış / zgiriş",
             variables: ["i: redüksiyon oranı", "z: diş sayısı", "n: devir"],
           },
         },
@@ -533,7 +533,7 @@ const content11: ContentMap = {
       keyPoints: [
         "Redüktör yüksek motor devrini düşük pervane devrine indirir.",
         "Helisel dişli sessiz ve yüksek yük kapasitelidir (eksenel itki üretir).",
-        "Redüksiyon oranı i = z_çıkış/z_giriş.",
+        "Redüksiyon oranı i = zçıkış/zgiriş.",
       ],
     },
     "Kayış ve zincir tahrik sistemleri": {
@@ -604,8 +604,8 @@ const content11: ContentMap = {
             "S-N (gerilme-çevrim) eğrisi, bir gerilme genliğinde kaç çevrimde kırılma olacağını gösterir. Çeliklerde belirli bir genliğin altında (yorulma sınırı) sonsuz ömür mümkündür. Kesit değişimleri gerilmeyi Kt (stres konsantrasyon faktörü) kadar büyütür; keskin köşeler yerine kavisli geçişler (fillet) kullanılarak azaltılır.",
           ],
           formula: {
-            expression: "σ_max = Kt · σ_nominal",
-            variables: ["Kt: gerilme yoğunlaşma faktörü", "σ_nominal: ortalama kesit gerilmesi"],
+            expression: "σmax = Kt · σnominal",
+            variables: ["Kt: gerilme yoğunlaşma faktörü", "σnominal: ortalama kesit gerilmesi"],
           },
         },
       ],
@@ -659,7 +659,7 @@ const content11: ContentMap = {
             "Dengesizlik (unbalance) ve yatak esnekliği şaftı enine titreştirir. Kritik hızda rezonans nedeniyle sehim büyür; bu nedenle çalışma devri kritik hızdan uzak tutulur. Yatak konumu/sayısı ve şaft rijitliği kritik hızı belirler.",
           ],
           formula: {
-            expression: "n_kritik ∝ √(k/m)",
+            expression: "nkritik ∝ √(k/m)",
             variables: ["k: şaft/yatak rijitliği", "m: kütle"],
           },
         },

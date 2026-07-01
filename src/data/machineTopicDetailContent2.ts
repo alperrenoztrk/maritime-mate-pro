@@ -21,7 +21,7 @@ const content2: ContentMap = {
       title: "Hidrostatik Basınç Denklemleri",
       introduction: "Durgun bir akışkanda basınç yalnızca derinliğe bağlıdır. Hidrostatik basınç, gemi yapısı ve tankların tasarımında temel hesap aracıdır.",
       sections: [
-        { heading: "Temel Denklem", paragraphs: ["Durgun akışkanda herhangi bir derinlikteki basınç, yüzey basıncına o derinlikteki sıvı sütununun ağırlığının eklenmesiyle bulunur."], formula: { expression: "P = P₀ + ρgh", variables: ["P₀: Yüzey basıncı (Pa)", "ρ: Akışkan yoğunluğu (kg/m³)", "g: Yerçekimi ivmesi (9.81 m/s²)", "h: Derinlik (m)"] }, example: { problem: "Deniz suyu yoğunluğu 1025 kg/m³ ise 15 m derinlikteki basınç nedir?", steps: ["P = P_atm + ρgh", "P = 101325 + 1025 × 9.81 × 15", "P = 101325 + 150929 = 252254 Pa ≈ 2.52 bar"], result: "15 m derinlikteki mutlak basınç yaklaşık 2.52 bar'dır." } }
+        { heading: "Temel Denklem", paragraphs: ["Durgun akışkanda herhangi bir derinlikteki basınç, yüzey basıncına o derinlikteki sıvı sütununun ağırlığının eklenmesiyle bulunur."], formula: { expression: "P = P₀ + ρgh", variables: ["P₀: Yüzey basıncı (Pa)", "ρ: Akışkan yoğunluğu (kg/m³)", "g: Yerçekimi ivmesi (9.81 m/s²)", "h: Derinlik (m)"] }, example: { problem: "Deniz suyu yoğunluğu 1025 kg/m³ ise 15 m derinlikteki basınç nedir?", steps: ["P = Patm + ρgh", "P = 101325 + 1025 × 9.81 × 15", "P = 101325 + 150929 = 252254 Pa ≈ 2.52 bar"], result: "15 m derinlikteki mutlak basınç yaklaşık 2.52 bar'dır." } }
       ],
       keyPoints: ["Basınç her yönde eşit olarak etki eder (Pascal prensibi).", "Deniz suyunda her 10 m derinlikte yaklaşık 1 bar basınç artar.", "Tank basınç hesaplarında sıvının yoğunluğu kritik parametredir."]
     },
@@ -29,7 +29,7 @@ const content2: ContentMap = {
       title: "Mutlak ve Manometrik Basınç",
       introduction: "Basınç ölçümlerinde referans noktası kritik öneme sahiptir. Makine dairesindeki göstergeler genellikle manometrik basıncı gösterir.",
       sections: [
-        { heading: "Tanımlar", paragraphs: ["Mutlak basınç sıfır basınca (tam vakum) göre ölçülür. Manometrik basınç ise atmosfer basıncına göre ölçülür. Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır."], formula: { expression: "P_mutlak = P_manometrik + P_atm\nP_vakum = P_atm − P_mutlak", variables: [] } }
+        { heading: "Tanımlar", paragraphs: ["Mutlak basınç sıfır basınca (tam vakum) göre ölçülür. Manometrik basınç ise atmosfer basıncına göre ölçülür. Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır."], formula: { expression: "Pmutlak = Pmanometrik + Patm\nPvakum = Patm − Pmutlak", variables: [] } }
       ],
       keyPoints: ["Termodinamik hesaplarda mutlak basınç kullanılır.", "Basınç göstergeleri manometrik basıncı gösterir.", "Kondenser ve evaporatör vakum altında çalışır."]
     },
@@ -45,7 +45,7 @@ const content2: ContentMap = {
       title: "Düz ve Eğri Yüzeylere Etkiyen Basınç Kuvveti",
       introduction: "Tank duvarları, kapaklar ve gemi tekne kaplaması gibi düz ve eğri yüzeylere etki eden hidrostatik kuvvetlerin hesabı yapısal tasarımda temel gerekliliktir.",
       sections: [
-        { heading: "Düz Yüzeye Etki Eden Kuvvet", paragraphs: ["Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile yüzey alanının çarpımına eşittir."], formula: { expression: "F = ρg·h_c·A", variables: ["h_c: Yüzey ağırlık merkezinin sıvı yüzeyinden derinliği (m)", "A: Yüzey alanı (m²)"] }, example: { problem: "Bir balast tankının dikdörtgen kapağı 1.2 m × 0.8 m boyutundadır ve merkezinin derinliği 3 m'dir. Deniz suyu basınç kuvvetini bulunuz.", steps: ["A = 1.2 × 0.8 = 0.96 m²", "F = 1025 × 9.81 × 3 × 0.96", "F = 28 970 N ≈ 29 kN"], result: "Kapağa etkiyen basınç kuvveti yaklaşık 29 kN'dur." } }
+        { heading: "Düz Yüzeye Etki Eden Kuvvet", paragraphs: ["Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile yüzey alanının çarpımına eşittir."], formula: { expression: "F = ρg·hc·A", variables: ["hc: Yüzey ağırlık merkezinin sıvı yüzeyinden derinliği (m)", "A: Yüzey alanı (m²)"] }, example: { problem: "Bir balast tankının dikdörtgen kapağı 1.2 m × 0.8 m boyutundadır ve merkezinin derinliği 3 m'dir. Deniz suyu basınç kuvvetini bulunuz.", steps: ["A = 1.2 × 0.8 = 0.96 m²", "F = 1025 × 9.81 × 3 × 0.96", "F = 28 970 N ≈ 29 kN"], result: "Kapağa etkiyen basınç kuvveti yaklaşık 29 kN'dur." } }
       ],
       keyPoints: ["Kuvvet uygulama noktası (basınç merkezi) ağırlık merkezinin altındadır.", "Derinlik arttıkça kuvvet doğrusal olarak artar.", "Tank yapısal mukavemet hesaplarında bu kuvvetler belirleyicidir."]
     },
@@ -53,7 +53,7 @@ const content2: ContentMap = {
       title: "Yüzdürme Kuvveti (Arşimet Prensibi)",
       introduction: "Bir cisim akışkana batırıldığında, cismin yerinden ettiği akışkanın ağırlığına eşit büyüklükte yukarı yönlü bir kuvvet etkir.",
       sections: [
-        { heading: "Arşimet Prensibi", paragraphs: ["Yüzdürme kuvveti (buoyancy), cismin batık hacmi ile akışkan yoğunluğunun çarpımına eşittir."], formula: { expression: "F_b = ρ_akışkan × g × V_batık", variables: ["F_b: Yüzdürme kuvveti (N)", "V_batık: Batık hacim (m³)"] } }
+        { heading: "Arşimet Prensibi", paragraphs: ["Yüzdürme kuvveti (buoyancy), cismin batık hacmi ile akışkan yoğunluğunun çarpımına eşittir."], formula: { expression: "Fb = ρakışkan × g × Vbatık", variables: ["Fb: Yüzdürme kuvveti (N)", "Vbatık: Batık hacim (m³)"] } }
       ],
       keyPoints: ["Geminin yüzmesi Arşimet prensibine dayanır.", "Deplasman = yerinden edilen su ağırlığı.", "Yoğunluğu sıvıdan küçük olan cisim yüzer."]
     },
@@ -101,7 +101,7 @@ const content2: ContentMap = {
       title: "Darcy–Weisbach Denklemi",
       introduction: "Boru akışındaki sürtünme kayıplarını hesaplamak için kullanılan temel denklemdir. Gemi boru sistemi tasarımında pompa basınç yüksekliği hesaplarının ayrılmaz parçasıdır.",
       sections: [
-        { heading: "Denklem", paragraphs: ["Sürtünme basınç kaybı, boru uzunluğu, çapı, akışkan hızı ve sürtünme katsayısına bağlıdır."], formula: { expression: "h_f = f × (L/D) × (V²/2g)", variables: ["h_f: Sürtünme kayıp yüksekliği (m)", "f: Darcy sürtünme katsayısı (Moody diyagramından)", "L: Boru uzunluğu (m)", "D: Boru iç çapı (m)"] }, example: { problem: "İç çapı 100 mm, uzunluğu 50 m olan bir boruda su 3 m/s hızla akıyorsa ve f = 0.025 ise sürtünme kaybını bulunuz.", steps: ["h_f = f × (L/D) × (V²/2g)", "h_f = 0.025 × (50/0.1) × (3²/(2×9.81))", "h_f = 0.025 × 500 × 0.459 = 5.74 m"], result: "Sürtünme kaybı 5.74 m su sütunudur." } }
+        { heading: "Denklem", paragraphs: ["Sürtünme basınç kaybı, boru uzunluğu, çapı, akışkan hızı ve sürtünme katsayısına bağlıdır."], formula: { expression: "hf = f × (L/D) × (V²/2g)", variables: ["hf: Sürtünme kayıp yüksekliği (m)", "f: Darcy sürtünme katsayısı (Moody diyagramından)", "L: Boru uzunluğu (m)", "D: Boru iç çapı (m)"] }, example: { problem: "İç çapı 100 mm, uzunluğu 50 m olan bir boruda su 3 m/s hızla akıyorsa ve f = 0.025 ise sürtünme kaybını bulunuz.", steps: ["hf = f × (L/D) × (V²/2g)", "hf = 0.025 × (50/0.1) × (3²/(2×9.81))", "hf = 0.025 × 500 × 0.459 = 5.74 m"], result: "Sürtünme kaybı 5.74 m su sütunudur." } }
       ],
       keyPoints: ["f değeri Re sayısı ve boru pürüzlülüğüne bağlıdır.", "Moody diyagramından veya Colebrook denkleminden bulunur.", "Uzun boru hatlarında sürtünme kaybı baskın kayıp kaynağıdır."]
     },
@@ -118,16 +118,16 @@ const content2: ContentMap = {
       title: "NPSH Kavramı ve Kavitasyon",
       introduction: "NPSH (Net Positive Suction Head), pompa emme tarafında yeterli basıncın olup olmadığını belirleyen kritik parametredir. Yetersiz NPSH kavitasyona yol açar.",
       sections: [
-        { heading: "NPSH Tanımları", paragraphs: ["NPSH_available: Sistemin emme noktasında sağlayabildiği basınç yüksekliği. NPSH_required: Pompanın kavitasyonsuz çalışması için ihtiyaç duyduğu minimum basınç yüksekliği (üretici katalogunda belirtilir).", "Güvenli çalışma koşulu: NPSH_a > NPSH_r (genellikle en az 0.5 m fark)"], formula: { expression: "NPSH_a = (P_atm − P_buhar) / ρg + h_statik − h_sürtünme", variables: ["P_buhar: Akışkanın buharlaşma basıncı", "h_statik: Emme statik yüksekliği (pozitif: pompa altında)", "h_sürtünme: Emme hattı sürtünme kaybı"] } },
+        { heading: "NPSH Tanımları", paragraphs: ["NPSHavailable: Sistemin emme noktasında sağlayabildiği basınç yüksekliği. NPSHrequired: Pompanın kavitasyonsuz çalışması için ihtiyaç duyduğu minimum basınç yüksekliği (üretici katalogunda belirtilir).", "Güvenli çalışma koşulu: NPSHa > NPSHr (genellikle en az 0.5 m fark)"], formula: { expression: "NPSHa = (Patm − Pbuhar) / ρg + hstatik − hsürtünme", variables: ["Pbuhar: Akışkanın buharlaşma basıncı", "hstatik: Emme statik yüksekliği (pozitif: pompa altında)", "hsürtünme: Emme hattı sürtünme kaybı"] } },
         { heading: "Kavitasyon", paragraphs: ["Kavitasyon, akışkan basıncının buharlaşma basıncının altına düşmesiyle oluşan buhar kabarcıklarının yüksek basınç bölgesinde çökerek malzeme hasarı, gürültü ve performans düşüşü yaratmasıdır. Çark kanatlarında oyuklanma (pitting) ve erozyon oluşturur."] }
       ],
-      keyPoints: ["Kavitasyon pompa ömrünü ciddi oranda kısaltır.", "Sıcak akışkanlarda buharlaşma basıncı yüksek olduğundan kavitasyon riski artar.", "Emme hattını kısa ve büyük çaplı tutmak NPSH_a'yı artırır."]
+      keyPoints: ["Kavitasyon pompa ömrünü ciddi oranda kısaltır.", "Sıcak akışkanlarda buharlaşma basıncı yüksek olduğundan kavitasyon riski artar.", "Emme hattını kısa ve büyük çaplı tutmak NPSHa'yı artırır."]
     },
     "Pompa karakteristik eğrileri (H-Q)": {
       title: "Pompa Karakteristik Eğrileri (H-Q)",
       introduction: "Pompa karakteristik eğrileri, pompanın farklı çalışma koşullarındaki performansını gösteren grafiklerdir.",
       sections: [
-        { heading: "Temel Eğriler", paragraphs: ["H-Q eğrisi: Basma yüksekliği-debi ilişkisi. Debi arttıkça basma yüksekliği düşer.", "Verim eğrisi: Her debide pompa verimi. Maksimum verim noktasının (BEP – Best Efficiency Point) yakınında çalışılmalıdır.", "Güç eğrisi: Pompa mil gücü-debi ilişkisi.", "NPSH_r eğrisi: Gereken emme basıncı-debi ilişkisi."] },
+        { heading: "Temel Eğriler", paragraphs: ["H-Q eğrisi: Basma yüksekliği-debi ilişkisi. Debi arttıkça basma yüksekliği düşer.", "Verim eğrisi: Her debide pompa verimi. Maksimum verim noktasının (BEP – Best Efficiency Point) yakınında çalışılmalıdır.", "Güç eğrisi: Pompa mil gücü-debi ilişkisi.", "NPSHr eğrisi: Gereken emme basıncı-debi ilişkisi."] },
         { heading: "Çalışma Noktası", paragraphs: ["Pompa H-Q eğrisi ile sistem eğrisinin kesiştiği nokta çalışma noktasıdır. Sistem eğrisi statik yükseklik ve sürtünme kayıplarının toplamından oluşur.", "Çalışma noktası BEP'ten uzaklaştıkça verim düşer, titreşim ve aşınma artar."] }
       ],
       keyPoints: ["Pompa her zaman BEP yakınında çalıştırılmalıdır.", "Vana kısma ile debi kontrolü enerji kaybına neden olur; VFD tercih edilir.", "Paralel pompada debi iki katına çıkmaz; eğri geometrisine bağlıdır."]
@@ -362,7 +362,7 @@ const content2: ContentMap = {
       title: "COP (Performans Katsayısı) Hesabı",
       introduction: "COP, soğutma sisteminin verimliliğini gösteren temel parametredir. Elde edilen soğutma etkisinin harcanan enerjiye oranıdır.",
       sections: [
-        { heading: "COP Hesabı", paragraphs: ["Soğutma COP'u, evaporatördeki ısı alımının kompresör iş girdisine oranıdır."], formula: { expression: "COP = Q_evaporatör / W_kompresör = (h₁ − h₄) / (h₂ − h₁)", variables: ["h₁: Evaporatör çıkışı entalpisi", "h₂: Kompresör çıkışı entalpisi", "h₄: Genleşme valfi çıkışı entalpisi"] }, example: { problem: "Bir soğutma sisteminde h₁ = 400 kJ/kg, h₂ = 450 kJ/kg, h₃ = h₄ = 250 kJ/kg ise COP'u bulunuz.", steps: ["Q_evap = h₁ − h₄ = 400 − 250 = 150 kJ/kg", "W_komp = h₂ − h₁ = 450 − 400 = 50 kJ/kg", "COP = 150/50 = 3.0"], result: "COP = 3.0 (her 1 kW kompresör gücü ile 3 kW soğutma sağlanır)." } }
+        { heading: "COP Hesabı", paragraphs: ["Soğutma COP'u, evaporatördeki ısı alımının kompresör iş girdisine oranıdır."], formula: { expression: "COP = Qevaporatör / Wkompresör = (h₁ − h₄) / (h₂ − h₁)", variables: ["h₁: Evaporatör çıkışı entalpisi", "h₂: Kompresör çıkışı entalpisi", "h₄: Genleşme valfi çıkışı entalpisi"] }, example: { problem: "Bir soğutma sisteminde h₁ = 400 kJ/kg, h₂ = 450 kJ/kg, h₃ = h₄ = 250 kJ/kg ise COP'u bulunuz.", steps: ["Qevap = h₁ − h₄ = 400 − 250 = 150 kJ/kg", "Wkomp = h₂ − h₁ = 450 − 400 = 50 kJ/kg", "COP = 150/50 = 3.0"], result: "COP = 3.0 (her 1 kW kompresör gücü ile 3 kW soğutma sağlanır)." } }
       ],
       keyPoints: ["COP > 1 olması beklenir; düşük COP arıza göstergesidir.", "Evaporatör ve kondenser sıcaklıkları COP'u doğrudan etkiler.", "Fouling, soğutucu eksikliği ve hava kaçağı COP'u düşürür."]
     },
@@ -646,7 +646,7 @@ const content2: ContentMap = {
       title: "EEDI (Energy Efficiency Design Index)",
       introduction: "EEDI, yeni inşa gemilerin tonaj-mil başına CO₂ emisyonunu sınırlayan zorunlu teknik göstergedir.",
       sections: [
-        { heading: "EEDI Formülü", paragraphs: ["EEDI = (Güç × SFOC × C_F) / (Kapasite × Hız) olarak basitleştirilmiş formülle ifade edilir. Gerçek hesap çok daha karmaşıktır ve IMO MEPC yönergelerine uyulmalıdır."], formula: { expression: "EEDI = (P × SFC × C_F) / (DWT × V_ref)  [g CO₂ / ton·mil]", variables: ["P: Motor gücü (kW)", "SFC: Özgül yakıt tüketimi (g/kWh)", "C_F: Yakıt karbon faktörü", "DWT: Dedveyt (ton)", "V_ref: Referans hız (knot)"] } },
+        { heading: "EEDI Formülü", paragraphs: ["EEDI = (Güç × SFOC × CF) / (Kapasite × Hız) olarak basitleştirilmiş formülle ifade edilir. Gerçek hesap çok daha karmaşıktır ve IMO MEPC yönergelerine uyulmalıdır."], formula: { expression: "EEDI = (P × SFC × CF) / (DWT × Vref)  [g CO₂ / ton·mil]", variables: ["P: Motor gücü (kW)", "SFC: Özgül yakıt tüketimi (g/kWh)", "CF: Yakıt karbon faktörü", "DWT: Dedveyt (ton)", "Vref: Referans hız (knot)"] } },
         { heading: "Faz Gereklilikleri", paragraphs: [], table: { headers: ["Faz", "Yürürlük", "İndirim"], rows: [["Faz 0", "2013", "Referans hattı"], ["Faz 1", "2015", "%10"], ["Faz 2", "2020", "%20"], ["Faz 3", "2025", "%30-50 (gemi tipine göre)"]] } }
       ],
       keyPoints: ["EEDI yalnızca yeni inşa gemilere uygulanır.", "Mevcut gemiler için EEXI (benzer ancak mevcut filoya uygulanan) kullanılır.", "Motor güç sınırlaması (EPL) EEXI uyumu için yaygın yöntemdir."]

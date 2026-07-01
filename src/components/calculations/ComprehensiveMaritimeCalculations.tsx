@@ -732,7 +732,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const hLoad = parseFloat(craneVerticalInputs.loadHeight);
     const delta = parseFloat(craneVerticalInputs.displacement);
     if (isNaN(w) || isNaN(hHook) || isNaN(hLoad) || isNaN(delta) || delta === 0) {
-      toast({ title: "Hata", description: "Geçerli w, h_cunda, h_yük, Δ girin", variant: "destructive" });
+      toast({ title: "Hata", description: "Geçerli w, hcunda, hyük, Δ girin", variant: "destructive" });
       return;
     }
     const heightDiff = hHook - hLoad;
@@ -1052,7 +1052,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const rhoSea = parseFloat(fsmGroupInputs.rhoSea);
     const n = parseFloat(fsmGroupInputs.n);
     if ([L, B, V, rhoFluid, rhoSea, n].some(isNaN) || V === 0 || rhoSea === 0 || n === 0) {
-      toast({ title: "Hata", description: "Geçerli L, B, V, ρ_sıvı, ρ_deniz, n girin", variant: "destructive" }); return; }
+      toast({ title: "Hata", description: "Geçerli L, B, V, ρsıvı, ρdeniz, n girin", variant: "destructive" }); return; }
     const ixx = L * Math.pow(B, 3) / 12;
     const deltaKG = (ixx / V) * (rhoFluid / rhoSea) * (1 / (n * n));
     setFsmGroupResult(deltaKG);
@@ -1071,7 +1071,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const L = parseFloat(damagedDraftInputs.length);
     const B = parseFloat(damagedDraftInputs.breadth);
     const Ld = parseFloat(damagedDraftInputs.damagedLength);
-    if ([w, L, B, Ld].some(isNaN)) { toast({ title: "Hata", description: "Geçerli w, L, B, L_yaralı girin", variant: "destructive" }); return; }
+    if ([w, L, B, Ld].some(isNaN)) { toast({ title: "Hata", description: "Geçerli w, L, B, Lyaralı girin", variant: "destructive" }); return; }
     const effectiveArea = (L * B) - (Ld * B);
     if (effectiveArea <= 0) { toast({ title: "Hata", description: "Etkin alan > 0 olmalı", variant: "destructive" }); return; }
     const deltaT = w / effectiveArea; // m (assuming ρ≈1 t/m³)
@@ -1088,7 +1088,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
   const calculateMaxCargo = () => {
     const Vh = parseFloat(maxCargoInputs.holdVolume);
     const SF = parseFloat(maxCargoInputs.stowageFactor);
-    if (isNaN(Vh) || isNaN(SF) || SF === 0) { toast({ title: "Hata", description: "Geçerli V_ambar ve SF girin", variant: "destructive" }); return; }
+    if (isNaN(Vh) || isNaN(SF) || SF === 0) { toast({ title: "Hata", description: "Geçerli Vambar ve SF girin", variant: "destructive" }); return; }
     const wmax = Vh / SF;
     setMaxCargoResult(wmax);
     setCalcSteps(prev => ({ ...prev, maxCargo: [
@@ -1096,7 +1096,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       { step: 2, title: "Değerlerin yerleştirilmesi", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
       { step: 3, title: "Sonuç", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}`, result: `Wmax = ${wmax.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Maksimum Yük", description: `w_max = ${wmax.toFixed(2)} ton` });
+    toast({ title: "Maksimum Yük", description: `wmax = ${wmax.toFixed(2)} ton` });
   };
 
   // 8. Pratik
@@ -1462,7 +1462,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Dikey Kaldırmada ΔKG (Vinç/Bumba) */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">ΔKG = w × (h_cunda − h_yük) / Δ</h4>
+                <h4 className="font-semibold mb-3">ΔKG = w × (hcunda − hyük) / Δ</h4>
                 <p className="text-sm text-muted-foreground mb-3">Amaç: Yükün dikey kaldırılması sırasında KG artışını hesaplar.</p>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
@@ -1470,11 +1470,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="w" value={craneVerticalInputs.weight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>h_cunda (m)</Label>
+                    <Label>hcunda (m)</Label>
                     <Input type="number" placeholder="Kanca yüksekliği" value={craneVerticalInputs.hookHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, hookHeight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>h_yük (m)</Label>
+                    <Label>hyük (m)</Label>
                     <Input type="number" placeholder="Yükün başlangıç yüksekliği" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
                   </div>
                   <div>

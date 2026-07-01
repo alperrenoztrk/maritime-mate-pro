@@ -73,15 +73,15 @@ export const environment: CourseTopic = {
       id: "pm-emission",
       name: "Partikül Madde (PM)",
       group: "Emisyonlar",
-      formula: "PM (kg) = Yakıt (ton) × EF_PM",
+      formula: "PM (kg) = Yakıt (ton) × EFPM",
       variables: [
         { symbol: "Yakıt", label: "Yakıt tüketimi", unit: "t" },
-        { symbol: "EF_PM", label: "PM emisyon faktörü", unit: "kg/t" },
+        { symbol: "EFPM", label: "PM emisyon faktörü", unit: "kg/t" },
       ],
       source: { code: "IMO MARPOL Annex VI", detail: "Partikül madde emisyonu" },
       inputs: [
         { key: "fuel", label: "Yakıt", unit: "t", placeholder: "1000" },
-        { key: "efpm", label: "EF_PM", unit: "kg/t", placeholder: "7.6" },
+        { key: "efpm", label: "EFPM", unit: "kg/t", placeholder: "7.6" },
       ],
       calculate: (v) => [{ label: "PM", value: `${(v.fuel * v.efpm).toFixed(1)} kg` }],
     },

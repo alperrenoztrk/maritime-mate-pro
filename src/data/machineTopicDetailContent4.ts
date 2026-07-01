@@ -13,7 +13,7 @@ const content4: ContentMap = {
       sections: [
         { heading: "Tanım ve Koşul", paragraphs: ["İzotermik süreçte T = sabit olduğundan ideal gazda iç enerji değişimi sıfırdır (ΔU = 0). Birinci yasa gereği Q = W olur; sisteme verilen ısının tamamı iş olarak çevreye aktarılır.", "Pratikte bu süreç çok yavaş gerçekleştirilmelidir ki sistem çevresiyle ısıl dengeyi sürekli koruyabilsin. Gemi sistemlerinde izotermik kompresyon, ara soğutmalı çok kademeli kompresörlerde yaklaşık olarak sağlanır."] },
         { heading: "P-V İlişkisi", paragraphs: ["İdeal gaz için izotermik süreçte Boyle-Mariotte yasası geçerlidir."], formula: { expression: "P₁V₁ = P₂V₂ = sabit", variables: ["P: Basınç (Pa)", "V: Hacim (m³)"] } },
-        { heading: "İş Hesabı", paragraphs: [], formula: { expression: "W = P₁V₁ · ln(V₂/V₁) = mRT · ln(V₂/V₁)", variables: ["W: Yapılan iş (J)", "m: Kütle (kg)", "R: Gaz sabiti (J/kg·K)", "T: Mutlak sıcaklık (K)"] }, example: { problem: "0.5 kg hava 300 K'de 1 bar'dan 5 bar'a izotermik olarak sıkıştırılıyor. Yapılan işi bulunuz. (R_hava = 287 J/kg·K)", steps: ["V₂/V₁ = P₁/P₂ = 1/5 = 0.2", "W = mRT · ln(V₂/V₁)", "W = 0.5 × 287 × 300 × ln(0.2)", "W = 43050 × (−1.6094)", "W = −69 284 J ≈ −69.3 kJ"], result: "Sıkıştırma işi 69.3 kJ'dür (negatif işaret sisteme iş yapıldığını gösterir)." } }
+        { heading: "İş Hesabı", paragraphs: [], formula: { expression: "W = P₁V₁ · ln(V₂/V₁) = mRT · ln(V₂/V₁)", variables: ["W: Yapılan iş (J)", "m: Kütle (kg)", "R: Gaz sabiti (J/kg·K)", "T: Mutlak sıcaklık (K)"] }, example: { problem: "0.5 kg hava 300 K'de 1 bar'dan 5 bar'a izotermik olarak sıkıştırılıyor. Yapılan işi bulunuz. (Rhava = 287 J/kg·K)", steps: ["V₂/V₁ = P₁/P₂ = 1/5 = 0.2", "W = mRT · ln(V₂/V₁)", "W = 0.5 × 287 × 300 × ln(0.2)", "W = 43050 × (−1.6094)", "W = −69 284 J ≈ −69.3 kJ"], result: "Sıkıştırma işi 69.3 kJ'dür (negatif işaret sisteme iş yapıldığını gösterir)." } }
       ],
       keyPoints: ["İzotermik süreçte ΔU = 0, Q = W.", "P-V diyagramında hiperbol eğrisi çizer.", "Ara soğutmalı kompresörlerde izotermik sıkıştırmaya yaklaşılır."]
     },
@@ -80,7 +80,7 @@ const content4: ContentMap = {
       introduction: "Otto çevrimi, kıvılcım ateşlemeli motorların teorik performans sınırını veren temel çevrimdir. Denizcilikte ana tahrikte sınırlı kullanılsa da yardımcı jeneratörler, küçük servis motorları ve eğitim amaçlı termodinamik analizlerde kritik referanstır.",
       sections: [
         { heading: "Çevrim Aşamaları ve P-V Yorumu", paragraphs: ["1→2 adyabatik sıkıştırmada basınç ve sıcaklık hızla yükselir; vuruntu sınırına yaklaşım bu bölgede belirlenir.", "2→3 sabit hacimde ısı alımı ideal bir varsayımdır; gerçek motorda yanma sonlu sürede olduğu için basınç tepe değeri krank açısına bağlıdır.", "3→4 adyabatik genleşme iş üreten stroktur; çevrim net işinin büyük kısmı bu bölgede oluşur.", "4→1 sabit hacimde ısı atımı, egzoz ve soğutma kayıplarının ideal temsili olarak kabul edilir."], diagram: { src: "/diagrams/machine/pv-diyagrami.svg", alt: "Otto çevrimi P-V diyagramı", caption: "Şekil: Otto çevriminin dört aşaması (P-V)" } },
-        { heading: "Termal Verim ve Sıkıştırma Oranı Etkisi", paragraphs: ["Otto çevrimi verimi teorik olarak yalnızca sıkıştırma oranı ve γ değerine bağlıdır. Bu durum tasarımcıya açık bir mesaj verir: uygun yakıtla daha yüksek sıkıştırma oranı daha yüksek verim üretir.", "Ancak pratikte vuruntu (knock), malzeme sıcaklık sınırları ve NOx oluşumu sıkıştırma oranını sınırlayan temel faktörlerdir."], formula: { expression: "η_Otto = 1 − (1/r)^(γ−1)", variables: ["r: Sıkıştırma oranı (V₁/V₂)", "γ: Özgül ısı oranı"] } },
+        { heading: "Termal Verim ve Sıkıştırma Oranı Etkisi", paragraphs: ["Otto çevrimi verimi teorik olarak yalnızca sıkıştırma oranı ve γ değerine bağlıdır. Bu durum tasarımcıya açık bir mesaj verir: uygun yakıtla daha yüksek sıkıştırma oranı daha yüksek verim üretir.", "Ancak pratikte vuruntu (knock), malzeme sıcaklık sınırları ve NOx oluşumu sıkıştırma oranını sınırlayan temel faktörlerdir."], formula: { expression: "ηOtto = 1 − (1/r)^(γ−1)", variables: ["r: Sıkıştırma oranı (V₁/V₂)", "γ: Özgül ısı oranı"] } },
         { heading: "Sayısal Örnek ve Gerçek Motor Sapmaları", paragraphs: ["İdeal hesap sonucu her zaman gerçek motor veriminden yüksektir; farkın nedeni ısı kayıpları, sürtünme, eksik yanma ve pompalama işidir."], example: { problem: "Sıkıştırma oranı r = 10 olan bir Otto çevriminin termal verimini bulunuz. (γ = 1.4)", steps: ["η = 1 − (1/10)^(1.4−1)", "η = 1 − (0.1)^0.4", "0.1^0.4 = 0.398", "η = 1 − 0.398 = 0.602"], result: "İdeal Otto verimi %60.2 bulunur. Gerçek makinede etkin verim tipik olarak %25-35 bandındadır; kalan enerji egzoz, soğutma ve mekanik kayıplarla dağılır." } }
       ],
       keyPoints: ["Otto çevrimi teorik sınırı verir; gerçek motor tasarımı bu sınıra yaklaşma problemidir.", "Sıkıştırma oranı artışı verimi yükseltir ancak vuruntu ve emisyon limitleriyle dengelenmelidir.", "Denizcilikte eğitim, küçük yardımcı makineler ve kıyas analizlerinde temel referans çevrimdir."]
@@ -158,11 +158,11 @@ const content4: ContentMap = {
             "Türbin çıkışında nem oranının artması son kademelerde erozyon riski yaratır; bu nedenle kızdırma (superheat) ve gerektiğinde yeniden kızdırma (reheat) uygulamaları kullanılır."
           ],
           formula: {
-            expression: "w_t = h₃ − h₄\nw_p = h₂ − h₁\nq_in = h₃ − h₂\nη_th = (w_t − w_p) / q_in",
+            expression: "wt = h₃ − h₄\nwp = h₂ − h₁\nqin = h₃ − h₂\nηth = (wt − wp) / qin",
             variables: [
               "h: Özgül entalpi (kJ/kg)",
-              "w_t: Türbin özgül işi",
-              "w_p: Pompa özgül işi"
+              "wt: Türbin özgül işi",
+              "wp: Pompa özgül işi"
             ]
           }
         },
@@ -172,11 +172,11 @@ const content4: ContentMap = {
           example: {
             problem: "Bir Rankine çevriminde h₃=3230 kJ/kg, h₄=2550 kJ/kg, h₂=220 kJ/kg, h₁=200 kJ/kg değerleri ölçülüyor. Çevrim verimini bulunuz.",
             steps: [
-              "w_t = h₃ − h₄ = 3230 − 2550 = 680 kJ/kg",
-              "w_p = h₂ − h₁ = 220 − 200 = 20 kJ/kg",
-              "w_net = 680 − 20 = 660 kJ/kg",
-              "q_in = h₃ − h₂ = 3230 − 220 = 3010 kJ/kg",
-              "η_th = 660 / 3010 = 0.219 = %21.9"
+              "wt = h₃ − h₄ = 3230 − 2550 = 680 kJ/kg",
+              "wp = h₂ − h₁ = 220 − 200 = 20 kJ/kg",
+              "wnet = 680 − 20 = 660 kJ/kg",
+              "qin = h₃ − h₂ = 3230 − 220 = 3010 kJ/kg",
+              "ηth = 660 / 3010 = 0.219 = %21.9"
             ],
             result: "İdealize edilmiş çevrim verimi yaklaşık %21.9 bulunur. Egzoz ısısı kaynaklı WHRS uygulamalarında bu değer ekonomik kazanım için çoğu durumda yeterlidir çünkü yakıt girdisi 'atık ısı'dır."
           }
@@ -216,11 +216,11 @@ const content4: ContentMap = {
             "Gerçek tasarımda optimum nokta; kompresör harcaması, türbin giriş sıcaklığı (TIT) limiti, soğutma havası ihtiyacı ve emisyon hedefleri birlikte değerlendirilerek bulunur."
           ],
           formula: {
-            expression: "η_Brayton = 1 − (1/r_p)^((γ−1)/γ)\nBack Work Ratio = w_c / w_t",
+            expression: "ηBrayton = 1 − (1/rp)^((γ−1)/γ)\nBack Work Ratio = wc / wt",
             variables: [
-              "r_p: Kompresör basınç oranı",
-              "w_c: Kompresör işi",
-              "w_t: Türbin işi"
+              "rp: Kompresör basınç oranı",
+              "wc: Kompresör işi",
+              "wt: Türbin işi"
             ]
           }
         },
@@ -268,15 +268,15 @@ const content4: ContentMap = {
         {
           heading: "COP Kavramı ve Enerji Yorumu",
           paragraphs: [
-            "Soğutma çevriminde performans metriği COP_refrigeration = Q_L/W_net olarak tanımlanır. Isı pompasında ise amaç ısıtmadır ve COP_heatpump = Q_H/W_net olur.",
+            "Soğutma çevriminde performans metriği COP_refrigeration = QL/Wnet olarak tanımlanır. Isı pompasında ise amaç ısıtmadır ve COPheatpump = QH/Wnet olur.",
             "COP değerinin 1'den büyük olması termodinamiğe aykırı değildir; çünkü cihaz ısıyı 'üretmez', düşük sıcaklıktan çekip yüksek sıcaklığa taşır."
           ],
           formula: {
-            expression: "COP_soğutma = Q_L / W_net\nCOP_ısı pompası = Q_H / W_net = COP_soğutma + 1",
+            expression: "COPsoğutma = QL / Wnet\nCOPısı pompası = QH / Wnet = COPsoğutma + 1",
             variables: [
-              "Q_L: Düşük sıcaklık tarafında çekilen ısı",
-              "Q_H: Yüksek sıcaklık tarafına verilen ısı",
-              "W_net: Kompresör net işi"
+              "QL: Düşük sıcaklık tarafında çekilen ısı",
+              "QH: Yüksek sıcaklık tarafına verilen ısı",
+              "Wnet: Kompresör net işi"
             ]
           }
         },
@@ -286,9 +286,9 @@ const content4: ContentMap = {
           example: {
             problem: "Evaporatörden 50 kW ısı çeken bir soğutma sisteminde kompresör gücü 15 kW ise soğutma ve ısı pompası COP değerlerini bulunuz.",
             steps: [
-              "COP_soğutma = Q_L / W = 50 / 15 = 3.33",
-              "Q_H = Q_L + W = 50 + 15 = 65 kW",
-              "COP_ısı pompası = Q_H / W = 65 / 15 = 4.33"
+              "COPsoğutma = QL / W = 50 / 15 = 3.33",
+              "QH = QL + W = 50 + 15 = 65 kW",
+              "COPısı pompası = QH / W = 65 / 15 = 4.33"
             ],
             result: "Soğutma COP'u 3.33, ısı pompası COP'u 4.33 bulunur. Aynı cihaz farklı amaçla kullanıldığında performans tanımı değişse de enerji dengesi aynıdır."
           }
@@ -311,7 +311,7 @@ const content4: ContentMap = {
       title: "Fourier İletim Yasası",
       introduction: "Fourier yasası, kondüksiyon (iletim) yoluyla ısı transferinin temel denklemini tanımlar. Isı akısı, sıcaklık gradyanıyla doğru orantılıdır.",
       sections: [
-        { heading: "Temel Denklem", paragraphs: ["Isı, yüksek sıcaklıktan düşük sıcaklığa doğru iletilir. Bir boyutlu kararlı iletim için:"], formula: { expression: "Q̇ = −k·A·(dT/dx)\nDüz duvar için: Q̇ = k·A·(T₁−T₂)/L", variables: ["Q̇: Isı akısı (W)", "k: Isıl iletkenlik katsayısı (W/m·K)", "A: Isı transfer alanı (m²)", "L: Duvar kalınlığı (m)"] }, example: { problem: "Bir çelik kazan duvarı 25 mm kalınlığında, iç yüzey sıcaklığı 300°C, dış yüzey sıcaklığı 280°C ve alan 2 m²'dir. k_çelik = 50 W/m·K. Isı akısını bulunuz.", steps: ["Q̇ = k·A·ΔT/L", "Q̇ = 50 × 2 × (300−280) / 0.025", "Q̇ = 50 × 2 × 20 / 0.025 = 80 000 W = 80 kW"], result: "Duvardan geçen ısı akısı 80 kW'tır." } }
+        { heading: "Temel Denklem", paragraphs: ["Isı, yüksek sıcaklıktan düşük sıcaklığa doğru iletilir. Bir boyutlu kararlı iletim için:"], formula: { expression: "Q̇ = −k·A·(dT/dx)\nDüz duvar için: Q̇ = k·A·(T₁−T₂)/L", variables: ["Q̇: Isı akısı (W)", "k: Isıl iletkenlik katsayısı (W/m·K)", "A: Isı transfer alanı (m²)", "L: Duvar kalınlığı (m)"] }, example: { problem: "Bir çelik kazan duvarı 25 mm kalınlığında, iç yüzey sıcaklığı 300°C, dış yüzey sıcaklığı 280°C ve alan 2 m²'dir. kçelik = 50 W/m·K. Isı akısını bulunuz.", steps: ["Q̇ = k·A·ΔT/L", "Q̇ = 50 × 2 × (300−280) / 0.025", "Q̇ = 50 × 2 × 20 / 0.025 = 80 000 W = 80 kW"], result: "Duvardan geçen ısı akısı 80 kW'tır." } }
       ],
       keyPoints: ["k değeri malzemeye bağlıdır: bakır ~385, çelik ~50, yalıtım ~0.04 W/m·K.", "Yalıtım malzemeleri düşük k değerine sahiptir.", "Boru ve tank yalıtım kalınlığı bu denklemle hesaplanır."]
     },
@@ -319,7 +319,7 @@ const content4: ContentMap = {
       title: "Çok Katmanlı Duvar ve Silindirik İletim",
       introduction: "Gemi yapılarında ve makine bileşenlerinde ısı transferi genellikle farklı malzeme katmanlarından veya silindirik geometrilerden gerçekleşir.",
       sections: [
-        { heading: "Çok Katmanlı Düz Duvar", paragraphs: ["Her katman bir ısıl dirence karşılık gelir. Toplam ısıl direnç, seri bağlı dirençler gibi toplanır."], formula: { expression: "Q̇ = (T₁ − T_n) / Σ(Lᵢ/kᵢ·A)", variables: ["Lᵢ: i. katman kalınlığı", "kᵢ: i. katman iletkenlik katsayısı"] } },
+        { heading: "Çok Katmanlı Düz Duvar", paragraphs: ["Her katman bir ısıl dirence karşılık gelir. Toplam ısıl direnç, seri bağlı dirençler gibi toplanır."], formula: { expression: "Q̇ = (T₁ − Tn) / Σ(Lᵢ/kᵢ·A)", variables: ["Lᵢ: i. katman kalınlığı", "kᵢ: i. katman iletkenlik katsayısı"] } },
         { heading: "Silindirik İletim", paragraphs: ["Borularda ve silindir gömleğinde radyal yönde ısı transferi logaritmik ilişkiyle hesaplanır."], formula: { expression: "Q̇ = 2πkL(T₁−T₂) / ln(r₂/r₁)", variables: ["r₁, r₂: İç ve dış yarıçap", "L: Silindir uzunluğu"] } }
       ],
       keyPoints: ["Isıl direnç kavramı elektrik direnç analojisiyle kullanılır.", "Boru yalıtımında kritik yarıçap kavramı önemlidir.", "Silindir gömleği ısı transferi silindirik iletim denklemleriyle hesaplanır."]
@@ -328,7 +328,7 @@ const content4: ContentMap = {
       title: "Newton Soğuma Yasası (Taşınım)",
       introduction: "Newton soğuma yasası, bir yüzey ile çevresindeki akışkan arasındaki konvektif ısı transferini tanımlar.",
       sections: [
-        { heading: "Temel Denklem", paragraphs: [], formula: { expression: "Q̇ = h·A·(T_s − T_∞)", variables: ["h: Taşınım ısı transfer katsayısı (W/m²·K)", "T_s: Yüzey sıcaklığı", "T_∞: Akışkan sıcaklığı", "A: Isı transfer alanı"] } },
+        { heading: "Temel Denklem", paragraphs: [], formula: { expression: "Q̇ = h·A·(Ts − T∞)", variables: ["h: Taşınım ısı transfer katsayısı (W/m²·K)", "Ts: Yüzey sıcaklığı", "T_∞: Akışkan sıcaklığı", "A: Isı transfer alanı"] } },
         { heading: "h Değerleri", paragraphs: [], table: { headers: ["Taşınım Tipi", "h (W/m²·K)"], rows: [["Doğal taşınım (hava)", "5-25"], ["Zorlanmış taşınım (hava)", "25-250"], ["Doğal taşınım (su)", "100-900"], ["Zorlanmış taşınım (su)", "250-12000"], ["Kaynama/yoğunlaşma", "2500-100000"]] } }
       ],
       keyPoints: ["h değeri akış rejimi, geometri ve akışkan özelliklerine bağlıdır.", "Gemi eşanjörlerinde zorlanmış taşınım hakimdir.", "Kaynama ve yoğunlaşma en yüksek h değerlerini verir."]
@@ -337,7 +337,7 @@ const content4: ContentMap = {
       title: "Stefan–Boltzmann Işınım Yasası",
       introduction: "Her cisim sıcaklığına bağlı olarak elektromanyetik dalga yayar. Işınım yoluyla ısı transferi, yüksek sıcaklıklarda baskın mekanizmadır.",
       sections: [
-        { heading: "Temel Denklem", paragraphs: [], formula: { expression: "Q̇ = ε·σ·A·(T_s⁴ − T_çevre⁴)", variables: ["ε: Yüzey yayma katsayısı (0-1)", "σ: Stefan-Boltzmann sabiti = 5.67×10⁻⁸ W/m²·K⁴", "T: Mutlak sıcaklık (K)"] }, example: { problem: "Bir egzoz borusunun dış yüzey sıcaklığı 350°C, çevre sıcaklığı 40°C, ε = 0.8, yüzey alanı 3 m². Işınım ısı kaybını bulunuz.", steps: ["T_s = 350 + 273 = 623 K, T_çevre = 40 + 273 = 313 K", "Q̇ = 0.8 × 5.67×10⁻⁸ × 3 × (623⁴ − 313⁴)", "623⁴ = 1.506×10¹¹, 313⁴ = 9.596×10⁹", "Q̇ = 0.8 × 5.67×10⁻⁸ × 3 × (1.506×10¹¹ − 9.596×10⁹)", "Q̇ = 1.361×10⁻⁷ × 1.410×10¹¹ = 19 187 W ≈ 19.2 kW"], result: "Egzoz borusundan ışınım ısı kaybı yaklaşık 19.2 kW'tır." } }
+        { heading: "Temel Denklem", paragraphs: [], formula: { expression: "Q̇ = ε·σ·A·(Ts⁴ − Tçevre⁴)", variables: ["ε: Yüzey yayma katsayısı (0-1)", "σ: Stefan-Boltzmann sabiti = 5.67×10⁻⁸ W/m²·K⁴", "T: Mutlak sıcaklık (K)"] }, example: { problem: "Bir egzoz borusunun dış yüzey sıcaklığı 350°C, çevre sıcaklığı 40°C, ε = 0.8, yüzey alanı 3 m². Işınım ısı kaybını bulunuz.", steps: ["Ts = 350 + 273 = 623 K, Tçevre = 40 + 273 = 313 K", "Q̇ = 0.8 × 5.67×10⁻⁸ × 3 × (623⁴ − 313⁴)", "623⁴ = 1.506×10¹¹, 313⁴ = 9.596×10⁹", "Q̇ = 0.8 × 5.67×10⁻⁸ × 3 × (1.506×10¹¹ − 9.596×10⁹)", "Q̇ = 1.361×10⁻⁷ × 1.410×10¹¹ = 19 187 W ≈ 19.2 kW"], result: "Egzoz borusundan ışınım ısı kaybı yaklaşık 19.2 kW'tır." } }
       ],
       keyPoints: ["Işınım T⁴'e bağlı olduğundan yüksek sıcaklıklarda çok etkilidir.", "Kazan ve egzoz sistemlerinde ışınım ısı kaybı önemlidir.", "Parlak metalik yüzeyler düşük ε değerine sahiptir (ε ≈ 0.05-0.2)."]
     },
@@ -345,7 +345,7 @@ const content4: ContentMap = {
       title: "Toplam Isı Geçiş Katsayısı (U)",
       introduction: "Toplam ısı geçiş katsayısı, iletim, taşınım ve (gerektiğinde) ışınım dirençlerinin birleşik etkisini tek bir katsayıda özetler.",
       sections: [
-        { heading: "Düz Duvar İçin U Değeri", paragraphs: [], formula: { expression: "1/U = 1/h₁ + L/k + 1/h₂\nQ̇ = U·A·ΔT", variables: ["h₁, h₂: İç ve dış taşınım katsayıları", "L/k: İletim direnci"] }, example: { problem: "Bir ısı eşanjörünün çelik boru duvarı: h_iç = 5000 W/m²·K, h_dış = 3000 W/m²·K, L = 3 mm, k = 50 W/m·K. U değerini bulunuz.", steps: ["1/U = 1/5000 + 0.003/50 + 1/3000", "1/U = 0.0002 + 0.00006 + 0.000333", "1/U = 0.000593", "U = 1686 W/m²·K"], result: "Toplam ısı geçiş katsayısı U = 1686 W/m²·K." } }
+        { heading: "Düz Duvar İçin U Değeri", paragraphs: [], formula: { expression: "1/U = 1/h₁ + L/k + 1/h₂\nQ̇ = U·A·ΔT", variables: ["h₁, h₂: İç ve dış taşınım katsayıları", "L/k: İletim direnci"] }, example: { problem: "Bir ısı eşanjörünün çelik boru duvarı: hiç = 5000 W/m²·K, hdış = 3000 W/m²·K, L = 3 mm, k = 50 W/m·K. U değerini bulunuz.", steps: ["1/U = 1/5000 + 0.003/50 + 1/3000", "1/U = 0.0002 + 0.00006 + 0.000333", "1/U = 0.000593", "U = 1686 W/m²·K"], result: "Toplam ısı geçiş katsayısı U = 1686 W/m²·K." } }
       ],
       keyPoints: ["En küçük h değeri (veya en büyük direnç) U'yu belirler.", "Fouling (kirlenme) U değerini önemli ölçüde düşürür.", "Isı eşanjör performans izlemesinde U değeri temel göstergedir."]
     },
@@ -389,7 +389,7 @@ const content4: ContentMap = {
       introduction: "Fouling, ısı eşanjör yüzeylerinde biyolojik, kimyasal veya mekanik birikintilerin oluşmasıdır. Isı transfer performansını ciddi ölçüde düşürür.",
       sections: [
         { heading: "Fouling Tipleri", paragraphs: [], table: { headers: ["Tip", "Neden", "Etkilenen Sistem"], rows: [["Biyolojik", "Deniz organizmaları", "Deniz suyu eşanjörleri"], ["Kimyasal", "Korozyon ürünleri, kireç", "Kazan, soğutma suyu"], ["Partiküler", "Çamur, tortu", "Yakıt ısıtıcıları"], ["Kristalizasyon", "Tuz çökelmesi", "Evaporatörler"]] } },
-        { heading: "Etki ve Hesap", paragraphs: ["Fouling direnci (R_f) toplam ısıl dirence eklenir."], formula: { expression: "1/U_kirli = 1/U_temiz + R_f", variables: ["R_f: Fouling direnci (m²·K/W)", "Tipik değerler: 0.0001-0.001 m²·K/W"] } }
+        { heading: "Etki ve Hesap", paragraphs: ["Fouling direnci (Rf) toplam ısıl dirence eklenir."], formula: { expression: "1/Ukirli = 1/Utemiz + Rf", variables: ["Rf: Fouling direnci (m²·K/W)", "Tipik değerler: 0.0001-0.001 m²·K/W"] } }
       ],
       keyPoints: ["Fouling izleme: ΔT artışı veya U değeri düşüşü ile takip edilir.", "Kimyasal temizlik (CIP) veya mekanik temizlik uygulanır.", "TEMA standartları fouling direnci tasarım değerlerini belirler."]
     },
@@ -415,7 +415,7 @@ const content4: ContentMap = {
       title: "Eşanjör Verim Hesapları",
       introduction: "Isı eşanjör verimi (etkinliği), gerçekleşen ısı transferinin teorik maksimuma oranıdır.",
       sections: [
-        { heading: "ε-NTU Yöntemi", paragraphs: ["LMTD yönteminin alternatifi olan ε-NTU yöntemi, çıkış sıcaklıklarının bilinmediği durumlarda kullanılır."], formula: { expression: "ε = Q_gerçek / Q_maks\nQ_maks = C_min × (T_h,giriş − T_c,giriş)\nNTU = U·A / C_min", variables: ["C_min: Minimum ısı kapasitesi akışı (W/K)", "C = ṁ·cp"] } }
+        { heading: "ε-NTU Yöntemi", paragraphs: ["LMTD yönteminin alternatifi olan ε-NTU yöntemi, çıkış sıcaklıklarının bilinmediği durumlarda kullanılır."], formula: { expression: "ε = Qgerçek / Qmaks\nQmaks = Cmin × (Th,giriş − Tc,giriş)\nNTU = U·A / Cmin", variables: ["Cmin: Minimum ısı kapasitesi akışı (W/K)", "C = ṁ·cp"] } }
       ],
       keyPoints: ["ε = 1 mümkün değildir; pratikte %60-90 arasındadır.", "NTU arttıkça etkinlik artar ancak azalan verimle.", "Eşanjör performans düşüşü fouling'in göstergesidir."]
     },
@@ -466,7 +466,7 @@ const content4: ContentMap = {
       introduction: "Dizel motorlar, havanın yüksek sıkıştırma oranıyla ısıtılması ve yakıtın bu sıcak havaya püskürtülmesiyle ateşleme sağlayan içten yanmalı motorlardır.",
       sections: [
         { heading: "Sıkıştırma ile Ateşleme Prensibi", paragraphs: ["Dizel motorlarda sıkıştırma oranı 12:1 ile 24:1 arasındadır. Hava sıkıştırma sonunda 600-900°C'ye ulaşır ki bu değer dizel yakıtın tutuşma noktasının (250-350°C) çok üzerindedir.", "Yakıt, sıkıştırma strokunu sonunda yüksek basınçla (300-2000 bar) enjekte edilir ve sıcak hava ile temas ettiğinde kendiliğinden tutuşur."] },
-        { heading: "İdeal Dizel Çevrimi", paragraphs: ["1→2: Adyabatik sıkıştırma.", "2→3: Sabit basınçta ısı alımı (yakıt enjeksiyonu süresi boyunca).", "3→4: Adyabatik genleşme.", "4→1: Sabit hacimde ısı atımı."], formula: { expression: "η_Diesel = 1 − (1/r^(γ-1)) × [(ρ^γ − 1) / (γ(ρ − 1))]", variables: ["r: Sıkıştırma oranı", "ρ: Kesme oranı (V₃/V₂)", "γ: Özgül ısı oranı"] } }
+        { heading: "İdeal Dizel Çevrimi", paragraphs: ["1→2: Adyabatik sıkıştırma.", "2→3: Sabit basınçta ısı alımı (yakıt enjeksiyonu süresi boyunca).", "3→4: Adyabatik genleşme.", "4→1: Sabit hacimde ısı atımı."], formula: { expression: "ηDiesel = 1 − (1/r^(γ-1)) × [(ρ^γ − 1) / (γ(ρ − 1))]", variables: ["r: Sıkıştırma oranı", "ρ: Kesme oranı (V₃/V₂)", "γ: Özgül ısı oranı"] } }
       ],
       keyPoints: ["Yüksek sıkıştırma oranı = yüksek verim.", "Gerçek dizel motorlar Sabathe çevrimine daha yakındır.", "İki zamanlı büyük deniz motorlarında sıkıştırma oranı yaklaşık 12-16 arasındadır."]
     },
@@ -582,7 +582,7 @@ const content4: ContentMap = {
       title: "Fren Gücü (Brake Power) ve Mekanik Verim",
       introduction: "Fren gücü, krank milinden fiilen alınabilen güçtür. İndike güçten mekanik kayıpların çıkarılmasıyla bulunur.",
       sections: [
-        { heading: "Formüller", paragraphs: [], formula: { expression: "P_b = 2π × n × T / 60\nη_mek = P_b / P_i\nP_sürtünme = P_i − P_b", variables: ["P_b: Fren gücü (W)", "n: Devir (rpm)", "T: Tork (N·m)", "η_mek: Mekanik verim (0.85-0.95)"] }, example: { problem: "Bir motorun indike gücü 5000 kW ve mekanik verimi %90 ise fren gücü ve sürtünme gücünü bulunuz.", steps: ["P_b = η_mek × P_i = 0.90 × 5000 = 4500 kW", "P_sürtünme = P_i − P_b = 5000 − 4500 = 500 kW"], result: "Fren gücü 4500 kW, sürtünme kayıpları 500 kW'tır." } }
+        { heading: "Formüller", paragraphs: [], formula: { expression: "Pb = 2π × n × T / 60\nηmek = Pb / Pi\nPsürtünme = Pi − Pb", variables: ["Pb: Fren gücü (W)", "n: Devir (rpm)", "T: Tork (N·m)", "ηmek: Mekanik verim (0.85-0.95)"] }, example: { problem: "Bir motorun indike gücü 5000 kW ve mekanik verimi %90 ise fren gücü ve sürtünme gücünü bulunuz.", steps: ["Pb = ηmek × Pi = 0.90 × 5000 = 4500 kW", "Psürtünme = Pi − Pb = 5000 − 4500 = 500 kW"], result: "Fren gücü 4500 kW, sürtünme kayıpları 500 kW'tır." } }
       ],
       keyPoints: ["Mekanik verim motorun bakım durumunu gösterir.", "Sürtünme kayıpları: yatak sürtünmesi, pompa tahrik, segman sürtünmesi.", "Torsionmeter ile şaft gücü ölçülerek fren gücü belirlenir."]
     },
@@ -590,7 +590,7 @@ const content4: ContentMap = {
       title: "Özgül Yakıt Tüketimi (SFOC)",
       introduction: "SFOC (Specific Fuel Oil Consumption), motorun birim güç ve birim zamanda tükettiği yakıt miktarıdır. Motor veriminin temel göstergesidir.",
       sections: [
-        { heading: "Formül ve Birim", paragraphs: [], formula: { expression: "SFOC = (ṁ_yakıt × 10⁶) / P_b  [g/kWh]", variables: ["ṁ_yakıt: Yakıt tüketimi (ton/saat veya kg/s)", "P_b: Fren gücü (kW)"] }, example: { problem: "Bir motor 12500 kW güç üretirken saatte 2.5 ton HFO tüketiyor. SFOC'u bulunuz.", steps: ["ṁ_yakıt = 2500 kg/h", "SFOC = 2500000 g / 12500 kW = 200 g/kWh"], result: "SFOC = 200 g/kWh. Modern büyük iki zamanlı motorlar için referans değer 155-175 g/kWh arasındadır." } },
+        { heading: "Formül ve Birim", paragraphs: [], formula: { expression: "SFOC = (ṁyakıt × 10⁶) / Pb  [g/kWh]", variables: ["ṁyakıt: Yakıt tüketimi (ton/saat veya kg/s)", "Pb: Fren gücü (kW)"] }, example: { problem: "Bir motor 12500 kW güç üretirken saatte 2.5 ton HFO tüketiyor. SFOC'u bulunuz.", steps: ["ṁyakıt = 2500 kg/h", "SFOC = 2500000 g / 12500 kW = 200 g/kWh"], result: "SFOC = 200 g/kWh. Modern büyük iki zamanlı motorlar için referans değer 155-175 g/kWh arasındadır." } },
         { heading: "SFOC'u Etkileyen Faktörler", paragraphs: [], table: { headers: ["Faktör", "SFOC Etkisi"], rows: [["Yük oranı (%75-85 optimum)", "Minimum SFOC"], ["Enjeksiyon zamanlaması", "±2-5 g/kWh"], ["Turboşarjer kirlilik", "+3-8 g/kWh"], ["Şarj havası sıcaklığı artışı", "+0.5 g/kWh / °C"], ["Düşük kaliteli yakıt", "+2-5 g/kWh"]] } }
       ],
       keyPoints: ["SFOC trendi motor sağlığının en iyi göstergesidir.", "ISO düzeltme faktörleri (LCV, ortam koşulları) uygulanmalıdır.", "Modern motorlarda SFOC 155 g/kWh'nin altına inebilir."]
@@ -600,7 +600,7 @@ const content4: ContentMap = {
       introduction: "Turboşarjer, egzoz gazı enerjisiyle dönen türbin tarafından tahrik edilen kompresörle emme havasını sıkıştıran cihaz olup motor gücünü ve verimini artırır.",
       sections: [
         { heading: "Çalışma Mekanizması", paragraphs: ["Egzoz gazları yüksek hızda türbin kanatlarına çarpar ve rotoru döndürür. Aynı şaft üzerindeki kompresör çarkı emme havasını sıkıştırır.", "Turboşarjer devri 10 000-40 000 rpm arasındadır. Radyal veya aksiyel türbin tipi kullanılır."] },
-        { heading: "Verimlilik", paragraphs: ["Modern turboşarjerlerin toplam verimi %65-72 arasındadır. Türbin verimi × kompresör verimi × mekanik verim = toplam verim."], formula: { expression: "P_kompresör = ṁ_hava × cp × T₁ × [(P₂/P₁)^((γ-1)/γ) − 1] / η_kompresör", variables: ["ṁ_hava: Hava kütlesel debisi (kg/s)", "P₂/P₁: Basınç oranı (tipik 2.5-4.5)"] } }
+        { heading: "Verimlilik", paragraphs: ["Modern turboşarjerlerin toplam verimi %65-72 arasındadır. Türbin verimi × kompresör verimi × mekanik verim = toplam verim."], formula: { expression: "Pkompresör = ṁhava × cp × T₁ × [(P₂/P₁)^((γ-1)/γ) − 1] / ηkompresör", variables: ["ṁhava: Hava kütlesel debisi (kg/s)", "P₂/P₁: Basınç oranı (tipik 2.5-4.5)"] } }
       ],
       keyPoints: ["Turboşarjer arızası motor gücünü dramatik düşürür.", "Surging: Kompresör kararsız çalışma — basınç oranı çok yüksek, debi çok düşük.", "Su yıkama ile türbin ve kompresör temizliği yapılır."]
     },
@@ -768,7 +768,7 @@ const content4: ContentMap = {
       title: "Ortalama Efektif Basınç (MEP)",
       introduction: "MEP, silindir hacmi boyunca sabit uygulandığında aynı işi üretecek sanal basınçtır. Motor performans karşılaştırmasının temel parametresidir.",
       sections: [
-        { heading: "Tanım ve Hesap", paragraphs: [], formula: { expression: "MEP = W / V_strok\nMEP = (P × 60) / (V_strok × n × k)", variables: ["W: Bir çevrimde yapılan iş (J)", "V_strok: Piston süpürme hacmi (m³)", "P: Güç (W)", "n: Devir (rpm)", "k: 1 (iki zamanlı) veya 0.5 (dört zamanlı)"] }, example: { problem: "Bir silindir 800 kW indike güç üretirken bore = 500 mm, strok = 2000 mm, n = 100 rpm (iki zamanlı). İndike MEP nedir?", steps: ["V_strok = π/4 × 0.5² × 2.0 = 0.3927 m³", "MEP = (800000 × 60) / (0.3927 × 100 × 1)", "MEP = 48000000 / 39.27 = 1 222 000 Pa ≈ 12.2 bar"], result: "İndike MEP = 12.2 bar. Tipik değer büyük iki zamanlı motorlar için 18-21 bar arasındadır." } }
+        { heading: "Tanım ve Hesap", paragraphs: [], formula: { expression: "MEP = W / Vstrok\nMEP = (P × 60) / (Vstrok × n × k)", variables: ["W: Bir çevrimde yapılan iş (J)", "Vstrok: Piston süpürme hacmi (m³)", "P: Güç (W)", "n: Devir (rpm)", "k: 1 (iki zamanlı) veya 0.5 (dört zamanlı)"] }, example: { problem: "Bir silindir 800 kW indike güç üretirken bore = 500 mm, strok = 2000 mm, n = 100 rpm (iki zamanlı). İndike MEP nedir?", steps: ["Vstrok = π/4 × 0.5² × 2.0 = 0.3927 m³", "MEP = (800000 × 60) / (0.3927 × 100 × 1)", "MEP = 48000000 / 39.27 = 1 222 000 Pa ≈ 12.2 bar"], result: "İndike MEP = 12.2 bar. Tipik değer büyük iki zamanlı motorlar için 18-21 bar arasındadır." } }
       ],
       keyPoints: ["IMEP: İndike güçten, BMEP: Fren gücünden hesaplanır.", "Yüksek MEP, motorun kompakt ve verimli olduğunu gösterir.", "MEP artışı turboşarj teknolojisi ile sınırlıdır."]
     },
@@ -817,7 +817,7 @@ const content4: ContentMap = {
       title: "Frekans ve Yük Kontrolü",
       introduction: "Gemi elektrik sisteminde frekans, jeneratörü tahrik eden dizel motorun hızıyla kontrol edilir. Yük değişimleri frekansı etkiler.",
       sections: [
-        { heading: "Governor (Hız Regülatörü)", paragraphs: ["Governor, motor hızını sabit tutarak frekansı kontrol eder. Yük artışında yakıt miktarını artırır, yük azalmasında azaltır.", "Elektronik governor (EG) mekanik tiplere göre daha hassas ve hızlı tepki verir."], formula: { expression: "Droop (%) = [(f_boş − f_tam yük) / f_nominal] × 100", variables: ["Tipik droop: %3-5"] } },
+        { heading: "Governor (Hız Regülatörü)", paragraphs: ["Governor, motor hızını sabit tutarak frekansı kontrol eder. Yük artışında yakıt miktarını artırır, yük azalmasında azaltır.", "Elektronik governor (EG) mekanik tiplere göre daha hassas ve hızlı tepki verir."], formula: { expression: "Droop (%) = [(fboş − ftam yük) / fnominal] × 100", variables: ["Tipik droop: %3-5"] } },
         { heading: "İzochronous ve Droop Kontrol", paragraphs: ["İzochronous: Frekans tüm yüklerde sabit. Tek jeneratör çalışmasında kullanılır.", "Droop: Yük arttıkça frekans düşer. Paralel çalışmada yük paylaşımı için gereklidir."] }
       ],
       keyPoints: ["Frekans sapması hassas ekipmanları (navigasyon, otomasyon) etkiler.", "Blackout sonrası frekans stabilizasyonu kritik prosedürdür.", "Paralel jeneratörlerde eşit droop ayarı eşit yük paylaşımı sağlar."]
@@ -862,7 +862,7 @@ const content4: ContentMap = {
       title: "Üç Fazlı Asenkron Motor",
       introduction: "Asenkron (indüksiyon) motor, gemi elektrik sistemlerinde en yaygın kullanılan motor tipidir. Pompa, fan, kompresör ve vinç tahriklerinde kullanılır.",
       sections: [
-        { heading: "Çalışma Prensibi", paragraphs: ["Stator sargılarına üç fazlı AC uygulandığında dönen manyetik alan oluşur. Bu alan rotor iletkenlerinde EMK indükler ve akım üretir. Akım taşıyan rotor iletkenleri manyetik alanda kuvvete maruz kalarak döner.", "Rotor hızı senkron hızdan her zaman düşüktür. Bu fark 'kayma' (slip) olarak adlandırılır."], formula: { expression: "n_s = 120f / p\ns = (n_s − n_r) / n_s × 100%", variables: ["n_s: Senkron hız (rpm)", "n_r: Rotor hızı", "p: Kutup sayısı", "s: Kayma (tipik %2-5)"] } }
+        { heading: "Çalışma Prensibi", paragraphs: ["Stator sargılarına üç fazlı AC uygulandığında dönen manyetik alan oluşur. Bu alan rotor iletkenlerinde EMK indükler ve akım üretir. Akım taşıyan rotor iletkenleri manyetik alanda kuvvete maruz kalarak döner.", "Rotor hızı senkron hızdan her zaman düşüktür. Bu fark 'kayma' (slip) olarak adlandırılır."], formula: { expression: "ns = 120f / p\ns = (ns − nr) / ns × 100%", variables: ["ns: Senkron hız (rpm)", "nr: Rotor hızı", "p: Kutup sayısı", "s: Kayma (tipik %2-5)"] } }
       ],
       keyPoints: ["Sincap kafes rotor en yaygın tiptir (basit, sağlam, ucuz).", "Yol alma akımı nominal akımın 5-8 katı olabilir.", "Dönme yönü, herhangi iki fazın yer değiştirilmesiyle tersine çevrilir."]
     },
@@ -870,7 +870,7 @@ const content4: ContentMap = {
       title: "Motor Yol Verme Yöntemleri",
       introduction: "Büyük motorların doğrudan şebekeye bağlanması yüksek başlangıç akımı çeker ve gerilim düşüşüne neden olur. Çeşitli yol verme yöntemleri bu sorunu çözer.",
       sections: [
-        { heading: "Yöntemler", paragraphs: [], table: { headers: ["Yöntem", "Başlangıç Akımı", "Başlangıç Torku", "Kullanım"], rows: [["DOL (Direct On Line)", "6-8 × I_n", "%100", "Küçük motorlar (<15 kW)"], ["Y-Δ (Star-Delta)", "2-3 × I_n", "%33", "Pompa, fan (düşük tork)"], ["Soft Starter", "2-4 × I_n (ayarlanabilir)", "%20-100 (ayarlanabilir)", "Orta büyüklük motorlar"], ["VFD", "~I_n", "%100+", "Tüm boyutlar, değişken hız"]] } },
+        { heading: "Yöntemler", paragraphs: [], table: { headers: ["Yöntem", "Başlangıç Akımı", "Başlangıç Torku", "Kullanım"], rows: [["DOL (Direct On Line)", "6-8 × In", "%100", "Küçük motorlar (<15 kW)"], ["Y-Δ (Star-Delta)", "2-3 × In", "%33", "Pompa, fan (düşük tork)"], ["Soft Starter", "2-4 × In (ayarlanabilir)", "%20-100 (ayarlanabilir)", "Orta büyüklük motorlar"], ["VFD", "~In", "%100+", "Tüm boyutlar, değişken hız"]] } },
         { heading: "VFD (Variable Frequency Drive)", paragraphs: ["Frekans dönüştürücü (VFD), motor hızını beslenme frekansını değiştirerek kontrol eder. V/f oranı sabit tutularak motor manyetik akısı korunur.", "Enerji tasarrufu sağlar (özellikle pompa ve fanlarda). Kübik yük karakteristiğinde %20 hız düşüşü ~%50 güç tasarrufu sağlar."] }
       ],
       keyPoints: ["Y-Δ geçiş anında kısa süreli tork kesintisi olur.", "VFD harmonik bozulmaya neden olabilir (filtre gerekir).", "SOLAS gereği bazı kritik pompalar DOL yol verme ile çalışmalıdır."]
@@ -906,7 +906,7 @@ const content4: ContentMap = {
       title: "İnsülasyon Direnci Ölçümü ve İzleme",
       introduction: "İnsülasyon direnci, elektrik iletkenlerinin gövde veya toprak ile arasındaki yalıtım kalitesini gösteren ölçümdür.",
       sections: [
-        { heading: "Megger Testi", paragraphs: ["Megger (insulation resistance tester), DC test gerilimi (500V, 1000V veya 2500V) uygulayarak iletken-gövde arası direnci ölçer.", "Minimum kabul değeri: 1 MΩ (genel kural). Motor ve jeneratörlerde sıcaklık düzeltmesi uygulanır."], formula: { expression: "R_min = (Un / 1000) + 1  [MΩ]  (genel kural)", variables: ["Un: Nominal gerilim (V)"] } },
+        { heading: "Megger Testi", paragraphs: ["Megger (insulation resistance tester), DC test gerilimi (500V, 1000V veya 2500V) uygulayarak iletken-gövde arası direnci ölçer.", "Minimum kabul değeri: 1 MΩ (genel kural). Motor ve jeneratörlerde sıcaklık düzeltmesi uygulanır."], formula: { expression: "Rmin = (Un / 1000) + 1  [MΩ]  (genel kural)", variables: ["Un: Nominal gerilim (V)"] } },
         { heading: "Sürekli İzleme", paragraphs: ["Insulation monitoring device (IMD) bara-gövde arası izolasyon direncini sürekli ölçer. Değer eşiğin altına düştüğünde alarm verir.", "IT (izole nötr) sistemde tek toprak kaçağı alarm, ikinci kaçak trip yapar."] }
       ],
       keyPoints: ["Islak ortamda izolasyon direnci düşer (nem emilimi).", "Motor çalıştırma öncesi megger testi rutin uygulamadır.", "Düşük izolasyon direnci yangın ve elektrik çarpması riskini artırır."]

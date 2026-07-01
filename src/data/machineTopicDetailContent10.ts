@@ -538,10 +538,10 @@ const content10: ContentMap = {
             "Aşınma hızı (wear rate) mm/1000 saat olarak hesaplanır."
           ],
           formula: {
-            expression: "Aşınma hızı = (D_ölçülen − D_nominal) / Çalışma saati × 1000",
+            expression: "Aşınma hızı = (Dölçülen − Dnominal) / Çalışma saati × 1000",
             variables: [
-              "D_ölçülen = mevcut iç çap (mm)",
-              "D_nominal = orijinal iç çap (mm)",
+              "Dölçülen = mevcut iç çap (mm)",
+              "Dnominal = orijinal iç çap (mm)",
               "Çalışma saati = liner toplam çalışma süresi"
             ]
           },

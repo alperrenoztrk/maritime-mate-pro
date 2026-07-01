@@ -345,10 +345,10 @@ export const navigation: CourseTopic = {
       source: { code: "Radar plotting — CPA/TCPA" },
       note: "Vektör bileşenleri (x: doğu, y: kuzey) girilir. tCPA negatifse hedef uzaklaşmaktadır.",
       inputs: [
-        { key: "rx", label: "R_x", unit: "nm", placeholder: "4" },
-        { key: "ry", label: "R_y", unit: "nm", placeholder: "6" },
-        { key: "vx", label: "Vrel_x", unit: "knot", placeholder: "-3" },
-        { key: "vy", label: "Vrel_y", unit: "knot", placeholder: "-5" },
+        { key: "rx", label: "Rx", unit: "nm", placeholder: "4" },
+        { key: "ry", label: "Ry", unit: "nm", placeholder: "6" },
+        { key: "vx", label: "Vrelx", unit: "knot", placeholder: "-3" },
+        { key: "vy", label: "Vrely", unit: "knot", placeholder: "-5" },
       ],
       calculate: (v) => {
         const v2 = v.vx * v.vx + v.vy * v.vy;

@@ -757,7 +757,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     if (!isNaN(KMT) && !isNaN(KG)) {
       const GMT = KMT - KG; // GM_T = KM_T - KG
       setWeightCenterResults({ kg: KG, gmt: GMT });
-      toast({ title: "GM Hesaplandı", description: `GM_T: ${GMT.toFixed(3)} m` });
+      toast({ title: "GM Hesaplandı", description: `GMT: ${GMT.toFixed(3)} m` });
     } else if (!isNaN(totalMoment) && !isNaN(totalWeight) && totalWeight > 0) {
       const newKG = totalMoment / totalWeight; // KG = Σ(wi * KGi) / Σwi
       setWeightCenterResults({ kg: newKG, gmt: 0 });
@@ -903,7 +903,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const gmt = (w * l) / (Delta * Math.tan(phiRad)); // GM_T = w*l/(Δ*tan φ)
 
     setInclinationResults({ gmt });
-    toast({ title: "İnklinasyon Deneyi Sonucu", description: `GM_T: ${gmt.toFixed(3)} m` });
+    toast({ title: "İnklinasyon Deneyi Sonucu", description: `GMT: ${gmt.toFixed(3)} m` });
   };
 
   // 8. Yalpa Periyodu
@@ -1020,7 +1020,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const hl = parseFloat(craneGG1Inputs.loadHeight);
     const Delta = parseFloat(craneGG1Inputs.displacement);
     if ([w, hh, hl, Delta].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, h_kanca, h_yük, Δ girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Geçerli w, hkanca, hyük, Δ girin', variant: 'destructive' });
       return;
     }
     if (!runStabilityLogic("craneGG1", { displacement: Delta })) {
@@ -1211,7 +1211,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const rhoSea = parseFloat(fsmGeneralInputs.rhoSea);
     const n = parseFloat(fsmGeneralInputs.n) || 1;
     if ([L, B, Delta, rhoFluid, rhoSea].some(isNaN) || Delta === 0) {
-      toast({ title: 'Hata', description: 'Geçerli L, B, Δ, ρ_sıvı, ρ_deniz girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Geçerli L, B, Δ, ρsıvı, ρdeniz girin', variant: 'destructive' });
       return;
     }
     const I = (L * Math.pow(B, 3)) / 12;
@@ -1237,7 +1237,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     const B = parseFloat(damagedStabInputs.B);
     const Ld = parseFloat(damagedStabInputs.Ldam);
     if ([w, L, B, Ld].some(isNaN) || (L * B - Ld * B) === 0) {
-      toast({ title: 'Hata', description: 'Geçerli w, L, B, L_yaralı girin', variant: 'destructive' });
+      toast({ title: 'Hata', description: 'Geçerli w, L, B, Lyaralı girin', variant: 'destructive' });
       return;
     }
     const dT = w / (L * B - Ld * B);
@@ -1365,14 +1365,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     {
       title: "Enine Stabilite Detayları",
       items: [
-        "KM_T (m)",
+        "KMT (m)",
         "Toplam moment (t·m)",
         "Toplam ağırlık (t)",
         "Düşey şift h (m)",
         "Tank uzunluğu/genişliği (m)",
         "Akışkan yoğunluğu (t/m³)",
         "Gemi hacmi ∇ (m³)",
-        "GM_corr (m)",
+        "GMcorr (m)",
         "KN (m)",
         "Rüzgar basıncı q (Pa)",
         "Yanal alan A (m²)",
@@ -1835,18 +1835,18 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
 
           {/* Crane (Bumba) GG1 */}
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Bumba ile GG₁ (GG₁ = w·(h_kanca − h_yük)/Δ)</h4>
+            <h4 className="font-semibold mb-3">Bumba ile GG₁ (GG₁ = w·(hkanca − hyük)/Δ)</h4>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
               <div>
                 <Label>w (t)</Label>
                 <Input value={craneGG1Inputs.weight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, weight: e.target.value}))} />
               </div>
               <div>
-                <Label>h_kanca (m)</Label>
+                <Label>hkanca (m)</Label>
                 <Input value={craneGG1Inputs.hookHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, hookHeight: e.target.value}))} />
               </div>
               <div>
-                <Label>h_yük (m)</Label>
+                <Label>hyük (m)</Label>
                 <Input value={craneGG1Inputs.loadHeight} onChange={(e)=> setCraneGG1Inputs(p=>({...p, loadHeight: e.target.value}))} />
               </div>
               <div>
@@ -2245,7 +2245,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">2. Ağırlık Merkezi ve GM</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <Label htmlFor="weight-kmt">KM_T [m]</Label>
+                <Label htmlFor="weight-kmt">KMT [m]</Label>
                 <Input
                   id="weight-kmt"
                   type="number"
@@ -2293,7 +2293,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-green-500">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div><strong>KG:</strong> {weightCenterResults.kg.toFixed(3)} m</div>
-                  <div><strong>GM_T:</strong> {weightCenterResults.gmt.toFixed(3)} m</div>
+                  <div><strong>GMT:</strong> {weightCenterResults.gmt.toFixed(3)} m</div>
                 </div>
               </div>
             )}
@@ -2336,7 +2336,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="shift-gmt">GM_T [m]</Label>
+                <Label htmlFor="shift-gmt">GMT [m]</Label>
                 <Input
                   id="shift-gmt"
                   type="number"
@@ -2432,7 +2432,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="text-sm">
                   <div><strong>FSC:</strong> {freeSurfaceResults.fsc.toFixed(4)} m</div>
                   <div className="text-xs mt-1 text-amber-600 dark:text-amber-400">
-                    GM_corr = GM_T - ΣFSC
+                    GMcorr = GMT - ΣFSC
                   </div>
                 </div>
               </div>
@@ -2446,7 +2446,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <h4 className="font-semibold mb-3">5. GZ ve Moment Hesaplamaları</h4>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <Label htmlFor="gz-gmcorr">GM_corr [m]</Label>
+                <Label htmlFor="gz-gmcorr">GMcorr [m]</Label>
                 <Input
                   id="gz-gmcorr"
                   type="number"
@@ -2612,9 +2612,9 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             {inclinationResults && (
               <div className="mt-4 p-4 bg-white dark:bg-gray-600 rounded border-l-4 border-indigo-500">
                 <div className="text-sm">
-                  <div><strong>GM_T:</strong> {inclinationResults.gmt.toFixed(3)} m</div>
+                  <div><strong>GMT:</strong> {inclinationResults.gmt.toFixed(3)} m</div>
                   <div className="text-xs mt-1 text-indigo-600 dark:text-indigo-400">
-                    GM_T = w·l/(Δ·tan φ)
+                    GMT = w·l/(Δ·tan φ)
                   </div>
                 </div>
               </div>
@@ -2636,7 +2636,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="roll-gmcorr">GM_corr [m]</Label>
+                <Label htmlFor="roll-gmcorr">GMcorr [m]</Label>
                 <Input
                   id="roll-gmcorr"
                   type="number"
@@ -2665,7 +2665,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="text-sm">
                   <div><strong>Yalpa Periyodu:</strong> {rollPeriodResults.period.toFixed(2)} saniye</div>
                   <div className="text-xs mt-1 text-teal-600 dark:text-teal-400">
-                    T = 2π·k/√(g·GM_corr)
+                    T = 2π·k/√(g·GMcorr)
                   </div>
                 </div>
               </div>
@@ -2693,7 +2693,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 />
               </div>
               <div>
-                <Label htmlFor="loll2-bmt">BM_T [m]</Label>
+                <Label htmlFor="loll2-bmt">BMT [m]</Label>
                 <Input
                   id="loll2-bmt"
                   type="number"
@@ -2712,7 +2712,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="text-sm">
                   <div><strong>Loll Açısı:</strong> {lollResults.lollAngle.toFixed(2)}°</div>
                   <div className="text-xs mt-1 text-red-600 dark:text-red-400">
-                    tan φ_loll ≈ √(-2·GM/BM_T)
+                    tan φloll ≈ √(-2·GM/BMT)
                   </div>
                 </div>
               </div>
@@ -3081,7 +3081,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                   </div>
                   <div className="mt-2 text-xs text-amber-900/90 dark:text-amber-100/90">
                     <div className="font-semibold">Formül</div>
-                    <div>GM_corr = GM − ΣFSC; ΔKG = FSM / Δ</div>
+                    <div>GMcorr = GM − ΣFSC; ΔKG = FSM / Δ</div>
                     <div className="mt-1 font-semibold">Anlam</div>
                     <div>Serbest yüzey düzeltmesi GM'yi azaltır.</div>
                   </div>
@@ -3241,7 +3241,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <span className={`font-medium ${weatherResult.ok ? 'text-green-700' : 'text-red-700'}`}>{weatherResult.ok ? 'Sağlandı' : 'Sağlanmadı'}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Denge Açısı φ_eq:</span>
+                        <span>Denge Açısı φeq:</span>
                         <span className="font-medium">{weatherResult.phiEq.toFixed(1)}°</span>
                       </div>
                     </div>

@@ -3638,7 +3638,7 @@ export const navigationLessonFlows: LessonFlow[] = [
         category: NAV,
         question: "Rüzgâr da varsa CTS nasıl düzeltilir?",
         options: [
-          "CTS_final = CTS ± Leeway (önce leeway açısı, sonra akıntı vektörü)",
+          "CTSfinal = CTS ± Leeway (önce leeway açısı, sonra akıntı vektörü)",
           "CTS değişmez",
           "Leeway akıntıyla aynıdır",
           "Yalnızca leeway uygulanır",
@@ -4848,7 +4848,7 @@ export const navigationLessonFlows: LessonFlow[] = [
           "Mesafe=DLong×DLat",
         ],
         correctAnswer: 0,
-        explanation: "Departure=DLong×cos(Lat_ort); sonra dik üçgenden kurs ve mesafe.",
+        explanation: "Departure=DLong×cos(Latort); sonra dik üçgenden kurs ve mesafe.",
       },
       {
         id: 2,
@@ -5200,9 +5200,9 @@ export const navigationLessonFlows: LessonFlow[] = [
         category: NAV,
         question: "Yatay konum hatası HDOP ile nasıl ilişkilidir?",
         options: [
-          "σ_yatay = HDOP × σ_ölçüm",
-          "σ_yatay = σ_ölçüm / HDOP",
-          "σ_yatay = HDOP + σ_ölçüm",
+          "σyatay = HDOP × σölçüm",
+          "σyatay = σölçüm / HDOP",
+          "σyatay = HDOP + σölçüm",
           "HDOP hatayı etkilemez",
         ],
         correctAnswer: 0,

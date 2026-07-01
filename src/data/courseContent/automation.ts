@@ -77,7 +77,7 @@ export const automation: CourseTopic = {
       ],
       source: { code: "RTD/Pt100 direnç-sıcaklık bağıntısı (IEC 60751)", detail: "α = 0,00385 1/°C (standart Pt100)" },
       inputs: [
-        { key: "rt", label: "Ölçülen Direnç (R_t)", unit: "Ω", placeholder: "138.5" },
+        { key: "rt", label: "Ölçülen Direnç (Rt)", unit: "Ω", placeholder: "138.5" },
         { key: "r0", label: "R₀ (0°C direnci)", unit: "Ω", placeholder: "100" },
         { key: "alpha", label: "α katsayısı", unit: "1/°C", placeholder: "0.00385" },
       ],

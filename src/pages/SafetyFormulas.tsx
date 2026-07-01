@@ -23,8 +23,8 @@ const safetyFormulas = [
     variables: [
       "M: Gerekli CO₂ miktarı (kg)",
       "V: Korunan hacim (m³)",
-      "ρ_gas ≈ 1.84 kg/m³ (20°C'de)",
-      "ρ_liq ≈ 770 kg/m³ (15°C'de)"
+      "ρgas ≈ 1.84 kg/m³ (20°C'de)",
+      "ρliq ≈ 770 kg/m³ (15°C'de)"
     ],
     note: "Pratik: Makine dairesi için hacmin %40'ı × 1.5 kg/m³"
   },

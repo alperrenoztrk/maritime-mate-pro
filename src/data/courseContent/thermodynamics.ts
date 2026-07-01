@@ -41,21 +41,21 @@ export const thermodynamics: CourseTopic = {
       id: "carnot-efficiency",
       name: "Carnot Verimi",
       group: "Termodinamik Yasaları",
-      formula: "η = 1 − (T_L / T_H)",
+      formula: "η = 1 − (TL / TH)",
       variables: [
-        { symbol: "T_H", label: "Sıcak kaynak sıcaklığı", unit: "K" },
-        { symbol: "T_L", label: "Soğuk kaynak sıcaklığı", unit: "K" },
+        { symbol: "TH", label: "Sıcak kaynak sıcaklığı", unit: "K" },
+        { symbol: "TL", label: "Soğuk kaynak sıcaklığı", unit: "K" },
       ],
       source: { code: "Termodinamiğin İkinci Yasası (Carnot teoremi)" },
       note: "Girişler °C alınır, hesaplamada mutlak sıcaklığa (K) çevrilir: T(K) = T(°C) + 273,15.",
       inputs: [
-        { key: "th", label: "Sıcak Kaynak (T_H)", unit: "°C", placeholder: "500" },
-        { key: "tl", label: "Soğuk Kaynak (T_L)", unit: "°C", placeholder: "30" },
+        { key: "th", label: "Sıcak Kaynak (TH)", unit: "°C", placeholder: "500" },
+        { key: "tl", label: "Soğuk Kaynak (TL)", unit: "°C", placeholder: "30" },
       ],
       calculate: (v) => {
         const TH = v.th + 273.15;
         const TL = v.tl + 273.15;
-        if (TH <= 0) return [{ label: "Hata", value: "T_H mutlak sıfırın üstünde olmalı" }];
+        if (TH <= 0) return [{ label: "Hata", value: "TH mutlak sıfırın üstünde olmalı" }];
         const eta = (1 - TL / TH) * 100;
         return [{ label: "Carnot Verimi (η)", value: `${eta.toFixed(2)} %` }];
       },
@@ -64,9 +64,9 @@ export const thermodynamics: CourseTopic = {
       id: "entropy-change",
       name: "Entropi Değişimi",
       group: "Termodinamik Yasaları",
-      formula: "ΔS = Q_rev / T",
+      formula: "ΔS = Qrev / T",
       variables: [
-        { symbol: "Q_rev", label: "Tersinir ısı geçişi", unit: "kJ" },
+        { symbol: "Qrev", label: "Tersinir ısı geçişi", unit: "kJ" },
         { symbol: "T", label: "Mutlak sıcaklık", unit: "K" },
       ],
       source: { code: "Termodinamiğin İkinci Yasası (Clausius eşitliği)" },
@@ -285,7 +285,7 @@ export const thermodynamics: CourseTopic = {
         { symbol: "ΔT₂", label: "Diğer uçtaki sıcaklık farkı", unit: "°C" },
       ],
       source: { code: "Isı eşanjörü tasarımı (karşı akış)" },
-      note: "Karşı akış: ΔT₁ = T_sıcak,giriş − T_soğuk,çıkış ; ΔT₂ = T_sıcak,çıkış − T_soğuk,giriş.",
+      note: "Karşı akış: ΔT₁ = Tsıcak,giriş − Tsoğuk,çıkış ; ΔT₂ = Tsıcak,çıkış − Tsoğuk,giriş.",
       inputs: [
         { key: "t1i", label: "Sıcak Giriş", unit: "°C", placeholder: "90" },
         { key: "t1o", label: "Sıcak Çıkış", unit: "°C", placeholder: "60" },
@@ -327,22 +327,22 @@ export const thermodynamics: CourseTopic = {
       id: "absolute-pressure",
       name: "Mutlak Basınç",
       group: "Temel Kavramlar",
-      formula: "P_abs = P_gauge + P_atm",
+      formula: "Pabs = Pgauge + Patm",
       variables: [
-        { symbol: "P_abs", label: "Mutlak basınç", unit: "bar" },
-        { symbol: "P_gauge", label: "Gösterge (manometre) basıncı", unit: "bar" },
-        { symbol: "P_atm", label: "Atmosfer basıncı", unit: "bar" },
+        { symbol: "Pabs", label: "Mutlak basınç", unit: "bar" },
+        { symbol: "Pgauge", label: "Gösterge (manometre) basıncı", unit: "bar" },
+        { symbol: "Patm", label: "Atmosfer basıncı", unit: "bar" },
       ],
       source: { code: "Mutlak/gösterge basınç tanımı" },
-      note: "Deniz seviyesinde P_atm ≈ 1,013 bar. Vakum durumunda gösterge basıncı negatif girilir.",
+      note: "Deniz seviyesinde Patm ≈ 1,013 bar. Vakum durumunda gösterge basıncı negatif girilir.",
       inputs: [
-        { key: "pg", label: "Gösterge Basıncı (P_gauge)", unit: "bar", placeholder: "6" },
-        { key: "patm", label: "Atmosfer Basıncı (P_atm)", unit: "bar", placeholder: "1.013" },
+        { key: "pg", label: "Gösterge Basıncı (Pgauge)", unit: "bar", placeholder: "6" },
+        { key: "patm", label: "Atmosfer Basıncı (Patm)", unit: "bar", placeholder: "1.013" },
       ],
       calculate: (v) => {
         const pabs = v.pg + v.patm;
         return [
-          { label: "Mutlak Basınç (P_abs)", value: `${pabs.toFixed(3)} bar` },
+          { label: "Mutlak Basınç (Pabs)", value: `${pabs.toFixed(3)} bar` },
           { label: "Mutlak Basınç", value: `${(pabs * 100).toFixed(1)} kPa` },
         ];
       },
@@ -557,28 +557,28 @@ export const thermodynamics: CourseTopic = {
       id: "hx-effectiveness",
       name: "Eşanjör Etkinliği (ε-NTU)",
       group: "Isı Transferi",
-      formula: "ε = Q / Q_max = Q / [C_min · (T_h,in − T_c,in)]",
+      formula: "ε = Q / Qmax = Q / [Cmin · (Th,in − Tc,in)]",
       variables: [
         { symbol: "ε", label: "Eşanjör etkinliği (0-1)" },
         { symbol: "Q", label: "Gerçek ısı transferi", unit: "kW" },
-        { symbol: "C_min", label: "Küçük ısı kapasite debisi (ṁ·cp)", unit: "kW/K" },
-        { symbol: "T_h,in − T_c,in", label: "Giriş sıcaklık farkı", unit: "K" },
+        { symbol: "Cmin", label: "Küçük ısı kapasite debisi (ṁ·cp)", unit: "kW/K" },
+        { symbol: "Th,in − Tc,in", label: "Giriş sıcaklık farkı", unit: "K" },
       ],
       source: { code: "Isı eşanjörü etkinlik-NTU yöntemi" },
-      note: "Q_max = C_min·(T_sıcak,giriş − T_soğuk,giriş). Etkinlik 0-1 aralığındadır.",
+      note: "Qmax = Cmin·(Tsıcak,giriş − Tsoğuk,giriş). Etkinlik 0-1 aralığındadır.",
       inputs: [
         { key: "q", label: "Gerçek Isı Transferi (Q)", unit: "kW", placeholder: "300" },
-        { key: "cmin", label: "C_min (ṁ·cp)", unit: "kW/K", placeholder: "12" },
+        { key: "cmin", label: "Cmin (ṁ·cp)", unit: "kW/K", placeholder: "12" },
         { key: "thi", label: "Sıcak Akışkan Giriş", unit: "°C", placeholder: "90" },
         { key: "tci", label: "Soğuk Akışkan Giriş", unit: "°C", placeholder: "20" },
       ],
       calculate: (v) => {
         const dt = v.thi - v.tci;
-        if (v.cmin <= 0 || dt <= 0) return [{ label: "Hata", value: "C_min ve giriş farkı pozitif olmalı" }];
+        if (v.cmin <= 0 || dt <= 0) return [{ label: "Hata", value: "Cmin ve giriş farkı pozitif olmalı" }];
         const qmax = v.cmin * dt;
         const eps = v.q / qmax;
         return [
-          { label: "Q_max", value: `${qmax.toFixed(1)} kW` },
+          { label: "Qmax", value: `${qmax.toFixed(1)} kW` },
           { label: "Etkinlik (ε)", value: `${eps.toFixed(3)}  (${(eps * 100).toFixed(1)} %)` },
         ];
       },

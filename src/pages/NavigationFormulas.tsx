@@ -192,11 +192,11 @@ d = 2R × arcsin(√(sin²((φ₂−φ₁)/2) + cosφ₁ · cosφ₂ · sin²((�
 İlk Kurs (θ₀):
 θ₀ = atan2(sinΔλ · cosφ₂, cosφ₁ · sinφ₂ − sinφ₁ · cosφ₂ · cosΔλ)
 
-Son Kurs (θ_f):
-θ_f = atan2(sinΔλ · cosφ₁, −cosφ₂ · sinφ₁ + sinφ₂ · cosφ₁ · cosΔλ)
+Son Kurs (θf):
+θf = atan2(sinΔλ · cosφ₁, −cosφ₂ · sinφ₁ + sinφ₂ · cosφ₁ · cosΔλ)
 
 Vertex Enlemi:
-φ_vertex = arccos(|sinθ₀ · cosφ₁|)
+φvertex = arccos(|sinθ₀ · cosφ₁|)
 
 Composite GC:
 Kutuplara yaklaşmamak için yüksek enlemde GC leg + RL leg ile birleştir.
@@ -321,7 +321,7 @@ Kalan Mesafe = Planlanan Toplam Mesafe − DMG`}</pre>
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6">{`sin(CTS − TR) = (c / V) · sin(set − TR)
 SOG = V · cos(CTS − TR) + c · cos(set − TR)`}</pre>
-                <div className="text-xs text-muted-foreground">TR: istenen rota, V: gemi sürati, c/set: akıntı. ETA_düzeltilmiş = Mesafe_plan / SOG.</div>
+                <div className="text-xs text-muted-foreground">TR: istenen rota, V: gemi sürati, c/set: akıntı. ETAdüzeltilmiş = Mesafeplan / SOG.</div>
               </div>
             </CardContent>
             )}
@@ -411,14 +411,14 @@ D.Long (dakika) = 60 · Δλ · cosφ̄
 Mesafe (nm) ≈ √(D.Lat² + D.Long²)
 
 Geographical (Horizon) Range:
-d = 2.08 · √h_m  (nm, h metre)
-veya d = 1.17 · √h_ft (nm, h feet)
+d = 2.08 · √hm  (nm, h metre)
+veya d = 1.17 · √hft (nm, h feet)
 
 Radar/VHF Horizon (refraksiyon dahil):
 d = 2.23 · (√h₁ + √h₂)  (h metre)
 
 Light Geographic Range (USCG Light List):
-d = 2.08 · (√h_observer + √h_light)  (h metre)
+d = 2.08 · (√hobserver + √hlight)  (h metre)
 Not: Luminous range; nominal ışık gücü ve meteorolojik görüşe bağlıdır.`}</pre>
               </div>
             </CardContent>
@@ -441,7 +441,7 @@ Not: Luminous range; nominal ışık gücü ve meteorolojik görüşe bağlıdı
 Lat₂ = Lat₁ + Δφ, Lon₂ = Lon₁ + Δλ
 
 EP (Estimated Position):
-Set/Drift → vektörel ekleme: R_EP = R_DR + (c · t)
+Set/Drift → vektörel ekleme: REP = RDR + (c · t)
 
 Running Fix:
 1) İlk kerteriz konumu DR ile ileri taşınır
@@ -466,7 +466,7 @@ SMG = DMG / Geçen Süre`}</pre>
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6">{`Relative → True Bearing:
-Brg_T = Heading_T + Brg_R (360° normalize)
+BrgT = HeadingT + BrgR (360° normalize)
 Compass → Magnetic → True: Cc + Dev + Var = Ct
 
 İki Kerteriz:
@@ -499,7 +499,7 @@ Running Fix (taşınmış kerteriz):
 ROT (°/dk) = (30 × V(kn)) / R(turning radius, m)
 
 Advance & Transfer:
-Advance ≈ V · t_align (rota değişene kadar alınan mesafe)
+Advance ≈ V · talign (rota değişene kadar alınan mesafe)
 Transfer ≈ R × tan(ΔC / 2)
 
 Wheel-Over Point:
@@ -528,7 +528,7 @@ Squat (open water) ≈ (V(kn)²) / (100 · beam_m)
 Safe Speed: TSS/COG/SOG, görüş ve manevra mesafesine bağlı
 Safe Passing Distance: dCPA > 1-2 NM (trafik durumuna göre)
 Wheel-over mesafeleri: pilot card ve manevra el kitabı değerleri
-No-Go Area: CD + HoT − UKC_lim < 0 → yasak bölge`}</pre>
+No-Go Area: CD + HoT − UKClim < 0 → yasak bölge`}</pre>
               </div>
             </CardContent>
             )}
@@ -545,9 +545,9 @@ No-Go Area: CD + HoT − UKC_lim < 0 → yasak bölge`}</pre>
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6">{`Toplam Mesafe = Σ leg mesafeleri
-Leg ETA = Mesafe_leg / SOG + ETD_leg
-Wheel-Over noktası: WOP_time = (Transfer + emniyet) / SOG
-Abort Point: t_abort = mesafe güvenli liman / SOG
+Leg ETA = Mesafeleg / SOG + ETDleg
+Wheel-Over noktası: WOPtime = (Transfer + emniyet) / SOG
+Abort Point: tabort = mesafe güvenli liman / SOG
 TSS geçişi: XTD ≤ limit, hız ≤ sınır, VTS bildirimi
 UKC kontrolü: HoT + CD − (Draft + Squat) ≥ güvenli pay`}</pre>
               </div>
@@ -570,7 +570,7 @@ UKC kontrolü: HoT + CD − (Draft + Squat) ≥ güvenli pay`}</pre>
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6">{`Radar Range:
-R_max = 2.35 · (√h_radar + √h_target)
+Rmax = 2.35 · (√hradar + √htarget)
 
 ARPA Vectors:
 True Vector = Relative + Own Ship
@@ -582,11 +582,11 @@ c = 3×10⁸ m/s (radar)
 c = 1500 m/s (sonar)
 
 Relative / True Motion:
-V_rel = V_target − V_own (vektörel)
-Course/Speed Target = atan2(V_rel_y, V_rel_x), |V_rel|
+Vrel = Vtarget − Vown (vektörel)
+Course/Speed Target = atan2(V_rel_y, V_rel_x), |Vrel|
 
 Manual Plot Δt:
-Relative displacement / Δt → V_rel; CPA/TCPA grafikle doğrula.
+Relative displacement / Δt → Vrel; CPA/TCPA grafikle doğrula.
 
 Parallel Index:
 Sabit mesafe → güvenli geçiş`}</pre>
@@ -651,15 +651,15 @@ CTS = TR + arcsin((c/V) · sin(set − TR))`}</pre>
 6. saat: 1/12 · TR
 
 Height of Tide:
-H = Low + (Rule_of_Twelfths × Tidal_Range)
-UKC = Charted_Depth + H − Draft − Squat
+H = Low + (Rule_of_Twelfths × TidalRange)
+UKC = ChartedDepth + H − Draft − Squat
 
 Harmonik Analiz:
 h(t) = M + Σ[Aᵢ · cos(ωᵢt + φᵢ)]
 
 Secondary Port:
 H₂ = H₁ + Diff
-T₂ = T₁ + Time_Diff
+T₂ = T₁ + TimeDiff
 
 Kaynaklar: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.`}</pre>
               </div>
@@ -777,9 +777,9 @@ Tablolar: HO-249/HO-229 sight reduction tabloları ve Nautical Almanac verileri.
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6">{`XTD ≤ limit (genelde 0.5-1.0 NM)
-Safety Contour = max(Chart Datum + UKC_pay, tavsiye edilen)
-Safety Depth = Draft + Squat + UKC_pay
-Look-ahead Time = t_look = mesafe alarm / SOG
+Safety Contour = max(Chart Datum + UKCpay, tavsiye edilen)
+Safety Depth = Draft + Squat + UKCpay
+Look-ahead Time = tlook = mesafe alarm / SOG
 Route Check: shallow contour, isolated danger, ENC güncelliği
 BRM: anti-grounding alarm, cross-track alarm, ETA per leg`}</pre>
               </div>
@@ -810,7 +810,7 @@ Total Drift = Leeway + Current
 Track Made Good = Course ± Drift
 
 Time to Rescue:
-t = d / (V_rescue + V_drift)
+t = d / (Vrescue + Vdrift)
 
 Emergency Position:
 lat/lon → Degrees, Minutes, Seconds

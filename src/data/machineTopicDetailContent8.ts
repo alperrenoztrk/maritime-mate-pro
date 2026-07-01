@@ -49,13 +49,13 @@ const content8: ContentMap = {
             "Stator sargısında indüklenen EMK etkin (RMS) değeri sargı faktörü, frekans, manyetik akı ve sarım sayısına bağlıdır."
           ],
           formula: {
-            expression: "E = 4,44 × f × N × Φ × k_w",
+            expression: "E = 4,44 × f × N × Φ × kw",
             variables: [
               "E = indüklenen EMK (V)",
               "f = frekans (Hz)",
               "N = sarım sayısı",
               "Φ = manyetik akı (Wb)",
-              "k_w = sargı faktörü (≈ 0,9-0,96)"
+              "kw = sargı faktörü (≈ 0,9-0,96)"
             ]
           }
         },
@@ -78,19 +78,19 @@ const content8: ContentMap = {
             "Jeneratör verimi çıkış gücünün giriş gücüne oranıdır. Kayıplar; bakır kayıpları, demir kayıpları, mekanik kayıplar ve sürükleme kayıplarından oluşur."
           ],
           formula: {
-            expression: "η = (P_çıkış / P_giriş) × 100 = P_çıkış / (P_çıkış + P_kayıp) × 100",
+            expression: "η = (Pçıkış / Pgiriş) × 100 = Pçıkış / (Pçıkış + Pkayıp) × 100",
             variables: [
               "η = verim (%)",
-              "P_çıkış = elektrik çıkış gücü (kW)",
-              "P_giriş = mekanik giriş gücü (kW)",
-              "P_kayıp = toplam kayıplar (kW)"
+              "Pçıkış = elektrik çıkış gücü (kW)",
+              "Pgiriş = mekanik giriş gücü (kW)",
+              "Pkayıp = toplam kayıplar (kW)"
             ]
           },
           example: {
             problem:
               "1000 kW çıkış gücü olan bir jeneratörde toplam kayıp 80 kW ise verimi hesaplayınız.",
             steps: [
-              "η = P_çıkış / (P_çıkış + P_kayıp) × 100",
+              "η = Pçıkış / (Pçıkış + Pkayıp) × 100",
               "η = 1000 / (1000 + 80) × 100",
               "η = 1000 / 1080 × 100"
             ],
@@ -121,10 +121,10 @@ const content8: ContentMap = {
           heading: "Gerilim Regülasyon Hesabı",
           paragraphs: [],
           formula: {
-            expression: "VR% = ((V_boşta − V_tam_yük) / V_tam_yük) × 100",
+            expression: "VR% = ((Vboşta − Vtamyük) / Vtamyük) × 100",
             variables: [
               "VR% = gerilim regülasyonu (%)",
-              "V_boşta = boşta çalışma gerilimi (V)",
+              "Vboşta = boşta çalışma gerilimi (V)",
               "V_tam_yük = tam yükteki gerilim (V)"
             ]
           },
@@ -172,12 +172,12 @@ const content8: ContentMap = {
           heading: "Droop Ayarı",
           paragraphs: [],
           formula: {
-            expression: "Droop% = ((f_boşta − f_tam_yük) / f_nominal) × 100",
+            expression: "Droop% = ((fboşta − ftamyük) / fnominal) × 100",
             variables: [
               "Droop% = frekans düşümü yüzdesi",
-              "f_boşta = boşta frekans (Hz)",
+              "fboşta = boşta frekans (Hz)",
               "f_tam_yük = tam yükte frekans (Hz)",
-              "f_nominal = nominal frekans (Hz)"
+              "fnominal = nominal frekans (Hz)"
             ]
           },
           example: {
@@ -661,21 +661,21 @@ const content8: ContentMap = {
             "Kısa devre akımı, jeneratör subtransient reaktansı ve sistem empedansı ile belirlenir."
           ],
           formula: {
-            expression: "I_kd = V / (√3 × Z_toplam)",
+            expression: "Ikd = V / (√3 × Ztoplam)",
             variables: [
-              "I_kd = kısa devre akımı (A)",
+              "Ikd = kısa devre akımı (A)",
               "V = hat gerilimi (V)",
-              "Z_toplam = arıza noktasına kadar toplam empedans (Ω)"
+              "Ztoplam = arıza noktasına kadar toplam empedans (Ω)"
             ]
           },
           example: {
             problem:
               "440V sistemde jeneratör subtransient reaktansı X''d = %12 ve jeneratör gücü 800 kVA ise olası kısa devre akımını hesaplayınız.",
             steps: [
-              "I_nominal = S / (√3 × V) = 800.000 / (1,732 × 440) = 1050 A",
-              "I_kd = I_nominal / X''d(pu) = 1050 / 0,12"
+              "Inominal = S / (√3 × V) = 800.000 / (1,732 × 440) = 1050 A",
+              "Ikd = Inominal / X''d(pu) = 1050 / 0,12"
             ],
-            result: "I_kd ≈ 8750 A. Bara kısa devre akımı 8750 A seviyesindedir; devre kesicinin kesme kapasitesi bu değerin üzerinde olmalıdır."
+            result: "Ikd ≈ 8750 A. Bara kısa devre akımı 8750 A seviyesindedir; devre kesicinin kesme kapasitesi bu değerin üzerinde olmalıdır."
           }
         },
         {
@@ -724,9 +724,9 @@ const content8: ContentMap = {
           heading: "Ters Güç Güç Hesabı",
           paragraphs: [],
           formula: {
-            expression: "P_ters = V × I × cosφ (negatif yönde)",
+            expression: "Pters = V × I × cosφ (negatif yönde)",
             variables: [
-              "P_ters = ters güç (kW)",
+              "Pters = ters güç (kW)",
               "V = gerilim (V)",
               "I = akım (A)",
               "cosφ = güç faktörü"
@@ -833,18 +833,18 @@ const content8: ContentMap = {
             "Stator sargılarına uygulanan üç fazlı gerilim, döner manyetik alan oluşturur. Bu alan rotor iletkenlerinde akım indükler ve oluşan kuvvet rotoru döndürür. Rotor her zaman döner alandan yavaş döner; bu farka kayma (slip) denir."
           ],
           formula: {
-            expression: "s = (n_s − n_r) / n_s × 100",
+            expression: "s = (ns − nr) / ns × 100",
             variables: [
               "s = kayma (%)",
-              "n_s = senkron hız (d/d) = 120f/P",
-              "n_r = rotor hızı (d/d)"
+              "ns = senkron hız (d/d) = 120f/P",
+              "nr = rotor hızı (d/d)"
             ]
           },
           example: {
             problem:
               "4 kutuplu, 60 Hz motor 1740 d/d'da dönüyorsa kaymayı hesaplayınız.",
             steps: [
-              "n_s = 120 × 60 / 4 = 1800 d/d",
+              "ns = 120 × 60 / 4 = 1800 d/d",
               "s = (1800 − 1740) / 1800 × 100"
             ],
             result: "s = %3,33. Tam yükte tipik kayma değeri %2-5 arasındadır."
@@ -947,12 +947,12 @@ const content8: ContentMap = {
             "Modern uygulamalarda thyristor doğrultucular veya chopper devreler ile hassas DC motor kontrolü sağlanır."
           ],
           formula: {
-            expression: "n = (V − I_a × R_a) / (k × Φ)",
+            expression: "n = (V − Ia × Ra) / (k × Φ)",
             variables: [
               "n = devir hızı",
               "V = armatür gerilimi",
-              "I_a = armatür akımı",
-              "R_a = armatür direnci",
+              "Ia = armatür akımı",
+              "Ra = armatür direnci",
               "k = motor sabiti",
               "Φ = manyetik akı"
             ]

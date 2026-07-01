@@ -48,7 +48,7 @@ export const seamanship: CourseTopic = {
         { symbol: "V", label: "Rüzgâr hızı", unit: "m/s" },
       ],
       source: { code: "Rüzgâr basıncı / sürükleme kuvveti bağıntısı" },
-      note: "Sonuç Newton (N) cinsindedir; 0,613 = ½·ρ_hava (≈1,226 kg/m³).",
+      note: "Sonuç Newton (N) cinsindedir; 0,613 = ½·ρhava (≈1,226 kg/m³).",
       inputs: [
         { key: "cd", label: "Cd", unit: "", placeholder: "1.0" },
         { key: "a", label: "Alan (A)", unit: "m²", placeholder: "500" },

@@ -47,10 +47,10 @@ export const erm: CourseTopic = {
       id: "risk-reduction-factor",
       name: "Risk Azaltma Faktörü",
       group: "Risk Değerlendirme",
-      formula: "RRF = Risk_öncesi / Risk_sonrası",
+      formula: "RRF = Risköncesi / Risksonrası",
       variables: [
-        { symbol: "Risk_öncesi", label: "Önlem öncesi risk puanı" },
-        { symbol: "Risk_sonrası", label: "Önlem sonrası risk puanı" },
+        { symbol: "Risköncesi", label: "Önlem öncesi risk puanı" },
+        { symbol: "Risksonrası", label: "Önlem sonrası risk puanı" },
       ],
       source: { code: "Risk azaltma değerlendirmesi (RRF > 1: önlem etkili)" },
       note: "Önlem öncesi ve sonrası risk puanı girilir; RRF > 1 ise önlem etkilidir.",
@@ -126,7 +126,7 @@ export const erm: CourseTopic = {
       id: "watch-effectiveness",
       name: "Vardiya Etkinliği",
       group: "İnsan Faktörü",
-      formula: "η_vardiya = max(0, 100 − Olay × 10 − max(0, GörevYükü − 4) × 5)",
+      formula: "ηvardiya = max(0, 100 − Olay × 10 − max(0, GörevYükü − 4) × 5)",
       variables: [
         { symbol: "Personel", label: "Makine personeli", unit: "kişi" },
         { symbol: "Vardiya", label: "Vardiya süresi", unit: "saat" },

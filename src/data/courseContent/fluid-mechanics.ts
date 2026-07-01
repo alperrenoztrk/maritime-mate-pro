@@ -121,7 +121,7 @@ export const fluidMechanics: CourseTopic = {
         const hf = vals.f * (vals.l / vals.d) * (vals.v * vals.v) / (2 * 9.81);
         const dp = vals.rho * 9.81 * hf;
         return [
-          { label: "Yük Kaybı (h_f)", value: `${hf.toFixed(2)} m` },
+          { label: "Yük Kaybı (hf)", value: `${hf.toFixed(2)} m` },
           { label: "Basınç Kaybı (ΔP)", value: `${(dp / 1000).toFixed(2)} kPa` },
         ];
       },
@@ -176,7 +176,7 @@ export const fluidMechanics: CourseTopic = {
       ],
       calculate: (v) => {
         const npsha = (v.pa - v.pv) * 1000 / (v.rho * 9.81) + v.hs - v.hf;
-        return [{ label: "NPSH_A", value: `${npsha.toFixed(2)} m` }];
+        return [{ label: "NPSHA", value: `${npsha.toFixed(2)} m` }];
       },
     },
     {
@@ -242,23 +242,23 @@ export const fluidMechanics: CourseTopic = {
       id: "hydrostatic-force",
       name: "Hidrostatik Kuvvet (Düzlem Yüzey)",
       group: "Hidrostatik",
-      formula: "F = ρ·g·h_c·A",
+      formula: "F = ρ·g·hc·A",
       variables: [
         { symbol: "F", label: "Bileşke hidrostatik kuvvet", unit: "N" },
         { symbol: "ρ", label: "Akışkan yoğunluğu", unit: "kg/m³" },
         { symbol: "g", label: "Yerçekimi ivmesi", unit: "9,81 m/s²" },
-        { symbol: "h_c", label: "Yüzey ağırlık merkezinin derinliği", unit: "m" },
+        { symbol: "hc", label: "Yüzey ağırlık merkezinin derinliği", unit: "m" },
         { symbol: "A", label: "Islak yüzey alanı", unit: "m²" },
       ],
       source: { code: "Düzlem yüzeye etkiyen hidrostatik kuvvet" },
-      note: "h_c, yüzeyin geometrik merkezinin sıvı yüzeyinden derinliğidir (gösterge basıncı esas alınır). Kapak/perde/tank cidarı hesaplarında kullanılır.",
+      note: "hc, yüzeyin geometrik merkezinin sıvı yüzeyinden derinliğidir (gösterge basıncı esas alınır). Kapak/perde/tank cidarı hesaplarında kullanılır.",
       inputs: [
         { key: "rho", label: "Yoğunluk (ρ)", unit: "kg/m³", placeholder: "1025" },
-        { key: "hc", label: "Merkez Derinliği (h_c)", unit: "m", placeholder: "3" },
+        { key: "hc", label: "Merkez Derinliği (hc)", unit: "m", placeholder: "3" },
         { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "2" },
       ],
       calculate: (v) => {
-        if (v.rho <= 0 || v.hc < 0 || v.a <= 0) return [{ label: "Hata", value: "ρ ve A pozitif, h_c ≥ 0 olmalı" }];
+        if (v.rho <= 0 || v.hc < 0 || v.a <= 0) return [{ label: "Hata", value: "ρ ve A pozitif, hc ≥ 0 olmalı" }];
         const f = v.rho * 9.81 * v.hc * v.a;
         return [
           { label: "Hidrostatik Kuvvet (F)", value: `${(f / 1000).toFixed(2)} kN` },

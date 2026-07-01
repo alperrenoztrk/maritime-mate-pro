@@ -27,7 +27,7 @@ Sagging: (dF + dA)/2 < dM`,
 Moment = Ağırlık × KG Mesafesi
 
 Yeni KG:
-KG_yeni = Toplam Moment / Toplam Ağırlık
+KGyeni = Toplam Moment / Toplam Ağırlık
 
 GM Hesaplama:
 GM = KM − KG`,
@@ -51,7 +51,7 @@ Meyil Açısı:
     title: "2.4. Bumba/Kreyn ile GM Değişimi",
     group: "Enine Denge Hesapları",
     content: `GM Azalması:
-GG₁ = (w × (h_cunda − h_yük)) / Δ`,
+GG₁ = (w × (hcunda − hyük)) / Δ`,
   },
   "havuzlama-gm": {
     title: "2.5. Havuzlamada Kritik GM",
@@ -117,7 +117,7 @@ m = V × ρ`,
   "blok-katsayisi": {
     title: "5.2. Blok Katsayısı",
     group: "Diğer Hesaplar",
-    content: `C_b = ∇ / (L × B × T)`,
+    content: `Cb = ∇ / (L × B × T)`,
   },
   "fwa-yogunluk": {
     title: "5.3. Yoğunluk Farkı ve FWA",
@@ -152,17 +152,17 @@ A = (3h/8) · (y0 + 3y1 + 3y2 + y3)`,
   "fsm": {
     title: "6.4. Serbest Yüzey Momenti (FSM)",
     group: "SOLAS Stabilite Kriterleri",
-    content: `GG₁ = (L × B³) / (12 × V) × (ρ_sıvı / ρ_deniz) × (1 / n²)`,
+    content: `GG₁ = (L × B³) / (12 × V) × (ρsıvı / ρdeniz) × (1 / n²)`,
   },
   "yalpa-periyodu": {
     title: "6.5. Yalpa Periyodu",
     group: "SOLAS Stabilite Kriterleri",
-    content: `T = (C_b × B) / √(GM)`,
+    content: `T = (Cb × B) / √(GM)`,
   },
   "yarali-stabilite": {
     title: "6.6. Yaralı Stabilite",
     group: "SOLAS Stabilite Kriterleri",
-    content: `ΔT = w / ((L × B) − (L_yaralı × B))`,
+    content: `ΔT = w / ((L × B) − (Lyaralı × B))`,
   },
 
   // 7. Yük Hesapları
@@ -170,10 +170,10 @@ A = (3h/8) · (y0 + 3y1 + 3y2 + y3)`,
     title: "7.1. Müsaade Edilen Yük",
     group: "Yük Hesapları",
     content: `Maksimum Yük Yüksekliği:
-h_max = SF × PL
+hmax = SF × PL
 
 Maksimum Yük Miktarı:
-w_max = V_ambar / SF`,
+wmax = Vambar / SF`,
   },
   "sicaklik-yogunluk": {
     title: "7.2. Sıcaklıkla Yoğunluk Değişimi",

@@ -91,9 +91,9 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Basınç",
         category: MAK,
         question: "Mutlak basınç hangi bağıntıyla bulunur?",
-        options: ["P_abs = P_gauge + P_atm", "P_abs = P_gauge − P_atm", "P_abs = P_atm − P_gauge", "P_abs = P_gauge × P_atm"],
+        options: ["Pabs = Pgauge + Patm", "Pabs = Pgauge − Patm", "Pabs = Patm − Pgauge", "Pabs = Pgauge × Patm"],
         correctAnswer: 0,
-        explanation: "Mutlak basınç = manometrik basınç + atmosfer basıncı (P_atm ≈ 1.013 bar).",
+        explanation: "Mutlak basınç = manometrik basınç + atmosfer basıncı (Patm ≈ 1.013 bar).",
       },
       {
         id: 2,
@@ -102,7 +102,7 @@ export const machineLessonFlows: LessonFlow[] = [
         question: "Gösterge 7.5 bar ise mutlak basınç yaklaşık kaçtır?",
         options: ["8.513 bar", "6.487 bar", "7.5 bar", "1.013 bar"],
         correctAnswer: 0,
-        explanation: "P_abs = 7.5 + 1.013 = 8.513 bar.",
+        explanation: "Pabs = 7.5 + 1.013 = 8.513 bar.",
       },
       {
         id: 3,
@@ -426,9 +426,9 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Entropi Tanımı",
         category: MAK,
         question: "Entropi değişimi (tersinir) hangi bağıntıyla tanımlanır?",
-        options: ["dS = δQ_rev / T", "dS = δQ_rev × T", "dS = T / δQ_rev", "dS = P·dV"],
+        options: ["dS = δQrev / T", "dS = δQrev × T", "dS = T / δQrev", "dS = P·dV"],
         correctAnswer: 0,
-        explanation: "dS = δQ_rev / T; tersinir ısı transferinin mutlak sıcaklığa oranıdır.",
+        explanation: "dS = δQrev / T; tersinir ısı transferinin mutlak sıcaklığa oranıdır.",
       },
       {
         id: 2,
@@ -616,22 +616,22 @@ export const machineLessonFlows: LessonFlow[] = [
           "İzobarik → izokorik → izotermik → politropik",
         ],
         correctAnswer: 0,
-        explanation: "Carnot: izotermik genleşme (T_H'dan ısı al), adyabatik genleşme, izotermik sıkıştırma (T_L'ye ısı ver), adyabatik sıkıştırma.",
+        explanation: "Carnot: izotermik genleşme (TH'dan ısı al), adyabatik genleşme, izotermik sıkıştırma (TL'ye ısı ver), adyabatik sıkıştırma.",
       },
       {
         id: 2,
         sectionRef: "Carnot Verimi",
         category: MAK,
         question: "Carnot verimi hangi bağıntıyla bulunur?",
-        options: ["η = 1 − T_L/T_H", "η = 1 − T_H/T_L", "η = T_L/T_H", "η = 1 − Q_H/Q_L"],
+        options: ["η = 1 − TL/TH", "η = 1 − TH/TL", "η = TL/TH", "η = 1 − QH/QL"],
         correctAnswer: 0,
-        explanation: "η_Carnot = 1 − T_L/T_H (mutlak sıcaklıklar); hiçbir gerçek makine bunu aşamaz.",
+        explanation: "ηCarnot = 1 − TL/TH (mutlak sıcaklıklar); hiçbir gerçek makine bunu aşamaz.",
       },
       {
         id: 3,
         sectionRef: "Carnot Verimi",
         category: MAK,
-        question: "T_H = 1800 K, T_L = 600 K için maksimum teorik verim kaçtır?",
+        question: "TH = 1800 K, TL = 600 K için maksimum teorik verim kaçtır?",
         options: ["%66.7", "%33.3", "%50", "%100"],
         correctAnswer: 0,
         explanation: "η = 1 − 600/1800 = 1 − 0.333 = 0.667 → %66.7 (gerçek verim kayıplar nedeniyle altında).",
@@ -1270,7 +1270,7 @@ export const machineLessonFlows: LessonFlow[] = [
         question: "h₁=400, h₂=450, h₄=250 kJ/kg ise COP kaçtır?",
         options: ["3.0", "0.33", "1.5", "9.0"],
         correctAnswer: 0,
-        explanation: "Q_evap=400−250=150; W=450−400=50; COP=150/50=3.0 (1 kW ile 3 kW soğutma).",
+        explanation: "Qevap=400−250=150; W=450−400=50; COP=150/50=3.0 (1 kW ile 3 kW soğutma).",
       },
     ],
   },
@@ -1458,19 +1458,19 @@ export const machineLessonFlows: LessonFlow[] = [
         id: 2,
         sectionRef: "Çalışma Prensibi",
         category: MAK,
-        question: "4 kutuplu, 60 Hz motorun senkron devri nedir? (n_s = 120f/P)",
+        question: "4 kutuplu, 60 Hz motorun senkron devri nedir? (ns = 120f/P)",
         options: ["1800 rpm", "1746 rpm", "3600 rpm", "1500 rpm"],
         correctAnswer: 0,
-        explanation: "n_s = 120×60/4 = 1800 rpm (senkron devir).",
+        explanation: "ns = 120×60/4 = 1800 rpm (senkron devir).",
       },
       {
         id: 3,
         sectionRef: "Çalışma Prensibi",
         category: MAK,
-        question: "%3 kayma ile aynı motorun çalışma devri (n_r) yaklaşık kaçtır?",
+        question: "%3 kayma ile aynı motorun çalışma devri (nr) yaklaşık kaçtır?",
         options: ["1746 rpm", "1800 rpm", "1854 rpm", "1700 rpm"],
         correctAnswer: 0,
-        explanation: "n_r = n_s(1−s) = 1800×(1−0.03) = 1746 rpm.",
+        explanation: "nr = ns(1−s) = 1800×(1−0.03) = 1746 rpm.",
       },
     ],
   },
@@ -1484,7 +1484,7 @@ export const machineLessonFlows: LessonFlow[] = [
         sectionRef: "Yöntemler",
         category: MAK,
         question: "DOL (direkt) yol vermede başlangıç akımı yaklaşık kaçtır?",
-        options: ["6–7 × I_n", "1 × I_n", "0.5 × I_n", "20 × I_n"],
+        options: ["6–7 × In", "1 × In", "0.5 × In", "20 × In"],
         correctAnswer: 0,
         explanation: "DOL başlangıç akımı nominal akımın 6–7 katıdır; küçük motorlar (<15 kW) için uygundur.",
       },
@@ -1495,16 +1495,16 @@ export const machineLessonFlows: LessonFlow[] = [
         question: "Y-Δ (yıldız-üçgen) yol vermede başlangıç torku ne olur?",
         options: ["%33'e düşer", "%100 kalır", "%200'e çıkar", "Sıfır olur"],
         correctAnswer: 0,
-        explanation: "Y-Δ başlangıç akımını 2–2.5×I_n'e düşürür ama torku %33'e indirir; ağır yüklerde uygun olmayabilir.",
+        explanation: "Y-Δ başlangıç akımını 2–2.5×In'e düşürür ama torku %33'e indirir; ağır yüklerde uygun olmayabilir.",
       },
       {
         id: 3,
         sectionRef: "Yöntemler",
         category: MAK,
         question: "En düşük başlangıç akımı ve hassas hız kontrolü hangi yöntemle sağlanır?",
-        options: ["VFD (< 1.5 × I_n)", "DOL", "Y-Δ", "Soft starter"],
+        options: ["VFD (< 1.5 × In)", "DOL", "Y-Δ", "Soft starter"],
         correctAnswer: 0,
-        explanation: "VFD başlangıç akımını <1.5×I_n'de tutar, %100+ tork ve frekans kontrolüyle enerji tasarrufu sağlar.",
+        explanation: "VFD başlangıç akımını <1.5×In'de tutar, %100+ tork ve frekans kontrolüyle enerji tasarrufu sağlar.",
       },
     ],
   },
@@ -2078,13 +2078,13 @@ export const machineLessonFlows: LessonFlow[] = [
         category: MAK,
         question: "Pompada kavitasyondan kaçınmak için güvenli çalışma koşulu nedir?",
         options: [
-          "NPSH_A > NPSH_R + güvenlik payı",
-          "NPSH_A < NPSH_R",
-          "NPSH_A = 0",
-          "NPSH_R = atmosfer basıncı",
+          "NPSHA > NPSHR + güvenlik payı",
+          "NPSHA < NPSHR",
+          "NPSHA = 0",
+          "NPSHR = atmosfer basıncı",
         ],
         correctAnswer: 0,
-        explanation: "Sistemin sağladığı NPSH_A, pompanın gerektirdiği NPSH_R + güvenlik payından (0.5–1.0 m) büyük olmalıdır.",
+        explanation: "Sistemin sağladığı NPSHA, pompanın gerektirdiği NPSHR + güvenlik payından (0.5–1.0 m) büyük olmalıdır.",
       },
       {
         id: 2,
@@ -3419,8 +3419,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Fren gücü (brake power) ve mekanik verim",
     blocks: [{ sectionTitles: ["Formüller"] }],
     questions: [
-      { id: 1, sectionRef: "Formüller", category: MAK, question: "Mekanik verim nasıl tanımlanır?", options: ["η_mek = P_b / P_i (fren gücü / indike güç)", "η_mek = P_i / P_b", "η_mek = P_b × P_i", "η_mek = P_i − P_b"], correctAnswer: 0, explanation: "Tipik 0.85-0.95; sürtünme gücü = P_i − P_b." },
-      { id: 2, sectionRef: "Formüller", category: MAK, question: "İndike güç 5000 kW, mekanik verim %90 ise fren gücü kaçtır?", options: ["4500 kW", "5555 kW", "500 kW", "4500 W"], correctAnswer: 0, explanation: "P_b = 0.90×5000 = 4500 kW; sürtünme = 500 kW." },
+      { id: 1, sectionRef: "Formüller", category: MAK, question: "Mekanik verim nasıl tanımlanır?", options: ["ηmek = Pb / Pi (fren gücü / indike güç)", "ηmek = Pi / Pb", "ηmek = Pb × Pi", "ηmek = Pi − Pb"], correctAnswer: 0, explanation: "Tipik 0.85-0.95; sürtünme gücü = Pi − Pb." },
+      { id: 2, sectionRef: "Formüller", category: MAK, question: "İndike güç 5000 kW, mekanik verim %90 ise fren gücü kaçtır?", options: ["4500 kW", "5555 kW", "500 kW", "4500 W"], correctAnswer: 0, explanation: "Pb = 0.90×5000 = 4500 kW; sürtünme = 500 kW." },
     ],
   },
   {
@@ -4122,7 +4122,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Otto çevrimi (benzinli motor)",
     blocks: [{ sectionTitles: ["Çevrim Aşamaları ve P-V Yorumu", "Termal Verim ve Sıkıştırma Oranı Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "Termal Verim ve Sıkıştırma Oranı Etkisi", category: MAK, question: "Otto çevriminin teorik termal verimi neye bağlıdır?", options: ["Yalnızca sıkıştırma oranı (r) ve γ değerine", "Sadece devire", "Sadece silindir sayısına", "Yakıt rengine"], correctAnswer: 0, explanation: "η_Otto = 1 − (1/r)^(γ−1); verim yalnızca sıkıştırma oranı ve γ'ya bağlıdır. Pratikte vuruntu (knock) ve NOx sıkıştırma oranını sınırlar." },
+      { id: 1, sectionRef: "Termal Verim ve Sıkıştırma Oranı Etkisi", category: MAK, question: "Otto çevriminin teorik termal verimi neye bağlıdır?", options: ["Yalnızca sıkıştırma oranı (r) ve γ değerine", "Sadece devire", "Sadece silindir sayısına", "Yakıt rengine"], correctAnswer: 0, explanation: "ηOtto = 1 − (1/r)^(γ−1); verim yalnızca sıkıştırma oranı ve γ'ya bağlıdır. Pratikte vuruntu (knock) ve NOx sıkıştırma oranını sınırlar." },
       { id: 2, sectionRef: "Çevrim Aşamaları ve P-V Yorumu", category: MAK, question: "Otto çevriminde iş üreten strok hangisidir?", options: ["3→4 adyabatik genleşme", "1→2 sıkıştırma", "2→3 ısı alımı", "4→1 ısı atımı"], correctAnswer: 0, explanation: "Çevrim net işinin büyük kısmı 3→4 adyabatik genleşme strokunda üretilir." },
     ],
   },
@@ -4149,7 +4149,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Brayton çevrimi (gaz türbini)",
     blocks: [{ sectionTitles: ["Temel Süreçler ve Gerçek Sistem Sapmaları", "Verim, Basınç Oranı ve Özgül İş", "Deniz Uygulaması ve Kombine Çevrim"] }],
     questions: [
-      { id: 1, sectionRef: "Verim, Basınç Oranı ve Özgül İş", category: MAK, question: "İdeal Brayton verimi basınç oranı arttıkça nasıl değişir?", options: ["Artar (ancak kompresör işi büyür ve malzeme sıcaklık limiti devreye girer)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "η_Brayton = 1 − (1/r_p)^((γ−1)/γ); verim basınç oranıyla artar ama Back Work Ratio (w_c/w_t) ve TIT limiti optimumu belirler." },
+      { id: 1, sectionRef: "Verim, Basınç Oranı ve Özgül İş", category: MAK, question: "İdeal Brayton verimi basınç oranı arttıkça nasıl değişir?", options: ["Artar (ancak kompresör işi büyür ve malzeme sıcaklık limiti devreye girer)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "ηBrayton = 1 − (1/rp)^((γ−1)/γ); verim basınç oranıyla artar ama Back Work Ratio (wc/wt) ve TIT limiti optimumu belirler." },
       { id: 2, sectionRef: "Deniz Uygulaması ve Kombine Çevrim", category: MAK, question: "Gaz türbini egzoz ısısı (450-550°C) nasıl değerlendirilir?", options: ["HRSG üzerinden Rankine alt çevrimine verilerek (COGAS/COGES)", "Doğrudan denize atılarak", "Yakıta karıştırılarak", "Hiç kullanılmaz"], correctAnswer: 0, explanation: "Gaz türbini egzozu HRSG ile Rankine alt çevrimine verilerek kombine çevrimde (COGAS/COGES) toplam verim artırılır." },
     ],
   },
@@ -4159,7 +4159,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", "COP Kavramı ve Enerji Yorumu"] }],
     questions: [
       { id: 1, sectionRef: "Buhar Sıkıştırmalı Soğutma Çevrimi Bileşenleri", category: MAK, question: "Soğutma çevriminin ana güç tüketicisi hangi bileşendir?", options: ["Kompresör", "Evaporatör", "Genleşme valfi", "Kondenser"], correctAnswer: 0, explanation: "Kompresör düşük basınçlı buharı sıkıştırır ve çevrimin ana güç tüketicisidir; evaporatör soğutma etkisini oluşturur." },
-      { id: 2, sectionRef: "COP Kavramı ve Enerji Yorumu", category: MAK, question: "COP'nin 1'den büyük olması neden termodinamiğe aykırı değildir?", options: ["Cihaz ısıyı üretmez; düşük sıcaklıktan çekip yüksek sıcaklığa taşır", "Enerji yoktan var edilir", "Ölçüm hatasıdır", "Aslında aykırıdır"], correctAnswer: 0, explanation: "COP_ısı pompası = COP_soğutma + 1; cihaz ısıyı taşıdığı için COP>1 mümkündür ve termodinamiğe aykırı değildir." },
+      { id: 2, sectionRef: "COP Kavramı ve Enerji Yorumu", category: MAK, question: "COP'nin 1'den büyük olması neden termodinamiğe aykırı değildir?", options: ["Cihaz ısıyı üretmez; düşük sıcaklıktan çekip yüksek sıcaklığa taşır", "Enerji yoktan var edilir", "Ölçüm hatasıdır", "Aslında aykırıdır"], correctAnswer: 0, explanation: "COPısı pompası = COPsoğutma + 1; cihaz ısıyı taşıdığı için COP>1 mümkündür ve termodinamiğe aykırı değildir." },
     ],
   },
   {
@@ -4176,7 +4176,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Çok katmanlı duvar ve silindirik iletim",
     blocks: [{ sectionTitles: ["Çok Katmanlı Düz Duvar", "Silindirik Duvar (Boru)"] }],
     questions: [
-      { id: 1, sectionRef: "Çok Katmanlı Düz Duvar", category: MAK, question: "Çok katmanlı düz duvarda ısı iletimi hangi kavramla hesaplanır?", options: ["Seri ısıl direnç (R_toplam = ΣL_i/k_iA)", "Paralel kapasitans", "Logaritmik basınç", "Newton viskozitesi"], correctAnswer: 0, explanation: "Seri ısıl direnç kullanılır: R_toplam = L₁/k₁A + L₂/k₂A + … ve Q̇ = ΔT_toplam / R_toplam." },
+      { id: 1, sectionRef: "Çok Katmanlı Düz Duvar", category: MAK, question: "Çok katmanlı düz duvarda ısı iletimi hangi kavramla hesaplanır?", options: ["Seri ısıl direnç (Rtoplam = ΣL_i/kiA)", "Paralel kapasitans", "Logaritmik basınç", "Newton viskozitesi"], correctAnswer: 0, explanation: "Seri ısıl direnç kullanılır: Rtoplam = L₁/k₁A + L₂/k₂A + … ve Q̇ = ΔTtoplam / Rtoplam." },
       { id: 2, sectionRef: "Silindirik Duvar (Boru)", category: MAK, question: "Silindirik (boru) geometride iletim neden logaritmik ifade içerir?", options: ["Yarıçapla ısı transfer alanı değiştiğinden", "Sıcaklık sabit olduğundan", "Basınç değişmediğinden", "Malzeme tek olduğundan"], correctAnswer: 0, explanation: "Silindirik geometride alan yarıçapla değişir; Q̇ = 2πkL(T₁−T₂)/ln(r₂/r₁) ifadesi kullanılır." },
     ],
   },
@@ -4185,7 +4185,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Newton soğuma yasası (taşınım)",
     blocks: [{ sectionTitles: ["Yasa İfadesi"] }],
     questions: [
-      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Konvektif (taşınımla) ısı transferi neye bağlıdır?", options: ["Yüzey alanı, sıcaklık farkı ve taşınım katsayısı (h)", "Sadece renk", "Sadece kütle", "Sadece basınç"], correctAnswer: 0, explanation: "Q̇ = h·A·(T_yüzey − T_akışkan); ısı, taşınım katsayısı h, alan ve sıcaklık farkıyla orantılıdır." },
+      { id: 1, sectionRef: "Yasa İfadesi", category: MAK, question: "Konvektif (taşınımla) ısı transferi neye bağlıdır?", options: ["Yüzey alanı, sıcaklık farkı ve taşınım katsayısı (h)", "Sadece renk", "Sadece kütle", "Sadece basınç"], correctAnswer: 0, explanation: "Q̇ = h·A·(Tyüzey − Takışkan); ısı, taşınım katsayısı h, alan ve sıcaklık farkıyla orantılıdır." },
       { id: 2, sectionRef: "Yasa İfadesi", category: MAK, question: "Newton soğuma yasasında 'h' neyi temsil eder?", options: ["Taşınım (konveksiyon) katsayısı", "Isıl iletkenlik", "Entalpi", "Yükseklik"], correctAnswer: 0, explanation: "h taşınım (konveksiyon) katsayısıdır; akış tipine ve akışkana göre değişir." },
     ],
   },
@@ -4212,8 +4212,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Toplam ısı geçiş katsayısı (U)",
     blocks: [{ sectionTitles: ["U Hesabı"] }],
     questions: [
-      { id: 1, sectionRef: "U Hesabı", category: MAK, question: "Toplam ısı geçiş katsayısı (U) hesabında hangi dirençler toplanır?", options: ["İç/dış taşınım, iletim ve fouling dirençleri (1/U = 1/h₁ + ΣL/k + 1/h₂ + R_f)", "Sadece iletim", "Sadece fouling", "Sadece taşınım"], correctAnswer: 0, explanation: "1/U = 1/h_iç + L/k + 1/h_dış + R_fouling; fouling direnci kullanım ömrüne ve temizlik aralığına bağlıdır." },
-      { id: 2, sectionRef: "U Hesabı", category: MAK, question: "Fouling (kirlenme) direnci U değerini nasıl etkiler?", options: ["Toplam direnci artırıp U'yu düşürür", "U'yu artırır", "Etkilemez", "U'yu sıfırlar ama ısı transferini artırır"], correctAnswer: 0, explanation: "R_fouling toplam dirence eklenir; arttıkça U (ve ısı transferi) düşer, bu yüzden periyodik temizlik gerekir." },
+      { id: 1, sectionRef: "U Hesabı", category: MAK, question: "Toplam ısı geçiş katsayısı (U) hesabında hangi dirençler toplanır?", options: ["İç/dış taşınım, iletim ve fouling dirençleri (1/U = 1/h₁ + ΣL/k + 1/h₂ + Rf)", "Sadece iletim", "Sadece fouling", "Sadece taşınım"], correctAnswer: 0, explanation: "1/U = 1/hiç + L/k + 1/hdış + Rfouling; fouling direnci kullanım ömrüne ve temizlik aralığına bağlıdır." },
+      { id: 2, sectionRef: "U Hesabı", category: MAK, question: "Fouling (kirlenme) direnci U değerini nasıl etkiler?", options: ["Toplam direnci artırıp U'yu düşürür", "U'yu artırır", "Etkilemez", "U'yu sıfırlar ama ısı transferini artırır"], correctAnswer: 0, explanation: "Rfouling toplam dirence eklenir; arttıkça U (ve ısı transferi) düşer, bu yüzden periyodik temizlik gerekir." },
     ],
   },
   {
@@ -4258,7 +4258,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Fouling Tipleri"] }],
     questions: [
       { id: 1, sectionRef: "Fouling Tipleri", category: MAK, question: "Deniz suyu tarafında en yaygın fouling türü nedir?", options: ["Biyolojik fouling (deniz canlıları) ve mineral çökelme", "Karbon birikimi", "Kurum", "Asit yoğuşması"], correctAnswer: 0, explanation: "Deniz suyu tarafında biyolojik fouling ve mineral çökelme; yağ tarafında karbon/çamur; egzoz tarafında kurum ve asit yoğuşması görülür." },
-      { id: 2, sectionRef: "Fouling Tipleri", category: MAK, question: "Hangi akışkanın fouling direnci (R_f) en yüksektir?", options: ["Egzoz gazı (~0.002 m²·K/W)", "Temiz deniz suyu (~0.00009)", "Motor yağı (~0.0002)", "Hepsi eşit"], correctAnswer: 0, explanation: "Egzoz gazı en yüksek R_f (~0.002) değerine sahiptir; temiz deniz suyu en düşüktür (~0.00009)." },
+      { id: 2, sectionRef: "Fouling Tipleri", category: MAK, question: "Hangi akışkanın fouling direnci (Rf) en yüksektir?", options: ["Egzoz gazı (~0.002 m²·K/W)", "Temiz deniz suyu (~0.00009)", "Motor yağı (~0.0002)", "Hepsi eşit"], correctAnswer: 0, explanation: "Egzoz gazı en yüksek Rf (~0.002) değerine sahiptir; temiz deniz suyu en düşüktür (~0.00009)." },
     ],
   },
   {
@@ -4266,8 +4266,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Eşanjör verim hesapları",
     blocks: [{ sectionTitles: ["NTU-Etkinlik Yöntemi"] }],
     questions: [
-      { id: 1, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "Eşanjör etkinliği (ε) nasıl tanımlanır?", options: ["Gerçek ısı transferinin maksimum olası transfere oranı (Q/Q_max)", "U × A", "LMTD × debi", "Sadece NTU"], correctAnswer: 0, explanation: "ε = Q_gerçek/Q_max; Q_max = C_min×(T_h,giriş − T_c,giriş). NTU = UA/C_min'dir." },
-      { id: 2, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "NTU arttıkça eşanjör etkinliği nasıl değişir?", options: ["Artar (ancak maliyet de artar)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "NTU = UA/C_min arttıkça etkinlik artar; ancak daha büyük alan/maliyet gerektirir." },
+      { id: 1, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "Eşanjör etkinliği (ε) nasıl tanımlanır?", options: ["Gerçek ısı transferinin maksimum olası transfere oranı (Q/Qmax)", "U × A", "LMTD × debi", "Sadece NTU"], correctAnswer: 0, explanation: "ε = Qgerçek/Qmax; Qmax = Cmin×(Th,giriş − Tc,giriş). NTU = UA/Cmin'dir." },
+      { id: 2, sectionRef: "NTU-Etkinlik Yöntemi", category: MAK, question: "NTU arttıkça eşanjör etkinliği nasıl değişir?", options: ["Artar (ancak maliyet de artar)", "Azalır", "Değişmez", "Sıfırlanır"], correctAnswer: 0, explanation: "NTU = UA/Cmin arttıkça etkinlik artar; ancak daha büyük alan/maliyet gerektirir." },
     ],
   },
   {
@@ -4338,8 +4338,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Mutlak ve manometrik basınç",
     blocks: [{ sectionTitles: ["Tanımlar"] }],
     questions: [
-      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Mutlak basınç neye göre ölçülür?", options: ["Tam vakuma (sıfır basınca) göre", "Atmosfere göre", "Deniz seviyesine göre", "Manometreye göre"], correctAnswer: 0, explanation: "Mutlak basınç tam vakuma göre, manometrik basınç ise atmosfer basıncına göre ölçülür: P_mutlak = P_manometrik + P_atm." },
-      { id: 2, sectionRef: "Tanımlar", category: MAK, question: "Vakum basıncı neyi ifade eder?", options: ["Atmosfer basıncının altındaki basınçları", "Tam vakumu", "En yüksek basıncı", "Sabit basıncı"], correctAnswer: 0, explanation: "Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır: P_vakum = P_atm − P_mutlak." },
+      { id: 1, sectionRef: "Tanımlar", category: MAK, question: "Mutlak basınç neye göre ölçülür?", options: ["Tam vakuma (sıfır basınca) göre", "Atmosfere göre", "Deniz seviyesine göre", "Manometreye göre"], correctAnswer: 0, explanation: "Mutlak basınç tam vakuma göre, manometrik basınç ise atmosfer basıncına göre ölçülür: Pmutlak = Pmanometrik + Patm." },
+      { id: 2, sectionRef: "Tanımlar", category: MAK, question: "Vakum basıncı neyi ifade eder?", options: ["Atmosfer basıncının altındaki basınçları", "Tam vakumu", "En yüksek basıncı", "Sabit basıncı"], correctAnswer: 0, explanation: "Vakum basıncı atmosfer basıncının altındaki basınçlar için kullanılır: Pvakum = Patm − Pmutlak." },
     ],
   },
   {
@@ -4356,8 +4356,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Düz ve eğri yüzeylere etkiyen basınç kuvveti",
     blocks: [{ sectionTitles: ["Düz Yüzeye Etki Eden Kuvvet"] }],
     questions: [
-      { id: 1, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "Düz yüzeye etkiyen toplam basınç kuvveti nasıl bulunur?", options: ["Ağırlık merkezindeki basınç × yüzey alanı (F = ρg·h_c·A)", "Sadece derinlikle", "Sadece alanla", "F = ρg/A"], correctAnswer: 0, explanation: "Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile alanının çarpımıdır: F = ρg·h_c·A." },
-      { id: 2, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "F = ρg·h_c·A formülünde h_c neyi ifade eder?", options: ["Yüzeyin ağırlık merkezinin derinliği", "Toplam derinlik", "Yüzey yüksekliği", "Basınç"], correctAnswer: 0, explanation: "h_c yüzeyin ağırlık (centroid) merkezinin sıvı yüzeyinden derinliğidir." },
+      { id: 1, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "Düz yüzeye etkiyen toplam basınç kuvveti nasıl bulunur?", options: ["Ağırlık merkezindeki basınç × yüzey alanı (F = ρg·hc·A)", "Sadece derinlikle", "Sadece alanla", "F = ρg/A"], correctAnswer: 0, explanation: "Düz yüzeye etkiyen toplam kuvvet, yüzeyin ağırlık merkezindeki basınç ile alanının çarpımıdır: F = ρg·hc·A." },
+      { id: 2, sectionRef: "Düz Yüzeye Etki Eden Kuvvet", category: MAK, question: "F = ρg·hc·A formülünde hc neyi ifade eder?", options: ["Yüzeyin ağırlık merkezinin derinliği", "Toplam derinlik", "Yüzey yüksekliği", "Basınç"], correctAnswer: 0, explanation: "hc yüzeyin ağırlık (centroid) merkezinin sıvı yüzeyinden derinliğidir." },
     ],
   },
   {
@@ -4365,8 +4365,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yüzdürme kuvveti (Arşimet)",
     blocks: [{ sectionTitles: ["Arşimet Prensibi"] }],
     questions: [
-      { id: 1, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme (buoyancy) kuvveti neye eşittir?", options: ["Batık hacim × akışkan yoğunluğu × g (taşırılan sıvının ağırlığı)", "Cismin ağırlığı", "Yüzey alanı × basınç", "Sıfır"], correctAnswer: 0, explanation: "F_b = ρ_akışkan × g × V_batık; yüzdürme kuvveti taşırılan akışkanın ağırlığına eşittir." },
-      { id: 2, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme kuvveti hangi hacme bağlıdır?", options: ["Cismin batık (su altındaki) hacmine", "Cismin toplam hacmine her zaman", "Yüzeydeki hacme", "Hacimden bağımsızdır"], correctAnswer: 0, explanation: "Yüzdürme kuvveti cismin batık hacmi (V_batık) ile orantılıdır." },
+      { id: 1, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme (buoyancy) kuvveti neye eşittir?", options: ["Batık hacim × akışkan yoğunluğu × g (taşırılan sıvının ağırlığı)", "Cismin ağırlığı", "Yüzey alanı × basınç", "Sıfır"], correctAnswer: 0, explanation: "Fb = ρakışkan × g × Vbatık; yüzdürme kuvveti taşırılan akışkanın ağırlığına eşittir." },
+      { id: 2, sectionRef: "Arşimet Prensibi", category: MAK, question: "Yüzdürme kuvveti hangi hacme bağlıdır?", options: ["Cismin batık (su altındaki) hacmine", "Cismin toplam hacmine her zaman", "Yüzeydeki hacme", "Hacimden bağımsızdır"], correctAnswer: 0, explanation: "Yüzdürme kuvveti cismin batık hacmi (Vbatık) ile orantılıdır." },
     ],
   },
   {
@@ -4410,8 +4410,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Darcy–Weisbach denklemi",
     blocks: [{ sectionTitles: ["Denklem"] }],
     questions: [
-      { id: 1, sectionRef: "Denklem", category: MAK, question: "Darcy-Weisbach denklemine göre sürtünme kaybı neye bağlıdır?", options: ["Sürtünme katsayısı, L/D oranı ve hız karesi (h_f = f·(L/D)·V²/2g)", "Sadece basınca", "Sadece sıcaklığa", "Sadece debiye"], correctAnswer: 0, explanation: "h_f = f·(L/D)·(V²/2g); sürtünme kaybı boru uzunluğu/çapı, hız karesi ve sürtünme katsayısına bağlıdır." },
-      { id: 2, sectionRef: "Denklem", category: MAK, question: "Akış hızı iki katına çıkarsa sürtünme kaybı nasıl değişir?", options: ["Yaklaşık dört katına çıkar (V² ile orantılı)", "İki katına", "Yarıya iner", "Değişmez"], correctAnswer: 0, explanation: "h_f hız karesiyle (V²) orantılı olduğundan hız 2 katına çıkınca kayıp ~4 katına çıkar." },
+      { id: 1, sectionRef: "Denklem", category: MAK, question: "Darcy-Weisbach denklemine göre sürtünme kaybı neye bağlıdır?", options: ["Sürtünme katsayısı, L/D oranı ve hız karesi (hf = f·(L/D)·V²/2g)", "Sadece basınca", "Sadece sıcaklığa", "Sadece debiye"], correctAnswer: 0, explanation: "hf = f·(L/D)·(V²/2g); sürtünme kaybı boru uzunluğu/çapı, hız karesi ve sürtünme katsayısına bağlıdır." },
+      { id: 2, sectionRef: "Denklem", category: MAK, question: "Akış hızı iki katına çıkarsa sürtünme kaybı nasıl değişir?", options: ["Yaklaşık dört katına çıkar (V² ile orantılı)", "İki katına", "Yarıya iner", "Değişmez"], correctAnswer: 0, explanation: "hf hız karesiyle (V²) orantılı olduğundan hız 2 katına çıkınca kayıp ~4 katına çıkar." },
     ],
   },
   {
@@ -4446,8 +4446,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Seri ve paralel boru sistemleri",
     blocks: [{ sectionTitles: ["Seri ve Paralel Davranış"] }],
     questions: [
-      { id: 1, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Seri bağlı borularda debi ve kayıp nasıldır?", options: ["Debi tüm borularda aynı; toplam kayıp segment kayıplarının toplamı", "Debi toplanır", "Kayıp sabit", "Basınç sıfır"], correctAnswer: 0, explanation: "Seri bağlamada Q sabittir ve hf_toplam = Σhfᵢ." },
-      { id: 2, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Paralel bağlı kollarda ne sabittir?", options: ["Her kol üzerindeki basınç kaybı (Δh); toplam debi kolların toplamı", "Debi her kolda aynı", "Hız sabit", "Hiçbir şey"], correctAnswer: 0, explanation: "Paralel bağlamada Δh sabittir, Q_toplam = ΣQᵢ; düşük dirençli kol daha çok debi taşır." },
+      { id: 1, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Seri bağlı borularda debi ve kayıp nasıldır?", options: ["Debi tüm borularda aynı; toplam kayıp segment kayıplarının toplamı", "Debi toplanır", "Kayıp sabit", "Basınç sıfır"], correctAnswer: 0, explanation: "Seri bağlamada Q sabittir ve hftoplam = Σhfᵢ." },
+      { id: 2, sectionRef: "Seri ve Paralel Davranış", category: MAK, question: "Paralel bağlı kollarda ne sabittir?", options: ["Her kol üzerindeki basınç kaybı (Δh); toplam debi kolların toplamı", "Debi her kolda aynı", "Hız sabit", "Hiçbir şey"], correctAnswer: 0, explanation: "Paralel bağlamada Δh sabittir, Qtoplam = ΣQᵢ; düşük dirençli kol daha çok debi taşır." },
     ],
   },
   {
@@ -4482,7 +4482,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Sistem eğrisi ve çalışma noktası",
     blocks: [{ sectionTitles: ["Sistem Eğrisi", "Çalışma Noktasının Kayması"] }],
     questions: [
-      { id: 1, sectionRef: "Sistem Eğrisi", category: MAK, question: "Sistem eğrisi hangi bileşenlerden oluşur?", options: ["Statik yük + debinin karesiyle artan dinamik kayıplar (H = H_statik + k·Q²)", "Sadece statik yük", "Sadece sürtünme", "Sabit bir değer"], correctAnswer: 0, explanation: "H_sistem = H_statik + k·Q²; statik yük ile debinin karesiyle artan dinamik kayıpların toplamıdır." },
+      { id: 1, sectionRef: "Sistem Eğrisi", category: MAK, question: "Sistem eğrisi hangi bileşenlerden oluşur?", options: ["Statik yük + debinin karesiyle artan dinamik kayıplar (H = Hstatik + k·Q²)", "Sadece statik yük", "Sadece sürtünme", "Sabit bir değer"], correctAnswer: 0, explanation: "Hsistem = Hstatik + k·Q²; statik yük ile debinin karesiyle artan dinamik kayıpların toplamıdır." },
       { id: 2, sectionRef: "Çalışma Noktasının Kayması", category: MAK, question: "Vana kısma (throttling) çalışma noktasını nasıl etkiler?", options: ["Sistem eğrisini dikleştirir, düşük debiye kaydırır", "Debiyi artırır", "Eğriyi düzleştirir", "Etkilemez"], correctAnswer: 0, explanation: "Throttling sistem eğrisini dikleştirip düşük debiye kaydırır; VFD ile devir ayarı verimli debi kontrolü sağlar." },
     ],
   },
@@ -4501,7 +4501,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Seçim Kriterleri"] }],
     questions: [
       { id: 1, sectionRef: "Seçim Kriterleri", category: MAK, question: "Kavitasyonu önlemek için hangi koşul sağlanmalıdır?", options: ["NPSHa > NPSHr (emniyet payıyla)", "NPSHa < NPSHr", "Debi maksimum", "Hız sıfır"], correctAnswer: 0, explanation: "Mevcut emme yükü (NPSHa) gereken emme yükünden (NPSHr) büyük olmalıdır; ayrıca çalışma noktası BEP'e yakın seçilir." },
-      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pompa şaft gücü nasıl hesaplanır?", options: ["P_şaft = ρ·g·Q·H / η", "P = Q + H", "P = η·Q", "P = ρ/H"], correctAnswer: 0, explanation: "P_şaft = ρ·g·Q·H/η; debi, basma yükü ve verime bağlıdır." },
+      { id: 2, sectionRef: "Seçim Kriterleri", category: MAK, question: "Pompa şaft gücü nasıl hesaplanır?", options: ["Pşaft = ρ·g·Q·H / η", "P = Q + H", "P = η·Q", "P = ρ/H"], correctAnswer: 0, explanation: "Pşaft = ρ·g·Q·H/η; debi, basma yükü ve verime bağlıdır." },
     ],
   },
   {
@@ -4510,7 +4510,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Seri ve Paralel"] }],
     questions: [
       { id: 1, sectionRef: "Seri ve Paralel", category: MAK, question: "Paralel pompa çalıştırma ne sağlar?", options: ["Aynı basma yükünde debilerin toplanması (yüksek debi)", "Aynı debide basınç toplanması", "Debiyi yarıya indirme", "Basıncı sıfırlama"], correctAnswer: 0, explanation: "Paralelde aynı H'de debiler toplanır (yüksek debi için); ancak sistem eğrisi dikse debi artışı sınırlıdır." },
-      { id: 2, sectionRef: "Seri ve Paralel", category: MAK, question: "Seri pompa çalıştırma hangi durumda uygundur?", options: ["Yüksek basınç gerektiren sistemler (aynı debide H toplanır)", "Yüksek debi", "Düşük basınç", "Hiçbiri"], correctAnswer: 0, explanation: "Seride aynı Q'da basma yükleri toplanır (H_top = ΣH); yüksek basınç gerektiren sistemler için uygundur." },
+      { id: 2, sectionRef: "Seri ve Paralel", category: MAK, question: "Seri pompa çalıştırma hangi durumda uygundur?", options: ["Yüksek basınç gerektiren sistemler (aynı debide H toplanır)", "Yüksek debi", "Düşük basınç", "Hiçbiri"], correctAnswer: 0, explanation: "Seride aynı Q'da basma yükleri toplanır (Htop = ΣH); yüksek basınç gerektiren sistemler için uygundur." },
     ],
   },
   {
@@ -4590,8 +4590,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Bileşik gerilme ve Von Mises kriteri",
     blocks: [{ sectionTitles: ["Eşdeğer (Von Mises) Gerilme"] }],
     questions: [
-      { id: 1, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Düzlem gerilmede Von Mises eşdeğer gerilmesi nasıl bulunur?", options: ["σ_vm = √(σ² + 3τ²)", "σ_vm = σ + τ", "σ_vm = σ·τ", "σ_vm = √(σ² − τ²)"], correctAnswer: 0, explanation: "Normal ve kayma gerilmesi bir aradayken σ_vm = √(σ² + 3τ²) hesaplanır ve akma sınırıyla karşılaştırılır." },
-      { id: 2, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Von Mises kriterine göre güvenli tasarım koşulu nedir?", options: ["σ_vm < σ_akma / SF", "σ_vm > σ_akma", "σ_vm = σ_akma", "SF gerekmez"], correctAnswer: 0, explanation: "Eşdeğer gerilme, akma sınırının güvenlik katsayısına bölümünden küçük olmalıdır: σ_vm < σ_akma/SF." },
+      { id: 1, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Düzlem gerilmede Von Mises eşdeğer gerilmesi nasıl bulunur?", options: ["σvm = √(σ² + 3τ²)", "σvm = σ + τ", "σvm = σ·τ", "σvm = √(σ² − τ²)"], correctAnswer: 0, explanation: "Normal ve kayma gerilmesi bir aradayken σvm = √(σ² + 3τ²) hesaplanır ve akma sınırıyla karşılaştırılır." },
+      { id: 2, sectionRef: "Eşdeğer (Von Mises) Gerilme", category: MAK, question: "Von Mises kriterine göre güvenli tasarım koşulu nedir?", options: ["σvm < σakma / SF", "σvm > σakma", "σvm = σakma", "SF gerekmez"], correctAnswer: 0, explanation: "Eşdeğer gerilme, akma sınırının güvenlik katsayısına bölümünden küçük olmalıdır: σvm < σakma/SF." },
     ],
   },
   {
@@ -4599,7 +4599,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Güvenlik katsayısı ve emniyet gerilmesi",
     blocks: [{ sectionTitles: ["Tanım ve Seçim"] }],
     questions: [
-      { id: 1, sectionRef: "Tanım ve Seçim", category: MAK, question: "Emniyet gerilmesi nasıl bulunur?", options: ["Akma (veya kopma/yorulma) sınırının güvenlik katsayısına bölünmesiyle (σ_akma/SF)", "Akma × SF", "Sadece çalışma gerilmesi", "SF / σ_akma"], correctAnswer: 0, explanation: "σ_emniyet = σ_akma/SF; SF, σ_akma/σ_çalışma oranıdır." },
+      { id: 1, sectionRef: "Tanım ve Seçim", category: MAK, question: "Emniyet gerilmesi nasıl bulunur?", options: ["Akma (veya kopma/yorulma) sınırının güvenlik katsayısına bölünmesiyle (σakma/SF)", "Akma × SF", "Sadece çalışma gerilmesi", "SF / σakma"], correctAnswer: 0, explanation: "σemniyet = σakma/SF; SF, σakma/σçalışma oranıdır." },
       { id: 2, sectionRef: "Tanım ve Seçim", category: MAK, question: "Güvenlik katsayısı (SF) seçiminde hangi faktör etkilidir?", options: ["Yük tipi (statik/dinamik), süneklik, sonuçların ciddiyeti ve sınıf kuralları", "Sadece renk", "Sadece fiyat", "Hiçbiri"], correctAnswer: 0, explanation: "SF; yük tipi, malzeme sünekliği, arızanın ciddiyeti ve sınıf kurallarına göre seçilir." },
     ],
   },
@@ -4609,7 +4609,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Bileşik Yükleme"] }],
     questions: [
       { id: 1, sectionRef: "Bileşik Yükleme", category: MAK, question: "Gerçek çalışmada miller hangi yüklere aynı anda maruz kalır?", options: ["Hem eğilme (M) hem burulma (T)", "Sadece eğilme", "Sadece burulma", "Sadece eksenel"], correctAnswer: 0, explanation: "Miller eğilme ve burulmaya birlikte maruz kalır; eşdeğer moment veya Von Mises kriteri kullanılır." },
-      { id: 2, sectionRef: "Bileşik Yükleme", category: MAK, question: "Bileşik yüklemede mil çapı hangi büyüklüklere bağlıdır?", options: ["Eğilme momenti (M), tork (T) ve izin verilen kayma gerilmesi", "Sadece renk", "Sadece uzunluk", "Sadece ağırlık"], correctAnswer: 0, explanation: "d ≥ ³√(16/(π·τ_izin)·√(M²+T²)); çap M, T ve τ_izin'e bağlıdır." },
+      { id: 2, sectionRef: "Bileşik Yükleme", category: MAK, question: "Bileşik yüklemede mil çapı hangi büyüklüklere bağlıdır?", options: ["Eğilme momenti (M), tork (T) ve izin verilen kayma gerilmesi", "Sadece renk", "Sadece uzunluk", "Sadece ağırlık"], correctAnswer: 0, explanation: "d ≥ ³√(16/(π·τizin)·√(M²+T²)); çap M, T ve τizin'e bağlıdır." },
     ],
   },
   {
@@ -4672,7 +4672,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Helisel Dişli ve Redüksiyon"] }],
     questions: [
       { id: 1, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Helisel dişlinin düz dişliye göre avantajı ve dezavantajı nedir?", options: ["Daha sessiz ve yüksek yük taşır; ancak eksenel itki oluşturur", "Daha gürültülü; itki yok", "Daha az yük; eksenel itki yok", "Hiç fark yok"], correctAnswer: 0, explanation: "Eğimli dişler kademeli temas sayesinde daha sessiz ve yüksek yük taşır, ancak eksenel itki oluşturur." },
-      { id: 2, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Pervane redüktörü ne işe yarar?", options: ["Motor devrini pervanenin verimli çalıştığı düşük devire indirir", "Devri artırır", "Yakıt pompalar", "Elektrik üretir"], correctAnswer: 0, explanation: "Redüksiyon oranı i = n_giriş/n_çıkış; motor devrini pervanenin verimli düşük devrine indirir. Çift girişli kutular iki makineyi tek pervaneye bağlayabilir." },
+      { id: 2, sectionRef: "Helisel Dişli ve Redüksiyon", category: MAK, question: "Pervane redüktörü ne işe yarar?", options: ["Motor devrini pervanenin verimli çalıştığı düşük devire indirir", "Devri artırır", "Yakıt pompalar", "Elektrik üretir"], correctAnswer: 0, explanation: "Redüksiyon oranı i = ngiriş/nçıkış; motor devrini pervanenin verimli düşük devrine indirir. Çift girişli kutular iki makineyi tek pervaneye bağlayabilir." },
     ],
   },
   {
@@ -4716,7 +4716,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Yorulma sınırı ve gerilme yoğunlaşması",
     blocks: [{ sectionTitles: ["S-N Eğrisi ve Çentik Etkisi"] }],
     questions: [
-      { id: 1, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Kesit değişimleri gerilmeyi nasıl etkiler?", options: ["Kt (stres konsantrasyon faktörü) kadar büyütür (σ_max = Kt·σ_nominal)", "Azaltır", "Etkilemez", "Sıfırlar"], correctAnswer: 0, explanation: "Kesit değişimleri gerilmeyi Kt kadar büyütür; keskin köşe yerine kavisli geçiş (fillet) ile azaltılır." },
+      { id: 1, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Kesit değişimleri gerilmeyi nasıl etkiler?", options: ["Kt (stres konsantrasyon faktörü) kadar büyütür (σmax = Kt·σnominal)", "Azaltır", "Etkilemez", "Sıfırlar"], correctAnswer: 0, explanation: "Kesit değişimleri gerilmeyi Kt kadar büyütür; keskin köşe yerine kavisli geçiş (fillet) ile azaltılır." },
       { id: 2, sectionRef: "S-N Eğrisi ve Çentik Etkisi", category: MAK, question: "Çeliklerde yorulma sınırının altındaki gerilmede ne mümkündür?", options: ["Sonsuz ömür", "Anında kırılma", "Hızlı aşınma", "Erime"], correctAnswer: 0, explanation: "Çeliklerde belirli bir gerilme genliğinin (yorulma sınırı) altında sonsuz ömür mümkündür." },
     ],
   },
@@ -4744,7 +4744,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Kritik Hız"] }],
     questions: [
       { id: 1, sectionRef: "Kritik Hız", category: MAK, question: "Lateral (enine) titreşime ne yol açar?", options: ["Dengesizlik (unbalance) ve yatak esnekliği", "Yakıt kalitesi", "Soğutma", "Egzoz"], correctAnswer: 0, explanation: "Dengesizlik ve yatak esnekliği şaftı enine titreştirir; kritik hızda rezonansla sehim büyür." },
-      { id: 2, sectionRef: "Kritik Hız", category: MAK, question: "Kritik hız ile çalışma devri arasında nasıl bir ilişki istenir?", options: ["Çalışma devri kritik hızdan uzak tutulur", "Eşit olmalı", "Çalışma devri kritik hıza yakın olmalı", "İlişki yok"], correctAnswer: 0, explanation: "n_kritik ∝ √(k/m); çalışma devri kritik hızdan uzak tutulur. Yatak konumu/sayısı ve şaft rijitliği kritik hızı belirler." },
+      { id: 2, sectionRef: "Kritik Hız", category: MAK, question: "Kritik hız ile çalışma devri arasında nasıl bir ilişki istenir?", options: ["Çalışma devri kritik hızdan uzak tutulur", "Eşit olmalı", "Çalışma devri kritik hıza yakın olmalı", "İlişki yok"], correctAnswer: 0, explanation: "nkritik ∝ √(k/m); çalışma devri kritik hızdan uzak tutulur. Yatak konumu/sayısı ve şaft rijitliği kritik hızı belirler." },
     ],
   },
   {
@@ -4806,8 +4806,8 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Dümen kuvveti ve tork hesabı",
     blocks: [{ sectionTitles: ["Dümen Kuvveti", "Dümen Torku"] }],
     questions: [
-      { id: 1, sectionRef: "Dümen Kuvveti", category: MAK, question: "Dümen paletine etkiyen normal kuvvet neye (hız açısından) bağlıdır?", options: ["Hızın karesine (V²)", "Hıza doğrusal", "Hızdan bağımsız", "1/V'ye"], correctAnswer: 0, explanation: "Joessel formülü F_N = K·A·V²·sin(α); kuvvet hız karesi, alan ve dümen açısının sinüsüyle artar." },
-      { id: 2, sectionRef: "Dümen Torku", category: MAK, question: "Dengeli (balanced) dümen oranı arttıkça gerekli tork nasıl değişir?", options: ["Azalır", "Artar", "Değişmez", "İkiye katlanır"], correctAnswer: 0, explanation: "Tork T = F_N·d; dengeli dümen oranı arttıkça moment kolu küçülür ve gerekli tork azalır." },
+      { id: 1, sectionRef: "Dümen Kuvveti", category: MAK, question: "Dümen paletine etkiyen normal kuvvet neye (hız açısından) bağlıdır?", options: ["Hızın karesine (V²)", "Hıza doğrusal", "Hızdan bağımsız", "1/V'ye"], correctAnswer: 0, explanation: "Joessel formülü FN = K·A·V²·sin(α); kuvvet hız karesi, alan ve dümen açısının sinüsüyle artar." },
+      { id: 2, sectionRef: "Dümen Torku", category: MAK, question: "Dengeli (balanced) dümen oranı arttıkça gerekli tork nasıl değişir?", options: ["Azalır", "Artar", "Değişmez", "İkiye katlanır"], correctAnswer: 0, explanation: "Tork T = FN·d; dengeli dümen oranı arttıkça moment kolu küçülür ve gerekli tork azalır." },
     ],
   },
   {
@@ -4851,7 +4851,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Pervane verimi ve kavitasyon",
     blocks: [{ sectionTitles: ["Pervane Verimi", "Kavitasyon"] }],
     questions: [
-      { id: 1, sectionRef: "Pervane Verimi", category: MAK, question: "Toplam pervane verimi (η_D) genellikle hangi aralıktadır?", options: ["%55-75", "%5-10", "%90-99", "%100'ün üzerinde"], correctAnswer: 0, explanation: "η_D = η₀·η_H·η_R; açık su, gövde ve nispi dönme verimlerinin çarpımıyla %55-75 arasındadır." },
+      { id: 1, sectionRef: "Pervane Verimi", category: MAK, question: "Toplam pervane verimi (ηD) genellikle hangi aralıktadır?", options: ["%55-75", "%5-10", "%90-99", "%100'ün üzerinde"], correctAnswer: 0, explanation: "ηD = η₀·ηH·ηR; açık su, gövde ve nispi dönme verimlerinin çarpımıyla %55-75 arasındadır." },
       { id: 2, sectionRef: "Kavitasyon", category: MAK, question: "Kavitasyon nasıl oluşur?", options: ["Kanat yüzeyinde basınç buharlaşma basıncının altına düşüp buhar kabarcıkları çökünce", "Yakıt yanınca", "Su ısınınca", "Hız sıfırlanınca"], correctAnswer: 0, explanation: "Basınç buharlaşma basıncının altına düşünce oluşan kabarcıklar yüksek basınç bölgesinde çöker; erozyon, gürültü ve verim kaybı yapar." },
     ],
   },
@@ -5049,7 +5049,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Egzoz gazı ekonomizeri",
     blocks: [{ sectionTitles: ["Temel Prensip ve Termodinamik Arka Plan", "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı"] }],
     questions: [
-      { id: 1, sectionRef: "Temel Prensip ve Termodinamik Arka Plan", category: MAK, question: "Egzoz gazı ekonomizerinin amacı nedir?", options: ["Bacadan atılan ısının bir kısmını geri kazanıp yardımcı kazan yakıtını azaltmak", "Egzoz basıncını artırmak", "Pervaneyi soğutmak", "Yakıt deposunu doldurmak"], correctAnswer: 0, explanation: "Ekonomizer (atık ısı kazanı) egzoz entalpisinin bir kısmını geri kazanır: Q = ṁ_gaz·c_p·(T_giriş − T_çıkış); yardımcı kazanın yaktığı yakıtı azaltır." },
+      { id: 1, sectionRef: "Temel Prensip ve Termodinamik Arka Plan", category: MAK, question: "Egzoz gazı ekonomizerinin amacı nedir?", options: ["Bacadan atılan ısının bir kısmını geri kazanıp yardımcı kazan yakıtını azaltmak", "Egzoz basıncını artırmak", "Pervaneyi soğutmak", "Yakıt deposunu doldurmak"], correctAnswer: 0, explanation: "Ekonomizer (atık ısı kazanı) egzoz entalpisinin bir kısmını geri kazanır: Q = ṁgaz·cp·(Tgiriş − Tçıkış); yardımcı kazanın yaktığı yakıtı azaltır." },
       { id: 2, sectionRef: "Kritik Limitler, Alarm Felsefesi ve Erken Uyarı", category: MAK, question: "Ekonomizer çıkış egzoz sıcaklığı asit çiğ noktasının altına düşerse ne olur?", options: ["Özellikle yüksek sülfürlü yakıtta düşük sıcaklık korozyonu hızlanır", "Verim artar", "Hiçbir şey", "Buhar üretimi durur ama korozyon olmaz"], correctAnswer: 0, explanation: "Çıkış sıcaklığı asit çiğ noktası altına düşerse düşük sıcaklık (asit) korozyonu hızlanır; bu yüzden minimum güvenli sıcaklık limiti korunur. Gaz tarafı ΔP artışı soot fire için erken uyarıdır." },
     ],
   },
@@ -5166,7 +5166,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "Ara soğutma ve son soğutma",
     blocks: [{ sectionTitles: ["Ara Soğutma (Intercooling)", "Son Soğutma (Aftercooling)"] }],
     questions: [
-      { id: 1, sectionRef: "Ara Soğutma (Intercooling)", category: MAK, question: "Kompresörde ara soğutma (intercooling) neyi azaltır?", options: ["İkinci kademe sıkıştırma işini (hava soğuyup hacmi küçülür)", "Çıkış basıncını", "Devir sayısını", "Hiçbir şey"], correctAnswer: 0, explanation: "Birinci kademe çıkışındaki sıcak hava eşanjörde soğutulur, hacmi küçülür ve ikinci kademe sıkıştırma işi azalır; ideal ara basınç P_ara = √(P₁·P₂)." },
+      { id: 1, sectionRef: "Ara Soğutma (Intercooling)", category: MAK, question: "Kompresörde ara soğutma (intercooling) neyi azaltır?", options: ["İkinci kademe sıkıştırma işini (hava soğuyup hacmi küçülür)", "Çıkış basıncını", "Devir sayısını", "Hiçbir şey"], correctAnswer: 0, explanation: "Birinci kademe çıkışındaki sıcak hava eşanjörde soğutulur, hacmi küçülür ve ikinci kademe sıkıştırma işi azalır; ideal ara basınç Para = √(P₁·P₂)." },
       { id: 2, sectionRef: "Son Soğutma (Aftercooling)", category: MAK, question: "Son soğutucu (aftercooler) ne yapar?", options: ["Son kademe çıkışındaki havayı (200-250°C) ortam sıcaklığına yakın düşürür", "Havayı ısıtır", "Yağ ekler", "Basıncı artırır"], correctAnswer: 0, explanation: "Son soğutucu, son kademe çıkışındaki sıcak havayı (200-250°C) ortam sıcaklığına yakın düşürür; oluşan kondens otomatik drenajla atılır." },
     ],
   },
@@ -5338,7 +5338,7 @@ export const machineLessonFlows: LessonFlow[] = [
     blocks: [{ sectionTitles: ["Ölçüm Yöntemleri", "Hacim-Kütle Dönüşümü"] }],
     questions: [
       { id: 1, sectionRef: "Ölçüm Yöntemleri", category: MAK, question: "En yüksek doğruluğa sahip bunker ölçüm yöntemi hangisidir?", options: ["Coriolis flowmetre (±0.1-0.5%)", "Tank sounding (±1-2%)", "Ullage (±1-2%)", "Gözle tahmin"], correctAnswer: 0, explanation: "Coriolis flowmetre ±0.1-0.5% ile en hassastır; tank sounding/ullage ±1-2%, barge tank ölçümü ±0.5-1% doğruluktadır." },
-      { id: 2, sectionRef: "Hacim-Kütle Dönüşümü", category: MAK, question: "Ölçülen hacim kütleye (metrik ton) nasıl çevrilir?", options: ["Ölçüm sıcaklığındaki yoğunlukla çarpılıp sıcaklık düzeltmesi yapılarak", "Sadece 1000'e bölünerek", "Hacimle aynıdır", "Çevrilemez"], correctAnswer: 0, explanation: "Kütle (mt) = Hacim (m³) × ρ_t/1000; sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır." },
+      { id: 2, sectionRef: "Hacim-Kütle Dönüşümü", category: MAK, question: "Ölçülen hacim kütleye (metrik ton) nasıl çevrilir?", options: ["Ölçüm sıcaklığındaki yoğunlukla çarpılıp sıcaklık düzeltmesi yapılarak", "Sadece 1000'e bölünerek", "Hacimle aynıdır", "Çevrilemez"], correctAnswer: 0, explanation: "Kütle (mt) = Hacim (m³) × ρt/1000; sıcaklık düzeltmesi ASTM/IP tablolarına göre yapılır." },
     ],
   },
   {
@@ -6363,7 +6363,7 @@ export const machineLessonFlows: LessonFlow[] = [
     topicTitle: "EEDI (Enerji Verimliliği Tasarım İndeksi)",
     blocks: [{ sectionTitles: ["EEDI Formülü", "Faz Gereklilikleri"] }],
     questions: [
-      { id: 1, sectionRef: "EEDI Formülü", category: MAK, question: "EEDI temel olarak neyi ölçer?", options: ["Taşıma işi başına CO₂ emisyonu (g CO₂/ton·mil)", "Yakıt fiyatını", "Hızı", "Mürettebat sayısını"], correctAnswer: 0, explanation: "EEDI = (P × SFC × C_F)/(DWT × V_ref) [g CO₂/ton·mil]; yeni gemilerin tasarım enerji verimliliğini ölçer." },
+      { id: 1, sectionRef: "EEDI Formülü", category: MAK, question: "EEDI temel olarak neyi ölçer?", options: ["Taşıma işi başına CO₂ emisyonu (g CO₂/ton·mil)", "Yakıt fiyatını", "Hızı", "Mürettebat sayısını"], correctAnswer: 0, explanation: "EEDI = (P × SFC × CF)/(DWT × Vref) [g CO₂/ton·mil]; yeni gemilerin tasarım enerji verimliliğini ölçer." },
       { id: 2, sectionRef: "Faz Gereklilikleri", category: MAK, question: "EEDI Faz 3 (2025) indirim oranı nedir?", options: ["%30-50 (gemi tipine göre)", "%0", "%5", "%100"], correctAnswer: 0, explanation: "Faz 0 (2013) referans, Faz 1 (2015) %10, Faz 2 (2020) %20, Faz 3 (2025) %30-50 indirim gerektirir." },
     ],
   },
