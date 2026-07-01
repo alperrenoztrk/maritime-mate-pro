@@ -1266,6 +1266,12 @@ export const certificateRegulations: RegulationItem[] = [
       "Sertifika nüshasını köprüüstü ve ofiste güncel bulundur",
       "Süveyş veya Panama kanalı geçişi planlıyorsa ilgili kanal tonaj sertifikasını hazırla",
     ],
+    amendments: [
+      { year: "1982", description: "ITC 69 yürürlüğe girdi – GT/NT hesaplaması için ilk uluslararası standart" },
+      { year: "1994", description: "Geçiş dönemi sona erdi – 1969 öncesi gemilerin eski (gross register tonnage) ölçümle devam etme muafiyeti kalktı, tüm gemiler ITC 69 tonajına geçti" },
+      { year: "2011", description: "MEPC.203(62) ile EEDI/SEEMP düzenlemeleri GT eşiklerine referans vermeye başladı" },
+      { year: "2021", description: "CII ve EEXI uygulamasında GT tabanlı eşikler (400 GT ve üzeri) referans olarak kullanılmaya devam etti" },
+    ],
     keyArticles: [
       { id: "ITC 69 Madde 6", title: "GT Hesaplaması", summary: "Brüt tonaj hesaplama formülü ve toplam kapalı hacim tanımı." },
       { id: "ITC 69 Madde 7", title: "NT Hesaplaması", summary: "Net tonaj hesaplama formülü, yük hacmi ve draft oranı." },
@@ -1296,6 +1302,16 @@ export const certificateRegulations: RegulationItem[] = [
         heading: "Eşik etkisi ve kanal tonaj sertifikaları",
         body:
           "Tonaj sertifikasının asıl işlevi, geminin tabi olacağı düzenlemeleri belirleyen 'eşik' değerlerini resmileştirmektir. GT üzerinden pek çok kural devreye girer: 300 GT'de AIS, 400 GT'de MARPOL Ek VI ve MLC, 500 GT'de SOLAS kargo gereklilikleri ve ISM gibi. Dolayısıyla bir geminin GT'si, hangi sertifikalara, kaç kişilik mürettebata ve hangi emniyet donanımına tabi olacağını doğrudan belirler; NT ise liman harçları ve geçiş ücretlerinin tabanını oluşturur. Süveyş ve Panama kanalları, ITC 69'dan ayrı kendi ticari tonaj sistemlerini (SCNT ve PC/UMS) uyguladığı için bu kanalları geçecek gemiler ayrı kanal tonaj sertifikaları da taşır ve geçiş ücretleri bu özel tonajlar üzerinden hesaplanır. Yanlış tonaj beyanıyla harç kaçırmak idari yaptırıma yol açar.",
+      },
+      {
+        heading: "Neden kalıcı bir belge: hangi değişiklikler yeniden ölçüm gerektirir",
+        body:
+          "Tonnage Certificate'ın süresiz geçerliliği, diğer sertifikaların aksine bir zaman aşımı riski taşımaması anlamına gelir; çünkü ölçtüğü büyüklük (geminin kapalı hacmi) doğası gereği zamanla kendiliğinden değişmez, oysa bir emniyet ekipmanı eskir veya bir yönetim sistemi güncellenmesi gerekir. Ancak bu kalıcılık koşulsuz değildir: geminin kapalı hacmini fiilen değiştiren yapısal müdahaleler, sertifikayı geçersiz kılar ve yeniden ölçüm zorunlu hale gelir. Bunun tipik örnekleri arasında bir güvertenin tamamen kapatılması (örneğin açık bir çalışma güvertesinin üzerine kalıcı bir üst yapı inşa edilmesi), yeni bir güverte katının eklenmesi, önceden açık olan bir alanın (örneğin bir konteyner güvertesi altı boşluğun) kalıcı olarak kapalı hacme dönüştürülmesi veya geminin ana kullanım amacını değiştiren büyük bir dönüşüm (bir kuru yük gemisinin tanker veya konteyner gemisine çevrilmesi) sayılabilir. Bu değişikliklerden biri yapıldığında armatör, klas veya yetkili bir tonaj ölçüm uzmanını devreye sokarak yeni hacmi resmi olarak ölçtürmek ve yeni sertifika almak zorundadır; aksi halde beyan edilen GT/NT, geminin gerçek durumunu yansıtmayan yanlış bir rakam olarak kalır ve bu durum denetimde tespit edilirse ciddi bir eksiklik oluşturur.",
+      },
+      {
+        heading: "GT eşiğinin bir tarafında ve diğer tarafında olmanın bedeli",
+        body:
+          "GT'nin salt bir ölçüm değil, bir düzenleyici anahtar olarak işlev görmesi, eşiğin hemen altında ve üstünde kalan gemiler arasında orantısız büyüklükte bir yükümlülük farkı yaratır. Örneğin 500 GT eşiği, SOLAS'ın kargo gemilerine yönelik birçok sertifikasyon gerekliliğini (Safety Construction, Safety Equipment gibi) ve ISM Code'un zorunlu SMC/DOC rejimini devreye sokar; 499 GT'lik bir gemi bu ağır sertifikasyon ve yönetim sistemi yükünden muaf kalırken, 500 GT'ye ulaşan bir gemi aynı anda çok sayıda yeni statüter yükümlülükle karşılaşır. Benzer bir kırılma MLC Certificate zorunluluğunda da görülür. Bu keskin eşik etkisi, gemi tasarımcıları ve armatörler için bilinçli bir mühendislik hedefine dönüşebilir: 'tonaj optimizasyonu' olarak bilinen bu yaklaşımda, bir geminin iç hacmi, kapasiteyi ciddi ölçüde feda etmeden eşiğin altında tutulacak biçimde tasarlanır — örneğin belirli güverte üstü alanların kısmen açık bırakılması veya hacim hesaplamasına dahil olmayan boşluklar yaratılması yoluyla. Bu pratik, düzenleyici otoriteler tarafından bazen eleştirilir çünkü geminin fiili taşıma kapasitesi ile tabi olduğu emniyet ve çalışma standardı rejimi arasında bir uyumsuzluk yaratabilir; IMO ve bazı bayrak devletleri, tonaj hesaplama kurallarını bu tür 'eşik oyunlarını' sınırlamak amacıyla zaman zaman gözden geçirmiştir.",
       },
     ],
     relatedSlugs: ["itc-69", "llc"],
