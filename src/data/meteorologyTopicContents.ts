@@ -1,5 +1,23 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 
+// Bulut görselleri — Bulut Atlası (DetailedMeteorology) ile aynı asset seti
+import cirrusImage from "@/assets/clouds/cirrus.jpg";
+import cirrocumulusImage from "@/assets/clouds/cirrocumulus.jpg";
+import cirrostratusImage from "@/assets/clouds/cirrostratus.jpg";
+import altocumulusImage from "@/assets/clouds/altocumulus.jpg";
+import altostratusImage from "@/assets/clouds/altostratus.jpg";
+import nimbostratusImage from "@/assets/clouds/nimbostratus.jpg";
+import stratusImage from "@/assets/clouds/stratus.jpg";
+import stratocumulusImage from "@/assets/clouds/stratocumulus.jpg";
+import fractusImage from "@/assets/clouds/fractus.jpg";
+import cumulusImage from "@/assets/clouds/cumulus.jpg";
+import cumulonimbusImage from "@/assets/clouds/cumulonimbus.jpg";
+import mammatusImage from "@/assets/clouds/mammatus.jpg";
+import arcusImage from "@/assets/clouds/arcus.jpg";
+import tubaImage from "@/assets/clouds/tuba.jpg";
+import lenticularisImage from "@/assets/clouds/lenticularis.jpg";
+import virgaImage from "@/assets/clouds/virga.jpg";
+
 export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
   "Basınç merkezleri (alçak/yüksek)": {
     title: "Basınç Merkezleri (Alçak / Yüksek)",
@@ -842,6 +860,254 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       "Tehlike mesajları ücretsizdir ve tüm imkânlarla derhâl iletilir.",
       "V/32: tropikal fırtına mesajında basınç + 3 saatlik eğilim, gerçek rüzgâr, deniz durumu, rota/hız bulunur.",
       "V/34 sefer planlaması hava bilgisini içerir; V/5 ile gemiler VOS kapsamında hava raporlar.",
+    ],
+  },
+
+  "Bulut oluşumu ve sınıflandırma esasları": {
+    title: "Bulut Oluşumu ve Sınıflandırma Esasları",
+    introduction:
+      "Bulutlar, atmosferdeki nem, sıcaklık ve dikey hareketin gökyüzüne yazılmış özetidir. Uydu ve model tahminlerinin bulunmadığı çağlarda denizciler hava değişimini yalnızca bulutları okuyarak tahmin ederdi; bugün de bulut gözlemi, köprüüstünde elektronik kaynaklardan bağımsız çalışan en hızlı ve en güvenilir yerel tahmin aracıdır. Bulutları doğru sınıflandırabilmek, hangi bulutun hangi hava sistemine işaret ettiğini bilmek demektir.",
+    sections: [
+      {
+        title: "Bulut Nasıl Oluşur?",
+        content:
+          "Bulut, nemli havanın yükselerek soğuması ve içindeki su buharının yoğuşma çekirdekleri (deniz üzerinde çoğunlukla tuz aerosolleri) etrafında su damlacıklarına veya buz kristallerine dönüşmesiyle oluşur. Yükselen hava adyabatik olarak soğur; sıcaklık çiğ noktasına ulaştığında yoğuşma başlar ve bu seviye bulut tabanını belirler. Havayı yükselten dört temel mekanizma vardır: konveksiyon (güneşle veya sıcak deniz yüzeyiyle alttan ısınma), orografik yükselme (havanın dağ ya da yüksek kıyı hattına çarpıp tırmanması), cephesel yükselme (sıcak havanın soğuk kütle üzerinde yükselmesi) ve konverjans (yüzeyde birleşen hava akımlarının yukarı zorlanması). Hangi mekanizmanın etkin olduğu, oluşacak bulutun tipini de belirler: konveksiyon küme (kümülüform), geniş alanlı yavaş yükselme ise tabaka (stratiform) bulutları üretir.",
+        image: cumulusImage,
+        imageAlt: "Konvektif yükselme ile oluşan kümülüs bulutları",
+      },
+      {
+        title: "WMO Sınıflandırması: 10 Ana Bulut Cinsi",
+        content:
+          "Bugün kullanılan sınıflandırma, Luke Howard'ın 1803'te önerdiği Latince adlandırmaya dayanır ve Dünya Meteoroloji Örgütü (WMO) tarafından 10 ana cins (genus) olarak standartlaştırılmıştır. Adlandırmada dört Latince kök kullanılır: cirrus (saçak/tüy), cumulus (küme/yığın), stratus (tabaka/örtü) ve nimbus (yağış getiren). Bu köklerin birleşimi bulutun hem görünüşünü hem karakterini tanımlar; örneğin nimbostratus 'yağış getiren tabaka bulutu', cirrocumulus 'yüksek seviyeli küçük kümecikler' anlamına gelir.",
+        bulletPoints: [
+          "Yüksek bulutlar: Cirrus (Ci), Cirrocumulus (Cc), Cirrostratus (Cs)",
+          "Orta seviye bulutlar: Altocumulus (Ac), Altostratus (As), Nimbostratus (Ns)",
+          "Alçak bulutlar: Stratus (St), Stratocumulus (Sc)",
+          "Dikey gelişimli bulutlar: Cumulus (Cu), Cumulonimbus (Cb)",
+        ],
+      },
+      {
+        title: "Yükseklik Katları ve Kategoriler",
+        content:
+          "Bulutlar taban yüksekliğine göre üç kata ayrılır; orta enlemlerde yüksek bulutlar 6–13 km (buz kristali), orta seviye bulutlar 2–7 km (su damlacığı ve buz karışımı), alçak bulutlar 0–2 km (su damlacığı) bandında bulunur. Cumulus ve cumulonimbus ise tabanı alçak katta olmasına rağmen dikeyde birkaç katı birden aşabildiğinden ayrı bir 'dikey gelişimli' kategori olarak ele alınır; olgun bir Cb tropopoza (12 km ve üzeri) kadar uzanabilir. Synoptik hava raporlarında ve VOS gözlemlerinde bulutlar bu katlara karşılık gelen CH (yüksek), CM (orta) ve CL (alçak) kod rakamlarıyla raporlanır. Nimbostratus orta katta sınıflandırılır ancak tabanı çoğu zaman alçak kata sarkar.",
+        image: cirrostratusImage,
+        imageAlt: "Yüksek katta ince örtü halinde cirrostratus bulutu",
+      },
+      {
+        title: "Köprüüstünde Bulut Gözlemi ve Raporlama",
+        content:
+          "Bulut gözlemi sistematik yapılmalıdır: toplam bulut örtüsü okta (gökyüzünün sekizde biri) cinsinden kaydedilir; 0 okta açık, 8 okta tamamen kapalı gökyüzünü ifade eder. Ardından her kattaki baskın bulut cinsi ve yaklaşık taban yüksekliği not edilir. Tek bir gözlemden çok, ardışık gözlemlerin gösterdiği eğilim değerlidir: bulutların alçalması, kalınlaşması ve türlerinin Ci→Cs→As→Ns sırasında değişmesi yaklaşan bir sıcak cephenin klasik imzasıdır; tersine bulutların yükselip parçalanması havanın düzeldiğini gösterir. Bulut gözlemi barometre eğilimi ve rüzgâr değişimiyle birlikte değerlendirildiğinde, köprüüstünde 12–24 saatlik güvenilir bir yerel tahmin üretir.",
+      },
+    ],
+    keyPoints: [
+      "Bulut, yükselen nemli havanın adyabatik soğuyup çiğ noktasında yoğuşmasıyla oluşur; yoğuşma seviyesi bulut tabanıdır.",
+      "WMO sınıflandırması 10 ana cinsi dört Latince köke (cirrus, cumulus, stratus, nimbus) dayandırır.",
+      "Taban yüksekliğine göre üç kat vardır: yüksek (6–13 km), orta (2–7 km), alçak (0–2 km); Cu/Cb dikey gelişimlidir.",
+      "Bulut örtüsü okta ile raporlanır; ardışık gözlemlerdeki eğilim tek gözlemden daha değerlidir.",
+    ],
+  },
+
+  "Yüksek bulutlar (Cirrus, Cirrocumulus, Cirrostratus)": {
+    title: "Yüksek Bulutlar: Cirrus, Cirrocumulus, Cirrostratus",
+    introduction:
+      "Yüksek bulutlar 6–13 km bandında bulunur ve bu irtifadaki düşük sıcaklık nedeniyle tamamen buz kristallerinden oluşur. Kendileri yağış üretmez; asıl önemleri, yaklaşan bir sıcak cepheyi veya tropikal sistemi 24–48 saat önceden haber veren ilk işaretler olmalarıdır. Deniz üzerinde ufka kadar açık görüşle izlenebildiklerinden, denizci için en erken uyarı aracıdır.",
+    sections: [
+      {
+        title: "Cirrus (Ci) — Saçak Bulutlar",
+        content:
+          "Cirrus, gökyüzünde ince beyaz tüyler, saçaklar veya at kuyruğu biçiminde görülen buz kristali bulutudur. Üst atmosferdeki güçlü rüzgârlar (jet stream) kristalleri sürükleyerek karakteristik çengel biçimini (cirrus uncinus, 'mares' tails') verir. Dağınık ve seyrek cirrus tek başına iyi havanın işaretidir; ancak batı ufkundan düzenli olarak çoğalan, kalınlaşan ve gökyüzünü kaplamaya başlayan cirrus, 24–48 saat içinde bir sıcak cephenin veya alçak basınç sisteminin yaklaştığını gösterir. Cirrus şeritlerinin hareket yönü, üst atmosfer akışının ve dolayısıyla yaklaşan sistemin geliş yönünün tahmininde kullanılır.",
+        image: cirrusImage,
+        imageAlt: "İnce beyaz saçaklar halinde cirrus bulutları",
+      },
+      {
+        title: "Cirrocumulus (Cc) — Uskumru Gökyüzü",
+        content:
+          "Cirrocumulus, gölgesiz küçük beyaz taneler veya dalgacıklar halinde dizilmiş yüksek kümeciklerdir; görünümü balık puluna benzetildiği için denizcilikte 'uskumru gökyüzü' (mackerel sky) olarak bilinir. Yüksek seviyede türbülans ve nem artışının işaretidir; genellikle cirrus ve cirrostratus ile birlikte görülür ve yaklaşan cephe sisteminin habercisidir. 'Mackerel sky and mares' tails make lofty ships carry low sails' (uskumru gökyüzü ve at kuyrukları görüldüğünde yelken küçültülür) deyişi, bu bulutun 24–48 saat içinde bozacak havaya işaret ettiğini yüzyıllardır özetler. Kısa ömürlü bir bulut olduğundan görüldüğünde kaydedilmesi ve trendin izlenmesi gerekir.",
+        image: cirrocumulusImage,
+        imageAlt: "Balık pulu görünümünde cirrocumulus (uskumru gökyüzü)",
+      },
+      {
+        title: "Cirrostratus (Cs) — Hale Yapan Örtü",
+        content:
+          "Cirrostratus, gökyüzünü süt beyazı ince bir tül gibi kaplayan buz kristali örtüsüdür. En ayırt edici özelliği, güneş veya ay etrafında 22 derecelik hale (halo) oluşturmasıdır; ışık, altıgen buz kristallerinde kırılarak bu halkayı üretir. Hale görülmesi klasik bir kötü hava işaretidir: cirrostratus örtüsü tipik olarak sıcak cephenin 500–1000 km önünde uzanır ve genellikle 12–36 saat içinde altostratus ve ardından nimbostratus yağışının geleceğini haber verir. 'Güneş halesi, fırtına habercisi' deyişi bu mekanizmaya dayanır. Cirrostratus kalınlaşıp alçalıyorsa cephe yaklaşıyor demektir; barometre eğilimi ile birlikte doğrulanmalıdır.",
+        image: cirrostratusImage,
+        imageAlt: "Güneş çevresinde hale oluşturan ince cirrostratus örtüsü",
+      },
+      {
+        title: "Denizci Yorumu: Yüksek Bulut Sekansı",
+        content:
+          "Yüksek bulutların asıl değeri sekans halinde okunmasındadır. Ci→Cc→Cs sırasıyla çoğalan ve kalınlaşan yüksek bulutlar, klasik sıcak cephe yaklaşım dizisinin ilk perdesidir; devamında As ve Ns gelir. Bu sekans görüldüğünde 24–48 saatlik operasyon planı gözden geçirilir: uzun sürecek güverte işleri öne çekilir, açık deniz rotasında alternatif liman/demir yeri değerlendirilir ve hava raporu alma sıklığı artırılır. Tropikal bölgelerde ise olağan dışı yoğun ve düzenli cirrus yayılımı, uzaktaki bir tropikal siklonun çıkış bulutları (outflow) olabilir; barometredeki diurnal ritmin bozulmasıyla birlikte görülürse ciddiye alınmalıdır.",
+      },
+    ],
+    keyPoints: [
+      "Yüksek bulutlar (6–13 km) tamamen buz kristalidir; yağış üretmez ama 24–48 saat önceden hava değişimini haber verir.",
+      "Çoğalan ve kalınlaşan cirrus, yaklaşan sıcak cephenin ilk işaretidir.",
+      "Cirrocumulus 'uskumru gökyüzü' ve cirrostratus halesi klasik kötü hava habercileridir.",
+      "Ci→Cs→As→Ns sekansı sıcak cephe yaklaşımının standart bulut dizisidir; barometre ile doğrulanır.",
+    ],
+  },
+
+  "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)": {
+    title: "Orta Seviye Bulutlar: Altocumulus, Altostratus, Nimbostratus",
+    introduction:
+      "Orta seviye bulutlar 2–7 km bandında bulunur ve su damlacıkları ile buz kristallerinin karışımından oluşur. Yüksek bulutlar 'uzak haberci' ise orta seviye bulutlar 'yakın haberci'dir: gökyüzünde belirdiklerinde hava değişimi genellikle 12–24 saat mesafededir. Nimbostratus ise artık haberci değil, kötü havanın kendisidir.",
+    sections: [
+      {
+        title: "Altocumulus (Ac) — Koyun Sürüsü",
+        content:
+          "Altocumulus, gri-beyaz yumak veya merdane biçiminde kümeciklerin oluşturduğu orta seviye bulutudur; görünümü koyun sürüsüne benzetilir. Cirrocumulus'tan ayırt etmenin pratik yolu boyuttur: altocumulus kümecikleri daha büyüktür ve belirgin gölgeleri vardır. Genel olarak kararsızlaşan bir orta atmosferi gösterir ve 24–48 saat içinde hava değişimine işaret edebilir. Özel bir alt türü olan altocumulus castellanus (kule biçiminde çıkıntılar yapan Ac) kritik bir uyarıdır: sabah saatlerinde görülmesi, orta atmosferin konvektif olarak kararsız olduğunu ve öğleden sonra oraj (gök gürültülü sağanak) gelişme olasılığının yüksek olduğunu gösterir.",
+        image: altocumulusImage,
+        imageAlt: "Koyun sürüsü görünümünde altocumulus kümecikleri",
+      },
+      {
+        title: "Altostratus (As) — Buzlu Cam Örtüsü",
+        content:
+          "Altostratus, gökyüzünü mavimsi-gri düz bir örtü halinde kaplayan orta seviye tabaka bulutudur. Güneş bu örtünün ardından buzlu cam arkasındaymış gibi silik görünür; cirrostratus'tan farkı hale oluşturmaması ve cisimlerin gölge düşürmemesidir. Altostratus, yaklaşan sıcak cephe sekansında cirrostratus'tan sonraki halkadır: örtü kalınlaşıp alçaldıkça nimbostratus'a dönüşür ve sürekli yağış başlar. Altostratus görüldüğünde yağışa kalan süre tipik olarak 12 saatten azdır; güverte operasyonları ve açık ambar çalışmaları buna göre planlanmalı, barometredeki düşüş hızı yakından izlenmelidir.",
+        image: altostratusImage,
+        imageAlt: "Güneşi buzlu cam gibi silikleştiren altostratus örtüsü",
+      },
+      {
+        title: "Nimbostratus (Ns) — Sürekli Yağış Bulutu",
+        content:
+          "Nimbostratus, koyu gri, kalın ve şekilsiz bir yağış bulutudur; tabanı yağışla birlikte 2 km'nin altına iner ve güneşi tamamen kapatır. Adındaki 'nimbus' kökü yağış getirdiğini söyler: saatlerce, bazen bir gün boyunca süren orta şiddette ve sürekli yağmur veya kar üretir. Cb sağanağından farkı yağışın karakteridir: Ns yağışı süreklidir ve ani rüzgâr değişimi içermez, Cb yağışı ise kısa, şiddetli ve gustludur. Denizci için Ns'nin asıl riski görüştür: yağış ve bulut tabanının alçalması görüşü 1–3 mile düşürebilir; bulut altında oluşan parçalı stratus fractus (scud) bulutları görüşü daha da kısıtlar. Ns hakimiyetinde kısıtlı görüş prosedürlerine hazır olunmalıdır.",
+        image: nimbostratusImage,
+        imageAlt: "Koyu gri, sürekli yağış bırakan nimbostratus tabakası",
+      },
+      {
+        title: "Operasyonel Değerlendirme",
+        content:
+          "Orta seviye bulutlar görüldüğünde köprüüstü değerlendirmesi somutlaşır: altocumulus castellanus sabah görüldüyse öğleden sonra için konvektif hava (Cb, squall) hazırlığı yapılır; altostratus kalınlaşıyorsa 12 saat içinde sürekli yağış ve görüş kaybı beklenir; nimbostratus altında ise seyir feneri, radar ve ses işareti disiplinine geçilir. Bu katın bulutları cephe sisteminin konumunu da tarif eder: As/Ns kuşağı sıcak cephenin hemen önünde uzandığından, bu bulutların altına girildiğinde cephe geçişine (rüzgâr dönüşü, sıcaklık artışı, ardından sıcak sektör) saatler kalmış demektir.",
+      },
+    ],
+    keyPoints: [
+      "Orta seviye bulutlar (2–7 km) su ve buz karışımıdır; hava değişimini 12–24 saat önceden gösterir.",
+      "Sabah görülen altocumulus castellanus, öğleden sonra oraj gelişimi için klasik uyarıdır.",
+      "Altostratus kalınlaşıp alçalıyorsa 12 saat içinde sürekli yağış (Ns) beklenir.",
+      "Nimbostratus sürekli yağış ve 1–3 mile düşen görüş demektir; kısıtlı görüş hazırlığı yapılır.",
+    ],
+  },
+
+  "Alçak bulutlar (Stratus, Stratocumulus)": {
+    title: "Alçak Bulutlar: Stratus, Stratocumulus",
+    introduction:
+      "Alçak bulutlar 0–2 km bandında bulunur ve tamamen su damlacıklarından oluşur. Seyir emniyetini en doğrudan etkileyen kategori budur: taban yüksekliği düşük olduğundan görüşü hızla kısıtlar, sisle iç içe geçer ve kıyı/liman operasyonlarını doğrudan etkiler. Şiddetli hava üretmezler; riskleri fırtına değil, görüştür.",
+    sections: [
+      {
+        title: "Stratus (St) — Düz Gri Tabaka",
+        content:
+          "Stratus, gökyüzünü alçak, düz ve şekilsiz gri bir tabaka halinde kaplayan buluttur; tabanı çoğu zaman 500 metrenin altındadır ve yüzeye değdiğinde adı sise dönüşür — sis, yerdeki stratus'tan başka bir şey değildir. Deniz üzerinde en sık, sıcak ve nemli havanın soğuk deniz yüzeyi üzerine akmasıyla (adveksiyon) oluşur; bu nedenle adveksiyon sisi ile aynı koşulların ürünüdür. Yağış olarak yalnızca çise (drizzle) üretebilir. Denizci için kritik göstergedir: stratus tabanının alçalması sise geçişin habercisidir; görüş sürekli izlenmeli, sis işaretleri ve radar gözcülüğü hazır bulundurulmalıdır. Stabil hava kütlesinin (sıcak kütlenin soğuk deniz üzerinde soğuması) tipik bulutudur.",
+        image: stratusImage,
+        imageAlt: "Alçak ve düz gri tabaka halinde stratus bulutu",
+      },
+      {
+        title: "Stratocumulus (Sc) — Yumrulu Tabaka",
+        content:
+          "Stratocumulus, gri-beyaz büyük yumrular ve merdaneler halinde, araları yer yer açık bir alçak tabaka bulutudur; dünyada en yaygın görülen bulut cinsidir ve özellikle okyanusların yüksek basınç bölgelerinde geniş alanlar kaplar. Genellikle kötü hava getirmez; en fazla hafif çise veya kısa süreli zayıf sağanak üretir. Meteorolojik anlamı gizlidir: Sc tabakası çoğu zaman bir sıcaklık inversiyonunun (yükselmeyi durduran kapak) altında oluşur. Bu kapak konveksiyonu bastırdığından hava kararlıdır; ancak aynı inversiyon nem ve pusun alt katmanda hapsolmasına yol açar, görüş orta seviyede kalır. Cumulus bulutlarının akşam saatlerinde yayılıp Sc'ye dönüşmesi normal ve zararsız bir günlük döngüdür.",
+        image: stratocumulusImage,
+        imageAlt: "Yumrulu gri-beyaz stratocumulus tabakası",
+      },
+      {
+        title: "Stratus Fractus — Parçalanmış Kötü Hava Bulutları",
+        content:
+          "Fractus, stratus veya cumulus'un rüzgârla yırtılmış, düzensiz parçalar halindeki türüdür. Kötü hava sırasında Ns veya Cb tabanının altında hızla sürüklenen bu alçak parçalara denizcilikte 'scud' denir. Kendileri tehlike üretmez ama iki şeyi gösterir: alt katmanın neme doyduğunu ve yüzey rüzgârının kuvvetli olduğunu. Yağış bulutunun altında scud görülmesi, bulut tabanının pratikte daha da alçak olduğu ve görüşün aniden düşebileceği anlamına gelir. Fırtına sonrasında gökyüzünde kalan fractus parçaları ise sistemin geçtiğini ve havanın toparlanmakta olduğunu gösterir.",
+        image: fractusImage,
+        imageAlt: "Rüzgârla parçalanmış alçak fractus (scud) bulutları",
+      },
+      {
+        title: "Görüş ve Seyir Etkisi",
+        content:
+          "Alçak bulut kategorisinin operasyonel özeti görüş yönetimidir. Stratus/sis koşulu geliştiğinde COLREG Kural 19 (kısıtlı görüşte seyir) uygulanır: emniyetli hıza inilir, makine manevraya hazır tutulur, sis işaretleri verilir, radar ve AIS gözcülüğü artırılır ve ilave gözcü konur. Kıyı seyrinde alçak bulut tabanı; fener ışıklarının erken kaybolması, radar ufkunun daralmaması ama görsel ufkun kapanması gibi asimetrik bir durum yaratır — görsel mevki koyma imkânı kaybolurken elektronik seyir sürer, bu nedenle mevki doğrulama disiplini önem kazanır. Helikopter operasyonları ve pilot alma-verme için bulut tavanı (ceiling) limitleri kontrol edilmelidir.",
+      },
+    ],
+    keyPoints: [
+      "Alçak bulutlar (0–2 km) su damlacığıdır; riskleri fırtına değil görüş kaybıdır.",
+      "Stratus sisin bir üst basamağıdır; tabanının alçalması sise geçiş uyarısıdır.",
+      "Stratocumulus genellikle zararsızdır ve inversiyon altındaki kararlı havayı gösterir.",
+      "Yağış bulutu altındaki fractus (scud) parçaları, görüşün aniden düşebileceğinin işaretidir.",
+    ],
+  },
+
+  "Dikey gelişimli bulutlar (Cumulus, Cumulonimbus)": {
+    title: "Dikey Gelişimli Bulutlar: Cumulus, Cumulonimbus",
+    introduction:
+      "Dikey gelişimli bulutlar konveksiyonun ürünüdür: tabanları alçak katta olmasına rağmen yükselen sıcak hava ile dikeyde büyürler. Bu kategori, zararsız güzel hava kümülüsünden denizcinin karşılaşabileceği en tehlikeli bulut olan cumulonimbus'a uzanan tek bir gelişim çizgisidir; kritik beceri, bu çizginin hangi aşamasında olunduğunu tanımaktır.",
+    sections: [
+      {
+        title: "Cumulus (Cu) — Güzel Hava Kümülüsü",
+        content:
+          "Cumulus, düz tabanlı, karnabahar görünümlü, keskin kenarlı beyaz küme bulutudur. Gündüz ısınmasıyla veya soğuk hava kütlesinin sıcak deniz üzerinden geçişiyle oluşan termaller üzerinde büyür. Yatay boyutu dikey boyutundan büyük olan dağınık kümülüs (cumulus humilis) 'güzel hava kümülüsü'dür: atmosferin hafif kararsız ama sağlıklı olduğunu, görüşün iyi ve havanın açık kalacağını gösterir. Ancak izlenmesi gereken şey dikey büyümedir: kümülüs kulesinin gün içinde boyunu aşarak yükselmesi (cumulus congestus / towering cumulus, TCu), atmosferin derin konveksiyona elverişli olduğunu ve 30–60 dakika içinde sağanak, birkaç saat içinde Cb gelişebileceğini haber verir.",
+        image: cumulusImage,
+        imageAlt: "Düz tabanlı, karnabahar görünümlü güzel hava kümülüsü",
+      },
+      {
+        title: "Cumulonimbus (Cb) — Oraj Bulutu",
+        content:
+          "Cumulonimbus, tabanı deniz seviyesine yakın, tepesi tropopoza (12 km ve üzeri) ulaşabilen dev konvektif buluttur; tepesi buzlaşarak yassılaşır ve karakteristik örs (anvil) biçimini alır. Denizcinin karşılaşabileceği en tehlikeli buluttur ve tüm şiddetli hava olaylarını tek başına üretebilir: gök gürültüsü ve yıldırım, ani ve şiddetli sağanak, dolu, 50 knotu aşabilen gust'lar, mikropatlama (downburst) ve hortum/su hortumu. En kritik tehlike gust front'tur: Cb içindeki soğuk iniş akıntısı (downdraft) yüzeye çarpıp yayılır ve bulutun 10–15 mil önünde, yağış başlamadan önce ani rüzgâr şifti ve şiddetlenmesi yaratır. Rüzgâr yönü Cb yaklaşırken 180 dereceye kadar dönebilir. Cb'ler tek hücre halinde veya soğuk cephe önünde squall hattı olarak organize biçimde gelir.",
+        image: cumulonimbusImage,
+        imageAlt: "Örs biçimli tepesiyle olgun cumulonimbus (oraj bulutu)",
+      },
+      {
+        title: "Cb Yaklaşırken Köprüüstü Tedbirleri",
+        content:
+          "Cb veya squall hattı yaklaşırken tedbirler yağış değil rüzgâr eksenlidir; çünkü ilk darbe gust front ile gelir. Radar, yağış hücrelerinin tespiti ve hareket vektörünün çıkarılması için etkin kullanılır (hücreler radarda parlak, yüksek yoğunluklu eko verir). Güvertedeki personel içeri alınır, bumbalar/kreynler emniyete alınır, açık ambar kapakları kapatılır. Rüzgârın aniden yön değiştirip şiddetleneceği varsayılarak geminin rüzgâr üstü/altı durumu değerlendirilir; demirde ise demir taraması riski için makine hazır bulundurulur. Yıldırım riski nedeniyle açık güvertede anten ve yüksek nokta çalışmaları durdurulur. Küçük hücreler görsel ve radar takibiyle rotadan taviz vermeden atlatılabilir; organize squall hattı ise hattın zayıf noktasından, mümkünse dik açıyla geçilir.",
+        image: mammatusImage,
+        imageAlt: "Cb örsü altında şiddetli türbülansı gösteren mammatus çıkıntıları",
+      },
+    ],
+    keyPoints: [
+      "Dağınık, basık kümülüs güzel hava işaretidir; dikeyde büyüyen kümülüs (TCu) sağanak ve Cb habercisidir.",
+      "Cumulonimbus tüm şiddetli hava olaylarını üretir: yıldırım, dolu, 50+ knot gust, mikropatlama, su hortumu.",
+      "İlk darbe gust front ile yağıştan önce gelir; rüzgâr 180° dönebilir ve aniden şiddetlenebilir.",
+      "Cb yaklaşırken güverte emniyete alınır, radar ile hücre takibi yapılır; squall hattı dik açıyla geçilir.",
+    ],
+  },
+
+  "Özel bulut formasyonları ve tehlike işaretleri": {
+    title: "Özel Bulut Formasyonları ve Tehlike İşaretleri",
+    introduction:
+      "On ana bulut cinsinin dışında, belirli atmosfer koşullarında ortaya çıkan özel formasyonlar vardır. Bunların çoğu kısa ömürlüdür ama taşıdıkları mesaj nettir: şiddetli türbülans, ani rüzgâr, hortum riski veya güçlü üst rüzgârlar. Bu formasyonları tanımak, tehlikeyi dakikalar-saatler ölçeğinde önceden görmek demektir.",
+    sections: [
+      {
+        title: "Mammatus — Torba Bulutlar",
+        content:
+          "Mammatus, bulut tabanından aşağı sarkan torba veya kese biçimli çıkıntılardır; en çarpıcı haliyle cumulonimbus örsünün altında görülür. Normal bulut tabanları yükselen havayla düz biçimlenirken, mammatus batan soğuk ve nemli havanın ürünüdür — yani atmosferin o katmanında güçlü iniş akıntıları ve şiddetli türbülans vardır. Mammatus görülmesi çoğu zaman yakınlarda olgun, güçlü bir Cb hücresi olduğu anlamına gelir; fırtınanın önünde de arkasında da görülebilir. Denizci için mesaj: bölgedeki konvektif sistem şiddetlidir, ani gust ve rüzgâr şifti riski yüksektir; sistem geçmiş görünse bile tedbir korunmalıdır.",
+        image: mammatusImage,
+        imageAlt: "Bulut tabanından sarkan torba biçimli mammatus çıkıntıları",
+      },
+      {
+        title: "Arcus (Shelf Cloud) — Squall Hattının Ön Duvarı",
+        content:
+          "Arcus (raf bulutu), yaklaşan bir Cb veya squall hattının ön kenarında, alçak seviyede uzanan yatay merdane veya raf biçimli buluttur. Fırtınanın soğuk iniş akıntısının öndeki sıcak nemli havayı kaldırmasıyla oluşur; yani gust front'un görünür halidir. Ufukta koyu bir duvar gibi yaklaşan shelf cloud, dakikalar içinde ani rüzgâr artışı (tipik olarak 15 knottan 40+ knota), sert rüzgâr şifti ve ardından şiddetli sağanak geleceğinin kesin işaretidir. Görüldüğü anda güverte personeli içeri alınmalı, açık işler kesilmeli ve gemi gelecek rüzgâra göre hazırlanmalıdır; yelkenli ve küçük tekneler için bu görüntü acil yelken küçültme komutudur.",
+        image: arcusImage,
+        imageAlt: "Squall hattının önünde yatay raf biçimli arcus (shelf cloud)",
+      },
+      {
+        title: "Tuba (Huni Bulutu) — Su Hortumu Habercisi",
+        content:
+          "Tuba, Cb veya güçlü TCu tabanından aşağı doğru uzanan dönen huni biçimli bulut çıkıntısıdır. Huni deniz yüzeyine ulaştığında su hortumu (waterspout) adını alır. Su hortumları özellikle sonbaharda, soğuk havanın hâlâ sıcak deniz üzerinden geçtiği dönemlerde (Akdeniz, Ege ve tropikal sular dahil) sık görülür. Çoğu su hortumu tornado şiddetinde olmasa da lokal olarak 40–60 knot dönel rüzgâr üretir ve küçük-orta tonajlı gemilerde güverte hasarı, filika ve anten kaybına yol açabilir. Tuba görüldüğünde hortumun hareket yönü kestirilerek dik açıyla uzaklaşılır; hortum geminin yoluna çıkarsa personel içeri alınır ve rüzgâr darbesine hazırlanılır.",
+        image: tubaImage,
+        imageAlt: "Bulut tabanından sarkan dönen huni biçimli tuba",
+      },
+      {
+        title: "Lenticularis — Dağ Dalgası Bulutu",
+        content:
+          "Altocumulus lenticularis, mercek veya uçan daire biçimli, kenarları keskin, yerinde sabit duran buluttur. Güçlü rüzgârın dağ ya da yüksek ada üzerinden aşarken oluşturduğu duran hava dalgalarının tepesinde yoğuşur; bulut sabit görünse de içinden çok kuvvetli rüzgâr akar. Denizci için anlamı iki katmanlıdır: yüksek seviyelerde çok güçlü rüzgâr vardır ve dağlık kıyıların rüzgâr altısında şiddetli hamle rüzgârları (katabatik/dalga kaynaklı gust, rotor türbülansı) beklenmelidir. Dağlık kıyı seyrinde (fiyortlar, yüksek adalar, Cebelitarık benzeri geçitler) lenticularis görülmesi, ani ve şiddetli yerel rüzgâr riskine karşı uyarıdır; helikopter operasyonları için de türbülans işaretidir.",
+        image: lenticularisImage,
+        imageAlt: "Mercek biçimli, kenarları keskin lenticularis bulutu",
+      },
+      {
+        title: "Virga — Yere Ulaşmayan Yağış",
+        content:
+          "Virga, bulut tabanından sarkan ancak yere/denize ulaşmadan buharlaşan yağış perdeleridir; bulutun altında gri saçaklar halinde görülür. Zararsız görünse de önemli bir dinamik uyarı taşır: yağışın kuru hava katmanında buharlaşması o katmanı hızla soğutur ve ağırlaşan hava şiddetli iniş akıntılarına (dry microburst) dönüşebilir. Yani virga, altındaki deniz yüzeyinde ani ve şiddetli, kısa süreli rüzgâr patlamaları olabileceğini gösterir. Konvektif bulutların altında yaygın virga görülüyorsa, görünürde yağış olmasa bile ani gust olasılığı hesaba katılmalı; pilot alma-verme ve vinç operasyonları gibi rüzgâra duyarlı işler bu hücrelerin geçişine göre zamanlanmalıdır.",
+        image: virgaImage,
+        imageAlt: "Bulut tabanından sarkıp yere ulaşmadan buharlaşan virga",
+      },
+    ],
+    keyPoints: [
+      "Mammatus şiddetli türbülans ve güçlü iniş akıntılarının işaretidir; yakınlarda kuvvetli Cb vardır.",
+      "Arcus (shelf cloud) gust front'un görünür halidir: dakikalar içinde ani rüzgâr artışı ve şifti gelir.",
+      "Tuba deniz yüzeyine ulaşırsa su hortumu oluşur; dik açıyla uzaklaşılır ve personel içeri alınır.",
+      "Lenticularis güçlü üst rüzgârları ve dağlık kıyılarda ani hamle rüzgârı riskini, virga ise kuru mikropatlama olasılığını gösterir.",
     ],
   },
 };
