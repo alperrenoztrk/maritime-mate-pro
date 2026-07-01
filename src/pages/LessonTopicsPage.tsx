@@ -309,6 +309,18 @@ const topicsData: Record<string, TopicContent> = {
         ]
       },
       {
+        title: "Bulutlar ve Sınıflandırma",
+        description: "Bulut oluşumu, kategorileri ve denizci gözlemi",
+        subTopics: [
+          { title: "Bulut oluşumu ve sınıflandırma esasları", hasContent: true },
+          { title: "Yüksek bulutlar (Cirrus, Cirrocumulus, Cirrostratus)", hasContent: true },
+          { title: "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)", hasContent: true },
+          { title: "Alçak bulutlar (Stratus, Stratocumulus)", hasContent: true },
+          { title: "Dikey gelişimli bulutlar (Cumulus, Cumulonimbus)", hasContent: true },
+          { title: "Özel bulut formasyonları ve tehlike işaretleri", hasContent: true }
+        ]
+      },
+      {
         title: "Rüzgar ve Dalga",
         description: "Beaufort skalası ve dalga tahminleri",
         subTopics: [
