@@ -27,7 +27,7 @@ export function LessonAITutor({
   topicTitle: string;
   lessonText: string;
 }) {
-  const { language } = useLanguage();
+  const { currentLanguage: language } = useLanguage();
   const [messages, setMessages] = useState<AIMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
