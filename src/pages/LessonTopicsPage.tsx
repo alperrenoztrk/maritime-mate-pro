@@ -323,6 +323,7 @@ const topicsData: Record<string, TopicContent> = {
         description: "Kasırga ve tayfun navigasyonu",
         subTopics: [
           { title: "Siklon yapısı ve gelişim evreleri", hasContent: true },
+          { title: "Siklonun gözü (eye) ve eyewall", hasContent: true },
           { title: "Tehlikeli/seyir yapılabilir yarım daire", hasContent: true },
           { title: "Barometre ve rüzgarla konum tayini", hasContent: true },
           { title: "Kaçınma manevrası prensipleri", hasContent: true }

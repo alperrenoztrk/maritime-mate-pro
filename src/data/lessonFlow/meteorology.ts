@@ -650,6 +650,151 @@ export const meteorologyLessonFlows: LessonFlow[] = [
   },
   {
     topicKey: "meteorology",
+    topicTitle: "Siklonun gözü (eye) ve eyewall",
+    blocks: [
+      { sectionTitles: ["Gözün Tanımı ve Fiziksel Özellikleri", "Göz Neden Oluşur? Çöken Hava ve Dinamik Denge"] },
+      { sectionTitles: ["Eyewall: Sistemin En Şiddetli Bölgesi", "Eyewall Yenilenme Döngüsü (Eyewall Replacement Cycle)", "Spiral Yağmur Bantları ve Dış Yapı"] },
+      { sectionTitles: ["Göz İçinde Deniz Durumu ve Yanıltıcı Sakinlik", "Gözden Geçen Gemi: Köprüüstü Kararları"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Gözün Tanımı ve Fiziksel Özellikleri",
+        category: MET,
+        question: "Tropikal siklonun gözü için aşağıdakilerden hangisi doğrudur?",
+        options: [
+          "Sistemin en düşük basıncı gözün merkezinde ölçülür",
+          "Sistemin en yüksek rüzgârı gözün merkezindedir",
+          "Göz her zaman tamamen bulutludur",
+          "Göz, çevresinden daha soğuktur",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Göz; en düşük basıncın ölçüldüğü, rüzgârın zayıfladığı, çöken hava nedeniyle sıcak ve kısmen açık merkez bölgedir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Gözün Tanımı ve Fiziksel Özellikleri",
+        category: MET,
+        question: "Küçük ve keskin sınırlı bir göz genellikle neye işaret eder?",
+        options: [
+          "Yoğunlaşmış ve şiddetli bir sisteme",
+          "Zayıflayan bir sisteme",
+          "Sistemin dağıldığına",
+          "Sistemin karaya çıktığına",
+        ],
+        correctAnswer: 0,
+        explanation: "Genel kural: küçük, keskin ve simetrik göz = kompakt ve şiddetli sistem.",
+      },
+      {
+        id: 3,
+        sectionRef: "Göz Neden Oluşur? Çöken Hava ve Dinamik Denge",
+        category: MET,
+        question: "Gözün açık ve sıcak olmasının temel nedeni nedir?",
+        options: [
+          "Göz içinde çöken havanın adyabatik olarak sıkışıp ısınması ve bulutları çözmesi",
+          "Güneş ışınlarının merkezde yoğunlaşması",
+          "Deniz suyunun merkezde daha sıcak olması",
+          "Rüzgârın bulutları merkezden savurması",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Eyewall'da yükselen havanın bir bölümü göz içine dönüp çöker; adyabatik ısınma bulutları çözer ve sıcak çekirdeği oluşturur.",
+      },
+      {
+        id: 4,
+        sectionRef: "Eyewall: Sistemin En Şiddetli Bölgesi",
+        category: MET,
+        question: "Kuzey Yarım Küre'de eyewall'un en şiddetli rüzgârı genellikle hangi çeyrekte bulunur?",
+        options: [
+          "Sistemin hareket yönüne göre sağ-ön çeyrekte",
+          "Sol-arka çeyrekte",
+          "Tam merkezde",
+          "Sistemin en dış kenarında",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Sağ-ön çeyrekte dönel rüzgâra sistemin ilerleme hızı eklenir; bu, tehlikeli yarım daire kavramının mikro ölçekteki karşılığıdır.",
+      },
+      {
+        id: 5,
+        sectionRef: "Eyewall Yenilenme Döngüsü (Eyewall Replacement Cycle)",
+        category: MET,
+        question: "Eyewall yenilenme döngüsü sırasında tepe rüzgâr hızı geçici olarak azalırken ne olur?",
+        options: [
+          "Şiddetli rüzgâr alanı genişler; kaçınma mesafesi artırılmalıdır",
+          "Tehlikeli bölge daralır; gemi yaklaşabilir",
+          "Sistem kalıcı olarak zayıflar",
+          "Göz tamamen kaybolur ve sistem dağılır",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Döngüde tepe şiddet geçici düşer ama maksimum rüzgâr yarıçapı büyür; döngü sonrası sistem sıklıkla yeniden şiddetlenir.",
+      },
+      {
+        id: 6,
+        sectionRef: "Spiral Yağmur Bantları ve Dış Yapı",
+        category: MET,
+        question: "Spiral yağmur bantları arasındaki sakin koridorlar neden tehlikelidir?",
+        options: [
+          "'Fırtına geçiyor' yanılgısı yaratır; merkeze yaklaştıkça bantlar sıklaşır ve şiddetlenir",
+          "Bu koridorlarda dalga yüksekliği en fazladır",
+          "Koridorlarda görüş her zaman sıfırdır",
+          "Koridorlarda basınç aniden yükselir",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Bantlar arası geçici sakinlik aldatıcıdır; her yeni bant bir öncekinden şiddetli gelir ve merkeze yaklaştıkça aralar kısalır.",
+      },
+      {
+        id: 7,
+        sectionRef: "Göz İçinde Deniz Durumu ve Yanıltıcı Sakinlik",
+        category: MET,
+        question: "Göz geçişi sırasında rüzgâr açısından kritik gerçek nedir?",
+        options: [
+          "Kısa sakinlikten sonra rüzgâr TERS yönden tam şiddetle geri döner",
+          "Rüzgâr aynı yönden kademeli olarak artar",
+          "Rüzgâr kalıcı olarak diner",
+          "Rüzgâr yalnızca hafifçe yön değiştirir",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Sakin dönem çoğunlukla 30–60 dakikadır; karşı taraftaki eyewall, girişteki rüzgârın tersi yönden ve kademesiz olarak gelir.",
+      },
+      {
+        id: 8,
+        sectionRef: "Göz İçinde Deniz Durumu ve Yanıltıcı Sakinlik",
+        category: MET,
+        question: "Göz içinde rüzgâr durulduğu hâlde deniz durumu nasıldır?",
+        options: [
+          "Her yönden yakınsayan dalgalarla kaotik/piramidal çapraz deniz",
+          "Tamamen düz ve sakin",
+          "Tek yönlü düzenli soluğan",
+          "Sadece hafif rüzgâr dalgacıkları",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Sistemin her yönünden üretilen dalgalar merkezde yakınsar; rüzgâr olmadığından dalga düzeni yoktur ve gemi hareketleri öngörülemez hâle gelir.",
+      },
+      {
+        id: 9,
+        sectionRef: "Gözden Geçen Gemi: Köprüüstü Kararları",
+        category: MET,
+        question: "Tropikal siklonun gözü bir gemi için 'sığınak' mıdır?",
+        options: [
+          "Hayır; göz geçişi eyewall'dan iki kez geçmek demektir",
+          "Evet; göz içinde fırtına sona ermiştir",
+          "Evet; deniz göz içinde tamamen sakindir",
+          "Hayır; ama gözde demirlemek güvenlidir",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Göz asla hedeflenmez: içine girmek ve çıkmak eyewall'dan iki kez geçmeyi gerektirir; tüm strateji eyewall'dan azami mesafe üzerine kuruludur.",
+      },
+    ],
+  },
+  {
+    topicKey: "meteorology",
     topicTitle: "Barometre ve rüzgarla konum tayini",
     blocks: [
       { sectionTitles: ["Barometre Trend Analizi"] },
