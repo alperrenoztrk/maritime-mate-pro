@@ -19,7 +19,7 @@ export default function CourseBetaScenariosPage() {
   const [active, setActive] = useState<Scenario | null>(null);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50 px-4 py-8 dark:from-[hsl(350,40%,8%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(35,40%,9%)]">
+    <div className="relative min-h-screen bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 py-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="mx-auto flex max-w-2xl flex-col gap-6">
         <Link
           to={`/exercises/${topicKey}/topics`}
