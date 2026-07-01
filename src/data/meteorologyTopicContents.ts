@@ -255,7 +255,13 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Yapısal Öğeler",
         content:
-          "Olgunlaşmış bir tropikal siklonun merkezinde, sakin, açık ve sıcak bir bölge olan göz (eye) bulunur; çapı 20–60 km arasında değişir. Gözü çevreleyen eyewall, en şiddetli rüzgâr ve en yoğun yağışın gözlendiği bölgedir. Eyewall'dan dışa doğru spiral yağmur bantları uzanır; bu bantlar arasında nispeten daha sakin bölgeler olabilir, ancak bu geçici durum yanıltıcı olabilir. Siklonun yüzey rüzgâr alanı çapı yüzlerce kilometre olabilir; fırtına dalgaları ise bu alanın çok ötesine ulaşır.",
+          "Olgunlaşmış bir tropikal siklon, merkezden dışa doğru üç ana yapısal bölgeden oluşur. Merkezde, sistemin en düşük basıncının ölçüldüğü, rüzgârın zayıfladığı ve gökyüzünün kısmen açılabildiği göz (eye) bulunur; tipik çapı 20–60 km arasında değişir. Gözü çepeçevre saran eyewall (göz duvarı), dikine gelişmiş kümülonimbus bulutlarından oluşan bir halkadır ve sistemin en şiddetli rüzgârı ile en yoğun yağışı burada gözlenir. Eyewall'dan dışa doğru, merkeze sarmal biçimde kıvrılan spiral yağmur bantları yüzlerce kilometre uzanır; bantlar arasındaki nispeten sakin koridorlar yanıltıcıdır, her yeni bantla birlikte sağanak ve gust koşulları geri döner. Siklonun yüzey rüzgâr alanı çapı yüzlerce kilometre olabilir; sistemin ürettiği soluğan (swell) dalgaları ise bu alanın çok ötesine, binlerce kilometre uzağa ulaşarak siklonun ilk habercisi olur. Göz, eyewall ve spiral bantların ayrıntılı incelemesi ve köprüüstü uygulamaları, 'Siklonun gözü (eye) ve eyewall' konusunda ayrı olarak ele alınmıştır.",
+        bulletPoints: [
+          "Göz: en düşük basınç, zayıf rüzgâr, kısmen açık gökyüzü — yanıltıcı sakinlik.",
+          "Eyewall: en şiddetli rüzgâr, en yoğun yağış, en dik basınç gradyanı.",
+          "Spiral bantlar: sağanak ve gust taşıyan sarmal yağış hatları; aralarındaki sakin koridorlar geçicidir.",
+          "Uzun periyotlu soluğan (swell), siklonun rüzgâr alanından çok önce gemiye ulaşan ilk işarettir.",
+        ],
       },
     ],
     keyPoints: [
@@ -263,6 +269,102 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       "Tropik bozukluktan kategori 5 kasırgaya kadar sistematik bir evreleme vardır.",
       "Eyewall en şiddetli koşulları barındırır; göz sakinliği yanıltıcıdır.",
       "Fırtına dalgaları rüzgâr alanının çok ötesine ulaşabilir.",
+    ],
+  },
+
+  "Siklonun gözü (eye) ve eyewall": {
+    title: "Siklonun Gözü (Eye), Eyewall ve Spiral Yağmur Bantları",
+    introduction:
+      "Tropikal siklonun gözü, atmosferdeki en çarpıcı ve aynı zamanda en yanıltıcı meteorolojik yapılardan biridir. Yüzlerce kilometre çaplı, yıkıcı bir fırtına sisteminin tam merkezinde rüzgârın durulduğu, gökyüzünün açılabildiği ve basıncın en düşük değerine indiği sakin bir bölge yer alır. Bu sakinlik pek çok denizciyi tarih boyunca ölümcül hatalara sürüklemiştir: göz geçicidir ve arkasından fırtınanın ikinci yarısı, ters yönden ve tam şiddetiyle gelir. Bu konu; gözün fiziğini, onu çevreleyen eyewall'un yapısını, eyewall yenilenme döngüsünü ve gözle karşılaşan bir geminin köprüüstünde alması gereken kararları ayrıntılı olarak inceler.",
+    sections: [
+      {
+        title: "Gözün Tanımı ve Fiziksel Özellikleri",
+        content:
+          "Göz (eye), olgunlaşmış bir tropikal siklonun dönme merkezinde yer alan, yaklaşık dairesel biçimli sakin bölgedir. Tipik çapı 20–60 km arasındadır; ancak çok şiddetli, kompakt sistemlerde 8–10 km'ye kadar daralabilen 'iğne deliği' (pinhole) gözler ve zayıf ya da çok geniş sistemlerde 100 km'yi aşan gözler de gözlenmiştir. Genel kural olarak küçük ve keskin sınırlı bir göz, yoğunlaşmış ve şiddetli bir sisteme işaret eder. Göz içinde yüzey rüzgârı çoğunlukla 10–15 knotun altına düşer, yağış kesilir ve gökyüzü kısmen veya tamamen açılabilir; geceleyin yıldızlar, gündüz güneş görülebilir. Sistemin deniz seviyesindeki en düşük basıncı gözün merkezinde ölçülür; şiddetli kasırgalarda bu değer 950 hPa'nın, rekor sistemlerde 900 hPa'nın altına iner. Göz aynı zamanda sistemin 'sıcak çekirdeğidir' (warm core): çöken havanın sıkışarak ısınması nedeniyle göz içi, aynı yükseklikteki çevre atmosferden orta seviyelerde 5–10°C daha sıcaktır. Bu sıcak çekirdek, tropikal siklonu orta enlem alçak basınçlarından (soğuk çekirdekli sistemlerden) ayıran temel termodinamik özelliktir. Gözün içinden yukarıya bakıldığında, eyewall bulutlarının çepeçevre yükselen dev bir stadyum tribünü gibi görünmesi 'stadyum etkisi' (stadium effect) olarak adlandırılır.",
+        bulletPoints: [
+          "Tipik göz çapı 20–60 km; küçük ve keskin göz genellikle şiddetli sistem demektir.",
+          "Göz merkezi = sistemin en düşük deniz seviyesi basıncı (şiddetli sistemlerde < 950 hPa).",
+          "Göz içi rüzgâr çoğunlukla < 10–15 knot; yağış kesilir, gökyüzü açılabilir.",
+          "Sıcak çekirdek: göz, çevresine göre orta seviyelerde 5–10°C daha sıcaktır.",
+          "Stadyum etkisi: eyewall bulutları gözün içinden tribün gibi yükselerek görünür.",
+        ],
+      },
+      {
+        title: "Göz Neden Oluşur? Çöken Hava ve Dinamik Denge",
+        content:
+          "Gözün varlığı iki temel fiziksel mekanizmanın sonucudur. Birincisi dinamik dengedir: siklonun merkezine doğru sarmal biçimde akan hava, açısal momentumun korunumu gereği merkeze yaklaştıkça giderek hızlanır (buz patencisinin kollarını toplayınca hızlanması gibi). Belirli bir yarıçapta merkezkaç kuvveti, havayı içeri çeken basınç gradyan kuvvetini dengeler ve hava artık daha fazla merkeze sokulamaz; bu denge yarıçapı, eyewall'un iç sınırını ve dolayısıyla gözün boyutunu belirler. İçeri akan tüm nemli hava bu halka üzerinde şiddetle yükselmek zorunda kalır — eyewall'un dev kümülonimbus kulesi böyle beslenir. İkinci mekanizma çökme (subsidence) ile ilgilidir: eyewall içinde yükselip tepede dışa doğru boşalan havanın bir bölümü gözün içine döner ve orada aşağı doğru çöker. Çöken hava adyabatik olarak sıkışıp ısınır; ısınan havanın bağıl nemi düşer, bulutlar çözülür ve gökyüzü açılır. Bu, gözün hem açık hem de sıcak olmasının nedenidir. Göz, sistem tropikal fırtına şiddetini aşıp olgunlaşmaya başladığında (genellikle sürekli rüzgâr 64 knota yaklaşırken) uydu ve radar görüntülerinde belirginleşir; net ve simetrik bir gözün ortaya çıkması, sistemin güçlendiğinin en güvenilir işaretlerinden biridir.",
+        bulletPoints: [
+          "Açısal momentum korunumu: merkeze yaklaşan hava hızlanır, merkezkaç kuvveti içeri akışı bir halkada durdurur.",
+          "Bu denge yarıçapı eyewall'un iç sınırını, yani gözün boyutunu belirler.",
+          "Göz içinde çöken hava adyabatik ısınmayla bulutları çözer: açık gökyüzü ve sıcak çekirdek.",
+          "Belirgin ve simetrik bir gözün oluşması, sistemin şiddetlendiğini gösterir.",
+        ],
+      },
+      {
+        title: "Eyewall: Sistemin En Şiddetli Bölgesi",
+        content:
+          "Eyewall (göz duvarı), gözü çepeçevre saran, 8–15 km yüksekliğe kadar dikine gelişmiş kümülonimbus bulutlarından oluşan halkadır ve tropikal siklonun tartışmasız en tehlikeli bölgesidir. Sistemin en yüksek sürekli rüzgârı, en şiddetli gust'ları, en yoğun yağışı ve en dik basınç gradyanı burada bulunur. Rüzgâr hızı gözün sakin merkezinden eyewall'a geçerken birkaç deniz mili içinde sıfıra yakın değerden 100 knotun üzerine fırlayabilir; hiçbir başka meteorolojik sistemde bu kadar keskin bir geçiş yoktur. Barometre, eyewall geçişi sırasında saatte 15–20 hPa gibi olağanüstü hızlarla düşebilir veya yükselebilir. Kuzey Yarım Küre'de en şiddetli rüzgâr genellikle eyewall'un sağ-ön çeyreğinde (sistemin hareket yönüne göre) bulunur; çünkü burada siklonun dönel rüzgârına sistemin ilerleme hızı da eklenir — bu, tehlikeli yarım daire kavramının mikro ölçekteki karşılığıdır. Eyewall altındaki deniz durumu tanımlanabilir sınırların ötesindedir: 15 metreyi aşan kaotik dalgalar, sürüklenen serpinti (spray) nedeniyle sıfıra inen görüş ve kıyı bölgelerinde fırtına kabarmasının (storm surge) en yüksek değerleri eyewall bölgesinde üretilir. Hiçbir ticari gemi eyewall koşullarında güvenle manevra yapamaz; tüm kaçınma stratejisinin amacı gemiyi bu halkadan mümkün olan en uzak mesafede tutmaktır.",
+        bulletPoints: [
+          "Eyewall = en yüksek rüzgâr + en yoğun yağış + en dik basınç gradyanı.",
+          "Gözden eyewall'a geçişte rüzgâr birkaç mil içinde ~0'dan 100+ knota çıkabilir.",
+          "Kuzey Yarım Küre'de en şiddetli sektör genellikle sağ-ön çeyrektir (dönel rüzgâr + ilerleme hızı).",
+          "Fırtına kabarması ve en yüksek kaotik dalgalar eyewall bölgesinde üretilir.",
+          "Kaçınma planlamasının tek amacı: eyewall'dan azami mesafeyi korumak.",
+        ],
+      },
+      {
+        title: "Eyewall Yenilenme Döngüsü (Eyewall Replacement Cycle)",
+        content:
+          "Şiddetli tropikal siklonlarda (genellikle Kategori 3 ve üzeri) sık gözlenen bir yapısal süreç, eyewall yenilenme döngüsüdür. Mevcut eyewall'un dışında, 50–100 km yarıçapta ikinci bir eş merkezli (concentric) eyewall halkası oluşur. Dış halka, iç eyewall'u besleyen nem ve momentum akışını keserek onu zayıflatır ve zamanla çökertir; ardından dış halka daralarak yeni eyewall hâline gelir. Döngü tipik olarak 12–36 saat sürer ve bu süre boyunca sistemin en yüksek rüzgâr hızı geçici olarak azalır. Ancak bu zayıflama denizciler için asla bir rahatlama işareti olarak okunmamalıdır; döngünün iki kritik operasyonel sonucu vardır. Birincisi, maksimum rüzgâr yarıçapı büyür: sistem tepe şiddetinden bir miktar kaybetse bile şiddetli rüzgâr alanı çok daha geniş bir alana yayılır, yani 'tehlikeli bölge' daralmaz, genişler. İkincisi, döngü tamamlandığında sistem sıklıkla yeniden hızla şiddetlenir. Uydu görüntülerinde gözün bulanıklaşması ve çift halka görünümü, tahmin merkezlerinin bültenlerinde 'eyewall replacement' ifadesi olarak yansır; rota planlaması yapan zabit bu ifadeyi gördüğünde CPA (en yakın geçiş mesafesi) hesabını genişleyen rüzgâr alanına göre revize etmelidir.",
+        bulletPoints: [
+          "Dış eş merkezli halka iç eyewall'u boğar ve onun yerini alır; döngü 12–36 saat sürer.",
+          "Döngü sırasında tepe rüzgâr geçici azalır, ancak şiddetli rüzgâr alanı GENİŞLER.",
+          "Döngü sonrasında sistem sıklıkla yeniden hızla şiddetlenir.",
+          "Bültenlerde 'eyewall replacement' ifadesi görülünce CPA ve kaçınma mesafesi artırılmalıdır.",
+        ],
+      },
+      {
+        title: "Spiral Yağmur Bantları ve Dış Yapı",
+        content:
+          "Eyewall'dan dışa doğru, sistemin dönüş yönünde merkeze sarmal biçimde kıvrılan spiral yağmur bantları (spiral rain bands) uzanır. Her bant; sağanak yağış, ani rüzgâr artışları (squall), gök gürültülü fırtına ve zaman zaman hortum (waterspout/tornado) aktivitesi taşıyan konvektif bir hat gibidir. Bantlar radar ekranında merkeze kıvrılan parlak yay parçaları olarak belirir ve deneyimli bir gözlemci, bantların eğriliğinden siklon merkezinin kerterizini kabaca kestirebilir. Bantlar arasındaki koridorlarda yağış hafifler, rüzgâr nispeten düzenlenir ve gökyüzü kısmen açılabilir; bu aralıklar, kötüleşen koşullar içinde 'fırtına geçiyor' yanılgısı yaratabilir. Oysa gemi merkeze yaklaştıkça bantlar sıklaşır, aralar kısalır ve her yeni bant bir öncekinden daha şiddetli gelir. Bant geçişlerinde rüzgâr yönü ve hızı dakikalar içinde değişebileceğinden güverte operasyonları bu aldatıcı sakin aralıklara güvenilerek planlanmamalıdır. Sistemin en dış çevresinde ise yüksek bulutlar (sirüs kalkanı), giderek büyüyen uzun periyotlu soluğan ve basıncın günlük gelgit salınımını (diurnal variation) bozan düzenli düşüşü gözlenir; bunlar merkez daha yüzlerce mil uzaktayken siklonun yaklaştığını haber veren klasik erken işaretlerdir.",
+        bulletPoints: [
+          "Spiral bantlar: sağanak, squall ve hortum riski taşıyan konvektif hatlar.",
+          "Radardaki bant eğriliği, merkezin kerterizi hakkında kaba fikir verir.",
+          "Bantlar arası sakin koridorlar yanıltıcıdır; merkeze yaklaştıkça bantlar sıklaşır ve şiddetlenir.",
+          "Uzak alandaki erken işaretler: sirüs kalkanı, büyüyen soluğan, basıncın diurnal ritmini bozan düşüş.",
+        ],
+      },
+      {
+        title: "Göz İçinde Deniz Durumu ve Yanıltıcı Sakinlik",
+        content:
+          "Gözün en sinsi tehlikesi, atmosferdeki sakinliğin denize yansımamasıdır. Rüzgâr durulsa da göz içindeki deniz, sistemin her yönünden üretilmiş dalgaların merkeze yakınsamasıyla oluşan tam anlamıyla kaotik bir 'çapraz deniz' (confused/pyramidal sea) durumundadır. Farklı yönlerden gelen dalga dizileri üst üste binerek piramit biçimli, dik ve öngörülemeyen dalgalar üretir; dalga yönünü kestirmek imkânsızdır çünkü dalgaları düzenleyecek rüzgâr yoktur. Bu koşullar geminin yalpa ve baş-kıç vurma hareketlerini senkronize olmayan, tahmin edilemeyen bir biçime sokar; parametrik yalpa dahil tehlikeli dinamik stabilite olayları için elverişli ortam oluşur. Tarihte pek çok gemi, rüzgârın kesilmesini fırtınanın bittiği sanarak göz içinde yara almış ya da fırtınanın ikinci yarısına hazırlıksız yakalanmıştır. Kritik gerçek şudur: göz geçişi sırasında rüzgâr, girmeden önceki yönün TERSİNDEN geri döner. Gözün çapı 30 km ve sistemin ilerleme hızı 15 knot ise sakin dönem yalnızca 30–60 dakika sürebilir; ardından karşı taraftaki eyewall, hiçbir kademeli artış olmaksızın tam şiddetle gelir. Barometre bu geçişte en düşük değerini okur; en düşük okuma 'merkez üzerimizde' demektir, 'tehlike geçti' demek değildir.",
+        bulletPoints: [
+          "Göz içinde deniz: her yönden yakınsayan dalgalarla piramidal/kaotik çapraz deniz.",
+          "Rüzgâr olmadığından dalga düzeni yoktur; yalpa/baş-kıç hareketleri öngörülemez hâle gelir.",
+          "Sakin dönem çoğunlukla 30–60 dakikadır; rüzgâr TERS yönden tam şiddetle geri döner.",
+          "Barometrenin en düşük okuması merkez geçişini gösterir; tehlikenin bittiğini DEĞİL.",
+        ],
+      },
+      {
+        title: "Gözden Geçen Gemi: Köprüüstü Kararları",
+        content:
+          "Hiçbir kaçınma planı gözü hedeflemez; göz asla bir 'sığınak' değildir ve gemiyi göz içine sokmak, onu iki kez eyewall'dan geçirmek anlamına gelir. Ancak kaçınma manevrası geç kalmış ve gemi kendini göz içinde bulmuşsa, köprüüstünün bu kısa ve kritik zaman penceresini disiplinle kullanması gerekir. Öncelik sıralaması şöyledir: (1) Mevki, rüzgârın yeniden geleceği yön ve manevra planı güncellenir — çıkışta rüzgâr, girişteki yönün tersinden geleceği için gemi buna göre konumlandırılır; hedef, geminin seyir yapılabilir yarım daireye geçişini kolaylaştıracak rotadır. (2) Makine dairesi tam güç ve ani manevra ihtiyacına karşı uyarılır; yakıt devirdaim ve balast durumu kontrol edilir. (3) Kısa hasar değerlendirmesi yapılır; ancak kaotik deniz sürerken güverteye personel çıkarmak son derece risklidir ve ancak hayati bir emniyet gerekçesiyle, tam koruyucu donanım ve irtibat hattıyla düşünülebilir. (4) VHF/uydu üzerinden durum raporu ve gerekiyorsa SOLAS V/31 kapsamında tehlike hava raporu iletilir; göz içinden yapılan basınç ve konum gözlemi, tahmin merkezleri için istisnai değerde veridir. (5) Serdümen ve vardiya ekibi, çıkıştaki ani rüzgâr yüklenmesine karşı brife edilir. Radar bu süreçte hayati bir araçtır: eyewall, ekranda gözü çevreleyen yoğun eko halkası olarak izlenir; halkanın hareketi, merkezin ilerleme yönünü ve geminin göreli konumunu doğrudan gösterir.",
+        bulletPoints: [
+          "Göz bir sığınak DEĞİLDİR; göz geçişi eyewall'dan iki kez geçmek demektir.",
+          "Çıkışta rüzgâr ters yönden geleceği için manevra planı sakin pencere içinde hazırlanır.",
+          "Kaotik deniz sürerken güverteye personel çıkarmak ancak hayati gerekçeyle düşünülür.",
+          "Göz içi basınç/konum raporu (SOLAS V/31) tahmin merkezleri için istisnai değerdedir.",
+          "Radardaki eyewall eko halkası, merkezin hareketini ve geminin göreli konumunu izlemenin en pratik yoludur.",
+        ],
+      },
+    ],
+    keyPoints: [
+      "Göz; çöken havanın adyabatik ısınmasıyla oluşan açık, sakin ve sıcak çekirdekli merkezdir — sakinliği geçici ve yanıltıcıdır.",
+      "En düşük basınç gözde, en şiddetli rüzgâr ve yağış onu saran eyewall'dadır; geçiş birkaç mil içinde gerçekleşir.",
+      "Küçük ve keskin göz şiddetli sistem işaretidir; belirgin gözün oluşması sistemin güçlendiğini gösterir.",
+      "Eyewall yenilenme döngüsünde tepe rüzgâr geçici azalır ama şiddetli rüzgâr alanı genişler; kaçınma mesafesi artırılmalıdır.",
+      "Göz içinde rüzgâr ~30–60 dakika durulur, deniz kaotik kalır ve rüzgâr ters yönden tam şiddetle geri döner.",
+      "Göz asla sığınak değildir; tüm strateji eyewall'dan azami mesafeyi korumaya dayanır.",
     ],
   },
 
