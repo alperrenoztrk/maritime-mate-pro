@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Anchor, Search, X } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
@@ -24,7 +25,9 @@ const norm = (s: string) =>
     .replace(/[\u0300-\u036f]/g, "");
 
 export default function SailorKnotsPage() {
-  const [query, setQuery] = useState("");
+  // Global search deep-links to a specific knot via /seamanship/knots?q=<name>
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [filter, setFilter] = useState<Filter>("all");
 
   const q = norm(query.trim());

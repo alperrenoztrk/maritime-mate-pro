@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Search } from "lucide-react";
-import { GlobalSearch } from "@/components/GlobalSearch";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { NewsPanel } from "@/components/home/NewsPanel";
@@ -188,12 +187,6 @@ const Index = () => {
           )}
         </button>
       </div>
-
-      {/* Hidden mount for GlobalSearch dialog (triggered by event) */}
-      <div className="hidden">
-        <GlobalSearch />
-      </div>
-
 
       <style>{`
         @keyframes home-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }

@@ -18,6 +18,7 @@ import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
 import { FloatingNavButtons } from "@/components/FloatingNavButtons";
+import { GlobalSearch } from "@/components/GlobalSearch";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -199,6 +200,12 @@ const AnimatedRoutes = () => {
   return (
     <>
     <FloatingNavButtons />
+    {/* App-wide search dialog: ⌘K / Ctrl+K and the "open-global-search"
+        event now work on every route, not just the home page. The trigger
+        button is hidden; the dialog itself renders through a portal. */}
+    <div className="hidden">
+      <GlobalSearch />
+    </div>
     <AnimatePresence mode="wait">
       <Suspense fallback={<RouteFallback />}>
       <Routes location={location} key={location.pathname}>

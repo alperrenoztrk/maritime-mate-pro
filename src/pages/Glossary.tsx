@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { BookOpenText, Search } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
 const Glossary = () => {
-  const [search, setSearch] = useState("");
+  // Global search deep-links to a specific term via /glossary?q=<term>
+  const [searchParams] = useSearchParams();
+  const [search, setSearch] = useState(() => searchParams.get("q") ?? "");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredTerms = useMemo(() => {
