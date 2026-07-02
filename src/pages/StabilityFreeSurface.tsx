@@ -8,11 +8,9 @@ export default function StabilityFreeSurfacePage(){
   return (
     <CalculationLayout
       title="Serbest Yüzey Etkisi"
-      description="Tanklardaki serbest yüzeyin GM ve stabiliteye etkisi"
       icon={Waves}
       hero={{
         title: "Stabilite",
-        description: "Serbest yüzey hesaplamaları ve açıklamalar",
         imageSrc: yacht,
         imageAlt: "Yacht in clear water",
       }}

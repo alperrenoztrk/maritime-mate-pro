@@ -98,9 +98,6 @@ export default function MeteorologyFormulasPage() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
             Meteoroloji Formülleri
           </h1>
-          <p className="text-muted-foreground mt-2">
-            Rüzgâr, dalga ve atmosfer denklemleri
-          </p>
         </div>
 
         <div className="grid gap-6">

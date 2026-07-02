@@ -120,9 +120,6 @@ const Index = () => {
               </span>
               <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
             </h1>
-            <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-white/55">
-              Professional Maritime Solutions
-            </p>
           </div>
         </div>
 

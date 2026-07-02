@@ -89,7 +89,6 @@ export default function DraftSurveyPreloading() {
       <div className="flex items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold">Yükleme Öncesi Kontrol</h1>
-          <p className="text-muted-foreground">Kargo yüklemeden önce gemi durumu analizi</p>
         </div>
       </div>
 

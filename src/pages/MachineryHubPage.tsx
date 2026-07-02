@@ -202,7 +202,6 @@ function SystemCard({ system }: { system: MachineSystem }) {
         </span>
         <div>
           <h3 className="text-sm font-bold text-foreground">{system.name}</h3>
-          <p className="text-[11px] leading-snug text-muted-foreground">{system.description}</p>
         </div>
       </div>
       <div className="flex flex-wrap gap-1.5">
@@ -350,9 +349,6 @@ export default function MachineryHubPage() {
             <h1 className="text-2xl font-bold text-white drop-shadow-lg sm:text-3xl">
               Gemi Makineleri
             </h1>
-            <p className="mt-1 text-xs text-white/80 sm:text-sm">
-              Tahrik sistemleri, yardımcı makineler ve makine dairesi ekipmanları
-            </p>
           </motion.div>
         </div>
       </div>
@@ -422,7 +418,6 @@ export default function MachineryHubPage() {
               </span>
               <div className="flex-1">
                 <span className="text-sm font-bold text-foreground">{link.label}</span>
-                <p className="text-[11px] text-muted-foreground">{link.desc}</p>
               </div>
               <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" />
             </Link>

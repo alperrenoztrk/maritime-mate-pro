@@ -89,9 +89,6 @@ export default function SafetyFormulasPage() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 bg-clip-text text-transparent">
             Emniyet Formülleri
           </h1>
-          <p className="text-muted-foreground mt-2">
-            Yangın söndürme, köpük ve CO₂ miktar hesapları
-          </p>
         </div>
 
         <div className="grid gap-6">

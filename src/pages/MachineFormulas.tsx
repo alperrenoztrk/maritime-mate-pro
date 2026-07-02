@@ -212,9 +212,6 @@ export default function MachineFormulas() {
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-slate-600 via-zinc-600 to-slate-800 bg-clip-text text-transparent mb-3">
             Makine Formülleri
           </h1>
-          <p className="text-muted-foreground">
-            Güç, yakıt, soğutma ve verimlilik hesapları için temel formüller
-          </p>
         </div>
 
         <div className="space-y-8">

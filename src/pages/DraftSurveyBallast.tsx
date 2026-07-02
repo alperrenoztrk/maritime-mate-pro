@@ -90,7 +90,6 @@ export default function DraftSurveyBallast() {
       <div className="flex items-center gap-4 mb-6">
 <div>
           <h1 className="text-2xl font-bold">Balast Ölçümü</h1>
-          <p className="text-muted-foreground">Balast alma/verme işlemi draft analizi</p>
         </div>
       </div>
 

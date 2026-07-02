@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -113,7 +113,6 @@ export default function EmissionCalculationsPage() {
       <CalculationGridScreen
         eyebrow="Emisyon"
         title="CO₂, CII & EEXI Hesaplamaları"
-        subtitle="Karbon emisyonu ve enerji verimliliği değerlendirmeleri"
       >
         <Card className="bg-card border-border shadow-lg">
           <CardContent className="pt-6 space-y-6">
@@ -130,7 +129,6 @@ export default function EmissionCalculationsPage() {
                       <TrendingDown className="h-5 w-5" />
                       CO₂ Emisyonu ve CII Hesaplama
                     </CardTitle>
-                    <CardDescription>Yıllık yakıt tüketimi ve sefer verilerine göre karbon yoğunluğu</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -248,7 +246,6 @@ export default function EmissionCalculationsPage() {
                       <Ship className="h-5 w-5" />
                       EEXI Hesaplama
                     </CardTitle>
-                    <CardDescription>Energy Efficiency Existing Ship Index</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

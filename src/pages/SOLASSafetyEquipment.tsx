@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Flame, Radio, LifeBuoy } from "lucide-react";
@@ -84,7 +84,6 @@ const SOLASSafetyEquipmentPage = () => {
                   <Badge variant="outline" className="text-xs">{set.badge}</Badge>
                 </div>
                 <CardTitle>{set.title}</CardTitle>
-                <CardDescription>{set.summary}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 text-sm text-muted-foreground">
                 <div>

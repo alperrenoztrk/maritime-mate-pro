@@ -3281,7 +3281,6 @@ export default function CargoTopicsPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Yük Elleçleme ve İstifleme</h1>
-                <p className="text-sm text-muted-foreground">12 Ana Konu • Kapsamlı Müfredat</p>
               </div>
             </div>
           </div>

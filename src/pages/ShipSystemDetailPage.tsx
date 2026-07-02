@@ -46,7 +46,6 @@ export default function ShipSystemDetailPage() {
       <div className="min-h-screen bg-background pb-24">
         <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur">
           <h1 className="text-lg font-bold text-foreground">{section.title}</h1>
-          <p className="text-xs text-muted-foreground">{section.description}</p>
         </div>
 
         <div className="mx-auto max-w-2xl px-4 py-4 space-y-3">

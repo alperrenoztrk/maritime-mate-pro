@@ -66,11 +66,9 @@ const DraftSurveyCalculator = () => {
   return (
     <CalculationLayout
       title="Hesap Makinesi"
-      description="Hızlı draft hesaplamaları"
       icon={Calculator}
       hero={{
         title: "Draft Survey",
-        description: "Su çekimi, trim ve deplasman için hızlı araçlar",
         imageSrc: cargoShip,
         imageAlt: "Cargo ship at sea",
       }}

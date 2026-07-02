@@ -126,7 +126,6 @@ export default function MachineCalculationsPage() {
       <CalculationGridScreen
         eyebrow="Makine"
         title="Makine Hesaplamaları"
-        subtitle="Motor gücü, yakıt tüketimi ve performans hesaplamalarınızı yapın"
       >
         <Card className="border-border/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
           <CardHeader className="pb-3">

@@ -64,9 +64,6 @@ export default function SeamanshipRulesPage() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
             Gemicilik Kuralları
           </h1>
-          <p className="text-muted-foreground mt-2">
-            COLREG, ISM, ISPS ve liman talimatları
-          </p>
         </div>
 
         <div className="grid gap-6">

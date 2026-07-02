@@ -302,10 +302,6 @@ export default function BetaWorkHoursTool() {
           <h1 className="text-xl font-bold text-foreground">
             Otomatik Çalışma Saati Tablosu
           </h1>
-          <p className="text-xs text-muted-foreground">
-            STCW A-VIII/1 ve MLC 2006 Standard A2.3 referansları kullanılır.
-            Çıktı tahminidir; lütfen tabloyu manuel kontrol edip düzenleyin.
-          </p>
         </header>
 
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-900 dark:text-amber-100">

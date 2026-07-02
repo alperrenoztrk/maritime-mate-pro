@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -48,7 +48,6 @@ export const GMCalculator = () => {
           <Calculator className="h-5 w-5 text-primary" />
           GM Hesaplama Aracı
         </CardTitle>
-        <CardDescription className="text-xs">Metasantrik yüksekliği interaktif olarak hesaplayın</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -170,7 +169,6 @@ export const FreeSurfaceCalculator = () => {
           <Waves className="h-5 w-5 text-primary" />
           Serbest Yüzey Etkisi (FSE)
         </CardTitle>
-        <CardDescription className="text-xs">Tank boyutlarına göre FSE değerini hesaplayın</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
@@ -258,7 +256,6 @@ export const WeightShiftCalculator = () => {
           <Scale className="h-5 w-5 text-primary" />
           Ağırlık Kaydırma
         </CardTitle>
-        <CardDescription className="text-xs">Ağırlık kaydırmanın meyil etkisini hesaplayın</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
@@ -358,7 +355,6 @@ export const IMOCriteriaChecker = () => {
           <Target className="h-5 w-5 text-primary" />
           IMO Kriter Kontrolü
         </CardTitle>
-        <CardDescription className="text-xs">GZ değerlerini girin ve IMO kriterlerini kontrol edin</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -467,9 +463,6 @@ export const GrainStabilityCalculator = () => {
           <Wheat className="h-5 w-5 text-primary" />
           Tahıl Hesabı
         </CardTitle>
-        <CardDescription className="text-xs">
-          Tahıl yükü için GHM ve yatma açısını hesaplayın
-        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
@@ -566,7 +559,6 @@ export const ShipVisualization = () => {
           <Ship className="h-5 w-5 text-primary" />
           İnteraktif Gemi Simülasyonu
         </CardTitle>
-        <CardDescription className="text-xs">Meyil ve trim etkilerini görsel olarak inceleyin</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-col md:flex-row gap-4">

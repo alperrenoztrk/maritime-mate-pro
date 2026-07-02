@@ -8,7 +8,6 @@ const SpecialShipCalculationsPage = () => {
       <CalculationGridScreen
         eyebrow="Özel Gemiler"
         title="Özel Gemi Hesaplamaları"
-        subtitle="Tanker, konteyner, yolcu gemisi özel hesaplamalarını yapın"
       >
         <SpecialShipCalculations />
       </CalculationGridScreen>

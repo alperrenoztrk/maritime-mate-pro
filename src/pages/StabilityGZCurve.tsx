@@ -1,5 +1,5 @@
 import { Activity } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
@@ -27,9 +27,6 @@ export default function StabilityGZCurvePage() {
             <Activity className="h-6 w-6" />
             GZ Eğrisi ve Stabilite Kolu
           </CardTitle>
-          <CardDescription>
-            Yatma açısına göre stabilite kolunu hesaplayın
-          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -38,7 +38,6 @@ const Navigation = () => {
       <CalculationGridScreen
         eyebrow="Seyir"
         title="Seyir Hesaplamaları"
-        subtitle="Mesafe, hız, rota, konum ve zaman hesaplamalarınızı tek panelden yapın"
       >
         <div className="space-y-6">
           <div className="flex justify-end">

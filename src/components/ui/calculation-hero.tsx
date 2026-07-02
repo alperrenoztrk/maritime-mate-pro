@@ -3,17 +3,15 @@ import { cn } from "@/lib/utils";
 
 interface CalculationHeroProps {
   title: string;
-  description?: string;
   imageSrc: string;
   imageAlt: string;
   className?: string;
   hideText?: boolean;
 }
 
-export function CalculationHero({ 
-  title, 
-  description, 
-  imageSrc, 
+export function CalculationHero({
+  title,
+  imageSrc,
   imageAlt,
   className,
   hideText = false,
@@ -29,9 +27,6 @@ export function CalculationHero({
       {!hideText ? (
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
           <h1 className="text-2xl sm:text-3xl font-bold mb-2">{title}</h1>
-          {description && (
-            <p className="text-sm sm:text-base opacity-90">{description}</p>
-          )}
         </div>
       ) : null}
     </div>

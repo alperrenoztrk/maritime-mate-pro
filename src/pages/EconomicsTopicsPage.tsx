@@ -1551,7 +1551,6 @@ export default function EconomicsTopicsPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Deniz İşletmeciliği</h1>
-                <p className="text-sm text-muted-foreground">8 Ana Konu • Kapsamlı Müfredat</p>
               </div>
             </div>
           </div>

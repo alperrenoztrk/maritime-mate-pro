@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -520,9 +520,6 @@ export const SafetyCalculations = () => {
             <Shield className="h-5 w-5" />
             Güverte ve Güvenlik Hesaplamaları
           </CardTitle>
-          <CardDescription>
-            Demir tableleri, yangın sistemi, can kurtarma araçları, freeboard ve güvenlik ekipmanları
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="anchoring" className="w-full">

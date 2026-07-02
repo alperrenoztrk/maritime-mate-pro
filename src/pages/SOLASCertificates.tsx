@@ -92,7 +92,6 @@ const SOLASCertificatesPage = () => {
         <Card className="border-emerald-200/70 shadow-xl shadow-emerald-500/10">
           <CardHeader>
             <CardTitle>Yenileme / Survey Takvimi</CardTitle>
-            <CardDescription>Her denetim türü için maksimum tolerans ve zorunlu doküman listesi</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>

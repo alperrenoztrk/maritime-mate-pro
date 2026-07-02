@@ -19,7 +19,6 @@ export default function SeamanshipAssistantPage() {
   return (
     <AssistantInterface
       title="Gemicilik Asistanı"
-      subtitle="Vardiya, bakım ve operasyonel güvenlik için rehber"
       badge="Gemicilik Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

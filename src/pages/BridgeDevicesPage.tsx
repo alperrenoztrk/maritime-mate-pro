@@ -25,9 +25,6 @@ export default function BridgeDevicesPage() {
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
         <header className="space-y-3 text-center">
           <h1 className="text-2xl font-bold text-foreground">Köprüüstü Aygıtları</h1>
-          <p className="text-xs text-muted-foreground">
-            VHF, DSC, ECDIS, radar, Navtex ve diğer tüm seyir cihazlarını ayrı ayrı açın.
-          </p>
         </header>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
@@ -48,7 +45,6 @@ export default function BridgeDevicesPage() {
                     </span>
                     <span className="text-sm font-semibold text-foreground">{device.name}</span>
                   </div>
-                  <p className="text-xs leading-relaxed text-muted-foreground">{device.description}</p>
                   <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
                     Ayrı modül
                     <ChevronRight className="h-3 w-3 transition group-hover:translate-x-0.5" />

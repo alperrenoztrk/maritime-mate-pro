@@ -45,7 +45,6 @@ export function CourseTopicHeader({
           </p>
         </div>
       </div>
-      {topic.intro && <p className="text-sm text-muted-foreground">{topic.intro}</p>}
     </header>
   );
 }

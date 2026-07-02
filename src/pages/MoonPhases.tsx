@@ -104,9 +104,6 @@ const MoonPhases = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
             Ay Fazları
           </h1>
-          <p className="text-lg text-white/80">
-            Güncel ay fazı ve döngüsü
-          </p>
         </div>
 
         {/* Moon Phase Display */}

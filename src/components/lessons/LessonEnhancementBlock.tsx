@@ -22,9 +22,6 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
           <h2 className="text-base font-bold text-foreground">
             Detaylı Anlatım & Çözümlü Örnekler
           </h2>
-          <p className="text-xs text-muted-foreground">
-            Konunun adım-adım hesaplama yöntemi ve sayısal örnekler
-          </p>
         </div>
       </div>
 

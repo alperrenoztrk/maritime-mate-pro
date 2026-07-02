@@ -1,5 +1,5 @@
 import { Wind } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useMemo, useState } from "react";
@@ -40,9 +40,6 @@ export default function StabilityWindWeatherPage() {
             <Wind className="h-6 w-6" />
             Wind and Weather Stability
           </CardTitle>
-          <CardDescription>
-            Rüzgar etkisiyle oluşan yatma momentini hesaplayın
-          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

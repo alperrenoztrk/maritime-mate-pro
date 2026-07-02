@@ -40,7 +40,6 @@ export default function CrewRoleDetailPage() {
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Rol Detayı</p>
               <h1 className="text-3xl font-black leading-tight text-foreground">{role.rank}</h1>
-              <p className="text-sm text-muted-foreground">{role.responsibility}</p>
             </div>
             <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-4 py-3 text-primary">
               <ShieldCheck className="h-5 w-5" />
@@ -124,7 +123,6 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
             </div>
             <div>
               <h2 className="text-base font-bold text-foreground">Sorumluluk Alanları ve İşler</h2>
-              <p className="text-xs text-muted-foreground">Her bir görev başlığına dokunarak detaylı açıklamayı okuyun</p>
             </div>
           </div>
 
@@ -169,7 +167,6 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
             </div>
             <div>
               <h2 className="text-base font-bold text-foreground">Ekipman ve Kontrol Listeleri</h2>
-              <p className="text-xs text-muted-foreground">Her ekipman grubunun kontrol noktalarını inceleyin</p>
             </div>
           </div>
 
@@ -213,7 +210,6 @@ function DetailedContent({ detail }: { detail: CrewRoleDetail }) {
             </div>
             <div>
               <h2 className="text-base font-bold text-foreground">Kritik Pratik Uyarılar</h2>
-              <p className="text-xs text-muted-foreground">Deniz pratiğinden önemli notlar ve riskler</p>
             </div>
           </div>
           <ul className="space-y-3">
@@ -242,7 +238,6 @@ function BasicContent({ role }: { role: typeof crewRoleMap[string] }) {
         </div>
         <div>
           <h2 className="text-base font-semibold text-foreground">Görevler</h2>
-          <p className="text-xs text-muted-foreground">Temel sorumluluklar ve günlük işlerin birleşik görünümü</p>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2">

@@ -20,7 +20,6 @@ export default function MeteorologyAssistantPage() {
   return (
     <AssistantInterface
       title="Meteoroloji Asistanı"
-      subtitle="Rota bazlı hava tavsiyeleri ve alarm eşikleri"
       badge="Meteoroloji Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

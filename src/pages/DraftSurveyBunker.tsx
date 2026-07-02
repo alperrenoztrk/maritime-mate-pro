@@ -87,7 +87,6 @@ export default function DraftSurveyBunker() {
       <div className="flex items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold">Bunker Ölçümü</h1>
-          <p className="text-muted-foreground">Yakıt alımı öncesi ve sonrası draft karşılaştırması</p>
         </div>
       </div>
 

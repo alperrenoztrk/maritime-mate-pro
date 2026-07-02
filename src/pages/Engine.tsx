@@ -11,18 +11,15 @@ const Engine = () => {
   return (
     <CalculationLayout
       title="Makine Hesaplamaları"
-      description="Motor gücü, yakıt tüketimi ve performans hesaplamalarınızı yapın"
       icon={Cog}
       hero={{
         title: "Makine Hesaplamaları",
-        description: "Gemi makineleri ve güç sistemleri hesaplamaları",
         imageSrc: shipBridge,
         imageAlt: "Ship Bridge Control Panel",
       }}
       maxWidthClassName="max-w-6xl"
       rightRail={
         <FormulaCard
-          description="Makine hesaplama formülleri"
           sections={[
             {
               title: "⚡ Güç Formülleri",
@@ -87,7 +84,6 @@ const Engine = () => {
         <>
           <DiagramViewer
             title="Makine Sistemi Akış Diyagramı"
-            description="AI destekli makine sistemi görselleştirmesi - yakıt akışı, güç iletimi ve emisyon kontrolü"
             data={{
               mcrPower: 8500,
               currentLoad: 75,

@@ -8,7 +8,6 @@ const SafetyCalculationsPage = () => {
       <CalculationGridScreen
         eyebrow="Güvenlik"
         title="Güvenlik Hesaplamaları"
-        subtitle="Can salı, yangın sistemi ve acil durum hesaplamalarınızı yapın"
       >
         <SafetyCalculations />
       </CalculationGridScreen>

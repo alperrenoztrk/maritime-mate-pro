@@ -20,7 +20,6 @@ export default function MachineAssistant() {
   return (
     <AssistantInterface
       title="Makine Asistanı"
-      subtitle="Arıza tespiti, bakım önerileri ve teknik danışmanlık"
       badge="Makine Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

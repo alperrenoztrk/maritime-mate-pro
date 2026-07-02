@@ -6,11 +6,9 @@ import type { LucideIcon } from "lucide-react";
 
 interface CalculationLayoutProps {
   title: string;
-  description?: string;
   icon?: LucideIcon;
   hero?: {
     title?: string;
-    description?: string;
     imageSrc: string;
     imageAlt: string;
   };
@@ -25,7 +23,6 @@ interface CalculationLayoutProps {
 
 export function CalculationLayout({
   title,
-  description,
   icon,
   hero,
   actions,
@@ -53,7 +50,6 @@ export function CalculationLayout({
           <div className="sticky top-0 z-40 -mx-4 px-4 py-3 bg-background/40 backdrop-blur-md border-b border-white/10">
             <PageHeader
               title={title}
-              description={description}
               icon={icon}
               actions={actions}
               variant="compact"
@@ -64,7 +60,6 @@ export function CalculationLayout({
         {hero ? (
           <CalculationHero
             title={hero.title ?? title}
-            description={hero.description ?? description}
             imageSrc={hero.imageSrc}
             imageAlt={hero.imageAlt}
             hideText
@@ -72,7 +67,7 @@ export function CalculationLayout({
         ) : null}
 
         {!stickyHeader ? (
-          <PageHeader title={title} description={description} icon={icon} actions={actions} />
+          <PageHeader title={title} icon={icon} actions={actions} />
         ) : null}
 
         {rightRail ? (

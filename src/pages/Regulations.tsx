@@ -49,7 +49,6 @@ const Regulations = () => {
             <Scale className="h-5 w-5 text-primary" />
             <h1 className="text-2xl font-bold text-foreground">Regülasyonlar</h1>
           </div>
-          <p className="text-xs text-muted-foreground">Uluslararası ve ulusal denizcilik regülasyonları</p>
         </header>
 
         <section className="space-y-4 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">

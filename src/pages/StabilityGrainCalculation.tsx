@@ -1,5 +1,5 @@
 import { Anchor, AlertCircle, CheckCircle2, XCircle } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -222,7 +222,6 @@ export default function StabilityGrainCalculationPage() {
                 </div>
                 <div>
                   <CardTitle className="text-2xl">Tahıl Stabilite Hesaplamaları (IMO Grain Code)</CardTitle>
-                  <CardDescription>Tahıl yükü stabilitesi için kapsamlı hesaplamalar ve IMO kriterleri</CardDescription>
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -264,7 +263,6 @@ export default function StabilityGrainCalculationPage() {
           <Card className="border-border/60 bg-muted/30 shadow-sm">
             <CardHeader>
               <CardTitle className="text-lg">Hazırlık Kontrol Listesi</CardTitle>
-              <CardDescription>Formları doldurmadan önce verileri doğrulayın</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-muted-foreground">
               <div className="rounded-lg bg-background p-3 shadow-sm">
@@ -290,7 +288,6 @@ export default function StabilityGrainCalculationPage() {
       <Card className="border-border/70 shadow-lg">
         <CardHeader>
           <CardTitle>Detaylı Hesap Motoru</CardTitle>
-          <CardDescription>Tüm hesap modülleri tek ekranda açık; sadece kaydırarak ilerleyin</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
                 {/* Tab 1: Stowage Factor */}
@@ -298,7 +295,6 @@ export default function StabilityGrainCalculationPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">1️⃣ Stowage Factor (SF) – Yığma Faktörü</CardTitle>
-                      <CardDescription>Bir ton tahılın kaç m³ yer kapladığını hesaplayın</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -427,7 +423,6 @@ export default function StabilityGrainCalculationPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">5️⃣ Yük Kapasitesi Hesaplamaları</CardTitle>
-                      <CardDescription>Seferlik yüklenebilir tahıl miktarını hesaplayın</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -559,7 +554,6 @@ export default function StabilityGrainCalculationPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">6️⃣ Grain Heeling Moment (GHM)</CardTitle>
-                      <CardDescription>Tahıl kaymasının yatma momentini hesaplayın</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -657,7 +651,6 @@ export default function StabilityGrainCalculationPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">8️⃣ FSM (Free Surface Moment) – Tahıl İçin</CardTitle>
-                      <CardDescription>Tahıl için serbest yüzey momentini hesaplayın</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <Alert className="bg-blue-50 border-blue-200">
@@ -768,7 +761,6 @@ export default function StabilityGrainCalculationPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">9️⃣ IMO Grain Stability Criterion</CardTitle>
-                      <CardDescription>Geminin tahıl yüküyle stabil olup olmadığını kontrol edin</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                       <Alert className="bg-blue-50 border-blue-200">

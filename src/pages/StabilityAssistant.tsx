@@ -19,7 +19,6 @@ export default function StabilityAssistantPage() {
   return (
     <AssistantInterface
       title="Stabilite Asistanı"
-      subtitle="GM, GZ, FSC ve IMO kriterleri için hızlı rehber"
       badge="Stabilite Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

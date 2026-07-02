@@ -60,9 +60,6 @@ export default function MeteorologyRulesPage() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
             Meteoroloji Kuralları
           </h1>
-          <p className="text-muted-foreground mt-2">
-            SOLAS V/34, STCW VIII/2 ve WMO prosedürleri
-          </p>
         </div>
 
         <div className="grid gap-6">

@@ -3323,7 +3323,6 @@ export default function StabilityTopicsPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Gemi Stabilitesi</h1>
-                <p className="text-sm text-muted-foreground">14 Ana Konu • Kapsamlı Müfredat</p>
               </div>
             </div>
           </div>

@@ -33,9 +33,6 @@ export default function CourseBetaScenariosPage() {
             <Ship className="h-6 w-6" />
           </div>
           <h1 className="text-2xl font-bold text-foreground">Vardiya Senaryoları</h1>
-          <p className="text-sm text-muted-foreground">
-            Gerçek durumlar, gerçek kararlar. "Sen olsan ne yapardın?"
-          </p>
         </header>
 
         {active ? (
@@ -80,7 +77,6 @@ export default function CourseBetaScenariosPage() {
                     </span>
                     <span className="font-bold text-foreground">{scenario.title}</span>
                   </div>
-                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{scenario.briefing}</p>
                 </div>
                 <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
               </button>

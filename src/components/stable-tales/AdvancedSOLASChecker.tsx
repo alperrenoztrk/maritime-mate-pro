@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -188,9 +188,6 @@ export const AdvancedSOLASChecker = () => {
             <Shield className="h-5 w-5" />
             Gelişmiş SOLAS Kriter Kontrolü
           </CardTitle>
-          <CardDescription>
-            SOLAS Bölüm II-1 Stabilite Kriterlerinin detaylı analizi
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">

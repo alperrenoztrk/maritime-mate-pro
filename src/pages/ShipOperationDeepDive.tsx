@@ -65,9 +65,6 @@ export default function ShipOperationDeepDive() {
               {ship.label} · {department?.label}
             </p>
             <h1 className="text-2xl font-black leading-tight text-foreground">{opMeta.title}</h1>
-            {content && (
-              <p className="mt-3 text-sm leading-relaxed text-foreground/85 dark:text-slate-300">{content.intro}</p>
-            )}
           </header>
 
           {loading && (

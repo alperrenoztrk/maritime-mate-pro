@@ -58,7 +58,6 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
       <CalculationGridScreen
         eyebrow="Tank"
         title="Tank Hesaplamaları"
-        subtitle="Sounding Table hesaplamaları"
       >
         <Card className="bg-card border-border shadow-lg">
           <CardContent className="pt-6">

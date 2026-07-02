@@ -14,9 +14,6 @@ export default function StableTalesPage() {
           <h1 className="text-3xl font-bold gradient-text">
             Stable Tales - Gelişmiş Gemi Stabilite Analizi
           </h1>
-          <p className="text-lg text-muted-foreground">
-            Profesyonel stabilite hesaplamaları, sarkaç metodu ve kren operasyonları
-          </p>
         </div>
 
         <Tabs defaultValue="calculator" className="space-y-6">

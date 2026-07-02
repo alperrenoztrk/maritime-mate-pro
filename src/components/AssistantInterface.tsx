@@ -300,7 +300,6 @@ const UI_TRANSLATIONS: Record<string, {
 
 interface AssistantInterfaceProps {
   title: string;
-  subtitle: string;
   badge: string;
   quickPrompts: string[];
   systemPrompt: string;
@@ -312,7 +311,6 @@ interface AssistantInterfaceProps {
 
 export function AssistantInterface({
   title,
-  subtitle,
   badge,
   quickPrompts,
   systemPrompt,
@@ -387,7 +385,6 @@ MANDATORY FORMAT RULES:
           <h1 className={`text-4xl font-extrabold bg-gradient-to-r ${accentGradient} bg-clip-text text-transparent mb-3`}>
             {title}
           </h1>
-          <p className="text-muted-foreground">{subtitle}</p>
         </div>
 
         <div className="space-y-6">

@@ -19,7 +19,6 @@ export default function CommunicationAssistantPage() {
   return (
     <AssistantInterface
       title="Haberleşme Asistanı"
-      subtitle="GMDSS, VHF/DSC ve acil durum haberleşme prosedürleri için rehber"
       badge="Haberleşme Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

@@ -120,12 +120,6 @@ export default function PassagePlanPage() {
               <h1 className="text-2xl font-bold leading-tight text-foreground">Seyir Planı (Passage Plan) Rehberi</h1>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Passage plan, geminin iskeleden ayrılışından varış limanında bağlanmasına kadar takip edeceği emniyetli ve yasal
-            seyir rotasıdır. PSC incelemelerinde ve kaza durumlarında ilk kontrol edilen belgelerden biridir. Bu nedenle
-            passage planın dört aşaması olan appraisal, planning, execution ve monitoring süreçlerinin tamamı ayrı ayrı
-            dokümante edilmelidir.
-          </p>
         </header>
 
         <section className="rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">

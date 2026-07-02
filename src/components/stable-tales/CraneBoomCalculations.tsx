@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -102,9 +102,6 @@ export const CraneBoomCalculations = () => {
             <Settings className="h-5 w-5" />
             Kren/Bumba Operasyon Analizi
           </CardTitle>
-          <CardDescription>
-            Yükleme sırasında kren ve bumba operasyonlarının stabiliteye etkisi
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

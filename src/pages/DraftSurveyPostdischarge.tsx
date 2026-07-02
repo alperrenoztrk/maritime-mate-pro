@@ -79,7 +79,6 @@ export default function DraftSurveyPostdischarge() {
       <div className="flex items-center gap-4 mb-6">
 <div>
           <h1 className="text-2xl font-bold">Boşaltma Sonrası Kontrol</h1>
-          <p className="text-muted-foreground">Kargo boşaltma işlemi sonucu analizi</p>
         </div>
       </div>
 

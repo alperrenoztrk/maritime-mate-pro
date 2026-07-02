@@ -331,7 +331,6 @@ export function SeamanshipCalculationDetailPage() {
       <CalculationGridScreen
         eyebrow="Gemicilik"
         title={activeTitle}
-        subtitle="Palamar yükü, rüzgâr kuvveti ve katenary hesaplarını aynı temada toplayın"
       >
         <SeamanshipCalculationContent initialSection={initialSection} />
       </CalculationGridScreen>
@@ -345,7 +344,6 @@ const SeamanshipCalculationsPage = () => {
       <CalculationGridScreen
         eyebrow="Gemicilik"
         title="Gemicilik Hesaplamaları"
-        subtitle="Palamar yükü, rüzgâr kuvveti ve katenary hesaplarını aynı temada toplayın"
       >
         <div className="space-y-6">
           <div className="flex justify-end">

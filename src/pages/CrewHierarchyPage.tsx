@@ -25,9 +25,6 @@ export default function CrewHierarchyPage() {
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
         <header className="space-y-3 text-center">
           <h1 className="text-2xl font-bold text-foreground">Gemi Personeli</h1>
-          <p className="text-xs text-muted-foreground">
-            Köprüüstü, makine ve ikmal departmanlarında görev yapan gemi personelinin hiyerarşik yapısı.
-          </p>
         </header>
 
         <Link
@@ -39,10 +36,6 @@ export default function CrewHierarchyPage() {
           </span>
           <div className="min-w-0 flex-1">
             <h2 className="text-sm font-semibold text-foreground">Rol Cetveli / Muster List</h2>
-            <p className="text-xs text-muted-foreground">
-              Acil durumlarda her personelin toplanma istasyonu ve görevleri (yangın, gemiyi
-              terk, denize adam düşmesi).
-            </p>
           </div>
           <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5" />
         </Link>
@@ -57,7 +50,6 @@ export default function CrewHierarchyPage() {
                 <div className="mb-2 flex items-center justify-between">
                   <div>
                     <h2 className="text-sm font-semibold text-foreground">{group.department}</h2>
-                    <p className="text-[11px] uppercase tracking-wide text-muted-foreground">{group.focus}</p>
                   </div>
                   <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold text-primary">
                     {group.colorCode}
@@ -77,7 +69,6 @@ export default function CrewHierarchyPage() {
                             <div className="font-semibold text-foreground">{role.rank}</div>
                             <span className="text-[10px] uppercase tracking-wide text-primary/80">Görev Detayı</span>
                           </div>
-                          <div className="text-xs text-muted-foreground">{role.responsibility}</div>
                         </div>
                         <span className="rounded-md bg-slate-100 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-700 transition group-hover:bg-primary/15 group-hover:text-primary dark:bg-slate-800 dark:text-slate-200">
                           {role.reportsTo}

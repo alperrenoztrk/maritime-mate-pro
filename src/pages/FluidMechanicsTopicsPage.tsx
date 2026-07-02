@@ -162,7 +162,6 @@ export default function FluidMechanicsTopicsPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Akışkanlar Mekaniği</h1>
-                <p className="text-sm text-muted-foreground">7 Ana Konu • Makine Müfredatı</p>
               </div>
             </div>
           </div>
