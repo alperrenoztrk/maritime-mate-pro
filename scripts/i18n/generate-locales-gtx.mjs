@@ -25,6 +25,7 @@ import {
   buildTranslationBatches,
   splitBatchResult,
 } from '../../src/utils/pageTranslator.ts';
+import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
 const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
@@ -56,6 +57,14 @@ const MANUAL_CORRECTIONS = {
   'Hazırlanıyor...': { en: 'Preparing...', de: 'Wird vorbereitet...', fr: 'Préparation...', es: 'Preparando...', it: 'Preparazione...', pt: 'Preparando...', ru: 'Подготовка...', ja: '準備中...', ko: '준비 중...', 'zh-CN': '准备中...', ar: 'جارٍ التحضير...', hi: 'तैयार हो रहा है...', nl: 'Voorbereiden...', sv: 'Förbereder...', no: 'Forbereder...', da: 'Forbereder...', fi: 'Valmistellaan...', pl: 'Przygotowywanie...', cs: 'Příprava...', hu: 'Előkészítés...', ro: 'Se pregătește...', el: 'Προετοιμασία...', bg: 'Подготвя се...', uk: 'Підготовка...' },
   'Açıklama alınamadı. Lütfen tekrar deneyin.': { en: 'Could not get explanation. Please try again.', de: 'Erklärung konnte nicht abgerufen werden. Bitte versuchen Sie es erneut.', fr: 'Impossible d\'obtenir l\'explication. Veuillez réessayer.', es: 'No se pudo obtener la explicación. Inténtelo de nuevo.', it: 'Impossibile ottenere la spiegazione. Riprova.', pt: 'Não foi possível obter a explicação. Tente novamente.', ru: 'Не удалось получить объяснение. Пожалуйста, попробуйте снова.', ja: '説明を取得できませんでした。もう一度お試しください。', ko: '설명을 가져올 수 없습니다. 다시 시도해 주세요.', 'zh-CN': '无法获取解释。请重试。', ar: 'تعذّر الحصول على الشرح. يرجى المحاولة مرة أخرى.', hi: 'व्याख्या प्राप्त नहीं हो सकी। कृपया पुनः प्रयास करें।', nl: 'Kon uitleg niet ophalen. Probeer het opnieuw.', sv: 'Det gick inte att hämta förklaringen. Försök igen.', no: 'Kunne ikke hente forklaringen. Prøv igjen.', da: 'Forklaringen kunne ikke hentes. Prøv igen.', fi: 'Selitystä ei saatu. Yritä uudelleen.', pl: 'Nie udało się uzyskać wyjaśnienia. Spróbuj ponownie.', cs: 'Vysvětlení se nepodařilo získat. Zkuste to znovu.', hu: 'A magyarázat nem érhető el. Kérjük, próbálja újra.', ro: 'Nu s-a putut obține explicația. Vă rugăm să încercați din nou.', el: 'Δεν ήταν δυνατή η λήψη της εξήγησης. Δοκιμάστε ξανά.', bg: 'Обяснението не можа да бъде получено. Моля, опитайте отново.', uk: 'Не вдалося отримати пояснення. Будь ласка, спробуйте ще раз.' },
 };
+
+// Merge the shared contextual-correction layer (context-dependent Turkish that
+// generic MT gets wrong — see contextual-corrections.mjs) into the manual
+// corrections. Both take priority over cached/live machine translations.
+const ALL_CORRECTIONS = { ...MANUAL_CORRECTIONS };
+for (const [source, perLang] of Object.entries(CONTEXTUAL_CORRECTIONS)) {
+  ALL_CORRECTIONS[source] = { ...(ALL_CORRECTIONS[source] ?? {}), ...perLang };
+}
 
 // UI strings hardcoded in React components that the data-file extractor misses.
 // Keep this list in sync when new Turkish strings are added to components.
@@ -182,8 +191,8 @@ async function translateLanguage(langCode, sources) {
     if (!key.startsWith('__') && cache[key] === undefined) cache[key] = val;
   }
 
-  // Apply manual corrections — these take priority over everything.
-  for (const [source, corrections] of Object.entries(MANUAL_CORRECTIONS)) {
+  // Apply manual + contextual corrections — these take priority over everything.
+  for (const [source, corrections] of Object.entries(ALL_CORRECTIONS)) {
     if (corrections[langCode]) cache[source] = corrections[langCode];
   }
 
@@ -194,8 +203,8 @@ async function translateLanguage(langCode, sources) {
   // Which strings still need translation?
   const pending = [];
   for (const source of sources) {
-    // Manual correction already applied above.
-    if (MANUAL_CORRECTIONS[source]?.[langCode]) { overrideCount++; continue; }
+    // Manual/contextual correction already applied above.
+    if (ALL_CORRECTIONS[source]?.[langCode]) { overrideCount++; continue; }
     const override = getMaritimeTranslationOverride(source, langCode);
     if (override) { cache[source] = override; overrideCount++; continue; }
     if (cache[source] !== undefined) { skipCount++; continue; }

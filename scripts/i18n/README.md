@@ -22,13 +22,32 @@ LOVABLE_API_KEY=xxxx npm run i18n:pretranslate -- --lang=en --limit=500  # cap (
 
 # 3. Report coverage
 npm run i18n:check            # or: npm run i18n:check -- --strict
+
+# 4. Apply the contextual correction layer to the shipped dictionaries
+#    (run after changing the maritime glossary or contextual-corrections.mjs)
+npm run i18n:fix
 ```
 
 Then commit the generated `public/locales/*.json`.
 
+## Contextual corrections
+
+Generic machine translation translates each string in isolation, so
+context-dependent Turkish gets mistranslated ("Demir" → "iron" instead of
+"anchor", "Üstü:" → "Above:" instead of "Reports to:", "İkinci Zabit" →
+"Chief Officer"). Two curated layers fix this:
+
+- `contextual-corrections.mjs` — human-verified whole-string fixes, highest
+  priority everywhere (generation, pretranslation and `i18n:fix`).
+- the maritime glossary (`supabase/functions/_shared/maritimeGlossary.ts`) —
+  deterministic per-language terminology, applied at build time AND at runtime
+  (the runtime consults it before the shipped dictionary, see
+  `resolveLocally` in `src/contexts/LanguageContext.tsx`).
+
 ## Notes
 
-- **Order of precedence per string:** curated maritime override
+- **Order of precedence per string:** contextual correction
+  (`contextual-corrections.mjs`) → curated maritime override
   (`getMaritimeTranslationOverride`) → AI translation (Gemini, maritime prompt +
   glossary hint) → `applyMaritimeCorrections`. Same glossary the runtime uses,
   so terminology is consistent.

@@ -97,7 +97,10 @@ interface LanguageProviderProps {
 }
 
 // ── Translation engine configuration ─────────────────────────────────────────
-const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v1';
+// v2: cache version bumped when the contextual glossary/correction layer was
+// activated, so clients drop previously cached mistranslations (e.g. "Üstü:"
+// rendered as "Above:") instead of serving them forever from localStorage.
+const TRANSLATION_CACHE_KEY = 'mt-translation-cache-v2';
 const SEEN_STRINGS_KEY = 'mt-seen-strings-v1';
 const TRANSLATION_CACHE_MAX = 12000;
 const SEEN_STRINGS_MAX = 8000;
@@ -213,24 +216,38 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   // ── Core string translator (glossary-aware) ────────────────────────────────
-  // Resolves a source string without any network access: cache → static
-  // dictionary → curated maritime override. Returns undefined when only a live
-  // fetch could translate it. Caches static/override hits for next time.
+  // Resolves a source string without any network access: cache → curated
+  // contextual/maritime override → static dictionary. Returns undefined when
+  // only a live fetch could translate it. Caches static/override hits for next
+  // time.
+  //
+  // The curated override is consulted BEFORE the shipped dictionary (matching
+  // the build-time precedence documented in scripts/i18n/README.md) so that a
+  // context-aware correction — e.g. the crew-hierarchy label "Üstü:" =
+  // "Reports to:", not the spatial "Above:" — can never be masked by a stale
+  // machine translation baked into public/locales/*.json.
   const resolveLocally = (normalizedText: string, languageCode: string): string | undefined => {
     const cacheKey = `${languageCode}:${normalizedText}`;
     const cached = translationCacheRef.current.get(cacheKey);
     if (cached !== undefined) return cached;
 
+    const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
+    if (maritimeOverride) {
+      // Override matching tolerates a trailing colon on the source label
+      // ("Dümen:" matches the "Dümen" term) — keep that colon on the output so
+      // "<label>: <value>" layouts stay intact.
+      const withPunctuation =
+        /:$/.test(normalizedText) && !/:$/.test(maritimeOverride)
+          ? `${maritimeOverride}:`
+          : maritimeOverride;
+      translationCacheRef.current.set(cacheKey, withPunctuation);
+      return withPunctuation;
+    }
+
     const staticTranslation = getStaticTranslation(normalizedText, languageCode);
     if (staticTranslation !== null) {
       translationCacheRef.current.set(cacheKey, staticTranslation);
       return staticTranslation;
-    }
-
-    const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
-    if (maritimeOverride) {
-      translationCacheRef.current.set(cacheKey, maritimeOverride);
-      return maritimeOverride;
     }
 
     return undefined;
