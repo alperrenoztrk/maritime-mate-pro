@@ -1501,4 +1501,457 @@ export const meteorologyLessonFlows: LessonFlow[] = [
       },
     ],
   },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Bulut oluşumu ve sınıflandırma esasları",
+    blocks: [
+      { sectionTitles: ["Bulut Nasıl Oluşur?"] },
+      { sectionTitles: ["WMO Sınıflandırması: 10 Ana Bulut Cinsi", "Yükseklik Katları ve Kategoriler"] },
+      { sectionTitles: ["Köprüüstünde Bulut Gözlemi ve Raporlama"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Bulut Nasıl Oluşur?",
+        category: MET,
+        question: "Bulut tabanının yüksekliğini ne belirler?",
+        options: [
+          "Yükselen havanın çiğ noktasına ulaşıp yoğuşmanın başladığı seviye",
+          "Deniz suyu sıcaklığı",
+          "Geminin bulunduğu enlem",
+          "Rüzgârın esme yönü",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Yükselen hava adyabatik soğur; sıcaklık çiğ noktasına ulaştığında yoğuşma başlar ve bu seviye bulut tabanını belirler.",
+      },
+      {
+        id: 2,
+        sectionRef: "Bulut Nasıl Oluşur?",
+        category: MET,
+        question: "Konveksiyonla (alttan ısınma) yükselen hava hangi tip bulutu üretir?",
+        options: [
+          "Küme (kümülüform) bulutları",
+          "Tabaka (stratiform) bulutları",
+          "Yalnızca sis",
+          "Hiç bulut üretmez",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Konveksiyon küme (kümülüform) bulut üretir; geniş alanlı yavaş yükselme ise tabaka (stratiform) bulutları oluşturur.",
+      },
+      {
+        id: 3,
+        sectionRef: "WMO Sınıflandırması: 10 Ana Bulut Cinsi",
+        category: MET,
+        question: "WMO sınıflandırmasında kaç ana bulut cinsi (genus) vardır?",
+        options: ["10", "4", "8", "13"],
+        correctAnswer: 0,
+        explanation:
+          "WMO, Luke Howard'ın Latince adlandırmasına dayanan 10 ana cinsi standartlaştırmıştır; adlandırma cirrus, cumulus, stratus ve nimbus köklerine dayanır.",
+      },
+      {
+        id: 4,
+        sectionRef: "Yükseklik Katları ve Kategoriler",
+        category: MET,
+        question: "Synoptik raporlarda CH / CM / CL kodları neyi ifade eder?",
+        options: [
+          "Yüksek / orta / alçak kattaki bulutların kod rakamlarını",
+          "Rüzgâr şiddet kademelerini",
+          "Görüş sınıflarını",
+          "Dalga yüksekliği kademelerini",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Bulutlar taban yüksekliğine göre üç kata ayrılır ve raporlarda CH (yüksek), CM (orta), CL (alçak) kod rakamlarıyla bildirilir.",
+      },
+      {
+        id: 5,
+        sectionRef: "Köprüüstünde Bulut Gözlemi ve Raporlama",
+        category: MET,
+        question: "Toplam bulut örtüsü hangi birimle kaydedilir?",
+        options: [
+          "Okta (gökyüzünün sekizde biri); 0 açık, 8 tamamen kapalı",
+          "Yüzde (%)",
+          "Bofor kademesi",
+          "Metre",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Bulut örtüsü okta cinsinden kaydedilir: 0 okta açık, 8 okta tamamen kapalı gökyüzüdür; asıl değerli olan ardışık gözlemlerdeki eğilimdir.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Yüksek bulutlar (Cirrus, Cirrocumulus, Cirrostratus)",
+    blocks: [
+      { sectionTitles: ["Cirrus (Ci) — Saçak Bulutlar", "Cirrocumulus (Cc) — Uskumru Gökyüzü"] },
+      { sectionTitles: ["Cirrostratus (Cs) — Hale Yapan Örtü", "Denizci Yorumu: Yüksek Bulut Sekansı"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Cirrus (Ci) — Saçak Bulutlar",
+        category: MET,
+        question: "Batı ufkundan çoğalan ve kalınlaşan cirrus neyi gösterir?",
+        options: [
+          "24–48 saat içinde sıcak cephe veya alçak basınç yaklaşımını",
+          "Havanın kalıcı olarak açık kalacağını",
+          "Deniz suyu sıcaklığının arttığını",
+          "Akıntının yön değiştirdiğini",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Dağınık cirrus iyi hava işaretidir; ancak düzenli çoğalıp kalınlaşan cirrus 24–48 saat içinde sıcak cephenin/alçak basıncın yaklaştığını gösterir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Cirrocumulus (Cc) — Uskumru Gökyüzü",
+        category: MET,
+        question: "Cirrocumulus denizcilikte hangi adla bilinir?",
+        options: [
+          "Uskumru gökyüzü (mackerel sky)",
+          "Koyun sürüsü",
+          "Raf bulutu",
+          "Torba bulut",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Balık puluna benzeyen görünümü nedeniyle 'uskumru gökyüzü' denir; cirrus ve cirrostratus ile birlikte yaklaşan cephenin habercisidir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Cirrostratus (Cs) — Hale Yapan Örtü",
+        category: MET,
+        question: "Güneş veya ay etrafında 22°'lik hale (halo) görülmesi neye işaret eder?",
+        options: [
+          "Cirrostratus örtüsüne; tipik olarak 12–36 saat içinde bozacak havaya",
+          "Havanın açacağına",
+          "Rüzgârın tamamen kesileceğine",
+          "Sisin dağıldığına",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Hale, altıgen buz kristallerinde kırılan ışığın ürünüdür; Cs örtüsü sıcak cephenin 500–1000 km önünde uzanır ve genellikle 12–36 saat içinde As/Ns yağışı gelir.",
+      },
+      {
+        id: 4,
+        sectionRef: "Denizci Yorumu: Yüksek Bulut Sekansı",
+        category: MET,
+        question: "Sıcak cephe yaklaşımının klasik bulut dizisi hangisidir?",
+        options: ["Ci → Cs → As → Ns", "Cb → Cu → St → Sc", "Ns → As → Cs → Ci", "St → Sc → Ac → Cc"],
+        correctAnswer: 0,
+        explanation:
+          "Çoğalıp kalınlaşan yüksek bulutlar Ci→Cs ile başlar, devamında As ve Ns gelir; bu sekans görüldüğünde 24–48 saatlik operasyon planı gözden geçirilir.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)",
+    blocks: [
+      { sectionTitles: ["Altocumulus (Ac) — Koyun Sürüsü", "Altostratus (As) — Buzlu Cam Örtüsü"] },
+      { sectionTitles: ["Nimbostratus (Ns) — Sürekli Yağış Bulutu", "Operasyonel Değerlendirme"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Altocumulus (Ac) — Koyun Sürüsü",
+        category: MET,
+        question: "Sabah saatlerinde altocumulus castellanus görülmesi neyin uyarısıdır?",
+        options: [
+          "Öğleden sonra oraj (gök gürültülü sağanak) gelişme olasılığının yüksek olduğunun",
+          "Havanın gün boyu açık kalacağının",
+          "Sis oluşacağının",
+          "Rüzgârın tamamen kesileceğinin",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Kule biçimli çıkıntılar yapan Ac castellanus, orta atmosferin konvektif olarak kararsız olduğunu ve öğleden sonra oraj gelişebileceğini gösterir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Altostratus (As) — Buzlu Cam Örtüsü",
+        category: MET,
+        question: "Altostratus'u cirrostratus'tan ayıran pratik özellik nedir?",
+        options: [
+          "Hale oluşturmaması; güneşin buzlu cam ardındaymış gibi silik görünmesi",
+          "Her zaman dolu yağdırması",
+          "Yalnızca gece görülmesi",
+          "Deniz yüzeyine değmesi",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "As hale yapmaz ve cisimler gölge düşürmez; güneş buzlu cam arkasındaymış gibi görünür. Kalınlaşıp alçalırsa Ns'ye dönüşür.",
+      },
+      {
+        id: 3,
+        sectionRef: "Altostratus (As) — Buzlu Cam Örtüsü",
+        category: MET,
+        question: "Altostratus görüldüğünde sürekli yağışa kalan süre tipik olarak ne kadardır?",
+        options: ["12 saatten az", "En az 3 gün", "1 hafta", "Yağış hiç gelmez"],
+        correctAnswer: 0,
+        explanation:
+          "As, sıcak cephe sekansında Cs'ten sonraki halkadır; görüldüğünde yağışa kalan süre tipik olarak 12 saatten azdır.",
+      },
+      {
+        id: 4,
+        sectionRef: "Nimbostratus (Ns) — Sürekli Yağış Bulutu",
+        category: MET,
+        question: "Nimbostratus yağışını Cb sağanağından ayıran karakter nedir?",
+        options: [
+          "Sürekli olması ve ani rüzgâr değişimi içermemesi",
+          "Kısa, şiddetli ve gustlu olması",
+          "Yalnızca dolu biçiminde düşmesi",
+          "Sadece geceleri yağması",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Ns saatlerce süren orta şiddette sürekli yağış üretir; Cb yağışı ise kısa, şiddetli ve gustludur. Ns'nin asıl riski görüşün 1–3 mile düşmesidir.",
+      },
+      {
+        id: 5,
+        sectionRef: "Operasyonel Değerlendirme",
+        category: MET,
+        question: "As/Ns kuşağının altına girilmesi cephe açısından ne anlama gelir?",
+        options: [
+          "Sıcak cephe geçişine saatler kaldığını",
+          "Cephenin çoktan geçtiğini",
+          "Yüksek basınç merkezine girildiğini",
+          "Tropikal siklon gözünde olunduğunu",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "As/Ns kuşağı sıcak cephenin hemen önünde uzanır; altına girildiğinde rüzgâr dönüşü ve sıcaklık artışıyla cephe geçişine saatler kalmış demektir.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Alçak bulutlar (Stratus, Stratocumulus)",
+    blocks: [
+      { sectionTitles: ["Stratus (St) — Düz Gri Tabaka", "Stratocumulus (Sc) — Yumrulu Tabaka"] },
+      { sectionTitles: ["Stratus Fractus — Parçalanmış Kötü Hava Bulutları", "Görüş ve Seyir Etkisi"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Stratus (St) — Düz Gri Tabaka",
+        category: MET,
+        question: "Stratus bulutu yüzeye değdiğinde ne olarak adlandırılır?",
+        options: ["Sis", "Cumulus", "Virga", "Arcus"],
+        correctAnswer: 0,
+        explanation:
+          "Sis, yerdeki stratus'tan başka bir şey değildir; stratus tabanının alçalması sise geçişin habercisidir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Stratocumulus (Sc) — Yumrulu Tabaka",
+        category: MET,
+        question: "Stratocumulus tabakası çoğu zaman neyin altında oluşur?",
+        options: [
+          "Yükselmeyi durduran bir sıcaklık inversiyonunun (kapak)",
+          "Tropopozun hemen üstünde",
+          "Cephe hattının tam üzerinde",
+          "Su hortumunun çevresinde",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Sc genellikle inversiyon kapağının altında oluşur; kapak konveksiyonu bastırdığından hava kararlıdır ama nem/pus alt katmanda hapsolur.",
+      },
+      {
+        id: 3,
+        sectionRef: "Stratus Fractus — Parçalanmış Kötü Hava Bulutları",
+        category: MET,
+        question: "Yağış bulutunun altında hızla sürüklenen scud (fractus) parçaları neyi gösterir?",
+        options: [
+          "Bulut tabanının pratikte daha alçak olduğunu ve görüşün aniden düşebileceğini",
+          "Havanın tamamen açtığını",
+          "Rüzgârın durduğunu",
+          "Yağışın hiç başlamayacağını",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Scud, alt katmanın neme doyduğunu ve yüzey rüzgârının kuvvetli olduğunu gösterir; görüş aniden düşebilir.",
+      },
+      {
+        id: 4,
+        sectionRef: "Görüş ve Seyir Etkisi",
+        category: MET,
+        question: "Stratus/sis koşulu geliştiğinde hangi COLREG kuralı uygulanır?",
+        options: [
+          "Kural 19 — kısıtlı görüşte seyir",
+          "Kural 13 — yetişme",
+          "Kural 14 — pruva pruvaya",
+          "Kural 18 — sorumluluklar",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Kısıtlı görüşte Kural 19 uygulanır: emniyetli hız, manevraya hazır makine, sis işaretleri, artırılmış radar/AIS gözcülüğü ve ilave gözcü.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Dikey gelişimli bulutlar (Cumulus, Cumulonimbus)",
+    blocks: [
+      { sectionTitles: ["Cumulus (Cu) — Güzel Hava Kümülüsü"] },
+      { sectionTitles: ["Cumulonimbus (Cb) — Oraj Bulutu", "Cb Yaklaşırken Köprüüstü Tedbirleri"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Cumulus (Cu) — Güzel Hava Kümülüsü",
+        category: MET,
+        question: "Yatay boyutu dikey boyutundan büyük, dağınık kümülüs (cumulus humilis) neyi gösterir?",
+        options: [
+          "Atmosferin hafif kararsız ama sağlıklı olduğunu; havanın açık kalacağını",
+          "Birkaç saat içinde kasırga geleceğini",
+          "Yoğun sis oluşacağını",
+          "Sürekli yağış başlayacağını",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Cumulus humilis 'güzel hava kümülüsü'dür; görüş iyidir ve hava açık kalır. İzlenmesi gereken şey dikey büyümedir.",
+      },
+      {
+        id: 2,
+        sectionRef: "Cumulus (Cu) — Güzel Hava Kümülüsü",
+        category: MET,
+        question: "Kümülüsün dikeyde boyunu aşarak büyümesi (towering cumulus, TCu) neyi haber verir?",
+        options: [
+          "30–60 dakika içinde sağanak, birkaç saat içinde Cb gelişebileceğini",
+          "Havanın kalıcı olarak açacağını",
+          "Rüzgârın tamamen kesileceğini",
+          "Sise geçişi",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "TCu, atmosferin derin konveksiyona elverişli olduğunu gösterir: 30–60 dk içinde sağanak, birkaç saat içinde Cb gelişebilir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Cumulonimbus (Cb) — Oraj Bulutu",
+        category: MET,
+        question: "Cb yaklaşırken ilk darbe nasıl gelir?",
+        options: [
+          "Gust front ile; yağış başlamadan önce, bulutun 10–15 mil önünde ani rüzgâr şifti/şiddetlenmesi",
+          "Önce dolu, sonra rüzgâr",
+          "Yalnızca yıldırımla",
+          "Deniz suyunun ısınmasıyla",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Cb'nin soğuk iniş akıntısı yüzeye çarpıp yayılır; gust front bulutun 10–15 mil önünde, yağıştan önce gelir ve rüzgâr 180°'ye kadar dönebilir.",
+      },
+      {
+        id: 4,
+        sectionRef: "Cb Yaklaşırken Köprüüstü Tedbirleri",
+        category: MET,
+        question: "Organize bir squall hattı nasıl geçilmelidir?",
+        options: [
+          "Hattın zayıf noktasından, mümkünse dik açıyla",
+          "Hatta paralel seyrederek",
+          "Makine durdurulup beklenerek",
+          "En parlak radar ekosunun içinden",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Küçük hücreler görsel/radar takibiyle atlatılabilir; organize squall hattı ise zayıf noktadan ve mümkünse dik açıyla geçilir.",
+      },
+    ],
+  },
+  // ──────────────────────────────────────────────────────────────────────
+  {
+    topicKey: "meteorology",
+    topicTitle: "Özel bulut formasyonları ve tehlike işaretleri",
+    blocks: [
+      { sectionTitles: ["Mammatus — Torba Bulutlar", "Arcus (Shelf Cloud) — Squall Hattının Ön Duvarı"] },
+      { sectionTitles: ["Tuba (Huni Bulutu) — Su Hortumu Habercisi"] },
+      { sectionTitles: ["Lenticularis — Dağ Dalgası Bulutu", "Virga — Yere Ulaşmayan Yağış"] },
+    ],
+    questions: [
+      {
+        id: 1,
+        sectionRef: "Mammatus — Torba Bulutlar",
+        category: MET,
+        question: "Bulut tabanından sarkan torba biçimli mammatus çıkıntıları neyin işaretidir?",
+        options: [
+          "Güçlü iniş akıntıları ve şiddetli türbülansın; yakınlarda olgun bir Cb olduğunun",
+          "Havanın tamamen durgun olduğunun",
+          "Sise geçişin",
+          "Yüksek basınç merkezinin",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Mammatus batan soğuk-nemli havanın ürünüdür; yakınlarda güçlü bir Cb vardır ve sistem geçmiş görünse bile tedbir korunmalıdır.",
+      },
+      {
+        id: 2,
+        sectionRef: "Arcus (Shelf Cloud) — Squall Hattının Ön Duvarı",
+        category: MET,
+        question: "Ufukta koyu bir duvar gibi yaklaşan shelf cloud (arcus) neyin kesin işaretidir?",
+        options: [
+          "Dakikalar içinde ani rüzgâr artışı, sert şift ve ardından şiddetli sağanağın",
+          "Uzun sürecek sakin havanın",
+          "Akıntı yönü değişiminin",
+          "Sadece sıcaklık artışının",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Arcus, gust front'un görünür halidir: rüzgâr tipik olarak 15 knottan 40+ knota çıkar; güverte personeli içeri alınır, açık işler kesilir.",
+      },
+      {
+        id: 3,
+        sectionRef: "Tuba (Huni Bulutu) — Su Hortumu Habercisi",
+        category: MET,
+        question: "Tuba (huni bulutu) deniz yüzeyine ulaştığında ne oluşur ve nasıl davranılır?",
+        options: [
+          "Su hortumu oluşur; hareket yönü kestirilip dik açıyla uzaklaşılır",
+          "Sis oluşur; hız artırılır",
+          "Hale oluşur; rota korunur",
+          "Yağmur durur; güvenle yaklaşılır",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Huni deniz yüzeyine ulaşınca su hortumu (waterspout) adını alır; lokal 40–60 knot dönel rüzgâr üretebilir, dik açıyla uzaklaşılır ve personel içeri alınır.",
+      },
+      {
+        id: 4,
+        sectionRef: "Lenticularis — Dağ Dalgası Bulutu",
+        category: MET,
+        question: "Dağlık kıyı seyrinde mercek biçimli lenticularis görülmesi neye karşı uyarıdır?",
+        options: [
+          "Ani ve şiddetli yerel hamle rüzgârlarına (rotor türbülansı, katabatik gust)",
+          "Deniz suyunun soğumasına",
+          "Uzun süreli sakin havaya",
+          "Gelgit akıntısının durmasına",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Lenticularis duran dağ dalgalarının tepesinde oluşur; yüksek seviyede çok güçlü rüzgâr vardır ve dağların rüzgâr altısında şiddetli hamle rüzgârı beklenir.",
+      },
+      {
+        id: 5,
+        sectionRef: "Virga — Yere Ulaşmayan Yağış",
+        category: MET,
+        question: "Konvektif bulutların altında yaygın virga görülmesi hangi riski gösterir?",
+        options: [
+          "Kuru mikropatlama: deniz yüzeyinde ani, şiddetli ve kısa süreli rüzgâr patlamaları",
+          "Uzun süreli sürekli yağış",
+          "Kalıcı sis",
+          "Deniz seviyesinin yükselmesi",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Yağışın kuru katmanda buharlaşması katmanı soğutur ve şiddetli iniş akıntılarına (dry microburst) dönüşebilir; rüzgâra duyarlı operasyonlar buna göre zamanlanır.",
+      },
+    ],
+  },
 ];

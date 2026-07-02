@@ -43,7 +43,7 @@ type Fallback = { keywords: string[]; src: string };
  */
 const phaseBOverrides: Fallback[] = [
   { keywords: ["onikiler", "twelfths", "rule of twelfths"], src: ruleOfTwelfths },
-  { keywords: ["tide table", "gelgit tablo", "att", "admiralty tide"], src: tideTableExcerpt },
+  { keywords: ["tide table", "gelgit tablo", "admiralty tide"], src: tideTableExcerpt },
   { keywords: ["ukc", "under-keel", "under keel", "squat", "barrass"], src: ukcStack },
   { keywords: ["gelgit", "tide", "tidal", "chart datum", "lat (lowest", "spring tide", "neap tide", "yükseklik"], src: tideCurrent },
   { keywords: ["akıntılı seyir", "set ve drift", "set & drift", "akıntı vektör", "vektör üçgen", "cts (course to steer)", "course to steer"], src: tideCurrent },
