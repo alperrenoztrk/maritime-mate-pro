@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -50,9 +50,6 @@ export const PendulumStabilityCalc = () => {
             <Activity className="h-5 w-5" />
             Sarkaç Metodu ile Meyil Açısı Ölçümü
           </CardTitle>
-          <CardDescription>
-            Gemi üzerindeki sarkaç sapmasından meyil açısını hesaplayın
-          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

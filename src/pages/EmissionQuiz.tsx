@@ -193,7 +193,6 @@ export default function EmissionQuiz() {
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
             Çevre Quiz
           </h1>
-          <p className="text-muted-foreground">MARPOL ve emisyon bilginizi test edin</p>
         </div>
 
         {!showResult ? (

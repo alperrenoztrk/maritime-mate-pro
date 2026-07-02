@@ -166,7 +166,6 @@ function QuickToolCard({ tool, isFav, onFav }: { tool: CalcTool; isFav: boolean;
           <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/50" />
         </div>
         <p className="text-[13px] font-semibold leading-tight text-foreground">{tool.title}</p>
-        <p className="text-[11px] leading-snug text-muted-foreground">{tool.desc}</p>
       </Link>
       <button
         onClick={(e) => { e.preventDefault(); e.stopPropagation(); onFav(); }}
@@ -192,7 +191,6 @@ function ToolRow({ tool, isFav, onFav }: { tool: CalcTool; isFav: boolean; onFav
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-[13px] font-medium leading-tight text-foreground truncate">{tool.title}</p>
-          <p className="text-[11px] leading-snug text-muted-foreground truncate">{tool.desc}</p>
         </div>
         <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground/40" />
       </Link>
@@ -253,7 +251,6 @@ export default function CalculationsMenu() {
           {/* Header */}
           <header className="space-y-1">
             <h1 className="text-xl font-bold tracking-tight text-foreground">Hesaplamalar</h1>
-            <p className="text-xs text-muted-foreground">Draft, stabilite, yük, rota, zaman ve tüketim hesapları</p>
           </header>
 
           {/* Search */}

@@ -8,7 +8,6 @@ const StructuralCalculationsPage = () => {
       <CalculationGridScreen
         eyebrow="Yapısal"
         title="Yapısal Hesaplamalar"
-        subtitle="Mukavemet, gerilme ve yapısal analiz hesaplamalarınızı yapın"
       >
         <StructuralCalculations />
       </CalculationGridScreen>

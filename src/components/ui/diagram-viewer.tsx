@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Download, Maximize2, RefreshCw } from "lucide-react";
@@ -9,16 +9,14 @@ import DOMPurify from "dompurify";
 
 interface DiagramViewerProps {
   title: string;
-  description?: string;
   data: any;
   diagramType: 'engine' | 'trim' | 'safety' | 'emission' | 'cargo' | 'structural' | 'gz-curve';
   className?: string;
 }
 
-export const DiagramViewer = ({ 
-  title, 
-  description, 
-  data, 
+export const DiagramViewer = ({
+  title,
+  data,
   diagramType, 
   className = "" 
 }: DiagramViewerProps) => {
@@ -115,11 +113,6 @@ export const DiagramViewer = ({
               <CardTitle className="flex items-center gap-2">
                 📊 {title}
               </CardTitle>
-              {description && (
-                <CardDescription className="mt-2">
-                  {description}
-                </CardDescription>
-              )}
             </div>
             <div className="flex gap-2">
               {diagram && (

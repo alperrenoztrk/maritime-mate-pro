@@ -96,7 +96,6 @@ export function CourseQuiz({
             <Icon className="h-10 w-10" />
           </div>
           <h1 className="mb-2 text-3xl font-extrabold text-foreground">{title} Quiz</h1>
-          <p className="text-muted-foreground">Bilginizi test edin</p>
         </div>
 
         {!finished ? (

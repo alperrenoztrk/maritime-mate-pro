@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -748,9 +748,6 @@ export const HydrodynamicsCalculations = ({ initialTab }: { initialTab?: string 
             <Waves className="h-5 w-5" />
             Hidrodinamik Hesaplamalar
           </CardTitle>
-          <CardDescription>
-            Froude sayısı, gemi direnci, pervane verimi, gemi hareketleri ve dalga analizi
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue={initialTab || "ship"} className="w-full">

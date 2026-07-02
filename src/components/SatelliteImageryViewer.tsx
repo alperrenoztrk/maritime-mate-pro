@@ -248,7 +248,6 @@ export const SatelliteImageryViewer = () => {
                       {channel.icon}
                       {channel.nameTr}
                     </CardTitle>
-                    <p className="text-sm text-muted-foreground">{channel.description}</p>
                   </div>
                   <Badge className={channel.color}>
                     {channel.wavelength}

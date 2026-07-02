@@ -175,8 +175,7 @@ export default function ConverterPage() {
         <div className="mx-auto max-w-lg space-y-5">
           <div>
             <h1 className="text-xl font-bold tracking-tight text-foreground">Birim Dönüştürücü</h1>
-            <p className="text-xs text-muted-foreground">Denizcilik birim çevirme aracı</p>
-          </div>
+            </div>
 
           <Tabs defaultValue="distance">
             <TabsList className="grid w-full grid-cols-3 mb-4">

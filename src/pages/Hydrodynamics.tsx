@@ -9,11 +9,9 @@ const Hydrodynamics = () => {
   return (
     <CalculationLayout
       title="Hidrodinamik Hesaplamalar"
-      description="Direnç, güç, itme ve dalga yük hesaplamalarınızı yapın"
       icon={Waves}
       hero={{
         title: "Hidrodinamik Hesaplamalar",
-        description: "Gemi direnci, itme gücü ve dalga etkileşimleri",
         imageSrc: oceanWaves,
         imageAlt: "Ocean Waves",
       }}

@@ -55,10 +55,6 @@ export default function MachineTopicLessonsPage() {
             </div>
             <h1 className="text-2xl font-bold text-foreground">{lessonData.title}</h1>
           </div>
-
-          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
-            {lessonData.description}
-          </p>
         </header>
 
         {/* Key Topics */}

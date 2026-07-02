@@ -1486,7 +1486,6 @@ function CalcToolCard({ tool }: { tool: CalcTool }) {
     <Card className="bg-card/80 backdrop-blur border-border/40">
       <CardHeader className="pb-2">
         <CardTitle className="text-base">{tool.name}</CardTitle>
-        <p className="text-xs text-muted-foreground">{tool.description}</p>
       </CardHeader>
       <CardContent className="space-y-3">
         <div className="grid gap-3 sm:grid-cols-2">

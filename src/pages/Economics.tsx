@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { EconomicCalculations } from "@/components/calculations/EconomicCalculations";
@@ -15,9 +15,6 @@ const Economics = () => {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
               Deniz İşletmeciliğinde Ticari Operasyonlar
             </h1>
-            <p className="text-gray-600 mt-1">
-              Navlun ekonomisi, kârlılık ve operasyon yönetimi
-            </p>
           </div>
         </div>
 
@@ -25,9 +22,6 @@ const Economics = () => {
         <Card className="shadow-lg border-0">
                       <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 cyberpunk:from-yellow-500 cyberpunk:to-yellow-600 text-white rounded-t-lg">
             <CardTitle className="text-xl">Maritime Economics</CardTitle>
-            <CardDescription className="text-blue-100">
-              TCE, Demurrage ve Sefer Ekonomisi hesaplamaları
-            </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <EconomicCalculations />

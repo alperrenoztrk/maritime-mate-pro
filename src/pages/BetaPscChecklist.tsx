@@ -121,9 +121,6 @@ export default function BetaPscChecklist() {
               <h1 className="text-2xl font-bold text-foreground">
                 PSC Denetim Hazırlık Listesi
               </h1>
-              <p className="text-sm text-muted-foreground">
-                Liman Devleti Kontrolü öncesi madde madde kontrol edin.
-              </p>
             </div>
           </div>
         </header>

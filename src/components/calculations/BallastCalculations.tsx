@@ -339,9 +339,6 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
             <Droplets className="h-6 w-6" />
             Balast Hesaplamaları
           </CardTitle>
-          <CardDescription>
-            IMO BWM Convention ve MARPOL Annex I standartlarına uygun balast yönetimi
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -565,9 +562,6 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
               <Card>
                 <CardHeader>
                   <CardTitle>Balast Suyu Değişimi</CardTitle>
-                  <CardDescription>
-                    Açık denizde balast suyu değişimi prosedürü
-                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="p-4 bg-info-muted rounded-lg">

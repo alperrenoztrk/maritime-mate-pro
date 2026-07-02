@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Anchor } from "lucide-react";
@@ -80,7 +80,6 @@ const SOLASShipRequirementsPage = () => {
                   <span className="text-xs text-muted-foreground">Hazırlık: %{group.readiness}</span>
                 </div>
                 <CardTitle>{group.title}</CardTitle>
-                <CardDescription>{group.description}</CardDescription>
                 <Progress value={group.readiness} className="h-2" />
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-muted-foreground">

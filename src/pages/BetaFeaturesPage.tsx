@@ -46,9 +46,6 @@ export default function BetaFeaturesPage() {
             Beta Laboratuvarı
           </div>
           <h1 className="text-2xl font-bold text-foreground">Beta Özellikler</h1>
-          <p className="text-sm text-muted-foreground">
-            Test aşamasındaki araçlar. Çıktıları daima manuel doğrulayın.
-          </p>
         </header>
 
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-800 dark:text-amber-200">
@@ -80,9 +77,6 @@ export default function BetaFeaturesPage() {
                   <h2 className="text-base font-semibold text-foreground">
                     {f.title}
                   </h2>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {f.description}
-                  </p>
                 </div>
               </Link>
             );

@@ -10,7 +10,6 @@ export default function StabilityCalculationsPage() {
       <CalculationGridScreen
         eyebrow="Stabilite"
         title="Stabilite Hesaplamaları"
-        subtitle="Gemi stabilitesiyle ilgili tüm hesaplara tek şablondan erişin"
       >
         <div className="space-y-8">
           <StabilityCalculations />

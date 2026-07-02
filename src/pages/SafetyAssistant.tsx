@@ -19,7 +19,6 @@ export default function SafetyAssistantPage() {
   return (
     <AssistantInterface
       title="Emniyet Asistanı"
-      subtitle="Risk değerlendirme ve denetim hazırlığı için destek"
       badge="Emniyet Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

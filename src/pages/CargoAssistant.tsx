@@ -20,7 +20,6 @@ export default function CargoAssistantPage() {
   return (
     <AssistantInterface
       title="Yük Elleçleme ve İstifleme Asistanı"
-      subtitle="Yükleme planı, trim/stabilite ve IMDG danışmanlığı"
       badge="Kargo Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

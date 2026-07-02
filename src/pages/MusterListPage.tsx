@@ -69,11 +69,6 @@ export default function MusterListPage() {
               Rol Cetveli / Muster List
             </div>
             <h1 className="text-2xl font-bold text-foreground">Acil Durum Rol Cetveli</h1>
-            <p className="mx-auto max-w-2xl text-xs text-muted-foreground">
-              SOLAS Bölüm III / Kural 8 kapsamında her personelin acil durumdaki toplanma
-              (muster) istasyonu ve görevleri. Acil durum tipini seçerek roller ve görevleri
-              inceleyebilirsiniz.
-            </p>
           </div>
         </header>
 
@@ -117,7 +112,6 @@ export default function MusterListPage() {
             </span>
             <span className="text-sm font-medium text-foreground">{activeEmergency.signal}</span>
           </div>
-          <p className="mt-2 text-xs text-muted-foreground">{activeEmergency.description}</p>
           <div className="mt-3 flex items-start gap-2 rounded-xl border border-primary/20 bg-primary/5 p-3">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <p className="text-[11px] leading-relaxed text-muted-foreground">

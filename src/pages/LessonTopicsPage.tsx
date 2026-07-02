@@ -652,10 +652,6 @@ export default function LessonTopicsPage() {
             </div>
             <h1 className="text-2xl font-bold text-foreground">{topicContent.title}</h1>
           </div>
-          
-          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
-            {topicContent.description}
-          </p>
         </header>
 
         {/* Key Topics */}

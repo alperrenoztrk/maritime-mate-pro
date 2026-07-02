@@ -120,8 +120,7 @@ export default function NavigationRulesPage() {
         <div className="mx-auto max-w-lg space-y-4">
           <div>
             <h1 className="text-xl font-bold tracking-tight text-foreground">Seyir Kuralları</h1>
-            <p className="text-xs text-muted-foreground">COLREG, IALA ve seyir güvenliği kuralları</p>
-          </div>
+            </div>
 
           <div className="space-y-2.5">
             {sections.map((section, idx) => (

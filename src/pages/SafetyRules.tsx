@@ -64,9 +64,6 @@ export default function SafetyRulesPage() {
           <h1 className="text-3xl font-bold bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 bg-clip-text text-transparent">
             Emniyet Kuralları
           </h1>
-          <p className="text-muted-foreground mt-2">
-            SOLAS, LSA, FFA ve ulusal otorite gereklilikleri
-          </p>
         </div>
 
         <div className="grid gap-6">

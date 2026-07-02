@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -85,7 +85,6 @@ const SOLASRegulationsPage = () => {
                 <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div>
                     <CardTitle className="text-2xl">{chapter.title}</CardTitle>
-                    <CardDescription>{chapter.summary}</CardDescription>
                   </div>
                   <Badge variant="secondary" className="text-sm tracking-wide">
                     Bölüm {chapter.id}
@@ -116,7 +115,6 @@ const SOLASRegulationsPage = () => {
         <Card className="border-blue-200/70 shadow-xl shadow-blue-500/10">
           <CardHeader>
             <CardTitle>Uyum İpuçları</CardTitle>
-            <CardDescription>SOLAS bölümlerini uygularken sık yapılan hatalar ve pratik çözümler</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-3 text-sm">
             <div className="bg-white/70 dark:bg-slate-900/60 rounded-lg p-4 border border-blue-50">

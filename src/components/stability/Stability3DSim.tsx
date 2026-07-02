@@ -1,7 +1,7 @@
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, PerspectiveCamera } from "@react-three/drei";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -162,10 +162,6 @@ export const Stability3DSim = () => {
     <Card className="border-primary/20 shadow-sm">
       <CardHeader className="pb-3">
         <CardTitle className="text-base">3B Stabilite Simülasyonu</CardTitle>
-        <CardDescription className="text-xs">
-          GM = KM − KG olarak hesaplanır. GZ, wall-sided formülle (sinφ·[GM + ½BM·tan²φ]) bulunur.
-          Yalpa hareketi sönümlü harmonik osilatör modeline dayanır.
-        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* 3D viewport */}

@@ -264,9 +264,6 @@ export default function ShipTasksPage() {
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
         <header className="space-y-3 text-center">
           <h1 className="text-2xl font-bold text-foreground">Gemide Yapılan Tüm İşler ve Sorumluları</h1>
-          <p className="text-xs text-muted-foreground">
-            Gemide düzenli olarak yapılan işler ve bunların asıl sorumlularıyla fiilen yapan personel.
-          </p>
         </header>
 
         <section className="space-y-6 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
@@ -276,7 +273,6 @@ export default function ShipTasksPage() {
                 <span className="text-xl">{cat.icon}</span>
                 <h2 className="font-bold text-foreground">{cat.number} {cat.title}</h2>
               </div>
-              <p className="text-xs text-muted-foreground">{cat.description}</p>
               {cat.columns === 3 ? (
                 <ThreeColTable tasks={cat.tasks} headers={cat.headers as [string, string, string]} />
               ) : (

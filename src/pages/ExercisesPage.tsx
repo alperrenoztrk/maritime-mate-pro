@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { getBetaCategories, type BetaCategory } from "@/data/betaLessons";
-import { getLessonFlowsByTopic } from "@/data/lessonFlow";
-import { hasScenarios } from "@/data/scenarios";
-import { ChevronRight, FlaskConical, GraduationCap, Ship, Sparkles, Wrench } from "lucide-react";
+import { ChevronRight, FlaskConical, GraduationCap, Ship, Wrench } from "lucide-react";
 
 /**
  * "Alıştırmalar" giriş sayfası.
@@ -17,8 +15,6 @@ export default function ExercisesPage() {
 
   const renderCategory = (category: BetaCategory) => {
     const CategoryIcon = category.icon;
-    const flowCount = getLessonFlowsByTopic(category.key).length;
-    const scn = hasScenarios(category.key);
 
     const inner = (
       <div className="flex items-center gap-3">
@@ -38,13 +34,6 @@ export default function ExercisesPage() {
               </span>
             )}
           </div>
-          {category.enabled && (
-            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Sparkles className="h-3 w-3" />
-              {flowCount > 0 ? `${flowCount} rehberli ders · ` : ""}
-              {scn ? "senaryolar · " : ""}AI eğitmen
-            </span>
-          )}
         </div>
         {category.enabled && <ChevronRight className="h-5 w-5 text-muted-foreground" />}
       </div>
@@ -81,10 +70,6 @@ export default function ExercisesPage() {
             <FlaskConical className="h-3.5 w-3.5" /> Beta
           </div>
           <h1 className="text-2xl font-bold text-foreground">Alıştırmalar</h1>
-          <p className="mx-auto max-w-xl text-sm text-muted-foreground">
-            Önce anlat, sonra karışık sor (Duolingo tarzı) · gerçek vardiya senaryoları ·
-            sana özel AI eğitmen. Güverte ve makine derslerinde okuldan daha iyi öğren.
-          </p>
         </header>
 
         <section className="space-y-3">

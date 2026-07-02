@@ -22,10 +22,6 @@ export default function BetaShipSimulator() {
               <h1 className="text-2xl font-bold text-foreground">
                 3D Gemi Stabilite Simülasyonu
               </h1>
-              <p className="text-sm text-muted-foreground">
-                GM ve KG değerlerini değiştirerek geminin meyil davranışını
-                gerçek zamanlı izleyin.
-              </p>
             </div>
           </div>
         </header>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -98,9 +98,6 @@ export const StableTalesCalculator = () => {
             <Ship className="h-5 w-5" />
             Gemi Temel Bilgileri
           </CardTitle>
-          <CardDescription>
-            Stabilite hesaplamaları için temel gemi verileri
-          </CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>

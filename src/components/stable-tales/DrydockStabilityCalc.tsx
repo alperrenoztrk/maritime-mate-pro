@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -122,9 +122,6 @@ export const DrydockStabilityCalc = () => {
             <Anchor className="h-5 w-5" />
             Kuru Havuz Stabilite Analizi
           </CardTitle>
-          <CardDescription>
-            Kuru havuzda geminin kritik GM değeri ve destek noktaları analizi
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">

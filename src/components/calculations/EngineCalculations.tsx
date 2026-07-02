@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -472,9 +472,6 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <Settings className="h-5 w-5" />
             Makine Hesaplamaları
           </CardTitle>
-          <CardDescription>
-            MARPOL Annex VI uyumlu emisyon, verimlilik, ısı değiştiricisi ve tank hesaplamaları
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue={initialTab || "engine"} className="w-full">

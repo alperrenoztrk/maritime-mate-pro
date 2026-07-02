@@ -17,9 +17,6 @@ export default function ShipOperationsPage() {
             <h1 className="text-xl font-bold tracking-tight text-foreground">
               Gemi Operasyonları
             </h1>
-            <p className="text-xs text-muted-foreground">
-              Gemi tipine göre güverte ve makine departmanı operasyonları
-            </p>
           </header>
 
           <div className="flex flex-col gap-3">
@@ -43,9 +40,6 @@ export default function ShipOperationsPage() {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground leading-tight">
                     {ship.label}
-                  </p>
-                  <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground line-clamp-2">
-                    {ship.description}
                   </p>
                 </div>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />

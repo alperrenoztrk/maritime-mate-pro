@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -398,9 +398,6 @@ export default function ExamPreparationPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold">Sınav Hazırlık Merkezi</h1>
-                <p className="text-sm text-muted-foreground">
-                  Deck Officer sınavlarına profesyonel hazırlık
-                </p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -497,9 +494,6 @@ export default function ExamPreparationPage() {
                           <Badge variant="secondary">{module.questions.length} soru</Badge>
                         </div>
                         <CardTitle className="text-lg">{module.title}</CardTitle>
-                        <CardDescription className="text-xs">
-                          {module.description}
-                        </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-3">
                         <div className="flex flex-wrap gap-1">
@@ -569,7 +563,6 @@ export default function ExamPreparationPage() {
                         </div>
                         <div className="flex-1">
                           <h3 className="font-bold text-lg">{preset.title}</h3>
-                          <p className="text-sm text-muted-foreground">{preset.description}</p>
                           <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                             <span className="flex items-center gap-1">
                               <Target className="h-3 w-3" />
@@ -598,9 +591,6 @@ export default function ExamPreparationPage() {
                   <Shuffle className="h-5 w-5" />
                   Karışık Konu Sınavı
                 </CardTitle>
-                <CardDescription>
-                  Tüm modüllerden rastgele sorular içeren karma sınav
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
@@ -639,7 +629,6 @@ export default function ExamPreparationPage() {
                           <div className="flex-1 space-y-3">
                             <div>
                               <h3 className="font-bold text-lg">{exam.title}</h3>
-                              <p className="text-sm text-muted-foreground">{exam.description}</p>
                             </div>
                             
                             <div className="flex flex-wrap gap-2">

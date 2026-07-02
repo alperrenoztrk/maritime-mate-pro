@@ -172,7 +172,6 @@ export default function EmissionRules() {
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3">
             Çevre Kuralları
           </h1>
-          <p className="text-muted-foreground">MARPOL, BWM ve IMO düzenlemeleri</p>
         </div>
 
         {/* Warnings */}

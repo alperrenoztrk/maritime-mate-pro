@@ -52,7 +52,6 @@ export default function CalculationSectionPage() {
         <div className="space-y-3">
           <p className="text-xs uppercase tracking-[0.3em] text-blue-500/80 dark:text-blue-300/60">{category.title}</p>
           <h1 className="text-4xl font-bold text-foreground">{section.label}</h1>
-          <p className="text-muted-foreground text-lg max-w-3xl">{section.description}</p>
         </div>
 
         {!fallback ? (
@@ -123,9 +122,6 @@ export default function CalculationSectionPage() {
                           <Link to={link.href}>
                             <ExternalLink className="h-4 w-4" />
                             <span className="font-semibold">{link.label}</span>
-                            {link.description && (
-                              <span className="text-xs text-muted-foreground">{link.description}</span>
-                            )}
                           </Link>
                         </Button>
                       ))}

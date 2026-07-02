@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -407,9 +407,6 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
             <Building className="h-6 w-6" />
             Yapısal Yük Hesaplamaları
           </CardTitle>
-          <CardDescription>
-            IMO CSR, ABS Rules ve class society standartlarına uygun yapısal analiz
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>

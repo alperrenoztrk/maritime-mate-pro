@@ -105,13 +105,12 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
 
 interface CalculationGridScreenProps {
   title: string;
-  subtitle?: string;
   eyebrow?: string;
   items?: CalculationGridItem[];
   children?: ReactNode;
 }
 
-export function CalculationGridScreen({ title, subtitle, eyebrow, items, children }: CalculationGridScreenProps) {
+export function CalculationGridScreen({ title, eyebrow, items, children }: CalculationGridScreenProps) {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-10 sm:px-6 sm:py-14">
       <div className="pointer-events-none absolute inset-0">
@@ -126,7 +125,6 @@ export function CalculationGridScreen({ title, subtitle, eyebrow, items, childre
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-400/80">{eyebrow}</p>
           )}
           <h1 className="text-3xl font-black leading-tight text-slate-50 sm:text-4xl md:text-[34px]">{title}</h1>
-          {subtitle && <p className="text-base text-slate-300">{subtitle}</p>}
         </header>
 
         {children ?? <CalculationGrid items={items ?? []} />}

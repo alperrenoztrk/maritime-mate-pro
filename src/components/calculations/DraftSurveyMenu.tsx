@@ -71,7 +71,6 @@ const DraftSurveyMenu = () => {
       <div className="flex items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-foreground">Draft Survey Hesaplamaları</h1>
-          <p className="text-muted-foreground">Gemi draft ölçümü ve kargo hesaplama araçları</p>
         </div>
       </div>
 

@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
   title: string;
-  description?: string;
   icon?: LucideIcon;
   iconClassName?: string;
   className?: string;
@@ -14,7 +13,6 @@ interface PageHeaderProps {
 
 export function PageHeader({
   title,
-  description,
   icon: Icon,
   iconClassName,
   className,
@@ -53,17 +51,6 @@ export function PageHeader({
               {title}
             </h1>
           </div>
-
-          {description ? (
-            <p
-              className={cn(
-                isCompact ? "text-xs" : "text-base sm:text-lg",
-                "text-muted-foreground"
-              )}
-            >
-              {description}
-            </p>
-          ) : null}
         </div>
       </div>
 

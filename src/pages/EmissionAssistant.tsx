@@ -21,7 +21,6 @@ export default function EmissionAssistant() {
   return (
     <AssistantInterface
       title="Çevre Asistanı"
-      subtitle="MARPOL, emisyon ve çevre yönetimi danışmanı"
       badge="Çevre Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

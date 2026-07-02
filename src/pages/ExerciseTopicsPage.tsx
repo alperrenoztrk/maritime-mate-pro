@@ -42,9 +42,6 @@ export default function ExerciseTopicsPage() {
             </div>
             <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Rehberli ders, gerçek senaryolar ve AI eğitmen · {readingTitles.length} konu
-          </p>
         </header>
 
         {/* Senaryolar */}
@@ -58,9 +55,6 @@ export default function ExerciseTopicsPage() {
             </div>
             <div className="flex-1">
               <p className="font-bold text-foreground">Vardiya Senaryoları</p>
-              <p className="text-xs text-muted-foreground">
-                {scenarios.length} interaktif vaka · "ne yaparsın?" kararları
-              </p>
             </div>
             <ChevronRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </Link>
@@ -79,9 +73,6 @@ export default function ExerciseTopicsPage() {
                 className="rounded-2xl border border-violet-500/25 bg-card/80 p-4 shadow-sm backdrop-blur"
               >
                 <p className="font-semibold text-foreground">{flow.topicTitle}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  Önce anlat → sonra {flow.questions.length} karışık soru
-                </p>
                 <div className="mt-3 flex flex-col gap-2 sm:flex-row">
                   <Link
                     to={learnLink(flow.topicTitle)}

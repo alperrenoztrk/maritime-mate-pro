@@ -21,7 +21,6 @@ export default function CargoCalculationsPage() {
       <CalculationGridScreen
         eyebrow="Yük Elleçleme ve İstifleme"
         title="Yük Elleçleme ve İstifleme"
-        subtitle="Draft survey, balast ve operasyonel yük hesaplarını aynı temada toplayın"
       >
         <div className="space-y-6">
           <div className="flex justify-end">

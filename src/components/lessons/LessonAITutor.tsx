@@ -73,7 +73,6 @@ export function LessonAITutor({
         </div>
         <div>
           <h2 className="text-base font-bold text-foreground">AI Eğitmen</h2>
-          <p className="text-xs text-muted-foreground">"{topicTitle}" konusunu sana özel anlatır</p>
         </div>
       </div>
 

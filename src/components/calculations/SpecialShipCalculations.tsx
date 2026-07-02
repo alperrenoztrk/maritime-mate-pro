@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -176,9 +176,6 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                 <Fuel className="w-5 h-5 text-orange-500" />
                 Tanker Operasyonları
               </CardTitle>
-              <CardDescription>
-                COW süresi ve inert gaz hesaplamaları
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
@@ -259,9 +256,6 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                 <Fuel className="w-5 h-5 text-blue-500" />
                 LNG Boil-off Hesabı
               </CardTitle>
-              <CardDescription>
-                Sefer sırasında boil-off kayıpları
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
@@ -342,9 +336,6 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                 <Container className="w-5 h-5 text-green-500" />
                 Konteyner Stack Limiti
               </CardTitle>
-              <CardDescription>
-                Stack ağırlık ve yükseklik kontrolü
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">
@@ -429,9 +420,6 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
                 <Truck className="w-5 h-5 text-purple-500" />
                 Ro-Ro Axle Load
               </CardTitle>
-              <CardDescription>
-                Araç axle yükü ve güverte limiti
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4">

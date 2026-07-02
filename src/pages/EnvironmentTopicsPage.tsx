@@ -1897,7 +1897,6 @@ export default function EnvironmentTopicsPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Çevre Koruma (MARPOL)</h1>
-                <p className="text-sm text-muted-foreground">10 Ana Konu • Kapsamlı Müfredat</p>
               </div>
             </div>
           </div>

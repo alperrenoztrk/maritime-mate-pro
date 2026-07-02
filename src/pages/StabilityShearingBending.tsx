@@ -8,7 +8,6 @@ export default function StabilityShearingBendingPage() {
       <CalculationGridScreen
         eyebrow="Stabilite"
         title="Shear Force & Bending Moment"
-        subtitle="Boyuna yük dağılımını analiz edin ve kesme kuvveti ile eğilme momenti diyagramlarını oluşturun"
       >
         <StructuralCalculations initialTab="diagrams" />
       </CalculationGridScreen>

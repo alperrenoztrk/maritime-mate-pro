@@ -1,5 +1,5 @@
 import { MobileLayout } from "@/components/MobileLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Moon, Sun, Globe, Settings2 as SettingsIcon, Palette, Type } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -60,9 +60,6 @@ const Settings = () => {
                 <span data-translatable>Ayarlar</span>
               </h1>
             </div>
-            <p className="text-lg text-muted-foreground">
-              <span data-translatable>Uygulama tercihlerinizi özelleştirin</span>
-            </p>
           </div>
 
           <div className="grid gap-6">
@@ -73,9 +70,6 @@ const Settings = () => {
                   <Palette className="w-5 h-5" />
                   <span data-translatable>Tema Ayarları</span>
                 </CardTitle>
-                <CardDescription>
-                  <span data-translatable>Arayüz temasını seçin</span>
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -119,9 +113,6 @@ const Settings = () => {
                   <Type className="w-5 h-5" />
                   <span data-translatable>Yazı Boyutu</span>
                 </CardTitle>
-                <CardDescription>
-                  <span data-translatable>Uygulamadaki yazı boyutunu ayarlayın</span>
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -158,9 +149,6 @@ const Settings = () => {
                   <Globe className="w-5 h-5" />
                   <span data-translatable>Dil Ayarları</span>
                 </CardTitle>
-                <CardDescription>
-                  <span data-translatable>Uygulama dilini seçin</span>
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">

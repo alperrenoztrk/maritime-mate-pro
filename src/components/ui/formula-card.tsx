@@ -1,5 +1,5 @@
 import React from "react";
-import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalculationCard } from "@/components/ui/calculation-card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,6 @@ export interface FormulaSection {
 
 interface FormulaCardProps {
   title?: string;
-  description?: string;
   sections: FormulaSection[];
   symbolsNote?: React.ReactNode;
   className?: string;
@@ -38,7 +37,6 @@ const accentTextClass: Record<FormulaAccent, string> = {
 
 export function FormulaCard({
   title = "Formüller",
-  description,
   sections,
   symbolsNote,
   className,
@@ -50,7 +48,6 @@ export function FormulaCard({
           <Calculator className="h-5 w-5" />
           {title}
         </CardTitle>
-        {description ? <CardDescription>{description}</CardDescription> : null}
       </CardHeader>
 
       <CardContent className="space-y-4">

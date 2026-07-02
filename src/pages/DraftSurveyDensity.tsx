@@ -54,11 +54,9 @@ const DraftSurveyDensity = () => {
   return (
     <CalculationLayout
       title="Yoğunluk Düzeltmesi"
-      description="Deniz suyu yoğunluk etkisi hesaplama"
       icon={BarChart3}
       hero={{
         title: "Draft Survey",
-        description: "Yoğunluk kaynaklı deplasman düzeltmesi",
         imageSrc: containerShip,
         imageAlt: "Container ship aerial view",
       }}

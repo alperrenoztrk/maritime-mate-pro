@@ -74,7 +74,6 @@ export default function DraftSurveyStandard() {
       <div className="flex items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold">Standart Draft Survey</h1>
-          <p className="text-muted-foreground">Genel kargo draft hesaplaması</p>
         </div>
       </div>
 

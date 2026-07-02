@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
@@ -215,9 +215,6 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                 <AlertTriangle className="h-5 w-5 text-orange-500" />
                 Geliştirilmesi Gereken Konular
               </CardTitle>
-              <CardDescription>
-                En düşük doğruluk oranına sahip kategoriler
-              </CardDescription>
             </CardHeader>
             <CardContent>
               {overview.weakestCategories.length === 0 ? (
@@ -264,9 +261,6 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
                 <Flame className="h-5 w-5 text-green-500" />
                 Güçlü Olduğunuz Konular
               </CardTitle>
-              <CardDescription>
-                En yüksek doğruluk oranına sahip kategoriler
-              </CardDescription>
             </CardHeader>
             <CardContent>
               {overview.strongestCategories.length === 0 ? (
@@ -314,9 +308,6 @@ export function QuizStatsDashboard({ userId, onStartQuiz }: QuizStatsDashboardPr
               <Clock className="h-5 w-5" />
               Son Quiz Sonuçları
             </CardTitle>
-            <CardDescription>
-              En son tamamladığınız quizler
-            </CardDescription>
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[300px]">

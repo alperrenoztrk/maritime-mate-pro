@@ -170,7 +170,6 @@ export default function MachineTopicAssistantPage() {
   return (
     <AssistantInterface
       title={`${topic.title} Asistanı`}
-      subtitle="Teknik danışmanlık ve rehberlik"
       badge={topic.title}
       quickPrompts={config.quickPrompts}
       systemPrompt={config.systemPrompt}

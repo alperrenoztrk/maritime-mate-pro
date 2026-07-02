@@ -19,7 +19,6 @@ export default function NavigationAssistantPage() {
   return (
     <AssistantInterface
       title="Seyir Asistanı"
-      subtitle="Gerçek seyir asistanı ile hızlı hesap ve öneriler"
       badge="Seyir Asistanı"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

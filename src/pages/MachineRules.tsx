@@ -229,9 +229,6 @@ export default function MachineRules() {
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-slate-600 via-zinc-600 to-slate-800 bg-clip-text text-transparent mb-3">
             Makine Kuralları
           </h1>
-          <p className="text-muted-foreground">
-            MARPOL, SOLAS, ISM ve klas gereksinimleri
-          </p>
         </div>
 
         <div className="space-y-6">
