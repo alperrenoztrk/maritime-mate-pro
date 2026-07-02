@@ -992,7 +992,7 @@ export const maritimeTerms: MaritimeTerm[] = [
   // ── Operations & incidents ─────────────────────────────────────────
   {
     tr: 'Demir Taramak',
-    aliases: ['Demir taramak'],
+    aliases: ['Demir taramak', 'Demir Taraması', 'Demir taraması'],
     translations: {
       en: 'Dragging anchor', de: 'Vor Anker treiben', fr: 'Chasser sur l’ancre',
       es: 'Garrear', it: 'Arare l’ancora', pt: 'Garrar',
@@ -1498,6 +1498,219 @@ export const maritimeTerms: MaritimeTerm[] = [
       sv: 'Ögonsplits', no: 'Øyespleis', da: 'Øjesplejsning', fi: 'Silmäpleissi',
     },
   },
+
+  // ── Terms promoted from the all-language terminology audit ─────────
+  // A gtx probe of all 23 runtime languages showed these Turkish terms are
+  // systematically mistranslated everywhere, because generic MT pivots via
+  // English and inherits the English error (e.g. standalone "İskele" ->
+  // "pier", "İskele tarafına dön" -> "return to the harbour", "salma
+  // dairesi" -> "keel circle", "tornistan" -> untranslated "turnistan").
+  {
+    // Standalone directional term (the app glossary defines "İskele" as the
+    // ship's LEFT side). "İskele" also means pier/scaffold in Turkish, so it
+    // is a whole-string override only.
+    tr: 'İskele',
+    inline: false,
+    translations: {
+      en: 'Port', de: 'Backbord', fr: 'Bâbord', es: 'Babor',
+      it: 'Babordo', pt: 'Bombordo', nl: 'Bakboord', ru: 'Левый борт',
+      ja: '左舷', ko: '좌현', 'zh-CN': '左舷', ar: 'الميسرة', hi: 'वाम पार्श्व',
+      sv: 'Babord', no: 'Babord', da: 'Bagbord', fi: 'Paapuuri', pl: 'Lewa burta',
+      cs: 'Levobok', hu: 'Bal oldal', ro: 'Babord', el: 'Αριστερή πλευρά', bg: 'Ляв борд',
+      uk: 'Лівий борт',
+    },
+  },
+  {
+    // Standalone directional term. "Sancak" also means flag/province, so it
+    // is a whole-string override only.
+    tr: 'Sancak',
+    inline: false,
+    translations: {
+      en: 'Starboard', de: 'Steuerbord', fr: 'Tribord', es: 'Estribor',
+      it: 'Tribordo', pt: 'Estibordo', nl: 'Stuurboord', ru: 'Правый борт',
+      ja: '右舷', ko: '우현', 'zh-CN': '右舷', ar: 'الميمنة', hi: 'दक्षिण पार्श्व',
+      sv: 'Styrbord', no: 'Styrbord', da: 'Styrbord', fi: 'Tyyrpuuri', pl: 'Prawa burta',
+      cs: 'Pravobok', hu: 'Jobb oldal', ro: 'Tribord', el: 'Δεξιά πλευρά', bg: 'Десен борд',
+      uk: 'Правий борт',
+    },
+  },
+  {
+    // Helm command. MT renders it as nonsense ("The pier is at bay!").
+    tr: 'İskele Alabanda',
+    aliases: ['İskele alabanda'],
+    translations: {
+      en: 'Hard a-port', de: 'Hart Backbord', fr: 'La barre toute à bâbord',
+      es: 'Todo a babor', it: 'Tutta la barra a sinistra', pt: 'Leme todo a bombordo',
+      nl: 'Hard bakboord', ru: 'Лево на борт',
+      ja: '取舵一杯', ko: '좌현 전타', 'zh-CN': '左满舵', ar: 'الدفة يساراً بالكامل',
+      sv: 'Dikt babord', no: 'Hardt babord', da: 'Hårdt bagbord', fi: 'Täysi vasemmalle',
+      pl: 'Ster lewo na burtę', cs: 'Kormidlo plně vlevo', hu: 'Kormányt teljesen balra',
+      ro: 'Cârma banda stânga', el: 'Όλο αριστερά', bg: 'Ляво на борд', uk: 'Ліво на борт',
+    },
+  },
+  {
+    // Helm command. MT renders it as "Starboard down!".
+    tr: 'Sancak Alabanda',
+    aliases: ['Sancak alabanda'],
+    translations: {
+      en: 'Hard a-starboard', de: 'Hart Steuerbord', fr: 'La barre toute à tribord',
+      es: 'Todo a estribor', it: 'Tutta la barra a dritta', pt: 'Leme todo a estibordo',
+      nl: 'Hard stuurboord', ru: 'Право на борт',
+      ja: '面舵一杯', ko: '우현 전타', 'zh-CN': '右满舵', ar: 'الدفة يميناً بالكامل',
+      sv: 'Dikt styrbord', no: 'Hardt styrbord', da: 'Hårdt styrbord', fi: 'Täysi oikealle',
+      pl: 'Ster prawo na burtę', cs: 'Kormidlo plně vpravo', hu: 'Kormányt teljesen jobbra',
+      ro: 'Cârma banda dreapta', el: 'Όλο δεξιά', bg: 'Дясно на борд', uk: 'Право на борт',
+    },
+  },
+  {
+    // Course order: MT renders it as "RETURN TO the harbour" in every language.
+    tr: 'İskele Tarafına Dön',
+    aliases: ['İskele tarafına dön', 'İskeleye Dön', 'İskeleye dön'],
+    translations: {
+      en: 'Turn to port', de: 'Nach Backbord drehen', fr: 'Venir sur bâbord',
+      es: 'Caer a babor', it: 'Accostare a sinistra', pt: 'Guinar para bombordo',
+      nl: 'Draai naar bakboord', ru: 'Поворот влево (лево руля)',
+      ja: '取舵', ko: '좌현 변침', 'zh-CN': '向左转向', ar: 'انعطف إلى اليسار',
+      sv: 'Gira åt babord', no: 'Sving til babord', da: 'Drej til bagbord', fi: 'Käänny paapuuriin',
+      pl: 'Zwrot na lewą burtę', cs: 'Otočte na levobok', hu: 'Fordulj balra',
+      ro: 'Vino la babord', el: 'Στροφή αριστερά', bg: 'Завой наляво', uk: 'Поворот вліво',
+    },
+  },
+  {
+    tr: 'Sancak Tarafına Dön',
+    aliases: ['Sancak tarafına dön', 'Sancağa Dön', 'Sancağa dön'],
+    translations: {
+      en: 'Turn to starboard', de: 'Nach Steuerbord drehen', fr: 'Venir sur tribord',
+      es: 'Caer a estribor', it: 'Accostare a dritta', pt: 'Guinar para estibordo',
+      nl: 'Draai naar stuurboord', ru: 'Поворот вправо (право руля)',
+      ja: '面舵', ko: '우현 변침', 'zh-CN': '向右转向', ar: 'انعطف إلى اليمين',
+      sv: 'Gira åt styrbord', no: 'Sving til styrbord', da: 'Drej til styrbord', fi: 'Käänny tyyrpuuriin',
+      pl: 'Zwrot na prawą burtę', cs: 'Otočte na pravobok', hu: 'Fordulj jobbra',
+      ro: 'Vino la tribord', el: 'Στροφή δεξιά', bg: 'Завой надясно', uk: 'Поворот вправо',
+    },
+  },
+  {
+    // Ship motion: roll. Generic MT renders it "wobble"/"wiebel"/"ウォブル".
+    tr: 'Yalpa',
+    translations: {
+      en: 'Roll', de: 'Rollen', fr: 'Roulis', es: 'Balance',
+      it: 'Rollio', pt: 'Balanço', nl: 'Slingeren', ru: 'Бортовая качка',
+      ja: '横揺れ', ko: '횡동요', 'zh-CN': '横摇',
+      sv: 'Rullning', no: 'Rulling', da: 'Rulning', fi: 'Keinunta', pl: 'Kołysanie boczne',
+      cs: 'Boční kolébání', ro: 'Ruliu', el: 'Διατοιχισμός', bg: 'Бордово клатене',
+      uk: 'Бортова хитавиця',
+    },
+  },
+  {
+    tr: 'Yalpa Periyodu',
+    aliases: ['Yalpa periyodu'],
+    translations: {
+      en: 'Roll period', de: 'Rollperiode', fr: 'Période de roulis', es: 'Período de balance',
+      it: 'Periodo di rollio', pt: 'Período de balanço', nl: 'Slingerperiode', ru: 'Период бортовой качки',
+      ja: '横揺れ周期', ko: '횡동요 주기', 'zh-CN': '横摇周期',
+      sv: 'Rullningsperiod', no: 'Rulleperiode', da: 'Rulleperiode', fi: 'Keinuntajakso',
+      pl: 'Okres kołysania', cs: 'Perioda kolébání', ro: 'Perioada de ruliu',
+      el: 'Περίοδος διατοιχισμού', bg: 'Период на клатене', uk: 'Період хитавиці',
+    },
+  },
+  {
+    // Astern propulsion order. MT leaves it as the nonsense word "turnistan".
+    tr: 'Tornistan',
+    translations: {
+      en: 'Astern', de: 'Achteraus', fr: 'En arrière', es: 'Atrás',
+      it: 'Indietro', pt: 'Atrás', nl: 'Achteruit', ru: 'Задний ход',
+      ja: '後進', ko: '후진', 'zh-CN': '倒车', ar: 'إلى الخلف',
+      sv: 'Back', no: 'Akterover', da: 'Bak', fi: 'Taaksepäin', pl: 'Wstecz',
+      cs: 'Zpětný chod', hu: 'Hátramenet', ro: 'Înapoi', el: 'Ανάποδα', bg: 'Заден ход',
+      uk: 'Задній хід',
+    },
+  },
+  {
+    // MT renders it as the generic "machine room".
+    tr: 'Makine Dairesi',
+    aliases: ['Makine dairesi', 'Makina Dairesi', 'Makina dairesi'],
+    translations: {
+      en: 'Engine room', de: 'Maschinenraum', fr: 'Salle des machines', es: 'Sala de máquinas',
+      it: 'Sala macchine', pt: 'Casa de máquinas', nl: 'Machinekamer', ru: 'Машинное отделение',
+      ja: '機関室', ko: '기관실', 'zh-CN': '机舱', ar: 'غرفة المحركات', hi: 'इंजन कक्ष',
+      sv: 'Maskinrum', no: 'Maskinrom', da: 'Maskinrum', fi: 'Konehuone', pl: 'Maszynownia',
+      cs: 'Strojovna', hu: 'Gépház', ro: 'Sala mașinilor', el: 'Μηχανοστάσιο', bg: 'Машинно отделение',
+      uk: 'Машинне відділення',
+    },
+  },
+  {
+    // Meteorology/seamanship: heavy weather (MT: "heavy air").
+    tr: 'Ağır Hava',
+    aliases: ['Ağır hava'],
+    translations: {
+      en: 'Heavy weather', de: 'Schwerwetter', fr: 'Gros temps', es: 'Mal tiempo',
+      it: 'Maltempo', pt: 'Mau tempo', nl: 'Zwaar weer', ru: 'Штормовая погода',
+      ja: '荒天', ko: '황천', 'zh-CN': '恶劣天气', ar: 'طقس عاصف',
+      sv: 'Hårt väder', no: 'Hardt vær', da: 'Hårdt vejr', fi: 'Kova sää',
+      pl: 'Sztormowa pogoda', cs: 'Bouřlivé počasí', hu: 'Viharos idő', ro: 'Vreme rea',
+      el: 'Κακοκαιρία', bg: 'Лошо време', uk: 'Штормова погода',
+    },
+  },
+  {
+    // Accommodation ladder (MT: "gangplank"/"loopplank"/"Gangplanke").
+    tr: 'Borda İskelesi',
+    aliases: ['Borda iskelesi'],
+    translations: {
+      en: 'Accommodation ladder', de: 'Fallreep', fr: 'Échelle de coupée', es: 'Escala real',
+      it: 'Scala reale', pt: 'Escada de portaló', nl: 'Valreep', ru: 'Забортный трап',
+      ja: '舷梯', ko: '현문 사다리', 'zh-CN': '舷梯', ar: 'سلم الصعود',
+      sv: 'Fallrepstrappa', no: 'Fallrepstrapp', da: 'Falderebstrappe', fi: 'Laskuportaat',
+      pl: 'Trap zaburtowy', ro: 'Scară de bord', el: 'Σκάλα επιβίβασης', bg: 'Забортен трап',
+      uk: 'Забортний трап',
+    },
+  },
+  {
+    // Anchoring: swinging circle (MT: "keel circle").
+    tr: 'Salma Dairesi',
+    aliases: ['Salma dairesi'],
+    translations: {
+      en: 'Swinging circle', de: 'Schwoikreis', fr: 'Cercle d’évitage', es: 'Círculo de borneo',
+      it: 'Cerchio di evitaggio', pt: 'Círculo de giro', nl: 'Zwaaicirkel',
+      sv: 'Svajcirkel', no: 'Svaisirkel', da: 'Svajecirkel',
+    },
+  },
+  {
+    // Anchoring: scope (paid-out chain length vs depth). MT leaves "kaloma".
+    tr: 'Kaloma',
+    translations: {
+      en: 'Scope', fr: 'Touée',
+    },
+  },
+  {
+    // Underwater hull. "Karina" is also a common given name; overrides only.
+    tr: 'Karina',
+    aliases: ['Karina (Hull)'],
+    inline: false,
+    translations: {
+      en: 'Underwater hull', de: 'Unterwasserschiff', fr: 'Carène', es: 'Carena',
+      it: 'Carena', pt: 'Obras vivas', nl: 'Onderwaterschip', ru: 'Подводная часть корпуса',
+      ja: '船底', 'zh-CN': '船底', sv: 'Undervattenskropp', ro: 'Carenă', el: 'Ύφαλα',
+    },
+  },
+  {
+    // Turkish local wind names shown as glossary titles.
+    tr: 'Lodos',
+    inline: false,
+    translations: {
+      en: 'Southwesterly wind (Lodos)', de: 'Südwestwind (Lodos)', fr: 'Vent du sud-ouest (Lodos)',
+      es: 'Viento del suroeste (Lodos)', it: 'Vento di sud-ovest (Lodos)', pt: 'Vento sudoeste (Lodos)',
+      nl: 'Zuidwestenwind (Lodos)', ru: 'Юго-западный ветер (Лодос)',
+    },
+  },
+  {
+    tr: 'Poyraz',
+    inline: false,
+    translations: {
+      en: 'Northeasterly wind (Poyraz)', de: 'Nordostwind (Poyraz)', fr: 'Vent du nord-est (Poyraz)',
+      es: 'Viento del noreste (Poyraz)', it: 'Vento di nord-est (Poyraz)', pt: 'Vento nordeste (Poyraz)',
+      nl: 'Noordoostenwind (Poyraz)', ru: 'Северо-восточный ветер (Пойраз)',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
@@ -1596,6 +1809,88 @@ const curatedCorrections: Record<string, Array<[string, string]>> = {
     ['façade', 'front'],
     // "Kazık bağı" (clove hitch) becomes the literal "stake tie".
     ['stake tie', 'clove hitch'],
+    // "Yalpa" (roll) is rendered as the generic "wobble".
+    ['wobbles', 'rolls'],
+    ['wobbling', 'rolling'],
+    ['wobble', 'roll'],
+    // "Ağır hava" (heavy weather) becomes the literal "heavy air".
+    ['heavy air', 'heavy weather'],
+    // "Makine dairesi" (engine room) becomes the generic "machine room".
+    ['machine room', 'engine room'],
+    // "Demir taraması" (anchor dragging) is mangled into scanning/screening.
+    ['anchor scanning', 'anchor dragging'],
+    ['iron scanning', 'anchor dragging'],
+    ['iron screening', 'anchor dragging'],
+    // "Salma dairesi" (swinging circle) becomes the literal "keel circle".
+    ['keel circle', 'swinging circle'],
+    // "Borda iskelesi" (accommodation ladder) becomes "gangplank".
+    ['gangplank', 'accommodation ladder'],
+    // "Tornistan" (astern) is left as the nonsense loanword "turnistan".
+    ['turnistan', 'astern'],
+    // COLREG "çatışma" (collision) becomes the generic "conflict".
+    // Only unambiguous phrases; interpersonal "conflict resolution" is kept.
+    ['conflict prevention', 'collision avoidance'],
+    ['anti-conflict action', 'collision avoidance action'],
+    ['risk of conflict', 'risk of collision'],
+    ['conflict risk', 'collision risk'],
+  ],
+  // The gtx translator pivots through English, so the same systematic errors
+  // reappear in each language. Only invariant, corpus-unambiguous tokens are
+  // corrected (no declined/compound forms).
+  de: [
+    ['Wobble-Periode', 'Rollperiode'],
+    ['Kielkreis', 'Schwoikreis'],
+    ['Gangplanke', 'Fallreep'],
+    ['Turnistan', 'Achteraus'],
+    ['schwere Luft', 'Schwerwetter'],
+  ],
+  nl: [
+    ['wiebelperiode', 'slingerperiode'],
+    ['kielcirkel', 'zwaaicirkel'],
+    ['loopplank', 'valreep'],
+    ['turnistan', 'achteruit'],
+  ],
+  fr: [
+    ['cercle de quille', 'cercle d’évitage'],
+    ['turnistan', 'en arrière'],
+  ],
+  es: [
+    ['círculo de la quilla', 'círculo de borneo'],
+    ['círculo de quilla', 'círculo de borneo'],
+    ['tornistan', 'atrás'],
+  ],
+  pt: [
+    ['círculo da quilha', 'círculo de giro'],
+    ['turnistão', 'atrás'],
+    ['turnistan', 'atrás'],
+  ],
+  it: [
+    ['cerchio di chiglia', 'cerchio di evitaggio'],
+  ],
+  sv: [
+    ['wobbleperioden', 'rullningsperioden'],
+    ['wobbleperiod', 'rullningsperiod'],
+    ['kölcirkel', 'svajcirkel'],
+    ['turnistan', 'back'],
+  ],
+  no: [
+    ['kjølsirkel', 'svaisirkel'],
+    ['turnistan', 'akterover'],
+  ],
+  da: [
+    ['wobble-perioden', 'rulleperioden'],
+    ['wobble-periode', 'rulleperiode'],
+    ['kølcirkel', 'svajecirkel'],
+    ['turnistan', 'bak'],
+  ],
+  ru: [
+    ['турнистан', 'задний ход'],
+  ],
+  uk: [
+    ['турністан', 'задній хід'],
+  ],
+  bg: [
+    ['турнистан', 'заден ход'],
   ],
 };
 
