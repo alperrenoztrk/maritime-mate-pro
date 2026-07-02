@@ -26,6 +26,7 @@ import {
   applyMaritimeCorrections,
   maritimeGlossaryPromptHint,
 } from '../../src/utils/maritimeGlossary.ts';
+import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
 const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
@@ -141,6 +142,10 @@ async function translateLanguage(langCode, sources) {
   // Determine what still needs AI (not overridable, not cached).
   const pending = [];
   for (const source of sources) {
+    // Curated contextual correction wins over everything (see
+    // contextual-corrections.mjs), then the maritime glossary override.
+    const correction = CONTEXTUAL_CORRECTIONS[source]?.[langCode];
+    if (correction !== undefined) { cache[source] = correction; overrideCount++; continue; }
     const override = getMaritimeTranslationOverride(source, langCode);
     if (override) { cache[source] = override; overrideCount++; continue; }
     if (cache[source] === undefined) pending.push(source);

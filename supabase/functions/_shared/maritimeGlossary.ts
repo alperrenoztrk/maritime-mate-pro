@@ -1498,6 +1498,217 @@ export const maritimeTerms: MaritimeTerm[] = [
       sv: 'Ögonsplits', no: 'Øyespleis', da: 'Øjesplejsning', fi: 'Silmäpleissi',
     },
   },
+
+  // ── Contextual UI labels & crew hierarchy ──────────────────────────
+  {
+    // Crew hierarchy label ("Üstü: Birinci Zabit" = who this rank reports to).
+    // Generic MT renders the bare word as the spatial "Above:". The word "üstü"
+    // is spatial in most other Turkish phrases, so whole-string override ONLY.
+    tr: 'Üstü:',
+    aliases: ['Üstü', 'Amiri', 'Bağlı Olduğu Amir'],
+    inline: false,
+    translations: {
+      en: 'Reports to:', de: 'Vorgesetzter:', fr: 'Supérieur hiérarchique :', es: 'Superior:',
+      it: 'Superiore:', pt: 'Superior:', nl: 'Rapporteert aan:', ru: 'Подчиняется:',
+      ja: '直属の上司:', ko: '직속 상관:', 'zh-CN': '上级:', ar: 'الرئيس المباشر:',
+      hi: 'वरिष्ठ अधिकारी:', sv: 'Rapporterar till:', no: 'Rapporterer til:', da: 'Rapporterer til:',
+      fi: 'Esimies:', pl: 'Przełożony:', cs: 'Nadřízený:', hu: 'Felettes:',
+      ro: 'Superior ierarhic:', el: 'Προϊστάμενος:', bg: 'Пряк ръководител:', uk: 'Підпорядковується:',
+    },
+  },
+  {
+    // Deck officer ranks. Generic MT confuses them ("İkinci Zabit" has been
+    // rendered as "Chief Officer") or translates them literally.
+    tr: 'Birinci Zabit',
+    aliases: ['Birinci zabit', 'Baş Zabit', 'Baş zabit'],
+    translations: {
+      en: 'Chief Officer', de: 'Erster Offizier', fr: 'Second capitaine', es: 'Primer oficial',
+      it: 'Primo ufficiale', pt: 'Imediato', nl: 'Eerste stuurman',
+      ru: 'Старший помощник капитана', ja: '一等航海士', ko: '일등 항해사', 'zh-CN': '大副',
+      sv: 'Överstyrman', no: 'Overstyrmann', da: 'Overstyrmand', fi: 'Yliperämies',
+      pl: 'Starszy oficer', el: 'Ύπαρχος', uk: 'Старший помічник капітана',
+    },
+  },
+  {
+    tr: 'İkinci Zabit',
+    aliases: ['İkinci zabit'],
+    translations: {
+      en: 'Second Officer', de: 'Zweiter Offizier', es: 'Segundo oficial',
+      it: 'Secondo ufficiale', pt: 'Segundo oficial', nl: 'Tweede stuurman',
+      ru: 'Второй помощник капитана', ja: '二等航海士', ko: '이등 항해사', 'zh-CN': '二副',
+      pl: 'Drugi oficer', uk: 'Другий помічник капітана',
+    },
+  },
+  {
+    tr: 'Üçüncü Zabit',
+    aliases: ['Üçüncü zabit'],
+    translations: {
+      en: 'Third Officer', de: 'Dritter Offizier', es: 'Tercer oficial',
+      it: 'Terzo ufficiale', pt: 'Terceiro oficial', nl: 'Derde stuurman',
+      ru: 'Третий помощник капитана', ja: '三等航海士', ko: '삼등 항해사', 'zh-CN': '三副',
+      pl: 'Trzeci oficer', uk: 'Третій помічник капітана',
+    },
+  },
+  {
+    tr: 'Dördüncü Zabit',
+    aliases: ['Dördüncü zabit'],
+    translations: {
+      en: 'Fourth Officer', de: 'Vierter Offizier', es: 'Cuarto oficial',
+      nl: 'Vierde stuurman', ru: 'Четвёртый помощник капитана', 'zh-CN': '四副',
+      uk: 'Четвертий помічник капітана',
+    },
+  },
+  {
+    tr: 'Baş Mühendis',
+    aliases: ['Baş mühendis', 'Başmühendis'],
+    translations: {
+      en: 'Chief Engineer', de: 'Leitender Ingenieur', fr: 'Chef mécanicien', es: 'Jefe de máquinas',
+      it: 'Direttore di macchina', pt: 'Chefe de máquinas', nl: 'Hoofdwerktuigkundige',
+      ru: 'Старший механик', ja: '機関長', ko: '기관장', 'zh-CN': '轮机长',
+      sv: 'Maskinchef', no: 'Maskinsjef', da: 'Maskinchef', fi: 'Konepäällikkö',
+      pl: 'Starszy mechanik', uk: 'Старший механік', bg: 'Главен механик',
+    },
+  },
+  {
+    tr: 'İkinci Mühendis',
+    aliases: ['İkinci mühendis'],
+    translations: {
+      en: 'Second Engineer', de: 'Zweiter Ingenieur', es: 'Segundo maquinista',
+      nl: 'Tweede werktuigkundige', ru: 'Второй механик', ja: '一等機関士', 'zh-CN': '大管轮',
+      uk: 'Другий механік',
+    },
+  },
+  {
+    tr: 'Üçüncü Mühendis',
+    aliases: ['Üçüncü mühendis'],
+    translations: {
+      en: 'Third Engineer', de: 'Dritter Ingenieur', es: 'Tercer maquinista',
+      nl: 'Derde werktuigkundige', ru: 'Третий механик', ja: '二等機関士', 'zh-CN': '二管轮',
+      uk: 'Третій механік',
+    },
+  },
+  {
+    tr: 'Dördüncü Mühendis',
+    aliases: ['Dördüncü mühendis'],
+    translations: {
+      en: 'Fourth Engineer', es: 'Cuarto maquinista',
+      ru: 'Четвёртый механик', ja: '三等機関士', 'zh-CN': '三管轮',
+      uk: 'Четвертий механік',
+    },
+  },
+  {
+    // Engine-room rating. Generic MT renders it as "eraser"/"wiper (of glass)".
+    // "Silici" can be a generic agent noun, so whole-string override only.
+    tr: 'Silici',
+    inline: false,
+    translations: {
+      en: 'Wiper', de: 'Reiniger', fr: 'Nettoyeur', es: 'Limpiador', ru: 'Обтирщик',
+    },
+  },
+  {
+    // Engine-room rating. "Yağcı" colloquially also means "flatterer".
+    tr: 'Yağcı',
+    inline: false,
+    translations: {
+      en: 'Oiler', de: 'Schmierer', fr: 'Graisseur', es: 'Engrasador',
+      it: 'Ingrassatore', nl: 'Olieman', ru: 'Моторист',
+    },
+  },
+  {
+    // Deck rating (AB). MT renders it literally as "master sailor".
+    tr: 'Usta Gemici',
+    aliases: ['Usta gemici'],
+    translations: {
+      en: 'Able Seaman', de: 'Vollmatrose', fr: 'Matelot qualifié', es: 'Marinero de primera',
+      it: 'Marinaio scelto', pt: 'Marinheiro qualificado', nl: 'Volmatroos',
+      ru: 'Матрос первого класса', sv: 'Matros', no: 'Matros', da: 'Matros',
+      fi: 'Matruusi', pl: 'Starszy marynarz',
+    },
+  },
+  {
+    // Windward side. MT renders it spatially as "above the wind".
+    tr: 'Rüzgar Üstü',
+    aliases: ['Rüzgar üstü', 'Rüzgarüstü', 'Rüzgâr üstü', 'Rüzgâr Üstü'],
+    translations: {
+      en: 'Windward', de: 'Luv', fr: 'Au vent', es: 'Barlovento',
+      it: 'Sopravvento', pt: 'Barlavento', nl: 'Loefzijde', ru: 'Наветренная сторона',
+      ja: '風上', ko: '풍상측', 'zh-CN': '上风侧',
+      sv: 'Lovart', no: 'Lo side', da: 'Luv', fi: 'Tuulen puoli',
+      pl: 'Strona nawietrzna', cs: 'Návětrná strana', hu: 'Szél felőli oldal', ro: 'În vânt',
+      el: 'Προσήνεμη πλευρά', bg: 'Наветрена страна', uk: 'Навітряний бік',
+    },
+  },
+  {
+    // Leeward side. MT renders it spatially as "under the wind".
+    tr: 'Rüzgar Altı',
+    aliases: ['Rüzgar altı', 'Rüzgaraltı', 'Rüzgâr altı', 'Rüzgâr Altı'],
+    translations: {
+      en: 'Leeward', de: 'Lee', fr: 'Sous le vent', es: 'Sotavento',
+      it: 'Sottovento', pt: 'Sotavento', nl: 'Lijzijde', ru: 'Подветренная сторона',
+      ja: '風下', ko: '풍하측', 'zh-CN': '下风侧',
+      sv: 'Lä', no: 'Le side', da: 'Læ', fi: 'Suojan puoli',
+      pl: 'Strona zawietrzna', cs: 'Závětrná strana', hu: 'Szélárnyékos oldal', ro: 'Sub vânt',
+      el: 'Υπήνεμη πλευρά', bg: 'Подветрена страна', uk: 'Підвітряний бік',
+    },
+  },
+  {
+    // Anchor watch. MT renders "demir nöbeti" as "iron seizure/shift".
+    tr: 'Demir Nöbeti',
+    aliases: ['Demir nöbeti', 'Demir Vardiyası', 'Demir vardiyası'],
+    translations: {
+      en: 'Anchor watch', de: 'Ankerwache', fr: 'Veille au mouillage', es: 'Guardia de fondeo',
+      it: "Guardia all'ancora", pt: 'Vigia de fundeio', nl: 'Ankerwacht', ru: 'Якорная вахта',
+      ja: '錨泊当直', ko: '정박 당직', 'zh-CN': '锚泊值班',
+      sv: 'Ankarvakt', no: 'Ankervakt', da: 'Ankervagt', fi: 'Ankkurivahti',
+      pl: 'Wachta kotwiczna', cs: 'Kotevní hlídka', hu: 'Horgonyőrség', ro: 'Cart la ancoră',
+      el: 'Βάρδια αγκυροβολίας', bg: 'Котвена вахта', uk: 'Якірна вахта',
+    },
+  },
+  {
+    // Dragging anchor. MT renders "demir taraması" as "iron scanning/screening".
+    tr: 'Demir Taraması',
+    aliases: ['Demir taraması', 'Demir Tarama', 'Demir tarama'],
+    translations: {
+      en: 'Anchor dragging', fr: "Chasse de l'ancre", es: 'Garreo del ancla', ru: 'Дрейф якоря',
+    },
+  },
+  {
+    // Ground tackle. MT renders "demir donanımı" as "iron hardware".
+    tr: 'Demir Donanımı',
+    aliases: ['Demir donanımı'],
+    translations: {
+      en: 'Ground tackle', de: 'Ankergeschirr', fr: 'Apparaux de mouillage', es: 'Equipo de fondeo',
+      nl: 'Ankergerei', ru: 'Якорное устройство', 'zh-CN': '锚设备',
+      sv: 'Ankarutrustning', no: 'Ankerutstyr', da: 'Ankerudstyr', fi: 'Ankkurilaitteisto',
+      pl: 'Urządzenie kotwiczne', cs: 'Kotevní zařízení', hu: 'Horgonyberendezés',
+      bg: 'Котвено устройство', uk: 'Якірний пристрій',
+    },
+  },
+  {
+    // Anchor weight (holding-power calculators). MT renders it as "iron weight".
+    tr: 'Demir Ağırlığı',
+    aliases: ['Demir ağırlığı'],
+    translations: {
+      en: 'Anchor weight', de: 'Ankergewicht', fr: "Poids de l'ancre", es: 'Peso del ancla',
+      it: "Peso dell'àncora", pt: 'Peso da âncora', nl: 'Ankergewicht', ru: 'Вес якоря',
+      ja: '錨の重量', 'zh-CN': '锚重',
+      sv: 'Ankarvikt', no: 'Ankervekt', da: 'Ankervægt', fi: 'Ankkurin paino',
+      pl: 'Masa kotwicy', cs: 'Hmotnost kotvy', hu: 'Horgony tömege', ro: 'Greutatea ancorei',
+      el: 'Βάρος άγκυρας', bg: 'Тегло на котвата', uk: 'Вага якоря',
+    },
+  },
+  {
+    // Reef knot. MT renders "camadan" as "thimble" or leaves it untranslated.
+    tr: 'Camadan Bağı',
+    aliases: ['Camadan bağı', 'Camadan'],
+    translations: {
+      en: 'Reef knot', de: 'Kreuzknoten', fr: 'Nœud plat', es: 'Nudo llano',
+      it: 'Nodo piano', pt: 'Nó direito', nl: 'Platte knoop', ru: 'Прямой узел',
+      ja: '本結び', 'zh-CN': '平结',
+      sv: 'Råbandsknop', no: 'Båtmannsknop', da: 'Råbåndsknob', fi: 'Merimiessolmu',
+      pl: 'Węzeł płaski',
+    },
+  },
 ];
 
 // Compact source(TR) -> English glossary string for AI prompt guidance.
