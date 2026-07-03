@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import type { MaritimeNewsItem } from "@/services/maritimeNews";
+import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
 
 function formatDateTR(iso?: string): string {
   if (!iso) return "";
@@ -68,43 +68,74 @@ async function fetchArticleContent(url: string): Promise<{
   publishedAt?: string;
   warning?: string;
 }> {
-  const baseUrl = (import.meta.env.VITE_SUPABASE_URL as string || "").replace(/\/+$/, "");
-  const key = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY) as string;
-  if (!baseUrl || !key) throw new Error("Backend yapılandırması eksik.");
+  // Env vars can be missing in some preview/webview builds; getAnonKey/getFunctionUrls
+  // fall back to the bundled Supabase client config, mirroring the news list fetch.
+  const key = getAnonKey();
+  const candidateUrls = getFunctionUrls("fetch-article");
+  let lastError = "";
 
-  const res = await fetch(`${baseUrl}/functions/v1/fetch-article`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      apikey: key,
-      authorization: `Bearer ${key}`,
-    },
-    body: JSON.stringify({ url }),
-  });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    let errorMsg = `Makale alınamadı (${res.status})`;
+  for (const endpoint of candidateUrls) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30_000);
+    let res: Response;
     try {
-      const parsed = JSON.parse(text);
-      if (parsed.error) errorMsg = parsed.error;
-    } catch { /* ignore */ }
-    throw new Error(errorMsg);
+      res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          apikey: key,
+          authorization: `Bearer ${key}`,
+        },
+        body: JSON.stringify({ url }),
+        signal: controller.signal,
+      });
+    } catch (err) {
+      // Network-level failure (offline, DNS, CORS, timeout) — try the next endpoint.
+      lastError =
+        err instanceof DOMException && err.name === "AbortError"
+          ? "Zaman aşımı — sunucu yanıt vermedi."
+          : err instanceof Error
+            ? err.message
+            : String(err);
+      continue;
+    } finally {
+      clearTimeout(timeout);
+    }
+
+    if (!res.ok) {
+      // The server was reached but the article itself is unavailable; retrying
+      // another endpoint of the same function won't help.
+      const text = await res.text().catch(() => "");
+      let errorMsg = `Makale alınamadı (${res.status})`;
+      try {
+        const parsed = JSON.parse(text);
+        if (parsed.error) errorMsg = parsed.error;
+      } catch { /* ignore */ }
+      throw new Error(errorMsg);
+    }
+
+    return res.json();
   }
 
-  return res.json();
+  throw new Error(lastError || "Makale alınamadı.");
 }
 
 function ArticleRenderer({ content }: { content: string }) {
-  const paragraphs = content.split("\n\n").filter(Boolean);
+  // The content may come from the Jina Reader fallback as raw markdown:
+  // drop images and unwrap [text](url) links before rendering.
+  const cleaned = content
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1");
+  const paragraphs = cleaned.split("\n\n").filter((p) => p.trim());
   return (
     <div className="space-y-4 text-[15px] leading-relaxed text-white/90">
       {paragraphs.map((para, i) => {
         const trimmed = para.trim();
-        if (trimmed.startsWith("## ")) {
+        const headingMatch = trimmed.match(/^#{1,6} +(.*)$/);
+        if (headingMatch) {
           return (
             <h3 key={i} className="mt-6 mb-2 text-lg font-bold text-white">
-              {trimmed.replace(/^## /, "")}
+              {headingMatch[1]}
             </h3>
           );
         }
@@ -115,17 +146,21 @@ function ArticleRenderer({ content }: { content: string }) {
             </blockquote>
           );
         }
-        if (trimmed.startsWith("• ")) {
-          const items = trimmed.split("\n").filter((l) => l.trim().startsWith("• "));
+        const bulletRe = /^(?:•|[-*]) +/;
+        if (bulletRe.test(trimmed)) {
+          const items = trimmed.split("\n").filter((l) => bulletRe.test(l.trim()));
           return (
             <ul key={i} className="list-inside list-disc space-y-1 text-white/85">
               {items.map((item, j) => (
-                <li key={j}>{item.replace(/^• /, "")}</li>
+                <li key={j}>{item.trim().replace(bulletRe, "")}</li>
               ))}
             </ul>
           );
         }
         const formatted = trimmed
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
           .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-white">$1</strong>')
           .replace(/_([^_]+)_/g, "<em>$1</em>");
         return <p key={i} dangerouslySetInnerHTML={{ __html: formatted }} />;
@@ -208,7 +243,12 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                   <div className="space-y-3">
                     <p className="text-[15px] leading-relaxed text-white/90">{summary}</p>
                     <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-xs text-amber-200/80">
-                      Tam metin yüklenemedi, özet gösteriliyor.
+                      <p>Tam metin yüklenemedi, özet gösteriliyor.</p>
+                      {articleQuery.error instanceof Error && articleQuery.error.message ? (
+                        <p className="mt-1 text-[10px] text-amber-200/50 break-words">
+                          {articleQuery.error.message}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 ) : (
