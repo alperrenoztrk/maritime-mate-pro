@@ -131,6 +131,44 @@ function htmlToReadableText(html: string): string {
   return lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
+/**
+ * Clean Jina Reader markdown: drop images, unwrap links, remove nav-like
+ * boilerplate lines, and start from the article headline when we can find it.
+ */
+function cleanJinaMarkdown(md: string, title: string): string {
+  let text = md
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/^[=*_-]{3,}\s*$/gm, "")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+
+  // If the article headline appears as a markdown heading, cut the preamble
+  // (site nav, cookie banners) that Jina includes before it.
+  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const target = normalize(title).slice(0, 30);
+  if (target.length >= 15) {
+    const lines = text.split("\n");
+    const headingIdx = lines.findIndex(
+      (l) => /^#{1,3}\s/.test(l.trim()) && normalize(l).includes(target)
+    );
+    if (headingIdx > 0) {
+      text = lines.slice(headingIdx).join("\n");
+    }
+  }
+
+  // Filter out very short lines that are likely leftover menu items.
+  const lines = text.split("\n").filter((line) => {
+    const trimmed = line.trim();
+    if (!trimmed) return true;
+    if (trimmed.length < 15 && !/^(#|•|>|\d+\.|[-*] )/.test(trimmed)) return false;
+    return true;
+  });
+
+  return lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -197,11 +235,12 @@ serve(async (req: Request) => {
         const text = await proxyRes.text();
         // Jina returns markdown-like text with "Title:" / "URL Source:" / "Markdown Content:" preamble
         const titleMatch = text.match(/^Title:\s*(.+)$/m);
+        const jinaTitle = titleMatch?.[1]?.trim() || "";
         const contentSplit = text.split(/Markdown Content:\s*/);
-        const content = (contentSplit[1] || text).trim();
+        const content = cleanJinaMarkdown((contentSplit[1] || text).trim(), jinaTitle);
         return new Response(
           JSON.stringify({
-            title: titleMatch?.[1]?.trim() || "",
+            title: jinaTitle,
             content,
           }),
           { headers: { ...corsHeaders, "content-type": "application/json" } }

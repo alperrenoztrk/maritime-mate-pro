@@ -129,19 +129,19 @@ function getFunctionBaseUrl(): string {
   return fallback;
 }
 
-function getFunctionUrls(): string[] {
+export function getFunctionUrls(functionName = "maritime-news"): string[] {
   const baseUrl = getFunctionBaseUrl().replace(/\/+$/, "");
-  const urls = [`${baseUrl}/functions/v1/maritime-news`];
+  const urls = [`${baseUrl}/functions/v1/${functionName}`];
 
   try {
     const parsed = new URL(baseUrl);
     const hostParts = parsed.hostname.split(".");
 
-    // https://<project>.supabase.co -> https://<project>.functions.supabase.co/maritime-news
+    // https://<project>.supabase.co -> https://<project>.functions.supabase.co/<functionName>
     if (hostParts.length >= 3 && hostParts.includes("supabase")) {
       const projectRef = hostParts[0];
       const rootDomain = hostParts.slice(1).join(".");
-      urls.push(`${parsed.protocol}//${projectRef}.functions.${rootDomain}/maritime-news`);
+      urls.push(`${parsed.protocol}//${projectRef}.functions.${rootDomain}/${functionName}`);
     }
   } catch (e) {
     console.warn("📰 [MaritimeNews] Could not derive functions domain", e);
@@ -150,7 +150,7 @@ function getFunctionUrls(): string[] {
   return Array.from(new Set(urls));
 }
 
-function getAnonKey(): string {
+export function getAnonKey(): string {
   const key = (import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) as
     | string
     | undefined;
