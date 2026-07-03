@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChevronLeft, Home } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
 
-const TOP_LEVEL_ROUTES = new Set(["/", "/calculations", "/lessons", "/crew", "/ship-systems", "/ship-operations", "/beta"]);
-
 /**
- * Global, scroll-aware navigation controls (Back + Home).
+ * Global, scroll-aware navigation controls (Back).
  *
  * Design goals (see PR "header-button-overlap"):
  *  - Must NOT cover the page's main title. Instead of sitting permanently in
@@ -72,7 +70,6 @@ export function FloatingNavButtons() {
   if (pathname === "/") return null;
 
   const parent = findParentPath(pathname);
-  const isAtTopLevel = TOP_LEVEL_ROUTES.has(pathname);
 
   return (
     <div
@@ -110,16 +107,6 @@ export function FloatingNavButtons() {
                 )}
               </AnimatePresence>
             </button>
-
-            {!isAtTopLevel && (
-              <button
-                onClick={() => navigate("/", { replace: true })}
-                aria-label="Ana Sayfa"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-slate-100 shadow-lg backdrop-blur-xl transition-all hover:border-primary/40 hover:bg-white/20 hover:text-white active:scale-95"
-              >
-                <Home className="h-3.5 w-3.5" />
-              </button>
-            )}
           </motion.div>
         )}
       </AnimatePresence>
