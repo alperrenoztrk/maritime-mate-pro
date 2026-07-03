@@ -22,7 +22,7 @@ const Engine = () => {
         <FormulaCard
           sections={[
             {
-              title: "⚡ Güç Formülleri",
+              title: "Güç Formülleri",
               accent: "blue",
               lines: [
                 { label: "Fren Gücü", formula: "BHP = IHP × ηmech" },
@@ -31,7 +31,7 @@ const Engine = () => {
               ],
             },
             {
-              title: "⛽ Yakıt Formülleri",
+              title: "Yakıt Formülleri",
               accent: "green",
               lines: [
                 { label: "SFOC Interpolasyon", formula: "SFOC = a × Load² + b × Load + c" },
@@ -40,7 +40,7 @@ const Engine = () => {
               ],
             },
             {
-              title: "🌡️ Isı Transfer Formülleri",
+              title: "Isı Transfer Formülleri",
               accent: "orange",
               lines: [
                 { label: "Isı Değişim Alanı", formula: "A = Q / (U × LMTD)" },
@@ -49,7 +49,7 @@ const Engine = () => {
               ],
             },
             {
-              title: "💨 Emisyon Formülleri",
+              title: "Emisyon Formülleri",
               accent: "red",
               lines: [
                 { label: "NOx Emisyonu", formula: "NOx = EF × FC × CF" },
@@ -58,7 +58,7 @@ const Engine = () => {
               ],
             },
             {
-              title: "📊 Verimlilik Formülleri",
+              title: "Verimlilik Formülleri",
               accent: "purple",
               lines: [
                 { label: "Termal Verimlilik", formula: "ηth = P / (FC × LCV)" },

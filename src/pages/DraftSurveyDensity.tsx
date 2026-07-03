@@ -66,7 +66,7 @@ const DraftSurveyDensity = () => {
           title="Formül"
           sections={[
             {
-              title: "🌊 Yoğunluk Düzeltmesi",
+              title: "Yoğunluk Düzeltmesi",
               accent: "teal",
               lines: [{ formula: "Düzeltme = Deplasman × ((ρ - ρ₀) / ρ₀)" }],
             },

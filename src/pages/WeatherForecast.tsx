@@ -5,40 +5,7 @@ import { Thermometer, Wind, CloudRain, Compass, ChevronDown, ChevronUp, Clock } 
 import { useWeatherForecast } from "@/hooks/useWeatherForecast";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useHourlyWeather } from "@/hooks/useHourlyWeather";
-
-function wmoToEmoji(code?: number): string {
-  switch (code) {
-    case 0: return "☀️";
-    case 1: return "🌤️";
-    case 2: return "⛅";
-    case 3: return "☁️";
-    case 45:
-    case 48: return "🌫️";
-    case 51:
-    case 53:
-    case 55: return "🌦️";
-    case 56:
-    case 57: return "🌨️";
-    case 61:
-    case 63:
-    case 65: return "🌧️";
-    case 66:
-    case 67: return "🌨️";
-    case 71:
-    case 73:
-    case 75: return "❄️";
-    case 77: return "🌨️";
-    case 80:
-    case 81:
-    case 82: return "🌦️";
-    case 85:
-    case 86: return "❄️";
-    case 95: return "⛈️";
-    case 96:
-    case 99: return "⛈️";
-    default: return "❓";
-  }
-}
+import { WeatherIcon } from "@/components/weather/WeatherIcon";
 
 function wmoToTr(code?: number): string {
   switch (code) {
@@ -182,7 +149,7 @@ export default function WeatherForecast() {
                           {formatDate(day.date, index)}
                         </h3>
                         <div className="flex items-center justify-center md:justify-start gap-3">
-                          <span className="text-3xl">{wmoToEmoji(day.weatherCode)}</span>
+                          <WeatherIcon code={day.weatherCode} className="h-9 w-9" />
                           <div>
                             <p className="font-medium text-foreground">{wmoToTr(day.weatherCode)}</p>
                             <p className="text-xs text-muted-foreground">
@@ -287,7 +254,7 @@ export default function WeatherForecast() {
                                   <p className="font-semibold text-foreground">{formatHour(hour.time)}</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-xl">{wmoToEmoji(hour.weatherCode)}</span>
+                                  <WeatherIcon code={hour.weatherCode} className="h-6 w-6" />
                                   <span className="text-sm text-muted-foreground hidden sm:inline">
                                     {wmoToTr(hour.weatherCode)}
                                   </span>

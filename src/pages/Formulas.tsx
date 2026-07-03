@@ -172,7 +172,7 @@ const Formulas = () => {
               <span data-translatable>
                 {geminiApiStatus === 'working' 
                   ? "Google Gemini AI ile gelişmiş maritime mühendisliği analizi."
-                  : "Lovable Environment Variables'da GEMINI_API_KEY ekleyin."
+                  : "Sunucu ortam değişkenlerine GEMINI_API_KEY ekleyin."
                 }
               </span>
             </CardDescription>

@@ -70,10 +70,10 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
 
               <TabsContent value="sounding" className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">🌊 Su Altı Hacim Hesaplama</h3>
+                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Su Altı Hacim Hesaplama</h3>
                   <p className="text-sm text-muted-foreground">V = A × h</p>
                   <p className="text-xs text-muted-foreground bg-primary/5 p-2 rounded">
-                    <strong>📋 Amaç:</strong> Tank hacmi için basit dikdörtgen formülü kullanılır. 
+                    <strong>Amaç:</strong> Tank hacmi için basit dikdörtgen formülü kullanılır. 
                     Bu formül pratik tank hesaplamaları için uygundur.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -105,7 +105,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                 <Separator />
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">⚖️ Ağırlık Hesaplama</h3>
+                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Ağırlık Hesaplama</h3>
                   <p className="text-sm text-muted-foreground">W = V × ρ</p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="space-y-2">
@@ -153,7 +153,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                 <Separator />
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">📊 Moment Hesaplama</h3>
+                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Moment Hesaplama</h3>
                   <p className="text-sm text-muted-foreground">M = V × h/2</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -192,7 +192,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
 
                 {soundingResults && (
                   <div className="space-y-4 p-4 bg-primary/5 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#1d3e8a]">📊 Sounding Table Sonuçları</h3>
+                    <h3 className="text-lg font-semibold text-[#1d3e8a]">Sounding Table Sonuçları</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="space-y-2">
                         <Label className="text-sm font-medium">Su Altı Hacim (V)</Label>

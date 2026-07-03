@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Thermometer, Droplets, Gauge, Wind } from "lucide-react";
+import { WeatherIcon } from "@/components/weather/WeatherIcon";
 import { useWeatherForecast, useHourlyForecast } from "@/hooks/useWeatherForecast";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
@@ -14,7 +15,6 @@ interface WeatherInfoWidgetsProps {
   windCompass: string;
   windNameTr: string;
   weatherCode?: number;
-  weatherEmoji: string;
   weatherDescription: string;
   latitude?: number;
   longitude?: number;
@@ -29,7 +29,6 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
   windCompass,
   windNameTr,
   weatherCode,
-  weatherEmoji,
   weatherDescription,
   latitude,
   longitude,
@@ -53,18 +52,6 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
   const handleDayClick = (date: string) => {
     setSelectedDate(date);
     setHourlyDialogOpen(true);
-  };
-
-  const wmoToEmoji = (code?: number): string => {
-    if (!code) return "🌡️";
-    if (code === 0) return "☀️";
-    if (code <= 3) return "⛅";
-    if (code <= 48) return "🌫️";
-    if (code <= 67) return "🌧️";
-    if (code <= 77) return "🌨️";
-    if (code <= 82) return "🌦️";
-    if (code <= 86) return "⛈️";
-    return "🌡️";
   };
 
   const wmoToTr = (code?: number): string => {
@@ -97,9 +84,11 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="relative text-center space-y-2">
             <div className="relative inline-block">
-              <div className="text-7xl animate-float">{weatherEmoji}</div>
-              <div className="absolute inset-0 blur-2xl opacity-30 animate-float" style={{ animationDelay: '0.5s' }}>
-                {weatherEmoji}
+              <div className="animate-float">
+                <WeatherIcon code={weatherCode} ranged className="h-20 w-20" />
+              </div>
+              <div className="absolute inset-0 blur-2xl opacity-40 animate-float" style={{ animationDelay: '0.5s' }}>
+                <WeatherIcon code={weatherCode} ranged className="h-20 w-20" />
               </div>
             </div>
             <div className="text-xl font-bold text-foreground">
@@ -238,7 +227,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="text-3xl">{wmoToEmoji(day.weatherCode)}</div>
+                      <WeatherIcon code={day.weatherCode} ranged className="h-8 w-8" />
                       <div>
                         <div className="font-semibold">
                           {new Date(day.date).toLocaleDateString('tr-TR', { 
@@ -440,8 +429,8 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                       <div className="text-xs font-semibold text-center mb-2">
                         {new Date(hour.time).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}
                       </div>
-                      <div className="text-center text-2xl mb-1">
-                        {wmoToEmoji(hour.weatherCode)}
+                      <div className="flex justify-center mb-1">
+                        <WeatherIcon code={hour.weatherCode} ranged className="h-6 w-6" />
                       </div>
                       <div className="text-xs space-y-1">
                         <div className="flex items-center justify-between">

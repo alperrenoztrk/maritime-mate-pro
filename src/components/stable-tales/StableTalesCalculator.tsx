@@ -78,9 +78,9 @@ export const StableTalesCalculator = () => {
       
       // Status mesajı
       if (calculationResults.solas_uygunluk.genel_uygunluk) {
-        toast.success("✅ Tüm SOLAS kriterleri sağlandı!");
+        toast.success("Tüm SOLAS kriterleri sağlandı!");
       } else {
-        toast.error("❌ Bazı SOLAS kriterleri sağlanmadı!");
+        toast.error("Bazı SOLAS kriterleri sağlanmadı!");
       }
       
     } catch (error) {

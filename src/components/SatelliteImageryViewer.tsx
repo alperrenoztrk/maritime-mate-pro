@@ -186,7 +186,7 @@ export const SatelliteImageryViewer = () => {
             <Info className="h-4 w-4 text-blue-700 dark:text-blue-300" />
             <AlertDescription className="text-sm text-blue-800 dark:text-blue-200">
               <div className="space-y-2">
-                <p className="font-semibold">📡 EUMETSAT Meteosat Uyduları</p>
+                <p className="font-semibold">EUMETSAT Meteosat Uyduları</p>
                 <p>
                   Bu görüntüler EUMETSAT'in (Avrupa Meteorolojik Uydular Organizasyonu) Meteosat serisinden alınmaktadır. 
                   Görüntüler yaklaşık 15 dakikada bir güncellenir.
@@ -371,7 +371,7 @@ export const SatelliteImageryViewer = () => {
           <div className="space-y-2">
             <p className="font-semibold flex items-center gap-2">
               <Satellite className="h-4 w-4" />
-              🚢 Denizcilik Güvenlik Notu
+              Denizcilik Güvenlik Notu
             </p>
             <p>
               Uydu görüntüleri hava durumu tahminlerini destekleyen önemli bir araçtır. Ancak tek başına 
@@ -379,7 +379,7 @@ export const SatelliteImageryViewer = () => {
               ve gemi meteoroloji ekipmanları ile birlikte kullanılmalıdır.
             </p>
             <p className="font-semibold">
-              ⚠️ Kritik durumlar için her zaman resmi kaynaklara danışın!
+              Kritik durumlar için her zaman resmi kaynaklara danışın!
             </p>
           </div>
         </AlertDescription>

@@ -14,7 +14,7 @@ const AuthCallback = () => {
   useEffect(() => {
     const handleAuthCallback = async () => {
       try {
-        console.log('🔐 Auth callback başladı (PKCE exchange)');
+        console.log('Auth callback başladı (PKCE exchange)');
         const url = new URL(window.location.href);
         const code = url.searchParams.get('code');
         const errorParam = url.searchParams.get('error');
@@ -22,7 +22,7 @@ const AuthCallback = () => {
 
         // Sağlayıcıdan dönen bir hata varsa
         if (errorParam) {
-          console.error('❌ OAuth error from provider:', { errorParam, errorDescription });
+          console.error('OAuth error from provider:', { errorParam, errorDescription });
           setStatus('error');
           setMessage(`Giriş hatası: ${errorDescription || errorParam}`);
           toast.error('Google ile giriş reddedildi.');
@@ -32,13 +32,13 @@ const AuthCallback = () => {
 
         // URL'de code varsa PKCE exchange yap
         if (code) {
-          console.log('🔄 Code bulundu, exchangeCodeForSession çalıştırılıyor...');
+          console.log('Code bulundu, exchangeCodeForSession çalıştırılıyor...');
           const { data, error } = await supabase.auth.exchangeCodeForSession(window.location.href);
           if (error) {
-            console.error('❌ Code exchange hatası:', error);
+            console.error('Code exchange hatası:', error);
             throw error;
           }
-          console.log('✅ Code exchange başarılı:', {
+          console.log('Code exchange başarılı:', {
             user: data?.user?.email,
             session: !!data?.session
           });
@@ -50,7 +50,7 @@ const AuthCallback = () => {
           const email = data.session?.user?.email || data.user?.email;
           const fullName = data.session?.user?.user_metadata?.full_name;
           setMessage(`Hoş geldiniz, ${fullName || email || 'kullanıcı'}!`);
-          toast.success('Google ile başarıyla giriş yaptınız! 🎉');
+          toast.success('Google ile başarıyla giriş yaptınız!');
           setTimeout(() => navigate('/', { replace: true }), 1500);
           return;
         }
@@ -65,7 +65,7 @@ const AuthCallback = () => {
           const email = sessionData.session.user.email;
           const fullName = sessionData.session.user.user_metadata?.full_name;
           setMessage(`Hoş geldiniz, ${fullName || email}!`);
-          toast.success('Google ile başarıyla giriş yaptınız! 🎉');
+          toast.success('Google ile başarıyla giriş yaptınız!');
           setTimeout(() => navigate('/', { replace: true }), 1500);
           return;
         }
@@ -80,7 +80,7 @@ const AuthCallback = () => {
           if (userData.user) {
             setStatus('success');
             setMessage(`Hoş geldiniz, ${userData.user.email}!`);
-            toast.success('Google ile başarıyla giriş yaptınız! 🎉');
+            toast.success('Google ile başarıyla giriş yaptınız!');
             setTimeout(() => navigate('/', { replace: true }), 1500);
             return;
           }
@@ -88,7 +88,7 @@ const AuthCallback = () => {
 
         throw new Error('Session oluşturulamadı. Lütfen tekrar deneyin.');
       } catch (error: any) {
-        console.error('❌ Auth callback error:', error);
+        console.error('Auth callback error:', error);
         setStatus('error');
         setMessage(`Giriş hatası: ${error?.message || 'Bilinmeyen hata'}`);
         toast.error('Giriş işlemi başarısız oldu. Lütfen tekrar deneyin.');
@@ -130,7 +130,7 @@ const AuthCallback = () => {
           </div>
           <CardTitle className={`text-xl ${getStatusColor()}`}>
             {status === 'loading' && 'Giriş İşlemi Devam Ediyor'}
-            {status === 'success' && 'Giriş Başarılı! 🎉'}
+            {status === 'success' && 'Giriş Başarılı!'}
             {status === 'error' && 'Giriş Hatası'}
           </CardTitle>
           <CardDescription>
@@ -153,7 +153,7 @@ const AuthCallback = () => {
           {status === 'success' && (
             <div className="space-y-3">
               <div className="text-sm text-green-600 font-medium">
-                ✅ Hesabınız başarıyla oluşturuldu
+                Hesabınız başarıyla oluşturuldu
               </div>
               <div className="text-sm text-muted-foreground">
                 Ana sayfaya yönlendiriliyorsunuz...
@@ -164,7 +164,7 @@ const AuthCallback = () => {
           {status === 'error' && (
             <div className="space-y-3">
               <div className="text-sm text-red-600">
-                ❌ Giriş işlemi tamamlanamadı
+                Giriş işlemi tamamlanamadı
               </div>
               <div className="text-sm text-muted-foreground">
                 Ana sayfaya yönlendiriliyorsunuz...

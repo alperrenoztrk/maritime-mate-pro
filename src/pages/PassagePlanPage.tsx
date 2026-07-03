@@ -123,7 +123,7 @@ export default function PassagePlanPage() {
         </header>
 
         <section className="rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground">🚢 Passage Plan Nedir?</h2>
+          <h2 className="text-lg font-semibold text-foreground">Passage Plan Nedir?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Geminin sefer boyunca izleyeceği rota, riskler ve operasyonel sınırlar bütünüdür. Emniyet, mevzuata uyum ve optimizasyon
             hedeflenir; PSC ve vetting denetimlerinde ilk incelenen dokümandır.
@@ -131,7 +131,7 @@ export default function PassagePlanPage() {
         </section>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground">📐 Passage Plan’in 4 Ana Aşaması (IMO Standardı)</h2>
+          <h2 className="text-lg font-semibold text-foreground">Passage Plan’in 4 Ana Aşaması (IMO Standardı)</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {fourStages.map((stage) => (
               <div key={stage.title} className="rounded-xl border border-border/50 bg-slate-900/60 p-4">
@@ -218,7 +218,7 @@ export default function PassagePlanPage() {
         </section>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground">📑 Passage Plan Dosyasında Olması Gerekenler</h2>
+          <h2 className="text-lg font-semibold text-foreground">Passage Plan Dosyasında Olması Gerekenler</h2>
           <ul className="mt-2 grid gap-2 text-sm text-muted-foreground md:grid-cols-2">
             {passagePlanContents.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -231,7 +231,7 @@ export default function PassagePlanPage() {
         </section>
 
         <section className="space-y-3 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground">👤 Kim Ne Yapar?</h2>
+          <h2 className="text-lg font-semibold text-foreground">Kim Ne Yapar?</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -255,7 +255,7 @@ export default function PassagePlanPage() {
         </section>
 
         <section className="space-y-4 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-foreground">🗺️ Örnek Passage Plan: Port Weller → Port Huron (Upbound)</h2>
+          <h2 className="text-lg font-semibold text-foreground">Örnek Passage Plan: Port Weller → Port Huron (Upbound)</h2>
           <p className="text-sm text-muted-foreground">Great Lakes Pilotage Authority - District No. 2</p>
           <div className="grid gap-4">
             {Array.from({ length: 44 }, (_, i) => i + 1).map((page) => (

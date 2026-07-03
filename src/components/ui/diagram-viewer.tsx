@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Download, Maximize2, RefreshCw } from "lucide-react";
+import { Loader2, Download, Maximize2, RefreshCw, BarChart3 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { diagramAPI } from "@/services/diagramAPI";
 import DOMPurify from "dompurify";
@@ -72,7 +72,7 @@ export const DiagramViewer = ({
       const errorMessage = error instanceof Error ? error.message : 'Bilinmeyen bir hata oluştu';
       setError(errorMessage);
       toast({
-        title: "Diyagram Hatası ❌",
+        title: "Diyagram Hatası",
         description: errorMessage,
         variant: "destructive"
       });
@@ -95,7 +95,7 @@ export const DiagramViewer = ({
     URL.revokeObjectURL(url);
     
     toast({
-      title: "İndirildi! 📥",
+      title: "İndirildi",
       description: "Diyagram SVG formatında indirildi.",
     });
   };
@@ -111,7 +111,8 @@ export const DiagramViewer = ({
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                📊 {title}
+                <BarChart3 className="h-5 w-5 text-blue-600" aria-hidden />
+                {title}
               </CardTitle>
             </div>
             <div className="flex gap-2">
@@ -207,7 +208,7 @@ export const DiagramViewer = ({
           {!diagram && !isLoading && !error && (
             <div className="flex flex-col items-center justify-center py-12 space-y-4">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center cyberpunk:bg-gray-800">
-                📊
+                <BarChart3 className="h-8 w-8 text-blue-600" aria-hidden />
               </div>
               <div className="text-center">
                 <p className="text-lg font-medium text-gray-700 dark:text-gray-300">Diyagram Hazır Değil</p>

@@ -454,7 +454,7 @@ const DetailedMeteorology = () => {
             </div>
             <div className="flex-1 space-y-2">
               <div className="font-bold text-blue-900 dark:text-blue-100 flex items-center gap-2">
-                📡 Veri Kaynakları
+                Veri Kaynakları
               </div>
               <p className="text-sm text-blue-800 dark:text-blue-200">
                 Bu konu anlatımı <span className="font-semibold">US Coast Guard (USCG)</span> ve 

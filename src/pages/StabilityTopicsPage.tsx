@@ -3560,7 +3560,7 @@ export default function StabilityTopicsPage() {
                           key={index}
                           className="flex items-start gap-2 text-sm text-foreground"
                         >
-                          <span className="text-destructive">⚠️</span>
+                          <span className="text-destructive">⚠</span>
                           <span>{warning}</span>
                         </div>
                       ))}
