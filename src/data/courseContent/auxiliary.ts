@@ -241,5 +241,166 @@ export const auxiliary: CourseTopic = {
         ];
       },
     },
+    {
+      id: "heat-exchanger-lmtd",
+      name: "Logaritmik Ortalama Sıcaklık Farkı (LMTD)",
+      group: "Isı Değiştirici",
+      formula: "ΔTlm = (ΔT1 − ΔT2) / ln(ΔT1 / ΔT2)",
+      variables: [
+        { symbol: "ΔT1", label: "Sıcak uç sıcaklık farkı", unit: "°C" },
+        { symbol: "ΔT2", label: "Soğuk uç sıcaklık farkı", unit: "°C" },
+      ],
+      source: { code: "Isı değiştirici LMTD yöntemi (zıt/paralel akış)" },
+      note: "ΔT1 ve ΔT2, eşanjörün iki ucundaki sıcak-soğuk akışkan sıcaklık farklarıdır. ΔT1 = ΔT2 ise ΔTlm = ΔT1 alınır.",
+      inputs: [
+        { key: "dt1", label: "Sıcak Uç Farkı (ΔT1)", unit: "°C", placeholder: "40" },
+        { key: "dt2", label: "Soğuk Uç Farkı (ΔT2)", unit: "°C", placeholder: "10" },
+      ],
+      calculate: (v) => {
+        if (v.dt1 <= 0 || v.dt2 <= 0) return [{ label: "Hata", value: "Sıcaklık farkları pozitif olmalı" }];
+        const lmtd = Math.abs(v.dt1 - v.dt2) < 1e-9 ? v.dt1 : (v.dt1 - v.dt2) / Math.log(v.dt1 / v.dt2);
+        return [{ label: "LMTD (ΔTlm)", value: `${lmtd.toFixed(2)} °C` }];
+      },
+    },
+    {
+      id: "heat-exchanger-duty",
+      name: "Isı Değiştirici Isı Transfer Hızı",
+      group: "Isı Değiştirici",
+      formula: "Q = U × A × ΔTlm",
+      variables: [
+        { symbol: "U", label: "Toplam ısı transfer katsayısı", unit: "W/m²·K" },
+        { symbol: "A", label: "Isı transfer yüzey alanı", unit: "m²" },
+        { symbol: "ΔTlm", label: "Log. ortalama sıcaklık farkı", unit: "K" },
+      ],
+      source: { code: "Isı transfer denklemi (eşanjör kapasitesi)" },
+      note: "Sonuç W cinsinden çıkar, kW'a çevrilir (÷1000). ΔTlm için LMTD hesabı kullanılır.",
+      inputs: [
+        { key: "u", label: "Isı Transfer Katsayısı (U)", unit: "W/m²·K", placeholder: "3000" },
+        { key: "a", label: "Yüzey Alanı (A)", unit: "m²", placeholder: "8" },
+        { key: "dtlm", label: "LMTD (ΔTlm)", unit: "K", placeholder: "15" },
+      ],
+      calculate: (v) => {
+        const q = v.u * v.a * v.dtlm;
+        return [
+          { label: "Isı Transfer Hızı (Q)", value: `${(q / 1000).toFixed(1)} kW` },
+          { label: "Q (W)", value: `${q.toFixed(0)} W` },
+        ];
+      },
+    },
+    {
+      id: "incinerator-heat-capacity",
+      name: "İnsinerator Yakma Isıl Gücü",
+      group: "İnsinerator",
+      formula: "Q̇ = (ṁ × Hu) / 3600",
+      variables: [
+        { symbol: "ṁ", label: "Sludge/atık besleme debisi", unit: "kg/saat" },
+        { symbol: "Hu", label: "Atığın alt ısıl değeri", unit: "kJ/kg" },
+      ],
+      source: { code: "IMO MEPC.244(66) — insinerator ısıl kapasite (kütle × ısıl değer)" },
+      note: "ṁ (kg/saat) × Hu (kJ/kg) = kJ/saat; kW için ÷3600. Su içeren sludge'ın ısıl değeri düşüktür (~10.000–30.000 kJ/kg).",
+      inputs: [
+        { key: "m", label: "Besleme Debisi (ṁ)", unit: "kg/saat", placeholder: "50" },
+        { key: "hu", label: "Alt Isıl Değer (Hu)", unit: "kJ/kg", placeholder: "30000" },
+      ],
+      calculate: (v) => {
+        const qkw = (v.m * v.hu) / 3600;
+        return [
+          { label: "Yakma Isıl Gücü (Q̇)", value: `${qkw.toFixed(1)} kW` },
+          { label: "Saatlik Isı", value: `${(v.m * v.hu / 1000).toFixed(0)} MJ/saat` },
+        ];
+      },
+    },
+    {
+      id: "sewage-holding-tank",
+      name: "Atık Su (Sewage) Toplama Tankı Hacmi",
+      group: "Atık Su Arıtma (Sewage)",
+      formula: "V = N × q × d",
+      variables: [
+        { symbol: "N", label: "Personel sayısı" },
+        { symbol: "q", label: "Kişi başı günlük atık su", unit: "litre/kişi·gün" },
+        { symbol: "d", label: "Bekletme süresi", unit: "gün" },
+      ],
+      source: { code: "MARPOL Annex IV / MEPC.227(64) — sewage üretim bazlı boyutlandırma" },
+      note: "q tipik olarak sadece black water için ~30, black+grey için ~70 litre/kişi·gün alınır. Sonuç litre ve m³ verilir.",
+      inputs: [
+        { key: "n", label: "Personel Sayısı (N)", unit: "kişi", placeholder: "20" },
+        { key: "q", label: "Kişi Başı Atık Su (q)", unit: "litre/kişi·gün", placeholder: "70" },
+        { key: "d", label: "Bekletme Süresi (d)", unit: "gün", placeholder: "3" },
+      ],
+      calculate: (v) => {
+        const liters = v.n * v.q * v.d;
+        return [
+          { label: "Gerekli Hacim", value: `${liters.toFixed(0)} litre` },
+          { label: "m³ cinsinden", value: `${(liters / 1000).toFixed(2)} m³` },
+        ];
+      },
+    },
+    {
+      id: "ows-discharge-time",
+      name: "Sintine Separatörü (OWS) Boşaltma Süresi",
+      group: "Sintine Separatörü (OWS)",
+      formula: "t = V / Q",
+      variables: [
+        { symbol: "V", label: "Sintine (bilge) hacmi", unit: "m³" },
+        { symbol: "Q", label: "OWS kapasitesi", unit: "m³/saat" },
+      ],
+      source: { code: "OWS boyutlandırma (hacim/debi ilişkisi)" },
+      note: "Sintine tankındaki yağlı su hacminin, OWS anma kapasitesiyle işlenmesi için gereken süre.",
+      inputs: [
+        { key: "v", label: "Sintine Hacmi (V)", unit: "m³", placeholder: "10" },
+        { key: "q", label: "OWS Kapasitesi (Q)", unit: "m³/saat", placeholder: "2.5" },
+      ],
+      calculate: (v) => {
+        if (v.q <= 0) return [{ label: "Hata", value: "Kapasite pozitif olmalı" }];
+        const t = v.v / v.q;
+        return [{ label: "Boşaltma Süresi", value: `${t.toFixed(1)} saat` }];
+      },
+    },
+    {
+      id: "refrigeration-pulldown-load",
+      name: "Soğuk Depo Soğutma Yükü (Pull-down)",
+      group: "Soğutma (Provision)",
+      formula: "Q = (m × cp × ΔT) / (t × 3600)",
+      variables: [
+        { symbol: "m", label: "Soğutulacak kütle", unit: "kg" },
+        { symbol: "cp", label: "Özgül ısı", unit: "kJ/kg·K" },
+        { symbol: "ΔT", label: "Sıcaklık düşüşü", unit: "K" },
+        { symbol: "t", label: "Pull-down süresi", unit: "saat" },
+      ],
+      source: { code: "Soğutma yükü enerji dengesi (duyulur ısı)" },
+      note: "cp tipik: taze gıda ~3,3; donmuş ~1,7 kJ/kg·K. Sonuç kW (soğutma gücü). Süre saat girilir, ×3600 ile saniyeye çevrilir.",
+      inputs: [
+        { key: "m", label: "Kütle (m)", unit: "kg", placeholder: "500" },
+        { key: "cp", label: "Özgül Isı (cp)", unit: "kJ/kg·K", placeholder: "3.3" },
+        { key: "dt", label: "Sıcaklık Düşüşü (ΔT)", unit: "K", placeholder: "25" },
+        { key: "t", label: "Pull-down Süresi (t)", unit: "saat", placeholder: "8" },
+      ],
+      calculate: (v) => {
+        if (v.t <= 0) return [{ label: "Hata", value: "Süre pozitif olmalı" }];
+        const q = (v.m * v.cp * v.dt) / (v.t * 3600);
+        return [{ label: "Soğutma Yükü (Q)", value: `${q.toFixed(2)} kW` }];
+      },
+    },
+    {
+      id: "refrigeration-cop",
+      name: "Soğutma Çevrimi Performans Katsayısı (COP)",
+      group: "Soğutma (Provision)",
+      formula: "COP = Q₀ / W",
+      variables: [
+        { symbol: "Q₀", label: "Soğutma kapasitesi (evaporatör)", unit: "kW" },
+        { symbol: "W", label: "Kompresör giriş gücü", unit: "kW" },
+      ],
+      source: { code: "Soğutma çevrimi performans katsayısı (COP) tanımı" },
+      note: "COP, birim kompresör gücü başına elde edilen soğutma gücüdür; tipik provision sistemlerde ~2–4.",
+      inputs: [
+        { key: "q0", label: "Soğutma Kapasitesi (Q₀)", unit: "kW", placeholder: "12" },
+        { key: "w", label: "Kompresör Gücü (W)", unit: "kW", placeholder: "4" },
+      ],
+      calculate: (v) => {
+        if (v.w <= 0) return [{ label: "Hata", value: "Kompresör gücü pozitif olmalı" }];
+        const cop = v.q0 / v.w;
+        return [{ label: "COP", value: cop.toFixed(2) }];
+      },
+    },
   ],
 };
