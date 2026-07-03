@@ -24,11 +24,7 @@ export default function ExercisesPage() {
         <div className="flex-1">
           <div className="flex items-center gap-2">
             <span className="text-base font-bold text-foreground">{category.title}</span>
-            {category.enabled ? (
-              <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300">
-                {category.topicCount} konu
-              </span>
-            ) : (
+            {!category.enabled && (
               <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                 Yakında
               </span>
