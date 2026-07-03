@@ -1170,9 +1170,11 @@ All colors MUST be HSL.
 
   /* Prevent any text from overflowing its container or the page. Long words,
      URLs, formulas and numbers wrap instead of forcing horizontal scroll. This
-     keeps the layout intact at every user-selected font size. */
-  h1, h2, h3, h4, h5, h6, p, span, a, li, label, button,
-  td, th, dt, dd, figcaption, blockquote {
+     keeps the layout intact at every user-selected font size. Applied to every
+     element (not just text tags) so raw text rendered directly inside a div
+     (dynamic/AI content, formula strings, etc.) is covered too, not only text
+     nested inside a tag from a fixed list. */
+  * {
     overflow-wrap: break-word;
     word-break: break-word;
     hyphens: auto;

@@ -186,7 +186,7 @@ export default function NavigationFormulasPage() {
                 </p>
               </div>
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Mesafe (nm):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Mesafe (nm):
 d = 2R × arcsin(√(sin²((φ₂−φ₁)/2) + cosφ₁ · cosφ₂ · sin²((λ₂−λ₁)/2)))
 
 İlk Kurs (θ₀):
@@ -245,7 +245,7 @@ cos θ ≈ 0.299 + 0.412 = 0.711
             {isOpen('rhumb') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`q = ln(tan(π/4 + φ₂/2) / tan(π/4 + φ₁/2)) / (φ₂ − φ₁)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`q = ln(tan(π/4 + φ₂/2) / tan(π/4 + φ₁/2)) / (φ₂ − φ₁)
 Mesafe (nm): d = 60 · √((Δφ)² + (q · Δλ)²)
 Kurs: Brg = atan2(Δλ, q · Δφ)
 Yaklaşık: Departure = 60 · Δλ · cosφ̄, dLat = 60 · Δφ`}</pre>
@@ -264,7 +264,7 @@ Yaklaşık: Departure = 60 · Δλ · cosφ̄, dLat = 60 · Δφ`}</pre>
             {isOpen('plane') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`dLat = 60 · Δφ (N/S yönü)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`dLat = 60 · Δφ (N/S yönü)
 Dep = 60 · Δλ · cosφ̄ (E/W yönü)
 Kurs = atan2(Dep, dLat)
 Mesafe = √(dLat² + Dep²)
@@ -289,7 +289,7 @@ Course (RL): atan2(D.Long, dLat)`}</pre>
             {isOpen('time-eta') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Hız = Mesafe / Zaman
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Hız = Mesafe / Zaman
 Zaman = Mesafe / Hız
 Mesafe = Hız × Zaman
 
@@ -319,7 +319,7 @@ Kalan Mesafe = Planlanan Toplam Mesafe − DMG`}</pre>
             {isOpen('current') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`sin(CTS − TR) = (c / V) · sin(set − TR)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`sin(CTS − TR) = (c / V) · sin(set − TR)
 SOG = V · cos(CTS − TR) + c · cos(set − TR)`}</pre>
                 <div className="text-xs text-muted-foreground">TR: istenen rota, V: gemi sürati, c/set: akıntı. ETAdüzeltilmiş = Mesafeplan / SOG.</div>
               </div>
@@ -337,7 +337,7 @@ SOG = V · cos(CTS − TR) + c · cos(set − TR)`}</pre>
             {isOpen('compass') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`TVMDC zinciri:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`TVMDC zinciri:
 True = Magnetic + Variation
 Magnetic = Compass + Deviation
 Compass Error = Variation + Deviation
@@ -363,7 +363,7 @@ Kural: East (+), West (−)`}</pre>
             {isOpen('cpa') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`tCPA = − (R · Vrel) / |Vrel|²
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`tCPA = − (R · Vrel) / |Vrel|²
 dCPA = |R + Vrel · tCPA|`}</pre>
                 <div className="text-xs text-muted-foreground">tCPA (saat) → dakika için ×60</div>
               </div>
@@ -381,7 +381,7 @@ dCPA = |R + Vrel · tCPA|`}</pre>
             {isOpen('colreg') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Çatışma Riski:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Çatışma Riski:
 Relative bearing sabit, mesafe azalıyor → risk var
 
 Yeni CPA/TCPA (manevra sonrası):
@@ -405,7 +405,7 @@ dCPA' = |R' + Vrel' · tCPA'|
             {isOpen('distance') && (
           <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`1° Enlem = 60 NM (1' = 1 NM)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`1° Enlem = 60 NM (1' = 1 NM)
 D.Lat (dakika) = 60 · Δφ
 D.Long (dakika) = 60 · Δλ · cosφ̄
 Mesafe (nm) ≈ √(D.Lat² + D.Long²)
@@ -435,7 +435,7 @@ Not: Luminous range; nominal ışık gücü ve meteorolojik görüşe bağlıdı
             {isOpen('position') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`DR (Dead Reckoning):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR (Dead Reckoning):
 Δφ = (d · cosC) / 60
 Δλ = (d · sinC) / (60 · cosφ̄)
 Lat₂ = Lat₁ + Δφ, Lon₂ = Lon₁ + Δλ
@@ -465,7 +465,7 @@ SMG = DMG / Geçen Süre`}</pre>
             {isOpen('bearings') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Relative → True Bearing:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Relative → True Bearing:
 BrgT = HeadingT + BrgR (360° normalize)
 Compass → Magnetic → True: Cc + Dev + Var = Ct
 
@@ -495,7 +495,7 @@ Running Fix (taşınmış kerteriz):
             {isOpen('turning') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Rate of Turn (ROT):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rate of Turn (ROT):
 ROT (°/dk) = (30 × V(kn)) / R(turning radius, m)
 
 Advance & Transfer:
@@ -523,7 +523,7 @@ Diameter ≈ 4-5 × ship L, taktikte katalog değerleri kullanılır.`}</pre>
             {isOpen('safety') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`UKC = CD + HoT − Draft − Squat
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`UKC = CD + HoT − Draft − Squat
 Squat (open water) ≈ (V(kn)²) / (100 · beam_m)
 Safe Speed: TSS/COG/SOG, görüş ve manevra mesafesine bağlı
 Safe Passing Distance: dCPA > 1-2 NM (trafik durumuna göre)
@@ -544,7 +544,7 @@ No-Go Area: CD + HoT − UKClim < 0 → yasak bölge`}</pre>
             {isOpen('passage') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Toplam Mesafe = Σ leg mesafeleri
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Toplam Mesafe = Σ leg mesafeleri
 Leg ETA = Mesafeleg / SOG + ETDleg
 Wheel-Over noktası: WOPtime = (Transfer + emniyet) / SOG
 Abort Point: tabort = mesafe güvenli liman / SOG
@@ -569,7 +569,7 @@ UKC kontrolü: HoT + CD − (Draft + Squat) ≥ güvenli pay`}</pre>
             {isOpen('radar') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Radar Range:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Radar Range:
 Rmax = 2.35 · (√hradar + √htarget)
 
 ARPA Vectors:
@@ -609,7 +609,7 @@ Sabit mesafe → güvenli geçiş`}</pre>
             {isOpen('weather') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Beaufort Scale:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Beaufort Scale:
 V (knot) = 2 · √(B³)
 B: Beaufort number
 
@@ -642,7 +642,7 @@ CTS = TR + arcsin((c/V) · sin(set − TR))`}</pre>
             {isOpen('tides') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Rule of Twelfths:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rule of Twelfths:
 1. saat: 1/12 · TR
 2. saat: 2/12 · TR
 3. saat: 3/12 · TR
@@ -682,7 +682,7 @@ Kaynaklar: Admiralty Tide Tables, Tide/Stream Atlas, Tidal Curve.`}</pre>
             {isOpen('pilotage') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Clearing Bearing:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Clearing Bearing:
 Safe bearing > Danger bearing
 
 Danger Angle:
@@ -715,7 +715,7 @@ Rota kontrolü: Chart correction + T/P+NM bülteni sonrası yeniden kontrol`}</p
             {isOpen('celestial') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Meridian Passage:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Meridian Passage:
 Lat = 90° - zenith_distance ± Dec
 
 Polaris:
@@ -749,7 +749,7 @@ Kaynaklar: Nautical Almanac (GHA/Dec), sextant düzeltmeleri (IC, dip, refractio
             {isOpen('sight') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Hesaplanan Yükseklik (Hc):
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Hesaplanan Yükseklik (Hc):
 sin(Hc) = sinφ · sinδ + cosφ · cosδ · cos(LHA)
 
 Azimut (Z):
@@ -776,7 +776,7 @@ Tablolar: HO-249/HO-229 sight reduction tabloları ve Nautical Almanac verileri.
             {isOpen('ecdis') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`XTD ≤ limit (genelde 0.5-1.0 NM)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`XTD ≤ limit (genelde 0.5-1.0 NM)
 Safety Contour = max(Chart Datum + UKCpay, tavsiye edilen)
 Safety Depth = Draft + Squat + UKCpay
 Look-ahead Time = tlook = mesafe alarm / SOG
@@ -801,7 +801,7 @@ BRM: anti-grounding alarm, cross-track alarm, ETA per leg`}</pre>
             {isOpen('emergency') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6">{`Search Pattern:
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Search Pattern:
 Square Search: Leg = 2 × track_spacing
 Sector Search: R₂ = R₁ × √2
 

@@ -2659,7 +2659,7 @@ export default function NavigationCalculationPage() {
         const courseDeg = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, q * deltaLatRad)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nMesafe: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults.course.toFixed(1)}°`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults.course.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `Koordinatları ondalık dereceye çevir: φ1=${formatSigned(lat1, 4)}°, λ1=${formatSigned(lon1, 4)}°, φ2=${formatSigned(lat2, 4)}°, λ2=${formatSigned(lon2, 4)}°`,
@@ -2685,7 +2685,7 @@ export default function NavigationCalculationPage() {
         const distanceNm = Math.sqrt(dLatMin * dLatMin + depMin * depMin);
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\ndLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nKerteriz: ${planeResults.courseDeg.toFixed(1)}°\nMesafe: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\ndLat: ${planeResults.dLatMin.toFixed(2)} dk\nDeparture: ${planeResults.depMin.toFixed(2)} dk\nKerteriz: ${planeResults.courseDeg.toFixed(1)}°\nMesafe: ${planeResults.distanceNm.toFixed(2)} nm`}</pre>
             <SolutionSteps
               steps={[
                 `Ortalama enlem: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
@@ -2712,7 +2712,7 @@ export default function NavigationCalculationPage() {
         const distanceNm = Math.sqrt(dLatMin * dLatMin + departureMin * departureMin);
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nMean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMin.toFixed(2)}′\ndLong: ${midlatResults.dLongMin.toFixed(2)}′\nDeparture: ${midlatResults.departureMin.toFixed(2)}′\nKurs: ${midlatResults.courseDeg.toFixed(1)}°\nMesafe: ${midlatResults.distanceNm.toFixed(2)} NM`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMean Lat: ${midlatResults.meanLatDeg.toFixed(4)}°\ndLat: ${midlatResults.dLatMin.toFixed(2)}′\ndLong: ${midlatResults.dLongMin.toFixed(2)}′\nDeparture: ${midlatResults.departureMin.toFixed(2)}′\nKurs: ${midlatResults.courseDeg.toFixed(1)}°\nMesafe: ${midlatResults.distanceNm.toFixed(2)} NM`}</pre>
             <SolutionSteps
               steps={[
                 `Ortalama enlem: φm = (φ1+φ2)/2 = ${meanLatDeg.toFixed(4)}°`,
@@ -2740,7 +2740,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\n${chartResults.nmFromCm !== undefined ? `cm → NM: ${chartResults.nmFromCm.toFixed(3)} NM\n` : ""}${chartResults.cmFromNm !== undefined ? `NM → cm: ${chartResults.cmFromNm.toFixed(2)} cm` : ""}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${chartResults.nmFromCm !== undefined ? `cm → NM: ${chartResults.nmFromCm.toFixed(3)} NM\n` : ""}${chartResults.cmFromNm !== undefined ? `NM → cm: ${chartResults.cmFromNm.toFixed(2)} cm` : ""}`}</pre>
             {steps.length > 0 && <SolutionSteps steps={steps} />}
           </div>
         );
@@ -2756,7 +2756,7 @@ export default function NavigationCalculationPage() {
         const dLonDeg = (distanceNm * Math.sin(toRadians(courseTrue))) / (60 * Math.cos(toRadians(meanLatDeg)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`DR Sonucu:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`DR Sonucu:\nLat: ${formatDecimalAsDMS(positionResults.latDeg, true)}\nLon: ${formatDecimalAsDMS(positionResults.lonDeg, false)}`}</pre>
             <SolutionSteps
               steps={[
                 `dLat = (Mesafe × cos(Kurs)) / 60 = ${distanceNm.toFixed(2)} × cos(${courseTrue.toFixed(1)}°) / 60 = ${dLatDeg.toFixed(4)}°`,
@@ -2803,7 +2803,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nMesafe: ${basicResults.solved.distanceNm.toFixed(2)} NM\nHız: ${basicResults.solved.speedKn.toFixed(2)} kn\nZaman: ${basicResults.solved.timeHours.toFixed(3)} h (${basicResults.timeHhMm.hh}h ${basicResults.timeHhMm.mm}m)\n${basicResults.converted !== null ? `\nDönüşüm: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso ? `\nETA (UTC): ${basicResults.etaUtcIso}` : ""}${basicResults.remaining ? `\n\nKalan Mesafe: ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM\nKalan Süre: ${basicResults.remaining.remainingTimeHours.toFixed(2)} h` : ""}${basicResults.timeConv ? `\n\nZaman Dönüşümü:\nUTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} dakika\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${basicResults.solved.distanceNm.toFixed(2)} NM\nHız: ${basicResults.solved.speedKn.toFixed(2)} kn\nZaman: ${basicResults.solved.timeHours.toFixed(3)} h (${basicResults.timeHhMm.hh}h ${basicResults.timeHhMm.mm}m)\n${basicResults.converted !== null ? `\nDönüşüm: ${basicResults.converted.toFixed(4)}` : ""}${basicResults.etaUtcIso ? `\nETA (UTC): ${basicResults.etaUtcIso}` : ""}${basicResults.remaining ? `\n\nKalan Mesafe: ${basicResults.remaining.remainingDistanceNm.toFixed(2)} NM\nKalan Süre: ${basicResults.remaining.remainingTimeHours.toFixed(2)} h` : ""}${basicResults.timeConv ? `\n\nZaman Dönüşümü:\nUTC: ${basicResults.timeConv.utcIso}\nZT (UTC${basicResults.timeConv.zoneOffsetHours >= 0 ? "+" : ""}${basicResults.timeConv.zoneOffsetHours}): ${basicResults.timeConv.zoneIso}\nBoylam: ${basicResults.timeConv.lonDeg.toFixed(2)}° => ${basicResults.timeConv.lonMinutes.toFixed(1)} dakika\nLMT: ${basicResults.timeConv.lmtIso}` : ""}`}</pre>
             <SolutionSteps steps={steps} />
           </div>
         );
@@ -2822,7 +2822,7 @@ export default function NavigationCalculationPage() {
         const headingDeg = normalizeAngle(toDegrees(desiredRad + Math.asin(clamped)));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nCTS: ${currentResults.courseToSteerDeg.toFixed(1)}°\nSOG: ${currentResults.groundSpeedKn.toFixed(2)} kn`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nCTS: ${currentResults.courseToSteerDeg.toFixed(1)}°\nSOG: ${currentResults.groundSpeedKn.toFixed(2)} kn`}</pre>
             <SolutionSteps
               steps={[
                 `Akıntı bileşenleri: Cx = drift×sin(set) = ${drift.toFixed(2)}×sin(${set.toFixed(1)}°) = ${Cx.toFixed(3)}, Cy = drift×cos(set) = ${Cy.toFixed(3)}`,
@@ -2840,7 +2840,7 @@ export default function NavigationCalculationPage() {
         const deviation = parseSignedAngleEW(compassInputs.deviation);
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç (TVMDC):\nCompass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.magneticDeg.toFixed(1)}°\nTrue: ${compassResults.trueDeg.toFixed(1)}°\nCompass Error (Var+Dev): ${compassResults.compassErrorDeg.toFixed(1)}°\nToplam Hata: ${compassResults.totalError.toFixed(1)}°`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç (TVMDC):\nCompass: ${compassResults.compassDeg.toFixed(1)}°\nMagnetic: ${compassResults.magneticDeg.toFixed(1)}°\nTrue: ${compassResults.trueDeg.toFixed(1)}°\nCompass Error (Var+Dev): ${compassResults.compassErrorDeg.toFixed(1)}°\nToplam Hata: ${compassResults.totalError.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `Sapma (Dev) = ${formatSigned(deviation ?? 0, 1)}°, Sapma (Var) = ${formatSigned(variation ?? 0, 1)}°`,
@@ -2874,7 +2874,7 @@ export default function NavigationCalculationPage() {
         const cpaY = R0y + Vry * tcpaHours;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nCPA Mesafesi: ${cpaResults.cpaNm.toFixed(2)} nm\nTCPA: ${cpaResults.tcpaMin.toFixed(1)} dk`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nCPA Mesafesi: ${cpaResults.cpaNm.toFixed(2)} nm\nTCPA: ${cpaResults.tcpaMin.toFixed(1)} dk`}</pre>
             <SolutionSteps
               steps={[
                 `Başlangıç relatif konum: R0x = d×sin(Brg) = ${distance.toFixed(2)}×sin(${bearing.toFixed(1)}°) = ${R0x.toFixed(3)}, R0y = d×cos(Brg) = ${R0y.toFixed(3)}`,
@@ -2899,7 +2899,7 @@ export default function NavigationCalculationPage() {
         const vry = (r2y - r1y) / dtHours;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nRelative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed: ${radarResults2.relativeSpeedKn.toFixed(2)} kn\n\nTarget Course (T): ${radarResults2.targetCourseTrueDeg.toFixed(1)}°\nTarget Speed: ${radarResults2.targetSpeedKn.toFixed(2)} kn\n\nCPA: ${radarResults2.cpaNm.toFixed(2)} NM\nTCPA: ${radarResults2.tcpaMin.toFixed(1)} min`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nRelative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed: ${radarResults2.relativeSpeedKn.toFixed(2)} kn\n\nTarget Course (T): ${radarResults2.targetCourseTrueDeg.toFixed(1)}°\nTarget Speed: ${radarResults2.targetSpeedKn.toFixed(2)} kn\n\nCPA: ${radarResults2.cpaNm.toFixed(2)} NM\nTCPA: ${radarResults2.tcpaMin.toFixed(1)} min`}</pre>
             <SolutionSteps
               steps={[
                 `Δt = ${dtHours.toFixed(3)} h (plot2 - plot1)`,
@@ -2917,7 +2917,7 @@ export default function NavigationCalculationPage() {
         const rb = normalizeAngle(parseFloat(colregInputs.relativeBearing));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`COLREG Quick Check:\nSituation: ${colregResults.situation}\nGive-way: ${colregResults.isGiveWay === null ? "—" : colregResults.isGiveWay ? "Yes" : "No"}\nNote: ${colregResults.note}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`COLREG Quick Check:\nSituation: ${colregResults.situation}\nGive-way: ${colregResults.isGiveWay === null ? "—" : colregResults.isGiveWay ? "Yes" : "No"}\nNote: ${colregResults.note}`}</pre>
             <SolutionSteps
               steps={[
                 `Relatif kerteriz (normalize) = ${rb.toFixed(1)}°`,
@@ -2941,7 +2941,7 @@ export default function NavigationCalculationPage() {
         const azimuthDeg = normalizeAngle(toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ)))));
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nHesaplanan Yükseklik: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nHesaplanan Yükseklik: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA)`,
@@ -2957,7 +2957,7 @@ export default function NavigationCalculationPage() {
         return (
           astroResults && (
             <div className="space-y-3">
-              <pre className="font-mono text-sm leading-6">{`Sextant Correction:\nHa: ${astroResults.correction.haDeg.toFixed(4)}°\nHo: ${astroResults.correction.hoDeg.toFixed(4)}°\nDip: ${astroResults.correction.dipMin.toFixed(2)}′\nRefraction: ${astroResults.correction.refractionMin.toFixed(2)}′\n\nSun Almanac / Sight:\nGHA: ${astroResults.intercept.ghaDeg.toFixed(2)}°\nDec: ${astroResults.intercept.decDeg.toFixed(2)}°\nLHA: ${astroResults.intercept.lhaDeg.toFixed(2)}°\nHc: ${astroResults.intercept.hcDeg.toFixed(2)}°\nZn: ${astroResults.intercept.znDeg.toFixed(1)}°\nIntercept: ${astroResults.intercept.interceptNm.toFixed(2)} NM (${astroResults.intercept.towardAway})`}</pre>
+              <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sextant Correction:\nHa: ${astroResults.correction.haDeg.toFixed(4)}°\nHo: ${astroResults.correction.hoDeg.toFixed(4)}°\nDip: ${astroResults.correction.dipMin.toFixed(2)}′\nRefraction: ${astroResults.correction.refractionMin.toFixed(2)}′\n\nSun Almanac / Sight:\nGHA: ${astroResults.intercept.ghaDeg.toFixed(2)}°\nDec: ${astroResults.intercept.decDeg.toFixed(2)}°\nLHA: ${astroResults.intercept.lhaDeg.toFixed(2)}°\nHc: ${astroResults.intercept.hcDeg.toFixed(2)}°\nZn: ${astroResults.intercept.znDeg.toFixed(1)}°\nIntercept: ${astroResults.intercept.interceptNm.toFixed(2)} NM (${astroResults.intercept.towardAway})`}</pre>
               <SolutionSteps
                 steps={[
                   `Dip′ = 1.76 × √HE = 1.76 × √${astroInputs.heM || "0"} = ${astroResults.correction.dipMin.toFixed(2)}′`,
@@ -3039,7 +3039,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nMesafe Off: ${bearingResults.distanceOffNm.toFixed(2)} nm`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe Off: ${bearingResults.distanceOffNm.toFixed(2)} nm`}</pre>
             <SolutionSteps steps={bearingSteps} />
           </div>
         );
@@ -3065,7 +3065,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`${fixResults.fix ? `İki Kerteriz Fix:\nLat: ${formatDecimalAsDMS(fixResults.fix.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.fix.fix.lonDeg, false)}\nIntersection angle: ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.three ? `Üç Kerteriz Fix (LS):\nLat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.three.fix.lonDeg, false)}\nResidual: ${fixResults.three.residualNm.toFixed(2)} NM\nBest intersection angle: ${fixResults.three.bestIntersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.bearingDistance ? `1 Kerteriz + 1 Mesafe:\nLat: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.lonDeg, false)}\n\n` : ""}${fixResults.twoDistances ? `2 Mesafe Fix:\nLat: ${formatDecimalAsDMS(fixResults.twoDistances.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.twoDistances.fix.lonDeg, false)}\nCandidates: ${fixResults.twoDistances.candidates.length}\n\n` : ""}${fixResults.running ? `Running Fix:\nLat: ${formatDecimalAsDMS(fixResults.running.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.running.fix.lonDeg, false)}\nIntersection angle: ${fixResults.running.intersectionAngleDeg.toFixed(1)}°` : ""}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`${fixResults.fix ? `İki Kerteriz Fix:\nLat: ${formatDecimalAsDMS(fixResults.fix.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.fix.fix.lonDeg, false)}\nIntersection angle: ${fixResults.fix.intersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.three ? `Üç Kerteriz Fix (LS):\nLat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.three.fix.lonDeg, false)}\nResidual: ${fixResults.three.residualNm.toFixed(2)} NM\nBest intersection angle: ${fixResults.three.bestIntersectionAngleDeg.toFixed(1)}°\n\n` : ""}${fixResults.bearingDistance ? `1 Kerteriz + 1 Mesafe:\nLat: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.bearingDistance.fix.lonDeg, false)}\n\n` : ""}${fixResults.twoDistances ? `2 Mesafe Fix:\nLat: ${formatDecimalAsDMS(fixResults.twoDistances.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.twoDistances.fix.lonDeg, false)}\nCandidates: ${fixResults.twoDistances.candidates.length}\n\n` : ""}${fixResults.running ? `Running Fix:\nLat: ${formatDecimalAsDMS(fixResults.running.fix.latDeg, true)}\nLon: ${formatDecimalAsDMS(fixResults.running.fix.lonDeg, false)}\nIntersection angle: ${fixResults.running.intersectionAngleDeg.toFixed(1)}°` : ""}`}</pre>
             {fixSteps.length > 0 && <SolutionSteps steps={fixSteps} />}
           </div>
         );
@@ -3085,7 +3085,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nMesafe: ${distanceResults.distanceNm.toFixed(2)} nm`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${distanceResults.distanceNm.toFixed(2)} nm`}</pre>
             {distanceSteps.length > 0 && <SolutionSteps steps={distanceSteps} />}
           </div>
         );
@@ -3110,7 +3110,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Rule of Twelfths:\nYükseklik: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of Tide:\n${tideHotResults ? `Height: ${tideHotResults.heightM.toFixed(2)} m\nStage: ${tideHotResults.stage}\n` : "—\n"}\nUKC:\n${ukcResults ? `Squat: ${ukcResults.squatM.toFixed(2)} m\nUKC: ${ukcResults.ukcM.toFixed(2)} m\nSafe: ${ukcResults.isSafe ? "Yes" : "No"}` : "—"}\n\nTidal Stream:\n${tidalStreamResults ? `Set: ${tidalStreamResults.setDeg.toFixed(0)}°\nRate: ${tidalStreamResults.rateKn.toFixed(2)} kn\nMax: ${tidalStreamResults.maxRateKn.toFixed(2)} kn\nFactor: ${(tidalStreamResults.springNeapFactor * 100).toFixed(0)}%` : "—"}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Rule of Twelfths:\nYükseklik: ${tideResults?.heightM?.toFixed?.(2) ?? "—"} m\n\nHW/LW → Height of Tide:\n${tideHotResults ? `Height: ${tideHotResults.heightM.toFixed(2)} m\nStage: ${tideHotResults.stage}\n` : "—\n"}\nUKC:\n${ukcResults ? `Squat: ${ukcResults.squatM.toFixed(2)} m\nUKC: ${ukcResults.ukcM.toFixed(2)} m\nSafe: ${ukcResults.isSafe ? "Yes" : "No"}` : "—"}\n\nTidal Stream:\n${tidalStreamResults ? `Set: ${tidalStreamResults.setDeg.toFixed(0)}°\nRate: ${tidalStreamResults.rateKn.toFixed(2)} kn\nMax: ${tidalStreamResults.maxRateKn.toFixed(2)} kn\nFactor: ${(tidalStreamResults.springNeapFactor * 100).toFixed(0)}%` : "—"}`}</pre>
             {tideSteps.length > 0 && <SolutionSteps steps={tideSteps} />}
           </div>
         );
@@ -3122,7 +3122,7 @@ export default function NavigationCalculationPage() {
         const squatCalc = (safetyK * safetyCb * safetySpeed * safetySpeed) / 100;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Squat: ${safetyResults.squatM.toFixed(2)} m\nUKC: ${safetyResults.ukcM.toFixed(2)} m\nSafe: ${safetyResults.isSafe ? "Yes" : "No"}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Squat: ${safetyResults.squatM.toFixed(2)} m\nUKC: ${safetyResults.ukcM.toFixed(2)} m\nSafe: ${safetyResults.isSafe ? "Yes" : "No"}`}</pre>
             <SolutionSteps
               steps={[
                 `Squat (Barrass) = k×Cb×V²/100 = ${safetyK}×${safetyCb}×${safetySpeed.toFixed(2)}²/100 = ${squatCalc.toFixed(2)} m`,
@@ -3179,7 +3179,7 @@ export default function NavigationCalculationPage() {
         if (!ecdisResults) return null;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`XTD: ${ecdisResults.xtd.xtdNm.toFixed(3)} NM\nSide: ${ecdisResults.xtd.side}\nAlong-track: ${ecdisResults.xtd.alongTrackNm.toFixed(2)} NM\n\nLook-ahead distance: ${ecdisResults.look.lookAheadDistanceNm.toFixed(2)} NM`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`XTD: ${ecdisResults.xtd.xtdNm.toFixed(3)} NM\nSide: ${ecdisResults.xtd.side}\nAlong-track: ${ecdisResults.xtd.alongTrackNm.toFixed(2)} NM\n\nLook-ahead distance: ${ecdisResults.look.lookAheadDistanceNm.toFixed(2)} NM`}</pre>
             <SolutionSteps
               steps={[
                 "XTD: mevki → rota bacağına en kısa dik mesafe (yerel düzlem projeksiyonu).",
@@ -3201,7 +3201,7 @@ export default function NavigationCalculationPage() {
         const rot = 3438 * (speedKn * 0.514444) / radius;
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\nTactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${turningResults.advanceM.toFixed(0)} m\nTransfer: ${turningResults.transferM.toFixed(0)} m\nROT: ${turningResults.rotDegPerMin.toFixed(1)} °/min`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nTactical Diameter: ${turningResults.tacticalDiameterM.toFixed(0)} m\nAdvance: ${turningResults.advanceM.toFixed(0)} m\nTransfer: ${turningResults.transferM.toFixed(0)} m\nROT: ${turningResults.rotDegPerMin.toFixed(1)} °/min`}</pre>
             <SolutionSteps
               steps={[
                 `Tactical Diameter = 3.5 × L = 3.5 × ${shipLength.toFixed(1)} = ${tacticalDiameter.toFixed(0)} m`,
@@ -3237,7 +3237,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\n${weatherResults.windSpeedKn ? `Beaufort Rüzgar Hızı: ${weatherResults.windSpeedKn.toFixed(1)} knot\n` : ''}${weatherResults.waveHeightM ? `Dalga Yüksekliği: ${weatherResults.waveHeightM.toFixed(1)} m\n` : ''}${weatherResults.leewayAngleDeg ? `Leeway Açısı: ${weatherResults.leewayAngleDeg.toFixed(1)}°\n` : ''}${weatherResults.windForceN ? `Rüzgar Kuvveti: ${weatherResults.windForceN.toFixed(0)} N` : ''}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${weatherResults.windSpeedKn ? `Beaufort Rüzgar Hızı: ${weatherResults.windSpeedKn.toFixed(1)} knot\n` : ''}${weatherResults.waveHeightM ? `Dalga Yüksekliği: ${weatherResults.waveHeightM.toFixed(1)} m\n` : ''}${weatherResults.leewayAngleDeg ? `Leeway Açısı: ${weatherResults.leewayAngleDeg.toFixed(1)}°\n` : ''}${weatherResults.windForceN ? `Rüzgar Kuvveti: ${weatherResults.windForceN.toFixed(0)} N` : ''}`}</pre>
             {weatherSteps.length > 0 && <SolutionSteps steps={weatherSteps} />}
           </div>
         );
@@ -3297,7 +3297,7 @@ export default function NavigationCalculationPage() {
         }
         return (
           <div className="space-y-3">
-            <pre className="font-mono text-sm leading-6">{`Sonuç:\n${emergencyResults.legDistanceNm ? `Search Leg: ${emergencyResults.legDistanceNm.toFixed(2)} nm\n` : ''}${emergencyResults.newRadiusNm ? `Next Radius: ${emergencyResults.newRadiusNm.toFixed(2)} nm\n` : ''}${emergencyResults.timeToRescueHours ? `Rescue Time: ${emergencyResults.timeToRescueHours.toFixed(2)} hours` : ''}`}</pre>
+            <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\n${emergencyResults.legDistanceNm ? `Search Leg: ${emergencyResults.legDistanceNm.toFixed(2)} nm\n` : ''}${emergencyResults.newRadiusNm ? `Next Radius: ${emergencyResults.newRadiusNm.toFixed(2)} nm\n` : ''}${emergencyResults.timeToRescueHours ? `Rescue Time: ${emergencyResults.timeToRescueHours.toFixed(2)} hours` : ''}`}</pre>
             {emergencySteps.length > 0 && <SolutionSteps steps={emergencySteps} />}
           </div>
         );
