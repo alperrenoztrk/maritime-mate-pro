@@ -14,7 +14,10 @@
     "health:dev": "bash scripts/healthcheck.sh 8080 /",
     "health:preview": "bash scripts/healthcheck.sh 8080 /",
     "cap:add:android": "npx cap add android",
+    "cap:add:ios": "npx cap add ios",
     "cap:sync": "npx cap sync",
+    "assets:generate": "node scripts/generate-app-assets.mjs",
+    "android:bundle": "npm run build && npx cap sync android && cd android && ./gradlew bundleRelease",
     "cap:open:android": "npx cap open android",
     "cap:run:android": "npx cap run android",
     "build:android": "npm run build && npx cap sync && npx cap open android",
@@ -36,7 +39,7 @@
     "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict"
   },
   "dependencies": {
-    "@capacitor-community/admob": "^6.0.1",
+    "@capacitor-community/admob": "^7.2.0",
     "@capacitor/android": "^7.4.2",
     "@capacitor/app": "^7.0.1",
     "@capacitor/browser": "^7.0.2",
@@ -44,6 +47,7 @@
     "@capacitor/core": "^7.4.2",
     "@capacitor/filesystem": "^7.1.4",
     "@capacitor/haptics": "^7.0.1",
+    "@capacitor/ios": "^7.6.7",
     "@capacitor/keyboard": "^7.0.2",
     "@capacitor/status-bar": "^7.0.1",
     "@hookform/resolvers": "^3.9.0",
@@ -118,6 +122,7 @@
   "devDependencies": {
     "@capacitor/cli": "^7.4.2",
     "@eslint/js": "^9.13.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^22.8.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",

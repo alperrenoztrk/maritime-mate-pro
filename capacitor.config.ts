@@ -1,13 +1,13 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
+// Üretim (mağaza) yapılandırması. Store build'lerinde web içeriği yerel
+// `dist` klasöründen sunulur — buraya asla uzak `server.url` eklemeyin,
+// aksi halde Google Play / App Store incelemesi reddedilir.
+// Canlı yeniden yükleme ile geliştirme için: `npx cap run android -l --external`
 const config: CapacitorConfig = {
-  appId: 'app.lovable.c91ef2fa0890438a815184cda6639f91',
-  appName: 'maritime-calculator',
+  appId: 'com.maritime.calculator',
+  appName: 'Marine Expert Pro',
   webDir: 'dist',
-  server: {
-    url: 'https://c91ef2fa-0890-438a-8151-84cda6639f91.lovableproject.com?forceHideBadge=true',
-    cleartext: true
-  },
   plugins: {
     StatusBar: {
       style: 'DARK',
@@ -21,7 +21,6 @@ const config: CapacitorConfig = {
     // `backButton` dinleyicisinin varlığı zaten default davranışı bastırır
     // (bkz. src/hooks/useNavigationHierarchy.ts).
     Haptics: {},
-    // Firebase & Google Services Configuration
     GoogleAuth: {
       scopes: ['profile', 'email'],
       serverClientId: '318030353367-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com',
@@ -33,13 +32,12 @@ const config: CapacitorConfig = {
   },
   android: {
     buildOptions: {
-      keystorePath: undefined,
-      keystorePassword: undefined,
-      keystoreAlias: undefined,
-      keystoreAliasPassword: undefined,
-      releaseType: 'APK'
-    },
-    
+      // İmzalama bilgileri repoya girmez; android/keystore.properties
+      // (gitignored) veya ortam değişkenleri üzerinden sağlanır.
+      // Google Play yalnızca AAB kabul eder.
+      releaseType: 'AAB',
+      signingType: 'apksigner'
+    }
   }
 };
 
