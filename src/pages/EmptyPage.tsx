@@ -4,27 +4,22 @@ import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
-import { useTheme } from "@/hooks/useTheme";
 import TimeWidgets from "@/components/widgets/TimeWidgets";
 import WeatherInfoWidgets from "@/components/widgets/WeatherInfoWidgets";
 import LocationCelestialWidgets from "@/components/widgets/LocationCelestialWidgets";
 import { ChevronLeft, ChevronRight, Clock3, CloudSun, Globe2, Smartphone, MoveHorizontal, MousePointerClick, Compass } from "lucide-react";
 
-// Tema bazlı renk şemaları
-const getThemeConfig = (isDark: boolean) => ({
-  background: isDark 
-    ? "bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" 
-    : "bg-gradient-to-b from-teal-300 via-cyan-400 to-blue-500",
-  cardBg: isDark ? "bg-slate-800/60" : "bg-teal-900/40",
+// Uygulama artık yalnızca koyu temayı destekliyor; widget sayfası da her zaman
+// koyu renk şemasını kullanır.
+const oceanTheme = {
+  background: "bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900",
+  cardBg: "bg-slate-800/60",
   textColor: "text-foreground",
-  accentColor: isDark ? "text-slate-300" : "text-teal-100",
-  indicatorColor: isDark ? "bg-slate-400" : "bg-teal-200"
-});
+  accentColor: "text-slate-300",
+  indicatorColor: "bg-slate-400",
+};
 
 const EmptyPage = () => {
-  const navigate = useNavigate();
-  const { theme } = useTheme();
-  const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
   const hasSwiped = useRef(false);
   const [activeTab, setActiveTab] = useState("time");
