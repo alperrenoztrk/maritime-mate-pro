@@ -4,6 +4,7 @@ import {
   getMaritimeTranslationOverride,
   applyMaritimeCorrections,
 } from '@/utils/maritimeGlossary';
+import { normalizeMachineTranslation } from '@/utils/translationQuality';
 import {
   SOURCE_LANGUAGE,
   TranslationUnit,
@@ -274,7 +275,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       const parts = splitBatchResult(joined, batch.length);
       if (parts) {
         batch.forEach((source, i) => {
-          out.set(source, applyMaritimeCorrections(parts[i].trim(), languageCode));
+          const corrected = applyMaritimeCorrections(parts[i].trim(), languageCode);
+          out.set(source, normalizeMachineTranslation(source, corrected, languageCode));
         });
         return out;
       }

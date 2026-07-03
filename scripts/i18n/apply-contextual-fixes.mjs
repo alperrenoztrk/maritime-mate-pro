@@ -20,6 +20,7 @@ import {
   getMaritimeTranslationOverride,
   applyMaritimeCorrections,
 } from '../../src/utils/maritimeGlossary.ts';
+import { normalizeMachineTranslation } from '../../src/utils/translationQuality.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
@@ -52,7 +53,11 @@ for (const file of files) {
           next = next.toLocaleUpperCase(lang);
         }
       } else {
-        next = applyMaritimeCorrections(value, lang);
+        // Machine-translated entry: inline term corrections + systematic
+        // machine-output cleanup (zero-width chars, "X (X)"/"x/x" duplicates,
+        // leading-case drift). Curated corrections/overrides above are
+        // human-authored and skip this on purpose.
+        next = normalizeMachineTranslation(key, applyMaritimeCorrections(value, lang), lang);
       }
     }
 

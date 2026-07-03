@@ -23,6 +23,41 @@
 // the maritime glossary override or the machine translation.
 
 export const CONTEXTUAL_CORRECTIONS = {
+  // ── Lesson categories: "Makine" is the engine department, not "machine" ────
+  'Makine': { en: 'Engine' },
+
+  // ── Stability: "kaldırma kuvveti" = buoyant force, "yüzerlik" = buoyancy ───
+  // (generic MT translated both to "Buoyancy", producing "Weight, Buoyancy and
+  // Buoyancy")
+  'Ağırlık, Kaldırma Kuvveti ve Yüzerlik': { en: 'Weight, Buoyant Force and Buoyancy' },
+
+  // ── "Bilge" here is the English term (sintine), not Turkish "bilge" (wise) ─
+  'Bilge (bilge) alarmı temel olarak neyi bildirir?': {
+    en: 'What does the bilge alarm basically report?',
+  },
+
+  // ── Bilingual heading: dedupe "PLANNING – PLANNING PHASE" ──────────────────
+  '2️⃣ PLANNING – PLANLAMA AŞAMASI': { en: '2️⃣ PLANNING PHASE' },
+
+  // ── Turkish word pairs whose halves MT collapsed into the same English word,
+  //    losing one of the two distinct meanings ─────────────────────────────────
+  '9.1 Ballast/bilge operasyonu kontrol listesi': {
+    en: '9.1 Ballast/bilge operation checklist',
+  },
+  'Kapalı/kapalı mahallere giriş': { en: 'Entry into enclosed spaces' },
+  'Filika/cankurtaranlardaki kurtarma alanı içi (on-scene) haberleşme': {
+    en: 'On-scene communication in lifeboats/survival craft',
+  },
+  'Enlem/sönümleme hatası (settling/latitude error): sönümlemeden kaynaklanır, enlemle (tan φ ile) artar; enlem düzeltmesiyle giderilir.': {
+    en: 'Settling/latitude error: caused by damping, increases with latitude (tan φ); eliminated by the latitude correction.',
+  },
+  'Uzun seferlerde taze ürün bitince C vitamini eksikliği denizcileri hasta etmiştir. Modern aşçı, dondurulmuş sebze/meyve ve turunçgil konsantresiyle bu köprüyü kurarak skorbütü tarihte bırakır.': {
+    en: 'Vitamin C deficiency made sailors sick when fresh produce ran out on long voyages. By building this bridge with frozen vegetables/fruit and citrus concentrate, the modern cook leaves scurvy in history.',
+  },
+  'Deniz suyu ρ ≈ 1025 kg/m³. Akıntı hızı m/s girilir (1 kn ≈ 0,514 m/s). Demirleme/palamar yük analizinde rüzgâr kuvvetiyle birlikte kullanılır.': {
+    en: 'Sea water ρ ≈ 1025 kg/m³. The current speed is entered in m/s (1 kn ≈ 0.514 m/s). It is used together with wind force in anchoring/mooring load analysis.',
+  },
+
   // ── Crew hierarchy label (the "Üstü: Birinci Zabit" chip) ──────────────────
   // All 24 languages are covered by the maritime glossary override ("Üstü:");
   // listed here only to make the English fix explicit and greppable.

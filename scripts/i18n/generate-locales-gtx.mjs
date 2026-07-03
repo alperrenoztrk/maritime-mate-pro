@@ -25,6 +25,7 @@ import {
   buildTranslationBatches,
   splitBatchResult,
 } from '../../src/utils/pageTranslator.ts';
+import { normalizeMachineTranslation } from '../../src/utils/translationQuality.ts';
 import { CONTEXTUAL_CORRECTIONS } from './contextual-corrections.mjs';
 
 const repoRoot = process.cwd();
@@ -227,7 +228,11 @@ async function translateLanguage(langCode, sources) {
   const translateOne = async (source) => {
     const raw = await gtxTranslate(source, langCode);
     if (raw !== null) {
-      cache[source] = applyMaritimeCorrections(raw, langCode);
+      cache[source] = normalizeMachineTranslation(
+        source,
+        applyMaritimeCorrections(raw, langCode),
+        langCode,
+      );
       gtxCount++;
     }
     // If gtx failed, leave uncached so the runtime live-translator handles it.
@@ -241,7 +246,11 @@ async function translateLanguage(langCode, sources) {
       const parts = joined === null ? null : splitBatchResult(joined, batch.length);
       if (parts) {
         batch.forEach((source, i) => {
-          cache[source] = applyMaritimeCorrections(parts[i].trim(), langCode);
+          cache[source] = normalizeMachineTranslation(
+            source,
+            applyMaritimeCorrections(parts[i].trim(), langCode),
+            langCode,
+          );
           gtxCount++;
         });
       } else {
