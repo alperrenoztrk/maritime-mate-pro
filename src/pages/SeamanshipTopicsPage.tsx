@@ -3516,7 +3516,7 @@ export default function SeamanshipTopicsPage() {
                     <div className="space-y-2">
                       {currentContent.warnings.map((warning, index) => (
                         <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-destructive">⚠️</span>
+                          <span className="text-destructive">⚠</span>
                           <span>{warning}</span>
                         </div>
                       ))}

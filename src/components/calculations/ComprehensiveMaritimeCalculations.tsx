@@ -2016,7 +2016,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
                     <p className="font-mono text-lg">Kümelenme Açısı = {grainHeelResult.toFixed(1)}°</p>
                     <p className="text-sm mt-1">
-                      {grainHeelResult <= 12 ? "✅ SOLAS Uygun" : "❌ SOLAS Uygun Değil - 12°'yi Aşıyor"}
+                      {grainHeelResult <= 12 ? "✓ SOLAS Uygun" : "✗ SOLAS Uygun Değil - 12°'yi Aşıyor"}
                     </p>
                   </div>
                 )}

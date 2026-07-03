@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { Anchor, Map, Package, Flame, Wrench, Users, FileText, Siren, Cog, type LucideIcon } from "lucide-react";
 
 interface TaskRow {
   task: string;
@@ -185,8 +186,8 @@ const TwoColTable = ({ tasks, headers }: { tasks: TaskRow[]; headers: [string, s
 );
 
 interface CategorySection {
-  icon: string;
-  number: string;
+  icon: LucideIcon;
+  number: number;
   title: string;
   description: string;
   tasks: TaskRow[];
@@ -196,47 +197,47 @@ interface CategorySection {
 
 const categories: CategorySection[] = [
   {
-    icon: "⚓", number: "1️⃣", title: "SEYİR & KÖPRÜÜSTÜ İŞLERİ",
+    icon: Anchor, number: 1, title: "SEYİR & KÖPRÜÜSTÜ İŞLERİ",
     description: "Saatlik çalışma için bu başlık seçildiğinde; rota planı, mevki belirleme yöntemleri ve OOW'un köprüüstü görev akışı adım adım anlatılır.",
     tasks: bridgeNavigationTasks, columns: 3, headers: ["İş", "Asıl Sorumlu", "Fiilen Yapan"],
   },
   {
-    icon: "🗺️", number: "2️⃣", title: "NAVİGASYON & HARİTA İŞLERİ",
+    icon: Map, number: 2, title: "NAVİGASYON & HARİTA İŞLERİ",
     description: "Saatlik içerikte ECDIS/kağıt harita düzeltme adımları, Notice to Mariners takibi ve gyrolar/manyetik pusula karşılaştırması açıklanır.",
     tasks: navigationTasks, columns: 2, headers: ["İş", "Sorumlu"],
   },
   {
-    icon: "📦", number: "3️⃣", title: "YÜK OPERASYONLARI",
+    icon: Package, number: 3, title: "YÜK OPERASYONLARI",
     description: "Saatlik içerikte yük planı okuma, operasyon sırasında draft/sounding kontrolü ve emniyet gözetimi anlatılır.",
     tasks: cargoTasks, columns: 3, headers: ["İş", "Asıl Sorumlu", "Sahadaki"],
   },
   {
-    icon: "🧯", number: "4️⃣", title: "EMNİYET & ISM / ISPS",
+    icon: Flame, number: 4, title: "EMNİYET & ISM / ISPS",
     description: "Saatlik içerikte yangın ve güvenlik devriyesi güzergâhı, kritik ekipman kontrolleri ve ISPS erişim adımları açıklanır.",
     tasks: safetyTasks, columns: 2, headers: ["İş", "Sorumlu"],
   },
   {
-    icon: "🔧", number: "5️⃣", title: "GÜVERTE BAKIM & ONARIM",
+    icon: Wrench, number: 5, title: "GÜVERTE BAKIM & ONARIM",
     description: "Saatlik içerikte güverte ekipman kontrolü, boya/pas takibi ve halat–tel bakım adımları anlatılır.",
     tasks: maintenanceTasks, columns: 3, headers: ["İş", "Sorumlu", "Yapan"],
   },
   {
-    icon: "👥", number: "6️⃣", title: "PERSONEL & DİSİPLİN",
+    icon: Users, number: 6, title: "PERSONEL & DİSİPLİN",
     description: "Saatlik içerikte vardiya görev dağılımı, PPE kullanım kontrolü ve yeni personel oryantasyonu anlatılır.",
     tasks: personnelTasks, columns: 2, headers: ["İş", "Sorumlu"],
   },
   {
-    icon: "📑", number: "7️⃣", title: "DOKÜMANTASYON & DENETİM",
+    icon: FileText, number: 7, title: "DOKÜMANTASYON & DENETİM",
     description: "Saatlik içerikte logbook yazım düzeni, kontrol listesi kullanımı ve PSC hazırlık dosyası gözden geçirme adımları açıklanır.",
     tasks: documentationTasks, columns: 2, headers: ["İş", "Sorumlu"],
   },
   {
-    icon: "🚨", number: "8️⃣", title: "ACİL DURUMLAR",
+    icon: Siren, number: 8, title: "ACİL DURUMLAR",
     description: "Saatlik içerikte alarm panelleri, kaçış yolları ve acil ekipman erişim noktaları anlatılır.",
     tasks: emergencyTasks, columns: 2, headers: ["Durum", "Lider"],
   },
   {
-    icon: "⚙️", number: "9️⃣", title: "MAKİNE DAİRESİ İŞLERİ",
+    icon: Cog, number: 9, title: "MAKİNE DAİRESİ İŞLERİ",
     description: "Saatlik içerikte ana/yardımcı makine parametre kontrolü, alarm kayıtları ve sintine seviyeleri anlatılır.",
     tasks: engineRoomTasks, columns: 3, headers: ["İş", "Asıl Sorumlu", "Fiilen Yapan"],
   },
@@ -268,9 +269,14 @@ export default function ShipTasksPage() {
         <section className="space-y-6 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur">
           {categories.map((cat) => (
             <div key={cat.title} className="space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="text-xl">{cat.icon}</span>
-                <h2 className="font-bold text-foreground">{cat.number} {cat.title}</h2>
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <cat.icon className="h-4 w-4" />
+                </span>
+                <h2 className="font-bold text-foreground">
+                  <span className="mr-1.5 tabular-nums text-primary">{cat.number}.</span>
+                  {cat.title}
+                </h2>
               </div>
               {cat.columns === 3 ? (
                 <ThreeColTable tasks={cat.tasks} headers={cat.headers as [string, string, string]} />

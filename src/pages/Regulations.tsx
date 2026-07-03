@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { regulationItems, type RegulationCategory } from "@/data/regulationItems";
-import { Scale } from "lucide-react";
+import { Scale, Globe, Shield, Leaf, Search, ClipboardList, Map, type LucideIcon } from "lucide-react";
 
 const Regulations = () => {
   const highRefreshRateStyles: CSSProperties = {
@@ -19,13 +19,22 @@ const Regulations = () => {
     "Bölgesel Düzenlemeler": "bg-rose-500",
   };
 
-  const regulationCards: { category: RegulationCategory; title: string }[] = [
-    { category: "IMO Sözleşmeleri", title: "🌐 IMO Sözleşmeleri" },
-    { category: "Emniyet Kodları", title: "🛡️ Emniyet Kodları" },
-    { category: "Çevresel Düzenlemeler", title: "🌿 Çevresel Düzenlemeler" },
-    { category: "Denetim & Sörvey", title: "🔍 Denetim & Sörvey" },
-    { category: "Gemi Sertifikaları", title: "📋 Gemi Sertifikaları" },
-    { category: "Bölgesel Düzenlemeler", title: "🗺️ Bölgesel Düzenlemeler" },
+  const regulationIconStyles: Record<RegulationCategory, string> = {
+    "IMO Sözleşmeleri": "text-primary",
+    "Emniyet Kodları": "text-amber-500",
+    "Çevresel Düzenlemeler": "text-emerald-500",
+    "Denetim & Sörvey": "text-sky-500",
+    "Gemi Sertifikaları": "text-violet-500",
+    "Bölgesel Düzenlemeler": "text-rose-500",
+  };
+
+  const regulationCards: { category: RegulationCategory; title: string; icon: LucideIcon }[] = [
+    { category: "IMO Sözleşmeleri", title: "IMO Sözleşmeleri", icon: Globe },
+    { category: "Emniyet Kodları", title: "Emniyet Kodları", icon: Shield },
+    { category: "Çevresel Düzenlemeler", title: "Çevresel Düzenlemeler", icon: Leaf },
+    { category: "Denetim & Sörvey", title: "Denetim & Sörvey", icon: Search },
+    { category: "Gemi Sertifikaları", title: "Gemi Sertifikaları", icon: ClipboardList },
+    { category: "Bölgesel Düzenlemeler", title: "Bölgesel Düzenlemeler", icon: Map },
   ];
 
   const getRegulationItemsByCategory = (category: RegulationCategory) =>
@@ -54,7 +63,10 @@ const Regulations = () => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {regulationCards.map((card) => (
               <div key={card.category} className="rounded-xl border border-border/40 bg-background/50 p-4">
-                <h2 className="mb-3 font-bold text-foreground">{card.title}</h2>
+                <h2 className="mb-3 flex items-center gap-2 font-bold text-foreground">
+                  <card.icon className={`h-4 w-4 shrink-0 ${regulationIconStyles[card.category]}`} aria-hidden />
+                  {card.title}
+                </h2>
                 <ul className="space-y-2 text-sm text-foreground/90">
                   {getRegulationItemsByCategory(card.category).map((item) => (
                     <li key={item.slug} className="flex items-start gap-2">

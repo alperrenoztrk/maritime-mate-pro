@@ -139,7 +139,7 @@ export function ScenarioPlayer({ scenario, onExit }: { scenario: Scenario; onExi
           <p className="text-sm leading-relaxed text-foreground/90">{pickedChoice.feedback}</p>
           {pickedChoice.source && (
             <p className="mt-2 text-xs font-medium text-muted-foreground">
-              📖 {pickedChoice.source.code}
+              {pickedChoice.source.code}
               {pickedChoice.source.detail ? ` — ${pickedChoice.source.detail}` : ""}
             </p>
           )}

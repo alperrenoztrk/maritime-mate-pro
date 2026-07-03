@@ -78,17 +78,17 @@ const DraftSurveyCalculator = () => {
           title="Hızlı Formüller"
           sections={[
             {
-              title: "📏 Su Çekimi Değişimi",
+              title: "Su Çekimi Değişimi",
               accent: "blue",
               lines: [{ formula: "Ağırlık Değişimi = (Son - İlk) × TPC" }],
             },
             {
-              title: "⚖️ Trim",
+              title: "Trim",
               accent: "teal",
               lines: [{ formula: "Trim % = (Kıç - Baş) / LPP × 100" }],
             },
             {
-              title: "🌊 Deplasman Düzeltmesi",
+              title: "Deplasman Düzeltmesi",
               accent: "purple",
               lines: [{ formula: "Düzeltilmiş = Deplasman × (Gerçek Yoğunluk / 1.025)" }],
             },

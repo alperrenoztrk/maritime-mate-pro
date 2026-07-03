@@ -154,9 +154,9 @@ CRITICAL: You MUST respond entirely in ${langName} (language code: ${currentLang
 - **Aşırı sert**: GM > 0.35m
 
 **Praktik Değerlendirme:**
-- GM < 0.15m: ⚠️ Tehlikeli
-- GM = 0.15-0.35m: ✅ İdeal
-- GM > 0.35m: ⚡ Aşırı sert`,
+- GM < 0.15m: Tehlikeli
+- GM = 0.15-0.35m: İdeal
+- GM > 0.35m: Aşırı sert`,
 
       "stabilite": `**Gemi Stabilitesi Hesaplamaları**
 

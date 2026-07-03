@@ -228,9 +228,9 @@ function EngineTypeCard({ engine, isOpen, onToggle }: { engine: EngineType; isOp
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-bold text-foreground">{engine.title}</h3>
           <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
-            <span>⚡ {engine.powerRange}</span>
-            <span>📊 {engine.efficiency}</span>
-            <span>⛽ {engine.fuel}</span>
+            <span className="flex items-center gap-1"><Zap className="h-3 w-3" aria-hidden /> {engine.powerRange}</span>
+            <span className="flex items-center gap-1"><Gauge className="h-3 w-3" aria-hidden /> {engine.efficiency}</span>
+            <span className="flex items-center gap-1"><Fuel className="h-3 w-3" aria-hidden /> {engine.fuel}</span>
           </div>
         </div>
         <ChevronDown className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />

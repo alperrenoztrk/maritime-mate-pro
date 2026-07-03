@@ -100,7 +100,7 @@ export default function StabilityFormulasPage() {
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="temel" className="scroll-mt-24">⚖️ Temel Tanımlar ve Kavramlar</CardTitle>
+            <CardTitle id="temel" className="scroll-mt-24">Temel Tanımlar ve Kavramlar</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="overflow-x-auto">
@@ -151,7 +151,7 @@ export default function StabilityFormulasPage() {
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="yuzerlik" className="scroll-mt-24">⚓ Yüzerlik ve Metasentrik Yükseklik</CardTitle>
+            <CardTitle id="yuzerlik" className="scroll-mt-24">Yüzerlik ve Metasentrik Yükseklik</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -168,7 +168,7 @@ Genel:          GZ(φ) = KN(φ) − KG · sin φ`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="agirlik" className="scroll-mt-24">⚙️ Ağırlık Transferleri ve KG Hesapları</CardTitle>
+            <CardTitle id="agirlik" className="scroll-mt-24">Ağırlık Transferleri ve KG Hesapları</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -183,7 +183,7 @@ Boyuna taşınma (trim):        Trim(cm) = (w · l)/MCT 1 cm`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="trim" className="scroll-mt-24">🧮 Trim Hesapları</CardTitle>
+            <CardTitle id="trim" className="scroll-mt-24">Trim Hesapları</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -199,7 +199,7 @@ Ortalama draft değişimi:  ΔTmean(cm) = w / TPC`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="free-surface" className="scroll-mt-24">🧭 Free Surface Effect (Serbest Yüzey Etkisi)</CardTitle>
+            <CardTitle id="free-surface" className="scroll-mt-24">Free Surface Effect (Serbest Yüzey Etkisi)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -214,7 +214,7 @@ If (dikdörtgen) = l · b³ / 12`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="heel-gz" className="scroll-mt-24">⚓ Yanal Eğilme (Heel) ve GZ Eğrisi</CardTitle>
+            <CardTitle id="heel-gz" className="scroll-mt-24">Yanal Eğilme (Heel) ve GZ Eğrisi</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -228,7 +228,7 @@ GZ (büyük açılar):   GZ(φ) = KN(φ) − KG · sin φ  (KN: tablodan)`}</pre
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="curves" className="scroll-mt-24">⚙️ Kararlılık Eğrileri (Statical Stability Curves)</CardTitle>
+            <CardTitle id="curves" className="scroll-mt-24">Kararlılık Eğrileri (Statical Stability Curves)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -242,7 +242,7 @@ AVS:                  φAVS s.t. GZ(φAVS) = 0`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="loading" className="scroll-mt-24">⚖️ Yükleme, Ballast ve Denge Hesapları</CardTitle>
+            <CardTitle id="loading" className="scroll-mt-24">Yükleme, Ballast ve Denge Hesapları</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -256,7 +256,7 @@ KG düzeltmesi (transfer):   KG' = KG ± (w·h)/Δ   →   GM' = KM − KG'`}</p
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="grain" className="scroll-mt-24">🧱 Tahıl ve Serbest Yük Stabilitesi</CardTitle>
+            <CardTitle id="grain" className="scroll-mt-24">Tahıl ve Serbest Yük Stabilitesi</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -270,7 +270,7 @@ Heeling düzeltmesi:   GZ(φ) = ah,grain(φ) eşitliğinden denge açısı bulun
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="freeboard" className="scroll-mt-24">🌊 Freeboard, Draft ve Trim Uyumları</CardTitle>
+            <CardTitle id="freeboard" className="scroll-mt-24">Freeboard, Draft ve Trim Uyumları</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -284,7 +284,7 @@ Ton-mile moment:     TM = w · mesafe (deniz mili)`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="denge" className="scroll-mt-24">⚙️ Statik ve Dinamik Denge Koşulları</CardTitle>
+            <CardTitle id="denge" className="scroll-mt-24">Statik ve Dinamik Denge Koşulları</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">
@@ -297,7 +297,7 @@ Kararsız denge: GM < 0  ve  GZ < 0 (küçük açılar)`}</pre>
 
         <Card className="shadow">
           <CardHeader>
-            <CardTitle id="ek" className="scroll-mt-24">🔧 Kullanışlı Ek Formüller</CardTitle>
+            <CardTitle id="ek" className="scroll-mt-24">Kullanışlı Ek Formüller</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="bg-muted/30 rounded p-3 overflow-x-auto">

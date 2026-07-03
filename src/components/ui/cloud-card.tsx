@@ -11,7 +11,9 @@ import {
   Info,
   Navigation,
   Thermometer,
-  Satellite
+  Satellite,
+  Target,
+  Lightbulb
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -221,7 +223,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
               </div>
               <div>
                 <h4 className="font-bold text-sm text-purple-900 dark:text-purple-100 neon:text-cyan-300">
-                  🛰️ Meteorolojik Uydu Kanalları
+                  Meteorolojik Uydu Kanalları
                 </h4>
                 <p className="text-xs text-purple-700 dark:text-purple-300 neon:text-cyan-400">
                   Tespit için kullanılan spektral bantlar
@@ -246,7 +248,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
             {cloud.bestDetectionChannel && (
               <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30 neon:from-cyan-900/50 neon:to-purple-900/50 rounded-lg p-3 border-2 border-yellow-300 dark:border-yellow-600 neon:border-cyan-500">
                 <div className="flex items-start gap-2">
-                  <span className="text-lg">🎯</span>
+                  <Target className="h-5 w-5 shrink-0 text-yellow-700 dark:text-yellow-300 neon:text-cyan-300" aria-hidden />
                   <div className="flex-1">
                     <div className="font-bold text-xs text-yellow-900 dark:text-yellow-100 neon:text-cyan-300 mb-1">
                       ÖNERİLEN PRİMER KANAL
@@ -260,7 +262,8 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
             )}
             
             <div className="text-xs text-purple-600 dark:text-purple-300 neon:text-cyan-400 italic pt-2 border-t border-purple-200 dark:border-purple-700 neon:border-cyan-600">
-              💡 Bu kanallar EUMETSAT MSG uydu sisteminin spektral bantlarıdır
+              <Lightbulb className="mr-1 inline h-3.5 w-3.5 align-[-2px]" aria-hidden />
+              Bu kanallar EUMETSAT MSG uydu sisteminin spektral bantlarıdır
             </div>
           </div>
         )}
