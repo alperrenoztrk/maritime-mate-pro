@@ -3306,7 +3306,7 @@ export default function NavigationCalculationPage() {
 
   return (
     <MobileLayout>
-      <div className="space-y-4" data-no-translate>
+      <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground flex items-center gap-2">
             <Calculator className="h-4 w-4" /> {title}

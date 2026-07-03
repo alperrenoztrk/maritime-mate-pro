@@ -19,7 +19,7 @@ export default function KnotCard({ knotId }: KnotCardProps) {
   if (!def) return null;
 
   return (
-    <AccordionItem value={def.id} className="border-b border-border/40 last:border-b-0" data-no-translate>
+    <AccordionItem value={def.id} className="border-b border-border/40 last:border-b-0">
       <AccordionTrigger className="px-3 py-3 hover:no-underline">
         <div className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 pr-2 text-left">
           <span className="text-sm font-semibold text-foreground">{def.name}</span>

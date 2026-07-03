@@ -295,7 +295,6 @@ export default function BetaWorkHoursTool() {
   return (
     <div
       className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-32 pt-6 dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]"
-      data-no-translate
     >
       <div className="mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-2">

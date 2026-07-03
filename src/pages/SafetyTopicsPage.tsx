@@ -2706,7 +2706,6 @@ export default function SafetyTopicsPage() {
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 dark:from-[hsl(0,50%,6%)] dark:via-[hsl(15,50%,8%)] dark:to-[hsl(30,50%,10%)]"
-      data-no-translate
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-red-500/10 blur-3xl" />

@@ -3213,7 +3213,6 @@ export default function SeamanshipTopicsPage() {
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-[hsl(30,50%,6%)] dark:via-[hsl(25,50%,8%)] dark:to-[hsl(35,50%,10%)]"
-      data-no-translate
     >
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">

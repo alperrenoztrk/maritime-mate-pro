@@ -1534,7 +1534,6 @@ export default function EconomicsTopicsPage() {
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-indigo-50 via-blue-50 to-violet-50 dark:from-[hsl(230,50%,6%)] dark:via-[hsl(230,50%,8%)] dark:to-[hsl(260,50%,10%)]"
-      data-no-translate
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-indigo-500/10 blur-3xl" />

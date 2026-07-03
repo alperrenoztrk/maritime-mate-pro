@@ -240,7 +240,7 @@ export default function CalculationsMenu() {
 
   return (
     <MobileLayout>
-      <div className="relative min-h-screen bg-background px-4 pb-24 pt-6" data-no-translate>
+      <div className="relative min-h-screen bg-background px-4 pb-24 pt-6">
         {/* Subtle ambient */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-20 left-1/4 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />

@@ -357,7 +357,7 @@ const SeamanshipCalculationsPage = () => {
 
           <CalculationGrid items={seamanshipItems} className="sm:grid-cols-2" />
 
-          <p className="text-center text-sm text-slate-300" data-no-translate>
+          <p className="text-center text-sm text-slate-300">
             Her hesaplama ayrı bir sayfada açılır
           </p>
         </div>

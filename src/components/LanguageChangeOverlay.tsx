@@ -23,12 +23,8 @@ export function LanguageChangeOverlay() {
       role="dialog"
       aria-modal="true"
       aria-live="polite"
-      data-no-translate
     >
-      <div
-        className="mx-6 flex w-full max-w-xs flex-col items-center gap-4 rounded-3xl border border-white/15 bg-white/[0.06] p-7 shadow-2xl"
-        translate="no"
-      >
+      <div className="mx-6 flex w-full max-w-xs flex-col items-center gap-4 rounded-3xl border border-white/15 bg-white/[0.06] p-7 shadow-2xl">
         <Loader2 className="h-9 w-9 animate-spin text-sky-300" strokeWidth={2.25} />
         <div className="text-center">
           <p className="text-base font-semibold text-white">{title}</p>

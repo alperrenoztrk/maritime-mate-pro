@@ -57,11 +57,12 @@ export default defineConfig(({ mode }) => ({
         // Allow large assets (diagrams, PDFs, images)
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
         globPatterns: ["**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,woff2,json}"],
-        // ALL per-language translation dictionaries (public/locales/*.json) are
-        // precached at install so every language is available offline the moment
-        // the app is downloaded — no per-language fetch, instant switching. They
-        // are no longer excluded from the precache. (runtimeCaching below still
-        // serves revalidation for any locale requested before precache settles.)
+        // Every language now ships a FULL translation dictionary (~8 MB each,
+        // 24 languages ≈ 190 MB total), so precaching them all at install is no
+        // longer viable. Only the default language's pack (en) is precached;
+        // any other language is fetched once on first selection and then kept
+        // for offline use by the translation-locales runtime cache below.
+        globIgnores: ["locales/!(en).json"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,

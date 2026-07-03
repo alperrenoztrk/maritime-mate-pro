@@ -52,7 +52,7 @@ export default function SailorKnotsPage() {
   const totalMatches = grouped.reduce((n, g) => n + g.knots.length, 0);
 
   return (
-    <div className="min-h-screen p-4 md:p-8" data-no-translate>
+    <div className="min-h-screen p-4 md:p-8">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="mb-2 flex items-center gap-2">

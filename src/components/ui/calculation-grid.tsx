@@ -82,7 +82,7 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
 
   if (to && !disabled) {
     return (
-      <Link to={to} className={sharedClassName} data-no-translate>
+      <Link to={to} className={sharedClassName}>
         {content}
       </Link>
     );
@@ -90,14 +90,14 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
 
   if (href && !disabled) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={sharedClassName} data-no-translate>
+      <a href={href} target="_blank" rel="noreferrer" className={sharedClassName}>
         {content}
       </a>
     );
   }
 
   return (
-    <div className={sharedClassName} data-no-translate>
+    <div className={sharedClassName}>
       {content}
     </div>
   );
