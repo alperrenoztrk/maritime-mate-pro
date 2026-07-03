@@ -161,9 +161,9 @@ async function runWithConcurrency(items, concurrency, task) {
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, worker));
 }
 
-async function gtxTranslate(text, targetLang) {
+async function gtxTranslate(text, targetLang, sourceLang = 'tr') {
   const url =
-    `${GTX_ENDPOINT}?client=gtx&sl=tr&tl=${encodeURIComponent(targetLang)}&dt=t&q=${encodeURIComponent(text)}`;
+    `${GTX_ENDPOINT}?client=gtx&sl=${encodeURIComponent(sourceLang)}&tl=${encodeURIComponent(targetLang)}&dt=t&q=${encodeURIComponent(text)}`;
   for (let attempt = 0; attempt < RETRY_MAX; attempt++) {
     try {
       const res = await fetch(url);
@@ -203,12 +203,22 @@ async function translateLanguage(langCode, sources) {
 
   // Which strings still need translation?
   const pending = [];
+  // Sources whose contextually-corrected ENGLISH is curated but the target
+  // language is not: translate the corrected English (en → target) instead of
+  // the ambiguous Turkish, so the context fix ("Demir" = anchor, not iron)
+  // propagates to every language instead of only to English.
+  const pendingPivot = [];
   for (const source of sources) {
     // Manual/contextual correction already applied above.
     if (ALL_CORRECTIONS[source]?.[langCode]) { overrideCount++; continue; }
     const override = getMaritimeTranslationOverride(source, langCode);
     if (override) { cache[source] = override; overrideCount++; continue; }
     if (cache[source] !== undefined) { skipCount++; continue; }
+    const enCorrection = ALL_CORRECTIONS[source]?.en;
+    if (enCorrection && langCode !== 'en') {
+      pendingPivot.push([source, enCorrection]);
+      continue;
+    }
     pending.push(source);
   }
 
@@ -260,6 +270,20 @@ async function translateLanguage(langCode, sources) {
     done += batch.length;
     if (done % 500 < batch.length || done === total) {
       process.stdout.write(`  ${langCode}: ${done}/${total} (gtx)          \r`);
+    }
+  });
+
+  // Pivot-translate the curated English corrections into the target language.
+  // Few strings (one per contextual correction), so no batching needed.
+  await runWithConcurrency(pendingPivot, CONCURRENCY, async ([source, enText]) => {
+    const raw = await gtxTranslate(enText, langCode, 'en');
+    if (raw !== null) {
+      cache[source] = normalizeMachineTranslation(
+        enText,
+        applyMaritimeCorrections(raw, langCode),
+        langCode,
+      );
+      gtxCount++;
     }
   });
 

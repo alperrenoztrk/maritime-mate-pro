@@ -80,10 +80,11 @@ export const getStaticTranslation = (
 /**
  * True when a non-empty static dictionary is already loaded in memory for the
  * language. Because every shipped language now ships a COMPLETE pack (see
- * scripts/i18n + the PWA precache of public/locales/*.json), a loaded, non-empty
- * dictionary means the runtime can translate the whole app offline from it — no
- * harvest, no live machine translation. The caller must `loadStaticDictionary`
- * first (it resolves instantly from the precache, even offline).
+ * scripts/i18n), a loaded, non-empty dictionary means the runtime can translate
+ * the whole app offline from it — no harvest, no live machine translation. The
+ * caller must `loadStaticDictionary` first. Only the default language's pack is
+ * PWA-precached; other languages are fetched on first selection and then kept
+ * offline by the translation-locales runtime cache (see vite.config.ts).
  */
 export const isDictionaryComplete = (languageCode: string): boolean => {
   if (!languageCode || languageCode === 'tr') return true; // source language
