@@ -1171,7 +1171,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
 
   "auxiliary": {
     title: "Yardımcı Makineler",
-    description: "Jeneratör, kompresör, pompa, separatör, kazanlar ve tüm yardımcı sistemler",
+    description: "Jeneratör, kompresör, pompa, separatör, kazanlar, insinerator, sintine separatörü, atık su arıtma, ısı değiştiriciler, soğuk depo ve tüm yardımcı sistemler",
     topics: [
       {
         title: "Dizel Jeneratörler",
@@ -1583,6 +1583,309 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Üretilen su içme amaçlı kullanılacaksa UV/silver/klorlama yapılmalı.",
           "Periyodik mikrobiyolojik analiz yapılmalı.",
           "Asit temizliğinde uygun PPE (yüz maskesi, eldiven) kullanılmalı."
+        ]
+      },
+      {
+        title: "İnsinerator (Atık Yakma Fırını)",
+        introduction: "Insinerator, gemide üretilen sludge (atık yağ), oily rags, plastik dışı katı atık ve sewage çamurunu IMO MEPC.244(66) standardına göre yakarak hacmini ve çevresel etkisini azaltan yardımcı makinedir. 850–1200 °C aralığında çalışır ve baca gazı emisyonları regule edilir.",
+        sections: [
+          {
+            heading: "Yapı ve Bileşenler",
+            paragraphs: [
+              "Yanma odası refrakter tuğla ile kaplı, sludge tank, dosing pompası, brulor (burner) ve hava fanı içerir.",
+              "Sludge için ön ısıtma 90 °C; viskozite düşürülür ve atomizer ile odaya püskürtülür.",
+              "Katı atık (kağıt, gıda) charge door'dan yüklenir; ön ısıtma sonrası alev yakar.",
+              "Baca: cyclone/scrubber + sıcaklık sensörü + emisyon kontrolü."
+            ],
+            table: {
+              headers: ["Atık", "Yakma Sıcaklığı", "Süre"],
+              rows: [
+                ["Sludge oil", "850–1100 °C", "Sürekli"],
+                ["Katı atık", "850–1000 °C", "Batch / döngü"],
+                ["Sewage çamuru", "850 °C minimum", "Sürekli"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Plastik, PVC, halojenli atık, askeryı, akü, civa içerikli atık YAKILMAZ (MARPOL Annex VI).",
+          "Limanda ve özel alanlarda insinerator çalıştırılması yasaktır (port state regulation).",
+          "Garbage Record Book (Part I) yakılan atık türü ve miktarı kayıt altına alınır.",
+          "Yakma odası sıcaklığı 850 °C altına düşerse otomatik shutdown devreye girer."
+        ],
+        workingPrinciple: [
+          "Brulor diesel/sludge karışımıyla ön ısıtma yapar, oda sıcaklığı 850 °C'ye ulaşır.",
+          "Sludge dosing pompası ısıtılmış sludge'ı atomize ederek yanma odasına püskürtür.",
+          "Hava fanı yanma için yeterli oksijen sağlar; oran kontrol edilir.",
+          "Baca gazı sıcaklık sensörüyle izlenir; düşerse oto-shutdown."
+        ],
+        operation: [
+          "Sludge tankı seviyesini, yakıt tankını ve hava fanını kontrol et.",
+          "Brulor ile ön ısıtma başlat; oda sıcaklığı 700 °C üzerine çıktığında sludge dosingi devreye al.",
+          "Sıcaklığı 850–1000 °C bandında tut; aşırı dosingten kaçın (siyah duman = eksik yanma).",
+          "Çalışma sonunda dosingi kes, brulor ile odayı temiz yakıtla soğut (purge).",
+          "Garbage Record Book'a tür, hacim, başlangıç-bitiş saati yaz."
+        ],
+        faults: [
+          { fault: "Brulor ateşlemiyor", cause: "Yakıt yok, ignition elektrot kirli, fotosel arızalı", action: "Yakıt valfini aç, elektrotları temizle, fotoseli kontrol et." },
+          { fault: "Siyah duman çıkıyor", cause: "Hava yetersiz, atomizer tıkalı, sludge çok viskoz", action: "Hava fanı debisi artır, atomizer söküm temizlik, sludge ön ısıtma kontrol." },
+          { fault: "Oda sıcaklığı düşük alarmı", cause: "Refrakter hasarı, fazla sludge dosingi, yakıt düşük kalori", action: "Refrakter inspeksiyon, dosing kıs, yakıtı pis sludge ile karıştırma." },
+          { fault: "Charge door kilit alarm", cause: "Limit switch arızalı, contası eskimiş", action: "Switch ve conta değişimi, kilit test." }
+        ],
+        precautions: [
+          "Çalışırken charge door kesinlikle açılmaz; alev geri tepme (flashback) riski.",
+          "Plastik veya PVC içeren atık dioxin/furan üretir, sağlığa ve çevreye zararlıdır.",
+          "Refrakter tuğla şok soğumadan zarar görür; cool-down minimum 4 saat.",
+          "Stack çıkışı çevresinde personel olmamalı; soğuk havada görünmeyen sıcak gaz tehlikesi."
+        ]
+      },
+      {
+        title: "Sintine Separatörü (OWS / 15 ppm Bilge Separator)",
+        introduction: "OWS (Oily Water Separator), makine dairesi sintinesindeki yağlı suyun MARPOL Annex I gereği denize basılmadan önce yağ içeriğinin 15 ppm altına düşürülmesini sağlayan yardımcı makinedir. Yer çekimi ayırma + koalesan filtre + bazen membran teknolojisi ile çalışır ve 15 ppm alarm/stop ünitesine bağlıdır.",
+        sections: [
+          {
+            heading: "Sistem Bileşenleri",
+            paragraphs: [
+              "1. kademe (gravity separator): yoğunluk farkıyla serbest yağ ve büyük damlacıklar üstte ayrışır.",
+              "2. kademe (coalescer / filter): emülsifiye damlacıklar koalesan ortamda birleştirilip ayrılır.",
+              "15 ppm bilge alarm (OCM — Oil Content Monitor): IMO MEPC.107(49) onaylı; ≥15 ppm olduğunda 3-yollu valfi tank tarafına yönlendirir.",
+              "Sludge ve yağ toplama tankı (slop/sludge tank) ve overboard hattı."
+            ],
+            table: {
+              headers: ["Kademe", "Amaç", "Tipik Verim"],
+              rows: [
+                ["Gravity stage", "Serbest yağ ayrımı", ">100 ppm → 50–100 ppm"],
+                ["Coalescer", "Emülsiyon kırma", "<15 ppm"],
+                ["Polishing filter", "Son kademe", "<5 ppm"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "MARPOL Annex I: kıyıdan >12 NM, gemi seyir halinde, 15 ppm altında ise tahliye serbest.",
+          "Özel alanlarda (Akdeniz, Karadeniz, Baltık vb.) ek kısıtlamalar uygulanır.",
+          "ORB (Oil Record Book) Bölüm I'de her separatör operasyonu kayıt altına alınır.",
+          "Magic pipe (bypass) kullanımı ağır cezai yaptırım gerektirir."
+        ],
+        workingPrinciple: [
+          "Sintine pompası yağlı suyu separatöre besler; ilk hücrede serbest yağ üst kısma çıkar ve toplama tankına alınır.",
+          "Su, koalesan filtre elemanından geçer; mikron damlacıklar birleşip yüzeye çıkar.",
+          "Çıkış suyu OCM'den geçer; numune sürekli ölçülür ve veri loglanır.",
+          "≥15 ppm okumada 3-yollu solenoid valf otomatik olarak çıkışı bilge tankına geri çevirir, alarm verir."
+        ],
+        operation: [
+          "Çalıştırmadan önce sealing water hattını aç (bazı modellerde gerekli).",
+          "Pompa başlat, ilk birkaç dakika resirkülasyon modunda OCM'yi prime et.",
+          "OCM yeşil ışık verince 3-yollu valf overboard'a açılır; akışı düşük tut.",
+          "Operasyon süresince ORB'yi anlık doldur (start/stop saati, miktar, pozisyon).",
+          "Bitirince hatları temiz su ile flush et, OCM sensörünü temiz tut."
+        ],
+        faults: [
+          { fault: "Sürekli 15 ppm alarmı", cause: "OCM sensörü kirli, koalesan element doymuş", action: "OCM cell temizliği, koalesan element değişimi." },
+          { fault: "Pompa basınç vermiyor", cause: "Sintine kuyusu boş, hava emiyor", action: "Suction kontrol, hava al, valfleri kontrol." },
+          { fault: "Yağ toplama tankı dolu alarmı", cause: "Slop tank dolmuş", action: "Sludge tankına transfer et, ORB'a yaz." },
+          { fault: "OCM kalibrasyon hatası", cause: "Lamba/optik bozuk, sıfır kalibrasyon kayıp", action: "Üretici prosedürüne göre temiz su ile zero, span kalibrasyonu." }
+        ],
+        precautions: [
+          "OCM mührü (seal) PSC inspeksiyonunda kontrol edilir; mühür kırılmış olmamalı.",
+          "Bypass hattı veya sahte OCM bağlantısı kesinlikle yapılmaz; ağır ceza ve hapis cezası vardır.",
+          "Numune hattı sürekli akışlı olmalı; tıkanma alarm üretmez ama hatalı düşük okuma yapar.",
+          "Slop tankı transferi shore reception facility'ye verilirken receipt ORB'ye yapıştırılır."
+        ]
+      },
+      {
+        title: "Sewage Treatment Plant (STP)",
+        introduction: "Sewage Treatment Plant, gemideki tuvalet (black water) ve bazen mutfak/lavabo (grey water) atık sularını MARPOL Annex IV ve IMO MEPC.227(64) standardına göre arındıran yardımcı makinedir. Biyolojik (aerobik aktif çamur), elektroliz veya MBR (membran bioreaktör) tipinde olabilir.",
+        sections: [
+          {
+            heading: "Sistem Tipleri",
+            paragraphs: [
+              "Biyolojik (extended aeration): 3 hücreli — aerobik (mikroorganizma sindirimi) → settling (çökelti) → klorinasyon → discharge. Geleneksel ve yaygın tip.",
+              "Elektrolitik: deniz suyu elektrolizle hipoklorit üretir; doğrudan kimyasal dezenfeksiyon yapar.",
+              "MBR (Membrane Bioreactor): biyolojik proses + ultrafiltrasyon membran; çıkış suyu çok yüksek kalitede olur."
+            ],
+            table: {
+              headers: ["Parametre", "MARPOL IV Limit", "Tipik MBR Çıkış"],
+              rows: [
+                ["Fekal koliform", "<100 CFU/100mL", "<10"],
+                ["TSS (askıda katı)", "<35 mg/L", "<10"],
+                ["BOD5", "<25 mg/L", "<10"],
+                ["pH", "6–8.5", "7–8"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Onaysız/işlenmemiş sewage: kıyıdan ≥12 NM, ≥4 knot hızla, kontrollü oranda boşaltılabilir.",
+          "Onaylı STP çıkışı: ≥3 NM (komminutor + dezenfeksiyon ile) veya doğrudan (uyumlu STP ile).",
+          "Özel alanda (Baltık) hiç boşaltım yapılamaz; shore reception zorunlu.",
+          "ISPP (International Sewage Pollution Prevention) sertifikası 5 yıllık."
+        ],
+        workingPrinciple: [
+          "Aerobik tankta blower hava verir; aktif çamur içindeki bakteriler organik maddeyi CO₂ ve H₂O'ya çevirir.",
+          "Settling tankında çamur çöker; dipte biriken çamur aerobik tanka geri sirküle edilir.",
+          "Üst sıvı kontak tankında klor (kalsiyum hipoklorit tableti veya elektrolitik) ile dezenfekte edilir.",
+          "Discharge pompası işlenmiş su tankından deniz tarafına basar; level switch otomatik kontrol sağlar."
+        ],
+        operation: [
+          "Aerobik tank seviyesini kontrol et (genelde 50–70%).",
+          "Blower'ı 24/7 çalıştır; durdurulursa bakteriler ölür ve sistem 'patlar' (kötü koku, verimsizlik).",
+          "Klor tabletini düzenli ekle (tablet feeder dolu olmalı).",
+          "Discharge pompasını kıyıdan açıkta ve seyir halinde devreye al.",
+          "Haftalık olarak çamur seviyesini ölç; gerekirse fazla çamuru sludge tankına al."
+        ],
+        faults: [
+          { fault: "Ağır koku, tank köpürüyor", cause: "Blower yetersiz, aşırı yükleme, deterjan fazla", action: "Hava debisini artır, mutfak greywater'ı bypass et, mikroorganizma kültürü ekle." },
+          { fault: "Çıkış bulanık, koliform yüksek", cause: "Klor bitmiş, settling bozuk", action: "Klor tabletini doldur, settling'i temizle, sistemi yeniden seed et." },
+          { fault: "Discharge pompa çalışmıyor", cause: "Level switch arızalı, impeller tıkalı (peçete vb.)", action: "Switch test, pompa söküm temizlik." },
+          { fault: "Blower aşırı sıcak", cause: "Hava filtresi tıkalı, kayış gevşek", action: "Filtre değiştir, kayış gerginlik kontrolü." }
+        ],
+        precautions: [
+          "STP girişine wet wipe, peçete, bez atılmamalı; pompa ve nozülleri tıkar.",
+          "Klorlama bölmesinde gas mask + eldiven kullanılmalı (klor gazı solunum yoluyla zararlı).",
+          "Sistem 24+ saat durduğunda bakteri kültürü ölebilir; tekrar devreye almada seed gerekebilir.",
+          "Holding tank kapasitesi her gemide 2–3 günlük olmalı; kıyıya yakın seyirde dolmamasına dikkat."
+        ]
+      },
+      {
+        title: "Isı Değiştiriciler ve Soğutucular (Heat Exchanger / Cooler)",
+        introduction: "Isı değiştiriciler, iki akışkan arasında ısı transferi sağlayan temel yardımcı makinelerdir. Gemide L.O. cooler, jacket water (ceket suyu) cooler, charge air cooler, F.O./L.O. heater ve central cooling kondenserleri bu gruba girer. Modern gemilerde deniz suyu korozyonunu makinelerden uzak tutan merkezi soğutma (central cooling) sistemi yaygındır.",
+        sections: [
+          {
+            heading: "Isı Değiştirici Tipleri",
+            paragraphs: [
+              "Plakalı (plate): İnce oluklu paslanmaz/titanyum plakalar; yüksek verim, küçük hacim, kolay temizlik. Central cooler ve L.O. cooler'da yaygın.",
+              "Gövde-boru (shell & tube): Bir akışkan borulardan, diğeri gövdeden geçer. Yüksek basınç/sıcaklığa dayanıklı; F.O. heater ve buhar ısıtıcılarda kullanılır.",
+              "Charge air cooler (hava soğutucu): Turboşarj sonrası sıkışan emme havasını soğutur; dolgu yoğunluğunu (ve gücü) artırır."
+            ],
+            table: {
+              headers: ["Tip", "Özellik", "Kullanım"],
+              rows: [
+                ["Plakalı (plate)", "Yüksek verim, kompakt, sökülüp temizlenebilir", "Central/L.O./J.W. cooler"],
+                ["Gövde-boru (shell&tube)", "Yüksek basınç/sıcaklık, sağlam", "F.O. heater, buhar ısıtıcı"],
+                ["Charge air cooler", "Hava/su, kanatlı boru demeti", "Dolgu havası soğutma"],
+                ["Titanyum plaka", "Deniz suyu korozyonuna dayanıklı", "Central cooler SW tarafı"]
+              ]
+            }
+          },
+          {
+            heading: "Isı Transferi (LMTD)",
+            paragraphs: [
+              "Transfer edilen ısı, toplam ısı transfer katsayısı (U), alan (A) ve logaritmik ortalama sıcaklık farkına (ΔTlm) bağlıdır.",
+              "Kirlenme (fouling) U değerini düşürür; performans düşüşü çıkış sıcaklığı yükselmesiyle fark edilir."
+            ],
+            formula: {
+              expression: "Q = U × A × ΔTlm",
+              variables: [
+                "Q: Isı transfer hızı (W)",
+                "U: Toplam ısı transfer katsayısı (W/m²·K)",
+                "A: Isı transfer yüzey alanı (m²)",
+                "ΔTlm: Logaritmik ortalama sıcaklık farkı (K)"
+              ]
+            },
+            example: {
+              problem: "U = 3000 W/m²·K, A = 8 m², ΔTlm = 15 K olan bir L.O. cooler'ın ısı transfer kapasitesini bulun.",
+              steps: [
+                "Q = U × A × ΔTlm",
+                "Q = 3000 × 8 × 15 = 360.000 W"
+              ],
+              result: "Cooler yaklaşık 360 kW ısıyı yağdan deniz/tatlı suya aktarır."
+            }
+          },
+          {
+            heading: "Merkezi Soğutma (Central Cooling)",
+            paragraphs: [
+              "Deniz suyu (SW) yalnızca merkezi (central) cooler'a girer; makineler düşük tuzluluklu tatlı su (LT/HT FW) devresiyle soğutulur.",
+              "Yüksek sıcaklık (HT) devresi ceket suyunu, düşük sıcaklık (LT) devresi L.O., charge air ve yardımcıları soğutur; termostatik valf sıcaklığı sabit tutar.",
+              "Avantaj: deniz suyu korozyonu sadece central cooler ve SW hattıyla sınırlı kalır; bakım ve ömür kazanılır."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Plakalı cooler gasket'leri sıcaklık/basınç uyumlu (NBR/EPDM) olmalı; yanlış gasket kaçak yapar.",
+          "Deniz suyu tarafında titanyum plaka veya CuNi boru korozyonu azaltır.",
+          "Central cooling FW devresine korozyon inhibitörü (nitrit) dozlanır ve periyodik test edilir.",
+          "Charge air cooler tıkanması egzoz sıcaklığını ve yakıt tüketimini artırır."
+        ],
+        workingPrinciple: [
+          "Sıcak akışkan (yağ, ceket suyu, hava) bir taraftan; soğutucu akışkan (deniz suyu veya LT tatlı su) diğer taraftan zıt yönde (counter-flow) akar.",
+          "İnce ayırıcı yüzey (plaka/boru) üzerinden ısı iletimle sıcaktan soğuğa geçer.",
+          "Termostatik/üç-yollu valf çıkış sıcaklığını izleyerek soğutucu debisini ayarlar.",
+          "Central sistemde SW yalnızca central cooler'ı soğutur, iç devre temiz FW ile döner."
+        ],
+        operation: [
+          "Devreye almadan önce hava kilidini gider (vent); SW ve FW pompalarını başlat.",
+          "Giriş/çıkış sıcaklık ve basınç farkını (ΔP) not et; ΔP artışı kirlenme işaretidir.",
+          "Termostatik valfin set sıcaklığını (ör. ceket suyu ~ 80–85 °C) kontrol et.",
+          "Deniz suyu strainer'ını düzenli temizle; SW debisi düşerse çıkış sıcaklığı yükselir.",
+          "Plakalı cooler'ı periyodik aç, plakaları kimyasal (asit) ile temizle, gasket'i kontrol et."
+        ],
+        faults: [
+          { fault: "Çıkış sıcaklığı yüksek", cause: "Plaka/boru kirli (fouling), SW debisi düşük, hava kilidi", action: "Cooler temizliği, SW strainer temizliği, hava alma (vent)." },
+          { fault: "İki akışkan karışıyor (kaçak)", cause: "Plaka çatlağı, gasket bozuk, boru delinmesi", action: "Basınç testi, hasarlı plaka/boru değişimi, gasket yenileme." },
+          { fault: "Yüksek basınç farkı (ΔP)", cause: "Tortu/çamur birikimi, tıkanma", action: "Ters yıkama (backflush), kimyasal temizlik." },
+          { fault: "FW devresinde korozyon", cause: "İnhibitör tükenmiş, oksijen girişi", action: "Nitrit seviyesini test et ve dozla, hava girişini gider." }
+        ],
+        precautions: [
+          "Kimyasal temizlikte (asit) uygun PPE kullan ve nötralizasyon sonrası bolca durula.",
+          "Plakalı cooler'ı sökerken plaka sırasını ve yönünü işaretle; yanlış diziliş kaçak yapar.",
+          "Basınçlıyken flanş/cıvata gevşetilmez; önce izole edip basınç boşalt.",
+          "Deniz suyu tarafı galvanik korozyon için anot/kaplama durumu kontrol edilmeli."
+        ]
+      },
+      {
+        title: "Provision Refrigeration (Soğuk Depo) Sistemi",
+        introduction: "Provision refrigeration, gemide kumanya odalarının (et, balık, sebze, süt ürünleri) belirli sıcaklıkta tutulmasını sağlayan yardımcı makinedir. Tipik olarak R404A/R407F/R513A soğutucu akışkan, kompresör, kondenser, ekspansiyon valfi ve her oda için ayrı evaporator içerir.",
+        sections: [
+          {
+            heading: "Oda Sıcaklıkları ve Komponentler",
+            paragraphs: [
+              "Et odası -18 °C, balık -25 °C, sebze +4 °C, süt ürünü +2 °C, kuru kumanya +10 °C tipik.",
+              "Genellikle iki kompresör (duty/standby), bir kondenser (su soğutmalı), ekspansiyon valfli her oda.",
+              "Defrost: sıcak gaz veya elektrikli rezistans ile periyodik buz çözme.",
+              "Solenoid valf, oda termostatına göre evaporator'a gaz akışını açar/kapar."
+            ],
+            table: {
+              headers: ["Oda", "Sıcaklık", "Bağıl Nem"],
+              rows: [
+                ["Et (frozen)", "-18 °C", "—"],
+                ["Balık (frozen)", "-25 °C", "—"],
+                ["Sebze/meyve", "+4 °C", "%85–90"],
+                ["Süt ürünü", "+2 °C", "%80"],
+                ["Kuru kumanya", "+10 °C", "%50"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Kapı içeride bulunan personel için içeriden açma kolu (panic release) zorunludur (SOLAS).",
+          "Düşük sıcaklık alarmı bridge ve ECR'da görünür olmalı.",
+          "Defrost sırasında oda sıcaklığı geçici olarak yükselir; defrost frekansı ayarlanmalı.",
+          "Et ve balık odası ayrı evaporator gerektirir; çapraz koku önlemi."
+        ],
+        workingPrinciple: [
+          "Kompresör soğutucu gazı sıkıştırır → kondenser deniz suyuyla yoğunlaştırır (sıvı) → likit receiver → ekspansiyon valfi (basınç düşer) → evaporator (oda havasını soğutur, gaz olur) → kompresör.",
+          "Termostat oda sıcaklığını okur; set noktasına ulaşınca solenoid valfi kapatır, kompresör pump-down yapar.",
+          "Defrost timer/sensör tetiklendiğinde sıcak gaz veya elektrik rezistansı evaporator'a yönlendirilir."
+        ],
+        operation: [
+          "Sefere çıkmadan kumanya yüklendiğinde tüm odalar set sıcaklığa indirilir.",
+          "Günlük sıcaklık kontrol log'u tutulur (HACCP zorunluluğu).",
+          "Evaporator coil'inde aşırı buz birikimi varsa defrost manuel başlatılır.",
+          "Refrigerant level (sight glass) ve oil level (kompressor) kontrol edilir.",
+          "Kondenser deniz suyu strainer'ı haftalık temizlenir."
+        ],
+        faults: [
+          { fault: "Oda soğumuyor", cause: "Gaz kaçağı, evaporator buzlu, solenoid valf kapalı", action: "Sızdırmazlık, defrost, solenoid test." },
+          { fault: "Kompresör kısa devirli (short-cycle)", cause: "LP switch ayarsız, gaz az, sıvı geri dönüşü", action: "Switch ayar, gaz şarj, ekspansiyon valf bakım." },
+          { fault: "Kapıda buzlanma", cause: "Conta bozuk, defrost yetersiz", action: "Conta değişim, defrost frekansı artır." },
+          { fault: "HP trip", cause: "Deniz suyu yok, kondenser kirli", action: "SW pompa, strainer, kondenser temizlik." }
+        ],
+        precautions: [
+          "Soğuk depoya tek başına girilmez; içeride mahsur kalma riski (panic alarm + radio).",
+          "Defrost sırasında üretilen sıvı drain hattı tıkanmamalı (don/sızıntı).",
+          "Soğutucu gaz sızıntısı oda atmosferinde O₂ azaltır; gaz dedektör zorunlu.",
+          "Kompresör çalışırken suction valf kapatılmaz (sıvı kompresyon = kırılma)."
         ]
       }
     ]
