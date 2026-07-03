@@ -75,7 +75,7 @@ export default function NavigationFormulasPage() {
 
   return (
     <MobileLayout>
-      <div className="space-y-4" data-no-translate>
+      <div className="space-y-4">
         <div className="flex items-center justify-end">
           <div className="flex items-center gap-3">
             <div className="text-sm text-muted-foreground hidden sm:flex items-center gap-2">

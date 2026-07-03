@@ -1880,7 +1880,6 @@ export default function EnvironmentTopicsPage() {
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-[hsl(160,50%,6%)] dark:via-[hsl(160,50%,8%)] dark:to-[hsl(170,50%,10%)]"
-      data-no-translate
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl" />

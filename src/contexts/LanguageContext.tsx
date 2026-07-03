@@ -216,20 +216,21 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   };
 
   // ── Core string translator (glossary-aware) ────────────────────────────────
-  // Resolves a source string without any network access: cache → curated
-  // contextual/maritime override → static dictionary. Returns undefined when
-  // only a live fetch could translate it. Caches static/override hits for next
-  // time.
+  // Resolves a source string without any network access: curated
+  // contextual/maritime override → static dictionary → cache. Returns undefined
+  // when only a live fetch could translate it. Caches static/override hits for
+  // next time.
   //
   // The curated override is consulted BEFORE the shipped dictionary (matching
   // the build-time precedence documented in scripts/i18n/README.md) so that a
   // context-aware correction — e.g. the crew-hierarchy label "Üstü:" =
   // "Reports to:", not the spatial "Above:" — can never be masked by a stale
-  // machine translation baked into public/locales/*.json.
+  // machine translation baked into public/locales/*.json. The runtime cache is
+  // consulted LAST for the same reason: it may hold a generic live (gtx)
+  // translation persisted before the pack/glossary covered the string, and that
+  // must never shadow the curated result.
   const resolveLocally = (normalizedText: string, languageCode: string): string | undefined => {
     const cacheKey = `${languageCode}:${normalizedText}`;
-    const cached = translationCacheRef.current.get(cacheKey);
-    if (cached !== undefined) return cached;
 
     const maritimeOverride = getMaritimeTranslationOverride(normalizedText, languageCode);
     if (maritimeOverride) {
@@ -250,7 +251,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       return staticTranslation;
     }
 
-    return undefined;
+    return translationCacheRef.current.get(cacheKey);
   };
 
   // Translates a batch of source strings in a single network round-trip. On any
@@ -336,6 +337,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
 
     const { allowLive = true } = options;
+
+    // Make sure the language's static pack is in memory BEFORE resolving.
+    // Route-change mutations can fire before the pack finishes loading on a
+    // fresh boot; without this await those strings would fall through to the
+    // live translator (wasted requests) and the generic result could then be
+    // cached over the curated pack translation.
+    await loadStaticDictionary(languageCode);
+    if (translationRunIdRef.current !== runId) return;
 
     const bySource = new Map<string, Array<(t: string) => void>>();
     for (const unit of units) {

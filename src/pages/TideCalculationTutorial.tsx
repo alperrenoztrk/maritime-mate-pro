@@ -6,7 +6,7 @@ import { Waves } from "lucide-react";
 const TideCalculationTutorial = () => {
   return (
     <MobileLayout>
-      <div className="space-y-4" data-no-translate>
+      <div className="space-y-4">
         <div className="text-sm text-muted-foreground flex items-center gap-2">
           <Waves className="h-4 w-4" /> Gelgit Hesabı — Hesabın Yapılışı
         </div>

@@ -628,7 +628,6 @@ export default function LessonTopicsPage() {
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-      data-no-translate
       style={highRefreshRateStyles}
     >
       {/* Background effects */}
