@@ -1,9 +1,8 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Moon, Sun, Globe, Settings2 as SettingsIcon, Palette, Type } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { useTheme } from "@/hooks/useTheme";
 // Density settings removed from Settings page; provider remains app-wide
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -13,7 +12,7 @@ import { ReleaseChecklistCard } from "@/components/settings/ReleaseChecklistCard
 import { WidgetSettings } from "@/components/settings/WidgetSettings";
 
 const Settings = () => {
-  const { theme, setTheme } = useTheme();
+  const { fontSize, setFontSize } = useFontSize();
   const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
 
