@@ -13,21 +13,7 @@ import { WidgetSettings } from "@/components/settings/WidgetSettings";
 
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
-  const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
-
-  // Neon and Nature themes are no longer available in Settings
-
-  const handleThemeChange = (newTheme: string) => {
-    setTheme(newTheme as "light" | "dark");
-    const themeNames = {
-      light: "Açık Tema",
-      dark: "Koyu Tema",
-    } as const;
-    if (newTheme === "light") {
-      toast.success(`${themeNames.light} aktif`);
-    }
-  };
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
@@ -62,49 +48,6 @@ const Settings = () => {
           </div>
 
           <div className="grid gap-6">
-            {/* Theme Settings */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700 nature:bg-green-50 nature:border-green-200">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Palette className="w-5 h-5" />
-                  <span data-translatable>Tema Ayarları</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="theme-select">
-                      <span data-translatable>Tema</span>
-                    </Label>
-                    <Select value={theme} onValueChange={handleThemeChange}>
-                      <SelectTrigger id="theme-select">
-                        <SelectValue>
-                          <span data-translatable>{theme === 'light' ? 'Açık Tema' : 'Koyu Tema'}</span>
-                        </SelectValue>
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="light">
-                          <div className="flex items-center gap-2">
-                            <Sun className="w-4 h-4" />
-                            <span data-translatable>Açık Tema</span>
-                          </div>
-                        </SelectItem>
-                        <SelectItem value="dark">
-                          <div className="flex items-center gap-2">
-                            <Moon className="w-4 h-4" />
-                            <span data-translatable>Koyu Tema</span>
-                          </div>
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    <span data-translatable>Seçilen tema tüm uygulamada geçerli olacaktır</span>
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Font Size Settings */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
