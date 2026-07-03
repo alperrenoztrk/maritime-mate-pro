@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light" | "neon";
+type Theme = "dark";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -28,19 +28,16 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem(storageKey) as string | null;
-    if (stored === "cyberpunk" || stored === "neon" || stored === "nature") {
+    // The app now only supports dark theme; ignore any legacy stored value.
+    if (stored && stored !== "dark") {
       localStorage.setItem(storageKey, "dark");
-      return "dark";
     }
-    return (stored as Theme) || defaultTheme;
+    return defaultTheme;
   });
 
   useEffect(() => {
     const root = window.document.documentElement;
-
-    // Always remove legacy class names as well
     root.classList.remove("light", "dark", "cyberpunk", "neon", "nature");
-
     root.classList.add(theme);
   }, [theme]);
 
