@@ -5,8 +5,12 @@ const ALLOWED_ORIGINS = [
   // Lovable preview URLs
   'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
   'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
-  // Capacitor mobile app
+  // Capacitor WebView origins: iOS uses capacitor://localhost, Android uses
+  // https://localhost (default androidScheme) or http://localhost.
   'capacitor://localhost',
+  'ionic://localhost',
+  'https://localhost',
+  'http://localhost',
   // Local development
   'http://localhost:5173',
   'http://localhost:8080',
@@ -19,7 +23,9 @@ export function getCorsHeaders(origin: string | null): Record<string, string> {
     ALLOWED_ORIGINS.includes(origin) ||
     // Allow any *.lovableproject.com or *.lovable.app subdomain for this project
     /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
-    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin)
+    /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin) ||
+    // Capacitor/localhost with any port
+    /^https?:\/\/localhost(:\d+)?$/.test(origin)
   );
 
   return {
