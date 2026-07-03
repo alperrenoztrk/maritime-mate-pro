@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <rect width="900" height="360" fill="#f8fafc" />
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Gemi Kesitinde K, B, G ve M Noktaları</text>
+
+  <!-- su -->
+  <rect x="80" y="200" width="740" height="120" fill="#dbeafe" />
+  <line x1="80" y1="200" x2="820" y2="200" stroke="#1e3a8a" stroke-width="2" />
+  <text x="90" y="192" font-size="12" font-family="Arial" fill="#1e3a8a">Su hattı</text>
+
+  <!-- gemi kesiti (orta kesit) -->
+  <path d="M330 150 L570 150 L560 250 Q450 300 340 250 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+
+  <!-- merkez hattı -->
+  <line x1="450" y1="70" x2="450" y2="290" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="6 4" />
+
+  <!-- noktalar: K (omurga), B, G, M -->
+  <circle cx="450" cy="286" r="7" fill="#334155" />
+  <text x="464" y="292" font-size="14" font-weight="bold" font-family="Arial" fill="#0f172a">K</text>
+
+  <circle cx="450" cy="232" r="7" fill="#2563eb" />
+  <text x="464" y="238" font-size="14" font-weight="bold" font-family="Arial" fill="#0f172a">B</text>
+
+  <circle cx="450" cy="180" r="7" fill="#ef4444" />
+  <text x="464" y="186" font-size="14" font-weight="bold" font-family="Arial" fill="#0f172a">G</text>
+
+  <circle cx="450" cy="110" r="7" fill="#0ea5e9" />
+  <text x="464" y="116" font-size="14" font-weight="bold" font-family="Arial" fill="#0f172a">M</text>
+
+  <!-- mesafeler (sol tarafta) -->
+  <line x1="380" y1="286" x2="380" y2="232" stroke="#2563eb" stroke-width="2" />
+  <text x="345" y="263" font-size="12" font-family="Arial" fill="#2563eb">KB</text>
+
+  <line x1="350" y1="286" x2="350" y2="180" stroke="#ef4444" stroke-width="2" />
+  <text x="315" y="238" font-size="12" font-family="Arial" fill="#ef4444">KG</text>
+
+  <line x1="410" y1="180" x2="410" y2="110" stroke="#0ea5e9" stroke-width="2" />
+  <path d="M410 110 L403 122 L417 122 Z" fill="#0ea5e9" />
+  <text x="378" y="150" font-size="12" font-weight="bold" font-family="Arial" fill="#0ea5e9">GM</text>
+
+  <line x1="520" y1="232" x2="520" y2="110" stroke="#64748b" stroke-width="2" />
+  <text x="530" y="175" font-size="12" font-family="Arial" fill="#64748b">BM</text>
+
+  <text x="80" y="340" font-size="12" font-family="Arial" fill="#64748b">K: omurga, B: kaldırma merkezi, G: ağırlık merkezi, M: metasantr — GM = KB + BM − KG</text>
+</svg>

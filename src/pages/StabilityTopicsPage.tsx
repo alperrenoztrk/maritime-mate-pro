@@ -28,13 +28,13 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-// Stabilite görselleri
-import metacenterDiagram from "@/assets/stability/metacenter-diagram.png";
-import gzCurveDiagram from "@/assets/stability/gz-curve-diagram.png";
-import freeSurfaceEffect from "@/assets/stability/free-surface-effect.png";
-import rightingMomentDiagram from "@/assets/stability/righting-moment-diagram.png";
-import trimDiagram from "@/assets/stability/trim-diagram.png";
-import damageStabilityDiagram from "@/assets/stability/damage-stability-diagram.png";
+// Stabilite diyagramları (public/diagrams altındaki vektör çizimler)
+const metacenterDiagram = "/diagrams/stability/metasantr-gm.svg";
+const gzCurveDiagram = "/diagrams/stability/gz-egrisi.svg";
+const freeSurfaceEffect = "/diagrams/stability/serbest-yuzey.svg";
+const rightingMomentDiagram = "/diagrams/dogrultma-kolu.svg";
+const trimDiagram = "/diagrams/stability/trim.svg";
+const damageStabilityDiagram = "/diagrams/stability/yara-stabilitesi.svg";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 // =====================================
