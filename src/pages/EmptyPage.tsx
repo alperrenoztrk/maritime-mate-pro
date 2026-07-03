@@ -20,6 +20,8 @@ const oceanTheme = {
 };
 
 const EmptyPage = () => {
+  const navigate = useNavigate();
+  const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
   const hasSwiped = useRef(false);
   const [activeTab, setActiveTab] = useState("time");
@@ -31,8 +33,6 @@ const EmptyPage = () => {
     refreshMs: 300000,
     reverseGeocode: true,
   });
-
-  const oceanTheme = useMemo(() => getThemeConfig(theme === 'dark'), [theme]);
 
   const [currentTime, setCurrentTime] = useState(new Date());
 
