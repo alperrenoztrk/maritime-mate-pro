@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <rect width="900" height="360" fill="#f8fafc" />
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Serbest Yüzey Etkisi</text>
+
+  <!-- sol: dik gemi, tank sıvısı düz -->
+  <g>
+    <path d="M110 120 L350 120 L340 240 Q230 285 120 240 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <rect x="170" y="160" width="120" height="70" fill="none" stroke="#475569" stroke-width="2" />
+    <rect x="170" y="195" width="120" height="35" fill="#93c5fd" />
+    <line x1="170" y1="195" x2="290" y2="195" stroke="#1d4ed8" stroke-width="2" />
+    <text x="230" y="265" text-anchor="middle" font-size="13" font-family="Arial" fill="#475569">Dik durum</text>
+  </g>
+
+  <!-- sağ: yatmış gemi, sıvı alçak tarafa kayar -->
+  <g transform="rotate(12 640 200)">
+    <path d="M520 120 L760 120 L750 240 Q640 285 530 240 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <rect x="580" y="160" width="120" height="70" fill="none" stroke="#475569" stroke-width="2" />
+    <path d="M580 230 L580 212 L700 182 L700 230 Z" fill="#93c5fd" />
+    <line x1="580" y1="212" x2="700" y2="182" stroke="#1d4ed8" stroke-width="2" />
+  </g>
+  <text x="640" y="290" text-anchor="middle" font-size="13" font-family="Arial" fill="#475569">Yatmış durum: sıvı alçak tarafa kayar</text>
+
+  <!-- G -> Gv oku -->
+  <circle cx="230" cy="205" r="6" fill="#ef4444" />
+  <text x="242" y="210" font-size="13" font-weight="bold" font-family="Arial" fill="#ef4444">G</text>
+  <circle cx="640" cy="150" r="6" fill="#b91c1c" />
+  <text x="652" y="146" font-size="13" font-weight="bold" font-family="Arial" fill="#b91c1c">Gv (sanal)</text>
+
+  <text x="60" y="340" font-size="12" font-family="Arial" fill="#64748b">Kısmen dolu tankta kayan sıvı, ağırlık merkezini sanal olarak yükseltir (GGv) ve efektif GM'i azaltır.</text>
+</svg>
