@@ -1,0 +1,71 @@
+name: Auto PR Create & Merge
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  create-and-merge-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run validation tests
+        run: npm run test:validation
+
+      - name: Run topic coverage quality gate
+        run: npm run check:topic-coverage
+
+      - name: Build
+        run: npm run build:prod
+
+      - name: Create or Update PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ github.ref_name }}"
+
+          # Check if PR already exists
+          PR_NUMBER=$(gh pr list --head "$BRANCH" --base main --json number -q '.[0].number' 2>/dev/null || echo "")
+
+          if [ -z "$PR_NUMBER" ]; then
+            # Create new PR with auto-merge enabled
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "Auto PR: $BRANCH" \
+              --body "Automatically created PR for branch: $BRANCH\n\nAll CI checks are passing. Ready to merge." \
+              --auto-merge --merge-method squash
+          else
+            echo "PR #$PR_NUMBER already exists for branch $BRANCH"
+            # Enable auto-merge on existing PR
+            gh pr merge "$PR_NUMBER" --auto --merge --squash || true
+          fi
+
+      - name: Check PR Status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          PR_NUMBER=$(gh pr list --head "$BRANCH" --base main --json number -q '.[0].number' 2>/dev/null || echo "")
+
+          if [ ! -z "$PR_NUMBER" ]; then
+            gh pr view "$PR_NUMBER" --json status,checks
+          fi
