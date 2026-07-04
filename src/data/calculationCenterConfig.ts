@@ -436,7 +436,7 @@ export const calculationCategories: CategoryConfig[] = [
     sections: [
       {
         id: "calculations",
-        label: "Konu Anlatımı",
+        label: "Hesaplamalar",
         description: "Deniz meteorolojisi ve fırtına seyri konu içerikleri",
         status: "live",
         badge: "Yeni",
