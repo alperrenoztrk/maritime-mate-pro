@@ -130,6 +130,7 @@ function listFiles(dir, exts, out = []) {
 const UI_COMPONENT_FILES = [
   'src/components/FloatingNavButtons.tsx',
   'src/contexts/LanguageContext.tsx',
+  'src/hooks/useHomeWidgets.ts',
 ].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
 
 // Dev / diagnostic / admin components whose strings real users never see. They
@@ -142,6 +143,7 @@ const EXCLUDE_BASENAMES = new Set([
 // High-traffic content component directories rendered into the lesson/topic UI.
 const CONTENT_COMPONENT_DIRS = [
   path.join(repoRoot, 'src/components/courseContent'),
+  path.join(repoRoot, 'src/components/widgets'),
 ];
 const EXTRA_COMPONENT_FILES = [
 ].map((f) => path.join(repoRoot, f)).filter(fs.existsSync);
@@ -175,6 +177,31 @@ const UI_SEED_STRINGS = [
   'Yapay Zeka Açıklaması',
   'Hazırlanıyor...',
   'Açıklama alınamadı. Lütfen tekrar deneyin.',
+  // src/components/widgets/HomeWidgetGrid.tsx — wmoText() weather conditions and
+  // the location-source label live in function bodies / ternaries, not JSX text.
+  'Açık',
+  'Az Bulutlu',
+  'Bulutlu',
+  'Yağmurlu',
+  'Karlı',
+  'Sağanak',
+  'Kar',
+  'Fırtına',
+  'Manuel',
+  // src/components/widgets/WeatherInfoWidgets.tsx — wmoToTr() + chart tooltip labels
+  'Veri Yok',
+  'Sisli',
+  'Sağanak Yağışlı',
+  'Gök Gürültülü',
+  'Sıcaklık',
+  'Nem',
+  'Rüzgar',
+  'Yağış',
+  // src/components/widgets/ManualLocationDialog.tsx — toast messages
+  'Geçersiz enlem değeri (-90 ile 90 arası olmalı)',
+  'Geçersiz boylam değeri (-180 ile 180 arası olmalı)',
+  'Konum kaydedildi',
+  'Manuel konum temizlendi — GPS / IP kullanılacak',
 ];
 
 for (const file of files) {
@@ -199,6 +226,17 @@ for (const file of files) {
             if (elLit !== null) consider(elLit, name);
           }
         }
+      }
+    }
+    // JSX attributes the runtime translator also translates (see
+    // TRANSLATABLE_ATTRS in src/utils/pageTranslator.ts).
+    if (ts.isJsxAttribute(node)) {
+      const attrName = node.name.getText(sf);
+      if (
+        (attrName === 'placeholder' || attrName === 'title' || attrName === 'aria-label') &&
+        node.initializer && ts.isStringLiteral(node.initializer)
+      ) {
+        consider(node.initializer.text, 'text');
       }
     }
     // Every static JSX text child renders to a DOM text node at runtime, so we

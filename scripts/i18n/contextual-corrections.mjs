@@ -291,4 +291,51 @@ export const CONTEXTUAL_CORRECTIONS = {
   'AŞIRI KIÇ TRİMİ:': { en: 'EXCESSIVE STERN TRIM:' },
   'AŞIRI BAŞ TRİMİ:': { en: 'EXCESSIVE BOW TRIM:' },
   'Aşırı baş trimi': { en: 'Excessive bow trim' },
+
+  // ── Home-screen widgets (HomeWidgetGrid / useHomeWidgets / WeatherInfo) ────
+  // Short standalone labels that generic MT mangles out of context:
+  // "Batış" -> "batis" (!), "Doğuş" -> "birth", "Açık" -> "open",
+  // "Karlı" -> "profitable", "Hava" -> lowercase "weather".
+  'Doğuş': { en: 'Sunrise' },
+  'Batış': { en: 'Sunset' },
+  'Doğuş & batış saatleri': { en: 'Sunrise & sunset times' },
+  'Yerel': { en: 'Local' },
+  'Hava': { en: 'Weather' },
+  // Weather-condition labels (wmoText/wmoToTr WMO code mapping). The short
+  // ambiguous ones get full per-language maps because even the corrected
+  // English pivot re-mistranslates them ("Showers" -> bathroom "Duschen"/
+  // "Douches", "Clear" -> "Прозрачный"/transparent).
+  'Açık': {
+    en: 'Clear', de: 'Klar', fr: 'Dégagé', es: 'Despejado', it: 'Sereno',
+    pt: 'Limpo', ru: 'Ясно', ja: '快晴', ko: '맑음', 'zh-CN': '晴',
+    ar: 'صافٍ', hi: 'साफ़', nl: 'Helder', sv: 'Klart', no: 'Klart',
+    da: 'Klart', fi: 'Selkeää', pl: 'Bezchmurnie', cs: 'Jasno', hu: 'Derült',
+    ro: 'Senin', el: 'Αίθριος', bg: 'Ясно', uk: 'Ясно',
+  },
+  'Kar': { en: 'Snow' },
+  'Karlı': { en: 'Snowy' },
+  'Sağanak': {
+    en: 'Showers', de: 'Schauer', fr: 'Averses', es: 'Chubascos', it: 'Rovesci',
+    pt: 'Aguaceiros', ru: 'Ливни', ja: 'にわか雨', ko: '소나기', 'zh-CN': '阵雨',
+    ar: 'زخات مطر', hi: 'बौछारें', nl: 'Buien', sv: 'Skurar', no: 'Byger',
+    da: 'Byger', fi: 'Kuurosade', pl: 'Przelotne opady', cs: 'Přeháňky',
+    hu: 'Záporok', ro: 'Averse', el: 'Μπόρες', bg: 'Превалявания', uk: 'Зливи',
+  },
+  'Sağanak Yağışlı': {
+    en: 'Rain Showers', de: 'Regenschauer', fr: 'Averses de pluie',
+    es: 'Chubascos de lluvia', it: 'Rovesci di pioggia', pt: 'Aguaceiros',
+    ru: 'Ливневый дождь', ja: 'にわか雨', ko: '소나기', 'zh-CN': '阵雨',
+    ar: 'زخات مطر', hi: 'वर्षा की बौछारें', nl: 'Regenbuien', sv: 'Regnskurar',
+    no: 'Regnbyger', da: 'Regnbyger', fi: 'Sadekuuroja', pl: 'Przelotny deszcz',
+    cs: 'Dešťové přeháňky', hu: 'Záporeső', ro: 'Averse de ploaie',
+    el: 'Μπόρες βροχής', bg: 'Дъждовни превалявания', uk: 'Зливовий дощ',
+  },
+  'Gök Gürültülü': {
+    en: 'Thundery', de: 'Gewittrig', fr: 'Orageux', es: 'Tormentoso',
+    it: 'Temporalesco', pt: 'Trovoada', ru: 'Гроза', ja: '雷雨', ko: '뇌우',
+    'zh-CN': '雷暴', ar: 'عاصفة رعدية', hi: 'गरज के साथ', nl: 'Onweer',
+    sv: 'Åska', no: 'Torden', da: 'Torden', fi: 'Ukkonen', pl: 'Burzowo',
+    cs: 'Bouřky', hu: 'Zivataros', ro: 'Furtună cu tunete', el: 'Καταιγίδα',
+    bg: 'Гръмотевична буря', uk: 'Гроза',
+  },
 };
