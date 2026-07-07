@@ -6,7 +6,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 // Canlı yeniden yükleme ile geliştirme için: `npx cap run android -l --external`
 const config: CapacitorConfig = {
   appId: 'com.maritime.calculator',
-  appName: 'Marine Expert Pro',
+  appName: "Mariner's Mate",
   webDir: 'dist',
   plugins: {
     StatusBar: {

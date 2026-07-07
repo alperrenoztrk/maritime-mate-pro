@@ -1,4 +1,4 @@
-# 📦 Mağaza Hazırlık Durumu — Marine Expert Pro
+# 📦 Mağaza Hazırlık Durumu — Mariner's Mate
 
 > Google Play + App Store yayın hazırlığının güncel durumu.
 > Bu branch'te yapılan teknik hazırlıklar ve sizin tamamlamanız gereken adımlar.
@@ -7,7 +7,7 @@
 
 | Alan | Değer |
 |---|---|
-| Uygulama adı | Marine Expert Pro |
+| Uygulama adı | Mariner's Mate |
 | Paket adı / Bundle ID | `com.maritime.calculator` |
 | Sürüm | 2.5.70 (versionCode / build: 20570) |
 | Min SDK / Target SDK | 23 / 35 |
@@ -65,7 +65,7 @@ Repodaki **38 görsel dosya** (`public/maritime-logo.svg`, tüm `sextant-*` gör
    ```
 2. **GitHub secrets ekleyin**: `ANDROID_KEYSTORE_BASE64` (=`base64 -w0 marine-expert-pro.keystore`), `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_ALIAS_PASSWORD`. Sonra Actions'tan **Android Release** workflow'unu çalıştırın → imzalı `.aab` artifact'ını indirin. (Yerelde: `npm run android:bundle`.)
 3. **Play Console** ([console.play.google.com](https://play.google.com/console), $25 tek seferlik):
-   - Create app → "Marine Expert Pro", Türkçe, App, Free
+   - Create app → "Mariner's Mate", Türkçe, App, Free
    - **Data safety formu** (aşağıdaki taslak cevaplar)
    - **İçerik derecelendirmesi (IARC)** anketi → muhtemelen "Everyone"
    - **Hesap silme URL'i**: privacy policy URL'ini gösterin (bölüm 5'te açıklanıyor)
@@ -106,7 +106,7 @@ Repodaki **38 görsel dosya** (`public/maritime-logo.svg`, tüm `sextant-*` gör
 **Kısa açıklama (80 kr):** Denizciler için hesaplama, seyir ve eğitim asistanı — stabilite, trim, COLREG.
 
 **Uzun açıklama:**
-> Marine Expert Pro, denizcilik profesyonelleri ve öğrencileri için kapsamlı bir hesaplama ve eğitim uygulamasıdır.
+> Mariner's Mate, denizcilik profesyonelleri ve öğrencileri için kapsamlı bir hesaplama ve eğitim uygulamasıdır.
 >
 > • Stabilite hesaplamaları (GM, BM, KM), trim ve boyuna stabilite
 > • Hidrostatik ve hidrodinamik hesaplamalar

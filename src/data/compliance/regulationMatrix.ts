@@ -1,5 +1,5 @@
 /**
- * Regulation Matrix — Marine Expert Pro
+ * Regulation Matrix — Mariner's Mate
  * --------------------------------------
  * Canonical mapping between in-app curriculum modules and the
  * currently in-force international maritime regulations.

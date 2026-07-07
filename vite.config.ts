@@ -37,8 +37,8 @@ export default defineConfig(({ mode }) => ({
         "nautical-chart-background.svg",
       ],
       manifest: {
-        name: "Marine Expert Pro",
-        short_name: "Marine Expert",
+        name: "Mariner's Mate",
+        short_name: "Mariner's Mate",
         description: "Professional tools for all mariners — calculators, lessons and references that work offline.",
         theme_color: "#0b3d91",
         background_color: "#020a14",

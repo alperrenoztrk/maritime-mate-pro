@@ -2,7 +2,7 @@
  * Fixed full-viewport maritime background.
  * Mounted once in App. Sits behind all routes via z-index: -1 so any page
  * with a transparent (or neutralized — see index.css .marine-global rules)
- * background reveals the unified Marine Expert Pro design language.
+ * background reveals the unified Mariner's Mate design language.
  *
  * Visuals mirror the home page (Index.tsx) exactly:
  *  - deep maritime gradient

@@ -199,7 +199,7 @@ export async function buildPscReport(
   inspectionDate: string,
 ): Promise<Blob> {
   const wb = new ExcelJS.Workbook();
-  wb.creator = "Maritime Mate Pro";
+  wb.creator = "Mariner's Mate";
   const ws = wb.addWorksheet("PSC Hazırlık");
 
   ws.columns = [

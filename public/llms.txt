@@ -1,12 +1,12 @@
-# Marine Expert Pro
+# Mariner's Mate
 
 > Interactive maritime learning platform with calculators, lessons, and reference tools for sailors and maritime students.
 
-Marine Expert Pro offers professional ship stability and cargo calculations, navigation and meteorology lessons, COLREG references, ship systems and operations guides, and animated educational content used by maritime students and active seafarers.
+Mariner's Mate offers professional ship stability and cargo calculations, navigation and meteorology lessons, COLREG references, ship systems and operations guides, and animated educational content used by maritime students and active seafarers.
 
 ## Pages
 
-- [Home](/): Overview of Marine Expert Pro's tools and lessons.
+- [Home](/): Overview of Mariner's Mate's tools and lessons.
 - [Calculations Hub](/calculations): Entry point for all maritime calculation tools.
 - [Lessons](/lessons): Interactive maritime course content.
 - [Maritime Glossary](/glossary): Definitions of maritime terms.
