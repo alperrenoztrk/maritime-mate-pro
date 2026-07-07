@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
-import { useHomeWidgets, type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
+import { type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
 import { Clock, Globe2, Cloud, Wind, MapPin, Sun, Pencil } from "lucide-react";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 
@@ -54,7 +54,8 @@ function WidgetCard({ size, children }: CardProps) {
 }
 
 export function HomeWidgetGrid() {
-  const { enabled } = useHomeWidgets();
+  // All widgets are always active and shown, in their defined order.
+  const enabled = AVAILABLE_WIDGETS.map((w) => w.id);
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
   const [now, setNow] = useState(new Date());
   const [manualOpen, setManualOpen] = useState(false);
@@ -82,8 +83,6 @@ export function HomeWidgetGrid() {
     () => now.toLocaleTimeString("en-GB", { timeZone: "UTC", hour: "2-digit", minute: "2-digit", hour12: false }),
     [now],
   );
-
-  if (enabled.length === 0) return null;
 
   const render = (id: HomeWidgetId) => {
     const meta = AVAILABLE_WIDGETS.find((w) => w.id === id);
