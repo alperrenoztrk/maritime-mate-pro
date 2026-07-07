@@ -4,7 +4,7 @@ import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, User as UserIcon
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { useNavigate } from "react-router-dom";
 // Density settings removed from Settings page; provider remains app-wide
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
