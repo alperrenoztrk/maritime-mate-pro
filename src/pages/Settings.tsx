@@ -61,6 +61,49 @@ const Settings = () => {
           </div>
 
           <div className="grid gap-6">
+            {/* Account */}
+            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <UserIcon className="w-5 h-5" />
+                  <span data-translatable>Hesap</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {user ? (
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      {avatarUrl ? (
+                        <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
+                      ) : (
+                        <span className="text-lg font-semibold text-primary">{initials}</span>
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium truncate">{displayName}</div>
+                      {user.email && displayName !== user.email && (
+                        <div className="text-sm text-muted-foreground truncate">{user.email}</div>
+                      )}
+                    </div>
+                    <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
+                      <LogOut className="w-4 h-4" />
+                      <span data-translatable>Çıkış</span>
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="text-sm text-muted-foreground">
+                      <span data-translatable>Giriş yaparak hesabınızı senkronize edin</span>
+                    </div>
+                    <Button onClick={() => navigate("/auth")} className="gap-2">
+                      <LogIn className="w-4 h-4" />
+                      <span data-translatable>Giriş Yap</span>
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
             {/* Font Size Settings */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
