@@ -36,14 +36,26 @@
 
 ---
 
-## ⚠️ Kritik bulgu: Git LFS görselleri kayıp
+## ✅ Çözüldü: Git LFS görselleri kayıp
 
-Repodaki **38 görsel dosya** (`public/maritime-logo.svg`, tüm `sextant-*` görselleri, `src/assets/maritime/*`, `src/assets/weather/*` bulut fotoğrafları, `public/lovable-uploads/*`) Git LFS işaretçisi olarak duruyor ama **LFS nesneleri sunucuda yok (404)** — hiç push edilmemişler. Yani:
+Daha önce 38 görsel Git LFS işaretçisi olarak duruyordu ve LFS nesneleri sunucuda yoktu (404). Bunların çoğu (`src/assets/maritime/*`, `src/assets/weather/*` bulut fotoğrafları, `public/lovable-uploads/*`, navigasyon görselleri) sonradan **gerçek dosya** olarak yeniden eklendi.
 
-- Taze bir clone'dan yapılan her build'de (CI dahil) bu görseller **bozuk** çıkar.
-- Meteoroloji dersindeki bulut fotoğrafları vb. uygulamada görünmez.
+Geriye kalan 7 kırık işaretçi bu branch'te temizlendi:
+- 6'sı uygulamada kullanılmıyordu → silindi (`placeholder.svg`, `maritime-home-background.svg`, `sextant-{complete,drawn,exact,realistic}.svg`).
+- `maritime-logo.svg` (`index.html` JSON-LD logosu) → uygulama ikonu tasarımından türetilmiş gerçek, kendi kendine yeten SVG olarak yeniden yazıldı.
 
-**Çözüm:** Bu dosyaların gerçek kopyaları hangi makinede varsa oradan `git lfs push --all origin` yapın, ya da dosyaları normal git dosyası olarak yeniden ekleyin. Mağaza sürümünden önce mutlaka düzeltilmeli.
+Repoda artık LFS işaretçisi kalmadı; taze clone/CI build'i tüm görselleri düzgün üretir.
+
+---
+
+## ⚠️ Uygulama boyutu (takip gerekiyor)
+
+`npm run build` sonrası `dist/` ~**373 MB**; bunun ~**244 MB'ı** `public/locales/*.json` (24 dil × ~10 MB, çevrimdışı çeviri için bundle'a gömülü). Sıkıştırılmış AAB'de bile locale'ler ~80–106 MB; videolar (~41 MB) ve görsellerle birlikte teslim edilen uygulama 200 MB'a yaklaşır, **kurulu boyut ~373 MB+** olur.
+
+- Google Play temel APK indirme limitlerini zorlayabilir.
+- Büyük indirme, kurulum vazgeçme oranını artırır.
+
+Bu, çevrimdışı çeviri tasarımının doğal sonucu (her dil paketi gömülü). Şimdilik olduğu gibi bırakıldı. İleride küçültmek için seçenekler: (a) locale JSON'larını CDN'den indirmeye çevirmek (kod zaten fetch tabanlı — `src/utils/staticTranslations.ts`), (b) yalnızca popüler dilleri gömüp gerisini ilk seçimde indirmek. Karardan önce imzalı AAB üretip Play'in bildirdiği gerçek indirme boyutuna bakmak faydalı olur.
 
 ---
 
