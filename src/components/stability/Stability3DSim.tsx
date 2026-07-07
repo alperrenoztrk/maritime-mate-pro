@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
 import * as THREE from "three";
 
@@ -18,12 +19,21 @@ import {
   type StabilityResult,
   type IMOCompliance,
 } from "./sim/StabilityPhysics";
-import { ShipHull3D } from "./sim/ShipHull3D";
+import { ShipModel3D, shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
 import { WaterSurface3D } from "./sim/WaterSurface3D";
 
 /* ─── helpers ─── */
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
+
+/* Vessel is drawn ~2× the visual span the old blob had; scale it down to fit
+   the same framing, and record where its keel lands so the K marker sits on it. */
+const SHIP_SCALE = 0.82;
+/* ShipModel3D keel is at local y ≈ -0.7 (see its comment); scaled world keel: */
+const SHIP_KEEL_Y = -0.7 * SHIP_SCALE;
+/* Compress the real KM (~18 m) into the vessel's visual height so K/B/G/M read
+   as a proportionate stack instead of floating far above the deck. */
+const MARKER_VSCALE = 0.12;
 
 /* ─── 3-D scene ─── */
 interface SceneProps {
@@ -34,9 +44,10 @@ interface SceneProps {
   onHeelUpdate: (heel: number) => void;
   gm: number;
   bm: number;
+  shipType: ShipType;
 }
 
-function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, gm, bm }: SceneProps) {
+function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, gm, bm, shipType }: SceneProps) {
   const shipGroup = useRef<THREE.Group>(null);
   const heelRef = useRef(0);
   const velocityRef = useRef(0);
@@ -57,7 +68,9 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
     heelRef.current += velocityRef.current * dt;
 
     if (shipGroup.current) {
-      shipGroup.current.rotation.z = heelRef.current;
+      // Heel = roll about the longitudinal (X) axis, so the deck visibly tilts
+      // to port/starboard rather than pitching the bow up and down.
+      shipGroup.current.rotation.x = heelRef.current;
     }
 
     if (clock.elapsedTime - lastReport.current > 0.08) {
@@ -66,7 +79,7 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
     }
   });
 
-  const keelY = -0.45 - draftOffset;
+  const keelY = SHIP_KEEL_Y - draftOffset * 0.5;
 
   return (
     <group>
@@ -79,10 +92,10 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
       <directionalLight position={[8, 12, 6]} intensity={1.15} />
       <directionalLight position={[-6, 6, -6]} intensity={0.35} color="#93c5fd" />
 
-      {/* Ship group - rotates around metacenter */}
+      {/* Ship group - heels about the waterline */}
       <group ref={shipGroup}>
         <group position={[0, -draftOffset * 0.5, 0]}>
-          <ShipHull3D />
+          <ShipModel3D shipType={shipType} scale={SHIP_SCALE} />
         </group>
         {/* Stability reference points */}
         <StabilityMarkers
@@ -92,6 +105,7 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
           km={stability.km}
           heelAngle={heelRef.current}
           gz={calculateGZ(gm, bm, heelRef.current)}
+          vScale={MARKER_VSCALE}
         />
       </group>
 
@@ -127,6 +141,8 @@ export const Stability3DSim = () => {
   const [draftInput, setDraftInput] = useState(6.5);
   const [cbInput, setCbInput] = useState(0.72);
   const [heelAngle, setHeelAngle] = useState(0);
+  const [shipType, setShipType] = useState<ShipType>("container");
+  const activeShip = shipTypeOptions.find((o) => o.value === shipType);
 
   // Reference ship dimensions
   const ship: ShipState = useMemo(
@@ -169,6 +185,26 @@ export const Stability3DSim = () => {
         <CardTitle className="text-base">3B Stabilite Simülasyonu</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
+        {/* Ship-type selector */}
+        <div className="flex flex-col gap-2 rounded-lg border border-border/40 bg-muted/30 p-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-2">
+            <Label className="text-xs font-semibold">Gemi Tipi</Label>
+            <span className="hidden text-[10px] text-muted-foreground sm:inline">{activeShip?.description}</span>
+          </div>
+          <Select value={shipType} onValueChange={(v) => setShipType(v as ShipType)}>
+            <SelectTrigger className="h-8 w-full text-xs sm:w-44">
+              <SelectValue placeholder="Gemi tipi seç" />
+            </SelectTrigger>
+            <SelectContent>
+              {shipTypeOptions.map((o) => (
+                <SelectItem key={o.value} value={o.value} className="text-xs">
+                  {o.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* 3D viewport */}
         <div className="relative h-[340px] overflow-hidden rounded-xl border border-border/60 bg-slate-950">
           {/* An error boundary is essential here: if WebGL is unavailable or a
@@ -202,6 +238,7 @@ export const Stability3DSim = () => {
                   onHeelUpdate={handleHeelUpdate}
                   gm={stability.gm}
                   bm={stability.bm}
+                  shipType={shipType}
                 />
               </Canvas>
             </Suspense>

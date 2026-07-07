@@ -103,16 +103,17 @@ export function StabilityMarkers({
       {/* M - Metacenter */}
       <PointMarker position={mPos} label="M" color="#0ea5e9" />
 
-      {/* GZ arm indicator (when heeled) */}
+      {/* GZ arm indicator (when heeled). Heel is roll about the longitudinal
+          (X) axis, so the righting arm is a transverse (Z) offset. */}
       {Math.abs(heelAngle) > 0.02 && Math.abs(gzLength) > 0.01 && (
         <group position={[0, kY + kg * vScale, 0]}>
-          <mesh position={[gzLength / 2 * Math.sign(heelAngle), 0, 0]}>
-            <boxGeometry args={[Math.abs(gzLength), 0.015, 0.015]} />
+          <mesh position={[0, 0, gzLength / 2 * Math.sign(heelAngle)]}>
+            <boxGeometry args={[0.015, 0.015, Math.abs(gzLength)]} />
             <meshStandardMaterial color="#22c55e" emissive="#22c55e" emissiveIntensity={0.5} />
           </mesh>
           <Html
             distanceFactor={12}
-            position={[gzLength * Math.sign(heelAngle), 0.12, 0]}
+            position={[0, 0.12, gzLength * Math.sign(heelAngle)]}
             style={{ pointerEvents: "none" }}
           >
             <span
