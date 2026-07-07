@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { AuthProvider } from "@/hooks/useAuth";
 import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
 import { DensityProvider } from "@/contexts/DensityContext";
@@ -72,6 +73,7 @@ const NavigationQuizPage = lazy(() => import("./pages/NavigationQuiz"));
 const NavigationAssistantPage = lazy(() => import("./pages/NavigationAssistant"));
 const ClockPage = lazy(() => import("./pages/Clock"));
 const AuthCallback = lazy(() => import("./pages/AuthCallback"));
+const AuthPage = lazy(() => import("./pages/Auth"));
 const StabilityPracticalPage = lazy(() => import("./pages/StabilityPractical"));
 const StabilityPracticalTankPage = lazy(() => import("./pages/StabilityPracticalTank"));
 const StabilityPracticalFWAPage = lazy(() => import("./pages/StabilityPracticalFWA"));
@@ -364,6 +366,7 @@ const AnimatedRoutes = () => {
         <Route path="/regulations" element={<PageTransition><Regulations /></PageTransition>} />
         <Route path="/regulations/:slug" element={<PageTransition><RegulationDetailPage /></PageTransition>} />
         <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
+        <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
         <Route path="/auth/callback" element={<PageTransition><AuthCallback /></PageTransition>} />
         <Route path="/weather-forecast" element={<PageTransition><WeatherForecast /></PageTransition>} />
         <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
@@ -397,27 +400,28 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
-        <LanguageProvider>
-          <TooltipProvider>
-            <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
-              <DensityProvider>
-                <FontSizeProvider>
-                  <Toaster />
-                  <AskAIPopup />
-                  <LanguageChangeOverlay />
-                  <GlobalMaritimeBackground />
-                  <div className="min-h-screen text-foreground overflow-x-hidden">
-                    <BrowserRouter>
-                      <RouteTranslationGate />
-                      <AnimatedRoutes />
-                    </BrowserRouter>
-                  </div>
-                </FontSizeProvider>
-              </DensityProvider>
-
-            </ThemeProvider>
-          </TooltipProvider>
-        </LanguageProvider>
+        <AuthProvider>
+          <LanguageProvider>
+            <TooltipProvider>
+              <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
+                <DensityProvider>
+                  <FontSizeProvider>
+                    <Toaster />
+                    <AskAIPopup />
+                    <LanguageChangeOverlay />
+                    <GlobalMaritimeBackground />
+                    <div className="min-h-screen text-foreground overflow-x-hidden">
+                      <BrowserRouter>
+                        <RouteTranslationGate />
+                        <AnimatedRoutes />
+                      </BrowserRouter>
+                    </div>
+                  </FontSizeProvider>
+                </DensityProvider>
+              </ThemeProvider>
+            </TooltipProvider>
+          </LanguageProvider>
+        </AuthProvider>
       </HelmetProvider>
     </QueryClientProvider>
   );
