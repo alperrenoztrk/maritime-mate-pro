@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://maritime-mate-pro.lovable.app/sitemap.xml
+Sitemap: https://marinersbook.lovable.app/sitemap.xml

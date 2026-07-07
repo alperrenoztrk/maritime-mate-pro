@@ -8,7 +8,7 @@
 | Alan | Değer |
 |---|---|
 | Uygulama adı | Mariner's Book |
-| Paket adı / Bundle ID | `com.maritime.calculator` |
+| Paket adı / Bundle ID | `com.marinersbook.app` |
 | Sürüm | 2.5.70 (versionCode / build: 20570) |
 | Min SDK / Target SDK | 23 / 35 |
 | Gizlilik politikası | `public/privacy-policy.html` → yayınlanınca `https://<alan-adınız>/privacy-policy.html` |
@@ -17,7 +17,7 @@
 
 ## ✅ Bu branch'te tamamlananlar
 
-- **`capacitor.config.ts` üretime hazırlandı** — `appId: com.maritime.calculator`, uzak `server.url` kaldırıldı (mağaza incelemesinde ret sebebiydi), release tipi AAB yapıldı. `capacitor.config.prod.ts` gereksizleşti, silindi.
+- **`capacitor.config.ts` üretime hazırlandı** — `appId: com.marinersbook.app`, uzak `server.url` kaldırıldı (mağaza incelemesinde ret sebebiydi), release tipi AAB yapıldı. `capacitor.config.prod.ts` gereksizleşti, silindi.
 - **Android platformu eksiksiz üretildi** — daha önce repoda yalnızca birkaç üretilmiş dosya vardı (build.gradle, AndroidManifest, MainActivity yoktu). Artık `android/` komple derlenebilir durumda:
   - `versionCode 20570`, `versionName "2.5.70"`
   - Release imzalama: `android/keystore.properties` (gitignored) veya `KEYSTORE_FILE/KEYSTORE_PASSWORD/KEY_ALIAS/KEY_PASSWORD` ortam değişkenleri. Şablon: `android/keystore.properties.example`
@@ -94,7 +94,7 @@ Repodaki **38 görsel dosya** (`public/maritime-logo.svg`, tüm `sextant-*` gör
    cd ios/App && pod install
    npx cap open ios
    ```
-3. Xcode'da: Signing & Capabilities → Team seçin (bundle ID `com.maritime.calculator` otomatik). Push kullanılacaksa Push Notifications capability + APNs anahtarı ekleyin.
+3. Xcode'da: Signing & Capabilities → Team seçin (bundle ID `com.marinersbook.app` otomatik). Push kullanılacaksa Push Notifications capability + APNs anahtarı ekleyin.
 4. **App Store Connect**: yeni uygulama oluşturun (aynı bundle ID), Product → Archive → Distribute ile TestFlight'a yükleyin.
 5. **App Privacy etiketleri** (Play data safety ile aynı cevaplar): Email Address + Name → "Linked to you" / "App Functionality"; tracking yok (gerçek AdMob açılırsa ATT ve tracking beyanı gerekir — `NSUserTrackingUsageDescription` hazır).
 6. İnceleme notlarına test hesabı bilgisi eklemeyi unutmayın (giriş isteyen özellikler için).

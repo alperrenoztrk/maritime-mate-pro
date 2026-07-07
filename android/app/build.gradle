@@ -19,10 +19,10 @@ def hasReleaseSigning = signingStoreFile != null && signingStorePassword != null
         signingKeyAlias != null && signingKeyPassword != null
 
 android {
-    namespace "com.maritime.calculator"
+    namespace "com.marinersbook.app"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.maritime.calculator"
+        applicationId "com.marinersbook.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         // package.json "version" ile birlikte artırın (2.5.70 -> 20570).

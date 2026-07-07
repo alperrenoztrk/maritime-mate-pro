@@ -5,7 +5,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 // aksi halde Google Play / App Store incelemesi reddedilir.
 // Canlı yeniden yükleme ile geliştirme için: `npx cap run android -l --external`
 const config: CapacitorConfig = {
-  appId: 'com.maritime.calculator',
+  appId: 'com.marinersbook.app',
   appName: "Mariner's Book",
   webDir: 'dist',
   plugins: {

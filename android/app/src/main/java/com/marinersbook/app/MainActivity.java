@@ -1,4 +1,4 @@
-package com.maritime.calculator;
+package com.marinersbook.app;
 
 import com.getcapacitor.BridgeActivity;
 
