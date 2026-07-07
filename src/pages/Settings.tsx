@@ -114,9 +114,6 @@ const Settings = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    <span data-translatable>Seçilen dil tüm uygulamada geçerli olacaktır</span>
-                  </p>
                 </div>
               </CardContent>
             </Card>
