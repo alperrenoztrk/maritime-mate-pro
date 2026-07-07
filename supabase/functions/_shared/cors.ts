@@ -1,4 +1,4 @@
-// Shared CORS configuration for Marine Expert edge functions
+// Shared CORS configuration for Mariner's Book edge functions
 // Restricts access to known origins only to prevent AI credit abuse
 
 const ALLOWED_ORIGINS = [

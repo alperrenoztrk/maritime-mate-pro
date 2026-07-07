@@ -3,7 +3,7 @@
 ## 📋 Son Güncellemeler
 - **Tarih:** 2025-12-14
 - **Sürüm:** v2.5.70
-- **Durum:** ✅ Underwater Homepage Redesign - MARINE EXPERT su altı teması ile yenilendi - **LOVABLE'A DEPLOY EDİLDİ**
+- **Durum:** ✅ Underwater Homepage Redesign - MARINER'S BOOK su altı teması ile yenilendi - **LOVABLE'A DEPLOY EDİLDİ**
 
 - **Tarih:** 2025-12-08
 - **Sürüm:** v2.5.69
@@ -168,7 +168,7 @@
 - **Işık Efektleri**: Su altından gelen güneş ışığı huzmeleri animasyonu
 - **Deniz Altı Detayları**: Baloncuk parçacıkları ve mercan siluetleri
 - **Pusula Tasarımı**: Etrafında parıltı efekti (glow) ve geliştirilmiş gölgeler
-- **MARINE EXPERT Başlığı**: Font-black kalınlığında, çoklu gölge efektleri
+- **MARINER'S BOOK Başlığı**: Font-black kalınlığında, çoklu gölge efektleri
 - **Keşfetmeye Başla Butonu**: Turkuaz renk (#20d5d5), beyaz kenarlık ve geliştirilmiş hover efektleri
 - **Minimal UI**: Ayarlar butonu ve navigasyon ok'ları daha ince ve şeffaf
 - **Immersive UX**: Tam ekran underwater tema, profesyonel maritime atmosfer

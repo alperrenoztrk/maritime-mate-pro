@@ -8,7 +8,7 @@
 📦 Project ID: maritime-calculator
 🔢 Project Number: 318030353367
 📱 App ID: 1:318030353367:android:c69e68d7022a826c2cb192
-📂 Package Name: com.maritime.calculator
+📂 Package Name: com.marinersbook.app
 🔐 API Key: AIzaSyBhpuFTxkDPsSTnCkhKaVcfUbKVZlZ8Km4
 ☁️ Storage: maritime-calculator.firebasestorage.app
 ```
@@ -158,7 +158,7 @@ exports.translateText = functions.https.onRequest((request, response) => {
 android {
     ...
     defaultConfig {
-        applicationId "com.maritime.calculator"
+        applicationId "com.marinersbook.app"
         ...
     }
 }

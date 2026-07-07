@@ -47,7 +47,7 @@ ca-pub-1234567890123456
 1. [AdMob Console](https://admob.google.com/) açın
 2. **"Add App"** → **"Android"** seçin
 3. **App Name:** "Maritime Calculator"
-4. **Package Name:** `com.maritime.calculator`
+4. **Package Name:** `com.marinersbook.app`
 
 ### **Ad Unit IDs:**
 ```javascript

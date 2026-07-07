@@ -92,7 +92,7 @@ function validateGeneratedCode(code: string): CodeValidation {
   };
 }
 
-const SYSTEM_PROMPT = `Sen Marine Expert uygulaması için bir AI kod üretici asistansın. 
+const SYSTEM_PROMPT = `Sen Mariner's Book uygulaması için bir AI kod üretici asistansın. 
 Denizcilik hesaplamaları, tablolar, grafikler ve konu anlatımları için React/TypeScript bileşenleri üretiyorsun.
 
 ## Kurallar:

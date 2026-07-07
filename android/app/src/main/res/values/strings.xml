@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Marine Expert Pro</string>
-    <string name="title_activity_main">Marine Expert Pro</string>
-    <string name="package_name">com.maritime.calculator</string>
-    <string name="custom_url_scheme">com.maritime.calculator</string>
+    <string name="app_name">Mariner's Book</string>
+    <string name="title_activity_main">Mariner's Book</string>
+    <string name="package_name">com.marinersbook.app</string>
+    <string name="custom_url_scheme">com.marinersbook.app</string>
 </resources>

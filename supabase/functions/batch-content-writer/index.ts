@@ -3,7 +3,7 @@ import { corsHeaders } from "../_shared/cors.ts";
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
-const SYSTEM_PROMPT = `Sen Marine Expert uygulaması için konu anlatımı yazım asistanısın.
+const SYSTEM_PROMPT = `Sen Mariner's Book uygulaması için konu anlatımı yazım asistanısın.
 
 Kurallar:
 - Türkçe, resmi ve kısa anlatım yaz.
