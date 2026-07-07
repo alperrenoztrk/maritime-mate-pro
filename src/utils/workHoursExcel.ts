@@ -17,7 +17,7 @@ export async function buildWorkHoursWorkbook(
   options: BuildOptions,
 ): Promise<Blob> {
   const wb = new ExcelJS.Workbook();
-  wb.creator = "Marine Expert";
+  wb.creator = "Mariner's Book";
   wb.created = new Date();
 
   // Tüm günleri topla

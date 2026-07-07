@@ -1,5 +1,5 @@
 """
-Combined interactive engine for Marine Expert Pro: tide, UKC and stability calculations.
+Combined interactive engine for Mariner's Book: tide, UKC and stability calculations.
 This script implements a simple tide calculation using the rule of twelfths, computes
 under keel clearance (UKC), and performs basic stability calculations using
 metacentric height (GM) and new KG after loading.

@@ -116,7 +116,7 @@ const Index = () => {
               }}
             >
               <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
-                MARINE EXPERT PRO
+                MARINER'S BOOK
               </span>
               <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
             </h1>
@@ -130,7 +130,7 @@ const Index = () => {
         ref={pagerRef}
         className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar overscroll-x-contain"
         style={{ scrollSnapType: "x mandatory" }}
-        aria-label="Marine Expert Pro"
+        aria-label="Mariner's Book"
       >
         {/* LEFT — News */}
         <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">

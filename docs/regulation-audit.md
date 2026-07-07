@@ -1,4 +1,4 @@
-# Regulation Compliance Audit — Marine Expert Pro
+# Regulation Compliance Audit — Mariner's Book
 
 **Date:** 2026-05-06
 **Scope:** Güverte (navigation, seamanship, stability, safety, communication, cargo, meteorology) + Makine (machine) modülleri.

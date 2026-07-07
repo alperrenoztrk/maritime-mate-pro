@@ -1,4 +1,4 @@
-// Shared authentication utilities for Marine Expert edge functions
+// Shared authentication utilities for Mariner's Book edge functions
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 /**
