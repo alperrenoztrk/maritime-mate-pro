@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -70,13 +71,17 @@ export function StabilityMarkers({
   // GZ arm visualization: horizontal distance from G to vertical through new B
   const gzLength = gz * vScale * 2;
 
-  // Centerline
-  const linePoints = [
-    new THREE.Vector3(0, kY - 0.1, 0),
-    new THREE.Vector3(0, kY + km * vScale + 0.15, 0),
-  ];
+  // Centerline — memoized so we don't allocate (and leak) a BufferGeometry on
+  // every re-render, which happens ~12×/s as the live heel readout updates.
+  const lineGeo = useMemo(() => {
+    const linePoints = [
+      new THREE.Vector3(0, kY - 0.1, 0),
+      new THREE.Vector3(0, kY + km * vScale + 0.15, 0),
+    ];
+    return new THREE.BufferGeometry().setFromPoints(linePoints);
+  }, [kY, km, vScale]);
 
-  const lineGeo = new THREE.BufferGeometry().setFromPoints(linePoints);
+  useEffect(() => () => lineGeo.dispose(), [lineGeo]);
 
   return (
     <group>

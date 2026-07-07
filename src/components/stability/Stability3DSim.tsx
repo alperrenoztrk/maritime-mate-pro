@@ -1,6 +1,6 @@
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Component, Suspense, useCallback, useMemo, useRef, useState, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
@@ -70,9 +70,14 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
 
   return (
     <group>
-      <ambientLight intensity={0.45} />
-      <directionalLight position={[8, 12, 6]} intensity={1.0} castShadow />
-      <pointLight position={[-6, 8, -4]} intensity={0.5} color="#93c5fd" />
+      {/* Local lighting only — no external HDR / IBL fetch so the scene always
+          renders, even offline or inside a Capacitor WebView. A hemisphere
+          light gives a soft sky/sea gradient that reads well on the metallic
+          hull without needing an environment map. */}
+      <hemisphereLight args={["#bcd7ff", "#0a1420", 0.6]} />
+      <ambientLight intensity={0.35} />
+      <directionalLight position={[8, 12, 6]} intensity={1.15} />
+      <directionalLight position={[-6, 6, -6]} intensity={0.35} color="#93c5fd" />
 
       {/* Ship group - rotates around metacenter */}
       <group ref={shipGroup}>
@@ -166,31 +171,46 @@ export const Stability3DSim = () => {
       <CardContent className="space-y-4">
         {/* 3D viewport */}
         <div className="relative h-[340px] overflow-hidden rounded-xl border border-border/60 bg-slate-950">
-          {/* The outer Suspense keeps any async loader inside <Canvas> from
-              bubbling up to the route-level Suspense — otherwise a slow/blocked
-              external HDR fetch (drei <Environment preset>) would suspend and
-              hide the ENTIRE page behind the full-screen route spinner. */}
-          <Suspense fallback={<SimLoadingFallback />}>
-            <Canvas shadows dpr={[1, 2]}>
-              <PerspectiveCamera makeDefault position={[7, 5, 7]} fov={42} />
-              {/* Inner Suspense (fallback={null}) lets the ship, water and
-                  lights render immediately; the IBL environment simply pops in
-                  if/when the HDR loads, and is skipped gracefully if it can't
-                  be reached (offline / CDN blocked). */}
-              <Suspense fallback={null}>
-                <Environment preset="city" />
-              </Suspense>
-              <StabilityScene
-                targetHeel={targetHeel}
-                draftOffset={draftOffset}
-                stability={stability}
-                kg={kgInput}
-                onHeelUpdate={handleHeelUpdate}
-                gm={stability.gm}
-                bm={stability.bm}
-              />
-            </Canvas>
-          </Suspense>
+          {/* An error boundary is essential here: if WebGL is unavailable or a
+              draw call throws, React would otherwise unmount the whole subtree
+              and leave a blank box. Instead we show a graceful message while the
+              numeric calculations below keep working. */}
+          <SimErrorBoundary fallback={<SimErrorFallback />}>
+            <Suspense fallback={<SimLoadingFallback />}>
+              <Canvas
+                dpr={[1, 1.75]}
+                gl={{ antialias: true, powerPreference: "high-performance" }}
+                onCreated={({ gl }) => gl.setClearColor("#0b1220")}
+              >
+                <PerspectiveCamera makeDefault position={[7, 4.5, 7]} fov={42} />
+                {/* Let the user orbit / zoom the vessel. Pan is disabled and the
+                    polar angle is clamped so the camera can't dip under the sea. */}
+                <OrbitControls
+                  enablePan={false}
+                  enableDamping
+                  dampingFactor={0.08}
+                  minDistance={5}
+                  maxDistance={16}
+                  maxPolarAngle={Math.PI / 2.05}
+                  target={[0, 0.2, 0]}
+                />
+                <StabilityScene
+                  targetHeel={targetHeel}
+                  draftOffset={draftOffset}
+                  stability={stability}
+                  kg={kgInput}
+                  onHeelUpdate={handleHeelUpdate}
+                  gm={stability.gm}
+                  bm={stability.bm}
+                />
+              </Canvas>
+            </Suspense>
+          </SimErrorBoundary>
+
+          {/* Interaction hint */}
+          <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-[9px] text-muted-foreground shadow-sm backdrop-blur-sm">
+            Sürükle: döndür · Kaydır: yakınlaş
+          </div>
 
           {/* Live readout - top left */}
           <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-[11px] shadow-md backdrop-blur-sm">
@@ -291,6 +311,36 @@ export const Stability3DSim = () => {
 };
 
 /* ─── sub-components ─── */
+
+/** Catches WebGL / render failures so the viewport degrades gracefully. */
+class SimErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: Error) {
+    console.error("Stability3DSim render error:", error);
+  }
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
+}
+
+function SimErrorFallback() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center">
+      <AlertTriangle className="h-6 w-6 text-amber-400" />
+      <p className="text-xs text-muted-foreground">
+        3D görüntüleme bu cihazda başlatılamadı (WebGL desteklenmiyor olabilir).
+        Hesaplamalar ve kriterler aşağıda çalışmaya devam eder.
+      </p>
+    </div>
+  );
+}
+
 function SimLoadingFallback() {
   return (
     <div className="flex h-full items-center justify-center">
