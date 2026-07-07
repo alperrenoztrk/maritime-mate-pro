@@ -75,9 +75,6 @@ const Settings = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    <span data-translatable>Seçilen yazı boyutu tüm uygulamada geçerli olacaktır</span>
-                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -119,9 +116,6 @@ const Settings = () => {
                   </div>
                   <p className="text-sm text-muted-foreground">
                     <span data-translatable>Seçilen dil tüm uygulamada geçerli olacaktır</span>
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    <span data-translatable>Çeviriler denizcilik terminolojisine uygun olarak uygulanır</span>
                   </p>
                 </div>
               </CardContent>
