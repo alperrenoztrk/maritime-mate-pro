@@ -1,22 +1,37 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, User as UserIcon } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useNavigate } from "react-router-dom";
 // Density settings removed from Settings page; provider remains app-wide
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/hooks/useAuth";
 import { getLanguageFlag } from "@/utils/languages";
 import { toast } from "sonner";
 
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
     toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
   };
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast.success("Çıkış yapıldı");
+  };
+
+  const displayName = (user?.user_metadata?.full_name as string) || user?.email || "";
+  const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
+  const initials = displayName ? displayName.charAt(0).toUpperCase() : "?";
 
   const fontSizeLabels: Record<FontSizeKey, string> = {
     small: "Küçük",
