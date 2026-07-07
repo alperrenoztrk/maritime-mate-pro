@@ -8,8 +8,6 @@ import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/Fon
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getLanguageFlag } from "@/utils/languages";
 import { toast } from "sonner";
-import { ReleaseChecklistCard } from "@/components/settings/ReleaseChecklistCard";
-import { WidgetSettings } from "@/components/settings/WidgetSettings";
 
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
@@ -128,12 +126,6 @@ const Settings = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Home widgets */}
-            <WidgetSettings />
-
-            {/* Android Release Checklist */}
-            <ReleaseChecklistCard />
 
           </div>
 

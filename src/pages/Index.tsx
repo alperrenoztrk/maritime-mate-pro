@@ -144,14 +144,6 @@ const Index = () => {
 
         {/* RIGHT — Widgets */}
         <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
-          <div className="mb-4 px-4">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
-              Widget'lar
-            </h2>
-            <p className="mt-0.5 text-[11px] text-white/55">
-              Ana sayfa widget'larını Ayarlar'dan özelleştir.
-            </p>
-          </div>
           <HomeWidgetGrid />
         </section>
       </main>
