@@ -154,19 +154,13 @@ const Settings = () => {
                     <Select value={currentLanguage} onValueChange={handleLanguageChange}>
                       <SelectTrigger id="language-select">
                         <SelectValue>
-                          <div className="flex items-center gap-2">
-                            <span className="text-lg">{getLanguageFlag(currentLanguage)}</span>
-                            <span data-translatable>{getLanguageName(currentLanguage)}</span>
-                          </div>
+                          {getLanguageFlag(currentLanguage)} {getLanguageName(currentLanguage)}
                         </SelectValue>
                       </SelectTrigger>
                       <SelectContent>
                        {supportedLanguages.map((lang) => (
                          <SelectItem key={lang.language} value={lang.language}>
-                           <div className="flex items-center gap-2">
-                             <span className="text-lg">{getLanguageFlag(lang.language)}</span>
-                             <span data-translatable>{lang.displayName || getLanguageName(lang.language)}</span>
-                           </div>
+                           {getLanguageFlag(lang.language)} {lang.displayName || getLanguageName(lang.language)}
                          </SelectItem>
                        ))}
                       </SelectContent>
