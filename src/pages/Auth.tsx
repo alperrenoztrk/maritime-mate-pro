@@ -24,7 +24,7 @@ const GoogleIcon = () => (
 
 const Auth = () => {
   const navigate = useNavigate();
-  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth();
+  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithApple } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
