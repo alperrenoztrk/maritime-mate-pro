@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { lovable } from "@/integrations/lovable";
 
 interface AuthContextValue {
   user: User | null;
@@ -52,10 +51,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signInWithGoogle = async () => {
-    const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
-    });
-    return { error: (result?.error as Error | undefined) ?? null };
+    try {
+      // Load the managed Google auth bridge only when the user taps Google.
+      // This keeps the app bootable even if the generated auth bridge is
+      // temporarily unavailable in a specific preview/build environment.
+      const { lovable } = await import("@/integrations/lovable");
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+      });
+      return { error: (result?.error as Error | undefined) ?? null };
+    } catch (error) {
+      return { error: error instanceof Error ? error : new Error(String(error)) };
+    }
   };
 
   const signOut = async () => {
