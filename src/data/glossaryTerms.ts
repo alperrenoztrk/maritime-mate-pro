@@ -25,7 +25,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   { title: "Viyalamak", category: "Gemicilik", description: "Dümeni, geminin başını verilen rotada tutacak şekilde ortalamak; 'Viya!' komutu dümenciye 'rotada sabit dur, böyle devam et' anlamında verilir." },
   { title: "Küpeşte", category: "Gemicilik", description: "Güvertenin kenarında bulunan korkuluk veya parmaklık; gemidekilerin denize düşmesini önler." },
   { title: "Borda", category: "Gemicilik", description: "Geminin yan yüzeyi; iskele veya sancak borda olarak belirtilir." },
-  { title: "İskele", category: "Gemicilik", description: "Geminin sol tarafı; kırmızı seyir feneri ile işaretlenir." },
+  { title: "İskele (Port)", category: "Gemicilik", description: "Geminin sol tarafı; kırmızı seyir feneri ile işaretlenir." },
   { title: "Sancak", category: "Gemicilik", description: "Geminin sağ tarafı; yeşil seyir feneri ile işaretlenir." },
   { title: "Pruva", category: "Gemicilik", description: "Geminin baş (ön) kısmı; dalga kıran yapıya sahip bölümdür." },
   { title: "Kıç", category: "Gemicilik", description: "Geminin arka kısmı; dümen ve pervane bu bölgede bulunur." },
