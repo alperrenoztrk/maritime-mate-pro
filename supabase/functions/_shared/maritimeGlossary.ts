@@ -2085,16 +2085,41 @@ export const getMaritimeCorrectionMatcher = (languageCode: string): RegExp | nul
 };
 
 /**
- * Applies maritime correction rules to a single string and returns the
- * corrected string (unchanged if no rule matched).
+ * Context-aware corrections applied AFTER the standard word-based rules.
+ *
+ * Turkish source nouns are ambiguous ("hesap" = account | calculation,
+ * "oran" = ratio | rate, "gider" = expense, "süre" = duration). When they
+ * sit next to a commercial-maritime term, generic MT still emits the wrong
+ * English sense ("Demurrage account", "Freight ratio", "Voyage expense").
+ * These regexes rewrite those specific collocations while leaving unrelated
+ * uses ("bank account", "male-to-female ratio") untouched.
+ *
+ * Only English is populated in this first pass — extend per language when
+ * a mistranslation is actually observed.
  */
-export const applyMaritimeCorrections = (text: string, languageCode: string): string => {
-  if (!text) return text;
-  const matcher = getMaritimeCorrectionMatcher(languageCode);
-  if (!matcher || !matcher.test(text)) return text;
+const contextualCorrections: Record<string, Array<[RegExp, string]>> = {
+  en: [
+    // …account → …calculation when preceded by a commercial term.
+    [/\b(demurrage|laytime|voyage|freight|bunker|charter|TCE|time charter equivalent)\s+account(s)?\b/gi,
+      '$1 calculation$2'],
+    // "account of demurrage" → "calculation of demurrage".
+    [/\baccount(s)?\s+of\s+(demurrage|laytime|voyage|freight|bunker|charter|TCE)\b/gi,
+      'calculation$1 of $2'],
+    // …ratio → …rate for commercial terms where "rate" is the market meaning.
+    [/\b(freight|demurrage|despatch|loading|discharge|charter|bunker)\s+ratio\b/gi,
+      '$1 rate'],
+    // …expense → …cost for the standard voyage-cost collocation.
+    [/\b(voyage|bunker|port|canal)\s+expense(s)?\b/gi, '$1 cost$2'],
+    // "voyage income" → "voyage revenue" (accounting term of art).
+    [/\b(voyage|freight)\s+income\b/gi, '$1 revenue'],
+  ],
+};
 
+const applyContextualCorrections = (text: string, languageCode: string): string => {
+  const rules = contextualCorrections[languageCode];
+  if (!rules?.length) return text;
   let result = text;
-  for (const { pattern, replacement } of getMaritimeCorrectionRules(languageCode)) {
+  for (const [pattern, replacement] of rules) {
     pattern.lastIndex = 0;
     if (pattern.test(result)) {
       pattern.lastIndex = 0;
@@ -2102,6 +2127,26 @@ export const applyMaritimeCorrections = (text: string, languageCode: string): st
     }
   }
   return result;
+};
+
+/**
+ * Applies maritime correction rules to a single string and returns the
+ * corrected string (unchanged if no rule matched).
+ */
+export const applyMaritimeCorrections = (text: string, languageCode: string): string => {
+  if (!text) return text;
+  const matcher = getMaritimeCorrectionMatcher(languageCode);
+  let result = text;
+  if (matcher && matcher.test(text)) {
+    for (const { pattern, replacement } of getMaritimeCorrectionRules(languageCode)) {
+      pattern.lastIndex = 0;
+      if (pattern.test(result)) {
+        pattern.lastIndex = 0;
+        result = result.replace(pattern, replacement);
+      }
+    }
+  }
+  return applyContextualCorrections(result, languageCode);
 };
 
 // -----------------------------------------------------------------------------
