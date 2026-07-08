@@ -112,6 +112,20 @@ const Auth = () => {
             Google ile devam et
           </Button>
 
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full gap-2"
+            onClick={handleApple}
+            disabled={busy}
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true" fill="currentColor">
+              <path d="M16.365 1.43c0 1.14-.463 2.23-1.223 3.026-.816.855-2.15 1.517-3.245 1.428-.14-1.104.42-2.253 1.14-2.99.81-.83 2.223-1.44 3.328-1.464zM20.5 17.34c-.56 1.29-.83 1.87-1.55 3.01-.99 1.58-2.39 3.55-4.13 3.56-1.54.01-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.74-.01-3.06-1.79-4.05-3.37C.31 16.98-.07 12.55 1.6 10.09c1.19-1.75 3.06-2.78 4.82-2.78 1.79 0 2.92 1 4.4 1 1.44 0 2.32-1 4.39-1 1.57 0 3.23.86 4.42 2.34-3.88 2.13-3.25 7.69.87 8.69z"/>
+            </svg>
+            Apple ile devam et
+          </Button>
+
+
           <div className="relative">
             <Separator />
             <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">
