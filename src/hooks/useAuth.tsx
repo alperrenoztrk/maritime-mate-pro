@@ -66,13 +66,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const signInWithApple = async () => {
+    try {
+      const { lovable } = await import("@/integrations/lovable");
+      const result = await lovable.auth.signInWithOAuth("apple", {
+        redirect_uri: window.location.origin,
+      });
+      return { error: (result?.error as Error | undefined) ?? null };
+    } catch (error) {
+      return { error: error instanceof Error ? error : new Error(String(error)) };
+    }
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signOut }}
+      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithApple, signOut }}
     >
       {children}
     </AuthContext.Provider>
