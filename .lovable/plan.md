@@ -1,39 +1,71 @@
-## Amaç
-Uygulamaya email/şifre ile kayıt + giriş, Google ile giriş, ve Ayarlar sayfasından oturum aç/kapat özelliklerini eklemek. Mevcut koyu tema ve maritime tasarım korunacak.
+# Bağlam-Farkındalıklı Çeviri Katmanı
 
-## Kapsam
+## Sorun
 
-### 1. Auth altyapısı
-- `src/hooks/useAuth.tsx` (yeni): `AuthProvider` + `useAuth()` hook.
-  - `supabase.auth.onAuthStateChange` dinleyicisi (senkron state update) + ardından `getSession()`.
-  - `user`, `session`, `loading` state; `signInWithEmail`, `signUpWithEmail`, `signInWithGoogle`, `signOut` fonksiyonları.
-- `src/App.tsx`: `AuthProvider` ile sarma (sağlayıcı ağacına eklenir).
+Şu anki sözlük **tek kelime** bazlı çalışıyor: "Demurrage" → "Demurrage", "Hesap" → yok. Google Translate bunları görünce "Demurrage hesabı"nı **"Demurrage account"** yapıyor çünkü Türkçe "hesap" hem *account* hem *calculation* demek. Sözlük tek başına bunu düzeltemiyor — cümledeki denizcilik bağlamına bakması lazım.
 
-### 2. Auth sayfası
-- `src/pages/Auth.tsx` (yeni), route `/auth`:
-  - Tabs: **Giriş Yap** / **Kayıt Ol**.
-  - Email + şifre alanları, zod ile doğrulama (email format, min 8 karakter şifre).
-  - `emailRedirectTo: window.location.origin` ile `signUp`.
-  - "Google ile devam et" butonu → `supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + '/auth/callback' } })`.
-  - Zaten girişliyse `/` sayfasına yönlendir.
-  - Koyu maritime tasarım (mevcut `Card` bileşenleri, ocean gradient arka plan).
-- `src/App.tsx`: `/auth` route eklenir (lazy).
+Aynı sorun potansiyel olarak şu kelimelerde de var:
+- **hesap / hesabı** → account vs calculation (demurrage/laytime/navlun/TCE/sefer bağlamında = calculation)
+- **oran / oranı** → ratio vs rate (navlun, demurrage, despatch bağlamında = rate)
+- **süre / süresi** → duration vs time/laytime (sefer, yükleme, tahliye bağlamında)
+- **gider / geliri** → expense/income (sefer bağlamında = voyage cost / freight revenue)
+- **açık** → open vs offshore (deniz bağlamında)
+- **yol** → road vs way/course (seyir bağlamında)
 
-### 3. Ayarlar entegrasyonu
-- `src/pages/Settings.tsx`: Yeni "Hesap" kartı eklenir.
-  - Giriş yapılmışsa: kullanıcı avatarı (Google `avatar_url`), isim/email, "Çıkış Yap" butonu.
-  - Girişli değilse: "Giriş Yap / Kayıt Ol" butonu → `/auth`.
+## Çözüm — İki adımlı bağlam katmanı
 
-### 4. Google OAuth aktifleştirme
-- `supabase--configure_social_auth` ile Google provider açılır (Lovable Cloud yönetimli — ekstra credential istenmez, email provider da açık kalır).
+### 1. Çok kelimeli ifade sözlüğü (phrase glossary)
 
-### 5. Kapsam dışı
-- Kullanıcı profil tablosu (`profiles`) — kullanıcı bunu istemedi; sadece `auth.users` kullanılır. İleride profil verisi (isim, avatar tercihi vb.) gerektiğinde ayrı bir görevde eklenir.
-- Şifre sıfırlama akışı — bu turda talep edilmedi.
-- Route koruma / private route guard'ları — mevcut sayfalar herkese açık kalmaya devam eder.
+`maritimeGlossary.ts` içine yeni bir **`maritimePhrases`** listesi eklenecek. Tek kelimelik terimlerin aksine, bunlar bağlam içeren tam ifadelerdir ve **her şeyden önce** eşleşir (mevcut tek-kelime maskelemeden önce):
 
-## Teknik notlar
-- Mevcut `AuthCallback.tsx` (PKCE exchange) korunur, Google redirect bu sayfaya döner.
-- `supabase` import'u `@/integrations/supabase/safeClient`'tan alınır (proje standardı).
-- Toast bildirimleri `sonner` ile yapılır.
-- Sadece koyu tema — `bg-background`, `text-foreground` gibi semantik token'lar kullanılır, hardcoded renk yok.
+```ts
+{ tr: 'Demurrage Hesabı', translations: { en: 'Demurrage Calculation', de: 'Demurrage-Berechnung', ... } }
+{ tr: 'Laytime Hesabı',    translations: { en: 'Laytime Calculation', ... } }
+{ tr: 'Navlun Oranı',      translations: { en: 'Freight Rate', ... } }
+{ tr: 'Sefer Gideri',      translations: { en: 'Voyage Cost', ... } }
+{ tr: 'Sefer Geliri',      translations: { en: 'Voyage Revenue', ... } }
+{ tr: 'Sefer Süresi',      translations: { en: 'Voyage Duration', ... } }
+{ tr: 'Yükleme Oranı',     translations: { en: 'Loading Rate', ... } }
+{ tr: 'Tahliye Oranı',     translations: { en: 'Discharge Rate', ... } }
+{ tr: 'Despatch Oranı',    translations: { en: 'Despatch Rate', ... } }
+{ tr: 'Bunker Maliyeti',   translations: { en: 'Bunker Cost', ... } }
+{ tr: 'Açık Deniz',        translations: { en: 'Open Sea / Offshore', ... } }
+// … 25 dilin tamamı için
+```
+
+Bunlar aynı `maskGlossaryTerms` / `getMaritimeTranslationOverride` boru hattından geçecek ama **daha uzun eşleşmeler önce** aranacak (greedy longest-match), böylece "Demurrage Hesabı" → tek atom olarak maskelenir, Google onu değiştiremez.
+
+### 2. Bağlamsal düzeltme kuralları (contextual sweep)
+
+`applyMaritimeCorrections` çıkışa şu türden regex tabanlı düzeltmeler ekleyecek — sadece maritime terim yakınında tetiklenir:
+
+```
+/\b(demurrage|laytime|voyage|freight|TCE)\s+account\b/gi  → "$1 calculation"
+/\baccount of (demurrage|laytime|voyage)\b/gi             → "calculation of $1"
+```
+
+Böylece phrase sözlükte yakalanmayan varyantlar (çekim, sıralama farkı) da temizlenir.
+
+## Dosyalar
+
+- **`supabase/functions/_shared/maritimeGlossary.ts`**
+  - Yeni `maritimePhrases: MaritimeTerm[]` dizisi (ilk parti: ~15 ifade × 25 dil)
+  - `maskGlossaryTerms` içinde phrase'leri terimlerden **önce** ve **uzunluk azalan** sırayla eşleştir
+  - `getMaritimeTranslationOverride` phrase listesine de bakacak
+  - `applyMaritimeCorrections` sonuna `contextualCorrections` regex tablosu
+
+- **`supabase/functions/translate/index.ts`** — değişiklik yok, mevcut boru hattı yeni katmanı otomatik kullanır
+
+- **`src/utils/maritimeGlossary.ts`** — sadece re-export, dokunmaya gerek yok
+
+- **`scripts/i18n/apply-contextual-fixes.mjs`** — mevcut static JSON paketlerine aynı bağlam düzeltmesini tekrar geçirmek için küçük bir çalıştırma (bir defalık)
+
+## Doğrulama
+
+- Küçük bir unit script: "Demurrage Hesabı", "Laytime hesabı yapıldı", "Navlun oranı 25 $/t" gibi 10-15 örneği İngilizce/Almanca/İspanyolcaya çevirip beklenen çıktı ile kıyasla
+- `npm run build` + hızlı önizleme kontrolü (Ekonomi/Ticari Operasyonlar dersinde İngilizce görünüm)
+
+## Kapsam dışı
+
+- Yeni bir AI/LLM bağlam servisi eklenmez (kullanıcı AI izini minimumda istiyor)
+- Diğer dillerdeki bağlam regex'leri sadece İngilizce ile başlar; Almanca/Fransızca genişlemesi ayrı bir tur olur
