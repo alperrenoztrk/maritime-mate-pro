@@ -1,6 +1,28 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
+import { createLovableAuth } from "@lovable.dev/cloud-auth-js";
 import { supabase } from "@/integrations/supabase/safeClient";
+
+const cloudAuth = createLovableAuth();
+
+type SocialProvider = "google" | "apple";
+
+const signInWithSocialProvider = async (provider: SocialProvider) => {
+  try {
+    const result = await cloudAuth.signInWithOAuth(provider, {
+      redirect_uri: window.location.origin,
+    });
+
+    if (result.redirected || result.error) {
+      return { error: (result.error as Error | undefined) ?? null };
+    }
+
+    const { error } = await supabase.auth.setSession(result.tokens);
+    return { error: error as Error | null };
+  } catch (error) {
+    return { error: error instanceof Error ? error : new Error(String(error)) };
+  }
+};
 
 interface AuthContextValue {
   user: User | null;
@@ -52,30 +74,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signInWithGoogle = async () => {
-    try {
-      // Load the managed Google auth bridge only when the user taps Google.
-      // This keeps the app bootable even if the generated auth bridge is
-      // temporarily unavailable in a specific preview/build environment.
-      const { lovable } = await import("@/integrations/lovable");
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
-      });
-      return { error: (result?.error as Error | undefined) ?? null };
-    } catch (error) {
-      return { error: error instanceof Error ? error : new Error(String(error)) };
-    }
+    return signInWithSocialProvider("google");
   };
 
   const signInWithApple = async () => {
-    try {
-      const { lovable } = await import("@/integrations/lovable");
-      const result = await lovable.auth.signInWithOAuth("apple", {
-        redirect_uri: window.location.origin,
-      });
-      return { error: (result?.error as Error | undefined) ?? null };
-    } catch (error) {
-      return { error: error instanceof Error ? error : new Error(String(error)) };
-    }
+    return signInWithSocialProvider("apple");
   };
 
   const signOut = async () => {
