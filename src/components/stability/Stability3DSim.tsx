@@ -6,7 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Info, Wind } from "lucide-react";
 import * as THREE from "three";
 
 import {
@@ -15,6 +15,7 @@ import {
   checkIMOCriteria,
   calculateRollingPeriod,
   calculateDeckImmersionAngle,
+  solveHeelAngle,
   type ShipState,
   type StabilityResult,
   type IMOCompliance,
@@ -142,6 +143,7 @@ export const Stability3DSim = () => {
   const [cbInput, setCbInput] = useState(0.72);
   const [heelAngle, setHeelAngle] = useState(0);
   const [shipType, setShipType] = useState<ShipType>("container");
+  const [windMoment, setWindMoment] = useState(0); // external beam-wind heeling moment (t·m)
   const activeShip = shipTypeOptions.find((o) => o.value === shipType);
 
   // Reference ship dimensions
@@ -165,17 +167,22 @@ export const Stability3DSim = () => {
     [ship]
   );
 
-  // External heeling moment → target heel angle
-  const heelingMoment = useMemo(() => 2200 * (1 + (kgInput - 6.2) * 0.12), [kgInput]);
-  const targetHeel = useMemo(() => {
-    const gmSafe = clamp(stability.gm, 0.05, 10);
-    const ratio = heelingMoment / (stability.displacement * gmSafe);
-    return clamp(Math.atan(ratio), -0.65, 0.65);
-  }, [stability, heelingMoment]);
+  // Total heeling moment = a small intrinsic list (from a raised KG) + the
+  // user-controlled beam-wind moment. The equilibrium heel is solved against
+  // the actual righting moment Δ·GZ(φ), so it respects the GZ curve rather
+  // than a naive small-angle approximation.
+  const heelingMoment = useMemo(() => 2200 * (1 + (kgInput - 6.2) * 0.12) + windMoment, [kgInput, windMoment]);
+  const targetHeel = useMemo(
+    () => solveHeelAngle(stability.gm, stability.bm, stability.displacement, heelingMoment, 55),
+    [stability, heelingMoment]
+  );
 
   const draftOffset = useMemo(() => clamp((draftInput - 6.5) * 0.06, -0.15, 0.25), [draftInput]);
   const gz = useMemo(() => calculateGZ(stability.gm, stability.bm, heelAngle), [stability, heelAngle]);
   const heelDeg = THREE.MathUtils.radToDeg(heelAngle);
+  const absHeel = Math.abs(heelDeg);
+  const deckImmersed = deckImmAngle > 0 && absHeel >= deckImmAngle;
+  const nearCapsize = absHeel >= 45;
 
   const handleHeelUpdate = useCallback((h: number) => setHeelAngle(h), []);
 
@@ -257,8 +264,13 @@ export const Stability3DSim = () => {
               <Row label="GM" value={`${stability.gm.toFixed(2)} m`} color={stability.gm < 0.15 ? "#ef4444" : "#22c55e"} />
               <div className="my-1 border-t border-border/30" />
               <Row label="GZ" value={`${gz.toFixed(3)} m`} />
-              <Row label="Meyil" value={`${heelDeg.toFixed(1)}°`} />
+              <Row
+                label="Meyil"
+                value={`${heelDeg.toFixed(1)}°`}
+                color={nearCapsize ? "#ef4444" : deckImmersed ? "#f59e0b" : undefined}
+              />
               <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : "∞"} s`} />
+              <Row label="Rüzgâr" value={windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m` : "—"} />
             </div>
           </div>
 
@@ -277,6 +289,44 @@ export const Stability3DSim = () => {
               TEHLİKE: GM &lt; 0.15 m — Yetersiz stabilite!
             </div>
           )}
+
+          {/* Heel / deck-immersion warning (only when GM is otherwise OK) */}
+          {stability.gm >= 0.15 && (nearCapsize || deckImmersed) && (
+            <div
+              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5 ${
+                nearCapsize ? "bg-red-500/90" : "bg-amber-500/90"
+              }`}
+            >
+              <AlertTriangle className="h-3.5 w-3.5" />
+              {nearCapsize
+                ? `TEHLİKE: ${absHeel.toFixed(0)}° meyil — alabora riski!`
+                : `Güverte kenarı suya girdi (φ_deck ${deckImmAngle.toFixed(0)}°)`}
+            </div>
+          )}
+        </div>
+
+        {/* Wind / heeling-moment slider — the "star" control */}
+        <div className="rounded-lg border border-sky-500/30 bg-sky-500/5 p-3">
+          <Label className="mb-1.5 flex items-center justify-between text-xs">
+            <span className="flex items-center gap-1.5 font-semibold text-sky-600 dark:text-sky-300">
+              <Wind className="h-3.5 w-3.5" />
+              Rüzgâr / Yalpa Momenti
+            </span>
+            <span className="font-mono">
+              {windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m → ${absHeel.toFixed(1)}°` : "Sakin"}
+            </span>
+          </Label>
+          <Slider
+            value={[windMoment]}
+            min={0}
+            max={280000}
+            step={5000}
+            onValueChange={(v) => setWindMoment(v[0])}
+          />
+          <p className="mt-1 text-[10px] text-muted-foreground">
+            Yandan esen rüzgârın devirme momenti. Denge meyli, doğrultma momenti Δ·GZ(φ)'ye eşitlenerek çözülür.
+            Yüksek KG → düşük GM → aynı rüzgârda daha büyük meyil.
+          </p>
         </div>
 
         {/* Sliders */}

@@ -108,6 +108,40 @@ export function generateGZCurve(gm: number, bm: number, steps = 90): { angle: nu
 }
 
 /**
+ * Solve the static equilibrium heel angle for a (roughly constant) external
+ * heeling moment such as a beam wind.
+ *
+ * At equilibrium the righting moment Δ·GZ(φ) balances the heeling moment M.
+ * We march up the GZ curve and take the first angle where the righting moment
+ * reaches M, linearly interpolating between whole degrees. Returns a signed
+ * angle in radians (sign follows the moment). If the moment exceeds the
+ * righting moment anywhere in range, the angle is clamped to `maxDeg`.
+ */
+export function solveHeelAngle(
+  gm: number,
+  bm: number,
+  displacement: number,
+  heelingMoment: number,
+  maxDeg = 60
+): number {
+  const sign = heelingMoment < 0 ? -1 : 1;
+  const M = Math.abs(heelingMoment);
+  if (M < 1e-6 || displacement <= 0) return 0;
+
+  let prevRM = 0;
+  for (let deg = 1; deg <= maxDeg; deg++) {
+    const rad = THREE.MathUtils.degToRad(deg);
+    const rm = displacement * calculateGZ(gm, bm, rad);
+    if (rm >= M && prevRM < M) {
+      const t = (M - prevRM) / (rm - prevRM || 1);
+      return sign * THREE.MathUtils.degToRad(deg - 1 + t);
+    }
+    prevRM = rm;
+  }
+  return sign * THREE.MathUtils.degToRad(maxDeg);
+}
+
+/**
  * Calculate deck edge immersion angle
  * φ_deck = arctan(2 * freeboard / B)
  */
