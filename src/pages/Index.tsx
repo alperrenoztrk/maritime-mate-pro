@@ -99,7 +99,7 @@ const Index = () => {
 
       {/* Header — only on home page */}
       {activePage === "home" && (
-        <div className="absolute top-0 left-0 right-0 z-20 px-2 pt-8 sm:pt-12 pointer-events-none">
+        <div className="fixed top-0 left-0 right-0 z-20 px-2 pt-[max(2rem,env(safe-area-inset-top))] sm:pt-12 pointer-events-none">
           <div className="px-4 text-center">
             <h1
               className="select-none font-black tracking-wider notranslate"
