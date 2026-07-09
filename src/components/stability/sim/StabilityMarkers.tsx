@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -70,13 +71,17 @@ export function StabilityMarkers({
   // GZ arm visualization: horizontal distance from G to vertical through new B
   const gzLength = gz * vScale * 2;
 
-  // Centerline
-  const linePoints = [
-    new THREE.Vector3(0, kY - 0.1, 0),
-    new THREE.Vector3(0, kY + km * vScale + 0.15, 0),
-  ];
+  // Centerline — memoized so we don't allocate (and leak) a BufferGeometry on
+  // every re-render, which happens ~12×/s as the live heel readout updates.
+  const lineGeo = useMemo(() => {
+    const linePoints = [
+      new THREE.Vector3(0, kY - 0.1, 0),
+      new THREE.Vector3(0, kY + km * vScale + 0.15, 0),
+    ];
+    return new THREE.BufferGeometry().setFromPoints(linePoints);
+  }, [kY, km, vScale]);
 
-  const lineGeo = new THREE.BufferGeometry().setFromPoints(linePoints);
+  useEffect(() => () => lineGeo.dispose(), [lineGeo]);
 
   return (
     <group>
@@ -98,16 +103,17 @@ export function StabilityMarkers({
       {/* M - Metacenter */}
       <PointMarker position={mPos} label="M" color="#0ea5e9" />
 
-      {/* GZ arm indicator (when heeled) */}
+      {/* GZ arm indicator (when heeled). Heel is roll about the longitudinal
+          (X) axis, so the righting arm is a transverse (Z) offset. */}
       {Math.abs(heelAngle) > 0.02 && Math.abs(gzLength) > 0.01 && (
         <group position={[0, kY + kg * vScale, 0]}>
-          <mesh position={[gzLength / 2 * Math.sign(heelAngle), 0, 0]}>
-            <boxGeometry args={[Math.abs(gzLength), 0.015, 0.015]} />
+          <mesh position={[0, 0, gzLength / 2 * Math.sign(heelAngle)]}>
+            <boxGeometry args={[0.015, 0.015, Math.abs(gzLength)]} />
             <meshStandardMaterial color="#22c55e" emissive="#22c55e" emissiveIntensity={0.5} />
           </mesh>
           <Html
             distanceFactor={12}
-            position={[gzLength * Math.sign(heelAngle), 0.12, 0]}
+            position={[0, 0.12, gzLength * Math.sign(heelAngle)]}
             style={{ pointerEvents: "none" }}
           >
             <span

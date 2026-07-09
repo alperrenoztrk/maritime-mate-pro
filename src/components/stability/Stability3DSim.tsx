@@ -1,11 +1,12 @@
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Component, Suspense, useCallback, useMemo, useRef, useState, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { AlertTriangle, CheckCircle2, Info, Wind } from "lucide-react";
 import * as THREE from "three";
 
 import {
@@ -14,16 +15,26 @@ import {
   checkIMOCriteria,
   calculateRollingPeriod,
   calculateDeckImmersionAngle,
+  solveHeelAngle,
   type ShipState,
   type StabilityResult,
   type IMOCompliance,
 } from "./sim/StabilityPhysics";
-import { ShipHull3D } from "./sim/ShipHull3D";
+import { ShipModel3D, shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
 import { WaterSurface3D } from "./sim/WaterSurface3D";
 
 /* ─── helpers ─── */
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
+
+/* Vessel is drawn ~2× the visual span the old blob had; scale it down to fit
+   the same framing, and record where its keel lands so the K marker sits on it. */
+const SHIP_SCALE = 0.82;
+/* ShipModel3D keel is at local y ≈ -0.7 (see its comment); scaled world keel: */
+const SHIP_KEEL_Y = -0.7 * SHIP_SCALE;
+/* Compress the real KM (~18 m) into the vessel's visual height so K/B/G/M read
+   as a proportionate stack instead of floating far above the deck. */
+const MARKER_VSCALE = 0.12;
 
 /* ─── 3-D scene ─── */
 interface SceneProps {
@@ -34,9 +45,10 @@ interface SceneProps {
   onHeelUpdate: (heel: number) => void;
   gm: number;
   bm: number;
+  shipType: ShipType;
 }
 
-function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, gm, bm }: SceneProps) {
+function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, gm, bm, shipType }: SceneProps) {
   const shipGroup = useRef<THREE.Group>(null);
   const heelRef = useRef(0);
   const velocityRef = useRef(0);
@@ -57,7 +69,9 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
     heelRef.current += velocityRef.current * dt;
 
     if (shipGroup.current) {
-      shipGroup.current.rotation.z = heelRef.current;
+      // Heel = roll about the longitudinal (X) axis, so the deck visibly tilts
+      // to port/starboard rather than pitching the bow up and down.
+      shipGroup.current.rotation.x = heelRef.current;
     }
 
     if (clock.elapsedTime - lastReport.current > 0.08) {
@@ -66,18 +80,23 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
     }
   });
 
-  const keelY = -0.45 - draftOffset;
+  const keelY = SHIP_KEEL_Y - draftOffset * 0.5;
 
   return (
     <group>
-      <ambientLight intensity={0.45} />
-      <directionalLight position={[8, 12, 6]} intensity={1.0} castShadow />
-      <pointLight position={[-6, 8, -4]} intensity={0.5} color="#93c5fd" />
+      {/* Local lighting only — no external HDR / IBL fetch so the scene always
+          renders, even offline or inside a Capacitor WebView. A hemisphere
+          light gives a soft sky/sea gradient that reads well on the metallic
+          hull without needing an environment map. */}
+      <hemisphereLight args={["#bcd7ff", "#0a1420", 0.6]} />
+      <ambientLight intensity={0.35} />
+      <directionalLight position={[8, 12, 6]} intensity={1.15} />
+      <directionalLight position={[-6, 6, -6]} intensity={0.35} color="#93c5fd" />
 
-      {/* Ship group - rotates around metacenter */}
+      {/* Ship group - heels about the waterline */}
       <group ref={shipGroup}>
         <group position={[0, -draftOffset * 0.5, 0]}>
-          <ShipHull3D />
+          <ShipModel3D shipType={shipType} scale={SHIP_SCALE} />
         </group>
         {/* Stability reference points */}
         <StabilityMarkers
@@ -87,6 +106,7 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
           km={stability.km}
           heelAngle={heelRef.current}
           gz={calculateGZ(gm, bm, heelRef.current)}
+          vScale={MARKER_VSCALE}
         />
       </group>
 
@@ -122,6 +142,9 @@ export const Stability3DSim = () => {
   const [draftInput, setDraftInput] = useState(6.5);
   const [cbInput, setCbInput] = useState(0.72);
   const [heelAngle, setHeelAngle] = useState(0);
+  const [shipType, setShipType] = useState<ShipType>("container");
+  const [windMoment, setWindMoment] = useState(0); // external beam-wind heeling moment (t·m)
+  const activeShip = shipTypeOptions.find((o) => o.value === shipType);
 
   // Reference ship dimensions
   const ship: ShipState = useMemo(
@@ -144,17 +167,22 @@ export const Stability3DSim = () => {
     [ship]
   );
 
-  // External heeling moment → target heel angle
-  const heelingMoment = useMemo(() => 2200 * (1 + (kgInput - 6.2) * 0.12), [kgInput]);
-  const targetHeel = useMemo(() => {
-    const gmSafe = clamp(stability.gm, 0.05, 10);
-    const ratio = heelingMoment / (stability.displacement * gmSafe);
-    return clamp(Math.atan(ratio), -0.65, 0.65);
-  }, [stability, heelingMoment]);
+  // Total heeling moment = a small intrinsic list (from a raised KG) + the
+  // user-controlled beam-wind moment. The equilibrium heel is solved against
+  // the actual righting moment Δ·GZ(φ), so it respects the GZ curve rather
+  // than a naive small-angle approximation.
+  const heelingMoment = useMemo(() => 2200 * (1 + (kgInput - 6.2) * 0.12) + windMoment, [kgInput, windMoment]);
+  const targetHeel = useMemo(
+    () => solveHeelAngle(stability.gm, stability.bm, stability.displacement, heelingMoment, 55),
+    [stability, heelingMoment]
+  );
 
   const draftOffset = useMemo(() => clamp((draftInput - 6.5) * 0.06, -0.15, 0.25), [draftInput]);
   const gz = useMemo(() => calculateGZ(stability.gm, stability.bm, heelAngle), [stability, heelAngle]);
   const heelDeg = THREE.MathUtils.radToDeg(heelAngle);
+  const absHeel = Math.abs(heelDeg);
+  const deckImmersed = deckImmAngle > 0 && absHeel >= deckImmAngle;
+  const nearCapsize = absHeel >= 45;
 
   const handleHeelUpdate = useCallback((h: number) => setHeelAngle(h), []);
 
@@ -164,33 +192,69 @@ export const Stability3DSim = () => {
         <CardTitle className="text-base">3B Stabilite Simülasyonu</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
+        {/* Ship-type selector */}
+        <div className="flex flex-col gap-2 rounded-lg border border-border/40 bg-muted/30 p-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-2">
+            <Label className="text-xs font-semibold">Gemi Tipi</Label>
+            <span className="hidden text-[10px] text-muted-foreground sm:inline">{activeShip?.description}</span>
+          </div>
+          <Select value={shipType} onValueChange={(v) => setShipType(v as ShipType)}>
+            <SelectTrigger className="h-8 w-full text-xs sm:w-44">
+              <SelectValue placeholder="Gemi tipi seç" />
+            </SelectTrigger>
+            <SelectContent>
+              {shipTypeOptions.map((o) => (
+                <SelectItem key={o.value} value={o.value} className="text-xs">
+                  {o.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* 3D viewport */}
         <div className="relative h-[340px] overflow-hidden rounded-xl border border-border/60 bg-slate-950">
-          {/* The outer Suspense keeps any async loader inside <Canvas> from
-              bubbling up to the route-level Suspense — otherwise a slow/blocked
-              external HDR fetch (drei <Environment preset>) would suspend and
-              hide the ENTIRE page behind the full-screen route spinner. */}
-          <Suspense fallback={<SimLoadingFallback />}>
-            <Canvas shadows dpr={[1, 2]}>
-              <PerspectiveCamera makeDefault position={[7, 5, 7]} fov={42} />
-              {/* Inner Suspense (fallback={null}) lets the ship, water and
-                  lights render immediately; the IBL environment simply pops in
-                  if/when the HDR loads, and is skipped gracefully if it can't
-                  be reached (offline / CDN blocked). */}
-              <Suspense fallback={null}>
-                <Environment preset="city" />
-              </Suspense>
-              <StabilityScene
-                targetHeel={targetHeel}
-                draftOffset={draftOffset}
-                stability={stability}
-                kg={kgInput}
-                onHeelUpdate={handleHeelUpdate}
-                gm={stability.gm}
-                bm={stability.bm}
-              />
-            </Canvas>
-          </Suspense>
+          {/* An error boundary is essential here: if WebGL is unavailable or a
+              draw call throws, React would otherwise unmount the whole subtree
+              and leave a blank box. Instead we show a graceful message while the
+              numeric calculations below keep working. */}
+          <SimErrorBoundary fallback={<SimErrorFallback />}>
+            <Suspense fallback={<SimLoadingFallback />}>
+              <Canvas
+                dpr={[1, 1.75]}
+                gl={{ antialias: true, powerPreference: "high-performance" }}
+                onCreated={({ gl }) => gl.setClearColor("#0b1220")}
+              >
+                <PerspectiveCamera makeDefault position={[7, 4.5, 7]} fov={42} />
+                {/* Let the user orbit / zoom the vessel. Pan is disabled and the
+                    polar angle is clamped so the camera can't dip under the sea. */}
+                <OrbitControls
+                  enablePan={false}
+                  enableDamping
+                  dampingFactor={0.08}
+                  minDistance={5}
+                  maxDistance={16}
+                  maxPolarAngle={Math.PI / 2.05}
+                  target={[0, 0.2, 0]}
+                />
+                <StabilityScene
+                  targetHeel={targetHeel}
+                  draftOffset={draftOffset}
+                  stability={stability}
+                  kg={kgInput}
+                  onHeelUpdate={handleHeelUpdate}
+                  gm={stability.gm}
+                  bm={stability.bm}
+                  shipType={shipType}
+                />
+              </Canvas>
+            </Suspense>
+          </SimErrorBoundary>
+
+          {/* Interaction hint */}
+          <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-[9px] text-muted-foreground shadow-sm backdrop-blur-sm">
+            Sürükle: döndür · Kaydır: yakınlaş
+          </div>
 
           {/* Live readout - top left */}
           <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-[11px] shadow-md backdrop-blur-sm">
@@ -200,8 +264,13 @@ export const Stability3DSim = () => {
               <Row label="GM" value={`${stability.gm.toFixed(2)} m`} color={stability.gm < 0.15 ? "#ef4444" : "#22c55e"} />
               <div className="my-1 border-t border-border/30" />
               <Row label="GZ" value={`${gz.toFixed(3)} m`} />
-              <Row label="Meyil" value={`${heelDeg.toFixed(1)}°`} />
+              <Row
+                label="Meyil"
+                value={`${heelDeg.toFixed(1)}°`}
+                color={nearCapsize ? "#ef4444" : deckImmersed ? "#f59e0b" : undefined}
+              />
               <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : "∞"} s`} />
+              <Row label="Rüzgâr" value={windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m` : "—"} />
             </div>
           </div>
 
@@ -220,6 +289,44 @@ export const Stability3DSim = () => {
               TEHLİKE: GM &lt; 0.15 m — Yetersiz stabilite!
             </div>
           )}
+
+          {/* Heel / deck-immersion warning (only when GM is otherwise OK) */}
+          {stability.gm >= 0.15 && (nearCapsize || deckImmersed) && (
+            <div
+              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5 ${
+                nearCapsize ? "bg-red-500/90" : "bg-amber-500/90"
+              }`}
+            >
+              <AlertTriangle className="h-3.5 w-3.5" />
+              {nearCapsize
+                ? `TEHLİKE: ${absHeel.toFixed(0)}° meyil — alabora riski!`
+                : `Güverte kenarı suya girdi (φ_deck ${deckImmAngle.toFixed(0)}°)`}
+            </div>
+          )}
+        </div>
+
+        {/* Wind / heeling-moment slider — the "star" control */}
+        <div className="rounded-lg border border-sky-500/30 bg-sky-500/5 p-3">
+          <Label className="mb-1.5 flex items-center justify-between text-xs">
+            <span className="flex items-center gap-1.5 font-semibold text-sky-600 dark:text-sky-300">
+              <Wind className="h-3.5 w-3.5" />
+              Rüzgâr / Yalpa Momenti
+            </span>
+            <span className="font-mono">
+              {windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m → ${absHeel.toFixed(1)}°` : "Sakin"}
+            </span>
+          </Label>
+          <Slider
+            value={[windMoment]}
+            min={0}
+            max={280000}
+            step={5000}
+            onValueChange={(v) => setWindMoment(v[0])}
+          />
+          <p className="mt-1 text-[10px] text-muted-foreground">
+            Yandan esen rüzgârın devirme momenti. Denge meyli, doğrultma momenti Δ·GZ(φ)'ye eşitlenerek çözülür.
+            Yüksek KG → düşük GM → aynı rüzgârda daha büyük meyil.
+          </p>
         </div>
 
         {/* Sliders */}
@@ -291,6 +398,36 @@ export const Stability3DSim = () => {
 };
 
 /* ─── sub-components ─── */
+
+/** Catches WebGL / render failures so the viewport degrades gracefully. */
+class SimErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: Error) {
+    console.error("Stability3DSim render error:", error);
+  }
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
+}
+
+function SimErrorFallback() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center">
+      <AlertTriangle className="h-6 w-6 text-amber-400" />
+      <p className="text-xs text-muted-foreground">
+        3D görüntüleme bu cihazda başlatılamadı (WebGL desteklenmiyor olabilir).
+        Hesaplamalar ve kriterler aşağıda çalışmaya devam eder.
+      </p>
+    </div>
+  );
+}
+
 function SimLoadingFallback() {
   return (
     <div className="flex h-full items-center justify-center">
