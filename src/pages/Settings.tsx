@@ -29,9 +29,21 @@ const Settings = () => {
     toast.success("Çıkış yapıldı");
   };
 
-  const displayName = (user?.user_metadata?.full_name as string) || user?.email || "";
+  const displayName = (user?.user_metadata?.full_name as string) || "";
   const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
-  const initials = displayName ? displayName.charAt(0).toUpperCase() : "?";
+  const initials = displayName ? displayName.charAt(0).toUpperCase() : user?.email ? user.email.charAt(0).toUpperCase() : "?";
+
+  const provider =
+    (user?.app_metadata?.provider as string) ||
+    (user?.identities?.[0]?.provider as string) ||
+    "";
+
+  const providerLabels: Record<string, string> = {
+    google: "Google",
+    apple: "Apple",
+    email: "E-posta",
+  };
+  const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");
 
   const fontSizeLabels: Record<FontSizeKey, string> = {
     small: "Küçük",
@@ -79,11 +91,16 @@ const Settings = () => {
                         <span className="text-lg font-semibold text-primary">{initials}</span>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">{displayName || user.email}</div>
-                      {user.email && displayName && displayName !== user.email && (
+                    <div className="flex-1 min-w-0 space-y-0.5">
+                      {displayName ? (
+                        <div className="font-medium truncate">{displayName}</div>
+                      ) : null}
+                      {user.email ? (
                         <div className="text-sm text-muted-foreground truncate">{user.email}</div>
-                      )}
+                      ) : null}
+                      <div className="text-xs text-muted-foreground/80 truncate">
+                        <span data-translatable>Sağlayıcı</span>: {providerLabel}
+                      </div>
                     </div>
 
                     <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
