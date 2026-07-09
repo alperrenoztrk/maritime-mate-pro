@@ -80,8 +80,8 @@ const Settings = () => {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">{displayName}</div>
-                      {user.email && (
+                      <div className="font-medium truncate">{displayName || user.email}</div>
+                      {user.email && displayName && displayName !== user.email && (
                         <div className="text-sm text-muted-foreground truncate">{user.email}</div>
                       )}
                     </div>
