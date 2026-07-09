@@ -91,11 +91,16 @@ const Settings = () => {
                         <span className="text-lg font-semibold text-primary">{initials}</span>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">{displayName || user.email}</div>
-                      {user.email && displayName && displayName !== user.email && (
+                    <div className="flex-1 min-w-0 space-y-0.5">
+                      {displayName ? (
+                        <div className="font-medium truncate">{displayName}</div>
+                      ) : null}
+                      {user.email ? (
                         <div className="text-sm text-muted-foreground truncate">{user.email}</div>
-                      )}
+                      ) : null}
+                      <div className="text-xs text-muted-foreground/80 truncate">
+                        <span data-translatable>Sağlayıcı</span>: {providerLabel}
+                      </div>
                     </div>
 
                     <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
