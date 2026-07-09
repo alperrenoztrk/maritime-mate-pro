@@ -81,10 +81,11 @@ const Settings = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="font-medium truncate">{displayName}</div>
-                      {user.email && displayName !== user.email && (
+                      {user.email && (
                         <div className="text-sm text-muted-foreground truncate">{user.email}</div>
                       )}
                     </div>
+
                     <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
                       <LogOut className="w-4 h-4" />
                       <span data-translatable>Çıkış</span>
