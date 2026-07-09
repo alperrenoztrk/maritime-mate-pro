@@ -35,6 +35,46 @@ export const shipTypeOptions: { value: ShipType; label: string; description: str
 const HALF = 3.5; // half length (overall ~7 units)
 const BEAM = 1.28;
 
+/**
+ * Build a "bow wedge": a solid that starts as the hull's rectangular
+ * cross-section (aft face) and converges to a single raked vertical stem edge
+ * at the front, so it blends smoothly into the box hull instead of sitting on
+ * it as a separate cone. Front stem is raked (top further forward than the
+ * forefoot), giving a realistic profile. Winding is set for outward normals.
+ */
+function makeBowGeometry(
+  xAft: number,
+  xStemBot: number,
+  xStemTop: number,
+  y0: number,
+  y1: number,
+  hb: number
+): THREE.BufferGeometry {
+  const positions = new Float32Array([
+    xAft, y0, -hb, // 0 aft bottom port
+    xAft, y0, hb, // 1 aft bottom stbd
+    xAft, y1, hb, // 2 aft top stbd
+    xAft, y1, -hb, // 3 aft top port
+    xStemBot, y0, 0, // 4 forefoot (bottom stem)
+    xStemTop, y1, 0, // 5 stem head (top stem, raked forward)
+  ]);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  g.setIndex([
+    1, 4, 5, 1, 5, 2, // starboard
+    0, 5, 4, 0, 3, 5, // port
+    0, 4, 1, // bottom
+    3, 2, 5, // top (fo'c'sle)
+  ]);
+  g.computeVertexNormals();
+  return g;
+}
+
+// Built once from constants — topside (dark) above the waterline, anti-fouling
+// (red) below. Forefoot sits slightly aft of the flared stem head → raked bow.
+const BOW_TOPSIDE_GEO = makeBowGeometry(HALF - 0.45, HALF + 0.15, HALF + 0.5, -0.12, 0.5, BEAM / 2 - 0.005);
+const BOW_UNDERWATER_GEO = makeBowGeometry(HALF - 0.45, HALF - 0.04, HALF + 0.12, -0.8, -0.12, BEAM / 2 - 0.045);
+
 interface ShipConfig {
   hullColor: string;
   deckColor: string;
@@ -259,23 +299,26 @@ export function ShipModel3D({ shipType, scale = 1 }: ShipModel3DProps) {
         <meshStandardMaterial color="#5c211a" metalness={0.15} roughness={0.75} />
       </mesh>
 
-      {/* ── Bow ── raked, tapering to a point */}
-      <mesh position={[HALF - 0.15, 0.2, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.03, 0.62, 1.5, 4]} />
+      {/* ── Bow ── wedge that blends the hull section into a raked stem */}
+      <mesh geometry={BOW_TOPSIDE_GEO}>
         <meshStandardMaterial {...topsideMat} />
       </mesh>
-      <mesh position={[HALF - 0.2, -0.46, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.02, 0.58, 1.35, 4]} />
+      <mesh geometry={BOW_UNDERWATER_GEO}>
         <meshStandardMaterial {...antifoulMat} />
       </mesh>
-      {/* Bulbous bow */}
-      <mesh position={[HALF + 0.18, -0.62, 0]}>
-        <sphereGeometry args={[0.24, 14, 14]} />
+      {/* Boot-top stripe carried onto the bow */}
+      <mesh position={[HALF - 0.2, -0.12, 0]}>
+        <boxGeometry args={[0.62, 0.05, BEAM - 0.02]} />
+        <meshStandardMaterial color="#6b241d" metalness={0.15} roughness={0.7} />
+      </mesh>
+      {/* Bulbous bow at the forefoot */}
+      <mesh position={[HALF + 0.05, -0.6, 0]} scale={[1.4, 1, 1]}>
+        <sphereGeometry args={[0.17, 14, 12]} />
         <meshStandardMaterial {...antifoulMat} />
       </mesh>
-      {/* Forecastle deck */}
-      <mesh position={[2.75, 0.6, 0]}>
-        <boxGeometry args={[0.7, 0.2, BEAM - 0.12]} />
+      {/* Raised fo'c'sle deck + bulwark at the stem */}
+      <mesh position={[2.95, 0.6, 0]}>
+        <boxGeometry args={[0.7, 0.2, BEAM - 0.1]} />
         <meshStandardMaterial color={cfg.deckColor} metalness={0.15} roughness={0.7} />
       </mesh>
 
