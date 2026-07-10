@@ -70,16 +70,22 @@ const AuthCallback = () => {
           return;
         }
 
-        // Son çare: implicit flow ile dönmüş access_token var mı (hash'ten)
+        // Son çare: implicit flow ile dönmüş token'lar var mı (hash'ten)
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get('access_token');
-        if (accessToken) {
-          console.log('ℹ️ Hash access_token bulundu, getUser ile doğrulanıyor...');
-          const { data: userData, error: userError } = await supabase.auth.getUser(accessToken);
-          if (userError) throw userError;
-          if (userData.user) {
+        const refreshToken = hashParams.get('refresh_token');
+        if (accessToken && refreshToken) {
+          console.log('ℹ️ Hash token\'ları bulundu, setSession ile oturum kuruluyor...');
+          const { data: setData, error: setError } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
+          if (setError) throw setError;
+          if (setData.session) {
+            window.history.replaceState({}, document.title, window.location.pathname);
             setStatus('success');
-            setMessage(`Hoş geldiniz, ${userData.user.email}!`);
+            const sessionUser = setData.session.user;
+            setMessage(`Hoş geldiniz, ${sessionUser.user_metadata?.full_name || sessionUser.email}!`);
             toast.success('Google ile başarıyla giriş yaptınız!');
             setTimeout(() => navigate('/', { replace: true }), 1500);
             return;

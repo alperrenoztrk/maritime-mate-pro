@@ -1,6 +1,39 @@
 # 🔐 **GOOGLE AUTHENTICATION KURULUM REHBERİ**
 ## Maritime Calculator - Complete Auth Integration
 
+## **⚡ GÜNCEL UYGULAMA (2026-07) — ÖNCE BUNU OKUYUN**
+
+Google girişi `src/hooks/useAuth.tsx` içinde ortama göre üç yoldan çalışır:
+
+1. **Native (Android/iOS, Capacitor):** `supabase.auth.signInWithOAuth` +
+   sistem tarayıcısı (`@capacitor/browser`). Dönüş
+   `com.marinersbook.app://auth/callback` deep link'i ile alınır
+   (AndroidManifest.xml'de intent-filter tanımlı).
+2. **Lovable barındırması (`*.lovable.app`):** Lovable OAuth broker'ı
+   (`@lovable.dev/cloud-auth-js`, `/~oauth/initiate`).
+3. **Diğer web ortamları (localhost dahil):** `supabase.auth.signInWithOAuth`,
+   dönüş `/auth/callback` rotasında karşılanır.
+
+### Zorunlu backend yapılandırması (1 ve 3 numaralı yollar için)
+
+Supabase (Lovable Cloud yönetimindeki proje) Auth ayarlarında:
+
+- **Google provider etkin** olmalı ve Google Cloud Console'dan alınmış
+  **Web Client ID / Client Secret** girilmiş olmalı.
+- **Redirect URLs** izin listesine şunlar eklenmeli:
+  - `com.marinersbook.app://auth/callback`
+  - `http://localhost:8080/auth/callback`
+  - `https://<yayın-domaininiz>/auth/callback`
+- Google Cloud Console'daki OAuth client'ın **Authorized redirect URIs**
+  listesinde Supabase callback'i olmalı:
+  `https://<proje-ref>.supabase.co/auth/v1/callback`
+
+Bu ayarlar yapılmadan 1 ve 3 numaralı yollar "provider is not enabled" /
+"redirect_to not allowed" hatası verir. Aşağıdaki eski rehber genel
+adımları anlatır; kod örnekleri güncel uygulamayı yansıtmayabilir.
+
+---
+
 ### **📱 KURULUM ÖZETİ**
 
 ✅ **Google OAuth 2.0** - Güvenli kullanıcı girişi  
