@@ -70,12 +70,9 @@ const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'fr', name: 'French', displayName: 'Français' },
   { language: 'it', name: 'Italian', displayName: 'Italiano' },
   { language: 'pt', name: 'Portuguese', displayName: 'Português' },
-  { language: 'ru', name: 'Russian', displayName: 'Русский' },
   { language: 'ja', name: 'Japanese', displayName: '日本語' },
   { language: 'ko', name: 'Korean', displayName: '한국어' },
   { language: 'zh-CN', name: 'Chinese (Simplified)', displayName: '中文 (简体)' },
-  { language: 'ar', name: 'Arabic', displayName: 'العربية' },
-  { language: 'hi', name: 'Hindi', displayName: 'हिन्दी' },
   { language: 'nl', name: 'Dutch', displayName: 'Nederlands' },
   { language: 'sv', name: 'Swedish', displayName: 'Svenska' },
   { language: 'no', name: 'Norwegian', displayName: 'Norsk' },
@@ -84,10 +81,7 @@ const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
   { language: 'pl', name: 'Polish', displayName: 'Polski' },
   { language: 'cs', name: 'Czech', displayName: 'Čeština' },
   { language: 'hu', name: 'Hungarian', displayName: 'Magyar' },
-  { language: 'ro', name: 'Romanian', displayName: 'Română' },
-  { language: 'el', name: 'Greek', displayName: 'Ελληνικά' },
-  { language: 'bg', name: 'Bulgarian', displayName: 'Български' },
-  { language: 'uk', name: 'Ukrainian', displayName: 'Українська' }
+  { language: 'ro', name: 'Romanian', displayName: 'Română' }
 ];
 const SUPPORTED_LANGUAGES: SupportedLanguage[] = [...BASE_SUPPORTED_LANGUAGES].sort((a, b) =>
   a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
