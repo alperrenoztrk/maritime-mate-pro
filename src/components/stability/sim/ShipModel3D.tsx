@@ -1,20 +1,30 @@
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
+import { getHullSet, hullForms, HALF, WL_Y, deckYAt } from "./hullGeometry";
+import {
+  getContainerTextures,
+  getDeckTextures,
+  getFunnelTexture,
+  getHullTextures,
+  getWindowStrip,
+} from "./proceduralTextures";
+import { ShipDetails } from "./ShipDetails";
 
 /**
  * Presentational, offline-safe 3D merchant vessel for the beta stability sim.
  *
- * Proportions and details are tuned against real vessel photographs (long,
- * sleek hull; red anti-fouling below a thin boot-top with dark topsides;
- * deck-filling container stacks; aft accommodation with the funnel behind it;
- * centreline cranes on the bulker). Kept deliberately trimmed for this surface:
+ * The hull is a procedurally lofted lines-plan geometry (see hullGeometry.ts)
+ * dressed with runtime-generated PBR canvas textures (proceduralTextures.ts):
+ * shipyard plating, rust streaks, boot-top, draft marks, Plimsoll mark and
+ * ship name are all painted at physically exact heights. Type-specific deck
+ * equipment lives in ShipDetails.tsx as merged one-draw-call layers.
+ *
  *   - No baked G/B/M markers or tank cut-away — the sim draws its own markers.
  *   - No heel/trim animation here — the parent group applies heel.
- *   - `meshStandardMaterial` only (no HDR-dependent clearcoat) and no per-light
- *     `pointLight`, so it renders fast and works offline / in a WebView.
- *   - Container stacks use a single `InstancedMesh` (one draw call for ~80 TEU).
+ *   - No network fetches: all textures are canvas-generated, so it renders
+ *     offline / in a Capacitor WebView.
  *
  * Local coordinates: length runs along X (±HALF), beam along Z, vertical Y.
  * The design waterline sits at child y = -0.1 and the whole group is lifted by
@@ -32,155 +42,83 @@ export const shipTypeOptions: { value: ShipType; label: string; description: str
   { value: "passenger", label: "Yolcu", description: "Çok katlı üst yapı ve yaşam alanları." },
 ];
 
-const HALF = 3.5; // half length (overall ~7 units)
-const BEAM = 1.28;
-
-/**
- * Build a "bow wedge": a solid that starts as the hull's rectangular
- * cross-section (aft face) and converges to a single raked vertical stem edge
- * at the front, so it blends smoothly into the box hull instead of sitting on
- * it as a separate cone. Front stem is raked (top further forward than the
- * forefoot), giving a realistic profile. Winding is set for outward normals.
- */
-function makeBowGeometry(
-  xAft: number,
-  xStemBot: number,
-  xStemTop: number,
-  y0: number,
-  y1: number,
-  hb: number
-): THREE.BufferGeometry {
-  const positions = new Float32Array([
-    xAft, y0, -hb, // 0 aft bottom port
-    xAft, y0, hb, // 1 aft bottom stbd
-    xAft, y1, hb, // 2 aft top stbd
-    xAft, y1, -hb, // 3 aft top port
-    xStemBot, y0, 0, // 4 forefoot (bottom stem)
-    xStemTop, y1, 0, // 5 stem head (top stem, raked forward)
-  ]);
-  const g = new THREE.BufferGeometry();
-  g.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  g.setIndex([
-    1, 4, 5, 1, 5, 2, // starboard
-    0, 5, 4, 0, 3, 5, // port
-    0, 4, 1, // bottom
-    3, 2, 5, // top (fo'c'sle)
-  ]);
-  g.computeVertexNormals();
-  return g;
-}
-
-// Built once from constants — topside (dark) above the waterline, anti-fouling
-// (red) below. Forefoot sits slightly aft of the flared stem head → raked bow.
-const BOW_TOPSIDE_GEO = makeBowGeometry(HALF - 0.45, HALF + 0.15, HALF + 0.5, -0.12, 0.5, BEAM / 2 - 0.005);
-const BOW_UNDERWATER_GEO = makeBowGeometry(HALF - 0.45, HALF - 0.04, HALF + 0.12, -0.8, -0.12, BEAM / 2 - 0.045);
-
-interface ShipConfig {
-  hullColor: string;
-  deckColor: string;
+export interface ShipConfig {
   superstructureColor: string;
   superstructurePos: [number, number, number];
   superstructureSize: [number, number, number];
   bridgePos: [number, number, number];
   funnelPos: [number, number, number];
-  showCranes: boolean;
   showContainers: boolean;
   showHatches: boolean;
-  showTankerPiping: boolean;
-  showRoRoRamp: boolean;
   showPassengerDecks: boolean;
   extraLifeboats: number;
 }
 
 const shipConfigs: Record<ShipType, ShipConfig> = {
   container: {
-    hullColor: "#8f3b34", // classic container-line red topside
-    deckColor: "#3a4658",
     superstructureColor: "#d8c7a6",
     superstructurePos: [-2.55, 0.86, 0],
     superstructureSize: [1.15, 0.98, 1.06],
     bridgePos: [-2.55, 1.52, 0],
     funnelPos: [-3.02, 1.3, 0],
-    showCranes: false,
     showContainers: true,
     showHatches: false,
-    showTankerPiping: false,
-    showRoRoRamp: false,
     showPassengerDecks: false,
     extraLifeboats: 1,
   },
   tanker: {
-    hullColor: "#24313e",
-    deckColor: "#3a4655",
     superstructureColor: "#eef2f6",
     superstructurePos: [-2.85, 0.9, 0],
     superstructureSize: [1.1, 0.98, 1.05],
     bridgePos: [-2.85, 1.56, 0],
     funnelPos: [-3.2, 1.42, 0],
-    showCranes: false,
     showContainers: false,
     showHatches: false,
-    showTankerPiping: true,
-    showRoRoRamp: false,
     showPassengerDecks: false,
     extraLifeboats: 2,
   },
   bulk: {
-    hullColor: "#1e2732", // near-black topside like the reference bulker
-    deckColor: "#2f3a49",
     superstructureColor: "#eef1f4",
     superstructurePos: [-2.6, 0.9, 0],
     superstructureSize: [1.18, 1.0, 1.06],
     bridgePos: [-2.6, 1.58, 0],
     funnelPos: [-3.05, 1.4, 0],
-    showCranes: true,
     showContainers: false,
     showHatches: true,
-    showTankerPiping: false,
-    showRoRoRamp: false,
     showPassengerDecks: false,
     extraLifeboats: 1,
   },
   roro: {
-    hullColor: "#20304a",
-    deckColor: "#26303c",
     superstructureColor: "#f4f7fa",
-    superstructurePos: [-1.55, 1.02, 0],
+    superstructurePos: [-1.55, 1.14, 0],
     superstructureSize: [2.2, 1.16, 1.14],
-    bridgePos: [-1.5, 1.74, 0],
-    funnelPos: [-2.75, 1.6, 0],
-    showCranes: false,
+    bridgePos: [-1.5, 1.86, 0],
+    funnelPos: [-2.75, 1.72, 0],
     showContainers: false,
     showHatches: false,
-    showTankerPiping: false,
-    showRoRoRamp: true,
     showPassengerDecks: false,
     extraLifeboats: 2,
   },
   passenger: {
-    hullColor: "#33475d",
-    deckColor: "#26303c",
     superstructureColor: "#f6f9fc",
-    superstructurePos: [-0.2, 1.05, 0],
+    superstructurePos: [-0.2, 1.14, 0],
     superstructureSize: [4.2, 1.2, 1.16],
-    bridgePos: [0.5, 1.98, 0],
-    funnelPos: [0.3, 2.08, 0],
-    showCranes: false,
+    bridgePos: [0.5, 2.06, 0],
+    funnelPos: [0.3, 2.16, 0],
     showContainers: false,
     showHatches: false,
-    showTankerPiping: false,
-    showRoRoRamp: false,
     showPassengerDecks: true,
     extraLifeboats: 4,
   },
 };
 
-/* ─── Container stacks (single instanced draw call) ─── */
+/* ─── Container stacks (single instanced draw call, textured + tinted) ─── */
 const CONTAINER_COLORS = ["#b23b3b", "#c99a3f", "#3a6ea5", "#3f8f5b", "#c4c8cc", "#c1663b", "#6d4a86", "#2f6d63"];
 const CONTAINER_BOX: [number, number, number] = [0.5, 0.16, 0.26];
 
 function ContainerStacks() {
   const ref = useRef<THREE.InstancedMesh>(null);
+  const tex = getContainerTextures();
 
   const items = useMemo(() => {
     const rowsZ = [-0.39, -0.13, 0.13, 0.39];
@@ -216,14 +154,21 @@ function ContainerStacks() {
   }, [items]);
 
   return (
-    <instancedMesh ref={ref} args={[undefined, undefined, items.length]} castShadow>
+    <instancedMesh ref={ref} args={[undefined, undefined, items.length]} castShadow receiveShadow>
       <boxGeometry args={CONTAINER_BOX} />
-      <meshStandardMaterial metalness={0.12} roughness={0.72} />
+      <meshStandardMaterial
+        map={tex.map}
+        bumpMap={tex.bumpMap}
+        bumpScale={0.01}
+        roughnessMap={tex.roughnessMap}
+        metalness={0.25}
+      />
     </instancedMesh>
   );
 }
 
-/** Small animated ensign on a light plane — cheap (16×8 grid). */
+/** Small animated ensign on a light plane — cheap (16×8 grid, no per-frame
+ *  normal recompute; the wave is subtle enough that static normals read fine). */
 function Flag({ position }: { position: [number, number, number] }) {
   const flagRef = useRef<THREE.Mesh>(null);
   const geometry = useMemo(() => new THREE.PlaneGeometry(0.7, 0.4, 16, 8), []);
@@ -239,12 +184,48 @@ function Flag({ position }: { position: [number, number, number] }) {
       positions.setZ(i, wave + x * 0.02);
     }
     positions.needsUpdate = true;
-    geometry.computeVertexNormals();
   });
 
   return (
-    <mesh ref={flagRef} geometry={geometry} position={position} rotation={[0, Math.PI / 2, 0]}>
+    <mesh ref={flagRef} geometry={geometry} position={position} rotation={[0, Math.PI / 2, 0]} scale={0.5}>
       <meshStandardMaterial color="#e63946" roughness={0.6} metalness={0.1} side={THREE.DoubleSide} />
+    </mesh>
+  );
+}
+
+/** Textured emissive window band, as a thin plane hovering off a wall.
+ *  UVs are scaled by width so window density stays constant on any band. */
+function WindowBand({
+  position,
+  rotationY,
+  width,
+  height,
+  strip,
+}: {
+  position: [number, number, number];
+  rotationY: number;
+  width: number;
+  height: number;
+  strip: { map: THREE.Texture; emissiveMap: THREE.Texture };
+}) {
+  const geometry = useMemo(() => {
+    const g = new THREE.PlaneGeometry(width, height);
+    const uv = g.attributes.uv as THREE.BufferAttribute;
+    const repeat = Math.max(1, Math.round(width / 1.05));
+    for (let i = 0; i < uv.count; i++) uv.setX(i, uv.getX(i) * repeat);
+    return g;
+  }, [width, height]);
+  useEffect(() => () => geometry.dispose(), [geometry]);
+  return (
+    <mesh position={position} rotation={[0, rotationY, 0]} geometry={geometry}>
+      <meshStandardMaterial
+        map={strip.map}
+        emissiveMap={strip.emissiveMap}
+        emissive="#ffffff"
+        emissiveIntensity={0.5}
+        roughness={0.35}
+        metalness={0.15}
+      />
     </mesh>
   );
 }
@@ -257,93 +238,61 @@ interface ShipModel3DProps {
 
 export function ShipModel3D({ shipType, scale = 1 }: ShipModel3DProps) {
   const cfg = shipConfigs[shipType];
+  const form = hullForms[shipType];
+  const { hull, deck } = getHullSet(shipType);
+  const hullTex = getHullTextures(shipType);
+  const deckTex = getDeckTextures(shipType);
+  const funnelTex = getFunnelTexture(shipType);
+  const accomStrip = getWindowStrip(cfg.superstructureColor, "accom");
+  const bridgeStrip = getWindowStrip(cfg.superstructureColor, "bridge");
+  const paxStrip = getWindowStrip(cfg.superstructureColor, "pax");
 
-  const topsideMat = { color: cfg.hullColor, metalness: 0.2, roughness: 0.5 };
-  const antifoulMat = { color: "#8a2f26", metalness: 0.15, roughness: 0.78 };
-
-  const portholes = useMemo(
-    () => Array.from({ length: 4 }, (_, i) => ({ x: cfg.superstructurePos[0] + 0.35 - i * 0.28, y: 0.08 })),
-    [cfg.superstructurePos]
-  );
+  const ssX = cfg.superstructurePos[0];
+  const ssY = cfg.superstructurePos[1];
+  const [ssW, ssH, ssD] = cfg.superstructureSize;
 
   const navLights: { position: [number, number, number]; color: string }[] = [
-    { position: [HALF - 0.05, 0.55, 0.5], color: "#00ff3b" }, // starboard
-    { position: [HALF - 0.05, 0.55, -0.5], color: "#ff3030" }, // port
-    { position: [-HALF + 0.1, 0.6, 0], color: "#f8fafc" }, // stern
+    { position: [cfg.bridgePos[0], cfg.bridgePos[1] + 0.05, ssD / 2 + 0.04], color: "#00ff3b" }, // starboard
+    { position: [cfg.bridgePos[0], cfg.bridgePos[1] + 0.05, -ssD / 2 - 0.04], color: "#ff3030" }, // port
+    { position: [-HALF + 0.25, deckYAt(shipType, -HALF + 0.25) + 0.18, 0], color: "#f8fafc" }, // stern
+    { position: [3.05, deckYAt(shipType, 3.05) + 0.56, 0], color: "#f8fafc" }, // masthead
   ];
 
-  // Bulk-carrier hatches / cranes laid out along the cargo length.
+  // Bulk-carrier hatch covers laid out along the cargo length.
   const hatchX = [2.2, 1.25, 0.3, -0.65, -1.55];
-  const craneX = [1.72, 0.77, -0.18];
 
   return (
     <group scale={scale} position={[0, 0.1 * scale, 0]}>
-      {/* ── Hull ── */}
-      {/* Dark topside (above waterline) */}
-      <RoundedBox position={[0, 0.2, 0]} args={[6.98, 0.62, BEAM]} radius={0.07} smoothness={3}>
-        <meshStandardMaterial {...topsideMat} />
-      </RoundedBox>
-      {/* Anti-fouling red bottom (below waterline), slightly narrower */}
-      <mesh position={[0, -0.46, 0]}>
-        <boxGeometry args={[6.78, 0.72, BEAM - 0.06]} />
-        <meshStandardMaterial {...antifoulMat} />
-      </mesh>
-      {/* Rounded bilge hint */}
-      <mesh position={[0, -0.12, 0]}>
-        <boxGeometry args={[6.9, 0.06, BEAM + 0.015]} />
-        <meshStandardMaterial color="#6b241d" metalness={0.15} roughness={0.7} />
-      </mesh>
-      {/* Keel */}
-      <mesh position={[0, -0.8, 0]}>
-        <boxGeometry args={[6.2, 0.05, 0.18]} />
-        <meshStandardMaterial color="#5c211a" metalness={0.15} roughness={0.75} />
+      {/* ── Lofted hull — plating, boot-top, draft marks, Plimsoll, name are in the texture ── */}
+      <mesh geometry={hull} castShadow receiveShadow>
+        <meshStandardMaterial
+          map={hullTex.map}
+          bumpMap={hullTex.bumpMap}
+          bumpScale={0.02}
+          roughnessMap={hullTex.roughnessMap}
+          metalness={0.3}
+          envMapIntensity={0.9}
+        />
       </mesh>
 
-      {/* ── Bow ── wedge that blends the hull section into a raked stem */}
-      <mesh geometry={BOW_TOPSIDE_GEO}>
-        <meshStandardMaterial {...topsideMat} />
-      </mesh>
-      <mesh geometry={BOW_UNDERWATER_GEO}>
-        <meshStandardMaterial {...antifoulMat} />
-      </mesh>
-      {/* Boot-top stripe carried onto the bow */}
-      <mesh position={[HALF - 0.2, -0.12, 0]}>
-        <boxGeometry args={[0.62, 0.05, BEAM - 0.02]} />
-        <meshStandardMaterial color="#6b241d" metalness={0.15} roughness={0.7} />
-      </mesh>
-      {/* Bulbous bow at the forefoot */}
-      <mesh position={[HALF + 0.05, -0.6, 0]} scale={[1.4, 1, 1]}>
-        <sphereGeometry args={[0.17, 14, 12]} />
-        <meshStandardMaterial {...antifoulMat} />
-      </mesh>
-      {/* Raised fo'c'sle deck + bulwark at the stem */}
-      <mesh position={[2.95, 0.6, 0]}>
-        <boxGeometry args={[0.7, 0.2, BEAM - 0.1]} />
-        <meshStandardMaterial color={cfg.deckColor} metalness={0.15} roughness={0.7} />
+      {/* ── Weather deck (separate geometry → crisp deck edge) ── */}
+      <mesh geometry={deck} castShadow receiveShadow>
+        <meshStandardMaterial
+          map={deckTex.map}
+          bumpMap={deckTex.bumpMap}
+          bumpScale={0.012}
+          roughnessMap={deckTex.roughnessMap}
+          metalness={0.18}
+        />
       </mesh>
 
-      {/* ── Stern ── flat transom */}
-      <mesh position={[-HALF + 0.18, 0.12, 0]}>
-        <boxGeometry args={[0.5, 0.95, BEAM - 0.02]} />
-        <meshStandardMaterial {...topsideMat} />
-      </mesh>
-      <mesh position={[-HALF + 0.12, -0.42, 0]}>
-        <boxGeometry args={[0.36, 0.55, BEAM - 0.12]} />
-        <meshStandardMaterial {...antifoulMat} />
-      </mesh>
-
-      {/* ── Main deck ── */}
-      <RoundedBox position={[-0.1, 0.5, 0]} args={[6.5, 0.08, BEAM - 0.08]} radius={0.03} smoothness={2}>
-        <meshStandardMaterial color={cfg.deckColor} metalness={0.15} roughness={0.85} />
-      </RoundedBox>
-
-      {/* Guard rails */}
-      {[0.58, -0.58].map((z) => (
-        <mesh key={`rail-${z}`} position={[-0.1, 0.62, z]}>
-          <boxGeometry args={[6.2, 0.03, 0.03]} />
-          <meshStandardMaterial color="#9ca3af" metalness={0.3} roughness={0.5} />
+      {/* ── Bulbous bow at the forefoot ── */}
+      {form.bulb && (
+        <mesh position={[HALF - 0.02 + form.bulb.length * 0.9, WL_Y - form.forefootRise - form.bulb.radius * 0.55, 0]} scale={[form.bulb.length / form.bulb.radius, 1, 0.92]} castShadow>
+          <sphereGeometry args={[form.bulb.radius, 14, 12]} />
+          <meshStandardMaterial color="#7d2d24" metalness={0.2} roughness={0.75} />
         </mesh>
-      ))}
+      )}
 
       {/* ── Cargo ── */}
       {cfg.showContainers && <ContainerStacks />}
@@ -351,126 +300,97 @@ export function ShipModel3D({ shipType, scale = 1 }: ShipModel3DProps) {
       {cfg.showHatches &&
         hatchX.map((x, i) => (
           <group key={`hatch-${i}`}>
-            <mesh position={[x, 0.56, 0]}>
-              <boxGeometry args={[0.78, 0.06, BEAM - 0.2]} />
+            <mesh position={[x, deckYAt(shipType, x) + 0.03, 0]} castShadow receiveShadow>
+              <boxGeometry args={[0.78, 0.06, 1.02]} />
               <meshStandardMaterial color="#2b333d" metalness={0.2} roughness={0.7} />
             </mesh>
-            <mesh position={[x, 0.62, 0]}>
-              <boxGeometry args={[0.68, 0.08, BEAM - 0.3]} />
+            <mesh position={[x, deckYAt(shipType, x) + 0.09, 0]} castShadow>
+              <boxGeometry args={[0.68, 0.08, 0.92]} />
               <meshStandardMaterial color="#3b4550" metalness={0.2} roughness={0.65} />
             </mesh>
           </group>
         ))}
 
-      {/* Bulk-carrier deck cranes on the centreline (khaki, angled up) */}
-      {cfg.showCranes &&
-        craneX.map((x, i) => (
-          <group key={`crane-${i}`} position={[x, 0.6, 0]}>
-            <mesh position={[0, 0.18, 0]}>
-              <cylinderGeometry args={[0.06, 0.08, 0.36, 10]} />
-              <meshStandardMaterial color="#c9b58a" metalness={0.25} roughness={0.6} />
-            </mesh>
-            <mesh position={[0.32, 0.62, 0]} rotation={[0, 0, Math.PI / 3.2]}>
-              <cylinderGeometry args={[0.03, 0.04, 1.15, 8]} />
-              <meshStandardMaterial color="#d8c79b" metalness={0.25} roughness={0.6} />
-            </mesh>
-          </group>
-        ))}
-
-      {/* Tanker piping + manifold */}
-      {cfg.showTankerPiping && (
-        <>
-          {[1.9, 0.9, -0.1, -1.1].map((x) => (
-            <mesh key={`pipe-${x}`} position={[x, 0.6, 0]}>
-              <cylinderGeometry args={[0.045, 0.045, 0.9, 10]} />
-              <meshStandardMaterial color="#e07b2e" metalness={0.5} roughness={0.45} />
-            </mesh>
-          ))}
-          {[0.32, -0.32].map((z) => (
-            <mesh key={`manifold-${z}`} position={[0.4, 0.58, z]} rotation={[0, 0, Math.PI / 2]}>
-              <cylinderGeometry args={[0.035, 0.035, 3.6, 10]} />
-              <meshStandardMaterial color="#f0954a" metalness={0.5} roughness={0.45} />
-            </mesh>
-          ))}
-        </>
-      )}
-
-      {/* Ro-Ro stern ramp */}
-      {cfg.showRoRoRamp && (
-        <group position={[-HALF + 0.05, 0.15, 0]}>
-          <mesh rotation={[0, 0, Math.PI / 9]}>
-            <boxGeometry args={[0.8, 0.05, BEAM - 0.3]} />
-            <meshStandardMaterial color="#94a3b8" metalness={0.2} roughness={0.6} />
-          </mesh>
-        </group>
-      )}
-
-      {/* ── Superstructure (accommodation block) ── */}
-      <RoundedBox position={cfg.superstructurePos} args={cfg.superstructureSize} radius={0.05} smoothness={3}>
+      {/* ── Superstructure (accommodation block) with textured window bands ── */}
+      <RoundedBox position={cfg.superstructurePos} args={cfg.superstructureSize} radius={0.05} smoothness={3} castShadow receiveShadow>
         <meshStandardMaterial color={cfg.superstructureColor} metalness={0.12} roughness={0.5} />
       </RoundedBox>
-      {/* Deck-house window bands (front + sides) */}
-      {[0.2, -0.05, -0.3].map((yOff, i) => (
-        <mesh
-          key={`band-${i}`}
-          position={[cfg.superstructurePos[0] + cfg.superstructureSize[0] / 2 + 0.01, cfg.superstructurePos[1] + yOff, 0]}
-        >
-          <boxGeometry args={[0.02, 0.07, cfg.superstructureSize[2] - 0.12]} />
-          <meshStandardMaterial color="#243244" metalness={0.2} roughness={0.3} />
-        </mesh>
+      {[0.22, -0.02].map((yOff, i) => (
+        <WindowBand
+          key={`front-${i}`}
+          position={[ssX + ssW / 2 + 0.006, ssY + yOff * ssH, 0]}
+          rotationY={Math.PI / 2}
+          width={ssD - 0.14}
+          height={0.09}
+          strip={accomStrip}
+        />
+      ))}
+      {[0.22, -0.02].map((yOff, i) => (
+        <group key={`side-${i}`}>
+          <WindowBand
+            position={[ssX, ssY + yOff * ssH, ssD / 2 + 0.006]}
+            rotationY={0}
+            width={ssW - 0.14}
+            height={0.09}
+            strip={accomStrip}
+          />
+          <WindowBand
+            position={[ssX, ssY + yOff * ssH, -ssD / 2 - 0.006]}
+            rotationY={Math.PI}
+            width={ssW - 0.14}
+            height={0.09}
+            strip={accomStrip}
+          />
+        </group>
       ))}
 
-      {/* Bridge + windows */}
-      <RoundedBox position={cfg.bridgePos} args={[0.95, 0.4, cfg.superstructureSize[2] - 0.06]} radius={0.04} smoothness={3}>
+      {/* Bridge deck + wraparound bridge windows */}
+      <RoundedBox position={cfg.bridgePos} args={[0.95, 0.4, ssD - 0.06]} radius={0.04} smoothness={3} castShadow>
         <meshStandardMaterial color={cfg.superstructureColor} metalness={0.12} roughness={0.45} />
       </RoundedBox>
-      <mesh position={[cfg.bridgePos[0] + 0.48, cfg.bridgePos[1] + 0.02, 0]}>
-        <boxGeometry args={[0.03, 0.16, cfg.superstructureSize[2] - 0.2]} />
-        <meshStandardMaterial color="#1b2733" metalness={0.15} roughness={0.2} transparent opacity={0.75} />
+      <WindowBand
+        position={[cfg.bridgePos[0] + 0.481, cfg.bridgePos[1] + 0.04, 0]}
+        rotationY={Math.PI / 2}
+        width={ssD - 0.16}
+        height={0.14}
+        strip={bridgeStrip}
+      />
+
+      {/* Funnel with company colours + exhaust pipes */}
+      <mesh position={cfg.funnelPos} castShadow>
+        <cylinderGeometry args={[0.15, 0.2, 0.55, 14]} />
+        <meshStandardMaterial map={funnelTex} metalness={0.3} roughness={0.5} />
+      </mesh>
+      <mesh position={[cfg.funnelPos[0], cfg.funnelPos[1] + 0.29, cfg.funnelPos[2] + 0.05]}>
+        <cylinderGeometry args={[0.035, 0.035, 0.12, 8]} />
+        <meshStandardMaterial color="#14181d" metalness={0.5} roughness={0.5} />
+      </mesh>
+      <mesh position={[cfg.funnelPos[0], cfg.funnelPos[1] + 0.27, cfg.funnelPos[2] - 0.06]}>
+        <cylinderGeometry args={[0.028, 0.028, 0.1, 8]} />
+        <meshStandardMaterial color="#14181d" metalness={0.5} roughness={0.5} />
       </mesh>
 
-      {/* Portholes on the accommodation side */}
-      {portholes.map((h, i) => (
-        <mesh key={`ph-${i}`} position={[h.x, h.y + 0.7, cfg.superstructureSize[2] / 2 + 0.01]}>
-          <circleGeometry args={[0.035, 14]} />
-          <meshStandardMaterial color="#cfe4ff" emissive="#2563eb" emissiveIntensity={0.2} />
-        </mesh>
-      ))}
+      <Flag position={[-HALF + 0.25, deckYAt(shipType, -HALF + 0.25) + 0.32, 0.02]} />
 
-      {/* Funnel + cap (behind the accommodation) */}
-      <mesh position={cfg.funnelPos}>
-        <cylinderGeometry args={[0.15, 0.2, 0.55, 12]} />
-        <meshStandardMaterial color="#4b5563" metalness={0.45} roughness={0.5} />
-      </mesh>
-      <mesh position={[cfg.funnelPos[0], cfg.funnelPos[1] + 0.18, cfg.funnelPos[2]]}>
-        <cylinderGeometry args={[0.16, 0.16, 0.1, 12]} />
-        <meshStandardMaterial color="#c0392b" metalness={0.3} roughness={0.5} />
-      </mesh>
-
-      {/* Radar mast + flag */}
-      <mesh position={[cfg.bridgePos[0], cfg.bridgePos[1] + 0.5, 0]}>
-        <cylinderGeometry args={[0.02, 0.02, 0.6, 8]} />
-        <meshStandardMaterial color="#334155" metalness={0.6} roughness={0.4} />
-      </mesh>
-      <group position={[cfg.bridgePos[0], cfg.bridgePos[1] + 0.65, 0]}>
-        <mesh position={[0.16, 0, 0]}>
-          <boxGeometry args={[0.34, 0.05, 0.05]} />
-          <meshStandardMaterial color="#e2e8f0" metalness={0.5} roughness={0.35} />
-        </mesh>
-      </group>
-      <Flag position={[-HALF + 0.25, 0.75, 0.2]} />
-
-      {/* Passenger decks (stacked tiers) */}
+      {/* Passenger decks (stacked tiers with window rows) */}
       {cfg.showPassengerDecks &&
-        [0, 0.42, 0.84].map((yOff, i) => (
-          <mesh key={`pax-${i}`} position={[-0.2, 1.15 + yOff, 0]}>
-            <boxGeometry args={[4.0 - i * 0.35, 0.32, BEAM - 0.06]} />
-            <meshStandardMaterial color="#eef2f6" metalness={0.1} roughness={0.5} />
-          </mesh>
-        ))}
+        [0, 0.42, 0.84].map((yOff, i) => {
+          const tierW = 4.0 - i * 0.35;
+          const tierY = 1.24 + yOff;
+          return (
+            <group key={`pax-${i}`}>
+              <mesh position={[-0.2, tierY, 0]} castShadow receiveShadow>
+                <boxGeometry args={[tierW, 0.32, 1.16 - 0.06]} />
+                <meshStandardMaterial color="#eef2f6" metalness={0.1} roughness={0.5} />
+              </mesh>
+              <WindowBand position={[-0.2, tierY, (1.16 - 0.06) / 2 + 0.006]} rotationY={0} width={tierW - 0.2} height={0.1} strip={paxStrip} />
+              <WindowBand position={[-0.2, tierY, -(1.16 - 0.06) / 2 - 0.006]} rotationY={Math.PI} width={tierW - 0.2} height={0.1} strip={paxStrip} />
+            </group>
+          );
+        })}
 
-      {/* Propeller + rudder */}
-      <group position={[-HALF + 0.02, -0.5, 0]} rotation={[0, 0, Math.PI / 2]}>
+      {/* ── Propeller + rudder under the counter stern ── */}
+      <group position={[-3.18, -0.44, 0]} rotation={[0, 0, Math.PI / 2]}>
         <mesh>
           <torusGeometry args={[0.1, 0.02, 8, 14]} />
           <meshStandardMaterial color="#caa63a" metalness={0.7} roughness={0.3} />
@@ -482,27 +402,18 @@ export function ShipModel3D({ shipType, scale = 1 }: ShipModel3DProps) {
           </mesh>
         ))}
       </group>
-      <mesh position={[-HALF + 0.16, -0.62, 0]}>
-        <boxGeometry args={[0.07, 0.32, 0.24]} />
+      <mesh position={[-3.34, -0.42, 0]}>
+        <boxGeometry args={[0.07, 0.4, 0.2]} />
         <meshStandardMaterial color="#4b5563" metalness={0.4} roughness={0.6} />
       </mesh>
 
-      {/* Lifeboats beside the accommodation */}
-      {Array.from({ length: cfg.extraLifeboats }).map((_, i) => (
-        <mesh
-          key={`lb-${i}`}
-          position={[cfg.superstructurePos[0] - 0.35 + i * 0.34, cfg.superstructurePos[1] - 0.1, -cfg.superstructureSize[2] / 2 - 0.08]}
-          rotation={[0, Math.PI / 2, 0]}
-        >
-          <capsuleGeometry args={[0.1, 0.42, 4, 8]} />
-          <meshStandardMaterial color="#f97316" metalness={0.2} roughness={0.5} />
-        </mesh>
-      ))}
+      {/* ── Type-specific deck equipment (railings, mooring gear, cranes…) ── */}
+      <ShipDetails type={shipType} cfg={cfg} />
 
       {/* Navigation lights (emissive only — no point lights) */}
       {navLights.map((l, i) => (
         <mesh key={`nav-${i}`} position={l.position}>
-          <sphereGeometry args={[0.045, 10, 10]} />
+          <sphereGeometry args={[0.028, 10, 10]} />
           <meshStandardMaterial color={l.color} emissive={l.color} emissiveIntensity={1.6} />
         </mesh>
       ))}
