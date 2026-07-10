@@ -30,6 +30,8 @@
 	<string>Fotoğraf kitaplığı, uygulamada kullanılacak görselleri seçmek için kullanılır. / The photo library is used to select images for use in the app.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Oluşturulan görselleri fotoğraf kitaplığınıza kaydetmek için kullanılır. / Used to save generated images to your photo library.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Konumunuz; harita, hava durumu ve göksel hesaplamalarda güncel pozisyonunuzu göstermek için kullanılır. / Your location is used to show your current position for maps, weather, and celestial calculations.</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Bu izin, size daha alakalı reklamlar gösterebilmek için kullanılır. / This identifier will be used to deliver personalized ads to you.</string>
 	<key>GADApplicationIdentifier</key>
