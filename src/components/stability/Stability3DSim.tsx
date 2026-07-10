@@ -1,4 +1,4 @@
-import { Component, Suspense, useCallback, useMemo, useRef, useState, type ReactNode } from "react";
+import { Component, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,7 +22,10 @@ import {
 } from "./sim/StabilityPhysics";
 import { ShipModel3D, shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
-import { WaterSurface3D } from "./sim/WaterSurface3D";
+import { OceanSurface3D } from "./sim/OceanSurface3D";
+import { SceneEnvironment } from "./sim/SceneEnvironment";
+import { disposeHullGeometries } from "./sim/hullGeometry";
+import { disposeAllShipTextures } from "./sim/proceduralTextures";
 
 /* ─── helpers ─── */
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
@@ -84,14 +87,9 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
 
   return (
     <group>
-      {/* Local lighting only — no external HDR / IBL fetch so the scene always
-          renders, even offline or inside a Capacitor WebView. A hemisphere
-          light gives a soft sky/sea gradient that reads well on the metallic
-          hull without needing an environment map. */}
-      <hemisphereLight args={["#bcd7ff", "#0a1420", 0.6]} />
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[8, 12, 6]} intensity={1.15} />
-      <directionalLight position={[-6, 6, -6]} intensity={0.35} color="#93c5fd" />
+      {/* Sky, fog, IBL environment (bundled HDR with a procedural fallback —
+          still fully offline / Capacitor-safe) and the single shadow sun. */}
+      <SceneEnvironment />
 
       {/* Ship group - heels about the waterline */}
       <group ref={shipGroup}>
@@ -110,13 +108,7 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
         />
       </group>
 
-      <WaterSurface3D />
-
-      {/* Sea floor hint */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.0, 0]}>
-        <circleGeometry args={[10, 64]} />
-        <meshStandardMaterial color="#0c1524" opacity={0.15} transparent />
-      </mesh>
+      <OceanSurface3D />
     </group>
   );
 }
@@ -145,6 +137,15 @@ export const Stability3DSim = () => {
   const [shipType, setShipType] = useState<ShipType>("container");
   const [windMoment, setWindMoment] = useState(0); // external beam-wind heeling moment (t·m)
   const activeShip = shipTypeOptions.find((o) => o.value === shipType);
+
+  // Free cached hull geometries + canvas textures when leaving the route.
+  useEffect(
+    () => () => {
+      disposeAllShipTextures();
+      disposeHullGeometries();
+    },
+    []
+  );
 
   // Reference ship dimensions
   const ship: ShipState = useMemo(
@@ -221,9 +222,18 @@ export const Stability3DSim = () => {
           <SimErrorBoundary fallback={<SimErrorFallback />}>
             <Suspense fallback={<SimLoadingFallback />}>
               <Canvas
+                shadows
                 dpr={[1, 1.75]}
-                gl={{ antialias: true, powerPreference: "high-performance" }}
-                onCreated={({ gl }) => gl.setClearColor("#0b1220")}
+                performance={{ min: 0.6 }}
+                gl={{
+                  antialias: true,
+                  powerPreference: "high-performance",
+                  toneMapping: THREE.ACESFilmicToneMapping,
+                  toneMappingExposure: 1.1,
+                }}
+                onCreated={({ gl }) => {
+                  gl.shadowMap.type = THREE.PCFSoftShadowMap;
+                }}
               >
                 <PerspectiveCamera makeDefault position={[7, 4.5, 7]} fov={42} />
                 {/* Let the user orbit / zoom the vessel. Pan is disabled and the

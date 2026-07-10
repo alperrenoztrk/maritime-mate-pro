@@ -56,7 +56,7 @@ export default defineConfig(({ mode }) => ({
         navigateFallbackDenylist: [/^\/~oauth/, /^\/auth\//, /^\/api\//],
         // Allow large assets (diagrams, PDFs, images)
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
-        globPatterns: ["**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,woff2,json}"],
+        globPatterns: ["**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,woff2,json,hdr}"],
         // Every language now ships a FULL translation dictionary (~8 MB each,
         // 24 languages ≈ 190 MB total), so precaching them all at install is no
         // longer viable. Only the default language's pack (en) is precached;
