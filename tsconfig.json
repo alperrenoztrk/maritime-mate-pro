@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "jsx": "react-jsx",
+    "module": "ESNext",
     "moduleResolution": "bundler",
     "noImplicitAny": false,
     "noUnusedLocals": false,

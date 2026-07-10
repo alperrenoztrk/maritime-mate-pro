@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { MapPin, Maximize2 } from "lucide-react";
 import { useLocation } from "@/contexts/LocationContext";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
+import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import MapPreview from "./MapPreview";
 
@@ -23,11 +24,13 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
   const navigate = useNavigate();
   const { selectedLocation } = useLocation();
   const { data: currentWeather, locationLabel: currentLocationLabel } = useCurrentWeather();
+  // Manuel konum seçilmediyse GPS'ten saniyede bir taze konum oku
+  const { position: livePosition } = useLiveGpsPosition(1000, !selectedLocation);
   const [mapDialogOpen, setMapDialogOpen] = useState(false);
 
-  // Context'ten veya prop'lardan konumu al
-  const effectiveLatitude = selectedLocation?.latitude ?? currentWeather?.latitude ?? propLatitude;
-  const effectiveLongitude = selectedLocation?.longitude ?? currentWeather?.longitude ?? propLongitude;
+  // Öncelik: manuel seçim > canlı GPS > hava durumu verisi > prop'lar
+  const effectiveLatitude = selectedLocation?.latitude ?? livePosition?.latitude ?? currentWeather?.latitude ?? propLatitude;
+  const effectiveLongitude = selectedLocation?.longitude ?? livePosition?.longitude ?? currentWeather?.longitude ?? propLongitude;
   const effectiveLabel = selectedLocation?.locationLabel ?? currentLocationLabel ?? propLocationLabel;
 
   // DMS formatını hesapla
@@ -54,6 +57,11 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
   const longitudeDMS = decimalToDMS(effectiveLongitude, false);
 
   const hasValidCoordinates = effectiveLatitude !== undefined && effectiveLongitude !== undefined;
+
+  // Harita iframe'i koordinat değişince baştan yüklendiği için, saniyelik GPS
+  // güncellemelerinin haritayı sürekli yenilememesi adına ~100 m'ye yuvarla
+  const mapLatitude = hasValidCoordinates ? Math.round(effectiveLatitude! * 1000) / 1000 : undefined;
+  const mapLongitude = hasValidCoordinates ? Math.round(effectiveLongitude! * 1000) / 1000 : undefined;
 
   return (
     <>
@@ -102,8 +110,8 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
             <div className="relative">
               <div className="px-5 pb-3">
                 <MapPreview
-                  latitude={effectiveLatitude!}
-                  longitude={effectiveLongitude!}
+                  latitude={mapLatitude!}
+                  longitude={mapLongitude!}
                   locationLabel={effectiveLabel || "Konum"}
                   height="180px"
                   zoom={10}
@@ -137,8 +145,8 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
             </DialogHeader>
             <div className="flex-1 mt-4">
               <MapPreview
-                latitude={effectiveLatitude!}
-                longitude={effectiveLongitude!}
+                latitude={mapLatitude!}
+                longitude={mapLongitude!}
                 locationLabel={effectiveLabel || "Konum"}
                 height="100%"
                 zoom={13}
