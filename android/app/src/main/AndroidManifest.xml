@@ -59,4 +59,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Push bildirimleri (Android 13+) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Canlı konum takibi (WebView geolocation için gerekli) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- GPS donanımı zorunlu değil; konum yoksa uygulama yine çalışır -->
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
 </manifest>

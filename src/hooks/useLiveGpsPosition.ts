@@ -10,14 +10,16 @@ export type LiveGpsPosition = {
 };
 
 /**
- * Cihazın GPS'inden belirli aralıklarla (varsayılan: saniyede bir) taze konum okur.
+ * Cihazın GPS'inden sürekli taze konum okur (watchPosition ile). İşletim sistemi
+ * yeni bir fix ürettiği anda (tipik olarak saniyede bir) güncelleme gelir;
+ * `intervalMs` yalnızca state güncellemelerini kısıtlayan alt sınırdır.
  * Tarayıcı izni reddederse veya GPS yoksa null döner; hata durumunda son bilinen
- * geçerli konum korunur.
+ * geçerli konum korunur. Sekme arka plana geçince takip duraklatılır.
  */
 export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean = true) {
   const [position, setPosition] = useState<LiveGpsPosition | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const inFlightRef = useRef<boolean>(false);
+  const lastUpdateRef = useRef<number>(0);
 
   useEffect(() => {
     if (!enabled) return;
@@ -27,40 +29,60 @@ export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean =
     }
 
     let cancelled = false;
+    let watchId: number | null = null;
 
-    const poll = () => {
-      // Sekme arka plandayken veya önceki istek sürerken yeni istek açma
-      if (cancelled || inFlightRef.current || document.hidden) return;
-      inFlightRef.current = true;
-      navigator.geolocation.getCurrentPosition(
+    const stopWatch = () => {
+      if (watchId !== null) {
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+      }
+    };
+
+    const startWatch = () => {
+      if (cancelled || watchId !== null) return;
+      watchId = navigator.geolocation.watchPosition(
         (pos) => {
-          inFlightRef.current = false;
           if (cancelled) return;
+          // GPS intervalMs'den daha sık veri üretirse state'i boğmamak için kısıtla;
+          // %20 tolerans, ~1 Hz gelen fix'lerin zamanlama titremesiyle düşmesini önler
+          const now = Date.now();
+          if (now - lastUpdateRef.current < intervalMs * 0.8) return;
+          lastUpdateRef.current = now;
           setPosition({
             latitude: pos.coords.latitude,
             longitude: pos.coords.longitude,
             accuracyMeters: typeof pos.coords.accuracy === "number" ? pos.coords.accuracy : null,
             headingDeg: typeof pos.coords.heading === "number" ? pos.coords.heading : null,
             speedMps: typeof pos.coords.speed === "number" ? pos.coords.speed : null,
-            timestamp: pos.timestamp ?? Date.now(),
+            timestamp: pos.timestamp ?? now,
           });
           setError(null);
         },
         (err) => {
-          inFlightRef.current = false;
           if (cancelled) return;
           setError(err.message);
+          // Geçici hatalarda (timeout vb.) takip sürer; son geçerli konum korunur
         },
-        { enableHighAccuracy: true, maximumAge: 0, timeout: intervalMs * 5 }
+        { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 }
       );
     };
 
-    poll();
-    const intervalId = window.setInterval(poll, intervalMs);
+    // Sekme arka plandayken pil tüketmemek için takibi duraklat
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopWatch();
+      } else {
+        startWatch();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    if (!document.hidden) startWatch();
 
     return () => {
       cancelled = true;
-      clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      stopWatch();
     };
   }, [intervalMs, enabled]);
 
