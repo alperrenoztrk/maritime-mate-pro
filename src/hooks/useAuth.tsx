@@ -1,23 +1,64 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { createLovableAuth } from "@lovable.dev/cloud-auth-js";
+import { Capacitor } from "@capacitor/core";
+import { App as CapacitorApp } from "@capacitor/app";
+import { Browser } from "@capacitor/browser";
 import { supabase } from "@/integrations/supabase/safeClient";
 
 const cloudAuth = createLovableAuth();
 
 type SocialProvider = "google" | "apple";
 
+// Native (Capacitor) OAuth dönüşü için derin bağlantı adresi.
+// AndroidManifest.xml'deki intent-filter ve Supabase'in
+// "Redirect URLs" izin listesi ile birebir aynı olmalı.
+const NATIVE_OAUTH_REDIRECT = "com.marinersbook.app://auth/callback";
+
+// Lovable'ın /~oauth/initiate OAuth broker'ı yalnızca Lovable
+// barındırmasında mevcut; diğer origin'lerde bu yol 404'e düşer.
+const isLovableHost = () =>
+  /(^|\.)(lovable\.app|lovableproject\.com)$/.test(window.location.hostname);
+
 const signInWithSocialProvider = async (provider: SocialProvider) => {
   try {
-    const result = await cloudAuth.signInWithOAuth(provider, {
-      redirect_uri: window.location.origin,
-    });
-
-    if (result.redirected || result.error) {
-      return { error: (result.error as Error | undefined) ?? null };
+    // 1) Native uygulama: OAuth WebView içinde çalışmaz (Google
+    //    "disallowed_useragent" ile engeller). URL'yi sistem
+    //    tarayıcısında açıyoruz; oturum, deep link dönüşünde
+    //    AuthProvider'daki appUrlOpen dinleyicisiyle kurulur.
+    if (Capacitor.isNativePlatform()) {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: NATIVE_OAUTH_REDIRECT,
+          skipBrowserRedirect: true,
+        },
+      });
+      if (error) return { error: error as Error };
+      await Browser.open({ url: data.url });
+      return { error: null };
     }
 
-    const { error } = await supabase.auth.setSession(result.tokens);
+    // 2) Lovable barındırması: broker akışı burada çalışıyor.
+    if (isLovableHost()) {
+      const result = await cloudAuth.signInWithOAuth(provider, {
+        redirect_uri: window.location.origin,
+      });
+
+      if (result.redirected || result.error) {
+        return { error: (result.error as Error | undefined) ?? null };
+      }
+
+      const { error } = await supabase.auth.setSession(result.tokens);
+      return { error: error as Error | null };
+    }
+
+    // 3) Diğer web ortamları (localhost dahil): doğrudan Supabase OAuth.
+    //    Dönüş /auth/callback rotasında karşılanır.
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
     return { error: error as Error | null };
   } catch (error) {
     return { error: error instanceof Error ? error : new Error(String(error)) };
@@ -56,6 +97,49 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     return () => subscription.unsubscribe();
+  }, []);
+
+  // Native OAuth dönüşü: sistem tarayıcısı deep link ile geri döner,
+  // token'lar URL fragment'ında gelir ve oturum burada kurulur.
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+
+    const listenerPromise = CapacitorApp.addListener("appUrlOpen", async ({ url }) => {
+      if (!url.startsWith(NATIVE_OAUTH_REDIRECT)) return;
+
+      try {
+        await Browser.close();
+      } catch {
+        // Android Custom Tabs programatik kapatmayı desteklemeyebilir.
+      }
+
+      const fragment = url.split("#")[1] ?? "";
+      const hashParams = new URLSearchParams(fragment);
+      const access_token = hashParams.get("access_token");
+      const refresh_token = hashParams.get("refresh_token");
+
+      if (access_token && refresh_token) {
+        const { error } = await supabase.auth.setSession({ access_token, refresh_token });
+        if (error) console.error("Native OAuth setSession hatası:", error);
+        return;
+      }
+
+      const query = (url.split("#")[0].split("?")[1] ?? "");
+      const queryParams = new URLSearchParams(query);
+      const code = queryParams.get("code");
+      if (code) {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        if (error) console.error("Native OAuth code exchange hatası:", error);
+        return;
+      }
+
+      const errorDescription = queryParams.get("error_description") ?? hashParams.get("error_description");
+      if (errorDescription) console.error("Native OAuth sağlayıcı hatası:", errorDescription);
+    });
+
+    return () => {
+      listenerPromise.then((listener) => listener.remove());
+    };
   }, []);
 
   const signInWithEmail = async (email: string, password: string) => {
