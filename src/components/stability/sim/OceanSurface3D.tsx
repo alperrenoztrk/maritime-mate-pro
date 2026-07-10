@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { getFoamAlphaTexture, getWaterNormalTexture } from "./proceduralTextures";
+import { getFoamHaloTexture, getWaterNormalTexture } from "./proceduralTextures";
 
 /**
  * Open-sea surface for the stability sim.
@@ -79,11 +79,7 @@ export function OceanSurface3D() {
     t.repeat.set(8, 8);
     return t;
   }, []);
-  const foamTex = useMemo(() => {
-    const t = getFoamAlphaTexture();
-    t.repeat.set(5, 1.2);
-    return t;
-  }, []);
+  const foamTex = useMemo(() => getFoamHaloTexture(), []);
 
   const material = useMemo(() => {
     const mat = new THREE.MeshStandardMaterial({
@@ -120,25 +116,26 @@ export function OceanSurface3D() {
   }, [normalTex]);
 
   const geometry = useMemo(() => new THREE.PlaneGeometry(70, 70, 96, 96), []);
-  const foamGeometry = useMemo(() => new THREE.RingGeometry(1, 1.32, 64), []);
+  const foamGeometry = useMemo(() => new THREE.PlaneGeometry(7.4, 2.1), []);
   const foamMaterial = useMemo(
     () =>
       new THREE.MeshBasicMaterial({
-        color: "#e8f1f7",
+        color: "#eef5fa",
         alphaMap: foamTex,
         transparent: true,
-        opacity: 0.75,
+        opacity: 0.72,
         depthWrite: false,
       }),
     [foamTex]
   );
 
   useFrame(({ clock }, delta) => {
-    timeUniform.current.value = clock.getElapsedTime();
-    // slow drift of the fine ripple detail + foam churn
+    const t = clock.getElapsedTime();
+    timeUniform.current.value = t;
+    // slow drift of the fine ripple detail + gentle foam breathing
     normalTex.offset.x += delta * 0.012;
     normalTex.offset.y += delta * 0.006;
-    foamTex.offset.x += delta * 0.02;
+    foamMaterial.opacity = 0.66 + Math.sin(t * 0.9) * 0.08;
   });
 
   useEffect(
@@ -154,12 +151,12 @@ export function OceanSurface3D() {
   return (
     <group>
       <mesh rotation={[-Math.PI / 2, 0, 0]} geometry={geometry} material={material} receiveShadow />
-      {/* foam collar hugging the hull waterline — hides the hull/water
-          intersection line, which is the biggest "fake water" tell */}
+      {/* foam collar + bow churn + wake decal hugging the hull waterline —
+          hides the hull/water intersection line and grounds the ship */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0.015, 0]}
-        scale={[2.98, 0.6, 1]}
+        position={[0, 0.012, 0]}
+        renderOrder={2}
         geometry={foamGeometry}
         material={foamMaterial}
       />

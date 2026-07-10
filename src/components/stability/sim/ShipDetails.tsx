@@ -18,6 +18,9 @@ interface DetailLayer {
   color: string;
   metalness: number;
   roughness: number;
+  /** Thin sub-texel parts (railings) must not cast — they alias into a
+   *  sawtooth fringe on the water even at 2048 shadow resolution. */
+  castShadow: boolean;
 }
 
 /** Bake a primitive into place: rotate (XYZ order), then translate. */
@@ -100,6 +103,26 @@ function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
     gearParts.push(place(box(0.014, 0.075, 0.05), 3.04, 0.2, az, [-0.5 * side, 0, 0]));
   }
 
+  /* ── superstructure roof gear: HVAC, skylights, aft mast, compass platform ── */
+  const roofY = cfg.superstructurePos[1] + cfg.superstructureSize[1] / 2;
+  const roofX = cfg.superstructurePos[0];
+  gearParts.push(place(box(0.13, 0.07, 0.16), roofX - cfg.superstructureSize[0] * 0.28, roofY + 0.035, 0.22));
+  gearParts.push(place(box(0.1, 0.05, 0.12), roofX - cfg.superstructureSize[0] * 0.3, roofY + 0.025, -0.24));
+  gearParts.push(place(box(0.09, 0.09, 0.09), roofX + cfg.superstructureSize[0] * 0.22, roofY + 0.045, -0.18));
+  gearParts.push(place(cyl(0.03, 0.03, 0.06, 8), roofX + cfg.superstructureSize[0] * 0.25, roofY + 0.03, 0.2));
+  // compass platform on the bridge roof
+  gearParts.push(place(cyl(0.035, 0.045, 0.1, 8), cfg.bridgePos[0] - 0.25, cfg.bridgePos[1] + 0.25, 0));
+  // aft signal mast on the funnel deck
+  railParts.push(place(cyl(0.008, 0.012, 0.42, 6), roofX - cfg.superstructureSize[0] / 2 + 0.08, roofY + 0.21, 0));
+
+  // breakwater V ahead of the cargo area (deflects green water on freighters)
+  if (type === "container" || type === "bulk" || type === "tanker") {
+    const bwX = 2.58;
+    const bwY = deckYAt(type, bwX);
+    gearParts.push(place(box(0.4, 0.1, 0.022), bwX + 0.08, bwY + 0.05, 0.14, [0, -0.55, 0]));
+    gearParts.push(place(box(0.4, 0.1, 0.022), bwX + 0.08, bwY + 0.05, -0.14, [0, 0.55, 0]));
+  }
+
   /* ── lifeboat davit arms (into gear layer), boats into their own layer ── */
   const boatParts: THREE.BufferGeometry[] = [];
   const boatCount = Math.max(1, cfg.extraLifeboats);
@@ -120,6 +143,7 @@ function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
 
   /* ── per-type primary equipment ── */
   const typeParts: THREE.BufferGeometry[] = [];
+  const poolParts: THREE.BufferGeometry[] = [];
   let typeLayerStyle = { color: "#c9b58a", metalness: 0.3, roughness: 0.55 };
 
   if (type === "bulk") {
@@ -195,6 +219,12 @@ function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
     typeParts.push(place(box(0.2, 0.05, 1.9), cfg.bridgePos[0], cfg.bridgePos[1] - 0.06, 0));
     typeParts.push(place(box(0.2, 0.09, 0.06), cfg.bridgePos[0], cfg.bridgePos[1] - 0.01, 0.93));
     typeParts.push(place(box(0.2, 0.09, 0.06), cfg.bridgePos[0], cfg.bridgePos[1] - 0.01, -0.93));
+    // sun deck on the top tier: deckhouse row + funnel casing base
+    const sunY = 2.24; // top tier roof (see ShipModel3D passenger tiers)
+    for (let i = 0; i < 3; i++) typeParts.push(place(box(0.3, 0.1, 0.5), -1.5 + i * 0.42, sunY + 0.05, 0));
+    typeParts.push(place(box(0.5, 0.06, 0.65), 1.35, sunY + 0.03, 0));
+    // swimming pool (blue) goes into its own tiny layer below
+    poolParts.push(place(box(0.4, 0.025, 0.34), 0.55, sunY + 0.014, 0));
   }
 
   const push = (parts: THREE.BufferGeometry[], style: Omit<DetailLayer, "geometry">) => {
@@ -204,10 +234,11 @@ function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
     if (merged) layers.push({ geometry: merged, ...style });
   };
 
-  push(railParts, { color: "#c7ced6", metalness: 0.55, roughness: 0.4 });
-  push(gearParts, { color: "#3a444f", metalness: 0.5, roughness: 0.55 });
-  push(boatParts, { color: "#f97316", metalness: 0.15, roughness: 0.5 });
-  push(typeParts, typeLayerStyle);
+  push(railParts, { color: "#c7ced6", metalness: 0.55, roughness: 0.4, castShadow: false });
+  push(gearParts, { color: "#3a444f", metalness: 0.5, roughness: 0.55, castShadow: true });
+  push(boatParts, { color: "#f97316", metalness: 0.15, roughness: 0.5, castShadow: true });
+  push(typeParts, { ...typeLayerStyle, castShadow: true });
+  push(poolParts, { color: "#2e9cd6", metalness: 0.05, roughness: 0.25, castShadow: false });
 
   return layers;
 }
@@ -252,7 +283,7 @@ export function ShipDetails({ type, cfg }: { type: ShipType; cfg: ShipConfig }) 
   return (
     <group>
       {layers.map((l, i) => (
-        <mesh key={i} geometry={l.geometry} castShadow>
+        <mesh key={i} geometry={l.geometry} castShadow={l.castShadow}>
           <meshStandardMaterial color={l.color} metalness={l.metalness} roughness={l.roughness} />
         </mesh>
       ))}

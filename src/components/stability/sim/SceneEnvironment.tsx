@@ -1,6 +1,5 @@
 import { Component, Suspense, type ReactNode } from "react";
 import { Environment, Lightformer, Sky } from "@react-three/drei";
-import { getAOBlobTexture } from "./proceduralTextures";
 
 /**
  * Atmosphere + image-based lighting for the stability sim.
@@ -69,35 +68,24 @@ export function SceneEnvironment() {
       <hemisphereLight args={["#bcd7ff", "#0a1420", 0.35]} />
       <ambientLight intensity={0.12} />
 
-      {/* single shadow-casting sun, aligned with the Sky sun */}
+      {/* single shadow-casting sun, aligned with the Sky sun. Grounding comes
+          from this real shadow on the water plus the foam collar — no fake
+          dark blob, which read as a stain from above. */}
       <directionalLight
         position={SUN_LIGHT_POS}
         intensity={1.55}
         color="#fff4e0"
         castShadow
-        shadow-mapSize={[1024, 1024]}
+        shadow-mapSize={[2048, 2048]}
         shadow-bias={-0.0004}
-        shadow-normalBias={0.02}
-        shadow-camera-left={-5}
-        shadow-camera-right={5}
-        shadow-camera-top={5}
-        shadow-camera-bottom={-5}
+        shadow-normalBias={0.03}
+        shadow-camera-left={-4.5}
+        shadow-camera-right={4.5}
+        shadow-camera-top={4.5}
+        shadow-camera-bottom={-4.5}
         shadow-camera-near={2}
         shadow-camera-far={35}
       />
-
-      {/* soft dark blob under the hull footprint (world space — does not heel):
-          cheap grounding in place of per-frame contact shadows */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.03, 0]} renderOrder={1}>
-        <planeGeometry args={[7.2, 2.2]} />
-        <meshBasicMaterial
-          color="#04101c"
-          alphaMap={getAOBlobTexture()}
-          transparent
-          opacity={0.38}
-          depthWrite={false}
-        />
-      </mesh>
     </>
   );
 }

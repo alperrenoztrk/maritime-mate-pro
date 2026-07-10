@@ -241,6 +241,21 @@ export function ShipModel3D({ shipType, scale = 1 }: ShipModel3DProps) {
   const form = hullForms[shipType];
   const { hull, deck } = getHullSet(shipType);
   const hullTex = getHullTextures(shipType);
+  // Two materials: geometry group 0 = starboard, group 1 = port. The port map
+  // repaints every text glyph mirrored so names/marks read correctly there.
+  const hullMaterials = useMemo(() => {
+    const make = (set: { map: THREE.Texture; bumpMap: THREE.Texture; roughnessMap: THREE.Texture }) =>
+      new THREE.MeshStandardMaterial({
+        map: set.map,
+        bumpMap: set.bumpMap,
+        bumpScale: 0.02,
+        roughnessMap: set.roughnessMap,
+        metalness: 0.3,
+        envMapIntensity: 0.9,
+      });
+    return [make(hullTex.starboard), make(hullTex.port)];
+  }, [hullTex]);
+  useEffect(() => () => hullMaterials.forEach((mat) => mat.dispose()), [hullMaterials]);
   const deckTex = getDeckTextures(shipType);
   const funnelTex = getFunnelTexture(shipType);
   const accomStrip = getWindowStrip(cfg.superstructureColor, "accom");
@@ -264,16 +279,7 @@ export function ShipModel3D({ shipType, scale = 1 }: ShipModel3DProps) {
   return (
     <group scale={scale} position={[0, 0.1 * scale, 0]}>
       {/* ── Lofted hull — plating, boot-top, draft marks, Plimsoll, name are in the texture ── */}
-      <mesh geometry={hull} castShadow receiveShadow>
-        <meshStandardMaterial
-          map={hullTex.map}
-          bumpMap={hullTex.bumpMap}
-          bumpScale={0.02}
-          roughnessMap={hullTex.roughnessMap}
-          metalness={0.3}
-          envMapIntensity={0.9}
-        />
-      </mesh>
+      <mesh geometry={hull} material={hullMaterials} castShadow receiveShadow />
 
       {/* ── Weather deck (separate geometry → crisp deck edge) ── */}
       <mesh geometry={deck} castShadow receiveShadow>

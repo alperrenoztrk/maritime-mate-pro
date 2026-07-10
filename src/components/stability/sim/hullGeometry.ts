@@ -41,8 +41,11 @@ export const texV = (y: number) => (y - KEEL_Y) / (HULL_TEX_TOP_Y - KEEL_Y);
 export interface HullForm {
   /** Superellipse exponent at midship — high = wall-sided/flat-bottomed. */
   midshipFullness: number;
-  /** u-range of full-beam parallel midbody. */
-  parallelMidbody: [number, number];
+  /** u where the bow taper begins (everything between aftTaper and this is
+   *  full-beam parallel midbody, so the plan view reads long straight sides). */
+  bowTaperStart: number;
+  /** Length fraction of the stern taper — kept short so the transom stays square. */
+  aftTaper: number;
   /** Plan-taper exponent at the bow — high = full/blunt entrance. */
   bowEntrance: number;
   /** Above-waterline widening of forward sections. */
@@ -69,12 +72,13 @@ export interface HullForm {
 export const hullForms: Record<ShipType, HullForm> = {
   container: {
     midshipFullness: 3.2,
-    parallelMidbody: [0.35, 0.68],
-    bowEntrance: 2.1,
+    bowTaperStart: 0.7,
+    aftTaper: 0.12,
+    bowEntrance: 2.6,
     bowFlare: 0.55,
     stemRake: 0.45,
-    transomWidthFrac: 0.74,
-    transomWidthFracWL: 0.42,
+    transomWidthFrac: 0.82,
+    transomWidthFracWL: 0.5,
     counterRise: 0.18,
     forefootRise: 0.25,
     deadrise: 0.03,
@@ -85,12 +89,13 @@ export const hullForms: Record<ShipType, HullForm> = {
   },
   tanker: {
     midshipFullness: 5.2,
-    parallelMidbody: [0.28, 0.78],
-    bowEntrance: 3.2,
+    bowTaperStart: 0.78,
+    aftTaper: 0.12,
+    bowEntrance: 3.4,
     bowFlare: 0.2,
     stemRake: 0.18,
-    transomWidthFrac: 0.68,
-    transomWidthFracWL: 0.46,
+    transomWidthFrac: 0.8,
+    transomWidthFracWL: 0.62,
     counterRise: 0.16,
     forefootRise: 0.18,
     deadrise: 0,
@@ -101,12 +106,13 @@ export const hullForms: Record<ShipType, HullForm> = {
   },
   bulk: {
     midshipFullness: 4.6,
-    parallelMidbody: [0.3, 0.75],
-    bowEntrance: 2.9,
+    bowTaperStart: 0.75,
+    aftTaper: 0.12,
+    bowEntrance: 3.2,
     bowFlare: 0.25,
     stemRake: 0.2,
-    transomWidthFrac: 0.7,
-    transomWidthFracWL: 0.45,
+    transomWidthFrac: 0.8,
+    transomWidthFracWL: 0.6,
     counterRise: 0.16,
     forefootRise: 0.2,
     deadrise: 0,
@@ -117,12 +123,13 @@ export const hullForms: Record<ShipType, HullForm> = {
   },
   roro: {
     midshipFullness: 3.6,
-    parallelMidbody: [0.3, 0.7],
-    bowEntrance: 2.2,
+    bowTaperStart: 0.72,
+    aftTaper: 0.08,
+    bowEntrance: 2.6,
     bowFlare: 0.4,
     stemRake: 0.5,
-    transomWidthFrac: 0.92, // near-square stern for the ramp
-    transomWidthFracWL: 0.6,
+    transomWidthFrac: 0.95, // near-square stern for the ramp
+    transomWidthFracWL: 0.7,
     counterRise: 0.2,
     forefootRise: 0.24,
     deadrise: 0.02,
@@ -133,12 +140,13 @@ export const hullForms: Record<ShipType, HullForm> = {
   },
   passenger: {
     midshipFullness: 2.7,
-    parallelMidbody: [0.32, 0.66],
-    bowEntrance: 1.9,
+    bowTaperStart: 0.66,
+    aftTaper: 0.1,
+    bowEntrance: 2.2,
     bowFlare: 0.5,
     stemRake: 0.55,
-    transomWidthFrac: 0.85,
-    transomWidthFracWL: 0.5,
+    transomWidthFrac: 0.88,
+    transomWidthFracWL: 0.55,
     counterRise: 0.22,
     forefootRise: 0.26,
     deadrise: 0.04,
@@ -159,15 +167,15 @@ const smooth = (a: number, b: number, x: number) => {
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 function planHalfBeam(f: HullForm, u: number, frac: number, entrance: number): number {
-  const [p0, p1] = f.parallelMidbody;
   const b = BEAM / 2;
-  if (u < p0) {
-    const s = Math.pow(smooth(0, p0, u), 0.8);
+  if (u < f.aftTaper) {
+    const s = Math.pow(smooth(0, f.aftTaper, u), 0.7);
     return Math.max(b * lerp(frac, 1, s), MIN_HB);
   }
-  if (u > p1) {
-    const t = (u - p1) / (1 - p1);
-    return Math.max(b * (1 - Math.pow(t, entrance)), MIN_HB);
+  if (u > f.bowTaperStart) {
+    const t = (u - f.bowTaperStart) / (1 - f.bowTaperStart);
+    // convex waterlines: stay full long, then round off into the stem
+    return Math.max(b * Math.pow(1 - Math.pow(t, entrance), 0.7), MIN_HB);
   }
   return b;
 }
@@ -190,9 +198,8 @@ function deckY(f: HullForm, u: number): number {
 }
 
 function sectionExponent(f: HullForm, u: number): number {
-  const [p0, p1] = f.parallelMidbody;
-  if (u < p0) return lerp(2.2, f.midshipFullness, smooth(0, p0, u));
-  if (u > p1) return lerp(f.midshipFullness, 1.6, smooth(p1, 1, u));
+  if (u < f.aftTaper * 2) return lerp(2.4, f.midshipFullness, smooth(0, f.aftTaper * 2, u));
+  if (u > f.bowTaperStart) return lerp(f.midshipFullness, 1.6, smooth(f.bowTaperStart, 1, u));
   return f.midshipFullness;
 }
 
@@ -211,7 +218,7 @@ function sectionPoint(f: HullForm, u: number, t: number, side: 1 | -1, out: THRE
   const e = sectionExponent(f, u);
 
   const bw = halfBeamWL(f, u);
-  const flareMul = 1 + f.bowFlare * smooth(0.68, 1, u) * Math.pow(Math.max(0, t - tWL), 2);
+  const flareMul = 1 + f.bowFlare * smooth(f.bowTaperStart, 1, u) * Math.pow(Math.max(0, t - tWL), 2);
   const bd = halfBeamDeck(f, u) * flareMul;
   const b = t < tWL ? bw : lerp(bw, bd, smooth(tWL, 1, t));
 
@@ -249,7 +256,12 @@ function buildHullSet(type: ShipType): HullGeoSet {
   const rows = NS + 1;
   const positions: number[] = [];
   const uvs: number[] = [];
-  const indices: number[] = [];
+  // Split indices by side so the hull can carry two materials: the port map
+  // is a mirrored-text repaint (see proceduralTextures.getHullTextures) so the
+  // ship name / draft marks read correctly on both sides. The split runs
+  // cleanly along the keel centreline (rj = NJ-1).
+  const stbdIdx: number[] = [];
+  const portIdx: number[] = [];
 
   for (let i = 0; i < rows; i++) {
     const u = i / NS;
@@ -266,7 +278,7 @@ function buildHullSet(type: ShipType): HullGeoSet {
       const b = (i + 1) * R + rj;
       const c = (i + 1) * R + rj + 1;
       const d = i * R + rj + 1;
-      indices.push(a, b, c, a, c, d);
+      (rj < NJ - 1 ? portIdx : stbdIdx).push(a, b, c, a, c, d);
     }
   }
 
@@ -277,7 +289,7 @@ function buildHullSet(type: ShipType): HullGeoSet {
     const pB = last + k + 1;
     const sB = last + (R - 2 - k);
     const sA = last + (R - 1 - k);
-    indices.push(pA, sA, sB, pA, sB, pB);
+    stbdIdx.push(pA, sA, sB, pA, sB, pB);
   }
 
   // Transom cap: duplicated ring-0 vertices → crisp edge, fan around centroid.
@@ -297,13 +309,15 @@ function buildHullSet(type: ShipType): HullGeoSet {
     uvs.push(texU(positions[rj * 3]), texV(positions[rj * 3 + 1]));
   }
   for (let rj = 0; rj < R - 1; rj++) {
-    indices.push(capStart, capStart + 1 + rj, capStart + 2 + rj);
+    stbdIdx.push(capStart, capStart + 1 + rj, capStart + 2 + rj);
   }
 
   const hull = new THREE.BufferGeometry();
   hull.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   hull.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
-  hull.setIndex(indices);
+  hull.setIndex([...stbdIdx, ...portIdx]);
+  hull.addGroup(0, stbdIdx.length, 0); // material 0: starboard texture
+  hull.addGroup(stbdIdx.length, portIdx.length, 1); // material 1: port (mirrored-text) texture
   hull.computeVertexNormals();
 
   // ── deck: separate geometry from the same station data → crisp deck edge ──
@@ -362,7 +376,7 @@ export function deckYAt(type: ShipType, x: number): number {
 export function deckHalfBeamAt(type: ShipType, x: number): number {
   const f = hullForms[type];
   const u = clamp01((x + HALF) / (2 * HALF));
-  const flareMul = 1 + f.bowFlare * smooth(0.68, 1, u);
+  const flareMul = 1 + f.bowFlare * smooth(f.bowTaperStart, 1, u);
   return Math.max(halfBeamDeck(f, u) * flareMul, MIN_HB);
 }
 
