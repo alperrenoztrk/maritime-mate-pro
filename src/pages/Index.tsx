@@ -97,33 +97,30 @@ const Index = () => {
 
 
 
-      {/* Header — only on home page */}
-      {activePage === "home" && (
-        <div className="absolute top-0 left-0 right-0 z-20 px-2 pt-8 sm:pt-12 pointer-events-none">
-          <div className="px-4 text-center">
-            <h1
-              className="select-none font-black tracking-wider notranslate"
-              translate="no"
-              lang="en"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)",
-                backgroundSize: "200% auto",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "title-shine 3s linear infinite",
-                textShadow: "0 0 32px rgba(56,189,248,0.3)",
-              }}
-            >
-              <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
-                MARINER'S BOOK
-              </span>
-              <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
-            </h1>
-          </div>
+      {/* Header — fixed at top, visible on every page */}
+      <div className="absolute top-0 left-0 right-0 z-30 px-2 pt-8 sm:pt-12 pointer-events-none">
+        <div className="px-4 text-center">
+          <h1
+            className="select-none font-black tracking-wider notranslate"
+            translate="no"
+            lang="en"
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)",
+              backgroundSize: "200% auto",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              animation: "title-shine 3s linear infinite",
+              textShadow: "0 0 32px rgba(56,189,248,0.3)",
+            }}
+          >
+            <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
+              MARINER'S BOOK
+            </span>
+            <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
+          </h1>
         </div>
-
-      )}
+      </div>
 
       {/* Horizontal swipeable pager — snap-stop always so one swipe = one page */}
       <main
