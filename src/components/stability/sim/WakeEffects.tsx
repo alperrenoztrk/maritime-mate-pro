@@ -5,12 +5,13 @@ import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js
 import { getAOBlobTexture, getWakeStripTexture } from "./proceduralTextures";
 
 /**
- * Water/hull interaction layer: two bow-V foam strips opening from the bulb
- * apex plus a widening stern wake, as ONE merged flat geometry with a
- * scrolling foam alpha texture (the ship is anchored, but the sea streams
- * past it — the waves already translate, so a gentle current wake is
- * coherent). Lengthwise dissolve is baked into RGBA vertex colours, the
- * across-strip softness into the texture, so no per-frame geometry work.
+ * Moving-water layer under OceanSurface3D's static contact foam: a scrolling
+ * streak strip along the stern wake (the ship is anchored, but the sea
+ * streams past it — the waves already translate, so a gentle current wake is
+ * coherent). The shaped bow crescent and V-wake envelope live in
+ * OceanSurface3D; this adds the motion inside that envelope. Lengthwise
+ * dissolve is baked into RGBA vertex colours, the across-strip softness into
+ * the texture, so no per-frame geometry work.
  *
  * The hull AO blob (moved here from SceneEnvironment) shares the group, so
  * both shift leeward with heel and track the true waterline.
@@ -77,11 +78,8 @@ export function WakeEffects({ heelRef, intensity = 0.35, scale = 1 }: WakeEffect
   const wakeTex = useMemo(() => getWakeStripTexture(), []);
 
   const strips = useMemo(() => {
-    const parts = [
-      buildStrip(3.75, 0, 0.5, -1.75, 0.06, 0.55, 0.85, 3), // bow V, port
-      buildStrip(3.75, 0, 0.5, 1.75, 0.06, 0.55, 0.85, 3), // bow V, starboard
-      buildStrip(-2.95, 0, -7.4, 0, 0.85, 2.5, 0.8, 4), // stern wake
-    ];
+    // streaming foam streaks inside the stern-wake envelope
+    const parts = [buildStrip(-2.95, 0, -7.4, 0, 0.85, 2.5, 0.8, 4)];
     const merged = mergeGeometries(parts);
     parts.forEach((p) => p.dispose());
     return merged;
