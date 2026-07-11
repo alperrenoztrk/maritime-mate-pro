@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import type { ShipType } from "./ShipModel3D";
-import { KEEL_Y, WL_Y, DECK_Y, texU, texV } from "./hullGeometry";
+import { KEEL_Y, WL_Y, DECK_Y, UNITS_PER_METER, texU, texV } from "./hullGeometry";
 
 /**
  * Runtime-generated PBR texture sets — zero bundled image assets, fully
@@ -17,6 +17,9 @@ export interface PBRSet {
   map: THREE.CanvasTexture;
   bumpMap: THREE.CanvasTexture;
   roughnessMap: THREE.CanvasTexture;
+  /** Tangent-space normal map derived from the height canvas — preferred over
+   *  bumpMap (three r180 derives tangents in-shader, no computeTangents needed). */
+  normalMap: THREE.CanvasTexture;
 }
 
 interface HullPaint {
@@ -62,7 +65,7 @@ export function disposeAllShipTextures(): void {
   cache.clear();
 }
 
-function mulberry32(seed: number) {
+export function mulberry32(seed: number) {
   let a = seed >>> 0;
   return () => {
     a |= 0;
@@ -73,7 +76,7 @@ function mulberry32(seed: number) {
   };
 }
 
-function hashSeed(s: string): number {
+export function hashSeed(s: string): number {
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
   return h >>> 0;
@@ -93,24 +96,73 @@ function toTexture(c: HTMLCanvasElement, srgb: boolean): THREE.CanvasTexture {
   return t;
 }
 
+/** Derive a tangent-space normal map from a height canvas (red channel),
+ *  Sobel-style central differences with clamped edges (non-tiling art). */
+function heightCanvasToNormal(heightCanvas: HTMLCanvasElement, strength: number): THREE.CanvasTexture {
+  const W = heightCanvas.width;
+  const H = heightCanvas.height;
+  const src = (heightCanvas.getContext("2d") as CanvasRenderingContext2D).getImageData(0, 0, W, H).data;
+  const [nc, n] = makeCanvas(W, H);
+  const img = n.createImageData(W, H);
+  const hAt = (x: number, y: number) => {
+    const cx = Math.min(Math.max(x, 0), W - 1);
+    const cy = Math.min(Math.max(y, 0), H - 1);
+    return src[(cy * W + cx) * 4] / 255;
+  };
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const dx = (hAt(x + 1, y) - hAt(x - 1, y)) * strength;
+      const dy = (hAt(x, y + 1) - hAt(x, y - 1)) * strength;
+      const inv = 1 / Math.sqrt(dx * dx + dy * dy + 1);
+      const i = (y * W + x) * 4;
+      img.data[i] = (-dx * inv * 0.5 + 0.5) * 255;
+      img.data[i + 1] = (dy * inv * 0.5 + 0.5) * 255;
+      img.data[i + 2] = inv * 255;
+      img.data[i + 3] = 255;
+    }
+  }
+  n.putImageData(img, 0, 0);
+  return toTexture(nc, false);
+}
+
 /* ─── hull ─── */
 
 const HULL_W = 1024;
 const HULL_H = 512;
-/** 1 m of real draft in hull-local units (design draft 6.5 m = keel→WL). */
-const METERS_TO_UNITS = (WL_Y - KEEL_Y) / 6.5;
 
 const uPix = (u: number) => u * HULL_W;
 const vPix = (v: number) => (1 - v) * HULL_H;
 
-export function getHullTextures(type: ShipType): PBRSet {
-  const [map, bumpMap, roughnessMap] = remember(`hull:${type}`, () => {
+/** The hull set carries an extra colour map for the PORT side: identical
+ *  weathering/paint, but name and draft-mark text pre-mirrored so it reads
+ *  correctly there (hull UVs are shared by both sides). */
+export interface HullPBRSet extends PBRSet {
+  portMap: THREE.CanvasTexture;
+}
+
+function paintHullCanvases(
+  type: ShipType,
+  mirrorText: boolean
+): [HTMLCanvasElement, HTMLCanvasElement, HTMLCanvasElement] {
     const paint = hullPaints[type];
     const rnd = mulberry32(hashSeed(`hull-${type}`));
 
     const [mc, m] = makeCanvas(HULL_W, HULL_H);
     const [bc, b] = makeCanvas(HULL_W, HULL_H);
     const [rc, r] = makeCanvas(HULL_W, HULL_H);
+
+    // draw text mirrored in place when painting the port-side map
+    const drawMark = (text: string, x: number, y: number) => {
+      if (!mirrorText) {
+        m.fillText(text, x, y);
+        return;
+      }
+      m.save();
+      m.translate(x, y);
+      m.scale(-1, 1);
+      m.fillText(text, 0, 0);
+      m.restore();
+    };
 
     const yWL = vPix(texV(WL_Y));
     const yBootTop = vPix(texV(WL_Y + 0.045));
@@ -204,16 +256,16 @@ export function getHullTextures(type: ShipType): PBRSet {
       m.fillRect(gx - gr, gy - gr, gr * 2, gr * 2);
     }
 
-    // 4 — draft marks (height-honest: 1 m = METERS_TO_UNITS, design draft 6.5 m at WL)
+    // 4 — draft marks (height-honest: 1 m = UNITS_PER_METER, design draft 6.5 m at WL)
     const markInk = paint.light ? "#1c2733" : "#f2f5f8";
     m.fillStyle = markInk;
     m.textAlign = "left";
     m.font = "700 13px Arial, sans-serif";
     const drawDraftColumn = (x: number) => {
       for (let meters = 2; meters <= 12; meters += 2) {
-        const y = vPix(texV(KEEL_Y + meters * METERS_TO_UNITS));
+        const y = vPix(texV(KEEL_Y + meters * UNITS_PER_METER));
         if (y < yDeck + 8) continue; // never above deck edge
-        m.fillText(`${meters}M`, x, y + 4);
+        drawMark(`${meters}M`, x, y + 4);
         m.fillRect(x - 12, y - 1, 8, 2);
       }
     };
@@ -234,8 +286,8 @@ export function getHullTextures(type: ShipType): PBRSet {
     m.stroke();
     m.font = "700 10px Arial, sans-serif";
     m.textAlign = "center";
-    m.fillText("L", px0 - 24, py0 + 3);
-    m.fillText("R", px0 + 25, py0 + 3);
+    drawMark("L", px0 - 24, py0 + 3);
+    drawMark("R", px0 + 25, py0 + 3);
     // load-line comb forward of the ring
     const combX = px0 + 46;
     m.beginPath();
@@ -248,7 +300,7 @@ export function getHullTextures(type: ShipType): PBRSet {
       m.moveTo(combX, py0 + dy);
       m.lineTo(combX + side * 14, py0 + dy);
       m.stroke();
-      m.fillText(label, combX + side * 22, py0 + dy + 3);
+      drawMark(label, combX + side * 22, py0 + dy + 3);
     };
     combRow(-16, "TF", -1);
     combRow(-8, "F", -1);
@@ -260,21 +312,52 @@ export function getHullTextures(type: ShipType): PBRSet {
     m.fillStyle = markInk;
     m.textAlign = "center";
     m.font = "700 24px Arial, sans-serif";
-    m.fillText(paint.name, uPix(texU(2.2)), vPix(texV(0.3)));
+    drawMark(paint.name, uPix(texU(2.2)), vPix(texV(0.3)));
     m.font = "700 15px Arial, sans-serif";
-    m.fillText(paint.name, uPix(texU(-3.28)), vPix(texV(0.26)));
+    drawMark(paint.name, uPix(texU(-3.28)), vPix(texV(0.26)));
     m.font = "600 11px Arial, sans-serif";
-    m.fillText(paint.port, uPix(texU(-3.28)), vPix(texV(0.14)));
+    drawMark(paint.port, uPix(texU(-3.28)), vPix(texV(0.14)));
 
-    return [toTexture(mc, true), toTexture(bc, false), toTexture(rc, false)];
+    // 7 — baked AO: deck-edge shadow under the sheer strake, extra darkening
+    // under the counter stern, and a soft occlusion floor near the keel.
+    const edgeAO = m.createLinearGradient(0, yDeck, 0, yDeck + 12);
+    edgeAO.addColorStop(0, "rgba(8,10,14,0.28)");
+    edgeAO.addColorStop(1, "rgba(8,10,14,0)");
+    m.fillStyle = edgeAO;
+    m.fillRect(0, yDeck, HULL_W, 12);
+    const sternAO = m.createLinearGradient(0, 0, uPix(texU(-2.6)), 0);
+    sternAO.addColorStop(0, "rgba(8,10,14,0.22)");
+    sternAO.addColorStop(1, "rgba(8,10,14,0)");
+    m.fillStyle = sternAO;
+    m.fillRect(0, yWL, uPix(texU(-2.6)), HULL_H - yWL);
+    const keelAO = m.createLinearGradient(0, vPix(texV(KEEL_Y + 0.14)), 0, HULL_H);
+    keelAO.addColorStop(0, "rgba(6,8,10,0)");
+    keelAO.addColorStop(1, "rgba(6,8,10,0.3)");
+    m.fillStyle = keelAO;
+    m.fillRect(0, vPix(texV(KEEL_Y + 0.14)), HULL_W, HULL_H - vPix(texV(KEEL_Y + 0.14)));
+
+    return [mc, bc, rc];
+}
+
+export function getHullTextures(type: ShipType): HullPBRSet {
+  const [map, bumpMap, roughnessMap, normalMap, portMap] = remember(`hull:${type}`, () => {
+    const [mc, bc, rc] = paintHullCanvases(type, false);
+    const [pc] = paintHullCanvases(type, true); // port side: text pre-mirrored
+    return [
+      toTexture(mc, true),
+      toTexture(bc, false),
+      toTexture(rc, false),
+      heightCanvasToNormal(bc, 1.6),
+      toTexture(pc, true),
+    ];
   });
-  return { map, bumpMap, roughnessMap } as PBRSet;
+  return { map, bumpMap, roughnessMap, normalMap, portMap } as HullPBRSet;
 }
 
 /* ─── deck ─── */
 
 export function getDeckTextures(type: ShipType): PBRSet {
-  const [map, bumpMap, roughnessMap] = remember(`deck:${type}`, () => {
+  const [map, bumpMap, roughnessMap, normalMap] = remember(`deck:${type}`, () => {
     const rnd = mulberry32(hashSeed(`deck-${type}`));
     const W = 512;
     const H = 256;
@@ -301,6 +384,15 @@ export function getDeckTextures(type: ShipType): PBRSet {
       b.lineWidth = 2;
       b.beginPath(); b.moveTo(x, 0); b.lineTo(x, H); b.stroke();
     }
+    // painted safety walkway lanes along each side (v ≈ 0.16 / 0.84)
+    const laneInk = type === "passenger" ? "rgba(66,74,84,0.5)" : "rgba(214,220,226,0.4)";
+    m.strokeStyle = laneInk;
+    m.lineWidth = 3;
+    m.setLineDash([26, 14]);
+    for (const ly of [H * 0.16, H * 0.84]) {
+      m.beginPath(); m.moveTo(0, ly); m.lineTo(W, ly); m.stroke();
+    }
+    m.setLineDash([]);
     // anti-skid speckle
     for (let k = 0; k < 1800; k++) {
       const a = rnd() * 0.1;
@@ -318,127 +410,324 @@ export function getDeckTextures(type: ShipType): PBRSet {
       m.fillStyle = g;
       m.fillRect(gx - gr, gy - gr, gr * 2, gr * 2);
     }
+    // baked AO: bulwark shadow along both deck edges
+    for (const [gy0, gy1] of [
+      [0, 14],
+      [H, H - 14],
+    ]) {
+      const g = m.createLinearGradient(0, gy0, 0, gy1);
+      g.addColorStop(0, "rgba(8,10,14,0.3)");
+      g.addColorStop(1, "rgba(8,10,14,0)");
+      m.fillStyle = g;
+      m.fillRect(0, Math.min(gy0, gy1), W, 14);
+    }
 
     const map = toTexture(mc, true);
-    map.wrapS = THREE.RepeatWrapping;
-    map.repeat.x = 3;
     const bumpMap = toTexture(bc, false);
-    bumpMap.wrapS = THREE.RepeatWrapping;
-    bumpMap.repeat.x = 3;
     const roughnessMap = toTexture(rc, false);
-    roughnessMap.wrapS = THREE.RepeatWrapping;
-    roughnessMap.repeat.x = 3;
-    return [map, bumpMap, roughnessMap];
+    const normalMap = heightCanvasToNormal(bc, 1.4);
+    for (const t of [map, bumpMap, roughnessMap, normalMap]) {
+      t.wrapS = THREE.RepeatWrapping;
+      t.repeat.x = 3;
+    }
+    return [map, bumpMap, roughnessMap, normalMap];
   });
-  return { map, bumpMap, roughnessMap } as PBRSet;
+  return { map, bumpMap, roughnessMap, normalMap } as PBRSet;
 }
 
 /* ─── containers ─── */
 
+/** Atlas cells (u0,v0,u1,v1) used by ContainerStacks' per-face UV remap. */
+export const CONTAINER_ATLAS = {
+  side: [0.01, 0.02, 0.49, 0.98] as const,
+  door: [0.51, 0.52, 0.99, 0.98] as const,
+  roof: [0.51, 0.02, 0.99, 0.48] as const,
+};
+
 export function getContainerTextures(): PBRSet {
-  const [map, bumpMap, roughnessMap] = remember("container-box", () => {
-    const S = 256;
-    const [mc, m] = makeCanvas(S, S);
-    const [bc, b] = makeCanvas(S, S);
-    const [rc, r] = makeCanvas(S, S);
+  const [map, bumpMap, roughnessMap, normalMap] = remember("container-box", () => {
+    const W = 512;
+    const H = 256;
+    const [mc, m] = makeCanvas(W, H);
+    const [bc, b] = makeCanvas(W, H);
+    const [rc, r] = makeCanvas(W, H);
 
     // near-white base so instanceColor tinting works (map × instanceColor)
     m.fillStyle = "#ececec";
-    m.fillRect(0, 0, S, S);
+    m.fillRect(0, 0, W, H);
     b.fillStyle = "#808080";
-    b.fillRect(0, 0, S, S);
+    b.fillRect(0, 0, W, H);
     r.fillStyle = "#9c9c9c";
-    r.fillRect(0, 0, S, S);
+    r.fillRect(0, 0, W, H);
 
-    // corrugation
-    for (let x = 0; x < S; x += 10) {
-      m.fillStyle = "rgba(0,0,0,0.10)";
-      m.fillRect(x, 0, 4, S);
-      b.fillStyle = "#6a6a6a";
-      b.fillRect(x, 0, 4, S);
-      b.fillStyle = "#969696";
-      b.fillRect(x + 4, 0, 3, S);
-    }
-    // door lock rods + hinges on the right half
-    m.strokeStyle = "rgba(20,20,20,0.5)";
-    m.lineWidth = 2;
-    [168, 190, 214, 236].forEach((x) => {
-      m.beginPath(); m.moveTo(x, 8); m.lineTo(x, S - 8); m.stroke();
-      m.fillStyle = "rgba(20,20,20,0.55)";
-      m.fillRect(x - 4, 30, 8, 10);
-      m.fillRect(x - 4, S - 44, 8, 10);
-    });
-    // frame edges
-    m.strokeStyle = "rgba(0,0,0,0.35)";
-    m.lineWidth = 6;
-    m.strokeRect(3, 3, S - 6, S - 6);
-    // weathering
     const rnd = mulberry32(7);
+
+    // ── left half: side-wall corrugation ──
+    for (let x = 0; x < 256; x += 10) {
+      m.fillStyle = "rgba(0,0,0,0.12)";
+      m.fillRect(x, 0, 4, H);
+      m.fillStyle = "rgba(255,255,255,0.08)";
+      m.fillRect(x + 6, 0, 2, H);
+      b.fillStyle = "#5c5c5c";
+      b.fillRect(x, 0, 4, H);
+      b.fillStyle = "#a4a4a4";
+      b.fillRect(x + 4, 0, 4, H);
+    }
+    m.strokeStyle = "rgba(0,0,0,0.4)";
+    m.lineWidth = 5;
+    m.strokeRect(2, 2, 252, H - 4);
+    // weathering streaks on the side
     for (let k = 0; k < 14; k++) {
-      const gx = rnd() * S;
+      const gx = rnd() * 240;
       m.fillStyle = `rgba(110,70,40,${0.05 + rnd() * 0.1})`;
-      m.fillRect(gx, rnd() * S * 0.5, 2 + rnd() * 3, 20 + rnd() * 40);
+      m.fillRect(gx, rnd() * H * 0.4, 2 + rnd() * 3, 20 + rnd() * 50);
     }
 
-    return [toTexture(mc, true), toTexture(bc, false), toTexture(rc, false)];
+    // ── right-top: door face (lock rods, hinges, CSC plate) ──
+    m.save();
+    b.save();
+    m.beginPath(); m.rect(256, 0, 256, 128); m.clip();
+    b.beginPath(); b.rect(256, 0, 256, 128); b.clip();
+    // two door leaves
+    m.strokeStyle = "rgba(0,0,0,0.35)";
+    m.lineWidth = 3;
+    m.beginPath(); m.moveTo(256 + 128, 4); m.lineTo(256 + 128, 124); m.stroke();
+    for (const x of [256 + 34, 256 + 74, 256 + 158, 256 + 198]) {
+      m.strokeStyle = "rgba(20,20,20,0.55)";
+      m.lineWidth = 4;
+      m.beginPath(); m.moveTo(x, 6); m.lineTo(x, 122); m.stroke();
+      b.strokeStyle = "#b0b0b0";
+      b.lineWidth = 4;
+      b.beginPath(); b.moveTo(x, 6); b.lineTo(x, 122); b.stroke();
+      // handles + keeper brackets
+      m.fillStyle = "rgba(20,20,20,0.6)";
+      m.fillRect(x - 5, 34, 10, 8);
+      m.fillRect(x - 5, 86, 10, 8);
+      m.fillRect(x - 2, 58, 16, 5);
+    }
+    // CSC safety-approval plate
+    m.fillStyle = "rgba(210,214,218,0.85)";
+    m.fillRect(256 + 104, 96, 48, 24);
+    m.strokeStyle = "rgba(40,44,48,0.7)";
+    m.lineWidth = 1.5;
+    m.strokeRect(256 + 104, 96, 48, 24);
+    m.fillStyle = "rgba(40,44,48,0.8)";
+    m.font = "700 9px Arial, sans-serif";
+    m.textAlign = "center";
+    m.fillText("CSC", 256 + 128, 106);
+    m.fillText("MAX 30480", 256 + 128, 116);
+    m.strokeStyle = "rgba(0,0,0,0.4)";
+    m.lineWidth = 5;
+    m.strokeRect(258, 2, 252, 124);
+    m.restore();
+    b.restore();
+
+    // ── right-bottom: roof ribs ──
+    m.save();
+    b.save();
+    m.beginPath(); m.rect(256, 128, 256, 128); m.clip();
+    b.beginPath(); b.rect(256, 128, 256, 128); b.clip();
+    for (let x = 260; x < 512; x += 14) {
+      m.fillStyle = "rgba(0,0,0,0.08)";
+      m.fillRect(x, 130, 6, 124);
+      b.fillStyle = "#6e6e6e";
+      b.fillRect(x, 130, 6, 124);
+    }
+    // corner castings
+    m.fillStyle = "rgba(30,32,36,0.5)";
+    for (const [cx, cy] of [
+      [260, 132],
+      [498, 132],
+      [260, 242],
+      [498, 242],
+    ]) {
+      m.fillRect(cx, cy, 10, 10);
+    }
+    // roof grime pools
+    for (let k = 0; k < 10; k++) {
+      const gx = 262 + rnd() * 240;
+      const gy = 134 + rnd() * 116;
+      const gr = 6 + rnd() * 16;
+      const g = m.createRadialGradient(gx, gy, 1, gx, gy, gr);
+      g.addColorStop(0, `rgba(70,74,66,${0.1 + rnd() * 0.12})`);
+      g.addColorStop(1, "rgba(70,74,66,0)");
+      m.fillStyle = g;
+      m.fillRect(gx - gr, gy - gr, gr * 2, gr * 2);
+    }
+    m.strokeStyle = "rgba(0,0,0,0.35)";
+    m.lineWidth = 5;
+    m.strokeRect(258, 130, 252, 124);
+    m.restore();
+    b.restore();
+
+    return [toTexture(mc, true), toTexture(bc, false), toTexture(rc, false), heightCanvasToNormal(bc, 1.8)];
   });
-  return { map, bumpMap, roughnessMap } as PBRSet;
+  return { map, bumpMap, roughnessMap, normalMap } as PBRSet;
 }
 
-/* ─── superstructure window strips ─── */
+/* ─── superstructure wall atlas ─── */
 
-export interface WindowStrip {
+export interface SuperstructureTextures {
   map: THREE.CanvasTexture;
   emissiveMap: THREE.CanvasTexture;
+  normalMap: THREE.CanvasTexture;
 }
 
-export function getWindowStrip(wallColor: string, kind: "bridge" | "accom" | "pax"): WindowStrip {
-  const [map, emissiveMap] = remember(`win:${kind}:${wallColor}`, () => {
-    const W = 512;
-    const H = 64;
+export const SS_ATLAS_W = 1024;
+export const SS_ATLAS_H = 512;
+export const SS_ROW_H = 96;
+export const SS_ROWS = 5; // row 0 = bridge glass row, 1..4 accommodation decks
+/** One u-repeat of the atlas spans this many world units (window pitch rule). */
+export const SS_U_WORLD = 1.05;
+
+/** v-range [v0, v1] of an atlas row, inset to avoid cross-row bleed. */
+export function ssRowV(row: number): [number, number] {
+  const eps = 3 / SS_ATLAS_H;
+  const top = 1 - (row * SS_ROW_H) / SS_ATLAS_H;
+  const bot = 1 - ((row + 1) * SS_ROW_H) / SS_ATLAS_H;
+  return [bot + eps, top - eps];
+}
+/** v-range of the plain painted cell (box tops, backs, plinths). */
+export function ssPlainV(): [number, number] {
+  return [2 / SS_ATLAS_H, (32 - 2) / SS_ATLAS_H];
+}
+
+/**
+ * 1024×512 wall atlas: 5 deck-level rows (windows, doors, louvres, drip
+ * stains) + a plain cell at the bottom. Windows are drawn inset into the
+ * height canvas so the derived normal map gives real-looking recesses.
+ */
+export function getSuperstructureTextures(type: ShipType, wallColor: string): SuperstructureTextures {
+  const [map, emissiveMap, normalMap] = remember(`ss:${type}`, () => {
+    const W = SS_ATLAS_W;
+    const H = SS_ATLAS_H;
     const [mc, m] = makeCanvas(W, H);
+    const [hc, h] = makeCanvas(W, H);
     const [ec, e] = makeCanvas(W, H);
+    const rnd = mulberry32(hashSeed(`ss-${type}`));
 
     m.fillStyle = wallColor;
     m.fillRect(0, 0, W, H);
+    h.fillStyle = "#808080";
+    h.fillRect(0, 0, W, H);
     e.fillStyle = "#000000";
     e.fillRect(0, 0, W, H);
 
-    const rnd = mulberry32(hashSeed(`win-${kind}`));
-    const winW = kind === "bridge" ? 40 : 24;
-    const gap = kind === "bridge" ? 8 : 12;
-    const winH = kind === "bridge" ? 40 : 30;
-    const y0 = (H - winH) / 2;
-    for (let x = 10; x + winW < W - 6; x += winW + gap) {
-      const g = m.createLinearGradient(0, y0, 0, y0 + winH);
-      g.addColorStop(0, "#33465e");
-      g.addColorStop(0.5, "#1a2635");
-      g.addColorStop(1, "#243a52");
-      m.fillStyle = g;
-      m.beginPath();
-      m.roundRect(x, y0, winW, winH, 3);
-      m.fill();
-      m.strokeStyle = "rgba(0,0,0,0.4)";
-      m.lineWidth = 1.5;
-      m.stroke();
-      if (rnd() < (kind === "bridge" ? 0.65 : 0.3)) {
-        e.fillStyle = "#ffd9a0";
-        e.beginPath();
-        e.roundRect(x + 2, y0 + 2, winW - 4, winH - 4, 2);
-        e.fill();
-      }
-      // grime under each window
-      m.fillStyle = "rgba(60,60,64,0.18)";
-      m.fillRect(x + 2, y0 + winH + 2, winW - 4, 6);
+    // vertical panel seams
+    for (let x = 0; x <= W; x += 48) {
+      m.fillStyle = "rgba(0,0,0,0.06)";
+      m.fillRect(x, 0, 1.5, H);
+      h.fillStyle = "#6e6e6e";
+      h.fillRect(x, 0, 2, H);
     }
 
+    for (let row = 0; row < SS_ROWS; row++) {
+      const y0 = row * SS_ROW_H;
+      const bridge = row === 0;
+      const winW = bridge ? 56 : 32;
+      const winH = bridge ? 44 : 30;
+      const pitch = bridge ? 72 : 64;
+      const wy = y0 + (SS_ROW_H - winH) / 2 - (bridge ? 4 : 2);
+
+      // deck seam at the row bottom
+      m.fillStyle = "rgba(0,0,0,0.18)";
+      m.fillRect(0, y0 + SS_ROW_H - 2, W, 2);
+      h.fillStyle = "#5a5a5a";
+      h.fillRect(0, y0 + SS_ROW_H - 3, W, 3);
+
+      for (let x = 12; x + winW < W - 6; x += pitch) {
+        // occasionally a weathertight door instead of a window (not on bridge row)
+        if (!bridge && rnd() < 0.09) {
+          const dw = 30;
+          const dh = 58;
+          const dx = x + (winW - dw) / 2;
+          const dy = y0 + SS_ROW_H - dh - 4;
+          m.fillStyle = "rgba(0,0,0,0.12)";
+          m.fillRect(dx, dy, dw, dh);
+          m.strokeStyle = "rgba(10,12,16,0.5)";
+          m.lineWidth = 2;
+          m.strokeRect(dx, dy, dw, dh);
+          m.fillStyle = "rgba(20,24,30,0.7)";
+          m.fillRect(dx + dw - 7, dy + dh / 2 - 4, 4, 9); // handle
+          h.fillStyle = "#6a6a6a";
+          h.fillRect(dx, dy, dw, dh);
+          h.strokeStyle = "#9a9a9a";
+          h.lineWidth = 2;
+          h.strokeRect(dx + 3, dy + 3, dw - 6, dh - 6); // gasket ridge
+          continue;
+        }
+
+        // window glass with sky gradient
+        const g = m.createLinearGradient(0, wy, 0, wy + winH);
+        g.addColorStop(0, "#33465e");
+        g.addColorStop(0.5, "#1a2635");
+        g.addColorStop(1, "#243a52");
+        m.fillStyle = g;
+        m.beginPath();
+        m.roundRect(x, wy, winW, winH, 3);
+        m.fill();
+        m.strokeStyle = "rgba(0,0,0,0.4)";
+        m.lineWidth = 1.5;
+        m.stroke();
+        // recess in the height canvas → bevelled inset in the normal map
+        h.fillStyle = "#484848";
+        h.beginPath();
+        h.roundRect(x, wy, winW, winH, 3);
+        h.fill();
+        h.fillStyle = "#9c9c9c"; // sill lip below
+        h.fillRect(x - 1, wy + winH, winW + 2, 3);
+        // some windows lit warm (bridge row mostly on)
+        if (rnd() < (bridge ? 0.65 : 0.3)) {
+          e.fillStyle = `rgba(255,${205 + Math.floor(rnd() * 30)},140,${0.75 + rnd() * 0.25})`;
+          e.beginPath();
+          e.roundRect(x + 2, wy + 2, winW - 4, winH - 4, 2);
+          e.fill();
+        }
+        // drip stain under the window
+        const dg = m.createLinearGradient(0, wy + winH + 2, 0, wy + winH + 16);
+        dg.addColorStop(0, "rgba(56,60,64,0.25)");
+        dg.addColorStop(1, "rgba(56,60,64,0)");
+        m.fillStyle = dg;
+        m.fillRect(x + 3, wy + winH + 2, winW - 6, 14);
+      }
+
+      // an AC louvre or two on accommodation rows
+      if (!bridge) {
+        for (let k = 0; k < 2; k++) {
+          if (rnd() < 0.55) continue;
+          const lx = 30 + rnd() * (W - 100);
+          const ly = y0 + 12;
+          m.fillStyle = "rgba(0,0,0,0.1)";
+          m.fillRect(lx, ly, 44, 16);
+          m.strokeStyle = "rgba(20,24,28,0.4)";
+          m.lineWidth = 1;
+          for (let yy = ly + 3; yy < ly + 16; yy += 3) {
+            m.beginPath();
+            m.moveTo(lx + 2, yy);
+            m.lineTo(lx + 42, yy);
+            m.stroke();
+          }
+          h.fillStyle = "#616161";
+          h.fillRect(lx, ly, 44, 16);
+        }
+      }
+    }
+
+    // plain cell (bottom strip): untouched wall paint + a faint weather wash
+    const py = SS_ROWS * SS_ROW_H;
+    const wash = m.createLinearGradient(0, py, 0, H);
+    wash.addColorStop(0, "rgba(90,96,104,0.05)");
+    wash.addColorStop(1, "rgba(90,96,104,0.12)");
+    m.fillStyle = wash;
+    m.fillRect(0, py, W, H - py);
+
     const mt = toTexture(mc, true);
-    mt.wrapS = THREE.RepeatWrapping;
     const et = toTexture(ec, true);
-    et.wrapS = THREE.RepeatWrapping;
-    return [mt, et];
+    const nt = heightCanvasToNormal(hc, 2.2);
+    for (const t of [mt, et, nt]) t.wrapS = THREE.RepeatWrapping;
+    return [mt, et, nt];
   });
-  return { map, emissiveMap } as WindowStrip;
+  return { map, emissiveMap, normalMap } as SuperstructureTextures;
 }
 
 /* ─── funnel ─── */
@@ -485,6 +774,31 @@ export function getFunnelTexture(type: ShipType): THREE.CanvasTexture {
       grad.addColorStop(1, "rgba(16,18,22,0)");
       g.fillStyle = grad;
       g.fillRect(x, 16, 2 + rnd() * 3, 30 + rnd() * 16);
+    }
+    // exhaust grill band inside the cap
+    g.strokeStyle = "rgba(60,64,70,0.8)";
+    g.lineWidth = 2;
+    for (let x = 4; x < W; x += 10) {
+      g.beginPath();
+      g.moveTo(x, 3);
+      g.lineTo(x, 13);
+      g.stroke();
+    }
+    // service platform shadow ring
+    const ring = g.createLinearGradient(0, 78, 0, 92);
+    ring.addColorStop(0, "rgba(10,12,16,0.4)");
+    ring.addColorStop(1, "rgba(10,12,16,0)");
+    g.fillStyle = ring;
+    g.fillRect(0, 78, W, 14);
+    // access ladder (rails + rungs), once per revolution
+    const lx = W * 0.82;
+    g.strokeStyle = "rgba(24,28,34,0.75)";
+    g.lineWidth = 2;
+    g.beginPath(); g.moveTo(lx - 5, 18); g.lineTo(lx - 5, H - 8); g.stroke();
+    g.beginPath(); g.moveTo(lx + 5, 18); g.lineTo(lx + 5, H - 8); g.stroke();
+    g.lineWidth = 1.5;
+    for (let y = 22; y < H - 8; y += 7) {
+      g.beginPath(); g.moveTo(lx - 5, y); g.lineTo(lx + 5, y); g.stroke();
     }
     return [toTexture(c, true)];
   })[0] as THREE.CanvasTexture;
@@ -585,6 +899,49 @@ export function getFoamAlphaTexture(): THREE.CanvasTexture {
     const t = toTexture(c, false);
     t.wrapS = THREE.RepeatWrapping;
     t.wrapT = THREE.RepeatWrapping;
+    return [t];
+  })[0] as THREE.CanvasTexture;
+}
+
+/* ─── wake foam strip (tiling on u; soft v edges baked in) ─── */
+
+export function getWakeStripTexture(): THREE.CanvasTexture {
+  return remember("wake-strip", () => {
+    const W = 256;
+    const H = 64;
+    const [c, g] = makeCanvas(W, H);
+    g.fillStyle = "#000000";
+    g.fillRect(0, 0, W, H);
+    const rnd = mulberry32(2024);
+    // elongated foam streaks, drawn wrapped on u so the tile is seamless
+    for (let k = 0; k < 90; k++) {
+      const x = rnd() * W;
+      const y = 8 + rnd() * (H - 16);
+      const len = 24 + rnd() * 70;
+      const th = 1.5 + rnd() * 3.5;
+      const a = 0.1 + rnd() * 0.24;
+      for (const ox of [-W, 0, W]) {
+        const grad = g.createLinearGradient(x + ox, 0, x + ox + len, 0);
+        grad.addColorStop(0, "rgba(255,255,255,0)");
+        grad.addColorStop(0.35, `rgba(255,255,255,${a})`);
+        grad.addColorStop(1, "rgba(255,255,255,0)");
+        g.fillStyle = grad;
+        g.fillRect(x + ox, y - th / 2, len, th);
+      }
+    }
+    // soft edges across the strip (v) so the mesh sides never show a hard line
+    for (const [y0, y1] of [
+      [0, 14],
+      [H, H - 14],
+    ]) {
+      const grad = g.createLinearGradient(0, y0, 0, y1);
+      grad.addColorStop(0, "rgba(0,0,0,1)");
+      grad.addColorStop(1, "rgba(0,0,0,0)");
+      g.fillStyle = grad;
+      g.fillRect(0, Math.min(y0, y1), W, 14);
+    }
+    const t = toTexture(c, false);
+    t.wrapS = THREE.RepeatWrapping;
     return [t];
   })[0] as THREE.CanvasTexture;
 }

@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { ShipConfig, ShipType } from "./ShipModel3D";
 import { deckHalfBeamAt, deckYAt, sampleSheerLine } from "./hullGeometry";
+import { hashSeed, mulberry32 } from "./proceduralTextures";
 
 /**
  * Type-specific deck equipment for the sim vessel. Everything static is
@@ -40,6 +41,21 @@ function place(
 const box = (w: number, h: number, d: number) => new THREE.BoxGeometry(w, h, d);
 const cyl = (rTop: number, rBot: number, h: number, seg = 8) => new THREE.CylinderGeometry(rTop, rBot, h, seg);
 
+const UP = new THREE.Vector3(0, 1, 0);
+
+/** Thin rod between two points — stays, shrouds, wire runs. */
+function strut(a: THREE.Vector3, b: THREE.Vector3, r: number): THREE.BufferGeometry {
+  const dir = new THREE.Vector3().subVectors(b, a);
+  const len = dir.length();
+  const g = new THREE.CylinderGeometry(r, r, len, 4);
+  g.translate(0, len / 2, 0);
+  g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(UP, dir.normalize()));
+  g.translate(a.x, a.y, a.z);
+  return g;
+}
+
+const v3 = (x: number, y: number, z: number) => new THREE.Vector3(x, y, z);
+
 function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
   const layers: DetailLayer[] = [];
   const sheer = sampleSheerLine(type);
@@ -61,9 +77,42 @@ function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
     railParts.push(new THREE.TubeGeometry(top, 72, 0.0045, 5, false));
     railParts.push(new THREE.TubeGeometry(mid, 72, 0.0038, 5, false));
   }
-  // foremast at the fo'c'sle
-  railParts.push(place(cyl(0.009, 0.013, 0.55, 6), 3.05, deckYAt(type, 3.05) + 0.27, 0));
-  railParts.push(place(box(0.16, 0.014, 0.014), 3.05, deckYAt(type, 3.05) + 0.42, 0));
+  // foremast at the fo'c'sle: tapered pole + yard + light fixtures + rigging
+  const fmBase = deckYAt(type, 3.05);
+  railParts.push(place(cyl(0.009, 0.013, 0.55, 6), 3.05, fmBase + 0.27, 0));
+  railParts.push(place(box(0.16, 0.014, 0.014), 3.05, fmBase + 0.42, 0));
+  railParts.push(place(cyl(0.005, 0.007, 0.16, 5), 3.05, fmBase + 0.62, 0)); // upper pole
+  for (const side of [1, -1] as const) {
+    railParts.push(place(box(0.022, 0.032, 0.02), 3.05, fmBase + 0.42, side * 0.07)); // yard light boxes
+  }
+  // forestay to the stem head + a shroud pair to the fo'c'sle deck
+  railParts.push(strut(v3(3.05, fmBase + 0.66, 0), v3(3.44, deckYAt(type, 3.44) + 0.02, 0), 0.0032));
+  for (const side of [1, -1] as const) {
+    railParts.push(strut(v3(3.05, fmBase + 0.5, 0), v3(2.72, deckYAt(type, 2.72) + 0.02, side * 0.26), 0.0032));
+  }
+
+  /* ── main-mast gear on the bridge top: satcom dome, stays, horn, compass ── */
+  const bX = cfg.bridgePos[0];
+  const bTopY = cfg.bridgePos[1] + 0.2; // bridge roof
+  // satcom radome on a pedestal, offset from the radar mast
+  railParts.push(place(cyl(0.016, 0.02, 0.09, 6), bX - 0.28, bTopY + 0.045, -0.14));
+  railParts.push(place(new THREE.SphereGeometry(0.055, 12, 10), bX - 0.28, bTopY + 0.13, -0.14));
+  // magnetic-compass stand forward on the monkey island
+  railParts.push(place(cyl(0.014, 0.02, 0.1, 6), bX + 0.32, bTopY + 0.05, 0));
+  railParts.push(place(new THREE.SphereGeometry(0.026, 8, 8), bX + 0.32, bTopY + 0.115, 0));
+  // radar-mast stays aft to the roof
+  for (const side of [1, -1] as const) {
+    railParts.push(strut(v3(bX, bTopY + 0.46, 0), v3(bX - 0.3, bTopY + 0.01, side * 0.24), 0.0032));
+  }
+  // twin air horns at the funnel face
+  const fnX = cfg.funnelPos[0];
+  const fnY = cfg.funnelPos[1];
+  for (const side of [1, -1] as const) {
+    const horn = new THREE.ConeGeometry(0.022, 0.09, 8);
+    horn.rotateZ(-Math.PI / 2); // point forward (+x)
+    horn.translate(fnX + 0.24, fnY + 0.18, side * 0.04);
+    railParts.push(horn);
+  }
 
   /* ── mooring / anchor gear (dark steel) ── */
   const gearParts: THREE.BufferGeometry[] = [];
@@ -191,14 +240,34 @@ function buildDetailLayers(type: ShipType, cfg: ShipConfig): DetailLayer[] {
     }
   } else if (type === "passenger") {
     typeLayerStyle = { color: "#f6f9fc", metalness: 0.1, roughness: 0.45 };
-    // bridge wings spanning past the beam
-    typeParts.push(place(box(0.2, 0.05, 1.9), cfg.bridgePos[0], cfg.bridgePos[1] - 0.06, 0));
-    typeParts.push(place(box(0.2, 0.09, 0.06), cfg.bridgePos[0], cfg.bridgePos[1] - 0.01, 0.93));
-    typeParts.push(place(box(0.2, 0.09, 0.06), cfg.bridgePos[0], cfg.bridgePos[1] - 0.01, -0.93));
+    // liferaft canisters racked along both sides of the boat deck
+    for (const side of [1, -1] as const) {
+      for (let i = 0; i < 4; i++) {
+        const rx = cfg.superstructurePos[0] + 1.1 - i * 0.5;
+        const rz = side * (cfg.superstructureSize[2] / 2 + 0.03);
+        typeParts.push(place(cyl(0.045, 0.045, 0.12, 8), rx, cfg.superstructurePos[1] - 0.32, rz, [Math.PI / 2, 0, 0]));
+      }
+    }
   }
 
+  // Per-part vertex-colour tint (seeded) so merged equipment isn't one flat
+  // colour — reads as paint batches/wear at zero extra draw calls. Materials
+  // use vertexColors with a white base so the tinted layer colour shows.
+  const rnd = mulberry32(hashSeed(`details-${type}`));
   const push = (parts: THREE.BufferGeometry[], style: Omit<DetailLayer, "geometry">) => {
     if (!parts.length) return;
+    const base = new THREE.Color(style.color);
+    for (const p of parts) {
+      const tint = 0.92 + rnd() * 0.16;
+      const count = p.attributes.position.count;
+      const arr = new Float32Array(count * 3);
+      for (let i = 0; i < count; i++) {
+        arr[i * 3] = Math.min(base.r * tint, 1);
+        arr[i * 3 + 1] = Math.min(base.g * tint, 1);
+        arr[i * 3 + 2] = Math.min(base.b * tint, 1);
+      }
+      p.setAttribute("color", new THREE.BufferAttribute(arr, 3));
+    }
     const merged = mergeGeometries(parts);
     parts.forEach((p) => p.dispose());
     if (merged) layers.push({ geometry: merged, ...style });
@@ -229,6 +298,11 @@ function RadarMast({ position }: { position: [number, number, number] }) {
           <boxGeometry args={[0.3, 0.028, 0.045]} />
           <meshStandardMaterial color="#e2e8f0" metalness={0.5} roughness={0.35} />
         </mesh>
+        {/* short X-band scanner on the same bearing, a step below */}
+        <mesh position={[0, -0.09, 0]} rotation={[0, Math.PI / 3, 0]} castShadow>
+          <boxGeometry args={[0.18, 0.022, 0.04]} />
+          <meshStandardMaterial color="#cbd5e1" metalness={0.5} roughness={0.35} />
+        </mesh>
       </group>
       <mesh position={[0.09, 0.14, 0]}>
         <sphereGeometry args={[0.045, 10, 8]} />
@@ -253,7 +327,7 @@ export function ShipDetails({ type, cfg }: { type: ShipType; cfg: ShipConfig }) 
     <group>
       {layers.map((l, i) => (
         <mesh key={i} geometry={l.geometry} castShadow>
-          <meshStandardMaterial color={l.color} metalness={l.metalness} roughness={l.roughness} />
+          <meshStandardMaterial color="#ffffff" vertexColors metalness={l.metalness} roughness={l.roughness} />
         </mesh>
       ))}
       <RadarMast position={[cfg.bridgePos[0], cfg.bridgePos[1] + 0.24, 0]} />

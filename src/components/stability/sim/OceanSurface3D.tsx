@@ -57,12 +57,15 @@ vec3 gerstnerWave(vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal, fl
 `;
 
 // Plane is authored in local XY (rotated -90° about X in the scene), so local
-// z is world up. Waves are damped near the origin (ship footprint).
+// z is world up and local xy = (world x, -world z). Waves are damped inside a
+// hull-hugging ellipse instead of the old wide "calm disc" — gentle swell now
+// reaches to within about half a unit of the plating.
 const gerstnerVertex = /* glsl */ `
   float oceanDist = length(position.xy);
-  // calm zone around the hull + flatten again toward the horizon so the
+  float hullDist = length(vec2(position.x / 3.4, position.y / 1.35));
+  // calm ellipse around the hull + flatten again toward the horizon so the
   // ocean silhouette stays a clean line against the sky
-  float oceanDamp = smoothstep(2.6, 9.0, oceanDist) * (1.0 - smoothstep(16.0, 28.0, oceanDist));
+  float oceanDamp = smoothstep(0.95, 2.1, hullDist) * (1.0 - smoothstep(16.0, 28.0, oceanDist));
   vec3 oceanTangent = vec3(1.0, 0.0, 0.0);
   vec3 oceanBinormal = vec3(0.0, 1.0, 0.0);
   vec3 oceanOffset = vec3(0.0);
@@ -71,8 +74,14 @@ const gerstnerVertex = /* glsl */ `
   oceanOffset += gerstnerWave(vec4(${WAVES[2].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
 `;
 
-export function OceanSurface3D() {
+interface OceanSurface3DProps {
+  /** Live heel angle (radians) — the foam collar tracks the shifted waterline. */
+  heelRef?: React.MutableRefObject<number>;
+}
+
+export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
   const timeUniform = useRef<{ value: number }>({ value: 0 });
+  const collarRef = useRef<THREE.Mesh>(null);
 
   const normalTex = useMemo(() => {
     const t = getWaterNormalTexture();
@@ -114,7 +123,7 @@ export function OceanSurface3D() {
             `vec3 transformed = vec3(position) + oceanOffset;`
           );
       };
-      mat.customProgramCacheKey = () => "ocean-gerstner-v1";
+      mat.customProgramCacheKey = () => "ocean-gerstner-v2";
     }
     return mat;
   }, [normalTex]);
@@ -139,6 +148,15 @@ export function OceanSurface3D() {
     normalTex.offset.x += delta * 0.012;
     normalTex.offset.y += delta * 0.006;
     foamTex.offset.x += delta * 0.02;
+    // foam collar follows the heeled waterline: shifts leeward, widens a
+    // touch and fades at big angles so it never argues with the real line
+    const heel = heelRef?.current ?? 0;
+    const collar = collarRef.current;
+    if (collar) {
+      collar.position.z = -Math.sin(heel) * 0.32;
+      collar.scale.y = 0.6 * (1 + 0.25 * Math.abs(Math.sin(heel)));
+      (collar.material as THREE.MeshBasicMaterial).opacity = 0.75 - 0.3 * Math.min(Math.abs(heel) / 0.44, 1);
+    }
   });
 
   useEffect(
@@ -157,6 +175,7 @@ export function OceanSurface3D() {
       {/* foam collar hugging the hull waterline — hides the hull/water
           intersection line, which is the biggest "fake water" tell */}
       <mesh
+        ref={collarRef}
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, 0.015, 0]}
         scale={[2.98, 0.6, 1]}

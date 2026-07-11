@@ -1,6 +1,5 @@
 import { Component, Suspense, type ReactNode } from "react";
 import { Environment, Lightformer, Sky } from "@react-three/drei";
-import { getAOBlobTexture } from "./proceduralTextures";
 
 /**
  * Atmosphere + image-based lighting for the stability sim.
@@ -86,18 +85,8 @@ export function SceneEnvironment() {
         shadow-camera-far={35}
       />
 
-      {/* soft dark blob under the hull footprint (world space — does not heel):
-          cheap grounding in place of per-frame contact shadows */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.03, 0]} renderOrder={1}>
-        <planeGeometry args={[7.2, 2.2]} />
-        <meshBasicMaterial
-          color="#04101c"
-          alphaMap={getAOBlobTexture()}
-          transparent
-          opacity={0.38}
-          depthWrite={false}
-        />
-      </mesh>
+      {/* the hull AO blob lives in WakeEffects now, so it heel-shifts with
+          the waterline instead of staying pinned in world space */}
     </>
   );
 }

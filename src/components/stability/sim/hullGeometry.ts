@@ -26,10 +26,14 @@ export const KEEL_Y = -0.8;
 export const WL_Y = -0.1;
 export const DECK_Y = 0.54; // base main-deck height before sheer/deckRise
 export const HULL_TEX_TOP_Y = DECK_Y + 0.36; // v=1 in the hull texture (clears max sheer+deckRise)
+/** 1 m of real draft in hull-local units — design draft 6.5 m spans keel→WL.
+ *  Single source of truth for draft marks (textures) and hull immersion (scene). */
+export const UNITS_PER_METER = (WL_Y - KEEL_Y) / 6.5;
 
 const NS = 48; // stations, transom (i=0) → stem (i=NS)
 const NJ = 12; // points per half-section, keel (jj=0) → deck edge (jj=NJ-1)
 const R = 2 * NJ - 1; // ring size (keel point shared, deck edges distinct)
+const NB = 7; // extra rows lofting the bulbous bow forward of the stem
 const MIN_HB = 0.012; // half-beam clamp at the stem — never degenerate
 const T_CLUSTER = 1.5; // cluster section points toward the bilge
 
@@ -175,11 +179,19 @@ function planHalfBeam(f: HullForm, u: number, frac: number, entrance: number): n
 const halfBeamDeck = (f: HullForm, u: number) => planHalfBeam(f, u, f.transomWidthFrac, f.bowEntrance);
 const halfBeamWL = (f: HullForm, u: number) => planHalfBeam(f, u, f.transomWidthFracWL, f.bowEntrance * 0.8);
 
+/** Bulb axis height — a little below the forefoot so the top fairs into the stem. */
+const bulbCenterY = (f: HullForm) =>
+  f.bulb ? WL_Y - f.forefootRise - 0.35 * f.bulb.radius : WL_Y - f.forefootRise;
+
 function keelY(f: HullForm, u: number): number {
   const aftEnd = 0.18;
   const fwdStart = 0.92;
+  // With a bulb the forefoot dives toward the bulb underside so the root has body.
+  const forefootY = f.bulb
+    ? Math.min(WL_Y - f.forefootRise, bulbCenterY(f) - 0.85 * f.bulb.radius)
+    : WL_Y - f.forefootRise;
   if (u < aftEnd) return lerp(WL_Y - f.counterRise, KEEL_Y, smooth(0, aftEnd, u));
-  if (u > fwdStart) return lerp(KEEL_Y, WL_Y - f.forefootRise, smooth(fwdStart, 1, u));
+  if (u > fwdStart) return lerp(KEEL_Y, forefootY, smooth(fwdStart, 1, u));
   return KEEL_Y;
 }
 
@@ -216,8 +228,19 @@ function sectionPoint(f: HullForm, u: number, t: number, side: 1 | -1, out: THRE
   const b = t < tWL ? bw : lerp(bw, bd, smooth(tWL, 1, t));
 
   // Lamé quadrant: flat bottom + bilge radius emerge from exponent e.
-  const z = b * Math.pow(1 - Math.pow(1 - t, 2), 1 / e) * (t === 0 ? 0 : 1);
-  const y = lerp(yk, yd, t) + f.deadrise * (z / (BEAM / 2)) * Math.pow(1 - t, 2);
+  let z = b * Math.pow(1 - Math.pow(1 - t, 2), 1 / e) * (t === 0 ? 0 : 1);
+  const yBase = lerp(yk, yd, t);
+
+  // Bulb-root swell: widen the forward underwater sections around the bulb
+  // axis so the lofted stations fair into the bulb extension with no seam.
+  if (f.bulb && t > 0 && t < tWL && u > 0.86) {
+    const sig = 0.75 * f.bulb.radius;
+    const dy = yBase - bulbCenterY(f);
+    const g = Math.exp(-(dy * dy) / (2 * sig * sig));
+    z += (f.bulb.radius - MIN_HB) * g * smooth(0.86, 1, u);
+  }
+
+  const y = yBase + f.deadrise * (z / (BEAM / 2)) * Math.pow(1 - t, 2);
   const x = -HALF + u * 2 * HALF + xShear(f, u, t);
 
   out.set(x, y, side * z);
@@ -260,24 +283,80 @@ function buildHullSet(type: ShipType): HullGeoSet {
     }
   }
 
-  for (let i = 0; i < NS; i++) {
+  // ── Bulbous bow: NB extra rows continue the grid forward of the stem. ──
+  // Rings at/above tTop are pinned onto the stem row (degenerate, invisible
+  // quads) so the grid stays R wide; rings below trace circular bulb sections
+  // that shrink to a point at the nose. Same texU/texV → the antifoul paint
+  // and plating flow onto the bulb with no seam or material switch.
+  let tTop = 1; // ring t at/above which bulb rows are pinned to the stem row
+  if (f.bulb) {
+    const r0 = f.bulb.radius;
+    const cy0 = bulbCenterY(f);
+    const ykStem = keelY(f, 1);
+    const ydStem = deckY(f, 1);
+    // Snap the pin boundary to an actual ring t so the stem closing strip and
+    // the bulb surface partition cleanly with no sliver gap or interior wall.
+    const tTopRaw = clamp01((cy0 + 1.05 * r0 - ykStem) / (ydStem - ykStem));
+    for (const tv of tVals) if (tv >= tTopRaw && tv < tTop) tTop = tv;
+  }
+  // Sanity gate: a pin boundary near the deck means the form data is off —
+  // fall back to a bulbless loft rather than lofting a hull-sized "bulb".
+  const bulb = tTop < 0.9 ? f.bulb : null;
+  if (bulb) {
+    const r0 = bulb.radius;
+    const cy0 = bulbCenterY(f);
+
+    for (let bi = 1; bi <= NB; bi++) {
+      const s = bi / NB;
+      const xA = HALF - 0.02 + s * bulb.length;
+      const cy = cy0 + 0.1 * r0 * s; // slight nose-up axis
+      const rad = r0 * Math.pow(1 - Math.pow(s, 2.2), 0.55); // rounded, self-closing nose
+      for (let rj = 0; rj < R; rj++) {
+        const t = ringT(rj);
+        if (t >= tTop) {
+          const src = (NS * R + rj) * 3;
+          positions.push(positions[src], positions[src + 1], positions[src + 2]);
+          uvs.push(texU(positions[src]), texV(positions[src + 1]));
+        } else {
+          const theta = (Math.PI * t) / tTop; // 0 = underside, π = top of bulb
+          const y = cy - Math.cos(theta) * rad;
+          const z = t === 0 ? 0 : Math.sin(theta) * rad;
+          positions.push(xA, y, ringSide(rj) * z);
+          uvs.push(texU(xA), texV(y));
+        }
+      }
+    }
+  }
+
+  // Faces are split port / starboard so the two sides can take different
+  // colour maps — hull text (name, draft marks) must not read mirrored on
+  // the port side. Port = rings below NJ-1 (z ≤ 0), see ringSide().
+  const portIndices: number[] = [];
+  const stbdIndices: number[] = indices; // deliberate alias: shared quads → stbd
+
+  const lastRow = bulb ? NS + NB : NS;
+  for (let i = 0; i < lastRow; i++) {
     for (let rj = 0; rj < R - 1; rj++) {
       const a = i * R + rj;
       const b = (i + 1) * R + rj;
       const c = (i + 1) * R + rj + 1;
       const d = i * R + rj + 1;
-      indices.push(a, b, c, a, c, d);
+      (rj < NJ - 1 ? portIndices : stbdIndices).push(a, b, c, a, c, d);
     }
   }
 
   // Stem closing strip across the clamped-width bow line (shared verts → smooth).
+  // With a bulb, stop at its top — below tTop the bulb rows continue the
+  // surface forward, and a strip there would be an interior wall corrupting
+  // the averaged vertex normals of the bulb root.
   const last = NS * R;
   for (let k = 0; k < NJ - 1; k++) {
+    if (bulb && ringT(k + 1) < tTop) break;
     const pA = last + k;
     const pB = last + k + 1;
     const sB = last + (R - 2 - k);
     const sA = last + (R - 1 - k);
-    indices.push(pA, sA, sB, pA, sB, pB);
+    stbdIndices.push(pA, sA, sB, pA, sB, pB);
   }
 
   // Transom cap: duplicated ring-0 vertices → crisp edge, fan around centroid.
@@ -303,7 +382,9 @@ function buildHullSet(type: ShipType): HullGeoSet {
   const hull = new THREE.BufferGeometry();
   hull.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   hull.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
-  hull.setIndex(indices);
+  hull.setIndex([...portIndices, ...stbdIndices]);
+  hull.addGroup(0, portIndices.length, 0); // material 0: port (mirrored-text map)
+  hull.addGroup(portIndices.length, stbdIndices.length, 1); // material 1: starboard
   hull.computeVertexNormals();
 
   // ── deck: separate geometry from the same station data → crisp deck edge ──
