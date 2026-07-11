@@ -3,8 +3,8 @@
 Bu belge, modern bir gemide köprüüstünde bulunan temel cihazların her birini ayrıntılı biçimde açıklar. Her bölümde cihazın temel amacı, çalışma prensibi, sağladığı veriler, kullanım senaryoları, kalibrasyon/bakım gereklilikleri ve olası arıza durumlarında köprüüstü ekibinin uygulayabileceği önlemler yer alır. Ayrıca manual formatında eklenen “Başlıca özellikler”, “Operasyon adımları”, “Vardiya öncesi kontrol listesi” ve “Acil durumda hızlı adımlar” kısımları, sahada hızlı referans için detaylı kontrol listeleri sunar.
 
 ## 1. Manyetik Pusula
-- **Amaç ve prensip:** Dünyanın manyetik alanı ile hizalanarak gerçek yönü gösterir; sürekli güç gereksinimi yoktur.
-- **Sağladığı veri:** Manyetik kerteriz, manyetik rota; manyetik sapma ve deviasyonla düzeltilir.
+- **Amaç ve prensip:** Dünyanın manyetik alanı ile hizalanarak manyetik kuzeyi gösterir; gerçek (hakiki) yön, varyasyon ve deviasyon düzeltmeleri uygulanarak elde edilir. Sürekli güç gereksinimi yoktur.
+- **Sağladığı veri:** Manyetik kerteriz, manyetik rota; varyasyon (doğal sapma) ve deviasyon (gemi kaynaklı sapma) ile hakiki değere düzeltilir.
 - **Başlıca özellikler:**
   - Binnacle ve alkol/su karışımlı kapsül, optik okuma penceresi ve aydınlatma.
   - Tutarlılık için kart amortisörlü yapıda, sönümleme kanatçıkları ile titreşime karşı dayanıklıdır.
@@ -32,7 +32,7 @@ Bu belge, modern bir gemide köprüüstünde bulunan temel cihazların her birin
 - **Amaç ve prensip:** GNSS uydularından alınan zaman/konum sinyalleriyle enlem, boylam, hız ve zaman bilgisi üretir.
 - **Sağladığı veri:** WGS-84 konumu, COG (course over ground), SOG (speed over ground), UTC zamanı; ECDIS ve VDR’ye besleme.
 - **Başlıca özellikler:**
-  - Çoklu uydu takımyıldızı desteği (GPS, GLONASS, Galileo, BeiDou) ile daha yüksek PDOP doğruluğu.
+  - Çoklu uydu takımyıldızı desteği (GPS, GLONASS, Galileo, BeiDou) ile daha düşük PDOP ve dolayısıyla daha yüksek konum doğruluğu.
   - Diferansiyel düzeltme (SBAS/DGPS/RTK) girişleri ve alarmları.
   - Anchor watch, cross track error ve varış alarmı için kullanıcı tanımlı limitler.
 - **Kullanım:** Seyir planı izleme, pozisyon fiksleri, hız kontrolü, otomatik günlük kayıtları, alarm eşikleri (anchor watch vb.); otomatik zaman senkronizasyonu ve GMDSS saatleri için referans.

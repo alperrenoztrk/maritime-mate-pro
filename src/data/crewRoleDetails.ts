@@ -89,7 +89,7 @@ export const crewRoleDetails: Record<string, CrewRoleDetail> = {
       },
       {
         title: "Stowaway, piracy ve security olaylarının yönetimi",
-        description: `Kaçak yolcu (stowaway) tespitinde IMO Resolution A.1117(30) prosedürleri uygulanır: kişisel güvenlik, kimlik tespiti, bayrak/liman devleti ve şirket bildirimi, beyan formları. Piracy/armed robbery riski olan bölgelerde BMP5 (Best Management Practices) uygulanır: citadel hazırlığı, anti-piracy watch, MSCHOA/UKMTO raporlaması. ISPS kapsamında security incident bildirimi de kaptanın görevidir.`
+        description: `Kaçak yolcu (stowaway) tespitinde FAL Konvansiyonu ve IMO Resolution FAL.13(42) kılavuz prosedürleri uygulanır: kişisel güvenlik, kimlik tespiti, bayrak/liman devleti ve şirket bildirimi, beyan formları. Piracy/armed robbery riski olan bölgelerde BMP5 (Best Management Practices) uygulanır: citadel hazırlığı, anti-piracy watch, MSCHOA/UKMTO raporlaması. ISPS kapsamında security incident bildirimi de kaptanın görevidir.`
       },
       {
         title: "Karantina, sağlık beyanı ve liman sağlık prosedürleri",

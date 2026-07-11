@@ -196,7 +196,7 @@ const content: CrewTaskLongForm = {
         {
           subheading: "7.2 Stowaway Report ve bildirim zinciri",
           paragraphs: [
-            `Kaçak yolcu tespitinde IMO Res. A.1117(30) prosedürleri uygulanır. Kaptan; kişinin güvenliğini sağlar, kimlik bilgisini ve buluş koşullarını standart stowaway report formuna işler, bayrak devleti, bir sonraki liman devleti, şirket ve P&I Club'ı bildirir. Stowaway, mürettebata dahil edilmez; ancak insani muamele ve emniyet sağlanır.`,
+            `Kaçak yolcu tespitinde FAL Konvansiyonu ve IMO Res. FAL.13(42) kılavuz prosedürleri uygulanır. Kaptan; kişinin güvenliğini sağlar, kimlik bilgisini ve buluş koşullarını standart stowaway report formuna işler, bayrak devleti, bir sonraki liman devleti, şirket ve P&I Club'ı bildirir. Stowaway, mürettebata dahil edilmez; ancak insani muamele ve emniyet sağlanır.`,
             `Stowaway maliyeti (repatriasyon, fines, detention) genellikle P&I cover kapsamındadır; bu nedenle erken ve eksiksiz bildirim, sigortanın işlemesi için şarttır. Dokümantasyon eksikliği cover'ı tehlikeye atar.`,
           ],
           callouts: [

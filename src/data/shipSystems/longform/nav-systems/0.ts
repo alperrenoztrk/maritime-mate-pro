@@ -32,7 +32,7 @@ const content: ShipSystemLongForm = {
         {
           subheading: "1.2 X-band ve S-band",
           paragraphs: [
-            `X-band (~9 GHz, 3 cm) yüksek çözünürlük ve küçük hedef tespiti sağlar ama yağmurdan etkilenir; SART ve racon tespiti X-band'dedir. S-band (~3 GHz, 10 cm) yağmur/sis içinde daha iyi nüfuz eder ve uzun menzilde kararlıdır. SOLAS, 3000 GT üstü gemilerde biri S-band olmak üzere iki radar ister.`,
+            `X-band (~9 GHz, 3 cm) yüksek çözünürlük ve küçük hedef tespiti sağlar ama yağmurdan etkilenir; SART ve racon tespiti X-band'dedir. S-band (~3 GHz, 10 cm) yağmur/sis içinde daha iyi nüfuz eder ve uzun menzilde kararlıdır. SOLAS V/19, 3000 GT ve üstü gemilerde 9 GHz radara ek olarak ikinci bir radar (3 GHz/S-band veya İdare'nin uygun gördüğü hâllerde ikinci bir 9 GHz/X-band) ister; iki radar birbirinden bağımsız çalışabilmelidir.`,
           ],
           table: {
             headers: ["Özellik", "X-band (3 cm)", "S-band (10 cm)"],

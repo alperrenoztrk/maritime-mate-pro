@@ -776,7 +776,7 @@ export const cargoQuestions: QuizQuestion[] = [
       "W sadece tatlı su içindir"
     ],
     correctAnswer: 1,
-    explanation: "Kışın daha kötü hava nedeniyle ek freeboard istenir; bu yüzden W hattı S'ten daha yukarıdadır (daha az draft).",
+    explanation: "Kışın daha kötü hava nedeniyle ek freeboard istenir; bu yüzden W hattına kadar yüklemede izin verilen draft daha azdır (W işareti bordada S'in altında yer alır).",
     category: "Load Line"
   },
   {

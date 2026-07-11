@@ -3,9 +3,7 @@
 This reference provides an extensive, application-ready breakdown of the International Convention for the Safety of Life at Sea (SOLAS) 2024 Consolidated Edition. Each chapter is expanded with operational expectations, equipment standards, survey implications, and records to streamline implementation in the marine-expert application.
 
 ## Görsel Referanslar – Eğitim ve Uygulama İçin
-- **Filika (totally enclosed lifeboat) hazırlanışı:** ![Filika hazırlanışı](https://upload.wikimedia.org/wikipedia/commons/7/72/Totally_enclosed_lifeboat.jpg)
-- **Can salı konuşlandırma ve toplama:** ![Can salı konuşlandırma](https://upload.wikimedia.org/wikipedia/commons/1/10/Inflatable_life_raft.jpg)
-- **İşaret fişeği/paraşüt rokete örnek:** ![SOLAS işaret fişeği](https://upload.wikimedia.org/wikipedia/commons/4/4c/Parachute_rocket_flare.jpg)
+- Filika (totally enclosed lifeboat), can salı konuşlandırma ve işaret fişeği görselleri için uygulama içi görsel varlıklar (`src/assets/`) kullanılmalıdır; harici bağlantı (hotlink) yerine lisansı doğrulanmış yerel görseller tercih edilir.
 - **Tablo uyum notu:** Aşağıdaki ilgili chapter başlıklarında, SOLAS ve LSA/FSS Code tablosu mantığını taklit eden örnek tablolar yer alır; bunlar uygulamadaki kontrol listeleri ve formlar için kopyala-yapıştır formatındadır.
 
 ## 1. Structure and Applicability – Foundation for the Convention
@@ -86,7 +84,6 @@ This reference provides an extensive, application-ready breakdown of the Interna
 - **Smoke control and pressurization:** Test stairway pressurization fans, smoke curtains, and zoning for atria on passenger ships. Document pressure differentials achieved and any deviations due to weather doors or ventilation balancing.
 
 ### Chapter II-2 Görsel ve Tablo Örnekleri
-- ![Sabit sistemli yangın kabini](https://upload.wikimedia.org/wikipedia/commons/2/2c/Fire_extinguisher_cabinet.jpg)
 
 **Yangın Söndürme ve Algılama Gereklilikleri (örnek tablo):**
 
@@ -116,17 +113,15 @@ This reference provides an extensive, application-ready breakdown of the Interna
 - **Servicing logistics and spares:** Maintain inventory of spare air cylinders for SCBA in lifeboats, spare CO₂ cartridges for inflatable equipment, and spare rations/water in controlled storage to replace items sent ashore for servicing. Include vendor qualification records.
 
 ### Chapter III Görsel ve Tablo Örnekleri
-- ![Filika genel görünümü](https://upload.wikimedia.org/wikipedia/commons/7/72/Totally_enclosed_lifeboat.jpg)
-- ![Can salı konuşlandırma](https://upload.wikimedia.org/wikipedia/commons/1/10/Inflatable_life_raft.jpg)
 
 **Temel Can Kurtarma Dağılımı (örnek tablo):**
 
 | Gereklilik | Asgari Değer | Referans | Notlar |
 | --- | --- | --- | --- |
-| Filika kapasitesi | Gemideki herkes + %10 yedek veya alternatif taraf | SOLAS III/21 | Her iki bordada eşit dağıtım; free-fall için tek taraf kabul edilir |
-| Can salı kapasitesi | Gemideki herkes + filika yedeklemesi | SOLAS III/31 | Hidrostatik serbest bırakma tertibatı, painter > 15 m |
-| İşaret fişeği | 12 paraşüt rokete eşdeğer | SOLAS III/34, LSA Code | Son kullanma tarihleri takip; yangın/kargo alanlarından uzakta |
-| SART/AIS-SART | En az 1 (yolcu gemilerinde 2) | SOLAS V/7, LSA Code | Filika ve köprüde ayrık stowage; batarya testleri kayda |
+| Filika kapasitesi | Yolcu gemisi: her bordada toplam kişi sayısının %50'sini alacak filika; yük gemisi: her bordada toplam kişi sayısının %100'ünü alacak filika | SOLAS III/21 (yolcu), III/31 (yük) | Free-fall filikada kıçta tek filika ile %100 kapasite kabul edilir |
+| Can salı kapasitesi | Toplam kişi sayısını karşılayacak salı; bordadan bordaya kolayca aktarılamıyorsa her bordada %100 | SOLAS III/21.1.4 (yolcu), III/31.1.3-4 (yük) | Hidrostatik serbest bırakma tertibatı (HRU); painter boyu ≥ 10 m + istif-su hattı mesafesi veya 15 m (hangisi büyükse, LSA Code IV/4.1.6) |
+| İşaret fişeği (köprüüstü) | En az 12 paraşüt roket | SOLAS III/6.3, LSA Code III | Son kullanma tarihleri takip; yangın/kargo alanlarından uzakta |
+| SART/AIS-SART | Yolcu gemisi ve ≥500 GT yük gemisi: her bordada 1 (toplam 2); 300–500 GT yük gemisi: 1 | SOLAS III/6.2.2 | Survival craft'a hızla taşınabilecek konumda stowage; batarya testleri kayda |
 
 **Lansman ve Test Periyotları (örnek tablo):**
 

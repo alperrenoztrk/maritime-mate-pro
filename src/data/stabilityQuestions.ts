@@ -19,13 +19,13 @@ export const stabilityQuestions: QuizQuestion[] = [
     id: 2,
     question: "IS Code'a göre GZmax ve açısı için doğru ifade hangisidir?",
     options: [
-      "GZmax ≥ 0.20 m ve ≥ 30°'de meydana gelir",
+      "GZ, 30° veya üzerindeki bir açıda ≥ 0.20 m; GZmax açısı ≥ 25° (tercihen > 30°)",
       "GZmax ≥ 0.10 m ve ≤ 25°'de meydana gelir",
       "GZmax ≥ 0.30 m ve ≤ 20°'de meydana gelir",
       "GZmax değeri açıdan bağımsızdır"
     ],
     correctAnswer: 0,
-    explanation: "GZ maksimumu en az 0.20 m olmalı ve 30° veya daha büyük bir açıda oluşmalıdır.",
+    explanation: "IS Code 2008: doğrultucu kol GZ, 30° veya daha büyük bir meyil açısında en az 0.20 m olmalı; maksimum GZ tercihen 30°'den büyük, her hâlde 25°'den küçük olmayan bir açıda oluşmalıdır.",
     category: "IS Code (2008)"
   },
   {
@@ -140,10 +140,10 @@ export const stabilityQuestions: QuizQuestion[] = [
   },
   {
     id: 13,
-    question: "Yalpa periyodu T ≈ 2π√(k^2/(g·GM)). T = 18 s, k = 5.0 m ise GM yaklaşık kaç m'dir?",
+    question: "Yalpa periyodu T ≈ 2π√(k^2/(g·GM)). T = 18 s, k = 6.3 m ise GM yaklaşık kaç m'dir?",
     options: ["0.40", "0.50", "0.60", "0.70"],
     correctAnswer: 1,
-    explanation: "GM ≈ k^2/(g·(T/2π)^2) = 25/(9.81·(18/6.283)^2) ≈ 0.50 m.",
+    explanation: "GM ≈ k^2/(g·(T/2π)^2) = 6.3²/(9.81·(18/6.283)²) = 39.7/80.5 ≈ 0.50 m.",
     category: "Yalpa (Sayısal)"
   },
   {
@@ -174,13 +174,13 @@ export const stabilityQuestions: QuizQuestion[] = [
     id: 17,
     question: "Parametrik yalpa için zafiyet hangi koşulda artar?",
     options: [
-      "Dalgayla karşılaşma periyodu yalpa doğal periyodunun yaklaşık iki katına yaklaştığında",
+      "Dalgayla karşılaşma periyodu yalpa doğal periyodunun yaklaşık yarısına yaklaştığında",
       "Yalpa doğal periyodu dalga periyodundan bağımsızdır",
       "Kısa gemilerde asla oluşmaz",
       "GM çok büyük olduğunda her zaman artar"
     ],
     correctAnswer: 0,
-    explanation: "Parametrik yalpa, GM'nin periyodik değişimiyle rezonans oluştuğunda (yaklaşık 2:1 ilişki) tetiklenir.",
+    explanation: "Parametrik yalpa, GM'nin dalga geçişiyle periyodik değişimi karşılaşma frekansının yalpa doğal frekansının iki katı olmasıyla (Te ≈ T0/2) rezonansa girdiğinde tetiklenir.",
     category: "Second-Generation IS"
   },
   {
