@@ -6,7 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AlertTriangle, CheckCircle2, Info, Wind } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Info, Waves, Wind } from "lucide-react";
 import * as THREE from "three";
 
 import {
@@ -30,6 +30,8 @@ import { disposeAllShipTextures } from "./sim/proceduralTextures";
 /* ─── helpers ─── */
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
 
+const SEA_STATE_LABELS = ["Sakin", "Hafif", "Az dalgalı", "Dalgalı", "Kaba", "Çok kaba", "Şiddetli"];
+
 /* Vessel is drawn ~2× the visual span the old blob had; scale it down to fit
    the same framing, and record where its keel lands so the K marker sits on it. */
 const SHIP_SCALE = 0.82;
@@ -48,10 +50,23 @@ interface SceneProps {
   onHeelUpdate: (heel: number) => void;
   gm: number;
   bm: number;
+  rollingPeriod: number;
+  seaState: number;
   shipType: ShipType;
 }
 
-function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, gm, bm, shipType }: SceneProps) {
+function StabilityScene({
+  targetHeel,
+  draftOffset,
+  stability,
+  kg,
+  onHeelUpdate,
+  gm,
+  bm,
+  rollingPeriod,
+  seaState,
+  shipType,
+}: SceneProps) {
   const shipGroup = useRef<THREE.Group>(null);
   const heelRef = useRef(0);
   const velocityRef = useRef(0);
@@ -61,9 +76,12 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
   useFrame(({ clock }, delta) => {
     const dt = Math.min(delta, 0.05);
 
-    // Damped harmonic oscillator: θ'' = -ω²(θ - θ_target) - 2ζωθ'
-    const omega = gm > 0 ? Math.sqrt(9.81 * gm) * 0.8 : 1;
-    const zeta = 0.15; // damping ratio (underdamped for realistic roll)
+    // Use the calculated full-scale natural roll period. The previous
+    // sqrt(g·GM) visual shortcut ignored radius of gyration and made a
+    // 190-m ship snap back like a small boat.
+    const period = Number.isFinite(rollingPeriod) && rollingPeriod > 2 ? rollingPeriod : 10;
+    const omega = (Math.PI * 2) / period;
+    const zeta = clamp(0.075 + seaState * 0.008, 0.075, 0.13);
 
     const error = heelRef.current - targetHeel;
     const accel = -omega * omega * error - 2 * zeta * omega * velocityRef.current;
@@ -71,14 +89,28 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
     velocityRef.current += accel * dt;
     heelRef.current += velocityRef.current * dt;
 
+    // Low-amplitude, multi-axis wave response keeps the hull coupled to the
+    // animated sea. Pitch and heave remain deliberately smaller than roll.
+    const sea = clamp(seaState / 6, 0, 1);
+    const t = clock.elapsedTime;
+    const waveRoll =
+      THREE.MathUtils.degToRad(0.08 + sea * 1.15) *
+      (Math.sin(t * omega * 0.96 + 0.4) * 0.72 + Math.sin(t * omega * 1.47) * 0.28);
+    const pitch =
+      THREE.MathUtils.degToRad(0.03 + sea * 0.34) *
+      Math.sin(t * Math.max(0.28, omega * 0.58) + 1.3);
+    const heave = (0.003 + sea * 0.035) * Math.sin(t * Math.max(0.34, omega * 0.72) - 0.8);
+    const visualHeel = heelRef.current + waveRoll;
+
     if (shipGroup.current) {
-      // Heel = roll about the longitudinal (X) axis, so the deck visibly tilts
-      // to port/starboard rather than pitching the bow up and down.
-      shipGroup.current.rotation.x = heelRef.current;
+      // X is the longitudinal roll axis; Z is the transverse pitch axis.
+      shipGroup.current.rotation.x = visualHeel;
+      shipGroup.current.rotation.z = pitch;
+      shipGroup.current.position.y = heave;
     }
 
     if (clock.elapsedTime - lastReport.current > 0.08) {
-      onHeelUpdate(heelRef.current);
+      onHeelUpdate(visualHeel);
       lastReport.current = clock.elapsedTime;
     }
   });
@@ -108,7 +140,7 @@ function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, 
         />
       </group>
 
-      <OceanSurface3D />
+      <OceanSurface3D shipType={shipType} seaState={seaState} />
     </group>
   );
 }
@@ -136,6 +168,7 @@ export const Stability3DSim = () => {
   const [heelAngle, setHeelAngle] = useState(0);
   const [shipType, setShipType] = useState<ShipType>("container");
   const [windMoment, setWindMoment] = useState(0); // external beam-wind heeling moment (t·m)
+  const [seaState, setSeaState] = useState(2);
   const activeShip = shipTypeOptions.find((o) => o.value === shipType);
 
   // Free cached hull geometries + canvas textures when leaving the route.
@@ -235,15 +268,15 @@ export const Stability3DSim = () => {
                   gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
               >
-                <PerspectiveCamera makeDefault position={[7, 4.5, 7]} fov={42} />
+                <PerspectiveCamera makeDefault position={[8.2, 4.8, 8.2]} fov={38} />
                 {/* Let the user orbit / zoom the vessel. Pan is disabled and the
                     polar angle is clamped so the camera can't dip under the sea. */}
                 <OrbitControls
                   enablePan={false}
                   enableDamping
                   dampingFactor={0.08}
-                  minDistance={5}
-                  maxDistance={16}
+                  minDistance={5.8}
+                  maxDistance={18}
                   maxPolarAngle={Math.PI / 2.05}
                   target={[0, 0.2, 0]}
                 />
@@ -255,6 +288,8 @@ export const Stability3DSim = () => {
                   onHeelUpdate={handleHeelUpdate}
                   gm={stability.gm}
                   bm={stability.bm}
+                  rollingPeriod={rollingPeriod}
+                  seaState={seaState}
                   shipType={shipType}
                 />
               </Canvas>
@@ -281,6 +316,7 @@ export const Stability3DSim = () => {
               />
               <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : "∞"} s`} />
               <Row label="Rüzgâr" value={windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m` : "—"} />
+              <Row label="Deniz" value={SEA_STATE_LABELS[seaState]} />
             </div>
           </div>
 
@@ -337,6 +373,26 @@ export const Stability3DSim = () => {
             Yandan esen rüzgârın devirme momenti. Denge meyli, doğrultma momenti Δ·GZ(φ)'ye eşitlenerek çözülür.
             Yüksek KG → düşük GM → aynı rüzgârda daha büyük meyil.
           </p>
+
+          <div className="mt-3 border-t border-sky-500/20 pt-3">
+            <Label className="mb-1.5 flex items-center justify-between text-xs">
+              <span className="flex items-center gap-1.5 font-semibold text-sky-600 dark:text-sky-300">
+                <Waves className="h-3.5 w-3.5" />
+                Deniz durumu
+              </span>
+              <span className="font-mono">{seaState} · {SEA_STATE_LABELS[seaState]}</span>
+            </Label>
+            <Slider
+              value={[seaState]}
+              min={0}
+              max={6}
+              step={1}
+              onValueChange={(v) => setSeaState(v[0])}
+            />
+            <p className="mt-1 text-[10px] text-muted-foreground">
+              Görsel dalga, yalpa, baş-kıç vurma ve düşey hareket şiddetini birlikte değiştirir.
+            </p>
+          </div>
         </div>
 
         {/* Sliders */}
@@ -399,7 +455,7 @@ export const Stability3DSim = () => {
           <div className="font-mono text-primary text-xs">KB ≈ ⅓(5T/2 − ∇/Awp)</div>
           <p className="mt-1 text-[10px]">
             Wall-sided formül büyük açılarda (φ &gt; 15°) doğrusal yaklaşıma göre çok daha doğru sonuç verir.
-            Yalpa hareketi sönümlü harmonik osilatör (ζ = 0.15) ile modellenir.
+            Yalpa hareketi, hesaplanan doğal yalpa periyodunu kullanan sönümlü harmonik osilatörle modellenir.
           </p>
         </div>
       </CardContent>
@@ -490,3 +546,4 @@ function SliderControl({
 }
 
 export default Stability3DSim;
+
