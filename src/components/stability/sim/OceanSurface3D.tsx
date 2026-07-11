@@ -7,11 +7,16 @@ import { getFoamAlphaTexture, getWaterNormalTexture } from "./proceduralTextures
  * Open-sea surface for the stability sim.
  *
  * The main surface uses a GPU Gerstner-wave sum with analytic normals, keeping
- * full PBR reflections and fog at zero per-frame CPU geometry cost. The former
- * uniform foam ring has been replaced by three physically legible layers:
- * narrow hull-contact ribbons, a bow pressure wave and a widening stern wake.
- * This removes the "ship sitting on a flat disc" look while remaining fully
- * procedural and offline-safe inside Capacitor WebViews.
+ * full PBR reflections and fog at zero per-frame CPU geometry cost. Swell is
+ * damped inside a hull-hugging ELLIPSE (not the old wide circular disc) and a
+ * fraction of the motion is retained right at the plating, so the sea stays
+ * alive against the hull without destabilising the waterline.
+ *
+ * Ship/water contact is three physically legible layers instead of a uniform
+ * foam ring: narrow hull-contact ribbons following the actual waterline
+ * outline, a bow pressure wave and a widening V-shaped stern wake. All three
+ * live in one heel-tracking group — pass `heelRef` and they shift leeward and
+ * fade with the true heeled waterline. Fully procedural, offline-safe.
  */
 
 const USE_GPU_WAVES = true;
@@ -51,11 +56,13 @@ vec3 gerstnerWave(vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal, fl
 `;
 
 // Plane is authored in local XY (rotated -90° about X in the scene), so local
-// z is world up. A small amount of wave energy is retained around the hull.
+// z is world up and local xy = (world x, -world z). The damp ellipse hugs the
+// hull footprint; 30% of the wave energy is kept alive at the plating.
 const gerstnerVertex = /* glsl */ `
   float oceanDist = length(position.xy);
-  float nearHullMotion = mix(0.22, 1.0, smoothstep(2.4, 8.5, oceanDist));
-  float horizonFlatten = 1.0 - smoothstep(17.0, 29.0, oceanDist);
+  float hullDist = length(vec2(position.x / 3.4, position.y / 1.35));
+  float nearHullMotion = mix(0.3, 1.0, smoothstep(0.95, 2.1, hullDist));
+  float horizonFlatten = 1.0 - smoothstep(16.0, 28.0, oceanDist);
   float oceanDamp = nearHullMotion * horizonFlatten;
   vec3 oceanTangent = vec3(1.0, 0.0, 0.0);
   vec3 oceanBinormal = vec3(0.0, 1.0, 0.0);
@@ -179,8 +186,14 @@ function buildHullFoamRibbon(side: 1 | -1): THREE.BufferGeometry {
   return geometry;
 }
 
-export function OceanSurface3D() {
+interface OceanSurface3DProps {
+  /** Live heel angle (radians) — contact foam/wake track the heeled waterline. */
+  heelRef?: React.MutableRefObject<number>;
+}
+
+export function OceanSurface3D({ heelRef }: OceanSurface3DProps) {
   const timeUniform = useRef<{ value: number }>({ value: 0 });
+  const interactionGroup = useRef<THREE.Group>(null);
 
   const normalTex = useMemo(() => {
     const t = getWaterNormalTexture();
@@ -221,7 +234,7 @@ export function OceanSurface3D() {
           )
           .replace("#include <begin_vertex>", "vec3 transformed = vec3(position) + oceanOffset;");
       };
-      mat.customProgramCacheKey = () => "ocean-gerstner-v2";
+      mat.customProgramCacheKey = () => "ocean-gerstner-v3";
     }
     return mat;
   }, [normalTex]);
@@ -277,6 +290,14 @@ export function OceanSurface3D() {
     normalTex.offset.y += delta * 0.006;
     foamTex.offset.x += delta * 0.024;
     foamTex.offset.y += delta * 0.004;
+    // Contact layers track the heeled waterline: shift leeward and fade so
+    // they never argue with the real hull/water intersection at big angles.
+    const heel = heelRef?.current ?? 0;
+    if (interactionGroup.current) interactionGroup.current.position.z = -Math.sin(heel) * 0.32;
+    const heelFade = Math.min(Math.abs(heel) / 0.44, 1);
+    foamMaterial.opacity = 0.78 - 0.38 * heelFade;
+    wakeMaterial.opacity = 0.58 - 0.2 * heelFade;
+    bowWaveMaterial.opacity = 0.64 - 0.24 * heelFade;
   });
 
   useEffect(
@@ -292,7 +313,8 @@ export function OceanSurface3D() {
       bowWaveMaterial.dispose();
       wakeTex.dispose();
       bowWaveTex.dispose();
-    }, [
+    },
+    [
       geometry,
       material,
       portFoamGeometry,
@@ -311,27 +333,29 @@ export function OceanSurface3D() {
     <group>
       <mesh rotation={[-Math.PI / 2, 0, 0]} geometry={geometry} material={material} receiveShadow />
 
-      {/* Narrow, irregular contact foam follows the actual visual waterline
-          instead of forming a perfect ellipse around the ship. */}
-      <mesh geometry={portFoamGeometry} material={foamMaterial} renderOrder={2} />
-      <mesh geometry={starboardFoamGeometry} material={foamMaterial} renderOrder={2} />
+      <group ref={interactionGroup}>
+        {/* Narrow, irregular contact foam follows the actual visual waterline
+            instead of forming a perfect ellipse around the ship. */}
+        <mesh geometry={portFoamGeometry} material={foamMaterial} renderOrder={2} />
+        <mesh geometry={starboardFoamGeometry} material={foamMaterial} renderOrder={2} />
 
-      {/* Bow pressure wave and a restrained V-shaped stern wake. Both are flat,
-          transparent overlays, so the GPU cost stays negligible on mobile. */}
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[3.1, 0.026, 0]}
-        geometry={bowWaveGeometry}
-        material={bowWaveMaterial}
-        renderOrder={2}
-      />
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[-5.0, 0.024, 0]}
-        geometry={wakeGeometry}
-        material={wakeMaterial}
-        renderOrder={2}
-      />
+        {/* Bow pressure wave and a restrained V-shaped stern wake. Both are flat,
+            transparent overlays, so the GPU cost stays negligible on mobile. */}
+        <mesh
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[3.1, 0.026, 0]}
+          geometry={bowWaveGeometry}
+          material={bowWaveMaterial}
+          renderOrder={2}
+        />
+        <mesh
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[-5.0, 0.024, 0]}
+          geometry={wakeGeometry}
+          material={wakeMaterial}
+          renderOrder={2}
+        />
+      </group>
     </group>
   );
 }

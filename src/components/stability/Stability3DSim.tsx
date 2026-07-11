@@ -1,5 +1,5 @@
-import { Component, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Component, Suspense, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -17,101 +17,20 @@ import {
   calculateDeckImmersionAngle,
   solveHeelAngle,
   type ShipState,
-  type StabilityResult,
   type IMOCompliance,
 } from "./sim/StabilityPhysics";
-import { ShipModel3D, shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
+import { shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
-import { OceanSurface3D } from "./sim/OceanSurface3D";
-import { SceneEnvironment } from "./sim/SceneEnvironment";
+import { ShipScene3D, keelWorldY } from "./sim/ShipScene3D";
 import { disposeHullGeometries } from "./sim/hullGeometry";
 import { disposeAllShipTextures } from "./sim/proceduralTextures";
 
 /* ─── helpers ─── */
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
 
-/* Vessel is drawn ~2× the visual span the old blob had; scale it down to fit
-   the same framing, and record where its keel lands so the K marker sits on it. */
-const SHIP_SCALE = 0.82;
-/* ShipModel3D keel is at local y ≈ -0.7 (see its comment); scaled world keel: */
-const SHIP_KEEL_Y = -0.7 * SHIP_SCALE;
 /* Compress the real KM (~18 m) into the vessel's visual height so K/B/G/M read
    as a proportionate stack instead of floating far above the deck. */
 const MARKER_VSCALE = 0.12;
-
-/* ─── 3-D scene ─── */
-interface SceneProps {
-  targetHeel: number;
-  draftOffset: number;
-  stability: StabilityResult;
-  kg: number;
-  onHeelUpdate: (heel: number) => void;
-  gm: number;
-  bm: number;
-  shipType: ShipType;
-}
-
-function StabilityScene({ targetHeel, draftOffset, stability, kg, onHeelUpdate, gm, bm, shipType }: SceneProps) {
-  const shipGroup = useRef<THREE.Group>(null);
-  const heelRef = useRef(0);
-  const velocityRef = useRef(0);
-  const lastReport = useRef(0);
-
-  // Dynamic rolling with damped spring physics
-  useFrame(({ clock }, delta) => {
-    const dt = Math.min(delta, 0.05);
-
-    // Damped harmonic oscillator: θ'' = -ω²(θ - θ_target) - 2ζωθ'
-    const omega = gm > 0 ? Math.sqrt(9.81 * gm) * 0.8 : 1;
-    const zeta = 0.15; // damping ratio (underdamped for realistic roll)
-
-    const error = heelRef.current - targetHeel;
-    const accel = -omega * omega * error - 2 * zeta * omega * velocityRef.current;
-
-    velocityRef.current += accel * dt;
-    heelRef.current += velocityRef.current * dt;
-
-    if (shipGroup.current) {
-      // Heel = roll about the longitudinal (X) axis, so the deck visibly tilts
-      // to port/starboard rather than pitching the bow up and down.
-      shipGroup.current.rotation.x = heelRef.current;
-    }
-
-    if (clock.elapsedTime - lastReport.current > 0.08) {
-      onHeelUpdate(heelRef.current);
-      lastReport.current = clock.elapsedTime;
-    }
-  });
-
-  const keelY = SHIP_KEEL_Y - draftOffset * 0.5;
-
-  return (
-    <group>
-      {/* Sky, fog, IBL environment (bundled HDR with a procedural fallback —
-          still fully offline / Capacitor-safe) and the single shadow sun. */}
-      <SceneEnvironment />
-
-      {/* Ship group - heels about the waterline */}
-      <group ref={shipGroup}>
-        <group position={[0, -draftOffset * 0.5, 0]}>
-          <ShipModel3D shipType={shipType} scale={SHIP_SCALE} />
-        </group>
-        {/* Stability reference points */}
-        <StabilityMarkers
-          kY={keelY}
-          kb={stability.kb}
-          kg={kg}
-          km={stability.km}
-          heelAngle={heelRef.current}
-          gz={calculateGZ(gm, bm, heelRef.current)}
-          vScale={MARKER_VSCALE}
-        />
-      </group>
-
-      <OceanSurface3D />
-    </group>
-  );
-}
 
 /* ─── IMO compliance badge ─── */
 function IMOBadge({ label, ok }: { label: string; ok: boolean }) {
@@ -178,7 +97,11 @@ export const Stability3DSim = () => {
     [stability, heelingMoment]
   );
 
-  const draftOffset = useMemo(() => clamp((draftInput - 6.5) * 0.06, -0.15, 0.25), [draftInput]);
+  // Roll spring stiffness follows GM (stiff ship rolls fast), clamped sane.
+  const rollDynamics = useMemo(
+    () => ({ omega: clamp(Math.sqrt(9.81 * Math.max(stability.gm, 0.05)) * 0.8, 0.6, 4), zeta: 0.15 }),
+    [stability.gm]
+  );
   const gz = useMemo(() => calculateGZ(stability.gm, stability.bm, heelAngle), [stability, heelAngle]);
   const heelDeg = THREE.MathUtils.radToDeg(heelAngle);
   const absHeel = Math.abs(heelDeg);
@@ -247,16 +170,23 @@ export const Stability3DSim = () => {
                   maxPolarAngle={Math.PI / 2.05}
                   target={[0, 0.2, 0]}
                 />
-                <StabilityScene
-                  targetHeel={targetHeel}
-                  draftOffset={draftOffset}
-                  stability={stability}
-                  kg={kgInput}
-                  onHeelUpdate={handleHeelUpdate}
-                  gm={stability.gm}
-                  bm={stability.bm}
+                <ShipScene3D
                   shipType={shipType}
-                />
+                  heelRad={targetHeel}
+                  draftM={draftInput}
+                  rollDynamics={rollDynamics}
+                  onHeelUpdate={handleHeelUpdate}
+                >
+                  <StabilityMarkers
+                    kY={keelWorldY(draftInput)}
+                    kb={stability.kb}
+                    kg={kgInput}
+                    km={stability.km}
+                    heelAngle={heelAngle}
+                    gz={gz}
+                    vScale={MARKER_VSCALE}
+                  />
+                </ShipScene3D>
               </Canvas>
             </Suspense>
           </SimErrorBoundary>
