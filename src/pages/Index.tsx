@@ -130,17 +130,17 @@ const Index = () => {
         aria-label="Mariner's Book"
       >
         {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(2rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <NewsPanel />
         </section>
 
         {/* CENTER — Icon launcher */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col justify-start overflow-y-auto px-2 pt-[max(11rem,calc(env(safe-area-inset-top)+10rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col justify-start overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(3rem,env(safe-area-inset-top))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <HomeWidgetGrid />
         </section>
       </main>
