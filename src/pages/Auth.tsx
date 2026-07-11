@@ -98,7 +98,7 @@ const Auth = () => {
             </div>
           </div>
           <CardTitle className="text-2xl">Marine Expert Pro</CardTitle>
-          <CardDescription>Hesabınıza giriş yapın veya yeni bir hesap oluşturun</CardDescription>
+          <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <Button
