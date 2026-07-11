@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { ShipConfig, ShipType } from "./ShipModel3D";
 import { deckHalfBeamAt, deckYAt, sampleSheerLine } from "./hullGeometry";
+import { FunnelExhaust } from "./FunnelExhaust";
 
 /**
  * Type-specific deck equipment for the sim vessel. Everything static is
@@ -257,6 +258,7 @@ export function ShipDetails({ type, cfg }: { type: ShipType; cfg: ShipConfig }) 
         </mesh>
       ))}
       <RadarMast position={[cfg.bridgePos[0], cfg.bridgePos[1] + 0.24, 0]} />
+      <FunnelExhaust position={cfg.funnelPos} type={type} />
     </group>
   );
 }
