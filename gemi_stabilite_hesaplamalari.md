@@ -15,12 +15,16 @@ GM = KM - KG
 
 ### Alternatif Formül:
 ```
-GM = (I/∇) - KG
+GM = KB + BM - KG = KB + (I/∇) - KG
 ```
 
 **Açıklama:**
+- **KB** = Keel'den yüzdürme merkezi B'ye mesafe
+- **BM** = Metasentrik yarıçap (BM = I/∇)
 - **I** = Su hattı alanının enine atalet momenti
 - **∇ (Nabla)** = Su altı hacmi (deplasman hacmi)
+
+> Not: KM = KB + BM olduğundan bu formül, ana formül (GM = KM − KG) ile aynıdır.
 
 ---
 
@@ -283,7 +287,7 @@ FWA = \frac{\Delta}{4 \times TPC}
 
 ## 14. SOLAS Stabilite Kriterleri
 
-### Kümelenme Açısı
+### Tahıl Kayması Meyil Açısı (Grain Heel)
 
 \[
 \theta = \frac{57.3 \times GHM}{\Delta \times GM}
@@ -294,6 +298,8 @@ FWA = \frac{\Delta}{4 \times TPC}
 \[
 GHM = \frac{VHM}{SF}
 \]
+
+**Açıklama:** VHM hacimsel kayma momenti (m⁴), SF istif faktörü (m³/t), GHM tahıl kayma momentidir (t·m).
 
 ### GZ Kolu (KN Eğrileri)
 
@@ -314,20 +320,26 @@ GZ = KN - KG \cdot \sin \theta
 ### Serbest Yüzey Momenti
 
 \[
-GG_1 = \frac{L \times B^3}{12} \times \frac{V \times \rho_{sıvı}}{\rho_{deniz}} \times \frac{1}{n^2}
+GG_1 = \frac{l \times b^3}{12 \times \nabla} \times \frac{\rho_{sıvı}}{\rho_{deniz}} \times \frac{1}{n^2}
 \]
+
+**Açıklama:** l ve b tankın boyu/genişliği, ∇ geminin deplasman hacmi, n tankın boyuna bölme (perde) sayısıdır. Boyuna perdeler serbest yüzey etkisini n² oranında azaltır.
 
 ### Yalpa Periyodu
 
 \[
-T = \frac{C_b}{\sqrt{GM}} \times B
+T = \frac{C \times B}{\sqrt{GM}}
 \]
 
-### Yaralı Stabilite
+**Açıklama:** C yalpa katsayısıdır (tipik olarak 0.7–0.8; blok katsayısı C_b ile karıştırılmamalıdır). IMO hava kriterinde C = 0.373 + 0.023(B/d) − 0.043(L_{wl}/100) olarak hesaplanır.
+
+### Yaralı Stabilite (Kaybolan Sepiye Yöntemi — Paralel Batma)
 
 \[
-\Delta T = \frac{w}{(L \times B) - (L_{yaralı} \times B)}
+\Delta T = \frac{v}{A_{su hattı} - a_{yaralı}}
 \]
+
+**Açıklama:** v yaralanan kompartımana giren su hacmi, A su hattı alanı, a yaralı kompartımanın su hattı alanıdır.
 
 ---
 

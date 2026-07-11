@@ -1,5 +1,20 @@
 # Mariners Book — Akademik İçerik Tam Tarama Raporu
 
+> **DÜZELTME DURUMU (2026-07-11):** Bu rapordaki TÜM bulgular (K-1…K-4, B-1…B-4, M-1, M-2 ve ölü görsel bağlantıları) düzeltilmiştir. Ek olarak ikinci tur derin taramada soru bankalarında tespit edilen hatalar da giderilmiştir:
+> - `navigationQuestions.ts`: 17 soruda yanlış cevap/çelişkili açıklama düzeltildi (S8 pusula dönüşümü, S36, S50, S51 deviasyon işareti, S57, S59, S60, S61, S63 cayro hata yönü, S64, S73 akıntı üçgeni, S74 radar ufku, S75, S77 görünen rüzgâr, S78 AIS aralığı, S81 ENC güncelleme, S84 GMDSS A2, S89).
+> - `stabilityQuestions.ts`: S2 kriter ifadesi, S13 sayısal tutarsızlık (k=6.3 m yapıldı), S17 parametrik yalpa ilişkisi (Te ≈ T0/2) düzeltildi.
+> - `cargoQuestions.ts`: S71 kış yük hattı açıklaması düzeltildi (W işareti bordada S'in altındadır).
+> - `machineQuizData1.ts`: durum postulası ifadesi ("basit sıkıştırılabilir sistem") düzeltildi.
+> - `machineQuizData2.ts`: ICCP tanımı "katodik koruma" olarak düzeltildi.
+> - `gemi_stabilite_hesaplamalari.md`: GM formülüne KB eklendi; serbest yüzey momenti, yalpa periyodu (C katsayısı) ve yaralı stabilite formülleri düzeltildi; "Kümelenme Açısı" → "Tahıl Kayması Meyil Açısı".
+> - `HYDROSTATIC_CALCULATIONS.md`: KM/GM tanımları, VCF kaldırıldı, heave doğal periyodu ve GZ kriteri netleştirildi.
+> - `docs/stabilite.md`: kontrol teorisi içeriği kaldırılıp gemi stabilitesi içeriğiyle (kaynakçalı) yeniden yazıldı.
+> - `crewRoleDetails.ts`, `crewTasks/kaptan/7.ts`, `crewTasks/kaptan/16.ts`: A.1117(30) atıfları FAL.13(42)/FAL Convention olarak düzeltildi.
+> - `docs/solas_2024_consolidated_summary.md`: SART/filika/can salı/işaret fişeği referans ve değerleri düzeltildi; 4 ölü Wikimedia görseli kaldırıldı.
+> - `navigationTopicContents.ts`: 19 ölü/erişime kapalı görsel bağlantısı ve 2 researchgate görsel alanı kaldırıldı.
+> - Meteoroloji, çevre, emniyet, gemicilik, haberleşme, ekonomi, makine bankaları ve machineQuizData3/4/5 tam olarak doğrulandı — hata bulunmadı.
+> Doğrulama: `tsc --noEmit` temiz.
+
 **Tarih:** 2026-07-11
 **Kapsam:** Uygulamadaki tüm eğitim/konu anlatımı yazıları (docs/, kök dizin *.md, src/data/)
 **Metodoloji:** [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) deposunda tanımlanan akademik inceleme standartları esas alınmıştır:

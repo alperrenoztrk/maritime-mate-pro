@@ -23,22 +23,21 @@ Sistem aşağıdaki ana hesaplama kategorilerini içerir:
 
 #### Merkez Noktaları
 - **LCB**: Boyuna yüzdürme merkezi
-- **VCB**: Dikey yüzdürme merkezi
-- **LCF**: Boyuna yüzme merkezi
-- **VCF**: Dikey yüzme merkezi
-- **KB**: Yüzdürme merkezi (keel'den yükseklik)
-- **KM**: Metasentrik yükseklik
-- **BM**: Metasentrik yarıçap
-- **KG**: Ağırlık merkezi (keel'den yükseklik)
-- **GM**: Metasentrik yükseklik
+- **VCB**: Dikey yüzdürme merkezi (KB ile aynı büyüklük)
+- **LCF**: Boyuna yüzme merkezi (su hattı alanının ağırlık merkezi)
+- **KB**: Yüzdürme merkezinin omurgadan (keel) yüksekliği
+- **KM**: Metasantrın omurgadan yüksekliği (KM = KB + BM)
+- **BM**: Metasentrik yarıçap (BM = I/∇)
+- **KG**: Ağırlık merkezinin omurgadan yüksekliği
+- **GM**: Metasentrik yükseklik (GM = KM − KG)
 
 #### Hidrostatik Katsayılar
 - **TPC**: Santimetre başına ton
 - **MCT 1cm (veya MTC 1cm)**: 1 cm trim değiştiren moment
 - **LCF**: Boyuna yüzme merkezi
 - **WPA**: Su hattı alanı
-- **KB**: Yüzdürme merkezi
-- **KM**: Metasentrik yükseklik
+- **KB**: Yüzdürme merkezinin omurgadan yüksekliği
+- **KM**: Metasantrın omurgadan yüksekliği
 - **BM**: Metasentrik yarıçap
 
 #### Bonjean Eğrileri ve Kesit Alanları
@@ -230,16 +229,16 @@ const analysis = HydrostaticCalculations.performStabilityAnalysis(
 1. **GZ (Küçük Açılar)**: GZ = GM × sin(φ)
 2. **GZ (Büyük Açılar)**: GZ(φ) = KN(φ) − KG · sin(φ)  *(KN: çapraz eğriler / hidrostatik tablolardan)*
 3. **Dikleştirme Momenti**: RM = Δ × GZ  *(Δ ton ise ton·m; kN·m istenirse g ve birim dönüşümü açıkça tanımlanmalı)*
-4. **Yalpa Periyodu**: T = 2π × k / √(GM × g)
-5. **Doğal Periyot**: Tn = 2π × √(D / g)
+4. **Yalpa Periyodu**: T = 2π × k / √(GM × g)  *(k: enine jirasyon yarıçapı)*
+5. **Dalıp-Çıkma (Heave) Doğal Periyodu**: Tn ≈ 2π × √(T / g)  *(T: draft; blok formlu tekne yaklaşımı, ek su kütlesi ihmal edilmiştir)*
 
 ### IMO Kriterleri
 
 1. **0-30° Alan**: ≥ 0.055 m-rad
 2. **0-40° Alan**: ≥ 0.090 m-rad
 3. **30-40° Alan**: ≥ 0.030 m-rad
-4. **Maksimum GZ**: ≥ 0.20 m
-5. **Başlangıç GM**: ≥ 0.15 m
+4. **GZ Değeri**: θ ≥ 30° açıda GZ ≥ 0.20 m (maksimum GZ tercihen ≥ 30°, en az 25° açıda oluşmalı)
+5. **Başlangıç GM**: ≥ 0.15 m (serbest yüzey düzeltmeli)
 
 ## Validasyon
 

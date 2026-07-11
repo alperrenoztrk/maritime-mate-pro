@@ -36,7 +36,7 @@ export const stabilityTopicsData: StabilityTopic[] = [
 **Stabilite Nedir?**
 Gemi stabilitesi, bir geminin dış etkilerle (rüzgâr, dalga, yük kayması, manevra, çarpışma, ani dönüş vb.) yatma veya eğilme hareketine maruz kaldıktan sonra tekrar ilk denge konumuna dönebilme kabiliyetini ifade eder.
 
-Bir başka ifade ile stabilite, geminin dengesinin bozulmasına neden olan etkiler ortadan kalktığında, geminin eski durumuna dönmeye karşı gösterdiği direncin ölçüsüdür. Bu direnç, geminin geometrik özellikleri, yük dağılımı ve hidrostatik özellikleri ile doğrudan ilişkilidir.
+Bir başka ifade ile stabilite, geminin dengesinin bozulmasına neden olan etkiler ortadan kalktığında, geminin eski denge durumuna dönme eğiliminin (yatmaya karşı gösterdiği direncin) ölçüsüdür. Bu yetenek, geminin geometrik özellikleri, yük dağılımı ve hidrostatik özellikleri ile doğrudan ilişkilidir.
 
 **Stabilitenin Fiziksel Temeli**
 Stabilitenin fiziksel temeli, Arşimet prensibine ve kuvvet dengesi ilkelerine dayanır. Bir gemi suya konulduğunda:

@@ -5,9 +5,9 @@ const content: CrewTaskLongForm = {
   roleSlug: "kaptan",
   taskIndex: 16,
   estimatedPages: 25,
-  intro: `Kaçak yolcu (stowaway), korsanlık/silahlı soygun (piracy/armed robbery) ve diğer güvenlik olayları; insani, hukuki ve emniyet boyutları olan karmaşık durumlardır. Kaptan; stowaway tespitinde IMO Resolution A.1117(30) prosedürlerini, korsanlık riskinde BMP (Best Management Practices) tedbirlerini ve ISPS kapsamında güvenlik olay bildirimini yönetir. Bu bölüm, bu güvenlik olaylarının yönetimini insan hayatı ve mevzuat dengesinde ele alır.`,
+  intro: `Kaçak yolcu (stowaway), korsanlık/silahlı soygun (piracy/armed robbery) ve diğer güvenlik olayları; insani, hukuki ve emniyet boyutları olan karmaşık durumlardır. Kaptan; stowaway tespitinde FAL Konvansiyonu ve IMO Resolution FAL.13(42) kılavuz prosedürlerini, korsanlık riskinde BMP (Best Management Practices) tedbirlerini ve ISPS kapsamında güvenlik olay bildirimini yönetir. Bu bölüm, bu güvenlik olaylarının yönetimini insan hayatı ve mevzuat dengesinde ele alır.`,
   sources: [
-    "IMO Resolution A.1117(30) — stowaways prosedürleri",
+    "IMO Resolution FAL.13(42) ve FAL Convention — stowaway prosedürleri",
     "BMP5 — Best Management Practices to Deter Piracy",
     "ISPS Code — gemi güvenlik planı ve olay bildirimi",
     "SOLAS Chapter XI-2 — maritime security",
@@ -26,7 +26,7 @@ const content: CrewTaskLongForm = {
           callouts: [
             {
               type: "regulation",
-              title: "IMO Res. A.1117(30)",
+              title: "IMO Res. FAL.13(42) / FAL Convention",
               text: `Stowaway olaylarında bayrak devleti, biniş limanı, sonraki uğrak limanları, gemi sahibi/işleteni ve ISM şirketi bilgilendirilir; kimlik tespiti ve beyan formları doldurulur. Süreç insani ilkeler ve ilgili devletlerin işbirliğiyle yürütülür.`,
             },
           ],

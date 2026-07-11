@@ -62,8 +62,8 @@ export const navigationQuestions: QuizQuestion[] = [
     id: 8,
     question: "Pusula kerteriziniz 062°C, sapma (deviation) +2°, manyetik sapma (variation) -4° ise manyetik kerteriz kaçtır?",
     options: ["064°M", "060°M", "058°M", "066°M"],
-    correctAnswer: 1,
-    explanation: "C → M: Önce deviation düzelt: 062°C +2° = 064°PSC. Variation -4° (W) olduğundan M = 064° − 4° = 060°M.",
+    correctAnswer: 0,
+    explanation: "C → M dönüşümünde yalnız deviation uygulanır: 062°C + 2° = 064°M. (Variation M → T geçişinde kullanılır: 064° − 4° = 060°T.)",
     category: "Pusula"
   },
   {
@@ -284,10 +284,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 36,
-    question: "1 saat 18 kn, set 270° 2 kn. Net batı bileşeni kaç NM?",
+    question: "Rota 270° ile 1 saat 18 kn seyredildi; akıntı seti 090°, drift 2 kn. Net batı bileşeni kaç NM?",
     options: ["16", "18", "20", "22"],
     correctAnswer: 0,
-    explanation: "Batıya 18 − 2 = 16 NM (batı seti karşıdan kabul).",
+    explanation: "Gemi batıya 18 NM ilerler; set 090° (doğuya) 2 NM geri sürükler: 18 − 2 = 16 NM.",
     category: "Akıntı"
   },
   {
@@ -396,19 +396,19 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 50,
-    question: "COG 090°, SOG 15 kn ile 4 saat giderseniz boylam değişimi yaklaşık kaç derecedir? (Enlem orta enlemler, Mercator basit)",
+    question: "60°N enleminde COG 090°, SOG 15 kn ile 4 saat giderseniz boylam değişimi yaklaşık kaç derecedir?",
     options: ["1°", "2°", "3°", "4°"],
-    correctAnswer: 2,
-    explanation: "Yol = 60 NM; 1° boylam mesafesi enlem cosφ ile değişir. Orta enlemlerde ~20 NM/° varsayarsak 60/20≈3°. Basitleştirilmiş kabul.",
+    correctAnswer: 1,
+    explanation: "Yol = 15 × 4 = 60 NM (departure). 1° boylam = 60 × cos(60°) = 30 NM olduğundan DLong = 60/30 = 2°.",
     category: "Enlem-Boylam"
   },
   // CHALLENGING USCG LEVEL QUESTIONS START HERE
   {
     id: 51,
-    question: "Geminin rotası 064°T, varyasyon 17°W ve pusula rotası 094°M ise sapma (deviation) ne kadardır?",
+    question: "Geminin rotası 064°T, varyasyon 17°W ve pusula rotası 094°C ise sapma (deviation) ne kadardır?",
     options: ["4°E", "4°W", "13°E", "13°W"],
-    correctAnswer: 2,
-    explanation: "T = M + Var + Dev. 064° = 094° + (-17°) + Dev. Dev = 064° - 077° = -13°E → Pozitif değer olması için +13°E",
+    correctAnswer: 3,
+    explanation: "T = C + Dev + Var ⇒ 064° = 094° + Dev + (−17°) ⇒ Dev = 064° − 077° = −13° ⇒ 13°W.",
     category: "Pusula Hesaplamaları"
   },
   {
@@ -456,7 +456,7 @@ export const navigationQuestions: QuizQuestion[] = [
     question: "Mercator projeksiyonunda iki nokta arası rumb çizgisi rotası ve mesafe nasıl bulunur?",
     options: ["Harita üzerinde düz çizgi", "Büyük daire hesabı", "DLat ve DLong ile", "Gnomonik projeksiyon gerekli"],
     correctAnswer: 2,
-    explanation: "Mercator'da rumb çizgisi düz çizgidir. Rota = arctan(dLong/dLat), mesafe = dLat/cos(rota).",
+    explanation: "Mercator'da rumb çizgisi düz çizgidir. tan(Rota) = DLong / DMP (meridyen parçaları farkı); mesafe = DLat / cos(Rota).",
     category: "Harita Projeksiyonları"
   },
   {
@@ -469,10 +469,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 59,
-    question: "Parallel indexing method kullanılırken radar hedefe 2.0 NM mesafede iken 15° starboard da görünüyor. Risk değerlendirmesi?",
+    question: "Radar hedefi 2.0 NM mesafede, sancak 15°'de ve kerterizi değişmeden yaklaşıyor. Risk değerlendirmesi?",
     options: ["Güvenli geçiş", "Yakın geçiş, takip et", "Çarpışma kursu", "Manevraya gerek yok"],
     correctAnswer: 2,
-    explanation: "Parallel indexing'de hedef radar ekranında sabit açıda kalıyorsa çarpışma kursu vardır. 15° az açı, yüksek risk.",
+    explanation: "Kerteriz değişmeden mesafe azalıyorsa çarpışma kursu vardır (COLREG Kural 7); kısa mesafede yüksek risk.",
     category: "Radar Navigasyon"
   },
   {
@@ -480,15 +480,15 @@ export const navigationQuestions: QuizQuestion[] = [
     question: "Sunrise azimuth 078°, amplitudo 073° gözlenmiş. Magnetic compass sapması (deviation) nedir?",
     options: ["5°E", "5°W", "151°E", "151°W"],
     correctAnswer: 0,
-    explanation: "Deviation = True azimuth - Compass azimuth. Dev = 078° - 073° = 5°E.",
+    explanation: "Pusula hatası = Hakiki azimut − Pusula azimutu = 078° − 073° = +5° = 5°E (varyasyon sıfır kabul edilirse bu değer deviasyondur).",
     category: "Astronomik Pusula Kontrolü"
   },
   {
     id: 61,
-    question: "ARPA sisteminde 5 dakikalık vektör 2 cm ise hedefin hızı ne kadardır? (Ölçek 1 cm = 6 kn)",
+    question: "Radar plotunda hedefin 5 dakikalık hareket vektörü 2 cm ölçülüyor; mesafe ölçeği 1 cm = 1 NM ise hedefin hızı ne kadardır?",
     options: ["6 kn", "12 kn", "24 kn", "30 kn"],
     correctAnswer: 2,
-    explanation: "5 dakikalık vektör için: 2 cm × 6 kn/cm × (60/5) = 2 × 6 × 12 = 144 kn değil, doğru formül: 2 cm × 6 kn/cm × 2 = 24 kn (5 dk için çarpan 2)",
+    explanation: "2 cm × 1 NM/cm = 2 NM / 5 dk. Hız = 2 × (60/5) = 24 kn.",
     category: "ARPA"
   },
   {
@@ -501,15 +501,15 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 63,
-    question: "Local apparent noon'da güneşin bearing'i 178° ise gyro compass hatası ne kadardır?",
+    question: "Kuzey yarımkürede (güneş gözlemcinin güneyinde) local apparent noon'da güneşin gyro kerterizi 178° ise gyro hatası ne kadardır?",
     options: ["2°E", "2°W", "182°E", "182°W"],
-    correctAnswer: 1,
-    explanation: "LAN'da güneş tam güneyde (180°T) olmalı. Gyro error = Gyro - True = 178° - 180° = -2° = 2°W.",
+    correctAnswer: 0,
+    explanation: "LAN'da güneş tam güneyde (180°T) olmalı. Hata = Hakiki − Gyro = 180° − 178° = +2° = 2°E (gyro düşük okuyor; 'compass least, error east').",
     category: "Gyro Compass Kontrolü"
   },
   {
     id: 64,
-    question: "Tidal heights: HW 4.2m at 1430, LW 0.8m at 2045. Saat 1700'de su derinliği yaklaşık kaç metredir?",
+    question: "Tidal heights: HW 4.2m at 1430, LW 0.8m at 2045. Saat 1700'de gelgit yüksekliği yaklaşık kaç metredir?",
     options: ["3.1m", "2.7m", "3.5m", "4.0m"],
     correctAnswer: 0,
     explanation: "Tidal curve rule of twelfths veya cosine rule kullanılır. 1430-1700 = 2.5 saat, tidal range 3.4m, yaklaşık 3.1m.",
@@ -581,26 +581,26 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 73,
-    question: "Current triangle'da set 045°, drift 2.5 kn, ship's heading 000°, speed 10 kn ise track nedir?",
-    options: ["014°", "346°", "045°", "000°"],
+    question: "Current triangle'da set 045°, drift 2.5 kn, ship's heading 000°, speed 10 kn ise track yaklaşık nedir?",
+    options: ["009°", "346°", "045°", "000°"],
     correctAnswer: 0,
-    explanation: "Vector addition: Ship vector + current vector = track vector. Yaklaşık 014° çıkar.",
+    explanation: "Vektör toplamı: Doğu bileşeni = 2.5·sin45° ≈ 1.77 kn, kuzey bileşeni = 10 + 2.5·cos45° ≈ 11.77 kn. Track = arctan(1.77/11.77) ≈ 009°.",
     category: "Current Calculations"
   },
   {
     id: 74,
     question: "Radar ufuk mesafesi 20 NM ise radar anten yüksekliği yaklaşık kaç metredir?",
-    options: ["8 m", "20 m", "30 m", "45 m"],
-    correctAnswer: 2,
-    explanation: "Radar/VHF horizon ≈ 2.23·√h (h metre). 20 = 2.23·√h ⇒ √h ≈ 8.97 ⇒ h ≈ 80.5 m; yalnız kendi anten yüksekliği varsayımıyla d ≈ 2.23·√h olduğu için 20 NM için ~80 m çıkar. Ancak pratikte karşı hedef yüksekliği de katkı verir: d ≈ 2.23(√h₁+√h₂). Hedef ~10 m ise 20 = 2.23(√hr + 3.16) ⇒ √hr ≈ 6.06 ⇒ hr ≈ 36.7 m ≈ 30 m.",
+    options: ["8 m", "20 m", "45 m", "80 m"],
+    correctAnswer: 3,
+    explanation: "Radar ufku d ≈ 2.23·√h (h metre, d NM). 20 = 2.23·√h ⇒ √h ≈ 8.97 ⇒ h ≈ 80 m.",
     category: "Radar Theory"
   },
   {
     id: 75,
-    question: "SOLAS Chapter V navigation equipment requirements hangi boyuttaki gemiler için zorunludur?",
+    question: "SOLAS V/19 kapsamında uluslararası sefer yapan gemilerde AIS taşıma zorunluluğu hangi tonajdan itibaren başlar?",
     options: ["Tüm gemiler", ">300 GT", ">500 GT", ">1600 GT"],
     correctAnswer: 1,
-    explanation: "SOLAS Chapter V navigation requirements genelde 300 GT üzeri gemiler için zorunludur.",
+    explanation: "AIS, uluslararası sefer yapan 300 GT ve üzeri gemiler (ve tüm yolcu gemileri) için zorunludur; SOLAS V/19 donanım gereklilikleri tonaja göre kademelidir.",
     category: "Maritime Regulations"
   },
   {
@@ -614,17 +614,17 @@ export const navigationQuestions: QuizQuestion[] = [
   {
     id: 77,
     question: "True wind speed 25 kn, direction 090°T. Ship heading 045°T, speed 15 kn ise apparent wind nedir?",
-    options: ["18 kn, 063°T", "32 kn, 072°T", "25 kn, 090°T", "40 kn, 045°T"],
+    options: ["18 kn, 063°T", "37 kn, 073°T", "25 kn, 090°T", "40 kn, 045°T"],
     correctAnswer: 1,
-    explanation: "Wind triangle: True wind - ship motion = apparent wind. Vector calculation gerekli, yaklaşık 32 kn, 072°T.",
+    explanation: "Rüzgâr 090°'dan esiyor (vektör: −25E). Gemi hareketi (10.6E, 10.6N); görünen rüzgâr vektörü = gerçek rüzgâr − gemi hızı = (−35.6, −10.6) ⇒ hız √(35.6²+10.6²) ≈ 37 kn, esme yönü ≈ 073°T.",
     category: "Wind Calculations"
   },
   {
     id: 78,
-    question: "AIS Class A transponder güncelleme frequency ne kadardır?",
-    options: ["10 saniye", "2-6 saniye", "30 saniye", "2 dakika"],
+    question: "Seyir hâlindeki bir geminin AIS Class A dinamik veri raporlama aralığı ne kadardır?",
+    options: ["Sabit 10 saniye", "Hıza/dönüşe bağlı 2-10 saniye", "Sabit 30 saniye", "Sabit 2 dakika"],
     correctAnswer: 1,
-    explanation: "AIS Class A: Hıza göre 2-10 saniye arası, genelde yüksek hızda 2-6 saniye güncelleme.",
+    explanation: "AIS Class A seyirde hıza ve rota değişimine bağlı olarak 2-10 saniyede bir rapor verir; demirli/bağlı gemide aralık 3 dakikadır.",
     category: "AIS Technical"
   },
   {
@@ -645,10 +645,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 81,
-    question: "Electronic chart corrections ne sıklıkta yapılmalıdır?",
-    options: ["Haftalık", "Aylık", "Voyage öncesi", "Daily NtM check"],
-    correctAnswer: 3,
-    explanation: "Electronic chart corrections daily Notice to Mariners ile kontrol edilmeli ve güncel tutulmalı.",
+    question: "Resmî ENC güncellemeleri (update service) tipik olarak hangi sıklıkta yayımlanır ve uygulanır?",
+    options: ["Haftalık", "Aylık", "Yılda bir", "Yalnızca sefer öncesi"],
+    correctAnswer: 0,
+    explanation: "ENC güncellemeleri (ör. AVCS/Primar servisleri) haftalık yayımlanır ve alınır alınmaz uygulanır; ayrıca sefer öncesi ve seyirde T&P/NAVAREA uyarıları takip edilir.",
     category: "Chart Corrections"
   },
   {
@@ -670,9 +670,9 @@ export const navigationQuestions: QuizQuestion[] = [
   {
     id: 84,
     question: "GMDSS sea area A2'de hangi communication systems zorunludur?",
-    options: ["Sadece VHF", "VHF + MF", "VHF + INMARSAT", "Tüm sistemler"],
-    correctAnswer: 2,
-    explanation: "GMDSS A2 area: VHF + MF/HF veya VHF + satellite communication (INMARSAT) zorunlu.",
+    options: ["Sadece VHF", "VHF + MF", "Sadece INMARSAT", "Tüm sistemler"],
+    correctAnswer: 1,
+    explanation: "GMDSS A2 alanı: VHF (DSC) donanımına ek olarak MF (DSC) zorunludur; uydu haberleşmesi ek/alternatif işlevler için kullanılabilir.",
     category: "GMDSS"
   },
   {
@@ -710,9 +710,9 @@ export const navigationQuestions: QuizQuestion[] = [
   {
     id: 89,
     question: "Chart datum ve GPS datum farkı pozisyon hatası yaratabilir mi?",
-    options: ["Hayır, aynıdır", "Evet, 100m'ye kadar", "Sadece eski chartlarda", "Teknisyen ayarlar"],
+    options: ["Hayır, aynıdır", "Evet, yüzlerce metreye varabilir", "Sadece eski chartlarda", "Teknisyen ayarlar"],
     correctAnswer: 1,
-    explanation: "Chart datum (genelde local) ile GPS datum (WGS84) farkı önemli pozisyon hatası (100-200m) yaratabilir.",
+    explanation: "Yerel harita datumu ile GPS datumu (WGS84) arasındaki fark, bölgeye göre yüzlerce metreye varan pozisyon hatası yaratabilir; harita üzerindeki datum notu kontrol edilmelidir.",
     category: "Datum Differences"
   },
   {

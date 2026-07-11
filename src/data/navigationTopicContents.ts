@@ -801,8 +801,6 @@ Yerel öğle, Güneş’in gün içindeki yüksekliğinin **maksimum** olduğu a
 **Aşama 3: Zaman farkının açıya çevrilmesi**  
 Dünya 24 saatte 360° döndüğü için zaman doğrudan açıya çevrilebilir. Bu aşamada trigonometrik hesap yoktur; yalnızca **sabit dönüşüm** kullanılır.
 
-![Doğu–batı yorum kuralı](https://www.thestargarden.co.uk/Images/Longitude-time-zones.jpg)
-
 **Aşama 4: Doğu–batı yorumunun yapılması**  
 Yerel olay Greenwich’ten **daha erken** gerçekleşmişse gözlemci **doğu** boylamındadır; **daha geç** gerçekleşmişse **batı** boylamındadır. Bu yorum yapılmadan bulunan açı tek başına anlamlı değildir.
 
@@ -1030,7 +1028,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
 
 ![Düzlem seyir örneği](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
 
-![Kurs ve mesafe ilişkisi](https://cdn.britannica.com/41/2941-004-E9AB5656/triangle-course-aicraft-vector-compass-heading-aircraft.jpg)`,
+`,
         bulletPoints: [
           "Kurs ve mesafe çözümü",
           "Enlem ve boylam değişimi ilişkileri",
@@ -1144,7 +1142,7 @@ Bu sınırlar bilinmeden yapılan her düzlem seyir hesabı, doğru formüller k
 
 ![Orta enlem diyagramı](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
-![Orta enlem üçgeni](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image034.jpg)`,
+`,
         formula: {
           text: "Departure = DLong × cos Ortalama Enlem",
           description: "Departure deniz mili, DLong dakika cinsindedir. Ortalama enlem, başlangıç ve varış enlemlerinin aritmetik ortalamasıdır."
@@ -2157,9 +2155,6 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
         title: "Uydu Geometrisi ve DOP Etkisi",
         content:
           "Uydu geometrisi, hesaplanan konum hatasının büyüklüğünü doğrudan etkiler. HDOP değeri küçüldükçe yatay hata azalır; büyüdükçe hata elipsi genişler. Bu nedenle aynı UERE değeri, farklı HDOP koşullarında farklı doğruluk seviyeleri üretir.",
-        image:
-          "https://www.researchgate.net/publication/335127650/figure/fig5/AS%3A791127594655751%401565630925940/Error-ellipses-calculated-using-DOP-analysis-procedureThe-orientations-of-the-error.png",
-        imageAlt: "DOP analiziyle hata elipsleri ve yönelim"
       },
       {
         title: "Tipik Doğruluk Seviyeleri",
@@ -2196,9 +2191,6 @@ Adım 3: Sonucun hesaplanması
 Yatay hata = 9 m
 
 Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapabileceğini gösterir. Açık denizde bu hata kabul edilebilirken, dar bir kanalda veya yanaşma manevrasında emniyet payını ciddi biçimde azaltır.`,
-        image:
-          "https://www.researchgate.net/publication/275594171/figure/fig2/AS%3A375689560772609%401466582779334/Comparison-of-DGPS-based-KODGIS-NAWGIS-and-embedded-GPS-receiver-positioning-accuracy.png",
-        imageAlt: "GPS doğruluk karşılaştırması grafiği"
       },
       {
         title: "Operasyonel Değerlendirme",
@@ -2418,7 +2410,7 @@ Bu bozulma, seyir açısından bir hata değildir; çünkü denizcilikte alan ka
 
 ![Mercator alan bozulması](/diagrams/navigation/mercator-projection.svg)
 
-![Greenland boyut yanılsaması](https://www.geospatialworld.net/wp-content/uploads/2017/05/Greenland_1.jpg)`
+`
       },
       {
         title: "Mercator Projeksiyonun Seyirdeki Sınırları",
@@ -2521,8 +2513,6 @@ Bu hesaplama, büyük daire geometrisinin küresel üçgen esasına dayandığı
       {
         title: "Küresel Üçgen Yaklaşımı",
         content: `Başlangıç kursu hesabı, Kuzey Kutbu, başlangıç mevkii ve varış mevkiinden oluşan küresel üçgenin çözümüne dayanır. Bu üçgende başlangıç noktasındaki açı, büyük daire başlangıç kursunu verir. Hesaplama tamamen küresel trigonometri esaslıdır ve düzlem seyir bağıntıları bu problemde geçerli değildir.
-
-![Büyük daire başlangıç kursu görseli](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
 
 ![Küresel üçgen şeması](https://www.nosco.ch/mathematics/inc/img/sphericaltriangle.png)`
       },
@@ -2975,7 +2965,7 @@ Harita datum’u ile elektronik sistem datum’u aynı olmalıdır. Aksi hâlde 
 
 ![LOP ve fix açıklaması](https://sailingissues.com/vier/position-fix-lop-explained-3x.png)
 
-![Hata üçgeni örneği](https://www.sailtrain.co.uk/navigation/images/cockedhat.gif)`
+`
       }
     ],
     keyPoints: [
@@ -3010,9 +3000,7 @@ DLat enlem değişimidir ve dakika enlem cinsinden ifade edilir; pratikte 1 daki
       },
       {
         title: "Tip 1: Kurs ve Mesafe Verildiğinde DLat ve Departure Bulma",
-        content: `![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image012.gif)
-
-![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
+        content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 Kurs ve mesafe biliniyorsa, hareketin bileşenleri trigonometrik olarak ayrıştırılır. Mesafe hipotenüstür; DLat kursun kosinüs bileşeni, departure kursun sinüs bileşenidir.
 
@@ -3160,9 +3148,7 @@ Varış boylamı = 027° 19.6′ E`
       },
       {
         title: "Kurs Hesabında Çeyrek Hatasını Sıfırlayan Uygulama",
-        content: `![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
-
-![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_5.jpg)
+        content: `![Image](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_5.jpg)
 
 Tan θ bağıntısı yalnız açının büyüklüğünü verir; hangi yönde olduğuna DLat ve departure karar verir. Bu yüzden kurs çözümünde önce DLat’in kuzey mi güney mi olduğu, departure’ın doğu mu batı mı olduğu netleştirilir. Ardından bulunan açı uygun çeyreğe yerleştirilir. Bu disiplin uygulanmadan yapılan kurs hesapları, sayısal olarak doğru açı üretse bile 180° hatayla yanlış yöne yerleşebilir.`
       }
@@ -3354,9 +3340,7 @@ Bazı problemlerde departure bilinir, DLong istenir. Bu durumda bağıntı ters 
       },
       {
         title: "Klasik Problem: İki Mevkiden Kurs ve Mesafe Öncesi DLat–DLong Çıkarma",
-        content: `![Klasik düzlem seyir örneği](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image039.jpg)
-
-![Koordinat üzerinde ölçüm](https://sailingissues.com/chart-symbols/coordinates-dividers-nautical-chart-3x.png)
+        content: `![Koordinat üzerinde ölçüm](https://sailingissues.com/chart-symbols/coordinates-dividers-nautical-chart-3x.png)
 
 Başlangıç ve varış mevkileri verildiğinde işlem sırası disiplinlidir. Önce DLat ve DLong bulunur. Ardından orta enlem hesaplanır. Sonrasında DLong yardımıyla departure elde edilir. Bu departure, kurs–mesafe hesaplarında kullanılır.
 
@@ -3724,8 +3708,6 @@ Bu sapma, geminin suya göre hareketinin akıntı tarafından yan bileşenle sü
         title: "STW ve SOG Farkı",
         content: `![Akıntının STW ve SOG üzerindeki etkisi](/diagrams/navigation/tide-current.svg)
 
-![SOG vektör diyagramı](https://www.sailtrain.co.uk/navigation/images/sog.gif)
-
 Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyorsa SOG azalır. Çapraz akıntı durumunda SOG yalnızca artıp azalmaktan ibaret değildir; aynı zamanda COG’yi değiştirir.`
       },
       {
@@ -4057,8 +4039,6 @@ Fix by Cross Bearings, klasik seyrüseferde **hızlı, güvenilir ve temel** bir
         content: `![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 ![Image](/diagrams/navigation/duzlem-seyir.svg)
-
-![Image](https://cdn.britannica.com/04/64904-050-D2054D06/cutaway-drawing-latitude-place-longitude-sizes-angles.jpg)
 
 ![Image](https://assets.ltkcontent.com/images/92435/longitude-versus-latitude-earth_7abbbb2796.jpg)
 
@@ -5058,8 +5038,6 @@ Long₂ = 023°21′ E
 
 ![Image](https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/20/2020/07/LIGHT-RECOGNITION.png)
 
-![Image](https://www.sailtrain.co.uk/gps/images/xteclearing.gif)
-
 ---
 
 ### Temel Prensip
@@ -5941,8 +5919,6 @@ Distance Off by Horizontal Angle, klasik seyrüseferde **tek ölçümle mesafe t
 
 ![Image](https://www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-1.png)
 
-![Image](https://www.sailtrain.co.uk/navigation/images/runfix1.gif)
-
 ---
 
 ### Temel Prensip
@@ -6392,8 +6368,6 @@ Mean Latitude Sailing, **basitliği ve hızı** sayesinde klasik seyrüseferin t
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/PLOTTING-SYMBOLS.png?media=1759652400)
 
-![Image](https://cdn.britannica.com/41/2941-004-E9AB5656/triangle-course-aicraft-vector-compass-heading-aircraft.jpg)
-
 ![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Wind_drift.png/250px-Wind_drift.png)
 
 ---
@@ -6603,8 +6577,6 @@ Dead Reckoning ve Estimated Position, klasik seyrüseferde **her an kullanılan*
 
 ![Image](https://sailingissues.com/vier/running-fix-3x.png)
 
-![Image](https://www.sailtrain.co.uk/navigation/images/ctsgroundtrack3.gif)
-
 ---
 
 ### Temel Prensip
@@ -6792,8 +6764,6 @@ Course to Steer, klasik seyrüseferde **akıntının fiilen telafi edildiği**, 
 ![Image](https://astronavigationdemystified.com/wp-content/uploads/2016/09/diag15-mod.jpg)
 
 ![Image](https://marinegyaan.com/wp-content/uploads/2016/09/plane-sailing.jpg)
-
-![Image](https://thenauticalsite.in/NauticalNotes/TerresNav/MyTerrNav-Lesson06-Sailings_files/image036.jpg)
 
 ---
 
@@ -7206,10 +7176,6 @@ Leeway, klasik seyrüseferde **küçük açı** gibi görünmesine rağmen, **uz
       {
         title: "Detaylı Anlatım",
         content: `![Image](https://www.splashmaritime.com.au/Marops/data/text/Navtex/Navplot_files/slide13.JPG)
-
-![Image](https://www.sailtrain.co.uk/navigation/images/opposite.gif)
-
-![Image](https://cdn.britannica.com/42/2942-004-687FE645.gif)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/A-8-1024x576.png?media=1759652400)
 
@@ -7630,8 +7596,6 @@ Inverse Problem of Mean Latitude Sailing, **bilinen iki mevkii arasında rota ve
         content: `![Image](https://i0.wp.com/boatluv.com/wp-content/uploads/2019/08/7_running-fix_boatluv.png?fit=400%2C400&ssl=1)
 
 ![Image](https://usercontent.one/wp/www.getlostpowerboattraining.com/wp-content/uploads/2020/03/Screenshot-2020-03-28-at-14.35.54.png?media=1759652400)
-
-![Image](https://www.sailtrain.co.uk/navigation/images/runningfix1.gif)
 
 ![Image](https://shipsnow.com/images/wiki/criteria/turning-circle.jpg)
 
