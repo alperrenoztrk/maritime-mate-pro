@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { getFoamAlphaTexture, getWaterNormalTexture } from "./proceduralTextures";
+import type { ShipType } from "./ShipModel3D";
+import { shipVisualProfiles } from "./ShipArchitecture";
 
 /**
  * Open-sea surface for the stability sim.
@@ -26,6 +28,7 @@ const WAVES: [number, number, number, number][] = [
 
 const gerstnerChunk = /* glsl */ `
 uniform float uOceanTime;
+uniform float uSeaState;
 
 vec3 gerstnerWave(vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal, float damp) {
   float steepness = wave.z * damp;
@@ -63,6 +66,9 @@ const gerstnerVertex = /* glsl */ `
   oceanOffset += gerstnerWave(vec4(${WAVES[0].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
   oceanOffset += gerstnerWave(vec4(${WAVES[1].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
   oceanOffset += gerstnerWave(vec4(${WAVES[2].join(",")}), position, oceanTangent, oceanBinormal, oceanDamp);
+  oceanOffset *= uSeaState;
+  oceanTangent = vec3(1.0, 0.0, 0.0) + (oceanTangent - vec3(1.0, 0.0, 0.0)) * uSeaState;
+  oceanBinormal = vec3(0.0, 1.0, 0.0) + (oceanBinormal - vec3(0.0, 1.0, 0.0)) * uSeaState;
 `;
 
 function makeWakeTexture(): THREE.CanvasTexture {
@@ -138,7 +144,11 @@ function makeBowWaveTexture(): THREE.CanvasTexture {
   return texture;
 }
 
-function buildHullFoamRibbon(side: 1 | -1): THREE.BufferGeometry {
+function buildHullFoamRibbon(
+  side: 1 | -1,
+  lengthScale: number,
+  beamScale: number
+): THREE.BufferGeometry {
   // World-space approximation of the scaled hull waterline, stern to bow.
   const samples: Array<[number, number]> = [
     [-2.82, 0.3],
@@ -156,9 +166,11 @@ function buildHullFoamRibbon(side: 1 | -1): THREE.BufferGeometry {
   const indices: number[] = [];
 
   samples.forEach(([x, halfBeam], i) => {
-    const inner = side * (halfBeam - width * 0.35);
-    const outer = side * (halfBeam + width);
-    positions.push(x, 0.018, inner, x, 0.022, outer);
+    const scaledX = x * lengthScale;
+    const scaledBeam = halfBeam * beamScale;
+    const inner = side * (scaledBeam - width * 0.35);
+    const outer = side * (scaledBeam + width);
+    positions.push(scaledX, 0.018, inner, scaledX, 0.022, outer);
     const u = i / (samples.length - 1);
     uvs.push(u * 4.5, 0, u * 4.5, 1);
   });
@@ -179,8 +191,21 @@ function buildHullFoamRibbon(side: 1 | -1): THREE.BufferGeometry {
   return geometry;
 }
 
-export function OceanSurface3D() {
+interface OceanSurface3DProps {
+  shipType: ShipType;
+  seaState?: number;
+  speedKnots?: number;
+}
+
+export function OceanSurface3D({ shipType, seaState = 2, speedKnots = 0 }: OceanSurface3DProps) {
   const timeUniform = useRef<{ value: number }>({ value: 0 });
+  const seaStateUniform = useRef<{ value: number }>({ value: 0.69 });
+  const profile = shipVisualProfiles[shipType];
+  const underway = speedKnots > 0.5;
+
+  useEffect(() => {
+    seaStateUniform.current.value = THREE.MathUtils.clamp(0.45 + seaState * 0.12, 0.35, 1.2);
+  }, [seaState]);
 
   const normalTex = useMemo(() => {
     const t = getWaterNormalTexture();
@@ -209,6 +234,7 @@ export function OceanSurface3D() {
     if (USE_GPU_WAVES) {
       mat.onBeforeCompile = (shader) => {
         shader.uniforms.uOceanTime = timeUniform.current;
+        shader.uniforms.uSeaState = seaStateUniform.current;
         shader.vertexShader = shader.vertexShader
           .replace("#include <common>", `#include <common>\n${gerstnerChunk}`)
           .replace(
@@ -221,14 +247,20 @@ export function OceanSurface3D() {
           )
           .replace("#include <begin_vertex>", "vec3 transformed = vec3(position) + oceanOffset;");
       };
-      mat.customProgramCacheKey = () => "ocean-gerstner-v2";
+      mat.customProgramCacheKey = () => "ocean-gerstner-v3";
     }
     return mat;
   }, [normalTex]);
 
   const geometry = useMemo(() => new THREE.PlaneGeometry(70, 70, 96, 96), []);
-  const portFoamGeometry = useMemo(() => buildHullFoamRibbon(-1), []);
-  const starboardFoamGeometry = useMemo(() => buildHullFoamRibbon(1), []);
+  const portFoamGeometry = useMemo(
+    () => buildHullFoamRibbon(-1, profile.lengthScale, profile.beamScale),
+    [profile.lengthScale, profile.beamScale]
+  );
+  const starboardFoamGeometry = useMemo(
+    () => buildHullFoamRibbon(1, profile.lengthScale, profile.beamScale),
+    [profile.lengthScale, profile.beamScale]
+  );
   const wakeGeometry = useMemo(() => new THREE.PlaneGeometry(4.4, 2.05), []);
   const bowWaveGeometry = useMemo(() => new THREE.PlaneGeometry(1.65, 1.55), []);
 
@@ -269,14 +301,20 @@ export function OceanSurface3D() {
     [bowWaveTex]
   );
 
+  useEffect(() => {
+    const normalStrength = 0.22 + seaState * 0.045;
+    material.normalScale.set(normalStrength, normalStrength);
+  }, [material, seaState]);
+
   useFrame(({ clock }, delta) => {
     timeUniform.current.value = clock.getElapsedTime();
     // Independent motion rates prevent the normal detail and foam from locking
     // into the same obvious texture loop.
-    normalTex.offset.x += delta * 0.012;
-    normalTex.offset.y += delta * 0.006;
-    foamTex.offset.x += delta * 0.024;
-    foamTex.offset.y += delta * 0.004;
+    const motion = 0.65 + seaState * 0.12;
+    normalTex.offset.x += delta * 0.012 * motion;
+    normalTex.offset.y += delta * 0.006 * motion;
+    foamTex.offset.x += delta * 0.024 * motion;
+    foamTex.offset.y += delta * 0.004 * motion;
   });
 
   useEffect(
@@ -316,22 +354,27 @@ export function OceanSurface3D() {
       <mesh geometry={portFoamGeometry} material={foamMaterial} renderOrder={2} />
       <mesh geometry={starboardFoamGeometry} material={foamMaterial} renderOrder={2} />
 
-      {/* Bow pressure wave and a restrained V-shaped stern wake. Both are flat,
-          transparent overlays, so the GPU cost stays negligible on mobile. */}
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[3.1, 0.026, 0]}
-        geometry={bowWaveGeometry}
-        material={bowWaveMaterial}
-        renderOrder={2}
-      />
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[-5.0, 0.024, 0]}
-        geometry={wakeGeometry}
-        material={wakeMaterial}
-        renderOrder={2}
-      />
+      {/* Pressure wave and stern wake only exist when the vessel is actually
+          underway. The stability scene defaults to zero speed, avoiding the
+          physically impossible wake that made the stationary ship look fake. */}
+      {underway && (
+        <>
+          <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[3.1 * profile.lengthScale, 0.026, 0]}
+            geometry={bowWaveGeometry}
+            material={bowWaveMaterial}
+            renderOrder={2}
+          />
+          <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[-5.0 * profile.lengthScale, 0.024, 0]}
+            geometry={wakeGeometry}
+            material={wakeMaterial}
+            renderOrder={2}
+          />
+        </>
+      )}
     </group>
   );
 }
