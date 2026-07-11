@@ -92,7 +92,7 @@ function makeSoftSmokeTexture(): THREE.CanvasTexture {
 
 /**
  * Low-cost procedural exhaust plume. The particles are one Points draw call,
- * use a soft radial texture and are repositioned entirely on the GPU scene's
+ * use a soft radial texture and are repositioned entirely on the scene's
  * animation tick. Profiles are deliberately restrained by vessel type so the
  * effect reads as engine exhaust rather than a cartoon smoke trail.
  */
@@ -117,21 +117,31 @@ export function FunnelExhaust({ position, type }: FunnelExhaustProps) {
     return g;
   }, []);
 
+  // Keep one material instance for the component lifetime. Ship-type switches
+  // only mutate its visual parameters, so the shared geometry/texture are not
+  // disposed and recreated while the simulator is running.
   const material = useMemo(
     () =>
       new THREE.PointsMaterial({
-        color: profile.color,
+        color: "#4b5563",
         map: texture,
         transparent: true,
-        opacity: profile.opacity,
+        opacity: 0.2,
         alphaTest: 0.015,
         depthWrite: false,
-        size: profile.size,
+        size: 0.22,
         sizeAttenuation: true,
         blending: THREE.NormalBlending,
       }),
-    [profile, texture]
+    [texture]
   );
+
+  useEffect(() => {
+    material.color.set(profile.color);
+    material.opacity = profile.opacity;
+    material.size = profile.size;
+    material.needsUpdate = true;
+  }, [material, profile]);
 
   useFrame(({ clock }) => {
     const attribute = geometry.getAttribute("position") as THREE.BufferAttribute;
