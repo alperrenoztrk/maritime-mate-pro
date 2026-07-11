@@ -69,6 +69,7 @@ function StabilityScene({
 }: SceneProps) {
   const shipGroup = useRef<THREE.Group>(null);
   const heelRef = useRef(0);
+  const visualHeelRef = useRef(0);
   const velocityRef = useRef(0);
   const lastReport = useRef(0);
 
@@ -101,6 +102,7 @@ function StabilityScene({
       Math.sin(t * Math.max(0.28, omega * 0.58) + 1.3);
     const heave = (0.003 + sea * 0.035) * Math.sin(t * Math.max(0.34, omega * 0.72) - 0.8);
     const visualHeel = heelRef.current + waveRoll;
+    visualHeelRef.current = visualHeel;
 
     if (shipGroup.current) {
       // X is the longitudinal roll axis; Z is the transverse pitch axis.
@@ -134,8 +136,8 @@ function StabilityScene({
           kb={stability.kb}
           kg={kg}
           km={stability.km}
-          heelAngle={heelRef.current}
-          gz={calculateGZ(gm, bm, heelRef.current)}
+          heelAngle={visualHeelRef.current}
+          gz={calculateGZ(gm, bm, visualHeelRef.current)}
           vScale={MARKER_VSCALE}
         />
       </group>
@@ -546,4 +548,3 @@ function SliderControl({
 }
 
 export default Stability3DSim;
-
