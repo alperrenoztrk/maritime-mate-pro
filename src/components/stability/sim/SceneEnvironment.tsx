@@ -94,7 +94,7 @@ export function SceneEnvironment() {
           color="#04101c"
           alphaMap={getAOBlobTexture()}
           transparent
-          opacity={0.38}
+          opacity={0.18}
           depthWrite={false}
         />
       </mesh>
