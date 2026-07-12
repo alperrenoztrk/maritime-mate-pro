@@ -97,8 +97,9 @@
         .book-cover-l .book-cover-inner{border-radius:4px 2px 2px 4px;}
         .book-cover-r .book-cover-inner{border-radius:2px 4px 4px 2px;}
         .book-emblem{opacity:.9;filter:drop-shadow(0 0 6px rgba(218,165,32,.5));animation:emblem-glow 1.8s ease-in-out infinite alternate;}
-        .splash-title{position:relative;color:#fff;font-weight:800;letter-spacing:8px;font-size:1.15rem;opacity:0;transform:translateY(14px);background:linear-gradient(135deg,#ffffff 0%,#f4d47a 50%,#ffffff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:title-in .75s cubic-bezier(.22,1,.36,1) 1.35s forwards,title-shimmer 3.2s linear 2.2s infinite;}
-        .splash-tag{position:relative;margin-top:.5rem;color:rgba(255,255,255,.55);font-weight:400;letter-spacing:3px;font-size:.7rem;text-transform:uppercase;opacity:0;transform:translateY(8px);animation:title-in .7s cubic-bezier(.22,1,.36,1) 1.55s forwards;}
+        .splash-title{position:relative;color:#fff;font-weight:800;letter-spacing:clamp(4px,1.6vw,8px);font-size:clamp(.95rem,3.6vw,1.35rem);line-height:1.15;text-align:center;max-width:min(92vw,520px);opacity:0;transform:translateY(14px);background:linear-gradient(135deg,#ffffff 0%,#f4d47a 50%,#ffffff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:title-in .75s cubic-bezier(.22,1,.36,1) 1.35s forwards,title-shimmer 3.2s linear 2.2s infinite;}
+        .splash-tag{position:relative;margin-top:clamp(.35rem,1vh,.6rem);color:rgba(255,255,255,.55);font-weight:400;letter-spacing:clamp(1.5px,.6vw,3px);font-size:clamp(.6rem,2vw,.78rem);text-transform:uppercase;text-align:center;max-width:min(92vw,520px);opacity:0;transform:translateY(8px);animation:title-in .7s cubic-bezier(.22,1,.36,1) 1.55s forwards;}
+
         .splash-hide{opacity:0;pointer-events:none;}
         @keyframes book-appear{0%{opacity:0;transform:scale(.72) rotateX(14deg);}60%{opacity:1;}100%{opacity:1;transform:scale(1) rotateX(0);}}
         @keyframes pages-in{to{opacity:1;}}
