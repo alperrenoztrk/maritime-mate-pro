@@ -15,6 +15,7 @@ export const searchIndex: SearchItem[] = [
   { title: "Personel Hiyerarşisi", path: "/crew", category: "Genel", keywords: ["mürettebat", "kaptan", "zabitan"] },
   { title: "Gemi Sistemleri", path: "/ship-systems", category: "Genel", keywords: ["sistem", "makine", "elektrik"] },
   { title: "Gemi Operasyonları", path: "/ship-operations", category: "Genel", keywords: ["operasyon", "yanaşma", "kalkış"] },
+  { title: "Offshore / DP Operasyonları", path: "/ship-operations/offshore", category: "Operasyonlar", keywords: ["offshore", "DP", "dynamic positioning", "PSV", "AHTS", "ROV", "FMEA", "ASOG"] },
   { title: "Köprüüstü Cihazları", path: "/bridge", category: "Genel", keywords: ["radar", "AIS", "ECDIS", "GPS"] },
   { title: "Seyir Planı", path: "/passage-plan", category: "Seyir", keywords: ["rota", "passage planning"] },
   

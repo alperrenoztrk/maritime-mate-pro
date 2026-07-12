@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Offshore destek gemisi</title>
+  <desc id="desc">Açık denizde bir platform yakınında dinamik konumlandırma yapan modern offshore destek gemisi</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#071b33"/>
+      <stop offset="0.58" stop-color="#176b8d"/>
+      <stop offset="1" stop-color="#7ac7d7"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d5975"/>
+      <stop offset="1" stop-color="#031d37"/>
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fafc"/>
+      <stop offset="0.58" stop-color="#a8bdca"/>
+      <stop offset="0.59" stop-color="#152b3d"/>
+      <stop offset="1" stop-color="#071521"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#6ee7f9" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#6ee7f9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="455" fill="url(#sky)"/>
+  <circle cx="900" cy="145" r="170" fill="url(#glow)"/>
+  <path d="M0 420C150 395 270 446 410 423s277-24 418 2 252 16 372-7v282H0Z" fill="url(#sea)"/>
+  <g opacity=".78" fill="#071725">
+    <path d="M905 110h21v280h-21zM1028 110h21v280h-21zM880 126h196v22H880zM894 190h168v16H894z"/>
+    <path d="m928 110 20-70h58l20 70zM930 206l-73 192h27l59-155h67l56 155h28l-70-192z"/>
+    <path d="M842 390h273v19H842zM860 409h18v62h-18zM1091 409h18v62h-18z"/>
+  </g>
+  <g transform="translate(115 255)">
+    <path d="M38 218h690l-78 113H143L67 292Z" fill="url(#hull)" stroke="#d7edf2" stroke-width="5"/>
+    <path d="M120 199h515l93 19H38Z" fill="#dcebf0"/>
+    <path d="M155 102h174v97H135l20-97Z" fill="#eef6f7" stroke="#8ba5b3" stroke-width="4"/>
+    <path d="M180 47h118l31 55H155Z" fill="#d5e6eb" stroke="#8ba5b3" stroke-width="4"/>
+    <path d="M194 65h32v25h-38zM238 65h32l7 25h-39z" fill="#163c55"/>
+    <path d="M171 119h44v31h-48zM229 119h42v31h-42zM285 119h31v31h-31z" fill="#123e5a"/>
+    <path d="M207 47V12h7v35zM188 15h45v6h-45z" fill="#cde8ed"/>
+    <path d="M201 10h18l-9-20z" fill="#ff6b35"/>
+    <rect x="343" y="157" width="260" height="38" rx="4" fill="#657b88"/>
+    <rect x="373" y="128" width="90" height="27" rx="3" fill="#f97316"/>
+    <rect x="474" y="128" width="90" height="27" rx="3" fill="#eab308"/>
+    <path d="M610 196h44v-98h12v98h19v-52h12v52" fill="none" stroke="#a6bac3" stroke-width="9"/>
+    <path d="M649 101h58" stroke="#a6bac3" stroke-width="8"/>
+    <circle cx="148" cy="263" r="10" fill="#63d4e7"/>
+    <circle cx="626" cy="263" r="10" fill="#63d4e7"/>
+  </g>
+  <g fill="none" stroke="#73e2f3" opacity=".32">
+    <ellipse cx="495" cy="540" rx="390" ry="78" stroke-width="5"/>
+    <ellipse cx="495" cy="540" rx="315" ry="60" stroke-width="3" stroke-dasharray="18 14"/>
+  </g>
+  <g fill="none" stroke="#b9eef5" stroke-width="4" opacity=".28">
+    <path d="M0 512c112-24 195 18 302 0s195-20 307 0 202 14 294-4 194-9 297 7"/>
+    <path d="M0 592c142-28 249 25 379 3s254-23 378 2 273 18 443-8"/>
+  </g>
+</svg>
