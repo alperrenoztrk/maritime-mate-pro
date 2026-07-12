@@ -61,8 +61,9 @@ const hideSplash = () => {
   }
 };
 
-// Hide as soon as React mounts (effectively immediate).
-requestAnimationFrame(() => setTimeout(hideSplash, 100));
+// Let the book-opening splash animation play through (~1.9s) before fading.
+requestAnimationFrame(() => setTimeout(hideSplash, 1900));
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, 1200);
+setTimeout(hideSplash, 2600);
+
