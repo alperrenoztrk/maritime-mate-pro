@@ -61,9 +61,10 @@ const hideSplash = () => {
   }
 };
 
-// Let the book-opening splash animation play through (~1.9s) before fading.
-requestAnimationFrame(() => setTimeout(hideSplash, 1900));
+// Let the book-opening splash animation play through before fading.
+requestAnimationFrame(() => setTimeout(hideSplash, 2350));
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, 2600);
+setTimeout(hideSplash, 3000);
+
 
