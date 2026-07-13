@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Anchor, Loader2, Mail, Lock } from "lucide-react";
@@ -24,15 +24,23 @@ const GoogleIcon = () => (
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithApple } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
 
+  const nextPath = useMemo(() => {
+    const raw = searchParams.get("next");
+    if (!raw) return "/";
+    if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
+    return raw;
+  }, [searchParams]);
+
   useEffect(() => {
-    if (!loading && user) navigate("/", { replace: true });
-  }, [user, loading, navigate]);
+    if (!loading && user) navigate(nextPath, { replace: true });
+  }, [user, loading, navigate, nextPath]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,10 +60,10 @@ const Auth = () => {
           toast.error(msg);
         } else {
           toast.success("Giriş başarılı");
-          navigate("/", { replace: true });
+          navigate(nextPath, { replace: true });
         }
       } else {
-        const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password);
+        const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password, nextPath);
         if (error) {
           const msg = error.message.includes("already registered")
             ? "Bu e-posta zaten kayıtlı"
@@ -72,7 +80,7 @@ const Auth = () => {
 
   const handleGoogle = async () => {
     setBusy(true);
-    const { error } = await signInWithGoogle();
+    const { error } = await signInWithGoogle(nextPath);
     if (error) {
       toast.error(error.message);
       setBusy(false);
@@ -81,7 +89,7 @@ const Auth = () => {
 
   const handleApple = async () => {
     setBusy(true);
-    const { error } = await signInWithApple();
+    const { error } = await signInWithApple(nextPath);
     if (error) {
       toast.error(error.message);
       setBusy(false);
