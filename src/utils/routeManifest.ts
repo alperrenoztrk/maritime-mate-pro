@@ -170,6 +170,8 @@ const STATIC_ROUTES: string[] = [
   '/navigation/quiz',
 
   '/economics',
+  '/economics/assistant',
+  '/economics/quiz',
   '/moon-phases',
   '/settings',
   '/formulas',
