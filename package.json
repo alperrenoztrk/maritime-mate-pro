@@ -141,5 +141,15 @@
     "vite": "^5.4.19",
     "vite-plugin-pwa": "^1.2.0",
     "workbox-window": "^7.4.0"
+  },
+  "overrides": {
+    "tmp": "^0.2.4",
+    "uuid": "^11.1.0",
+    "brace-expansion": "^2.0.2"
+  },
+  "resolutions": {
+    "tmp": "^0.2.4",
+    "uuid": "^11.1.0",
+    "brace-expansion": "^2.0.2"
   }
 }
