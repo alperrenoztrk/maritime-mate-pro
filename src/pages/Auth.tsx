@@ -73,14 +73,6 @@ const Auth = () => {
     }
   };
 
-  const handleGoogle = async () => {
-    setBusy(true);
-    const { error } = await signInWithGoogle(nextPath);
-    if (error) {
-      toast.error(error.message);
-      setBusy(false);
-    }
-  };
 
   const handleApple = async () => {
     setBusy(true);
