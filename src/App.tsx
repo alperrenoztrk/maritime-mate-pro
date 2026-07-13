@@ -18,6 +18,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
+import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import { GlobalSearch } from "@/components/GlobalSearch";
 
@@ -393,6 +394,11 @@ const AnimatedRoutes = () => {
 const App = () => {
   // Prefer maximum smoothness on high refresh displays (e.g. 120Hz)
   useFrameRate();
+
+  // App-wide screenshot / screen-recording blocking (native only).
+  // Android: FLAG_SECURE (fully blocks). iOS: blanks captures + app-switcher
+  // blur + screenshot detection. No-op on web.
+  useScreenProtection();
 
   // Apply the global maritime design language to every page.
   // Adds a body-scoped class that neutralizes per-page light backgrounds
