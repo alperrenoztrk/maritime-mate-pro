@@ -16,16 +16,11 @@ const credentialsSchema = z.object({
   password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
 });
 
-const GoogleIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
-    <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.24 1.5-1.7 4.4-5.5 4.4-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.7 3.9 14.6 3 12 3 6.9 3 2.8 7.1 2.8 12S6.9 21 12 21c6.9 0 9.2-4.9 9.2-7.4 0-.5 0-.9-.1-1.3H12z" />
-  </svg>
-);
 
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithApple } = useAuth();
+  const { user, loading, signInWithEmail, signUpWithEmail, signInWithApple } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -78,14 +73,6 @@ const Auth = () => {
     }
   };
 
-  const handleGoogle = async () => {
-    setBusy(true);
-    const { error } = await signInWithGoogle(nextPath);
-    if (error) {
-      toast.error(error.message);
-      setBusy(false);
-    }
-  };
 
   const handleApple = async () => {
     setBusy(true);
@@ -109,17 +96,6 @@ const Auth = () => {
           <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full gap-2"
-            onClick={handleGoogle}
-            disabled={busy}
-          >
-            <GoogleIcon />
-            Google ile devam et
-          </Button>
-
           <Button
             type="button"
             variant="outline"
