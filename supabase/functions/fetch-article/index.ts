@@ -1,9 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { getCorsHeaders } from "../_shared/cors.ts";
+import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
+import { assertSafeUrl } from "../_shared/ssrf.ts";
 
 /**
  * Extract readable article content from HTML.
