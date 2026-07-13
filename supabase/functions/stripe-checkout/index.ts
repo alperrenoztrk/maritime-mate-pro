@@ -64,18 +64,36 @@ async function createStripeCheckoutSession(params: CreateCheckoutBody, corsHeade
     );
   }
 
-  const priceId = params.priceId || Deno.env.get("STRIPE_DEFAULT_PRICE_ID");
+  const allowedPriceIds = (Deno.env.get("STRIPE_ALLOWED_PRICE_IDS") || "")
+    .split(",").map((s) => s.trim()).filter(Boolean);
+  const defaultPriceId = Deno.env.get("STRIPE_DEFAULT_PRICE_ID");
+  const priceId = params.priceId || defaultPriceId;
   if (!priceId) {
     return new Response(
       JSON.stringify({ error: "Missing priceId or STRIPE_DEFAULT_PRICE_ID" }),
       { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
+  // Enforce allow-list: caller-supplied priceId must match STRIPE_ALLOWED_PRICE_IDS
+  // (or equal the server-configured default).
+  if (params.priceId && params.priceId !== defaultPriceId && !allowedPriceIds.includes(params.priceId)) {
+    return new Response(
+      JSON.stringify({ error: "priceId not allowed" }),
+      { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
 
   const successUrl = params.successUrl || Deno.env.get("STRIPE_SUCCESS_URL") || "https://example.com/success";
   const cancelUrl = params.cancelUrl || Deno.env.get("STRIPE_CANCEL_URL") || "https://example.com/cancel";
+  // Restrict redirect URLs to the app's own hosted origins (or STRIPE_ALLOWED_URL_PREFIXES)
+  if (!isAllowedRedirectUrl(successUrl) || !isAllowedRedirectUrl(cancelUrl)) {
+    return new Response(
+      JSON.stringify({ error: "successUrl/cancelUrl not allowed" }),
+      { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
   const mode = params.mode || (Deno.env.get("STRIPE_DEFAULT_MODE") as "payment" | "subscription") || "payment";
-  const quantity = params.quantity ?? 1;
+  const quantity = Math.min(Math.max(params.quantity ?? 1, 1), 10);
 
   const body: any = {
     mode,
