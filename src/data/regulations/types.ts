@@ -59,6 +59,30 @@ export type RegulationSourceStatus = {
   caution: string;
 };
 
+export type RegulationNarrativeScenario = {
+  title: string;
+  situation: string;
+  analysis: string;
+  correctApproach: string;
+};
+
+export type RegulationNarrativeSection = {
+  heading: string;
+  paragraphs: string[];
+  references?: string[];
+  shipboardMeaning?: string;
+  commonMistakes?: string[];
+  scenario?: RegulationNarrativeScenario;
+};
+
+export type RegulationNarrativeChapter = {
+  id: string;
+  title: string;
+  introduction: string;
+  sections: RegulationNarrativeSection[];
+  chapterTakeaways?: string[];
+};
+
 export type RegulationItem = {
   slug: string;
   label: string;
@@ -80,4 +104,5 @@ export type RegulationItem = {
   inspectionQuestions?: RegulationInspectionQuestion[];
   terms?: RegulationTerm[];
   sourceStatus?: RegulationSourceStatus;
+  narrativeChapters?: RegulationNarrativeChapter[];
 };
