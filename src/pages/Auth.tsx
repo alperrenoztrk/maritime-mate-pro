@@ -113,17 +113,6 @@ const Auth = () => {
             type="button"
             variant="outline"
             className="w-full gap-2"
-            onClick={handleGoogle}
-            disabled={busy}
-          >
-            <GoogleIcon />
-            Google ile devam et
-          </Button>
-
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full gap-2"
             onClick={handleApple}
             disabled={busy}
           >
