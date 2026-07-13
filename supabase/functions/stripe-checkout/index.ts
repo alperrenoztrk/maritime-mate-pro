@@ -1,4 +1,22 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
+
+function isAllowedRedirectUrl(url: string): boolean {
+  try {
+    const u = new URL(url);
+    if (u.protocol !== "https:" && !(u.protocol === "http:" && u.hostname === "localhost")) return false;
+    const allowlist = (Deno.env.get("STRIPE_ALLOWED_URL_PREFIXES") || "")
+      .split(",").map((s) => s.trim()).filter(Boolean);
+    if (allowlist.some((prefix) => url.startsWith(prefix))) return true;
+    // Default allow: known Lovable-hosted origins and localhost
+    if (/^https:\/\/[a-z0-9-]+\.lovableproject\.com(\/|$)/.test(url)) return true;
+    if (/^https:\/\/[a-z0-9-]+\.lovable\.app(\/|$)/.test(url)) return true;
+    if (/^https?:\/\/localhost(:\d+)?(\/|$)/.test(url)) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
