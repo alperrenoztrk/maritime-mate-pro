@@ -168,8 +168,14 @@ function cleanJinaMarkdown(md: string, title: string): string {
 }
 
 serve(async (req: Request) => {
+  const corsHeaders = getCorsHeaders(req.headers.get("origin"));
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
+  }
+
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
   }
 
   try {
@@ -182,16 +188,12 @@ serve(async (req: Request) => {
       );
     }
 
-    // Validate URL
-    let parsedUrl: URL;
+    // Validate URL (SSRF protection: blocks non-http(s), private, loopback, link-local hosts)
     try {
-      parsedUrl = new URL(url);
-      if (!parsedUrl.protocol.startsWith("http")) {
-        throw new Error("Invalid protocol");
-      }
+      await assertSafeUrl(url);
     } catch {
       return new Response(
-        JSON.stringify({ error: "Geçersiz URL." }),
+        JSON.stringify({ error: "Geçersiz veya izin verilmeyen URL." }),
         { status: 400, headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }
