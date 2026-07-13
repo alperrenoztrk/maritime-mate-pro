@@ -74,6 +74,7 @@ const NavigationAssistantPage = lazy(() => import("./pages/NavigationAssistant")
 const ClockPage = lazy(() => import("./pages/Clock"));
 const AuthCallback = lazy(() => import("./pages/AuthCallback"));
 const AuthPage = lazy(() => import("./pages/Auth"));
+const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
 const StabilityPracticalPage = lazy(() => import("./pages/StabilityPractical"));
 const StabilityPracticalTankPage = lazy(() => import("./pages/StabilityPracticalTank"));
 const StabilityPracticalFWAPage = lazy(() => import("./pages/StabilityPracticalFWA"));
@@ -368,6 +369,7 @@ const AnimatedRoutes = () => {
         <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
         <Route path="/auth/callback" element={<PageTransition><AuthCallback /></PageTransition>} />
+        <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
         <Route path="/weather-forecast" element={<PageTransition><WeatherForecast /></PageTransition>} />
         <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
         <Route path="/sunrise-times" element={<PageTransition><SunriseTimes /></PageTransition>} />

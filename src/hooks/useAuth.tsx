@@ -20,44 +20,39 @@ const NATIVE_OAUTH_REDIRECT = "com.marinersbook.app://auth/callback";
 const isLovableHost = () =>
   /(^|\.)(lovable\.app|lovableproject\.com)$/.test(window.location.hostname);
 
-const signInWithSocialProvider = async (provider: SocialProvider) => {
+const sanitizeReturnPath = (raw?: string | null) => {
+  if (!raw) return "/";
+  if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
+  return raw;
+};
+
+const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "/") => {
+  const safeReturn = sanitizeReturnPath(returnPath);
   try {
-    // 1) Native uygulama: OAuth WebView içinde çalışmaz (Google
-    //    "disallowed_useragent" ile engeller). URL'yi sistem
-    //    tarayıcısında açıyoruz; oturum, deep link dönüşünde
-    //    AuthProvider'daki appUrlOpen dinleyicisiyle kurulur.
     if (Capacitor.isNativePlatform()) {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider,
-        options: {
-          redirectTo: NATIVE_OAUTH_REDIRECT,
-          skipBrowserRedirect: true,
-        },
+        options: { redirectTo: NATIVE_OAUTH_REDIRECT, skipBrowserRedirect: true },
       });
       if (error) return { error: error as Error };
       await Browser.open({ url: data.url });
       return { error: null };
     }
 
-    // 2) Lovable barındırması: broker akışı burada çalışıyor.
-    if (isLovableHost()) {
-      const result = await cloudAuth.signInWithOAuth(provider, {
-        redirect_uri: window.location.origin,
-      });
+    const webReturnUrl = `${window.location.origin}${safeReturn}`;
 
+    if (isLovableHost()) {
+      const result = await cloudAuth.signInWithOAuth(provider, { redirect_uri: webReturnUrl });
       if (result.redirected || result.error) {
         return { error: (result.error as Error | undefined) ?? null };
       }
-
       const { error } = await supabase.auth.setSession(result.tokens);
       return { error: error as Error | null };
     }
 
-    // 3) Diğer web ortamları (localhost dahil): doğrudan Supabase OAuth.
-    //    Dönüş /auth/callback rotasında karşılanır.
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturn)}` },
     });
     return { error: error as Error | null };
   } catch (error) {
@@ -70,9 +65,9 @@ interface AuthContextValue {
   session: Session | null;
   loading: boolean;
   signInWithEmail: (email: string, password: string) => Promise<{ error: Error | null }>;
-  signUpWithEmail: (email: string, password: string) => Promise<{ error: Error | null }>;
-  signInWithGoogle: () => Promise<{ error: Error | null }>;
-  signInWithApple: () => Promise<{ error: Error | null }>;
+  signUpWithEmail: (email: string, password: string, returnPath?: string) => Promise<{ error: Error | null }>;
+  signInWithGoogle: (returnPath?: string) => Promise<{ error: Error | null }>;
+  signInWithApple: (returnPath?: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -147,8 +142,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error as Error | null };
   };
 
-  const signUpWithEmail = async (email: string, password: string) => {
-    const redirectUrl = `${window.location.origin}/`;
+  const signUpWithEmail = async (email: string, password: string, returnPath = "/") => {
+    const safeReturn = sanitizeReturnPath(returnPath);
+    const redirectUrl = `${window.location.origin}${safeReturn}`;
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -157,12 +153,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error as Error | null };
   };
 
-  const signInWithGoogle = async () => {
-    return signInWithSocialProvider("google");
+  const signInWithGoogle = async (returnPath = "/") => {
+    return signInWithSocialProvider("google", returnPath);
   };
 
-  const signInWithApple = async () => {
-    return signInWithSocialProvider("apple");
+  const signInWithApple = async (returnPath = "/") => {
+    return signInWithSocialProvider("apple", returnPath);
   };
 
   const signOut = async () => {

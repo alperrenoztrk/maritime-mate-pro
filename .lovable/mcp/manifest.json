@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.1",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://vrpbhguztsqakvjcezeb.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "mariners-book-mcp",
+      "version": "0.1.0",
+      "title": "Mariner's Book MCP"
+    },
+    "tools": [
+      {
+        "name": "great_circle_distance",
+        "title": "Great-circle distance",
+        "description": "Compute the great-circle distance (in nautical miles) and initial bearing (degrees true) between two lat/lon points.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "lat1": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90,
+              "description": "Latitude of point 1 in decimal degrees."
+            },
+            "lon1": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180,
+              "description": "Longitude of point 1 in decimal degrees."
+            },
+            "lat2": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90,
+              "description": "Latitude of point 2 in decimal degrees."
+            },
+            "lon2": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180,
+              "description": "Longitude of point 2 in decimal degrees."
+            }
+          },
+          "required": [
+            "lat1",
+            "lon1",
+            "lat2",
+            "lon2"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "compass_conversion",
+        "title": "Compass ↔ Magnetic ↔ True conversion",
+        "description": "Convert between Compass, Magnetic and True headings using variation and deviation (CDMVT rule). Provide exactly one of compass, magnetic or true.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "compass": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 360
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Compass heading in degrees, or null."
+            },
+            "magnetic": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 360
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Magnetic heading in degrees, or null."
+            },
+            "trueHeading": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 360
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "True heading in degrees, or null."
+            },
+            "variation": {
+              "type": "number",
+              "description": "Variation in degrees. East is positive, West is negative."
+            },
+            "deviation": {
+              "type": "number",
+              "description": "Deviation in degrees. East is positive, West is negative."
+            }
+          },
+          "required": [
+            "compass",
+            "magnetic",
+            "trueHeading",
+            "variation",
+            "deviation"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "speed_time_distance",
+        "title": "Speed / Time / Distance",
+        "description": "Solve for the missing value in the speed–time–distance relationship. Speed in knots, time in hours, distance in nautical miles. Provide exactly two of the three.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "speedKnots": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Speed in knots, or null."
+            },
+            "timeHours": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Time in hours, or null."
+            },
+            "distanceNm": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Distance in nautical miles, or null."
+            }
+          },
+          "required": [
+            "speedKnots",
+            "timeHours",
+            "distanceNm"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

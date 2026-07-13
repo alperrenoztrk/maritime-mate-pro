@@ -51,7 +51,7 @@ const AuthCallback = () => {
           const fullName = data.session?.user?.user_metadata?.full_name;
           setMessage(`Hoş geldiniz, ${fullName || email || 'kullanıcı'}!`);
           toast.success('Google ile başarıyla giriş yaptınız!');
-          setTimeout(() => navigate('/', { replace: true }), 1500);
+          setTimeout(() => navigate(new URL(window.location.href).searchParams.get('next') || '/', { replace: true }), 1500);
           return;
         }
 
@@ -66,7 +66,7 @@ const AuthCallback = () => {
           const fullName = sessionData.session.user.user_metadata?.full_name;
           setMessage(`Hoş geldiniz, ${fullName || email}!`);
           toast.success('Google ile başarıyla giriş yaptınız!');
-          setTimeout(() => navigate('/', { replace: true }), 1500);
+          setTimeout(() => navigate(new URL(window.location.href).searchParams.get('next') || '/', { replace: true }), 1500);
           return;
         }
 
@@ -87,7 +87,7 @@ const AuthCallback = () => {
             const sessionUser = setData.session.user;
             setMessage(`Hoş geldiniz, ${sessionUser.user_metadata?.full_name || sessionUser.email}!`);
             toast.success('Google ile başarıyla giriş yaptınız!');
-            setTimeout(() => navigate('/', { replace: true }), 1500);
+            setTimeout(() => navigate(new URL(window.location.href).searchParams.get('next') || '/', { replace: true }), 1500);
             return;
           }
         }
