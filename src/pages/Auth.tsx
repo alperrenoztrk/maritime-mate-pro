@@ -83,6 +83,15 @@ const Auth = () => {
     }
   };
 
+  const handleGoogle = async () => {
+    setBusy(true);
+    const { error } = await signInWithGoogle(nextPath);
+    if (error) {
+      toast.error(error.message);
+      setBusy(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-background text-foreground">
       <Card className="w-full max-w-md shadow-2xl border-border/50 backdrop-blur">
