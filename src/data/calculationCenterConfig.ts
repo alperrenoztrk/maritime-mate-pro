@@ -717,6 +717,22 @@ export const calculationCategories: CategoryConfig[] = [
         badge: "Bilgi",
         href: "/economics",
       },
+      {
+        id: "assistant",
+        label: "Asistan",
+        description: "Charter, navlun/TCE ve laytime için ticari operasyon danışmanı",
+        status: "live",
+        badge: "Hazır",
+        href: "/economics/assistant",
+      },
+      {
+        id: "quiz",
+        label: "Quiz",
+        description: "Charter türleri, TCE, laytime/demurrage ve sefer ekonomisi soruları",
+        status: "live",
+        badge: "Hazır",
+        href: "/economics/quiz",
+      },
     ],
   },
 ];

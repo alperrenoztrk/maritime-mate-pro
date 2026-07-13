@@ -39,6 +39,8 @@ const Navigation = lazy(() => import("./pages/Navigation"));
 const NavigationCalculationPage = lazy(() => import("./pages/NavigationCalculation"));
 const TideCalculationTutorial = lazy(() => import("./pages/TideCalculationTutorial"));
 const Economics = lazy(() => import("./pages/Economics"));
+const EconomicsAssistantPage = lazy(() => import("./pages/EconomicsAssistant"));
+const EconomicsQuizPage = lazy(() => import("./pages/EconomicsQuiz"));
 const StabilityAssistantPage = lazy(() => import("./pages/StabilityAssistant"));
 const StabilityGZIMO = lazy(() => import("./pages/StabilityGZIMO"));
 const StabilityRules = lazy(() => import("./pages/StabilityRules"));
@@ -360,6 +362,8 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/assistant" element={<PageTransition><NavigationAssistantPage /></PageTransition>} />
         <Route path="/navigation/quiz" element={<PageTransition><NavigationQuizPage /></PageTransition>} />
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
+        <Route path="/economics/assistant" element={<PageTransition><EconomicsAssistantPage /></PageTransition>} />
+        <Route path="/economics/quiz" element={<PageTransition><EconomicsQuizPage /></PageTransition>} />
         <Route path="/empty-page" element={<PageTransition><EmptyPage /></PageTransition>} />
         <Route path="/moon-phases" element={<PageTransition><MoonPhases /></PageTransition>} />
         <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />

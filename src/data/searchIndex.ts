@@ -96,6 +96,8 @@ export const searchIndex: SearchItem[] = [
   { title: "Stabilite Konu Anlatımları", path: "/lessons/stability/topics", category: "Dersler" },
   { title: "Gemicilik Konu Anlatımları", path: "/lessons/seamanship/topics", category: "Dersler", keywords: ["halat", "düğüm", "manevra"] },
   { title: "Ekonomi Konu Anlatımları", path: "/lessons/economics/topics", category: "Dersler" },
+  { title: "Ticari Operasyonlar Asistanı", path: "/economics/assistant", category: "Ekonomi", keywords: ["charter", "navlun", "freight", "TCE", "laytime", "demurrage", "danışman", "deniz işletmeciliği"] },
+  { title: "Ticari Operasyonlar Quiz", path: "/economics/quiz", category: "Ekonomi", keywords: ["charter", "TCE", "laytime", "demurrage", "sefer ekonomisi"] },
 
   // Gemi Görevleri
   { title: "Gemi Görevleri", path: "/ship-tasks", category: "Operasyonlar" },
