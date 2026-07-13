@@ -369,6 +369,7 @@ const AnimatedRoutes = () => {
         <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
         <Route path="/auth/callback" element={<PageTransition><AuthCallback /></PageTransition>} />
+        <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
         <Route path="/weather-forecast" element={<PageTransition><WeatherForecast /></PageTransition>} />
         <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
         <Route path="/sunrise-times" element={<PageTransition><SunriseTimes /></PageTransition>} />
