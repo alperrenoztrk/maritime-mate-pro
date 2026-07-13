@@ -171,12 +171,8 @@ serve(async (req: Request) => {
     if (authError || !user) {
       return unauthorizedResponse(corsHeaders);
     }
-    if (req.method !== "POST") {
-      return new Response(
-        JSON.stringify({ error: "Method not allowed" }),
-        { status: 405, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
+
+
 
     const body = (await req.json().catch(() => ({}))) as CreateCheckoutBody & { test?: boolean };
     
