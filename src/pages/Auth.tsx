@@ -112,12 +112,34 @@ const Auth = () => {
             onClick={handleApple}
             disabled={busy}
           >
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full gap-2"
+            onClick={handleGoogle}
+            disabled={busy}
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.56c2.08-1.92 3.28-4.74 3.28-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.65l-3.56-2.77c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+            </svg>
+            Google ile devam et
+          </Button>
+
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full gap-2"
+            onClick={handleApple}
+            disabled={busy}
+          >
             <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true" fill="currentColor">
               <path d="M16.365 1.43c0 1.14-.463 2.23-1.223 3.026-.816.855-2.15 1.517-3.245 1.428-.14-1.104.42-2.253 1.14-2.99.81-.83 2.223-1.44 3.328-1.464zM20.5 17.34c-.56 1.29-.83 1.87-1.55 3.01-.99 1.58-2.39 3.55-4.13 3.56-1.54.01-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.74-.01-3.06-1.79-4.05-3.37C.31 16.98-.07 12.55 1.6 10.09c1.19-1.75 3.06-2.78 4.82-2.78 1.79 0 2.92 1 4.4 1 1.44 0 2.32-1 4.39-1 1.57 0 3.23.86 4.42 2.34-3.88 2.13-3.25 7.69.87 8.69z"/>
             </svg>
             Apple ile devam et
           </Button>
-
 
           <div className="relative">
             <Separator />
