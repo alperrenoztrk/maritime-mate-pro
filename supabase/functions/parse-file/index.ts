@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
+import { assertSafeUrl } from "../_shared/ssrf.ts";
 
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
@@ -23,6 +24,13 @@ serve(async (req) => {
         JSON.stringify({ error: 'fileUrl gerekli' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // SSRF protection: only allow http(s) URLs on public hosts
+    try {
+      await assertSafeUrl(fileUrl);
+    } catch {
+      return errorResponse(corsHeaders, 400, 'Geçersiz veya izin verilmeyen dosya URL');
     }
 
     // Fetch the file content

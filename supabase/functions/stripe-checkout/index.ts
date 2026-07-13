@@ -1,4 +1,22 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
+
+function isAllowedRedirectUrl(url: string): boolean {
+  try {
+    const u = new URL(url);
+    if (u.protocol !== "https:" && !(u.protocol === "http:" && u.hostname === "localhost")) return false;
+    const allowlist = (Deno.env.get("STRIPE_ALLOWED_URL_PREFIXES") || "")
+      .split(",").map((s) => s.trim()).filter(Boolean);
+    if (allowlist.some((prefix) => url.startsWith(prefix))) return true;
+    // Default allow: known Lovable-hosted origins and localhost
+    if (/^https:\/\/[a-z0-9-]+\.lovableproject\.com(\/|$)/.test(url)) return true;
+    if (/^https:\/\/[a-z0-9-]+\.lovable\.app(\/|$)/.test(url)) return true;
+    if (/^https?:\/\/localhost(:\d+)?(\/|$)/.test(url)) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -46,18 +64,36 @@ async function createStripeCheckoutSession(params: CreateCheckoutBody, corsHeade
     );
   }
 
-  const priceId = params.priceId || Deno.env.get("STRIPE_DEFAULT_PRICE_ID");
+  const allowedPriceIds = (Deno.env.get("STRIPE_ALLOWED_PRICE_IDS") || "")
+    .split(",").map((s) => s.trim()).filter(Boolean);
+  const defaultPriceId = Deno.env.get("STRIPE_DEFAULT_PRICE_ID");
+  const priceId = params.priceId || defaultPriceId;
   if (!priceId) {
     return new Response(
       JSON.stringify({ error: "Missing priceId or STRIPE_DEFAULT_PRICE_ID" }),
       { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
+  // Enforce allow-list: caller-supplied priceId must match STRIPE_ALLOWED_PRICE_IDS
+  // (or equal the server-configured default).
+  if (params.priceId && params.priceId !== defaultPriceId && !allowedPriceIds.includes(params.priceId)) {
+    return new Response(
+      JSON.stringify({ error: "priceId not allowed" }),
+      { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
 
   const successUrl = params.successUrl || Deno.env.get("STRIPE_SUCCESS_URL") || "https://example.com/success";
   const cancelUrl = params.cancelUrl || Deno.env.get("STRIPE_CANCEL_URL") || "https://example.com/cancel";
+  // Restrict redirect URLs to the app's own hosted origins (or STRIPE_ALLOWED_URL_PREFIXES)
+  if (!isAllowedRedirectUrl(successUrl) || !isAllowedRedirectUrl(cancelUrl)) {
+    return new Response(
+      JSON.stringify({ error: "successUrl/cancelUrl not allowed" }),
+      { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
   const mode = params.mode || (Deno.env.get("STRIPE_DEFAULT_MODE") as "payment" | "subscription") || "payment";
-  const quantity = params.quantity ?? 1;
+  const quantity = Math.min(Math.max(params.quantity ?? 1, 1), 10);
 
   const body: any = {
     mode,
@@ -129,6 +165,14 @@ serve(async (req: Request) => {
         { status: 405, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
+
+    // Require authenticated user session
+    const { user, error: authError } = await validateAuth(req);
+    if (authError || !user) {
+      return unauthorizedResponse(corsHeaders);
+    }
+
+
 
     const body = (await req.json().catch(() => ({}))) as CreateCheckoutBody & { test?: boolean };
     

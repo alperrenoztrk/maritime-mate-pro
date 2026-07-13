@@ -1,9 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { getCorsHeaders } from "../_shared/cors.ts";
+import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
+import { assertSafeUrl } from "../_shared/ssrf.ts";
 
 /**
  * Extract readable article content from HTML.
@@ -170,8 +168,14 @@ function cleanJinaMarkdown(md: string, title: string): string {
 }
 
 serve(async (req: Request) => {
+  const corsHeaders = getCorsHeaders(req.headers.get("origin"));
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
+  }
+
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
   }
 
   try {
@@ -184,16 +188,12 @@ serve(async (req: Request) => {
       );
     }
 
-    // Validate URL
-    let parsedUrl: URL;
+    // Validate URL (SSRF protection: blocks non-http(s), private, loopback, link-local hosts)
     try {
-      parsedUrl = new URL(url);
-      if (!parsedUrl.protocol.startsWith("http")) {
-        throw new Error("Invalid protocol");
-      }
+      await assertSafeUrl(url);
     } catch {
       return new Response(
-        JSON.stringify({ error: "Geçersiz URL." }),
+        JSON.stringify({ error: "Geçersiz veya izin verilmeyen URL." }),
         { status: 400, headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }

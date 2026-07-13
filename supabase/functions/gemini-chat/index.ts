@@ -10,7 +10,11 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Public endpoint - no authentication required
+  // Require authenticated user session
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(corsHeaders);
+  }
 
   try {
     const body = await req.json();

@@ -1,4 +1,5 @@
 import { corsHeaders } from "../_shared/cors.ts";
+import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
 
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
@@ -78,6 +79,12 @@ Deno.serve(async (req) => {
   // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { headers });
+  }
+
+  // Require authenticated user session
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(headers);
   }
 
   if (req.method !== "POST") {
