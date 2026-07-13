@@ -26,6 +26,13 @@ serve(async (req) => {
       );
     }
 
+    // SSRF protection: only allow http(s) URLs on public hosts
+    try {
+      await assertSafeUrl(fileUrl);
+    } catch {
+      return errorResponse(corsHeaders, 400, 'Geçersiz veya izin verilmeyen dosya URL');
+    }
+
     // Fetch the file content
     const fileResponse = await fetch(fileUrl);
     if (!fileResponse.ok) {
