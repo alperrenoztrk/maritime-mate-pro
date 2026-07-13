@@ -10,6 +10,9 @@ export type {
   RegulationInspectionQuestion,
   RegulationTerm,
   RegulationSourceStatus,
+  RegulationNarrativeScenario,
+  RegulationNarrativeSection,
+  RegulationNarrativeChapter,
 } from "./regulations/types";
 export type { RegulationCategory as RegulationCategoryType } from "./regulations/types";
 
