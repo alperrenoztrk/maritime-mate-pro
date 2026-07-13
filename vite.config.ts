@@ -124,4 +124,15 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Hash-only chunk names avoid S3 "same object" upload collisions caused
+        // by many dynamic-import chunks sharing short numeric names like "1-*.js".
+        chunkFileNames: "assets/chunk-[hash].js",
+        entryFileNames: "assets/entry-[hash].js",
+        assetFileNames: "assets/[name]-[hash][extname]",
+      },
+    },
+  },
 }));
