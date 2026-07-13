@@ -26,6 +26,7 @@ import type {
   RegulationDetailedSection,
   RegulationInspectionQuestion,
   RegulationKeyArticle,
+  RegulationNarrativeChapter,
   RegulationOperationalRequirement,
   RegulationSourceStatus,
   RegulationTerm,
@@ -76,6 +77,143 @@ const SectionHeader = ({
   </div>
 );
 
+const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[] }) => (
+  <section id="kapsamli-ders" className="scroll-mt-20">
+    <SectionHeader
+      icon={<BookOpen className="h-4 w-4" />}
+      eyebrow="Ders kitabı anlatımı"
+      title="Kapsamlı konu anlatımı"
+      description="Hukukî yapıdan madde mantığına, gemideki karşılıktan vaka çözümüne ilerleyen bölümleri okuyun. Her bölüm; referans, yaygın hata ve operasyonel sonuçla tamamlanır."
+    />
+    <div className="space-y-5">
+      {chapters.map((entry, chapterIndex) => (
+        <details
+          key={entry.id}
+          open={chapterIndex === 0}
+          className="group overflow-hidden rounded-2xl border border-primary/25 bg-card/75 shadow-sm open:border-primary/40"
+        >
+          <summary className="flex cursor-pointer list-none items-start gap-3 bg-gradient-to-r from-primary/[0.12] via-primary/[0.06] to-transparent p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:p-6">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-sm font-black text-primary-foreground shadow-sm">
+              {String(chapterIndex + 1).padStart(2, "0")}
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-base font-black leading-snug text-foreground sm:text-xl">{entry.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{entry.introduction}</p>
+              <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
+                {entry.sections.length} alt konu · Açmak/kapatmak için dokunun
+              </p>
+            </div>
+            <ChevronDown className="mt-2 h-5 w-5 shrink-0 text-primary transition group-open:rotate-180" />
+          </summary>
+
+          <div className="space-y-5 border-t border-border/50 p-4 sm:p-6">
+            {entry.sections.map((narrativeSection, sectionIndex) => (
+              <article
+                key={`${entry.id}-${narrativeSection.heading}`}
+                className="rounded-2xl border border-border/55 bg-background/55 p-4 sm:p-5"
+              >
+                <div className="mb-4 flex items-start gap-3">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-xs font-black text-primary">
+                    {chapterIndex + 1}.{sectionIndex + 1}
+                  </span>
+                  <h4 className="pt-0.5 text-sm font-black leading-relaxed text-foreground sm:text-lg">
+                    {narrativeSection.heading}
+                  </h4>
+                </div>
+
+                <div className="space-y-3 text-sm leading-7 text-muted-foreground sm:text-[15px] sm:leading-8">
+                  {narrativeSection.paragraphs.map((paragraph, paragraphIndex) => (
+                    <p key={`${narrativeSection.heading}-paragraph-${paragraphIndex}`}>{paragraph}</p>
+                  ))}
+                </div>
+
+                {narrativeSection.references && narrativeSection.references.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2" aria-label="İlgili kural ve kaynaklar">
+                    {narrativeSection.references.map((reference) => (
+                      <span
+                        key={reference}
+                        className="rounded-full border border-sky-500/20 bg-sky-500/[0.07] px-2.5 py-1 text-[10px] font-bold text-sky-600 dark:text-sky-400"
+                      >
+                        {reference}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {narrativeSection.shipboardMeaning && (
+                  <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.07] p-3 sm:p-4">
+                    <p className="mb-1 flex items-center gap-2 text-xs font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                      <ShipWheel className="h-4 w-4" />
+                      Gemideki karşılığı
+                    </p>
+                    <p className="text-sm leading-7 text-muted-foreground">{narrativeSection.shipboardMeaning}</p>
+                  </div>
+                )}
+
+                {narrativeSection.commonMistakes && narrativeSection.commonMistakes.length > 0 && (
+                  <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] p-3 sm:p-4">
+                    <p className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-wide text-amber-600 dark:text-amber-400">
+                      <AlertTriangle className="h-4 w-4" />
+                      Sık karıştırılan noktalar
+                    </p>
+                    <ul className="space-y-1.5 text-sm leading-relaxed text-muted-foreground">
+                      {narrativeSection.commonMistakes.map((mistake) => (
+                        <li key={mistake} className="flex gap-2">
+                          <span className="text-amber-500">•</span>
+                          <span>{mistake}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {narrativeSection.scenario && (
+                  <div className="mt-4 overflow-hidden rounded-xl border border-violet-500/25 bg-violet-500/[0.05]">
+                    <div className="border-b border-violet-500/15 bg-violet-500/[0.08] px-4 py-3">
+                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-violet-600 dark:text-violet-400">
+                        Vaka analizi
+                      </p>
+                      <h5 className="mt-1 font-black text-foreground">{narrativeSection.scenario.title}</h5>
+                    </div>
+                    <div className="grid gap-3 p-4 lg:grid-cols-3">
+                      <div>
+                        <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-muted-foreground">Durum</p>
+                        <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.situation}</p>
+                      </div>
+                      <div>
+                        <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-violet-600 dark:text-violet-400">Kural analizi</p>
+                        <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.analysis}</p>
+                      </div>
+                      <div>
+                        <p className="mb-1 text-[10px] font-black uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Doğru yaklaşım</p>
+                        <p className="text-sm leading-6 text-muted-foreground">{narrativeSection.scenario.correctApproach}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </article>
+            ))}
+
+            {entry.chapterTakeaways && entry.chapterTakeaways.length > 0 && (
+              <div className="rounded-xl border border-primary/20 bg-primary/[0.06] p-4">
+                <p className="mb-2 text-xs font-black uppercase tracking-[0.14em] text-primary">Bölüm sonu kazanımları</p>
+                <ul className="grid gap-2 text-sm text-muted-foreground md:grid-cols-2">
+                  {entry.chapterTakeaways.map((takeaway) => (
+                    <li key={takeaway} className="flex gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <span>{takeaway}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+);
+
 const DetailedSections = ({ sections }: { sections: RegulationDetailedSection[] }) => (
   <section
     id="konu-anlatimi"
@@ -84,8 +222,8 @@ const DetailedSections = ({ sections }: { sections: RegulationDetailedSection[] 
     <SectionHeader
       icon={<GraduationCap className="h-4 w-4" />}
       eyebrow="Kuramsal temel"
-      title="Derinlemesine konu anlatımı"
-      description="Sözleşmenin neden var olduğunu, bölümlerinin birbirine nasıl bağlandığını ve yükümlülüklerin arkasındaki emniyet mantığını okuyun."
+      title="Hızlı kuramsal harita"
+      description="Kapsamlı dersin ardından ana kavramları mevcut özet bölümleriyle hızlıca tekrar edin."
     />
     <div className="space-y-4">
       {sections.map((section, index) => (
@@ -439,7 +577,8 @@ export default function RegulationDetailPage() {
 
   const toc = [
     regulation.learningObjectives?.length && ["ogrenme-hedefleri", "Öğrenme hedefleri"],
-    regulation.detailedSections?.length && ["konu-anlatimi", "Konu anlatımı"],
+    regulation.narrativeChapters?.length && ["kapsamli-ders", "Kapsamlı ders"],
+    regulation.detailedSections?.length && ["konu-anlatimi", "Hızlı kuramsal harita"],
     regulation.operationalRequirements?.length && ["gemi-uygulamasi", "Gemide uygulama"],
     regulation.complianceStages?.length && ["uyum-dongusu", "Uyum döngüsü"],
     regulation.inspectionQuestions?.length && ["denetim-sorulari", "Denetim soruları"],
@@ -470,7 +609,10 @@ export default function RegulationDetailPage() {
             <p className="max-w-5xl text-sm leading-7 text-muted-foreground sm:text-base">{regulation.overview}</p>
             <div className="flex flex-wrap gap-2 text-[11px] font-semibold text-muted-foreground">
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
-                {regulation.detailedSections?.length || 0} anlatım bölümü
+                {regulation.narrativeChapters?.length || 0} kapsamlı ders bölümü
+              </span>
+              <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
+                {regulation.narrativeChapters?.reduce((total, entry) => total + entry.sections.length, 0) || 0} alt konu
               </span>
               <span className="rounded-full border border-border/60 bg-background/50 px-3 py-1">
                 {regulation.operationalRequirements?.length || 0} operasyonel gereklilik
@@ -512,6 +654,10 @@ export default function RegulationDetailPage() {
 
             {regulation.learningObjectives && regulation.learningObjectives.length > 0 && (
               <LearningObjectives objectives={regulation.learningObjectives} />
+            )}
+
+            {regulation.narrativeChapters && regulation.narrativeChapters.length > 0 && (
+              <NarrativeChapters chapters={regulation.narrativeChapters} />
             )}
 
             {regulation.detailedSections && regulation.detailedSections.length > 0 && (
