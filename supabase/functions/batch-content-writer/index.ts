@@ -81,6 +81,12 @@ Deno.serve(async (req) => {
     return new Response(null, { headers });
   }
 
+  // Require authenticated user session
+  const { user, error: authError } = await validateAuth(req);
+  if (authError || !user) {
+    return unauthorizedResponse(headers);
+  }
+
   if (req.method !== "POST") {
     return new Response(
       JSON.stringify({ error: "Method not allowed" }),
