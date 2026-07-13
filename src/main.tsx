@@ -57,14 +57,20 @@ const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     splash.classList.add('splash-hide');
-    setTimeout(() => splash.remove(), 400);
+    // The fade-out transition is .6s — remove only after it has finished.
+    setTimeout(() => splash.remove(), 650);
   }
 };
 
-// Let the book-opening splash animation play through before fading.
-requestAnimationFrame(() => setTimeout(hideSplash, 2350));
+// Let the splash sequence play through before fading: book cover opens, the
+// ship drawing appears on the page, pops into 3D and sails off (~4.2s).
+const prefersReducedMotion =
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const splashHideDelay = prefersReducedMotion ? 1100 : 4200;
+requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, 3000);
+setTimeout(hideSplash, splashHideDelay + 1200);
 
 
