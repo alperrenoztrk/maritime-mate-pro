@@ -20,7 +20,7 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, signInWithEmail, signUpWithEmail, signInWithApple } = useAuth();
+  const { user, loading, signInWithEmail, signUpWithEmail, signInWithApple, signInWithGoogle } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
