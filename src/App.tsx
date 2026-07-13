@@ -74,6 +74,7 @@ const NavigationAssistantPage = lazy(() => import("./pages/NavigationAssistant")
 const ClockPage = lazy(() => import("./pages/Clock"));
 const AuthCallback = lazy(() => import("./pages/AuthCallback"));
 const AuthPage = lazy(() => import("./pages/Auth"));
+const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
 const StabilityPracticalPage = lazy(() => import("./pages/StabilityPractical"));
 const StabilityPracticalTankPage = lazy(() => import("./pages/StabilityPracticalTank"));
 const StabilityPracticalFWAPage = lazy(() => import("./pages/StabilityPracticalFWA"));
