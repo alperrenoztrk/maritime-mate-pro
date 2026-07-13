@@ -8,7 +8,7 @@ import {
   FileSearch,
   Globe,
   Leaf,
-  Map,
+  Map as MapIcon,
   Scale,
   Search,
   Shield,
@@ -21,7 +21,7 @@ const regulationCards: { category: RegulationCategory; title: string; icon: Luci
   { category: "Çevresel Düzenlemeler", title: "Çevresel Düzenlemeler", icon: Leaf },
   { category: "Denetim & Sörvey", title: "Denetim & Sörvey", icon: Search },
   { category: "Gemi Sertifikaları", title: "Gemi Sertifikaları", icon: ClipboardList },
-  { category: "Bölgesel Düzenlemeler", title: "Bölgesel Düzenlemeler", icon: Map },
+  { category: "Bölgesel Düzenlemeler", title: "Bölgesel Düzenlemeler", icon: MapIcon },
 ];
 
 const regulationStyles: Record<RegulationCategory, { dot: string; icon: string; ring: string }> = {
@@ -48,9 +48,32 @@ const searchableText = (item: (typeof regulationItems)[number]) =>
       ...(item.essentials || []),
       ...(item.keyArticles || []).flatMap((article) => [article.id, article.title, article.summary]),
       ...(item.detailedSections || []).flatMap((section) => [section.heading, section.body]),
+      ...(item.narrativeChapters || []).flatMap((chapter) => [
+        chapter.title,
+        chapter.introduction,
+        ...(chapter.chapterTakeaways || []),
+        ...chapter.sections.flatMap((section) => [
+          section.heading,
+          ...section.paragraphs,
+          ...(section.references || []),
+          section.shipboardMeaning || "",
+          ...(section.commonMistakes || []),
+          section.scenario?.title || "",
+          section.scenario?.situation || "",
+          section.scenario?.analysis || "",
+          section.scenario?.correctApproach || "",
+        ]),
+      ]),
       ...(item.terms || []).flatMap((entry) => [entry.term, entry.definition]),
     ].join(" "),
   );
+
+// The narrative layer is intentionally extensive. Build the normalized index
+// once when the route module loads instead of re-normalizing every paragraph on
+// each keystroke.
+const regulationSearchIndex = new Map(
+  regulationItems.map((item) => [item.slug, searchableText(item)]),
+);
 
 const Regulations = () => {
   const [query, setQuery] = useState("");
@@ -65,7 +88,9 @@ const Regulations = () => {
   const filteredItems = useMemo(
     () =>
       normalizedQuery
-        ? regulationItems.filter((item) => searchableText(item).includes(normalizedQuery))
+        ? regulationItems.filter((item) =>
+            regulationSearchIndex.get(item.slug)?.includes(normalizedQuery),
+          )
         : regulationItems,
     [normalizedQuery],
   );
@@ -83,6 +108,19 @@ const Regulations = () => {
   );
   const inspectionCount = regulationItems.reduce(
     (total, item) => total + (item.inspectionQuestions?.length || 0),
+    0,
+  );
+  const narrativeChapterCount = regulationItems.reduce(
+    (total, item) => total + (item.narrativeChapters?.length || 0),
+    0,
+  );
+  const narrativeSectionCount = regulationItems.reduce(
+    (total, item) =>
+      total +
+      (item.narrativeChapters?.reduce(
+        (chapterTotal, chapter) => chapterTotal + chapter.sections.length,
+        0,
+      ) || 0),
     0,
   );
 
@@ -104,16 +142,26 @@ const Regulations = () => {
             <h1 className="text-2xl font-black text-foreground sm:text-3xl">Regülasyonlar</h1>
           </div>
           <p className="mx-auto max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Sözleşme özetinden gemideki uygulamaya ilerleyin: uygulanabilirlik, sorumlular,
-            objektif kanıtlar, doğrulama adımları ve denetim soruları aynı anlatımda.
+            Ders kitabı düzeyindeki anlatımdan gemideki uygulamaya ilerleyin: hukukî yapı,
+            madde mantığı, vaka analizi, objektif kanıtlar ve denetim soruları aynı içerikte.
           </p>
         </header>
 
-        <section className="grid gap-3 sm:grid-cols-3" aria-label="Regülasyon içerik özeti">
+        <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5" aria-label="Regülasyon içerik özeti">
           <div className="rounded-xl border border-border/50 bg-card/70 p-4 backdrop-blur-md">
             <BookOpenCheck className="mb-2 h-5 w-5 text-primary" />
             <p className="text-2xl font-black text-foreground">{regulationItems.length}</p>
             <p className="text-xs text-muted-foreground">benzersiz regülasyon ve kod</p>
+          </div>
+          <div className="rounded-xl border border-border/50 bg-card/70 p-4 backdrop-blur-md">
+            <BookOpenCheck className="mb-2 h-5 w-5 text-violet-500" />
+            <p className="text-2xl font-black text-foreground">{narrativeChapterCount}</p>
+            <p className="text-xs text-muted-foreground">kapsamlı ders bölümü</p>
+          </div>
+          <div className="rounded-xl border border-border/50 bg-card/70 p-4 backdrop-blur-md">
+            <ClipboardList className="mb-2 h-5 w-5 text-amber-500" />
+            <p className="text-2xl font-black text-foreground">{narrativeSectionCount}</p>
+            <p className="text-xs text-muted-foreground">ayrıntılı alt konu ve vaka</p>
           </div>
           <div className="rounded-xl border border-border/50 bg-card/70 p-4 backdrop-blur-md">
             <ClipboardCheck className="mb-2 h-5 w-5 text-emerald-500" />
@@ -140,7 +188,7 @@ const Regulations = () => {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Örn. SOLAS, work/rest, yangın, TML, PSC..."
+            placeholder="Örn. SOLAS II-2, Rule 19, OWS, CII, TML, PSC..."
             className="h-12 w-full rounded-2xl border border-border/60 bg-card/80 pl-11 pr-4 text-sm text-foreground shadow-sm outline-none backdrop-blur-md transition placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
           />
         </div>
@@ -181,7 +229,14 @@ const Regulations = () => {
                               {item.overview}
                             </p>
                             <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-semibold text-muted-foreground">
-                              <span>{item.detailedSections?.length || 0} anlatım bölümü</span>
+                              <span>{item.narrativeChapters?.length || 0} kapsamlı ders</span>
+                              <span aria-hidden>·</span>
+                              <span>
+                                {item.narrativeChapters?.reduce(
+                                  (total, chapter) => total + chapter.sections.length,
+                                  0,
+                                ) || 0} alt konu
+                              </span>
                               <span aria-hidden>·</span>
                               <span>{item.operationalRequirements?.length || 0} gemi uygulaması</span>
                               <span aria-hidden>·</span>
