@@ -7,6 +7,7 @@ import type {
   RegulationSourceStatus,
   RegulationTerm,
 } from "./types";
+import { buildNarrativeChapters } from "./regulationNarratives";
 
 type RegulationEnhancement = Pick<
   RegulationItem,
@@ -1091,6 +1092,7 @@ export const enrichRegulation = (item: RegulationItem): RegulationItem => {
     terms: profile?.terms?.length ? profile.terms : fallback.terms,
     sourceStatus: profile?.sourceStatus || fallback.sourceStatus,
     complianceStages: buildComplianceStages(item),
+    narrativeChapters: buildNarrativeChapters(item),
   };
 };
 
