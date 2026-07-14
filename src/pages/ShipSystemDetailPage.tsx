@@ -3,9 +3,23 @@ import { useState, useEffect } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { shipSystemImages } from "@/data/shipSystemImages";
 import { hasShipSystemLongForm } from "@/data/shipSystems/longform/types";
+import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
-import { ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { SystemArchitectureDiagram } from "@/components/ship-systems/SystemArchitectureDiagram";
+import {
+  Activity,
+  AlertOctagon,
+  BookOpen,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  ClipboardCheck,
+  Eye,
+  Scale,
+  ShieldCheck,
+  UserRoundCheck,
+} from "lucide-react";
 
 
 export default function ShipSystemDetailPage() {
@@ -52,6 +66,9 @@ export default function ShipSystemDetailPage() {
           {section.topics.map((topic, idx) => {
             const isOpen = expandedTopic === idx;
             const topicImage = images[idx];
+            const guide = sectionId
+              ? getProfessionalSystemGuide(sectionId, idx, topic.title)
+              : null;
             return (
               <div key={idx} id={`ship-topic-${idx}`} className="rounded-xl border border-border/30 bg-card/60 overflow-hidden scroll-mt-20">
                 <button
@@ -65,27 +82,86 @@ export default function ShipSystemDetailPage() {
 
                 {isOpen && (
                   <div className="border-t border-border/20 px-4 py-4 flex flex-col gap-4">
-                    {/* 1. Görsel */}
-                    {topicImage && (
-                      <div
-                        className="overflow-hidden rounded-lg cursor-pointer group"
-                        onClick={() => setViewerImage({ src: topicImage, alt: topic.title })}
-                      >
-                        <img
-                          src={topicImage}
-                          alt={topic.title}
-                          className="w-full h-44 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                      </div>
-                    )}
-
-                    {/* 2. Tanım */}
+                    {/* 1. Tanım ve sistemin emniyet sınırı */}
                     {topic.introduction && (
                       <p className="text-sm text-foreground/90 leading-relaxed">{topic.introduction}</p>
                     )}
 
-                    {/* 3. Konu bölümleri */}
+                    {guide && (
+                      <>
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          <div className="rounded-xl border border-primary/20 bg-primary/5 p-3">
+                            <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold text-primary">
+                              <Activity className="h-4 w-4" /> Sistemin görevi
+                            </div>
+                            <p className="text-[12px] leading-relaxed text-foreground/85">{guide.purpose}</p>
+                          </div>
+                          <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3">
+                            <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold text-amber-700 dark:text-amber-300">
+                              <ShieldCheck className="h-4 w-4" /> Ne yapmaz / sınırı
+                            </div>
+                            <p className="text-[12px] leading-relaxed text-foreground/85">{guide.boundary}</p>
+                          </div>
+                        </div>
+
+                        <SystemArchitectureDiagram title={topic.title} stages={guide.flow} />
+
+                        {/* Fotoğraf, şemadan sonra ve doğru bağlam açıklamasıyla gösterilir. */}
+                        {topicImage && (
+                          <figure className="overflow-hidden rounded-xl border border-border/30 bg-card/50">
+                            <button
+                              type="button"
+                              className="block w-full cursor-zoom-in overflow-hidden text-left group"
+                              onClick={() => setViewerImage({ src: topicImage, alt: topic.title })}
+                              aria-label={`${topic.title} fotoğrafını büyüt`}
+                            >
+                              <img
+                                src={topicImage}
+                                alt={`${topic.title} için gerçek gemi kurulum örneği`}
+                                className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                                loading="lazy"
+                              />
+                            </button>
+                            <figcaption className="border-t border-border/20 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+                              <span className="font-semibold text-foreground/80">Gerçek ekipman fotoğrafı: </span>
+                              {guide.photoCaption ?? "Fotoğraf yalnız örnek bir fiziksel kurulumu gösterir; üretici, model ve gemiye özgü donanım onaylı plan ve kullanım kitabından doğrulanır."}
+                            </figcaption>
+                          </figure>
+                        )}
+
+                        <div className="rounded-xl border border-border/30 bg-card/50 p-3">
+                          <div className="flex items-start gap-2">
+                            <UserRoundCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                            <div>
+                              <p className="text-xs font-semibold text-foreground">Sorumluluk ve komuta zinciri</p>
+                              <p className="mt-1 text-[12px] leading-relaxed text-foreground/80">{guide.responsibleRole}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          {[
+                            { title: "Hazırlık", Icon: ClipboardCheck, items: guide.prepare, className: "border-blue-500/20 bg-blue-500/5 text-blue-700 dark:text-blue-300" },
+                            { title: "İşletmede izlenecekler", Icon: Eye, items: guide.monitor, className: "border-cyan-500/20 bg-cyan-500/5 text-cyan-700 dark:text-cyan-300" },
+                            { title: "Çapraz doğrulama", Icon: CheckCircle2, items: guide.verify, className: "border-emerald-500/20 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300" },
+                            { title: "Durdur ve yükselt", Icon: AlertOctagon, items: guide.stopAndEscalate, className: "border-destructive/25 bg-destructive/5 text-destructive" },
+                          ].map(({ title, Icon, items, className }) => (
+                            <section key={title} className={`rounded-xl border p-3 ${className}`}>
+                              <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold">
+                                <Icon className="h-4 w-4" /> {title}
+                              </h3>
+                              <div className="space-y-1.5 text-foreground/80">
+                                {items.map((item, itemIndex) => (
+                                  <p key={itemIndex} className="text-[12px] leading-relaxed">• {item}</p>
+                                ))}
+                              </div>
+                            </section>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    {/* 2. Konu bölümleri */}
                     {topic.sections
                       ?.filter(
                         (sec) =>
@@ -198,12 +274,40 @@ export default function ShipSystemDetailPage() {
                       </div>
                     )}
 
+                    {guide && (
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        <section className="rounded-xl border border-border/30 bg-card/50 p-3">
+                          <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-foreground">
+                            <ClipboardCheck className="h-4 w-4 text-primary" /> Kayıt ve objektif kanıt
+                          </h3>
+                          <div className="space-y-1.5">
+                            {guide.records.map((record, recordIndex) => (
+                              <p key={recordIndex} className="text-[12px] leading-relaxed text-foreground/75">• {record}</p>
+                            ))}
+                          </div>
+                        </section>
+                        <section className="rounded-xl border border-border/30 bg-card/50 p-3">
+                          <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-foreground">
+                            <Scale className="h-4 w-4 text-primary" /> Dayanak ve gemiye özel kaynak
+                          </h3>
+                          <div className="space-y-2">
+                            {guide.references.map((reference, referenceIndex) => (
+                              <div key={`${reference.code}-${referenceIndex}`}>
+                                <p className="text-[11px] font-semibold text-primary">{reference.code}</p>
+                                <p className="text-[11px] leading-relaxed text-foreground/70">{reference.scope}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      </div>
+                    )}
+
                     {sectionId && hasShipSystemLongForm(sectionId, idx) && (
                       <Link
                         to={`/ship-systems/${sectionId}/${idx}`}
                         className="mt-1 inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20"
                       >
-                        Detaylı Anlatımı Aç (20-30 sayfa) →
+                        Mesleki ders anlatımını aç →
                       </Link>
                     )}
                   </div>

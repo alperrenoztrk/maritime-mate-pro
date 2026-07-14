@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Anchor, Compass, Wrench, Gauge, Flame, Package, Leaf, Radio, ArrowRight, Search, X } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { shipSystemsData } from "@/data/shipSystemsData";
+import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 
 const SECTIONS = [
   {
@@ -82,20 +83,39 @@ interface TopicHit {
   topicTitle: string;
   icon: typeof Anchor;
   color: string;
+  purpose: string;
+  searchText: string;
 }
 
 const ALL_TOPICS: TopicHit[] = Object.entries(shipSystemsData).flatMap(([sectionId, section]) => {
   const meta = SECTION_META[sectionId];
   if (!meta) return [];
-  return section.topics.map((t, idx) => ({
-    sectionId,
-    sectionTitle: meta.title,
-    topicIndex: idx,
-    topicTitle: t.title,
-    icon: meta.icon,
-    color: meta.color,
-  }));
+  return section.topics.map((t, idx) => {
+    const guide = getProfessionalSystemGuide(sectionId, idx, t.title);
+    const sourceText = [
+      t.title,
+      section.title,
+      section.description,
+      t.introduction,
+      ...guide.searchTerms,
+      guide.purpose,
+      guide.boundary,
+      ...t.sections.flatMap((topicSection) => [topicSection.heading, ...topicSection.paragraphs]),
+    ].join(" ");
+    return {
+      sectionId,
+      sectionTitle: meta.title,
+      topicIndex: idx,
+      topicTitle: t.title,
+      icon: meta.icon,
+      color: meta.color,
+      purpose: guide.purpose,
+      searchText: sourceText,
+    };
+  });
 });
+
+const TOTAL_TOPIC_COUNT = ALL_TOPICS.length;
 
 const normalize = (s: string) =>
   s
@@ -115,7 +135,7 @@ export default function ShipSystemsPage() {
     if (!trimmed) return [] as TopicHit[];
     const q = normalize(trimmed);
     return ALL_TOPICS.filter(
-      (h) => normalize(h.topicTitle).includes(q) || normalize(h.sectionTitle).includes(q),
+      (h) => normalize(h.searchText).includes(q),
     );
   }, [trimmed]);
 
@@ -132,6 +152,9 @@ export default function ShipSystemsPage() {
             <h1 className="text-xl font-bold tracking-tight text-foreground">
               Gemi Sistemleri ve Ekipmanları
             </h1>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              {TOTAL_TOPIC_COUNT} sistem; doğru çalışma akışı, gemide kullanım, çapraz doğrulama, arıza ve mevzuat bağlantısıyla.
+            </p>
           </header>
 
           {/* Arama kutusu */}
@@ -179,6 +202,7 @@ export default function ShipSystemsPage() {
                     <div className="flex-1 min-w-0">
                       <p className="truncate text-sm font-semibold text-foreground">{hit.topicTitle}</p>
                       <p className="truncate text-[11px] text-muted-foreground">{hit.sectionTitle}</p>
+                      <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-foreground/65">{hit.purpose}</p>
                     </div>
                     <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
                   </Link>
@@ -198,6 +222,10 @@ export default function ShipSystemsPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-foreground leading-tight">{section.title}</p>
+                    <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{section.desc}</p>
+                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-primary/80">
+                      {shipSystemsData[section.id]?.topics.length ?? 0} sistem
+                    </p>
                   </div>
                   <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
                 </Link>

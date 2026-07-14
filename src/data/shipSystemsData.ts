@@ -92,7 +92,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "Windlass chain stopper'lar (zincir freni) yardımıyla zincir tutulur; windlass yük altında bırakılmaz.",
-          "Funda hızı genellikle 5-9 şakel/dakika, vira hızı 2 şakel/dakikadır.",
+          "Funda ve vira hızı şakel/dakika gibi sabit bir ezber değerle yönetilmez; fren testi, su derinliği, zincir yükü ve üretici limitlerine göre metre/dakika olarak izlenir, şakel işaretleri ise verilen zincir boyunu takip etmek içindir.",
           "Fren bandı kuru tutulmalıdır; yağlı fren tutma kapasitesini kaybeder.",
           "Demir fundası sırasında zincir hızı kontrol altında tutulmalıdır; serbest funda kayıp demire neden olabilir."
         ],
@@ -141,15 +141,15 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "SWL ve Test Gereklilikleri",
             paragraphs: [
-              "Safe Working Load (SWL), vincin güvenle kaldırabileceği maksimum ağırlıktır. Proof load test, SWL'nin 1.25 katı statik yük ile yapılır.",
-              "ILO Convention 152 ve SOLAS Chapter II-1 gereği, kaldırma donanımları 5 yılda bir test edilir. Yıllık kapsamlı muayene (thorough examination) yapılır."
+              "Safe Working Load (SWL), onaylı yük diyagramındaki bom açısı/radyus ve çalışma düzeni için izin verilen üst sınırdır; kanca bloğu, spreader ve gevşek donanım ağırlıkları hesaba katılır.",
+              "Muayene, kapsamlı muayene ve proof-load kapsamı sabit bir internet tablosundan değil; bayrak devleti uygulaması, SOLAS II-1/3-13, MSC.1/Circ.1663, ILO 152 uygulanabilirliği ve geminin Register of Lifting Appliances/Cargo Gear Book kayıtlarından doğrulanır."
             ],
             table: {
-              headers: ["SWL Aralığı", "Proof Load", "Test Sıklığı"],
+              headers: ["Kontrol", "Doğrulama kaynağı", "Objektif kanıt"],
               rows: [
-                ["≤ 20 ton", "1.25 × SWL", "5 yılda bir"],
-                ["20 – 50 ton", "SWL + 5 ton", "5 yılda bir"],
-                ["> 50 ton", "1.10 × SWL", "5 yılda bir"]
+                ["SWL / yük diyagramı", "Onaylı plan ve üretici manual'i", "Okunur marking ve güncel load chart"],
+                ["Proof-load", "İdarenin kabul ettiği test yükü ve yöntem", "Yetkili test sertifikası"],
+                ["Periyodik muayene", "Bayrak/class/PMS aralığı", "Register ve kusur-kapatma kaydı"]
               ]
             }
           },
@@ -157,12 +157,12 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Kaldırma Kapasitesi Hesabı",
             paragraphs: [],
             formula: {
-              expression: "M = F × L × cos(θ)",
+              expression: "M = F × R; R = L × cos(θ)",
               variables: [
                 "M: Devirme momenti (kN·m)",
                 "F: Kaldırılan yük (kN)",
                 "L: Bumba uzunluğu (m)",
-                "θ: Bumba açısı (derece)"
+                "θ: Yataydan ölçülen bumba açısı (derece); R yatay çalışma yarıçapıdır"
               ]
             },
             example: {
@@ -206,7 +206,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "SWL kesinlikle aşılmamalı; rüzgâr hızı limitinde operasyon durdurulmalı.",
           "Yük altında ve dönüş alanında personel bulunmamalı.",
-          "Tel halatlar yıllık görsel + periyodik NDT kontrolünden geçmeli.",
+          "Wire rope inspection; broken wire, çap kaybı, korozyon, ezilme/kink, ısı hasarı ve lubrication durumunu maker/ISO discard criteria ile kapsar. NDT yöntemi ancak uygun ekipman/prosedür özellikle gerektiriyorsa kullanılır.",
           "Operasyon sırasında haberleşme (telsiz/işaret) sürekli olmalı.",
           "Sertifikalı sapan ve kanca kullan, etiketi okunamayan ekipmanı kullanma."
         ]
@@ -275,7 +275,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
       },
       {
         title: "Kapak (Hatch Cover) Mekanizmaları",
-        introduction: "Ambar kapakları, yük ambarlarını deniz suyu, yağmur ve dalga etkilerinden koruyan su geçirmez kapama sistemleridir. SOLAS Chapter II-1 ve IACS UR S21 gerekliliklerine uygun olmalıdır.",
+        introduction: "Ambar kapakları, yük ambarlarını deniz suyu, yağmur ve dalga etkilerinden koruyan kapama sistemleridir. Açık güverte kargo hatch cover'larında aranan temel nitelik çoğunlukla weathertight bütünlüktür; watertight terimi yalnız onaylı tasarım gerçekten bunu gerektiriyorsa kullanılmalıdır.",
         sections: [
           {
             heading: "Hatch Cover Tipleri",
@@ -294,8 +294,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Sızdırmazlık ve Test",
             paragraphs: [
-              "Kauçuk contalar (rubber packing) ambar kapağı ile coaming arasında su geçirmezlik sağlar. Compression bar contayı sıkıştırır.",
-              "Hose test: Contaların su geçirmezliğini test etmek için dışarıdan basınçlı su uygulanır. İçeriden sızıntı kontrol edilir.",
+              "Kauçuk contalar (rubber packing), compression bar, cross-joint ve drenajlar birlikte weathertight bütünlüğü sağlar; yalnız contayı değiştirmek hatalı panel hizasını veya yetersiz cleat ayarını düzeltmez.",
+              "Hose test: Onaylı test düzenine göre dışarıdan su uygulanır ve içeriden giriş gözlenir; su basıncı, nozül mesafesi ve ilerleme hızı rastgele seçilmez.",
               "Ultrasonic test: Daha güvenilir bir yöntem olup, ambar içine ultrasonik verici, dışarıda alıcı ile conta sızdırmazlığı ölçülür.",
               "Tebeşir testi: Contaya tebeşir sürülerek kapatılır; kapak açıldığında çelik yüzeydeki tebeşir izi düzgün dağılmış olmalıdır."
             ]
@@ -368,7 +368,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 "T₁ = 200 × e^(4.71)",
                 "T₁ = 200 × 111.3 = 22 260 N ≈ 22.3 kN"
               ],
-              result: "3 tur sarım ile 200 N kuvvet uygulanarak yaklaşık 22.3 kN (≈ 2.3 ton) yük tutulabilir."
+              result: "İdeal capstan denklemi yaklaşık 22,3 kN verir; bu değer güvenli çalışma yükü değildir. Rope construction, wet/contaminated drum, fleeting angle, human tailing ve fitting SWL nedeniyle operasyon yalnız maker limitleriyle yapılır."
             }
           },
           {
@@ -383,8 +383,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "Capstan'da halatı tutarken asla halat ile tambur arasına el sokulmaz.",
-          "Halat sarım sayısı arttıkça tutma kuvveti üstel olarak artar.",
-          "Bollard SWL değeri, bağlanan halatın kopma yükünün en az %80'i olmalıdır.",
+          "Sarım sayısı teorik sürtünme kapasitesini artırır; bunu insanın daha ağır yükü güvenle tutabileceği anlamında kullanma ve riding turn oluşmasına izin verme.",
+          "Bollard/fairlead SWL'si sabit bir halat kopma yükü yüzdesinden türetilmez; onaylı mooring arrangement, fitting marking'i, tasarım yükü ve kullanılan halatın LDBF/MBL değerleri birlikte doğrulanır.",
           "Fairlead açısı halatın aşırı bükülmesini engelleyecek şekilde seçilmelidir."
         ],
         workingPrinciple: [
@@ -408,7 +408,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Capstan üzerinde halat varken motoru durdurma; halat sıkışabilir.",
           "Eldiven halat dolanma riski yarattığından sıkı kavrama yapılmamalı.",
           "Snap-back alanında durulmamalı.",
-          "Tüm güverte donanımı periyodik NDT/görsel muayeneye tabi tutulmalı."
+          "Deck fitting, foundation, weld, marking ve movable parts onaylı PMS/survey planıyla muayene edilir; NDT yöntemi kusur mekanizması ve yetkili survey talebine göre seçilir."
         ]
       }
     ]
@@ -420,13 +420,14 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
     topics: [
       {
         title: "Radar Sistemi",
-        introduction: "Deniz radarı, mikrodalga sinyalleri göndererek çevredeki hedeflerin mesafe, kerteriz ve hareketini tespit eden birincil seyir güvenliği cihazıdır. SOLAS Chapter V Regulation 19 gereği tüm ticari gemilerde bulunması zorunludur.",
+        introduction: "Deniz radarı; sabit ve hareketli hedefleri tespit etmek, mesafe ile kerteriz ölçmek, kıyı seyrini ve çatışma riski değerlendirmesini desteklemek için kullanılan aktif bir seyir sensörüdür. Radarın taşınma adedi ve X/S-band düzeni geminin tipi, gros tonajı ve yapım tarihine göre SOLAS V/19 ile ilgili Record of Equipment üzerinden belirlenir; 'her ticari gemide aynı radar düzeni zorunludur' şeklinde genellenmez.",
         sections: [
           {
-            heading: "Çalışma Prensibi",
+            heading: "Radarın Görevi ve Sinyal Zinciri",
             paragraphs: [
-              "Radar, magnetron veya solid-state verici tarafından üretilen kısa süreli mikrodalga darbelerini (pulse) anten aracılığıyla gönderir. Hedeften yansıyan sinyal (echo) alıcı tarafından işlenir.",
-              "Mesafe, sinyalin gidiş-dönüş süresinden hesaplanır. Kerteriz, antenin hedefi algıladığı andaki dönme açısıyla belirlenir."
+              "Magnetronlu veya solid-state verici, scanner üzerinden elektromanyetik enerji yollar. Hedeften dönen ekonun gidiş-dönüş süresi mesafeyi; antenin azimut konumu relative bearing'i verir. Gyro heading eklenince true bearing ve north-up/cours-up sunum üretilebilir.",
+              "Receiver ve signal processor çok zayıf ekoyu yükseltirken sea clutter, rain clutter ve interference'i bastırmaya çalışır. Gain veya clutter kontrolünün aşırı kullanılması yalnız paraziti değil küçük tekne, şamandıra, düşük kıyı veya dalga arasındaki gerçek hedefi de silebilir.",
+              "Radarın operasyonel değeri yalnız ekoyu göstermesi değildir: doğru presentation/motion seçimi, uygun range scale, EBL/VRM ölçümü, parallel index, trails ve ARPA target tracking aynı resmin farklı kanıt katmanlarıdır."
             ],
             formula: {
               expression: "R = (c × t) / 2",
@@ -448,120 +449,271 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             }
           },
           {
-            heading: "X-Band ve S-Band",
-            paragraphs: [],
+            heading: "X-Band ve S-Band: Birbirinin Yedeği Değil, Farklı Görüş",
+            paragraphs: [
+              "X-band yaklaşık 9 GHz/3 cm dalga boyunda çalışır; ince hedef ve kıyı detayında yüksek ayrım sağlar, radar SART'ı interrogate eder fakat yağıştan daha fazla etkilenebilir. S-band yaklaşık 3 GHz/10 cm dalga boyundadır; şiddetli yağış ve bazı deniz koşullarında daha kararlı uzun menzil resmi verebilir fakat klasik radar SART yanıtını göstermez.",
+              "İki radar varsa aynı ayar ve range'de kopya ekran gibi kullanılmamalıdır. Farklı band, range, pulse/presentation ve clutter ayarıyla ortak kör noktaları azaltan bağımsız resimler oluşturulur."
+            ],
             table: {
-              headers: ["Özellik", "X-Band (9 GHz)", "S-Band (3 GHz)"],
+              headers: ["Operasyonel özellik", "X-Band (yaklaşık 9 GHz)", "S-Band (yaklaşık 3 GHz)"],
               rows: [
-                ["Dalga boyu", "3 cm", "10 cm"],
-                ["Çözünürlük", "Yüksek", "Düşük"],
-                ["Yağmur etkisi", "Etkilenir (rain clutter)", "Daha az etkilenir"],
-                ["Racon algılama", "Evet", "Evet"],
-                ["SART algılama", "Evet (zorunlu)", "Hayır"],
-                ["Zorunluluk", "Tüm gemiler", "≥ 3000 GT"]
+                ["Yaklaşık dalga boyu", "3 cm", "10 cm"],
+                ["Küçük hedef/kıyı detayı", "Genellikle daha iyi", "Genellikle daha kaba fakat yağışta daha kararlı olabilir"],
+                ["Yağış zayıflaması", "Daha belirgin", "Daha az belirgin"],
+                ["Klasik radar SART", "Gösterir", "Göstermez"],
+                ["Taşıma hükmü", "Gemi tipi/GT/yapım tarihine göre", "İkinci radar hükmü ve onaylı düzenlemeye göre"]
               ]
             }
           },
           {
-            heading: "ARPA (Automatic Radar Plotting Aid)",
+            heading: "Ekranı Kurma: Range, Presentation, Gain ve Clutter",
             paragraphs: [
-              "ARPA, radar hedeflerini otomatik olarak takip eder ve CPA (Closest Point of Approach) ile TCPA (Time to CPA) değerlerini hesaplar.",
-              "En az 20 hedefi eşzamanlı takip edebilmelidir. Hedef edinme (acquisition) 1 dakikada, takip (tracking) 3 dakikada kararlı hale gelmelidir.",
-              "Trial manoeuvre özelliği ile planlanan kurs veya hız değişikliğinin hedeflere etkisi önceden görülebilir."
+              "Önce brilliance/contrast ve background, sonra uygun range scale ile orientation ve motion seçilir. Head-up unstabilized basit relative resmi verir; gyro-stabilized course-up veya north-up harita ve true bearing karşılaştırmasını kolaylaştırır. Relative motion ve true motion, hedef vektörü değil bütün radar resminin hareket referansıdır.",
+              "Gain, boş alanda hafif speckle görülecek seviyeden az miktar geri alınarak manuel doğrulanır. Sea clutter yakın çevrede dalga ekolarını; rain clutter yağış hücrelerini bastırır. Kontroller en düşük gerekli seviyede tutulur ve küçük hedeflerin kaybolmadığı farklı range'lerde tekrar kontrol edilir.",
+              "Kısa pulse yakın hedef ayrımını, uzun pulse/uygun processing uzak hedef enerjisini destekler. Solid-state cihazdaki pulse-compression/auto modes üreticiye özgüdür; kullanıcı hangi otomatik fonksiyonun aktif olduğunu ekrandan bilmelidir."
+            ]
+          },
+          {
+            heading: "Eko Okuma, Kör Sektörler ve Sahte Hedefler",
+            paragraphs: [
+              "Shadow/blind sector; mast, baca, crane veya yük nedeniyle belirli kerterizde hedefin zayıflaması ya da kaybolmasıdır. Bu sektörler bridge poster/inspection bilgisi ve diğer radar/görsel gözcülükle yönetilir.",
+              "Side-lobe, multiple echo, indirect echo, second-trace ve interference gerçek hedefe benzeyebilir. Sabit objeye göre hareket, range değişimindeki davranış, başka radar ve görsel kontrol ile ayrıştırılır.",
+              "Ducting, yoğun yağış, sea state, hedef radar cross-section'ı ve anten yüksekliği detection range'i değiştirir. Radar ufkunun ötesindeki veya düşük RCS'li hedefin görünmemesi hedefin bulunmadığı anlamına gelmez."
+            ]
+          },
+          {
+            heading: "EBL/VRM, Parallel Index ve Clearing Range",
+            paragraphs: [
+              "EBL/VRM ile ölçülen bearing/range; cursor veya ekran göz kararı yerine karar verilebilir nicel kanıt sağlar. Relative bearing kullanılıyorsa gyro/heading error ve own-ship heading referansı ayrıca ele alınır.",
+              "Parallel index, sabit bir radar objesinin planlanmış PI çizgisine göre hareketini izleyerek cross-track durumunu gösterir; elektronik rota çizgisinin kopyası değildir. PI, uygun radar-conspicuous obje, doğru range/bearing ve passage plan üzerinde hesaplanmış clearing distances ile hazırlanır.",
+              "Bir sabit objenin EBL bearing trendi, radar bearing alignment ve compass error kontrolünü destekler. Radar overlay hizası aynı GNSS/gyro hatasını paylaşabileceğinden tek başına bağımsız mevki kontrolü sayılmaz."
+            ]
+          },
+          {
+            heading: "ARPA, Vektörler ve Trial Manoeuvre",
+            paragraphs: [
+              "ARPA ardışık radar ölçümlerinden hedef track'i kurar; own-ship heading ve speed girdisiyle relative/true course-speed, CPA ve TCPA tahmini üretir. Yeni acquire edilen, manevra yapan, ekosu birleşen veya clutter içinde kalan hedefin çözümü kararsız olabilir.",
+              "Relative vector, mevcut hareketler sürerse hedefin own ship'e göre izleyeceği yolu; true vector, seçilen ground/water speed referansına göre gerçek yön ve sürati gösterir. Vector mode/time okunmadan yalnız okun ucuna bakmak yanlış manevra yorumuna yol açar.",
+              "Trial manoeuvre karar desteğidir; gecikme süresi, planlanan course/speed change ve hedeflerin mevcut track varsayımına bağlıdır. Sonuç COLREG sorumluluğunu, görsel gözcülüğü veya köprüüstü takım değerlendirmesini devralmaz."
+            ],
+            table: {
+              headers: ["ARPA girdisi/durumu", "Bozulursa görülen etki", "OOW kontrolü"],
+              rows: [
+                ["Gyro heading", "True vector/course ve bearing yanlışlaşır", "Radar heading ile master/repeater değerini karşılaştır"],
+                ["Speed through water/ground", "True motion ve target true vector değişir", "Seçili speed source/mode'u doğrula"],
+                ["Target track history", "Manevrada CPA/TCPA geç tepki verir", "Bearing/range trendini manuel izle"],
+                ["Echo continuity", "Target swap/lost target oluşabilir", "Eko ile sembolün aynı hedefte kaldığını kontrol et"]
+              ]
+            }
+          },
+          {
+            heading: "COLREG İçinde Radar Karar Zinciri",
+            paragraphs: [
+              "Rule 5 tüm uygun araçlarla gözcülük; Rule 6 emniyetli hız; Rule 7 çatışma riskinin mevcut tüm araçlarla belirlenmesi; Rule 8 erken, belirgin ve emniyetli kaçınma hareketi ister. Sabit kalan veya yeterince değişmeyen bearing, azalan range ile birlikte ciddi risk işaretidir; yakın mesafede bearing değişse bile risk bulunabilir.",
+              "Kısıtlı görüşte Rule 19 uygulanır. Radar hedefinin forward/abaft the beam konumu, close-quarters risk ve course alteration yönü birlikte düşünülür; yalnız AIS adı veya VHF anlaşmasıyla COLREG manevrası kurulmaz.",
+              "Radar plotting bir defalık CPA okuması değildir. Hedef acquire edilir, çözümün oturması beklenir, bearing/range-vektör trendi izlenir, yapılan manevranın etkisi yeterli süre sonra yeniden kontrol edilir."
+            ]
+          },
+          {
+            heading: "Performans, Sensör Kaybı ve Yedek Kullanım",
+            paragraphs: [
+              "Performance monitor/BITE sonucu, sea return ve bilinen radar-conspicuous objelerin görünümü günlük operasyonel performans kanıtıdır. Magnetronlu sistemlerde warm-up/tuning davranışı; solid-state sistemlerde self-test ve module status üretici kitabına göre izlenir.",
+              "Heading/speed input kaybında radar ekosu bulunabilir fakat stabilization ve ARPA true data güvenilirliği bozulur. Kullanıcı arızalı katmanı ayırır, relative ölçüm ve manuel plotting/diğer radar-görsel yöntemlere döner, Kaptanı bilgilendirir ve arızayı kaydeder.",
+              "Radar arızasında hedefi 'onarım yaparak' değil, önce safe speed, ek gözcü, alternatif radar/seyir sensörü ve gerekirse rota/alan değişikliği ile operasyonel olarak emniyete almak vardiya zabitinin ilk görevidir."
             ]
           }
         ],
         keyPoints: [
-          "Radar, COLREG Rule 7 gereği çatışma riski değerlendirmesinde kullanılmalıdır.",
-          "Paralel index tekniği ile kıyı seyrinde güvenli rota takibi yapılır.",
-          "Radar reflektör (RTE) küçük hedeflerin algılanmasını kolaylaştırır.",
-          "EBL (Electronic Bearing Line) ve VRM (Variable Range Marker) temel ölçüm araçlarıdır."
+          "Radar resmi ayardan bağımsız değildir; aşırı sea/rain clutter gerçek hedefi silebilir.",
+          "Range, bearing ve bearing trendi, tek bir CPA/TCPA sayısından daha temel kanıttır.",
+          "Relative/true motion ile relative/true vector farklı kavramlardır ve her vardiyada bilinçli seçilir.",
+          "ARPA target symbol'ü gerçek ekodan ayrılmamalı; target swap/lost target ihtimali izlenmelidir.",
+          "Parallel index bir clearing ve cross-track tekniğidir; elektronik mevkiyi bağımsız doğrulayan tek araç değildir.",
+          "Radar COLREG kararını destekler; görsel gözcülük, safe speed ve erken/substantial action sorumluluğunu devralmaz."
         ],
         workingPrinciple: [
-          "Magnetron veya solid-state verici, X-band (9 GHz) veya S-band (3 GHz) mikrodalga darbe üretir.",
-          "Anten dönerken darbeyi yayar; hedeflerden yansıyan eko alıcıya döner.",
-          "Gidiş-dönüş süresinden mesafe, anten azimutundan kerteriz hesaplanır.",
-          "ARPA, hedefleri otomatik takip ederek CPA/TCPA hesaplar."
+          "Verici-scanner hedefe enerji yollar; receiver dönen ekoyu işler.",
+          "Gidiş-dönüş zamanı range'i, antenna azimuth relative bearing'i üretir.",
+          "Gyro heading true bearing ve stabilized presentation; seçili log/GNSS speed ise true motion/ARPA çözümünü besler.",
+          "Gain ve clutter processing detection ile false echo bastırma arasında bir denge kurar.",
+          "ARPA ardışık range/bearing ölçümlerinden track ve CPA/TCPA tahmin eder.",
+          "Kullanıcı EBL/VRM, PI, trails, ikinci radar ve görsel bilgiyle çıktıyı doğrular."
         ],
         operation: [
-          "Stand-by'dan transmit'e geç; magnetron için warm-up süresini bekle.",
-          "Range, gain, sea clutter ve rain clutter'ı koşula göre ayarla.",
-          "EBL/VRM ile kerteriz ve mesafe ölçümü yap.",
-          "ARPA'da hedefi acquire et, vector ve trail göster.",
-          "Trip sonunda vericiyi stand-by'a al, anten frenini sık."
+          "Power/BITE, scanner area, heading ve speed sensor status ile radar time/alarm durumunu doğrula; magnetronlu tipte maker warm-up süresini bekle.",
+          "Seyir safhasına uygun range, orientation ve relative/true motion seç; ikinci radar varsa farklı band/range ile tamamlayıcı resim kur.",
+          "Brilliance/contrast ve gain'i manuel referansla ayarla; sea/rain clutter'ı minimum gerekli seviyede kullanıp küçük hedefleri farklı range'lerde kontrol et.",
+          "Known heading/bearing alignment, range accuracy ve performance monitor/sea-return kontrolünü gemi checklist'ine göre yap.",
+          "EBL/VRM ile nicel range/bearing al; coastal passage'ta passage plan PI ve clearing ranges'i kur.",
+          "Önemli hedefleri acquire et; echo-symbol eşleşmesini, vector mode/time, speed source ve tracking history'yi oku.",
+          "CPA/TCPA'yı bearing/range trendi, visual lookout, AIS identity ve ikinci radar bilgisiyle çaprazla.",
+          "Trial manoeuvre kullanılıyorsa delay ve planlanan course/speed change'i doğru gir; COLREG ve bridge-team değerlendirmesiyle karar ver.",
+          "Manevra sonrası hedefleri yeniden plot et; passing distance açılmasını ve close-quarters riskinin gerçekten bittiğini doğrula."
         ],
         faults: [
-          { fault: "Eko zayıf veya yok", cause: "Magnetron yaşlanmış, antenna feed arızalı", action: "Magnetron performansını ölç, gerekirse değiştir." },
-          { fault: "Anten dönmüyor", cause: "Motor/redüktör arızası, fren takılı", action: "Motoru kontrol et, freni serbest bırak." },
-          { fault: "Aşırı parazit (clutter)", cause: "Hatalı tuning, çevre koşulları", action: "Sea/rain clutter ve gain'i ayarla, FTC/STC kullan." },
-          { fault: "ARPA hedef kayıp", cause: "Heading/speed input kesik, gyro/log arızası", action: "Sensör girdisi ve kabloyu kontrol et." },
-          { fault: "Ekran karanlık", cause: "Güç beslemesi/PSU arızası", action: "Sigorta ve PSU'yu kontrol et." }
+          { fault: "Zayıf/eksik eko", cause: "Aşırı clutter/gain ayarı, yanlış range/pulse, shadow sector, ağır yağış veya transmitter/receiver performansı", action: "Önce ayarı ve bilinen objeyi farklı range/band ile doğrula; ikinci radar/görsel gözcülüğe geç, PM/BITE sonucunu kaydet ve Kaptanı bilgilendir." },
+          { fault: "Heading line/ekolar haritayla hizasız", cause: "Gyro input/repeater farkı, antenna azimuth alignment veya heading source seçimi", action: "Master/repeater ve radar heading'i karşılaştır; true bearing/overlay/ARPA true data'ya güveni kes, relative ölçüm ve bağımsız fix kullan." },
+          { fault: "Anten/scanner alarmı", cause: "Drive, obstruction, interlock veya power fault", action: "Transmit'i maker prosedürüne göre kes; anten alanına LOTO olmadan çıkma, diğer radar ve safe-navigation önlemlerini kur." },
+          { fault: "ARPA target swap/lost target", cause: "Ekoların birleşmesi, clutter, hedef manevrası veya tracking discontinuity", action: "Sembolü gerçek eko ile yeniden eşleştir; manuel EBL/VRM plotting ve görsel/radar çapraz kontrol yap." },
+          { fault: "True vector/CPA mantıksız", cause: "Yanlış speed source, gyro/log kaybı, vector mode/time veya target solution kararsızlığı", action: "Source ve mode'u doğrula; bearing/range trendine dön, çözüm oturmadan manevra kararı verme." },
+          { fault: "Radar display/power kaybı", cause: "Besleme, PSU/display veya network fault", action: "Stand-by/ikinci radara geç; safe speed, ek gözcü ve Master call uygula, yeniden başlatmayı maker/SMS sınırında yap." }
         ],
         precautions: [
-          "Anten alanında çalışırken vericiyi stand-by'a al ve LOTO uygula.",
-          "Mikrodalga radyasyon riskine karşı yakın mesafede durma.",
-          "Performance Monitor (PM) ile periyodik performans kontrolü yap.",
-          "Sigorta değişiminde sadece üreticinin tipini kullan."
+          "Scanner/anten alanında çalışma için transmit inhibit tek başına yeterli kabul edilmez; üretici LOTO ve permit prosedürünü uygula.",
+          "Radar ayarını bir önceki vardiyadan körlemesine alma; visibility, sea state, traffic ve range değiştikçe yeniden optimize et.",
+          "Radar/AIS association, overlay veya ARPA sembolünü gerçek radar ekosunun yerine koyma.",
+          "Alarmı yalnız susturma; sensor source, mode ve hedef çözümüne etkisini değerlendir.",
+          "Bakım/kalibrasyon ve magnetron/module değişimi yetkili personel/maker prosedürü işidir; OOW'un ilk görevi seyri emniyete almaktır.",
+          "MSC.192(79), maker manual, bridge checklist ve passage plan PI kayıtlarını gemiye özgü referans olarak kullan."
         ]
       },
       {
         title: "ECDIS (Elektronik Harita Sistemi)",
-        introduction: "ECDIS (Electronic Chart Display and Information System), kâğıt haritanın yasal eşdeğeri olarak kabul edilen elektronik seyir sistemidir. IMO MSC.232(82) performans standartlarına uygun olmalıdır.",
+        introduction: "ECDIS; type-approved donanım/yazılım, resmî ve güncel ENC/uygun olduğunda RNC verisi, yetkin kullanıcı ve yeterli bağımsız backup düzeni birlikte sağlandığında SOLAS V/19 ve V/27 kapsamındaki harita/yayın taşıma yükümlülüğünü karşılayabilen emniyet-kritik bir seyir sistemidir. Tek başına bir ekran veya rota çizgisi 'kâğıt haritanın otomatik eşdeğeri' değildir.",
         sections: [
           {
-            heading: "ENC ve RNC",
+            heading: "Yasal Statü, Taşıma Kapsamı ve Backup",
             paragraphs: [
-              "ENC (Electronic Navigational Chart): IHO S-57/S-101 standardında vektör harita. Katmanlar halinde bilgi içerir ve sorgulanabilir. ECDIS'in yasal geçerlilik için ENC kullanması gerekir.",
-              "RNC (Raster Navigational Chart): Kâğıt haritanın taranmış dijital kopyası. Ölçekleme sınırlıdır ve sorgulanamaz. Yalnızca RCDS modunda ve kâğıt harita desteği ile kullanılabilir."
+              "ECDIS carriage requirement tüm SOLAS gemileri için aynı değildir; gemi tipi, GT, yapım tarihi ve uygulanabilir geçiş hükümleri Record of Equipment'tan doğrulanır. Carriage zorunluluğu ile backup düzeni de ayrı konulardır: ikinci bağımsız ECDIS, güncel kâğıt folyo veya İdarenin kabul ettiği başka yeterli düzen geminin onaylı dokümanında tanımlanır.",
+              "ECDIS ancak resmî Hydrographic Office yetkisiyle yayımlanmış ve güncel ENC/ENDS ile onaylı çalışma modunda kullanıldığında yasal chart function sağlar. ECS, web haritası, pilot uygulaması veya unofficial chart ECDIS ekranında görünse bile SOLAS harita taşıma şartını karşılamaz.",
+              "RNC'nin bulunduğu RCDS modunda ECDIS'in vektör alarm/sorgu kabiliyetleri azalır. RCDS kullanımı, gerekli güncel kâğıt haritalar ve flag/route kapsamına ilişkin prosedürle birlikte yönetilir; ekranda raster harita açmak otomatik yasal eşdeğerlik sağlamaz."
             ]
           },
           {
-            heading: "ECDIS Zorunlulukları",
+            heading: "Veri Zinciri: ENC, SENC, Permit, Update ve Presentation",
             paragraphs: [
-              "IMO ECDIS taşıma programı (MSC.282(86)) gereği tüm SOLAS gemileri iki adet onaylı ECDIS taşımak zorundadır. Yedek düzenleme olarak ikinci bir bağımsız ECDIS veya güncel kâğıt haritalar kabul edilir.",
-              "Haftalık ENC güncellemeleri uygulanmalıdır. Güncelleme yapılmadan seyir, ISM Code ihlali sayılabilir."
+              "Legacy ECDIS'te resmî vektör ENC esas olarak IHO S-57 transfer standardında dağıtılır; S-63 veri koruma/permit mekanizmasıyla yüklenir ve üretici iç formatındaki SENC'e lossless dönüştürülür. Ekrandaki sembol/renk ve display category IHO S-52 Presentation Library ile cihaz performans standardına uyar.",
+              "S-101, S-100 tabanlı yeni nesil ENC ürünüdür ve her mevcut S-57 ECDIS'te açılamaz. MSC.530(106), 1 Ocak 2026-31 Aralık 2028 arasında kurulan ekipmanda MSC.232(82) veya yeni standardı kabul eder; 1 Ocak 2029'dan itibaren kurulan ECDIS yeni/S-100 yetenekli standarda göre olacaktır. Bu bir gecede bütün gemi ENC'lerinin S-101'e döndüğü anlamına gelmez.",
+              "Base cell, new edition ve incremental update sırası, permit süresi, update log/rejection ve presentation library/software compatibility birlikte kontrol edilir. Update'ler resmî servis tarafından yayımlandıkça uygulanır; çoğu servis haftalık paket kullansa da 'haftada bir düğmeye basmak' güncelliğin tek kanıtı değildir."
+            ],
+            table: {
+              headers: ["Katman", "Görevi", "OOW'un doğruladığı kanıt"],
+              rows: [
+                ["ENC/ENDS", "Yetkili hidrografi verisi", "Producer, edition/update status, coverage ve usage band"],
+                ["Permit/S-63", "Lisans ve veri bütünlüğü", "Geçerlilik, cell permit ve rejected update raporu"],
+                ["SENC", "ECDIS'in kullandığı iç veri tabanı", "Load/update success ve correct cell edition"],
+                ["Presentation", "Sembol, renk, display category ve SCAMIN", "Standard/All/Custom display, scale ve object query"]
+              ]
+            }
+          },
+          {
+            heading: "Appraisal: Harita Kapsamı ve Veri Kalitesi",
+            paragraphs: [
+              "Passage appraisal, kalkıştan varışa ve contingency/abort limanlarına kadar resmî ENC kapsamını, appropriate usage band/compilation scale'i, permit'leri, latest updates'i, T&P/AVCS information overlay benzeri servisleri ve gerekli nautical publications'i kontrol eder.",
+              "Overscale, underscale, no data, better-scale ENC available ve datum shift göstergeleri anlamıyla okunur. Zoom yapmak yeni detay üretmez; source/compilation scale aşıldığında konum ve obje geometrisi sahte hassasiyet hissi verebilir.",
+              "CATZOC/quality of bathymetric data ve source diagram, derinlik bilgisinin survey kalitesini ve belirsizliğini anlatır; güvenli su 'mavi-beyaz renk' kadar kesin değildir. UKC/route kararında bu kalite, squat, tide ve gemi hareketiyle birlikte değerlendirilir."
             ]
           },
           {
-            heading: "Alarm ve Gösterim Ayarları",
+            heading: "Safety Settings: Safety Depth, Safety Contour, XTD ve Look-Ahead",
             paragraphs: [
-              "Safety contour: Geminin güvenli su derinliği sınırı. ECDIS bu konturu geçildiğinde uyarı verir.",
-              "Safety depth: Haritadaki derinlik değerlerinin vurgulanma sınırı.",
-              "Cross-track distance (XTD): Planlanan rotadan izin verilen sapma mesafesi.",
-              "Look-ahead: İleri bakış mesafesi; yaklaşan sığlıklar ve tehlikeler için uyarı verir."
+              "Safety depth, spot sounding'lerin vurgulanma eşiğidir; tek başına alarm sınırı değildir. Safety contour, user value'ya eşit kontur yoksa ENC'deki bir sonraki daha derin mevcut konturun seçilmesiyle güvenli/tehlikeli su sınırı gibi kullanılır ve crossing/approach uyarı mantığını besler.",
+              "Shallow ve deep contour esas olarak renk bandı ve durum farkındalığını düzenler. XTD rota koridorudur; her bacakta channel width, traffic, positioning accuracy, bank/turning ve abort alanına göre farklı olabilir. Look-ahead/time-or-distance sector ise üretici arayüzüne bağlıdır ve geminin gerçek stopping/turning ihtiyacına göre ayarlanır.",
+              "Safety settings şirket UKC politikası ve Master-approved passage plan'dan türetilir. Static draft'a squat, heel/list, wave response/density allowance, required UKC ve height of tide etkisi açık işaret kuralıyla eklenir; ECDIS'teki tek draft alanı bu hesabı kendi başına yapmış sayılmaz."
+            ],
+            table: {
+              headers: ["Ayar", "Ne kontrol eder", "Yaygın hata"],
+              rows: [
+                ["Safety depth", "Sounding vurgusu", "Alarm veren kontur sanmak"],
+                ["Safety contour", "Safe/unsafe water sınırı ve crossing alarmı", "Girilen sayının aynen kontur olarak çizileceğini sanmak"],
+                ["XTD", "Route corridor/off-track limiti", "Tüm bacaklarda aynı değer kullanmak"],
+                ["Look-ahead", "İleri yöndeki tehlike taraması", "Aşırı kısa tutmak veya alarm yükü nedeniyle kapatmak"],
+                ["Shallow/deep contour", "Renk bandı ve durum farkındalığı", "UKC alarmı sanmak"]
+              ]
+            },
+            formula: {
+              expression: "Gerekli charted depth ≈ static draft + squat + dynamic allowances + minimum UKC − height of tide",
+              variables: [
+                "Terimler ve işaret kuralı şirket UKC politikasına göre yazılır.",
+                "Dynamic allowances: heel/list, wave response, density ve ölçüm/survey belirsizliği gibi gemiye/sefere özgü paylar.",
+                "Safety contour değeri sonuçtan türetilir; ENC'de eşit kontur yoksa ECDIS bir sonraki daha derin konturu kullanır."
+              ]
+            }
+          },
+          {
+            heading: "Route Planning: Otomatik Check'ten Sonra İnsan Kontrolü",
+            paragraphs: [
+              "Route, berth-to-berth hazırlanır; waypoint/leg, turn radius/wheel-over, speed plan, XTD, clearing range/PI, reporting point, no-go/limiting danger line, abort point, contingency anchorage ve pilotage notları tek passage plan mantığında bağlanır.",
+              "Automatic route check seçili safety contour ve mariner objects'e göre uyarı üretir fakat ekran dışında kalan obje, yanlış display/scale, user chart, T&P information, chart quality veya software interpretation eksiklerini garantiyle yakalayamaz. Zero warning, safe route sertifikası değildir.",
+              "OOW rotayı appropriate largest scale/usage band üzerinde leg-by-leg görsel inceler, her alarm/indication'ı resolve edip gerekçelendirir ve Master approval sonrası protected route olarak kullanır. Son dakika route revision aynı appraisal-check-visual review-approval zincirinden geçer."
+            ]
+          },
+          {
+            heading: "Route Monitoring ve Bağımsız Mevki Kontrolü",
+            paragraphs: [
+              "Monitoring modunda active route/leg, cross-track, next waypoint/turn, selected position-heading-speed sensors, chart scale ve alarms aynı anda izlenir. Track-control/autopilot bağlantısı varsa mode awareness ve manual takeover hazırlığı özellikle korunur.",
+              "Primary GNSS position, mümkün olan bağımsız ikinci PNT kaynağı ve radar/visual/terrestrial fix ile çaprazlanır. İki ECDIS'in aynı GNSS/gyro/log'u kullanması iki bağımsız doğrulama değildir. Radar overlay de çoğu zaman aynı heading/position input'u paylaşır.",
+              "Manual fix yalnız sembol koymak değil; source, time, accuracy ve discrepancy'nin kaydıdır. Position jump/freeze, spoofing/jamming, datum uyuşmazlığı veya charted object misalignment görüldüğünde track-control bağımlılığı kesilir, Kaptan çağrılır ve safe speed/sea room yeniden değerlendirilir."
+            ]
+          },
+          {
+            heading: "Alarm Yönetimi ve Over-Reliance",
+            paragraphs: [
+              "Alarm, warning ve caution/indication üreticiye ve geçerli performance standardına göre farklı öncelik ve ses davranışı gösterebilir. Acknowledge yalnız sesi yönetir; tehlike veya sensor failure'ı gidermez. Alarm listesi, source ve consequence okunmadan toplu susturma yapılmaz.",
+              "Alarm yorgunluğu çoğunlukla yanlış safety settings, gereksiz user layers, uygun olmayan look-ahead/XTD veya çözülmemiş chart object'lerden doğar. Çözüm sistemi duyarsızlaştırmak değil passage plan ve ayarı operasyon bağlamına göre düzeltmektir.",
+              "Over-reliance yalnız pencereden dışarı bakmamak değildir: automatic route check'i mutlak kabul etmek, same-source iki ekranı bağımsız sanmak, chart zoom'u doğruluk artışı sanmak ve predicted position'ı measured fix gibi okumak da over-reliance örnekleridir."
+            ]
+          },
+          {
+            heading: "Arıza ve Backup'a Geçiş",
+            paragraphs: [
+              "ECDIS failure; black screen kadar position/heading source loss, frozen data, corrupted SENC, permit/update failure, wrong time, network lag, unsafe settings veya backup unit'in aynı common-mode hataya bağlı olması da olabilir.",
+              "Backup arrangement primary ECDIS arızalandığı anda kullanıma hazır, güncel ve passage plan transferi/yeniden oluşturma yöntemi bilinir olmalıdır. İkinci ECDIS aynı switchboard, GNSS veya network failure'dan etkileniyorsa gerçek bağımsızlık şirket risk değerlendirmesinde ele alınır.",
+              "Arızada OOW önce seyri emniyete alır: manual steering/appropriate mode, safe speed, ek gözcü/fix sıklığı, alternatif chart/navigation method ve Master call. Reboot/servis işlemi, navigational risk kontrol altına alındıktan sonra maker/SMS'e göre yapılır."
+            ]
+          },
+          {
+            heading: "Yetkinlik, Familiarization ve 2026-2029 Geçişi",
+            paragraphs: [
+              "STCW'ye göre ECDIS kullanan zabit gerekli generic ECDIS competence'a sahip olmalıdır. Gemiye katıldığında ISM/SMS kapsamında o üretici/model, menu logic, alarms, route transfer, sensor selection ve backup için familiarization gerekir. Her durumda uluslararası bir 'type-specific certificate' adıyla tek tip ayrı sertifika zorunluymuş gibi yazılmaz; flag/company şartları ayrıca kontrol edilir.",
+              "1 Ocak 2026-2028 arasında yeni kurulan ECDIS MSC.232(82) veya MSC.530(106) ailesine uygun olabilir; 1 Ocak 2029'dan itibaren yeni kurulumlar S-100 ürün ailesini destekleyen revize standarda geçer. Kullanıcı, kendi cihazının type-approval baseline ve software/presentation library sürümünü servis kayıtlarından bilmelidir."
             ]
           }
         ],
         keyPoints: [
-          "ECDIS, seyir planlaması ve takibi için birincil araçtır.",
-          "Over-reliance (aşırı güven) en büyük tehlikedir; her zaman pencereden dışarı bakılmalıdır.",
-          "Datum uyumsuzluğu (harita datumu ile GPS datumu farkı) konumlandırma hatasına neden olabilir.",
-          "ECDIS type-specific training sertifikası zorunludur."
+          "Yasal ECDIS işlevi; type approval + resmî/güncel veri + yetkin kullanım + yeterli backup zinciridir.",
+          "Safety depth sounding vurgusudur; safety contour alarm sınırını besleyen seçili/sonraki daha derin ENC konturudur.",
+          "Automatic route check gerekli fakat yeterli değildir; uygun ölçekte leg-by-leg görsel kontrol zorunlu iş akışıdır.",
+          "İki ekran aynı GNSS/gyro/log'u kullanıyorsa ortak hata bakımından bağımsız değildir.",
+          "Overscale/zoom, CATZOC, datum ve source scale bilgisi ekrandaki geometrinin belirsizliğini belirler.",
+          "S-101/S-100 geçişi cihaz kurulum tarihine ve type approval'a bağlıdır; legacy S-57 ENC bir anda geçersiz olmaz."
         ],
         workingPrinciple: [
-          "ENC (Electronic Navigational Chart) verisi vektörel olarak yüklenir.",
-          "GPS, gyro, log, AIS, radar, echo sounder girdileri sensör entegrasyonu ile gösterilir.",
-          "Route planning ve monitoring fonksiyonu safety contour, no-go area uyarılarını sağlar.",
-          "Voyage data ve alarms VDR'a kaydedilir."
+          "Resmî ENC/permit/update paketi doğrulanır ve ECDIS içindeki SENC'e dönüştürülür.",
+          "Presentation library, seçili display category ve scale'e göre chart objects'i standardize sembollerle sunar.",
+          "GNSS, gyro, log ve diğer sensörler own-ship position/heading/speed katmanını besler; source/status kullanıcı tarafından izlenir.",
+          "Safety settings ile route geometry, automatic check ve monitoring alerts birlikte çalışır.",
+          "Bridge team resmî chart data'yı publications, manual fixes, radar/visual bilgi ve UKC/passsage plan varsayımlarıyla çaprazlar.",
+          "Backup arrangement, update/route data ve bağımsız güç/sensör riskleriyle primary failure'da seyri sürdürebilir durumda tutulur."
         ],
         operation: [
-          "Trip öncesi ENC update'lerini yükle (haftalık).",
-          "Safety depth, safety contour ve XTD değerlerini gemi draftına göre ayarla.",
-          "Rotayı planla; hesap kontrolü (route check) ile uyarıları çöz.",
-          "Voyage'da monitoring modunda alarmları izle, gerekirse manuel position fix yap.",
-          "Backup ECDIS veya kâğıt harita prosedürünü hazır tut."
+          "Record of Equipment, type approval baseline ve onaylı backup düzenini; primary/backup güç ve sensör kaynaklarını doğrula.",
+          "Berth-to-berth resmî ENC/RNC kapsamı, usage band/scale, permit, edition/update status, rejected updates ve publications'i appraisal aşamasında kontrol et.",
+          "Static draft, squat, dynamic allowances, tide ve minimum UKC politikasından safety depth/contour; her leg riskinden XTD ve look-ahead ayarlarını türet.",
+          "Waypoint, turn/wheel-over, speed, clearing/PI, no-go, abort/contingency ve reporting bilgileriyle rotayı planla.",
+          "Automatic route check'i çalıştır; tüm uyarıları çöz ve rotayı appropriate largest scale'de leg-by-leg görsel incele.",
+          "Master approval/revision control ile active route'u koru; primary ve backup'a doğru/current route transferini doğrula.",
+          "Monitoring'de active leg, source/status, chart scale, XTD, safety/look-ahead alarms ve next turn'ü sürekli izle.",
+          "Primary GNSS'i bağımsız fix/second PNT ve radar-visual bilgiyle planlı aralıkta çaprazla; discrepancy'yi kaydet ve Master'a yükselt.",
+          "Alarmı neden/consequence ile yönet; acknowledgement sonrası düzeltici hareketi ve rota/ayar değişikliğini kaydet.",
+          "Arıza/position doubt'ta backup prosedürüne geç, safe speed/steering/fix sıklığını yeniden kur ve primary sistemi ancak seyir emniyete alındıktan sonra troubleshoot et."
         ],
         faults: [
-          { fault: "Pozisyon donuk/kayıp", cause: "GPS girdisi kesik", action: "GPS antenini ve kabloyu kontrol et, secondary GPS'e geç." },
-          { fault: "ENC güncel değil uyarısı", cause: "Update yapılmamış", action: "Hemen güncelleme yükle, rota güvenliğini doğrula." },
-          { fault: "Sistem donuyor", cause: "Yazılım hatası, bellek yetersiz", action: "Yedek üniteye geç, sistemi yeniden başlat." },
-          { fault: "Alarm sürekli ötüyor", cause: "Hatalı safety değerleri", action: "Parametreleri yeniden gözden geçir." }
+          { fault: "Position freeze/jump veya impossible COG/SOG", cause: "GNSS loss, jamming/spoofing, network latency, wrong source veya dead reckoning", action: "Track-control bağımlılığını kes; radar/visual/independent fix'e dön, source/time/status'u kontrol et ve Kaptanı çağır." },
+          { fault: "Chart ile radar/görsel obje hizasız", cause: "Position/heading error, datum/ENC quality, radar alignment veya common sensor fault", action: "Overlay'i bağımsız kanıt sayma; position ve heading'i ayrı ayrı kontrol et, manual fix koy ve safe-navigation margin'i büyüt." },
+          { fault: "ENC update rejected/missing cell", cause: "Yanlış sıra, expired permit, corrupted media, SENC/software incompatibility", action: "Update log ve cell status'u incele; resmî servisten doğru base/new edition/update'i yükle, etkilenmiş rota için alternative chart/backup kur." },
+          { fault: "Route check çok sayıda alarm veriyor", cause: "Yanlış safety contour/XTD/look-ahead, inappropriate route geometry veya custom layers", action: "Alarmı disable etme; UKC/passage assumptions ve her leg'i yeniden değerlendir, gerçek tehlike ile nuisance kaynağını ayır." },
+          { fault: "Route check sıfır alarm veriyor", cause: "Safety settings/scan extent yanlış, display/data eksik veya rota yeterince incelenmemiş", action: "Bunu emniyet kanıtı sayma; appropriate scale'de leg-by-leg visual inspection ve independent review yap." },
+          { fault: "Primary ECDIS dondu/black screen", cause: "Power, workstation, network veya software fault", action: "Onaylı backup'a geç; route/update/source durumunu doğrula, safe speed/ek fix/bridge team önlemlerini kur ve sonra maker restart prosedürünü uygula." },
+          { fault: "Primary ve backup aynı anda yanlış", cause: "Common GNSS/gyro/network/power veya aynı corrupted route/data", action: "Common-mode kaynağı izole et; kâğıt/alternative navigation, manual fixing ve Master/company contingency prosedürüne geç." }
         ],
         precautions: [
-          "İki onaylı ECDIS yoksa kâğıt harita yedeği bulundur.",
-          "Sadece eğitim sertifikalı (Type Specific) zabitler kullanmalı.",
-          "Sistem yazılımı IHO S-52/S-63 standardında olmalı.",
-          "ENC'leri sadece resmi (HO) kaynaklardan yükle."
+          "Backup tipini varsayma; Cargo/Passenger Ship Safety Equipment Record ve şirket onaylı arrangement'tan doğrula.",
+          "Generic ECDIS competence ile gemideki üretici/model familiarization'ını ayrı gereklilikler olarak yönet.",
+          "ENC, permit ve update'i yalnız resmî/authorized chart service zincirinden al; unofficial overlay'i chart source gibi sunma.",
+          "Safety settings'i sabit şablon kopyası değil, güncel draft/UKC/tide/squat ve leg riskine göre kayıtlı hesapla kur.",
+          "Custom display ile kritik object'i saklama; planning/monitoring için standard display ve object query kullanımını bilinçli yap.",
+          "MSC.232(82), MSC.530(106) revizyonu, MSC.1/Circ.1503/Rev.2 ve IHO S-52/S-66'yı maker manual/SMS ile birlikte kullan."
         ]
       },
       {
@@ -574,17 +726,17 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             table: {
               headers: ["Bilgi Türü", "Güncelleme", "İçerik"],
               rows: [
-                ["Statik", "6 dakikada bir", "MMSI, IMO no, gemi adı, gemi tipi, boyutlar"],
-                ["Dinamik", "2-10 saniye", "Konum (GPS), kurs, hız, dönme oranı, seyir durumu"],
-                ["Sefere ilişkin", "6 dakikada bir", "Draft, yük tipi, varış limanı, ETA, kişi sayısı"]
+                ["Statik", "Yaklaşık 6 dakikada bir", "MMSI, IMO no, gemi adı, gemi tipi, boyutlar"],
+                ["Dinamik", "Sınıf, hız ve manevraya göre yaklaşık 2 sn–3 dk", "Konum, COG/SOG, heading ve ROT; alanların kaynağı farklı olabilir"],
+                ["Sefere ilişkin", "Yaklaşık 6 dk ve veri değiştiğinde", "Draft, tehlikeli yük göstergesi, varış limanı, ETA"]
               ]
             }
           },
           {
             heading: "Class A ve Class B",
             paragraphs: [
-              "Class A: Tüm SOLAS gemileri için zorunlu. 12.5 W çıkış gücü, SOTDMA erişim protokolü. 2 saniye aralıklarla güncelleyebilir.",
-              "Class B: Küçük tekneler ve ticari olmayan gemiler için. 2-5 W çıkış gücü, CSTDMA protokolü. Güncelleme aralıkları daha uzundur."
+              "Class A taşıma zorunluluğu 'tüm SOLAS gemileri' şeklinde genellenemez; SOLAS V/19'daki gemi tipi, sefer türü ve GT eşikleri ile Record of Equipment üzerinden doğrulanır. Class A, SOTDMA tabanlı daha yüksek öncelikli raporlama yapar.",
+              "Class B, ilgili ulusal kurallar veya gönüllü donatım kapsamında küçük ticari gemi ve teknelerde görülebilir. Güç, erişim yöntemi ve rapor aralığı cihaz alt sınıfına göre değişir."
             ]
           },
           {
@@ -605,7 +757,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         workingPrinciple: [
           "VHF üzerinden 161.975 ve 162.025 MHz'de SOTDMA protokolü ile veri yayını yapar.",
           "GPS, gyro ve log'dan aldığı dinamik veriyi statik veriyle birlikte yayınlar.",
-          "Class A (SOLAS gemi) ve Class B (küçük tekne) cihazları farklı güç/oranda yayın yapar."
+          "Class A ve Class B cihazları farklı erişim, güç ve raporlama özellikleri kullanır; bir hedefin AIS'te görünmemesi onun mevcut olmadığı anlamına gelmez."
         ],
         operation: [
           "Trip öncesi statik veriyi (MMSI, ad, IMO, tip, draft) doğrula.",
@@ -626,13 +778,13 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
       },
       {
         title: "GPS ve Konum Belirleme Sistemleri",
-        introduction: "Küresel Konumlandırma Sistemi (GPS), uydu sinyalleri aracılığıyla geminin enlem ve boylamını belirleyen birincil konum belirleme sistemidir. SOLAS Chapter V gereği en az bir adet onaylı GPS alıcısı zorunludur.",
+        introduction: "GNSS alıcısı, uydu sinyallerinden konum, zaman, COG ve SOG üreten bir seyir sensörüdür. SOLAS V/19 elektronik position-fixing düzenini gemi tipi/GT ve sefer kapsamına göre tarif eder; gemideki onaylı donanım Record of Equipment ve köprüüstü sensör planından doğrulanır.",
         sections: [
           {
             heading: "GPS Çalışma Prensibi",
             paragraphs: [
               "GPS, en az 4 uydudan gelen sinyal ile alıcının konumunu ve saatini hesaplar. Her uydu kendi konumunu ve sinyal gönderim zamanını yayınlar. Alıcı, sinyalin ulaşma süresinden mesafeyi hesaplar.",
-              "GPS doğruluğu standart modda ±10-15 metre, DGPS ile ±1-3 metredir."
+              "Gösterilen fix kalitesi; uydu geometrisi, anten görüşü, iyonosfer, multipath, bütünlük izleme ve kullanılan augmentasyona bağlıdır. Tek bir '± metre' değeri, o andaki konumun güvenilirliğini kanıtlamaz."
             ]
           },
           {
@@ -665,13 +817,13 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         workingPrinciple: [
           "Alıcı, en az 4 uydudan zaman sinyali alır ve trilateration ile pozisyon hesaplar.",
-          "DGPS, kıyı istasyonundan düzeltme alarak doğruluğu metre altına indirir.",
+          "DGNSS/SBAS düzeltmesi uygun kapsama ve sağlıklı correction age ile doğruluğu ve bütünlük bilgisini geliştirebilir; metre-altı sonuç her alıcı ve ortam için garanti değildir.",
           "GNSS, GPS + GLONASS + Galileo + BeiDou'yu birlikte kullanarak güvenilirliği artırır."
         ],
         operation: [
           "Anteni gölgesiz açık alana monte et.",
-          "Cold start sonrası ilk fix 12 dakikaya kadar sürebilir.",
-          "DGPS düzeltmesi varsa devreye al; HDOP değerini izle (< 4 iyi).",
+          "Cold/warm start süresini üretici manual'ine göre değerlendir; fix geldiğinde datum, antenna offset, selected source, integrity/RAIM ve alarm durumunu doğrula.",
+          "DGNSS/SBAS düzeltmesi varsa correction age ve integrity durumunu izle; HDOP tek başına sabit bir 'iyi/kötü' eşiği değildir.",
           "Pozisyonu radar/celestial ile periyodik çapraz doğrula."
         ],
         faults: [
@@ -724,10 +876,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "SOLAS gereği her gemide en az bir manyetik pusula ve gyro pusula bulunmalıdır.",
-          "Gyro error her vardiyada astronomik veya transit kerteriz ile kontrol edilir.",
+          "Manyetik pusula, gyro veya diğer heading düzenlerinin uygulanabilirliği gemi tipi, GT ve yapım tarihine göre SOLAS V/19 ile Record of Equipment'tan doğrulanır; her gemide aynı kombinasyon aranmaz.",
+          "Gyro/compass error uygun fırsatta ve SMS sıklığında azimut, transit veya karşılaştırma ile belirlenir; sonuç ve kullanılan yöntem kaydedilir.",
           "Manyetik pusula yedek pusula olarak daima çalışır durumda tutulmalıdır.",
-          "Deviation tablosu düzenli olarak (yılda bir) güncellenmelidir."
+          "Deviation card, anlamlı sapma, onarım/yapısal değişiklik, manyetik yük etkisi veya survey gereği oluştuğunda yetkili ayar ve swing ile güncellenir."
         ],
         workingPrinciple: [
           "Gyro pusula, hızla dönen rotorun hareketsizlik (gyroscopic inertia) prensibiyle gerçek kuzeyi bulur.",
@@ -736,9 +888,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Compass error = Variation + Deviation."
         ],
         operation: [
-          "Gyro'yu trip öncesi en az 4 saat önce çalıştır (settling time).",
+          "Gyro'yu üreticinin settling ve restart prosedürüne göre zamanında çalıştır; bazı modern sensörlerde süre klasik rotor gyrodan farklıdır.",
           "Latitude ve speed correction'ı manuel ayar gerektiriyorsa gir.",
-          "Manyetik pusulayı periyodik (her vardiya) deviation kontrolü için kerteriz al.",
+          "Uygun kerteriz/transit ile compass error belirle; variation ve mevcut deviation card ile tutarlılığı değerlendir.",
           "Repeater'ları (köprü, dümen, pelorus) gyro ile senkron tut."
         ],
         faults: [
@@ -750,13 +902,13 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Manyetik pusula çevresine demir/manyetik malzeme yerleştirilmemeli.",
           "Gyro alarmı (power failure) sürekli izlenmeli.",
-          "Yıllık compass adjustment yapılmalı.",
+          "Compass adjustment sıklığını bayrak/class/SMS ve gözlenen hata belirler; sabit yıllık ezberi yerine geçerli deviation card ve hata trendini doğrula.",
           "Acil durumda manyetik pusula primer kaynak olduğundan her zaman çalışır durumda olmalı."
         ]
       },
       {
         title: "Echo Sounder (İskandil)",
-        introduction: "Echo sounder, geminin altındaki su derinliğini ultrasonik darbeler ile ölçen cihazdır. SOLAS Chapter V Regulation 19 gereği tüm gemilerde zorunludur.",
+        introduction: "Echo sounder, transducer altındaki su derinliğini ultrasonik darbelerle ölçer. Taşıma gereği SOLAS V/19'daki gemi tipi, GT ve yapım tarihi eşiklerine bağlıdır; 'tüm gemilerde zorunlu' şeklinde genellenmez.",
         sections: [
           {
             heading: "Çalışma Prensibi",
@@ -811,7 +963,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "Alarm çalmıyor", cause: "Alarm devre dışı veya hatalı set", action: "Alarm setini ve hoparlörü kontrol et." }
         ],
         precautions: [
-          "Echo sounder UKC izleme için zorunlu; sığ sularda sürekli açık kalmalı.",
+          "Sığ su/UKC riski olan etaplarda echo sounder, passage plan ve standing order'a göre etkin izlenir; okuma harita derinliği, tide ve bağımsız konumla çapraz kontrol edilir.",
           "Transducer havuzlamada sürekli su altında kalmalı.",
           "Derinlik bilgisi tek başına yeterli değil; harita ve gel-git ile birlikte değerlendirilmeli."
         ]
@@ -825,7 +977,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
     topics: [
       {
         title: "İki Zamanlı Düşük Devirli Motorlar",
-        introduction: "İki zamanlı düşük devirli dizel motorlar, büyük ticari gemilerin ana tahrik makinesidir. 80-120 rpm arasında çalışır ve pervaneyi doğrudan (direkt tahrikle) döndürür. MAN B&W, WinGD (Wärtsilä) ve Mitsubishi başlıca üreticilerdir.",
+        introduction: "İki zamanlı crosshead düşük devirli dizel motorlar, büyük ticari gemilerde çoğunlukla pervaneyi doğrudan tahrik eder. Devir/güç aralığı motor ve pervane tasarımına bağlıdır; MAN Energy Solutions, WinGD ve Japan Engine Corporation bu pazardaki üretici örnekleridir.",
         sections: [
           {
             heading: "Çalışma Prensibi",
@@ -862,7 +1014,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Yakıt Enjeksiyon ve Yanma",
             paragraphs: [
-              "Common rail veya mekanik enjeksiyon sistemi kullanılır. Common rail sistemde yakıt basıncı 600-1 000 bar arasında sabit tutulur ve elektronik kontrollü enjektörler ile silindirlere verilir.",
+              "Common-rail, elektronik-hidrolik veya kam tahrikli mekanik enjeksiyon kullanılabilir. Rail/servo ve enjeksiyon basınçları yük noktasına ve motor tasarımına göre değişir; alarm/trip ve bakım limitleri yalnız maker manual ve shop-trial verisinden alınır.",
               "VIT (Variable Injection Timing): Yük durumuna göre enjeksiyon zamanlaması değiştirilir. Düşük yüklerde erken enjeksiyon, yüksek yüklerde geç enjeksiyon optimum yanma sağlar."
             ]
           }
@@ -871,16 +1023,16 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "İki zamanlı motor tek yönlü döner; geri yol için motor durdurulup ters yönde çalıştırılır (FPP ile).",
           "Silindir yağlaması ayrı bir yağlama sistemiyle (alpha lubricator veya pulse jet) yapılır.",
           "Scavenge fire (süpürme yangını), süpürme havasındaki yağ birikimiyle oluşur; scavenge drain düzenli boşaltılmalıdır.",
-          "SFOC (Specific Fuel Oil Consumption) genellikle 160-180 g/kWh arasındadır."
+          "SFOC; motor rating'i, test toleransı, yakıt alt ısıl değeri, çevre düzeltmesi ve yardımcı tüketim sınırına bağlıdır; performans değerlendirmesinde onaylı shop/sea-trial baseline'ı kullanılır."
         ],
         workingPrinciple: [
           "Her krank turunda bir iş çevrimi (emme+sıkıştırma+iş+egzoz) tamamlanır.",
           "Egzoz uniflow scavenging ile silindirin üst tarafından, hava süpürme alttan yapılır.",
-          "Direct drive olarak doğrudan pervaneyi döndürür (50-120 rpm).",
+          "Düşük devirli crosshead motor çoğunlukla doğrudan şaft/pervaneyi döndürür; gerçek çalışma aralığı engine layout diagram ve combinator/limit eğrilerinden izlenir.",
           "Crosshead yapısı sayesinde piston kuvveti yan kuvvete çevrilmeden krank şaftına iletilir."
         ],
         operation: [
-          "Start havası basıncını (~30 bar) ve yağ basıncını kontrol et.",
+          "Start receiver basıncını, pre-lube basıncını ve tüm permissive/interlock durumunu maker'ın minimum start limitlerine göre kontrol et.",
           "Pre-lub pompasını çalıştırarak yatakları yağla.",
           "Turning gear'ı devre dışı bırak, indicator cock'lar açık iken blow-through yap.",
           "Kademeli olarak dead slow → slow → half → full ahead'e çık.",
@@ -894,7 +1046,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "Turbocharger surging", cause: "Tıkalı egzoz/yakıt sorunu", action: "Yükü düşür, egzoz ve T/C'yi kontrol et." }
         ],
         precautions: [
-          "Crankcase açma sonrası en az 20 dakika bekle (oil mist patlama riski).",
+          "Oil-mist/hot-bearing şüphesinde motoru durdurduktan sonra crankcase'i hemen açma; yangın/OGMD prosedürü, maker'ın bekleme-soğutma süresi, uzaktan sıcaklık kontrolü ve izin olmadan kapağı gevşetme.",
           "Tüm enerji kaynakları izole edilip turning gear takılmadan müdahale yapma.",
           "Yakıt sıcaklık ve viskozitesi spec içinde tutulmalı.",
           "Sülfür içeriğine göre uygun silindir yağı (BN) seçilmeli.",
@@ -951,7 +1103,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "Yakıt değişiminde sıcaklık-viskozite eğrisini takip et (HFO/MGO geçişi).",
-          "Karter kapağı açma 20 dk soğuma sonrası yapılmalı.",
+          "Karter kapağını alarm/yangın şüphesinden hemen sonra açma; maker'ın bekleme-soğutma süresi, sıcaklık kontrolü, havalandırma ve permit/LOTO şartları sağlanmadan müdahale etme.",
           "Periyodik valve clearance ayarı kritiktir.",
           "Aşırı yüklemeden kaçın; turbo aşıntısını hızlandırır."
         ]
@@ -1086,7 +1238,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
       },
       {
         title: "Dümen Sistemi ve Manevra",
-        introduction: "Dümen sistemi, geminin yön değiştirmesini sağlayan kritik güvenlik ekipmanıdır. SOLAS Chapter II-1 Regulation 29 gereği ana ve yedek dümen sistemleri zorunludur.",
+        introduction: "Dümen sistemi, geminin yön değiştirmesini sağlayan kritik emniyet ekipmanıdır. SOLAS II-1/29 ana ve yardımcı steering gear düzenini, performansını ve arıza toleransını gemi özelliklerine göre tarif eder; geminin onaylı steering gear arrangement'i esas alınır.",
         sections: [
           {
             heading: "Dümen Tipleri",
@@ -1105,9 +1257,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Elektro-Hidrolik Dümen Makinesi",
             paragraphs: [
               "Elektrik motoru ile tahrik edilen hidrolik pompa, basınçlı yağı dümen silindirine gönderir. Rapson slide veya rotary vane tip silindirler kullanılır.",
-              "SOLAS gereği en az 2 bağımsız güç ünitesi ve bağımsız kontrol sistemi bulunmalıdır.",
-              "Ana dümen 35° bir taraftan 35° diğer tarafa 28 saniyede dönebilmelidir.",
-              "Yedek dümen 15° bir taraftan 15° diğer tarafa 60 saniyede dönebilmelidir."
+              "Güç ünitesi, kontrol devresi ve ayrım düzeni; gemi boyutu ile SOLAS II-1/29'un uygulanabilir paragraflarına göre onaylanır. İki pompa görülmesi, tek başına tam bağımsızlık kanıtı değildir.",
+              "Ana steering gear için yaygın SOLAS kriteri, en derin draftta ve azami ileri servis hızında dümeni 35°'den karşı tarafta 35°'ye; her durumda karşı tarafta 30°'ye 28 saniyeyi aşmadan getirmektir.",
+              "Auxiliary steering gear için kriter, yine tanımlı draft ve en az 7 knot veya azami ileri servis hızının yarısı koşulunda 15°'den karşı 15°'ye 60 saniyeyi aşmamaktır; istisna ve eşdeğer düzenler onaylı dokümandan kontrol edilir."
             ]
           },
           {
@@ -1218,7 +1370,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "SOLAS gereği acil jeneratör 45 saniye içinde otomatik devreye girmelidir.",
+          "Acil güç düzeninin otomatik başlama ve kritik yükleri besleme süresi, gemi tipine uygulanabilir SOLAS II-1 hükümlerinden doğrulanır; 45 saniye birçok düzen için temel sınırdır ancak transitional source ve yolcu/yük gemisi ayrımı ayrıca kontrol edilir.",
           "Acil jeneratör su hattının üzerinde ve ana makine dairesinin dışında konumlandırılmalıdır.",
           "Blackout recovery prosedürü tüm personel tarafından bilinmelidir.",
           "Preferential trip sistemi, aşırı yüklenme durumunda kritik olmayan tüketicileri otomatik keser."
@@ -1246,7 +1398,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Senkronizasyonda phase sequence aynı olmalı.",
           "Kara şalter (breaker) açma/kapama sırası prosedüre uygun olmalı.",
           "Yakıt değişimi ve viskozite kontrolü düzenli yap.",
-          "Emergency generator haftalık otomatik test ile çalıştırılmalı."
+          "Emergency generator testini geminin PMS/SMS sıklığında hem auto-start dizisini hem de mümkün olduğunda emniyetli yük altında beslemeyi doğrulayacak şekilde yap; yalnız yüksüz çalıştırmayı yeterli sayma."
         ]
       },
       {
@@ -1269,10 +1421,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Kazan Su Kimyası",
             paragraphs: [
-              "Kazan suyunun pH değeri 10.5-11.5 arasında tutulmalıdır. Düşük pH korozyona, yüksek pH köpürmeye (priming/foaming) neden olur.",
-              "Klorür (Cl⁻): < 300 ppm. Yüksek klorür kırgın korozyonuna (caustic embrittlement) neden olur.",
-              "Toplam sertlik (TH): 0 ppm olmalıdır. Kalsiyum ve magnezyum tortu (scale) oluşumunu önler.",
-              "Kimyasal işlem: Fosfat, sülfit ve hidrazin gibi kimyasallar oksijen giderme ve pH kontrolü için kullanılır."
+              "pH, alkalinite, iletkenlik/TDS, klorür, fosfat ve oksijen scavenger hedefleri; kazan basıncı, metalürji ve kullanılan treatment programına göre belirlenir. İnternetten alınmış tek bir aralık bütün kazanlara uygulanmaz.",
+              "Klorür trendi condenser/deniz suyu kaçağını gösterebilir; kabul ve blowdown limiti water-treatment supplier ile maker manual'deki değerdir.",
+              "Sertlik ve besi suyu kontaminasyonu scale/overheating riski yaratır; ölçüm yöntemi ve düzeltme adımı test-kit prosedürüne göre kaydedilir.",
+              "Kimyasal seçimi gelişigüzel yapılmaz; bazı oksijen tutucuların sağlık/çevre kısıtları vardır. Doz yalnız onaylı treatment programı ve SDS ile verilir."
             ]
           },
           {
@@ -1298,7 +1450,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Safety valve, set basıncın üstünde otomatik açarak basıncı tahliye eder."
         ],
         operation: [
-          "Yakmadan önce furnace purge (en az 3 dakika) yap.",
+          "Yakmadan önce burner management system'in tamamladığı purge hava değişimi/süresini doğrula; interlock'u bypass etme ve sabit '3 dakika' değerini maker sekansının yerine kullanma.",
           "Brulörü tutuştur, alev güvenlik sensörü ile alevi izle.",
           "Su seviyesini gauge glass ile sürekli kontrol et.",
           "Basıncı yavaş yükselt; set basınçta safety valve testini periyodik yap.",
@@ -1358,7 +1510,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Arıtma Sırası",
             paragraphs: [
               "HFO arıtma sırası: Settling tank → Purifier → Clarifier → Service tank → Motor.",
-              "Yakıt sıcaklığı arıtma öncesi 98°C'ye (HFO için) ısıtılmalıdır. Düşük sıcaklık viskoziteyi artırır ve ayrışma verimini düşürür.",
+              "Yakıt ön ısıtmasını sabit 98 °C'ye değil, analizdeki yoğunluk/viskozite ve separator maker'ın separation-temperature nomogramına göre ayarla; flash point ve kapalı sistem limitlerini aşma.",
               "Debi ayarı kritiktir; yüksek debi ayrışma kalitesini düşürür. Üretici tavsiye debisinin aşılmaması gerekir."
             ]
           }
@@ -1367,7 +1519,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Yanlış gravity disc su veya yakıt kaybına neden olur.",
           "Otomatik desludge (çamur boşaltma) zamanlaması yakıt kalitesine göre ayarlanır.",
           "Separatör dengesi (balance) bozulursa titreşim ve mekanik hasar oluşur.",
-          "Yağ arıtmada su oranı %0.1'in altında tutulmalıdır."
+          "Çıkış kalitesi tek bir evrensel su yüzdesiyle değerlendirilmez; yakıt/yağ analizi, su ve sediment trendi ile motor-maker kabul kriteri esas alınır."
         ],
         workingPrinciple: [
           "Yüksek devirde dönen bowl içinde merkezkaç kuvvet ile yağ-su-tortu ayrışır.",
@@ -1376,7 +1528,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Otomatik desludging sistemi tortu boşaltma kapağını periyodik açar."
         ],
         operation: [
-          "Yakıt ön ısıtmasını ayarla (HFO için ~98 °C).",
+          "Yakıt ön ısıtmasını yakıt analizi, viskozite ve separator nomogramına göre ayarla.",
           "Pre-water seal yap, sonra yakıtı bowl'a al.",
           "Akış debisini ve sıcaklığı izle.",
           "Periyodik desludging zamanını yakıta göre ayarla.",
@@ -1414,7 +1566,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Starting Air Sistemi",
             paragraphs: [
-              "Ana makine çalıştırma havası 25-30 bar basınçta hava şişelerinde depolanır. SOLAS gereği en az 2 adet hava şişesi bulunmalıdır ve her biri motorun 6 ardışık çalıştırmasını sağlayacak kapasitede olmalıdır.",
+              "Ana makine starting-air receiver sayısı, izolasyonu ve toplam kapasitesi SOLAS II-1 ile class/maker düzenine göre doğrulanır. Reversible motorlar için genel kapasite kriteri kompresörle takviye olmadan 12 ardışık start, non-reversible motorlarda 6 starttır; 'her receiver 6 start' şeklinde genellenmez.",
               "Kompresör kademeleri arasında ara soğutma (intercooler) ve son soğutma (aftercooler) yapılır. Her kademe çıkışında otomatik drenaj (auto-drain) bulunur.",
               "Hava şişesi emniyet valfi, basınç şişenin tasarım basıncını aştığında açılır."
             ]
@@ -1453,7 +1605,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "Air receiver safety valve test sertifikası güncel olmalı.",
-          "Discharge sıcaklığı 140 °C'nin altında tutulmalı.",
+          "Kademe çıkış sıcaklıklarını maker alarm/trip değerleri ve normal trend ile izle; evrensel 140 °C sınırı kullanma.",
           "Bakım sırasında basınç tam olarak tahliye edilmeli.",
           "Yağ kalitesi ve değişim periyodu üretici tavsiyesinde olmalı."
         ]
@@ -1528,7 +1680,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "Mekanik salmastra kaçağı", cause: "Yüzey aşıntısı, kuru çalışma", action: "Salmastrayı değiştir, soğutma akışını sağla." }
         ],
         precautions: [
-          "Yangın pompası ve emergency fire pump haftalık test edilmeli.",
+          "Fire/emergency pump testini PMS/SMS sıklığında, seçilmiş hidrantta priming, pressure, akış ve bağımsız suction/enerji kaynağını doğrulayacak şekilde yap.",
           "Tank içine kuru pompa salmamak için seviyeyi izle.",
           "Pompa motoru elektriksel izolasyon ve LOTO ile bakıma alınmalı.",
           "Yağlı/zehirli sıvı pompalarında salmastra kaçağı kayıt altına alınmalı."
@@ -1556,7 +1708,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Liman yakınında (kıyıdan 20 NM içinde) tatlı su üretimi yapılmamalıdır (kirli su).",
+          "FWG/RO çalıştırma bölgesi sabit bir 20 NM kuralıyla belirlenmez; liman/nehir kirliliği, ballast/sanitary deşarjları, yerel talimat, sea-chest durumu ve şirket su emniyet planına göre üretim durdurulur.",
           "WHO standartlarına göre içme suyu klorür < 250 ppm, pH 6.5-8.5 olmalıdır.",
           "Mineral dozajı üretilen suyun pH'ını yükseltir ve korozif etkisini azaltır.",
           "UV sterilizasyon veya klorlama dezenfeksiyon için kullanılır."
@@ -1579,7 +1731,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "RO membran düşük debi", cause: "Membran tıkanma, basınç düşük", action: "Membranı temizle, gerekirse değiştir." }
         ],
         precautions: [
-          "Liman ve kıyıya yakın bölgelerde (kirli su) FWG çalıştırılmamalı.",
+          "Liman, nehir ağzı veya kirlenme şüphesinde Water Safety Plan/SMS gereğine göre FWG/RO'yu izole et; tank ve ürün suyu kalitesini yeniden doğrula.",
           "Üretilen su içme amaçlı kullanılacaksa UV/silver/klorlama yapılmalı.",
           "Periyodik mikrobiyolojik analiz yapılmalı.",
           "Asit temizliğinde uygun PPE (yüz maskesi, eldiven) kullanılmalı."
@@ -1593,36 +1745,36 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Yapı ve Bileşenler",
             paragraphs: [
               "Yanma odası refrakter tuğla ile kaplı, sludge tank, dosing pompası, brulor (burner) ve hava fanı içerir.",
-              "Sludge için ön ısıtma 90 °C; viskozite düşürülür ve atomizer ile odaya püskürtülür.",
+              "Sludge ön ısıtması/viskozitesi burner ve dosing-pump manual'indeki atomization bandına göre ayarlanır; sabit 90 °C her sludge bileşimi için güvenli değildir.",
               "Katı atık (kağıt, gıda) charge door'dan yüklenir; ön ısıtma sonrası alev yakar.",
               "Baca: cyclone/scrubber + sıcaklık sensörü + emisyon kontrolü."
             ],
             table: {
-              headers: ["Atık", "Yakma Sıcaklığı", "Süre"],
+              headers: ["Akış / kontrol", "Karar kaynağı", "İzlenen kanıt"],
               rows: [
-                ["Sludge oil", "850–1100 °C", "Sürekli"],
-                ["Katı atık", "850–1000 °C", "Batch / döngü"],
-                ["Sewage çamuru", "850 °C minimum", "Sürekli"]
+                ["Onboard-generated oil/sewage sludge", "MARPOL VI/16 + type-approval + maker feed spec", "Feed rate, chamber/outlet temperature, alarm log"],
+                ["Katı garbage", "Garbage Management Plan ve prohibited-material ayrımı", "Batch mass/volume, position ve GRB kaydı"],
+                ["PVC/halojenli içerik", "Yalnız uygun IMO type-approved incinerator ve yerel izin", "Waste segregation ve equipment approval"]
               ]
             }
           }
         ],
         keyPoints: [
-          "Plastik, PVC, halojenli atık, askeryı, akü, civa içerikli atık YAKILMAZ (MARPOL Annex VI).",
-          "Limanda ve özel alanlarda insinerator çalıştırılması yasaktır (port state regulation).",
+          "MARPOL Annex VI/16 prohibited materials listesini Garbage Management Plan'dan uygula: PCB, ağır metal izinden fazlasını içeren garbage ve ilgili cargo residues/contaminated packing gibi maddeleri yakma; PVC yalnız buna uygun IMO type-approved incinerator'da ve yerel izinle işlenebilir.",
+          "Incineration yasağı atık türü ve operasyon yerine göre MARPOL Annex VI Reg. 16 ile liman/terminal/yerel kurallardan kontrol edilir; bütün special area'larda her türlü incinerator çalışması mutlak yasaktır denemez.",
           "Garbage Record Book (Part I) yakılan atık türü ve miktarı kayıt altına alınır.",
-          "Yakma odası sıcaklığı 850 °C altına düşerse otomatik shutdown devreye girer."
+          "Low/high-temperature feed cut-out ve shutdown setleri incinerator type-approval ile maker BMS sequence'inden doğrulanır; her model için sabit 850 °C trip varsayılmaz."
         ],
         workingPrinciple: [
-          "Brulor diesel/sludge karışımıyla ön ısıtma yapar, oda sıcaklığı 850 °C'ye ulaşır.",
+          "Burner, chamber'i type-approved feed-enable sıcaklığına getirir; control system izin vermeden sludge/garbage beslenmez.",
           "Sludge dosing pompası ısıtılmış sludge'ı atomize ederek yanma odasına püskürtür.",
           "Hava fanı yanma için yeterli oksijen sağlar; oran kontrol edilir.",
           "Baca gazı sıcaklık sensörüyle izlenir; düşerse oto-shutdown."
         ],
         operation: [
           "Sludge tankı seviyesini, yakıt tankını ve hava fanını kontrol et.",
-          "Brulor ile ön ısıtma başlat; oda sıcaklığı 700 °C üzerine çıktığında sludge dosingi devreye al.",
-          "Sıcaklığı 850–1000 °C bandında tut; aşırı dosingten kaçın (siyah duman = eksik yanma).",
+          "Burner ile maker start sequence'ini tamamla; sludge/solid feed'i yalnız type-approval ve interlock'un izin verdiği chamber sıcaklığında başlat.",
+          "Chamber/combustion-gas sıcaklığını type-approved çalışma bandında tut; aşırı dosing ve görünür dumanı normal kabul etme.",
           "Çalışma sonunda dosingi kes, brulor ile odayı temiz yakıtla soğut (purge).",
           "Garbage Record Book'a tür, hacim, başlangıç-bitiş saati yaz."
         ],
@@ -1635,7 +1787,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Çalışırken charge door kesinlikle açılmaz; alev geri tepme (flashback) riski.",
           "Plastik veya PVC içeren atık dioxin/furan üretir, sağlığa ve çevreye zararlıdır.",
-          "Refrakter tuğla şok soğumadan zarar görür; cool-down minimum 4 saat.",
+          "Refrakteri termal şoktan korumak için maker'ın controlled cool-down/purge süresini tamamla; sabit 4 saat bütün modeller için geçerli değildir.",
           "Stack çıkışı çevresinde personel olmamalı; soğuk havada görünmeyen sıcak gaz tehlikesi."
         ]
       },
@@ -1662,8 +1814,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "MARPOL Annex I: kıyıdan >12 NM, gemi seyir halinde, 15 ppm altında ise tahliye serbest.",
-          "Özel alanlarda (Akdeniz, Karadeniz, Baltık vb.) ek kısıtlamalar uygulanır.",
+          "Machinery-space bilge deşarjı için MARPOL Annex I Reg. 15'te genel bir 12 NM şartı yoktur: uygulanabilir gemide seyir halinde olma, onaylı 15 ppm ekipmanı/alarm-otomatik durdurma düzeni, seyreltilmemiş effluent ve ≤15 ppm şartları birlikte sağlanır.",
+          "Special area, Antarctic area, gemi tipi/GT, kıyı devleti ve IOPP Supplement düzeni ayrıca doğrulanır; overboard valfin açılabilir olması deşarjın hukuken uygun olduğunu kanıtlamaz.",
           "ORB (Oil Record Book) Bölüm I'de her separatör operasyonu kayıt altına alınır.",
           "Magic pipe (bypass) kullanımı ağır cezai yaptırım gerektirir."
         ],
@@ -1676,8 +1828,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         operation: [
           "Çalıştırmadan önce sealing water hattını aç (bazı modellerde gerekli).",
           "Pompa başlat, ilk birkaç dakika resirkülasyon modunda OCM'yi prime et.",
-          "OCM yeşil ışık verince 3-yollu valf overboard'a açılır; akışı düşük tut.",
-          "Operasyon süresince ORB'yi anlık doldur (start/stop saati, miktar, pozisyon).",
+          "Deşarj koşulları checklist ile doğrulandıktan ve sorumlu zabit izin verdikten sonra maker sekansıyla overboard yönünü seç; OCM değeri, sample flow ve automatic stopping device işlevini izle.",
+          "ORB Code'a uygun operasyon kodu, start/stop zamanı, pozisyon, miktar ve yöntemi sorumlu zabitçe gecikmeden kaydet; Master kontrol/imza düzenini uygula.",
           "Bitirince hatları temiz su ile flush et, OCM sensörünü temiz tut."
         ],
         faults: [
@@ -1705,7 +1857,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               "MBR (Membrane Bioreactor): biyolojik proses + ultrafiltrasyon membran; çıkış suyu çok yüksek kalitede olur."
             ],
             table: {
-              headers: ["Parametre", "MARPOL IV Limit", "Tipik MBR Çıkış"],
+              headers: ["Parametre", "MEPC.227(64) type-approval test kriteri", "Örnek MBR trendi; garanti değil"],
               rows: [
                 ["Fekal koliform", "<100 CFU/100mL", "<10"],
                 ["TSS (askıda katı)", "<35 mg/L", "<10"],
@@ -1716,10 +1868,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Onaysız/işlenmemiş sewage: kıyıdan ≥12 NM, ≥4 knot hızla, kontrollü oranda boşaltılabilir.",
-          "Onaylı STP çıkışı: ≥3 NM (komminutor + dezenfeksiyon ile) veya doğrudan (uyumlu STP ile).",
-          "Özel alanda (Baltık) hiç boşaltım yapılamaz; shore reception zorunlu.",
-          "ISPP (International Sewage Pollution Prevention) sertifikası 5 yıllık."
+          "Untreated sewage ancak en yakın karadan 12 NM'den uzakta, gemi en route iken ve İdarenin onayladığı moderate-rate düzenine göre boşaltılabilir; MEPC.157(55) hesabında hızın 4 knot'tan az olmaması esas alınır.",
+          "Approved comminuting/disinfecting sisteminden geçen sewage için 3 NM şartı ayrı bir yoldur. Operasyonel ve type-approved STP effluent'i bu mesafe ezberinden farklıdır; Annex IV, ISPP Supplement ve yerel kural birlikte kontrol edilir.",
+          "Baltık Sea special-area hükümleri özellikle yolcu gemilerinin sewage deşarjına, uygulama tarihleri ve onaylı nutrient-removal STP/reception seçenekleriyle uygulanır; bütün gemiler için tek cümlelik mutlak yasak değildir.",
+          "ISPP sertifikasının geçerliliği ve endorsment/survey durumu sertifikanın üzerinde doğrulanır; normal azami süre beş yıldır."
         ],
         workingPrinciple: [
           "Aerobik tankta blower hava verir; aktif çamur içindeki bakteriler organik maddeyi CO₂ ve H₂O'ya çevirir.",
@@ -1729,9 +1881,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Aerobik tank seviyesini kontrol et (genelde 50–70%).",
-          "Blower'ı 24/7 çalıştır; durdurulursa bakteriler ölür ve sistem 'patlar' (kötü koku, verimsizlik).",
-          "Klor tabletini düzenli ekle (tablet feeder dolu olmalı).",
-          "Discharge pompasını kıyıdan açıkta ve seyir halinde devreye al.",
+          "Biyolojik proseste blower duty/standby ve çalışma çevrimini maker manual'e göre sürdür; uzun hava kaybında biomass sağlığını analiz et ve kontrollü recovery uygula.",
+          "Dezenfeksiyon tipine göre dozaj/elektroliz, residual ve sarf durumunu maker manual ile discharge standardına göre kontrol et.",
+          "Discharge pompasını ancak Annex IV, special-area/port kuralı ve geminin Sewage Management Plan koşulları doğrulandıktan sonra devreye al.",
           "Haftalık olarak çamur seviyesini ölç; gerekirse fazla çamuru sludge tankına al."
         ],
         faults: [
@@ -1742,9 +1894,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "STP girişine wet wipe, peçete, bez atılmamalı; pompa ve nozülleri tıkar.",
-          "Klorlama bölmesinde gas mask + eldiven kullanılmalı (klor gazı solunum yoluyla zararlı).",
+          "Klor/dezenfektan ile çalışırken SDS'de belirtilen kimyasal PPE, havalandırma ve acil müdahale düzenini kullan; uygunsuz asit karışımı zehirli gaz çıkarabilir.",
           "Sistem 24+ saat durduğunda bakteri kültürü ölebilir; tekrar devreye almada seed gerekebilir.",
-          "Holding tank kapasitesi her gemide 2–3 günlük olmalı; kıyıya yakın seyirde dolmamasına dikkat."
+          "Holding tank kapasitesi POB, üretim debisi, rota/liman kısıtları ve reception planına göre hesaplanır; high-level alarm ile kalan bekletme süresi watch handover'da izlenir."
         ]
       },
       {
@@ -1858,7 +2010,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Kapı içeride bulunan personel için içeriden açma kolu (panic release) zorunludur (SOLAS).",
+          "İçeriden açma, alarm ve mahsur kalma önlemlerini geminin cold-room risk assessment'i, MLC/flag ve onaylı arrangement üzerinden doğrula; yanlışlıkla kilitlenme halinde içeriden kaçış işlevini operasyon öncesi test et.",
           "Düşük sıcaklık alarmı bridge ve ECR'da görünür olmalı.",
           "Defrost sırasında oda sıcaklığı geçici olarak yükselir; defrost frekansı ayarlanmalı.",
           "Et ve balık odası ayrı evaporator gerektirir; çapraz koku önlemi."
@@ -1870,10 +2022,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Sefere çıkmadan kumanya yüklendiğinde tüm odalar set sıcaklığa indirilir.",
-          "Günlük sıcaklık kontrol log'u tutulur (HACCP zorunluluğu).",
+          "Sıcaklık ve alarm kayıtlarını Food Safety Management Plan/MLC, company procedure ve cargo/provision gereğine göre tut; 'HACCP her gemide aynı biçimde zorunlu' diye genelleme yapma.",
           "Evaporator coil'inde aşırı buz birikimi varsa defrost manuel başlatılır.",
           "Refrigerant level (sight glass) ve oil level (kompressor) kontrol edilir.",
-          "Kondenser deniz suyu strainer'ı haftalık temizlenir."
+          "Condenser sea-water strainer'ını differential pressure, akış/sıcaklık trendi ve PMS'e göre temizle; sabit haftalık aralığı kirlenme kanıtının yerine kullanma."
         ],
         faults: [
           { fault: "Oda soğumuyor", cause: "Gaz kaçağı, evaporator buzlu, solenoid valf kapalı", action: "Sızdırmazlık, defrost, solenoid test." },
@@ -1884,7 +2036,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Soğuk depoya tek başına girilmez; içeride mahsur kalma riski (panic alarm + radio).",
           "Defrost sırasında üretilen sıvı drain hattı tıkanmamalı (don/sızıntı).",
-          "Soğutucu gaz sızıntısı oda atmosferinde O₂ azaltır; gaz dedektör zorunlu.",
+          "Refrigerant kaçağı boğulma, toksisite veya yanıcılık riski yaratabilir; fixed detector gereği refrigerant sınıfı/şarjı, mahal ve class/flag risk assessment'inden doğrulanır, portable ölçüm ve havalandırma hazır tutulur.",
           "Kompresör çalışırken suction valf kapatılmaz (sıvı kompresyon = kırılma)."
         ]
       }
@@ -1896,7 +2048,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
     topics: [
       {
         title: "Yangın Devre Pompası ve Hattı (Fire Main)",
-        introduction: "Yangın devre pompası, gemideki yangın hidrantlarına ve sabit söndürme sistemlerine basınçlı deniz suyu sağlayan ana pompadır. SOLAS gereği iki bağımsız yangın pompası ve bir adet acil yangın pompası (emergency fire pump) bulunur.",
+        introduction: "Fire main; onaylı pompa, sea suction, izolasyon, hidrant, hortum/nozül ve gerektiğinde emergency fire pump düzeninden oluşur. Pompa sayısı, kapasitesi ve emergency pump gereği gemi tipi/GT ile SOLAS II-2/10'un uygulanabilir hükümlerinden doğrulanır.",
         sections: [
           {
             heading: "Yangın Hattı Donanımı",
@@ -1917,9 +2069,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "SOLAS Reg. II-2/10 gereği minimum 2 bağımsız yangın pompası zorunludur.",
-          "Acil yangın pompası kendi yakıt tankı ve bağımsız enerji kaynağına sahiptir.",
-          "Hidrant basıncı genelde 2.7–4 bar, debi gemi tonajına göre belirlenir."
+          "Gerekli ana/emergency pompa sayısı ve ortak yangında devre dışı kalmama düzeni Safety Equipment Record, Fire Control Plan ve onaylı piping diagram'dan doğrulanır.",
+          "Emergency fire pump elektrik, dizel veya onaylı başka tahrikte olabilir; gerçekten bağımsız sea suction, erişim, havalandırma ve yakıt/enerji dayanımı birlikte test edilir.",
+          "Hidrant basıncı/debisi sabit 2.7–4 bar ezberi değildir; SOLAS minimum jet koşulu ve onaylı pump curve üzerinden en olumsuz hidrantlarda ölçülür."
         ],
         workingPrinciple: [
           "Pompa deniz suyunu kingstondan alır, basınçlandırarak fire main hattına basar.",
@@ -1930,7 +2082,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Suction valfini aç, kingston filtresini kontrol et.",
           "Pompayı yerel veya uzaktan (köprüüstü/kontrol odası) çalıştır.",
           "Hat basıncını manometreden izle (2.7–4 bar normal).",
-          "Haftalık test sırasında hidrantı aç ve debi/basıncı doğrula."
+          "PMS/SMS testinde seçilmiş en olumsuz hidrant(lar) üzerinden start, priming, pressure/debi ve bağımsız suction işlevini doğrula."
         ],
         faults: [
           { fault: "Pompa basınç vermiyor", cause: "Suction tıkalı, hava emiyor, impeller aşınmış", action: "Strainer temizle, pompayı priming et, impeller kontrol et." },
@@ -1938,7 +2090,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "Hat basıncı düşüyor", cause: "Hat üzerinde sızıntı, valfler tam kapanmamış", action: "Hattı izle, valfleri sıkıştır, sızıntı noktasını ara." }
         ],
         precautions: [
-          "Acil yangın pompası haftalık test edilmeli ve kayıt tutulmalı.",
+          "Acil yangın pompasını PMS/SMS sıklığında, gerçek suction ve hidrant basıncı dahil test et; sadece kısa no-load startı yeterli sayma.",
           "Hidrant valfleri ve hortumları açık/kapalı pozisyonda korozyona karşı denetlenmeli.",
           "ISC bağlantısı kolay erişilebilir yerde, gri renk ve etiketli olmalı.",
           "Kış aylarında açık güverte hatlarında donma önlemi alınmalı."
@@ -1946,7 +2098,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
       },
       {
         title: "CO₂ Sabit Söndürme Sistemi",
-        introduction: "CO₂ sistemi, makine dairesi, kargo ambarı ve yakıt tankı gibi kapalı hacimlerde yangını oksijensiz bırakarak söndüren sabit gaz söndürme sistemidir. Yüksek basınçlı CO₂ silindirleri özel bir bottle room'da depolanır.",
+        introduction: "Sabit CO₂ sistemi, onaylandığı makine mahalli veya kargo mahalli gibi kapalı hacimlere hesaplanmış miktarda gaz vererek yangını bastırır. Korunan mahaller Fire Control Plan ve release-station marking'inden doğrulanır; yakıt tankını kendiliğinden 'korunan mahal' saymak tehlikelidir.",
         sections: [
           {
             heading: "Sistem Bileşenleri",
@@ -1954,7 +2106,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               "Yüksek basınç (HP) CO₂ silindirleri ~50 bar basınçta sıvı CO₂ içerir; en yaygın gemi tipi.",
               "Pilot silindir, master valfi ve manifold valflerini açan kontrol gazını sağlar.",
               "Time delay (zaman geciktirici) personelin tahliyesi için 20–60 sn bekleme süresi sağlar.",
-              "Discharge nozülleri korunan hacme dağıtılmıştır; tasarım konsantrasyon makine dairesi için %40 hacim oranında CO₂."
+              "Discharge nozülleri korunan hacme dağıtılır; CO₂ miktarı, boşaltma süresi ve dağılımı FSS Code tasarım hesabı ile mahal net/gross hacim tanımına göre onaylanır."
             ],
             table: {
               headers: ["Bileşen", "İşlev"],
@@ -1970,14 +2122,14 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "Aktivasyon öncesi tüm personel tahliye edilmeli, kapı/jaluzi/fan kapatılmalıdır.",
-          "Boğulma riski nedeniyle CO₂ odasına giriş için EEBD/SCBA zorunludur.",
-          "Yıllık dış muayene, 5 yılda bir hidrostatik test (silindir tartımı %10 kayıpta yenilenir)."
+          "CO₂ kaçağı veya boşaltım şüphesinde mahal tehlikeli atmosfer kabul edilir; EEBD yalnız kaçış içindir, giriş ekipmanı değildir. Giriş ancak permit, gaz ölçümü, havalandırma, standby/rescue ve gerektiğinde SCBA ile yapılır.",
+          "Silindir miktar kontrolü, hose/valf testi ve hydrostatic test aralığı bayrak İdaresi, MSC.1/Circ.1318/Rev.1, üretici ve tüp standardından doğrulanır; sabit '5 yıl/%10' cümlesi bütün filolara uygulanmaz."
         ],
         workingPrinciple: [
           "CO₂ ortamdaki oksijeni seyrelterek yanma reaksiyonunu durdurur.",
           "Pilot silindiri açıldığında pnömatik basınç master valfi ve istenen sayıda silindiri tetikler.",
           "Gaz manifolddan dağıtılır; nozüllerden hacme yayılır.",
-          "%34'ün altında oksijen konsantrasyonu yangını söndürür; CO₂ tasarımı bunu garanti eder."
+          "CO₂, oksijen parsiyel basıncını ve alev reaksiyonunu sürdürülemez seviyeye indirir; yeterlilik, onaylı ajan miktarı/dağılım hesabıyla doğrulanır ve tekrar giriş için güvenli O₂ anlamına gelmez."
         ],
         operation: [
           "Yangın doğrulandıktan sonra makine dairesi tahliye edilir.",
@@ -1993,7 +2145,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "CO₂ odası iyi havalandırılmalı, sıcaklık < 55 °C olmalı.",
           "Hacme girmeden önce oksimetre ile O₂ ölçülmeli (> %20.5 olmalı).",
-          "Release box mühürlü tutulmalı; mühür kırıldığında köprüüstüne bildirim gider.",
+          "Release box erişilebilir, işaretli ve kazara çalıştırmaya karşı korunmuş tutulur; mühür/interlock/alarm fonksiyonu geminin onaylı düzenine göre test edilir.",
           "Personel kazara aktivasyona karşı eğitilmeli, alarm anlamı bilinmelidir."
         ]
       },
@@ -2019,8 +2171,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "MARPOL ve SOLAS, tankerlerde güverte foam sistemini zorunlu kılar.",
-          "Foam konsantresi tipik %3 veya %6 oranında karıştırılır.",
+          "Tanker deck-foam gereği MARPOL'dan değil, gemi/kargo tipine uygulanabilir SOLAS II-2, FSS Code, IBC/IGC Code ve Safety Equipment Record'dan doğrulanır.",
+          "Foam konsantresi yalnız onaylandığı yakıt/polar solvent ve üretici proportioning oranında kullanılır; %1, %3 veya %6 gibi oranlar birbirinin yerine geçirilemez.",
           "Foam monitor ve aplikatörler güverte boyunca dağıtılmıştır."
         ],
         workingPrinciple: [
@@ -2069,7 +2221,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Yolcu gemilerinde aksanmadığı yatak/salon mahallerinde sprinkler zorunludur.",
+          "Accommodation sprinkler kapsamı gemi tipi, yapım tarihi ve yangın emniyet metoduna göre SOLAS II-2/7 ve ilgili FSS bölümünden doğrulanır; bütün yolcu mahalleri için tek cümleyle genellenmez.",
           "Water mist, CO₂'ye alternatif olarak makine dairelerinde IMO MSC.1/Circ.1387 kapsamında onaylanır.",
           "Sistem basıncı sürekli izlenir; basınç düşüşü alarm verir."
         ],
@@ -2080,7 +2232,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Sistemi her zaman basınçlı (charged) konumda tut.",
-          "Aylık manometre/akış kontrolü yap.",
+          "Manometre, tank/pump ve alarm testlerini PMS ile maker/FSS test düzenine göre yap.",
           "Test valfinden örnek deşarj alarak alarm valfini test et.",
           "Deşarj sonrası ıslanan sigorta panelleri ve elektronik kontrol edilir."
         ],
@@ -2093,12 +2245,12 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Sprinkler başlıklarına boya, izolasyon veya ek yapılmamalı.",
           "Başlık çevresinde 50 cm açık alan bırakılmalı.",
           "Donma riskli alanlarda kuru tip (dry pipe) tercih edilmeli.",
-          "Yıllık kapsamlı sertifikasyon ve hidrostatik test yapılmalı."
+          "Muayene, flow test ve basınç test aralıklarını maker, class/bayrak ve MSC guidance/PMS'den doğrula; hidrolik test her yıl bütün sisteme uygulanan genel bir kural değildir."
         ]
       },
       {
         title: "Inert Gas Sistemi (IGS)",
-        introduction: "Inert gas sistemi, ham petrol ve ürün tankerlerinde kargo tanklarındaki oksijeni %5'in altına düşürerek patlayıcı atmosfer oluşumunu engeller. Boiler flue gazı veya inert gas jeneratörü ile üretilir.",
+        introduction: "Inert gas sistemi, uygulanabilir tankerlerde kargo tank atmosferini yanıcı aralığın dışında ve pozitif basınçta tutar. Teslim edilen inert gazın O₂ içeriği ile tank atmosferi limiti farklıdır: supply main için ≤%5, inertlenmiş tank atmosferi için normal üst sınır ≤%8'dir.",
         sections: [
           {
             heading: "Sistem Bileşenleri",
@@ -2121,8 +2273,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "SOLAS Reg. II-2/4.5.5: 8000 DWT üzeri tankerlerde IGS zorunludur.",
-          "Inert gas O₂ < %5, pozitif basınç altında tutulmalıdır.",
+          "IGS applicability; oil/chemical tanker tipi, DWT, yapım tarihi ve taşınan kargonun inerting yöntemiyle SOLAS II-2/4.5.5, IBC Code ve Record of Equipment'tan doğrulanır; 8 000 DWT eşiği tek başına yeterli değildir.",
+          "Deck main'e verilen inert gaz ≤%5 O₂ olmalı; tank atmosferi ≤%8 O₂ ve pozitif basınçta tutulmalıdır. Daha düşük şirket limitleri ayrıca uygulanabilir.",
           "Discharge, tank temizleme ve gas-freeing operasyonlarında inert ortam korunur."
         ],
         workingPrinciple: [
@@ -2173,7 +2325,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Yatak alanlarında hem duman dedektörü hem otomatik sprinkler bulunmalıdır.",
+          "Dedektör ve sprinkler kapsamı Fire Control Plan ile gemiye uygulanabilir SOLAS II-2 yangın emniyet metodundan doğrulanır; her accommodation mahalline aynı kombinasyon varsayılmaz.",
           "Alarm panelinde yangın bölgesi, gözetim arızası ve test fonksiyonları bulunur.",
           "Fail-safe: kablo kopması arıza alarmı vermelidir."
         ],
@@ -2183,9 +2335,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Sinyal merkezi panel tarafından bölgeye eşleştirilir, görsel + sesli alarm verilir."
         ],
         operation: [
-          "Panelden günlük lamp test ve haftalık bölge testi yapılır.",
-          "Test gazı/aerosolü ile yıllık dedektör testi (PSC kontrolünde sorulur).",
-          "Yatakhane dedektörleri 6 ayda bir tozdan temizlenmeli.",
+          "Panel lamp, fault, isolator ve zone/loop testlerini Fire Safety Operational Booklet ile PMS sıklığında yap.",
+          "Dedektörleri onaylı test gazı/ısı/alev simülatörüyle maker ve MSC.1/Circ.1432 bakım planına göre fonksiyonel test et.",
+          "Dedektör temizleme/değişim aralığını çevresel kirlilik, self-monitoring, maker limiti ve test trendine göre planla.",
           "Yanlış alarm sonrası bölge önce silinir, sonra reset edilir."
         ],
         faults: [
@@ -2227,8 +2379,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "SOLAS, gemide minimum söndürücü sayısını mahalle göre belirler.",
-          "Söndürücüler 1.5 m yükseklikte, kolay erişilebilir ve etiketli olmalıdır.",
-          "Yıllık servis, 10 yılda bir hidrostatik test zorunludur."
+          "Söndürücüler onaylı Fire Control Plan'daki yerde görünür, sabitlenmiş ve kolay erişilebilir tutulur; ağır tüpler için keyfî 1.5 m montaj yüksekliği uygulanmaz.",
+          "Servis, recharge ve hydrostatic test aralıkları söndürücü tipi, tüp standardı, bayrak İdaresi ve MSC.1/Circ.1432'den doğrulanır; evrensel '10 yılda bir' kuralı yoktur."
         ],
         workingPrinciple: [
           "Su: soğutma ile söndürür (yangın üçgeninden ısıyı çeker).",
@@ -2277,17 +2429,17 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "SOLAS gereği her yatak alanı, makine dairesi ve kontrol odasında EEBD bulunmalı.",
-          "Gemide en az 2 SCBA seti ve her seti için 2 yedek tüp zorunludur (yangın takımı).",
+          "EEBD sayısı ve konumu accommodation ile machinery-space escape düzenine göre Fire Control Plan/Safety Equipment Record'da gösterilir; EEBD yangınla mücadele veya enclosed-space giriş cihazı değildir.",
+          "Fire-fighter outfit/SCBA ve yedek charge sayısı gemi tipi/GT, FSS Code ve gemideki recharge düzenine bağlıdır; sabit '2 set + set başına 2 tüp' her gemiye uygulanmaz.",
           "Yangın takımı: SCBA + yangın elbisesi + eldiven + bot + kask + can ipi + balta + el feneri."
         ],
         workingPrinciple: [
           "Yüksek basınçlı tüp (200–300 bar) hava regülatörden orta basınca düşer.",
           "Demand valf, kullanıcı nefes aldıkça maskeye hava verir.",
-          "Düşük basınç düdüğü ~55 bar'da çalar; geri dönüş zamanını bildirir."
+          "Low-pressure warning maker set değerinde çalışır; ekip giriş kontrolünde basınç-zaman hesabı ve turn-around pressure belirleyerek düdüğü beklemeden geri dönüşe başlar."
         ],
         operation: [
-          "Kullanım öncesi tüp basıncını kontrol et (>%80 dolu olmalı).",
+          "Kullanım öncesi tüp basıncını sıcaklık düzeltmesi ve maker full-charge değeriyle kontrol et; takımın giriş süresi/geri dönüş rezervine yeterli olduğunu kaydet.",
           "Maske sızdırmazlık testi: tüm girişi kapat, derin nefes al — vakum tutmalı.",
           "Cihazı tak, ana valfi tam aç, demand valfini bağla.",
           "Görev sırasında basıncı izle; düdük çaldığında geri dön."
@@ -2298,7 +2450,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "Maske sızdırıyor", cause: "Yanlış boy/sakal/conta yıpranmış", action: "Doğru boy seç, contayı değiştir, sakal traşı." }
         ],
         precautions: [
-          "SCBA tüpü için 5 yıllık hidrostatik test sertifikası gerekli.",
+          "SCBA tüpünün hydrostatic test ve ömür limitini tüp standardı, üretici ve bayrak gereğinden doğrula; sertifika/marking'i yalnız sabit 5 yıl ezberiyle değerlendirme.",
           "Hava kompresöründe CO/CO₂/yağ buharı filtreleri periyodik değiştirilmelidir.",
           "EEBD eğitimi yapılmadan kullanılmamalı; hood göz korumasını sağlamalı.",
           "Yangın takımı yerinde, mühürlü ve eksiksiz tutulmalı; aylık kontrol kayda alınmalı."
@@ -2379,7 +2531,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         keyPoints: [
           "Pump room atmosferi sürekli ventile edilir; gas detection sistemine bağlıdır.",
           "Pompa keçesi sıcaklığı pillow block ile sürekli izlenir; aşırı ısınma yangın riskidir.",
-          "Discharge basıncı ve emiş vakumu MARPOL 5 cm/sn akış sınırına göre ayarlanır."
+          "Discharge debisi; terminal agreement, manifold/shore pressure limitleri, ship-shore checklist ve cargo pump operating envelope içinde artırılır; MARPOL'a atfedilen sabit '5 cm/sn' limiti kullanılmaz."
         ],
         workingPrinciple: [
           "Santrifüj pompada impeller döner; merkezkaç kuvveti sıvıyı çevreden volute'e fırlatır ve discharge basıncı oluşur.",
@@ -2402,8 +2554,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "Pump room'a girmeden önce O₂, LEL ve H₂S ölçümü yapılmalı; gerekirse SCBA kullanılmalı.",
-          "Statik elektrik birikimini önlemek için akış hızı ilk dakikada 1 m/s ile sınırlandırılmalı.",
-          "Acil stop butonları pump room dışında, en az iki ayrı noktada bulunmalı.",
+          "Statik biriktiren cargo ve boş tanka ilk yüklemede, inlet örtülene kadar düşük line velocity uygulanır; kesin hız/yükseklik ISGOTT, terminal ve cargo planından alınır, her kargoya körlemesine 1 m/s uygulanmaz.",
+          "Cargo ESD/remote stop istasyonlarının yeri ve etkilediği ekipman approved plan ile ship-shore checklist'ten doğrulanır; istenmeyen valf surge etkisi önceden değerlendirilir.",
           "Boşaltım sırasında trim ve heel sürekli izlenmeli; serbest yüzey momenti hesaba katılmalı."
         ]
       },
@@ -2416,7 +2568,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             paragraphs: [
               "Programlı dönen tank washing makineleri (Butterworth, Toftejorg) tank tepesi ve dibinde belirli açı/devirde çalışır.",
               "COW pompası ham petrolü 8–12 bar basınçla makinelere besler.",
-              "Inert gas sistemi (IGS) tank atmosferinde O₂ < %5 garantisi sağlar; COW sırasında IGS aktif olmak zorundadır.",
+              "IGS, COW boyunca tank atmosferini ≤%8 O₂ ve pozitif basınçta tutar; deck main'e verilen inert gaz ≤%5 O₂ olmalıdır. Analizör reading'i uygun sampling ve calibration ile doğrulanır.",
               "Fixed gas freeing fan ve hat purje düzeni, yıkama sonrası tankı gas-free yapar."
             ],
             table: {
@@ -2425,15 +2577,15 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 ["Tank washing machine", "Yüksek basınçla yıkama jeti"],
                 ["COW pump", "Yıkama basıncını sağlar"],
                 ["Stripping system", "Yıkama suyunu/sökülen petrolü tahliye eder"],
-                ["IGS", "O₂ < %5 inert atmosfer"],
+                ["IGS", "Supply ≤%5 O₂; tank atmosferi ≤%8 O₂ ve pozitif basınç"],
                 ["Pressure gauge", "Hat basıncını izler"]
               ]
             }
           }
         ],
         keyPoints: [
-          "MARPOL Reg. 33: 20.000 DWT üzeri ham petrol tankerlerinde COW zorunludur.",
-          "Yıkama sırasında tank atmosferi O₂ < %5 olmalı (patlama önleme).",
+          "COW applicability yalnız '20 000 DWT üzeri' cümlesiyle belirlenmez; MARPOL Annex I Reg. 33'ün yapım tarihi/ship definition hükümleri, IOPP Supplement ve onaylı COW Operations and Equipment Manual kontrol edilir.",
+          "COW sırasında tank atmosferi ≤%8 O₂ ve pozitif basınçta tutulur; inert-gas supply ≤%5 O₂ olmalıdır. Manual'deki daha düşük stop limiti uygulanır.",
           "Discharge planında COW programı, makine sayısı ve süreleri belirtilmelidir."
         ],
         workingPrinciple: [
@@ -2443,8 +2595,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "İkinci aşama (bottom wash) tank dibine odaklanır; ROB minimize edilir."
         ],
         operation: [
-          "Tank seviyesi yarıya indiğinde top wash başlat.",
-          "Boşaltım %90 tamamlanınca bottom wash devreye al.",
+          "Top wash'i yalnız onaylı COW Manual'deki tank-specific ullage, machine pattern ve discharge sequence noktasında başlat.",
+          "Bottom wash/stripping zamanını tank planı, suction coverage ve terminal discharge sequence ile onaylı COW programından uygula.",
           "Yıkama süresince hat basıncını ve makine devrini izle.",
           "Yıkama sonrası tankı stripping ile boşalt, IGS ile basınçta tut.",
           "Yıkama kayıtlarını COW Operations Manual ve Oil Record Book'a işle."
@@ -2452,10 +2604,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         faults: [
           { fault: "Düşük yıkama basıncı", cause: "Pompa arızası, hat sızıntısı, makine tıkalı", action: "Pompa kontrol, hat sızıntı testi, makine sökerek temizle." },
           { fault: "Makine dönmüyor", cause: "Türbin kanadı tıkalı, hidrolik motor arızalı", action: "Makineyi sök, türbini temizle veya motoru değiştir." },
-          { fault: "O₂ %5'i geçti", cause: "IGS deficit, blower arızası", action: "COW'u durdur, IGS'i normalleştir, sonra yeniden başlat." }
+          { fault: "Tank O₂/IG basıncı limit dışı", cause: "IGS yetersiz, analizör/sampling hatası veya tank kaçakları", action: "COW'u derhal durdur; onaylı manual'deki tank O₂ ve supply O₂ limitlerini, pozitif basıncı ve analizör doğruluğunu yeniden sağla." }
         ],
         precautions: [
-          "COW sırasında O₂ analizör sürekli okuma vermeli; trip seviyesi %8.",
+          "COW sırasında fixed/portable O₂ ölçümleri onaylı manual sıklığında karşılaştırılır; tank %8 O₂ sınırına yaklaşmadan manual'deki stop criteria uygulanır.",
           "Yıkama makineleri için onaylı operasyonel zarf (envelope) dışına çıkılmamalı.",
           "Statik şarj birikimini önlemek için yıkama akışı kontrol edilmeli.",
           "Personel pump room'a girmeden önce H₂S ölçümü yapmalı (özellikle sour crude)."
@@ -2485,7 +2637,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "MARPOL ve ISGOTT, kargo transferinde bağımsız high-level alarm zorunlu kılar.",
+          "Independent high-level/overfill alarm gereği MARPOL'a genellenmez; tanker tipi, SOLAS/IBC/IGC hükümleri, terminal şartı ve onaylı cargo-system arrangement'tan doğrulanır.",
           "UTI cihazı interface (su/yağ sınırı) ölçümünde kullanılır.",
           "Tank atmosferi inert ise vapor lock valfinden geçilmeli."
         ],
@@ -2537,8 +2689,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "ICLL ve SOLAS Reg. II-1/16: weathertight integrity için Class testleri zorunlu.",
-          "Sızdırmazlık testi: hose test (≥ 2 bar) veya ultrasonic test.",
+          "Weathertight integrity ve survey dayanağı Load Line Convention, gemi tipi/yapım tarihi, class kuralları ve onaylı hatch-cover planından doğrulanır.",
+          "Hose veya ultrasonic test; IACS/flag/class kabul ettiği prosedür, kalibrasyon, nozül mesafesi ve acceptance criteria ile yapılır; yalnız ≥2 bar göstergesi geçer sonuç değildir.",
           "Ambar kapağı yük taşıma kapasitesi (kPa) yük tipine göre belirlenir."
         ],
         workingPrinciple: [
@@ -2734,7 +2886,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "ILO 152 ve Register of Cargo Gear yıllık tutulmalı, sertifikalar geçerli olmalı.",
-          "Yıllık thorough examination, 5 yılda bir proof load test (1.25 × SWL).",
+          "Thorough examination ve proof-load aralığı/yükü Cargo Gear Book, bayrak uygulaması, SOLAS II-1/3-13, MSC.1/Circ.1663 ve ilgili ILO 152 düzeninden doğrulanır; 1.25 × SWL her kapasite/donanım için evrensel değildir.",
           "SWL plate vinç üzerinde okunaklı olmalı."
         ],
         workingPrinciple: [
@@ -2758,8 +2910,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "Yük altında veya salınım yörüngesinde personel bulunamaz.",
-          "Rüzgar > 15 m/s veya gemi list > 5° iken cargo gear durdurulur.",
-          "Tel halat NDT (MPI/UT) periyodik yapılmalı; greasing aylık.",
+          "Wind, list/trim ve sea-state stop limitlerini onaylı load chart/operating manual'den uygula; sabit 15 m/s ve 5° bütün crane/configuration'lar için güvenli sınır değildir.",
+          "Wire rope'u maker/ISO discard criteria ile görsel ve ölçümsel olarak değerlendir; klasik MPI/UT'yi halata rutin ezber olarak yazma, yağlamayı rope-construction ve PMS'e göre yap.",
           "Sertifikalı operatör + sinyalist ile çalışılmalı; el işaretleri standardize edilmiş olmalı."
         ]
       },
@@ -2780,19 +2932,19 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         keyPoints: [
           "MARPOL Annex I Reg. 34: load on top (LOT) prosedürü ile slop dekantasyonu yapılır.",
           "Yıkama suyu doğrudan denize basılamaz; ODME (Oil Discharge Monitoring) zorunludur.",
-          "Sıcaklık 60 °C'yi geçince statik şarj riski artar; controlled flow gerekir."
+          "Yıkama sıcaklığı, kimyasalı ve debisi kargo compatibility, coating limitleri, flash-point/static precautions ve onaylı tank-cleaning guide'a göre seçilir; sabit 60 °C eşiği her kargoya uygulanmaz."
         ],
         workingPrinciple: [
           "Yıkama makinesi yüksek basınçlı suyu tank duvarlarına püskürtür.",
           "Yıkama suyu tank dibinde toplanır; eductor venturi etkisi ile bu suyu emer ve slop'a basar.",
-          "Slop'ta yağ-su faz ayrışması için en az 24 saat dinlendirme yapılır.",
+          "Slop ayrışma süresi sıcaklık, emülsiyon ve interface ölçümüne göre belirlenir; sabit 24 saat beklemek deşarj kalitesini tek başına kanıtlamaz.",
           "Üstteki yağ tabakası bir sonraki yüke karıştırılır (LOT), alttaki su ODME ile kontrollü deşarj edilir."
         ],
         operation: [
           "Yıkama programını cargo planına göre hazırla (sıcak/soğuk, kimyasal vs.).",
-          "İnert atmosferi koru (O₂ < %5).",
-          "Yıkama makinesini 90° açıyla sırayla pozisyonla.",
-          "Slop dekantasyonu için yeterli süre tanı; ODME ile deşarj başlat.",
+          "İnertlenen tankta tank atmosferini ≤%8 O₂ ve pozitif basınçta tut; supply gas için ≤%5 O₂ limitini ayrıca izle.",
+          "Yıkama makinesini approved cycle/program, shadow diagram ve coating/cargo kısıtlarına göre çalıştır; keyfî 90° pozisyon kullanma.",
+          "Slop interface ve sample'ı doğrula; yalnız MARPOL Annex I Reg. 34, ODME operational manual ve discharge criteria eksiksiz sağlanıyorsa kontrollü deşarja başla.",
           "Tank gas free yapılmadan girişe izin verme; permit-to-enter düzenle."
         ],
         faults: [
@@ -2802,7 +2954,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "Tank içi giriş Enclosed Space Entry permit ile, gas test sonuçları olumlu olmalı.",
-          "Statik şarj kontrolü için tankı yıkamadan önce 30 dk dinlendir (settling time).",
+          "Settling time, portable conductive/non-conductive ekipman ve water-mist/static precaution sürelerini ISGOTT, cargo SDS ve onaylı tank-cleaning procedure'den doğrula; sabit 30 dakika bütün operasyonlara yeterli değildir.",
           "ODME logu Oil Record Book'a işlenir; PSC kontrolünde sorulur.",
           "Sıcak yıkamada personel yanık önlemi (PPE) almalı."
         ]
@@ -2888,8 +3040,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "MARPOL Annex I: kıyıdan >12 NM, gemi seyir halinde, 15 ppm altında ise tahliye serbest.",
-          "Özel alanlarda (Akdeniz, Karadeniz, Baltık vb.) ek kısıtlamalar uygulanır.",
+          "Machinery-space bilge deşarjı için MARPOL Annex I Reg. 15'te genel bir 12 NM şartı yoktur: uygulanabilir gemide seyir halinde olma, onaylı 15 ppm ekipmanı/alarm-otomatik durdurma düzeni, seyreltilmemiş effluent ve ≤15 ppm şartları birlikte sağlanır.",
+          "Special area, Antarctic area, gemi tipi/GT, kıyı devleti ve IOPP Supplement düzeni ayrıca doğrulanır; overboard valfin açılabilir olması deşarjın hukuken uygun olduğunu kanıtlamaz.",
           "ORB (Oil Record Book) Bölüm I'de her separatör operasyonu kayıt altına alınır.",
           "Magic pipe (bypass) kullanımı ağır cezai yaptırım gerektirir."
         ],
@@ -2902,8 +3054,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         operation: [
           "Çalıştırmadan önce sealing water hattını aç (bazı modellerde gerekli).",
           "Pompa başlat, ilk birkaç dakika resirkülasyon modunda OCM'yi prime et.",
-          "OCM yeşil ışık verince 3-yollu valf overboard'a açılır; akışı düşük tut.",
-          "Operasyon süresince ORB'yi anlık doldur (start/stop saati, miktar, pozisyon).",
+          "Deşarj koşulları checklist ile doğrulandıktan ve sorumlu zabit izin verdikten sonra maker sekansıyla overboard yönünü seç; OCM değeri, sample flow ve automatic stopping device işlevini izle.",
+          "ORB Code'a uygun operasyon kodu, start/stop zamanı, pozisyon, miktar ve yöntemi sorumlu zabitçe gecikmeden kaydet; Master kontrol/imza düzenini uygula.",
           "Bitirince hatları temiz su ile flush et, OCM sensörünü temiz tut."
         ],
         faults: [
@@ -2931,7 +3083,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               "MBR (Membrane Bioreactor): biyolojik proses + ultrafiltrasyon membran; çıkış suyu çok yüksek kalitede olur."
             ],
             table: {
-              headers: ["Parametre", "MARPOL IV Limit", "Tipik MBR Çıkış"],
+              headers: ["Parametre", "MEPC.227(64) type-approval test kriteri", "Örnek MBR trendi; garanti değil"],
               rows: [
                 ["Fekal koliform", "<100 CFU/100mL", "<10"],
                 ["TSS (askıda katı)", "<35 mg/L", "<10"],
@@ -2942,10 +3094,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Onaysız/işlenmemiş sewage: kıyıdan ≥12 NM, ≥4 knot hızla, kontrollü oranda boşaltılabilir.",
-          "Onaylı STP çıkışı: ≥3 NM (komminutor + dezenfeksiyon ile) veya doğrudan (uyumlu STP ile).",
-          "Özel alanda (Baltık) hiç boşaltım yapılamaz; shore reception zorunlu.",
-          "ISPP (International Sewage Pollution Prevention) sertifikası 5 yıllık."
+          "Untreated sewage ancak en yakın karadan 12 NM'den uzakta, gemi en route iken ve İdarenin onayladığı moderate-rate düzenine göre boşaltılabilir; MEPC.157(55) hesabında hızın 4 knot'tan az olmaması esas alınır.",
+          "Approved comminuting/disinfecting sisteminden geçen sewage için 3 NM şartı ayrı bir yoldur. Operasyonel ve type-approved STP effluent'i bu mesafe ezberinden farklıdır; Annex IV, ISPP Supplement ve yerel kural birlikte kontrol edilir.",
+          "Baltık Sea special-area hükümleri özellikle yolcu gemilerinin sewage deşarjına, uygulama tarihleri ve onaylı nutrient-removal STP/reception seçenekleriyle uygulanır; bütün gemiler için tek cümlelik mutlak yasak değildir.",
+          "ISPP sertifikasının geçerliliği ve endorsment/survey durumu sertifikanın üzerinde doğrulanır; normal azami süre beş yıldır."
         ],
         workingPrinciple: [
           "Aerobik tankta blower hava verir; aktif çamur içindeki bakteriler organik maddeyi CO₂ ve H₂O'ya çevirir.",
@@ -2955,9 +3107,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Aerobik tank seviyesini kontrol et (genelde 50–70%).",
-          "Blower'ı 24/7 çalıştır; durdurulursa bakteriler ölür ve sistem 'patlar' (kötü koku, verimsizlik).",
-          "Klor tabletini düzenli ekle (tablet feeder dolu olmalı).",
-          "Discharge pompasını kıyıdan açıkta ve seyir halinde devreye al.",
+          "Biyolojik proseste blower duty/standby ve çalışma çevrimini maker manual'e göre sürdür; uzun hava kaybında biomass sağlığını analiz et ve kontrollü recovery uygula.",
+          "Dezenfeksiyon tipine göre dozaj/elektroliz, residual ve sarf durumunu maker manual ile discharge standardına göre kontrol et.",
+          "Discharge pompasını ancak Annex IV, special-area/port kuralı ve geminin Sewage Management Plan koşulları doğrulandıktan sonra devreye al.",
           "Haftalık olarak çamur seviyesini ölç; gerekirse fazla çamuru sludge tankına al."
         ],
         faults: [
@@ -2968,9 +3120,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "STP girişine wet wipe, peçete, bez atılmamalı; pompa ve nozülleri tıkar.",
-          "Klorlama bölmesinde gas mask + eldiven kullanılmalı (klor gazı solunum yoluyla zararlı).",
+          "Klor/dezenfektan ile çalışırken SDS'de belirtilen kimyasal PPE, havalandırma ve acil müdahale düzenini kullan; uygunsuz asit karışımı zehirli gaz çıkarabilir.",
           "Sistem 24+ saat durduğunda bakteri kültürü ölebilir; tekrar devreye almada seed gerekebilir.",
-          "Holding tank kapasitesi her gemide 2–3 günlük olmalı; kıyıya yakın seyirde dolmamasına dikkat."
+          "Holding tank kapasitesi POB, üretim debisi, rota/liman kısıtları ve reception planına göre hesaplanır; high-level alarm ile kalan bekletme süresi watch handover'da izlenir."
         ]
       },
       {
@@ -2981,36 +3133,36 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             heading: "Yapı ve Bileşenler",
             paragraphs: [
               "Yanma odası refrakter tuğla ile kaplı, sludge tank, dosing pompası, brulor (burner) ve hava fanı içerir.",
-              "Sludge için ön ısıtma 90 °C; viskozite düşürülür ve atomizer ile odaya püskürtülür.",
+              "Sludge ön ısıtması/viskozitesi burner ve dosing-pump manual'indeki atomization bandına göre ayarlanır; sabit 90 °C her sludge bileşimi için güvenli değildir.",
               "Katı atık (kağıt, gıda) charge door'dan yüklenir; ön ısıtma sonrası alev yakar.",
               "Baca: cyclone/scrubber + sıcaklık sensörü + emisyon kontrolü."
             ],
             table: {
-              headers: ["Atık", "Yakma Sıcaklığı", "Süre"],
+              headers: ["Akış / kontrol", "Karar kaynağı", "İzlenen kanıt"],
               rows: [
-                ["Sludge oil", "850–1100 °C", "Sürekli"],
-                ["Katı atık", "850–1000 °C", "Batch / döngü"],
-                ["Sewage çamuru", "850 °C minimum", "Sürekli"]
+                ["Onboard-generated oil/sewage sludge", "MARPOL VI/16 + type-approval + maker feed spec", "Feed rate, chamber/outlet temperature, alarm log"],
+                ["Katı garbage", "Garbage Management Plan ve prohibited-material ayrımı", "Batch mass/volume, position ve GRB kaydı"],
+                ["PVC/halojenli içerik", "Yalnız uygun IMO type-approved incinerator ve yerel izin", "Waste segregation ve equipment approval"]
               ]
             }
           }
         ],
         keyPoints: [
-          "Plastik, PVC, halojenli atık, askeryı, akü, civa içerikli atık YAKILMAZ (MARPOL Annex VI).",
-          "Limanda ve özel alanlarda insinerator çalıştırılması yasaktır (port state regulation).",
+          "MARPOL Annex VI/16 prohibited materials listesini Garbage Management Plan'dan uygula: PCB, ağır metal izinden fazlasını içeren garbage ve ilgili cargo residues/contaminated packing gibi maddeleri yakma; PVC yalnız buna uygun IMO type-approved incinerator'da ve yerel izinle işlenebilir.",
+          "Incineration yasağı atık türü ve operasyon yerine göre MARPOL Annex VI Reg. 16 ile liman/terminal/yerel kurallardan kontrol edilir; bütün special area'larda her türlü incinerator çalışması mutlak yasaktır denemez.",
           "Garbage Record Book (Part I) yakılan atık türü ve miktarı kayıt altına alınır.",
-          "Yakma odası sıcaklığı 850 °C altına düşerse otomatik shutdown devreye girer."
+          "Low/high-temperature feed cut-out ve shutdown setleri incinerator type-approval ile maker BMS sequence'inden doğrulanır; her model için sabit 850 °C trip varsayılmaz."
         ],
         workingPrinciple: [
-          "Brulor diesel/sludge karışımıyla ön ısıtma yapar, oda sıcaklığı 850 °C'ye ulaşır.",
+          "Burner, chamber'i type-approved feed-enable sıcaklığına getirir; control system izin vermeden sludge/garbage beslenmez.",
           "Sludge dosing pompası ısıtılmış sludge'ı atomize ederek yanma odasına püskürtür.",
           "Hava fanı yanma için yeterli oksijen sağlar; oran kontrol edilir.",
           "Baca gazı sıcaklık sensörüyle izlenir; düşerse oto-shutdown."
         ],
         operation: [
           "Sludge tankı seviyesini, yakıt tankını ve hava fanını kontrol et.",
-          "Brulor ile ön ısıtma başlat; oda sıcaklığı 700 °C üzerine çıktığında sludge dosingi devreye al.",
-          "Sıcaklığı 850–1000 °C bandında tut; aşırı dosingten kaçın (siyah duman = eksik yanma).",
+          "Burner ile maker start sequence'ini tamamla; sludge/solid feed'i yalnız type-approval ve interlock'un izin verdiği chamber sıcaklığında başlat.",
+          "Chamber/combustion-gas sıcaklığını type-approved çalışma bandında tut; aşırı dosing ve görünür dumanı normal kabul etme.",
           "Çalışma sonunda dosingi kes, brulor ile odayı temiz yakıtla soğut (purge).",
           "Garbage Record Book'a tür, hacim, başlangıç-bitiş saati yaz."
         ],
@@ -3023,7 +3175,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Çalışırken charge door kesinlikle açılmaz; alev geri tepme (flashback) riski.",
           "Plastik veya PVC içeren atık dioxin/furan üretir, sağlığa ve çevreye zararlıdır.",
-          "Refrakter tuğla şok soğumadan zarar görür; cool-down minimum 4 saat.",
+          "Refrakteri termal şoktan korumak için maker'ın controlled cool-down/purge süresini tamamla; sabit 4 saat bütün modeller için geçerli değildir.",
           "Stack çıkışı çevresinde personel olmamalı; soğuk havada görünmeyen sıcak gaz tehlikesi."
         ]
       },
@@ -3165,7 +3317,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Kapı içeride bulunan personel için içeriden açma kolu (panic release) zorunludur (SOLAS).",
+          "İçeriden açma, alarm ve mahsur kalma önlemlerini geminin cold-room risk assessment'i, MLC/flag ve onaylı arrangement üzerinden doğrula; yanlışlıkla kilitlenme halinde içeriden kaçış işlevini operasyon öncesi test et.",
           "Düşük sıcaklık alarmı bridge ve ECR'da görünür olmalı.",
           "Defrost sırasında oda sıcaklığı geçici olarak yükselir; defrost frekansı ayarlanmalı.",
           "Et ve balık odası ayrı evaporator gerektirir; çapraz koku önlemi."
@@ -3177,10 +3329,10 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Sefere çıkmadan kumanya yüklendiğinde tüm odalar set sıcaklığa indirilir.",
-          "Günlük sıcaklık kontrol log'u tutulur (HACCP zorunluluğu).",
+          "Sıcaklık ve alarm kayıtlarını Food Safety Management Plan/MLC, company procedure ve cargo/provision gereğine göre tut; 'HACCP her gemide aynı biçimde zorunlu' diye genelleme yapma.",
           "Evaporator coil'inde aşırı buz birikimi varsa defrost manuel başlatılır.",
           "Refrigerant level (sight glass) ve oil level (kompressor) kontrol edilir.",
-          "Kondenser deniz suyu strainer'ı haftalık temizlenir."
+          "Condenser sea-water strainer'ını differential pressure, akış/sıcaklık trendi ve PMS'e göre temizle; sabit haftalık aralığı kirlenme kanıtının yerine kullanma."
         ],
         faults: [
           { fault: "Oda soğumuyor", cause: "Gaz kaçağı, evaporator buzlu, solenoid valf kapalı", action: "Sızdırmazlık, defrost, solenoid test." },
@@ -3191,19 +3343,19 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Soğuk depoya tek başına girilmez; içeride mahsur kalma riski (panic alarm + radio).",
           "Defrost sırasında üretilen sıvı drain hattı tıkanmamalı (don/sızıntı).",
-          "Soğutucu gaz sızıntısı oda atmosferinde O₂ azaltır; gaz dedektör zorunlu.",
+          "Refrigerant kaçağı boğulma, toksisite veya yanıcılık riski yaratabilir; fixed detector gereği refrigerant sınıfı/şarjı, mahal ve class/flag risk assessment'inden doğrulanır, portable ölçüm ve havalandırma hazır tutulur.",
           "Kompresör çalışırken suction valf kapatılmaz (sıvı kompresyon = kırılma)."
         ]
       },
       {
         title: "Sıkıştırılmış Hava Sistemi (Start / Control / Working Air)",
-        introduction: "Gemide üç ana basınçlı hava sistemi vardır: ana makine ilk hareketi için 25–30 bar start air, otomasyon ve enstrümantasyon için 7 bar control air, atölye ve servis için 7 bar working air. Kompresör + air cooler + receiver tank + dryer + filter sistemi ile sağlanır.",
+        introduction: "Starting, control/instrument ve working air devreleri; kompresör, cooler/separator, receiver, dryer/filter ve basınç düşürme düzenlerinden oluşur. 30/7 bar yalnız yaygın örnektir; geminin design pressure, normal band ve alarm/trip değerleri P&ID ile maker manual'den alınır.",
         sections: [
           {
             heading: "Sistem Hiyerarşisi",
             paragraphs: [
               "Ana hava kompresörü (main air compressor): 2 kademeli, 30 bar; ana receiver tankını şarj eder.",
-              "Start air receiver: SOLAS gereği 12 ardışık reverse start için yeterli olacak hacim (genellikle 2 adet).",
+              "Start-air receiver toplam kapasitesi, reversible ana makinede kompresör takviyesi olmadan en az 12 ardışık start; non-reversible düzende en az 6 start kriteri ve onaylı piping/izolasyon düzeniyle değerlendirilir.",
               "Reducing valve: 30 bar → 7 bar control/working air için.",
               "Air dryer: refrigerant veya desiccant tipi; çiğ noktası -20 ila -40 °C.",
               "Acil kompresör (emergency air compressor): elektrik kesintisinde dizel veya emergency switchboard'dan beslenen küçük kompresör; ana makine ilk start için."
@@ -3220,9 +3372,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Receiver tank ve emniyet valfi 5 yılda bir survey gerektirir (class).",
+          "Receiver internal/external examination, thickness/pressure test ve safety-valve aralığını class/bayrak survey status ile pressure-vessel planından doğrula; sabit 5 yıl bütün kontrolleri açıklamaz.",
           "Tank içinde su birikimi olur; her vardiya altta drain açılarak boşaltılır.",
-          "Yağ buharı patlama riski; kompresör çıkış sıcaklığı izlenir (140 °C üzeri tehlike).",
+          "Oil carry-over ve yüksek discharge sıcaklığı yangın/patlama riski yaratır; maker alarm/trip setleri ile normal trendi izle, evrensel 140 °C sınırı kullanma.",
           "Control air kuru ve yağsız olmalı; yoksa pnömatik instrumentation arızalanır."
         ],
         workingPrinciple: [
@@ -3234,9 +3386,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         operation: [
           "Kompresör start öncesi yağ seviyesi, soğutma suyu, drain kontrol.",
           "Otomatik mod: receiver tank basıncı düştüğünde otomatik start.",
-          "Drain valflerini her 4 saatte bir aç (tank dibinde su birikmemeli).",
+          "Drain'leri condensate yükü, auto-drain işlevi ve PMS/watch routine'e göre kontrol et; yağlı kondensi uygun toplama sistemine al.",
           "Start air valfi izolasyonu kontrol et; kazara start olabilir.",
-          "Aftercooler ve intercooler tube tarafı yıllık temizlik."
+          "Inter/aftercooler temizliğini pressure drop, sıcaklık yaklaşımı, kaçak testi ve PMS condition trendine göre planla."
         ],
         faults: [
           { fault: "Kompresör basınç vermiyor", cause: "Suction filter tıkalı, kafa contası, kapakçık kırık", action: "Filtre, kafa söküm, valf bakım." },
@@ -3317,32 +3469,32 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
     topics: [
       {
         title: "GMDSS Genel Mimarisi ve Sea Areas",
-        introduction: "GMDSS (Global Maritime Distress and Safety System), denizde tehlike haberleşmesi, MSI (Maritime Safety Information) yayını ve genel haberleşmeyi otomatik ve standardize eden IMO/SOLAS sistemidir. Geminin sefer yaptığı sea area'ya göre taşıması zorunlu cihazlar belirlenir.",
+        introduction: "GMDSS; distress alerting, SAR coordination, on-scene communication ve MSI alımını birbirinden bağımsız yollarla sağlayan SOLAS Chapter IV mimarisidir. Donanım yalnız 'menzil' ezberinden değil; ilan edilmiş sea area, gemi tipi/GT, sefer limiti, tanınmış uydu servisi ve Cargo Ship Safety Radio Record of Equipment'tan belirlenir.",
         sections: [
           {
             heading: "Sea Area Tanımları ve Cihaz Zorunluluğu",
             paragraphs: [
-              "A1: VHF DSC kıyı istasyonu menzili (~20–30 NM). Zorunlu cihaz: VHF/DSC + EPIRB + SART + NAVTEX.",
-              "A2: MF DSC menzili (~100–150 NM). Ek olarak: MF/DSC.",
-              "A3: Inmarsat geostationary kapsama (yaklaşık 70°N–70°S). Ek olarak: Inmarsat-C (veya MF/HF).",
-              "A4: Kutup bölgeleri (Inmarsat dışı). Zorunlu: MF/HF (DSC + radyo teleks)."
+              "A1, bir Contracting Government tarafından tanımlanan en az bir VHF coast station'ın sürekli DSC alerting kapsamıdır; sabit 20–30 NM çemberi değildir.",
+              "A2, A1 dışında en az bir MF coast station'ın sürekli DSC alerting kapsamıdır; propagasyon menzili tek başına sea-area statüsü yaratmaz.",
+              "A3, A1/A2 dışında gemideki tanınmış mobile-satellite service earth station'ın desteklediği sürekli alerting kapsamıdır; modern GMDSS yalnız Inmarsat geostationary bölgesine eşitlenmez.",
+              "A4, A1/A2/A3 dışındaki alandır. HF DSC/radiotelephony düzeni ve MSI yolu, güncel SOLAS IV ile Radio Record üzerinden doğrulanır; NBDP artık genel bir zorunluluk olarak varsayılmaz."
             ],
             table: {
               headers: ["Sea Area", "Kapsama", "Ek Zorunluluk"],
               rows: [
-                ["A1", "VHF/DSC sahil", "—"],
-                ["A2", "MF/DSC sahil", "MF/DSC"],
-                ["A3", "Inmarsat geostat", "Inmarsat-C veya HF"],
-                ["A4", "Kutup", "MF/HF (DSC + NBDP)"]
+                ["A1", "İlan edilmiş VHF DSC coast coverage", "Radio Record'daki A1 düzeni"],
+                ["A2", "A1 dışı ilan edilmiş MF DSC coverage", "MF DSC + onaylı tamamlayıcılar"],
+                ["A3", "Tanınmış uydu servisinin desteklediği coverage", "Approved ship earth station veya izinli eşdeğer"],
+                ["A4", "A1/A2/A3 dışı", "HF DSC/voice ve onaylı MSI yolu"]
               ]
             }
           }
         ],
         keyPoints: [
-          "Tüm GMDSS cihazlarında battery backup minimum 1 saat (acil jeneratörlü gemide), 6 saat (acil jeneratörsüz).",
-          "Duplicate equipment veya shore-based maintenance + at-sea maintenance opsiyonları class kuralı ile seçilir.",
+          "Reserve-source kapasitesi SOLAS IV/13'e göre hesaplanır: uygun emergency source bulunan düzenlerde genel temel süre 1 saat, bulunmayanlarda 6 saattir; gerçek yük listesi, akü yaşı ve Radio Record üzerinden load test ile doğrulanır.",
+          "Duplication of equipment, shore-based maintenance ve at-sea maintenance kombinasyonu SOLAS IV/15 ile Administration onayına göre seçilir; bunu yalnız class tercihi sayma.",
           "Radio log her vardiya doldurulur; tehlike, acil ve emniyet trafiği kayıt edilir.",
-          "GMDSS Operator (GOC veya ROC) sertifikalı kişi olmadan tehlike haberleşmesi yapılamaz."
+          "Normal işletim uygun GOC/ROC yetkisi ve Master sorumluluğundadır; gerçek distress halinde yardım istemeyi geciktirecek şekilde 'sertifikalı kişi yoksa çağrı yapılamaz' yorumu yapılmaz."
         ],
         workingPrinciple: [
           "Tehlike çağrısı DSC ile (kim, nerede, ne tür tehlike) tek tuşla otomatik gönderilir.",
@@ -3353,7 +3505,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         operation: [
           "Vardiya başında battery, antenler, lambalar ve printer kağıdı kontrol.",
           "Günlük DSC self-test (test çağrısı sahile değil, internal test).",
-          "Haftalık DSC live test bir sahil istasyonuna (ack alınmalı).",
+          "Live DSC test çağrısını Radio Log procedure, coast-station availability, flag guidance ve maker talimatına göre yap; kapsama/ack yoksa başarısız denemeyi ve sebebini kaydet, distress alert kullanma.",
           "Aylık EPIRB self-test, SART self-test, batter expiry kontrol.",
           "Radio log'a tüm test ve tehlike trafiği kayıt edilir."
         ],
@@ -3395,21 +3547,21 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "MMSI 9 haneli numara; gemi kayıtlı bayrağa göre üretilir (örn. TR: 271xxxxxx).",
-          "Output power 25 W (yüksek) / 1 W (alçak); liman içinde 1 W kullanılır.",
-          "DSC test çağrısı yakın sahil istasyonuna haftada 1 yapılır; ack alınması zorunlu.",
+          "Çoğu sabit marine VHF 25 W/1 W seçeneğine sahiptir; en düşük yeterli gücü, kanal/port kuralını ve iletişim mesafesini dikkate alarak kullan.",
+          "DSC test çağrısı için geminin Radio Log test planını ve kıyı istasyonunun test çağrısı kabul edip etmediğini doğrula; acknowledgement alınamaması cihazın tek başına arızalı olduğunu kanıtlamaz.",
           "Dual watch / scan modu Ch 16 ile başka kanalı eş zamanlı dinler."
         ],
         workingPrinciple: [
           "DSC çağrısı: sender MMSI, alıcı MMSI/all ships, çağrı tipi (distress/urgency/safety/routine), pozisyon, nature.",
-          "Tehlike çağrısı 5 kez ardışık tekrarlanır; ack alana kadar 3.5–4.5 dk sonra tekrarlar.",
+          "VHF DSC distress alert acknowledgement alınmazsa cihaz otomatik olarak yaklaşık 3,5–4,5 dakika sonra yeniden attempt yapabilir; 'beş ardışık yayın' MF/HF formatlarıyla karıştırılmamalı ve maker ekranı izlenmelidir.",
           "Distress alert sonrasında telsiz Ch 16'ya otomatik geçer ve sesli MAYDAY beklenir."
         ],
         operation: [
           "Power on, GPS feed ve self-test kontrol.",
           "Ch 16 ve Ch 70 daima açık (silent watch).",
-          "Çağrı için: Ch seç → 'press to talk' → 3 sn bekle → konuş.",
-          "Distress için: kapağı aç → 5 sn distress button bas (nature seçilebilir).",
-          "Test: weekly DSC test call → coast station'dan ack."
+          "Çağrı için uygun channel/power seç, dinle, PTT'ye bas ve SMCP/radio procedure ile kısa-konuş; gereksiz carrier tutma.",
+          "Distress için nature/position/time otomatik-manuel verisini kontrol et ve korumalı DISTRESS tuşunu cihaz üzerindeki işaretli süre boyunca basılı tut.",
+          "Test çağrısını gemi planı ve coast-station talimatına göre yap; ack/başarısızlık sonucunu Radio Log'a işle."
         ],
         faults: [
           { fault: "Ses gelmiyor", cause: "Volume/squelch, hoparlör arızası", action: "Ayar test, hoparlör değişim." },
@@ -3419,12 +3571,12 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Ch 16 sürekli dinlenmeli (silent watch).",
           "Yanlış DSC çağrısı: hemen Ch 16'da sesli iptal mesajı yayınla, log'a yaz.",
-          "Antenna VSWR > 2.0 ise transmitter zarar görür; yıllık VSWR test."
+          "Anten/feedline sağlığını forward/reflected power veya maker BIT ile trendle; VSWR alarm ve kabul değerini üretici manual'inden al, canlı anten hattında yetkisiz ölçüm yapma."
         ]
       },
       {
         title: "MF/HF DSC Telsizi (Inmarsat Alternatifi)",
-        introduction: "MF/HF DSC telsizi, A2/A3/A4 sea area'larında uzun mesafe tehlike ve genel haberleşme için kullanılır. MF (1605–4000 kHz) ve HF (4–27 MHz) bantlarında çalışır, ground wave (yakın) ve sky wave (uzak) yayılım özelliklerinden faydalanır. NBDP (Narrow Band Direct Printing / radyo teleks) modülü ile teleks mesajı da gönderilir.",
+        introduction: "MF/HF DSC telsizi, onaylı GMDSS düzenine göre A2 ile A3/A4 seferlerinde distress alerting ve radiotelephony sağlar. Ground/sky-wave propagasyonu saat, mevsim, güneş aktivitesi ve frekansa bağlıdır. 2024 GMDSS modernizasyonundan sonra NBDP genel taşıma zorunluluğu değildir; mevcut kurulumun Radio Record ve manual'i esas alınır.",
         sections: [
           {
             heading: "Tehlike Frekansları",
@@ -3448,8 +3600,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "MF gece daha uzak menzil verir (ionosphere D katmanı zayıflar).",
-          "HF gündüz/gece propogation farklı; 4-8 MHz gündüz, 12-16 MHz uzun menzil.",
-          "NBDP otomatik error correction ile teleks mesajı; printer çıktısı kayıt için.",
+          "HF'de optimum band saat, mesafe ve propagation'a göre seçilir; genellikle gündüz daha yüksek, gece daha düşük frekanslar denenir ve tek band varsayımına güvenilmez.",
+          "NBDP bulunan legacy sette ARQ/FEC sağlayabilir; zorunluluğu ve kullanılacak prosedür güncel Radio Record, flag guidance ve cihaz kabiliyetinden doğrulanır.",
           "ATU (antenna tuning unit) anteni çalışılan frekansa otomatik tune eder."
         ],
         workingPrinciple: [
@@ -3460,8 +3612,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Gemi pozisyonuna göre uygun band seç (yakın MF, uzak HF).",
-          "Self-test günlük; haftalık live DSC test sahile.",
-          "Distress: kapak aç → 5 sn distress bas → nature seç → send.",
+          "Self-test ve live DSC testini Radio Log procedure/maker talimatına göre yap; coast station availability ve alınan ack'i kaydet.",
+          "Distress: nature, position/time ve uygun attempt'i seç; korumalı distress tuşunu cihazın işaretli süresi boyunca bas ve DSC/voice follow-up ekranını izle.",
           "Ack alındıktan sonra voice frekansa geç ve detay ver."
         ],
         faults: [
@@ -3522,7 +3674,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "Mesaj iletim ücretli; uzun mesaj LES tarifesi yüksek olabilir.",
-          "EGC otomatik yayını kapatma yetkisi sadece SOLAS dışı geminin var.",
+          "EGC/MSI reception seçimini seyredilen NAVAREA/METAREA ve coastal warning alanlarına göre yap; mandatory distress/urgency ve ilgili area mesajlarını susturacak ayar kullanma.",
           "Antenna 360° serbest açıya sahip olmalı; bayrak direği veya baca arkasına monte etme."
         ]
       },
@@ -3535,7 +3687,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
             paragraphs: [
               "406 MHz dijital beacon: gemi kimlik, pozisyon ve emergency type yayın yapar.",
               "121.5 MHz homing beacon: SAR helikopter/gemi tarafından yön bulma için.",
-              "Built-in GPS: pozisyon doğruluğu < 100 m; uydudan da Doppler ile çapraz hesaplanır.",
+              "GNSS'li beacon encoded position gönderir; actual accuracy ve update, beacon type approval, antenna view ve GNSS fix durumuna bağlıdır. GNSS yoksa Cospas-Sarsat bağımsız location çözümü daha yavaş/az hassas olabilir.",
               "HRU (Hydrostatic Release Unit): 1.5-4 m derinliğe ulaştığında brackat serbest bırakır, EPIRB yüzeye çıkar ve su ile aktive olur."
             ],
             table: {
@@ -3553,9 +3705,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "MMSI veya hex ID gemi register'a kayıtlı olmalı; bayrak değişiminde re-program.",
-          "Battery 5 yıllık ömür; expiry date case üzerinde basılı.",
-          "HRU 2 yıllık expiry; süre dolmadan değişim.",
-          "Yıllık shore-based test (annual test) yetkili servis tarafından yapılır."
+          "Battery replacement/expiry tarihini beacon label ve approved service record'dan izle; bütün modellerin ömrü sabit 5 yıl değildir.",
+          "Disposable HRU'nun expiry tarihini kendi label'ından izle; modelin approved service/replacement düzenini uygula ve iki yılı evrensel üretim tarihi kuralı sanma.",
+          "Annual test ve shore-based maintenance kapsamını SOLAS IV/15, MSC.1/Circ.1040/Rev.2, flag guidance ve radio survey due date'ten doğrula."
         ],
         workingPrinciple: [
           "Su ile temas → switch kapanır → 50 sn içinde 406 MHz alert + 121.5 MHz homing yayını başlar.",
@@ -3564,7 +3716,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         operation: [
           "Aylık görsel inspeksiyon: bracket sağlam, expiry date kontrol, HRU sağlam.",
-          "Aylık self-test: butonuna bas, LED yeşil → OK (1-2 sn).",
+          "Self-test'i maker'ın izin verdiği test penceresi/süresinde yap; GNSS self-test'i gereksiz tekrarlayarak batarya ömrünü tüketme ve displayed result'u kaydet.",
           "Yıllık servis: yetkili tarafından battery, GPS, transmit power test.",
           "Gemi terk durumunda: bracket'tan al, su atıl veya manuel switch ile aktif et."
         ],
@@ -3574,7 +3726,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "HRU paslı/kilitli", cause: "Korozyon, expire", action: "HRU değiştir." }
         ],
         precautions: [
-          "Yanlış alarm SAR kaynaklarını gereksiz bağlar; test sırasında 5 sn üzeri tutmama.",
+          "Yanlış alarm SAR kaynaklarını bağlar; test tuş/süresini beacon üzerindeki talimattan uygula, gerçek activation olursa beacon'i kapatıp RCC'ye kimlik/pozisyonla derhal iptal bildir.",
           "EPIRB'i seyir köprüsünün dışına, suyun ulaşabileceği yere monte et (terk durumunda HRU çalışmalı).",
           "Bracket etrafını boyama (HRU sıkışır)."
         ]
@@ -3586,7 +3738,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           {
             heading: "Tipler ve Çalışma",
             paragraphs: [
-              "Radar SART: 9 GHz X-band radarın sweep'ini algılar, 12 darbe geri gönderir; radar ekranında 0.6 NM aralıklı 12 nokta SART pozisyonundan radar yönünde uzanır.",
+              "Radar SART, 9 GHz X-band sorgulamasını algılayıp bandı tarayan cevaplar üretir; radar ekranında yaklaşık 0,64 NM aralıklı 12 blip görülür, yakın mesafede yay/daire görünümüne dönüşebilir.",
               "AIS-SART: AIS sinyali yayınlar, AIS receiver'da MOB sembolü gösterir; menzil daha az ama dijital pozisyon verir.",
               "Lifeboat içinde özel bracket veya raftaki konteyner içinde bulundurulur."
             ],
@@ -3594,9 +3746,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
               headers: ["Özellik", "Radar SART", "AIS-SART"],
               rows: [
                 ["Frekans", "9.2-9.5 GHz", "161.975/162.025 MHz"],
-                ["Menzil", "5-8 NM (gemi), 30 NM (uçak)", "5-10 NM"],
+                ["Menzil", "Anten yüksekliği/sea state ve interrogating radar'a bağlı", "Anten yüksekliği ve AIS reception'a bağlı"],
                 ["Ekran", "12 nokta blip line", "MOB sembolü"],
-                ["Battery", "≥96 saat standby + 8 saat tx", "Aynı"]
+                ["Battery", "≥96 saat standby + 8 saat continuous interrogation response", "Type-approval'a göre ≥96 saat transmission"]
               ]
             }
           }
@@ -3604,8 +3756,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         keyPoints: [
           "Yüksek monte (≥1 m su seviyesi üstü) menzili artırır.",
           "SART tepkisi sadece 9 GHz radarda görülür; 3 GHz S-band radarda görünmez.",
-          "Battery 5 yıllık ömür; expiry kontrol şart.",
-          "Lifeboat'ta minimum 1 SART zorunlu (300+ GT); 500+ GT için 2 SART."
+          "Battery expiry/replacement tarihini cihaz label'ından izle; sabit 5 yıl bütün modeller için geçerli değildir.",
+          "Survival craft search-and-rescue locating device sayısı/istifi SOLAS III/6 ile Safety Equipment Record'dan doğrulanır: 300–500 GT cargo ship için en az bir, 500 GT ve üzeri cargo ile passenger ship için her borddan erişilebilir en az iki düzen aranır."
         ],
         workingPrinciple: [
           "Radar pulse SART'a ulaştığında SART aynı frekansta 12 darbeli yanıt yayınlar.",
@@ -3623,50 +3775,50 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           { fault: "Radar ekranında görünmüyor", cause: "Çok alçak monte, 3 GHz radar kullanımı, SART aktivasyonsuz", action: "Yüksek monte, X-band radar, switch kontrol." }
         ],
         precautions: [
-          "Self-test çok kısa olmalı (1-2 sn); uzun test SAR aktive eder.",
+          "Self-test'i yalnız maker işaretli süre/modda yap; Radar SART cevabı çevredeki X-band ekranlarda, AIS-SART test mesajı AIS cihazlarında görülebilir.",
           "Yanlış aktivasyonda hemen kapat, RCC'ye iptal bildir.",
           "Test sırasında diğer geminin radar ekranında SART belirebilir; uyarı yapılır."
         ]
       },
       {
         title: "BNWAS (Bridge Navigational Watch Alarm System)",
-        introduction: "BNWAS, köprüde nöbetçi zabitin uyanık ve fonksiyonel olduğunu doğrulamak için periyodik onay isteyen, alınmazsa kademeli alarm veren SOLAS V/19 zorunlu sistemdir. 150 GT üzeri tüm gemilerde 2014'ten itibaren zorunlu hale gelmiştir.",
+        introduction: "BNWAS, köprü nöbet faaliyetini belirlenen dormancy süresi içinde reset alınmadığında köprüden başlayıp yedek zabit/crew mahallerine yükselen alarmla izler. SOLAS V/19 applicability; passenger ship, cargo ship GT/yapım tarihi ve Record of Equipment üzerinden doğrulanır, '150 GT üzeri bütün gemiler' diye bağlamsız genellenmez.",
         sections: [
           {
             heading: "Alarm Kademeleri",
             paragraphs: [
-              "Stage 1: 3-12 dk reset interval; sessiz görsel uyarı (köprüde flash light).",
-              "Stage 2: 15 sn içinde reset olmazsa köprüde sesli alarm.",
-              "Stage 3: 1.5 dk içinde reset yok → kaptan kamarası ve back-up officer'da alarm.",
-              "Stage 4: 3 dk yok → tüm gemide call alarm (mess room, makine dairesi vb.)."
+              "Dormancy period 3–12 dakika arasında seçilir; süre sonunda köprüde görsel indication başlar.",
+              "Görsel indication 15 saniye içinde resetlenmezse köprüde first-stage audible alarm başlar.",
+              "First-stage audible başladıktan 15 saniye sonra hâlâ reset yoksa designated back-up officer ve/veya Master mahallinde second-stage remote audible alarm başlar.",
+              "Second-stage remote audible başladıktan 90 saniye sonra reset yoksa başka yeterli crew'u uyaran third-stage alarm devreye girer; cargo ship'te onaylı combined arrangement bulunabilir ve toplam escalation süresi performans standardını aşamaz."
             ],
             table: {
               headers: ["Stage", "Süre", "Alarm Yeri"],
               rows: [
-                ["1", "3-12 dk", "Görsel köprü"],
-                ["2", "+15 sn", "Sesli köprü"],
-                ["3", "+1.5 dk", "Kaptan + back-up"],
-                ["4", "+3 dk", "Mess, makine"]
+                ["Dormancy sonu", "3–12 dk", "Köprü görsel"],
+                ["First stage", "+15 sn", "Köprü sesli"],
+                ["Second stage", "+15 sn", "Master / designated back-up"],
+                ["Third stage", "+90 sn", "Yeterli ek crew veya onaylı combined arrangement"]
               ]
             }
           }
         ],
         keyPoints: [
-          "On/off anahtarı kilitli kutuda; sadece kaptan açabilir.",
-          "Reset cihazları köprüde nöbetçinin görüş alanında, hareket edilen tüm noktalarda olmalı.",
+          "Operational mode ve dormancy seçimine erişim korunur; ayar Master sorumluluğunda ve SMS/standing orders ile yapılır.",
+          "Reset cihazları yalnız köprüde proper lookout yapılabilen çalışma konumlarına yerleştirilir; kamaradan/koltuktan nöbeti taklit edecek reset düzeni kabul edilmez.",
           "Motion sensor + manuel reset butonu kombinasyonu yaygın.",
-          "Limanda kaptan tarafından devre dışı bırakılabilir; seyirde mutlaka aktif."
+          "Approved automatic mode, gemi underway iken BNWAS'ı devreye alıp underway değilken inhibit edebilir; actual mode vardiya başlangıcında doğrulanır."
         ],
         workingPrinciple: [
           "Reset interval boyunca nöbetçinin reset (manuel buton veya motion sensor) yapması beklenir.",
-          "Reset alınmazsa sırayla stage 2, 3, 4 alarmları tetiklenir.",
+          "Reset alınmazsa bridge visual → bridge audible → remote second/third stage sırası MSC.128(75) zamanlamasıyla ilerler.",
           "Gemi ECDIS, AIS gibi sistemlerden bilgi almaz; bağımsız çalışır."
         ],
         operation: [
           "Vardiya başında BNWAS aktif olduğunu doğrula.",
-          "Reset interval kaptan tarafından belirlenir (genelde 6-9 dk).",
-          "Limanda devre dışı; seyir başında tekrar aktif et.",
-          "Aylık operational test: stage 1-4 alarmlarının çalıştığını doğrula."
+          "Dormancy interval'i Master'ın protected setting'i ve standing order ile doğrula; 3–12 dakika onay aralığı dışına çıkma.",
+          "Underway durumunda approved operational mode'un gerçekten active olduğunu panel ve alarm inhibit göstergesinden doğrula.",
+          "PMS testinde dormancy, bridge visual/audible, remote call locations, reset noktaları ve power-failure alarmını zaman tutarak doğrula."
         ],
         faults: [
           { fault: "Stage alarmı tetiklenmiyor", cause: "Hoparlör arıza, kablo bağlantı, ayar yanlış", action: "Hoparlör test, hat kontrol, ayar onar." },
@@ -3675,50 +3827,50 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "BNWAS'ı kalıcı devre dışı bırakmak SOLAS ihlali; PSC ağır deficiency.",
           "Reset için sahte düzenek (bantlı buton vb.) yasak.",
-          "Stage 4 alarm tüm mürettebata duyulmalı; test sırasında uyar."
+          "Remote alarm location/sequence'i onaylı BNWAS planından doğrula; testten önce Master, bridge team ve etkilenecek crew'u bilgilendir."
         ]
       },
       {
         title: "VDR / S-VDR (Voyage Data Recorder)",
-        introduction: "VDR, geminin son 12 saatlik (yeni: 30 gün dahili memory + 720 saat ek capsule) seyir, makine, köprü ses, radar görüntüsü, AIS, ECDIS, alarm ve gemi konum verilerini kaydeden 'kara kutu' sistemidir. SOLAS V/20 ile tüm yolcu ve 3000 GT üzeri yük gemilerinde zorunludur.",
+        introduction: "VDR/S-VDR; köprü sesleri, haberleşme, sensörler, komut/yanıtlar, alarm ve ekran görüntülerini kaza incelemesi için zaman senkronlu kaydeder. Carriage ve VDR/S-VDR ayrımı gemi tipi, GT, yapım tarihi ve Cargo/Passenger Ship Safety Equipment Record'dan doğrulanır; retention medium ile süreleri birbirine karıştırılmaz.",
         sections: [
           {
             heading: "Kayıt Edilen Veriler",
             paragraphs: [
-              "Köprü mikrofonları: en az 4 mikrofon, tüm konuşmalar.",
+              "Bridge audio: conning station, radar/ECDIS ve communication çalışma yerlerindeki konuşma ve sesli alarmları ayırt edecek coverage.",
               "VHF haberleşmesi: ana telsiz audio.",
-              "Radar görüntüsü: en az 1 radar ekranı snapshot.",
-              "ECDIS, AIS, gyro, GPS, log, depth, rudder, engine telegraph, alarm.",
+              "Radar/ECDIS image: installation standard ve available interface'e göre kaydedilen display source(ları).",
+              "GNSS, heading, speed, depth, AIS, rudder, engine/propulsion command-response, alarms ve gerekli diğer sources; kapsam installation date/performance standard'a bağlıdır.",
               "Capsule (Hardened/Float-free): yangın/su/derinliğe dayanıklı; pinger ile lokasyon bildirir."
             ],
             table: {
               headers: ["Veri Kaynağı", "Saklama Süresi", "Notlar"],
               rows: [
-                ["Köprü ses (mikrofon)", "Son 30 gün dahili", "Capsule: son 48 saat"],
-                ["Radar/ECDIS image", "30 gün", "1 frame/15 sn"],
-                ["AIS, gyro, GPS", "30 gün", "Sürekli"],
-                ["Alarm log", "30 gün", "Sürekli"]
+                ["Long-term recording medium", "En az 30 gün / 720 saat", "Cihaz içinde overwrite döngüsü"],
+                ["Fixed recording capsule", "En az 48 saat", "Koruyucu capsule"],
+                ["Float-free recording medium", "En az 48 saat", "Approved float-free arrangement varsa"],
+                ["Kaynak örnekleme", "Parametreye göre", "MSC.333(90)/installation standard ve APT'den doğrula"]
               ]
             }
           }
         ],
         keyPoints: [
-          "Float-free capsule HRU ile gemi 4 m suya battığında otomatik serbest bırakılır.",
-          "Capsule pinger 37.5 kHz, 30 gün çalışma; sualtı arama için.",
+          "Float-free recording medium yalnız geminin onaylı VDR düzeninde varsa hydrostatic release ile serbest kalır; fixed capsule ile aynı şey değildir.",
+          "Fixed capsule locating device frekans/endurance ve expiry bilgisini capsule label, type approval ve APT report'tan doğrula; sabit 30 gün varsayma.",
           "Kazadan sonra 'data save' butonuna basılır (override-protect).",
           "Yıllık APT (Annual Performance Test) yetkili servis tarafından yapılır."
         ],
         workingPrinciple: [
           "Tüm veri kaynakları VDR concentrator unit'e bağlanır.",
           "Concentrator dahili memory'ye sürekli yazar (FIFO).",
-          "Aynı zamanda capsule'a son 48 saatlik kritik veri yazılır.",
+          "Kayıt aynı anda long-term medium ile installed fixed/float-free capsule'a performans standardındaki retention süresince yazılır.",
           "Kazada save butonu basılırsa tüm memory yazma korumalı hale gelir."
         ],
         operation: [
-          "Power on durumu ve LED'leri günlük kontrol.",
-          "Mikrofon test (test mode) aylık.",
-          "Capsule pinger test yıllık (APT içinde).",
-          "Kaza sonrası save butonu BAS, recording'i koru, yetkili indirme yapsın."
+          "Power, recording, source-fault ve UTC status'u maker/PMS routine'inde kontrol et; fault'u resetleyip kaybetme.",
+          "Audio/source testini maker test mode ve APT/PMS'e göre, gerçek bridge recording'i bozmayacak şekilde yap.",
+          "Capsule/locating device kontrolünü APT kapsamı, expiry ve service instruction'a göre yap.",
+          "Kaza/olay sonrası Master/SMS talimatıyla save/protect işlevini kullan; cihazı keyfî kapatma ve data chain-of-custody'yi koru."
         ],
         faults: [
           { fault: "Mikrofon kayıt yok", cause: "Kablo, mikrofon arızası, audio level düşük", action: "Mikrofon test, kablo kontrol, ayar." },
@@ -3727,8 +3879,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         precautions: [
           "VDR memory'ye doğrudan müdahale yasak; yetkili olmayan personel veri silmemeli.",
-          "Kaza sonrası save edilmemiş VDR cezai sorumluluk doğurur.",
-          "Capsule yangın korumalı (1100 °C/1 saat), basınç dayanımı 6000 m derinlik."
+          "Olay sonrası preservation, indirme ve teslimi company emergency/authority talimatıyla kayıt altına al; veriyi değiştirme veya overwrite riskini gecikmeden yönet.",
+          "Capsule çevresini erişilebilir tut ve fiziksel survival rating'i kendi type-approval/marking'inden doğrula; internetten tek sıcaklık/derinlik değeri kopyalama."
         ]
       },
       {
@@ -3755,31 +3907,31 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "Lifeboat kapasitesi gemideki tüm POB'u (Persons On Board) karşılamalı; ek olarak iskele ve sancakta birer adet (her biri %100 kapasiteli).",
-          "Tankerlerde fire-protected lifeboat (sprinkler + air supply) zorunlu.",
-          "Aylık launching drill (yarım indirme), 3 ayda bir launching to water (free-fall hariç simülasyon).",
-          "Annual on-load release test ve davit load test (5 yılda 1 SWL × 1.1 ile)."
+          "Survival-craft tipi, borda dağılımı ve toplam kapasite Cargo/Passenger Ship Safety Equipment Record ile approved LSA plan'dan doğrulanır; free-fall alternatifinde iki bordada birer %100 lifeboat varsayılmaz.",
+          "Fire-protected lifeboat/sprinkler ve self-contained air support gereği tanker adıyla genellenmez; SOLAS III, IBC/IGC ve taşınan cargo/flash-point koşulundan doğrulanır.",
+          "Abandon-ship drill, swing-out/launch ve manoeuvre aralıklarını SOLAS III/19, flag exemption ve geminin drill planından uygula; personeli gereksiz risk altında 'yarım indirme' ezberine sokma.",
+          "Annual thorough examination/operational test ve beş yıllık overhaul/load test kapsamı MSC.402(96), SOLAS III/20 ve maker procedure'e göre yetkili personelce yapılır; release gear ile winch-brake testlerini aynı işlem sanma."
         ],
         workingPrinciple: [
           "Davit gravity tipi: brake bırakılır, davit gravity ile dışa salınır, winch wire ile kontrollü iniş.",
           "Free-fall: release handle çekilir, lifeboat kızak üzerinden suya düşer; girişte burnu öne dalar, sonra yüzeye çıkar.",
-          "On-load release: lifeboat suda yüklü iken hook serbest bırakılır (eski sistem riskli; SOLAS değişiklikleri ile FPD on-load release standardı geldi).",
-          "Off-load release: gerilim kaldırıldığında otomatik açılır."
+          "Release gear, normal tahliyede tekne waterborne ve falls unloaded olduğunda off-load release için kullanılır; on-load capability acil/özel durum içindir ve yanlış kullanım ölümcül olabilir.",
+          "Hydrostatic interlock, hook reset indicator ve operating handle tek bir emniyet zinciridir; reset/locked durumu her hookta fiziksel olarak maker talimatıyla doğrulanır."
         ],
         operation: [
           "Embarkation: launch alarm → muster station → lifeboat yetkili kişi binmeyi yönetir.",
-          "Davit fren bırak → davit dışarı sallanır → wire ile suya kadar indir.",
-          "Suda hook'u off-load release ile çöz, motor başlat, gemiden uzaklaş.",
-          "Free-fall: tüm personel kemerli, başlık geri, release handle çekilir, su girişi sonrası motor."
+          "Davit/winch'i assigned operator ve coxswain komut zincirinde çalıştır; gripes, plug, painter, falls ve lowering area checklist'ini tamamlamadan freni bırakma.",
+          "Tekne waterborne, falls unloaded ve hydrostatic interlock durumu doğrulandıktan sonra approved off-load release prosedürünü uygula; hook resetini recovery öncesi iki tarafta cross-check et.",
+          "Free-fall launch'ta tüm kişiler numaralı koltukta maker-approved restraint/head support pozisyonuna alınır; simulated/actual launch yalnız approved drill procedure ile yapılır."
         ],
         faults: [
           { fault: "Davit fren tutmuyor", cause: "Fren balata aşınmış, ayar bozuk", action: "Balata değişim, fren ayarı." },
-          { fault: "Wire hasarlı (kink/korozyon)", cause: "Yağ eksik, deniz suyu", action: "Wire değişim (5 yılda 1 zorunlu turn end-for-end)." },
+          { fault: "Fall wire hasarlı (kink/korozyon/broken wires)", cause: "Yağlama, sheave hizası, deniz suyu veya yorulma", action: "Tekneyi kullanımdan çıkar; SOLAS III/20, maker discard criteria ve approved maintenance plan'a göre fall inspection/renewal yap, '5 yılda turn end-for-end' şeklinde yanlış işlem uygulama." },
           { fault: "Motor çalışmıyor", cause: "Battery zayıf, yakıt eski/su girmiş", action: "Battery şarj, yakıt drain ve yenile." },
           { fault: "On-load release açmıyor", cause: "Hidrostatik kilit takılı, hook korozyon", action: "Hook bakım, hidrostatik mekanizma test." }
         ],
         precautions: [
-          "Lifeboat drill kazaları en yüksek mürettebat ölüm sebebidir; hook test sırasında 'maintenance pendant' kullan.",
+          "Drill/bakım sırasında secondary safety device veya fall-prevention arrangement'i yalnız maker ve MSC.402 prosedüründeki şekilde kullan; canlı yük altında hook'a müdahale etme.",
           "Free-fall release sırasında baş ve boyun arkayı destekli; PFD takılı olmalı.",
           "Davit altındaki bölgede personel olmasın (limit switch yoksa düşme riski).",
           "Yağlama düzenli; korozyon ve sıkışma kazaya yol açar."
@@ -3787,14 +3939,14 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
       },
       {
         title: "Liferaft ve HRU (Hydrostatic Release Unit)",
-        introduction: "Liferaft, lifeboat dışında veya lifeboat ulaşılmaz ise kullanılan, CO₂/N₂ ile şişerek otomatik açılan, içinde survival ekipmanı bulunan inflatable can salıdır. SOLAS LSA Code'a göre minimum 6, 8, 10, 12, 16, 20, 25 kişilik tipleri vardır. HRU, gemi battığında otomatik release sağlar.",
+        introduction: "Inflatable liferaft; approved container, inflation cylinder, painter/firing lanyard, weak link, lashing ve varsa HRU ile bir bütün olarak çalışır. Kapasite/pack ve float-free arrangement geminin approved LSA planı ile Safety Equipment Record'dan doğrulanır; HRU painter'ı kesmez, raft lashing'ini serbest bırakır.",
         sections: [
           {
             heading: "Yapı ve İçerik",
             paragraphs: [
               "Sert plastik konteyner (canister) içinde valise: CO₂/N₂ tüpü, tube + canopy, painter line.",
-              "İçeride: SOLAS A pack (uzun mesafe, ≥24 saat sefer için: yiyecek, su, first aid, paddle, sea anchor, signal, fishing kit).",
-              "B pack (kısa mesafe): minimum içerik.",
+              "SOLAS A Pack, LSA Code'daki tam emergency equipment setidir; item/adet listesi service certificate ve pack marking'den doğrulanır.",
+              "SOLAS B Pack yalnız Administration'ın izin verdiği short international voyage düzeninde azaltılmış pack'tir; keyfî '24 saat' sınırıyla seçilmez.",
               "Painter line: konteyner içindeki ipin ucu gemiye bağlı; gemi battığında gergin olur, raft şişer."
             ],
             table: {
@@ -3803,7 +3955,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
                 ["Canister", "Koruyucu kabuk"],
                 ["CO₂/N₂ tüp", "Şişirme"],
                 ["Painter", "Otomatik açılma kordonu"],
-                ["HRU", "4 m derinlikte release"],
+                ["HRU", "Yaklaşık 1,5–4 m su basıncında lashing'i release"],
                 ["Sea anchor", "Drift azaltma"],
                 ["Pyrotechnic", "Sinyal (rocket, hand flare, smoke)"]
               ]
@@ -3811,21 +3963,21 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           }
         ],
         keyPoints: [
-          "HRU 2 yıllık expiry; tüm raftlarda kontrol şart.",
-          "Liferaft yıllık servis (SOLAS V/20): yetkili istasyonda açma, basınç testi, içerik yenileme.",
-          "Toplam liferaft kapasitesi gemideki POB × 2 (her bord %100).",
+          "HRU service/replacement ve expiry tarihini cihaz label/approval'ından doğrula; bazı düzenlerde approved non-disposable HRU bulunabilir ve raftın manual-only istifi farklı olabilir.",
+          "Liferaft service aralığı SOLAS III/20.8'e göre normalde 12 ayı aşmaz; Administration kaçınılmaz durumda en çok 17 aya uzatabilir. Yalnız approved servicing station kullanılır.",
+          "Liferaft/lifeboat toplam kapasite ve transfer imkânı gemi tipine/uzunluğuna göre approved LSA plan'dan okunur; her gemide POB × 2 liferaft ezberi uygulanmaz.",
           "Davit-launched liferaft: yolcu gemisinde davit ile indirilebilir."
         ],
         workingPrinciple: [
           "Manuel: painter line gemiden serbest bırakılır, raft denize fırlatılır, painter güçlü çekilince CO₂ valfi açılır → şişer.",
-          "Otomatik (HRU): gemi 4 m suya battığında HRU bıçağı painter halatını keser, raft yüzeye çıkar, painter gemi battığında gergin olur, CO₂ valfi açılır.",
-          "Şişme süresi 1-3 dk; canopy ile çadır oluşur, ışık yanar, içeriden kapı açılır."
+          "Otomatik (HRU): su basıncı HRU'yu çalıştırıp lashing'i açar; container yüzer, gemiye bağlı painter gerilerek inflation'ı tetikler, gemi batmaya devam ederse weak link kopup şişmiş raftı gemiden ayırır.",
+          "Inflation/orientation süresi çevre ve type-approval'a bağlıdır; raft ters şişerse marked righting strap/procedure kullanılır."
         ],
         operation: [
           "Aylık görsel: canister sağlam, painter bağlı, HRU expiry, lashing bracket sağlam.",
           "Yıllık servis: yetkili istasyona gönder, sertifika al.",
           "Drill'de manuel atış simülasyonu (gerçek deploy değil — pahalı).",
-          "Kullanım: lashing aç, denize at, painter çek (3-4 m), şişme bekle, içeriye atla."
+          "Manual launch'ta painter'ın gemiye doğru strong point'ten bağlı olduğunu doğrula, container'ı engelden uzağa at ve firing lanyard çalışana kadar painter'ı çek; mümkünse embarkation ladder/davit ile kuru bin, denize atlamayı son çare say."
         ],
         faults: [
           { fault: "Canister hasarlı", cause: "Korozyon, vurma", action: "Servis." },
@@ -3835,26 +3987,26 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         precautions: [
           "Liferaft konteyneri etrafında istif/eşya bulunmamalı; gemi battığında serbest yüzmeli (free-floating).",
           "HRU 'weak link' painter ile gemi arasındadır; gemi battığında painter çekilir, raft şişer ve weak link kopar (raft kurtulur).",
-          "Pyrotechnic son kullanma tarihi geçmiş olmasın (5 yıl); süresi dolmuş yerel yetkiliye teslim.",
+          "Pyrotechnic expiry tarihini item label/service certificate'tan izle; sabit 5 yıl varsayma ve expired item'i approved shore disposal zincirine teslim et.",
           "Liferaft yıllık servis sertifikası gemide bulundurulmalı (PSC kontrolü)."
         ]
       },
       {
         title: "Rescue Boat ve Fast Rescue Boat (FRB)",
-        introduction: "Rescue boat, denizden insan kurtarma ve liferaft toplamak amacıyla kullanılan rigid veya inflatable hızlı tekneye verilen addır. Lifeboat'tan ayrı olarak konumlandırılır ve daha hızlı (≥6 knot, FRB ≥20 knot) launch edilebilir. SOLAS Chapter III ile tüm yük gemilerinde minimum 1 rescue boat zorunludur.",
+        introduction: "Rescue boat, sudan kişi kurtarma ve survival craft toplama için approved launching appliance ile hazır tutulan teknedir. Cargo ship'te uygun bir lifeboat rescue boat olarak onaylanabilir; fast rescue boat (FRB) ise özellikle ro-ro passenger ship hükümleri ve Safety Equipment Record üzerinden doğrulanır.",
         sections: [
           {
             heading: "Tipler ve Donanım",
             paragraphs: [
               "Rescue boat: rigid (RIB) veya inflatable; 5+ kişi kapasiteli.",
-              "Fast Rescue Boat (FRB): yolcu gemilerinde zorunlu; ≥20 knot, ≥4 saat dayanım.",
+              "Fast Rescue Boat (FRB): ro-ro passenger ship'te en az bir adet aranır; diğer gemilerde approved arrangement'e bağlıdır. Hız/endurance kriteri full complement ile farklı olabilir.",
               "Davit: tek nokta veya çift nokta; hızlı launch için single-fall davit yaygın.",
               "Donanım: outboard veya inboard motor, fender, painter, paddle, first aid, light, anchor."
             ],
             table: {
               headers: ["Özellik", "Rescue Boat", "FRB"],
               rows: [
-                ["Hız", "≥6 knot", "≥20 knot"],
+                ["Hız", "Genel kriter ≥6 knot / ≥4 saat", "Crew of 3 ile ≥20 knot; full complement ile ≥8 knot"],
                 ["Kapasite", "5 kişi + sedye", "5 kişi + sedye"],
                 ["Launch süresi", "<5 dk", "<5 dk"],
                 ["Crew", "Eğitimli mürettebat", "Sertifikalı FRB crew"]
@@ -3864,8 +4016,8 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
         ],
         keyPoints: [
           "Lifeboat aynı zamanda rescue boat olarak da onaylıysa ayrı rescue boat zorunlu değil (yük gemileri).",
-          "Aylık operational test: launch, motor start, manevra, recovery.",
-          "FRB özel eğitim sertifikası mürettebat için zorunlu.",
+          "Rescue boat mümkün olduğu ölçüde aylık, her durumda en az üç ayda bir assigned crew ile launch/manoeuvre edilir; exact drill ve exemption SOLAS III/19 ile logdan doğrulanır.",
+          "FRB fitted ise assigned coxswain/crew için STCW fast-rescue-boat competence ve gemi familiarization'ı doğrulanır; bütün mürettebat için aynı sertifika aranmaz.",
           "Outboard motor yakıtı ayrı tank, taze, su kontaminasyonsuz olmalı."
         ],
         workingPrinciple: [
@@ -3878,7 +4030,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Vardiya başı: motor yakıt, battery, lashing, painter kontrol.",
           "Launch alarm: 2 kişi rescue boat'a, davit operatörü hidrolik açar, boat suya iner.",
           "Suda motor start, görev yap, geri dön, hook tak, davit ile çek.",
-          "Aylık launch + drive test, yıllık load test."
+          "Launch/manoeuvre drill ile annual/five-year davit-release examination/testlerini SOLAS III/19-20, MSC.402 ve maker maintenance planına göre ayrı ayrı uygula."
         ],
         faults: [
           { fault: "Outboard motor start vermiyor", cause: "Yakıt eski, buji kirli, primer pump hatalı", action: "Yakıt yenile, buji temizlik, pump test." },
@@ -3889,10 +4041,9 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Boat altında personel olmamalı; düşme riski.",
           "Outboard motor egzozu CO içerir; uzun süre boş çalıştırma kapalı alanda yapılmamalı.",
           "Recovery sırasında dalga koşullarına dikkat; hook çıkması ölümcül.",
-          "FRB drill'inde lifejacket + thermal protection + helmet zorunlu."
+          "FRB/rescue-boat drill PPE'sini approved boat manual, risk assessment, su/hava koşulları ve company procedure'e göre seç; lifejacket ve iletişim düzenini eksiksiz doğrula."
         ]
       }
     ]
   }
 };
-

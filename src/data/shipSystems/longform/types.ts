@@ -1,13 +1,14 @@
 /**
  * Gemi sistemleri için "uzun-form" (kitap-bölümü) içerik tipi.
  *
- * Her bir gemi sistemi konusu (örn. Güverte Makineleri → "Demir Irgadı
- * (Windlass)") için 20-30 sayfa uzunluğunda yapılandırılmış içerik sunmak
- * üzere tasarlanmıştır. Personeldeki `CrewTaskLongForm` ve operasyonlardaki
- * `ShipOpLongForm` desenlerinin gemi sistemlerine uyarlanmış birebir
- * paralelidir. İçerikler dynamic import ile yüklenir, böylece ana bundle
- * şişmez.
+ * Her bir gemi sistemi konusu için yapılandırılmış mesleki ders içeriği sunar.
+ * Elle yazılmış uzun-form modülü bulunan konular lazy-load edilir; diğerleri
+ * doğrulanmış konu verisi ile profesyonel sistem rehberinden çalışma anında
+ * üretilir. Böylece bütün konular aynı operasyon, arıza ve emniyet zincirine
+ * sahip olurken özel uzun anlatımlar önceliğini korur.
  */
+
+import { hasProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 
 export type ShipSystemCallout = {
   type: "warning" | "reference" | "tip" | "example" | "regulation";
@@ -81,7 +82,12 @@ export function hasShipSystemLongForm(
   sectionId: string,
   topicIndex: number,
 ): boolean {
-  return `${sectionId}/${topicIndex}` in shipSystemLongFormRegistry;
+  const key = `${sectionId}/${topicIndex}`;
+  if (key in shipSystemLongFormRegistry) return true;
+
+  // Her kayıt için profesyonel veri katmanından oluşturulan ders anlatımı vardır.
+  // Açıkça yazılmış uzun-form dosyaları varsa onlar öncelikli kalır.
+  return hasProfessionalSystemGuide(sectionId, topicIndex);
 }
 
 export async function loadShipSystemLongForm(
@@ -90,7 +96,11 @@ export async function loadShipSystemLongForm(
 ): Promise<ShipSystemLongForm | null> {
   const key = `${sectionId}/${topicIndex}`;
   const loader = shipSystemLongFormRegistry[key];
-  if (!loader) return null;
-  const mod = await loader();
-  return mod.default;
+  if (loader) {
+    const mod = await loader();
+    return mod.default;
+  }
+
+  const { buildGeneratedShipSystemLongForm } = await import("../../buildShipSystemLongForm");
+  return buildGeneratedShipSystemLongForm(sectionId, topicIndex);
 }
