@@ -4,10 +4,14 @@ import { BookOpenText, Search } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 
 const Glossary = () => {
-  // Global search deep-links to a specific term via /glossary?q=<term>
+  // Global search deep-links to a specific term via /glossary?q=<term>;
+  // the book's table of contents deep-links to a category via /glossary?cat=<category>
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(() => searchParams.get("q") ?? "");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(() => {
+    const cat = searchParams.get("cat");
+    return cat && glossaryCategories.includes(cat) ? cat : null;
+  });
 
   const filteredTerms = useMemo(() => {
     let terms = glossaryTerms;
