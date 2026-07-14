@@ -9,7 +9,8 @@ export type NewsLocaleConfig = {
   countryCode: string;
   countryName: string;
   hl: string;
-  ceid: string;
+  ceid?: string;
+  directFeeds: ReadonlyArray<FeedSource>;
   queries: ReadonlyArray<{
     id: "industry" | "ports" | "safety";
     name: string;
@@ -23,16 +24,18 @@ const locale = (
   countryCode: string,
   countryName: string,
   hl: string,
-  ceid: string,
+  ceid: string | undefined,
   industry: string,
   ports: string,
   safety: string,
+  directFeeds: ReadonlyArray<FeedSource> = [],
 ): NewsLocaleConfig => ({
   language,
   countryCode,
   countryName,
   hl,
   ceid,
+  directFeeds,
   queries: [
     { id: "industry", name: "Maritime industry", query: industry, freshness: "7d" },
     { id: "ports", name: "Ports and logistics", query: ports, freshness: "7d" },
@@ -60,7 +63,9 @@ export const NEWS_LOCALE_CONFIGS: Record<string, NewsLocaleConfig> = {
   nl: locale("nl", "NL", "Nederland", "nl", "NL:nl", "scheepvaart OR rederij OR schip", "haven OR container OR zeevracht", "scheepsongeval OR zeevarenden OR SOLAS OR MARPOL"),
   sv: locale("sv", "SE", "Sverige", "sv", "SE:sv", "sjöfart OR rederi OR fartyg", "hamn OR container OR sjöfrakt", "sjöolycka OR sjömän OR SOLAS OR MARPOL"),
   no: locale("no", "NO", "Norge", "no", "NO:no", "skipsfart OR rederi OR skip", "havn OR container OR sjøfrakt", "sjøulykke OR sjøfolk OR SOLAS OR MARPOL"),
-  da: locale("da", "DK", "Danmark", "da", "DK:da", "skibsfart OR rederi OR skib", "havn OR container OR søfragt", "søulykke OR søfarende OR SOLAS OR MARPOL"),
+  da: locale("da", "DK", "Danmark", "da", undefined, "skibsfart OR rederi OR skib", "havn OR container OR søfragt", "søulykke OR søfarende OR SOLAS OR MARPOL", [
+    { id: "maritime-danmark", name: "MaritimeDanmark.dk", url: "https://www.maritimedanmark.dk/feeds/articles" },
+  ]),
   fi: locale("fi", "FI", "Suomi", "fi", "FI:fi", "merenkulku OR varustamo OR alus", "satama OR kontti OR merirahti", "merionnettomuus OR merenkulkija OR SOLAS OR MARPOL"),
   pl: locale("pl", "PL", "Polska", "pl", "PL:pl", "żegluga OR armator OR statek", "port OR kontener OR fracht morski", "wypadek morski OR marynarze OR SOLAS OR MARPOL"),
   cs: locale("cs", "CZ", "Česko", "cs", "CZ:cs", "námořní doprava OR rejdařství OR loď", "přístav OR kontejner OR námořní přeprava", "námořní nehoda OR námořník OR SOLAS OR MARPOL"),
@@ -86,19 +91,20 @@ export function resolveNewsLocale(value: unknown): NewsLocaleConfig {
 
 export function buildRegionalFeeds(config: NewsLocaleConfig): FeedSource[] {
   const languageId = config.language.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  return config.queries.map((entry) => {
+  const searchFeeds = config.queries.map((entry) => {
     const params = new URLSearchParams({
       q: `${entry.query} when:${entry.freshness}`,
       hl: config.hl,
       gl: config.countryCode,
-      ceid: config.ceid,
     });
+    if (config.ceid) params.set("ceid", config.ceid);
     return {
       id: `regional-${languageId}-${entry.id}`,
       name: `${config.countryName} · ${entry.name}`,
       url: `https://news.google.com/rss/search?${params.toString()}`,
     };
   });
+  return [...config.directFeeds, ...searchFeeds];
 }
 
 export function getFeedsForLanguage(language: unknown, englishFeeds: FeedSource[]): {
