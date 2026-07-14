@@ -14,7 +14,7 @@ type RegulationEnhancement = Pick<
   "learningObjectives" | "operationalRequirements" | "inspectionQuestions" | "terms" | "sourceStatus"
 >;
 
-const reviewedThrough = "13 Temmuz 2026";
+const reviewedThrough = "14 Temmuz 2026";
 
 const standardCaution =
   "Bu anlatım eğitim ve gemi içi hazırlık içindir; konsolide sözleşme/kod metninin, bayrak devleti talimatlarının, klas kurallarının ve şirket SMS prosedürlerinin yerine geçmez. Uygulanabilir eşik ve yürürlük tarihini geminin inşa tarihi, tipi, tonajı, seferi ve bayrağına göre doğrulayın.";
