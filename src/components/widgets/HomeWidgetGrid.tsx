@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
+import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
+import { useLocation } from "@/contexts/LocationContext";
 import { Clock, Globe2, Cloud, Wind, MapPin, Sun, Pencil } from "lucide-react";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 
@@ -10,11 +12,14 @@ function degreesToCompass(degrees: number): string {
 }
 
 function decimalToDMS(dec: number, isLat: boolean): string {
-  const abs = Math.abs(dec);
-  const d = Math.floor(abs);
-  const mFloat = (abs - d) * 60;
-  const m = Math.floor(mFloat);
-  const s = ((mFloat - m) * 60).toFixed(0);
+  // Round the full value before splitting it so 59.999... seconds carries
+  // correctly into the next minute/degree. Two decimal places retain the
+  // precision of a normal phone GPS fix instead of rounding to ~30 metres.
+  let remainingSeconds = Math.round(Math.abs(dec) * 3600 * 100) / 100;
+  const d = Math.floor(remainingSeconds / 3600);
+  remainingSeconds -= d * 3600;
+  const m = Math.floor(remainingSeconds / 60);
+  const s = (remainingSeconds - m * 60).toFixed(2);
   const dir = isLat ? (dec >= 0 ? "K" : "G") : (dec >= 0 ? "D" : "B");
   return `${d}° ${m}′ ${s}″ ${dir}`;
 }
@@ -57,6 +62,10 @@ export function HomeWidgetGrid() {
   // All widgets are always active and shown, in their defined order.
   const enabled = AVAILABLE_WIDGETS.map((w) => w.id);
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
+  const { selectedLocation } = useLocation();
+  // Weather APIs snap requests to a forecast grid. The location card must use
+  // the device fix itself; manual selection continues to take precedence.
+  const { position: livePosition } = useLiveGpsPosition(1000, !selectedLocation);
   const [now, setNow] = useState(new Date());
   const [manualOpen, setManualOpen] = useState(false);
 
@@ -137,20 +146,28 @@ export function HomeWidgetGrid() {
           </WidgetCard>
         );
       case "location": {
+        const latitude = selectedLocation?.latitude ?? livePosition?.latitude ?? data?.latitude;
+        const longitude = selectedLocation?.longitude ?? livePosition?.longitude ?? data?.longitude;
+        const effectiveLabel = selectedLocation?.locationLabel ?? locationLabel;
+        const effectiveSource = selectedLocation ? "manual" : livePosition ? "gps" : locationSource;
+        const effectiveAccuracy = selectedLocation ? null : livePosition?.accuracyMeters ?? accuracyMeters;
+        const effectiveTimestamp = selectedLocation
+          ? positionTimestamp
+          : livePosition?.timestamp ?? positionTimestamp;
         const sourceLabel =
-          locationSource === "gps" ? "GPS" :
-          locationSource === "ip" ? "IP" :
-          locationSource === "manual" ? "Manuel" : "—";
+          effectiveSource === "gps" ? "GPS" :
+          effectiveSource === "ip" ? "IP" :
+          effectiveSource === "manual" ? "Manuel" : "—";
         const accuracyLabel =
-          accuracyMeters == null ? "—" :
-          accuracyMeters < 1000 ? `±${Math.round(accuracyMeters)} m` :
-          `±${(accuracyMeters / 1000).toFixed(1)} km`;
-        const fixedAt = positionTimestamp
-          ? new Date(positionTimestamp).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+          effectiveAccuracy == null ? "—" :
+          effectiveAccuracy < 1000 ? `±${Math.round(effectiveAccuracy)} m` :
+          `±${(effectiveAccuracy / 1000).toFixed(1)} km`;
+        const fixedAt = effectiveTimestamp
+          ? new Date(effectiveTimestamp).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
           : "—";
         const sourceColor =
-          locationSource === "gps" ? "text-emerald-300" :
-          locationSource === "ip" ? "text-amber-300" : "text-white/70";
+          effectiveSource === "gps" ? "text-emerald-300" :
+          effectiveSource === "ip" ? "text-amber-300" : "text-white/70";
         return (
           <WidgetCard key={id} size={meta.size}>
             <div className="flex items-center justify-between gap-2">
@@ -171,24 +188,24 @@ export function HomeWidgetGrid() {
                 </button>
               </div>
             </div>
-            <div className="mt-1 truncate text-sm font-medium">{locationLabel ?? "—"}</div>
+            <div className="mt-1 truncate text-sm font-medium">{effectiveLabel ?? "—"}</div>
             <div className="mt-1.5 grid grid-cols-2 gap-2 text-[10px] text-white/70">
               <div>
                 <div className="text-white/45">Enlem</div>
                 <div className="font-medium text-white/85">
-                  {data?.latitude !== undefined ? decimalToDMS(data.latitude, true) : "—"}
+                  {latitude !== undefined ? decimalToDMS(latitude, true) : "—"}
                 </div>
                 <div className="font-mono text-[9px] text-white/50 tabular-nums">
-                  {data?.latitude !== undefined ? data.latitude.toFixed(6) + "°" : ""}
+                  {latitude !== undefined ? latitude.toFixed(6) + "°" : ""}
                 </div>
               </div>
               <div>
                 <div className="text-white/45">Boylam</div>
                 <div className="font-medium text-white/85">
-                  {data?.longitude !== undefined ? decimalToDMS(data.longitude, false) : "—"}
+                  {longitude !== undefined ? decimalToDMS(longitude, false) : "—"}
                 </div>
                 <div className="font-mono text-[9px] text-white/50 tabular-nums">
-                  {data?.longitude !== undefined ? data.longitude.toFixed(6) + "°" : ""}
+                  {longitude !== undefined ? longitude.toFixed(6) + "°" : ""}
                 </div>
               </div>
             </div>
