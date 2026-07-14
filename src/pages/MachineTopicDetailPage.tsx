@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ChevronLeft, Lightbulb, BookOpen } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { Lightbulb } from "lucide-react";
+import { useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { getMachineSubTopicContent, MachineSubTopicContent } from "@/data/machineTopicDetailContent";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
@@ -21,13 +21,6 @@ export default function MachineTopicDetailPage() {
       <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center space-y-3">
           <p className="text-muted-foreground">{decodedTitle || "Konu detayı"}</p>
-          <Link
-            to={`/machine/${topicSlug}/topics`}
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Geri Dön
-          </Link>
         </div>
       </div>
     );
@@ -175,17 +168,6 @@ export default function MachineTopicDetailPage() {
             </ul>
           </section>
         )}
-
-        {/* Back link */}
-        <div className="flex justify-center pt-2 pb-8">
-          <Link
-            to={`/machine/${topicSlug}/topics`}
-            className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-          >
-            <BookOpen className="h-4 w-4" />
-            Tüm Konulara Dön
-          </Link>
-        </div>
       </div>
 
       <ImageViewerModal

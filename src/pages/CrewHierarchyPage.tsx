@@ -34,7 +34,7 @@ export default function CrewHierarchyPage() {
             <ShieldAlert className="h-6 w-6" />
           </span>
           <div className="min-w-0 flex-1">
-            <h2 className="text-sm font-semibold text-foreground">Rol Cetveli / Muster List</h2>
+            <h2 className="text-sm font-semibold text-foreground">Role Cetveli / Muster List</h2>
           </div>
           <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5" />
         </Link>

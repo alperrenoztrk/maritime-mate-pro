@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ChevronRight, Moon } from "lucide-react";
+import { Moon } from "lucide-react";
 
 /**
  * SVG moon rendered from the actual phase position:
@@ -143,19 +141,6 @@ const MoonPhases = () => {
             }}
           />
         ))}
-      </div>
-
-      {/* Navigate to home - right arrow */}
-      <div className="fixed right-6 top-6 z-20">
-        <Link to="/">
-          <Button
-            size="icon"
-            className="h-12 w-12 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg border-2 border-white/30"
-            title="Ana Sayfa"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </Button>
-        </Link>
       </div>
 
       {/* Main content */}

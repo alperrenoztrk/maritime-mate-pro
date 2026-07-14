@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Ship, Target } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { ChevronRight, Ship, Target } from "lucide-react";
 import { getScenariosByTopic, type Scenario } from "@/data/scenarios";
 import { ScenarioPlayer } from "@/components/lessons/ScenarioPlayer";
 
@@ -21,12 +21,6 @@ export default function CourseBetaScenariosPage() {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 py-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="mx-auto flex max-w-2xl flex-col gap-6">
-        <Link
-          to={`/exercises/${topicKey}/topics`}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> Konulara Dön
-        </Link>
 
         <header className="space-y-2 text-center">
           <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow-lg">

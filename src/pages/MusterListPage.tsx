@@ -2,8 +2,8 @@ import { useMemo, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import {
   AlertTriangle,
-  ArrowLeft,
   Bell,
+  CalendarClock,
   CheckCircle2,
   ChevronRight,
   ClipboardCheck,
@@ -22,13 +22,13 @@ import {
   musterAssignments,
   musterComplianceChecklist,
   musterEmergencies,
-  musterListMeta,
   musterReferences,
   type MusterAssignment,
   type MusterDuty,
   type MusterEmergencyId,
   type MusterSignalClass,
 } from "@/data/musterList";
+import { solasDrills, solasDrillScopeNote } from "@/data/solasDrills";
 
 const EMERGENCY_ICON: Record<MusterEmergencyId, typeof Bell> = {
   general: Bell,
@@ -145,46 +145,12 @@ export default function MusterListPage() {
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-6 print:max-w-none print:gap-4">
         <header className="space-y-4">
-          <Link
-            to="/crew"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground transition hover:text-foreground print:hidden"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Personel
-          </Link>
 
-          <div className="space-y-2 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-              <ShieldAlert className="h-3.5 w-3.5" />
-              Muster List / Rol Cetveli
-            </div>
-            <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
-              Gerçekçi Acil Durum Organizasyonu
-            </h1>
-            <p className="mx-auto max-w-3xl text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              {musterListMeta.profile}. Görevler acil durum ekiplerine, doğrudan görev yerine,
-              raporlama zincirine ve kullanılacak donanıma göre gösterilir.
-            </p>
-          </div>
+          <h1 className="mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+            <ShieldAlert className="h-3.5 w-3.5" />
+            Muster List / Role Cetveli
+          </h1>
         </header>
-
-        <section className="break-inside-avoid rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 shadow-sm print:border-amber-700 print:bg-white print:shadow-none">
-          <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 text-amber-700 dark:text-amber-300">
-              <AlertTriangle className="h-5 w-5" />
-            </span>
-            <div className="space-y-2">
-              <h2 className="text-sm font-bold text-foreground">Gemiye özel onay zorunludur</h2>
-              <p className="text-xs leading-relaxed text-foreground/80">
-                {musterListMeta.warning}
-              </p>
-              <p className="text-xs leading-relaxed text-foreground/80">
-                <span className="font-semibold text-foreground">İlk istasyon kuralı:</span>{" "}
-                {musterListMeta.stationRule}
-              </p>
-            </div>
-          </div>
-        </section>
 
         <nav
           aria-label="Acil durum türü"
@@ -275,6 +241,63 @@ export default function MusterListPage() {
               </ol>
             </div>
           </div>
+        </section>
+
+        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm backdrop-blur print:bg-white print:shadow-none sm:p-5">
+          <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <CalendarClock className="h-4 w-4" />
+              </span>
+              <div>
+                <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Talim Başlıkları</h2>
+                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                  Periyodik zorunlu adlandırmalar; “Genel Talim” bir SOLAS talim başlığı değildir.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-2.5 md:grid-cols-2 xl:grid-cols-3">
+            {solasDrills.map((drill) => (
+              <article
+                key={drill.id}
+                className="rounded-xl border border-border/40 bg-background/70 p-3"
+              >
+                <div className="flex flex-wrap gap-1.5">
+                  <span className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-primary">
+                    {drill.classification}
+                  </span>
+                  {!drill.isStandalone && (
+                    <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-300">
+                      Ayrı talim değildir
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-2 text-xs font-bold leading-snug text-foreground">{drill.title}</h3>
+                <p className="mt-0.5 text-[10px] font-medium text-muted-foreground">
+                  {drill.englishTitle}
+                </p>
+                <dl className="mt-3 space-y-2 text-[11px] leading-relaxed">
+                  <div>
+                    <dt className="font-bold text-foreground">Kapsam</dt>
+                    <dd className="text-muted-foreground">{drill.applicability}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-bold text-foreground">Periyot</dt>
+                    <dd className="text-muted-foreground">{drill.frequency}</dd>
+                  </div>
+                </dl>
+                <p className="mt-3 border-t border-border/40 pt-2 text-[10px] font-semibold text-primary">
+                  {drill.reference}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-4 border-t border-border/40 pt-3 text-[10px] leading-relaxed text-muted-foreground">
+            {solasDrillScopeNote}
+          </p>
         </section>
 
         <section className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between print:hidden">
@@ -498,7 +521,7 @@ export default function MusterListPage() {
             ))}
           </ul>
           <p className="mt-3 border-t border-border/40 pt-3 leading-relaxed">
-            Eğitim örneği; yayımlanmış gemi rol cetveli, Fire Control Plan, LSA Plan, Damage
+            Eğitim örneği; yayımlanmış gemi role cetveli, Fire Control Plan, LSA Plan, Damage
             Control Plan, SOPEP/SMPEP ve şirket SMS'i her zaman önceliklidir.
           </p>
         </footer>

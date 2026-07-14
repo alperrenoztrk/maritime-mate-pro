@@ -3409,17 +3409,6 @@ export default function StabilityTopicsPage() {
                 ))}
               </div>
             </section>
-
-            {/* Back to Lessons */}
-            <div className="flex justify-center pt-2">
-              <Link
-                to="/lessons"
-                className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-              >
-                <BookOpen className="h-4 w-4" />
-                Tüm Derslere Dön
-              </Link>
-            </div>
           </div>
         </ScrollArea>
       </div>

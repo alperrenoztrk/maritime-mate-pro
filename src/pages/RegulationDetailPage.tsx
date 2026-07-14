@@ -568,9 +568,6 @@ export default function RegulationDetailPage() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-12 text-center dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
         <p className="text-lg font-semibold text-foreground">Regülasyon bilgisi bulunamadı</p>
-        <Link to="/regulations" className="text-sm font-bold text-primary hover:underline">
-          Regülasyon listesine dön
-        </Link>
       </div>
     );
   }

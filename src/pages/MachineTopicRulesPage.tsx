@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { BookOpen, ShieldCheck } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -307,12 +307,6 @@ export default function MachineTopicRulesPage() {
             ))}
           </section>
         ))}
-
-        <div className="flex justify-center pt-4">
-          <Link to="/lessons" className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground">
-            Tüm Derslere Dön
-          </Link>
-        </div>
       </div>
     </div>
   );

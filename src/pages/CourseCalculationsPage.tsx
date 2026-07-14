@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { getCourseTopic } from "@/data/courseContent";
 import { CourseTopicHeader } from "@/components/courseContent/CourseTopicHeader";
@@ -27,15 +27,6 @@ export default function CourseCalculationsPage() {
 
 
         <CalculatorList topic={topic} />
-
-        <div className="flex justify-center pt-4">
-          <Link
-            to="/lessons"
-            className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-          >
-            Tüm Derslere Dön
-          </Link>
-        </div>
       </div>
     </div>
   );
