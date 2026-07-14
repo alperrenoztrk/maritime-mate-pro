@@ -2,7 +2,29 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Anchor, ChevronRight, FileText, AlertTriangle, Shield, Lightbulb, CheckCircle2, Circle, X, Compass, LifeBuoy, Ship, Wrench, Flag, Navigation, Eye, Waves, BookMarked, Settings, Users, MapPin } from "lucide-react";
+import {
+  Anchor,
+  ChevronRight,
+  FileText,
+  AlertTriangle,
+  Shield,
+  Lightbulb,
+  CheckCircle2,
+  Circle,
+  X,
+  Compass,
+  LifeBuoy,
+  Ship,
+  Wrench,
+  Flag,
+  Navigation,
+  Eye,
+  Waves,
+  BookMarked,
+  Settings,
+  Users,
+  MapPin,
+} from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { PhotoGallery, type GalleryPhoto } from "@/components/PhotoGallery";

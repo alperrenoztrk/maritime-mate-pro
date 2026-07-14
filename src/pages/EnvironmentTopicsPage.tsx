@@ -2,7 +2,23 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, FileText, AlertTriangle, Lightbulb, CheckCircle2, Circle, X, Leaf, Droplets, Wind, Trash2, Ship, Waves, Shield, Gauge } from "lucide-react";
+import {
+  ChevronRight,
+  FileText,
+  AlertTriangle,
+  Lightbulb,
+  CheckCircle2,
+  Circle,
+  X,
+  Leaf,
+  Droplets,
+  Wind,
+  Trash2,
+  Ship,
+  Waves,
+  Shield,
+  Gauge,
+} from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 

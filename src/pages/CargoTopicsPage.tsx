@@ -2,7 +2,28 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Package, ChevronRight, FileText, AlertTriangle, Anchor, Scale, Ship, Shield, Lightbulb, CheckCircle2, Circle, X, Boxes, BarChart3, Ruler, Settings, Thermometer, Droplets, Container, BookMarked } from "lucide-react";
+import {
+  Package,
+  ChevronRight,
+  FileText,
+  AlertTriangle,
+  Anchor,
+  Scale,
+  Ship,
+  Shield,
+  Lightbulb,
+  CheckCircle2,
+  Circle,
+  X,
+  Boxes,
+  BarChart3,
+  Ruler,
+  Settings,
+  Thermometer,
+  Droplets,
+  Container,
+  BookMarked,
+} from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
