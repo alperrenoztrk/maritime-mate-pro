@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import { BookOpen, AlertTriangle, BookMarked, Lightbulb, Scale, FileText, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { shipSystemsData } from "@/data/shipSystemsData";
+import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 import { loadShipSystemLongForm, type ShipSystemLongForm, type ShipSystemCallout } from "@/data/shipSystems/longform/types";
+import { SystemArchitectureDiagram } from "@/components/ship-systems/SystemArchitectureDiagram";
 
 const calloutMeta: Record<ShipSystemCallout["type"], { Icon: typeof AlertTriangle; cls: string; label: string }> = {
   warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Uyarı" },
@@ -18,18 +20,38 @@ export default function ShipSystemDeepDive() {
   const idx = Number(topicIndex);
   const section = sectionId ? shipSystemsData[sectionId] : undefined;
   const topicMeta = section?.topics[idx];
+  const guide = sectionId && topicMeta
+    ? getProfessionalSystemGuide(sectionId, idx, topicMeta.title)
+    : null;
 
   const [content, setContent] = useState<ShipSystemLongForm | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [activeChapter, setActiveChapter] = useState(0);
 
   useEffect(() => {
     if (!sectionId || Number.isNaN(idx)) return;
+    let cancelled = false;
     setLoading(true);
+    setLoadError(false);
+    setContent(null);
     setActiveChapter(0);
     loadShipSystemLongForm(sectionId, idx)
-      .then((c) => setContent(c))
-      .finally(() => setLoading(false));
+      .then((c) => {
+        if (!cancelled) {
+          setContent(c);
+          setLoadError(!c);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [sectionId, idx]);
 
   if (!section || !topicMeta) {
@@ -62,6 +84,9 @@ export default function ShipSystemDeepDive() {
               {section.title}
             </p>
             <h1 className="text-2xl font-black leading-tight text-foreground">{topicMeta.title}</h1>
+            {content?.intro && (
+              <p className="mt-3 text-sm leading-relaxed text-foreground/75">{content.intro}</p>
+            )}
           </header>
 
           {loading && (
@@ -70,11 +95,11 @@ export default function ShipSystemDeepDive() {
             </div>
           )}
 
-          {!loading && !content && (
+          {!loading && loadError && !content && (
             <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 text-center">
-              <p className="text-sm font-semibold text-foreground">Bu konu için detaylı anlatım hazırlanıyor.</p>
+              <p className="text-sm font-semibold text-foreground">Mesleki ders anlatımı yüklenemedi.</p>
               <p className="mt-2 text-xs text-muted-foreground">
-                Şimdilik özet açıklama ile yetinmeniz gerekiyor. Yakında 20-30 sayfalık tam anlatım yayımlanacak.
+                Bağlantıyı yenileyip tekrar deneyin. Aşağıdaki özet, sistem kartındaki doğrulanmış temel içeriği gösterir.
               </p>
               {topicMeta.introduction && (
                 <p className="mt-4 rounded-lg border border-border/40 bg-background/60 p-4 text-left text-sm leading-relaxed">
@@ -93,6 +118,8 @@ export default function ShipSystemDeepDive() {
 
           {content && (
             <>
+              {guide && <SystemArchitectureDiagram title={topicMeta.title} stages={guide.flow} />}
+
               {/* Chapter chips */}
               <nav className="sticky top-2 z-20 -mx-1 overflow-x-auto rounded-xl border border-border/40 bg-card/80 p-2 backdrop-blur">
                 <div className="flex gap-1.5">
