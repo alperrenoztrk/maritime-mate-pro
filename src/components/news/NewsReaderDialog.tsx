@@ -10,12 +10,13 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-function formatDateTR(iso?: string): string {
+function formatDate(iso: string | undefined, locale: string): string {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleString("tr-TR", {
+  return d.toLocaleString(locale || "en", {
     year: "numeric",
     month: "short",
     day: "2-digit",
@@ -176,6 +177,7 @@ export interface NewsReaderDialogProps {
 }
 
 export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogProps) {
+  const { currentLanguage } = useLanguage();
   const articleQuery = useQuery({
     queryKey: ["article-content", item?.link],
     queryFn: () => fetchArticleContent(item!.link),
@@ -212,7 +214,13 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
           <div className="relative -mt-16 px-5 pb-8">
             <DialogHeader className="space-y-3">
               <div className="flex flex-wrap items-center gap-2 text-xs text-white/60">
-                {item?.publishedAt ? <span>{formatDateTR(item.publishedAt)}</span> : null}
+                {item?.source ? <span className="font-medium text-sky-300">{item.source}</span> : null}
+                {item?.publishedAt ? (
+                  <>
+                    <span>·</span>
+                    <span>{formatDate(item.publishedAt, currentLanguage)}</span>
+                  </>
+                ) : null}
                 {articleQuery.data?.author && (
                   <>
                     <span>·</span>
