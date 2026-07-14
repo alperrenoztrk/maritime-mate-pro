@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
@@ -6,14 +6,15 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Globe2, Newspaper } from "lucide-react";
 import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-function formatDateTR(iso?: string): string {
+function formatDate(iso: string | undefined, locale: string): string {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleString("tr-TR", {
+  return d.toLocaleString(locale || "en", {
     year: "numeric",
     month: "short",
     day: "2-digit",
@@ -55,6 +56,7 @@ function toProxyImageUrl(url?: string, size: "small" | "medium" | "large" = "lar
 
 const MaritimeNews = () => {
   const navigate = useNavigate();
+  const { currentLanguage, isLoading: isLanguageLoading } = useLanguage();
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
@@ -62,15 +64,23 @@ const MaritimeNews = () => {
   const [selectedItem, setSelectedItem] = useState<MaritimeNewsItem | null>(null);
 
   const query = useQuery({
-    queryKey: ["maritime-news"],
-    queryFn: () => fetchMaritimeNews({ perSourceLimit: 12 }),
+    queryKey: ["maritime-news", currentLanguage],
+    queryFn: () => fetchMaritimeNews({ language: currentLanguage, perSourceLimit: 12 }),
+    enabled: !isLanguageLoading,
     staleTime: 10 * 60 * 1000,
     refetchInterval: (q) => (q.state.data?.items?.length ? false : 60 * 1000),
     refetchOnWindowFocus: false,
     retry: 2,
   });
 
-  const items = (query.data?.items ?? []).filter((it) => Boolean(it.imageUrl));
+  const items = query.data?.items ?? [];
+
+  useEffect(() => {
+    // Never leave an article from the previous language open while the new
+    // regional edition is loading.
+    setReaderOpen(false);
+    setSelectedItem(null);
+  }, [currentLanguage]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
@@ -109,13 +119,25 @@ const MaritimeNews = () => {
       </div>
 
       <div className="mx-auto w-full max-w-5xl space-y-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-white">Denizcilik Haberleri</h1>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-white">Denizcilik Haberleri</h1>
+            <p className="mt-1 text-sm text-white/55">Haber akışı uygulama diline göre otomatik yenilenir.</p>
+          </div>
+          {query.data?.locale ? (
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1.5 text-xs font-medium text-sky-200">
+              <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>
+                {query.data.locale.countryName}
+                {query.data.locale.mode === "regional-and-global" ? " ve küresel kaynaklar" : " kaynakları"}
+              </span>
+            </div>
+          ) : null}
         </div>
 
         <Separator className="bg-white/10" />
 
-        {query.isLoading ? (
+        {isLanguageLoading || query.isLoading ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 9 }).map((_, i) => (
               <Card key={i} className="border-white/10 bg-white/5 p-0 overflow-hidden">
@@ -151,7 +173,7 @@ const MaritimeNews = () => {
 
               return (
                 <button
-                  key={it.link}
+                  key={`${it.source}-${it.link}`}
                   type="button"
                   onClick={() => {
                     setSelectedItem(it);
@@ -180,16 +202,22 @@ const MaritimeNews = () => {
                         }}
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800">
-                        <span className="text-xs text-white/40">Görsel yok</span>
+                      <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-slate-700 to-slate-900 px-4 text-center">
+                        <Newspaper className="h-8 w-8 text-sky-300/60" aria-hidden="true" />
+                        <span className="line-clamp-2 text-xs font-medium text-white/55">{it.source}</span>
                       </div>
                     )}
                   </div>
 
                   <div className="flex flex-1 flex-col p-4">
-                    {it.publishedAt && (
-                      <span className="mb-2 text-xs text-white/50">{formatDateTR(it.publishedAt)}</span>
-                    )}
+                    <div className="mb-2 flex items-center justify-between gap-2 text-[11px]">
+                      <span className="min-w-0 truncate rounded-full bg-sky-400/10 px-2 py-1 font-medium text-sky-200/90">
+                        {it.source}
+                      </span>
+                      {it.publishedAt ? (
+                        <span className="shrink-0 text-white/45">{formatDate(it.publishedAt, currentLanguage)}</span>
+                      ) : null}
+                    </div>
                     <h3 className="line-clamp-3 text-sm font-semibold leading-snug text-white group-hover:text-blue-300">
                       {it.title}
                     </h3>

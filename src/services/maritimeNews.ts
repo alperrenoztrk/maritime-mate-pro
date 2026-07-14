@@ -14,35 +14,78 @@ export type MaritimeNewsResponse = {
   items: MaritimeNewsItem[];
   sources?: Array<{ id: string; name: string; url: string }>;
   errors?: Array<{ source: string; error: string }>;
+  locale?: MaritimeNewsLocale;
 };
 
-const FALLBACK_NEWS: MaritimeNewsResponse = {
-  fetchedAt: new Date().toISOString(),
-  items: [
-    {
-      title: "Haber servisi geçici olarak kullanılamıyor. Güncel kaynaklara aşağıdaki bağlantılardan ulaşabilirsiniz.",
-      link: "https://www.maritime-executive.com/",
-      source: "Yedek Kaynak",
-      summary:
-        "Supabase haber servisine şu anda ulaşılamıyor. Genel denizcilik haberleri için Maritime Executive, gCaptain ve Splash247 kaynaklarını ziyaret edebilirsiniz.",
-    },
-    {
-      title: "gCaptain – Son Haberler",
-      link: "https://gcaptain.com/",
-      source: "gCaptain",
-    },
-    {
-      title: "Splash247 – Denizcilik Haberleri",
-      link: "https://splash247.com/",
-      source: "Splash247",
-    },
-  ],
-  sources: [
-    { id: "gcaptain", name: "gCaptain", url: "https://gcaptain.com/" },
-    { id: "splash247", name: "Splash247", url: "https://splash247.com/" },
-    { id: "maritime-executive", name: "Maritime Executive", url: "https://www.maritime-executive.com/" },
-  ],
+export type MaritimeNewsLocale = {
+  language: string;
+  countryCode: string;
+  countryName: string;
+  mode: "regional" | "regional-and-global";
 };
+
+type FallbackEdition = MaritimeNewsLocale & {
+  hl: string;
+  ceid?: string;
+  query: string;
+};
+
+const FALLBACK_EDITIONS: Record<string, FallbackEdition> = {
+  tr: { language: "tr", countryCode: "TR", countryName: "Türkiye", mode: "regional", hl: "tr", ceid: "TR:tr", query: "denizcilik gemi liman" },
+  en: { language: "en", countryCode: "GB", countryName: "United Kingdom", mode: "regional-and-global", hl: "en-GB", ceid: "GB:en", query: "shipping maritime port" },
+  es: { language: "es", countryCode: "ES", countryName: "España", mode: "regional", hl: "es", ceid: "ES:es", query: "marítimo buque puerto" },
+  de: { language: "de", countryCode: "DE", countryName: "Deutschland", mode: "regional", hl: "de", ceid: "DE:de", query: "Schifffahrt Schiff Hafen" },
+  fr: { language: "fr", countryCode: "FR", countryName: "France", mode: "regional", hl: "fr", ceid: "FR:fr", query: "maritime navire port" },
+  it: { language: "it", countryCode: "IT", countryName: "Italia", mode: "regional", hl: "it", ceid: "IT:it", query: "marittimo nave porto" },
+  pt: { language: "pt", countryCode: "PT", countryName: "Portugal", mode: "regional", hl: "pt-PT", ceid: "PT:pt-150", query: "marítimo navio porto" },
+  ja: { language: "ja", countryCode: "JP", countryName: "日本", mode: "regional", hl: "ja", ceid: "JP:ja", query: "海運 船舶 港湾" },
+  ko: { language: "ko", countryCode: "KR", countryName: "대한민국", mode: "regional", hl: "ko", ceid: "KR:ko", query: "해운 선박 항만" },
+  "zh-CN": { language: "zh-CN", countryCode: "CN", countryName: "中国", mode: "regional", hl: "zh-CN", ceid: "CN:zh-Hans", query: "航运 船舶 港口" },
+  nl: { language: "nl", countryCode: "NL", countryName: "Nederland", mode: "regional", hl: "nl", ceid: "NL:nl", query: "scheepvaart schip haven" },
+  sv: { language: "sv", countryCode: "SE", countryName: "Sverige", mode: "regional", hl: "sv", ceid: "SE:sv", query: "sjöfart fartyg hamn" },
+  no: { language: "no", countryCode: "NO", countryName: "Norge", mode: "regional", hl: "no", ceid: "NO:no", query: "skipsfart skip havn" },
+  da: { language: "da", countryCode: "DK", countryName: "Danmark", mode: "regional", hl: "da", query: "skibsfart skib havn" },
+  fi: { language: "fi", countryCode: "FI", countryName: "Suomi", mode: "regional", hl: "fi", ceid: "FI:fi", query: "merenkulku alus satama" },
+  pl: { language: "pl", countryCode: "PL", countryName: "Polska", mode: "regional", hl: "pl", ceid: "PL:pl", query: "żegluga statek port" },
+  cs: { language: "cs", countryCode: "CZ", countryName: "Česko", mode: "regional", hl: "cs", ceid: "CZ:cs", query: "námořní doprava loď přístav" },
+  hu: { language: "hu", countryCode: "HU", countryName: "Magyarország", mode: "regional", hl: "hu", ceid: "HU:hu", query: "hajózás hajó kikötő" },
+  ro: { language: "ro", countryCode: "RO", countryName: "România", mode: "regional", hl: "ro", ceid: "RO:ro", query: "maritim navă port" },
+};
+
+function resolveFallbackEdition(value: unknown): FallbackEdition {
+  const raw = typeof value === "string" ? value.trim().replace(/_/g, "-").toLowerCase() : "";
+  if (raw === "zh" || raw === "zh-cn" || raw === "zh-hans") return FALLBACK_EDITIONS["zh-CN"];
+  if (raw === "nb" || raw === "nn" || raw.startsWith("nb-") || raw.startsWith("nn-")) return FALLBACK_EDITIONS.no;
+  const exact = Object.keys(FALLBACK_EDITIONS).find((key) => key.toLowerCase() === raw);
+  return FALLBACK_EDITIONS[exact || raw.split("-")[0]] || FALLBACK_EDITIONS.en;
+}
+
+function createFallbackNews(language: unknown): MaritimeNewsResponse {
+  const edition = resolveFallbackEdition(language);
+  const params = new URLSearchParams({
+    q: edition.query,
+    hl: edition.hl,
+    gl: edition.countryCode,
+  });
+  if (edition.ceid) params.set("ceid", edition.ceid);
+  const url = `https://news.google.com/search?${params.toString()}`;
+  return {
+    fetchedAt: new Date().toISOString(),
+    locale: {
+      language: edition.language,
+      countryCode: edition.countryCode,
+      countryName: edition.countryName,
+      mode: edition.mode,
+    },
+    items: [{
+      title: `${edition.countryName} denizcilik haberlerini aç`,
+      link: url,
+      source: `Google News · ${edition.countryName}`,
+      summary: "Haber servisine geçici olarak ulaşılamadı. Seçili dile ait güncel yerel kaynakları açabilirsiniz.",
+    }],
+    sources: [{ id: `fallback-${edition.language}`, name: `Google News · ${edition.countryName}`, url }],
+  };
+}
 
 type SupabaseClientInternals = {
   supabaseUrl?: string;
@@ -76,6 +119,7 @@ function normalizeResponse(data: unknown): MaritimeNewsResponse {
   const itemsRaw = data["items"];
   const errorsRaw = data["errors"];
   const sourcesRaw = data["sources"];
+  const localeRaw = data["locale"];
 
   const items: MaritimeNewsItem[] = Array.isArray(itemsRaw)
     ? itemsRaw
@@ -108,13 +152,22 @@ function normalizeResponse(data: unknown): MaritimeNewsResponse {
         .filter((s) => Boolean(s.id && s.name && s.url))
     : undefined;
 
+  const locale: MaritimeNewsLocale | undefined = isObject(localeRaw)
+    ? {
+        language: toStringSafe(localeRaw["language"]),
+        countryCode: toStringSafe(localeRaw["countryCode"]),
+        countryName: toStringSafe(localeRaw["countryName"]),
+        mode: localeRaw["mode"] === "regional-and-global" ? "regional-and-global" : "regional",
+      }
+    : undefined;
+
   // If all upstream feeds failed, treat it as an error so the UI retries instead of caching an empty list all day.
   if (items.length === 0 && errors && errors.length > 0) {
     const first = errors[0];
     throw new Error(first?.error || "Haber kaynaklarına erişilemedi.");
   }
 
-  return { fetchedAt, items, errors, sources };
+  return { fetchedAt, items, errors, sources, locale };
 }
 
 function getFunctionBaseUrl(): string {
@@ -173,6 +226,8 @@ function fetchWithTimeout(url: string, init: RequestInit, timeoutMs: number) {
 }
 
 export type FetchMaritimeNewsOptions = {
+  /** Active application language. The server resolves this to a regional news edition. */
+  language?: string;
   /**
    * Maximum number of articles to keep per source. Defaults to 10 so that each
    * feed contributes a reasonable slice of headlines with images to the UI.
@@ -190,7 +245,7 @@ export async function fetchMaritimeNews(
   options: FetchMaritimeNewsOptions = {},
   timeoutMs = 12_000
 ): Promise<MaritimeNewsResponse> {
-  const { perSourceLimit = 10, totalLimit } = options;
+  const { language = "en", perSourceLimit = 10, totalLimit } = options;
   // Use direct call to avoid mis-pointing to an old/paused backend project when the generated client URL/key is stale.
   const key = getAnonKey();
   const candidateUrls = getFunctionUrls();
@@ -198,7 +253,7 @@ export async function fetchMaritimeNews(
 
   for (const url of candidateUrls) {
     try {
-      console.info("📰 [MaritimeNews] Requesting:", { url, totalLimit, perSourceLimit });
+      console.info("📰 [MaritimeNews] Requesting:", { url, language, totalLimit, perSourceLimit });
 
       const res = await fetchWithTimeout(url, {
         method: "POST",
@@ -207,7 +262,7 @@ export async function fetchMaritimeNews(
           apikey: key,
           authorization: `Bearer ${key}`,
         },
-        body: JSON.stringify({ limit: totalLimit, perSourceLimit }),
+        body: JSON.stringify({ language, limit: totalLimit, perSourceLimit }),
       }, timeoutMs);
 
       if (!res.ok) {
@@ -232,7 +287,7 @@ export async function fetchMaritimeNews(
   console.warn("📰 [MaritimeNews] All endpoints failed, falling back to static content", { errors });
 
   return {
-    ...FALLBACK_NEWS,
+    ...createFallbackNews(language),
     fetchedAt: new Date().toISOString(),
     errors: errors.map((e, i) => ({ source: `Uç nokta ${i + 1}`, error: e })),
   };

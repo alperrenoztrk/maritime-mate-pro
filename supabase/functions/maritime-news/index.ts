@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { XMLParser } from "https://esm.sh/fast-xml-parser@4.5.3";
+import { getFeedsForLanguage, type FeedSource } from "./locales.ts";
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -29,12 +30,6 @@ function getCorsHeaders(origin: string | null): Record<string, string> {
   };
 }
 
-type FeedSource = {
-  id: string;
-  name: string;
-  url: string;
-};
-
 type NewsItem = {
   title: string;
   link: string;
@@ -44,7 +39,7 @@ type NewsItem = {
   imageUrl?: string;
 };
 
-const FEEDS: FeedSource[] = [
+const ENGLISH_FEEDS: FeedSource[] = [
   { id: "gcaptain", name: "gCaptain", url: "https://gcaptain.com/feed/" },
   { id: "marinelink", name: "MarineLink", url: "https://www.marinelink.com/rss" },
   { id: "splash247", name: "Splash247", url: "https://splash247.com/feed/" },
@@ -132,6 +127,29 @@ function normalizeLink(link: unknown): string {
   }
 
   return String(link);
+}
+
+function extractSourceName(value: unknown, fallback: string): string {
+  if (typeof value === "string") {
+    return stripHtml(value).slice(0, 160) || fallback;
+  }
+  if (value && typeof value === "object") {
+    const source = value as Record<string, unknown>;
+    for (const key of ["#text", "title", "name", "__text", "_text"]) {
+      if (typeof source[key] === "string") {
+        const normalized = stripHtml(source[key] as string).slice(0, 160);
+        if (normalized) return normalized;
+      }
+    }
+  }
+  return fallback;
+}
+
+function stripPublisherSuffix(title: string, publisher: string): string {
+  const suffix = ` - ${publisher}`;
+  return title.toLocaleLowerCase().endsWith(suffix.toLocaleLowerCase())
+    ? title.slice(0, -suffix.length).trim()
+    : title;
 }
 
 function upgradeImageResolution(url: string): string {
@@ -285,12 +303,13 @@ function parseRssOrAtom(xml: string, fallbackSourceName: string): NewsItem[] {
   // RSS 2.0
   const rssChannel = parsed?.rss?.channel;
   if (rssChannel) {
-    const sourceName = (rssChannel?.title && stripHtml(String(rssChannel.title))) || fallbackSourceName;
+    const channelSourceName = (rssChannel?.title && stripHtml(String(rssChannel.title))) || fallbackSourceName;
     const itemsRaw = rssChannel?.item;
     const items = Array.isArray(itemsRaw) ? itemsRaw : itemsRaw ? [itemsRaw] : [];
     return items
       .map((it: any) => {
-        const title = stripHtml(String(it?.title ?? "")).slice(0, 500);
+        const sourceName = extractSourceName(it?.source, channelSourceName);
+        const title = stripPublisherSuffix(stripHtml(String(it?.title ?? "")), sourceName).slice(0, 500);
         const link = normalizeLink(it?.link);
         const summary = it?.description ? stripHtml(String(it.description)).slice(0, 800) : undefined;
         const publishedAt = toIsoDate(it?.pubDate ?? it?.published ?? it?.updated);
@@ -304,13 +323,14 @@ function parseRssOrAtom(xml: string, fallbackSourceName: string): NewsItem[] {
   // Atom
   const atomFeed = parsed?.feed;
   if (atomFeed) {
-    const sourceName = (atomFeed?.title && stripHtml(String(atomFeed.title))) || fallbackSourceName;
+    const feedSourceName = (atomFeed?.title && stripHtml(String(atomFeed.title))) || fallbackSourceName;
     const entriesRaw = atomFeed?.entry;
     const entries = Array.isArray(entriesRaw) ? entriesRaw : entriesRaw ? [entriesRaw] : [];
 
     return entries
       .map((e: any) => {
-        const title = stripHtml(String(e?.title ?? "")).slice(0, 500);
+        const sourceName = extractSourceName(e?.source, feedSourceName);
+        const title = stripPublisherSuffix(stripHtml(String(e?.title ?? "")), sourceName).slice(0, 500);
         const link = normalizeLink(e?.link);
         const summary = e?.summary
           ? stripHtml(String(e.summary)).slice(0, 800)
@@ -328,7 +348,7 @@ function parseRssOrAtom(xml: string, fallbackSourceName: string): NewsItem[] {
   return [];
 }
 
-async function fetchWithTimeout(url: string, timeoutMs: number): Promise<string> {
+async function fetchWithTimeout(url: string, timeoutMs: number, acceptLanguage: string): Promise<string> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -338,7 +358,7 @@ async function fetchWithTimeout(url: string, timeoutMs: number): Promise<string>
         // Some feeds block unknown UAs; this helps.
         "User-Agent": "Mozilla/5.0 (compatible; MaritimeNewsBot/1.0) AppleWebKit/537.36",
         "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1",
-        "Accept-Language": "en-US,en;q=0.9,tr;q=0.8",
+        "Accept-Language": `${acceptLanguage},en;q=0.5`,
       },
     });
     if (!resp.ok) {
@@ -363,17 +383,20 @@ serve(async (req) => {
     const limitRaw = Number(url.searchParams.get("limit") || "NaN");
     let limit = limitRaw;
     let perSourceLimit = Number(url.searchParams.get("perSourceLimit") || "NaN");
+    let requestedLanguage: unknown = url.searchParams.get("language") || "en";
     if (req.method === "POST") {
       try {
         const body = await req.json();
         if (body && typeof body.limit !== "undefined") limit = Number(body.limit);
         if (body && typeof body.perSourceLimit !== "undefined") perSourceLimit = Number(body.perSourceLimit);
+        if (body && typeof body.language !== "undefined") requestedLanguage = body.language;
       } catch {
         // ignore invalid json
       }
     }
 
-    const sourceCount = FEEDS.length || 1;
+    const { locale, feeds } = getFeedsForLanguage(requestedLanguage, ENGLISH_FEEDS);
+    const sourceCount = feeds.length || 1;
     if (!Number.isFinite(perSourceLimit)) perSourceLimit = 10;
     perSourceLimit = Math.max(5, Math.min(25, Math.trunc(perSourceLimit)));
 
@@ -381,11 +404,11 @@ serve(async (req) => {
     limit = Math.max(5, Math.min(perSourceLimit * sourceCount, Math.trunc(limit)));
 
     const results = await Promise.all(
-      FEEDS.map(async (feed) => {
+      feeds.map(async (feed) => {
         try {
-          const xml = await fetchWithTimeout(feed.url, 12_000);
+          const xml = await fetchWithTimeout(feed.url, 12_000, locale.hl);
           const items = parseRssOrAtom(xml, feed.name)
-            .map((i) => ({ ...i, source: feed.name }))
+            .map((i) => ({ ...i, source: i.source || feed.name }))
             .sort((a, b) => scoreItem(b) - scoreItem(a))
             .slice(0, perSourceLimit);
           return { feed, items, error: null as string | null };
@@ -404,9 +427,20 @@ serve(async (req) => {
       if (r.error) errors.push({ source: r.feed.name, error: r.error });
     }
 
-    // Filter to only include items with images, then sort by importance score
-    const sorted = allItems
-      .filter((i) => Boolean(i.imageUrl))
+    // Regional aggregators sometimes omit thumbnails. Keep those local stories
+    // discoverable while preserving the image-first English feed behaviour.
+    const seenLinks = new Set<string>();
+    const seenTitles = new Set<string>();
+    const uniqueItems = allItems.filter((item) => {
+      const linkKey = item.link.trim().toLocaleLowerCase();
+      const titleKey = item.title.trim().toLocaleLowerCase().replace(/\s+/g, " ");
+      if (seenLinks.has(linkKey) || seenTitles.has(titleKey)) return false;
+      seenLinks.add(linkKey);
+      seenTitles.add(titleKey);
+      return locale.language !== "en" || Boolean(item.imageUrl);
+    });
+
+    const sorted = uniqueItems
       .map((i) => ({
         ...i,
         _score: scoreItem(i),
@@ -420,12 +454,20 @@ serve(async (req) => {
         fetchedAt: new Date().toISOString(),
         items: sorted,
         errors,
-        sources: FEEDS.map((f) => ({ id: f.id, name: f.name, url: f.url })),
+        sources: feeds.map((f) => ({ id: f.id, name: f.name, url: f.url })),
+        locale: {
+          language: locale.language,
+          countryCode: locale.countryCode,
+          countryName: locale.countryName,
+          mode: locale.language === "en" ? "regional-and-global" : "regional",
+        },
       }),
       {
         headers: {
           ...corsHeaders,
           "Content-Type": "application/json",
+          "Content-Language": locale.language,
+          "Vary": "Origin, Accept-Language",
           // Small cache to keep it snappy and reduce upstream requests
           "Cache-Control": "public, max-age=300",
         },
