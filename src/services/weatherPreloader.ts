@@ -214,8 +214,10 @@ class WeatherPreloader {
       windDirectionDeg: cur.wind_direction_10m ?? NaN,
       weatherCode: cur.weather_code ?? -1,
       timeIso: cur.time,
-      latitude: json.latitude,
-      longitude: json.longitude,
+      // The API echoes its forecast grid-cell centre, not the requested
+      // device position. Preserve the original coordinates for the widget.
+      latitude: lat,
+      longitude: lon,
       timezoneId: json.timezone,
       utcOffsetSeconds: json.utc_offset_seconds,
       sunriseIso,
