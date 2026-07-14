@@ -58,7 +58,6 @@ function WidgetCard({ size, children }: CardProps) {
   );
 }
 
-
 export function HomeWidgetGrid() {
   // All widgets are always active and shown, in their defined order.
   const enabled = AVAILABLE_WIDGETS.map((w) => w.id);
