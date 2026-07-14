@@ -90,11 +90,14 @@ export default function BookPage() {
                 <section key={page.id} className="bk-sheet snap-center snap-always">
                   <nav className="bk-page" aria-label={`İçindekiler — ${page.title}`}>
                     {i === 0 ? (
-                      <header className="bk-toc-header">
-                        <div className="bk-toc-rule" />
-                        <div className="bk-toc-title">İÇİNDEKİLER</div>
-                        <div className="bk-toc-rule" />
-                      </header>
+                      <>
+                        <header className="bk-toc-header">
+                          <div className="bk-toc-rule" />
+                          <div className="bk-toc-title">İÇİNDEKİLER</div>
+                          <div className="bk-toc-rule" />
+                        </header>
+                        <div className="bk-fleuron" aria-hidden="true">❦</div>
+                      </>
                     ) : (
                       <header className="bk-running-header">İÇİNDEKİLER</header>
                     )}
@@ -128,6 +131,7 @@ export default function BookPage() {
                 </section>
               ))}
             </div>
+            <div className="bk-ribbon" aria-hidden="true" />
           </div>
 
           {/* Ciltten açılan kapak */}
@@ -253,15 +257,24 @@ export default function BookPage() {
           height: 100%;
           padding: 10px 12px 10px 14px;
         }
+        /* Hafif eğik sayfalar — elde dikilmiş cilt hissi */
+        .bk-sheet:nth-child(odd) .bk-page{ transform: rotate(.15deg); }
+        .bk-sheet:nth-child(even) .bk-page{ transform: rotate(-.15deg); }
         .bk-page{
           height: 100%;
           overflow-y: auto;
           border-radius: 2px;
           padding: clamp(14px, 4vw, 22px) clamp(14px, 4.5vw, 24px) 22px;
           background:
+            radial-gradient(22% 14% at 82% 12%, rgba(150,100,30,.08), transparent 70%),
+            radial-gradient(30% 18% at 12% 78%, rgba(150,100,30,.06), transparent 70%),
+            radial-gradient(14% 9% at 60% 45%, rgba(150,100,30,.05), transparent 70%),
             repeating-linear-gradient(180deg, transparent 0 9px, rgba(120,80,20,.07) 9px 10px),
             linear-gradient(180deg, #f8eed4 0%, #eddcb4 100%);
-          box-shadow: inset 6px 0 10px -6px rgba(90,60,20,.45);
+          box-shadow:
+            inset 6px 0 10px -6px rgba(90,60,20,.45),
+            inset 0 6px 8px -6px rgba(90,60,20,.3),
+            inset 0 -6px 8px -6px rgba(90,60,20,.3);
           font-family: Georgia, 'Times New Roman', serif;
           color: #4a3113;
           scrollbar-width: none;
@@ -286,6 +299,13 @@ export default function BookPage() {
           height: 1px;
           background: linear-gradient(90deg, transparent, rgba(176,124,32,.65), transparent);
         }
+        .bk-fleuron{
+          text-align: center;
+          color: rgba(90,61,20,.55);
+          font-size: 1.1rem;
+          line-height: 1;
+          margin: -6px 0 10px;
+        }
         .bk-running-header{
           margin-bottom: 10px;
           text-align: center;
@@ -295,6 +315,8 @@ export default function BookPage() {
           text-indent: .34em;
           color: rgba(90,61,20,.55);
         }
+        .bk-running-header::before{ content: "❖  "; opacity: .5; }
+        .bk-running-header::after{ content: "  ❖"; opacity: .5; }
         .bk-chapter{
           display: flex;
           align-items: baseline;
@@ -308,6 +330,8 @@ export default function BookPage() {
           font-size: clamp(1rem, 4.2vw, 1.2rem);
           font-weight: 700;
           font-variant-numeric: lining-nums;
+          color: #7a5c1a;
+          text-shadow: 0 1px 0 rgba(242,217,138,.35);
         }
         .bk-chapter-title{
           font-size: clamp(1rem, 4.2vw, 1.2rem);
@@ -325,6 +349,7 @@ export default function BookPage() {
           height: 1px;
           margin: 2px 0 10px;
           background: linear-gradient(90deg, rgba(176,124,32,.7), rgba(176,124,32,.15));
+          box-shadow: 0 2px 0 rgba(176,124,32,.2);
         }
         .bk-section + .bk-section{ margin-top: 12px; }
         .bk-section-heading{
@@ -380,8 +405,14 @@ export default function BookPage() {
           overflow: hidden;
         }
         .bk-cover-front{
-          background: linear-gradient(140deg, #12407f 0%, #0b2c5e 46%, #071e42 100%);
-          border: 1px solid rgba(218,165,32,.4);
+          background:
+            radial-gradient(60% 45% at 0% 0%, rgba(140,100,40,.16), transparent 70%),
+            radial-gradient(60% 45% at 100% 100%, rgba(140,100,40,.14), transparent 70%),
+            radial-gradient(130% 110% at 50% 38%, transparent 52%, rgba(0,0,0,.42) 100%),
+            repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px),
+            repeating-linear-gradient(24deg, rgba(255,255,255,.02) 0 2px, transparent 2px 7px),
+            linear-gradient(140deg, #0f3668 0%, #0a274f 46%, #05172f 100%);
+          border: 1px solid rgba(202,160,68,.45);
           box-shadow: inset 0 0 26px rgba(0,0,0,.45), 0 8px 22px rgba(0,0,0,.5);
           transform: translateZ(.6px);
         }
@@ -437,6 +468,19 @@ export default function BookPage() {
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
+        }
+        /* Kırmızı kurdele ayraç — kapağın (z-5) altında, dokunuşları engellemez */
+        .bk-ribbon{
+          position: absolute;
+          top: -2px;
+          right: 12%;
+          width: 16px;
+          height: 64px;
+          z-index: 3;
+          pointer-events: none;
+          background: linear-gradient(90deg, #7a1a1a, #a83232 45%, #7a1a1a);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 86%, 0 100%);
+          box-shadow: 0 3px 5px rgba(0,0,0,.35);
         }
         @keyframes bk-cover-open{ to{ transform: rotateY(-178deg); } }
         .no-scrollbar::-webkit-scrollbar{ display: none; }

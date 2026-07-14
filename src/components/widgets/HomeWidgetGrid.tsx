@@ -3,8 +3,13 @@ import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
 import { useLocation } from "@/contexts/LocationContext";
-import { Clock, Globe2, Cloud, Wind, MapPin, Sun, Pencil } from "lucide-react";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
+import { VintageWidgetStyles } from "@/components/widgets/vintage/VintageWidgetStyles";
+import { ChronometerWidget } from "@/components/widgets/vintage/ChronometerWidget";
+import { ThermometerWidget } from "@/components/widgets/vintage/ThermometerWidget";
+import { WindCompassWidget } from "@/components/widgets/vintage/WindCompassWidget";
+import { GpsReceiverWidget } from "@/components/widgets/vintage/GpsReceiverWidget";
+import { SunArcWidget } from "@/components/widgets/vintage/SunArcWidget";
 
 function degreesToCompass(degrees: number): string {
   const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
@@ -37,25 +42,25 @@ function wmoText(code?: number): string {
   return "—";
 }
 
-interface CardProps {
-  size: "small" | "medium";
-  children: React.ReactNode;
-}
-
-function WidgetCard({ size, children }: CardProps) {
-  return (
-    <div
-      className={
-        (size === "medium" ? "col-span-2 " : "col-span-1 ") +
-        "rounded-[22px] p-3.5 backdrop-blur-xl border border-white/15 text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-      }
-      style={{
-        background: "linear-gradient(160deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%)",
-      }}
-    >
-      {children}
-    </div>
-  );
+/** Analog kadran ibreleri için saat dilimine göre saat/dakika/saniye. */
+function zonedTimeParts(now: Date, timeZone?: string): { h: number; m: number; s: number } {
+  try {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).formatToParts(now);
+    const get = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? NaN);
+    const h = get("hour");
+    const m = get("minute");
+    const s = get("second");
+    if ([h, m, s].some(Number.isNaN)) throw new Error("parse");
+    return { h, m, s };
+  } catch {
+    return { h: now.getHours(), m: now.getMinutes(), s: now.getSeconds() };
+  }
 }
 
 export function HomeWidgetGrid() {
@@ -98,52 +103,52 @@ export function HomeWidgetGrid() {
     if (!meta) return null;
 
     switch (id) {
-      case "clock-national":
+      case "clock-national": {
+        const t = zonedTimeParts(now, data?.timezoneId);
         return (
-          <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-              <Clock className="h-3 w-3" /> Yerel
-            </div>
-            <div className="mt-1 text-2xl font-semibold tabular-nums">{nationalTime}</div>
-            <div className="mt-0.5 truncate text-[10px] text-white/55">{locationLabel ?? "—"}</div>
-          </WidgetCard>
+          <ChronometerWidget
+            key={id}
+            label="Yerel Saat"
+            hours={t.h}
+            minutes={t.m}
+            seconds={t.s}
+            digital={nationalTime}
+            subLabel={locationLabel ?? "—"}
+            variant="local"
+          />
         );
-      case "clock-gmt":
+      }
+      case "clock-gmt": {
+        const t = zonedTimeParts(now, "UTC");
         return (
-          <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-              <Globe2 className="h-3 w-3" /> GMT
-            </div>
-            <div className="mt-1 text-2xl font-semibold tabular-nums">{gmtTime}</div>
-            <div className="mt-0.5 text-[10px] text-white/55">UTC ±0</div>
-          </WidgetCard>
+          <ChronometerWidget
+            key={id}
+            label="GMT"
+            hours={t.h}
+            minutes={t.m}
+            seconds={t.s}
+            digital={gmtTime}
+            subLabel="UTC ±0"
+            variant="gmt"
+          />
         );
+      }
       case "weather":
         return (
-          <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-              <Cloud className="h-3 w-3" /> Hava
-            </div>
-            <div className="mt-1 text-2xl font-semibold tabular-nums">
-              {data?.temperatureC !== undefined ? `${Math.round(data.temperatureC)}°` : "—"}
-            </div>
-            <div className="mt-0.5 text-[10px] text-white/55">{wmoText(data?.weatherCode)}</div>
-          </WidgetCard>
+          <ThermometerWidget
+            key={id}
+            temperatureC={data?.temperatureC}
+            conditionText={wmoText(data?.weatherCode)}
+          />
         );
       case "wind":
         return (
-          <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-              <Wind className="h-3 w-3" /> Rüzgâr
-            </div>
-            <div className="mt-1 text-2xl font-semibold tabular-nums">
-              {data?.windSpeedKt !== undefined ? `${Math.round(data.windSpeedKt)}` : "—"}
-              <span className="ml-1 text-xs font-normal text-white/60">kt</span>
-            </div>
-            <div className="mt-0.5 text-[10px] text-white/55">
-              {data?.windDirectionDeg !== undefined ? degreesToCompass(data.windDirectionDeg) : "—"}
-            </div>
-          </WidgetCard>
+          <WindCompassWidget
+            key={id}
+            speedKt={data?.windSpeedKt}
+            directionDeg={data?.windDirectionDeg}
+            directionLabel={data?.windDirectionDeg !== undefined ? degreesToCompass(data.windDirectionDeg) : "—"}
+          />
         );
       case "location": {
         const latitude = selectedLocation?.latitude ?? livePosition?.latitude ?? data?.latitude;
@@ -154,6 +159,10 @@ export function HomeWidgetGrid() {
         const effectiveTimestamp = selectedLocation
           ? positionTimestamp
           : livePosition?.timestamp ?? positionTimestamp;
+        const sourceKind =
+          effectiveSource === "gps" ? "gps" :
+          effectiveSource === "ip" ? "ip" :
+          effectiveSource === "manual" ? "manual" : "unknown";
         const sourceLabel =
           effectiveSource === "gps" ? "GPS" :
           effectiveSource === "ip" ? "IP" :
@@ -165,52 +174,20 @@ export function HomeWidgetGrid() {
         const fixedAt = effectiveTimestamp
           ? new Date(effectiveTimestamp).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
           : "—";
-        const sourceColor =
-          effectiveSource === "gps" ? "text-emerald-300" :
-          effectiveSource === "ip" ? "text-amber-300" : "text-white/70";
         return (
-          <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-                <MapPin className="h-3 w-3" /> Konum
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className={`text-[10px] font-semibold uppercase tracking-wider ${sourceColor}`}>
-                  {sourceLabel} · {accuracyLabel}
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setManualOpen(true); }}
-                  className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-white/80 hover:bg-white/20 active:scale-90 transition"
-                  aria-label="Konumu manuel gir"
-                >
-                  <Pencil className="h-3 w-3" />
-                </button>
-              </div>
-            </div>
-            <div className="mt-1 truncate text-sm font-medium">{effectiveLabel ?? "—"}</div>
-            <div className="mt-1.5 grid grid-cols-2 gap-2 text-[10px] text-white/70">
-              <div>
-                <div className="text-white/45">Enlem</div>
-                <div className="font-medium text-white/85">
-                  {latitude !== undefined ? decimalToDMS(latitude, true) : "—"}
-                </div>
-                <div className="font-mono text-[9px] text-white/50 tabular-nums">
-                  {latitude !== undefined ? latitude.toFixed(6) + "°" : ""}
-                </div>
-              </div>
-              <div>
-                <div className="text-white/45">Boylam</div>
-                <div className="font-medium text-white/85">
-                  {longitude !== undefined ? decimalToDMS(longitude, false) : "—"}
-                </div>
-                <div className="font-mono text-[9px] text-white/50 tabular-nums">
-                  {longitude !== undefined ? longitude.toFixed(6) + "°" : ""}
-                </div>
-              </div>
-            </div>
-            <div className="mt-1.5 text-[9px] text-white/40">Son güncelleme: {fixedAt}</div>
-          </WidgetCard>
+          <GpsReceiverWidget
+            key={id}
+            label={effectiveLabel ?? null}
+            latDMS={latitude !== undefined ? decimalToDMS(latitude, true) : "—"}
+            lonDMS={longitude !== undefined ? decimalToDMS(longitude, false) : "—"}
+            latDec={latitude !== undefined ? latitude.toFixed(6) + "°" : ""}
+            lonDec={longitude !== undefined ? longitude.toFixed(6) + "°" : ""}
+            sourceKind={sourceKind}
+            sourceLabel={sourceLabel}
+            accuracyLabel={accuracyLabel}
+            fixedAt={fixedAt}
+            onEdit={() => setManualOpen(true)}
+          />
         );
       }
       case "sun": {
@@ -220,23 +197,15 @@ export function HomeWidgetGrid() {
         const sunset = data?.sunsetIso
           ? new Date(data.sunsetIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
           : "—";
-        return (
-          <WidgetCard key={id} size={meta.size}>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-white/60">
-              <Sun className="h-3 w-3" /> Güneş
-            </div>
-            <div className="mt-1 grid grid-cols-2 gap-2">
-              <div>
-                <div className="text-[10px] text-white/55">Doğuş</div>
-                <div className="text-base font-semibold tabular-nums">{sunrise}</div>
-              </div>
-              <div>
-                <div className="text-[10px] text-white/55">Batış</div>
-                <div className="text-base font-semibold tabular-nums">{sunset}</div>
-              </div>
-            </div>
-          </WidgetCard>
-        );
+        let progress: number | null = null;
+        if (data?.sunriseIso && data?.sunsetIso) {
+          const rise = new Date(data.sunriseIso).getTime();
+          const set = new Date(data.sunsetIso).getTime();
+          if (set > rise) {
+            progress = Math.min(1, Math.max(0, (now.getTime() - rise) / (set - rise)));
+          }
+        }
+        return <SunArcWidget key={id} sunrise={sunrise} sunset={sunset} progress={progress} />;
       }
       default:
         return null;
@@ -245,6 +214,7 @@ export function HomeWidgetGrid() {
 
   return (
     <>
+      <VintageWidgetStyles />
       <div className="grid grid-cols-2 gap-3 px-4 sm:grid-cols-4">
         {enabled.map(render)}
       </div>

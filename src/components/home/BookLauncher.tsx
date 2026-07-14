@@ -36,6 +36,23 @@ export function BookLauncher() {
             <div className="hb-pages" aria-hidden="true" />
             <div className="hb-cover">
               <div className="hb-trim">
+                {[0, 90, 180, 270].map((r) => (
+                  <svg
+                    key={r}
+                    className="hb-corner"
+                    style={{ transform: `rotate(${r}deg)` }}
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 2 H14 M2 2 V14 M4 4 q8 0 8 8"
+                      fill="none"
+                      stroke="#caa044"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                ))}
                 <div className="hb-emblem">
                   <svg
                     viewBox="0 0 64 64"
@@ -60,10 +77,12 @@ export function BookLauncher() {
                     <line x1="20" y1="44" x2="12" y2="52" />
                   </svg>
                 </div>
-                <div className="hb-title notranslate" translate="no" lang="en">
-                  MARINER&rsquo;S
-                  <br />
-                  BOOK
+                <div className="hb-plate">
+                  <div className="hb-title notranslate" translate="no" lang="en">
+                    MARINER&rsquo;S
+                    <br />
+                    BOOK
+                  </div>
                 </div>
                 <div className="hb-rule" />
                 <div className="hb-sub notranslate" translate="no" lang="en">
@@ -96,23 +115,33 @@ export function BookLauncher() {
           animation: hb-float 4.5s ease-in-out infinite alternate;
           filter: drop-shadow(0 18px 26px rgba(0,0,0,.5));
         }
-        /* Sağda görünen kapalı sayfa kenarları (splash .book-body::after'dan) */
+        /* Sağda görünen kapalı sayfa kenarları (splash .book-body::after'dan) —
+           sararmış üst/alt kenarlarla */
         .hb-pages{
           position: absolute;
           inset: 1.5% 0 1.5% auto;
           width: 5%;
           border-radius: 0 4px 4px 0;
-          background: repeating-linear-gradient(90deg, #f0e3c2 0 1.6px, #d5c194 1.6px 3.2px);
+          background:
+            linear-gradient(180deg, rgba(120,80,20,.18), transparent 22% 78%, rgba(120,80,20,.24)),
+            repeating-linear-gradient(90deg, #f0e3c2 0 1.6px, #d5c194 1.6px 3.2px);
           transform: translateZ(-2px);
         }
+        /* Eskitilmiş deri: köşe aşınması + deri tahılı + vinyet + koyulaştırılmış lacivert */
         .hb-cover{
           position: absolute;
           inset: 0 2.5% 0 0;
           transform-origin: left center;
           border-radius: 3px 7px 7px 3px;
           overflow: hidden;
-          background: linear-gradient(140deg, #12407f 0%, #0b2c5e 46%, #071e42 100%);
-          border: 1px solid rgba(218,165,32,.4);
+          background:
+            radial-gradient(60% 45% at 0% 0%, rgba(140,100,40,.16), transparent 70%),
+            radial-gradient(60% 45% at 100% 100%, rgba(140,100,40,.14), transparent 70%),
+            radial-gradient(130% 110% at 50% 38%, transparent 52%, rgba(0,0,0,.42) 100%),
+            repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px),
+            repeating-linear-gradient(24deg, rgba(255,255,255,.02) 0 2px, transparent 2px 7px),
+            linear-gradient(140deg, #0f3668 0%, #0a274f 46%, #05172f 100%);
+          border: 1px solid rgba(202,160,68,.45);
           box-shadow: inset 0 0 26px rgba(0,0,0,.45), 0 8px 22px rgba(0,0,0,.5);
           transition: transform .28s cubic-bezier(.72,.04,.22,1);
         }
@@ -128,7 +157,7 @@ export function BookLauncher() {
         .hb-trim{
           position: absolute;
           inset: 6.5%;
-          border: 1.5px solid rgba(218,165,32,.55);
+          border: 1.5px solid rgba(202,160,68,.55);
           border-radius: 3px;
           display: flex;
           flex-direction: column;
@@ -136,6 +165,25 @@ export function BookLauncher() {
           justify-content: center;
           gap: clamp(4px, 1.4vh, 9px);
           padding: 8% 6%;
+          box-shadow: inset 0 1px 0 rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.05);
+        }
+        .hb-corner{
+          position: absolute;
+          width: 14%;
+          aspect-ratio: 1;
+          opacity: .8;
+          pointer-events: none;
+        }
+        .hb-corner:nth-of-type(1){ top: 2.5%; left: 2%; }
+        .hb-corner:nth-of-type(2){ top: 2.5%; right: 2%; }
+        .hb-corner:nth-of-type(3){ bottom: 2.5%; right: 2%; }
+        .hb-corner:nth-of-type(4){ bottom: 2.5%; left: 2%; }
+        .hb-plate{
+          background: linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.12));
+          border: 1px solid rgba(202,160,68,.5);
+          box-shadow: inset 0 0 0 2px rgba(0,0,0,.25), inset 0 0 0 3px rgba(202,160,68,.25);
+          padding: 6% 9%;
+          border-radius: 2px;
         }
         .hb-trim::after{
           content: "";
