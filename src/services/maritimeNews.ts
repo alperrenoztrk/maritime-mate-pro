@@ -26,7 +26,7 @@ export type MaritimeNewsLocale = {
 
 type FallbackEdition = MaritimeNewsLocale & {
   hl: string;
-  ceid: string;
+  ceid?: string;
   query: string;
 };
 
@@ -44,7 +44,7 @@ const FALLBACK_EDITIONS: Record<string, FallbackEdition> = {
   nl: { language: "nl", countryCode: "NL", countryName: "Nederland", mode: "regional", hl: "nl", ceid: "NL:nl", query: "scheepvaart schip haven" },
   sv: { language: "sv", countryCode: "SE", countryName: "Sverige", mode: "regional", hl: "sv", ceid: "SE:sv", query: "sjöfart fartyg hamn" },
   no: { language: "no", countryCode: "NO", countryName: "Norge", mode: "regional", hl: "no", ceid: "NO:no", query: "skipsfart skip havn" },
-  da: { language: "da", countryCode: "DK", countryName: "Danmark", mode: "regional", hl: "da", ceid: "DK:da", query: "skibsfart skib havn" },
+  da: { language: "da", countryCode: "DK", countryName: "Danmark", mode: "regional", hl: "da", query: "skibsfart skib havn" },
   fi: { language: "fi", countryCode: "FI", countryName: "Suomi", mode: "regional", hl: "fi", ceid: "FI:fi", query: "merenkulku alus satama" },
   pl: { language: "pl", countryCode: "PL", countryName: "Polska", mode: "regional", hl: "pl", ceid: "PL:pl", query: "żegluga statek port" },
   cs: { language: "cs", countryCode: "CZ", countryName: "Česko", mode: "regional", hl: "cs", ceid: "CZ:cs", query: "námořní doprava loď přístav" },
@@ -66,8 +66,8 @@ function createFallbackNews(language: unknown): MaritimeNewsResponse {
     q: edition.query,
     hl: edition.hl,
     gl: edition.countryCode,
-    ceid: edition.ceid,
   });
+  if (edition.ceid) params.set("ceid", edition.ceid);
   const url = `https://news.google.com/search?${params.toString()}`;
   return {
     fetchedAt: new Date().toISOString(),
