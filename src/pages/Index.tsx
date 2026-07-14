@@ -7,6 +7,7 @@ import { NewsPanel } from "@/components/home/NewsPanel";
 
 const PAGES = ["news", "home", "widgets"] as const;
 type PageId = (typeof PAGES)[number];
+const BOTTOM_DOCK_HEIGHT = "max(6rem, calc(env(safe-area-inset-bottom) + 5rem))";
 
 const Index = () => {
 
@@ -53,7 +54,7 @@ const Index = () => {
 
   return (
     <div
-      className="relative min-h-[100svh] overflow-hidden"
+      className="relative isolate h-[100svh] overflow-hidden"
       style={{
         background:
           "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
@@ -61,15 +62,23 @@ const Index = () => {
     >
       {/* Background glow */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
             "radial-gradient(ellipse at 50% 25%, rgba(56,189,248,0.14) 0%, transparent 55%)",
         }}
       />
 
-      {/* Subtle ocean waves at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-[28%] overflow-hidden pointer-events-none">
+      {/*
+        Keep the decorative waves inside the reserved bottom dock. The pager
+        ends above this area, so translucent cards and their labels can never
+        be crossed by the waves on short mobile viewports.
+      */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-0 overflow-hidden"
+        style={{ height: BOTTOM_DOCK_HEIGHT }}
+        aria-hidden
+      >
         <svg
           className="absolute bottom-[10%] left-0 w-[200%] h-[60px]"
           viewBox="0 0 2880 60"
@@ -125,22 +134,25 @@ const Index = () => {
       {/* Horizontal swipeable pager — snap-stop always so one swipe = one page */}
       <main
         ref={pagerRef}
-        className="relative z-10 flex h-[100svh] snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar overscroll-x-contain"
-        style={{ scrollSnapType: "x mandatory" }}
+        className="relative z-10 flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar overscroll-x-contain"
+        style={{
+          scrollSnapType: "x mandatory",
+          height: `calc(100svh - ${BOTTOM_DOCK_HEIGHT})`,
+        }}
         aria-label="Mariner's Book"
       >
         {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-4">
           <NewsPanel />
         </section>
 
         {/* CENTER — Icon launcher */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col justify-start overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col justify-start overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-4">
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-4">
           <HomeWidgetGrid />
         </section>
       </main>
