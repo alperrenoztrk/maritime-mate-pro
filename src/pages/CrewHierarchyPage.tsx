@@ -46,15 +46,6 @@ export default function CrewHierarchyPage() {
                 key={group.department}
                 className="rounded-xl border border-border/50 bg-gradient-to-br from-white/60 via-card to-slate-50/70 p-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:from-background dark:via-card dark:to-slate-900/40"
               >
-                <div className="mb-2 flex items-center justify-between">
-                  <div>
-                    <h2 className="text-sm font-semibold text-foreground">{group.department}</h2>
-                  </div>
-                  <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold text-primary">
-                    {group.colorCode}
-                  </span>
-                </div>
-
                 <div className="space-y-2">
                   {group.roles.map((role) => (
                     <Link
@@ -62,17 +53,7 @@ export default function CrewHierarchyPage() {
                       to={`/crew/${role.slug}`}
                       className="group block rounded-lg border border-border/40 bg-background/80 px-3 py-2 text-sm shadow-xs transition hover:border-primary/40 hover:bg-card"
                     >
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <div className="font-semibold text-foreground">{role.rank}</div>
-                            <span className="text-[10px] uppercase tracking-wide text-primary/80">Görev Detayı</span>
-                          </div>
-                        </div>
-                        <span className="rounded-md bg-slate-100 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-700 transition group-hover:bg-primary/15 group-hover:text-primary dark:bg-slate-800 dark:text-slate-200">
-                          {role.reportsTo}
-                        </span>
-                      </div>
+                      <div className="font-semibold text-foreground">{role.rank}</div>
                     </Link>
                   ))}
                 </div>
