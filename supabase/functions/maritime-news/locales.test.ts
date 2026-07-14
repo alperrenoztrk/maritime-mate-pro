@@ -16,20 +16,24 @@ test("resolves every app language and common regional variants", () => {
   assert.equal(resolveNewsLocale("unsupported").language, "en");
 });
 
-test("builds three correctly localized and unique regional feeds", () => {
+test("builds localized and unique regional feeds", () => {
   for (const config of Object.values(NEWS_LOCALE_CONFIGS)) {
     const feeds = buildRegionalFeeds(config);
-    assert.equal(feeds.length, 3);
-    assert.equal(new Set(feeds.map((feed) => feed.id)).size, 3);
-    for (const feed of feeds) {
+    assert.equal(feeds.length, 3 + config.directFeeds.length);
+    assert.equal(new Set(feeds.map((feed) => feed.id)).size, feeds.length);
+    for (const feed of feeds.filter((entry) => entry.url.includes("news.google.com"))) {
       const url = new URL(feed.url);
       assert.equal(url.hostname, "news.google.com");
       assert.equal(url.searchParams.get("gl"), config.countryCode);
       assert.equal(url.searchParams.get("hl"), config.hl);
-      assert.equal(url.searchParams.get("ceid"), config.ceid);
+      assert.equal(url.searchParams.get("ceid"), config.ceid || null);
       assert.match(url.searchParams.get("q") || "", /when:(7d|14d)$/);
     }
   }
+  assert.equal(
+    buildRegionalFeeds(NEWS_LOCALE_CONFIGS.da).some((feed) => feed.url === "https://www.maritimedanmark.dk/feeds/articles"),
+    true,
+  );
 });
 
 test("keeps legacy English feeds only for the English edition", () => {
