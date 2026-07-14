@@ -133,6 +133,9 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       const cur = json.current ?? {};
       const sunriseIso = json.daily?.sunrise?.[0];
       const sunsetIso = json.daily?.sunset?.[0];
+      // Open-Meteo returns the centre of its forecast grid cell. Keep the
+      // source position for display/calculations instead of replacing it with
+      // that rounded service coordinate.
       setData({
         temperatureC: cur.temperature_2m ?? NaN,
         humidityPct: cur.relative_humidity_2m ?? NaN,
@@ -141,8 +144,8 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         windDirectionDeg: cur.wind_direction_10m ?? NaN,
         weatherCode: cur.weather_code ?? -1,
         timeIso: cur.time,
-        latitude: json.latitude,
-        longitude: json.longitude,
+        latitude: lat,
+        longitude: lon,
         timezoneId: json.timezone,
         utcOffsetSeconds: json.utc_offset_seconds,
         isFallbackLocation: false,
@@ -213,6 +216,10 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
     setPositionTimestamp(pos.timestamp ?? Date.now());
     const prev = lastPositionRef.current;
     lastPositionRef.current = { lat, lon };
+    // A better GPS fix may be only a few metres from the previous one. Update
+    // the displayed coordinates for every fix without needlessly re-fetching
+    // weather data until the movement threshold is crossed.
+    setData((current) => current ? { ...current, latitude: lat, longitude: lon } : current);
     if (!prev) {
       fetchWeather(lat, lon);
       fetchReverse(lat, lon);
@@ -257,11 +264,15 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         setLocationLabel(preloadedData.locationLabel);
       }
       lastPositionRef.current = { lat: preloadedData.latitude, lon: preloadedData.longitude };
+      setAccuracyMeters(null);
+      setLocationSource(preloadedData.isFallbackLocation ? null : "gps");
+      setPositionTimestamp(Date.now());
       setLoading(false);
       
-      // Clear preloaded data since we've used it
+      // The preload is intentionally fast and may contain a cached/coarse fix.
+      // Use it for instant paint, then continue below for a fresh high-accuracy
+      // device position instead of treating it as the final coordinate.
       weatherPreloader.clearPreloadedData();
-      return dataRef.current;
     }
 
     const preloadError = weatherPreloader.getPreloadError();
@@ -269,7 +280,7 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       console.log("⚠️ Preload hatası mevcut, normal yükleme yapılıyor:", preloadError);
     }
     
-    setLoading(true);
+    if (!preloadedData) setLoading(true);
     setError(null);
     try {
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
@@ -308,6 +319,13 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       return dataRef.current;
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : "Bilinmeyen hata";
+      if (preloadedData && !preloadedData.isFallbackLocation) {
+        // A valid device fix is already on screen. Do not replace it with a
+        // less precise IP estimate just because the refinement timed out.
+        console.warn("⚠️ Taze GPS düzeltmesi alınamadı; ön yüklenen cihaz konumu korunuyor:", message);
+        setError(null);
+        return dataRef.current;
+      }
       console.warn("⚠️ GPS reddedildi, IP tabanlı konum deneniyor:", message);
       // IP-based geolocation fallback — far more accurate than a hardcoded city
       try {
