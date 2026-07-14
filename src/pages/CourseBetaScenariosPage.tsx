@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Ship, Target } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { ChevronRight, Ship, Target } from "lucide-react";
 import { getScenariosByTopic, type Scenario } from "@/data/scenarios";
 import { ScenarioPlayer } from "@/components/lessons/ScenarioPlayer";
 
@@ -19,25 +19,23 @@ export default function CourseBetaScenariosPage() {
   const [active, setActive] = useState<Scenario | null>(null);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 py-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
-      <div className="mx-auto flex max-w-2xl flex-col gap-6">
-        <Link
-          to={`/exercises/${topicKey}/topics`}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> Konulara Dön
-        </Link>
-
-        <header className="space-y-2 text-center">
-          <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow-lg">
-            <Ship className="h-6 w-6" />
+    <div className="relative min-h-screen bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 pb-16 pt-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
+      <div className="mx-auto flex max-w-2xl flex-col gap-4">
+        <header className="flex items-center gap-3 rounded-2xl border border-border/50 bg-card/75 p-3 shadow-sm backdrop-blur">
+          <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow">
+            <Ship className="h-5 w-5" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Vardiya Senaryoları</h1>
+          <div>
+            <h1 className="text-lg font-bold text-foreground">Senoryolar</h1>
+            <p className="text-xs text-muted-foreground">
+              {scenarios.length} karar alıştırması
+            </p>
+          </div>
         </header>
 
         {active ? (
           <div className="space-y-4">
-            <div className="rounded-2xl border border-border/60 bg-card/85 p-5 shadow-md backdrop-blur">
+            <div className="rounded-xl border border-border/60 bg-card/85 p-4 shadow-sm backdrop-blur">
               <div className="mb-2 flex items-center gap-2">
                 <span className="rounded-full bg-rose-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-300">
                   {LEVEL_LABEL[active.level]}
@@ -62,13 +60,13 @@ export default function CourseBetaScenariosPage() {
             <ScenarioPlayer scenario={active} onExit={() => setActive(null)} />
           </div>
         ) : scenarios.length > 0 ? (
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             {scenarios.map((scenario) => (
               <button
                 key={scenario.id}
                 type="button"
                 onClick={() => setActive(scenario)}
-                className="group flex items-center gap-3 rounded-2xl border border-border/60 bg-card/85 p-4 text-left shadow-sm backdrop-blur transition hover:border-rose-400/50 hover:bg-card"
+                className="group flex items-center gap-3 rounded-xl border border-border/60 bg-card/85 px-3 py-3 text-left shadow-sm backdrop-blur transition hover:border-rose-400/50 hover:bg-card"
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
