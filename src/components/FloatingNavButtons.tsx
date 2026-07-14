@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { findParentPath } from "@/hooks/useNavigationHierarchy";
+import { claimBackNavigation, findParentPath } from "@/lib/navigationHierarchy";
 
 /**
  * Global, scroll-aware navigation controls (Back).
@@ -70,6 +70,10 @@ export function FloatingNavButtons() {
   if (pathname === "/") return null;
 
   const parent = findParentPath(pathname);
+  const handleBackClick = () => {
+    if (!claimBackNavigation()) return;
+    navigate(parent, { replace: true });
+  };
 
   return (
     <div
@@ -87,7 +91,8 @@ export function FloatingNavButtons() {
             className="pointer-events-auto flex items-center gap-1.5"
           >
             <button
-              onClick={() => navigate(parent, { replace: true })}
+              type="button"
+              onClick={handleBackClick}
               aria-label="Geri"
               className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2.5 py-1.5 text-xs font-medium text-slate-100 shadow-lg backdrop-blur-xl transition-all hover:border-primary/40 hover:bg-white/20 hover:text-white active:scale-95"
             >

@@ -13,7 +13,7 @@ import { LessonAITutor } from "@/components/lessons/LessonAITutor";
 /**
  * "Alıştırmalar" — konu detayı (güverte + makine, tüm konular).
  * Mevcut anlatım (normalize edilmiş) + bölüm-arası bilgi kontrolü + AI eğitmen.
- * Akış yazılmış konularda "Öğrenmeye Başla" (Duolingo) butonu görünür.
+ * Akış yazılmış konularda adım adım öğrenme butonu görünür.
  */
 export default function ExerciseTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
@@ -73,7 +73,7 @@ export default function ExerciseTopicDetailPage() {
           className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
         >
           <Play className="h-4 w-4" />
-          {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
+          {flow ? "Adım Adım Öğren" : "Rehberli Oku"}
         </Link>
 
         {content.sections.map((section, index) => (

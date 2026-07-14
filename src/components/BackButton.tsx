@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { claimBackNavigation } from "@/lib/navigationHierarchy";
 
 type BackButtonProps = {
   /**
@@ -41,6 +42,8 @@ export function BackButton({
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    event.stopPropagation();
+    if (!claimBackNavigation()) return;
     // REPLACE (not push) so we don't extend the history stack.
     // Without this, repeatedly tapping back would walk through every
     // intermediate "parent" entry instead of going up the hierarchy.
