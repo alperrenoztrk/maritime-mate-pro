@@ -22,7 +22,12 @@ export function useLiveGpsPosition(intervalMs: number = 1000, enabled: boolean =
   const lastUpdateRef = useRef<number>(0);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      // Avoid exposing an old GPS fix while a manual location is selected.
+      setPosition(null);
+      setError(null);
+      return;
+    }
     if (typeof navigator === "undefined" || !("geolocation" in navigator)) {
       setError("Konum servisi desteklenmiyor");
       return;
