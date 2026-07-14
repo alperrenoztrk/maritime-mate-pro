@@ -3,7 +3,7 @@ import { calculationCategories } from "@/data/calculationCenterConfig";
 import { getBetaTopicTitles } from "@/data/betaLessons";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
 import { getScenariosByTopic } from "@/data/scenarios";
-import { BookOpen, ChevronRight, GraduationCap, Play, Ship, Sparkles } from "lucide-react";
+import { BookOpen, ChevronRight, Play, Ship, Sparkles } from "lucide-react";
 
 /**
  * "Alıştırmalar" — bir kategorinin (güverte veya makine) konu listesi.
@@ -124,15 +124,6 @@ export default function ExerciseTopicsPage() {
             bölümündeki formül, hesaplama, kural ve quizleri kullanabilirsiniz.
           </p>
         )}
-
-        <div className="flex justify-center pt-2">
-          <Link
-            to="/exercises"
-            className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-          >
-            <GraduationCap className="h-4 w-4" /> Tüm Alıştırmalar
-          </Link>
-        </div>
       </div>
     </div>
   );

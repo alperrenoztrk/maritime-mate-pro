@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { getBetaCategories, type BetaCategory } from "@/data/betaLessons";
-import { ChevronRight, FlaskConical, GraduationCap, Ship, Wrench } from "lucide-react";
+import { ChevronRight, FlaskConical, Ship, Wrench } from "lucide-react";
 
 /**
  * "Alıştırmalar" giriş sayfası.
@@ -83,15 +83,6 @@ export default function ExercisesPage() {
           </div>
           <div className="flex flex-col gap-3">{machine.map(renderCategory)}</div>
         </section>
-
-        <div className="flex justify-center pt-2">
-          <Link
-            to="/lessons"
-            className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-          >
-            <GraduationCap className="h-4 w-4" /> Klasik Derslere Dön
-          </Link>
-        </div>
       </div>
     </div>
   );

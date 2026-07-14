@@ -1,5 +1,5 @@
 import type { ShipType } from "./types";
-import image from "@/assets/ships/roro-ship.jpg";
+import image from "@/assets/ships/operation-roro.svg";
 
 export const roRo: ShipType = {
   id: "ro-ro",

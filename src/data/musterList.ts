@@ -1,7 +1,7 @@
 /**
  * Eğitim amaçlı, konvansiyonel yük gemisi için örnek acil durum organizasyonu.
  *
- * SOLAS III/8 ve III/37, rol cetvelinde bulunması gereken asgari başlıkları
+ * SOLAS III/8 ve III/37, role cetvelinde bulunması gereken asgari başlıkları
  * belirler; belirli bir rütbeye evrensel ve değişmez bir görev atamaz. Nihai
  * istasyonlar, ekipler, haberleşme kanalları ve yedek kişiler geminin onaylı
  * SMS'i, LSA/Fire Control Plan'ı, SOPEP/SMPEP'i, asgari emniyetli donatım belgesi
@@ -67,15 +67,6 @@ export type MusterAssignment = {
   duties: MusterDutyMap;
 };
 
-export const musterListMeta = {
-  profile: "Konvansiyonel yük gemisi — eğitim örneği",
-  scope:
-    "Komuta, yangın, gemiyi terk, denize adam düşmesi, su alma, kapalı mahal kurtarma ve kirlilik müdahalesi için örnek görev dağılımı.",
-  warning:
-    "Bu ekran gemide asılı, Kaptan tarafından onaylanmış rol cetvelinin yerine geçmez. Alarm işaretleri, istasyon adları, telsiz kanalları, can kurtarma vasıtaları ve kişi atamaları daima geminin kendi cetveli ile doğrulanmalıdır.",
-  stationRule:
-    "Genel acil durum alarmı, herkesi tek bir ortak noktaya çağırmak zorunda değildir. Her personel, onaylı rol cetvelinde yazılı ilk istasyona gider; köprüüstü, makine kontrol odası, yangın kontrol istasyonu veya toplanma istasyonu doğrudan görev yeri olabilir.",
-} as const;
 
 export const musterEmergencies: MusterEmergency[] = [
   {
@@ -87,10 +78,10 @@ export const musterEmergencies: MusterEmergency[] = [
     signal:
       "Gemi düdüğü/sireni ve dahili alarm sistemiyle yedi veya daha fazla kısa, ardından bir uzun ses; PA anonsu olayın türünü ve yerini bildirir.",
     description:
-      "Personel, işini emniyete alarak kendi rol cetvelinde yazılı ilk istasyona gider, uygun PPE'yi kuşanır, yoklama veya durum raporu verir ve komuta zincirine girer.",
+      "Personel, işini emniyete alarak kendi role cetvelinde yazılı ilk istasyona gider, uygun PPE'yi kuşanır, yoklama veya durum raporu verir ve komuta zincirine girer.",
     firstActions: [
       "Yapılan işi emniyetli biçimde durdur; sıcak işi, yakıt transferini ve açık ekipmanı prosedüre göre emniyete al.",
-      "Rol cetvelinde yazılı istasyona en kısa emniyetli yoldan git; kamaraya yalnızca cetvel veya anons bunu gerektiriyorsa uğra.",
+      "Role cetvelinde yazılı istasyona en kısa emniyetli yoldan git; kamaraya yalnızca cetvel veya anons bunu gerektiriyorsa uğra.",
       "Telsiz disiplinini koru, kişi sayısı ve mahal durumu hakkında yalnızca doğrulanmış bilgi raporla.",
     ],
     caution:
@@ -222,7 +213,7 @@ export const musterAssignments: MusterAssignment[] = [
     initialStation: "Köprüüstü / Acil Durum Komuta Merkezi",
     substitute: "Birinci Zabit; komuta devri köprüüstü ekibine açıkça duyurulur.",
     readinessResponsibility:
-      "Rol cetvelini seferden önce onaylar; personel değişikliğinde revize eder ve tatbikatların SMS'e göre yürütülmesini sağlar.",
+      "Role cetvelini seferden önce onaylar; personel değişikliğinde revize eder ve tatbikatların SMS'e göre yürütülmesini sağlar.",
     duties: {
       general: {
         station: "Köprüüstü",
@@ -309,7 +300,7 @@ export const musterAssignments: MusterAssignment[] = [
     rank: "Birinci Zabit (Chief Officer / C/O)",
     billet: "On-Scene Commander",
     initialStation: "Yangın Kontrol İstasyonu / Atanmış Muster Station",
-    substitute: "İkinci Zabit veya Kaptanın rol cetvelinde belirlediği zabit.",
+    substitute: "İkinci Zabit veya Kaptanın role cetvelinde belirlediği zabit.",
     readinessResponsibility:
       "Örnek organizasyonda güverte LSA/FFA hazırlığının sorumlu zabiti; fiili atama gemi SMS'i ve Kaptan emriyle belirlenir.",
     duties: {
@@ -398,7 +389,7 @@ export const musterAssignments: MusterAssignment[] = [
     rank: "İkinci Zabit (Second Officer / 2/O)",
     billet: "Communications & Navigation Officer",
     initialStation: "Köprüüstü / GMDSS İstasyonu",
-    substitute: "Rol cetvelinde adı yazılı, geçerli GOC sahibi diğer zabit.",
+    substitute: "Role cetvelinde adı yazılı, geçerli GOC sahibi diğer zabit.",
     duties: {
       general: {
         station: "Köprüüstü / GMDSS",
@@ -485,7 +476,7 @@ export const musterAssignments: MusterAssignment[] = [
     rank: "Üçüncü Zabit (Third Officer / 3/O)",
     billet: "Fire & Rescue Team Officer",
     initialStation: "Acil Durum Ekipman İstasyonu",
-    substitute: "Rol cetvelinde belirlenen diğer güverte zabiti.",
+    substitute: "Role cetvelinde belirlenen diğer güverte zabiti.",
     readinessResponsibility:
       "Örnek organizasyonda LSA/FFA periyodik kontrollerini sorumlu zabit adına takip eder; nihai sorumluluk ataması SMS'te yazılıdır.",
     duties: {
@@ -664,7 +655,7 @@ export const musterAssignments: MusterAssignment[] = [
     rank: "Reis / Bosun",
     billet: "Deck Emergency Team Leader",
     initialStation: "Güverte Acil Durum Ekipman İstasyonu",
-    substitute: "Rol cetvelinde adı yazılı kıdemli AB.",
+    substitute: "Role cetvelinde adı yazılı kıdemli AB.",
     duties: {
       general: {
         station: "Güverte acil durum ekipman istasyonu",
@@ -727,7 +718,7 @@ export const musterAssignments: MusterAssignment[] = [
         reportsTo: "Üçüncü Zabit / Birinci Zabit",
         actions: [
           "Tripod/davit, lifeline, sedye ve kontrollü kaldırma düzenini kurar.",
-          "Dış gözcü veya yedek ekip görevini rol cetveline göre yürütür.",
+          "Dış gözcü veya yedek ekip görevini role cetveline göre yürütür.",
           "Giriş yolunu açık tutar ve izinsiz girişleri engeller.",
         ],
         equipment: ["Rescue tripod/davit", "Lifeline", "Stretcher", "UHF"],
@@ -761,7 +752,7 @@ export const musterAssignments: MusterAssignment[] = [
         actions: [
           "İsimli görevine uygun PPE ve donanımı alır; yoklamasını verir.",
           "Acil çıkış, kapı ve güverte erişimlerinin açık/kapalı durumunu raporlar.",
-          "Yalnızca rol cetvelinde atanan saldırı, yedek, boundary veya boat görevini üstlenir.",
+          "Yalnızca role cetvelinde atanan saldırı, yedek, boundary veya boat görevini üstlenir.",
         ],
         equipment: ["Uygun PPE", "UHF (atanmış kişide)", "Göreve özel donanım"],
       },
@@ -1319,7 +1310,7 @@ export const musterAssignments: MusterAssignment[] = [
         reportsTo: "İkinci Mühendis / Reis",
         actions: [
           "Makinede kalırsa manevra ekipmanına lokal destek verir.",
-          "Rol cetvelinde güverteye atanmışsa recovery equipment taşır ve kurar.",
+          "Role cetvelinde güverteye atanmışsa recovery equipment taşır ve kurar.",
           "Görev değişimini iki komuta hattına da teyit eder.",
         ],
         equipment: ["Makine veya güverte PPE'si", "Recovery equipment (atanmışsa)"],

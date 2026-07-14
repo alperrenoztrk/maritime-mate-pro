@@ -2,29 +2,7 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  BookOpen,
-  Package,
-  ChevronRight,
-  FileText,
-  AlertTriangle,
-  Anchor,
-  Scale,
-  Ship,
-  Shield,
-  Lightbulb,
-  CheckCircle2,
-  Circle,
-  X,
-  Boxes,
-  BarChart3,
-  Ruler,
-  Settings,
-  Thermometer,
-  Droplets,
-  Container,
-  BookMarked,
-} from "lucide-react";
+import { Package, ChevronRight, FileText, AlertTriangle, Anchor, Scale, Ship, Shield, Lightbulb, CheckCircle2, Circle, X, Boxes, BarChart3, Ruler, Settings, Thermometer, Droplets, Container, BookMarked } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -3367,17 +3345,6 @@ export default function CargoTopicsPage() {
                 ))}
               </div>
             </section>
-
-            {/* Back to Lessons */}
-            <div className="flex justify-center pt-2">
-              <Link
-                to="/lessons"
-                className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-              >
-                <BookOpen className="h-4 w-4" />
-                Tüm Derslere Dön
-              </Link>
-            </div>
           </div>
         </ScrollArea>
       </div>

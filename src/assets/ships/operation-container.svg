@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">Konteyner gemisi yan profili</title>
+  <desc id="desc">Pruvası sağda, kıç üst yapısı ve renkli konteyner istifleri görünen konteyner gemisi.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dff4ff"/><stop offset="1" stop-color="#f8fcff"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1686b8"/><stop offset="1" stop-color="#075274"/></linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#174663"/><stop offset="1" stop-color="#092b3f"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#06304a" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="900" height="600" fill="url(#sky)"/>
+  <circle cx="700" cy="130" r="65" fill="#fff" opacity=".7"/>
+  <path d="M0 445 Q110 422 225 446 T450 445 T675 444 T900 442 V600 H0Z" fill="url(#sea)"/>
+  <g filter="url(#shadow)">
+    <path d="M90 365H718L820 410 786 472H176L116 425Z" fill="url(#hull)"/>
+    <path d="M132 401H794L781 424H145Z" fill="#e55b3d"/>
+    <path d="M650 225h92v140h-116V257h24Z" fill="#f6fbfd" stroke="#163c54" stroke-width="7"/>
+    <path d="M666 190h58v35h-72Z" fill="#f6fbfd" stroke="#163c54" stroke-width="7"/>
+    <path d="M646 266h76v20h-76Z" fill="#75c7df"/>
+    <g stroke="#0b3853" stroke-width="4">
+      <path d="M655 272h14M678 272h14M701 272h14"/>
+    </g>
+    <g stroke="#102f43" stroke-width="5">
+      <path d="M178 244h86v118h-86Z" fill="#e8623f"/><path d="M270 224h86v138h-86Z" fill="#2b8fb8"/>
+      <path d="M362 244h86v118h-86Z" fill="#efaa2d"/><path d="M454 210h86v152h-86Z" fill="#d84d58"/>
+      <path d="M546 244h70v118h-70Z" fill="#4ca66a"/>
+      <path d="M178 283h86M178 323h86M270 263h86M270 303h86M270 343h86M362 283h86M362 323h86M454 250h86M454 290h86M454 330h86M546 283h70M546 323h70"/>
+      <path d="M221 244v118M313 224v138M405 244v118M497 210v152M581 244v118"/>
+    </g>
+    <path d="M741 334h54l38 45h-92Z" fill="#f6fbfd" stroke="#163c54" stroke-width="7"/>
+    <path d="M771 338v-43" stroke="#163c54" stroke-width="7"/><path d="M758 296h28" stroke="#163c54" stroke-width="6"/>
+    <path d="M135 365h660" stroke="#f5fafc" stroke-width="8"/>
+  </g>
+  <path d="M60 492 Q155 470 250 492 T440 492 T630 492 T840 490" fill="none" stroke="#8bd8eb" stroke-width="8" opacity=".75"/>
+</svg>

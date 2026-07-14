@@ -3,7 +3,7 @@ import { calculationCategories, type SectionId } from "@/data/calculationCenterC
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, BookOpenCheck, ExternalLink, Info } from "lucide-react";
+import { BookOpenCheck, ExternalLink, Info } from "lucide-react";
 
 export default function CalculationSectionPage() {
   const { categoryId, sectionId } = useParams<{ categoryId: string; sectionId: SectionId }>();
@@ -19,9 +19,6 @@ export default function CalculationSectionPage() {
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
             <p>İstediğiniz kategori veya bölüm mevcut değil.</p>
-            <Button asChild>
-              <Link to="/calculations">Hesaplamalara Dön</Link>
-            </Button>
           </CardContent>
         </Card>
       </div>

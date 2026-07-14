@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">Petrol tankeri yan profili</title>
+  <desc id="desc">Alçak yük güvertesi, boru hatları, manifold ve kıç üst yapısı görünen tanker.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff2e2"/><stop offset="1" stop-color="#fffdf9"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2b86a4"/><stop offset="1" stop-color="#14536d"/></linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3b4248"/><stop offset="1" stop-color="#1f272d"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#4a2b18" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="900" height="600" fill="url(#sky)"/>
+  <circle cx="710" cy="135" r="60" fill="#ffd89e" opacity=".65"/>
+  <path d="M0 445 Q110 422 225 446 T450 445 T675 444 T900 442 V600 H0Z" fill="url(#sea)"/>
+  <g filter="url(#shadow)">
+    <path d="M82 365H742L827 410 788 474H160L110 427Z" fill="url(#hull)"/>
+    <path d="M112 400H804L788 428H126Z" fill="#c9483f"/>
+    <path d="M124 344H758" stroke="#eef3ef" stroke-width="11"/>
+    <path d="M135 224h112v140H122V258h13Z" fill="#f5f4ea" stroke="#303b41" stroke-width="7"/>
+    <path d="M155 184h70v40h-82Z" fill="#f5f4ea" stroke="#303b41" stroke-width="7"/>
+    <path d="M148 262h78v22h-78Z" fill="#79b8cb"/>
+    <g stroke="#313d43" stroke-width="8" fill="none">
+      <path d="M265 326H718"/><path d="M280 303H704"/><path d="M330 303v23M440 303v23M550 303v23M660 303v23"/>
+    </g>
+    <g fill="#f0aa32" stroke="#6d4d16" stroke-width="4">
+      <circle cx="330" cy="303" r="12"/><circle cx="440" cy="303" r="12"/><circle cx="550" cy="303" r="12"/><circle cx="660" cy="303" r="12"/>
+    </g>
+    <path d="M455 270h58v56h-58Z" fill="#d8e2dd" stroke="#303b41" stroke-width="6"/>
+    <path d="M484 270v-70M484 214l42 28M484 232l-39 24" stroke="#303b41" stroke-width="7" fill="none"/>
+    <path d="M178 184v-68M159 118h39" stroke="#303b41" stroke-width="7"/>
+    <path d="M742 345h52l40 38h-92Z" fill="#f5f4ea" stroke="#303b41" stroke-width="7"/>
+  </g>
+  <path d="M60 494 Q155 472 250 494 T440 494 T630 494 T840 492" fill="none" stroke="#9bd5e2" stroke-width="8" opacity=".72"/>
+</svg>

@@ -1,5 +1,5 @@
 import type { ShipType, ShipOperation } from "./types";
-import image from "@/assets/ships/bulk-carrier.jpg";
+import image from "@/assets/ships/operation-bulk.svg";
 
 const op = (
   title: string,

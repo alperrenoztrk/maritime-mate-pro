@@ -1,5 +1,5 @@
 import type { ShipOperation, ShipType } from "./types";
-import image from "@/assets/ships/offshore-vessel.svg";
+import image from "@/assets/ships/operation-offshore.svg";
 
 // Piri Reis University DP Induction Course (May 2024) sunumlarindaki
 // operasyonel akisin Turkce, gemi-ustu kullanimina uygun bir uyarlamasidir.

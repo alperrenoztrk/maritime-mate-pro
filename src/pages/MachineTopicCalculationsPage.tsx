@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { ArrowRight, Calculator } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -1531,14 +1531,6 @@ export default function MachineTopicCalculationsPage() {
         <div className="container mx-auto max-w-4xl space-y-6 p-4">
           <CourseTopicHeader topic={courseTopic} section="calculations" />
           <CalculatorList topic={courseTopic} />
-          <div className="flex justify-center pt-4">
-            <Link
-              to="/lessons"
-              className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-            >
-              Tüm Derslere Dön
-            </Link>
-          </div>
         </div>
       </div>
     );
@@ -1578,12 +1570,6 @@ export default function MachineTopicCalculationsPage() {
           {calcs.map((tool, idx) => (
             <CalcToolCard key={idx} tool={tool} />
           ))}
-        </div>
-
-        <div className="flex justify-center pt-4">
-          <Link to="/lessons" className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground">
-            Tüm Derslere Dön
-          </Link>
         </div>
       </div>
     </div>

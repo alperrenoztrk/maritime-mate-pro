@@ -1,24 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  BookOpen,
-  ChevronRight,
-  FileText,
-  AlertTriangle,
-  Lightbulb,
-  CheckCircle2,
-  Circle,
-  X,
-  DollarSign,
-  TrendingUp,
-  Ship,
-  Clock,
-  FileCheck,
-  Scale,
-  Briefcase,
-  Landmark,
-} from "lucide-react";
+import { ChevronRight, FileText, AlertTriangle, Lightbulb, CheckCircle2, Circle, X, DollarSign, TrendingUp, Ship, Clock, FileCheck, Scale, Briefcase, Landmark } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -1635,16 +1618,6 @@ export default function EconomicsTopicsPage() {
                 ))}
               </div>
             </section>
-
-            <div className="flex justify-center pt-2">
-              <Link
-                to="/lessons"
-                className="inline-flex items-center gap-2 rounded-full bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition-colors hover:bg-card hover:text-foreground"
-              >
-                <BookOpen className="h-4 w-4" />
-                Tüm Derslere Dön
-              </Link>
-            </div>
           </div>
         </ScrollArea>
       </div>
