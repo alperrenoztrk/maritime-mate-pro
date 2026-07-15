@@ -340,7 +340,7 @@ export function BookSheet({
         @media (max-width: 720px){
           .bs-stage{ padding-left:2px; padding-right:2px; }
           .bs-cover-board{ width:100%; padding:4px; border-radius:5px; }
-          .bs-spread{ height:clamp(300px,min(58svh,78vw),430px); min-height:0; padding:12px 9px 12px; }
+          .bs-spread{ height:clamp(260px,min(58svh,78vw),430px); min-height:0; padding:12px 9px 12px; }
           .bs-spread-content{ column-gap:28px; font-size:clamp(.58rem,2.25vw,.72rem); line-height:1.5; }
           .bs-running--left,.bs-folio--left{ padding-right:14px; }
           .bs-running--right,.bs-folio--right{ padding-left:14px; }
