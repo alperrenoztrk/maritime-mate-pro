@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BookVolumeLibrary } from "@/components/book/BookVolumeLibrary";
-import { bookVolumes, type BookVolumeId } from "@/data/bookContents";
+import { bookVolumeDescriptors, type BookVolumeId } from "@/data/bookVolumes";
 
 const importBookPage = () => import("@/pages/BookPage");
 let bookPagePromise: ReturnType<typeof importBookPage> | undefined;
@@ -34,7 +34,7 @@ export function BookLauncher() {
     );
   };
 
-  const activeVolume = bookVolumes.find((volume) => volume.id === activeVolumeId);
+  const activeVolume = bookVolumeDescriptors.find((volume) => volume.id === activeVolumeId);
 
   return (
     <div className="flex w-full flex-col items-center gap-2">
@@ -49,4 +49,3 @@ export function BookLauncher() {
     </div>
   );
 }
-
