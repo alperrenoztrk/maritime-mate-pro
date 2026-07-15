@@ -1,17 +1,8 @@
-import type { CSSProperties } from "react";
 import { BookSheet } from "@/components/book/BookSheet";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { BookTopicReader } from "@/components/book/BookTopicReader";
 import {
-  ChevronRight,
-  FileText,
   AlertTriangle,
   Shield,
-  Lightbulb,
-  CheckCircle2,
-  Circle,
-  X,
   LifeBuoy,
   Flame,
   Heart,
@@ -20,11 +11,8 @@ import {
   Users,
   BookMarked,
   Eye,
-  Siren,
   HardHat,
 } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface SafetySubTopic {
   id: string;
@@ -2689,227 +2677,19 @@ Bitt, fairlead, roller, winch, stoper (stopper) ve halat kuyrukları düzenli ko
 };
 
 export default function SafetyTopicsPage() {
-  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-
-  const handleSubtopicClick = (subtopicId: string, hasContent: boolean) => {
-    if (hasContent && topicContents[subtopicId]) {
-      setSelectedTopic(subtopicId);
-    }
-  };
-
-  const closeModal = () => {
-    setSelectedTopic(null);
-  };
-
-  const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
-
   return (
     <BookSheet title="DERSLER">
       <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>Denizde Güvenlik</h1>
       <div className="bs-fleuron" aria-hidden="true">❦</div>
-      <div>
-          <div className="space-y-3">
-            <Accordion type="single" collapsible className="space-y-2">
-              {safetyTopics.map((topic) => {
-                const TopicIcon = topic.icon;
-                return (
-                  <AccordionItem
-                    key={topic.id}
-                    value={topic.id}
-                    className="border-b border-dotted border-[rgba(120,80,20,.35)]"
-                  >
-                    <AccordionTrigger className="px-1 py-3 hover:no-underline">
-                      <div className="flex items-center gap-3 text-left">
-                        <span className="bs-muted w-7 shrink-0 text-base font-bold">
-                          {topic.number}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <TopicIcon className="h-4 w-4 text-red-600 dark:text-red-400" />
-                          <span className="font-semibold text-sm leading-tight" style={{ color: "#3f2a0e" }}>
-                            {topic.title}
-                          </span>
-                        </div>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-1 pb-3">
-                      <div className="space-y-1 mt-2">
-                        {topic.subtopics.map((subtopic) => (
-                          <motion.button
-                            key={subtopic.id}
-                            onClick={() => handleSubtopicClick(subtopic.id, subtopic.hasContent)}
-                            className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-colors ${
-                              subtopic.hasContent && topicContents[subtopic.id]
-                                ? "hover:bg-red-500/5 cursor-pointer"
-                                : "opacity-50 cursor-not-allowed"
-                            }`}
-                            whileTap={subtopic.hasContent && topicContents[subtopic.id] ? { scale: 0.98 } : {}}
-                          >
-                            {subtopic.hasContent && topicContents[subtopic.id] ? (
-                              <CheckCircle2 className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
-                            ) : (
-                              <Circle className="w-4 h-4 text-[rgba(90,61,20,.5)] flex-shrink-0" />
-                            )}
-                            <span className="text-sm">{subtopic.title}</span>
-                            {subtopic.hasContent && topicContents[subtopic.id] && (
-                              <span className="bs-anchor ml-auto" aria-hidden="true">⚓</span>
-                            )}
-                          </motion.button>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
-
-            <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur mt-6">
-              <div className="mb-4 flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-red-500" />
-                <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
-              </div>
-              <div className="grid gap-2 sm:grid-cols-3">
-                {[
-                  { title: "Güvenlik Hesaplamaları", href: "/safety" },
-                  { title: "Güvenlik Formülleri", href: "/safety/formulas" },
-                  { title: "Tüm Dersler", href: "/lessons" },
-                ].map((resource, index) => (
-                  <Link
-                    key={index}
-                    to={resource.href}
-                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-red-500/40 hover:bg-background"
-                  >
-                    <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm font-medium text-foreground">{resource.title}</span>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                  </Link>
-                ))}
-              </div>
-            </section>
-          </div>
-      </div>
-
-      <AnimatePresence>
-        {selectedTopic && currentContent && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50" style={{ background: "linear-gradient(180deg, #f3e7c9 0%, #e6d3a8 100%)" }}
-          >
-            <div className="sticky top-0 z-10 border-b border-dotted border-[rgba(120,80,20,.45)]" style={{ background: "#f6ecd0" }}>
-              <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto" style={{ fontFamily: "Georgia, 'Times New Roman', serif", color: "#3f2a0e" }}>
-                <h2 className="text-lg font-bold truncate pr-4">
-                  {currentContent.title}
-                </h2>
-                <button
-                  onClick={closeModal}
-                  aria-label="Kapat"
-                  className="w-10 h-10 rounded-full flex items-center justify-center border border-dotted border-[rgba(120,80,20,.6)]"
-                >
-                  <X className="w-5 h-5 text-[#4a3113]" />
-                </button>
-              </div>
-            </div>
-
-            <ScrollArea className="h-[calc(100vh-60px)]">
-              <div className="bs-prose p-5 space-y-5 pb-20 max-w-4xl mx-auto">
-                <div className="bg-red-500/10 rounded-xl p-4 border-l-4 border-red-500">
-                  <p className="text-foreground font-medium leading-relaxed">
-                    {currentContent.introduction}
-                  </p>
-                </div>
-
-                {currentContent.image && (
-                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
-                    <img
-                      src={currentContent.image}
-                      alt={currentContent.title}
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-
-                <div className="whitespace-pre-line">{currentContent.content}</div>
-
-                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-2">
-                    <h3 className="font-semibold text-foreground mb-3">Önemli Noktalar</h3>
-                    {currentContent.bulletPoints.map((point, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0" />
-                        <span className="text-sm text-foreground">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {currentContent.formula && (
-                  <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
-                    <h3 className="font-semibold text-foreground mb-2">
-                      {currentContent.formula.name}
-                    </h3>
-                    <div className="bg-background rounded-lg p-3 font-mono text-lg text-center text-red-600 dark:text-red-400 mb-2">
-                      {currentContent.formula.expression}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {currentContent.formula.description}
-                    </p>
-                  </div>
-                )}
-
-                {currentContent.examples && currentContent.examples.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                    <h3 className="font-semibold text-foreground mb-2">Sayısal Örnek</h3>
-                    {currentContent.examples.map((example, index) => (
-                      <div key={index} className="text-sm text-foreground">
-                        <p className="font-medium">Soru: {example.problem}</p>
-                        <p className="text-muted-foreground mt-1">Çözüm: {example.solution}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
-                  <div className="bg-red-500/5 rounded-xl p-4">
-                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-red-500" />
-                      Anahtar Bilgiler
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.keyPoints.map((point, index) => (
-                        <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-red-600 dark:text-red-400 font-bold">{index + 1}.</span>
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {currentContent.warnings && currentContent.warnings.length > 0 && (
-                  <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
-                    <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5" />
-                      Uyarılar
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.warnings.map((warning, index) => (
-                        <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-destructive font-bold">!</span>
-                          <span>{warning}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <BookTopicReader
+        topics={safetyTopics}
+        contents={topicContents}
+        resources={[
+          { title: "Güvenlik Hesaplamaları", href: "/safety" },
+          { title: "Güvenlik Formülleri", href: "/safety/formulas" },
+          { title: "Tüm Dersler", href: "/lessons" }
+        ]}
+      />
     </BookSheet>
   );
 }

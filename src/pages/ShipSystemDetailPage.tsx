@@ -1,24 +1,17 @@
 import { useParams, useSearchParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { shipSystemImages } from "@/data/shipSystemImages";
 import { hasShipSystemLongForm } from "@/data/shipSystems/longform/types";
 import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
-import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { BookSheet } from "@/components/book/BookSheet";
 import { SystemArchitectureDiagram } from "@/components/ship-systems/SystemArchitectureDiagram";
 import {
-  Activity,
   AlertOctagon,
   BookOpen,
   CheckCircle2,
-  ChevronDown,
-  ChevronUp,
   ClipboardCheck,
   Eye,
-  Scale,
-  ShieldCheck,
-  UserRoundCheck,
 } from "lucide-react";
 
 
@@ -29,11 +22,7 @@ export default function ShipSystemDetailPage() {
     const t = parseInt(searchParams.get("topic") ?? "", 10);
     return Number.isFinite(t) && t >= 0 ? t : 0;
   })();
-  const [expandedTopic, setExpandedTopic] = useState<number | null>(initialTopic);
-  const [viewerImage, setViewerImage] = useState<{ src: string; alt: string } | null>(null);
-
   useEffect(() => {
-    setExpandedTopic(initialTopic);
     // scroll target topic into view after render
     const id = requestAnimationFrame(() => {
       const el = document.getElementById(`ship-topic-${initialTopic}`);
@@ -60,24 +49,18 @@ export default function ShipSystemDetailPage() {
 
       <div className="space-y-1">
           {section.topics.map((topic, idx) => {
-            const isOpen = expandedTopic === idx;
             const topicImage = images[idx];
             const guide = sectionId
               ? getProfessionalSystemGuide(sectionId, idx, topic.title)
               : null;
             return (
-              <div key={idx} id={`ship-topic-${idx}`} className="border-b border-dotted border-[rgba(120,80,20,.35)] scroll-mt-20">
-                <button
-                  onClick={() => setExpandedTopic(isOpen ? null : idx)}
-                  className="flex w-full items-center gap-3 px-1 py-3 text-left active:opacity-70"
-                >
+              <article key={idx} id={`ship-topic-${idx}`} className="bs-reading-section scroll-mt-20">
+                <header className="bs-reading-heading">
                   <BookOpen className="h-4 w-4 shrink-0 text-[#7a5c1a]" />
-                  <span className="flex-1 text-sm font-semibold" style={{ color: "#3f2a0e" }}>{topic.title}</span>
-                  {isOpen ? <ChevronUp className="h-4 w-4 text-[#7a5c1a]" /> : <ChevronDown className="h-4 w-4 text-[#7a5c1a]" />}
-                </button>
+                  <h2>{idx + 1}. {topic.title}</h2>
+                </header>
 
-                {isOpen && (
-                  <div className="bs-prose border-t border-dotted border-[rgba(120,80,20,.3)] px-1 py-4 flex flex-col gap-4">
+                  <div className="bs-prose px-1 py-4 flex flex-col gap-4">
                     {/* 1. Tanım ve sistemin emniyet sınırı */}
                     {topic.introduction && (
                       <p className="text-sm text-foreground/90 leading-relaxed">{topic.introduction}</p>
@@ -101,19 +84,12 @@ export default function ShipSystemDetailPage() {
                         {/* Fotoğraf, şemadan sonra ve doğru bağlam açıklamasıyla gösterilir. */}
                         {topicImage && (
                           <figure className="bs-photo overflow-hidden rounded-sm">
-                            <button
-                              type="button"
-                              className="block w-full cursor-zoom-in overflow-hidden text-left group"
-                              onClick={() => setViewerImage({ src: topicImage, alt: topic.title })}
-                              aria-label={`${topic.title} fotoğrafını büyüt`}
-                            >
-                              <img
-                                src={topicImage}
-                                alt={`${topic.title} için gerçek gemi kurulum örneği`}
-                                className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                                loading="lazy"
-                              />
-                            </button>
+                            <img
+                              src={topicImage}
+                              alt={`${topic.title} için gerçek gemi kurulum örneği`}
+                              className="h-48 w-full object-cover"
+                              loading="lazy"
+                            />
                             <figcaption className="border-t border-dotted border-[rgba(120,80,20,.4)] px-3 py-2 text-[11px] leading-relaxed" style={{ color: "rgba(90,61,20,.72)", filter: "none" }}>
                               <span className="font-semibold">Gerçek ekipman fotoğrafı: </span>
                               {guide.photoCaption ?? "Fotoğraf yalnız örnek bir fiziksel kurulumu gösterir; üretici, model ve gemiye özgü donanım onaylı plan ve kullanım kitabından doğrulanır."}
@@ -295,19 +271,10 @@ export default function ShipSystemDetailPage() {
                       </Link>
                     )}
                   </div>
-                )}
-              </div>
+              </article>
             );
           })}
       </div>
-
-      {/* Image Viewer Modal */}
-      <ImageViewerModal
-        src={viewerImage?.src || ""}
-        alt={viewerImage?.alt}
-        isOpen={!!viewerImage}
-        onClose={() => setViewerImage(null)}
-      />
     </BookSheet>
   );
 }

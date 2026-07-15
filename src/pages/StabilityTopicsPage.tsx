@@ -1,33 +1,21 @@
-import type { CSSProperties } from "react";
 import { BookSheet } from "@/components/book/BookSheet";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { BookTopicReader } from "@/components/book/BookTopicReader";
 import {
   BookOpen,
   Anchor,
-  ChevronRight,
-  FileText,
   AlertTriangle,
   Waves,
   Scale,
   Ship,
-  Gauge,
   Shield,
-  Lightbulb,
-  CheckCircle2,
-  Circle,
-  X,
   Weight,
   BarChart3,
-  Ruler,
   Settings,
   Activity,
   Target,
   Zap,
   BookMarked,
 } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Stabilite diyagramları (public/diagrams altındaki vektör çizimler)
 const metacenterDiagram = "/diagrams/stability/metasantr-gm.svg";
@@ -36,7 +24,6 @@ const freeSurfaceEffect = "/diagrams/stability/serbest-yuzey.svg";
 const rightingMomentDiagram = "/diagrams/dogrultma-kolu.svg";
 const trimDiagram = "/diagrams/stability/trim.svg";
 const damageStabilityDiagram = "/diagrams/stability/yara-stabilitesi.svg";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 // =====================================
 // YENİ 14 BAŞLIKLI STABİLİTE MÜFREDATİ
@@ -3281,221 +3268,19 @@ Blokların uyguladığı tepki kuvveti P, su seviyesi düştükçe artar. P'nin 
 };
 
 export default function StabilityTopicsPage() {
-  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-
-  const handleSubtopicClick = (subtopicId: string, hasContent: boolean) => {
-    if (hasContent) {
-      setSelectedTopic(subtopicId);
-    }
-  };
-
-  const closeModal = () => {
-    setSelectedTopic(null);
-  };
-
-  const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
-
-  const highRefreshRateStyles: CSSProperties = {
-    ["--frame-rate" as string]: "120",
-    ["--animation-duration" as string]: "8.33ms",
-    ["--transition-duration" as string]: "16.67ms",
-  };
-
   return (
     <BookSheet title="DERSLER">
       <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>Gemi Stabilitesi</h1>
       <div className="bs-fleuron" aria-hidden="true">❦</div>
-      <div>
-          <div className="space-y-3">
-            <Accordion type="single" collapsible className="space-y-2">
-              {stabilityTopics.map((topic) => {
-                const TopicIcon = topic.icon;
-                return (
-                  <AccordionItem
-                    key={topic.id}
-                    value={topic.id}
-                    className="border-b border-dotted border-[rgba(120,80,20,.35)]"
-                  >
-                    <AccordionTrigger className="px-1 py-3 hover:no-underline">
-                      <div className="flex items-center gap-3 text-left">
-                        <span className="bs-muted w-7 shrink-0 text-base font-bold">
-                          {topic.number}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <TopicIcon className="h-4 w-4 text-[#7a5c1a]" />
-                          <span className="font-semibold text-sm leading-tight" style={{ color: "#3f2a0e" }}>
-                            {topic.title}
-                          </span>
-                        </div>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-1 pb-3">
-                      <div className="space-y-1 mt-2">
-                        {topic.subtopics.map((subtopic) => (
-                          <motion.button
-                            key={subtopic.id}
-                            onClick={() => handleSubtopicClick(subtopic.id, subtopic.hasContent)}
-                            className={`w-full flex items-center gap-2 py-2 pl-3 text-left ${
-                              subtopic.hasContent && topicContents[subtopic.id]
-                                ? "cursor-pointer active:opacity-60"
-                                : "opacity-50 cursor-not-allowed"
-                            }`}
-                            whileTap={subtopic.hasContent && topicContents[subtopic.id] ? { scale: 0.98 } : {}}
-                          >
-                            {subtopic.hasContent && topicContents[subtopic.id] ? (
-                              <CheckCircle2 className="w-4 h-4 text-[#7a5c1a] flex-shrink-0" />
-                            ) : (
-                              <Circle className="w-4 h-4 text-[rgba(90,61,20,.5)] flex-shrink-0" />
-                            )}
-                            <span className="text-sm">{subtopic.title}</span>
-                            {subtopic.hasContent && topicContents[subtopic.id] && (
-                              <span className="bs-anchor ml-auto" aria-hidden="true">⚓</span>
-                            )}
-                          </motion.button>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
-
-            {/* Quick Links */}
-            <section className="mt-4">
-              <div className="bs-section">Hızlı Erişim</div>
-              <div>
-                {[
-                  { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
-                  { title: "Stabilite Formülleri", href: "/stability/formulas" },
-                  { title: "IMO Kuralları", href: "/stability/rules" }
-                ].map((resource, index) => (
-                  <Link
-                    key={index}
-                    to={resource.href}
-                    className="bs-entry"
-                  >
-                    <span className="bs-entry-label">{resource.title}</span>
-                    <span className="bs-leader" aria-hidden="true" />
-                    <span className="bs-anchor" aria-hidden="true">⚓</span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          </div>
-      </div>
-
-      {/* Full Screen Content Modal */}
-      <AnimatePresence>
-        {selectedTopic && currentContent && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50" style={{ background: "linear-gradient(180deg, #f3e7c9 0%, #e6d3a8 100%)" }}
-          >
-            {/* Modal Header */}
-            <div className="sticky top-0 z-10 border-b border-dotted border-[rgba(120,80,20,.45)]" style={{ background: "#f6ecd0" }}>
-              <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto" style={{ fontFamily: "Georgia, 'Times New Roman', serif", color: "#3f2a0e" }}>
-                <h2 className="text-lg font-bold truncate pr-4">
-                  {currentContent.title}
-                </h2>
-                <button
-                  onClick={closeModal}
-                  aria-label="Kapat"
-                  className="w-10 h-10 rounded-full flex items-center justify-center border border-dotted border-[rgba(120,80,20,.6)]"
-                >
-                  <X className="w-5 h-5 text-[#4a3113]" />
-                </button>
-              </div>
-            </div>
-
-            {/* Modal Content */}
-            <ScrollArea className="h-[calc(100vh-60px)]">
-              <div className="bs-prose p-5 space-y-5 pb-20 max-w-4xl mx-auto">
-                {/* Introduction */}
-                <p className="italic">{currentContent.introduction}</p>
-
-                {/* Images/Diagrams */}
-                {currentContent.images && currentContent.images.length > 0 && (
-                  <div className="space-y-4">
-                    {currentContent.images.map((image, index) => (
-                      <figure key={index}>
-                        <img src={image.src} alt={image.alt} className="mx-auto h-48 w-auto max-w-full object-contain" />
-                        {image.caption && (
-                          <figcaption className="bs-muted text-center text-xs py-1">{image.caption}</figcaption>
-                        )}
-                      </figure>
-                    ))}
-                  </div>
-                )}
-
-                {/* Main Content */}
-                <div className="whitespace-pre-line">{currentContent.content}</div>
-
-                {/* Bullet Points */}
-                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
-                  <div className="bs-callout">
-                    <span className="bs-callout-label">Önemli Noktalar</span>
-                    <ul className="ml-4 list-disc">
-                      {currentContent.bulletPoints.map((point, index) => (
-                        <li key={index} className="my-1 text-sm">{point}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Formula */}
-                {currentContent.formula && (
-                  <div className="bs-formula">
-                    <h3 className="font-semibold">{currentContent.formula.name}</h3>
-                    <div className="py-2 text-center text-base font-semibold">
-                      {currentContent.formula.expression}
-                    </div>
-                    <p className="bs-muted text-sm">{currentContent.formula.description}</p>
-                  </div>
-                )}
-
-                {/* Examples */}
-                {currentContent.examples && currentContent.examples.length > 0 && (
-                  <div className="bs-callout">
-                    <span className="bs-callout-label">Sayısal Örnek</span>
-                    {currentContent.examples.map((example, index) => (
-                      <div key={index} className="my-1 text-sm">
-                        <p className="font-semibold">Soru: {example.problem}</p>
-                        <p className="bs-muted">Çözüm: {example.solution}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Key Points */}
-                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
-                  <div className="bs-callout">
-                    <span className="bs-callout-label">Anahtar Bilgiler</span>
-                    <ol className="ml-4 list-decimal">
-                      {currentContent.keyPoints.map((point, index) => (
-                        <li key={index} className="my-1 text-sm">{point}</li>
-                      ))}
-                    </ol>
-                  </div>
-                )}
-
-                {/* Warnings */}
-                {currentContent.warnings && currentContent.warnings.length > 0 && (
-                  <div className="bs-callout" style={{ borderLeftColor: "#8f1f1f" }}>
-                    <span className="bs-callout-label" style={{ color: "#8f1f1f" }}>Uyarılar</span>
-                    <ul className="ml-4 list-disc">
-                      {currentContent.warnings.map((warning, index) => (
-                        <li key={index} className="my-1 text-sm">{warning}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <BookTopicReader
+        topics={stabilityTopics}
+        contents={topicContents}
+        resources={[
+          { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
+          { title: "Stabilite Formülleri", href: "/stability/formulas" },
+          { title: "IMO Kuralları", href: "/stability/rules" }
+        ]}
+      />
     </BookSheet>
   );
 }

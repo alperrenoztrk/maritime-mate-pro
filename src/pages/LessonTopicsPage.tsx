@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { getTopicContentTitlesByCategory } from "@/data/topicContents";
-import { ChevronDown } from "lucide-react";
 import { BookSheet } from "@/components/book/BookSheet";
 
 interface SubTopic {
@@ -584,18 +582,9 @@ export default function LessonTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = calculationCategories.find(c => c.id === categoryId);
   const topicContent = categoryId ? topicsData[categoryId] : null;
-  const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
   const isNavigation = categoryId === "navigation";
   const contentTitles = getTopicContentTitlesByCategory(categoryId);
   const hasDerivedContent = contentTitles.size > 0;
-
-  const toggleTopic = (index: number) => {
-    setExpandedTopics(prev =>
-      prev.includes(index)
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
-  };
 
   const buildSubTopicLink = (subTopicTitle: string) =>
     categoryId ? `/lessons/${categoryId}/topics/${encodeURIComponent(subTopicTitle)}` : "#";
@@ -630,25 +619,13 @@ export default function LessonTopicsPage() {
 
       {hasAnySubTopics ? (
         topicContent.keyTopics.map((topic, index) => {
-          const isExpanded = expandedTopics.includes(index);
           const hasSubTopics = topic.subTopics && topic.subTopics.length > 0;
           return (
-            <section key={index}>
-              <button
-                onClick={() => hasSubTopics && toggleTopic(index)}
-                className="bs-chapter"
-                aria-expanded={isExpanded}
-              >
-                <span className="flex-1">{index + 1}. {topic.title}</span>
-                {hasSubTopics && (
-                  <ChevronDown
-                    className={`h-4 w-4 shrink-0 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
-                  />
-                )}
-              </button>
+            <section key={index} className="bs-reading-section">
+              <h2 className="bs-chapter">{index + 1}. {topic.title}</h2>
               <div className="bs-chapter-rule" />
 
-              {hasSubTopics && isExpanded && (
+              {hasSubTopics && (
                 <div className="pb-2">
                   <p className="bs-muted pl-3 text-[11px] italic">{topic.description}</p>
                   {topic.subTopics!.map((sub, subIndex) => (

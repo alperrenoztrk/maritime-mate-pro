@@ -1,6 +1,11 @@
 import { useEffect, type ReactNode } from "react";
 import { BookSheet } from "@/components/book/BookSheet";
-import { getBookRouteTitle, isBookContentPath } from "@/lib/bookRoutes";
+import {
+  getBookInteractionMode,
+  getBookRoutePage,
+  getBookRouteTitle,
+  isBookContentPath,
+} from "@/lib/bookRoutes";
 
 interface BookRouteFrameProps {
   pathname: string;
@@ -14,17 +19,52 @@ interface BookRouteFrameProps {
  */
 export function BookRouteFrame({ pathname, children }: BookRouteFrameProps) {
   const active = isBookContentPath(pathname);
+  const interactionMode = getBookInteractionMode(pathname);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.body.classList.toggle("book-route-active", active);
-    return () => document.body.classList.remove("book-route-active");
-  }, [active]);
+    if (active) document.body.dataset.bookMode = interactionMode;
+    return () => {
+      document.body.classList.remove("book-route-active");
+      delete document.body.dataset.bookMode;
+    };
+  }, [active, interactionMode]);
+
+  useEffect(() => {
+    if (!active || interactionMode !== "reading" || typeof document === "undefined") return;
+
+    const revealReadingContent = () => {
+      const root = document.querySelector<HTMLElement>("[data-book-route='true'] .bs-route-content");
+      if (!root) return;
+
+      root.querySelectorAll<HTMLDetailsElement>("details:not([open])").forEach((details) => {
+        details.open = true;
+      });
+      root
+        .querySelectorAll<HTMLButtonElement>("button[aria-expanded='false']:not([data-book-reading-expanded])")
+        .forEach((trigger) => {
+          trigger.dataset.bookReadingExpanded = "true";
+          trigger.click();
+        });
+    };
+
+    revealReadingContent();
+    const observer = new MutationObserver(revealReadingContent);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [active, interactionMode, pathname]);
 
   if (!active) return <>{children}</>;
 
   return (
-    <BookSheet title={getBookRouteTitle(pathname)} routeFrame>
+    <BookSheet
+      title={getBookRouteTitle(pathname)}
+      routeFrame
+      pageKey={pathname}
+      pageNumber={getBookRoutePage(pathname)}
+      interactionMode={interactionMode}
+    >
       {children}
     </BookSheet>
   );

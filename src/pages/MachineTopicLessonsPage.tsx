@@ -1,23 +1,13 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
 import { hasSubTopicContent } from "@/data/machineTopicDetailContent";
 import { machineTopicLessons } from "@/data/machineTopicLessonData";
-import { ChevronDown } from "lucide-react";
 import { BookSheet } from "@/components/book/BookSheet";
 
 export default function MachineTopicLessonsPage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
   const topicConfig = topicSlug ? machineTopicBySlug[topicSlug] : null;
   const lessonData = topicSlug ? machineTopicLessons[topicSlug] : null;
-  const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
-
-  const toggleTopic = (index: number) => {
-    setExpandedTopics((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
-  };
-
   if (!topicConfig || !lessonData) {
     return (
       <BookSheet title="DERSLER">
@@ -36,21 +26,12 @@ export default function MachineTopicLessonsPage() {
       </p>
 
       {lessonData.keyTopics.map((topic, index) => {
-        const isExpanded = expandedTopics.includes(index);
         return (
-          <section key={index}>
-            <button onClick={() => toggleTopic(index)} className="bs-chapter" aria-expanded={isExpanded}>
-              <span className="flex-1">
-                {index + 1}. {topic.title}
-              </span>
-              <ChevronDown
-                className={`h-4 w-4 shrink-0 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
-              />
-            </button>
+          <section key={index} className="bs-reading-section">
+            <h2 className="bs-chapter">{index + 1}. {topic.title}</h2>
             <div className="bs-chapter-rule" />
 
-            {isExpanded && (
-              <div className="pb-2">
+            <div className="pb-2">
                 <p className="bs-muted pl-3 text-[11px] italic">{topic.description}</p>
                 {topic.subTopics.map((sub, subIndex) => {
                   const hasContent = topicSlug ? hasSubTopicContent(topicSlug, sub.title) : false;
@@ -72,8 +53,7 @@ export default function MachineTopicLessonsPage() {
                     </div>
                   );
                 })}
-              </div>
-            )}
+            </div>
           </section>
         );
       })}
