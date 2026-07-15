@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type MouseEvent as ReactMouseEvent,
   type MutableRefObject,
   type KeyboardEvent as ReactKeyboardEvent,
@@ -12,6 +13,7 @@ import {
   type ReactNode,
   type WheelEvent as ReactWheelEvent,
 } from "react";
+import { getBookVolume, type BookVolumeId } from "@/data/bookContents";
 import type { BookInteractionMode } from "@/lib/bookRoutes";
 import {
   getBookTurnProgress,
@@ -33,6 +35,8 @@ interface BookSheetProps {
   pageNumber?: number;
   /** Reading pages are inert; calculators, quizzes and assistants keep controls. */
   interactionMode?: BookInteractionMode;
+  /** Physical cover identity for subject-specific route volumes. */
+  volumeId?: BookVolumeId;
 }
 
 interface LeafPagerHandle {
@@ -50,8 +54,10 @@ export function BookSheet({
   pageKey,
   pageNumber = 2,
   interactionMode = "reading",
+  volumeId,
 }: BookSheetProps) {
   const alreadyInsideBook = useContext(BookSheetNestingContext);
+  const volume = volumeId ? getBookVolume(volumeId) : null;
   const pagerApi = useRef<LeafPagerHandle>({ step: () => {} });
   const [leafState, setLeafState] = useState({ spread: 0, spreads: 1 });
   const handleLeafState = useCallback((spread: number, spreads: number) => {
@@ -70,11 +76,17 @@ export function BookSheet({
       className={`bs-stage ${routeFrame ? "bs-route-frame" : ""}`}
       data-book-route={routeFrame || undefined}
       data-book-mode={interactionMode}
+      data-book-volume={volumeId}
+      style={volume ? {
+        "--bs-volume-cover": volume.cover,
+        "--bs-volume-cover-deep": volume.coverDeep,
+        "--bs-volume-accent": volume.accent,
+      } as CSSProperties : undefined}
     >
       <div className="bs-cover-board">
         <div className={`bs-volume ${routeFrame ? "bs-volume--route" : ""}`}>
           <div className="bs-spread">
-            <header className="bs-running bs-running--left">MARINER&rsquo;S BOOK</header>
+            <header className="bs-running bs-running--left">{volume?.shortTitle ?? "MARINER’S BOOK"}</header>
             <header className="bs-running bs-running--right">{title}</header>
 
             <BookSheetNestingContext.Provider value>
@@ -148,8 +160,8 @@ export function BookSheet({
           background:
             radial-gradient(80% 50% at 50% 0%, rgba(213,173,78,.1), transparent 70%),
             repeating-linear-gradient(24deg, rgba(255,255,255,.018) 0 2px, transparent 2px 8px),
-            linear-gradient(145deg, #0e3767, #071f42 55%, #041329);
-          border: 1px solid rgba(207,164,65,.42);
+            linear-gradient(145deg, var(--bs-volume-cover, #0e3767), var(--bs-volume-cover-deep, #071f42) 64%, #041329);
+          border: 1px solid color-mix(in srgb, var(--bs-volume-accent, #cfa441) 52%, transparent);
           box-shadow: 0 22px 58px rgba(0,0,0,.58), inset 0 0 28px rgba(0,0,0,.62);
         }
         .bs-cover-board::before,
@@ -1109,3 +1121,4 @@ function BookLeafPager({
     </div>
   );
 }
+
