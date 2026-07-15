@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { bookVolumes, getBookPagesForVolume } from "../src/data/bookContents";
+import { bookVolumeDescriptors } from "../src/data/bookVolumes";
 import { getBookVolumeForPath } from "../src/lib/bookRoutes";
 
 const read = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
@@ -8,6 +9,7 @@ const failures: string[] = [];
 const ids = bookVolumes.map((volume) => volume.id);
 
 if (bookVolumes.length !== 7) failures.push(`Beklenen 7 cilt yerine ${bookVolumes.length} cilt var.`);
+if (bookVolumeDescriptors.length !== bookVolumes.length) failures.push("Hafif kapak kataloğu ile içerik ciltleri eşleşmiyor.");
 if (new Set(ids).size !== ids.length) failures.push("Cilt kimlikleri benzersiz değil.");
 for (const volume of bookVolumes) {
   if (volume.chapters.length < 2) failures.push(`${volume.title} en az iki bölüm içermiyor.`);
