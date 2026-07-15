@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { getBetaCategories, type BetaCategory } from "@/data/betaLessons";
-import { ChevronRight, FlaskConical, Ship, Wrench } from "lucide-react";
+import { BookSheet } from "@/components/book/BookSheet";
 
 /**
- * "Alıştırmalar" giriş sayfası.
+ * "Alıştırmalar" giriş sayfası — kitap yaprağı düzeninde.
  *
  * Orijinal "Dersler"e dokunmadan, tüm güverte ve makine kategorilerini listeler.
  * İçeriği olan kategoriler açılabilir; konu anlatımı henüz olmayanlar "yakında".
@@ -13,77 +13,34 @@ export default function ExercisesPage() {
   const deck = categories.filter((c) => c.group === "deck");
   const machine = categories.filter((c) => c.group === "machine");
 
-  const renderCategory = (category: BetaCategory) => {
-    const CategoryIcon = category.icon;
-
-    const inner = (
-      <div className="flex items-center gap-3">
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}>
-          <CategoryIcon className="h-5 w-5" />
-        </div>
-        <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <span className="text-base font-bold text-foreground">{category.title}</span>
-            {!category.enabled && (
-              <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Yakında
-              </span>
-            )}
-          </div>
-        </div>
-        {category.enabled && <ChevronRight className="h-5 w-5 text-muted-foreground" />}
-      </div>
-    );
-
-    return category.enabled ? (
-      <Link
-        key={category.key}
-        to={`/exercises/${category.key}/topics`}
-        className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur transition hover:border-violet-400/40 hover:bg-card"
-      >
-        {inner}
+  const renderCategory = (category: BetaCategory) =>
+    category.enabled ? (
+      <Link key={category.key} to={`/exercises/${category.key}/topics`} className="bs-entry">
+        <span className="bs-entry-label">{category.title}</span>
+        <span className="bs-leader" aria-hidden="true" />
+        <span className="bs-anchor" aria-hidden="true">⚓</span>
       </Link>
     ) : (
-      <div
-        key={category.key}
-        className="cursor-not-allowed rounded-2xl border border-border/40 bg-card/50 p-4 opacity-70"
-      >
-        {inner}
+      <div key={category.key} className="bs-entry opacity-50">
+        <span className="bs-entry-label">{category.title}</span>
+        <span className="bs-leader" aria-hidden="true" />
+        <span className="bs-note">yakında</span>
       </div>
     );
-  };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 pb-24 pt-8 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-violet-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-      </div>
+    <BookSheet title="ALIŞTIRMALAR">
+      <p className="bs-muted mb-2 text-center text-[11px] italic">
+        Beta — çözümlü alıştırmalar ve rehberli dersler
+      </p>
 
-      <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-6">
-        <header className="space-y-3 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-card/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-violet-600 backdrop-blur dark:text-violet-300">
-            <FlaskConical className="h-3.5 w-3.5" /> Beta
-          </div>
-          <h1 className="text-2xl font-bold text-foreground">Alıştırmalar</h1>
-        </header>
+      <div className="bs-chapter">GÜVERTE</div>
+      <div className="bs-chapter-rule" />
+      <div className="pb-2">{deck.map(renderCategory)}</div>
 
-        <section className="space-y-3">
-          <div className="flex items-center gap-2">
-            <Ship className="h-5 w-5 text-blue-500" />
-            <h2 className="text-lg font-semibold text-foreground">Güverte</h2>
-          </div>
-          <div className="flex flex-col gap-3">{deck.map(renderCategory)}</div>
-        </section>
-
-        <section className="space-y-3">
-          <div className="flex items-center gap-2">
-            <Wrench className="h-5 w-5 text-slate-500" />
-            <h2 className="text-lg font-semibold text-foreground">Makine</h2>
-          </div>
-          <div className="flex flex-col gap-3">{machine.map(renderCategory)}</div>
-        </section>
-      </div>
-    </div>
+      <div className="bs-chapter">MAKİNE</div>
+      <div className="bs-chapter-rule" />
+      <div className="pb-2">{machine.map(renderCategory)}</div>
+    </BookSheet>
   );
 }

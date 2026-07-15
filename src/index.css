@@ -1966,3 +1966,4 @@ body.marine-global :where(.min-h-screen, [class*="min-h-[100"]):not(.marine-keep
   -webkit-backdrop-filter: blur(8px);
   border-color: rgba(255,255,255,0.1) !important;
 }
+
