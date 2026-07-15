@@ -9,8 +9,14 @@ interface SpreadPage {
   number: number | null;
 }
 
-/** Full-screen, two-leaf table of contents with gesture-driven page turns. */
-export default function BookPage() {
+interface BookPageProps {
+  /** Opens inside the home-page launcher instead of becoming a full-screen route. */
+  embedded?: boolean;
+}
+
+/** Compact, two-leaf table of contents with gesture-driven page turns. */
+export default function BookPage({ embedded = false }: BookPageProps) {
+  const stageRef = useRef<HTMLDivElement>(null);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
   const wheelLock = useRef(false);
   const turnTimer = useRef<number | null>(null);
@@ -40,6 +46,11 @@ export default function BookPage() {
     if (turnTimer.current) window.clearTimeout(turnTimer.current);
   }, []);
 
+  useEffect(() => {
+    if (!embedded) return;
+    stageRef.current?.focus({ preventScroll: true });
+  }, [embedded]);
+
   const turnTo = (nextIndex: number, direction: TurnDirection) => {
     if (turning || nextIndex < 0 || nextIndex >= spreads.length || nextIndex === spreadIndex) return;
     if (turnTimer.current) window.clearTimeout(turnTimer.current);
@@ -54,10 +65,12 @@ export default function BookPage() {
   };
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    event.stopPropagation();
     pointerStart.current = { x: event.clientX, y: event.clientY };
   };
 
   const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    event.stopPropagation();
     const start = pointerStart.current;
     pointerStart.current = null;
     if (!start || (event.target as HTMLElement).closest("a")) return;
@@ -79,6 +92,7 @@ export default function BookPage() {
   const onWheel = (event: WheelEvent<HTMLDivElement>) => {
     const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
     if (!horizontalIntent || wheelLock.current || Math.abs(event.deltaX || event.deltaY) < 16) return;
+    event.stopPropagation();
     wheelLock.current = true;
     stepSpread((event.deltaX || event.deltaY) > 0 ? "forward" : "backward");
     window.setTimeout(() => { wheelLock.current = false; }, 700);
@@ -87,11 +101,12 @@ export default function BookPage() {
   const currentSpread = spreads[spreadIndex] ?? spreads[0];
 
   return (
-    <div className="bk-scene">
-      <div className="bk-ambient" aria-hidden="true" />
-      <h1 className="bk-title notranslate" translate="no" lang="en">MARINER&rsquo;S BOOK</h1>
+    <div className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}>
+      {!embedded && <div className="bk-ambient" aria-hidden="true" />}
+      {!embedded && <h1 className="bk-title notranslate" translate="no" lang="en">MARINER&rsquo;S BOOK</h1>}
 
       <div
+        ref={stageRef}
         className="bk-stage"
         role="region"
         aria-label="Mariner's Book içindekiler"
@@ -148,7 +163,7 @@ export default function BookPage() {
         .bk-stage{ position:relative; z-index:10; width:100%; flex:1; min-height:0; display:flex; align-items:center; justify-content:center; perspective:2100px; outline:none; touch-action:pan-y; }
         .bk-stage:focus-visible .bk-cover-board{ outline:1px dotted rgba(242,217,138,.62); outline-offset:3px; }
         .bk-cover-board{
-          position:relative; width:min(98vw,1240px); height:min(84svh,780px); min-height:420px; padding:clamp(5px,.85vw,11px);
+          position:relative; width:min(94vw,780px); height:min(68svh,540px); min-height:320px; padding:clamp(5px,.85vw,11px);
           border:1px solid rgba(212,168,61,.46); border-radius:9px 13px 13px 9px;
           background:repeating-linear-gradient(25deg,rgba(255,255,255,.018) 0 2px,transparent 2px 8px),linear-gradient(145deg,#103a69,#071f42 58%,#041328);
           box-shadow:0 24px 64px rgba(0,0,0,.62),inset 0 0 30px rgba(0,0,0,.62);
@@ -170,7 +185,7 @@ export default function BookPage() {
         .bk-gutter{ position:absolute; z-index:4; top:0; bottom:0; left:50%; width:clamp(20px,3.2vw,48px); transform:translateX(-50%); pointer-events:none; background:linear-gradient(90deg,transparent,rgba(58,35,9,.24) 42%,rgba(255,249,229,.22) 52%,rgba(58,35,9,.2) 62%,transparent); mix-blend-mode:multiply; }
         .bk-running{ padding-bottom:8px; text-align:center; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
         .bk-running::before{ content:"❖  "; opacity:.45; }.bk-running::after{ content:"  ❖"; opacity:.45; }
-        .bk-page{ min-height:0; overflow-y:auto; padding:clamp(10px,1.7vw,20px) 0 8px; scrollbar-width:none; }
+        .bk-page{ min-height:0; overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain; padding:clamp(10px,1.7vw,20px) 0 8px; scrollbar-width:none; }
         .bk-page::-webkit-scrollbar{ display:none; }
         .bk-toc-header{ display:flex; align-items:center; gap:8px; margin-bottom:9px; }
         .bk-toc-title{ flex:0 auto; color:#513514; font-size:clamp(.66rem,1.45vw,1.08rem); font-weight:700; letter-spacing:.22em; text-indent:.22em; }
@@ -179,13 +194,13 @@ export default function BookPage() {
         .bk-chapter{ display:flex; align-items:baseline; gap:.45em; padding:4px 0; color:#3f2a0e; text-decoration:none; }
         .bk-chapter:focus-visible,.bk-entry:focus-visible{ outline:2px dotted rgba(74,49,19,.58); outline-offset:2px; }
         .bk-chapter-numeral{ color:#7a5c1a; font-size:clamp(.69rem,1.35vw,1.02rem); font-weight:700; }
-        .bk-chapter-title{ font-size:clamp(.67rem,1.3vw,1rem); font-weight:700; letter-spacing:.09em; }
+        .bk-chapter-title{ min-width:0; overflow-wrap:anywhere; hyphens:auto; font-size:clamp(.67rem,1.3vw,1rem); font-weight:700; letter-spacing:.09em; }
         .bk-cont{ font-size:.74em; font-weight:400; font-style:italic; letter-spacing:0; color:rgba(90,61,20,.68); }
         .bk-chapter-rule{ height:1px; margin:1px 0 8px; background:linear-gradient(90deg,rgba(176,124,32,.68),rgba(176,124,32,.1)); }
         .bk-section+.bk-section{ margin-top:9px; }
-        .bk-section-heading{ margin:5px 0 2px; color:rgba(90,61,20,.8); font-size:clamp(.48rem,.85vw,.68rem); font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
-        .bk-entry{ display:flex; align-items:baseline; min-height:31px; padding:5px 0 2px 8px; color:#4a3113; text-decoration:none; font-size:clamp(.56rem,1.05vw,.83rem); line-height:1.3; }
-        .bk-entry-label{ max-width:78%; }.bk-leader{ flex:1; min-width:8px; margin:0 .36em; border-bottom:1.5px dotted rgba(120,80,20,.42); transform:translateY(-2px); }.bk-anchor{ font-size:.66em; opacity:.62; }
+        .bk-section-heading{ overflow-wrap:anywhere; hyphens:auto; margin:5px 0 2px; color:rgba(90,61,20,.8); font-size:clamp(.48rem,.85vw,.68rem); font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+        .bk-entry{ display:flex; align-items:baseline; min-width:0; min-height:31px; padding:5px 0 2px 8px; color:#4a3113; text-decoration:none; font-size:clamp(.56rem,1.05vw,.83rem); line-height:1.3; }
+        .bk-entry-label{ min-width:0; max-width:78%; overflow-wrap:anywhere; hyphens:auto; }.bk-leader{ flex:1; min-width:8px; margin:0 .36em; border-bottom:1.5px dotted rgba(120,80,20,.42); transform:translateY(-2px); }.bk-anchor{ flex:0 0 auto; font-size:.66em; opacity:.62; }
         .bk-folio{ padding-top:6px; color:rgba(78,50,16,.65); border-top:1px solid rgba(120,80,20,.16); font-size:clamp(.48rem,.82vw,.68rem); font-variant-numeric:oldstyle-nums; }
         .bk-leaf--left .bk-folio{ text-align:left; }.bk-leaf--right .bk-folio{ text-align:right; }
         .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:rgba(90,61,20,.55); }
@@ -208,15 +223,34 @@ export default function BookPage() {
         .bk-cover-subtitle{ color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem) Georgia,'Times New Roman',serif; letter-spacing:.18em; }
         @keyframes bk-cover-open{ to{transform:rotateY(-178deg)} }
         .bk-instruction{ position:relative; z-index:20; margin-top:6px; color:rgba(255,255,255,.68); font-size:clamp(.55rem,1vw,.72rem); letter-spacing:.04em; }
+        .bk-scene--embedded{
+          width:min(94vw,780px); min-height:0; padding:0; overflow:visible; isolation:isolate; background:transparent;
+        }
+        .bk-scene--embedded .bk-stage{
+          flex:none; width:100%; height:clamp(260px,min(58svh,78vw),520px); min-height:0;
+          transform-origin:center center; animation:bk-inline-unfold .46s cubic-bezier(.2,.76,.24,1) both;
+        }
+        .bk-scene--embedded .bk-cover-board{ width:100%; height:100%; min-height:0; }
+        .bk-scene--embedded .bk-cover{ animation:bk-cover-open .92s cubic-bezier(.72,.04,.22,1) .28s forwards; }
+        .bk-scene--embedded .bk-instruction{ margin:5px 0 0; text-align:center; }
+        @keyframes bk-inline-unfold{
+          from{ transform:scaleX(.54); opacity:.82; filter:drop-shadow(0 15px 20px rgba(0,0,0,.34)); }
+          to{ transform:scaleX(1); opacity:1; filter:drop-shadow(0 18px 24px rgba(0,0,0,.24)); }
+        }
+        @keyframes bk-inline-unfold-wide{
+          from{ transform:scale(.3,.64); opacity:.82; filter:drop-shadow(0 15px 20px rgba(0,0,0,.34)); }
+          to{ transform:scale(1); opacity:1; filter:drop-shadow(0 18px 24px rgba(0,0,0,.24)); }
+        }
+        @media(min-width:721px){ .bk-scene--embedded .bk-stage{ animation-name:bk-inline-unfold-wide; } }
         @media(max-width:720px){
-          .bk-cover-board{ height:calc(100svh - 5.2rem); min-height:360px; padding:4px; }
+          .bk-cover-board{ height:clamp(300px,min(62svh,78vw),430px); min-height:300px; padding:4px; }
           .bk-leaf{ padding:10px 7px 11px; }
           .bk-page{ padding-top:7px; }
           .bk-gutter{ width:20px; }
           .bk-entry{ min-height:25px; padding-left:3px; }
           .bk-ribbon{ right:7%; }
         }
-        @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-turn-leaf{animation-duration:.01s!important} }
+        @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-turn-leaf{animation-duration:.01s!important}.bk-scene--embedded .bk-stage{animation:none!important} }
       `}</style>
     </div>
   );
@@ -224,7 +258,7 @@ export default function BookPage() {
 
 function BookLeaf({ leaf, side, firstLeaf }: { leaf: SpreadPage; side: "left" | "right"; firstLeaf: boolean }) {
   return (
-    <section className={`bk-leaf bk-leaf--${side}`} aria-label={leaf.number ? `Sayfa ${leaf.number}` : undefined}>
+    <section lang="tr" className={`bk-leaf bk-leaf--${side}`} aria-label={leaf.number ? `Sayfa ${leaf.number}` : undefined}>
       <header className="bk-running">{leaf.page ? "İÇİNDEKİLER" : "MARINER’S BOOK"}</header>
       <div className="bk-page">
         {leaf.page ? <ContentsPage page={leaf.page} firstPage={leaf.number === 1} /> : (

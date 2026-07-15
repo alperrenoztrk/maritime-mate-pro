@@ -1,5 +1,9 @@
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+const importBookPage = () => import("@/pages/BookPage");
+let bookPagePromise: ReturnType<typeof importBookPage> | undefined;
+const loadBookPage = () => (bookPagePromise ??= importBookPage());
+type OpenBookComponent = (Awaited<ReturnType<typeof importBookPage>>)["default"];
 
 /**
  * Splash ekranındaki kitabın kapalı hâli — ana sayfada içindekilere açılan widget.
@@ -7,92 +11,105 @@ import { useNavigate } from "react-router-dom";
  * olduktan sonra bir süre daha DOM'da kaldığından adlar çakışmamalıdır.
  */
 export function BookLauncher() {
-  const navigate = useNavigate();
-  const bookRef = useRef<HTMLDivElement>(null);
-  const openingRef = useRef(false);
+  const [OpenBook, setOpenBook] = useState<OpenBookComponent | null>(null);
+  const [isPreparing, setIsPreparing] = useState(false);
+  const isOpen = OpenBook !== null;
+
+  useEffect(() => {
+    const preloadTimer = window.setTimeout(() => {
+      void loadBookPage().catch(() => { bookPagePromise = undefined; });
+    }, 450);
+    return () => window.clearTimeout(preloadTimer);
+  }, []);
 
   const handleOpen = () => {
-    if (openingRef.current) return;
-    openingRef.current = true;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion || !bookRef.current) {
-      navigate("/book");
-      return;
-    }
-    bookRef.current.classList.add("hb-opening");
-    window.setTimeout(() => navigate("/book"), 260);
+    if (isPreparing) return;
+    setIsPreparing(true);
+    void loadBookPage().then(
+      (bookModule) => setOpenBook(() => bookModule.default),
+      () => {
+        bookPagePromise = undefined;
+        setIsPreparing(false);
+      },
+    );
   };
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <button
-        type="button"
-        onClick={handleOpen}
-        aria-label="Kitabı aç — İçindekiler"
-        className="hb-press outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70 rounded-lg"
-      >
-        <div className="hb-scene">
-          <div ref={bookRef} className="hb-book">
-            <div className="hb-pages" aria-hidden="true" />
-            <div className="hb-cover">
-              <div className="hb-trim">
-                {[0, 90, 180, 270].map((r) => (
-                  <svg
-                    key={r}
-                    className="hb-corner"
-                    style={{ transform: `rotate(${r}deg)` }}
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2 2 H14 M2 2 V14 M4 4 q8 0 8 8"
+    <div className={`flex flex-col items-center ${isOpen ? "gap-2" : "gap-3"}`}>
+      {OpenBook ? (
+        <OpenBook embedded />
+      ) : (
+        <button
+          type="button"
+          onClick={handleOpen}
+          aria-label="Kitabı aç — İçindekiler"
+          aria-expanded="false"
+          aria-busy={isPreparing}
+          className={`hb-press outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70 rounded-lg ${isPreparing ? "hb-preparing" : ""}`}
+        >
+          <div className="hb-scene">
+            <div className="hb-book">
+              <div className="hb-pages" aria-hidden="true" />
+              <div className="hb-cover">
+                <div className="hb-trim">
+                  {[0, 90, 180, 270].map((r) => (
+                    <svg
+                      key={r}
+                      className="hb-corner"
+                      style={{ transform: `rotate(${r}deg)` }}
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 2 H14 M2 2 V14 M4 4 q8 0 8 8"
+                        fill="none"
+                        stroke="#caa044"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  ))}
+                  <div className="hb-emblem">
+                    <svg
+                      viewBox="0 0 64 64"
+                      width="100%"
+                      height="100%"
+                      preserveAspectRatio="xMidYMid meet"
                       fill="none"
-                      stroke="#caa044"
-                      strokeWidth="1.4"
+                      stroke="#daa520"
+                      strokeWidth="2.6"
                       strokeLinecap="round"
-                    />
-                  </svg>
-                ))}
-                <div className="hb-emblem">
-                  <svg
-                    viewBox="0 0 64 64"
-                    width="100%"
-                    height="100%"
-                    preserveAspectRatio="xMidYMid meet"
-                    fill="none"
-                    stroke="#daa520"
-                    strokeWidth="2.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="32" cy="32" r="20" />
-                    <circle cx="32" cy="32" r="6" />
-                    <line x1="32" y1="4" x2="32" y2="16" />
-                    <line x1="32" y1="48" x2="32" y2="60" />
-                    <line x1="4" y1="32" x2="16" y2="32" />
-                    <line x1="48" y1="32" x2="60" y2="32" />
-                    <line x1="12" y1="12" x2="20" y2="20" />
-                    <line x1="44" y1="44" x2="52" y2="52" />
-                    <line x1="52" y1="12" x2="44" y2="20" />
-                    <line x1="20" y1="44" x2="12" y2="52" />
-                  </svg>
-                </div>
-                <div className="hb-plate">
-                  <div className="hb-title notranslate" translate="no" lang="en">
-                    MARINER&rsquo;S
-                    <br />
-                    BOOK
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="32" cy="32" r="20" />
+                      <circle cx="32" cy="32" r="6" />
+                      <line x1="32" y1="4" x2="32" y2="16" />
+                      <line x1="32" y1="48" x2="32" y2="60" />
+                      <line x1="4" y1="32" x2="16" y2="32" />
+                      <line x1="48" y1="32" x2="60" y2="32" />
+                      <line x1="12" y1="12" x2="20" y2="20" />
+                      <line x1="44" y1="44" x2="52" y2="52" />
+                      <line x1="52" y1="12" x2="44" y2="20" />
+                      <line x1="20" y1="44" x2="12" y2="52" />
+                    </svg>
                   </div>
-                </div>
-                <div className="hb-rule" />
-                <div className="hb-sub notranslate" translate="no" lang="en">
-                  Interactive Maritime Learning
+                  <div className="hb-plate">
+                    <div className="hb-title notranslate" translate="no" lang="en">
+                      MARINER&rsquo;S
+                      <br />
+                      BOOK
+                    </div>
+                  </div>
+                  <div className="hb-rule" />
+                  <div className="hb-sub notranslate" translate="no" lang="en">
+                    Interactive Maritime Learning
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </button>
+        </button>
+      )}
       <span className="text-[13px] font-medium tracking-wide text-white/85 drop-shadow-md">
         İçindekiler
       </span>
@@ -153,7 +170,8 @@ export function BookLauncher() {
           background: linear-gradient(90deg, rgba(0,0,0,.5), transparent);
           border-right: 1px solid rgba(218,165,32,.22);
         }
-        .hb-opening .hb-cover{ transform: rotateY(-26deg); }
+        .hb-preparing .hb-book{ animation-play-state:paused; }
+        .hb-preparing .hb-cover{ transform:rotateY(-18deg); }
         .hb-trim{
           position: absolute;
           inset: 6.5%;

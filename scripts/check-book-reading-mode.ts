@@ -3,11 +3,17 @@ import { resolve } from "node:path";
 
 const read = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
 const failures: string[] = [];
+const bookLauncher = read("src/components/home/BookLauncher.tsx");
 const bookPage = read("src/pages/BookPage.tsx");
 const bookSheet = read("src/components/book/BookSheet.tsx");
 const topicReader = read("src/components/book/BookTopicReader.tsx");
 
 if (bookPage.includes("<button")) failures.push("İçindekiler kitabında görsel buton kaldı.");
+if (bookLauncher.includes("useNavigate") || bookLauncher.includes('navigate("/book")')) {
+  failures.push("Ana sayfa kitabı açılmadan ayrı /book rotasına gönderiyor.");
+}
+if (!bookLauncher.includes("<OpenBook embedded")) failures.push("Kitap ana sayfa içinde açılmıyor.");
+if (!bookPage.includes("bk-scene--embedded")) failures.push("Ana sayfa için kompakt açık kitap görünümü eksik.");
 if (!bookPage.includes("grid-template-columns:1fr 1fr")) failures.push("İçindekiler iki yapraklı değil.");
 if (!bookPage.includes("bk-turn-leaf")) failures.push("İçindekiler yaprak çevirme animasyonu eksik.");
 if (!bookPage.includes("bk-folio")) failures.push("İçindekiler sayfa numarası eksik.");
@@ -22,6 +28,9 @@ if (!bookSheet.includes('[data-book-mode="reading"] .bs-route-content button')) 
 }
 if (!bookSheet.includes('[data-book-mode="reading"] .bs-route-content :where(input')) {
   failures.push("Okuma sayfasındaki form girdileri kapatılmıyor.");
+}
+if (!bookSheet.includes("overflow-wrap:anywhere") || !bookSheet.includes("overscroll-behavior: contain")) {
+  failures.push("Uzun kitap içeriği sayfa sınırları içinde tutulmuyor.");
 }
 
 for (const page of [
