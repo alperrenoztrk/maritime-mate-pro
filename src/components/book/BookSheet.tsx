@@ -1,5 +1,24 @@
-import { createContext, useContext, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type MutableRefObject,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+  type WheelEvent as ReactWheelEvent,
+} from "react";
 import type { BookInteractionMode } from "@/lib/bookRoutes";
+import {
+  getBookTurnProgress,
+  getBookTurnSettleDuration,
+  shouldCompleteBookTurn,
+  type BookTurnDirection,
+} from "@/lib/bookMotion";
 
 const BookSheetNestingContext = createContext(false);
 
@@ -16,6 +35,13 @@ interface BookSheetProps {
   interactionMode?: BookInteractionMode;
 }
 
+interface LeafPagerHandle {
+  step: (direction: BookTurnDirection) => void;
+}
+
+const clampNumber = (value: number, minimum: number, maximum: number) =>
+  Math.min(maximum, Math.max(minimum, value));
+
 /** Shared physical open-book surface for every educational route. */
 export function BookSheet({
   title,
@@ -26,10 +52,18 @@ export function BookSheet({
   interactionMode = "reading",
 }: BookSheetProps) {
   const alreadyInsideBook = useContext(BookSheetNestingContext);
+  const pagerApi = useRef<LeafPagerHandle>({ step: () => {} });
+  const [leafState, setLeafState] = useState({ spread: 0, spreads: 1 });
+  const handleLeafState = useCallback((spread: number, spreads: number) => {
+    setLeafState((current) =>
+      current.spread === spread && current.spreads === spreads ? current : { spread, spreads },
+    );
+  }, []);
 
   if (alreadyInsideBook) return <>{children}</>;
 
-  const leftPage = pageNumber % 2 === 0 ? pageNumber : pageNumber - 1;
+  const firstLeftPage = pageNumber % 2 === 0 ? pageNumber : pageNumber - 1;
+  const leftPage = firstLeftPage + leafState.spread * 2;
 
   return (
     <div
@@ -44,20 +78,49 @@ export function BookSheet({
             <header className="bs-running bs-running--right">{title}</header>
 
             <BookSheetNestingContext.Provider value>
-              <main
-                key={pageKey ?? "book-sheet"}
-                className={`bs-spread-content ${routeFrame ? "bs-route-content" : ""}`}
-              >
-                {children}
+              <main key={pageKey ?? "book-sheet"} className="bs-spread-content">
+                <BookLeafPager
+                  routeContent={routeFrame}
+                  interactionMode={interactionMode}
+                  apiRef={pagerApi}
+                  onLeafState={handleLeafState}
+                >
+                  {children}
+                </BookLeafPager>
               </main>
             </BookSheetNestingContext.Provider>
 
             <footer className="bs-folio bs-folio--left" aria-label={`Sayfa ${leftPage}`}>
-              {leftPage}
+              <button
+                type="button"
+                className="bs-turn-btn"
+                aria-label="Önceki sayfayı çevir"
+                disabled={leafState.spread === 0}
+                onClick={() => pagerApi.current.step("backward")}
+              >
+                ‹
+              </button>
+              <span className="bs-folio-number">{leftPage}</span>
             </footer>
             <footer className="bs-folio bs-folio--right" aria-label={`Sayfa ${leftPage + 1}`}>
-              {leftPage + 1}
+              <span className="bs-folio-number">{leftPage + 1}</span>
+              <button
+                type="button"
+                className="bs-turn-btn"
+                aria-label="Sonraki sayfayı çevir"
+                disabled={leafState.spread >= leafState.spreads - 1}
+                onClick={() => pagerApi.current.step("forward")}
+              >
+                ›
+              </button>
             </footer>
+
+            <span className="bs-leaf-count" aria-hidden="true">
+              YAPRAK {leafState.spread + 1}/{leafState.spreads}
+            </span>
+            <span className="sr-only" aria-live="polite">
+              Sayfa {leftPage}–{leftPage + 1}
+            </span>
 
             {pageKey && <span key={`turn-${pageKey}`} className="bs-turning-leaf" aria-hidden="true" />}
           </div>
@@ -185,35 +248,171 @@ export function BookSheet({
         .bs-running::after{ content: "  ❖"; opacity: .45; }
         .bs-spread-content{
           position: relative;
-          z-index: 1;
+          z-index: 3;
+          display: flex;
           grid-column: 1 / -1;
           min-width: 0;
           min-height: 0;
           max-width: 100%;
-          overflow: auto;
+          overflow: hidden;
+          padding: clamp(12px, 1.8vw, 26px) 0 14px;
+          font-size: clamp(.66rem, 1.08vw, .93rem);
+          line-height: 1.58;
+        }
+        .bs-pager{
+          position: relative;
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
           overscroll-behavior: contain;
+          touch-action: pan-y;
+          cursor: grab;
+          outline: none;
+          user-select: none;
+          -webkit-user-select: none;
+        }
+        .bs-pager:active{ cursor: grabbing; }
+        .bs-pager:focus-visible{ outline: 1px dotted rgba(90,61,20,.55); outline-offset: 2px; }
+        .bs-pager::after{
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          pointer-events: none;
+          mix-blend-mode: multiply;
+          background: linear-gradient(90deg,
+            transparent calc(50% - 26px), rgba(74,45,15,.18) calc(50% - 5px),
+            rgba(255,248,224,.2) 50%, rgba(74,45,15,.15) calc(50% + 5px),
+            transparent calc(50% + 26px));
+        }
+        .bs-flow{
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          columns: 2;
+          column-gap: clamp(34px, 7.2vw, 108px);
+          column-fill: auto;
+          will-change: transform;
           overflow-wrap: anywhere;
           scrollbar-width: thin;
           scrollbar-color: rgba(96,63,21,.38) transparent;
-          padding: clamp(12px, 1.8vw, 26px) 0 16px;
-          columns: 2;
-          column-gap: clamp(34px, 7.2vw, 108px);
-          column-fill: balance;
-          font-size: clamp(.66rem, 1.08vw, .93rem);
-          line-height: 1.58;
-          animation: bs-ink-settle .42s ease-out both;
+        }
+        .bs-flow :where(input,textarea,select,[contenteditable="true"]){ user-select: text; -webkit-user-select: text; }
+        .bs-flow-clone{ pointer-events: none !important; }
+        .bs-half{
+          position: absolute;
+          top: 0; bottom: 0;
+          width: 50%;
+          display: none;
+          z-index: 4;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        .bs-half--left{
+          left: 0;
+          background: linear-gradient(90deg, #e9d7ae 0%, #f7edd1 5%, #fbf2d9 84%, #e7d4a9 100%);
+          box-shadow: inset -16px 0 22px -18px rgba(70,43,14,.55);
+        }
+        .bs-half--right{
+          left: 50%;
+          background: linear-gradient(90deg, #e7d4a9 0%, #fbf2d9 16%, #f7edd1 95%, #e9d7ae 100%);
+          box-shadow: inset 16px 0 22px -18px rgba(70,43,14,.55);
+        }
+        .bs-turn-leaf{
+          position: absolute;
+          top: 0; bottom: 0;
+          width: 50%;
+          display: none;
+          z-index: 6;
+          pointer-events: none;
+          transform-style: preserve-3d;
+          will-change: transform;
+        }
+        .bs-turn-leaf--forward{ left: 50%; transform-origin: left center; }
+        .bs-turn-leaf--backward{ left: 0; transform-origin: right center; }
+        .bs-turn-face{
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          background: linear-gradient(180deg, #fbf2d9, #f1e2c0);
+        }
+        .bs-turn-face--front{ transform: rotateY(0deg) translateZ(.4px); }
+        .bs-turn-face--back{ transform: rotateY(180deg) translateZ(.4px); }
+        .bs-turn-face::after{
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          mix-blend-mode: multiply;
+          opacity: calc(var(--bs-shade, 0) * .68);
+        }
+        .bs-turn-leaf--forward .bs-turn-face--front::after{
+          background: linear-gradient(90deg, rgba(58,35,9,.34), transparent 18%, rgba(255,255,255,.11) 78%, rgba(70,42,10,.16));
+        }
+        .bs-turn-leaf--forward .bs-turn-face--back::after{
+          background: linear-gradient(90deg, rgba(70,42,10,.14), rgba(255,255,255,.12) 30%, transparent 82%, rgba(58,35,9,.31));
+        }
+        .bs-turn-leaf--backward .bs-turn-face--front::after{
+          background: linear-gradient(90deg, rgba(70,42,10,.16), rgba(255,255,255,.11) 22%, transparent 82%, rgba(58,35,9,.34));
+        }
+        .bs-turn-leaf--backward .bs-turn-face--back::after{
+          background: linear-gradient(90deg, rgba(58,35,9,.31), transparent 18%, rgba(255,255,255,.12) 70%, rgba(70,42,10,.14));
+        }
+        .bs-turn-shadow{
+          position: absolute;
+          z-index: 5;
+          top: 0; bottom: 0;
+          width: 22%;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0;
+          pointer-events: none;
+          will-change: left, opacity;
+          background: radial-gradient(ellipse at 50% 50%, rgba(48,28,6,.5), rgba(48,28,6,.17) 36%, transparent 76%);
         }
         .bs-folio{
           position: relative;
           z-index: 3;
+          display: flex;
+          align-items: center;
+          gap: 8px;
           padding-top: 8px;
           font-size: clamp(.55rem, .9vw, .72rem);
           font-variant-numeric: oldstyle-nums;
           color: rgba(77,49,16,.66);
           border-top: 1px solid rgba(126,83,27,.14);
         }
-        .bs-folio--left{ text-align: left; padding-right: clamp(13px, 3.5vw, 50px); }
-        .bs-folio--right{ text-align: right; padding-left: clamp(13px, 3.5vw, 50px); }
+        .bs-folio--left{ justify-content: flex-start; padding-right: clamp(13px, 3.5vw, 50px); }
+        .bs-folio--right{ justify-content: flex-end; padding-left: clamp(13px, 3.5vw, 50px); }
+        .bs-turn-btn{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 22px;
+          height: 22px;
+          padding: 0 0 2px;
+          border: 1px dotted rgba(120,80,20,.55);
+          border-radius: 50%;
+          background: transparent;
+          color: rgba(77,49,16,.78);
+          font: 700 13px/1 Georgia, 'Times New Roman', serif;
+          cursor: pointer;
+        }
+        .bs-turn-btn:disabled{ opacity: .26; cursor: default; }
+        .bs-leaf-count{
+          position: absolute;
+          z-index: 3;
+          left: 50%;
+          bottom: 5px;
+          transform: translateX(-50%);
+          pointer-events: none;
+          font-size: clamp(.42rem, .7vw, .58rem);
+          letter-spacing: .16em;
+          color: rgba(90,61,20,.5);
+        }
         .bs-turning-leaf{
           position: absolute;
           z-index: 9;
@@ -234,10 +433,6 @@ export function BookSheet({
           0%{ transform: rotateY(0deg); opacity: .92; }
           58%{ opacity: .74; }
           100%{ transform: rotateY(-178deg); opacity: 0; }
-        }
-        @keyframes bs-ink-settle{
-          from{ opacity: .35; transform: translateX(8px); }
-          to{ opacity: 1; transform: translateX(0); }
         }
 
         .bs-fleuron{ text-align:center; color:rgba(90,61,20,.55); font-size:1.05rem; line-height:1; margin:4px 0 10px; }
@@ -291,12 +486,12 @@ export function BookSheet({
         .bs-reading-heading{ display:flex; align-items:flex-start; gap:8px; margin:0 0 8px; padding:7px 0; color:#3f2a0e; border-bottom:1px solid rgba(176,124,32,.35); }
         .bs-reading-heading h2,.bs-reading-heading:is(h2){ flex:1; margin:0; font-size:1.02em; font-weight:700; letter-spacing:.045em; }
         .bs-reading-number{ display:inline-flex; align-items:center; justify-content:center; min-width:20px; color:#7a5c1a; font-weight:700; }
-        .bs-topic-article{ content-visibility:auto; contain-intrinsic-size:auto 320px; break-inside:avoid; margin:0 0 13px; padding:8px 0 11px; border-bottom:1px dotted rgba(120,80,20,.3); }
+        .bs-topic-article{ margin:0 0 13px; padding:8px 0 11px; border-bottom:1px dotted rgba(120,80,20,.3); }
         .bs-topic-article h3{ margin:0 0 5px; color:#3f2a0e; font-size:.98em; font-weight:700; line-height:1.35; }
         .bs-topic-kicker{ margin:0 0 3px; color:#7a5c1a; font-size:.64em; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
         .bs-topic-introduction{ margin-bottom:10px !important; font-style:italic; color:rgba(74,49,19,.84); }
         .bs-topic-figure{ break-inside:avoid; margin:9px 0; }
-        .bs-topic-figure img{ display:block; width:100%; max-height:390px; object-fit:contain; }
+        .bs-topic-figure img{ display:block; width:100%; height:clamp(140px, 24svh, 320px); object-fit:contain; }
         .bs-topic-figure figcaption{ display:grid; gap:2px; padding:5px 2px; color:rgba(90,61,20,.7); font-size:.72em; line-height:1.35; }
         .bs-photo-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
         .bs-reading-empty{ display:flex; align-items:baseline; gap:8px; padding:5px 0; color:rgba(90,61,20,.55); font-size:.8em; border-bottom:1px dotted rgba(120,80,20,.22); }
@@ -341,24 +536,576 @@ export function BookSheet({
           .bs-stage{ padding-left:2px; padding-right:2px; }
           .bs-cover-board{ width:100%; padding:4px; border-radius:5px; }
           .bs-spread{ height:clamp(260px,min(58svh,78vw),430px); min-height:0; padding:12px 9px 12px; }
-          .bs-spread-content{ column-gap:28px; font-size:clamp(.58rem,2.25vw,.72rem); line-height:1.5; }
+          .bs-spread-content{ font-size:clamp(.58rem,2.25vw,.72rem); line-height:1.5; }
+          .bs-flow{ column-gap:26px; }
           .bs-running--left,.bs-folio--left{ padding-right:14px; }
           .bs-running--right,.bs-folio--right{ padding-left:14px; }
           .bs-photo-grid{ grid-template-columns:1fr; }
           .bs-entry{ min-height:28px; padding-left:4px; }
           .bs-callout{ padding:6px 7px; }
+          .bs-turn-btn{ width:20px; height:20px; }
         }
         @media (prefers-reduced-motion: reduce){
           .bs-turning-leaf{ animation:none!important; display:none; }
-          .bs-spread-content{ animation:none!important; }
+          .bs-turn-leaf,.bs-turn-shadow,.bs-half{ display:none!important; }
         }
         @media print{
           .bs-stage{ min-height:0!important; padding:0!important; background:white!important; }
           .bs-cover-board,.bs-volume,.bs-spread{ width:100%!important; max-width:none!important; height:auto!important; min-height:0!important; padding:8mm!important; border:0!important; background:white!important; box-shadow:none!important; }
           .bs-cover-board::before,.bs-cover-board::after,.bs-volume::before,.bs-volume::after,.bs-spread::before,.bs-spread::after,.bs-turning-leaf{ display:none!important; }
-          .bs-spread-content{ overflow:visible!important; columns:2; column-gap:16mm; animation:none!important; }
+          .bs-spread-content{ display:block!important; overflow:visible!important; }
+          .bs-pager{ overflow:visible!important; }
+          .bs-pager::after{ display:none!important; }
+          .bs-flow{ height:auto!important; transform:none!important; columns:2; column-gap:16mm; column-fill:balance; }
+          .bs-turn-leaf,.bs-half,.bs-turn-shadow,.bs-turn-btn,.bs-leaf-count{ display:none!important; }
         }
       `}</style>
+    </div>
+  );
+}
+
+interface TurnState {
+  direction: BookTurnDirection;
+  from: number;
+  to: number;
+  /** Oversized chapters skip the cloned faces and swap beneath a plain paper leaf. */
+  light: boolean;
+}
+
+interface PagerPointerStart {
+  pointerId: number;
+  x: number;
+  y: number;
+  startedAt: number;
+  lastX: number;
+  lastTime: number;
+  progress: number;
+  horizontal: boolean;
+  direction: BookTurnDirection;
+}
+
+interface PagerMetrics {
+  width: number;
+  height: number;
+  gap: number;
+  columnWidth: number;
+  /** Horizontal distance between the starts of two neighbouring columns. */
+  stride: number;
+  /** Horizontal distance between the starts of two neighbouring spreads. */
+  spreadStride: number;
+  spreads: number;
+}
+
+const INTERACTIVE_GUARD = [
+  "input", "textarea", "select", "option", "summary", "audio", "video",
+  "[role='slider']", "[role='switch']", "[role='combobox']", "[role='listbox']",
+  "[role='spinbutton']", "[contenteditable='true']", ".bs-table-wrap", "[data-book-no-turn]",
+].join(",");
+const BUTTON_GUARD = "button,[role='button'],[role='tab'],[role='menuitem']";
+/** Above this many DOM nodes a turn keeps the physical leaf but skips text clones. */
+const CLONE_NODE_LIMIT = 3500;
+
+function isGuardedTarget(target: EventTarget | null, mode: BookInteractionMode): boolean {
+  const element = target instanceof Element ? target : null;
+  if (!element) return false;
+  if (element.closest(INTERACTIVE_GUARD)) return true;
+  // Reading pages print buttons as plain ink, so they never swallow a turn.
+  return mode !== "reading" && Boolean(element.closest(BUTTON_GUARD));
+}
+
+/**
+ * Splits arbitrary sheet content into fixed physical leaves with CSS columns.
+ * Every printed line keeps its place on its leaf — nothing scrolls — and the
+ * reader moves through the sheet with the same drag/flick/tap page turns as
+ * the table of contents, complete with a real two-faced turning leaf.
+ */
+function BookLeafPager({
+  children,
+  routeContent,
+  interactionMode,
+  apiRef,
+  onLeafState,
+}: {
+  children: ReactNode;
+  routeContent: boolean;
+  interactionMode: BookInteractionMode;
+  apiRef: MutableRefObject<LeafPagerHandle>;
+  onLeafState: (spread: number, spreads: number) => void;
+}) {
+  const pagerRef = useRef<HTMLDivElement>(null);
+  const flowRef = useRef<HTMLDivElement>(null);
+  const halfRef = useRef<HTMLDivElement>(null);
+  const leafRef = useRef<HTMLDivElement>(null);
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
+  const shadowRef = useRef<HTMLSpanElement>(null);
+
+  const metricsRef = useRef<PagerMetrics>({
+    width: 0, height: 0, gap: 0, columnWidth: 1, stride: 1, spreadStride: 1, spreads: 1,
+  });
+  const spreadRef = useRef(0);
+  const turnRef = useRef<TurnState | null>(null);
+  const progressRef = useRef(0);
+  const settleFrame = useRef<number | null>(null);
+  const pointerStart = useRef<PagerPointerStart | null>(null);
+  const wheelLock = useRef(false);
+  const wheelTimer = useRef<number | null>(null);
+  const clickTimer = useRef<number | null>(null);
+  const suppressClick = useRef(false);
+  const pendingMeasure = useRef(false);
+  const hashHandled = useRef(false);
+  const [reducedMotion] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+
+  const onLeafStateRef = useRef(onLeafState);
+  onLeafStateRef.current = onLeafState;
+
+  const publishState = useCallback(() => {
+    onLeafStateRef.current(spreadRef.current, metricsRef.current.spreads);
+  }, []);
+
+  const applyBaseOffset = useCallback(() => {
+    const flow = flowRef.current;
+    if (!flow) return;
+    const offset = spreadRef.current * metricsRef.current.spreadStride;
+    flow.style.transform = `translate3d(${-offset}px, 0, 0)`;
+  }, []);
+
+  /**
+   * Reads the real paper size and derives the physical leaf grid from it.
+   * The transform is cleared for one synchronous layout so `scrollWidth`
+   * reports the full run of printed columns.
+   */
+  const measure = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const pager = pagerRef.current;
+    const flow = flowRef.current;
+    if (!pager || !flow) return;
+    if (turnRef.current) {
+      pendingMeasure.current = true;
+      return;
+    }
+    const width = pager.clientWidth;
+    const height = pager.clientHeight;
+    if (width < 60 || height < 40) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(flow).columnGap) || 0;
+    const columnWidth = Math.max(1, (width - gap) / 2);
+    const stride = columnWidth + gap;
+    flow.style.transform = "none";
+    if (pager.scrollLeft) pager.scrollLeft = 0;
+    if (pager.scrollTop) pager.scrollTop = 0;
+    const total = Math.max(pager.scrollWidth, width);
+    const columns = Math.max(1, Math.round((total + gap) / stride));
+    const spreads = Math.max(1, Math.ceil(columns / 2));
+
+    // Deep links (#subtopic) open the book on the leaf that prints the target.
+    if (!hashHandled.current) {
+      hashHandled.current = true;
+      const hash = window.location.hash;
+      if (hash.length > 1) {
+        try {
+          const anchor = flow.querySelector(hash);
+          if (anchor) {
+            const flowLeft = flow.getBoundingClientRect().left;
+            const column = Math.floor((anchor.getBoundingClientRect().left - flowLeft + 2) / stride);
+            spreadRef.current = Math.floor(Math.max(0, column) / 2);
+          }
+        } catch {
+          /* Not a queryable anchor. */
+        }
+      }
+    }
+
+    metricsRef.current = { width, height, gap, columnWidth, stride, spreadStride: width + gap, spreads };
+    spreadRef.current = clampNumber(spreadRef.current, 0, spreads - 1);
+    applyBaseOffset();
+    publishState();
+  }, [applyBaseOffset, publishState]);
+
+  /** Writes one animation frame straight to the DOM — no re-render per frame. */
+  const applyTurnFrame = useCallback((progress: number) => {
+    const active = turnRef.current;
+    const leaf = leafRef.current;
+    if (!active || !leaf) return;
+    const { width, spreadStride } = metricsRef.current;
+    const sign = active.direction === "forward" ? -1 : 1;
+    const perspective = Math.round(clampNumber(width * 2.4, 900, 2400));
+    leaf.style.transform = `perspective(${perspective}px) rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
+    const shade = Math.sin(Math.PI * progress);
+    leaf.style.setProperty("--bs-shade", shade.toFixed(3));
+    if (frontRef.current) frontRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
+    if (backRef.current) backRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
+    if (shadowRef.current) {
+      const foldCenter = 50 + (active.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * progress);
+      shadowRef.current.style.left = `${foldCenter.toFixed(2)}%`;
+      shadowRef.current.style.opacity = (shade * 0.5).toFixed(3);
+    }
+    if (active.light && flowRef.current) {
+      const spread = progress >= 0.5 ? active.to : active.from;
+      flowRef.current.style.transform = `translate3d(${-(spread * spreadStride)}px, 0, 0)`;
+    }
+  }, []);
+
+  const finalizeTurn = useCallback((complete: boolean) => {
+    const active = turnRef.current;
+    turnRef.current = null;
+    progressRef.current = 0;
+    if (active) spreadRef.current = complete ? active.to : active.from;
+    if (leafRef.current) {
+      leafRef.current.style.display = "none";
+      leafRef.current.style.transform = "";
+    }
+    if (halfRef.current) halfRef.current.style.display = "none";
+    if (shadowRef.current) shadowRef.current.style.opacity = "0";
+    frontRef.current?.replaceChildren();
+    backRef.current?.replaceChildren();
+    halfRef.current?.replaceChildren();
+    applyBaseOffset();
+    publishState();
+    if (pendingMeasure.current) {
+      pendingMeasure.current = false;
+      measure();
+    }
+  }, [applyBaseOffset, measure, publishState]);
+
+  /** Eases the grabbed leaf the rest of the way (or back) at 60fps. */
+  const settleTurn = useCallback((fromProgress: number, complete: boolean) => {
+    if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
+    const target = complete ? 1 : 0;
+    const durationMs = getBookTurnSettleDuration(fromProgress, complete);
+    if (durationMs <= 0 || Math.abs(target - fromProgress) < 0.002) {
+      applyTurnFrame(target);
+      finalizeTurn(complete);
+      return;
+    }
+    const startedAt = performance.now();
+    const tick = (now: number) => {
+      const elapsed = clampNumber((now - startedAt) / durationMs, 0, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      const progress = fromProgress + (target - fromProgress) * eased;
+      progressRef.current = progress;
+      applyTurnFrame(progress);
+      if (elapsed < 1) {
+        settleFrame.current = window.requestAnimationFrame(tick);
+      } else {
+        settleFrame.current = null;
+        finalizeTurn(complete);
+      }
+    };
+    settleFrame.current = window.requestAnimationFrame(tick);
+  }, [applyTurnFrame, finalizeTurn]);
+
+  /** Prints a frozen copy of the flow into one face of the turning leaf. */
+  const buildFace = useCallback((host: HTMLElement | null, left: number) => {
+    const flow = flowRef.current;
+    if (!host || !flow) return;
+    const clone = flow.cloneNode(true) as HTMLElement;
+    clone.classList.add("bs-flow-clone");
+    clone.style.transform = "none";
+    clone.style.position = "absolute";
+    clone.style.top = "0";
+    clone.style.left = `${left}px`;
+    clone.style.width = `${metricsRef.current.width}px`;
+    clone.style.height = "100%";
+    clone.setAttribute("aria-hidden", "true");
+    clone.setAttribute("inert", "");
+    host.replaceChildren(clone);
+  }, []);
+
+  const beginTurn = useCallback((direction: BookTurnDirection): boolean => {
+    if (turnRef.current) return false;
+    const flow = flowRef.current;
+    const leaf = leafRef.current;
+    const half = halfRef.current;
+    if (!flow || !leaf || !half) return false;
+    const metrics = metricsRef.current;
+    if (metrics.width < 60) return false;
+    const from = spreadRef.current;
+    const to = from + (direction === "forward" ? 1 : -1);
+    if (to < 0 || to > metrics.spreads - 1) return false;
+
+    const light = flow.querySelectorAll("*").length > CLONE_NODE_LIMIT;
+    turnRef.current = { direction, from, to, light };
+    progressRef.current = 0;
+
+    if (!light) {
+      const leftColumn = from * 2;
+      const rightColumn = leftColumn + 1;
+      const halfGap = metrics.gap / 2;
+      if (direction === "forward") {
+        buildFace(frontRef.current, halfGap - rightColumn * metrics.stride);
+        buildFace(backRef.current, -(rightColumn + 1) * metrics.stride);
+        buildFace(half, -leftColumn * metrics.stride);
+        half.className = "bs-half bs-half--left";
+      } else {
+        buildFace(frontRef.current, -leftColumn * metrics.stride);
+        buildFace(backRef.current, halfGap - (leftColumn - 1) * metrics.stride);
+        buildFace(half, halfGap - rightColumn * metrics.stride);
+        half.className = "bs-half bs-half--right";
+      }
+      half.style.display = "block";
+      // The target spread waits beneath the moving paper, exactly like a book.
+      flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
+    }
+
+    leaf.className = `bs-turn-leaf bs-turn-leaf--${direction}`;
+    leaf.style.display = "block";
+    applyTurnFrame(0);
+    return true;
+  }, [applyTurnFrame, buildFace]);
+
+  const stepInstant = useCallback((direction: BookTurnDirection) => {
+    const next = clampNumber(
+      spreadRef.current + (direction === "forward" ? 1 : -1),
+      0,
+      metricsRef.current.spreads - 1,
+    );
+    if (next === spreadRef.current) return;
+    spreadRef.current = next;
+    applyBaseOffset();
+    publishState();
+  }, [applyBaseOffset, publishState]);
+
+  const step = useCallback((direction: BookTurnDirection) => {
+    if (turnRef.current) return;
+    if (reducedMotion) {
+      stepInstant(direction);
+      return;
+    }
+    if (beginTurn(direction)) settleTurn(0, true);
+  }, [beginTurn, reducedMotion, settleTurn, stepInstant]);
+
+  useEffect(() => {
+    apiRef.current = { step };
+  }, [apiRef, step]);
+
+  useEffect(() => {
+    measure();
+    const pager = pagerRef.current;
+    const flow = flowRef.current;
+    if (!pager || !flow || typeof window === "undefined") return;
+
+    let frame: number | null = null;
+    const scheduleMeasure = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = null;
+        measure();
+      });
+    };
+
+    const resizeObserver = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(scheduleMeasure);
+    resizeObserver?.observe(pager);
+    const contentObserver = new MutationObserver(scheduleMeasure);
+    contentObserver.observe(flow, { childList: true, subtree: true, characterData: true });
+    const fontObserver = new MutationObserver(scheduleMeasure);
+    fontObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["style", "data-font-size"],
+    });
+    const onAssetLoad = (event: Event) => {
+      if ((event.target as HTMLElement | null)?.tagName === "IMG") scheduleMeasure();
+    };
+    flow.addEventListener("load", onAssetLoad, true);
+    // Focus jumps and hash navigation must never shear the printed columns.
+    const keepPinned = () => {
+      if (pager.scrollLeft) pager.scrollLeft = 0;
+      if (pager.scrollTop) pager.scrollTop = 0;
+    };
+    pager.addEventListener("scroll", keepPinned, { passive: true });
+    window.addEventListener("resize", scheduleMeasure, { passive: true });
+
+    return () => {
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      resizeObserver?.disconnect();
+      contentObserver.disconnect();
+      fontObserver.disconnect();
+      flow.removeEventListener("load", onAssetLoad, true);
+      pager.removeEventListener("scroll", keepPinned);
+      window.removeEventListener("resize", scheduleMeasure);
+    };
+  }, [measure]);
+
+  useEffect(() => () => {
+    if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
+    if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
+    if (clickTimer.current) window.clearTimeout(clickTimer.current);
+  }, []);
+
+  const armClickSuppressionReset = () => {
+    if (clickTimer.current) window.clearTimeout(clickTimer.current);
+    clickTimer.current = window.setTimeout(() => {
+      suppressClick.current = false;
+      clickTimer.current = null;
+    }, 350);
+  };
+
+  const releasePointerCapture = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.button !== 0 || turnRef.current) return;
+    if (isGuardedTarget(event.target, interactionMode)) return;
+    pointerStart.current = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      startedAt: event.timeStamp,
+      lastX: event.clientX,
+      lastTime: event.timeStamp,
+      progress: 0,
+      horizontal: false,
+      direction: "forward",
+    };
+  };
+
+  const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const start = pointerStart.current;
+    if (!start || start.pointerId !== event.pointerId) return;
+
+    const deltaX = event.clientX - start.x;
+    const deltaY = event.clientY - start.y;
+    if (!start.horizontal) {
+      if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        pointerStart.current = null;
+        return;
+      }
+      // Dragging left pulls the right-hand leaf over; dragging right pulls the
+      // left-hand leaf back — exactly like paper.
+      const direction: BookTurnDirection = deltaX < 0 ? "forward" : "backward";
+      if (reducedMotion) {
+        pointerStart.current = null;
+        suppressClick.current = true;
+        armClickSuppressionReset();
+        stepInstant(direction);
+        return;
+      }
+      if (!beginTurn(direction)) {
+        pointerStart.current = null;
+        return;
+      }
+      start.horizontal = true;
+      start.direction = direction;
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
+
+    start.lastX = event.clientX;
+    start.lastTime = event.timeStamp;
+    const leafWidth = metricsRef.current.width / 2 || 1;
+    start.progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
+    if (start.progress > 0.035) suppressClick.current = true;
+    progressRef.current = start.progress;
+    applyTurnFrame(start.progress);
+  };
+
+  const onPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const start = pointerStart.current;
+    pointerStart.current = null;
+    if (!start || start.pointerId !== event.pointerId) return;
+    releasePointerCapture(event);
+
+    if (start.horizontal) {
+      const deltaX = event.clientX - start.x;
+      const elapsed = Math.max(1, event.timeStamp - start.lastTime);
+      const releaseVelocity = (event.clientX - start.lastX) / elapsed;
+      const totalVelocity = deltaX / Math.max(1, event.timeStamp - start.startedAt);
+      const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
+        ? releaseVelocity
+        : totalVelocity;
+      const leafWidth = metricsRef.current.width / 2 || 1;
+      const progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
+      progressRef.current = progress;
+      suppressClick.current = true;
+      armClickSuppressionReset();
+      settleTurn(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
+      return;
+    }
+
+    const target = event.target as HTMLElement;
+    if (target.closest("a")) return;
+    if (isGuardedTarget(target, interactionMode)) return;
+    if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 12) return;
+    const bounds = pagerRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    const relativeX = event.clientX - bounds.left;
+    if (relativeX < bounds.width * 0.16) step("backward");
+    else if (relativeX > bounds.width * 0.84) step("forward");
+  };
+
+  const onPointerCancel = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const start = pointerStart.current;
+    pointerStart.current = null;
+    releasePointerCapture(event);
+    if (!start?.horizontal) return;
+    suppressClick.current = true;
+    armClickSuppressionReset();
+    settleTurn(progressRef.current, false);
+  };
+
+  const onClickCapture = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (!suppressClick.current) return;
+    event.preventDefault();
+    event.stopPropagation();
+    suppressClick.current = false;
+  };
+
+  const onWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
+    const magnitude = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (wheelLock.current || turnRef.current || Math.abs(magnitude) < 16) return;
+    if (isGuardedTarget(event.target, interactionMode)) return;
+    wheelLock.current = true;
+    step(magnitude > 0 ? "forward" : "backward");
+    if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
+    wheelTimer.current = window.setTimeout(() => {
+      wheelLock.current = false;
+      wheelTimer.current = null;
+    }, 650);
+  };
+
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+    if (target.closest("input,textarea,select,[contenteditable='true']")) return;
+    if (event.key === "ArrowRight" || event.key === "PageDown") {
+      event.preventDefault();
+      step("forward");
+    }
+    if (event.key === "ArrowLeft" || event.key === "PageUp") {
+      event.preventDefault();
+      step("backward");
+    }
+  };
+
+  return (
+    <div
+      ref={pagerRef}
+      className="bs-pager"
+      role="group"
+      aria-roledescription="iki sayfalı kitap yaprağı"
+      tabIndex={0}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+      onClickCapture={onClickCapture}
+      onWheel={onWheel}
+      onKeyDown={onKeyDown}
+      onDragStart={(event) => event.preventDefault()}
+    >
+      <div ref={flowRef} className={`bs-flow ${routeContent ? "bs-route-content" : ""}`}>
+        {children}
+      </div>
+      <div ref={halfRef} className="bs-half" aria-hidden="true" />
+      <span ref={shadowRef} className="bs-turn-shadow" aria-hidden="true" />
+      <div ref={leafRef} className="bs-turn-leaf" aria-hidden="true">
+        <div ref={frontRef} className="bs-turn-face bs-turn-face--front" />
+        <div ref={backRef} className="bs-turn-face bs-turn-face--back" />
+      </div>
     </div>
   );
 }

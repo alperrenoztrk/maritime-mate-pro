@@ -61,8 +61,9 @@ interface BookTopicReaderProps {
 /**
  * Long-form, read-only topic renderer used by the book. Every chapter and
  * subtopic stays in the document flow; nothing is hidden behind an accordion,
- * tab, modal or action button. `content-visibility` in BookSheet keeps the
- * large curriculum inexpensive to paint while preserving the full text.
+ * tab, modal or action button. BookSheet prints the flow onto fixed physical
+ * leaves (instead of `content-visibility` paint skipping), so each line keeps
+ * an unchanging spot on its page like ink.
  */
 export function BookTopicReader({ topics, contents, resources = [] }: BookTopicReaderProps) {
   return (
