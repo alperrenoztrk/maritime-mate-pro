@@ -193,6 +193,152 @@ export function BookSheet({ title, children }: BookSheetProps) {
           filter: sepia(.5) contrast(.92) saturate(.8);
           border: 1px solid rgba(74,49,19,.4);
         }
+        /* ── Okuma yüzeyi (detay sayfaları) ── */
+        .bs-h2{
+          margin: 14px 0 4px;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: 1.02rem;
+          font-weight: 700;
+          letter-spacing: .06em;
+          color: #3f2a0e;
+          border-bottom: 1px solid rgba(176,124,32,.45);
+          padding-bottom: 3px;
+        }
+        .bs-prose{
+          font-family: Georgia, 'Times New Roman', serif;
+          color: #4a3113;
+          font-size: .88rem;
+          line-height: 1.65;
+        }
+        .bs-prose p{ margin: 6px 0; }
+        .bs-prose strong, .bs-prose b{ color: #3f2a0e; }
+        .bs-prose ul, .bs-prose ol{ margin: 6px 0 6px 18px; }
+        .bs-prose ul{ list-style: disc; }
+        .bs-prose ol{ list-style: decimal; }
+        .bs-prose li{ margin: 3px 0; }
+        .bs-prose li::marker{ color: rgba(120,80,20,.7); }
+        .bs-prose h3, .bs-prose h4{
+          margin: 10px 0 4px;
+          font-weight: 700;
+          color: #3f2a0e;
+        }
+        .bs-prose img{
+          max-width: 100%;
+          border-radius: 2px;
+          margin: 8px auto;
+          display: block;
+          filter: sepia(.5) contrast(.92) saturate(.8);
+          border: 1px solid rgba(74,49,19,.4);
+        }
+        .bs-prose a{ color: #7a5c1a; text-decoration: underline dotted; }
+        .bs-formula{
+          margin: 8px 0;
+          padding: 8px 12px;
+          border: 1px solid rgba(120,80,20,.45);
+          border-radius: 3px;
+          background: rgba(255,255,255,.35);
+          font-family: Georgia, 'Times New Roman', serif;
+          color: #3f2a0e;
+        }
+        .bs-formula::before{
+          content: "Formül";
+          display: block;
+          font-size: .6rem;
+          font-weight: 700;
+          letter-spacing: .22em;
+          text-transform: uppercase;
+          color: rgba(90,61,20,.65);
+          margin-bottom: 3px;
+        }
+        .bs-table-wrap{ overflow-x: auto; margin: 8px 0; }
+        .bs-table{
+          width: 100%;
+          border-collapse: collapse;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: .8rem;
+          color: #4a3113;
+        }
+        .bs-table th{
+          font-size: .68rem;
+          font-weight: 700;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: rgba(90,61,20,.85);
+          text-align: left;
+          padding: 5px 8px;
+          border-bottom: 1.5px solid rgba(120,80,20,.55);
+        }
+        .bs-table td{
+          padding: 5px 8px;
+          border-bottom: 1px dotted rgba(120,80,20,.4);
+          vertical-align: top;
+        }
+        .bs-callout{
+          margin: 8px 0;
+          padding: 7px 10px 7px 12px;
+          border-left: 3px solid rgba(120,80,20,.6);
+          background: rgba(120,80,20,.07);
+          border-radius: 0 3px 3px 0;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: .84rem;
+          color: #4a3113;
+        }
+        .bs-callout-label{
+          display: block;
+          font-size: .6rem;
+          font-weight: 700;
+          letter-spacing: .2em;
+          text-transform: uppercase;
+          color: rgba(90,61,20,.7);
+          margin-bottom: 2px;
+        }
+        .bs-btn{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          padding: 8px 16px;
+          border-radius: 3px;
+          background: #4a3113;
+          color: #f3e7c9;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: .82rem;
+          font-weight: 600;
+          letter-spacing: .08em;
+          border: 1px solid #3f2a0e;
+          box-shadow: 0 2px 4px rgba(0,0,0,.25);
+          text-decoration: none;
+          transition: transform .12s ease;
+        }
+        .bs-btn:active{ transform: scale(.97); }
+        .bs-btn--ghost{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          padding: 7px 14px;
+          border-radius: 3px;
+          background: transparent;
+          color: #4a3113;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: .82rem;
+          font-weight: 600;
+          letter-spacing: .08em;
+          border: 1px dotted rgba(120,80,20,.6);
+          text-decoration: none;
+          transition: transform .12s ease;
+        }
+        .bs-btn--ghost:active{ transform: scale(.97); }
+        .bs-btn:disabled, .bs-btn--ghost:disabled{ opacity: .4; }
+        .bs-sticky{
+          position: sticky;
+          top: 0;
+          z-index: 5;
+          background: #f6ecd0;
+          border-bottom: 1px dotted rgba(120,80,20,.4);
+          padding: 6px 0;
+          margin: 0 0 8px;
+        }
       `}</style>
     </div>
   );

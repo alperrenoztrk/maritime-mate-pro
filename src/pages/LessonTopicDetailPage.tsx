@@ -1,4 +1,3 @@
-import { Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
@@ -10,6 +9,7 @@ import { buildSectionKey, type ContentCategory } from "@/services/topicContentOv
 import { resolveLessonImage } from "@/utils/lessonImageFallbacks";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
+import { BookSheet } from "@/components/book/BookSheet";
 
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
@@ -31,22 +31,19 @@ export default function LessonTopicDetailPage() {
 
   if (!categoryId || !decodedTitle) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Konu bulunamadı</p>
-      </div>
+      <BookSheet title="DERSLER">
+        <p className="bs-muted py-10 text-center text-sm italic">Konu bulunamadı</p>
+      </BookSheet>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
-        <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
-      </div>
+    <BookSheet title="DERSLER">
+      <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>{content.title}</h1>
+      <div className="bs-fleuron" aria-hidden="true">❦</div>
 
-      <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
-        <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-          <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
-        </div>
+      <div className="flex flex-col gap-5">
+        <p className="bs-prose italic">{stripMarkdown(content.introduction)}</p>
 
         {content.sections.map((section, index) => {
           const categoryKey = (categoryId ?? "navigation") as ContentCategory;
@@ -55,34 +52,27 @@ export default function LessonTopicDetailPage() {
           const resolvedContent = override?.content || section.content;
 
           return (
-            <section key={`${section.title}-${index}`} className="space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
+            <section key={`${section.title}-${index}`} className="bs-prose">
+              <h2 className="bs-h2">{section.title}</h2>
 
               {section.image && (
-                <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                  <img
-                    src={resolveLessonImage(categoryId, section.image, section.title, content.title, section.imageAlt)}
-                    alt={section.imageAlt || section.title}
-                    className="h-48 w-full object-contain bg-muted/30"
-                    loading="lazy"
-                  />
-                </div>
+                <img
+                  src={resolveLessonImage(categoryId, section.image, section.title, content.title, section.imageAlt)}
+                  alt={section.imageAlt || section.title}
+                  className="mx-auto h-48 w-auto max-w-full object-contain"
+                  loading="lazy"
+                />
               )}
 
               <ReactMarkdown
                 components={{
-                  p: ({ children }) => (
-                    <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
-                  ),
                   img: ({ src, alt }) => (
-                    <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                      <img
-                        src={resolveLessonImage(categoryId, src, section.title, content.title, alt)}
-                        alt={alt || section.title}
-                        className="h-48 w-full object-contain bg-muted/30"
-                        loading="lazy"
-                      />
-                    </div>
+                    <img
+                      src={resolveLessonImage(categoryId, src, section.title, content.title, alt)}
+                      alt={alt || section.title}
+                      className="mx-auto h-48 w-auto max-w-full object-contain"
+                      loading="lazy"
+                    />
                   ),
                 }}
               >
@@ -90,22 +80,17 @@ export default function LessonTopicDetailPage() {
               </ReactMarkdown>
 
               {section.bulletPoints && section.bulletPoints.length > 0 && (
-                <ul className="space-y-2 pl-1">
+                <ul>
                   {section.bulletPoints.map((point, pointIndex) => (
-                    <li key={`${section.title}-point-${pointIndex}`} className="flex items-start gap-3 text-sm text-foreground/80">
-                      <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span>{stripMarkdown(point)}</span>
-                    </li>
+                    <li key={`${section.title}-point-${pointIndex}`}>{stripMarkdown(point)}</li>
                   ))}
                 </ul>
               )}
 
               {section.formula && (
-                <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4">
-                  <p className="font-mono text-sm font-medium text-amber-700 dark:text-amber-400">
-                    {section.formula.text}
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">{section.formula.description}</p>
+                <div className="bs-formula">
+                  <p className="font-semibold">{section.formula.text}</p>
+                  <p className="bs-muted mt-1 text-xs">{section.formula.description}</p>
                 </div>
               )}
             </section>
@@ -115,25 +100,17 @@ export default function LessonTopicDetailPage() {
         {enhancement && <LessonEnhancementBlock data={enhancement} />}
 
         {content.keyPoints && content.keyPoints.length > 0 && (
-          <section className="rounded-xl border border-border/40 bg-card/60 p-5">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
-            </div>
-            <ul className="space-y-2">
+          <div className="bs-callout">
+            <span className="bs-callout-label">Önemli Noktalar</span>
+            <ol className="ml-4 list-decimal">
               {content.keyPoints.map((point, index) => (
-                <li key={`key-point-${index}`} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <span>{stripMarkdown(point)}</span>
-                </li>
+                <li key={`key-point-${index}`} className="my-1">{stripMarkdown(point)}</li>
               ))}
-            </ul>
-          </section>
+            </ol>
+          </div>
         )}
       </div>
-    </div>
+    </BookSheet>
   );
 }
 
