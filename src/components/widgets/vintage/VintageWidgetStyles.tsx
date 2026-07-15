@@ -1,14 +1,20 @@
 /**
  * Vintage enstrüman widget'larının ortak CSS'i (`vw-` prefix).
  * HomeWidgetGrid tarafından bir kez render edilir; bileşenler yalnızca sınıfları kullanır.
- * Kural: yalnızca gradyan + transform; resim/canvas/backdrop-filter yok.
+ * Kural: gradyan + transform + inline SVG data-URI doku (feTurbulence);
+ * harici görsel/canvas/backdrop-filter yok. Tüm yazılar nesnenin üzerinde durur
+ * (pirinç plaka, kadran, LCD, kazınmış gövde).
  */
 export function VintageWidgetStyles() {
   return (
     <style>{`
-      /* ── Ortak kasa: bakalit gövde, pirinç kenar, köşe vidaları ── */
+      /* ── Ortak kasa: bakalit gövde, yivli pirinç vidalar, fırça izi ── */
       .vw-device{
+        --vw-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0.12 0.12 0 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+        --vw-wood: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28 0.02' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0.16 0.16 0 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23w)'/%3E%3C/svg%3E");
         position: relative;
+        isolation: isolate;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -17,17 +23,51 @@ export function VintageWidgetStyles() {
         padding: 10px;
         border: 1px solid rgba(202,160,68,.4);
         background-image:
-          radial-gradient(circle 3px at 11px 11px, #f2d98a 0%, #7a5c1a 55%, transparent 75%),
-          radial-gradient(circle 3px at calc(100% - 11px) 11px, #f2d98a 0%, #7a5c1a 55%, transparent 75%),
-          radial-gradient(circle 3px at 11px calc(100% - 11px), #f2d98a 0%, #7a5c1a 55%, transparent 75%),
-          radial-gradient(circle 3px at calc(100% - 11px) calc(100% - 11px), #f2d98a 0%, #7a5c1a 55%, transparent 75%),
+          /* Vida yivleri — her vida farklı açıda sıkılmış */
+          linear-gradient(48deg, transparent 42%, rgba(18,11,4,.9) 46% 54%, transparent 58%),
+          linear-gradient(-27deg, transparent 42%, rgba(18,11,4,.9) 46% 54%, transparent 58%),
+          linear-gradient(102deg, transparent 42%, rgba(18,11,4,.9) 46% 54%, transparent 58%),
+          linear-gradient(9deg, transparent 42%, rgba(18,11,4,.9) 46% 54%, transparent 58%),
+          /* Havşalı pirinç vida başları */
+          radial-gradient(circle 3.5px at 11px 11px, #fdf0c0 0%, #caa044 38%, #6b4e16 62%, rgba(0,0,0,.55) 72%, transparent 82%),
+          radial-gradient(circle 3.5px at calc(100% - 11px) 11px, #fdf0c0 0%, #caa044 38%, #6b4e16 62%, rgba(0,0,0,.55) 72%, transparent 82%),
+          radial-gradient(circle 3.5px at 11px calc(100% - 11px), #fdf0c0 0%, #caa044 38%, #6b4e16 62%, rgba(0,0,0,.55) 72%, transparent 82%),
+          radial-gradient(circle 3.5px at calc(100% - 11px) calc(100% - 11px), #fdf0c0 0%, #caa044 38%, #6b4e16 62%, rgba(0,0,0,.55) 72%, transparent 82%),
+          /* Üstten vuran ışık + bakalit gövde */
+          linear-gradient(115deg, rgba(255,255,255,.07) 0%, transparent 36%),
           linear-gradient(160deg, #2a211a 0%, #16100b 100%);
-        box-shadow: inset 0 1px 0 rgba(242,217,138,.12), 0 8px 20px rgba(0,0,0,.45);
+        background-position:
+          7.5px 7.5px,
+          calc(100% - 14.5px) 7.5px,
+          7.5px calc(100% - 14.5px),
+          calc(100% - 14.5px) calc(100% - 14.5px),
+          0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+        background-size:
+          7px 7px, 7px 7px, 7px 7px, 7px 7px,
+          auto, auto, auto, auto, auto, auto;
+        background-repeat: no-repeat;
+        box-shadow:
+          inset 0 1px 0 rgba(242,217,138,.14),
+          inset 0 -8px 14px rgba(0,0,0,.38),
+          0 2px 4px rgba(0,0,0,.45),
+          0 10px 22px rgba(0,0,0,.5);
+      }
+      /* Yaşlanma patinası — tüm kasaya tanecik serpintisi */
+      .vw-device::after{
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 7;
+        border-radius: inherit;
+        pointer-events: none;
+        mix-blend-mode: multiply;
+        opacity: .4;
+        background-image: var(--vw-noise);
       }
       .vw-small{ grid-column: span 1; aspect-ratio: 1 / 1.14; }
       .vw-medium{ grid-column: span 2; min-height: 150px; }
 
-      /* Pirinç kazınmış etiket plakası */
+      /* Pirinç kazınmış etiket plakası — perçinli, harfler baskıyla gömme */
       .vw-plate{
         font-family: Georgia, 'Times New Roman', serif;
         font-size: 9px;
@@ -37,27 +77,37 @@ export function VintageWidgetStyles() {
         color: #3a2b10;
         text-transform: uppercase;
         text-align: center;
-        padding: 3px 9px;
+        padding: 3px 12px;
         border-radius: 3px;
         max-width: 100%;
-        background: linear-gradient(180deg, #f2d98a, #caa044);
-        box-shadow: inset 0 1px 1px rgba(255,255,255,.5), inset 0 -1px 1px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.4);
+        text-shadow: 0 1px 0 rgba(255,255,255,.42);
+        background:
+          radial-gradient(circle 1.6px at 4.5px 50%, #6b4e16 0 58%, rgba(0,0,0,.4) 66%, transparent 74%),
+          radial-gradient(circle 1.6px at calc(100% - 4.5px) 50%, #6b4e16 0 58%, rgba(0,0,0,.4) 66%, transparent 74%),
+          linear-gradient(180deg, #f6e3a0 0%, #dfba63 52%, #caa044 100%);
+        box-shadow: inset 0 1px 1px rgba(255,255,255,.55), inset 0 -1px 1px rgba(0,0,0,.35), 0 1px 2px rgba(0,0,0,.45);
       }
       .vw-engraved{
         font-family: Georgia, 'Times New Roman', serif;
         color: #c9b98f;
-        text-shadow: 0 -1px 0 rgba(0,0,0,.7);
+        text-shadow: 0 -1px 0 rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,.06);
         letter-spacing: .1em;
       }
 
-      /* ── Kadran (kronometre + pusula ortak) ── */
+      /* ── Kadran (kronometre + pusula ortak): tornalanmış pirinç bezel ── */
       .vw-dial{
         position: relative;
         width: 72%;
         aspect-ratio: 1;
         border-radius: 50%;
-        background: radial-gradient(circle at 32% 28%, #f6e2a4 0%, #daa520 38%, #caa044 62%, #7a5c1a 100%);
-        box-shadow: 0 4px 10px rgba(0,0,0,.5), inset 0 -2px 3px rgba(0,0,0,.35);
+        background:
+          radial-gradient(circle at 30% 24%, rgba(255,255,255,.55) 0%, rgba(255,255,255,.14) 16%, transparent 40%),
+          conic-gradient(from 205deg, #8a6820, #f6e2a4 70deg, #a8801f 130deg, #f2d98a 200deg, #7a5c1a 280deg, #8a6820 360deg);
+        box-shadow:
+          0 5px 12px rgba(0,0,0,.55),
+          0 1px 2px rgba(0,0,0,.5),
+          inset 0 -2px 4px rgba(0,0,0,.4),
+          inset 0 1px 1px rgba(255,255,255,.45);
         flex-shrink: 0;
       }
       .vw-dial::before{
@@ -66,25 +116,30 @@ export function VintageWidgetStyles() {
         inset: 9%;
         border-radius: 50%;
         background: radial-gradient(circle at 40% 32%, #fdf6e0 0%, #f8eed4 55%, #ecd9ae 100%);
-        box-shadow: inset 0 0 0 1px rgba(74,49,19,.45), inset 0 2px 5px rgba(90,60,20,.3);
+        box-shadow: inset 0 0 0 1px rgba(74,49,19,.45), inset 0 3px 7px rgba(90,60,20,.35);
       }
+      /* Kadran camı: taksimat halkası + kubbe cam yansıması */
       .vw-dial::after{
         content: "";
         position: absolute;
         inset: 9%;
         border-radius: 50%;
         background:
+          radial-gradient(circle at 68% 82%, rgba(255,255,255,.14) 0 8%, transparent 26%),
+          linear-gradient(148deg, rgba(255,255,255,.38) 6%, rgba(255,255,255,.1) 24%, transparent 44%),
           radial-gradient(circle, #f8eed4 0 76%, transparent 77%),
           repeating-conic-gradient(from -0.75deg, #4a3113 0 1.5deg, transparent 1.5deg 30deg);
-        opacity: .9;
+        opacity: .92;
       }
       /* GMT: koyu arduvaz kadran */
       .vw-dial--gmt::before{
         background: radial-gradient(circle at 40% 32%, #2e3f52 0%, #22303f 55%, #17222e 100%);
-        box-shadow: inset 0 0 0 1px rgba(218,165,32,.5), inset 0 2px 5px rgba(0,0,0,.5);
+        box-shadow: inset 0 0 0 1px rgba(218,165,32,.5), inset 0 3px 7px rgba(0,0,0,.55);
       }
       .vw-dial--gmt::after{
         background:
+          radial-gradient(circle at 68% 82%, rgba(255,255,255,.1) 0 8%, transparent 26%),
+          linear-gradient(148deg, rgba(255,255,255,.3) 6%, rgba(255,255,255,.08) 24%, transparent 44%),
           radial-gradient(circle, #22303f 0 76%, transparent 77%),
           repeating-conic-gradient(from -0.75deg, #f2d98a 0 1.5deg, transparent 1.5deg 30deg);
       }
@@ -113,6 +168,7 @@ export function VintageWidgetStyles() {
         transform-origin: 50% 100%;
         border-radius: 99px;
         z-index: 3;
+        filter: drop-shadow(0 1px 1px rgba(0,0,0,.35));
       }
       .vw-hand--hour{ width: 4px; height: 24%; background: #3f2a0e; }
       .vw-hand--min{ width: 3px; height: 33%; background: #3f2a0e; }
@@ -127,6 +183,7 @@ export function VintageWidgetStyles() {
         transform: translate(-50%, -50%);
         border-radius: 50%;
         background: radial-gradient(circle at 35% 30%, #f2d98a, #7a5c1a 80%);
+        box-shadow: 0 1px 2px rgba(0,0,0,.45);
         z-index: 4;
       }
       .vw-digital{
@@ -162,17 +219,20 @@ export function VintageWidgetStyles() {
         border-radius: 99px;
         background: linear-gradient(180deg, #8f1f1f 0 50%, #384355 50%);
         box-shadow: 0 0 2px rgba(0,0,0,.4);
+        filter: drop-shadow(0 1px 1px rgba(0,0,0,.4));
         z-index: 3;
       }
       .vw-crosshair::after{
         background:
+          radial-gradient(circle at 68% 82%, rgba(255,255,255,.14) 0 8%, transparent 26%),
+          linear-gradient(148deg, rgba(255,255,255,.38) 6%, rgba(255,255,255,.1) 24%, transparent 44%),
           linear-gradient(0deg, transparent calc(50% - .5px), rgba(74,49,19,.25) 50%, transparent calc(50% + .5px)),
           linear-gradient(90deg, transparent calc(50% - .5px), rgba(74,49,19,.25) 50%, transparent calc(50% + .5px)),
           radial-gradient(circle, #f8eed4 0 76%, transparent 77%),
           repeating-conic-gradient(from -0.75deg, #4a3113 0 1.5deg, transparent 1.5deg 30deg);
       }
 
-      /* ── Termometre ── */
+      /* ── Termometre: damarlı ahşap pano + cam tüp ── */
       .vw-thermo-board{
         flex: 1;
         align-self: stretch;
@@ -184,9 +244,10 @@ export function VintageWidgetStyles() {
         padding: 8px 10px 12px;
         border-radius: 8px;
         background:
+          var(--vw-wood),
           repeating-linear-gradient(93deg, rgba(0,0,0,.09) 0 2px, transparent 2px 7px),
           linear-gradient(160deg, #6b4a26 0%, #4a3113 100%);
-        box-shadow: inset 0 1px 3px rgba(0,0,0,.5), inset 0 0 0 1px rgba(202,160,68,.35);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.07), inset 0 0 0 1px rgba(202,160,68,.35);
       }
       .vw-thermo-scale{
         display: flex;
@@ -209,8 +270,10 @@ export function VintageWidgetStyles() {
         width: 12px;
         border-radius: 8px 8px 0 0;
         margin-bottom: 12px;
-        background: linear-gradient(90deg, rgba(255,255,255,.28), rgba(255,255,255,.07) 40%, rgba(0,0,0,.28));
-        box-shadow: inset 0 0 3px rgba(0,0,0,.45);
+        background:
+          linear-gradient(90deg, transparent 12%, rgba(255,255,255,.5) 24%, transparent 42%),
+          linear-gradient(90deg, rgba(255,255,255,.28), rgba(255,255,255,.07) 40%, rgba(0,0,0,.3));
+        box-shadow: inset 0 0 3px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);
       }
       .vw-mercury{
         position: absolute;
@@ -229,8 +292,10 @@ export function VintageWidgetStyles() {
         height: 17px;
         transform: translateX(-50%);
         border-radius: 50%;
-        background: radial-gradient(circle at 35% 30%, #e06060, #8f1f1f 75%);
-        box-shadow: 0 1px 3px rgba(0,0,0,.5);
+        background:
+          radial-gradient(circle at 30% 24%, rgba(255,255,255,.8) 0 10%, transparent 32%),
+          radial-gradient(circle at 35% 30%, #e06060, #8f1f1f 75%);
+        box-shadow: 0 2px 4px rgba(0,0,0,.5), inset 0 -2px 3px rgba(0,0,0,.3);
       }
       .vw-thermo-read{
         display: flex;
@@ -256,7 +321,9 @@ export function VintageWidgetStyles() {
         height: 24px;
         border-radius: 50%;
         color: #f2d98a;
-        background: radial-gradient(circle at 35% 30%, #4a3b2c, #241a10);
+        background:
+          radial-gradient(circle at 32% 26%, rgba(255,255,255,.2) 0 12%, transparent 34%),
+          radial-gradient(circle at 35% 30%, #4a3b2c, #241a10);
         border: 1px solid rgba(202,160,68,.5);
         box-shadow: 0 1px 2px rgba(0,0,0,.5), inset 0 1px 0 rgba(242,217,138,.15);
         transition: transform .12s ease;
@@ -270,7 +337,7 @@ export function VintageWidgetStyles() {
         border: 2px solid #000;
         padding: 7px 10px;
         background: #0c1a10;
-        box-shadow: inset 0 0 12px rgba(0,0,0,.8), inset 0 0 30px rgba(125,255,160,.06);
+        box-shadow: inset 0 0 12px rgba(0,0,0,.8), inset 0 0 30px rgba(125,255,160,.06), 0 1px 0 rgba(242,217,138,.1);
         font-family: ui-monospace, SFMono-Regular, Menlo, 'Courier New', monospace;
         color: #7dffa0;
         text-shadow: 0 0 4px rgba(125,255,160,.45);
@@ -278,12 +345,15 @@ export function VintageWidgetStyles() {
         line-height: 1.5;
         overflow: hidden;
       }
+      /* LCD camı: tarama satırları + köşegen cam parlaması */
       .vw-lcd::after{
         content: "";
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background: repeating-linear-gradient(180deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+        background:
+          linear-gradient(112deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.03) 22%, transparent 38%),
+          repeating-linear-gradient(180deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
       }
       .vw-lcd-dim{ opacity: .62; font-size: 9px; }
       .vw-lcd-row{
@@ -295,20 +365,38 @@ export function VintageWidgetStyles() {
       .vw-lcd-label{ overflow: hidden; text-overflow: ellipsis; }
       .vw-lcd-amber{ color: #ffd27d; text-shadow: 0 0 4px rgba(255,210,125,.4); }
 
-      /* ── Güneş yayı (lombar) ── */
+      /* ── Güneş yayı (lombar): cıvatalı pirinç çerçeve + cam ── */
       .vw-porthole{
+        position: relative;
         align-self: stretch;
         flex: 1;
         border-radius: 10px;
         padding: 4px;
-        background: linear-gradient(180deg, #f2d98a, #caa044 55%, #7a5c1a);
-        box-shadow: 0 3px 8px rgba(0,0,0,.45);
+        background:
+          radial-gradient(circle at 26% 18%, rgba(255,255,255,.5) 0 6%, transparent 22%),
+          linear-gradient(180deg, #f2d98a, #caa044 55%, #7a5c1a);
+        box-shadow: 0 3px 8px rgba(0,0,0,.45), inset 0 -1px 2px rgba(0,0,0,.35);
+      }
+      .vw-porthole::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        border-radius: inherit;
+        background-image:
+          radial-gradient(circle 1.7px at 7px 7px, #fdf0c0 0 30%, #6b4e16 45% 64%, transparent 74%),
+          radial-gradient(circle 1.7px at calc(100% - 7px) 7px, #fdf0c0 0 30%, #6b4e16 45% 64%, transparent 74%),
+          radial-gradient(circle 1.7px at 7px calc(100% - 7px), #fdf0c0 0 30%, #6b4e16 45% 64%, transparent 74%),
+          radial-gradient(circle 1.7px at calc(100% - 7px) calc(100% - 7px), #fdf0c0 0 30%, #6b4e16 45% 64%, transparent 74%);
       }
       .vw-porthole-glass{
         height: 100%;
         border-radius: 7px;
         padding: 6px 10px 2px;
-        background: linear-gradient(180deg, #f8eed4 0%, #e9cf9e 100%);
+        background:
+          linear-gradient(150deg, rgba(255,255,255,.4) 4%, rgba(255,255,255,.1) 20%, transparent 38%),
+          linear-gradient(180deg, #f8eed4 0%, #e9cf9e 100%);
         box-shadow: inset 0 2px 6px rgba(90,60,20,.35);
       }
       .vw-sun-times{
