@@ -52,7 +52,7 @@ const Navigation = () => {
           <CalculationGrid items={navigationItems} className="sm:grid-cols-2" />
 
           <p className="text-center text-sm text-slate-300">
-            Her hesaplama ayrı bir sayfada açılır
+            Her hesaplama kitabın ayrı bir yaprağında açılır
           </p>
         </div>
       </CalculationGridScreen>
