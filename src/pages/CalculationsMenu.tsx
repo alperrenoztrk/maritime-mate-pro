@@ -1,10 +1,9 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import {
   Anchor,
   ArrowRight,
   BarChart3,
-  Clock,
   Compass,
   Droplets,
   Flame,
@@ -24,7 +23,7 @@ import {
   Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { MobileLayout } from "@/components/MobileLayout";
+import { BookSheet } from "@/components/book/BookSheet";
 
 /* ─── Types ─── */
 type CalcTool = {
@@ -153,26 +152,23 @@ function findTool(id: string) {
 /* ─── Components ─── */
 function QuickToolCard({ tool, isFav, onFav }: { tool: CalcTool; isFav: boolean; onFav: () => void }) {
   return (
-    <div className="relative">
+    <div className="relative border-b border-dotted border-[rgba(120,80,20,.35)]">
       <Link
         to={tool.to}
         onClick={() => addRecent(tool.id)}
-        className="flex flex-col gap-1.5 rounded-2xl border border-border/30 bg-card/60 p-3.5 backdrop-blur-sm transition-all duration-200 hover:border-primary/30 hover:bg-card/80 active:scale-[0.98]"
+        className="bs-entry items-center gap-2 pr-10"
       >
-        <div className="flex items-center justify-between">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <tool.icon className="h-[18px] w-[18px]" strokeWidth={1.8} />
-          </div>
-          <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/50" />
-        </div>
-        <p className="text-[13px] font-semibold leading-tight text-foreground">{tool.title}</p>
+        <tool.icon className="h-4 w-4 shrink-0 text-[#7a5c1a]" strokeWidth={1.8} />
+        <span className="bs-entry-label font-semibold">{tool.title}</span>
+        <span className="bs-leader" aria-hidden="true" />
+        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-50" aria-hidden="true" />
       </Link>
       <button
         onClick={(e) => { e.preventDefault(); e.stopPropagation(); onFav(); }}
-        className="absolute top-2.5 right-2.5 z-10 rounded-full p-1 transition hover:bg-accent/20"
-        aria-label="Favori"
+        className="absolute right-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full"
+        aria-label={isFav ? `${tool.title} favorilerden çıkar` : `${tool.title} favorilere ekle`}
       >
-        <Star className={cn("h-3.5 w-3.5", isFav ? "fill-amber-400 text-amber-400" : "text-muted-foreground/40")} />
+        <Star className={cn("h-3.5 w-3.5", isFav ? "fill-[#9b6b17] text-[#9b6b17]" : "text-[rgba(90,61,20,.45)]")} />
       </button>
     </div>
   );
@@ -180,26 +176,23 @@ function QuickToolCard({ tool, isFav, onFav }: { tool: CalcTool; isFav: boolean;
 
 function ToolRow({ tool, isFav, onFav }: { tool: CalcTool; isFav: boolean; onFav: () => void }) {
   return (
-    <div className="relative">
+    <div className="relative border-b border-dotted border-[rgba(120,80,20,.3)]">
       <Link
         to={tool.to}
         onClick={() => addRecent(tool.id)}
-        className="flex items-center gap-3 rounded-xl border border-border/20 bg-card/40 px-3 py-2.5 backdrop-blur-sm transition-all duration-200 hover:border-primary/20 hover:bg-card/60 active:scale-[0.99]"
+        className="bs-entry items-center gap-2 pr-16"
       >
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-          <tool.icon className="h-4 w-4" strokeWidth={1.8} />
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-[13px] font-medium leading-tight text-foreground truncate">{tool.title}</p>
-        </div>
-        <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground/40" />
+        <tool.icon className="h-4 w-4 shrink-0 text-[#7a5c1a]" strokeWidth={1.8} />
+        <span className="bs-entry-label font-medium">{tool.title}</span>
+        <span className="bs-leader" aria-hidden="true" />
+        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-45" aria-hidden="true" />
       </Link>
       <button
         onClick={(e) => { e.preventDefault(); e.stopPropagation(); onFav(); }}
-        className="absolute top-1/2 right-8 z-10 -translate-y-1/2 rounded-full p-1 transition hover:bg-accent/20"
-        aria-label="Favori"
+        className="absolute right-5 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full"
+        aria-label={isFav ? `${tool.title} favorilerden çıkar` : `${tool.title} favorilere ekle`}
       >
-        <Star className={cn("h-3 w-3", isFav ? "fill-amber-400 text-amber-400" : "text-muted-foreground/30")} />
+        <Star className={cn("h-3 w-3", isFav ? "fill-[#9b6b17] text-[#9b6b17]" : "text-[rgba(90,61,20,.4)]")} />
       </button>
     </div>
   );
@@ -239,18 +232,13 @@ export default function CalculationsMenu() {
   const recentTools = recents.map(findTool).filter(Boolean).slice(0, 4) as CalcTool[];
 
   return (
-    <MobileLayout>
-      <div className="relative min-h-screen bg-background px-4 pb-24 pt-6">
-        {/* Subtle ambient */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 left-1/4 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute top-32 right-0 h-48 w-48 rounded-full bg-accent/5 blur-3xl" />
-        </div>
-
-        <div className="relative z-10 mx-auto flex max-w-lg flex-col gap-5">
+    <BookSheet title="HESAPLAMALAR">
+        <div className="mx-auto flex max-w-2xl flex-col gap-5">
           {/* Header */}
-          <header className="space-y-1">
-            <h1 className="text-xl font-bold tracking-tight text-foreground">Hesaplamalar</h1>
+          <header className="text-center">
+            <h1 className="bs-h2" style={{ borderBottom: "none" }}>Hesaplamalar ve Formüller</h1>
+            <div className="bs-fleuron" aria-hidden="true">❦</div>
+            <p className="bs-muted text-sm">Araç seçildiğinde kitap açık kalır; sonuçlar yeni bir yaprakta gösterilir.</p>
           </header>
 
           {/* Search */}
@@ -261,7 +249,7 @@ export default function CalculationsMenu() {
               placeholder="Hesaplama ara…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl border border-border/40 bg-card/60 py-2.5 pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground/50 backdrop-blur-sm transition focus:border-primary/40 focus:outline-none focus:ring-1 focus:ring-primary/20"
+              className="bs-input"
             />
           </div>
 
@@ -271,12 +259,7 @@ export default function CalculationsMenu() {
               <button
                 key={f.key}
                 onClick={() => setFilter(f.key)}
-                className={cn(
-                  "shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium transition-all",
-                  filter === f.key
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "bg-card/50 text-muted-foreground hover:bg-card/80 border border-border/30"
-                )}
+                className={cn("bs-chip shrink-0", filter === f.key && "bs-chip--on")}
               >
                 {f.label}
               </button>
@@ -287,10 +270,10 @@ export default function CalculationsMenu() {
           {favTools.length > 0 && !search && filter === "all" && (
             <section className="space-y-2">
               <div className="flex items-center gap-1.5">
-                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Favoriler</h2>
+                <Star className="h-3.5 w-3.5 fill-[#9b6b17] text-[#9b6b17]" />
+                <h2 className="bs-section mt-0">Favoriler</h2>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid gap-x-5 sm:grid-cols-2">
                 {favTools.slice(0, 4).map((t) => (
                   <QuickToolCard key={t.id} tool={t} isFav onFav={() => handleFav(t.id)} />
                 ))}
@@ -302,8 +285,8 @@ export default function CalculationsMenu() {
           {recentTools.length > 0 && !search && filter === "all" && (
             <section className="space-y-2">
               <div className="flex items-center gap-1.5">
-                <History className="h-3.5 w-3.5 text-muted-foreground" />
-                <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Son Kullanılan</h2>
+                <History className="h-3.5 w-3.5 text-[#7a5c1a]" />
+                <h2 className="bs-section mt-0">Son Kullanılan</h2>
               </div>
               <div className="space-y-1.5">
                 {recentTools.map((t) => (
@@ -316,8 +299,8 @@ export default function CalculationsMenu() {
           {/* Quick tools */}
           {filteredQuick.length > 0 && (
             <section className="space-y-2">
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Hızlı Araçlar</h2>
-              <div className="grid grid-cols-2 gap-2">
+              <h2 className="bs-section">Hızlı Araçlar</h2>
+              <div className="grid gap-x-5 sm:grid-cols-2">
                 {filteredQuick.map((t) => (
                   <QuickToolCard key={t.id} tool={t} isFav={favorites.includes(t.id)} onFav={() => handleFav(t.id)} />
                 ))}
@@ -328,7 +311,7 @@ export default function CalculationsMenu() {
           {/* Categorized sections */}
           {filteredCategories.map((cat) => (
             <section key={cat.title} className="space-y-2">
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{cat.title}</h2>
+              <h2 className="bs-section">{cat.title}</h2>
               <div className="space-y-1.5">
                 {cat.items.map((t) => (
                   <ToolRow key={t.id} tool={t} isFav={favorites.includes(t.id)} onFav={() => handleFav(t.id)} />
@@ -338,12 +321,11 @@ export default function CalculationsMenu() {
           ))}
 
           {filteredCategories.length === 0 && filteredQuick.length === 0 && (
-            <div className="py-12 text-center text-sm text-muted-foreground">
+            <div className="bs-muted py-12 text-center text-sm">
               Aramanızla eşleşen hesaplama bulunamadı.
             </div>
           )}
         </div>
-      </div>
-    </MobileLayout>
+    </BookSheet>
   );
 }

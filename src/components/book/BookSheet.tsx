@@ -1,8 +1,12 @@
-import type { ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
+
+const BookSheetNestingContext = createContext(false);
 
 interface BookSheetProps {
   title: string;
   children: ReactNode;
+  /** Persistent route frame: wider paper and legacy-screen normalization. */
+  routeFrame?: boolean;
 }
 
 /**
@@ -11,13 +15,25 @@ interface BookSheetProps {
  * (cilt gölgesi, çizgili kâğıt, lekeler, koşu başlığı, serif mürekkep).
  * CSS `bs-` prefix'lidir — splash ve BookPage'in global/scoped kurallarıyla çakışmaz.
  */
-export function BookSheet({ title, children }: BookSheetProps) {
+export function BookSheet({ title, children, routeFrame = false }: BookSheetProps) {
+  const alreadyInsideBook = useContext(BookSheetNestingContext);
+
+  // Pages converted in earlier releases already render BookSheet themselves.
+  // When the persistent route frame owns the paper, absorb that second shell
+  // so the result is one real page rather than a book nested inside a book.
+  if (alreadyInsideBook) return <>{children}</>;
+
   return (
-    <div className="relative min-h-[100svh] px-3 pb-24 pt-[max(3.6rem,calc(env(safe-area-inset-top)+3rem))]">
-      <div className="bs-volume mx-auto w-full max-w-lg">
+    <div
+      className={`relative min-h-[100svh] px-3 pb-24 pt-[max(3.6rem,calc(env(safe-area-inset-top)+3rem))] ${routeFrame ? "bs-route-frame" : ""}`}
+      data-book-route={routeFrame || undefined}
+    >
+      <div className={`bs-volume mx-auto w-full ${routeFrame ? "max-w-4xl" : "max-w-lg"}`}>
         <div className="bs-page">
           <header className="bs-running">{title}</header>
-          {children}
+          <BookSheetNestingContext.Provider value>
+            <div className={routeFrame ? "bs-route-content" : undefined}>{children}</div>
+          </BookSheetNestingContext.Provider>
         </div>
       </div>
 
@@ -338,6 +354,141 @@ export function BookSheet({ title, children }: BookSheetProps) {
           border-bottom: 1px dotted rgba(120,80,20,.4);
           padding: 6px 0;
           margin: 0 0 8px;
+        }
+
+        /* ── Persistent route frame ───────────────────────────────
+           Legacy formula/calculator pages use several older shells. These
+           rules preserve every control and state flow while translating the
+           shell, cards, typography and inputs to the common paper surface. */
+        .bs-route-frame{
+          isolation: isolate;
+        }
+        .bs-route-frame .bs-page{
+          min-height: calc(100svh - 7rem);
+        }
+        .bs-route-content{
+          color: #4a3113;
+          font-family: Georgia, 'Times New Roman', serif;
+        }
+        .bs-route-content :where(.marine-shell){
+          min-height: 0 !important;
+          overflow: visible !important;
+          background: transparent !important;
+          color: #4a3113 !important;
+        }
+        .bs-route-content .marine-shell > .pointer-events-none{
+          display: none !important;
+        }
+        .bs-route-content .marine-shell main{
+          min-height: 0 !important;
+          max-width: none !important;
+          padding: 0 !important;
+        }
+        .bs-route-content :where(
+          .min-h-screen,
+          [class*="min-h-[100svh]"],
+          [class*="min-h-[100vh]"],
+          [class*="min-h-[100"]
+        ){
+          min-height: 0 !important;
+          background: transparent !important;
+          background-image: none !important;
+        }
+        .bs-route-content :where(.container){
+          max-width: none !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        .bs-route-content :where(
+          .text-foreground,
+          .text-card-foreground,
+          .text-slate-900,.text-slate-800,.text-slate-700,
+          .text-gray-900,.text-gray-800,.text-gray-700,
+          .text-zinc-900,.text-zinc-800,.text-zinc-700,
+          .text-neutral-900,.text-neutral-800,.text-neutral-700,
+          .text-stone-900,.text-stone-800,.text-stone-700,
+          .text-black
+        ){
+          color: #4a3113 !important;
+        }
+        .bs-route-content :where(
+          .text-muted-foreground,
+          .text-slate-600,.text-slate-500,.text-slate-400,.text-slate-300,
+          .text-gray-600,.text-gray-500,.text-gray-400,
+          .text-zinc-600,.text-zinc-500,.text-zinc-400,
+          .text-neutral-600,.text-neutral-500
+        ){
+          color: rgba(90,61,20,.72) !important;
+        }
+        .bs-route-content :where(
+          .bg-background,.bg-card,[class*="bg-card/"],
+          .bg-white,[class*="bg-white/"],.bg-slate-50,.bg-gray-50,.bg-muted,[class*="bg-muted/"],
+          [class*="bg-slate-900/"]
+        ){
+          background: rgba(255,255,255,.22) !important;
+          background-image: none !important;
+          backdrop-filter: none !important;
+        }
+        .bs-route-content :where(
+          [class*="border-border"],[class*="border-slate-200/"],[class*="border-slate-800/"]
+        ){
+          border-color: rgba(120,80,20,.38) !important;
+        }
+        .bs-route-content :where(.shadow,.shadow-sm,.shadow-md,.shadow-lg,.shadow-xl,.shadow-2xl){
+          box-shadow: none !important;
+        }
+        .bs-route-content :where(input,textarea,[role="combobox"]){
+          border-color: rgba(120,80,20,.48) !important;
+          background: rgba(255,255,255,.28) !important;
+          color: #3f2a0e !important;
+          font-family: Georgia, 'Times New Roman', serif;
+        }
+        .bs-route-content :where(input,textarea)::placeholder{
+          color: rgba(90,61,20,.5) !important;
+        }
+        .bs-route-content :where(.font-mono){
+          color: #3f2a0e !important;
+          background: rgba(255,255,255,.28) !important;
+        }
+        .bs-route-content :where(.sticky){
+          background-color: rgba(246,236,208,.96) !important;
+          backdrop-filter: none !important;
+        }
+        .bs-route-content :where(table){
+          color: #4a3113;
+        }
+        .bs-route-content :where(th,td){
+          border-color: rgba(120,80,20,.34) !important;
+        }
+        body.book-route-active [role="dialog"]:not(.marine-keep){
+          border-color: rgba(120,80,20,.45) !important;
+          background-color: #f6ecd0 !important;
+          color: #4a3113 !important;
+        }
+        @media (max-width: 640px){
+          .bs-route-frame{ padding-left: 5px; padding-right: 5px; }
+          .bs-route-frame .bs-page{
+            margin-left: 10px;
+            margin-right: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+        }
+        @media print{
+          .bs-route-frame{ padding: 0 !important; min-height: 0 !important; }
+          .bs-route-frame .bs-volume,
+          .bs-route-frame .bs-page{
+            width: 100% !important;
+            max-width: none !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: white !important;
+            box-shadow: none !important;
+          }
+          .bs-route-frame .bs-volume::before,
+          .bs-route-frame .bs-volume::after,
+          .bs-route-frame .bs-running{ display: none !important; }
         }
       `}</style>
     </div>

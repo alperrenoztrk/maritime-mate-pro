@@ -2,6 +2,7 @@ import { useEffect, useCallback, useRef, useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
+import { isBookContentPath } from '@/lib/bookRoutes';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -22,6 +23,10 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/lessons',
   },
   {
+    pattern: /^\/lessons\/([^/]+)\/(formulas|calculations|rules|quiz)$/,
+    parent: (match) => `/lessons/${match[1]}/topics`,
+  },
+  {
     pattern: /^\/lessons$/,
     parent: () => '/book',
   },
@@ -40,20 +45,32 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/exercises$/, parent: () => '/book' },
 
   // ── Crew & Bridge ──────────────────────────────────────────
+  {
+    pattern: /^\/crew\/([^/]+)\/task\/([^/]+)$/,
+    parent: (match) => `/crew/${match[1]}`,
+  },
   { pattern: /^\/crew\/([^/]+)$/, parent: () => '/crew' },
   { pattern: /^\/crew$/, parent: () => '/book' },
   { pattern: /^\/bridge\/([^/]+)$/, parent: () => '/bridge' },
-  { pattern: /^\/bridge$/, parent: () => '/' },
+  { pattern: /^\/bridge$/, parent: () => '/book' },
 
   // ── Ship Systems ───────────────────────────────────────────
+  {
+    pattern: /^\/ship-systems\/([^/]+)\/([^/]+)$/,
+    parent: (match) => `/ship-systems/${match[1]}`,
+  },
   { pattern: /^\/ship-systems\/([^/]+)$/, parent: () => '/ship-systems' },
   { pattern: /^\/ship-systems$/, parent: () => '/book' },
 
   // ── Ship Tasks ─────────────────────────────────────────────
   { pattern: /^\/ship-tasks\/([^/]+)$/, parent: () => '/ship-tasks' },
-  { pattern: /^\/ship-tasks$/, parent: () => '/' },
+  { pattern: /^\/ship-tasks$/, parent: () => '/book' },
 
   // ── Ship Operations ────────────────────────────────────────
+  {
+    pattern: /^\/ship-operations\/([^/]+)\/([^/]+)\/([^/]+)$/,
+    parent: (match) => `/ship-operations/${match[1]}`,
+  },
   { pattern: /^\/ship-operations\/([^/]+)$/, parent: () => '/ship-operations' },
   { pattern: /^\/ship-operations$/, parent: () => '/book' },
 
@@ -75,7 +92,7 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/calculations',
   },
   { pattern: /^\/machine-calculations$/, parent: () => '/calculations' },
-  { pattern: /^\/machinery$/, parent: () => '/' },
+  { pattern: /^\/machinery$/, parent: () => '/book' },
 
   // ── Calculations hub ───────────────────────────────────────
   // /calculations/<cat>/<sec> → /calculations
@@ -83,7 +100,7 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
     parent: () => '/calculations',
   },
-  { pattern: /^\/calculations$/, parent: () => '/' },
+  { pattern: /^\/calculations$/, parent: () => '/book' },
 
   // ── Navigation (Seyir) ─────────────────────────────────────
   { pattern: /^\/navigation\/calc\/([^/]+)$/, parent: () => '/navigation' },
@@ -158,7 +175,11 @@ const navigationRules: NavigationRule[] = [
 
   // ── Regulations ────────────────────────────────────────────
   { pattern: /^\/regulations\/([^/]+)$/, parent: () => '/regulations' },
-  { pattern: /^\/regulations$/, parent: () => '/' },
+  { pattern: /^\/regulations$/, parent: () => '/book' },
+
+  // ── Economics / Communication ──────────────────────────────
+  { pattern: /^\/economics\/(assistant|quiz)$/, parent: () => '/economics' },
+  { pattern: /^\/communication\/assistant$/, parent: () => '/calculations' },
 
   // ── Diğer hesaplama sayfaları ──────────────────────────────
   { pattern: /^\/ballast$/, parent: () => '/calculations' },
@@ -185,10 +206,10 @@ const navigationRules: NavigationRule[] = [
   // ── Genel üst seviye ───────────────────────────────────────
   { pattern: /^\/settings$/, parent: () => '/' },
   { pattern: /^\/maritime-news$/, parent: () => '/' },
-  { pattern: /^\/passage-plan$/, parent: () => '/' },
+  { pattern: /^\/passage-plan$/, parent: () => '/calculations' },
   { pattern: /^\/glossary$/, parent: () => '/book' },
-  { pattern: /^\/exam-preparation$/, parent: () => '/' },
-  { pattern: /^\/formulas$/, parent: () => '/' },
+  { pattern: /^\/exam-preparation$/, parent: () => '/book' },
+  { pattern: /^\/formulas$/, parent: () => '/book' },
   { pattern: /^\/empty-page$/, parent: () => '/' },
 ];
 
@@ -204,7 +225,9 @@ export const findParentPath = (pathname: string): string => {
   const cached = parentPathCache.get(pathname);
   if (cached !== undefined) return cached;
 
-  let result = '/';
+  // A newly added educational leaf must never fall out of the open book just
+  // because its more specific parent rule has not been added yet.
+  let result = isBookContentPath(pathname) ? '/book' : '/';
   for (const rule of navigationRules) {
     const match = pathname.match(rule.pattern);
     if (match) {
@@ -378,6 +401,5 @@ export const useNavigationHierarchy = () => {
     [showExitDialog, closeExitDialog, confirmExit],
   );
 };
-
 
 

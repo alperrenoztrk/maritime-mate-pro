@@ -21,6 +21,7 @@ import { useFrameRate } from "@/hooks/useFrameRate";
 import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import { GlobalSearch } from "@/components/GlobalSearch";
+import { BookRouteFrame } from "@/components/book/BookRouteFrame";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -213,9 +214,10 @@ const AnimatedRoutes = () => {
     <div className="hidden">
       <GlobalSearch />
     </div>
-    <AnimatePresence mode="wait">
-      <Suspense fallback={<RouteFallback />}>
-      <Routes location={location} key={location.pathname}>
+    <BookRouteFrame pathname={location.pathname}>
+      <AnimatePresence mode="wait">
+        <Suspense fallback={<RouteFallback />}>
+        <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/book" element={<PageTransition><BookPage /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
@@ -386,9 +388,10 @@ const AnimatedRoutes = () => {
         <Route path="/machine-calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
         <Route path="/widgets" element={<Navigate to="/" replace />} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
-      </Routes>
-      </Suspense>
-    </AnimatePresence>
+        </Routes>
+        </Suspense>
+      </AnimatePresence>
+    </BookRouteFrame>
     </>
   );
 };

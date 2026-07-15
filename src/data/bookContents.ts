@@ -97,6 +97,15 @@ const glossarySection: BookSection = {
   })),
 };
 
+const calculationReferenceSection: BookSection = {
+  heading: "Araçlar ve Referanslar",
+  entries: [
+    { label: "Hesaplama Merkezi", to: "/calculations" },
+    { label: "Formül Kitabı", to: "/formulas" },
+    { label: "Kurallar ve Regülasyonlar", to: "/regulations" },
+  ],
+};
+
 export const bookChapters: BookChapter[] = [
   {
     id: "lessons",
@@ -139,6 +148,13 @@ export const bookChapters: BookChapter[] = [
     title: "Sözlük",
     to: "/glossary",
     sections: [glossarySection],
+  },
+  {
+    id: "references",
+    numeral: "VII",
+    title: "Hesaplamalar ve Formüller",
+    to: "/calculations",
+    sections: [calculationReferenceSection],
   },
 ];
 
