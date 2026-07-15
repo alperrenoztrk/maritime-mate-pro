@@ -6,11 +6,20 @@ import {
   useState,
   type MouseEvent as ReactMouseEvent,
   type PointerEvent,
+  type CSSProperties,
   type ReactNode,
   type WheelEvent,
 } from "react";
-import { Link } from "react-router-dom";
-import { bookPages, type BookPageSpec } from "@/data/bookContents";
+import { Link, useSearchParams } from "react-router-dom";
+import { BookVolumeLibrary } from "@/components/book/BookVolumeLibrary";
+import {
+  getBookPagesForVolume,
+  getBookVolume,
+  isBookVolumeId,
+  type BookPageSpec,
+  type BookVolume,
+  type BookVolumeId,
+} from "@/data/bookContents";
 import {
   getBookPageLayout,
   getBookTurnProgress,
@@ -24,6 +33,7 @@ import {
 interface SpreadPage {
   page: BookPageSpec | null;
   number: number | null;
+  volume: BookVolume;
 }
 
 interface ActiveTurn {
@@ -48,13 +58,41 @@ interface PointerStart {
 interface BookPageProps {
   /** Opens inside the home-page launcher instead of becoming a full-screen route. */
   embedded?: boolean;
+  /** Home-page selections open a specific physical volume. */
+  volumeId?: BookVolumeId;
 }
 
 const clampNumber = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
 
+/** Library selector on /book; a selected cover opens one physical volume. */
+export default function BookPage({ embedded = false, volumeId }: BookPageProps) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryVolumeId = searchParams.get("volume");
+  const selectedVolumeId = volumeId ?? (isBookVolumeId(queryVolumeId) ? queryVolumeId : null);
+
+  if (!selectedVolumeId) {
+    return (
+      <BookVolumeLibrary
+        compact={embedded}
+        onSelect={(nextVolumeId) => setSearchParams({ volume: nextVolumeId })}
+      />
+    );
+  }
+
+  return <OpenBookVolume key={selectedVolumeId} embedded={embedded} volumeId={selectedVolumeId} />;
+}
+
 /** Compact, two-leaf table of contents with gesture-driven page turns. */
-export default function BookPage({ embedded = false }: BookPageProps) {
+function OpenBookVolume({
+  embedded,
+  volumeId,
+}: {
+  embedded: boolean;
+  volumeId: BookVolumeId;
+}) {
+  const activeVolume = getBookVolume(volumeId);
+  const volumePages = useMemo(() => getBookPagesForVolume(volumeId), [volumeId]);
   const stageRef = useRef<HTMLDivElement>(null);
   const volumeRef = useRef<HTMLDivElement>(null);
   const pointerStart = useRef<PointerStart | null>(null);
@@ -88,23 +126,29 @@ export default function BookPage({ embedded = false }: BookPageProps) {
   const paginatedBookPages = useMemo(() => {
     const layout = measuredLayout
       ?? getBookPageLayout(volumeSize.width, volumeSize.height, volumeSize.fontScale);
-    return paginateBookPages(bookPages, layout);
-  }, [measuredLayout, volumeSize]);
+    return paginateBookPages(volumePages, layout);
+  }, [measuredLayout, volumePages, volumeSize]);
 
   const spreads = useMemo<SpreadPage[][]>(() => {
     // A real volume starts with the inside cover on the left and page 1 on the right.
     const leaves: SpreadPage[] = [
-      { page: null, number: null },
-      ...paginatedBookPages.map((page, index) => ({ page, number: index + 1 })),
+      { page: null, number: null, volume: activeVolume },
+      ...paginatedBookPages.map((page, index) => ({
+        page,
+        number: index + 1,
+        volume: activeVolume,
+      })),
     ];
-    if (leaves.length % 2 !== 0) leaves.push({ page: null, number: null });
+    if (leaves.length % 2 !== 0) {
+      leaves.push({ page: null, number: null, volume: activeVolume });
+    }
 
     const result: SpreadPage[][] = [];
     for (let index = 0; index < leaves.length; index += 2) {
       result.push([leaves[index], leaves[index + 1]]);
     }
     return result;
-  }, [paginatedBookPages]);
+  }, [activeVolume, paginatedBookPages]);
 
   useEffect(() => () => {
     if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
@@ -450,15 +494,22 @@ export default function BookPage({ embedded = false }: BookPageProps) {
     : null;
 
   return (
-    <div className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}>
+    <div
+      className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}
+      style={{
+        "--bk-volume-cover": activeVolume.cover,
+        "--bk-volume-cover-deep": activeVolume.coverDeep,
+        "--bk-volume-accent": activeVolume.accent,
+      } as CSSProperties}
+    >
       {!embedded && <div className="bk-ambient" aria-hidden="true" />}
-      {!embedded && <h1 className="bk-title notranslate" translate="no" lang="en">MARINER&rsquo;S BOOK</h1>}
+      {!embedded && <h1 className="bk-title">{activeVolume.title}</h1>}
 
       <div
         ref={stageRef}
         className="bk-stage"
         role="region"
-        aria-label="Mariner's Book içindekiler"
+        aria-label={`${activeVolume.title} içindekiler`}
         aria-roledescription="iki sayfalı kitap"
         tabIndex={0}
         onKeyDown={(event) => {
@@ -530,9 +581,10 @@ export default function BookPage({ embedded = false }: BookPageProps) {
                 <div className="bk-cover-face bk-cover-front">
                   <div className="bk-cover-trim">
                     <div className="bk-emblem">⚓</div>
-                    <div className="bk-cover-title">MARINER&rsquo;S<br />BOOK</div>
+                    <div className="bk-cover-volume">{activeVolume.numeral}</div>
+                    <div className="bk-cover-title">{activeVolume.title.toLocaleUpperCase("tr")}</div>
                     <div className="bk-cover-rule" />
-                    <div className="bk-cover-subtitle">SEAMANSHIP · NAVIGATION · ENGINEERING</div>
+                    <div className="bk-cover-subtitle">{activeVolume.subtitle}</div>
                   </div>
                 </div>
                 <div className="bk-cover-face bk-cover-back" />
@@ -562,8 +614,8 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-stage:focus-visible .bk-cover-board{ outline:1px dotted rgba(242,217,138,.62); outline-offset:3px; }
         .bk-cover-board{
           position:relative; width:min(94vw,780px); height:min(68svh,540px); min-height:320px; padding:clamp(5px,.85vw,11px);
-          border:1px solid rgba(212,168,61,.46); border-radius:9px 13px 13px 9px;
-          background:repeating-linear-gradient(25deg,rgba(255,255,255,.018) 0 2px,transparent 2px 8px),linear-gradient(145deg,#103a69,#071f42 58%,#041328);
+          border:1px solid color-mix(in srgb,var(--bk-volume-accent) 48%,#d4a83d); border-radius:9px 13px 13px 9px;
+          background:repeating-linear-gradient(25deg,rgba(255,255,255,.018) 0 2px,transparent 2px 8px),linear-gradient(145deg,var(--bk-volume-cover),var(--bk-volume-cover-deep) 72%,#050b13);
           box-shadow:0 24px 64px rgba(0,0,0,.62),inset 0 0 30px rgba(0,0,0,.62);
         }
         .bk-cover-board::before,.bk-cover-board::after{ content:""; position:absolute; width:22px; height:22px; pointer-events:none; border-color:rgba(218,177,76,.58); }
@@ -603,8 +655,10 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-entry-label{ min-width:0; max-width:78%; overflow-wrap:anywhere; hyphens:auto; }.bk-leader{ flex:1; min-width:8px; margin:0 .36em; border-bottom:1.5px dotted rgba(120,80,20,.42); transform:translateY(-2px); }.bk-anchor{ flex:0 0 auto; font-size:.66em; opacity:.62; }
         .bk-folio{ padding-top:6px; color:rgba(78,50,16,.65); border-top:1px solid rgba(120,80,20,.16); font-size:clamp(.48rem,.82vw,.68rem); font-variant-numeric:oldstyle-nums; }
         .bk-leaf--left .bk-folio{ text-align:left; }.bk-leaf--right .bk-folio{ text-align:right; }
-        .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:rgba(90,61,20,.55); }
-        .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }.bk-frontispiece p{ margin-top:8px; font-size:clamp(.45rem,.86vw,.66rem); letter-spacing:.22em; }
+        .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:rgba(90,61,20,.62); }
+        .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }
+        .bk-frontispiece strong{ max-width:82%; margin-top:7px; font-size:clamp(.62rem,1.4vw,1rem); line-height:1.3; text-wrap:balance; }
+        .bk-frontispiece p{ max-width:84%; margin-top:8px; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
         .bk-turn-leaf{
           position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
           transform-style:preserve-3d; will-change:transform;
@@ -643,12 +697,13 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-ribbon{ position:absolute; z-index:5; top:-2px; right:10%; width:clamp(8px,1.15vw,15px); height:clamp(42px,8vw,74px); pointer-events:none; background:linear-gradient(90deg,#741717,#a42d2d 48%,#741717); clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%); box-shadow:0 3px 5px rgba(0,0,0,.3); }
         .bk-cover{ position:absolute; z-index:12; inset:0; transform-style:preserve-3d; transform-origin:left center; transform:perspective(1500px) rotateY(0deg); animation:bk-cover-open 1.05s cubic-bezier(.72,.04,.22,1) .18s forwards; pointer-events:none; }
         .bk-cover-face{ position:absolute; inset:0; overflow:hidden; border-radius:3px 8px 8px 3px; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
-        .bk-cover-front{ transform:translateZ(.8px); border:1px solid rgba(212,168,61,.48); background:radial-gradient(130% 110% at 50% 38%,transparent 52%,rgba(0,0,0,.45) 100%),repeating-linear-gradient(115deg,rgba(255,255,255,.02) 0 2px,transparent 2px 7px),linear-gradient(140deg,#123c70,#092750 48%,#04162e); box-shadow:inset 0 0 30px rgba(0,0,0,.48),0 8px 22px rgba(0,0,0,.5); }
+        .bk-cover-front{ transform:translateZ(.8px); border:1px solid color-mix(in srgb,var(--bk-volume-accent) 55%,#d4a83d); background:radial-gradient(130% 110% at 50% 38%,transparent 52%,rgba(0,0,0,.45) 100%),repeating-linear-gradient(115deg,rgba(255,255,255,.02) 0 2px,transparent 2px 7px),linear-gradient(140deg,color-mix(in srgb,var(--bk-volume-cover) 88%,white),var(--bk-volume-cover) 48%,var(--bk-volume-cover-deep)); box-shadow:inset 0 0 30px rgba(0,0,0,.48),0 8px 22px rgba(0,0,0,.5); }
         .bk-cover-back{ transform:rotateY(180deg) translateZ(.8px); border-radius:8px 3px 3px 8px; background:linear-gradient(180deg,#f5e8c8,#e6d1a5); box-shadow:inset 0 0 18px rgba(120,80,20,.25); }
         .bk-cover-trim{ position:absolute; inset:6%; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1.5px solid rgba(218,165,32,.58); }
         .bk-cover-trim::after{ content:""; position:absolute; inset:2.4%; border:1px solid rgba(218,165,32,.28); }
-        .bk-emblem{ color:#d5ac4e; font-size:clamp(2rem,6vw,4.8rem); filter:drop-shadow(0 0 7px rgba(218,165,32,.35)); }
-        .bk-cover-title{ margin-top:8px; text-align:center; color:#d9b258; font:700 clamp(.9rem,3.4vw,2.1rem)/1.38 Georgia,'Times New Roman',serif; letter-spacing:.16em; }
+        .bk-emblem{ color:var(--bk-volume-accent); font-size:clamp(2rem,6vw,4.8rem); filter:drop-shadow(0 0 7px color-mix(in srgb,var(--bk-volume-accent) 45%,transparent)); }
+        .bk-cover-volume{ margin-top:4px; color:color-mix(in srgb,var(--bk-volume-accent) 84%,#f2d98a); font:700 clamp(.42rem,.8vw,.6rem) Georgia,serif; letter-spacing:.22em; }
+        .bk-cover-title{ max-width:78%; margin-top:8px; text-align:center; text-wrap:balance; color:#f2d98a; font:700 clamp(.72rem,2.7vw,1.75rem)/1.24 Georgia,'Times New Roman',serif; letter-spacing:.09em; }
         .bk-cover-rule{ width:22%; height:1px; margin:15px 0; background:linear-gradient(90deg,transparent,#d5ac4e,transparent); }
         .bk-cover-subtitle{ color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem) Georgia,'Times New Roman',serif; letter-spacing:.18em; }
         @keyframes bk-cover-open{ from{ transform:perspective(1500px) rotateY(0deg); } to{ transform:perspective(1500px) rotateY(-178deg); } }
@@ -704,14 +759,15 @@ function BookLeaf({
       aria-label={!decorative && leaf.number ? `Sayfa ${leaf.number}` : undefined}
       aria-hidden={decorative || undefined}
     >
-      <header className="bk-running">{leaf.page ? "İÇİNDEKİLER" : "MARINER’S BOOK"}</header>
+      <header className="bk-running">{leaf.page ? leaf.volume.shortTitle.toLocaleUpperCase("tr") : leaf.volume.numeral}</header>
       <div className="bk-page">
         {leaf.page ? (
           <ContentsPage page={leaf.page} firstPage={leaf.number === 1} decorative={decorative} />
         ) : (
           <div className="bk-frontispiece" aria-hidden={!firstLeaf}>
             <div className="bk-frontispiece-mark">⚓</div>
-            <p>DENİZCİNİN BAŞVURU KİTABI</p>
+            <strong>{leaf.volume.title}</strong>
+            <p>{leaf.volume.subtitle}</p>
           </div>
         )}
       </div>
@@ -781,3 +837,4 @@ function ContentsPage({
     </nav>
   );
 }
+
