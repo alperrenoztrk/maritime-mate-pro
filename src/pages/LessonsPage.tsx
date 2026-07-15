@@ -1,13 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { hasCourseTopic } from "@/data/courseContent";
-import { ChevronDown } from "lucide-react";
 import { BookSheet } from "@/components/book/BookSheet";
 
 export default function LessonsPage() {
-  const [expandedGroup, setExpandedGroup] = useState<"deck" | "machine" | null>(null);
-
   const deckCategories = calculationCategories.filter(
     (category) => !category.group || category.group === "deck"
   ).filter((category) => !(category.id as string).startsWith("machine-"));
@@ -24,24 +20,12 @@ export default function LessonsPage() {
   return (
     <BookSheet title="DERSLER">
       {groups.map((group) => {
-        const isExpanded = expandedGroup === group.id;
         return (
-          <section key={group.id}>
-            <button
-              type="button"
-              onClick={() => setExpandedGroup(isExpanded ? null : group.id)}
-              className="bs-chapter"
-              aria-expanded={isExpanded}
-            >
-              <span className="flex-1">{group.title.toLocaleUpperCase("tr")}</span>
-              <ChevronDown
-                className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`}
-              />
-            </button>
+          <section key={group.id} className="bs-reading-section">
+            <h2 className="bs-chapter">{group.title.toLocaleUpperCase("tr")}</h2>
             <div className="bs-chapter-rule" />
 
-            {isExpanded && (
-              <div className="pb-2">
+            <div className="pb-2">
                 {group.categories.map((category) => {
                   const isMachineTopic = (category.id as string).startsWith("machine-");
                   const machineSlug = isMachineTopic ? (category.id as string).replace("machine-", "") : null;
@@ -88,8 +72,7 @@ export default function LessonsPage() {
                     </div>
                   );
                 })}
-              </div>
-            )}
+            </div>
           </section>
         );
       })}

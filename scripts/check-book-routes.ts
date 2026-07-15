@@ -1,6 +1,11 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { getBookRouteTitle, isBookContentPath } from "../src/lib/bookRoutes";
+import {
+  getBookInteractionMode,
+  getBookRoutePage,
+  getBookRouteTitle,
+  isBookContentPath,
+} from "../src/lib/bookRoutes";
 
 const appSource = readFileSync(resolve(process.cwd(), "src/App.tsx"), "utf8");
 const contentsSource = readFileSync(resolve(process.cwd(), "src/data/bookContents.ts"), "utf8");
@@ -65,6 +70,13 @@ for (const href of ["/calculations", "/formulas", "/regulations"]) {
 }
 if (getBookRouteTitle("/stability/formulas/gm") !== "FORMÜLLER") failures.push("Formül yaprağı başlığı yanlış.");
 if (getBookRouteTitle("/navigation/calc/gc") !== "HESAPLAMALAR") failures.push("Hesaplama yaprağı başlığı yanlış.");
+if (getBookInteractionMode("/crew/chief-officer") !== "reading") failures.push("Personel yaprağı salt okunur değil.");
+if (getBookInteractionMode("/navigation/calc/gc") !== "calculator") failures.push("Hesaplama girdileri etkin değil.");
+if (getBookInteractionMode("/safety") !== "calculator") failures.push("Güvenlik hesaplama girdileri etkin değil.");
+if (getBookInteractionMode("/economics") !== "calculator") failures.push("Ekonomi hesaplama girdileri etkin değil.");
+if (getBookInteractionMode("/lessons/stability/quiz") !== "quiz") failures.push("Quiz girdileri etkin değil.");
+if (getBookInteractionMode("/lessons/stability/assistant") !== "assistant") failures.push("Asistan girdileri etkin değil.");
+if (getBookRoutePage("/lessons") % 2 !== 0) failures.push("Sol yaprak numarası çift değil.");
 
 if (failures.length > 0) {
   console.error(failures.join("\n"));

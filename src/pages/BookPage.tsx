@@ -1,495 +1,279 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent, type WheelEvent } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { bookPages } from "@/data/bookContents";
+import { bookPages, type BookPageSpec } from "@/data/bookContents";
 
-/**
- * Açık kitap görünümü: kapak splash'teki gibi ciltten açılır, ardından
- * İçindekiler sayfaları yatay kaydırmalı kitap sayfaları olarak gezilir.
- * CSS sınıfları `bk-` prefix'lidir (splash'in global `.book*` kurallarıyla çakışmasın).
- */
+type TurnDirection = "forward" | "backward";
+
+interface SpreadPage {
+  page: BookPageSpec | null;
+  number: number | null;
+}
+
+/** Full-screen, two-leaf table of contents with gesture-driven page turns. */
 export default function BookPage() {
-  const pagerRef = useRef<HTMLDivElement>(null);
-  // Yumuşak kaydırma sürerken ardışık ok basışları kaybolmasın diye hedef sayfa burada tutulur.
-  const pendingPageRef = useRef<number | null>(null);
-  const settleTimerRef = useRef<number | null>(null);
-  const [pageIndex, setPageIndex] = useState(0);
-  const [coverDone, setCoverDone] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  const pointerStart = useRef<{ x: number; y: number } | null>(null);
+  const wheelLock = useRef(false);
+  const turnTimer = useRef<number | null>(null);
+  const [spreadIndex, setSpreadIndex] = useState(0);
+  const [turnDirection, setTurnDirection] = useState<TurnDirection>("forward");
+  const [turning, setTurning] = useState(false);
+  const [coverDone, setCoverDone] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
 
-  useEffect(() => {
-    const el = pagerRef.current;
-    if (!el) return;
-    let ticking = false;
-    const onScroll = () => {
-      if (settleTimerRef.current) window.clearTimeout(settleTimerRef.current);
-      settleTimerRef.current = window.setTimeout(() => {
-        pendingPageRef.current = null;
-      }, 250);
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const idx = Math.round(el.scrollLeft / el.clientWidth);
-        setPageIndex(Math.max(0, Math.min(bookPages.length - 1, idx)));
-        ticking = false;
-      });
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      el.removeEventListener("scroll", onScroll);
-      if (settleTimerRef.current) window.clearTimeout(settleTimerRef.current);
-    };
+  const spreads = useMemo<SpreadPage[][]>(() => {
+    // A real volume starts with the inside cover on the left and page 1 on the right.
+    const leaves: SpreadPage[] = [
+      { page: null, number: null },
+      ...bookPages.map((page, index) => ({ page, number: index + 1 })),
+    ];
+    if (leaves.length % 2 !== 0) leaves.push({ page: null, number: null });
+
+    const result: SpreadPage[][] = [];
+    for (let index = 0; index < leaves.length; index += 2) {
+      result.push([leaves[index], leaves[index + 1]]);
+    }
+    return result;
   }, []);
 
-  const stepPage = (delta: number) => {
-    const el = pagerRef.current;
-    if (!el) return;
-    const current = pendingPageRef.current ?? Math.round(el.scrollLeft / el.clientWidth);
-    const clamped = Math.max(0, Math.min(bookPages.length - 1, current + delta));
-    pendingPageRef.current = clamped;
-    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
+  useEffect(() => () => {
+    if (turnTimer.current) window.clearTimeout(turnTimer.current);
+  }, []);
+
+  const turnTo = (nextIndex: number, direction: TurnDirection) => {
+    if (turning || nextIndex < 0 || nextIndex >= spreads.length || nextIndex === spreadIndex) return;
+    if (turnTimer.current) window.clearTimeout(turnTimer.current);
+    setTurnDirection(direction);
+    setTurning(true);
+    setSpreadIndex(nextIndex);
+    turnTimer.current = window.setTimeout(() => setTurning(false), 720);
   };
 
+  const stepSpread = (direction: TurnDirection) => {
+    turnTo(spreadIndex + (direction === "forward" ? 1 : -1), direction);
+  };
+
+  const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    pointerStart.current = { x: event.clientX, y: event.clientY };
+  };
+
+  const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    const start = pointerStart.current;
+    pointerStart.current = null;
+    if (!start || (event.target as HTMLElement).closest("a")) return;
+
+    const deltaX = event.clientX - start.x;
+    const deltaY = event.clientY - start.y;
+    if (Math.abs(deltaX) > 38 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      stepSpread(deltaX < 0 ? "forward" : "backward");
+      return;
+    }
+    if (Math.abs(deltaY) > 12) return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const relativeX = event.clientX - bounds.left;
+    if (relativeX < bounds.width * .18) stepSpread("backward");
+    if (relativeX > bounds.width * .82) stepSpread("forward");
+  };
+
+  const onWheel = (event: WheelEvent<HTMLDivElement>) => {
+    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
+    if (!horizontalIntent || wheelLock.current || Math.abs(event.deltaX || event.deltaY) < 16) return;
+    wheelLock.current = true;
+    stepSpread((event.deltaX || event.deltaY) > 0 ? "forward" : "backward");
+    window.setTimeout(() => { wheelLock.current = false; }, 700);
+  };
+
+  const currentSpread = spreads[spreadIndex] ?? spreads[0];
+
   return (
-    <div
-      className="relative flex min-h-[100svh] flex-col items-center overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
-      }}
-    >
+    <div className="bk-scene">
+      <div className="bk-ambient" aria-hidden="true" />
+      <h1 className="bk-title notranslate" translate="no" lang="en">MARINER&rsquo;S BOOK</h1>
+
       <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 25%, rgba(56,189,248,0.14) 0%, transparent 55%)",
+        className="bk-stage"
+        role="region"
+        aria-label="Mariner's Book içindekiler"
+        aria-roledescription="iki sayfalı kitap"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === "ArrowRight" || event.key === "PageDown") stepSpread("forward");
+          if (event.key === "ArrowLeft" || event.key === "PageUp") stepSpread("backward");
         }}
-      />
-
-      {/* Kapatma: global FloatingNavButtons geri butonu (/book → /) kullanılır */}
-      <h1
-        className="notranslate z-20 mt-[max(1.1rem,env(safe-area-inset-top))] select-none text-center text-[13px] font-bold tracking-[0.3em] text-amber-200/80"
-        translate="no"
-        lang="en"
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+        onPointerCancel={() => { pointerStart.current = null; }}
+        onWheel={onWheel}
       >
-        MARINER&rsquo;S BOOK
-      </h1>
-
-      {/* Kitap */}
-      <div className="bk-stage z-10 mt-3 flex-1 w-full flex flex-col items-center min-h-0 pb-2">
-        <div className="bk-volume">
-          {/* Kâğıt + içindekiler pager'ı */}
-          <div className="bk-body">
-            <div
-              ref={pagerRef}
-              className="bk-pager no-scrollbar snap-x snap-mandatory"
-              style={{ scrollSnapType: "x mandatory" }}
-            >
-              {bookPages.map((page, i) => (
-                <section key={page.id} className="bk-sheet snap-center snap-always">
-                  <nav className="bk-page" aria-label={`İçindekiler — ${page.title}`}>
-                    {i === 0 ? (
-                      <>
-                        <header className="bk-toc-header">
-                          <div className="bk-toc-rule" />
-                          <div className="bk-toc-title">İÇİNDEKİLER</div>
-                          <div className="bk-toc-rule" />
-                        </header>
-                        <div className="bk-fleuron" aria-hidden="true">❦</div>
-                      </>
-                    ) : (
-                      <header className="bk-running-header">İÇİNDEKİLER</header>
-                    )}
-
-                    <Link to={page.to} className="bk-chapter">
-                      <span className="bk-chapter-numeral">{page.numeral}.</span>
-                      <span className="bk-chapter-title">
-                        {page.title.toLocaleUpperCase("tr")}
-                        {page.continuation ? <em className="bk-cont"> (devam)</em> : null}
-                      </span>
-                    </Link>
-                    <div className="bk-chapter-rule" />
-
-                    {page.sections.map((section, si) => (
-                      <div key={si} className="bk-section">
-                        {section.heading ? (
-                          <div className="bk-section-heading">{section.heading}</div>
-                        ) : null}
-                        {section.entries.map((entry) => (
-                          <Link key={entry.to} to={entry.to} className="bk-entry">
-                            <span className="bk-entry-label">{entry.label}</span>
-                            <span className="bk-leader" aria-hidden="true" />
-                            <span className="bk-anchor" aria-hidden="true">
-                              ⚓
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                    ))}
-                  </nav>
-                </section>
-              ))}
+        <div className="bk-cover-board">
+          <div className="bk-volume">
+            <div className={`bk-spread bk-spread--${turnDirection}`} aria-live="polite">
+              <BookLeaf leaf={currentSpread[0]} side="left" firstLeaf={spreadIndex === 0} />
+              <BookLeaf leaf={currentSpread[1]} side="right" firstLeaf={spreadIndex === 0} />
+              <span className="bk-gutter" aria-hidden="true" />
+              {turning && <span key={`${spreadIndex}-${turnDirection}`} className={`bk-turn-leaf bk-turn-leaf--${turnDirection}`} aria-hidden="true" />}
+              <span className="bk-ribbon" aria-hidden="true" />
             </div>
-            <div className="bk-ribbon" aria-hidden="true" />
-          </div>
 
-          {/* Ciltten açılan kapak */}
-          {!coverDone && (
-            <div
-              className="bk-cover"
-              aria-hidden="true"
-              onAnimationEnd={() => setCoverDone(true)}
-            >
-              <div className="bk-cover-face bk-cover-front">
-                <div className="bk-trim">
-                  <div className="bk-emblem">
-                    <svg
-                      viewBox="0 0 64 64"
-                      width="100%"
-                      height="100%"
-                      preserveAspectRatio="xMidYMid meet"
-                      fill="none"
-                      stroke="#daa520"
-                      strokeWidth="2.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <circle cx="32" cy="32" r="20" />
-                      <circle cx="32" cy="32" r="6" />
-                      <line x1="32" y1="4" x2="32" y2="16" />
-                      <line x1="32" y1="48" x2="32" y2="60" />
-                      <line x1="4" y1="32" x2="16" y2="32" />
-                      <line x1="48" y1="32" x2="60" y2="32" />
-                      <line x1="12" y1="12" x2="20" y2="20" />
-                      <line x1="44" y1="44" x2="52" y2="52" />
-                      <line x1="52" y1="12" x2="44" y2="20" />
-                      <line x1="20" y1="44" x2="12" y2="52" />
-                    </svg>
-                  </div>
-                  <div className="bk-cover-title notranslate" translate="no" lang="en">
-                    MARINER&rsquo;S
-                    <br />
-                    BOOK
+            {!coverDone && (
+              <div className="bk-cover" aria-hidden="true" onAnimationEnd={() => setCoverDone(true)}>
+                <div className="bk-cover-face bk-cover-front">
+                  <div className="bk-cover-trim">
+                    <div className="bk-emblem">⚓</div>
+                    <div className="bk-cover-title">MARINER&rsquo;S<br />BOOK</div>
+                    <div className="bk-cover-rule" />
+                    <div className="bk-cover-subtitle">SEAMANSHIP · NAVIGATION · ENGINEERING</div>
                   </div>
                 </div>
+                <div className="bk-cover-face bk-cover-back" />
               </div>
-              <div className="bk-cover-face bk-cover-back" />
-            </div>
-          )}
-        </div>
-
-        {/* Sayfa göstergesi */}
-        <div className="z-20 mt-3 flex items-center gap-3 pb-[max(0.9rem,env(safe-area-inset-bottom))]">
-          <button
-            type="button"
-            onClick={() => stepPage(-1)}
-            disabled={pageIndex === 0}
-            aria-label="Önceki sayfa"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-xl transition-all hover:bg-white/15 active:scale-95 disabled:opacity-30"
-          >
-            <ChevronLeft className="h-4 w-4" strokeWidth={2.25} />
-          </button>
-          <span className="min-w-[90px] text-center text-[12px] font-medium tracking-wide text-white/80">
-            Sayfa {pageIndex + 1} / {bookPages.length}
-          </span>
-          <button
-            type="button"
-            onClick={() => stepPage(1)}
-            disabled={pageIndex === bookPages.length - 1}
-            aria-label="Sonraki sayfa"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-xl transition-all hover:bg-white/15 active:scale-95 disabled:opacity-30"
-          >
-            <ChevronRight className="h-4 w-4" strokeWidth={2.25} />
-          </button>
+            )}
+          </div>
         </div>
       </div>
 
-      <style>{`
-        .bk-stage{ perspective: 1600px; perspective-origin: 50% 45%; }
-        .bk-volume{
-          position: relative;
-          width: min(94vw, 460px);
-          flex: 1;
-          min-height: 0;
-          max-height: 100%;
-          transform-style: preserve-3d;
-        }
-        .bk-body{
-          position: absolute;
-          inset: 0;
-          border-radius: 3px 6px 6px 3px;
-          background: linear-gradient(180deg, #f3e7c9 0%, #e6d3a8 100%);
-          box-shadow: 0 14px 34px rgba(0,0,0,.55), inset 0 0 18px rgba(120,80,20,.18);
-          overflow: hidden;
-        }
-        .bk-body::before{
-          content: "";
-          position: absolute;
-          left: 0; top: 0; bottom: 0;
-          width: 10px;
-          z-index: 2;
-          pointer-events: none;
-          background: linear-gradient(90deg, rgba(20,12,2,.5), rgba(20,12,2,.12) 70%, transparent);
-          border-radius: 3px 0 0 3px;
-        }
-        .bk-body::after{
-          content: "";
-          position: absolute;
-          right: 0; top: 1.5%; bottom: 1.5%;
-          width: 9px;
-          z-index: 2;
-          pointer-events: none;
-          border-radius: 0 4px 4px 0;
-          background: repeating-linear-gradient(90deg, #f0e3c2 0 1.6px, #d5c194 1.6px 3.2px);
-        }
-        .bk-pager{
-          display: flex;
-          height: 100%;
-          overflow-x: auto;
-          overflow-y: hidden;
-          scroll-behavior: smooth;
-          overscroll-behavior-x: contain;
-        }
-        .bk-sheet{
-          flex-shrink: 0;
-          width: 100%;
-          height: 100%;
-          padding: 10px 12px 10px 14px;
-        }
-        /* Hafif eğik sayfalar — elde dikilmiş cilt hissi */
-        .bk-sheet:nth-child(odd) .bk-page{ transform: rotate(.15deg); }
-        .bk-sheet:nth-child(even) .bk-page{ transform: rotate(-.15deg); }
-        .bk-page{
-          height: 100%;
-          overflow-y: auto;
-          border-radius: 2px;
-          padding: clamp(14px, 4vw, 22px) clamp(14px, 4.5vw, 24px) 22px;
-          background:
-            radial-gradient(22% 14% at 82% 12%, rgba(150,100,30,.08), transparent 70%),
-            radial-gradient(30% 18% at 12% 78%, rgba(150,100,30,.06), transparent 70%),
-            radial-gradient(14% 9% at 60% 45%, rgba(150,100,30,.05), transparent 70%),
-            repeating-linear-gradient(180deg, transparent 0 9px, rgba(120,80,20,.07) 9px 10px),
-            linear-gradient(180deg, #f8eed4 0%, #eddcb4 100%);
-          box-shadow:
-            inset 6px 0 10px -6px rgba(90,60,20,.45),
-            inset 0 6px 8px -6px rgba(90,60,20,.3),
-            inset 0 -6px 8px -6px rgba(90,60,20,.3);
-          font-family: Georgia, 'Times New Roman', serif;
-          color: #4a3113;
-          scrollbar-width: none;
-        }
-        .bk-page::-webkit-scrollbar{ display: none; }
-        .bk-toc-header{
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: clamp(12px, 3vw, 18px);
-        }
-        .bk-toc-title{
-          font-size: clamp(1.05rem, 4.6vw, 1.35rem);
-          font-weight: 700;
-          letter-spacing: .3em;
-          text-indent: .3em;
-          text-align: center;
-          color: #5a3d14;
-        }
-        .bk-toc-rule{
-          flex: 1;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(176,124,32,.65), transparent);
-        }
-        .bk-fleuron{
-          text-align: center;
-          color: rgba(90,61,20,.55);
-          font-size: 1.1rem;
-          line-height: 1;
-          margin: -6px 0 10px;
-        }
-        .bk-running-header{
-          margin-bottom: 10px;
-          text-align: center;
-          font-size: .62rem;
-          font-weight: 600;
-          letter-spacing: .34em;
-          text-indent: .34em;
-          color: rgba(90,61,20,.55);
-        }
-        .bk-running-header::before{ content: "❖  "; opacity: .5; }
-        .bk-running-header::after{ content: "  ❖"; opacity: .5; }
-        .bk-chapter{
-          display: flex;
-          align-items: baseline;
-          gap: .5em;
-          padding: 4px 0;
-          text-decoration: none;
-          color: #3f2a0e;
-        }
-        .bk-chapter:active{ opacity: .7; }
-        .bk-chapter-numeral{
-          font-size: clamp(1rem, 4.2vw, 1.2rem);
-          font-weight: 700;
-          font-variant-numeric: lining-nums;
-          color: #7a5c1a;
-          text-shadow: 0 1px 0 rgba(242,217,138,.35);
-        }
-        .bk-chapter-title{
-          font-size: clamp(1rem, 4.2vw, 1.2rem);
-          font-weight: 700;
-          letter-spacing: .12em;
-        }
-        .bk-cont{
-          font-weight: 400;
-          font-style: italic;
-          letter-spacing: 0;
-          font-size: .8em;
-          color: rgba(90,61,20,.7);
-        }
-        .bk-chapter-rule{
-          height: 1px;
-          margin: 2px 0 10px;
-          background: linear-gradient(90deg, rgba(176,124,32,.7), rgba(176,124,32,.15));
-          box-shadow: 0 2px 0 rgba(176,124,32,.2);
-        }
-        .bk-section + .bk-section{ margin-top: 12px; }
-        .bk-section-heading{
-          margin: 6px 0 2px;
-          font-size: .78rem;
-          font-weight: 700;
-          letter-spacing: .22em;
-          text-transform: uppercase;
-          color: rgba(90,61,20,.8);
-        }
-        .bk-entry{
-          display: flex;
-          align-items: baseline;
-          min-height: 40px;
-          padding: 6px 0 2px 14px;
-          text-decoration: none;
-          color: #4a3113;
-          font-size: clamp(.86rem, 3.6vw, .95rem);
-          line-height: 1.35;
-        }
-        .bk-entry:active{ opacity: .65; }
-        .bk-entry-label{ max-width: 78%; }
-        .bk-leader{
-          flex: 1;
-          min-width: 16px;
-          margin: 0 .45em;
-          border-bottom: 2px dotted rgba(120,80,20,.45);
-          transform: translateY(-3px);
-        }
-        .bk-anchor{
-          font-size: .72em;
-          opacity: .65;
-        }
+      <p className="bk-instruction">
+        Sayfa kenarına dokunun veya yatay kaydırın · {spreadIndex + 1} / {spreads.length} yaprak
+      </p>
 
-        /* Ciltten açılan kapak — splash cover-open ile aynı hareket */
-        .bk-cover{
-          position: absolute;
-          inset: 0;
-          z-index: 5;
-          transform-style: preserve-3d;
-          transform-origin: left center;
-          transform: rotateY(0);
-          animation: bk-cover-open .95s cubic-bezier(.72,.04,.22,1) .15s forwards;
-          will-change: transform;
-          pointer-events: none;
+      <style>{`
+        .bk-scene{
+          position:relative; display:flex; min-height:100svh; flex-direction:column; align-items:center; overflow:hidden;
+          padding: max(.65rem,env(safe-area-inset-top)) 2px max(.55rem,env(safe-area-inset-bottom));
+          background:linear-gradient(180deg,#06152a 0%,#0a2949 54%,#051421 100%);
         }
-        .bk-cover-face{
-          position: absolute;
-          inset: 0;
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-          border-radius: 3px 7px 7px 3px;
-          overflow: hidden;
+        .bk-ambient{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 20%,rgba(71,184,225,.19),transparent 52%); }
+        .bk-title{ position:relative; z-index:20; margin:0 0 6px; color:rgba(242,217,138,.84); font-size:clamp(.58rem,1.2vw,.78rem); font-weight:700; letter-spacing:.34em; text-indent:.34em; }
+        .bk-stage{ position:relative; z-index:10; width:100%; flex:1; min-height:0; display:flex; align-items:center; justify-content:center; perspective:2100px; outline:none; touch-action:pan-y; }
+        .bk-stage:focus-visible .bk-cover-board{ outline:1px dotted rgba(242,217,138,.62); outline-offset:3px; }
+        .bk-cover-board{
+          position:relative; width:min(98vw,1240px); height:min(84svh,780px); min-height:420px; padding:clamp(5px,.85vw,11px);
+          border:1px solid rgba(212,168,61,.46); border-radius:9px 13px 13px 9px;
+          background:repeating-linear-gradient(25deg,rgba(255,255,255,.018) 0 2px,transparent 2px 8px),linear-gradient(145deg,#103a69,#071f42 58%,#041328);
+          box-shadow:0 24px 64px rgba(0,0,0,.62),inset 0 0 30px rgba(0,0,0,.62);
         }
-        .bk-cover-front{
-          background:
-            radial-gradient(60% 45% at 0% 0%, rgba(140,100,40,.16), transparent 70%),
-            radial-gradient(60% 45% at 100% 100%, rgba(140,100,40,.14), transparent 70%),
-            radial-gradient(130% 110% at 50% 38%, transparent 52%, rgba(0,0,0,.42) 100%),
-            repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px),
-            repeating-linear-gradient(24deg, rgba(255,255,255,.02) 0 2px, transparent 2px 7px),
-            linear-gradient(140deg, #0f3668 0%, #0a274f 46%, #05172f 100%);
-          border: 1px solid rgba(202,160,68,.45);
-          box-shadow: inset 0 0 26px rgba(0,0,0,.45), 0 8px 22px rgba(0,0,0,.5);
-          transform: translateZ(.6px);
+        .bk-cover-board::before,.bk-cover-board::after{ content:""; position:absolute; width:22px; height:22px; pointer-events:none; border-color:rgba(218,177,76,.58); }
+        .bk-cover-board::before{ left:10px; top:10px; border-left:1px solid; border-top:1px solid; }
+        .bk-cover-board::after{ right:10px; bottom:10px; border-right:1px solid; border-bottom:1px solid; }
+        .bk-volume{ position:relative; width:100%; height:100%; transform-style:preserve-3d; border-radius:3px 8px 8px 3px; background:#d1b982; box-shadow:0 8px 18px rgba(0,0,0,.48); }
+        .bk-volume::before,.bk-volume::after{ content:""; position:absolute; z-index:3; top:1.3%; bottom:1.3%; width:9px; pointer-events:none; background:repeating-linear-gradient(90deg,#f1e4c4 0 1.5px,#cbb47d 1.5px 3px); }
+        .bk-volume::before{ left:-1px; border-radius:3px 0 0 3px; } .bk-volume::after{ right:-1px; border-radius:0 5px 5px 0; }
+        .bk-spread{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; overflow:hidden; border-radius:3px 7px 7px 3px; transform-style:preserve-3d; }
+        .bk-leaf{
+          position:relative; min-width:0; height:100%; overflow:hidden; padding:clamp(14px,2.5vw,34px) clamp(11px,2.6vw,38px) 17px;
+          display:grid; grid-template-rows:auto minmax(0,1fr) auto; color:#482f12; font-family:Georgia,'Times New Roman',serif;
+          background:radial-gradient(25% 16% at 82% 13%,rgba(137,82,23,.075),transparent 72%),repeating-linear-gradient(180deg,transparent 0 11px,rgba(120,80,20,.035) 11px 12px),linear-gradient(180deg,#fbf2d9,#efdfbc);
         }
-        .bk-cover-front::before{
-          content: "";
-          position: absolute;
-          left: 0; top: 0; bottom: 0;
-          width: 8%;
-          background: linear-gradient(90deg, rgba(0,0,0,.5), transparent);
-          border-right: 1px solid rgba(218,165,32,.22);
+        .bk-leaf--left{ box-shadow:inset 12px 0 16px -14px rgba(65,39,10,.42),inset -22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
+        .bk-leaf--right{ box-shadow:inset -12px 0 16px -14px rgba(65,39,10,.42),inset 22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
+        .bk-gutter{ position:absolute; z-index:4; top:0; bottom:0; left:50%; width:clamp(20px,3.2vw,48px); transform:translateX(-50%); pointer-events:none; background:linear-gradient(90deg,transparent,rgba(58,35,9,.24) 42%,rgba(255,249,229,.22) 52%,rgba(58,35,9,.2) 62%,transparent); mix-blend-mode:multiply; }
+        .bk-running{ padding-bottom:8px; text-align:center; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
+        .bk-running::before{ content:"❖  "; opacity:.45; }.bk-running::after{ content:"  ❖"; opacity:.45; }
+        .bk-page{ min-height:0; overflow-y:auto; padding:clamp(10px,1.7vw,20px) 0 8px; scrollbar-width:none; }
+        .bk-page::-webkit-scrollbar{ display:none; }
+        .bk-toc-header{ display:flex; align-items:center; gap:8px; margin-bottom:9px; }
+        .bk-toc-title{ flex:0 auto; color:#513514; font-size:clamp(.66rem,1.45vw,1.08rem); font-weight:700; letter-spacing:.22em; text-indent:.22em; }
+        .bk-toc-rule{ flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(176,124,32,.6),transparent); }
+        .bk-fleuron{ margin:-2px 0 8px; text-align:center; color:rgba(90,61,20,.48); }
+        .bk-chapter{ display:flex; align-items:baseline; gap:.45em; padding:4px 0; color:#3f2a0e; text-decoration:none; }
+        .bk-chapter:focus-visible,.bk-entry:focus-visible{ outline:2px dotted rgba(74,49,19,.58); outline-offset:2px; }
+        .bk-chapter-numeral{ color:#7a5c1a; font-size:clamp(.69rem,1.35vw,1.02rem); font-weight:700; }
+        .bk-chapter-title{ font-size:clamp(.67rem,1.3vw,1rem); font-weight:700; letter-spacing:.09em; }
+        .bk-cont{ font-size:.74em; font-weight:400; font-style:italic; letter-spacing:0; color:rgba(90,61,20,.68); }
+        .bk-chapter-rule{ height:1px; margin:1px 0 8px; background:linear-gradient(90deg,rgba(176,124,32,.68),rgba(176,124,32,.1)); }
+        .bk-section+.bk-section{ margin-top:9px; }
+        .bk-section-heading{ margin:5px 0 2px; color:rgba(90,61,20,.8); font-size:clamp(.48rem,.85vw,.68rem); font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+        .bk-entry{ display:flex; align-items:baseline; min-height:31px; padding:5px 0 2px 8px; color:#4a3113; text-decoration:none; font-size:clamp(.56rem,1.05vw,.83rem); line-height:1.3; }
+        .bk-entry-label{ max-width:78%; }.bk-leader{ flex:1; min-width:8px; margin:0 .36em; border-bottom:1.5px dotted rgba(120,80,20,.42); transform:translateY(-2px); }.bk-anchor{ font-size:.66em; opacity:.62; }
+        .bk-folio{ padding-top:6px; color:rgba(78,50,16,.65); border-top:1px solid rgba(120,80,20,.16); font-size:clamp(.48rem,.82vw,.68rem); font-variant-numeric:oldstyle-nums; }
+        .bk-leaf--left .bk-folio{ text-align:left; }.bk-leaf--right .bk-folio{ text-align:right; }
+        .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:rgba(90,61,20,.55); }
+        .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }.bk-frontispiece p{ margin-top:8px; font-size:clamp(.45rem,.86vw,.66rem); letter-spacing:.22em; }
+        .bk-turn-leaf{ position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none; backface-visibility:hidden; background:linear-gradient(90deg,rgba(84,54,19,.18),transparent 12%),linear-gradient(90deg,#e8d5ad,#fbf1d7); box-shadow:-14px 7px 28px rgba(49,29,7,.32); will-change:transform,opacity; }
+        .bk-turn-leaf--forward{ right:0; transform-origin:left center; animation:bk-turn-forward .7s cubic-bezier(.64,.02,.23,1) both; }
+        .bk-turn-leaf--backward{ left:0; transform-origin:right center; animation:bk-turn-backward .7s cubic-bezier(.64,.02,.23,1) both; }
+        @keyframes bk-turn-forward{ from{transform:rotateY(0);opacity:.94} to{transform:rotateY(-178deg);opacity:0} }
+        @keyframes bk-turn-backward{ from{transform:rotateY(0);opacity:.94} to{transform:rotateY(178deg);opacity:0} }
+        .bk-ribbon{ position:absolute; z-index:5; top:-2px; right:10%; width:clamp(8px,1.15vw,15px); height:clamp(42px,8vw,74px); pointer-events:none; background:linear-gradient(90deg,#741717,#a42d2d 48%,#741717); clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%); box-shadow:0 3px 5px rgba(0,0,0,.3); }
+        .bk-cover{ position:absolute; z-index:12; inset:0; transform-style:preserve-3d; transform-origin:left center; animation:bk-cover-open 1.05s cubic-bezier(.72,.04,.22,1) .18s forwards; pointer-events:none; }
+        .bk-cover-face{ position:absolute; inset:0; overflow:hidden; border-radius:3px 8px 8px 3px; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+        .bk-cover-front{ transform:translateZ(.8px); border:1px solid rgba(212,168,61,.48); background:radial-gradient(130% 110% at 50% 38%,transparent 52%,rgba(0,0,0,.45) 100%),repeating-linear-gradient(115deg,rgba(255,255,255,.02) 0 2px,transparent 2px 7px),linear-gradient(140deg,#123c70,#092750 48%,#04162e); box-shadow:inset 0 0 30px rgba(0,0,0,.48),0 8px 22px rgba(0,0,0,.5); }
+        .bk-cover-back{ transform:rotateY(180deg) translateZ(.8px); border-radius:8px 3px 3px 8px; background:linear-gradient(180deg,#f5e8c8,#e6d1a5); box-shadow:inset 0 0 18px rgba(120,80,20,.25); }
+        .bk-cover-trim{ position:absolute; inset:6%; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1.5px solid rgba(218,165,32,.58); }
+        .bk-cover-trim::after{ content:""; position:absolute; inset:2.4%; border:1px solid rgba(218,165,32,.28); }
+        .bk-emblem{ color:#d5ac4e; font-size:clamp(2rem,6vw,4.8rem); filter:drop-shadow(0 0 7px rgba(218,165,32,.35)); }
+        .bk-cover-title{ margin-top:8px; text-align:center; color:#d9b258; font:700 clamp(.9rem,3.4vw,2.1rem)/1.38 Georgia,'Times New Roman',serif; letter-spacing:.16em; }
+        .bk-cover-rule{ width:22%; height:1px; margin:15px 0; background:linear-gradient(90deg,transparent,#d5ac4e,transparent); }
+        .bk-cover-subtitle{ color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem) Georgia,'Times New Roman',serif; letter-spacing:.18em; }
+        @keyframes bk-cover-open{ to{transform:rotateY(-178deg)} }
+        .bk-instruction{ position:relative; z-index:20; margin-top:6px; color:rgba(255,255,255,.68); font-size:clamp(.55rem,1vw,.72rem); letter-spacing:.04em; }
+        @media(max-width:720px){
+          .bk-cover-board{ height:calc(100svh - 5.2rem); min-height:360px; padding:4px; }
+          .bk-leaf{ padding:10px 7px 11px; }
+          .bk-page{ padding-top:7px; }
+          .bk-gutter{ width:20px; }
+          .bk-entry{ min-height:25px; padding-left:3px; }
+          .bk-ribbon{ right:7%; }
         }
-        .bk-cover-back{
-          background:
-            repeating-linear-gradient(180deg, transparent 0 9px, rgba(120,80,20,.06) 9px 10px),
-            linear-gradient(180deg, #f6ebd0 0%, #e9d7ae 100%);
-          transform: rotateY(180deg) translateZ(.6px);
-          border-radius: 7px 3px 3px 7px;
-          box-shadow: inset 0 0 16px rgba(120,80,20,.22);
-        }
-        .bk-trim{
-          position: absolute;
-          inset: 6.5%;
-          border: 1.5px solid rgba(218,165,32,.55);
-          border-radius: 3px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: clamp(6px, 2vh, 12px);
-        }
-        .bk-trim::after{
-          content: "";
-          position: absolute;
-          inset: 2.5%;
-          border: 1px solid rgba(218,165,32,.28);
-          border-radius: 2px;
-        }
-        .bk-emblem{
-          width: 30%;
-          aspect-ratio: 1;
-          filter: drop-shadow(0 0 6px rgba(218,165,32,.5));
-        }
-        .bk-emblem svg{ display: block; }
-        .bk-cover-title{
-          font-family: Georgia, 'Times New Roman', serif;
-          font-weight: 700;
-          text-align: center;
-          letter-spacing: .14em;
-          line-height: 1.45;
-          font-size: clamp(.85rem, 4.4vw, 1.2rem);
-          color: #d9b258;
-          background: linear-gradient(180deg, #f2d98a 0%, #caa044 60%, #f2d98a 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-        /* Kırmızı kurdele ayraç — kapağın (z-5) altında, dokunuşları engellemez */
-        .bk-ribbon{
-          position: absolute;
-          top: -2px;
-          right: 12%;
-          width: 16px;
-          height: 64px;
-          z-index: 3;
-          pointer-events: none;
-          background: linear-gradient(90deg, #7a1a1a, #a83232 45%, #7a1a1a);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 86%, 0 100%);
-          box-shadow: 0 3px 5px rgba(0,0,0,.35);
-        }
-        @keyframes bk-cover-open{ to{ transform: rotateY(-178deg); } }
-        .no-scrollbar::-webkit-scrollbar{ display: none; }
-        .no-scrollbar{ scrollbar-width: none; -ms-overflow-style: none; }
-        @media (prefers-reduced-motion: reduce){
-          .bk-cover{ animation-duration: .01s !important; animation-delay: 0s !important; }
-          .bk-pager{ scroll-behavior: auto; }
-        }
+        @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-turn-leaf{animation-duration:.01s!important} }
       `}</style>
     </div>
+  );
+}
+
+function BookLeaf({ leaf, side, firstLeaf }: { leaf: SpreadPage; side: "left" | "right"; firstLeaf: boolean }) {
+  return (
+    <section className={`bk-leaf bk-leaf--${side}`} aria-label={leaf.number ? `Sayfa ${leaf.number}` : undefined}>
+      <header className="bk-running">{leaf.page ? "İÇİNDEKİLER" : "MARINER’S BOOK"}</header>
+      <div className="bk-page">
+        {leaf.page ? <ContentsPage page={leaf.page} firstPage={leaf.number === 1} /> : (
+          <div className="bk-frontispiece" aria-hidden={!firstLeaf}>
+            <div className="bk-frontispiece-mark">⚓</div>
+            <p>DENİZCİNİN BAŞVURU KİTABI</p>
+          </div>
+        )}
+      </div>
+      <footer className="bk-folio">{leaf.number ?? ""}</footer>
+    </section>
+  );
+}
+
+function ContentsPage({ page, firstPage }: { page: BookPageSpec; firstPage: boolean }) {
+  return (
+    <nav aria-label={`İçindekiler — ${page.title}`}>
+      {firstPage && (
+        <>
+          <header className="bk-toc-header">
+            <span className="bk-toc-rule" />
+            <span className="bk-toc-title">İÇİNDEKİLER</span>
+            <span className="bk-toc-rule" />
+          </header>
+          <div className="bk-fleuron" aria-hidden="true">❦</div>
+        </>
+      )}
+
+      <Link to={page.to} className="bk-chapter">
+        <span className="bk-chapter-numeral">{page.numeral}.</span>
+        <span className="bk-chapter-title">
+          {page.title.toLocaleUpperCase("tr")}
+          {page.continuation ? <em className="bk-cont"> (devam)</em> : null}
+        </span>
+      </Link>
+      <div className="bk-chapter-rule" />
+
+      {page.sections.map((section, sectionIndex) => (
+        <section key={sectionIndex} className="bk-section">
+          {section.heading && <h2 className="bk-section-heading">{section.heading}</h2>}
+          {section.entries.map((entry) => (
+            <Link key={entry.to} to={entry.to} className="bk-entry">
+              <span className="bk-entry-label">{entry.label}</span>
+              <span className="bk-leader" aria-hidden="true" />
+              <span className="bk-anchor" aria-hidden="true">⚓</span>
+            </Link>
+          ))}
+        </section>
+      ))}
+    </nav>
   );
 }

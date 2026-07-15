@@ -47,6 +47,65 @@ export function isBookContentPath(pathname: string): boolean {
   return BOOK_ROUTE_PREFIXES.some((prefix) => matchesPrefix(pathname, prefix));
 }
 
+export type BookInteractionMode = "reading" | "calculator" | "quiz" | "assistant";
+
+/**
+ * Only pages that genuinely wait for an answer keep form controls. Everything
+ * else is treated as a printed reading page by the persistent book frame.
+ */
+export function getBookInteractionMode(pathname: string): BookInteractionMode {
+  if (pathname.includes("/assistant")) return "assistant";
+  if (
+    pathname.includes("/quiz") ||
+    pathname.includes("/scenarios") ||
+    matchesPrefix(pathname, "/exercises") ||
+    matchesPrefix(pathname, "/exam-preparation")
+  ) return "quiz";
+  if (
+    pathname.includes("/calculations") ||
+    pathname.includes("/calc/") ||
+    matchesPrefix(pathname, "/calculations") ||
+    matchesPrefix(pathname, "/tank") ||
+    matchesPrefix(pathname, "/ballast") ||
+    matchesPrefix(pathname, "/hydrodynamics") ||
+    matchesPrefix(pathname, "/structural") ||
+    matchesPrefix(pathname, "/special-ships") ||
+    matchesPrefix(pathname, "/emissions") ||
+    matchesPrefix(pathname, "/converter") ||
+    matchesPrefix(pathname, "/machine-calculations") ||
+    pathname === "/navigation" ||
+    pathname === "/safety" ||
+    pathname === "/economics"
+  ) return "calculator";
+  return "reading";
+}
+
+const PAGE_RANGES: readonly [prefix: string, firstPage: number][] = [
+  ["/lessons", 10],
+  ["/machine", 80],
+  ["/exercises", 160],
+  ["/exam-preparation", 190],
+  ["/crew", 220],
+  ["/ship-systems", 300],
+  ["/ship-operations", 380],
+  ["/ship-tasks", 440],
+  ["/glossary", 480],
+  ["/regulations", 520],
+  ["/solas", 560],
+  ["/calculations", 600],
+];
+
+/** Stable even page number for the left side of a route spread. */
+export function getBookRoutePage(pathname: string): number {
+  const range = PAGE_RANGES.find(([prefix]) => matchesPrefix(pathname, prefix));
+  const firstPage = range?.[1] ?? 700;
+  if (range && pathname === range[0]) return firstPage;
+
+  let hash = 0;
+  for (const character of pathname) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  return firstPage + (hash % 30) * 2;
+}
+
 /** Running head printed at the top of the persistent paper sheet. */
 export function getBookRouteTitle(pathname: string): string {
   if (pathname === "/crew/muster-list") return "ROLE CETVELİ";

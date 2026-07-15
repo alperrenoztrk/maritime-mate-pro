@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   Anchor,
@@ -9,21 +8,11 @@ import {
   ShieldAlert,
   ClipboardList,
 } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { shipTypeMap } from "@/data/shipOperationsData";
-import type { DepartmentId } from "@/data/shipOperationsData";
-import { cn } from "@/lib/utils";
 import { BookSheet } from "@/components/book/BookSheet";
 
 export default function ShipOperationsDetail() {
   const { shipType } = useParams<{ shipType: string }>();
-  const [activeDept, setActiveDept] = useState<DepartmentId>("guverte");
-
   const ship = shipType ? shipTypeMap[shipType] : undefined;
 
   if (!ship) {
@@ -34,162 +23,75 @@ export default function ShipOperationsDetail() {
     );
   }
 
-  const currentDept = ship.departments.find((d) => d.id === activeDept);
-
   return (
     <BookSheet title="OPERASYONLAR">
-      <div className="flex flex-col gap-4">
-          {/* Header */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="bs-photo relative h-12 w-16 shrink-0 overflow-hidden rounded-sm">
-                <img
-                  src={ship.image}
-                  alt={`${ship.label} gemisi`}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <h1 className="bs-h2 truncate" style={{ margin: 0 }}>
-                {ship.label} Operasyonları
-              </h1>
-            </div>
+      <div className="flex flex-col gap-5">
+        <header className="flex items-center gap-3">
+          <div className="bs-photo relative h-12 w-16 shrink-0 overflow-hidden rounded-sm">
+            <img src={ship.image} alt={`${ship.label} gemisi`} className="h-full w-full object-cover" />
           </div>
+          <h1 className="bs-h2" style={{ margin: 0 }}>{ship.label} Operasyonları</h1>
+        </header>
 
-          {/* Department tabs */}
-          <div className="flex gap-2">
-            {ship.departments.map((dept) => {
-              const isActive = dept.id === activeDept;
-              const Icon = dept.id === "guverte" ? Anchor : Wrench;
-              return (
-                <button
-                  key={dept.id}
-                  onClick={() => setActiveDept(dept.id)}
-                  className={cn("flex-1", isActive ? "bs-btn" : "bs-btn--ghost")}
-                >
-                  <Icon
-                    className="h-3.5 w-3.5"
-                    strokeWidth={isActive ? 2.2 : 1.6}
-                  />
-                  {dept.label}
-                </button>
-              );
-            })}
-          </div>
+        {ship.departments.map((department) => {
+          const DepartmentIcon = department.id === "guverte" ? Anchor : Wrench;
+          return (
+            <section key={department.id} className="bs-reading-section">
+              <header className="bs-reading-heading">
+                <DepartmentIcon className="h-4 w-4" aria-hidden="true" />
+                <h2>{department.label}</h2>
+                <span className="bs-note">{department.operations.length} operasyon</span>
+              </header>
 
-          {/* Operations list */}
-          {currentDept && (
-            <div className="flex flex-col gap-2">
-              <p className="bs-muted text-[11px] italic">
-                {currentDept.operations.length} operasyon
-              </p>
-              <Accordion type="multiple">
-                {currentDept.operations.map((op, idx) => (
-                  <AccordionItem
-                    key={idx}
-                    value={`op-${idx}`}
-                    className="border-b border-dotted border-[rgba(120,80,20,.35)] px-1"
-                  >
-                    <AccordionTrigger className="py-3 text-left text-sm font-semibold leading-snug hover:no-underline gap-3" style={{ color: "#3f2a0e" }}>
-                      <span className="flex-1">{op.title}</span>
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-4">
-                      <div className="bs-prose flex flex-col gap-4 pt-1 text-xs leading-relaxed">
-                        <Section
-                          icon={<Target className="h-3.5 w-3.5" />}
-                          label="Amaç"
-                        >
-                          <p>{op.purpose}</p>
-                        </Section>
+              {department.operations.map((operation, index) => (
+                <article key={index} className="bs-topic-article">
+                  <h3>{index + 1}. {operation.title}</h3>
+                  <div className="bs-prose flex flex-col gap-4 pt-1 text-xs leading-relaxed">
+                    <Section icon={<Target className="h-3.5 w-3.5" />} label="Amaç">
+                      <p>{operation.purpose}</p>
+                    </Section>
 
-                        <Section
-                          icon={<ListChecks className="h-3.5 w-3.5" />}
-                          label="Prosedür"
-                        >
-                          <ol className="list-decimal space-y-1.5 pl-4">
-                            {op.procedure.map((step, i) => (
-                              <li key={i}>{step}</li>
-                            ))}
-                          </ol>
-                        </Section>
+                    <Section icon={<ListChecks className="h-3.5 w-3.5" />} label="Prosedür">
+                      <ol className="list-decimal space-y-1.5 pl-4">
+                        {operation.procedure.map((step, stepIndex) => <li key={stepIndex}>{step}</li>)}
+                      </ol>
+                    </Section>
 
-                        {op.regulations && op.regulations.length > 0 && (
-                          <Section
-                            icon={<ScrollText className="h-3.5 w-3.5" />}
-                            label="İlgili Mevzuat"
-                          >
-                            <div className="flex flex-wrap gap-1.5">
-                              {op.regulations.map((reg, i) => (
-                                <span key={i} className="bs-chip">{reg}</span>
-                              ))}
-                            </div>
-                          </Section>
-                        )}
+                    {operation.regulations && operation.regulations.length > 0 && (
+                      <Section icon={<ScrollText className="h-3.5 w-3.5" />} label="İlgili Mevzuat">
+                        <p>{operation.regulations.join(" · ")}</p>
+                      </Section>
+                    )}
 
-                        {op.safety && op.safety.length > 0 && (
-                          <Section
-                            icon={
-                              <ShieldAlert className="h-3.5 w-3.5 text-[#8f1f1f]" />
-                            }
-                            label="Güvenlik & Risk"
-                          >
-                            <ul className="space-y-1 pl-3.5">
-                              {op.safety.map((s, i) => (
-                                <li
-                                  key={i}
-                                  className="relative before:absolute before:-left-3 before:top-1.5 before:h-1 before:w-1 before:rounded-full before:bg-[#8f1f1f]"
-                                >
-                                  {s}
-                                </li>
-                              ))}
-                            </ul>
-                          </Section>
-                        )}
+                    {operation.safety && operation.safety.length > 0 && (
+                      <Section icon={<ShieldAlert className="h-3.5 w-3.5" />} label="Güvenlik ve Risk">
+                        <ul>{operation.safety.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}</ul>
+                      </Section>
+                    )}
 
-                        {op.records && op.records.length > 0 && (
-                          <Section
-                            icon={<ClipboardList className="h-3.5 w-3.5" />}
-                            label="Kayıt / Checklist"
-                          >
-                            <ul className="space-y-1 pl-3.5">
-                              {op.records.map((r, i) => (
-                                <li
-                                  key={i}
-                                  className="relative before:absolute before:-left-3 before:top-1.5 before:h-1 before:w-1 before:rounded-full before:bg-[rgba(120,80,20,.6)]"
-                                >
-                                  {r}
-                                </li>
-                              ))}
-                            </ul>
-                          </Section>
-                        )}
+                    {operation.records && operation.records.length > 0 && (
+                      <Section icon={<ClipboardList className="h-3.5 w-3.5" />} label="Kayıt ve Checklist">
+                        <ul>{operation.records.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}</ul>
+                      </Section>
+                    )}
 
-                        <Link
-                          to={`/ship-operations/${shipType}/${activeDept}/${idx}`}
-                          className="bs-btn--ghost mt-1 self-start"
-                        >
-                          Detaylı Anlatımı Aç →
-                        </Link>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          )}
+                    <Link to={`/ship-operations/${shipType}/${department.id}/${index}`} className="bs-entry">
+                      <span className="bs-entry-label">Detaylı anlatım</span>
+                      <span className="bs-leader" aria-hidden="true" />
+                      <span className="bs-anchor" aria-hidden="true">↗</span>
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </section>
+          );
+        })}
       </div>
     </BookSheet>
   );
 }
 
-function Section({
-  icon,
-  label,
-  children,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  children: React.ReactNode;
-}) {
+function Section({ icon, label, children }: { icon: React.ReactNode; label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[.14em] text-[rgba(90,61,20,.75)]">
