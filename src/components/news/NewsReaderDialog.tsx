@@ -10,6 +10,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
+import { NewspaperStyles } from "@/components/news/NewspaperStyles";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function formatDate(iso: string | undefined, locale: string): string {
@@ -128,21 +129,31 @@ function ArticleRenderer({ content }: { content: string }) {
     .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
     .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1");
   const paragraphs = cleaned.split("\n\n").filter((p) => p.trim());
+  let dropCapUsed = false;
+
   return (
-    <div className="space-y-4 text-[15px] leading-relaxed text-white/90">
+    <div className="space-y-3.5 text-[13.5px] leading-[1.68]" style={{ color: "var(--gz-ink-soft)" }}>
       {paragraphs.map((para, i) => {
         const trimmed = para.trim();
         const headingMatch = trimmed.match(/^#{1,6} +(.*)$/);
         if (headingMatch) {
           return (
-            <h3 key={i} className="mt-6 mb-2 text-lg font-bold text-white">
+            <h3
+              key={i}
+              className="mt-6 mb-1 border-b pb-1 text-[15px] font-bold uppercase tracking-[.08em]"
+              style={{ color: "var(--gz-ink)", borderColor: "var(--gz-rule)" }}
+            >
               {headingMatch[1]}
             </h3>
           );
         }
         if (trimmed.startsWith("> ")) {
           return (
-            <blockquote key={i} className="border-l-2 border-blue-400/40 pl-4 italic text-white/75">
+            <blockquote
+              key={i}
+              className="pl-3 italic"
+              style={{ borderLeft: "3px double var(--gz-rule)" }}
+            >
               {trimmed.replace(/^> /, "")}
             </blockquote>
           );
@@ -151,7 +162,7 @@ function ArticleRenderer({ content }: { content: string }) {
         if (bulletRe.test(trimmed)) {
           const items = trimmed.split("\n").filter((l) => bulletRe.test(l.trim()));
           return (
-            <ul key={i} className="list-inside list-disc space-y-1 text-white/85">
+            <ul key={i} className="list-inside list-[square] space-y-1">
               {items.map((item, j) => (
                 <li key={j}>{item.trim().replace(bulletRe, "")}</li>
               ))}
@@ -162,9 +173,17 @@ function ArticleRenderer({ content }: { content: string }) {
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
-          .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-white">$1</strong>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold">$1</strong>')
           .replace(/_([^_]+)_/g, "<em>$1</em>");
-        return <p key={i} dangerouslySetInnerHTML={{ __html: formatted }} />;
+        const isFirstParagraph = !dropCapUsed;
+        dropCapUsed = true;
+        return (
+          <p
+            key={i}
+            className={"gz-just" + (isFirstParagraph ? " gz-dropcap" : "")}
+            dangerouslySetInnerHTML={{ __html: formatted }}
+          />
+        );
       })}
     </div>
   );
@@ -188,107 +207,153 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
 
   const summary = stripHtml(item?.summary);
   const heroImage = toProxyImageUrl(item?.imageUrl) ?? normalizeImageUrl(item?.imageUrl);
+  const pageDate = new Date().toLocaleDateString(currentLanguage || "tr", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[95svh] border-white/10 bg-slate-950 text-white p-0 overflow-hidden">
-        <ScrollArea className="max-h-[95svh]">
-          <div className="relative h-56 sm:h-72 w-full bg-slate-900">
-            {heroImage ? (
-              <img
-                src={heroImage}
-                alt={item?.title ?? "Haber"}
-                className="h-full w-full object-cover"
-                loading="eager"
-                decoding="async"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-sm text-white/40">
-                Görsel bulunamadı
-              </div>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
-          </div>
-
-          <div className="relative -mt-16 px-5 pb-8">
-            <DialogHeader className="space-y-3">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-white/60">
-                {item?.source ? <span className="font-medium text-sky-300">{item.source}</span> : null}
-                {item?.publishedAt ? (
-                  <>
-                    <span>·</span>
-                    <span>{formatDate(item.publishedAt, currentLanguage)}</span>
-                  </>
-                ) : null}
-                {articleQuery.data?.author && (
-                  <>
-                    <span>·</span>
-                    <span className="text-white/60">{articleQuery.data.author}</span>
-                  </>
-                )}
-                {articleQuery.data?.content && (
-                  <>
-                    <span>·</span>
-                    <span>{estimateReadingTime(articleQuery.data.content)}</span>
-                  </>
-                )}
-              </div>
-              <DialogTitle className="text-xl leading-snug text-white">
-                {item?.title ?? "Haber"}
-              </DialogTitle>
-              <DialogDescription className="sr-only">Haber detayı</DialogDescription>
-            </DialogHeader>
-
-            <div className="mt-5">
-              {articleQuery.isLoading ? (
-                <div className="flex flex-col items-center gap-3 py-14 text-white/60">
-                  <Loader2 className="h-6 w-6 animate-spin" />
-                  <span className="text-sm">Makale yükleniyor...</span>
-                </div>
-              ) : articleQuery.isError ? (
-                summary ? (
-                  <div className="space-y-3">
-                    <p className="text-[15px] leading-relaxed text-white/90">{summary}</p>
-                    <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-xs text-amber-200/80">
-                      <p>Tam metin yüklenemedi, özet gösteriliyor.</p>
-                      {articleQuery.error instanceof Error && articleQuery.error.message ? (
-                        <p className="mt-1 text-[10px] text-amber-200/50 break-words">
-                          {articleQuery.error.message}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 text-sm text-white/60">
-                    İçerik şu an yüklenemiyor. Daha sonra tekrar deneyin.
-                  </div>
-                )
-              ) : articleQuery.data?.content ? (
-                <div className="space-y-4">
-                  {articleQuery.data.warning && (
-                    <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-xs text-amber-200/80">
-                      {articleQuery.data.warning}
-                    </div>
-                  )}
-                  <ArticleRenderer content={articleQuery.data.content} />
-                </div>
-              ) : summary ? (
-                <p className="text-[15px] leading-relaxed text-white/90">{summary}</p>
-              ) : null}
-            </div>
-
-            <div className="mt-8 flex items-center justify-end border-t border-white/10 pt-4">
-              <Button
-                variant="outline"
-                className="border-white/20 bg-transparent text-white hover:bg-white/10"
-                onClick={() => onOpenChange(false)}
+      <DialogContent className="max-w-3xl w-[calc(100vw-1.25rem)] max-h-[94svh] overflow-hidden border-0 bg-transparent p-0 shadow-none text-[#241d10]">
+        <NewspaperStyles />
+        {/* Gazete iç sayfası — makale kağıdın üzerine basılı */}
+        <article className="gz-sheet overflow-hidden rounded">
+          <div className="gz-grain" aria-hidden="true" />
+          <ScrollArea className="max-h-[94svh]">
+            <div className="px-5 pb-8 pt-4 sm:px-9 sm:pt-5">
+              {/* İç sayfa manşet şeridi */}
+              <div className="gz-rule-thin" aria-hidden="true" />
+              <div
+                className="mt-1.5 flex items-baseline justify-between gap-3 text-[9px]"
+                style={{ fontVariant: "small-caps", letterSpacing: ".14em", color: "var(--gz-ink-soft)" }}
               >
-                Kapat
-              </Button>
+                <span>İç Sayfa</span>
+                <span
+                  className="notranslate text-[13px] font-black tracking-[.1em]"
+                  translate="no"
+                  lang="en"
+                  style={{ color: "var(--gz-ink)" }}
+                >
+                  MARINER&rsquo;S POST
+                </span>
+                <span className="notranslate" translate="no">{pageDate}</span>
+              </div>
+              <div className="gz-rule-double mt-1.5" aria-hidden="true" />
+
+              <DialogHeader className="mt-3 space-y-2 text-left">
+                <DialogTitle className="gz-headline text-[clamp(1.35rem,5.6vw,1.9rem)] leading-[1.12]">
+                  {item?.title ?? "Haber"}
+                </DialogTitle>
+                <DialogDescription className="sr-only">Haber detayı</DialogDescription>
+                {/* Byline satırı */}
+                <div
+                  className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-y py-1.5 text-[9px]"
+                  style={{
+                    fontVariant: "small-caps",
+                    letterSpacing: ".12em",
+                    color: "var(--gz-ink-faint)",
+                    borderColor: "var(--gz-rule)",
+                  }}
+                >
+                  {item?.source ? (
+                    <span className="font-bold" style={{ color: "var(--gz-ink-soft)" }}>
+                      {item.source}
+                    </span>
+                  ) : null}
+                  {item?.publishedAt ? (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <span className="notranslate" translate="no">{formatDate(item.publishedAt, currentLanguage)}</span>
+                    </>
+                  ) : null}
+                  {articleQuery.data?.author ? (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <span>{articleQuery.data.author}</span>
+                    </>
+                  ) : null}
+                  {articleQuery.data?.content ? (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <span>{estimateReadingTime(articleQuery.data.content)}</span>
+                    </>
+                  ) : null}
+                </div>
+              </DialogHeader>
+
+              {/* Basılı fotoğraf + altyazı */}
+              {heroImage ? (
+                <figure className="mt-3">
+                  <span className="gz-photo-wrap block aspect-[16/9] w-full">
+                    <img
+                      src={heroImage}
+                      alt={item?.title ?? "Haber"}
+                      className="gz-photo"
+                      loading="eager"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                    />
+                  </span>
+                  <figcaption className="gz-caption">
+                    {item?.source ? `Fotoğraf: ${item.source}` : "Arşiv fotoğrafı"}
+                  </figcaption>
+                </figure>
+              ) : null}
+
+              <div className="mt-4">
+                {articleQuery.isLoading ? (
+                  <div
+                    className="flex flex-col items-center gap-3 py-14"
+                    style={{ color: "var(--gz-ink-faint)" }}
+                  >
+                    <Loader2 className="h-6 w-6 animate-spin" />
+                    <span className="text-sm italic">Dizgi hazırlanıyor…</span>
+                  </div>
+                ) : articleQuery.isError ? (
+                  summary ? (
+                    <div className="space-y-3">
+                      <p className="gz-just gz-dropcap text-[13.5px] leading-[1.68]" style={{ color: "var(--gz-ink-soft)" }}>
+                        {summary}
+                      </p>
+                      <div className="gz-notice">
+                        <p>Tam metin baskıya yetişmedi; özet dizgisi gösteriliyor.</p>
+                        {articleQuery.error instanceof Error && articleQuery.error.message ? (
+                          <p className="mt-1 break-words text-[9px] opacity-75">{articleQuery.error.message}</p>
+                        ) : null}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="gz-notice">İçerik şu an dizilemiyor. Daha sonra tekrar deneyin.</div>
+                  )
+                ) : articleQuery.data?.content ? (
+                  <div className="space-y-4">
+                    {articleQuery.data.warning && <div className="gz-notice">{articleQuery.data.warning}</div>}
+                    <ArticleRenderer content={articleQuery.data.content} />
+                  </div>
+                ) : summary ? (
+                  <p className="gz-just gz-dropcap text-[13.5px] leading-[1.68]" style={{ color: "var(--gz-ink-soft)" }}>
+                    {summary}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="gz-end mt-7 notranslate" translate="no">
+                SON
+              </div>
+
+              <div className="mt-6 flex items-center justify-center">
+                <Button
+                  variant="outline"
+                  className="h-9 rounded-none border-[rgba(36,29,16,.55)] bg-transparent px-6 font-serif text-[12px] uppercase tracking-[.18em] text-[#241d10] hover:bg-[rgba(36,29,16,.07)] hover:text-[#241d10]"
+                  onClick={() => onOpenChange(false)}
+                >
+                  Gazeteyi Kapat
+                </Button>
+              </div>
             </div>
-          </div>
-        </ScrollArea>
+          </ScrollArea>
+        </article>
       </DialogContent>
     </Dialog>
   );

@@ -56,7 +56,8 @@ export function NewsPanel() {
 
   return (
     <section className="flex h-full flex-col px-4 pt-2" aria-label="Denizcilik haberleri">
-      <div className="np-paper flex-1 overflow-y-auto">
+      <div className="np-shell relative min-h-0 flex-1">
+      <div className="np-paper h-full overflow-y-auto">
         {/* Manşet başlığı */}
         <div className="np-topline" aria-hidden="true" />
         <div className="np-masthead notranslate" translate="no" lang="en">
@@ -93,11 +94,13 @@ export function NewsPanel() {
         {/* Manşet haber */}
         {lead && (
           <button type="button" onClick={() => openItem(lead)} className="np-lead">
-            {proxyImg(lead.imageUrl, 480) ? (
-              <img src={proxyImg(lead.imageUrl, 480)} alt="" loading="lazy" className="np-photo" />
-            ) : (
-              <div className="np-photo np-photo-fallback" aria-hidden="true">⚓</div>
-            )}
+            <span className="np-frame">
+              {proxyImg(lead.imageUrl, 480) ? (
+                <img src={proxyImg(lead.imageUrl, 480)} alt="" loading="lazy" className="np-photo" />
+              ) : (
+                <div className="np-photo np-photo-fallback" aria-hidden="true">⚓</div>
+              )}
+            </span>
             <h3 className="np-lead-title">{lead.title}</h3>
             <div className="np-time">{formatRelative(lead.publishedAt)}</div>
           </button>
@@ -110,11 +113,13 @@ export function NewsPanel() {
             return (
               <li key={item.link} className="np-brief-row">
                 <button type="button" onClick={() => openItem(item)} className="np-brief">
-                  {img ? (
-                    <img src={img} alt="" loading="lazy" className="np-thumb" />
-                  ) : (
-                    <div className="np-thumb np-thumb-fallback" aria-hidden="true">⚓</div>
-                  )}
+                  <span className="np-frame np-frame--thumb">
+                    {img ? (
+                      <img src={img} alt="" loading="lazy" className="np-thumb" />
+                    ) : (
+                      <div className="np-thumb np-thumb-fallback" aria-hidden="true">⚓</div>
+                    )}
+                  </span>
                   <span className="np-col-rule" aria-hidden="true" />
                   <span className="min-w-0 flex-1">
                     <span className="np-brief-title">{item.title}</span>
@@ -125,6 +130,10 @@ export function NewsPanel() {
             );
           })}
         </ul>
+      </div>
+      {/* Kağıt hamuru taneciği + kenar vinyeti — kaydırmadan bağımsız sabit doku */}
+      <div className="np-grain" aria-hidden="true" />
+      <div className="np-fold" aria-hidden="true" />
       </div>
 
       <NewsReaderDialog
@@ -148,6 +157,42 @@ export function NewsPanel() {
           scrollbar-width: none;
         }
         .np-paper::-webkit-scrollbar{ display: none; }
+        /* Kağıt hamuru benekleri (inline SVG feTurbulence) — kaydırma içeriğinin üstünde sabit */
+        .np-grain{
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          border-radius: 8px;
+          pointer-events: none;
+          mix-blend-mode: multiply;
+          opacity: .55;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0.1 0.1 0 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+          box-shadow: inset 0 0 20px rgba(90,61,20,.22);
+        }
+        /* Orta katlama izi + kenar gölgeleri — panel gerçek bir ön sayfa gibi */
+        .np-fold{
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          border-radius: 8px;
+          pointer-events: none;
+          background:
+            linear-gradient(180deg, transparent 0 54.6%, rgba(90,61,20,.1) 56.6%, rgba(255,255,255,.32) 57.4%, rgba(90,61,20,.08) 58.4%, transparent 61%),
+            linear-gradient(90deg, rgba(90,61,20,.14), transparent 3.5%, transparent 96.5%, rgba(90,61,20,.14));
+        }
+        /* Basılı fotoğraf çerçevesi: yarım ton baskı tramı */
+        .np-frame{ position: relative; display: block; }
+        .np-frame--thumb{ flex-shrink: 0; }
+        .np-frame::after{
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          mix-blend-mode: multiply;
+          opacity: .4;
+          background-image: radial-gradient(circle, rgba(43,36,24,.85) .55px, transparent .9px);
+          background-size: 2.8px 2.8px;
+        }
         .np-topline{
           height: 2px;
           margin: 8px 12px 0;

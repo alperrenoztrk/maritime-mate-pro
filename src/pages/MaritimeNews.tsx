@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
+import { ChevronRight } from "lucide-react";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
-import { ChevronRight, Globe2, Newspaper } from "lucide-react";
 import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
+import { NewspaperStyles } from "@/components/news/NewspaperStyles";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function formatDate(iso: string | undefined, locale: string): string {
@@ -22,6 +20,23 @@ function formatDate(iso: string | undefined, locale: string): string {
     minute: "2-digit",
     hour12: false,
   });
+}
+
+/** Byline için kısa baskı tarihi: bugünse SS:DD, değilse GG Ay. */
+function formatShort(iso: string | undefined, locale: string): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const now = new Date();
+  const sameDay =
+    d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+  if (sameDay) return d.toLocaleTimeString(locale || "en", { hour: "2-digit", minute: "2-digit", hour12: false });
+  return d.toLocaleDateString(locale || "en", { day: "2-digit", month: "short" });
+}
+
+function stripHtml(text?: string): string {
+  if (!text) return "";
+  return text.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function normalizeImageUrl(url?: string): string | undefined {
@@ -52,6 +67,52 @@ function toProxyImageUrl(url?: string, size: "small" | "medium" | "large" = "lar
   } catch {
     return undefined;
   }
+}
+
+/** Sepya yarım ton tramlı, mürekkep çerçeveli basılı gazete fotoğrafı. */
+function PrintedPhoto({
+  item,
+  size,
+  eager,
+  className,
+}: {
+  item: MaritimeNewsItem;
+  size: "small" | "medium" | "large";
+  eager?: boolean;
+  className?: string;
+}) {
+  const proxied = toProxyImageUrl(item.imageUrl, size);
+  const fallback = normalizeImageUrl(item.imageUrl);
+  const display = proxied ?? fallback;
+
+  if (!display) {
+    return (
+      <span className={`gz-photo-wrap gz-photo-none ${className ?? ""}`} aria-hidden="true">
+        <span style={{ fontSize: 20, opacity: 0.7 }}>⚓</span>
+        <span>{item.source}</span>
+      </span>
+    );
+  }
+  return (
+    <span className={`gz-photo-wrap ${className ?? ""}`}>
+      <img
+        src={display}
+        alt={item.title}
+        className="gz-photo"
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={eager ? "high" : "auto"}
+        referrerPolicy="no-referrer"
+        onError={(e) => {
+          const t = e.target as HTMLImageElement;
+          if (t.dataset.fallbackTried !== "true" && fallback && t.src !== fallback) {
+            t.dataset.fallbackTried = "true";
+            t.src = fallback;
+          }
+        }}
+      />
+    </span>
+  );
 }
 
 const MaritimeNews = () => {
@@ -96,9 +157,42 @@ const MaritimeNews = () => {
     touchEndX.current = null;
   };
 
+  const openItem = (item: MaritimeNewsItem) => {
+    setSelectedItem(item);
+    setReaderOpen(true);
+  };
+
+  const today = new Date();
+  const dateline = today.toLocaleDateString(currentLanguage || "tr", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  // Yılın günü = sayı numarası; her gün yeni bir "baskı".
+  const issueNo = Math.max(
+    1,
+    Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 86_400_000),
+  );
+  const coverage = query.data?.locale
+    ? `${query.data.locale.countryName}${query.data.locale.mode === "regional-and-global" ? " ve Küresel" : ""} Kaynakları`
+    : "Bölgesel Kaynaklar";
+  const pressTime = query.data?.fetchedAt
+    ? new Date(query.data.fetchedAt).toLocaleTimeString(currentLanguage || "tr", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+    : null;
+
+  const [lead, ...rest] = items;
+  const secondaries = rest.slice(0, 6);
+  const briefs = rest.slice(6, 18);
+  const leadSummary = stripHtml(lead?.summary).slice(0, 420);
+
   return (
     <div
-      className="min-h-[100svh] bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-foreground px-4 py-6 touch-auto"
+      className="gzp-desk min-h-[100svh] px-3 py-6 touch-auto sm:px-6"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -107,129 +201,212 @@ const MaritimeNews = () => {
         <title>Denizcilik Haberleri | Güncel</title>
         <meta
           name="description"
-          content="Denizcilik dünyasından en önemli ve güncel haberleri tek bir akışta uygulama içinde okuyun."
+          content="Denizcilik dünyasından en önemli ve güncel haberleri gerçek bir gazete sayfasında uygulama içinde okuyun."
         />
         <link rel="canonical" href={window.location.href} />
       </Helmet>
 
-      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none opacity-30">
+      <NewspaperStyles />
+
+      <div className="fixed right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none opacity-25">
         <div className="flex flex-col items-center gap-2 animate-pulse">
           <ChevronRight className="w-6 h-6 text-white drop-shadow-lg" />
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-5xl space-y-4">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight text-white">Denizcilik Haberleri</h1>
-            <p className="mt-1 text-sm text-white/55">Haber akışı uygulama diline göre otomatik yenilenir.</p>
-          </div>
-          {query.data?.locale ? (
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1.5 text-xs font-medium text-sky-200">
-              <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>
-                {query.data.locale.countryName}
-                {query.data.locale.mode === "regional-and-global" ? " ve küresel kaynaklar" : " kaynakları"}
-              </span>
+      {/* Masanın üzerindeki gazete destesi */}
+      <div className="relative mx-auto w-full max-w-3xl">
+        <div className="gzp-under" aria-hidden="true" />
+        <div className="gzp-under gzp-under--2" aria-hidden="true" />
+
+        <article className="gz-sheet overflow-hidden">
+          <div className="gz-grain" aria-hidden="true" />
+          <div className="gz-curl" aria-hidden="true" />
+
+          {/* ── Manşet bloğu ── */}
+          <header className="relative px-4 pt-4 sm:px-8 sm:pt-6">
+            <div className="gz-rule-thin" aria-hidden="true" />
+            <div className="mt-2 flex items-center justify-center gap-3">
+              <div className="gz-ear hidden sm:block">
+                Sabah
+                <br />
+                Baskısı
+              </div>
+              <div className="min-w-0 flex-1 text-center">
+                <h1 className="gz-masthead notranslate" translate="no" lang="en">
+                  MARINER&rsquo;S POST<span className="sr-only"> — Denizcilik Haberleri</span>
+                </h1>
+                <div className="gz-masthead-sub">DENİZCİLİK DÜNYASININ HAVADİSLERİ</div>
+              </div>
+              <div className="gz-ear hidden sm:block">
+                Ücretsiz
+                <br />
+                Nüsha
+              </div>
             </div>
-          ) : null}
-        </div>
+            <div className="gz-rule-double mt-2" aria-hidden="true" />
+            <div className="gz-dateline">
+              <span>{dateline}</span>
+              <span className="hidden sm:inline">Sayı No. {issueNo}</span>
+              <span>{coverage}</span>
+            </div>
+            <div className="gz-rule-thick" aria-hidden="true" />
 
-        <Separator className="bg-white/10" />
+            {pressTime ? (
+              <div className="gz-stamp" style={{ right: 10, bottom: -30 }}>
+                Son Baskı
+                <br />
+                {pressTime}
+              </div>
+            ) : null}
+          </header>
 
-        {isLanguageLoading || query.isLoading ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <Card key={i} className="border-white/10 bg-white/5 p-0 overflow-hidden">
-                <Skeleton className="h-44 w-full" />
-                <div className="space-y-2 p-4">
-                  <Skeleton className="h-5 w-2/3" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-1/2" />
+          {/* ── Sayfa gövdesi ── */}
+          <div className="px-4 pb-5 pt-3 sm:px-8">
+            {isLanguageLoading || query.isLoading ? (
+              /* Dizgi hazırlanıyor — soluk mürekkep satırları */
+              <div className="space-y-3 py-2" aria-busy="true">
+                <div className="gz-skel h-7 w-11/12 animate-pulse" />
+                <div className="gz-skel h-7 w-3/5 animate-pulse" />
+                <div className="gz-skel mt-2 aspect-[16/9] w-full animate-pulse" />
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div key={i} className="gz-skel h-3 animate-pulse" style={{ width: `${88 - (i % 3) * 14}%` }} />
+                  ))}
                 </div>
-              </Card>
-            ))}
-          </div>
-        ) : query.isError ? (
-          <Card className="border-red-500/30 bg-red-500/10 p-4">
-            <div className="text-sm text-red-200">Haberler alınamadı. Biraz sonra tekrar deneyin.</div>
-            <div className="mt-2 text-xs text-red-200/80 break-words">
-              {query.error instanceof Error ? query.error.message : "Bilinmeyen hata"}
-            </div>
-          </Card>
-        ) : items.length === 0 ? (
-          <Card className="border-white/10 bg-white/5 p-4">
-            <div className="text-sm text-white/80">Şu anda listelenecek haber bulunamadı.</div>
-          </Card>
-        ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((it, idx) => {
-              const small = toProxyImageUrl(it.imageUrl, "small");
-              const medium = toProxyImageUrl(it.imageUrl, "medium");
-              const large = toProxyImageUrl(it.imageUrl, "large");
-              const fallback = normalizeImageUrl(it.imageUrl);
-              const display = large ?? fallback;
-              const eager = idx < 3;
-
-              return (
-                <button
-                  key={`${it.source}-${it.link}`}
-                  type="button"
-                  onClick={() => {
-                    setSelectedItem(it);
-                    setReaderOpen(true);
-                  }}
-                  className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 text-left transition-all hover:border-white/20 hover:bg-white/10"
-                >
-                  <div className="relative h-44 w-full overflow-hidden bg-slate-800">
-                    {display ? (
-                      <img
-                        src={display}
-                        srcSet={small && medium && large ? `${small} 720w, ${medium} 1280w, ${large} 2000w` : undefined}
-                        sizes="(max-width: 720px) 720px, (max-width: 1280px) 1280px, 2000px"
-                        alt={it.title}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        loading={eager ? "eager" : "lazy"}
-                        decoding="async"
-                        fetchPriority={eager ? "high" : "auto"}
-                        referrerPolicy="no-referrer"
-                        onError={(e) => {
-                          const t = e.target as HTMLImageElement;
-                          if (t.dataset.fallbackTried !== "true" && fallback && t.src !== fallback) {
-                            t.dataset.fallbackTried = "true";
-                            t.src = fallback;
-                          }
-                        }}
-                      />
-                    ) : (
-                      <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-slate-700 to-slate-900 px-4 text-center">
-                        <Newspaper className="h-8 w-8 text-sky-300/60" aria-hidden="true" />
-                        <span className="line-clamp-2 text-xs font-medium text-white/55">{it.source}</span>
+                <p className="pt-3 text-center text-[10px] italic" style={{ color: "var(--gz-ink-faint)" }}>
+                  Baskı makinesi çalışıyor…
+                </p>
+              </div>
+            ) : query.isError ? (
+              <div className="space-y-3 py-4">
+                <div className="gz-kicker">Matbaadan Duyuru</div>
+                <h2 className="gz-headline text-xl">Bugünkü baskı gecikti</h2>
+                <div className="gz-notice">
+                  Haberler alınamadı; hatlar onarılır onarılmaz baskıya devam edilecektir. Biraz sonra tekrar deneyin.
+                  <div className="mt-1 break-words text-[9px] not-italic opacity-80">
+                    {query.error instanceof Error ? query.error.message : "Bilinmeyen hata"}
+                  </div>
+                </div>
+              </div>
+            ) : items.length === 0 ? (
+              <div className="space-y-3 py-4">
+                <div className="gz-kicker">Matbaadan Duyuru</div>
+                <div className="gz-notice">Şu anda dizilecek havadis bulunamadı. Telgraf hattı sessiz.</div>
+              </div>
+            ) : (
+              <>
+                {/* Manşet haber */}
+                {lead ? (
+                  <section aria-label="Manşet haber">
+                    <div className="gz-kicker">Günün Manşeti</div>
+                    <button type="button" className="gz-tap mt-2" onClick={() => openItem(lead)}>
+                      <h2 className="gz-headline text-[clamp(1.45rem,6.4vw,2.2rem)]">{lead.title}</h2>
+                      <PrintedPhoto item={lead} size="large" eager className="mt-3 block aspect-[16/9] w-full" />
+                      <div className="gz-caption">
+                        {lead.source}
+                        {lead.publishedAt ? ` — ${formatDate(lead.publishedAt, currentLanguage)}` : ""}
                       </div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-1 flex-col p-4">
-                    <div className="mb-2 flex items-center justify-between gap-2 text-[11px]">
-                      <span className="min-w-0 truncate rounded-full bg-sky-400/10 px-2 py-1 font-medium text-sky-200/90">
-                        {it.source}
-                      </span>
-                      {it.publishedAt ? (
-                        <span className="shrink-0 text-white/45">{formatDate(it.publishedAt, currentLanguage)}</span>
+                      {leadSummary ? (
+                        <p
+                          className="gz-just mt-2 text-[11.5px] leading-[1.55]"
+                          style={{
+                            columns: 2,
+                            columnGap: 16,
+                            columnRule: "1px solid rgba(36,29,16,.28)",
+                            color: "var(--gz-ink-soft)",
+                          }}
+                        >
+                          {leadSummary}
+                          {stripHtml(lead.summary).length > 420 ? "…" : ""}
+                        </p>
                       ) : null}
+                      <div className="gz-readmore mt-2">Haberin tamamı için dokunun ⟶</div>
+                    </button>
+                  </section>
+                ) : null}
+
+                <div className="gz-foldline" aria-hidden="true" />
+
+                {/* İkinci sıra haberler — sütun cetvelli dizgi */}
+                {secondaries.length > 0 ? (
+                  <section aria-label="Diğer haberler">
+                    <div className="gz-kicker">Denizden Havadisler</div>
+                    <div
+                      className="mt-2 grid grid-cols-2 gap-x-4 gap-y-4
+                        [&>*:nth-child(even)]:border-l [&>*:nth-child(even)]:border-[rgba(36,29,16,.28)] [&>*:nth-child(even)]:pl-4
+                        [&>*:nth-child(n+3)]:border-t [&>*:nth-child(n+3)]:border-t-[rgba(36,29,16,.2)] [&>*:nth-child(n+3)]:pt-3"
+                    >
+                      {secondaries.map((it) => (
+                        <button
+                          key={`${it.source}-${it.link}`}
+                          type="button"
+                          className="gz-tap min-w-0"
+                          onClick={() => openItem(it)}
+                        >
+                          <PrintedPhoto item={it} size="small" className="block aspect-[3/2] w-full" />
+                          <h3 className="gz-headline mt-1.5 line-clamp-3 text-[13px] leading-[1.22]">{it.title}</h3>
+                          {stripHtml(it.summary) ? (
+                            <p
+                              className="gz-just mt-1 line-clamp-3 text-[10.5px] leading-[1.5]"
+                              style={{ color: "var(--gz-ink-soft)" }}
+                            >
+                              {stripHtml(it.summary)}
+                            </p>
+                          ) : null}
+                          <div className="gz-byline mt-1.5">
+                            <span className="gz-src">{it.source}</span>
+                            {it.publishedAt ? <span>· {formatShort(it.publishedAt, currentLanguage)}</span> : null}
+                          </div>
+                        </button>
+                      ))}
                     </div>
-                    <h3 className="line-clamp-3 text-sm font-semibold leading-snug text-white group-hover:text-blue-300">
-                      {it.title}
-                    </h3>
-                    {it.summary && (
-                      <p className="mt-2 line-clamp-2 text-xs text-white/60">{it.summary}</p>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
+                  </section>
+                ) : null}
+
+                {/* Kısa havadisler — çift sütun dizgi */}
+                {briefs.length > 0 ? (
+                  <section className="mt-4" aria-label="Kısa haberler">
+                    <div className="gz-kicker">Kısa Havadisler</div>
+                    <ul className="mt-1 columns-2 gap-4">
+                      {briefs.map((it) => (
+                        <li
+                          key={`${it.source}-${it.link}`}
+                          className="break-inside-avoid border-b border-dotted border-[rgba(36,29,16,.35)] py-1.5"
+                        >
+                          <button type="button" className="gz-tap" onClick={() => openItem(it)}>
+                            <span className="line-clamp-3 text-[11px] font-semibold leading-[1.3]">
+                              <span aria-hidden="true" style={{ color: "var(--gz-ink-faint)" }}>
+                                ■{" "}
+                              </span>
+                              {it.title}
+                            </span>
+                            <span className="gz-byline mt-0.5">
+                              <span className="gz-src">{it.source}</span>
+                              {it.publishedAt ? <span>· {formatShort(it.publishedAt, currentLanguage)}</span> : null}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ) : null}
+
+                {/* Sayfa altı */}
+                <div className="gz-rule-thick mt-5" aria-hidden="true" />
+                <div className="gz-dateline" style={{ justifyContent: "center", gap: 14 }}>
+                  <span className="notranslate" translate="no" lang="en">
+                    Mariner&rsquo;s Post
+                  </span>
+                  <span>·</span>
+                  <span>Sayfa 1</span>
+                  <span>·</span>
+                  <span>{today.getFullYear()}</span>
+                </div>
+              </>
+            )}
           </div>
-        )}
+        </article>
       </div>
 
       <NewsReaderDialog
@@ -240,6 +417,29 @@ const MaritimeNews = () => {
         }}
         item={selectedItem}
       />
+
+      {/* Sayfaya özel sahne: koyu ahşap masa + alttaki yapraklar */}
+      <style>{`
+        .gzp-desk{
+          background:
+            radial-gradient(120% 70% at 50% 0%, rgba(214,178,110,.07), transparent 58%),
+            radial-gradient(130% 100% at 50% 108%, rgba(0,0,0,.5), transparent 60%),
+            repeating-linear-gradient(91deg, rgba(0,0,0,.16) 0 2px, transparent 2px 7px, rgba(255,255,255,.015) 7px 9px, transparent 9px 14px),
+            linear-gradient(180deg, #33261a 0%, #291e13 52%, #1c150d 100%);
+        }
+        .gzp-under{
+          position: absolute;
+          inset: 0;
+          border-radius: 3px;
+          background: linear-gradient(180deg, #e9dcba 0%, #d9c89e 100%);
+          box-shadow: 0 14px 26px rgba(0,0,0,.5), inset 0 0 0 1px rgba(120,90,36,.2);
+          transform: rotate(-1.15deg) translateY(5px);
+        }
+        .gzp-under--2{
+          background: linear-gradient(180deg, #e4d5b0 0%, #d2c095 100%);
+          transform: rotate(.85deg) translateY(9px);
+        }
+      `}</style>
     </div>
   );
 };
