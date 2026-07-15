@@ -6,7 +6,7 @@ const BookSheetNestingContext = createContext(false);
 interface BookSheetProps {
   title: string;
   children: ReactNode;
-  /** Persistent route frame: full-screen open book and legacy-screen normalization. */
+  /** Persistent route frame: compact open book and legacy-screen normalization. */
   routeFrame?: boolean;
   /** Stable route key that restarts the decorative page-turn animation. */
   pageKey?: string;
@@ -67,6 +67,8 @@ export function BookSheet({
       <style>{`
         .bs-stage{
           position: relative;
+          display: flex;
+          align-items: center;
           min-height: 100svh;
           padding: max(3.15rem, calc(env(safe-area-inset-top) + 2.6rem)) clamp(5px, 1.3vw, 18px) max(4.6rem, calc(env(safe-area-inset-bottom) + 3.8rem));
           isolation: isolate;
@@ -76,7 +78,7 @@ export function BookSheet({
         }
         .bs-cover-board{
           position: relative;
-          width: min(98vw, 1320px);
+          width: min(94vw, 820px);
           margin: 0 auto;
           padding: clamp(5px, .8vw, 11px);
           border-radius: 8px 12px 12px 8px;
@@ -125,7 +127,8 @@ export function BookSheet({
           display: grid;
           grid-template-columns: minmax(0,1fr) minmax(0,1fr);
           grid-template-rows: auto minmax(1px,1fr) auto;
-          min-height: min(78rem, calc(100svh - 8rem));
+          height: clamp(300px, min(64svh, 72vw), 560px);
+          min-height: 0;
           overflow: hidden;
           border-radius: 3px 6px 6px 3px;
           padding: clamp(16px, 2.3vw, 34px) clamp(14px, 2.8vw, 42px) 18px;
@@ -185,6 +188,13 @@ export function BookSheet({
           z-index: 1;
           grid-column: 1 / -1;
           min-width: 0;
+          min-height: 0;
+          max-width: 100%;
+          overflow: auto;
+          overscroll-behavior: contain;
+          overflow-wrap: anywhere;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(96,63,21,.38) transparent;
           padding: clamp(12px, 1.8vw, 26px) 0 16px;
           columns: 2;
           column-gap: clamp(34px, 7.2vw, 108px);
@@ -260,7 +270,7 @@ export function BookSheet({
         .bs-formula-expression{ padding:8px 0; text-align:center; font-size:1.08em; font-weight:700; }
         .bs-table-wrap{ overflow-x:auto; margin:9px 0; break-inside:avoid; }
         .bs-table-caption{ padding:4px 2px; font-size:.72em; font-weight:700; font-style:italic; color:rgba(90,61,20,.72); }
-        .bs-table{ width:100%; border-collapse:collapse; font:normal .78em/1.4 Georgia,'Times New Roman',serif; color:#4a3113; }
+        .bs-table{ width:100%; table-layout:fixed; border-collapse:collapse; font:normal .78em/1.4 Georgia,'Times New Roman',serif; color:#4a3113; }
         .bs-table th{ padding:5px 7px; text-align:left; font-size:.84em; letter-spacing:.08em; text-transform:uppercase; border-bottom:1.5px solid rgba(120,80,20,.5); }
         .bs-table td{ padding:5px 7px; vertical-align:top; border-bottom:1px dotted rgba(120,80,20,.34); }
         .bs-callout{ break-inside:avoid; margin:8px 0; padding:7px 10px 7px 12px; border-left:3px solid rgba(120,80,20,.58); background:rgba(120,80,20,.055); font-size:.88em; color:#4a3113; }
@@ -294,7 +304,12 @@ export function BookSheet({
         .bs-reading-empty em{ font-size:.78em; }
         .bs-reading-resources{ break-inside:avoid; margin-top:16px; padding-top:10px; border-top:1px solid rgba(120,80,20,.38); }
 
-        .bs-route-content{ color:#4a3113; }
+        .bs-route-content{ min-width:0; max-width:100%; overflow-wrap:anywhere; color:#4a3113; }
+        .bs-route-content :where(p,h1,h2,h3,h4,h5,h6,li,a,span,strong,em,code,pre,td,th){ overflow-wrap:anywhere; word-break:break-word; }
+        .bs-route-content :where(pre){ max-width:100%; white-space:pre-wrap; }
+        .bs-route-content :where(img,video,canvas,svg,iframe){ max-width:100%!important; }
+        .bs-route-content :where(table){ max-width:100%; table-layout:fixed; }
+        .bs-route-content :where([class*="w-screen"],[class*="min-w-"]){ min-width:0!important; max-width:100%!important; }
         .bs-route-content :where(.marine-shell){ min-height:0!important; overflow:visible!important; background:transparent!important; color:#4a3113!important; }
         .bs-route-content .marine-shell > .pointer-events-none{ display:none!important; }
         .bs-route-content .marine-shell main{ min-height:0!important; max-width:none!important; padding:0!important; }
@@ -325,7 +340,7 @@ export function BookSheet({
         @media (max-width: 720px){
           .bs-stage{ padding-left:2px; padding-right:2px; }
           .bs-cover-board{ width:100%; padding:4px; border-radius:5px; }
-          .bs-spread{ min-height:calc(100svh - 7.7rem); padding:12px 9px 12px; }
+          .bs-spread{ height:clamp(300px,min(58svh,78vw),430px); min-height:0; padding:12px 9px 12px; }
           .bs-spread-content{ column-gap:28px; font-size:clamp(.58rem,2.25vw,.72rem); line-height:1.5; }
           .bs-running--left,.bs-folio--left{ padding-right:14px; }
           .bs-running--right,.bs-folio--right{ padding-left:14px; }
@@ -339,9 +354,9 @@ export function BookSheet({
         }
         @media print{
           .bs-stage{ min-height:0!important; padding:0!important; background:white!important; }
-          .bs-cover-board,.bs-volume,.bs-spread{ width:100%!important; max-width:none!important; min-height:0!important; padding:8mm!important; border:0!important; background:white!important; box-shadow:none!important; }
+          .bs-cover-board,.bs-volume,.bs-spread{ width:100%!important; max-width:none!important; height:auto!important; min-height:0!important; padding:8mm!important; border:0!important; background:white!important; box-shadow:none!important; }
           .bs-cover-board::before,.bs-cover-board::after,.bs-volume::before,.bs-volume::after,.bs-spread::before,.bs-spread::after,.bs-turning-leaf{ display:none!important; }
-          .bs-spread-content{ columns:2; column-gap:16mm; animation:none!important; }
+          .bs-spread-content{ overflow:visible!important; columns:2; column-gap:16mm; animation:none!important; }
         }
       `}</style>
     </div>
