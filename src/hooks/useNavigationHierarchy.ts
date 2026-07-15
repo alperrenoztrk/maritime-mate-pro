@@ -9,6 +9,9 @@ type NavigationRule = {
 };
 
 const navigationRules: NavigationRule[] = [
+  // ── Kitap (İçindekiler) ────────────────────────────────────
+  { pattern: /^\/book$/, parent: () => '/' },
+
   // ── Lessons ────────────────────────────────────────────────
   {
     pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
@@ -20,18 +23,31 @@ const navigationRules: NavigationRule[] = [
   },
   {
     pattern: /^\/lessons$/,
-    parent: () => '/',
+    parent: () => '/book',
   },
+
+  // ── Exercises (Alıştırmalar) ───────────────────────────────
+  {
+    pattern: /^\/exercises\/([^/]+)\/topics\/([^/]+)\/learn$/,
+    parent: (match) => `/exercises/${match[1]}/topics/${match[2]}`,
+  },
+  {
+    pattern: /^\/exercises\/([^/]+)\/topics\/([^/]+)$/,
+    parent: (match) => `/exercises/${match[1]}/topics`,
+  },
+  { pattern: /^\/exercises\/([^/]+)\/topics$/, parent: () => '/exercises' },
+  { pattern: /^\/exercises\/([^/]+)\/scenarios$/, parent: () => '/exercises' },
+  { pattern: /^\/exercises$/, parent: () => '/book' },
 
   // ── Crew & Bridge ──────────────────────────────────────────
   { pattern: /^\/crew\/([^/]+)$/, parent: () => '/crew' },
-  { pattern: /^\/crew$/, parent: () => '/' },
+  { pattern: /^\/crew$/, parent: () => '/book' },
   { pattern: /^\/bridge\/([^/]+)$/, parent: () => '/bridge' },
   { pattern: /^\/bridge$/, parent: () => '/' },
 
   // ── Ship Systems ───────────────────────────────────────────
   { pattern: /^\/ship-systems\/([^/]+)$/, parent: () => '/ship-systems' },
-  { pattern: /^\/ship-systems$/, parent: () => '/' },
+  { pattern: /^\/ship-systems$/, parent: () => '/book' },
 
   // ── Ship Tasks ─────────────────────────────────────────────
   { pattern: /^\/ship-tasks\/([^/]+)$/, parent: () => '/ship-tasks' },
@@ -39,7 +55,7 @@ const navigationRules: NavigationRule[] = [
 
   // ── Ship Operations ────────────────────────────────────────
   { pattern: /^\/ship-operations\/([^/]+)$/, parent: () => '/ship-operations' },
-  { pattern: /^\/ship-operations$/, parent: () => '/' },
+  { pattern: /^\/ship-operations$/, parent: () => '/book' },
 
   // ── Machine: topic detayları ───────────────────────────────
   // /machine/<topic>/topics/<sub> → /machine/<topic>/topics
@@ -170,7 +186,7 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/settings$/, parent: () => '/' },
   { pattern: /^\/maritime-news$/, parent: () => '/' },
   { pattern: /^\/passage-plan$/, parent: () => '/' },
-  { pattern: /^\/glossary$/, parent: () => '/' },
+  { pattern: /^\/glossary$/, parent: () => '/book' },
   { pattern: /^\/exam-preparation$/, parent: () => '/' },
   { pattern: /^\/formulas$/, parent: () => '/' },
   { pattern: /^\/empty-page$/, parent: () => '/' },

@@ -29,6 +29,7 @@ import {
   type MusterSignalClass,
 } from "@/data/musterList";
 import { solasDrills, solasDrillScopeNote } from "@/data/solasDrills";
+import { BookSheet } from "@/components/book/BookSheet";
 
 const EMERGENCY_ICON: Record<MusterEmergencyId, typeof Bell> = {
   general: Bell,
@@ -57,7 +58,7 @@ const SIGNAL_META: Record<
   solas: {
     label: "Standart SOLAS alarmı",
     className:
-      "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+      "border-emerald-500/30 bg-[rgba(120,80,20,.12)] text-emerald-700 dark:text-emerald-300",
   },
   "master-order": {
     label: "Kaptan emri",
@@ -67,7 +68,7 @@ const SIGNAL_META: Record<
   "ship-specific": {
     label: "Gemiye özel işaret",
     className:
-      "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+      "border-amber-500/30 bg-amber-500/10 text-[#8f1f1f]",
   },
 };
 
@@ -133,24 +134,9 @@ export default function MusterListPage() {
   };
 
   return (
-    <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 pb-24 print:bg-white print:px-0 print:py-0 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-      style={highRefreshRateStyles}
-    >
-      <div className="pointer-events-none absolute inset-0 print:hidden">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute right-10 top-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-6 print:max-w-none print:gap-4">
-        <header className="space-y-4">
-
-          <h1 className="mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-            <ShieldAlert className="h-3.5 w-3.5" />
-            Muster List / Role Cetveli
-          </h1>
-        </header>
+    <BookSheet title="ROLE CETVELİ">
+      <div className="flex flex-col gap-5 print:gap-4">
+        <p className="bs-muted -mt-1 text-center text-[11px] italic">Muster List / Role Cetveli</p>
 
         <nav
           aria-label="Acil durum türü"
@@ -166,20 +152,16 @@ export default function MusterListPage() {
                 type="button"
                 onClick={() => setActive(emergency.id)}
                 aria-pressed={isActive}
-                className={`group flex min-h-28 flex-col items-center justify-center gap-2 rounded-2xl border p-3 text-center transition ${
+                className={`group flex min-h-20 flex-col items-center justify-center gap-1.5 rounded-sm border p-2 text-center transition ${
                   isActive
-                    ? "border-primary/50 bg-card shadow-md ring-1 ring-primary/20"
-                    : "border-border/50 bg-card/60 hover:border-primary/30 hover:bg-card"
+                    ? "border-[#4a3113] bg-[#4a3113] text-[#f3e7c9]"
+                    : "border-dotted border-[rgba(120,80,20,.55)] text-[#4a3113]"
                 }`}
               >
-                <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-sm ${EMERGENCY_ACCENT[emergency.id]} ${
-                    isActive ? "" : "opacity-80 group-hover:opacity-100"
-                  }`}
-                >
+                <span className="flex h-8 w-8 items-center justify-center">
                   <Icon className="h-5 w-5" />
                 </span>
-                <span className="text-xs font-semibold leading-tight text-foreground">
+                <span className="text-xs font-semibold leading-tight">
                   {emergency.shortTitle}
                 </span>
               </button>
@@ -187,52 +169,48 @@ export default function MusterListPage() {
           })}
         </nav>
 
-        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm backdrop-blur print:bg-white print:shadow-none sm:p-5">
+        <section className="break-inside-avoid print:bg-white">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="space-y-1">
               <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-lg font-bold text-foreground">{activeEmergency.title}</h2>
-                <span
-                  className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold ${signalMeta.className}`}
-                >
-                  {signalMeta.label}
-                </span>
+                <h2 className="text-lg font-bold text-[#3f2a0e]">{activeEmergency.title}</h2>
+                <span className="bs-chip">{signalMeta.label}</span>
               </div>
-              <p className="max-w-4xl text-xs leading-relaxed text-muted-foreground sm:text-sm">
+              <p className="max-w-4xl text-xs leading-relaxed text-[rgba(90,61,20,.72)] sm:text-sm">
                 {activeEmergency.description}
               </p>
             </div>
-            <span className="rounded-lg border border-border/50 bg-background/70 px-3 py-1.5 text-[11px] font-medium text-muted-foreground">
+            <span className="bs-chip text-[rgba(90,61,20,.72)]">
               {activeEmergency.reference}
             </span>
           </div>
 
           <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
-            <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
-              <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-primary">
+            <div className="bs-callout">
+              <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[#7a5c1a]">
                 <Bell className="h-4 w-4" />
                 {activeEmergency.signalLabel}
               </div>
-              <p className="text-sm leading-relaxed text-foreground/90">
+              <p className="text-sm leading-relaxed text-[#4a3113]">
                 {activeEmergency.signal}
               </p>
-              <div className="mt-3 flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 p-3">
-                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700 dark:text-amber-300" />
-                <p className="text-xs leading-relaxed text-foreground/85">
+              <div className="bs-callout mt-3 flex items-start gap-2">
+                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[#8f1f1f]" />
+                <p className="text-xs leading-relaxed text-[#4a3113]">
                   {activeEmergency.caution}
                 </p>
               </div>
             </div>
 
-            <div className="rounded-xl border border-border/50 bg-background/70 p-4">
-              <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-foreground">
-                <ClipboardCheck className="h-4 w-4 text-primary" />
+            <div className="bs-callout">
+              <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[#3f2a0e]">
+                <ClipboardCheck className="h-4 w-4 text-[#7a5c1a]" />
                 İlk hareketler
               </div>
               <ol className="space-y-2.5">
                 {activeEmergency.firstActions.map((action, index) => (
-                  <li key={action} className="flex gap-2.5 text-xs leading-relaxed text-foreground/85">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                  <li key={action} className="flex gap-2.5 text-xs leading-relaxed text-[#4a3113]">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[rgba(120,80,20,.12)] text-[10px] font-bold text-[#7a5c1a]">
                       {index + 1}
                     </span>
                     <span>{action}</span>
@@ -243,15 +221,15 @@ export default function MusterListPage() {
           </div>
         </section>
 
-        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/85 p-4 shadow-sm backdrop-blur print:bg-white print:shadow-none sm:p-5">
+        <section className="break-inside-avoid print:bg-white">
           <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
             <div className="flex items-start gap-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[rgba(120,80,20,.12)] text-[#7a5c1a]">
                 <CalendarClock className="h-4 w-4" />
               </span>
               <div>
-                <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Talim Başlıkları</h2>
-                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                <h2 className="text-sm font-bold text-[#3f2a0e]">SOLAS / ISPS Talim Başlıkları</h2>
+                <p className="mt-1 text-[11px] leading-relaxed text-[rgba(90,61,20,.72)]">
                   Periyodik zorunlu adlandırmalar; “Genel Talim” bir SOLAS talim başlığı değildir.
                 </p>
               </div>
@@ -262,68 +240,68 @@ export default function MusterListPage() {
             {solasDrills.map((drill) => (
               <article
                 key={drill.id}
-                className="rounded-xl border border-border/40 bg-background/70 p-3"
+                className="rounded-sm border border-dotted border-[rgba(120,80,20,.45)] p-3"
               >
                 <div className="flex flex-wrap gap-1.5">
-                  <span className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-primary">
+                  <span className="rounded-full border border-[rgba(120,80,20,.4)] bg-[rgba(120,80,20,.07)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[#7a5c1a]">
                     {drill.classification}
                   </span>
                   {!drill.isStandalone && (
-                    <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-300">
+                    <span className="rounded-full border border-[rgba(120,80,20,.4)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[#8f1f1f]">
                       Ayrı talim değildir
                     </span>
                   )}
                 </div>
-                <h3 className="mt-2 text-xs font-bold leading-snug text-foreground">{drill.title}</h3>
-                <p className="mt-0.5 text-[10px] font-medium text-muted-foreground">
+                <h3 className="mt-2 text-xs font-bold leading-snug text-[#3f2a0e]">{drill.title}</h3>
+                <p className="mt-0.5 text-[10px] font-medium text-[rgba(90,61,20,.72)]">
                   {drill.englishTitle}
                 </p>
                 <dl className="mt-3 space-y-2 text-[11px] leading-relaxed">
                   <div>
-                    <dt className="font-bold text-foreground">Kapsam</dt>
-                    <dd className="text-muted-foreground">{drill.applicability}</dd>
+                    <dt className="font-bold text-[#3f2a0e]">Kapsam</dt>
+                    <dd className="text-[rgba(90,61,20,.72)]">{drill.applicability}</dd>
                   </div>
                   <div>
-                    <dt className="font-bold text-foreground">Periyot</dt>
-                    <dd className="text-muted-foreground">{drill.frequency}</dd>
+                    <dt className="font-bold text-[#3f2a0e]">Periyot</dt>
+                    <dd className="text-[rgba(90,61,20,.72)]">{drill.frequency}</dd>
                   </div>
                 </dl>
-                <p className="mt-3 border-t border-border/40 pt-2 text-[10px] font-semibold text-primary">
+                <p className="mt-3 border-t border-dotted border-[rgba(120,80,20,.4)] pt-2 text-[10px] font-semibold text-[#7a5c1a]">
                   {drill.reference}
                 </p>
               </article>
             ))}
           </div>
 
-          <p className="mt-4 border-t border-border/40 pt-3 text-[10px] leading-relaxed text-muted-foreground">
+          <p className="mt-4 border-t border-dotted border-[rgba(120,80,20,.4)] pt-3 text-[10px] leading-relaxed text-[rgba(90,61,20,.72)]">
             {solasDrillScopeNote}
           </p>
         </section>
 
         <section className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between print:hidden">
           <label className="relative block w-full sm:max-w-xl">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[rgba(90,61,20,.72)]" />
             <input
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="Rütbe, ekip, görev yeri veya ekipman ara…"
-              className="h-11 w-full rounded-xl border border-border/60 bg-card/85 pl-9 pr-3 text-sm text-foreground shadow-sm outline-none transition placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/15"
+              className="bs-input h-11 pl-9 pr-3 text-sm"
             />
           </label>
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-border/60 bg-card/85 px-4 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
+            className="bs-btn--ghost h-11 px-4 text-xs"
           >
             <Printer className="h-4 w-4" />
             Yazdır
           </button>
         </section>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[rgba(90,61,20,.72)]">
           <span>
-            <strong className="text-foreground">{visibleAssignments}</strong> personel rütbesi ·{" "}
-            <strong className="text-foreground">{groups.length}</strong> acil durum ekibi
+            <strong className="text-[#3f2a0e]">{visibleAssignments}</strong> personel rütbesi ·{" "}
+            <strong className="text-[#3f2a0e]">{groups.length}</strong> acil durum ekibi
           </span>
           <span className="print:hidden">Kartlardaki rütbe bağlantıları mevcut görev detaylarını açar.</span>
         </div>
@@ -333,16 +311,16 @@ export default function MusterListPage() {
             {groups.map((group) => (
               <section
                 key={group.team}
-                className="rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm backdrop-blur print:border-slate-300 print:bg-white print:shadow-none sm:p-5"
+                className="break-inside-avoid print:bg-white"
               >
-                <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-dotted border-[rgba(120,80,20,.4)] pb-3">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[rgba(120,80,20,.12)] text-[#7a5c1a]">
                       <Users className="h-4 w-4" />
                     </span>
                     <div>
-                      <h2 className="text-sm font-bold text-foreground">{group.team}</h2>
-                      <p className="text-[11px] text-muted-foreground">
+                      <h2 className="text-sm font-bold text-[#3f2a0e]">{group.team}</h2>
+                      <p className="text-[11px] text-[rgba(90,61,20,.72)]">
                         {group.rows.length} görev pozisyonu
                       </p>
                     </div>
@@ -353,67 +331,67 @@ export default function MusterListPage() {
                   {group.rows.map(({ assignment, duty }) => (
                     <article
                       key={assignment.id}
-                      className="break-inside-avoid rounded-xl border border-border/50 bg-background/80 p-4 shadow-xs print:border-slate-300 print:bg-white"
+                      className="break-inside-avoid rounded-sm border border-dotted border-[rgba(120,80,20,.45)] p-4 print:border-slate-300 print:bg-white"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <Link
                             to={`/crew/${assignment.roleSlug}`}
-                            className="group inline-flex items-center gap-1.5 font-bold text-foreground transition hover:text-primary print:text-black"
+                            className="group inline-flex items-center gap-1.5 font-bold text-[#3f2a0e] transition hover:text-[#7a5c1a] print:text-black"
                           >
                             <span>{assignment.rank}</span>
                             <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-transform group-hover:translate-x-0.5 print:hidden" />
                           </Link>
-                          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7a5c1a]">
                             {assignment.billet}
                           </p>
                         </div>
                       </div>
 
                       <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
-                        <div className="rounded-lg border border-border/40 bg-card/60 p-2.5">
-                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                        <div className="rounded-sm border border-dotted border-[rgba(120,80,20,.4)] p-2.5">
+                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-[rgba(90,61,20,.72)]">
                             <MapPin className="h-3 w-3" />
                             İlk istasyon
                           </dt>
-                          <dd className="font-medium leading-relaxed text-foreground">
+                          <dd className="font-medium leading-relaxed text-[#3f2a0e]">
                             {assignment.initialStation}
                           </dd>
                         </div>
-                        <div className="rounded-lg border border-border/40 bg-card/60 p-2.5">
-                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                        <div className="rounded-sm border border-dotted border-[rgba(120,80,20,.4)] p-2.5">
+                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-[rgba(90,61,20,.72)]">
                             <ShieldAlert className="h-3 w-3" />
                             Operasyon yeri
                           </dt>
-                          <dd className="font-medium leading-relaxed text-foreground">
+                          <dd className="font-medium leading-relaxed text-[#3f2a0e]">
                             {duty.station}
                           </dd>
                         </div>
-                        <div className="rounded-lg border border-border/40 bg-card/60 p-2.5 sm:col-span-2">
-                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                        <div className="rounded-sm border border-dotted border-[rgba(120,80,20,.4)] p-2.5 sm:col-span-2">
+                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-[rgba(90,61,20,.72)]">
                             <Radio className="h-3 w-3" />
                             Rapor verir
                           </dt>
-                          <dd className="font-medium leading-relaxed text-foreground">
+                          <dd className="font-medium leading-relaxed text-[#3f2a0e]">
                             {duty.reportsTo}
                           </dd>
                         </div>
                       </dl>
 
                       {assignment.roleNote && (
-                        <p className="mt-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-2.5 text-[11px] leading-relaxed text-foreground/80">
+                        <p className="bs-callout mt-3 text-[11px]">
                           {assignment.roleNote}
                         </p>
                       )}
 
                       <div className="mt-4">
-                        <h3 className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                        <h3 className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[rgba(90,61,20,.72)]">
                           Görev sırası
                         </h3>
                         <ol className="space-y-2.5">
                           {duty.actions.map((action, index) => (
-                            <li key={action} className="flex gap-2.5 text-xs leading-relaxed text-foreground/85">
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                            <li key={action} className="flex gap-2.5 text-xs leading-relaxed text-[#4a3113]">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[rgba(120,80,20,.12)] text-[10px] font-bold text-[#7a5c1a]">
                                 {index + 1}
                               </span>
                               <span>{action}</span>
@@ -423,15 +401,15 @@ export default function MusterListPage() {
                       </div>
 
                       {duty.equipment && duty.equipment.length > 0 && (
-                        <div className="mt-4 border-t border-border/40 pt-3">
-                          <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                        <div className="mt-4 border-t border-dotted border-[rgba(120,80,20,.4)] pt-3">
+                          <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[rgba(90,61,20,.72)]">
                             Atanmış donanım
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {duty.equipment.map((equipment) => (
                               <span
                                 key={equipment}
-                                className="rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-[10px] font-medium text-foreground/80"
+                                className="bs-chip"
                               >
                                 {equipment}
                               </span>
@@ -441,16 +419,16 @@ export default function MusterListPage() {
                       )}
 
                       {(assignment.substitute || assignment.readinessResponsibility) && (
-                        <div className="mt-4 space-y-2 border-t border-border/40 pt-3 text-[11px] leading-relaxed">
+                        <div className="mt-4 space-y-2 border-t border-dotted border-[rgba(120,80,20,.4)] pt-3 text-[11px] leading-relaxed">
                           {assignment.substitute && (
-                            <p className="text-foreground/80">
-                              <span className="font-bold text-foreground">Kritik görev yedeği:</span>{" "}
+                            <p className="text-[#4a3113]">
+                              <span className="font-bold text-[#3f2a0e]">Kritik görev yedeği:</span>{" "}
                               {assignment.substitute}
                             </p>
                           )}
                           {assignment.readinessResponsibility && (
-                            <p className="text-foreground/80">
-                              <span className="font-bold text-foreground">Hazır bulundurma:</span>{" "}
+                            <p className="text-[#4a3113]">
+                              <span className="font-bold text-[#3f2a0e]">Hazır bulundurma:</span>{" "}
                               {assignment.readinessResponsibility}
                             </p>
                           )}
@@ -463,27 +441,27 @@ export default function MusterListPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-dashed border-border bg-card/60 p-8 text-center">
-            <Search className="mx-auto h-6 w-6 text-muted-foreground" />
-            <p className="mt-3 text-sm font-semibold text-foreground">Eşleşen görev bulunamadı</p>
+          <div className="rounded-sm border border-dashed border-[rgba(120,80,20,.5)] p-8 text-center">
+            <Search className="mx-auto h-6 w-6 text-[rgba(90,61,20,.72)]" />
+            <p className="mt-3 text-sm font-semibold text-[#3f2a0e]">Eşleşen görev bulunamadı</p>
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="mt-2 text-xs font-semibold text-primary hover:underline"
+              className="mt-2 text-xs font-semibold text-[#7a5c1a] hover:underline"
             >
               Aramayı temizle
             </button>
           </div>
         )}
 
-        <section className="break-inside-avoid rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm print:border-slate-300 print:bg-white print:shadow-none sm:p-5">
+        <section className="break-inside-avoid print:bg-white">
           <div className="mb-4 flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-300">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[rgba(120,80,20,.12)] text-[#7a5c1a]">
               <ClipboardCheck className="h-4 w-4" />
             </span>
             <div>
-              <h2 className="text-sm font-bold text-foreground">Gerçek gemi cetveli kontrolü</h2>
-              <p className="text-[11px] text-muted-foreground">
+              <h2 className="text-sm font-bold text-[#3f2a0e]">Gerçek gemi cetveli kontrolü</h2>
+              <p className="text-[11px] text-[rgba(90,61,20,.72)]">
                 Kaptan onayı öncesi temel SOLAS kapsamı
               </p>
             </div>
@@ -493,16 +471,16 @@ export default function MusterListPage() {
             {musterComplianceChecklist.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-border/40 bg-background/70 p-3"
+                className="rounded-sm border border-dotted border-[rgba(120,80,20,.45)] p-3"
               >
                 <div className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-300" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#7a5c1a]" />
                   <div>
-                    <h3 className="text-xs font-bold text-foreground">{item.title}</h3>
-                    <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                    <h3 className="text-xs font-bold text-[#3f2a0e]">{item.title}</h3>
+                    <p className="mt-1 text-[11px] leading-relaxed text-[rgba(90,61,20,.72)]">
                       {item.detail}
                     </p>
-                    <p className="mt-2 text-[10px] font-semibold text-primary">{item.reference}</p>
+                    <p className="mt-2 text-[10px] font-semibold text-[#7a5c1a]">{item.reference}</p>
                   </div>
                 </div>
               </div>
@@ -510,8 +488,8 @@ export default function MusterListPage() {
           </div>
         </section>
 
-        <footer className="rounded-2xl border border-border/50 bg-card/60 p-4 text-[11px] text-muted-foreground print:border-slate-300 print:bg-white">
-          <p className="font-semibold text-foreground">Başlıca dayanaklar</p>
+        <footer className="border-t border-dotted border-[rgba(120,80,20,.4)] pt-3 text-[11px] text-[rgba(90,61,20,.72)] print:border-slate-300 print:bg-white">
+          <p className="font-semibold text-[#3f2a0e]">Başlıca dayanaklar</p>
           <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
             {musterReferences.map((reference) => (
               <li key={reference} className="flex items-start gap-2 leading-relaxed">
@@ -520,12 +498,12 @@ export default function MusterListPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-3 border-t border-border/40 pt-3 leading-relaxed">
+          <p className="mt-3 border-t border-dotted border-[rgba(120,80,20,.4)] pt-3 leading-relaxed">
             Eğitim örneği; yayımlanmış gemi role cetveli, Fire Control Plan, LSA Plan, Damage
             Control Plan, SOPEP/SMPEP ve şirket SMS'i her zaman önceliklidir.
           </p>
         </footer>
       </div>
-    </div>
+    </BookSheet>
   );
 }

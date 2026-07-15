@@ -27,6 +27,7 @@ import { GlobalSearch } from "@/components/GlobalSearch";
 const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
+const BookPage = lazy(() => import("./pages/BookPage"));
 const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
 const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
 const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
@@ -216,6 +217,7 @@ const AnimatedRoutes = () => {
       <Suspense fallback={<RouteFallback />}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+        <Route path="/book" element={<PageTransition><BookPage /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />

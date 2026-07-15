@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { BookSheet } from "@/components/book/BookSheet";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -2703,31 +2704,11 @@ export default function SafetyTopicsPage() {
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
 
   return (
-    <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 dark:from-[hsl(0,50%,6%)] dark:via-[hsl(15,50%,8%)] dark:to-[hsl(30,50%,10%)]"
-    >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-red-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-orange-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
-      </div>
-
-      <div className="relative z-10">
-        <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
-          <div className="px-4 py-4">
-            <div className="flex items-center gap-3 max-w-4xl mx-auto">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-orange-600 text-white shadow-lg">
-                <Shield className="h-6 w-6" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-foreground">Denizde Güvenlik</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <ScrollArea className="h-[calc(100vh-80px)]">
-          <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
+    <BookSheet title="DERSLER">
+      <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>Denizde Güvenlik</h1>
+      <div className="bs-fleuron" aria-hidden="true">❦</div>
+      <div>
+          <div className="space-y-3">
             <Accordion type="single" collapsible className="space-y-2">
               {safetyTopics.map((topic) => {
                 const TopicIcon = topic.icon;
@@ -2735,22 +2716,22 @@ export default function SafetyTopicsPage() {
                   <AccordionItem
                     key={topic.id}
                     value={topic.id}
-                    className="border border-border/40 rounded-xl overflow-hidden bg-card/80 backdrop-blur"
+                    className="border-b border-dotted border-[rgba(120,80,20,.35)]"
                   >
-                    <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
+                    <AccordionTrigger className="px-1 py-3 hover:no-underline">
                       <div className="flex items-center gap-3 text-left">
-                        <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white font-bold">
+                        <span className="bs-muted w-7 shrink-0 text-base font-bold">
                           {topic.number}
                         </span>
                         <div className="flex items-center gap-2">
                           <TopicIcon className="h-4 w-4 text-red-600 dark:text-red-400" />
-                          <span className="font-semibold text-foreground text-sm leading-tight">
+                          <span className="font-semibold text-sm leading-tight" style={{ color: "#3f2a0e" }}>
                             {topic.title}
                           </span>
                         </div>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="px-4 pb-4">
+                    <AccordionContent className="px-1 pb-3">
                       <div className="space-y-1 mt-2">
                         {topic.subtopics.map((subtopic) => (
                           <motion.button
@@ -2766,11 +2747,11 @@ export default function SafetyTopicsPage() {
                             {subtopic.hasContent && topicContents[subtopic.id] ? (
                               <CheckCircle2 className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
                             ) : (
-                              <Circle className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                              <Circle className="w-4 h-4 text-[rgba(90,61,20,.5)] flex-shrink-0" />
                             )}
-                            <span className="text-sm text-foreground">{subtopic.title}</span>
+                            <span className="text-sm">{subtopic.title}</span>
                             {subtopic.hasContent && topicContents[subtopic.id] && (
-                              <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />
+                              <span className="bs-anchor ml-auto" aria-hidden="true">⚓</span>
                             )}
                           </motion.button>
                         ))}
@@ -2807,7 +2788,6 @@ export default function SafetyTopicsPage() {
               </div>
             </section>
           </div>
-        </ScrollArea>
       </div>
 
       <AnimatePresence>
@@ -2816,24 +2796,25 @@ export default function SafetyTopicsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background"
+            className="fixed inset-0 z-50" style={{ background: "linear-gradient(180deg, #f3e7c9 0%, #e6d3a8 100%)" }}
           >
-            <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border">
-              <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto">
-                <h2 className="text-lg font-bold text-foreground truncate pr-4">
+            <div className="sticky top-0 z-10 border-b border-dotted border-[rgba(120,80,20,.45)]" style={{ background: "#f6ecd0" }}>
+              <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto" style={{ fontFamily: "Georgia, 'Times New Roman', serif", color: "#3f2a0e" }}>
+                <h2 className="text-lg font-bold truncate pr-4">
                   {currentContent.title}
                 </h2>
                 <button
                   onClick={closeModal}
-                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center"
+                  aria-label="Kapat"
+                  className="w-10 h-10 rounded-full flex items-center justify-center border border-dotted border-[rgba(120,80,20,.6)]"
                 >
-                  <X className="w-5 h-5 text-foreground" />
+                  <X className="w-5 h-5 text-[#4a3113]" />
                 </button>
               </div>
             </div>
 
             <ScrollArea className="h-[calc(100vh-60px)]">
-              <div className="p-4 space-y-6 pb-20 max-w-4xl mx-auto">
+              <div className="bs-prose p-5 space-y-5 pb-20 max-w-4xl mx-auto">
                 <div className="bg-red-500/10 rounded-xl p-4 border-l-4 border-red-500">
                   <p className="text-foreground font-medium leading-relaxed">
                     {currentContent.introduction}
@@ -2851,11 +2832,7 @@ export default function SafetyTopicsPage() {
                   </div>
                 )}
 
-                <div className="prose prose-sm max-w-none">
-                  <div className="text-foreground leading-relaxed whitespace-pre-line">
-                    {currentContent.content}
-                  </div>
-                </div>
+                <div className="whitespace-pre-line">{currentContent.content}</div>
 
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
                   <div className="bg-muted/50 rounded-xl p-4 space-y-2">
@@ -2933,6 +2910,6 @@ export default function SafetyTopicsPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </BookSheet>
   );
 }

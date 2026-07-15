@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { Newspaper, ArrowRight } from "lucide-react";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
 import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
 
@@ -19,16 +18,17 @@ function formatRelative(iso?: string): string {
   return d.toLocaleDateString("tr-TR", { day: "2-digit", month: "short" });
 }
 
-function proxyImg(url?: string): string | undefined {
+function proxyImg(url?: string, w = 240): string | undefined {
   if (!url) return undefined;
   try {
     const u = url.startsWith("//") ? `https:${url}` : url;
-    return `https://images.weserv.nl/?url=${encodeURIComponent(u.replace(/^https?:\/\//, ""))}&w=240&h=160&fit=cover&output=webp&q=70`;
+    return `https://images.weserv.nl/?url=${encodeURIComponent(u.replace(/^https?:\/\//, ""))}&w=${w}&h=${Math.round(w * (2 / 3))}&fit=cover&output=webp&q=70`;
   } catch {
     return undefined;
   }
 }
 
+/** Vintage gazete paneli — haberler eski bir denizci gazetesinin sayfası gibi dizilir. */
 export function NewsPanel() {
   const [selected, setSelected] = useState<MaritimeNewsItem | null>(null);
   const [open, setOpen] = useState(false);
@@ -41,88 +41,85 @@ export function NewsPanel() {
   });
 
   const items: MaritimeNewsItem[] = (data?.items ?? []).slice(0, 10);
+  const [lead, ...briefs] = items;
+
+  const openItem = (item: MaritimeNewsItem) => {
+    setSelected(item);
+    setOpen(true);
+  };
+
+  const dateline = new Date().toLocaleDateString("tr-TR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
-    <section
-      className="flex h-full flex-col px-4 pt-2"
-      aria-label="Denizcilik haberleri"
-    >
-      <div className="mb-3 flex items-center justify-between px-1">
-        <div className="flex items-center gap-2 text-white">
-          <Newspaper className="h-4 w-4" />
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em]">Haberler</h2>
+    <section className="flex h-full flex-col px-4 pt-2" aria-label="Denizcilik haberleri">
+      <div className="np-paper flex-1 overflow-y-auto">
+        {/* Manşet başlığı */}
+        <div className="np-topline" aria-hidden="true" />
+        <div className="np-masthead notranslate" translate="no" lang="en">
+          MARINER&rsquo;S POST
         </div>
-        <Link
-          to="/maritime-news"
-          className="flex items-center gap-1 text-[11px] font-medium text-white/70 hover:text-white"
-        >
-          Tümü <ArrowRight className="h-3 w-3" />
-        </Link>
-      </div>
+        <div className="np-masthead-rule" aria-hidden="true" />
+        <div className="np-dateline">
+          <span>{dateline}</span>
+          <Link to="/maritime-news" className="np-alllink">
+            Tüm Sayılar →
+          </Link>
+        </div>
 
-      <div className="flex-1 overflow-y-auto rounded-3xl border border-white/15 bg-white/[0.06] p-2 backdrop-blur-xl">
         {isLoading && (
-          <ul className="space-y-2">
+          <ul className="space-y-3 px-3 pb-4">
             {Array.from({ length: 5 }).map((_, i) => (
-              <li
-                key={i}
-                className="flex gap-3 rounded-2xl bg-white/5 p-2.5 animate-pulse"
-              >
-                <div className="h-14 w-20 rounded-xl bg-white/10" />
+              <li key={i} className="np-skel animate-pulse">
+                <div className="h-14 w-16 rounded-sm bg-[rgba(90,61,20,.12)]" />
                 <div className="flex-1 space-y-2 py-1">
-                  <div className="h-3 w-4/5 rounded bg-white/10" />
-                  <div className="h-2 w-2/5 rounded bg-white/10" />
+                  <div className="h-3 w-4/5 rounded-sm bg-[rgba(90,61,20,.12)]" />
+                  <div className="h-2 w-2/5 rounded-sm bg-[rgba(90,61,20,.12)]" />
                 </div>
               </li>
             ))}
           </ul>
         )}
 
-        {isError && (
-          <p className="px-3 py-6 text-center text-xs text-white/60">
-            Haberler şu an alınamıyor.
-          </p>
-        )}
+        {isError && <p className="np-empty">Haberler şu an alınamıyor.</p>}
 
         {!isLoading && !isError && items.length === 0 && (
-          <p className="px-3 py-6 text-center text-xs text-white/60">
-            Şu an gösterilecek haber yok.
-          </p>
+          <p className="np-empty">Şu an gösterilecek haber yok.</p>
         )}
 
-        <ul className="space-y-1.5">
-          {items.map((item) => {
+        {/* Manşet haber */}
+        {lead && (
+          <button type="button" onClick={() => openItem(lead)} className="np-lead">
+            {proxyImg(lead.imageUrl, 480) ? (
+              <img src={proxyImg(lead.imageUrl, 480)} alt="" loading="lazy" className="np-photo" />
+            ) : (
+              <div className="np-photo np-photo-fallback" aria-hidden="true">⚓</div>
+            )}
+            <h3 className="np-lead-title">{lead.title}</h3>
+            <div className="np-time">{formatRelative(lead.publishedAt)}</div>
+          </button>
+        )}
+
+        {/* Kısa haberler */}
+        <ul>
+          {briefs.map((item) => {
             const img = proxyImg(item.imageUrl);
             return (
-              <li key={item.link}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelected(item);
-                    setOpen(true);
-                  }}
-                  className="flex w-full gap-3 rounded-2xl p-2.5 text-left transition-colors hover:bg-white/10 active:bg-white/15"
-                >
+              <li key={item.link} className="np-brief-row">
+                <button type="button" onClick={() => openItem(item)} className="np-brief">
                   {img ? (
-                    <img
-                      src={img}
-                      alt=""
-                      loading="lazy"
-                      className="h-14 w-20 flex-shrink-0 rounded-xl object-cover"
-                    />
+                    <img src={img} alt="" loading="lazy" className="np-thumb" />
                   ) : (
-                    <div className="flex h-14 w-20 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-700/60 to-slate-700/60">
-                      <Newspaper className="h-5 w-5 text-white/70" />
-                    </div>
+                    <div className="np-thumb np-thumb-fallback" aria-hidden="true">⚓</div>
                   )}
-                  <div className="min-w-0 flex-1">
-                    <p className="line-clamp-2 text-[12px] font-medium leading-snug text-white">
-                      {item.title}
-                    </p>
-                    <div className="mt-1 text-[10px] text-white/55">
-                      {formatRelative(item.publishedAt)}
-                    </div>
-                  </div>
+                  <span className="np-col-rule" aria-hidden="true" />
+                  <span className="min-w-0 flex-1">
+                    <span className="np-brief-title">{item.title}</span>
+                    <span className="np-time">{formatRelative(item.publishedAt)}</span>
+                  </span>
                 </button>
               </li>
             );
@@ -138,6 +135,154 @@ export function NewsPanel() {
         }}
         item={selected}
       />
+
+      <style>{`
+        .np-paper{
+          border-radius: 8px;
+          background:
+            radial-gradient(90% 40% at 50% 0%, rgba(120,80,20,.06), transparent 70%),
+            linear-gradient(180deg, #ece4d0 0%, #ddd2b8 100%);
+          box-shadow: 0 10px 26px rgba(0,0,0,.45), inset 0 0 14px rgba(90,61,20,.14);
+          color: #2b2418;
+          font-family: Georgia, 'Times New Roman', serif;
+          scrollbar-width: none;
+        }
+        .np-paper::-webkit-scrollbar{ display: none; }
+        .np-topline{
+          height: 2px;
+          margin: 8px 12px 0;
+          background: #2b2418;
+          opacity: .75;
+        }
+        .np-masthead{
+          margin-top: 6px;
+          text-align: center;
+          font-weight: 900;
+          font-size: clamp(1.15rem, 5.4vw, 1.5rem);
+          letter-spacing: .08em;
+          line-height: 1.1;
+          color: #2b2418;
+        }
+        .np-masthead::before{ content: "⚓ "; font-size: .6em; vertical-align: middle; opacity: .7; }
+        .np-masthead::after{ content: " ⚓"; font-size: .6em; vertical-align: middle; opacity: .7; }
+        .np-masthead-rule{
+          margin: 6px 12px 0;
+          border-bottom: 3px double rgba(43,36,24,.65);
+        }
+        .np-dateline{
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 8px;
+          margin: 0 12px 8px;
+          padding: 4px 2px;
+          border-bottom: 1px solid rgba(43,36,24,.35);
+          font-size: 9px;
+          font-variant: small-caps;
+          letter-spacing: .08em;
+          color: rgba(43,36,24,.8);
+        }
+        .np-alllink{
+          color: rgba(43,36,24,.8);
+          text-decoration: underline dotted rgba(43,36,24,.5);
+          text-underline-offset: 2px;
+        }
+        .np-lead{
+          display: block;
+          width: calc(100% - 24px);
+          margin: 0 12px 10px;
+          text-align: left;
+        }
+        .np-lead:active{ opacity: .7; }
+        .np-photo{
+          width: 100%;
+          aspect-ratio: 3 / 2;
+          object-fit: cover;
+          border: 1px solid rgba(43,36,24,.4);
+          filter: sepia(.5) contrast(.92) saturate(.8);
+          display: block;
+        }
+        .np-photo-fallback{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 32px;
+          opacity: .45;
+          background: repeating-linear-gradient(45deg, rgba(43,36,24,.06) 0 6px, transparent 6px 12px);
+          filter: none;
+        }
+        .np-lead-title{
+          margin-top: 7px;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 1.3;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .np-time{
+          display: block;
+          margin-top: 3px;
+          font-size: 9px;
+          font-variant: small-caps;
+          letter-spacing: .1em;
+          color: rgba(43,36,24,.65);
+        }
+        .np-brief-row .np-brief{
+          border-top: 1px dotted rgba(43,36,24,.35);
+        }
+        .np-brief{
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: calc(100% - 24px);
+          margin: 0 12px;
+          padding: 8px 0;
+          text-align: left;
+        }
+        .np-brief:active{ opacity: .7; }
+        .np-thumb{
+          width: 64px;
+          height: 48px;
+          flex-shrink: 0;
+          object-fit: cover;
+          border: 1px solid rgba(43,36,24,.4);
+          filter: sepia(.5) contrast(.92) saturate(.8);
+        }
+        .np-thumb-fallback{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          opacity: .45;
+          background: repeating-linear-gradient(45deg, rgba(43,36,24,.06) 0 6px, transparent 6px 12px);
+          filter: none;
+        }
+        .np-col-rule{
+          align-self: stretch;
+          width: 1px;
+          background: rgba(43,36,24,.25);
+          flex-shrink: 0;
+        }
+        .np-brief-title{
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.35;
+        }
+        .np-skel{ display: flex; gap: 10px; }
+        .np-empty{
+          padding: 24px 16px;
+          text-align: center;
+          font-size: 12px;
+          font-style: italic;
+          color: rgba(90,61,20,.7);
+        }
+      `}</style>
     </section>
   );
 }

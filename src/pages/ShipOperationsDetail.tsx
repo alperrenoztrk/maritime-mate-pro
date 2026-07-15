@@ -9,7 +9,6 @@ import {
   ShieldAlert,
   ClipboardList,
 } from "lucide-react";
-import { MobileLayout } from "@/components/MobileLayout";
 import {
   Accordion,
   AccordionContent,
@@ -19,6 +18,7 @@ import {
 import { shipTypeMap } from "@/data/shipOperationsData";
 import type { DepartmentId } from "@/data/shipOperationsData";
 import { cn } from "@/lib/utils";
+import { BookSheet } from "@/components/book/BookSheet";
 
 export default function ShipOperationsDetail() {
   const { shipType } = useParams<{ shipType: string }>();
@@ -28,49 +28,35 @@ export default function ShipOperationsDetail() {
 
   if (!ship) {
     return (
-      <MobileLayout>
-        <div className="relative min-h-screen bg-background px-4 pb-24 pt-6 flex flex-col items-center justify-center gap-4">
-          <p className="text-muted-foreground text-sm">Gemi tipi bulunamadı.</p>
-        </div>
-      </MobileLayout>
+      <BookSheet title="OPERASYONLAR">
+        <p className="bs-muted py-10 text-center text-sm italic">Gemi tipi bulunamadı.</p>
+      </BookSheet>
     );
   }
 
   const currentDept = ship.departments.find((d) => d.id === activeDept);
 
   return (
-    <MobileLayout>
-      <div className="relative min-h-screen bg-background px-4 pb-24 pt-6">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 left-1/4 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute top-40 right-0 h-48 w-48 rounded-full bg-accent/5 blur-3xl" />
-        </div>
-
-        <div className="relative z-10 mx-auto flex max-w-lg flex-col gap-5">
+    <BookSheet title="OPERASYONLAR">
+      <div className="flex flex-col gap-4">
           {/* Header */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-border/30">
+              <div className="bs-photo relative h-12 w-16 shrink-0 overflow-hidden rounded-sm">
                 <img
                   src={ship.image}
                   alt={`${ship.label} gemisi`}
                   className="h-full w-full object-cover"
                 />
-                <div
-                  className={cn(
-                    "pointer-events-none absolute inset-0 bg-gradient-to-br mix-blend-overlay",
-                    ship.color
-                  )}
-                />
               </div>
-              <h1 className="text-lg font-bold tracking-tight text-foreground truncate">
+              <h1 className="bs-h2 truncate" style={{ margin: 0 }}>
                 {ship.label} Operasyonları
               </h1>
             </div>
           </div>
 
           {/* Department tabs */}
-          <div className="flex rounded-xl border border-border/30 bg-card/60 p-1 gap-1">
+          <div className="flex gap-2">
             {ship.departments.map((dept) => {
               const isActive = dept.id === activeDept;
               const Icon = dept.id === "guverte" ? Anchor : Wrench;
@@ -78,12 +64,7 @@ export default function ShipOperationsDetail() {
                 <button
                   key={dept.id}
                   onClick={() => setActiveDept(dept.id)}
-                  className={cn(
-                    "flex flex-1 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
-                    isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
+                  className={cn("flex-1", isActive ? "bs-btn" : "bs-btn--ghost")}
                 >
                   <Icon
                     className="h-3.5 w-3.5"
@@ -98,40 +79,35 @@ export default function ShipOperationsDetail() {
           {/* Operations list */}
           {currentDept && (
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] text-muted-foreground">
+              <p className="bs-muted text-[11px] italic">
                 {currentDept.operations.length} operasyon
               </p>
-              <Accordion
-                type="multiple"
-                className="rounded-xl border border-border/20 bg-card/60 overflow-hidden divide-y divide-border/20"
-              >
+              <Accordion type="multiple">
                 {currentDept.operations.map((op, idx) => (
                   <AccordionItem
                     key={idx}
                     value={`op-${idx}`}
-                    className="border-0 px-4"
+                    className="border-b border-dotted border-[rgba(120,80,20,.35)] px-1"
                   >
-                    <AccordionTrigger className="py-3 text-left text-sm leading-snug text-foreground hover:no-underline gap-3">
+                    <AccordionTrigger className="py-3 text-left text-sm font-semibold leading-snug hover:no-underline gap-3" style={{ color: "#3f2a0e" }}>
                       <span className="flex-1">{op.title}</span>
                     </AccordionTrigger>
                     <AccordionContent className="pb-4">
-                      <div className="flex flex-col gap-4 pt-1 text-xs leading-relaxed text-muted-foreground">
+                      <div className="bs-prose flex flex-col gap-4 pt-1 text-xs leading-relaxed">
                         <Section
                           icon={<Target className="h-3.5 w-3.5" />}
                           label="Amaç"
                         >
-                          <p className="text-foreground/90">{op.purpose}</p>
+                          <p>{op.purpose}</p>
                         </Section>
 
                         <Section
                           icon={<ListChecks className="h-3.5 w-3.5" />}
                           label="Prosedür"
                         >
-                          <ol className="list-decimal space-y-1.5 pl-4 marker:text-primary/60">
+                          <ol className="list-decimal space-y-1.5 pl-4">
                             {op.procedure.map((step, i) => (
-                              <li key={i} className="text-foreground/85">
-                                {step}
-                              </li>
+                              <li key={i}>{step}</li>
                             ))}
                           </ol>
                         </Section>
@@ -143,12 +119,7 @@ export default function ShipOperationsDetail() {
                           >
                             <div className="flex flex-wrap gap-1.5">
                               {op.regulations.map((reg, i) => (
-                                <span
-                                  key={i}
-                                  className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] text-primary/90"
-                                >
-                                  {reg}
-                                </span>
+                                <span key={i} className="bs-chip">{reg}</span>
                               ))}
                             </div>
                           </Section>
@@ -157,7 +128,7 @@ export default function ShipOperationsDetail() {
                         {op.safety && op.safety.length > 0 && (
                           <Section
                             icon={
-                              <ShieldAlert className="h-3.5 w-3.5 text-destructive/80" />
+                              <ShieldAlert className="h-3.5 w-3.5 text-[#8f1f1f]" />
                             }
                             label="Güvenlik & Risk"
                           >
@@ -165,7 +136,7 @@ export default function ShipOperationsDetail() {
                               {op.safety.map((s, i) => (
                                 <li
                                   key={i}
-                                  className="relative text-foreground/85 before:absolute before:-left-3 before:top-1.5 before:h-1 before:w-1 before:rounded-full before:bg-destructive/60"
+                                  className="relative before:absolute before:-left-3 before:top-1.5 before:h-1 before:w-1 before:rounded-full before:bg-[#8f1f1f]"
                                 >
                                   {s}
                                 </li>
@@ -183,7 +154,7 @@ export default function ShipOperationsDetail() {
                               {op.records.map((r, i) => (
                                 <li
                                   key={i}
-                                  className="relative text-foreground/85 before:absolute before:-left-3 before:top-1.5 before:h-1 before:w-1 before:rounded-full before:bg-primary/60"
+                                  className="relative before:absolute before:-left-3 before:top-1.5 before:h-1 before:w-1 before:rounded-full before:bg-[rgba(120,80,20,.6)]"
                                 >
                                   {r}
                                 </li>
@@ -194,9 +165,9 @@ export default function ShipOperationsDetail() {
 
                         <Link
                           to={`/ship-operations/${shipType}/${activeDept}/${idx}`}
-                          className="mt-1 inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20"
+                          className="bs-btn--ghost mt-1 self-start"
                         >
-                          Detaylı Anlatımı Aç (20-30 sayfa) →
+                          Detaylı Anlatımı Aç →
                         </Link>
                       </div>
                     </AccordionContent>
@@ -205,9 +176,8 @@ export default function ShipOperationsDetail() {
               </Accordion>
             </div>
           )}
-        </div>
       </div>
-    </MobileLayout>
+    </BookSheet>
   );
 }
 
@@ -222,8 +192,8 @@ function Section({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground/80">
-        <span className="text-primary/70">{icon}</span>
+      <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[.14em] text-[rgba(90,61,20,.75)]">
+        <span className="text-[#7a5c1a]">{icon}</span>
         {label}
       </div>
       {children}
