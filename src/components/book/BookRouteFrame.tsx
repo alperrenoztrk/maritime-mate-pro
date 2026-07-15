@@ -3,6 +3,7 @@ import { BookSheet } from "@/components/book/BookSheet";
 import {
   getBookInteractionMode,
   getBookRoutePage,
+  getBookVolumeForPath,
   getBookRouteTitle,
   isBookContentPath,
 } from "@/lib/bookRoutes";
@@ -20,16 +21,21 @@ interface BookRouteFrameProps {
 export function BookRouteFrame({ pathname, children }: BookRouteFrameProps) {
   const active = isBookContentPath(pathname);
   const interactionMode = getBookInteractionMode(pathname);
+  const volumeId = getBookVolumeForPath(pathname);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.body.classList.toggle("book-route-active", active);
-    if (active) document.body.dataset.bookMode = interactionMode;
+    if (active) {
+      document.body.dataset.bookMode = interactionMode;
+      document.body.dataset.bookVolume = volumeId;
+    }
     return () => {
       document.body.classList.remove("book-route-active");
       delete document.body.dataset.bookMode;
+      delete document.body.dataset.bookVolume;
     };
-  }, [active, interactionMode]);
+  }, [active, interactionMode, volumeId]);
 
   useEffect(() => {
     if (!active || interactionMode !== "reading" || typeof document === "undefined") return;
@@ -64,6 +70,7 @@ export function BookRouteFrame({ pathname, children }: BookRouteFrameProps) {
       pageKey={pathname}
       pageNumber={getBookRoutePage(pathname)}
       interactionMode={interactionMode}
+      volumeId={volumeId}
     >
       {children}
     </BookSheet>
