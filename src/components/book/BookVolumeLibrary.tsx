@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { bookVolumes, type BookVolumeId } from "@/data/bookContents";
+import { bookVolumeDescriptors, type BookVolumeId } from "@/data/bookVolumes";
 
 interface BookVolumeLibraryProps {
   onSelect: (volumeId: BookVolumeId) => void;
@@ -25,7 +25,7 @@ export function BookVolumeLibrary({
       </header>
 
       <div className="bvl-shelf">
-        {bookVolumes.map((volume) => {
+        {bookVolumeDescriptors.map((volume) => {
           const style = {
             "--bvl-cover": volume.cover,
             "--bvl-cover-deep": volume.coverDeep,
