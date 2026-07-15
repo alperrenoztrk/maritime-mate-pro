@@ -1,4 +1,4 @@
-import type { BookVolumeId } from "@/data/bookContents";
+import type { BookVolumeId } from "@/data/bookVolumes";
 
 /**
  * Routes that belong to the Mariner's Book experience. The home screen,
@@ -208,4 +208,3 @@ export function getBookRouteTitle(pathname: string): string {
   if (matchesPrefix(pathname, "/communication")) return "DENİZDE HABERLEŞME";
   return "MARINER'S BOOK";
 }
-
