@@ -13,7 +13,7 @@ import {
   type ReactNode,
   type WheelEvent as ReactWheelEvent,
 } from "react";
-import { getBookVolume, type BookVolumeId } from "@/data/bookContents";
+import { getBookVolumeDescriptor, type BookVolumeId } from "@/data/bookVolumes";
 import type { BookInteractionMode } from "@/lib/bookRoutes";
 import {
   getBookTurnProgress,
@@ -57,7 +57,7 @@ export function BookSheet({
   volumeId,
 }: BookSheetProps) {
   const alreadyInsideBook = useContext(BookSheetNestingContext);
-  const volume = volumeId ? getBookVolume(volumeId) : null;
+  const volume = volumeId ? getBookVolumeDescriptor(volumeId) : null;
   const pagerApi = useRef<LeafPagerHandle>({ step: () => {} });
   const [leafState, setLeafState] = useState({ spread: 0, spreads: 1 });
   const handleLeafState = useCallback((spread: number, spreads: number) => {
@@ -1121,4 +1121,3 @@ function BookLeafPager({
     </div>
   );
 }
-
