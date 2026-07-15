@@ -1,3 +1,5 @@
+import type { BookVolumeId } from "@/data/bookContents";
+
 /**
  * Routes that belong to the Mariner's Book experience. The home screen,
  * settings, authentication, news and beta tools deliberately stay outside
@@ -49,10 +51,6 @@ export function isBookContentPath(pathname: string): boolean {
 
 export type BookInteractionMode = "reading" | "calculator" | "quiz" | "assistant";
 
-/**
- * Only pages that genuinely wait for an answer keep form controls. Everything
- * else is treated as a printed reading page by the persistent book frame.
- */
 export function getBookInteractionMode(pathname: string): BookInteractionMode {
   if (pathname.includes("/assistant")) return "assistant";
   if (
@@ -80,33 +78,89 @@ export function getBookInteractionMode(pathname: string): BookInteractionMode {
   return "reading";
 }
 
-const PAGE_RANGES: readonly [prefix: string, firstPage: number][] = [
-  ["/lessons", 10],
-  ["/machine", 80],
-  ["/exercises", 160],
-  ["/exam-preparation", 190],
-  ["/crew", 220],
-  ["/ship-systems", 300],
-  ["/ship-operations", 380],
-  ["/ship-tasks", 440],
-  ["/glossary", 480],
-  ["/regulations", 520],
-  ["/solas", 560],
-  ["/calculations", 600],
+type VolumeRouteRule = {
+  volumeId: BookVolumeId;
+  prefixes: readonly string[];
+};
+
+export const BOOK_VOLUME_ROUTE_RULES: readonly VolumeRouteRule[] = [
+  {
+    volumeId: "navigation-bridge",
+    prefixes: [
+      "/lessons/navigation", "/lessons/meteorology", "/lessons/communication",
+      "/ship-systems/nav-systems", "/ship-systems/gmdss-lsa",
+      "/navigation", "/meteorology", "/communication", "/bridge", "/passage-plan",
+    ],
+  },
+  {
+    volumeId: "stability-cargo",
+    prefixes: [
+      "/lessons/stability", "/lessons/cargo", "/lessons/economics",
+      "/ship-systems/cargo-systems", "/ship-operations",
+      "/stability", "/cargo", "/tank", "/ballast", "/special-ships", "/economics",
+    ],
+  },
+  {
+    volumeId: "seamanship-deck",
+    prefixes: [
+      "/lessons/seamanship", "/ship-systems/deck-machinery",
+      "/seamanship", "/ship-tasks",
+    ],
+  },
+  {
+    volumeId: "safety-regulations",
+    prefixes: [
+      "/lessons/safety", "/lessons/environment", "/ship-systems/fire-safety",
+      "/safety", "/environment", "/emissions", "/regulations", "/solas",
+    ],
+  },
+  {
+    volumeId: "marine-engineering",
+    prefixes: [
+      "/machine", "/engine", "/machinery", "/hydrodynamics", "/structural",
+      "/ship-systems/main-engine", "/ship-systems/auxiliary",
+      "/ship-systems/environmental-auxiliary",
+    ],
+  },
+  {
+    volumeId: "crew-organization",
+    prefixes: ["/crew"],
+  },
+  {
+    volumeId: "workbook-reference",
+    prefixes: [
+      "/calculations", "/formulas", "/exercises", "/exam-preparation",
+      "/converter", "/machine-calculations", "/glossary", "/lessons", "/ship-systems",
+    ],
+  },
 ];
 
-/** Stable even page number for the left side of a route spread. */
+export function getBookVolumeForPath(pathname: string): BookVolumeId {
+  for (const rule of BOOK_VOLUME_ROUTE_RULES) {
+    if (rule.prefixes.some((prefix) => matchesPrefix(pathname, prefix))) return rule.volumeId;
+  }
+  return "workbook-reference";
+}
+
+/**
+ * Every physical volume restarts its folios. Route pages remain deterministic
+ * while no longer inheriting a single 600+ page global book number.
+ */
 export function getBookRoutePage(pathname: string): number {
-  const range = PAGE_RANGES.find(([prefix]) => matchesPrefix(pathname, prefix));
-  const firstPage = range?.[1] ?? 700;
-  if (range && pathname === range[0]) return firstPage;
+  const volumeId = getBookVolumeForPath(pathname);
+  const volumeRule = BOOK_VOLUME_ROUTE_RULES.find((rule) => rule.volumeId === volumeId);
+  const sectionIndex = Math.max(
+    0,
+    volumeRule?.prefixes.findIndex((prefix) => matchesPrefix(pathname, prefix)) ?? 0,
+  );
+  const sectionStart = 2 + sectionIndex * 32;
+  if (volumeRule?.prefixes.some((prefix) => pathname === prefix)) return sectionStart;
 
   let hash = 0;
   for (const character of pathname) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
-  return firstPage + (hash % 30) * 2;
+  return sectionStart + (hash % 15) * 2;
 }
 
-/** Running head printed at the top of the persistent paper sheet. */
 export function getBookRouteTitle(pathname: string): string {
   if (pathname === "/crew/muster-list") return "ROLE CETVELİ";
   if (pathname.includes("/formulas") || pathname === "/formulas") return "FORMÜLLER";
@@ -154,3 +208,4 @@ export function getBookRouteTitle(pathname: string): string {
   if (matchesPrefix(pathname, "/communication")) return "DENİZDE HABERLEŞME";
   return "MARINER'S BOOK";
 }
+
