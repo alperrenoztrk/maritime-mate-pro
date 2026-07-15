@@ -16,6 +16,15 @@ if (!bookLauncher.includes("<OpenBook embedded")) failures.push("Kitap ana sayfa
 if (!bookPage.includes("bk-scene--embedded")) failures.push("Ana sayfa için kompakt açık kitap görünümü eksik.");
 if (!bookPage.includes("grid-template-columns:1fr 1fr")) failures.push("İçindekiler iki yapraklı değil.");
 if (!bookPage.includes("bk-turn-leaf")) failures.push("İçindekiler yaprak çevirme animasyonu eksik.");
+if (!bookPage.includes("onPointerMove={onPointerMove}") || !bookPage.includes("setPointerCapture")) {
+  failures.push("İçindekiler yaprağı parmak hareketini canlı izlemiyor.");
+}
+if (!bookPage.includes("bk-turn-face--front") || !bookPage.includes("bk-turn-face--back")) {
+  failures.push("Çevrilen yaprağın gerçek ön ve arka yüzleri eksik.");
+}
+if (!bookPage.includes("paginateBookPages") || bookPage.includes("overflow-y:auto")) {
+  failures.push("Yoğun içindekiler fiziksel yapraklara bölünmüyor veya iç kaydırmaya taşıyor.");
+}
 if (!bookPage.includes("bk-folio")) failures.push("İçindekiler sayfa numarası eksik.");
 if (topicReader.includes("Accordion") || topicReader.includes("AnimatePresence")) {
   failures.push("Salt okunur konu okuyucusunda kapalı panel veya modal kaldı.");
