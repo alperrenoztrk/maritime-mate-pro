@@ -1,9 +1,9 @@
 import {
+  useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type MouseEvent as ReactMouseEvent,
   type PointerEvent,
   type ReactNode,
@@ -17,6 +17,7 @@ import {
   getBookTurnSettleDuration,
   paginateBookPages,
   shouldCompleteBookTurn,
+  type BookPageLayout,
   type BookTurnDirection,
 } from "@/lib/bookMotion";
 
@@ -29,9 +30,6 @@ interface ActiveTurn {
   direction: BookTurnDirection;
   fromIndex: number;
   toIndex: number;
-  progress: number;
-  phase: "dragging" | "settling";
-  durationMs: number;
 }
 
 interface PointerStart {
@@ -44,8 +42,6 @@ interface PointerStart {
   progress: number;
   horizontal: boolean;
   direction: BookTurnDirection;
-  fromIndex: number;
-  toIndex: number;
   leafWidth: number;
 }
 
@@ -53,6 +49,9 @@ interface BookPageProps {
   /** Opens inside the home-page launcher instead of becoming a full-screen route. */
   embedded?: boolean;
 }
+
+const clampNumber = (value: number, minimum: number, maximum: number) =>
+  Math.min(maximum, Math.max(minimum, value));
 
 /** Compact, two-leaf table of contents with gesture-driven page turns. */
 export default function BookPage({ embedded = false }: BookPageProps) {
@@ -62,12 +61,20 @@ export default function BookPage({ embedded = false }: BookPageProps) {
   const wheelLock = useRef(false);
   const turnLock = useRef(false);
   const suppressClick = useRef(false);
-  const turnTimer = useRef<number | null>(null);
-  const turnFrame = useRef<number | null>(null);
   const wheelTimer = useRef<number | null>(null);
   const clickTimer = useRef<number | null>(null);
+  const settleFrame = useRef<number | null>(null);
+  const turnRef = useRef<ActiveTurn | null>(null);
+  const progressRef = useRef(0);
+  const leafWidthRef = useRef(180);
+  const turnLeafRef = useRef<HTMLDivElement | null>(null);
+  const frontFaceRef = useRef<HTMLDivElement | null>(null);
+  const backFaceRef = useRef<HTMLDivElement | null>(null);
+  const shadowRef = useRef<HTMLSpanElement | null>(null);
+  const measureCanvas = useRef<HTMLCanvasElement | null>(null);
   const [spreadIndex, setSpreadIndex] = useState(0);
   const [turn, setTurn] = useState<ActiveTurn | null>(null);
+  const [measuredLayout, setMeasuredLayout] = useState<BookPageLayout | null>(null);
   const [reducedMotion] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
@@ -79,9 +86,10 @@ export default function BookPage({ embedded = false }: BookPageProps) {
   }));
 
   const paginatedBookPages = useMemo(() => {
-    const layout = getBookPageLayout(volumeSize.width, volumeSize.height, volumeSize.fontScale);
+    const layout = measuredLayout
+      ?? getBookPageLayout(volumeSize.width, volumeSize.height, volumeSize.fontScale);
     return paginateBookPages(bookPages, layout);
-  }, [volumeSize]);
+  }, [measuredLayout, volumeSize]);
 
   const spreads = useMemo<SpreadPage[][]>(() => {
     // A real volume starts with the inside cover on the left and page 1 on the right.
@@ -99,10 +107,59 @@ export default function BookPage({ embedded = false }: BookPageProps) {
   }, [paginatedBookPages]);
 
   useEffect(() => () => {
-    if (turnTimer.current) window.clearTimeout(turnTimer.current);
-    if (turnFrame.current) window.cancelAnimationFrame(turnFrame.current);
     if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
     if (clickTimer.current) window.clearTimeout(clickTimer.current);
+    if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
+  }, []);
+
+  /**
+   * Derives the real print capacity from the rendered paper instead of
+   * estimates, so every leaf is filled and no printed line is ever clipped.
+   */
+  const measurePrintCapacity = useCallback(() => {
+    const volume = volumeRef.current;
+    if (!volume || typeof window === "undefined") return;
+    const pageElement = volume.querySelector<HTMLElement>(".bk-leaf--right .bk-page")
+      ?? volume.querySelector<HTMLElement>(".bk-page");
+    if (!pageElement) return;
+    const pageStyle = window.getComputedStyle(pageElement);
+    const innerHeight = pageElement.clientHeight
+      - (Number.parseFloat(pageStyle.paddingTop) || 0)
+      - (Number.parseFloat(pageStyle.paddingBottom) || 0);
+    const innerWidth = pageElement.clientWidth
+      - (Number.parseFloat(pageStyle.paddingLeft) || 0)
+      - (Number.parseFloat(pageStyle.paddingRight) || 0);
+    if (innerHeight < 60 || innerWidth < 60) return;
+
+    let rowHeight = 25;
+    let labelWidth = innerWidth * 0.72;
+    let glyphWidth = 5.4;
+    const entryElement = volume.querySelector<HTMLElement>(".bk-entry");
+    if (entryElement) {
+      const entryStyle = window.getComputedStyle(entryElement);
+      const fontSize = Number.parseFloat(entryStyle.fontSize) || 10;
+      const lineHeight = Number.parseFloat(entryStyle.lineHeight) || fontSize * 1.3;
+      const paddingY = (Number.parseFloat(entryStyle.paddingTop) || 0)
+        + (Number.parseFloat(entryStyle.paddingBottom) || 0);
+      rowHeight = Math.max(Number.parseFloat(entryStyle.minHeight) || 0, lineHeight + paddingY, 14);
+      labelWidth = (pageElement.clientWidth - (Number.parseFloat(entryStyle.paddingLeft) || 0)) * 0.78;
+      const canvas = (measureCanvas.current ??= document.createElement("canvas"));
+      const context = canvas.getContext("2d");
+      if (context) {
+        context.font = `${entryStyle.fontWeight} ${entryStyle.fontSize} ${entryStyle.fontFamily}`;
+        const sample = "Denizcilikte seyir güvenliği ve gemi stabilite hesapları";
+        const sampleWidth = context.measureText(sample).width;
+        if (sampleWidth > 0) glyphWidth = sampleWidth / sample.length;
+      }
+    }
+
+    const rowBudget = clampNumber(Math.floor((innerHeight - 4) / rowHeight), 4, 24);
+    const charactersPerLine = clampNumber(Math.floor(labelWidth / Math.max(glyphWidth, 3)), 12, 72);
+    setMeasuredLayout((current) =>
+      current && current.rowBudget === rowBudget && current.charactersPerLine === charactersPerLine
+        ? current
+        : { rowBudget, charactersPerLine },
+    );
   }, []);
 
   useEffect(() => {
@@ -123,6 +180,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         ) return current;
         return { width: bounds.width, height: bounds.height, fontScale };
       });
+      measurePrintCapacity();
     };
 
     updateMetrics();
@@ -139,7 +197,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
       fontObserver.disconnect();
       window.removeEventListener("resize", updateMetrics);
     };
-  }, []);
+  }, [measurePrintCapacity]);
 
   useEffect(() => {
     setSpreadIndex((current) => Math.min(current, Math.max(0, spreads.length - 1)));
@@ -150,33 +208,69 @@ export default function BookPage({ embedded = false }: BookPageProps) {
     stageRef.current?.focus({ preventScroll: true });
   }, [embedded]);
 
-  const clearTurnSchedule = () => {
-    if (turnTimer.current) window.clearTimeout(turnTimer.current);
-    if (turnFrame.current) window.cancelAnimationFrame(turnFrame.current);
-    turnTimer.current = null;
-    turnFrame.current = null;
-  };
+  /** Writes one animation frame straight to the DOM — no re-render per frame. */
+  const applyTurnFrame = useCallback((progress: number) => {
+    const active = turnRef.current;
+    const leaf = turnLeafRef.current;
+    if (!active || !leaf) return;
+    const sign = active.direction === "forward" ? -1 : 1;
+    const perspective = Math.round(clampNumber(leafWidthRef.current * 4.8, 880, 2300));
+    leaf.style.transform = `perspective(${perspective}px) rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
+    const shade = Math.sin(Math.PI * progress);
+    leaf.style.setProperty("--bk-shade", shade.toFixed(3));
+    if (frontFaceRef.current) frontFaceRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
+    if (backFaceRef.current) backFaceRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
+    if (shadowRef.current) {
+      const foldCenter = 50 + (active.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * progress);
+      shadowRef.current.style.left = `${foldCenter.toFixed(2)}%`;
+      shadowRef.current.style.opacity = (shade * 0.52).toFixed(3);
+    }
+  }, []);
 
-  const finishTurn = (active: ActiveTurn, complete: boolean) => {
-    clearTurnSchedule();
-    const durationMs = reducedMotion ? 0 : getBookTurnSettleDuration(active.progress, complete);
-    const settled: ActiveTurn = {
-      ...active,
-      progress: complete ? 1 : 0,
-      phase: "settling",
-      durationMs,
-    };
-    setTurn(settled);
+  const finalizeTurn = useCallback((complete: boolean) => {
+    const active = turnRef.current;
+    if (complete && active) setSpreadIndex(active.toIndex);
+    turnRef.current = null;
+    progressRef.current = 0;
+    turnLock.current = false;
+    setTurn(null);
+  }, []);
 
-    const finalize = () => {
-      if (complete) setSpreadIndex(active.toIndex);
-      setTurn(null);
-      turnLock.current = false;
-      turnTimer.current = null;
+  /** Eases the grabbed leaf the rest of the way (or back) at 60fps. */
+  const settleTurn = useCallback((fromProgress: number, complete: boolean) => {
+    if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
+    const target = complete ? 1 : 0;
+    const durationMs = reducedMotion ? 0 : getBookTurnSettleDuration(fromProgress, complete);
+    if (durationMs <= 0 || Math.abs(target - fromProgress) < 0.002) {
+      applyTurnFrame(target);
+      finalizeTurn(complete);
+      return;
+    }
+    const startedAt = performance.now();
+    const tick = (now: number) => {
+      const elapsed = clampNumber((now - startedAt) / durationMs, 0, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      const progress = fromProgress + (target - fromProgress) * eased;
+      progressRef.current = progress;
+      applyTurnFrame(progress);
+      if (elapsed < 1) {
+        settleFrame.current = window.requestAnimationFrame(tick);
+      } else {
+        settleFrame.current = null;
+        finalizeTurn(complete);
+      }
     };
-    if (durationMs === 0) finalize();
-    else turnTimer.current = window.setTimeout(finalize, durationMs + 34);
-  };
+    settleFrame.current = window.requestAnimationFrame(tick);
+  }, [applyTurnFrame, finalizeTurn, reducedMotion]);
+
+  const beginTurn = useCallback((direction: BookTurnDirection, fromIndex: number, toIndex: number) => {
+    turnLock.current = true;
+    leafWidthRef.current = (volumeRef.current?.getBoundingClientRect().width ?? volumeSize.width) / 2;
+    const active: ActiveTurn = { direction, fromIndex, toIndex };
+    turnRef.current = active;
+    progressRef.current = 0;
+    setTurn(active);
+  }, [volumeSize.width]);
 
   const turnTo = (nextIndex: number, direction: BookTurnDirection) => {
     if (
@@ -192,18 +286,8 @@ export default function BookPage({ embedded = false }: BookPageProps) {
       return;
     }
 
-    clearTurnSchedule();
-    turnLock.current = true;
-    const active: ActiveTurn = {
-      direction,
-      fromIndex: spreadIndex,
-      toIndex: nextIndex,
-      progress: 0,
-      phase: "dragging",
-      durationMs: 0,
-    };
-    setTurn(active);
-    turnFrame.current = window.requestAnimationFrame(() => finishTurn(active, true));
+    beginTurn(direction, spreadIndex, nextIndex);
+    settleTurn(0, true);
   };
 
   const stepSpread = (direction: BookTurnDirection) => {
@@ -216,12 +300,6 @@ export default function BookPage({ embedded = false }: BookPageProps) {
     const bounds = volumeRef.current?.getBoundingClientRect();
     if (!bounds || event.clientX < bounds.left || event.clientX > bounds.right) return;
 
-    const direction: BookTurnDirection = event.clientX >= bounds.left + bounds.width / 2
-      ? "forward"
-      : "backward";
-    const toIndex = spreadIndex + (direction === "forward" ? 1 : -1);
-    if (toIndex < 0 || toIndex >= spreads.length) return;
-
     pointerStart.current = {
       pointerId: event.pointerId,
       x: event.clientX,
@@ -231,9 +309,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
       lastTime: event.timeStamp,
       progress: 0,
       horizontal: false,
-      direction,
-      fromIndex: spreadIndex,
-      toIndex,
+      direction: "forward",
       leafWidth: bounds.width / 2,
     };
   };
@@ -244,29 +320,31 @@ export default function BookPage({ embedded = false }: BookPageProps) {
 
     const deltaX = event.clientX - start.x;
     const deltaY = event.clientY - start.y;
-    const directedDistance = start.direction === "forward" ? -deltaX : deltaX;
     if (!start.horizontal) {
       if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
-      if (Math.abs(deltaY) > Math.abs(deltaX) || directedDistance <= 0) return;
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        // Vertical intent: hand the gesture back to the page scroll.
+        pointerStart.current = null;
+        return;
+      }
+      // Dragging left pulls the right-hand leaf over; dragging right pulls the
+      // left-hand leaf back — exactly like paper.
+      const direction: BookTurnDirection = deltaX < 0 ? "forward" : "backward";
+      const toIndex = spreadIndex + (direction === "forward" ? 1 : -1);
+      if (toIndex < 0 || toIndex >= spreads.length || turnLock.current) return;
       start.horizontal = true;
-      turnLock.current = true;
+      start.direction = direction;
       event.currentTarget.setPointerCapture(event.pointerId);
+      beginTurn(direction, spreadIndex, toIndex);
     }
 
-    event.preventDefault();
     event.stopPropagation();
     start.lastX = event.clientX;
     start.lastTime = event.timeStamp;
     start.progress = getBookTurnProgress(deltaX, start.leafWidth, start.direction);
     if (start.progress > 0.035) suppressClick.current = true;
-    setTurn({
-      direction: start.direction,
-      fromIndex: start.fromIndex,
-      toIndex: start.toIndex,
-      progress: start.progress,
-      phase: "dragging",
-      durationMs: 0,
-    });
+    progressRef.current = start.progress;
+    applyTurnFrame(start.progress);
   };
 
   const releasePointerCapture = (event: PointerEvent<HTMLDivElement>) => {
@@ -298,20 +376,11 @@ export default function BookPage({ embedded = false }: BookPageProps) {
       const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
         ? releaseVelocity
         : totalVelocity;
-      start.progress = getBookTurnProgress(deltaX, start.leafWidth, start.direction);
+      const progress = getBookTurnProgress(deltaX, start.leafWidth, start.direction);
+      progressRef.current = progress;
       suppressClick.current = true;
       armClickSuppressionReset();
-      finishTurn(
-        {
-          direction: start.direction,
-          fromIndex: start.fromIndex,
-          toIndex: start.toIndex,
-          progress: start.progress,
-          phase: "dragging",
-          durationMs: 0,
-        },
-        shouldCompleteBookTurn(start.progress, velocityX, start.direction),
-      );
+      settleTurn(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
       return;
     }
 
@@ -332,14 +401,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
     if (!start?.horizontal) return;
     suppressClick.current = true;
     armClickSuppressionReset();
-    finishTurn({
-      direction: start.direction,
-      fromIndex: start.fromIndex,
-      toIndex: start.toIndex,
-      progress: start.progress,
-      phase: "dragging",
-      durationMs: 0,
-    }, false);
+    settleTurn(progressRef.current, false);
   };
 
   const onClickCapture = (event: ReactMouseEvent<HTMLDivElement>) => {
@@ -367,6 +429,11 @@ export default function BookPage({ embedded = false }: BookPageProps) {
     }, 650);
   };
 
+  const bindTurnLeaf = useCallback((element: HTMLDivElement | null) => {
+    turnLeafRef.current = element;
+    if (element) applyTurnFrame(progressRef.current);
+  }, [applyTurnFrame]);
+
   const currentSpread = spreads[spreadIndex] ?? spreads[0];
   const fromSpread = turn ? spreads[turn.fromIndex] ?? currentSpread : currentSpread;
   const toSpread = turn ? spreads[turn.toIndex] ?? currentSpread : currentSpread;
@@ -381,23 +448,6 @@ export default function BookPage({ embedded = false }: BookPageProps) {
   const turningBack = turn
     ? turn.direction === "forward" ? toSpread[0] : toSpread[1]
     : null;
-  const rotation = turn
-    ? (turn.direction === "forward" ? -179 : 179) * turn.progress
-    : 0;
-  const lift = turn ? Math.sin(Math.PI * turn.progress) * 14 : 0;
-  const shadowPosition = turn
-    ? 50 + (turn.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * turn.progress)
-    : 50;
-  const turnStyle = turn ? ({
-    "--bk-turn-duration": `${turn.durationMs}ms`,
-    "--bk-turn-progress": turn.progress,
-    transform: `rotateY(${rotation}deg) translateZ(${lift}px)`,
-  } as CSSProperties) : undefined;
-  const shadowStyle = turn ? ({
-    "--bk-turn-duration": `${turn.durationMs}ms`,
-    left: `${shadowPosition}%`,
-    opacity: Math.sin(Math.PI * turn.progress) * 0.58,
-  } as CSSProperties) : undefined;
 
   return (
     <div className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}>
@@ -444,16 +494,16 @@ export default function BookPage({ embedded = false }: BookPageProps) {
               {turn && turningFront && turningBack && (
                 <>
                   <span
+                    ref={shadowRef}
                     className={`bk-turn-shadow bk-turn-shadow--${turn.direction}`}
-                    style={shadowStyle}
                     aria-hidden="true"
                   />
                   <div
-                    className={`bk-turn-leaf bk-turn-leaf--${turn.direction} bk-turn-leaf--${turn.phase}`}
-                    style={turnStyle}
+                    ref={bindTurnLeaf}
+                    className={`bk-turn-leaf bk-turn-leaf--${turn.direction}`}
                     aria-hidden="true"
                   >
-                    <div className="bk-turn-face bk-turn-face--front">
+                    <div ref={frontFaceRef} className="bk-turn-face bk-turn-face--front">
                       <BookLeaf
                         leaf={turningFront}
                         side={turn.direction === "forward" ? "right" : "left"}
@@ -461,7 +511,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
                         decorative
                       />
                     </div>
-                    <div className="bk-turn-face bk-turn-face--back">
+                    <div ref={backFaceRef} className="bk-turn-face bk-turn-face--back">
                       <BookLeaf
                         leaf={turningBack}
                         side={turn.direction === "forward" ? "left" : "right"}
@@ -496,7 +546,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         Açık yaprak {spreadIndex + 1} / {spreads.length}
       </span>
       <p className="bk-instruction">
-        Sayfanın köşesini tutup sürükleyin · {spreadIndex + 1} / {spreads.length} yaprak
+        Sayfayı sürükleyerek çevirin · {spreadIndex + 1} / {spreads.length} yaprak
       </p>
 
       <style>{`
@@ -507,7 +557,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         }
         .bk-ambient{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 20%,rgba(71,184,225,.19),transparent 52%); }
         .bk-title{ position:relative; z-index:20; margin:0 0 6px; color:rgba(242,217,138,.84); font-size:clamp(.58rem,1.2vw,.78rem); font-weight:700; letter-spacing:.34em; text-indent:.34em; }
-        .bk-stage{ position:relative; z-index:10; width:100%; flex:1; min-height:0; display:flex; align-items:center; justify-content:center; perspective:2100px; outline:none; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none; }
+        .bk-stage{ position:relative; z-index:10; width:100%; flex:1; min-height:0; display:flex; align-items:center; justify-content:center; outline:none; touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none; }
         .bk-stage:active{ cursor:grabbing; }
         .bk-stage:focus-visible .bk-cover-board{ outline:1px dotted rgba(242,217,138,.62); outline-offset:3px; }
         .bk-cover-board{
@@ -519,18 +569,18 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-cover-board::before,.bk-cover-board::after{ content:""; position:absolute; width:22px; height:22px; pointer-events:none; border-color:rgba(218,177,76,.58); }
         .bk-cover-board::before{ left:10px; top:10px; border-left:1px solid; border-top:1px solid; }
         .bk-cover-board::after{ right:10px; bottom:10px; border-right:1px solid; border-bottom:1px solid; }
-        .bk-volume{ position:relative; width:100%; height:100%; transform-style:preserve-3d; border-radius:3px 8px 8px 3px; background:#d1b982; box-shadow:0 8px 18px rgba(0,0,0,.48); }
+        .bk-volume{ position:relative; z-index:1; width:100%; height:100%; border-radius:3px 8px 8px 3px; background:#d1b982; box-shadow:0 8px 18px rgba(0,0,0,.48); }
         .bk-volume::before,.bk-volume::after{ content:""; position:absolute; z-index:3; top:1.3%; bottom:1.3%; width:9px; pointer-events:none; background:repeating-linear-gradient(90deg,#f1e4c4 0 1.5px,#cbb47d 1.5px 3px); }
         .bk-volume::before{ left:-1px; border-radius:3px 0 0 3px; } .bk-volume::after{ right:-1px; border-radius:0 5px 5px 0; }
-        .bk-spread{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; overflow:hidden; border-radius:3px 7px 7px 3px; transform-style:preserve-3d; }
+        .bk-spread{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; border-radius:3px 7px 7px 3px; }
         .bk-spread--turning{ user-select:none; -webkit-user-select:none; }
         .bk-leaf{
           position:relative; min-width:0; height:100%; overflow:hidden; padding:clamp(14px,2.5vw,34px) clamp(11px,2.6vw,38px) 17px;
           display:grid; grid-template-rows:auto minmax(0,1fr) auto; color:#482f12; font-family:Georgia,'Times New Roman',serif;
           background:radial-gradient(25% 16% at 82% 13%,rgba(137,82,23,.075),transparent 72%),repeating-linear-gradient(180deg,transparent 0 11px,rgba(120,80,20,.035) 11px 12px),linear-gradient(180deg,#fbf2d9,#efdfbc);
         }
-        .bk-leaf--left{ box-shadow:inset 12px 0 16px -14px rgba(65,39,10,.42),inset -22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
-        .bk-leaf--right{ box-shadow:inset -12px 0 16px -14px rgba(65,39,10,.42),inset 22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
+        .bk-leaf--left{ border-radius:3px 0 0 3px; box-shadow:inset 12px 0 16px -14px rgba(65,39,10,.42),inset -22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
+        .bk-leaf--right{ border-radius:0 7px 7px 0; box-shadow:inset -12px 0 16px -14px rgba(65,39,10,.42),inset 22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
         .bk-gutter{ position:absolute; z-index:4; top:0; bottom:0; left:50%; width:clamp(20px,3.2vw,48px); transform:translateX(-50%); pointer-events:none; background:linear-gradient(90deg,transparent,rgba(58,35,9,.24) 42%,rgba(255,249,229,.22) 52%,rgba(58,35,9,.2) 62%,transparent); mix-blend-mode:multiply; }
         .bk-running{ padding-bottom:8px; text-align:center; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
         .bk-running::before{ content:"❖  "; opacity:.45; }.bk-running::after{ content:"  ❖"; opacity:.45; }
@@ -543,7 +593,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-fleuron{ margin:-2px 0 8px; text-align:center; color:rgba(90,61,20,.48); }
         .bk-chapter{ display:flex; align-items:baseline; gap:.45em; padding:4px 0; color:#3f2a0e; text-decoration:none; }
         .bk-chapter:focus-visible,.bk-entry:focus-visible{ outline:2px dotted rgba(74,49,19,.58); outline-offset:2px; }
-        .bk-chapter-numeral{ color:#7a5c1a; font-size:clamp(.69rem,1.35vw,1.02rem); font-weight:700; }
+        .bk-chapter-numeral{ flex:0 0 auto; white-space:nowrap; color:#7a5c1a; font-size:clamp(.69rem,1.35vw,1.02rem); font-weight:700; }
         .bk-chapter-title{ min-width:0; overflow-wrap:anywhere; hyphens:auto; font-size:clamp(.67rem,1.3vw,1rem); font-weight:700; letter-spacing:.09em; }
         .bk-cont{ font-size:.74em; font-weight:400; font-style:italic; letter-spacing:0; color:rgba(90,61,20,.68); }
         .bk-chapter-rule{ height:1px; margin:1px 0 8px; background:linear-gradient(90deg,rgba(176,124,32,.68),rgba(176,124,32,.1)); }
@@ -557,22 +607,22 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }.bk-frontispiece p{ margin-top:8px; font-size:clamp(.45rem,.86vw,.66rem); letter-spacing:.22em; }
         .bk-turn-leaf{
           position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
-          transform-style:preserve-3d; will-change:transform; contain:layout paint style;
+          transform-style:preserve-3d; will-change:transform;
         }
         .bk-turn-leaf--forward{ right:0; transform-origin:left center; }
         .bk-turn-leaf--backward{ left:0; transform-origin:right center; }
-        .bk-turn-leaf--dragging{ transition:none; }
-        .bk-turn-leaf--settling{ transition:transform var(--bk-turn-duration) cubic-bezier(.2,.72,.2,1); }
         .bk-turn-face{
-          position:absolute; inset:0; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden;
-          transform-style:preserve-3d;
+          position:absolute; inset:0; overflow:hidden;
+          backface-visibility:hidden; -webkit-backface-visibility:hidden;
         }
-        .bk-turn-face--front{ transform:rotateY(0deg) translateZ(.3px); }
-        .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.3px); }
+        .bk-turn-face--front{ transform:rotateY(0deg) translateZ(.4px); }
+        .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.4px); }
         .bk-turn-face .bk-leaf{ position:absolute; inset:0; width:100%; }
         .bk-turn-face--front::after,.bk-turn-face--back::after{
-          content:""; position:absolute; inset:0; pointer-events:none; opacity:.7; mix-blend-mode:multiply;
+          content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply;
         }
+        .bk-turn-face--front::after{ opacity:calc(var(--bk-shade,0) * .62); }
+        .bk-turn-face--back::after{ opacity:calc(var(--bk-shade,0) * .74); }
         .bk-turn-leaf--forward .bk-turn-face--front::after{
           background:linear-gradient(90deg,rgba(58,35,9,.34),transparent 18%,rgba(255,255,255,.11) 78%,rgba(70,42,10,.16));
         }
@@ -586,12 +636,12 @@ export default function BookPage({ embedded = false }: BookPageProps) {
           background:linear-gradient(90deg,rgba(58,35,9,.31),transparent 18%,rgba(255,255,255,.12) 70%,rgba(70,42,10,.14));
         }
         .bk-turn-shadow{
-          position:absolute; z-index:7; top:0; bottom:0; width:22%; transform:translateX(-50%); pointer-events:none; will-change:left,opacity;
+          position:absolute; z-index:7; top:0; bottom:0; width:22%; transform:translateX(-50%); pointer-events:none;
+          left:50%; opacity:0; will-change:left,opacity;
           background:radial-gradient(ellipse at 50% 50%,rgba(48,28,6,.5),rgba(48,28,6,.17) 36%,transparent 76%);
-          transition:left var(--bk-turn-duration,40ms) cubic-bezier(.2,.72,.2,1),opacity var(--bk-turn-duration,40ms) cubic-bezier(.2,.72,.2,1);
         }
         .bk-ribbon{ position:absolute; z-index:5; top:-2px; right:10%; width:clamp(8px,1.15vw,15px); height:clamp(42px,8vw,74px); pointer-events:none; background:linear-gradient(90deg,#741717,#a42d2d 48%,#741717); clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%); box-shadow:0 3px 5px rgba(0,0,0,.3); }
-        .bk-cover{ position:absolute; z-index:12; inset:0; transform-style:preserve-3d; transform-origin:left center; animation:bk-cover-open 1.05s cubic-bezier(.72,.04,.22,1) .18s forwards; pointer-events:none; }
+        .bk-cover{ position:absolute; z-index:12; inset:0; transform-style:preserve-3d; transform-origin:left center; transform:perspective(1500px) rotateY(0deg); animation:bk-cover-open 1.05s cubic-bezier(.72,.04,.22,1) .18s forwards; pointer-events:none; }
         .bk-cover-face{ position:absolute; inset:0; overflow:hidden; border-radius:3px 8px 8px 3px; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
         .bk-cover-front{ transform:translateZ(.8px); border:1px solid rgba(212,168,61,.48); background:radial-gradient(130% 110% at 50% 38%,transparent 52%,rgba(0,0,0,.45) 100%),repeating-linear-gradient(115deg,rgba(255,255,255,.02) 0 2px,transparent 2px 7px),linear-gradient(140deg,#123c70,#092750 48%,#04162e); box-shadow:inset 0 0 30px rgba(0,0,0,.48),0 8px 22px rgba(0,0,0,.5); }
         .bk-cover-back{ transform:rotateY(180deg) translateZ(.8px); border-radius:8px 3px 3px 8px; background:linear-gradient(180deg,#f5e8c8,#e6d1a5); box-shadow:inset 0 0 18px rgba(120,80,20,.25); }
@@ -601,7 +651,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-cover-title{ margin-top:8px; text-align:center; color:#d9b258; font:700 clamp(.9rem,3.4vw,2.1rem)/1.38 Georgia,'Times New Roman',serif; letter-spacing:.16em; }
         .bk-cover-rule{ width:22%; height:1px; margin:15px 0; background:linear-gradient(90deg,transparent,#d5ac4e,transparent); }
         .bk-cover-subtitle{ color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem) Georgia,'Times New Roman',serif; letter-spacing:.18em; }
-        @keyframes bk-cover-open{ to{transform:rotateY(-178deg)} }
+        @keyframes bk-cover-open{ from{ transform:perspective(1500px) rotateY(0deg); } to{ transform:perspective(1500px) rotateY(-178deg); } }
         .bk-instruction{ position:relative; z-index:20; margin-top:6px; color:rgba(255,255,255,.68); font-size:clamp(.55rem,1vw,.72rem); letter-spacing:.04em; }
         .bk-scene--embedded{
           width:min(94vw,780px); min-height:0; padding:0; overflow:visible; isolation:isolate; background:transparent;
@@ -614,12 +664,12 @@ export default function BookPage({ embedded = false }: BookPageProps) {
         .bk-scene--embedded .bk-cover{ animation:bk-cover-open .92s cubic-bezier(.72,.04,.22,1) .28s forwards; }
         .bk-scene--embedded .bk-instruction{ margin:5px 0 0; text-align:center; }
         @keyframes bk-inline-unfold{
-          from{ transform:scaleX(.54); opacity:.82; filter:drop-shadow(0 15px 20px rgba(0,0,0,.34)); }
-          to{ transform:scaleX(1); opacity:1; filter:drop-shadow(0 18px 24px rgba(0,0,0,.24)); }
+          from{ transform:scaleX(.54); opacity:.82; }
+          to{ transform:scaleX(1); opacity:1; }
         }
         @keyframes bk-inline-unfold-wide{
-          from{ transform:scale(.3,.64); opacity:.82; filter:drop-shadow(0 15px 20px rgba(0,0,0,.34)); }
-          to{ transform:scale(1); opacity:1; filter:drop-shadow(0 18px 24px rgba(0,0,0,.24)); }
+          from{ transform:scale(.3,.64); opacity:.82; }
+          to{ transform:scale(1); opacity:1; }
         }
         @media(min-width:721px){ .bk-scene--embedded .bk-stage{ animation-name:bk-inline-unfold-wide; } }
         @media(max-width:720px){
@@ -630,7 +680,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
           .bk-entry{ min-height:25px; padding-left:3px; }
           .bk-ribbon{ right:7%; }
         }
-        @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-turn-leaf{transition-duration:.01ms!important}.bk-scene--embedded .bk-stage{animation:none!important} }
+        @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-scene--embedded .bk-stage{animation:none!important} }
       `}</style>
     </div>
   );

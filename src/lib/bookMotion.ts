@@ -61,7 +61,8 @@ export function getBookPageLayout(width: number, height: number, fontScale = 1):
   const scale = clamp(Number.isFinite(fontScale) ? fontScale : 1, 0.8, 1.5);
   const leafWidth = width / 2;
   const totalHorizontalPadding = mobile ? 14 : clamp(width * 0.1, 22, 76);
-  const averageGlyphWidth = (mobile ? 6.2 : 7.4) * scale;
+  // Calibrated against the rendered serif at the leaf's clamped font sizes.
+  const averageGlyphWidth = (mobile ? 4.9 : 6.6) * scale;
   const charactersPerLine = clamp(
     Math.floor((leafWidth - totalHorizontalPadding) / averageGlyphWidth),
     14,
