@@ -227,7 +227,7 @@ export default function BookPage({ embedded = false }: BookPageProps) {
           width:min(94vw,780px); min-height:0; padding:0; overflow:visible; isolation:isolate; background:transparent;
         }
         .bk-scene--embedded .bk-stage{
-          flex:none; width:100%; height:clamp(300px,min(58svh,78vw),520px); min-height:0;
+          flex:none; width:100%; height:clamp(260px,min(58svh,78vw),520px); min-height:0;
           transform-origin:center center; animation:bk-inline-unfold .46s cubic-bezier(.2,.76,.24,1) both;
         }
         .bk-scene--embedded .bk-cover-board{ width:100%; height:100%; min-height:0; }
@@ -237,6 +237,11 @@ export default function BookPage({ embedded = false }: BookPageProps) {
           from{ transform:scaleX(.54); opacity:.82; filter:drop-shadow(0 15px 20px rgba(0,0,0,.34)); }
           to{ transform:scaleX(1); opacity:1; filter:drop-shadow(0 18px 24px rgba(0,0,0,.24)); }
         }
+        @keyframes bk-inline-unfold-wide{
+          from{ transform:scale(.3,.64); opacity:.82; filter:drop-shadow(0 15px 20px rgba(0,0,0,.34)); }
+          to{ transform:scale(1); opacity:1; filter:drop-shadow(0 18px 24px rgba(0,0,0,.24)); }
+        }
+        @media(min-width:721px){ .bk-scene--embedded .bk-stage{ animation-name:bk-inline-unfold-wide; } }
         @media(max-width:720px){
           .bk-cover-board{ height:clamp(300px,min(62svh,78vw),430px); min-height:300px; padding:4px; }
           .bk-leaf{ padding:10px 7px 11px; }
