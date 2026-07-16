@@ -17,6 +17,10 @@ import {
   BookVolumeLibrary,
 } from "@/components/book/BookVolumeLibrary";
 import {
+  BookLandscapeGate,
+  requestBookLandscape,
+} from "@/components/book/BookLandscapeGate";
+import {
   getBookPagesForVolume,
   getBookVolume,
   getBookVolumesForCollection,
@@ -119,6 +123,7 @@ export default function BookPage({
         collection={collection}
         volumes={collectionVolumes}
         onSelect={(nextVolumeId) => {
+          requestBookLandscape();
           if (embedded || collectionId) {
             setEmbeddedVolumeId(nextVolumeId);
             return;
@@ -570,14 +575,15 @@ function OpenBookVolume({
     : null;
 
   return (
-    <div
-      className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}
-      style={{
-        "--bk-volume-cover": activeVolume.cover,
-        "--bk-volume-cover-deep": activeVolume.coverDeep,
-        "--bk-volume-accent": activeVolume.accent,
-      } as CSSProperties}
-    >
+    <BookLandscapeGate embedded={embedded}>
+      <div
+        className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}
+        style={{
+          "--bk-volume-cover": activeVolume.cover,
+          "--bk-volume-cover-deep": activeVolume.coverDeep,
+          "--bk-volume-accent": activeVolume.accent,
+        } as CSSProperties}
+      >
       {!embedded && <div className="bk-ambient" aria-hidden="true" />}
       {!embedded && <h1 className="bk-title">{activeVolume.title}</h1>}
 
@@ -679,7 +685,8 @@ function OpenBookVolume({
 
       <style>{`
         .bk-scene{
-          position:relative; display:flex; min-height:100svh; flex-direction:column; align-items:center; overflow:hidden;
+          position:relative; display:flex; width:100%; min-width:0; max-width:100%; min-height:100svh; flex-direction:column; align-items:center; overflow:hidden;
+          overflow-anchor:none; -webkit-text-size-adjust:100%; text-size-adjust:100%;
           padding: max(.65rem,env(safe-area-inset-top)) 2px max(.55rem,env(safe-area-inset-bottom));
           background:linear-gradient(180deg,#06152a 0%,#0a2949 54%,#051421 100%);
         }
@@ -712,7 +719,7 @@ function OpenBookVolume({
         .bk-gutter{ position:absolute; z-index:4; top:0; bottom:0; left:50%; width:clamp(20px,3.2vw,48px); transform:translateX(-50%); pointer-events:none; background:linear-gradient(90deg,transparent,rgba(58,35,9,.24) 42%,rgba(255,249,229,.22) 52%,rgba(58,35,9,.2) 62%,transparent); mix-blend-mode:multiply; }
         .bk-running{ min-width:0; max-width:100%; padding-bottom:8px; text-align:center; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
         .bk-running::before{ content:"❖  "; opacity:.45; }.bk-running::after{ content:"  ❖"; opacity:.45; }
-        .bk-page{ min-width:0; min-height:0; max-width:100%; overflow:hidden; padding:clamp(10px,1.7vw,20px) 0 8px; }
+        .bk-page{ min-width:0; min-height:0; max-width:100%; overflow:hidden; overflow-anchor:none; padding:clamp(10px,1.7vw,20px) 0 8px; }
         .bk-page :where(nav,section,a,span,h2){ min-width:0; max-width:100%; overflow-wrap:anywhere; }
         .bk-page a{ -webkit-user-drag:none; }
         .bk-toc-header{ display:flex; align-items:center; gap:8px; margin-bottom:9px; }
@@ -811,9 +818,11 @@ function OpenBookVolume({
           .bk-entry{ min-height:25px; padding-left:3px; }
           .bk-ribbon{ right:7%; }
         }
+        @media screen and (orientation:portrait){ .bk-scene{ visibility:hidden!important; pointer-events:none!important; } }
         @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-scene--embedded .bk-stage{animation:none!important} }
       `}</style>
-    </div>
+      </div>
+    </BookLandscapeGate>
   );
 }
 
