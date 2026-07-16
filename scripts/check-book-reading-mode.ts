@@ -41,6 +41,31 @@ if (!bookSheet.includes('[data-book-mode="reading"] .bs-route-content :where(inp
 if (!bookSheet.includes("overflow-wrap:anywhere") || !bookSheet.includes("overscroll-behavior: contain")) {
   failures.push("Uzun kitap içeriği sayfa sınırları içinde tutulmuyor.");
 }
+if (
+  !bookSheet.includes('.bs-route-content :where(.break-inside-avoid') ||
+  !bookSheet.includes('.bs-route-content :where(.grid') ||
+  !bookSheet.includes('display:block!important') ||
+  !bookSheet.includes('content-visibility:visible!important')
+) {
+  failures.push("Bölünemeyen grid ve break-inside blokları fiziksel yapraklara açılmıyor.");
+}
+if (
+  !bookSheet.includes('--bs-page-height') ||
+  !bookSheet.includes('max-height:max(48px,calc(var(--bs-page-height') ||
+  !bookSheet.includes('white-space:normal!important')
+) {
+  failures.push("Medya, tablo veya tek satırlık metin için sayfa sınırı koruması eksik.");
+}
+if (
+  !bookSheet.includes('attributeFilter: ["class", "open", "hidden", "aria-expanded", "data-state"]') ||
+  !bookSheet.includes('fontSet?.addEventListener("loadingdone", onFontLoad)') ||
+  !bookSheet.includes('Math.ceil((total + gap - 1) / stride)')
+) {
+  failures.push("Dinamik içerik ve geç yüklenen yazı tipleri sayfa sayısını yenilemiyor.");
+}
+if (!bookPage.includes("useLayoutEffect") || !bookPage.includes("page.scrollHeight > page.clientHeight + 1")) {
+  failures.push("İçindekiler yapraklarında gerçek render taşma denetimi eksik.");
+}
 
 for (const page of [
   "CargoTopicsPage",

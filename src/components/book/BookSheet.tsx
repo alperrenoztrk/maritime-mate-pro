@@ -274,6 +274,10 @@ export function BookSheet({
           position: relative;
           flex: 1;
           min-width: 0;
+          min-height: 0;
+          width: 100%;
+          height: 100%;
+          max-height: 100%;
           overflow: hidden;
           overscroll-behavior: contain;
           touch-action: pan-y;
@@ -300,12 +304,18 @@ export function BookSheet({
           position: relative;
           z-index: 1;
           width: 100%;
+          min-width: 0;
+          max-width: 100%;
           height: 100%;
           columns: 2;
           column-gap: clamp(34px, 7.2vw, 108px);
           column-fill: auto;
           will-change: transform;
           overflow-wrap: anywhere;
+          word-break: break-word;
+          hyphens: auto;
+          orphans: 2;
+          widows: 2;
           scrollbar-width: thin;
           scrollbar-color: rgba(96,63,21,.38) transparent;
         }
@@ -471,15 +481,15 @@ export function BookSheet({
         .bs-prose h3,.bs-prose h4{ margin:10px 0 4px; font-weight:700; color:#3f2a0e; }
         .bs-prose a{ color:#6e4a12; text-decoration:underline dotted; text-underline-offset:2px; }
         .bs-prose img,.bs-photo{ max-width:100%; filter:sepia(.42) contrast(.94) saturate(.82); border:1px solid rgba(74,49,19,.35); }
-        .bs-formula{ break-inside:avoid; margin:9px 0; padding:9px 12px; border:1px solid rgba(120,80,20,.42); background:rgba(255,255,255,.26); color:#3f2a0e; }
+        .bs-formula{ break-inside:auto; margin:9px 0; padding:9px 12px; border:1px solid rgba(120,80,20,.42); background:rgba(255,255,255,.26); color:#3f2a0e; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
         .bs-formula::before{ content:"Formül"; display:block; margin-bottom:3px; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(90,61,20,.65); }
         .bs-formula-expression{ padding:8px 0; text-align:center; font-size:1.08em; font-weight:700; }
-        .bs-table-wrap{ overflow-x:auto; margin:9px 0; break-inside:avoid; }
+        .bs-table-wrap{ min-width:0; max-width:100%; overflow:visible; margin:9px 0; break-inside:auto; }
         .bs-table-caption{ padding:4px 2px; font-size:.72em; font-weight:700; font-style:italic; color:rgba(90,61,20,.72); }
         .bs-table{ width:100%; table-layout:fixed; border-collapse:collapse; font:normal .78em/1.4 Georgia,'Times New Roman',serif; color:#4a3113; }
         .bs-table th{ padding:5px 7px; text-align:left; font-size:.84em; letter-spacing:.08em; text-transform:uppercase; border-bottom:1.5px solid rgba(120,80,20,.5); }
         .bs-table td{ padding:5px 7px; vertical-align:top; border-bottom:1px dotted rgba(120,80,20,.34); }
-        .bs-callout{ break-inside:avoid; margin:8px 0; padding:7px 10px 7px 12px; border-left:3px solid rgba(120,80,20,.58); background:rgba(120,80,20,.055); font-size:.88em; color:#4a3113; }
+        .bs-callout{ break-inside:auto; margin:8px 0; padding:7px 10px 7px 12px; border-left:3px solid rgba(120,80,20,.58); background:rgba(120,80,20,.055); font-size:.88em; color:#4a3113; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
         .bs-callout--warning{ border-left-color:#8f1f1f; background:rgba(143,31,31,.045); }
         .bs-callout-label{ display:block; margin-bottom:2px; font-size:.6rem; font-weight:700; letter-spacing:.17em; text-transform:uppercase; color:rgba(90,61,20,.72); }
         .bs-example + .bs-example{ margin-top:8px; padding-top:8px; border-top:1px dotted rgba(120,80,20,.34); }
@@ -501,24 +511,41 @@ export function BookSheet({
         .bs-topic-article h3{ margin:0 0 5px; color:#3f2a0e; font-size:.98em; font-weight:700; line-height:1.35; }
         .bs-topic-kicker{ margin:0 0 3px; color:#7a5c1a; font-size:.64em; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
         .bs-topic-introduction{ margin-bottom:10px !important; font-style:italic; color:rgba(74,49,19,.84); }
-        .bs-topic-figure{ break-inside:avoid; margin:9px 0; }
+        .bs-topic-figure{ min-width:0; max-width:100%; break-inside:auto; margin:9px 0; }
         .bs-topic-figure img{ display:block; width:100%; height:clamp(140px, 24svh, 320px); object-fit:contain; }
         .bs-topic-figure figcaption{ display:grid; gap:2px; padding:5px 2px; color:rgba(90,61,20,.7); font-size:.72em; line-height:1.35; }
         .bs-photo-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
         .bs-reading-empty{ display:flex; align-items:baseline; gap:8px; padding:5px 0; color:rgba(90,61,20,.55); font-size:.8em; border-bottom:1px dotted rgba(120,80,20,.22); }
         .bs-reading-empty p{ flex:1; }
         .bs-reading-empty em{ font-size:.78em; }
-        .bs-reading-resources{ break-inside:avoid; margin-top:16px; padding-top:10px; border-top:1px solid rgba(120,80,20,.38); }
+        .bs-reading-resources{ break-inside:auto; margin-top:16px; padding-top:10px; border-top:1px solid rgba(120,80,20,.38); }
 
-        .bs-route-content{ min-width:0; max-width:100%; overflow-wrap:anywhere; color:#4a3113; }
-        .bs-route-content :where(p,h1,h2,h3,h4,h5,h6,li,a,span,strong,em,code,pre,td,th){ overflow-wrap:anywhere; word-break:break-word; }
-        .bs-route-content :where(pre){ max-width:100%; white-space:pre-wrap; }
-        .bs-route-content :where(img,video,canvas,svg,iframe){ max-width:100%!important; }
-        .bs-route-content :where(table){ max-width:100%; table-layout:fixed; }
+        .bs-route-content{ min-width:0; max-width:100%; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:#4a3113; }
+        .bs-route-content,
+        .bs-route-content *{ box-sizing:border-box; }
+        .bs-route-content > *,
+        .bs-route-content :where(article,section,main,nav,header,footer,div,figure,form,fieldset,dl,ul,ol,li){ min-width:0; max-width:100%; }
+        .bs-route-content :where(p,h1,h2,h3,h4,h5,h6,li,a,span,strong,em,code,pre,td,th,dt,dd){ max-width:100%; overflow-wrap:anywhere!important; word-break:break-word!important; hyphens:auto; }
+        .bs-route-content :where(pre){ max-width:100%; white-space:pre-wrap!important; }
+        .bs-route-content :where(.whitespace-nowrap,.truncate,[class*="line-clamp-"]){ white-space:normal!important; overflow:visible!important; text-overflow:clip!important; -webkit-line-clamp:unset!important; }
+        .bs-route-content :where(img,video,canvas,iframe){ display:block; width:auto!important; height:auto!important; max-width:100%!important; max-height:max(48px,calc(var(--bs-page-height,360px) - 24px))!important; object-fit:contain; }
+        .bs-route-content :where(svg){ max-width:100%!important; max-height:max(32px,calc(var(--bs-page-height,360px) - 24px))!important; }
+        .bs-route-content :where(table){ width:100%!important; min-width:0!important; max-width:100%!important; table-layout:fixed; break-inside:auto!important; }
+        .bs-route-content :where(th,td){ min-width:0!important; white-space:normal!important; }
+        .bs-route-content :where(.break-inside-avoid,[class*="break-inside-avoid"],.bs-reading-section,.bs-topic-article,.bs-topic-figure,.bs-callout,.bs-formula,.bs-table-wrap,.bs-reading-resources){ break-inside:auto!important; page-break-inside:auto!important; }
+        .bs-route-content :where(.bs-reading-section,.bs-topic-article){ content-visibility:visible!important; contain:none!important; contain-intrinsic-size:auto 0!important; }
+        .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col){ display:block!important; }
+        .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col) > * + *{ margin-top:.55rem; }
+        .bs-route-content :where(.flex){ min-width:0; max-width:100%; flex-wrap:wrap; }
+        .bs-route-content :where(.sticky){ position:static!important; inset:auto!important; }
+        .bs-route-content :where(.overflow-auto,.overflow-scroll,.overflow-y-auto,.overflow-y-scroll,.overflow-clip){ overflow:visible!important; }
+        .bs-route-content :where([class*="max-h-"]){ max-height:none!important; overflow-y:visible!important; }
+        .bs-route-content :where([class*="min-h-"],.min-h-screen,.min-h-full){ min-height:0!important; }
+        .bs-route-content :where(.h-screen,.h-full){ height:auto!important; }
         .bs-route-content :where([class*="w-screen"],[class*="min-w-"]){ min-width:0!important; max-width:100%!important; }
-        .bs-route-content :where(.marine-shell){ min-height:0!important; overflow:visible!important; background:transparent!important; color:#4a3113!important; }
+        .bs-route-content :where(.marine-shell){ display:block!important; min-height:0!important; overflow:visible!important; background:transparent!important; color:#4a3113!important; }
         .bs-route-content .marine-shell > .pointer-events-none{ display:none!important; }
-        .bs-route-content .marine-shell main{ min-height:0!important; max-width:none!important; padding:0!important; }
+        .bs-route-content .marine-shell main{ display:block!important; min-height:0!important; max-width:none!important; padding:0!important; }
         .bs-route-content :where(.min-h-screen,[class*="min-h-[100svh]"],[class*="min-h-[100vh]"]){ min-height:0!important; background:transparent!important; background-image:none!important; }
         .bs-route-content :where(.container){ max-width:none!important; padding-left:0!important; padding-right:0!important; }
         .bs-route-content :where(.text-foreground,.text-card-foreground,.text-slate-900,.text-slate-800,.text-gray-900,.text-gray-800,.text-black){ color:#4a3113!important; }
@@ -537,6 +564,8 @@ export function BookSheet({
         }
         [data-book-mode="reading"] .bs-route-content :where(input,textarea,select,[role="combobox"],[role="switch"],[role="slider"]){ display:none!important; }
         [data-book-mode="reading"] .bs-route-content :where([data-state="closed"],[hidden]){ display:block!important; height:auto!important; max-height:none!important; opacity:1!important; overflow:visible!important; }
+        [data-book-mode="reading"] .bs-route-content :where(.overflow-hidden,.truncate,[class*="line-clamp-"]){ overflow:visible!important; }
+        [data-book-mode="reading"] .bs-route-content :where(.absolute.pointer-events-none){ display:none!important; }
         [data-book-mode="reading"] .bs-route-content :where(.rounded-lg,.rounded-xl,.rounded-2xl){ border-radius:0!important; }
         [data-book-mode="reading"] .bs-route-content :where([role="tablist"],[role="toolbar"]){ display:block!important; position:static!important; }
         [data-book-mode="reading"] .bs-route-content :where(.fixed:not([role="dialog"])){ position:static!important; inset:auto!important; }
@@ -704,11 +733,15 @@ function BookLeafPager({
     const gap = Number.parseFloat(window.getComputedStyle(flow).columnGap) || 0;
     const columnWidth = Math.max(1, (width - gap) / 2);
     const stride = columnWidth + gap;
+    pager.style.setProperty("--bs-page-height", `${height}px`);
+    pager.style.setProperty("--bs-page-width", `${columnWidth}px`);
     flow.style.transform = "none";
     if (pager.scrollLeft) pager.scrollLeft = 0;
     if (pager.scrollTop) pager.scrollTop = 0;
     const total = Math.max(pager.scrollWidth, width);
-    const columns = Math.max(1, Math.round((total + gap) / stride));
+    // A partial final column must still become a real leaf. Keep a one-pixel
+    // tolerance for integer scrollWidth rounding without rounding content away.
+    const columns = Math.max(1, Math.ceil((total + gap - 1) / stride));
     const spreads = Math.max(1, Math.ceil(columns / 2));
 
     // Deep links (#subtopic) open the book on the leaf that prints the target.
@@ -910,7 +943,13 @@ function BookLeafPager({
     const resizeObserver = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(scheduleMeasure);
     resizeObserver?.observe(pager);
     const contentObserver = new MutationObserver(scheduleMeasure);
-    contentObserver.observe(flow, { childList: true, subtree: true, characterData: true });
+    contentObserver.observe(flow, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["class", "open", "hidden", "aria-expanded", "data-state"],
+    });
     const fontObserver = new MutationObserver(scheduleMeasure);
     fontObserver.observe(document.documentElement, {
       attributes: true,
@@ -920,6 +959,13 @@ function BookLeafPager({
       if ((event.target as HTMLElement | null)?.tagName === "IMG") scheduleMeasure();
     };
     flow.addEventListener("load", onAssetLoad, true);
+    const fontSet = document.fonts;
+    let disposed = false;
+    const onFontLoad = () => {
+      if (!disposed) scheduleMeasure();
+    };
+    void fontSet?.ready.then(onFontLoad);
+    fontSet?.addEventListener("loadingdone", onFontLoad);
     // Focus jumps and hash navigation must never shear the printed columns.
     const keepPinned = () => {
       if (pager.scrollLeft) pager.scrollLeft = 0;
@@ -929,11 +975,13 @@ function BookLeafPager({
     window.addEventListener("resize", scheduleMeasure, { passive: true });
 
     return () => {
+      disposed = true;
       if (frame !== null) window.cancelAnimationFrame(frame);
       resizeObserver?.disconnect();
       contentObserver.disconnect();
       fontObserver.disconnect();
       flow.removeEventListener("load", onAssetLoad, true);
+      fontSet?.removeEventListener("loadingdone", onFontLoad);
       pager.removeEventListener("scroll", keepPinned);
       window.removeEventListener("resize", scheduleMeasure);
     };
