@@ -608,9 +608,6 @@ export function BookSheet({
           .bs-flow{ height:auto!important; transform:none!important; columns:2; column-gap:16mm; column-fill:balance; }
           .bs-turn-leaf,.bs-half,.bs-turn-shadow,.bs-turn-btn,.bs-leaf-count{ display:none!important; }
         }
-        @media screen and (orientation: portrait){
-          .bs-stage{ visibility:hidden!important; pointer-events:none!important; }
-        }
       `}</style>
       </div>
     </BookLandscapeGate>
