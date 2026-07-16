@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { BookCollectionLibrary } from "@/components/book/BookVolumeLibrary";
 import {
+  cancelBookLandscapeRequest,
+  requestBookLandscape,
+} from "@/components/book/BookLandscapeGate";
+import {
   bookCollections,
   type BookCollectionId,
 } from "@/data/bookVolumes";
@@ -24,6 +28,12 @@ export function BookLauncher() {
 
   const handleOpen = (collectionId: BookCollectionId) => {
     if (pendingCollectionId) return;
+    const requestsDirectVolume = Boolean(
+      bookCollections.find((collection) => collection.id === collectionId)?.directVolumeId,
+    );
+    if (requestsDirectVolume) {
+      requestBookLandscape();
+    }
     setPendingCollectionId(collectionId);
     void loadBookPage().then(
       (bookModule) => {
@@ -31,6 +41,7 @@ export function BookLauncher() {
         setOpenBook(() => bookModule.default);
       },
       () => {
+        if (requestsDirectVolume) cancelBookLandscapeRequest();
         bookPagePromise = undefined;
         setPendingCollectionId(null);
       },
@@ -58,4 +69,3 @@ export function BookLauncher() {
     </div>
   );
 }
-
