@@ -1,18 +1,18 @@
 import { calculationCategories } from "@/data/calculationCenterConfig";
-import { machineTopics } from "@/data/machineTopicData";
-import { getBetaCategories } from "@/data/betaLessons";
+import { getBetaCategories, getBetaTopicTitles } from "@/data/betaLessons";
 import { crewHierarchy } from "@/data/crewHierarchy";
 import { shipTypes } from "@/data/shipOperations";
 import { glossaryCategories } from "@/data/glossaryTerms";
 import { shipSystemsSections } from "@/data/shipSystemsSections";
 import {
-  getBookVolumeDescriptor,
+  createBookVolumeDescriptor,
+  type BookCollectionId,
   type BookVolumeDescriptor,
+  type BookVolumeGroup,
   type BookVolumeId,
 } from "@/data/bookVolumes";
 
-export { isBookVolumeId } from "@/data/bookVolumes";
-export type { BookVolumeId } from "@/data/bookVolumes";
+export type { BookCollectionId, BookVolumeId } from "@/data/bookVolumes";
 
 export interface BookEntry {
   label: string;
@@ -46,60 +46,7 @@ export interface BookVolume extends BookVolumeDescriptor {
 }
 
 const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"] as const;
-
-const deckLessonCategories = calculationCategories
-  .filter((category) => !category.group || category.group === "deck")
-  .filter((category) => !(category.id as string).startsWith("machine-"));
-
-const lessonEntries = (ids: string[]): BookEntry[] =>
-  deckLessonCategories
-    .filter((category) => ids.includes(category.id as string))
-    .map((category) => ({
-      label: category.title,
-      to: `/lessons/${category.id}/topics`,
-    }));
-
-const machineLessonEntries: BookEntry[] = machineTopics.map((topic) => ({
-  label: topic.title,
-  to: `/machine/${topic.slug}/topics`,
-}));
-
-const exerciseEntries = (group?: "deck" | "machine"): BookEntry[] =>
-  getBetaCategories()
-    .filter((category) => category.enabled && (!group || category.group === group))
-    .map((category) => ({
-      label: category.title,
-      to: `/exercises/${category.key}/topics`,
-    }));
-
-const systemEntries = (ids: string[]): BookEntry[] =>
-  shipSystemsSections
-    .filter((system) => ids.includes(system.id))
-    .map((system) => ({
-      label: system.title,
-      to: `/ship-systems/${system.id}`,
-    }));
-
-const glossaryEntries = (categories: string[]): BookEntry[] =>
-  glossaryCategories
-    .filter((category) => categories.includes(category))
-    .map((category) => ({
-      label: category,
-      to: `/glossary?cat=${encodeURIComponent(category)}`,
-    }));
-
-const crewSections: BookSection[] = crewHierarchy.map((group) => ({
-  heading: group.department,
-  entries: group.roles.map((role) => ({
-    label: role.rank,
-    to: `/crew/${role.slug}`,
-  })),
-}));
-
-const operationsEntries: BookEntry[] = shipTypes.map((ship) => ({
-  label: ship.label,
-  to: `/ship-operations/${ship.id}`,
-}));
+const roman = (index: number) => ROMAN_NUMERALS[index] ?? String(index + 1);
 
 const chapter = (
   volumeId: BookVolumeId,
@@ -110,164 +57,209 @@ const chapter = (
   sections: BookSection[],
 ): BookChapter => ({
   id: `${volumeId}-${id}`,
-  numeral: ROMAN_NUMERALS[index] ?? String(index + 1),
+  numeral: roman(index),
   title,
   to,
   sections,
 });
 
+const topicRoute = (categoryId: string, title?: string) => {
+  const machine = categoryId.startsWith("machine-");
+  const root = machine
+    ? `/machine/${categoryId.slice("machine-".length)}/topics`
+    : `/lessons/${categoryId}/topics`;
+  return title ? `${root}/${encodeURIComponent(title)}` : root;
+};
+
+const lessonVolumes: BookVolume[] = calculationCategories.map((category) => {
+  const categoryId = String(category.id);
+  const machine = categoryId.startsWith("machine-") || category.group === "machine";
+  const group: BookVolumeGroup = machine ? "Makine" : "Güverte";
+  const volumeId = `lesson-${categoryId}`;
+  const root = topicRoute(categoryId);
+  const topics = getBetaTopicTitles(categoryId);
+  const topicEntries: BookEntry[] = topics.length
+    ? topics.map((title) => ({ label: title, to: topicRoute(categoryId, title) }))
+    : [{ label: `${category.title} Konularını Aç`, to: root }];
+  const referenceEntries: BookEntry[] = category.sections
+    .filter((section) => section.id !== "quiz" && Boolean(section.href))
+    .map((section) => ({ label: section.label, to: section.href as string }));
+
+  return {
+    ...createBookVolumeDescriptor({
+      id: volumeId,
+      collectionId: "lessons",
+      title: category.title,
+      shortTitle: category.title,
+      subtitle: `${group} Ders Kitabı`,
+      description: `${category.title} konu anlatımları, hesaplamaları, formülleri ve kuralları.`,
+      group,
+    }),
+    chapters: [
+      chapter(volumeId, 0, "topics", "Konu Anlatımları", root, [{ entries: topicEntries }]),
+      ...(referenceEntries.length
+        ? [chapter(volumeId, 1, "references", "Hesaplamalar, Formüller ve Kurallar", referenceEntries[0]?.to ?? root, [
+            { entries: referenceEntries },
+          ])]
+        : []),
+    ],
+  };
+});
+
+const betaCategories = new Map(getBetaCategories().map((category) => [category.key, category]));
+
+const exerciseVolumes: BookVolume[] = calculationCategories.map((lessonCategory) => {
+    const categoryId = String(lessonCategory.id);
+    const category = betaCategories.get(categoryId);
+    const machine = categoryId.startsWith("machine-") || lessonCategory.group === "machine";
+    const group: BookVolumeGroup = machine ? "Makine" : "Güverte";
+    const volumeId = `exercise-${categoryId}`;
+    const root = `/exercises/${categoryId}/topics`;
+    const topics = getBetaTopicTitles(categoryId);
+    const quizRoute = lessonCategory.sections.find((section) => section.id === "quiz")?.href
+      ?? (machine
+        ? `/machine/${categoryId.slice("machine-".length)}/quiz`
+        : `/${categoryId}/quiz`);
+    const entries: BookEntry[] = topics.length
+      ? topics.map((title) => ({
+          label: title,
+          to: `${root}/${encodeURIComponent(title)}`,
+        }))
+      : [{ label: `${lessonCategory.title} Quiz ve Alıştırmaları`, to: quizRoute }];
+
+    return {
+      ...createBookVolumeDescriptor({
+        id: volumeId,
+        collectionId: "exercises",
+        title: `${lessonCategory.title} Alıştırmaları`,
+        shortTitle: lessonCategory.title,
+        subtitle: `${group} Çalışma Kitabı`,
+        description: `${lessonCategory.title} için konu alıştırmaları, quizler ve uygulama çalışmaları.`,
+        group,
+      }),
+      chapters: [
+        chapter(volumeId, 0, "topics", "Alıştırma Konuları", topics.length ? root : quizRoute, [{ entries }]),
+        ...(category?.enabled
+          ? [chapter(volumeId, 1, "scenarios", "Senaryolar", `/exercises/${categoryId}/scenarios`, [
+              { entries: [{ label: `${lessonCategory.title} Senaryoları`, to: `/exercises/${categoryId}/scenarios` }] },
+            ])]
+          : []),
+      ],
+    };
+  });
+
+const systemVolumes: BookVolume[] = shipSystemsSections.map((system) => {
+  const volumeId = `system-${system.id}`;
+  const root = `/ship-systems/${system.id}`;
+  return {
+    ...createBookVolumeDescriptor({
+      id: volumeId,
+      collectionId: "systems",
+      title: system.title,
+      shortTitle: system.title,
+      subtitle: "Gemi Sistemi Kitabı",
+      description: system.desc,
+    }),
+    chapters: [
+      chapter(volumeId, 0, "contents", "Sistem Konuları", root, [
+        { entries: [{ label: `${system.title} Kitabını Aç`, to: root }] },
+      ]),
+    ],
+  };
+});
+
+const operationVolumes: BookVolume[] = shipTypes.map((ship) => {
+  const volumeId = `operation-${ship.id}`;
+  const root = `/ship-operations/${ship.id}`;
+  return {
+    ...createBookVolumeDescriptor({
+      id: volumeId,
+      collectionId: "operations",
+      title: ship.label,
+      shortTitle: ship.label,
+      subtitle: "Gemi Tipi Operasyon Kitabı",
+      description: ship.description,
+    }),
+    chapters: [
+      chapter(volumeId, 0, "contents", "Operasyon Konuları", root, [
+        { entries: [{ label: `${ship.label} Operasyonlarını Aç`, to: root }] },
+      ]),
+    ],
+  };
+});
+
+const crewSections: BookSection[] = crewHierarchy.map((group) => ({
+  heading: group.department,
+  entries: group.roles.map((role) => ({
+    label: role.rank,
+    to: `/crew/${role.slug}`,
+  })),
+}));
+
+const crewVolume: BookVolume = {
+  ...createBookVolumeDescriptor({
+    id: "crew",
+    collectionId: "crew",
+    title: "Gemi Personeli",
+    shortTitle: "Personel",
+    subtitle: "Görevler ve Role Cetveli",
+    description: "Bütün gemi personeli, görev ve sorumlulukları ile acil durum organizasyonu.",
+  }),
+  chapters: [
+    chapter("crew", 0, "muster", "Acil Durum Organizasyonu", "/crew/muster-list", [
+      { entries: [{ label: "Role Cetveli (Muster List)", to: "/crew/muster-list" }] },
+    ]),
+    chapter("crew", 1, "roles", "Gemi Personeli", "/crew", crewSections),
+  ],
+};
+
+const glossaryVolume: BookVolume = {
+  ...createBookVolumeDescriptor({
+    id: "glossary",
+    collectionId: "glossary",
+    title: "Denizcilik Sözlüğü",
+    shortTitle: "Sözlük",
+    subtitle: "Bütün Denizcilik Terimleri",
+    description: "Denizcilik terimlerinin tamamı kategori bazında tek başvuru kitabında.",
+  }),
+  chapters: [
+    chapter("glossary", 0, "categories", "Sözlük Kategorileri", "/glossary", [
+      {
+        entries: glossaryCategories.map((category) => ({
+          label: category,
+          to: `/glossary?cat=${encodeURIComponent(category)}`,
+        })),
+      },
+    ]),
+  ],
+};
+
 /**
- * Seven purpose-built volumes. The split follows how seafarers look for
- * information (subject and onboard duty), rather than mirroring app feature
- * types such as "lessons", "tools" and "systems".
+ * Exact hierarchy requested by the product owner:
+ * - lessons: one book per deck or engine subject;
+ * - exercises: one book per enabled subject;
+ * - systems: one book per system;
+ * - operations: one book per ship type;
+ * - crew and glossary: one book each.
  */
 export const bookVolumes: BookVolume[] = [
-  {
-    ...getBookVolumeDescriptor("navigation-bridge"),
-    chapters: [
-      chapter("navigation-bridge", 0, "lessons", "Seyir ve Köprüüstü Dersleri", "/lessons/navigation/topics", [
-        { entries: lessonEntries(["navigation", "meteorology", "communication"]) },
-      ]),
-      chapter("navigation-bridge", 1, "systems", "Köprüüstü ve Haberleşme Sistemleri", "/ship-systems/nav-systems", [
-        { entries: systemEntries(["nav-systems", "gmdss-lsa"]) },
-      ]),
-      chapter("navigation-bridge", 2, "practice", "Seyir Uygulamaları", "/navigation", [
-        {
-          entries: [
-            { label: "Seyir Hesaplamaları", to: "/navigation" },
-            { label: "Seyir Formülleri", to: "/navigation/formulas" },
-            { label: "Seyir Kuralları", to: "/navigation/rules" },
-            { label: "Passage Plan", to: "/passage-plan" },
-          ],
-        },
-      ]),
-    ],
-  },
-  {
-    ...getBookVolumeDescriptor("stability-cargo"),
-    chapters: [
-      chapter("stability-cargo", 0, "lessons", "Stabilite ve Yük Dersleri", "/lessons/stability/topics", [
-        { entries: lessonEntries(["stability", "cargo", "economics"]) },
-      ]),
-      chapter("stability-cargo", 1, "systems", "Yük Sistemleri ve Ekipmanları", "/ship-systems/cargo-systems", [
-        { entries: systemEntries(["cargo-systems"]) },
-      ]),
-      chapter("stability-cargo", 2, "operations", "Gemi Tipleri ve Operasyonları", "/ship-operations", [
-        { entries: operationsEntries },
-      ]),
-      chapter("stability-cargo", 3, "calculations", "Stabilite ve Yük Hesapları", "/stability/calculations", [
-        {
-          entries: [
-            { label: "Stabilite Hesaplamaları", to: "/stability/calculations" },
-            { label: "Stabilite Formülleri", to: "/stability/formulas" },
-            { label: "Yük Hesaplamaları", to: "/cargo/calculations" },
-            { label: "Yük Formülleri", to: "/cargo/formulas" },
-          ],
-        },
-      ]),
-    ],
-  },
-  {
-    ...getBookVolumeDescriptor("seamanship-deck"),
-    chapters: [
-      chapter("seamanship-deck", 0, "lessons", "Gemicilik Dersleri", "/lessons/seamanship/topics", [
-        { entries: lessonEntries(["seamanship"]) },
-      ]),
-      chapter("seamanship-deck", 1, "machinery", "Güverte Makineleri", "/ship-systems/deck-machinery", [
-        { entries: systemEntries(["deck-machinery"]) },
-      ]),
-      chapter("seamanship-deck", 2, "duties", "Güverte İşleri ve Operasyonlar", "/ship-tasks", [
-        {
-          entries: [
-            { label: "Gemi Görevleri", to: "/ship-tasks" },
-            { label: "Gemicilik Hesaplamaları", to: "/seamanship/calculations" },
-            { label: "Gemicilik Formülleri", to: "/seamanship/formulas" },
-            { label: "Gemicilik Kuralları", to: "/seamanship/rules" },
-          ],
-        },
-      ]),
-    ],
-  },
-  {
-    ...getBookVolumeDescriptor("safety-regulations"),
-    chapters: [
-      chapter("safety-regulations", 0, "lessons", "Emniyet ve Çevre Dersleri", "/lessons/safety/topics", [
-        { entries: lessonEntries(["safety", "environment"]) },
-      ]),
-      chapter("safety-regulations", 1, "systems", "Yangın ve Emniyet Sistemleri", "/ship-systems/fire-safety", [
-        { entries: systemEntries(["fire-safety"]) },
-      ]),
-      chapter("safety-regulations", 2, "regulations", "Kurallar ve Regülasyonlar", "/regulations", [
-        {
-          entries: [
-            { label: "Tüm Kurallar ve Regülasyonlar", to: "/regulations" },
-            { label: "SOLAS", to: "/solas" },
-            { label: "Emniyet Kuralları", to: "/safety/rules" },
-            { label: "Çevre Koruma Kuralları", to: "/environment/rules" },
-          ],
-        },
-      ]),
-    ],
-  },
-  {
-    ...getBookVolumeDescriptor("marine-engineering"),
-    chapters: [
-      chapter("marine-engineering", 0, "lessons", "Makine Dersleri", "/machine/thermodynamics/topics", [
-        { entries: machineLessonEntries },
-      ]),
-      chapter("marine-engineering", 1, "systems", "Makine ve Yardımcı Sistemler", "/ship-systems/main-engine", [
-        { entries: systemEntries(["main-engine", "auxiliary", "environmental-auxiliary"]) },
-      ]),
-      chapter("marine-engineering", 2, "tools", "Makine Hesaplamaları", "/machine-calculations", [
-        {
-          entries: [
-            { label: "Makine Hesaplama Merkezi", to: "/machine-calculations" },
-            { label: "Makine Dairesi Operasyonları", to: "/machinery" },
-            { label: "Motor ve Tahrik", to: "/engine" },
-          ],
-        },
-      ]),
-    ],
-  },
-  {
-    ...getBookVolumeDescriptor("crew-organization"),
-    chapters: [
-      chapter("crew-organization", 0, "muster", "Acil Durum Organizasyonu", "/crew/muster-list", [
-        { entries: [{ label: "Role Cetveli (Muster List)", to: "/crew/muster-list" }] },
-      ]),
-      chapter("crew-organization", 1, "crew", "Gemi Personeli", "/crew", crewSections),
-    ],
-  },
-  {
-    ...getBookVolumeDescriptor("workbook-reference"),
-    chapters: [
-      chapter("workbook-reference", 0, "calculations", "Hesaplamalar ve Formüller", "/calculations", [
-        {
-          entries: [
-            { label: "Hesaplama Merkezi", to: "/calculations" },
-            { label: "Formül Kitabı", to: "/formulas" },
-            { label: "Birim Dönüştürücü", to: "/converter" },
-          ],
-        },
-      ]),
-      chapter("workbook-reference", 1, "exercises-deck", "Güverte Alıştırmaları", "/exercises", [
-        { heading: "Güverte", entries: exerciseEntries("deck") },
-      ]),
-      chapter("workbook-reference", 2, "exercises-machine", "Makine Alıştırmaları", "/exercises", [
-        { heading: "Makine", entries: exerciseEntries("machine") },
-      ]),
-      chapter("workbook-reference", 3, "exam", "Sınav Hazırlığı", "/exam-preparation", [
-        { entries: [{ label: "Sınav Hazırlık Merkezi", to: "/exam-preparation" }] },
-      ]),
-      chapter("workbook-reference", 4, "glossary", "Denizcilik Sözlüğü", "/glossary", [
-        { entries: glossaryEntries([...glossaryCategories]) },
-      ]),
-    ],
-  },
+  ...lessonVolumes,
+  ...exerciseVolumes,
+  ...systemVolumes,
+  ...operationVolumes,
+  crewVolume,
+  glossaryVolume,
 ];
 
+export const isBookVolumeId = (value: string | null | undefined): value is BookVolumeId =>
+  Boolean(value && bookVolumes.some((volume) => volume.id === value));
+
+export function getBookVolumesForCollection(collectionId: BookCollectionId): BookVolume[] {
+  return bookVolumes.filter((volume) => volume.collectionId === collectionId);
+}
+
 export function getBookVolume(volumeId: BookVolumeId): BookVolume {
-  return bookVolumes.find((volume) => volume.id === volumeId) ?? bookVolumes[0];
+  return bookVolumes.find((volume) => volume.id === volumeId) ?? lessonVolumes[0] ?? crewVolume;
 }
 
 export function getBookPagesForVolume(volumeId: BookVolumeId): BookPageSpec[] {
@@ -280,6 +272,5 @@ export function getBookPagesForVolume(volumeId: BookVolumeId): BookPageSpec[] {
   }));
 }
 
-/** Backward-compatible flattened exports for callers that only need an index. */
 export const bookChapters = bookVolumes.flatMap((volume) => volume.chapters);
 export const bookPages = bookVolumes.flatMap((volume) => getBookPagesForVolume(volume.id));
