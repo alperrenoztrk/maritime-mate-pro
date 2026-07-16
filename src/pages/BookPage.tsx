@@ -11,15 +11,24 @@ import {
   type WheelEvent,
 } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { BookVolumeLibrary } from "@/components/book/BookVolumeLibrary";
+import {
+  BookCollectionLibrary,
+  BookVolumeLibrary,
+} from "@/components/book/BookVolumeLibrary";
 import {
   getBookPagesForVolume,
   getBookVolume,
+  getBookVolumesForCollection,
   isBookVolumeId,
   type BookPageSpec,
   type BookVolume,
-  type BookVolumeId,
 } from "@/data/bookContents";
+import {
+  getBookCollection,
+  isBookCollectionId,
+  type BookCollectionId,
+  type BookVolumeId,
+} from "@/data/bookVolumes";
 import {
   getBookPageLayout,
   getBookTurnProgress,
@@ -58,24 +67,66 @@ interface PointerStart {
 interface BookPageProps {
   /** Opens inside the home-page launcher instead of becoming a full-screen route. */
   embedded?: boolean;
-  /** Home-page selections open a specific physical volume. */
+  /** Home-page selection opens one of the six top-level collections. */
+  collectionId?: BookCollectionId;
+  /** A subject, system or operation can also be opened directly. */
   volumeId?: BookVolumeId;
 }
 
 const clampNumber = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
 
-/** Library selector on /book; a selected cover opens one physical volume. */
-export default function BookPage({ embedded = false, volumeId }: BookPageProps) {
+/** Six main books lead to their subject/system/operation sub-book shelves. */
+export default function BookPage({
+  embedded = false,
+  collectionId,
+  volumeId,
+}: BookPageProps) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [embeddedVolumeId, setEmbeddedVolumeId] = useState<BookVolumeId | null>(null);
+  const queryCollectionId = searchParams.get("collection");
   const queryVolumeId = searchParams.get("volume");
-  const selectedVolumeId = volumeId ?? (isBookVolumeId(queryVolumeId) ? queryVolumeId : null);
+  const selectedCollectionId = collectionId
+    ?? (isBookCollectionId(queryCollectionId) ? queryCollectionId : null);
+
+  if (!selectedCollectionId) {
+    return (
+      <BookCollectionLibrary
+        compact={embedded}
+        onSelect={(nextCollectionId) => setSearchParams({ collection: nextCollectionId })}
+      />
+    );
+  }
+
+  const collection = getBookCollection(selectedCollectionId);
+  const collectionVolumes = getBookVolumesForCollection(selectedCollectionId);
+  const requestedVolumeId = volumeId
+    ?? embeddedVolumeId
+    ?? (isBookVolumeId(queryVolumeId) ? queryVolumeId : null);
+  const selectedVolumeId = requestedVolumeId
+    && collectionVolumes.some((volume) => volume.id === requestedVolumeId)
+      ? requestedVolumeId
+      : collection.directVolumeId
+        && collectionVolumes.some((volume) => volume.id === collection.directVolumeId)
+        ? collection.directVolumeId
+        : null;
 
   if (!selectedVolumeId) {
     return (
       <BookVolumeLibrary
         compact={embedded}
-        onSelect={(nextVolumeId) => setSearchParams({ volume: nextVolumeId })}
+        collection={collection}
+        volumes={collectionVolumes}
+        onSelect={(nextVolumeId) => {
+          if (embedded || collectionId) {
+            setEmbeddedVolumeId(nextVolumeId);
+            return;
+          }
+          setSearchParams({
+            collection: selectedCollectionId,
+            volume: nextVolumeId,
+          });
+        }}
       />
     );
   }
@@ -837,4 +888,3 @@ function ContentsPage({
     </nav>
   );
 }
-
