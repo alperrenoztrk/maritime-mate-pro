@@ -9,6 +9,9 @@ const bookSheet = read("src/components/book/BookSheet.tsx");
 const landscapeGate = read("src/components/book/BookLandscapeGate.tsx");
 const topicReader = read("src/components/book/BookTopicReader.tsx");
 const packageJson = read("package.json");
+const androidSettingsGradle = read("android/capacitor.settings.gradle");
+const androidBuildGradle = read("android/app/capacitor.build.gradle");
+const iosPodfile = read("ios/App/Podfile");
 
 if (bookPage.includes("<button")) failures.push("İçindekiler kitabında görsel buton kaldı.");
 if (bookLauncher.includes("useNavigate") || bookLauncher.includes('navigate("/book")')) {
@@ -109,6 +112,19 @@ if (
 }
 if (!packageJson.includes('"@capacitor/screen-orientation": "^7.0.4"')) {
   failures.push("Capacitor native yatay yön eklentisi bağımlılıklara eklenmemiş.");
+}
+if (
+  !androidSettingsGradle.includes("include ':capacitor-screen-orientation'") ||
+  !androidBuildGradle.includes("implementation project(':capacitor-screen-orientation')")
+) {
+  failures.push(
+    "Ekran yönü eklentisi Android projesine kayıtlı değil; native lock() cihazda sessizce başarısız olur (npx cap sync android).",
+  );
+}
+if (!iosPodfile.includes("pod 'CapacitorScreenOrientation'")) {
+  failures.push(
+    "Ekran yönü eklentisi iOS Podfile'da kayıtlı değil; native lock() cihazda sessizce başarısız olur (npx cap sync ios).",
+  );
 }
 
 for (const page of [
