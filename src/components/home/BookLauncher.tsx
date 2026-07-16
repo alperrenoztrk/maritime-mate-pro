@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { BookVolumeLibrary } from "@/components/book/BookVolumeLibrary";
-import { bookVolumeDescriptors, type BookVolumeId } from "@/data/bookVolumes";
+import { BookCollectionLibrary } from "@/components/book/BookVolumeLibrary";
+import {
+  bookCollections,
+  type BookCollectionId,
+} from "@/data/bookVolumes";
 
 const importBookPage = () => import("@/pages/BookPage");
 let bookPagePromise: ReturnType<typeof importBookPage> | undefined;
@@ -9,8 +12,8 @@ type OpenBookComponent = (Awaited<ReturnType<typeof importBookPage>>)["default"]
 
 export function BookLauncher() {
   const [OpenBook, setOpenBook] = useState<OpenBookComponent | null>(null);
-  const [activeVolumeId, setActiveVolumeId] = useState<BookVolumeId | null>(null);
-  const [pendingVolumeId, setPendingVolumeId] = useState<BookVolumeId | null>(null);
+  const [activeCollectionId, setActiveCollectionId] = useState<BookCollectionId | null>(null);
+  const [pendingCollectionId, setPendingCollectionId] = useState<BookCollectionId | null>(null);
 
   useEffect(() => {
     const preloadTimer = window.setTimeout(() => {
@@ -19,33 +22,40 @@ export function BookLauncher() {
     return () => window.clearTimeout(preloadTimer);
   }, []);
 
-  const handleOpen = (volumeId: BookVolumeId) => {
-    if (pendingVolumeId) return;
-    setPendingVolumeId(volumeId);
+  const handleOpen = (collectionId: BookCollectionId) => {
+    if (pendingCollectionId) return;
+    setPendingCollectionId(collectionId);
     void loadBookPage().then(
       (bookModule) => {
-        setActiveVolumeId(volumeId);
+        setActiveCollectionId(collectionId);
         setOpenBook(() => bookModule.default);
       },
       () => {
         bookPagePromise = undefined;
-        setPendingVolumeId(null);
+        setPendingCollectionId(null);
       },
     );
   };
 
-  const activeVolume = bookVolumeDescriptors.find((volume) => volume.id === activeVolumeId);
+  const activeCollection = bookCollections.find(
+    (collection) => collection.id === activeCollectionId,
+  );
 
   return (
     <div className="flex w-full flex-col items-center gap-2">
-      {OpenBook && activeVolumeId ? (
-        <OpenBook embedded volumeId={activeVolumeId} />
+      {OpenBook && activeCollectionId ? (
+        <OpenBook embedded collectionId={activeCollectionId} />
       ) : (
-        <BookVolumeLibrary compact onSelect={handleOpen} pendingVolumeId={pendingVolumeId} />
+        <BookCollectionLibrary
+          compact
+          onSelect={handleOpen}
+          pendingCollectionId={pendingCollectionId}
+        />
       )}
       <span className="text-[13px] font-medium tracking-wide text-white/85 drop-shadow-md">
-        {activeVolume ? activeVolume.title : "Kitaplık"}
+        {activeCollection ? activeCollection.title : "Kitaplık"}
       </span>
     </div>
   );
 }
+
