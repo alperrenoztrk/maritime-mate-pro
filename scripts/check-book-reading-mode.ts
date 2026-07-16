@@ -8,6 +8,7 @@ const bookPage = read("src/pages/BookPage.tsx");
 const bookSheet = read("src/components/book/BookSheet.tsx");
 const landscapeGate = read("src/components/book/BookLandscapeGate.tsx");
 const topicReader = read("src/components/book/BookTopicReader.tsx");
+const packageJson = read("package.json");
 
 if (bookPage.includes("<button")) failures.push("İçindekiler kitabında görsel buton kaldı.");
 if (bookLauncher.includes("useNavigate") || bookLauncher.includes('navigate("/book")')) {
@@ -74,26 +75,30 @@ if (
   failures.push("İçindekiler veya içerik kitapları yatay görünüm kapısından geçmiyor.");
 }
 if (
+  !landscapeGate.includes('NativeScreenOrientation.lock({ orientation: "landscape" })') ||
   !landscapeGate.includes('orientation.lock("landscape")') ||
-  !landscapeGate.includes("getScreenOrientation()?.unlock?.()") ||
-  !landscapeGate.includes('data-book-landscape-phase={phase}')
+  !landscapeGate.includes("NativeScreenOrientation.unlock()")
 ) {
-  failures.push("Kitaba özel yatay yön kilidi ve çıkışta kilidi bırakma sözleşmesi eksik.");
+  failures.push("Native ve web için doğrudan yatay yön kilidi yaşam döngüsü eksik.");
 }
 if (
-  !landscapeGate.includes('[data-book-landscape-phase="portrait"]>.book-landscape-content{ display:none; }') ||
-  !landscapeGate.includes("Devam etmek için cihazınızı yatay çevirin.")
+  !landscapeGate.includes('BookLandscapeMode = "natural" | "fitted"') ||
+  !landscapeGate.includes("data-book-landscape-mode={mode}") ||
+  !landscapeGate.includes('[data-book-landscape-mode="fitted"]>.book-landscape-content') ||
+  landscapeGate.includes("Devam etmek için cihazınızı yatay çevirin.") ||
+  bookPage.includes("@media screen and (orientation:portrait)") ||
+  bookSheet.includes("@media screen and (orientation: portrait)")
 ) {
-  failures.push("Yön kilidi desteklenmeyen cihazlarda portre kitap görünümü engellenmiyor.");
+  failures.push("Portrede bekleme ekranı olmadan anında yatay kitap geri dönüşü eksik.");
 }
 if (
-  !landscapeGate.includes("document.fonts.ready") ||
+  !landscapeGate.includes("fontSet?.ready") ||
   !landscapeGate.includes("secondFrame = window.requestAnimationFrame") ||
-  !landscapeGate.includes('content.setAttribute("inert", "")') ||
+  !landscapeGate.includes('window.dispatchEvent(new Event("booklandscapeready"))') ||
   !bookSheet.includes("-webkit-text-size-adjust: 100%") ||
   !bookPage.includes("overflow-anchor:none")
 ) {
-  failures.push("Yatay geçişte yazı ölçüsü ve sayfa yerleşimi görünmeden sabitlenmiyor.");
+  failures.push("Doğrudan yatay açılış sonrası sayfa ölçümü kararlı biçimde yenilenmiyor.");
 }
 if (
   !bookLauncher.includes("requestBookLandscape()") ||
@@ -101,6 +106,9 @@ if (
   !bookPage.includes("requestBookLandscape();")
 ) {
   failures.push("Kullanıcı kitap seçerken desteklenen cihazlarda yatay kilit istenmiyor.");
+}
+if (!packageJson.includes('"@capacitor/screen-orientation": "^7.0.4"')) {
+  failures.push("Capacitor native yatay yön eklentisi bağımlılıklara eklenmemiş.");
 }
 
 for (const page of [
@@ -135,4 +143,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("Book reading check passed: landscape-only two-page books, stable overflow-safe leaves and scoped controls.");
+console.log("Book reading check passed: books open directly in landscape, with native lock and an immediate fitted web fallback.");
