@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 type BookLandscapePhase = "portrait" | "settling" | "ready";
 
@@ -14,6 +14,7 @@ type LockableScreenOrientation = ScreenOrientation & {
 
 let activeBookSurfaces = 0;
 let delayedUnlock: number | null = null;
+let orientationRequestGeneration = 0;
 
 export const isLandscapeSize = (width: number, height: number) =>
   Number.isFinite(width) && Number.isFinite(height) && width > height;
@@ -40,12 +41,24 @@ export function isBookLandscape() {
 export function requestBookLandscape() {
   const orientation = getScreenOrientation();
   if (!orientation?.lock) return;
+  const requestGeneration = ++orientationRequestGeneration;
 
   try {
-    void orientation.lock("landscape").catch(() => {
-      // iOS Safari and non-fullscreen browsers can reject orientation locking.
-      // The portrait gate below still prevents the book from opening vertically.
-    });
+    void orientation.lock("landscape").then(
+      () => {
+        if (requestGeneration !== orientationRequestGeneration && activeBookSurfaces === 0) {
+          try {
+            orientation.unlock();
+          } catch {
+            // A cancelled request may finish after its launcher has disappeared.
+          }
+        }
+      },
+      () => {
+        // iOS Safari and non-fullscreen browsers can reject orientation locking.
+        // The portrait gate below still prevents the book from opening vertically.
+      },
+    );
   } catch {
     // Some embedded browsers expose lock() but throw synchronously.
   }
@@ -54,6 +67,7 @@ export function requestBookLandscape() {
 /** Releases a gesture-time request when the lazy book module fails to open. */
 export function cancelBookLandscapeRequest() {
   if (typeof window === "undefined" || activeBookSurfaces > 0) return;
+  orientationRequestGeneration += 1;
   try {
     getScreenOrientation()?.unlock?.();
   } catch {
@@ -82,6 +96,7 @@ function acquireBookLandscape() {
       delayedUnlock = null;
       if (activeBookSurfaces > 0) return;
       document.body.classList.remove("book-landscape-active");
+      orientationRequestGeneration += 1;
       try {
         getScreenOrientation()?.unlock?.();
       } catch {
@@ -103,6 +118,7 @@ function initialPhase(): BookLandscapePhase {
  */
 export function BookLandscapeGate({ children, embedded = false }: BookLandscapeGateProps) {
   const [phase, setPhase] = useState<BookLandscapePhase>(initialPhase);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const release = acquireBookLandscape();
@@ -196,12 +212,19 @@ export function BookLandscapeGate({ children, embedded = false }: BookLandscapeG
 
   const ready = phase === "ready";
 
+  useLayoutEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+    if (ready) content.removeAttribute("inert");
+    else content.setAttribute("inert", "");
+  }, [ready]);
+
   return (
     <div
       className={`book-landscape-shell ${embedded ? "book-landscape-shell--embedded" : ""}`}
       data-book-landscape-phase={phase}
     >
-      <div className="book-landscape-content" aria-hidden={!ready || undefined}>
+      <div ref={contentRef} className="book-landscape-content" aria-hidden={!ready || undefined}>
         {children}
       </div>
 
