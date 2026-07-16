@@ -6,6 +6,7 @@ const failures: string[] = [];
 const bookLauncher = read("src/components/home/BookLauncher.tsx");
 const bookPage = read("src/pages/BookPage.tsx");
 const bookSheet = read("src/components/book/BookSheet.tsx");
+const landscapeGate = read("src/components/book/BookLandscapeGate.tsx");
 const topicReader = read("src/components/book/BookTopicReader.tsx");
 
 if (bookPage.includes("<button")) failures.push("İçindekiler kitabında görsel buton kaldı.");
@@ -66,6 +67,41 @@ if (
 if (!bookPage.includes("useLayoutEffect") || !bookPage.includes("page.scrollHeight > page.clientHeight + 1")) {
   failures.push("İçindekiler yapraklarında gerçek render taşma denetimi eksik.");
 }
+if (
+  !bookPage.includes("<BookLandscapeGate embedded={embedded}>") ||
+  !bookSheet.includes("<BookLandscapeGate>")
+) {
+  failures.push("İçindekiler veya içerik kitapları yatay görünüm kapısından geçmiyor.");
+}
+if (
+  !landscapeGate.includes('orientation.lock("landscape")') ||
+  !landscapeGate.includes("getScreenOrientation()?.unlock?.()") ||
+  !landscapeGate.includes('data-book-landscape-phase={phase}')
+) {
+  failures.push("Kitaba özel yatay yön kilidi ve çıkışta kilidi bırakma sözleşmesi eksik.");
+}
+if (
+  !landscapeGate.includes('[data-book-landscape-phase="portrait"]>.book-landscape-content{ display:none; }') ||
+  !landscapeGate.includes("Devam etmek için cihazınızı yatay çevirin.")
+) {
+  failures.push("Yön kilidi desteklenmeyen cihazlarda portre kitap görünümü engellenmiyor.");
+}
+if (
+  !landscapeGate.includes("document.fonts.ready") ||
+  !landscapeGate.includes("secondFrame = window.requestAnimationFrame") ||
+  !landscapeGate.includes('content.setAttribute("inert", "")') ||
+  !bookSheet.includes("-webkit-text-size-adjust: 100%") ||
+  !bookPage.includes("overflow-anchor:none")
+) {
+  failures.push("Yatay geçişte yazı ölçüsü ve sayfa yerleşimi görünmeden sabitlenmiyor.");
+}
+if (
+  !bookLauncher.includes("requestBookLandscape()") ||
+  !bookLauncher.includes("cancelBookLandscapeRequest()") ||
+  !bookPage.includes("requestBookLandscape();")
+) {
+  failures.push("Kullanıcı kitap seçerken desteklenen cihazlarda yatay kilit istenmiyor.");
+}
 
 for (const page of [
   "CargoTopicsPage",
@@ -99,4 +135,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("Book reading check passed: two-page book, numbered leaves, open sections and no reading buttons.");
+console.log("Book reading check passed: landscape-only two-page books, stable overflow-safe leaves and scoped controls.");

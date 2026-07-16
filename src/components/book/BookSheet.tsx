@@ -21,6 +21,7 @@ import {
   shouldCompleteBookTurn,
   type BookTurnDirection,
 } from "@/lib/bookMotion";
+import { BookLandscapeGate } from "@/components/book/BookLandscapeGate";
 
 const BookSheetNestingContext = createContext(false);
 
@@ -71,17 +72,18 @@ export function BookSheet({
   const leftPage = firstLeftPage + leafState.spread * 2;
 
   return (
-    <div
-      className={`bs-stage ${routeFrame ? "bs-route-frame" : ""}`}
-      data-book-route={routeFrame || undefined}
-      data-book-mode={interactionMode}
-      data-book-volume={volume?.id}
-      style={volume ? {
-        "--bs-volume-cover": volume.cover,
-        "--bs-volume-cover-deep": volume.coverDeep,
-        "--bs-volume-accent": volume.accent,
-      } as CSSProperties : undefined}
-    >
+    <BookLandscapeGate>
+      <div
+        className={`bs-stage ${routeFrame ? "bs-route-frame" : ""}`}
+        data-book-route={routeFrame || undefined}
+        data-book-mode={interactionMode}
+        data-book-volume={volume?.id}
+        style={volume ? {
+          "--bs-volume-cover": volume.cover,
+          "--bs-volume-cover-deep": volume.coverDeep,
+          "--bs-volume-accent": volume.accent,
+        } as CSSProperties : undefined}
+      >
       <div className="bs-cover-board">
         <div className={`bs-volume ${routeFrame ? "bs-volume--route" : ""}`}>
           <div className="bs-spread">
@@ -143,7 +145,14 @@ export function BookSheet({
           position: relative;
           display: flex;
           align-items: center;
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
           min-height: 100svh;
+          overflow-x: clip;
+          overflow-anchor: none;
+          -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%;
           padding: max(3.15rem, calc(env(safe-area-inset-top) + 2.6rem)) clamp(5px, 1.3vw, 18px) max(4.6rem, calc(env(safe-area-inset-bottom) + 3.8rem));
           isolation: isolate;
           background:
@@ -520,7 +529,7 @@ export function BookSheet({
         .bs-reading-empty em{ font-size:.78em; }
         .bs-reading-resources{ break-inside:auto; margin-top:16px; padding-top:10px; border-top:1px solid rgba(120,80,20,.38); }
 
-        .bs-route-content{ min-width:0; max-width:100%; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:#4a3113; }
+        .bs-route-content{ min-width:0; max-width:100%; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; overflow-anchor:none; -webkit-text-size-adjust:100%; text-size-adjust:100%; color:#4a3113; }
         .bs-route-content,
         .bs-route-content *{ box-sizing:border-box; }
         .bs-route-content > *,
@@ -599,8 +608,12 @@ export function BookSheet({
           .bs-flow{ height:auto!important; transform:none!important; columns:2; column-gap:16mm; column-fill:balance; }
           .bs-turn-leaf,.bs-half,.bs-turn-shadow,.bs-turn-btn,.bs-leaf-count{ display:none!important; }
         }
+        @media screen and (orientation: portrait){
+          .bs-stage{ visibility:hidden!important; pointer-events:none!important; }
+        }
       `}</style>
-    </div>
+      </div>
+    </BookLandscapeGate>
   );
 }
 
