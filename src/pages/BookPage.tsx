@@ -818,7 +818,6 @@ function OpenBookVolume({
           .bk-entry{ min-height:25px; padding-left:3px; }
           .bk-ribbon{ right:7%; }
         }
-        @media screen and (orientation:portrait){ .bk-scene{ visibility:hidden!important; pointer-events:none!important; } }
         @media(prefers-reduced-motion:reduce){ .bk-cover{animation-duration:.01s!important;animation-delay:0s!important}.bk-scene--embedded .bk-stage{animation:none!important} }
       `}</style>
       </div>
