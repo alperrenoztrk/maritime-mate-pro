@@ -3,7 +3,7 @@ import { BookSheet } from "@/components/book/BookSheet";
 import {
   getBookInteractionMode,
   getBookRoutePage,
-  getBookVolumeForPath,
+  getBookRouteVolume,
   getBookRouteTitle,
   isBookContentPath,
 } from "@/lib/bookRoutes";
@@ -21,7 +21,8 @@ interface BookRouteFrameProps {
 export function BookRouteFrame({ pathname, children }: BookRouteFrameProps) {
   const active = isBookContentPath(pathname);
   const interactionMode = getBookInteractionMode(pathname);
-  const volumeId = getBookVolumeForPath(pathname);
+  const routeVolume = getBookRouteVolume(pathname);
+  const volumeId = routeVolume.id;
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -70,7 +71,7 @@ export function BookRouteFrame({ pathname, children }: BookRouteFrameProps) {
       pageKey={pathname}
       pageNumber={getBookRoutePage(pathname)}
       interactionMode={interactionMode}
-      volumeId={volumeId}
+      volume={routeVolume}
     >
       {children}
     </BookSheet>
