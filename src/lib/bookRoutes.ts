@@ -1,47 +1,25 @@
-/**
- * Routes that belong to the Mariner's Book experience. The home screen,
- * settings, authentication, news and beta tools deliberately stay outside
- * the book; every educational/reference/tool route stays on a book sheet.
- */
+import {
+  createBookVolumeDescriptor,
+  getBookCollection,
+  getCollectionIdFromVolumeId,
+  type BookCollectionId,
+  type BookVolumeDescriptor,
+  type BookVolumeId,
+} from "@/data/bookVolumes";
+
 export const BOOK_ROUTE_PREFIXES = [
-  "/calculations",
-  "/lessons",
-  "/exercises",
-  "/crew",
-  "/glossary",
-  "/bridge",
-  "/machinery",
-  "/ship-tasks",
-  "/ship-operations",
-  "/passage-plan",
-  "/ship-systems",
-  "/stability",
-  "/safety",
-  "/meteorology",
-  "/tank",
-  "/cargo",
-  "/communication",
-  "/ballast",
-  "/engine",
-  "/hydrodynamics",
-  "/structural",
-  "/special-ships",
-  "/emissions",
-  "/environment",
-  "/solas",
-  "/seamanship",
-  "/machine",
-  "/navigation",
-  "/economics",
-  "/formulas",
-  "/regulations",
-  "/exam-preparation",
-  "/converter",
+  "/calculations", "/lessons", "/exercises", "/crew", "/glossary", "/bridge",
+  "/machinery", "/ship-tasks", "/ship-operations", "/passage-plan", "/ship-systems",
+  "/stability", "/safety", "/meteorology", "/tank", "/cargo", "/communication",
+  "/ballast", "/engine", "/hydrodynamics", "/structural", "/special-ships",
+  "/emissions", "/environment", "/solas", "/seamanship", "/machine", "/navigation",
+  "/economics", "/formulas", "/regulations", "/exam-preparation", "/converter",
   "/machine-calculations",
 ] as const;
 
 const matchesPrefix = (pathname: string, prefix: string) =>
   pathname === prefix || pathname.startsWith(`${prefix}/`);
+const segments = (pathname: string) => pathname.split("/").filter(Boolean);
 
 export function isBookContentPath(pathname: string): boolean {
   return BOOK_ROUTE_PREFIXES.some((prefix) => matchesPrefix(pathname, prefix));
@@ -49,80 +27,122 @@ export function isBookContentPath(pathname: string): boolean {
 
 export type BookInteractionMode = "reading" | "calculator" | "quiz" | "assistant";
 
-/**
- * Only pages that genuinely wait for an answer keep form controls. Everything
- * else is treated as a printed reading page by the persistent book frame.
- */
 export function getBookInteractionMode(pathname: string): BookInteractionMode {
   if (pathname.includes("/assistant")) return "assistant";
   if (
-    pathname.includes("/quiz") ||
-    pathname.includes("/scenarios") ||
-    matchesPrefix(pathname, "/exercises") ||
-    matchesPrefix(pathname, "/exam-preparation")
+    pathname.includes("/quiz") || pathname.includes("/scenarios") ||
+    matchesPrefix(pathname, "/exercises") || matchesPrefix(pathname, "/exam-preparation")
   ) return "quiz";
   if (
-    pathname.includes("/calculations") ||
-    pathname.includes("/calc/") ||
-    matchesPrefix(pathname, "/calculations") ||
-    matchesPrefix(pathname, "/tank") ||
-    matchesPrefix(pathname, "/ballast") ||
-    matchesPrefix(pathname, "/hydrodynamics") ||
-    matchesPrefix(pathname, "/structural") ||
-    matchesPrefix(pathname, "/special-ships") ||
-    matchesPrefix(pathname, "/emissions") ||
-    matchesPrefix(pathname, "/converter") ||
-    matchesPrefix(pathname, "/machine-calculations") ||
-    pathname === "/navigation" ||
-    pathname === "/safety" ||
-    pathname === "/economics"
+    pathname.includes("/calculations") || pathname.includes("/calc/") ||
+    matchesPrefix(pathname, "/calculations") || matchesPrefix(pathname, "/tank") ||
+    matchesPrefix(pathname, "/ballast") || matchesPrefix(pathname, "/hydrodynamics") ||
+    matchesPrefix(pathname, "/structural") || matchesPrefix(pathname, "/special-ships") ||
+    matchesPrefix(pathname, "/emissions") || matchesPrefix(pathname, "/converter") ||
+    matchesPrefix(pathname, "/machine-calculations") || pathname === "/navigation" ||
+    pathname === "/safety" || pathname === "/economics"
   ) return "calculator";
   return "reading";
 }
 
-const PAGE_RANGES: readonly [prefix: string, firstPage: number][] = [
-  ["/lessons", 10],
-  ["/machine", 80],
-  ["/exercises", 160],
-  ["/exam-preparation", 190],
-  ["/crew", 220],
-  ["/ship-systems", 300],
-  ["/ship-operations", 380],
-  ["/ship-tasks", 440],
-  ["/glossary", 480],
-  ["/regulations", 520],
-  ["/solas", 560],
-  ["/calculations", 600],
+const SUBJECT_PREFIXES: readonly [string, string][] = [
+  ["/stability", "stability"], ["/navigation", "navigation"], ["/cargo", "cargo"],
+  ["/meteorology", "meteorology"], ["/seamanship", "seamanship"],
+  ["/communication", "communication"], ["/safety", "safety"],
+  ["/environment", "environment"], ["/economics", "economics"],
 ];
 
-/** Stable even page number for the left side of a route spread. */
-export function getBookRoutePage(pathname: string): number {
-  const range = PAGE_RANGES.find(([prefix]) => matchesPrefix(pathname, prefix));
-  const firstPage = range?.[1] ?? 700;
-  if (range && pathname === range[0]) return firstPage;
+export function getBookVolumeForPath(pathname: string): BookVolumeId {
+  const parts = segments(pathname);
+  const first = parts[0];
+  const second = parts[1];
 
-  let hash = 0;
-  for (const character of pathname) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
-  return firstPage + (hash % 30) * 2;
+  if (first === "lessons" && second) {
+    return pathname.includes("/quiz") ? `exercise-${second}` : `lesson-${second}`;
+  }
+  if (first === "machine" && second) {
+    const generic = new Set(["calculations", "formulas", "rules", "assistant", "quiz"]);
+    if (!generic.has(second)) {
+      return pathname.includes("/quiz")
+        ? `exercise-machine-${second}`
+        : `lesson-machine-${second}`;
+    }
+  }
+  if (first === "exercises" && second) return `exercise-${second}`;
+  if (first === "ship-systems" && second) return `system-${second}`;
+  if (first === "ship-operations" && second) return `operation-${second}`;
+  if (first === "crew") return "crew";
+  if (first === "glossary") return "glossary";
+  if (first === "calculations" && second) return `lesson-${second}`;
+
+  const subject = SUBJECT_PREFIXES.find(([prefix]) => matchesPrefix(pathname, prefix));
+  if (subject) return pathname.includes("/quiz")
+    ? `exercise-${subject[1]}`
+    : `lesson-${subject[1]}`;
+
+  if (matchesPrefix(pathname, "/bridge") || matchesPrefix(pathname, "/passage-plan")) return "lesson-navigation";
+  if (matchesPrefix(pathname, "/ballast")) return "lesson-stability";
+  if (matchesPrefix(pathname, "/tank") || matchesPrefix(pathname, "/special-ships")) return "lesson-cargo";
+  if (matchesPrefix(pathname, "/ship-tasks")) return "lesson-seamanship";
+  if (matchesPrefix(pathname, "/regulations") || matchesPrefix(pathname, "/solas")) return "lesson-safety";
+  if (matchesPrefix(pathname, "/hydrodynamics")) return "lesson-machine-fluid-mechanics";
+  if (matchesPrefix(pathname, "/structural")) return "lesson-machine-machine-elements";
+  if (matchesPrefix(pathname, "/emissions")) return "lesson-machine-environment-machine";
+  if (matchesPrefix(pathname, "/engine") || matchesPrefix(pathname, "/machinery")) return "lesson-machine-ship-systems";
+  if (matchesPrefix(pathname, "/exam-preparation")) return "exercise-general";
+  if (matchesPrefix(pathname, "/ship-systems")) return "system-index";
+  if (matchesPrefix(pathname, "/ship-operations")) return "operation-index";
+  if (matchesPrefix(pathname, "/exercises")) return "exercise-index";
+  return "lesson-general";
 }
 
-/** Running head printed at the top of the persistent paper sheet. */
+export function getBookCollectionForPath(pathname: string): BookCollectionId {
+  return getCollectionIdFromVolumeId(getBookVolumeForPath(pathname));
+}
+
+const titleCase = (value: string) =>
+  value
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toLocaleUpperCase("tr") + word.slice(1))
+    .join(" ");
+
+export function getBookRouteVolume(pathname: string): BookVolumeDescriptor {
+  const volumeId = getBookVolumeForPath(pathname);
+  const collectionId = getCollectionIdFromVolumeId(volumeId);
+  const collection = getBookCollection(collectionId);
+  const rawTitle = volumeId
+    .replace(/^lesson-machine-/, "")
+    .replace(/^(lesson|exercise|system|operation)-/, "");
+  const topicTitle = rawTitle && !["general", "index"].includes(rawTitle)
+    ? titleCase(rawTitle)
+    : collection.title;
+  return createBookVolumeDescriptor({
+    id: volumeId,
+    collectionId,
+    title: topicTitle,
+    shortTitle: topicTitle,
+    subtitle: collection.subtitle,
+    description: collection.description,
+  });
+}
+
+export function getBookRoutePage(pathname: string): number {
+  let hash = 0;
+  for (const character of pathname) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  return 2 + (hash % 120) * 2;
+}
+
 export function getBookRouteTitle(pathname: string): string {
   if (pathname === "/crew/muster-list") return "ROLE CETVELİ";
   if (pathname.includes("/formulas") || pathname === "/formulas") return "FORMÜLLER";
   if (
-    pathname.includes("/calculations") ||
-    pathname.includes("/calc/") ||
-    matchesPrefix(pathname, "/calculations") ||
-    matchesPrefix(pathname, "/tank") ||
-    matchesPrefix(pathname, "/ballast") ||
-    matchesPrefix(pathname, "/hydrodynamics") ||
-    matchesPrefix(pathname, "/structural") ||
-    matchesPrefix(pathname, "/special-ships") ||
-    matchesPrefix(pathname, "/emissions") ||
-    pathname === "/navigation" ||
-    pathname === "/safety" ||
-    pathname === "/economics"
+    pathname.includes("/calculations") || pathname.includes("/calc/") ||
+    matchesPrefix(pathname, "/calculations") || matchesPrefix(pathname, "/tank") ||
+    matchesPrefix(pathname, "/ballast") || matchesPrefix(pathname, "/hydrodynamics") ||
+    matchesPrefix(pathname, "/structural") || matchesPrefix(pathname, "/special-ships") ||
+    matchesPrefix(pathname, "/emissions") || pathname === "/navigation" ||
+    pathname === "/safety" || pathname === "/economics"
   ) return "HESAPLAMALAR";
   if (pathname.includes("/rules") || matchesPrefix(pathname, "/regulations") || matchesPrefix(pathname, "/solas")) {
     return "KURALLAR VE REGÜLASYONLAR";
@@ -141,9 +161,7 @@ export function getBookRouteTitle(pathname: string): string {
   if (matchesPrefix(pathname, "/machine") || matchesPrefix(pathname, "/engine") || matchesPrefix(pathname, "/machinery")) {
     return "MAKİNE DERSLERİ";
   }
-  if (matchesPrefix(pathname, "/navigation") || matchesPrefix(pathname, "/passage-plan") || matchesPrefix(pathname, "/bridge")) {
-    return "SEYİR";
-  }
+  if (matchesPrefix(pathname, "/navigation") || matchesPrefix(pathname, "/passage-plan") || matchesPrefix(pathname, "/bridge")) return "SEYİR";
   if (matchesPrefix(pathname, "/stability")) return "GEMİ STABİLİTESİ";
   if (matchesPrefix(pathname, "/cargo")) return "YÜK İŞLEMLERİ";
   if (matchesPrefix(pathname, "/seamanship")) return "GEMİCİLİK";
