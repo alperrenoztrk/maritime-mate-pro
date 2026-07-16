@@ -89,6 +89,7 @@ if (
 if (
   !landscapeGate.includes("document.fonts.ready") ||
   !landscapeGate.includes("secondFrame = window.requestAnimationFrame") ||
+  !landscapeGate.includes('content.setAttribute("inert", "")') ||
   !bookSheet.includes("-webkit-text-size-adjust: 100%") ||
   !bookPage.includes("overflow-anchor:none")
 ) {
