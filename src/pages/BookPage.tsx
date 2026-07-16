@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -297,6 +298,30 @@ function OpenBookVolume({
   useEffect(() => {
     setSpreadIndex((current) => Math.min(current, Math.max(0, spreads.length - 1)));
   }, [spreads.length]);
+
+  /**
+   * Font metrics and translated labels can wrap differently from the initial
+   * estimate. Tighten the shared row budget before paint whenever a rendered
+   * contents leaf is still taller than its printable paper area.
+   */
+  useLayoutEffect(() => {
+    const volume = volumeRef.current;
+    if (!volume) return;
+    const pages = volume.querySelectorAll<HTMLElement>(
+      ".bk-spread:not(.bk-spread--turning) .bk-page",
+    );
+    const hasOverflow = [...pages].some(
+      (page) => Boolean(page.querySelector("nav")) && page.scrollHeight > page.clientHeight + 1,
+    );
+    if (!hasOverflow) return;
+
+    setMeasuredLayout((current) => {
+      const layout = current
+        ?? getBookPageLayout(volumeSize.width, volumeSize.height, volumeSize.fontScale);
+      if (layout.rowBudget <= 4) return current;
+      return { ...layout, rowBudget: layout.rowBudget - 1 };
+    });
+  }, [measuredLayout, spreadIndex, spreads.length, volumeSize]);
 
   useEffect(() => {
     if (!embedded) return;
@@ -685,7 +710,7 @@ function OpenBookVolume({
         .bk-leaf--left{ border-radius:3px 0 0 3px; box-shadow:inset 12px 0 16px -14px rgba(65,39,10,.42),inset -22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
         .bk-leaf--right{ border-radius:0 7px 7px 0; box-shadow:inset -12px 0 16px -14px rgba(65,39,10,.42),inset 22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
         .bk-gutter{ position:absolute; z-index:4; top:0; bottom:0; left:50%; width:clamp(20px,3.2vw,48px); transform:translateX(-50%); pointer-events:none; background:linear-gradient(90deg,transparent,rgba(58,35,9,.24) 42%,rgba(255,249,229,.22) 52%,rgba(58,35,9,.2) 62%,transparent); mix-blend-mode:multiply; }
-        .bk-running{ padding-bottom:8px; text-align:center; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
+        .bk-running{ min-width:0; max-width:100%; padding-bottom:8px; text-align:center; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
         .bk-running::before{ content:"❖  "; opacity:.45; }.bk-running::after{ content:"  ❖"; opacity:.45; }
         .bk-page{ min-width:0; min-height:0; max-width:100%; overflow:hidden; padding:clamp(10px,1.7vw,20px) 0 8px; }
         .bk-page :where(nav,section,a,span,h2){ min-width:0; max-width:100%; overflow-wrap:anywhere; }
@@ -709,7 +734,7 @@ function OpenBookVolume({
         .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:rgba(90,61,20,.62); }
         .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }
         .bk-frontispiece strong{ max-width:82%; margin-top:7px; font-size:clamp(.62rem,1.4vw,1rem); line-height:1.3; text-wrap:balance; }
-        .bk-frontispiece p{ max-width:84%; margin-top:8px; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
+        .bk-frontispiece p{ max-width:84%; margin-top:8px; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
         .bk-turn-leaf{
           position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
           transform-style:preserve-3d; will-change:transform;
@@ -754,11 +779,11 @@ function OpenBookVolume({
         .bk-cover-trim::after{ content:""; position:absolute; inset:2.4%; border:1px solid rgba(218,165,32,.28); }
         .bk-emblem{ color:var(--bk-volume-accent); font-size:clamp(2rem,6vw,4.8rem); filter:drop-shadow(0 0 7px color-mix(in srgb,var(--bk-volume-accent) 45%,transparent)); }
         .bk-cover-volume{ margin-top:4px; color:color-mix(in srgb,var(--bk-volume-accent) 84%,#f2d98a); font:700 clamp(.42rem,.8vw,.6rem) Georgia,serif; letter-spacing:.22em; }
-        .bk-cover-title{ max-width:78%; margin-top:8px; text-align:center; text-wrap:balance; color:#f2d98a; font:700 clamp(.72rem,2.7vw,1.75rem)/1.24 Georgia,'Times New Roman',serif; letter-spacing:.09em; }
+        .bk-cover-title{ max-width:78%; margin-top:8px; text-align:center; text-wrap:balance; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:#f2d98a; font:700 clamp(.72rem,2.7vw,1.75rem)/1.24 Georgia,'Times New Roman',serif; letter-spacing:.09em; }
         .bk-cover-rule{ width:22%; height:1px; margin:15px 0; background:linear-gradient(90deg,transparent,#d5ac4e,transparent); }
-        .bk-cover-subtitle{ color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem) Georgia,'Times New Roman',serif; letter-spacing:.18em; }
+        .bk-cover-subtitle{ max-width:78%; text-align:center; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem)/1.35 Georgia,'Times New Roman',serif; letter-spacing:.18em; }
         @keyframes bk-cover-open{ from{ transform:perspective(1500px) rotateY(0deg); } to{ transform:perspective(1500px) rotateY(-178deg); } }
-        .bk-instruction{ position:relative; z-index:20; margin-top:6px; color:rgba(255,255,255,.68); font-size:clamp(.55rem,1vw,.72rem); letter-spacing:.04em; }
+        .bk-instruction{ position:relative; z-index:20; max-width:94vw; margin-top:6px; text-align:center; overflow-wrap:anywhere; color:rgba(255,255,255,.68); font-size:clamp(.55rem,1vw,.72rem); letter-spacing:.04em; }
         .bk-scene--embedded{
           width:min(94vw,780px); min-height:0; padding:0; overflow:visible; isolation:isolate; background:transparent;
         }
