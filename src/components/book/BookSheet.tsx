@@ -13,7 +13,7 @@ import {
   type ReactNode,
   type WheelEvent as ReactWheelEvent,
 } from "react";
-import { getBookVolumeDescriptor, type BookVolumeId } from "@/data/bookVolumes";
+import type { BookVolumeDescriptor } from "@/data/bookVolumes";
 import type { BookInteractionMode } from "@/lib/bookRoutes";
 import {
   getBookTurnProgress,
@@ -36,7 +36,7 @@ interface BookSheetProps {
   /** Reading pages are inert; calculators, quizzes and assistants keep controls. */
   interactionMode?: BookInteractionMode;
   /** Physical cover identity for subject-specific route volumes. */
-  volumeId?: BookVolumeId;
+  volume?: BookVolumeDescriptor;
 }
 
 interface LeafPagerHandle {
@@ -54,10 +54,9 @@ export function BookSheet({
   pageKey,
   pageNumber = 2,
   interactionMode = "reading",
-  volumeId,
+  volume,
 }: BookSheetProps) {
   const alreadyInsideBook = useContext(BookSheetNestingContext);
-  const volume = volumeId ? getBookVolumeDescriptor(volumeId) : null;
   const pagerApi = useRef<LeafPagerHandle>({ step: () => {} });
   const [leafState, setLeafState] = useState({ spread: 0, spreads: 1 });
   const handleLeafState = useCallback((spread: number, spreads: number) => {
@@ -76,7 +75,7 @@ export function BookSheet({
       className={`bs-stage ${routeFrame ? "bs-route-frame" : ""}`}
       data-book-route={routeFrame || undefined}
       data-book-mode={interactionMode}
-      data-book-volume={volumeId}
+      data-book-volume={volume?.id}
       style={volume ? {
         "--bs-volume-cover": volume.cover,
         "--bs-volume-cover-deep": volume.coverDeep,
