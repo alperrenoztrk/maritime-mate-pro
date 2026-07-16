@@ -1,14 +1,16 @@
-export type BookVolumeId =
-  | "navigation-bridge"
-  | "stability-cargo"
-  | "seamanship-deck"
-  | "safety-regulations"
-  | "marine-engineering"
-  | "crew-organization"
-  | "workbook-reference";
+export type BookCollectionId =
+  | "lessons"
+  | "exercises"
+  | "systems"
+  | "operations"
+  | "crew"
+  | "glossary";
 
-export interface BookVolumeDescriptor {
-  id: BookVolumeId;
+export type BookVolumeId = string;
+export type BookVolumeGroup = "Güverte" | "Makine";
+
+export interface BookCollectionDescriptor {
+  id: BookCollectionId;
   numeral: string;
   title: string;
   shortTitle: string;
@@ -17,97 +19,177 @@ export interface BookVolumeDescriptor {
   cover: string;
   coverDeep: string;
   accent: string;
+  directVolumeId?: BookVolumeId;
 }
 
-/**
- * Lightweight cover catalogue. Keep this file independent from lesson,
- * glossary and operation datasets so the home shelf and route frame do not
- * eagerly load the full maritime curriculum.
- */
-export const bookVolumeDescriptors: readonly BookVolumeDescriptor[] = [
+export interface BookVolumeDescriptor {
+  id: BookVolumeId;
+  collectionId: BookCollectionId;
+  numeral: string;
+  title: string;
+  shortTitle: string;
+  subtitle: string;
+  description: string;
+  cover: string;
+  coverDeep: string;
+  accent: string;
+  group?: BookVolumeGroup;
+}
+
+export const bookCollections: readonly BookCollectionDescriptor[] = [
   {
-    id: "navigation-bridge",
-    numeral: "CİLT I",
-    title: "Seyir ve Köprüüstü",
-    shortTitle: "Seyir",
-    subtitle: "Seyir · Meteoroloji · GMDSS",
-    description: "Seyir planı, köprüüstü vardiyası, meteoroloji, haberleşme ve seyir cihazları.",
+    id: "lessons",
+    numeral: "I",
+    title: "Dersler",
+    shortTitle: "Dersler",
+    subtitle: "Güverte ve Makine Ders Kitapları",
+    description: "Stabilite, seyir ve diğer bütün güverte ve makine dersleri ayrı kitaplar hâlinde.",
     cover: "#174f78",
     coverDeep: "#08263f",
     accent: "#7dd3fc",
   },
   {
-    id: "stability-cargo",
-    numeral: "CİLT II",
-    title: "Stabilite, Yük ve Ticari Operasyonlar",
-    shortTitle: "Stabilite ve Yük",
-    subtitle: "Stabilite · Kargo · Gemi Tipleri",
-    description: "Stabilite, yük elleçleme, draft survey, gemi tipleri ve ticari operasyonlar.",
-    cover: "#7a4b16",
-    coverDeep: "#3b2108",
+    id: "exercises",
+    numeral: "II",
+    title: "Alıştırmalar",
+    shortTitle: "Alıştırmalar",
+    subtitle: "Güverte ve Makine Çalışma Kitapları",
+    description: "Her ders için konuya özel alıştırma, öğrenme ve senaryo kitapları.",
+    cover: "#8a5a14",
+    coverDeep: "#3d2307",
     accent: "#fbbf24",
   },
   {
-    id: "seamanship-deck",
-    numeral: "CİLT III",
-    title: "Gemicilik ve Güverte Operasyonları",
-    shortTitle: "Gemicilik",
-    subtitle: "Gemicilik · Güverte · Manevra",
-    description: "Gemicilik bilgisi, güverte makineleri, palamar, demir ve gemi görevleri.",
-    cover: "#176452",
-    coverDeep: "#07372d",
-    accent: "#6ee7b7",
-  },
-  {
-    id: "safety-regulations",
-    numeral: "CİLT IV",
-    title: "Emniyet, Çevre ve Mevzuat",
-    shortTitle: "Emniyet ve Mevzuat",
-    subtitle: "SOLAS · MARPOL · ISM · ISPS",
-    description: "Denizde emniyet, yangın, çevre koruma ve uluslararası denizcilik mevzuatı.",
-    cover: "#7b2532",
-    coverDeep: "#3c0f18",
-    accent: "#fda4af",
-  },
-  {
-    id: "marine-engineering",
-    numeral: "CİLT V",
-    title: "Gemi Makineleri ve Teknik Sistemler",
-    shortTitle: "Gemi Makineleri",
-    subtitle: "Ana Makine · Yardımcılar · Elektrik",
-    description: "Makine teorisi, ana ve yardımcı makineler, elektrik, otomasyon, bakım ve ERM.",
+    id: "systems",
+    numeral: "III",
+    title: "Gemi Sistemleri",
+    shortTitle: "Gemi Sistemleri",
+    subtitle: "Her Sistem Ayrı Kitap",
+    description: "Seyir, ana makine, yangın, yük ve diğer gemi sistemleri bağımsız kitaplar.",
     cover: "#414a59",
     coverDeep: "#171c24",
     accent: "#cbd5e1",
   },
   {
-    id: "crew-organization",
-    numeral: "CİLT VI",
-    title: "Gemi Personeli ve Organizasyonu",
-    shortTitle: "Gemi Organizasyonu",
-    subtitle: "Personel · Görevler · Role Cetveli",
-    description: "Gemi hiyerarşisi, görev ve sorumluluklar, acil durum organizasyonu ve Role Cetveli.",
+    id: "operations",
+    numeral: "IV",
+    title: "Operasyonlar",
+    shortTitle: "Operasyonlar",
+    subtitle: "Her Gemi Tipi Ayrı Kitap",
+    description: "Dökme yük, tanker, konteyner, offshore ve diğer gemi tiplerinin operasyon kitapları.",
+    cover: "#176452",
+    coverDeep: "#07372d",
+    accent: "#6ee7b7",
+  },
+  {
+    id: "crew",
+    numeral: "V",
+    title: "Personel",
+    shortTitle: "Personel",
+    subtitle: "Görevler ve Role Cetveli",
+    description: "Bütün gemi personeli, görevleri ve acil durum organizasyonu tek kitapta.",
     cover: "#553b73",
     coverDeep: "#241431",
     accent: "#d8b4fe",
+    directVolumeId: "crew",
   },
   {
-    id: "workbook-reference",
-    numeral: "CİLT VII",
-    title: "Denizci Çalışma ve Başvuru Kitabı",
-    shortTitle: "Çalışma Kitabı",
-    subtitle: "Hesaplama · Alıştırma · Sözlük",
-    description: "Hesaplama merkezi, formüller, sınav çalışmaları, quizler ve denizcilik sözlüğü.",
-    cover: "#755a18",
-    coverDeep: "#352707",
-    accent: "#fde68a",
+    id: "glossary",
+    numeral: "VI",
+    title: "Sözlük",
+    shortTitle: "Sözlük",
+    subtitle: "Denizcilik Terimleri",
+    description: "Bütün denizcilik terimleri ve kategorileri tek başvuru kitabında.",
+    cover: "#7b2532",
+    coverDeep: "#3c0f18",
+    accent: "#fda4af",
+    directVolumeId: "glossary",
   },
 ];
 
-export const isBookVolumeId = (value: string | null | undefined): value is BookVolumeId =>
-  Boolean(value && bookVolumeDescriptors.some((volume) => volume.id === value));
+const COLLECTION_PALETTES: Record<BookCollectionId, readonly [string, string, string][]> = {
+  lessons: [
+    ["#174f78", "#08263f", "#7dd3fc"],
+    ["#1f5f6f", "#0b3038", "#67e8f9"],
+    ["#315a8a", "#102947", "#93c5fd"],
+    ["#285f52", "#0b332a", "#6ee7b7"],
+    ["#4d527f", "#1e2145", "#c4b5fd"],
+    ["#6b4f2a", "#34220d", "#fcd34d"],
+  ],
+  exercises: [
+    ["#8a5a14", "#3d2307", "#fbbf24"],
+    ["#865025", "#3f210d", "#fdba74"],
+    ["#77601b", "#342a08", "#fde047"],
+    ["#7a3e38", "#381817", "#fca5a5"],
+  ],
+  systems: [
+    ["#414a59", "#171c24", "#cbd5e1"],
+    ["#334e68", "#14283a", "#93c5fd"],
+    ["#4b5563", "#1f2937", "#d1d5db"],
+    ["#3f4f46", "#192b22", "#a7f3d0"],
+  ],
+  operations: [
+    ["#176452", "#07372d", "#6ee7b7"],
+    ["#1f626b", "#0b3036", "#67e8f9"],
+    ["#6b4f2a", "#34220d", "#fcd34d"],
+    ["#62436f", "#2c1735", "#e9d5ff"],
+  ],
+  crew: [["#553b73", "#241431", "#d8b4fe"]],
+  glossary: [["#7b2532", "#3c0f18", "#fda4af"]],
+};
 
-export function getBookVolumeDescriptor(volumeId: BookVolumeId): BookVolumeDescriptor {
-  return bookVolumeDescriptors.find((volume) => volume.id === volumeId) ?? bookVolumeDescriptors[0];
+const COLLECTION_VOLUME_LABELS: Record<BookCollectionId, string> = {
+  lessons: "DERS KİTABI",
+  exercises: "ÇALIŞMA KİTABI",
+  systems: "SİSTEM KİTABI",
+  operations: "OPERASYON KİTABI",
+  crew: "PERSONEL KİTABI",
+  glossary: "SÖZLÜK",
+};
+
+const hashId = (value: string) => {
+  let hash = 0;
+  for (const character of value) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  return hash;
+};
+
+export function createBookVolumeDescriptor(input: {
+  id: BookVolumeId;
+  collectionId: BookCollectionId;
+  title: string;
+  shortTitle?: string;
+  subtitle: string;
+  description: string;
+  group?: BookVolumeGroup;
+  numeral?: string;
+}): BookVolumeDescriptor {
+  const palette = COLLECTION_PALETTES[input.collectionId];
+  const [cover, coverDeep, accent] = palette[hashId(input.id) % palette.length];
+  return {
+    ...input,
+    numeral: input.numeral ?? COLLECTION_VOLUME_LABELS[input.collectionId],
+    shortTitle: input.shortTitle ?? input.title,
+    cover,
+    coverDeep,
+    accent,
+  };
 }
 
+export const isBookCollectionId = (
+  value: string | null | undefined,
+): value is BookCollectionId =>
+  Boolean(value && bookCollections.some((collection) => collection.id === value));
+
+export function getBookCollection(collectionId: BookCollectionId): BookCollectionDescriptor {
+  return bookCollections.find((collection) => collection.id === collectionId) ?? bookCollections[0];
+}
+
+export function getCollectionIdFromVolumeId(volumeId: BookVolumeId): BookCollectionId {
+  if (volumeId.startsWith("lesson-")) return "lessons";
+  if (volumeId.startsWith("exercise-")) return "exercises";
+  if (volumeId.startsWith("system-")) return "systems";
+  if (volumeId.startsWith("operation-")) return "operations";
+  if (volumeId === "crew") return "crew";
+  if (volumeId === "glossary") return "glossary";
+  return "lessons";
+}
