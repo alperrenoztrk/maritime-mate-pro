@@ -53,6 +53,7 @@
     "@capacitor/haptics": "^7.0.1",
     "@capacitor/ios": "^7.6.7",
     "@capacitor/keyboard": "^7.0.2",
+    "@capacitor/screen-orientation": "^7.0.4",
     "@capacitor/status-bar": "^7.0.1",
     "@hookform/resolvers": "^3.9.0",
     "@lovable.dev/cloud-auth-js": "^1.1.2",
