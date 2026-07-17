@@ -147,9 +147,9 @@ function LibraryFrame({
   return (
     <section className={`bvl-library ${compact ? "bvl-library--compact" : ""}`} aria-label={title}>
       <header className="bvl-header">
-        <span className="bvl-kicker notranslate" translate="no" lang="en">MARINER&rsquo;S BOOK</span>
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
+        <span className="bvl-kicker notranslate" translate="no" lang="en"></span>
+        <h1>{" "}</h1>
+        <p>{" "}</p>
       </header>
       {children}
 
