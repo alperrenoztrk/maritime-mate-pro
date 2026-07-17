@@ -735,10 +735,7 @@ function OpenBookVolume({
                 <div className="bk-cover-face bk-cover-front">
                   <div className="bk-cover-trim">
                     <div className="bk-emblem">⚓</div>
-                    <div className="bk-cover-volume">{activeVolume.numeral}</div>
                     <div className="bk-cover-title">{activeVolume.title.toLocaleUpperCase("tr")}</div>
-                    <div className="bk-cover-rule" />
-                    <div className="bk-cover-subtitle">{activeVolume.subtitle}</div>
                   </div>
                 </div>
                 <div className="bk-cover-face bk-cover-back" />
@@ -813,7 +810,6 @@ function OpenBookVolume({
         .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#000; }
         .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }
         .bk-frontispiece strong{ max-width:82%; margin-top:7px; font-size:clamp(.62rem,1.4vw,1rem); line-height:1.3; text-wrap:balance; }
-        .bk-frontispiece p{ max-width:84%; margin-top:8px; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
         .bk-turn-leaf{
           position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
           transform-style:preserve-3d; will-change:transform;
@@ -857,10 +853,7 @@ function OpenBookVolume({
         .bk-cover-trim{ position:absolute; inset:6%; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1.5px solid rgba(218,165,32,.58); }
         .bk-cover-trim::after{ content:""; position:absolute; inset:2.4%; border:1px solid rgba(218,165,32,.28); }
         .bk-emblem{ color:var(--bk-volume-accent); font-size:clamp(2rem,6vw,4.8rem); filter:drop-shadow(0 0 7px color-mix(in srgb,var(--bk-volume-accent) 45%,transparent)); }
-        .bk-cover-volume{ margin-top:4px; color:color-mix(in srgb,var(--bk-volume-accent) 84%,#f2d98a); font:700 clamp(.42rem,.8vw,.6rem) Georgia,serif; letter-spacing:.22em; }
         .bk-cover-title{ max-width:78%; margin-top:8px; text-align:center; text-wrap:balance; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:#f2d98a; font:700 clamp(.72rem,2.7vw,1.75rem)/1.24 Georgia,'Times New Roman',serif; letter-spacing:.09em; }
-        .bk-cover-rule{ width:22%; height:1px; margin:15px 0; background:linear-gradient(90deg,transparent,#d5ac4e,transparent); }
-        .bk-cover-subtitle{ max-width:78%; text-align:center; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:rgba(218,177,76,.72); font:600 clamp(.38rem,.8vw,.63rem)/1.35 Georgia,'Times New Roman',serif; letter-spacing:.18em; }
         @keyframes bk-cover-open{ from{ transform:perspective(1500px) rotateY(0deg); } to{ transform:perspective(1500px) rotateY(-178deg); } }
         .bk-instruction{ position:relative; z-index:20; max-width:94vw; margin-top:6px; text-align:center; overflow-wrap:anywhere; color:rgba(255,255,255,.68); font-size:clamp(.55rem,1vw,.72rem); letter-spacing:.04em; }
         .bk-scene--embedded{
@@ -923,7 +916,6 @@ function BookLeaf({
           <div className="bk-frontispiece" aria-hidden={!firstLeaf}>
             <div className="bk-frontispiece-mark">⚓</div>
             <strong>{leaf.volume.title}</strong>
-            <p>{leaf.volume.subtitle}</p>
           </div>
         )}
       </div>
