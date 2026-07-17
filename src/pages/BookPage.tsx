@@ -783,34 +783,34 @@ function OpenBookVolume({
         .bk-spread--turning{ user-select:none; -webkit-user-select:none; }
         .bk-leaf{
           position:relative; min-width:0; height:100%; overflow:hidden; padding:clamp(14px,2.5vw,34px) clamp(11px,2.6vw,38px) 17px;
-          display:grid; grid-template-rows:auto minmax(0,1fr) auto; color:#482f12; font-family:Georgia,'Times New Roman',serif;
+          display:grid; grid-template-rows:auto minmax(0,1fr) auto; color:#000; font-family:Georgia,'Times New Roman',serif;
           background:radial-gradient(25% 16% at 82% 13%,rgba(137,82,23,.075),transparent 72%),repeating-linear-gradient(180deg,transparent 0 11px,rgba(120,80,20,.035) 11px 12px),linear-gradient(180deg,#fbf2d9,#efdfbc);
         }
         .bk-leaf--left{ border-radius:3px 0 0 3px; box-shadow:inset 12px 0 16px -14px rgba(65,39,10,.42),inset -22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
         .bk-leaf--right{ border-radius:0 7px 7px 0; box-shadow:inset -12px 0 16px -14px rgba(65,39,10,.42),inset 22px 0 26px -24px rgba(57,34,8,.72),inset 0 7px 9px -8px rgba(67,40,11,.34); }
         .bk-gutter{ position:absolute; z-index:4; top:0; bottom:0; left:50%; width:clamp(20px,3.2vw,48px); transform:translateX(-50%); pointer-events:none; background:linear-gradient(90deg,transparent,rgba(58,35,9,.24) 42%,rgba(255,249,229,.22) 52%,rgba(58,35,9,.2) 62%,transparent); mix-blend-mode:multiply; }
-        .bk-running{ min-width:0; max-width:100%; padding-bottom:8px; text-align:center; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:rgba(90,61,20,.54); border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
+        .bk-running{ min-width:0; max-width:100%; padding-bottom:8px; text-align:center; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; color:#000; border-bottom:1px solid rgba(120,80,20,.18); font-size:clamp(.46rem,.78vw,.65rem); font-weight:600; letter-spacing:.28em; text-indent:.28em; }
         .bk-running::before{ content:"❖  "; opacity:.45; }.bk-running::after{ content:"  ❖"; opacity:.45; }
         .bk-page{ min-width:0; min-height:0; max-width:100%; overflow:hidden; overflow-anchor:none; padding:clamp(10px,1.7vw,20px) 0 8px; }
         .bk-page :where(nav,section,a,span,h2){ min-width:0; max-width:100%; overflow-wrap:anywhere; }
         .bk-page a{ -webkit-user-drag:none; }
         .bk-toc-header{ display:flex; align-items:center; gap:8px; margin-bottom:9px; }
-        .bk-toc-title{ flex:0 auto; color:#513514; font-size:clamp(.66rem,1.45vw,1.08rem); font-weight:700; letter-spacing:.22em; text-indent:.22em; }
+        .bk-toc-title{ flex:0 auto; color:#000; font-size:clamp(.66rem,1.45vw,1.08rem); font-weight:700; letter-spacing:.22em; text-indent:.22em; }
         .bk-toc-rule{ flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(176,124,32,.6),transparent); }
-        .bk-fleuron{ margin:-2px 0 8px; text-align:center; color:rgba(90,61,20,.48); }
-        .bk-chapter{ display:flex; align-items:baseline; gap:.45em; padding:4px 0; color:#3f2a0e; text-decoration:none; }
+        .bk-fleuron{ margin:-2px 0 8px; text-align:center; color:#000; }
+        .bk-chapter{ display:flex; align-items:baseline; gap:.45em; padding:4px 0; color:#000; text-decoration:none; }
         .bk-chapter:focus-visible,.bk-entry:focus-visible{ outline:2px dotted rgba(74,49,19,.58); outline-offset:2px; }
-        .bk-chapter-numeral{ flex:0 0 auto; white-space:nowrap; color:#7a5c1a; font-size:clamp(.69rem,1.35vw,1.02rem); font-weight:700; }
+        .bk-chapter-numeral{ flex:0 0 auto; white-space:nowrap; color:#000; font-size:clamp(.69rem,1.35vw,1.02rem); font-weight:700; }
         .bk-chapter-title{ min-width:0; overflow-wrap:anywhere; hyphens:auto; font-size:clamp(.67rem,1.3vw,1rem); font-weight:700; letter-spacing:.09em; }
-        .bk-cont{ font-size:.74em; font-weight:400; font-style:italic; letter-spacing:0; color:rgba(90,61,20,.68); }
+        .bk-cont{ font-size:.74em; font-weight:400; font-style:italic; letter-spacing:0; color:#000; }
         .bk-chapter-rule{ height:1px; margin:1px 0 8px; background:linear-gradient(90deg,rgba(176,124,32,.68),rgba(176,124,32,.1)); }
         .bk-section+.bk-section{ margin-top:9px; }
-        .bk-section-heading{ overflow-wrap:anywhere; hyphens:auto; margin:5px 0 2px; color:rgba(90,61,20,.8); font-size:clamp(.48rem,.85vw,.68rem); font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
-        .bk-entry{ display:flex; align-items:baseline; min-width:0; min-height:31px; padding:5px 0 2px 8px; color:#4a3113; text-decoration:none; font-size:clamp(.56rem,1.05vw,.83rem); line-height:1.3; }
+        .bk-section-heading{ overflow-wrap:anywhere; hyphens:auto; margin:5px 0 2px; color:#000; font-size:clamp(.48rem,.85vw,.68rem); font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+        .bk-entry{ display:flex; align-items:baseline; min-width:0; min-height:31px; padding:5px 0 2px 8px; color:#000; text-decoration:none; font-size:clamp(.56rem,1.05vw,.83rem); line-height:1.3; }
         .bk-entry-label{ min-width:0; max-width:78%; overflow-wrap:anywhere; hyphens:auto; }.bk-leader{ flex:1; min-width:8px; margin:0 .36em; border-bottom:1.5px dotted rgba(120,80,20,.42); transform:translateY(-2px); }.bk-anchor{ flex:0 0 auto; font-size:.66em; opacity:.62; }
-        .bk-folio{ padding-top:6px; color:rgba(78,50,16,.65); border-top:1px solid rgba(120,80,20,.16); font-size:clamp(.48rem,.82vw,.68rem); font-variant-numeric:oldstyle-nums; }
+        .bk-folio{ padding-top:6px; color:#000; border-top:1px solid rgba(120,80,20,.16); font-size:clamp(.48rem,.82vw,.68rem); font-variant-numeric:oldstyle-nums; }
         .bk-leaf--left .bk-folio{ text-align:left; }.bk-leaf--right .bk-folio{ text-align:right; }
-        .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:rgba(90,61,20,.62); }
+        .bk-frontispiece{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#000; }
         .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }
         .bk-frontispiece strong{ max-width:82%; margin-top:7px; font-size:clamp(.62rem,1.4vw,1rem); line-height:1.3; text-wrap:balance; }
         .bk-frontispiece p{ max-width:84%; margin-top:8px; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
