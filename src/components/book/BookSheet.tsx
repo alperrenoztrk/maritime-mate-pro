@@ -15,12 +15,7 @@ import {
 } from "react";
 import type { BookVolumeDescriptor } from "@/data/bookVolumes";
 import type { BookInteractionMode } from "@/lib/bookRoutes";
-import {
-  getBookTurnProgress,
-  getBookTurnSettleDuration,
-  shouldCompleteBookTurn,
-  type BookTurnDirection,
-} from "@/lib/bookMotion";
+import type { BookTurnDirection } from "@/lib/bookMotion";
 import {
   getBookSurfaceOrientation,
   mapBookDelta,
@@ -295,9 +290,6 @@ export function BookSheet({
           height: 100%;
           max-height: 100%;
           overflow: hidden;
-          /* Drives the interactive turn leaf; keeps the vanishing point fixed
-             at the spine instead of following the rotating leaf. */
-          perspective: 1900px;
           overscroll-behavior: contain;
           touch-action: pan-y;
           cursor: grab;
@@ -339,80 +331,6 @@ export function BookSheet({
           scrollbar-color: rgba(96,63,21,.38) transparent;
         }
         .bs-flow :where(input,textarea,select,[contenteditable="true"]){ user-select: text; -webkit-user-select: text; }
-        .bs-flow-clone{ pointer-events: none !important; }
-        .bs-half{
-          position: absolute;
-          top: 0; bottom: 0;
-          width: 50%;
-          display: none;
-          z-index: 4;
-          overflow: hidden;
-          pointer-events: none;
-        }
-        .bs-half--left{
-          left: 0;
-          background: linear-gradient(90deg, #e9d7ae 0%, #f7edd1 5%, #fbf2d9 84%, #e7d4a9 100%);
-          box-shadow: inset -16px 0 22px -18px rgba(70,43,14,.55);
-        }
-        .bs-half--right{
-          left: 50%;
-          background: linear-gradient(90deg, #e7d4a9 0%, #fbf2d9 16%, #f7edd1 95%, #e9d7ae 100%);
-          box-shadow: inset 16px 0 22px -18px rgba(70,43,14,.55);
-        }
-        .bs-turn-leaf{
-          position: absolute;
-          top: 0; bottom: 0;
-          width: 50%;
-          display: none;
-          z-index: 6;
-          pointer-events: none;
-          transform-style: preserve-3d;
-          will-change: transform;
-        }
-        .bs-turn-leaf--forward{ left: 50%; transform-origin: left center; }
-        .bs-turn-leaf--backward{ left: 0; transform-origin: right center; }
-        .bs-turn-face{
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-          background: linear-gradient(180deg, #fbf2d9, #f1e2c0);
-        }
-        .bs-turn-face--front{ transform: rotateY(0deg) translateZ(.4px); }
-        .bs-turn-face--back{ transform: rotateY(180deg) translateZ(.4px); }
-        .bs-turn-face::after{
-          content: "";
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          mix-blend-mode: multiply;
-          opacity: calc(var(--bs-shade, 0) * .68);
-        }
-        .bs-turn-leaf--forward .bs-turn-face--front::after{
-          background: linear-gradient(90deg, rgba(58,35,9,.34), transparent 18%, rgba(255,255,255,.11) 78%, rgba(70,42,10,.16));
-        }
-        .bs-turn-leaf--forward .bs-turn-face--back::after{
-          background: linear-gradient(90deg, rgba(70,42,10,.14), rgba(255,255,255,.12) 30%, transparent 82%, rgba(58,35,9,.31));
-        }
-        .bs-turn-leaf--backward .bs-turn-face--front::after{
-          background: linear-gradient(90deg, rgba(70,42,10,.16), rgba(255,255,255,.11) 22%, transparent 82%, rgba(58,35,9,.34));
-        }
-        .bs-turn-leaf--backward .bs-turn-face--back::after{
-          background: linear-gradient(90deg, rgba(58,35,9,.31), transparent 18%, rgba(255,255,255,.12) 70%, rgba(70,42,10,.14));
-        }
-        .bs-turn-shadow{
-          position: absolute;
-          z-index: 5;
-          top: 0; bottom: 0;
-          width: 22%;
-          left: 50%;
-          transform: translateX(-50%);
-          opacity: 0;
-          pointer-events: none;
-          will-change: left, opacity;
-          background: radial-gradient(ellipse at 50% 50%, rgba(48,28,6,.5), rgba(48,28,6,.17) 36%, transparent 76%);
-        }
         .bs-folio{
           position: relative;
           z-index: 3;
@@ -610,7 +528,6 @@ export function BookSheet({
         }
         @media (prefers-reduced-motion: reduce){
           .bs-turning-leaf{ animation:none!important; display:none; }
-          .bs-turn-leaf,.bs-turn-shadow,.bs-half{ display:none!important; }
         }
         @media print{
           .bs-stage{ min-height:0!important; padding:0!important; background:white!important; }
@@ -620,7 +537,7 @@ export function BookSheet({
           .bs-pager{ overflow:visible!important; }
           .bs-pager::after{ display:none!important; }
           .bs-flow{ height:auto!important; transform:none!important; columns:2; column-gap:16mm; column-fill:balance; }
-          .bs-turn-leaf,.bs-half,.bs-turn-shadow,.bs-turn-btn,.bs-leaf-count{ display:none!important; }
+          .bs-turn-btn,.bs-leaf-count{ display:none!important; }
         }
       `}</style>
       </div>
@@ -628,23 +545,10 @@ export function BookSheet({
   );
 }
 
-interface TurnState {
-  direction: BookTurnDirection;
-  from: number;
-  to: number;
-}
-
 interface PagerPointerStart {
   pointerId: number;
   x: number;
   y: number;
-  startedAt: number;
-  /** Cumulative drag distance along the book's own x axis, in px. */
-  lastX: number;
-  lastTime: number;
-  progress: number;
-  horizontal: boolean;
-  direction: BookTurnDirection;
   /** Frozen at pointerdown so a mid-gesture mode flip cannot corrupt the drag. */
   orientation: BookSurfaceOrientation;
 }
@@ -667,8 +571,6 @@ const INTERACTIVE_GUARD = [
   "[role='spinbutton']", "[contenteditable='true']", ".bs-table-wrap", "[data-book-no-turn]",
 ].join(",");
 const BUTTON_GUARD = "button,[role='button'],[role='tab'],[role='menuitem']";
-/** Above this many DOM nodes a turn keeps the physical leaf but skips the leaf-face clones. */
-const CLONE_NODE_LIMIT = 6000;
 
 function isGuardedTarget(target: EventTarget | null, mode: BookInteractionMode): boolean {
   const element = target instanceof Element ? target : null;
@@ -680,9 +582,8 @@ function isGuardedTarget(target: EventTarget | null, mode: BookInteractionMode):
 
 /**
  * Splits arbitrary sheet content into fixed physical leaves with CSS columns.
- * Every printed line keeps its place on its leaf — nothing scrolls — and the
- * reader moves through the sheet with the same drag/flick/tap page turns as
- * the table of contents, complete with a real two-faced turning leaf.
+ * Every printed line keeps its place on its leaf — nothing scrolls — and a
+ * drag, flick, tap, wheel or arrow key swaps the visible spread instantly.
  */
 function BookLeafPager({
   children,
@@ -699,29 +600,17 @@ function BookLeafPager({
 }) {
   const pagerRef = useRef<HTMLDivElement>(null);
   const flowRef = useRef<HTMLDivElement>(null);
-  const halfRef = useRef<HTMLDivElement>(null);
-  const leafRef = useRef<HTMLDivElement>(null);
-  const frontRef = useRef<HTMLDivElement>(null);
-  const backRef = useRef<HTMLDivElement>(null);
-  const shadowRef = useRef<HTMLSpanElement>(null);
 
   const metricsRef = useRef<PagerMetrics>({
     width: 0, height: 0, gap: 0, columnWidth: 1, stride: 1, spreadStride: 1, spreads: 1,
   });
   const spreadRef = useRef(0);
-  const turnRef = useRef<TurnState | null>(null);
-  const progressRef = useRef(0);
-  const settleFrame = useRef<number | null>(null);
   const pointerStart = useRef<PagerPointerStart | null>(null);
   const wheelLock = useRef(false);
   const wheelTimer = useRef<number | null>(null);
   const clickTimer = useRef<number | null>(null);
   const suppressClick = useRef(false);
-  const pendingMeasure = useRef(false);
   const hashHandled = useRef(false);
-  const [reducedMotion] = useState(() =>
-    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
 
   const onLeafStateRef = useRef(onLeafState);
   onLeafStateRef.current = onLeafState;
@@ -747,10 +636,6 @@ function BookLeafPager({
     const pager = pagerRef.current;
     const flow = flowRef.current;
     if (!pager || !flow) return;
-    if (turnRef.current) {
-      pendingMeasure.current = true;
-      return;
-    }
     const width = pager.clientWidth;
     const height = pager.clientHeight;
     if (width < 60 || height < 40) return;
@@ -801,145 +686,8 @@ function BookLeafPager({
     publishState();
   }, [applyBaseOffset, publishState]);
 
-  /** Writes one animation frame straight to the DOM — no re-render per frame. */
-  const applyTurnFrame = useCallback((progress: number) => {
-    const active = turnRef.current;
-    const leaf = leafRef.current;
-    if (!active || !leaf) return;
-    const sign = active.direction === "forward" ? -1 : 1;
-    // Depth comes from the parent perspective on .bs-pager; an inline
-    // perspective() here would move the vanishing point with the leaf.
-    leaf.style.transform = `rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
-    const shade = Math.sin(Math.PI * progress);
-    leaf.style.setProperty("--bs-shade", shade.toFixed(3));
-    if (frontRef.current) frontRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
-    if (backRef.current) backRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
-    if (shadowRef.current) {
-      const foldCenter = 50 + (active.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * progress);
-      shadowRef.current.style.left = `${foldCenter.toFixed(2)}%`;
-      shadowRef.current.style.opacity = (shade * 0.5).toFixed(3);
-    }
-  }, []);
-
-  const finalizeTurn = useCallback((complete: boolean) => {
-    const active = turnRef.current;
-    turnRef.current = null;
-    progressRef.current = 0;
-    if (active) spreadRef.current = complete ? active.to : active.from;
-    if (leafRef.current) {
-      leafRef.current.style.display = "none";
-      leafRef.current.style.transform = "";
-      leafRef.current.style.removeProperty("--bs-shade");
-    }
-    if (halfRef.current) halfRef.current.style.display = "none";
-    if (shadowRef.current) shadowRef.current.style.opacity = "0";
-    if (frontRef.current) frontRef.current.style.visibility = "";
-    if (backRef.current) backRef.current.style.visibility = "";
-    frontRef.current?.replaceChildren();
-    backRef.current?.replaceChildren();
-    halfRef.current?.replaceChildren();
-    applyBaseOffset();
-    publishState();
-    if (pendingMeasure.current) {
-      pendingMeasure.current = false;
-      measure();
-    }
-  }, [applyBaseOffset, measure, publishState]);
-
-  /** Eases the grabbed leaf the rest of the way (or back) at 60fps. */
-  const settleTurn = useCallback((fromProgress: number, complete: boolean) => {
-    if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
-    const target = complete ? 1 : 0;
-    const durationMs = getBookTurnSettleDuration(fromProgress, complete);
-    if (durationMs <= 0 || Math.abs(target - fromProgress) < 0.002) {
-      applyTurnFrame(target);
-      finalizeTurn(complete);
-      return;
-    }
-    const startedAt = performance.now();
-    const tick = (now: number) => {
-      const elapsed = clampNumber((now - startedAt) / durationMs, 0, 1);
-      const eased = 1 - Math.pow(1 - elapsed, 3);
-      const progress = fromProgress + (target - fromProgress) * eased;
-      progressRef.current = progress;
-      applyTurnFrame(progress);
-      if (elapsed < 1) {
-        settleFrame.current = window.requestAnimationFrame(tick);
-      } else {
-        settleFrame.current = null;
-        finalizeTurn(complete);
-      }
-    };
-    settleFrame.current = window.requestAnimationFrame(tick);
-  }, [applyTurnFrame, finalizeTurn]);
-
-  /** Prints a frozen copy of the flow into one face of the turning leaf. */
-  const buildFace = useCallback((host: HTMLElement | null, left: number) => {
-    const flow = flowRef.current;
-    if (!host || !flow) return;
-    const clone = flow.cloneNode(true) as HTMLElement;
-    clone.classList.add("bs-flow-clone");
-    clone.style.transform = "none";
-    clone.style.position = "absolute";
-    clone.style.top = "0";
-    clone.style.left = `${left}px`;
-    clone.style.width = `${metricsRef.current.width}px`;
-    clone.style.height = "100%";
-    clone.setAttribute("aria-hidden", "true");
-    clone.setAttribute("inert", "");
-    host.replaceChildren(clone);
-  }, []);
-
-  const beginTurn = useCallback((direction: BookTurnDirection): boolean => {
-    if (turnRef.current) return false;
-    const flow = flowRef.current;
-    const leaf = leafRef.current;
-    const half = halfRef.current;
-    if (!flow || !leaf || !half) return false;
-    const metrics = metricsRef.current;
-    if (metrics.width < 60) return false;
-    const from = spreadRef.current;
-    const to = from + (direction === "forward" ? 1 : -1);
-    if (to < 0 || to > metrics.spreads - 1) return false;
-
-    const light = flow.querySelectorAll("*").length > CLONE_NODE_LIMIT;
-    turnRef.current = { direction, from, to };
-    progressRef.current = 0;
-
-    const leftColumn = from * 2;
-    const rightColumn = leftColumn + 1;
-    const halfGap = metrics.gap / 2;
-    // Oversized flows skip the two leaf-face clones (the leaf turns as plain
-    // paper) but never the covered-half clone below: it is what lets the
-    // target spread wait beneath the moving paper from the very first frame
-    // instead of teleporting into view mid-turn.
-    if (!light) {
-      if (direction === "forward") {
-        buildFace(frontRef.current, halfGap - rightColumn * metrics.stride);
-        buildFace(backRef.current, -(rightColumn + 1) * metrics.stride);
-      } else {
-        buildFace(frontRef.current, -leftColumn * metrics.stride);
-        buildFace(backRef.current, halfGap - (leftColumn - 1) * metrics.stride);
-      }
-    }
-    if (direction === "forward") {
-      buildFace(half, -leftColumn * metrics.stride);
-      half.className = "bs-half bs-half--left";
-    } else {
-      buildFace(half, halfGap - rightColumn * metrics.stride);
-      half.className = "bs-half bs-half--right";
-    }
-    half.style.display = "block";
-    // The target spread waits beneath the moving paper, exactly like a book.
-    flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
-
-    leaf.className = `bs-turn-leaf bs-turn-leaf--${direction}`;
-    leaf.style.display = "block";
-    applyTurnFrame(0);
-    return true;
-  }, [applyTurnFrame, buildFace]);
-
-  const stepInstant = useCallback((direction: BookTurnDirection) => {
+  /** Page changes are instant: the target spread simply replaces the visible one. */
+  const step = useCallback((direction: BookTurnDirection) => {
     const next = clampNumber(
       spreadRef.current + (direction === "forward" ? 1 : -1),
       0,
@@ -950,15 +698,6 @@ function BookLeafPager({
     applyBaseOffset();
     publishState();
   }, [applyBaseOffset, publishState]);
-
-  const step = useCallback((direction: BookTurnDirection) => {
-    if (turnRef.current) return;
-    if (reducedMotion) {
-      stepInstant(direction);
-      return;
-    }
-    if (beginTurn(direction)) settleTurn(0, true);
-  }, [beginTurn, reducedMotion, settleTurn, stepInstant]);
 
   useEffect(() => {
     apiRef.current = { step };
@@ -1027,7 +766,6 @@ function BookLeafPager({
   }, [measure]);
 
   useEffect(() => () => {
-    if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
     if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
     if (clickTimer.current) window.clearTimeout(clickTimer.current);
   }, []);
@@ -1040,25 +778,13 @@ function BookLeafPager({
     }, 350);
   };
 
-  const releasePointerCapture = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-  };
-
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0 || turnRef.current) return;
+    if (event.button !== 0) return;
     if (isGuardedTarget(event.target, interactionMode)) return;
     pointerStart.current = {
       pointerId: event.pointerId,
       x: event.clientX,
       y: event.clientY,
-      startedAt: event.timeStamp,
-      lastX: 0,
-      lastTime: event.timeStamp,
-      progress: 0,
-      horizontal: false,
-      direction: "forward",
       orientation: getBookSurfaceOrientation(pagerRef.current),
     };
   };
@@ -1072,68 +798,19 @@ function BookLeafPager({
       event.clientY - start.y,
       start.orientation,
     );
-    if (!start.horizontal) {
-      if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
-      if (Math.abs(deltaY) > Math.abs(deltaX)) {
-        pointerStart.current = null;
-        return;
-      }
-      // Dragging left pulls the right-hand leaf over; dragging right pulls the
-      // left-hand leaf back — exactly like paper.
-      const direction: BookTurnDirection = deltaX < 0 ? "forward" : "backward";
-      if (reducedMotion) {
-        pointerStart.current = null;
-        suppressClick.current = true;
-        armClickSuppressionReset();
-        stepInstant(direction);
-        return;
-      }
-      if (!beginTurn(direction)) {
-        pointerStart.current = null;
-        return;
-      }
-      start.horizontal = true;
-      start.direction = direction;
-      event.currentTarget.setPointerCapture(event.pointerId);
-    }
-
-    start.lastX = deltaX;
-    start.lastTime = event.timeStamp;
-    const leafWidth = metricsRef.current.width / 2 || 1;
-    start.progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
-    if (start.progress > 0.035) suppressClick.current = true;
-    progressRef.current = start.progress;
-    applyTurnFrame(start.progress);
+    if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
+    pointerStart.current = null;
+    if (Math.abs(deltaY) > Math.abs(deltaX)) return;
+    // Dragging left moves to the next spread; dragging right to the previous.
+    suppressClick.current = true;
+    armClickSuppressionReset();
+    step(deltaX < 0 ? "forward" : "backward");
   };
 
   const onPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
     const start = pointerStart.current;
     pointerStart.current = null;
     if (!start || start.pointerId !== event.pointerId) return;
-    releasePointerCapture(event);
-
-    if (start.horizontal) {
-      // All velocity math stays in book-space: deltas are mapped first, then
-      // divided by time, so shouldCompleteBookTurn's sign logic is untouched.
-      const { deltaX } = mapBookDelta(
-        event.clientX - start.x,
-        event.clientY - start.y,
-        start.orientation,
-      );
-      const elapsed = Math.max(1, event.timeStamp - start.lastTime);
-      const releaseVelocity = (deltaX - start.lastX) / elapsed;
-      const totalVelocity = deltaX / Math.max(1, event.timeStamp - start.startedAt);
-      const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
-        ? releaseVelocity
-        : totalVelocity;
-      const leafWidth = metricsRef.current.width / 2 || 1;
-      const progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
-      progressRef.current = progress;
-      suppressClick.current = true;
-      armClickSuppressionReset();
-      settleTurn(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
-      return;
-    }
 
     const target = event.target as HTMLElement;
     if (target.closest("a")) return;
@@ -1147,14 +824,8 @@ function BookLeafPager({
     else if (local.x > pager.offsetWidth * 0.84) step("forward");
   };
 
-  const onPointerCancel = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const start = pointerStart.current;
+  const onPointerCancel = () => {
     pointerStart.current = null;
-    releasePointerCapture(event);
-    if (!start?.horizontal) return;
-    suppressClick.current = true;
-    armClickSuppressionReset();
-    settleTurn(progressRef.current, false);
   };
 
   const onClickCapture = (event: ReactMouseEvent<HTMLDivElement>) => {
@@ -1171,7 +842,7 @@ function BookLeafPager({
       getBookSurfaceOrientation(pagerRef.current),
     );
     const magnitude = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
-    if (wheelLock.current || turnRef.current || Math.abs(magnitude) < 16) return;
+    if (wheelLock.current || Math.abs(magnitude) < 16) return;
     if (isGuardedTarget(event.target, interactionMode)) return;
     wheelLock.current = true;
     step(magnitude > 0 ? "forward" : "backward");
@@ -1213,12 +884,6 @@ function BookLeafPager({
     >
       <div ref={flowRef} className={`bs-flow ${routeContent ? "bs-route-content" : ""}`}>
         {children}
-      </div>
-      <div ref={halfRef} className="bs-half" aria-hidden="true" />
-      <span ref={shadowRef} className="bs-turn-shadow" aria-hidden="true" />
-      <div ref={leafRef} className="bs-turn-leaf" aria-hidden="true">
-        <div ref={frontRef} className="bs-turn-face bs-turn-face--front" />
-        <div ref={backRef} className="bs-turn-face bs-turn-face--back" />
       </div>
     </div>
   );
