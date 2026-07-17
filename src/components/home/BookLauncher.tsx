@@ -70,7 +70,7 @@ export function BookLauncher() {
         />
       )}
       <span className="text-[13px] font-medium tracking-wide text-white/85 drop-shadow-md">
-        {activeCollection ? activeCollection.title : "Kitaplık"}
+        {"\n"}
       </span>
     </div>
   );
