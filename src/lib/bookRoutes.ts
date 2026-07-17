@@ -141,7 +141,8 @@ export function getBookRouteTitle(pathname: string): string {
     matchesPrefix(pathname, "/calculations") || matchesPrefix(pathname, "/tank") ||
     matchesPrefix(pathname, "/ballast") || matchesPrefix(pathname, "/hydrodynamics") ||
     matchesPrefix(pathname, "/structural") || matchesPrefix(pathname, "/special-ships") ||
-    matchesPrefix(pathname, "/emissions") || pathname === "/navigation" ||
+    matchesPrefix(pathname, "/emissions") || matchesPrefix(pathname, "/converter") ||
+    matchesPrefix(pathname, "/machine-calculations") || pathname === "/navigation" ||
     pathname === "/safety" || pathname === "/economics"
   ) return "HESAPLAMALAR";
   if (pathname.includes("/rules") || matchesPrefix(pathname, "/regulations") || matchesPrefix(pathname, "/solas")) {
@@ -170,5 +171,5 @@ export function getBookRouteTitle(pathname: string): string {
   if (matchesPrefix(pathname, "/meteorology")) return "METEOROLOJİ";
   if (matchesPrefix(pathname, "/economics")) return "TİCARİ OPERASYONLAR";
   if (matchesPrefix(pathname, "/communication")) return "DENİZDE HABERLEŞME";
-  return "MARINER'S BOOK";
+  return "GENEL";
 }

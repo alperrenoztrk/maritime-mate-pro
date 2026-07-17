@@ -93,7 +93,7 @@ export function BookSheet({
       <div className="bs-cover-board">
         <div className={`bs-volume ${routeFrame ? "bs-volume--route" : ""}`}>
           <div className="bs-spread">
-            <header className="bs-running bs-running--left">{volume?.shortTitle ?? "MARINER’S BOOK"}</header>
+            <header className="bs-running bs-running--left">{volume?.shortTitle ?? "GENEL"}</header>
             <header className="bs-running bs-running--right">{title}</header>
 
             <BookSheetNestingContext.Provider value>
