@@ -1,6 +1,6 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, User as UserIcon, Crown, ChevronRight } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRight } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
