@@ -39,8 +39,8 @@ export interface BookVolumeDescriptor {
 export const bookCollections: readonly BookCollectionDescriptor[] = [
   {
     id: "lessons",
-    numeral: "I",
-    title: "Dersler",
+    numeral: "\n",
+    title: "\n\n⚓\nContainer",
     shortTitle: "Dersler",
     subtitle: "Güverte ve Makine Ders Kitapları",
     description: "Stabilite, seyir ve diğer bütün güverte ve makine dersleri ayrı kitaplar hâlinde.",

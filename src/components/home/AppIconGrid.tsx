@@ -10,8 +10,8 @@ interface AppIcon {
 
 // Diğer tüm bölümler ana sayfadaki kitabın (İçindekiler) içinde yer alır.
 const APPS: AppIcon[] = [
-  { label: "Beta", to: "/beta", Icon: FlaskConical, gradient: "linear-gradient(135deg, #a855f7 0%, #6d28d9 100%)" },
-  { label: "Ayarlar", to: "/settings", Icon: Settings, gradient: "linear-gradient(135deg, #64748b 0%, #334155 100%)" },
+  { label: "", to: "/beta", Icon: FlaskConical, gradient: "linear-gradient(135deg, #a855f7 0%, #6d28d9 100%)" },
+  { label: "", to: "/settings", Icon: Settings, gradient: "linear-gradient(135deg, #64748b 0%, #334155 100%)" },
 ];
 
 

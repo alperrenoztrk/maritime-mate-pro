@@ -120,7 +120,7 @@ export function BookVolumeLibrary({
               <BookCover
                 key={volume.id}
                 item={volume}
-                kicker={String(index + 1).padStart(2, "0")}
+                kicker="\n"
                 onSelect={() => onSelect(volume.id)}
                 footer={<span className="bvl-description">{volume.description}</span>}
               />
