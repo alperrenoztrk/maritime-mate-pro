@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_usage: {
+        Row: {
+          period: string
+          updated_at: string
+          used: number
+          user_id: string
+        }
+        Insert: {
+          period: string
+          updated_at?: string
+          used?: number
+          user_id: string
+        }
+        Update: {
+          period?: string
+          updated_at?: string
+          used?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -122,6 +143,57 @@ export type Database = {
         }
         Relationships: []
       }
+      user_entitlements: {
+        Row: {
+          acknowledged: boolean
+          auto_renewing: boolean
+          created_at: string
+          expires_at: string | null
+          id: string
+          order_id: string | null
+          platform: string
+          product_id: string
+          product_type: string
+          purchase_token: string
+          raw_payload: Json | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          acknowledged?: boolean
+          auto_renewing?: boolean
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          order_id?: string | null
+          platform?: string
+          product_id: string
+          product_type: string
+          purchase_token: string
+          raw_payload?: Json | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          acknowledged?: boolean
+          auto_renewing?: boolean
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          order_id?: string | null
+          platform?: string
+          product_id?: string
+          product_type?: string
+          purchase_token?: string
+          raw_payload?: Json | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_generated_components: {
         Row: {
           category: Database["public"]["Enums"]["component_category"] | null
@@ -172,7 +244,13 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      consume_ai_credit: {
+        Args: { p_limit: number; p_period: string; p_user_id: string }
+        Returns: {
+          allowed: boolean
+          used: number
+        }[]
+      }
     }
     Enums: {
       component_category:
