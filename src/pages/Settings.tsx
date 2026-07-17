@@ -84,8 +84,7 @@ const Settings = () => {
             {/* Account */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <UserIcon className="w-5 h-5" />
+                <CardTitle>
                   <span data-translatable>Hesap</span>
                 </CardTitle>
               </CardHeader>
