@@ -6,6 +6,17 @@ import {
   shouldCompleteBookTurn,
   type BookPageLike,
 } from "../src/lib/bookMotion";
+import { mapBookDelta, mapBookPointToLocal } from "../src/lib/bookOrientation";
+
+// Natural mode is the identity; rotated maps screen (dx,dy) -> book (dy,-dx),
+// the inverse of the gate's rotate(90deg) drawing transform.
+assert.deepEqual(mapBookDelta(-100, 30, "natural"), { deltaX: -100, deltaY: 30 });
+assert.deepEqual(mapBookDelta(-100, 30, "rotated"), { deltaX: 30, deltaY: 100 });
+assert.deepEqual(mapBookDelta(10, -80, "rotated"), { deltaX: -80, deltaY: -10 });
+
+const rect = { top: 100, left: 20, right: 410 };
+assert.deepEqual(mapBookPointToLocal(120, 250, rect, "natural"), { x: 100, y: 150 });
+assert.deepEqual(mapBookPointToLocal(120, 250, rect, "rotated"), { x: 150, y: 290 });
 
 assert.equal(getBookTurnProgress(-100, 200, "forward"), 0.5);
 assert.equal(getBookTurnProgress(100, 200, "backward"), 0.5);

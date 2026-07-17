@@ -21,6 +21,12 @@ import {
   shouldCompleteBookTurn,
   type BookTurnDirection,
 } from "@/lib/bookMotion";
+import {
+  getBookSurfaceOrientation,
+  mapBookDelta,
+  mapBookPointToLocal,
+  type BookSurfaceOrientation,
+} from "@/lib/bookOrientation";
 import { BookLandscapeGate } from "@/components/book/BookLandscapeGate";
 
 const BookSheetNestingContext = createContext(false);
@@ -187,8 +193,6 @@ export function BookSheet({
           position: relative;
           width: 100%;
           border-radius: 3px 7px 7px 3px;
-          perspective: 1900px;
-          transform-style: preserve-3d;
           background: #d7c08d;
           box-shadow: 0 8px 18px rgba(0,0,0,.45);
         }
@@ -213,6 +217,9 @@ export function BookSheet({
           height: clamp(300px, min(64svh, 72vw), 560px);
           min-height: 0;
           overflow: hidden;
+          /* Drives the decorative route-turn leaf (a direct child); without a
+             reachable perspective it rotates orthographically — a flat squash. */
+          perspective: 1900px;
           border-radius: 3px 6px 6px 3px;
           padding: clamp(16px, 2.3vw, 34px) clamp(14px, 2.8vw, 42px) 18px;
           color: #432d12;
@@ -288,6 +295,9 @@ export function BookSheet({
           height: 100%;
           max-height: 100%;
           overflow: hidden;
+          /* Drives the interactive turn leaf; keeps the vanishing point fixed
+             at the spine instead of following the rotating leaf. */
+          perspective: 1900px;
           overscroll-behavior: contain;
           touch-action: pan-y;
           cursor: grab;
@@ -618,8 +628,6 @@ interface TurnState {
   direction: BookTurnDirection;
   from: number;
   to: number;
-  /** Oversized chapters skip the cloned faces and swap beneath a plain paper leaf. */
-  light: boolean;
 }
 
 interface PagerPointerStart {
@@ -627,11 +635,14 @@ interface PagerPointerStart {
   x: number;
   y: number;
   startedAt: number;
+  /** Cumulative drag distance along the book's own x axis, in px. */
   lastX: number;
   lastTime: number;
   progress: number;
   horizontal: boolean;
   direction: BookTurnDirection;
+  /** Frozen at pointerdown so a mid-gesture mode flip cannot corrupt the drag. */
+  orientation: BookSurfaceOrientation;
 }
 
 interface PagerMetrics {
@@ -652,8 +663,8 @@ const INTERACTIVE_GUARD = [
   "[role='spinbutton']", "[contenteditable='true']", ".bs-table-wrap", "[data-book-no-turn]",
 ].join(",");
 const BUTTON_GUARD = "button,[role='button'],[role='tab'],[role='menuitem']";
-/** Above this many DOM nodes a turn keeps the physical leaf but skips text clones. */
-const CLONE_NODE_LIMIT = 3500;
+/** Above this many DOM nodes a turn keeps the physical leaf but skips the leaf-face clones. */
+const CLONE_NODE_LIMIT = 6000;
 
 function isGuardedTarget(target: EventTarget | null, mode: BookInteractionMode): boolean {
   const element = target instanceof Element ? target : null;
@@ -762,8 +773,16 @@ function BookLeafPager({
         try {
           const anchor = flow.querySelector(hash);
           if (anchor) {
-            const flowLeft = flow.getBoundingClientRect().left;
-            const column = Math.floor((anchor.getBoundingClientRect().left - flowLeft + 2) / stride);
+            // Screen-space offsets are book-y in the rotated overlay, so the
+            // anchor's column distance must be mapped into book-space first.
+            const flowRect = flow.getBoundingClientRect();
+            const anchorRect = anchor.getBoundingClientRect();
+            const { deltaX } = mapBookDelta(
+              anchorRect.left - flowRect.left,
+              anchorRect.top - flowRect.top,
+              getBookSurfaceOrientation(flow),
+            );
+            const column = Math.floor((deltaX + 2) / stride);
             spreadRef.current = Math.floor(Math.max(0, column) / 2);
           }
         } catch {
@@ -783,10 +802,10 @@ function BookLeafPager({
     const active = turnRef.current;
     const leaf = leafRef.current;
     if (!active || !leaf) return;
-    const { width, spreadStride } = metricsRef.current;
     const sign = active.direction === "forward" ? -1 : 1;
-    const perspective = Math.round(clampNumber(width * 2.4, 900, 2400));
-    leaf.style.transform = `perspective(${perspective}px) rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
+    // Depth comes from the parent perspective on .bs-pager; an inline
+    // perspective() here would move the vanishing point with the leaf.
+    leaf.style.transform = `rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
     const shade = Math.sin(Math.PI * progress);
     leaf.style.setProperty("--bs-shade", shade.toFixed(3));
     if (frontRef.current) frontRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
@@ -795,10 +814,6 @@ function BookLeafPager({
       const foldCenter = 50 + (active.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * progress);
       shadowRef.current.style.left = `${foldCenter.toFixed(2)}%`;
       shadowRef.current.style.opacity = (shade * 0.5).toFixed(3);
-    }
-    if (active.light && flowRef.current) {
-      const spread = progress >= 0.5 ? active.to : active.from;
-      flowRef.current.style.transform = `translate3d(${-(spread * spreadStride)}px, 0, 0)`;
     }
   }, []);
 
@@ -810,9 +825,12 @@ function BookLeafPager({
     if (leafRef.current) {
       leafRef.current.style.display = "none";
       leafRef.current.style.transform = "";
+      leafRef.current.style.removeProperty("--bs-shade");
     }
     if (halfRef.current) halfRef.current.style.display = "none";
     if (shadowRef.current) shadowRef.current.style.opacity = "0";
+    if (frontRef.current) frontRef.current.style.visibility = "";
+    if (backRef.current) backRef.current.style.visibility = "";
     frontRef.current?.replaceChildren();
     backRef.current?.replaceChildren();
     halfRef.current?.replaceChildren();
@@ -881,28 +899,35 @@ function BookLeafPager({
     if (to < 0 || to > metrics.spreads - 1) return false;
 
     const light = flow.querySelectorAll("*").length > CLONE_NODE_LIMIT;
-    turnRef.current = { direction, from, to, light };
+    turnRef.current = { direction, from, to };
     progressRef.current = 0;
 
+    const leftColumn = from * 2;
+    const rightColumn = leftColumn + 1;
+    const halfGap = metrics.gap / 2;
+    // Oversized flows skip the two leaf-face clones (the leaf turns as plain
+    // paper) but never the covered-half clone below: it is what lets the
+    // target spread wait beneath the moving paper from the very first frame
+    // instead of teleporting into view mid-turn.
     if (!light) {
-      const leftColumn = from * 2;
-      const rightColumn = leftColumn + 1;
-      const halfGap = metrics.gap / 2;
       if (direction === "forward") {
         buildFace(frontRef.current, halfGap - rightColumn * metrics.stride);
         buildFace(backRef.current, -(rightColumn + 1) * metrics.stride);
-        buildFace(half, -leftColumn * metrics.stride);
-        half.className = "bs-half bs-half--left";
       } else {
         buildFace(frontRef.current, -leftColumn * metrics.stride);
         buildFace(backRef.current, halfGap - (leftColumn - 1) * metrics.stride);
-        buildFace(half, halfGap - rightColumn * metrics.stride);
-        half.className = "bs-half bs-half--right";
       }
-      half.style.display = "block";
-      // The target spread waits beneath the moving paper, exactly like a book.
-      flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
     }
+    if (direction === "forward") {
+      buildFace(half, -leftColumn * metrics.stride);
+      half.className = "bs-half bs-half--left";
+    } else {
+      buildFace(half, halfGap - rightColumn * metrics.stride);
+      half.className = "bs-half bs-half--right";
+    }
+    half.style.display = "block";
+    // The target spread waits beneath the moving paper, exactly like a book.
+    flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
 
     leaf.className = `bs-turn-leaf bs-turn-leaf--${direction}`;
     leaf.style.display = "block";
@@ -1025,11 +1050,12 @@ function BookLeafPager({
       x: event.clientX,
       y: event.clientY,
       startedAt: event.timeStamp,
-      lastX: event.clientX,
+      lastX: 0,
       lastTime: event.timeStamp,
       progress: 0,
       horizontal: false,
       direction: "forward",
+      orientation: getBookSurfaceOrientation(pagerRef.current),
     };
   };
 
@@ -1037,8 +1063,11 @@ function BookLeafPager({
     const start = pointerStart.current;
     if (!start || start.pointerId !== event.pointerId) return;
 
-    const deltaX = event.clientX - start.x;
-    const deltaY = event.clientY - start.y;
+    const { deltaX, deltaY } = mapBookDelta(
+      event.clientX - start.x,
+      event.clientY - start.y,
+      start.orientation,
+    );
     if (!start.horizontal) {
       if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
       if (Math.abs(deltaY) > Math.abs(deltaX)) {
@@ -1064,7 +1093,7 @@ function BookLeafPager({
       event.currentTarget.setPointerCapture(event.pointerId);
     }
 
-    start.lastX = event.clientX;
+    start.lastX = deltaX;
     start.lastTime = event.timeStamp;
     const leafWidth = metricsRef.current.width / 2 || 1;
     start.progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
@@ -1080,9 +1109,15 @@ function BookLeafPager({
     releasePointerCapture(event);
 
     if (start.horizontal) {
-      const deltaX = event.clientX - start.x;
+      // All velocity math stays in book-space: deltas are mapped first, then
+      // divided by time, so shouldCompleteBookTurn's sign logic is untouched.
+      const { deltaX } = mapBookDelta(
+        event.clientX - start.x,
+        event.clientY - start.y,
+        start.orientation,
+      );
       const elapsed = Math.max(1, event.timeStamp - start.lastTime);
-      const releaseVelocity = (event.clientX - start.lastX) / elapsed;
+      const releaseVelocity = (deltaX - start.lastX) / elapsed;
       const totalVelocity = deltaX / Math.max(1, event.timeStamp - start.startedAt);
       const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
         ? releaseVelocity
@@ -1100,11 +1135,12 @@ function BookLeafPager({
     if (target.closest("a")) return;
     if (isGuardedTarget(target, interactionMode)) return;
     if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 12) return;
-    const bounds = pagerRef.current?.getBoundingClientRect();
-    if (!bounds) return;
-    const relativeX = event.clientX - bounds.left;
-    if (relativeX < bounds.width * 0.16) step("backward");
-    else if (relativeX > bounds.width * 0.84) step("forward");
+    const pager = pagerRef.current;
+    const bounds = pager?.getBoundingClientRect();
+    if (!pager || !bounds) return;
+    const local = mapBookPointToLocal(event.clientX, event.clientY, bounds, start.orientation);
+    if (local.x < pager.offsetWidth * 0.16) step("backward");
+    else if (local.x > pager.offsetWidth * 0.84) step("forward");
   };
 
   const onPointerCancel = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -1125,7 +1161,12 @@ function BookLeafPager({
   };
 
   const onWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
-    const magnitude = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    const { deltaX, deltaY } = mapBookDelta(
+      event.deltaX,
+      event.deltaY,
+      getBookSurfaceOrientation(pagerRef.current),
+    );
+    const magnitude = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
     if (wheelLock.current || turnRef.current || Math.abs(magnitude) < 16) return;
     if (isGuardedTarget(event.target, interactionMode)) return;
     wheelLock.current = true;
