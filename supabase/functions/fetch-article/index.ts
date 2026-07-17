@@ -173,10 +173,7 @@ serve(async (req: Request) => {
     return new Response("ok", { headers: corsHeaders });
   }
 
-  const { user, error: authError } = await validateAuth(req);
-  if (authError || !user) {
-    return unauthorizedResponse(corsHeaders);
-  }
+  // Public endpoint: news reader is available to anonymous users.
 
   try {
     const { url } = await req.json();
