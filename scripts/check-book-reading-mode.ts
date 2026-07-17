@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const read = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
@@ -72,7 +72,7 @@ if (!bookPage.includes("useLayoutEffect") || !bookPage.includes("page.scrollHeig
   failures.push("İçindekiler yapraklarında gerçek render taşma denetimi eksik.");
 }
 if (
-  !bookPage.includes("<BookLandscapeGate embedded={embedded}>") ||
+  !bookPage.includes("<BookLandscapeGate embedded={embedded} onExit={onExit}>") ||
   !bookSheet.includes("<BookLandscapeGate>")
 ) {
   failures.push("İçindekiler veya içerik kitapları yatay görünüm kapısından geçmiyor.");
@@ -85,14 +85,51 @@ if (
   failures.push("Native ve web için doğrudan yatay yön kilidi yaşam döngüsü eksik.");
 }
 if (
-  !landscapeGate.includes('BookLandscapeMode = "natural" | "fitted"') ||
+  !landscapeGate.includes('BookLandscapeMode = "natural" | "rotated"') ||
   !landscapeGate.includes("data-book-landscape-mode={mode}") ||
-  !landscapeGate.includes('[data-book-landscape-mode="fitted"]>.book-landscape-content') ||
+  !landscapeGate.includes('[data-book-landscape-mode="rotated"]>.book-landscape-content') ||
   landscapeGate.includes("Devam etmek için cihazınızı yatay çevirin.") ||
   bookPage.includes("@media screen and (orientation:portrait)") ||
   bookSheet.includes("@media screen and (orientation: portrait)")
 ) {
   failures.push("Portrede bekleme ekranı olmadan anında yatay kitap geri dönüşü eksik.");
+}
+if (
+  !landscapeGate.includes("rotate(90deg) translateY(-100%)") ||
+  !landscapeGate.includes("--book-frame-w") ||
+  !landscapeGate.includes("book-landscape-exit") ||
+  !landscapeGate.includes("history.back()") ||
+  !landscapeGate.includes("touch-action:none")
+) {
+  failures.push(
+    "Yatay kilit reddedilince kitabı 90° döndürülmüş çizen tam ekran geri dönüş (çıkış kontrolü dahil) eksik.",
+  );
+}
+if (
+  !bookPage.includes("getBookSurfaceOrientation(") ||
+  !bookPage.includes("mapBookDelta(") ||
+  !bookSheet.includes("getBookSurfaceOrientation(") ||
+  !bookSheet.includes("mapBookDelta(")
+) {
+  failures.push("Döndürülmüş kitapta sürükleme/tekerlek jestleri kitap eksenine eşlenmiyor.");
+}
+if (
+  !bookPage.includes("perspective:1900px") ||
+  !bookSheet.includes("perspective: 1900px") ||
+  !bookPage.includes("leaf.style.transform = `rotateY(") ||
+  !bookSheet.includes("leaf.style.transform = `rotateY(")
+) {
+  failures.push(
+    "Yaprak dönüşü ebeveyn perspektifinden beslenmiyor; satır içi perspective() kaçış noktasını yaprakla birlikte taşır.",
+  );
+}
+if (
+  existsSync(resolve(process.cwd(), "android-manifest.xml")) ||
+  read("android/app/src/main/AndroidManifest.xml").includes('android:screenOrientation="portrait"')
+) {
+  failures.push(
+    "Başıboş veya gerçek Android manifest'i dikey kilit taşıyor; yatay kilit cihazda sessizce başarısız olur.",
+  );
 }
 if (
   !landscapeGate.includes("fontSet?.ready") ||
@@ -159,4 +196,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("Book reading check passed: books open directly in landscape, with native lock and an immediate fitted web fallback.");
+console.log("Book reading check passed: books open directly in landscape, with native lock and a rotated full-screen fallback when the lock is refused.");

@@ -43,6 +43,12 @@ import {
   type BookPageLayout,
   type BookTurnDirection,
 } from "@/lib/bookMotion";
+import {
+  getBookSurfaceOrientation,
+  mapBookDelta,
+  mapBookPointToLocal,
+  type BookSurfaceOrientation,
+} from "@/lib/bookOrientation";
 
 interface SpreadPage {
   page: BookPageSpec | null;
@@ -61,12 +67,15 @@ interface PointerStart {
   x: number;
   y: number;
   startedAt: number;
+  /** Cumulative drag distance along the book's own x axis, in px. */
   lastX: number;
   lastTime: number;
   progress: number;
   horizontal: boolean;
   direction: BookTurnDirection;
   leafWidth: number;
+  /** Frozen at pointerdown so a mid-gesture mode flip cannot corrupt the drag. */
+  orientation: BookSurfaceOrientation;
 }
 
 interface BookPageProps {
@@ -76,6 +85,8 @@ interface BookPageProps {
   collectionId?: BookCollectionId;
   /** A subject, system or operation can also be opened directly. */
   volumeId?: BookVolumeId;
+  /** Dismisses an embedded book from the rotated overlay's exit control. */
+  onClose?: () => void;
 }
 
 const clampNumber = (value: number, minimum: number, maximum: number) =>
@@ -86,6 +97,7 @@ export default function BookPage({
   embedded = false,
   collectionId,
   volumeId,
+  onClose,
 }: BookPageProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [embeddedVolumeId, setEmbeddedVolumeId] = useState<BookVolumeId | null>(null);
@@ -137,16 +149,30 @@ export default function BookPage({
     );
   }
 
-  return <OpenBookVolume key={selectedVolumeId} embedded={embedded} volumeId={selectedVolumeId} />;
+  // The rotated overlay covers the surrounding UI, so it needs a real exit:
+  // a shelf-picked volume pops back to its shelf, an embedded book closes the
+  // launcher, and route books fall back to the gate's history.back().
+  const handleBookExit = embeddedVolumeId ? () => setEmbeddedVolumeId(null) : onClose;
+
+  return (
+    <OpenBookVolume
+      key={selectedVolumeId}
+      embedded={embedded}
+      volumeId={selectedVolumeId}
+      onExit={handleBookExit}
+    />
+  );
 }
 
 /** Compact, two-leaf table of contents with gesture-driven page turns. */
 function OpenBookVolume({
   embedded,
   volumeId,
+  onExit,
 }: {
   embedded: boolean;
   volumeId: BookVolumeId;
+  onExit?: () => void;
 }) {
   const activeVolume = getBookVolume(volumeId);
   const volumePages = useMemo(() => getBookPagesForVolume(volumeId), [volumeId]);
@@ -161,7 +187,8 @@ function OpenBookVolume({
   const settleFrame = useRef<number | null>(null);
   const turnRef = useRef<ActiveTurn | null>(null);
   const progressRef = useRef(0);
-  const leafWidthRef = useRef(180);
+  /** Queued programmatic settle for when the turn leaf has not mounted yet. */
+  const pendingSettle = useRef<{ from: number; complete: boolean } | null>(null);
   const turnLeafRef = useRef<HTMLDivElement | null>(null);
   const frontFaceRef = useRef<HTMLDivElement | null>(null);
   const backFaceRef = useRef<HTMLDivElement | null>(null);
@@ -268,18 +295,21 @@ function OpenBookVolume({
     if (!volume || typeof window === "undefined") return;
 
     const updateMetrics = () => {
-      const bounds = volume.getBoundingClientRect();
+      // offsetWidth/offsetHeight are layout values, unaffected by the rotated
+      // overlay's transform (getBoundingClientRect would report swapped axes).
+      const width = volume.offsetWidth;
+      const height = volume.offsetHeight;
       const parsedScale = Number.parseFloat(
         window.getComputedStyle(document.documentElement).getPropertyValue("--font-scale"),
       );
       const fontScale = Number.isFinite(parsedScale) ? parsedScale : 1;
       setVolumeSize((current) => {
         if (
-          Math.abs(current.width - bounds.width) < 1 &&
-          Math.abs(current.height - bounds.height) < 1 &&
+          Math.abs(current.width - width) < 1 &&
+          Math.abs(current.height - height) < 1 &&
           Math.abs(current.fontScale - fontScale) < 0.01
         ) return current;
-        return { width: bounds.width, height: bounds.height, fontScale };
+        return { width, height, fontScale };
       });
       measurePrintCapacity();
     };
@@ -339,8 +369,9 @@ function OpenBookVolume({
     const leaf = turnLeafRef.current;
     if (!active || !leaf) return;
     const sign = active.direction === "forward" ? -1 : 1;
-    const perspective = Math.round(clampNumber(leafWidthRef.current * 4.8, 880, 2300));
-    leaf.style.transform = `perspective(${perspective}px) rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
+    // Depth comes from the parent perspective on .bk-spread, so the vanishing
+    // point stays fixed at the spine instead of following the leaf.
+    leaf.style.transform = `rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
     const shade = Math.sin(Math.PI * progress);
     leaf.style.setProperty("--bk-shade", shade.toFixed(3));
     if (frontFaceRef.current) frontFaceRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
@@ -355,6 +386,11 @@ function OpenBookVolume({
   const finalizeTurn = useCallback((complete: boolean) => {
     const active = turnRef.current;
     if (complete && active) setSpreadIndex(active.toIndex);
+    pendingSettle.current = null;
+    if (settleFrame.current) {
+      window.cancelAnimationFrame(settleFrame.current);
+      settleFrame.current = null;
+    }
     turnRef.current = null;
     progressRef.current = 0;
     turnLock.current = false;
@@ -390,12 +426,22 @@ function OpenBookVolume({
 
   const beginTurn = useCallback((direction: BookTurnDirection, fromIndex: number, toIndex: number) => {
     turnLock.current = true;
-    leafWidthRef.current = (volumeRef.current?.getBoundingClientRect().width ?? volumeSize.width) / 2;
     const active: ActiveTurn = { direction, fromIndex, toIndex };
     turnRef.current = active;
     progressRef.current = 0;
     setTurn(active);
-  }, [volumeSize.width]);
+  }, []);
+
+  /** Runs the settle now, or queues it until the turn leaf mounts. */
+  const settleWhenReady = useCallback((fromProgress: number, complete: boolean) => {
+    if (turnLeafRef.current) {
+      settleTurn(fromProgress, complete);
+      return;
+    }
+    // beginTurn's React commit has not mounted the leaf yet; bindTurnLeaf
+    // flushes this queue so the animation always plays from its first frame.
+    pendingSettle.current = { from: fromProgress, complete };
+  }, [settleTurn]);
 
   const turnTo = (nextIndex: number, direction: BookTurnDirection) => {
     if (
@@ -412,7 +458,7 @@ function OpenBookVolume({
     }
 
     beginTurn(direction, spreadIndex, nextIndex);
-    settleTurn(0, true);
+    settleWhenReady(0, true);
   };
 
   const stepSpread = (direction: BookTurnDirection) => {
@@ -422,20 +468,25 @@ function OpenBookVolume({
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     event.stopPropagation();
     if (event.button !== 0 || turnLock.current || !coverDone) return;
-    const bounds = volumeRef.current?.getBoundingClientRect();
-    if (!bounds || event.clientX < bounds.left || event.clientX > bounds.right) return;
+    const volume = volumeRef.current;
+    const bounds = volume?.getBoundingClientRect();
+    if (!volume || !bounds) return;
+    const orientation = getBookSurfaceOrientation(volume);
+    const local = mapBookPointToLocal(event.clientX, event.clientY, bounds, orientation);
+    if (local.x < 0 || local.x > volume.offsetWidth) return;
 
     pointerStart.current = {
       pointerId: event.pointerId,
       x: event.clientX,
       y: event.clientY,
       startedAt: event.timeStamp,
-      lastX: event.clientX,
+      lastX: 0,
       lastTime: event.timeStamp,
       progress: 0,
       horizontal: false,
       direction: "forward",
-      leafWidth: bounds.width / 2,
+      leafWidth: volume.offsetWidth / 2,
+      orientation,
     };
   };
 
@@ -443,8 +494,11 @@ function OpenBookVolume({
     const start = pointerStart.current;
     if (!start || start.pointerId !== event.pointerId) return;
 
-    const deltaX = event.clientX - start.x;
-    const deltaY = event.clientY - start.y;
+    const { deltaX, deltaY } = mapBookDelta(
+      event.clientX - start.x,
+      event.clientY - start.y,
+      start.orientation,
+    );
     if (!start.horizontal) {
       if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
       if (Math.abs(deltaY) > Math.abs(deltaX)) {
@@ -464,7 +518,7 @@ function OpenBookVolume({
     }
 
     event.stopPropagation();
-    start.lastX = event.clientX;
+    start.lastX = deltaX;
     start.lastTime = event.timeStamp;
     start.progress = getBookTurnProgress(deltaX, start.leafWidth, start.direction);
     if (start.progress > 0.035) suppressClick.current = true;
@@ -494,9 +548,15 @@ function OpenBookVolume({
     releasePointerCapture(event);
 
     if (start.horizontal) {
-      const deltaX = event.clientX - start.x;
+      // All velocity math stays in book-space: deltas are mapped first, then
+      // divided by time, so shouldCompleteBookTurn's sign logic is untouched.
+      const { deltaX } = mapBookDelta(
+        event.clientX - start.x,
+        event.clientY - start.y,
+        start.orientation,
+      );
       const elapsed = Math.max(1, event.timeStamp - start.lastTime);
-      const releaseVelocity = (event.clientX - start.lastX) / elapsed;
+      const releaseVelocity = (deltaX - start.lastX) / elapsed;
       const totalVelocity = deltaX / Math.max(1, event.timeStamp - start.startedAt);
       const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
         ? releaseVelocity
@@ -505,17 +565,18 @@ function OpenBookVolume({
       progressRef.current = progress;
       suppressClick.current = true;
       armClickSuppressionReset();
-      settleTurn(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
+      settleWhenReady(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
       return;
     }
 
     if ((event.target as HTMLElement).closest("a")) return;
     if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 12) return;
-    const bounds = volumeRef.current?.getBoundingClientRect();
-    if (!bounds) return;
-    const relativeX = event.clientX - bounds.left;
-    if (relativeX < bounds.width * .18) stepSpread("backward");
-    if (relativeX > bounds.width * .82) stepSpread("forward");
+    const volume = volumeRef.current;
+    const bounds = volume?.getBoundingClientRect();
+    if (!volume || !bounds) return;
+    const local = mapBookPointToLocal(event.clientX, event.clientY, bounds, start.orientation);
+    if (local.x < volume.offsetWidth * .18) stepSpread("backward");
+    if (local.x > volume.offsetWidth * .82) stepSpread("forward");
   };
 
   const onPointerCancel = (event: PointerEvent<HTMLDivElement>) => {
@@ -526,7 +587,7 @@ function OpenBookVolume({
     if (!start?.horizontal) return;
     suppressClick.current = true;
     armClickSuppressionReset();
-    settleTurn(progressRef.current, false);
+    settleWhenReady(progressRef.current, false);
   };
 
   const onClickCapture = (event: ReactMouseEvent<HTMLDivElement>) => {
@@ -537,16 +598,21 @@ function OpenBookVolume({
   };
 
   const onWheel = (event: WheelEvent<HTMLDivElement>) => {
-    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
+    const { deltaX, deltaY } = mapBookDelta(
+      event.deltaX,
+      event.deltaY,
+      getBookSurfaceOrientation(stageRef.current),
+    );
+    const horizontalIntent = Math.abs(deltaX) > Math.abs(deltaY) || event.shiftKey;
     if (
       !horizontalIntent ||
       wheelLock.current ||
       turnLock.current ||
-      Math.abs(event.deltaX || event.deltaY) < 16
+      Math.abs(deltaX || deltaY) < 16
     ) return;
     event.stopPropagation();
     wheelLock.current = true;
-    stepSpread((event.deltaX || event.deltaY) > 0 ? "forward" : "backward");
+    stepSpread((deltaX || deltaY) > 0 ? "forward" : "backward");
     if (wheelTimer.current) window.clearTimeout(wheelTimer.current);
     wheelTimer.current = window.setTimeout(() => {
       wheelLock.current = false;
@@ -556,8 +622,14 @@ function OpenBookVolume({
 
   const bindTurnLeaf = useCallback((element: HTMLDivElement | null) => {
     turnLeafRef.current = element;
-    if (element) applyTurnFrame(progressRef.current);
-  }, [applyTurnFrame]);
+    if (!element) return;
+    applyTurnFrame(progressRef.current);
+    const pending = pendingSettle.current;
+    if (pending) {
+      pendingSettle.current = null;
+      settleTurn(pending.from, pending.complete);
+    }
+  }, [applyTurnFrame, settleTurn]);
 
   const currentSpread = spreads[spreadIndex] ?? spreads[0];
   const fromSpread = turn ? spreads[turn.fromIndex] ?? currentSpread : currentSpread;
@@ -575,7 +647,7 @@ function OpenBookVolume({
     : null;
 
   return (
-    <BookLandscapeGate embedded={embedded}>
+    <BookLandscapeGate embedded={embedded} onExit={onExit}>
       <div
         className={`bk-scene ${embedded ? "bk-scene--embedded" : ""}`}
         style={{
@@ -707,7 +779,7 @@ function OpenBookVolume({
         .bk-volume{ position:relative; z-index:1; width:100%; height:100%; border-radius:3px 8px 8px 3px; background:#d1b982; box-shadow:0 8px 18px rgba(0,0,0,.48); }
         .bk-volume::before,.bk-volume::after{ content:""; position:absolute; z-index:3; top:1.3%; bottom:1.3%; width:9px; pointer-events:none; background:repeating-linear-gradient(90deg,#f1e4c4 0 1.5px,#cbb47d 1.5px 3px); }
         .bk-volume::before{ left:-1px; border-radius:3px 0 0 3px; } .bk-volume::after{ right:-1px; border-radius:0 5px 5px 0; }
-        .bk-spread{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; border-radius:3px 7px 7px 3px; }
+        .bk-spread{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; border-radius:3px 7px 7px 3px; perspective:1900px; }
         .bk-spread--turning{ user-select:none; -webkit-user-select:none; }
         .bk-leaf{
           position:relative; min-width:0; height:100%; overflow:hidden; padding:clamp(14px,2.5vw,34px) clamp(11px,2.6vw,38px) 17px;

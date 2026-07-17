@@ -55,7 +55,13 @@ export function BookLauncher() {
   return (
     <div className="flex w-full flex-col items-center gap-2">
       {OpenBook && activeCollectionId ? (
-        <OpenBook embedded collectionId={activeCollectionId} />
+        <OpenBook embedded
+          collectionId={activeCollectionId}
+          onClose={() => {
+            setActiveCollectionId(null);
+            setPendingCollectionId(null);
+          }}
+        />
       ) : (
         <BookCollectionLibrary
           compact

@@ -1,13 +1,15 @@
 import { Capacitor } from "@capacitor/core";
 import { ScreenOrientation as NativeScreenOrientation } from "@capacitor/screen-orientation";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 
-export type BookLandscapeMode = "natural" | "fitted";
+export type BookLandscapeMode = "natural" | "rotated";
 
 interface BookLandscapeGateProps {
   children: ReactNode;
   /** Keeps the direct landscape layout scoped to the home-page book launcher. */
   embedded?: boolean;
+  /** Closes the book from the rotated overlay; defaults to history.back(). */
+  onExit?: () => void;
 }
 
 type LockableScreenOrientation = ScreenOrientation & {
@@ -22,7 +24,7 @@ export const isLandscapeSize = (width: number, height: number) =>
   Number.isFinite(width) && Number.isFinite(height) && width > height;
 
 export const resolveBookLandscapeMode = (width: number, height: number): BookLandscapeMode =>
-  isLandscapeSize(width, height) ? "natural" : "fitted";
+  isLandscapeSize(width, height) ? "natural" : "rotated";
 
 const getScreenOrientation = () => {
   if (typeof window === "undefined") return undefined;
@@ -50,9 +52,19 @@ export function isBookLandscape() {
   return isLandscapeSize(window.innerWidth, window.innerHeight);
 }
 
-function currentBookLandscapeMode(): BookLandscapeMode {
-  if (typeof window === "undefined") return "natural";
-  return isBookLandscape() ? "natural" : "fitted";
+interface BookLandscapeFrame {
+  mode: BookLandscapeMode;
+  /** Book-local frame size in px; in rotated mode the physical axes are swapped. */
+  frameWidth: number;
+  frameHeight: number;
+}
+
+function currentBookLandscapeFrame(): BookLandscapeFrame {
+  if (typeof window === "undefined") return { mode: "natural", frameWidth: 0, frameHeight: 0 };
+  if (isBookLandscape()) {
+    return { mode: "natural", frameWidth: window.innerWidth, frameHeight: window.innerHeight };
+  }
+  return { mode: "rotated", frameWidth: window.innerHeight, frameHeight: window.innerWidth };
 }
 
 function unlockRequestedOrientation() {
@@ -152,8 +164,9 @@ function acquireBookLandscape() {
  * environments. In browsers that cannot rotate the viewport, the same two-leaf
  * landscape book is fitted into the available portrait width without a gate.
  */
-export function BookLandscapeGate({ children, embedded = false }: BookLandscapeGateProps) {
-  const [mode, setMode] = useState<BookLandscapeMode>(currentBookLandscapeMode);
+export function BookLandscapeGate({ children, embedded = false, onExit }: BookLandscapeGateProps) {
+  const [frame, setFrame] = useState<BookLandscapeFrame>(currentBookLandscapeFrame);
+  const { mode, frameWidth, frameHeight } = frame;
 
   useEffect(() => {
     const release = acquireBookLandscape();
@@ -177,7 +190,14 @@ export function BookLandscapeGate({ children, embedded = false }: BookLandscapeG
     const publishStableLayout = () => {
       cancelPendingNotification();
       const layoutGeneration = generation;
-      setMode(currentBookLandscapeMode());
+      const next = currentBookLandscapeFrame();
+      setFrame((current) =>
+        current.mode === next.mode &&
+        current.frameWidth === next.frameWidth &&
+        current.frameHeight === next.frameHeight
+          ? current
+          : next,
+      );
 
       // Page pagers measure against the already-visible layout. Two frames let
       // ResizeObserver and CSS columns settle before they re-slice the leaves.
@@ -214,16 +234,41 @@ export function BookLandscapeGate({ children, embedded = false }: BookLandscapeG
     };
   }, []);
 
+  useEffect(() => {
+    if (mode !== "rotated") return;
+    document.body.classList.add("book-rotated-active");
+    return () => document.body.classList.remove("book-rotated-active");
+  }, [mode]);
+
   return (
     <div
       className={`book-landscape-shell ${embedded ? "book-landscape-shell--embedded" : ""}`}
       data-book-landscape-mode={mode}
       data-book-landscape-phase="ready"
+      style={mode === "rotated"
+        ? ({
+            "--book-frame-w": `${frameWidth}px`,
+            "--book-frame-h": `${frameHeight}px`,
+          } as CSSProperties)
+        : undefined}
     >
-      <div className="book-landscape-content">{children}</div>
+      <div className="book-landscape-content">
+        {children}
+        {mode === "rotated" && (
+          <button
+            type="button"
+            className="book-landscape-exit"
+            aria-label="Kitaptan çık"
+            onClick={onExit ?? (() => window.history.back())}
+          >
+            ✕
+          </button>
+        )}
+      </div>
 
       <style>{`
         body.book-landscape-active{ overflow-x:hidden; overscroll-behavior:none; }
+        body.book-rotated-active{ overflow:hidden; }
         .book-landscape-shell{
           position:relative; width:100%; min-width:0; max-width:100%; overflow-x:clip;
           overflow-anchor:none; -webkit-text-size-adjust:100%; text-size-adjust:100%;
@@ -231,11 +276,43 @@ export function BookLandscapeGate({ children, embedded = false }: BookLandscapeG
         .book-landscape-content{
           width:100%; min-width:0; max-width:100%; overflow-x:clip; overflow-anchor:none;
         }
-        [data-book-landscape-mode="fitted"]>.book-landscape-content{
-          display:block; visibility:visible; min-height:0; pointer-events:auto;
+        [data-book-landscape-mode="rotated"]{
+          position:fixed; inset:0; z-index:130; overflow:hidden;
+          background:linear-gradient(180deg,#06152a 0%,#0a2949 54%,#051421 100%);
         }
-        [data-book-landscape-mode="fitted"] :where(.bk-scene,.bs-stage){
-          visibility:visible!important; pointer-events:auto!important;
+        [data-book-landscape-mode="rotated"]>.book-landscape-content{
+          position:absolute; top:0; left:0;
+          /* The base max-width:100% would clamp the frame back to the portrait
+             viewport width — the rotated frame is deliberately wider. */
+          width:var(--book-frame-w); max-width:none; height:var(--book-frame-h);
+          transform:rotate(90deg) translateY(-100%); transform-origin:top left;
+          overflow:hidden;
+        }
+        /* Book left edge = physical screen top (notch); right edge = physical bottom. */
+        [data-book-landscape-mode="rotated"] :where(.bk-scene,.bs-stage){
+          min-height:100%; height:100%;
+          padding:.5rem max(.75rem,env(safe-area-inset-bottom)) .5rem max(.75rem,env(safe-area-inset-top));
+        }
+        [data-book-landscape-mode="rotated"] :where(.bk-stage,.bs-pager){ touch-action:none; }
+        [data-book-landscape-mode="rotated"] .bk-cover-board{
+          width:min(96%,780px); height:min(calc(var(--book-frame-h) - 64px),540px);
+          min-height:0; padding:clamp(5px,.85vw,11px);
+        }
+        [data-book-landscape-mode="rotated"] .bs-cover-board{ width:min(96%,820px); }
+        [data-book-landscape-mode="rotated"] .bs-spread{
+          height:min(calc(var(--book-frame-h) - 72px),560px);
+        }
+        [data-book-landscape-mode="rotated"] .bk-scene--embedded{
+          width:100%; min-height:100%; padding:.5rem; overflow:hidden;
+        }
+        [data-book-landscape-mode="rotated"] .bk-scene--embedded .bk-stage{
+          height:calc(var(--book-frame-h) - 48px);
+        }
+        .book-landscape-exit{
+          position:absolute; z-index:50; top:max(8px,env(safe-area-inset-right)); right:10px;
+          width:34px; height:34px; border-radius:50%;
+          border:1px solid rgba(242,217,138,.55); background:rgba(5,17,30,.72);
+          color:rgba(242,217,138,.9); font:700 15px/1 Georgia,serif; cursor:pointer;
         }
         @media print{
           .book-landscape-content{ display:block!important; visibility:visible!important; }
