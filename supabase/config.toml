@@ -3,6 +3,11 @@ project_id = "vrpbhguztsqakvjcezeb"
 [functions.gemini-chat]
 verify_jwt = false
 
+# Google Play RTDN (Pub/Sub push) JWT gönderemez; kimlik doğrulama
+# fonksiyon içindeki PLAY_RTDN_SECRET paylaşılan sırrı ile yapılır.
+[functions.play-rtdn]
+verify_jwt = false
+
 [functions.wolfram-calc]
 verify_jwt = false
 

@@ -2,6 +2,12 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
+import {
+  createServiceClient,
+  consumeAiQuota,
+  getAiQuotaStatus,
+  quotaExceededResponse,
+} from "../_shared/entitlements.ts";
 
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
@@ -12,7 +18,7 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    
+
     // Health check request (allow without full auth for monitoring)
     if (body.test === true) {
       const apiKey = Deno.env.get("LOVABLE_API_KEY");
@@ -21,13 +27,36 @@ serve(async (req) => {
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-    
+
+    // AI kullanımı hesaba yazıldığı için kimlik doğrulama zorunlu.
+    const { user, error: authError } = await validateAuth(req);
+    if (authError || !user) {
+      return unauthorizedResponse(corsHeaders);
+    }
+
+    const service = createServiceClient();
+
+    // Arayüz kota göstermek istediğinde: kota düşmeden mevcut durumu döndür.
+    if (body.quotaOnly === true) {
+      const quota = await getAiQuotaStatus(service, user.id);
+      return new Response(
+        JSON.stringify({ quota }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const { messages } = body;
     if (!Array.isArray(messages)) {
       return new Response(
         JSON.stringify({ error: GENERIC_ERRORS.INVALID_INPUT }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
+    }
+
+    // Aylık pakete göre kota düş; doluysa AI'a gitmeden yanıt ver.
+    const quota = await consumeAiQuota(service, user.id);
+    if (!quota.allowed) {
+      return quotaExceededResponse(corsHeaders, quota);
     }
 
     const apiKey = Deno.env.get("LOVABLE_API_KEY");
@@ -51,7 +80,7 @@ serve(async (req) => {
 
     if (!resp.ok) {
       logError('gemini-chat', `AI Gateway returned ${resp.status}`);
-      
+
       if (resp.status === 429) {
         return errorResponse(corsHeaders, 429, GENERIC_ERRORS.RATE_LIMIT);
       }
@@ -65,7 +94,10 @@ serve(async (req) => {
     const data = await resp.json();
     const text = data.choices?.[0]?.message?.content || "";
 
-    return new Response(JSON.stringify({ text }), {
+    return new Response(JSON.stringify({
+      text,
+      quota: { tier: quota.tier, used: quota.used, limit: quota.limit, remaining: quota.remaining },
+    }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
