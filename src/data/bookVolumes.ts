@@ -139,12 +139,12 @@ const COLLECTION_PALETTES: Record<BookCollectionId, readonly [string, string, st
 };
 
 const COLLECTION_VOLUME_LABELS: Record<BookCollectionId, string> = {
-  lessons: "DERS KİTABI",
-  exercises: "ÇALIŞMA KİTABI",
-  systems: "SİSTEM KİTABI",
-  operations: "OPERASYON KİTABI",
-  crew: "PERSONEL KİTABI",
-  glossary: "SÖZLÜK",
+  lessons: "\n",
+  exercises: "\n",
+  systems: "\n",
+  operations: "\n",
+  crew: "\n",
+  glossary: "\n",
 };
 
 const hashId = (value: string) => {
@@ -167,7 +167,7 @@ export function createBookVolumeDescriptor(input: {
   const [cover, coverDeep, accent] = palette[hashId(input.id) % palette.length];
   return {
     ...input,
-    numeral: input.numeral ?? COLLECTION_VOLUME_LABELS[input.collectionId],
+    numeral: input.numeral ?? "\n",
     shortTitle: input.shortTitle ?? input.title,
     cover,
     coverDeep,
