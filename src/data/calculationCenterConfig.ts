@@ -374,7 +374,7 @@ export const calculationCategories: CategoryConfig[] = [
   },
   {
     id: "cargo",
-    title: "Yük Elleçleme ve İstifleme",
+    title: "Cargo Handling and Stowage",
     subtitle: "",
     icon: Package,
     accent: "from-amber-500 via-orange-500 to-rose-500",
