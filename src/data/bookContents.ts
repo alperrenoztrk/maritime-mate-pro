@@ -94,6 +94,7 @@ const lessonVolumes: BookVolume[] = calculationCategories.map((category) => {
       subtitle: "\n",
       description: `${category.title} konu anlatımları, hesaplamaları, formülleri ve kuralları.`,
       group,
+      numeral: category.id === "navigation" ? "\n\n⚓\nNavigation\n\n" : "\n",
     }),
     chapters: [
       chapter(volumeId, 0, "topics", "Konu Anlatımları", root, [{ entries: topicEntries }]),
@@ -136,6 +137,7 @@ const exerciseVolumes: BookVolume[] = calculationCategories.map((lessonCategory)
         subtitle: "\n",
         description: `${lessonCategory.title} için konu alıştırmaları, quizler ve uygulama çalışmaları.`,
         group,
+        numeral: "\n",
       }),
       chapters: [
         chapter(volumeId, 0, "topics", "Alıştırma Konuları", topics.length ? root : quizRoute, [{ entries }]),
@@ -159,6 +161,7 @@ const systemVolumes: BookVolume[] = shipSystemsSections.map((system) => {
       shortTitle: system.title,
       subtitle: "\n",
       description: system.desc,
+      numeral: "\n",
     }),
     chapters: [
       chapter(volumeId, 0, "contents", "Sistem Konuları", root, [
@@ -179,6 +182,7 @@ const operationVolumes: BookVolume[] = shipTypes.map((ship) => {
       shortTitle: ship.label,
       subtitle: "\n",
       description: ship.description,
+      numeral: "\n",
     }),
     chapters: [
       chapter(volumeId, 0, "contents", "Operasyon Konuları", root, [
@@ -202,8 +206,9 @@ const crewVolume: BookVolume = {
     collectionId: "crew",
     title: "Gemi Personeli",
     shortTitle: "Personel",
-    subtitle: "Görevler ve Role Cetveli",
+    subtitle: "\n",
     description: "Bütün gemi personeli, görev ve sorumlulukları ile acil durum organizasyonu.",
+    numeral: "\n",
   }),
   chapters: [
     chapter("crew", 0, "muster", "Acil Durum Organizasyonu", "/crew/muster-list", [
@@ -219,8 +224,9 @@ const glossaryVolume: BookVolume = {
     collectionId: "glossary",
     title: "Denizcilik Sözlüğü",
     shortTitle: "Sözlük",
-    subtitle: "Bütün Denizcilik Terimleri",
+    subtitle: "\n",
     description: "Denizcilik terimlerinin tamamı kategori bazında tek başvuru kitabında.",
+    numeral: "\n",
   }),
   chapters: [
     chapter("glossary", 0, "categories", "Sözlük Kategorileri", "/glossary", [
