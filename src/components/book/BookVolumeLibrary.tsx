@@ -148,8 +148,8 @@ function LibraryFrame({
     <section className={`bvl-library ${compact ? "bvl-library--compact" : ""}`} aria-label={title}>
       <header className="bvl-header">
         <span className="bvl-kicker notranslate" translate="no" lang="en"></span>
-        <h1>{" "}</h1>
-        <p>{" "}</p>
+        <h1>{"\n"}</h1>
+        <p>{"\n"}</p>
       </header>
       {children}
 

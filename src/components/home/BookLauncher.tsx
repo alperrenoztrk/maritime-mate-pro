@@ -64,7 +64,7 @@ export function BookLauncher() {
         />
       )}
       <span className="text-[13px] font-medium tracking-wide text-white/85 drop-shadow-md">
-        {" "}
+        {"\n"}
       </span>
     </div>
   );
