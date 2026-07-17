@@ -1,6 +1,6 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, User as UserIcon, Crown, ChevronRight } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
+import { useEntitlement } from "@/contexts/EntitlementContext";
 import { getLanguageFlag } from "@/utils/languages";
 import { toast } from "sonner";
 
@@ -17,7 +18,14 @@ const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
   const { user, signOut } = useAuth();
+  const { tier, hasProAccess } = useEntitlement();
   const navigate = useNavigate();
+
+  const tierLabels: Record<string, string> = {
+    free: "Ücretsiz",
+    pro: "Pro",
+    lifetime: "Ömür Boyu",
+  };
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
@@ -119,6 +127,33 @@ const Settings = () => {
                     </Button>
                   </div>
                 )}
+              </CardContent>
+            </Card>
+
+            {/* Pro membership */}
+            <Card
+              className="shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:border-amber-400/60 transition-colors"
+              onClick={() => navigate("/pro")}
+            >
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Crown className="w-5 h-5 text-amber-400" />
+                  <span data-translatable>Mariner's Book Pro</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between gap-4">
+                  <div className="text-sm text-muted-foreground">
+                    <span data-translatable>Paketiniz</span>:{" "}
+                    <span className={hasProAccess ? "text-amber-400 font-medium" : ""} data-translatable>
+                      {tierLabels[tier] ?? tier}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm text-amber-400">
+                    <span data-translatable>{hasProAccess ? "Yönet" : "Pro'ya geç"}</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
               </CardContent>
             </Card>
 

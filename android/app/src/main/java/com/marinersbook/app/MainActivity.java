@@ -11,6 +11,8 @@ public class MainActivity extends BridgeActivity {
     public void onCreate(Bundle savedInstanceState) {
         // Özel ekran görüntüsü engelleme eklentisini köprü başlamadan önce kaydet.
         registerPlugin(ScreenProtectionPlugin.class);
+        // Google Play Billing (Pro abonelik / ömür boyu satın alma) eklentisi.
+        registerPlugin(PlayBillingPlugin.class);
 
         super.onCreate(savedInstanceState);
 

@@ -137,12 +137,52 @@ RESPONSE STYLE:
 - CRITICAL: You MUST respond entirely in ${langName} (language code: ${language}). Do not use any other language.`;
 };
 
+/**
+ * Kota/oturum durumlarını yerel-yanıt fallback'inden ayırmak için özel hata.
+ * `message` doğrudan kullanıcıya gösterilebilir.
+ */
+export class AIAccessError extends Error {
+  constructor(
+    message: string,
+    public readonly code: 'AI_QUOTA_EXCEEDED' | 'AUTH_REQUIRED',
+  ) {
+    super(message);
+    this.name = 'AIAccessError';
+  }
+}
+
+async function extractAccessError(error: unknown): Promise<AIAccessError | null> {
+  const context = (error as { context?: Response })?.context;
+  if (!(context instanceof Response)) return null;
+  if (context.status === 401) {
+    return new AIAccessError('Yapay zekâ asistanını kullanmak için giriş yapmalısınız.', 'AUTH_REQUIRED');
+  }
+  if (context.status === 429) {
+    try {
+      const body = await context.clone().json();
+      if (body?.code === 'AI_QUOTA_EXCEEDED') {
+        return new AIAccessError(
+          'Bu ayki yapay zekâ kullanım hakkınız doldu. Pro paket ile aylık kotanızı artırabilirsiniz (Ayarlar → Mariner\'s Book Pro).',
+          'AI_QUOTA_EXCEEDED',
+        );
+      }
+    } catch {
+      // gövde JSON değilse genel akışa bırak
+    }
+  }
+  return null;
+}
+
 // All AI calls go through edge function for security
 async function callGemini(messages: AIMessage[]): Promise<string> {
   const { data, error } = await supabase.functions.invoke('gemini-chat', {
     body: { messages },
   });
-  if (error) throw error;
+  if (error) {
+    const accessError = await extractAccessError(error);
+    if (accessError) throw accessError;
+    throw error;
+  }
   const text = (data?.text || data?.answer || '').toString();
   return text.trim();
 }
@@ -155,6 +195,7 @@ export async function callMaritimeRegulationsAssistant(messages: AIMessage[], la
   try {
     return await callGemini(withSystem);
   } catch (e) {
+    if (e instanceof AIAccessError) return e.message;
     console.error('AI error:', e);
     // Local heuristic fallback for regulations queries
     const last = messages.filter(m=>m.role==='user').pop()?.content.toLowerCase() || '';
@@ -209,6 +250,7 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
   try {
     return await callGemini(withSystem);
   } catch (e) {
+    if (e instanceof AIAccessError) return e.message;
     console.error('AI error:', e);
     // Heuristic fallback for navigation topics
     const last = messages.filter(m=>m.role==='user').pop()?.content.toLowerCase() || '';
@@ -473,6 +515,7 @@ ${context.lessonText}`;
   try {
     return await callGemini([{ role: 'system', content: system }, ...messages]);
   } catch (e) {
+    if (e instanceof AIAccessError) return e.message;
     console.error('Lesson tutor AI error:', e);
     return 'Şu anda eğitmen asistanına ulaşılamıyor. Lütfen biraz sonra tekrar deneyin. Bu arada ders anlatımını ve çözümlü örnekleri inceleyebilirsiniz.';
   }

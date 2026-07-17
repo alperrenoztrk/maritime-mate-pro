@@ -2,6 +2,7 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
+import { createServiceClient, consumeAiQuota, quotaExceededResponse } from "../_shared/entitlements.ts";
 
 serve(async (req) => {
   const origin = req.headers.get('origin');
@@ -60,6 +61,13 @@ serve(async (req) => {
       );
     }
 
+    // Aylık AI kotasını düş; doluysa Gemini'ye gitmeden bilgilendir.
+    // (Yukarıdaki yerel/statik yanıtlar kota tüketmez.)
+    const quota = await consumeAiQuota(createServiceClient(), user.id);
+    if (!quota.allowed) {
+      return quotaExceededResponse(corsHeaders, quota);
+    }
+
     // 1. Önce AI açıklama al
     const aiExplanation = await getGeminiExplanation(question, values, geminiApiKey, conversationHistory);
     
@@ -73,11 +81,12 @@ serve(async (req) => {
     const hybridResponse = combineResults(aiExplanation, wolframResult);
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         answer: hybridResponse.explanation,
         calculation: hybridResponse.calculation,
         source: wolframResult ? 'hybrid' : 'gemini',
-        wolfram_result: wolframResult
+        wolfram_result: wolframResult,
+        quota: { tier: quota.tier, used: quota.used, limit: quota.limit, remaining: quota.remaining }
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );

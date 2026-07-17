@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/hooks/useAuth";
+import { EntitlementProvider } from "@/contexts/EntitlementContext";
 import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
 import { DensityProvider } from "@/contexts/DensityContext";
@@ -60,6 +61,7 @@ const ConverterPage = lazy(() => import("./pages/Converter"));
 const PassagePlanPage = lazy(() => import("./pages/PassagePlanPage"));
 const MoonPhases = lazy(() => import("./pages/MoonPhases"));
 const Settings = lazy(() => import("./pages/Settings"));
+const ProPage = lazy(() => import("./pages/ProPage"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const Regulations = lazy(() => import("./pages/Regulations"));
 const StabilityFormulasPage = lazy(() => import("./pages/StabilityFormulas"));
@@ -224,6 +226,7 @@ const AnimatedRoutes = () => {
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
+        <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
         <Route path="/beta/work-hours" element={<PageTransition><BetaWorkHoursTool /></PageTransition>} />
         <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
@@ -418,6 +421,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <AuthProvider>
+          <EntitlementProvider>
           <LanguageProvider>
             <TooltipProvider>
               <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
@@ -438,6 +442,7 @@ const App = () => {
               </ThemeProvider>
             </TooltipProvider>
           </LanguageProvider>
+          </EntitlementProvider>
         </AuthProvider>
       </HelmetProvider>
     </QueryClientProvider>
