@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Crown, Check, RefreshCw, ExternalLink, WifiOff, Infinity as InfinityIcon, LogIn } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Crown, Check, RefreshCw, ExternalLink, WifiOff, Infinity as InfinityIcon, LogIn, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -30,7 +30,6 @@ const PRO_FEATURES = [
   "Gelişmiş hesaplamalar ve simülasyonlar",
   "Tüm quizler ve sınav hazırlık modülleri",
   "3D gemi sistemleri",
-  "Reklamsız kullanım",
   "Yapay zekâ asistanında yüksek aylık kota",
 ];
 
@@ -58,6 +57,8 @@ const PLAN_CARDS: PlanCardData[] = [
 
 const ProPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const gatedFeature = useMemo(() => searchParams.get("feature"), [searchParams]);
   const { user } = useAuth();
   const { tier, hasProAccess, fromCache, lastSyncedAt, purchase, restore, refresh } = useEntitlement();
 
@@ -167,6 +168,17 @@ const ProPage = () => {
               </CardContent>
             </Card>
           )}
+
+          {gatedFeature && !hasProAccess && (
+            <Card className="border-amber-400/40 bg-amber-500/10">
+              <CardContent className="flex items-center gap-3 py-3 text-sm">
+                <Lock className="w-4 h-4 shrink-0 text-amber-400" />
+                <span data-translatable>{`${gatedFeature} Pro paketine dahildir. Erişim için bir plan seçin.`}</span>
+              </CardContent>
+            </Card>
+          )}
+
+
 
           {hasProAccess ? (
             <Card className="border-emerald-500/40 bg-emerald-500/10">
