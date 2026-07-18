@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Crown, Check, RefreshCw, ExternalLink, WifiOff, Infinity as InfinityIcon, LogIn } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Crown, Check, RefreshCw, ExternalLink, WifiOff, Infinity as InfinityIcon, LogIn, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
