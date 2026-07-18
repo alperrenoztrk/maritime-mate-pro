@@ -23,6 +23,7 @@ import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { BookRouteFrame } from "@/components/book/BookRouteFrame";
+import { ProRoute } from "@/components/pro/ProRoute";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
