@@ -57,6 +57,8 @@ const PLAN_CARDS: PlanCardData[] = [
 
 const ProPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const gatedFeature = useMemo(() => searchParams.get("feature"), [searchParams]);
   const { user } = useAuth();
   const { tier, hasProAccess, fromCache, lastSyncedAt, purchase, restore, refresh } = useEntitlement();
 
