@@ -30,7 +30,6 @@ const PRO_FEATURES = [
   "Gelişmiş hesaplamalar ve simülasyonlar",
   "Tüm quizler ve sınav hazırlık modülleri",
   "3D gemi sistemleri",
-  "Reklamsız kullanım",
   "Yapay zekâ asistanında yüksek aylık kota",
 ];
 
