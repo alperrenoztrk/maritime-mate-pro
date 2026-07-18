@@ -28,16 +28,18 @@ serve(async (req) => {
       );
     }
 
-    // AI kullanımı hesaba yazıldığı için kimlik doğrulama zorunlu.
-    const { user, error: authError } = await validateAuth(req);
-    if (authError || !user) {
-      return unauthorizedResponse(corsHeaders);
-    }
-
-    const service = createServiceClient();
+    // Kimlik doğrulama opsiyonel: giriş yapılmışsa kota uygulanır, aksi halde anonim erişim.
+    const { user } = await validateAuth(req);
+    const service = user ? createServiceClient() : null;
 
     // Arayüz kota göstermek istediğinde: kota düşmeden mevcut durumu döndür.
     if (body.quotaOnly === true) {
+      if (!user || !service) {
+        return new Response(
+          JSON.stringify({ quota: null }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
       const quota = await getAiQuotaStatus(service, user.id);
       return new Response(
         JSON.stringify({ quota }),
@@ -53,10 +55,12 @@ serve(async (req) => {
       );
     }
 
-    // Aylık pakete göre kota düş; doluysa AI'a gitmeden yanıt ver.
-    const quota = await consumeAiQuota(service, user.id);
-    if (!quota.allowed) {
-      return quotaExceededResponse(corsHeaders, quota);
+    // Aylık pakete göre kota düş (yalnızca giriş yapılmış kullanıcılar için).
+    if (user && service) {
+      const quota = await consumeAiQuota(service, user.id);
+      if (!quota.allowed) {
+        return quotaExceededResponse(corsHeaders, quota);
+      }
     }
 
     const apiKey = Deno.env.get("LOVABLE_API_KEY");
