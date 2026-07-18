@@ -265,9 +265,10 @@ const AnimatedRoutes = () => {
         <Route path="/crew/:roleSlug/task/:taskIndex" element={<PageTransition><CrewTaskDeepDive /></PageTransition>} />
         <Route path="/bridge/:deviceId" element={<PageTransition><BridgeDeviceDetailPage /></PageTransition>} />
         <Route path="/passage-plan" element={<PageTransition><PassagePlanPage /></PageTransition>} />
-        <Route path="/ship-systems" element={<PageTransition><ShipSystemsPage /></PageTransition>} />
-        <Route path="/ship-systems/:sectionId" element={<PageTransition><ShipSystemDetailPage /></PageTransition>} />
-        <Route path="/ship-systems/:sectionId/:topicIndex" element={<PageTransition><ShipSystemDeepDive /></PageTransition>} />
+        <Route path="/ship-systems" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemsPage /></PageTransition></ProRoute>} />
+        <Route path="/ship-systems/:sectionId" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemDetailPage /></PageTransition></ProRoute>} />
+        <Route path="/ship-systems/:sectionId/:topicIndex" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemDeepDive /></PageTransition></ProRoute>} />
+
         <Route path="/calculations/:categoryId/:sectionId" element={<PageTransition><CalculationSectionPage /></PageTransition>} />
         {/* Stability sub-routes */}
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />
