@@ -589,7 +589,16 @@ export function BookSheet({
         [data-book-mode="reading"] .bs-route-content :where([role="tablist"],[role="toolbar"]){ display:block!important; position:static!important; }
         [data-book-mode="reading"] .bs-route-content :where(.fixed:not([role="dialog"])){ position:static!important; inset:auto!important; }
 
-        body.book-route-active [role="dialog"]:not(.marine-keep){ border-color:rgba(120,80,20,.45)!important; background:#f6ecd0!important; color:#4a3113!important; }
+        body.book-route-active [role="dialog"]:not(.marine-keep){ border-color:rgba(120,80,20,.45)!important; background:#f6ecd0!important; color:#000!important; }
+
+        /* Kitaplardaki tüm yazılar siyah mürekkeple basılır. Koyu zeminli
+           aksiyon düğmeleri/aktif çipler okunur kalsın diye açık renkte tutulur. */
+        .bs-spread{ color:#000; }
+        .bs-spread *{ color:#000 !important; }
+        .bs-spread *::marker{ color:#000 !important; }
+        .bs-spread .bs-formula::before{ color:#000 !important; }
+        .bs-spread .bs-btn:not(.bs-btn--ghost),
+        .bs-spread .bs-chip--on{ color:#f3e7c9 !important; }
 
         @media (max-width: 720px){
           .bs-stage{ padding-left:2px; padding-right:2px; }

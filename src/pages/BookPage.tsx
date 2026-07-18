@@ -882,6 +882,11 @@ function OpenBookVolume({
           to{ transform:scale(1); opacity:1; }
         }
         @media(min-width:721px){ .bk-scene--embedded .bk-stage{ animation-name:bk-inline-unfold-wide; } }
+        /* Kitap yapraklarındaki tüm yazılar siyah mürekkeple basılır.
+           (Koyu deri kapaktaki altın başlıklar bu kuralın dışındadır.) */
+        .bk-leaf{ color:#000; }
+        .bk-leaf *{ color:#000 !important; }
+        .bk-leaf *::marker{ color:#000 !important; }
         @media(max-width:720px){
           .bk-cover-board{ height:clamp(300px,min(62svh,78vw),430px); min-height:300px; padding:4px; }
           .bk-leaf{ padding:10px 7px 11px; }
