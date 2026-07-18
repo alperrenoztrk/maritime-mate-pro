@@ -169,6 +169,17 @@ const ProPage = () => {
             </Card>
           )}
 
+          {gatedFeature && !hasProAccess && (
+            <Card className="border-amber-400/40 bg-amber-500/10">
+              <CardContent className="flex items-center gap-3 py-3 text-sm">
+                <Lock className="w-4 h-4 shrink-0 text-amber-400" />
+                <span data-translatable>{`${gatedFeature} Pro paketine dahildir. Erişim için bir plan seçin.`}</span>
+              </CardContent>
+            </Card>
+          )}
+
+
+
           {hasProAccess ? (
             <Card className="border-emerald-500/40 bg-emerald-500/10">
               <CardHeader>
