@@ -905,11 +905,12 @@ function OpenBookVolume({
         .bk-static-leaf .bk-leaf{ position:absolute; inset:0; width:100%; height:100%; }
         .bk-turn-leaf{
           position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
-          transform-style:preserve-3d; will-change:transform,clip-path;
-          clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+          transform-style:preserve-3d; will-change:transform;
         }
         .bk-turn-leaf--forward{
           left:50%; transform-origin:left center;
+        }
+        .bk-turn-leaf--forward .bk-turn-face{
           clip-path:polygon(
             0 0,
             calc(100% - var(--book-turn-top-inset,0%)) 0,
@@ -920,6 +921,8 @@ function OpenBookVolume({
         }
         .bk-turn-leaf--backward{
           left:0; transform-origin:right center;
+        }
+        .bk-turn-leaf--backward .bk-turn-face{
           clip-path:polygon(
             var(--book-turn-top-inset,0%) 0,
             100% 0,
@@ -932,6 +935,7 @@ function OpenBookVolume({
           position:absolute; inset:0; overflow:hidden;
           border-radius:3px var(--book-turn-edge-radius,7px) var(--book-turn-edge-radius,7px) 3px;
           backface-visibility:hidden; -webkit-backface-visibility:hidden;
+          will-change:clip-path;
         }
         .bk-turn-leaf--backward .bk-turn-face{
           border-radius:var(--book-turn-edge-radius,7px) 3px 3px var(--book-turn-edge-radius,7px);
