@@ -632,17 +632,17 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Rüzgâr Kaynaklı Yüzey Akıntıları",
         content:
-          "Kalıcı rüzgâr sistemleri (alizeler, batı rüzgârları) okyanus yüzeyinde sürekli akıntılar oluşturur. Ekman teorisine göre yüzey akıntısı rüzgâr yönünden sağa (Kuzey Yarım Küre) veya sola (Güney Yarım Küre) yaklaşık 45° saparak akar. Bu yüzey akıntıları birleşerek büyük ölçekli gyre (döngü) sistemleri oluşturur: Kuzey Atlantik Gyre (Gulf Stream – Kuzey Atlantik Akıntısı – Kanarya Akıntısı – Kuzey Ekvatoral Akıntısı), Güney Atlantik Gyre, Kuzey ve Güney Pasifik Gyre'ları, Hint Okyanusu döngüleri. Batı sınır akıntıları (Gulf Stream, Kuroshio) doğu sınır akıntılarından çok daha güçlü ve dardır.",
+          "Kalıcı rüzgâr sistemleri (alizeler, batı rüzgârları) okyanus yüzeyine sürtünerek sürekli akıntılar üretir. **Ekman teorisi:** Coriolis nedeniyle yüzey suyu rüzgâr yönünden Kuzey yarımkürede **sağa ~45°** (güneyde sola) saparak akar; derinlik arttıkça sapma büyür ve hız azalır (**Ekman sarmalı**), net taşıma rüzgâra yaklaşık **90°** diktir.\n\n**Gyre'ler (döngüler):** Bu yüzey akıntıları büyük ölçekli **subtropikal gyre**lerde birleşir — Kuzey Atlantik (Gulf Stream → Kuzey Atlantik Akıntısı → Kanarya → Kuzey Ekvatoral), Güney Atlantik, Kuzey/Güney Pasifik ve Hint Okyanusu döngüleri. Kuzeyde saat yönünde, güneyde tersine dönerler.\n\n**Batı yoğunlaşması (western intensification):** Bir gyre'in **batı sınır** akıntıları (Gulf Stream, Kuroshio) dar, derin ve **çok hızlıdır** (3-5 kn); **doğu sınır** akıntıları (Kanarya, Kaliforniya) geniş, sığ ve yavaştır. Bu asimetri Coriolis'in enlemle değişiminden (beta etkisi) doğar.\n\n**Gemide önemi:** Batı sınır akıntıları rota optimizasyonunda en yüksek kazanç/kayıp potansiyelini taşır; Gulf Stream'de 3-4 kn lehte/aleyhte fark, günlük mesafeyi ve yakıtı ciddi değiştirir.",
       },
       {
         title: "Termohalin Dolaşım",
         content:
-          "Sıcaklık ve tuzluluk farkları tarafından yönlendirilen derin okyanus dolaşımıdır. Soğuk, tuzlu ve yoğun su kutup bölgelerinde dibe çökerek ekvator yönünde hareket eder; bu büyük ölçekli dolaşım, yüzey akıntılarını dolaylı olarak etkiler. Denizciler için doğrudan operasyonel etkisi yüzey akıntılarına göre sınırlıdır, ancak iklim değişikliği bağlamında akıntı rejimlerindeki uzun vadeli değişimleri anlamak için önemlidir.",
+          "**Termohalin dolaşım (THC)**, sıcaklık (**thermo**) ve tuzluluk (**haline**) kaynaklı yoğunluk farklarının sürüklediği derin okyanus dolaşımıdır — 'küresel taşıyıcı bant' (global conveyor belt) da denir.\n\n**Mekanizma:** Kutup bölgelerinde (Kuzey Atlantik, Antarktika çevresi) su soğuyup buz oluşurken tuz dışarı atıldığından **yoğunlaşır ve dibe çöker**; bu derin soğuk su ekvatora doğru yavaşça akar, başka bölgede yükselir. Döngü yüzlerce-binlerce yıl alır.\n\n**Denizciye etkisi:** Doğrudan operasyonel etkisi yüzey akıntılarına göre **sınırlıdır** (derinde ve yavaştır); ama yüzey akıntı rejimini ve iklimi (ör. Gulf Stream'in Avrupa'yı ılıtması) uzun vadede besler.\n\n**Gemide önemi:** THC tek başına rota kararı vermez, ama akıntı sistemlerinin 'neden orada' olduğunu ve uzun vadeli akıntı/iklim değişimlerini anlamanın çerçevesidir.",
       },
       {
         title: "Operasyonel Planlama",
         content:
-          "Rota planlamasında büyük akıntı sistemleri stratejik olarak kullanılır. Örneğin Kuzey Atlantik'te batıya giden gemiler Gulf Stream'in güney kenarına yönelirken, doğuya giden gemiler akıntıdan faydalanmak için kuzey kenarını tercih eder. Pilot chart'lar mevsimsel ortalama akıntı yönü ve hızını gösterir, ancak güncel uydu verileri ve oceanographic forecast'lar daha doğru bilgi sağlar. SOG ile STW arasındaki fark, akıntının gerçek etkisini gösterir ve düzenli olarak kontrol edilerek rota planına feedback sağlar.",
+          "Büyük akıntı sistemleri rota planında **stratejik** kullanılır: lehte akıntı aranır, aleyhte akıntıdan kaçınılır.\n\n**Örnek strateji:** Kuzey Atlantik'te **doğuya** giden gemi Gulf Stream'in lehte çekirdeğine girer; **batıya** giden gemi akıntının **dışına/kenarına** çıkarak aleyhte 3-4 kn'den kaçınır. Aynı iki liman arası, akıntı kullanımına göre saatlerce fark eder.\n\n**Kaynaklar:** **Pilot chart**'lar mevsimsel **ortalama** akıntı yön/hızını verir (planlamanın temeli); güncel **uydu altimetre** verisi ve oşinografik tahmin modelleri anlık, daha doğru bilgi sağlar. İkisi birlikte kullanılır.\n\n**Gerçek-zaman geri besleme:** **SOG − STW** farkı, o an yaşanan gerçek akıntı etkisidir; düzenli okunup rota planına geri beslenir. Beklenenden farklıysa akıntı çekirdeğinin yeri kaymış olabilir; rota buna göre ince ayarlanır.\n\n**Gemide önemi:** Akıntı/hava rotalaması (current/weather routing), modern ticari seyirde yakıt ve zaman tasarrufunun en büyük kalemlerinden biridir.",
       },
     ],
     keyPoints: [
@@ -661,17 +661,22 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Tanımlar ve Ölçüm",
         content:
-          "Set, akıntının aktığı yöndür (derece cinsinden); drift, akıntının hızıdır (knot cinsinden). Geminin COG (course over ground) ile heading arasındaki fark ve SOG ile STW arasındaki fark, mevcut akıntı bilgisini verir. Bu değerler periyodik fix'lerle doğrulanır: DR (dead reckoning) pozisyonu ile fix pozisyonu arasındaki vektör farkı, o zaman aralığındaki set ve drift'i gösterir. GPS pozisyonlarının yüksek doğrulukta olması sayesinde, saatlik fix'lerle bile güvenilir akıntı bilgisi elde edilebilir.",
+          "**Set** = akıntının **aktığı yön** (derece; 'nereye doğru'); **drift** = akıntının **hızı** (knot). Dikkat: rüzgâr 'nereden' estiğiyle, akıntı ise 'nereye' aktığıyla anılır.\n\n**İki ölçüm yolu:** (1) Anlık: **COG − heading** ve **SOG − STW** farkları o anki akıntı etkisini verir. (2) Ortalama: iki fix arası **DR mevkii ile gerçek fix arasındaki vektör**, o zaman aralığındaki set ve drift'tir.\n\n**Worked örnek:** 1 saatte DR mevkiiniz gerçek fix'ten 3 NM ve 090° yönünde geride kaldıysa → akıntı **set 090°, drift 3 kn**'dır (gemiyi doğuya 3 NM taşımış). GPS fix'leri yüksek doğrulukta olduğundan **saatlik fix'le** bile güvenilir akıntı çıkar.\n\n**Gemide önemi:** Set/drift 'hesaplanan' değil 'ölçülen' bir büyüklüktür; her fix onu günceller. Tahmin (pilot chart) ile ölçüm çeliştiğinde ölçüm esas alınır.",
       },
       {
         title: "Vektörel Çözümleme",
         content:
-          "Akıntılı seyirde CTS (course to steer) hesaplaması vektörel olarak yapılır. İstenen iz rotası (track), akıntı vektörü ve gemi hız vektörü bir üçgen oluşturur. Akıntı yönü ve hızı bilinen veya ölçülen değer olarak alınır; istenen iz üzerinde kalabilmek için dümen kursuna uygulanacak düzeltme bu üçgenden çıkarılır. Leeway (rüzgâr kayması) ayrı bir bileşendir ve akıntıyla karıştırılmamalıdır; özellikle yüksek freeboard'lu gemilerde leeway etkisi belirgin olabilir.",
+          "Akıntılı seyirde amaç, akıntıya rağmen **istenen iz (track)** üzerinde kalmaktır; bunun için tutulacak baş yönü (**CTS – Course To Steer**) bir **vektör üçgeninden** çıkar.\n\n**Üçgen:** (1) istenen iz yönü ve istenen zemin hızı; (2) **akıntı vektörü** (set/drift); (3) geminin su-hızı (STW) vektörü. Akıntı vektörünü iz başlangıcından çizip STW yarıçapıyla izi kestirdiğinizde, tutulacak baş yönü (CTS) ve gerçek zemin hızı (SOG) bulunur.\n\n**Leeway ayrı bileşendir:** Rüzgârın yol açtığı yanal kayma (**leeway**) akıntıyla **karıştırılmamalıdır**; ayrı bir açı olarak eklenir. Yüksek borda/hafif draftlı gemide (konteyner, PCTC) leeway belirgindir.\n\n**Gemide önemi:** ECDIS bu üçgeni otomatik çözer, ama ilkeyi bilmek CTS'in neden baş yönünden farklı olduğunu ve akıntı değişince neyin güncelleneceğini anlamayı sağlar.",
+        formula: {
+          text: "Vektör üçgeni: İstenen İz (track+SOG) = STW vektörü + Akıntı vektörü (set/drift)",
+          description:
+            "Bilinen akıntı ve STW ile üçgen çözülerek tutulacak baş yönü (CTS) ve zemin hızı (SOG) bulunur. Leeway ayrı bir açı olarak eklenir; akıntıyla karıştırılmaz.",
+        },
       },
       {
         title: "Operasyonel Uygulama",
         content:
-          "Açık denizde set-drift değerleri her vardiya değişiminde güncellenir ve kaptan brifingine dahil edilir. Kıyı yakını ve pilotaj sularında fix sıklığı artırılır ve akıntı sapması sıkı limitlerle izlenir. Boğaz ve dar geçişlerde gelgit akıntısı baskın olduğundan, gelgit tablolarından hesaplanan akıntı değerleri de dikkate alınır. ECDIS üzerinde DR ile GPS pozisyonu karşılaştırılarak akıntı etkisi görsel olarak takip edilir. Set-drift bilgisi ETA hesaplamasını doğrudan etkiler; günlük noon report'ta akıntının rota ve hız üzerindeki etkisi ayrıca raporlanmalıdır.",
+          "**Vardiya rutini:** Açık denizde set/drift her vardiya devrinde güncellenir ve kaptan brifingine girer. Kıyı ve pilotaj sularında **fix sıklığı artırılır** ve akıntı sapması sıkı limitlerle izlenir.\n\n**Gelgit akıntısı:** Boğaz ve dar geçişlerde baskın akıntı **gelgit** kaynaklıdır; yön ve hız saatler içinde tersine dönebilir. Bu yüzden gelgit **akıntı tablolarından/atlaslarından** hesaplanan değerler önceden rota planına konur.\n\n**Görsel takip:** ECDIS'te **DR ile GPS mevkisi** karşılaştırılarak akıntı etkisi çıplak gözle izlenir; büyüyen fark, akıntının gemiyi izden ittiğini gösterir.\n\n**Raporlama:** Set/drift ETA'yı doğrudan etkilediğinden **noon report**'ta akıntının rota ve hıza etkisi ayrıca raporlanır.\n\n**Gemide önemi:** Dar sularda tek bir kaçırılmış akıntı düzeltmesi gemiyi sete/sığlığa bastırabilir; bu yüzden pilotajda set/drift periyodik değil **sürekli** bir kontroldür.",
       },
     ],
     keyPoints: [
@@ -690,17 +695,22 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "ETA Hesabında Akıntı Etkisi",
         content:
-          "Geminin STW'si (speed through water) sabit tutulsa bile, karşı akıntı SOG'u (speed over ground) düşürür. Örneğin 14 knot STW ile seyreden ve 2 knot karşı akıntıya maruz kalan geminin SOG'u yaklaşık 12 knot olur. 1000 deniz millik bir seferde bu fark yaklaşık 12 saatlik ETA gecikmesine dönüşür. Sefer planı hazırlanırken, rota boyunca beklenen akıntı değerleri segmentlere bölünerek her segment için ayrı SOG hesaplanmalıdır. Güncel pilot chart verileri ve oşinografik tahminler kullanılarak en iyi, beklenen ve en kötü senaryo ETA'ları hesaplanır.",
+          "Geminin su-hızı (**STW**) sabit tutulsa bile, akıntı **zemin hızını (SOG)** değiştirir: SOG = STW ± akıntının rota üzerindeki bileşeni.\n\n**Worked örnek:** 14 kn STW + 2 kn **karşı** akıntı → SOG ≈ **12 kn**. 1000 NM seferde: akıntısız 1000/14 ≈ 71,4 saat; karşı akıntıyla 1000/12 ≈ 83,3 saat → **~12 saat** ETA gecikmesi. Aynı 2 kn **lehte** olsaydı SOG 16 kn, süre 62,5 saat → ~9 saat **erken**.\n\n**Segmentleme:** Rota boyunca akıntı değişir; sefer **segmentlere** bölünüp her segment için ayrı SOG ve süre hesaplanır, sonra toplanır. Pilot chart + güncel oşinografik tahminle **en iyi / beklenen / en kötü** ETA senaryoları çıkarılır.\n\n**Gemide önemi:** Tek bir 'ortalama hız' varsayımı uzun seferde saatlerce yanılır; segmentli ETA, liman slotu ve gelgit penceresi için gereklidir.",
       },
       {
         title: "Yakıt Tüketimi Üzerine Etkisi",
         content:
-          "Karşı akıntı nedeniyle ETA'yı korumak için hız artırılması gerektiğinde, yakıt tüketimi dramatik şekilde artar — yakıt tüketimi yaklaşık olarak hızın küpüyle orantılıdır. 2 knot karşı akıntıyı telafi etmek için makine devrini artırmak, günlük yakıt tüketimini %30–50 artırabilir. Alternatif olarak, ETA gecikmesi kabul edilerek ekonomik hızda seyredilir ve yakıt tasarrufu sağlanır. Bu ticari karar, charter party koşullarına, liman slot zamanlarına ve bunker stoklarına bağlıdır. Yardımcı akıntıda ise ETA öne çekilir ve gereksiz yakıt tüketiminden kaçınmak için makine devri düşürülebilir (slow steaming).",
+          "Karşı akıntıyı telafi için hız artırmak, yakıtı **orantısız** artırır; çünkü gövde direnci hızla büyür ve **yakıt tüketimi kabaca hızın küpüyle (∝ V³)** orantılıdır.\n\n**Worked mantık:** Hızı %10 artırmak yakıtı ~%33 (1,10³ ≈ 1,33) artırır. 2 kn karşı akıntıyı yenmek için gereken devir artışı, günlük yakıtı **%30-50** yükseltebilir. Bu yüzden çoğu zaman doğru karar hız artırmak değil, **ETA gecikmesini kabul edip ekonomik hızda (slow steaming)** gitmektir.\n\n**Ticari karar:** Hız/yakıt dengesi **charter party** koşullarına, liman slot zamanına ve bunker stokuna bağlıdır — mühendislik değil, ticari-operasyonel bir optimizasyondur. Lehte akıntıda ise ETA'yı korumak için devir **düşürülüp** yakıt biriktirilebilir.\n\n**Gemide önemi:** '2 kn akıntıyı yenerim' kararı çoğunlukla yakıtta en pahalı karardır; küp yasası nedeniyle hız her zaman ucuz değildir.",
+        formula: {
+          text: "Yakıt tüketimi ≈ k · V³  →  hız ×1,10 ise yakıt ×1,33",
+          description:
+            "Gövde direnci hızla arttığından yakıt kabaca hızın küpüyle orantılıdır; akıntıyı hızla yenmek pahalıdır (slow steaming mantığının temeli).",
+        },
       },
       {
         title: "Raporlama ve Senaryo Planlaması",
         content:
-          "Günlük noon report'ta, akıntının rota ve hız üzerindeki etkisi ayrı bir bölüm olarak raporlanmalıdır: planlanan SOG, gerçekleşen SOG, akıntı kaynaklı sapma ve tahmini kalan süre bilgileri verilir. Sefer öncesi en az üç senaryo (yardımcı akıntı, akıntısız, karşı akıntı) hazırlanmalı ve bunlara göre yakıt yeterliliği kontrol edilmelidir. Emniyet yakıt payı (bunker margin) hesaplanırken en kötü akıntı senaryosu dikkate alınmalıdır.",
+          "**Noon report:** Günlük öğle raporunda akıntının rota ve hıza etkisi ayrı bir kalem olur — planlanan SOG, gerçekleşen SOG, akıntı kaynaklı sapma ve tahmini kalan süre.\n\n**Senaryo planı:** Sefer öncesi en az **üç senaryo** hazırlanır — lehte akıntı / akıntısız / karşı akıntı — ve her biri için **yakıt yeterliliği** kontrol edilir.\n\n**Bunker margin:** Emniyet yakıt payı **en kötü** akıntı senaryosuna (ve hava payına) göre hesaplanır; 'beklenen' senaryoya göre yakıt yüklemek, ters akıntı/kötü havada limana ulaşamama riski doğurur.\n\n**Gemide önemi:** Akıntı hem ticari (ETA taahhüdü, demuraj) hem emniyet (yakıt yeterliliği) boyutuyla raporlanır; klasik hata, en iyi senaryoya göre yakıt planlayıp ters akıntıya yakalanmaktır.",
       },
     ],
     keyPoints: [
@@ -719,17 +729,17 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Monsun Etkisi",
         content:
-          "Hint Okyanusu'nda monsun rejimi, akıntı sistemini tamamen tersine çevirebilir. Güneybatı monsununda (Haziran–Eylül) Somalya Akıntısı kuzeye dönerken, kuzeydoğu monsununda (Aralık–Mart) güneye yönelir. Güneydoğu Asya denizlerinde de benzer mevsimsel değişimler görülür. Bu bölgelerde sefer planı yapan zabit, mevcut monsun döneminin akıntı rejimini pilot chart ve güncel oşinografik verilerden kontrol etmelidir.",
+          "Bazı bölgelerde akıntılar **mevsime göre tümüyle ters döner** — en çarpıcı örnek **Hint Okyanusu monsunudur**.\n\n**Monsun tersinmesi:** **Güneybatı monsununda (Haziran-Eylül)** Somali Akıntısı kuzeye/kuzeydoğuya güçlü akar; **kuzeydoğu monsununda (Aralık-Mart)** yön güneye döner. Kuzey Hint Okyanusu ve Güneydoğu Asya denizleri bu ritme uyar.\n\n**Sonuç:** Aynı rota, altı ay arayla **lehte** veya **aleyhte** güçlü akıntı demek olabilir; monsun ayrıca rüzgâr ve deniz durumunu da belirler (SW monsun = kaba deniz).\n\n**Gemide önemi:** Bu bölgede sefer planlayan zabit, **mevcut monsun döneminin** akıntı rejimini pilot chart + güncel oşinografik veriden mutlaka teyit eder; 'geçen sefer böyleydi' yanılgısı, ters mevsimde büyük ETA/yakıt hatası yapar.",
       },
       {
         title: "Diğer Mevsimsel Faktörler",
         content:
-          "Gulf Stream ve Kuroshio gibi büyük akıntılar mevsimsel olarak güç ve pozisyon değiştirir. Gulf Stream'in kuzey sınırı yaz aylarında kuzeye kayar, kış aylarında güneye çekilir. Ekvatoral akıntılarda El Niño/La Niña döngüleri normal akıntı düzenini bozabilir. Arktik buz örtüsünün mevsimsel değişimi, kutup bölgelerindeki akıntı rotalarını etkiler. Bu değişimlerin ölçeği ve zamanlaması klimatolojik atlaslardan genel olarak bilinir, ancak yıllar arası varyasyon önemli olabilir.",
+          "Monsun dışında da akıntılar mevsimsel ve yıllar arası değişir:\n\n- **Batı sınır akıntıları:** Gulf Stream ve Kuroshio'nun **kuzey sınırı** yazın kuzeye kayar, kışın güneye çekilir; çekirdeğin yeri birkaç yüz mil oynar.\n- **Ekvatoral akıntılar / ENSO:** **El Niño / La Niña** döngüleri Pasifik ekvatoral akıntı ve karşı-akıntı düzenini yıllar ölçeğinde bozar.\n- **Kutup:** Arktik **buz örtüsünün mevsimsel çekilmesi** kutup rotalarındaki akıntı ve seyredilebilirliği değiştirir.\n\nBu değişimlerin **ölçeği** klimatolojik atlaslardan genel bilinir, ama **yıllar arası varyasyon** büyük olabilir.\n\n**Gemide önemi:** Uzun ve yüksek enlem seferlerinde mevsimsel klimatoloji 'beklenti', güncel veri 'gerçek'tir; ikisi ayrışıyorsa güncel veri esas alınır.",
       },
       {
         title: "Operasyonel Sonuçlar",
         content:
-          "Mevsimsel akıntı değişimi, özellikle aynı rota üzerinde farklı mevsimlerde yapılan seferlerde belirgin performans farkı yaratır. Geçmiş sefer verilerinin referans alınması yararlı olmakla birlikte, önceki seferin akıntı koşulları mevcut mevsime doğrudan uygulanamaz. Güncel uydu altimetre verileri ve oşinografik tahmin modelleri, mevsimsel klimatolojiden daha doğru bilgi sağlar. Sefer planında mevsimsel akıntı beklentisi ile güncel veri birlikte değerlendirilmeli, ETA ve yakıt hesapları buna göre revize edilmelidir.",
+          "**Mevsim farkı performansa yansır:** Aynı rota, farklı mevsimlerde belirgin hız/ETA/yakıt farkı verir; bu yüzden geçmiş sefer verisi yararlıdır ama **doğrudan** kopyalanamaz — önceki seferin akıntısı bu mevsime uymayabilir.\n\n**Güncel > klimatoloji:** **Uydu altimetre** verisi ve oşinografik tahmin modelleri, mevsimsel ortalamadan daha doğru anlık bilgi verir; planlamada mevsimsel beklenti ile güncel veri **birlikte** okunur.\n\n**Revizyon:** ETA ve yakıt hesapları, sefer ilerledikçe ölçülen SOG−STW ile **sürekli revize** edilir; mevsimsel tahmin 'başlangıç', gerçek ölçüm 'düzeltme'dir.\n\n**Gemide önemi:** İyi bir sefer planı statik değildir; mevsimsel akıntı beklentisiyle kurulur, güncel veri ve ölçümle güncellenir — böylece hem yakıt hem ETA taahhüdü korunur.",
       },
     ],
     keyPoints: [
