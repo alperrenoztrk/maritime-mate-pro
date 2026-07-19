@@ -361,20 +361,21 @@ export function BookSheet({
         }
         .bs-turn-leaf{
           position: absolute;
-          top: 0; bottom: 0;
-          width: 50%;
+          inset: 0;
+          width: 100%;
           display: none;
           z-index: 6;
           pointer-events: none;
           transform-style: preserve-3d;
           will-change: transform;
         }
-        .bs-turn-leaf--forward{ left: 50%; transform-origin: left center; }
+        .bs-turn-leaf--forward{ left: 0; transform-origin: left center; }
         .bs-turn-leaf--backward{ left: 0; transform-origin: right center; }
         .bs-turn-face{
           position: absolute;
           inset: 0;
           overflow: hidden;
+          border-radius: 3px 6px 6px 3px;
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
           background: linear-gradient(180deg, #fbf2d9, #f1e2c0);
@@ -387,19 +388,13 @@ export function BookSheet({
           inset: 0;
           pointer-events: none;
           mix-blend-mode: multiply;
-          opacity: calc(var(--bs-shade, 0) * .68);
+          opacity: calc(var(--bs-shade, 0) * .6);
         }
-        .bs-turn-leaf--forward .bs-turn-face--front::after{
-          background: linear-gradient(90deg, rgba(58,35,9,.34), transparent 18%, rgba(255,255,255,.11) 78%, rgba(70,42,10,.16));
+        .bs-turn-face--front::after{
+          background: linear-gradient(90deg, rgba(58,35,9,.22), transparent 26%, transparent 74%, rgba(58,35,9,.22));
         }
-        .bs-turn-leaf--forward .bs-turn-face--back::after{
-          background: linear-gradient(90deg, rgba(70,42,10,.14), rgba(255,255,255,.12) 30%, transparent 82%, rgba(58,35,9,.31));
-        }
-        .bs-turn-leaf--backward .bs-turn-face--front::after{
-          background: linear-gradient(90deg, rgba(70,42,10,.16), rgba(255,255,255,.11) 22%, transparent 82%, rgba(58,35,9,.34));
-        }
-        .bs-turn-leaf--backward .bs-turn-face--back::after{
-          background: linear-gradient(90deg, rgba(58,35,9,.31), transparent 18%, rgba(255,255,255,.12) 70%, rgba(70,42,10,.14));
+        .bs-turn-face--back::after{
+          background: linear-gradient(90deg, rgba(70,42,10,.2), transparent 38%, transparent 62%, rgba(70,42,10,.2));
         }
         .bs-turn-shadow{
           position: absolute;
@@ -456,12 +451,12 @@ export function BookSheet({
         .bs-turning-leaf{
           position: absolute;
           z-index: 9;
-          top: 0; right: 0; bottom: 0;
-          width: 50%;
+          top: 0; left: 0; bottom: 0;
+          width: 100%;
           pointer-events: none;
           transform-origin: left center;
           backface-visibility: hidden;
-          border-radius: 0 5px 5px 0;
+          border-radius: 3px 6px 6px 3px;
           background:
             linear-gradient(90deg, rgba(93,63,25,.22), transparent 12%),
             linear-gradient(90deg, #ead9b4, #faf0d5 13%, #f4e4c3 100%);
@@ -553,9 +548,9 @@ export function BookSheet({
         .bs-route-content :where(th,td){ min-width:0!important; white-space:normal!important; }
         .bs-route-content :where(.break-inside-avoid,[class*="break-inside-avoid"],.bs-reading-section,.bs-topic-article,.bs-topic-figure,.bs-callout,.bs-formula,.bs-table-wrap,.bs-reading-resources){ break-inside:auto!important; page-break-inside:auto!important; }
         .bs-route-content :where(.bs-reading-section,.bs-topic-article){ content-visibility:visible!important; contain:none!important; contain-intrinsic-size:auto 0!important; }
-        .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col){ display:block!important; }
-        .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col) > * + *{ margin-top:.55rem; }
-        .bs-route-content :where(.flex){ min-width:0; max-width:100%; flex-wrap:wrap; }
+        .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col,.flex,.inline-flex){ display:block!important; }
+        .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col,.flex,.inline-flex) > * + *{ margin-top:.5rem; }
+        .bs-route-content :where(.flex,.inline-flex){ min-width:0; max-width:100%; }
         .bs-route-content :where(.sticky){ position:static!important; inset:auto!important; }
         .bs-route-content :where(.overflow-auto,.overflow-scroll,.overflow-y-auto,.overflow-y-scroll,.overflow-clip){ overflow:visible!important; }
         .bs-route-content :where([class*="max-h-"]){ max-height:none!important; overflow-y:visible!important; }
@@ -564,6 +559,9 @@ export function BookSheet({
         .bs-route-content :where([class*="w-screen"],[class*="min-w-"]){ min-width:0!important; max-width:100%!important; }
         .bs-route-content :where(.marine-shell){ display:block!important; min-height:0!important; overflow:visible!important; background:transparent!important; color:#4a3113!important; }
         .bs-route-content .marine-shell > .pointer-events-none{ display:none!important; }
+        /* Decorative, non-interactive background layers never belong on paper —
+           in any book mode they would only bleed past the printed page. */
+        .bs-route-content :where(.absolute.pointer-events-none,.fixed.pointer-events-none){ display:none!important; }
         .bs-route-content .marine-shell main{ display:block!important; min-height:0!important; max-width:none!important; padding:0!important; }
         .bs-route-content :where(.min-h-screen,[class*="min-h-[100svh]"],[class*="min-h-[100vh]"]){ min-height:0!important; background:transparent!important; background-image:none!important; }
         .bs-route-content :where(.container){ max-width:none!important; padding-left:0!important; padding-right:0!important; }
@@ -899,8 +897,7 @@ function BookLeafPager({
     if (turnRef.current) return false;
     const flow = flowRef.current;
     const leaf = leafRef.current;
-    const half = halfRef.current;
-    if (!flow || !leaf || !half) return false;
+    if (!flow || !leaf) return false;
     const metrics = metricsRef.current;
     if (metrics.width < 60) return false;
     const from = spreadRef.current;
@@ -912,29 +909,16 @@ function BookLeafPager({
     progressRef.current = 0;
 
     const leftColumn = from * 2;
-    const rightColumn = leftColumn + 1;
-    const halfGap = metrics.gap / 2;
-    // Oversized flows skip the two leaf-face clones (the leaf turns as plain
-    // paper) but never the covered-half clone below: it is what lets the
-    // target spread wait beneath the moving paper from the very first frame
-    // instead of teleporting into view mid-turn.
+    // The whole sheet (both pages of the current spread) turns as one and
+    // flips away to reveal the target spread waiting beneath it, so the entire
+    // page turns instead of only the spine-side half. Oversized flows skip the
+    // printed face clone and turn as plain paper. The back of the sheet stays
+    // blank paper, so only one clone is built (cheaper than the old three).
+    frontRef.current?.replaceChildren();
+    backRef.current?.replaceChildren();
     if (!light) {
-      if (direction === "forward") {
-        buildFace(frontRef.current, halfGap - rightColumn * metrics.stride);
-        buildFace(backRef.current, -(rightColumn + 1) * metrics.stride);
-      } else {
-        buildFace(frontRef.current, -leftColumn * metrics.stride);
-        buildFace(backRef.current, halfGap - (leftColumn - 1) * metrics.stride);
-      }
+      buildFace(frontRef.current, -leftColumn * metrics.stride);
     }
-    if (direction === "forward") {
-      buildFace(half, -leftColumn * metrics.stride);
-      half.className = "bs-half bs-half--left";
-    } else {
-      buildFace(half, halfGap - rightColumn * metrics.stride);
-      half.className = "bs-half bs-half--right";
-    }
-    half.style.display = "block";
     // The target spread waits beneath the moving paper, exactly like a book.
     flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
 

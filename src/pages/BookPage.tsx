@@ -634,17 +634,11 @@ function OpenBookVolume({
   const currentSpread = spreads[spreadIndex] ?? spreads[0];
   const fromSpread = turn ? spreads[turn.fromIndex] ?? currentSpread : currentSpread;
   const toSpread = turn ? spreads[turn.toIndex] ?? currentSpread : currentSpread;
-  const baseSpread = turn
-    ? turn.direction === "forward"
-      ? [fromSpread[0], toSpread[1]]
-      : [toSpread[0], fromSpread[1]]
-    : currentSpread;
-  const turningFront = turn
-    ? turn.direction === "forward" ? fromSpread[1] : fromSpread[0]
-    : null;
-  const turningBack = turn
-    ? turn.direction === "forward" ? toSpread[0] : toSpread[1]
-    : null;
+  // The whole visible sheet (both pages) turns as one: the target spread waits
+  // underneath while the current spread flips away to reveal it, so the entire
+  // page turns instead of only the spine-side half-leaf.
+  const baseSpread = turn ? toSpread : currentSpread;
+  const leafSpread = fromSpread;
 
   return (
     <BookLandscapeGate embedded={embedded} onExit={onExit}>
@@ -696,7 +690,7 @@ function OpenBookVolume({
                 decorative={Boolean(turn)}
               />
               <span className="bk-gutter" aria-hidden="true" />
-              {turn && turningFront && turningBack && (
+              {turn && (
                 <>
                   <span
                     ref={shadowRef}
@@ -709,21 +703,11 @@ function OpenBookVolume({
                     aria-hidden="true"
                   >
                     <div ref={frontFaceRef} className="bk-turn-face bk-turn-face--front">
-                      <BookLeaf
-                        leaf={turningFront}
-                        side={turn.direction === "forward" ? "right" : "left"}
-                        firstLeaf={false}
-                        decorative
-                      />
+                      <BookLeaf leaf={leafSpread[0]} side="left" firstLeaf={false} decorative />
+                      <BookLeaf leaf={leafSpread[1]} side="right" firstLeaf={false} decorative />
+                      <span className="bk-gutter" aria-hidden="true" />
                     </div>
-                    <div ref={backFaceRef} className="bk-turn-face bk-turn-face--back">
-                      <BookLeaf
-                        leaf={turningBack}
-                        side={turn.direction === "forward" ? "left" : "right"}
-                        firstLeaf={false}
-                        decorative
-                      />
-                    </div>
+                    <div ref={backFaceRef} className="bk-turn-face bk-turn-face--back" />
                   </div>
                 </>
               )}
@@ -815,35 +799,23 @@ function OpenBookVolume({
         .bk-frontispiece strong{ max-width:82%; margin-top:7px; font-size:clamp(.62rem,1.4vw,1rem); line-height:1.3; text-wrap:balance; }
         .bk-frontispiece p{ max-width:84%; margin-top:8px; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
         .bk-turn-leaf{
-          position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
+          position:absolute; z-index:8; inset:0; width:100%; pointer-events:none;
           transform-style:preserve-3d; will-change:transform;
         }
-        .bk-turn-leaf--forward{ right:0; transform-origin:left center; }
-        .bk-turn-leaf--backward{ left:0; transform-origin:right center; }
+        .bk-turn-leaf--forward{ transform-origin:left center; }
+        .bk-turn-leaf--backward{ transform-origin:right center; }
         .bk-turn-face{
-          position:absolute; inset:0; overflow:hidden;
+          position:absolute; inset:0; overflow:hidden; border-radius:3px 7px 7px 3px;
           backface-visibility:hidden; -webkit-backface-visibility:hidden;
         }
-        .bk-turn-face--front{ transform:rotateY(0deg) translateZ(.4px); }
-        .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.4px); }
-        .bk-turn-face .bk-leaf{ position:absolute; inset:0; width:100%; }
+        .bk-turn-face--front{ display:grid; grid-template-columns:1fr 1fr; transform:translateZ(.4px); }
+        .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.4px); background:linear-gradient(180deg,#f7eccf,#e8d6ac); }
+        .bk-turn-face--front .bk-leaf{ position:relative; inset:auto; width:auto; height:100%; }
         .bk-turn-face--front::after,.bk-turn-face--back::after{
           content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply;
         }
-        .bk-turn-face--front::after{ opacity:calc(var(--bk-shade,0) * .62); }
-        .bk-turn-face--back::after{ opacity:calc(var(--bk-shade,0) * .74); }
-        .bk-turn-leaf--forward .bk-turn-face--front::after{
-          background:linear-gradient(90deg,rgba(58,35,9,.34),transparent 18%,rgba(255,255,255,.11) 78%,rgba(70,42,10,.16));
-        }
-        .bk-turn-leaf--forward .bk-turn-face--back::after{
-          background:linear-gradient(90deg,rgba(70,42,10,.14),rgba(255,255,255,.12) 30%,transparent 82%,rgba(58,35,9,.31));
-        }
-        .bk-turn-leaf--backward .bk-turn-face--front::after{
-          background:linear-gradient(90deg,rgba(70,42,10,.16),rgba(255,255,255,.11) 22%,transparent 82%,rgba(58,35,9,.34));
-        }
-        .bk-turn-leaf--backward .bk-turn-face--back::after{
-          background:linear-gradient(90deg,rgba(58,35,9,.31),transparent 18%,rgba(255,255,255,.12) 70%,rgba(70,42,10,.14));
-        }
+        .bk-turn-face--front::after{ opacity:calc(var(--bk-shade,0) * .5); background:linear-gradient(90deg,rgba(58,35,9,.22),transparent 26%,transparent 74%,rgba(58,35,9,.22)); }
+        .bk-turn-face--back::after{ opacity:calc(var(--bk-shade,0) * .6); background:linear-gradient(90deg,rgba(70,42,10,.2),transparent 38%,transparent 62%,rgba(70,42,10,.2)); }
         .bk-turn-shadow{
           position:absolute; z-index:7; top:0; bottom:0; width:22%; transform:translateX(-50%); pointer-events:none;
           left:50%; opacity:0; will-change:left,opacity;
