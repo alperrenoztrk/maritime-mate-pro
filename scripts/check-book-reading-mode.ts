@@ -128,6 +128,8 @@ if (
 if (
   !bookPage.includes("bk-static-leaf") ||
   !bookPage.includes("width:50%") ||
+  !bookPage.includes("getBookTurnProgressFromContact(") ||
+  !bookSheet.includes("getBookTurnProgressFromContact(") ||
   !bookPage.includes("--book-turn-grab-y") ||
   !bookSheet.includes("--book-turn-grab-y")
 ) {
