@@ -758,17 +758,17 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Temel Semboller",
         content:
-          "İzobarlar: sürekli eğriler, genellikle 4 hPa aralıkla, basınç değerleri üzerinde yazılıdır. Alçak basınç merkezi 'L' veya 'A' (Alçak), yüksek basınç merkezi 'H' veya 'Y' (Yüksek) ile gösterilir. Cepheler renkli çizgilerle belirtilir: soğuk cephe mavi üçgenlerle, sıcak cephe kırmızı yarım dairelerle, oklüde cephe her ikisinin birleşimiyle, stasyoner cephe karşılıklı üçgen ve yarım dairelerle gösterilir. Trough (oluk) kesik çizgiyle, ridge (sırt) zigzag çizgiyle temsil edilir.",
+          "Synoptik harita, atmosferi standart bir sembol dilinde gösterir; bu dili okumak köprüüstünde bağımsız hava değerlendirmesinin temelidir.\n\n**Basınç:** **İzobarlar** sürekli eğrilerdir (genelde 4 hPa aralık, üzerinde değer yazılı). Merkezler: alçak **L / A (Alçak)**, yüksek **H / Y (Yüksek)**.\n\n**Cepheler (renkli, dişli çizgiler):**\n- **Soğuk cephe:** mavi, **üçgen** dişli.\n- **Sıcak cephe:** kırmızı, **yarım daire** dişli.\n- **Oklüde cephe:** mor, üçgen + yarım daire birlikte.\n- **Stasyoner cephe:** karşılıklı (iki yöne) üçgen ve yarım daire.\n\n**Diğer:** **Trough (oluk)** kesik/kalın çizgi, **ridge (sırt)** izobar kıvrımı; tropik sistemler özel siklon sembolüyle.\n\n**Gemide önemi:** Cephe çizgisindeki **dişlerin yönü** hareket yönünü verir; bu tek ayrıntı, cephenin size doğru mu geldiğini anında söyler.",
       },
       {
         title: "Rüzgâr Barb'ları ve İstasyon Modeli",
         content:
-          "Rüzgâr barb'ı, istasyon noktasından estiği yöne doğru çizilen bir çubuktur. Kısa çizgi 5 knot, uzun çizgi 10 knot, bayrak (üçgen) 50 knot rüzgâr hızını temsil eder. İstasyon modeli (station plot) kompakt bir şekilde tek noktada şu bilgileri verir: rüzgâr yönü ve hızı, bulut örtüsü (çember doluluk oranı), sıcaklık, çiğ noktası, basınç ve basınç eğilimi. Bu modeli okuyabilmek, harita üzerinde herhangi bir noktanın mevcut koşullarını hızlıca değerlendirmeyi sağlar.",
+          "**Rüzgâr barb'ı**, istasyon noktasından rüzgârın **estiği yöne** çizilen bir çubuktur; kuyruğundaki tüyler hızı kodlar: **kısa tüy = 5 kn**, **uzun tüy = 10 kn**, **dolu üçgen (bayrak) = 50 kn**.\n\n**Worked örnek:** Bir bayrak + iki uzun tüy = 50 + 10 + 10 = **70 kn**; çubuğun yönü rüzgârın nereden estiğini gösterir (ör. çubuk KB'ye uzanıyorsa rüzgâr KB'den, yani 315°).\n\n**İstasyon modeli (station plot):** Tek noktada kompakt biçimde rüzgâr yön/hızı, bulut örtüsü (çemberin doluluğu), sıcaklık, çiğ noktası, basınç ve **basınç eğilimini** verir. Bu modeli okuyabilmek, haritadaki herhangi bir noktanın koşulunu tek bakışta değerlendirmeyi sağlar.\n\n**Gemide önemi:** Barb okuma pratiği, tahmin bülteni olmadan bile haritadan rota üzerindeki rüzgârı hızlı çıkarmanın anahtarıdır.",
       },
       {
         title: "Operasyonel Okuma ve Doğrulama",
         content:
-          "Synoptik harita okunurken ilk kontrol, haritanın geçerlilik zamanıdır (UTC). Harita zamanı ile mevcut zaman arasındaki fark arttıkça güvenilirliği azalır. Rota üzerindeki kritik semboller (cephe konumları, sıkışık izobar bölgeleri, tropikal sistem pozisyonları) vardiya notlarına aktarılır ve ETA çizelgesiyle eşleştirilir. Birden fazla kaynak (NOAA, ECMWF, JMA, UK Met Office) karşılaştırılarak model tutarsızlıkları tespit edilir. Hava durumu faksı veya internet üzerinden alınan haritalar, NAVTEX ve SafetyNET uyarılarıyla çapraz kontrol edilir.",
+          "Synoptik harita okumada **ilk kontrol zamandır (UTC geçerlilik anı)**; harita ile şimdi arasındaki fark büyüdükçe güvenilirlik düşer, eski harita yanıltır.\n\n**Rota eşleştirme:** Rota üzerindeki kritik semboller — cephe konumları, **sık izobar** bölgeleri, tropik sistem mevkileri — vardiya notlarına aktarılır ve **ETA çizelgesiyle eşleştirilir**: 'X noktasına vardığımda cephe nerede olur?'\n\n**Çoklu kaynak:** Birden fazla merkez (NOAA, ECMWF, JMA, UK Met Office) karşılaştırılıp **model tutarsızlığı** aranır; kaynaklar ayrışıyorsa belirsizlik yüksektir, ihtiyat artırılır.\n\n**Çapraz kontrol:** Faks/internet haritaları **NAVTEX ve SafetyNET** uyarılarıyla teyit edilir.\n\n**Gemide önemi:** Harita 'okundu' değil 'rotayla eşleştirildi' ölçüsünde işe yarar; amaç güzel bir resim değil, 'ne zaman-nerede ne olacak' cevabıdır.",
       },
     ],
     keyPoints: [
@@ -787,17 +787,17 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Ardışık Harita Karşılaştırması",
         content:
-          "Cephe hareket hızını tahmin etmek için ardışık iki synoptik haritada aynı cephenin konumu karşılaştırılır. İki harita arasındaki süre (genellikle 6 veya 12 saat) ve cephenin kat ettiği mesafe kullanılarak hareket hızı hesaplanır. Soğuk cepheler genellikle 25–40 knot, sıcak cepheler 15–25 knot hızla ilerler; ancak bu değerler büyük değişkenlik gösterebilir. Cephenin hareket yönü, arkasındaki hava kütlesinin baskı yönü ve üst seviye akışlarla belirlenir.",
+          "Cephe hareket hızını bulmanın pratik yolu, **ardışık iki synoptik haritada** aynı cephenin konumunu karşılaştırmaktır.\n\n**Worked örnek:** Cephe 12 saatte 300 NM ilerlediyse hız = 300 ÷ 12 = **25 kn**. Bu hız, geminizin ETA'sıyla birleştirilerek karşılaşma anı bulunur.\n\n**Tipik hızlar:** Soğuk cepheler genelde **25-40 kn**, sıcak cepheler **15-25 kn** ilerler — ama büyük değişkenlik gösterir; ölçmek varsaymaktan iyidir. Cephenin **yönü**, arkasındaki hava kütlesinin baskısı ve üst seviye (jet) akışıyla belirlenir.\n\n**Gemide önemi:** Tek haritadan cephe hızı çıkmaz; en az iki zaman adımı gerekir. Hız bir kez bulununca, 'cepheyi nerede/ne zaman keserim' sorusu hesaplanabilir hâle gelir.",
       },
       {
         title: "Şiddet Değerlendirmesi",
         content:
-          "Cephenin operasyonel etkisi, cephe boyunca sıcaklık kontrastına ve nem farkına bağlıdır. Büyük sıcaklık kontrastı güçlü konveksiyon, şiddetli yağış ve rüzgâr gustları üretir. Cephenin zayıflaması veya güçlenmesi, harita serisinden izlenebilir: izobar sıkışmasının artması güçlenmeyi, gevşemesi zayıflamayı işaret eder. Cephenin oklüzyona girmesi, yüzey etkisinin karmaşıklaşması ve genellikle zayıflamaya başlaması anlamına gelir.",
+          "Bir cephenin operasyonel şiddeti, cephe boyunca **sıcaklık ve nem kontrastına** bağlıdır; kontrast büyükse konveksiyon, yağış ve rüzgâr hamlesi güçlüdür.\n\n**Harita serisinden trend:** **İzobar sıkışmasının artması** cephenin **güçlendiğini**, gevşemesi **zayıfladığını** gösterir. Cephe hattı boyunca izobarların keskin 'dirsek' yapması aktif, canlı bir cephedir.\n\n**Oklüzyon işareti:** Cephenin **oklüzyona girmesi**, sıcak sektörün yüzeyden koptuğunu ve depresyonun olgunlaşıp genelde **zayıflamaya** başladığını (ama yağışın sürebildiğini) gösterir.\n\n**Gemide önemi:** 'Bu cephe sertleşiyor mu?' sorusu tek haritadan değil, **harita dizisinden** (izobar sıkışması trendi) yanıtlanır; sertleşen cepheye erken hazırlık yapılır.",
       },
       {
         title: "Operasyonel Zamanlama",
         content:
-          "Cephenin tahmini geçiş zamanı, geminin mevcut rotası ve hızıyla birlikte değerlendirilerek karşılaşma zamanı ve yeri hesaplanır. Bu hesap, gerekirse rota veya hız değiştirerek cephe geçişini daha uygun bir zamanda veya konumda karşılamayı mümkün kılar. Mooring, kargo operasyonu, pilot alma gibi zamana hassas faaliyetler cephe geçiş tahminine göre programlanır. Plan tek bir tahmine kilitlenmemeli; cephe beklentiden hızlı veya yavaş ilerlemesi durumunda Plan B hazır tutulmalıdır.",
+          "Cephenin tahmini geçiş anı, geminin **rotası ve hızıyla** birleştirilerek karşılaşma **zamanı ve yeri** hesaplanır.\n\n**Zamanlama seçeneği:** Bu hesap, rota veya hızı değiştirerek cephe geçişini **daha uygun bir zaman/konumda** karşılama imkânı verir — örneğin geçişi gündüze almak ya da en kötü sektörden kaçmak için hızı ayarlamak.\n\n**Hassas işler:** Mooring, kargo operasyonu, pilot alma gibi zaman-duyarlı faaliyetler cephe geçiş tahminine göre programlanır (geçişten önce bitir ya da sonraya ertele).\n\n**Plan B:** Plan tek tahmine kilitlenmez; cephe beklenenden hızlı/yavaş ilerlerse devreye girecek alternatif (bekleme, sığınma, rota sapması) hazır tutulur.\n\n**Gemide önemi:** Cephe geçişi 'başa gelen' değil 'zamanlanan' bir olaydır; iyi zabit cepheyi seçtiği yerde ve saatte karşılar.",
       },
     ],
     keyPoints: [
@@ -816,17 +816,22 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Rüzgâr Tahmini",
         content:
-          "İzobar aralığından geostrofik rüzgâr hızı tahmin edilir. Genel kural olarak, 60° enlemde 5° boylam mesafede 4 hPa basınç farkı yaklaşık 20 knot geostrofik rüzgâra karşılık gelir; enlem azaldıkça aynı gradyan daha yüksek rüzgâr üretir. Yüzey rüzgârı, geostrofik değerin deniz üzerinde %70–80'i, kara üzerinde %50–60'ı kadardır. Rüzgâr yönü, izobar yönünden deniz üzerinde 10°–15°, kara üzerinde 25°–35° yüksek basınç tarafına sapar. Konvektif koşullarda (kümülonimbus, squall line) anlık gust değerleri ortalama rüzgârın 1.5–2 katına ulaşabilir.",
+          "Haritadan rüzgâr çıkarmanın temeli **izobar aralığıdır**.\n\n**Pratik ölçek kuralı:** Yaklaşık olarak **60° enlemde, 5° boylam mesafede 4 hPa** fark ~**20 kn** geostrofik rüzgâra denktir; enlem azaldıkça (Coriolis düşer) aynı gradyan **daha yüksek** rüzgâr verir. Kesin değer için haritanın geostrofik rüzgâr ölçeği kullanılır.\n\n**Yüzeye indirme:** Yüzey rüzgârı geostrofiğin **deniz üzerinde %70-80'i**, kara üzerinde %50-60'ı kadardır; yön ise izobardan **deniz üzerinde 10-15°**, karada 25-35° yüksek basınç tarafına sapar.\n\n**Gust payı:** Konvektif koşulda (Cb, squall line) anlık hamleler ortalamanın **1,5-2 katına** çıkabilir.\n\n**Gemide önemi:** Bu adımlarla, tahmin bülteni gelmeden haritadan rota rüzgârını ±birkaç knot doğrulukla kestirebilirsiniz — proaktif köprüüstünün işaretidir.",
+        formula: {
+          text: "Kaba ölçek: 60°N'de 5° boylam / 4 hPa ≈ 20 kn geostrofik. Yüzey ≈ geostrofik × 0,7–0,8 (deniz), izobardan 10–15° sapma.",
+          description:
+            "Enlem düştükçe aynı gradyan daha yüksek rüzgâr verir (Coriolis azalır). Konvektif gust ≈ ortalama × 1,5–2.",
+        },
       },
       {
         title: "Deniz Durumu Tahmini",
         content:
-          "Rüzgâr hızı belirlendikten sonra, rüzgârın esme süresi ve fetch mesafesi değerlendirilerek dalga gelişimi tahmin edilir. Tam gelişmiş denizde dalga yüksekliği yalnızca rüzgâr hızına bağlıdır. Ancak çoğu durumda deniz tam gelişmemiştir; fetch veya süre sınırlıdır. Pratik amaçla, rüzgâr hızı, esiş süresi ve fetch'in üçünden en küçüğü dalga gelişimini sınırlayan faktördür. Swell bileşeni bu hesaplamanın dışındadır ve ayrıca değerlendirilmelidir. Deniz durumu tahmini yapılırken yerel topografik etkiler (ada, burun, sığ su) dikkate alınmalıdır.",
+          "Rüzgâr bulununca, dalga gelişimi **üç girdiyle** kestirilir: rüzgâr **hızı**, esiş **süresi (duration)** ve **fetch** (açık su mesafesi).\n\n**Sınırlayıcı kural:** Dalga gelişimini, bu üç faktörden **en küçüğü** belirler. **Tam gelişmiş denizde** (süre ve fetch bol) dalga yüksekliği yalnız rüzgâr hızına bağlıdır; ama çoğu durumda fetch veya süre sınırlıdır ve deniz 'gelişmemiştir'.\n\n**Swell ayrı:** Uzak kaynaklı **swell** bu hesabın dışındadır; ayrıca değerlendirilip wind sea ile bileşke deniz çıkarılır.\n\n**Yerel etkiler:** Ada, burun, sığ su (shoaling) ve akıntı-dalga etkileşimi (akıntıya karşı dalga dikleşir) dalgayı yerel olarak büyütür.\n\n**Gemide önemi:** 'F7 var' dalga hakkında yetmez; süre + fetch + swell + yerel etki birlikte okunmadan deniz durumu ve gemi hareketi doğru öngörülemez.",
       },
       {
         title: "Gözlem ile Doğrulama",
         content:
-          "Haritadan çıkarılan tahminler, gemideki gerçek gözlemlerle sürekli karşılaştırılmalıdır. Tahmin ile gözlem arasındaki fark, ya harita analizinin ya da yerel koşulların standart dışı olduğunu gösterir. Her iki durumda da dikkat artırılmalıdır. Gözlem sapmalarının kaydedilmesi ve bir sonraki vardiyaya aktarılması, ekibin kolektif hava değerlendirmesini güçlendirir. Rota segmentlerine göre deniz durumu notu hazırlamak, sonraki seferlerde referans olarak kullanılabilir.",
+          "Haritadan çıkarılan tahmin, gemideki **gerçek gözlemle sürekli karşılaştırılır**; tahmin bir 'hipotez', gözlem 'gerçektir'.\n\n**Fark = uyarı:** Tahmin ile gözlem ayrışıyorsa, ya harita analizi ya da **yerel koşul** standart dışıdır; her iki hâlde de dikkat artırılır (belki cephe beklenenden hızlı, belki yerel bir etki var).\n\n**Kolektif hafıza:** Gözlem sapmaları kaydedilip bir sonraki vardiyaya aktarılır; ekibin ortak hava değerlendirmesini güçlendirir. Rota segmentlerine göre deniz durumu notu, sonraki seferlere referans olur.\n\n**Gemide önemi:** İyi hava değerlendirmesi tek yönlü değildir; harita → tahmin → gözlem → düzeltme döngüsüdür ve bu döngü ne kadar sık dönerse köprüüstü o kadar 'önde' olur.",
       },
     ],
     keyPoints: [
@@ -845,17 +850,17 @@ export const meteorologyTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Risk Tanımlama ve Sınıflandırma",
         content:
-          "Rota üzerinde meteorolojik risk değerlendirmesi, olasılık ve etki matrisine dayalı olarak yapılır. Her rota segmenti için beklenen hava koşulları, dalga yüksekliği, görüş, rüzgâr hızı ve akıntı parametreleri değerlendirilir. Risk seviyesi düşük (yeşil), orta (sarı), yüksek (kırmızı) olarak kodlanır. Tetikleyici limitler önceden tanımlanır: örneğin Force 7 üzeri rüzgâr, 4 m üzeri dalga yüksekliği veya 2 NM altı görüş gibi eşik değerler belirlenir.",
+          "Rota üzerindeki meteorolojik risk, **olasılık × etki** matrisiyle değerlendirilir; her rota **segmenti** için beklenen dalga yüksekliği, görüş, rüzgâr ve akıntı ayrı ayrı bakılır.\n\n**Renk kodu:** Risk seviyesi **düşük (yeşil)**, **orta (sarı)**, **yüksek (kırmızı)** olarak kodlanır.\n\n**Tetikleyici limitler (önceden tanımlı):** Örneğin **F7 üzeri rüzgâr**, **4 m üzeri Hs**, **2 NM altı görüş** gibi eşikler baştan yazılır; bir segment bu eşiği aşıyorsa otomatik 'kırmızı' olur. Limitler gemiye, yüke ve şirket politikasına göre belirlenir.\n\n**Gemide önemi:** Eşikleri **önceden** tanımlamak, kriz anında 'acaba yeterince kötü mü' tartışmasını ortadan kaldırır; karar, önceden konmuş sayıya göre otomatiktir.",
       },
       {
         title: "Görsel İşaretleme ve İletişim",
         content:
-          "ECDIS üzerinde veya kağıt haritada riskli segmentler renk kodlarıyla işaretlenir. Her segment için tetikleyici limit değerleri, beklenen koşullar ve alternatif planlar (hız değişikliği, rota sapması, bekleme) yazılı olarak hazırlanır. Bu bilgiler vardiya devir tesliminde harita üzerinden brifing yapılarak aktarılır. Tüm ekibin aynı risk haritasını görmesi ve paylaşması, 'herkes aynı resme bakıyor' ilkesini hayata geçirir.",
+          "Riskli segmentler **ECDIS** veya kâğıt haritada renk koduyla işaretlenir; her segment için **tetik limitleri, beklenen koşullar ve alternatif planlar** (hız değişimi, rota sapması, bekleme) yazılı hazırlanır.\n\n**Brifing:** Bu bilgiler vardiya devrinde **harita üzerinden** brife edilir; sözlü aktarımdan çok, herkesin **aynı görsele** bakması esastır.\n\n**Ortak resim:** 'Herkes aynı resme bakıyor' ilkesi (shared mental model), BRM'nin çekirdeğidir; kaptan, zabit ve serdümen aynı risk haritasını paylaşır.\n\n**Gemide önemi:** Kafada tutulan risk aktarılamaz ve devirde kaybolur; haritaya işlenen risk ekip belleği hâline gelir ve yorgun/stresli anda bile görünür kalır.",
       },
       {
         title: "Dinamik Güncelleme",
         content:
-          "Risk haritası statik bir belge değildir; hava tahminleri güncellendikçe risk değerlendirmesi de revize edilir. Bir önceki değerlendirmeden bu yana meydana gelen değişiklikler (cephe hızı sapması, siklon yolunda kayma, beklenmeyen sis oluşumu vb.) risk haritasına yansıtılır. Güncelleme zamanları, önemli bir değişiklik olduğunda veya en azından vardiya başlangıcında yapılır. Risk işaretleme disiplini, kaptan ve zabitler arasında güven ortamı yaratır ve kritik kararlarda iletişim kalitesini artırır.",
+          "Risk haritası **statik değildir**; hava tahmini güncellendikçe revize edilir.\n\n**Neyi yansıtır:** Bir önceki değerlendirmeden bu yana olan değişimler — cephe hızı sapması, siklon yolunda kayma, beklenmeyen sis — haritaya işlenir.\n\n**Ne zaman:** Önemli bir değişiklik olduğunda hemen; değişiklik yoksa en azından **her vardiya başında**. Güncelleme zamanı ve gerekçesi kaydedilir.\n\n**Güven ve iletişim:** Düzenli risk işaretleme disiplini, kaptan-zabit arasında **güven** yaratır ve kritik kararlarda iletişim kalitesini artırır.\n\n**Gemide önemi:** 'Bir kez planladım' yaklaşımı tehlikelidir; hava canlıdır, risk haritası da canlı tutulmalı — güncellenmeyen risk haritası, olmayandan daha yanıltıcı olabilir.",
       },
     ],
     keyPoints: [
