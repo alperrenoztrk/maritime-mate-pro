@@ -17,7 +17,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "İstif Faktörü Tanımı ve Hesabı",
         content:
-          "İstif faktörü, yükün birim ağırlığının kapladığı hacimdir: SF = V / W. Düşük SF'li yükler (örn. demir cevheri ~0.4 m³/t) ağır ve yoğundur; gemi hacim dolmadan deadweight sınırına ulaşır (deadweight cargo). Yüksek SF'li yükler (örn. pamuk ~2.0 m³/t, kereste) hafif ve hacimlidir; gemi ağırlık sınırına ulaşmadan ambar dolar (measurement/volume cargo). Yük için gereken hacim V = W × SF formülüyle bulunur. Planlamada önce hangi sınıra (ağırlık ya da hacim) önce ulaşılacağı belirlenir; bu, ambar doluluk stratejisini ve gelir optimizasyonunu yönlendirir.",
+          "İstif faktörü (SF), yükün **birim ağırlığının kapladığı hacimdir**: SF = V / W (m³/t).\n\n**İki uç:** **Düşük SF** yükler (demir cevheri ~0,4 m³/t) ağır ve yoğundur → gemi **hacim dolmadan deadweight sınırına** ulaşır (**deadweight cargo**). **Yüksek SF** yükler (pamuk ~2,0 m³/t, kereste) hafif ve hacimlidir → gemi **ağırlık sınırına ulaşmadan ambar dolar** (**measurement/volume cargo**).\n\n**Worked örnek:** 5.000 t, SF = 1,4 m³/t yük için gereken hacim V = 5.000 × 1,4 = **7.000 m³**. Ambar 6.000 m³ ise yük **sığmaz** (hacim sınırı); 9.000 m³ ise ambar yarı boş kalır ama ağırlık dolmuş olabilir.\n\n**Gemide önemi:** Planlamada önce **hangi sınıra** (ağırlık mı, hacim mi) önce ulaşılacağı belirlenir; bu, ambar doluluk stratejisini ve navlun gelirini yönlendirir. Yanlış SF, ambarı yarı boş bırakır (gelir kaybı) veya yük plana sığmaz.",
         formula: {
           text: "V = W × SF",
           description: "V: gereken hacim (m³), W: yük ağırlığı (t), SF: istif faktörü (m³/t)",
@@ -26,7 +26,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Broken Stowage (Kayıp Hacim)",
         content:
-          "Broken stowage, ambardaki kullanılamayan boşlukların toplam hacme oranıdır. Düzensiz biçimli yüklerde (variller, makineler, ambalajlı kutular) ve gemi yapısındaki braket, perde ve frame'ler nedeniyle ortaya çıkar. Tipik broken stowage oranları: torbalı yükler %10-15, balyalı yük %10, variller %20-30, düzensiz genel yük %25'e kadar. Net istiflenebilir hacim, ambar net hacminden broken stowage düşülerek bulunur: Vnet = Vambar × (1 − BS). Broken stowage, dunnage (istif tahtası) kullanımı, dolgu (filler) yüklerle boşluk doldurma ve dikkatli istif planı ile azaltılır.",
+          "**Broken stowage**, ambardaki **kullanılamayan boşlukların** toplam hacme oranıdır. Düzensiz biçimli yüklerde (varil, makine, kutu) ve gemi yapısındaki braket, perde ve frame nedeniyle oluşur.\n\n**Tipik oranlar:** torbalı yük %10-15, balyalı %10, variller %20-30, düzensiz genel yük %25'e kadar.\n\n**Hesap:** Net istiflenebilir hacim = ambar net hacmi × (1 − BS). **Worked örnek:** 6.000 m³ ambar, %20 broken stowage → Vnet = 6.000 × (1 − 0,20) = **4.800 m³** fiilen kullanılabilir.\n\n**Azaltma:** Broken stowage; **dunnage** (istif tahtası), boşlukları dolduran **filler** yükler ve dikkatli istif planıyla düşürülür.\n\n**Gemide önemi:** Net taşınabilir miktar daima teorik hacmin altındadır; broken stowage'ı hesaba katmayan plan, son anda ambara sığmayan yükle sonuçlanır.",
         formula: {
           text: "Vnet = Vambar × (1 − BS)",
           description: "Vnet: net istiflenebilir hacim, Vambar: ambar net hacmi, BS: broken stowage oranı (ondalık)",
@@ -35,12 +35,12 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Bale ve Grain Kapasitesi",
         content:
-          "Ambar hacmi iki şekilde verilir. Grain (tahıl) kapasitesi, dökme akışkan yüklerin frame ve braketlerin arasını da doldurduğu varsayımıyla ölçülen toplam iç hacimdir. Bale kapasitesi ise ambalajlı/balyalı yükler için, frame iç yüzeyine ve cargo battens'a kadar olan kullanılabilir hacimdir; tipik olarak grain kapasitesinden %7-10 daha düşüktür. Plan yapılırken yükün cinsine uygun kapasite kullanılır: dökme tahıl için grain, genel yük için bale kapasitesi esas alınır.",
+          "Ambar hacmi **iki şekilde** verilir ve yükün cinsine göre doğru olanı kullanılır.\n\n**Grain (tahıl) kapasitesi:** Dökme akışkan yükün frame ve braket aralarını da doldurduğu varsayımıyla ölçülen **toplam iç hacim** — en büyük değer.\n\n**Bale kapasitesi:** Ambalajlı/balyalı yükler için, frame iç yüzeyine ve **cargo battens'a** kadar olan kullanılabilir hacim; tipik olarak grain'den **%7-10 daha düşük** (yük frame aralarına giremez).\n\n**Gemide önemi:** Dökme tahıl için **grain**, genel/ambalajlı yük için **bale** kapasitesi esas alınır; ikisini karıştırmak, ambalajlı yükte ~%10'luk hacmi 'varmış gibi' saymaya ve plan hatasına yol açar.",
       },
       {
         title: "Yoğunluk, Ağırlık ve Hacim Dengesi",
         content:
-          "Bir geminin ekonomik yüklenmesi, ağırlık ve hacim kapasitesinin birlikte değerlendirilmesini gerektirir. İdeal durumda gemi hem deadweight hem hacim sınırına aynı anda ulaşır (full and down). Pratikte farklı SF'li yükler birlikte taşınarak bu dengeye yaklaşılır: ağır yük (düşük SF) ambar tabanına, hafif yük üste istiflenerek hem hacim doldurulur hem stabilite için ağırlık merkezi (KG) kontrol altında tutulur. Yanlış SF tahmini, ambarların yarı dolu kalmasına (gelir kaybı) veya plana sığmayan yüke yol açar.",
+          "Ekonomik yükleme, ağırlık ve hacim kapasitesinin **birlikte** kullanılmasını ister. İdeal durum **'full and down'**: gemi hem deadweight hem hacim sınırına **aynı anda** ulaşır — hiçbir kapasite boşa gitmez.\n\n**Nasıl yaklaşılır:** Farklı SF'li yükler **birlikte** taşınır; ağır yük (düşük SF) ambar **tabanına**, hafif yük (yüksek SF) **üste** istiflenir. Böylece hem hacim dolar hem de ağırlık merkezi (**KG**) alçak tutularak stabilite korunur.\n\n**Worked mantık:** Yalnız ağır yük → gemi hacim dolmadan draft'a oturur (ambar boş = gelir kaybı). Yalnız hafif yük → ambar dolar ama draft'a oturmaz (deadweight boşa gider). Karışım ikisini dengeler.\n\n**Gemide önemi:** Yanlış SF tahmini ya ambarları yarı boş bırakır ya da plana sığmayan yük üretir; SF, yük planının en kritik girdisidir.",
       },
     ],
     keyPoints: [
