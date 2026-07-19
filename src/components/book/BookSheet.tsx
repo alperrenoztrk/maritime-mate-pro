@@ -348,14 +348,15 @@ export function BookSheet({
           z-index: 6;
           pointer-events: none;
           transform-style: preserve-3d;
-          will-change: transform, clip-path;
-          clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+          will-change: transform;
         }
         /* Only the leaf being turned rotates — the other page is untouched.
            Forward: right leaf pivots around the spine (its left edge).
            Backward: left leaf pivots around the spine (its right edge). */
         .bs-turn-leaf--forward{
           left: 50%; width: 50%; transform-origin: left center;
+        }
+        .bs-turn-leaf--forward .bs-turn-face{
           clip-path: polygon(
             0 0,
             calc(100% - var(--book-turn-top-inset,0%)) 0,
@@ -366,6 +367,8 @@ export function BookSheet({
         }
         .bs-turn-leaf--backward{
           left: 0; width: 50%; transform-origin: right center;
+        }
+        .bs-turn-leaf--backward .bs-turn-face{
           clip-path: polygon(
             var(--book-turn-top-inset,0%) 0,
             100% 0,
@@ -382,6 +385,7 @@ export function BookSheet({
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
           background: linear-gradient(180deg, #fbf2d9, #f1e2c0);
+          will-change: clip-path;
         }
         .bs-turn-leaf--backward .bs-turn-face{
           border-radius: var(--book-turn-edge-radius,6px) 3px 3px var(--book-turn-edge-radius,6px);
