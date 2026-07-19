@@ -15,8 +15,10 @@ import {
 import type { BookVolumeDescriptor } from "@/data/bookVolumes";
 import type { BookInteractionMode } from "@/lib/bookRoutes";
 import {
-  getBookTurnProgress,
+  getBookTurnFrame,
+  getBookTurnProgressFromContact,
   getBookTurnSettleDuration,
+  getBookTurnSettleProgress,
   shouldCompleteBookTurn,
   type BookTurnDirection,
 } from "@/lib/bookMotion";
@@ -346,31 +348,66 @@ export function BookSheet({
           z-index: 6;
           pointer-events: none;
           transform-style: preserve-3d;
-          will-change: transform;
+          will-change: transform, clip-path;
+          clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
         }
         /* Only the leaf being turned rotates — the other page is untouched.
            Forward: right leaf pivots around the spine (its left edge).
            Backward: left leaf pivots around the spine (its right edge). */
-        .bs-turn-leaf--forward{ left: 50%; width: 50%; transform-origin: left center; }
-        .bs-turn-leaf--backward{ left: 0; width: 50%; transform-origin: right center; }
+        .bs-turn-leaf--forward{
+          left: 50%; width: 50%; transform-origin: left center;
+          clip-path: polygon(
+            0 0,
+            calc(100% - var(--book-turn-top-inset,0%)) 0,
+            100% var(--book-turn-grab-y,50%),
+            calc(100% - var(--book-turn-bottom-inset,0%)) 100%,
+            0 100%
+          );
+        }
+        .bs-turn-leaf--backward{
+          left: 0; width: 50%; transform-origin: right center;
+          clip-path: polygon(
+            var(--book-turn-top-inset,0%) 0,
+            100% 0,
+            100% 100%,
+            var(--book-turn-bottom-inset,0%) 100%,
+            0 var(--book-turn-grab-y,50%)
+          );
+        }
         .bs-turn-face{
           position: absolute;
           inset: 0;
           overflow: hidden;
-          border-radius: 3px 6px 6px 3px;
+          border-radius: 3px var(--book-turn-edge-radius,6px) var(--book-turn-edge-radius,6px) 3px;
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
           background: linear-gradient(180deg, #fbf2d9, #f1e2c0);
         }
-        .bs-turn-face--front{ transform: rotateY(0deg) translateZ(.4px); }
-        .bs-turn-face--back{ transform: rotateY(180deg) translateZ(.4px); }
+        .bs-turn-leaf--backward .bs-turn-face{
+          border-radius: var(--book-turn-edge-radius,6px) 3px 3px var(--book-turn-edge-radius,6px);
+        }
+        .bs-turn-face--front{ transform: rotateY(0deg) translateZ(.65px); }
+        .bs-turn-face--back{ transform: rotateY(180deg) translateZ(.65px); }
+        .bs-turn-face::before,
         .bs-turn-face::after{
           content: "";
           position: absolute;
           inset: 0;
           pointer-events: none;
+        }
+        .bs-turn-face::before{
+          z-index: 3;
+          opacity: calc(var(--book-turn-specular,0) * .58);
+          background: linear-gradient(102deg,
+            transparent 29%, rgba(255,255,255,.04) 38%,
+            rgba(255,250,226,.72) 49%, rgba(255,255,255,.08) 59%, transparent 70%);
+          mix-blend-mode: screen;
+          transform: translateX(var(--book-turn-sheen-x,0%));
+        }
+        .bs-turn-face::after{
+          z-index: 4;
           mix-blend-mode: multiply;
-          opacity: calc(var(--bs-shade, 0) * .6);
+          opacity: calc(var(--book-turn-shade,0) * .62);
         }
         .bs-turn-face--front::after{
           background: linear-gradient(90deg, rgba(58,35,9,.22), transparent 26%, transparent 74%, rgba(58,35,9,.22));
@@ -383,11 +420,11 @@ export function BookSheet({
           z-index: 5;
           top: 0; bottom: 0;
           width: 22%;
-          left: 50%;
-          transform: translateX(-50%);
+          left: 0;
+          transform: translate3d(0,0,0) translateX(-50%);
           opacity: 0;
           pointer-events: none;
-          will-change: left, opacity;
+          will-change: transform, opacity;
           background: radial-gradient(ellipse at 50% 50%, rgba(48,28,6,.5), rgba(48,28,6,.17) 36%, transparent 76%);
         }
         .bs-folio{
@@ -443,13 +480,27 @@ export function BookSheet({
             linear-gradient(90deg, rgba(93,63,25,.22), transparent 12%),
             linear-gradient(90deg, #ead9b4, #faf0d5 13%, #f4e4c3 100%);
           box-shadow: -12px 5px 26px rgba(53,32,9,.3);
-          animation: bs-turn-page .68s cubic-bezier(.64,.02,.24,1) both;
-          will-change: transform, opacity;
+          animation: bs-turn-page .82s cubic-bezier(.32,.02,.18,1) both;
+          will-change: transform, opacity, clip-path;
+          clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        }
+        .bs-turning-leaf::before{
+          content:""; position:absolute; inset:0; pointer-events:none;
+          opacity:0; mix-blend-mode:screen;
+          background:linear-gradient(102deg,transparent 32%,rgba(255,250,226,.78) 50%,transparent 68%);
+          animation:bs-turn-page-sheen .82s ease-in-out both;
         }
         @keyframes bs-turn-page{
-          0%{ transform: rotateY(0deg); opacity: .92; }
-          58%{ opacity: .74; }
-          100%{ transform: rotateY(-178deg); opacity: 0; }
+          0%{ transform:translate3d(0,0,0) rotateY(0deg) rotateX(0deg) scaleX(1); opacity:.94; clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
+          34%{ transform:translate3d(0,-2px,22px) rotateY(-58deg) rotateX(-1.2deg) skewY(.7deg) scaleX(.976); opacity:.96; clip-path:polygon(0 0,94% 0,100% 48%,93% 100%,0 100%); }
+          62%{ transform:translate3d(0,-1px,28px) rotateY(-116deg) rotateX(.8deg) skewY(-.5deg) scaleX(.97); opacity:.9; clip-path:polygon(0 0,92% 0,100% 52%,94% 100%,0 100%); }
+          88%{ opacity:.62; }
+          100%{ transform:translate3d(0,0,0) rotateY(-179deg) rotateX(0deg) scaleX(1); opacity:0; clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
+        }
+        @keyframes bs-turn-page-sheen{
+          0%,100%{opacity:0;transform:translateX(28%)}
+          38%{opacity:.42}
+          62%{opacity:.68;transform:translateX(-22%)}
         }
 
         .bs-fleuron{ text-align:center; color:rgba(90,61,20,.55); font-size:1.05rem; line-height:1; margin:4px 0 10px; }
@@ -617,6 +668,9 @@ interface TurnState {
   direction: BookTurnDirection;
   from: number;
   to: number;
+  grabY: number;
+  leafWidth: number;
+  leafHeight: number;
 }
 
 interface PagerPointerStart {
@@ -628,8 +682,13 @@ interface PagerPointerStart {
   lastX: number;
   lastTime: number;
   progress: number;
+  /** Initial contact in book-space, measured from the spread's left edge. */
+  contactX: number;
+  /** Distance from the binding to the grabbed point on the active leaf. */
+  turnRadius: number;
   horizontal: boolean;
   direction: BookTurnDirection;
+  grabY: number;
   /** Frozen at pointerdown so a mid-gesture mode flip cannot corrupt the drag. */
   orientation: BookSurfaceOrientation;
 }
@@ -807,18 +866,35 @@ function BookLeafPager({
     const active = turnRef.current;
     const leaf = leafRef.current;
     if (!active || !leaf) return;
-    const sign = active.direction === "forward" ? -1 : 1;
-    // Depth comes from the parent perspective on .bs-pager; an inline
-    // perspective() here would move the vanishing point with the leaf.
-    leaf.style.transform = `rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
-    const shade = Math.sin(Math.PI * progress);
-    leaf.style.setProperty("--bs-shade", shade.toFixed(3));
+    const frame = getBookTurnFrame(
+      progress,
+      active.direction,
+      active.grabY,
+      active.leafWidth,
+      active.leafHeight,
+    );
+    // Perspective stays on .bs-pager so the vanishing point remains anchored
+    // to the spine. The remaining terms reproduce paper lift and torsion.
+    leaf.style.transform = [
+      `translate3d(0,${frame.translateYPx.toFixed(2)}px,${frame.liftPx.toFixed(2)}px)`,
+      `rotateY(${frame.angleDeg.toFixed(3)}deg)`,
+      `rotateX(${frame.twistDeg.toFixed(3)}deg)`,
+      `skewY(${frame.skewDeg.toFixed(3)}deg)`,
+      `scaleX(${frame.scaleX.toFixed(4)})`,
+    ].join(" ");
+    leaf.style.setProperty("--book-turn-shade", frame.shade.toFixed(3));
+    leaf.style.setProperty("--book-turn-specular", frame.specular.toFixed(3));
+    leaf.style.setProperty("--book-turn-sheen-x", `${((0.5 - frame.shade) * 8).toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-grab-y", `${frame.grabYPercent.toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-top-inset", `${frame.topInsetPercent.toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-bottom-inset", `${frame.bottomInsetPercent.toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-edge-radius", `${frame.edgeRadiusPx.toFixed(2)}px`);
     if (frontRef.current) frontRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
     if (backRef.current) backRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
     if (shadowRef.current) {
-      const foldCenter = 50 + (active.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * progress);
-      shadowRef.current.style.left = `${foldCenter.toFixed(2)}%`;
-      shadowRef.current.style.opacity = (shade * 0.5).toFixed(3);
+      const shadowX = metricsRef.current.paperWidth * frame.shadowLeftPercent / 100;
+      shadowRef.current.style.transform = `translate3d(${shadowX.toFixed(2)}px,0,0) translateX(-50%) scaleX(${frame.shadowScaleX.toFixed(3)})`;
+      shadowRef.current.style.opacity = frame.shadowOpacity.toFixed(3);
     }
   }, []);
 
@@ -830,7 +906,9 @@ function BookLeafPager({
     if (leafRef.current) {
       leafRef.current.style.display = "none";
       leafRef.current.style.transform = "";
-      leafRef.current.style.removeProperty("--bs-shade");
+      leafRef.current.style.removeProperty("--book-turn-shade");
+      leafRef.current.style.removeProperty("--book-turn-specular");
+      leafRef.current.style.removeProperty("--book-turn-sheen-x");
     }
     if (halfRef.current) halfRef.current.style.display = "none";
     if (shadowRef.current) shadowRef.current.style.opacity = "0";
@@ -848,10 +926,14 @@ function BookLeafPager({
   }, [applyBaseOffset, measure, publishState]);
 
   /** Eases the grabbed leaf the rest of the way (or back) at 60fps. */
-  const settleTurn = useCallback((fromProgress: number, complete: boolean) => {
+  const settleTurn = useCallback((
+    fromProgress: number,
+    complete: boolean,
+    releaseVelocity = 0,
+  ) => {
     if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
     const target = complete ? 1 : 0;
-    const durationMs = getBookTurnSettleDuration(fromProgress, complete);
+    const durationMs = getBookTurnSettleDuration(fromProgress, complete, releaseVelocity);
     if (durationMs <= 0 || Math.abs(target - fromProgress) < 0.002) {
       applyTurnFrame(target);
       finalizeTurn(complete);
@@ -860,8 +942,12 @@ function BookLeafPager({
     const startedAt = performance.now();
     const tick = (now: number) => {
       const elapsed = clampNumber((now - startedAt) / durationMs, 0, 1);
-      const eased = 1 - Math.pow(1 - elapsed, 3);
-      const progress = fromProgress + (target - fromProgress) * eased;
+      const progress = getBookTurnSettleProgress(
+        elapsed,
+        fromProgress,
+        complete,
+        releaseVelocity,
+      );
       progressRef.current = progress;
       applyTurnFrame(progress);
       if (elapsed < 1) {
@@ -942,7 +1028,7 @@ function BookLeafPager({
     host.replaceChildren(sheet);
   }, [firstLeftPage, title, volume?.shortTitle]);
 
-  const beginTurn = useCallback((direction: BookTurnDirection): boolean => {
+  const beginTurn = useCallback((direction: BookTurnDirection, grabY = 0.5): boolean => {
     if (turnRef.current) return false;
     const flow = flowRef.current;
     const leaf = leafRef.current;
@@ -955,7 +1041,14 @@ function BookLeafPager({
     if (to < 0 || to > metrics.spreads - 1) return false;
 
     const light = flow.querySelectorAll("*").length > CLONE_NODE_LIMIT;
-    turnRef.current = { direction, from, to };
+    turnRef.current = {
+      direction,
+      from,
+      to,
+      grabY: clampNumber(grabY, 0.04, 0.96),
+      leafWidth: Math.max(1, metrics.paperWidth / 2),
+      leafHeight: Math.max(1, metrics.paperHeight),
+    };
     progressRef.current = 0;
 
     // Only one physical leaf turns. Forward: the current right page pivots on
@@ -1008,13 +1101,13 @@ function BookLeafPager({
     publishState();
   }, [applyBaseOffset, publishState]);
 
-  const step = useCallback((direction: BookTurnDirection) => {
+  const step = useCallback((direction: BookTurnDirection, grabY = 0.5) => {
     if (turnRef.current) return;
     if (reducedMotion) {
       stepInstant(direction);
       return;
     }
-    if (beginTurn(direction)) settleTurn(0, true);
+    if (beginTurn(direction, grabY)) settleTurn(0, true);
   }, [beginTurn, reducedMotion, settleTurn, stepInstant]);
 
   useEffect(() => {
@@ -1102,6 +1195,12 @@ function BookLeafPager({
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.button !== 0 || turnRef.current) return;
     if (isGuardedTarget(event.target, interactionMode)) return;
+    const pager = pagerRef.current;
+    const bounds = pager?.getBoundingClientRect();
+    const orientation = getBookSurfaceOrientation(pager);
+    const local = pager && bounds
+      ? mapBookPointToLocal(event.clientX, event.clientY, bounds, orientation)
+      : { x: 0, y: 0 };
     pointerStart.current = {
       pointerId: event.pointerId,
       x: event.clientX,
@@ -1110,9 +1209,14 @@ function BookLeafPager({
       lastX: 0,
       lastTime: event.timeStamp,
       progress: 0,
+      contactX: local.x,
+      turnRadius: Math.max(1, (pager?.offsetWidth ?? 2) / 2),
       horizontal: false,
       direction: "forward",
-      orientation: getBookSurfaceOrientation(pagerRef.current),
+      grabY: pager
+        ? clampNumber(local.y / Math.max(1, pager.offsetHeight), 0.04, 0.96)
+        : 0.5,
+      orientation,
     };
   };
 
@@ -1141,19 +1245,31 @@ function BookLeafPager({
         stepInstant(direction);
         return;
       }
-      if (!beginTurn(direction)) {
+      if (!beginTurn(direction, start.grabY)) {
         pointerStart.current = null;
         return;
       }
       start.horizontal = true;
       start.direction = direction;
+      const halfWidth = Math.max(1, metricsRef.current.paperWidth / 2);
+      start.turnRadius = clampNumber(
+        direction === "forward" ? start.contactX - halfWidth : halfWidth - start.contactX,
+        halfWidth * 0.32,
+        halfWidth,
+      );
       event.currentTarget.setPointerCapture(event.pointerId);
     }
 
     start.lastX = deltaX;
     start.lastTime = event.timeStamp;
-    const leafWidth = metricsRef.current.width / 2 || 1;
-    start.progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
+    start.progress = getBookTurnProgressFromContact(deltaX, start.turnRadius, start.direction);
+    if (turnRef.current) {
+      turnRef.current.grabY = clampNumber(
+        start.grabY + deltaY / Math.max(1, metricsRef.current.paperHeight),
+        0.04,
+        0.96,
+      );
+    }
     if (start.progress > 0.035) suppressClick.current = true;
     progressRef.current = start.progress;
     applyTurnFrame(start.progress);
@@ -1179,12 +1295,15 @@ function BookLeafPager({
       const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
         ? releaseVelocity
         : totalVelocity;
-      const leafWidth = metricsRef.current.width / 2 || 1;
-      const progress = getBookTurnProgress(deltaX, leafWidth, start.direction);
+      const progress = getBookTurnProgressFromContact(deltaX, start.turnRadius, start.direction);
       progressRef.current = progress;
       suppressClick.current = true;
       armClickSuppressionReset();
-      settleTurn(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
+      settleTurn(
+        progress,
+        shouldCompleteBookTurn(progress, velocityX, start.direction),
+        velocityX,
+      );
       return;
     }
 
@@ -1196,8 +1315,9 @@ function BookLeafPager({
     const bounds = pager?.getBoundingClientRect();
     if (!pager || !bounds) return;
     const local = mapBookPointToLocal(event.clientX, event.clientY, bounds, start.orientation);
-    if (local.x < pager.offsetWidth * 0.16) step("backward");
-    else if (local.x > pager.offsetWidth * 0.84) step("forward");
+    const grabY = clampNumber(local.y / Math.max(1, pager.offsetHeight), 0.04, 0.96);
+    if (local.x < pager.offsetWidth * 0.16) step("backward", grabY);
+    else if (local.x > pager.offsetWidth * 0.84) step("forward", grabY);
   };
 
   const onPointerCancel = (event: ReactPointerEvent<HTMLDivElement>) => {
