@@ -116,12 +116,22 @@ if (
 if (
   !bookPage.includes("perspective:1900px") ||
   !bookSheet.includes("perspective: 1900px") ||
-  !bookPage.includes("leaf.style.transform = `rotateY(") ||
-  !bookSheet.includes("leaf.style.transform = `rotateY(")
+  !bookPage.includes("getBookTurnFrame(") ||
+  !bookSheet.includes("getBookTurnFrame(") ||
+  !bookPage.includes("`rotateY(${frame.angleDeg.toFixed(3)}deg)`") ||
+  !bookSheet.includes("`rotateY(${frame.angleDeg.toFixed(3)}deg)`")
 ) {
   failures.push(
-    "Yaprak dönüşü ebeveyn perspektifinden beslenmiyor; satır içi perspective() kaçış noktasını yaprakla birlikte taşır.",
+    "İki kitap motoru ortak kıvrım fiziğini ve omurgaya sabit ebeveyn perspektifini kullanmıyor.",
   );
+}
+if (
+  !bookPage.includes("bk-static-leaf") ||
+  !bookPage.includes("width:50%") ||
+  !bookPage.includes("--book-turn-grab-y") ||
+  !bookSheet.includes("--book-turn-grab-y")
+) {
+  failures.push("Tüm kitaplarda tek yaprak, temas noktasına bağlı serbest kenar kıvrımı eksik.");
 }
 if (
   existsSync(resolve(process.cwd(), "android-manifest.xml")) ||
