@@ -7,7 +7,6 @@ import {
   useState,
   type CSSProperties,
   type MouseEvent as ReactMouseEvent,
-  type MutableRefObject,
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
@@ -46,10 +45,6 @@ interface BookSheetProps {
   volume?: BookVolumeDescriptor;
 }
 
-interface LeafPagerHandle {
-  step: (direction: BookTurnDirection) => void;
-}
-
 const clampNumber = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
 
@@ -64,18 +59,8 @@ export function BookSheet({
   volume,
 }: BookSheetProps) {
   const alreadyInsideBook = useContext(BookSheetNestingContext);
-  const pagerApi = useRef<LeafPagerHandle>({ step: () => {} });
-  const [leafState, setLeafState] = useState({ spread: 0, spreads: 1 });
-  const handleLeafState = useCallback((spread: number, spreads: number) => {
-    setLeafState((current) =>
-      current.spread === spread && current.spreads === spreads ? current : { spread, spreads },
-    );
-  }, []);
 
   if (alreadyInsideBook) return <>{children}</>;
-
-  const firstLeftPage = pageNumber % 2 === 0 ? pageNumber : pageNumber - 1;
-  const leftPage = firstLeftPage + leafState.spread * 2;
 
   return (
     <BookLandscapeGate>
@@ -93,55 +78,18 @@ export function BookSheet({
       <div className="bs-cover-board">
         <div className={`bs-volume ${routeFrame ? "bs-volume--route" : ""}`}>
           <div className="bs-spread">
-            <header className="bs-running bs-running--left">{volume?.shortTitle ?? "GENEL"}</header>
-            <header className="bs-running bs-running--right">{title}</header>
-
             <BookSheetNestingContext.Provider value>
-              <main key={pageKey ?? "book-sheet"} className="bs-spread-content">
-                <BookLeafPager
-                  routeContent={routeFrame}
-                  interactionMode={interactionMode}
-                  apiRef={pagerApi}
-                  onLeafState={handleLeafState}
-                >
-                  {children}
-                </BookLeafPager>
-              </main>
+              <BookLeafPager
+                title={title}
+                pageKey={pageKey}
+                pageNumber={pageNumber}
+                volume={volume}
+                routeContent={routeFrame}
+                interactionMode={interactionMode}
+              >
+                {children}
+              </BookLeafPager>
             </BookSheetNestingContext.Provider>
-
-            <footer className="bs-folio bs-folio--left" aria-label={`Sayfa ${leftPage}`}>
-              <button
-                type="button"
-                className="bs-turn-btn"
-                aria-label="Önceki sayfayı çevir"
-                disabled={leafState.spread === 0}
-                onClick={() => pagerApi.current.step("backward")}
-              >
-                ‹
-              </button>
-              <span className="bs-folio-number">{leftPage}</span>
-            </footer>
-            <footer className="bs-folio bs-folio--right" aria-label={`Sayfa ${leftPage + 1}`}>
-              <span className="bs-folio-number">{leftPage + 1}</span>
-              <button
-                type="button"
-                className="bs-turn-btn"
-                aria-label="Sonraki sayfayı çevir"
-                disabled={leafState.spread >= leafState.spreads - 1}
-                onClick={() => pagerApi.current.step("forward")}
-              >
-                ›
-              </button>
-            </footer>
-
-            <span className="bs-leaf-count" aria-hidden="true">
-              YAPRAK {leafState.spread + 1}/{leafState.spreads}
-            </span>
-            <span className="sr-only" aria-live="polite">
-              Sayfa {leftPage}–{leftPage + 1}
-            </span>
-
-            {pageKey && <span key={`turn-${pageKey}`} className="bs-turning-leaf" aria-hidden="true" />}
           </div>
         </div>
       </div>
@@ -269,8 +217,8 @@ export function BookSheet({
           color: rgba(82,53,18,.58);
           border-bottom: 1px solid rgba(126,83,27,.15);
         }
-        .bs-running--left{ padding-right: clamp(13px, 3.5vw, 50px); }
-        .bs-running--right{ padding-left: clamp(13px, 3.5vw, 50px); }
+        .bs-running--left{ grid-column:1; padding-right: clamp(13px, 3.5vw, 50px); }
+        .bs-running--right{ grid-column:2; padding-left: clamp(13px, 3.5vw, 50px); }
         .bs-running::before{ content: "❖  "; opacity: .45; }
         .bs-running::after{ content: "  ❖"; opacity: .45; }
         .bs-spread-content{
@@ -288,6 +236,9 @@ export function BookSheet({
         }
         .bs-pager{
           position: relative;
+          z-index: 4;
+          grid-column: 1 / -1;
+          grid-row: 1 / -1;
           flex: 1;
           min-width: 0;
           min-height: 0;
@@ -305,6 +256,35 @@ export function BookSheet({
           user-select: none;
           -webkit-user-select: none;
         }
+        .bs-sheet-live,
+        .bs-sheet-face{
+          position: absolute;
+          inset: 0;
+          display: grid;
+          grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+          grid-template-rows: auto minmax(1px,1fr) auto;
+          min-width: 0;
+          min-height: 0;
+        }
+        .bs-sheet-live{ z-index: 1; }
+        .bs-sheet-face{
+          grid-template-columns: minmax(0,1fr);
+          z-index: 1;
+          background: linear-gradient(180deg, #fbf2d9, #f1e2c0);
+          color: #432d12;
+          font-family: Georgia, 'Times New Roman', serif;
+        }
+        .bs-sheet-face .bs-running,
+        .bs-sheet-face .bs-folio,
+        .bs-sheet-face .bs-spread-content{ grid-column: 1; }
+        .bs-sheet-face--left .bs-running,
+        .bs-sheet-face--left .bs-folio{ padding-right: clamp(13px, 3.5vw, 50px); padding-left: 0; }
+        .bs-sheet-face--right .bs-running,
+        .bs-sheet-face--right .bs-folio{ padding-left: clamp(13px, 3.5vw, 50px); padding-right: 0; }
+        .bs-sheet-face--left .bs-folio{ justify-content: flex-start; }
+        .bs-sheet-face--right .bs-folio{ justify-content: flex-end; }
+        .bs-sheet-face--left .bs-leaf-count{ left: auto; right: 0; transform: translateX(50%); }
+        .bs-sheet-face--right .bs-leaf-count{ left: 0; transform: translateX(-50%); }
         .bs-pager:active{ cursor: grabbing; }
         .bs-pager:focus-visible{ outline: 1px dotted rgba(90,61,20,.55); outline-offset: 2px; }
         .bs-pager::after{
@@ -422,8 +402,8 @@ export function BookSheet({
           color: rgba(77,49,16,.66);
           border-top: 1px solid rgba(126,83,27,.14);
         }
-        .bs-folio--left{ justify-content: flex-start; padding-right: clamp(13px, 3.5vw, 50px); }
-        .bs-folio--right{ justify-content: flex-end; padding-left: clamp(13px, 3.5vw, 50px); }
+        .bs-folio--left{ grid-column:1; justify-content: flex-start; padding-right: clamp(13px, 3.5vw, 50px); }
+        .bs-folio--right{ grid-column:2; justify-content: flex-end; padding-left: clamp(13px, 3.5vw, 50px); }
         .bs-turn-btn{
           display: inline-flex;
           align-items: center;
@@ -655,6 +635,8 @@ interface PagerPointerStart {
 }
 
 interface PagerMetrics {
+  paperWidth: number;
+  paperHeight: number;
   width: number;
   height: number;
   gap: number;
@@ -669,7 +651,7 @@ interface PagerMetrics {
 const INTERACTIVE_GUARD = [
   "input", "textarea", "select", "option", "summary", "audio", "video",
   "[role='slider']", "[role='switch']", "[role='combobox']", "[role='listbox']",
-  "[role='spinbutton']", "[contenteditable='true']", ".bs-table-wrap", "[data-book-no-turn]",
+  "[role='spinbutton']", "[contenteditable='true']", ".bs-turn-btn", ".bs-table-wrap", "[data-book-no-turn]",
 ].join(",");
 const BUTTON_GUARD = "button,[role='button'],[role='tab'],[role='menuitem']";
 /** Above this many DOM nodes a turn keeps the physical leaf but skips the leaf-face clones. */
@@ -691,16 +673,20 @@ function isGuardedTarget(target: EventTarget | null, mode: BookInteractionMode):
  */
 function BookLeafPager({
   children,
+  title,
+  pageKey,
+  pageNumber,
+  volume,
   routeContent,
   interactionMode,
-  apiRef,
-  onLeafState,
 }: {
   children: ReactNode;
+  title: string;
+  pageKey?: string;
+  pageNumber: number;
+  volume?: BookVolumeDescriptor;
   routeContent: boolean;
   interactionMode: BookInteractionMode;
-  apiRef: MutableRefObject<LeafPagerHandle>;
-  onLeafState: (spread: number, spreads: number) => void;
 }) {
   const pagerRef = useRef<HTMLDivElement>(null);
   const flowRef = useRef<HTMLDivElement>(null);
@@ -711,7 +697,7 @@ function BookLeafPager({
   const shadowRef = useRef<HTMLSpanElement>(null);
 
   const metricsRef = useRef<PagerMetrics>({
-    width: 0, height: 0, gap: 0, columnWidth: 1, stride: 1, spreadStride: 1, spreads: 1,
+    paperWidth: 0, paperHeight: 0, width: 0, height: 0, gap: 0, columnWidth: 1, stride: 1, spreadStride: 1, spreads: 1,
   });
   const spreadRef = useRef(0);
   const turnRef = useRef<TurnState | null>(null);
@@ -727,12 +713,16 @@ function BookLeafPager({
   const [reducedMotion] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
-
-  const onLeafStateRef = useRef(onLeafState);
-  onLeafStateRef.current = onLeafState;
+  const [leafState, setLeafState] = useState({ spread: 0, spreads: 1 });
+  const firstLeftPage = pageNumber % 2 === 0 ? pageNumber : pageNumber - 1;
+  const leftPage = firstLeftPage + leafState.spread * 2;
 
   const publishState = useCallback(() => {
-    onLeafStateRef.current(spreadRef.current, metricsRef.current.spreads);
+    setLeafState((current) =>
+      current.spread === spreadRef.current && current.spreads === metricsRef.current.spreads
+        ? current
+        : { spread: spreadRef.current, spreads: metricsRef.current.spreads },
+    );
   }, []);
 
   const applyBaseOffset = useCallback(() => {
@@ -756,19 +746,25 @@ function BookLeafPager({
       pendingMeasure.current = true;
       return;
     }
-    const width = pager.clientWidth;
-    const height = pager.clientHeight;
-    if (width < 60 || height < 40) return;
+    const paperWidth = pager.clientWidth;
+    const paperHeight = pager.clientHeight;
+    const content = flow.parentElement as HTMLElement | null;
+    const width = content?.clientWidth || paperWidth;
+    const height = content?.clientHeight || paperHeight;
+    if (paperWidth < 60 || paperHeight < 40 || width < 60 || height < 40) return;
 
     const gap = Number.parseFloat(window.getComputedStyle(flow).columnGap) || 0;
     const columnWidth = Math.max(1, (width - gap) / 2);
     const stride = columnWidth + gap;
+    pager.style.setProperty("--bs-paper-height", `${paperHeight}px`);
+    pager.style.setProperty("--bs-paper-width", `${paperWidth}px`);
     pager.style.setProperty("--bs-page-height", `${height}px`);
     pager.style.setProperty("--bs-page-width", `${columnWidth}px`);
+    pager.style.setProperty("--bs-column-gap", `${gap}px`);
     flow.style.transform = "none";
     if (pager.scrollLeft) pager.scrollLeft = 0;
     if (pager.scrollTop) pager.scrollTop = 0;
-    const total = Math.max(pager.scrollWidth, width);
+    const total = Math.max(flow.scrollWidth, content?.scrollWidth || 0, pager.scrollWidth, width);
     // A partial final column must still become a real leaf. Keep a one-pixel
     // tolerance for integer scrollWidth rounding without rounding content away.
     const columns = Math.max(1, Math.ceil((total + gap - 1) / stride));
@@ -800,7 +796,7 @@ function BookLeafPager({
       }
     }
 
-    metricsRef.current = { width, height, gap, columnWidth, stride, spreadStride: width + gap, spreads };
+    metricsRef.current = { paperWidth, paperHeight, width, height, gap, columnWidth, stride, spreadStride: width + gap, spreads };
     spreadRef.current = clampNumber(spreadRef.current, 0, spreads - 1);
     applyBaseOffset();
     publishState();
@@ -879,21 +875,72 @@ function BookLeafPager({
   }, [applyTurnFrame, finalizeTurn]);
 
   /** Prints a frozen copy of the flow into one face of the turning leaf. */
-  const buildFace = useCallback((host: HTMLElement | null, left: number) => {
+  const buildFace = useCallback((
+    host: HTMLElement | null,
+    side: "left" | "right",
+    spread: number,
+    spreads: number,
+    includeContent = true,
+  ) => {
     const flow = flowRef.current;
-    if (!host || !flow) return;
-    const clone = flow.cloneNode(true) as HTMLElement;
-    clone.classList.add("bs-flow-clone");
-    clone.style.transform = "none";
-    clone.style.position = "absolute";
-    clone.style.top = "0";
-    clone.style.left = `${left}px`;
-    clone.style.width = `${metricsRef.current.width}px`;
-    clone.style.height = "100%";
-    clone.setAttribute("aria-hidden", "true");
-    clone.setAttribute("inert", "");
-    host.replaceChildren(clone);
-  }, []);
+    if (!host || !flow || typeof document === "undefined") return;
+    const metrics = metricsRef.current;
+    const page = firstLeftPage + spread * 2 + (side === "right" ? 1 : 0);
+    const sheet = document.createElement("div");
+    sheet.className = `bs-sheet-face bs-sheet-face--${side}`;
+
+    const running = document.createElement("header");
+    running.className = `bs-running bs-running--${side}`;
+    running.textContent = side === "left" ? (volume?.shortTitle ?? "GENEL") : title;
+    sheet.appendChild(running);
+
+    const main = document.createElement("main");
+    main.className = "bs-spread-content";
+    if (includeContent) {
+      const clone = flow.cloneNode(true) as HTMLElement;
+      clone.classList.add("bs-flow-clone");
+      clone.style.transform = "none";
+      clone.style.position = "absolute";
+      clone.style.top = "0";
+      const visibleLeft = spread * metrics.spreadStride + (side === "right" ? metrics.width / 2 : 0);
+      clone.style.left = `${-visibleLeft}px`;
+      clone.style.width = `${metrics.width}px`;
+      clone.style.height = "100%";
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("inert", "");
+      main.appendChild(clone);
+    }
+    sheet.appendChild(main);
+
+    const footer = document.createElement("footer");
+    footer.className = `bs-folio bs-folio--${side}`;
+    footer.setAttribute("aria-label", `Sayfa ${page}`);
+    if (side === "left") {
+      const marker = document.createElement("span");
+      marker.className = "bs-turn-btn";
+      marker.textContent = "‹";
+      footer.appendChild(marker);
+    }
+    const folio = document.createElement("span");
+    folio.className = "bs-folio-number";
+    folio.textContent = String(page);
+    footer.appendChild(folio);
+    if (side === "right") {
+      const marker = document.createElement("span");
+      marker.className = "bs-turn-btn";
+      marker.textContent = "›";
+      footer.appendChild(marker);
+    }
+    sheet.appendChild(footer);
+
+    const count = document.createElement("span");
+    count.className = "bs-leaf-count";
+    count.setAttribute("aria-hidden", "true");
+    count.textContent = `YAPRAK ${spread + 1}/${spreads}`;
+    sheet.appendChild(count);
+
+    host.replaceChildren(sheet);
+  }, [firstLeftPage, title, volume?.shortTitle]);
 
   const beginTurn = useCallback((direction: BookTurnDirection): boolean => {
     if (turnRef.current) return false;
@@ -911,26 +958,18 @@ function BookLeafPager({
     turnRef.current = { direction, from, to };
     progressRef.current = 0;
 
-    const stride = metrics.stride;
-    const fromLeftCol = from * 2;
-    const fromRightCol = from * 2 + 1;
-    const toLeftCol = to * 2;
-    const toRightCol = to * 2 + 1;
-
     // Only one physical leaf turns. Forward: the current right page pivots on
     // the spine, its back becoming the new left page; the current left page
     // stays put. Backward is the mirror. The face clones are full-width flows
     // shifted so the correct printed column falls inside the half-width face.
     frontRef.current?.replaceChildren();
     backRef.current?.replaceChildren();
-    if (!light) {
-      if (direction === "forward") {
-        buildFace(frontRef.current, -fromRightCol * stride);
-        buildFace(backRef.current, -toLeftCol * stride);
-      } else {
-        buildFace(frontRef.current, -fromLeftCol * stride);
-        buildFace(backRef.current, -toRightCol * stride);
-      }
+    if (direction === "forward") {
+      buildFace(frontRef.current, "right", from, metrics.spreads, !light);
+      buildFace(backRef.current, "left", to, metrics.spreads, !light);
+    } else {
+      buildFace(frontRef.current, "left", from, metrics.spreads, !light);
+      buildFace(backRef.current, "right", to, metrics.spreads, !light);
     }
 
     // The flow beneath advances to the target spread so the half that the
@@ -938,14 +977,15 @@ function BookLeafPager({
     // a real book. The static half is masked separately so its content does
     // not change until the finalize step swaps the flow back to a clean state.
     flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
+    setLeafState({ spread: to, spreads: metrics.spreads });
 
     if (half) {
       if (direction === "forward") {
         half.className = "bs-half bs-half--static-left";
-        if (!light) buildFace(half, -fromLeftCol * stride);
+        buildFace(half, "left", from, metrics.spreads, !light);
       } else {
         half.className = "bs-half bs-half--static-right";
-        if (!light) buildFace(half, -fromRightCol * stride);
+        buildFace(half, "right", from, metrics.spreads, !light);
       }
       half.style.display = "block";
     }
@@ -976,10 +1016,6 @@ function BookLeafPager({
     }
     if (beginTurn(direction)) settleTurn(0, true);
   }, [beginTurn, reducedMotion, settleTurn, stepInstant]);
-
-  useEffect(() => {
-    apiRef.current = { step };
-  }, [apiRef, step]);
 
   useEffect(() => {
     measure();
@@ -1228,8 +1264,47 @@ function BookLeafPager({
       onKeyDown={onKeyDown}
       onDragStart={(event) => event.preventDefault()}
     >
-      <div ref={flowRef} className={`bs-flow ${routeContent ? "bs-route-content" : ""}`}>
-        {children}
+      <div className="bs-sheet-live">
+        <header className="bs-running bs-running--left">{volume?.shortTitle ?? "GENEL"}</header>
+        <header className="bs-running bs-running--right">{title}</header>
+
+        <main key={pageKey ?? "book-sheet"} className="bs-spread-content">
+          <div ref={flowRef} className={`bs-flow ${routeContent ? "bs-route-content" : ""}`}>
+            {children}
+          </div>
+        </main>
+
+        <footer className="bs-folio bs-folio--left" aria-label={`Sayfa ${leftPage}`}>
+          <button
+            type="button"
+            className="bs-turn-btn"
+            aria-label="Önceki sayfayı çevir"
+            disabled={leafState.spread === 0}
+            onClick={() => step("backward")}
+          >
+            ‹
+          </button>
+          <span className="bs-folio-number">{leftPage}</span>
+        </footer>
+        <footer className="bs-folio bs-folio--right" aria-label={`Sayfa ${leftPage + 1}`}>
+          <span className="bs-folio-number">{leftPage + 1}</span>
+          <button
+            type="button"
+            className="bs-turn-btn"
+            aria-label="Sonraki sayfayı çevir"
+            disabled={leafState.spread >= leafState.spreads - 1}
+            onClick={() => step("forward")}
+          >
+            ›
+          </button>
+        </footer>
+
+        <span className="bs-leaf-count" aria-hidden="true">
+          YAPRAK {leafState.spread + 1}/{leafState.spreads}
+        </span>
+        <span className="sr-only" aria-live="polite">
+          Sayfa {leftPage}–{leftPage + 1}
+        </span>
       </div>
       <div ref={halfRef} className="bs-half" aria-hidden="true" />
       <span ref={shadowRef} className="bs-turn-shadow" aria-hidden="true" />
@@ -1237,6 +1312,7 @@ function BookLeafPager({
         <div ref={frontRef} className="bs-turn-face bs-turn-face--front" />
         <div ref={backRef} className="bs-turn-face bs-turn-face--back" />
       </div>
+      {pageKey && <span key={`turn-${pageKey}`} className="bs-turning-leaf" aria-hidden="true" />}
     </div>
   );
 }
