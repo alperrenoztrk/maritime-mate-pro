@@ -167,7 +167,7 @@ export function BookSheet({
         }
         .bs-cover-board{
           position: relative;
-          width: min(94vw, 820px);
+          width: min(94vw, 880px);
           margin: 0 auto;
           padding: clamp(5px, .8vw, 11px);
           border-radius: 8px 12px 12px 8px;
@@ -214,7 +214,7 @@ export function BookSheet({
           display: grid;
           grid-template-columns: minmax(0,1fr) minmax(0,1fr);
           grid-template-rows: auto minmax(1px,1fr) auto;
-          height: clamp(300px, min(64svh, 72vw), 560px);
+          height: clamp(320px, min(72svh, 72vw), 640px);
           min-height: 0;
           overflow: hidden;
           /* Drives the decorative route-turn leaf (a direct child); without a
@@ -547,12 +547,15 @@ export function BookSheet({
         .bs-route-content :where(table){ width:100%!important; min-width:0!important; max-width:100%!important; table-layout:fixed; break-inside:auto!important; }
         .bs-route-content :where(th,td){ min-width:0!important; white-space:normal!important; }
         .bs-route-content :where(.break-inside-avoid,[class*="break-inside-avoid"],.bs-reading-section,.bs-topic-article,.bs-topic-figure,.bs-callout,.bs-formula,.bs-table-wrap,.bs-reading-resources){ break-inside:auto!important; page-break-inside:auto!important; }
+        /* Fragmented cards must close their border/background on every leaf,
+           not slice open at the column break. */
+        .bs-route-content :where(div,section,article,blockquote,li,p,figure){ box-decoration-break:clone; -webkit-box-decoration-break:clone; }
         .bs-route-content :where(.bs-reading-section,.bs-topic-article){ content-visibility:visible!important; contain:none!important; contain-intrinsic-size:auto 0!important; }
         .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col,.flex,.inline-flex){ display:block!important; }
         .bs-route-content :where(.grid,[class*="grid-cols-"],.bs-photo-grid,.flex-col,.flex,.inline-flex) > * + *{ margin-top:.5rem; }
         .bs-route-content :where(.flex,.inline-flex){ min-width:0; max-width:100%; }
         .bs-route-content :where(.sticky){ position:static!important; inset:auto!important; }
-        .bs-route-content :where(.overflow-auto,.overflow-scroll,.overflow-y-auto,.overflow-y-scroll,.overflow-clip){ overflow:visible!important; }
+        .bs-route-content :where(.overflow-auto,.overflow-scroll,.overflow-hidden,.overflow-clip,.overflow-x-auto,.overflow-x-scroll,.overflow-x-hidden,.overflow-x-clip,.overflow-y-auto,.overflow-y-scroll,.overflow-y-hidden,.overflow-y-clip){ overflow:visible!important; }
         .bs-route-content :where([class*="max-h-"]){ max-height:none!important; overflow-y:visible!important; }
         .bs-route-content :where([class*="min-h-"],.min-h-screen,.min-h-full){ min-height:0!important; }
         .bs-route-content :where(.h-screen,.h-full){ height:auto!important; }
@@ -601,7 +604,7 @@ export function BookSheet({
         @media (max-width: 720px){
           .bs-stage{ padding-left:2px; padding-right:2px; }
           .bs-cover-board{ width:100%; padding:4px; border-radius:5px; }
-          .bs-spread{ height:clamp(260px,min(58svh,78vw),430px); min-height:0; padding:12px 9px 12px; }
+          .bs-spread{ height:clamp(280px,min(64svh,80vw),470px); min-height:0; padding:12px 9px 12px; }
           .bs-spread-content{ font-size:clamp(.58rem,2.25vw,.72rem); line-height:1.5; }
           .bs-flow{ column-gap:26px; }
           .bs-running--left,.bs-folio--left{ padding-right:14px; }
@@ -741,6 +744,52 @@ function BookLeafPager({
   }, []);
 
   /**
+   * Monolithic boxes (anything CSS multicol cannot fragment) taller than one
+   * column would spill past the page bottom and be clipped invisibly. Shrink
+   * them just enough to fit the printed column. `zoom` participates in layout,
+   * so the column count derived afterwards sees the shrunken size.
+   *
+   * Loop safety: the flow MutationObserver deliberately excludes `style` and
+   * `data-bs-autofit` from its attributeFilter — never add `style` there, or
+   * these writes would re-trigger measurement forever.
+   */
+  const applyAutoFit = useCallback((flow: HTMLElement, columnHeight: number) => {
+    // Undo previous fits first so detection always sees the natural layout.
+    for (const el of flow.querySelectorAll<HTMLElement>("[data-bs-autofit]")) {
+      el.style.removeProperty("zoom");
+      el.style.removeProperty("font-size");
+      el.removeAttribute("data-bs-autofit");
+    }
+    const rotated = getBookSurfaceOrientation(flow) === "rotated";
+    const limit = columnHeight + 2;
+    const supportsZoom = typeof CSS !== "undefined" && CSS.supports("zoom", "0.5");
+    for (let pass = 0; pass < 3; pass += 1) {
+      // A fragmentable box's client rect never exceeds the column band, so a
+      // taller rect can only be an unfragmentable overflow monolith. Keep the
+      // outermost offender; shrinking it also shrinks its descendants.
+      const offenders: Array<{ el: HTMLElement; h: number }> = [];
+      for (const el of flow.querySelectorAll<HTMLElement>("*")) {
+        if (offenders.some(({ el: kept }) => kept.contains(el))) continue;
+        const rect = el.getBoundingClientRect();
+        const h = rotated ? rect.width : rect.height;
+        if (h > limit) offenders.push({ el, h });
+      }
+      if (offenders.length === 0) break;
+      let changed = false;
+      for (const { el, h } of offenders) {
+        const property = supportsZoom ? "zoom" : "font-size";
+        const current = Number.parseFloat(el.style.getPropertyValue(property)) || 1;
+        const next = clampNumber((limit / h) * current * 0.98, 0.4, 1);
+        if (next >= current) continue;
+        el.style.setProperty(property, supportsZoom ? String(next) : `${next}em`);
+        el.setAttribute("data-bs-autofit", "");
+        changed = true;
+      }
+      if (!changed) break;
+    }
+  }, []);
+
+  /**
    * Reads the real paper size and derives the physical leaf grid from it.
    * The transform is cleared for one synchronous layout so `scrollWidth`
    * reports the full run of printed columns.
@@ -766,6 +815,7 @@ function BookLeafPager({
     flow.style.transform = "none";
     if (pager.scrollLeft) pager.scrollLeft = 0;
     if (pager.scrollTop) pager.scrollTop = 0;
+    applyAutoFit(flow, height);
     const total = Math.max(pager.scrollWidth, width);
     // A partial final column must still become a real leaf. Keep a one-pixel
     // tolerance for integer scrollWidth rounding without rounding content away.
@@ -802,7 +852,7 @@ function BookLeafPager({
     spreadRef.current = clampNumber(spreadRef.current, 0, spreads - 1);
     applyBaseOffset();
     publishState();
-  }, [applyBaseOffset, publishState]);
+  }, [applyAutoFit, applyBaseOffset, publishState]);
 
   /** Writes one animation frame straight to the DOM — no re-render per frame. */
   const applyTurnFrame = useCallback((progress: number) => {
@@ -976,6 +1026,8 @@ function BookLeafPager({
       subtree: true,
       characterData: true,
       attributes: true,
+      // applyAutoFit writes `style` and `data-bs-autofit` on flow children
+      // during measure(); adding either here would loop measurement forever.
       attributeFilter: ["class", "open", "hidden", "aria-expanded", "data-state"],
     });
     const fontObserver = new MutationObserver(scheduleMeasure);
