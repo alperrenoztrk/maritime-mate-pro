@@ -19,8 +19,13 @@ interface BookRouteFrameProps {
  * another sheet of the same book instead of opening a detached app screen.
  */
 export function BookRouteFrame({ pathname, children }: BookRouteFrameProps) {
-  const active = isBookContentPath(pathname);
   const interactionMode = getBookInteractionMode(pathname);
+  // Calculators and assistants are full interactive app screens that cannot be
+  // paginated onto a single fixed book leaf without clipping — render them as
+  // normal, scrollable screens. Reading and exercise content stays book-framed.
+  const active = isBookContentPath(pathname)
+    && interactionMode !== "calculator"
+    && interactionMode !== "assistant";
   const routeVolume = getBookRouteVolume(pathname);
   const volumeId = routeVolume.id;
 
