@@ -403,6 +403,11 @@ function OpenBookVolume({
     leaf.style.setProperty("--book-turn-top-inset", `${frame.topInsetPercent.toFixed(2)}%`);
     leaf.style.setProperty("--book-turn-bottom-inset", `${frame.bottomInsetPercent.toFixed(2)}%`);
     leaf.style.setProperty("--book-turn-edge-radius", `${frame.edgeRadiusPx.toFixed(2)}px`);
+    leaf.style.setProperty(
+      "--book-turn-ridge-angle",
+      `${((active.direction === "forward" ? -1 : 1) * frame.curl * 18).toFixed(2)}deg`,
+    );
+    leaf.style.setProperty("--book-turn-ridge-scale", (0.54 + frame.curl * 0.5).toFixed(3));
     if (frontFaceRef.current) frontFaceRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
     if (backFaceRef.current) backFaceRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
     if (shadowRef.current) {
@@ -807,6 +812,7 @@ function OpenBookVolume({
                         decorative
                       />
                     </div>
+                    <span className="bk-curl-ridge" />
                   </div>
                 </>
               )}
@@ -942,6 +948,16 @@ function OpenBookVolume({
         }
         .bk-turn-face--front{ transform:rotateY(0deg) translateZ(.65px); }
         .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.65px); background:linear-gradient(180deg,#f7eccf,#e8d6ac); }
+        .bk-curl-ridge{
+          position:absolute; z-index:5; top:0; bottom:0; width:clamp(10px,8%,28px); pointer-events:none;
+          opacity:calc(var(--book-turn-specular,0) * .72);
+          transform:translateZ(1.2px) rotateY(var(--book-turn-ridge-angle,0deg)) scaleX(var(--book-turn-ridge-scale,.54));
+          will-change:transform,opacity;
+          background:linear-gradient(90deg,rgba(64,38,9,.22),rgba(255,250,226,.68) 46%,rgba(89,54,14,.28));
+          box-shadow:0 0 7px rgba(53,31,7,.18);
+        }
+        .bk-turn-leaf--forward .bk-curl-ridge{ right:-1px; transform-origin:right center; }
+        .bk-turn-leaf--backward .bk-curl-ridge{ left:-1px; transform-origin:left center; }
         .bk-turn-face .bk-leaf{ position:absolute; inset:0; width:100%; height:100%; }
         .bk-turn-face::before,.bk-turn-face::after{
           content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply;
