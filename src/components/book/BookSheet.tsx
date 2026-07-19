@@ -392,6 +392,17 @@ export function BookSheet({
         }
         .bs-turn-face--front{ transform: rotateY(0deg) translateZ(.65px); }
         .bs-turn-face--back{ transform: rotateY(180deg) translateZ(.65px); }
+        .bs-curl-ridge{
+          position:absolute; z-index:5; top:0; bottom:0;
+          width:clamp(10px,8%,28px); pointer-events:none;
+          opacity:calc(var(--book-turn-specular,0) * .72);
+          transform:translateZ(1.2px) rotateY(var(--book-turn-ridge-angle,0deg)) scaleX(var(--book-turn-ridge-scale,.54));
+          will-change:transform,opacity;
+          background:linear-gradient(90deg,rgba(64,38,9,.22),rgba(255,250,226,.68) 46%,rgba(89,54,14,.28));
+          box-shadow:0 0 7px rgba(53,31,7,.18);
+        }
+        .bs-turn-leaf--forward .bs-curl-ridge{ right:-1px; transform-origin:right center; }
+        .bs-turn-leaf--backward .bs-curl-ridge{ left:-1px; transform-origin:left center; }
         .bs-turn-face::before,
         .bs-turn-face::after{
           content: "";
@@ -893,6 +904,11 @@ function BookLeafPager({
     leaf.style.setProperty("--book-turn-top-inset", `${frame.topInsetPercent.toFixed(2)}%`);
     leaf.style.setProperty("--book-turn-bottom-inset", `${frame.bottomInsetPercent.toFixed(2)}%`);
     leaf.style.setProperty("--book-turn-edge-radius", `${frame.edgeRadiusPx.toFixed(2)}px`);
+    leaf.style.setProperty(
+      "--book-turn-ridge-angle",
+      `${((active.direction === "forward" ? -1 : 1) * frame.curl * 18).toFixed(2)}deg`,
+    );
+    leaf.style.setProperty("--book-turn-ridge-scale", (0.54 + frame.curl * 0.5).toFixed(3));
     if (frontRef.current) frontRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
     if (backRef.current) backRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
     if (shadowRef.current) {
@@ -913,6 +929,8 @@ function BookLeafPager({
       leafRef.current.style.removeProperty("--book-turn-shade");
       leafRef.current.style.removeProperty("--book-turn-specular");
       leafRef.current.style.removeProperty("--book-turn-sheen-x");
+      leafRef.current.style.removeProperty("--book-turn-ridge-angle");
+      leafRef.current.style.removeProperty("--book-turn-ridge-scale");
     }
     if (halfRef.current) halfRef.current.style.display = "none";
     if (shadowRef.current) shadowRef.current.style.opacity = "0";
@@ -1435,6 +1453,7 @@ function BookLeafPager({
       <div ref={leafRef} className="bs-turn-leaf" aria-hidden="true">
         <div ref={frontRef} className="bs-turn-face bs-turn-face--front" />
         <div ref={backRef} className="bs-turn-face bs-turn-face--back" />
+        <span className="bs-curl-ridge" />
       </div>
       {pageKey && <span key={`turn-${pageKey}`} className="bs-turning-leaf" aria-hidden="true" />}
     </div>
