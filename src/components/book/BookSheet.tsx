@@ -453,8 +453,8 @@ export function BookSheet({
         .bs-turning-leaf{
           position: absolute;
           z-index: 9;
-          top: 0; left: 0; bottom: 0;
-          width: 100%;
+          top: 0; left: 50%; bottom: 0;
+          width: 50%;
           pointer-events: none;
           transform-origin: left center;
           backface-visibility: hidden;
