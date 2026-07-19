@@ -899,6 +899,7 @@ function BookLeafPager({
     if (turnRef.current) return false;
     const flow = flowRef.current;
     const leaf = leafRef.current;
+    const half = halfRef.current;
     if (!flow || !leaf) return false;
     const metrics = metricsRef.current;
     if (metrics.width < 60) return false;
@@ -910,19 +911,44 @@ function BookLeafPager({
     turnRef.current = { direction, from, to };
     progressRef.current = 0;
 
-    const leftColumn = from * 2;
-    // The whole sheet (both pages of the current spread) turns as one and
-    // flips away to reveal the target spread waiting beneath it, so the entire
-    // page turns instead of only the spine-side half. Oversized flows skip the
-    // printed face clone and turn as plain paper. The back of the sheet stays
-    // blank paper, so only one clone is built (cheaper than the old three).
+    const stride = metrics.stride;
+    const fromLeftCol = from * 2;
+    const fromRightCol = from * 2 + 1;
+    const toLeftCol = to * 2;
+    const toRightCol = to * 2 + 1;
+
+    // Only one physical leaf turns. Forward: the current right page pivots on
+    // the spine, its back becoming the new left page; the current left page
+    // stays put. Backward is the mirror. The face clones are full-width flows
+    // shifted so the correct printed column falls inside the half-width face.
     frontRef.current?.replaceChildren();
     backRef.current?.replaceChildren();
     if (!light) {
-      buildFace(frontRef.current, -leftColumn * metrics.stride);
+      if (direction === "forward") {
+        buildFace(frontRef.current, -fromRightCol * stride);
+        buildFace(backRef.current, -toLeftCol * stride);
+      } else {
+        buildFace(frontRef.current, -fromLeftCol * stride);
+        buildFace(backRef.current, -toRightCol * stride);
+      }
     }
-    // The target spread waits beneath the moving paper, exactly like a book.
+
+    // The flow beneath advances to the target spread so the half that the
+    // turning leaf uncovers reveals the next page's outer column exactly like
+    // a real book. The static half is masked separately so its content does
+    // not change until the finalize step swaps the flow back to a clean state.
     flow.style.transform = `translate3d(${-(to * metrics.spreadStride)}px, 0, 0)`;
+
+    if (half) {
+      if (direction === "forward") {
+        half.className = "bs-half bs-half--static-left";
+        if (!light) buildFace(half, -fromLeftCol * stride);
+      } else {
+        half.className = "bs-half bs-half--static-right";
+        if (!light) buildFace(half, -fromRightCol * stride);
+      }
+      half.style.display = "block";
+    }
 
     leaf.className = `bs-turn-leaf bs-turn-leaf--${direction}`;
     leaf.style.display = "block";
