@@ -119,11 +119,11 @@ export interface TopicDetailContent {
 export const navigationTopicContents: Record<string, TopicDetailContent> = {
   "Dünya'nın şekli ve hareketleri": {
     title: "Dünya'nın Şekli ve Hareketleri",
-    introduction: "Seyrin temeli, Dünya'nın gerçek fiziksel özelliklerinin doğru anlaşılmasına dayanır. Enlem, boylam, zaman, yön, hız ve mesafe gibi tüm seyir hesapları; Dünya'nın şekli ve hareketleri üzerine kuruludur. Bu nedenle seyir dersinin ilk ve en kritik konusu Dünya'nın geometrik ve dinamik yapısıdır.",
+    introduction: "Seyrin tamamı, Dünya'nın gerçek fiziksel yapısının doğru modellenmesine dayanır: enlem-boylam koordinatları, zaman ve zaman dilimleri, hakiki kuzey ile rota, hız-mesafe hesapları ve göksel gözlemlerin hepsi Dünya'nın şekli (basık küre) ile üç temel hareketi (kendi ekseni etrafında rotasyon, Güneş çevresinde revolüsyon ve 23,5°'lik eksen eğikliği) üzerine kuruludur. Bu yapı kavranmadan ne bir deniz haritasının neden Mercator projeksiyonunda çizildiği, ne 1 deniz milinin neden 'enlemde 1 dakikaya' eşit olduğu, ne de kronometreyle boylam bulmanın mantığı anlaşılabilir. Bu nedenle seyir dersinin ilk ve en kritik konusu Dünya'nın hem geometrik (şekil, dönme ekseni, ekvator, kutuplar, meridyenler) hem de dinamik (rotasyon, yörünge, eksen eğikliği) yapısıdır; buradaki her kavram, ilerleyen tüm hesap yöntemlerinin fiziksel temelini oluşturur.",
     sections: [
       {
         title: "Dünya'nın Şekli",
-        content: "Dünya, mükemmel bir küre değildir. Kendi ekseni etrafındaki dönüşü nedeniyle ekvator bölgesinde şişkin, kutuplarda basık bir yapı gösterir. Bu şekle geoit veya matematiksel olarak basık küre (oblate spheroid) denir.",
+        content: "Dünya mükemmel bir küre değildir. Kendi ekseni etrafında dönerken ekvator düzleminde etkili olan **merkezkaç kuvveti**, plastik-akışkan davranışlı gezegeni ekvatorda dışa şişirir, kutuplarda ise bastırır. Sonuçta ekvator yarıçapı (a ≈ 6.378,137 km) kutup yarıçapından (b ≈ 6.356,752 km) yaklaşık **21,4 km** daha büyüktür.\n\nBu farkın ölçüsüne **basıklık** (flattening) denir: f = (a − b) / a ≈ 1/298,257 (WGS-84 elipsoidi). Değerin küçük olması (binde 3), Dünya'nın çıplak gözle küre görünmesinin ama hassas seyir hesaplarında küre kabulünün yetmemesinin nedenidir.\n\nÜç kavramı ayırt etmek şarttır: **(1) küre** — yalnızca kaba yaklaşım; **(2) elipsoid** (basık küre / oblate spheroid) — harita datumlarının ve GPS'in (WGS-84) dayandığı matematiksel referans yüzeyi; **(3) geoit** — yerçekiminin eş-potansiyelli, ortalama deniz seviyesini temsil eden gerçek ve düzensiz yüzey. Geoit ile elipsoid aynı şey değildir; elipsoid, geoidin pürüzsüz matematiksel yaklaşımıdır.\n\n**Gemide önemi:** Modern haritalar ve GPS elipsoide (WGS-84) dayanır. Farklı datumda çizilmiş eski bir haritayla GPS mevkisini karıştırmak yüzlerce metreye varan konum kaymasına yol açabilir; bu yüzden haritanın datumu her zaman kontrol edilir.",
         image: earthOblate,
         imageAlt: "Dünya'nın basık küre şekli",
         bulletPoints: [
@@ -134,11 +134,11 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Seyir Açısından Önemi",
-        content: "Enlem ve boylam çizgileri, gerçek bir küreye değil, bu basık küreye göre tanımlanır. Büyük mesafelerde yapılan hesaplarda bu fark ihmal edilemez."
+        content: "Enlem ve boylam çizgileri gerçek bir küreye değil, basık küreye (elipsoide) göre tanımlandığı için bunun ölçülebilir iki sonucu vardır.\n\n**Birincisi — enlem türleri ayrışır.** Haritalarda kullanılan **coğrafi (jeodezik) enlem**, bulunduğunuz noktada elipsoide çizilen dik doğrunun ekvator düzlemiyle yaptığı açıdır. **Geosentrik enlem** ise Dünya merkezine çizilen doğrunun açısıdır. İkisi arasındaki fark 45° enlem dolayında en büyük değerine (≈ 11,5′) ulaşır, ekvator ve kutupta sıfırlanır.\n\n**İkincisi — deniz mili sabit bir metre değeri değildir.** 1 deniz mili 'enlemde 1 dakikalık yay' olarak tanımlandığından, basıklık yüzünden bir enlem dakikasının metre karşılığı ekvatorda ≈ 1.843 m, kutupta ≈ 1.862 m'dir. Bu yüzden uluslararası standart olarak ortalama değer **1 NM = 1.852 m** kabul edilir.\n\n**Sonuç:** Kısa mesafede Dünya düz varsayılıp düzlem seyir kullanılabilir; ancak birkaç yüz milin üzerindeki geçişlerde bu ihmal, enlemle değişen meridyen ayrımı (meridional parts) ve büyük daire kısalması yüzünden millerce hataya döner. Bu nedenle yöntem mesafeye göre seçilir: kısa = düzlem, orta = orta enlem / Mercator, uzun = büyük daire seyri."
       },
       {
         title: "Dünya'nın Coğrafi Eksenleri",
-        content: "Dünya'nın hayali bir dönme ekseni vardır. Bu eksen, Kuzey Kutbu ile Güney Kutbunu birleştirir. Bu eksene dik olan en büyük daire ekvatordur.",
+        content: "Dünya'nın, Kuzey Coğrafi Kutbu ile Güney Coğrafi Kutbunu birleştiren hayali bir **dönme ekseni** vardır ve gezegen bu eksen çevresinde döner. Bu eksene tam dik olup Dünya'yı iki eşit yarıya bölen en büyük daireye **ekvator** denir; ekvator, enlemin sıfır (0°) referansıdır ve bir ana büyük dairedir. Kutuplardan geçen düşey büyük daireler ise **meridyenlerdir** (boylam daireleri).\n\nBurada **üç ayrı kuzey**i karıştırmamak hayatidir: **(1) Hakiki (coğrafi) kuzey** — dönme ekseninin işaret ettiği yön; haritaların ve tüm rota hesaplarının referansı. **(2) Manyetik kuzey** — pusula ibresinin yöneldiği, manyetik kutba bakan yön; hakiki kuzeyden variation (manyetik sapma) kadar ayrılır. **(3) Cayro kuzeyi** — cayropusulanın ürettiği, hakiki kuzeye çok yakın yön.\n\nDönme ekseni gökyüzüne uzatıldığında **Kutup Yıldızı'na (Polaris)** çok yakın bir noktayı gösterir; işte bu yüzden Polaris'in ufuktan yüksekliği, kuzey yarımkürede yaklaşık olarak doğrudan gözlemcinin enlemini verir.\n\n**Gemide önemi:** Çizdiğiniz her hakiki rota (True), tanımı gereği bu coğrafi eksenin belirlediği hakiki kuzeye göredir. Pusuladan okunan değer ancak deviation (gemi manyetik alanı) ve variation düzeltmeleriyle bu ortak referansa çevrilebilir; aksi hâlde farklı gemilerin ve haritaların rotaları karşılaştırılamaz.",
         image: earthShape1,
         imageAlt: "Dünya'nın ekseni ve ekvator",
         bulletPoints: [
@@ -150,7 +150,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Dünya'nın Kendi Ekseni Etrafındaki Dönüşü (Rotasyon)",
-        content: "Dünya, kendi ekseni etrafında batıdan doğuya doğru döner. Bu dönüşün süresi yaklaşık 24 saattir.",
+        content: "Dünya kendi ekseni etrafında **batıdan doğuya** (kuzey kutbundan bakıldığında saat yönünün tersine) döner; bu yüzden gök cisimleri doğudan doğar, batıdan batar ve saat açıları (GHA) sürekli batıya doğru artar.\n\nBir tam dönüşün süresi kullanılan referansa göre değişir: yıldızlara göre ölçülen **yıldız günü** (sidereal day) ≈ 23s 56d 04s'dir; Güneş'e göre ölçülen **ortalama güneş günü** ise tam 24 saattir. Aradaki ~4 dakikalık fark, Dünya dönerken bir yandan Güneş çevresinde de ilerlemesinden doğar: Güneş'i tekrar aynı meridyene getirmek için Dünya'nın günde yaklaşık 1° fazladan dönmesi gerekir.\n\nDenizcilik için hayati bağıntı şudur: **360° ÷ 24 saat = 15°/saat**. Yani 1 saat = 15° boylam, 4 dakika = 1° boylam, 1 dakika (zaman) = 15′ (yay). Kronometreyle boylam bulmanın tüm mantığı buna dayanır: gemi kronometresini UT ile karşılaştırıp yerel öğle ile Greenwich öğlesi arasındaki zaman farkını 15 ile çarparak boylamı elde edersiniz.\n\n**Sınav/pratik uyarısı:** Zamanda yalnızca 4 saniyelik hata, boylamda 1′ (ekvatorda ≈ 1 NM) sapma demektir; bu yüzden göksel seyirde saniye mertebesinde doğru UT şarttır.",
         image: earthRotation,
         imageAlt: "Dünya'nın rotasyonu - gece ve gündüz",
         bulletPoints: [
@@ -165,7 +165,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Dünya'nın Güneş Etrafındaki Dönüşü (Revolüsyon)",
-        content: "Dünya, Güneş etrafında yaklaşık 365 gün 6 saatte bir tur atar. Bu hareket sırasında Dünya'nın dönme ekseni, yörünge düzlemine yaklaşık 23.5° eğiktir.",
+        content: "Dünya, Güneş çevresindeki **eliptik yörüngesini** yaklaşık 365 gün 6 saatte tamamlar (daha tam değer: 365,2422 gün — tropikal yıl). Bu 6 saatlik artık, her 4 yılda bir Şubat'a bir gün eklenmesinin (**artık yıl**) nedenidir.\n\nYörünge tam daire değil elips olduğundan Dünya–Güneş uzaklığı yıl içinde değişir: Ocak başında Güneş'e en yakın (**perihelion**), Temmuz başında en uzaktır (**aphelion**). Bu, Güneş'in açısal çapının ve yörünge hızının değişmesine, dolayısıyla **Equation of Time**'ın (gerçek güneş ile ortalama güneş saati arasında 16 dakikaya varan fark) bir bileşenine yol açar.\n\nRevolüsyonun seyirdeki en önemli sonucu, Güneş **deklinasyonunun** (Dec) yıl boyunca yaklaşık +23,5° ile −23,5° arasında salınmasıdır; çünkü dönme ekseni yörünge düzlemine sabit bir açıyla eğik durur ve Dünya yörüngede ilerledikçe Güneş, ekvator düzlemine göre kâh kuzeyde kâh güneyde kalır.\n\n**Gemide önemi:** Güneş gözleminden enlem ya da mevki çıkarmak için Denizcilik Almanağı'ndan (Nautical Almanac) o an için okunan Dec değeri, doğrudan bu hareketin ürünüdür. Deklinasyon bilinmeden bir Güneş yükseklik ölçümü mevkiye çevrilemez.",
         image: earthSeasons,
         imageAlt: "Dünya'nın mevsimsel hareketi ve eksen eğikliği",
         bulletPoints: [
@@ -177,7 +177,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Eksen Eğikliği (Obliquity)",
-        content: "Dünya'nın dönme ekseni, yörünge düzlemine dik olan eksene göre yaklaşık 23.5° eğiktir. Bu eğiklik nedeniyle ekinoks ve solstis olayları meydana gelir.",
+        content: "Dünya'nın dönme ekseni, yörünge (ekliptik) düzlemine dik doğrultudan yaklaşık **23°26′ (≈ 23,5°)** eğiktir; bu açıya **ekliptiğin eğikliği** (obliquity, ε) denir. Gökyüzüne yansıtıldığında bu, gök ekvatoru ile Güneş'in yıllık izlediği ekliptik çemberi arasındaki açıdır ve Güneş deklinasyonunun ulaşabileceği en büyük değeri (±23,5°) belirler.\n\nBu geometri iki tür kritik an üretir. **Ekinokslar:** Güneş gök ekvatorunu keser, deklinasyon 0°'dır, gece ile gündüz her enlemde yaklaşık eşittir (≈ 21 Mart İlkbahar/Vernal; ≈ 23 Eylül Sonbahar). İlkbahar ekinoksu noktası — **Koç'un İlk Noktası (First Point of Aries)** — göksel seyirde başlangıç referansıdır; yıldızların SHA'sı ve GHA Aries buna dayanır. **Solstisler:** Güneş en kuzey (+23,5°, ≈ 21 Haziran) veya en güney (−23,5°, ≈ 22 Aralık) deklinasyonundadır.\n\nGüneş'in yıl içinde tam tepeden (zenit) geçebildiği enlem sınırları da böyle tanımlanır: **Yengeç Dönencesi (23,5°N)** ve **Oğlak Dönencesi (23,5°S)**.\n\n**Gemide önemi:** Bir gök cisminin öğle geçişindeki (meridian passage) enlemini 'enlem = 90° − öğle yüksekliği ± deklinasyon' bağıntısıyla bulursunuz; buradaki deklinasyonun mevsimsel değeri tümüyle eksen eğikliğinin sonucudur.",
         image: earthTilt,
         imageAlt: "Dünya'nın 23.5° eksen eğikliği",
         bulletPoints: [
@@ -189,7 +189,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Zaman ve Dünya Hareketleri Arasındaki İlişki",
-        content: "Dünya'nın dönüşü, zaman dilimlerini oluşturur. Başlangıç meridyeni Greenwich Meridyeni (0°) olarak kabul edilir.",
+        content: "Dünya 24 saatte 360° döndüğü için her **15° boylam 1 saatlik** zaman farkına karşılık gelir; dünya bu mantıkla her biri 15° genişliğinde 24 saat dilimine (time zone) bölünmüştür. Referans, 1884'te uluslararası kabul edilen **Greenwich Başlangıç Meridyeni'dir (0°)**; buradaki ortalama güneş zamanı GMT/UT, tüm göksel ve seyir zaman hesaplarının temelidir (UTC bunun atomik saatle tutulan hâlidir).\n\nBir geminin **Saat Dilimi Tanımı (Zone Description, ZD)**, yerel bölge saatini UT'ye çevirmek için uygulanacak saat sayısıdır: doğu boylamlarında ZD negatiftir (yerel saat UT'den ileri), batı boylamlarında pozitiftir.\n\nDenizde pratik kural: **doğuya** seyirde her 15°'de saat 1 saat **ileri** alınır (gün kısalır), **batıya** seyirde 1 saat **geri** alınır; bu ayar genelde gece vardiyalarına bölüştürülür. 180° meridyeni yakınındaki **Uluslararası Tarih Değiştirme Çizgisi'nde (IDL)** ise takvimden bir gün eklenir veya çıkarılır.\n\n**Sınav/pratik uyarısı:** Bu ilişki hem ETA ve vardiya planlamasında hem de göksel gözlemde doğru UT'yi bulmakta zorunludur; 4 dakikalık zaman hatası boylamda 1° (ekvatorda ≈ 60 NM) sapma demektir.",
         image: earthTimezone1,
         imageAlt: "Zaman dilimleri ve boylam ilişkisi",
         bulletPoints: [
@@ -203,7 +203,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Dünya'nın Şeklinin Seyir Hesaplarına Etkisi",
-        content: "Dünya'nın basık küre olması nedeniyle farklı seyir yöntemleri kullanılır:",
+        content: "Dünya basık bir küre olduğu ve düz bir düzlem olmadığı için tek bir hesap yöntemi her mesafede geçerli olmaz; denizci, kat edilecek mesafeye, enleme ve istenen doğruluğa göre yöntemi bilinçle seçer. Belirleyici etken, Dünya yüzeyinin eğriliği ile meridyenlerin kutba doğru **yakınsamasıdır**: kısa mesafede bu etkiler ihmal edilebilir, uzun mesafede sonucu millerce değiştirir. Pratikte yaygın eşikler ve gerekçeleri şöyledir:",
         image: earthTimezone2,
         imageAlt: "Koordinat sistemi ve zaman dilimleri",
         bulletPoints: [
@@ -468,7 +468,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
     sections: [
       {
         title: "Koordinat Sistemine Genel Bakış",
-        content: "Dünya üzerindeki herhangi bir noktayı tanımlamak için iki temel referans çizgisi kullanılır: Ekvator ve Greenwich Meridyeni. Bu iki çizginin kesişimi, koordinat sisteminin başlangıç noktasını oluşturur.",
+        content: "Dünya yüzeyi iki boyutlu olduğundan, üzerindeki her nokta yalnızca **iki açısal koordinatla** tam olarak tanımlanabilir. Bunun için birbirine dik iki temel referans kullanılır: yatayda **Ekvator** (enlemin 0° başlangıcı) ve düşeyde **Greenwich Başlangıç Meridyeni** (boylamın 0° başlangıcı).\n\nBu iki çizginin kesiştiği nokta — Gine Körfezi açıklarında, (0°, 0°) — sistemin orijinidir. Koordinatların **açısal** (derece-dakika-saniye) olduğuna dikkat edin; metre gibi doğrusal bir ölçü değildir, çünkü küre üzerinde her yerde geçerli sabit doğrusal bir ızgara kurulamaz.\n\nYüzeyi bu iki referansa göre tarayan iki daire ailesi vardır: **paraleller** (enlem çizgileri) ve **meridyenler** (boylam çizgileri). Her nokta, bir paralel ile bir meridyenin kesişimidir; bu yüzden bir enlem-boylam çifti Dünya üzerinde tek (benzersiz) bir yere karşılık gelir.\n\n**Gemide önemi:** GPS, ECDIS, kâğıt harita ve telsiz mevki raporlarının hepsi bu ortak ızgarayı konuşur; mevki daima 'önce enlem, sonra boylam' sırasıyla ve yarımküre harfiyle (N/S, E/W) verilir.",
         image: coordinateSystem1,
         imageAlt: "Paraleller ve meridyenler - koordinat sistemi",
         bulletPoints: [
@@ -479,7 +479,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Paraleller ve Meridyenler",
-        content: "Paraleller, ekvatora paralel olarak çizilen hayali dairelerdir ve enlem değerlerini belirler. Meridyenler ise Kuzey Kutbu'ndan Güney Kutbu'na uzanan hayali yarım dairelerdir ve boylam değerlerini belirler.",
+        content: "Paraleller, ekvatora paralel çizilen ve aynı enlem değerine sahip noktaları birleştiren dairelerdir. Ekvator dışındaki tüm paraleller **küçük dairedir** (small circle) — merkezleri Dünya merkezinde değildir ve kutba doğru gidildikçe yarıçapları küçülür. Yalnızca **ekvator bir büyük dairedir** (great circle).\n\nMeridyenler ise Kuzey Kutbu'ndan Güney Kutbu'na uzanan, aynı boylamı paylaşan yarım dairelerdir. Bir meridyen ile onun tam 180° karşısındaki meridyen birlikte bir büyük daire oluşturur; bu yüzden **tüm meridyenler eşit uzunluktadır** ve hepsi iki kutupta birleşir (converge).\n\nBu geometrinin doğrudan seyir sonucu şudur: paraleller birbirine hiç değmez ve aralarındaki kuzey-güney mesafe her enlemde sabittir; meridyenler ise kutba doğru yaklaştığından, aynı boylam farkının karşılığı olan doğu-batı mesafe enlemle azalır (bkz. departure).\n\n**Sayısal çerçeve:** Ekvator çevresi ≈ 40.075 km, kutuptan kutba bir meridyen yayı ≈ 20.004 km (tam meridyen dairesi ≈ 40.008 km); aradaki küçük fark yine Dünya'nın basıklığındandır.",
         image: coordinateSystem2,
         imageAlt: "Paraleller ve meridyenler detaylı görünüm",
         bulletPoints: [
@@ -490,7 +490,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem (Latitude) Kavramı",
-        content: "Enlem, bir noktanın ekvatora olan açısal uzaklığıdır. Ölçüm, Dünya merkezinden yapılır ve kuzey–güney yönünü ifade eder.",
+        content: "Enlem (φ, latitude), bir noktanın **ekvator düzlemine olan açısal uzaklığıdır** ve kuzey-güney konumunu belirler. Açı, o noktadan Dünya merkezine (jeodezik tanımda: elipsoide dik doğrultuda) çizilen doğru ile ekvator düzlemi arasında ölçülür.\n\nEnlem daima bir meridyen boyunca ölçülür ve 0° (ekvator) ile 90° (kutup) arasında değişir; yarımküre mutlaka belirtilir: **Kuzey (N)** ya da **Güney (S)**. Örneğin 41°02′ N, İstanbul Boğazı dolayına karşılık gelir.\n\nEnlem, hem doğrusal mesafeyle doğrudan ilişkili (1′ enlem = 1 NM) hem de gök cisimlerinin ufuk üstü yüksekliğiyle bağlantılı olduğundan seyirde iki işlevi birden görür: konumun kuzey-güney bileşeni ve göksel gözlemlerde referans.\n\n**Sık yapılan hata:** Enlemi işaretsiz (N/S belirtmeden) yazmak. 40° N ile 40° S birbirinden 4.800 NM uzaktadır; yarımküre harfi koordinatın ayrılmaz parçasıdır.",
         image: coordinateSystem3,
         imageAlt: "Enlem ve boylam üç boyutlu görünüm",
         bulletPoints: [
@@ -501,7 +501,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem Paralelleri",
-        content: "Enlemler, ekvatora paralel daireler hâlinde çizilir ve bu nedenle paraleller olarak adlandırılır. Her paralel dairesi, ekvatordan uzaklaştıkça küçülür.",
+        content: "Aynı enlemdeki noktalar birleştirildiğinde ekvatora paralel daireler elde edilir; bu yüzden enlem çizgilerine **paraleller** denir. Ekvatordan kutba gidildikçe bu daireler küçülür (yarıçap = R·cos φ), ancak enlem **değeri** düzgün ve doğrusaldır: iki paralel arasındaki kuzey-güney açısal aralık her enlemde aynıdır.\n\nİşte bu yüzden **enlem ölçeği doğrudan mesafe cetveli olarak kullanılır**: haritada iki nokta arasındaki mesafeyi ölçmek için pergel açıklığı, o noktaların hizasındaki **enlem** kenarının dakika bölmeleriyle karşılaştırılır (1′ = 1 NM).\n\n**Kritik pratik uyarı:** Mesafe ölçümünde daima **yan (enlem) kenarı** kullanılır, asla alt/üst (boylam) kenarı değil. Mercator haritasında enlem ölçeği kutba doğru gerildiği için, mesafeyi ölçtüğünüz noktaların **hizasındaki** enlem bölümünü kullanmak gerekir; aksi hâlde uzun mesafelerde ölçek hatası oluşur.\n\n**Worked örnek:** 34° N ile 37° N arasındaki kuzey-güney mesafe = (37 − 34) × 60 = 3 × 60 = **180 NM**.",
         image: latitudeParallels,
         imageAlt: "Enlem paralelleri",
         bulletPoints: [
@@ -516,7 +516,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlemin Ölçüm Mantığı",
-        content: "Enlem, bir noktanın zenit doğrultusu ile ekvator düzlemi arasındaki açıdır. Göksel seyirde bu açı, gök cisimlerinin yükseklikleri kullanılarak dolaylı biçimde bulunur.",
+        content: "Enlem, bir gözlemcinin **zenit doğrultusu** (tam tepe noktası) ile ekvator düzlemi arasındaki açıya eşittir. Bu geometrik özdeşlik, enlemi gökyüzü gözlemleriyle doğrudan ölçmeyi mümkün kılar; nitekim yüzyıllarca denizciler enlemi güvenle bulmuş, asıl çözülemeyen sorun boylam olmuştur.\n\nEn temel yöntem **Kutup Yıldızı (Polaris)**'dır: gök kutbuna çok yakın olduğundan ufuktan yüksekliği (küçük düzeltmelerle) doğrudan gözlemcinin kuzey enlemini verir. İkinci klasik yöntem **öğle enlemi**dir: Güneş meridyenden geçerken (yerel öğle) en yüksek noktasına ulaşır ve 'enlem = 90° − öğle yüksekliği ± deklinasyon' bağıntısıyla enlem hesaplanır.\n\nHer iki yöntemde de açı **sextant** ile ölçülür; sextant gök cismi ile deniz ufku arasındaki açıyı okuyarak ham yüksekliği (Hs) verir, bu da düzeltmelerden sonra enleme çevrilir.\n\n**Gemide önemi:** GPS arızasında enlem, tek bir Polaris ya da öğle Güneşi gözlemiyle birkaç mil doğrulukla bulunabilir; bu yüzden göksel seyir hâlâ zorunlu bir yedek beceridir.",
         image: latitudeMeasurement1,
         imageAlt: "Enlem ölçümü - Kutup Yıldızı ile",
         bulletPoints: [
@@ -527,7 +527,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Boylam (Longitude) Kavramı",
-        content: "Boylam, bir noktanın başlangıç meridyenine (Greenwich) olan açısal uzaklığıdır. Ölçüm doğu–batı yönündedir.",
+        content: "Boylam (λ, longitude), bir noktanın meridyeni ile **Greenwich Başlangıç Meridyeni** arasındaki açıdır ve doğu-batı konumunu belirler. Bu açı, iki meridyen düzlemi arasındaki **iki yüzlü (dihedral) açı** olarak Dünya ekseninde ölçülür; sayısal olarak ekvator (ya da herhangi bir paralel) üzerindeki yay karşılığına eşittir.\n\nBoylam 0° (Greenwich) ile 180° arasında değişir ve yön mutlaka belirtilir: **Doğu (E)** ya da **Batı (W)**. 180° meridyeni (antimeridyen) doğu ve batının buluştuğu çizgidir ve Uluslararası Tarih Değiştirme Çizgisi'ne temel oluşturur.\n\nGreenwich'in 0° seçilmesi coğrafi değil tarihsel-siyasi bir uzlaşıdır (1884 Uluslararası Meridyen Konferansı); önemli olan tüm dünyanın **aynı** başlangıcı kullanmasıdır, çünkü boylam ancak ortak bir referansa göre anlamlıdır.\n\n**Sık yapılan hata:** Boylamı E/W belirtmeden yazmak veya enlemle sırasını karıştırmak. Standart yazım daima 'enlem N/S, boylam E/W' sırasındadır.",
         image: longitudeConcept,
         imageAlt: "Boylam kavramı ve meridyenler",
         bulletPoints: [
@@ -538,7 +538,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Boylam ve Zaman İlişkisi",
-        content: "Boylamın en kritik özelliği, zamanla doğrudan ilişkili olmasıdır. Dünya 24 saatte 360° döndüğünden, boylam farkı zaman farkına dönüştürülebilir.",
+        content: "Boylamı diğer koordinattan ayıran can alıcı özellik, **zamanla birebir ilişkili** olmasıdır. Dünya kendi ekseni etrafında 24 saatte 360° döndüğü için gök cisimleri (özellikle Güneş) her boylamın üzerinden farklı bir yerel saatte geçer; yani boylam farkı doğrudan bir **zaman farkına** çevrilebilir.\n\nTemel dönüşümler: **15° = 1 saat**, **1° = 4 dakika**, **1′ = 4 saniye**. Bunların hepsi 360° ÷ 24 saat = 15°/saat bağıntısından türer.\n\nBu ilişki, tarih boyunca boylam sorununun neden bu kadar zor olduğunu da açıklar: enlem gökyüzünden okunabilirken, boylam için gemide **doğru bir referans saat** (kronometre) tutmak gerekir. John Harrison'ın 18. yüzyılda geliştirdiği deniz kronometresi bu yüzden bir dönüm noktasıdır.\n\n**Worked örnek:** Yerel öğle anında (Güneş sizin meridyeninizde) kronometreniz UT 14:00'ü gösteriyorsa, Greenwich öğlesinden 2 saat sonradasınız → 2 × 15° = 30°; Güneş size Greenwich'ten sonra geldiği için **30° W** boylamındasınız.",
         image: longitudeTime1,
         imageAlt: "Boylam ve zaman ilişkisi",
         bulletPoints: [
@@ -553,7 +553,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Zaman ile Boylam Tayini",
-        content: "Bu ilişki sayesinde kronometre zamanı ile yerel zaman karşılaştırılarak boylam bulunur. Göksel seyirde zaman hatası, doğrudan boylam hatasına dönüşür.",
+        content: "Boylam-zaman ilişkisinin pratik uygulaması, **kronometre zamanı ile yerel zamanın karşılaştırılmasıdır**. Klasik yöntemde denizci, Güneş'in meridyenden geçtiği anı (yerel görünür öğle) belirler; o andaki UT kronometreden okunur ve iki zaman arasındaki fark 15 ile çarpılarak boylam bulunur.\n\nGünümüzde aynı ilke sextant + almanak + kronometre ile 'zaman gözlemi' (time sight) veya intercept yöntemiyle uygulanır; GPS de özünde uydulardan gelen sinyallerin **zamanlamasını** ölçerek konumu (dolayısıyla boylamı) hesaplar — yani temel ilke değişmemiştir.\n\nEn kritik nokta **hata aktarımıdır**: zamandaki her hata doğrudan boylama taşınır. 1 saniyelik zaman hatası ekvatorda ≈ 0,25′ (≈ 0,25 NM) boylam hatası, 4 saniye ise ≈ 1′ demektir. Bu yüzden kronometrenin günlük 'rate' (gidiş hatası) kaydı tutulur ve düzeltme uygulanır.\n\n**Gemide önemi:** Göksel seyirde en sık boylam hatası kaynağı yanlış ya da düzeltilmemiş kronometre zamanıdır; enlem gözlemi zaman hatasından neredeyse etkilenmez, bu yüzden enlem ve boylam gözlemleri birbirini denetler.",
         image: longitudeTime2,
         imageAlt: "Yerel öğle ve boylam",
         bulletPoints: [
@@ -564,7 +564,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem ve Boylamın Birlikte Kullanımı",
-        content: "Bir noktanın Dünya üzerindeki yeri tek başına enlem veya boylamla belirlenemez. İkisi birlikte kullanıldığında tekil bir mevki tanımlar.",
+        content: "Tek bir koordinat bir noktayı belirlemeye yetmez: yalnız enlem verildiğinde nokta bir **paralel daire** üzerinde herhangi bir yerde, yalnız boylam verildiğinde bir **meridyen** üzerinde herhangi bir yerde olabilir. Ancak ikisi birlikte, bir paralel ile bir meridyenin **kesişimi** olarak tek (benzersiz) bir mevki tanımlar.\n\nHaritaya mevki koyarken önce enlem kenarından paralel, sonra boylam kenarından meridyen çizilir; kesişim geminin yeridir. Yazım ve okuma daima **önce enlem (N/S), sonra boylam (E/W)** sırasındadır — bu sıra karıştırılırsa mevki bambaşka bir yere düşer.\n\nHassasiyet için iki gösterim kullanılır: derece-dakika-saniye (41°02′15″ N) veya derece-ondalık dakika (41°02,25′ N); GPS ve ECDIS çoğunlukla ondalık dakika kullanır. 0,1′ (bir ondalık dakika) enlemde yaklaşık 185 m çözünürlük demektir.\n\n**Gemide önemi:** Mevki raporunda — örneğin DSC tehlike çağrısında — enlem-boylam sırasının ve yarımküre harflerinin doğruluğu, arama-kurtarma ekibinin doğru noktaya ulaşmasını doğrudan belirler.",
         image: chartPlotting,
         imageAlt: "Harita üzerinde mevki işaretleme sembolleri",
         bulletPoints: [
@@ -575,7 +575,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Boylamda Mesafe Kavramının Değişmesi",
-        content: "Enlemde mesafe sabittir; boylamda değildir. Çünkü meridyenler kutuplara doğru yaklaşır ve paralel daireleri küçülür.",
+        content: "Enlemde açısal fark ile mesafe arasında sabit bir ilişki vardır (1′ = 1 NM); boylamda ise **yoktur**. Sebep geometriktir: meridyenler kutba doğru yakınsadığından, belirli bir boylam farkına (DLong) karşılık gelen doğu-batı mesafe bulunduğunuz enleme bağlıdır.\n\nBir φ enlemindeki paralelin yarıçapı R·cos φ olduğundan, o paralel üzerinde kat edilen doğu-batı mesafe (**departure**, dep) şu bağıntıyla bulunur: **dep = DLong × cos φ** (DLong dakika cinsinden verilirse dep deniz mili cinsinden çıkar).\n\n**Worked örnekler** — 1° (60′) boylam farkının mesafe karşılığı:\n- Ekvatorda (0°): 60 × cos 0° = 60 × 1 = **60 NM**\n- 60° enlemde: 60 × cos 60° = 60 × 0,5 = **30 NM**\n- 90° enlemde (kutup): 60 × cos 90° = 60 × 0 = **0 NM**\n\n**Sınav tuzağı:** İki boylam arasındaki farkı doğrudan mesafe sanmak. 'Doğuya 5° gittim' demek her enlemde farklı mil demektir; departure'ı hesaba katmadan yapılan boylam-mesafe dönüşümü, orta ve yüksek enlemlerde büyük hata üretir.",
         image: longitudeDistance1,
         imageAlt: "Boylam mesafesinin enlemle değişimi",
         bulletPoints: [
@@ -603,7 +603,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
     sections: [
       {
         title: "Enlemin Tanımı ve Geometrik Anlamı",
-        content: "Enlem, Dünya üzerindeki bir noktanın ekvatora olan açısal uzaklığıdır. Bu açı, Dünya'nın merkezinden ölçülür ve ekvator düzlemi referans alınır.",
+        content: "Enlem (φ), bir noktanın ekvatora olan açısal uzaklığıdır ve Dünya merkezinden (jeodezik tanımda: elipsoide dik doğrultuda) ölçülür; referans düzlem ekvatordur. Değeri 0° (ekvator) ile 90° (kutup) arasındadır ve asla 90°'yi aşamaz — çünkü kutuptan öteye 'daha kuzey' yoktur.\n\nAçının bir **meridyen boyunca** ölçüldüğüne dikkat edin: iki nokta arasındaki enlem farkı, o meridyen yayının açısal uzunluğudur. Bu yüzden enlem, doğrudan kuzey-güney mesafeye çevrilebilen tek koordinattır.\n\nİki teknik ayrıntı seyirde önemlidir: (1) Haritada kullanılan **coğrafi (jeodezik) enlem** ile Dünya merkezine göre tanımlı **geosentrik enlem**, basıklık yüzünden 45° dolayında ~11,5′ ayrışır; denizciler daima jeodezik enlemi kullanır. (2) Enlem tek başına yalnızca kuzey-güney konumu verir; doğu-batı için boylam şarttır.\n\n**Gemide önemi:** Enlem, hem harita mesafe ölçeğinin (1′ = 1 NM) hem de göksel gözlemlerin referansıdır; bu yüzden 'seyrin bel kemiği' sayılır.",
         image: enlemDefinition,
         imageAlt: "Enlemin geometrik tanımı",
         bulletPoints: [
@@ -616,7 +616,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Paraleller ve Enlem Çizgileri",
-        content: "Enlemler, ekvatora paralel hayali dairelerdir ve bu yüzden paralel olarak adlandırılırlar. Ekvator en büyük paraleldir; kutuplara yaklaştıkça paralellerin çevresi küçülür.",
+        content: "Aynı enleme sahip noktalar birleştirildiğinde ekvatora paralel daireler oluşur; bunlara **paraleller** denir. Ekvator en büyük paraleldir (ve büyük daire olan tek paraleldir); kutba yaklaştıkça paralellerin yarıçapı R·cos φ ile küçülür, ancak paraleller **birbirini asla kesmez**.\n\nBu düzenli yapının pratik değeri, enlem ölçeğinin haritada **doğrusal ve sabit** olmasıdır: iki paralel arası kuzey-güney açısal aralık her enlemde aynıdır, dolayısıyla kuzey-güney hareket doğrudan enlem değişimi (ve mesafe) olarak okunur.\n\nÖnemli 'isimli' paraleller referans işlevi görür: ekvator (0°), dönenceler (±23,5°) ve kutup daireleri (±66,5°). Bunlar hem iklim kuşaklarını hem de Güneş'in davranışını (zenit geçişi, kutup gün/gecesi) sınırlar.\n\n**Kritik hatırlatma:** Mesafe daima paralel değil, **meridyen (enlem) kenarı** üzerinden ölçülür; paralel üzerindeki (boylam) ölçek mesafe için güvenilmezdir.",
         image: enlemParallels,
         imageAlt: "Enlem paralelleri",
         bulletPoints: [
@@ -627,7 +627,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Coğrafi Bölgeler ve Enlem",
-        content: "Enlem değerleri, Dünya üzerindeki coğrafi bölgeleri tanımlamak için kullanılır. Önemli enlem çizgileri arasında Yengeç Dönencesi (23.5°N), Oğlak Dönencesi (23.5°S), Kuzey Kutup Dairesi (66.5°N) ve Güney Kutup Dairesi (66.5°S) bulunur.",
+        content: "Belirli enlem çizgileri, Dünya'nın 23,5°'lik eksen eğikliğinin doğrudan sonucu olarak coğrafi/iklim kuşaklarını sınırlar. **Dönenceler** — Yengeç (23,5°N) ve Oğlak (23,5°S) — Güneş'in yıl içinde tam tepeden (zenit) geçebildiği en uç enlemlerdir; aralarındaki kuşakta Güneş yılda iki kez zenite ulaşır. **Kutup daireleri** — 66,5°N ve 66,5°S (yani 90° − 23,5°) — Güneş'in en az bir tam gün boyunca hiç batmadığı (veya hiç doğmadığı) sınırlardır.\n\nBuradan üç ana kuşak çıkar: **tropikal** (23,5°N–23,5°S), **ılıman** (23,5°–66,5°) ve **kutup** (66,5°–90°) bölgeleri.\n\nSeyir açısından bu sınırlar yalnızca iklimsel değildir: göksel gözlemde Güneş'in tepe açısı ve gündüz süresi, hava rutininde egemen rüzgâr ve akıntı kuşakları, kutup bölgelerinde ise buz ve Polar Code gereklilikleri bu enlem kuşaklarına göre değişir.\n\n**Bağlantı:** Bu değerlerin '23,5' ve '66,5' olması tesadüf değildir; ikisi de eksen eğikliği ε ≈ 23,5°'den türer (66,5° = 90° − 23,5°).",
         image: enlemRegions,
         imageAlt: "Dünya üzerinde enlem bölgeleri",
         bulletPoints: [
@@ -638,7 +638,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem Birimleri ve Deniz Mili İlişkisi",
-        content: "Enlem, derece (°), dakika (′) ve saniye (″) ile ifade edilir. Seyirde temel kabul olarak 1° enlem = 60 deniz mili ve 1′ enlem = 1 deniz mili ilişkisi kullanılır.",
+        content: "Enlem derece (°), dakika (′) ve saniye (″) ile ifade edilir: 1° = 60′ = 3600″. Seyirdeki en güçlü sadeleştirme, enlemin doğrudan mesafeye bağlanmasıdır: **1′ enlem = 1 deniz mili**, dolayısıyla **1° enlem = 60 NM**.\n\nBu eşitlik, deniz milinin tanımından gelir (1 NM ≈ meridyen üzerinde 1′ yay) ve haritada enlem kenarını hazır bir mesafe cetveline dönüştürür; bu yüzden ayrı bir ölçek çubuğuna gerek kalmadan pergelle mesafe okunabilir.\n\nModern kullanımda saniye yerine **ondalık dakika** tercih edilir (örn. 36°20,5′), çünkü GPS/ECDIS bu biçimi üretir ve hesabı kolaylaştırır: 0,5′ = 0,5 NM.\n\n**Kritik ayrım:** Bu sadelik yalnızca **enlem** içindir. Boylam dakikası mesafeye ancak cos φ ile çarpılarak (departure) çevrilir; boylam ölçeğini doğrudan mesafe sanmak yaygın ve tehlikeli bir hatadır.",
         image: enlemNauticalMile,
         imageAlt: "Enlem ve deniz mili ilişkisi",
         bulletPoints: [
@@ -654,7 +654,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Örnek Konum: New Orleans",
-        content: "New Orleans, ABD'de 30°N enlem ve 90°W boylam koordinatlarında bulunur. Bu konum, enlemi somut bir örnekle anlamak için kullanılabilir.",
+        content: "Somut bir örnek kavramı yerine oturtur: **New Orleans**, yaklaşık **30°N, 90°W** koordinatlarındadır. '30°N', noktanın ekvatordan 30° kuzeyde bir paralel üzerinde olduğunu; '90°W' ise Greenwich'ten 90° batıda bir meridyen üzerinde olduğunu söyler.\n\nEnlem doğrudan mesafeye çevrilebildiği için mesafeler kolayca çıkar:\n- **Ekvatora uzaklık:** 30° × 60 = **1.800 NM**\n- **Kuzey Kutbu'na uzaklık:** (90° − 30°) × 60 = 60 × 60 = **3.600 NM**\n\nBu iki mesafenin toplamı (1.800 + 3.600 = 5.400 NM = 90° × 60), ekvatordan kutba çeyrek meridyen uzunluğunu doğrular.\n\n**Karşılaştırma (dikkat):** Aynı noktada 1° **boylam** ise 60 × cos 30° ≈ 52 NM'dir — yani boylam mesafesi enleme bağlıdır, enlem mesafesi ise sabittir. Bu tek örnek, iki koordinat arasındaki temel farkı gösterir.",
         image: enlemNewOrleans,
         imageAlt: "New Orleans koordinatları örneği",
         bulletPoints: [
@@ -665,7 +665,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem Değişimi (DLat) Kavramı",
-        content: "Bir gemi kuzeye veya güneye hareket ettiğinde enlem değişimi (Difference of Latitude – DLat) meydana gelir. DLat kuzeye gidiliyorsa artı (+), güneye gidiliyorsa eksi (−) kabul edilir.",
+        content: "Bir gemi kuzey veya güneye ilerlediğinde başlangıç ile varış enlemleri arasındaki farka **enlem değişimi** (Difference of Latitude, DLat) denir. İşaret yönü belirler: **kuzeye** gidişte DLat artı (+N), **güneye** gidişte eksi (−S); işaret, sayının ayrılmaz parçasıdır.\n\nDüzlem seyirde DLat, kat edilen mesafenin kuzey-güney bileşenidir ve kurs açısının kosinüsüyle bulunur: **DLat = Mesafe × cos(Kurs)**. Burada kurs, kuzeyden (000°) ölçülen açıdır: kurs 000°/180°'de tüm hareket enlemedir (cos = ±1), 090°/270°'de enlem değişimi sıfırdır (cos 90° = 0, hareket tümüyle doğu-batı).\n\nDLat dakika cinsinden çıkar (mesafe NM ise), sonra derece-dakikaya çevrilip başlangıç enlemine işaretiyle eklenerek varış enlemi bulunur.\n\n**Sınav tuzağı:** DLat için sin, departure için cos kullanmak (yer değiştirme). Doğru kural: **DLat = d·cos C**, **departure = d·sin C** (C = kurs). Kuzey-güneye 'yakın' kurslarda DLat büyük olmalı — bunu cos verir.",
         image: enlemPlaneSailing,
         imageAlt: "Düzlem seyir ve enlem değişimi formülleri",
         bulletPoints: [
@@ -680,7 +680,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Örnek – Enlem Değişimi Hesabı",
-        content: "Başlangıç enlemi 36°20′N, kurs 030° ve mesafe 120 deniz mili olan bir gemi için yeni enlem hesaplanabilir.",
+        content: "**Verilenler:** Başlangıç enlemi 36°20′N, kurs 030°, kat edilen mesafe 120 NM. **İstenen:** Varış enlemi.\n\n**Adım 1 — DLat'ı hesapla:** DLat = Mesafe × cos(Kurs) = 120 × cos 30° = 120 × 0,866 ≈ **103,9′**.\n\n**Adım 2 — Dakikayı dereceye çevir:** 103,9′ = 60′ + 43,9′ = **1°43,9′**.\n\n**Adım 3 — İşareti belirle ve uygula:** Kurs 030° kuzey yarısına baktığından gemi **kuzeye** gidiyor → DLat artı. Varış enlemi = 36°20′ + 1°43,9′ = **38°03,9′ N**.\n\n**Kontrol:** Kurs 030° kuzeye oldukça yakın olduğundan hareketin çoğu enleme yansımalı; nitekim 120 NM yolun ~104 NM'i kuzey-güney bileşen (departure ise 120 × sin 30° = 60 NM doğu). Sonuç mantıklıdır.\n\n**Not:** Bu 'düz' yaklaşım kısa mesafede geçerlidir; birkaç yüz milin üzerinde orta enlem veya Mercator seyri kullanılmalıdır.",
         bulletPoints: [
           "DLat = 120 × cos(30°) = 120 × 0.866 ≈ 103.9′",
           "DLat ≈ 1°43.9′",
@@ -689,7 +689,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlemin Göksel Seyirdeki Rolü",
-        content: "Göksel seyirde enlem, özellikle öğle mevkii hesaplarında kritik rol oynar. Güneşin en büyük yüksekliği ile gözlemcinin enlemi arasında doğrudan ilişki vardır.",
+        content: "Göksel seyirde enlem, bir gök cisminin yüksekliği ile gözlemcinin konumu arasındaki geometrik bağdan doğrudan çıkarılabilir; en güçlü uygulaması **öğle mevkii** (meridian altitude) yöntemidir.\n\nGüneş yerel öğlede meridyenden geçerken en yüksek noktasına ulaşır; bu andaki yükseklik ölçülerek enlem şu bağıntıyla bulunur: **enlem = (90° − öğle yüksekliği) ± deklinasyon**; işaret, gök cismi ile gözlemcinin göreli konumuna göre belirlenir. Yöntemin gücü, tam zaman bilgisi gerektirmemesidir — yalnızca en yüksek anı yakalamak yeterli olduğundan kronometre hatasından etkilenmez.\n\nİkinci temel yöntem **Kutup Yıldızı**dır: Polaris gök kutbuna çok yakın olduğundan yüksekliği (küçük Almanak düzeltmeleriyle) doğrudan kuzey enlemini verir. Ayrıca bir gök cismi gözlemcinin tam zenitindeyse, gözlemcinin enlemi o cismin deklinasyonuna eşittir.\n\n**Gemide önemi:** Enlem gözlemi, boylam gözlemine göre çok daha sağlam ve hataya dayanıklıdır; bu yüzden GPS kesildiğinde ilk güvenilen büyüklük enlemdir.",
         image: enlemCelestial,
         imageAlt: "Göksel seyir ve enlem ilişkisi",
         bulletPoints: [
@@ -700,7 +700,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Enlem ve Seyir Yöntemleri Arasındaki Bağlantı",
-        content: "Enlem, farklı seyir yöntemlerinde farklı şekillerde kullanılır ve hesaplanır, ancak fiziksel anlamı her zaman aynıdır.",
+        content: "Enlemin fiziksel anlamı — ekvatora açısal uzaklık — her yöntemde aynıdır; değişen, onu **nasıl elde ettiğinizdir**. Bu birlik, farklı seyir tekniklerini tek bir kavram etrafında bağlar:\n\n- **Düzlem seyirde:** Enlem doğrudan hesaplanır (DLat = Mesafe × cos C) ve varış enlemi başlangıca eklenir. Kısa mesafeler için.\n- **Orta enlem seyirde:** İki enlemin ortalaması (Lm) alınır ve boylam hesabına girer: DLong = Departure ÷ cos Lm. Enlem burada boylamı mesafeye bağlayan köprüdür.\n- **Göksel seyirde:** Enlem gözlemle (öğle yüksekliği, Polaris) bulunur; hesabın çıktısıdır.\n- **Elektronik seyirde:** GPS/GNSS enlemi doğrudan sayısal çıktı olarak verir.\n\n**Sonuç:** Yöntem seçimi mesafeye ve mevcut donanıma bağlıdır, ama hepsinin ürettiği 'enlem' aynı geometrik büyüklüktür; bu yüzden bir yöntemin sonucu bir diğerini denetlemek için kullanılabilir (ör. GPS enlemini öğle gözlemiyle çapraz kontrol).",
         bulletPoints: [
           "Düzlem seyirde: Enlem doğrudan hesaplanır",
           "Orta enlem seyirde: Boylam hesabına girer",
@@ -723,7 +723,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
     sections: [
       {
         title: "Boylamın Tanımı ve Geometrik Anlamı",
-        content: "Boylam, Dünya üzerindeki bir noktanın Başlangıç Meridyeni'ne (Greenwich, 0°) olan açısal uzaklığıdır. Bu açı, Dünya'nın merkezinden ölçülür ve doğu–batı yönünü ifade eder.",
+        content: "Boylam (λ), bir noktanın **Başlangıç Meridyeni'ne (Greenwich, 0°)** olan açısal uzaklığıdır ve doğu-batı konumunu belirler. Geometrik olarak bu, gözlemcinin meridyen düzlemi ile Greenwich meridyen düzlemi arasındaki **iki yüzlü (dihedral) açıdır**; Dünya ekseni etrafında ölçülür ve ekvator üzerindeki yay karşılığına eşittir.\n\nBoylam 0° ile 180° arasında değişir; yön **Doğu (E)** ya da **Batı (W)** olarak mutlaka belirtilir. Aynı boylamı paylaşan noktalar bir meridyen üzerindedir ve tüm meridyenler kutuplarda birleşir.\n\nEnlemle temel farkı şudur: enlem 'doğal ve sabit bir referanstan (ekvator) mutlak açı' iken, boylam 'insan eliyle seçilmiş bir referanstan (Greenwich) açı'dır; doğada boylamı işaretleyen fiziksel bir çizgi yoktur. Bu yüzden boylam ancak ortak bir başlangıç ve **doğru zaman** ile belirlenebilir.\n\n**Gemide önemi:** Boylamın 'doğal işareti' olmaması, onu tarih boyunca seyrin en zor problemi yapmıştır; pratik çözümü kronometredir (bkz. boylam-zaman ilişkisi).",
         image: boylamDefinition,
         imageAlt: "Boylam tanımı ve Greenwich meridyeni",
         bulletPoints: [
@@ -735,7 +735,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Meridyenlerin Yapısı ve Özellikleri",
-        content: "Meridyenler, Kuzey Kutbu'ndan Güney Kutbu'na uzanan hayali yarım dairelerdir. Tüm meridyenler aynı uzunluktadır ve kutuplarda birleşirler.",
+        content: "Meridyenler, Kuzey Kutbu'ndan Güney Kutbu'na uzanan ve aynı boylamı paylaşan yarım dairelerdir. Bir meridyen ile onun 180° karşıtı birlikte tam bir **büyük daire** oluşturur; bu yüzden tüm meridyenler eşit uzunluktadır, ekvatoru dik keser ve iki kutupta birleşir.\n\nKutuplara doğru meridyenlerin birbirine yakınsaması (converge), boylamın en önemli pratik sonucunu doğurur: **aynı boylam farkı, farklı enlemlerde farklı doğu-batı mesafeye karşılık gelir**. Ekvatorda geniş olan meridyen aralığı 60° enlemde yarıya, kutupta sıfıra iner.\n\nBu nedenle boylam farkı (DLong) doğrudan mesafe değildir; mesafeye çevirmek için enlemin kosinüsüyle çarpılır (departure = DLong × cos φ).\n\n**Kontrast:** Paraleller birbirine hiç yaklaşmaz ve eşit aralıklıdır; meridyenler ise yakınsar. Enlem mesafesinin sabit, boylam mesafesinin değişken olmasının tek cümlelik nedeni budur.",
         image: boylamMeridians,
         imageAlt: "Meridyen özellikleri",
         bulletPoints: [
@@ -747,7 +747,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Dünya Üzerinde Boylam Dağılımı",
-        content: "Boylam, Dünya'nın doğu–batı yönündeki konumunu belirler. Greenwich Meridyeni (0°) referans alınarak doğuya ve batıya doğru 180°'ye kadar ölçülür.",
+        content: "Boylam, Dünya'yı doğu-batı yönünde tarar: Greenwich (0°) referansından **doğuya 0°–180° (E)** ve **batıya 0°–180° (W)** olmak üzere iki yarımküreye ayrılır. İki yön 180° meridyeninde buluşur.\n\n180° meridyeni özel bir işlev taşır: buna yakın konumlanan **Uluslararası Tarih Değiştirme Çizgisi (IDL)**, doğu ve batı saat dilimleri arasındaki 24 saatlik farkı kapatır; çizgiyi batıya doğru geçen bir gemi takvimde bir gün ileri, doğuya geçen bir gün geri alır. IDL, ada ve ülke sınırları nedeniyle 180° meridyeninden yer yer saparak çizilmiştir.\n\nGreenwich'in başlangıç seçilmesi 1884 Uluslararası Meridyen Konferansı kararıdır; teknik bir zorunluluk değil, dünya çapında **ortak referans** ihtiyacının sonucudur.\n\n**Gemide önemi:** Pasifik geçişlerinde IDL atlanırken gemi jurnalinde tarih düzeltmesi yapılır; bu, ETA, vardiya ve erzak hesaplarında karışıklığı önler.",
         image: boylamWorldMap,
         imageAlt: "Dünya üzerinde boylam dağılımı",
         bulletPoints: [
@@ -758,7 +758,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Boylam ve Zaman Arasındaki Temel İlişki",
-        content: "Dünya kendi ekseni etrafında 24 saatte 360° döner. Bu nedenle boylam ile zaman arasında doğrudan ve değişmez bir ilişki vardır.",
+        content: "Dünya kendi ekseni etrafında 24 saatte 360° döndüğünden, boylam ile zaman arasında **değişmez ve doğrudan** bir ilişki vardır: her boylamın üzerinden gök cisimleri farklı bir yerel saatte geçer.\n\nSabit dönüşümler:\n- **15° = 1 saat**\n- **1° = 4 dakika**\n- **1′ = 4 saniye**\n\nBu ilişki 'yaklaşık' değil, dönme hızının tanımı gereği tamdır (360° ÷ 24 saat). Kullanımı basittir: **boylam (°) × 4 = Greenwich ile aradaki zaman farkı (dakika)**; tersine, ölçülen zaman farkı 15 ile çarpılınca boylam çıkar.\n\nHata doğrudan aktarılır: zamandaki 1 saniyelik yanlışlık boylamda 15″ (≈ 0,25 NM) sapma demektir. Bu yüzden göksel boylamda kronometrenin doğruluğu belirleyicidir.\n\n**Sınav ipucu:** '× 4 → dakika' (boylamdan zamana) ile '× 15 → derece' (zamandan boylama) yönlerini karıştırmayın; birim kontrolü (derece mi, dakika mı istiyorsunuz) doğru yönü söyler.",
         image: boylamTimeZones,
         imageAlt: "Boylam ve zaman dilimleri",
         bulletPoints: [
@@ -773,7 +773,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       },
       {
         title: "Yerel Zaman ve Greenwich Zamanı",
-        content: "Boylam hesabında iki zaman kullanılır: Greenwich zamanı (UTC) ve Yerel zaman (Local Apparent Time). Yerel zaman ile Greenwich zamanı arasındaki fark, gözlemcinin boylamını verir.",
+        content: "Boylam hesabı iki zamanın karşılaştırılmasına dayanır: **Greenwich zamanı (UT/GMT)** — kronometreden okunan evrensel referans — ve **yerel zaman** — gözlemcinin kendi meridyenine göre Güneş'in konumu. İkisi arasındaki fark doğrudan boylamı verir.\n\nYön yorumu şarttır: Güneş doğuda daha erken tepeye ulaştığından, **yerel zaman Greenwich'ten ileriyse gözlemci doğu (E)**, **geriyse batı (W)** boylamındadır. Bu yorum yapılmadan bulunan açı tek başına anlamsızdır.\n\nBir incelik: buradaki 'yerel zaman', saatinizin gösterdiği bölge saati (zone time) değil, **gerçek astronomik yerel zamandır** (Güneş'in gerçek meridyen geçişi). Gerçek güneş ile ortalama güneş arasındaki farkı (Equation of Time) düzeltmek gerekir.\n\n**Gemide önemi:** Bu ilke, bir sonraki bölümdeki 'zamanla boylam' yönteminin (Güneş'in yerel öğle geçişi + kronometre) temelidir; oradaki adım adım örnek bu mantığı sayısal olarak uygular.",
         image: boylamLocalNoon,
         imageAlt: "Yerel öğle zamanı ve boylam",
         bulletPoints: [
@@ -829,7 +829,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       },
       {
         title: "Boylam Değişimi ve Departure",
-        content: "Bir gemi doğuya veya batıya hareket ettiğinde boylam değişimi (Difference of Longitude – DLo) meydana gelir. Boylam değişimi doğrudan mesafeyle ölçülemez, çünkü meridyenler kutuplara yaklaştıkça yaklaşır.",
+        content: "Bir gemi doğu veya batıya ilerlediğinde başlangıç ile varış boylamları arasındaki farka **boylam değişimi** (Difference of Longitude, DLong ya da DLo) denir. Ancak DLong doğrudan bir mesafe değildir; çünkü meridyenler kutba doğru yakınsar, aynı boylam farkı ekvatorda geniş, yüksek enlemde dar bir doğu-batı mesafeye karşılık gelir.\n\nBu yüzden seyirde iki büyüklük ayrılır: **DLong** (açısal; dakika/derece) ve **departure/dep** (gerçek doğu-batı mesafe; NM). İlişki: **dep = DLong × cos φ** (φ = enlem; kısa mesafede iki enlemin ortalaması Lm kullanılır).\n\nİki yönde de çalışır: konumdan mesafe çıkarırken dep = DLong·cos φ; kat edilen mesafeden yeni boylam bulurken DLong = dep ÷ cos φ.\n\n**Sınav tuzağı:** cos'u yanlış tarafa koymak. Hafıza kancası: yüksek enlemde meridyenler sıkışır, aynı 'mil' daha çok 'derece' eder → mesafeden boylama geçerken **böl** (DLong = dep ÷ cos φ); boylamdan mesafeye geçerken **çarp** (dep = DLong × cos φ).",
         image: boylamDeparture,
         imageAlt: "Boylam değişimi ve departure kavramı",
         bulletPoints: [
@@ -844,7 +844,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       },
       {
         title: "Örnek – Boylam Değişimi Hesabı",
-        content: "Ortalama enlem 40°N ve departure 90 deniz mili (doğuya) olan bir gemi için boylam değişimi hesaplanabilir.",
+        content: "**Verilenler:** Ortalama enlem (Lm) 40°N, doğuya doğru departure 90 NM. **İstenen:** Boylam değişimi (DLong).\n\n**Adım 1 — Kosinüsü al:** cos 40° ≈ 0,766.\n\n**Adım 2 — DLong'u hesapla:** Mesafeden boylama geçildiği için bölünür: DLong = Departure ÷ cos φ = 90 ÷ 0,766 ≈ **117,5′**.\n\n**Adım 3 — Derece-dakikaya çevir ve yönü ver:** 117,5′ = 1°57,5′; hareket doğuya olduğundan **DLong = 1°57,5′ E**.\n\n**Yorum:** 90 NM doğu mesafesi 40° enlemde ~117,5′ boylama karşılık gelir — yani boylamdaki değişim mesafeden **daha büyüktür** (117,5′ > 90′), çünkü bu enlemde meridyenler sıkışıktır ve 1′ boylam < 1 NM'dir. Ekvatorda aynı 90 NM yalnızca 90′ boylam ederdi.\n\n**Kontrol:** cos φ < 1 olduğundan DLong daima departure'dan büyüktür (yüksek enlemde fark artar); sonuç bu beklentiyle uyumludur.",
         bulletPoints: [
           "cos 40° ≈ 0.766",
           "DLo = Departure / cos(enlem) = 90 / 0.766 ≈ 117.5′",
@@ -853,7 +853,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       },
       {
         title: "Boylamın Göksel Seyirdeki Rolü",
-        content: "Göksel seyirde boylam, zaman gözlemi ile bulunur. Gök cisminin gözlem anındaki Greenwich zamanı ile yerel zamanı arasındaki fark, doğrudan boylamı verir.",
+        content: "Göksel seyirde boylam bir **zaman gözlemiyle** bulunur: bir gök cisminin gözlem anındaki Greenwich saat açısı (GHA — kronometre ve Almanak'tan) ile gözlemciye göre yerel saat açısı (LHA) arasındaki fark, gözlemcinin boylamını verir (özünde λ = GHA − LHA).\n\nBu yöntemin en hassas noktası **zamandır**: enlem gözlemi zaman hatasına neredeyse duyarsızken, boylam tümüyle doğru UT'ye bağlıdır. Üç hata kaynağı doğrudan boylama yansır: (1) kronometre hatası (rate düzeltmesi yapılmazsa), (2) gözlem anının zaman kaydındaki yanlışlık, (3) yanlış UT/tarih (ör. zone description karışıklığı).\n\nSayısal ölçek: 4 saniye zaman hatası ≈ 1′ boylam ≈ ekvatorda 1 NM; 1 dakikalık kronometre hatası ≈ 15′ ≈ 15 NM.\n\n**Gemide önemi:** Bu yüzden köprüüstünde kronometrenin günlük 'rate' kaydı tutulur, gözlem anı bir asistanla saniye hassasiyetinde işaretlenir ve boylam sonuçları mümkünse ikinci bir gözlemle çapraz kontrol edilir.",
         image: boylamCelestial,
         imageAlt: "Göksel seyir ve boylam",
         bulletPoints: [
@@ -864,7 +864,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       },
       {
         title: "Boylam ve Güneş Meridyen Geçişi",
-        content: "Güneş'in meridyenden geçtiği an (yerel öğle) kullanılarak boylam hesaplanabilir. Bu yöntem göksel seyirde temel boylam tayini yöntemidir.",
+        content: "En klasik boylam yöntemi, Güneş'in **yerel meridyen geçişini** (yerel görünür öğle) kullanır: Güneş yükseldikçe irtifası artar, tam meridyende maksimuma ulaşır, sonra alçalır. Bu maksimum an, Güneş'in gözlemcinin meridyeninden geçtiği andır.\n\nO anda kronometreden okunan Greenwich zamanı ile yerel öğle (yerel saatle 12:00) arasındaki fark boylamı verir: **λ = Δt × 15°**; yön için 'Greenwich'ten geç olan batı, erken olan doğu' kuralı uygulanır.\n\nUygulamada maksimum anı tam yakalamak zordur (tepe civarında irtifa çok yavaş değişir); bu yüzden 'eşit irtifalar' (equal altitudes) tekniğiyle öğleden önce ve sonra aynı irtifanın zamanları ölçülüp ortalanır, böylece meridyen geçiş anı hassaslaşır.\n\n**Ölçek uyarısı:** 1 saniye zaman hatası ≈ 0,25′ boylam. Öğle gözlemi aynı anda enlem de verdiği (öğle irtifası) için tek gözlemle 'öğle mevkii' (enlem + yaklaşık boylam) elde edilir — bu yüzden yüzyıllarca günün en önemli gözlemi olmuştur.",
         image: boylamSunLongitude,
         imageAlt: "Güneş meridyen geçişi ile boylam tayini",
         bulletPoints: [
@@ -875,7 +875,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       },
       {
         title: "Boylam ve Elektronik Seyir",
-        content: "Elektronik seyirde boylam GPS tarafından doğrudan verilir. Ancak GPS hataları, datum uyuşmazlığı ve anten konumu farkı boylamda sapma yaratabilir.",
+        content: "Elektronik seyirde boylam, GPS/GNSS tarafından doğrudan, saniyeler içinde ve yüksek doğrulukla verilir; alıcı, uydulardan gelen sinyallerin **varış zamanlarını** ölçerek konumu hesaplar — yani boylam-zaman ilişkisi burada da işin özündedir, yalnızca kronometrenin yerini atomik uydu saatleri almıştır.\n\nAncak GPS boylamı kusursuz değildir; başlıca sapma kaynakları: (1) **datum uyuşmazlığı** — GPS WGS-84 verir, harita farklı bir datumdaysa boylam yüzlerce metre kayar; (2) **anten konumu (offset)** — anten köprüüstünde, istenen referans başka noktadaysa; (3) uydu geometrisi/atmosfer kaynaklı olağan hata; (4) jamming/spoofing (karıştırma/aldatma) riski.\n\nBu yüzden iyi denizcilik GPS boylamını mutlak doğru saymaz: harita/ECDIS datumu kontrol edilir ve mevki mümkünse bağımsız yöntemlerle (kerteriz, radar, gerektiğinde göksel) **çapraz kontrol** edilir.\n\n**Gemide önemi:** SOLAS, birincil elektronik sistemin arızasına karşı yedek mevki yöntemi bulundurmayı gerektirir; boylamın tek kaynağa (GPS) bağlı kalması kabul edilebilir bir uygulama değildir.",
         bulletPoints: [
           "GPS boylam değerini doğrudan verir",
           "GPS hataları mevki sapmasına yol açabilir",
