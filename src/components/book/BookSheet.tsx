@@ -764,7 +764,7 @@ function BookLeafPager({
     flow.style.transform = "none";
     if (pager.scrollLeft) pager.scrollLeft = 0;
     if (pager.scrollTop) pager.scrollTop = 0;
-    const total = Math.max(pager.scrollWidth, width);
+    const total = Math.max(flow.scrollWidth, content?.scrollWidth || 0, pager.scrollWidth, width);
     // A partial final column must still become a real leaf. Keep a one-pixel
     // tolerance for integer scrollWidth rounding without rounding content away.
     const columns = Math.max(1, Math.ceil((total + gap - 1) / stride));
