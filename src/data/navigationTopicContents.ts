@@ -1245,7 +1245,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
     sections: [
       {
         title: "Kuzey Türleri",
-        content: "Denizcilikte üç farklı kuzey referansı kullanılır: Hakiki Kuzey (True North), Manyetik Kuzey (Magnetic North) ve Pusula Kuzeyi (Compass North). Bu referanslar arasındaki farklar, seyir hesaplarında kritik öneme sahiptir.",
+        content: "Denizcilikte tek bir 'kuzey' yoktur; birbirinden açısal olarak ayrılan üç (haritada dördüncüsüyle) referans kullanılır ve bir yön değeri, hangi kuzeye göre verildiği belirtilmeden eksiktir.\n\n- **Hakiki Kuzey (True, T):** Dünya'nın coğrafi kuzey kutbunu, yani dönme eksenini gösterir. Haritaların ve tüm nihai hesapların referansıdır.\n- **Manyetik Kuzey (Magnetic, M):** Pusula ibresinin yerin manyetik alanına göre yöneldiği yön. Hakiki kuzeyden **variation (manyetik sapma)** kadar ayrılır; değeri konuma ve yıla göre değişir (haritada pusula gülünde yazılıdır).\n- **Pusula Kuzeyi (Compass, C):** Geminin kendi demir kütlesi ve elektriği nedeniyle manyetik kuzeyden ayrıca **deviation** kadar sapan, pusulanın fiilen gösterdiği yön.\n- **Grid (Şebeke) Kuzeyi:** Harita projeksiyonunun düşey ızgara çizgilerinin yönü; yüksek enlem/kutup haritalarında hakiki kuzeyden 'convergency' kadar ayrılır.\n\n**Dönüşüm zinciri:** Compass → (deviation) → Magnetic → (variation) → True. Bu zincir kavranmadan pusula okuması haritaya güvenle taşınamaz; ayrıntısı 'Hakiki kuzey' ve 'Manyetik kuzey' konularındadır.",
         image: yonNorthTypes,
         imageAlt: "Hakiki, manyetik ve pusula kuzeyi arasındaki ilişki",
         bulletPoints: [
@@ -1257,7 +1257,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Pusula Gülü ve Yön Sistemi",
-        content: "Yön ölçümünün geometrik temeli dairesel sistemdir. Hakiki kuzey 0° kabul edilir, doğu 90°, güney 180° ve batı 270° olarak tanımlanır. Bu sistem sayesinde doğrultular sayısal hale getirilir ve vektörel hareket hesabı mümkün olur.",
+        content: "Yön ölçümünün geometrik temeli **dairesel (360°) sistemdir**: kuzey 000°, doğu 090°, güney 180°, batı 270° ve tekrar kuzeye 360°/000°. Açılar daima **saat yönünde** ve kuzeyden başlanarak ölçülür.\n\nDenizcilikte yönler her zaman **üç haneli** yazılır (örn. 007°, 065°, 270°); baştaki sıfırlar telsizde ve emirde yanlış anlaşılmayı önler ('sıfır-altı-beş'). Bu, eski 32'lik kerte (point) sisteminin (N, NNE, NE...) yerini almıştır; kerteler artık yalnızca kaba yön ve rüzgâr tarifinde kullanılır (1 kerte = 11,25°).\n\nDairesel sistemin asıl gücü, yönü **sayısallaştırıp** vektörel işleme sokmasıdır: rota, kerteriz, akıntı ve rüzgâr yönleri aynı ölçekte toplanıp çıkarılabilir hâle gelir.\n\n**Pratik kural:** İşlem sonucu 360°'yi aşarsa 360 çıkarılır, 000°'nin altına düşerse 360 eklenir; yön daima 000°–360° aralığında tutulur.",
         image: yonCompassRose,
         imageAlt: "Pusula gülü ve derece sistemi",
         bulletPoints: [
@@ -1270,7 +1270,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Hakiki Kerteriz (True Bearing)",
-        content: "Hakiki kerteriz, gemiden bir hedefe olan doğrultunun hakiki kuzeye göre açısıdır. Harita üzerindeki her rota hattı, her kerteriz doğrultusu ve her mevki değişimi bu dairesel açı sistemi üzerinden ifade edilir.",
+        content: "**Kerteriz (bearing)**, gemiden bir hedefe (fener, burun, başka gemi) olan doğrultudur; **hakiki kerteriz** bu doğrultunun hakiki kuzeye göre saat yönündeki açısıdır ve 'T' ile yazılır (örn. 065°T).\n\nAyrımı netleştirmek gerekir: **Heading (pruva/baş yönü)** geminin burnunun baktığı yöndür; **Bearing (kerteriz)** ise bir dış hedefe olan yöndür. İkisi de aynı 360°'lik hakiki sistemde ifade edilir ama farklı şeyleri gösterir.\n\nHakiki kerteriz, mevki tayininin yapı taşıdır: haritaya bir mevki hattı (LOP) çizmek için kerterizi hakiki değere çevirip fenerden geriye doğru çizersiniz; iki-üç kerterizin kesişimi mevkiyi verir.\n\n**Zincir:** Pusuladan okunan kerteriz (Compass Bearing) → deviation ve variation düzeltmesiyle → True Bearing; haritaya yalnızca hakiki değer çizilir.",
         image: yonTrueBearing,
         imageAlt: "Hakiki kerteriz ve yön kavramı",
         bulletPoints: [
@@ -1281,7 +1281,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Nispi Kerteriz (Relative Bearing)",
-        content: "Nispi kerteriz, hedefin geminin pruvasına göre görüldüğü açıdır ve gemi ekseni referans alınarak ölçülür. Nispi kerteriz sancakta veya iskelede ölçülmesine göre saat yönünde ya da saat yönünün tersinde değerlendirilir.",
+        content: "**Nispi kerteriz (relative bearing)**, bir hedefin geminin **pruvasına** göre görüldüğü açıdır; referans hakiki kuzey değil, geminin kendi eksenidir. Pruva (baş) 000°, sancak kemere 090°, kıç 180°, iskele kemere 270° olacak biçimde saat yönünde ölçülür.\n\nGeleneksel köprüüstü dilinde ise sancak/iskele ayrımı kullanılır ('sancak baş omuzluk', 'iskele kemere' gibi); sayısal karşılığında sancak tarafı 000°–180°, iskele tarafı 180°–360° aralığına düşer.\n\nNispi kerteriz tek başına haritaya çizilemez — geminin o anki hakiki baş yönünü (heading) eklemeden mutlak yöne dönüşmez. Ancak çatışmadan kaçınmada çok değerlidir: **nispi kerterizi sabit kalıp mesafesi azalan** hedef çatışma riski taşır (constant bearing, decreasing range - CBDR).\n\n**Dönüşüm:** Hakiki Kerteriz = Hakiki Baş Yönü (Heading) + Nispi Kerteriz (gerekirse ±360° düzeltmesiyle).",
         image: yonRelativeBearing,
         imageAlt: "Nispi kerteriz kavramı",
         bulletPoints: [
@@ -1293,7 +1293,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Hakiki Rota, Hakiki Kerteriz ve Nispi Kerteriz İlişkisi",
-        content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Bu üç kavram arasındaki ilişki, göreli bir yönün mutlak sisteme dönüştürülmesi mantığına dayanır.",
+        content: "Bu üç kavram, göreli (gemiye bağlı) bir yönü mutlak (haritaya bağlı) sisteme taşıma mantığıyla birbirine bağlanır. **Hakiki rota/baş yönü**, geminin hakiki kuzeye göre yönü; **nispi kerteriz**, hedefin gemiye göre yönü; **hakiki kerteriz** ise hedefin hakiki kuzeye göre yönüdür.\n\nTemel bağıntı: **Hakiki Kerteriz = Hakiki Baş Yönü + Nispi Kerteriz**. Mantığı basittir: önce geminin nereye baktığını (mutlak) alır, üstüne hedefin gemiye göre açısını (göreli) eklersiniz; toplam, hedefin mutlak yönünü verir.\n\n**Dairesel düzeltme:** Toplam 360°'yi aşarsa 360 çıkarılır. Örneğin baş yönü 300°, nispi kerteriz 120° → 420° − 360° = **060°T**.\n\n**Not:** Nispi kerteriz sancakta pozitif (ekle), iskelede negatif (çıkar) biçiminde de kullanılabilir; ikisi eşdeğerdir, çünkü iskele 110° nispi = −110° (yani +250°) ile aynı sonucu verir.",
         image: yonHeadingBearing,
         imageAlt: "Rota, kerteriz ve nispi kerteriz ilişkisi",
         formula: {
@@ -1303,7 +1303,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Örnek Hesaplama 1 - Sancak Tarafı",
-        content: "Bir geminin hakiki rotası 065°T olsun. Gemiden bir fener sancak tarafından nispi 30° kerterizle görülüyor olsun. Nispi kerteriz pozitif kabul edilir ve hakiki rotaya eklenir.",
+        content: "**Verilenler:** Hakiki baş yönü (rota) 065°T; bir fener **sancak** tarafında **nispi 30°** ile görülüyor. **İstenen:** Fenerin hakiki kerterizi.\n\n**Çözüm:** Sancak tarafı olduğundan nispi kerteriz pozitif alınır ve hakiki rotaya eklenir:\nHakiki Kerteriz = 065° + 030° = **095°T**.\n\n**Yorum:** Fener, hakiki kuzeye göre 095° doğrultusundadır — neredeyse doğuda. Bunu haritaya taşımak için fenerin konumundan geriye, 095°'nin tersi olan 275° yönünde bir mevki hattı çizilir; gemi bu hat üzerindedir.\n\n**Kontrol:** Sancak (geminin sağı), baş yönünden saat yönünde bir hedef demektir; sonucun baş yönünden **büyük** çıkması (095 > 065) bu beklentiyle tutarlıdır.",
         image: yonDiagram1,
         imageAlt: "Sancak kerteriz hesabı örneği",
         bulletPoints: [
@@ -1315,7 +1315,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Örnek Hesaplama 2 - İskele Tarafı",
-        content: "Aynı örnekte fener iskele tarafında nispi 20° ile görülseydi, nispi kerteriz −020° olarak alınır ve hakiki rotadan çıkarma işlemi yapılır.",
+        content: "**Verilenler:** Aynı gemi, hakiki baş yönü 065°T; fener bu kez **iskele** tarafında **nispi 20°** ile görülüyor. **İstenen:** Hakiki kerteriz.\n\n**Çözüm:** İskele tarafı olduğundan nispi kerteriz negatif alınır ve hakiki rotadan çıkarılır:\nHakiki Kerteriz = 065° − 020° = **045°T**.\n\n**Yorum:** Fener hakiki kuzeye göre 045° (kuzeydoğu) doğrultusundadır. İskele (geminin solu) baş yönünden saat yönünün tersinde bir hedef olduğundan sonucun baş yönünden **küçük** çıkması (045 < 065) beklenendir.\n\n**Alternatif gösterim:** İskele 20° = nispi 340° (360 − 20). O zaman 065° + 340° = 405° − 360° = 045°T; aynı sonuç. Bu, 'iskele = negatif' ile 'tam 360° dairesel' yaklaşımlarının eşdeğer olduğunu gösterir.",
         image: yonDiagram2,
         imageAlt: "İskele kerteriz hesabı örneği",
         bulletPoints: [
@@ -1327,7 +1327,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Rüzgâr ve Akıntı Etkisi",
-        content: "Yön kavramı, rüzgâr ve akıntı hesaplarında da kullanılır. Heading (pruva doğrultusu), Course Over Ground (COG - su üstü seyir yönü) ve drift (kayma) kavramları yön sistemi üzerine kuruludur.",
+        content: "Yön sistemi yalnızca kerterizlerde değil, dış kuvvetlerin gemi hareketine etkisini modellerken de kullanılır; çünkü rüzgâr ve akıntı, geminin fiilen izlediği yolu baş yönünden ayırır.\n\nDört kavramı ayırmak gerekir:\n- **Heading (baş yönü):** Geminin burnunun baktığı yön (dümenle tutulan).\n- **Course/Track:** İzlenmesi amaçlanan ya da fiilen izlenen yol.\n- **COG (Course Over Ground):** Zemine göre gerçek hareket yönü (GPS verir; 'su üstü' değil, yer üstü).\n- **Drift/Leeway:** Akıntının (drift) ve rüzgârın (leeway) yol açtığı yanal kayma.\n\nAkıntı ve rüzgâr yüzünden **baş yönü ≠ COG** olur: gemi bir yöne bakarken başka bir yöne süzülür. Bu farkı gidermek için denizci, istenen yolu (track) tutturacak bir baş yönü (course to steer) hesaplar — akıntı/rüzgâr vektörünü baş yönü vektörüyle toplayarak.\n\n**Gemide önemi:** Dar sularda COG ile heading farkını okumak (ör. ECDIS'te COG çizgisi ile pruva çizgisi), akıntıya karşı erken düzeltme yapmayı sağlar; bu fark 'akıntı seni sete bastırıyor' uyarısının görsel hâlidir.",
         image: yonWindDrift,
         imageAlt: "Rüzgâr ve akıntının seyire etkisi",
         bulletPoints: [
@@ -1339,7 +1339,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Ölü Hesap ve Yön",
-        content: "Yön kavramının düzlem seyirdeki en önemli işlevlerinden biri, mesafenin vektörel anlam kazanmasını sağlamasıdır. Geminin aldığı yol yalnızca kaç deniz mili olduğu ile değil, bu mesafenin hangi hakiki rota doğrultusunda alındığı ile anlamlıdır.",
+        content: "Yön kavramının düzlem seyirdeki en kritik işlevi, mesafeyi **vektörel** bir büyüklüğe dönüştürmesidir: kat edilen yol yalnızca 'kaç mil' değil, 'hangi hakiki rotada kaç mil' olarak anlam kazanır. Ölü hesap (dead reckoning) mevkii tam olarak budur — bilinen bir başlangıçtan, baş yönü ve hızla ilerleyerek yeni mevkiyi kestirmek.\n\nBu yüzden yön ile mesafe ayrılmaz: aynı 20 NM, 000° rotada 20′ kuzeye taşırken 090° rotada 0′ enlem değişimiyle tamamen doğuya taşır. Rota açısı, mesafeyi enlem (DLat) ve boylam (departure) bileşenlerine ayıran şeydir.\n\n**Hata büyütme:** Mesafe kusursuz ölçülse bile rotadaki her derece hatası mevkiyi yana kaydırır; yaklaşık kural olarak **1° rota hatası her 60 NM'de ~1 NM yanal sapma** üretir (mesafe × sin 1° ≈ mesafe ÷ 57). 300 NM'lik bir geçişte 2° rota hatası ~10 NM yana çıkarır.\n\n**Gemide önemi:** GPS kesildiğinde güvenli seyir tümüyle ölü hesaba kalır; bu yüzden baş yönü, hız ve zaman titizlikle kaydedilir ve DR mevkii düzenli güncellenir.",
         image: yonRadarMotion,
         imageAlt: "Radar ve hareket vektörleri",
         bulletPoints: [
@@ -1369,19 +1369,19 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Ölü Hesap Mevkiinin Temeli",
-        content: "Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir. Bu durumda alınan mesafe, hız ile geçen zamanın çarpımıdır. Bu formül, seyirde kullanılan en temel bağıntıdır ve hızın birim zamanda alınan yol olması ilkesine dayanır.",
+        content: "Ölü hesap (Dead Reckoning, DR), bilinen bir başlangıç mevkiinden yalnızca **baş yönü (course) ve suya göre hız (STW)** ile geçen zamanı kullanarak yeni mevkiyi kestirme yöntemidir. Rüzgâr ve akıntı bu aşamada hesaba katılmaz; katıldığında sonuca **tahmini mevki (Estimated Position, EP)** denir.\n\nModelin çekirdeği tek bağıntıdır: sabit rota ve sabit hızda **mesafe = hız × zaman**. Bu mesafe, rota doğrultusunda haritaya taşınarak DR mevkii bulunur.\n\n**Ayrım (kritik):** DR bir *kestirimdir*, gözlemle doğrulanmış mevki (fix) değildir; hata zamanla birikir. Bu yüzden DR ilk fix/GPS fırsatında güncellenir, ama iki fix arasında güvenliğin temelidir — bir sonraki tehlikeye tahmini varış zamanını DR verir.",
         image: deadReckoningPlot,
         imageAlt: "Ölü hesap (dead reckoning) örneği"
       },
       {
         title: "Birim Uyumu ve Zaman Üçgeni",
-        content: "Hız = Mesafe ÷ Zaman ve Zaman = Mesafe ÷ Hız bağıntıları, bilinmeyen büyüklüğe göre temel formülün yeniden düzenlenmiş hâlidir. Bu üçlü bağıntı, ETA hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
+        content: "Denizcilik birimlerinin özenle seçilmiş uyumu hesapları sadeleştirir: **1 knot = 1 NM/saat** olduğundan, hız (kn) × zaman (saat) doğrudan mesafeyi (NM) verir; ara birim dönüşümü gerekmez.\n\nAynı temel bağıntı, aranan büyüklüğe göre 'zaman üçgeni' olarak üç biçimde kullanılır: **M = H × Z**, **H = M ÷ Z**, **Z = M ÷ H**. Üçgende üstte M (mesafe), altta H ve Z durur; parmakla kapattığınız büyüklük, formülün hangi biçimini kullanacağınızı gösterir.\n\n**En sık hata — zaman birimi:** Süre dakika ise saate çevrilmelidir. Örneğin 12 kn ile 40 dakika: Z = 40 ÷ 60 = 0,667 saat, M = 12 × 0,667 = **8 NM** (yanlışlıkla 12 × 40 yapılırsa sonuç 60 kat şişer). Saniye/dakika/saat karışıklığı, bu konudaki bir numaralı hesap hatasıdır.",
         image: speedDistanceTime,
         imageAlt: "Zaman üçgeni (mesafe-hız-zaman)"
       },
       {
         title: "Temel Bağıntı",
-        content: "Mesafe, hız ile geçen zamanın çarpımıdır. Aynı bağıntı bilinmeyen büyüklüğe göre düzenlenerek hız veya zaman hesabında da kullanılır.",
+        content: "Seyir hesaplarının çekirdek bağıntısı tek bir ifadedir: **Mesafe = Hız × Zaman**. Denizcilikte hız knot (NM/saat), mesafe deniz mili, zaman saat cinsinden olduğundan bu çarpım doğrudan sonuç verir.\n\nAynı bağıntı, bilinmeyene göre yeniden düzenlenir: hız aranıyorsa **H = M ÷ Z**, süre aranıyorsa **Z = M ÷ H**. Üçü de aynı ilişkinin farklı yüzleridir.\n\n**Kullanım uyarısı:** Formül ancak birimler uyumluysa çalışır; süre dakika ya da saniye ise önce saate çevrilmelidir. Bu tek adım atlanınca sonuç tümüyle yanlış çıkar.",
         image: speedDistanceTime,
         imageAlt: "Mesafe-hız-zaman diyagramı",
         formula: {
@@ -1391,37 +1391,37 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Rüzgâr ve Akıntı Varsayımı",
-        content: "Bu hesapların geçerli olabilmesi için hızın gerçekten sabit kalması gerekir. Dış etkilerin (akıntı, rüzgâr, dalga) ihmal edilemeyecek düzeyde olduğu durumlarda rota ve hız değerleri güncellenmelidir.",
+        content: "DR bağıntısının geçerliliği, hızın ve rotanın gerçekten sabit kaldığı varsayımına dayanır. Gerçekte gemi suya göre hareket eder (**STW – Speed Through Water**), oysa haritadaki ilerleme zemine göredir (**SOG – Speed Over Ground**); ikisini ayıran şey akıntıdır.\n\nAkıntı, rüzgâr (leeway) ve dalga ihmal edilemeyecek düzeydeyse DR mevkii gerçek konumdan sapar. Bu durumda akıntı vektörü hesaba katılarak DR yerine **EP** üretilir ya da tutturulacak baş yönü (course to steer) yeniden hesaplanır.\n\n**Kural:** Set (akıntı yönü) ve drift (akıntı hızı) bilindiğinde, DR'ye akıntı vektörü eklenerek EP bulunur. Açık denizde akıntı küçükse DR ≈ EP; kıyı ve boğaz sularında ise fark hayati olabilir.",
         image: yonWindDrift,
         imageAlt: "Rüzgârın seyire etkisi"
       },
       {
         title: "Ölü Hesap Şeması",
-        content: "Başlangıç mevkii bilinen bir gemi, belirli bir hakiki rota ve hızla hareket ettiğinde, geçen zaman sonunda ulaştığı mevki bu ilişkiyle hesaplanır.",
+        content: "DR mevkiini haritaya koymak standart bir çizim işlemidir. **Adım 1:** Bilinen son mevki (fix) işaretlenir ve saati yazılır. **Adım 2:** Paralel cetvelle pusula gülünden hakiki rota taşınarak mevkiden bir çizgi çizilir. **Adım 3:** Pergel, enlem kenarından kat edilen mesafe kadar açılır (mesafe = hız × zaman) ve rota çizgisi üzerine işaretlenir.\n\nİşaretleme kuralları standarttır: DR mevkii yarım daire ve saatiyle, gözlemle bulunan fix ise tam daire ile gösterilir; böylece haritaya bakan herkes hangi mevkinin kestirim, hangisinin doğrulanmış olduğunu anında görür.\n\n**Uygulama:** DR çizgisi seyir boyunca uzatılır ve her fix'te gerçek mevkiyle karşılaştırılır; aradaki fark, o bölgedeki toplam akıntı + rüzgâr etkisini (ve varsa dümen/pusula hatasını) ortaya koyar.",
         image: deadReckoningPlot,
         imageAlt: "Ölü hesap (dead reckoning) şeması"
       },
       {
         title: "Düzgün Doğrusal Hareket Modeli",
-        content: "Bu ilişkinin matematiksel temeli düzgün doğrusal harekete dayanır. Düzlem seyirde rüzgâr ve akıntı etkileri ihmal edildiğinde, geminin hareketi sabit rota ve sabit hız varsayımıyla modellenir.",
+        content: "DR hesabının fiziksel temeli **düzgün doğrusal harekettir**: sabit hızla, sabit yönde giden bir cismin aldığı yol, hız ile zamanın çarpımıdır (x = v·t). Deniz yüzeyi kısa mesafede düzlem kabul edildiğinde gemi hareketi bu modele uyar.\n\nModel iki basitleştirme yapar: (1) hız zaman içinde değişmez, (2) rota sabittir. Gerçekte manevra, deniz durumu ve makine değişiklikleri bu varsayımları bozar; o zaman seyir, her biri kendi içinde sabit kabul edilen **kısa bacaklara (leg)** bölünür ve her bacak ayrı hesaplanıp toplanır.\n\n**Sınır:** Uzun mesafede Dünya'nın eğriliği devreye girdiğinden düzlem model yetmez; orta enlem veya Mercator/büyük daire seyrine geçilir. Yani bu model kısa bacaklar için doğru, okyanus ölçeğinde yalnızca yaklaşımdır.",
         image: deadReckoningPlot,
         imageAlt: "Düzgün doğrusal hareket şeması"
       },
       {
         title: "ETA ve Seyir Planlaması",
-        content: "Bu üçlü bağıntı, varış zamanı (ETA) hesapları, vardiya planlaması ve yakıt tahminleri için sürekli olarak kullanılır.",
+        content: "Varış zamanı tahmini (ETA – Estimated Time of Arrival), zaman üçgeninin en yaygın uygulamasıdır: kalan mesafe ile planlanan hızdan geçen süre bulunur, mevcut zamana eklenir. **Z = M ÷ H**, sonra ETA = şu anki zaman + Z.\n\n**Worked örnek:** Bir sonraki noktaya 156 NM kaldı, hız 13 kn. Süre = 156 ÷ 13 = 12 saat. Kalkış 06:00 UT ise ETA = 18:00 UT. Yerel ETA için varış yerinin saat dilimi (ZD) uygulanır.\n\n**Planlama:** ETA yalnızca konfor değil, güvenlik ve ticari bir zorunluluktur — gelgit penceresi (tidal window), kılavuz/römorkör randevusu, liman kabul saati ve köprü/kanal geçiş zamanları hep ETA'ya bağlıdır. Yanlış ETA, kaçırılan gelgit yüzünden saatlerce beklemek anlamına gelebilir.",
         image: etaDiagram,
         imageAlt: "Hız ve mesafe ilişkisi görseli"
       },
       {
         title: "ETA Diyagramı",
-        content: "ETA hesapları, hız ve mesafe değerlerinin sahada düzenli kontrolü ile güncellenir. Bu nedenle seyir boyunca zaman, hız ve mesafe üçgeni sürekli izlenir.",
+        content: "ETA sabit bir sayı değil, seyir boyunca sürekli güncellenen bir tahmindir; çünkü gerçek hız (SOG) akıntı, rüzgâr ve makine değişimleriyle plandan sapar. Bu yüzden köprüüstünde 'yapılan hız' (**Speed Made Good, SMG**) düzenli ölçülür: iki fix arası mesafe ÷ geçen süre.\n\nGüncelleme mantığı basittir: her fix'te kalan mesafe yeniden ölçülür, güncel SMG ile bölünür ve ETA revize edilir. Plandan geri kalınıyorsa ya hız artırılır ya da ETA/liman randevusu güncellenir.\n\n**Pratik:** ETA revizyonu genelde limana/acenteye bildirilir; erken ya da geç varış hem yakıtı (slow steaming) hem operasyon planını etkilediğinden, SMG–mesafe–zaman üçgeni vardiya boyunca canlı izlenir.",
         image: etaDiagram,
         imageAlt: "ETA ve mesafe diyagramı"
       },
       {
         title: "Seyir Günlüğü ve Kayıt",
-        content: "Ölü hesap mevkiinde alınan her mesafe, seyir günlüğüne kaydedilerek güvenli takip ve geriye dönük kontrol sağlanır.",
+        content: "Ölü hesapta üretilen her mevki, rota, hız ve zaman **seyir jurnaline (deck log)** kaydedilir. Bu kayıt üç işlev görür: (1) seyrin geriye dönük yeniden kurulabilmesi (bir fix kaçırılsa bile son kayıttan DR sürdürülür), (2) vardiya devrinde durumun aktarılması, (3) hukuki delil — çatışma/kaza soruşturmasında jurnal esas alınır.\n\nSOLAS ve bayrak devleti kuralları belirli kayıtları (mevki, rota değişimi, önemli olaylar) zorunlu kılar; ECDIS de otomatik iz (track) kaydı tutar, ancak resmi jurnal sorumluluğu vardiya zabitindedir.\n\n**İlke:** Kayıt düzenli ve zamanında tutulmalıdır; 'sonra yazarım' yaklaşımı, tam da acil bir durumda (DR'ye dönmek gerektiğinde) güvenilir başlangıç mevkisini yok eder.",
         image: chartPlotting,
         imageAlt: "Seyir günlüğü örneği"
       },
@@ -1444,7 +1444,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Makine Performansı Etkisi",
-        content: "Makine torku ve güç eğrileri, geminin hızını doğrudan etkiler. Hızdaki küçük sapmalar, uzun seyirlerde önemli mesafe hatalarına dönüşebilir.",
+        content: "Geminin hızı doğrudan makine gücü ve pervane performansına bağlıdır, ama bağıntı doğrusal değildir: gövde direnci hızla birlikte kabaca hızın karesi-küpü mertebesinde arttığından, hızı biraz artırmak güç ve yakıtta orantısız artış ister (bu yüzden 'slow steaming' ciddi yakıt tasarrufu sağlar).\n\nGerçek hızı plandan uzaklaştıran etkenler: pervane **slip**i (teorik yol ile gerçek yol farkı), tekne dibi kirlenmesi (fouling), draft/trim, sığ su etkisi ve hava/deniz durumu. Bu yüzden RPM'den okunan 'motor hızı' ile gerçek SOG çoğu zaman eşit değildir.\n\n**Sonuç:** Hızdaki küçük ve fark edilmeyen sapmalar uzun seyirde büyük mesafe/ETA hatasına dönüşür; bu nedenle hız, RPM'e güvenilerek değil, parakete (log) ve ardışık GPS fix'leriyle doğrulanır.",
         image: speedVariation,
         imageAlt: "Makine performansının hıza etkisi grafiği"
       },
@@ -1456,7 +1456,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Harita Üzerinde Uygulama",
-        content: "Başlangıç mevkii bilinen bir geminin, belirli bir hakiki rota ve hızla belirli bir süre sonunda ulaşacağı mevki, mesafenin rota doğrultusunda harita üzerine taşınmasıyla bulunur. Bu işlemde rota açısı kadar mesafe büyüklüğü de kritik öneme sahiptir.",
+        content: "Başlangıç mevki bilinen bir geminin belirli rota ve hızla ulaşacağı yer, mesafenin rota doğrultusunda haritaya taşınmasıyla bulunur — bu, DR çiziminin kâğıt harita üzerindeki elle uygulamasıdır.\n\n**Araçlar ve adımlar:** Rota, paralel cetvel (ya da üçgen takımı) ile pusula gülünden mevkiye taşınır; mesafe, pergel enlem kenarındaki dakika bölmelerinden (1′ = 1 NM) alınarak rota çizgisine işaretlenir. Uzun bacak, pergel açıklığı kadar 'yürütülerek' bölüm bölüm ölçülür.\n\n**Kritik nokta:** Mesafe daima **çizimdeki noktaların hizasındaki enlem** kenarından alınır (Mercator ölçeği enlemle değiştiği için); yanlış enlemden ölçmek en yaygın çizim hatasıdır. ECDIS aynı işi otomatik yapar, ama ilkeyi bilmek cihaz hatasını fark etmek için şarttır.",
         image: chartPlotting,
         imageAlt: "Paralel cetvelle rota çizimi"
       },
@@ -1486,19 +1486,19 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Birim Sistemi ve Knot",
-        content: "Denizcilikte hız knot cinsinden ifade edilir ve 1 knot, saatte 1 deniz miline eşittir. Mesafe deniz mili, zaman saat olarak kullanılır. Bu birim uyumu, dönüşüm hatalarını azaltır ve hesapların doğrudan yapılmasını sağlar.",
+        content: "Denizcilikte hızın birimi **knot (kn)**'tur ve tanımı gereği **1 knot = 1 deniz mili / saat**'tir. Birimin adı tarihseldir: yelkenli çağında hız, kıçtan denize salınan üçgen bir tahtaya (chip log) bağlı ve üzerine eşit aralıklarla **düğümler (knots)** atılmış bir halatla ölçülürdü; 28 saniyelik kum saati boyunca elden çıkan düğüm sayısı doğrudan hızı knot cinsinden verirdi.\n\nBirimlerin uyumu kritik bir kolaylıktır: hız knot, mesafe deniz mili, zaman saat alındığında **M = H × Z** ara dönüşüm gerektirmeden çalışır; çünkü knot zaten 'NM/saat' demektir.\n\n**Karıştırmayın:** Knot zaten 'mil/saat' içerdiğinden 'knot/saat' demek yanlıştır (bu ivme olur). Ayrıca deniz mili (1.852 m) ile kara mili (1.609 m) farklıdır; km/saat veya m/s ile karışıklık birim hatası kaynağıdır (1 kn ≈ 1,852 km/saat ≈ 0,514 m/s).",
         image: speedDistanceTime,
         imageAlt: "Knot, deniz mili ve saat birim uyumu"
       },
       {
         title: "Birim Uyumunun Görsel Mantığı",
-        content: "Birimlerin birbirine doğrudan oturması, seyirde hızlı ve hatasız hesap yapmayı mümkün kılar. Bu nedenle hızın knot olarak, mesafenin deniz mili ve zamanın saat olarak kullanılması temel standarttır.",
+        content: "Knot–deniz mili–saat üçlüsünün birbirine tam oturması, seyir hesabını zihinden bile yapılabilecek kadar sadeleştirir: 10 knotla 3 saatte 30 NM; 20 NM'yi 10 knotla 2 saatte... ara çarpan yoktur.\n\nBu sadelik korunmalıdır; hesaba yabancı bir birim (km, m/s, dakika) karıştığı an üçlü bozulur ve önce ortak birime dönmek gerekir. Özellikle süre çoğu zaman dakika verildiğinden, saate çevirmeden formüle sokmak en sık hatadır (40 dk = 0,667 saat).\n\n**İlke:** Hesaba başlamadan önce üç büyüklüğün de standart birimde (kn, NM, saat) olduğunu doğrulayın; birim tutarlılığı, formülün kendisi kadar önemlidir.",
         image: speedDistanceTime,
         imageAlt: "Zaman-mesafe-hız birim uyumu"
       },
       {
         title: "Bağıntının Formülleri",
-        content: "Bağıntı üç eşdeğer formülle ifade edilir. Hız, birim zamanda alınan yol olduğundan mesafe, hız ile zamanın çarpımıdır. Bilinmeyen büyüklüğe göre formül düzenlenir. Bu üç formül, ETA hesaplarının temel dayanağıdır.",
+        content: "Bağıntı, aynı fiziksel ilişkinin üç eşdeğer biçimidir: hız 'birim zamanda alınan yol' olduğundan **Mesafe = Hız × Zaman**; buradan **Hız = Mesafe ÷ Zaman** ve **Zaman = Mesafe ÷ Hız** türetilir.\n\nHangisinin kullanılacağını **boyut (birim) analizi** güvenceye alır: mesafe (NM) istiyorsanız kn × saat (NM/saat × saat = NM); süre (saat) istiyorsanız NM ÷ kn (NM ÷ NM/saat = saat). Birimlerin sadeleşerek doğru büyüklüğü vermesi, formülü doğru kurduğunuzu 'onaylar'.\n\n**Kullanım:** Bu üç form; ETA (Z = M ÷ H), menzil (M = H × Z) ve performans (H = M ÷ Z) hesaplarının tamamının temelidir. Ezberlenmesi gereken üç ayrı formül değil, tek bir ilişkidir.",
         image: speedDistanceTime,
         imageAlt: "Zaman-mesafe-hız formülleri",
         formula: {
@@ -1519,7 +1519,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Ölçüm Cihazları ve Hız Bilgisi",
-        content: "Pratikte hız bilgisi log cihazlarıyla elde edilir. Hız ölçümü ne kadar doğruysa, zaman–mesafe hesabı da o kadar güvenilir olur.",
+        content: "Hız bilgisi köprüüstüne, farklı ilkelerle çalışan **parakete (log)** cihazlarından gelir; hangi hızı ölçtükleri kritik farktır:\n\n- **Elektromanyetik (EM) log:** Su içinde oluşturulan manyetik alandan geçen suyun indüklediği gerilimi ölçer; **suya göre hızı (STW)** verir.\n- **Doppler log:** Deniz dibine (veya derin suda bir su katmanına) ses dalgası gönderip frekans kaymasını ölçer; sığ suda dibe kilitlenerek **zemine göre hızı (SOG)** verebilir.\n- **Pitot tipi log:** Dinamik su basıncından hız türetir (eski tip).\n- **GPS:** Ardışık konumlardan doğrudan **SOG** ve COG üretir.\n\n**STW vs SOG:** EM log suya göre, GPS zemine göre hız verir; ikisinin farkı akıntının rota üzerindeki bileşenidir. DR suya göre hızı (STW) ister, ETA ve gerçek ilerleme ise SOG'a bakar.\n\n**İlke:** Ölçüm ne kadar doğruysa zaman-mesafe hesabı o kadar güvenilirdir; bu yüzden log düzenli kalibre edilir ve GPS SOG'u ile çapraz kontrol edilir.",
         image: dopplerLog,
         imageAlt: "Doppler log çalışma prensibi"
       },
@@ -1531,7 +1531,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Geriye Dönük Analiz",
-        content: "Seyir sonrası değerlendirmelerde, belirli bir sürede kat edilen mesafeden ortalama hız hesaplanır. Bu hız, makine performansı, deniz durumu ve akıntı etkilerinin dolaylı bir göstergesi olarak yorumlanır.",
+        content: "Seyir sonrası değerlendirmede, kat edilen mesafe geçen süreye bölünerek **ortalama hız (Speed Made Good, SMG)** bulunur: H = M ÷ Z. Bu değer, o bacakta gerçekte ne olduğunun özetidir.\n\nOrtalama hız ile planlanan/motor hızı arasındaki fark dolaylı ama güçlü bir göstergedir: beklenenden düşük ortalama hız olumsuz akıntı, baş rüzgâr/dalga, tekne kirlenmesi ya da makine kısıtı anlamına gelebilir; yüksekse lehte akıntıya işaret eder.\n\n**Kullanım:** Bu geri besleme, hava rotalaması (weather routing) ve sonraki sefer planlaması için veri üretir; kaptan gerçekleşen SMG'yi plana işleyerek yakıt ve ETA tahminlerini gitgide isabetlileştirir.",
         image: speedVariation,
         imageAlt: "Ortalama hız ve seyir verilerinin değerlendirilmesi"
       },
@@ -1543,7 +1543,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Rota Doğrultusu ve Mevki Aktarımı",
-        content: "Hesaplanan mesafenin harita üzerinde doğru rota doğrultusunda taşınması, ölü hesap mevkiinin güvenilirliğini belirler. Bu aşamada rota açısı ve ölçüm hassasiyeti kritik önemdedir.",
+        content: "Hesaplanan mesafe, ancak **doğru rota doğrultusunda** haritaya taşındığında geminin mevkiini değiştirir; sayının doğruluğu tek başına yetmez. Bu, zaman-mesafe-hız hesabının vektörel yüzüdür: büyüklük (mesafe) + yön (rota) = yer değişimi.\n\nAktarımın güvenilirliği iki şeye bağlıdır: (1) rota açısının doğru ölçülüp taşınması (bkz. Rota ölçümü), (2) mesafenin doğru enlem ölçeğinden alınması. Rotadaki birkaç derecelik hata veya yanlış enlemden ölçülen mesafe, matematiksel olarak tutarlı ama fiziksel olarak yanlış bir mevki üretir.\n\n**Sonuç:** Ölü hesabın güvenilirliği, sayısal hesap kadar bu çizim/aktarım disiplinine bağlıdır; bu yüzden hesap ve harita adımı birbirinden ayrılmaz bir bütün olarak öğretilir.",
         image: chartPlotting,
         imageAlt: "Rota doğrultusunda mevki aktarımı"
       }
@@ -1582,7 +1582,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Karşı Rota",
-        content: "Rota ölçümü ile birlikte sıkça kullanılan kavramlardan biri de karşı rotadır. Bir rotanın karşı rotası, aynı hattın ters yönde izlenmesi anlamına gelir ve hakiki rota değerine 180° eklenerek veya çıkarılarak bulunur.",
+        content: "Rota ölçümüyle birlikte sık kullanılan kavramlardan biri **karşı rotadır (reciprocal course)**: aynı hattın ters yönde izlenmesidir ve hakiki rotaya **180° eklenerek veya çıkarılarak** bulunur (sonucu 0°–360° içinde tutmak için 180°'den küçük değere eklenir, büyük değerden çıkarılır).\n\n**Örnekler:** 040°'nin karşı rotası 040° + 180° = **220°**; 300°'nin karşı rotası 300° − 180° = **120°**.\n\nPratikte hayati kullanımları vardır: bir feneri terk ederken pruva kerterizinin karşı rotası o fenerden bakıldığında geminin yönünü verir; bir mevki hattı (LOP) çizerken gözlemlenen kerterizin karşı yönünde çizim yapılır; aynı yol üzerinden geri dönüşte de karşı rota kullanılır.\n\n**Kontrol:** İster ekleyin ister çıkarın iki yöntem aynı sonucu verir (040° için 040 + 180 = 220; 220 de 220 − 180 = 040 ile tutarlıdır). Sonucu daima 0°–360° aralığında ifade edin.",
         formula: {
           text: "Karşı Rota = Hakiki Rota ± 180°",
           description: "Hakiki rota 180°’den küçükse 180° eklenir, 180°’den büyükse 180° çıkarılır."
@@ -1615,31 +1615,31 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
     sections: [
       {
         title: "Tanım ve Temel Referans",
-        content: "Denizcilikte hakiki kuzey, teorik hesapların başlangıç noktasıdır. Haritalar, meridyenler, paraleller ve göksel seyir tabloları hakiki kuzey esas alınarak hazırlanır. Bu nedenle hakiki kuzey, diğer tüm kuzey türlerinin başlangıç noktası kabul edilir.",
+        content: "Hakiki kuzey, tüm teorik seyir hesaplarının **başlangıç (referans) noktasıdır**: haritalar, meridyenler ve paraleller, göksel seyir tabloları ve Almanak verilerinin hepsi hakiki kuzeye göre hazırlanır. Diğer iki kuzey (manyetik ve pusula) ancak düzeltmelerle bu ortak referansa bağlanır.\n\nBunun nedeni, hakiki kuzeyin **fiziksel ve astronomik olarak tanımlı** olmasıdır: Dünya'nın dönme ekseninin gökyüzünü kestiği nokta (gök kutbu) Kutup Yıldızı'na çok yakındır, dolayısıyla hakiki kuzey doğrudan gökyüzünden gözlemlenip doğrulanabilir.\n\n**Sonuç:** Bir rota veya kerteriz nihai olarak daima hakiki değere çevrilir; çünkü yalnızca hakiki sistem evrenseldir — farklı gemiler, haritalar ve gözlemler ancak bu ortak dilde karşılaştırılabilir.",
         image: yonNorthTypes,
         imageAlt: "Coğrafi kuzey kutbu ve Dünya ekseni"
       },
       {
         title: "Sabit ve Evrensel Bir Doğrultu",
-        content: "Hakiki kuzey, manyetik alanlardan, gemi yapısından veya çevresel etkilerden etkilenmeyen tek ve sabit bir referans sunar. Uzun mesafeli seyirlerde ve göksel gözlemlerde bu sabitlik vazgeçilmezdir.",
+        content: "Hakiki kuzeyin en değerli özelliği **sabitliğidir**: manyetik alanlardan, geminin çeliğinden, elektrikli ekipmandan veya bulunulan bölgeden etkilenmez. Manyetik kuzey her yıl kayarken ve pusula kuzeyi gemiden gemiye değişirken, hakiki kuzey dönme ekseniyle tanımlı olduğundan pratikte değişmez.\n\nBu sabitlik uzun okyanus geçişlerinde ve göksel gözlemlerde vazgeçilmezdir: bir yıldızın veya Güneş'in Almanak'taki konumu hakiki sisteme göre verildiğinden, gözlemi mevkiye çevirmek ancak sabit bir referansla mümkündür.\n\n**Cihaz bağlantısı:** Cayropusula (gyrocompass) tam da bu yüzden geliştirilmiştir; manyetizmadan bağımsız olarak, dönen bir jiroskopla **hakiki kuzeyi** arar ve manyetik pusulanın variation/deviation yükünü ortadan kaldırır (küçük bir cayro hatası dışında).",
         image: compassImg,
         imageAlt: "Gerçek kuzey ve yön doğrultuları"
       },
       {
         title: "Meridyenler ve Hakiki Kuzey Doğrultusu",
-        content: "Harita üzerindeki her dikey meridyen çizgisi, hakiki kuzey–hakiki güney doğrultusunu temsil eder. Bu çizgiler, yön ölçümünün geometrik temelini oluşturur.",
+        content: "Harita üzerindeki her düşey **meridyen çizgisi**, tam olarak hakiki kuzey–hakiki güney doğrultusunu temsil eder; çünkü meridyenler kutuptan kutba, yani dönme ekseni boyunca uzanır. Bu, yön ölçümünün geometrik temelidir.\n\nPratik sonucu şudur: haritada bir rotayı ölçerken açıyı daima en yakın **meridyene** göre alırsınız; paralel cetvelle rota hattını bir meridyene taşıyıp pusula gülünden okuduğunuz değer, doğrudan **hakiki** rotadır — ek düzeltme gerekmez.\n\n**Uyarı:** Referans olarak paralel (enlem) çizgisini veya harita kenarını kullanmak, yalnızca bunlar meridyene tam paralel/dik olduğunda güvenlidir; en güvenli yol daima doğrudan meridyeni referans almaktır.",
         image: yonNorthTypes,
         imageAlt: "Kuzey referansları ve meridyenler"
       },
       {
         title: "Hakiki Yönlerin Ölçümü",
-        content: "Hakiki kuzey referans alınarak ölçülen tüm yönler hakiki olarak adlandırılır. Bir doğrultu, meridyen ile yaptığı saat yönündeki açıyla ifade edilir ve bu açı 0° ile 360° arasındadır.",
+        content: "Hakiki kuzey referans alınarak ölçülen her yön 'hakiki' (True, T) olarak adlandırılır ve değerin sonuna 'T' eklenir (ör. 072°T). Açı, meridyenle yapılan **saat yönündeki** açıdır ve 000°–360° arasında, üç haneli yazılır.\n\nHakiki yönler, doğrudan haritaya çizilebilen tek yön türüdür; çünkü harita zaten hakiki sisteme kuruludur. Pusuladan (compass) veya manyetik sistemden gelen bir değer ise ancak deviation ve variation düzeltmeleriyle hakiki değere çevrildikten sonra haritaya taşınabilir.\n\n**İlke:** 'Haritaya hakiki, dümene pusula' — planlama ve çizim hakiki sistemde yapılır, sonra dümenciye verilecek rota pusula sistemine geri çevrilir (True → Magnetic → Compass).",
         image: yonTrueBearing,
         imageAlt: "Hakiki yön ölçümü"
       },
       {
         title: "Hakiki Rota ve Hakiki Kerteriz",
-        content: "Hakiki rota, geminin harita üzerinde izlediği hattın hakiki kuzeye göre yaptığı açıdır. Hakiki kerteriz ise gemiden bir hedefe olan doğrultunun hakiki kuzeye göre ölçülen açısıdır.",
+        content: "İki temel hakiki büyüklüğü ayırmak gerekir: **Hakiki rota (True Course)**, geminin harita üzerinde izlediği hattın hakiki kuzeyle yaptığı açıdır — nereye *gittiğinizi* söyler. **Hakiki kerteriz (True Bearing)** ise gemiden bir dış hedefe (fener, burun) olan doğrultunun hakiki kuzeyle açısıdır — bir nesnenin *nerede olduğunu* söyler.\n\nİkisi de aynı hakiki sistemde ölçülür ama işlevleri ayrıdır: rota seyri yönlendirir, kerteriz mevki tayinini (LOP kesişimi) sağlar. Ayrıca **hakiki baş yönü (True Heading)** geminin burnunun baktığı yöndür ve akıntı/rüzgâr yüzünden izlenen rotadan farklı olabilir.\n\n**Bağlantı:** Nispi kerterizle hakiki baş yönü toplanınca hakiki kerteriz elde edilir; hakiki kerterizler haritada kesiştirilerek mevki bulunur. Böylece hakiki kuzey, gözlemi mevkiye bağlayan ortak çerçevedir.",
         image: yonHeadingBearing,
         imageAlt: "Hakiki rota ve kerteriz ilişkisi"
       },
@@ -1666,7 +1666,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Ölü Hesap ve Hakiki Kuzey",
-        content: "Ölü hesap mevkiinde başlangıç noktası bilinir; hakiki rota ve hız sabit kabul edilerek geçen zaman sonunda alınan mesafe hesaplanır. Bu mesafe, hakiki rota doğrultusunda harita üzerinde taşınarak yeni mevki bulunur.",
+        content: "Ölü hesap (DR) tümüyle hakiki kuzey referansında yürür: başlangıç mevki bilinir, **hakiki rota** ve hız sabit alınır, geçen sürede kat edilen mesafe (M = H × Z) **hakiki rota doğrultusunda** haritaya taşınarak yeni mevki bulunur.\n\nBurada hakiki sistemin kullanılması zorunludur; çünkü DR mevkii doğrudan harita üzerine çizilir ve harita hakiki sisteme kuruludur. Dümenciye verilen pusula rotası ne olursa olsun, çizim hakiki rotayla yapılır.\n\n**Dikkat:** Rota, pusuladan hakiki değere çevrilirken variation/deviation hatası yapılırsa DR baştan yanlış yöne kurulur ve hata mesafeyle büyür. Bu yüzden 'önce doğru hakiki rota, sonra DR çizimi' sırası korunur.",
         image: chartPlotting,
         imageAlt: "Ölü hesap mevkiinde hakiki rota kullanımı"
       }
@@ -1685,19 +1685,19 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
     sections: [
       {
         title: "Tanım ve Temel Referans",
-        content: "Manyetik pusula, elektriksel veya elektronik sistemlere ihtiyaç duymadan yön tayini sağlar. Bu pratiklik, değişken bir referansla çalışıldığı gerçeğini ortadan kaldırmaz; manyetik kuzey daima değişen bir doğrultudur.",
+        content: "Manyetik kuzey, Dünya'nın manyetik alan çizgilerinin belirlediği ve **manyetik pusula ibresinin yöneldiği** doğrultudur. Manyetik pusulanın en büyük üstünlüğü, elektrik ya da elektronik gerektirmeden tümüyle edilgen çalışmasıdır; bu yüzden SOLAS, elektronik sistemlerden bağımsız bir manyetik pusulayı hâlâ zorunlu tutar.\n\nAncak bu pratiklik, çalışılan referansın **değişken** olduğu gerçeğini ortadan kaldırmaz: manyetik kuzey hakiki kuzeyle çakışmaz ve hem konuma hem zamana göre kayar.\n\n**Ayrım:** Manyetik kuzey **kutbu** (fiziksel nokta; bugün Kanada Arktik'inden Sibirya'ya doğru hızla göçüyor) ile pusulanın yöneldiği manyetik kuzey **doğrultusu** aynı şey değildir; pusula, yerel alan çizgisinin yatay bileşenine yönelir, doğrudan kutba değil.",
         image: yonNorthTypes,
         imageAlt: "Manyetik kuzey kutbu ve Dünya ekseni"
       },
       {
         title: "Dünya Manyetik Alanı ve Kutup Hareketi",
-        content: "Dünya manyetik alanı dinamik bir yapıya sahiptir. Yer kabuğu altındaki erimiş metallerin hareketi nedeniyle manyetik kutuplar her yıl küçük miktarlarda yer değiştirir. Bu değişim, deniz haritalarında variation ve yıllık değişim değeri olarak belirtilir.",
+        content: "Dünya'nın manyetik alanı, dış çekirdekteki erimiş demir-nikelin hareketinden (**jeodinamo**) doğar ve büyük bir çubuk mıknatısa benzetilir — ama bu 'mıknatıs' dönme ekseniyle çakışmaz (~11° eğik) ve sabit de değildir.\n\nÇekirdek akışkanının hareketiyle alan yavaşça değişir; buna **seküler değişim** denir ve manyetik kuzey kutbunu yılda onlarca kilometre kaydırır (kuzey manyetik kutbu son yıllarda hızlanarak Sibirya'ya yönelmiştir). Alan ayrıca, ibreyi yatayda saptıran variation'ın yanı sıra ibreyi düşeyde eğen **manyetik meyil / dip (inclination)** de üretir; dip ekvatorda 0°, manyetik kutuplarda 90°'dir (bu yüzden yüksek enlemde manyetik pusula güvenilmezleşir).\n\n**Haritaya yansıması:** Bu değişkenlik yüzünden haritada variation, ölçüldüğü yılla ve **yıllık değişim (annual change)** miktarıyla birlikte verilir; kullanım yılına uyarlanması şarttır.",
         image: yonNorthTypes,
         imageAlt: "Dünya manyetik alanı ve manyetik kutuplar"
       },
       {
         title: "Variation Haritaları",
-        content: "Seyir hesaplarında kullanılan manyetik yönlerin doğruluğu, variation bilgisinin doğru okunmasına ve güncel yıla uyarlanmasına doğrudan bağlıdır. Haritalar üzerinde yer alan izogon çizgileri, variation değerlerinin bölgesel dağılımını gösterir.",
+        content: "Manyetik yönlerin doğruluğu, doğru **variation** değerine bağlıdır ve bu değer haritadan okunur. Aynı variation'a sahip noktaları birleştiren eğrilere **izogon (isogonic) çizgileri**, variation'ın sıfır olduğu çizgiye ise **agonik çizgi** denir.\n\nDenizcilikte variation en çok haritadaki **pusula gülünün** iç halkasından okunur; gülde variation'ın değeri, yönü (E/W), ölçüldüğü yıl ve yıllık değişimi yazılıdır. Örnek gösterim: '4°30′W 2020 (9′E yıllık)' → 2025 kullanımı için 5 × 9′ = 45′ doğuya düzeltilir, yani variation ≈ 3°45′W'ye iner.\n\n**İlke:** Variation'ı güncel yıla uyarlamadan kullanmak yaygın bir hatadır; birkaç on yıllık eski bir haritada düzeltilmemiş variation, tek başına birkaç derecelik yön hatası verebilir.",
         image: compassImg,
         imageAlt: "Manyetik variation haritası"
       },
@@ -1714,7 +1714,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Manyetik Sistem ve Yönler",
-        content: "Manyetik sistemde ölçülen tüm yönler manyetik olarak adlandırılır ve M harfi ile gösterilir. Manyetik rota, geminin manyetik kuzeye göre izlediği doğrultudur. Manyetik kerteriz ise bir hedefin manyetik kuzeye göre ölçülen doğrultusudur.",
+        content: "Manyetik kuzey referans alınarak ölçülen tüm yönler 'manyetik' (Magnetic, M) olarak adlandırılır ve değerin sonuna 'M' eklenir (ör. 110°M). **Manyetik rota** geminin manyetik kuzeye göre izlediği yön, **manyetik kerteriz** ise bir hedefin manyetik kuzeye göre doğrultusudur.\n\nManyetik değerler, pusula (compass) değerleriyle karıştırılmamalıdır: manyetik yön hakiki kuzeyden yalnızca **variation** kadar ayrılır; pusula yönü ise buna ek olarak geminin kendi alanından kaynaklanan **deviation**ı da içerir. Yani sıralama: Compass → (deviation) → Magnetic → (variation) → True.\n\n**Not:** İyi ayarlanmış (deviation'ı düzeltilmiş) bir manyetik pusulada deviation sıfıra yakınsa pusula değeri ≈ manyetik değer olur; ama bu bir varsayım değil, ölçülüp doğrulanması gereken bir durumdur.",
         image: yonNorthTypes,
         imageAlt: "Manyetik kuzey ve yön farkı",
         bulletPoints: [
@@ -1760,7 +1760,7 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       },
       {
         title: "Manyetik Kerteriz Bağıntısı",
-        content: "Manyetik kuzey, kerteriz hesaplarında da aynı mantıkla kullanılır. Nispi kerteriz gemi eksenine göre ölçülür, manyetik kerteriz ise manyetik kuzeye göre tanımlanır.",
+        content: "Manyetik kuzey, kerteriz hesabında da hakiki sistemdekiyle aynı mantıkla kullanılır: nispi kerteriz geminin eksenine göre ölçülür, manyetik baş yönüne eklenerek manyetik kerteriz elde edilir — **Manyetik Kerteriz = Manyetik Baş Yönü + Nispi Kerteriz** (gerekirse ±360° düzeltmesiyle).\n\nManyetik kerterizin başlıca kullanımı, manyetik pusulayla alınan bir hedef kerterizini önce manyetik sistemde ifade etmek, sonra variation ile hakiki değere çevirip haritaya çizmektir.\n\n**Pratik köprü:** Bir cismin transit (iki noktanın üst üste gelmesi) anındaki bilinen hakiki kerterizi ile pusuladan okunan kerterizi karşılaştırarak toplam pusula hatası (deviation + variation) sahada ölçülebilir; bu kontrol, manyetik ve hakiki sistemler arasındaki bağı canlı tutar.",
         image: yonRelativeBearing,
         imageAlt: "Manyetik kerteriz ve nispi kerteriz ilişkisi",
         formula: {
