@@ -349,16 +349,16 @@ export function BookSheet({
           overflow: hidden;
           pointer-events: none;
         }
-        .bs-half--left{
-          left: 0;
-          background: linear-gradient(90deg, #e9d7ae 0%, #f7edd1 5%, #fbf2d9 84%, #e7d4a9 100%);
-          box-shadow: inset -16px 0 22px -18px rgba(70,43,14,.55);
-        }
-        .bs-half--right{
-          left: 50%;
-          background: linear-gradient(90deg, #e7d4a9 0%, #fbf2d9 16%, #f7edd1 95%, #e9d7ae 100%);
-          box-shadow: inset 16px 0 22px -18px rgba(70,43,14,.55);
-        }
+        .bs-half--left,
+        .bs-half--static-left{ left: 0; width: 50%; }
+        .bs-half--right,
+        .bs-half--static-right{ left: 50%; width: 50%; }
+        /* Static half masks the untouched leaf while the flow beneath has
+           already advanced to the target spread. Kept transparent because a
+           real content clone fills it, so the spine gradient never shows
+           through as a coloured band. */
+        .bs-half--static-left,
+        .bs-half--static-right{ background: transparent; box-shadow: none; }
         .bs-turn-leaf{
           position: absolute;
           inset: 0;
