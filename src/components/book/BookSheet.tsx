@@ -361,16 +361,18 @@ export function BookSheet({
         .bs-half--static-right{ background: transparent; box-shadow: none; }
         .bs-turn-leaf{
           position: absolute;
-          inset: 0;
-          width: 100%;
+          top: 0; bottom: 0;
           display: none;
           z-index: 6;
           pointer-events: none;
           transform-style: preserve-3d;
           will-change: transform;
         }
-        .bs-turn-leaf--forward{ left: 0; transform-origin: left center; }
-        .bs-turn-leaf--backward{ left: 0; transform-origin: right center; }
+        /* Only the leaf being turned rotates — the other page is untouched.
+           Forward: right leaf pivots around the spine (its left edge).
+           Backward: left leaf pivots around the spine (its right edge). */
+        .bs-turn-leaf--forward{ left: 50%; width: 50%; transform-origin: left center; }
+        .bs-turn-leaf--backward{ left: 0; width: 50%; transform-origin: right center; }
         .bs-turn-face{
           position: absolute;
           inset: 0;
