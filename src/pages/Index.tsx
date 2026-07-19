@@ -14,6 +14,7 @@ const Index = () => {
   const pagerRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState<PageId>("home");
   const [isScrolling, setIsScrolling] = useState(false);
+  const [bookOpened, setBookOpened] = useState(false);
   const scrollTimerRef = useRef<number | null>(null);
 
 
@@ -137,8 +138,8 @@ const Index = () => {
 
         {/* CENTER — Book (İçindekiler) + Beta/Ayarlar */}
         <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
-          <BookLauncher />
-          <AppIconGrid />
+          <BookLauncher onOpenChange={setBookOpened} />
+          {bookOpened && <AppIconGrid />}
         </section>
 
         {/* RIGHT — Widgets */}

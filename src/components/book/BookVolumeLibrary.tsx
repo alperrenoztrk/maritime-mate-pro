@@ -26,10 +26,9 @@ interface CoverProps {
   onSelect: () => void;
   disabled?: boolean;
   busy?: boolean;
-  footer?: ReactNode;
 }
 
-function BookCover({ item, kicker, onSelect, disabled = false, busy = false, footer }: CoverProps) {
+function BookCover({ item, kicker, onSelect, disabled = false, busy = false }: CoverProps) {
   const style = {
     "--bvl-cover": item.cover,
     "--bvl-cover-deep": item.coverDeep,
@@ -57,7 +56,6 @@ function BookCover({ item, kicker, onSelect, disabled = false, busy = false, foo
         <span className="bvl-subtitle">{item.subtitle}</span>
         {busy && <span className="bvl-opening">Açılıyor…</span>}
       </span>
-      {footer ?? <span className="bvl-description">{item.description}</span>}
     </button>
   );
 }
@@ -122,7 +120,6 @@ export function BookVolumeLibrary({
                 item={volume}
                 kicker="\n"
                 onSelect={() => onSelect(volume.id)}
-                footer={<span className="bvl-description">{volume.description}</span>}
               />
             ))}
           </div>
@@ -211,8 +208,6 @@ function LibraryFrame({
         .bvl-corner{ position:absolute; width:20px; height:20px; border-color:color-mix(in srgb,var(--bvl-accent) 62%,#d6af4b); opacity:.65; }
         .bvl-corner--tl{ top:7px; left:8px; border-top:1px solid; border-left:1px solid; }
         .bvl-corner--br{ right:8px; bottom:7px; border-right:1px solid; border-bottom:1px solid; }
-        .bvl-description{ width:100%; min-height:2.7em; margin-top:10px; color:rgba(255,255,255,.68); font-size:clamp(.54rem,.9vw,.66rem); line-height:1.32; }
-        .bvl-library--compact .bvl-description{ display:none; }
         .bvl-shelf-edge{ height:12px; margin:-12px 2px 0; border-radius:2px 2px 8px 8px; background:linear-gradient(180deg,#7b4d26,#3c2111 72%,#1d0e08); box-shadow:0 10px 18px rgba(0,0,0,.5),inset 0 2px 1px rgba(255,214,148,.18); }
         @media(max-width:560px){
           .bvl-shelf{ gap:12px; padding-inline:max(14px,calc((100vw - 250px)/2)); }

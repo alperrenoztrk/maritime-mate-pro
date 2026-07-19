@@ -40,7 +40,7 @@ export const bookCollections: readonly BookCollectionDescriptor[] = [
   {
     id: "lessons",
     numeral: "\n",
-    title: "\n\n⚓\nContainer",
+    title: "Dersler",
     shortTitle: "Dersler",
     subtitle: "\n",
     description: "Stabilite, seyir ve diğer bütün güverte ve makine dersleri ayrı kitaplar hâlinde.",

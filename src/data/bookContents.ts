@@ -94,7 +94,7 @@ const lessonVolumes: BookVolume[] = calculationCategories.map((category) => {
       subtitle: "\n",
       description: `${category.title} konu anlatımları, hesaplamaları, formülleri ve kuralları.`,
       group,
-      numeral: category.id === "navigation" ? "\n\n⚓\nNavigation\n\n" : "\n",
+      numeral: "\n",
     }),
     chapters: [
       chapter(volumeId, 0, "topics", "Konu Anlatımları", root, [{ entries: topicEntries }]),
