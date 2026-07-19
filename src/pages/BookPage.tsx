@@ -36,8 +36,10 @@ import {
 } from "@/data/bookVolumes";
 import {
   getBookPageLayout,
-  getBookTurnProgress,
+  getBookTurnFrame,
+  getBookTurnProgressFromContact,
   getBookTurnSettleDuration,
+  getBookTurnSettleProgress,
   paginateBookPages,
   shouldCompleteBookTurn,
   type BookPageLayout,
@@ -60,6 +62,9 @@ interface ActiveTurn {
   direction: BookTurnDirection;
   fromIndex: number;
   toIndex: number;
+  grabY: number;
+  leafWidth: number;
+  leafHeight: number;
 }
 
 interface PointerStart {
@@ -71,9 +76,12 @@ interface PointerStart {
   lastX: number;
   lastTime: number;
   progress: number;
+  contactX: number;
+  turnRadius: number;
   horizontal: boolean;
   direction: BookTurnDirection;
   leafWidth: number;
+  grabY: number;
   /** Frozen at pointerdown so a mid-gesture mode flip cannot corrupt the drag. */
   orientation: BookSurfaceOrientation;
 }
@@ -188,7 +196,11 @@ function OpenBookVolume({
   const turnRef = useRef<ActiveTurn | null>(null);
   const progressRef = useRef(0);
   /** Queued programmatic settle for when the turn leaf has not mounted yet. */
-  const pendingSettle = useRef<{ from: number; complete: boolean } | null>(null);
+  const pendingSettle = useRef<{
+    from: number;
+    complete: boolean;
+    releaseVelocity: number;
+  } | null>(null);
   const turnLeafRef = useRef<HTMLDivElement | null>(null);
   const frontFaceRef = useRef<HTMLDivElement | null>(null);
   const backFaceRef = useRef<HTMLDivElement | null>(null);
@@ -368,18 +380,35 @@ function OpenBookVolume({
     const active = turnRef.current;
     const leaf = turnLeafRef.current;
     if (!active || !leaf) return;
-    const sign = active.direction === "forward" ? -1 : 1;
-    // Depth comes from the parent perspective on .bk-spread, so the vanishing
-    // point stays fixed at the spine instead of following the leaf.
-    leaf.style.transform = `rotateY(${(180 * progress * sign).toFixed(3)}deg)`;
-    const shade = Math.sin(Math.PI * progress);
-    leaf.style.setProperty("--bk-shade", shade.toFixed(3));
+    const frame = getBookTurnFrame(
+      progress,
+      active.direction,
+      active.grabY,
+      active.leafWidth,
+      active.leafHeight,
+    );
+    // The spread owns perspective; the leaf adds only paper lift and torsion,
+    // keeping the vanishing point physically locked to the centre binding.
+    leaf.style.transform = [
+      `translate3d(0,${frame.translateYPx.toFixed(2)}px,${frame.liftPx.toFixed(2)}px)`,
+      `rotateY(${frame.angleDeg.toFixed(3)}deg)`,
+      `rotateX(${frame.twistDeg.toFixed(3)}deg)`,
+      `skewY(${frame.skewDeg.toFixed(3)}deg)`,
+      `scaleX(${frame.scaleX.toFixed(4)})`,
+    ].join(" ");
+    leaf.style.setProperty("--book-turn-shade", frame.shade.toFixed(3));
+    leaf.style.setProperty("--book-turn-specular", frame.specular.toFixed(3));
+    leaf.style.setProperty("--book-turn-sheen-x", `${((0.5 - frame.shade) * 8).toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-grab-y", `${frame.grabYPercent.toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-top-inset", `${frame.topInsetPercent.toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-bottom-inset", `${frame.bottomInsetPercent.toFixed(2)}%`);
+    leaf.style.setProperty("--book-turn-edge-radius", `${frame.edgeRadiusPx.toFixed(2)}px`);
     if (frontFaceRef.current) frontFaceRef.current.style.visibility = progress < 0.5 ? "visible" : "hidden";
     if (backFaceRef.current) backFaceRef.current.style.visibility = progress < 0.5 ? "hidden" : "visible";
     if (shadowRef.current) {
-      const foldCenter = 50 + (active.direction === "forward" ? 50 : -50) * Math.cos(Math.PI * progress);
-      shadowRef.current.style.left = `${foldCenter.toFixed(2)}%`;
-      shadowRef.current.style.opacity = (shade * 0.52).toFixed(3);
+      const shadowX = active.leafWidth * 2 * frame.shadowLeftPercent / 100;
+      shadowRef.current.style.transform = `translate3d(${shadowX.toFixed(2)}px,0,0) translateX(-50%) scaleX(${frame.shadowScaleX.toFixed(3)})`;
+      shadowRef.current.style.opacity = frame.shadowOpacity.toFixed(3);
     }
   }, []);
 
@@ -398,10 +427,16 @@ function OpenBookVolume({
   }, []);
 
   /** Eases the grabbed leaf the rest of the way (or back) at 60fps. */
-  const settleTurn = useCallback((fromProgress: number, complete: boolean) => {
+  const settleTurn = useCallback((
+    fromProgress: number,
+    complete: boolean,
+    releaseVelocity = 0,
+  ) => {
     if (settleFrame.current) window.cancelAnimationFrame(settleFrame.current);
     const target = complete ? 1 : 0;
-    const durationMs = reducedMotion ? 0 : getBookTurnSettleDuration(fromProgress, complete);
+    const durationMs = reducedMotion
+      ? 0
+      : getBookTurnSettleDuration(fromProgress, complete, releaseVelocity);
     if (durationMs <= 0 || Math.abs(target - fromProgress) < 0.002) {
       applyTurnFrame(target);
       finalizeTurn(complete);
@@ -410,8 +445,12 @@ function OpenBookVolume({
     const startedAt = performance.now();
     const tick = (now: number) => {
       const elapsed = clampNumber((now - startedAt) / durationMs, 0, 1);
-      const eased = 1 - Math.pow(1 - elapsed, 3);
-      const progress = fromProgress + (target - fromProgress) * eased;
+      const progress = getBookTurnSettleProgress(
+        elapsed,
+        fromProgress,
+        complete,
+        releaseVelocity,
+      );
       progressRef.current = progress;
       applyTurnFrame(progress);
       if (elapsed < 1) {
@@ -424,26 +463,43 @@ function OpenBookVolume({
     settleFrame.current = window.requestAnimationFrame(tick);
   }, [applyTurnFrame, finalizeTurn, reducedMotion]);
 
-  const beginTurn = useCallback((direction: BookTurnDirection, fromIndex: number, toIndex: number) => {
+  const beginTurn = useCallback((
+    direction: BookTurnDirection,
+    fromIndex: number,
+    toIndex: number,
+    grabY = 0.5,
+  ) => {
     turnLock.current = true;
-    const active: ActiveTurn = { direction, fromIndex, toIndex };
+    const volume = volumeRef.current;
+    const active: ActiveTurn = {
+      direction,
+      fromIndex,
+      toIndex,
+      grabY: clampNumber(grabY, 0.04, 0.96),
+      leafWidth: Math.max(1, (volume?.offsetWidth ?? volumeSize.width) / 2),
+      leafHeight: Math.max(1, volume?.offsetHeight ?? volumeSize.height),
+    };
     turnRef.current = active;
     progressRef.current = 0;
     setTurn(active);
-  }, []);
+  }, [volumeSize.height, volumeSize.width]);
 
   /** Runs the settle now, or queues it until the turn leaf mounts. */
-  const settleWhenReady = useCallback((fromProgress: number, complete: boolean) => {
+  const settleWhenReady = useCallback((
+    fromProgress: number,
+    complete: boolean,
+    releaseVelocity = 0,
+  ) => {
     if (turnLeafRef.current) {
-      settleTurn(fromProgress, complete);
+      settleTurn(fromProgress, complete, releaseVelocity);
       return;
     }
     // beginTurn's React commit has not mounted the leaf yet; bindTurnLeaf
     // flushes this queue so the animation always plays from its first frame.
-    pendingSettle.current = { from: fromProgress, complete };
+    pendingSettle.current = { from: fromProgress, complete, releaseVelocity };
   }, [settleTurn]);
 
-  const turnTo = (nextIndex: number, direction: BookTurnDirection) => {
+  const turnTo = (nextIndex: number, direction: BookTurnDirection, grabY = 0.5) => {
     if (
       turnLock.current ||
       !coverDone ||
@@ -457,12 +513,12 @@ function OpenBookVolume({
       return;
     }
 
-    beginTurn(direction, spreadIndex, nextIndex);
+    beginTurn(direction, spreadIndex, nextIndex, grabY);
     settleWhenReady(0, true);
   };
 
-  const stepSpread = (direction: BookTurnDirection) => {
-    turnTo(spreadIndex + (direction === "forward" ? 1 : -1), direction);
+  const stepSpread = (direction: BookTurnDirection, grabY = 0.5) => {
+    turnTo(spreadIndex + (direction === "forward" ? 1 : -1), direction, grabY);
   };
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
@@ -483,9 +539,12 @@ function OpenBookVolume({
       lastX: 0,
       lastTime: event.timeStamp,
       progress: 0,
+      contactX: local.x,
+      turnRadius: Math.max(1, volume.offsetWidth / 2),
       horizontal: false,
       direction: "forward",
       leafWidth: volume.offsetWidth / 2,
+      grabY: clampNumber(local.y / Math.max(1, volume.offsetHeight), 0.04, 0.96),
       orientation,
     };
   };
@@ -513,14 +572,27 @@ function OpenBookVolume({
       if (toIndex < 0 || toIndex >= spreads.length || turnLock.current) return;
       start.horizontal = true;
       start.direction = direction;
+      const halfWidth = Math.max(1, start.leafWidth);
+      start.turnRadius = clampNumber(
+        direction === "forward" ? start.contactX - halfWidth : halfWidth - start.contactX,
+        halfWidth * 0.32,
+        halfWidth,
+      );
       event.currentTarget.setPointerCapture(event.pointerId);
-      beginTurn(direction, spreadIndex, toIndex);
+      beginTurn(direction, spreadIndex, toIndex, start.grabY);
     }
 
     event.stopPropagation();
     start.lastX = deltaX;
     start.lastTime = event.timeStamp;
-    start.progress = getBookTurnProgress(deltaX, start.leafWidth, start.direction);
+    start.progress = getBookTurnProgressFromContact(deltaX, start.turnRadius, start.direction);
+    if (turnRef.current) {
+      turnRef.current.grabY = clampNumber(
+        start.grabY + deltaY / Math.max(1, turnRef.current.leafHeight),
+        0.04,
+        0.96,
+      );
+    }
     if (start.progress > 0.035) suppressClick.current = true;
     progressRef.current = start.progress;
     applyTurnFrame(start.progress);
@@ -561,11 +633,15 @@ function OpenBookVolume({
       const velocityX = Math.abs(releaseVelocity) > Math.abs(totalVelocity)
         ? releaseVelocity
         : totalVelocity;
-      const progress = getBookTurnProgress(deltaX, start.leafWidth, start.direction);
+      const progress = getBookTurnProgressFromContact(deltaX, start.turnRadius, start.direction);
       progressRef.current = progress;
       suppressClick.current = true;
       armClickSuppressionReset();
-      settleWhenReady(progress, shouldCompleteBookTurn(progress, velocityX, start.direction));
+      settleWhenReady(
+        progress,
+        shouldCompleteBookTurn(progress, velocityX, start.direction),
+        velocityX,
+      );
       return;
     }
 
@@ -575,8 +651,9 @@ function OpenBookVolume({
     const bounds = volume?.getBoundingClientRect();
     if (!volume || !bounds) return;
     const local = mapBookPointToLocal(event.clientX, event.clientY, bounds, start.orientation);
-    if (local.x < volume.offsetWidth * .18) stepSpread("backward");
-    if (local.x > volume.offsetWidth * .82) stepSpread("forward");
+    const grabY = clampNumber(local.y / Math.max(1, volume.offsetHeight), 0.04, 0.96);
+    if (local.x < volume.offsetWidth * .18) stepSpread("backward", grabY);
+    if (local.x > volume.offsetWidth * .82) stepSpread("forward", grabY);
   };
 
   const onPointerCancel = (event: PointerEvent<HTMLDivElement>) => {
@@ -627,18 +704,22 @@ function OpenBookVolume({
     const pending = pendingSettle.current;
     if (pending) {
       pendingSettle.current = null;
-      settleTurn(pending.from, pending.complete);
+      settleTurn(pending.from, pending.complete, pending.releaseVelocity);
     }
   }, [applyTurnFrame, settleTurn]);
 
   const currentSpread = spreads[spreadIndex] ?? spreads[0];
   const fromSpread = turn ? spreads[turn.fromIndex] ?? currentSpread : currentSpread;
   const toSpread = turn ? spreads[turn.toIndex] ?? currentSpread : currentSpread;
-  // The whole visible sheet (both pages) turns as one: the target spread waits
-  // underneath while the current spread flips away to reveal it, so the entire
-  // page turns instead of only the spine-side half-leaf.
+  // The target spread waits below one physical moving leaf. The opposite leaf
+  // is frozen above it until the turn completes, exactly matching a bound book.
   const baseSpread = turn ? toSpread : currentSpread;
-  const leafSpread = fromSpread;
+  const staticLeaf = turn?.direction === "forward" ? fromSpread[0] : fromSpread[1];
+  const staticSide = turn?.direction === "forward" ? "left" : "right";
+  const turningFront = turn?.direction === "forward" ? fromSpread[1] : fromSpread[0];
+  const turningBack = turn?.direction === "forward" ? toSpread[0] : toSpread[1];
+  const turningFrontSide = turn?.direction === "forward" ? "right" : "left";
+  const turningBackSide = turn?.direction === "forward" ? "left" : "right";
 
   return (
     <BookLandscapeGate embedded={embedded} onExit={onExit}>
@@ -692,6 +773,14 @@ function OpenBookVolume({
               <span className="bk-gutter" aria-hidden="true" />
               {turn && (
                 <>
+                  <div className={`bk-static-leaf bk-static-leaf--${staticSide}`} aria-hidden="true">
+                    <BookLeaf
+                      leaf={staticLeaf}
+                      side={staticSide}
+                      firstLeaf={false}
+                      decorative
+                    />
+                  </div>
                   <span
                     ref={shadowRef}
                     className={`bk-turn-shadow bk-turn-shadow--${turn.direction}`}
@@ -703,11 +792,21 @@ function OpenBookVolume({
                     aria-hidden="true"
                   >
                     <div ref={frontFaceRef} className="bk-turn-face bk-turn-face--front">
-                      <BookLeaf leaf={leafSpread[0]} side="left" firstLeaf={false} decorative />
-                      <BookLeaf leaf={leafSpread[1]} side="right" firstLeaf={false} decorative />
-                      <span className="bk-gutter" aria-hidden="true" />
+                      <BookLeaf
+                        leaf={turningFront}
+                        side={turningFrontSide}
+                        firstLeaf={false}
+                        decorative
+                      />
                     </div>
-                    <div ref={backFaceRef} className="bk-turn-face bk-turn-face--back" />
+                    <div ref={backFaceRef} className="bk-turn-face bk-turn-face--back">
+                      <BookLeaf
+                        leaf={turningBack}
+                        side={turningBackSide}
+                        firstLeaf={false}
+                        decorative
+                      />
+                    </div>
                   </div>
                 </>
               )}
@@ -798,27 +897,62 @@ function OpenBookVolume({
         .bk-frontispiece-mark{ font-size:clamp(1.1rem,3.5vw,2.5rem); }
         .bk-frontispiece strong{ max-width:82%; margin-top:7px; font-size:clamp(.62rem,1.4vw,1rem); line-height:1.3; text-wrap:balance; }
         .bk-frontispiece p{ max-width:84%; margin-top:8px; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; font-size:clamp(.42rem,.78vw,.6rem); letter-spacing:.12em; text-transform:uppercase; }
-        .bk-turn-leaf{
-          position:absolute; z-index:8; inset:0; width:100%; pointer-events:none;
-          transform-style:preserve-3d; will-change:transform;
+        .bk-static-leaf{
+          position:absolute; z-index:6; top:0; bottom:0; width:50%; overflow:hidden; pointer-events:none;
         }
-        .bk-turn-leaf--forward{ transform-origin:left center; }
-        .bk-turn-leaf--backward{ transform-origin:right center; }
+        .bk-static-leaf--left{ left:0; }
+        .bk-static-leaf--right{ left:50%; }
+        .bk-static-leaf .bk-leaf{ position:absolute; inset:0; width:100%; height:100%; }
+        .bk-turn-leaf{
+          position:absolute; z-index:8; top:0; bottom:0; width:50%; pointer-events:none;
+          transform-style:preserve-3d; will-change:transform,clip-path;
+          clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+        }
+        .bk-turn-leaf--forward{
+          left:50%; transform-origin:left center;
+          clip-path:polygon(
+            0 0,
+            calc(100% - var(--book-turn-top-inset,0%)) 0,
+            100% var(--book-turn-grab-y,50%),
+            calc(100% - var(--book-turn-bottom-inset,0%)) 100%,
+            0 100%
+          );
+        }
+        .bk-turn-leaf--backward{
+          left:0; transform-origin:right center;
+          clip-path:polygon(
+            var(--book-turn-top-inset,0%) 0,
+            100% 0,
+            100% 100%,
+            var(--book-turn-bottom-inset,0%) 100%,
+            0 var(--book-turn-grab-y,50%)
+          );
+        }
         .bk-turn-face{
-          position:absolute; inset:0; overflow:hidden; border-radius:3px 7px 7px 3px;
+          position:absolute; inset:0; overflow:hidden;
+          border-radius:3px var(--book-turn-edge-radius,7px) var(--book-turn-edge-radius,7px) 3px;
           backface-visibility:hidden; -webkit-backface-visibility:hidden;
         }
-        .bk-turn-face--front{ display:grid; grid-template-columns:1fr 1fr; transform:translateZ(.4px); }
-        .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.4px); background:linear-gradient(180deg,#f7eccf,#e8d6ac); }
-        .bk-turn-face--front .bk-leaf{ position:relative; inset:auto; width:auto; height:100%; }
-        .bk-turn-face--front::after,.bk-turn-face--back::after{
+        .bk-turn-leaf--backward .bk-turn-face{
+          border-radius:var(--book-turn-edge-radius,7px) 3px 3px var(--book-turn-edge-radius,7px);
+        }
+        .bk-turn-face--front{ transform:rotateY(0deg) translateZ(.65px); }
+        .bk-turn-face--back{ transform:rotateY(180deg) translateZ(.65px); background:linear-gradient(180deg,#f7eccf,#e8d6ac); }
+        .bk-turn-face .bk-leaf{ position:absolute; inset:0; width:100%; height:100%; }
+        .bk-turn-face::before,.bk-turn-face::after{
           content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply;
         }
-        .bk-turn-face--front::after{ opacity:calc(var(--bk-shade,0) * .5); background:linear-gradient(90deg,rgba(58,35,9,.22),transparent 26%,transparent 74%,rgba(58,35,9,.22)); }
-        .bk-turn-face--back::after{ opacity:calc(var(--bk-shade,0) * .6); background:linear-gradient(90deg,rgba(70,42,10,.2),transparent 38%,transparent 62%,rgba(70,42,10,.2)); }
+        .bk-turn-face::before{
+          z-index:3; opacity:calc(var(--book-turn-specular,0) * .58); mix-blend-mode:screen;
+          background:linear-gradient(102deg,transparent 29%,rgba(255,255,255,.04) 38%,rgba(255,250,226,.72) 49%,rgba(255,255,255,.08) 59%,transparent 70%);
+          transform:translateX(var(--book-turn-sheen-x,0%));
+        }
+        .bk-turn-face::after{ z-index:4; }
+        .bk-turn-face--front::after{ opacity:calc(var(--book-turn-shade,0) * .58); background:linear-gradient(90deg,rgba(58,35,9,.24),transparent 29%,transparent 72%,rgba(58,35,9,.2)); }
+        .bk-turn-face--back::after{ opacity:calc(var(--book-turn-shade,0) * .66); background:linear-gradient(90deg,rgba(70,42,10,.24),transparent 40%,transparent 64%,rgba(70,42,10,.19)); }
         .bk-turn-shadow{
-          position:absolute; z-index:7; top:0; bottom:0; width:22%; transform:translateX(-50%); pointer-events:none;
-          left:50%; opacity:0; will-change:left,opacity;
+          position:absolute; z-index:7; top:0; bottom:0; width:22%; pointer-events:none;
+          left:0; opacity:0; transform:translate3d(0,0,0) translateX(-50%); will-change:transform,opacity;
           background:radial-gradient(ellipse at 50% 50%,rgba(48,28,6,.5),rgba(48,28,6,.17) 36%,transparent 76%);
         }
         .bk-ribbon{ position:absolute; z-index:5; top:-2px; right:10%; width:clamp(8px,1.15vw,15px); height:clamp(42px,8vw,74px); pointer-events:none; background:linear-gradient(90deg,#741717,#a42d2d 48%,#741717); clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%); box-shadow:0 3px 5px rgba(0,0,0,.3); }
