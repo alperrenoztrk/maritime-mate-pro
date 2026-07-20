@@ -157,9 +157,9 @@ export async function prepareDocumentImage(file: File): Promise<PreparedImage> {
   return { blob, dataUrl, hash };
 }
 
-async function analyzeDocument(dataUrl: string, fileName: string): Promise<DocumentAnalysis> {
+async function analyzeDocument(dataUrl: string): Promise<DocumentAnalysis> {
   const { data, error } = await supabase.functions.invoke("analyze-maritime-document", {
-    body: { imageDataUrl: dataUrl, fileName },
+    body: { imageDataUrl: dataUrl },
   });
   if (error || !data?.analysis) {
     throw new DocumentTrackerError(
@@ -193,7 +193,7 @@ export async function createDocumentFromPhoto(
   }
 
   onStage?.("analyzing");
-  const analysis = await analyzeDocument(prepared.dataUrl, file.name);
+  const analysis = await analyzeDocument(prepared.dataUrl);
   const imagePath = `${userId}/${crypto.randomUUID()}.jpg`;
 
   onStage?.("uploading");
