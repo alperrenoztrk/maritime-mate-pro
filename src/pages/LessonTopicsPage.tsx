@@ -1,7 +1,9 @@
+import type { CSSProperties } from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { getTopicContentTitlesByCategory } from "@/data/topicContents";
-import { BookSheet } from "@/components/book/BookSheet";
+import { GraduationCap, BookOpen, FileText, Lightbulb, ChevronRight, ChevronDown } from "lucide-react";
 
 interface SubTopic {
   title: string;
@@ -582,12 +584,27 @@ export default function LessonTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = calculationCategories.find(c => c.id === categoryId);
   const topicContent = categoryId ? topicsData[categoryId] : null;
+  const [expandedTopics, setExpandedTopics] = useState<number[]>([]);
   const isNavigation = categoryId === "navigation";
   const contentTitles = getTopicContentTitlesByCategory(categoryId);
   const hasDerivedContent = contentTitles.size > 0;
 
+  const toggleTopic = (index: number) => {
+    setExpandedTopics(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    );
+  };
+
   const buildSubTopicLink = (subTopicTitle: string) =>
     categoryId ? `/lessons/${categoryId}/topics/${encodeURIComponent(subTopicTitle)}` : "#";
+
+  const highRefreshRateStyles: CSSProperties = {
+    ["--frame-rate" as string]: "120",
+    ["--animation-duration" as string]: "8.33ms",
+    ["--transition-duration" as string]: "16.67ms",
+  };
 
   const missingNavigationTopics = isNavigation && topicContent && hasDerivedContent
     ? topicContent.keyTopics
@@ -600,87 +617,202 @@ export default function LessonTopicsPage() {
   const missingNavigationCount = missingNavigationTopics.reduce((total, item) => total + item.missing.length, 0);
   if (!category || !topicContent) {
     return (
-      <BookSheet title="DERSLER">
-        <p className="bs-muted py-10 text-center text-sm italic">Kategori bulunamadı</p>
-      </BookSheet>
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <p className="text-muted-foreground">Kategori bulunamadı</p>
+      </div>
     );
   }
 
-  const hasAnySubTopics = topicContent.keyTopics.some(t => t.subTopics && t.subTopics.length > 0);
+  const CategoryIcon = category.icon;
 
   return (
-    <BookSheet title="DERSLER">
-      <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>{topicContent.title}</h1>
-      <div className="bs-fleuron" aria-hidden="true">❦</div>
+    <div
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      style={highRefreshRateStyles}
+    >
+      {/* Background effects */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
+      </div>
 
-      <p className="bs-muted mb-1 text-[11px] italic">
-        Ana Konular — {topicContent.keyTopics.length} başlık
-      </p>
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6">
+        {/* Header */}
+        <header className="space-y-4 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground backdrop-blur">
+            <GraduationCap className="h-4 w-4" />
+            Konu Anlatımı
+          </div>
+          
+          <div className="flex items-center justify-center gap-3">
+            <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}>
+              <CategoryIcon className="h-6 w-6" />
+            </div>
+            <h1 className="text-2xl font-bold text-foreground">{topicContent.title}</h1>
+          </div>
+        </header>
 
-      {hasAnySubTopics ? (
-        topicContent.keyTopics.map((topic, index) => {
-          const hasSubTopics = topic.subTopics && topic.subTopics.length > 0;
-          return (
-            <section key={index} className="bs-reading-section">
-              <h2 className="bs-chapter">{index + 1}. {topic.title}</h2>
-              <div className="bs-chapter-rule" />
+        {/* Key Topics */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-primary" />
+            <h2 className="text-lg font-semibold text-foreground">Ana Konular</h2>
+            {topicContent.keyTopics.some(t => t.subTopics && t.subTopics.length > 0) && (
+              <span className="ml-auto text-xs text-muted-foreground">
+                {topicContent.keyTopics.length} başlık
+              </span>
+            )}
+          </div>
+          
+          {/* Check if has subTopics - use different layout */}
+          {topicContent.keyTopics.some(t => t.subTopics && t.subTopics.length > 0) ? (
+            <div className="flex flex-col gap-3">
+          {topicContent.keyTopics.map((topic, index) => {
+                const isExpanded = expandedTopics.includes(index);
+                const hasSubTopics = topic.subTopics && topic.subTopics.length > 0;
+                
+                return (
+                  <div
+                    key={index}
+                    className="rounded-xl border border-border/40 bg-card/80 backdrop-blur transition-all overflow-hidden"
+                  >
+                    <button
+                      onClick={() => hasSubTopics && toggleTopic(index)}
+                      className={`w-full p-4 text-left transition-colors ${hasSubTopics ? 'cursor-pointer hover:bg-card' : 'cursor-default'}`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${category.accent} text-white text-sm font-bold`}>
+                          {index + 1}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <h3 className="font-semibold text-foreground">{topic.title}</h3>
+                            {hasSubTopics && (
+                              <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">
+                                {topic.subTopics!.length} alt başlık
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-1">{topic.description}</p>
+                        </div>
+                        {hasSubTopics && (
+                          <ChevronDown 
+                            className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} 
+                          />
+                        )}
+                      </div>
+                    </button>
+                    
+                    {hasSubTopics && isExpanded && (
+                      <div className="border-t border-border/40 bg-background/50 p-4">
+                        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                          {topic.subTopics!.map((sub, subIndex) => (
+                            (() => {
+                              const hasContent = hasDerivedContent ? contentTitles.has(sub.title) : sub.hasContent;
+                              return (
+                            <Link
+                              key={subIndex}
+                              to={buildSubTopicLink(sub.title)}
+                              className="flex items-center gap-2 rounded-lg border border-transparent bg-card/60 px-3 py-2 text-left text-sm transition-all hover:border-primary/30 hover:bg-primary/10"
+                            >
+                              <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                              <span className="text-foreground/90 flex-1">{sub.title}</span>
+                              {/* status badge removed per request */}
 
-              {hasSubTopics && (
-                <div className="pb-2">
-                  <p className="bs-muted pl-3 text-[11px] italic">{topic.description}</p>
-                  {topic.subTopics!.map((sub, subIndex) => (
-                    <Link key={subIndex} to={buildSubTopicLink(sub.title)} className="bs-entry">
-                      <span className="bs-entry-label">{sub.title}</span>
-                      <span className="bs-leader" aria-hidden="true" />
-                      <span className="bs-anchor" aria-hidden="true">⚓</span>
-                    </Link>
-                  ))}
+                              <ChevronRight className="h-3.5 w-3.5 text-primary/60" />
+                            </Link>
+                              );
+                            })()
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {topicContent.keyTopics.map((topic, index) => (
+                <div
+                  key={index}
+                  className="group rounded-xl border border-border/40 bg-card/80 p-4 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
+                >
+                  <div className="mb-2 flex items-center gap-2">
+                    <div className={`flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${category.accent} text-white text-xs font-bold`}>
+                      {index + 1}
+                    </div>
+                    <h3 className="font-medium text-foreground">{topic.title}</h3>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{topic.description}</p>
                 </div>
-              )}
-            </section>
-          );
-        })
-      ) : (
-        <div>
-          {topicContent.keyTopics.map((topic, index) => (
-            <div key={index} className="bs-entry" style={{ display: "block" }}>
-              <span className="font-semibold">{index + 1}. {topic.title}</span>
-              <span className="bs-muted block text-[11px] leading-relaxed">{topic.description}</span>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
+          )}
+        </section>
 
-      {isNavigation && missingNavigationCount > 0 && (
-        <div className="bs-callout">
-          <span className="bs-callout-label">Eksik Konular (Seyir) — {missingNavigationCount} başlık</span>
-          {missingNavigationTopics.map(item => (
-            <div key={item.title} className="mt-1">
-              <p className="font-semibold">{item.title}</p>
-              <ul className="ml-4 list-disc">
-                {item.missing.map(sub => (
-                  <li key={sub.title}>{sub.title}</li>
-                ))}
-              </ul>
+        {isNavigation && missingNavigationCount > 0 && (
+          <section className="rounded-2xl border border-amber-500/20 bg-amber-50/70 p-6 text-amber-900 backdrop-blur dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-100">
+            <div className="mb-4 flex items-center gap-2">
+              <Lightbulb className="h-5 w-5 text-amber-500" />
+              <h2 className="text-lg font-semibold">Eksik Konular (Seyir)</h2>
+              <span className="ml-auto rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
+                {missingNavigationCount} başlık
+              </span>
             </div>
-          ))}
-        </div>
-      )}
+            <div className="space-y-4 text-sm">
+              {missingNavigationTopics.map(item => (
+                <div key={item.title} className="rounded-xl border border-amber-200/60 bg-white/70 p-4 dark:border-amber-500/20 dark:bg-amber-500/10">
+                  <p className="font-semibold text-amber-800 dark:text-amber-100">{item.title}</p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-amber-800/90 dark:text-amber-100/90">
+                    {item.missing.map(sub => (
+                      <li key={sub.title}>{sub.title}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
-      <div className="bs-section">Hızlı Erişim</div>
-      {topicContent.resources.map((resource, index) => (
-        <Link key={index} to={resource.href} className="bs-entry">
-          <span className="bs-entry-label">{resource.title}</span>
-          <span className="bs-leader" aria-hidden="true" />
-          <span className="bs-anchor" aria-hidden="true">⚓</span>
-        </Link>
-      ))}
-      {topicContent.contentStandards && (
-        <p className="bs-muted mt-3 text-[11px] italic">
-          Her başlık en az {topicContent.contentStandards.minPagesPerTopic} sayfa olarak planlanır.
-          Görseller {topicContent.contentStandards.imageFormat} formatında hazırlanır.
-        </p>
-      )}
-    </BookSheet>
+        {/* Quick Links */}
+        <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur">
+          <div className="mb-4 flex items-center gap-2">
+            <Lightbulb className="h-5 w-5 text-primary" />
+            <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {topicContent.resources.map((resource, index) => (
+              <Link
+                key={index}
+                to={resource.href}
+                className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
+              >
+                <div className="flex items-center gap-2">
+                  <FileText className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium text-foreground">{resource.title}</span>
+                </div>
+                <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+              </Link>
+            ))}
+          </div>
+          {topicContent.contentStandards && (
+            <div className="mt-5 rounded-xl border border-border/40 bg-background/60 px-4 py-3 text-xs text-muted-foreground">
+              Her başlık en az{" "}
+              <span className="font-semibold text-foreground">
+                {topicContent.contentStandards.minPagesPerTopic}
+              </span>{" "}
+              sayfa olarak planlanır. Görseller{" "}
+              <span className="font-semibold text-foreground">
+                {topicContent.contentStandards.imageFormat}
+              </span>{" "}
+              formatında hazırlanır.
+            </div>
+          )}
+        </section>
+      </div>
+
+    </div>
   );
 }

@@ -2,7 +2,6 @@ import { useEffect, useCallback, useRef, useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
-import { isBookContentPath } from '@/lib/bookRoutes';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -10,9 +9,6 @@ type NavigationRule = {
 };
 
 const navigationRules: NavigationRule[] = [
-  // ── Kitap (İçindekiler) ────────────────────────────────────
-  { pattern: /^\/book$/, parent: () => '/' },
-
   // ── Lessons ────────────────────────────────────────────────
   {
     pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
@@ -23,12 +19,8 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/lessons',
   },
   {
-    pattern: /^\/lessons\/([^/]+)\/(formulas|calculations|rules|quiz)$/,
-    parent: (match) => `/lessons/${match[1]}/topics`,
-  },
-  {
     pattern: /^\/lessons$/,
-    parent: () => '/book',
+    parent: () => '/',
   },
 
   // ── Exercises (Alıştırmalar) ───────────────────────────────
@@ -42,37 +34,25 @@ const navigationRules: NavigationRule[] = [
   },
   { pattern: /^\/exercises\/([^/]+)\/topics$/, parent: () => '/exercises' },
   { pattern: /^\/exercises\/([^/]+)\/scenarios$/, parent: () => '/exercises' },
-  { pattern: /^\/exercises$/, parent: () => '/book' },
+  { pattern: /^\/exercises$/, parent: () => '/' },
 
   // ── Crew & Bridge ──────────────────────────────────────────
-  {
-    pattern: /^\/crew\/([^/]+)\/task\/([^/]+)$/,
-    parent: (match) => `/crew/${match[1]}`,
-  },
   { pattern: /^\/crew\/([^/]+)$/, parent: () => '/crew' },
-  { pattern: /^\/crew$/, parent: () => '/book' },
+  { pattern: /^\/crew$/, parent: () => '/' },
   { pattern: /^\/bridge\/([^/]+)$/, parent: () => '/bridge' },
-  { pattern: /^\/bridge$/, parent: () => '/book' },
+  { pattern: /^\/bridge$/, parent: () => '/' },
 
   // ── Ship Systems ───────────────────────────────────────────
-  {
-    pattern: /^\/ship-systems\/([^/]+)\/([^/]+)$/,
-    parent: (match) => `/ship-systems/${match[1]}`,
-  },
   { pattern: /^\/ship-systems\/([^/]+)$/, parent: () => '/ship-systems' },
-  { pattern: /^\/ship-systems$/, parent: () => '/book' },
+  { pattern: /^\/ship-systems$/, parent: () => '/' },
 
   // ── Ship Tasks ─────────────────────────────────────────────
   { pattern: /^\/ship-tasks\/([^/]+)$/, parent: () => '/ship-tasks' },
-  { pattern: /^\/ship-tasks$/, parent: () => '/book' },
+  { pattern: /^\/ship-tasks$/, parent: () => '/' },
 
   // ── Ship Operations ────────────────────────────────────────
-  {
-    pattern: /^\/ship-operations\/([^/]+)\/([^/]+)\/([^/]+)$/,
-    parent: (match) => `/ship-operations/${match[1]}`,
-  },
   { pattern: /^\/ship-operations\/([^/]+)$/, parent: () => '/ship-operations' },
-  { pattern: /^\/ship-operations$/, parent: () => '/book' },
+  { pattern: /^\/ship-operations$/, parent: () => '/' },
 
   // ── Machine: topic detayları ───────────────────────────────
   // /machine/<topic>/topics/<sub> → /machine/<topic>/topics
@@ -92,7 +72,7 @@ const navigationRules: NavigationRule[] = [
     parent: () => '/calculations',
   },
   { pattern: /^\/machine-calculations$/, parent: () => '/calculations' },
-  { pattern: /^\/machinery$/, parent: () => '/book' },
+  { pattern: /^\/machinery$/, parent: () => '/' },
 
   // ── Calculations hub ───────────────────────────────────────
   // /calculations/<cat>/<sec> → /calculations
@@ -100,7 +80,7 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
     parent: () => '/calculations',
   },
-  { pattern: /^\/calculations$/, parent: () => '/book' },
+  { pattern: /^\/calculations$/, parent: () => '/' },
 
   // ── Navigation (Seyir) ─────────────────────────────────────
   { pattern: /^\/navigation\/calc\/([^/]+)$/, parent: () => '/navigation' },
@@ -175,11 +155,7 @@ const navigationRules: NavigationRule[] = [
 
   // ── Regulations ────────────────────────────────────────────
   { pattern: /^\/regulations\/([^/]+)$/, parent: () => '/regulations' },
-  { pattern: /^\/regulations$/, parent: () => '/book' },
-
-  // ── Economics / Communication ──────────────────────────────
-  { pattern: /^\/economics\/(assistant|quiz)$/, parent: () => '/economics' },
-  { pattern: /^\/communication\/assistant$/, parent: () => '/calculations' },
+  { pattern: /^\/regulations$/, parent: () => '/' },
 
   // ── Diğer hesaplama sayfaları ──────────────────────────────
   { pattern: /^\/ballast$/, parent: () => '/calculations' },
@@ -206,10 +182,10 @@ const navigationRules: NavigationRule[] = [
   // ── Genel üst seviye ───────────────────────────────────────
   { pattern: /^\/settings$/, parent: () => '/' },
   { pattern: /^\/maritime-news$/, parent: () => '/' },
-  { pattern: /^\/passage-plan$/, parent: () => '/calculations' },
-  { pattern: /^\/glossary$/, parent: () => '/book' },
-  { pattern: /^\/exam-preparation$/, parent: () => '/book' },
-  { pattern: /^\/formulas$/, parent: () => '/book' },
+  { pattern: /^\/passage-plan$/, parent: () => '/' },
+  { pattern: /^\/glossary$/, parent: () => '/' },
+  { pattern: /^\/exam-preparation$/, parent: () => '/' },
+  { pattern: /^\/formulas$/, parent: () => '/' },
   { pattern: /^\/empty-page$/, parent: () => '/' },
 ];
 
@@ -225,9 +201,7 @@ export const findParentPath = (pathname: string): string => {
   const cached = parentPathCache.get(pathname);
   if (cached !== undefined) return cached;
 
-  // A newly added educational leaf must never fall out of the open book just
-  // because its more specific parent rule has not been added yet.
-  let result = isBookContentPath(pathname) ? '/book' : '/';
+  let result = '/';
   for (const rule of navigationRules) {
     const match = pathname.match(rule.pattern);
     if (match) {
@@ -401,5 +375,6 @@ export const useNavigationHierarchy = () => {
     [showExitDialog, closeExitDialog, confirmExit],
   );
 };
+
 
 
