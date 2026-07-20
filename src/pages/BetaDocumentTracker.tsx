@@ -230,7 +230,8 @@ export default function BetaDocumentTracker() {
   };
 
   const handleView = async (document: MaritimeDocumentRecord) => {
-    const popup = window.open("", "_blank", "noopener,noreferrer");
+    const popup = window.open("about:blank", "_blank");
+    if (popup) popup.opener = null;
     try {
       const url = await getDocumentImageUrl(document.image_path);
       if (popup) popup.location.href = url;
@@ -369,13 +370,12 @@ export default function BetaDocumentTracker() {
               {processing ? "Fotoğraflar işleniyor…" : "Belge fotoğrafını çekin veya galeriden seçin"}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              JPG, PNG, HEIC veya WebP · en fazla {MAX_DOCUMENT_FILES} fotoğraf
+              JPG, PNG veya WebP · en fazla {MAX_DOCUMENT_FILES} fotoğraf
             </p>
             <input
               ref={inputRef}
               type="file"
               accept="image/*"
-              capture="environment"
               multiple
               className="hidden"
               onChange={(event) => {
@@ -542,7 +542,7 @@ export default function BetaDocumentTracker() {
         </section>
 
         <footer className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3 text-[11px] text-muted-foreground">
-          Hatırlatmalar 180, 90, 30, 7 ve 1 gün kala; ayrıca son gün ve süre dolduğunda uygulamayı açtığınız gün gösterilir. Resmî geçerlilik kontrolünde daima belgenin aslını esas alın.
+          Hatırlatmalar 180, 90, 30, 7 ve 1 günlük aralıklara girildiğinde; ayrıca son gün ve süre dolduğunda bir kez gösterilir. Resmî geçerlilik kontrolünde daima belgenin aslını esas alın.
         </footer>
       </div>
     </div>
