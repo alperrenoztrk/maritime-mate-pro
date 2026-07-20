@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { Play } from "lucide-react";
+import { Lightbulb, Play } from "lucide-react";
 import { stripMarkdown } from "@/utils/cleanText";
 import { getBetaTopic } from "@/data/betaLessons";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
@@ -9,7 +9,6 @@ import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBl
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { LessonAITutor } from "@/components/lessons/LessonAITutor";
-import { BookSheet } from "@/components/book/BookSheet";
 
 /**
  * "Alıştırmalar" — konu detayı (güverte + makine, tüm konular).
@@ -25,9 +24,9 @@ export default function ExerciseTopicDetailPage() {
 
   if (!categoryId || !decodedTitle || !content) {
     return (
-      <BookSheet title="ALIŞTIRMALAR">
-        <p className="bs-muted py-10 text-center text-sm italic">Konu bulunamadı</p>
-      </BookSheet>
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <p className="text-muted-foreground">Konu bulunamadı</p>
+      </div>
     );
   }
 
@@ -52,25 +51,30 @@ export default function ExerciseTopicDetailPage() {
   ].join("\n");
 
   return (
-    <BookSheet title="ALIŞTIRMALAR">
-      <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>{content.title}</h1>
-      <p className="bs-muted mb-1 text-center text-[10px] italic">Beta</p>
-      <div className="bs-fleuron" aria-hidden="true">❦</div>
+    <div className="min-h-screen bg-background">
+      <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300">
+            Beta
+          </span>
+          <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
+        </div>
+      </div>
 
-      <div className="flex flex-col gap-6">
+      <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
         {content.introduction && (
-          <p className="bs-prose italic">{stripMarkdown(content.introduction)}</p>
+          <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
+            <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
+          </div>
         )}
 
-        <div className="text-center">
-          <Link
-            to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}/learn`}
-            className="bs-btn"
-          >
-            <Play className="h-4 w-4" />
-            {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
-          </Link>
-        </div>
+        <Link
+          to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}/learn`}
+          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+        >
+          <Play className="h-4 w-4" />
+          {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
+        </Link>
 
         {content.sections.map((section, index) => (
           <div key={`${section.title}-${index}`} className="space-y-6">
@@ -84,18 +88,26 @@ export default function ExerciseTopicDetailPage() {
         {enhancement && <LessonEnhancementBlock data={enhancement} />}
 
         {content.keyPoints && content.keyPoints.length > 0 && (
-          <div className="bs-callout">
-            <span className="bs-callout-label">Önemli Noktalar</span>
-            <ol className="ml-4 list-decimal">
+          <section className="rounded-xl border border-border/40 bg-card/60 p-5">
+            <div className="mb-4 flex items-center gap-2">
+              <Lightbulb className="h-5 w-5 text-amber-500" />
+              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
+            </div>
+            <ul className="space-y-2">
               {content.keyPoints.map((point, index) => (
-                <li key={`key-point-${index}`} className="my-1">{stripMarkdown(point)}</li>
+                <li key={`key-point-${index}`} className="flex items-start gap-3 text-sm text-foreground/80">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
+                    {index + 1}
+                  </span>
+                  <span>{stripMarkdown(point)}</span>
+                </li>
               ))}
-            </ol>
-          </div>
+            </ul>
+          </section>
         )}
 
         <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
       </div>
-    </BookSheet>
+    </div>
   );
 }

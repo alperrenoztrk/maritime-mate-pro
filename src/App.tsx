@@ -23,7 +23,6 @@ import { useFrameRate } from "@/hooks/useFrameRate";
 import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import { GlobalSearch } from "@/components/GlobalSearch";
-import { BookRouteFrame } from "@/components/book/BookRouteFrame";
 import { ProRoute } from "@/components/pro/ProRoute";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
@@ -31,7 +30,6 @@ import { ProRoute } from "@/components/pro/ProRoute";
 const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
-const BookPage = lazy(() => import("./pages/BookPage"));
 const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
 const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
 const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
@@ -219,12 +217,10 @@ const AnimatedRoutes = () => {
     <div className="hidden">
       <GlobalSearch />
     </div>
-    <BookRouteFrame pathname={location.pathname}>
-      <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait">
         <Suspense fallback={<RouteFallback />}>
         <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-        <Route path="/book" element={<PageTransition><BookPage /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
@@ -400,7 +396,6 @@ const AnimatedRoutes = () => {
         </Routes>
         </Suspense>
       </AnimatePresence>
-    </BookRouteFrame>
     </>
   );
 };
