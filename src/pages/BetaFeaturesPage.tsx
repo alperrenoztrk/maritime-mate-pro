@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
-import { FlaskConical, Clock4, ClipboardCheck, Ship } from "lucide-react";
+import { FlaskConical, Clock4, ClipboardCheck, Ship, BadgeCheck } from "lucide-react";
 
 const FEATURES = [
+  {
+    to: "/beta/documents",
+    title: "Belge ve Sertifika Takibi",
+    description:
+      "Belge fotoğrafını yapay zekâ ile analiz eder, geçerlilik tarihlerini özel hesabınızda saklar ve yaklaşan süreleri hatırlatır.",
+    icon: BadgeCheck,
+    badge: "Yeni",
+  },
   {
     to: "/beta/work-hours",
     title: "Otomatik Çalışma Saati Tablosu",
