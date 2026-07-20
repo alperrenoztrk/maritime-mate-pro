@@ -15,15 +15,17 @@ async function showDeviceNotification(title: string, body: string): Promise<void
 
   try {
     if ("serviceWorker" in navigator) {
-      const registration = await navigator.serviceWorker.ready;
-      await registration.showNotification(title, {
-        body,
-        icon: "/maritime-logo.svg",
-        badge: "/maritime-logo.svg",
-        tag: "maritime-document-expiry",
-        data: { url: "/beta/documents" },
-      });
-      return;
+      const registration = await navigator.serviceWorker.getRegistration();
+      if (registration) {
+        await registration.showNotification(title, {
+          body,
+          icon: "/maritime-logo.svg",
+          badge: "/maritime-logo.svg",
+          tag: "maritime-document-expiry",
+          data: { url: "/beta/documents" },
+        });
+        return;
+      }
     }
     new Notification(title, { body, icon: "/maritime-logo.svg", tag: "maritime-document-expiry" });
   } catch {
