@@ -16,8 +16,8 @@ export interface ExpiryState {
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-function utcDay(value: Date): number {
-  return Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate());
+function localCalendarDay(value: Date): number {
+  return Date.UTC(value.getFullYear(), value.getMonth(), value.getDate());
 }
 
 export function parseIsoDate(value: string | null | undefined): Date | null {
@@ -40,7 +40,12 @@ export function daysUntilExpiry(
 ): number | null {
   const expiry = parseIsoDate(expiryDate);
   if (!expiry) return null;
-  return Math.round((utcDay(expiry) - utcDay(now)) / DAY_MS);
+  const expiryDay = Date.UTC(
+    expiry.getUTCFullYear(),
+    expiry.getUTCMonth(),
+    expiry.getUTCDate(),
+  );
+  return Math.round((expiryDay - localCalendarDay(now)) / DAY_MS);
 }
 
 export function getDocumentExpiryState(
@@ -83,10 +88,21 @@ export function isReminderDue(
   reminderDays: readonly number[] = DOCUMENT_REMINDER_DAYS,
   now: Date = new Date(),
 ): boolean {
+  return getReminderMilestone(expiryDate, reminderDays, now) !== null;
+}
+
+export function getReminderMilestone(
+  expiryDate: string | null | undefined,
+  reminderDays: readonly number[] = DOCUMENT_REMINDER_DAYS,
+  now: Date = new Date(),
+): number | "expired" | null {
   const days = daysUntilExpiry(expiryDate, now);
-  if (days === null) return false;
-  if (days < 0) return true;
-  return reminderDays.some((threshold) => days <= threshold);
+  if (days === null) return null;
+  if (days < 0) return "expired";
+  const milestones = [...reminderDays]
+    .filter((value) => value >= 0)
+    .sort((a, b) => a - b);
+  return milestones.find((threshold) => days <= threshold) ?? null;
 }
 
 export function sortByExpiry<T extends { expiry_date: string | null; no_expiry: boolean }>(
