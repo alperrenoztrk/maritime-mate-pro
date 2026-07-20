@@ -21,8 +21,8 @@
 
   <g transform="translate(70,70)">
     <rect x="0" y="0" width="1060" height="560" rx="22" fill="url(#panel)" stroke="#334155" stroke-width="2"/>
-    <text x="34" y="60" class="title">Örnek Tide Table (HW/LW)</text>
-    <text x="34" y="94" class="muted">Bir liman/istasyon için günlük yüksek su (HW) ve alçak su (LW) saatleri ve yükseklikleri</text>
+    <text x="34" y="60" class="title">Ã–rnek Tide Table (HW/LW)</text>
+    <text x="34" y="94" class="muted">Bir liman/istasyon iÃ§in gÃ¼nlÃ¼k yÃ¼ksek su (HW) ve alÃ§ak su (LW) saatleri ve yÃ¼kseklikleri</text>
 
     <g transform="translate(34,140)">
       <rect x="0" y="0" width="992" height="64" rx="14" fill="#0f172a" stroke="#334155"/>
@@ -37,7 +37,7 @@
       <text x="18" y="41" class="cell">LW</text>
       <text x="240" y="41" class="cell">06:00</text>
       <text x="540" y="41" class="cell">1.2</text>
-      <text x="740" y="41" class="muted">Günün en dü_ük seviyesi</text>
+      <text x="740" y="41" class="muted">GÃ¼nÃ¼n en dÃ¼ÅŸÃ¼k seviyesi</text>
     </g>
 
     <g transform="translate(34,300)">
@@ -45,7 +45,7 @@
       <text x="18" y="41" class="cell">HW</text>
       <text x="240" y="41" class="cell">12:10</text>
       <text x="540" y="41" class="cell">4.8</text>
-      <text x="740" y="41" class="muted">Günün en yüksek seviyesi</text>
+      <text x="740" y="41" class="muted">GÃ¼nÃ¼n en yÃ¼ksek seviyesi</text>
     </g>
 
     <g transform="translate(34,380)">
@@ -53,7 +53,7 @@
       <text x="18" y="41" class="cell">LW</text>
       <text x="240" y="41" class="cell">18:25</text>
       <text x="540" y="41" class="cell">1.0</text>
-      <text x="740" y="41" class="muted">Bir sonraki alçak su</text>
+      <text x="740" y="41" class="muted">Bir sonraki alÃ§ak su</text>
     </g>
 
     <g transform="translate(34,460)">
@@ -61,18 +61,18 @@
       <text x="18" y="41" class="cell">HW</text>
       <text x="240" y="41" class="cell">00:35</text>
       <text x="540" y="41" class="cell">4.6</text>
-      <text x="740" y="41" class="muted">Ertesi günün ilk yüksek suyu</text>
+      <text x="740" y="41" class="muted">Ertesi gÃ¼nÃ¼n ilk yÃ¼ksek suyu</text>
     </g>
 
     <g transform="translate(34,542)">
       <rect x="0" y="0" width="992" height="0" stroke="#334155"/>
       <g transform="translate(0,18)">
         <rect x="0" y="0" width="392" height="44" rx="22" fill="#f59e0b"/>
-        <text x="18" y="30" class="chip">Manuel hesap için: LW/HW saat + yükseklik al</text>
+        <text x="18" y="30" class="chip">Manuel hesap iÃ§in: "LW/HW saat + yÃ¼kseklik" al</text>
       </g>
       <g transform="translate(410,18)">
         <rect x="0" y="0" width="582" height="44" rx="22" fill="#22c55e"/>
-        <text x="18" y="30" class="chip">Sonra: Range = HW  LW ve aradaki süreyi bul</text>
+        <text x="18" y="30" class="chip">Sonra: Range = HW &#8722; LW ve aradaki sÃ¼reyi bul</text>
       </g>
     </g>
   </g>

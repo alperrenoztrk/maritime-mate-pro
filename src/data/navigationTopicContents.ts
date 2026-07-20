@@ -8,7 +8,6 @@ const earthRotation = earthNightLights;
 const earthTilt = "/diagrams/navigation/eksen-egikligi.svg";
 const earthSeasons = "/diagrams/navigation/mevsimler.svg";
 const earthTimezone1 = "/diagrams/navigation/zaman-dilimleri.svg";
-const earthTimezone2 = "/diagrams/navigation/zaman-dilimleri.svg";
 
 
 // Coğrafi Koordinat Sistemi + Enlem — Tur 2: Teknik SVG diyagramlar (AI görseller değiştirildi)
@@ -52,11 +51,9 @@ import yonHeadingBearing from "@/assets/navigation/yon-heading-bearing.jpg";
 import yonDiagram1 from "@/assets/navigation/yon-diagram-1.jpg";
 import yonDiagram2 from "@/assets/navigation/yon-diagram-2.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
-import yonRadarMotion from "@/assets/navigation/yon-radar-motion.jpg";
 
 // Import images - Göksel Küre
 import celestialTriangle from "@/assets/navigation/celestial-triangle.svg";
-import azimuthalProjection from "@/assets/navigation/azimuthal-projection.svg";
 import enlemCelestial from "@/assets/navigation/enlem-celestial.png";
 import boylamCelestial from "@/assets/navigation/boylam-celestial.png";
 
@@ -75,11 +72,7 @@ import radarDisplay from "@/assets/navigation/radar-display.svg";
 import ecdisDisplay from "@/assets/navigation/ecdis-display.svg";
 import tideCurrent from "@/assets/navigation/tide-current.svg";
 import weatherSystems from "@/assets/navigation/weather-systems.svg";
-import aisTargets from "@/assets/navigation/ais-targets.svg";
-import navtexReceiver from "@/assets/navigation/navtex-receiver.svg";
 import autopilotControl from "@/assets/navigation/autopilot-control.svg";
-import vhfRadio from "@/assets/navigation/vhf-radio.svg";
-import safetyEquipment from "@/assets/navigation/safety-equipment.svg";
 import compassImg from "@/assets/navigation/compass.svg";
 import ialaLateralMarks from "@/assets/navigation/iala-lateral-marks.svg";
 import cardinalMarks from "@/assets/navigation/cardinal-marks.svg";
@@ -87,6 +80,7 @@ import safeWaterMark from "@/assets/navigation/safe-water-mark.svg";
 import isolatedDangerMark from "@/assets/navigation/isolated-danger-mark.svg";
 import greatCircleVsRhumb from "@/assets/navigation/great-circle-vs-rhumb.svg";
 import sextantSvg from "@/assets/navigation/sextant.svg";
+import ukcStack from "@/assets/tides/ukc-stack.svg";
 
 // Konuya özel diyagramlar — yanlış kullanılan dolgu görsellerin yerine (public/diagrams/navigation)
 const speedDistanceTime = "/diagrams/navigation/mesafe-hiz-zaman.svg";
@@ -204,8 +198,8 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Dünya'nın Şeklinin Seyir Hesaplarına Etkisi",
         content: "Dünya'nın basık küre olması nedeniyle farklı seyir yöntemleri kullanılır:",
-        image: earthTimezone2,
-        imageAlt: "Koordinat sistemi ve zaman dilimleri",
+        image: earthOblate,
+        imageAlt: "Dünya'nın basık küre (geoit) şekli",
         bulletPoints: [
           "Düzlem seyir yalnızca kısa mesafelerde geçerlidir",
           "Uzun mesafelerde orta enlem ve büyük daire seyri kullanılır",
@@ -1340,8 +1334,8 @@ Bu disiplin bozulduğunda, sayısal olarak doğru görünen ancak coğrafi olara
       {
         title: "Ölü Hesap ve Yön",
         content: "Yön kavramının düzlem seyirdeki en önemli işlevlerinden biri, mesafenin vektörel anlam kazanmasını sağlamasıdır. Geminin aldığı yol yalnızca kaç deniz mili olduğu ile değil, bu mesafenin hangi hakiki rota doğrultusunda alındığı ile anlamlıdır.",
-        image: yonRadarMotion,
-        imageAlt: "Radar ve hareket vektörleri",
+        image: deadReckoningPlot,
+        imageAlt: "Ölü hesap mevki çizimi ve rota vektörü",
         bulletPoints: [
           "Aynı mesafe farklı yönlerde alındığında tamamen farklı bir mevki ortaya çıkar",
           "Yön, ölü hesap mevkii belirlemenin ayrılmaz bir parçasıdır",
@@ -1876,13 +1870,13 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
       {
         title: "Chart Datum ve Gelgit Referansları",
         content: "Deniz haritalarında derinlikler belirli bir referans su seviyesine (chart datum) göre verilir. Bu referans, gelgit düzeyleriyle ilişkilidir ve harita kenarındaki datum notlarında belirtilir. Gelgit referansları doğru anlaşılmadan yapılan sığlık ve emniyet hesabı ciddi risk doğurabilir.",
-        image: tideCurrent,
+        image: chartDatumModel,
         imageAlt: "Gelgit seviyeleri ve chart datum ilişkisi"
       },
       {
         title: "Yatay ve Düşey Datum Ayrımı",
         content: "Datum kavramı yalnızca yatay koordinatları değil, düşey ölçümleri de etkiler. Yükseklikler ve derinlikler farklı düşey datumlara bağlıdır. Harita üzerinde verilen yükseklik ve derinliklerin hangi referansa göre ölçüldüğü net biçimde okunmalıdır.",
-        image: tideCurrent,
+        image: chartDatumModel,
         imageAlt: "Yatay ve düşey datumların gösterimi"
       },
       {
@@ -2715,7 +2709,7 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       {
         title: "İzole tehlike, emniyetli su ve özel işaretler",
         content: "İzole tehlike işareti, çevresinde dolaşılabilir su bulunan tekil bir tehlikeyi işaret eder; batık, kaya, sığlık gibi “noktadan” doğan riskler için kullanılır. Harita sembolünde bu işaret, tehlikenin üzerinde veya hemen yanında görülür ve ışık karakteri çoğu kez “Fl(2) W” şeklinde yazılır; iki beyaz çakar, gece ayırt etmenin en güçlü imzasıdır. Bu işaretin verdiği mesaj “burada tekil bir tehlike var, etrafı dolaşılabilir”dir; emniyetli taraf, yerel derinlik, izobatlar ve geminin draft’ı ile birlikte seçilir.",
-        image: sembolCardinalMarks,
+        image: sembolIsolatedDanger,
         imageAlt: "İzole tehlike işareti"
       },
       {
@@ -2767,8 +2761,8 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       {
         title: "AIS AtoN ve harita sembolleri",
         content: "Bu semboller elektronik seyirde mevki doğrulama ve hedef teşhisini güçlendirir; ancak yanlış yorumlandığında “radarda gördüğüm doğru şey mi” sorusunu yanıtsız bırakır ve hatalı teşhis zinciri oluşturur.",
-        image: sembolDangers,
-        imageAlt: "Harita sembolleri ve kısaltmalar örneği"
+        image: sembolRacon,
+        imageAlt: "RACON ve AIS AtoN harita sembolleri"
       },
       {
         title: "Tehlike sembolleri: kayalar, sığlıklar, batıklar",
@@ -8428,7 +8422,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
           text: "sin h = sin φ · sin δ + cos φ · cos δ · cos LHA",
           description: "h: yükseklik | φ: gözlemci enlemi | δ: deklinasyon | LHA: yerel saat açısı"
         },
-        image: azimuthalProjection,
+        image: celestialTriangle,
         imageAlt: "Göksel küre küresel üçgen geometrisi"
       },
       {
@@ -10278,7 +10272,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "ETA Hesabı: Temel Yöntem",
         content:
           "ETA hesabının temeli basittir: ETA = Kalkış Zamanı + (Kalan Mesafe / Ortalama SOG). Ancak pratikte bu hesap birçok düzeltme gerektirir. Tailwind ve favourable current SOG’u artırırken, headwind ve adverse current azaltır. Yüksek dalga ve ağır hava hız düşüşü ve dolayısıyla ETA gecikmesi yaratır.\n\nLiman yaklaşma süreci: kılavuz bekleme süresi, bölge geçiş hız kısıtlamaları, TSS içindeki rota uzaması ve demirde bekleme ihtimali ETA’ya eklenmesi gereken tampon süreleri oluşturur. Tidal window bazı limanlarda giriş için belirli gelgit zamanı gerektirir; bu pencere ETA’nın en kritik kısıtı olabilir.",
-        image: chartPlotting,
+        image: etaDiagram,
         imageAlt: "ETA hesabı ve sefer planlaması",
         formula: {
           text: "ETA = ETD + (D / SOGort) + Kılavuz bekleme + TSS gecikmesi",
@@ -10315,7 +10309,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "Dönüş Manevrası Parametreleri",
         content:
           "Bir geminin dönüş davranışı birkaç temel parametreyle tanımlanır. Advance (ilerleme): dönüş emri verildiği andan, geminin yeni başlıktan 90° dönmesine kadar geçen sürede orijinal rota yönünde kat edilen mesafe. Transfer: aynı aşamada orijinal rota çizgisinin enine geçilen mesafe. Tactical Diameter: 180° dönüş tamamlandığında orijinal rota çizgisinden enine uzaklık – bu değer genellikle dönüş için kritik meydan gereksinimini belirler.\n\nWaypoint alternatifi olan Steady Turning Radius (sabit dönüş yarıçapı): gemi tam dönüş tamamlandığında izlediği dairesel yayın yarıçapı. Tactical diameter, genellikle steady turning radius'un iki katına yakındır. Gemi manevralar kitapçığında (ship's manoeuvring booklet) bu değerler farklı hız ve dümen açısı için tablo olarak verilir.",
-        image: autopilotControl,
+        image: "/diagrams/navigation/donus-dairesi.svg",
         imageAlt: "Dönüş yarıçapı, advance, transfer ve tactical diameter",
         formula: {
           text: "Wheel-over point mesafesi ≈ Advance | Güvenli mesafe = Turn Radius + emniyet payı",
@@ -10711,7 +10705,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "UKC Hesabının Bileşenleri",
         content:
           "Bir UKC hesabının tam doğruluğu için şu bileşenler göz önüne alınmalıdır:\n\n(1) Harita derinliği (chart sounding): datum’a göre haritadaki değer.\n(2) Gelgit yüksekliği (height of tide): hesaplama anında suyun datumdan yüksekliği.\n(3) Gemi draftı: genellikle orta kesitteki maksimum; trim düzeltmesi gerekebilir.\n(4) Squat: hızdan kaynaklanan dinamik batma – ilerleyen bölümde ayrıntılı ele alınır.\n(5) Hava kabarması (wave allowance veya swell allowance): özellikle açık denizde swell etkisiyle gemi hareket eder; bu hareket anlık draftı artırır.\n(6) Balast ve akıntı değişkeni: transit sırasında balast veya yakıt tüketimi draftı değiştirebilir.",
-        image: safetyEquipment,
+        image: ukcStack,
         imageAlt: "UKC bileşenleri: harita derinliği, gelgit, draft ve squat",
         formula: {
           text: "UKC = (Harita derinliği + Gelgit yüksekliği) − (Draft + Squat + Hava kabarması payı)",
@@ -11053,8 +11047,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "Appraisal'da Kontrol Edilecek Kaynaklar",
         content:
           "Haritalar ve yayınlar: Rota boyunca tüm haritaların güncel olup olmadığı kontrol edilir. Güncellik iki şekilde sağlanır: basım sonrası kağıt haritalar için Notice to Mariners (NtM) düzeltmeleri uygulanmış olmalı; ECDIS için ENC güncellemeleri yapılmış olmalıdır. Ocean Pilot Books (Sailing Directions), Admiralty List of Lights, List of Radio Signals, ALRS (Admiralty List of Radio Signals), Tide Tables ve Tidal Atlas bu aşamada incelenir.\n\nMeteoroloji: Kalkış tarihi için ve transit süresince beklenen hava tahminleri, pilot charts ve synoptik haritalar değerlendirilir. Tropikal siklon sezonunun aktif olup olmadığı ve bölgede uyarı olup olmadığı kontrol edilir. Özellikle uzun seferler için çoklu tahmin kaynakları karşılaştırılır.",
-        image: navtexReceiver,
-        imageAlt: "Appraisal: kaynaklar ve bilgi kontrolü"
+        image: chartPlotting,
+        imageAlt: "Appraisal: harita ve yayınların kontrolü"
       },
       {
         title: "Gemi ve Rota Kısıtlamalarının Değerlendirilmesi",
@@ -11185,7 +11179,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "Squat Hesabı: Barras Formülü ve Basit Yaklaşım",
         content:
           "Squat hesabı için birçok ampirik formül geliştirilmiştir. Barras formülü, denizcilik sektöründe en yaygın kullanılan yöntemdir:\n\nS = Cb × V² / 100\n\nBurada S = squat (metre), Cb = block katsayısı (geminin doluluk oranı; tipik olarak bulk carrier ve tanker için 0.75–0.85, konteyner gemisi için 0.60–0.70), V = geminin hızı (knot cinsinden). Bu formül, açık sular için geçerlidir; kanallarda düzeltme faktörü uygulanır.\n\nÖrnek: Cb = 0.80, V = 8 knot → S = 0.80 × 64 / 100 = 0.51 metre. Gemi hızını 10 knot'a çıkarırsa squat = 0.80 × 100 / 100 = 0.80 metre. Hız %25 arttığında squat %57 artar – hızın karesel etkisi çok belirgindir.",
-        image: safetyEquipment,
+        image: ukcStack,
         imageAlt: "Squat etkisi ve UKC hesabı",
         formula: {
           text: "S = Cb × V² / 100 (Barras formülü, açık su) | Kanal içi: Skanal = S × (1 + As/Ac)",
@@ -11222,8 +11216,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "BRM’nin Temel Bileşenleri: Liderlik, İletişim ve Durumsal Farkındalık",
         content:
           "BRM’nin çekirdeğinde üç temel bileşen bulunur: liderlik ve otorite yönetimi, açık ve net iletişim ile sürekli durumsal farkındalık. Liderlik açısından kaptan, köprüüstü ekibini yönlendiren ve nihai kararı veren kişidir; ancak etkili bir lider, ast görüşlerini aktif olarak talep eder ve otorite gradyanının (otorite farkının) aşırı büyümesine izin vermez. Aşırı otorite gradyanı, ast personelin kritik bilgileri bildirememesine yol açarak kazalara zemin hazırlar. İletişimde standart terminoloji ve kapalı döngü doğrulama (read-back/hear-back) prensibi esastır: verilen her talimat tekrar edilmeli ve onaylanmalıdır. Durumsal farkındalık ise ekibin gemi konumu, trafik, meteoroloji ve seyir planı hakkında ortak bir zihinsel model paylaşmasıdır; bu model bozulduğunda ‘durumsal farkındalık kaybı’ yaşanır ve büyük kazaların en yaygın öncüsüdür.",
-        image: vhfRadio,
-        imageAlt: "BRM iletişimi ve köprüüstü koordinasyonu",
+        image: "/diagrams/navigation/brm-bilesenleri.svg",
+        imageAlt: "BRM bileşenleri: liderlik, iletişim, durumsal farkındalık",
         bulletPoints: [
           "Kapalı döngü iletişim: her talimat tekrar edilip onaylanır",
           "Otorite gradyanı yönetimi: ast personelin sesinin duyulması sağlanır",
@@ -11284,8 +11278,6 @@ Kesişim noktası = Running Fix (10:30)
         title: "PSC Denetim Süreci ve Hukuki Dayanak",
         content:
           "PSC müfettişi, gemiye çıkışından itibaren kaptan ve kıdemli zabitten sertifikaları, güvenlik belgeleri ve önemli kayıtları talep eder. SOLAS Bölüm V'in 34. Kuralı uyarınca her sefer için seyir planı hazırlanmış olmalı ve köprüüstünde erişilebilir konumda bulunmalıdır. Denetim iki aşamada gerçekleşir: ilk aşamada sertifikalar ve belgeler kontrol edilir (belge denetimi); ikinci aşamada fiziksel ekipman, prosedür ve kayıtlar incelenir (ayrıntılı denetim). Paris MOU kriterlerine göre yüksek risk profili taşıyan gemiler — bayrak, sınıflandırma geçmişi ve önceki detention sayısına göre — daha sık ve daha kapsamlı denetime tabi tutulur. Eksiklikler 'deficiency' olarak kayıt altına alınır; belirli eşiği aşan veya emniyet açısından kritik eksiklikler detention ile sonuçlanır.",
-        image: safetyEquipment,
-        imageAlt: "PSC denetimi ve köprüüstü kontrolleri",
         bulletPoints: [
           "SOLAS V/34: her sefer için seyir planı zorunludur, köprüüstünde bulunmalıdır",
           "Müfettiş köprüüstünü ziyaret ederek ECDIS/kağıt harita kullanımını, alarm yönetimini ve seyir planı detaylarını inceler",
@@ -11346,8 +11338,8 @@ Kesişim noktası = Running Fix (10:30)
         title: "Kural 5: Gözcülük ve Kural 6: Güvenli Hız",
         content:
           "Kural 5, geminin görme ve işitme dahil mevcut tüm araçlarla sürekli ve etkin gözcülük yapmasını zorunlu kılar; ARPA ve AIS bu araçların başında gelir, ancak bunların salt teknolojik çıktısına dayanmak yetersizdir. 'Sürekli' gözcülük, vardiya zabiti dahil tüm köprüüstü personelinin durumsal farkındalık içinde kalmasını gerektirir. Kural 6 ise her koşulda 'güvenli hız' uygulanması zorunluluğunu getirir; güvenli hız, geminin mevcut görüş, trafik yoğunluğu, rüzgâr, akıntı ve su derinliğini dikkate alarak tam durdurma mesafesi (stopping distance) içinde kalabileceği azami hızdır. Tam manevra kabiliyeti (full maneuverability) olmayan gemilerde — draft kısıtlaması, makine arızası — güvenli hız buna göre düşürülür. Kısıtlı görüşte güvenli hız özellikle önem kazanır: Kural 19(b) radar menzili ile orantılı hız yapılmasını açıkça zorunlu tutar.",
-        image: aisTargets,
-        imageAlt: "COLREG gözcülük ve güvenli hız",
+        image: "/diagrams/navigation/kural5-gozculuk.svg",
+        imageAlt: "COLREG Kural 5 gözcülük ve Kural 6 güvenli hız",
         bulletPoints: [
           "Kural 5: görme, işitme, radar ve AIS ile sürekli ve etkin gözcülük zorunludur",
           "Kural 6: güvenli hız; görüş, trafik, manevra kabiliyeti ve deniz durumuna göre belirlenir",
@@ -11483,7 +11475,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "COLREG Kural 15: Temel Tanım ve Yükümlülükler",
         content:
           "Kural 15 yalnızca iki motorlu gemi arasında uygulanır ve şunu belirtir: çatışma riski varsa, diğer gemiye kendi sancak tarafından sahip olan gemi yol verme yükümlülüğündedir (give-way vessel). Kural 15'in uygulanabilmesi için crossing senaryosunun önce tanımlanması gerekir: iki geminin rotaları kesişmeli ve Kural 14 (head-on) ile Kural 13 (overtaking) koşulları geçerli olmamalıdır. Give-way gemisi, diğerinin kıçından geçerek manevra yapmalıdır — pratikte bu büyük çoğunlukla sancağa dönüp diğerinin kıçından geçmek anlamına gelir. Stand-on gemisi ise rotasını ve hızını korumalı; ancak çatışma tehlikesi son ana kadar yaklaştığında Kural 17(b) kapsamında harekete geçmek zorunda kalabilir.",
-        image: aisTargets,
+        image: "/diagrams/navigation/kural15-aykiri-gecis.svg",
         imageAlt: "Crossing — COLREG Kural 15 yol verme senaryosu",
         bulletPoints: [
           "Sancak tarafında bulunan gemiye yol verilir: 'The vessel which has the other on her starboard side shall keep out of the way'",
@@ -11533,7 +11525,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "COLREG Kural 14: Tanım ve Koşullar",
         content:
           "Kural 14(a) şunu belirtir: iki motorlu gemi karşılıklı veya neredeyse karşılıklı rotalarda birbirlerine yaklaşıyorsa çatışma riski oluşur ve her iki gemi de sancağa dönmelidir. Kural 14(b) ise head-on durumunun pratik tanımını yapar: gece boyundan gemi feneri (masthead light) ile yan fenerin aynı anda karşıdan görülmesi; gündüzleri ise geminin diğerinin rotasına tam veya neredeyse tam karşı yönde olması. Kural 14(c) kritik bir hüküm içerir: şüphe halinde head-on durumunun var olduğu varsayılmalıdır. Bu varsayım ilkesi, belirsiz durumlarda her iki geminin de sancağa dönmesini güvenceye alır ve yanlış yorumdan kaynaklanan çatışma riskini büyük ölçüde azaltır.",
-        image: aisTargets,
+        image: "/diagrams/navigation/kural14-pruva-pruvaya.svg",
         imageAlt: "Head-on — Kural 14 karşılıklı yaklaşma senaryosu",
         bulletPoints: [
           "Head-on tanımı: iki motorlu gemi karşılıklı rotalarda birbirine yaklaşıyorsa",
@@ -11583,7 +11575,7 @@ Kesişim noktası = Running Fix (10:30)
         title: "COLREG Kural 13: Tanım ve Sınırlar",
         content:
           "Kural 13(b) overtaking’i geometrik olarak tanımlar: bir gemi, diğerine kemere hattının (beam) 22.5°’den daha gerisinden — yani yalnızca kıç fenerini (sternlight, 135° kapsam alanı) görebileceği bir doğrultudan — yaklaşıyorsa overtaking durumu söz konusudur. Geceleri bu, diğer geminin yan fenerlerini değil yalnızca kıç fenerini görmek demektir; gündüzleri ise kemerenin 22.5° kıçından daha geriden yaklaşmak anlamına gelir. Kural 13(c) ise kritik bir hüküm içerir: overtaking durumundan şüphe edildikçe, gemi overtaking durumunda olduğunu varsaymalıdır. Kural 13(d) ise geçme manevrası başladıktan sonra iki geminin konumsal ilişkisi crossing konumuna geçse bile Kural 13’ün geçerliliğini koruduğunu açıklar — böylece overtaking gemisi kural değiştirme yoluyla sorumluluğu üzerinden atamaz.",
-        image: aisTargets,
+        image: "/diagrams/navigation/kural13-yetisme.svg",
         imageAlt: "Overtaking — Kural 13 geçme manevrası senaryosu",
         bulletPoints: [
           "Kural 13(b): kıç ışığının 135° yayı içinden yaklaşma = overtaking",
@@ -11956,8 +11948,6 @@ Kesişim noktası = Running Fix (10:30)
         title: "Vaka 1: MV Bright Field – Mississippi Nehri, 1996",
         content:
           "Panama bandıralı bulk carrier Bright Field, Mississippi Nehri'nde seyir ederken makine arızası yaşadı ve akıntının etkisiyle New Orleans rıhtımına çarptı; 116 kişi yaralandı. Soruşturma; makine bakımındaki sistemik yetersizlikleri, kaptan ile makine zabiti arasındaki iletişim eksikliğini ve acil durum tatbikatlarının yetersizliğini tespit etti. Bu vaka, 'kıyı seyri güvenlidir' varsayımının dar sularda ve akıntılı kanallarda nasıl yanlış olduğunu ve makine arızası senaryosu için köprüüstü-makine koordinasyon planlamasının kritikliğini gözler önüne serdi. ISM Kodu'nun zorunlu hale getirilmesinde bu türden vakalar belirleyici rol oynadı.",
-        image: aisTargets,
-        imageAlt: "Çatışma kazası analizi — vaka incelemeleri",
         bulletPoints: [
           "İhlal edilen kural: Kural 5 (gözcülük) ve Kural 6 (güvenli hız dar sularda)",
           "Temel neden: makine bakım yetersizliği + köprüüstü-makine iletişim kopukluğu",
@@ -12018,8 +12008,6 @@ Kesişim noktası = Running Fix (10:30)
         title: "Neden (Root Cause) Analizi: Kök Neden Tespiti",
         content:
           "Kök neden analizi, yüzeysel hatanın (active failure) arkasındaki sistemik zayıflıkları (latent failure) ortaya çıkarmayı hedefler. '5 Neden Tekniği' (5 Whys), kök nedene ulaşmak için her bir hatanın nedenini beş katmana kadar sorgular. Örnek: Çatışma neden oldu? → Gemi rotayı değiştirmedi. Neden? → Gözcü uyarı vermedi. Neden? → Radarı izlemiyordu. Neden? → İş yükü aşırıydı. Neden? → Vardiya organizasyonu yetersizdi. Kök neden: vardiya planlaması ve köprüüstü organizasyonu. Bu teknik, tek bir kişiyi suçlamak yerine sistemin tasarımındaki boşlukları hedef alır — bu nedenle IMO'nun 'just culture' (adil kültür) anlayışıyla da uyumludur.",
-        image: aisTargets,
-        imageAlt: "Neden-sonuç-ihlal-önlem sistematik analiz çerçevesi",
         bulletPoints: [
           "5 Neden Tekniği: yüzey hatadan kök nedene kadar her katmanı sorgula",
           "Active failure: doğrudan hatayı yapan kişinin eylemi veya eylemsizliği",

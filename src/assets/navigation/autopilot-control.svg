@@ -46,7 +46,7 @@
 
       <!-- heading readout -->
       <rect x="382" y="408" width="176" height="84" rx="18" fill="#111827" stroke="#334155" stroke-width="3"/>
-      <text x="470" y="462" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="42" font-weight="900" fill="#E0F2FE">078°</text>
+      <text x="470" y="462" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="42" font-weight="900" fill="#E0F2FE">078Â°</text>
     </g>
 
     <!-- mode buttons -->
