@@ -22,7 +22,6 @@ const ALLOWED_IMAGE = /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=\r\n]+
 
 interface RequestBody {
   imageDataUrl: string;
-  fileName?: string;
 }
 
 interface RawAnalysis {
@@ -107,7 +106,7 @@ function parseToolCall(payload: unknown): RawAnalysis | null {
   return null;
 }
 
-async function analyze(imageDataUrl: string, fileName?: string): Promise<RawAnalysis> {
+async function analyze(imageDataUrl: string): Promise<RawAnalysis> {
   const apiKey = Deno.env.get("LOVABLE_API_KEY");
   if (!apiKey) throw new Error("LOVABLE_API_KEY missing");
 
@@ -132,7 +131,7 @@ async function analyze(imageDataUrl: string, fileName?: string): Promise<RawAnal
           content: [
             {
               type: "text",
-              text: `Analyze this single document photo${fileName ? ` (${fileName.slice(0, 120)})` : ""}. Extract document identity and validity dates. Keep dateEvidence short and quote only the visible date label/value needed to verify the expiry.`,
+              text: "Analyze this single document photo. Extract document identity and validity dates. Keep dateEvidence short and quote only the visible date label/value needed to verify the expiry.",
             },
             { type: "image_url", image_url: { url: imageDataUrl } },
           ],
@@ -225,7 +224,7 @@ Deno.serve(async (req) => {
     const quota = await consumeAiQuota(service, auth.user.id);
     if (!quota.allowed) return quotaExceededResponse(cors, quota);
 
-    const analysis = normalizeAnalysis(await analyze(body.imageDataUrl, body.fileName));
+    const analysis = normalizeAnalysis(await analyze(body.imageDataUrl));
     return new Response(
       JSON.stringify({
         analysis,
