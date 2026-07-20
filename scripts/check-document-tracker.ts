@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   daysUntilExpiry,
   getDocumentExpiryState,
+  getReminderMilestone,
   isReminderDue,
   parseIsoDate,
   sortByExpiry,
@@ -26,6 +27,9 @@ assert.equal(getDocumentExpiryState("2027-01-17", false, now).status, "valid");
 assert.equal(isReminderDue("2027-01-16", undefined, now), true, "180-day reminder must trigger");
 assert.equal(isReminderDue("2027-01-17", undefined, now), false, "181 days must not trigger");
 assert.equal(isReminderDue(null, undefined, now), false, "unknown dates must not trigger");
+assert.equal(getReminderMilestone("2027-01-11", undefined, now), 180);
+assert.equal(getReminderMilestone("2026-10-10", undefined, now), 90);
+assert.equal(getReminderMilestone("2026-07-19", undefined, now), "expired");
 
 const sorted = sortByExpiry(
   [
