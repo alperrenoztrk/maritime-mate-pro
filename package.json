@@ -29,6 +29,7 @@
     "check:topic-coverage": "node scripts/check-topic-coverage.mjs",
     "check:topic-schema": "node scripts/check-topic-content-schema.mjs",
     "check:ship-systems": "node scripts/check-ship-systems.mjs",
+    "check:document-tracker": "npx tsx scripts/check-document-tracker.ts",
     "check:ux-consistency": "node scripts/check-ux-consistency.mjs",
     "check:book-routes": "npx tsx scripts/check-book-routes.ts && npx tsx scripts/render-book-frame-check.tsx && npx tsx scripts/check-book-reading-mode.ts && npx tsx scripts/check-book-page-turn.ts && npx tsx scripts/check-book-library.ts",
     "check:book-turn": "npx tsx scripts/check-book-page-turn.ts",

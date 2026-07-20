@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { GlobalMaritimeBackground } from "@/components/GlobalMaritimeBackground";
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
+import { DocumentExpiryNotifier } from "@/components/documents/DocumentExpiryNotifier";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
@@ -193,6 +194,7 @@ const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
 const BetaWorkHoursTool = lazy(() => import("./pages/BetaWorkHoursTool"));
 const BetaPscChecklist = lazy(() => import("./pages/BetaPscChecklist"));
 const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
+const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
 const queryClient = new QueryClient();
 
 const RouteFallback = () => (
@@ -232,6 +234,7 @@ const AnimatedRoutes = () => {
         <Route path="/beta/work-hours" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaWorkHoursTool /></PageTransition></ProRoute>} />
         <Route path="/beta/psc-checklist" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaPscChecklist /></PageTransition></ProRoute>} />
         <Route path="/beta/ship-simulator" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaShipSimulator /></PageTransition></ProRoute>} />
+        <Route path="/beta/documents" element={<ProRoute feature="Belge ve sertifika takibi"><PageTransition><BetaDocumentTracker /></PageTransition></ProRoute>} />
 
 
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
@@ -431,6 +434,7 @@ const App = () => {
                 <DensityProvider>
                   <FontSizeProvider>
                     <Toaster />
+                    <DocumentExpiryNotifier />
                     <AskAIPopup />
                     <LanguageChangeOverlay />
                     <GlobalMaritimeBackground />
