@@ -2,15 +2,12 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
 import { safeLocalStorage } from "@/lib/safeStorage";
-import { getDocumentExpiryState, isReminderDue, sortByExpiry } from "@/lib/documentExpiry";
+import {
+  getDocumentExpiryState,
+  getReminderMilestone,
+  sortByExpiry,
+} from "@/lib/documentExpiry";
 import { fetchDocuments } from "@/services/documentTracker";
-
-function localDateKey(now = new Date()): string {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
 
 async function showDeviceNotification(title: string, body: string): Promise<void> {
   if (typeof window === "undefined" || !("Notification" in window)) return;
@@ -36,27 +33,26 @@ async function showDeviceNotification(title: string, body: string): Promise<void
 
 export function DocumentExpiryNotifier() {
   const { user, loading } = useAuth();
+  const userId = user?.id;
 
   useEffect(() => {
-    if (loading || !user) return;
+    if (loading || !userId) return;
     let cancelled = false;
 
     const notify = async () => {
-      const storageKey = `maritime-document-reminder:${user.id}:${localDateKey()}`;
-      if (safeLocalStorage.getItem(storageKey)) return;
-
       try {
-        const allDocuments = await fetchDocuments(user.id);
+        const allDocuments = await fetchDocuments(userId);
         if (cancelled) return;
         const due = sortByExpiry(
-          allDocuments.filter((document) =>
-            !document.no_expiry && isReminderDue(document.expiry_date),
-          ),
+          allDocuments.filter((document) => {
+            if (document.no_expiry) return false;
+            const milestone = getReminderMilestone(document.expiry_date);
+            if (milestone === null) return false;
+            const key = `maritime-document-reminder:${userId}:${document.id}:${milestone}`;
+            return safeLocalStorage.getItem(key) !== "shown";
+          }),
         );
-        if (!due.length) {
-          safeLocalStorage.setItem(storageKey, "none");
-          return;
-        }
+        if (!due.length) return;
 
         const first = due[0];
         const firstState = getDocumentExpiryState(first.expiry_date, first.no_expiry);
@@ -72,7 +68,15 @@ export function DocumentExpiryNotifier() {
           },
         });
         await showDeviceNotification("Mariner's Book — Belge hatırlatması", body);
-        safeLocalStorage.setItem(storageKey, "shown");
+        for (const document of due) {
+          const milestone = getReminderMilestone(document.expiry_date);
+          if (milestone !== null) {
+            safeLocalStorage.setItem(
+              `maritime-document-reminder:${userId}:${document.id}:${milestone}`,
+              "shown",
+            );
+          }
+        }
       } catch {
         // Ağ veya oturum sorunu uygulamanın açılışını engellememeli.
       }
@@ -82,7 +86,7 @@ export function DocumentExpiryNotifier() {
     return () => {
       cancelled = true;
     };
-  }, [loading, user]);
+  }, [loading, userId]);
 
   return null;
 }
