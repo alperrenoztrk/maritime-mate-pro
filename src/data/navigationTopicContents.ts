@@ -8155,7 +8155,7 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
       {
         title: "Aşama 1: Varsayılan mevkinin (AP) kurulması",
         content:
-          "Varsayılan mevki (AP), DR mevkiine yakın bir noktadır ve Hc ile Zn’nin hesaplandığı referans noktadır. Amaç “doğru nokta” olmak değil, **gerçek mevkiye yeterince yakın** olmaktır. Intercept yöntemi bu yakınlık varsayımı üzerine çalışır."
+          "**Varsayılan mevki (Assumed Position, AP)**, gerçek mevki bilinmediğinde Hc ve Zn'nin hesaplanacağı bir **referans noktasıdır**; genellikle DR (ölü hesap) mevkiine yakın seçilir. Amaç 'doğru noktayı' bulmak değil — o zaten aranıyor — **gerçek mevkiye yeterince yakın** bir başlangıç noktası kurmaktır.\n\n**Neden yaklaşıklık yeter:** Intercept yöntemi, AP ile gerçek mevki arasındaki küçük farkı, gök cismine olan yükseklik farkı (Ho − Hc) üzerinden **düzeltir**. AP gerçek mevkiye ne kadar yakınsa, doğrusallık varsayımı (yükseklik dairesinin küçük yayının düz kabul edilmesi) o kadar geçerlidir. Tablo yöntemlerinde (HO-249) AP enlemi tam dereceye, boylamı LHA'yı tam dereceye getirecek şekilde seçilir.\n\n**Gemide önemi:** AP çok uzak seçilirse (örn. >~30 NM) doğrusallık bozulur ve tek intercept'te tam düzeltme sağlanamaz; bu durumda ikinci bir tur (yeni AP = ilk fix) gerekir. İyi bir DR, dolayısıyla iyi bir AP, göksel fix'in doğruluğunu doğrudan artırır."
       },
       {
         title: "Aşama 2: Gözlemsel ve teorik yüksekliklerin karşılaştırılması",
@@ -8165,17 +8165,17 @@ Mean Latitude Sailing, **basitliği ve hızı** nedeniyle klasik seyrüseferde �
       {
         title: "Aşama 3: Intercept mesafesinin elde edilmesi",
         content:
-          "Ho ile Hc farkı **doğrusal mesafeye** dönüştürülür. Dakika cinsinden bulunan fark, doğrudan deniz mili olarak yorumlanır. Bu aşamada yön bilgisi yoktur; yalnızca “ne kadar” sapma olduğu belirlenir."
+          "Bu aşamada, gözlemsel yükseklik **Ho** ile teorik yükseklik **Hc** arasındaki fark, doğrudan bir **doğrusal mesafeye (intercept, a)** çevrilir. Temel dönüşüm basittir: **dakika cinsinden yükseklik farkı = deniz mili cinsinden mesafe** (1′ = 1 NM), çünkü yükseklik açısı, gözlemci ile cismin yer-altı noktası (GP) arasındaki mesafeyi temsil eder.\n\n**Bu aşamada yalnızca 'ne kadar':** Intercept mesafesi, gözlemcinin AP'ye göre gök cismine **ne kadar yakın veya uzak** olduğunu söyler; ama **hangi yönde** olduğunu henüz söylemez (o, azimut/toward-away ile gelir). **Worked example:** Ho = 41°28.0′, Hc = 41°21.5′ → a = 6.5′ = **6.5 NM**.\n\n**Gemide önemi:** 1′ = 1 NM eşitliği göksel seyrin can damarıdır; bu yüzden Ho ve Hc dakikanın onda birine kadar dikkatle hesaplanır. Dakika/derece karışıklığı veya bir işaret hatası, mevki hattını millerce kaydırır."
       },
       {
         title: "Aşama 4: Yönün belirlenmesi (toward / away)",
         content:
-          "Ho, Hc’den büyükse gözlemci varsayılan mevkiden **gök cismine daha yakındır** ve taşıma gök cismine doğru yapılır. Ho, Hc’den küçükse gözlemci gök cisminden daha uzaktadır ve taşıma gök cisminden uzağa yapılır."
+          "Intercept mesafesinin **hangi yönde** taşınacağı, Ho ile Hc'nin karşılaştırılmasıyla belirlenir. Mantık, yükseklik ile mesafenin **ters** ilişkisine dayanır: bir cisme ne kadar yakınsan onu o kadar **yüksek** görürsün.\n\n**Kural:** **Ho > Hc** ise gözlemci cismi beklenenden yüksek görüyor → gerçekte gök cismine **daha yakın** → taşıma **cisme doğru (towards)**. **Ho < Hc** ise cisim beklenenden alçak görünüyor → gözlemci **daha uzak** → taşıma **cisimden uzağa (away)**. Kısa hafıza: 'Ho More Towards' (HoMoTo) — Ho büyükse cisme doğru.\n\n**Worked example:** Ho = 41°28.0′ > Hc = 41°21.5′ olduğundan gemi, AP'den gök cismine doğru **6.5 NM** taşınır. **Gemide önemi:** Toward/away kuralının tersine çevrilmesi, mevki hattını doğru mesafede ama **yanlış tarafta** çizer — yani sonuç 2a (≈13 NM) hatalı olur; bu yüzden HoMoTo kuralı reflekse dönüşene kadar tekrarlanır."
       },
       {
         title: "Formüller (Intercept yöntemi)",
         content:
-          "Intercept tanımı ve mesafe yorumu aşağıdaki gibidir. Yön, Ho ile Hc arasındaki işaret üzerinden belirlenir.",
+          "Intercept yönteminin tüm mantığı iki kısa kurala iner: **büyüklük** (a = Ho − Hc, dakika→NM) ve **yön** (işaretine göre toward/away). Bu ikisi, azimut (Zn) doğrultusuyla birleştirilince mevki hattı (LOP) çizilir.\n\n**İşaret ve yorum:** a pozitifse (Ho > Hc) taşıma gök cismine doğru; negatifse (Ho < Hc) uzağa. Değerin kendisi doğrudan deniz milidir (1′ = 1 NM). Yön için azimut, mesafe için bu fark kullanılır — biri olmadan diğeri mevki üretmez.\n\n**Gemide önemi:** Bu sadelik göksel seyrin gücüdür: karmaşık küresel trigonometri Hc/Zn hesabında (tablo) gizlenir, denizciye kalan iki basit adımdır (çıkar, işarete bak). Ama tam bu sadelik işaret/dakika hatasına açıktır; bu yüzden her intercept, DR ve azimutla tutarlılık açısından kontrol edilir.",
         formula: {
           text: "a = Ho − Hc",
           description: "a: intercept (nm), Ho: düzeltilmiş gözlemsel yükseklik, Hc: hesaplanan teorik yükseklik."
@@ -8238,7 +8238,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       {
         title: "Aşama 4: Zn’nin LOP ile ilişkilendirilmesi",
         content:
-          "Zn doğrultusu çizilir; bunun **LOP’un kendisi olmadığı** özellikle vurgulanır. LOP, Zn’ye **dik** çizilir. Böylece azimutun görevi tamamlanır: Zn yalnızca **yön referansı** sağlar.",
+          "Azimut hesabının son adımı, okunan **Zn doğrultusunu çizmek** ve ona **dik** LOP'u kurmaktır. Kritik nokta: **Zn'nin kendisi mevki hattı DEĞİLDİR** — yalnızca gök cismine bakış yönüdür; LOP ise bu doğrultuya **90° dik** çizilir.\n\n**Neden dik:** Yükseklik dairesi, cismin yer-altı noktası (GP) etrafında bir çemberdir; gözlemcinin bulunduğu küçük yayda bu çember bir doğru gibi düz kabul edilir ve GP'ye (yani azimut doğrultusuna) her zaman **diktir**. Intercept, AP'den Zn boyunca (toward/away) taşınır; LOP ise o taşınan noktadan Zn'ye dik geçer. **Worked example:** Zn = 118° ise LOP doğrultusu 118° ± 90° = **028°/208°** olur.\n\n**Gemide önemi:** Zn'yi doğrudan LOP sanmak (dik almayı unutmak) mevki hattını 90° yanlış çizer — göksel fix'in en temel çizim hatalarındandır. Azimut, mesafeyi doğru yöne yönlendiren pusuladır; LOP ise ona dik olarak gerçek mevki hattını verir.",
         formula: {
           text: "LOP doğrultusu = Zn ± 90°",
           description: "LOP, azimut doğrultusuna dik çizilir."
@@ -8247,7 +8247,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       {
         title: "Formüller (ders uyumlu, trigonometrisiz)",
         content:
-          "Saat açısı ilişkisi:\n\n- **LHA = GHA ± λ**\n\nYarımküre kontrolü:\n\n- **LHA 0°–180° → batı**\n- **LHA 180°–360° → doğu**"
+          "Azimut yorumunun iki kısa kuralı: **saat açısı ilişkisi** ve **yarımküre (doğu/batı) kontrolü**. Bunlar, tablodan okunan azimut açısının gerçek kuzeyden doğru yerleştirilmesini sağlar.\n\n**LHA = GHA ± λ:** Yerel saat açısı, Greenwich saat açısından boylam düzeltmesiyle bulunur (doğu boylamda +, batı boylamda −). **Doğu/batı kuralı:** LHA 0°–180° arasındaysa gök cismi **batıda** (öğleden sonra), 180°–360° arasındaysa **doğudadır** (öğleden önce). Bu, Zn'nin 000–180° mü yoksa 180–360° mü olacağını belirler.\n\n**Worked example:** LHA = 245° (>180°) → cisim doğuda; tablodan okunan açı buna göre gerçek kuzeyden saat yönünde yerleştirilir. **Gemide önemi:** Zn'nin yanlış yarımküreye konması azimut hatalarının en yaygın nedenidir ve intercept doğru olsa bile mevki hattını tamamen yanlış yere koyar; LHA'nın doğu/batı yorumu bu yüzden mekanik bir kontrol adımıdır."
       },
       {
         title: "Örnek uygulama (tablo mantığıyla Zn yorumu)",
@@ -8291,7 +8291,7 @@ Bu fark **6.5 deniz milidir**. Ho, Hc’den büyük olduğu için gemi varsayıl
       },
       {
         title: "Hesap Adımları (Özet)",
-        content: "Uygulamada, vertex enlemini hızlıca bulup rota emniyetini kontrol etmek için aşağıdaki adımlar izlenir (girişte yalnızca başlangıç enlemi ve başlangıç kursu gerekir):",
+        content: "Vertex enlemini bulmak, yalnızca **başlangıç enlemi (φ₁) ve başlangıç kursu (C₁)** ile yapılabilen kısa bir işlemdir; bir sonraki dönüş/waypoint bilgisine gerek yoktur.\n\nAdımlar: (1) φ₁ ve C₁ belirlenir; (2) cos φ₁ ve sin C₁ hesaplanır; (3) **cos φv = cos φ₁ × sin C₁** bulunur; (4) φv = arccos(...) ile maksimum enlem elde edilir; (5) yarımküre ve rota yönüne göre işaret (N/S) değerlendirilir.\n\n**Worked example:** φ₁ = 37°N, C₁ = 055° → cos φv = cos37° × sin55° = 0.799 × 0.819 = 0.654 → φv = arccos(0.654) ≈ **49.1° N**. **Gemide önemi:** Bu tek değer, büyük daire rotasının ulaşacağı en yüksek enlemi verir ve buz sınırı, fırtına kuşağı veya operasyonel enlem limitiyle karşılaştırılır. Vertex limitin ötesindeyse rota bir **kompozit (composite) büyük daireye** çevrilerek maksimum enlem güvenli sınıra çekilir.",
         bulletPoints: [
           "Başlangıç enlemi φ₁ ve başlangıç kursu C₁ belirlenir.",
           "cos φ₁ ve sin C₁ hesaplanır.",
@@ -8403,7 +8403,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Zenit Uzaklığı ve Saat Açısı İlişkileri",
         content:
-          "Zenit uzaklığı, cismin gök kubbede gözlemci başüstü noktasına olan açısal mesafesidir. Seyirde kullanılan temel dönüşümler aşağıdaki gibidir.",
+          "**Zenit uzaklığı (Z)**, bir gök cisminin gözlemcinin **başucundan (zenit)** olan açısal mesafesidir; yükseklikten (h) türetilir ve göksel üçgenin kenarlarından biridir. Temel dönüşüm: Z = 90° − h (ufuktan yükseklik ile başucundan uzaklık birbirinin tümleyenidir).\n\n**Neden önemli:** Göksel seyirde ölçülen şey **açıdır** (yükseklik) ve bu açı zenit uzaklığına çevrilince cismin yer-altı noktasına (GP) olan mesafeye dönüşür (1° = 60 NM). Zenit uzaklığı ve saat açısı (LHA), gözlemci enlemi (φ) ve deklinasyon (δ) ile birlikte küresel PZX üçgenini kurar. **Worked example:** h = 45.5° ise Z = 90° − 45.5° = **44.5°** → GP'ye uzaklık ≈ 44.5 × 60 = 2670 NM.\n\n**Gemide önemi:** Bu dönüşümler, sextantla ölçülen açıyı harita üzerinde bir mevki bilgisine bağlayan köprüdür; zenit uzaklığı yanlış kurulursa (90−h yerine h kullanmak) tüm mevki hesabı temelinden bozulur.",
         formula: {
           text: "Z = 90° − h",
           description: "Z: zenit uzaklığı, h: gök cisminin ölçülen yüksekliği"
@@ -8412,7 +8412,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Greenwich Saat Açısından Yerel Saat Açısına",
         content:
-          "Astronomik tablolarda verilen Greenwich Saat Açısı (GHA), gözlemcinin boylamıyla birleştirilerek Yerel Saat Açısı (LHA) bulunur. Doğu boylamları çıkarma, batı boylamları ekleme işaretiyle alınır.",
+          "Astronomik tablolar (Nautical Almanac) gök cisimlerinin konumunu **Greenwich Saat Açısı (GHA)** ile verir — yani Greenwich meridyenine göre. Gözlemcinin kendi meridyenine göre konum, **Yerel Saat Açısı (LHA)** ile ifade edilir ve GHA'ya boylam eklenerek/çıkarılarak bulunur: **LHA = GHA ± λ**.\n\n**Dikkat — işaret ve 360°:** Sonuç 360°'yi aşarsa 360 çıkarılır, negatifse 360 eklenir (LHA daima 0°–360°). Kullanılan konvansiyona göre doğu boylamı eklenir, batı boylamı çıkarılır; hangi yön olursa olsun tutarlı uygulanmalıdır. **Worked example:** GHA = 040°, gözlemci 015° E ise LHA = 040° + 15° = **055°**; 015° W ise LHA = 040° − 15° = **025°**.\n\n**Gemide önemi:** LHA, cismin gözlemciye göre doğu/batı konumunu ve azimut yarımküresini belirler; boylam işaretinin karıştırılması hem yükseklik (Hc) hem azimut (Zn) hesabını yanlış yapar ve mevki hattını tamamen kaydırır.",
         formula: {
           text: "LHA = GHA ± λ",
           description: "λ: boylam (Doğu çıkarılır, Batı eklenir)"
@@ -8423,7 +8423,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Küresel Üçgende Temel Kosinüs Bağıntısı",
         content:
-          "Göksel seyirde kullanılan temel bağıntı, gözlemci enlemi (φ), gök cisminin deklinasyonu (δ) ve LHA yardımıyla cismin yüksekliğini verir.",
+          "Göksel seyrin kalbindeki bağıntı, **küresel kosinüs teoremidir**: gözlemci enlemi (φ), gök cisminin deklinasyonu (δ) ve yerel saat açısı (LHA) ile cismin **hesaplanan yüksekliğini (Hc)** verir: **sin h = sin φ · sin δ + cos φ · cos δ · cos LHA**.\n\n**Ne anlatır:** Bu formül, göksel küredeki **PZX üçgenini** (kutup P, zenit Z, cisim X) çözer; üç köşe arasındaki açısal ilişkiden cismin ufuktan yüksekliğini üretir. Modern uygulamada bu hesap **Sight Reduction Tabloları (HO-249/229)** veya hesap makinesiyle yapılır; sonuç Hc, gözlemle (Ho) karşılaştırılarak intercept bulunur.\n\n**Worked example:** φ = 36°N, δ = 10°N, LHA = 40° → sin h = (0.588×0.174) + (0.809×0.985×0.766) = 0.102 + 0.611 = 0.713 → h = arcsin(0.713) ≈ **45.5°**. **Gemide önemi:** Bu tek bağıntı tüm göksel yükseklik hesabının motorudur; tablolar onun sonuçlarını hazır sunar ama mantığını bilmek, tablo dışı durumlarda ve hata kontrolünde denizciye güven verir.",
         formula: {
           text: "sin h = sin φ · sin δ + cos φ · cos δ · cos LHA",
           description: "h: yükseklik | φ: gözlemci enlemi | δ: deklinasyon | LHA: yerel saat açısı"
@@ -8458,14 +8458,14 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
       {
         title: "Aşama 1: Dünya’nın dönüşünün kurulması",
         content:
-          "Dünya 24 saatte bir tam tur yapar. Bu tam tur, 360°’lik açısal bir harekettir. Göksel seyirde zaman hesabı, bu fiziksel gerçeğin üzerine kurulur.",
+          "Zaman–açı ilişkisinin temeli, **Dünya'nın düzenli dönüşüdür**: Dünya kendi ekseni etrafında **24 saatte tam bir tur (360°)** yapar. Göksel seyirdeki tüm zaman hesapları bu tek fiziksel gerçeğin üzerine kurulur.\n\n**Neden bu kadar merkezi:** Göksel seyirde doğrudan **mesafe değil açı** ölçülür (sextantla yükseklik); gök cisimlerinin gökyüzündeki konumu sürekli ve düzenli değiştiğinden, o konumu belirleyen tek değişken **zamandır**. Dünya sabit hızla döndüğü için zaman ↔ açı dönüşümü kusursuz doğrusaldır.\n\n**Gemide önemi:** Bu ilke, kronometrenin neden göksel seyrin vazgeçilmez aleti olduğunu açıklar: gök cisminin konumunu tabloda bulmak için **kesin UTC** gerekir. Dönüşün düzenliliği olmasaydı zamandan konuma geçmek mümkün olmazdı; bu yüzden göksel seyir 'gökyüzü saatini okuma' sanatıdır.",
         image: earthRotation,
         imageAlt: "Dünya'nın ekseni etrafındaki dönüşü"
       },
       {
         title: "Aşama 2: Zamanın açısal karşılığının gösterilmesi",
         content:
-          "360°’lik dönüş 24 saate bölündüğünde, her saatlik zaman farkının gök küresi üzerinde belirli bir açısal kaymaya karşılık geldiği görülür. Burada yalnızca oran vardır; trigonometrik bir ilişki yoktur.",
+          "Dünya'nın 360°'lik dönüşü 24 saate bölündüğünde, her zaman biriminin bir **açısal karşılığı** ortaya çıkar: **1 saat = 15°**, **1 dakika = 15′**, **1 saniye = 15″**. Bu tamamen bir **orantıdır** — trigonometrik ilişki değil, basit bölme.\n\n**Nasıl kullanılır:** İki an arasındaki zaman farkı, doğrudan bir açısal (boylam veya saat açısı) farkına çevrilir. 15°'lik her boylam farkı 1 saatlik yerel zaman farkına karşılık gelir; bu yüzden zaman dilimleri kabaca 15°'lik kuşaklardır. **Worked example:** 2 saat 20 dakikalık fark = (2×15°) + (20×15′) = 30° + 5° = **35°** açısal fark.\n\n**Gemide önemi:** Bu orantı, saniyelerin neden bu kadar önemli olduğunu gösterir: 1 saniye = 15″ = 0.25′; boylamda 4 saniyelik hata 1′ (≈1 NM) demektir. Göksel seyirde kronometre hatasının doğrudan mevki hatasına dönüşmesinin nedeni bu değişmez orantıdır.",
         image: earthTimezone1,
         imageAlt: "Zaman dilimleri ve açısal kayma ilişkisi"
       },
