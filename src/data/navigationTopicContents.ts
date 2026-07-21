@@ -1024,7 +1024,7 @@ Bu sonuç, geminin 40 deniz millik seyir boyunca yaklaşık 34.6 deniz mili doğ
       },
       {
         title: "Departure’ın Düzlem Seyirde Kullanım Alanı",
-        content: `Departure, özellikle şu hesaplamalarda temel bileşendir:
+        content: `Departure (doğu–batı ayrılma mesafesi), düzlem seyir üçgeninin **yatay kenarıdır** ve bir hareketin doğu-batı bileşenini **deniz mili** cinsinden ifade eder. Önemi, DLong ile mesafe arasında **köprü** olmasından gelir: departure = D × sin(C) ile mesafeden elde edilir, sonra DLong = departure ÷ cos(enlem_ort) ile boylam değişimine çevrilir. Bu zincir sayesinde rota ve hızdan yola çıkıp varış boylamı adım adım hesaplanabilir. Bu nedenle departure, özellikle şu hesaplamalarda temel bir bileşendir:
 
 ![Düzlem seyir örneği](https://maritimesa.org/nautical-science-grade-11/wp-content/uploads/sites/6/2020/10/11.1.1.2_fig_1.jpg)
 
@@ -2039,12 +2039,14 @@ Bu fark orta enlemlerde sınırlı, yüksek enlemlerde ise belirgin hâle gelir.
       },
       {
         title: "Büyük Daire Mesafesi",
-        content: `İki mevki arasındaki büyük daire mesafesi için temel bağıntı:
+        content: `İki mevki arasındaki büyük daire mesafesi, aslında bu iki noktayı Dünya'nın merkezine bağlayan yarıçaplar arasındaki **merkez açının** karşılığıdır. Bu açı, **küresel kosinüs teoremi** ile enlem ve boylam farklarından bulunur:
 
 ▭ **cos θ = sin φ₁ × sin φ₂ + cos φ₁ × cos φ₂ × cos Δλ**  
 ▭ **Büyük daire mesafesi = θ × 60 deniz mili**
 
-Bu ifade, büyük daire tarafının **referans mesafesini** verir.`
+Formülün mantığı şudur: **θ** iki mevkinin arasındaki merkez açıdır (derece cinsinden) ve Dünya üzerinde **1° merkez açı = 60 deniz miline** karşılık geldiği için, açı 60 ile çarpılınca doğrudan mesafe elde edilir. sin/cos terimleri, iki noktanın hem enlem (φ₁, φ₂) hem de boylam farkı (Δλ) katkısını tek bir açıda birleştirir; noktalar aynı meridyendeyse (Δλ = 0) ifade enlem farkına iner.
+
+Bu ifade, büyük daire tarafının **referans (en kısa) mesafesini** verir. **Gemide önemi:** Bu mesafe, aynı iki nokta arasındaki rhumb line mesafesinden kısadır; aradaki fark yüksek enlemli ve doğu-batı yönlü uzun rotalarda yüzlerce mile ulaşabildiği için yakıt ve süre planlamasının temelini oluşturur.`
       },
       {
         title: "Rhumb Line Kursu ve Mesafesi",
@@ -2451,11 +2453,15 @@ Bu nedenle Mercator projeksiyon, denizcilikte bir “harita türü” değil; **
       },
       {
         title: "Temel Küresel Geometri İlişkileri",
-        content: `Meridyen yayı = 90° − enlem  
+        content: `Büyük daire hesapları, aslında küre üzerinde çizilen bir **küresel üçgenin** çözümüdür. Bu üçgenin köşeleri kutup ile iki mevkidir; kutuptan bir mevkiye inen kenar, o mevkinin **eş-enlemi (co-latitude)** kadardır — yani her mevkinin kutba uzaklığı **90° − enlem**, iki meridyen arasındaki açı ise boylam farkı **Δλ**'dır. Bu ilişkiler, üçgenin kenar ve açılarını verir:
+
+Meridyen yayı = 90° − enlem  
 Boylam farkı = Δλ
 
 Merkez açı **d** derece cinsinden bulunduğunda, deniz mili karşılığı doğrudan hesaplanabilir:  
-**Büyük daire mesafesi = d × 60 deniz mili**.`,
+**Büyük daire mesafesi = d × 60 deniz mili**.
+
+**Gemide önemi:** Aynı küresel üçgen hem büyük daire seyrinde (mesafe ve kurs) hem de göksel seyirde (kutup–zenit–yıldız üçgeni) kullanılır; bu geometriyi bir kez kavramak, iki farklı seyir alanını tek bir mantıkla çözmeyi sağlar.`,
         formula: {
           text: "cos d = sin φ₁ · sin φ₂ + cos φ₁ · cos φ₂ · cos Δλ",
           description: "d merkez açı, φ₁–φ₂ enlemler, Δλ boylam farkıdır."
@@ -8353,7 +8359,13 @@ Eğer maksimum enlem riskli bölgelere giriyorsa, büyük daire rota doğrudan u
       },
       {
         title: "Uzun Okyanus Seyrinde Temel Uygulama Mantığı",
-        content: `Teorik referans → **Büyük daire**  
+        content: `Uzun okyanus seyrinde rota seçimi tek bir yöntemin değil, üç yöntemin **rol paylaşımının** sonucudur. Büyük daire "teorik en kısa yol nedir?" sorusuna, composite rota "bu yolu emniyet sınırları içinde nasıl uygularım?" sorusuna, rhumb line ise "kısa mesafede pratik ve sabit kurslu çözüm nedir?" sorusuna cevap verir.
+
+Mantık şöyle işler: büyük daire her zaman **referans (kıyas) mesafeyi** verir ve gemi bu rotayı birebir izlemese bile kazancın büyüklüğünü gösterir; composite rota bu referansı sınırlayıcı enlemle **operasyonel olarak** güvenli hâle getirir; rhumb line ise büyük daire kazancının ihmal edilebilir olduğu kısa ve kıyısal seyirlerde sabit kurs sadeliğiyle öne çıkar. **Gemide önemi:** Deneyimli bir zabit bu üçünü rakip değil, birbirini tamamlayan araçlar olarak kullanır; rota, matematiksel en kısa yol ile meteorolojik-ticari gerçeğin dengelendiği noktada kesinleşir.
+
+Özet karar mantığı:
+
+Teorik referans → **Büyük daire**  
 Operasyonel kontrol → **Composite rota**  
 Yerel ve kısa seyir → **Rhumb line**`
       },
