@@ -263,7 +263,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Atmosferik Refraksiyon",
         content:
-          "Atmosfer ışığı kırarak gök cismini olduğundan daha yüksek gösterir. Bu nedenle refraksiyon her zaman çıkarılır. Basit yaklaşım:",
+          "**Atmosferik refraksiyon**, ışığın yoğunluğu değişen atmosfer katmanlarından geçerken **kırılmasıdır**; ışık gök cisminden gözlemciye ulaşana kadar büküldüğü için cisim **olduğundan daha yüksek** görünür. Bu yüzden refraksiyon düzeltmesi Ho hesabında **daima çıkarılır (−)**.\n\n**Miktarı yüksekliğe bağlıdır:** Cisim ufka yakınken ışık atmosferde daha uzun ve daha eğik bir yol katettiğinden refraksiyon en büyüktür; başucuna (zenit) doğru sıfıra iner. Basit yaklaşım **R ≈ 1 ÷ tan h**'dir (h gözlenen yükseklik). Örneğin h = 45° için R ≈ 1′; h = 10° için tan10° ≈ 0.176 → R ≈ 5.7′; ufka çok yakın (h < 5°) değerlerde refraksiyon hızla büyür ve formül güvenilirliğini yitirir.\n\n**Gemide önemi:** Bu yüzden göksel gözlemde **çok alçak cisimlerden (h < ~10–15°) kaçınılır**; alçak gözlem hem büyük hem belirsiz refraksiyon nedeniyle mevki hattını dakikalarca (millerce) kaydırabilir. Basınç ve sıcaklık standarttan çok farklıysa (aşırı soğuk/yüksek basınç) tablolara ek düzeltme uygulanır.",
         formula: {
           text: "R ≈ 1 / tan h",
           description: "R dakikadır, h gözlenen yükseklik açısıdır. Düşük yüksekliklerde hata büyür."
@@ -365,7 +365,7 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Temel ilişkiler (bağlam)",
         content:
-          "Bu aşamada yalnızca Hs ve IE (indeks hatası) elde edilir; diğer terimler sonraki başlıklara aittir.",
+          "Sextant kullanımı aşaması, düzeltme bağıntısının **yalnızca ilk iki terimini** üretir: sextanttan okunan **Hs (alet yüksekliği)** ve alete özgü **IE (indeks hatası)**. Diğer terimler (Dip, refraksiyon R, yarıçap SD, paralaks P) bu ölçümden **sonra**, hesaplama aşamasında uygulanır.\n\n**Neden ayrı tutulur:** Ölçüm ile düzeltmeyi ayırmak hata kaynağını izlemeyi sağlar — Hs ve IE **alet/ölçüm** hatalarını, sonraki terimler ise **geometri/atmosfer** düzeltmelerini temsil eder. Böyle bakıldığında sextant kullanımı 'ham veri' (Hs, IE, UTC) toplamaktır; yorum sonradır.\n\n**Gemide önemi:** Bu ayrım disiplin kazandırır: eğer IE ölçüm öncesi kontrol edilip not edilmemişse, sonraki tüm hesaplar sistematik olarak kayar. Bu yüzden Hs ile birlikte **IE ve tam UTC** aynı anda kaydedilir; bunlar olmadan düzeltme bağıntısı tamamlanamaz.",
         formula: {
           text: "Ho = Hs ± IE − Dip − R ± SD ± P",
           description: "Düzeltilmiş yükseklik bağıntısı. Hs sextanttan okunan değerdir."
@@ -402,17 +402,17 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Aşama 1: Yerel öğle anının tespiti",
         content:
-          "Güneş’in yükselip alçaldığı yay izlenir; **yerel öğle**, yüksekliğin **en büyük** olduğu andır. Bu an, saat bilgisine göre değil, **yüksekliğin maksimuma ulaştığı nokta** olarak belirlenir. Boylam bu aşamada gerekli değildir."
+          "Öğle mevkiinin ilk adımı, **yerel öğle (meridian passage)** anını yakalamaktır: Güneş sabah yükselir, yerel meridyenden geçerken **en yüksek** noktasına ulaşır ve sonra alçalır. Yerel öğle, tam da yüksekliğin **maksimuma ulaştığı** andır.\n\n**Nasıl bulunur:** Gözlemci, öğleye yakın birkaç dakika boyunca sextantla Güneş'i izler; yükseklik artarken 'takip eder', **artık artmayıp düşmeye başladığı** an maksimumdur. Bu, saat hesabıyla değil **doğrudan gözlemle** belirlenir — yöntemin güçlü yanı da budur: **boylam (ve dolayısıyla hassas zaman) gerektirmez**.\n\n**Gemide önemi:** Meridyen geçişinin yaklaşık zamanı seyir tablosundan/GHA'dan kestirilip gözcü birkaç dakika erken hazır olur; maksimum anı kaçırmak, ölçülen en büyük yüksekliği (ve dolayısıyla enlemi) küçük ama gerçek bir hatayla düşürür. Öğle mevkii, tek gözlemle güvenilir enlem verdiğinden yüzyıllardır günlük 'noon position' rutininin temelidir."
       },
       {
         title: "Aşama 2: En büyük yükseklikten Ho’nun elde edilmesi",
         content:
-          "Sextant ile ölçülen en büyük yükseklik, tüm düzeltmeler (IE, dip, refraksiyon, SD, paralaks) uygulanarak **Ho (düzeltilmiş yükseklik)** değerine çevrilir. Öğle mevkiinde Ho, Güneş’in meridyendeki gerçek yüksekliğini temsil eder."
+          "Yerel öğlede ölçülen **en büyük sextant yüksekliği (Hs)**, standart düzeltme bağıntısıyla **Ho (düzeltilmiş gözlemsel yükseklik)** değerine çevrilir: IE, dip, refraksiyon, yarıçap (SD) ve paralaks uygulanır (Ho = Hs ± IE − Dip − R ± SD ± P).\n\n**Öğle mevkiine özgü kolaylık:** Cisim meridyende olduğundan Ho, doğrudan Güneş'in **o andaki gerçek meridyen yüksekliğini** temsil eder; ayrıca öğlede yükseklik dakikalarca neredeyse sabit kaldığından ('hang' bölgesi) ölçüm hatası küçüktür. Örneğin Hs = 66°12.4′, IE −1.6′, dip (h=16 m) −7.0′, R ≈ −0.4′, alt kenar Güneş +16.0′ → Ho ≈ 66°19.4′.\n\n**Gemide önemi:** Ho'daki her 1′ hata enlemi 1′ (≈1 NM) kaydırdığından, düzeltmelerin doğru işaret ve sırayla uygulanması kritiktir; özellikle üst/alt kenar (SD işareti) karışıklığı 32′'lik (≈32 NM) bir enlem hatasına yol açabilir."
       },
       {
         title: "Aşama 3: Zenit uzaklığının (Z) kurulması",
         content:
-          "Ho değeri, gözlemcinin zenit noktasına göre açısal uzaklığa çevrilir. Zenit uzaklığı, Güneş ile zenit arasındaki geometrik mesafedir.",
+          "Düzeltilmiş yükseklik **Ho**, gözlemcinin **başucundan (zenit)** olan açısal uzaklığa çevrilir. Zenit, gözlemcinin tam tepesindeki noktadır; **zenit uzaklığı (Z)**, Güneş ile bu nokta arasındaki açısal mesafedir.\n\n**Neden 90° − Ho:** Ho cismin **ufuktan** yüksekliği, Z ise **başucundan** uzaklığıdır; ufuk ile başucu 90° ayrık olduğundan Z = 90° − Ho olur. Örneğin Ho = 66°19.4′ ise Z = 90° − 66°19.4′ = **23°40.6′**.\n\n**Gemide önemi:** Zenit uzaklığı öğle mevkiinin can alıcı geometrik köprüsüdür: gözlemci ile Güneş'in yer-altı noktası (GP) arasındaki mesafeyi açısal olarak verir ve deklinasyonla birleştirilince enlemi doğrudan üretir. Z'nin doğru kurulması, sonraki enlem adımının tümüyle buna dayandığı için hayatidir.",
         formula: {
           text: "Z = 90° − Ho",
           description: "Z: zenit uzaklığı, Ho: düzeltilmiş gözlemsel yükseklik."
@@ -421,7 +421,7 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Aşama 4: Enlemin belirlenmesi (kuzey/güney yorumu)",
         content:
-          "Güneş’in **deklinasyonu (δ)** ve zenit uzaklığı birlikte yorumlanır. Güneş gözlemcinin **kuzeyinde** veya **güneyinde** meridyenden geçer; bu durum işaret kuralını belirler ve enlem doğrudan elde edilir.",
+          "Son adımda **zenit uzaklığı (Z)** ile Güneş'in **deklinasyonu (δ)** birleştirilerek enlem bulunur. Deklinasyon, Güneş'in ekvatora göre o günkü açısal konumudur ve gözlem anı için seyir tablosundan (Nautical Almanac) okunur.\n\n**İşaret kuralı — meridyen geçiş yönü:** Güneş gözlemcinin **kuzeyinden** mi **güneyinden** mi geçtiğine bakılır; zenit uzaklığı, Güneş'ten **gözlemciye doğru** olan yönle adlandırılır. Bu ad ile deklinasyonun adı **aynıysa toplanır**, **farklıysa çıkarılır**. Pratikte: gözlemci ve Güneş aynı yarımkürede → φ = Z + δ; karşı yarımkürelerde → φ = Z − δ.\n\n**Worked example:** Ho = 66°19.4′ → Z = 23°40.6′. Öğlede Güneş gözlemcinin **güneyinden** geçtiyse Z 'kuzey' adını alır; δ = 20°10.0′ **N** ise (aynı ad) φ = Z + δ = 23°40.6′ + 20°10.0′ ≈ **43°50.6′ N**. **Gemide önemi:** İşaret/ad kuralının yanlış uygulanması enlemi 2δ kadar (onlarca derece) hatalı verir; bu yüzden Güneş'in geçiş yönü gözlemde mutlaka not edilir.",
         formula: {
           text: "φ = Z ± δ",
           description: "φ: enlem | Z: zenit uzaklığı | δ: deklinasyon."
@@ -434,7 +434,7 @@ Elde edilen Ho değeri, gözlem koşullarından ve alet etkilerinden arındırı
       {
         title: "Formül Özeti (Trigonometrisiz Uygulama)",
         content:
-          "Öğle mevkii yöntemi, yalnızca Ho ve δ ile çalışır; küresel trigonometri gerektirmez. Bu nedenle hızlı enlem kontrolü sağlar.",
+          "Öğle mevkiinin en büyük pratik avantajı, **küresel trigonometri gerektirmemesidir**: yalnızca iki basit aritmetik adımla (Z = 90° − Ho ve φ = Z ± δ) enlem bulunur. Sight reduction tabloları, LHA veya azimut hesabı gerekmez.\n\n**Neden bu kadar sade:** Cisim meridyendeyken saat açısı sıfırdır; küresel üçgen bir düz çizgiye 'çöker' ve trigonometrik terimler ortadan kalkar. Bu yüzden öğle mevkii, tek gözlemle ve minimum hesapla güvenilir enlem verir; tek 'zor' kısım işaret (yarımküre/ad) yorumudur.\n\n**Gemide önemi:** Bu sadelik, öğle mevkiini gemideki günlük 'noon position' rutininin ve elektronik seyir kaybında enlem doğrulamasının temeli yapar; hızlıdır, hataya kapalıdır ve yalnızca bir sextant, doğru saat ve almanak gerektirir.",
         bulletPoints: [
           "Z = 90° − Ho",
           "φ = Z ± δ (işaret yorumu meridyen geçiş yönüne göre yapılır)"
@@ -900,7 +900,7 @@ Bu yöntem, kronometre disiplini sağlandığında açık denizde hızlı ve etk
       {
         title: "Temel İlke: Dünya Dönüşü ve Zaman",
         content:
-          "Dünya 24 saatte 360° döndüğü için zaman farkı doğrudan boylam farkına karşılık gelir. Bu sabit oran, kronometre zamanını yerel zamanla karşılaştırarak boylam bulmayı mümkün kılar.",
+          "Zamanla boylam tayininin temeli, **Dünya'nın sabit dönüş hızıdır**: Dünya kendi ekseni etrafında **24 saatte 360°** döner. Bu, zaman ile boylam arasında değişmez bir orantı kurar — her 1 saatlik zaman farkı **15°** boylama, her 4 dakika **1°**'ye, her dakika **15′**'ye karşılık gelir.\n\n**Mekanizma:** Gemide kronometre **Greenwich zamanını (UTC/GMT)** tutar; gözlemci ise bir gök cisminin yerel meridyenden geçişiyle (yerel öğle) **yerel zamanı** belirler. İki zaman arasındaki fark, gözlemcinin Greenwich meridyeninden ne kadar doğuda/batıda olduğunun **doğrudan ölçüsüdür**: boylam = zaman farkı × 15°/saat.\n\n**Worked example:** Yerel öğle Greenwich saatiyle 14:00 UTC'de oluyorsa gemi Greenwich'ten 2 saat 'geri' (batıda) demektir → λ = 2 × 15° = **030° W**. **Gemide önemi:** Bu ilke, kronometrenin neden göksel seyrin kalbi olduğunu açıklar: 4 saniyelik bir zaman hatası 1′ (≈1 NM) boylam hatası demektir; tarihsel olarak boylam sorunu da ancak güvenilir deniz kronometresiyle çözülebilmiştir.",
         image: boylamTimeZones,
         imageAlt: "Boylam ve zaman dilimleri ilişkisi",
         bulletPoints: ["24 saat = 360° dönüş", "1 saat = 15°", "1 dakika zaman = 15′", "1 saniye zaman = 15″"],
@@ -2154,7 +2154,7 @@ Bu değer sabit kurslu rhumb line mesafesidir; büyük daire mesafesi aynı iki 
       {
         title: "Uydu Geometrisi ve DOP Etkisi",
         content:
-          "Uydu geometrisi, hesaplanan konum hatasının büyüklüğünü doğrudan etkiler. HDOP değeri küçüldükçe yatay hata azalır; büyüdükçe hata elipsi genişler. Bu nedenle aynı UERE değeri, farklı HDOP koşullarında farklı doğruluk seviyeleri üretir.",
+          "Aynı ölçüm hataları, uyduların gökyüzündeki **dağılımına (geometri)** göre farklı büyüklükte konum hatasına dönüşür; bunu **DOP (Dilution of Precision)** sayısı ölçer.\n\n**Mekanizma:** Uydular gökyüzüne **geniş ve dengeli** yayılmışsa (biri tepede, diğerleri farklı azimutlarda) mevki hatlarının kesişimi dik olur ve hata elipsi küçük kalır — düşük DOP. Uydular **bir kümede** toplanmışsa kesişimler yayvanlaşır ve aynı mesafe hatası konumda çok daha büyük sapma üretir — yüksek DOP. **HDOP** yatay bileşeni temsil eder: küçüldükçe yatay hata azalır, büyüdükçe hata elipsi genişler.\n\n**Worked example:** UERE (mesafe hatası) 5 m sabitken HDOP = 1.0 ise yatay hata ≈ 5 m; HDOP = 3.0 ise aynı UERE ile ≈ 15 m. **Gemide önemi:** Bu yüzden alıcı yalnızca 'mevki' değil **HDOP ve görülen uydu sayısını** da gösterir; yüksek DOP (buz, anten gölgesi veya kısıtlı gökyüzü) mevkinin güvenilmezleştiği andır ve zabit o an başka yöntemlerle (radar/görsel) teyit yapar.",
       },
       {
         title: "Tipik Doğruluk Seviyeleri",
@@ -2195,7 +2195,7 @@ Bu sonuç, geminin hesaplanan konumunun gerçek konumdan yaklaşık 9 metre sapa
       {
         title: "Operasyonel Değerlendirme",
         content:
-          "GPS doğruluğu tek başına yeterli görülmemelidir. Radar mesafeleri, görsel mevki tayini ve ECDIS alarm limitleri ile birlikte değerlendirilerek emniyetli seyir sağlanır."
+          "GPS doğruluğu **tek başına yeterli görülmez**; deniz emniyeti, GPS'in bağımsız yöntemlerle **çapraz kontrol** edilmesine dayanır. Çünkü GPS; anten arızası, güç kaybı, jamming/spoofing, yüksek DOP veya yazılım hatası nedeniyle **sessizce yanlış** mevki verebilir.\n\n**Nasıl doğrulanır:** **Radar mesafe ve kerterizleri** (sabit bir cisme), **görsel mevki tayini** (transit, kerteriz), **echo sounder derinliğinin harta ile karşılaştırılması** ve **ECDIS alarm limitleri** (XTE, güvenli kontur) birlikte kullanılır. İki bağımsız yöntemin uyuşması mevkiye güven verir.\n\n**Gemide önemi:** Birçok karaya oturma, körü körüne GPS/ECDIS takibinden doğmuştur; 'GPS diyorsa doğrudur' varsayımı tehlikelidir. İyi köprüüstü GPS'i bir girdi olarak kullanır ama onu radar ve gözle sürekli teyit eder — özellikle dar su, liman yaklaşması ve manevra sahalarında."
       }
     ],
     keyPoints: [
@@ -3612,7 +3612,7 @@ Set ve drift birlikte akıntı vektörünü oluşturur. Bu vektör, geminin suya
       {
         title: "Akıntı Vektörü Tanımı",
         content:
-          "Bu tanım, akıntının vektörel çözümlerde hangi iki bilgiyle temsil edildiğini sabitler ve tüm hesapların başlangıç noktasını oluşturur.",
+          "Akıntı, vektörel çözümlerde **tek bir hız vektörü** olarak temsil edilir ve bu vektör **iki bilgiyle** tam tanımlanır: **set** (akıntının aktığı hakiki yön) ve **drift** (akıntının hızı, knot). Bu ikili, tüm akıntılı seyir hesaplarının başlangıç noktasıdır.\n\n**Neden vektör:** Akıntı gemiyi 'iten bir kuvvet' değil, geminin yer hareketine **eklenen bağımsız bir hız bileşenidir**; bu yüzden yön + büyüklük (yani bir vektör) olarak ele alınır. Örneğin 'set 135° / drift 2 kn', güneydoğu yönünde 2 knotluk bir kayma demektir ve geminin baş yönünden bağımsızdır.\n\n**Gemide önemi:** Akıntıyı doğru (set + drift) çiftiyle sabitlemek, sonraki tüm hesapların doğru başlamasını sağlar; set'i pruvaya göre almak veya 'aktığı yön yerine geldiği yön' olarak karıştırmak tüm vektör çözümünü 180° ters çevirir.",
         formula: {
           text: "Akıntı Vektörü = (Set, Drift)",
           description: "Set yön, drift ise hız bilgisidir."
@@ -3641,7 +3641,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
       {
         title: "Temel Vektör Eşitliği",
         content:
-          "Bu eşitlikte büyüklükler ve yönler birlikte taşındığı için çözüm, ölçekli vektör çizimiyle veya sayısal olarak bileşenlere ayırarak yapılır.",
+          "Akıntılı seyrin tüm hesapları tek bir eşitliğe dayanır: **geminin yer hız vektörü (COG/SOG) = suya göre hız vektörü (heading/STW) + akıntı vektörü (set/drift)**. Gemi suda ilerlerken altındaki su kütlesi de akıntıyla hareket ettiğinden, yer üzerindeki gerçek hareket bu ikisinin **vektörel toplamıdır**.\n\n**Çözüm neden vektörel:** Bu eşitlikte hem büyüklük hem yön birlikte taşınır; basit aritmetik yetmez. Çözüm ya **ölçekli vektör çizimiyle** (plotting) ya da her vektörü **kuzey–doğu bileşenlerine ayırıp** sayısal olarak yapılır.\n\n**Gemide önemi:** Bu tek eşitlik, akıntılı seyrin iki temel problemini de kapsar — bilinen heading/STW'den COG/SOG bulmak (toplama) veya istenen COG'yi tutmak için heading bulmak (çıkarma). Eşitliği kavramak, tüm akıntı hesaplarını tek bir çerçeveye oturtur; ezber formül yerine mantık kalır.",
         formula: {
           text: "Yer Hız Vektörü = Suya Göre Hız Vektörü + Akıntı Vektörü",
           description: "COG/SOG, suya göre vektör ile akıntı vektörünün toplamıdır."
@@ -3650,7 +3650,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
       {
         title: "Bileşenlere Ayırma",
         content:
-          "Sayısal çözümde her vektör kuzey–güney ve doğu–batı bileşenlerine ayrılır. Hakiki kuzey referansı kullanıldığında bir vektörün bileşenleri trigonometrik olarak bulunur.",
+          "Vektörleri sayısal olarak toplamak için her biri **kuzey–güney (N) ve doğu–batı (E) bileşenlerine** ayrılır; böylece iki dik eksende basit toplama yapılabilir. Hakiki kuzey referans alındığında bileşenler trigonometriyle bulunur: **N = Hız × cos(yön)**, **E = Hız × sin(yön)** (yön hakiki kuzeyden saat yönünde ölçülür).\n\n**Worked example:** STW 12 kn, heading 070° için N = 12 × cos70° = 12 × 0.342 = **4.1 kn**, E = 12 × sin70° = 12 × 0.940 = **11.3 kn**. Akıntı set 130° / drift 3 kn için N = 3 × cos130° = **−1.9 kn** (güneye), E = 3 × sin130° = **2.3 kn** (doğuya).\n\n**Gemide önemi:** Bileşenlere ayırma, farklı yönlerdeki vektörleri güvenilir toplamanın anahtarıdır; işaretlere (kuzey +/güney −, doğu +/batı −) dikkat edilmezse sonuç yanlış çeyrekte çıkar. Bu adım, plotting olmadan (hesap makinesiyle) doğru COG/SOG üretmenin temelidir.",
         formula: {
           text: "Kuzey Bileşeni = Hız × cos Yön | Doğu Bileşeni = Hız × sin Yön",
           description: "Her vektör için N ve E bileşenleri ayrı ayrı hesaplanır."
@@ -3659,7 +3659,7 @@ Bu iki vektörün vektörel toplamı, geminin yer hız vektörünü verir. Bu il
       {
         title: "Bileşenden Büyüklük ve Yön",
         content:
-          "Bileşenler toplandıktan sonra yer vektörünün büyüklüğü ve yönü geri hesaplanır. Yönün hangi çeyrekte olduğu, N ve E’nin işaretinden belirlenir.",
+          "N ve E bileşenleri ayrı ayrı toplandıktan sonra, bileşke (yer) vektörünün **büyüklüğü ve yönü** geri hesaplanır: **SOG = √(N² + E²)** ve **COG = atan(E ÷ N)**. Büyüklük Pisagor'la, yön arktanjantla bulunur.\n\n**Çeyrek (quadrant) yorumu:** atan tek başına yönü tam vermez; COG'nin hangi çeyrekte olduğu **N ve E'nin işaretlerinden** belirlenir (N+E+ → NE; N−E+ → SE; N−E− → SW; N+E− → NW). **Worked example:** toplam N = 2.2 kn, E = 13.6 kn ise SOG = √(2.2² + 13.6²) = √(4.8 + 185) ≈ **13.8 kn**; COG = atan(13.6/2.2) ≈ atan(6.18) ≈ 81° (N+, E+ → NE) → **COG ≈ 081°**.\n\n**Gemide önemi:** Bu geri dönüşüm, bileşen toplamını yeniden denizcinin 'rota ve hız' diline çevirir; çeyrek yorumunu atlamak, doğru büyüklükte ama yanlış yönde (örn. 081° yerine 261°) bir COG üretebilir.",
         formula: {
           text: "SOG = √(N² + E²) | tan(COG) = E ÷ N",
           description: "N ve E, yer vektörünün kuzey ve doğu bileşenleridir."
@@ -3713,7 +3713,7 @@ Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyo
       {
         title: "Genel İfade",
         content:
-          "STW ile SOG arasındaki ilişki vektöreldir; bu nedenle basit çıkarma her durumda geçerli değildir. Yalnızca akıntı seti geminin suya göre rotasıyla aynı doğrultudaysa bir boyutlu yaklaşım kullanılabilir.",
+          "STW ile SOG arasındaki ilişki **vektöreldir**; bu yüzden 'SOG = STW ± drift' gibi basit toplama/çıkarma **her durumda geçerli değildir**. SOG, suya göre hız vektörü ile akıntı vektörünün **bileşkesinin büyüklüğüdür**.\n\n**Ne zaman basit yaklaşım çalışır:** Yalnızca akıntı seti geminin suya göre rotasıyla **tam aynı veya tam ters** doğrultudaysa bir boyutlu yaklaşım geçerlidir (aynı yön → SOG = STW + drift; ters yön → SOG = STW − drift). Çapraz akıntıda hem SOG değişir hem COG kayar; bu durumda mutlaka vektörel çözüm gerekir.\n\n**Worked example:** STW 10 kn ile heading 000° (kuzeye) giderken akıntı set 090° / drift 3 kn (dik/çapraz) ise SOG = √(10² + 3²) = √109 ≈ **10.4 kn** (basit toplama yanlışlıkla 13 kn verirdi). **Gemide önemi:** Çapraz akıntıyı 'ekle/çıkar' sanmak SOG'yi ve dolayısıyla ETA'yı yanlış hesaplatır; deneyimli zabit akıntının açısına bakıp vektörel mi bir boyutlu mu çözeceğine karar verir.",
         formula: {
           text: "SOG = | Suya Göre Hız Vektörü + Akıntı Vektörü |",
           description: "SOG, bileşke vektörün büyüklüğüdür."
@@ -3722,7 +3722,7 @@ Akıntı gemiyi aynı yönde destekliyorsa SOG artar, ters yönde karşı geliyo
       {
         title: "SOG Hesabı",
         content:
-          "Bileşen çözümü yapıldığında SOG, toplam vektörün kuzey ve doğu bileşenlerinden hesaplanır. Bu yaklaşım, STW ile drift’in yönleri farklı olduğunda dahi doğru sonucu verir.",
+          "Genel (çapraz akıntı) durumda SOG, toplam vektörün **kuzey ve doğu bileşenlerinden** hesaplanır: önce suya göre vektör ile akıntı vektörü N/E bileşenlerine ayrılıp toplanır, sonra SOG = √(Ntoplam² + Etoplam²) alınır. Bu yaklaşım, STW ile drift'in yönleri **farklı olduğunda dahi** doğru sonucu verir.\n\n**Worked example:** STW 10 kn / heading 000° → N = 10, E = 0. Akıntı set 090° / drift 3 kn → N = 0, E = 3. Toplam: N = 10, E = 3. SOG = √(10² + 3²) = √109 ≈ **10.4 kn**; aynı yöntemle COG = atan(3/10) ≈ **017°**.\n\n**Gemide önemi:** Bileşen yöntemi evrensel çözümdür — akıntının açısı ne olursa olsun tek bir prosedürle hem SOG hem COG'yi verir; bu, hesap makinesiyle güvenilir sonuç almanın ve plotting hatalarını çapraz kontrol etmenin yoludur.",
         formula: {
           text: "SOG = √(N² + E²)",
           description: "N ve E toplam vektörün kuzey ve doğu bileşenleridir."
@@ -3751,7 +3751,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
       {
         title: "Birinci Tip – Bileşen Toplamı",
         content:
-          "Birinci tipte çözüm, vektörlerin toplanmasıdır. Suya göre vektör ve akıntı vektörü bileşenlere ayrılır, bileşenler toplanır.",
+          "Birinci problem tipinde **heading ve STW ile set ve drift bilinir; COG ve SOG aranır.** Çözüm, iki vektörü bileşenlerine ayırıp toplamaktır: suya göre vektör (STW, heading) ve akıntı vektörü (drift, set) ayrı ayrı N/E bileşenlerine dönüştürülüp karşılıklı toplanır.\n\nNtoplam = STW × cos(heading) + Drift × cos(set); Etoplam = STW × sin(heading) + Drift × sin(set).\n\n**Worked example:** STW 12 kn / heading 060°, akıntı drift 3 kn / set 120°. Suya göre: N = 12cos60° = 6.0, E = 12sin60° = 10.4. Akıntı: N = 3cos120° = −1.5, E = 3sin120° = 2.6. Toplam: N = 4.5, E = 13.0. **Gemide önemi:** Bu tip, 'şu heading ve hızla gidersem yer üzerinde nereye ve ne hızla giderim?' sorusunun cevabıdır; gerçek iz ve ETA tahmininin temelidir.",
         formula: {
           text: "Ntoplam = STW × cos(Heading) + Drift × cos(Set) | Etoplam = STW × sin(Heading) + Drift × sin(Set)",
           description: "Ntoplam ve Etoplam, yer vektörünün bileşenleridir."
@@ -3760,7 +3760,7 @@ Köprüüstü uygulamasında en sık kullanılan ikinci tiptir; çünkü pratik 
       {
         title: "Birinci Tip – COG ve SOG",
         content:
-          "Toplam bileşenlerden COG ve SOG geri hesaplanır. Yön, bileşenlerin işaretine göre belirlenir.",
+          "Bileşenler toplandıktan sonra bileşke (yer) vektörünün büyüklüğü ve yönü geri hesaplanır: **SOG = √(Ntoplam² + Etoplam²)** ve **COG = atan(Etoplam ÷ Ntoplam)**; çeyrek yorumu N/E işaretlerine göre yapılır.\n\n**Worked example (önceki adımın devamı):** Ntoplam = 4.5, Etoplam = 13.0 → SOG = √(4.5² + 13.0²) = √(20.3 + 169) ≈ **13.8 kn**; COG = atan(13.0/4.5) ≈ atan(2.89) ≈ 71° (N+, E+ → NE) → **COG ≈ 071°**. Yani gemi heading 060° tutarken akıntı onu ~11° sağa (071°'ye) sürüklemiş ve hızını 12 kn'dan 13.8 kn'a çıkarmıştır.\n\n**Gemide önemi:** Bu sonuç, akıntının geminin gerçek izini ve hızını nasıl değiştirdiğini somut gösterir; COG ile heading arasındaki fark (burada 11°) tam olarak akıntının yarattığı sapmadır ve bu farkı görmek, rotayı tutmak için gereken düzeltmeyi anlamanın anahtarıdır.",
         formula: {
           text: "SOG = √(Ntoplam² + Etoplam²) | tan(COG) = Etoplam ÷ Ntoplam",
           description: "Bileşenlerden büyüklük ve yön geri hesaplanır."
