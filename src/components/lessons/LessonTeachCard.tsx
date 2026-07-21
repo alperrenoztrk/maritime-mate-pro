@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import type { BetaSection } from "@/data/betaLessons";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
-import { resolveLessonImage } from "@/utils/lessonImageFallbacks";
+import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
 
 /**
  * Tek bir normalize ders bölümünün (BetaSection) anlatım kartı.
@@ -19,14 +19,31 @@ export function LessonTeachCard({
   categoryId: string;
   topicTitle: string;
 }) {
+  const sectionImage = resolveLessonImage(
+    categoryId,
+    section.image,
+    section.title,
+    topicTitle,
+    section.imageAlt,
+  );
+  const content = section.content
+    ? normalizeLessonMarkdownImages(
+        section.content,
+        categoryId,
+        section.title,
+        topicTitle,
+        sectionImage ? [sectionImage] : [],
+      )
+    : section.content;
+
   return (
     <section className="space-y-4">
       <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
-      {section.image && (
+      {sectionImage && (
         <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
           <img
-            src={resolveLessonImage(categoryId, section.image, section.title, topicTitle, section.imageAlt)}
+            src={sectionImage}
             alt={section.imageAlt || section.title}
             className="h-48 w-full bg-muted/30 object-contain"
             loading="lazy"
@@ -34,25 +51,26 @@ export function LessonTeachCard({
         </div>
       )}
 
-      {section.content && (
+      {content && (
         <ReactMarkdown
           components={{
             p: ({ children }) => (
               <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
             ),
-            img: ({ src, alt }) => (
-              <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                <img
-                  src={resolveLessonImage(categoryId, src, section.title, topicTitle, alt)}
-                  alt={alt || section.title}
-                  className="h-48 w-full bg-muted/30 object-contain"
-                  loading="lazy"
-                />
-              </div>
-            ),
+            img: ({ src, alt }) =>
+              src ? (
+                <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
+                  <img
+                    src={src}
+                    alt={alt || section.title}
+                    className="h-48 w-full bg-muted/30 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ) : null,
           }}
         >
-          {stripDollarSigns(section.content)}
+          {stripDollarSigns(content)}
         </ReactMarkdown>
       )}
 

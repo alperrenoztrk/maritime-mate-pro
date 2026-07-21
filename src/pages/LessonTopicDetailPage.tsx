@@ -7,7 +7,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
 import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
 import { buildSectionKey, type ContentCategory } from "@/services/topicContentOverrides";
-import { resolveLessonImage } from "@/utils/lessonImageFallbacks";
+import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 
@@ -52,16 +52,29 @@ export default function LessonTopicDetailPage() {
           const categoryKey = (categoryId ?? "navigation") as ContentCategory;
           const overrideKey = buildSectionKey(categoryKey, decodedTitle || content.title, section.title);
           const override = overrides[overrideKey];
-          const resolvedContent = override?.content || section.content;
+          const sectionImage = resolveLessonImage(
+            categoryId,
+            section.image,
+            section.title,
+            content.title,
+            section.imageAlt,
+          );
+          const resolvedContent = normalizeLessonMarkdownImages(
+            override?.content || section.content,
+            categoryId,
+            section.title,
+            content.title,
+            sectionImage ? [sectionImage] : [],
+          );
 
           return (
             <section key={`${section.title}-${index}`} className="space-y-4">
               <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
-              {section.image && (
+              {sectionImage && (
                 <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
                   <img
-                    src={resolveLessonImage(categoryId, section.image, section.title, content.title, section.imageAlt)}
+                    src={sectionImage}
                     alt={section.imageAlt || section.title}
                     className="h-48 w-full object-contain bg-muted/30"
                     loading="lazy"
@@ -74,16 +87,17 @@ export default function LessonTopicDetailPage() {
                   p: ({ children }) => (
                     <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
                   ),
-                  img: ({ src, alt }) => (
-                    <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                      <img
-                        src={resolveLessonImage(categoryId, src, section.title, content.title, alt)}
-                        alt={alt || section.title}
-                        className="h-48 w-full object-contain bg-muted/30"
-                        loading="lazy"
-                      />
-                    </div>
-                  ),
+                  img: ({ src, alt }) =>
+                    src ? (
+                      <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
+                        <img
+                          src={src}
+                          alt={alt || section.title}
+                          className="h-48 w-full object-contain bg-muted/30"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : null,
                 }}
               >
                 {stripDollarSigns(resolvedContent)}
