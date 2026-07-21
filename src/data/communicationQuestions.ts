@@ -3,15 +3,15 @@ import type { QuizQuestion } from "@/types/quiz";
 export const communicationQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question: "GMDSS açılımı nedir?",
+    question: "GMDSS'in (Global Maritime Distress and Safety System) temel tasarım ilkesi aşağıdakilerden hangisidir?",
     options: [
-      "Global Maritime Distress and Safety System",
-      "General Marine Distress and Signal System",
-      "Global Maritime Direction and Safety Service",
-      "General Maritime Data and Safety System"
+      "Her geminin en yakın kıyı istasyonuyla telefon görüşmesi yapabilmesi",
+      "Bir tehlike alarmının, geminin bulunduğu deniz sahasına uygun ve yedekli (birden fazla bağımsız) yolla iletilebilmesi",
+      "Tüm gemilerin tek bir ortak VHF kanalını sürekli kullanması",
+      "Haberleşmenin yalnızca uydu üzerinden yapılması"
     ],
-    correctAnswer: 0,
-    explanation: "GMDSS, 'Global Maritime Distress and Safety System' yani Küresel Deniz Tehlike ve Güvenlik Sistemi anlamına gelir.",
+    correctAnswer: 1,
+    explanation: "GMDSS yalnızca bir kısaltma değil, bir sistem tasarımıdır: bir tehlikede alarmın kıyıya ve çevredeki gemilere, geminin deniz sahasına (A1–A4) uygun ekipmanla ve yedekli (birden fazla bağımsız yol) biçimde ulaşmasını güvence altına alır.",
     category: "GMDSS Genel"
   },
   {
