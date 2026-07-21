@@ -3,10 +3,10 @@ import type { QuizQuestion } from "@/types/quiz";
 export const seamanshipQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question: "Demir zinciri scope oranı (normal koşullarda) genellikle en az kaç olmalıdır?",
-    options: ["3:1", "5:1", "7:1", "10:1"],
+    question: "Su derinliği 24 m ve loçanın su üstü yüksekliği 6 m. 6:1 kaloma (scope) için yaklaşık kaç metre zincir salınmalıdır (1 kilit = 27.5 m)?",
+    options: ["144 m (~5 kilit)", "180 m (~6.5 kilit)", "150 m (~5.5 kilit)", "210 m (~7.6 kilit)"],
     correctAnswer: 1,
-    explanation: "Normal koşullarda 5:1 (çoğu durumda 5–7:1) yaygın minimum kabul edilir; ağır havada daha fazla gerekir.",
+    explanation: "Kaloma loça–dip mesafesine göre hesaplanır: 24 + 6 = 30 m. 6× kaloma = 6 × 30 = 180 m ≈ 180 ÷ 27.5 ≈ 6.5 kilit. (Trap: yalnız 24 m derinliği alıp 6×24 = 144 bulmak.)",
     category: "Demirleme"
   },
   {
@@ -27,10 +27,10 @@ export const seamanshipQuestions: QuizQuestion[] = [
   },
   {
     id: 4,
-    question: "ISPS Kodunda kaç güvenlik seviyesi vardır?",
-    options: ["2", "3", "4", "5"],
-    correctAnswer: 1,
-    explanation: "Seviye 1 (Normal), 2 (Artırılmış), 3 (Olağanüstü).",
+    question: "ISPS Güvenlik Seviyesi 3 hangi durumda ilan edilir?",
+    options: ["Normal işletim; rutin koruyucu önlemler", "Bir güvenlik olayı riskinin arttığı, belirli süreli dönem", "Bir güvenlik olayının muhtemel/yakın olduğu istisnai durum; en yüksek önlemler", "Yalnızca liman devleti denetimi (PSC) sırasında"],
+    correctAnswer: 2,
+    explanation: "ISPS üç seviye tanımlar; Seviye 3 (istisnai), bir güvenlik olayının muhtemel veya yakın olduğu ve belirli bir hedefe yönelebileceği durumlarda sınırlı süre için ilan edilir ve en yüksek koruyucu önlemleri gerektirir. (Seviye 1 normal, Seviye 2 yükseltilmiş.)",
     category: "ISM/ISPS"
   },
   {
