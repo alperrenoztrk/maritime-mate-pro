@@ -11407,7 +11407,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Tüm Gemiler İçin Dikkate Alınacak Etkenler",
         content:
-          "Emniyetli hız belirlenirken aşağıdaki etkenler birlikte değerlendirilir. Görüş azaldıkça, trafik yoğunlaştıkça veya manevra alanı daraldıkça emniyetli hız düşer.",
+          "Kural 6'nın kilit noktası, emniyetli hızın **sabit bir sayı olmadığıdır**: aynı gemi için 15 knot açık ve boş bir denizde emniyetli, sisli ve kalabalık bir boğazda tehlikeli olabilir. Emniyetli hız, 'çatışmayı önlemek için etkili önlem alabileceğin ve koşullara uygun bir mesafede durabileceğin' hız olarak **işlevsel** biçimde tanımlanır — yani her an mevcut şartların bir fonksiyonudur.\n\nKural, bu değerlendirmede her geminin tartması gereken etkenleri sayar: **görüş**, **trafik yoğunluğu**, geminin **manevra kabiliyeti** (özellikle durma mesafesi ve dönüş yeteneği), gece **arka plan ışığının** görüşü bozması, **rüzgâr/deniz/akıntı** ve seyir tehlikelerine yakınlık, ve sığ suda **draftın su derinliğine oranı** (squat ve dipten emniyet payı). Bu etkenler bağımsız değil, birlikte değerlendirilir; biri kötüleştiğinde emniyetli hız düşürülür.\n\n**Gemide önemi:** Görüş azaldıkça, trafik sıklaştıkça veya su altında pay daraldıkça hız *proaktif* olarak azaltılır; bir çatışma soruşturmasında 'koşullara göre aşırı hız' en sık tespit edilen kusurlardan biridir.",
         bulletPoints: [
           "Görüş durumu (sis, yağmur, karanlık).",
           "Trafik yoğunluğu (balıkçı veya diğer gemi kümeleri dâhil).",
@@ -11420,7 +11420,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Radarlı Gemiler İçin Ek Etkenler",
         content:
-          "Radar bulunan gemilerde, emniyetli hız belirlenirken radarın yetenek ve sınırlamaları da hesaba katılır. Radarın varlığı tek başına yüksek hızı haklı çıkarmaz.",
+          "Kural 6, radar donanımlı gemilere **ek** bir etkenler listesi getirir; çünkü radar, görüşü artırdığı kadar yanlış bir güven duygusu da yaratabilir. Temel ilke nettir: **radarın varlığı, kısıtlı görüşte yüksek hızı asla tek başına haklı çıkarmaz.** Radar, kör bir seyri güvenli hâle getiren bir 'görüş protezi' değil, sınırlamaları bilinerek kullanılması gereken bir yardımcıdır.\n\nDeğerlendirilecek ek etkenler radarın **fiziksel gerçekleriyle** ilgilidir: cihazın kendi özellikleri ve verimi; kullanılan **menzil kademesinin** getirdiği kısıt (uzun menzilde yakın hedef, kısa menzilde uzak hedef gözden kaçar); deniz ve yağmur **parazitinin (clutter)** küçük hedefleri gizlemesi; **küçük tekne, buz ve yüzen cisimlerin** yeterli menzilde hiç tespit edilememe ihtimali; ve tespit edilen hedeflerin sayısı, konumu ve hareketi. Radar mesafesi ayrıca görüşün ne olduğunu daha kesin ölçmeye de yarayabilir.\n\n**Gemide önemi:** Radarla 'temiz' görünen bir ekran, balıkçı teknesi veya buz parçası gibi zayıf yansıtıcıların olmadığı anlamına gelmez; bu belirsizlik, kısıtlı görüşte hızın yine de düşük tutulmasını gerektirir.",
         bulletPoints: [
           "Radarın özellikleri, verimliliği ve sınırlamaları.",
           "Kullanılan radar menzil kademesinin getirdiği kısıtlar.",
@@ -11446,7 +11446,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Manevranın Nitelikleri",
         content:
-          "Kural 8'in temel ilkesi, niyetin karşı gemi tarafından açıkça anlaşılmasıdır. Bu nedenle rota ve/veya hız değişiklikleri yeterince büyük yapılır.",
+          "Kural 8'in tüm alt maddelerinin altında yatan tek bir fikir vardır: **niyetin karşı taraftan hiçbir kuşkuya yer bırakmadan okunması.** Denizde iki gemi birbirinin niyetini yalnızca gözle ve radarla anlar; bu yüzden bir kaçınma manevrası, karşı geminin 'ne yaptığını' anında ve doğru yorumlayabileceği kadar **belirgin** olmak zorundadır.\n\nBu ilke somut kurallara dökülür: önlem **olumlu (positive), zamanında (ample time)** ve iyi gemicilikle alınır (8a); rota ve/veya hız değişikliği görsel veya radarla **kolayca fark edilecek kadar büyük** olmalı, bir dizi küçük ardışık değişiklikten kaçınılmalıdır (8b) — çünkü küçük değişiklikler radar ekranında belirsiz kalır ve niyeti gizler. Yeterli alan varsa **tek başına büyük bir rota değişikliği** en etkili çözüm olabilir (8c); manevranın etkisi karşı gemi **tamamen geçip uzaklaşana kadar** izlenir (8d); gerektiğinde hız kesilir, hatta makine durdurulup tornistanla yol kesilir (8e).\n\n**Gemide önemi:** Küçük, tereddütlü rota değişiklikleri çatışma soruşturmalarında sık rastlanan bir kusurdur; net ve erken bir manevra hem daha güvenli hem de karşı gemi için daha anlaşılırdır.",
         bulletPoints: [
           "8(a): Önlem koşullar elveriyorsa olumlu, zamanında (ample time) ve iyi gemicilikle alınır.",
           "8(b): Rota ve/veya hız değişikliği, görsel veya radarla kolayca fark edilecek kadar büyük olmalı; ardışık küçük değişiklikler yapılmaz.",
@@ -11458,7 +11458,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Engel Olmama (8(f)) ve Stand-on İlişkisi",
         content:
-          "Bazı kurallar bir gemiye 'diğerinin geçişini engellememe' yükümlülüğü verir. Kural 8(f) bunun nasıl uygulanacağını açıklar ve yol hakkına sahip (stand-on) geminin sorumluluklarını ortadan kaldırmaz.",
+          "Bazı kurallar (örneğin dar kanalda büyük bir gemiyi engellememe) bir gemiye, diğerinin **geçişini engellememe (not to impede)** yükümlülüğü yükler. Kural 8(f), bu ifadenin nasıl uygulanacağını netleştirir ve sık yapılan bir yanlış anlamayı önler: 'engellememe' yükümlülüğü, o gemiye **erken hareket etme** sorumluluğu yükler, ama karşı tarafı çatışma önleme kurallarından **muaf tutmaz**.\n\nMantık iki yönlüdür. Engellememekle yükümlü gemi, diğerine yeterli deniz alanı kalacak şekilde **önlemini erkenden** alır (henüz yakın bir durum oluşmadan). Buna karşılık 'geçişi engellenmeyecek' olan gemi de yükümlülüğünün mutlak olmadığını bilir: iki gemi arasında yine de bir **çatışma riski** doğarsa, o gemi ilgili tüm çatışmayı önleme kurallarına **tam olarak uymakla** yükümlü hâle gelir. Yani hiçbir gemi, bir başkasının yükümlülüğüne güvenerek kendi sorumluluğundan sıyrılamaz.\n\n**Gemide önemi:** Şüphe hâlinde hızı azaltmak veya durmak (8e) her zaman meşru ve çoğu kez en güvenli seçenektir; 'yol benim' varsayımıyla gerekli manevradan kaçınmak, çatışmaların klasik nedenlerindendir.",
         bulletPoints: [
           "Geçişi engellememekle yükümlü gemi, yeterli deniz alanı bırakmak için erken önlem alır.",
           "Bu yükümlülük, risk doğduğunda diğer kurallara uyma zorunluluğunu kaldırmaz.",
@@ -11720,7 +11720,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Tipik Fener Düzenleri (Kural 23-31)",
         content:
-          "Fenerlerin renk, sayı ve düşey diziliş kombinasyonu geminin tipini ve durumunu belirtir. Aşağıda en sık karşılaşılan düzenler özetlenmiştir; 'kırmızı üstünde kırmızı' (NUC) gibi kalıplar ezberlenmelidir.",
+          "Denizde gece, bir geminin ne olduğunu ve ne yaptığını söyleyen tek dil **fenerlerdir**. COLREG bu dili üç değişken üzerine kurar: fenerlerin **rengi** (beyaz/kırmızı/yeşil), **sayısı** ve **düşey dizilişi**. Bu üçlünün her kombinasyonu belirli bir gemi tipine veya duruma karşılık gelir; bir zabitin görevi, karşıdaki ışık desenini okuyup geminin **hangi kurala tabi** olduğunu (dolayısıyla kimin kime yol vereceğini) anında çözmektir.\n\nDüzeni okumanın anahtarı birkaç **kalıbı ezberlemektir**: yol alan motorlu gemide silyon + yan + kıç fenerleri; **all-round kırmızı üstünde kırmızı** = kumanda altında değil (NUC); **kırmızı-beyaz-kırmızı** = manevra kabiliyeti kısıtlı (RAM); **üç kırmızı** = draftından kısıtlı (CBD); demirde tek beyaz all-round. Yan fenerlerin (kırmızı iskele, yeşil sancak) görünüp görünmemesi, karşı geminin size göre hangi yönde ilerlediğini de ele verir.\n\n**Gemide önemi:** Fener kalıplarını düşünmeden tanımak gece vardiyasının temel becerisidir; yanlış okunan bir desen (örneğin RAM'i sıradan motorlu gemi sanmak) tümüyle yanlış bir kaçınma kararına yol açar.",
         bulletPoints: [
           "Motorlu gemi yolda (Kural 23): silyon feneri/fenerleri (≥ 50 m'de önde-arkada iki silyon), yan fenerler ve kıç feneri.",
           "Demirde gemi (Kural 30): bir beyaz all-round (≥ 50 m'de önde yüksek, kıçta alçak iki adet); ≥ 100 m'de güverteler ayrıca aydınlatılır.",
@@ -11749,7 +11749,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Temel Şekiller ve Anlamları",
         content:
-          "Her şeklin tek başına veya kombinasyon hâlinde belirli bir anlamı vardır. Şekiller en iyi görülecek yerde, düşey hatta gösterilir.",
+          "Gündüz, fenerler işe yaramadığında geminin durumunu aynı bilgiyi taşıyan **siyah şekiller** bildirir. Yalnızca dört temel şekil vardır — **top (küre), koni, silindir ve baklava (eşkenar dörtgen)** — ama sayıları ve düşey dizilişleri değiştikçe farklı anlamlar üretirler; tıpkı gece fenerlerinin renk-sayı-diziliş mantığı gibi. Şekiller en iyi görülecek yerde, düşey bir hat üzerinde gösterilir.\n\nEn kritik aile **toplardır** ve sayıyla okunur: **tek top** = demirde; **düşey iki top** = kumanda altında değil (NUC); **düşey üç top** = karaya oturmuş. Diğerleri şekille ayrışır: **top-baklava-top** = manevra kabiliyeti kısıtlı (RAM); **silindir** = draftından kısıtlı (CBD); **ucu aşağı koni** = yelken + makineyle giden gemi; balıkçıda uçları birbirine bakan iki koni ve av takımının uzandığı yöne ucu yukarı koni. **Baklava**, 200 m'yi aşan yedek dizisini işaretler.\n\n**Gemide önemi:** Gece fener kalıbı ile gündüz şekli **birebir aynı durumu** anlatır (NUC gece kırmızı-kırmızı, gündüz iki top); bu eşleştirmeyi kurmak, iki ayrı listeyi ezberlemek yerine tek bir mantık öğrenmeyi sağlar.",
         image: "/diagrams/navigation/gunduz-isaretleri.svg",
         imageAlt: "Gündüz işaretleri: demir 1 top, NUC 2 top, karaya oturmuş 3 top, RAM top-baklava-top, CBD silindir, balıkçı çift koni",
         bulletPoints: [
@@ -11763,7 +11763,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Kurallara Göre Gündüz İşaretleri",
         content:
-          "Aşağıdaki eşleşmeler, ilgili COLREG kurallarındaki gündüz işaretlerini özetler. Gece fener kalıbı ile gündüz şekli birbirinin karşılığıdır (ör. NUC gece kırmızı-kırmızı, gündüz iki top).",
+          "Gündüz işaretlerini kalıcı biçimde öğrenmenin yolu, onları **ait oldukları kuralla** birlikte hatırlamaktır; çünkü her şekil aslında bir COLREG maddesinin görünür özetidir. Aşağıdaki eşleşmeler, hangi durumun hangi kuralda tanımlandığını ve karşılığında hangi şeklin gösterildiğini bir arada verir.\n\nTaşıyıcı ilke şudur: **gece fener kalıbı ile gündüz şekli birbirinin tam karşılığıdır.** Kumanda altında olmayan gemi gece iki kırmızı all-round gösterirken gündüz iki top gösterir; karaya oturmuş gemi gece üç kırmızı, gündüz üç top; draftından kısıtlı gemi gece üç kırmızı — ama gündüz tek silindir gösterir (bu, ezberde en çok karışan istisnalardan biridir). Yelkenli + makine (Kural 25) ucu aşağı koni, balıkçı (Kural 26) uçları birbirine bakan iki koni, 200 m'yi aşan yedek (Kural 24) baklava gösterir.\n\n**Gemide önemi:** Gündüz bir gemiyi sınıflandırırken şekli görüp ilgili kuralı hatırlamak, o geminin **manevra kısıtını** ve dolayısıyla yol hakkı ilişkisini doğrudan verir; şekil-kural bağını kurmayan bir zabit gündüz durumu yanlış değerlendirir.",
         bulletPoints: [
           "Kural 24 (yedekleme): yedek dizisinin boyu > 200 m ise hem çeken hem çekilen gemide bir baklava şekli.",
           "Kural 25 (yelkenli + makine): baş tarafta sivri ucu aşağı bakan bir koni — gemi hem yelken hem makineyle ilerliyor demektir.",
@@ -11805,7 +11805,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Kısıtlı Görüşte Ses İşaretleri (Kural 35)",
         content:
-          "Kısıtlı görüş alanında veya yakınında, gece-gündüz fark etmeksizin aşağıdaki işaretler en fazla 2 dakika arayla verilir. Demirde ve karaya oturmuş gemiler için çan/gong kullanılır.",
+          "Sis, yağmur veya kar görüşü kapattığında fenerler ve şekiller işe yaramaz; geminin varlığını ve durumunu artık **ses** bildirir. Kural 35'in mantığı, her geminin **düzenli aralıklarla** (en fazla 2 dakikada bir) kim olduğunu 'duyurmasıdır'; işaretler gece-gündüz fark etmeksizin, görüş kısıtlı olduğu sürece verilir.\n\nDeseni okumak için birkaç temel kalıp yeterlidir: yol alan motorlu gemi **bir uzun** düdük; durmuş ama yolu olmayan motorlu gemi **iki uzun**; manevrası kısıtlı, kumanda altında olmayan, draftından kısıtlı, balıkçı veya yedekleyen gemi **bir uzun + iki kısa** verir. Demirdeki gemi **hızlı çan** çalar (100 m üzeri ayrıca kıçta gong); karaya oturmuş gemi çan öncesi ve sonrası **üç ayrı çan darbesi** ekler. Böylece bir zabit hiçbir şey görmeden, yalnızca sesin ritminden karşı geminin tipini ve hareket durumunu çıkarabilir.\n\n**Gemide önemi:** Kısıtlı görüşte bu işaretler radar takibinin **işitsel teyididir**; duyulan işaretin türü (örneğin bir uzun + iki kısa) radar hedefinin neden beklenmedik hareket ettiğini açıklayabilir ve emniyetli hız/manevra kararını doğrudan etkiler.",
         bulletPoints: [
           "Yolda olan motorlu gemi: 1 uzun (≤ 2 dk).",
           "Durmuş, yol almayan motorlu gemi: 2 uzun (aralarında ~2 sn) (≤ 2 dk).",
@@ -11880,7 +11880,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Tonaja Göre Taşıma Eşikleri",
         content:
-          "Cihaz gereklilikleri kümülatiftir: bir gemi kendi eşiğinin ve altındaki tüm eşiklerin donanımını taşır. Yolcu gemileri, tonajdan bağımsız olarak yük gemisi eşiklerinin çoğuna tabidir.",
+          "SOLAS V/19'un mantığı bir **merdiven** gibidir: gereklilikler tonaj (GT) büyüdükçe **birikerek** artar. Bir gemi yalnızca kendi tonaj eşiğinin donanımını değil, **altındaki tüm eşiklerin** donanımını da taşır — yani 3000 GT'lik bir gemi, 300 GT ve 500 GT eşiklerinin her cihazına da sahiptir. Bu yüzden eşikleri tek tek değil, **üst üste yığılan katmanlar** olarak düşünmek gerekir.\n\nTemel katmanlar şöyle örülür: **tüm gemiler** manyetik pusula, pelorus, harita/yayın ve GNSS alıcısı taşır; **≥ 150 GT** yedek pusula ve işaret feneri ekler; **≥ 300 GT ve tüm yolcu gemileri** X-bant (9 GHz) radar, ARPA, iskandil ve hız logu; **≥ 500 GT** cayro pusula ve tekrarlayıcıları, dümen açı ve pervane göstergeleri; **≥ 3000 GT** ikinci bağımsız radar (tercihen S-bant); **≥ 10000 GT** tam ARPA; **≥ 50000 GT** dönüş hızı (ROT) göstergesi ve yer üstü çift eksenli hız cihazı. **Yolcu gemileri**, küçük tonajda olsalar bile yük gemisi eşiklerinin çoğuna doğrudan tabidir.\n\n**Gemide önemi:** Bu eşikler yalnızca sınav bilgisi değildir; liman devleti kontrolünde (PSC) eksik veya arızalı zorunlu cihaz, geminin **tutulmasına (detention)** yol açabilir — bu yüzden köprüüstü zabiti tonaja düşen tüm zorunlu donanımı ve bunların çalışır durumda olduğunu bilmek zorundadır.",
         image: "/diagrams/navigation/solas-v-tasima.svg",
         imageAlt: "SOLAS V/19 tonaja göre seyir cihazı taşıma eşikleri ladder diyagramı",
         bulletPoints: [
@@ -11897,7 +11897,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Aşamalı/Tip Bazlı Cihazlar",
         content:
-          "Bazı cihazlar tonajın yanı sıra gemi tipi ve inşa tarihine göre aşamalı olarak zorunlu kılınmıştır.",
+          "Tüm zorunlu donanım salt tonajla belirlenmez. Bir grup cihaz, **gemi tipine** (yolcu/yük/tanker) ve **inşa tarihine** göre, çoğu zaman bir **geçiş takvimiyle** kademeli olarak zorunlu kılınmıştır; yani 'yeni inşa' ve 'mevcut gemi' için farklı yükümlülükler geçerli olabilir. Bu, teknoloji olgunlaştıkça filoya yayılan cihazların tipik yürürlüğe giriş biçimidir.\n\nBaşlıca örnekler şöyledir: **ECDIS** taşıma zorunluluğu 2012–2018 arasında gemi tipi ve büyüklüğüne göre kademeli getirildi (faz tamamlandı); **BNWAS** (köprüüstü vardiya alarm sistemi) yük gemilerinde ≥ 150 GT ve yolcu gemilerinde zorunludur; **VDR** (sefer veri kaydedici — deniz 'kara kutusu') yolcu gemileri ve ≥ 3000 GT yük gemilerinde, mevcut yük gemilerinde ise S-VDR kabul edilerek istenir; **LRIT** (uzun menzilli tanımlama ve izleme) uluslararası seferdeki yolcu gemileri, ≥ 300 GT yük gemileri ve hareketli açık deniz sondaj ünitelerini (MODU) kapsar.\n\n**Gemide önemi:** Bir cihazın zorunlu olup olmadığını yalnızca tonaja bakarak değerlendirmek yanıltıcıdır; geminin **tipi ile inşa/dönüşüm tarihi** de kontrol edilmelidir — özellikle ECDIS ve VDR gibi cihazlarda geçiş tarihleri denetimlerde sık sorgulanır.",
         bulletPoints: [
           "ECDIS: zorunlu taşıma gemi tipi ve büyüklüğüne göre 2012-2018 arasında kademeli getirildi (faz tamamlandı; 2018).",
           "BNWAS (Köprüüstü Seyir Vardiyası Alarm Sistemi): yük gemilerinde ≥ 150 GT ve yolcu gemilerinde (SOLAS V/19.2.2.3).",
@@ -11926,7 +11926,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Başlıca Hatalar",
         content:
-          "Cayro pusulanın hataları öngörülebilir ve büyük ölçüde düzeltilebilir. Bunlar enlem, hız ve gemi hareketine bağlıdır.",
+          "Cayro pusulanın en değerli yanı, hatalarının **rastgele değil, öngörülebilir** olmasıdır: her biri belirli bir fiziksel nedenden doğar, bir formülle hesaplanabilir ve büyük ölçüde **düzeltilebilir**. Bu yönüyle manyetik pusulanın konuma bağlı, daha az kestirilebilir sapmalarından ayrılır. Hatalar temelde üç değişkene bağlıdır: **enlem, gemi hızı ve geminin hareketi** (yalpa, ani manevra).\n\nBaşlıca türler şunlardır: **enlem/sönümleme hatası** sönümlemeden doğar ve enlemle (tan φ ile) büyür, enlem düzeltmesiyle giderilir; **hız hatası** geminin kuzey-güney hız bileşeninden kaynaklanır — kuzey yarımkürede kuzeye giderken **batıya**, güneye giderken **doğuya** sapma verir ve büyüklüğü hız, rota ve enlemle değişir; **balistik sapma** hız veya rota ani değiştiğinde oluşan geçici bir hatadır ve doğru tasarımda sönümlenir; **yalpa/gimbal hatası** ise gemi yalpalarken ortaya çıkar ve tasarımla en aza indirilir.\n\n**Gemide önemi:** Bu hatalar bilindiği için düzeltilebilir; ancak hız ve enlem hatası özellikle yüksek enlemlerde ve hız/rota değişimlerinde ihmal edilmemelidir — cayro hatası düzenli olarak (transit, gök cismi azimutu veya GPS COG ile) kontrol edilip hata kartına işlenmelidir.",
         bulletPoints: [
           "Enlem/sönümleme hatası (settling/latitude error): sönümlemeden kaynaklanır, enlemle (tan φ ile) artar; enlem düzeltmesiyle giderilir.",
           "Hız hatası (steaming/speed error): geminin kuzey-güney hız bileşeninden doğar. Kuzey hemisferde kuzeye giderken batı, güneye giderken doğu yönünde sapma oluşur; büyüklüğü hız, rota ve enlemle değişir.",
