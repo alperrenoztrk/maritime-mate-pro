@@ -4,34 +4,34 @@ import { createSeededRng, pickRandomUnique } from "@/utils/random";
 export const navigationQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question: "D=120 NM yolu 10 kn hızla kaç saatte alırsınız?",
-    options: ["10", "12", "14", "8"],
-    correctAnswer: 1,
-    explanation: "Zaman = Mesafe / Hız = 120 / 10 = 12 saat.",
+    question: "Bir gemi 09:00'da yola çıkıp 156 NM'lik mesafeyi 13 kn sabit hızla alıyor. Varış saati (aynı zaman dilimi) nedir?",
+    options: ["19:00", "20:00", "21:00", "22:00"],
+    correctAnswer: 2,
+    explanation: "Süre = 156 ÷ 13 = 12 saat; 09:00 + 12 = 21:00. (Yaygın hata: mesafeyi 12 kn'a bölüp 13 saat bulmak → 22:00.)",
     category: "Temel Seyir"
   },
   {
     id: 2,
-    question: "1 dakikada 0.5 NM gidiyorsanız hızınız kaç kn'dur?",
-    options: ["15", "20", "25", "30"],
-    correctAnswer: 3,
-    explanation: "1 dakika = 1/60 saat. Hız = 0.5 / (1/60) = 30 kn.",
+    question: "Bir gemi 6 dakikada 1.4 NM alıyor. Hızı kaç kn'dur?",
+    options: ["8.4", "12", "14", "16"],
+    correctAnswer: 2,
+    explanation: "6 dk = 0.1 saat. Hız = 1.4 ÷ 0.1 = 14 kn. (Trap: 1.4 × 6 = 8.4 yanlış çarpımdır.)",
     category: "Hız-Mesafe-Zaman"
   },
   {
     id: 3,
-    question: "1 dakika yay hatası yaklaşık kaç deniz mili eder?",
-    options: ["1 NM", "2 NM", "15 NM", "60 NM"],
-    correctAnswer: 0,
-    explanation: "Enlemde 1 dakikalık yay ≈ 1 NM kabul edilir.",
+    question: "İki mevki aynı boylamda; enlem farkı 0°48' ise aralarındaki mesafe kaç NM'dir?",
+    options: ["4.8 NM", "8 NM", "48 NM", "80 NM"],
+    correctAnswer: 2,
+    explanation: "Aynı boylamda mesafe = enlem farkı (dakika) × 1 NM. 0°48' = 48' ⇒ 48 NM. (Trap: 0.8° veya 4.8 gibi ondalık karışıklıkları.)",
     category: "Coğrafi Temeller"
   },
   {
     id: 4,
-    question: "1 derece enlem farkı kaç deniz milidir?",
-    options: ["30", "45", "60", "90"],
-    correctAnswer: 2,
-    explanation: "1° = 60'. 1' ≈ 1 NM olduğundan 60 NM.",
+    question: "35°00'N ile 37°30'N arasındaki (aynı boylam) mesafe kaç NM'dir?",
+    options: ["120 NM", "150 NM", "180 NM", "250 NM"],
+    correctAnswer: 1,
+    explanation: "Enlem farkı = 2°30' = 150'. Aynı boylamda 1' ≈ 1 NM ⇒ 150 NM. (Trap: 2.5×60=150 doğru; 180 için 3° varsaymak.)",
     category: "Coğrafi Temeller"
   },
   {
@@ -140,10 +140,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 18,
-    question: "1 saatlik ileride log 10 NM gösteriyorsa STW kaç kn?",
-    options: ["8", "10", "12", "14"],
+    question: "Parakete (log) 14:00'te 3120.0 NM, 16:30'da 3157.5 NM gösteriyor. Ortalama STW kaç kn'dur?",
+    options: ["12", "15", "18", "37.5"],
     correctAnswer: 1,
-    explanation: "STW ≈ 10 NM / 1 h = 10 kn.",
+    explanation: "Kat edilen mesafe = 3157.5 − 3120.0 = 37.5 NM; süre 2.5 saat; STW = 37.5 ÷ 2.5 = 15 kn. (Trap: 37.5'i saat sanmak.)",
     category: "Aletler"
   },
   {
@@ -156,10 +156,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 20,
-    question: "3 saat içinde 42 NM gidildi. Ortalama hız kaç kn?",
-    options: ["12", "13", "14", "15"],
-    correctAnswer: 2,
-    explanation: "Hız = 42 / 3 = 14 kn.",
+    question: "Bir gemi 45 NM'yi 15 kn ile, ardından 40 NM'yi 10 kn ile alıyor. Toplam ortalama hızı yaklaşık kaç kn'dur?",
+    options: ["11.3", "12.1", "12.5", "13.0"],
+    correctAnswer: 1,
+    explanation: "Ortalama hız = toplam yol ÷ toplam süre = (45+40) ÷ (45/15 + 40/10) = 85 ÷ (3+4) = 85÷7 ≈ 12.1 kn. (Trap: hızların aritmetik ortalaması 12.5 kn yanlıştır.)",
     category: "Hız-Mesafe-Zaman"
   },
   {
@@ -212,10 +212,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 27,
-    question: "Uzaklık ölçeğinde 15'lik enlem farkı kaç NM'dir?",
-    options: ["10", "15", "30", "60"],
+    question: "Bir gemi güneye giderek enlemini 41°10'N'den 40°25'N'e düşürdü. Kat ettiği mesafe kaç NM'dir?",
+    options: ["35 NM", "45 NM", "55 NM", "75 NM"],
     correctAnswer: 1,
-    explanation: "Enlem dakikası ≈ NM olduğundan 15 NM.",
+    explanation: "Enlem farkı = 41°10' − 40°25' = 45'. Aynı boylamda 45' ⇒ 45 NM. (Trap: 41−40=1° sanıp 60 veya 75 bulmak.)",
     category: "Coğrafi Temeller"
   },
   {
@@ -228,10 +228,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 29,
-    question: "Radar menzil halkalarında 6 NM çap kaç NM yarıçapa karşılık gelir?",
-    options: ["1", "2", "3", "6"],
-    correctAnswer: 2,
-    explanation: "Çap 6 ise yarıçap 3 NM.",
+    question: "Radar 12 NM menzil (yarıçap) ölçeğinde çalışıyor ve ekranda 4 eşit menzil halkası var. Halkalar arası mesafe kaç NM'dir?",
+    options: ["2 NM", "3 NM", "4 NM", "6 NM"],
+    correctAnswer: 1,
+    explanation: "Menzil halkaları eşit aralıklıdır: 12 NM ÷ 4 halka = her halka 3 NM. (Trap: çapı 12 sanıp 1.5 veya 6 bulmak.)",
     category: "Radar"
   },
   {
@@ -292,10 +292,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 37,
-    question: "Fix 40°N, 20°E'den 1° enlem güneyine inince enlem nedir?",
-    options: ["39°N", "41°N", "40°S", "19°N"],
-    correctAnswer: 0,
-    explanation: "1° güney = 39°N.",
+    question: "38°50'N mevkisinden 1°35' güneye inilirse yeni enlem nedir?",
+    options: ["36°15'N", "37°15'N", "37°25'N", "40°25'N"],
+    correctAnswer: 1,
+    explanation: "38°50' − 1°35' = 37°15'N (50'−35'=15', 38°−1°=37°). (Trap: 50'+35' toplamak ya da güney yerine kuzey.)",
     category: "Enlem-Boylam"
   },
   {
@@ -356,10 +356,10 @@ export const navigationQuestions: QuizQuestion[] = [
   },
   {
     id: 45,
-    question: "1 saatlik seyirde 8 NM kuzeye, 6 NM doğuya ilerlediniz. Net mesafe ~?",
-    options: ["10", "12", "14", "6"],
-    correctAnswer: 0,
-    explanation: "√(8²+6²) = 10 NM.",
+    question: "Bir saatte 9 NM kuzeye ve 12 NM doğuya ilerlediniz. Net yer değiştirme ve kabaca yön nedir?",
+    options: ["10.8 NM, ~053°", "15 NM, ~037°", "15 NM, ~053°", "21 NM, ~053°"],
+    correctAnswer: 2,
+    explanation: "Net mesafe = √(9²+12²) = √225 = 15 NM. Yön = atan(12 doğu / 9 kuzey) ≈ 53° ⇒ ~053°. (Trap: 9+12=21 yanlış; 037° bileşenleri ters kullanmaktır.)",
     category: "Vektör"
   },
   {
