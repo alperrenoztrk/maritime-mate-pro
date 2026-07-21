@@ -8886,7 +8886,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Hata Türleri: Sistematik ve Rastgele",
         content:
-          "Göksel seyirde hatalar iki ana kategoriye ayrılır. Bu ayrım, hatanın kaynağını ve düzeltme yöntemini belirler.",
+          "Göksel seyirde hatalar iki ana kategoriye ayrılır ve bu ayrım, hatanın **nasıl giderileceğini** belirler. **Sistematik hatalar** her gözlemde aynı yönde ve benzer büyüklükte tekrarlar (kalibrasyonsuz sextant, yanlış IE, hatalı kronometre); tutarlı oldukları için **tespit edilip düzeltilebilirler**. **Rastgele hatalar** ölçümden ölçüme değişir ve öngörülemez (salınımda tepe yakalama, ufuk belirsizliği, atmosfer); tek tek düzeltilemez, yalnızca **çok sayıda gözlemin ortalamasıyla azaltılır**.\n\n**Gemide önemi:** Bu ayrımı bilmek doğru önlemi seçmeyi sağlar — sistematik hata için 'kaynağı bul ve düzelt' (örn. IE kontrolü), rastgele hata için 'daha çok gözlem al ve ortala'. İkisini karıştırmak (örn. sistematik bir kronometre hatasını 'daha çok gözlemle' gidermeye çalışmak) boşunadır; hata her ölçümde aynı yönde birikmeye devam eder.",
         bulletPoints: [
           "**Sistematik hatalar**: Her gözlemde aynı yönde ve benzer büyüklükte tekrarlayan hatalardır. Örnek: Kalibre edilmemiş sextant, yanlış indeks hatası, hatalı kronometr.",
           "**Rastgele hatalar**: Ölçümden ölçüme değişen, tahmin edilemeyen hatalardır. Örnek: Gemi salınımı sırasında tepe yakalama, ufuk belirsizliği, atmosferik bozulmalar.",
@@ -8896,7 +8896,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Zaman Hatası ve Boylam Etkisi",
         content:
-          "Kronometredeki zaman hatası, boylam hesabını doğrudan etkiler. Dünya dakikada 15′ açı döndüğünden, zaman hatası geometrik olarak boylam hatasına dönüşür. Bu ilişki, göksel seyirdeki en kritik hata kaynaklarından biridir.",
+          "Kronometredeki zaman hatası, göksel seyrin **en kritik ve en sinsi** hata kaynaklarından biridir çünkü doğrudan **boylam hatasına** dönüşür. Dünya sabit hızla döndüğünden (dakikada 15′ açı), zamandaki her hata geometrik olarak bir açısal (boylam) hataya çevrilir: Δλ = Δt × 15′/dakika.\n\n**Neden sinsi:** Zaman hatası mevkiyi **belirli bir yönde** (doğu-batı) kaydırır ve gözlemden gözleme aynı kaldığından cocked hat'i küçük tutabilir — yani fix 'tutarlı ama yanlış' görünür. **Worked example:** 4 saniyelik hata → 4 × 0.25′ = 1′ → ekvatorda ≈1 NM; 1 dakikalık hata → 15′ → ≈15 NM. Yüksek enlemde etki cos φ ile azalır. **Gemide önemi:** Bu yüzden her gözlem serisinden önce kronometre bir zaman sinyaliyle (UTC) kontrol edilir; küçük bir saat kayması, mükemmel bir sextant ölçümünü bile millerce yanlış boylama taşır.",
         formula: {
           text: "Δλ = Δt × 15′/dakika",
           description: "4 saniye zaman hatası ≈ 1′ boylam hatası ≈ 1 NM (ekvatorda)"
@@ -8911,7 +8911,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Sextant Ölçüm Hataları",
         content:
-          "Sextant ile yapılan ölçümler, alet kaynaklı ve gözlemci kaynaklı hatalar içerir. Bu hatalar düzeltilmediğinde veya yanlış düzeltildiğinde, Ho değeri dakikalar mertebesinde sapabilir.",
+          "Sextant ölçümü, hem **alet kaynaklı** hem **gözlemci kaynaklı** hatalar içerir; bunlar düzeltilmez veya yanlış düzeltilirse Ho değeri dakikalar mertebesinde sapar ve 1′ = 1 NM olduğundan mevki doğrudan kayar.\n\n**Başlıca kaynaklar:** **İndeks hatası** (her seans kontrol edilmezse sistematik), **göz yüksekliği tahmini** (dip'i etkiler; ~her metre ≈ 0.5′), **tepe yakalama** (gemi salınımında yanlış an; 2–5′), ve **düşük yükseklikte ufuk/refraksiyon belirsizliği**. **Gemide önemi:** Bu hataların çoğu **disiplinle** azaltılır — IE'yi her seans kontrol etmek, göz yüksekliğini (draft/trim dahil) doğru almak, salınımda cismi 'sallandırıp' en alçak temas anını yakalamak ve alçak cisimlerden kaçınmak. Sextant ne kadar iyi kullanılırsa sonraki tüm hesaplar o kadar sağlam olur.",
         bulletPoints: [
           "**İndeks hatası (IE)**: Kontrol edilmeden yapılan gözlem sistematik olarak yanlıştır. Her seans öncesi kontrol zorunludur.",
           "**Göz yüksekliği tahmini**: Dip düzeltmesinde yanlış değer kullanımı. Her metre hata ≈ 0.5′ etki yaratır.",
@@ -8922,7 +8922,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Yükseklik Düzeltme Hataları",
         content:
-          "Her düzeltme adımı potansiyel bir hata kaynağıdır. Sıra ve işaret hataları, kümülatif olarak birikir.",
+          "Sextantla ölçülen ham yükseklik (**Hs**), gözlenen yüksekliğe (**Ho**) dönüşürken bir dizi düzeltmeden geçer: indeks düzeltmesi, **dip** (göz yüksekliği), **refraksiyon**, **yarıçap (SD)** ve **paralaks**. Bu adımların her biri kendi hata payını taşır ve hatalar **kümülatif** olarak birikir; bir adımdaki 0.5′ sapma ile diğerindeki 0.5′ sapma aynı yönde ise toplam 1′ hataya, yani yaklaşık **1 NM** mevki hatasına dönüşür.\n\nEn sinsi hata **işaret hatasıdır**: dip ve indeks düzeltmesi her zaman çıkarılırken, alt kenar (lower limb) gözleminde SD eklenir, üst kenar (upper limb) gözleminde çıkarılır. Kenarın karıştırılması tek başına yaklaşık **32′ (≈32 NM)** hata üretir; bu, göksel seyirdeki en büyük tekil hata kaynaklarından biridir. Refraksiyon ise standart atmosfere göre tablolanmıştır; aşırı sıcak/soğuk hava veya düşük irtifa açıları bu varsayımı bozar ve ek düzeltme gerektirir.\n\n**Gemide önemi:** Düzeltmeler daima aynı sırayla ve bir kontrol listesiyle yapılmalı, kenar seçimi (üst/alt) gözlem anında not edilmeli ve düşük irtifa gözlemlerinden (< 15°) mümkün oldukça kaçınılmalıdır.",
         bulletPoints: [
           "**Dip düzeltmesi**: Göz yüksekliği yanlış tahmin edilirse Dip değeri hatalı olur",
           "**Refraksiyon**: Standart atmosfer varsayımı her zaman geçerli değildir. Aşırı sıcak/soğuk havada ek düzeltme gerekir",
@@ -8937,7 +8937,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "LOP Kesişim Geometrisi ve Hata Büyütmesi",
         content:
-          "İki veya daha fazla LOP'un kesişim açısı, fix güvenilirliğini doğrudan etkiler. Dar açılı kesişimler, küçük ölçüm hatalarını büyük mevki hatalarına dönüştürür.",
+          "İki mevki hattının (**LOP**) kesişim açısı, elde edilen mevkinin güvenilirliğini geometrik olarak belirler. Her LOP aslında matematiksel bir çizgi değil, ölçüm belirsizliği kadar genişlikte bir **şerittir**; iki şeridin kesiştiği alan ne kadar küçük ve kareye yakınsa mevki o kadar kesindir.\n\nKesişim **dik açıya (90°)** yaklaştıkça bu alan küçük bir kareye yaklaşır ve hata minimuma iner. Açı daraldıkça kesişim bölgesi uzun ve ince bir eşkenar dörtgene dönüşür; aynı ölçüm hatası çok daha büyük bir konum belirsizliğine yayılır. Enine hata yaklaşık **1/sin(θ)** ile büyür: 30°'de yaklaşık 2 kat, 15°'de yaklaşık 4 kat. Bu nedenle gök cisimleri seçilirken azimutları arasında **60°–120°** fark olmasına özen gösterilir.\n\n**Gemide önemi:** Üç cisim gözleniyorsa azimutları gökyüzüne olabildiğince eşit (≈120°) dağıtılmalı; birbirine yakın azimutlu cisimler sayıca çok olsa bile güvenilir bir fix vermez.",
         bulletPoints: [
           "**90° kesişim (ideal)**: Hatalar minimum büyütülür, en güvenilir fix",
           "**60°-120° kesişim**: Kabul edilebilir güvenilirlik",
@@ -8952,7 +8952,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Cocked Hat (Hata Üçgeni) Analizi",
         content:
-          "Üç LOP'un bir noktada kesişmemesi normaldir. Oluşan üçgen, 'cocked hat' olarak adlandırılır ve hata büyüklüğünün görsel göstergesidir.",
+          "Üç veya daha fazla LOP alındığında bunların tam olarak tek bir noktada kesişmemesi **kuraldır, istisna değil**. Ortaya çıkan üçgene denizcilikte **cocked hat** (eğri şapka) denir ve bu üçgen, gözlemlerdeki toplam hatanın doğrudan görsel bir ölçüsüdür.\n\nÜçgenin küçük olması gözlemlerin **birbiriyle tutarlı** olduğunu; büyük olması ise devrede bir **sistematik hatanın** (yanlış kronometr, düzeltilmemiş indeks hatası, hatalı cisim kimliklendirmesi) bulunduğunu gösterir. Kritik incelik şudur: küçük bir üçgen mevkinin *doğru* olduğunu garanti etmez — üç gözlem de aynı sistematik hatayı taşıyorsa üçgen yine küçük kalır, ama gerçek mevki üçgenin tümüyle dışında olabilir. Üçgen yalnızca **iç tutarlılığı** ölçer, mutlak doğruluğu değil.\n\n**Gemide önemi:** Büyük bir cocked hat gördüğünüzde fix'i kabul etmeden önce zamanı, indeks hatasını ve hesapları kontrol edin; dördüncü bir LOP eklemek hatanın kaynağını çoğu zaman açığa çıkarır.",
         bulletPoints: [
           "**Küçük cocked hat** (< 2 NM kenar): Gözlemler tutarlı, fix güvenilir",
           "**Orta cocked hat** (2-5 NM kenar): Kabul edilebilir, ancak dikkatli yorumlanmalı",
@@ -8963,7 +8963,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Most Probable Position (MPP)",
         content:
-          "Cocked hat oluştuğunda, geminin en olası konumu (MPP) belirlenir. MPP, üçgenin geometrik merkezi olmayabilir; LOP güvenilirliklerine göre ağırlıklı ortalama alınır.",
+          "Bir cocked hat oluştuğunda gemi bu üçgenin tam olarak neresindedir? Sorunun cevabı **en olası mevki** (Most Probable Position, **MPP**) kavramıdır. Tüm LOP'lar eşit güvenilirlikte kabul edilirse MPP, üçgenin **ağırlık merkezidir** (centroid) — üç kenara olan dik uzaklıkların dengelendiği nokta.\n\nAncak LOP'lar nadiren eşit güvenilirliktedir: yüksek irtifadan alınan, net ufuklu veya azimutu ideale yakın bir gözlem diğerlerinden daha güvenilirdir ve MPP o LOP'a doğru **ağırlıklı** olarak kayar. Bu istatistiksel yaklaşımın üzerine bir de **emniyet mantığı** biner: üçgen bir tehlikeye (sığlık, kaya) yakınsa artık en olası nokta değil, **tehlikeye en yakın köşe** esas alınır — çünkü hatanın bedeli asimetriktir.\n\n**Gemide önemi:** Açık denizde MPP olarak centroid alınabilir; ancak tehlike yakınında daima en kötü (tehlike tarafındaki) yorum benimsenmeli ve rota buna göre planlanmalıdır.",
         bulletPoints: [
           "Tüm LOP'lar eşit güvenilirlikte ise: MPP, üçgenin ağırlık merkezidir (centroid)",
           "Bir LOP daha güvenilir ise: MPP, o LOP'a daha yakın konumlanır",
@@ -8996,7 +8996,7 @@ Bu senaryoda fix güvenilirdir.`
       {
         title: "Hata Minimizasyonu İçin Pratik Öneriler",
         content:
-          "Göksel seyirde hata kaynaklarını azaltmak için sistematik bir yaklaşım gereklidir.",
+          "Göksel seyirdeki hatalar tesadüfen değil, **disiplinli bir yöntemle** azaltılır. Temel ilke, hataları iki sınıfa ayırıp her birine uygun tedbiri uygulamaktır: **sistematik hatalar** (kronometr sapması, indeks hatası, yanlış göz yüksekliği) tespit edilip *düzeltilir*; **rastgele hatalar** (okuma sapması, salınım anının kaçırılması) ise çok sayıda gözlemin *ortalaması* alınarak istatistiksel olarak küçültülür.\n\nUygulamada bu; gözlem öncesi kronometrün UTC'ye göre kontrolü, her seansta indeks hatasının ölçülmesi, tek bir cisim yerine **3–7 gözlemlik seriler** alınması, azimutları geniş yayılmış cisimlerin seçilmesi ve hesabın ikinci bir yöntemle (tablo + hesap makinesi) çapraz doğrulanması demektir. Alacakaranlık (twilight) penceresinde hem yıldızlar hem ufuk aynı anda görüldüğü için bu kısa süre azami dikkatle kullanılır.\n\n**Gemide önemi:** İyi bir seyir zabiti hataları 'olduktan sonra düzeltmeye' değil, **oluşmadan önce önlemeye** odaklanır; kontrol listesi ve tekrarlı gözlem bu önlemenin somut araçlarıdır.",
         bulletPoints: [
           "**Kronometr kontrolü**: Her gözlem serisinden önce UTC doğrulaması yapılmalı",
           "**İndeks hatası kontrolü**: Her gözlem seansında ufuk-ufuk veya Güneş-Güneş yöntemiyle kontrol",
@@ -9009,7 +9009,7 @@ Bu senaryoda fix güvenilirdir.`
       {
         title: "Emniyet Prensibi",
         content:
-          "Belirsizlik durumunda, seyir emniyeti her zaman önceliklidir. Fix'in güvenilirliği sorgulandığında, tehlikeye en yakın yorumlama yapılmalıdır.",
+          "Tüm hata analizinin altında yatan tek bir yönlendirici ilke vardır: **belirsizlik varsa emniyet tarafında kal.** Göksel mevki hiçbir zaman sıfır hatalı değildir; bu yüzden karar verirken sorulacak soru 'en olası mevki neresi?' değil, 'mevki en kötü ihtimalle nerede olabilir ve bu beni tehlikeye sokar mı?' olmalıdır.\n\nBu ilke somut kurallara dönüşür: cocked hat bir tehlikeye yakınsa gemi **tehlike tarafında** varsayılır; üçgen büyükse fix'e güvenilmez ve ek gözlem alınır; riskli dar sularda **tek bir LOP** asla tek başına mevki kabul edilmez. Emniyet payı, güvenilirlik düştükçe genişletilir — zayıf bir fix, rotanın tehlikeden daha uzaktan geçecek biçimde yeniden planlanmasını gerektirir.\n\n**Gemide önemi:** Bir mevkiyi 'iyimser' yorumlamanın ödülü birkaç mil kısalık, cezası ise karaya oturmaktır; bu asimetri yüzünden şüphe daima emniyet lehine çözülür.",
         bulletPoints: [
           "Cocked hat tehlikeye yakınsa: MPP tehlike tarafında varsayılır",
           "Büyük hata üçgeni: Fix'e güvenilmemeli, ek gözlem alınmalı",
@@ -9050,7 +9050,7 @@ Bu senaryoda fix güvenilirdir.`
       {
         title: "Çok Yollu (Multipath) Sinyal Yayılımı",
         content:
-          "Sinyalin metal yüzeylerden yansıyarak alıcıya gecikmeli ulaşması, sözde mesafenin olduğundan uzun hesaplanmasına yol açar. Liman sahaları ve iskele bölgeleri bu etkinin en yoğun görüldüğü alanlardır."
+          "GPS sinyali antene yalnızca doğrudan (line-of-sight) yoldan gelmez; **metal yüzeylerden yansıyan kopyaları** da alıcıya ulaşır. Yansıyan sinyal daha uzun bir yol kat ettiği için **daha geç** varır ve alıcı bu gecikmeyi fazladan mesafe olarak yorumlar; böylece o uyduya ait **sözde mesafe (pseudorange) olduğundan uzun** hesaplanır ve mevki kayar. Buna **çok yollu (multipath)** hatası denir.\n\nEtki, çevrede yansıtıcı yüzey ne kadar çoksa o kadar güçlüdür: **liman sahaları, rıhtım vinçleri, çelik iskeleler, köprü ayakları ve konteyner istifleri** bu hatanın en yoğun görüldüğü yerlerdir — yani tam da mevki doğruluğunun en kritik olduğu dar sularda. Ufka yakın (düşük irtifalı) uydular yansımaya daha yatkın olduğundan, alıcıların çoğu belirli bir yükseklik açısının (elevation mask) altındaki uyduları hesaba katmaz.\n\n**Gemide önemi:** Rıhtıma yanaşma ve dar kanal geçişlerinde GPS mevkisine körü körüne güvenilmemeli; radar mesafe/kerteriz ve göz kerterizi ile çapraz kontrol edilmeli, fiziksel olarak imkânsız ani mevki sıçramaları multipath işareti olarak okunmalıdır."
       },
       {
         title: "Kasıtlı Bozma ve Aldatma Tehdidi",
@@ -9109,7 +9109,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       {
         title: "Temel Varsayım",
         content:
-          "Düzlem seyirde Dünya'nın küreselliği göz ardı edilir. Meridyenler paralel kabul edilir ve boylam dakikasının uzunluğu her enlemde sabit alınır. Bu varsayım, yaklaşık 60 deniz miline kadar olan seyirlerde kabul edilebilir doğruluk sağlar.",
+          "Düzlem seyir (plane sailing), matematiksel kolaylık uğruna bilinçli olarak yapılan bir **basitleştirmedir**: kısa bir rota boyunca Dünya'nın küreselliği ihmal edilir ve deniz yüzeyi **düz bir düzlem** gibi ele alınır. Bu sayede küresel trigonometri yerine basit **dik üçgen** geometrisi kullanılabilir.\n\nModelin bel kemiği iki kabuldür: **meridyenler paraleldir** (gerçekte kutuplara doğru yakınsarlar) ve bir **boylam dakikasının** yer üzerindeki uzunluğu her enlemde sabittir (gerçekte cos(enlem) ile kısalır). Bu kabuller ekvatorda tamamen, kutba yaklaştıkça giderek daha az geçerlidir; hata hem mesafeyle hem enlemle büyür. Pratikte yaklaşık **60 deniz miline** kadar olan rotalarda sapma seyir doğruluğu içinde kalır.\n\n**Gemide önemi:** Düzlem seyir, vardiya sırasında hızlı DR ve kısa mesafe hesapları için idealdir; ancak uzun rotalarda meridyen yakınsaması ihmal edildiği için mutlaka orta enlem veya büyük daire seyrine geçilmelidir.",
         bulletPoints: [
           "Meridyenler paralel kabul edilir",
           "Boylam dakikası uzunluğu sabit varsayılır",
@@ -9129,7 +9129,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       {
         title: "Ters Problem: Kurs ve Mesafe Hesabı",
         content:
-          "DLat ve departure bilindiğinde, kurs ve mesafe hesaplanabilir. Bu problem, iki noktanın koordinatları verildiğinde aralarındaki rota ve mesafeyi bulmak için kullanılır.",
+          "Düzlem seyir üçgeni iki yönde de çözülebilir. **Doğrudan problemde** rota ve mesafe bilinir, koordinat değişimi (DLat, departure) aranır. **Ters problemde** ise tersi geçerlidir: kalkış ve varış koordinatları verilir, aradaki **rota ve mesafe** hesaplanır. Bu, rota planlamasının en sık karşılaşılan hâlidir — haritadaki iki nokta arasında hangi rotayla ve kaç mil gidileceğini bulmak.\n\nÇözüm, dik üçgende iki dik kenardan (DLat ve departure) açı ve hipotenüsün bulunmasıdır. Rota, **tan(C) = Departure ÷ DLat** bağıntısından ters tanjantla elde edilir; DLat ve departure'ın işaretleri (N/S ve E/W) birlikte rotanın hangi bölgede (NE, SE, SW, NW) olduğunu belirler ve açı buna göre 000°–360° hakiki rotaya çevrilir. Mesafe ise **D = DLat ÷ cos(C)** ile bulunur.\n\n**Gemide önemi:** İşaret ve bölge (quadrant) hatası bu hesabın en yaygın tuzağıdır; ters tanjant yalnızca açının büyüklüğünü verir, yönü DLat ve departure işaretlerinden okunmalıdır.",
         formula: {
           text: "tan(C) = Departure ÷ DLat | D = DLat ÷ cos(C)",
           description: "DLat ve departure bilinen değerlerdir; kurs ve mesafe hesaplanır."
@@ -9138,7 +9138,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       {
         title: "Sınırlamalar",
         content:
-          "Düzlem seyir varsayımı, mesafe arttıkça ve özellikle doğu-batı bileşeni büyüdükçe artan hatalar üretir. Bu nedenle orta ve uzun mesafelerde orta enlem seyri veya büyük daire seyri tercih edilmelidir.",
+          "Düzlem seyrin tek zayıf noktası, temelindeki varsayımın kendisidir: meridyenlerin paralel olduğu kabulü. Gemi **doğu-batı** yönünde ilerledikçe meridyen yakınsaması devreye girer ve gerçek boylam değişimi ile düzlem modelin öngördüğü değer **birbirinden uzaklaşır**. Bu yüzden hata; hem toplam **mesafeyle**, hem rotadaki **doğu-batı (departure) bileşeniyle**, hem de **enlemle** (kutba doğru cos(enlem) küçüldükçe) birlikte artar.\n\nSaf kuzey-güney rotalarda (rota 000° veya 180°) departure sıfırdır ve düzlem seyir her mesafede kusursuz çalışır; buna karşılık saf doğu-batı rotalarda hata en hızlı büyür. Pratik eşik yaklaşık **60 NM**'dir: bunun ötesinde meridyen yakınsamasını hesaba katan **orta enlem seyri (mid-latitude sailing)**, çok uzun rotalarda ise **büyük daire seyri** tercih edilir.\n\n**Gemide önemi:** Kısa manevra ve vardiya hesaplarında düzlem seyir yeterlidir; bir okyanus geçişini düzlem seyre dayandırmak birikimli bir boylam hatasına ve rota sapmasına yol açar.",
         bulletPoints: [
           "Yaklaşık 60 NM'ye kadar güvenilir sonuç verir",
           "Yüksek enlemlerde hata daha hızlı büyür",
@@ -9171,7 +9171,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       {
         title: "Tanım",
         content:
-          "DLat, varış noktasının enlemi ile kalkış noktasının enlemi arasındaki farktır. Kuzeye gidildiğinde DLat pozitif (N), güneye gidildiğinde negatif (S) kabul edilir.",
+          "**DLat (Difference of Latitude)**, geminin enlem doğrultusunda kat ettiği açısal değişimdir — sadece bir sayı değil, aynı zamanda bir **yön** taşır. Tanımı basittir: varış enleminden kalkış enlemi çıkarılır. İşaret, hareketin yönünü kodlar: kuzeye gidildiğinde DLat **pozitif (N)**, güneye gidildiğinde **negatif (S)** alınır.\n\nDLat'ı seyirde bu kadar merkezî kılan özel bir eşitlik vardır: **1′ enlem = 1 deniz mili.** Meridyen boyunca ölçülen açısal fark, doğrudan ve enlemden bağımsız olarak kuzey-güney mesafesine eşittir; bu yüzden DLat hem açı hem mesafe olarak okunabilir. (Aynı şey boylam için geçerli değildir — orada cos(enlem) devreye girer.) Bu nedenle DLat, düzlem seyir üçgeninin **dikey kenarını** oluşturur.\n\n**Gemide önemi:** Enlem farkını doğrudan mile çevirebilmek, hızlı zihinsel kontrolün ve DR hesaplarının temelidir; işaretin (N/S) doğru taşınması ise varış enleminin doğru bulunmasının ön koşuludur.",
         formula: {
           text: "DLat = Varış Enlemi − Kalkış Enlemi",
           description: "Sonuç dakika (') veya derece-dakika formatında ifade edilir."
@@ -9180,7 +9180,7 @@ Bu sonuç, geminin gerçek konumundan yaklaşık 18 metre sapabileceğini göste
       {
         title: "Mesafe ile DLat İlişkisi",
         content:
-          "Düzlem seyirde DLat, seyredilen mesafe ve kursun kosinüsü çarpımı ile hesaplanır. Bu, seyir üçgeninin dikey bileşenidir.",
+          "Bir gemi belirli bir rotada belirli bir mesafe seyrettiğinde, bu hareketin ne kadarının **kuzey-güney** yönünde olduğunu DLat verir. Düzlem seyir üçgeninde DLat, hipotenüsün (seyredilen mesafe **D**) rota açısına izdüşümüdür ve **DLat = D × cos(C)** ile bulunur.\n\nKosinüs bağıntısının mantığı sezgiseldir: rota kuzeye (000°) yakınsa cos(C) ≈ 1'dir ve mesafenin neredeyse tamamı enleme yansır; rota doğuya (090°) yaklaştıkça cos(C) → 0 olur ve DLat küçülür — çünkü doğuya giden gemi enlemini pek değiştirmez. Aynı üçgenin diğer dik kenarı, doğu-batı bileşeni olan **departure = D × sin(C)**'dir; ikisi birlikte hareketi tam olarak tanımlar.\n\n**Gemide önemi:** Bu bağıntı, rota ve hızdan bilinen bir sürede ne kadar enlem değiştirileceğini önceden kestirmeyi sağlar; DR mevkisini ileri taşımanın ve bir sonraki enlem şeridine ne zaman ulaşılacağını hesaplamanın temel aracıdır.",
         formula: {
           text: "DLat = Mesafe × cos(Kurs)",
           description: "Mesafe deniz mili, kurs hakiki rota (°T) cinsindendir. Sonuç dakika olarak DLat'i verir."
@@ -9209,7 +9209,7 @@ DLat = 69.6' N (≈ 1° 09.6' N)
       {
         title: "İşaret Kuralları",
         content:
-          "DLat'in işareti, geminin hareket yönünü gösterir. Kuzey yarımkürede kuzeye giderken DLat pozitif, güneye giderken negatiftir. Ekvatorun geçildiği durumlarda işaret değişimi dikkatle hesaba katılmalıdır.",
+          "DLat'in işareti (N veya S), yalnızca bir etiket değil, hesabın doğruluğunu belirleyen **yön bilgisidir.** Kural nettir: enlem sayısal olarak artıyorsa (kuzeye gidiliyorsa) DLat **pozitif/N**, azalıyorsa (güneye gidiliyorsa) **negatif/S**'dir. Varış enlemi, kalkış enlemine DLat'in **işaretiyle birlikte** eklenerek bulunur.\n\nEn kritik durum **ekvator geçişidir**: gemi bir yarımküreden diğerine geçtiğinde enlem işareti değişir, dolayısıyla kalkış ve varış enlemleri **zıt işaretlidir** ve toplam DLat, ikisinin **mutlak değerlerinin toplamıdır** (farkı değil). Aynı yarımkürede kalınıyorsa DLat, iki enlemin farkıdır. Bu ayrımın atlanması doğrudan büyük bir mevki hatasına yol açar.\n\n**Gemide önemi:** İşaret ve ekvator-geçişi kuralı, otomatik hesap yapan cihazlarda gizli kalır; ancak elle DR ve kontrol hesaplarında en sık yapılan hata burasıdır — enlemler daima işaretleriyle birlikte yazılmalıdır.",
         bulletPoints: [
           "Kuzeye hareket: DLat pozitif (N)",
           "Güneye hareket: DLat negatif (S)",
@@ -9242,7 +9242,7 @@ DLat = 69.6' N (≈ 1° 09.6' N)
       {
         title: "Temel Varsayımlar",
         content:
-          "Akıntısız seyir hesaplarında geminin rotası (heading) ve su üzerindeki hızı (STW) sabit ve biliniyor kabul edilir. Dış etkiler olmadığından COG = Heading ve SOG = STW olur.",
+          "Akıntısız seyir, gerçek seyrin en yalın hâlidir: **hiçbir dış kuvvetin** (akıntı, rüzgâr kayması) gemiyi rotasından saptırmadığı ideal koşul. Bu varsayım altında geminin pusuladan tuttuğu **rota (heading)** ile denizde gerçekten izlediği yol (**COG**) birbirinin aynıdır; benzer şekilde suya göre hızı (**STW**) ile yere göre hızı (**SOG**) çakışır.\n\nBu, ölü hesabın (DR) hatasız çalıştığı temel çerçevedir: gemi neye niyet ederse tam onu yapar, dolayısıyla gelecekteki mevki yalnızca rota, hız ve zamandan hesaplanabilir. Gerçek denizde akıntı ve leeway bu eşitlikleri bozar; ama akıntısız model, üzerine düzeltme eklenecek **referans çözümü** oluşturduğu için önce mutlaka bu saf hâliyle öğrenilir.\n\n**Gemide önemi:** COG = Heading ve SOG = STW eşitlikleri yalnızca akıntı ve rüzgârın ihmal edildiği durumda geçerlidir; gerçek vardiyada bu eşitliklerin ne zaman bozulduğunu fark etmek, ölü hesabı fix ile ne sıklıkta doğrulamak gerektiğini belirler.",
         bulletPoints: [
           "Akıntı hızı: 0 knot",
           "Rüzgâr kayması (leeway): 0°",
@@ -9253,7 +9253,7 @@ DLat = 69.6' N (≈ 1° 09.6' N)
       {
         title: "Ölü Hesap (Dead Reckoning) Mantığı",
         content:
-          "Akıntısız koşullarda ölü hesap, en basit formunda uygulanır. Son bilinen mevkiden itibaren rota ve hız kullanılarak belirli bir süre sonundaki mevki hesaplanır.",
+          "**Ölü hesap (Dead Reckoning, DR)**, bilinen bir mevkiden yola çıkıp yalnızca **rota, hız ve geçen zaman** bilgisiyle geminin sonraki konumunu ileriye taşıma yöntemidir. Akıntısız koşulda bu, en saf ve doğrudan hâliyle işler; hiçbir vektörel düzeltme gerekmez.\n\nMantık üç adıma iner: önce kat edilen mesafe **Mesafe = Hız × Zaman** ile bulunur; sonra bu mesafe rota açısı yardımıyla iki dik bileşene ayrılır — kuzey-güney bileşeni **DLat = D × cos(C)** ve doğu-batı bileşeni **Departure = D × sin(C)**. DLat doğrudan yeni enleme eklenir; departure ise (orta enlemin kosinüsüne bölünerek) boylam değişimine çevrilir. Sonuç, süre sonundaki **DR mevkisidir**.\n\n**Gemide önemi:** DR, elektronik sistemler kesildiğinde bile çalışan temel yedek seyir yöntemidir; bu yüzden mevki defterine düzenli DR mevkileri işlenir ve her fix, en son DR ile karşılaştırılarak akıntı-rüzgâr etkisi geriye dönük ölçülür.",
         formula: {
           text: "Mesafe = Hız × Zaman | DLat = D × cos(C) | Dep = D × sin(C)",
           description: "Bu üç formül akıntısız DR hesabının temelini oluşturur."
@@ -9289,7 +9289,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
       {
         title: "Akıntısız Hesabın Sınırlamaları",
         content:
-          "Gerçek deniz koşullarında tamamen akıntısız seyir nadiren mümkündür. Bu hesaplar, gerçek mevkinin kabaca tahmin edilmesi için başlangıç noktası oluşturur; ancak fix alınarak doğrulanmalıdır.",
+          "Akıntısız hesabın sınırı, adında saklıdır: gerçek denizde akıntı ve rüzgâr **hiçbir zaman tam olarak sıfır değildir.** Bu yüzden saf DR mevkisi, geminin *niyet ettiği* konumu verir — *gerçekte bulunduğu* konumu değil. Aradaki fark, akıntı ve leeway biriktikçe zamanla **büyür**.\n\nBu nedenle akıntısız DR, kesin mevki değil, bir **başlangıç tahminidir**. Üzerine akıntı seti/ratei ve rüzgâr kayması vektörel olarak eklendiğinde **tahmini mevki (Estimated Position, EP)** elde edilir; EP bile hâlâ bir tahmindir ve nihai doğrulama ancak bağımsız bir **fix** (göz kerterizi, radar, GPS, göksel) ile yapılır. DR ile fix arasındaki fark, o bölgedeki gerçek akıntının doğrudan ölçüsüdür.\n\n**Gemide önemi:** DR asla tek başına emniyetli mevki sayılmaz; özellikle tehlikeye yaklaşırken DR üzerine daima bir emniyet payı bırakılır ve mümkün olan ilk fırsatta fix ile doğrulanır.",
         bulletPoints: [
           "Sadece teorik koşullarda tam doğrudur",
           "Akıntı ve rüzgâr etkisi gerçekte her zaman mevcuttur",
