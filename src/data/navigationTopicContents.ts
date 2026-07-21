@@ -8647,7 +8647,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Aşama 4: Mevki Hattının (LOP) Ortaya Çıkışı",
         content:
-          "Dördüncü görselde, intercept ile ulaşılan noktadan Zn doğrultusuna dik bir doğru çizilir. Bu doğru LOP’tur. Bu hat, gözlem anında bulunulabilecek tüm noktaları temsil eder; gemi bu hat üzerinde bir yerdedir.",
+          "Son aşamada, intercept ile ulaşılan noktadan **Zn doğrultusuna dik** bir doğru çizilir — işte bu doğru **mevki hattıdır (LOP)**. LOP, gözlem anında geminin **üzerinde bulunabileceği tüm noktaların** geometrik yeridir; gemi bu hat üzerinde bir yerdedir, ama tek başına nerede olduğunu söylemez.\n\n**Neden bir 'hat':** Tek bir yükseklik ölçümü, cismin yer-altı noktası (GP) etrafında dev bir 'eşit yükseklik dairesi' tanımlar; gözlemcinin küçük bölgesinde bu dairenin yayı düz kabul edilir ve azimuta dik bir doğru olarak çizilir. **Worked example:** intercept noktasından Zn = 120° için LOP doğrultusu 120° ± 90° = **030°–210°** olur.\n\n**Gemide önemi:** Bir LOP 'gemi bu çizgi üzerinde' bilgisidir; kesin mevki için ona açı yapan ikinci (tercihen üçüncü) bir LOP gerekir. LOP'u azimuta dik çizmeyi unutmak veya yanlış yöne taşımak, göksel fix'in en yaygın çizim hatalarındandır.",
         formula: {
           text: "LOP doğrultusu = Zn ± 90°",
           description: "Zn: gök cisminin azimut doğrultusu."
@@ -8687,7 +8687,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Aşama 1: Birinci LOP’un Kurulması",
         content:
-          "İlk gök cismi gözleminden elde edilen LOP, harita düzleminde bir doğru olarak çizilir. Bu çizgi, geminin **gözlem anında** bu doğru üzerinde bir yerde olduğunu ifade eder. Ancak tek bir LOP, tek başına kesin mevki vermez."
+          "Fix'in ilk yapı taşı, tek bir gök cismi gözleminden çizilen **birinci LOP'tur**: intercept ile bulunan noktadan azimuta dik çizilen doğru, harita düzleminde geminin gözlem anında üzerinde bulunduğu **konum doğrusunu** verir.\n\n**Neden tek LOP yetmez:** Bir LOP yalnızca **bir kısıt** koyar — 'gemi bu çizgi üzerinde' — ama çizgi üzerinde **sonsuz nokta** vardır. Tek boyutlu bu bilgi, geminin çizgi boyunca nerede olduğunu belirleyemez; bu yüzden tek LOP asla kesin mevki değildir, yalnızca fix'in yarısıdır.\n\n**Gemide önemi:** Birinci LOP'un doğruluğu (doğru Ho, doğru azimut, doğru dik çizim) tüm fix'in temelini belirler; ilk hattaki bir hata, sonraki LOP'larla kesişimde 'iyi görünen ama yanlış' bir mevki üretebilir. Bu yüzden her LOP tek tek dikkatle kurulur ve DR ile tutarlılığı kontrol edilir."
       },
       {
         title: "Aşama 2: İkinci LOP’un Eklenmesi – 2 LOP Fix",
@@ -8775,7 +8775,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Adım 2: GHA, LHA ve Deklinasyon Hesabı",
         content:
-          "Gözlem anının UTC zamanı ve Nautical Almanac kullanılarak gök cisminin Greenwich Hour Angle (GHA) ve Declination (Dec) değerleri bulunur. LHA, AP boylamı kullanılarak hesaplanır.",
+          "Bu adımda gök cisminin gökyüzündeki **konumu** belirlenir. Gözlem anının **kesin UTC'si** ve **Nautical Almanac** kullanılarak cismin **Greenwich Saat Açısı (GHA)** ve **deklinasyonu (Dec)** okunur; ardından AP boylamı uygulanarak **Yerel Saat Açısı (LHA = GHA ± λ)** bulunur.\n\n**Neden kritik:** Bu değerler (φ zaten AP'den, δ ve LHA buradan) bir sonraki adımdaki sight reduction'ın (Hc ve Zn) girdileridir; yani cismin 'nerede olduğu' bilgisi tamamen doğru zamana ve doğru boylam işaretine dayanır. **Worked example:** GHA = 335°42.5′, AP boylamı 029° E → LHA = 335°42.5′ + 29° = 364°42.5′ → 360 çıkar → **4°42.5′**.\n\n**Gemide önemi:** UTC'deki saniye hatası GHA'yı (dolayısıyla LHA'yı) kaydırır; boylam işaretinin (E/W) karıştırılması ise LHA'yı tamamen yanlış yapar — her ikisi de mevki hattını millerce öteler. Bu yüzden zaman ve boylam işareti bu adımda titizlikle kontrol edilir.",
         formula: {
           text: "LHA = GHA ± λ",
           description: "Doğu boylamda (+), Batı boylamda (−). Sonuç 0°–360° arasına normalize edilir."
@@ -8784,7 +8784,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Adım 3: Sight Reduction ile Hc ve Zn Bulunması",
         content:
-          "HO-249 veya HO-229 tabloları kullanılarak, AP enlemi (φ), gök cismi deklinasyonu (δ) ve LHA değerleri ile teorik yükseklik (Hc) ve azimut (Zn) okunur. Bu aşamada trigonometrik hesap gerekmez; tablolar doğrudan değer verir.",
+          "Bu adımda soyut küresel üçgen, **Sight Reduction Tabloları (HO-249 veya HO-229)** ile pratik olarak çözülür. Girdiler — **AP enlemi (φ), deklinasyon (δ) ve LHA** — tabloya sokulur; çıktılar **teorik yükseklik (Hc)** ve **azimut (Zn)** doğrudan okunur.\n\n**Neden tablo:** Küresel kosinüs bağıntısı (sin Hc = sinφ·sinδ + cosφ·cosδ·cosLHA) elle zahmetlidir; tablolar bu hesabı önceden yapıp hazır sunar, böylece gemide hızlı ve hatasız çözüm sağlanır. Dakika değerleri için **interpolasyon** gerekebilir (aksi hâlde Hc birkaç dakika kayar). Modern alternatif, aynı formülü hesap makinesiyle çözmektir.\n\n**Gemide önemi:** Hc, gözlemle (Ho) karşılaştırılacak 'beklenen' değerdir ve Zn, LOP'un yönünü verir — ikisi de bu adımdan gelir. Yanlış tablo satırı, atlanan interpolasyon veya LHA hatası doğrudan Hc/Zn'yi ve dolayısıyla fix'i bozar.",
         bulletPoints: [
           "Tabloya giriş: φ (AP enlemi), δ (deklinasyon), LHA",
           "Tablondan çıkış: Hc (hesaplanan yükseklik), Zn (azimut)",
@@ -8794,7 +8794,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Adım 4: Intercept (a) Hesabı",
         content:
-          "Sextant ölçümü düzeltildikten sonra elde edilen Ho ile tablolardan bulunan Hc karşılaştırılır. Fark, intercept değerini verir.",
+          "Bu adımda yöntemin özü gerçekleşir: düzeltilmiş **gözlemsel yükseklik (Ho)** ile tablodan bulunan **teorik yükseklik (Hc)** karşılaştırılır ve farkları **intercept (a = Ho − Hc)** değerini verir. Sonuç dakika cinsindedir ve doğrudan deniz miline çevrilir (1′ = 1 NM).\n\n**Ne anlatır:** Bu fark, gerçek mevkinin AP'ye göre gök cismine **ne kadar** yakın/uzak olduğunu ölçer; işareti (±) ise yönü (toward/away) belirler. **Worked example:** Ho = 41°33.3′, Hc = 41°26.8′ → a = +6.5′ = **6.5 NM (toward)**.\n\n**Gemide önemi:** Intercept, tüm sextant ölçümü ve tablo hesabının tek bir kullanışlı sayıya indiği noktadır; bu sayının işareti ve büyüklüğü, LOP'un AP'den hangi yöne ne kadar taşınacağını söyler. Dakika/derece veya işaret hatası burada doğrudan mil düzeyinde mevki hatasına dönüşür.",
         formula: {
           text: "a = Ho − Hc",
           description: "a: intercept (dakika cinsinden, 1′ = 1 NM). Pozitif ise toward, negatif ise away."
@@ -8803,7 +8803,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Adım 5: Toward / Away Kuralı",
         content:
-          "Intercept'in yönü, geminin AP'ye göre gök cismine olan konumunu belirler. Bu kural, LOP çizimi için zorunludur.",
+          "Intercept'in **işareti**, LOP'un AP'den hangi yöne taşınacağını belirler; bu kural olmadan mevki hattı doğru mesafede ama yanlış tarafta çizilir. Mantık, yakınlık–yükseklik ilişkisine dayanır: bir cisme yakınsan onu yüksek görürsün.\n\n**Kural:** **Ho > Hc (a > 0)** → gemi cismi beklenenden yüksek görüyor → cisme **daha yakın** → TOWARD (Zn boyunca gök cismine doğru). **Ho < Hc (a < 0)** → cisim beklenenden alçak → gemi **daha uzak** → AWAY (cisimden uzağa). Hafıza: **HoMoTo** (Ho More → Toward) veya 'Computed Greater → Away'.\n\n**Gemide önemi:** Toward/away'in ters uygulanması, intercept doğru olsa bile mevkiyi 2a (örn. 13 NM) hatalı yerleştirir — göksel seyrin en sinsi hatalarından biridir çünkü sonuç 'makul' görünür. Bu yüzden kural reflekse dönüşene dek tekrarlanır ve fix daima DR ile karşılaştırılır.",
         bulletPoints: [
           "**Ho > Hc (a > 0)**: Gemi, AP'den gök cismine **daha yakındır** → TOWARD (gök cismine doğru)",
           "**Ho < Hc (a < 0)**: Gemi, AP'den gök cisminden **daha uzaktadır** → AWAY (gök cisminden uzağa)",
@@ -8813,7 +8813,7 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
       {
         title: "Adım 6: LOP Çizimi",
         content:
-          "Harita üzerinde AP işaretlenir. Zn doğrultusunda intercept mesafesi kadar ilerlenir (toward ise gök cismine doğru, away ise uzağa). Ulaşılan noktadan Zn'ye dik bir doğru çizilir. Bu doğru LOP'tur.",
+          "Son adımda geometri haritaya dökülür: **AP** işaretlenir, **Zn doğrultusunda** intercept mesafesi kadar ilerlenir (toward ise cisme doğru, away ise uzağa) ve ulaşılan noktadan **Zn'ye dik** bir doğru çizilir — bu doğru **LOP'tur**.\n\n**Neden bu sıra:** Intercept 'ne kadar ve hangi yöne' (Zn boyunca), LOP ise 'gemi hangi çizgi üzerinde' (Zn'ye dik) bilgisini verir; ikisi birlikte gözlem anındaki konum doğrusunu tam tanımlar. **Worked example:** AP'den Zn = 118° boyunca 6.5 NM toward ilerlenir; o noktadan 118° ± 90° = **028°–208°** doğrultusunda LOP çizilir.\n\n**Gemide önemi:** Bu çizim tüm hesabın somut çıktısıdır; kesin mevki için başka cisimlerden alınan LOP'larla kesiştirilir. Zn'ye dik çizmeyi unutmak (LOP'u Zn doğrultusunda çizmek) mevkiyi 90° yanlış koyar.",
         formula: {
           text: "LOP doğrultusu = Zn ± 90°",
           description: "LOP her zaman azimut doğrultusuna diktir."
@@ -8856,7 +8856,7 @@ AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° 
       {
         title: "Yaygın Hatalar ve Önlemler",
         content:
-          "Intercept yöntemi uygulamasında sık karşılaşılan hatalar ve bunlardan kaçınma yolları:",
+          "Intercept yöntemi güçlü ama **işaret ve giriş disiplinine** duyarlıdır; hataların çoğu hesabın kendisinde değil, işaret ve yorumdadır. Aşağıdaki hatalar bilinçli olarak izlenmelidir.\n\nEn sık görülenler: **yanlış AP** (DR'dan çok uzak → doğrusallık bozulur), **LHA işaret hatası** (doğu/batı boylam karışıklığı), **toward/away karışıklığı** (işaret hatasıyla LOP ters tarafa), **interpolasyon ihmali** (Hc birkaç dakika kayar) ve **Zn yarımküre hatası** (azimut yanlış çeyreğe).\n\n**Gemide önemi:** Bu hataların ortak özelliği sonucu 'makul ama yanlış' yapmalarıdır — gemi tehlikeli biçimde yanlış yerde olabilir ama fix inandırıcı görünür. Bu yüzden her göksel fix **DR ile karşılaştırılır**, mümkünse üçüncü bir LOP'la (cocked hat) tutarlılığı denetlenir ve şüphede tekrar gözlem yapılır.",
         bulletPoints: [
           "**Yanlış AP seçimi**: AP'nin DR mevkiinden çok uzak olması geometrik hatayı artırır",
           "**LHA hesap hatası**: Doğu/Batı boylam işareti karıştırılması sık görülür",
