@@ -82,10 +82,10 @@ export const cargoQuestions: QuizQuestion[] = [
   },
   {
     id: 9,
-    question: "Stowage Factor (SF) aşağıdakilerden hangisini ifade eder?",
-    options: ["1 ton kargonun kapladığı hacim (m³/t)", "1 m³ kargonun ağırlığı (t/m³)", "Kargonun rutubet yüzdesi", "Kargonun boşaltma hızı"],
-    correctAnswer: 0,
-    explanation: "SF, birim ağırlık başına hacimdir (m³/ton).",
+    question: "Deplasman tablosu 1.025 t/m³ deniz suyu içindir. Liman suyu yoğunluğu 1.012 t/m³ ve tablodan okunan deplasman 20,000 t ise gerçek deplasman yaklaşık kaç tondur?",
+    options: ["19,500 t", "19,746 t", "20,000 t", "20,257 t"],
+    correctAnswer: 1,
+    explanation: "Yoğunluk düzeltmesi: Δgerçek = Δtablo × (ρliman ÷ 1.025) = 20,000 × (1.012 ÷ 1.025) ≈ 19,746 t. (Trap: oranı ters çevirmek → 20,257; düzeltmeyi atlamak → 20,000.)",
     category: "Stowage"
   },
   {
