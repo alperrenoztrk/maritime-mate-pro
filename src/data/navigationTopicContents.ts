@@ -9322,7 +9322,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
       {
         title: "Hakiki Kerteriz (True Bearing)",
         content:
-          "Hakiki kerteriz, bir hedefin hakiki kuzeye göre ölçülen açısal yönüdür. Harita üzerinde çizilen tüm kerterizler hakiki sistemdedir. Hakiki kerteriz 000°T ile 360°T arasında ifade edilir ve meridyenlerle doğrudan ilişkilidir.",
+          "**Hakiki kerteriz (true bearing)**, bir hedefin coğrafi/**hakiki kuzeye** göre ölçülen açısal yönüdür; yani referansı, meridyenlerin işaret ettiği gerçek kuzey kutbudur. 000°T ile 360°T arasında, saat yönünde ifade edilir ve 'T' harfi (True) değerin hangi sisteme ait olduğunu belirtir.\n\nHakiki sistemi tüm kerterizlerin **ortak paydası** yapan şey şudur: harita üzerinde meridyenler hakiki kuzeyi gösterdiği için, karta çizilen ya da karttan ölçülen her kerteriz doğrudan hakiki sistemdedir. Manyetik ve pusula kerterizleri ise cihaza özgü hatalar (variation, deviation) taşıdığından, mevki koymadan önce mutlaka hakikiye çevrilir. GPS ve göksel seyir çıktıları da doğal olarak hakiki verir.\n\n**Gemide önemi:** Köprüüstünde farklı kaynaklardan (pusula, radar, GPS) gelen yönleri karşılaştırmak veya harita üzerine LOP çizmek için her değer önce ortak dil olan hakiki sisteme indirgenir; bu yapılmadan konulan mevki hatalıdır.",
         bulletPoints: [
           "Referans: Hakiki kuzey (True North)",
           "Gösterim: 045°T, 180°T, 270°T gibi",
@@ -9333,7 +9333,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
       {
         title: "Manyetik Kerteriz (Magnetic Bearing)",
         content:
-          "Manyetik kerteriz, bir hedefin manyetik kuzeye göre ölçülen açısal yönüdür. Manyetik pusula ile alınan ham okumalar manyetik sistemdedir. Hakiki kerterize dönüşüm için variation düzeltmesi gerekir.",
+          "**Manyetik kerteriz (magnetic bearing)**, bir hedefin **manyetik kuzeye** göre ölçülen yönüdür. Manyetik kuzey, Dünya'nın manyetik alanının işaret ettiği yöndür ve coğrafi (hakiki) kuzeyle **çakışmaz**; ikisi arasındaki açısal farka **variation (manyetik sapma/meyil)** denir. Bu değer coğrafi konuma göre değişir ve haritada pusula gülünde belirtilir.\n\nManyetik kerteriz, deviation'ı olmayan ideal bir pusulanın ya da deviation'ı zaten düzeltilmiş bir okumanın verdiği ara değerdir. Hakikiye çevirmek için variation uygulanır: **doğu variation eklenir (+), batı variation çıkarılır (−)**. Bu işaret yönü, dönüşümün pusuladan hakikiye mi yoksa tersine mi yapıldığına göre okunmalıdır; yön karıştırılırsa düzeltme ters işaretle uygulanır.\n\n**Gemide önemi:** Variation her yıl az da olsa değiştiğinden, kullanılan harita güncel olmalı ve pusula gülündeki yıllık değişim (annual change) hesaba katılmalıdır; aksi hâlde manyetikten hakikiye dönüşüm sistematik bir hata taşır.",
         formula: {
           text: "Hakiki Kerteriz = Manyetik Kerteriz + Variation",
           description: "Variation doğu (+), batı (−) olarak uygulanır."
@@ -9348,7 +9348,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
       {
         title: "Pusula Kerterizi (Compass Bearing)",
         content:
-          "Pusula kerterizi, gemideki manyetik pusuladan doğrudan okunan değerdir. Bu değer hem variation hem de deviation (gemi manyetik sapması) içerir. Hakiki kerterize dönüşüm için her iki düzeltme de uygulanmalıdır.",
+          "**Pusula kerterizi (compass bearing)**, gemideki manyetik pusuladan **hiçbir düzeltme yapılmadan** okunan ham değerdir. Bu yüzden içinde iki ayrı hata birlikte bulunur: hem **variation** (Dünya kaynaklı, konuma bağlı) hem de **deviation** (geminin kendi çeliği, elektrik donanımı ve yükünün pusula üzerindeki yerel etkisi).\n\nDeviation'ın en önemli özelliği, **geminin baş yönüne göre değişmesidir** — sabit bir sayı değildir ve her rota için gemiye özel bir **deviation tablosundan (deviation card)** okunur. Hakiki kerterize ulaşmak için her iki düzeltme birlikte uygulanır: **Hakiki = Pusula + Variation + Deviation** (doğu değerler +, batı değerler −). Zincirdeki ara adım olan manyetik kerteriz, yalnızca deviation eklenmiş hâldir.\n\n**Gemide önemi:** Deviation ihmal edilirse, özellikle demir/çelik yük veya elektrikli ekipman yakınında pusula okuması onlarca derece yanıltıcı olabilir; bu yüzden deviation tablosu düzenli olarak (pusula sörveyiyle) güncellenir ve dar sularda mevki bu tabloyla düzeltilmiş değere dayandırılır.",
         formula: {
           text: "Hakiki Kerteriz = Pusula Kerterizi + Variation + Deviation",
           description: "Deviation, geminin rotasına göre değişen tablolardan okunur."
@@ -9357,7 +9357,7 @@ Boylam: 010° 00.0' + 38.2' = 010° 38.2' E
       {
         title: "Nispi Kerteriz (Relative Bearing)",
         content:
-          "Nispi kerteriz, bir hedefin geminin baş doğrultusuna (heading) göre ölçülen açısal konumudur. Saat yönünde 000° (tam baş) ile 360° arasında ifade edilir. Radar ve görsel gözlemlerde yaygın kullanılır.",
+          "**Nispi kerteriz (relative bearing)**, bir hedefin hakiki kuzeye değil, **geminin kendi baş doğrultusuna (heading)** göre ölçülen açısal konumudur. Sıfır referansı geminin pruvasıdır: tam baş 000°, saat yönünde artarak sancak tam trabzan 090°, tam kıç 180°, iskele tam trabzan 270°.\n\nNispi kerterizin gücü hızlı ve sezgisel olmasıdır: gözcü ya da radar operatörü, kuzeyi hesaba katmadan hedefin gemiye göre nerede olduğunu anında bildirebilir ('sancak baş omuzlukta bir tekne'). Ancak harita üzerine mevki koymak için hakikiye çevrilmesi gerekir: **Hakiki Kerteriz = Geminin Hakiki Rotası + Nispi Kerteriz** (sonuç 360°'yi aşarsa 360° çıkarılır). Bu dönüşüm, geminin o anki hakiki rotasının doğru bilinmesine bağlıdır.\n\n**Gemide önemi:** Çatışmadan kaçınmada nispi kerteriz kritik bir uyarı aracıdır: yaklaşan bir geminin nispi kerterizi **değişmiyorsa** çatışma riski (collision course) vardır; bu değerlendirme kuzey bilgisi gerektirmeden doğrudan yapılabilir.",
         formula: {
           text: "Hakiki Kerteriz = Geminin Hakiki Rotası + Nispi Kerteriz",
           description: "Sonuç 360°'yi aşarsa 360° çıkarılır."
@@ -9397,7 +9397,7 @@ Hedef, hakiki kuzeye göre 040° doğrultusundadır.`
       {
         title: "Dönüşüm Özeti",
         content:
-          "Kerteriz türleri arasındaki dönüşümler, seyirde sürekli kullanılan temel işlemlerdir.",
+          "Kerteriz türleri arasındaki dönüşüm, bir değeri gözlemlendiği sistemden (pusula) mevki için gerekli olan sisteme (hakiki) taşımaktır. Zinciri tek yönde okumak karışıklığı önler: **Pusula → (deviation ekle) → Manyetik → (variation ekle) → Hakiki.** Nispi kerteriz ise ayrı bir girişten bağlanır: geminin hakiki rotası eklenerek doğrudan hakikiye çevrilir.\n\nİşaret kuralı tüm zincir boyunca aynıdır: pusula/manyetik değerden hakikiye giderken **doğu (E) düzeltmeler eklenir (+), batı (W) düzeltmeler çıkarılır (−)**; ters yönde (hakikiden pusulaya) işaretler tersine döner. Bu tutarlılık hem variation hem deviation için geçerlidir ve hesabın yönünü şaşırmamak, dönüşümdeki en yaygın hatayı (işaret hatası) önler.\n\n**Gemide önemi:** Köprüüstünde bu dönüşümler günde defalarca, çoğu zaman baskı altında yapılır; zinciri ve işaret kuralını ezberlemek, radar/görsel kerterizleri hızlı ve hatasız biçimde haritaya aktarmayı sağlar.",
         bulletPoints: [
           "Pusula → Manyetik: Deviation ekle",
           "Manyetik → Hakiki: Variation ekle",
@@ -9475,7 +9475,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Doubled Angle on the Bow",
         content:
-          "Özel bir running fix tekniğidir. İlk kerteriz açısı, ikinci kerterizde tam iki katına ulaştığında, alınan mesafe ile hedefe olan mesafe eşit olur (ikizkenar üçgen prensibi).",
+          "**Baş açısının katlanması (doubling the angle on the bow)**, hesap gerektirmeden hedefe olan mesafeyi veren zarif bir running fix tekniğidir. Temeli saf geometridir: bir hedefin nispi kerterizi (baş açısı) **a** iken ölçüm başlar; gemi düz rotada ilerledikçe açı büyür ve tam **2a** olduğunda ikinci ölçüm alınır.\n\nBu iki gözlem arasında oluşan üçgen bir **ikizkenar üçgendir**; dolayısıyla geminin bu sürede kat ettiği yol (parakete/log mesafesi **d₁**), o ikinci anda hedefe olan mesafeye (**d₂**) **tam olarak eşittir**. Yani hedefe uzaklığı hiçbir kerteriz çizmeden doğrudan parakete farkından okumuş olursunuz. **a = 45° → 2a = 90°** özel hâli 'four-point bearing' (dört kerte) olarak bilinir; hedef tam kemereye geldiğinde (090° nispi) mesafe, o ana kadar seyredilen yola eşittir.\n\n**Gemide önemi:** Tek bir sabit hedef (fener, burun) varken hızlı bir mesafe kestirimi gerektiğinde bu yöntem aletsiz ve çabuk bir emniyet kontrolü sağlar; ancak geçerli olması için rotanın ve hızın iki gözlem arasında sabit tutulması şarttır.",
         bulletPoints: [
           "İlk açı: a (örn. 30°)",
           "İkinci açı: 2a (örn. 60°)",
@@ -9490,7 +9490,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Sınırlamalar ve Dikkat Edilecekler",
         content:
-          "Running fix, akıntı ve rüzgâr etkilerini hesaba katmaz. Bu nedenle elde edilen mevki, gerçek mevkiden sapabilir. Akıntılı sularda EP (Estimated Position) yaklaşımı ile birleştirilmelidir.",
+          "Running fix'in doğruluğu tek bir varsayıma dayanır: ilk LOP'un ilerletilmesinde kullanılan **rota ve mesafenin gerçeği yansıtması**. Oysa ilerletme, geminin *su üzerinde* gittiği yola (rota + parakete) göre yapılır; **akıntı ve rüzgâr kayması** gemiyi bu yoldan saptırdığında ilerletilmiş LOP yanlış yere taşınır ve fix gerçek mevkiden sapar.\n\nHata iki şekilde büyür: (1) iki kerteriz arasındaki **süre uzadıkça** biriken akıntı etkisi artar; (2) iki LOP'un **kesişim açısı daraldıkça** geometrik hata büyür (bu yüzden ideal açı farkı 45°–90°'dir). Akıntının bilindiği durumda çözüm, ilerletmeyi rota-hız yerine **akıntıyı da içeren beklenen harekete (EP mantığı)** göre yapmaktır; böylece running fix, tahmini mevki düzeltmesiyle birleştirilir.\n\n**Gemide önemi:** Kuvvetli akıntılı dar sularda ham running fix'e güvenilmez; kısa gözlem aralığı seçilir, akıntı düzeltmesi eklenir ve sonuç mümkün olan ilk bağımsız fix ile teyit edilir.",
         bulletPoints: [
           "Akıntı etkisi dahil değildir",
           "İki kerteriz arası süre uzadıkça hata artar",
@@ -9577,7 +9577,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Sık Yapılan Hatalar",
         content:
-          "En yaygın hata boylam skalasından mesafe okumaktır; bu yüksek enlemlerde belirgin hata üretir. İkinci hata, mesafeyi haritanın ortasındaki sabit bir skaladan okuyup enlem farkını ihmal etmektir.",
+          "Harita üzerinde mesafe ölçmenin tek bir altın kuralı vardır ve hataların çoğu bu kuralın çiğnenmesinden doğar: **mesafe daima yan (düşey) enlem skalasından, hem de ölçülen bölgenin hizasındaki enlemden okunur.** Bunun nedeni Mercator projeksiyonudur — enlem skalası kutba doğru gerçekte genişler ve yalnızca kendi hizasında '1′ = 1 NM' eşitliğini korur.\n\nEn sık yapılan hata, **alt/üst kenardaki boylam skalasından** mesafe okumaktır. Boylam dakikası mile eşit değildir (cos(enlem) kadar kısadır) ve bu hata yüksek enlemlerde giderek büyür. İkinci yaygın hata, uzun bir mesafeyi haritanın **ortasındaki tek bir enlem hizasından** okuyup gemi kuzey-güney yönünde ilerledikçe skalanın değiştiğini ihmal etmektir; doğrusu, pergeli o mesafenin **kendi ortalama enlemi** hizasında okumaktır.\n\n**Gemide önemi:** Yüksek enlemlerde birkaç millik ölçüm hatası, dar sularda emniyet payını yer; bu yüzden köprüüstünde mesafe her zaman doğru skaladan ve doğru enlemden alınır, uzun rotalar ise sabit pergel açıklığıyla adımlanır.",
         bulletPoints: [
           "Boylam skalası mesafe için kullanılmaz",
           "Ölçüm, hedef bölgenin enleminde yapılır",
@@ -9621,7 +9621,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "İşaret ve Uygulama Notu",
         content:
-          "Doğuya hareket boylamı artırır (E +), batıya hareket azaltır (W −). 180° boylam (tarih çizgisi) geçişlerinde işaret ve toplam dikkatle yorumlanmalı; hesap sonucu harita üzerinde doğrulanmalıdır.",
+          "Boylam değişiminde (DLong) yön, tıpkı enlemde olduğu gibi işaretle kodlanır: **doğuya hareket boylamı artırır (E, +)**, **batıya hareket azaltır (W, −)**. Varış boylamı, kalkış boylamına DLong'un işaretiyle birlikte eklenerek bulunur; hesapta departure her zaman ortalama enlemin kosinüsüyle DLong'a çevrilir.\n\nEn dikkat gerektiren durum **180° meridyeni (tarih değiştirme çizgisi) geçişidir**. Boylam bu çizgide 180°E ile 180°W arasında işaret değiştirir; geçişte kalkış ve varış boylamları zıt işaretli olabileceğinden toplam DLong doğrudan çıkarma ile değil, çizginin hangi tarafından geçildiği dikkate alınarak hesaplanır (aksi hâlde 360°'lik bir yanılma oluşur). Bu, enlemdeki ekvator kuralının boylamdaki karşılığıdır.\n\n**Gemide önemi:** Pasifik geçişlerinde tarih çizgisi hem boylam hesabını hem gemi saatini/takvimini etkiler; sonuç mutlaka harita üzerinde gözle doğrulanır, çünkü bu bölgedeki işaret hatası büyük bir mevki sapmasına yol açar.",
         bulletPoints: [
           "Ortalama enlem kullanılır",
           "Doğu (+) / Batı (−) yönü belirtilir",
@@ -9644,7 +9644,7 @@ Kesişim noktası = Running Fix (10:30)
       {
         title: "Temel Bağıntılar",
         content:
-          "Enlem farkı (DLat) ve boylam farkı (DLong) açı dakikası olarak bulunur. DLong, ortalama enlemde departure'a çevrilir. Kurs ve mesafe, DLat ile departure'dan dik üçgen bağıntılarıyla hesaplanır.",
+          "Orta enlem seyri (mid-latitude sailing), düzlem seyrin doğu-batı zayıflığını **tek bir düzeltmeyle** giderir: departure ile boylam arasındaki dönüşümde, rotanın **ortalama enlemini (Lat_ort)** kullanır. Böylece kısa-orta mesafelerde meridyen yakınsaması yaklaşık olarak hesaba katılır ve düzlem seyirden çok daha doğru sonuç elde edilir.\n\nYöntem üç bağıntı üzerine kuruludur. Önce koordinatlardan **DLat** ve **DLong** dakika cinsinden bulunur. Sonra boylam farkı, ortalama enlemde doğu-batı mesafesine çevrilir: **Departure = DLong × cos(Lat_ort)**. Son olarak elde edilen DLat (dikey kenar) ile departure (yatay kenar) bir dik üçgen oluşturur; rota **tan(Kurs) = Departure ÷ DLat** ile, mesafe ise **Mesafe = DLat ÷ cos(Kurs)** ile hesaplanır.\n\n**Gemide önemi:** Orta enlem seyri, büyük daire kadar karmaşık hesap gerektirmeden yeterli doğruluk sunduğundan günlük rota planlamasında en çok kullanılan pratik yöntemdir; yalnızca çok uzun veya çok yüksek enlem rotalarında yerini büyük daireye bırakır.",
         image: chartPlotting,
         imageAlt: "Orta enlem seyri uygulaması",
         formula: {
