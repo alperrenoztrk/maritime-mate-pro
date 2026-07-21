@@ -16,3 +16,6 @@ verify_jwt = false
 
 [functions.batch-content-writer]
 verify_jwt = false
+
+[functions.analyze-maritime-document]
+verify_jwt = true

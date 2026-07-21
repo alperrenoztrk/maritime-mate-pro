@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Search } from "lucide-react";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
-import { BookLauncher } from "@/components/home/BookLauncher";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { NewsPanel } from "@/components/home/NewsPanel";
 
@@ -135,9 +134,8 @@ const Index = () => {
           <NewsPanel />
         </section>
 
-        {/* CENTER — Book (İçindekiler) + Beta/Ayarlar */}
+        {/* CENTER — Uygulamalar + Beta/Ayarlar */}
         <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
-          <BookLauncher />
           <AppIconGrid />
         </section>
 

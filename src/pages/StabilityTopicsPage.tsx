@@ -1,21 +1,32 @@
-import { BookSheet } from "@/components/book/BookSheet";
-import { BookTopicReader } from "@/components/book/BookTopicReader";
+import type { CSSProperties } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   BookOpen,
   Anchor,
+  ChevronRight,
+  FileText,
   AlertTriangle,
   Waves,
   Scale,
   Ship,
+  Gauge,
   Shield,
+  Lightbulb,
+  CheckCircle2,
+  Circle,
+  X,
   Weight,
   BarChart3,
+  Ruler,
   Settings,
   Activity,
   Target,
   Zap,
   BookMarked,
 } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Stabilite diyagramları (public/diagrams altındaki vektör çizimler)
 const metacenterDiagram = "/diagrams/stability/metasantr-gm.svg";
@@ -24,6 +35,7 @@ const freeSurfaceEffect = "/diagrams/stability/serbest-yuzey.svg";
 const rightingMomentDiagram = "/diagrams/dogrultma-kolu.svg";
 const trimDiagram = "/diagrams/stability/trim.svg";
 const damageStabilityDiagram = "/diagrams/stability/yara-stabilitesi.svg";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 // =====================================
 // YENİ 14 BAŞLIKLI STABİLİTE MÜFREDATİ
@@ -3268,19 +3280,287 @@ Blokların uyguladığı tepki kuvveti P, su seviyesi düştükçe artar. P'nin 
 };
 
 export default function StabilityTopicsPage() {
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+
+  const handleSubtopicClick = (subtopicId: string, hasContent: boolean) => {
+    if (hasContent) {
+      setSelectedTopic(subtopicId);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedTopic(null);
+  };
+
+  const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+
+  const highRefreshRateStyles: CSSProperties = {
+    ["--frame-rate" as string]: "120",
+    ["--animation-duration" as string]: "8.33ms",
+    ["--transition-duration" as string]: "16.67ms",
+  };
+
   return (
-    <BookSheet title="DERSLER">
-      <h1 className="bs-h2 text-center" style={{ borderBottom: "none" }}>Gemi Stabilitesi</h1>
-      <div className="bs-fleuron" aria-hidden="true">❦</div>
-      <BookTopicReader
-        topics={stabilityTopics}
-        contents={topicContents}
-        resources={[
-          { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
-          { title: "Stabilite Formülleri", href: "/stability/formulas" },
-          { title: "IMO Kuralları", href: "/stability/rules" }
-        ]}
-      />
-    </BookSheet>
+    <div
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      style={highRefreshRateStyles}
+    >
+      {/* Background effects */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
+      </div>
+
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
+          <div className="px-4 py-4">
+            <div className="flex items-center gap-3 max-w-4xl mx-auto">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
+                <Anchor className="h-6 w-6" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-foreground">Gemi Stabilitesi</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Topics Accordion */}
+        <ScrollArea className="h-[calc(100vh-80px)]">
+          <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
+            <Accordion type="single" collapsible className="space-y-2">
+              {stabilityTopics.map((topic) => {
+                const TopicIcon = topic.icon;
+                return (
+                  <AccordionItem
+                    key={topic.id}
+                    value={topic.id}
+                    className="border border-border/40 rounded-xl overflow-hidden bg-card/80 backdrop-blur"
+                  >
+                    <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
+                      <div className="flex items-center gap-3 text-left">
+                        <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold">
+                          {topic.number}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <TopicIcon className="h-4 w-4 text-primary" />
+                          <span className="font-semibold text-foreground text-sm leading-tight">
+                            {topic.title}
+                          </span>
+                        </div>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 pb-4">
+                      <div className="space-y-1 mt-2">
+                        {topic.subtopics.map((subtopic) => (
+                          <motion.button
+                            key={subtopic.id}
+                            onClick={() => handleSubtopicClick(subtopic.id, subtopic.hasContent)}
+                            className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-colors ${
+                              subtopic.hasContent && topicContents[subtopic.id]
+                                ? "hover:bg-primary/5 cursor-pointer"
+                                : "opacity-50 cursor-not-allowed"
+                            }`}
+                            whileTap={subtopic.hasContent && topicContents[subtopic.id] ? { scale: 0.98 } : {}}
+                          >
+                            {subtopic.hasContent && topicContents[subtopic.id] ? (
+                              <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                            ) : (
+                              <Circle className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                            )}
+                            <span className="text-sm text-foreground">{subtopic.title}</span>
+                            {subtopic.hasContent && topicContents[subtopic.id] && (
+                              <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />
+                            )}
+                          </motion.button>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+
+            {/* Quick Links */}
+            <section className="rounded-2xl border border-border/40 bg-card/80 p-6 backdrop-blur mt-6">
+              <div className="mb-4 flex items-center gap-2">
+                <Lightbulb className="h-5 w-5 text-primary" />
+                <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-3">
+                {[
+                  { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
+                  { title: "Stabilite Formülleri", href: "/stability/formulas" },
+                  { title: "IMO Kuralları", href: "/stability/rules" }
+                ].map((resource, index) => (
+                  <Link
+                    key={index}
+                    to={resource.href}
+                    className="group flex items-center justify-between rounded-lg border border-border/40 bg-background/50 px-4 py-3 transition-all hover:border-primary/40 hover:bg-background"
+                  >
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm font-medium text-foreground">{resource.title}</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
+        </ScrollArea>
+      </div>
+
+      {/* Full Screen Content Modal */}
+      <AnimatePresence>
+        {selectedTopic && currentContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-background"
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border">
+              <div className="flex items-center justify-between px-4 py-3 max-w-4xl mx-auto">
+                <h2 className="text-lg font-bold text-foreground truncate pr-4">
+                  {currentContent.title}
+                </h2>
+                <button
+                  onClick={closeModal}
+                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center"
+                >
+                  <X className="w-5 h-5 text-foreground" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <ScrollArea className="h-[calc(100vh-60px)]">
+              <div className="p-4 space-y-6 pb-20 max-w-4xl mx-auto">
+                {/* Introduction */}
+                <div className="bg-primary/5 rounded-xl p-4 border-l-4 border-primary">
+                  <p className="text-foreground font-medium leading-relaxed">
+                    {currentContent.introduction}
+                  </p>
+                </div>
+
+                {/* Images/Diagrams */}
+                {currentContent.images && currentContent.images.length > 0 && (
+                  <div className="space-y-4">
+                    {currentContent.images.map((image, index) => (
+                      <div key={index} className="rounded-xl overflow-hidden border border-border/40 bg-muted/30">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-48 object-contain bg-muted/30"
+                        />
+                        {image.caption && (
+                          <p className="text-xs text-muted-foreground text-center py-2 px-4">
+                            {image.caption}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Main Content */}
+                <div className="prose prose-sm max-w-none">
+                  <div className="text-foreground leading-relaxed whitespace-pre-line">
+                    {currentContent.content}
+                  </div>
+                </div>
+
+                {/* Bullet Points */}
+                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
+                  <div className="bg-muted/50 rounded-xl p-4 space-y-2">
+                    <h3 className="font-semibold text-foreground mb-3">Önemli Noktalar</h3>
+                    {currentContent.bulletPoints.map((point, index) => (
+                      <div key={index} className="flex items-start gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-sm text-foreground">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Formula */}
+                {currentContent.formula && (
+                  <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
+                    <h3 className="font-semibold text-foreground mb-2">
+                      {currentContent.formula.name}
+                    </h3>
+                    <div className="bg-background rounded-lg p-3 font-mono text-lg text-center text-primary mb-2">
+                      {currentContent.formula.expression}
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {currentContent.formula.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Examples */}
+                {currentContent.examples && currentContent.examples.length > 0 && (
+                  <div className="bg-muted/50 rounded-xl p-4 space-y-3">
+                    <h3 className="font-semibold text-foreground mb-2">Sayısal Örnek</h3>
+                    {currentContent.examples.map((example, index) => (
+                      <div key={index} className="text-sm text-foreground">
+                        <p className="font-medium">Soru: {example.problem}</p>
+                        <p className="text-muted-foreground">Çözüm: {example.solution}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Key Points */}
+                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
+                  <div className="bg-primary/5 rounded-xl p-4">
+                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      Anahtar Bilgiler
+                    </h3>
+                    <div className="space-y-2">
+                      {currentContent.keyPoints.map((point, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-2 text-sm text-foreground"
+                        >
+                          <span className="text-primary font-bold">{index + 1}.</span>
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Warnings */}
+                {currentContent.warnings && currentContent.warnings.length > 0 && (
+                  <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
+                    <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
+                      <AlertTriangle className="w-5 h-5" />
+                      Uyarılar
+                    </h3>
+                    <div className="space-y-2">
+                      {currentContent.warnings.map((warning, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-2 text-sm text-foreground"
+                        >
+                          <span className="text-destructive">⚠</span>
+                          <span>{warning}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </ScrollArea>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

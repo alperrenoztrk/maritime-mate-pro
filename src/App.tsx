@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { GlobalMaritimeBackground } from "@/components/GlobalMaritimeBackground";
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
+import { DocumentExpiryNotifier } from "@/components/documents/DocumentExpiryNotifier";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
@@ -22,7 +23,6 @@ import { useFrameRate } from "@/hooks/useFrameRate";
 import { useScreenProtection } from "@/hooks/useScreenProtection";
 import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import { GlobalSearch } from "@/components/GlobalSearch";
-import { BookRouteFrame } from "@/components/book/BookRouteFrame";
 import { ProRoute } from "@/components/pro/ProRoute";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
@@ -30,7 +30,6 @@ import { ProRoute } from "@/components/pro/ProRoute";
 const Index = lazy(() => import("./pages/Index"));
 const CalculationsMenu = lazy(() => import("./pages/CalculationsMenu"));
 const LessonsPage = lazy(() => import("./pages/LessonsPage"));
-const BookPage = lazy(() => import("./pages/BookPage"));
 const CrewHierarchyPage = lazy(() => import("./pages/CrewHierarchyPage"));
 const BridgeDevicesPage = lazy(() => import("./pages/BridgeDevicesPage"));
 const MachineryHubPage = lazy(() => import("./pages/MachineryHubPage"));
@@ -193,6 +192,7 @@ const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
 const BetaWorkHoursTool = lazy(() => import("./pages/BetaWorkHoursTool"));
 const BetaPscChecklist = lazy(() => import("./pages/BetaPscChecklist"));
 const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
+const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
 const queryClient = new QueryClient();
 
 const RouteFallback = () => (
@@ -217,12 +217,10 @@ const AnimatedRoutes = () => {
     <div className="hidden">
       <GlobalSearch />
     </div>
-    <BookRouteFrame pathname={location.pathname}>
-      <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait">
         <Suspense fallback={<RouteFallback />}>
         <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-        <Route path="/book" element={<PageTransition><BookPage /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
         <Route path="/lessons" element={<PageTransition><LessonsPage /></PageTransition>} />
@@ -232,6 +230,7 @@ const AnimatedRoutes = () => {
         <Route path="/beta/work-hours" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaWorkHoursTool /></PageTransition></ProRoute>} />
         <Route path="/beta/psc-checklist" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaPscChecklist /></PageTransition></ProRoute>} />
         <Route path="/beta/ship-simulator" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaShipSimulator /></PageTransition></ProRoute>} />
+        <Route path="/beta/documents" element={<ProRoute feature="Belge ve sertifika takibi"><PageTransition><BetaDocumentTracker /></PageTransition></ProRoute>} />
 
 
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
@@ -397,7 +396,6 @@ const AnimatedRoutes = () => {
         </Routes>
         </Suspense>
       </AnimatePresence>
-    </BookRouteFrame>
     </>
   );
 };
@@ -431,6 +429,7 @@ const App = () => {
                 <DensityProvider>
                   <FontSizeProvider>
                     <Toaster />
+                    <DocumentExpiryNotifier />
                     <AskAIPopup />
                     <LanguageChangeOverlay />
                     <GlobalMaritimeBackground />

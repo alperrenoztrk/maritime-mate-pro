@@ -1,0 +1,47 @@
+<svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .lbl{font:12px sans-serif;fill:#0f172a;font-weight:600}
+      .sm{font:11px sans-serif;fill:#334155}
+    </style>
+  </defs>
+  <rect width="700" height="460" fill="#ffffff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Gözcülük ve Güvenli Hız — COLREG Kural 5 ve 6</text>
+
+  <!-- sea background -->
+  <rect x="40" y="50" width="330" height="290" fill="#e0f2fe" stroke="#94a3b8"/>
+
+  <!-- lookout sectors around own ship -->
+  <g>
+    <circle cx="205" cy="195" r="120" fill="#eff6ff" stroke="#94a3b8" stroke-dasharray="4 4"/>
+    <circle cx="205" cy="195" r="75" fill="#dbeafe" stroke="#94a3b8" stroke-dasharray="4 4"/>
+    <!-- own ship pointing up -->
+    <path fill="#1e3a8a" d="M 205 145 L 193 170 L 193 240 L 217 240 L 217 170 Z"/>
+    <text x="205" y="90" text-anchor="middle" class="sm">Görme (visual)</text>
+    <text x="205" y="270" text-anchor="middle" class="sm">İşitme + Radar/AIS/VHF</text>
+    <text x="205" y="325" text-anchor="middle" class="lbl">Kural 5: Elverişli tüm araçlarla</text>
+  </g>
+  <text x="205" y="343" text-anchor="middle" class="sm">sürekli ve etkin gözcülük</text>
+
+  <!-- safe speed factors -->
+  <rect x="400" y="50" width="260" height="290" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="530" y="78" text-anchor="middle" class="lbl">Kural 6: Güvenli hız etkenleri</text>
+  <g class="sm">
+    <text x="418" y="108">• Görüş durumu (sis, yağış)</text>
+    <text x="418" y="134">• Trafik yoğunluğu</text>
+    <text x="418" y="160">• Manevra yeteneği ve durma mesafesi</text>
+    <text x="418" y="186">• Gece — kıyı ışıkları / arka aydınlatma</text>
+    <text x="418" y="212">• Rüzgâr, deniz ve akıntı durumu</text>
+    <text x="418" y="238">• Su derinliği / draft kısıtı</text>
+    <text x="418" y="264">• Radar donanımının yeterliliği</text>
+  </g>
+  <text x="530" y="322" text-anchor="middle" class="sm" fill="#b45309">Gemi, çatışmayı önlemek için uygun ve</text>
+  <text x="530" y="337" text-anchor="middle" class="sm" fill="#b45309">etkili harekete olanak veren hızda olmalı</text>
+
+  <!-- info box -->
+  <rect x="60" y="355" width="580" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="75" y="377" class="lbl">Özet:</text>
+  <text x="75" y="395" class="sm">Kural 5 — Her tekne; görme, işitme ve elverişli bütün araçlarla durumu değerlendirecek şekilde</text>
+  <text x="75" y="411" class="sm">sürekli gözcülük yapar. Kural 6 — Her tekne her zaman güvenli hızla seyreder.</text>
+</svg>

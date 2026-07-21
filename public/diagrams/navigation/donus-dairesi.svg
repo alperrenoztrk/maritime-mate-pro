@@ -1,0 +1,56 @@
+<svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .lbl{font:12px sans-serif;fill:#0f172a;font-weight:600}
+      .sm{font:11px sans-serif;fill:#334155}
+    </style>
+  </defs>
+  <rect width="700" height="460" fill="#ffffff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Dönüş Dairesi (Turning Circle) — Advance ve Transfer</text>
+
+  <!-- sea background -->
+  <rect x="40" y="50" width="620" height="330" fill="#e0f2fe" stroke="#94a3b8"/>
+
+  <!-- approach track (up from bottom) -->
+  <line x1="200" y1="370" x2="200" y2="290" stroke="#1e3a8a" stroke-width="3"/>
+  <path fill="#1e3a8a" d="M 193 302 L 200 290 L 207 302 Z"/>
+  <text x="150" y="345" text-anchor="middle" class="sm">Yaklaşma</text>
+  <text x="150" y="360" text-anchor="middle" class="sm">rotası</text>
+
+  <!-- wheel-over point -->
+  <circle cx="200" cy="285" r="5" fill="#dc2626"/>
+  <text x="128" y="282" text-anchor="middle" class="sm" fill="#dc2626">Dümen kırma</text>
+  <text x="128" y="297" text-anchor="middle" class="sm" fill="#dc2626">noktası</text>
+
+  <!-- turning circle path: starboard turn -->
+  <path d="M 200 285 Q 200 105 355 105 Q 510 105 510 235 Q 510 355 385 350 Q 285 346 275 265"
+        stroke="#1e3a8a" stroke-width="3" fill="none" stroke-dasharray="8 6"/>
+  <path fill="#1e3a8a" d="M 270 278 L 275 265 L 283 276 Z"/>
+
+  <!-- ship silhouette at start of turn -->
+  <path fill="#1e3a8a" d="M 200 262 L 191 280 L 191 320 L 209 320 L 209 280 Z"/>
+
+  <!-- ADVANCE: vertical distance from wheel-over to 90° heading change -->
+  <g stroke="#16a34a" stroke-width="2">
+    <line x1="580" y1="285" x2="580" y2="105"/>
+    <line x1="573" y1="285" x2="587" y2="285"/>
+    <line x1="573" y1="105" x2="587" y2="105"/>
+  </g>
+  <text x="625" y="190" text-anchor="middle" class="lbl" fill="#15803d">Advance</text>
+  <text x="625" y="206" text-anchor="middle" class="sm">(90° dönüşte</text>
+  <text x="625" y="220" text-anchor="middle" class="sm">ileri mesafe)</text>
+
+  <!-- TRANSFER: lateral distance -->
+  <g stroke="#b45309" stroke-width="2">
+    <line x1="200" y1="75" x2="510" y2="75"/>
+    <line x1="200" y1="68" x2="200" y2="82"/>
+    <line x1="510" y1="68" x2="510" y2="82"/>
+  </g>
+  <text x="355" y="68" text-anchor="middle" class="lbl" fill="#b45309">Taktik çap (Tactical diameter)</text>
+
+  <!-- info box -->
+  <rect x="60" y="392" width="580" height="52" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="75" y="412" class="sm">Advance: Dümen kırıldığı andan pruvanın 90° dönmesine kadar kat edilen ileri mesafe.</text>
+  <text x="75" y="430" class="sm">Transfer: Aynı anda orijinal rotadan yanal kayma; Taktik çap: 180° dönüşteki yanal mesafe.</text>
+</svg>

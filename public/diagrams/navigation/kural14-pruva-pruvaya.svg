@@ -1,0 +1,46 @@
+<svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ttl{font:18px sans-serif;fill:#0f172a;font-weight:700}
+      .lbl{font:12px sans-serif;fill:#0f172a;font-weight:600}
+      .sm{font:11px sans-serif;fill:#334155}
+    </style>
+  </defs>
+  <rect width="700" height="460" fill="#ffffff"/>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Pruva Pruvaya (Head-on) — COLREG Kural 14</text>
+
+  <!-- sea background -->
+  <rect x="40" y="50" width="620" height="290" fill="#e0f2fe" stroke="#94a3b8"/>
+
+  <!-- centreline of original opposing courses -->
+  <line x1="70" y1="195" x2="630" y2="195" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- Vessel A: left, heading east -->
+  <g>
+    <path fill="#dc2626" d="M 220 195 L 195 183 L 95 183 L 95 207 L 195 207 Z"/>
+    <text x="150" y="232" text-anchor="middle" class="lbl" fill="#dc2626">Gemi A</text>
+    <!-- alteration to starboard (south side) -->
+    <path d="M 228 195 Q 290 200 320 235" stroke="#b45309" stroke-width="2.5" fill="none"/>
+    <path fill="#b45309" d="M 308 230 L 320 235 L 311 242 Z"/>
+  </g>
+
+  <!-- Vessel B: right, heading west -->
+  <g>
+    <path fill="#1e3a8a" d="M 480 195 L 505 183 L 605 183 L 605 207 L 505 207 Z"/>
+    <text x="555" y="232" text-anchor="middle" class="lbl" fill="#1e3a8a">Gemi B</text>
+    <!-- alteration to starboard (north side, from B's view) -->
+    <path d="M 472 195 Q 410 190 380 155" stroke="#b45309" stroke-width="2.5" fill="none"/>
+    <path fill="#b45309" d="M 392 160 L 380 155 L 389 148 Z"/>
+  </g>
+
+  <!-- port-to-port passing labels -->
+  <text x="350" y="130" text-anchor="middle" class="sm" fill="#b45309">Her iki gemi de SANCAĞA döner</text>
+  <text x="350" y="146" text-anchor="middle" class="sm" fill="#b45309">→ iskele iskeleye (port to port) geçiş</text>
+  <text x="350" y="290" text-anchor="middle" class="sm">Her iki gemi de diğerini pruvasında veya pruvasına yakın görür</text>
+
+  <!-- info box -->
+  <rect x="60" y="355" width="580" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="75" y="377" class="lbl">Kural 14:</text>
+  <text x="75" y="395" class="sm">Kuvvetle yürütülen iki tekne, çatışma riski doğuracak şekilde karşılıklı (resiprokal) rotalarda</text>
+  <text x="75" y="411" class="sm">yaklaşıyorsa, HER İKİSİ de rotasını sancağa değiştirir ve diğerinin iskelesinden geçer.</text>
+</svg>

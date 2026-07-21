@@ -1,9 +1,10 @@
 /**
  * Kategori bazlı konu görseli düzeltme haritası.
  *
- * `LessonTopicDetailPage` ve `MachineTopicDetailPage`, HTTP üzerinden gelen
+ * `LessonTopicDetailPage` ve `LessonTeachCard`, HTTP üzerinden gelen
  * dış kaynaklı veya konuyla ilgisiz görselleri burada tanımlı keyword
- * eşleşmelerine göre yerel asset'lerle değiştirir.
+ * eşleşmelerine göre yerel asset'lerle değiştirir. Güvenilir bir eşleşme
+ * yoksa görsel gizlenir — alakasız bir "dolgu" görseli göstermekten iyidir.
  */
 
 // Navigation
@@ -28,6 +29,13 @@ import latitudeParallels from "@/assets/navigation/latitude-parallels.jpg";
 import longitudeConcept from "@/assets/navigation/longitude-concept.jpg";
 import yonCompassRose from "@/assets/navigation/yon-compass-rose.jpg";
 import yonWindDrift from "@/assets/navigation/yon-wind-drift.png";
+import celestialTriangle from "@/assets/navigation/celestial-triangle.svg";
+import ialaLateralMarks from "@/assets/navigation/iala-lateral-marks.svg";
+import cardinalMarks from "@/assets/navigation/cardinal-marks.svg";
+import safeWaterMark from "@/assets/navigation/safe-water-mark.svg";
+import isolatedDangerMark from "@/assets/navigation/isolated-danger-mark.svg";
+import sembolLightCharacteristics from "@/assets/navigation/sembol-light-characteristics.jpg";
+import sembolRacon from "@/assets/navigation/sembol-racon.jpg";
 // Phase B (Tide / UKC) specific local assets
 import ruleOfTwelfths from "@/assets/tides/rule-of-twelfths.svg";
 import tideTableExcerpt from "@/assets/tides/tide-table-excerpt.svg";
@@ -42,26 +50,43 @@ type Fallback = { keywords: string[]; src: string };
  * veriler tarihi olarak yanlış/ilgisiz görseller içeriyor.
  */
 const phaseBOverrides: Fallback[] = [
-  { keywords: ["onikiler", "twelfths", "rule of twelfths"], src: ruleOfTwelfths },
-  { keywords: ["tide table", "gelgit tablo", "admiralty tide"], src: tideTableExcerpt },
+  { keywords: ["onikiler", "twelfth", "12'ler", "12ler"], src: ruleOfTwelfths },
+  { keywords: ["tide table", "tidal table", "gelgit tablo", "admiralty tide"], src: tideTableExcerpt },
   { keywords: ["ukc", "under-keel", "under keel", "squat", "barrass"], src: ukcStack },
-  { keywords: ["gelgit", "tide", "tidal", "chart datum", "lat (lowest", "spring tide", "neap tide", "yükseklik"], src: tideCurrent },
+  { keywords: ["chart datum", "lat (lowest", "datum"], src: "/diagrams/navigation/harita-datum.svg" },
+  { keywords: ["gelgit", "tide", "tidal", "spring tide", "neap tide"], src: tideCurrent },
   { keywords: ["akıntılı seyir", "set ve drift", "set & drift", "akıntı vektör", "vektör üçgen", "cts (course to steer)", "course to steer"], src: tideCurrent },
-  { keywords: ["eta diyagram", "eta hesab", "eta ve seyir", "estimated time of arrival"], src: chartPlotting },
+  { keywords: ["eta diyagram", "eta hesab", "eta ve seyir", "estimated time of arrival"], src: "/diagrams/navigation/eta-diyagrami.svg" },
 ];
 
 const navigationFallbacks: Fallback[] = [
   { keywords: ["pusula düzelt", "compass correction", "cdmvt", "deviation", "variation"], src: "/diagrams/navigation/pusula-duzeltme.svg" },
   { keywords: ["düzlem seyir", "plane sailing"], src: "/diagrams/navigation/duzlem-seyir.svg" },
+  { keywords: ["ölü hesap", "dead reckoning", "parakete mevki"], src: "/diagrams/navigation/olu-hesap.svg" },
+  { keywords: ["kural 13", "yetişme", "overtaking"], src: "/diagrams/navigation/kural13-yetisme.svg" },
+  { keywords: ["kural 14", "pruva pruvaya", "head-on", "head on"], src: "/diagrams/navigation/kural14-pruva-pruvaya.svg" },
+  { keywords: ["kural 15", "aykırı geçiş", "crossing"], src: "/diagrams/navigation/kural15-aykiri-gecis.svg" },
+  { keywords: ["gözcülük", "güvenli hız", "lookout", "safe speed"], src: "/diagrams/navigation/kural5-gozculuk.svg" },
+  { keywords: ["brm", "bridge resource", "köprüüstü kaynak"], src: "/diagrams/navigation/brm-bilesenleri.svg" },
+  { keywords: ["dönüş dairesi", "turning circle", "advance", "transfer", "tactical diameter"], src: "/diagrams/navigation/donus-dairesi.svg" },
+  { keywords: ["deniz mili", "nautical mile"], src: "/diagrams/navigation/deniz-mili.svg" },
+  { keywords: ["doppler", "parakete"], src: "/diagrams/navigation/doppler-log.svg" },
+  { keywords: ["göksel", "celestial", "zenith", "azimut", "azimuth", "yıldız"], src: celestialTriangle },
   { keywords: ["sextant", "sekstant"], src: sextant },
   { keywords: ["mercator", "merkator"], src: mercatorProjection },
   { keywords: ["gnomonic", "great circle", "büyük daire", "loxodrom", "loxodrome", "rhumb", "loksodrom"], src: greatCircleRhumb },
   { keywords: ["gps", "gnss", "satellite", "trilaterasyon", "dop", "hdop", "pdop"], src: gpsSatellites },
   { keywords: ["radar", "arpa"], src: radarDisplay },
   { keywords: ["ecdis"], src: ecdisDisplay },
-  { keywords: ["tide", "gelgit", "tidal", "set", "drift"], src: tideCurrent },
+  { keywords: ["emniyetli su", "safe water"], src: safeWaterMark },
+  { keywords: ["izole tehlike", "isolated danger"], src: isolatedDangerMark },
+  { keywords: ["kardinal", "cardinal"], src: cardinalMarks },
+  { keywords: ["lateral", "şamandıra", "iala", "buoy"], src: ialaLateralMarks },
+  { keywords: ["racon"], src: sembolRacon },
+  { keywords: ["fener karakter", "ışık karakter", "light characteristic", "sektör ışık", "sector light"], src: sembolLightCharacteristics },
+  { keywords: ["akıntı", "drift", "set ve drift"], src: tideCurrent },
   { keywords: ["chart", "harita", "plot", "mevki", "position", "fix"], src: chartPlotting },
-  { keywords: ["compass", "pusula", "bearing", "yön", "true", "manyetik"], src: yonCompassRose },
+  { keywords: ["compass", "pusula", "bearing", "kerteriz", "yön", "manyetik"], src: yonCompassRose },
   { keywords: ["enlem", "latitude"], src: latitudeParallels },
   { keywords: ["boylam", "longitude"], src: longitudeConcept },
   { keywords: ["koordinat", "coordinate"], src: coordinateSystem },
@@ -71,7 +96,7 @@ const navigationFallbacks: Fallback[] = [
   { keywords: ["navtex"], src: navtexReceiver },
   { keywords: ["autopilot"], src: autopilotControl },
   { keywords: ["vhf", "gmdss", "radio"], src: vhfRadio },
-  { keywords: ["squat", "ukc", "emniyet"], src: safetyEquipment },
+  { keywords: ["can yeleği", "can simidi", "lifejacket", "lifebuoy", "emniyet teçhizat"], src: safetyEquipment },
   { keywords: ["projection", "projeksiyon"], src: gnomonicProjection },
   { keywords: ["north", "kuzey"], src: compass },
 ];
@@ -100,24 +125,38 @@ const communicationFallbacks: Fallback[] = [
   { keywords: ["navtex"], src: navtexReceiver },
 ];
 
+const stabilityFallbacks: Fallback[] = [
+  { keywords: ["serbest yüzey", "free surface"], src: "/diagrams/stability/serbest-yuzey.svg" },
+  { keywords: ["metasantr", "metasentr", "metacent"], src: "/diagrams/stability/metasantr-gm.svg" },
+  { keywords: ["gz eğri", "gz curve", "statik stabilite eğri"], src: "/diagrams/stability/gz-egrisi.svg" },
+  { keywords: ["doğrultma", "righting", "gz"], src: "/diagrams/dogrultma-kolu.svg" },
+  { keywords: ["yara", "hasar", "damage"], src: "/diagrams/stability/yara-stabilitesi.svg" },
+  { keywords: ["trim", "draft"], src: "/diagrams/stability/trim.svg" },
+  { keywords: ["ağırlık merkezi", "gravity"], src: "/diagrams/agirlik-merkezi.svg" },
+  { keywords: ["kaldırma", "buoyancy", "arşimet", "yüzerlik", "deplasman"], src: "/diagrams/kaldirma-merkezi.svg" },
+  { keywords: ["denge", "equilibrium"], src: "/diagrams/denge-halleri.svg" },
+];
+
 const tablesByCategory: Record<string, Fallback[]> = {
   navigation: navigationFallbacks,
   meteorology: meteorologyFallbacks,
   machine: machineFallbacks,
   communication: communicationFallbacks,
+  stability: stabilityFallbacks,
 };
 
-const defaultByCategory: Record<string, string> = {
-  navigation: chartPlotting,
-  meteorology: weatherSystems,
-  machine: "/diagrams/machine/termodinamik-sistem.svg",
-  communication: vhfRadio,
+const tableForCategory = (categoryId: string | undefined): Fallback[] => {
+  if (!categoryId) return navigationFallbacks;
+  // Beta/makine alt kategorileri "machine-<slug>" biçiminde gelir.
+  if (categoryId.startsWith("machine")) return machineFallbacks;
+  return tablesByCategory[categoryId] ?? navigationFallbacks;
 };
 
 /**
  * Verilen src bir dış (http) görsel ise, kategori + section/topic/alt
- * metni arasında keyword eşleşmesi arar; bulursa yerel asset döner.
- * Dış olmayan src'ler (yerel import, /, data:) olduğu gibi geçirilir.
+ * metni arasında keyword eşleşmesi arar; bulursa yerel asset döner,
+ * bulamazsa `undefined` döner (görsel gösterilmez). Dış olmayan src'ler
+ * (yerel import, /, data:) olduğu gibi geçirilir.
  */
 export const resolveLessonImage = (
   categoryId: string | undefined,
@@ -137,9 +176,31 @@ export const resolveLessonImage = (
   if (phaseB) return phaseB.src;
 
   if (!replaceExternal || !src.startsWith("http")) return src;
-  const table = (categoryId && tablesByCategory[categoryId]) || navigationFallbacks;
-  const match = table.find((item) =>
+  const match = tableForCategory(categoryId).find((item) =>
     item.keywords.some((k) => haystack.includes(k.toLowerCase())),
   );
-  return match?.src ?? defaultByCategory[categoryId ?? ""] ?? chartPlotting;
+  return match?.src;
+};
+
+const MARKDOWN_IMAGE_RE = /!\[([^\]]*)\]\(([^)\s]+)\)/g;
+
+/**
+ * Section markdown metnindeki görselleri normalize eder: dış görseller
+ * `resolveLessonImage` ile yerel karşılığına çevrilir, karşılığı olmayanlar
+ * ve aynı bölümde tekrar edenler metinden çıkarılır.
+ */
+export const normalizeLessonMarkdownImages = (
+  content: string,
+  categoryId: string | undefined,
+  sectionTitle: string | undefined,
+  topicTitle: string | undefined,
+  alreadyUsed: Iterable<string> = [],
+): string => {
+  const seen = new Set(alreadyUsed);
+  return content.replace(MARKDOWN_IMAGE_RE, (_full, alt: string, src: string) => {
+    const resolved = resolveLessonImage(categoryId, src, sectionTitle, topicTitle, alt);
+    if (!resolved || seen.has(resolved)) return "";
+    seen.add(resolved);
+    return `![${alt}](${resolved})`;
+  });
 };
