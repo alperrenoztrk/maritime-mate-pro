@@ -5,13 +5,41 @@ import { calculationCategories, sectionIconMap } from "@/data/calculationCenterC
 import { hasCourseTopic } from "@/data/courseContent";
 import { ChevronDown, ChevronRight, GraduationCap, Ship, Wrench } from "lucide-react";
 
+type LessonGroupId = "deck" | "machine";
+
+const EXPANDED_GROUP_KEY = "lessons-expanded-group";
+
+/* Restore the last opened group so returning users land where they left off.
+   First visit defaults to "deck" (opened) — a fully collapsed page looks
+   empty and forces an extra tap before any content is visible. */
+function getInitialExpandedGroup(): LessonGroupId | null {
+  try {
+    const stored = localStorage.getItem(EXPANDED_GROUP_KEY);
+    if (stored === "deck" || stored === "machine") return stored;
+    if (stored === "none") return null;
+  } catch {
+    /* storage unavailable (private mode) — fall through to default */
+  }
+  return "deck";
+}
+
 export default function LessonsPage() {
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
     ["--animation-duration" as string]: "8.33ms",
     ["--transition-duration" as string]: "16.67ms",
   };
-  const [expandedGroup, setExpandedGroup] = useState<"deck" | "machine" | null>(null);
+  const [expandedGroup, setExpandedGroup] = useState<LessonGroupId | null>(getInitialExpandedGroup);
+
+  const toggleGroup = (groupId: LessonGroupId) => {
+    const next = expandedGroup === groupId ? null : groupId;
+    setExpandedGroup(next);
+    try {
+      localStorage.setItem(EXPANDED_GROUP_KEY, next ?? "none");
+    } catch {
+      /* storage unavailable — state still works for this session */
+    }
+  };
 
   const deckCategories = calculationCategories.filter(
     (category) => !category.group || category.group === "deck"
@@ -64,8 +92,9 @@ export default function LessonsPage() {
               <section key={group.id} className="space-y-4">
                 <button
                   type="button"
-                  onClick={() => setExpandedGroup(isExpanded ? null : group.id)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-border/60 bg-card/80 px-4 py-4 text-left shadow-sm transition hover:border-primary/30 hover:bg-card"
+                  onClick={() => toggleGroup(group.id)}
+                  aria-expanded={isExpanded}
+                  className="flex w-full items-center justify-between rounded-2xl border border-border/60 bg-card/80 px-4 py-4 text-left shadow-sm transition hover:border-primary/30 hover:bg-card active:scale-[0.99]"
                 >
                   <span className="flex items-center gap-3">
                     <span
@@ -75,11 +104,17 @@ export default function LessonsPage() {
                     </span>
                     <span className="flex flex-col">
                       <span className="text-lg font-bold text-foreground">{group.title}</span>
+                      <span className="text-xs text-muted-foreground">{group.subtitle}</span>
                     </span>
                   </span>
-                  <ChevronDown
-                    className={`h-5 w-5 text-muted-foreground transition-transform ${isExpanded ? "rotate-180" : ""}`}
-                  />
+                  <span className="flex shrink-0 items-center gap-2">
+                    <span className="text-xs font-medium text-muted-foreground">
+                      {group.categories.length} ders
+                    </span>
+                    <ChevronDown
+                      className={`h-5 w-5 text-muted-foreground transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                    />
+                  </span>
                 </button>
 
                 {isExpanded && (
@@ -109,7 +144,7 @@ export default function LessonsPage() {
                             {/* Konu Anlatımı Butonu */}
                             <Link
                               to={isMachineTopic ? `/machine/${machineSlug}/topics` : `/lessons/${category.id}/topics`}
-                              className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
+                              className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md active:scale-95"
                             >
                               <div
                                 className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${category.accent} text-white transition-transform group-hover:scale-110`}
@@ -137,7 +172,7 @@ export default function LessonsPage() {
                                 <Link
                                   key={`${category.id}-${section.id}`}
                                   to={sectionHref}
-                                  className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
+                                  className="group flex flex-col items-center gap-2 rounded-xl border border-border/40 bg-card/80 p-3 backdrop-blur transition-all hover:border-primary/30 hover:bg-card hover:shadow-md active:scale-95"
                                 >
                                   <div
                                     className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${category.accent} text-white transition-transform group-hover:scale-110`}

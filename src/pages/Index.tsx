@@ -8,12 +8,16 @@ import { NewsPanel } from "@/components/home/NewsPanel";
 const PAGES = ["news", "home", "widgets"] as const;
 type PageId = (typeof PAGES)[number];
 
+const PAGE_LABELS: Record<PageId, string> = {
+  news: "Haberler",
+  home: "Uygulamalar",
+  widgets: "Widget'lar",
+};
+
 const Index = () => {
 
   const pagerRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState<PageId>("home");
-  const [isScrolling, setIsScrolling] = useState(false);
-  const scrollTimerRef = useRef<number | null>(null);
 
 
   // Start centered on the home page
@@ -29,9 +33,6 @@ const Index = () => {
     if (!el) return;
     let ticking = false;
     const onScroll = () => {
-      setIsScrolling(true);
-      if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
-      scrollTimerRef.current = window.setTimeout(() => setIsScrolling(false), 500);
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
@@ -42,12 +43,14 @@ const Index = () => {
       });
     };
     el.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      el.removeEventListener("scroll", onScroll);
-      if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
-    };
-
+    return () => el.removeEventListener("scroll", onScroll);
   }, []);
+
+  const scrollToPage = (index: number) => {
+    const el = pagerRef.current;
+    if (!el) return;
+    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
+  };
 
 
 
@@ -119,6 +122,16 @@ const Index = () => {
             </span>
             <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
           </h1>
+          {/* Current pager page — orients the user as they swipe */}
+          <div className="mt-1.5 flex h-5 items-center justify-center" aria-hidden="true">
+            <span
+              key={activePage}
+              className="text-[12px] font-medium uppercase tracking-[0.22em] text-sky-200/75"
+              style={{ animation: "page-label-in 0.3s ease both" }}
+            >
+              {PAGE_LABELS[activePage]}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -130,47 +143,55 @@ const Index = () => {
         aria-label="Mariner's Book"
       >
         {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))]">
           <NewsPanel />
         </section>
 
         {/* CENTER — Uygulamalar + Beta/Ayarlar */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))]">
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))]">
           <HomeWidgetGrid />
         </section>
       </main>
 
-      {/* iOS-style pill: idle = Search, scrolling = page dots */}
-      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 z-20 flex justify-center pointer-events-none">
+      {/* Bottom controls: always-visible tappable page dots + iOS-style search pill */}
+      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 z-20 flex flex-col items-center gap-2.5 pointer-events-none">
+        <div
+          className="pointer-events-auto flex items-center gap-0.5 rounded-full border border-white/10 bg-black/20 px-1.5 py-1 backdrop-blur-xl"
+          role="tablist"
+          aria-label="Ana ekran sayfaları"
+        >
+          {PAGES.map((p, i) => (
+            <button
+              key={p}
+              type="button"
+              role="tab"
+              aria-selected={activePage === p}
+              aria-label={PAGE_LABELS[p]}
+              onClick={() => scrollToPage(i)}
+              className="flex h-7 min-h-0 min-w-0 items-center justify-center rounded-full px-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            >
+              <span
+                className={
+                  "h-2 rounded-full transition-all duration-300 " +
+                  (activePage === p ? "w-5 bg-white" : "w-2 bg-white/40")
+                }
+              />
+            </button>
+          ))}
+        </div>
         <button
           type="button"
           onClick={() => window.dispatchEvent(new Event("open-global-search"))}
-          aria-label={isScrolling ? `Sayfa ${PAGES.indexOf(activePage) + 1} / ${PAGES.length}` : "Ara"}
+          aria-label="Ara"
           className="pointer-events-auto flex h-11 min-w-[120px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 backdrop-blur-2xl shadow-[0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-200 hover:bg-white/15 active:scale-95"
         >
-          {isScrolling ? (
-            <div className="flex items-center gap-2">
-              {PAGES.map((p) => (
-                <span
-                  key={p}
-                  className={
-                    "h-2 w-2 rounded-full transition-all duration-200 " +
-                    (activePage === p ? "bg-white scale-110" : "bg-white/40")
-                  }
-                />
-              ))}
-            </div>
-          ) : (
-            <>
-              <Search className="h-4 w-4 text-white" strokeWidth={2.25} />
-              <span className="text-[15px] font-medium text-white">Ara</span>
-            </>
-          )}
+          <Search className="h-4 w-4 text-white" strokeWidth={2.25} />
+          <span className="text-[15px] font-medium text-white">Ara</span>
         </button>
       </div>
 
@@ -178,6 +199,7 @@ const Index = () => {
         @keyframes home-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes home-drift-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         @keyframes title-shine { to { background-position: 200% center; } }
+        @keyframes page-label-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
       `}</style>

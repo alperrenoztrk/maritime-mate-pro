@@ -15,7 +15,7 @@ import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
 import { DensityProvider } from "@/contexts/DensityContext";
 import { FontSizeProvider } from "@/contexts/FontSizeContext";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
@@ -195,9 +195,17 @@ const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
 const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
 const queryClient = new QueryClient();
 
+/* Chunk-loading screen. Matches the app's dark maritime shell so lazy route
+   loads never flash a white page between the home screen and inner pages. */
 const RouteFallback = () => (
-  <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
-    <div className="h-8 w-8 animate-spin rounded-full border-2 border-muted-foreground/30 border-t-primary" />
+  <div
+    className="flex min-h-screen items-center justify-center"
+    style={{
+      background:
+        "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
+    }}
+  >
+    <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-sky-300" />
   </div>
 );
 
@@ -420,6 +428,8 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* Honor the OS "reduce motion" setting for all framer-motion animations */}
+      <MotionConfig reducedMotion="user">
       <HelmetProvider>
         <AuthProvider>
           <EntitlementProvider>
@@ -447,6 +457,7 @@ const App = () => {
           </EntitlementProvider>
         </AuthProvider>
       </HelmetProvider>
+      </MotionConfig>
     </QueryClientProvider>
   );
 };
