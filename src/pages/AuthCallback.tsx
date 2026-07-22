@@ -16,6 +16,11 @@ const AuthCallback = () => {
       try {
         console.log('Auth callback başladı (PKCE exchange)');
         const url = new URL(window.location.href);
+        const nextPath = (() => {
+          const raw = url.searchParams.get('next');
+          if (!raw || !raw.startsWith('/') || raw.startsWith('//')) return '/';
+          return raw;
+        })();
         const code = url.searchParams.get('code');
         const errorParam = url.searchParams.get('error');
         const errorDescription = url.searchParams.get('error_description');
@@ -51,7 +56,7 @@ const AuthCallback = () => {
           const fullName = data.session?.user?.user_metadata?.full_name;
           setMessage(`Hoş geldiniz, ${fullName || email || 'kullanıcı'}!`);
           toast.success('Google ile başarıyla giriş yaptınız!');
-          setTimeout(() => navigate(new URL(window.location.href).searchParams.get('next') || '/', { replace: true }), 1500);
+          setTimeout(() => navigate(nextPath, { replace: true }), 1500);
           return;
         }
 
@@ -66,7 +71,7 @@ const AuthCallback = () => {
           const fullName = sessionData.session.user.user_metadata?.full_name;
           setMessage(`Hoş geldiniz, ${fullName || email}!`);
           toast.success('Google ile başarıyla giriş yaptınız!');
-          setTimeout(() => navigate(new URL(window.location.href).searchParams.get('next') || '/', { replace: true }), 1500);
+          setTimeout(() => navigate(nextPath, { replace: true }), 1500);
           return;
         }
 
@@ -87,7 +92,7 @@ const AuthCallback = () => {
             const sessionUser = setData.session.user;
             setMessage(`Hoş geldiniz, ${sessionUser.user_metadata?.full_name || sessionUser.email}!`);
             toast.success('Google ile başarıyla giriş yaptınız!');
-            setTimeout(() => navigate(new URL(window.location.href).searchParams.get('next') || '/', { replace: true }), 1500);
+            setTimeout(() => navigate(nextPath, { replace: true }), 1500);
             return;
           }
         }

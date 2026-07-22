@@ -15,10 +15,10 @@ type SocialProvider = "google" | "apple";
 // "Redirect URLs" izin listesi ile birebir aynı olmalı.
 const NATIVE_OAUTH_REDIRECT = "com.marinersbook.app://auth/callback";
 
-// Lovable'ın /~oauth/initiate OAuth broker'ı yalnızca Lovable
-// barındırmasında mevcut; diğer origin'lerde bu yol 404'e düşer.
-const isLovableHost = () =>
-  /(^|\.)(lovable\.app|lovableproject\.com)$/.test(window.location.hostname);
+// Lovable OAuth broker custom domainlerde de çalışır. Yalnızca yerel
+// geliştirme originlerinde /~oauth yolu olmadığı için doğrudan backend akışına düşeriz.
+const isLocalDevelopmentHost = () =>
+  /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
 
 const sanitizeReturnPath = (raw?: string | null) => {
   if (!raw) return "/";
@@ -39,10 +39,10 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
       return { error: null };
     }
 
-    const webReturnUrl = `${window.location.origin}${safeReturn}`;
+    const webCallbackUrl = `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturn)}`;
 
-    if (isLovableHost()) {
-      const result = await cloudAuth.signInWithOAuth(provider, { redirect_uri: webReturnUrl });
+    if (!isLocalDevelopmentHost()) {
+      const result = await cloudAuth.signInWithOAuth(provider, { redirect_uri: webCallbackUrl });
       if (result.redirected || result.error) {
         return { error: (result.error as Error | undefined) ?? null };
       }
@@ -52,7 +52,7 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturn)}` },
+      options: { redirectTo: webCallbackUrl },
     });
     return { error: error as Error | null };
   } catch (error) {
