@@ -72,6 +72,10 @@ const Settings = () => {
     toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <MobileLayout>
       <div className="min-h-screen bg-background text-foreground p-4">
