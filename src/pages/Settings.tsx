@@ -1,6 +1,6 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRight } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRight, Mail } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -98,12 +98,15 @@ const Settings = () => {
                         <span className="text-lg font-semibold text-primary">{initials}</span>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0 space-y-0.5">
+                    <div className="flex-1 min-w-0 space-y-1">
                       {displayName ? (
                         <div className="font-medium truncate">{displayName}</div>
                       ) : null}
                       {user.email ? (
-                        <div className="text-sm text-muted-foreground truncate">{user.email}</div>
+                        <div className="flex items-center gap-1.5 text-sm text-muted-foreground min-w-0">
+                          <Mail className="w-3.5 h-3.5 shrink-0" />
+                          <span className="truncate" title={user.email}>{user.email}</span>
+                        </div>
                       ) : null}
                       <div className="text-xs text-muted-foreground/80 truncate">
                         <span data-translatable>Sağlayıcı</span>: {providerLabel}
