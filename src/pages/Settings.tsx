@@ -18,9 +18,15 @@ import { toast } from "sonner";
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
-  const { user, signOut } = useAuth();
+  const { user, signOut, loading: authLoading } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      navigate("/auth", { replace: true });
+    }
+  }, [authLoading, user, navigate]);
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
