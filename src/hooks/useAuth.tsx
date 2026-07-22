@@ -88,9 +88,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Register listener FIRST, then fetch session
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
       setSession(newSession);
       setUser(newSession?.user ?? null);
+      if (event === "SIGNED_IN" && newSession) {
+        try {
+          const stored = sessionStorage.getItem("postAuthReturn");
+          if (stored && stored.startsWith("/") && !stored.startsWith("//")) {
+            sessionStorage.removeItem("postAuthReturn");
+            if (window.location.pathname !== stored) {
+              window.history.replaceState({}, "", stored);
+            }
+          }
+        } catch {
+          // ignore
+        }
+      }
     });
 
     supabase.auth.getSession().then(({ data: { session: existing } }) => {
