@@ -36,7 +36,7 @@ export function ChronometerWidget({ label, hours, minutes, seconds, digital, sub
         <div className="vw-cap" />
       </div>
       <div className="vw-digital notranslate" translate="no">{digital}</div>
-      {subLabel ? <div className="vw-sub">{subLabel}</div> : null}
+      {subLabel ? <div className="vw-sub notranslate" translate="no">{subLabel}</div> : null}
     </div>
   );
 }

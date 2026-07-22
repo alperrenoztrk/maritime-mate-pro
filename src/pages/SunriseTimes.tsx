@@ -112,7 +112,7 @@ export default function SunriseTimes() {
   }, [latitude, longitude, fetchSunrises]);
 
   const selectedLocationName = searchParams.get("location");
-  const headerLocation = (selectedLocationName ? decodeURIComponent(selectedLocationName) : null) || locationLabel || (typeof latitude === "number" && typeof longitude === "number" ? `${latitude.toFixed(4)}°, ${longitude.toFixed(4)}°` : "Konum alınıyor...");
+  const headerLocation = (selectedLocationName ? decodeURIComponent(selectedLocationName) : null) || locationLabel || (typeof latitude === "number" && typeof longitude === "number" ? `${latitude.toFixed(4)}°, ${longitude.toFixed(4)}°` : null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-card p-4">
@@ -129,7 +129,13 @@ export default function SunriseTimes() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
               <MapPin className="h-4 w-4" />
-              <span className="text-sm">{headerLocation}</span>
+              <span className="text-sm">
+                {headerLocation ? (
+                  <span className="notranslate" translate="no">{headerLocation}</span>
+                ) : (
+                  "Konum alınıyor..."
+                )}
+              </span>
             </div>
           </CardContent>
         </Card>

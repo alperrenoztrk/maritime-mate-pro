@@ -47,7 +47,7 @@ export function GpsReceiverWidget({
       </div>
       <div className="vw-lcd">
         <div className="vw-lcd-row">
-          <span className="vw-lcd-label">{label ?? "—"}</span>
+          <span className="vw-lcd-label notranslate" translate="no">{label ?? "—"}</span>
           <span className={sourceKind === "ip" ? "vw-lcd-amber" : undefined}>{sourceLabel}</span>
         </div>
         <div className="vw-lcd-row notranslate" translate="no">
