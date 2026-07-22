@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
+import legacy from "@vitejs/plugin-legacy";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 
 // https://vitejs.dev/config/
@@ -118,6 +119,30 @@ export default defineConfig(({ mode }) => ({
         ],
       },
     }),
+    // Geniş Android uyumluluğu: Bu bir Capacitor (WebView) uygulaması olduğu için
+    // çalıştığı Chromium sürümü cihazın Android/System WebView sürümüne bağlıdır.
+    // WebView'i güncellenmemiş eski cihazlarda (Android 6-9, ~Chrome 44-74) modern
+    // JS sözdizimi ve API'leri (?., ??, replaceAll, .at(), structuredClone, flatMap)
+    // beyaz ekrana/çökmeye yol açar. @vitejs/plugin-legacy:
+    //  - modern paket için eksik API'leri polyfill'ler (modernPolyfills),
+    //  - modül desteği olmayan çok eski WebView'ler için ES5 + SystemJS legacy paket
+    //    üretir (nomodule), böylece uygulama "çoğu Android sürümünde" açılır.
+    legacy({
+      // package.json "browserslist" ile hizalı en düşük hedefler.
+      targets: [
+        "Android >= 6",
+        "Chrome >= 61",
+        "iOS >= 12",
+        "Safari >= 12",
+        "Firefox >= 68",
+        "Edge >= 79",
+      ],
+      // Modül destekleyen ama eski (Chrome 61-97) WebView'lerde eksik olan
+      // çalışma zamanı API'lerini modern pakete de enjekte et.
+      modernPolyfills: true,
+      // async/await kullanan eski (ES5) legacy paket için gerekli.
+      additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+    }),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -125,6 +150,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    // NOT: Modern paketin hedefini (build.target) @vitejs/plugin-legacy yönetir
+    // (modül + dynamic import destekleyen WebView tabanı, ~Chrome 64). Modülü
+    // olup dynamic import'u olmayan "arada kalan" eski WebView'ler (Chrome 61-63)
+    // plugin'in dynamic-import geri dönüş kontrolüyle otomatik olarak ES5 legacy
+    // paketine düşer. Eski cihaz desteği legacy() eklentisinin "targets" seçeneğiyle
+    // ayarlanır; burada elle build.target vermek plugin ile çakışırdı.
     rollupOptions: {
       output: {
         // Hash-only chunk names avoid S3 "same object" upload collisions caused
