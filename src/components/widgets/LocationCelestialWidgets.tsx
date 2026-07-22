@@ -88,7 +88,11 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
                     Konum
                   </div>
                   <div className="text-lg font-bold text-foreground truncate">
-                    {effectiveLabel || "Bilinmiyor"}
+                    {effectiveLabel ? (
+                      <span className="notranslate" translate="no">{effectiveLabel}</span>
+                    ) : (
+                      "Bilinmiyor"
+                    )}
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
@@ -140,7 +144,7 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-destructive" />
-                {effectiveLabel}
+                <span className="notranslate" translate="no">{effectiveLabel}</span>
               </DialogTitle>
             </DialogHeader>
             <div className="flex-1 mt-4">

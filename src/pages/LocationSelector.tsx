@@ -28,8 +28,8 @@ function LocationCard({ location, onSelect }: { location: LocationResult; onSele
           
           <div className="flex-1 space-y-2">
             <div>
-              <h3 className="font-semibold text-foreground text-lg">{location.name}</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="font-semibold text-foreground text-lg notranslate" translate="no">{location.name}</h3>
+              <p className="text-muted-foreground text-sm notranslate" translate="no">
                 {location.admin1 ? `${location.admin1}, ` : ''}{location.country}
               </p>
             </div>
@@ -118,7 +118,11 @@ export default function LocationSelector() {
           <CardContent className="space-y-3">
             <div>
               <p className="text-muted-foreground">
-                {locationLabel || "Konum bilgisi alınıyor..."}
+                {locationLabel ? (
+                  <span className="notranslate" translate="no">{locationLabel}</span>
+                ) : (
+                  "Konum bilgisi alınıyor..."
+                )}
               </p>
               {isFallbackLocation && (
                 <p className="text-xs text-amber-500 mt-1">

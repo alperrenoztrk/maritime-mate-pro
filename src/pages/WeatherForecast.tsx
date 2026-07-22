@@ -100,7 +100,11 @@ export default function WeatherForecast() {
           <CardContent className="pt-6">
             <div className="text-center">
               <h2 className="text-xl font-semibold text-foreground mb-2">
-                {selectedLocationName || locationLabel || "Konum bilgisi alınıyor..."}
+                {selectedLocationName || locationLabel ? (
+                  <span className="notranslate" translate="no">{selectedLocationName || locationLabel}</span>
+                ) : (
+                  "Konum bilgisi alınıyor..."
+                )}
               </h2>
               <p className="text-sm text-muted-foreground">
                 {Number.isFinite(lat) && Number.isFinite(lon) 
