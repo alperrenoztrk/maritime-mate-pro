@@ -39,10 +39,18 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
       return { error: null };
     }
 
-    const webCallbackUrl = `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturn)}`;
+    // Lovable OAuth broker sadece pre-registered origin'i kabul eder;
+    // hedef path'i sessionStorage'da saklayıp session hydrate olunca yönleniriz.
+    try {
+      sessionStorage.setItem("postAuthReturn", safeReturn);
+    } catch {
+      // storage yoksa sessizce geç
+    }
 
     if (!isLocalDevelopmentHost()) {
-      const result = await cloudAuth.signInWithOAuth(provider, { redirect_uri: webCallbackUrl });
+      const result = await cloudAuth.signInWithOAuth(provider, {
+        redirect_uri: window.location.origin,
+      });
       if (result.redirected || result.error) {
         return { error: (result.error as Error | undefined) ?? null };
       }
@@ -52,7 +60,7 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: webCallbackUrl },
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
     });
     return { error: error as Error | null };
   } catch (error) {
@@ -80,9 +88,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Register listener FIRST, then fetch session
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
       setSession(newSession);
       setUser(newSession?.user ?? null);
+      if (event === "SIGNED_IN" && newSession) {
+        try {
+          const stored = sessionStorage.getItem("postAuthReturn");
+          if (stored && stored.startsWith("/") && !stored.startsWith("//")) {
+            sessionStorage.removeItem("postAuthReturn");
+            if (window.location.pathname !== stored) {
+              window.history.replaceState({}, "", stored);
+            }
+          }
+        } catch {
+          // ignore
+        }
+      }
     });
 
     supabase.auth.getSession().then(({ data: { session: existing } }) => {
