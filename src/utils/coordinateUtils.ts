@@ -19,11 +19,15 @@ export interface LatLonDMS {
  */
 export function decimalToDMS(decimal: number, isLatitude: boolean): DMSCoordinate {
   const absolute = Math.abs(decimal);
-  const degrees = Math.floor(absolute);
-  const minutesDecimal = (absolute - degrees) * 60;
-  const minutes = Math.floor(minutesDecimal);
-  const seconds = Math.round((minutesDecimal - minutes) * 60 * 10) / 10; // Round to 1 decimal place
-  
+  // Round the whole value into tenths of a second before splitting it, so that a
+  // value like 59.97" rounds up and carries into the next minute/degree instead
+  // of producing an invalid "60" seconds (or minutes) reading.
+  let tenthSeconds = Math.round(absolute * 3600 * 10);
+  const seconds = (tenthSeconds % 600) / 10; // 0.0 – 59.9
+  const totalMinutes = Math.floor(tenthSeconds / 600);
+  const minutes = totalMinutes % 60;
+  const degrees = Math.floor(totalMinutes / 60);
+
   let direction: 'N' | 'S' | 'E' | 'W';
   if (isLatitude) {
     direction = decimal >= 0 ? 'N' : 'S';

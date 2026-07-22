@@ -235,23 +235,6 @@ class WeatherPreloader {
       if (!res.ok) return null;
       const reverseJson = (await res.json()) as BigDataCloudReverse;
       
-      // Check for sea/ocean areas first
-      const informative = reverseJson?.localityInfo?.informative || [];
-      const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "körfez"];
-      let seaLikeName: string | undefined;
-      
-      for (const keyword of waterKeywords) {
-        const match = informative.find((x) => {
-          const desc = (x.description || "").toLowerCase();
-          const name = (x.name || "").toLowerCase();
-          return desc.includes(keyword) || name.includes(keyword);
-        });
-        if (match?.name && !match.name.includes("Türkiye") && !match.name.includes("Turkey")) {
-          seaLikeName = match.name;
-          break;
-        }
-      }
-      
       // Get city/location info - prioritize more specific info
       let cityLikeName: string | undefined;
       if (reverseJson.city && reverseJson.locality && reverseJson.city !== reverseJson.locality) {
@@ -259,8 +242,29 @@ class WeatherPreloader {
       } else {
         cityLikeName = reverseJson.city || reverseJson.locality || reverseJson.principalSubdivision || reverseJson.countryName;
       }
-      
-      return seaLikeName || cityLikeName || null;
+
+      // Only fall back to a sea/ocean name when there is no real land address.
+      // BigDataCloud's "informative" list includes the neighbouring sea/ocean of
+      // a coastal city (e.g. Manhattan → "Atlantic Ocean"), so using it whenever
+      // present mislabels on-land positions.
+      let seaLikeName: string | undefined;
+      if (!cityLikeName) {
+        const informative = reverseJson?.localityInfo?.informative || [];
+        const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "körfez"];
+        for (const keyword of waterKeywords) {
+          const match = informative.find((x) => {
+            const desc = (x.description || "").toLowerCase();
+            const name = (x.name || "").toLowerCase();
+            return desc.includes(keyword) || name.includes(keyword);
+          });
+          if (match?.name) {
+            seaLikeName = match.name;
+            break;
+          }
+        }
+      }
+
+      return cityLikeName || seaLikeName || null;
     } catch {
       return null;
     }

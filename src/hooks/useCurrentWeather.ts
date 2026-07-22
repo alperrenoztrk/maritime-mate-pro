@@ -170,23 +170,6 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
       if (!res.ok) return;
       const reverseJson = (await res.json()) as BigDataCloudReverse;
       
-      // Önce deniz/okyanus gibi su alanlarını kontrol et
-      const informative = reverseJson?.localityInfo?.informative || [];
-      const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "körfez"];
-      let seaLikeName: string | undefined;
-      
-      for (const keyword of waterKeywords) {
-        const match = informative.find((x) => {
-          const desc = (x.description || "").toLowerCase();
-          const name = (x.name || "").toLowerCase();
-          return desc.includes(keyword) || name.includes(keyword);
-        });
-        if (match?.name && !match.name.includes("Türkiye") && !match.name.includes("Turkey")) {
-          seaLikeName = match.name;
-          break;
-        }
-      }
-      
       // Şehir/konum bilgisini al - daha spesifik bilgiyi önce göster
       let cityLikeName: string | undefined;
       if (reverseJson.city && reverseJson.locality && reverseJson.city !== reverseJson.locality) {
@@ -196,8 +179,29 @@ export function useCurrentWeather(options: UseCurrentWeatherOptions = {}) {
         // Tek bir bilgi varsa onu göster, yoksa hiyerarşik sırala
         cityLikeName = reverseJson.city || reverseJson.locality || reverseJson.principalSubdivision || reverseJson.countryName;
       }
-      
-      const label = seaLikeName || cityLikeName || null;
+
+      // Yalnızca gerçek bir kara adresi (şehir/mahalle) yoksa deniz/okyanus adına düş.
+      // Aksi halde BigDataCloud'un "informative" listesi bir kıyı şehrinin komşu
+      // denizini/okyanusunu da içerdiği için (ör. Manhattan → "Atlas Okyanusu")
+      // konum yanlış etiketlenir.
+      let seaLikeName: string | undefined;
+      if (!cityLikeName) {
+        const informative = reverseJson?.localityInfo?.informative || [];
+        const waterKeywords = ["sea", "ocean", "gulf", "bay", "strait", "channel", "sound", "deniz", "okyanus", "körfez"];
+        for (const keyword of waterKeywords) {
+          const match = informative.find((x) => {
+            const desc = (x.description || "").toLowerCase();
+            const name = (x.name || "").toLowerCase();
+            return desc.includes(keyword) || name.includes(keyword);
+          });
+          if (match?.name) {
+            seaLikeName = match.name;
+            break;
+          }
+        }
+      }
+
+      const label = cityLikeName || seaLikeName || null;
       setLocationLabel(label);
       lastReverseRef.current = { lat, lon, label };
     } catch (_err) {
