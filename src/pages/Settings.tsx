@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 // Density settings removed from Settings page; provider remains app-wide
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
