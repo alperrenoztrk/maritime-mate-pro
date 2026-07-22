@@ -103,11 +103,15 @@ const Settings = () => {
                         <div className="font-medium truncate">{displayName}</div>
                       ) : null}
                       {user.email ? (
-                        <div className="flex items-center gap-1.5 text-sm text-muted-foreground min-w-0">
-                          <Mail className="w-3.5 h-3.5 shrink-0" />
+                        <div className="flex items-center gap-1.5 text-sm text-foreground/90 min-w-0 font-medium">
+                          <Mail className="w-3.5 h-3.5 shrink-0 text-primary" />
                           <span className="truncate" title={user.email}>{user.email}</span>
                         </div>
-                      ) : null}
+                      ) : (
+                        <div className="text-xs text-muted-foreground italic">
+                          <span data-translatable>E-posta bulunamadı</span>
+                        </div>
+                      )}
                       <div className="text-xs text-muted-foreground/80 truncate">
                         <span data-translatable>Sağlayıcı</span>: {providerLabel}
                       </div>
