@@ -37,12 +37,14 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
   const decimalToDMS = (decimal: number | undefined, isLatitude: boolean = true): string => {
     if (decimal === undefined || !Number.isFinite(decimal)) return "-";
     
-    const abs = Math.abs(decimal);
-    const degrees = Math.floor(abs);
-    const minutesFloat = (abs - degrees) * 60;
-    const minutes = Math.floor(minutesFloat);
-    const seconds = Math.round((minutesFloat - minutes) * 60);
-    
+    // Değeri saniyeye yuvarlayıp öyle bölerek 59.6" gibi bir değerin bir sonraki
+    // dakikaya/dereceye taşınmasını sağla; aksi halde geçersiz "60" saniye çıkar.
+    let totalSeconds = Math.round(Math.abs(decimal) * 3600);
+    const seconds = totalSeconds % 60;
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const minutes = totalMinutes % 60;
+    const degrees = Math.floor(totalMinutes / 60);
+
     let direction: string;
     if (isLatitude) {
       direction = decimal >= 0 ? "K" : "G";
