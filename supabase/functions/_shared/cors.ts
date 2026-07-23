@@ -32,11 +32,8 @@ export function getCorsHeaders(origin: string | null): Record<string, string> {
     'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    // Responses differ per Origin; prevent caches serving one origin's
+    // Access-Control-Allow-Origin to another.
+    'Vary': 'Origin',
   };
 }
-
-// Default headers for backwards compatibility (still uses dynamic origin)
-export const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};

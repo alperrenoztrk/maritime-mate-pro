@@ -1,10 +1,63 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
-import legacy from "@vitejs/plugin-legacy";
+import legacy, { cspHashes } from "@vitejs/plugin-legacy";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
+
+// Content-Security-Policy — üretim build'ine <meta> olarak enjekte edilir.
+// Barındırma (Lovable) ve Capacitor WebView'inde HTTP başlıklarını kontrol
+// edemediğimiz için CSP'nin tek güvenilir taşıyıcısı index.html'dir.
+// Yalnızca build'de uygulanır; dev sunucusu (HMR/React refresh inline
+// script'leri) kısıtlanmaz.
+//
+// script-src: 'self' + @vitejs/plugin-legacy'nin enjekte ettiği dört inline
+// snippet'in sha256 hash'leri (cspHashes) + pdf.js'in WASM decoder'ları için
+// 'wasm-unsafe-eval'. Enjekte edilen harici script'ler (XSS'in ana vektörü)
+// tamamen engellenir. Reklam/analitik web'de etkinleştirilirse ilgili Google
+// alan adlarının buraya eklenmesi gerekir (Android'de AdMob native çalışır,
+// CSP'den etkilenmez).
+const PRODUCTION_CSP = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "form-action 'self'",
+  `script-src 'self' 'wasm-unsafe-eval' ${cspHashes.map((h) => `'sha256-${h}'`).join(" ")}`,
+  // Splash ekranı inline <style> + runtime CSS-in-JS için unsafe-inline gerekli.
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  // Ders içerikleri onlarca farklı eğitim sitesinden görsel gösteriyor;
+  // görseller pasif içerik olduğundan https: genelinde serbest bırakıldı.
+  "img-src 'self' data: blob: https:",
+  "media-src 'self' blob: https:",
+  // translate.googleapis.com: RouteTranslationGate'in çalışma zamanı makine
+  // çevirisi (eksik sözlük girdileri) istemciden bu uca gider.
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://translate.googleapis.com https://fonts.googleapis.com https://fonts.gstatic.com",
+  "frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.openstreetmap.org",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+].join("; ");
+
+function cspPlugin(): Plugin {
+  return {
+    name: "inject-csp-meta",
+    apply: "build",
+    transformIndexHtml: {
+      order: "post",
+      handler: (html) => ({
+        html,
+        tags: [
+          {
+            tag: "meta",
+            attrs: { "http-equiv": "Content-Security-Policy", content: PRODUCTION_CSP },
+            injectTo: "head-prepend",
+          },
+        ],
+      }),
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -23,6 +76,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
+    cspPlugin(),
     mcpPlugin(),
     VitePWA({
       registerType: "autoUpdate",

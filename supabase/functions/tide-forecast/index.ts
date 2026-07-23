@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -217,6 +218,12 @@ serve(async (req) => {
 
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
+  // Abuse brake: public endpoint, keep per-IP request volume bounded.
+  const rl = checkRateLimit(`tide-forecast:${getClientIp(req)}`, 30, 60_000);
+  if (!rl.allowed) {
+    return rateLimitResponse(corsHeaders, rl.retryAfterSec);
+  }
+
   try {
     const body = req.method === "POST"
       ? await req.json().catch(() => ({}))
@@ -277,7 +284,24 @@ serve(async (req) => {
       12_000,
     );
 
-    const locationUrl = catchRes.headers.get("location") || "";
+    // The redirect target comes from an external response header — only follow
+    // it if it stays on tide-forecast.com, so this function can't be steered
+    // into fetching arbitrary (or internal) hosts.
+    const rawLocation = catchRes.headers.get("location") || "";
+    let locationUrl = "";
+    if (rawLocation) {
+      try {
+        const resolved = new URL(rawLocation, catchUrl);
+        if (
+          resolved.protocol === "https:" &&
+          (resolved.hostname === "www.tide-forecast.com" || resolved.hostname === "tide-forecast.com")
+        ) {
+          locationUrl = resolved.toString();
+        }
+      } catch {
+        // invalid URL → treated as missing below
+      }
+    }
     if (!locationUrl) {
       return json(
         {

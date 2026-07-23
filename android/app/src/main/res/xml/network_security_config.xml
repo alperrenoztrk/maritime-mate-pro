@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tüm API seviyelerinde düz metin (HTTP) trafiğini açıkça yasaklar.
+     API 28+ zaten varsayılan olarak engeller; bu yapılandırma Android 6-8
+     cihazları da kapsar. Capacitor WebView içeriği https://localhost
+     üzerinden sunulur, ağ istekleri HTTPS'tir — HTTP'ye ihtiyaç yok. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+</network-security-config>
