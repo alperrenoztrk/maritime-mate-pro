@@ -2,6 +2,37 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
 import { assertSafeUrl } from "../_shared/ssrf.ts";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
+
+// Public endpoint limits: keep the reader usable while blocking proxy abuse.
+const RATE_LIMIT_PER_MIN = 20;
+const MAX_REDIRECTS = 3;
+const MAX_BODY_BYTES = 3 * 1024 * 1024; // 3 MB of HTML is more than any article needs
+
+/** Read a response body as text, aborting past MAX_BODY_BYTES. */
+async function readBodyLimited(response: Response): Promise<string> {
+  const reader = response.body?.getReader();
+  if (!reader) return "";
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > MAX_BODY_BYTES) {
+      await reader.cancel().catch(() => {});
+      throw new Error("Response too large");
+    }
+    chunks.push(value);
+  }
+  const merged = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    merged.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(merged);
+}
 
 /**
  * Extract readable article content from HTML.
@@ -174,6 +205,12 @@ serve(async (req: Request) => {
   }
 
   // Public endpoint: news reader is available to anonymous users.
+  // Abuse brake: per-IP fixed window so the function can't be used as a
+  // high-volume fetch proxy with just the (public) anon key.
+  const rl = checkRateLimit(`fetch-article:${getClientIp(req)}`, RATE_LIMIT_PER_MIN, 60_000);
+  if (!rl.allowed) {
+    return rateLimitResponse(corsHeaders, rl.retryAfterSec);
+  }
 
   try {
     const { url } = await req.json();
@@ -195,28 +232,43 @@ serve(async (req: Request) => {
       );
     }
 
-    // Fetch the article (with Jina Reader fallback for blocked sources)
+    // Fetch the article (with Jina Reader fallback for blocked sources).
+    // Redirects are followed MANUALLY so that every hop goes through the same
+    // SSRF validation as the original URL — `redirect: "follow"` would let an
+    // attacker-controlled site 302 us into private/metadata addresses.
     const fetchWithTimeout = async (target: string, ms: number) => {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), ms);
       try {
-        return await fetch(target, {
-          signal: controller.signal,
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-            Accept:
-              "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Cache-Control": "no-cache",
-            "Sec-Fetch-Dest": "document",
-            "Sec-Fetch-Mode": "navigate",
-            "Sec-Fetch-Site": "none",
-            "Sec-Fetch-User": "?1",
-            "Upgrade-Insecure-Requests": "1",
-          },
-          redirect: "follow",
-        });
+        let current = target;
+        for (let hop = 0; ; hop++) {
+          const response = await fetch(current, {
+            signal: controller.signal,
+            headers: {
+              "User-Agent":
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+              Accept:
+                "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+              "Accept-Language": "en-US,en;q=0.9",
+              "Cache-Control": "no-cache",
+              "Sec-Fetch-Dest": "document",
+              "Sec-Fetch-Mode": "navigate",
+              "Sec-Fetch-Site": "none",
+              "Sec-Fetch-User": "?1",
+              "Upgrade-Insecure-Requests": "1",
+            },
+            redirect: "manual",
+          });
+          const location = response.headers.get("location");
+          if (response.status < 300 || response.status >= 400 || !location) {
+            return response;
+          }
+          await response.body?.cancel().catch(() => {});
+          if (hop >= MAX_REDIRECTS) throw new Error("Too many redirects");
+          const next = new URL(location, current).toString();
+          await assertSafeUrl(next);
+          current = next;
+        }
       } finally {
         clearTimeout(timeout);
       }
@@ -229,7 +281,7 @@ serve(async (req: Request) => {
       const proxied = `https://r.jina.ai/${url}`;
       const proxyRes = await fetchWithTimeout(proxied, 20000);
       if (proxyRes.ok) {
-        const text = await proxyRes.text();
+        const text = await readBodyLimited(proxyRes);
         // Jina returns markdown-like text with "Title:" / "URL Source:" / "Markdown Content:" preamble
         const titleMatch = text.match(/^Title:\s*(.+)$/m);
         const jinaTitle = titleMatch?.[1]?.trim() || "";
@@ -252,7 +304,18 @@ serve(async (req: Request) => {
       );
     }
 
-    const html = await response.text();
+    // Only article-like content types are worth parsing; this also stops the
+    // endpoint being used to relay binaries.
+    const contentType = (response.headers.get("content-type") || "").toLowerCase();
+    if (contentType && !/text\/html|application\/xhtml|text\/plain|xml/.test(contentType)) {
+      await response.body?.cancel().catch(() => {});
+      return new Response(
+        JSON.stringify({ error: "Desteklenmeyen içerik türü." }),
+        { status: 415, headers: { ...corsHeaders, "content-type": "application/json" } }
+      );
+    }
+
+    const html = await readBodyLimited(response);
 
     if (!html || html.length < 100) {
       return new Response(
@@ -279,11 +342,12 @@ serve(async (req: Request) => {
       headers: { ...corsHeaders, "content-type": "application/json" },
     });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
     const isTimeout = err instanceof DOMException && err.name === "AbortError";
+    console.error("[fetch-article]", err instanceof Error ? err.message : String(err));
 
+    // Generic message only — internal error details must not leak to clients.
     return new Response(
-      JSON.stringify({ error: isTimeout ? "Zaman aşımı — kaynak çok yavaş yanıt veriyor." : message }),
+      JSON.stringify({ error: isTimeout ? "Zaman aşımı — kaynak çok yavaş yanıt veriyor." : "Makale alınamadı." }),
       { status: 500, headers: { ...corsHeaders, "content-type": "application/json" } }
     );
   }

@@ -44,8 +44,23 @@ serve(async (req) => {
       );
     }
 
+    // Girdi doğrulama: rol beyaz listesi + mesaj sayısı ve boyut sınırları.
+    // Kota kullanıcı başına sayıldığı için tek istekte devasa içerik göndererek
+    // maliyeti şişirmek de engellenmeli.
+    const MAX_MESSAGES = 40;
+    const MAX_CONTENT_LENGTH = 16_000;
+    const ALLOWED_ROLES = new Set(["system", "user", "assistant"]);
     const { messages } = body;
-    if (!Array.isArray(messages)) {
+    const messagesValid = Array.isArray(messages) &&
+      messages.length > 0 &&
+      messages.length <= MAX_MESSAGES &&
+      messages.every((m: unknown) => {
+        if (!m || typeof m !== "object") return false;
+        const msg = m as Record<string, unknown>;
+        return typeof msg.role === "string" && ALLOWED_ROLES.has(msg.role) &&
+          typeof msg.content === "string" && msg.content.length <= MAX_CONTENT_LENGTH;
+      });
+    if (!messagesValid) {
       return new Response(
         JSON.stringify({ error: GENERIC_ERRORS.INVALID_INPUT }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }

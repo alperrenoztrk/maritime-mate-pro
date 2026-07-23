@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { XMLParser } from "https://esm.sh/fast-xml-parser@4.5.3";
 import { getFeedsForLanguage, type FeedSource } from "./locales.ts";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -375,6 +376,12 @@ serve(async (req) => {
 
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Abuse brake: each request fans out to many RSS feeds; keep per-IP volume bounded.
+  const rl = checkRateLimit(`maritime-news:${getClientIp(req)}`, 30, 60_000);
+  if (!rl.allowed) {
+    return rateLimitResponse(corsHeaders, rl.retryAfterSec);
   }
 
   try {

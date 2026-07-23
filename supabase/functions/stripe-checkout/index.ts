@@ -138,9 +138,11 @@ async function createStripeCheckoutSession(params: CreateCheckoutBody, corsHeade
 
   const text = await resp.text();
   if (!resp.ok) {
+    // Log upstream detail server-side only; raw Stripe errors can contain
+    // account/config info that must not reach clients.
     console.error("Stripe error:", text);
     return new Response(
-      JSON.stringify({ error: "Stripe request failed", details: text }),
+      JSON.stringify({ error: "Stripe request failed" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
@@ -185,12 +187,18 @@ serve(async (req: Request) => {
       );
     }
     
+    // Checkout e-postası istemciden değil, doğrulanmış oturumdan gelir.
+    if (user.email) {
+      body.customerEmail = user.email;
+    } else {
+      delete body.customerEmail;
+    }
+
     return await createStripeCheckoutSession(body, corsHeaders);
   } catch (e) {
     console.error("Function error:", e);
-    const errorMessage = e instanceof Error ? e.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: errorMessage }),
+      JSON.stringify({ error: "Service error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }

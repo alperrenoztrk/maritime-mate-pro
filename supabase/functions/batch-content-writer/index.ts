@@ -1,5 +1,6 @@
-import { corsHeaders } from "../_shared/cors.ts";
+import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
+import { checkRateLimit, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
@@ -72,10 +73,21 @@ async function generateContent(target: ContentTarget): Promise<ContentResult> {
   }
 }
 
+const MAX_FIELD_LENGTH = 300;
+
+function isValidTarget(value: unknown): value is ContentTarget {
+  if (!value || typeof value !== "object") return false;
+  const t = value as Record<string, unknown>;
+  return (
+    typeof t.key === "string" && t.key.length > 0 && t.key.length <= MAX_FIELD_LENGTH &&
+    typeof t.topicTitle === "string" && t.topicTitle.length > 0 && t.topicTitle.length <= MAX_FIELD_LENGTH &&
+    typeof t.sectionTitle === "string" && t.sectionTitle.length > 0 && t.sectionTitle.length <= MAX_FIELD_LENGTH
+  );
+}
+
 Deno.serve(async (req) => {
-  const origin = req.headers.get("origin");
-  const headers = { ...corsHeaders, "Content-Type": "application/json" };
-  
+  const headers = { ...getCorsHeaders(req.headers.get("origin")), "Content-Type": "application/json" };
+
   // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { headers });
@@ -94,17 +106,30 @@ Deno.serve(async (req) => {
     );
   }
 
+  // Her batch en fazla 10 Gemini çağrısı üretir; kullanıcı başına dakikada
+  // birkaç batch'ten fazlası içerik yazımı için meşru bir kullanım değildir.
+  const rl = checkRateLimit(`batch-content-writer:${user.id}`, 3, 60_000);
+  if (!rl.allowed) {
+    return rateLimitResponse(headers, rl.retryAfterSec);
+  }
+
   try {
     const body = await req.json();
-    const targets: ContentTarget[] = body.targets || [];
-    const batchSize = Math.min(targets.length, 10); // Max 10 at a time
-
-    if (targets.length === 0) {
+    const rawTargets: unknown = body.targets || [];
+    if (!Array.isArray(rawTargets) || rawTargets.length === 0) {
       return new Response(
         JSON.stringify({ error: "No targets provided" }),
         { status: 400, headers }
       );
     }
+    if (!rawTargets.every(isValidTarget)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid target format" }),
+        { status: 400, headers }
+      );
+    }
+    const targets: ContentTarget[] = rawTargets;
+    const batchSize = Math.min(targets.length, 10); // Max 10 at a time
 
     console.log(`[batch-content-writer] Processing ${batchSize} targets`);
 
