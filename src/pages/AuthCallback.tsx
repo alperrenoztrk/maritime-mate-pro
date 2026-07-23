@@ -18,8 +18,21 @@ const AuthCallback = () => {
         const url = new URL(window.location.href);
         const nextPath = (() => {
           const raw = url.searchParams.get('next');
-          if (!raw || !raw.startsWith('/') || raw.startsWith('//')) return '/';
-          return raw;
+          const candidate = raw && raw.startsWith('/') && !raw.startsWith('//')
+            ? raw
+            : (() => {
+                try {
+                  const stored = sessionStorage.getItem('postAuthReturn');
+                  if (stored && stored.startsWith('/') && !stored.startsWith('//')) {
+                    sessionStorage.removeItem('postAuthReturn');
+                    return stored;
+                  }
+                } catch {
+                  // ignore
+                }
+                return '/';
+              })();
+          return candidate;
         })();
         const code = url.searchParams.get('code');
         const errorParam = url.searchParams.get('error');
