@@ -46,6 +46,9 @@ export default function CrewHierarchyPage() {
                 key={group.department}
                 className="rounded-xl border border-border/50 bg-gradient-to-br from-white/60 via-card to-slate-50/70 p-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:from-background dark:via-card dark:to-slate-900/40"
               >
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary/80">
+                  {group.department}
+                </div>
                 <div className="space-y-2">
                   {group.roles.map((role) => (
                     <Link
