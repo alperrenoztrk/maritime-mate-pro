@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/safeClient';
+import { NATIVE_APP_DEEP_LINK, nativeBridgeCapture } from '@/lib/nativeAuthBridge';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { Loader2, CheckCircle, XCircle, Smartphone } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -10,10 +12,68 @@ const AuthCallback = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('Authentication işlemi gerçekleştiriliyor...');
+  // Native (Capacitor) köprü dönüşünde uygulamaya dönüş deep link'i.
+  // Dolu ise web içi yönlendirme yapılmaz, "Uygulamaya Dön" gösterilir.
+  const [nativeReturnUrl, setNativeReturnUrl] = useState<string | null>(null);
 
   useEffect(() => {
+    // Native uygulamadan başlatılan OAuth dönüşü: token'lar bu web sayfasına
+    // geldi (fragment main.tsx'te nativeBridgeCapture ile yakalandı). Görev,
+    // oturumu web'de kurmak değil, token'ları deep link ile uygulamaya
+    // aktarmak. Otomatik yönlendirme tarayıcı tarafından engellenirse buton
+    // kullanıcı dokunuşuyla aynı işi yapar.
+    const handleNativeBridge = async () => {
+      let target: string | null = null;
+      let ok = false;
+
+      if (nativeBridgeCapture.hash && !nativeBridgeCapture.errorDescription) {
+        target = `${NATIVE_APP_DEEP_LINK}#${nativeBridgeCapture.hash}`;
+        ok = /(^|&)access_token=/.test(nativeBridgeCapture.hash);
+      } else if (nativeBridgeCapture.code) {
+        target = `${NATIVE_APP_DEEP_LINK}?code=${encodeURIComponent(nativeBridgeCapture.code)}`;
+        ok = true;
+      } else if (!nativeBridgeCapture.errorDescription) {
+        // Güvenlik ağı: fragment bir şekilde supabase-js tarafından tüketilip
+        // web oturumu kurulduysa token'ları oradan aktar ve web kopyasını
+        // yerelden sil (aynı refresh token ailesini iki istemcinin
+        // paylaşması ileride her iki oturumu da düşürür).
+        const { data } = await supabase.auth.getSession();
+        if (data.session?.access_token && data.session?.refresh_token) {
+          target = `${NATIVE_APP_DEEP_LINK}#access_token=${encodeURIComponent(
+            data.session.access_token,
+          )}&refresh_token=${encodeURIComponent(data.session.refresh_token)}`;
+          ok = true;
+          await supabase.auth.signOut({ scope: 'local' });
+        }
+      }
+
+      if (ok && target) {
+        setStatus('success');
+        setMessage('Giriş başarılı! Uygulamaya dönülüyor…');
+        setNativeReturnUrl(target);
+        // Otomatik dönüş denemesi; kullanıcı hareketi olmadan engellenirse
+        // ekrandaki buton kalır.
+        window.location.replace(target);
+        return;
+      }
+
+      setStatus('error');
+      setMessage(
+        nativeBridgeCapture.errorDescription
+          ? `Giriş hatası: ${nativeBridgeCapture.errorDescription}`
+          : 'Giriş tamamlanamadı. Lütfen uygulamaya dönüp tekrar deneyin.',
+      );
+      // Hata durumunda da uygulamaya dönüş sunulur (parametresiz deep link
+      // uygulamayı sadece öne getirir).
+      setNativeReturnUrl(target ?? NATIVE_APP_DEEP_LINK);
+    };
+
     const handleAuthCallback = async () => {
       try {
+        if (nativeBridgeCapture.active) {
+          await handleNativeBridge();
+          return;
+        }
         console.log('Auth callback başladı (PKCE exchange)');
         const url = new URL(window.location.href);
         const nextPath = (() => {
@@ -111,10 +171,11 @@ const AuthCallback = () => {
         }
 
         throw new Error('Session oluşturulamadı. Lütfen tekrar deneyin.');
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Auth callback error:', error);
         setStatus('error');
-        setMessage(`Giriş hatası: ${error?.message || 'Bilinmeyen hata'}`);
+        const msg = error instanceof Error ? error.message : 'Bilinmeyen hata';
+        setMessage(`Giriş hatası: ${msg}`);
         toast.error('Giriş işlemi başarısız oldu. Lütfen tekrar deneyin.');
         setTimeout(() => navigate('/', { replace: true }), 2500);
       }
@@ -176,23 +237,48 @@ const AuthCallback = () => {
           
           {status === 'success' && (
             <div className="space-y-3">
-              <div className="text-sm text-green-600 font-medium">
-                Hesabınız başarıyla oluşturuldu
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Ana sayfaya yönlendiriliyorsunuz...
-              </div>
+              {nativeReturnUrl ? (
+                <>
+                  <Button asChild className="w-full gap-2">
+                    <a href={nativeReturnUrl}>
+                      <Smartphone className="w-4 h-4" />
+                      Uygulamaya Dön
+                    </a>
+                  </Button>
+                  <div className="text-sm text-muted-foreground">
+                    Otomatik dönüş çalışmazsa yukarıdaki butona dokunun.
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="text-sm text-green-600 font-medium">
+                    Hesabınız başarıyla oluşturuldu
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Ana sayfaya yönlendiriliyorsunuz...
+                  </div>
+                </>
+              )}
             </div>
           )}
-          
+
           {status === 'error' && (
             <div className="space-y-3">
               <div className="text-sm text-red-600">
                 Giriş işlemi tamamlanamadı
               </div>
-              <div className="text-sm text-muted-foreground">
-                Ana sayfaya yönlendiriliyorsunuz...
-              </div>
+              {nativeReturnUrl ? (
+                <Button asChild variant="outline" className="w-full gap-2">
+                  <a href={nativeReturnUrl}>
+                    <Smartphone className="w-4 h-4" />
+                    Uygulamaya Dön
+                  </a>
+                </Button>
+              ) : (
+                <div className="text-sm text-muted-foreground">
+                  Ana sayfaya yönlendiriliyorsunuz...
+                </div>
+              )}
             </div>
           )}
         </CardContent>

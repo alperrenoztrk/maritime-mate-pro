@@ -6,9 +6,12 @@
 Google girişi `src/hooks/useAuth.tsx` içinde ortama göre üç yoldan çalışır:
 
 1. **Native (Android/iOS, Capacitor):** `supabase.auth.signInWithOAuth` +
-   sistem tarayıcısı (`@capacitor/browser`). Dönüş
-   `com.marinersbook.app://auth/callback` deep link'i ile alınır
-   (AndroidManifest.xml'de intent-filter tanımlı).
+   sistem tarayıcısı (`@capacitor/browser`). Dönüş adresi web köprüsüdür:
+   `https://www.nauticalleap.com/auth/callback?flow=native`. Köprü sayfası
+   token fragment'ını `com.marinersbook.app://auth/callback` deep link'i ile
+   uygulamaya aktarır (AndroidManifest.xml'de intent-filter tanımlı,
+   yakalama `src/lib/nativeAuthBridge.ts`). Neden doğrudan deep link değil:
+   aşağıdaki "2026-07 arıza kaydı"na bakın.
 2. **Lovable barındırması (`*.lovable.app`):** Lovable OAuth broker'ı
    (`@lovable.dev/cloud-auth-js`, `/~oauth/initiate`).
 3. **Diğer web ortamları (localhost dahil):** `supabase.auth.signInWithOAuth`,
@@ -31,6 +34,46 @@ Supabase (Lovable Cloud yönetimindeki proje) Auth ayarlarında:
 Bu ayarlar yapılmadan 1 ve 3 numaralı yollar "provider is not enabled" /
 "redirect_to not allowed" hatası verir. Aşağıdaki eski rehber genel
 adımları anlatır; kod örnekleri güncel uygulamayı yansıtmayabilir.
+
+### 🛠️ 2026-07 arıza kaydı: "Google ile giriş yaptıktan sonra uygulama oturum açmıyor"
+
+**Belirti:** Android uygulamasında "Google ile devam et" → Google girişi
+başarıyla tamamlanıyor → tarayıcıda web sitesi (www.nauticalleap.com)
+açılıyor, ama uygulamaya dönüldüğünde oturum hâlâ kapalı.
+
+**Kök neden:** Site özel alan adına (`www.nauticalleap.com`) taşınırken
+Supabase **Redirect URLs** izin listesi yenilendi ve
+`com.marinersbook.app://auth/callback` deep link'i listeden düştü.
+Supabase, izin listesinde olmayan bir `redirect_to` istendiğinde hata
+vermek yerine **sessizce Site URL'e** yönlendirir; token'lar bu yüzden
+uygulama yerine tarayıcıdaki web sitesine gitti. (Doğrulama:
+`/auth/v1/verify?...&redirect_to=com.marinersbook.app://auth/callback`
+çağrısı deep link yerine `https://www.nauticalleap.com/`e yönlendiriyor —
+yani deep link izinli değil.)
+
+**Uygulanan kod çözümü (kalıcı güvenlik ağı):** Native giriş artık dönüş
+adresi olarak izin listesinden düşmesi mümkün olmayan kendi origin'imizi
+kullanır: `https://www.nauticalleap.com/auth/callback?flow=native`. Bu
+köprü sayfası token'ları deep link ile uygulamaya aktarır
+(`src/lib/nativeAuthBridge.ts` + `src/pages/AuthCallback.tsx`). Böylece
+izin listesi yine bozulsa bile giriş kopmaz.
+
+**Yapılması gereken pano ayarı (önerilir — eski APK'ları da düzeltir):**
+Supabase Dashboard → proje `vrpbhguztsqakvjcezeb` → **Authentication →
+URL Configuration → Redirect URLs** listesine şunu ekleyin:
+
+```
+com.marinersbook.app://auth/callback
+```
+
+Bu eklenince mağazadaki mevcut (eski) sürümler de anında düzelir, çünkü
+onlar hâlâ doğrudan deep link'e dönüş ister. Ayrıca eklendiği takdirde
+`useAuth.tsx` içindeki `redirectTo` tekrar `NATIVE_APP_DEEP_LINK`'e
+döndürülerek köprüdeki "Uygulamaya Dön" ara adımı kaldırılabilir; köprü
+kodu güvenlik ağı olarak kalmalıdır.
+
+**Site URL** `https://www.nauticalleap.com` olarak kalmalıdır (web broker
+girişinin dönüşü bu origin'e gelir).
 
 ---
 

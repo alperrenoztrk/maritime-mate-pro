@@ -5,15 +5,11 @@ import { Capacitor } from "@capacitor/core";
 import { App as CapacitorApp } from "@capacitor/app";
 import { Browser } from "@capacitor/browser";
 import { supabase } from "@/integrations/supabase/safeClient";
+import { NATIVE_APP_DEEP_LINK, NATIVE_BRIDGE_URL } from "@/lib/nativeAuthBridge";
 
 const cloudAuth = createLovableAuth();
 
 type SocialProvider = "google" | "apple";
-
-// Native (Capacitor) OAuth dönüşü için derin bağlantı adresi.
-// AndroidManifest.xml'deki intent-filter ve Supabase'in
-// "Redirect URLs" izin listesi ile birebir aynı olmalı.
-const NATIVE_OAUTH_REDIRECT = "com.marinersbook.app://auth/callback";
 
 // Lovable OAuth broker custom domainlerde de çalışır. Yalnızca yerel
 // geliştirme originlerinde /~oauth yolu olmadığı için doğrudan backend akışına düşeriz.
@@ -30,9 +26,17 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
   const safeReturn = sanitizeReturnPath(returnPath);
   try {
     if (Capacitor.isNativePlatform()) {
+      // Dönüş adresi olarak doğrudan deep link DEĞİL, web köprüsü kullanılır:
+      // özel şema Supabase "Redirect URLs" izin listesinden düşerse Supabase
+      // token'ları sessizce Site URL'e yollar ve uygulama oturum alamaz.
+      // Kendi origin'imiz her zaman izinli olduğundan köprü sayfası
+      // (/auth/callback?flow=native) token'ları deep link ile uygulamaya
+      // aktarır. İzin listesine com.marinersbook.app://auth/callback eklenirse
+      // burası NATIVE_APP_DEEP_LINK'e döndürülerek aradaki adım kaldırılabilir
+      // (bkz. GOOGLE_AUTH_SETUP.md).
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider,
-        options: { redirectTo: NATIVE_OAUTH_REDIRECT, skipBrowserRedirect: true },
+        options: { redirectTo: NATIVE_BRIDGE_URL, skipBrowserRedirect: true },
       });
       if (error) return { error: error as Error };
       await Browser.open({ url: data.url });
@@ -124,7 +128,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (!Capacitor.isNativePlatform()) return;
 
     const listenerPromise = CapacitorApp.addListener("appUrlOpen", async ({ url }) => {
-      if (!url.startsWith(NATIVE_OAUTH_REDIRECT)) return;
+      if (!url.startsWith(NATIVE_APP_DEEP_LINK)) return;
 
       try {
         await Browser.close();
