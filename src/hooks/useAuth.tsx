@@ -96,8 +96,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           const stored = sessionStorage.getItem("postAuthReturn");
           if (stored && stored.startsWith("/") && !stored.startsWith("//")) {
             sessionStorage.removeItem("postAuthReturn");
-            if (window.location.pathname !== stored) {
-              window.history.replaceState({}, "", stored);
+            const current = window.location.pathname + window.location.search + window.location.hash;
+            if (current !== stored && window.location.pathname !== "/auth/callback") {
+              window.history.pushState({}, "", stored);
+              // React Router listens for popstate; dispatch so the router re-renders.
+              window.dispatchEvent(new PopStateEvent("popstate"));
             }
           }
         } catch {
