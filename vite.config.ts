@@ -33,7 +33,7 @@ const PRODUCTION_CSP = [
   "media-src 'self' blob: https:",
   // translate.googleapis.com: RouteTranslationGate'in çalışma zamanı makine
   // çevirisi (eksik sözlük girdileri) istemciden bu uca gider.
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://translate.googleapis.com https://fonts.googleapis.com https://fonts.gstatic.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.open-meteo.com https://geocoding-api.open-meteo.com https://ipapi.co https://api.bigdatacloud.net https://translate.googleapis.com https://fonts.googleapis.com https://fonts.gstatic.com",
   "frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.openstreetmap.org",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
