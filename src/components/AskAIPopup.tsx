@@ -3,7 +3,9 @@ import { useTextSelection } from '@/hooks/useTextSelection';
 import { supabase } from '@/integrations/supabase/safeClient';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { AIMessage } from '@/services/aiClient';
-import { Sparkles, X, Loader2 } from 'lucide-react';
+import { Sparkles, X, Loader2, Highlighter } from 'lucide-react';
+import { toast } from 'sonner';
+import { addNote } from '@/lib/notesStorage';
 
 async function askGeminiAboutText(text: string, language: string): Promise<string> {
   const messages: AIMessage[] = [
@@ -69,7 +71,18 @@ export function AskAIPopup() {
     clearSelection();
   };
 
+  const handleSaveNote = () => {
+    if (!selectedText) return;
+    addNote(selectedText);
+    toast.success('Not kaydedildi');
+    clearSelection();
+  };
+
   if (!selectedText || !position) return null;
+
+  // Hide the "save" action on the Notes page itself (avoid recursive saving)
+  const onNotesPage =
+    typeof window !== 'undefined' && window.location.pathname.startsWith('/notes');
 
   // Button position: above selection, or below if near top of viewport
   const MARGIN = 8;
@@ -85,21 +98,36 @@ export function AskAIPopup() {
 
   return (
     <>
-      {/* Ask AI trigger button */}
+      {/* Selection action buttons */}
       {!showPanel && (
-        <button
+        <div
           data-ask-ai-popup="true"
-          onClick={handleAskAI}
-          className="fixed z-[9999] flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg border border-blue-400/40 bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-500 hover:to-cyan-500 transition-all duration-150 select-none"
+          className="fixed z-[9999] flex items-center gap-1.5 select-none"
           style={{
             left: btnLeft,
             top: btnTop,
             transform: 'translateX(-50%)',
           }}
         >
-          <Sparkles className="w-3 h-3" />
-          Açıkla
-        </button>
+          <button
+            data-ask-ai-popup="true"
+            onClick={handleAskAI}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg border border-blue-400/40 bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-500 hover:to-cyan-500 transition-all duration-150"
+          >
+            <Sparkles className="w-3 h-3" />
+            Açıkla
+          </button>
+          {!onNotesPage && (
+            <button
+              data-ask-ai-popup="true"
+              onClick={handleSaveNote}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg border border-amber-400/40 bg-gradient-to-r from-amber-500 to-yellow-600 text-white hover:from-amber-400 hover:to-yellow-500 transition-all duration-150"
+            >
+              <Highlighter className="w-3 h-3" />
+              Kaydet
+            </button>
+          )}
+        </div>
       )}
 
       {/* Response panel */}
