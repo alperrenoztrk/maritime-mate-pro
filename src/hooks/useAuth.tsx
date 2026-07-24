@@ -5,7 +5,7 @@ import { Capacitor } from "@capacitor/core";
 import { App as CapacitorApp } from "@capacitor/app";
 import { Browser } from "@capacitor/browser";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { NATIVE_APP_DEEP_LINK, NATIVE_BRIDGE_URL } from "@/lib/nativeAuthBridge";
+import { NATIVE_APP_DEEP_LINK } from "@/lib/nativeAuthBridge";
 
 const cloudAuth = createLovableAuth();
 
@@ -22,21 +22,45 @@ const sanitizeReturnPath = (raw?: string | null) => {
   return raw;
 };
 
+const storePostAuthReturn = (returnPath: string) => {
+  try {
+    sessionStorage.setItem("postAuthReturn", sanitizeReturnPath(returnPath));
+  } catch {
+    // storage yoksa sessizce geç
+  }
+};
+
+const applyStoredReturnPath = () => {
+  try {
+    const stored = sessionStorage.getItem("postAuthReturn");
+    if (!stored || !stored.startsWith("/") || stored.startsWith("//")) return;
+    sessionStorage.removeItem("postAuthReturn");
+
+    const current = window.location.pathname + window.location.search + window.location.hash;
+    if (current === stored || window.location.pathname === "/auth/callback") return;
+
+    window.history.pushState({}, "", stored);
+    // React Router listens for popstate; dispatch so the router re-renders.
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  } catch {
+    // ignore
+  }
+};
+
 const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "/") => {
   const safeReturn = sanitizeReturnPath(returnPath);
   try {
+    // OAuth dönüşünden sonra gidilecek sayfayı hem web hem native akışta sakla.
+    storePostAuthReturn(safeReturn);
+
     if (Capacitor.isNativePlatform()) {
-      // Dönüş adresi olarak doğrudan deep link DEĞİL, web köprüsü kullanılır:
-      // özel şema Supabase "Redirect URLs" izin listesinden düşerse Supabase
-      // token'ları sessizce Site URL'e yollar ve uygulama oturum alamaz.
-      // Kendi origin'imiz her zaman izinli olduğundan köprü sayfası
-      // (/auth/callback?flow=native) token'ları deep link ile uygulamaya
-      // aktarır. İzin listesine com.marinersbook.app://auth/callback eklenirse
-      // burası NATIVE_APP_DEEP_LINK'e döndürülerek aradaki adım kaldırılabilir
-      // (bkz. GOOGLE_AUTH_SETUP.md).
+      // Mobil uygulamada araya web köprüsü koyma: auth izin listesinde custom
+      // scheme bulunduğu için dönüş doğrudan uygulamaya yapılır. Böylece Google
+      // hesabı seçildikten sonra tarayıcıda takılı kalma / "login failed"
+      // ekranına düşme sorunu engellenir.
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider,
-        options: { redirectTo: NATIVE_BRIDGE_URL, skipBrowserRedirect: true },
+        options: { redirectTo: NATIVE_APP_DEEP_LINK, skipBrowserRedirect: true },
       });
       if (error) return { error: error as Error };
       await Browser.open({ url: data.url });
@@ -45,12 +69,6 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
 
     // Lovable OAuth broker sadece pre-registered origin'i kabul eder;
     // hedef path'i sessionStorage'da saklayıp session hydrate olunca yönleniriz.
-    try {
-      sessionStorage.setItem("postAuthReturn", safeReturn);
-    } catch {
-      // storage yoksa sessizce geç
-    }
-
     if (!isLocalDevelopmentHost()) {
       const result = await cloudAuth.signInWithOAuth(provider, {
         redirect_uri: `${window.location.origin}/auth/callback`,
@@ -97,20 +115,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setSession(newSession);
       setUser(newSession?.user ?? null);
       if (event === "SIGNED_IN" && newSession) {
-        try {
-          const stored = sessionStorage.getItem("postAuthReturn");
-          if (stored && stored.startsWith("/") && !stored.startsWith("//")) {
-            sessionStorage.removeItem("postAuthReturn");
-            const current = window.location.pathname + window.location.search + window.location.hash;
-            if (current !== stored && window.location.pathname !== "/auth/callback") {
-              window.history.pushState({}, "", stored);
-              // React Router listens for popstate; dispatch so the router re-renders.
-              window.dispatchEvent(new PopStateEvent("popstate"));
-            }
-          }
-        } catch {
-          // ignore
-        }
+        applyStoredReturnPath();
       }
     });
 
@@ -145,6 +150,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (access_token && refresh_token) {
         const { error } = await supabase.auth.setSession({ access_token, refresh_token });
         if (error) console.error("Native OAuth setSession hatası:", error);
+        if (!error) applyStoredReturnPath();
         return;
       }
 
@@ -154,6 +160,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (code) {
         const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (error) console.error("Native OAuth code exchange hatası:", error);
+        if (!error) applyStoredReturnPath();
         return;
       }
 
