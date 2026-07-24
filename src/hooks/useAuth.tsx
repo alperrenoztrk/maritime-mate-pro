@@ -53,7 +53,7 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
 
     if (!isLocalDevelopmentHost()) {
       const result = await cloudAuth.signInWithOAuth(provider, {
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}/auth/callback`,
       });
       if (result.redirected || result.error) {
         return { error: (result.error as Error | undefined) ?? null };
@@ -61,6 +61,7 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
       const { error } = await supabase.auth.setSession(result.tokens);
       return { error: error as Error | null };
     }
+
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
