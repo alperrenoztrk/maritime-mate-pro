@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Users, Ship, ClipboardList, FlaskConical, BookA, Settings, Sparkles, type LucideIcon } from "lucide-react";
+import { BookOpen, Users, Ship, ClipboardList, FlaskConical, BookA, Settings, Sparkles, StickyNote, type LucideIcon } from "lucide-react";
 
 interface AppIcon {
   label: string;
@@ -16,6 +16,7 @@ const APPS: AppIcon[] = [
   { label: "Operasyonlar", to: "/ship-operations", Icon: ClipboardList, gradient: "linear-gradient(135deg, #ec4899 0%, #be185d 100%)" },
   { label: "Sözlük", to: "/glossary", Icon: BookA, gradient: "linear-gradient(135deg, #0891b2 0%, #1e3a8a 100%)" },
   { label: "Beta", to: "/beta", Icon: FlaskConical, gradient: "linear-gradient(135deg, #a855f7 0%, #6d28d9 100%)" },
+  { label: "Notlar", to: "/notes", Icon: StickyNote, gradient: "linear-gradient(135deg, #facc15 0%, #ca8a04 100%)" },
   { label: "Ayarlar", to: "/settings", Icon: Settings, gradient: "linear-gradient(135deg, #64748b 0%, #334155 100%)" },
 ];
 

@@ -61,6 +61,7 @@ const ConverterPage = lazy(() => import("./pages/Converter"));
 const PassagePlanPage = lazy(() => import("./pages/PassagePlanPage"));
 const MoonPhases = lazy(() => import("./pages/MoonPhases"));
 const Settings = lazy(() => import("./pages/Settings"));
+const NotesRouteOverlay = lazy(() => import("./components/NotesRouteOverlay"));
 const ProPage = lazy(() => import("./pages/ProPage"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const Regulations = lazy(() => import("./pages/Regulations"));
@@ -437,6 +438,9 @@ const App = () => {
                       <BrowserRouter>
                         <RouteTranslationGate />
                         <AnimatedRoutes />
+                        <Suspense fallback={null}>
+                          <NotesRouteOverlay />
+                        </Suspense>
                       </BrowserRouter>
                     </div>
                   </FontSizeProvider>
