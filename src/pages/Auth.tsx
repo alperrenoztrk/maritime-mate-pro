@@ -101,7 +101,7 @@ const Auth = () => {
             type="button"
             variant="outline"
             className="w-full gap-2"
-            onClick={handleGoogle}
+            onClick={handleApple}
             disabled={busy}
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
