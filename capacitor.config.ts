@@ -21,9 +21,6 @@ const config: CapacitorConfig = {
     // `backButton` dinleyicisinin varlığı zaten default davranışı bastırır
     // (bkz. src/hooks/useNavigationHierarchy.ts).
     Haptics: {},
-    // Google girişi native SDK yerine Supabase OAuth + sistem tarayıcısı
-    // (deep link dönüşü) ile yapılır; bkz. src/hooks/useAuth.tsx ve
-    // AndroidManifest.xml'deki com.marinersbook.app scheme intent-filter'ı.
     PushNotifications: {
       presentationOptions: ['badge', 'sound', 'alert']
     }

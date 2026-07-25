@@ -1,94 +1,11 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-import { createLovableAuth } from "@lovable.dev/cloud-auth-js";
-import { Capacitor } from "@capacitor/core";
-import { App as CapacitorApp } from "@capacitor/app";
-import { Browser } from "@capacitor/browser";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { NATIVE_APP_DEEP_LINK, NATIVE_BRIDGE_URL } from "@/lib/nativeAuthBridge";
-
-const cloudAuth = createLovableAuth();
-
-type SocialProvider = "google" | "apple";
-
-// Lovable OAuth broker custom domainlerde de çalışır. Yalnızca yerel
-// geliştirme originlerinde /~oauth yolu olmadığı için doğrudan backend akışına düşeriz.
-const isLocalDevelopmentHost = () =>
-  /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
 
 const sanitizeReturnPath = (raw?: string | null) => {
   if (!raw) return "/";
   if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
   return raw;
-};
-
-const storePostAuthReturn = (returnPath: string) => {
-  try {
-    sessionStorage.setItem("postAuthReturn", sanitizeReturnPath(returnPath));
-  } catch {
-    // storage yoksa sessizce geç
-  }
-};
-
-const applyStoredReturnPath = () => {
-  try {
-    const stored = sessionStorage.getItem("postAuthReturn");
-    if (!stored || !stored.startsWith("/") || stored.startsWith("//")) return;
-    sessionStorage.removeItem("postAuthReturn");
-
-    const current = window.location.pathname + window.location.search + window.location.hash;
-    if (current === stored || window.location.pathname === "/auth/callback") return;
-
-    window.history.pushState({}, "", stored);
-    // React Router listens for popstate; dispatch so the router re-renders.
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  } catch {
-    // ignore
-  }
-};
-
-const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "/") => {
-  const safeReturn = sanitizeReturnPath(returnPath);
-  try {
-    // OAuth dönüşünden sonra gidilecek sayfayı hem web hem native akışta sakla.
-    storePostAuthReturn(safeReturn);
-
-    if (Capacitor.isNativePlatform()) {
-      // Mobil uygulamada dönüşü önce izin listesindeki web köprüsüne alıyoruz;
-      // köprü token/code bilgisini custom scheme ile uygulamaya aktarır.
-      // Böylece backend Redirect URLs listesinde native scheme eksik olsa bile
-      // Google hesabı seçildikten sonra "login failed" ekranına düşülmez.
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider,
-        options: { redirectTo: NATIVE_BRIDGE_URL, skipBrowserRedirect: true },
-      });
-      if (error) return { error: error as Error };
-      await Browser.open({ url: data.url });
-      return { error: null };
-    }
-
-    // Lovable OAuth broker sadece pre-registered origin'i kabul eder;
-    // hedef path'i sessionStorage'da saklayıp session hydrate olunca yönleniriz.
-    if (!isLocalDevelopmentHost()) {
-      const result = await cloudAuth.signInWithOAuth(provider, {
-        redirect_uri: `${window.location.origin}/auth/callback`,
-      });
-      if (result.redirected || result.error) {
-        return { error: (result.error as Error | undefined) ?? null };
-      }
-      const { error } = await supabase.auth.setSession(result.tokens);
-      return { error: error as Error | null };
-    }
-
-
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
-    });
-    return { error: error as Error | null };
-  } catch (error) {
-    return { error: error instanceof Error ? error : new Error(String(error)) };
-  }
 };
 
 interface AuthContextValue {
@@ -97,8 +14,6 @@ interface AuthContextValue {
   loading: boolean;
   signInWithEmail: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUpWithEmail: (email: string, password: string, returnPath?: string) => Promise<{ error: Error | null }>;
-  signInWithGoogle: (returnPath?: string) => Promise<{ error: Error | null }>;
-  signInWithApple: (returnPath?: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -111,12 +26,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Register listener FIRST, then fetch session
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession);
       setUser(newSession?.user ?? null);
-      if (event === "SIGNED_IN" && newSession) {
-        applyStoredReturnPath();
-      }
     });
 
     supabase.auth.getSession().then(({ data: { session: existing } }) => {
@@ -126,51 +38,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
-
-  // Native OAuth dönüşü: sistem tarayıcısı deep link ile geri döner,
-  // token'lar URL fragment'ında gelir ve oturum burada kurulur.
-  useEffect(() => {
-    if (!Capacitor.isNativePlatform()) return;
-
-    const listenerPromise = CapacitorApp.addListener("appUrlOpen", async ({ url }) => {
-      if (!url.startsWith(NATIVE_APP_DEEP_LINK)) return;
-
-      try {
-        await Browser.close();
-      } catch {
-        // Android Custom Tabs programatik kapatmayı desteklemeyebilir.
-      }
-
-      const fragment = url.split("#")[1] ?? "";
-      const hashParams = new URLSearchParams(fragment);
-      const access_token = hashParams.get("access_token");
-      const refresh_token = hashParams.get("refresh_token");
-
-      if (access_token && refresh_token) {
-        const { error } = await supabase.auth.setSession({ access_token, refresh_token });
-        if (error) console.error("Native OAuth setSession hatası:", error);
-        if (!error) applyStoredReturnPath();
-        return;
-      }
-
-      const query = (url.split("#")[0].split("?")[1] ?? "");
-      const queryParams = new URLSearchParams(query);
-      const code = queryParams.get("code");
-      if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
-        if (error) console.error("Native OAuth code exchange hatası:", error);
-        if (!error) applyStoredReturnPath();
-        return;
-      }
-
-      const errorDescription = queryParams.get("error_description") ?? hashParams.get("error_description");
-      if (errorDescription) console.error("Native OAuth sağlayıcı hatası:", errorDescription);
-    });
-
-    return () => {
-      listenerPromise.then((listener) => listener.remove());
-    };
   }, []);
 
   const signInWithEmail = async (email: string, password: string) => {
@@ -189,21 +56,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error as Error | null };
   };
 
-  const signInWithGoogle = async (returnPath = "/") => {
-    return signInWithSocialProvider("google", returnPath);
-  };
-
-  const signInWithApple = async (returnPath = "/") => {
-    return signInWithSocialProvider("apple", returnPath);
-  };
-
   const signOut = async () => {
     await supabase.auth.signOut();
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithApple, signOut }}
+      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signOut }}
     >
       {children}
     </AuthContext.Provider>

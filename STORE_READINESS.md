@@ -64,9 +64,8 @@ Bu, çevrimdışı çeviri tasarımının doğal sonucu (her dil paketi gömül�
 ### Ortak (her iki mağaza)
 
 1. **Gizlilik politikası URL'i**: Uygulama web'e deploy edildiğinde `https://<alan-adınız>/privacy-policy.html` erişilebilir olacak. Bu URL'i her iki konsola girin. İçerikteki iletişim e-postasını kontrol edin.
-2. **GoogleAuth `serverClientId`**: `capacitor.config.ts` içindeki değer hâlâ **placeholder** (`...xxxx...`). Google Cloud Console'dan gerçek Web Client ID ile değiştirin, yoksa Google ile giriş native'de çalışmaz.
-3. **AdMob**: Gerçek reklam kullanacaksanız manifest ve Info.plist'teki TEST App ID'lerini AdMob Console'daki gerçek ID'lerle değiştirin (dosyalarda yorum satırıyla işaretli). Reklam kullanmayacaksanız `@capacitor-community/admob` paketini kaldırmak hem boyutu küçültür hem mağaza beyanlarını sadeleştirir.
-4. **Ekran görüntüleri**: Telefon (en az 2; 1080×1920+) ve varsa tablet/iPad. Feature graphic hazır: `resources/store/play-feature-graphic-1024x500.png`.
+2. **AdMob**: Gerçek reklam kullanacaksanız manifest ve Info.plist'teki TEST App ID'lerini AdMob Console'daki gerçek ID'lerle değiştirin (dosyalarda yorum satırıyla işaretli). Reklam kullanmayacaksanız `@capacitor-community/admob` paketini kaldırmak hem boyutu küçültür hem mağaza beyanlarını sadeleştirir.
+3. **Ekran görüntüleri**: Telefon (en az 2; 1080×1920+) ve varsa tablet/iPad. Feature graphic hazır: `resources/store/play-feature-graphic-1024x500.png`.
 
 ### Google Play
 

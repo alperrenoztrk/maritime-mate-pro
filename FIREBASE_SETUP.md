@@ -23,11 +23,6 @@
 ```typescript
 // capacitor.config.ts
 plugins: {
-  GoogleAuth: {
-    scopes: ['profile', 'email'],
-    serverClientId: '318030353367-xxx.apps.googleusercontent.com',
-    forceCodeForRefreshToken: true
-  },
   PushNotifications: {
     presentationOptions: ['badge', 'sound', 'alert']
   }
@@ -41,8 +36,7 @@ android: {
 ```json
 "@capacitor-firebase/app": "^6.1.0",
 "@capacitor-firebase/authentication": "^6.1.0", 
-"@capacitor-firebase/messaging": "^6.1.0",
-"@codetrix-studio/capacitor-google-auth": "^3.4.2"
+"@capacitor-firebase/messaging": "^6.1.0"
 ```
 
 ## 🚀 **Kurulum Adımları:**
@@ -53,7 +47,7 @@ android: {
 npm run cap:add:firebase
 
 # Veya manuel kurulum
-npm install @capacitor-firebase/app @capacitor-firebase/authentication @capacitor-firebase/messaging @codetrix-studio/capacitor-google-auth
+npm install @capacitor-firebase/app @capacitor-firebase/authentication @capacitor-firebase/messaging
 ```
 
 ### **🔄 2. Capacitor Sync:**
@@ -70,24 +64,10 @@ npm run android:build
 npm run build:prod
 ```
 
-## 🔐 **Authentication Entegrasyonu:**
+## 🔐 **Authentication:**
 
-### **✅ Mevcut Google Auth:**
-Proje zaten Google Authentication kullanıyor:
-- 📂 `src/components/auth/GoogleAuth.tsx`
-- 🔗 Supabase ile entegre
-- 💾 User data management
-
-### **🔥 Firebase Auth ile Entegrasyon:**
-```typescript
-import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
-
-// Google Sign In
-const signInWithGoogle = async () => {
-  const result = await FirebaseAuthentication.signInWithGoogle();
-  console.log('User:', result.user);
-};
-```
+Uygulamada kimlik doğrulama yalnızca Supabase e-posta/şifre ile yapılır
+(`src/hooks/useAuth.tsx`). Sosyal sağlayıcı (Google/Apple) girişi kaldırıldı.
 
 ## 📱 **Push Notifications:**
 
