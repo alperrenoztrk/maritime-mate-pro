@@ -5,7 +5,7 @@ import { Capacitor } from "@capacitor/core";
 import { App as CapacitorApp } from "@capacitor/app";
 import { Browser } from "@capacitor/browser";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { NATIVE_APP_DEEP_LINK } from "@/lib/nativeAuthBridge";
+import { NATIVE_APP_DEEP_LINK, NATIVE_BRIDGE_URL } from "@/lib/nativeAuthBridge";
 
 const cloudAuth = createLovableAuth();
 
@@ -54,13 +54,13 @@ const signInWithSocialProvider = async (provider: SocialProvider, returnPath = "
     storePostAuthReturn(safeReturn);
 
     if (Capacitor.isNativePlatform()) {
-      // Mobil uygulamada araya web köprüsü koyma: auth izin listesinde custom
-      // scheme bulunduğu için dönüş doğrudan uygulamaya yapılır. Böylece Google
-      // hesabı seçildikten sonra tarayıcıda takılı kalma / "login failed"
-      // ekranına düşme sorunu engellenir.
+      // Mobil uygulamada dönüşü önce izin listesindeki web köprüsüne alıyoruz;
+      // köprü token/code bilgisini custom scheme ile uygulamaya aktarır.
+      // Böylece backend Redirect URLs listesinde native scheme eksik olsa bile
+      // Google hesabı seçildikten sonra "login failed" ekranına düşülmez.
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider,
-        options: { redirectTo: NATIVE_APP_DEEP_LINK, skipBrowserRedirect: true },
+        options: { redirectTo: NATIVE_BRIDGE_URL, skipBrowserRedirect: true },
       });
       if (error) return { error: error as Error };
       await Browser.open({ url: data.url });
