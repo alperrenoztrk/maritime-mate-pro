@@ -251,8 +251,8 @@ const dynamicRoutes = (): string[] => {
   return out;
 };
 
-// Routes that must NOT be harvested (auth callbacks, redirects, etc).
-const EXCLUDED = new Set<string>(['/auth/callback', '/widgets', '/empty-page']);
+// Routes that must NOT be harvested (redirects, placeholders, etc).
+const EXCLUDED = new Set<string>(['/widgets', '/empty-page']);
 
 export const getHarvestRoutes = (): string[] => {
   const all = [...STATIC_ROUTES, ...dynamicRoutes()];

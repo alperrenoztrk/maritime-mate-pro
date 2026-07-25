@@ -8,14 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/hooks/useAuth";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
   password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
 });
-
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -87,9 +85,6 @@ const Auth = () => {
           <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-
-
-
           <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
             <TabsList className="grid grid-cols-2 w-full">
               <TabsTrigger value="signin">Giriş Yap</TabsTrigger>

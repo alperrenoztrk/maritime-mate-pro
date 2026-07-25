@@ -54,8 +54,6 @@ const Settings = () => {
     "";
 
   const providerLabels: Record<string, string> = {
-    google: "Google",
-    apple: "Apple",
     email: "E-posta",
   };
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");

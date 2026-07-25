@@ -2,10 +2,6 @@
 // module touches localStorage at import time (preview iframes can make storage
 // access throw, which otherwise crashes the app before React mounts).
 import './lib/safeStorage'
-// Native OAuth köprü dönüşünde (/auth/callback?flow=native) token fragment'ını
-// Supabase istemcisi (detectSessionInUrl) tüketmeden önce yakalar — App/supabase
-// modüllerinden önce import edilmesi zorunludur (bkz. lib/nativeAuthBridge.ts).
-import './lib/nativeAuthBridge'
 import { safeLocalStorage } from './lib/safeStorage'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
