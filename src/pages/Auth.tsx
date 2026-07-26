@@ -24,6 +24,8 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const isNativePlatform = typeof (globalThis as any).Capacitor !== "undefined" &&
+    !!(globalThis as any).Capacitor?.isNativePlatform?.();
 
   const nextPath = useMemo(() => {
     const raw = searchParams.get("next");
@@ -107,24 +109,28 @@ const Auth = () => {
           <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full gap-2"
-            onClick={handleGoogle}
-            disabled={busy}
-          >
-            <GoogleIcon />
-            Google ile devam et
-          </Button>
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-border/60" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">veya e-posta ile</span>
-            </div>
-          </div>
+          {!isNativePlatform && (
+            <>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full gap-2"
+                onClick={handleGoogle}
+                disabled={busy}
+              >
+                <GoogleIcon />
+                Google ile devam et
+              </Button>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-border/60" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">veya e-posta ile</span>
+                </div>
+              </div>
+            </>
+          )}
           <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
             <TabsList className="grid grid-cols-2 w-full">
               <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
