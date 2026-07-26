@@ -17,6 +17,7 @@ const readParams = () => {
 
 const clearOAuthParams = () => {
   const url = new URL(window.location.href);
+  const hash = new URLSearchParams(url.hash.replace(/^#/, ""));
   [
     "code",
     "access_token",
@@ -27,8 +28,12 @@ const clearOAuthParams = () => {
     "provider_token",
     "provider_refresh_token",
     "state",
-  ].forEach((key) => url.searchParams.delete(key));
-  window.history.replaceState(null, document.title, `${url.pathname}${url.search}${url.hash}`);
+  ].forEach((key) => {
+    url.searchParams.delete(key);
+    hash.delete(key);
+  });
+  const nextHash = hash.toString();
+  window.history.replaceState(null, document.title, `${url.pathname}${url.search}${nextHash ? `#${nextHash}` : ""}`);
 };
 
 /**

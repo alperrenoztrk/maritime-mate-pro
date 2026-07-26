@@ -10,10 +10,14 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 // (e.g. maritime_documents). Same underlying instance = one GoTrueClient.
 export const supabase = typedSupabase as unknown as SupabaseClient;
 
-const FALLBACK_SUPABASE_URL = "https://vrpbhguztsqakvjcezeb.supabase.co";
-const FALLBACK_SUPABASE_PUBLISHABLE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZycGJoZ3V6dHNxYWt2amNlemViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyOTczNzcsImV4cCI6MjA4MTg3MzM3N30._RMAZAKoGsk9xmHAXCvITf8BW4f52WyHYdhJq4IEW4Y";
+type SupabaseClientInternals = SupabaseClient & {
+  supabaseUrl?: string;
+  supabaseKey?: string;
+  anonKey?: string;
+};
 
-export const backendUrl = (import.meta.env.VITE_SUPABASE_URL || FALLBACK_SUPABASE_URL) as string;
+const client = typedSupabase as unknown as SupabaseClientInternals;
+
+export const backendUrl = (import.meta.env.VITE_SUPABASE_URL || client.supabaseUrl) as string;
 export const backendPublishableKey =
-  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || FALLBACK_SUPABASE_PUBLISHABLE_KEY) as string;
+  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || client.supabaseKey || client.anonKey) as string;
