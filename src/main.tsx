@@ -12,6 +12,10 @@ import { weatherPreloader } from './services/weatherPreloader'
 import { LocationProvider } from './contexts/LocationContext'
 import { registerOfflineSupport } from './serviceWorkerRegistration'
 
+if (window.location.hostname === 'www.nauticalleap.com') {
+  window.location.replace(`https://nauticalleap.com${window.location.pathname}${window.location.search}${window.location.hash}`);
+}
+
 console.log('[Main] Starting Maritime Calculator App v2...');
 
 // Apply the saved font-size scale before first paint to avoid a flash of

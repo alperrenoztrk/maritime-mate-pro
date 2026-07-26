@@ -101,6 +101,7 @@ export default defineConfig(({ mode }) => ({
     mcpPlugin(),
     VitePWA({
       registerType: "autoUpdate",
+      injectRegister: false,
       // CRITICAL: Disabled in dev to avoid breaking the Lovable preview iframe.
       // PWA / offline mode only activates in production builds (published app).
       devOptions: {
@@ -130,6 +131,7 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       workbox: {
+        navigateFallback: "/index.html",
         // Don't cache OAuth/auth routes — they must always hit network
         navigateFallbackDenylist: [/^\/~oauth/, /^\/auth\//, /^\/api\//],
         // Allow large assets (diagrams, PDFs, images)

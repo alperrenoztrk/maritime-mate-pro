@@ -52,11 +52,20 @@ export async function registerOfflineSupport(): Promise<void> {
     const wb = new Workbox("/sw.js");
 
     wb.addEventListener("waiting", () => {
-      console.log("[Offline] New version available — activating on next reload.");
+      console.log("[Offline] New version available — activating now.");
+      wb.messageSkipWaiting();
     });
 
     wb.addEventListener("controlling", () => {
       console.log("[Offline] Service worker now controlling the page.");
+      try {
+        if (sessionStorage.getItem("mb.sw.updated") !== "1") {
+          sessionStorage.setItem("mb.sw.updated", "1");
+          window.location.reload();
+        }
+      } catch {
+        window.location.reload();
+      }
     });
 
     wb.addEventListener("activated", (event) => {
@@ -65,7 +74,8 @@ export async function registerOfflineSupport(): Promise<void> {
       }
     });
 
-    await wb.register();
+    const registration = await wb.register();
+    await registration?.update();
   } catch (err) {
     console.warn("[Offline] Service worker registration failed:", err);
   }
