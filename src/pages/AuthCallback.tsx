@@ -16,7 +16,19 @@ const readParams = () => {
 };
 
 const clearOAuthParams = () => {
-  window.history.replaceState(null, document.title, window.location.pathname + window.location.search.replace(/[?&](code|access_token|refresh_token|token_type|expires_in|expires_at|provider_token|provider_refresh_token|state)=[^&]*/g, ""));
+  const url = new URL(window.location.href);
+  [
+    "code",
+    "access_token",
+    "refresh_token",
+    "token_type",
+    "expires_in",
+    "expires_at",
+    "provider_token",
+    "provider_refresh_token",
+    "state",
+  ].forEach((key) => url.searchParams.delete(key));
+  window.history.replaceState(null, document.title, `${url.pathname}${url.search}${url.hash}`);
 };
 
 /**
