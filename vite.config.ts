@@ -60,7 +60,28 @@ function cspPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
+const FALLBACK_SUPABASE_URL = "https://vrpbhguztsqakvjcezeb.supabase.co";
+const FALLBACK_SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZycGJoZ3V6dHNxYWt2amNlemViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyOTczNzcsImV4cCI6MjA4MTg3MzM3N30._RMAZAKoGsk9xmHAXCvITf8BW4f52WyHYdhJq4IEW4Y";
+
 export default defineConfig(({ mode }) => ({
+  define: {
+    // Guarantee Supabase env vars exist even if the build environment loses them.
+    // Prevents "supabaseUrl is required" crashes in the auto-generated client.
+    "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(
+      process.env.VITE_SUPABASE_URL || FALLBACK_SUPABASE_URL,
+    ),
+    "import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY": JSON.stringify(
+      process.env.VITE_SUPABASE_PUBLISHABLE_KEY || FALLBACK_SUPABASE_PUBLISHABLE_KEY,
+    ),
+    "import.meta.env.VITE_SUPABASE_ANON_KEY": JSON.stringify(
+      process.env.VITE_SUPABASE_ANON_KEY ||
+        process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+        FALLBACK_SUPABASE_PUBLISHABLE_KEY,
+    ),
+    "import.meta.env.VITE_SUPABASE_PROJECT_ID": JSON.stringify(
+      process.env.VITE_SUPABASE_PROJECT_ID || "vrpbhguztsqakvjcezeb",
+    ),
+  },
   server: {
     host: "0.0.0.0",
     port: 8080,
