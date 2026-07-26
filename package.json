@@ -161,11 +161,17 @@
   "overrides": {
     "tmp": "^0.2.4",
     "uuid": "^11.1.0",
-    "brace-expansion": "^2.0.2"
+    "brace-expansion@1": "^1.1.12",
+    "brace-expansion@2": "^2.0.2",
+    "brace-expansion@3": "^3.0.1",
+    "brace-expansion@4": "^4.0.1"
   },
   "resolutions": {
     "tmp": "^0.2.4",
     "uuid": "^11.1.0",
-    "brace-expansion": "^2.0.2"
+    "brace-expansion@1": "^1.1.12",
+    "brace-expansion@2": "^2.0.2",
+    "brace-expansion@3": "^3.0.1",
+    "brace-expansion@4": "^4.0.1"
   }
 }

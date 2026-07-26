@@ -1,5 +1,6 @@
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
+import fs from "fs";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
@@ -55,6 +56,41 @@ function cspPlugin(): Plugin {
           },
         ],
       }),
+    },
+  };
+}
+
+// Workbox'ın precache manifesti sessizce boşalabiliyor: glob bağımlılık zinciri
+// bozulduğunda ("An error occurred when globbing for files") build yalnızca uyarı
+// basıp başarılı sayılıyor. Böyle bir sw.js hiçbir asset'i önbelleğe almaz ama
+// yine de `createHandlerBoundToURL("/index.html")` çağırır; bu çağrı precache'te
+// olmayan URL için hata fırlattığından servis çalışanının o satırdan sonraki TÜM
+// route kayıtları hiç çalışmaz — uygulama çevrimdışı hiç açılmaz. Sessiz kalması
+// yerine build'i durdur.
+function verifyPrecachePlugin(): Plugin {
+  let outDir = "dist";
+  return {
+    name: "verify-precache-manifest",
+    apply: "build",
+    configResolved(config) {
+      outDir = config.build.outDir;
+    },
+    closeBundle() {
+      const swPath = path.resolve(__dirname, outDir, "sw.js");
+      if (!fs.existsSync(swPath)) return;
+
+      const sw = fs.readFileSync(swPath, "utf8");
+      // navigateFallback kullanılmıyorsa doğrulanacak bir bağ da yok.
+      if (!sw.includes("createHandlerBoundToURL")) return;
+
+      if (!/url:\s*"index\.html"/.test(sw)) {
+        throw new Error(
+          "Servis çalışanı /index.html'e bağlanıyor ama index.html precache " +
+            "manifestinde yok. Workbox globbing'i başarısız olmuş demektir " +
+            "(genellikle minimatch/brace-expansion sürüm çakışması). Bu build " +
+            "çevrimdışı açılmaz; yayınlanmamalı.",
+        );
+      }
     },
   };
 }
@@ -218,6 +254,8 @@ export default defineConfig(({ mode }) => ({
       // async/await kullanan eski (ES5) legacy paket için gerekli.
       additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
     }),
+    // VitePWA sw.js'i closeBundle'da ürettiği için doğrulama en sonda durmalı.
+    verifyPrecachePlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
