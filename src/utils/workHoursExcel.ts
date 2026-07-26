@@ -12,6 +12,29 @@ interface BuildOptions {
   vesselName?: string;
 }
 
+// Excel sayfa adı kuralları: en fazla 31 karakter, `* ? : \ / [ ]` yasak,
+// boş olamaz ve çalışma kitabı içinde benzersiz olmalı. Personel adları
+// fotoğraftan okunduğu için bu karakterleri ("A/B", "2/O" gibi) sıklıkla
+// içerir; temizlenmezse ExcelJS hata fırlatır ve indirme tamamen başarısız
+// olur.
+const INVALID_SHEET_CHARS = /[*?:\\/[\]]/g;
+const MAX_SHEET_NAME = 31;
+
+function uniqueSheetName(raw: string, used: Set<string>): string {
+  const base =
+    raw.replace(INVALID_SHEET_CHARS, "-").trim().slice(0, MAX_SHEET_NAME) ||
+    "Personel";
+  let name = base;
+  let counter = 2;
+  while (used.has(name.toLowerCase())) {
+    const suffix = ` (${counter})`;
+    name = base.slice(0, MAX_SHEET_NAME - suffix.length) + suffix;
+    counter += 1;
+  }
+  used.add(name.toLowerCase());
+  return name;
+}
+
 export async function buildWorkHoursWorkbook(
   people: PersonRecord[],
   options: BuildOptions,
@@ -27,21 +50,17 @@ export async function buildWorkHoursWorkbook(
 
   // 1) Özet sayfası
   const summary = wb.addWorksheet("Özet");
+  // Yalnızca genişlik tanımlanır: `header` verilseydi ExcelJS bunları 1. satıra
+  // yazar ve aşağıdaki gerçek başlık satırıyla birlikte tabloda iki başlık
+  // görünürdü.
   summary.columns = [
-    { header: "Ad Soyad", key: "name", width: 28 },
-    { header: "Rütbe", key: "rank", width: 18 },
-    { header: "Toplam Çalışma (s)", key: "work", width: 18 },
-    { header: "Toplam Dinlenme (s)", key: "rest", width: 18 },
-    { header: "24s İhlal Sayısı", key: "viol24", width: 16 },
-    { header: "7g İhlal Sayısı", key: "viol7", width: 16 },
+    { key: "name", width: 28 },
+    { key: "rank", width: 18 },
+    { key: "work", width: 18 },
+    { key: "rest", width: 18 },
+    { key: "viol24", width: 16 },
+    { key: "viol7", width: 16 },
   ];
-  summary.getRow(1).font = { bold: true };
-  summary.getRow(1).fill = {
-    type: "pattern",
-    pattern: "solid",
-    fgColor: { argb: "FF1E3A8A" },
-  };
-  summary.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" } };
 
   const meta = summary.addRow([]);
   meta.getCell(1).value = `Gemi: ${options.vesselName ?? "—"}`;
@@ -57,7 +76,14 @@ export async function buildWorkHoursWorkbook(
     "24s İhlal",
     "7g İhlal",
   ]);
-  headerRow.font = { bold: true };
+  headerRow.font = { bold: true, color: { argb: "FFFFFFFF" } };
+  headerRow.eachCell((c) => {
+    c.fill = {
+      type: "pattern",
+      pattern: "solid",
+      fgColor: { argb: "FF1E3A8A" },
+    };
+  });
 
   for (const p of people) {
     const r = reportPerson(p);
@@ -72,12 +98,13 @@ export async function buildWorkHoursWorkbook(
   }
 
   // 2) Kişi başına detay sayfası
+  const usedSheetNames = new Set(["özet"]);
   for (const p of people) {
-    const sheetName = (p.name || "Personel").slice(0, 28);
+    const sheetName = uniqueSheetName(p.name || "Personel", usedSheetNames);
     const sheet = wb.addWorksheet(sheetName);
 
-    // Başlık
-    sheet.mergeCells("A1:Z1");
+    // Başlık — tablo AB sütununa (Tarih + 24 saat + W/R/İhlal) kadar uzanır.
+    sheet.mergeCells("A1:AB1");
     sheet.getCell("A1").value =
       `${p.name} (${p.rank}) — STCW Rest Hours Record — ${options.monthLabel}`;
     sheet.getCell("A1").font = { bold: true, size: 14 };

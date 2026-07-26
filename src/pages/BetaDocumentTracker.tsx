@@ -276,7 +276,7 @@ export default function BetaDocumentTracker() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-28 pt-6 dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-28 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))] dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]">
       <div className="mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-2">
           <div className="flex flex-wrap items-start justify-between gap-3">
