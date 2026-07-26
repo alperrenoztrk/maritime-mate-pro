@@ -16,6 +16,19 @@ const credentialsSchema = z.object({
   password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
 });
 
+const getCanonicalOAuthOrigin = () => {
+  if (window.location.hostname === "www.nauticalleap.com") {
+    return "https://nauticalleap.com";
+  }
+  return window.location.origin;
+};
+
+const buildOAuthCallbackUrl = (nextPath: string) => {
+  const url = new URL("/auth/callback", getCanonicalOAuthOrigin());
+  if (nextPath !== "/") url.searchParams.set("next", nextPath);
+  return url.toString();
+};
+
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -81,7 +94,7 @@ const Auth = () => {
         sessionStorage.setItem("postAuthReturn", nextPath);
       } catch {}
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: `${window.location.origin}/auth/callback`,
+        redirect_uri: buildOAuthCallbackUrl(nextPath),
       });
       if (result.error) {
         toast.error(result.error.message || "Google ile giriş başarısız");
