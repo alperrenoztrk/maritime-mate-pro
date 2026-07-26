@@ -22,7 +22,8 @@ function getCorsHeaders(origin: string | null): Record<string, string> {
     ALLOWED_ORIGINS.includes(origin) ||
     /^https:\/\/[a-z0-9-]+\.lovableproject\.com$/.test(origin) ||
     /^https:\/\/[a-z0-9-]+\.lovable\.app$/.test(origin) ||
-    /^https?:\/\/localhost(:\d+)?$/.test(origin)
+    /^https?:\/\/localhost(:\d+)?$/.test(origin) ||
+    /^https:\/\/(www\.)?nauticalleap\.com$/.test(origin)
   );
   return {
     "Access-Control-Allow-Origin": isAllowed ? origin : ALLOWED_ORIGINS[0],
