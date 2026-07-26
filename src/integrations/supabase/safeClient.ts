@@ -3,9 +3,12 @@
 // clients coexist, sessions set by one (e.g. the Lovable OAuth helper) are
 // not observed by the other's onAuthStateChange listener, which breaks the
 // signed-in UI after Google login.
-import { supabase } from "./client";
+import { supabase as typedSupabase } from "./client";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
-export { supabase };
+// Re-export untyped to preserve prior behavior for tables not in generated types
+// (e.g. maritime_documents). Same underlying instance = one GoTrueClient.
+export const supabase = typedSupabase as unknown as SupabaseClient;
 
 const FALLBACK_SUPABASE_URL = "https://vrpbhguztsqakvjcezeb.supabase.co";
 const FALLBACK_SUPABASE_PUBLISHABLE_KEY =
