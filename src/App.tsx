@@ -383,6 +383,7 @@ const AnimatedRoutes = () => {
         <Route path="/regulations/:slug" element={<PageTransition><RegulationDetailPage /></PageTransition>} />
         <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
+        <Route path="/auth/callback" element={<AuthCallbackPage />} />
         <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
         <Route path="/weather-forecast" element={<PageTransition><WeatherForecast /></PageTransition>} />
         <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
