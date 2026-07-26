@@ -242,6 +242,10 @@
     </div>
 
     <div id="root"></div>
+    <!-- Splash bekçisi: uygulama paketi açılmazsa kullanıcıyı splash ekranında
+         kilitli bırakmaz. Klasik script — modül paketini çökerten hatalardan
+         etkilenmemesi ve üretim CSP'sine takılmaması için ayrı dosyada. -->
+    <script src="/splash-watchdog.js" defer></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
