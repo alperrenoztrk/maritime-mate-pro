@@ -51,21 +51,12 @@ export async function registerOfflineSupport(): Promise<void> {
     const { Workbox } = await import("workbox-window");
     const wb = new Workbox("/sw.js");
 
+    // Do NOT auto-skip-waiting or force a reload here.
+    // A forced reload discards in-flight form state (auth inputs, calculator
+    // fields, quiz answers). The new SW will activate naturally the next time
+    // the user navigates or reopens the tab, which is safe for their input.
     wb.addEventListener("waiting", () => {
-      console.log("[Offline] New version available — activating now.");
-      wb.messageSkipWaiting();
-    });
-
-    wb.addEventListener("controlling", () => {
-      console.log("[Offline] Service worker now controlling the page.");
-      try {
-        if (sessionStorage.getItem("mb.sw.updated") !== "1") {
-          sessionStorage.setItem("mb.sw.updated", "1");
-          window.location.reload();
-        }
-      } catch {
-        window.location.reload();
-      }
+      console.log("[Offline] New version is waiting; will activate on next visit.");
     });
 
     wb.addEventListener("activated", (event) => {
@@ -74,9 +65,9 @@ export async function registerOfflineSupport(): Promise<void> {
       }
     });
 
-    const registration = await wb.register();
-    await registration?.update();
+    await wb.register();
   } catch (err) {
     console.warn("[Offline] Service worker registration failed:", err);
   }
 }
+
