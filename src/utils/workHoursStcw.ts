@@ -27,10 +27,101 @@ export interface PersonStcwReport {
   weeklyViolationWindows: { startDate: string; restHours: number }[]; // 7 günde < 77
 }
 
+/** `extract-work-hours` edge function'ının döndürdüğü ham yapı. */
+export interface ExtractResponse {
+  crew: { name: string; rank: string }[];
+  previousMonth: {
+    name: string;
+    totalWorkHours: number;
+    totalRestHours: number;
+    notes?: string;
+  }[];
+  logbook: {
+    date: string;
+    name: string;
+    intervals: { start: string; end: string; activity?: string }[];
+    lowConfidence?: boolean;
+  }[];
+}
+
 const HOURS_PER_DAY = 24;
 
 export function emptyDay(): DayHours {
   return Array.from({ length: HOURS_PER_DAY }, () => false);
+}
+
+/**
+ * "HH:MM" → saat indeksi. Tablo saatlik ızgara olduğu için dakika yok sayılır.
+ * Bitiş saatinde 24'e ("24:00" = gün sonu) izin verilir; aksi hâlde 20:00–24:00
+ * vardiyası 3 saat sayılırdı.
+ */
+export function parseHour(value: string, max: number): number {
+  const parsed = Number.parseInt(String(value ?? "").split(":")[0], 10);
+  if (!Number.isFinite(parsed)) return 0;
+  return Math.max(0, Math.min(max, parsed));
+}
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+export function nextDate(date: string): string {
+  const [y, m, d] = date.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
+}
+
+/**
+ * [start, end) aralığını saatlik ızgaraya işler. Bitiş saati başlangıçtan
+ * küçük veya ona eşitse vardiya gece yarısını aşmıştır (örn. 20:00–04:00);
+ * kalan saatler atılmak yerine ertesi güne yazılır — aksi hâlde gece
+ * vardiyalarının yarısı kaybolur ve STCW ihlalleri görünmez kalırdı.
+ */
+export function applyInterval(
+  days: Record<string, DayHours>,
+  date: string,
+  start: string,
+  end: string,
+): void {
+  const s = parseHour(start, 23);
+  const e = parseHour(end, 24);
+  const spanEnd = e > s ? e : e + 24;
+  for (let i = s; i < spanEnd; i += 1) {
+    const key = i < HOURS_PER_DAY ? date : nextDate(date);
+    const day = days[key] ? [...days[key]] : emptyDay();
+    day[i % HOURS_PER_DAY] = true;
+    days[key] = day;
+  }
+}
+
+/**
+ * Yapay zekâ çıktısını düzenlenebilir personel kayıtlarına çevirir. Model
+ * şemadan sapabildiği için eksik alanlar sessizce atlanır: tek bir bozuk
+ * kayıt tüm tabloyu düşürmemeli.
+ */
+export function buildPeople(data: ExtractResponse): PersonRecord[] {
+  const map = new Map<string, PersonRecord>();
+  for (const c of data?.crew ?? []) {
+    const name = (c?.name ?? "").trim();
+    if (!name) continue;
+    const id = name.toLowerCase();
+    if (!map.has(id)) map.set(id, { id, name, rank: c.rank || "—", days: {} });
+  }
+  for (const e of data?.logbook ?? []) {
+    const name = (e?.name ?? "").trim();
+    // Gün anahtarı ve sıralama ISO tarihe dayanır; okunamayan tarih tabloyu
+    // bozacağı için kayıt atlanır.
+    if (!name || !ISO_DATE.test(e?.date ?? "")) continue;
+    const id = name.toLowerCase();
+    let person = map.get(id);
+    if (!person) {
+      person = { id, name, rank: "—", days: {} };
+      map.set(id, person);
+    }
+    if (!person.days[e.date]) person.days[e.date] = emptyDay();
+    for (const i of e.intervals ?? []) {
+      if (!i?.start || !i?.end) continue;
+      applyInterval(person.days, e.date, i.start, i.end);
+    }
+  }
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name, "tr"));
 }
 
 export function countRest(day: DayHours): number {
@@ -69,7 +160,7 @@ export function restSplitsValid(day: DayHours): boolean {
     }
   }
   if (cur > 0) blocks.push(cur);
-  if (blocks.length === 0) return countRest(day) >= 10; // hiç çalışma yok
+  if (blocks.length === 0) return countRest(day) >= 10; // hiç dinlenme yok → ihlal
   if (blocks.length > 2) return false;
   return blocks.some((b) => b >= 6);
 }

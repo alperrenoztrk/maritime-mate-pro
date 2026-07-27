@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import {
   Upload,
-  FileImage,
   Sparkles,
   Download,
   AlertTriangle,
@@ -15,9 +14,10 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import {
+  buildPeople,
   emptyDay,
   type PersonRecord,
-  type DayHours,
+  type ExtractResponse,
   evaluateDay,
   countWork,
   countRest,
@@ -28,22 +28,6 @@ interface UploadedImage {
   id: string;
   name: string;
   dataUrl: string;
-}
-
-interface ExtractResponse {
-  crew: { name: string; rank: string }[];
-  previousMonth: {
-    name: string;
-    totalWorkHours: number;
-    totalRestHours: number;
-    notes?: string;
-  }[];
-  logbook: {
-    date: string;
-    name: string;
-    intervals: { start: string; end: string; activity?: string }[];
-    lowConfidence?: boolean;
-  }[];
 }
 
 const MAX_DIM = 2048;
@@ -72,44 +56,6 @@ async function fileToDataUrl(file: File): Promise<string> {
   const ctx = canvas.getContext("2d")!;
   ctx.drawImage(img, 0, 0, width, height);
   return canvas.toDataURL("image/jpeg", 0.85);
-}
-
-function timeToHourIndex(t: string): number {
-  const [h] = t.split(":").map(Number);
-  return Math.max(0, Math.min(23, h));
-}
-
-function applyInterval(day: DayHours, start: string, end: string): DayHours {
-  const s = timeToHourIndex(start);
-  let e = timeToHourIndex(end);
-  if (e <= s) e = 24; // overnight wraps treated as up to 24 here; user can edit
-  const out = [...day];
-  for (let i = s; i < e; i += 1) out[i] = true;
-  return out;
-}
-
-function buildPeople(data: ExtractResponse): PersonRecord[] {
-  const map = new Map<string, PersonRecord>();
-  for (const c of data.crew) {
-    const id = c.name.toLowerCase().trim();
-    if (!map.has(id))
-      map.set(id, { id, name: c.name, rank: c.rank, days: {} });
-  }
-  for (const e of data.logbook) {
-    const id = e.name.toLowerCase().trim();
-    let person = map.get(id);
-    if (!person) {
-      person = { id, name: e.name, rank: "—", days: {} };
-      map.set(id, person);
-    }
-    const day = person.days[e.date] ?? emptyDay();
-    let next = day;
-    for (const i of e.intervals) {
-      next = applyInterval(next, i.start, i.end);
-    }
-    person.days[e.date] = next;
-  }
-  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name, "tr"));
 }
 
 function Dropzone({
@@ -294,7 +240,7 @@ export default function BetaWorkHoursTool() {
 
   return (
     <div
-      className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-32 pt-6 dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]"
+      className="relative min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 px-4 pb-32 pt-[max(4rem,calc(env(safe-area-inset-top)+3.25rem))] dark:from-[hsl(20,40%,6%)] dark:via-[hsl(20,40%,8%)] dark:to-[hsl(20,40%,10%)]"
     >
       <div className="mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-2">
@@ -318,7 +264,7 @@ export default function BetaWorkHoursTool() {
           <div className="space-y-2 sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-3 sm:space-y-0">
             <div>
               <Label htmlFor="month" className="text-sm font-semibold">
-                Ay
+                Çalışma ayı
               </Label>
               <Input
                 id="month"
