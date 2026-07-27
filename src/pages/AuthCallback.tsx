@@ -3,18 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Button } from "@/components/ui/button";
-
-const sanitizeReturnPath = (raw?: string | null) => {
-  if (!raw) return "/";
-  if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
-  return raw;
-};
-
-const readParams = () => {
-  const hash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
-  const search = new URLSearchParams(window.location.search);
-  return { hash, search };
-};
+import { consumeReturnPath, finishOAuthFromUrl, sanitizeReturnPath } from "@/lib/authFlow";
 
 const clearOAuthParams = () => {
   const url = new URL(window.location.href);
@@ -50,16 +39,9 @@ const AuthCallback = () => {
     let cancelled = false;
 
     const readReturn = () => {
-      const { search } = readParams();
-      const fromUrl = search.get("next");
+      const fromUrl = new URLSearchParams(window.location.search).get("next");
       if (fromUrl) return sanitizeReturnPath(fromUrl);
-
-      let stored: string | null = null;
-      try {
-        stored = sessionStorage.getItem("postAuthReturn");
-        sessionStorage.removeItem("postAuthReturn");
-      } catch {}
-      return sanitizeReturnPath(stored);
+      return consumeReturnPath();
     };
 
     const finish = () => {
@@ -76,34 +58,18 @@ const AuthCallback = () => {
 
     const completeSession = async () => {
       try {
-        const { hash, search } = readParams();
-        const accessToken = hash.get("access_token") || search.get("access_token");
-        const refreshToken = hash.get("refresh_token") || search.get("refresh_token");
-        const code = search.get("code");
-
-        if (accessToken && refreshToken) {
-          const { error } = await supabase.auth.setSession({
-            access_token: accessToken,
-            refresh_token: refreshToken,
-          });
-          if (error) {
-            fail(`Google oturumu doğrulanamadı: ${error.message}`);
-            return;
-          }
+        const { handled, error: oauthError } = await finishOAuthFromUrl(window.location.href);
+        if (oauthError) {
+          fail(`Google oturumu doğrulanamadı: ${oauthError.message}`);
+          return;
+        }
+        if (handled) {
           finish();
           return;
         }
 
-        if (code) {
-          const { error } = await supabase.auth.exchangeCodeForSession(code);
-          if (error) {
-            fail(`Google dönüş kodu işlenemedi: ${error.message}`);
-            return;
-          }
-          finish();
-          return;
-        }
-
+        // No OAuth payload in the URL — the client may already have picked the
+        // session up through detectSessionInUrl.
         const { data, error } = await supabase.auth.getSession();
         if (error) {
           fail(`Oturum okunamadı: ${error.message}`);
