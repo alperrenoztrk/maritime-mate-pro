@@ -16,15 +16,8 @@ const credentialsSchema = z.object({
   password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
 });
 
-const getCanonicalOAuthOrigin = () => {
-  if (window.location.hostname === "www.nauticalleap.com") {
-    return "https://nauticalleap.com";
-  }
-  return window.location.origin;
-};
-
 const buildOAuthCallbackUrl = (nextPath: string) => {
-  const url = new URL("/auth/callback", getCanonicalOAuthOrigin());
+  const url = new URL("/auth/callback", window.location.origin);
   if (nextPath !== "/") url.searchParams.set("next", nextPath);
   return url.toString();
 };
