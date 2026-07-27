@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Anchor, Loader2, Mail, Lock } from "lucide-react";
-import { lovable } from "@/integrations/lovable";
+import { supabase } from "@/integrations/supabase/safeClient";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -86,15 +86,18 @@ const Auth = () => {
       try {
         sessionStorage.setItem("postAuthReturn", nextPath);
       } catch {}
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: buildOAuthCallbackUrl(nextPath),
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: buildOAuthCallbackUrl(nextPath),
+        },
       });
-      if (result.error) {
-        toast.error(result.error.message || "Google ile giriş başarısız");
+      if (error) {
+        toast.error(error.message || "Google ile giriş başarısız");
         setBusy(false);
         return;
       }
-      if (result.redirected) return; // browser is navigating
+      // Browser will redirect to Google
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
       setBusy(false);
