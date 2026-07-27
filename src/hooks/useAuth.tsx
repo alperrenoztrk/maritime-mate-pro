@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
-
-const sanitizeReturnPath = (raw?: string | null) => {
-  if (!raw) return "/";
-  if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
-  return raw;
-};
+import {
+  finishOAuthFromUrl,
+  isNativePlatform,
+  sanitizeReturnPath,
+  startGoogleSignIn,
+} from "@/lib/authFlow";
 
 interface AuthContextValue {
   user: User | null;
@@ -14,6 +15,7 @@ interface AuthContextValue {
   loading: boolean;
   signInWithEmail: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUpWithEmail: (email: string, password: string, returnPath?: string) => Promise<{ error: Error | null }>;
+  signInWithGoogle: (returnPath?: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -40,6 +42,40 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => subscription.unsubscribe();
   }, []);
 
+  // Native shells never reach /auth/callback: Google returns to the custom URL
+  // scheme, which Capacitor surfaces as an appUrlOpen event instead.
+  useEffect(() => {
+    if (!isNativePlatform()) return;
+
+    let cancelled = false;
+    let remove: (() => void) | undefined;
+
+    (async () => {
+      const { App } = await import("@capacitor/app");
+      const handle = await App.addListener("appUrlOpen", async ({ url }) => {
+        const { handled, error } = await finishOAuthFromUrl(url);
+        if (!handled) return;
+
+        try {
+          const { Browser } = await import("@capacitor/browser");
+          await Browser.close();
+        } catch {
+          // The in-app browser may already be gone; nothing to clean up.
+        }
+
+        if (error) toast.error(error.message || "Google ile giriş tamamlanamadı");
+      });
+
+      if (cancelled) handle.remove();
+      else remove = () => handle.remove();
+    })();
+
+    return () => {
+      cancelled = true;
+      remove?.();
+    };
+  }, []);
+
   const signInWithEmail = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     return { error: error as Error | null };
@@ -56,13 +92,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error as Error | null };
   };
 
+  const signInWithGoogle = async (returnPath = "/") => {
+    try {
+      return await startGoogleSignIn(returnPath);
+    } catch (err) {
+      return { error: err instanceof Error ? err : new Error(String(err)) };
+    }
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signOut }}
+      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signOut }}
     >
       {children}
     </AuthContext.Provider>

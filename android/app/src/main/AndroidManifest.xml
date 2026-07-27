@@ -25,6 +25,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <!-- Supabase Google girişi, OAuth turunu bu özel şema ile
+                 uygulamaya geri döndürür (com.marinersbook.app://auth/callback).
+                 Aynı adresin Supabase → Authentication → URL Configuration →
+                 Redirect URLs listesinde de bulunması gerekir. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/custom_url_scheme" />
+            </intent-filter>
+
         </activity>
 
         <!-- AdMob: @capacitor-community/admob eklentisi için zorunlu.
