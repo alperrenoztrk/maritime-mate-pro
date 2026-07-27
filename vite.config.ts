@@ -95,27 +95,7 @@ function verifyPrecachePlugin(): Plugin {
   };
 }
 
-// Managed Lovable Cloud backend fallbacks. Bu değerler publishable/anon
-// olduğu için istemcide bulunmaları güvenlidir; env değişkenleri build
-// sırasında iletilmezse uygulama "supabaseUrl is required" ile çökmesin diye
-// buradan enjekte edilir. GERÇEK backend adresi değişirse burayı güncelle.
-const FALLBACK_SUPABASE_URL = "https://vrpbhguztsqakvjcezeb.supabase.co";
-const FALLBACK_SUPABASE_PUBLISHABLE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZycGJoZ3V6dHNxYWt2amNlemViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyOTczNzcsImV4cCI6MjA4MTg3MzM3N30._RMAZAKoGsk9xmHAXCvITf8BW4f52WyHYdhJq4IEW4Y";
-const FALLBACK_SUPABASE_PROJECT_ID = "vrpbhguztsqakvjcezeb";
-
 export default defineConfig(({ mode }) => ({
-  define: {
-    "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(
-      process.env.VITE_SUPABASE_URL || FALLBACK_SUPABASE_URL,
-    ),
-    "import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY": JSON.stringify(
-      process.env.VITE_SUPABASE_PUBLISHABLE_KEY || FALLBACK_SUPABASE_PUBLISHABLE_KEY,
-    ),
-    "import.meta.env.VITE_SUPABASE_PROJECT_ID": JSON.stringify(
-      process.env.VITE_SUPABASE_PROJECT_ID || FALLBACK_SUPABASE_PROJECT_ID,
-    ),
-  },
   server: {
     host: "0.0.0.0",
     port: 8080,

@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { AlertTriangle, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/safeClient";
+import { Button } from "@/components/ui/button";
 
 const sanitizeReturnPath = (raw?: string | null) => {
   if (!raw) return "/";
@@ -43,6 +44,7 @@ const clearOAuthParams = () => {
  */
 const AuthCallback = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -66,29 +68,51 @@ const AuthCallback = () => {
       navigate(readReturn(), { replace: true });
     };
 
+    const fail = (message: string) => {
+      if (cancelled) return;
+      clearOAuthParams();
+      setError(message);
+    };
+
     const completeSession = async () => {
-      const { hash, search } = readParams();
-      const accessToken = hash.get("access_token") || search.get("access_token");
-      const refreshToken = hash.get("refresh_token") || search.get("refresh_token");
-      const code = search.get("code");
+      try {
+        const { hash, search } = readParams();
+        const accessToken = hash.get("access_token") || search.get("access_token");
+        const refreshToken = hash.get("refresh_token") || search.get("refresh_token");
+        const code = search.get("code");
 
-      if (accessToken && refreshToken) {
-        const { error } = await supabase.auth.setSession({
-          access_token: accessToken,
-          refresh_token: refreshToken,
-        });
-        if (!error) finish();
-        return;
+        if (accessToken && refreshToken) {
+          const { error } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
+          if (error) {
+            fail(`Google oturumu doğrulanamadı: ${error.message}`);
+            return;
+          }
+          finish();
+          return;
+        }
+
+        if (code) {
+          const { error } = await supabase.auth.exchangeCodeForSession(code);
+          if (error) {
+            fail(`Google dönüş kodu işlenemedi: ${error.message}`);
+            return;
+          }
+          finish();
+          return;
+        }
+
+        const { data, error } = await supabase.auth.getSession();
+        if (error) {
+          fail(`Oturum okunamadı: ${error.message}`);
+          return;
+        }
+        if (data.session) finish();
+      } catch (err) {
+        fail(err instanceof Error ? err.message : "Google oturumu tamamlanamadı.");
       }
-
-      if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
-        if (!error) finish();
-        return;
-      }
-
-      const { data } = await supabase.auth.getSession();
-      if (data.session) finish();
     };
 
     completeSession();
@@ -99,9 +123,10 @@ const AuthCallback = () => {
       }
     });
 
-    // Safety fallback: if nothing happens in 10s, bounce to home.
+    // Safety fallback: if nothing happens in 10s, show a visible failure
+    // instead of silently returning home as if login had succeeded.
     const timeout = window.setTimeout(() => {
-      if (!cancelled) navigate("/", { replace: true });
+      fail("Google dönüşü tamamlandı ancak uygulama oturumu kuramadı. Lütfen tekrar deneyin.");
     }, 10000);
 
     return () => {
@@ -110,6 +135,24 @@ const AuthCallback = () => {
       window.clearTimeout(timeout);
     };
   }, [navigate]);
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground p-4">
+        <div className="w-full max-w-sm rounded-lg border border-border/60 bg-card/95 p-5 text-center shadow-xl">
+          <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 text-destructive">
+            <AlertTriangle className="h-5 w-5" />
+          </div>
+          <h1 className="text-lg font-semibold">Google girişi tamamlanamadı</h1>
+          <p className="mt-2 text-sm text-muted-foreground">{error}</p>
+          <div className="mt-5 grid gap-2">
+            <Button onClick={() => navigate("/auth", { replace: true })}>Tekrar dene</Button>
+            <Button variant="outline" onClick={() => navigate("/", { replace: true })}>Ana sayfaya dön</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
