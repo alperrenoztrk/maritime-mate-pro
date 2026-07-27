@@ -16,11 +16,6 @@ const credentialsSchema = z.object({
   password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
 });
 
-const buildOAuthCallbackUrl = (nextPath: string) => {
-  const url = new URL("/auth/callback", window.location.origin);
-  if (nextPath !== "/") url.searchParams.set("next", nextPath);
-  return url.toString();
-};
 
 const Auth = () => {
   const navigate = useNavigate();
