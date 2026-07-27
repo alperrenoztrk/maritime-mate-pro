@@ -80,29 +80,6 @@ const Auth = () => {
     }
   };
 
-  const handleGoogle = async () => {
-    setBusy(true);
-    try {
-      try {
-        sessionStorage.setItem("postAuthReturn", nextPath);
-      } catch {}
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          redirectTo: buildOAuthCallbackUrl(nextPath),
-        },
-      });
-      if (error) {
-        toast.error(error.message || "Google ile giriş başarısız");
-        setBusy(false);
-        return;
-      }
-      // Browser will redirect to Google
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
-      setBusy(false);
-    }
-  };
 
 
   return (
