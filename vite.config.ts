@@ -95,7 +95,27 @@ function verifyPrecachePlugin(): Plugin {
   };
 }
 
+// Publishable (public) Lovable Cloud credentials. Used as a build-time fallback
+// so that if `.env` is missing during a publish/build, the client still
+// initializes with a valid URL/key instead of crashing with
+// "supabaseUrl is required". Both values are safe to ship in the browser bundle.
+const FALLBACK_SUPABASE_URL = "https://vrpbhguztsqakvjcezeb.supabase.co";
+const FALLBACK_SUPABASE_PUBLISHABLE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZycGJoZ3V6dHNxYWt2amNlemViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyOTczNzcsImV4cCI6MjA4MTg3MzM3N30._RMAZAKoGsk9xmHAXCvITf8BW4f52WyHYdhJq4IEW4Y";
+const FALLBACK_SUPABASE_PROJECT_ID = "vrpbhguztsqakvjcezeb";
+
 export default defineConfig(({ mode }) => ({
+  define: {
+    "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(
+      process.env.VITE_SUPABASE_URL || FALLBACK_SUPABASE_URL,
+    ),
+    "import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY": JSON.stringify(
+      process.env.VITE_SUPABASE_PUBLISHABLE_KEY || FALLBACK_SUPABASE_PUBLISHABLE_KEY,
+    ),
+    "import.meta.env.VITE_SUPABASE_PROJECT_ID": JSON.stringify(
+      process.env.VITE_SUPABASE_PROJECT_ID || FALLBACK_SUPABASE_PROJECT_ID,
+    ),
+  },
   server: {
     host: "0.0.0.0",
     port: 8080,
