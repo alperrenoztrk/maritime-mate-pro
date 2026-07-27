@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
-import { type HomeWidgetId, AVAILABLE_WIDGETS } from "@/hooks/useHomeWidgets";
+import { type HomeWidgetId, AVAILABLE_WIDGETS, useHomeWidgets } from "@/hooks/useHomeWidgets";
 import { useLocation } from "@/contexts/LocationContext";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 import { VintageWidgetStyles } from "@/components/widgets/vintage/VintageWidgetStyles";
@@ -64,8 +64,8 @@ function zonedTimeParts(now: Date, timeZone?: string): { h: number; m: number; s
 }
 
 export function HomeWidgetGrid() {
-  // All widgets are always active and shown, in their defined order.
-  const enabled = AVAILABLE_WIDGETS.map((w) => w.id);
+  // Which widgets are shown, and in what order, comes from Ayarlar → Ana Sayfa Widget'ları.
+  const { enabled } = useHomeWidgets();
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
   const { selectedLocation } = useLocation();
   // Weather APIs snap requests to a forecast grid. The location card must use

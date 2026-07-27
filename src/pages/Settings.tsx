@@ -1,22 +1,26 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRight, Mail } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRight, Mail, Minimize2 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { WidgetSettings } from "@/components/settings/WidgetSettings";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-// Density settings removed from Settings page; provider remains app-wide
+import { useDensity } from "@/contexts/DensityContext";
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
 import { useEntitlement } from "@/contexts/EntitlementContext";
 import { getLanguageFlag } from "@/utils/languages";
+import { APP_VERSION, APP_NAME } from "@/lib/appVersion";
 import { toast } from "sonner";
 
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
+  const { density, toggleDensity } = useDensity();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
   const { user, signOut, loading: authLoading } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
@@ -68,6 +72,11 @@ const Settings = () => {
   const handleFontSizeChange = (value: string) => {
     setFontSize(value as FontSizeKey);
     toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
+  };
+
+  const handleDensityToggle = () => {
+    toggleDensity();
+    toast.success(density === "compact" ? "Konforlu mod aktif" : "Kompakt mod aktif");
   };
 
   if (!user) {
@@ -205,6 +214,33 @@ const Settings = () => {
               </CardContent>
             </Card>
 
+            {/* Density Settings */}
+            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Minimize2 className="w-5 h-5" />
+                  <span data-translatable>Arayüz Yoğunluğu</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between gap-4">
+                  <div className="space-y-1 min-w-0">
+                    <Label htmlFor="density-toggle">
+                      <span data-translatable>Yoğunluk (Kompakt / Konforlu)</span>
+                    </Label>
+                    <p className="text-sm text-muted-foreground">
+                      <span data-translatable>
+                        {density === "compact" ? "Kompakt mod aktif" : "Konforlu mod aktif"}
+                      </span>
+                    </p>
+                  </div>
+                  <Button id="density-toggle" variant="outline" onClick={handleDensityToggle} className="shrink-0">
+                    <span data-translatable>{density === "compact" ? "Konforlu" : "Kompakt"}</span>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Language Settings */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
@@ -235,6 +271,33 @@ const Settings = () => {
                     </Select>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Home widgets */}
+            <WidgetSettings />
+
+            {/* About */}
+            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle>
+                  <span data-translatable>Hakkında</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between gap-4">
+                  <span className="text-muted-foreground" data-translatable>Uygulama</span>
+                  <span className="font-medium">{APP_NAME}</span>
+                </div>
+                <Separator />
+                <div className="flex justify-between gap-4">
+                  <span className="text-muted-foreground" data-translatable>Versiyon</span>
+                  <span className="font-medium">{APP_VERSION}</span>
+                </div>
+                <Separator />
+                <p className="text-sm text-muted-foreground">
+                  <span data-translatable>Bu uygulama denizcilik hesaplamaları için geliştirilmiştir</span>
+                </p>
               </CardContent>
             </Card>
 
