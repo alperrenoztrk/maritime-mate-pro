@@ -25,8 +25,6 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const isNativePlatform = typeof (globalThis as any).Capacitor !== "undefined" &&
-    !!(globalThis as any).Capacitor?.isNativePlatform?.();
 
   const nextPath = useMemo(() => {
     const raw = searchParams.get("next");
