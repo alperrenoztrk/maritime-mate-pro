@@ -167,7 +167,7 @@ export default defineConfig(({ mode }) => ({
       workbox: {
         navigateFallback: "/index.html",
         // Don't cache OAuth/auth routes — they must always hit network
-        navigateFallbackDenylist: [/^\/~oauth/, /^\/auth\//, /^\/api\//],
+        navigateFallbackDenylist: [/^\/auth\//, /^\/api\//],
         // Allow large assets (diagrams, PDFs, images)
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
         globPatterns: ["**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,woff2,json,hdr}"],
