@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 import { sanitizeReturnPath } from "@/lib/authFlow";
 
@@ -22,7 +21,8 @@ const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth();
-  const [tab, setTab] = useState<"signin" | "signup">("signin");
+  // Kayıt ve giriş ayrı ekranlar: önce kayıt ol gösterilir, kayıt tamamlanınca giriş yap ekranına geçilir.
+  const [mode, setMode] = useState<"signup" | "signin">("signup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -42,7 +42,7 @@ const Auth = () => {
     }
     setBusy(true);
     try {
-      if (tab === "signin") {
+      if (mode === "signin") {
         const { error } = await signInWithEmail(parsed.data.email, parsed.data.password);
         if (error) {
           const msg = error.message.includes("Invalid login")
@@ -61,7 +61,10 @@ const Auth = () => {
             : error.message;
           toast.error(msg);
         } else {
-          toast.success("Kayıt başarılı! E-postanızı kontrol edin.");
+          toast.success("Kayıt başarılı! E-postanızı kontrol edin, ardından giriş yapın.");
+          // Kayıt bitti; kullanıcıyı giriş ekranına al, şifreyi yeniden yazsın.
+          setPassword("");
+          setMode("signin");
         }
       }
     } finally {
@@ -96,69 +99,69 @@ const Auth = () => {
               <Anchor className="w-8 h-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl">Marine Expert Pro</CardTitle>
-          <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
+          <CardTitle className="text-2xl">Mariner's Book</CardTitle>
+          <CardDescription className="text-sm">
+            {mode === "signup" ? "Yeni hesap oluşturun" : "Hesabınıza giriş yapın"}
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {(
-            <>
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full gap-2"
-                onClick={handleGoogle}
-                disabled={busy}
-              >
-                <GoogleIcon />
-                Google ile devam et
-              </Button>
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t border-border/60" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">veya e-posta ile</span>
-                </div>
-              </div>
-            </>
-          )}
-          <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
-            <TabsList className="grid grid-cols-2 w-full">
-              <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
-              <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
-            </TabsList>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full gap-2"
+            onClick={handleGoogle}
+            disabled={busy}
+          >
+            <GoogleIcon />
+            {mode === "signup" ? "Google ile kayıt ol" : "Google ile giriş yap"}
+          </Button>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border/60" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">veya e-posta ile</span>
+            </div>
+          </div>
 
-            <TabsContent value="signin" className="mt-4">
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <EmailPasswordFields
-                  email={email}
-                  password={password}
-                  onEmail={setEmail}
-                  onPassword={setPassword}
-                />
-                <Button type="submit" className="w-full" disabled={busy}>
-                  {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
-                </Button>
-              </form>
-            </TabsContent>
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <EmailPasswordFields
+              mode={mode}
+              email={email}
+              password={password}
+              onEmail={setEmail}
+              onPassword={setPassword}
+            />
+            <Button type="submit" className="w-full" disabled={busy}>
+              {busy ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : mode === "signup" ? (
+                "Kayıt Ol"
+              ) : (
+                "Giriş Yap"
+              )}
+            </Button>
+            {mode === "signup" && (
+              <p className="text-xs text-muted-foreground text-center">
+                Şifre en az 8 karakter olmalıdır
+              </p>
+            )}
+          </form>
 
-            <TabsContent value="signup" className="mt-4">
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <EmailPasswordFields
-                  email={email}
-                  password={password}
-                  onEmail={setEmail}
-                  onPassword={setPassword}
-                />
-                <Button type="submit" className="w-full" disabled={busy}>
-                  {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Kayıt Ol"}
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  Şifre en az 8 karakter olmalıdır
-                </p>
-              </form>
-            </TabsContent>
-          </Tabs>
+          <div className="text-center text-sm text-muted-foreground">
+            {mode === "signup" ? "Zaten hesabınız var mı?" : "Hesabınız yok mu?"}{" "}
+            <button
+              type="button"
+              className="font-medium text-primary underline-offset-4 hover:underline disabled:opacity-50"
+              onClick={() => {
+                setPassword("");
+                setMode(mode === "signup" ? "signin" : "signup");
+              }}
+              disabled={busy}
+            >
+              {mode === "signup" ? "Giriş Yap" : "Kayıt Ol"}
+            </button>
+          </div>
         </CardContent>
       </Card>
     </div>
@@ -166,11 +169,13 @@ const Auth = () => {
 };
 
 const EmailPasswordFields = ({
+  mode,
   email,
   password,
   onEmail,
   onPassword,
 }: {
+  mode: "signup" | "signin";
   email: string;
   password: string;
   onEmail: (v: string) => void;
@@ -200,7 +205,7 @@ const EmailPasswordFields = ({
         <Input
           id="password"
           type="password"
-          autoComplete="current-password"
+          autoComplete={mode === "signup" ? "new-password" : "current-password"}
           placeholder="••••••••"
           className="pl-9"
           value={password}
