@@ -22,31 +22,17 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth();
+  const { user, loading, signInWithEmail, signUpWithEmail } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [googleEnabled, setGoogleEnabled] = useState(false);
 
   const nextPath = useMemo(() => sanitizeReturnPath(searchParams.get("next")), [searchParams]);
 
   useEffect(() => {
     if (!loading && user) navigate(nextPath, { replace: true });
   }, [user, loading, navigate, nextPath]);
-
-  // The button only appears once the backend confirms Google is switched on,
-  // so a project without the provider configured never shows a login that
-  // would fail with "Unsupported provider".
-  useEffect(() => {
-    let cancelled = false;
-    isGoogleAuthEnabled().then((enabled) => {
-      if (!cancelled) setGoogleEnabled(enabled);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
