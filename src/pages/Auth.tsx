@@ -7,7 +7,7 @@ import { Anchor, Loader2, Mail, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 import { sanitizeReturnPath } from "@/lib/authFlow";
@@ -99,7 +99,6 @@ const Auth = () => {
           <CardTitle className="text-2xl notranslate" translate="no" lang="en">
             Mariner's Book
           </CardTitle>
-          <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {(
@@ -187,7 +186,6 @@ const EmailPasswordFields = ({
           id="email"
           type="email"
           autoComplete="email"
-          placeholder="ornek@denizci.com"
           className="pl-9"
           value={email}
           onChange={(e) => onEmail(e.target.value)}
@@ -203,7 +201,6 @@ const EmailPasswordFields = ({
           id="password"
           type="password"
           autoComplete="current-password"
-          placeholder="••••••••"
           className="pl-9"
           value={password}
           onChange={(e) => onPassword(e.target.value)}
