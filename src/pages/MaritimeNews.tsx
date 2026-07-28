@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { ChevronRight } from "lucide-react";
 import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNews";
 import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
 import { NewspaperStyles } from "@/components/news/NewspaperStyles";
+import { softHyphenate } from "@/components/news/hyphenate";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+/** Gazetenin kuruluş yılı — cilt numarası bundan türetiliyor. */
+const FOUNDED_YEAR = 1888;
 
 function formatDate(iso: string | undefined, locale: string): string {
   if (!iso) return "";
@@ -39,6 +43,35 @@ function stripHtml(text?: string): string {
   return text.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 }
 
+/** Künyedeki cilt numarası için roma rakamı. */
+function toRoman(value: number): string {
+  const table: Array<[number, string]> = [
+    [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"],
+    [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+  ];
+  let out = "";
+  let rest = Math.max(1, value);
+  for (const [n, sym] of table) {
+    while (rest >= n) {
+      out += sym;
+      rest -= n;
+    }
+  }
+  return out;
+}
+
+/**
+ * Manşet özetini gerçek gazete dizgisindeki gibi ikiye ayırır: ilk cümle italik
+ * ara başlık (deck), kalanı sütunlara akan gövde olur.
+ */
+function splitDeck(summary?: string): { deck: string; body: string } {
+  const text = stripHtml(summary);
+  if (!text) return { deck: "", body: "" };
+  const match = text.match(/^(.{40,180}?[.!?])\s+(.+)$/);
+  if (!match) return { deck: "", body: text };
+  return { deck: match[1], body: match[2] };
+}
+
 function normalizeImageUrl(url?: string): string | undefined {
   if (!url) return undefined;
   try {
@@ -69,7 +102,7 @@ function toProxyImageUrl(url?: string, size: "small" | "medium" | "large" = "lar
   }
 }
 
-/** Sepya yarım ton tramlı, mürekkep çerçeveli basılı gazete fotoğrafı. */
+/** 45° tramlı, mürekkep çerçeveli basılı gazete fotoğrafı. */
 function PrintedPhoto({
   item,
   size,
@@ -86,10 +119,11 @@ function PrintedPhoto({
   const display = proxied ?? fallback;
 
   if (!display) {
+    // Dönemin boş klişe kutusu — renkli emoji basılı sayfada yabancı duruyordu.
     return (
       <span className={`gz-photo-wrap gz-photo-none ${className ?? ""}`} aria-hidden="true">
-        <span style={{ fontSize: 20, opacity: 0.7 }}>⚓</span>
-        <span>{item.source}</span>
+        <span>Klişe yok</span>
+        <span style={{ opacity: 0.72 }}>{item.source}</span>
       </span>
     );
   }
@@ -169,11 +203,13 @@ const MaritimeNews = () => {
     month: "long",
     year: "numeric",
   });
-  // Yılın günü = sayı numarası; her gün yeni bir "baskı".
-  const issueNo = Math.max(
+  // Yılın günü = o yılın kaçıncı baskısı; kuruluştan beri süren sayı numarası.
+  const dayOfYear = Math.max(
     1,
     Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 86_400_000),
   );
+  const volume = toRoman(today.getFullYear() - FOUNDED_YEAR + 1);
+  const issueNo = ((today.getFullYear() - FOUNDED_YEAR) * 365 + dayOfYear).toLocaleString("tr-TR");
   const coverage = query.data?.locale
     ? `${query.data.locale.countryName}${query.data.locale.mode === "regional-and-global" ? " ve Küresel" : ""} Kaynakları`
     : "Bölgesel Kaynaklar";
@@ -188,7 +224,15 @@ const MaritimeNews = () => {
   const [lead, ...rest] = items;
   const secondaries = rest.slice(0, 6);
   const briefs = rest.slice(6, 18);
-  const leadSummary = stripHtml(lead?.summary).slice(0, 420);
+  const { deck: leadDeck, body: leadBodyFull } = splitDeck(lead?.summary);
+  const leadBody = leadBodyFull.slice(0, 1100);
+  const sourceCount = query.data?.sources?.length ?? 0;
+  // Gerçek ön sayfada her habere klişe konmaz; yalnızca görseli olan ilk iki
+  // ikincil haber resimli diziliyor. Görseli olmayana boş kutu koymak yerine
+  // haber düz metin olarak akıyor.
+  const illustrated = new Set(
+    secondaries.filter((it) => Boolean(it.imageUrl)).slice(0, 2).map((it) => it.link),
+  );
 
   return (
     <div
@@ -210,7 +254,7 @@ const MaritimeNews = () => {
 
       <div className="fixed right-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none opacity-25">
         <div className="flex flex-col items-center gap-2 animate-pulse">
-          <ChevronRight className="w-6 h-6 text-white drop-shadow-lg" />
+          <ChevronRight className="w-6 h-6 text-[#e2d3ac] drop-shadow-lg" />
         </div>
       </div>
 
@@ -220,45 +264,52 @@ const MaritimeNews = () => {
         <div className="gzp-under gzp-under--2" aria-hidden="true" />
 
         <article className="gz-sheet overflow-hidden">
+          <div className="gz-showthrough" aria-hidden="true" />
           <div className="gz-grain" aria-hidden="true" />
-          <div className="gz-curl" aria-hidden="true" />
+          <div className="gz-fold" aria-hidden="true" />
 
-          {/* ── Manşet bloğu ── */}
-          <header className="relative px-4 pt-4 sm:px-8 sm:pt-6">
+          {/* ── Manşet bloğu ──
+              Üstteki geniş boşluk, sayfanın üzerinde duran genel "geri" düğmesinin
+              kulaklıkların üstüne binmemesi için. */}
+          <header className="relative px-4 pt-11 sm:px-8 sm:pt-6">
             <div className="gz-rule-thin" aria-hidden="true" />
-            <div className="mt-2 flex items-center justify-center gap-3">
-              <div className="gz-ear hidden sm:block">
+            <div className="mt-2 flex items-center justify-center gap-2 sm:gap-3">
+              <div className="gz-ear">
                 Sabah
                 <br />
                 Baskısı
               </div>
               <div className="min-w-0 flex-1 text-center">
                 <h1 className="gz-masthead notranslate" translate="no" lang="en">
-                  MARINER&rsquo;S POST<span className="sr-only"> — Denizcilik Haberleri</span>
+                  Mariner&rsquo;s Post<span className="sr-only"> — Denizcilik Haberleri</span>
                 </h1>
-                <div className="gz-masthead-sub">DENİZCİLİK DÜNYASININ HAVADİSLERİ</div>
               </div>
-              <div className="gz-ear hidden sm:block">
-                Ücretsiz
+              <div className="gz-ear">
+                Kuruluşu
                 <br />
-                Nüsha
+                {FOUNDED_YEAR}
               </div>
             </div>
+            <div className="gz-masthead-sub">DENİZCİLİK DÜNYASININ HAVADİSLERİ</div>
             <div className="gz-rule-double mt-2" aria-hidden="true" />
             <div className="gz-dateline">
               <span>{dateline}</span>
-              <span className="hidden sm:inline">Sayı No. {issueNo}</span>
+              <span className="hidden sm:inline">
+                Cilt {volume} — Sayı {issueNo}
+              </span>
+              <span>Fiyatı 25 Kuruş</span>
+            </div>
+            <div className="gz-rule-hair" aria-hidden="true" />
+            <div className="gz-dateline" style={{ justifyContent: "center", gap: 12 }}>
               <span>{coverage}</span>
+              {pressTime ? (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>Baskıya veriliş {pressTime}</span>
+                </>
+              ) : null}
             </div>
             <div className="gz-rule-thick" aria-hidden="true" />
-
-            {pressTime ? (
-              <div className="gz-stamp" style={{ right: 10, bottom: -30 }}>
-                Son Baskı
-                <br />
-                {pressTime}
-              </div>
-            ) : null}
           </header>
 
           {/* ── Sayfa gövdesi ── */}
@@ -296,112 +347,162 @@ const MaritimeNews = () => {
               </div>
             ) : (
               <>
-                {/* Manşet haber */}
+                {/* Manşet haber — başlık, ara başlık, künye cetveli, sütunlara akan gövde */}
                 {lead ? (
                   <section aria-label="Manşet haber">
                     <div className="gz-kicker">Günün Manşeti</div>
                     <button type="button" className="gz-tap mt-2" onClick={() => openItem(lead)}>
-                      <h2 className="gz-headline text-[clamp(1.45rem,6.4vw,2.2rem)]">{lead.title}</h2>
-                      <PrintedPhoto item={lead} size="large" eager className="mt-3 block aspect-[16/9] w-full" />
+                      <h2 className="gz-headline text-[clamp(1.5rem,6.6vw,2.3rem)]">{lead.title}</h2>
+                      {leadDeck ? (
+                        <p className="gz-deck mt-1.5 text-[clamp(.8rem,3.4vw,1rem)]">{leadDeck}</p>
+                      ) : null}
+                      <div
+                        className="gz-byline mt-2 border-y py-1"
+                        style={{ borderColor: "var(--gz-rule)" }}
+                      >
+                        <span className="gz-src">{lead.source}</span>
+                        {lead.publishedAt ? <span>· {formatDate(lead.publishedAt, currentLanguage)}</span> : null}
+                      </div>
+                      {/* Geniş ekranda panoramik: broadsheet ön sayfasında manşet
+                          klişesi sayfanın yarısını kaplamaz. */}
+                      <PrintedPhoto
+                        item={lead}
+                        size="large"
+                        eager
+                        className="mt-2.5 block aspect-[16/9] w-full sm:aspect-[2.6/1]"
+                      />
                       <div className="gz-caption">
                         {lead.source}
                         {lead.publishedAt ? ` — ${formatDate(lead.publishedAt, currentLanguage)}` : ""}
                       </div>
-                      {leadSummary ? (
-                        <p
-                          className="gz-just mt-2 text-[11.5px] leading-[1.55]"
-                          style={{
-                            columns: 2,
-                            columnGap: 16,
-                            columnRule: "1px solid rgba(36,29,16,.28)",
-                            color: "var(--gz-ink-soft)",
-                          }}
-                        >
-                          {leadSummary}
-                          {stripHtml(lead.summary).length > 420 ? "…" : ""}
-                        </p>
-                      ) : null}
-                      <div className="gz-readmore mt-2">Haberin tamamı için dokunun ⟶</div>
+                      {leadBody ? (
+                        <>
+                          <p
+                            className="gz-cols gz-cols--3 gz-just gz-dropcap mt-2.5 text-[11px] leading-[1.5]"
+                            style={{ color: "var(--gz-ink-soft)" }}
+                          >
+                            {softHyphenate(leadBody)}
+                            {leadBodyFull.length > 1100 ? "…" : ""}
+                          </p>
+                          <div className="gz-jump mt-1">(Devamı için dokunun ⟶)</div>
+                        </>
+                      ) : (
+                        <div className="gz-jump mt-1.5">(Haberin tamamı için dokunun ⟶)</div>
+                      )}
                     </button>
                   </section>
                 ) : null}
 
-                <div className="gz-foldline" aria-hidden="true" />
+                <div className="gz-rule-thick mt-3" aria-hidden="true" />
 
-                {/* İkinci sıra haberler — sütun cetvelli dizgi */}
-                {secondaries.length > 0 ? (
-                  <section aria-label="Diğer haberler">
-                    <div className="gz-kicker">Denizden Havadisler</div>
-                    <div
-                      className="mt-2 grid grid-cols-2 gap-x-4 gap-y-4
-                        [&>*:nth-child(even)]:border-l [&>*:nth-child(even)]:border-[rgba(36,29,16,.28)] [&>*:nth-child(even)]:pl-4
-                        [&>*:nth-child(n+3)]:border-t [&>*:nth-child(n+3)]:border-t-[rgba(36,29,16,.2)] [&>*:nth-child(n+3)]:pt-3"
-                    >
+                {/* İkinci sıra haberler — kart ızgarası değil, sürekli sütun dizgisi.
+                    Klişe yalnızca ilk iki haberde: gerçek ön sayfada her habere
+                    fotoğraf konmaz. */}
+                <section className="mt-3" aria-label="Diğer haberler">
+                  {secondaries.length > 0 ? <div className="gz-kicker">Denizden Havadisler</div> : null}
+                  {/* Künye ve ilan kutuları da sütun akışının içinde: gerçek gazetede
+                      kutular sayfanın dışında değil, dizginin arasında durur — ayrıca
+                      sütunların dengelenmesini sağlayıp altta boşluk bırakmaz. */}
+                  <div className="gz-cols gz-cols--2 mt-2.5">
                       {secondaries.map((it) => (
-                        <button
-                          key={`${it.source}-${it.link}`}
-                          type="button"
-                          className="gz-tap min-w-0"
-                          onClick={() => openItem(it)}
-                        >
-                          <PrintedPhoto item={it} size="small" className="block aspect-[3/2] w-full" />
-                          <h3 className="gz-headline mt-1.5 line-clamp-3 text-[13px] leading-[1.22]">{it.title}</h3>
-                          {stripHtml(it.summary) ? (
-                            <p
-                              className="gz-just mt-1 line-clamp-3 text-[10.5px] leading-[1.5]"
-                              style={{ color: "var(--gz-ink-soft)" }}
-                            >
-                              {stripHtml(it.summary)}
-                            </p>
-                          ) : null}
-                          <div className="gz-byline mt-1.5">
-                            <span className="gz-src">{it.source}</span>
-                            {it.publishedAt ? <span>· {formatShort(it.publishedAt, currentLanguage)}</span> : null}
-                          </div>
-                        </button>
+                        <article key={`${it.source}-${it.link}`} className="gz-story">
+                          <button type="button" className="gz-tap min-w-0" onClick={() => openItem(it)}>
+                            {illustrated.has(it.link) ? (
+                              <PrintedPhoto item={it} size="small" className="mb-1.5 block aspect-[3/2] w-full" />
+                            ) : null}
+                            <h3 className="gz-headline text-[13px] leading-[1.16]">{it.title}</h3>
+                            {stripHtml(it.summary) ? (
+                              <p
+                                className="gz-just mt-1 line-clamp-4 text-[10px] leading-[1.45]"
+                                style={{ color: "var(--gz-ink-soft)" }}
+                              >
+                                {softHyphenate(stripHtml(it.summary))}
+                              </p>
+                            ) : null}
+                            <div className="gz-byline mt-1.5">
+                              <span className="gz-src">{it.source}</span>
+                              {it.publishedAt ? <span>· {formatShort(it.publishedAt, currentLanguage)}</span> : null}
+                            </div>
+                          </button>
+                        </article>
                       ))}
+
+                    <div className="gz-box mb-3 break-inside-avoid">
+                      <div className="gz-box-title">Bu Nüshada</div>
+                      <ul className="space-y-1 text-[9.5px] leading-[1.35]">
+                        <li className="flex justify-between gap-2">
+                          <span>Manşet</span>
+                          <span>{lead ? 1 : 0} haber</span>
+                        </li>
+                        <li className="flex justify-between gap-2">
+                          <span>Denizden Havadisler</span>
+                          <span>{secondaries.length} haber</span>
+                        </li>
+                        <li className="flex justify-between gap-2">
+                          <span>Telgraf</span>
+                          <span>{briefs.length} havadis</span>
+                        </li>
+                        {sourceCount > 0 ? (
+                          <li className="flex justify-between gap-2">
+                            <span>Kaynak</span>
+                            <span>{sourceCount} gazete</span>
+                          </li>
+                        ) : null}
+                      </ul>
+                    </div>
+
+                    <Link to="/book" className="gz-box mb-3 block break-inside-avoid text-inherit">
+                      <div className="gz-box-title">İlan</div>
+                      <p className="text-[9.5px] italic leading-[1.45]">
+                        <span className="notranslate not-italic" translate="no" lang="en">
+                          Mariner&rsquo;s Book
+                        </span>{" "}
+                        — denizcilik dersleri, stabilite hesaplayıcıları, COLREG ve sözlük. Kitabı açmak için dokunun.
+                      </p>
+                    </Link>
+                  </div>
+                </section>
+
+                {/* Kısa havadisler — cetvelli telgraf departmanı */}
+                {briefs.length > 0 ? (
+                  <section className="mt-4" aria-label="Kısa haberler">
+                    <div className="gz-box">
+                      <div className="gz-box-title">Telgraf Haberleri</div>
+                      <ul className="gz-cols gz-cols--2">
+                        {briefs.map((it) => (
+                          <li
+                            key={`${it.source}-${it.link}`}
+                            className="mb-1.5 break-inside-avoid border-b border-dotted border-[rgba(35,28,15,.32)] pb-1.5"
+                          >
+                            <button type="button" className="gz-tap" onClick={() => openItem(it)}>
+                              <span className="line-clamp-3 text-[11px] font-bold leading-[1.28]">
+                                <span aria-hidden="true" style={{ color: "var(--gz-ink-faint)" }}>
+                                  ■{" "}
+                                </span>
+                                {it.title}
+                              </span>
+                              <span className="gz-byline mt-0.5">
+                                <span className="gz-src">{it.source}</span>
+                                {it.publishedAt ? <span>· {formatShort(it.publishedAt, currentLanguage)}</span> : null}
+                              </span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </section>
                 ) : null}
 
-                {/* Kısa havadisler — çift sütun dizgi */}
-                {briefs.length > 0 ? (
-                  <section className="mt-4" aria-label="Kısa haberler">
-                    <div className="gz-kicker">Kısa Havadisler</div>
-                    <ul className="mt-1 columns-2 gap-4">
-                      {briefs.map((it) => (
-                        <li
-                          key={`${it.source}-${it.link}`}
-                          className="break-inside-avoid border-b border-dotted border-[rgba(36,29,16,.35)] py-1.5"
-                        >
-                          <button type="button" className="gz-tap" onClick={() => openItem(it)}>
-                            <span className="line-clamp-3 text-[11px] font-semibold leading-[1.3]">
-                              <span aria-hidden="true" style={{ color: "var(--gz-ink-faint)" }}>
-                                ■{" "}
-                              </span>
-                              {it.title}
-                            </span>
-                            <span className="gz-byline mt-0.5">
-                              <span className="gz-src">{it.source}</span>
-                              {it.publishedAt ? <span>· {formatShort(it.publishedAt, currentLanguage)}</span> : null}
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                ) : null}
-
-                {/* Sayfa altı */}
+                {/* Sayfa altı folyosu */}
                 <div className="gz-rule-thick mt-5" aria-hidden="true" />
-                <div className="gz-dateline" style={{ justifyContent: "center", gap: 14 }}>
+                <div className="gz-folio mt-1">
                   <span className="notranslate" translate="no" lang="en">
                     Mariner&rsquo;s Post
                   </span>
-                  <span>·</span>
+                  <span aria-hidden="true">·</span>
                   <span>Sayfa 1</span>
-                  <span>·</span>
-                  <span>{today.getFullYear()}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Sayı {issueNo}</span>
                 </div>
               </>
             )}
@@ -422,21 +523,32 @@ const MaritimeNews = () => {
       <style>{`
         .gzp-desk{
           background:
-            radial-gradient(120% 70% at 50% 0%, rgba(214,178,110,.07), transparent 58%),
-            radial-gradient(130% 100% at 50% 108%, rgba(0,0,0,.5), transparent 60%),
-            repeating-linear-gradient(91deg, rgba(0,0,0,.16) 0 2px, transparent 2px 7px, rgba(255,255,255,.015) 7px 9px, transparent 9px 14px),
+            radial-gradient(120% 70% at 50% 0%, rgba(214,178,110,.05), transparent 58%),
+            radial-gradient(130% 100% at 50% 108%, rgba(0,0,0,.34), transparent 62%),
+            /* tahta damarı — geniş ve düzensiz aralıklı (eski ince çizgiler
+               kadife gibi duruyordu) */
+            repeating-linear-gradient(92deg,
+              rgba(0,0,0,.13) 0 3px,
+              transparent 3px 17px,
+              rgba(255,255,255,.016) 17px 20px,
+              transparent 20px 41px,
+              rgba(0,0,0,.09) 41px 43px,
+              transparent 43px 74px),
+            /* tahtaların ek yerleri */
+            repeating-linear-gradient(90deg,
+              rgba(0,0,0,.42) 0 2px,
+              transparent 2px 148px),
             linear-gradient(180deg, #33261a 0%, #291e13 52%, #1c150d 100%);
         }
         .gzp-under{
           position: absolute;
           inset: 0;
-          border-radius: 3px;
-          background: linear-gradient(180deg, #e9dcba 0%, #d9c89e 100%);
-          box-shadow: 0 14px 26px rgba(0,0,0,.5), inset 0 0 0 1px rgba(120,90,36,.2);
+          background: linear-gradient(180deg, #e6d9b6 0%, #d6c599 100%);
+          box-shadow: 0 12px 22px rgba(0,0,0,.45), inset 0 0 0 1px rgba(120,90,36,.2);
           transform: rotate(-1.15deg) translateY(5px);
         }
         .gzp-under--2{
-          background: linear-gradient(180deg, #e4d5b0 0%, #d2c095 100%);
+          background: linear-gradient(180deg, #e1d2ab 0%, #cfbd90 100%);
           transform: rotate(.85deg) translateY(9px);
         }
       `}</style>
