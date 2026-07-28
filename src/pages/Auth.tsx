@@ -11,7 +11,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 import { sanitizeReturnPath } from "@/lib/authFlow";
-import { lovable } from "@/integrations/lovable/index";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
@@ -22,7 +21,7 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, signInWithEmail, signUpWithEmail } = useAuth();
+  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,21 +69,17 @@ const Auth = () => {
     }
   };
 
+  // Supabase owns the Google round trip: it builds the authorize URL against
+  // its own /auth/v1/callback, so the only redirect URI Google ever sees is
+  // the one registered for the Supabase project. The browser comes back to
+  // /auth/callback, where AuthCallback turns the payload into a session.
   const handleGoogle = async () => {
     setBusy(true);
     try {
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
-        extraParams: { prompt: "select_account" },
-      });
-      if (result.error) {
-        toast.error(result.error.message || "Google ile giriş başarısız");
-        setBusy(false);
-        return;
+      const { error } = await signInWithGoogle(nextPath);
+      if (error) {
+        toast.error(error.message || "Google ile giriş başarısız");
       }
-      if (result.redirected) return; // browser navigating to Google
-      // Session established (popup flow) — redirect
-      navigate(nextPath, { replace: true });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
     } finally {
