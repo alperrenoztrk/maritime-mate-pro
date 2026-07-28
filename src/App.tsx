@@ -13,7 +13,6 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { EntitlementProvider } from "@/contexts/EntitlementContext";
 import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
-import { DensityProvider } from "@/contexts/DensityContext";
 import { FontSizeProvider } from "@/contexts/FontSizeContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
@@ -427,24 +426,22 @@ const App = () => {
           <LanguageProvider>
             <TooltipProvider>
               <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
-                <DensityProvider>
-                  <FontSizeProvider>
-                    <Toaster />
-                    <DocumentExpiryNotifier />
-                    <AskAIPopup />
-                    <LanguageChangeOverlay />
-                    <GlobalMaritimeBackground />
-                    <div className="min-h-screen text-foreground overflow-x-hidden">
-                      <BrowserRouter>
-                        <RouteTranslationGate />
-                        <AnimatedRoutes />
-                        <Suspense fallback={null}>
-                          <NotesRouteOverlay />
-                        </Suspense>
-                      </BrowserRouter>
-                    </div>
-                  </FontSizeProvider>
-                </DensityProvider>
+                <FontSizeProvider>
+                  <Toaster />
+                  <DocumentExpiryNotifier />
+                  <AskAIPopup />
+                  <LanguageChangeOverlay />
+                  <GlobalMaritimeBackground />
+                  <div className="min-h-screen text-foreground overflow-x-hidden">
+                    <BrowserRouter>
+                      <RouteTranslationGate />
+                      <AnimatedRoutes />
+                      <Suspense fallback={null}>
+                        <NotesRouteOverlay />
+                      </Suspense>
+                    </BrowserRouter>
+                  </div>
+                </FontSizeProvider>
               </ThemeProvider>
             </TooltipProvider>
           </LanguageProvider>
