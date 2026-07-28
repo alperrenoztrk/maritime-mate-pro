@@ -105,7 +105,7 @@ const Auth = () => {
           <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {googleEnabled && (
+          {(
             <>
               <Button
                 type="button"
