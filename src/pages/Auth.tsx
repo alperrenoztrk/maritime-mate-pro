@@ -96,7 +96,9 @@ const Auth = () => {
               <Anchor className="w-8 h-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl">Marine Expert Pro</CardTitle>
+          <CardTitle className="text-2xl notranslate" translate="no" lang="en">
+            Mariner's Book
+          </CardTitle>
           <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -124,8 +126,8 @@ const Auth = () => {
           )}
           <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
             <TabsList className="grid grid-cols-2 w-full">
-              <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
               <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
+              <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
             </TabsList>
 
             <TabsContent value="signin" className="mt-4">
