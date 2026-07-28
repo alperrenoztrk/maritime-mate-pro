@@ -20,6 +20,27 @@ export const sanitizeReturnPath = (raw?: string | null) => {
   return raw;
 };
 
+/**
+ * Routes an anonymous visitor may open. Everything else is behind the login
+ * wall (see RequireAuth), so a newly added route is protected by default.
+ */
+const PUBLIC_PATHS = new Set([
+  "/",
+  "/auth",
+  "/auth/callback",
+  // Blocking the OAuth consent screen would deadlock the sign-in it serves.
+  "/.lovable/oauth/consent",
+  // Legacy shortcut that only redirects to "/".
+  "/widgets",
+]);
+
+export const isPublicPath = (pathname: string) =>
+  PUBLIC_PATHS.has(pathname.replace(/\/+$/, "") || "/");
+
+/** Sends the visitor to the login screen while remembering where they meant to go. */
+export const buildAuthRedirect = (pathname: string, search = "") =>
+  `/auth?next=${encodeURIComponent(`${pathname}${search}`)}`;
+
 export const getOAuthCallbackUrl = () => new URL(window.location.href).toString();
 
 export const isNativePlatform = () => {
