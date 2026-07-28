@@ -10,7 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
-import { isGoogleAuthEnabled, sanitizeReturnPath } from "@/lib/authFlow";
+import { sanitizeReturnPath } from "@/lib/authFlow";
+import { lovable } from "@/integrations/lovable/index";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
@@ -21,31 +22,17 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth();
+  const { user, loading, signInWithEmail, signUpWithEmail } = useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [googleEnabled, setGoogleEnabled] = useState(false);
 
   const nextPath = useMemo(() => sanitizeReturnPath(searchParams.get("next")), [searchParams]);
 
   useEffect(() => {
     if (!loading && user) navigate(nextPath, { replace: true });
   }, [user, loading, navigate, nextPath]);
-
-  // The button only appears once the backend confirms Google is switched on,
-  // so a project without the provider configured never shows a login that
-  // would fail with "Unsupported provider".
-  useEffect(() => {
-    let cancelled = false;
-    isGoogleAuthEnabled().then((enabled) => {
-      if (!cancelled) setGoogleEnabled(enabled);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,15 +72,24 @@ const Auth = () => {
 
   const handleGoogle = async () => {
     setBusy(true);
-    const { error } = await signInWithGoogle(nextPath);
-    if (error) {
-      toast.error(error.message || "Google ile giriş başarısız");
+    try {
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+        extraParams: { prompt: "select_account" },
+      });
+      if (result.error) {
+        toast.error(result.error.message || "Google ile giriş başarısız");
+        setBusy(false);
+        return;
+      }
+      if (result.redirected) return; // browser navigating to Google
+      // Session established (popup flow) — redirect
+      navigate(nextPath, { replace: true });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
+    } finally {
       setBusy(false);
-      return;
     }
-    // Web navigates away to Google; native returns through the deep link and
-    // the auth listener, so release the button either way.
-    setBusy(false);
   };
 
   return (
@@ -109,7 +105,7 @@ const Auth = () => {
           <CardDescription className="text-sm">Giriş yapın veya kayıt olun</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {googleEnabled && (
+          {(
             <>
               <Button
                 type="button"
