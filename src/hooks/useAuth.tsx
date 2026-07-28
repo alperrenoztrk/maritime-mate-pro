@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import {
+  consumeReturnPath,
   finishOAuthFromUrl,
   isNativePlatform,
   sanitizeReturnPath,
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
 
-      const safeReturn = consumeNativeReturnPath();
+      const safeReturn = consumeReturnPath();
       window.history.replaceState(null, document.title, safeReturn);
       window.dispatchEvent(new PopStateEvent("popstate"));
     };
