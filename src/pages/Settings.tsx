@@ -6,9 +6,9 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { WidgetSettings } from "@/components/settings/WidgetSettings";
+import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
 
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useDensity } from "@/contexts/DensityContext";
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -22,15 +22,9 @@ const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
   const { density, toggleDensity } = useDensity();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
-  const { user, signOut, loading: authLoading } = useAuth();
+  const { user, signOut } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth", { replace: true });
-    }
-  }, [authLoading, user, navigate]);
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
@@ -59,6 +53,7 @@ const Settings = () => {
 
   const providerLabels: Record<string, string> = {
     email: "E-posta",
+    google: "Google",
   };
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Bilinmiyor");
 
@@ -78,10 +73,6 @@ const Settings = () => {
     toggleDensity();
     toast.success(density === "compact" ? "Konforlu mod aktif" : "Kompakt mod aktif");
   };
-
-  if (!user) {
-    return null;
-  }
 
   return (
     <MobileLayout>
@@ -141,13 +132,16 @@ const Settings = () => {
                     </Button>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-between gap-4">
+                  <div className="space-y-3">
                     <div className="text-sm text-muted-foreground">
                       <span data-translatable>Giriş yaparak hesabınızı senkronize edin</span>
                     </div>
-                    <Button onClick={() => navigate("/auth")} className="gap-2">
+                    {/* Hides itself when the Google provider is switched off for
+                        the project, leaving the e-mail route as the only option. */}
+                    <GoogleSignInButton returnPath="/settings" />
+                    <Button variant="outline" onClick={() => navigate("/auth?next=/settings")} className="w-full gap-2">
                       <LogIn className="w-4 h-4" />
-                      <span data-translatable>Giriş Yap</span>
+                      <span data-translatable>E-posta ile giriş yap</span>
                     </Button>
                   </div>
                 )}
