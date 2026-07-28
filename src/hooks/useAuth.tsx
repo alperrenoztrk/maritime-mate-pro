@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import {
+  consumeReturnPath,
   finishOAuthFromUrl,
   isNativePlatform,
   sanitizeReturnPath,
@@ -50,20 +51,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     let cancelled = false;
     let remove: (() => void) | undefined;
 
+    const completeNativeOAuth = async (url: string) => {
+      const { handled, error } = await finishOAuthFromUrl(url);
+      if (!handled) return;
+
+      try {
+        const { Browser } = await import("@capacitor/browser");
+        await Browser.close();
+      } catch {
+        // The in-app browser may already be gone; nothing to clean up.
+      }
+
+      if (error) {
+        toast.error(error.message || "Google ile giriş tamamlanamadı");
+        return;
+      }
+
+      const safeReturn = consumeReturnPath();
+      window.history.replaceState(null, document.title, safeReturn);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    };
+
     (async () => {
       const { App } = await import("@capacitor/app");
+      const launch = await App.getLaunchUrl();
+
+      if (!cancelled && launch?.url) {
+        await completeNativeOAuth(launch.url);
+      }
+
       const handle = await App.addListener("appUrlOpen", async ({ url }) => {
-        const { handled, error } = await finishOAuthFromUrl(url);
-        if (!handled) return;
-
-        try {
-          const { Browser } = await import("@capacitor/browser");
-          await Browser.close();
-        } catch {
-          // The in-app browser may already be gone; nothing to clean up.
-        }
-
-        if (error) toast.error(error.message || "Google ile giriş tamamlanamadı");
+        await completeNativeOAuth(url);
       });
 
       if (cancelled) handle.remove();

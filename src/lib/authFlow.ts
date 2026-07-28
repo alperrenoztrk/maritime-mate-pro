@@ -20,6 +20,8 @@ export const sanitizeReturnPath = (raw?: string | null) => {
   return raw;
 };
 
+export const getOAuthCallbackUrl = () => new URL(window.location.href).toString();
+
 export const isNativePlatform = () => {
   try {
     return Capacitor.isNativePlatform();
@@ -176,4 +178,13 @@ export const finishOAuthFromUrl = async (
   }
 
   return { handled: false, error: null };
+};
+
+export const getStoredCodeVerifier = () => {
+  try {
+    const storageKey = `sb-${new URL(backendUrl).hostname.split(".")[0]}-auth-token-code-verifier`;
+    return localStorage.getItem(storageKey) || null;
+  } catch {
+    return null;
+  }
 };
