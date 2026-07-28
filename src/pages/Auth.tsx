@@ -10,7 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
-import { isGoogleAuthEnabled, sanitizeReturnPath } from "@/lib/authFlow";
+import { sanitizeReturnPath } from "@/lib/authFlow";
+import { lovable } from "@/integrations/lovable/index";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
