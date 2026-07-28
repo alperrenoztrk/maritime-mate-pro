@@ -72,15 +72,24 @@ const Auth = () => {
 
   const handleGoogle = async () => {
     setBusy(true);
-    const { error } = await signInWithGoogle(nextPath);
-    if (error) {
-      toast.error(error.message || "Google ile giriş başarısız");
+    try {
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+        extraParams: { prompt: "select_account" },
+      });
+      if (result.error) {
+        toast.error(result.error.message || "Google ile giriş başarısız");
+        setBusy(false);
+        return;
+      }
+      if (result.redirected) return; // browser navigating to Google
+      // Session established (popup flow) — redirect
+      navigate(nextPath, { replace: true });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
+    } finally {
       setBusy(false);
-      return;
     }
-    // Web navigates away to Google; native returns through the deep link and
-    // the auth listener, so release the button either way.
-    setBusy(false);
   };
 
   return (
