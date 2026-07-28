@@ -1,12 +1,11 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRight, Mail } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
@@ -17,15 +16,11 @@ import { toast } from "sonner";
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
-  const { user, signOut, loading: authLoading } = useAuth();
+  // RequireAuth already keeps anonymous visitors out of this page and carries
+  // the return path, so no local redirect is needed here.
+  const { user, signOut } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth", { replace: true });
-    }
-  }, [authLoading, user, navigate]);
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
@@ -41,6 +36,9 @@ const Settings = () => {
   const handleSignOut = async () => {
     await signOut();
     toast.success("Çıkış yapıldı");
+    // Settings is behind the login wall; leaving the user here would bounce
+    // them straight into the auth screen.
+    navigate("/", { replace: true });
   };
 
   const displayName = (user?.user_metadata?.full_name as string) || "";
@@ -69,6 +67,7 @@ const Settings = () => {
     toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
   };
 
+  // Only reachable for the frame between signing out and the redirect landing.
   if (!user) {
     return null;
   }
@@ -97,50 +96,38 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {user ? (
-                  <div className="flex items-center gap-4">
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      {avatarUrl ? (
-                        <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
-                      ) : (
-                        <span className="text-lg font-semibold text-primary">{initials}</span>
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0 space-y-1">
-                      {displayName ? (
-                        <div className="font-medium truncate">{displayName}</div>
-                      ) : null}
-                      {user.email ? (
-                        <div className="flex items-center gap-1.5 text-sm text-foreground/90 min-w-0 font-medium">
-                          <Mail className="w-3.5 h-3.5 shrink-0 text-primary" />
-                          <span className="truncate" title={user.email}>{user.email}</span>
-                        </div>
-                      ) : (
-                        <div className="text-xs text-muted-foreground italic">
-                          <span data-translatable>E-posta bulunamadı</span>
-                        </div>
-                      )}
-                      <div className="text-xs text-muted-foreground/80 truncate">
-                        <span data-translatable>Sağlayıcı</span>: {providerLabel}
+                <div className="flex items-center gap-4">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="text-lg font-semibold text-primary">{initials}</span>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-1">
+                    {displayName ? (
+                      <div className="font-medium truncate">{displayName}</div>
+                    ) : null}
+                    {user.email ? (
+                      <div className="flex items-center gap-1.5 text-sm text-foreground/90 min-w-0 font-medium">
+                        <Mail className="w-3.5 h-3.5 shrink-0 text-primary" />
+                        <span className="truncate" title={user.email}>{user.email}</span>
                       </div>
+                    ) : (
+                      <div className="text-xs text-muted-foreground italic">
+                        <span data-translatable>E-posta bulunamadı</span>
+                      </div>
+                    )}
+                    <div className="text-xs text-muted-foreground/80 truncate">
+                      <span data-translatable>Sağlayıcı</span>: {providerLabel}
                     </div>
+                  </div>
 
-                    <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
-                      <LogOut className="w-4 h-4" />
-                      <span data-translatable>Çıkış</span>
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="text-sm text-muted-foreground">
-                      <span data-translatable>Giriş yaparak hesabınızı senkronize edin</span>
-                    </div>
-                    <Button onClick={() => navigate("/auth")} className="gap-2">
-                      <LogIn className="w-4 h-4" />
-                      <span data-translatable>Giriş Yap</span>
-                    </Button>
-                  </div>
-                )}
+                  <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
+                    <LogOut className="w-4 h-4" />
+                    <span data-translatable>Çıkış</span>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
