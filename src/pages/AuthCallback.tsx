@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Button } from "@/components/ui/button";
-import { consumeReturnPath, finishOAuthFromUrl, sanitizeReturnPath } from "@/lib/authFlow";
+import { consumeReturnPath, finishOAuthFromUrl, getStoredCodeVerifier, sanitizeReturnPath } from "@/lib/authFlow";
 
 const clearOAuthParams = () => {
   const url = new URL(window.location.href);
@@ -58,8 +58,14 @@ const AuthCallback = () => {
 
     const completeSession = async () => {
       try {
+        const hasOAuthCode = new URLSearchParams(window.location.search).has("code");
+        const hadCodeVerifier = Boolean(getStoredCodeVerifier());
         const { handled, error: oauthError } = await finishOAuthFromUrl(window.location.href);
         if (oauthError) {
+          if (hasOAuthCode && !hadCodeVerifier) {
+            fail("Google dönüş kodu geldi ancak oturum anahtarı bu cihazda bulunamadı. Tarayıcı/WebView eski oturumu kaybetmiş olabilir; Tekrar dene ile yeni bir akış başlatın.");
+            return;
+          }
           fail(`Google oturumu doğrulanamadı: ${oauthError.message}`);
           return;
         }
