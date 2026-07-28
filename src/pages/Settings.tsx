@@ -4,8 +4,6 @@ import { Globe, Settings2 as SettingsIcon, Type, LogIn, LogOut, Crown, ChevronRi
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { WidgetSettings } from "@/components/settings/WidgetSettings";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -14,7 +12,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
 import { useEntitlement } from "@/contexts/EntitlementContext";
 import { getLanguageFlag } from "@/utils/languages";
-import { APP_VERSION, APP_NAME } from "@/lib/appVersion";
 import { toast } from "sonner";
 
 const Settings = () => {
@@ -237,33 +234,6 @@ const Settings = () => {
                     </Select>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Home widgets */}
-            <WidgetSettings />
-
-            {/* About */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
-              <CardHeader>
-                <CardTitle>
-                  <span data-translatable>Hakkında</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between gap-4">
-                  <span className="text-muted-foreground" data-translatable>Uygulama</span>
-                  <span className="font-medium">{APP_NAME}</span>
-                </div>
-                <Separator />
-                <div className="flex justify-between gap-4">
-                  <span className="text-muted-foreground" data-translatable>Versiyon</span>
-                  <span className="font-medium">{APP_VERSION}</span>
-                </div>
-                <Separator />
-                <p className="text-sm text-muted-foreground">
-                  <span data-translatable>Bu uygulama denizcilik hesaplamaları için geliştirilmiştir</span>
-                </p>
               </CardContent>
             </Card>
 
