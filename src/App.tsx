@@ -5,7 +5,7 @@ import { AskAIPopup } from "@/components/AskAIPopup";
 import { DocumentExpiryNotifier } from "@/components/documents/DocumentExpiryNotifier";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -39,7 +39,6 @@ const ShipTaskDetailPage = lazy(() => import("./pages/ShipTaskDetailPage"));
 const ShipOperationsPage = lazy(() => import("./pages/ShipOperationsPage"));
 const ShipOperationsDetail = lazy(() => import("./pages/ShipOperationsDetail"));
 const ShipOperationDeepDive = lazy(() => import("./pages/ShipOperationDeepDive"));
-const CalculationSectionPage = lazy(() => import("./pages/CalculationSectionPage"));
 const Navigation = lazy(() => import("./pages/Navigation"));
 const NavigationCalculationPage = lazy(() => import("./pages/NavigationCalculation"));
 const TideCalculationTutorial = lazy(() => import("./pages/TideCalculationTutorial"));
@@ -49,7 +48,6 @@ const EconomicsQuizPage = lazy(() => import("./pages/EconomicsQuiz"));
 const StabilityAssistantPage = lazy(() => import("./pages/StabilityAssistant"));
 const StabilityGZIMO = lazy(() => import("./pages/StabilityGZIMO"));
 const StabilityRules = lazy(() => import("./pages/StabilityRules"));
-const StabilityGrainPage = lazy(() => import("./pages/StabilityGrain"));
 const StabilityGMPage = lazy(() => import("./pages/StabilityGM"));
 const StabilityWeightShiftPage = lazy(() => import("./pages/StabilityWeightShift"));
 const StabilityFreeSurfacePage = lazy(() => import("./pages/StabilityFreeSurface"));
@@ -57,7 +55,6 @@ const StabilityGZPage = lazy(() => import("./pages/StabilityGZ"));
 const SailorKnotsPage = lazy(() => import("./pages/SailorKnots"));
 const StabilityAnalysisPage = lazy(() => import("./pages/StabilityAnalysis"));
 const StableTalesPage = lazy(() => import("./pages/StableTales"));
-const EmptyPage = lazy(() => import("./pages/EmptyPage"));
 const ConverterPage = lazy(() => import("./pages/Converter"));
 const PassagePlanPage = lazy(() => import("./pages/PassagePlanPage"));
 const MoonPhases = lazy(() => import("./pages/MoonPhases"));
@@ -80,7 +77,6 @@ const StabilityQuizPage = lazy(() => import("./pages/StabilityQuiz"));
 const StabilityShearingBendingPage = lazy(() => import("./pages/StabilityShearingBending"));
 const NavigationQuizPage = lazy(() => import("./pages/NavigationQuiz"));
 const NavigationAssistantPage = lazy(() => import("./pages/NavigationAssistant"));
-const ClockPage = lazy(() => import("./pages/Clock"));
 const AuthPage = lazy(() => import("./pages/Auth"));
 const AuthCallbackPage = lazy(() => import("./pages/AuthCallback"));
 const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
@@ -122,9 +118,6 @@ const SOLASShipRequirementsPage = lazy(() => import("./pages/SOLASShipRequiremen
 const SOLASSafetyEquipmentPage = lazy(() => import("./pages/SOLASSafetyEquipment"));
 const BridgeDeviceDetailPage = lazy(() => import("./pages/BridgeDeviceDetail"));
 const WeatherForecast = lazy(() => import("./pages/WeatherForecast"));
-const SunsetTimes = lazy(() => import("./pages/SunsetTimes"));
-const SunriseTimes = lazy(() => import("./pages/SunriseTimes"));
-const LocationSelector = lazy(() => import("./pages/LocationSelector"));
 const DraftSurveyCalculator = lazy(() => import("./pages/DraftSurveyCalculator"));
 const DraftSurveyStandard = lazy(() => import("./pages/DraftSurveyStandard"));
 const DraftSurveyPreloading = lazy(() => import("./pages/DraftSurveyPreloading"));
@@ -159,10 +152,8 @@ const SafetyFormulasPage = lazy(() => import("./pages/SafetyFormulas"));
 const SafetyRulesPage = lazy(() => import("./pages/SafetyRules"));
 const SafetyAssistantPage = lazy(() => import("./pages/SafetyAssistant"));
 const SafetyQuizPage = lazy(() => import("./pages/SafetyQuiz"));
-const MachineAssistantPage = lazy(() => import("./pages/MachineAssistant"));
 const MachineCalculationsPage = lazy(() => import("./pages/MachineCalculationsPage"));
 const MachineFormulasPage = lazy(() => import("./pages/MachineFormulas"));
-const MachineQuizPage = lazy(() => import("./pages/MachineQuiz"));
 const MachineRulesPage = lazy(() => import("./pages/MachineRules"));
 const RegulationDetailPage = lazy(() => import("./pages/RegulationDetailPage"));
 const ExamPreparationPage = lazy(() => import("./pages/ExamPreparationPage"));
@@ -270,12 +261,10 @@ const AnimatedRoutes = () => {
         <Route path="/ship-systems/:sectionId" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemDetailPage /></PageTransition></ProRoute>} />
         <Route path="/ship-systems/:sectionId/:topicIndex" element={<ProRoute feature="3D Gemi Sistemleri"><PageTransition><ShipSystemDeepDive /></PageTransition></ProRoute>} />
 
-        <Route path="/calculations/:categoryId/:sectionId" element={<PageTransition><CalculationSectionPage /></PageTransition>} />
         {/* Stability sub-routes */}
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />
         <Route path="/stability/rules" element={<PageTransition><StabilityRules /></PageTransition>} />
         <Route path="/stability/gz-imo" element={<PageTransition><StabilityGZIMO /></PageTransition>} />
-        <Route path="/stability/grain" element={<PageTransition><StabilityGrainPage /></PageTransition>} />
         <Route path="/stability/gm" element={<PageTransition><StabilityGMPage /></PageTransition>} />
         <Route path="/stability/weight-shift" element={<PageTransition><StabilityWeightShiftPage /></PageTransition>} />
         <Route path="/stability/free-surface" element={<PageTransition><StabilityFreeSurfacePage /></PageTransition>} />
@@ -323,7 +312,6 @@ const AnimatedRoutes = () => {
         <Route path="/hydrodynamics" element={<PageTransition><HydrodynamicsPage /></PageTransition>} />
         <Route path="/structural" element={<PageTransition><StructuralCalculationsPage /></PageTransition>} />
         <Route path="/special-ships" element={<PageTransition><SpecialShipCalculationsPage /></PageTransition>} />
-        <Route path="/emissions" element={<PageTransition><EmissionCalculationsPage /></PageTransition>} />
 
         <Route path="/environment/calculations" element={<PageTransition><EmissionCalculationsPage /></PageTransition>} />
         <Route path="/environment/formulas" element={<PageTransition><EmissionFormulas /></PageTransition>} />
@@ -353,8 +341,6 @@ const AnimatedRoutes = () => {
         <Route path="/machine/calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
         <Route path="/machine/formulas" element={<PageTransition><MachineFormulasPage /></PageTransition>} />
         <Route path="/machine/rules" element={<PageTransition><MachineRulesPage /></PageTransition>} />
-        <Route path="/machine/assistant" element={<PageTransition><MachineAssistantPage /></PageTransition>} />
-        <Route path="/machine/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MachineQuizPage /></PageTransition></ProRoute>} />
         {/* Machine topic sub-routes */}
         <Route path="/machine/:topicSlug/topics" element={<PageTransition><MachineTopicLessonsPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/calculations" element={<PageTransition><MachineTopicCalculationsPage /></PageTransition>} />
@@ -369,31 +355,23 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/formulas" element={<PageTransition><NavigationFormulasPage /></PageTransition>} />
         <Route path="/navigation/rules" element={<PageTransition><NavigationRulesPage /></PageTransition>} />
 
-        <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
         <Route path="/navigation/colreg-presentation" element={<PageTransition><COLREGPresentation /></PageTransition>} />
         <Route path="/navigation/assistant" element={<PageTransition><NavigationAssistantPage /></PageTransition>} />
         <Route path="/navigation/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><NavigationQuizPage /></PageTransition></ProRoute>} />
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
         <Route path="/economics/assistant" element={<PageTransition><EconomicsAssistantPage /></PageTransition>} />
         <Route path="/economics/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><EconomicsQuizPage /></PageTransition></ProRoute>} />
-        <Route path="/empty-page" element={<PageTransition><EmptyPage /></PageTransition>} />
         <Route path="/moon-phases" element={<PageTransition><MoonPhases /></PageTransition>} />
         <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
         <Route path="/formulas" element={<PageTransition><Formulas /></PageTransition>} />
         <Route path="/regulations" element={<PageTransition><Regulations /></PageTransition>} />
         <Route path="/regulations/:slug" element={<PageTransition><RegulationDetailPage /></PageTransition>} />
-        <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
         <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
         <Route path="/weather-forecast" element={<PageTransition><WeatherForecast /></PageTransition>} />
-        <Route path="/sunset-times" element={<PageTransition><SunsetTimes /></PageTransition>} />
-        <Route path="/sunrise-times" element={<PageTransition><SunriseTimes /></PageTransition>} />
-        <Route path="/location-selector" element={<PageTransition><LocationSelector /></PageTransition>} />
         <Route path="/exam-preparation" element={<PageTransition><ExamPreparationPage /></PageTransition>} />
         <Route path="/converter" element={<PageTransition><ConverterPage /></PageTransition>} />
-        <Route path="/machine-calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
-        <Route path="/widgets" element={<Navigate to="/" replace />} />
         <Route path="*" element={<PageTransition><Index /></PageTransition>} />
         </Routes>
         </Suspense>

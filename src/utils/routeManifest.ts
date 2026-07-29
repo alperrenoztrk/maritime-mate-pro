@@ -37,11 +37,6 @@ const REGULATION_SLUGS = ['solas', 'marpol', 'stcw', 'colreg'];
 const STABILITY_FORMULA_IDS = ['gm', 'gz', 'bm'];
 const NAVIGATION_CALC_IDS = ['great-circle', 'rhumb-line', 'mercator'];
 const SEAMANSHIP_CALC_TOOLS = ['rope-load', 'anchor-holding', 'turning-circle'];
-const CALCULATION_SECTION_SAMPLES: Array<[string, string]> = [
-  ['stability', 'gm'],
-  ['cargo', 'draft-survey'],
-  ['navigation', 'great-circle'],
-];
 
 const STATIC_ROUTES: string[] = [
   '/',
@@ -73,7 +68,6 @@ const STATIC_ROUTES: string[] = [
   '/stability/assistant',
   '/stability/rules',
   '/stability/gz-imo',
-  '/stability/grain',
   '/stability/gm',
   '/stability/weight-shift',
   '/stability/free-surface',
@@ -123,7 +117,6 @@ const STATIC_ROUTES: string[] = [
   '/hydrodynamics',
   '/structural',
   '/special-ships',
-  '/emissions',
 
   // Environment
   '/environment/calculations',
@@ -156,15 +149,12 @@ const STATIC_ROUTES: string[] = [
   '/machine/calculations',
   '/machine/formulas',
   '/machine/rules',
-  '/machine/assistant',
-  '/machine/quiz',
 
   // Navigation
   '/navigation',
   '/navigation/tide-tutorial',
   '/navigation/formulas',
   '/navigation/rules',
-  '/navigation/meteorology',
   '/navigation/colreg-presentation',
   '/navigation/assistant',
   '/navigation/quiz',
@@ -176,14 +166,9 @@ const STATIC_ROUTES: string[] = [
   '/settings',
   '/formulas',
   '/regulations',
-  '/clock',
   '/weather-forecast',
-  '/sunset-times',
-  '/sunrise-times',
-  '/location-selector',
   '/exam-preparation',
   '/converter',
-  '/machine-calculations',
 ];
 
 const dynamicRoutes = (): string[] => {
@@ -243,23 +228,14 @@ const dynamicRoutes = (): string[] => {
   // /seamanship/calculations/:tool
   for (const t of SEAMANSHIP_CALC_TOOLS) out.push(`/seamanship/calculations/${t}`);
 
-  // /calculations/:categoryId/:sectionId
-  for (const [cat, sec] of CALCULATION_SECTION_SAMPLES) {
-    out.push(`/calculations/${cat}/${sec}`);
-  }
-
   return out;
 };
-
-// Routes that must NOT be harvested (redirects, placeholders, etc).
-const EXCLUDED = new Set<string>(['/widgets', '/empty-page']);
 
 export const getHarvestRoutes = (): string[] => {
   const all = [...STATIC_ROUTES, ...dynamicRoutes()];
   const seen = new Set<string>();
   const out: string[] = [];
   for (const r of all) {
-    if (EXCLUDED.has(r)) continue;
     if (seen.has(r)) continue;
     seen.add(r);
     out.push(r);
@@ -269,4 +245,4 @@ export const getHarvestRoutes = (): string[] => {
 
 // Bump this string whenever the manifest meaningfully changes so the
 // `mt-harvest-done-*` flag is invalidated and a fresh harvest runs.
-export const HARVEST_VERSION = 'v2';
+export const HARVEST_VERSION = 'v3';

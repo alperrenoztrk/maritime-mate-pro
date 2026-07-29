@@ -15,7 +15,7 @@ const MAX_NOTES = 200;
 export const NOTES_UPDATED_EVENT = "marine-notes-updated";
 
 // Ordered list — first match wins. Exact segment match so "/machine"
-// doesn't swallow "/machinery" or "/machine-calculations".
+// doesn't swallow "/machinery".
 const CATEGORY_MAP: Array<[string, string]> = [
   ["/lessons", "Dersler"],
   ["/exercises", "Alıştırmalar"],
@@ -34,11 +34,9 @@ const CATEGORY_MAP: Array<[string, string]> = [
   ["/meteorology", "Meteoroloji"],
   ["/safety", "Emniyet"],
   ["/seamanship", "Gemicilik"],
-  ["/machine-calculations", "Makine"],
   ["/machine", "Makine"],
   ["/economics", "Ekonomi"],
   ["/environment", "Çevre"],
-  ["/emissions", "Çevre"],
   ["/calculations", "Hesaplamalar"],
   ["/converter", "Hesaplamalar"],
   ["/tank", "Hesaplamalar"],

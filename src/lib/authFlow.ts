@@ -30,8 +30,6 @@ const PUBLIC_PATHS = new Set([
   "/auth/callback",
   // Blocking the OAuth consent screen would deadlock the sign-in it serves.
   "/.lovable/oauth/consent",
-  // Legacy shortcut that only redirects to "/".
-  "/widgets",
 ]);
 
 export const isPublicPath = (pathname: string) =>

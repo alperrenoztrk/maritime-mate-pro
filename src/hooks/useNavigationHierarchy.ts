@@ -66,27 +66,20 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/machine\/([^/]+)\/(topics|calculations|formulas|rules|assistant|quiz)$/,
     parent: () => '/lessons',
   },
-  // Eski /machine/<section> sayfaları → Hesaplamalar
+  // Konu seçmeden açılan /machine/<section> sayfaları → Hesaplamalar
   {
-    pattern: /^\/machine\/(calculations|formulas|rules|assistant|quiz)$/,
+    pattern: /^\/machine\/(calculations|formulas|rules)$/,
     parent: () => '/calculations',
   },
-  { pattern: /^\/machine-calculations$/, parent: () => '/calculations' },
   { pattern: /^\/machinery$/, parent: () => '/' },
 
   // ── Calculations hub ───────────────────────────────────────
-  // /calculations/<cat>/<sec> → /calculations
-  {
-    pattern: /^\/calculations\/([^/]+)\/([^/]+)$/,
-    parent: () => '/calculations',
-  },
   { pattern: /^\/calculations$/, parent: () => '/' },
 
   // ── Navigation (Seyir) ─────────────────────────────────────
   { pattern: /^\/navigation\/calc\/([^/]+)$/, parent: () => '/navigation' },
   { pattern: /^\/navigation\/tide-tutorial$/, parent: () => '/navigation' },
   { pattern: /^\/navigation\/colreg-presentation$/, parent: () => '/navigation' },
-  { pattern: /^\/navigation\/meteorology$/, parent: () => '/navigation' },
   {
     pattern: /^\/navigation\/(formulas|rules|assistant|quiz)$/,
     parent: () => '/navigation',
@@ -104,7 +97,7 @@ const navigationRules: NavigationRule[] = [
   },
   // Tüm stability alt sayfaları → Hesaplamalar (üst menü)
   {
-    pattern: /^\/stability\/(assistant|rules|gz-imo|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
+    pattern: /^\/stability\/(assistant|rules|gz-imo|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
     parent: () => '/calculations',
   },
   { pattern: /^\/stability$/, parent: () => '/calculations' },
@@ -145,7 +138,6 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/environment\/(calculations|formulas|rules|assistant|quiz)$/,
     parent: () => '/calculations',
   },
-  { pattern: /^\/emissions$/, parent: () => '/calculations' },
 
   // ── SOLAS ──────────────────────────────────────────────────
   {
@@ -171,13 +163,9 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/beta\/([^/]+)$/, parent: () => '/beta' },
   { pattern: /^\/beta$/, parent: () => '/' },
 
-  // ── Weather / Konum ────────────────────────────────────────
+  // ── Weather / Gök ──────────────────────────────────────────
   { pattern: /^\/weather-forecast$/, parent: () => '/' },
-  { pattern: /^\/location-selector$/, parent: () => '/' },
-  { pattern: /^\/sunrise-times$/, parent: () => '/' },
-  { pattern: /^\/sunset-times$/, parent: () => '/' },
   { pattern: /^\/moon-phases$/, parent: () => '/' },
-  { pattern: /^\/clock$/, parent: () => '/' },
 
   // ── Genel üst seviye ───────────────────────────────────────
   { pattern: /^\/settings$/, parent: () => '/' },
@@ -186,7 +174,6 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/glossary$/, parent: () => '/' },
   { pattern: /^\/exam-preparation$/, parent: () => '/' },
   { pattern: /^\/formulas$/, parent: () => '/' },
-  { pattern: /^\/empty-page$/, parent: () => '/' },
 ];
 
 /**
