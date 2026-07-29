@@ -42,9 +42,11 @@ if (!container) {
 function Root() {
   return (
     <ErrorBoundary>
-      <LocationProvider>
-        <App />
-      </LocationProvider>
+      <HelmetProvider>
+        <LocationProvider>
+          <App />
+        </LocationProvider>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 }
