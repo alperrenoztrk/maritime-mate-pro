@@ -4,6 +4,7 @@
 import './lib/safeStorage'
 import { safeLocalStorage } from './lib/safeStorage'
 import { createRoot } from 'react-dom/client'
+import { HelmetProvider } from 'react-helmet-async'
 import App from './App.tsx'
 import './index.css'
 import { ErrorBoundary } from './components/ErrorBoundary'
@@ -41,9 +42,11 @@ if (!container) {
 function Root() {
   return (
     <ErrorBoundary>
-      <LocationProvider>
-        <App />
-      </LocationProvider>
+      <HelmetProvider>
+        <LocationProvider>
+          <App />
+        </LocationProvider>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 }

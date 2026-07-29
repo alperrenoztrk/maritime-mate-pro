@@ -143,17 +143,20 @@ const Index = () => {
         aria-label="Mariner's Book"
       >
         {/* LEFT — News */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section aria-labelledby="home-news-heading" className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+          <h2 id="home-news-heading" className="sr-only">Denizcilik Haberleri</h2>
           <NewsPanel />
         </section>
 
         {/* CENTER — Uygulamalar + Beta/Ayarlar */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto overscroll-y-contain px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section aria-labelledby="home-apps-heading" className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto overscroll-y-contain px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+          <h2 id="home-apps-heading" className="sr-only">Uygulamalar</h2>
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto overscroll-y-contain px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section aria-labelledby="home-widgets-heading" className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto overscroll-y-contain px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+          <h2 id="home-widgets-heading" className="sr-only">Widget'lar</h2>
           <HomeWidgetGrid />
         </section>
       </main>

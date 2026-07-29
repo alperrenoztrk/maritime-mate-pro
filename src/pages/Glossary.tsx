@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { BookOpenText, Search } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
+import { SEO } from "@/components/SEO";
 
 const Glossary = () => {
   // Global search deep-links to a specific term via /glossary?q=<term>;
@@ -31,6 +32,11 @@ const Glossary = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 pb-24 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+      <SEO
+        title="Mariner's Book — Denizcilik Terimleri Sözlüğü"
+        description="Denizcilik terimleri sözlüğü: kategori filtreleri ve arama ile denizcilik kavramlarını hızlıca öğrenin."
+        path="/glossary"
+      />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
@@ -50,7 +56,8 @@ const Glossary = () => {
         </header>
 
         {/* Search & Filter */}
-        <section className="space-y-3 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+        <section aria-labelledby="glossary-filter-heading" className="space-y-3 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+          <h2 id="glossary-filter-heading" className="sr-only">Arama ve Filtreleme</h2>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -93,7 +100,8 @@ const Glossary = () => {
         </section>
 
         {/* Results */}
-        <section className="rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+        <section aria-labelledby="glossary-results-heading" className="rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+          <h2 id="glossary-results-heading" className="sr-only">Sonuçlar</h2>
           <p className="mb-3 text-xs text-muted-foreground">
             {filteredTerms.length} sonuç gösteriliyor
           </p>

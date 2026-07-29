@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MobileLayout } from "@/components/MobileLayout";
+import { SEO } from "@/components/SEO";
 
 /* ─── Types ─── */
 type CalcTool = {
@@ -240,6 +241,11 @@ export default function CalculationsMenu() {
 
   return (
     <MobileLayout>
+      <SEO
+        title="Mariner's Book — Denizcilik Hesaplamaları"
+        description="Navigasyon, stabilite, yük ve makine için interaktif denizcilik hesaplama araçları; birim dönüştürücüler ve pratik formüller."
+        path="/calculations"
+      />
       <div className="relative min-h-screen bg-background px-4 pb-24 pt-6">
         {/* Subtle ambient */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">

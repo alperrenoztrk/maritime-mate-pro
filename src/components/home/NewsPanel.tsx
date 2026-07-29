@@ -115,7 +115,7 @@ export function NewsPanel() {
                   <img src={leadImg} alt="" loading="lazy" className="gz-photo" />
                 </span>
               ) : null}
-              <h3 className="gz-headline np-lead-title">{lead.title}</h3>
+              <h2 className="gz-headline np-lead-title">{lead.title}</h2>
               <span className="gz-byline np-time">{formatRelative(lead.publishedAt)}</span>
             </button>
           )}
