@@ -1,23 +1,28 @@
-import { Lightbulb } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { getTopicContentsByCategory } from "@/data/topicContents";
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
-import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
-import { buildSectionKey, type ContentCategory } from "@/services/topicContentOverrides";
-import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
-import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
-import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
+import { buildLessonDeck } from "@/data/lessonSlides";
+import { LessonSlidePlayer } from "@/components/lessons/LessonSlidePlayer";
+import { LessonTextView } from "@/components/lessons/LessonTextView";
+import { LessonModeToggle, type LessonViewMode } from "@/components/lessons/LessonModeToggle";
 
+/**
+ * Konu anlatımı — varsayılan olarak slayt/seslendirme ("video") akışı.
+ *
+ * Slaytlar `buildLessonDeck` ile mevcut ders içeriğinden üretilir; içerik
+ * yeniden yazılmaz. Eski uzun metin görünümü "Metin olarak oku" ile korunur.
+ */
 export default function LessonTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
-  const overrides = useTopicContentOverrides();
+  const [mode, setMode] = useState<LessonViewMode>("slides");
+
   if (categoryId === "machine" && decodedTitle === "Akışkanlar Mekaniği") {
     return <FluidMechanicsTopicsPage />;
   }
+
   const fallbackContent: TopicDetailContent = {
     title: decodedTitle || "Konu Detayı",
     introduction: decodedTitle
@@ -27,7 +32,7 @@ export default function LessonTopicDetailPage() {
   };
   const categoryContents = getTopicContentsByCategory(categoryId);
   const content = categoryContents[decodedTitle] ?? fallbackContent;
-  const enhancement = getLessonTopicEnhancement(categoryId, decodedTitle);
+  const deck = buildLessonDeck(categoryId, decodedTitle);
 
   if (!categoryId || !decodedTitle) {
     return (
@@ -37,117 +42,24 @@ export default function LessonTopicDetailPage() {
     );
   }
 
+  const canShowSlides = !!deck && deck.slides.length > 0;
+  const showSlides = canShowSlides && mode === "slides";
+
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
         <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
       </div>
 
-      <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
-        <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-          <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
-        </div>
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 p-4 sm:p-6">
+        {canShowSlides && <LessonModeToggle mode={mode} onChange={setMode} />}
 
-        {content.sections.map((section, index) => {
-          const categoryKey = (categoryId ?? "navigation") as ContentCategory;
-          const overrideKey = buildSectionKey(categoryKey, decodedTitle || content.title, section.title);
-          const override = overrides[overrideKey];
-          const sectionImage = resolveLessonImage(
-            categoryId,
-            section.image,
-            section.title,
-            content.title,
-            section.imageAlt,
-          );
-          const resolvedContent = normalizeLessonMarkdownImages(
-            override?.content || section.content,
-            categoryId,
-            section.title,
-            content.title,
-            sectionImage ? [sectionImage] : [],
-          );
-
-          return (
-            <section key={`${section.title}-${index}`} className="space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
-
-              {sectionImage && (
-                <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                  <img
-                    src={sectionImage}
-                    alt={section.imageAlt || section.title}
-                    className="h-48 w-full object-contain bg-muted/30"
-                    loading="lazy"
-                  />
-                </div>
-              )}
-
-              <ReactMarkdown
-                components={{
-                  p: ({ children }) => (
-                    <p className="text-sm leading-relaxed text-foreground/80">{children}</p>
-                  ),
-                  img: ({ src, alt }) =>
-                    src ? (
-                      <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
-                        <img
-                          src={src}
-                          alt={alt || section.title}
-                          className="h-48 w-full object-contain bg-muted/30"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : null,
-                }}
-              >
-                {stripDollarSigns(resolvedContent)}
-              </ReactMarkdown>
-
-              {section.bulletPoints && section.bulletPoints.length > 0 && (
-                <ul className="space-y-2 pl-1">
-                  {section.bulletPoints.map((point, pointIndex) => (
-                    <li key={`${section.title}-point-${pointIndex}`} className="flex items-start gap-3 text-sm text-foreground/80">
-                      <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span>{stripMarkdown(point)}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {section.formula && (
-                <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4">
-                  <p className="font-mono text-sm font-medium text-amber-700 dark:text-amber-400">
-                    {section.formula.text}
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">{section.formula.description}</p>
-                </div>
-              )}
-            </section>
-          );
-        })}
-
-        {enhancement && <LessonEnhancementBlock data={enhancement} />}
-
-        {content.keyPoints && content.keyPoints.length > 0 && (
-          <section className="rounded-xl border border-border/40 bg-card/60 p-5">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
-            </div>
-            <ul className="space-y-2">
-              {content.keyPoints.map((point, index) => (
-                <li key={`key-point-${index}`} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <span>{stripMarkdown(point)}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
+        {showSlides ? (
+          <LessonSlidePlayer deck={deck!} categoryId={categoryId} topicTitle={decodedTitle} />
+        ) : (
+          <LessonTextView content={content} categoryId={categoryId} topicTitle={decodedTitle} />
         )}
       </div>
     </div>
   );
 }
-

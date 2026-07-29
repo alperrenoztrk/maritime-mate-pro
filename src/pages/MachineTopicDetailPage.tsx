@@ -6,15 +6,28 @@ import { getMachineSubTopicContent, MachineSubTopicContent } from "@/data/machin
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
+import { buildLessonDeck } from "@/data/lessonSlides";
+import { LessonSlidePlayer } from "@/components/lessons/LessonSlidePlayer";
+import { LessonModeToggle, type LessonViewMode } from "@/components/lessons/LessonModeToggle";
 
+/**
+ * Makine konu detayı — varsayılan görünüm slayt/seslendirme ("video") akışı.
+ *
+ * Slaytlar `buildLessonDeck` ile `betaLessons` normalize katmanından üretilir
+ * (kategori anahtarı `machine-${slug}`), böylece 16 makine konusu da güverte
+ * dersleriyle aynı oynatıcıyı kullanır. Eski metin görünümü korunur.
+ */
 export default function MachineTopicDetailPage() {
   const [viewerImage, setViewerImage] = useState<string | null>(null);
   const [viewerAlt, setViewerAlt] = useState("");
+  const [mode, setMode] = useState<LessonViewMode>("slides");
   const { topicSlug, subTopicTitle } = useParams<{ topicSlug: string; subTopicTitle: string }>();
   const decodedTitle = subTopicTitle ? decodeURIComponent(subTopicTitle) : "";
   const topicConfig = topicSlug ? machineTopicBySlug[topicSlug] : null;
   const content = topicSlug ? getMachineSubTopicContent(topicSlug, decodedTitle) : null;
   const enhancement = getLessonTopicEnhancement("machine", decodedTitle);
+  const machineCategoryKey = topicSlug ? `machine-${topicSlug}` : undefined;
+  const deck = buildLessonDeck(machineCategoryKey, decodedTitle);
 
   if (!topicConfig || !content) {
     return (
@@ -27,6 +40,8 @@ export default function MachineTopicDetailPage() {
   }
 
   const TopicIcon = topicConfig.icon;
+  const canShowSlides = !!deck && deck.slides.length > 0;
+  const showSlides = canShowSlides && mode === "slides";
 
   return (
     <div className="min-h-screen bg-background">
@@ -46,13 +61,25 @@ export default function MachineTopicDetailPage() {
           <span className="text-xs font-medium text-muted-foreground">{topicConfig.title}</span>
         </div>
 
-        {/* Introduction */}
+        {canShowSlides && <LessonModeToggle mode={mode} onChange={setMode} />}
+
+        {showSlides && machineCategoryKey && (
+          <LessonSlidePlayer
+            deck={deck!}
+            categoryId={machineCategoryKey}
+            topicTitle={decodedTitle}
+          />
+        )}
+
+        {/* Introduction — slayt modunda anlatım oynatıcıda olduğu için gizlenir */}
+        {!showSlides && (
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
           <p className="text-sm leading-relaxed text-foreground/90">{content.introduction}</p>
         </div>
+        )}
 
         {/* Sections */}
-        {content.sections.map((section, index) => (
+        {!showSlides && content.sections.map((section, index) => (
           <section key={index} className="space-y-4">
             <h2 className="text-lg font-semibold text-foreground">{section.heading}</h2>
 
@@ -147,10 +174,10 @@ export default function MachineTopicDetailPage() {
           </section>
         ))}
 
-        {enhancement && <LessonEnhancementBlock data={enhancement} />}
+        {!showSlides && enhancement && <LessonEnhancementBlock data={enhancement} />}
 
         {/* Key Points */}
-        {content.keyPoints && content.keyPoints.length > 0 && (
+        {!showSlides && content.keyPoints && content.keyPoints.length > 0 && (
           <section className="rounded-xl border border-border/40 bg-card/60 p-5">
             <div className="mb-4 flex items-center gap-2">
               <Lightbulb className="h-5 w-5 text-amber-500" />

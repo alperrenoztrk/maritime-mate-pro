@@ -1,26 +1,35 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Lightbulb, Play } from "lucide-react";
 import { stripMarkdown } from "@/utils/cleanText";
 import { getBetaTopic } from "@/data/betaLessons";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { getLessonFlow } from "@/data/lessonFlow";
+import { buildLessonDeck } from "@/data/lessonSlides";
 import type { QuizQuestion } from "@/types/quiz";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { LessonAITutor } from "@/components/lessons/LessonAITutor";
+import { LessonSlidePlayer } from "@/components/lessons/LessonSlidePlayer";
+import { LessonModeToggle, type LessonViewMode } from "@/components/lessons/LessonModeToggle";
 
 /**
  * "Alıştırmalar" — konu detayı (güverte + makine, tüm konular).
- * Mevcut anlatım (normalize edilmiş) + bölüm-arası bilgi kontrolü + AI eğitmen.
- * Akış yazılmış konularda "Öğrenmeye Başla" (Duolingo) butonu görünür.
+ *
+ * Varsayılan görünüm slayt/seslendirme ("video") akışıdır; alıştırma modunda
+ * bölüm aralarına bilgi kontrolü soruları slayt olarak girer ve soru
+ * cevaplanana kadar otomatik ilerleme durur. "Metin olarak oku" ile eski
+ * anlatım + bilgi kontrolü + AI eğitmen görünümü korunur.
  */
 export default function ExerciseTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
+  const [mode, setMode] = useState<LessonViewMode>("slides");
   const content = getBetaTopic(categoryId, decodedTitle);
   const enhancement = getLessonTopicEnhancement(categoryId, decodedTitle);
   const flow = getLessonFlow(categoryId, decodedTitle);
+  const deck = buildLessonDeck(categoryId, decodedTitle, { withQuiz: true });
 
   if (!categoryId || !decodedTitle || !content) {
     return (
@@ -50,6 +59,19 @@ export default function ExerciseTopicDetailPage() {
     ),
   ].join("\n");
 
+  const canShowSlides = !!deck && deck.slides.length > 0;
+  const showSlides = canShowSlides && mode === "slides";
+
+  const guidedLink = (
+    <Link
+      to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}/learn`}
+      className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+    >
+      <Play className="h-4 w-4" />
+      {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
+    </Link>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
@@ -61,52 +83,65 @@ export default function ExerciseTopicDetailPage() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
-        {content.introduction && (
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-            <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
-          </div>
-        )}
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 p-4 sm:p-6">
+        {canShowSlides && <LessonModeToggle mode={mode} onChange={setMode} />}
 
-        <Link
-          to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}/learn`}
-          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
-        >
-          <Play className="h-4 w-4" />
-          {flow ? "Öğrenmeye Başla (önce anlat → karışık sor)" : "Rehberli Okumayı Başlat"}
-        </Link>
-
-        {content.sections.map((section, index) => (
-          <div key={`${section.title}-${index}`} className="space-y-6">
-            <LessonTeachCard section={section} categoryId={categoryId} topicTitle={content.title} />
-            {checkAfter.has(section.title) && (
-              <KnowledgeCheck question={checkAfter.get(section.title)!} />
+        {showSlides ? (
+          <>
+            <LessonSlidePlayer
+              deck={deck!}
+              categoryId={categoryId}
+              topicTitle={decodedTitle}
+              variant="practice"
+            />
+            {guidedLink}
+            <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
+          </>
+        ) : (
+          <div className="flex flex-col gap-8">
+            {content.introduction && (
+              <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
+                <p className="text-sm leading-relaxed text-foreground/90">
+                  {stripMarkdown(content.introduction)}
+                </p>
+              </div>
             )}
+
+            {guidedLink}
+
+            {content.sections.map((section, index) => (
+              <div key={`${section.title}-${index}`} className="space-y-6">
+                <LessonTeachCard section={section} categoryId={categoryId} topicTitle={content.title} />
+                {checkAfter.has(section.title) && (
+                  <KnowledgeCheck question={checkAfter.get(section.title)!} />
+                )}
+              </div>
+            ))}
+
+            {enhancement && <LessonEnhancementBlock data={enhancement} />}
+
+            {content.keyPoints && content.keyPoints.length > 0 && (
+              <section className="rounded-xl border border-border/40 bg-card/60 p-5">
+                <div className="mb-4 flex items-center gap-2">
+                  <Lightbulb className="h-5 w-5 text-amber-500" />
+                  <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
+                </div>
+                <ul className="space-y-2">
+                  {content.keyPoints.map((point, index) => (
+                    <li key={`key-point-${index}`} className="flex items-start gap-3 text-sm text-foreground/80">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
+                        {index + 1}
+                      </span>
+                      <span>{stripMarkdown(point)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
           </div>
-        ))}
-
-        {enhancement && <LessonEnhancementBlock data={enhancement} />}
-
-        {content.keyPoints && content.keyPoints.length > 0 && (
-          <section className="rounded-xl border border-border/40 bg-card/60 p-5">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Önemli Noktalar</h2>
-            </div>
-            <ul className="space-y-2">
-              {content.keyPoints.map((point, index) => (
-                <li key={`key-point-${index}`} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <span>{stripMarkdown(point)}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
         )}
-
-        <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
       </div>
     </div>
   );
