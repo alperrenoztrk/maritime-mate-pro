@@ -10,7 +10,8 @@ interface MobileLayoutProps {
 /**
  * Shared shell for all inner pages.
  * - Matches home screen's deep maritime gradient + waves for a cohesive look.
- * - Handles safe-area insets (notch / home indicator) on all edges.
+ * - Handles safe-area insets (notch / home indicator) on all edges, plus the
+ *   native AdMob banner height (--ad-banner-height, see src/services/ads.ts).
  * - Locks horizontal overflow; allows vertical scroll inside <main>.
  * - Sets a readable default typography scale on dark background.
  */
@@ -72,7 +73,9 @@ export const MobileLayout = ({ children, className }: MobileLayoutProps) => {
           "px-3 xs:px-4 sm:px-5 md:px-6",
           // Vertical padding respects notch + home indicator
           "pt-[max(0.875rem,env(safe-area-inset-top))]",
-          "pb-[max(1.25rem,env(safe-area-inset-bottom))]",
+          // Bottom padding also clears the native AdMob banner when one is
+          // shown; --ad-banner-height is 0px whenever there is no banner.
+          "pb-[calc(max(1.25rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))]",
           // Avoid bleed under left/right curved edges in landscape
           "pl-[max(0.75rem,env(safe-area-inset-left))]",
           "pr-[max(0.75rem,env(safe-area-inset-right))]",

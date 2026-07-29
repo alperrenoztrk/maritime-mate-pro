@@ -133,8 +133,9 @@ uygulama tek başına da işe yarasın (mağaza yorumları için kritik).
 - **iOS:** StoreKit entegrasyonu yok; web/iOS'ta satın alma düğmeleri
   gizlenir. App Store'a çıkmadan önce eklenmeli (Stripe, Play dışı dijital
   içerik satışında kullanılamaz; mevcut `stripe-checkout` yalnızca web için).
-- **AdMob:** bağımlılık ekli ama reklam gösterimi henüz bağlanmadı; reklam
-  eklenirken `useEntitlement().hasProAccess` true iken gösterilmemeli
-  ("reklamsız kullanım" Pro vaadi).
+- **AdMob:** altyapı kurulu ve `useEntitlement().hasProAccess` ile kapılanmış
+  (banner + geçiş reklamı, yalnızca ücretsiz pakette). Varsayılan olarak
+  Google'ın TEST reklamları gösterilir; canlıya alma adımları
+  `ADVERTISEMENT_SETUP.md`'de. Ödüllü (rewarded) reklam henüz yok.
 - **Fiyat testi:** Play Console'da fiyat deneyleri (price experiments) ile
   yıllık/aylık oranını test edin; hedef, kullanıcıları yıllık plana yönlendirmek.

@@ -24,6 +24,7 @@ import { FloatingNavButtons } from "@/components/FloatingNavButtons";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { ProRoute } from "@/components/pro/ProRoute";
 import { RequireAuth } from "@/components/auth/RequireAuth";
+import { AdsController } from "@/components/ads/AdsController";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -436,6 +437,10 @@ const App = () => {
                   <div className="min-h-screen text-foreground overflow-x-hidden">
                     <BrowserRouter>
                       <RouteTranslationGate />
+                      {/* AdMob orchestration: free tier only, never on the home
+                          page / auth flow / paywall. Renders nothing — the
+                          banner is a native view (see src/services/ads.ts). */}
+                      <AdsController />
                       {/* Login wall: only the home page and the auth screens are
                           open to anonymous visitors. NotesRouteOverlay renders
                           itself for /notes outside <Routes>, so it has to sit

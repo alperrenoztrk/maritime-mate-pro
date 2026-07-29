@@ -18,6 +18,20 @@ def signingKeyPassword = resolveSigning("keyPassword", "KEY_PASSWORD")
 def hasReleaseSigning = signingStoreFile != null && signingStorePassword != null &&
         signingKeyAlias != null && signingKeyPassword != null
 
+// AdMob uygulama kimliği (manifest'e ${admobAppId} olarak enjekte edilir).
+// Kaynak sırası: android/admob.properties (gitignored) → ADMOB_APP_ID_ANDROID
+// ortam değişkeni → Google'ın resmi TEST App ID'si.
+// Varsayılan her zaman dolu olduğu için derleme asla kimlik eksikliğinden kırılmaz;
+// eksik/boş bırakılan gerçek kimlik yerine test reklamı gösterilir.
+def admobPropertiesFile = rootProject.file("admob.properties")
+def admobProperties = new Properties()
+if (admobPropertiesFile.exists()) {
+    admobProperties.load(new FileInputStream(admobPropertiesFile))
+}
+def resolvedAdmobAppId = admobProperties.getProperty("appId") ?:
+        System.getenv("ADMOB_APP_ID_ANDROID") ?:
+        "ca-app-pub-3940256099942544~3347511713"
+
 android {
     namespace "com.marinersbook.app"
     compileSdk rootProject.ext.compileSdkVersion
@@ -30,6 +44,7 @@ android {
         versionCode 20570
         versionName "2.5.70"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [admobAppId: resolvedAdmobAppId]
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
              // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
