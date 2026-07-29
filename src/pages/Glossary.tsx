@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { BookOpenText, Search } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
+import { SEO } from "@/components/SEO";
 
 const Glossary = () => {
   // Global search deep-links to a specific term via /glossary?q=<term>;
