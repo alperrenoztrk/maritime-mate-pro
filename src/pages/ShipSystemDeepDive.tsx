@@ -68,14 +68,6 @@ export default function ShipSystemDeepDive() {
     <MobileLayout>
       <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 pb-32 py-8 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-5">
-          {content && (
-            <div className="flex justify-end">
-              <span className="rounded-full border border-border/40 bg-card/70 px-3 py-1 text-xs text-muted-foreground">
-                ~{content.estimatedPages} sayfa
-              </span>
-            </div>
-          )}
-
           <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md backdrop-blur dark:bg-slate-900/60">
             <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">
               <BookOpen className="h-4 w-4" /> Detaylı Anlatım
