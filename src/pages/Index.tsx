@@ -97,9 +97,22 @@ const Index = () => {
 
 
 
-      {/* Header — fixed at top, visible on every page */}
-      <div className="absolute top-0 left-0 right-0 z-30 px-2 pt-8 sm:pt-12 pointer-events-none">
-        <div className="px-4 text-center">
+      {/* Header — viewport-fixed at top, visible on every page and unaffected by
+          the pages scrolling underneath it */}
+      <div className="fixed inset-x-0 top-0 z-30 pointer-events-none">
+        {/* Scrim: content scrolled up behind the title fades out instead of
+            colliding with the letters */}
+        <div
+          aria-hidden
+          className="absolute inset-0 backdrop-blur-[6px]"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(214 84% 8% / 0.95) 0%, hsl(214 84% 8% / 0.88) 60%, hsl(214 84% 10% / 0) 100%)",
+            maskImage: "linear-gradient(180deg, #000 0%, #000 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 70%, transparent 100%)",
+          }}
+        />
+        <div className="relative px-4 pb-10 text-center pt-[max(2rem,calc(env(safe-area-inset-top)+0.75rem))] sm:pt-[max(3rem,calc(env(safe-area-inset-top)+0.75rem))]">
           <h1
             className="select-none font-black tracking-wider notranslate"
             translate="no"
@@ -135,12 +148,12 @@ const Index = () => {
         </section>
 
         {/* CENTER — Uygulamalar + Beta/Ayarlar */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col items-center justify-start gap-8 overflow-y-auto overscroll-y-contain px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <AppIconGrid />
         </section>
 
         {/* RIGHT — Widgets */}
-        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
+        <section className="flex h-full w-screen flex-shrink-0 snap-center snap-always flex-col overflow-y-auto overscroll-y-contain px-2 pt-[max(10rem,calc(env(safe-area-inset-top)+9rem))] pb-[max(4rem,env(safe-area-inset-bottom))]">
           <HomeWidgetGrid />
         </section>
       </main>
