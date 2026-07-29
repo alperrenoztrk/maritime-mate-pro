@@ -50,7 +50,8 @@ const Glossary = () => {
         </header>
 
         {/* Search & Filter */}
-        <section className="space-y-3 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+        <section aria-labelledby="glossary-filter-heading" className="space-y-3 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+          <h2 id="glossary-filter-heading" className="sr-only">Arama ve Filtreleme</h2>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -93,7 +94,8 @@ const Glossary = () => {
         </section>
 
         {/* Results */}
-        <section className="rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+        <section aria-labelledby="glossary-results-heading" className="rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
+          <h2 id="glossary-results-heading" className="sr-only">Sonuçlar</h2>
           <p className="mb-3 text-xs text-muted-foreground">
             {filteredTerms.length} sonuç gösteriliyor
           </p>
