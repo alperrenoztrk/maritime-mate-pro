@@ -797,19 +797,6 @@ export default function LessonTopicsPage() {
               </Link>
             ))}
           </div>
-          {topicContent.contentStandards && (
-            <div className="mt-5 rounded-xl border border-border/40 bg-background/60 px-4 py-3 text-xs text-muted-foreground">
-              Her başlık en az{" "}
-              <span className="font-semibold text-foreground">
-                {topicContent.contentStandards.minPagesPerTopic}
-              </span>{" "}
-              sayfa olarak planlanır. Görseller{" "}
-              <span className="font-semibold text-foreground">
-                {topicContent.contentStandards.imageFormat}
-              </span>{" "}
-              formatında hazırlanır.
-            </div>
-          )}
         </section>
       </div>
 
