@@ -4,6 +4,20 @@ import { Link } from "react-router-dom";
 import { calculationCategories, sectionIconMap } from "@/data/calculationCenterConfig";
 import { hasCourseTopic } from "@/data/courseContent";
 import { ChevronDown, ChevronRight, GraduationCap, Ship, Wrench } from "lucide-react";
+import { SEO } from "@/components/SEO";
+
+const LESSONS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Mariner's Book — Denizcilik Dersleri",
+  description:
+    "Güverte ve makine dâhil interaktif denizcilik ders başlıkları; stabilite, yük, meteoroloji, seyir ve daha fazlası.",
+  provider: {
+    "@type": "Organization",
+    name: "Mariner's Book",
+    url: "https://nauticalleap.com/",
+  },
+};
 
 export default function LessonsPage() {
   const highRefreshRateStyles: CSSProperties = {
