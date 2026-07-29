@@ -1,292 +1,179 @@
-# 🎯 **REKLAM ENTEGRASYONİ REHBERİ**
-## Maritime Calculator - Professional Ad Integration
+# Reklam (AdMob) Kurulumu
 
-### **📱 KURULUM ÖZETİ**
+Reklam, para kazanma modelinde **ikincil** gelirdir: ana teklif Pro aboneliğidir
+(bkz. `MONETIZATION_SETUP.md`). Reklam yalnızca **ücretsiz pakette** ve yalnızca
+**native uygulamada** (Android/iOS) gösterilir. Web'de reklam yoktur.
 
-✅ **Google AdSense** - Web banner reklamları  
-✅ **AdMob** - Mobil uygulama reklamları  
-✅ **Native Ads** - Sponsorlu içerikler  
-✅ **Smart Ad Manager** - Akıllı reklam yönetimi  
-✅ **Analytics Integration** - Reklam performans takibi  
+Şu an depo, Google'ın **TEST** reklam kimlikleriyle çalışacak şekilde
+yapılandırılmıştır — gerçek kimlikler girilmeden de her şey çalışır ve gerçek
+reklam envanteri kirlenmez.
 
----
+## Mimari
 
-## **1️⃣ GOOGLE ADSENSE KURULUMU**
-
-### **AdSense Hesabı Oluşturma:**
-1. [AdSense.com](https://www.google.com/adsense/) adresine git
-2. "Get Started" → Google hesabınla giriş yap
-3. **Website URL'ini ekle:** `your-maritime-calculator-domain.com`
-4. **Country/Territory seç:** Türkiye
-5. **Payment method** bilgilerini gir
-
-### **Publisher ID Alma:**
-```javascript
-// Örnek Publisher ID format:
-ca-pub-1234567890123456
-
-// index.html dosyasında güncelle:
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-BURAYA-KODUNUZu"></script>
+```
+src/config/ads.ts          Reklam birimi kimlikleri, reklamsız rotalar, frekans kuralları
+  └─ src/services/ads.ts   @capacitor-community/admob köprüsü (web'de no-op, hata yutar)
+       └─ src/components/ads/AdsController.tsx
+            "Kime ve nerede" kararı: paket (useEntitlement) + rota
 ```
 
-### **Ad Units Oluşturma:**
+- **Karar tek yerdedir.** `AdsController`, `hasProAccess` true olduğu anda
+  bannerı kaldırır; "reklamsız kullanım" Pro vaadidir.
+- **Servis katmanı asla hata fırlatmaz.** Reklam yüklenememesi, onay formunun
+  açılamaması veya SDK hatası uygulamayı bozmaz.
+- **Web'de tamamen kapalıdır.** Eklenti tarayıcıda `unimplemented` fırlattığı
+  için her giriş noktası `Capacitor.isNativePlatform()` ile korunur.
+
+### Formatlar
+
+| Format | Nerede | Kural |
+|---|---|---|
+| Banner (adaptive, alt orta) | İç sayfalar | `AD_FREE_ROUTES` dışındaki tüm rotalar |
+| Interstitial (geçiş) | Sayfa geçişlerinde | Üç kapı birden açıksa (aşağıda) |
+
+Ödüllü (rewarded) reklam bilinçli olarak yoktur.
+
+### Reklamsız rotalar (`AD_FREE_ROUTES`)
+
+`/` (ana sayfa), `/auth`, `/auth/callback`, `/oauth-consent`, `/pro`, `/settings`.
+
+`/pro` özellikle önemlidir: **ödeme ekranında reklam göstermek AdMob
+politikasına aykırıdır.**
+
+### Geçiş reklamı frekansı
+
+Üç kapı da açılmadan reklam gösterilmez (`src/config/ads.ts`):
+
+| Sabit | Varsayılan | Anlamı |
+|---|---|---|
+| `INTERSTITIAL_SESSION_WARMUP_MS` | 60 sn | Açılıştan sonraki bu sürede reklam yok |
+| `INTERSTITIAL_MIN_NAVIGATIONS` | 8 | Son reklamdan bu yana gereken sayfa geçişi |
+| `INTERSTITIAL_MIN_INTERVAL_MS` | 3 dk | İki reklam arasındaki en kısa süre |
+
+Değerleri değiştirmeden önce: agresif geçiş reklamı hem mağaza puanını hem Pro
+dönüşümünü düşürür.
+
+### Yerleşim
+
+Banner native bir görünümdür, web katmanının üstünde durur. Servis, banner
+yüksekliğini `--ad-banner-height` CSS değişkenine yazar; `MobileLayout` alt
+boşluğunu buradan hesaplar, böylece banner içeriği kapatmaz. Banner yokken
+değişken `0px`'tir.
+
+## GDPR / UMP onayı
+
+`src/services/ads.ts` Google'ın önerdiği sırayı uygular:
+
+1. `requestConsentInfo()` — onay durumu ve `canRequestAds`.
+2. Durum `REQUIRED` ve form mevcutsa `showConsentForm()`.
+3. iOS'ta izleme izni (ATT): `trackingAuthorizationStatus()` → gerekiyorsa
+   `requestTrackingAuthorization()`.
+4. `AdMob.initialize()`.
+
+Onay alınmadıysa (veya durum bilinmiyorsa) tüm istekler **kişiselleştirilmemiş**
+(`npa: true`) gönderilir. `canRequestAds` false ise hiç reklam istenmez.
+
+**AdMob Console tarafında yapılması gereken:** Privacy & messaging → GDPR ve
+US state regulations mesajlarını oluşturup yayımlayın. Mesaj tanımlanmazsa
+`showConsentForm()` gösterilecek bir şey bulamaz.
+
+Ayarlar → "Reklamlar ve Gizlilik" kartındaki **Reklam tercihlerini yönet**
+düğmesi `showPrivacyOptionsForm()` çağırır. Bu giriş noktası, onay formu
+gösterilen bölgelerde Google tarafından zorunlu tutulur; kart yalnızca reklam
+gören (ücretsiz + native) kullanıcıya ve UMP "gerekli" dediğinde görünür.
+
+## Test reklamlarından canlıya geçiş
+
+Hiçbir gerçek kimlik depoya girmez.
+
+### 1. AdMob Console
+
+1. [AdMob Console](https://admob.google.com/) → **Add app**.
+   - Android paket adı: `com.marinersbook.app`
+   - iOS bundle kimliği: `com.marinersbook.app`
+2. Her uygulama için iki reklam birimi oluşturun: **Banner** ve **Interstitial**.
+3. App ID'leri (`ca-app-pub-XXXX~YYYY`) ve birim kimliklerini
+   (`ca-app-pub-XXXX/YYYY`) not edin. `~` App ID'de, `/` birim kimliğindedir.
+
+### 2. Reklam birimi kimlikleri (JS tarafı)
+
+`.env` dosyanıza yazın (bkz. `.env.example`):
+
 ```
-📊 BANNER REKLAM BOYUTLARI:
-
-1. Mobile Banner: 320x50 (slot: 1234567890)
-2. Desktop Rectangle: 300x250 (slot: 0987654321)
-3. Responsive Inline: Auto (slot: 1122334455)
-4. Large Rectangle: 336x280 (slot: 5566778899)
+VITE_ADMOB_BANNER_ID_ANDROID=ca-app-pub-XXXXXXXX/YYYYYYYYYY
+VITE_ADMOB_INTERSTITIAL_ID_ANDROID=ca-app-pub-XXXXXXXX/YYYYYYYYYY
+VITE_ADMOB_BANNER_ID_IOS=ca-app-pub-XXXXXXXX/YYYYYYYYYY
+VITE_ADMOB_INTERSTITIAL_ID_IOS=ca-app-pub-XXXXXXXX/YYYYYYYYYY
 ```
 
----
+Bir platformun kimliği doldurulduğunda `isUsingTestAds()` false döner ve
+`isTesting` bayrağı otomatik kapanır. **Gerçek bir birim kimliğini
+`isTesting: true` ile istemek politika ihlalidir**; bu yüzden iki karar tek
+yerden türetilir, elle ayarlamayın.
 
-## **2️⃣ ADMOB KURULUMU (Mobile App)**
+### 3. App ID (native taraf)
 
-### **AdMob Hesabı:**
-1. [AdMob Console](https://admob.google.com/) açın
-2. **"Add App"** → **"Android"** seçin
-3. **App Name:** "Maritime Calculator"
-4. **Package Name:** `com.marinersbook.app`
+**Android** — `AndroidManifest.xml` değeri `${admobAppId}`'dir,
+`android/app/build.gradle` şu sırayla çözer:
 
-### **Ad Unit IDs:**
-```javascript
-// Android AdMob IDs:
-Banner: ca-app-pub-XXXXXXXX/1234567890
-Interstitial: ca-app-pub-XXXXXXXX/0987654321
-Rewarded: ca-app-pub-XXXXXXXX/1122334455
-Native: ca-app-pub-XXXXXXXX/5566778899
-```
+1. `android/admob.properties` (gitignored):
+   ```properties
+   appId=ca-app-pub-XXXXXXXX~YYYYYYYYYY
+   ```
+2. `ADMOB_APP_ID_ANDROID` ortam değişkeni (CI için).
+3. Google'ın TEST App ID'si (varsayılan — derleme asla kimlik eksikliğinden
+   kırılmaz).
 
-### **Capacitor AdMob Kurulumu:**
+**iOS** — `ios/App/App/Info.plist` içindeki `GADApplicationIdentifier`
+değerini elle gerçek App ID ile değiştirin.
+
+> App ID eksik/yanlışsa uygulama **açılışta çöker**. Bu, AdMob SDK'sının
+> bilinçli davranışıdır.
+
+### 4. Test cihazı
+
+Gerçek kimliklere geçtikten sonra kendi cihazınızda reklam tıklamayın — hesap
+askıya alınabilir. Cihazınızı test cihazı olarak kaydetmek için logcat/Xcode
+çıktısındaki cihaz kimliğini `AdMob.initialize({ testingDevices: [...] })`
+çağrısına (`src/services/ads.ts`) ekleyin.
+
+## Doğrulama
+
 ```bash
-npm install @capacitor-community/admob
-npx cap sync
+npx tsc --noEmit -p tsconfig.app.json
+npm run lint
+npm run build
 
-# Android için izinler:
-# android/app/src/main/AndroidManifest.xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+# Android cihaz/emülatör
+npm run build && npx cap sync android && npm run android:build
 ```
 
----
+Cihazda kontrol listesi:
 
-## **3️⃣ KOD GÜNCELLEME**
+- [ ] Ana sayfada (`/`) banner **yok**.
+- [ ] Bir iç sayfada (örn. `/calculations`) test bannerı görünüyor ve içeriğin
+      son satırını kapatmıyor.
+- [ ] `/pro` ve `/settings` sayfalarında banner **yok**.
+- [ ] Pro/ömür boyu hesapta hiçbir sayfada reklam **yok**.
+- [ ] EEA'da (veya `AdmobConsentDebugGeography.EEA` ile) ilk açılışta onay formu
+      çıkıyor; Ayarlar'da "Reklam tercihlerini yönet" düğmesi formu tekrar açıyor.
+- [ ] Uygulamayı açar açmaz geçiş reklamı **çıkmıyor**; yoğun gezinmede en fazla
+      3 dakikada bir çıkıyor.
 
-### **AdSense Publisher ID Güncelleme:**
-```typescript
-// src/hooks/useAdManager.ts dosyasında:
-const script = document.createElement('script');
-script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-GERÇEK-ID-BURAYA';
+## Mağaza gereksinimleri
 
-// src/components/ads/AdBanner.tsx dosyasında:
-data-ad-client="ca-pub-GERÇEK-ID-BURAYA"
-```
+- **Play Console → Uygulama içeriği → Reklamlar:** "Uygulamam reklam içeriyor"
+  olarak işaretlenmelidir.
+- **Play Console → Veri güvenliği:** AdMob'un topladığı veriler (cihaz
+  tanımlayıcıları, yaklaşık konum, reklam etkileşimi) beyan edilmelidir.
+- **App Store → App Privacy:** aynı beyanlar; `NSUserTrackingUsageDescription`
+  ve `SKAdNetworkItems` `Info.plist`'te hazırdır (Google'ın yayımladığı tam
+  ağ listesi; AdMob yeni ağ ekledikçe güncellenmelidir).
+- **Gizlilik politikası:** `public/privacy-policy.html` AdMob'u zaten anıyor.
 
-### **Ad Slot Güncelleme:**
-```typescript
-// AdBanner bileşenlerinde:
-export const AdBannerMobile = () => (
-  <AdBanner 
-    slot="GERÇEK-SLOT-ID"  // Gerçek slot ID'nizi buraya
-    format="auto"
-  />
-);
-```
+## Web reklamları (AdSense) — kurulu değil
 
----
-
-## **4️⃣ REKLAM STRATEJİSİ**
-
-### **Reklam Pozisyonları:**
-```
-🎯 OPTIMAL REKLAM YERLEŞİMİ:
-
-✅ Header sonrası (İlk izlenim)
-✅ Her 4 hesaplama kartından sonra
-✅ AI yanıt sonrası (Engagement yüksek)
-✅ Sayfa sonu (Exit intent)
-✅ Hesaplama tamamlandıktan sonra
-```
-
-### **Frekans Ayarları:**
-```typescript
-// src/hooks/useAdManager.ts
-const adConfig = {
-  enabled: true,
-  frequency: 3,  // Her 3 etkileşimde bir reklam
-  mobileEnabled: true,
-  desktopEnabled: true,
-}
-```
-
----
-
-## **5️⃣ NATIVE ADVERTISING**
-
-### **Maritime Sektörü Sponsorları:**
-```
-🚢 HEDEF SPONSORLAR:
-
-1. Naval Architecture Software (AutoCAD Marine, Rhino Marine)
-2. Maritime Training Companies (STCW, MCA courses)
-3. Ship Management Software (Fleet management, ECDIS)
-4. Maritime Job Platforms (Maritime careers, crew jobs)
-5. Marine Equipment Suppliers (Engines, navigation)
-6. Classification Societies (DNV, ABS, Lloyd's)
-```
-
-### **Revenue Streams:**
-```
-💰 GELİR KAYNAKLARI:
-
-1. AdSense: $0.50-$2.00 RPM (global traffic)
-2. AdMob: $1.00-$5.00 RPM (mobile app)
-3. Native Ads: $5.00-$50.00 per click
-4. Sponsored Content: $100-$1000 per post
-5. Maritime Software Affiliates: 10-30% commission
-```
-
----
-
-## **6️⃣ ANALYTICS & OPTIMIZATION**
-
-### **Google Analytics 4 Setup:**
-```javascript
-// index.html güncelleme:
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GERÇEK-GA4-ID');
-</script>
-```
-
-### **Conversion Tracking:**
-```typescript
-// Ad click tracking:
-const handleAdClick = () => {
-  gtag('event', 'ad_click', {
-    event_category: 'advertisement',
-    event_label: 'native_ad_maritime_software',
-    value: 1
-  });
-};
-```
-
----
-
-## **7️⃣ PERFORMANCE OPTİMİZASYONU**
-
-### **Ad Loading Optimization:**
-```typescript
-// Lazy loading ile performans iyileştirme
-useEffect(() => {
-  const timer = setTimeout(() => {
-    loadAdSenseScript();
-  }, 2000); // 2 saniye sonra yükle
-  
-  return () => clearTimeout(timer);
-}, []);
-```
-
-### **Revenue Optimization:**
-```
-📈 GELİR OPTİMİZASYONU:
-
-1. A/B Test ad placements
-2. Optimize ad sizes for mobile
-3. Monitor CTR and CPC
-4. Test different ad frequencies
-5. Seasonal content adjustments
-```
-
----
-
-## **8️⃣ COMPLIANCE & BEST PRACTICES**
-
-### **GDPR Compliance:**
-```typescript
-// Cookie consent için
-const [cookieConsent, setCookieConsent] = useState(false);
-
-// Reklam göster sadece consent varsa
-{cookieConsent && shouldShowAd('position') && <AdBanner />}
-```
-
-### **AdSense Policies:**
-```
-✅ ADSENSE POLİTİKA UYUMU:
-
-• Yetişkin içerik yok ✅
-• Şiddet içeriği yok ✅
-• Telif hakkı ihlali yok ✅
-• Spam/clickbait yok ✅
-• Maritime education content ✅
-• Professional engineering tools ✅
-```
-
----
-
-## **9️⃣ MOBILE APP MONETIZATION**
-
-### **AdMob Implementation:**
-```typescript
-import { AdMob } from '@capacitor-community/admob';
-
-// App başlatırken
-await AdMob.initialize({
-  requestTrackingAuthorization: true,
-  testingDevices: ['YOUR_DEVICE_ID'],
-});
-
-// Banner reklam göster
-await AdMob.showBanner({
-  adId: 'ca-app-pub-XXXXXXXX/YYYYYY',
-  adSize: BannerAdSize.BANNER,
-  position: BannerAdPosition.BOTTOM_CENTER,
-});
-```
-
-### **In-App Purchase Alternative:**
-```
-💎 PREMİUM FEATURES:
-
-1. Ad-Free Experience: $2.99/month
-2. Advanced Calculations: $4.99/month
-3. Professional Reports: $9.99/month
-4. Enterprise License: $49.99/month
-```
-
----
-
-## **🚀 DEPLOYMENT CHECKLİST**
-
-```
-☐ AdSense Publisher ID updated
-☐ Ad slot IDs configured
-☐ Analytics tracking active
-☐ Mobile responsive ads tested
-☐ GDPR compliance implemented
-☐ Performance optimized
-☐ Revenue tracking setup
-☐ A/B testing framework ready
-☐ Maritime-specific content created
-☐ Professional sponsor outreach
-```
-
----
-
-## **📞 SUPPORT & RESOURCES**
-
-- **AdSense Help:** https://support.google.com/adsense/
-- **AdMob Help:** https://support.google.com/admob/
-- **Maritime Ad Networks:** https://maritime-advertising.com/
-- **Analytics Dashboard:** https://analytics.google.com/
-
----
-
-**🎯 Hedef:** $500-2000/month revenue with 10k+ monthly users  
-**⏱️ Timeline:** 2-4 weeks for full optimization  
-**🌍 Markets:** Global maritime professionals, students, engineers
+Web tarafında reklam yoktur ve şu an planlanmamıştır. Üretim CSP'si
+(`vite.config.ts`) harici script'leri engeller; AdSense açılacaksa önce ilgili
+Google alan adlarının CSP'ye eklenmesi gerekir. Native AdMob CSP'den
+etkilenmez.

@@ -108,6 +108,11 @@ All colors MUST be HSL.
        against the base html font-size so all rem-based text scales together. */
     --font-scale: 1;
 
+    /* Height of the native AdMob banner, written by src/services/ads.ts when a
+       banner is shown and reset to 0px when it is hidden. Layouts add it to
+       their bottom padding so the banner never covers content. */
+    --ad-banner-height: 0px;
+
     /* Maritime color palette */
     --background: 210 20% 98%;
     --foreground: 210 12% 16%;

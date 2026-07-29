@@ -30,6 +30,9 @@ android/app/build/
 android/.gradle/
 android/local.properties
 android/capacitor-cordova-android-plugins/.gradle/
+# Yerel imzalama ve AdMob kimlikleri repoya girmez (bkz. android/app/build.gradle)
+android/keystore.properties
+android/admob.properties
 
 # Capacitor
 capacitor.config.json

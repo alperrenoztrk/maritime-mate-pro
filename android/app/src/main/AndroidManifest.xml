@@ -38,13 +38,13 @@
 
         </activity>
 
-        <!-- AdMob: @capacitor-community/admob eklentisi için zorunlu.
-             Gerçek reklamlar devreye alınırken AdMob Console'daki gerçek
-             App ID ile değiştirin. Aşağıdaki değer Google'ın resmi TEST
-             App ID'sidir; eksik bırakılırsa uygulama açılışta çöker. -->
+        <!-- AdMob: @capacitor-community/admob eklentisi için zorunlu; eksik
+             bırakılırsa uygulama açılışta çöker. Değer build.gradle'da
+             çözülür: android/admob.properties → ADMOB_APP_ID_ANDROID ortam
+             değişkeni → Google'ın resmi TEST App ID'si. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="${admobAppId}" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
