@@ -474,7 +474,7 @@ const MaritimeNews = () => {
                       </ul>
                     </div>
 
-                    <Link to="/book" className="gz-box mb-3 block break-inside-avoid text-inherit">
+                    <Link to="/" className="gz-box mb-3 block break-inside-avoid text-inherit">
                       <div className="gz-box-title">İlan</div>
                       <p className="text-[9.5px] italic leading-[1.45]">
                         <span className="notranslate not-italic" translate="no" lang="en">

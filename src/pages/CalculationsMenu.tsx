@@ -71,6 +71,7 @@ const CATEGORIZED: { title: string; cat: Category; items: CalcTool[] }[] = [
       { id: "stability-calc", title: "Stabilite Hesapları", desc: "GM, KG, meyil açısı", icon: Scale, to: "/stability/calculations", category: "stability" },
       { id: "tank", title: "Tank Hesapları", desc: "Tank kapasiteleri ve hacim", icon: Anchor, to: "/tank", category: "stability" },
       { id: "imo-criteria", title: "IMO Kriterleri", desc: "Stabilite onay kriterleri", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
+      { id: "stable-tales", title: "Stable Tales", desc: "Sarkaç, kren, havuz ve SOLAS analizi", icon: Scale, to: "/stability/stable-tales", category: "stability" },
     ],
   },
   {

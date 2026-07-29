@@ -574,8 +574,7 @@ const topicsData: Record<string, TopicContent> = {
     ],
     resources: [
       { title: "Ekonomi Hesaplamaları", href: "/economics" },
-      { title: "Ekonomi Formülleri", href: "/economics/formulas" },
-      { title: "Ekonomi Kuralları", href: "/economics/rules" }
+      { title: "Ekonomi Asistanı", href: "/economics/assistant" }
     ]
   }
 };

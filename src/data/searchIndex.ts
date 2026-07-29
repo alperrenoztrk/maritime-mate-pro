@@ -20,18 +20,18 @@ export const searchIndex: SearchItem[] = [
   { title: "Seyir Planı", path: "/passage-plan", category: "Seyir", keywords: ["rota", "passage planning"] },
   
   // Seyir
-  { title: "Seyir Hesaplamaları", path: "/hub/navigation", category: "Seyir", keywords: ["navigasyon", "mevki"] },
+  { title: "Seyir Hesaplamaları", path: "/navigation", category: "Seyir", keywords: ["navigasyon", "mevki"] },
   { title: "Seyir Konu Anlatımları", path: "/lessons/navigation/topics", category: "Seyir", keywords: ["ders"] },
-  { title: "COLREG Sunumu", path: "/colreg", category: "Seyir", keywords: ["deniz trafik", "kural", "çatışma"] },
+  { title: "COLREG Sunumu", path: "/navigation/colreg-presentation", category: "Seyir", keywords: ["deniz trafik", "kural", "çatışma"] },
   
   // Stabilite
   { title: "Stabilite Hesaplamaları", path: "/stability/calculations", category: "Stabilite", keywords: ["denge", "GM", "KG"] },
   { title: "GM Hesaplama", path: "/stability/gm", category: "Stabilite", keywords: ["metacentric height", "metacentre"] },
+  { title: "GZ Hesaplama", path: "/stability/gz", category: "Stabilite", keywords: ["righting lever", "doğrultma kolu"] },
   { title: "GZ Eğrisi", path: "/stability/gz-curve", category: "Stabilite", keywords: ["cross curve", "righting lever"] },
   { title: "GZ-IMO Kriterleri", path: "/stability/gz-imo", category: "Stabilite", keywords: ["IMO criteria"] },
   { title: "Ağırlık Kaydırma", path: "/stability/weight-shift", category: "Stabilite", keywords: ["weight shift", "moment"] },
   { title: "Serbest Yüzey Etkisi", path: "/stability/free-surface", category: "Stabilite", keywords: ["free surface effect", "FSE", "FSC"] },
-  { title: "Tahıl Stabilitesi", path: "/stability/grain", category: "Stabilite", keywords: ["grain", "tahıl"] },
   { title: "Tahıl Hesaplaması", path: "/stability/grain-calculation", category: "Stabilite", keywords: ["grain calculation"] },
   { title: "Rüzgâr-Hava Kriteri", path: "/stability/wind-weather", category: "Stabilite", keywords: ["weather criterion", "severe wind"] },
   { title: "IMO Kriterleri", path: "/stability/imo-criteria", category: "Stabilite", keywords: ["IMO A.749"] },
@@ -53,7 +53,7 @@ export const searchIndex: SearchItem[] = [
   { title: "Meteoroloji Asistanı", path: "/meteorology/assistant", category: "Meteoroloji" },
 
   // Kargo
-  { title: "Kargo Hesaplamaları", path: "/hub/cargo", category: "Kargo", keywords: ["yük"] },
+  { title: "Kargo Hesaplamaları", path: "/cargo/calculations", category: "Kargo", keywords: ["yük"] },
   { title: "Draft Survey", path: "/cargo/calculations/draft-survey", category: "Kargo", keywords: ["draft", "su çekimi"] },
   { title: "Draft Survey - Yükleme Öncesi", path: "/cargo/calculations/preloading", category: "Kargo" },
   { title: "Draft Survey - Ara Hesap", path: "/cargo/calculations/intermediate", category: "Kargo" },
@@ -72,6 +72,8 @@ export const searchIndex: SearchItem[] = [
   { title: "Güvenlik Hesaplamaları", path: "/safety", category: "Güvenlik", keywords: ["safety", "emniyet"] },
   { title: "SOLAS Düzenlemeleri", path: "/solas/regulations", category: "Güvenlik", keywords: ["SOLAS"] },
   { title: "SOLAS Sertifikaları", path: "/solas/certificates", category: "Güvenlik" },
+  { title: "SOLAS Gemi Gereklilikleri", path: "/solas/ship-requirements", category: "Güvenlik", keywords: ["SOLAS", "gemi tipi"] },
+  { title: "SOLAS Emniyet Teçhizatı", path: "/solas/safety-equipment", category: "Güvenlik", keywords: ["SOLAS", "can salı", "LSA"] },
   { title: "Güvenlik Konu Anlatımları", path: "/lessons/safety/topics", category: "Güvenlik" },
   
   // Makine
@@ -79,7 +81,7 @@ export const searchIndex: SearchItem[] = [
   { title: "Makine Dairesi", path: "/machinery", category: "Makine", keywords: ["engine room"] },
   
   // Çevre
-  { title: "Emisyon Hesaplamaları", path: "/emissions", category: "Çevre", keywords: ["CO2", "CII", "EEXI", "karbon"] },
+  { title: "Emisyon Hesaplamaları", path: "/environment/calculations", category: "Çevre", keywords: ["CO2", "CII", "EEXI", "karbon"] },
   { title: "Çevre Formülleri", path: "/environment/formulas", category: "Çevre" },
   { title: "Çevre Kuralları", path: "/environment/rules", category: "Çevre", keywords: ["MARPOL"] },
   { title: "Çevre Quiz", path: "/environment/quiz", category: "Çevre" },
@@ -102,8 +104,12 @@ export const searchIndex: SearchItem[] = [
   // Gemi Görevleri
   { title: "Gemi Görevleri", path: "/ship-tasks", category: "Operasyonlar" },
   
-  // Deniz Haberleri  
+  // Deniz Haberleri
   { title: "Denizcilik Haberleri", path: "/maritime-news", category: "Genel", keywords: ["haber", "news"] },
-  
-  // Widget
+
+  // Sınav ve Hava/Gök
+  { title: "Sınav Hazırlık", path: "/exam-preparation", category: "Genel", keywords: ["sınav", "quiz", "soru bankası", "deneme"] },
+  { title: "Hava Tahmini", path: "/weather-forecast", category: "Meteoroloji", keywords: ["hava", "tahmin", "forecast", "rüzgâr"] },
+  { title: "Ay Evreleri", path: "/moon-phases", category: "Meteoroloji", keywords: ["ay", "dolunay", "moon", "evre"] },
+  { title: "Stable Tales", path: "/stability/stable-tales", category: "Stabilite", keywords: ["sarkaç", "kren", "bumba", "havuz", "SOLAS"] },
 ];

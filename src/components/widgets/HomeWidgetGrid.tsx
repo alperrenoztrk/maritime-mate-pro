@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { type HomeWidgetId, AVAILABLE_WIDGETS, useHomeWidgets } from "@/hooks/useHomeWidgets";
@@ -133,22 +134,25 @@ export function HomeWidgetGrid() {
           />
         );
       }
+      // Hava ve rüzgâr kadranları detaylı tahmin sayfasını açar.
       case "weather":
         return (
-          <ThermometerWidget
-            key={id}
-            temperatureC={data?.temperatureC}
-            conditionText={wmoText(data?.weatherCode)}
-          />
+          <Link key={id} to="/weather-forecast" aria-label="Hava tahmini">
+            <ThermometerWidget
+              temperatureC={data?.temperatureC}
+              conditionText={wmoText(data?.weatherCode)}
+            />
+          </Link>
         );
       case "wind":
         return (
-          <WindCompassWidget
-            key={id}
-            speedKt={data?.windSpeedKt}
-            directionDeg={data?.windDirectionDeg}
-            directionLabel={data?.windDirectionDeg !== undefined ? degreesToCompass(data.windDirectionDeg) : "—"}
-          />
+          <Link key={id} to="/weather-forecast" aria-label="Hava tahmini">
+            <WindCompassWidget
+              speedKt={data?.windSpeedKt}
+              directionDeg={data?.windDirectionDeg}
+              directionLabel={data?.windDirectionDeg !== undefined ? degreesToCompass(data.windDirectionDeg) : "—"}
+            />
+          </Link>
         );
       case "location": {
         const latitude = selectedLocation?.latitude ?? livePosition?.latitude ?? data?.latitude;
@@ -205,7 +209,12 @@ export function HomeWidgetGrid() {
             progress = Math.min(1, Math.max(0, (now.getTime() - rise) / (set - rise)));
           }
         }
-        return <SunArcWidget key={id} sunrise={sunrise} sunset={sunset} progress={progress} />;
+        // Güneş yayı gök olayları sayfasına (ay evreleri) açılır.
+        return (
+          <Link key={id} to="/moon-phases" aria-label="Ay evreleri">
+            <SunArcWidget sunrise={sunrise} sunset={sunset} progress={progress} />
+          </Link>
+        );
       }
       default:
         return null;
