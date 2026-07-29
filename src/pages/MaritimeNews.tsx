@@ -249,12 +249,23 @@ const MaritimeNews = () => {
       onTouchEnd={handleTouchEnd}
     >
       <Helmet>
-        <title>Denizcilik Haberleri | Güncel</title>
+        <title>Mariner's Book — Denizcilik Haberleri</title>
         <meta
           name="description"
-          content="Denizcilik dünyasından en önemli ve güncel haberleri gerçek bir gazete sayfasında uygulama içinde okuyun."
+          content="Denizcilik dünyasından güncel haberler; başlıklar, kaynaklar ve gazete formatında uygulama içi okuma."
         />
-        <link rel="canonical" href={window.location.href} />
+        <link rel="canonical" href="https://nauticalleap.com/maritime-news" />
+        <meta property="og:title" content="Mariner's Book — Denizcilik Haberleri" />
+        <meta property="og:description" content="Denizcilik dünyasından güncel haberler; kaynaklara göre derlenmiş öne çıkan başlıklar." />
+        <meta property="og:url" content="https://nauticalleap.com/maritime-news" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Denizcilik Haberleri",
+          url: "https://nauticalleap.com/maritime-news",
+          isPartOf: { "@type": "WebSite", name: "Mariner's Book", url: "https://nauticalleap.com/" },
+          about: "Maritime industry news aggregated from trusted sources",
+        })}</script>
       </Helmet>
 
       <NewspaperStyles />
