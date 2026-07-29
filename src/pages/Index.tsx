@@ -97,9 +97,27 @@ const Index = () => {
 
 
 
-      {/* Header — fixed at top, visible on every page */}
-      <div className="absolute top-0 left-0 right-0 z-30 px-2 pt-8 sm:pt-12 pointer-events-none">
-        <div className="px-4 text-center">
+      {/* Header — sabit üst bant. Yüksekliği sayfaların pt- değeriyle aynı, böylece
+          kayan içerik bandın altına girer ve başlığın yeri hiç değişmez. */}
+      <div
+        className="absolute top-0 left-0 right-0 z-30 px-2 pointer-events-none"
+        style={{ height: "max(10rem, calc(env(safe-area-inset-top) + 9rem))" }}
+      >
+        {/* Zemin — sayfa arka planının tepe rengi (hsl(214 84% 8%)). Maske hem zemini
+            hem backdrop-filter'ı birlikte söndürür; olmazsa bandın alt kenarında
+            bulanıklık sert bir çizgi bırakır. */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgb(3,18,38) 0%, rgba(3,18,38,0.94) 58%, rgba(3,18,38,0) 100%)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            maskImage: "linear-gradient(180deg, #000 0%, #000 62%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 62%, transparent 100%)",
+          }}
+        />
+        <div className="relative px-4 pt-[max(2rem,calc(env(safe-area-inset-top)+0.75rem))] text-center sm:pt-[max(3rem,calc(env(safe-area-inset-top)+1.5rem))]">
           <h1
             className="select-none font-black tracking-wider notranslate"
             translate="no"
