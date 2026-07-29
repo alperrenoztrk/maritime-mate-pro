@@ -46,7 +46,11 @@ export function NewsPanel() {
   });
 
   const items: MaritimeNewsItem[] = (data?.items ?? []).slice(0, 10);
-  const [lead, ...briefs] = items;
+  // Panelin en büyük görseli boş kalmasın: manşet, klişesi olan ilk haber olur.
+  // Hiçbirinde görsel yoksa ilk habere düşülür ve klişesiz dizilir.
+  const leadIndex = Math.max(0, items.findIndex((it) => Boolean(it.imageUrl)));
+  const lead = items[leadIndex];
+  const briefs = items.filter((_, i) => i !== leadIndex);
 
   const openItem = (item: MaritimeNewsItem) => {
     setSelected(item);
@@ -110,12 +114,7 @@ export function NewsPanel() {
                 <span className="gz-photo-wrap block aspect-[3/2] w-full">
                   <img src={leadImg} alt="" loading="lazy" className="gz-photo" />
                 </span>
-              ) : (
-                <span className="gz-photo-wrap gz-photo-none block aspect-[3/2] w-full" aria-hidden="true">
-                  <span>Klişe yok</span>
-                  <span style={{ opacity: 0.72 }}>{lead.source}</span>
-                </span>
-              )}
+              ) : null}
               <h3 className="gz-headline np-lead-title">{lead.title}</h3>
               <span className="gz-byline np-time">{formatRelative(lead.publishedAt)}</span>
             </button>
@@ -128,17 +127,15 @@ export function NewsPanel() {
               return (
                 <li key={item.link} className="np-brief-row">
                   <button type="button" onClick={() => openItem(item)} className="np-brief">
+                    {/* Klişesi olmayan kısa haber boş kutu yerine düz metin dizilir */}
                     {img ? (
-                      <span className="gz-photo-wrap np-thumb">
-                        <img src={img} alt="" loading="lazy" className="gz-photo" />
-                      </span>
-                    ) : (
-                      <span className="gz-photo-wrap gz-photo-none np-thumb" aria-hidden="true">
-                        <span>Klişe</span>
-                        <span>yok</span>
-                      </span>
-                    )}
-                    <span className="np-col-rule" aria-hidden="true" />
+                      <>
+                        <span className="gz-photo-wrap np-thumb">
+                          <img src={img} alt="" loading="lazy" className="gz-photo" />
+                        </span>
+                        <span className="np-col-rule" aria-hidden="true" />
+                      </>
+                    ) : null}
                     <span className="min-w-0 flex-1">
                       <span className="np-brief-title">{item.title}</span>
                       <span className="gz-byline np-time">{formatRelative(item.publishedAt)}</span>

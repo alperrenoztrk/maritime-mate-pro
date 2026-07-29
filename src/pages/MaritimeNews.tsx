@@ -102,7 +102,13 @@ function toProxyImageUrl(url?: string, size: "small" | "medium" | "large" = "lar
   }
 }
 
-/** 45° tramlı, mürekkep çerçeveli basılı gazete fotoğrafı. */
+/**
+ * 45° tramlı, mürekkep çerçeveli basılı gazete fotoğrafı.
+ *
+ * Yalnızca haberin gerçek bir görseli varken render edilir; görsel çalışma
+ * anında da yüklenemezse çerçeve tamamen gizlenir. Gerçek gazetede klişesi
+ * olmayan haber düz metin dizilir — boş kutu bırakılmaz.
+ */
 function PrintedPhoto({
   item,
   size,
@@ -114,19 +120,13 @@ function PrintedPhoto({
   eager?: boolean;
   className?: string;
 }) {
+  const [failed, setFailed] = useState(false);
   const proxied = toProxyImageUrl(item.imageUrl, size);
   const fallback = normalizeImageUrl(item.imageUrl);
   const display = proxied ?? fallback;
 
-  if (!display) {
-    // Dönemin boş klişe kutusu — renkli emoji basılı sayfada yabancı duruyordu.
-    return (
-      <span className={`gz-photo-wrap gz-photo-none ${className ?? ""}`} aria-hidden="true">
-        <span>Klişe yok</span>
-        <span style={{ opacity: 0.72 }}>{item.source}</span>
-      </span>
-    );
-  }
+  if (!display || failed) return null;
+
   return (
     <span className={`gz-photo-wrap ${className ?? ""}`}>
       <img
@@ -142,7 +142,9 @@ function PrintedPhoto({
           if (t.dataset.fallbackTried !== "true" && fallback && t.src !== fallback) {
             t.dataset.fallbackTried = "true";
             t.src = fallback;
+            return;
           }
+          setFailed(true);
         }}
       />
     </span>
@@ -221,7 +223,12 @@ const MaritimeNews = () => {
       })
     : null;
 
-  const [lead, ...rest] = items;
+  // Manşet, klişesi olan en yüksek sıralı haber olsun — ön sayfanın en büyük
+  // görseli boş kalmasın. Hiçbirinde görsel yoksa sıradaki ilk habere düşülür
+  // ve manşet klişesiz (yalnızca metin) dizilir. Kalanlar sırasını korur.
+  const leadIndex = Math.max(0, items.findIndex((it) => Boolean(it.imageUrl)));
+  const lead = items[leadIndex];
+  const rest = items.filter((_, i) => i !== leadIndex);
   const secondaries = rest.slice(0, 6);
   const briefs = rest.slice(6, 18);
   const { deck: leadDeck, body: leadBodyFull } = splitDeck(lead?.summary);
@@ -364,17 +371,22 @@ const MaritimeNews = () => {
                         {lead.publishedAt ? <span>· {formatDate(lead.publishedAt, currentLanguage)}</span> : null}
                       </div>
                       {/* Geniş ekranda panoramik: broadsheet ön sayfasında manşet
-                          klişesi sayfanın yarısını kaplamaz. */}
-                      <PrintedPhoto
-                        item={lead}
-                        size="large"
-                        eager
-                        className="mt-2.5 block aspect-[16/9] w-full sm:aspect-[2.6/1]"
-                      />
-                      <div className="gz-caption">
-                        {lead.source}
-                        {lead.publishedAt ? ` — ${formatDate(lead.publishedAt, currentLanguage)}` : ""}
-                      </div>
+                          klişesi sayfanın yarısını kaplamaz. Klişesi olmayan
+                          manşet altyazısız, düz metin olarak dizilir. */}
+                      {lead.imageUrl ? (
+                        <>
+                          <PrintedPhoto
+                            item={lead}
+                            size="large"
+                            eager
+                            className="mt-2.5 block aspect-[16/9] w-full sm:aspect-[2.6/1]"
+                          />
+                          <div className="gz-caption">
+                            {lead.source}
+                            {lead.publishedAt ? ` — ${formatDate(lead.publishedAt, currentLanguage)}` : ""}
+                          </div>
+                        </>
+                      ) : null}
                       {leadBody ? (
                         <>
                           <p

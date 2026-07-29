@@ -88,7 +88,11 @@ function scoreItem(item: NewsItem): number {
     const recency = Math.max(0, 60 - ageHours * (60 / (24 * 7)));
     score += recency;
   }
-  if (item.imageUrl) score += 5;
+  // Klişesi olan haber gazete sayfasında öne çıkar. +5 tazelik (0-60) ve önem
+  // (50'ye kadar) puanlarının yanında etkisiz kalıyordu; bu ağırlık görselli
+  // haberleri manşet ve resimli slotlara taşıyor ama gerçekten önemli bir
+  // haberi (çarpışma, batma, saldırı) gömmeyecek kadar ölçülü.
+  if (item.imageUrl) score += 18;
   return score;
 }
 
@@ -278,8 +282,12 @@ function findImageUrl(entry: Record<string, unknown>): string | undefined {
     }
   }
 
-  // Try to find the first image in HTML content
-  const htmlFields = ["content:encoded", "description", "summary", "content"];
+  // Try to find the first image in HTML content.
+  // NOTE: the parser runs with `removeNSPrefix: true`, so `content:encoded`
+  // arrives as plain `encoded` — without it every WordPress feed that keeps its
+  // photo only in content:encoded (and a plain-text excerpt in description)
+  // loses its image. The prefixed name is kept as a belt-and-braces fallback.
+  const htmlFields = ["content:encoded", "encoded", "description", "summary", "content"];
   for (const field of htmlFields) {
     const candidate = extractImageFromHtml(
       typeof entry[field] === "string" ? (entry[field] as string) : undefined,

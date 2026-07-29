@@ -190,9 +190,13 @@ export function NewspaperStyles() {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        /* Gazete kağıdının ton aralığı dar: siyahlar ezilir, açıklar patlar;
+        /* Gazete kağıdının ton aralığı dar ve sıkışıktır: mürekkep emici kağıtta
+           tam siyaha inemez, gölgeler çamurlu griye oturur. Bu yüzden kontrast
+           artırılmıyor, aksine parlaklık kaldırılıyor — hem daha sahici hem de
+           koyu fotoğraflar (gece çekimleri, uydu görüntüleri) okunur kalıyor.
+           Üstteki yarım ton katmanı zaten çarpım ile karartıyor.
            blur mürekkep yayılmasını (dot gain) taklit eder. */
-        filter: grayscale(1) contrast(1.45) brightness(1.05) sepia(.3) blur(.2px);
+        filter: grayscale(1) contrast(1.05) brightness(1.28) sepia(.32) blur(.2px);
       }
       .gz-photo-wrap::after{
         content: "";
@@ -202,7 +206,7 @@ export function NewspaperStyles() {
         transform: rotate(45deg);
         pointer-events: none;
         mix-blend-mode: multiply;
-        opacity: .42;
+        opacity: .36;
         /* İki nokta katmanı, hafif kaydırılmış: baskı kaçıklığı + mürekkep yayılması */
         background-image:
           radial-gradient(circle, rgba(38,30,16,.85) .6px, transparent 1.05px),
@@ -217,24 +221,6 @@ export function NewspaperStyles() {
         z-index: 1;
         pointer-events: none;
         background: radial-gradient(118% 100% at 50% 44%, transparent 66%, rgba(56,40,16,.22) 100%);
-      }
-      /* Klişesi olmayan haber: dönemin boş klişe kutusu */
-      .gz-photo-none{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-        color: var(--gz-ink-faint);
-        background:
-          repeating-linear-gradient(45deg, rgba(35,28,15,.05) 0 5px, transparent 5px 10px),
-          #e0d1a8;
-        font-size: 8px;
-        font-variant: small-caps;
-        letter-spacing: .16em;
-        text-align: center;
-        padding: 6px;
-        line-height: 1.3;
       }
       .gz-caption{
         margin-top: 3px;
