@@ -59,6 +59,12 @@ export default function LessonsPage() {
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 pb-24 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
       style={highRefreshRateStyles}
     >
+      <SEO
+        title="Mariner's Book — Denizcilik Dersleri"
+        description="Güverte ve makine grupları için interaktif denizcilik ders başlıkları: stabilite, yük, meteoroloji, seyir, güvenlik ve daha fazlası."
+        path="/lessons"
+        jsonLd={LESSONS_JSONLD}
+      />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
