@@ -50,7 +50,15 @@ const locale = (
  * copies of the existing English feeds.
  */
 export const NEWS_LOCALE_CONFIGS: Record<string, NewsLocaleConfig> = {
-  tr: locale("tr", "TR", "Türkiye", "tr", "TR:tr", "denizcilik OR gemi OR deniz taşımacılığı", "liman OR konteyner OR deniz lojistiği", "deniz kazası OR denizci OR SOLAS OR MARPOL"),
+  // Google News RSS hiçbir dilde görsel taşımıyor (media:content / enclosure /
+  // <img> yok), bu yüzden yalnızca arama beslemesine dayanan baskılarda tek bir
+  // fotoğraf çıkmıyor. Aşağıdaki üç Türk denizcilik yayını görselini beslemede
+  // veriyor: ilk ikisi content:encoded, denizhaber ise description içinde.
+  tr: locale("tr", "TR", "Türkiye", "tr", "TR:tr", "denizcilik OR gemi OR deniz taşımacılığı", "liman OR konteyner OR deniz lojistiği", "deniz kazası OR denizci OR SOLAS OR MARPOL", [
+    { id: "denizhaber", name: "Deniz Haber", url: "https://www.denizhaber.net/rss" },
+    { id: "denizcilik-dergisi", name: "Denizcilik Dergisi", url: "https://www.denizcilikdergisi.com/feed/" },
+    { id: "marinedeal-news", name: "Marine Deal News", url: "https://www.marinedealnews.com/feed/" },
+  ]),
   en: locale("en", "GB", "United Kingdom", "en-GB", "GB:en", "shipping OR maritime OR vessel", "port OR container shipping OR sea freight", "marine casualty OR seafarer OR SOLAS OR MARPOL"),
   es: locale("es", "ES", "España", "es", "ES:es", "marítimo OR naviera OR buque", "puerto OR contenedores OR logística marítima", "accidente marítimo OR marinos OR SOLAS OR MARPOL"),
   de: locale("de", "DE", "Deutschland", "de", "DE:de", "Schifffahrt OR Reederei OR Schiff", "Hafen OR Container OR Seefracht", "Seeunfall OR Seeleute OR SOLAS OR MARPOL"),

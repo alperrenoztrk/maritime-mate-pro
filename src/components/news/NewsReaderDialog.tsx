@@ -8,9 +8,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui/button";
 import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
 import { NewspaperStyles } from "@/components/news/NewspaperStyles";
+import { softHyphenate } from "@/components/news/hyphenate";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function formatDate(iso: string | undefined, locale: string): string {
@@ -37,6 +37,17 @@ function estimateReadingTime(text: string): string {
   const wordCount = text.split(/\s+/).filter(Boolean).length;
   const minutes = Math.max(1, Math.ceil(wordCount / 200));
   return `${minutes} dk okuma`;
+}
+
+/**
+ * Gerçek gazetede iç sayfaların numarası vardır. Bağlantıdan türetilen sabit bir
+ * sayı kullanılıyor: aynı haber her açılışta aynı sayfada çıkar.
+ */
+function innerPageNo(link?: string): number {
+  if (!link) return 2;
+  let hash = 0;
+  for (let i = 0; i < link.length; i++) hash = (hash * 31 + link.charCodeAt(i)) | 0;
+  return 2 + (Math.abs(hash) % 10);
 }
 
 function normalizeImageUrl(url?: string): string | undefined {
@@ -132,7 +143,12 @@ function ArticleRenderer({ content }: { content: string }) {
   let dropCapUsed = false;
 
   return (
-    <div className="space-y-3.5 text-[13.5px] leading-[1.68]" style={{ color: "var(--gz-ink-soft)" }}>
+    /* Gerçek gazete dizgisi: geniş ekranda çift sütun, saç teli sütun cetveliyle.
+       Tek geniş sütun "gazete değil" hissinin en büyük nedeniydi. */
+    <div
+      className="gz-cols gz-cols--wide text-[12.5px] leading-[1.62]"
+      style={{ color: "var(--gz-ink-soft)" }}
+    >
       {paragraphs.map((para, i) => {
         const trimmed = para.trim();
         const headingMatch = trimmed.match(/^#{1,6} +(.*)$/);
@@ -140,8 +156,12 @@ function ArticleRenderer({ content }: { content: string }) {
           return (
             <h3
               key={i}
-              className="mt-6 mb-1 border-b pb-1 text-[15px] font-bold uppercase tracking-[.08em]"
-              style={{ color: "var(--gz-ink)", borderColor: "var(--gz-rule)" }}
+              className="mb-1.5 mt-5 border-b pb-1 text-[13px] font-bold uppercase tracking-[.12em]"
+              style={{
+                color: "var(--gz-ink)",
+                borderColor: "var(--gz-rule)",
+                fontFamily: "var(--gz-face-display)",
+              }}
             >
               {headingMatch[1]}
             </h3>
@@ -151,7 +171,7 @@ function ArticleRenderer({ content }: { content: string }) {
           return (
             <blockquote
               key={i}
-              className="pl-3 italic"
+              className="mb-3 pl-3 italic"
               style={{ borderLeft: "3px double var(--gz-rule)" }}
             >
               {trimmed.replace(/^> /, "")}
@@ -162,14 +182,14 @@ function ArticleRenderer({ content }: { content: string }) {
         if (bulletRe.test(trimmed)) {
           const items = trimmed.split("\n").filter((l) => bulletRe.test(l.trim()));
           return (
-            <ul key={i} className="list-inside list-[square] space-y-1">
+            <ul key={i} className="mb-3 list-inside list-[square] space-y-1">
               {items.map((item, j) => (
                 <li key={j}>{item.trim().replace(bulletRe, "")}</li>
               ))}
             </ul>
           );
         }
-        const formatted = trimmed
+        const formatted = softHyphenate(trimmed)
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
@@ -180,7 +200,7 @@ function ArticleRenderer({ content }: { content: string }) {
         return (
           <p
             key={i}
-            className={"gz-just" + (isFirstParagraph ? " gz-dropcap" : "")}
+            className={"gz-just mb-3" + (isFirstParagraph ? " gz-dropcap" : "")}
             dangerouslySetInnerHTML={{ __html: formatted }}
           />
         );
@@ -205,7 +225,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
     retry: 1,
   });
 
-  const summary = stripHtml(item?.summary);
+  const summary = softHyphenate(stripHtml(item?.summary));
   const heroImage = toProxyImageUrl(item?.imageUrl) ?? normalizeImageUrl(item?.imageUrl);
   const pageDate = new Date().toLocaleDateString(currentLanguage || "tr", {
     day: "2-digit",
@@ -218,24 +238,27 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
       <DialogContent className="max-w-3xl w-[calc(100vw-1.25rem)] max-h-[94svh] overflow-hidden border-0 bg-transparent p-0 shadow-none text-[#241d10]">
         <NewspaperStyles />
         {/* Gazete iç sayfası — makale kağıdın üzerine basılı */}
-        <article className="gz-sheet overflow-hidden rounded">
+        <article className="gz-sheet overflow-hidden">
+          <div className="gz-showthrough" aria-hidden="true" />
           <div className="gz-grain" aria-hidden="true" />
           <ScrollArea className="max-h-[94svh]">
             <div className="px-5 pb-8 pt-4 sm:px-9 sm:pt-5">
-              {/* İç sayfa manşet şeridi */}
+              {/* İç sayfanın üst şeridi (running head): sayfa no — logo — tarih */}
               <div className="gz-rule-thin" aria-hidden="true" />
+              {/* Sağdaki boşluk, Dialog'un kendi kapatma çarpısının tarihin
+                  üstüne binmemesi için. */}
               <div
-                className="mt-1.5 flex items-baseline justify-between gap-3 text-[9px]"
-                style={{ fontVariant: "small-caps", letterSpacing: ".14em", color: "var(--gz-ink-soft)" }}
+                className="mt-1.5 flex items-baseline justify-between gap-3 pr-10 text-[8.5px]"
+                style={{ fontVariant: "small-caps", letterSpacing: ".13em", color: "var(--gz-ink-soft)" }}
               >
-                <span>İç Sayfa</span>
+                <span>Sayfa {innerPageNo(item?.link)}</span>
                 <span
-                  className="notranslate text-[13px] font-black tracking-[.1em]"
+                  className="notranslate text-[17px] leading-none"
                   translate="no"
                   lang="en"
-                  style={{ color: "var(--gz-ink)" }}
+                  style={{ color: "var(--gz-ink)", fontFamily: "var(--gz-face-mast)" }}
                 >
-                  MARINER&rsquo;S POST
+                  Mariner&rsquo;s Post
                 </span>
                 <span className="notranslate" translate="no">{pageDate}</span>
               </div>
@@ -313,7 +336,10 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                 ) : articleQuery.isError ? (
                   summary ? (
                     <div className="space-y-3">
-                      <p className="gz-just gz-dropcap text-[13.5px] leading-[1.68]" style={{ color: "var(--gz-ink-soft)" }}>
+                      <p
+                        className="gz-cols gz-cols--wide gz-just gz-dropcap text-[12.5px] leading-[1.62]"
+                        style={{ color: "var(--gz-ink-soft)" }}
+                      >
                         {summary}
                       </p>
                       <div className="gz-notice">
@@ -332,7 +358,10 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                     <ArticleRenderer content={articleQuery.data.content} />
                   </div>
                 ) : summary ? (
-                  <p className="gz-just gz-dropcap text-[13.5px] leading-[1.68]" style={{ color: "var(--gz-ink-soft)" }}>
+                  <p
+                    className="gz-cols gz-cols--wide gz-just gz-dropcap text-[12.5px] leading-[1.62]"
+                    style={{ color: "var(--gz-ink-soft)" }}
+                  >
                     {summary}
                   </p>
                 ) : null}
@@ -342,14 +371,20 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                 SON
               </div>
 
+              {/* Modern düğme yerine dizgiye ait tipografik satır */}
               <div className="mt-6 flex items-center justify-center">
-                <Button
-                  variant="outline"
-                  className="h-9 rounded-none border-[rgba(36,29,16,.55)] bg-transparent px-6 font-serif text-[12px] uppercase tracking-[.18em] text-[#241d10] hover:bg-[rgba(36,29,16,.07)] hover:text-[#241d10]"
+                <button
+                  type="button"
+                  className="border-y px-5 py-1.5 text-[11px] uppercase tracking-[.2em] active:bg-[rgba(35,28,15,.07)]"
+                  style={{
+                    borderColor: "var(--gz-rule)",
+                    color: "var(--gz-ink-soft)",
+                    fontVariant: "small-caps",
+                  }}
                   onClick={() => onOpenChange(false)}
                 >
-                  Gazeteyi Kapat
-                </Button>
+                  ‹ Gazeteye dön
+                </button>
               </div>
             </div>
           </ScrollArea>
