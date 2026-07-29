@@ -12,6 +12,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
 import { useEntitlement } from "@/contexts/EntitlementContext";
 import { getLanguageFlag } from "@/utils/languages";
+import { NarrationSettings } from "@/components/settings/NarrationSettings";
 import {
   areAdsSupported,
   initializeAds,
@@ -246,6 +247,9 @@ const Settings = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Ders Seslendirme */}
+            <NarrationSettings />
 
             {/* Language Settings */}
             <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
