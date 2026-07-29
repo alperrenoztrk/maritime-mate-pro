@@ -65,7 +65,7 @@
     "@capacitor/status-bar": "^7.0.1",
     "@hookform/resolvers": "^3.9.0",
     "@lovable.dev/cloud-auth-js": "^1.1.2",
-    "@lovable.dev/mcp-js": "^0.20.1",
+    "@lovable.dev/mcp-js": "0.25.0",
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.14",

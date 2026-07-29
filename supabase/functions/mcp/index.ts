@@ -3,10 +3,10 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.20.1";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.25.0";
 
 // src/lib/mcp/tools/compass-conversion.ts
-import { defineTool } from "npm:@lovable.dev/mcp-js@0.20.1";
+import { defineTool } from "npm:@lovable.dev/mcp-js@0.25.0";
 import { z } from "npm:zod@^4.4.3";
 var compass_conversion_default = defineTool({
   name: "compass_conversion",
@@ -52,7 +52,7 @@ var compass_conversion_default = defineTool({
 });
 
 // src/lib/mcp/tools/great-circle-distance.ts
-import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.20.1";
+import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.25.0";
 import { z as z2 } from "npm:zod@^4.4.3";
 var EARTH_RADIUS_NM = 3440.065;
 var great_circle_distance_default = defineTool2({
@@ -88,7 +88,7 @@ var great_circle_distance_default = defineTool2({
 });
 
 // src/lib/mcp/tools/speed-time-distance.ts
-import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.20.1";
+import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.25.0";
 import { z as z3 } from "npm:zod@^4.4.3";
 var speed_time_distance_default = defineTool3({
   name: "speed_time_distance",
@@ -135,5 +135,5 @@ var mcp_default = defineMcp({
 });
 
 // lovable-mcp-supabase-entry.ts
-import { createSupabaseHandler } from "npm:@lovable.dev/mcp-js@0.20.1/stacks/supabase";
+import { createSupabaseHandler } from "npm:@lovable.dev/mcp-js@0.25.0/stacks/supabase";
 Deno.serve(createSupabaseHandler(mcp_default, { functionName: "mcp" }));
