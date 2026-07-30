@@ -15,11 +15,19 @@
  *
  * A-C için mutlak değil *baseline-diff* modu kullanılır: depoda çeviriden önce
  * de taşan dosyalar var, bu yüzden yalnızca YENİ ihlaller hata sayılır.
- * Baseline'ı yenilemek için: node scripts/check-svg-text-fit.mjs --write-baseline
+ *
+ * İhlaller metin İÇERİĞİYLE değil, düğümün YUVARLANMIŞ KONUMUYLA anahtarlanır —
+ * aksi halde bir etiketi çevirmek, geometrisi hiç değişmemiş mevcut bir ihlali
+ * "yeni" gösterirdi. Baseline, çeviri öncesi durumu yansıtması için varsayılan
+ * olarak `origin/main` ref'inden okunur.
+ *
+ * Baseline'ı yenilemek için:
+ *   node scripts/check-svg-text-fit.mjs --write-baseline [<git-ref>]
  */
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 
 const root = process.cwd();
 const BASELINE_PATH = path.join(root, "scripts/svg-text-fit-baseline.json");
@@ -278,6 +286,7 @@ const parseSvg = (svg) => {
 
       texts.push({
         content,
+        anchorX: x,
         left,
         right: left + width,
         y,
@@ -302,39 +311,53 @@ const violationsFor = (file, svg) => {
   const out = [];
   const canvasArea = vbW * vbH;
 
-  for (const t of texts) {
-    // D. döndürülmüş etiketlerde genişlik Y eksenine düşer
-    const limit = t.rotated ? vbH : vbW;
-    const origin = t.rotated ? vbY : vbX;
+  // İhlal anahtarı düğümün konumundan türetilir, metninden DEĞİL — böylece bir
+  // etiketi çevirmek geometrisi değişmemiş mevcut ihlali "yeni" göstermez.
+  const at = (t) => `${t.anchorX.toFixed(0)},${t.y.toFixed(0)}`;
+  const add = (key, detail) => out.push({ key, detail });
 
+  for (const t of texts) {
     if (t.rotated) {
-      // Yalnızca yükseklik sınırını kontrol et; yatay konum dönmeden etkilenmez
+      // Döndürülmüş etiketlerde genişlik Y eksenine düşer.
       if (t.width > vbH - PANEL_PAD) {
-        out.push(`${t.content} :: rotated label ${t.width.toFixed(1)}px > canvas height ${vbH}`);
+        add(
+          `rot@${at(t)}`,
+          `${t.content} :: rotated label ${t.width.toFixed(1)}px > canvas height ${vbH}`,
+        );
       }
       continue;
     }
 
     // A. viewBox içinde kalma
-    if (t.left < origin - EPS) {
-      out.push(`${t.content} :: overflows left by ${(origin - t.left).toFixed(1)}px`);
-    } else if (t.right > origin + limit + EPS) {
-      out.push(
-        `${t.content} :: overflows right by ${(t.right - origin - limit).toFixed(1)}px`,
+    if (t.left < vbX - EPS) {
+      add(`vbL@${at(t)}`, `${t.content} :: overflows left by ${(vbX - t.left).toFixed(1)}px`);
+    } else if (t.right > vbX + vbW + EPS) {
+      add(
+        `vbR@${at(t)}`,
+        `${t.content} :: overflows right by ${(t.right - vbX - vbW).toFixed(1)}px`,
       );
     }
 
-    // B. saran panel <rect> içinde kalma (arka plan rect'i hariç)
+    // B. saran panel <rect> içinde kalma (tam-tuval arka plan rect'i hariç).
+    // Panel, metnin BAŞLANGIÇ noktasını içeren en küçük rect'tir; metnin kendi
+    // genişliğine göre seçilmez, aksi halde uzayan bir metin sessizce daha
+    // geniş bir panele "terfi" edip ihlali gizler.
     let panel = null;
     for (const r of rects) {
       if (r.w * r.h > canvasArea * 0.97) continue;
-      if (t.left >= r.x - 40 && t.right <= r.x + r.w + 40 && t.y >= r.y && t.y <= r.y + r.h) {
+      if (
+        t.anchorX >= r.x &&
+        t.anchorX <= r.x + r.w &&
+        t.y >= r.y &&
+        t.y <= r.y + r.h
+      ) {
         if (!panel || r.w * r.h < panel.w * panel.h) panel = r;
       }
     }
     if (panel) {
       if (t.left < panel.x + PANEL_PAD - EPS || t.right > panel.x + panel.w - PANEL_PAD + EPS) {
-        out.push(
+        add(
+          `panel@${at(t)}`,
           `${t.content} :: escapes panel [${panel.x.toFixed(0)}..${(panel.x + panel.w).toFixed(0)}]`,
         );
       }
@@ -354,7 +377,10 @@ const violationsFor = (file, svg) => {
     const sorted = [...group].sort((a, b) => a.left - b.left);
     for (let i = 1; i < sorted.length; i++) {
       if (sorted[i].left < sorted[i - 1].right - EPS) {
-        out.push(`${sorted[i - 1].content} | ${sorted[i].content} :: same-row collision`);
+        add(
+          `collide@${at(sorted[i - 1])}|${at(sorted[i])}`,
+          `${sorted[i - 1].content} | ${sorted[i].content} :: same-row collision`,
+        );
       }
     }
   }
@@ -381,11 +407,32 @@ for (const rel of svgFiles) {
   if (v.length) current[rel] = v;
 }
 
+// --write-baseline: çeviri öncesi durumu yansıtması için dosyalar varsayılan
+// olarak `origin/main` ref'inden okunur, çalışma kopyasından değil.
 if (process.argv.includes("--write-baseline")) {
-  fs.writeFileSync(BASELINE_PATH, `${JSON.stringify(current, null, 2)}\n`);
-  const total = Object.values(current).reduce((n, v) => n + v.length, 0);
+  const refArg = process.argv[process.argv.indexOf("--write-baseline") + 1];
+  const ref = refArg && !refArg.startsWith("--") ? refArg : "origin/main";
+  const baseline = {};
+  let missing = 0;
+  for (const rel of svgFiles) {
+    let svg;
+    try {
+      svg = execFileSync("git", ["show", `${ref}:${rel}`], {
+        encoding: "utf8",
+        maxBuffer: 32 * 1024 * 1024,
+      });
+    } catch {
+      missing++;
+      continue; // ref'te olmayan dosya (yeni eklenmiş) — baseline'ı yok
+    }
+    const v = violationsFor(rel, svg);
+    if (v.length) baseline[rel] = v.map((x) => x.key);
+  }
+  fs.writeFileSync(BASELINE_PATH, `${JSON.stringify(baseline, null, 2)}\n`);
+  const total = Object.values(baseline).reduce((n, v) => n + v.length, 0);
   console.log(
-    `Baseline written: ${Object.keys(current).length} files, ${total} pre-existing violations.`,
+    `Baseline written from ${ref}: ${Object.keys(baseline).length} files, ` +
+      `${total} pre-existing violations${missing ? `, ${missing} file(s) absent in ref` : ""}.`,
   );
   process.exit(0);
 }
@@ -399,7 +446,7 @@ const baseline = fs.existsSync(BASELINE_PATH)
 for (const [file, list] of Object.entries(current)) {
   const known = new Set(baseline[file] ?? []);
   for (const v of list) {
-    if (!known.has(v)) failures.push(`[fit] ${file}: ${v}`);
+    if (!known.has(v.key)) failures.push(`[fit] ${file}: ${v.detail}`);
   }
 }
 

@@ -1,45 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
   <rect width="800" height="400" rx="8" fill="#f1f5f9"/>
-  <text x="400" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a" font-family="Arial">Yakıt Sistemi Akış Şeması (HFO)</text>
+  <text x="400" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a" font-family="Arial">Fuel System Flow Diagram (HFO)</text>
 
   <!-- Bunker tank -->
   <rect x="30" y="100" width="100" height="70" rx="8" fill="#fde68a" stroke="#d97706" stroke-width="2"/>
   <text x="80" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#78350f" font-family="Arial">Bunker</text>
-  <text x="80" y="145" text-anchor="middle" font-size="9" fill="#78350f" font-family="Arial">Tankı</text>
+  <text x="80" y="145" text-anchor="middle" font-size="9" fill="#78350f" font-family="Arial">Tank</text>
 
   <!-- Settling tank -->
   <rect x="180" y="100" width="100" height="70" rx="8" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
   <text x="230" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#9a3412" font-family="Arial">Settling</text>
-  <text x="230" y="145" text-anchor="middle" font-size="9" fill="#9a3412" font-family="Arial">Tankı</text>
+  <text x="230" y="145" text-anchor="middle" font-size="9" fill="#9a3412" font-family="Arial">Tank</text>
 
   <!-- Purifier -->
   <rect x="330" y="85" width="100" height="100" rx="50" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/>
   <text x="380" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a" font-family="Arial">Purifier</text>
-  <text x="380" y="145" text-anchor="middle" font-size="8" fill="#1e3a8a" font-family="Arial">(Seperatör)</text>
+  <text x="380" y="145" text-anchor="middle" font-size="8" fill="#1e3a8a" font-family="Arial">(Separator)</text>
 
   <!-- Service tank -->
   <rect x="480" y="100" width="100" height="70" rx="8" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
   <text x="530" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534" font-family="Arial">Service</text>
-  <text x="530" y="145" text-anchor="middle" font-size="9" fill="#166534" font-family="Arial">Tankı</text>
+  <text x="530" y="145" text-anchor="middle" font-size="9" fill="#166534" font-family="Arial">Tank</text>
 
   <!-- Booster/Heater -->
   <rect x="480" y="230" width="100" height="60" rx="8" fill="#fecaca" stroke="#ef4444" stroke-width="2"/>
-  <text x="530" y="255" text-anchor="middle" font-size="10" font-weight="bold" fill="#991b1b" font-family="Arial">Isıtıcı</text>
+  <text x="530" y="255" text-anchor="middle" font-size="10" font-weight="bold" fill="#991b1b" font-family="Arial">Heater</text>
   <text x="530" y="270" text-anchor="middle" font-size="8" fill="#991b1b" font-family="Arial">(~140°C)</text>
 
   <!-- Viscotherm -->
   <rect x="330" y="230" width="100" height="60" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
-  <text x="380" y="255" text-anchor="middle" font-size="10" font-weight="bold" fill="#3730a3" font-family="Arial">Viskozite</text>
-  <text x="380" y="270" text-anchor="middle" font-size="8" fill="#3730a3" font-family="Arial">Kontrol</text>
+  <text x="380" y="255" text-anchor="middle" font-size="10" font-weight="bold" fill="#3730a3" font-family="Arial">Viscosity</text>
+  <text x="380" y="270" text-anchor="middle" font-size="8" fill="#3730a3" font-family="Arial">Control</text>
 
   <!-- Filtre -->
   <rect x="180" y="230" width="100" height="60" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
-  <text x="230" y="258" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b21b6" font-family="Arial">Filtre</text>
+  <text x="230" y="258" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b21b6" font-family="Arial">Filter</text>
 
   <!-- Motor -->
   <rect x="30" y="220" width="100" height="80" rx="8" fill="#334155" stroke="#0f172a" stroke-width="2"/>
-  <text x="80" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">ANA</text>
-  <text x="80" y="272" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">MOTOR</text>
+  <text x="80" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">MAIN</text>
+  <text x="80" y="272" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">ENGINE</text>
 
   <!-- Oklar -->
   <line x1="130" y1="135" x2="175" y2="135" stroke="#475569" stroke-width="2" marker-end="url(#arrowDark)"/>
@@ -52,13 +52,13 @@
 
   <!-- Süreç açıklamaları -->
   <text x="152" y="120" text-anchor="middle" font-size="8" fill="#64748b" font-family="Arial">Transfer</text>
-  <text x="302" y="120" text-anchor="middle" font-size="8" fill="#64748b" font-family="Arial">Arıtma</text>
-  <text x="455" y="120" text-anchor="middle" font-size="8" fill="#64748b" font-family="Arial">Depolama</text>
-  <text x="545" y="200" text-anchor="start" font-size="8" fill="#64748b" font-family="Arial">Isıtma</text>
+  <text x="302" y="120" text-anchor="middle" font-size="8" fill="#64748b" font-family="Arial">Treatment</text>
+  <text x="455" y="120" text-anchor="middle" font-size="8" fill="#64748b" font-family="Arial">Storage</text>
+  <text x="545" y="200" text-anchor="start" font-size="8" fill="#64748b" font-family="Arial">Heating</text>
 
   <!-- Alt bilgi -->
-  <text x="400" y="340" text-anchor="middle" font-size="11" fill="#475569" font-family="Arial">HFO Yakıt Hazırlama Süreci: Bunker → Settling → Purifier → Service → Isıtıcı → Filtre → Motor</text>
-  <text x="400" y="360" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Yakıt sıcaklığı: Depolama ~50°C | Seperasyon ~98°C | Enjeksiyon ~140°C</text>
+  <text x="400" y="340" text-anchor="middle" font-size="11" fill="#475569" font-family="Arial">HFO fuel treatment: Bunker → Settling → Purifier → Service → Heater → Filter → Engine</text>
+  <text x="400" y="360" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Fuel temperature: Storage ~50°C | Separation ~98°C | Injection ~140°C</text>
 
   <defs>
     <marker id="arrowDark" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#475569"/></marker>
