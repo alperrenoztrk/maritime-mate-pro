@@ -9,6 +9,7 @@ const hierarchy = read("src/data/curriculumHierarchy.ts");
 const beta = read("src/data/betaLessons.ts");
 const categories = read("src/data/calculationCenterConfig.ts");
 const machine = read("src/data/machineTopicData.ts");
+const lessonsPage = read("src/pages/LessonsPage.tsx");
 const lessonTopics = read("src/pages/LessonTopicsPage.tsx");
 const exerciseTopics = read("src/pages/ExerciseTopicsPage.tsx");
 const machineTopics = read("src/pages/MachineTopicLessonsPage.tsx");
@@ -68,6 +69,10 @@ requireText(beta, "getBetaTopicById", "kimlikten konu çözümleme");
 requireText(beta, "sourceTitle", "başlık geriye dönük uyumluluğu");
 requireText(beta, "Yöntem, Uygulama ve Operasyonel Değerlendirme", "genel section başlığı düzeltmesi");
 
+requireText(lessonsPage, "competencyTracks", "yeterlilik parkurları arayüzü");
+requireText(lessonsPage, "Mesleki Yeterlilik Parkurları", "yeterlilik parkurları başlığı");
+requireText(lessonsPage, "getCurriculumTopicById", "parkur konu bağlantıları");
+
 for (const [file, source] of [
   ["LessonTopicsPage", lessonTopics],
   ["ExerciseTopicsPage", exerciseTopics],
@@ -97,5 +102,5 @@ if (failures.length) {
 }
 
 console.log(
-  `✅ Müfredat hiyerarşisi doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} yeterlilik parkuru, sabit kimlikler, alias'lar ve modül tabanlı ekranlar.`,
+  `✅ Müfredat hiyerarşisi doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} görünür yeterlilik parkuru, sabit kimlikler, alias'lar ve modül tabanlı ekranlar.`,
 );
