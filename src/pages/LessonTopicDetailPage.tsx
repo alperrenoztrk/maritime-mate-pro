@@ -2,8 +2,7 @@ import { Lightbulb } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
-import { getTopicContentsByCategory } from "@/data/topicContents";
-import type { TopicDetailContent } from "@/data/navigationTopicContents";
+import { getBetaTopic, type BetaTopic } from "@/data/betaLessons";
 import FluidMechanicsTopicsPage from "@/pages/FluidMechanicsTopicsPage";
 import { useTopicContentOverrides } from "@/hooks/useTopicContentOverrides";
 import { buildSectionKey, type ContentCategory } from "@/services/topicContentOverrides";
@@ -12,24 +11,30 @@ import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 
 export default function LessonTopicDetailPage() {
-  const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
-  const decodedTitle = topicTitle ? decodeURIComponent(topicTitle) : "";
+  const { categoryId, topicTitle } = useParams<{
+    categoryId: string;
+    topicTitle: string;
+  }>();
+  const decodedTitleOrId = topicTitle ? decodeURIComponent(topicTitle) : "";
   const overrides = useTopicContentOverrides();
-  if (categoryId === "machine" && decodedTitle === "Akışkanlar Mekaniği") {
+
+  if (categoryId === "machine" && decodedTitleOrId === "Akışkanlar Mekaniği") {
     return <FluidMechanicsTopicsPage />;
   }
-  const fallbackContent: TopicDetailContent = {
-    title: decodedTitle || "Konu Detayı",
-    introduction: decodedTitle
-      ? `${decodedTitle} konusuna ilişkin temel kavramlar, formüller ve uygulama örnekleri.`
+
+  const fallbackContent: BetaTopic = {
+    title: decodedTitleOrId || "Konu Detayı",
+    sourceTitle: decodedTitleOrId,
+    introduction: decodedTitleOrId
+      ? `${decodedTitleOrId} konusuna ilişkin temel kavramlar, formüller ve uygulama örnekleri.`
       : "Konu detayı.",
     sections: [],
   };
-  const categoryContents = getTopicContentsByCategory(categoryId);
-  const content = categoryContents[decodedTitle] ?? fallbackContent;
-  const enhancement = getLessonTopicEnhancement(categoryId, decodedTitle);
+  const content = getBetaTopic(categoryId, decodedTitleOrId) ?? fallbackContent;
+  const sourceTopicTitle = content.sourceTitle ?? content.title;
+  const enhancement = getLessonTopicEnhancement(categoryId, sourceTopicTitle);
 
-  if (!categoryId || !decodedTitle) {
+  if (!categoryId || !decodedTitleOrId) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <p className="text-muted-foreground">Konu bulunamadı</p>
@@ -40,35 +45,53 @@ export default function LessonTopicDetailPage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
-        <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
+        <div className="mx-auto flex max-w-4xl items-center gap-3">
+          <h1 className="min-w-0 flex-1 text-base font-bold text-foreground sm:text-lg">
+            {content.title}
+          </h1>
+          {content.level && (
+            <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-primary">
+              {content.level === "foundation"
+                ? "Temel"
+                : content.level === "operational"
+                  ? "Operasyonel"
+                  : "İleri"}
+            </span>
+          )}
+        </div>
       </div>
 
       <div className="mx-auto flex max-w-4xl flex-col gap-8 p-4 sm:p-6">
-        <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-          <p className="text-sm leading-relaxed text-foreground/90">{stripMarkdown(content.introduction)}</p>
-        </div>
+        {content.introduction && (
+          <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
+            <p className="text-sm leading-relaxed text-foreground/90">
+              {stripMarkdown(content.introduction)}
+            </p>
+          </div>
+        )}
 
         {content.sections.map((section, index) => {
           const categoryKey = (categoryId ?? "navigation") as ContentCategory;
-          const overrideKey = buildSectionKey(categoryKey, decodedTitle || content.title, section.title);
+          const sourceSectionTitle = section.sourceTitle ?? section.title;
+          const overrideKey = buildSectionKey(categoryKey, sourceTopicTitle, sourceSectionTitle);
           const override = overrides[overrideKey];
           const sectionImage = resolveLessonImage(
             categoryId,
             section.image,
-            section.title,
-            content.title,
+            sourceSectionTitle,
+            sourceTopicTitle,
             section.imageAlt,
           );
           const resolvedContent = normalizeLessonMarkdownImages(
             override?.content || section.content,
             categoryId,
-            section.title,
-            content.title,
+            sourceSectionTitle,
+            sourceTopicTitle,
             sectionImage ? [sectionImage] : [],
           );
 
           return (
-            <section key={`${section.title}-${index}`} className="space-y-4">
+            <section key={section.id ?? `${sourceSectionTitle}-${index}`} className="space-y-4">
               <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
               {sectionImage && (
@@ -76,7 +99,7 @@ export default function LessonTopicDetailPage() {
                   <img
                     src={sectionImage}
                     alt={section.imageAlt || section.title}
-                    className="h-48 w-full object-contain bg-muted/30"
+                    className="h-48 w-full bg-muted/30 object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -93,7 +116,7 @@ export default function LessonTopicDetailPage() {
                         <img
                           src={src}
                           alt={alt || section.title}
-                          className="h-48 w-full object-contain bg-muted/30"
+                          className="h-48 w-full bg-muted/30 object-contain"
                           loading="lazy"
                         />
                       </div>
@@ -106,8 +129,11 @@ export default function LessonTopicDetailPage() {
               {section.bulletPoints && section.bulletPoints.length > 0 && (
                 <ul className="space-y-2 pl-1">
                   {section.bulletPoints.map((point, pointIndex) => (
-                    <li key={`${section.title}-point-${pointIndex}`} className="flex items-start gap-3 text-sm text-foreground/80">
-                      <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <li
+                      key={`${sourceSectionTitle}-point-${pointIndex}`}
+                      className="flex items-start gap-3 text-sm text-foreground/80"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                       <span>{stripMarkdown(point)}</span>
                     </li>
                   ))}
@@ -119,7 +145,11 @@ export default function LessonTopicDetailPage() {
                   <p className="font-mono text-sm font-medium text-amber-700 dark:text-amber-400">
                     {section.formula.text}
                   </p>
-                  <p className="mt-2 text-xs text-muted-foreground">{section.formula.description}</p>
+                  {section.formula.description && (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      {section.formula.description}
+                    </p>
+                  )}
                 </div>
               )}
             </section>
@@ -136,7 +166,10 @@ export default function LessonTopicDetailPage() {
             </div>
             <ul className="space-y-2">
               {content.keyPoints.map((point, index) => (
-                <li key={`key-point-${index}`} className="flex items-start gap-3 text-sm text-foreground/80">
+                <li
+                  key={`key-point-${index}`}
+                  className="flex items-start gap-3 text-sm text-foreground/80"
+                >
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
                     {index + 1}
                   </span>
@@ -150,4 +183,3 @@ export default function LessonTopicDetailPage() {
     </div>
   );
 }
-

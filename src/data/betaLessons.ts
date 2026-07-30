@@ -2,27 +2,29 @@ import type { LucideIcon } from "lucide-react";
 import { calculationCategories } from "@/data/calculationCenterConfig";
 import { getTopicContentsByCategory } from "@/data/topicContents";
 import { stabilityTopicsData } from "@/data/stabilityTopicsContent";
-import { machineTopicLessons } from "@/data/machineTopicLessonData";
-import { getMachineSubTopicContent, hasSubTopicContent } from "@/data/machineTopicDetailContent";
+import { getMachineSubTopicContent } from "@/data/machineTopicDetailContent";
+import {
+  getCurriculumCourse,
+  getCurriculumModules,
+  getCurriculumTopicById,
+  getCurriculumTopicRefs,
+  resolveCurriculumTopic,
+  type CurriculumLevel,
+} from "@/data/curriculumHierarchy";
 
 /**
- * "Dersler Beta" — birleşik (normalize) içerik katmanı.
+ * "Dersler Beta" birleşik içerik katmanı.
  *
- * Uygulamada ders içeriği üç farklı şemada tutulur:
- *  1) Güverte (navigation/meteorology/communication): `TopicDetailContent`
- *     (section = {title, content, bulletPoints, formula{text,description}, image})
- *  2) Stabilite: `stabilityTopicsData` (subtopic = {content, formulas[], examples[]...})
- *  3) Makine (16 konu): `machineTopicDetailContent` (section = {heading, paragraphs[],
- *     formula{expression,variables}, example{problem,steps,result}, table, diagram})
- *
- * Bu modül üçünü tek bir `BetaTopic`/`BetaSection` şekline indirger; böylece beta
- * sayfaları (liste, detay, Duolingo oturumu, AI eğitmen) TÜM güverte ve makine
- * konularını/alt başlıklarını tek kod yoluyla kapsar. İçerik read-only okunur;
- * orijinal "Dersler" verisine dokunulmaz.
+ * Kaynak içerik şemaları değiştirilmeden tek bir okunabilir modele çevrilir.
+ * Ders -> modül -> konu hiyerarşisi curriculumHierarchy tarafından sağlanır;
+ * eski kategori anahtarları ve başlık tabanlı URL'ler geriye dönük uyumludur.
  */
 
 export interface BetaSection {
+  id?: string;
   title: string;
+  /** Kaynak başlık; gösterim başlığından farklıysa lesson-flow uyumluluğu için korunur. */
+  sourceTitle?: string;
   content: string;
   bulletPoints?: string[];
   formula?: { text: string; description?: string };
@@ -33,26 +35,42 @@ export interface BetaSection {
 }
 
 export interface BetaTopic {
+  id?: string;
   title: string;
+  sourceTitle?: string;
+  moduleId?: string;
+  level?: CurriculumLevel;
   introduction?: string;
   sections: BetaSection[];
   keyPoints?: string[];
 }
 
+export interface BetaModule {
+  id: string;
+  title: string;
+  description: string;
+  topicCount: number;
+  topics: Array<{
+    id: string;
+    title: string;
+    sourceTitle: string;
+    level: CurriculumLevel;
+  }>;
+}
+
 export interface BetaCategory {
-  /** calculationCategories id'si (örn. "navigation", "stability", "machine-thermodynamics"). */
+  /** calculationCategories id'si (örn. navigation, stability, machine-thermodynamics). */
   key: string;
   title: string;
+  subtitle: string;
   icon: LucideIcon;
   accent: string;
   group: "deck" | "machine";
-  /** Bu kategoride rehberli/okunabilir konu anlatımı içeriği var mı? */
   enabled: boolean;
-  /** Açılabilir (içerikli) alt başlık sayısı. */
   topicCount: number;
+  moduleCount: number;
 }
 
-/** Section düzeyinde anlatım içeriği OLAN güverte kategorileri. */
 const DECK_CONTENT_KEYS = [
   "navigation",
   "meteorology",
@@ -68,142 +86,215 @@ const DECK_CONTENT_KEYS = [
 const isMachine = (key: string) => key.startsWith("machine-");
 const machineSlug = (key: string) => key.slice("machine-".length);
 
-// ── Konu başlığı listeleri ────────────────────────────────────────────────
+const displaySectionTitle = (title: string) =>
+  title.trim().toLocaleLowerCase("tr-TR") === "detaylı anlatım"
+    ? "Yöntem, Uygulama ve Operasyonel Değerlendirme"
+    : title;
 
-/** Bir kategorinin (güverte id veya makine id) açılabilir alt başlık başlıkları. */
-export function getBetaTopicTitles(key?: string): string[] {
+const makeSectionId = (topicId: string | undefined, index: number) =>
+  topicId ? `${topicId}-section-${index + 1}` : undefined;
+
+/** Yeni arayüzlerin kullanacağı modül grupları. */
+export function getBetaModules(key?: string): BetaModule[] {
   if (!key) return [];
-  if (isMachine(key)) {
-    const slug = machineSlug(key);
-    const lesson = machineTopicLessons[slug];
-    if (!lesson) return [];
-    const titles: string[] = [];
-    for (const kt of lesson.keyTopics) {
-      for (const st of kt.subTopics) {
-        if (hasSubTopicContent(slug, st.title)) titles.push(st.title);
-      }
-    }
-    return titles;
-  }
-  if (key === "stability") {
-    return stabilityTopicsData.flatMap((t) => t.subtopics.map((s) => s.title));
-  }
-  if (DECK_CONTENT_KEYS.includes(key)) {
-    return Object.keys(getTopicContentsByCategory(key));
-  }
-  return [];
+  return getCurriculumModules(key).map((module) => ({
+    id: module.id,
+    title: module.title,
+    description: module.description,
+    topicCount: module.topics.length,
+    topics: module.topics.map((topic) => ({
+      id: topic.id,
+      title: topic.title,
+      sourceTitle: topic.sourceTitle,
+      level: topic.level,
+    })),
+  }));
 }
 
-// ── Tekil konu içeriği (normalize) ────────────────────────────────────────
+/** Eski düz liste API'si korunur; artık tekrarları ayıklanmış kanonik başlıkları döndürür. */
+export function getBetaTopicTitles(key?: string): string[] {
+  if (!key) return [];
+  return getCurriculumTopicRefs(key).map((topic) => topic.title);
+}
 
-function mapMachineTopic(slug: string, title: string): BetaTopic | null {
-  const c = getMachineSubTopicContent(slug, title);
-  if (!c) return null;
+/** URL ve ilerleme kaydı için başlıktan bağımsız, kararlı konu kimlikleri. */
+export function getBetaTopicIds(key?: string): string[] {
+  if (!key) return [];
+  return getCurriculumTopicRefs(key).map((topic) => topic.id);
+}
+
+function mapMachineTopic(
+  slug: string,
+  sourceTitle: string,
+  metadata?: ReturnType<typeof getCurriculumTopicById>,
+): BetaTopic | null {
+  const content = getMachineSubTopicContent(slug, sourceTitle);
+  if (!content) return null;
   return {
-    title: c.title,
-    introduction: c.introduction,
-    sections: c.sections.map((s) => ({
-      title: s.heading,
-      content: s.paragraphs.join("\n\n"),
-      bulletPoints: s.bulletPoints,
-      formula: s.formula
+    id: metadata?.id,
+    title: metadata?.title ?? content.title,
+    sourceTitle,
+    moduleId: metadata
+      ? getCurriculumModules(`machine-${slug}`).find((module) =>
+          module.topics.some((topic) => topic.id === metadata.id),
+        )?.id
+      : undefined,
+    level: metadata?.level,
+    introduction: content.introduction,
+    sections: content.sections.map((section, index) => ({
+      id: makeSectionId(metadata?.id, index),
+      title: displaySectionTitle(section.heading),
+      sourceTitle: section.heading,
+      content: section.paragraphs.join("\n\n"),
+      bulletPoints: section.bulletPoints,
+      formula: section.formula
         ? {
-            text: s.formula.expression,
+            text: section.formula.expression,
             description:
-              s.formula.variables && s.formula.variables.length
-                ? s.formula.variables.join(" · ")
+              section.formula.variables && section.formula.variables.length
+                ? section.formula.variables.join(" · ")
                 : undefined,
           }
         : undefined,
-      image: s.diagram?.src,
-      imageAlt: s.diagram?.alt,
-      example: s.example
-        ? { problem: s.example.problem, steps: s.example.steps, result: s.example.result }
+      image: section.diagram?.src,
+      imageAlt: section.diagram?.alt,
+      example: section.example
+        ? {
+            problem: section.example.problem,
+            steps: section.example.steps,
+            result: section.example.result,
+          }
         : undefined,
-      table: s.table,
+      table: section.table,
     })),
-    keyPoints: c.keyPoints,
+    keyPoints: content.keyPoints,
   };
 }
 
-function mapStabilityTopic(title: string): BetaTopic | null {
-  for (const topic of stabilityTopicsData) {
-    const sub = topic.subtopics.find((s) => s.title === title);
-    if (!sub) continue;
+function mapStabilityTopic(
+  sourceTitle: string,
+  metadata?: ReturnType<typeof getCurriculumTopicById>,
+): BetaTopic | null {
+  for (const module of stabilityTopicsData) {
+    const subtopic = module.subtopics.find((item) => item.title === sourceTitle);
+    if (!subtopic) continue;
+    const baseTitle = metadata?.title ?? subtopic.title.replace(/^\d+(?:\.\d+)*\.?\s*/, "");
     const sections: BetaSection[] = [
       {
-        title: sub.title,
-        content: sub.content,
-        bulletPoints: [...(sub.practicalTips ?? []), ...(sub.warnings ?? [])],
+        id: makeSectionId(metadata?.id, 0),
+        title: baseTitle,
+        sourceTitle: subtopic.title,
+        content: subtopic.content,
+        bulletPoints: [...(subtopic.practicalTips ?? []), ...(subtopic.warnings ?? [])],
       },
     ];
-    // Başlıklar benzersiz olmalı (GuidedLessonSession section Map'i ve flow eşleşmesi
-    // için): birden çok formül/örnek varsa numaralandırılır.
-    const fs = sub.formulas ?? [];
-    fs.forEach((f, i) =>
+    const formulas = subtopic.formulas ?? [];
+    formulas.forEach((formula, index) =>
       sections.push({
-        title: fs.length > 1 ? `Formül ${i + 1}` : "Formül",
+        id: makeSectionId(metadata?.id, sections.length),
+        title: formulas.length > 1 ? `${baseTitle} — Formül ${index + 1}` : `${baseTitle} — Formül`,
+        sourceTitle: formulas.length > 1 ? `Formül ${index + 1}` : "Formül",
         content: "",
-        formula: { text: f.formula, description: f.description },
+        formula: { text: formula.formula, description: formula.description },
       }),
     );
-    const ex = sub.examples ?? [];
-    ex.forEach((e, i) =>
+    const examples = subtopic.examples ?? [];
+    examples.forEach((example, index) =>
       sections.push({
-        title: ex.length > 1 ? `Çözümlü Örnek ${i + 1}` : "Çözümlü Örnek",
+        id: makeSectionId(metadata?.id, sections.length),
+        title:
+          examples.length > 1
+            ? `${baseTitle} — Çözümlü Örnek ${index + 1}`
+            : `${baseTitle} — Çözümlü Örnek`,
+        sourceTitle: examples.length > 1 ? `Çözümlü Örnek ${index + 1}` : "Çözümlü Örnek",
         content: "",
-        example: { problem: e.problem, solution: e.solution },
+        example: { problem: example.problem, solution: example.solution },
       }),
     );
-    return { title: sub.title, sections, keyPoints: sub.keyPoints };
+    return {
+      id: metadata?.id,
+      title: baseTitle,
+      sourceTitle,
+      moduleId: module.id,
+      level: metadata?.level,
+      sections,
+      keyPoints: subtopic.keyPoints,
+    };
   }
   return null;
 }
 
-function mapDeckTopic(key: string, title: string): BetaTopic | null {
-  const t = getTopicContentsByCategory(key)[title];
-  if (!t) return null;
+function mapDeckTopic(
+  key: string,
+  sourceTitle: string,
+  metadata?: ReturnType<typeof getCurriculumTopicById>,
+): BetaTopic | null {
+  const topic = getTopicContentsByCategory(key)[sourceTitle];
+  if (!topic) return null;
+  const moduleId = metadata
+    ? getCurriculumModules(key).find((module) =>
+        module.topics.some((item) => item.id === metadata.id),
+      )?.id
+    : undefined;
   return {
-    title: t.title,
-    introduction: t.introduction,
-    sections: t.sections.map((s) => ({
-      title: s.title,
-      content: s.content,
-      bulletPoints: s.bulletPoints,
-      formula: s.formula ? { text: s.formula.text, description: s.formula.description } : undefined,
-      image: s.image,
-      imageAlt: s.imageAlt,
+    id: metadata?.id,
+    title: metadata?.title ?? topic.title,
+    sourceTitle,
+    moduleId,
+    level: metadata?.level,
+    introduction: topic.introduction,
+    sections: topic.sections.map((section, index) => ({
+      id: makeSectionId(metadata?.id, index),
+      title: displaySectionTitle(section.title),
+      sourceTitle: section.title,
+      content: section.content,
+      bulletPoints: section.bulletPoints,
+      formula: section.formula
+        ? { text: section.formula.text, description: section.formula.description }
+        : undefined,
+      image: section.image,
+      imageAlt: section.imageAlt,
     })),
-    keyPoints: t.keyPoints,
+    keyPoints: topic.keyPoints,
   };
 }
 
-/** Normalize edilmiş tekil konu içeriği (yoksa null). */
-export function getBetaTopic(key?: string, title?: string): BetaTopic | null {
-  if (!key || !title) return null;
-  if (isMachine(key)) return mapMachineTopic(machineSlug(key), title);
-  if (key === "stability") return mapStabilityTopic(title);
-  if (DECK_CONTENT_KEYS.includes(key)) return mapDeckTopic(key, title);
+/**
+ * Başlık, eski başlık alias'ı veya sabit topic id kabul eder.
+ * Böylece eski deep-link ve localStorage ilerleme kayıtları bozulmaz.
+ */
+export function getBetaTopic(key?: string, titleOrId?: string): BetaTopic | null {
+  if (!key || !titleOrId) return null;
+  const metadata =
+    getCurriculumTopicById(titleOrId) ?? resolveCurriculumTopic(key, titleOrId);
+  const sourceTitle = metadata?.sourceTitle ?? titleOrId;
+  if (isMachine(key)) return mapMachineTopic(machineSlug(key), sourceTitle, metadata);
+  if (key === "stability") return mapStabilityTopic(sourceTitle, metadata);
+  if (DECK_CONTENT_KEYS.includes(key)) return mapDeckTopic(key, sourceTitle, metadata);
   return null;
 }
 
-// ── Kategori listesi ──────────────────────────────────────────────────────
+export function getBetaTopicById(topicId?: string): BetaTopic | null {
+  const topic = getCurriculumTopicById(topicId);
+  return topic ? getBetaTopic(topic.sourceCategory, topic.id) : null;
+}
 
-/** Tüm beta kategorileri (güverte + makine), içerik durumu ile birlikte. */
 export function getBetaCategories(): BetaCategory[] {
-  return calculationCategories.map((c) => {
-    const key = c.id as string;
+  return calculationCategories.map((category) => {
+    const key = category.id as string;
+    const course = getCurriculumCourse(key);
     const group: "deck" | "machine" = isMachine(key) ? "machine" : "deck";
-    // İçerik odaklı: yalnızca gerçekten açılabilir konusu olan kategori "enabled".
     const topicCount = getBetaTopicTitles(key).length;
     return {
       key,
-      title: c.title,
-      icon: c.icon,
-      accent: c.accent,
+      title: course?.title ?? category.title,
+      subtitle: course?.subtitle ?? category.subtitle,
+      icon: category.icon,
+      accent: category.accent,
       group,
       enabled: topicCount > 0,
       topicCount,
+      moduleCount: course?.modules.length ?? 0,
     };
   });
 }
