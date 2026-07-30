@@ -1,55 +1,29 @@
-## Tespit
+## Sorunun kökü (doğrulandı)
 
-Kod ve backend sinyallerini kontrol ettim. Şu an Google girişini bozabilecek en güçlü iki nokta var:
+Kullanıcı kayıtlarını kontrol ettim: `alperenberil6@gmail.com` hesabı **yalnızca Google ile** oluşturulmuş (provider: `google`) ve bu hesabın **hiç şifresi yok**. Aynı durum diğer 5 hesap için de geçerli; sadece bir hesapta (`xtrimcontact@gmail.com`) şifre var.
 
-1. **Yayın build’i hâlâ backend adresini zorla gömüyor.**
-   - `vite.config.ts` içinde `define` fallback bloğu mevcut.
-   - Bu, gerçek ortam değişkenleriyle auth broker’ın kullandığı backend arasında sessiz uyumsuzluk yaratabilir veya eski yanlış ayarı yayına taşıyabilir.
+Bu yüzden:
+- Kayıt olmaya çalışınca → "Bu e-posta zaten kayıtlı" (422)
+- Şifreyle girmeye çalışınca → "Invalid login credentials" (400)
 
-2. **Domain yönlendirmesi ve auth callback aynı kanonik origin’e sabitlenmemiş.**
-   - Uygulama `www.nauticalleap.com` adresini açılır açılmaz `nauticalleap.com` adresine gönderiyor.
-   - Backend auth ayarında görünen site URL ise `https://www.nauticalleap.com`.
-   - Google akışı bir origin’de başlayıp diğer origin’de tamamlanırsa tarayıcı oturum/state bilgisini ayrı tuttuğu için kullanıcı Google’dan dönse bile uygulamada giriş yapılmış görünmeyebilir.
+Hata değil, beklenen davranış: şifresi olmayan bir hesaba şifreyle girilemiyor. Eksik olan, kullanıcıya bunu anlatan bir arayüz ve şifre belirleme yolu.
 
-Project monitoring tarafında bekleyen bulgu yok; yani bu, kod + domain/auth yapılandırması uyumsuzluğu gibi görünüyor.
+## Yapılacaklar
 
-## Uygulamada yapacağım düzeltmeler
+### 1. Şifre sıfırlama / belirleme akışı (asıl çözüm)
+- `src/pages/Auth.tsx` içine "Şifremi unuttum / şifre belirle" bağlantısı eklenecek.
+- `supabase.auth.resetPasswordForEmail(email, { redirectTo: origin + "/reset-password" })` çağrılacak.
+- Yeni sayfa `src/pages/ResetPassword.tsx`: recovery bağlantısıyla gelen oturumda `supabase.auth.updateUser({ password })` ile şifre belirlenecek. `src/App.tsx`'e public route olarak eklenecek.
+- Böylece Google ile açılmış hesaplar e-posta üzerinden şifre belirleyip bundan sonra şifreyle de girebilecek.
 
-1. **Backend env fallback’lerini kaldıracağım**
-   - `vite.config.ts` içindeki `FALLBACK_*` sabitlerini ve `define` bloğunu kaldıracağım.
-   - Böylece yayın build’i yanlış/eskimiş backend bilgisini sessizce gömmeyecek.
-   - Uygulama sadece gerçek Lovable Cloud bağlantısının verdiği değerleri kullanacak.
+### 2. Hata mesajlarını netleştirme (`src/pages/Auth.tsx`)
+- "Invalid login credentials" → "E-posta veya şifre hatalı. Bu hesabı Google ile oluşturduysanız 'Google ile devam et' ile girin ya da şifre belirleyin."
+- "User already registered" → "Bu e-posta zaten kayıtlı. Google ile giriş yapın veya şifrenizi belirleyin." + doğrudan giriş sekmesine geçiş.
 
-2. **Google callback akışını tek origin’e sabitleyeceğim**
-   - Auth callback URL üretimini tek kanonik domain ile tutarlı hale getireceğim.
-   - `www` → apex yönlendirmesiyle auth akışının ortasında origin değişmemesini sağlayacak şekilde login tarafını sadeleştireceğim.
+### 3. Google butonunun görünürlüğü
+Auth sayfasındaki Google butonu zaten var ve provider açık; mesajlarda buna yönlendirme yapılacak.
 
-3. **Callback sayfasını daha görünür hata verecek hale getireceğim**
-   - `/auth/callback` artık sessizce ana sayfaya düşmek yerine oturum kurulamazsa anlaşılır bir hata gösterecek.
-   - Böylece “Google’dan döndü ama giriş yok” durumunda gerçek hata ekranda görülebilecek.
-
-4. **Google provider’ı managed backend’de yeniden doğrulayacağım**
-   - Build modunda Google sosyal giriş sağlayıcısını yeniden etkinleştireceğim/doğrulayacağım.
-   - Bu işlem koddan bağımsız backend auth ayarını da tazeler.
-
-5. **Canlı önizlemede akışı test edeceğim**
-   - `/auth` sayfasında Google butonunun doğru callback URL ile başlattığını kontrol edeceğim.
-   - Callback route’unun uygulama içinde gerçekten var olduğunu ve auth route cache/service worker tarafından kesilmediğini doğrulayacağım.
-
-## Senin yapman gerekenler
-
-1. **Tek ana domain seç:** önerim `https://nauticalleap.com`.
-2. **Lovable Domains ayarında primary domain’i buna göre ayarla.**
-   - `www.nauticalleap.com` varsa primary olmayan domain olarak kalsın ve ana domaine yönlensin.
-3. **Google Cloud Console OAuth Client ayarlarında şunlar olmalı:**
-   - Authorized JavaScript origins:
-     - `https://nauticalleap.com`
-     - `https://www.nauticalleap.com`
-   - Authorized redirect URIs:
-     - Lovable Cloud’un Google auth ayarında gösterdiği callback URL
-     - Eğer özel domain callback’i isteniyorsa: `https://nauticalleap.com/auth/callback` ve `https://www.nauticalleap.com/auth/callback`
-4. Düzeltmeden sonra uygulamayı **Update/Publish** etmen gerekecek; canlı özel domain eski bundle’ı kullanıyorsa kod düzeltmesi görünmez.
-
-## Beklenen sonuç
-
-Google hesabı seçildikten sonra kullanıcı `/auth/callback` üzerinden uygulamaya dönecek, oturum aynı backend ve aynı kanonik domain üzerinde kurulacak, ardından Ayarlar/Hesap bölümünde giriş yapılan e-posta görünecek.
+## Teknik notlar
+- Şifre e-postası, projedeki mevcut auth e-posta altyapısı üzerinden gider; ek yapılandırma gerekmez.
+- Hiçbir veritabanı değişikliği gerekmiyor; sadece istemci tarafı.
+- Şifre belirlendikten sonra hesabın Google girişi çalışmaya devam eder (iki yöntem birlikte kullanılabilir).
