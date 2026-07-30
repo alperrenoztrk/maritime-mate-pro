@@ -9,11 +9,16 @@ const hierarchy = read("src/data/curriculumHierarchy.ts");
 const beta = read("src/data/betaLessons.ts");
 const categories = read("src/data/calculationCenterConfig.ts");
 const machine = read("src/data/machineTopicData.ts");
-const lessonsPage = read("src/pages/LessonsPage.tsx");
-const lessonTopics = read("src/pages/LessonTopicsPage.tsx");
+const lessonsRoute = read("src/pages/LessonsPage.tsx");
+const lessonTopicsRoute = read("src/pages/LessonTopicsPage.tsx");
+const machineTopicsRoute = read("src/pages/MachineTopicLessonsPage.tsx");
+const lessonsPage = read("src/pages/curriculum/LessonsLibraryPage.tsx");
+const lessonTopics = read("src/pages/curriculum/DeckCurriculumCoursePage.tsx");
+const machineTopics = read("src/pages/curriculum/MachineCurriculumCoursePage.tsx");
+const courseTabs = read("src/components/curriculum/CourseSectionTabs.tsx");
+const courseHeader = read("src/components/courseContent/CourseTopicHeader.tsx");
 const exerciseTopics = read("src/pages/ExerciseTopicsPage.tsx");
 const exerciseDetail = read("src/pages/ExerciseTopicDetailPage.tsx");
-const machineTopics = read("src/pages/MachineTopicLessonsPage.tsx");
 const deckDetail = read("src/pages/LessonTopicDetailPage.tsx");
 const machineDetail = read("src/pages/MachineTopicDetailPage.tsx");
 
@@ -70,18 +75,42 @@ requireText(beta, "getBetaTopicById", "kimlikten konu çözümleme");
 requireText(beta, "sourceTitle", "başlık geriye dönük uyumluluğu");
 requireText(beta, "Yöntem, Uygulama ve Operasyonel Değerlendirme", "genel section başlığı düzeltmesi");
 
+requireText(lessonsRoute, "LessonsLibraryPage", "Dersler rota yönlendirmesi");
+requireText(lessonTopicsRoute, "DeckCurriculumCoursePage", "güverte rota yönlendirmesi");
+requireText(machineTopicsRoute, "MachineCurriculumCoursePage", "makine rota yönlendirmesi");
+requireText(lessonsPage, "useSearchParams", "kitaplık görünüm seçimi");
+requireText(lessonsPage, "Güverte Kitaplığı", "kitaplık girişleri");
+requireText(lessonsPage, "Makine Kitaplığı", "kitaplık girişleri");
+requireText(lessonsPage, "Mesleki Yeterlilikler", "kitaplık girişleri");
+requireText(lessonsPage, "aspect-[3/4]", "kitap kapağı görünümü");
 requireText(lessonsPage, "competencyTracks", "yeterlilik parkurları arayüzü");
-requireText(lessonsPage, "Mesleki Yeterlilik Parkurları", "yeterlilik parkurları başlığı");
-requireText(lessonsPage, "getCurriculumTopicById", "parkur konu bağlantıları");
+forbidText(lessonsPage, "sectionIconMap", "ana ekrandaki araç butonları");
+forbidText(lessonsPage, "config.sections.map", "ana ekrandaki araç butonları");
 
 for (const [file, source] of [
-  ["LessonTopicsPage", lessonTopics],
+  ["DeckCurriculumCoursePage", lessonTopics],
   ["ExerciseTopicsPage", exerciseTopics],
-  ["MachineTopicLessonsPage", machineTopics],
+  ["MachineCurriculumCoursePage", machineTopics],
 ]) {
   requireText(source, "getBetaModules", `${file} modül entegrasyonu`);
   forbidText(source, "topicsData", `${file} eski sabit konu listesi`);
 }
+
+requireText(lessonTopics, "CourseSectionTabs", "güverte ders sekmeleri");
+requireText(machineTopics, "CourseSectionTabs", "makine ders sekmeleri");
+requireText(lessonTopics, "expandedModule", "güverte tek açık modül davranışı");
+requireText(machineTopics, "expandedModule", "makine tek açık modül davranışı");
+forbidText(lessonTopics, "expandedModules", "güverte çoklu açık modül davranışı");
+forbidText(machineTopics, "expandedModules", "makine çoklu açık modül davranışı");
+forbidText(lessonTopics, "Ders Araçları", "güverte ayrı araç kartı");
+forbidText(machineTopics, "Ders Araçları", "makine ayrı araç kartı");
+
+for (const tabLabel of ["Konular", "Hesaplamalar", "Formüller", "Kurallar", "Alıştırmalar"]) {
+  requireText(courseTabs, tabLabel, "ortak ders sekmeleri");
+}
+requireText(courseHeader, "CourseSectionTabs", "araç sayfalarında kalıcı sekme şeridi");
+forbidText(courseHeader, "sectionMeta", "tekrarlanan bölüm alt başlığı");
+
 requireText(deckDetail, "getBetaTopic", "güverte detay kimlik çözümleme");
 requireText(machineDetail, "getBetaTopic", "makine detay kimlik çözümleme");
 requireText(exerciseDetail, "sourceTopicTitle", "alıştırma detail kaynak başlık çözümleme");
@@ -89,13 +118,10 @@ requireText(exerciseDetail, "getLessonFlow(categoryId, sourceTopicTitle)", "less
 requireText(exerciseDetail, "section.sourceTitle", "sectionRef geriye dönük uyumluluğu");
 
 const visibleDescriptionBindings = [
-  [lessonsPage, "group.subtitle", "Dersler grup açıklaması"],
-  [lessonsPage, "category.subtitle", "Dersler kategori açıklaması"],
+  [lessonsPage, "category.subtitle", "kitap kapağı açıklaması"],
   [lessonsPage, "track.subtitle", "yeterlilik parkuru açıklaması"],
-  [lessonsPage, "section.description", "Dersler araç açıklaması"],
   [lessonTopics, "category.subtitle", "güverte ders açıklaması"],
   [lessonTopics, "module.description", "güverte modül açıklaması"],
-  [lessonTopics, "section.description", "güverte araç açıklaması"],
   [exerciseTopics, "category.subtitle", "alıştırma ders açıklaması"],
   [exerciseTopics, "module.description", "alıştırma modül açıklaması"],
   [machineTopics, "category.subtitle", "makine ders açıklaması"],
@@ -104,21 +130,6 @@ const visibleDescriptionBindings = [
 for (const [source, binding, label] of visibleDescriptionBindings) {
   forbidText(source, binding, label);
 }
-forbidText(
-  lessonsPage,
-  "İçerikler departman, ders, modül ve konu sırasıyla düzenlenmiştir.",
-  "Dersler üst başlık açıklaması",
-);
-forbidText(
-  lessonsPage,
-  "Birden fazla dersi bir operasyon yeterliliği altında birleştiren çalışma yolları",
-  "yeterlilik parkurları açıklaması",
-);
-forbidText(
-  exerciseTopics,
-  "Gerçek gemi kararlarını adım adım uygulayın",
-  "senaryo kartı açıklaması",
-);
 
 const literalIds = [...hierarchy.matchAll(/\bid:\s*"([a-z0-9-]+)"/g)].map((match) => match[1]);
 const duplicates = [...new Set(literalIds.filter((id, index) => literalIds.indexOf(id) !== index))];
@@ -138,5 +149,5 @@ if (failures.length) {
 }
 
 console.log(
-  `✅ Müfredat hiyerarşisi doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} görünür yeterlilik parkuru, açıklamasız başlık arayüzü, sabit kimlikler, alias'lar ve modül tabanlı ekranlar.`,
+  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} yeterlilik parkuru, kitaplık ana ekranı, ortak ders sekmeleri, tek açık modül ve açıklamasız başlık arayüzü.`,
 );

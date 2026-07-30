@@ -3,10 +3,6 @@ import { getCourseTopic } from "@/data/courseContent";
 import { getTopicQuiz } from "@/data/courseContent/quiz";
 import { CourseQuiz } from "@/components/courseContent/CourseQuiz";
 
-/**
- * Birleşik Quiz sayfası — tüm güverte ve makine konuları için tek tasarım
- * (Çevre/Emisyon görünümü). Soru bankası tek kaynak registry'den gelir.
- */
 export default function CourseQuizPage() {
   const { topicKey } = useParams<{ topicKey: string }>();
   const topic = getCourseTopic(topicKey);
@@ -15,7 +11,7 @@ export default function CourseQuizPage() {
   if (!topic || questions.length === 0) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-muted-foreground">Quiz bulunamadı</p>
+        <p className="text-muted-foreground">Alıştırma bulunamadı</p>
       </div>
     );
   }
@@ -26,6 +22,8 @@ export default function CourseQuizPage() {
       icon={topic.icon}
       accent={topic.accent}
       questions={questions}
+      courseKey={topic.key}
+      group={topic.group}
     />
   );
 }
