@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
   <rect width="900" height="360" fill="#f8fafc" />
-  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Ağırlık Merkezi (G)</text>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Centre of Gravity (G)</text>
 
   <rect x="120" y="120" width="660" height="140" rx="20" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
   <rect x="120" y="220" width="660" height="40" fill="#cbd5f5" />
@@ -13,5 +13,5 @@
   <path d="M450 245 L442 232 L458 232 Z" fill="#ef4444" />
   <text x="470" y="238" font-size="12" font-family="Arial" fill="#ef4444">W</text>
 
-  <text x="120" y="300" font-size="12" font-family="Arial" fill="#64748b">Ağırlık kuvveti G noktasından aşağı yönde etkir.</text>
+  <text x="120" y="300" font-size="12" font-family="Arial" fill="#64748b">The weight force acts vertically downwards through G.</text>
 </svg>

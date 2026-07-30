@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
-  <title id="title">Offshore destek gemisi yan profili</title>
-  <desc id="desc">Baş üst yapısı, açık kıç çalışma güvertesi, güverte yükleri ve vinci görünen offshore destek gemisi.</desc>
+  <title id="title">Offshore support vessel side profile</title>
+  <desc id="desc">An offshore support vessel showing the forward superstructure, open aft working deck, deck cargo and crane.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e0f5ff"/><stop offset="1" stop-color="#fbfeff"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#166da4"/><stop offset="1" stop-color="#083d66"/></linearGradient>

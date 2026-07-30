@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
   <rect width="900" height="360" fill="#f8fafc" />
-  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Gemi Kesitinde K, B, G ve M Noktaları</text>
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Points K, B, G and M in Midship Section</text>
 
   <!-- su -->
   <rect x="80" y="200" width="740" height="120" fill="#dbeafe" />
   <line x1="80" y1="200" x2="820" y2="200" stroke="#1e3a8a" stroke-width="2" />
-  <text x="90" y="192" font-size="12" font-family="Arial" fill="#1e3a8a">Su hattı</text>
+  <text x="90" y="192" font-size="12" font-family="Arial" fill="#1e3a8a">Waterline</text>
 
   <!-- gemi kesiti (orta kesit) -->
   <path d="M330 150 L570 150 L560 250 Q450 300 340 250 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
@@ -40,5 +40,5 @@
   <line x1="520" y1="232" x2="520" y2="110" stroke="#64748b" stroke-width="2" />
   <text x="530" y="175" font-size="12" font-family="Arial" fill="#64748b">BM</text>
 
-  <text x="80" y="340" font-size="12" font-family="Arial" fill="#64748b">K: omurga, B: kaldırma merkezi, G: ağırlık merkezi, M: metasantr — GM = KB + BM − KG</text>
+  <text x="80" y="340" font-size="12" font-family="Arial" fill="#64748b">K: keel, B: centre of buoyancy, G: centre of gravity, M: metacentre — GM = KB + BM − KG</text>
 </svg>

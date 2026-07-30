@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
   <rect width="900" height="360" fill="#f8fafc" />
-  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Statik Stabilite (GZ) Eğrisi</text>
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Curve of Statical Stability (GZ)</text>
 
   <!-- eksenler -->
   <line x1="100" y1="280" x2="820" y2="280" stroke="#0f172a" stroke-width="2" />
@@ -8,7 +8,7 @@
   <line x1="100" y1="280" x2="100" y2="70" stroke="#0f172a" stroke-width="2" />
   <path d="M100 70 L93 84 L107 84 Z" fill="#0f172a" />
   <text x="60" y="80" font-size="14" font-family="Arial" fill="#0f172a">GZ (m)</text>
-  <text x="770" y="305" font-size="14" font-family="Arial" fill="#0f172a">Yatma açısı (°)</text>
+  <text x="770" y="305" font-size="14" font-family="Arial" fill="#0f172a">Angle of heel (°)</text>
 
   <!-- eksen bölmeleri -->
   <g font-size="12" font-family="Arial" fill="#475569" text-anchor="middle">
@@ -34,16 +34,16 @@
 
   <!-- ilk stabilite eğimi (GM göstergesi, 57.3°'de GM) -->
   <line x1="100" y1="280" x2="240" y2="196" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" />
-  <text x="248" y="196" font-size="12" font-family="Arial" fill="#64748b">Başlangıç eğimi (GM ile orantılı)</text>
+  <text x="248" y="196" font-size="12" font-family="Arial" fill="#64748b">Initial slope (proportional to GM)</text>
 
   <!-- maksimum GZ -->
   <line x1="420" y1="127" x2="420" y2="280" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5 4" />
   <circle cx="420" cy="127" r="6" fill="#ef4444" />
-  <text x="420" y="110" text-anchor="middle" font-size="13" font-weight="bold" font-family="Arial" fill="#ef4444">Maksimum GZ (~40°)</text>
+  <text x="420" y="110" text-anchor="middle" font-size="13" font-weight="bold" font-family="Arial" fill="#ef4444">Maximum GZ (~40°)</text>
 
   <!-- sönüm açısı -->
   <circle cx="730" cy="280" r="6" fill="#7c3aed" />
-  <text x="726" y="262" text-anchor="middle" font-size="13" font-family="Arial" fill="#7c3aed">Sönüm açısı</text>
+  <text x="726" y="262" text-anchor="middle" font-size="13" font-family="Arial" fill="#7c3aed">Angle of vanishing stability</text>
 
-  <text x="100" y="335" font-size="12" font-family="Arial" fill="#64748b">GZ eğrisinin altında kalan alan dinamik stabiliteyi (devrilmeye karşı iş kapasitesini) temsil eder.</text>
+  <text x="100" y="335" font-size="12" font-family="Arial" fill="#64748b">The area under the GZ curve represents dynamical stability — the work capacity against capsizing.</text>
 </svg>

@@ -1,0 +1,81 @@
+{
+  "public/diagrams/machine/iki-zamanli-dizel.svg": [
+    "Süpürme :: escapes panel [125..255]",
+    "Egzoz :: escapes panel [125..255]"
+  ],
+  "public/diagrams/machine/termodinamik-sistem.svg": [
+    "ṁ giren :: escapes panel [40..240]",
+    "ṁ çıkan :: escapes panel [560..760]"
+  ],
+  "public/diagrams/machine/yakit-sistemi.svg": [
+    "Transfer :: escapes panel [30..130]",
+    "Arıtma :: escapes panel [180..280]"
+  ],
+  "public/diagrams/navigation/donus-dairesi.svg": [
+    "(90° dönüşte :: escapes panel [40..660]",
+    "ileri mesafe) :: escapes panel [40..660]"
+  ],
+  "public/diagrams/navigation/duzlem-seyir.svg": [
+    "dLat (NM) :: escapes panel [70..570]"
+  ],
+  "public/diagrams/navigation/enlem-tanimi.svg": [
+    "Ekvator düzlemi :: overflows right by 4.7px"
+  ],
+  "public/diagrams/navigation/harita-datum.svg": [
+    "Yerel datum (örn. Clarke 1866) :: overflows right by 72.1px"
+  ],
+  "public/diagrams/navigation/kural5-gozculuk.svg": [
+    "• Manevra yeteneği ve durma mesafesi :: escapes panel [400..660]",
+    "• Gece — kıyı ışıkları / arka aydınlatma :: escapes panel [400..660]"
+  ],
+  "public/diagrams/navigation/mercator-projection.svg": [
+    "0° :: escapes panel [50..750]"
+  ],
+  "public/diagrams/navigation/paraleller-meridyenler.svg": [
+    "60°N :: escapes panel [50..650]",
+    "30°N :: escapes panel [50..650]",
+    "0° Ekvator :: overflows left by 18.7px",
+    "30°S :: escapes panel [50..650]",
+    "60°S :: escapes panel [50..650]"
+  ],
+  "public/diagrams/navigation/tide-current.svg": [
+    "HW :: escapes panel [500..700]"
+  ],
+  "public/diagrams/seamanship/donme-dairesi.svg": [
+    "Advance (İlerleme) :: escapes panel [230..330]",
+    "Transfer (Kayma) :: escapes panel [230..330]",
+    "Taktik Çap (Tactical Dia.) :: escapes panel [330..470]",
+    "90° :: escapes panel [440..460]",
+    "180° :: escapes panel [640..660]"
+  ],
+  "public/diagrams/seamanship/dumen-tipleri.svg": [
+    "Horn :: escapes panel [445..455]",
+    "Düşük tork gerektirir :: escapes panel [100..800]"
+  ],
+  "public/diagrams/seamanship/gemi-kisimlari.svg": [
+    "(Bridge) :: escapes panel [640..680]"
+  ],
+  "public/diagrams/seamanship/kardinal-samandiralar.svg": [
+    "KUZEY :: escapes panel [337..363]"
+  ],
+  "public/nautical-chart-background.svg": [
+    "N :: overflows left by 15.9px",
+    "S :: overflows left by 10.7px",
+    "W :: overflows left by 193.1px"
+  ],
+  "src/assets/navigation/ais-targets.svg": [
+    "AIS TARGETS :: escapes panel [70..290]"
+  ],
+  "src/assets/navigation/celestial-triangle.svg": [
+    "Polar Distance | LHA :: same-row collision"
+  ],
+  "src/assets/navigation/dsc-distress.svg": [
+    "DISTRESS :: escapes panel [740..870]"
+  ],
+  "src/assets/navigation/mercator-projection.svg": [
+    "0° :: escapes panel [50..750]"
+  ],
+  "src/assets/navigation/tide-current.svg": [
+    "HW :: escapes panel [500..700]"
+  ]
+}

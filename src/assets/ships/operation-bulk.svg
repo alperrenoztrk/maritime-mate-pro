@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
-  <title id="title">Dökme yük gemisi yan profili</title>
-  <desc id="desc">Beş ambar kapağı, güverte vinçleri ve kıç üst yapısı görünen dökme yük gemisi.</desc>
+  <title id="title">Bulk carrier side profile</title>
+  <desc id="desc">A bulk carrier showing five hatch covers, deck cranes and the aft superstructure.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f1eadb"/><stop offset="1" stop-color="#fffdf8"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#367f9b"/><stop offset="1" stop-color="#17516b"/></linearGradient>
