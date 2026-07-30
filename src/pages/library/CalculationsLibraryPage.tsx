@@ -1,0 +1,263 @@
+import { useMemo, useState } from "react";
+import {
+  Anchor,
+  BarChart3,
+  Compass,
+  Droplets,
+  Flame,
+  Gauge,
+  Layers,
+  LifeBuoy,
+  Navigation,
+  Ruler,
+  Scale,
+  Ship,
+  Star,
+  Thermometer,
+  Timer,
+  Wrench,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  LibraryBookCard,
+  LibraryCompactCard,
+  LibraryEntryCard,
+  LibraryPageShell,
+  LibrarySearchField,
+  LibrarySectionHeading,
+} from "@/components/library/LibraryInterface";
+
+interface CalcTool {
+  id: string;
+  title: string;
+  icon: LucideIcon;
+  to: string;
+  category: Category;
+}
+
+type Category = "navigation" | "stability" | "machine" | "ship-systems" | "converter";
+
+const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent: string }> = {
+  navigation: { title: "Navigasyon ve Seyir", icon: Compass, accent: "from-blue-500 via-indigo-600 to-blue-800" },
+  stability: { title: "Yük ve Stabilite", icon: Scale, accent: "from-cyan-500 via-blue-600 to-indigo-800" },
+  machine: { title: "Makine ve Tüketim", icon: Wrench, accent: "from-slate-600 via-zinc-700 to-slate-900" },
+  "ship-systems": { title: "Gemi Sistemleri", icon: Anchor, accent: "from-amber-500 via-orange-600 to-red-700" },
+  converter: { title: "Formüller ve Dönüştürücüler", icon: Zap, accent: "from-violet-500 via-purple-600 to-indigo-800" },
+};
+
+const QUICK_TOOLS: CalcTool[] = [
+  { id: "draft", title: "Draft Hesabı", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "trim", title: "Stabilite / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
+  { id: "fuel", title: "Yakıt Tüketimi", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+  { id: "voyage", title: "Sefer Süresi", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "cargo", title: "Yük Dağılımı", icon: Layers, to: "/cargo/calculations", category: "stability" },
+  { id: "converter", title: "Birim Dönüştürücü", icon: Zap, to: "/converter", category: "converter" },
+];
+
+const TOOLS: CalcTool[] = [
+  { id: "draft-survey", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "preloading", title: "Ön Yükleme", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
+  { id: "ballast", title: "Balast Hesabı", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
+  { id: "density", title: "Yoğunluk Düzeltme", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
+  { id: "bunker", title: "Bunker Survey", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
+  { id: "stability-calc", title: "Stabilite Hesapları", icon: Scale, to: "/stability/calculations", category: "stability" },
+  { id: "tank", title: "Tank Hesapları", icon: Anchor, to: "/tank", category: "stability" },
+  { id: "imo-criteria", title: "IMO Kriterleri", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
+  { id: "nav-calc", title: "Seyir Hesapları", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "passage", title: "Passage Plan", icon: Compass, to: "/passage-plan", category: "navigation" },
+  { id: "tides", title: "Gelgit Hesabı", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },
+  { id: "seamanship-calc", title: "Gemicilik Hesapları", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
+  { id: "diesel-engines", title: "Dizel Motorlar", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
+  { id: "thermodynamics", title: "Termodinamik", icon: Thermometer, to: "/machine/thermodynamics/calculations", category: "machine" },
+  { id: "fuel-technology", title: "Yakıt Teknolojisi", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
+  { id: "cooling-hvac", title: "Soğutma ve HVAC", icon: Gauge, to: "/machine/cooling-hvac/calculations", category: "machine" },
+  { id: "machine-elements", title: "Makine Elemanları", icon: Layers, to: "/machine/machine-elements/calculations", category: "machine" },
+  { id: "emissions-machine", title: "Emisyon ve Çevre", icon: Flame, to: "/machine/environment-machine/calculations", category: "machine" },
+  { id: "deck-machinery", title: "Güverte Makineleri", icon: Anchor, to: "/ship-systems/deck-machinery", category: "ship-systems" },
+  { id: "nav-systems", title: "Seyir Sistemleri ve Cihazları", icon: Compass, to: "/ship-systems/nav-systems", category: "ship-systems" },
+  { id: "main-engine", title: "Ana Makine / Tahrik Sistemi", icon: Wrench, to: "/ship-systems/main-engine", category: "ship-systems" },
+  { id: "auxiliary", title: "Yardımcı Makineler", icon: Gauge, to: "/ship-systems/auxiliary", category: "ship-systems" },
+  { id: "unit-conv", title: "Birim Dönüştürücü", icon: Zap, to: "/converter", category: "converter" },
+  { id: "nav-formulas", title: "Navigasyon Formülleri", icon: Compass, to: "/navigation/formulas", category: "converter" },
+  { id: "stab-formulas", title: "Stabilite Formülleri", icon: Scale, to: "/stability/formulas", category: "converter" },
+  { id: "cargo-formulas", title: "Draft Survey Standartları", icon: Ruler, to: "/cargo/formulas", category: "converter" },
+];
+
+const ALL_TOOLS = [...QUICK_TOOLS, ...TOOLS].filter(
+  (tool, index, tools) => tools.findIndex((candidate) => candidate.id === tool.id) === index,
+);
+const RECENT_STORAGE_KEY = "marine-expert-recent-calcs";
+const FAVORITES_STORAGE_KEY = "marine-expert-fav-calcs";
+
+const readStoredList = (key: string) => {
+  try {
+    return JSON.parse(localStorage.getItem(key) || "[]") as string[];
+  } catch {
+    return [];
+  }
+};
+
+const writeRecent = (id: string) => {
+  const next = [id, ...readStoredList(RECENT_STORAGE_KEY).filter((item) => item !== id)].slice(0, 6);
+  localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(next));
+};
+
+function ToolBook({
+  tool,
+  favorite,
+  onFavorite,
+}: {
+  tool: CalcTool;
+  favorite: boolean;
+  onFavorite: () => void;
+}) {
+  const meta = CATEGORY_META[tool.category];
+  return (
+    <div className="relative" onClickCapture={() => writeRecent(tool.id)}>
+      <LibraryBookCard
+        to={tool.to}
+        title={tool.title}
+        icon={tool.icon}
+        accent={meta.accent}
+      />
+      <button
+        type="button"
+        aria-label={favorite ? "Favorilerden çıkar" : "Favorilere ekle"}
+        onClick={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          onFavorite();
+        }}
+        className="absolute right-3 top-3 z-20 rounded-full bg-black/30 p-2 text-white backdrop-blur transition hover:bg-black/50"
+      >
+        <Star className={`h-4 w-4 ${favorite ? "fill-amber-400 text-amber-400" : "text-white"}`} />
+      </button>
+    </div>
+  );
+}
+
+export default function CalculationsLibraryPage() {
+  const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null);
+  const [favorites, setFavorites] = useState<string[]>(() => readStoredList(FAVORITES_STORAGE_KEY));
+  const [recents] = useState<string[]>(() => readStoredList(RECENT_STORAGE_KEY));
+
+  const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+  const visibleTools = useMemo(() => {
+    if (normalizedQuery) {
+      return ALL_TOOLS.filter((tool) => tool.title.toLocaleLowerCase("tr-TR").includes(normalizedQuery));
+    }
+    if (activeCategory) return ALL_TOOLS.filter((tool) => tool.category === activeCategory);
+    return QUICK_TOOLS;
+  }, [activeCategory, normalizedQuery]);
+
+  const favoriteTools = favorites
+    .map((id) => ALL_TOOLS.find((tool) => tool.id === id))
+    .filter((tool): tool is CalcTool => Boolean(tool));
+  const recentTools = recents
+    .map((id) => ALL_TOOLS.find((tool) => tool.id === id))
+    .filter((tool): tool is CalcTool => Boolean(tool))
+    .slice(0, 4);
+
+  const toggleFavorite = (id: string) => {
+    const next = favorites.includes(id)
+      ? favorites.filter((item) => item !== id)
+      : [id, ...favorites].slice(0, 8);
+    setFavorites(next);
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(next));
+  };
+
+  const activeMeta = activeCategory ? CATEGORY_META[activeCategory] : null;
+
+  return (
+    <LibraryPageShell
+      title={activeMeta?.title ?? "Hesaplamalar"}
+      icon={activeMeta?.icon ?? BarChart3}
+      onBack={activeCategory ? () => setActiveCategory(null) : undefined}
+      backLabel="Hesaplama kategorilerine dön"
+    >
+      <LibrarySearchField
+        value={query}
+        onChange={setQuery}
+        placeholder="Hesaplama ara…"
+        ariaLabel="Hesaplamalarda ara"
+      />
+
+      {!activeCategory && !normalizedQuery && (
+        <>
+          <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {(Object.entries(CATEGORY_META) as Array<[Category, (typeof CATEGORY_META)[Category]]>).map(
+              ([category, meta]) => (
+                <LibraryEntryCard
+                  key={category}
+                  title={meta.title}
+                  icon={meta.icon}
+                  accent={meta.accent}
+                  badge={ALL_TOOLS.filter((tool) => tool.category === category).length}
+                  onClick={() => setActiveCategory(category)}
+                />
+              ),
+            )}
+          </section>
+
+          {favoriteTools.length > 0 && (
+            <section className="space-y-3">
+              <LibrarySectionHeading badge={favoriteTools.length}>Favoriler</LibrarySectionHeading>
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {favoriteTools.map((tool) => (
+                  <LibraryCompactCard
+                    key={tool.id}
+                    to={tool.to}
+                    title={tool.title}
+                    icon={tool.icon}
+                    accent={CATEGORY_META[tool.category].accent}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {recentTools.length > 0 && (
+            <section className="space-y-3">
+              <LibrarySectionHeading>Son Kullanılan</LibrarySectionHeading>
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {recentTools.map((tool) => (
+                  <LibraryCompactCard
+                    key={tool.id}
+                    to={tool.to}
+                    title={tool.title}
+                    icon={tool.icon}
+                    accent={CATEGORY_META[tool.category].accent}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
+      )}
+
+      <section className="space-y-4">
+        <LibrarySectionHeading badge={visibleTools.length}>
+          {normalizedQuery ? "Arama Sonuçları" : activeMeta?.title ?? "Hızlı Araçlar"}
+        </LibrarySectionHeading>
+        {visibleTools.length > 0 ? (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {visibleTools.map((tool) => (
+              <ToolBook
+                key={tool.id}
+                tool={tool}
+                favorite={favorites.includes(tool.id)}
+                onFavorite={() => toggleFavorite(tool.id)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
+            Aramanızla eşleşen hesaplama bulunamadı.
+          </div>
+        )}
+      </section>
+    </LibraryPageShell>
+  );
+}
