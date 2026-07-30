@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
-import { getTopicQuiz } from "@/data/courseContent/quiz";
+import { getExerciseQuestionDistribution } from "@/data/exerciseQuestionDistribution";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
 import { getScenariosByTopic } from "@/data/scenarios";
 import {
@@ -15,9 +15,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const toCourseKey = (categoryId?: string) =>
-  categoryId?.startsWith("machine-") ? categoryId.replace("machine-", "") : categoryId;
-
 export default function ExerciseTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = getBetaCategories().find((item) => item.key === categoryId);
@@ -25,7 +22,7 @@ export default function ExerciseTopicsPage() {
   const flows = getLessonFlowsByTopic(categoryId);
   const flowTitles = new Set(flows.map((flow) => flow.topicTitle));
   const scenarios = getScenariosByTopic(categoryId);
-  const quizQuestions = getTopicQuiz(toCourseKey(categoryId));
+  const questionDistribution = getExerciseQuestionDistribution(categoryId);
   const [expandedModules, setExpandedModules] = useState<string[]>(() =>
     modules[0] ? [modules[0].id] : [],
   );
@@ -64,23 +61,12 @@ export default function ExerciseTopicsPage() {
             </div>
             <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
+          {questionDistribution.totalQuestions > 0 && (
+            <p className="mt-3 text-xs text-muted-foreground">
+              {questionDistribution.totalQuestions} eski quiz sorusu ilgili konulara dağıtıldı
+            </p>
+          )}
         </header>
-
-        {quizQuestions.length > 0 && (
-          <Link
-            to={`/exercises/${categoryId}/quiz`}
-            className="group flex items-center gap-3 rounded-2xl border border-violet-500/30 bg-violet-500/5 p-4 shadow-sm transition hover:border-violet-500/50 hover:bg-violet-500/10"
-          >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow">
-              <ListChecks className="h-5 w-5" />
-            </div>
-            <p className="flex-1 font-bold text-foreground">Quiz Soruları</p>
-            <span className="rounded-full bg-violet-500/15 px-2.5 py-1 text-xs font-semibold text-violet-700 dark:text-violet-300">
-              {quizQuestions.length} soru
-            </span>
-            <ChevronRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        )}
 
         {scenarios.length > 0 && (
           <Link
@@ -135,6 +121,10 @@ export default function ExerciseTopicsPage() {
                   <div className="grid gap-2 border-t border-border/40 bg-background/35 p-4 sm:grid-cols-2">
                     {module.topics.map((topic) => {
                       const hasGuidedFlow = flowTitles.has(topic.sourceTitle);
+                      const questionCount =
+                        questionDistribution.questionsByTopic.get(topic.id)?.length ?? 0;
+                      const actionColumns = hasGuidedFlow && questionCount > 0 ? "grid-cols-3" : "grid-cols-2";
+
                       return (
                         <div
                           key={topic.id}
@@ -146,32 +136,50 @@ export default function ExerciseTopicsPage() {
                               <p className="text-sm font-medium leading-snug text-foreground">
                                 {topic.title}
                               </p>
-                              {hasGuidedFlow && (
-                                <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-violet-500/15 px-2 py-0.5 text-[9px] font-bold uppercase text-violet-600 dark:text-violet-300">
-                                  <Sparkles className="h-2.5 w-2.5" /> Rehberli
-                                </span>
-                              )}
+                              <div className="mt-1 flex flex-wrap gap-1.5">
+                                {hasGuidedFlow && (
+                                  <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/15 px-2 py-0.5 text-[9px] font-bold uppercase text-violet-600 dark:text-violet-300">
+                                    <Sparkles className="h-2.5 w-2.5" /> Rehberli
+                                  </span>
+                                )}
+                                {questionCount > 0 && (
+                                  <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[9px] font-bold text-primary">
+                                    <ListChecks className="h-2.5 w-2.5" /> {questionCount} soru
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </div>
-                          <div className="mt-3 grid grid-cols-2 gap-2">
+
+                          <div className={`mt-3 grid ${actionColumns} gap-2`}>
                             <Link
                               to={detailLink(topic.id)}
-                              className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-background/60 px-3 py-2 text-xs font-medium text-foreground transition hover:bg-muted"
+                              className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-background/60 px-2 py-2 text-xs font-medium text-foreground transition hover:bg-muted"
                             >
                               <BookOpen className="h-3.5 w-3.5" /> Oku
                             </Link>
+
+                            {questionCount > 0 && (
+                              <Link
+                                to={`${detailLink(topic.id)}#konu-sorulari`}
+                                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-violet-500/30 bg-violet-500/10 px-2 py-2 text-xs font-semibold text-violet-700 transition hover:bg-violet-500/15 dark:text-violet-300"
+                              >
+                                <ListChecks className="h-3.5 w-3.5" /> Sorular
+                              </Link>
+                            )}
+
                             {hasGuidedFlow ? (
                               <Link
                                 to={learnLink(topic.sourceTitle)}
-                                className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-violet-500 to-indigo-600 px-3 py-2 text-xs font-semibold text-white transition hover:opacity-90"
+                                className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-violet-500 to-indigo-600 px-2 py-2 text-xs font-semibold text-white transition hover:opacity-90"
                               >
                                 <Play className="h-3.5 w-3.5" /> Başla
                               </Link>
-                            ) : (
-                              <span className="inline-flex items-center justify-center rounded-lg bg-muted/60 px-3 py-2 text-[10px] text-muted-foreground">
+                            ) : questionCount === 0 ? (
+                              <span className="inline-flex items-center justify-center rounded-lg bg-muted/60 px-2 py-2 text-[10px] text-muted-foreground">
                                 Okuma modu
                               </span>
-                            )}
+                            ) : null}
                           </div>
                         </div>
                       );
