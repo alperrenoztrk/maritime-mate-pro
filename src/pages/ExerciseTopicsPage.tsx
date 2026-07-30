@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { getExerciseQuestionDistribution } from "@/data/exerciseQuestionDistribution";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
@@ -36,6 +37,8 @@ export default function ExerciseTopicsPage() {
   }
 
   const CategoryIcon = category.icon;
+  const courseKey =
+    category.group === "machine" ? category.key.replace("machine-", "") : category.key;
   const detailLink = (topicId: string) =>
     `/exercises/${categoryId}/topics/${encodeURIComponent(topicId)}`;
   const learnLink = (sourceTitle: string) =>
@@ -60,13 +63,15 @@ export default function ExerciseTopicsPage() {
               <CategoryIcon className="h-6 w-6" />
             </div>
             <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
+            {questionDistribution.totalQuestions > 0 && (
+              <span className="rounded-full bg-violet-500/15 px-2.5 py-1 text-xs font-semibold text-violet-700 dark:text-violet-300">
+                {questionDistribution.totalQuestions} soru
+              </span>
+            )}
           </div>
-          {questionDistribution.totalQuestions > 0 && (
-            <p className="mt-3 text-xs text-muted-foreground">
-              {questionDistribution.totalQuestions} eski quiz sorusu ilgili konulara dağıtıldı
-            </p>
-          )}
         </header>
+
+        <CourseSectionTabs group={category.group} courseKey={courseKey} active="quiz" />
 
         {scenarios.length > 0 && (
           <Link
