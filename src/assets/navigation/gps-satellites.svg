@@ -13,16 +13,16 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">GPS Uydu Konumlandırması</text>
+  <text x="400" y="30" class="text title">GPS Satellite Positioning</text>
   
   <!-- Earth -->
   <g transform="translate(400, 300)">
     <circle cx="0" cy="0" r="80" class="earth"/>
-    <text x="0" y="5" class="text" fill="white">Dünya</text>
+    <text x="0" y="5" class="text" fill="white">Earth</text>
     
     <!-- Ship on Earth -->
     <circle cx="40" cy="-20" r="6" class="ship"/>
-    <text x="55" y="-15" class="text">Gemi</text>
+    <text x="55" y="-15" class="text">Ship</text>
   </g>
   
   <!-- Satellites and Orbits -->
@@ -67,16 +67,16 @@
   
   <!-- Information -->
   <rect x="50" y="450" width="700" height="120" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="400" y="470" class="text title">GPS Çalışma Prensibi</text>
-  <text x="400" y="490" class="text">• En az 4 uydu gereklidir (3D konumlandırma için)</text>
-  <text x="400" y="510" class="text">• Her uydu konumunu ve zamanı gönderir</text>
-  <text x="400" y="530" class="text">• Gemi, uydu mesafelerini hesaplar</text>
-  <text x="400" y="550" class="text">• Trilaterasyon ile kesin konum bulunur</text>
+  <text x="400" y="470" class="text title">How GPS Works</text>
+  <text x="400" y="490" class="text">• At least 4 satellites are needed for a 3D fix</text>
+  <text x="400" y="510" class="text">• Each satellite transmits its position and time</text>
+  <text x="400" y="530" class="text">• The ship computes the range to each satellite</text>
+  <text x="400" y="550" class="text">• Trilateration then gives the exact position</text>
   
   <!-- Accuracy factors -->
   <rect x="50" y="50" width="200" height="100" fill="#ffffcc" stroke="#000" stroke-width="1"/>
-  <text x="150" y="70" class="text title">Doğruluk Faktörleri</text>
-  <text x="150" y="90" class="text">• HDOP: Yatay doğruluk</text>
-  <text x="150" y="110" class="text">• PDOP: Konum doğruluk</text>
-  <text x="150" y="130" class="text">• TDOP: Zaman doğruluk</text>
+  <text x="150" y="70" class="text title">Accuracy Factors</text>
+  <text x="150" y="90" class="text">• HDOP: horizontal accuracy</text>
+  <text x="150" y="110" class="text">• PDOP: positional accuracy</text>
+  <text x="150" y="130" class="text">• TDOP: time accuracy</text>
 </svg>

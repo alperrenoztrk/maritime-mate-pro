@@ -15,7 +15,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="300" y="30" class="text title">Radar Ekranı</text>
+  <text x="300" y="30" class="text title">Radar Display</text>
   
   <!-- Radar Display -->
   <g transform="translate(300, 300)">
@@ -77,10 +77,10 @@
   
   <!-- Legend -->
   <rect x="50" y="50" width="200" height="120" fill="#000080" stroke="#00ff00" stroke-width="1"/>
-  <text x="150" y="70" class="text" fill="#00ff00">Radar Elemanları</text>
-  <text x="150" y="90" class="text" fill="#ff0000">• Hedefler</text>
-  <text x="150" y="110" class="text" fill="#00ff00">• Menzil halkaları</text>
-  <text x="150" y="130" class="text" fill="#ffff00">• Baş çizgisi</text>
+  <text x="150" y="70" class="text" fill="#00ff00">Radar Legend</text>
+  <text x="150" y="90" class="text" fill="#ff0000">• Targets</text>
+  <text x="150" y="110" class="text" fill="#00ff00">• Range rings</text>
+  <text x="150" y="130" class="text" fill="#ffff00">• Heading line</text>
   <text x="150" y="150" class="text" fill="#ff00ff">• EBL</text>
   <text x="150" y="170" class="text" fill="#00ffff">• VRM</text>
 </svg>

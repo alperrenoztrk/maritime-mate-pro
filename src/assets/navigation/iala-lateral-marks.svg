@@ -13,22 +13,22 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">IALA A Sistemi - Lateral İşaretler</text>
+  <text x="400" y="30" class="text title">IALA System A - Lateral Marks</text>
   
   <!-- Port Hand Mark (Red) -->
   <g transform="translate(100, 100)">
     <circle cx="0" cy="0" r="30" class="buoy red"/>
     <text x="0" y="5" class="text" fill="white">P</text>
-    <text x="0" y="80" class="text">İskele</text>
-    <text x="0" y="95" class="text">(Kırmızı)</text>
+    <text x="0" y="80" class="text">Port</text>
+    <text x="0" y="95" class="text">(red)</text>
   </g>
   
   <!-- Starboard Hand Mark (Green) -->
   <g transform="translate(300, 100)">
     <circle cx="0" cy="0" r="30" class="buoy green"/>
     <text x="0" y="5" class="text" fill="white">S</text>
-    <text x="0" y="80" class="text">Sancak</text>
-    <text x="0" y="95" class="text">(Yeşil)</text>
+    <text x="0" y="80" class="text">Starboard</text>
+    <text x="0" y="95" class="text">(green)</text>
   </g>
   
   <!-- Preferred Channel Starboard -->
@@ -36,8 +36,8 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="green"/>
     <rect x="-20" y="0" width="40" height="20" class="red"/>
-    <text x="0" y="80" class="text">Tercih Edilen</text>
-    <text x="0" y="95" class="text">Kanal Sancak</text>
+    <text x="0" y="80" class="text">Preferred</text>
+    <text x="0" y="95" class="text">Channel Starboard</text>
   </g>
   
   <!-- Preferred Channel Port -->
@@ -45,20 +45,20 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="red"/>
     <rect x="-20" y="0" width="40" height="20" class="green"/>
-    <text x="0" y="80" class="text">Tercih Edilen</text>
-    <text x="0" y="95" class="text">Kanal İskele</text>
+    <text x="0" y="80" class="text">Preferred</text>
+    <text x="0" y="95" class="text">Channel Port</text>
   </g>
   
   <!-- Cardinal Marks -->
-  <text x="400" y="250" class="text title">Kardinal İşaretler</text>
+  <text x="400" y="250" class="text title">Cardinal Marks</text>
   
   <!-- North Cardinal -->
   <g transform="translate(100, 300)">
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="yellow"/>
     <rect x="-20" y="0" width="40" height="20" class="black"/>
-    <text x="0" y="80" class="text">Kuzey</text>
-    <text x="0" y="95" class="text">(Kuzeyde Güvenli)</text>
+    <text x="0" y="80" class="text">North</text>
+    <text x="0" y="95" class="text">(safe to the N)</text>
   </g>
   
   <!-- East Cardinal -->
@@ -66,8 +66,8 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="20" height="40" class="black"/>
     <rect x="0" y="-20" width="20" height="40" class="yellow"/>
-    <text x="0" y="80" class="text">Doğu</text>
-    <text x="0" y="95" class="text">(Doğuda Güvenli)</text>
+    <text x="0" y="80" class="text">East</text>
+    <text x="0" y="95" class="text">(safe to the E)</text>
   </g>
   
   <!-- South Cardinal -->
@@ -75,8 +75,8 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="yellow"/>
     <rect x="-20" y="-20" width="40" height="20" class="black"/>
-    <text x="0" y="80" class="text">Güney</text>
-    <text x="0" y="95" class="text">(Güneyde Güvenli)</text>
+    <text x="0" y="80" class="text">South</text>
+    <text x="0" y="95" class="text">(safe to the S)</text>
   </g>
   
   <!-- West Cardinal -->
@@ -84,19 +84,19 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="20" height="40" class="yellow"/>
     <rect x="0" y="-20" width="20" height="40" class="black"/>
-    <text x="0" y="80" class="text">Batı</text>
-    <text x="0" y="95" class="text">(Batıda Güvenli)</text>
+    <text x="0" y="80" class="text">West</text>
+    <text x="0" y="95" class="text">(safe to the W)</text>
   </g>
   
   <!-- Special Marks -->
-  <text x="400" y="450" class="text title">Özel İşaretler</text>
+  <text x="400" y="450" class="text title">Other Marks</text>
   
   <!-- Isolated Danger -->
   <g transform="translate(200, 500)">
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="black"/>
     <rect x="-20" y="-5" width="40" height="10" class="red"/>
-    <text x="0" y="80" class="text">Tecrit Tehlike</text>
+    <text x="0" y="80" class="text">Isolated Danger</text>
   </g>
   
   <!-- Safe Water -->
@@ -104,7 +104,7 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="red"/>
     <rect x="-20" y="-5" width="40" height="10" class="white"/>
-    <text x="0" y="80" class="text">Emniyetli Su</text>
+    <text x="0" y="80" class="text">Safe Water</text>
   </g>
   
   <!-- Special Purpose -->
@@ -112,6 +112,6 @@
     <circle cx="0" cy="0" r="30" class="buoy"/>
     <rect x="-20" y="-20" width="40" height="40" class="yellow"/>
     <text x="0" y="5" class="text" fill="black">X</text>
-    <text x="0" y="80" class="text">Özel Amaç</text>
+    <text x="0" y="80" class="text">Special Mark</text>
   </g>
 </svg>

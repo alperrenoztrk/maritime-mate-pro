@@ -12,7 +12,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="300" y="30" class="text title">Azimutal Eşit Uzaklık Projeksiyonu</text>
+  <text x="300" y="30" class="text title">Azimuthal Equidistant Projection</text>
   
   <!-- Projection -->
   <g transform="translate(300, 250)">
@@ -21,7 +21,7 @@
     
     <!-- Center point -->
     <circle cx="0" cy="0" r="8" class="center"/>
-    <text x="0" y="-200" class="text">Kutup Merkezli</text>
+    <text x="0" y="-200" class="text">Polar centred</text>
     
     <!-- Continents (distorted) -->
     <!-- North America -->
@@ -56,7 +56,7 @@
   
   <!-- Characteristics -->
   <rect x="50" y="420" width="500" height="60" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="300" y="440" class="text title">Azimutal Eşit Uzaklık Özellikleri</text>
-  <text x="300" y="460" class="text">• Merkez noktadan uzaklıklar doğru</text>
-  <text x="300" y="475" class="text">• Azimutlar merkez noktadan doğru</text>
+  <text x="300" y="440" class="text title">Properties of the Azimuthal Equidistant Projection</text>
+  <text x="300" y="460" class="text">• Distances from the centre are true</text>
+  <text x="300" y="475" class="text">• Azimuths from the centre are true</text>
 </svg>

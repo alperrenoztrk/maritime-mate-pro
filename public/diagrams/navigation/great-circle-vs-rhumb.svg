@@ -13,7 +13,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">Büyük Daire vs Rhumb Çizgisi</text>
+  <text x="400" y="30" class="text title">Great Circle vs Rhumb Line</text>
   
   <!-- World Map -->
   <g transform="translate(400, 200)">
@@ -48,16 +48,16 @@
     <line x1="-200" y1="-40" x2="120" y2="-20" class="rhumb-line"/>
     
     <!-- Labels -->
-    <text x="-50" y="-100" class="text">Büyük Daire (Kırmızı)</text>
-    <text x="-50" y="-85" class="text">En kısa mesafe</text>
+    <text x="-50" y="-100" class="text">Great Circle (red)</text>
+    <text x="-50" y="-85" class="text">Shortest distance</text>
     
-    <text x="-50" y="-20" class="text">Rhumb Çizgisi (Mavi)</text>
-    <text x="-50" y="-5" class="text">Sabit kerteriz</text>
+    <text x="-50" y="-20" class="text">Rhumb Line (blue)</text>
+    <text x="-50" y="-5" class="text">Constant course</text>
   </g>
   
   <!-- Distance comparison -->
   <rect x="50" y="320" width="700" height="60" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="400" y="340" class="text title">Mesafe Karşılaştırması</text>
-  <text x="400" y="360" class="text">Büyük Daire: ~10,800 km | Rhumb Çizgisi: ~11,200 km</text>
-  <text x="400" y="375" class="text">Fark: ~400 km (yaklaşık %3.7 daha uzun)</text>
+  <text x="400" y="340" class="text title">Distance Comparison</text>
+  <text x="400" y="360" class="text">Great circle: ~10,800 km | Rhumb line: ~11,200 km</text>
+  <text x="400" y="375" class="text">Difference: ~400 km (about 3.7% longer)</text>
 </svg>

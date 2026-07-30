@@ -14,7 +14,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">Kardinal İşaretler - Tepelikler ve Renkler</text>
+  <text x="400" y="30" class="text title">Cardinal Marks - Topmarks and Colours</text>
   
   <!-- North Cardinal -->
   <g transform="translate(100, 100)">
@@ -24,9 +24,9 @@
     <!-- Two cones pointing up -->
     <polygon points="-10,-35 -5,-45 0,-35" class="cone"/>
     <polygon points="0,-35 5,-45 10,-35" class="cone"/>
-    <text x="0" y="90" class="text">KUZEY</text>
-    <text x="0" y="105" class="text">İki koni yukarı</text>
-    <text x="0" y="120" class="text">Sarı-siyah</text>
+    <text x="0" y="90" class="text">NORTH</text>
+    <text x="0" y="105" class="text">Both cones up</text>
+    <text x="0" y="120" class="text">Yellow over black</text>
   </g>
   
   <!-- East Cardinal -->
@@ -37,9 +37,9 @@
     <!-- Two cones pointing outward -->
     <polygon points="-15,-20 -25,-30 -15,-10" class="cone"/>
     <polygon points="15,-20 25,-30 15,-10" class="cone"/>
-    <text x="0" y="90" class="text">DOĞU</text>
-    <text x="0" y="105" class="text">İki koni dışa</text>
-    <text x="0" y="120" class="text">Siyah-sarı</text>
+    <text x="0" y="90" class="text">EAST</text>
+    <text x="0" y="105" class="text">Cones point away</text>
+    <text x="0" y="120" class="text">Black over yellow</text>
   </g>
   
   <!-- South Cardinal -->
@@ -50,9 +50,9 @@
     <!-- Two cones pointing down -->
     <polygon points="-10,35 -5,45 0,35" class="cone"/>
     <polygon points="0,35 5,45 10,35" class="cone"/>
-    <text x="0" y="90" class="text">GÜNEY</text>
-    <text x="0" y="105" class="text">İki koni aşağı</text>
-    <text x="0" y="120" class="text">Sarı-siyah</text>
+    <text x="0" y="90" class="text">SOUTH</text>
+    <text x="0" y="105" class="text">Both cones down</text>
+    <text x="0" y="120" class="text">Yellow over black</text>
   </g>
   
   <!-- West Cardinal -->
@@ -63,16 +63,16 @@
     <!-- Two cones pointing inward -->
     <polygon points="-15,20 -25,30 -15,10" class="cone"/>
     <polygon points="15,20 25,30 15,10" class="cone"/>
-    <text x="0" y="90" class="text">BATI</text>
-    <text x="0" y="105" class="text">İki koni içe</text>
-    <text x="0" y="120" class="text">Sarı-siyah</text>
+    <text x="0" y="90" class="text">WEST</text>
+    <text x="0" y="105" class="text">Cones point together</text>
+    <text x="0" y="120" class="text">Yellow over black</text>
   </g>
   
   <!-- Memory Aid -->
   <rect x="50" y="250" width="700" height="120" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="400" y="275" class="text title">Hafıza Yardımcısı</text>
-  <text x="400" y="300" class="text">"Kuzeyde İki Konuşkan" - Kuzey: İki koni yukarı</text>
-  <text x="400" y="320" class="text">"Doğuda Dışarı" - Doğu: İki koni dışa</text>
-  <text x="400" y="340" class="text">"Güneyde Gömülü" - Güney: İki koni aşağı</text>
-  <text x="400" y="360" class="text">"Batıda Birleşik" - Batı: İki koni içe</text>
+  <text x="400" y="275" class="text title">Memory Aid</text>
+  <text x="400" y="300" class="text">North: both cones point up, black band on top</text>
+  <text x="400" y="320" class="text">East: cones point away — an "egg timer"</text>
+  <text x="400" y="340" class="text">South: both cones point down, black band below</text>
+  <text x="400" y="360" class="text">West: cones point together — a "wine glass"</text>
 </svg>

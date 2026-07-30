@@ -17,7 +17,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="200" y="30" class="text title">Manyetik Pusula</text>
+  <text x="200" y="30" class="text title">Magnetic Compass</text>
   
   <!-- Compass -->
   <g transform="translate(200, 200)">
@@ -61,8 +61,8 @@
   
   <!-- Description -->
   <rect x="50" y="320" width="300" height="70" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="200" y="340" class="text title">Pusula Bileşenleri</text>
-  <text x="200" y="360" class="text small">Kırmızı ok: Kuzey</text>
-  <text x="200" y="374" class="text small">Mavi ok: Güney</text>
-  <text x="200" y="388" class="text small">Lubber Line: Geminin baş yönü</text>
+  <text x="200" y="340" class="text title">Compass Components</text>
+  <text x="200" y="360" class="text small">Red needle: north</text>
+  <text x="200" y="374" class="text small">Blue needle: south</text>
+  <text x="200" y="388" class="text small">Lubber line: the ship's heading</text>
 </svg>

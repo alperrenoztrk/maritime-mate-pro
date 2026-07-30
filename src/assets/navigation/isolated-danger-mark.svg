@@ -12,7 +12,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="200" y="30" class="text title">Tecrit Tehlike İşareti</text>
+  <text x="200" y="30" class="text title">Isolated Danger Mark</text>
   
   <!-- Buoy -->
   <g transform="translate(200, 120)">
@@ -25,15 +25,15 @@
     <circle cx="-15" cy="-60" r="8" class="sphere"/>
     <circle cx="15" cy="-60" r="8" class="sphere"/>
     
-    <text x="0" y="100" class="text">TECRİT TEHLİKE</text>
-    <text x="0" y="115" class="text">İki siyah küre tepelik</text>
-    <text x="0" y="130" class="text">Siyah-kırmızı-siyah</text>
+    <text x="0" y="100" class="text">ISOLATED DANGER</text>
+    <text x="0" y="115" class="text">Two black spheres as topmark</text>
+    <text x="0" y="130" class="text">Black-red-black</text>
   </g>
   
   <!-- Description -->
   <rect x="50" y="200" width="300" height="80" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="200" y="225" class="text title">Anlamı</text>
-  <text x="200" y="245" class="text">Bu işaretin çevresinde güvenli</text>
-  <text x="200" y="260" class="text">geçiş mümkündür, ancak işaretin</text>
-  <text x="200" y="275" class="text">tam üzerinde tehlike bulunur.</text>
+  <text x="200" y="225" class="text title">Meaning</text>
+  <text x="200" y="245" class="text">There is navigable water all</text>
+  <text x="200" y="260" class="text">around this mark, but a danger</text>
+  <text x="200" y="275" class="text">lies immediately beneath it.</text>
 </svg>

@@ -15,7 +15,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="300" y="30" class="text title">Sekstant</text>
+  <text x="300" y="30" class="text title">Sextant</text>
   
   <!-- Sextant -->
   <g transform="translate(300, 200)">
@@ -57,12 +57,12 @@
   <g transform="translate(100, 100)">
     <circle cx="0" cy="0" r="15" class="sun"/>
     <line x1="-50" y1="50" x2="50" y2="50" class="horizon"/>
-    <text x="0" y="70" class="text">Ufuk</text>
+    <text x="0" y="70" class="text">Horizon</text>
   </g>
   
   <!-- Description -->
   <rect x="50" y="320" width="500" height="60" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="300" y="340" class="text title">Sekstant Bileşenleri</text>
-  <text x="300" y="360" class="text">1. Ana Gövde 2. Yay ve Ölçek 3. İndeks Aynası 4. Ufuk Aynası</text>
-  <text x="300" y="375" class="text">5. Teleskop 6. İndeks Kolu 7. Vernier Ölçeği</text>
+  <text x="300" y="340" class="text title">Parts of the Sextant</text>
+  <text x="300" y="360" class="text">1. Frame 2. Arc and scale 3. Index mirror 4. Horizon mirror</text>
+  <text x="300" y="375" class="text">5. Telescope 6. Index arm 7. Vernier scale</text>
 </svg>
