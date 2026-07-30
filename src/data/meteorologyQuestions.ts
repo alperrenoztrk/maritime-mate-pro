@@ -11,18 +11,18 @@ export const meteorologyQuestions: QuizQuestion[] = [
   },
   {
     id: 2,
-    question: "Kumulonimbus (Cb) bulutu genellikle hangi hava olayının habercisidir?",
-    options: ["Sakin hava", "Fırtına ve sağanak", "Sis", "Hafif rüzgâr"],
+    question: "Kumulonimbus (Cb) bulutu geçişinde en olası hava olayları hangisidir?",
+    options: ["Kararlı, açık ve sakin hava", "Şiddetli sağanak, yıldırım ve ani squall", "Sürekli hafif çisenti (drizzle)", "Yer seviyesinde yoğun radyasyon sisi"],
     correctAnswer: 1,
-    explanation: "Cb dikey gelişimli fırtına bulutudur; şiddetli sağanak, yıldırım, squall görülebilir.",
+    explanation: "Cb dikey gelişimli fırtına bulutudur; şiddetli sağanak, yıldırım ve ani squall görülür. (Drizzle stratustan, radyasyon sisi durgun açık geceden gelir — Cb ile karıştırılmamalı.)",
     category: "Bulutlar"
   },
   {
     id: 3,
-    question: "Coriolis kuvveti Kuzey yarımkürede hareket eden hava kütlelerini hangi yöne saptırır?",
-    options: ["Sola", "Sağa", "Yukarı", "Aşağı"],
+    question: "Kuzey yarımkürede Coriolis hareketi sağa saptırdığına göre, bir alçak basınç çevresindeki rüzgârın dönüş yönü ve merkeze göre davranışı nasıldır?",
+    options: ["Saat yönünde, dışa doğru", "Saat yönünün tersine, içe doğru (siklonik)", "Saat yönünde, içe doğru", "Saat yönünün tersine, dışa doğru"],
     correctAnswer: 1,
-    explanation: "Kuzey yarımkürede hareket sağa sapar; bu yüzden alçak basınçlar saat yönünün tersine döner.",
+    explanation: "KH'de Coriolis sağa saptırır; alçak basınçta hava içe akarken saat yönünün tersine (siklonik) döner. Yüzey sürtünmesi merkeze doğru hafif içe bileşen ekler.",
     category: "Dinamik"
   },
   {
@@ -51,10 +51,10 @@ export const meteorologyQuestions: QuizQuestion[] = [
   },
   {
     id: 7,
-    question: "Derin su dalga boyu yaklaşık formülü \(L \\approx 1.56\\,T^2\\) (m) ise T=10 s için L kaç metredir?",
-    options: ["78 m", "100 m", "156 m", "200 m"],
+    question: "Derin su dalga boyu yaklaşık L ≈ 1.56·T² (m) bağıntısıyla bulunur. Periyot T = 12 s için dalga boyu kaç metredir?",
+    options: ["144 m", "187 m", "225 m", "288 m"],
     correctAnswer: 2,
-    explanation: "L ≈ 1.56×100 = 156 m.",
+    explanation: "L ≈ 1.56 × T² = 1.56 × 12² = 1.56 × 144 ≈ 225 m. (Trap: yalnız T²=144 alıp 1.56 ile çarpmayı unutmak.)",
     category: "Dalgalar"
   },
   {

@@ -19,10 +19,10 @@ export const safetyQuestions: QuizQuestion[] = [
   },
   {
     id: 3,
-    question: "ISPS Kodu kaç güvenlik seviyesi tanımlar?",
-    options: ["2", "3", "4", "5"],
+    question: "ISPS Kodu 3 güvenlik seviyesi tanımlar. Güvenlik Seviyesi 2 hangi durumu ifade eder?",
+    options: ["Normal; asgari koruyucu önlemler", "Yükseltilmiş; belirli bir süre ek koruyucu önlemler", "İstisnai; muhtemel/yakın tehdide karşı en yüksek önlemler", "Yalnızca liman tesisine özgü geçici durum"],
     correctAnswer: 1,
-    explanation: "ISPS: 3 güvenlik seviyesi (1/2/3).",
+    explanation: "ISPS üç seviye tanımlar: Seviye 1 normal (asgari önlem), Seviye 2 yükseltilmiş (belirli süre ek önlem), Seviye 3 istisnai (muhtemel/yakın tehdit, en yüksek önlem). Dolayısıyla Seviye 2 = yükseltilmiş.",
     category: "ISPS"
   },
   {
@@ -75,10 +75,10 @@ export const safetyQuestions: QuizQuestion[] = [
   },
   {
     id: 10,
-    question: "Yangın sınıflarında 'Class B' neyi ifade eder?",
-    options: ["Katı maddeler", "Yanıcı sıvılar", "Metal yangınları", "Elektrik yangınları"],
-    correctAnswer: 1,
-    explanation: "Class B: flammable liquids (benzin, solvent vb.).",
+    question: "Class B (yanıcı sıvı) yangınında aşağıdaki söndürme maddelerinden hangisi UYGUN DEĞİLDİR?",
+    options: ["Köpük (foam)", "Kuru kimyevi toz (DCP)", "CO₂", "Doğrudan basınçlı su jeti"],
+    correctAnswer: 3,
+    explanation: "Class B yanıcı sıvı yangınıdır (benzin, solvent vb.); köpük, kuru kimyevi toz ve CO₂ uygundur. Doğrudan basınçlı su jeti yanan sıvıyı sıçratıp yangını yayabileceğinden UYGUN DEĞİLDİR (su ancak sis/soğutma amaçlı dolaylı kullanılır).",
     category: "FFA"
   },
   {

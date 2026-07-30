@@ -76,28 +76,18 @@ export const economicsQuestions: QuizQuestion[] = [
   },
   {
     id: 7,
-    question: "Demurrage nedir?",
-    options: [
-      "Erken bitirme primi",
-      "Laytime aşıldığında kiracının donatana ödediği ceza/tazminat",
-      "Navlun indirimi",
-      "Liman vergisi"
-    ],
+    question: "Laytime 4 gün olarak kararlaştırıldı; fiili yükleme 6.5 gün sürdü. Demurrage oranı $12,000/gün ise ödenecek demurrage nedir?",
+    options: ["$18,000", "$30,000", "$48,000", "$78,000"],
     correctAnswer: 1,
-    explanation: "Demurrage, kiracının tanınan laytime'ı aşması durumunda gemiyi bekletmesi nedeniyle donatana ödediği günlük tazminattır.",
+    explanation: "Demurrage = (fiili süre − laytime) × oran = (6.5 − 4) × $12,000 = 2.5 × 12,000 = $30,000. Demurrage, laytime aşımının günlük tazminatıdır. (Trap: tüm süreyi 6.5×12,000=78,000 saymak.)",
     category: "Laytime/NOR"
   },
   {
     id: 8,
-    question: "Despatch (despatch money) nedir?",
-    options: [
-      "Geç bitirme cezası",
-      "Yüklemenin/boşaltmanın laytime'dan önce bitirilmesi halinde donatanın kiracıya ödediği prim",
-      "Navlun avansı",
-      "Acente komisyonu"
-    ],
+    question: "Laytime 5 gün; işlem 3.5 günde bitti. Demurrage oranı $16,000/gün ve despatch bunun yarısı ise donatanın ödeyeceği despatch nedir?",
+    options: ["$8,000", "$12,000", "$16,000", "$24,000"],
     correctAnswer: 1,
-    explanation: "Despatch, kiracı işlemleri laytime dolmadan tamamlarsa donatanın kiracıya ödediği ödüldür; genellikle demurrage oranının yarısıdır.",
+    explanation: "Tasarruf = 5 − 3.5 = 1.5 gün. Despatch oranı = demurrage/2 = $8,000/gün. Despatch = 1.5 × 8,000 = $12,000. Despatch, laytime'dan erken bitirmenin primidir. (Trap: demurrage oranını 16,000 kullanmak → 24,000.)",
     category: "Laytime/NOR"
   },
   {
@@ -128,28 +118,18 @@ export const economicsQuestions: QuizQuestion[] = [
   },
   {
     id: 11,
-    question: "Voyage charter'da navlun (freight) genellikle nasıl hesaplanır?",
-    options: [
-      "Günlük olarak",
-      "Taşınan yük miktarına (ör. ton başına) veya götürü (lumpsum) olarak",
-      "Liman sayısına göre",
-      "Mürettebat sayısına göre"
-    ],
-    correctAnswer: 1,
-    explanation: "Voyage charter'da navlun, taşınan yük tonajı başına (rate per ton) veya tüm sefer için götürü (lumpsum) bedel olarak belirlenir.",
+    question: "50,000 ton yük $20/ton navlunla taşınıyor. %2.5 adres + %1.25 broker komisyonu düşülürse donatanın net navlunu nedir?",
+    options: ["$1,000,000", "$981,250", "$962,500", "$925,000"],
+    correctAnswer: 2,
+    explanation: "Brüt navlun = 50,000 × $20 = $1,000,000. Toplam komisyon = %2.5 + %1.25 = %3.75 → $37,500. Net = 1,000,000 − 37,500 = $962,500. (Trap: komisyonu düşmemek → $1,000,000.)",
     category: "Navlun/TCE"
   },
   {
     id: 12,
-    question: "TCE (Time Charter Equivalent) neyi ölçer?",
-    options: [
-      "Geminin yaşını",
-      "Bir sefer için sefer masrafları düşülmüş günlük net kazancı",
-      "Yakıt tüketimini",
-      "Sigorta primini"
-    ],
+    question: "Bir sefer $600,000 navlun getiriyor; sefer masrafları (yakıt+liman+kanal) $180,000 ve sefer 20 gün sürüyor. TCE (günlük net) yaklaşık nedir?",
+    options: ["$9,000/gün", "$21,000/gün", "$30,000/gün", "$39,000/gün"],
     correctAnswer: 1,
-    explanation: "TCE, sefer gelirlerinden sefer masrafları (yakıt, liman vb.) düşülüp sefer süresine bölünerek bulunan, time charter hadleriyle kıyaslanabilen günlük net kazançtır.",
+    explanation: "TCE = (sefer geliri − sefer masrafları) ÷ sefer günü = (600,000 − 180,000) ÷ 20 = 420,000 ÷ 20 = $21,000/gün; time charter hire ile kıyaslanır. (Trap: masrafları düşmeyip 600,000/20 = 30,000 bulmak.)",
     category: "Navlun/TCE"
   },
   {
@@ -386,15 +366,10 @@ export const economicsQuestions: QuizQuestion[] = [
   },
   {
     id: 32,
-    question: "Genel avarya (General Average) ilkesi neyi ifade eder?",
-    options: [
-      "Sadece donatanın zarara katlanması",
-      "Ortak deniz sefer macerasını kurtarmak için bilerek yapılan fedakarlık/masrafın tüm menfaat sahiplerince paylaşılması",
-      "Yalnızca yük sahibinin zararı",
-      "Sigorta priminin iadesi"
-    ],
+    question: "Genel avaryada $600,000'lık fedakârlık yapıldı. Kurtarılan toplam değer $30M (gemi $20M + yük $10M) ise yük ilgililerinin katkı payı nedir?",
+    options: ["$100,000", "$200,000", "$300,000", "$400,000"],
     correctAnswer: 1,
-    explanation: "Genel avaryada, ortak tehlikeden kurtulmak için kasıtlı yapılan fedakarlık veya olağanüstü masraf, gemi ve yük menfaatleri arasında oranlı paylaşılır (York-Antwerp Kuralları).",
+    explanation: "Genel avarya katkısı, kurtarılan değer oranında paylaşılır (York-Antwerp Kuralları): yük payı = (10M ÷ 30M) × 600,000 = 1/3 × 600,000 = $200,000. Gemi 2/3 yani $400,000 öder. (Trap: gemi payını yükle karıştırmak.)",
     category: "Sigorta (P&I/H&M)"
   },
   {
