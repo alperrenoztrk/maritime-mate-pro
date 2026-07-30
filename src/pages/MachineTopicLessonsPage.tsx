@@ -54,10 +54,7 @@ export default function MachineTopicLessonsPage() {
             >
               <TopicIcon className="h-6 w-6" />
             </div>
-            <div className="text-left">
-              <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
-              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{category.subtitle}</p>
-            </div>
+            <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
         </header>
 
@@ -80,7 +77,7 @@ export default function MachineTopicLessonsPage() {
                 <button
                   type="button"
                   onClick={() => toggleModule(module.id)}
-                  className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-muted/40"
+                  className="flex w-full items-center gap-3 p-4 text-left transition-colors hover:bg-muted/40"
                   aria-expanded={expanded}
                 >
                   <span
@@ -88,17 +85,12 @@ export default function MachineTopicLessonsPage() {
                   >
                     {moduleIndex + 1}
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="font-semibold text-foreground">{module.title}</span>
-                    <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
-                      {module.description}
-                    </span>
-                  </span>
+                  <span className="min-w-0 flex-1 font-semibold text-foreground">{module.title}</span>
                   <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
                     {module.topicCount}
                   </span>
                   <ChevronDown
-                    className={`mt-1 h-5 w-5 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+                    className={`h-5 w-5 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
                   />
                 </button>
 
