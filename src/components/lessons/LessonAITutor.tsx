@@ -3,6 +3,8 @@ import { Bot, Send, Sparkles, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { askLessonTutor, type AIMessage, type TutorLevel } from "@/services/aiClient";
+import { supabase } from "@/integrations/supabase/safeClient";
+
 
 /**
  * "Dersler Beta" — derse gömülü adaptif AI eğitmen paneli.
@@ -44,7 +46,23 @@ export function LessonAITutor({
     const history = [...messages, userMsg];
     setMessages(history);
     setInput("");
+
+    // Eğitmen asistanı oturum gerektirir; giriş yoksa 401 yerine net bir yönlendirme göster.
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) {
+      setMessages((m) => [
+        ...m,
+        {
+          role: "assistant",
+          content:
+            "Eğitmen asistanını kullanmak için giriş yapmanız gerekiyor. Ayarlar → Hesap bölümünden veya /auth sayfasından giriş yapabilirsiniz. Bu arada ders anlatımını ve çözümlü örnekleri inceleyebilirsiniz.",
+        },
+      ]);
+      return;
+    }
+
     setLoading(true);
+
     try {
       const answer = await askLessonTutor(
         { topicTitle, lessonText, level: effectiveLevel },
