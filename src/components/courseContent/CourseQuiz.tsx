@@ -24,6 +24,8 @@ export function CourseQuiz({
   questions,
   courseKey,
   group,
+  returnHref,
+  returnLabel,
 }: {
   title: string;
   icon: LucideIcon;
@@ -31,6 +33,8 @@ export function CourseQuiz({
   questions: QuizQuestion[];
   courseKey?: string;
   group?: "deck" | "machine";
+  returnHref?: string;
+  returnLabel?: string;
 }) {
   const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions));
   const [current, setCurrent] = useState(0);
@@ -78,7 +82,14 @@ export function CourseQuiz({
   };
 
   const percent = answeredCount > 0 ? Math.round((correct / answeredCount) * 100) : 0;
-  const libraryHref = group ? `/lessons?library=${group}` : "/lessons";
+  const libraryHref = returnHref ?? (group ? `/lessons?library=${group}` : "/lessons");
+  const libraryLabel =
+    returnLabel ??
+    (group === "machine"
+      ? "Makine Kitaplığı"
+      : group === "deck"
+        ? "Güverte Kitaplığı"
+        : "Derslere Dön");
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
@@ -89,11 +100,7 @@ export function CourseQuiz({
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
-            {group === "machine"
-              ? "Makine Kitaplığı"
-              : group === "deck"
-                ? "Güverte Kitaplığı"
-                : "Derslere Dön"}
+            {libraryLabel}
           </Link>
 
           <div className="flex items-center gap-3">
