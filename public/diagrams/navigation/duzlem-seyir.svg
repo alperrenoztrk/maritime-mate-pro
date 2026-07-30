@@ -8,7 +8,7 @@
     </style>
   </defs>
   <rect width="700" height="500" fill="#fff"/>
-  <text x="350" y="30" text-anchor="middle" class="ttl">Düzlem Seyir Üçgeni</text>
+  <text x="350" y="30" text-anchor="middle" class="ttl">The Plane Sailing Triangle</text>
   <g transform="translate(70 70)">
     <!-- grid -->
     <rect width="500" height="350" fill="#f0f9ff" stroke="#0f172a"/>
@@ -30,7 +30,7 @@
     <rect x="408" y="278" width="12" height="12" fill="none" stroke="#0f172a"/>
     <!-- Course angle at A -->
     <path d="M 95 290 A 35 35 0 0 0 88 269" stroke="#16a34a" stroke-width="2" fill="none"/>
-    <text x="105" y="278" class="lbl" fill="#16a34a">C (rota)</text>
+    <text x="105" y="278" class="lbl" fill="#16a34a">C (course)</text>
     <!-- Points -->
     <circle cx="60" cy="290" r="5" fill="#0f172a"/>
     <text x="38" y="305" class="lbl">A</text>
@@ -41,11 +41,11 @@
     <!-- Side labels -->
     <text x="240" y="308" class="lbl" fill="#7c3aed" text-anchor="middle">Dep (departure, NM)</text>
     <text x="438" y="190" class="lbl" fill="#0891b2">dLat (NM)</text>
-    <text x="200" y="170" class="lbl" fill="#dc2626" transform="rotate(-30 200 170)">Distance (mesafe)</text>
+    <text x="200" y="170" class="lbl" fill="#dc2626" transform="rotate(-30 200 170)">Distance</text>
   </g>
   <!-- Formulas -->
   <g transform="translate(80 440)">
-    <text class="lbl">dLat = D · cos(C) · · · Dep = D · sin(C) · · · DLong = Dep / cos(L_orta)</text>
+    <text class="lbl">dLat = D · cos(C) · · · Dep = D · sin(C) · · · DLong = Dep / cos(L_mean)</text>
   </g>
-  <text x="350" y="478" text-anchor="middle" class="lbl">Düzlem seyir kısa mesafelerde geçerlidir; Dünya düz kabul edilir.</text>
+  <text x="350" y="478" text-anchor="middle" class="lbl">Plane sailing applies over short distances; the Earth is taken as flat.</text>
 </svg>

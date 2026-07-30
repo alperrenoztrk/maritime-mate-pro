@@ -12,7 +12,7 @@
     </style>
   </defs>
   <rect width="600" height="600" fill="#f8fafc"/>
-  <text x="300" y="30" text-anchor="middle" class="ttl">Enlem Bölgeleri</text>
+  <text x="300" y="30" text-anchor="middle" class="ttl">Zones of Latitude</text>
   <g transform="translate(300 320)">
     <circle r="230" fill="url(#g)"/>
     <!-- Equator -->
@@ -28,15 +28,15 @@
     <circle cx="0" cy="230" r="4" fill="#fbbf24"/>
   </g>
   <!-- Labels right side -->
-  <text x="540" y="100" text-anchor="end" class="lbl">Kuzey Kutbu 90°N</text>
-  <text x="540" y="135" text-anchor="end" class="lbl">Kuzey Kutup Dairesi 66.5°N</text>
-  <text x="540" y="218" text-anchor="end" class="lbl">Yengeç Dönencesi 23.5°N</text>
-  <text x="540" y="325" text-anchor="end" class="lbl" fill="#dc2626">Ekvator 0°</text>
-  <text x="540" y="418" text-anchor="end" class="lbl">Oğlak Dönencesi 23.5°S</text>
-  <text x="540" y="500" text-anchor="end" class="lbl">Güney Kutup Dairesi 66.5°S</text>
-  <text x="540" y="540" text-anchor="end" class="lbl">Güney Kutbu 90°S</text>
+  <text x="540" y="100" text-anchor="end" class="lbl">North Pole 90°N</text>
+  <text x="540" y="135" text-anchor="end" class="lbl">Arctic Circle 66.5°N</text>
+  <text x="540" y="218" text-anchor="end" class="lbl">Tropic of Cancer 23.5°N</text>
+  <text x="540" y="325" text-anchor="end" class="lbl" fill="#dc2626">Equator 0°</text>
+  <text x="540" y="418" text-anchor="end" class="lbl">Tropic of Capricorn 23.5°S</text>
+  <text x="540" y="500" text-anchor="end" class="lbl">Antarctic Circle 66.5°S</text>
+  <text x="540" y="540" text-anchor="end" class="lbl">South Pole 90°S</text>
   <!-- Region bands left -->
-  <text x="60" y="220" class="lbl">Kuzey ılıman</text>
-  <text x="60" y="325" class="lbl" fill="#dc2626">Tropik kuşak</text>
-  <text x="60" y="420" class="lbl">Güney ılıman</text>
+  <text x="60" y="220" class="lbl">N temperate</text>
+  <text x="60" y="325" class="lbl" fill="#dc2626">Tropics</text>
+  <text x="60" y="420" class="lbl">S temperate</text>
 </svg>

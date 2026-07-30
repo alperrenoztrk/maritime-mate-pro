@@ -7,7 +7,7 @@
     </style>
   </defs>
   <rect width="700" height="460" fill="#ffffff"/>
-  <text x="350" y="30" text-anchor="middle" class="ttl">Aykırı Geçiş (Crossing) — COLREG Kural 15</text>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Crossing Situation — COLREG Rule 15</text>
 
   <!-- sea background -->
   <rect x="40" y="50" width="620" height="290" fill="#e0f2fe" stroke="#94a3b8"/>
@@ -20,8 +20,8 @@
     <path fill="#16a34a" d="M 420 150 L 445 138 L 545 138 L 545 162 L 445 162 Z"/>
     <line x1="410" y1="150" x2="270" y2="150" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="7 5"/>
     <path fill="#16a34a" d="M 282 143 L 270 150 L 282 157 Z"/>
-    <text x="490" y="185" text-anchor="middle" class="lbl" fill="#15803d">Rota ve hızını korur</text>
-    <text x="490" y="200" text-anchor="middle" class="sm">(stand-on — diğerini iskelesinde görür)</text>
+    <text x="490" y="185" text-anchor="middle" class="lbl" fill="#15803d">Keeps course and speed</text>
+    <text x="490" y="200" text-anchor="middle" class="sm">(stand-on — sees the other on her port side)</text>
   </g>
 
   <!-- Give-way vessel A: bottom-left, heading north (up) -->
@@ -29,19 +29,19 @@
     <path fill="#dc2626" d="M 250 245 L 238 270 L 238 330 L 262 330 L 262 270 Z"/>
     <line x1="250" y1="238" x2="250" y2="170" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="7 5"/>
     <path fill="#dc2626" d="M 243 182 L 250 170 L 257 182 Z"/>
-    <text x="152" y="290" text-anchor="middle" class="lbl" fill="#dc2626">Yol veren gemi</text>
-    <text x="152" y="305" text-anchor="middle" class="sm">(diğerini sancağında görür)</text>
+    <text x="152" y="290" text-anchor="middle" class="lbl" fill="#dc2626">Give-way vessel</text>
+    <text x="152" y="305" text-anchor="middle" class="sm">(sees the other on her starboard side)</text>
   </g>
 
   <!-- avoidance manoeuvre: A alters to starboard, passes astern of B -->
   <path d="M 250 238 Q 255 190 320 175 Q 400 160 430 95" stroke="#b45309" stroke-width="2.5" fill="none"/>
   <path fill="#b45309" d="M 424 108 L 430 95 L 436 104 Z"/>
-  <text x="395" y="215" text-anchor="middle" class="sm" fill="#b45309">Sancağa dön, diğerinin</text>
-  <text x="395" y="230" text-anchor="middle" class="sm" fill="#b45309">kıçından geç</text>
+  <text x="395" y="215" text-anchor="middle" class="sm" fill="#b45309">Alter to starboard and pass</text>
+  <text x="395" y="230" text-anchor="middle" class="sm" fill="#b45309">astern of the other</text>
 
   <!-- info box -->
   <rect x="60" y="355" width="580" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
-  <text x="75" y="377" class="lbl">Kural 15:</text>
-  <text x="75" y="395" class="sm">Aykırı rotalarda çatışma riski varsa, diğerini KENDİ SANCAK tarafında gören tekne yol verir;</text>
-  <text x="75" y="411" class="sm">şartlar elveriyorsa diğer teknenin pruvasından geçmekten kaçınır (kıçından geçer).</text>
+  <text x="75" y="377" class="lbl">Rule 15:</text>
+  <text x="75" y="395" class="sm">When two power-driven vessels are crossing so as to involve risk of collision, the vessel which has</text>
+  <text x="75" y="411" class="sm">the other on her OWN STARBOARD side shall keep out of the way and shall avoid crossing ahead.</text>
 </svg>

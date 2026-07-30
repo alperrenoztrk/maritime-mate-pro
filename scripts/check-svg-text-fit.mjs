@@ -221,14 +221,22 @@ const parseSvg = (svg) => {
       stack.push(state);
       state = applyTransform(state, a.transform);
       gPath.push(`g${gCounter++}`);
-      // <g> düzeyindeki metin öznitelikleri mirasa girer
+      // <g> düzeyindeki metin öznitelikleri mirasa girer. <g class="sm"> gibi
+      // ata SINIFLARI da miras alınmalı — bu dosyalarda yaygın bir kalıp ve
+      // atlanırsa metin varsayılan 16px ile ölçülüp hayalet taşma üretir.
+      const gCls = (a.class || "").split(/\s+/).filter(Boolean);
+      const gDecl = gCls.reduce((acc, c) => ({ ...acc, ...(styles.get(c) ?? {}) }), {});
       state = {
         ...state,
-        gFontSize: a["font-size"] ? parseFloat(a["font-size"]) : state.gFontSize,
-        gAnchor: a["text-anchor"] ?? state.gAnchor,
-        gBold: a["font-weight"]
-          ? /bold|[6-9]00/.test(a["font-weight"])
-          : state.gBold,
+        gFontSize:
+          gDecl.fontSize ??
+          (a["font-size"] ? parseFloat(a["font-size"]) : undefined) ??
+          state.gFontSize,
+        gAnchor: gDecl.anchor ?? a["text-anchor"] ?? state.gAnchor,
+        gBold:
+          gDecl.bold ??
+          (a["font-weight"] ? /bold|[6-9]00/.test(a["font-weight"]) : undefined) ??
+          state.gBold,
       };
       continue;
     }
@@ -452,8 +460,28 @@ for (const [file, list] of Object.entries(current)) {
 
 // D. Kalan Türkçe metin: <text>, <title>, <desc> gövdeleri.
 const TURKISH_CHARS = /[ıİşŞğĞçÇöÖüÜâÂîÎû]/;
-const TURKISH_WORDS =
-  /(?:^|[^\p{L}])(?:ve|veya|için|ile|bir|olan|arası|göre|daha|kadar|gibi|değil|olarak|sonra|önce|her|bu|şu)(?=[^\p{L}]|$)/iu;
+// Diakritiksiz Türkçe (deniz, mevkii, rota…) sırf karakter taramasıyla
+// yakalanmaz, bu yüzden ayrıca bir kelime listesi gerekiyor.
+//
+// NOT: "her" bilinçli olarak listede yok — İngilizcede de bir kelime ve
+// denizcilik İngilizcesinde gemiler için sürekli kullanılıyor ("on her port
+// side"), bu yüzden yanlış pozitif üretiyordu. Aynı gerekçeyle "mile", "port"
+// gibi ortak yazımlar da listeye alınmadı.
+const TURKISH_WORDS = new RegExp(
+  "(?:^|[^\\p{L}])(?:" +
+    [
+      // sık işlev kelimeleri
+      "ve", "veya", "için", "ile", "bir", "olan", "arası", "göre", "daha",
+      "kadar", "gibi", "değil", "olarak", "sonra", "önce", "bu", "şu",
+      // diakritiksiz denizcilik/eğitim terimleri
+      "deniz", "denizi", "mili", "mevki", "mevkii", "rota", "rotasi", "gemi",
+      "gemisi", "saat", "sabit", "kanal", "harita", "yol", "hat", "kural",
+      "sekil", "sekli", "tablo", "ornek", "adim", "yukari", "asagi", "sag",
+      "sol", "sistem", "sistemi", "birim", "toplam", "orta", "genel",
+    ].join("|") +
+    ")(?=[^\\p{L}]|$)",
+  "iu",
+);
 for (const rel of svgFiles) {
   const svg = fs.readFileSync(path.join(root, rel), "utf8");
   for (const m of svg.matchAll(/<(text|title|desc)\b[^>]*>([\s\S]*?)<\/\1>/g)) {

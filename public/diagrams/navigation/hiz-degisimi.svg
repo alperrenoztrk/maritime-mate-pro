@@ -9,7 +9,7 @@
     </style>
   </defs>
   <rect width="700" height="420" fill="#ffffff"/>
-  <text x="350" y="32" text-anchor="middle" class="ttl">Hızın Zamana Göre Değişimi</text>
+  <text x="350" y="32" text-anchor="middle" class="ttl">Variation of Speed with Time</text>
 
   <!-- grid -->
   <g class="grid">
@@ -22,17 +22,17 @@
   <!-- axes -->
   <line x1="90" y1="60" x2="90" y2="340" class="axis"/>
   <line x1="90" y1="340" x2="640" y2="340" class="axis"/>
-  <text x="60" y="200" class="lbl" transform="rotate(-90 60 200)" text-anchor="middle">Hız (knot)</text>
-  <text x="365" y="372" class="lbl" text-anchor="middle">Zaman (saat)</text>
+  <text x="60" y="200" class="lbl" transform="rotate(-90 60 200)" text-anchor="middle">Speed (knots)</text>
+  <text x="365" y="372" class="lbl" text-anchor="middle">Time (hours)</text>
 
   <!-- planned speed line -->
   <line x1="90" y1="160" x2="630" y2="160" stroke="#16a34a" stroke-width="2" stroke-dasharray="7,5"/>
-  <text x="600" y="152" class="sub" fill="#16a34a" text-anchor="end">Planlanan hız (14 kn)</text>
+  <text x="600" y="152" class="sub" fill="#16a34a" text-anchor="end">Planned speed (14 kn)</text>
 
   <!-- actual speed curve (varying) -->
   <polyline points="90,170 160,150 230,158 300,200 370,210 440,180 510,235 580,215 630,190"
             fill="none" stroke="#dc2626" stroke-width="3"/>
-  <text x="300" y="240" class="sub" fill="#dc2626">Gerçek hız (deniz durumu, makine, yük)</text>
+  <text x="300" y="240" class="sub" fill="#dc2626">Actual speed (sea state, engine, loading)</text>
 
   <!-- y ticks -->
   <text x="80" y="105" class="sub" text-anchor="end">16</text>
@@ -40,5 +40,5 @@
   <text x="80" y="225" class="sub" text-anchor="end">12</text>
   <text x="80" y="285" class="sub" text-anchor="end">10</text>
 
-  <text x="350" y="402" text-anchor="middle" class="sub">Ortalama hız = Toplam mesafe ÷ Toplam zaman · küçük sapmalar uzun seyirde ETA'yı kaydırır</text>
+  <text x="350" y="402" text-anchor="middle" class="sub">Average speed = total distance ÷ total time · small deviations shift the ETA on a long passage</text>
 </svg>

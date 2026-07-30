@@ -7,13 +7,13 @@
     </radialGradient>
   </defs>
   <rect width="800" height="500" fill="#f8fafc"/>
-  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Dünya'nın Eksen Eğikliği — 23.5°</text>
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">The Earth's Axial Tilt — 23.5°</text>
   <!-- orbital plane line -->
   <line x1="80" y1="280" x2="720" y2="280" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="720" y="300" text-anchor="end" font-size="13" fill="#475569">Yörünge Düzlemi (Ekliptik)</text>
+  <text x="720" y="300" text-anchor="end" font-size="13" fill="#475569">Plane of the Orbit (Ecliptic)</text>
   <!-- vertical reference -->
   <line x1="400" y1="80" x2="400" y2="480" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
-  <text x="408" y="95" font-size="12" fill="#64748b">Yörünge Düzlemine Dik</text>
+  <text x="408" y="95" font-size="12" fill="#64748b">Normal to the Orbital Plane</text>
   <!-- Earth -->
   <g transform="translate(400,280) rotate(-23.5)">
     <circle r="110" fill="url(#earthG)" stroke="#0a2a52" stroke-width="2"/>
@@ -23,14 +23,14 @@
     <polygon points="0,160 -6,148 6,148" fill="#dc2626"/>
     <!-- Equator -->
     <ellipse cx="0" cy="0" rx="110" ry="22" fill="none" stroke="#fde047" stroke-width="2"/>
-    <text x="0" y="-170" text-anchor="middle" font-size="13" font-weight="600" fill="#dc2626">Kuzey Kutbu</text>
-    <text x="0" y="180" text-anchor="middle" font-size="13" font-weight="600" fill="#dc2626">Güney Kutbu</text>
+    <text x="0" y="-170" text-anchor="middle" font-size="13" font-weight="600" fill="#dc2626">North Pole</text>
+    <text x="0" y="180" text-anchor="middle" font-size="13" font-weight="600" fill="#dc2626">South Pole</text>
   </g>
   <!-- Angle arc -->
   <path d="M 400 150 A 70 70 0 0 0 372 178" fill="none" stroke="#ea580c" stroke-width="3"/>
   <text x="345" y="170" font-size="16" font-weight="700" fill="#ea580c">23.5°</text>
   <!-- Sun -->
   <circle cx="120" cy="280" r="28" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
-  <text x="120" y="330" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">Güneş</text>
-  <text x="400" y="470" text-anchor="middle" font-size="12" fill="#475569">Dünya'nın dönme ekseni, yörünge düzlemine dik olan eksene göre 23.5° eğiktir.</text>
+  <text x="120" y="330" text-anchor="middle" font-size="13" font-weight="600" fill="#92400e">Sun</text>
+  <text x="400" y="470" text-anchor="middle" font-size="12" fill="#475569">The Earth's axis of rotation is tilted 23.5° from the normal to its orbital plane.</text>
 </svg>

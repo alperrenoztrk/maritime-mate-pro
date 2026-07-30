@@ -9,7 +9,7 @@
     </style>
   </defs>
   <rect width="700" height="460" fill="#ffffff"/>
-  <text x="350" y="34" text-anchor="middle" class="ttl">Mesafe – Hız – Zaman Üçgeni</text>
+  <text x="350" y="34" text-anchor="middle" class="ttl">The Distance – Speed – Time Triangle</text>
 
   <!-- Triangle -->
   <g transform="translate(190 230)">
@@ -19,24 +19,24 @@
     <!-- vertical divider in lower half -->
     <line x1="0" y1="-10" x2="0" y2="110" stroke="#1e3a8a" stroke-width="2.5"/>
     <!-- letters -->
-    <text x="0" y="-55" class="big" fill="#dc2626">M</text>
-    <text x="-75" y="75" class="big" fill="#1d4ed8">H</text>
-    <text x="75" y="75" class="big" fill="#7c3aed">Z</text>
+    <text x="0" y="-55" class="big" fill="#dc2626">D</text>
+    <text x="-75" y="75" class="big" fill="#1d4ed8">S</text>
+    <text x="75" y="75" class="big" fill="#7c3aed">T</text>
   </g>
-  <text x="190" y="385" text-anchor="middle" class="sub">M = Mesafe (deniz mili) · H = Hız (knot) · Z = Zaman (saat)</text>
+  <text x="190" y="385" text-anchor="middle" class="sub">D = distance (NM) · S = speed (knots) · T = time (hours)</text>
 
   <!-- Formulas -->
   <g transform="translate(440 120)">
     <rect x="0" y="0" width="230" height="52" rx="8" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
-    <text x="115" y="32" class="frm">Mesafe = Hız × Zaman</text>
+    <text x="115" y="32" class="frm">Distance = Speed × Time</text>
 
     <rect x="0" y="70" width="230" height="52" rx="8" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
-    <text x="115" y="102" class="frm">Hız = Mesafe ÷ Zaman</text>
+    <text x="115" y="102" class="frm">Speed = Distance ÷ Time</text>
 
     <rect x="0" y="140" width="230" height="52" rx="8" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
-    <text x="115" y="172" class="frm">Zaman = Mesafe ÷ Hız</text>
+    <text x="115" y="172" class="frm">Time = Distance ÷ Speed</text>
   </g>
 
-  <text x="555" y="345" text-anchor="middle" class="sub">1 knot = 1 deniz mili / saat</text>
-  <text x="350" y="430" text-anchor="middle" class="lbl">Üçgende bilinmeyeni kapat: kalan iki harf formülü verir</text>
+  <text x="555" y="345" text-anchor="middle" class="sub">1 knot = 1 nautical mile per hour</text>
+  <text x="350" y="430" text-anchor="middle" class="lbl">Cover the unknown in the triangle: the other two letters give the formula</text>
 </svg>

@@ -10,11 +10,11 @@
     </marker>
   </defs>
   <rect width="700" height="460" fill="#ffffff"/>
-  <text x="350" y="34" text-anchor="middle" class="ttl">Harita Datum'u – Referans Elipsoid ve Mevki Kayması</text>
+  <text x="350" y="34" text-anchor="middle" class="ttl">Chart Datum – Reference Ellipsoid and Position Shift</text>
 
   <!-- geoid (true earth surface) -->
   <path d="M 120 250 Q 220 215 340 240 T 580 235" fill="none" stroke="#0f172a" stroke-width="2.5"/>
-  <text x="125" y="205" class="lbl">Geoit (gerçek yüzey)</text>
+  <text x="125" y="205" class="lbl">Geoid (true surface)</text>
 
   <!-- WGS-84 ellipsoid (global best fit) -->
   <path d="M 120 270 Q 350 230 580 270" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
@@ -22,11 +22,11 @@
 
   <!-- local datum ellipsoid (e.g. Clarke 1866, regional fit) -->
   <path d="M 120 300 Q 350 268 580 296" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="7,5"/>
-  <text x="585" y="298" class="lbl" fill="#7c3aed">Yerel datum (örn. Clarke 1866)</text>
+  <text x="350" y="322" class="lbl" fill="#7c3aed" text-anchor="middle">Local datum (e.g. Clarke 1866)</text>
 
   <!-- a real physical point -->
   <circle cx="340" cy="240" r="5" fill="#0f172a"/>
-  <text x="340" y="222" class="sub" text-anchor="middle">Aynı fiziksel nokta</text>
+  <text x="340" y="222" class="sub" text-anchor="middle">Same physical point</text>
 
   <!-- projected positions on each datum -->
   <circle cx="350" cy="249" r="5" fill="#1d4ed8"/>
@@ -34,13 +34,13 @@
 
   <!-- shift arrow between the two datum coordinates -->
   <line x1="372" y1="252" x2="372" y2="281" stroke="#dc2626" stroke-width="2.5" marker-end="url(#shift)"/>
-  <text x="382" y="272" class="lbl" fill="#dc2626">Δ mevki kayması</text>
+  <text x="382" y="272" class="lbl" fill="#dc2626">Δ position shift</text>
 
   <!-- info panel -->
   <g transform="translate(110 350)">
     <rect x="0" y="0" width="480" height="80" rx="10" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
-    <text x="18" y="28" class="lbl">Aynı enlem–boylam, farklı datumda farklı yere düşer.</text>
-    <text x="18" y="52" class="sub">GPS = WGS-84. Eski haritalarda farklı datum olabilir →</text>
-    <text x="18" y="70" class="sub">datum dönüşüm notları uygulanmadan mevki onlarca/yüzlerce metre kayar.</text>
+    <text x="18" y="28" class="lbl">The same lat/long falls in a different place on a different datum.</text>
+    <text x="18" y="52" class="sub">GPS uses WGS-84. Older charts may use a different datum →</text>
+    <text x="18" y="70" class="sub">without datum shift notes the position is out by tens or hundreds of metres.</text>
   </g>
 </svg>

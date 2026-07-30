@@ -4,39 +4,39 @@
     <radialGradient id="earth2" cx="0.35" cy="0.35"><stop offset="0%" stop-color="#7ec8ff"/><stop offset="100%" stop-color="#0a2a52"/></radialGradient>
   </defs>
   <rect width="900" height="520" fill="#0b1220"/>
-  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">Dünya'nın Güneş Etrafındaki Hareketi ve Mevsimler</text>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">The Earth's Orbit Around the Sun and the Seasons</text>
   <!-- orbit -->
   <ellipse cx="450" cy="280" rx="350" ry="170" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4"/>
   <!-- Sun -->
   <circle cx="450" cy="280" r="38" fill="url(#sun)"/>
-  <text x="450" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">Güneş</text>
+  <text x="450" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">Sun</text>
   <!-- Earth at 4 positions with tilted axis (all axes parallel, tilted 23.5° from vertical) -->
   <g id="e1" transform="translate(100,280)">
     <circle r="26" fill="url(#earth2)"/>
     <line x1="-10" y1="-30" x2="10" y2="30" stroke="#dc2626" stroke-width="2"/>
-    <text y="55" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">21 Haziran</text>
-    <text y="70" text-anchor="middle" font-size="11" fill="#cbd5e1">Yaz gündönümü (KY)</text>
+    <text y="55" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">21 June</text>
+    <text y="70" text-anchor="middle" font-size="11" fill="#cbd5e1">Summer solstice (N hem.)</text>
   </g>
   <g transform="translate(800,280)">
     <circle r="26" fill="url(#earth2)"/>
     <line x1="-10" y1="-30" x2="10" y2="30" stroke="#dc2626" stroke-width="2"/>
-    <text y="55" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">22 Aralık</text>
-    <text y="70" text-anchor="middle" font-size="11" fill="#cbd5e1">Kış gündönümü (KY)</text>
+    <text y="55" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">22 December</text>
+    <text y="70" text-anchor="middle" font-size="11" fill="#cbd5e1">Winter solstice (N hem.)</text>
   </g>
   <g transform="translate(450,110)">
     <circle r="26" fill="url(#earth2)"/>
     <line x1="-10" y1="-30" x2="10" y2="30" stroke="#dc2626" stroke-width="2"/>
-    <text y="-40" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">21 Mart</text>
-    <text y="-25" text-anchor="middle" font-size="11" fill="#cbd5e1">İlkbahar ekinoksu</text>
+    <text y="-40" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">21 March</text>
+    <text y="-25" text-anchor="middle" font-size="11" fill="#cbd5e1">Vernal equinox</text>
   </g>
   <g transform="translate(450,450)">
     <circle r="26" fill="url(#earth2)"/>
     <line x1="-10" y1="-30" x2="10" y2="30" stroke="#dc2626" stroke-width="2"/>
-    <text y="55" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">23 Eylül</text>
-    <text y="70" text-anchor="middle" font-size="11" fill="#cbd5e1">Sonbahar ekinoksu</text>
+    <text y="55" text-anchor="middle" font-size="12" fill="#fbbf24" font-weight="600">23 September</text>
+    <text y="70" text-anchor="middle" font-size="11" fill="#cbd5e1">Autumnal equinox</text>
   </g>
   <!-- Direction arrow -->
   <path d="M 760 145 A 350 170 0 0 0 800 280" fill="none" stroke="#22c55e" stroke-width="2" marker-end="url(#arr)"/>
   <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#22c55e"/></marker></defs>
-  <text x="450" y="500" text-anchor="middle" font-size="11" fill="#94a3b8">Dünya'nın ekseni daima aynı yönde (Polaris'e doğru) kalır. Eğiklik yıl boyunca mevsimleri oluşturur.</text>
+  <text x="450" y="500" text-anchor="middle" font-size="11" fill="#94a3b8">The Earth's axis always points the same way (towards Polaris). This tilt produces the seasons.</text>
 </svg>
