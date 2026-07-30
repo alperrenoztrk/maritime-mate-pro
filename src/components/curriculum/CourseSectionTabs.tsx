@@ -36,7 +36,7 @@ export function CourseSectionTabs({
     calculations: `${basePath}/calculations`,
     formulas: `${basePath}/formulas`,
     rules: `${basePath}/rules`,
-    quiz: `/exercises/${exerciseCategory}/quiz`,
+    quiz: `/exercises/${exerciseCategory}/topics`,
   };
 
   const resolveHref = (id: CurriculumSectionId) => {
