@@ -19,6 +19,8 @@ const courseTabs = read("src/components/curriculum/CourseSectionTabs.tsx");
 const courseHeader = read("src/components/courseContent/CourseTopicHeader.tsx");
 const exerciseTopics = read("src/pages/ExerciseTopicsPage.tsx");
 const exerciseDetail = read("src/pages/ExerciseTopicDetailPage.tsx");
+const questionDistribution = read("src/data/exerciseQuestionDistribution.ts");
+const topicQuestionSet = read("src/components/lessons/TopicExerciseQuestionSet.tsx");
 const deckDetail = read("src/pages/LessonTopicDetailPage.tsx");
 const machineDetail = read("src/pages/MachineTopicDetailPage.tsx");
 
@@ -108,8 +110,22 @@ forbidText(machineTopics, "Ders Araçları", "makine ayrı araç kartı");
 for (const tabLabel of ["Konular", "Hesaplamalar", "Formüller", "Kurallar", "Alıştırmalar"]) {
   requireText(courseTabs, tabLabel, "ortak ders sekmeleri");
 }
+requireText(courseTabs, "/exercises/${exerciseCategory}/topics", "Alıştırmalar konu listesi yönlendirmesi");
+forbidText(courseTabs, "/exercises/${exerciseCategory}/quiz", "eski toplu quiz yönlendirmesi");
 requireText(courseHeader, "CourseSectionTabs", "araç sayfalarında kalıcı sekme şeridi");
 forbidText(courseHeader, "sectionMeta", "tekrarlanan bölüm alt başlığı");
+
+requireText(questionDistribution, "getTopicQuiz", "eski quiz bankası kaynağı");
+requireText(questionDistribution, "getBetaTopic", "konu içeriğine göre soru eşleştirmesi");
+requireText(questionDistribution, "preferredTopicByQuestionCategory", "soru kategorisi eşleştirmesi");
+requireText(questionDistribution, "assignedQuestions !== questions.length", "tüm soruların atanma kontrolü");
+requireText(exerciseTopics, "questionsByTopic.get(topic.id)", "konu kartlarında soru dağılımı");
+requireText(exerciseTopics, "#konu-sorulari", "konu sorularına doğrudan bağlantı");
+forbidText(exerciseTopics, "Quiz Soruları", "tek parça quiz kartı");
+requireText(exerciseDetail, "getExerciseQuestionsForTopic", "konu detayında dağıtılmış sorular");
+requireText(exerciseDetail, "TopicExerciseQuestionSet", "konu bazlı soru çözme bileşeni");
+requireText(topicQuestionSet, "KnowledgeCheck", "mevcut soru-cevap davranışının korunması");
+requireText(topicQuestionSet, "questions.length", "konu soru adedi");
 
 requireText(deckDetail, "getBetaTopic", "güverte detay kimlik çözümleme");
 requireText(machineDetail, "getBetaTopic", "makine detay kimlik çözümleme");
@@ -149,5 +165,5 @@ if (failures.length) {
 }
 
 console.log(
-  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} yeterlilik parkuru, kitaplık ana ekranı, ortak ders sekmeleri, tek açık modül ve açıklamasız başlık arayüzü.`,
+  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} yeterlilik parkuru, kitaplık ana ekranı, ortak ders sekmeleri, konu bazlı quiz dağılımı, tek açık modül ve açıklamasız başlık arayüzü.`,
 );
