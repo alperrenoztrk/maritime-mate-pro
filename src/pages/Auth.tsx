@@ -46,7 +46,7 @@ const Auth = () => {
         const { error } = await signInWithEmail(parsed.data.email, parsed.data.password);
         if (error) {
           const msg = error.message.includes("Invalid login")
-            ? "E-posta veya şifre hatalı"
+            ? "E-posta veya şifre hatalı. Bu hesabı Google ile oluşturduysanız \"Google ile devam et\" ile girin ya da aşağıdan şifre belirleyin."
             : error.message;
           toast.error(msg);
         } else {
@@ -56,10 +56,12 @@ const Auth = () => {
       } else {
         const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password, nextPath);
         if (error) {
-          const msg = error.message.includes("already registered")
-            ? "Bu e-posta zaten kayıtlı"
-            : error.message;
-          toast.error(msg);
+          if (error.message.includes("already registered") || error.message.includes("User already")) {
+            toast.error("Bu e-posta zaten kayıtlı. Google ile giriş yapın veya \"Şifremi unuttum\" ile şifre belirleyin.");
+            setTab("signin");
+          } else {
+            toast.error(error.message);
+          }
         } else {
           toast.success("Kayıt başarılı! E-postanızı kontrol edin.");
         }
@@ -68,6 +70,30 @@ const Auth = () => {
       setBusy(false);
     }
   };
+
+  // Google ile açılmış hesapların şifresi yoktur; bu akış onlara şifre
+  // belirleme imkânı verir ve klasik şifre sıfırlama olarak da çalışır.
+  const handleResetPassword = async () => {
+    const parsedEmail = credentialsSchema.shape.email.safeParse(email);
+    if (!parsedEmail.success) {
+      toast.error("Önce geçerli bir e-posta girin");
+      return;
+    }
+    setBusy(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(parsedEmail.data, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      if (error) {
+        toast.error(error.message || "Şifre belirleme e-postası gönderilemedi");
+      } else {
+        toast.success("Şifre belirleme bağlantısı e-postanıza gönderildi.");
+      }
+    } finally {
+      setBusy(false);
+    }
+  };
+
 
   // Supabase owns the Google round trip: it builds the authorize URL against
   // its own /auth/v1/callback, so the only redirect URI Google ever sees is
