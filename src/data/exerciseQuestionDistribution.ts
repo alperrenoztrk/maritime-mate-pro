@@ -253,13 +253,25 @@ export function getExerciseQuestionDistribution(
     const search = makeQuestionSearchText(question);
     const preferredTopicId = preferredByCategory.get(question.category);
     const ranked = topics
-      .map((topic) => ({
-        topic,
-        score: scoreTopic(search, topic) + (topic.id === preferredTopicId ? 36 : 0),
-      }))
-      .sort((left, right) => right.score - left.score || left.topic.order - right.topic.order);
+      .map((topic) => ({ topic, score: scoreTopic(search, topic) }))
+      .sort((left, right) => {
+        const scoreDifference = right.score - left.score;
+        if (scoreDifference !== 0) return scoreDifference;
 
-    const target = ranked[0]?.topic ?? topics[(question.id - 1) % topics.length];
+        const preferredDifference =
+          Number(right.topic.id === preferredTopicId) -
+          Number(left.topic.id === preferredTopicId);
+        if (preferredDifference !== 0) return preferredDifference;
+
+        return left.topic.order - right.topic.order;
+      });
+
+    const bestIndividualMatch = ranked[0];
+    const categoryFallback = topics.find((topic) => topic.id === preferredTopicId);
+    const target =
+      bestIndividualMatch && bestIndividualMatch.score > 0
+        ? bestIndividualMatch.topic
+        : categoryFallback ?? topics[(question.id - 1) % topics.length];
     questionsByTopic.get(target.id)?.push(question);
   }
 
