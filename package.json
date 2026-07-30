@@ -38,6 +38,7 @@
     "lovable:deploy": "node scripts/lovable-deploy.cjs",
     "check:topic-coverage": "node scripts/check-topic-coverage.mjs",
     "check:topic-schema": "node scripts/check-topic-content-schema.mjs",
+    "check:operational-curriculum": "node scripts/check-operational-curriculum.mjs",
     "check:ship-systems": "node scripts/check-ship-systems.mjs",
     "check:document-tracker": "npx tsx scripts/check-document-tracker.ts",
     "check:ux-consistency": "node scripts/check-ux-consistency.mjs",
