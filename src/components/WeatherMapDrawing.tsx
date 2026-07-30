@@ -105,11 +105,11 @@ export const WeatherMapDrawing = () => {
     setCurrentPoints([]);
 
     const names: Record<string, string> = {
-      "cold-front": "Soğuk Cephe",
-      "warm-front": "Sıcak Cephe",
-      "stationary-front": "Durağan Cephe",
-      "occluded-front": "Tıkanık Cephe",
-      "isobar": `${isobarPressure} hPa İzobar`
+      "cold-front": "Cold Front",
+      "warm-front": "Warm Front",
+      "stationary-front": "Stationary Front",
+      "occluded-front": "Occluded Front",
+      "isobar": `${isobarPressure} hPa Isobar`
     };
 
     toast({

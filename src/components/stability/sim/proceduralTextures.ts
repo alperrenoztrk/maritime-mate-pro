@@ -32,11 +32,11 @@ interface HullPaint {
 }
 
 const hullPaints: Record<ShipType, HullPaint> = {
-  container: { topside: "#8f3b34", antifoul: "#7d2d24", boot: "#20161a", light: false, name: "MARITIME MATE", port: "ISTANBUL" },
-  tanker: { topside: "#24313e", antifoul: "#7d2d24", boot: "#151b22", light: false, name: "KARADENIZ STAR", port: "IZMIR" },
-  bulk: { topside: "#242e3a", antifoul: "#8a2f26", boot: "#141a21", light: false, name: "ANADOLU TRADER", port: "MERSIN" },
-  roro: { topside: "#1f4d80", antifoul: "#7d2d24", boot: "#132030", light: false, name: "MARMARA BRIDGE", port: "AMBARLI" },
-  passenger: { topside: "#eef2f6", antifoul: "#8a2f26", boot: "#1c2733", light: true, name: "EGE PRINCESS", port: "KUSADASI" },
+  container: { topside: "#8f3b34", antifoul: "#7d2d24", boot: "#20161a", light: false, name: "MARINER'S BOOK", port: "LONDON" },
+  tanker: { topside: "#24313e", antifoul: "#7d2d24", boot: "#151b22", light: false, name: "BLACK SEA STAR", port: "LONDON" },
+  bulk: { topside: "#242e3a", antifoul: "#8a2f26", boot: "#141a21", light: false, name: "ANATOLIA TRADER", port: "ROTTERDAM" },
+  roro: { topside: "#1f4d80", antifoul: "#7d2d24", boot: "#132030", light: false, name: "MARMARA BRIDGE", port: "PIRAEUS" },
+  passenger: { topside: "#eef2f6", antifoul: "#8a2f26", boot: "#1c2733", light: true, name: "AEGEAN PRINCESS", port: "VALLETTA" },
 };
 
 const deckBase: Record<ShipType, string> = {
