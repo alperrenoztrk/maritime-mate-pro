@@ -16,13 +16,13 @@
   <rect x="0" y="0" width="1200" height="700" fill="url(#bg2)"/>
 
   <g transform="translate(70,70)">
-    <text x="0" y="44" class="title">12&#8217;de 1 Kuralı (Rule of Twelfths)</text>
-    <text x="0" y="78" class="sub">LW &#8594; HW (veya HW &#8594; LW) arası yaklaşık 6 saattir; değişim 1-2-3-3-2-1/12 şeklinde dağılır.</text>
+    <text x="0" y="44" class="title">The Rule of Twelfths</text>
+    <text x="0" y="78" class="sub">LW &#8594; HW (or HW &#8594; LW) takes about 6 hours; the change is spread as 1-2-3-3-2-1/12.</text>
 
     <!-- Bars -->
     <g transform="translate(0,120)">
       <rect x="0" y="0" width="1060" height="220" rx="20" fill="#0f172a" stroke="#334155"/>
-      <text x="26" y="48" class="h">Saatlik Artış (Range &#215; pay)</text>
+      <text x="26" y="48" class="h">Hourly Rise (Range &#215; share)</text>
 
       <!-- 6 segments -->
       <g transform="translate(26,74)">
@@ -44,21 +44,21 @@
       </g>
 
       <!-- Labels under segments (clipped inside view; we show a compact table below instead) -->
-      <text x="26" y="168" class="small">Pratik tablo (kümülatif): 1. saatte 1/12, 2. saatte 3/12, 3. saatte 6/12, 4. saatte 9/12, 5. saatte 11/12, 6. saatte 12/12</text>
-      <text x="26" y="196" class="small">Yani LW&#8217;den t saat sonra yükseklik = LW + Range &#215; (kümülatif pay)</text>
+      <text x="26" y="168" class="small">Cumulative: hour 1 &#8594; 1/12, hour 2 &#8594; 3/12, hour 3 &#8594; 6/12, hour 4 &#8594; 9/12, hour 5 &#8594; 11/12, hour 6 &#8594; 12/12</text>
+      <text x="26" y="196" class="small">So the height t hours after LW = LW + Range &#215; (cumulative share)</text>
     </g>
 
     <!-- Compact table -->
     <g transform="translate(0,370)">
       <rect x="0" y="0" width="1060" height="250" rx="20" fill="#0b1326" stroke="#273449"/>
-      <text x="26" y="44" class="h">Kısa Referans Tablo</text>
+      <text x="26" y="44" class="h">Quick Reference Table</text>
 
       <!-- Header row -->
       <g transform="translate(26,70)">
         <rect x="0" y="0" width="1008" height="44" rx="12" fill="#0f172a" stroke="#334155"/>
-        <text x="16" y="29" class="h">Saat</text>
-        <text x="210" y="29" class="h">Saatlik pay</text>
-        <text x="520" y="29" class="h">Kümülatif pay</text>
+        <text x="16" y="29" class="h">Hour</text>
+        <text x="210" y="29" class="h">Hourly share</text>
+        <text x="520" y="29" class="h">Cumulative</text>
       </g>
 
       <!-- Rows -->

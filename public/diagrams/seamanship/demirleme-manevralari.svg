@@ -18,29 +18,29 @@
     <g id="ship"><path d="M0,-22 L9,-7 L9,20 L-9,20 L-9,-7 Z" fill="#1e3a8a"/></g>
   </defs>
   <rect width="720" height="480" fill="#ffffff"/>
-  <text x="360" y="28" text-anchor="middle" class="ttl">Demirleme Manevra Teknikleri (üstten görünüş)</text>
+  <text x="360" y="28" text-anchor="middle" class="ttl">Anchoring Techniques (plan view)</text>
 
   <!-- P1 single -->
-  <text x="40" y="70" class="nm">Tek demir (swinging moor)</text>
+  <text x="40" y="70" class="nm">Single anchor (swinging moor)</text>
   <circle class="swing" cx="195" cy="165" r="56"/>
   <use xlink:href="#anc" x="195" y="96"/>
   <line class="chain" x1="195" y1="146" x2="195" y2="100"/>
   <use xlink:href="#ship" transform="translate(195 168)"/>
-  <text x="195" y="244" text-anchor="middle" class="sm">tek demir · geniş salınım alanı</text>
+  <text x="195" y="244" text-anchor="middle" class="sm">one anchor · large swinging circle</text>
 
   <!-- P2 two-anchor -->
-  <text x="380" y="70" class="nm">İki demir (running / standing moor)</text>
+  <text x="380" y="70" class="nm">Two anchors (running / standing moor)</text>
   <use xlink:href="#anc" x="535" y="92"/>
   <use xlink:href="#anc" x="535" y="226"/>
   <line class="chain" x1="535" y1="142" x2="535" y2="96"/>
   <line class="chain" x1="535" y1="190" x2="535" y2="222"/>
   <use xlink:href="#ship" transform="translate(535 165)"/>
-  <text x="535" y="252" text-anchor="middle" class="sm">salınım kısıtlı · güçlü tutuş</text>
+  <text x="535" y="252" text-anchor="middle" class="sm">swing restricted · strong hold</text>
 
   <!-- P3 mediterranean -->
-  <text x="40" y="296" class="nm">Akdeniz usulü (Med moor)</text>
+  <text x="40" y="296" class="nm">Mediterranean moor</text>
   <rect class="quay" x="90" y="300" width="210" height="14"/>
-  <text x="195" y="311" text-anchor="middle" class="sm" fill="#0f172a">RIHTIM</text>
+  <text x="195" y="311" text-anchor="middle" class="sm" fill="#0f172a">QUAY</text>
   <use xlink:href="#ship" transform="translate(195 360) rotate(180)"/>
   <line class="line" x1="186" y1="340" x2="120" y2="314"/>
   <line class="line" x1="204" y1="340" x2="270" y2="314"/>
@@ -48,14 +48,14 @@
   <use xlink:href="#anc" x="270" y="440"/>
   <line class="chain" x1="190" y1="382" x2="122" y2="438"/>
   <line class="chain" x1="200" y1="382" x2="268" y2="438"/>
-  <text x="195" y="464" text-anchor="middle" class="sm">kıç rıhtıma · baştan iki demir açıyla</text>
+  <text x="195" y="464" text-anchor="middle" class="sm">stern to the quay · two anchors out forward</text>
 
   <!-- P4 open moor -->
-  <text x="380" y="296" class="nm">Açık demirleme (open moor)</text>
+  <text x="380" y="296" class="nm">Open moor</text>
   <use xlink:href="#anc" x="470" y="316"/>
   <use xlink:href="#anc" x="600" y="316"/>
   <line class="chain" x1="528" y1="362" x2="472" y2="322"/>
   <line class="chain" x1="542" y1="362" x2="598" y2="322"/>
   <use xlink:href="#ship" transform="translate(535 380)"/>
-  <text x="535" y="462" text-anchor="middle" class="sm">iki demir 60-90° açıyla · yön değişiminde tutuş</text>
+  <text x="535" y="462" text-anchor="middle" class="sm">two anchors at 60-90° · holds through a change of pull</text>
 </svg>

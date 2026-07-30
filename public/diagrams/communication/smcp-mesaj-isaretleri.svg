@@ -8,26 +8,26 @@
     </style>
   </defs>
   <rect width="720" height="470" fill="#ffffff"/>
-  <text x="360" y="28" text-anchor="middle" class="ttl">SMCP — 8 Mesaj İşareti (Message Markers)</text>
-  <text x="360" y="47" text-anchor="middle" class="sm">IMO A.918(22) · özellikle VTS haberleşmesinde mesajın türü baştan belirtilir</text>
+  <text x="360" y="28" text-anchor="middle" class="ttl">SMCP — The 8 Message Markers</text>
+  <text x="360" y="47" text-anchor="middle" class="sm">IMO A.918(22) · the type of message is stated first, especially in VTS communication</text>
 
   <!-- card helper layout: 2 cols x 4 rows -->
   <!-- col1 x=20 w=330 ; col2 x=370 w=330 ; rows y=62,164,266,368 h=92 -->
 
   <!-- 1 Instruction -->
-  <g transform="translate(20 62)"><rect width="330" height="92" rx="8" fill="#eff6ff" stroke="#bfdbfe"/><rect width="8" height="92" rx="4" fill="#2563eb"/><text x="22" y="34" class="mk">INSTRUCTION — Talimat</text><text x="22" y="60" class="ds">Alıcıya yönelik zorunlu / emredici bir</text><text x="22" y="78" class="ds">gerekliliktir.</text></g>
+  <g transform="translate(20 62)"><rect width="330" height="92" rx="8" fill="#eff6ff" stroke="#bfdbfe"/><rect width="8" height="92" rx="4" fill="#2563eb"/><text x="22" y="34" class="mk">INSTRUCTION</text><text x="22" y="60" class="ds">A mandatory requirement addressed</text><text x="22" y="78" class="ds">to the recipient.</text></g>
   <!-- 2 Advice -->
-  <g transform="translate(370 62)"><rect width="330" height="92" rx="8" fill="#ecfdf5" stroke="#bbf7d0"/><rect width="8" height="92" rx="4" fill="#16a34a"/><text x="22" y="34" class="mk">ADVICE — Tavsiye</text><text x="22" y="60" class="ds">Alıcıya yönelik bir öneri / tavsiyedir.</text></g>
+  <g transform="translate(370 62)"><rect width="330" height="92" rx="8" fill="#ecfdf5" stroke="#bbf7d0"/><rect width="8" height="92" rx="4" fill="#16a34a"/><text x="22" y="34" class="mk">ADVICE</text><text x="22" y="60" class="ds">A recommendation to the recipient.</text></g>
   <!-- 3 Warning -->
-  <g transform="translate(20 164)"><rect width="330" height="92" rx="8" fill="#fef2f2" stroke="#fecaca"/><rect width="8" height="92" rx="4" fill="#dc2626"/><text x="22" y="34" class="mk">WARNING — İkaz</text><text x="22" y="60" class="ds">Bir tehlike hakkında uyarır.</text></g>
+  <g transform="translate(20 164)"><rect width="330" height="92" rx="8" fill="#fef2f2" stroke="#fecaca"/><rect width="8" height="92" rx="4" fill="#dc2626"/><text x="22" y="34" class="mk">WARNING</text><text x="22" y="60" class="ds">Warns of a danger.</text></g>
   <!-- 4 Information -->
-  <g transform="translate(370 164)"><rect width="330" height="92" rx="8" fill="#f8fafc" stroke="#e2e8f0"/><rect width="8" height="92" rx="4" fill="#64748b"/><text x="22" y="34" class="mk">INFORMATION — Bilgi</text><text x="22" y="60" class="ds">Yalnızca bilgi aktarır.</text></g>
+  <g transform="translate(370 164)"><rect width="330" height="92" rx="8" fill="#f8fafc" stroke="#e2e8f0"/><rect width="8" height="92" rx="4" fill="#64748b"/><text x="22" y="34" class="mk">INFORMATION</text><text x="22" y="60" class="ds">Conveys information only.</text></g>
   <!-- 5 Question -->
-  <g transform="translate(20 266)"><rect width="330" height="92" rx="8" fill="#faf5ff" stroke="#e9d5ff"/><rect width="8" height="92" rx="4" fill="#9333ea"/><text x="22" y="34" class="mk">QUESTION — Soru</text><text x="22" y="60" class="ds">Mesaj soru niteliğindedir; cevap</text><text x="22" y="78" class="ds">beklenir.</text></g>
+  <g transform="translate(20 266)"><rect width="330" height="92" rx="8" fill="#faf5ff" stroke="#e9d5ff"/><rect width="8" height="92" rx="4" fill="#9333ea"/><text x="22" y="34" class="mk">QUESTION</text><text x="22" y="60" class="ds">The message is a question; a reply</text><text x="22" y="78" class="ds">is expected.</text></g>
   <!-- 6 Answer -->
-  <g transform="translate(370 266)"><rect width="330" height="92" rx="8" fill="#faf5ff" stroke="#e9d5ff"/><rect width="8" height="92" rx="4" fill="#7c3aed"/><text x="22" y="34" class="mk">ANSWER — Cevap</text><text x="22" y="60" class="ds">Önceki bir soruya verilen yanıttır.</text></g>
+  <g transform="translate(370 266)"><rect width="330" height="92" rx="8" fill="#faf5ff" stroke="#e9d5ff"/><rect width="8" height="92" rx="4" fill="#7c3aed"/><text x="22" y="34" class="mk">ANSWER</text><text x="22" y="60" class="ds">A reply to a previous question.</text></g>
   <!-- 7 Request -->
-  <g transform="translate(20 368)"><rect width="330" height="92" rx="8" fill="#f0fdfa" stroke="#99f6e4"/><rect width="8" height="92" rx="4" fill="#0d9488"/><text x="22" y="34" class="mk">REQUEST — İstek</text><text x="22" y="60" class="ds">Bir eylem, izin vb. talep edilir.</text></g>
+  <g transform="translate(20 368)"><rect width="330" height="92" rx="8" fill="#f0fdfa" stroke="#99f6e4"/><rect width="8" height="92" rx="4" fill="#0d9488"/><text x="22" y="34" class="mk">REQUEST</text><text x="22" y="60" class="ds">Requests an action, permission etc.</text></g>
   <!-- 8 Intention -->
-  <g transform="translate(370 368)"><rect width="330" height="92" rx="8" fill="#fff7ed" stroke="#fed7aa"/><rect width="8" height="92" rx="4" fill="#ea580c"/><text x="22" y="34" class="mk">INTENTION — Niyet</text><text x="22" y="60" class="ds">Yapılacak acil seyir hareketini</text><text x="22" y="78" class="ds">bildirir.</text></g>
+  <g transform="translate(370 368)"><rect width="330" height="92" rx="8" fill="#fff7ed" stroke="#fed7aa"/><rect width="8" height="92" rx="4" fill="#ea580c"/><text x="22" y="34" class="mk">INTENTION</text><text x="22" y="60" class="ds">States the immediate navigational</text><text x="22" y="78" class="ds">action intended.</text></g>
 </svg>
