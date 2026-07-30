@@ -49,7 +49,7 @@ export function LibraryPageShell({
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 pb-24 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
+      className="relative min-h-[100svh] overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-[max(1rem,env(safe-area-inset-left))] pb-[calc(max(6rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))] pt-[max(2rem,env(safe-area-inset-top))] dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
       style={highRefreshRateStyles}
     >
       <div className="pointer-events-none absolute inset-0">
