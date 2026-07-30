@@ -43,6 +43,7 @@
     "check:ship-systems": "node scripts/check-ship-systems.mjs",
     "check:document-tracker": "npx tsx scripts/check-document-tracker.ts",
     "check:ux-consistency": "node scripts/check-ux-consistency.mjs",
+    "check:library-interface": "node scripts/check-library-interface.mjs",
     "i18n:extract": "node scripts/i18n/extract-strings.mjs",
     "i18n:pretranslate": "npx tsx scripts/i18n/pretranslate.mjs",
     "i18n:generate": "npx tsx scripts/i18n/generate-locales-gtx.mjs",
@@ -132,7 +133,7 @@
     "remark-gfm": "^4.0.1",
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-animate": "^1.0.0",
     "three": "^0.180.0",
     "vaul": "^1.1.2",
     "zod": "^4.4.3"
