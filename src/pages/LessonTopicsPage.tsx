@@ -74,10 +74,7 @@ export default function LessonTopicsPage() {
             >
               <CategoryIcon className="h-6 w-6" />
             </div>
-            <div className="text-left">
-              <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
-              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{category.subtitle}</p>
-            </div>
+            <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
           <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
             <span className="rounded-full border border-border/60 bg-card/60 px-3 py-1">
@@ -105,7 +102,7 @@ export default function LessonTopicsPage() {
                 <button
                   type="button"
                   onClick={() => toggleModule(module.id)}
-                  className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-muted/40"
+                  className="flex w-full items-center gap-3 p-4 text-left transition-colors hover:bg-muted/40"
                   aria-expanded={expanded}
                 >
                   <span
@@ -113,19 +110,12 @@ export default function LessonTopicsPage() {
                   >
                     {moduleIndex + 1}
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="flex flex-wrap items-center gap-2">
-                      <span className="font-semibold text-foreground">{module.title}</span>
-                      <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
-                        {module.topicCount} konu
-                      </span>
-                    </span>
-                    <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
-                      {module.description}
-                    </span>
+                  <span className="min-w-0 flex-1 font-semibold text-foreground">{module.title}</span>
+                  <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                    {module.topicCount} konu
                   </span>
                   <ChevronDown
-                    className={`mt-2 h-5 w-5 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+                    className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
                   />
                 </button>
 
@@ -175,12 +165,7 @@ export default function LessonTopicsPage() {
                 >
                   <span className="flex min-w-0 items-center gap-2">
                     <FileText className="h-4 w-4 shrink-0 text-primary" />
-                    <span className="min-w-0">
-                      <span className="block text-sm font-medium text-foreground">{section.label}</span>
-                      <span className="line-clamp-2 text-[11px] text-muted-foreground">
-                        {section.description}
-                      </span>
-                    </span>
+                    <span className="text-sm font-medium text-foreground">{section.label}</span>
                   </span>
                   <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
                 </Link>
