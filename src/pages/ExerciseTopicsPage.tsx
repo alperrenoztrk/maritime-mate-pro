@@ -49,17 +49,14 @@ export default function ExerciseTopicsPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 px-4 py-8 pb-24 dark:from-[hsl(265,45%,7%)] dark:via-[hsl(245,45%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
-        <header className="space-y-3 text-center">
+        <header className="text-center">
           <div className="flex items-center justify-center gap-3">
             <div
               className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${category.accent} text-white shadow-lg`}
             >
               <CategoryIcon className="h-6 w-6" />
             </div>
-            <div className="text-left">
-              <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
-              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{category.subtitle}</p>
-            </div>
+            <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
         </header>
 
@@ -71,12 +68,7 @@ export default function ExerciseTopicsPage() {
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow">
               <Ship className="h-5 w-5" />
             </div>
-            <div className="flex-1">
-              <p className="font-bold text-foreground">Vardiya ve Operasyon Senaryoları</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                Gerçek gemi kararlarını adım adım uygulayın
-              </p>
-            </div>
+            <p className="flex-1 font-bold text-foreground">Vardiya ve Operasyon Senaryoları</p>
             <ChevronRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
           </Link>
         )}
@@ -100,7 +92,7 @@ export default function ExerciseTopicsPage() {
                 <button
                   type="button"
                   onClick={() => toggleModule(module.id)}
-                  className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-muted/40"
+                  className="flex w-full items-center gap-3 p-4 text-left transition-colors hover:bg-muted/40"
                   aria-expanded={expanded}
                 >
                   <span
@@ -108,17 +100,12 @@ export default function ExerciseTopicsPage() {
                   >
                     {moduleIndex + 1}
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="font-semibold text-foreground">{module.title}</span>
-                    <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
-                      {module.description}
-                    </span>
-                  </span>
+                  <span className="min-w-0 flex-1 font-semibold text-foreground">{module.title}</span>
                   <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
                     {module.topicCount}
                   </span>
                   <ChevronDown
-                    className={`mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+                    className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
                   />
                 </button>
 
