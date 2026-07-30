@@ -88,6 +88,38 @@ requireText(exerciseDetail, "sourceTopicTitle", "alıştırma detail kaynak baş
 requireText(exerciseDetail, "getLessonFlow(categoryId, sourceTopicTitle)", "lesson-flow geriye dönük uyumluluğu");
 requireText(exerciseDetail, "section.sourceTitle", "sectionRef geriye dönük uyumluluğu");
 
+const visibleDescriptionBindings = [
+  [lessonsPage, "group.subtitle", "Dersler grup açıklaması"],
+  [lessonsPage, "category.subtitle", "Dersler kategori açıklaması"],
+  [lessonsPage, "track.subtitle", "yeterlilik parkuru açıklaması"],
+  [lessonsPage, "section.description", "Dersler araç açıklaması"],
+  [lessonTopics, "category.subtitle", "güverte ders açıklaması"],
+  [lessonTopics, "module.description", "güverte modül açıklaması"],
+  [lessonTopics, "section.description", "güverte araç açıklaması"],
+  [exerciseTopics, "category.subtitle", "alıştırma ders açıklaması"],
+  [exerciseTopics, "module.description", "alıştırma modül açıklaması"],
+  [machineTopics, "category.subtitle", "makine ders açıklaması"],
+  [machineTopics, "module.description", "makine modül açıklaması"],
+];
+for (const [source, binding, label] of visibleDescriptionBindings) {
+  forbidText(source, binding, label);
+}
+forbidText(
+  lessonsPage,
+  "İçerikler departman, ders, modül ve konu sırasıyla düzenlenmiştir.",
+  "Dersler üst başlık açıklaması",
+);
+forbidText(
+  lessonsPage,
+  "Birden fazla dersi bir operasyon yeterliliği altında birleştiren çalışma yolları",
+  "yeterlilik parkurları açıklaması",
+);
+forbidText(
+  exerciseTopics,
+  "Gerçek gemi kararlarını adım adım uygulayın",
+  "senaryo kartı açıklaması",
+);
+
 const literalIds = [...hierarchy.matchAll(/\bid:\s*"([a-z0-9-]+)"/g)].map((match) => match[1]);
 const duplicates = [...new Set(literalIds.filter((id, index) => literalIds.indexOf(id) !== index))];
 if (duplicates.length) failures.push(`curriculumHierarchy: yinelenen sabit id: ${duplicates.join(", ")}`);
@@ -106,5 +138,5 @@ if (failures.length) {
 }
 
 console.log(
-  `✅ Müfredat hiyerarşisi doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} görünür yeterlilik parkuru, sabit kimlikler, alias'lar ve modül tabanlı ekranlar.`,
+  `✅ Müfredat hiyerarşisi doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} görünür yeterlilik parkuru, açıklamasız başlık arayüzü, sabit kimlikler, alias'lar ve modül tabanlı ekranlar.`,
 );
