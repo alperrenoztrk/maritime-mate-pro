@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
+import { getTopicQuiz } from "@/data/courseContent/quiz";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
 import { getScenariosByTopic } from "@/data/scenarios";
 import {
@@ -8,10 +9,14 @@ import {
   ChevronDown,
   ChevronRight,
   Layers3,
+  ListChecks,
   Play,
   Ship,
   Sparkles,
 } from "lucide-react";
+
+const toCourseKey = (categoryId?: string) =>
+  categoryId?.startsWith("machine-") ? categoryId.replace("machine-", "") : categoryId;
 
 export default function ExerciseTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -20,6 +25,7 @@ export default function ExerciseTopicsPage() {
   const flows = getLessonFlowsByTopic(categoryId);
   const flowTitles = new Set(flows.map((flow) => flow.topicTitle));
   const scenarios = getScenariosByTopic(categoryId);
+  const quizQuestions = getTopicQuiz(toCourseKey(categoryId));
   const [expandedModules, setExpandedModules] = useState<string[]>(() =>
     modules[0] ? [modules[0].id] : [],
   );
@@ -59,6 +65,22 @@ export default function ExerciseTopicsPage() {
             <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
           </div>
         </header>
+
+        {quizQuestions.length > 0 && (
+          <Link
+            to={`/exercises/${categoryId}/quiz`}
+            className="group flex items-center gap-3 rounded-2xl border border-violet-500/30 bg-violet-500/5 p-4 shadow-sm transition hover:border-violet-500/50 hover:bg-violet-500/10"
+          >
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow">
+              <ListChecks className="h-5 w-5" />
+            </div>
+            <p className="flex-1 font-bold text-foreground">Quiz Soruları</p>
+            <span className="rounded-full bg-violet-500/15 px-2.5 py-1 text-xs font-semibold text-violet-700 dark:text-violet-300">
+              {quizQuestions.length} soru
+            </span>
+            <ChevronRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        )}
 
         {scenarios.length > 0 && (
           <Link
