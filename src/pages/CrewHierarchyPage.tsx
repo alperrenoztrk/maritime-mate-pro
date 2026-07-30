@@ -15,7 +15,8 @@ const departmentMeta = [
 
 export default function CrewHierarchyPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const requestedDepartment = Number(searchParams.get("department"));
+  const departmentParam = searchParams.get("department");
+  const requestedDepartment = departmentParam === null ? Number.NaN : Number(departmentParam);
   const activeDepartment = Number.isInteger(requestedDepartment)
     ? crewHierarchy[requestedDepartment] ?? null
     : null;
