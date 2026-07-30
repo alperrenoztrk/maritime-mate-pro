@@ -1,173 +1,112 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { Anchor, ArrowRight, Search, X } from "lucide-react";
-import { MobileLayout } from "@/components/MobileLayout";
+import { Anchor } from "lucide-react";
 import { shipSystemsData } from "@/data/shipSystemsData";
 import { getProfessionalSystemGuide } from "@/data/shipSystemsProfessionalData";
 import { shipSystemsSections as SECTIONS } from "@/data/shipSystemsSections";
+import {
+  LibraryBookCard,
+  LibraryCompactCard,
+  LibraryPageShell,
+  LibrarySearchField,
+  LibrarySectionHeading,
+} from "@/components/library/LibraryInterface";
 
-const SECTION_META: Record<string, { title: string; icon: typeof Anchor; color: string }> = Object.fromEntries(
-  SECTIONS.map((s) => [s.id, { title: s.title, icon: s.icon, color: s.color }]),
+const SECTION_META = Object.fromEntries(
+  SECTIONS.map((section) => [section.id, section]),
 );
 
-interface TopicHit {
-  sectionId: string;
-  sectionTitle: string;
-  topicIndex: number;
-  topicTitle: string;
-  icon: typeof Anchor;
-  color: string;
-  purpose: string;
-  searchText: string;
-}
+const normalize = (value: string) =>
+  value
+    .toLocaleLowerCase("tr")
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c");
 
-const ALL_TOPICS: TopicHit[] = Object.entries(shipSystemsData).flatMap(([sectionId, section]) => {
+const allTopics = Object.entries(shipSystemsData).flatMap(([sectionId, section]) => {
   const meta = SECTION_META[sectionId];
   if (!meta) return [];
-  return section.topics.map((t, idx) => {
-    const guide = getProfessionalSystemGuide(sectionId, idx, t.title);
-    const sourceText = [
-      t.title,
-      section.title,
-      section.description,
-      t.introduction,
-      ...guide.searchTerms,
-      guide.purpose,
-      guide.boundary,
-      ...t.sections.flatMap((topicSection) => [topicSection.heading, ...topicSection.paragraphs]),
-    ].join(" ");
+  return section.topics.map((topic, topicIndex) => {
+    const guide = getProfessionalSystemGuide(sectionId, topicIndex, topic.title);
     return {
       sectionId,
+      topicIndex,
+      title: topic.title,
       sectionTitle: meta.title,
-      topicIndex: idx,
-      topicTitle: t.title,
       icon: meta.icon,
-      color: meta.color,
-      purpose: guide.purpose,
-      searchText: sourceText,
+      accent: meta.color,
+      searchText: [
+        topic.title,
+        section.title,
+        section.description,
+        topic.introduction,
+        ...guide.searchTerms,
+        guide.purpose,
+        guide.boundary,
+        ...topic.sections.flatMap((item) => [item.heading, ...item.paragraphs]),
+      ].join(" "),
     };
   });
 });
 
-const TOTAL_TOPIC_COUNT = ALL_TOPICS.length;
-
-const normalize = (s: string) =>
-  s
-    .toLocaleLowerCase("tr")
-    .replace(/ı/g, "i")
-    .replace(/[ğ]/g, "g")
-    .replace(/[ü]/g, "u")
-    .replace(/[ş]/g, "s")
-    .replace(/[ö]/g, "o")
-    .replace(/[ç]/g, "c");
-
 export default function ShipSystemsPage() {
   const [query, setQuery] = useState("");
-  const trimmed = query.trim();
-
-  const hits = useMemo(() => {
-    if (!trimmed) return [] as TopicHit[];
-    const q = normalize(trimmed);
-    return ALL_TOPICS.filter(
-      (h) => normalize(h.searchText).includes(q),
-    );
-  }, [trimmed]);
+  const normalizedQuery = normalize(query.trim());
+  const hits = useMemo(
+    () =>
+      normalizedQuery
+        ? allTopics.filter((topic) => normalize(topic.searchText).includes(normalizedQuery))
+        : [],
+    [normalizedQuery],
+  );
 
   return (
-    <MobileLayout>
-      <div className="relative min-h-screen bg-background px-4 pb-24 pt-6">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 left-1/4 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute top-40 right-0 h-48 w-48 rounded-full bg-accent/5 blur-3xl" />
-        </div>
+    <LibraryPageShell title="Gemi Sistemleri ve Ekipmanları" icon={Anchor}>
+      <LibrarySearchField
+        value={query}
+        onChange={setQuery}
+        placeholder="Konu veya ekipman ara…"
+        ariaLabel="Gemi sistemlerinde ara"
+      />
 
-        <div className="relative z-10 mx-auto flex max-w-lg flex-col gap-5">
-          <header className="space-y-1">
-            <h1 className="text-xl font-bold tracking-tight text-foreground">
-              Gemi Sistemleri ve Ekipmanları
-            </h1>
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              {TOTAL_TOPIC_COUNT} sistem; doğru çalışma akışı, gemide kullanım, çapraz doğrulama, arıza ve mevzuat bağlantısıyla.
-            </p>
-          </header>
-
-          {/* Arama kutusu */}
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Konu veya ekipman ara…"
-              className="w-full rounded-xl border border-border/40 bg-card/60 py-2.5 pl-9 pr-9 text-sm text-foreground placeholder:text-muted-foreground/70 backdrop-blur-sm outline-none transition focus:border-primary/40 focus:bg-card/80"
-              aria-label="Gemi sistemleri içinde ara"
-            />
-            {query && (
-              <button
-                onClick={() => setQuery("")}
-                aria-label="Aramayı temizle"
-                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:bg-muted/40 hover:text-foreground"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            )}
-          </div>
-
-          {/* Arama sonuçları */}
-          {trimmed ? (
-            <div className="flex flex-col gap-2">
-              <p className="px-1 text-[11px] text-muted-foreground">
-                {hits.length} sonuç bulundu
-              </p>
-              {hits.length === 0 ? (
-                <div className="rounded-xl border border-border/30 bg-card/40 p-6 text-center">
-                  <p className="text-sm text-muted-foreground">Eşleşen konu bulunamadı.</p>
-                </div>
-              ) : (
-                hits.map((hit) => (
-                  <Link
-                    key={`${hit.sectionId}-${hit.topicIndex}`}
-                    to={`/ship-systems/${hit.sectionId}?topic=${hit.topicIndex}`}
-                    className="group flex items-center gap-3 rounded-xl border border-border/30 bg-card/60 p-3 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card/80 active:scale-[0.99]"
-                  >
-                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${hit.color}`}>
-                      <hit.icon className="h-4 w-4 text-primary" strokeWidth={1.6} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="truncate text-sm font-semibold text-foreground">{hit.topicTitle}</p>
-                      <p className="truncate text-[11px] text-muted-foreground">{hit.sectionTitle}</p>
-                      <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-foreground/65">{hit.purpose}</p>
-                    </div>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                ))
-              )}
-            </div>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {SECTIONS.map((section) => (
-                <Link
-                  key={section.id}
-                  to={section.to}
-                  className="group flex items-center gap-4 rounded-2xl border border-border/30 bg-card/60 p-4 backdrop-blur-sm transition-all duration-200 hover:border-primary/30 hover:bg-card/80 active:scale-[0.98]"
-                >
-                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${section.color}`}>
-                    <section.icon className="h-6 w-6 text-primary" strokeWidth={1.6} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-foreground leading-tight">{section.title}</p>
-                    <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{section.desc}</p>
-                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-primary/80">
-                      {shipSystemsData[section.id]?.topics.length ?? 0} sistem
-                    </p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
-                </Link>
+      {normalizedQuery ? (
+        <section className="space-y-3">
+          <LibrarySectionHeading badge={hits.length}>Arama Sonuçları</LibrarySectionHeading>
+          {hits.length > 0 ? (
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {hits.map((hit) => (
+                <LibraryCompactCard
+                  key={`${hit.sectionId}-${hit.topicIndex}`}
+                  to={`/ship-systems/${hit.sectionId}?topic=${hit.topicIndex}`}
+                  title={hit.title}
+                  icon={hit.icon}
+                  accent={hit.accent}
+                  badge={hit.sectionTitle}
+                />
               ))}
             </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
+              Eşleşen konu bulunamadı.
+            </div>
           )}
-        </div>
-      </div>
-    </MobileLayout>
+        </section>
+      ) : (
+        <section className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {SECTIONS.map((section) => (
+            <LibraryBookCard
+              key={section.id}
+              to={section.to}
+              title={section.title}
+              icon={section.icon}
+              accent={section.color}
+              badge={shipSystemsData[section.id]?.topics.length ?? 0}
+            />
+          ))}
+        </section>
+      )}
+    </LibraryPageShell>
   );
 }
