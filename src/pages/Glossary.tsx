@@ -1,134 +1,132 @@
 import { useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { BookOpenText, Search } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+import { BookOpenText } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 import { SEO } from "@/components/SEO";
+import {
+  LibraryEntryCard,
+  LibraryPageShell,
+  LibrarySearchField,
+  LibrarySectionHeading,
+} from "@/components/library/LibraryInterface";
+
+const CATEGORY_ACCENTS = [
+  "from-cyan-500 via-blue-600 to-indigo-700",
+  "from-blue-500 via-indigo-500 to-violet-700",
+  "from-teal-500 via-cyan-600 to-blue-700",
+  "from-slate-600 via-blue-700 to-indigo-900",
+  "from-violet-500 via-purple-600 to-indigo-800",
+  "from-emerald-500 via-teal-600 to-cyan-800",
+];
 
 const Glossary = () => {
-  // Global search deep-links to a specific term via /glossary?q=<term>;
-  // the book's table of contents deep-links to a category via /glossary?cat=<category>
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(() => searchParams.get("q") ?? "");
   const [activeCategory, setActiveCategory] = useState<string | null>(() => {
-    const cat = searchParams.get("cat");
-    return cat && glossaryCategories.includes(cat) ? cat : null;
+    const category = searchParams.get("cat");
+    return category && glossaryCategories.includes(category) ? category : null;
   });
+
+  const updateSearch = (value: string) => {
+    setSearch(value);
+    const next = new URLSearchParams(searchParams);
+    value.trim() ? next.set("q", value) : next.delete("q");
+    setSearchParams(next, { replace: true });
+  };
+
+  const updateCategory = (category: string | null) => {
+    setActiveCategory(category);
+    const next = new URLSearchParams(searchParams);
+    category ? next.set("cat", category) : next.delete("cat");
+    setSearchParams(next, { replace: true });
+  };
 
   const filteredTerms = useMemo(() => {
     let terms = glossaryTerms;
-    if (activeCategory) {
-      terms = terms.filter((t) => t.category === activeCategory);
-    }
-    if (search.trim()) {
-      const q = search.trim().toLowerCase();
+    if (activeCategory) terms = terms.filter((term) => term.category === activeCategory);
+    const query = search.trim().toLocaleLowerCase("tr-TR");
+    if (query) {
       terms = terms.filter(
-        (t) =>
-          t.title.toLowerCase().includes(q) ||
-          t.description.toLowerCase().includes(q)
+        (term) =>
+          term.title.toLocaleLowerCase("tr-TR").includes(query) ||
+          term.description.toLocaleLowerCase("tr-TR").includes(query),
       );
     }
     return terms;
-  }, [search, activeCategory]);
+  }, [activeCategory, search]);
+
+  const showCategoryLibrary = !activeCategory && !search.trim();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 pb-24 py-8 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
+    <LibraryPageShell title="Denizcilik Terimleri Sözlüğü" icon={BookOpenText}>
       <SEO
         title="Mariner's Book — Denizcilik Terimleri Sözlüğü"
         description="Denizcilik terimleri sözlüğü: kategori filtreleri ve arama ile denizcilik kavramlarını hızlıca öğrenin."
         path="/glossary"
       />
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute top-10 right-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
-      </div>
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
-        {/* Header */}
-        <header className="space-y-3 text-center">
-          <div className="flex items-center justify-center gap-2">
-            <BookOpenText className="h-5 w-5 text-primary" />
-            <h1 className="text-2xl font-bold text-foreground">Denizcilik Terimleri Sözlüğü</h1>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            {glossaryTerms.length} terim · {glossaryCategories.length} kategori
-          </p>
-        </header>
+      <LibrarySearchField
+        value={search}
+        onChange={updateSearch}
+        placeholder="Terim ara…"
+        ariaLabel="Denizcilik terimlerinde ara"
+      />
 
-        {/* Search & Filter */}
-        <section aria-labelledby="glossary-filter-heading" className="space-y-3 rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
-          <h2 id="glossary-filter-heading" className="sr-only">Arama ve Filtreleme</h2>
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Terim ara…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl border border-border/40 bg-background/70 py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+      {showCategoryLibrary ? (
+        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {glossaryCategories.map((category, index) => (
+            <LibraryEntryCard
+              key={category}
+              title={category}
+              icon={BookOpenText}
+              accent={CATEGORY_ACCENTS[index % CATEGORY_ACCENTS.length]}
+              badge={glossaryTerms.filter((term) => term.category === category).length}
+              onClick={() => updateCategory(category)}
             />
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${
-                !activeCategory
-                  ? "border-primary/40 bg-primary/10 text-primary"
-                  : "border-border/50 bg-background/70 text-foreground/80 hover:border-primary/30"
-              }`}
-            >
-              Tümü ({glossaryTerms.length})
-            </button>
-            {glossaryCategories.map((cat) => {
-              const count = glossaryTerms.filter((t) => t.category === cat).length;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
-                  className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${
-                    activeCategory === cat
-                      ? "border-primary/40 bg-primary/10 text-primary"
-                      : "border-border/50 bg-background/70 text-foreground/80 hover:border-primary/30"
-                  }`}
-                >
-                  {cat} ({count})
-                </button>
-              );
-            })}
-          </div>
+          ))}
         </section>
-
-        {/* Results */}
-        <section aria-labelledby="glossary-results-heading" className="rounded-2xl border border-border/50 bg-card/60 p-4 backdrop-blur-md">
-          <h2 id="glossary-results-heading" className="sr-only">Sonuçlar</h2>
-          <p className="mb-3 text-xs text-muted-foreground">
-            {filteredTerms.length} sonuç gösteriliyor
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredTerms.map((term) => (
-              <div
-                key={term.title}
-                className="rounded-2xl border border-border/50 bg-background/80 p-4 shadow-sm"
+      ) : (
+        <section className="space-y-4">
+          <div className="flex items-center gap-3">
+            <LibrarySectionHeading badge={filteredTerms.length}>
+              {activeCategory ?? "Arama Sonuçları"}
+            </LibrarySectionHeading>
+            {activeCategory && (
+              <button
+                type="button"
+                onClick={() => updateCategory(null)}
+                className="rounded-xl border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
               >
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-[10px] font-semibold text-muted-foreground">
-                    {term.category}
-                  </span>
-                  <span className="text-sm font-semibold text-foreground">{term.title}</span>
-                </div>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{term.description}</p>
-              </div>
-            ))}
+                Kategoriler
+              </button>
+            )}
           </div>
-          {filteredTerms.length === 0 && (
-            <p className="py-8 text-center text-sm text-muted-foreground">
+
+          {filteredTerms.length > 0 ? (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredTerms.map((term) => (
+                <article
+                  key={term.title}
+                  className="rounded-2xl border border-border/50 bg-card/75 p-4 shadow-sm backdrop-blur"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h2 className="text-sm font-bold text-foreground">{term.title}</h2>
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                      {term.category}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">{term.description}</p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
               Aradığınız terim bulunamadı.
-            </p>
+            </div>
           )}
         </section>
-      </div>
-    </div>
+      )}
+    </LibraryPageShell>
   );
 };
 
