@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { seamanshipQuestionsExtended } from "@/data/seamanshipQuestionsExtended";
 
-export const seamanshipQuestions: QuizQuestion[] = [
+const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "Demir zinciri scope oranı (normal koşullarda) genellikle en az kaç olmalıdır?",
@@ -681,5 +682,10 @@ export const seamanshipQuestions: QuizQuestion[] = [
     explanation: "Genelde rüzgâraltından kontrollü yaklaşılır; pervane kazazededen uzak tutulur, sürüklenme kontrol edilir.",
     category: "Can Kurtarma"
   }
+];
+
+export const seamanshipQuestions: QuizQuestion[] = [
+  ...baseSeamanshipQuestions,
+  ...seamanshipQuestionsExtended,
 ];
 

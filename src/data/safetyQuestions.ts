@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { safetyQuestionsExtended } from "@/data/safetyQuestionsExtended";
 
-export const safetyQuestions: QuizQuestion[] = [
+const baseSafetyQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "SOLAS'a göre yolcu gemilerinde haftalık olarak yapılması zorunlu tatbikatlar hangileridir?",
@@ -601,5 +602,10 @@ export const safetyQuestions: QuizQuestion[] = [
     explanation: "Anderson (tek) dönüş en hızlı geri dönüş manevrasıdır ve düşme anının hemen fark edildiği, manevra alanının yeterli olduğu durumlarda kullanılır; ancak yaklaşma hassasiyeti düşüktür.",
     category: "MOB"
   }
+];
+
+export const safetyQuestions: QuizQuestion[] = [
+  ...baseSafetyQuestions,
+  ...safetyQuestionsExtended,
 ];
 

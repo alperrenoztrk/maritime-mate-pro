@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { meteorologyQuestionsExtended } from "@/data/meteorologyQuestionsExtended";
 
-export const meteorologyQuestions: QuizQuestion[] = [
+const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "Beaufort 8 (Gale) rüzgârının yaklaşık hız aralığı nedir?",
@@ -534,5 +535,10 @@ export const meteorologyQuestions: QuizQuestion[] = [
     explanation: "Sıcak cephe kırmızı yarım dairelerle, soğuk cephe mavi üçgenlerle, oklüzyon mor (üçgen+yarım daire) ile gösterilir.",
     category: "Sinoptik Harita"
   }
+];
+
+export const meteorologyQuestions: QuizQuestion[] = [
+  ...baseMeteorologyQuestions,
+  ...meteorologyQuestionsExtended,
 ];
 
