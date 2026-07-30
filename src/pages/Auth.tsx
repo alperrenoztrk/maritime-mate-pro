@@ -168,7 +168,22 @@ const Auth = () => {
                   {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
                 </Button>
               </form>
+              <div className="mt-3 text-center">
+                <button
+                  type="button"
+                  onClick={handleResetPassword}
+                  disabled={busy}
+                  className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                >
+                  Şifremi unuttum / şifre belirle
+                </button>
+                <p className="mt-2 text-[11px] text-muted-foreground">
+                  Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
+                  belirleyebilir veya Google ile giriş yapabilirsiniz.
+                </p>
+              </div>
             </TabsContent>
+
 
             <TabsContent value="signup" className="mt-4">
               <form onSubmit={handleSubmit} className="space-y-3">
