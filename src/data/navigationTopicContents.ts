@@ -119,7 +119,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dünya'nın Şekli",
         content: "Dünya, mükemmel bir küre değildir. Kendi ekseni etrafındaki dönüşü nedeniyle ekvator bölgesinde şişkin, kutuplarda basık bir yapı gösterir. Bu şekle geoit veya matematiksel olarak basık küre (oblate spheroid) denir.",
         image: earthOblate,
-        imageAlt: "The Earth'nın basık küre şekli",
+        imageAlt: "The oblate spheroid shape of the Earth",
         bulletPoints: [
           "Ekvator yarıçapı, kutup yarıçapından daha büyüktür",
           "Yerçekimi her noktada eşit değildir",
@@ -134,7 +134,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dünya'nın Coğrafi Eksenleri",
         content: "Dünya'nın hayali bir dönme ekseni vardır. Bu eksen, Kuzey Kutbu ile Güney Kutbunu birleştirir. Bu eksene dik olan en büyük daire ekvatordur.",
         image: earthShape1,
-        imageAlt: "The Earth'nın ekseni ve ekvator",
+        imageAlt: "The Earth's axis and the equator",
         bulletPoints: [
           "Ekvator, Dünya'yı kuzey ve güney yarımküreye ayırır",
           "Enlem ölçümü ekvatordan başlar",
@@ -146,7 +146,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dünya'nın Kendi Ekseni Etrafındaki Dönüşü (Rotasyon)",
         content: "Dünya, kendi ekseni etrafında batıdan doğuya doğru döner. Bu dönüşün süresi yaklaşık 24 saattir.",
         image: earthRotation,
-        imageAlt: "The Earth'nın rotasyonu - gece ve gündüz",
+        imageAlt: "The Earth's rotation - day and night",
         bulletPoints: [
           "Gece–gündüz oluşur",
           "Zaman kavramı ortaya çıkar",
@@ -161,7 +161,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dünya'nın Güneş Etrafındaki Dönüşü (Revolüsyon)",
         content: "Dünya, Güneş etrafında yaklaşık 365 gün 6 saatte bir tur atar. Bu hareket sırasında Dünya'nın dönme ekseni, yörünge düzlemine yaklaşık 23.5° eğiktir.",
         image: earthSeasons,
-        imageAlt: "The Earth'nın mevsimsel hareketi ve eksen eğikliği",
+        imageAlt: "The Earth's seasonal motion and axial tilt",
         bulletPoints: [
           "Mevsimler oluşur",
           "Güneş'in gökyüzündeki yüksekliği yıl boyunca değişir",
@@ -173,7 +173,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Eksen Eğikliği (Obliquity)",
         content: "Dünya'nın dönme ekseni, yörünge düzlemine dik olan eksene göre yaklaşık 23.5° eğiktir. Bu eğiklik nedeniyle ekinoks ve solstis olayları meydana gelir.",
         image: earthTilt,
-        imageAlt: "The Earth'nın 23.5° eksen eğikliği",
+        imageAlt: "The Earth's 23.5° axial tilt",
         bulletPoints: [
           "21 Mart: İlkbahar ekinoksu (Vernal Equinox)",
           "21 Haziran: Yaz gündönümü (Summer Solstice)",
@@ -199,7 +199,7 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
         title: "Dünya'nın Şeklinin Seyir Hesaplarına Etkisi",
         content: "Dünya'nın basık küre olması nedeniyle farklı seyir yöntemleri kullanılır:",
         image: earthOblate,
-        imageAlt: "The Earth'nın basık küre (geoit) şekli",
+        imageAlt: "The oblate spheroid (geoid) shape of the Earth",
         bulletPoints: [
           "Düzlem seyir yalnızca kısa mesafelerde geçerlidir",
           "Uzun mesafelerde orta enlem ve büyük daire seyri kullanılır",
@@ -8454,7 +8454,7 @@ Her segmentin mesafesi ayrı hesaplanır ve toplam rota uzunluğu bulunur. Bu to
         content:
           "Dünya 24 saatte bir tam tur yapar. Bu tam tur, 360°’lik açısal bir harekettir. Göksel seyirde zaman hesabı, bu fiziksel gerçeğin üzerine kurulur.",
         image: earthRotation,
-        imageAlt: "The Earth'nın ekseni etrafındaki dönüşü"
+        imageAlt: "The Earth's rotation about its axis"
       },
       {
         title: "Aşama 2: Zamanın açısal karşılığının gösterilmesi",

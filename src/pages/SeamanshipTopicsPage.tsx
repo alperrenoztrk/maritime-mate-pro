@@ -1323,7 +1323,7 @@ SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dok�
       {
         src: photoRudderPropeller,
         title: "Yarı dengeli (semi-balanced) spade dümen ve pervane",
-        caption: "Drydock'ta ticari bir geminin kıçı: mavi boyalı semi-balanced spade dümen ve beş kanatlı bronz pervane bir arada görülür. Pervane çapına oranla dümenin alanı tipik olarak sualtı yüzeyinin %1,5-2'si kadardır.",
+        caption: "The stern of a merchant ship in dry dock: a blue semi-balanced spade rudder and a five-bladed bronze propeller together. Relative to the propeller diameter, the rudder area is typically 1.5-2% of the underwater lateral area.",
         alt: "Stern view of a large ship in dry dock; a blue semi-balanced spade rudder and a large five-bladed bronze propeller, with workers and staging around them.",
       },
     ],
