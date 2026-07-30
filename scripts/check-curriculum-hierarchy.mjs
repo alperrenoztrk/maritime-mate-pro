@@ -12,6 +12,7 @@ const machine = read("src/data/machineTopicData.ts");
 const lessonsPage = read("src/pages/LessonsPage.tsx");
 const lessonTopics = read("src/pages/LessonTopicsPage.tsx");
 const exerciseTopics = read("src/pages/ExerciseTopicsPage.tsx");
+const exerciseDetail = read("src/pages/ExerciseTopicDetailPage.tsx");
 const machineTopics = read("src/pages/MachineTopicLessonsPage.tsx");
 const deckDetail = read("src/pages/LessonTopicDetailPage.tsx");
 const machineDetail = read("src/pages/MachineTopicDetailPage.tsx");
@@ -83,6 +84,9 @@ for (const [file, source] of [
 }
 requireText(deckDetail, "getBetaTopic", "güverte detay kimlik çözümleme");
 requireText(machineDetail, "getBetaTopic", "makine detay kimlik çözümleme");
+requireText(exerciseDetail, "sourceTopicTitle", "alıştırma detail kaynak başlık çözümleme");
+requireText(exerciseDetail, "getLessonFlow(categoryId, sourceTopicTitle)", "lesson-flow geriye dönük uyumluluğu");
+requireText(exerciseDetail, "section.sourceTitle", "sectionRef geriye dönük uyumluluğu");
 
 const literalIds = [...hierarchy.matchAll(/\bid:\s*"([a-z0-9-]+)"/g)].map((match) => match[1]);
 const duplicates = [...new Set(literalIds.filter((id, index) => literalIds.indexOf(id) !== index))];
