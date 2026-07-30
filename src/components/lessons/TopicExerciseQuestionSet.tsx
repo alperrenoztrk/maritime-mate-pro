@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { CheckCircle, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
@@ -18,10 +18,6 @@ export function TopicExerciseQuestionSet({
 }: {
   questions: QuizQuestion[];
 }) {
-  const questionSignature = useMemo(
-    () => questions.map((question) => question.id).join("-"),
-    [questions],
-  );
   const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions));
   const [current, setCurrent] = useState(0);
   const [answered, setAnswered] = useState(false);
@@ -29,19 +25,11 @@ export function TopicExerciseQuestionSet({
   const [finished, setFinished] = useState(false);
   const [run, setRun] = useState(0);
 
-  useEffect(() => {
-    setOrder(shuffle(questions));
-    setCurrent(0);
-    setAnswered(false);
-    setCorrectCount(0);
-    setFinished(false);
-    setRun((value) => value + 1);
-  }, [questionSignature, questions]);
-
   if (questions.length === 0) return null;
 
-  const question = order[current];
-  const percentage = Math.round((correctCount / order.length) * 100);
+  const question = order[current] ?? questions[0];
+  const questionCount = order.length || questions.length;
+  const percentage = Math.round((correctCount / questionCount) * 100);
 
   const handleAnswered = (correct: boolean) => {
     if (answered) return;
@@ -50,7 +38,7 @@ export function TopicExerciseQuestionSet({
   };
 
   const next = () => {
-    if (current >= order.length - 1) {
+    if (current >= questionCount - 1) {
       setFinished(true);
       return;
     }
@@ -76,12 +64,10 @@ export function TopicExerciseQuestionSet({
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow">
           <ListChecks className="h-5 w-5" />
         </div>
-        <div className="min-w-0 flex-1">
-          <h2 className="font-bold text-foreground">Konu Alıştırmaları</h2>
-          <p className="text-xs text-muted-foreground">
-            {questions.length} soru bu konuyla eşleştirildi
-          </p>
-        </div>
+        <h2 className="min-w-0 flex-1 font-bold text-foreground">Konu Alıştırmaları</h2>
+        <span className="rounded-full bg-violet-500/15 px-2.5 py-1 text-xs font-semibold text-violet-700 dark:text-violet-300">
+          {questions.length} soru
+        </span>
       </div>
 
       {finished ? (
@@ -90,7 +76,7 @@ export function TopicExerciseQuestionSet({
           <div>
             <p className="text-3xl font-bold text-primary">%{percentage}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              {correctCount} / {order.length} doğru cevap
+              {correctCount} / {questionCount} doğru cevap
             </p>
           </div>
           <Button onClick={restart} className="w-full sm:w-auto">
@@ -102,7 +88,7 @@ export function TopicExerciseQuestionSet({
         <div className="space-y-4">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>
-              Soru {current + 1} / {order.length}
+              Soru {current + 1} / {questionCount}
             </span>
             <span>{question.category}</span>
           </div>
@@ -115,7 +101,7 @@ export function TopicExerciseQuestionSet({
 
           {answered && (
             <Button onClick={next} className="w-full">
-              {current < order.length - 1 ? "Sonraki Soru" : "Sonucu Gör"}
+              {current < questionCount - 1 ? "Sonraki Soru" : "Sonucu Gör"}
               <CheckCircle className="ml-2 h-4 w-4" />
             </Button>
           )}
