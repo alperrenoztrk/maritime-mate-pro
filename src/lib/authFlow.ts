@@ -21,21 +21,20 @@ export const sanitizeReturnPath = (raw?: string | null) => {
 };
 
 /**
- * Routes an anonymous visitor may open. Everything else is behind the login
- * wall (see RequireAuth), so a newly added route is protected by default.
+ * Uygulama içeriği herkese açıktır: arama motorlarından, yer imlerinden veya
+ * paylaşılan bağlantılardan gelen ziyaretçi istediği sayfayı doğrudan görür.
+ * Yalnızca kişisel veriye dokunan rotalar oturum ister (bkz. RequireAuth).
  */
-const PUBLIC_PATHS = new Set([
-  "/",
-  "/auth",
-  "/auth/callback",
-  // Blocking the OAuth consent screen would deadlock the sign-in it serves.
-  "/.lovable/oauth/consent",
-  // Legacy shortcut that only redirects to "/".
-  "/widgets",
-]);
+const PRIVATE_PREFIXES = [
+  "/settings",
+  "/beta/documents",
+];
 
-export const isPublicPath = (pathname: string) =>
-  PUBLIC_PATHS.has(pathname.replace(/\/+$/, "") || "/");
+export const isPublicPath = (pathname: string) => {
+  const clean = pathname.replace(/\/+$/, "") || "/";
+  return !PRIVATE_PREFIXES.some((p) => clean === p || clean.startsWith(`${p}/`));
+};
+
 
 /** Sends the visitor to the login screen while remembering where they meant to go. */
 export const buildAuthRedirect = (pathname: string, search = "") =>
