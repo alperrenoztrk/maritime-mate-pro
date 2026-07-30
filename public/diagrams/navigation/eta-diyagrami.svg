@@ -11,14 +11,14 @@
     </marker>
   </defs>
   <rect width="700" height="420" fill="#ffffff"/>
-  <text x="350" y="34" text-anchor="middle" class="ttl">ETA (Tahmini Varış Zamanı) Diyagramı</text>
+  <text x="350" y="34" text-anchor="middle" class="ttl">ETA (Estimated Time of Arrival) Diagram</text>
 
   <!-- timeline -->
   <line x1="80" y1="150" x2="630" y2="150" stroke="#1e3a8a" stroke-width="3" marker-end="url(#tarr)"/>
 
   <!-- departure node -->
   <circle cx="110" cy="150" r="10" fill="#16a34a" stroke="#0f172a" stroke-width="2"/>
-  <text x="110" y="120" text-anchor="middle" class="lbl">Kalkış</text>
+  <text x="110" y="120" text-anchor="middle" class="lbl">Departure</text>
   <text x="110" y="185" text-anchor="middle" class="sub">ETD 0600</text>
 
   <!-- waypoint -->
@@ -28,7 +28,7 @@
 
   <!-- arrival node -->
   <circle cx="600" cy="150" r="10" fill="#dc2626" stroke="#0f172a" stroke-width="2"/>
-  <text x="600" y="120" text-anchor="middle" class="lbl">Varış</text>
+  <text x="600" y="120" text-anchor="middle" class="lbl">Arrival</text>
   <text x="600" y="185" text-anchor="middle" class="sub">ETA 1430</text>
 
   <!-- distance brackets -->
@@ -38,8 +38,8 @@
   <!-- formula box -->
   <g transform="translate(160 270)">
     <rect x="0" y="0" width="380" height="100" rx="10" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1.5"/>
-    <text x="190" y="34" class="frm">Zaman = Mesafe ÷ Hız</text>
-    <text x="190" y="62" class="sub" text-anchor="middle">Seyir süresi = 220 NM ÷ 14 kn ≈ 15 sa 43 dk</text>
-    <text x="190" y="84" class="sub" text-anchor="middle">ETA = ETD + Seyir süresi (+ duraklamalar)</text>
+    <text x="190" y="34" class="frm">Time = Distance ÷ Speed</text>
+    <text x="190" y="62" class="sub" text-anchor="middle">Passage time = 220 NM ÷ 14 kn ≈ 15 h 43 min</text>
+    <text x="190" y="84" class="sub" text-anchor="middle">ETA = ETD + passage time (+ any stoppages)</text>
   </g>
 </svg>

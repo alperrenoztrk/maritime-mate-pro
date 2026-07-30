@@ -17,6 +17,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "check:svg-text": "node scripts/check-svg-text-fit.mjs",
     "test:validation": "tsc -p tsconfig.validation.json && node -e \"require('fs').writeFileSync('tmp/validation-test/package.json', '{\\\"type\\\":\\\"commonjs\\\"}')\" && node tmp/validation-test/utils/validation/validationRunner.js",
     "test:formulas": "npx tsx src/utils/validation/formulaRunner.ts",
     "preview": "vite preview --host 0.0.0.0 --port 8080",

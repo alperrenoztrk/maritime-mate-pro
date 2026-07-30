@@ -429,8 +429,8 @@ Metasantr konumu, su hattı atalet momenti ve batık hacme bağlı olarak hesapl
     images: [
       {
         src: metacenterDiagram,
-        alt: "Metasantr ve GM diyagramı",
-        caption: "Şekil: Gemi kesitinde K, B, G ve M noktalarının gösterimi ve GM mesafesi",
+        alt: "Metacentre and GM diagram",
+        caption: "Figure: the points K, B, G and M in a midship section, and the GM distance",
       },
     ],
     bulletPoints: [
@@ -987,8 +987,8 @@ Modern uygulamalarda bu süreç stabilite yazılımlarıyla otomatik yapılır; 
     images: [
       {
         src: gzCurveDiagram,
-        alt: "GZ eğrisi diyagramı",
-        caption: "Şekil: Tipik GZ eğrisi - yatma açısına göre doğrultma kolu değişimi",
+        alt: "GZ curve diagram",
+        caption: "Figure: a typical GZ curve - righting lever against angle of heel",
       },
     ],
     bulletPoints: [
@@ -1206,8 +1206,8 @@ Doğrultma momenti, geminin stabilitesinin temel ölçüsüdür. IMO kriterleri 
     images: [
       {
         src: rightingMomentDiagram,
-        alt: "Doğrultma momenti diyagramı",
-        caption: "Şekil: Yatmış gemide G, B noktaları ve doğrultma kolu GZ gösterimi",
+        alt: "Righting moment diagram",
+        caption: "Figure: the points G and B and the righting lever GZ in a heeled ship",
       },
     ],
     bulletPoints: [
@@ -1435,8 +1435,8 @@ Tüm kısmen dolu tanklar serbest yüzey etkisi yaratır: yakıt, balast, tatlı
     images: [
       {
         src: freeSurfaceEffect,
-        alt: "Serbest yüzey etkisi diyagramı",
-        caption: "Şekil: Kısmen dolu tankta sıvı kayması ve sanal KG yükselmesi",
+        alt: "Free surface effect diagram",
+        caption: "Figure: liquid shifting in a partly filled tank and the virtual rise of KG",
       },
     ],
     bulletPoints: [
@@ -1721,8 +1721,8 @@ Trim, geminin performansını, pervane verimliliğini ve güverte ıslaklığın
     images: [
       {
         src: trimDiagram,
-        alt: "Trim diyagramı",
-        caption: "Şekil: Gemi yan görünüşü - baş ve kıç draftları ve trim gösterimi",
+        alt: "Trim diagram",
+        caption: "Figure: ship in profile - forward and aft drafts and the resulting trim",
       },
     ],
     bulletPoints: [
@@ -2239,8 +2239,8 @@ Hasarlı hacim = Gerçek hacim × μ`,
     images: [
       {
         src: damageStabilityDiagram,
-        alt: "Hasar stabilitesi diyagramı",
-        caption: "Şekil: Hasarlı bölme, su girişi ve geminin list durumu gösterimi",
+        alt: "Damage stability diagram",
+        caption: "Figure: a damaged compartment, water ingress and the resulting list",
       },
     ],
     bulletPoints: [

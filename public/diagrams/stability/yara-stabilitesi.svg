@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
   <rect width="900" height="360" fill="#f8fafc" />
-  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Hasar (Yara) Stabilitesi: Bölme Su Alması ve List</text>
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Damage Stability: Compartment Flooding and List</text>
 
   <!-- su -->
   <rect x="60" y="200" width="780" height="120" fill="#dbeafe" />
@@ -18,10 +18,10 @@
     <path d="M287 225 L302 232 L289 242 L305 250" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
   </g>
 
-  <text x="250" y="120" font-size="13" font-weight="bold" font-family="Arial" fill="#ef4444">Yara (su girişi)</text>
+  <text x="250" y="120" font-size="13" font-weight="bold" font-family="Arial" fill="#ef4444">Damage (water ingress)</text>
   <line x1="292" y1="126" x2="308" y2="212" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" />
 
-  <text x="560" y="100" font-size="13" font-family="Arial" fill="#475569">Su geçirmez perdeler</text>
+  <text x="560" y="100" font-size="13" font-family="Arial" fill="#475569">Watertight bulkheads</text>
   <line x1="580" y1="106" x2="522" y2="150" stroke="#475569" stroke-width="1.5" stroke-dasharray="4 3" />
 
   <!-- list oku -->
@@ -29,5 +29,5 @@
   <path d="M760 140 L746 132 L752 120 Z" fill="#7c3aed" />
   <text x="700" y="80" font-size="13" font-weight="bold" font-family="Arial" fill="#7c3aed">List</text>
 
-  <text x="60" y="340" font-size="12" font-family="Arial" fill="#64748b">Hasarlı bölmeye giren su geminin liste yatmasına yol açar; perdeler su yayılımını sınırlar (geçirgenlik μ).</text>
+  <text x="60" y="340" font-size="12" font-family="Arial" fill="#64748b">Water entering the damaged compartment makes the ship list; bulkheads limit the spread of flooding (permeability μ).</text>
 </svg>

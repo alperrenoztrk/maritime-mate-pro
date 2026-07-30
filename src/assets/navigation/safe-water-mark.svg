@@ -11,7 +11,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="200" y="30" class="text title">Emniyetli Su İşareti</text>
+  <text x="200" y="30" class="text title">Safe Water Mark</text>
   
   <!-- Buoy -->
   <g transform="translate(200, 120)">
@@ -23,15 +23,15 @@
     <!-- Red sphere on top -->
     <circle cx="0" cy="-60" r="8" class="sphere"/>
     
-    <text x="0" y="100" class="text">EMNİYETLİ SU</text>
-    <text x="0" y="115" class="text">Kırmızı küre tepelik</text>
-    <text x="0" y="130" class="text">Kırmızı-beyaz dikey bant</text>
+    <text x="0" y="100" class="text">SAFE WATER</text>
+    <text x="0" y="115" class="text">Single red sphere topmark</text>
+    <text x="0" y="130" class="text">Red and white vertical stripes</text>
   </g>
   
   <!-- Description -->
   <rect x="50" y="200" width="300" height="80" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="200" y="225" class="text title">Anlamı</text>
-  <text x="200" y="245" class="text">Bu işaretin çevresinde</text>
-  <text x="200" y="260" class="text">güvenli su bulunur.</text>
-  <text x="200" y="275" class="text">Kanal girişi veya ortası.</text>
+  <text x="200" y="225" class="text title">Meaning</text>
+  <text x="200" y="245" class="text">There is navigable water</text>
+  <text x="200" y="260" class="text">all around this mark.</text>
+  <text x="200" y="275" class="text">Marks a landfall or mid-channel.</text>
 </svg>

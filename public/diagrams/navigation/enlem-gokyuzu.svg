@@ -11,19 +11,19 @@
     </style>
   </defs>
   <rect width="700" height="500" fill="#fff"/>
-  <text x="350" y="28" text-anchor="middle" class="ttl">Enlem ve Kutup Yıldızı Yüksekliği</text>
+  <text x="350" y="28" text-anchor="middle" class="ttl">Latitude and the Altitude of Polaris</text>
   <!-- Sky dome -->
   <path d="M 50 380 A 300 300 0 0 1 650 380 Z" fill="url(#sky)"/>
   <!-- Horizon -->
   <line x1="40" y1="380" x2="660" y2="380" stroke="#92400e" stroke-width="3"/>
-  <text x="55" y="397" class="lbl2">Ufuk</text>
+  <text x="55" y="397" class="lbl2">Horizon</text>
   <!-- Observer -->
   <circle cx="350" cy="380" r="6" fill="#dc2626"/>
-  <text x="360" y="397" class="lbl2">Gözlemci</text>
+  <text x="360" y="397" class="lbl2">Observer</text>
   <!-- Polaris -->
   <g transform="translate(485 215)">
     <polygon points="0,-12 3,-3 12,0 3,3 0,12 -3,3 -12,0 -3,-3" fill="#fbbf24"/>
-    <text x="14" y="4" class="lbl">Kutup Yıldızı (Polaris)</text>
+    <text x="14" y="4" class="lbl">Pole Star (Polaris)</text>
   </g>
   <!-- Line of sight -->
   <line x1="350" y1="380" x2="485" y2="215" stroke="#fbbf24" stroke-width="2"/>
@@ -35,7 +35,7 @@
   <!-- Formula -->
   <g transform="translate(40 420)">
     <rect width="620" height="60" rx="6" fill="#f1f5f9" stroke="#0f172a"/>
-    <text x="20" y="25" class="lbl2">Pratik kural: Kutup Yıldızı'nın ufuktan yüksekliği ≈ gözlemcinin enlemi (φ)</text>
-    <text x="20" y="48" class="lbl2">Düzeltme: φ = Ho − (q · cos(LHA)) — Nautical Almanac'tan q tablosu</text>
+    <text x="20" y="25" class="lbl2">Rule of thumb: the altitude of Polaris above the horizon ≈ the observer's latitude (φ)</text>
+    <text x="20" y="48" class="lbl2">Correction: φ = Ho − (q · cos(LHA)) — q from the Nautical Almanac tables</text>
   </g>
 </svg>

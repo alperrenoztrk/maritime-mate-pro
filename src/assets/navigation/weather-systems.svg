@@ -16,14 +16,14 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">Hava Sistemleri ve Navigasyon</text>
+  <text x="400" y="30" class="text title">Weather Systems and Navigation</text>
   
   <!-- High Pressure System -->
   <g transform="translate(200, 200)">
     <circle cx="0" cy="0" r="80" class="high-pressure"/>
     <text x="0" y="5" class="text">H</text>
-    <text x="0" y="100" class="text">Yüksek Basınç</text>
-    <text x="0" y="115" class="text">Saat yönünde rüzgar</text>
+    <text x="0" y="100" class="text">High Pressure</text>
+    <text x="0" y="115" class="text">Clockwise wind</text>
     
     <!-- Wind arrows around high -->
     <path d="M 0 -90 Q 20 -80 40 -60" class="wind"/>
@@ -36,8 +36,8 @@
   <g transform="translate(600, 200)">
     <circle cx="0" cy="0" r="80" class="low-pressure"/>
     <text x="0" y="5" class="text">L</text>
-    <text x="0" y="100" class="text">Alçak Basınç</text>
-    <text x="0" y="115" class="text">Saat yönü tersi rüzgar</text>
+    <text x="0" y="100" class="text">Low Pressure</text>
+    <text x="0" y="115" class="text">Anticlockwise wind</text>
     
     <!-- Wind arrows around low -->
     <path d="M 0 -90 Q -20 -80 -40 -60" class="wind"/>
@@ -50,16 +50,16 @@
   <g transform="translate(400, 300)">
     <line x1="-150" y1="0" x2="150" y2="0" class="cold-front"/>
     <polygon points="0,-10 20,0 0,10" fill="#0000ff"/>
-    <text x="0" y="-25" class="text">Soğuk Cephe</text>
-    <text x="0" y="-10" class="text">Mavi üçgenler</text>
+    <text x="0" y="-25" class="text">Cold Front</text>
+    <text x="0" y="-10" class="text">Blue triangles</text>
   </g>
   
   <!-- Warm Front -->
   <g transform="translate(400, 400)">
     <line x1="-150" y1="0" x2="150" y2="0" class="warm-front"/>
     <polygon points="-20,-10 0,0 -20,10" fill="#ff6600"/>
-    <text x="0" y="-25" class="text">Sıcak Cephe</text>
-    <text x="0" y="-10" class="text">Kırmızı yarım daireler</text>
+    <text x="0" y="-25" class="text">Warm Front</text>
+    <text x="0" y="-10" class="text">Red semicircles</text>
   </g>
   
   <!-- Isobars -->
@@ -80,9 +80,9 @@
   
   <!-- Navigation Impact -->
   <rect x="50" y="450" width="700" height="120" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="400" y="470" class="text title">Hava Sistemlerinin Navigasyona Etkisi</text>
-  <text x="400" y="490" class="text">• Yüksek Basınç: Genellikle iyi hava, düşük rüzgar</text>
-  <text x="400" y="510" class="text">• Alçak Basınç: Kötü hava, güçlü rüzgar, fırtına riski</text>
-  <text x="400" y="530" class="text">• Cepheler: Hava değişimi, görüş azalması, dalga artışı</text>
-  <text x="400" y="550" class="text">• Navigasyon: Rota değişikliği, hız azaltma, güvenli liman arama</text>
+  <text x="400" y="470" class="text title">Effect of Weather Systems on Navigation</text>
+  <text x="400" y="490" class="text">• High pressure: generally fair weather, light winds</text>
+  <text x="400" y="510" class="text">• Low pressure: bad weather, strong winds, risk of gales</text>
+  <text x="400" y="530" class="text">• Fronts: change of weather, reduced visibility, higher seas</text>
+  <text x="400" y="550" class="text">• Action: alter course, reduce speed, seek a port of refuge</text>
 </svg>

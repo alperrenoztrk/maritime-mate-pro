@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
-  <title id="title">Konteyner gemisi yan profili</title>
-  <desc id="desc">Pruvası sağda, kıç üst yapısı ve renkli konteyner istifleri görünen konteyner gemisi.</desc>
+  <title id="title">Container ship side profile</title>
+  <desc id="desc">A container ship with the bow to the right, showing the aft superstructure and coloured container stacks.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dff4ff"/><stop offset="1" stop-color="#f8fcff"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1686b8"/><stop offset="1" stop-color="#075274"/></linearGradient>

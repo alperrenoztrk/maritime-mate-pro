@@ -9,29 +9,29 @@
     </style>
   </defs>
   <rect width="760" height="380" fill="#ffffff"/>
-  <text x="380" y="30" text-anchor="middle" class="ttl">Gündüz İşaretleri (COLREG Kural 24-30)</text>
-  <text x="380" y="50" text-anchor="middle" class="sm">Tüm şekiller siyahtır — top çapı ≥ 0.6 m, düşey aralık ≥ 1.5 m</text>
+  <text x="380" y="30" text-anchor="middle" class="ttl">Day Shapes (COLREG Rules 24-30)</text>
+  <text x="380" y="50" text-anchor="middle" class="sm">All shapes are black — ball diameter ≥ 0.6 m, vertical spacing ≥ 1.5 m</text>
 
   <!-- c1 anchor: 1 ball @70 -->
   <line x1="70" y1="92" x2="70" y2="135" class="mast"/>
   <circle cx="70" cy="112" r="12" class="sh"/>
-  <text x="70" y="300" text-anchor="middle" class="lbl">Demir</text>
-  <text x="70" y="316" text-anchor="middle" class="sm">1 top</text>
+  <text x="70" y="300" text-anchor="middle" class="lbl">At anchor</text>
+  <text x="70" y="316" text-anchor="middle" class="sm">1 ball</text>
 
   <!-- c2 NUC: 2 balls @160 -->
   <line x1="160" y1="92" x2="160" y2="170" class="mast"/>
   <circle cx="160" cy="112" r="12" class="sh"/>
   <circle cx="160" cy="148" r="12" class="sh"/>
   <text x="160" y="300" text-anchor="middle" class="lbl">NUC</text>
-  <text x="160" y="316" text-anchor="middle" class="sm">2 top</text>
+  <text x="160" y="316" text-anchor="middle" class="sm">2 balls</text>
 
   <!-- c3 aground: 3 balls @250 -->
   <line x1="250" y1="92" x2="250" y2="206" class="mast"/>
   <circle cx="250" cy="112" r="12" class="sh"/>
   <circle cx="250" cy="148" r="12" class="sh"/>
   <circle cx="250" cy="184" r="12" class="sh"/>
-  <text x="250" y="300" text-anchor="middle" class="lbl">Karaya oturmuş</text>
-  <text x="250" y="316" text-anchor="middle" class="sm">3 top</text>
+  <text x="250" y="300" text-anchor="middle" class="lbl">Aground</text>
+  <text x="250" y="316" text-anchor="middle" class="sm">3 balls</text>
 
   <!-- c4 RAM: ball-diamond-ball @340 -->
   <line x1="340" y1="92" x2="340" y2="210" class="mast"/>
@@ -39,33 +39,33 @@
   <path d="M 340 134 L 354 150 L 340 166 L 326 150 Z" class="sh"/>
   <circle cx="340" cy="188" r="12" class="sh"/>
   <text x="340" y="300" text-anchor="middle" class="lbl">RAM</text>
-  <text x="340" y="316" text-anchor="middle" class="sm">top-baklava-top</text>
+  <text x="340" y="316" text-anchor="middle" class="sm">ball-diamond-ball</text>
 
   <!-- c5 CBD: cylinder @430 -->
   <line x1="430" y1="92" x2="430" y2="150" class="mast"/>
   <rect x="421" y="100" width="18" height="34" rx="2" class="sh"/>
   <text x="430" y="300" text-anchor="middle" class="lbl">CBD</text>
-  <text x="430" y="316" text-anchor="middle" class="sm">silindir</text>
+  <text x="430" y="316" text-anchor="middle" class="sm">cylinder</text>
 
   <!-- c6 motorsailing: cone apex down @520 -->
   <line x1="520" y1="92" x2="520" y2="140" class="mast"/>
   <path d="M 508 102 L 532 102 L 520 126 Z" class="sh"/>
-  <text x="520" y="300" text-anchor="middle" class="lbl">Yelken + makine</text>
-  <text x="520" y="316" text-anchor="middle" class="sm">ucu aşağı koni</text>
+  <text x="520" y="300" text-anchor="middle" class="lbl">Sail + power</text>
+  <text x="520" y="316" text-anchor="middle" class="sm">cone, apex down</text>
 
   <!-- c7 fishing: two cones apex together @610 -->
   <line x1="610" y1="92" x2="610" y2="172" class="mast"/>
   <path d="M 598 104 L 622 104 L 610 130 Z" class="sh"/>
   <path d="M 598 156 L 622 156 L 610 130 Z" class="sh"/>
-  <text x="610" y="300" text-anchor="middle" class="lbl">Balıkçı</text>
-  <text x="610" y="316" text-anchor="middle" class="sm">uçları birleşik 2 koni</text>
+  <text x="610" y="300" text-anchor="middle" class="lbl">Fishing</text>
+  <text x="610" y="316" text-anchor="middle" class="sm">2 cones apex-to-apex</text>
 
   <!-- c8 towing >200m: diamond @700 -->
   <line x1="700" y1="92" x2="700" y2="140" class="mast"/>
   <path d="M 700 100 L 716 122 L 700 144 L 684 122 Z" class="sh"/>
-  <text x="700" y="300" text-anchor="middle" class="lbl">Yedek &gt; 200 m</text>
-  <text x="700" y="316" text-anchor="middle" class="sm">baklava</text>
+  <text x="700" y="300" text-anchor="middle" class="lbl">Tow &gt; 200 m</text>
+  <text x="700" y="316" text-anchor="middle" class="sm">diamond</text>
 
   <line x1="30" y1="270" x2="730" y2="270" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="380" y="352" text-anchor="middle" class="sm">Gece karşılığı fener kalıbı: NUC = kırmızı-kırmızı · RAM = kırmızı-beyaz-kırmızı · CBD = üç kırmızı (all-round)</text>
+  <text x="380" y="352" text-anchor="middle" class="sm">Equivalent lights at night: NUC = red-red · RAM = red-white-red · CBD = three red (all-round)</text>
 </svg>

@@ -436,7 +436,7 @@ export default function MachineryHubPage() {
                 <h3 className="text-xs font-bold text-foreground">2 Zamanlı Dizel Motor Çevrimi</h3>
               </div>
               <div className="p-2">
-                <img src="/diagrams/machine/iki-zamanli-dizel.svg" alt="2 Zamanlı Dizel Motor Çevrimi" className="w-full rounded-lg" />
+                <img src="/diagrams/machine/iki-zamanli-dizel.svg" alt="Two-stroke diesel engine cycle" className="w-full rounded-lg" />
               </div>
             </div>
             <div className="overflow-hidden rounded-xl border border-border/50 bg-card/80 shadow-sm">
@@ -444,7 +444,7 @@ export default function MachineryHubPage() {
                 <h3 className="text-xs font-bold text-foreground">Yakıt Sistemi Akış Şeması (HFO)</h3>
               </div>
               <div className="p-2">
-                <img src="/diagrams/machine/yakit-sistemi.svg" alt="Yakıt Sistemi Akış Şeması" className="w-full rounded-lg" />
+                <img src="/diagrams/machine/yakit-sistemi.svg" alt="Fuel system flow diagram" className="w-full rounded-lg" />
               </div>
             </div>
           </div>

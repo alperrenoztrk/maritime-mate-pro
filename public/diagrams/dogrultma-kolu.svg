@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
   <rect width="900" height="360" fill="#f8fafc" />
-  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Doğrultma Kolu (GZ)</text>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Righting Lever (GZ)</text>
 
   <rect x="170" y="110" width="560" height="160" rx="20" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" transform="rotate(-6 450 190)" />
   <rect x="170" y="210" width="560" height="60" fill="#93c5fd" transform="rotate(-6 450 190)" />
@@ -17,5 +17,5 @@
   <path d="M500 120 L488 112 L488 128 Z" fill="#0f172a" />
   <text x="448" y="110" font-size="12" font-family="Arial" fill="#0f172a">GZ</text>
 
-  <text x="170" y="320" font-size="12" font-family="Arial" fill="#64748b">GZ, ağırlık ve kaldırma doğrultuları arasındaki yatay mesafedir.</text>
+  <text x="170" y="320" font-size="12" font-family="Arial" fill="#64748b">GZ is the horizontal distance between the lines of weight and buoyancy.</text>
 </svg>

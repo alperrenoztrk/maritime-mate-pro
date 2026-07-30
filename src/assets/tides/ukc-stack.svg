@@ -16,8 +16,8 @@
   <rect x="0" y="0" width="1200" height="700" fill="url(#bg3)"/>
 
   <g transform="translate(70,70)">
-    <text x="0" y="44" class="title">UKC (Under Keel Clearance) Mantığı</text>
-    <text x="0" y="78" class="sub">Derinlik + gelgit ile "mevcut su" artar; draft + squat ile "ihtiyaç" artar. Aradaki fark UKC&#8217;dir.</text>
+    <text x="0" y="44" class="title">Under Keel Clearance (UKC) Logic</text>
+    <text x="0" y="78" class="sub">Depth + tide increase the water available; draft + squat increase the water required. The difference is UKC.</text>
 
     <!-- Water column -->
     <g transform="translate(40,130)">
@@ -26,12 +26,12 @@
       <!-- Charted depth block -->
       <rect x="40" y="270" width="340" height="280" rx="18" fill="#60a5fa"/>
       <text x="70" y="305" class="lbl">Charted Depth</text>
-      <text x="70" y="332" class="lbl">(Harita Datumu)</text>
+      <text x="70" y="332" class="lbl">(from Chart Datum)</text>
 
       <!-- Tide height block -->
       <rect x="40" y="160" width="340" height="96" rx="18" fill="#22c55e"/>
       <text x="70" y="198" class="lbl">+ Height of Tide</text>
-      <text x="70" y="224" class="lbl">(Gelgit Yüksekliği)</text>
+      <text x="70" y="224" class="lbl">(tidal rise)</text>
 
       <!-- Wave allowance (subtract) -->
       <rect x="40" y="120" width="340" height="32" rx="16" fill="#f97316"/>
@@ -41,11 +41,11 @@
     <!-- Ship block -->
     <g transform="translate(560,170)">
       <rect x="0" y="0" width="560" height="430" rx="26" fill="#0b1326" stroke="#273449"/>
-      <text x="26" y="46" class="note">Efektif Draft (ihtiyaç)</text>
+      <text x="26" y="46" class="note">Effective Draft (required)</text>
 
       <rect x="26" y="74" width="508" height="90" rx="18" fill="#a78bfa"/>
       <text x="50" y="114" class="lbl">Draft</text>
-      <text x="50" y="140" class="lbl">(Su Çekimi)</text>
+      <text x="50" y="140" class="lbl">(static)</text>
 
       <rect x="26" y="176" width="508" height="70" rx="18" fill="#f59e0b"/>
       <text x="50" y="218" class="lbl">+ Squat</text>

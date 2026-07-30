@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
-  <title id="title">Offshore destek gemisi</title>
-  <desc id="desc">Açık denizde bir platform yakınında dinamik konumlandırma yapan modern offshore destek gemisi</desc>
+  <title id="title">Offshore support vessel</title>
+  <desc id="desc">A modern offshore support vessel holding station on dynamic positioning near a platform at sea</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#071b33"/>

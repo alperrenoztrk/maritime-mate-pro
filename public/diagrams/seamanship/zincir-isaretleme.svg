@@ -1,75 +1,75 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340">
   <rect width="900" height="340" fill="#f8fafc"/>
-  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Demir Zinciri İşaretleme Sistemi</text>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Anchor Cable Marking System</text>
 
   <!-- Chain links representation -->
   <!-- 1 Shackle = 27.5 m -->
   <g transform="translate(50, 60)">
     <!-- Shackle 1 -->
     <rect x="0" y="0" width="140" height="50" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626" font-family="Arial">1. Kilit (27,5 m)</text>
-    <text x="70" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">1 beyaz boya</text>
+    <text x="70" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626" font-family="Arial">Shackle 1 (27.5 m)</text>
+    <text x="70" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">1 white mark</text>
 
     <!-- Shackle 2 -->
     <rect x="160" y="0" width="140" height="50" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-    <text x="230" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">2. Kilit (55 m)</text>
-    <text x="230" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">2 beyaz boya</text>
+    <text x="230" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">Shackle 2 (55 m)</text>
+    <text x="230" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">2 white marks</text>
 
     <!-- Shackle 3 -->
     <rect x="320" y="0" width="140" height="50" rx="8" fill="#fef9c3" stroke="#d97706" stroke-width="2"/>
-    <text x="390" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#d97706" font-family="Arial">3. Kilit (82,5 m)</text>
-    <text x="390" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">3 beyaz boya</text>
+    <text x="390" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#d97706" font-family="Arial">Shackle 3 (82.5 m)</text>
+    <text x="390" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">3 white marks</text>
 
     <!-- More shackles -->
     <rect x="480" y="0" width="140" height="50" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
-    <text x="550" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#7c3aed" font-family="Arial">4. Kilit (110 m)</text>
-    <text x="550" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">4 beyaz boya</text>
+    <text x="550" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#7c3aed" font-family="Arial">Shackle 4 (110 m)</text>
+    <text x="550" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">4 white marks</text>
 
     <rect x="640" y="0" width="140" height="50" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
-    <text x="710" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#059669" font-family="Arial">5. Kilit (137,5 m)</text>
-    <text x="710" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">5 beyaz boya</text>
+    <text x="710" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#059669" font-family="Arial">Shackle 5 (137.5 m)</text>
+    <text x="710" y="38" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">5 white marks</text>
   </g>
 
   <!-- Detail section -->
   <g transform="translate(50, 140)">
-    <text x="400" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">İşaretleme Detayları</text>
+    <text x="400" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a" font-family="Arial">Marking Details</text>
 
     <!-- Visual of chain link marking -->
     <rect x="0" y="20" width="800" height="90" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
 
     <!-- Stud link -->
-    <text x="60" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Çapraz Bakla</text>
-    <text x="60" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(Stud Link)</text>
-    <text x="60" y="82" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Standart bakla</text>
-    <text x="60" y="98" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">iç destekli</text>
+    <text x="60" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Stud Link</text>
+    <text x="60" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(common link)</text>
+    <text x="60" y="82" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Standard link with</text>
+    <text x="60" y="98" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">an internal stud</text>
 
     <line x1="145" y1="30" x2="145" y2="100" stroke="#e2e8f0" stroke-width="1"/>
 
     <!-- Joining shackle -->
-    <text x="240" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Birleştirme Kiliti</text>
-    <text x="240" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(Joining Shackle)</text>
-    <text x="240" y="82" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Kilitler arası</text>
-    <text x="240" y="98" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">bağlantı elemanı</text>
+    <text x="240" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Joining Shackle</text>
+    <text x="240" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(kenter shackle)</text>
+    <text x="240" y="82" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Connects one</text>
+    <text x="240" y="98" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">shackle to the next</text>
 
     <line x1="340" y1="30" x2="340" y2="100" stroke="#e2e8f0" stroke-width="1"/>
 
     <!-- Swivel -->
-    <text x="440" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Döner (Swivel)</text>
-    <text x="440" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(Zincir-demir arası)</text>
-    <text x="440" y="82" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Zincirin</text>
-    <text x="440" y="98" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">burulmasını önler</text>
+    <text x="440" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Swivel</text>
+    <text x="440" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(between cable and anchor)</text>
+    <text x="440" y="82" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">Prevents the cable</text>
+    <text x="440" y="98" text-anchor="middle" font-size="10" fill="#475569" font-family="Arial">from twisting</text>
 
     <line x1="540" y1="30" x2="540" y2="100" stroke="#e2e8f0" stroke-width="1"/>
 
     <!-- Bitter end -->
-    <text x="660" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Zincir Sonu (Bitter End)</text>
-    <text x="660" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(Kırmızı boyalı)</text>
-    <text x="660" y="82" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">Son 1-2 bakla</text>
-    <text x="660" y="98" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">kırmızıya boyanır</text>
+    <text x="660" y="48" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a" font-family="Arial">Bitter End</text>
+    <text x="660" y="65" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">(painted red)</text>
+    <text x="660" y="82" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">The last 1-2 links</text>
+    <text x="660" y="98" text-anchor="middle" font-size="10" fill="#dc2626" font-family="Arial">are painted red</text>
   </g>
 
   <!-- Bottom note -->
-  <text x="450" y="285" text-anchor="middle" font-size="11" fill="#0f172a" font-family="Arial">1 kilit (shackle) = 15 kulaç (fathom) = 27,5 metre</text>
-  <text x="450" y="305" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">İşaretleme sistemi kilit sayısını belirlemek için kullanılır; gece şerit sayısı elle hissedilerek kontrol edilir.</text>
-  <text x="450" y="322" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Bazı sistemlerde beyaz boya yerine sarı/mavi renkler de kullanılabilir.</text>
+  <text x="450" y="285" text-anchor="middle" font-size="11" fill="#0f172a" font-family="Arial">1 shackle = 15 fathoms = 27.5 metres</text>
+  <text x="450" y="305" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">The marking system shows how many shackles are out; at night the marks are counted by feel.</text>
+  <text x="450" y="322" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Some systems use yellow or blue paint instead of white.</text>
 </svg>

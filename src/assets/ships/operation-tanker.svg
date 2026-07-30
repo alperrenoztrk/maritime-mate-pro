@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
-  <title id="title">Petrol tankeri yan profili</title>
-  <desc id="desc">Alçak yük güvertesi, boru hatları, manifold ve kıç üst yapısı görünen tanker.</desc>
+  <title id="title">Oil tanker side profile</title>
+  <desc id="desc">A tanker showing the low cargo deck, pipelines, manifold and aft superstructure.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff2e2"/><stop offset="1" stop-color="#fffdf9"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2b86a4"/><stop offset="1" stop-color="#14536d"/></linearGradient>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
-  <title id="title">Yolcu gemisi yan profili</title>
-  <desc id="desc">Çok katlı beyaz üst yapı, köprüüstü, pencereler ve turuncu filikaları görünen yolcu gemisi.</desc>
+  <title id="title">Passenger ship side profile</title>
+  <desc id="desc">A passenger ship showing the multi-deck white superstructure, bridge, windows and orange lifeboats.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e9e7ff"/><stop offset="1" stop-color="#fff"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#397ccb"/><stop offset="1" stop-color="#174f92"/></linearGradient>

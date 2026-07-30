@@ -1,0 +1,66 @@
+{
+  "public/diagrams/machine/iki-zamanli-dizel.svg": [
+    "panel@135,230",
+    "panel@245,230"
+  ],
+  "public/diagrams/navigation/donus-dairesi.svg": [
+    "panel@625,206",
+    "panel@625,220"
+  ],
+  "public/diagrams/navigation/duzlem-seyir.svg": [
+    "panel@508,260"
+  ],
+  "public/diagrams/navigation/enlem-tanimi.svg": [
+    "vbR@505,265"
+  ],
+  "public/diagrams/navigation/harita-datum.svg": [
+    "vbR@585,298"
+  ],
+  "public/diagrams/navigation/paraleller-meridyenler.svg": [
+    "vbL@45,254"
+  ],
+  "public/diagrams/navigation/tide-current.svg": [
+    "panel@500,220"
+  ],
+  "public/diagrams/navigation/tss-kural10.svg": [
+    "panel@200,226"
+  ],
+  "public/diagrams/seamanship/donme-dairesi.svg": [
+    "panel@280,97",
+    "panel@280,222",
+    "panel@400,400"
+  ],
+  "public/diagrams/seamanship/dumen-tipleri.svg": [
+    "panel@760,315"
+  ],
+  "public/diagrams/seamanship/gemi-kisimlari.svg": [
+    "panel@665,65",
+    "panel@665,78"
+  ],
+  "public/diagrams/seamanship/kardinal-samandiralar.svg": [
+    "panel@350,150",
+    "panel@350,166"
+  ],
+  "public/diagrams/seamanship/load-line-isaretleri.svg": [
+    "panel@478,134",
+    "panel@350,318",
+    "panel@438,300"
+  ],
+  "public/nautical-chart-background.svg": [
+    "vbL@0,-150",
+    "vbL@0,198",
+    "vbL@-178,14"
+  ],
+  "src/assets/navigation/ais-targets.svg": [
+    "panel@100,112"
+  ],
+  "src/assets/navigation/celestial-triangle.svg": [
+    "collide@320,110|308,110"
+  ],
+  "src/assets/navigation/dsc-distress.svg": [
+    "panel@762,422"
+  ],
+  "src/assets/navigation/tide-current.svg": [
+    "panel@500,220"
+  ]
+}

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
   <rect width="900" height="360" fill="#f8fafc" />
-  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Kaldırma Merkezi (B)</text>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-family="Arial" fill="#0f172a">Centre of Buoyancy (B)</text>
 
   <rect x="140" y="90" width="620" height="180" rx="24" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
   <rect x="140" y="190" width="620" height="80" fill="#93c5fd" />
@@ -11,7 +11,7 @@
 
   <path d="M450 215 L450 125" stroke="#2563eb" stroke-width="3" />
   <path d="M450 125 L442 138 L458 138 Z" fill="#2563eb" />
-  <text x="470" y="138" font-size="12" font-family="Arial" fill="#2563eb">Y</text>
+  <text x="470" y="138" font-size="12" font-family="Arial" fill="#2563eb">F&#8337;</text>
 
-  <text x="140" y="310" font-size="12" font-family="Arial" fill="#64748b">Kaldırma kuvveti B noktasından yukarı yönde etkir.</text>
+  <text x="140" y="310" font-size="12" font-family="Arial" fill="#64748b">The buoyancy force acts vertically upwards through B.</text>
 </svg>

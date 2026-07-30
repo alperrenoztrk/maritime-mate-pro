@@ -8,32 +8,32 @@
     </style>
   </defs>
   <rect width="700" height="460" fill="#ffffff"/>
-  <text x="350" y="30" text-anchor="middle" class="ttl">Köprüüstü Kaynak Yönetimi (BRM) — Temel Bileşenler</text>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Bridge Resource Management (BRM) — Core Elements</text>
 
   <!-- three overlapping circles -->
   <circle cx="280" cy="170" r="105" fill="#dbeafe" stroke="#1e3a8a" class="c"/>
   <circle cx="420" cy="170" r="105" fill="#dcfce7" stroke="#16a34a" class="c"/>
   <circle cx="350" cy="280" r="105" fill="#fef3c7" stroke="#b45309" class="c"/>
 
-  <text x="245" y="140" text-anchor="middle" class="lbl" fill="#1e3a8a">Liderlik</text>
-  <text x="245" y="156" text-anchor="middle" class="sm">Rol ve sorumluluk</text>
-  <text x="245" y="170" text-anchor="middle" class="sm">dağılımı, otorite</text>
-  <text x="245" y="184" text-anchor="middle" class="sm">gradyanı dengesi</text>
+  <text x="245" y="140" text-anchor="middle" class="lbl" fill="#1e3a8a">Leadership</text>
+  <text x="245" y="156" text-anchor="middle" class="sm">Distribution of roles</text>
+  <text x="245" y="170" text-anchor="middle" class="sm">and responsibility,</text>
+  <text x="245" y="184" text-anchor="middle" class="sm">balanced authority gradient</text>
 
-  <text x="462" y="140" text-anchor="middle" class="lbl" fill="#15803d">İletişim</text>
-  <text x="462" y="156" text-anchor="middle" class="sm">Kapalı devre iletişim,</text>
-  <text x="462" y="170" text-anchor="middle" class="sm">brifing, meydan</text>
-  <text x="462" y="184" text-anchor="middle" class="sm">okuma (challenge)</text>
+  <text x="462" y="140" text-anchor="middle" class="lbl" fill="#15803d">Communication</text>
+  <text x="462" y="156" text-anchor="middle" class="sm">Closed-loop communication,</text>
+  <text x="462" y="170" text-anchor="middle" class="sm">briefing, challenge</text>
+  <text x="462" y="184" text-anchor="middle" class="sm">and response</text>
 
-  <text x="350" y="322" text-anchor="middle" class="lbl" fill="#b45309">Durumsal Farkındalık</text>
-  <text x="350" y="338" text-anchor="middle" class="sm">İzleme, çapraz kontrol,</text>
-  <text x="350" y="352" text-anchor="middle" class="sm">iş yükü ve yorgunluk yönetimi</text>
+  <text x="350" y="322" text-anchor="middle" class="lbl" fill="#b45309">Situational Awareness</text>
+  <text x="350" y="338" text-anchor="middle" class="sm">Monitoring, cross-checking,</text>
+  <text x="350" y="352" text-anchor="middle" class="sm">workload and fatigue management</text>
 
-  <text x="350" y="212" text-anchor="middle" class="lbl">Emniyetli</text>
-  <text x="350" y="228" text-anchor="middle" class="lbl">Seyir</text>
+  <text x="350" y="212" text-anchor="middle" class="lbl">Safe</text>
+  <text x="350" y="228" text-anchor="middle" class="lbl">Navigation</text>
 
   <!-- info box -->
   <rect x="60" y="400" width="580" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
-  <text x="75" y="418" class="sm">BRM; köprüüstündeki insan, bilgi ve donanım kaynaklarının tek hedefe — emniyetli seyre —</text>
-  <text x="75" y="434" class="sm">yönlendirilmesidir: tek kişilik hataların zinciri kırılır, ekip olarak karar verilir.</text>
+  <text x="75" y="418" class="sm">BRM directs the human, information and equipment resources of the bridge towards one aim —</text>
+  <text x="75" y="434" class="sm">safe navigation: the chain of single-person error is broken and decisions are made as a team.</text>
 </svg>

@@ -56,7 +56,9 @@ const phaseBOverrides: Fallback[] = [
   { keywords: ["chart datum", "lat (lowest", "datum"], src: "/diagrams/navigation/harita-datum.svg" },
   { keywords: ["gelgit", "tide", "tidal", "spring tide", "neap tide"], src: tideCurrent },
   { keywords: ["akıntılı seyir", "set ve drift", "set & drift", "akıntı vektör", "vektör üçgen", "cts (course to steer)", "course to steer"], src: tideCurrent },
-  { keywords: ["eta diyagram", "eta hesab", "eta ve seyir", "estimated time of arrival"], src: "/diagrams/navigation/eta-diyagrami.svg" },
+  // "eta" tek başına eklenmez — "beta", "theta", "metadata" gibi kelimelerde
+  // yanlış eşleşir. Bu yüzden yalnızca çok kelimeli kalıplar listelenir.
+  { keywords: ["eta diyagram", "eta hesab", "eta ve seyir", "estimated time of arrival", "calculating the eta", "the eta and"], src: "/diagrams/navigation/eta-diyagrami.svg" },
 ];
 
 const navigationFallbacks: Fallback[] = [
@@ -84,9 +86,9 @@ const navigationFallbacks: Fallback[] = [
   { keywords: ["lateral", "şamandıra", "iala", "buoy"], src: ialaLateralMarks },
   { keywords: ["racon"], src: sembolRacon },
   { keywords: ["fener karakter", "ışık karakter", "light characteristic", "sektör ışık", "sector light"], src: sembolLightCharacteristics },
-  { keywords: ["akıntı", "drift", "set ve drift"], src: tideCurrent },
+  { keywords: ["akıntı", "current", "drift", "set ve drift"], src: tideCurrent },
   { keywords: ["chart", "harita", "plot", "mevki", "position", "fix"], src: chartPlotting },
-  { keywords: ["compass", "pusula", "bearing", "kerteriz", "yön", "manyetik"], src: yonCompassRose },
+  { keywords: ["compass", "pusula", "bearing", "kerteriz", "yön", "direction", "manyetik", "magnetic"], src: yonCompassRose },
   { keywords: ["enlem", "latitude"], src: latitudeParallels },
   { keywords: ["boylam", "longitude"], src: longitudeConcept },
   { keywords: ["koordinat", "coordinate"], src: coordinateSystem },

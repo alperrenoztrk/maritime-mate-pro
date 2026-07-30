@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360">
   <rect width="700" height="360" rx="8" fill="#f1f5f9"/>
-  <text x="350" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a" font-family="Arial">2 Zamanlı Dizel Motor Çevrimi</text>
+  <text x="350" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f172a" font-family="Arial">Two-Stroke Diesel Engine Cycle</text>
 
   <!-- 1. Strok: Yukarı -->
   <g transform="translate(60,45)">
     <rect width="260" height="260" rx="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
-    <text x="130" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a" font-family="Arial">1. STROK (Yukarı)</text>
+    <text x="130" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a" font-family="Arial">1. STROKE (Up)</text>
 
     <rect x="65" y="45" width="130" height="150" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
     <!-- Piston yukarı -->
@@ -13,20 +13,20 @@
     <text x="130" y="74" text-anchor="middle" font-size="9" fill="#fff" font-family="Arial">Piston ↑</text>
     <!-- Supap portları -->
     <rect x="65" y="155" width="20" height="15" rx="2" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/>
-    <text x="75" y="185" text-anchor="middle" font-size="7" fill="#16a34a" font-family="Arial">Süpürme</text>
+    <text x="75" y="185" text-anchor="middle" font-size="7" fill="#16a34a" font-family="Arial">Scavenge</text>
     <rect x="175" y="155" width="20" height="15" rx="2" fill="#fecaca" stroke="#ef4444" stroke-width="1"/>
-    <text x="185" y="185" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Arial">Egzoz</text>
+    <text x="185" y="185" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Arial">Exhaust</text>
 
-    <text x="130" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Sıkıştırma + Süpürme</text>
-    <text x="130" y="225" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Portlar kapanır</text>
-    <text x="130" y="240" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Hava sıkıştırılır</text>
+    <text x="130" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Compression + scavenge</text>
+    <text x="130" y="225" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Ports close</text>
+    <text x="130" y="240" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Air is compressed</text>
     <text x="130" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">0° → 180°</text>
   </g>
 
   <!-- 2. Strok: Aşağı -->
   <g transform="translate(380,45)">
     <rect width="260" height="260" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
-    <text x="130" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#991b1b" font-family="Arial">2. STROK (Aşağı)</text>
+    <text x="130" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#991b1b" font-family="Arial">2. STROKE (Down)</text>
 
     <rect x="65" y="45" width="130" height="150" rx="6" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
     <!-- Piston aşağı -->
@@ -37,13 +37,13 @@
     <circle cx="130" cy="70" r="8" fill="#f97316"/>
     <text x="130" y="74" text-anchor="middle" font-size="7" fill="#fff" font-family="Arial">🔥</text>
 
-    <text x="130" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Yanma → Genişleme</text>
-    <text x="130" y="225" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Güç üretimi</text>
-    <text x="130" y="240" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Portlar açılır → Egzoz</text>
+    <text x="130" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Combustion → expansion</text>
+    <text x="130" y="225" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Power produced</text>
+    <text x="130" y="240" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Ports open → exhaust</text>
     <text x="130" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626" font-family="Arial">180° → 360°</text>
   </g>
 
   <!-- Alt bilgi -->
-  <text x="350" y="330" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">Toplam: 1 krank mili devri (360°) = 1 çalışma çevrimi</text>
-  <text x="350" y="348" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Uniflow süpürme sistemi ile uzun stroklu deniz dizelleri (MAN B&amp;W, WinGD)</text>
+  <text x="350" y="330" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">Total: 1 crankshaft revolution (360°) = 1 working cycle</text>
+  <text x="350" y="348" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Long-stroke marine diesels with uniflow scavenging (MAN B&amp;W, WinGD)</text>
 </svg>

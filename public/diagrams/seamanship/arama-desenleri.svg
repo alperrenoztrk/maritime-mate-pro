@@ -10,14 +10,14 @@
     </style>
   </defs>
   <rect width="720" height="470" fill="#ffffff"/>
-  <text x="360" y="28" text-anchor="middle" class="ttl">SAR Arama Desenleri (IAMSAR)</text>
-  <text x="360" y="46" text-anchor="middle" class="sm">● datum (son bilinen/olası konum) — mavi: arama izi</text>
+  <text x="360" y="28" text-anchor="middle" class="ttl">SAR Search Patterns (IAMSAR)</text>
+  <text x="360" y="46" text-anchor="middle" class="sm">● datum (last known / probable position) — blue: search track</text>
 
   <!-- 1 Expanding Square SS -->
   <polyline class="pat" points="130,140 142,140 142,128 118,128 118,152 154,152 154,116 106,116 106,164 166,164 166,104"/>
   <circle cx="130" cy="140" r="4" class="dat"/>
   <text x="130" y="200" text-anchor="middle" class="nm">Expanding Square (SS)</text>
-  <text x="130" y="216" text-anchor="middle" class="sm">tek araç · kesin konum</text>
+  <text x="130" y="216" text-anchor="middle" class="sm">single unit · position known</text>
 
   <!-- 2 Sector Search VS -->
   <g>
@@ -28,23 +28,23 @@
     <circle cx="360" cy="135" r="4" class="dat"/>
   </g>
   <text x="360" y="200" text-anchor="middle" class="nm">Sector Search (VS)</text>
-  <text x="360" y="216" text-anchor="middle" class="sm">küçük alan · kesin konum</text>
+  <text x="360" y="216" text-anchor="middle" class="sm">small area · position known</text>
 
   <!-- 3 Parallel Track PS -->
   <polyline class="pat" points="550,100 630,100 630,118 550,118 550,136 630,136 630,154 550,154 550,172 630,172"/>
   <text x="590" y="200" text-anchor="middle" class="nm">Parallel Track (PS)</text>
-  <text x="590" y="216" text-anchor="middle" class="sm">geniş alan · çoklu araç</text>
+  <text x="590" y="216" text-anchor="middle" class="sm">large area · multiple units</text>
 
   <!-- 4 Creeping Line CS -->
   <polyline class="pat" points="190,300 190,360 215,360 215,300 240,300 240,360 265,360 265,300 290,300 290,360 315,360 315,300"/>
   <text x="252" y="392" text-anchor="middle" class="nm">Creeping Line (CS)</text>
-  <text x="252" y="408" text-anchor="middle" class="sm">uzun-dar alan · akıntı yönünde</text>
+  <text x="252" y="408" text-anchor="middle" class="sm">long narrow area · along the current</text>
 
   <!-- 5 Track Line TS -->
   <line class="route" x1="420" y1="360" x2="560" y2="300"/>
   <polyline class="pat" points="424,366 564,306 558,294 418,354"/>
   <text x="490" y="392" text-anchor="middle" class="nm">Track Line (TS)</text>
-  <text x="490" y="408" text-anchor="middle" class="sm">kayıp geminin bilinen rotası üzerinde</text>
+  <text x="490" y="408" text-anchor="middle" class="sm">along the missing vessel's known track</text>
 
-  <text x="360" y="450" text-anchor="middle" class="sm">Sweep width (arama genişliği): görüş, hava, dalga ve hedef boyutuna göre IAMSAR Cilt III tablolarından alınır.</text>
+  <text x="360" y="450" text-anchor="middle" class="sm">Sweep width is taken from the IAMSAR Volume III tables according to visibility, weather, sea state and target size.</text>
 </svg>

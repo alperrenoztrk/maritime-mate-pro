@@ -212,7 +212,7 @@ Bu kazalar sonucunda:
     subtopics: [
       {
         title: "2.0. Kaldırma Kuvveti (Buoyancy Force)",
-        content: `![Kaldırma kuvveti ve Arşimet prensibi şeması](/diagrams/kaldirma-merkezi.svg)
+        content: `![Buoyancy force and Archimedes' principle](/diagrams/kaldirma-merkezi.svg)
 
 Kaldırma kuvveti, bir geminin su üzerinde kalabilmesini sağlayan temel fiziksel etkidir ve doğrudan sıvı mekaniğinin en temel prensiplerinden birine dayanır. Bir gemi suya girdiğinde, kendi hacmi kadar suyu yer değiştirir. Bu yer değiştiren suyun ağırlığı, gemiye yukarı yönde etki eden bir kuvvet oluşturur. Bu kuvvet, geminin ağırlığını dengelediği sürece gemi yüzme durumunu korur.
 
@@ -246,7 +246,7 @@ Sonuç olarak kaldırma kuvveti, gemi stabilitesinin “taşıyıcı” unsurudu
       },
       {
         title: "2.1. Ağırlık Merkezi (G)",
-        content: `![Özgün ağırlık merkezi şeması](/diagrams/agirlik-merkezi.svg)
+        content: `![Centre of gravity diagram](/diagrams/agirlik-merkezi.svg)
 
 Ağırlık merkezi, gemiyi oluşturan tüm ağırlıkların tek bir noktada toplanmış kabul edildiği ve ağırlık kuvvetinin etki doğrultusunun geçtiği noktadır. Bu nokta, geminin stabilite karakterini belirleyen en kritik unsurlardan biridir ve gemi üzerinde yapılan her yükleme, boşaltma, balast alma ya da balast verme işlemi ağırlık merkezinin yerini değiştirir. Ağırlık merkezi sabit bir geometrik nokta değildir; geminin o andaki yükleme durumuna bağlı olarak düşey, boyuna ve enine doğrultularda yer değiştirir.
 
@@ -272,9 +272,9 @@ Ağırlık merkezinin düşey konumu arttıkça, doğrultma kolları küçülür
       },
       {
         title: "2.2. Kaldırma Merkezi (B)",
-        content: `![Özgün kaldırma merkezi şeması](/diagrams/kaldirma-merkezi.svg)
+        content: `![Centre of buoyancy diagram](/diagrams/kaldirma-merkezi.svg)
 
-![Yatma ile kaldırma merkezinin yer değiştirmesi ve doğan moment kolu](/diagrams/dogrultma-kolu.svg)
+![Shift of the centre of buoyancy with heel and the resulting lever](/diagrams/dogrultma-kolu.svg)
 
 Kaldırma merkezi, kaldırma kuvvetinin gemi üzerinde etkidiği noktayı tanımlar ve gemi stabilitesinin geometrik temel taşlarından biridir. Fiziksel olarak kaldırma merkezi, geminin su altında kalan hacminin ağırlık merkezidir. Bu nokta, yer değiştiren su hacminin geometrik dağılımına bağlıdır ve geminin ağırlık merkezinden tamamen bağımsızdır.
 
@@ -294,7 +294,7 @@ Teorik olarak kaldırma merkezinin konumu, geminin su altında kalan hacminin bi
       },
       {
         title: "2.3. Yüzerlik Şartı (Condition of Floatation)",
-        content: `![Yüzerlik dengesi: ağırlık ve kaldırma kuvveti](/diagrams/kaldirma-merkezi.svg)
+        content: `![Equilibrium of flotation: weight and buoyancy](/diagrams/kaldirma-merkezi.svg)
 
 Yüzerlik şartı, bir geminin su üzerinde dengede kalabilmesi için sağlanması gereken temel kuvvet dengesini ifade eder. Bu şart, gemi stabilitesinin en başlangıç noktasıdır ve diğer tüm stabilite kavramlarının önünde gelir. Bir gemi, ancak yüzerlik şartını sağladığı sürece denge, doğrultma ve emniyet analizlerine konu olabilir.
 
@@ -332,7 +332,7 @@ Sonuç olarak yüzerlik şartı, geminin su üzerindeki varlığının matematik
       },
       {
         title: "2.4. Denge Hâlleri (Equilibrium States)",
-        content: `![Özgün denge halleri şeması](/diagrams/denge-halleri.svg)
+        content: `![States of equilibrium diagram](/diagrams/denge-halleri.svg)
 
 Yüzerlik şartını sağlayan bir gemi, kuvvetler açısından dengededir; ancak bu denge, geminin küçük bir dış etki altındaki davranışını tek başına açıklamaz. Gemi stabilitesinin özü, geminin denge konumundan uzaklaştırıldığında nasıl bir tepki verdiğiyle ilgilidir. Bu tepki, **denge hâlleri** kavramı ile tanımlanır ve üç temel sınıfta incelenir: kararlı (stable), kararsız (unstable) ve nötr (neutral) denge.
 
@@ -372,7 +372,7 @@ Sonuç olarak denge hâlleri, yüzerlik şartı sağlandıktan sonra geminin emn
       },
       {
         title: "2.5. Metasentrik Nokta ve Metasentrik Yükseklik",
-        content: `![Özgün metasentrik şema](/diagrams/metasentrik.svg)
+        content: `![Metacentre diagram](/diagrams/metasentrik.svg)
 
 Metasentrik nokta, geminin küçük yatma açıları altındaki stabilite davranışını tanımlamak için kullanılan temel geometrik referans noktalarından biridir. Gemi dik konumdayken kaldırma kuvvetinin doğrultusu, kaldırma merkezinden geçen düşey bir doğru ile temsil edilir. Gemi çok küçük bir açıyla yana yattığında kaldırma merkezi yeni bir konuma kayar ve bu yeni noktadan geçen kaldırma kuvveti doğrultusu, başlangıçtaki doğrultu ile bir noktada kesişir. Bu kesişim noktası metasentrik nokta olarak adlandırılır ve genellikle M harfi ile gösterilir.
 
@@ -490,9 +490,9 @@ GM değeri, geminin küçük açılarda ne kadar stabil olduğunu gösterir:
       },
       {
         title: "2.7. Doğrultma Kolu (GZ)",
-        content: `![Özgün doğrultma kolu şeması](/diagrams/dogrultma-kolu.svg)
+        content: `![Righting lever diagram](/diagrams/dogrultma-kolu.svg)
 
-![Doğrultma kolu ve metasentrik ilişki (GZ = GM·sinθ)](/diagrams/metasentrik.svg)
+![Relationship between righting lever and metacentre (GZ = GM·sinθ)](/diagrams/metasentrik.svg)
 
 Doğrultma kolu, geminin yatmış bir durumda tekrar dik konumuna dönme eğilimini nicel olarak ifade eden temel stabilite parametresidir. Gemi yana yattığında, ağırlık kuvvetinin etki doğrultusu ile kaldırma kuvvetinin etki doğrultusu arasında yatay bir mesafe oluşur. Bu yatay mesafe doğrultma kolu olarak adlandırılır ve GZ ile gösterilir. Doğrultma kolu, doğrultma momentinin geometrik temelini oluşturur ve geminin stabilite davranışının açısal değişimini doğrudan yansıtır.
 

@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
   <rect width="900" height="500" fill="#f8fafc"/>
-  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Dönme Dairesi Parametreleri</text>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Turning Circle Parameters</text>
 
   <!-- Initial course line -->
   <line x1="150" y1="400" x2="150" y2="100" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <text x="130" y="90" font-size="11" fill="#64748b" font-family="Arial">İlk rota</text>
+  <text x="130" y="90" font-size="11" fill="#64748b" font-family="Arial">Original course</text>
 
   <!-- Ship at start position -->
   <rect x="138" y="370" width="24" height="50" rx="4" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
   <path d="M138 370 L150 355 L162 370" fill="#2563eb" stroke="#1d4ed8" stroke-width="1"/>
-  <text x="170" y="395" font-size="10" fill="#0f172a" font-family="Arial">Dümen basılır</text>
+  <text x="170" y="395" font-size="10" fill="#0f172a" font-family="Arial">Rudder applied</text>
 
   <!-- Turning circle path -->
   <path d="M150 350 C200 350 350 280 450 200 C550 120 650 120 650 220 C650 320 550 380 450 380 C350 380 280 340 250 300" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 4"/>
@@ -20,7 +20,7 @@
   <path d="M445 96 L450 100 L445 104" fill="none" stroke="#059669" stroke-width="1.5"/>
   <line x1="450" y1="100" x2="450" y2="200" stroke="#059669" stroke-width="1" stroke-dasharray="3 3"/>
   <rect x="230" y="82" width="100" height="22" rx="4" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
-  <text x="280" y="97" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534" font-family="Arial">Advance (İlerleme)</text>
+  <text x="280" y="97" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534" font-family="Arial">Advance</text>
 
   <!-- Transfer -->
   <line x1="150" y1="200" x2="450" y2="200" stroke="#7c3aed" stroke-width="2"/>
@@ -28,7 +28,7 @@
   <path d="M445 196 L450 200 L445 204" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
   <line x1="150" y1="350" x2="150" y2="200" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3 3"/>
   <rect x="230" y="207" width="100" height="22" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-  <text x="280" y="222" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6" font-family="Arial">Transfer (Kayma)</text>
+  <text x="280" y="222" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6" font-family="Arial">Transfer</text>
 
   <!-- Tactical diameter -->
   <line x1="150" y1="380" x2="650" y2="380" stroke="#d97706" stroke-width="2"/>
@@ -36,11 +36,11 @@
   <path d="M645 376 L650 380 L645 384" fill="none" stroke="#d97706" stroke-width="1.5"/>
   <line x1="650" y1="380" x2="650" y2="220" stroke="#d97706" stroke-width="1" stroke-dasharray="3 3"/>
   <rect x="330" y="385" width="140" height="22" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
-  <text x="400" y="400" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e" font-family="Arial">Taktik Çap (Tactical Dia.)</text>
+  <text x="400" y="400" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e" font-family="Arial">Tactical Diameter</text>
 
   <!-- Final diameter circle hint -->
   <ellipse cx="500" cy="260" rx="120" ry="120" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
-  <text x="500" y="264" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Final Çap</text>
+  <text x="500" y="264" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Final Diameter</text>
 
   <!-- Ship at 90° position -->
   <rect x="440" y="190" width="20" height="40" rx="3" fill="#2563eb" stroke="#1d4ed8" stroke-width="1"/>
@@ -52,7 +52,7 @@
 
   <!-- Info box -->
   <rect x="550" y="420" width="320" height="60" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="710" y="442" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">Advance ≈ 3-5 × Gemi boyu</text>
-  <text x="710" y="458" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">Tactical Dia. ≈ 4-7 × Gemi boyu</text>
-  <text x="710" y="472" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">Değerler hız, trim ve yüklemeye bağlıdır</text>
+  <text x="710" y="442" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">Advance ≈ 3-5 × ship's length</text>
+  <text x="710" y="458" text-anchor="middle" font-size="10" fill="#0f172a" font-family="Arial">Tactical Dia. ≈ 4-7 × ship's length</text>
+  <text x="710" y="472" text-anchor="middle" font-size="10" fill="#64748b" font-family="Arial">Values depend on speed, trim and loading</text>
 </svg>

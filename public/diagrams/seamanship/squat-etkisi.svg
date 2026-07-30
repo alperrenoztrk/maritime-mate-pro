@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
   <rect width="900" height="380" fill="#f8fafc"/>
-  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Squat Etkisi — Sığ Su Batması</text>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#0f172a" font-family="Arial">Squat — Sinkage in Shallow Water</text>
 
   <!-- Sea bottom -->
   <rect x="50" y="280" width="800" height="60" fill="#d2b48c" stroke="#a0855b" stroke-width="2"/>
-  <text x="450" y="318" text-anchor="middle" font-size="12" fill="#78350f" font-family="Arial">DENİZ TABANI</text>
+  <text x="450" y="318" text-anchor="middle" font-size="12" fill="#78350f" font-family="Arial">SEABED</text>
 
   <!-- Water -->
   <rect x="50" y="120" width="800" height="160" fill="#bfdbfe" opacity="0.5"/>
@@ -13,7 +13,7 @@
 
   <!-- Ship at normal draft (left - static) -->
   <g transform="translate(200, 0)">
-    <text x="0" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">Durağan Hâl</text>
+    <text x="0" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">At rest</text>
     <rect x="-60" y="140" width="120" height="40" rx="6" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
     <path d="M-60 160 L-80 170 L-60 180" fill="#cbd5e1" stroke="#475569" stroke-width="1.5"/>
     <!-- Draft line -->
@@ -27,7 +27,7 @@
 
   <!-- Ship at squat (right - moving) -->
   <g transform="translate(650, 0)">
-    <text x="0" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">Hızla Seyrederken</text>
+    <text x="0" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a" font-family="Arial">Making way at speed</text>
     <rect x="-60" y="155" width="120" height="40" rx="6" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
     <path d="M-60 175 L-80 185 L-60 195" fill="#cbd5e1" stroke="#475569" stroke-width="1.5"/>
     <!-- Squat arrow -->
@@ -45,11 +45,11 @@
     <text x="95" y="164" font-size="9" fill="#0f172a" font-family="Arial">V</text>
     <!-- Low pressure zone -->
     <ellipse cx="0" cy="210" rx="55" ry="15" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="1" stroke-dasharray="3 2"/>
-    <text x="0" y="214" text-anchor="middle" font-size="8" fill="#dc2626" font-family="Arial">Düşük basınç bölgesi</text>
+    <text x="0" y="214" text-anchor="middle" font-size="8" fill="#dc2626" font-family="Arial">Low pressure region</text>
   </g>
 
   <!-- Formula box -->
   <rect x="250" y="320" width="400" height="45" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
-  <text x="450" y="340" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e" font-family="Arial">Squat ≈ Cb × V² / 100  (açık deniz)</text>
-  <text x="450" y="357" text-anchor="middle" font-size="10" fill="#78350f" font-family="Arial">Cb: blok katsayısı, V: hız (knot), Sonuç: metre</text>
+  <text x="450" y="340" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e" font-family="Arial">Squat ≈ Cb × V² / 100  (open water)</text>
+  <text x="450" y="357" text-anchor="middle" font-size="10" fill="#78350f" font-family="Arial">Cb: block coefficient, V: speed (knots), result in metres</text>
 </svg>

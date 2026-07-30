@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
-  <title id="title">Ro-Ro gemisi yan profili</title>
-  <desc id="desc">Kapalı araç güverteleri, baş üst yapısı ve kıç rampası görünen Ro-Ro gemisi.</desc>
+  <title id="title">Ro-Ro ship side profile</title>
+  <desc id="desc">A Ro-Ro ship showing the enclosed vehicle decks, forward superstructure and stern ramp.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e4fbf5"/><stop offset="1" stop-color="#fbfffe"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#159a91"/><stop offset="1" stop-color="#075d62"/></linearGradient>

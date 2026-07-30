@@ -1,79 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380">
   <rect width="800" height="380" rx="8" fill="#f1f5f9"/>
-  <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f172a" font-family="Arial">4 Zamanlı Dizel Motor Çevrimi</text>
+  <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f172a" font-family="Arial">Four-Stroke Diesel Engine Cycle</text>
 
   <!-- 1. Emme -->
   <g transform="translate(40,50)">
     <rect width="160" height="240" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
-    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a" font-family="Arial">1. EMİŞ</text>
+    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a" font-family="Arial">1. INTAKE</text>
     <rect x="45" y="40" width="70" height="120" rx="4" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
     <rect x="50" y="110" width="60" height="15" rx="3" fill="#60a5fa" stroke="#2563eb" stroke-width="1"/>
     <text x="80" y="122" text-anchor="middle" font-size="8" fill="#fff" font-family="Arial">Piston ↓</text>
     <!-- Supap -->
     <path d="M55 40 L55 32 L65 32 L65 40" stroke="#16a34a" stroke-width="2" fill="none"/>
-    <text x="60" y="28" font-size="8" fill="#16a34a" font-family="Arial">Açık</text>
+    <text x="60" y="28" font-size="8" fill="#16a34a" font-family="Arial">Open</text>
     <path d="M95 40 L95 35 L105 35 L105 40" stroke="#ef4444" stroke-width="2" fill="none"/>
-    <text x="110" y="28" font-size="8" fill="#ef4444" font-family="Arial">Kapalı</text>
+    <text x="110" y="28" font-size="8" fill="#ef4444" font-family="Arial">Closed</text>
     <!-- Hava ok -->
     <path d="M55 50 L65 70" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
-    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Hava emilir</text>
-    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Piston aşağı iner</text>
+    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Air is drawn in</text>
+    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Piston descends</text>
     <text x="80" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">0° → 180°</text>
   </g>
 
   <!-- 2. Sıkıştırma -->
   <g transform="translate(220,50)">
     <rect width="160" height="240" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e" font-family="Arial">2. SIKIŞTIRMA</text>
+    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e" font-family="Arial">2. COMPRESSION</text>
     <rect x="45" y="40" width="70" height="120" rx="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
     <rect x="50" y="50" width="60" height="15" rx="3" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
     <text x="80" y="62" text-anchor="middle" font-size="8" fill="#78350f" font-family="Arial">Piston ↑</text>
     <!-- Her iki supap kapalı -->
     <path d="M55 40 L55 38 L65 38 L65 40" stroke="#ef4444" stroke-width="2" fill="none"/>
     <path d="M95 40 L95 38 L105 38 L105 40" stroke="#ef4444" stroke-width="2" fill="none"/>
-    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Hava sıkıştırılır</text>
-    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">~35:1 sıkıştırma</text>
-    <text x="80" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">~600°C sıcaklık</text>
+    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Air is compressed</text>
+    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">~35:1 compression</text>
+    <text x="80" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">~600°C temperature</text>
     <text x="80" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#d97706" font-family="Arial">180° → 360°</text>
   </g>
 
   <!-- 3. Genişleme -->
   <g transform="translate(400,50)">
     <rect width="160" height="240" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
-    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b" font-family="Arial">3. GENİŞLEME</text>
+    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b" font-family="Arial">3. EXPANSION</text>
     <rect x="45" y="40" width="70" height="120" rx="4" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
     <rect x="50" y="110" width="60" height="15" rx="3" fill="#f87171" stroke="#dc2626" stroke-width="1"/>
     <text x="80" y="122" text-anchor="middle" font-size="8" fill="#fff" font-family="Arial">Piston ↓</text>
     <!-- Patlama efekti -->
     <circle cx="80" cy="55" r="12" fill="#fbbf24" opacity="0.7"/>
     <circle cx="80" cy="55" r="6" fill="#f97316"/>
-    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Yakıt enjeksiyonu</text>
-    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Yanma → İş üretimi</text>
-    <text x="80" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">GÜÇ STROKu</text>
+    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Fuel injection</text>
+    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Combustion → work</text>
+    <text x="80" y="210" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">POWER STROKE</text>
     <text x="80" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#dc2626" font-family="Arial">360° → 540°</text>
   </g>
 
   <!-- 4. Egzoz -->
   <g transform="translate(580,50)">
     <rect width="160" height="240" rx="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
-    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3" font-family="Arial">4. EGZOZ</text>
+    <text x="80" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3" font-family="Arial">4. EXHAUST</text>
     <rect x="45" y="40" width="70" height="120" rx="4" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
     <rect x="50" y="50" width="60" height="15" rx="3" fill="#818cf8" stroke="#4f46e5" stroke-width="1"/>
     <text x="80" y="62" text-anchor="middle" font-size="8" fill="#fff" font-family="Arial">Piston ↑</text>
     <!-- Egzoz supap açık -->
     <path d="M55 40 L55 38 L65 38 L65 40" stroke="#ef4444" stroke-width="2" fill="none"/>
     <path d="M95 40 L95 32 L105 32 L105 40" stroke="#16a34a" stroke-width="2" fill="none"/>
-    <text x="100" y="28" font-size="8" fill="#16a34a" font-family="Arial">Açık</text>
+    <text x="100" y="28" font-size="8" fill="#16a34a" font-family="Arial">Open</text>
     <!-- Egzoz gazı oku -->
     <path d="M100 50 L110 35" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowPurple)"/>
-    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Egzoz gazları atılır</text>
-    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Piston yukarı iter</text>
+    <text x="80" y="180" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Exhaust gases expelled</text>
+    <text x="80" y="195" text-anchor="middle" font-size="9" fill="#475569" font-family="Arial">Piston ascends</text>
     <text x="80" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#4f46e5" font-family="Arial">540° → 720°</text>
   </g>
 
   <!-- Alt bilgi -->
-  <text x="400" y="320" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">Toplam: 2 krank mili devri (720°) = 1 çalışma çevrimi</text>
-  <text x="400" y="340" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Emme → Sıkıştırma → Genişleme (Güç) → Egzoz</text>
+  <text x="400" y="320" text-anchor="middle" font-size="11" fill="#64748b" font-family="Arial">Total: 2 crankshaft revolutions (720°) = 1 working cycle</text>
+  <text x="400" y="340" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial">Intake → Compression → Expansion (Power) → Exhaust</text>
 
   <defs>
     <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#3b82f6"/></marker>

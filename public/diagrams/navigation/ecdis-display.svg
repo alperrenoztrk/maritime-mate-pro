@@ -16,7 +16,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">ECDIS Ekranı</text>
+  <text x="400" y="30" class="text title">ECDIS Display</text>
   
   <!-- ECDIS Screen -->
   <g transform="translate(400, 300)">
@@ -69,7 +69,7 @@
   
   <!-- Information Panel -->
   <rect x="50" y="50" width="200" height="150" fill="#000080" stroke="#00ff00" stroke-width="1"/>
-  <text x="150" y="70" class="text" fill="#00ff00">ECDIS Bilgileri</text>
+  <text x="150" y="70" class="text" fill="#00ff00">ECDIS Settings</text>
   <text x="150" y="90" class="text" fill="#00ff00">• Safety Depth: 10m</text>
   <text x="150" y="110" class="text" fill="#00ff00">• Safety Contour: 20m</text>
   <text x="150" y="130" class="text" fill="#00ff00">• CATZOC: A1</text>
@@ -79,13 +79,13 @@
   
   <!-- Legend -->
   <rect x="550" y="50" width="200" height="200" fill="#000080" stroke="#00ff00" stroke-width="1"/>
-  <text x="650" y="70" class="text" fill="#00ff00">ECDIS Elemanları</text>
-  <text x="650" y="90" class="text" fill="#ffff00">• Sarı: Rota ve Waypoint</text>
-  <text x="650" y="110" class="text" fill="#00ff00">• Yeşil: Own Ship</text>
-  <text x="650" y="130" class="text" fill="#ff0000">• Kırmızı: Safety Contour</text>
-  <text x="650" y="150" class="text" fill="#0000ff">• Mavi: Derinlik Konturları</text>
-  <text x="650" y="170" class="text" fill="#ff0000">• Kırmızı: Alarm Alanları</text>
-  <text x="650" y="190" class="text" fill="#8B4513">• Kahverengi: Kara</text>
-  <text x="650" y="210" class="text" fill="#87CEEB">• Açık Mavi: Su</text>
-  <text x="650" y="230" class="text" fill="#00ff00">• Yeşil: Ekran Çerçevesi</text>
+  <text x="650" y="70" class="text" fill="#00ff00">ECDIS Legend</text>
+  <text x="650" y="90" class="text" fill="#ffff00">• Yellow: route and waypoints</text>
+  <text x="650" y="110" class="text" fill="#00ff00">• Green: own ship</text>
+  <text x="650" y="130" class="text" fill="#ff0000">• Red: safety contour</text>
+  <text x="650" y="150" class="text" fill="#0000ff">• Blue: depth contours</text>
+  <text x="650" y="170" class="text" fill="#ff0000">• Red: alarm areas</text>
+  <text x="650" y="190" class="text" fill="#8B4513">• Brown: land</text>
+  <text x="650" y="210" class="text" fill="#87CEEB">• Light blue: water</text>
+  <text x="650" y="230" class="text" fill="#00ff00">• Green: display frame</text>
 </svg>

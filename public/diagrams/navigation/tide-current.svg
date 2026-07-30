@@ -13,11 +13,11 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">Gelgit ve Akıntı Seyri</text>
+  <text x="400" y="30" class="text title">Tides and Tidal Streams</text>
   
   <!-- Tide Curve -->
   <g transform="translate(200, 150)">
-    <text x="0" y="-80" class="text title">Gelgit Eğrisi</text>
+    <text x="0" y="-80" class="text title">Tidal Curve</text>
     <!-- Grid -->
     <line x1="0" y1="0" x2="300" y2="0" class="grid"/>
     <line x1="0" y1="-50" x2="300" y2="-50" class="grid"/>
@@ -31,13 +31,13 @@
     <text x="0" y="70" class="text">HW</text>
     <text x="150" y="70" class="text">LW</text>
     <text x="300" y="70" class="text">HW</text>
-    <text x="75" y="-120" class="text">Yüksek Su</text>
-    <text x="225" y="120" class="text">Alçak Su</text>
+    <text x="75" y="-120" class="text">High Water</text>
+    <text x="225" y="120" class="text">Low Water</text>
   </g>
   
   <!-- Current Flow -->
   <g transform="translate(600, 200)">
-    <text x="0" y="-100" class="text title">Akıntı Akışı</text>
+    <text x="0" y="-100" class="text title">Tidal Stream</text>
     
     <!-- Water -->
     <rect x="-100" y="-50" width="200" height="100" class="water"/>
@@ -51,20 +51,20 @@
     <g transform="translate(0, 0)">
       <rect x="-15" y="-10" width="30" height="20" class="ship"/>
       <line x1="0" y1="-10" x2="0" y2="-25" stroke="#000" stroke-width="2"/>
-      <text x="0" y="-35" class="text">Gemi</text>
+      <text x="0" y="-35" class="text">Ship</text>
     </g>
     
     <!-- Current effect -->
     <path d="M 0 0 Q 20 10 40 0" stroke="#ff0000" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
-    <text x="20" y="25" class="text">Akıntı Etkisi</text>
+    <text x="20" y="25" class="text">Effect of Current</text>
   </g>
   
   <!-- Tide Tables -->
   <rect x="50" y="350" width="700" height="120" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="400" y="370" class="text title">Gelgit Tablosu Örneği</text>
+  <text x="400" y="370" class="text title">Sample Tide Table</text>
   <text x="400" y="390" class="text">HW: 06:30 (4.2m) | LW: 12:45 (1.8m) | HW: 19:00 (4.5m)</text>
   <text x="400" y="410" class="text">Range: 4.5m - 1.8m = 2.7m</text>
   <text x="400" y="430" class="text">Mean Range: (2.7m + 2.4m) / 2 = 2.55m</text>
-  <text x="400" y="450" class="text">Spring Tide: Büyük gelgit (yeni/dolunay)</text>
-  <text x="400" y="470" class="text">Neap Tide: Küçük gelgit (ilk/son dördün)</text>
+  <text x="400" y="450" class="text">Spring tide: large range (new/full moon)</text>
+  <text x="400" y="470" class="text">Neap tide: small range (first/last quarter)</text>
 </svg>

@@ -8,59 +8,59 @@
     </style>
   </defs>
   <rect width="720" height="470" fill="#ffffff"/>
-  <text x="360" y="30" text-anchor="middle" class="ttl">SOLAS V/19 — Tonaja Göre Seyir Cihazı Taşıma</text>
-  <text x="360" y="49" text-anchor="middle" class="sm">Gereklilikler kümülatiftir: her gemi kendi ve alt eşiklerin donanımını taşır</text>
+  <text x="360" y="30" text-anchor="middle" class="ttl">SOLAS V/19 — Carriage of Navigational Equipment by Tonnage</text>
+  <text x="360" y="49" text-anchor="middle" class="sm">Requirements are cumulative: a ship carries the equipment of its own and all lower thresholds</text>
 
   <!-- row 1 -->
   <g transform="translate(30 62)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#0ea5e9"/>
-    <text x="75" y="29" text-anchor="middle" class="gt">Tüm gemiler</text>
-    <text x="166" y="29" class="eq">Manyetik pusula · harita/ECDIS · GNSS alıcısı</text>
+    <text x="75" y="29" text-anchor="middle" class="gt">All ships</text>
+    <text x="166" y="29" class="eq">Magnetic compass · charts/ECDIS · GNSS receiver</text>
   </g>
   <!-- row 2 -->
   <g transform="translate(30 116)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#0d95d8"/>
     <text x="75" y="29" text-anchor="middle" class="gt">≥ 150 GT</text>
-    <text x="166" y="29" class="eq">Yedek manyetik pusula · gündüz işaret feneri</text>
+    <text x="166" y="29" class="eq">Spare magnetic compass · daylight signalling lamp</text>
   </g>
   <!-- row 3 -->
   <g transform="translate(30 170)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#0b84c2"/>
     <text x="75" y="22" text-anchor="middle" class="gt">≥ 300 GT</text>
-    <text x="75" y="38" text-anchor="middle" class="gt">+ yolcu</text>
-    <text x="166" y="29" class="eq">9 GHz radar · ARPA · iskandil · hız logu · AIS</text>
+    <text x="75" y="38" text-anchor="middle" class="gt">+ passenger</text>
+    <text x="166" y="29" class="eq">9 GHz radar · ARPA · echo sounder · speed log · AIS</text>
   </g>
   <!-- row 4 -->
   <g transform="translate(30 224)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#0a72ab"/>
     <text x="75" y="29" text-anchor="middle" class="gt">≥ 500 GT</text>
-    <text x="166" y="29" class="eq">Cayro pusula + tekrarlayıcılar · dümen açı göstergesi</text>
+    <text x="166" y="29" class="eq">Gyro compass + repeaters · rudder angle indicator</text>
   </g>
   <!-- row 5 -->
   <g transform="translate(30 278)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#086094"/>
     <text x="75" y="29" text-anchor="middle" class="gt">≥ 3000 GT</text>
-    <text x="166" y="29" class="eq">2. bağımsız radar (3 GHz) · 2. ARPA · VDR</text>
+    <text x="166" y="29" class="eq">2nd independent radar (3 GHz) · 2nd ARPA · VDR</text>
   </g>
   <!-- row 6 -->
   <g transform="translate(30 332)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#064e76"/>
     <text x="75" y="29" text-anchor="middle" class="gt">≥ 10000 GT</text>
-    <text x="166" y="29" class="eq">Tam ARPA</text>
+    <text x="166" y="29" class="eq">Full ARPA</text>
   </g>
   <!-- row 7 -->
   <g transform="translate(30 386)">
     <rect width="660" height="46" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
     <rect width="150" height="46" rx="8" fill="#053b59"/>
     <text x="75" y="29" text-anchor="middle" class="gt">≥ 50000 GT</text>
-    <text x="166" y="29" class="eq">Dönüş hızı (ROT) göstergesi · yer-üstü hız logu</text>
+    <text x="166" y="29" class="eq">Rate-of-turn indicator · speed-over-ground log</text>
   </g>
 
-  <text x="360" y="452" text-anchor="middle" class="sm">Aşamalı/tip bazlı: ECDIS (2018'de tamamlandı) · BNWAS (≥150 GT yük + yolcu) · LRIT (uluslararası sefer)</text>
+  <text x="360" y="452" text-anchor="middle" class="sm">Phased in by type: ECDIS (completed 2018) · BNWAS (≥150 GT cargo + passenger) · LRIT (international voyages)</text>
 </svg>

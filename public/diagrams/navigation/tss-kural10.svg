@@ -13,7 +13,7 @@
     </pattern>
   </defs>
   <rect width="700" height="460" fill="#ffffff"/>
-  <text x="350" y="30" text-anchor="middle" class="ttl">Trafik Ayırım Düzeni (TSS) — COLREG Kural 10</text>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Traffic Separation Scheme (TSS) — COLREG Rule 10</text>
 
   <!-- zones -->
   <rect x="40" y="60" width="60" height="350" fill="#d6c19a"/>
@@ -42,15 +42,15 @@
   <!-- crossing vessel at right angles -->
   <line x1="150" y1="235" x2="470" y2="235" class="cross"/>
   <path d="M 470 235 L 456 228 L 456 242 Z" fill="#dc2626"/>
-  <text x="200" y="226" class="lbl" fill="#dc2626">Geçen gemi — akışa dik (~90°)</text>
+  <text x="200" y="226" class="lbl" fill="#dc2626">Crossing vessel — at right angles to the flow (~90°)</text>
 
   <!-- labels -->
-  <text x="70" y="430" text-anchor="middle" class="sm">Kara</text>
-  <text x="140" y="430" text-anchor="middle" class="sm">Kıyı trafik</text>
-  <text x="140" y="444" text-anchor="middle" class="sm">bölgesi</text>
-  <text x="235" y="430" text-anchor="middle" class="lbl">Şerit (akış ↑)</text>
-  <text x="315" y="430" text-anchor="middle" class="sm">Ayırım</text>
-  <text x="315" y="444" text-anchor="middle" class="sm">bölgesi</text>
-  <text x="395" y="430" text-anchor="middle" class="lbl">Şerit (akış ↓)</text>
-  <text x="555" y="430" text-anchor="middle" class="sm">Açık deniz</text>
+  <text x="70" y="430" text-anchor="middle" class="sm">Land</text>
+  <text x="140" y="430" text-anchor="middle" class="sm">Inshore traffic</text>
+  <text x="140" y="444" text-anchor="middle" class="sm">zone</text>
+  <text x="235" y="430" text-anchor="middle" class="lbl">Lane (flow ↑)</text>
+  <text x="315" y="430" text-anchor="middle" class="sm">Separation</text>
+  <text x="315" y="444" text-anchor="middle" class="sm">zone</text>
+  <text x="395" y="430" text-anchor="middle" class="lbl">Lane (flow ↓)</text>
+  <text x="555" y="430" text-anchor="middle" class="sm">Open sea</text>
 </svg>

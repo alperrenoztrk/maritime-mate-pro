@@ -11,7 +11,7 @@
   </defs>
   
   <!-- Title -->
-  <text x="400" y="30" class="text title">Gnomonik Projeksiyonu</text>
+  <text x="400" y="30" class="text title">Gnomonic Projection</text>
   
   <!-- World Map -->
   <g transform="translate(400, 250)">
@@ -47,15 +47,15 @@
     <path d="M -120 -100 Q -60 -50 0 0 Q 60 50 120 100" class="rhumb-line"/>
     
     <!-- Labels -->
-    <text x="0" y="-220" class="text">Büyük Daireler Düz Çizgi</text>
-    <text x="0" y="230" class="text">Rhumb Çizgileri Eğri</text>
+    <text x="0" y="-220" class="text">Great circles are straight</text>
+    <text x="0" y="230" class="text">Rhumb lines are curved</text>
   </g>
   
   <!-- Characteristics -->
   <rect x="50" y="350" width="700" height="120" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-  <text x="400" y="375" class="text title">Gnomonik Projeksiyonu Özellikleri</text>
-  <text x="400" y="400" class="text">• Büyük daireler düz çizgi olarak görünür</text>
-  <text x="400" y="420" class="text">• Navigasyon için idealdir</text>
-  <text x="400" y="440" class="text">• Merkez noktadan uzaklaştıkça distorsiyon artar</text>
-  <text x="400" y="460" class="text">• Kısa mesafe navigasyonu için kullanılır</text>
+  <text x="400" y="375" class="text title">Properties of the Gnomonic Projection</text>
+  <text x="400" y="400" class="text">• Great circles appear as straight lines</text>
+  <text x="400" y="420" class="text">• Ideal for great-circle sailing</text>
+  <text x="400" y="440" class="text">• Distortion increases away from the centre</text>
+  <text x="400" y="460" class="text">• Used for short-distance navigation</text>
 </svg>

@@ -33,8 +33,8 @@ export function SystemArchitectureDiagram({ title, stages }: Props) {
   return (
     <figure className="overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background/80 to-cyan-500/5 p-3">
       <div className="mb-2 flex items-center justify-between gap-3">
-        <figcaption className="text-xs font-semibold text-foreground">Sistemin gerçek iş akışı</figcaption>
-        <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Girdi → emniyet/kanıt</span>
+        <figcaption className="text-xs font-semibold text-foreground">The system's actual workflow</figcaption>
+        <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Input → safety/evidence</span>
       </div>
 
       <div className="grid gap-2 sm:hidden">
@@ -138,7 +138,7 @@ export function SystemArchitectureDiagram({ title, stages }: Props) {
             markerEnd={`url(#${markerId})`}
           />
           <text x="534" y="226" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))">
-            Alarm, kayıt ve doğrulama kontrol kararına geri beslenir
+            Alarms, records and verification feed back into the control decision
           </text>
         </svg>
       </div>

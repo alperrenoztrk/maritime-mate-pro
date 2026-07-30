@@ -9,19 +9,19 @@
     </style>
   </defs>
   <rect width="700" height="480" fill="#ffffff"/>
-  <text x="350" y="30" text-anchor="middle" class="ttl">Yükleme Hattı (Load Line / Plimsoll) İşaretleri</text>
+  <text x="350" y="30" text-anchor="middle" class="ttl">Load Line (Plimsoll) Marks</text>
 
   <!-- hull plating tint -->
   <rect x="170" y="100" width="340" height="280" fill="#f8fafc" stroke="#e2e8f0"/>
 
   <!-- deck line -->
   <line x1="200" y1="130" x2="470" y2="130" class="ln"/>
-  <text x="478" y="134" class="mk">Güverte Hattı</text>
+  <text x="478" y="134" class="mk">Deck Line</text>
 
   <!-- freeboard arrow (deck to S) -->
   <line x1="210" y1="132" x2="210" y2="248" stroke="#2563eb" stroke-width="1.5" marker-end="url(#a)" marker-start="url(#a)"/>
-  <text x="120" y="195" class="sm" fill="#2563eb">Fribord</text>
-  <text x="120" y="210" class="sm" fill="#2563eb">(yaz)</text>
+  <text x="120" y="195" class="sm" fill="#2563eb">Freeboard</text>
+  <text x="120" y="210" class="sm" fill="#2563eb">(summer)</text>
 
   <defs>
     <marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,4 L8,1 L8,7 Z" fill="#2563eb"/></marker>
@@ -44,17 +44,17 @@
   <!-- disc (ring) with S line -->
   <circle cx="392" cy="250" r="34" fill="none" stroke="#0f172a" stroke-width="5"/>
   <text x="330" y="232" class="mk">S</text>
-  <text x="350" y="318" class="sm">Disk (halka) — yaz hattı (S) merkezden geçer</text>
+  <text x="350" y="318" class="sm">The disc — the summer line (S) passes through its centre</text>
   <text x="438" y="240" class="mk">L</text><text x="452" y="240" class="mk">R</text>
-  <text x="438" y="300" class="sm">(klas kuruluşu baş harfleri)</text>
+  <text x="438" y="300" class="sm">(initials of the classification society)</text>
 
   <!-- legend box -->
   <g transform="translate(30 340)">
     <rect width="640" height="118" rx="8" fill="#f1f5f9" stroke="#0f172a"/>
-    <text x="14" y="24" class="mk">Hatlar (yukarıdan aşağıya — yukarı = daha derin yükleme):</text>
-    <text x="14" y="46" class="sm">TF: Tropik Tatlı Su · F: Tatlı Su · T: Tropik · S: Yaz (referans) · W: Kış · WNA: Kış Kuzey Atlantik</text>
-    <text x="14" y="70" class="sm">T, S'nin üstünde; W, S'nin altında: ±(yaz draftı / 48). F = S + FWA; TF = T + FWA.</text>
-    <text x="14" y="92" class="sm">WNA = W − 50 mm (boyu ≤ 100 m gemiler). FWA(mm) = Deplasman / (4 × TPC).</text>
-    <text x="14" y="110" class="sm">Kaynak: Yükleme Hattı Sözleşmesi 1966 / 1988 Protokolü.</text>
+    <text x="14" y="24" class="mk">Lines (top to bottom — higher means deeper loading):</text>
+    <text x="14" y="46" class="sm">TF: Tropical Fresh · F: Fresh · T: Tropical · S: Summer (reference) · W: Winter · WNA: Winter North Atlantic</text>
+    <text x="14" y="70" class="sm">T is above S and W below S by ±(summer draft / 48). F = S + FWA; TF = T + FWA.</text>
+    <text x="14" y="92" class="sm">WNA = W − 50 mm (ships ≤ 100 m in length). FWA(mm) = Displacement / (4 × TPC).</text>
+    <text x="14" y="110" class="sm">Source: Load Lines Convention 1966 / 1988 Protocol.</text>
   </g>
 </svg>
