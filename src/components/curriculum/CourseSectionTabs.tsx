@@ -30,12 +30,13 @@ export function CourseSectionTabs({
   hrefs,
 }: CourseSectionTabsProps) {
   const basePath = group === "machine" ? `/machine/${courseKey}` : `/lessons/${courseKey}`;
+  const exerciseCategory = group === "machine" ? `machine-${courseKey}` : courseKey;
   const defaultHrefs: Record<CurriculumSectionId, string> = {
     topics: `${basePath}/topics`,
     calculations: `${basePath}/calculations`,
     formulas: `${basePath}/formulas`,
     rules: `${basePath}/rules`,
-    quiz: `${basePath}/quiz`,
+    quiz: `/exercises/${exerciseCategory}/topics`,
   };
 
   const resolveHref = (id: CurriculumSectionId) => {

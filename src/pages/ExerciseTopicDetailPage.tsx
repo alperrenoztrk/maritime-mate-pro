@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Lightbulb, Play } from "lucide-react";
 import { stripMarkdown } from "@/utils/cleanText";
 import { getBetaTopic } from "@/data/betaLessons";
+import { getExerciseQuestionsForTopic } from "@/data/exerciseQuestionDistribution";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { getLessonFlow } from "@/data/lessonFlow";
 import type { QuizQuestion } from "@/types/quiz";
@@ -9,11 +10,12 @@ import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBl
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
 import { LessonAITutor } from "@/components/lessons/LessonAITutor";
+import { TopicExerciseQuestionSet } from "@/components/lessons/TopicExerciseQuestionSet";
 
 /**
  * Alıştırmalar konu detayı.
- * URL sabit topic id veya eski başlık içerebilir; rehberli akış ve enhancement
- * eşleşmeleri her zaman kaynak başlık üzerinden yapılır.
+ * URL sabit topic id veya eski başlık içerebilir; rehberli akış, enhancement ve
+ * eski quiz sorusu eşleşmeleri her zaman kanonik konu kimliği üzerinden çözülür.
  */
 export default function ExerciseTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{
@@ -36,6 +38,10 @@ export default function ExerciseTopicDetailPage() {
     );
   }
 
+  const topicQuestions = getExerciseQuestionsForTopic(
+    categoryId,
+    content.id ?? decodedTitleOrId,
+  );
   const checkAfter = new Map<string, QuizQuestion>();
   if (flow) {
     for (const block of flow.blocks) {
@@ -71,6 +77,11 @@ export default function ExerciseTopicDetailPage() {
             Beta
           </span>
           <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
+          {topicQuestions.length > 0 && (
+            <span className="ml-auto rounded-full bg-violet-500/15 px-2.5 py-1 text-[10px] font-semibold text-violet-700 dark:text-violet-300">
+              {topicQuestions.length} soru
+            </span>
+          )}
         </div>
       </div>
 
@@ -130,6 +141,8 @@ export default function ExerciseTopicDetailPage() {
             </ul>
           </section>
         )}
+
+        <TopicExerciseQuestionSet questions={topicQuestions} />
 
         <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
       </div>
