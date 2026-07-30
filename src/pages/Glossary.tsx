@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { BookOpenText } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 import { SEO } from "@/components/SEO";
@@ -19,8 +20,26 @@ const CATEGORY_ACCENTS = [
 ];
 
 const Glossary = () => {
-  const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(() => searchParams.get("q") ?? "");
+  const [activeCategory, setActiveCategory] = useState<string | null>(() => {
+    const category = searchParams.get("cat");
+    return category && glossaryCategories.includes(category) ? category : null;
+  });
+
+  const updateSearch = (value: string) => {
+    setSearch(value);
+    const next = new URLSearchParams(searchParams);
+    value.trim() ? next.set("q", value) : next.delete("q");
+    setSearchParams(next, { replace: true });
+  };
+
+  const updateCategory = (category: string | null) => {
+    setActiveCategory(category);
+    const next = new URLSearchParams(searchParams);
+    category ? next.set("cat", category) : next.delete("cat");
+    setSearchParams(next, { replace: true });
+  };
 
   const filteredTerms = useMemo(() => {
     let terms = glossaryTerms;
@@ -48,7 +67,7 @@ const Glossary = () => {
 
       <LibrarySearchField
         value={search}
-        onChange={setSearch}
+        onChange={updateSearch}
         placeholder="Terim ara…"
         ariaLabel="Denizcilik terimlerinde ara"
       />
@@ -62,7 +81,7 @@ const Glossary = () => {
               icon={BookOpenText}
               accent={CATEGORY_ACCENTS[index % CATEGORY_ACCENTS.length]}
               badge={glossaryTerms.filter((term) => term.category === category).length}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => updateCategory(category)}
             />
           ))}
         </section>
@@ -75,7 +94,7 @@ const Glossary = () => {
             {activeCategory && (
               <button
                 type="button"
-                onClick={() => setActiveCategory(null)}
+                onClick={() => updateCategory(null)}
                 className="rounded-xl border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
               >
                 Kategoriler
