@@ -55,7 +55,6 @@ export default function LessonsPage() {
     {
       id: "deck" as const,
       title: "Güverte",
-      subtitle: "Seyir, yük, stabilite, emniyet, haberleşme ve güverte operasyonları",
       icon: Ship,
       accent: "from-blue-500 via-indigo-500 to-blue-600",
       categories: betaCategories.filter((category) => category.group === "deck"),
@@ -63,7 +62,6 @@ export default function LessonsPage() {
     {
       id: "machine" as const,
       title: "Makine",
-      subtitle: "Gemi makineleri, sistemler, vardiya, bakım, emniyet ve enerji yönetimi",
       icon: Wrench,
       accent: "from-slate-600 via-zinc-600 to-slate-800",
       categories: betaCategories.filter((category) => category.group === "machine"),
@@ -88,22 +86,14 @@ export default function LessonsPage() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-7">
-        <header className="space-y-2 text-center">
+        <header className="text-center">
           <h1 className="text-2xl font-bold text-foreground">Dersler</h1>
-          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
-            İçerikler departman, ders, modül ve konu sırasıyla düzenlenmiştir.
-          </p>
         </header>
 
         <section className="space-y-3">
           <div className="flex items-center gap-2">
             <Route className="h-5 w-5 text-primary" />
-            <div>
-              <h2 className="font-semibold text-foreground">Mesleki Yeterlilik Parkurları</h2>
-              <p className="text-xs text-muted-foreground">
-                Birden fazla dersi bir operasyon yeterliliği altında birleştiren çalışma yolları
-              </p>
-            </div>
+            <h2 className="font-semibold text-foreground">Mesleki Yeterlilik Parkurları</h2>
           </div>
 
           <div className="grid gap-3 lg:grid-cols-2">
@@ -120,23 +110,20 @@ export default function LessonsPage() {
                   <button
                     type="button"
                     onClick={() => setExpandedTrack(expanded ? null : track.id)}
-                    className="flex w-full items-start gap-3 p-4 text-left transition hover:bg-primary/5"
+                    className="flex w-full items-center gap-3 p-4 text-left transition hover:bg-primary/5"
                     aria-expanded={expanded}
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 text-sm font-bold text-white">
                       {trackIndex + 1}
                     </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="font-semibold leading-snug text-foreground">{track.title}</span>
-                      <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
-                        {track.subtitle}
-                      </span>
+                    <span className="min-w-0 flex-1 font-semibold leading-snug text-foreground">
+                      {track.title}
                     </span>
                     <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
                       {topics.length} konu
                     </span>
                     <ChevronDown
-                      className={`mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+                      className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
                     />
                   </button>
 
@@ -185,10 +172,7 @@ export default function LessonsPage() {
                     >
                       <GroupIcon className="h-5 w-5" />
                     </span>
-                    <span className="flex min-w-0 flex-col">
-                      <span className="text-lg font-bold text-foreground">{group.title}</span>
-                      <span className="text-xs text-muted-foreground">{group.subtitle}</span>
-                    </span>
+                    <span className="text-lg font-bold text-foreground">{group.title}</span>
                   </span>
                   <span className="flex items-center gap-3">
                     <span className="hidden rounded-full bg-muted px-2.5 py-1 text-[10px] font-semibold text-muted-foreground sm:inline-flex">
@@ -228,9 +212,6 @@ export default function LessonsPage() {
                             </div>
                             <div className="min-w-0 flex-1">
                               <h2 className="font-bold leading-snug text-foreground">{category.title}</h2>
-                              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                                {category.subtitle}
-                              </p>
                               <div className="mt-2 flex flex-wrap gap-1.5">
                                 <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
                                   <Layers3 className="h-3 w-3" /> {category.moduleCount} modül
@@ -265,7 +246,6 @@ export default function LessonsPage() {
                                 <div
                                   key={`${category.key}-${section.id}`}
                                   className="flex flex-col items-center justify-center gap-1.5 rounded-xl border border-border/30 bg-muted/30 p-2.5 opacity-60"
-                                  title={section.description}
                                 >
                                   <SectionIcon className="h-4 w-4 text-muted-foreground" />
                                   <span className="text-center text-[10px] text-muted-foreground">
@@ -276,7 +256,6 @@ export default function LessonsPage() {
                                 <Link
                                   key={`${category.key}-${section.id}`}
                                   to={sectionHref}
-                                  title={section.description}
                                   className="group flex flex-col items-center justify-center gap-1.5 rounded-xl border border-border/40 bg-background/45 p-2.5 transition hover:border-primary/35 hover:bg-background"
                                 >
                                   <SectionIcon className="h-4 w-4 text-primary" />
