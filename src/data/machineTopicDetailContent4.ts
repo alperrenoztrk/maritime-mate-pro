@@ -79,7 +79,7 @@ const content4: ContentMap = {
       title: "Otto Çevrimi (Benzinli Motor)",
       introduction: "Otto çevrimi, kıvılcım ateşlemeli motorların teorik performans sınırını veren temel çevrimdir. Denizcilikte ana tahrikte sınırlı kullanılsa da yardımcı jeneratörler, küçük servis motorları ve eğitim amaçlı termodinamik analizlerde kritik referanstır.",
       sections: [
-        { heading: "Çevrim Aşamaları ve P-V Yorumu", paragraphs: ["1→2 adyabatik sıkıştırmada basınç ve sıcaklık hızla yükselir; vuruntu sınırına yaklaşım bu bölgede belirlenir.", "2→3 sabit hacimde ısı alımı ideal bir varsayımdır; gerçek motorda yanma sonlu sürede olduğu için basınç tepe değeri krank açısına bağlıdır.", "3→4 adyabatik genleşme iş üreten stroktur; çevrim net işinin büyük kısmı bu bölgede oluşur.", "4→1 sabit hacimde ısı atımı, egzoz ve soğutma kayıplarının ideal temsili olarak kabul edilir."], diagram: { src: "/diagrams/machine/pv-diyagrami.svg", alt: "Otto çevrimi P-V diyagramı", caption: "Şekil: Otto çevriminin dört aşaması (P-V)" } },
+        { heading: "Çevrim Aşamaları ve P-V Yorumu", paragraphs: ["1→2 adyabatik sıkıştırmada basınç ve sıcaklık hızla yükselir; vuruntu sınırına yaklaşım bu bölgede belirlenir.", "2→3 sabit hacimde ısı alımı ideal bir varsayımdır; gerçek motorda yanma sonlu sürede olduğu için basınç tepe değeri krank açısına bağlıdır.", "3→4 adyabatik genleşme iş üreten stroktur; çevrim net işinin büyük kısmı bu bölgede oluşur.", "4→1 sabit hacimde ısı atımı, egzoz ve soğutma kayıplarının ideal temsili olarak kabul edilir."], diagram: { src: "/diagrams/machine/pv-diyagrami.svg", alt: "Otto cycle P-V diagram", caption: "Figure: the four stages of the Otto cycle (P-V)" } },
         { heading: "Termal Verim ve Sıkıştırma Oranı Etkisi", paragraphs: ["Otto çevrimi verimi teorik olarak yalnızca sıkıştırma oranı ve γ değerine bağlıdır. Bu durum tasarımcıya açık bir mesaj verir: uygun yakıtla daha yüksek sıkıştırma oranı daha yüksek verim üretir.", "Ancak pratikte vuruntu (knock), malzeme sıcaklık sınırları ve NOx oluşumu sıkıştırma oranını sınırlayan temel faktörlerdir."], formula: { expression: "ηOtto = 1 − (1/r)^(γ−1)", variables: ["r: Sıkıştırma oranı (V₁/V₂)", "γ: Özgül ısı oranı"] } },
         { heading: "Sayısal Örnek ve Gerçek Motor Sapmaları", paragraphs: ["İdeal hesap sonucu her zaman gerçek motor veriminden yüksektir; farkın nedeni ısı kayıpları, sürtünme, eksik yanma ve pompalama işidir."], example: { problem: "Sıkıştırma oranı r = 10 olan bir Otto çevriminin termal verimini bulunuz. (γ = 1.4)", steps: ["η = 1 − (1/10)^(1.4−1)", "η = 1 − (0.1)^0.4", "0.1^0.4 = 0.398", "η = 1 − 0.398 = 0.602"], result: "İdeal Otto verimi %60.2 bulunur. Gerçek makinede etkin verim tipik olarak %25-35 bandındadır; kalan enerji egzoz, soğutma ve mekanik kayıplarla dağılır." } }
       ],
@@ -105,7 +105,7 @@ const content4: ContentMap = {
             "4→5: Adyabatik genleşme ile faydalı iş üretilir.",
             "5→1: Sabit hacimde ısı atımı, egzoz ve soğutma kayıplarının ideal karşılığıdır."
           ],
-          diagram: { src: "/diagrams/machine/pv-diyagrami.svg", alt: "Sabathe (ikili) çevrimi P-V", caption: "Şekil: Sabathe çevriminin sabit hacim + sabit basınç ısı alımı" }
+          diagram: { src: "/diagrams/machine/pv-diyagrami.svg", alt: "Sabathe (dual) cycle P-V", caption: "Figure: constant-volume plus constant-pressure heat addition in the Sabathe cycle" }
         },
         {
           heading: "Verim Parametreleri ve Tasarım Etkisi",
@@ -149,7 +149,7 @@ const content4: ContentMap = {
             "Türbin: Buhar entalpisi şaft işine dönüştürülür. Elde edilen mekanik güç jeneratöre aktarılır.",
             "Kondenser: Türbin çıkış buharı yoğuşturularak çevrim kapatılır; düşük kondenser basıncı çevrim verimini artırır ancak soğutma suyu koşullarına bağlıdır."
           ],
-          diagram: { src: "/diagrams/machine/rankine-cevrimi.svg", alt: "Rankine çevrimi T-s diyagramı", caption: "Şekil: Rankine çevriminin T-s diyagramı (pompa, kazan, türbin, kondenser)" }
+          diagram: { src: "/diagrams/machine/rankine-cevrimi.svg", alt: "Rankine cycle T-s diagram", caption: "Figure: T-s diagram of the Rankine cycle (pump, boiler, turbine, condenser)" }
         },
         {
           heading: "h-s Diyagramı ile Performans Yorumu",
@@ -207,7 +207,7 @@ const content4: ContentMap = {
             "3→4 türbinde genleşme ile güç üretilir; türbinin bir kısmı kompresörü sürmek için harcanır, kalan kısım faydalı şaft gücüdür.",
             "4→1 çevrim kapanışı ideal modelde çevreye ısı atımıdır; gerçek makinede egzoz ısısı WHRS ile geri kazanılabilir."
           ],
-          diagram: { src: "/diagrams/machine/brayton-cevrimi.svg", alt: "Brayton çevrimi P-v diyagramı", caption: "Şekil: Brayton çevrimi — kompresör, yanma odası, türbin" }
+          diagram: { src: "/diagrams/machine/brayton-cevrimi.svg", alt: "Brayton cycle P-v diagram", caption: "Figure: the Brayton cycle — compressor, combustion chamber, turbine" }
         },
         {
           heading: "Verim, Basınç Oranı ve Özgül İş",

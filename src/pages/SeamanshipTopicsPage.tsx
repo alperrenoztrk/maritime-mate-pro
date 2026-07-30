@@ -299,8 +299,8 @@ STCW (Standards of Training, Certification and Watchkeeping) sözleşmesi, her s
       {
         src: photoShipPartsOverview,
         title: "Modern dökme yük gemisi (yan görünüm)",
-        caption: "Bulbous bow, yükseltilmiş baş kasara, ambar kapakları, kıçta akomodasyon bloğu, köprüüstü ve baca yapısı tek karede görülür.",
-        alt: "Açık denizde seyir halinde büyük bir dökme yük gemisinin yan profili; kırmızı su altı gövdesi, siyah borda, beyaz akomodasyon bloğu ve düz ambar kapakları belirgin.",
+        caption: "The bulbous bow, raised forecastle, hatch covers, aft accommodation block, bridge and funnel are all visible in one frame.",
+        alt: "A large bulk carrier under way at sea in side profile; the red underwater hull, black side shell, white accommodation block and flush hatch covers stand out.",
       },
     ],
     content: `GEMİ ANA BÖLÜMLER:
@@ -478,8 +478,8 @@ Liman Devleti Kontrolü (Port State Control) denetçileri, öncelikle bu sertifi
       {
         src: photoRopeTypes,
         title: "Yaygın halat malzemeleri (yan yana)",
-        caption: "Aynı çapta dört farklı halat: beyaz çift örgülü naylon, sarı polipropilen (suda yüzer), kahverengi manila doğal lifi ve mavi polyester. Yapı ve büküm farkları net.",
-        alt: "Ahşap güverte üzerinde yan yana uzanan dört farklı halat: naylon, polipropilen, manila ve polyester; her biri farklı renk ve büküm yapısında.",
+        caption: "Four ropes of the same diameter: white double-braid nylon, yellow polypropylene (which floats), brown natural-fibre manila and blue polyester. The differences in construction and lay are clear.",
+        alt: "Four different ropes laid side by side on a wooden deck: nylon, polypropylene, manila and polyester, each a different colour and construction.",
       },
     ],
     table: {
@@ -538,8 +538,8 @@ Kolalı (Laid rope): Üç veya dört kolun birbiri üzerine sarılmasıyla oluş
       {
         src: photoWireRope,
         title: "6×36 IWRC çelik tel kesiti",
-        caption: "Altı dış kol (strand) ve bağımsız çelik tel çekirdek (IWRC); her kolda çok sayıda ince telcik. IWRC, fiber çekirdeğe göre %7-10 daha yüksek kırılma yükü sağlar.",
-        alt: "Bir gemi güvertesinde duran galvanizli çelik halatın kesiti; iç içe geçmiş kollar ve ortadaki tel çekirdek açıkça görülüyor, yanında bir splice aleti var.",
+        caption: "Six outer strands around an independent wire rope core (IWRC), each strand made up of many fine wires. An IWRC gives a 7-10% higher breaking load than a fibre core.",
+        alt: "The cut end of a galvanised wire rope on a ship's deck; the interlocking strands and the central wire core are clearly visible, with a splicing tool beside it.",
       },
     ],
     table: {
@@ -640,8 +640,8 @@ ISM Code gereği, halat ve tellerin periyodik muayeneleri kaydedilmeli ve bakım
       {
         src: photoKnotsDisplay,
         title: "Temel denizcilik düğümleri (toplu görünüm)",
-        caption: "Bowline (kaymayan ilmek), figure-eight (durdurucu), clove hitch (volta), reef knot (yassı düğüm), sheet bend (kıstırma) ve round turn & two half hitches; en sık kullanılan altı düğüm bir arada.",
-        alt: "Ahşap zemin üzerinde beyaz halatla atılmış altı farklı denizcilik düğümü; her düğüm net şekilde görülüyor.",
+        caption: "Bowline (non-slipping loop), figure-eight (stopper), clove hitch, reef knot, sheet bend and round turn and two half hitches — the six most commonly used knots together.",
+        alt: "Six different nautical knots tied in white rope on a wooden surface, each clearly visible.",
       },
     ],
     content: `TEMEL DÜĞÜMLER (KNOTS):
@@ -778,8 +778,8 @@ Proof Load (PL), üretim sonrası uygulanan test yüküdür. Genellikle SWL'nin 
       {
         src: photoAnchorTypes,
         title: "Yaygın demir tipleri karşılaştırması",
-        caption: "Soldan sağa: Hall stockless (ticaret gemisi standardı), AC-14 high holding power (modern HHP), Danforth fluke (yumuşak zeminde tutuş), Admiralty stocked (klasik kollu).",
-        alt: "Bir rıhtımda yan yana dizilmiş dört farklı denizcilik demiri; her birinin gövde, kol (fluke) ve stok yapısı farklı.",
+        caption: "Left to right: Hall stockless (the merchant ship standard), AC-14 high holding power (modern HHP), Danforth fluke (holds in soft ground) and Admiralty stocked (the classic stocked type).",
+        alt: "Four different ships' anchors lined up on a quay, each with a different shank, fluke and stock arrangement.",
       },
     ],
     content: `BAŞLICA DEMİR TİPLERİ:
@@ -819,14 +819,14 @@ Bir ticaret gemisi genellikle iki bower demiri (pruva) ve bir spare (yedek) demi
       {
         src: photoAnchorChain,
         title: "Stud-link demir zinciri ve shackle işaretlemesi",
-        caption: "Her bakla içindeki takviye çubuğu (stud) baklanın ezilmesini önler. Renkli boyalar (beyaz/kırmızı/mavi) shackle (27,5 m) sınırlarını gösterir; son shackle tamamen kırmızıdır.",
-        alt: "Bir geminin baş kasarasında windlass'a giden ağır stud-link demir zinciri; baklalardan biri kırmızı, biri mavi, biri beyaz boyalı ve üzerinde shackle numarası var.",
+        caption: "The stud inside each link prevents the link from collapsing. Coloured paint (white/red/blue) marks the shackle (27.5 m) boundaries; the last shackle is painted entirely red.",
+        alt: "Heavy stud-link anchor cable running to the windlass on a ship's forecastle; one link is painted red, one blue and one white, marked with the shackle number.",
       },
       {
         src: photoWindlass,
         title: "Demir vinci (windlass) yakın çekim",
-        caption: "Wildcat (gypsy) baklaları yuvalarına oturtarak zinciri çeker; fren bandı, chain stopper ve hawse pipe görünür. Ana güverte üstündeki standart baş kasara donanımıdır.",
-        alt: "Geminin baş kasarasında, zinciri çeken büyük çelik wildcat tamburu, fren mekanizması ve hawse pipe deliği görülen demir vinci yakın çekim.",
+        caption: "The wildcat (gypsy) hauls the cable by seating each link in its pocket; the brake band, chain stopper and hawse pipe are visible. This is the standard forecastle outfit above the main deck.",
+        alt: "Close-up of an anchor windlass on a ship's forecastle, showing the large steel wildcat that hauls the cable, the brake mechanism and the hawse pipe opening.",
       },
     ],
     content: `ZİNCİR YAPISI:
@@ -1087,8 +1087,8 @@ AÇIK DEMİRLEME (Open Moor):
       {
         src: photoMooringEquipment,
         title: "Hidrolik palamar vinci ve kıç güverte düzeni",
-        caption: "Halat tamburuna sarılı palamar halatı, çevresinde babalar (bollards) ve fairlead'ler. Modern gemilerde split-drum vinçler hem depolama hem çekme görevi görür.",
-        alt: "Yük gemisinin kıç güvertesinde büyük hidrolik palamar vinci; tamburuna sarılı kalın halat ve etrafındaki siyah babalar görülüyor.",
+        caption: "Mooring line wound on the winch drum, with bollards and fairleads around it. On modern ships split-drum winches serve for both stowage and hauling.",
+        alt: "A large hydraulic mooring winch on the after deck of a cargo ship, with heavy rope wound on the drum and black bollards around it.",
       },
     ],
     table: {
@@ -1324,7 +1324,7 @@ SBM operasyonları OCIMF tarafından yayınlanan "SBM and SPM - Guidelines" dok�
         src: photoRudderPropeller,
         title: "Yarı dengeli (semi-balanced) spade dümen ve pervane",
         caption: "Drydock'ta ticari bir geminin kıçı: mavi boyalı semi-balanced spade dümen ve beş kanatlı bronz pervane bir arada görülür. Pervane çapına oranla dümenin alanı tipik olarak sualtı yüzeyinin %1,5-2'si kadardır.",
-        alt: "Kuru havuzdaki büyük bir geminin kıç görünümü; mavi semi-balanced spade dümen ve büyük bronz beş kanatlı pervane, çevresinde işçiler ve iskele.",
+        alt: "Stern view of a large ship in dry dock; a blue semi-balanced spade rudder and a large five-bladed bronze propeller, with workers and staging around them.",
       },
     ],
     content: `BAŞLICA DÜMEN TİPLERİ:
@@ -1363,8 +1363,8 @@ Dümen başlangıç etkisi (initial turning effect) pruva tarafına değil, kı�
       {
         src: photoSteeringGear,
         title: "Hidrolik ram tipi dümen makinesi dairesi",
-        caption: "Yeşil boyalı hidrolik silindirler (ram'ler) tiller koluna bağlıdır; arka planda hidrolik güç paketleri ve elektrik motorları bulunur. SOLAS, dümen makinesinin 35°'den karşı 30°'ye en fazla 28 saniyede ulaşmasını şart koşar.",
-        alt: "Bir geminin dümen makinesi dairesi; iki büyük yeşil hidrolik ram silindiri tiller koluna bağlanmış, çevresinde hidrolik pompa ve göstergeler.",
+        caption: "Green hydraulic cylinders (rams) connected to the tiller, with hydraulic power packs and electric motors behind. SOLAS requires the steering gear to put the rudder from 35° over to 30° the other way in not more than 28 seconds.",
+        alt: "A ship's steering gear room; two large green hydraulic ram cylinders connected to the tiller, with hydraulic pumps and gauges around them.",
       },
     ],
     content: `DÜMEN MAKİNESİ TİPLERİ:
@@ -1598,8 +1598,8 @@ Bu kanallarda özel seyir kuralları ve hız limitleri uygulanır. Pilot alımı
       {
         src: photoDeckCrane,
         title: "Güverte üzerindeki pedestal (sütunlu) vinç",
-        caption: "Modern bir kuru yük gemisinin güvertesinde, uzatılmış bumbası ve kanca takımıyla pedestal vinç. SWL (Safe Working Load) en zayıf elemana göre belirlenir; her vincin yıllık load test ve sertifikasyonu zorunludur.",
-        alt: "Açık denizde bir kuru yük gemisinin güvertesinde uzun gri pedestal vinç; bumbası uzatılmış ve kancası ambar üzerinde sarkıyor.",
+        caption: "A pedestal crane with its jib extended and hook block rigged, on the deck of a modern dry cargo ship. The SWL (Safe Working Load) is set by the weakest component; every crane must be load tested and certified annually.",
+        alt: "A tall grey pedestal crane on the deck of a dry cargo ship at sea, its jib extended and hook hanging over the hatch.",
       },
     ],
     content: `VİNÇ TİPLERİ:
@@ -1671,8 +1671,8 @@ Bumba operasyonlarında SWL'nin en zayıf elemanı (halat, blok, şakla) belirle
       {
         src: photoHatchCovers,
         title: "Folding tipi (katlanır) çelik ambar kapakları",
-        caption: "Bir dökme yük gemisinde mavi boyalı katlanır (folding) ambar kapakları; hidrolik aktüatörlerle açılıp kapanır. Su geçirmezlik için coaming üzerine oturan rubber gasket ve compression bar sistemi kullanılır.",
-        alt: "Dökme yük gemisi güvertesinde büyük mavi katlanır ambar kapakları, hidrolik silindirler ve hatch coaming görünüyor.",
+        caption: "Blue folding hatch covers on a bulk carrier, opened and closed by hydraulic actuators. Weathertightness is achieved by a rubber gasket seating on the coaming together with a compression bar.",
+        alt: "Large blue folding hatch covers, hydraulic cylinders and the hatch coaming on the deck of a bulk carrier.",
       },
     ],
     content: `AMBAR KAPAĞI TİPLERİ:
@@ -1793,8 +1793,8 @@ ISM Code gereği tüm bakım faaliyetleri PMS kapsamında planlanır, uygulanır
       {
         src: photoLifeboatEnclosed,
         title: "Tamamen kapalı cankurtaran sandalı (TEMPSC) — davit asılı",
-        caption: "Bir kargo gemisinin sandal güvertesinde davitlere asılmış, parlak turuncu, tamamen kapalı (TEMPSC) tipi cankurtaran sandalı. SOLAS, her bordada toplam mürettebatın %100'ünü taşıyacak kapasiteyi şart koşar.",
-        alt: "Geminin yan tarafında davit'e asılı, parlak turuncu boyalı tamamen kapalı tipi cankurtaran sandalı; gemi gri gövdesi arka planda.",
+        caption: "A bright orange totally enclosed (TEMPSC) lifeboat hanging in its davits on the boat deck of a cargo ship. SOLAS requires capacity for 100% of the total complement on each side.",
+        alt: "A bright orange totally enclosed lifeboat hanging in its davit on the ship's side, with the grey hull behind.",
       },
     ],
     content: `SANDAL TİPLERİ:
@@ -1842,8 +1842,8 @@ Her iki bordada toplam gemi personelinin %100'ünü alabileceek kapasite. Bir bo
       {
         src: photoLiferaftCanister,
         title: "Şişirilebilir cankurtaran salı kanisteri (HRU ile)",
-        caption: "Beyaz fiberglas silindirik kanister içinde paketlenmiş şişme sal; cradle üzerine monte edilmiş ve hidrostatik release unit (HRU) ile painter line bağlıdır. Gemi 4 m derinliğe battığında HRU otomatik serbest bırakır.",
-        alt: "Bir geminin güvertesinde cradle üzerinde duran beyaz silindirik cankurtaran salı kanisteri; HRU ve kırmızı painter halatı görünür.",
+        caption: "An inflatable liferaft packed in a white glass-fibre cylindrical canister, mounted on its cradle and connected by a hydrostatic release unit (HRU) and painter line. The HRU releases automatically once the ship sinks to about 4 m.",
+        alt: "A white cylindrical liferaft canister on its cradle on a ship's deck, with the HRU and red painter line visible.",
       },
     ],
     content: `SAL TİPLERİ:
@@ -1951,8 +1951,8 @@ Her ay kurtarma botu tatbikatı yapılmalıdır. Kurtarma botu mürettebatı öz
       {
         src: photoLsaPersonal,
         title: "SOLAS kişisel can kurtarma teçhizatı seti",
-        caption: "Turuncu SOLAS can yeleği (düdük + ışık), kırmızı immersion suit, EPIRB acil radyo işaretçisi, can simidi (self-igniting light + buoyant line) bir arada. Her can yeleği kişi başı min. 100 N kaldırma kuvveti sağlar.",
-        alt: "Gemi güvertesine dizilmiş kişisel can kurtarma teçhizatı: turuncu can yeleği, kırmızı immersion suit, kırmızı EPIRB ve beyaz çizgili can simidi.",
+        caption: "An orange SOLAS lifejacket (with whistle and light), a red immersion suit, an EPIRB and a lifebuoy (with self-igniting light and buoyant line) together. Each lifejacket provides at least 100 N of buoyancy per person.",
+        alt: "Personal life-saving appliances laid out on a ship's deck: an orange lifejacket, a red immersion suit, a red EPIRB and a white-and-red lifebuoy.",
       },
     ],
     content: `KİŞİSEL TEÇHİZAT:
@@ -2094,8 +2094,8 @@ SOLAS gereği sürekli yangın gözetimi sağlanmalıdır. Yangın devriyesi (fi
       {
         src: photoFireExtinguishers,
         title: "Gemi koridorunda taşınabilir söndürücü istasyonu",
-        caption: "Sol: kırmızı CO₂ (B-E sınıfı, elektrik yangınları için güvenli). Orta: kırmızı kuru toz / ABC çok amaçlı. Sağ: krem renkli AFFF köpük (B sınıfı). Yıllık muayene + 5 yılda bir hidrostatik test SOLAS gereğidir.",
-        alt: "Beyaz boyalı bir gemi perdesine monte edilmiş üç taşınabilir yangın söndürücü; kırmızı CO₂, kırmızı kuru toz ve krem renkli köpük tipi, yanlarında A-B-C sınıf etiketleri.",
+        caption: "Left: red CO₂ (class B-E, safe on electrical fires). Centre: red dry powder, multi-purpose ABC. Right: cream AFFF foam (class B). SOLAS requires annual inspection and a hydrostatic test every 5 years.",
+        alt: "Three portable fire extinguishers mounted on a white-painted ship's bulkhead: red CO₂, red dry powder and cream foam, with A-B-C class labels beside them.",
       },
     ],
     table: {
@@ -2136,8 +2136,8 @@ SOLAS II-2/10'a göre her kaçış yolunda, her yaşam alanında ve her makine d
       {
         src: photoCo2System,
         title: "Sabit CO₂ söndürme sistemi cylinder room",
-        caption: "Makine dairesi yangınları için tasarlanmış sabit CO₂ sistemi: yüksek basınçlı kırmızı CO₂ tüpleri manifold ve aktivasyon valflerine bağlı. Boşaltma öncesi sesli/görsel uyarı + 20 sn gecikme ile personel tahliyesi sağlanır.",
-        alt: "Beyaz tavanlı bir makine içinde iki sıra hâlinde dizilmiş büyük kırmızı yüksek basınçlı CO₂ tüpleri ve manifold borulamaları.",
+        caption: "A fixed CO₂ system for engine room fires: high-pressure red CO₂ cylinders connected to the manifold and release valves. An audible and visual alarm with a 20-second delay before discharge allows personnel to evacuate.",
+        alt: "Two rows of large red high-pressure CO₂ cylinders and the manifold piping in a white-ceilinged compartment.",
       },
     ],
     content: `SABİT SİSTEMLER:
@@ -2278,8 +2278,8 @@ VARDİYA ZABİTİ SORUMLULUKLARI:
       {
         src: photoBridgeWatch,
         title: "Modern köprüüstü ve seyir vardiyası",
-        caption: "Üniformalı vardiya zabiti, ECDIS ve X/S-band radarları ile çevre değerlendirmesi yapıyor. Köprüüstü ekipmanları: ECDIS, ARPA radar, GPS, AIS, autopilot ve VHF — STCW BRM standartlarına göre düzenlenmiştir.",
-        alt: "Modern bir geminin köprüüstü iç görünümü; radar ve ECDIS ekranları, ahşap dümen, üniformalı zabit pencereden ufka bakıyor.",
+        caption: "The officer of the watch, in uniform, appraising the situation using ECDIS and the X/S-band radars. The bridge equipment — ECDIS, ARPA radar, GPS, AIS, autopilot and VHF — is arranged to STCW BRM standards.",
+        alt: "Interior view of a modern ship's bridge; radar and ECDIS displays, a wooden helm, and a uniformed officer looking out towards the horizon.",
       },
     ],
     content: `BRM İLKELERİ:
