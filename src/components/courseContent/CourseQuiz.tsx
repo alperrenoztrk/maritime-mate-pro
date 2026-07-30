@@ -4,10 +4,10 @@ import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, CheckCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { toast } from "sonner";
 import type { QuizQuestion } from "@/types/quiz";
 
-/** Soruları yerinde karıştırır (Fisher-Yates) — oturum içi tekrar olmaz. */
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -17,23 +17,20 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-/**
- * Tüm derslerde ortak Quiz bileşeni (Çevre/Emisyon görünümü temel alınmıştır).
- * - Soru sayısı/sayaç GÖSTERİLMEZ.
- * - Sorular oturum başında karıştırılır; aynı soru tekrar gelmez.
- * - Her soruda "Quizi Tamamla" ile erken bitirip genel skoru görme.
- * - Sonuç ekranında genel skor (yüzde + doğru sayısı).
- */
 export function CourseQuiz({
   title,
   icon: Icon,
   accent,
   questions,
+  courseKey,
+  group,
 }: {
   title: string;
   icon: LucideIcon;
   accent: string;
   questions: QuizQuestion[];
+  courseKey?: string;
+  group?: "deck" | "machine";
 }) {
   const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions));
   const [current, setCurrent] = useState(0);
@@ -49,9 +46,9 @@ export function CourseQuiz({
     if (answered) return;
     setSelected(idx);
     setAnswered(true);
-    setAnsweredCount((c) => c + 1);
+    setAnsweredCount((count) => count + 1);
     if (idx === question.correctAnswer) {
-      setCorrect((c) => c + 1);
+      setCorrect((count) => count + 1);
       toast.success("Doğru!");
     } else {
       toast.error("Yanlış!");
@@ -60,7 +57,7 @@ export function CourseQuiz({
 
   const next = () => {
     if (current < order.length - 1) {
-      setCurrent((c) => c + 1);
+      setCurrent((index) => index + 1);
       setSelected(null);
       setAnswered(false);
     } else {
@@ -81,22 +78,37 @@ export function CourseQuiz({
   };
 
   const percent = answeredCount > 0 ? Math.round((correct / answeredCount) * 100) : 0;
+  const libraryHref = group ? `/lessons?library=${group}` : "/lessons";
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
-      <div className="relative z-10 mx-auto max-w-2xl px-6 py-12">
-        <Link
-          to="/lessons"
-          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> Derslere Dön
-        </Link>
-        <div className="mb-8 text-center">
-          <div className={`mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br ${accent} p-3 text-white shadow-lg`}>
-            <Icon className="h-10 w-10" />
+      <div className="relative z-10 mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
+        <header className="mb-6 space-y-4">
+          <Link
+            to={libraryHref}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {group === "machine"
+              ? "Makine Kitaplığı"
+              : group === "deck"
+                ? "Güverte Kitaplığı"
+                : "Derslere Dön"}
+          </Link>
+
+          <div className="flex items-center gap-3">
+            <div
+              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${accent} text-white shadow-lg`}
+            >
+              <Icon className="h-5 w-5" />
+            </div>
+            <h1 className="text-xl font-bold leading-tight text-foreground">{title}</h1>
           </div>
-          <h1 className="mb-2 text-3xl font-extrabold text-foreground">{title} Quiz</h1>
-        </div>
+
+          {courseKey && group && (
+            <CourseSectionTabs group={group} courseKey={courseKey} active="quiz" />
+          )}
+        </header>
 
         {!finished ? (
           <Card className="border-border/60 bg-card/85 backdrop-blur-sm">
@@ -120,8 +132,8 @@ export function CourseQuiz({
                         ? index === question.correctAnswer
                           ? "border-2 border-emerald-500 bg-emerald-100 dark:bg-emerald-900/30"
                           : index === selected
-                          ? "border-2 border-red-500 bg-red-100 dark:bg-red-900/30"
-                          : "border border-border bg-muted/50"
+                            ? "border-2 border-red-500 bg-red-100 dark:bg-red-900/30"
+                            : "border border-border bg-muted/50"
                         : "border border-border bg-muted/50 hover:border-primary/40 hover:bg-muted"
                     }`}
                   >
@@ -153,7 +165,7 @@ export function CourseQuiz({
                   </Button>
                 )}
                 <Button onClick={finishNow} variant="outline" className="flex-1">
-                  Quizi Tamamla
+                  Alıştırmayı Tamamla
                 </Button>
               </div>
             </CardContent>
@@ -162,15 +174,15 @@ export function CourseQuiz({
           <Card className="border-border/60 bg-card/85 text-center backdrop-blur-sm">
             <CardContent className="space-y-6 pb-8 pt-8">
               <Trophy className="mx-auto h-16 w-16 text-amber-500" />
-              <h2 className="text-2xl font-bold text-foreground">Quiz Tamamlandı!</h2>
+              <h2 className="text-2xl font-bold text-foreground">Alıştırma Tamamlandı</h2>
               <div className="text-5xl font-bold text-primary">%{percent}</div>
               <p className="text-sm text-muted-foreground">Doğru cevap: {correct}</p>
               <p className="text-sm text-muted-foreground">
                 {percent >= 80
                   ? "Mükemmel! Bu konuda uzman seviyesindesiniz."
                   : percent >= 60
-                  ? "İyi! Biraz daha çalışmayla mükemmel olabilirsiniz."
-                  : "Daha fazla çalışmanız önerilir."}
+                    ? "İyi! Biraz daha çalışmayla mükemmel olabilirsiniz."
+                    : "Daha fazla çalışmanız önerilir."}
               </p>
               <Button onClick={restart} className="w-full">
                 <RotateCcw className="mr-2 h-4 w-4" /> Tekrar Dene
