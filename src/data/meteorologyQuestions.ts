@@ -52,7 +52,7 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   },
   {
     id: 7,
-    question: "Derin su dalga boyu yaklaşık formülü \(L \\approx 1.56\\,T^2\\) (m) ise T=10 s için L kaç metredir?",
+    question: "Derin su dalga boyu yaklaşık formülü L ≈ 1.56 × T² (m) ise T=10 s için L kaç metredir?",
     options: ["78 m", "100 m", "156 m", "200 m"],
     correctAnswer: 2,
     explanation: "L ≈ 1.56×100 = 156 m.",
