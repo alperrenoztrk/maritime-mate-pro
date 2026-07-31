@@ -14,10 +14,6 @@ export default function ShipOperationsPage() {
             icon={Ship}
             accent={ship.color}
             image={ship.image}
-            badge={ship.departments.reduce(
-              (total, department) => total + department.operations.length,
-              0,
-            )}
           />
         ))}
       </section>
