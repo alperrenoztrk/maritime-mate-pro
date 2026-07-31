@@ -5,6 +5,13 @@ import image from "@/assets/ships/operation-offshore.svg";
 // operasyonel akisin Turkce, gemi-ustu kullanimina uygun bir uyarlamasidir.
 // Limitler her zaman gemiye ozel FMEA, DP Operations Manual, CAMO/TAM,
 // ASOG ve musterinin saha prosedurleri ile birlikte uygulanmalidir.
+//
+// Guverte 27-32 ve makine 14-16 arasindaki operasyonlar marka-ozel Bridge Mate
+// icerigidir; Marine Technologies LLC'nin resmi urun brosurlerine dayanir
+// (MT-SAL-0001 IBS, MT-SAL-0004 DP 1-3, MT-SAL-0005 JX/DP 0,
+// MT-SAL-0095 TCS, MT-SAL-0096 DP Chair) ve marine-technologies.com.
+// DIKKAT: Yeni operasyonlar dizinin SONUNA eklenmelidir; longform icerik
+// `longform/offshore/{dept}/{index}.ts` ile dizi indeksine bagli eslesir.
 const op = (
   title: string,
   purpose: string,
@@ -494,6 +501,112 @@ export const offshore: ShipType = {
           ],
           ["Internal incident report", "Station-keeping event form", "Evidence register", "Corrective action tracker"],
         ),
+        op(
+          "Marine Technologies Bridge Mate DP ailesi ve dağıtık mimari",
+          "Gemide kurulu Bridge Mate DP sisteminin dağıtık mimarisi, modül sınırları ve yedeklilik-ayrışma felsefesi, operasyon planlaması ile arıza değerlendirmesi öncesinde anlaşılır.",
+          [
+            "Sistemin hangi Bridge Mate seviyesinde (JX, DP 0, DP 1, DP 2, DP 3) olduğunu class sertifikası ve MT teslim dokümanından doğrula.",
+            "Operatör istasyonu, DP kontrol bilgisayarı ve IO ünitelerinin gemideki fiziksel yerleşimini genel yerleşim planı üzerinde çıkar.",
+            "Her IO ünitesinin hangi thruster, referans sistemi, güç kaynağı ve sensör grubunu beslediğini listele.",
+            "Redundancy (yedeklilik) ve segregation (ayrışma) sınırlarının FMEA'deki redundant group tanımıyla örtüştüğünü kontrol et.",
+            "Dağıtık mimaride bir IO ünitesi veya ağ kolu kaybının hangi ekipmanı düşüreceğini WCF senaryosuna işle.",
+          ],
+          ["IMO MSC/Circ.645", "IMO MSC.1/Circ.1580", "IMCA M103", "MT Bridge Mate DP Brochure (MT-SAL-0004)", "Vessel DP Operations Manual"],
+          [
+            "Üretici genel mimari broşürü, gemiye özel FMEA ve devreye alma dokümanının yerini tutmaz; kesin konfigürasyon gemiden doğrulanır.",
+            "Dağıtık IO mimarisi kablolamayı azaltır; ancak tek bir IO ünitesinde toplanan ekipmanlar ortak arıza noktası oluşturabilir.",
+          ],
+          ["DP class certificate", "MT system topology drawing", "IO unit allocation list", "FMEA redundancy group table"],
+        ),
+        op(
+          "Bridge Mate sınıf mimarileri: JX/DP 0, DP 1, DP 2 ve DP 3",
+          "Bridge Mate ürün ailesindeki sınıf farkları — kontrol bilgisayarı, operatör istasyonu ve IO ünitesi sayısı ile ayrı kompartıman gereği — geminin gerçek DP notation'ı ile karşılaştırılır.",
+          [
+            "JX joystick ve DP 0 sistemlerinin DP 1/2/3 ile aynı dağıtık mimariyi paylaştığını, farkın modül sayısında olduğunu kavra.",
+            "DP 1'de tek kontrol bilgisayarı ve tek operatör istasyonu bulunduğunu; bağımsız joystick sisteminin ayrıca arayüzlenebildiğini doğrula.",
+            "DP 2'de üç kontrol bilgisayarının majority voting yaptığını ve arızalı bilgisayarın sistem tarafından reddedildiğini operatör el kitabından teyit et.",
+            "DP 2'de her sensör seti, her PRS, güç kaynağı ve her thruster için ayrı IO ünitesi bulunduğunu ve modüllerin yedekli çift ağla bağlandığını kontrol et.",
+            "DP 3'te en az üç operatör istasyonu, üç IO seti ve yangına dayanıklı ayrı kompartımandaki bir kontrol bilgisayarı + operatör istasyonu + sensör IO ünitesinin yerini tespit et.",
+          ],
+          ["IMO MSC/Circ.645", "IMO MSC.1/Circ.1580", "IMCA M103", "MT Bridge Mate DP Brochure (MT-SAL-0004)", "Class DP notation"],
+          [
+            "Donanımın DP 2 kapasitesinde olması, konfigürasyon ve bakım durumu doğrulanmadan DP 2 yedekliliğinin fiilen mevcut olduğu anlamına gelmez.",
+            "DP 3'te ayrı kompartımanın yangın veya su bütünlüğü bozulursa sınıfın öngördüğü ayrışma pratikte kaybolur.",
+          ],
+          ["DP class certificate", "FMEA/FMECA", "Operator station inventory", "Annual DP trials report"],
+        ),
+        op(
+          "Bridge Mate operatör istasyonu, DP Chair ve MFW ile DP vardiyası",
+          "DPO'nun kullandığı operatör istasyonu tipi — konsol, compact operator station veya DP Chair — vardiya düzeni, görüş hattı ve devir teslim pratiğine göre doğru kullanılır.",
+          [
+            "Gemideki istasyon tipini belirle: konsol versiyonu, compact operator station veya kol dayamasına 15 inç dokunmatik ekran gömülü DP Chair.",
+            "DP Chair'de manuel, joystick ve DP kontrolünün tek noktada toplandığını; koltuğun DP 1 ve DP 2 operatör istasyonu olarak yapılandırılabildiğini dikkate al.",
+            "Çok istasyonlu kurulumda hangi istasyonun komutta olduğunu ve kontrol devrinin nasıl yapıldığını her vardiya başında teyit et.",
+            "Multi-Function Workstation'da DP dışındaki uygulamalar açıkken de DP gözetiminin kesintisiz sürdüğünden emin ol.",
+            "Ekran parlaklığını merkezi dimming ile gece görüşünü bozmayacak seviyeye ayarla; alarm sesini kısma.",
+          ],
+          ["IMCA M117", "IMCA M103", "IMO MSC.1/Circ.1580", "MT Bridge Mate DP Chair Brochure (MT-SAL-0096)", "STCW A-VIII/2"],
+          [
+            "Kompakt veya koltuk tipi istasyonda ekran ve joystick'e yakınlık, dışarı gözcülüğün yerini almaz.",
+            "Dokunmatik ekranda yanlış dokunma riski nedeniyle kritik mod değişiklikleri onay adımıyla yapılmalıdır.",
+            "Kontrol devri belirsiz kalırsa iki istasyondan çelişkili komut verilebilir.",
+          ],
+          ["DP watch handover checklist", "DP logbook", "Operator station configuration record"],
+        ),
+        op(
+          "Bridge Mate DP'de pozisyon referansı: RadaScan, CyScan ve DGPS",
+          "Bridge Mate DP'ye bağlı mutlak ve göreceli referanslar, birbirini tamamlayacak ve ortak arıza doğurmayacak şekilde seçilir ve izlenir.",
+          [
+            "Gemide kurulu PRS setini çıkar: DGPS/GNSS, radar tabanlı RadaScan, lazer tabanlı CyScan, hydroacoustic, taut-wire vb.",
+            "RadaScan'in yakın mesafe çalışmada GPS/DGPS'i tamamladığını ve 10 m–1000 m yüksek hassasiyet aralığında çalıştığını görev planına yansıt.",
+            "CyScan'i birincil veya yedek lokal referans olarak devreye alırken hedef/reflektör görüş hattını ve montaj geometrisini doğrula.",
+            "Her referansı DP'ye almadan önce bağımsız olarak karşılaştır; sapması büyüyen referansı deselect etmeden önce nedenini araştır.",
+            "Ortak hata riskini azalt: aynı uydu takımyıldızına, aynı düzeltme servisine veya aynı hedef yapıya bağlı referansları tek başına yedeklilik sayma.",
+          ],
+          ["IMCA M103", "IMCA M141", "IMO MSC.1/Circ.1580", "Vessel DP Operations Manual", "Maker sensor manual"],
+          [
+            "Reflektör veya hedef gölgelenmesi, gemi hareketi ya da yapı bloklaması lokal referansı ani kaybettirebilir.",
+            "GNSS bozulması (scintillation, jamming, spoofing) aynı anda tüm uydu tabanlı referansları etkileyebilir.",
+            "Kritik faaliyet tek referansla sürdürülmemelidir.",
+          ],
+          ["PRS status log", "Reference comparison log", "Sensor calibration record", "DP alarm log"],
+        ),
+        op(
+          "Bridge Mate IBS entegrasyonu: conning, ECDIS, autopilot ve track control",
+          "DP kontrolü ile köprüüstü seyir uygulamalarının aynı Multi-Function Workstation platformunda çalıştığı kurulumlarda görev ayrımı ve veri bütünlüğü korunur.",
+          [
+            "Her MFW'nin tüm uygulamaları paralel çalıştırdığını ve yedekli ağlara bağlı olduğunu, böylece tek nokta arızasının tasarımca elendiğini doğrula.",
+            "Radar, ECDIS, autopilot, conning ve rota planlama uygulamalarının hangi istasyonda seçili olduğunu vardiya başında kaydet.",
+            "Track control ve otomatik rota tutmadan DP moduna geçişte kontrolün hangi noktada devredildiğini net tanımla.",
+            "Captain mode ile kaydedilen kişisel tercihlerin transit, yanaşma ve DP operasyonu için doğru profili yüklediğini kontrol et.",
+            "IBS'in PMS, otomasyon ve alarm sistemiyle entegrasyonunda DP ile ilgili alarmların köprüüstünde bastırılmadığını doğrula.",
+          ],
+          ["DNV NAUT-AW", "SOLAS V/15", "IMO MSC.252(83)", "MT Bridge Mate IBS Brochure (MT-SAL-0001)", "IMCA M103"],
+          [
+            "Tek ekranda çok uygulama, DP gözetiminin görsel olarak arka plana düşmesine yol açabilir.",
+            "Kaptan profili değişimi ekran düzenini değiştirdiğinde kritik DP göstergeleri gözden kaçabilir.",
+            "One-man bridge operation onayı, DP operasyonu için otomatik olarak geçerli değildir.",
+          ],
+          ["Bridge configuration log", "Captain mode profile record", "DP logbook", "Alarm suppression register"],
+        ),
+        op(
+          "Bridge Mate ile manevra: joystick, DP mod geçişleri ve kontrol devri",
+          "Manuel kontrolden joystick ve otomatik DP moduna geçişler, thruster tepkisi kanıtlanarak ve matematik modelinin oturması beklenerek kademeli yapılır.",
+          [
+            "Bağımsız joystick sisteminin Bridge Mate DP'den ayrı bir kontrol yolu olduğunu ve DP arızasında yedek manevra imkânı sağladığını doğrula.",
+            "DP'ye almadan önce her thruster ve ana pervaneyi manuel kontrolde iki yönde prove et; komut, feedback ve fiziksel tepkiyi karşılaştır.",
+            "Joystick modunda otomatik baş kontrolünü devreye alıp gemi tepkisini gözle; ardından mevki kontrolünü ekle.",
+            "Tam otomatik mevki tutmaya geçtikten sonra modelin çevresel kuvvetleri öğrenmesi için stabilizasyon süresi tanı.",
+            "Her mod geçişini, komuttaki istasyonu ve saatini DP loguna işle; geçiş sırasında ikinci bir kişi gözetim yapsın.",
+          ],
+          ["IMCA M103", "IMCA M117", "IMO MSC.1/Circ.1580", "Vessel DP Operations Manual", "Maker operating manual"],
+          [
+            "Model oturmadan görev başlatılırsa ilk çevresel değişimde belirgin mevki sapması görülebilir.",
+            "Thruster prove edilmeden DP'ye geçiş, ters yönde itki üreten bir üniteyi fark etmeden drive-off riskine yol açar.",
+            "Mod geçişi kritik safhada (dalgıç suda, yük askıda) yapılmamalıdır.",
+          ],
+          ["Thruster proving checklist", "Pre-DP checklist", "DP logbook", "Mode change log"],
+        ),
       ],
     },
     {
@@ -738,6 +851,59 @@ export const offshore: ShipType = {
             "Aynı redundant gruplarda eşzamanlı bakım DP sınıfını düşürebilir.",
           ],
           ["Critical equipment register", "PMS history", "Condition-monitoring trend", "Return-to-service certificate"],
+        ),
+        op(
+          "Bridge Mate Thruster Control System (TCS) ve itici entegrasyonu",
+          "DP, joystick ve autopilot komutlarını itici ve pervanelere ileten TCS'in yedekliliği, kapsamı ve yedek kontrol yolu makine tarafından doğrulanır.",
+          [
+            "TCS'in üç kontrol bilgisayarı ve yedekli haberleşme ağı üzerinden çalıştığını, tek bilgisayar kaybının sevk kontrolünü düşürmediğini teyit et.",
+            "Sistemin kontrol ettiği itici ve pervane tiplerini listele: tunnel thruster, Voith, azimuth pod, retractable ve waterjet dahil.",
+            "TCS'in motor markasından bağımsız çalıştığını, ancak arayüz parametrelerinin her üniteye göre ayarlandığını devreye alma kayıtlarından doğrula.",
+            "Backup thruster kontrolü ve bağımsız joystick yolunun DP/TCS ana yolundan ayrı olduğunu ve düzenli test edildiğini kontrol et.",
+            "Autopilot ve joystick entegrasyonunda komut önceliğinin ve kontrol devrinin nasıl çözüldüğünü FMEA ile karşılaştır.",
+          ],
+          ["IMCA M103", "IMCA M206", "MT Bridge Mate TCS Brochure (MT-SAL-0095)", "Class rules for thruster control", "Vessel FMEA"],
+          [
+            "Yedek kontrol yolu düzenli test edilmezse arıza yalnızca ana yol kaybedildiğinde ortaya çıkar.",
+            "Sevk cihazı tipine göre tepki süresi ve derating farklıdır; tek bir genel ayar tüm ünitelere uymaz.",
+          ],
+          ["TCS commissioning record", "Backup control test log", "Thruster parameter sheet", "FMEA test results"],
+        ),
+        op(
+          "Bridge Mate IO ünitesi, yedekli çift ağ ve control-power mimarisi",
+          "Dağıtık IO üniteleri, yedekli çift ağ ve kesintisiz control power beslemesinin arıza yayılımını önleyecek şekilde ayrıştığı doğrulanır.",
+          [
+            "DP gemileri için tasarlanmış stand-alone IO ünitelerinin thruster, referans sistemi ve sensörlerin yanına yerleştirildiğini ve kablolamayı azalttığını yerinde doğrula.",
+            "Her IO ünitesinin hangi redundant gruba ait olduğunu ve besleme kaynağını tek hat şemasından çıkar.",
+            "Yedekli çift ağın iki kolunun fiziksel olarak ayrı güzergâhtan geçtiğini ve tek yangın/su olayında birlikte kaybedilmediğini kontrol et.",
+            "DP bilgisayarları, operatör istasyonları, PRS ve sensörlerin UPS beslemelerinin bağımsızlığını ve batarya otonomisini test kayıtlarıyla doğrula.",
+            "Ağ switch, IP ve konfigürasyon değişikliklerini kontrollü değişiklik yönetimi altında tut.",
+          ],
+          ["IMCA M103", "IMCA M166", "MT Bridge Mate DP Brochure (MT-SAL-0004)", "Class DP notation", "Vessel FMEA"],
+          [
+            "Kablolamanın azalması aynı IO ünitesine bağlı ekipmanlarda yoğunlaşma yaratır; ünite kaybının etkisi tek tek değerlendirilmelidir.",
+            "Ağ kollarının aynı kablo kanalından geçmesi, çift ağ yedekliliğini kâğıt üzerinde bırakır.",
+            "UPS batarya kapasitesi test edilmeden beyan edilen otonomi güvenilir değildir.",
+          ],
+          ["Network topology drawing", "IO unit power source list", "UPS discharge test record", "Change management log"],
+        ),
+        op(
+          "Bridge Mate DP retrofit, midlife upgrade ve sınıf yükseltme",
+          "Mevcut Bridge Mate kurulumunun modernizasyonu veya üst DP sınıfına yükseltilmesi, yedeklilik ve sertifikasyon zinciri bozulmadan planlanır.",
+          [
+            "Midlife upgrade kapsamını belirle: kontrol bilgisayarları, operatör istasyonları, ağ switch'leri ve yazılım değişirken mevcut IO kabinleri ile kablolamanın korunabildiğini değerlendir.",
+            "Sınıf yükseltmesinde aynı donanım modüllerinden ekleyerek ilerlendiğini dikkate al: JX'ten DP 0'a, DP 0'dan üst sınıfa, DP 1'den DP 2'ye.",
+            "DP 1 → DP 2 geçişinde üç kontrol bilgisayarı, ilave operatör istasyonu, ekipman başına ayrı IO üniteleri ve yedekli çift ağ ihtiyacını planla.",
+            "DP 3 hedefleniyorsa yangına dayanıklı ayrı kompartıman, üçüncü operatör istasyonu ve üçüncü IO seti için yerleşim değişikliğini erken projelendir.",
+            "Yükseltme sonrası FMEA revizyonu, proving trials ve class survey zincirini iş bitmeden planla; ara dönemde geçerli DP sınıfını ve kısıtları ASOG'a işle.",
+          ],
+          ["IMCA M103", "IMCA M166", "IMO MSC.1/Circ.1580", "MT Bridge Mate DP Brochure (MT-SAL-0004)", "Class rules"],
+          [
+            "Yükseltme sırasında gemi beyan edilen DP sınıfında olmayabilir; bu dönemde görev kabulü kısıtlanmalıdır.",
+            "Yazılım ve parametre değişiklikleri eski FMEA'nın failure mode varsayımlarını geçersiz kılabilir.",
+            "Korunan eski kablolamanın izolasyon ve sonlandırma durumu ayrıca doğrulanmalıdır.",
+          ],
+          ["Upgrade project plan", "Revised FMEA", "Proving trials report", "Class survey record", "Software version register"],
         ),
       ],
     },

@@ -15,7 +15,8 @@ export const searchIndex: SearchItem[] = [
   { title: "Personel Hiyerarşisi", path: "/crew", category: "Genel", keywords: ["mürettebat", "kaptan", "zabitan"] },
   { title: "Gemi Sistemleri", path: "/ship-systems", category: "Genel", keywords: ["sistem", "makine", "elektrik"] },
   { title: "Gemi Operasyonları", path: "/ship-operations", category: "Genel", keywords: ["operasyon", "yanaşma", "kalkış"] },
-  { title: "Offshore / DP Operasyonları", path: "/ship-operations/offshore", category: "Operasyonlar", keywords: ["offshore", "DP", "dynamic positioning", "PSV", "AHTS", "ROV", "FMEA", "ASOG"] },
+  { title: "Offshore / DP Operasyonları", path: "/ship-operations/offshore", category: "Operasyonlar", keywords: ["offshore", "DP", "dynamic positioning", "dinamik konumlandırma", "PSV", "AHTS", "ROV", "FMEA", "ASOG", "CAMO", "TAM", "DPO"] },
+  { title: "Marine Technologies Bridge Mate DP", description: "Bridge Mate DP ürün ailesi, dağıtık mimari, sınıf farkları ve operasyonel kullanımı", path: "/ship-operations/offshore", category: "Operasyonlar", keywords: ["Marine Technologies", "Bridge Mate", "MT", "RadaScan", "CyScan", "TCS", "thruster control", "DP Chair", "JX", "DP 0", "IBS", "MFW", "NAUT-AW", "majority voting"] },
   { title: "Köprüüstü Cihazları", path: "/bridge", category: "Genel", keywords: ["radar", "AIS", "ECDIS", "GPS"] },
   { title: "Seyir Planı", path: "/passage-plan", category: "Seyir", keywords: ["rota", "passage planning"] },
   
