@@ -59,7 +59,7 @@ const requiredTracks = [
   "Denizcilik İngilizcesi ve Operasyonel İletişim",
   "Mevzuat, Sertifikalar ve Denetimler",
 ];
-for (const title of requiredTracks) requireText(hierarchy, title, "yeterlilik parkurları");
+for (const title of requiredTracks) requireText(hierarchy, title, "dahili konu eşleşmeleri");
 
 forbidText(categories, 'subtitle: ""', "kategori alt başlıkları");
 forbidText(categories, 'title: "Cargo Handling and Stowage"', "başlık dil standardı");
@@ -83,9 +83,10 @@ requireText(machineTopicsRoute, "MachineCurriculumCoursePage", "makine rota yön
 requireText(lessonsPage, "useSearchParams", "kitaplık görünüm seçimi");
 requireText(lessonsPage, "Güverte Kitaplığı", "kitaplık girişleri");
 requireText(lessonsPage, "Makine Kitaplığı", "kitaplık girişleri");
-requireText(lessonsPage, "Mesleki Yeterlilikler", "kitaplık girişleri");
 requireText(lessonsPage, "aspect-[3/4]", "kitap kapağı görünümü");
-requireText(lessonsPage, "competencyTracks", "yeterlilik parkurları arayüzü");
+forbidText(lessonsPage, "Mesleki Yeterlilikler", "ayrı yeterlilik bölümü");
+forbidText(lessonsPage, "competencyTracks", "ayrı yeterlilik parkurları arayüzü");
+forbidText(lessonsPage, '"tracks"', "ayrı yeterlilik görünüm anahtarı");
 forbidText(lessonsPage, "sectionIconMap", "ana ekrandaki araç butonları");
 forbidText(lessonsPage, "config.sections.map", "ana ekrandaki araç butonları");
 
@@ -106,6 +107,10 @@ forbidText(lessonTopics, "expandedModules", "güverte çoklu açık modül davra
 forbidText(machineTopics, "expandedModules", "makine çoklu açık modül davranışı");
 forbidText(lessonTopics, "Ders Araçları", "güverte ayrı araç kartı");
 forbidText(machineTopics, "Ders Araçları", "makine ayrı araç kartı");
+forbidText(lessonTopics, "TopicCompetencyBadges", "güverte yeterlilik etiketi");
+forbidText(machineTopics, "TopicCompetencyBadges", "makine yeterlilik etiketi");
+forbidText(deckDetail, "TopicCompetencyBadges", "güverte konu detayı yeterlilik etiketi");
+forbidText(machineDetail, "TopicCompetencyBadges", "makine konu detayı yeterlilik etiketi");
 
 for (const tabLabel of ["Konular", "Hesaplamalar", "Formüller", "Kurallar", "Alıştırmalar"]) {
   requireText(courseTabs, tabLabel, "ortak ders sekmeleri");
@@ -135,7 +140,6 @@ requireText(exerciseDetail, "section.sourceTitle", "sectionRef geriye dönük uy
 
 const visibleDescriptionBindings = [
   [lessonsPage, "category.subtitle", "kitap kapağı açıklaması"],
-  [lessonsPage, "track.subtitle", "yeterlilik parkuru açıklaması"],
   [lessonTopics, "category.subtitle", "güverte ders açıklaması"],
   [lessonTopics, "module.description", "güverte modül açıklaması"],
   [exerciseTopics, "category.subtitle", "alıştırma ders açıklaması"],
@@ -165,5 +169,5 @@ if (failures.length) {
 }
 
 console.log(
-  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, ${requiredTracks.length} yeterlilik parkuru, kitaplık ana ekranı, ortak ders sekmeleri, konu bazlı quiz dağılımı, tek açık modül ve açıklamasız başlık arayüzü.`,
+  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, iki kitaplık girişli Dersler ekranı, ayrı yeterlilik bölümü veya etiketi olmadan ortak ders sekmeleri, konu bazlı quiz dağılımı ve tek açık modül davranışı.`,
 );
