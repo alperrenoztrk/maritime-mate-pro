@@ -139,37 +139,82 @@ export function LibraryBookCard({
   image?: string;
   badge?: string | number;
 }) {
+  const statusBadge = typeof badge === "string" ? badge : null;
+
   return (
     <Link
       to={to}
-      className="group relative aspect-[3/4] min-h-60 overflow-hidden rounded-l-md rounded-r-3xl border border-white/20 shadow-lg transition duration-300 hover:-translate-y-1 hover:rotate-[0.4deg] hover:shadow-2xl"
+      aria-label={title}
+      className="group relative block aspect-[3/4] min-h-60 pb-2 pr-2 outline-none [perspective:1200px] focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
     >
-      {image ? (
-        <img src={image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-      ) : (
-        <div className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
-      )}
-      {image && <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-80 mix-blend-multiply`} />}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-white/10" />
-      <div className="absolute inset-y-0 left-0 w-4 border-r border-white/15 bg-black/25 shadow-[4px_0_12px_rgba(0,0,0,0.18)]" />
-      <div className="absolute inset-y-3 right-0 w-1.5 rounded-l-full bg-white/35" />
-      <div className="absolute inset-x-5 bottom-1 h-1 rounded-full bg-white/30" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.28),transparent_42%)]" />
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-3 right-0 h-3 rounded-b-[10px] border border-stone-400/35 bg-[#eee5d2] shadow-[0_8px_16px_rgba(15,23,42,0.28)] dark:border-stone-900/60 dark:bg-[#c9bea7]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, rgba(92,72,45,0.14) 0px, rgba(92,72,45,0.14) 1px, transparent 1px, transparent 3px)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-2 right-0 top-3 w-3 rounded-r-[10px] border-y border-r border-stone-400/35 bg-[#f3ead8] shadow-[5px_2px_10px_rgba(15,23,42,0.18)] dark:border-stone-900/60 dark:bg-[#d2c6af]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(90deg, rgba(92,72,45,0.12) 0px, rgba(92,72,45,0.12) 1px, transparent 1px, transparent 3px)",
+        }}
+      />
 
-      <div className="relative flex h-full flex-col p-5 pl-7 text-white">
-        <span className="flex items-start justify-between gap-2">
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-            <Icon className="h-5 w-5" />
-          </span>
-          {badge !== undefined && (
-            <span className="rounded-full bg-black/25 px-2.5 py-1 text-[11px] font-semibold backdrop-blur">
-              {badge}
+      <div className="absolute bottom-2 left-0 right-2 top-0 origin-left overflow-hidden rounded-l-[5px] rounded-r-[16px] border border-black/30 shadow-[0_12px_25px_rgba(15,23,42,0.34),inset_0_1px_0_rgba(255,255,255,0.24)] transition duration-300 group-hover:-translate-y-1 group-hover:-rotate-[0.35deg] group-hover:shadow-[0_18px_32px_rgba(15,23,42,0.38),inset_0_1px_0_rgba(255,255,255,0.24)]">
+        {image ? (
+          <img src={image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        ) : (
+          <div className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
+        )}
+        {image && <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-75 mix-blend-multiply`} />}
+
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-white/10" />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-20 mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(115deg, rgba(255,255,255,0.22) 0px, rgba(255,255,255,0.22) 1px, transparent 1px, transparent 5px)",
+          }}
+        />
+        <div aria-hidden className="absolute inset-3 rounded-r-[11px] border border-white/20 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.16)]" />
+
+        <div aria-hidden className="absolute inset-y-0 left-0 w-5 border-r border-black/25 bg-gradient-to-r from-black/45 via-black/20 to-transparent shadow-[4px_0_10px_rgba(0,0,0,0.24)]" />
+        <div aria-hidden className="absolute left-1 top-8 h-px w-3 bg-white/25" />
+        <div aria-hidden className="absolute bottom-8 left-1 h-px w-3 bg-white/25" />
+
+        <div className="relative flex h-full flex-col px-6 pb-5 pl-8 pt-5 text-white">
+          <div className="flex items-start justify-between gap-3">
+            <span className="text-[9px] font-semibold uppercase tracking-[0.24em] text-white/75">
+              Mariner&apos;s Book
             </span>
-          )}
-        </span>
-        <div className="mt-auto flex items-end justify-between gap-3 pb-2">
-          <h2 className="text-base font-bold leading-snug sm:text-lg">{title}</h2>
-          <ChevronRight className="h-5 w-5 shrink-0 opacity-80 transition-transform group-hover:translate-x-1" />
+            {statusBadge && (
+              <span className="rounded-sm border border-white/25 bg-black/20 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider backdrop-blur-sm">
+                {statusBadge}
+              </span>
+            )}
+          </div>
+
+          <div className="mt-7 flex justify-center">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_10px_rgba(0,0,0,0.2)] backdrop-blur-[2px]">
+              <Icon className="h-6 w-6" strokeWidth={1.65} />
+            </span>
+          </div>
+
+          <div className="my-auto px-1 text-center">
+            <h2 className="font-serif text-lg font-bold leading-snug tracking-wide drop-shadow-sm sm:text-xl">
+              {title}
+            </h2>
+            <div aria-hidden className="mx-auto mt-4 h-px w-14 bg-white/45" />
+          </div>
+
+          <span className="text-center text-[8px] font-semibold uppercase tracking-[0.28em] text-white/60">
+            Nautical Leap
+          </span>
         </div>
       </div>
     </Link>
