@@ -14,6 +14,7 @@ const forbidText = (source, text, label) => {
 };
 
 const shared = read("src/components/library/LibraryInterface.tsx");
+const lessons = read("src/pages/curriculum/LessonsLibraryPage.tsx");
 const operations = read("src/pages/ShipOperationsPage.tsx");
 const operationDetail = read("src/pages/ShipOperationsDetail.tsx");
 const crew = read("src/pages/CrewHierarchyPage.tsx");
@@ -40,6 +41,10 @@ for (const primitive of [
 }
 requireText(shared, "safe-area-inset-top", "mobil güvenli alan");
 requireText(shared, "--ad-banner-height", "reklam bandı güvenli alanı");
+requireText(shared, "repeating-linear-gradient", "kitap sayfa dokusu");
+requireText(shared, "[perspective:1200px]", "kitap derinlik görünümü");
+requireText(shared, "Nautical Leap", "kitap kapak yayıncı işareti");
+requireText(shared, 'typeof badge === "string"', "sayfa sayısını çağrıştıran sayısal kapak rozetlerini gizleme");
 
 for (const [label, source] of [
   ["Operasyonlar", operations],
@@ -57,6 +62,7 @@ for (const [label, source] of [
 }
 
 for (const [label, source] of [
+  ["Dersler", lessons],
   ["Operasyonlar", operations],
   ["Personel", crew],
   ["Gemi Sistemleri", systems],
@@ -66,6 +72,25 @@ for (const [label, source] of [
   ["Regülasyonlar", regulations],
 ]) {
   requireText(source, "LibraryBookCard", `${label} kitap kapağı görünümü`);
+}
+
+forbidText(lessons, "category.subtitle", "ders kapaklarında gereksiz açıklama");
+forbidText(operations, "ship.description", "operasyon kapaklarında gereksiz açıklama");
+forbidText(operations, "badge={", "operasyon kapaklarında sayısal rozet");
+forbidText(systems, "badge={shipSystemsData", "sistem kapaklarında sayısal rozet");
+
+for (const [label, source] of [
+  ["Personel görev özeti", read("src/pages/CrewRoleDetail.tsx")],
+  ["Personel detay anlatımı", read("src/pages/CrewTaskDeepDive.tsx")],
+  ["Ders konu listesi", read("src/pages/LessonTopicsPage.tsx")],
+  ["Operasyon detay anlatımı", read("src/pages/ShipOperationDeepDive.tsx")],
+  ["Operasyon listesi", operationDetail],
+  ["Sistem detay anlatımı", read("src/pages/ShipSystemDeepDive.tsx")],
+]) {
+  forbidText(source, "20-30 sayfa", `${label} sayfa sayısı metni`);
+  forbidText(source, "20-30 sayfalık", `${label} sayfa sayısı metni`);
+  forbidText(source, "estimatedPages}", `${label} tahmini sayfa rozeti`);
+  forbidText(source, "minPagesPerTopic}", `${label} asgari sayfa açıklaması`);
 }
 
 requireText(operationDetail, "expandedOperation", "operasyon tek açık bölüm davranışı");
@@ -89,5 +114,5 @@ if (failures.length) {
 }
 
 console.log(
-  "✅ Kitaplık arayüzü doğrulandı: ortak bileşenler, ana kataloglar, kitap kapakları, tek açık bölüm davranışı ve geriye dönük bağlantılar korunuyor.",
+  "✅ Kitaplık arayüzü doğrulandı: gerçekçi kapaklar, sayfa sayısı metinlerinin kaldırılması, sade başlıklar ve ana kitaplık rotaları korunuyor.",
 );
