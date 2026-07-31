@@ -1323,7 +1323,7 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
 
   "auxiliary": {
     title: "Yardımcı Makineler",
-    description: "Jeneratör, kompresör, pompa, separatör, kazanlar, insinerator, sintine separatörü, atık su arıtma, ısı değiştiriciler, soğuk depo ve tüm yardımcı sistemler",
+    description: "Ana/acil/şaft jeneratörleri, kazanlar, separatörler, kompresörler, pompalar, tatlı su üreteci, insinerator, sintine separatörü, atık su arıtma, ısı değiştiriciler, merkezi soğutma, yakıt besleme ve yağlama devreleri, balast-sintine hatları, hidrolik güç üniteleri, iticiler ve soğuk depo dâhil makine dairesi yardımcı donanımı",
     topics: [
       {
         title: "Dizel Jeneratörler",
@@ -2038,6 +2038,700 @@ export const shipSystemsData: Record<string, ShipSystemCategory> = {
           "Defrost sırasında üretilen sıvı drain hattı tıkanmamalı (don/sızıntı).",
           "Refrigerant kaçağı boğulma, toksisite veya yanıcılık riski yaratabilir; fixed detector gereği refrigerant sınıfı/şarjı, mahal ve class/flag risk assessment'inden doğrulanır, portable ölçüm ve havalandırma hazır tutulur.",
           "Kompresör çalışırken suction valf kapatılmaz (sıvı kompresyon = kırılma)."
+        ]
+      },
+      {
+        title: "Acil Jeneratör ve Acil Elektrik Düzeni",
+        introduction: "Acil elektrik kaynağı, ana güç kaynağı kaybedildiğinde emniyet, seyir, haberleşme ve tahliye için gerekli tüketicileri besleyen bağımsız düzendir. Acil jeneratör, acil switchboard (EMSB), geçici güç kaynağı (akü/UPS) ve otomatik devreye girme mantığı bir bütün olarak değerlendirilir; jeneratörün çalışması tek başına acil güç düzeninin sağlam olduğunu göstermez.",
+        sections: [
+          {
+            heading: "Yerleşim ve Bağımsızlık",
+            paragraphs: [
+              "Acil jeneratör, ana makine dairesi dışında, en üst sürekli güvertenin üzerinde ve çatışma perdesinin gerisinde, kendi mahallinde bulunur. Amaç, makine dairesi su alsa veya yansa dahi kaynağın çalışabilmesidir.",
+              "Düzen kendi yakıt tankı, soğutma, yağlama ve marş kaynağıyla ana sistemden bağımsız olmalıdır. Yakıtın parlama noktası ile soğuk hava koşullarındaki akışkanlığı, mahal ısıtması ve blok ısıtıcısıyla birlikte değerlendirilir.",
+              "Marş düzeni akü, hidrolik akümülatör veya bağımsız hava tüpü olabilir; her durumda ana güç kaynağından beslenmemesi ve ardışık start kabiliyetini koruması esastır."
+            ],
+            table: {
+              headers: ["Bileşen", "Görev", "Kontrol edilen nokta"],
+              rows: [
+                ["Acil jeneratör seti", "Ana güç kaybında elektrik üretimi", "Otomatik start, yük alma, yakıt ve akü durumu"],
+                ["Acil switchboard (EMSB)", "Acil tüketicilerin beslenmesi", "Breaker konumları, besleme kaynağı göstergesi"],
+                ["Interconnector", "Normal işletmede ana baradan besleme", "Ana güç kesildiğinde otomatik ayrılma"],
+                ["Geçici güç kaynağı (akü)", "Jeneratör yüke girene kadar besleme", "Kapasite, şarj gerilimi, yaş/testler"],
+                ["UPS grupları", "Seyir/haberleşme cihazlarında kesintisiz besleme", "Batarya ömrü, transfer testi, alarm"]
+              ]
+            }
+          },
+          {
+            heading: "Otomatik Devreye Girme ve Besleme Süresi",
+            paragraphs: [
+              "Ana bara gerilimi kaybolduğunda düşük gerilim rölesi jeneratöre start komutu verir; set nominal gerilim ve frekansa ulaşınca acil bara breaker'ı kapanır. Bu geçiş süresince acil aydınlatma ve haberleşme geçici güç kaynağından beslenir.",
+              "Otomatik devreye girme süresi ve besleme süresi gemi tipine, tonaja ve yapım tarihine göre uygulanabilir SOLAS II-1 hükümlerinden doğrulanır; yük gemisi ile yolcu gemisi gereklilikleri aynı değildir.",
+              "Beslenecek tüketici listesi gemiye özgüdür ve onaylı elektrik şemasında gösterilir: acil aydınlatma, seyir fenerleri, GMDSS ve dâhilî haberleşme, yangın algılama, yangın pompası, su geçirmez kapılar ve düzene göre dümen makinesi bu listede yer alabilir."
+            ]
+          },
+          {
+            heading: "Test ve Yaygın Bulgular",
+            paragraphs: [
+              "Yalnız yüksüz çalıştırma gerçek koşulları temsil etmez. Uzun süre yüksüz çalışma, yanmamış yakıt ve kurumun egzoz tarafında birikmesine (wet stacking) yol açar; periyodik gerçek yük altında çalıştırma önerilir.",
+              "Denetimlerde en sık rastlanan bulgular; test sonrası setin otomatik moda alınmaması, akü şarj cihazının arızalı olması, mahallin depo olarak kullanılması ve yakıt tankı seviyesinin düşük bırakılmasıdır."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Acil güç düzeninde ölçülen şey yalnız jeneratörün çalışması değil, otomatik start süresi, doğru tüketicilerin beslenmesi ve gerekli süre boyunca beslemenin sürmesidir.",
+          "Interconnector normal işletmede acil barayı ana baradan besler; ana güç kaybında otomatik ayrılması test edilmeden düzen doğrulanmış sayılmaz.",
+          "Geçici güç kaynağı (akü grubu) devreye girme boşluğunu kapatır; kapasitesi ve şarj düzeni ayrı bir bakım kalemidir.",
+          "Test sonrası setin otomatik (auto) konumda bırakıldığı, kontrol turlarında ayrıca doğrulanmalıdır."
+        ],
+        workingPrinciple: [
+          "Ana bara gerilimi kaybolur; düşük gerilim rölesi acil jeneratöre start sinyali verir.",
+          "Marş kaynağı (akü/hidrolik/hava) ana güçten bağımsız olarak seti çalıştırır.",
+          "Set nominal gerilim ve frekansa ulaşınca acil bara breaker'ı kapanır, interconnector açık kalır.",
+          "Geçici güç kaynağı, jeneratör yüke alınana kadar acil aydınlatma ve haberleşmeyi besler.",
+          "Ana güç geri geldiğinde düzen prosedüre uygun şekilde normal beslemeye döner ve set otomatik moda alınır."
+        ],
+        operation: [
+          "Testten önce yakıt seviyesi, yağ, soğutma suyu, akü gerilimi, blok ısıtıcı ve mahal havalandırmasını kontrol et.",
+          "Seti SMS/PMS sıklığında çalıştır; mümkün olduğunda otomatik start dizisini ve yük altında beslemeyi birlikte doğrula.",
+          "Acil switchboard üzerindeki tüketici breaker'larının ve interconnector'ün prosedürdeki konumda olduğunu teyit et.",
+          "Test sonrası seti soğut, yakıtı tamamla ve otomatik moda al; sonucu kayda geçir.",
+          "Yıl içinde en az bir kez, planlı ve izinli koşullarda blackout senaryosunu şirket prosedürüne göre tatbik et."
+        ],
+        faults: [
+          { fault: "Otomatik start olmuyor", cause: "Akü zayıf/şarj arızası, start rölesi veya düşük gerilim sensörü arızası, yakıt valfi kapalı", action: "Akü gerilimini yük altında ölç, manuel start ile ayrım yap, yakıt hattı ve sensör devresini izle." },
+          { fault: "Çalışıyor fakat yük almıyor", cause: "AVR arızası, breaker kapanma mantığı veya aşırı yük", action: "Gerilim/frekansı ölç, breaker kapatma izinlerini ve tüketici listesini kontrol et." },
+          { fault: "Egzozdan yağlı duman, düşük yüklerde çalışma bozukluğu", cause: "Uzun süre yüksüz çalıştırma (wet stacking)", action: "Gerçek yük veya yük bankasıyla periyodik yükleme uygula, enjektör ve egzoz tarafını kontrol et." },
+          { fault: "Ana güç geldiğinde acil bara beslemesi geri dönmüyor", cause: "Interconnector arızası veya hatalı mod seçimi", action: "Transfer mantığını ve breaker konumlarını şema üzerinden doğrula." },
+          { fault: "Test sonrası set manuel modda kalmış", cause: "Prosedür sonrası mod konumunun kontrol edilmemesi", action: "Mod konumunu tur kontrol listesine ekle ve devir-teslimde teyit et." }
+        ],
+        precautions: [
+          "Acil jeneratör mahalli depo olarak kullanılmaz; erişim yolları, kapılar ve havalandırma serbest tutulur.",
+          "Test sırasında ana bara ile paralelleme yalnız düzen buna uygunsa ve yazılı prosedür varsa yapılır.",
+          "Egzoz hattı, damper ve mahal havalandırması test öncesi kontrol edilir; kapalı damperle çalıştırma CO ve aşırı ısınma riski yaratır.",
+          "Akü mahallinde hidrojen birikimine karşı havalandırma sağlanır, kıvılcım kaynakları uzak tutulur."
+        ]
+      },
+      {
+        title: "Şaft Jeneratörü ve PTO/PTI Düzenleri",
+        introduction: "Şaft jeneratörü (shaft generator), ana makinenin milinden güç alarak elektrik üretir (PTO). Aynı makine ters yönde çalıştırıldığında şafta güç vererek takviye veya acil tahrik sağlar (PTI / take-me-home). Ana makinenin özgül yakıt tüketimi yardımcı dizel jeneratörden düşük olduğu için seyirde önemli yakıt ve bakım tasarrufu sağlar; buna karşılık frekans kararlılığı, manevra ve yedeklilik sınırları özel kontrol düzeni gerektirir.",
+        sections: [
+          {
+            heading: "PTO / PTI / PTH Düzenleri",
+            paragraphs: [
+              "Düzen, makinenin serbest ucundan (front-end PTO), dişli kutusundan veya doğrudan şaft üzerine yerleştirilen bir makineyle kurulur. Aynı elektrik makinesi hem jeneratör hem motor olarak çalışabilir.",
+              "Hibrit düzenlerde şaft makinesi batarya veya yakıt hücresiyle birleşerek yük dengeleme (peak shaving) ve manevrada emisyon azaltma amacıyla kullanılır."
+            ],
+            table: {
+              headers: ["Düzen", "Enerji yönü", "Tipik kullanım"],
+              rows: [
+                ["PTO (Power Take Off)", "Şafttan elektriğe", "Seyirde gemi elektriğini ana makineden üretmek"],
+                ["PTI (Power Take In)", "Elektrikten şafta", "Ağır hava/hızlanmada tahrike takviye (boost)"],
+                ["PTH (Take me home)", "Elektrikten şafta", "Ana makine arızasında sınırlı hızda seyir"],
+                ["Hibrit + batarya", "Çift yönlü", "Yük dengeleme, manevrada düşük emisyon"]
+              ]
+            }
+          },
+          {
+            heading: "Sabit Frekans Sağlama",
+            paragraphs: [
+              "Şaft devri değiştiğinde üretilen frekans da değişir. Sabit frekans iki yolla sağlanır: değişken hatveli pervane (CPP) ile şaft devrini sabit tutmak veya frekans dönüştürücü (konvertör) kullanarak değişken devirde sabit çıkış frekansı üretmek.",
+              "Konvertörlü düzenler, ana makine devrinin serbest bırakılmasına ve dolayısıyla yakıt optimizasyonuna izin verir; buna karşılık harmonik filtreleme, soğutma ve konvertör yedekliliği ayrı tasarım kalemidir."
+            ],
+            formula: {
+              expression: "f = (N × p) / 120",
+              variables: [
+                "f: Frekans (Hz)",
+                "N: Alternatör devri (dev/dak)",
+                "p: Kutup sayısı"
+              ]
+            },
+            example: {
+              problem: "Dişli kutusu üzerinden 900 dev/dak'da döndürülen 8 kutuplu bir şaft jeneratörünün ürettiği frekansı bulunuz ve şaft devri %10 düştüğünde ne olacağını yorumlayınız.",
+              steps: [
+                "f = (900 × 8) / 120 = 60 Hz",
+                "Devir %10 düşerse N = 810 dev/dak",
+                "f = (810 × 8) / 120 = 54 Hz"
+              ],
+              result: "Frekans doğrudan devirle değişir; 54 Hz gemi şebekesi için kabul edilemez. Bu nedenle ya CPP ile şaft devri sabit tutulur ya da frekans dönüştürücü kullanılır."
+            }
+          },
+          {
+            heading: "Manevra ve Yedeklilik Sınırları",
+            paragraphs: [
+              "Manevra, liman ve düşük devirli seyirde şaft jeneratörü gücü düşer veya devre dışı kalır; bu safhalarda yardımcı dizel jeneratörlere geçilir. Geçişin kesintisiz yapılması PMS (power management system) mantığına bağlıdır.",
+              "Ana makine trip ettiğinde şaft jeneratörü de kaybedilir; bu nedenle blackout riski, stand-by jeneratörün otomatik start süresiyle birlikte değerlendirilir. Klas ve bayrak devleti, şaft jeneratörünün tek elektrik kaynağı sayılabilmesi için ek şartlar arayabilir."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Şaft jeneratörünün kazancı yakıt tüketimi ve yardımcı motor çalışma saatinde; riski ise ana makineye bağımlılıktadır.",
+          "Sabit frekans CPP ile sabit şaft devri veya frekans dönüştürücü ile sağlanır; düzenin hangisi olduğu bilinmeden yük yönetimi doğru kurulamaz.",
+          "Manevra, liman ve düşük hız safhalarında yardımcı dizel jeneratöre geçiş planlanmalı ve PMS ile doğrulanmalıdır.",
+          "Ana makine trip'i doğrudan elektrik kaybı anlamına gelebileceğinden stand-by jeneratör hazırlığı ve blackout prosedürü her seyir safhasında geçerli olmalıdır."
+        ],
+        workingPrinciple: [
+          "Ana makine şaftı, dişli kutusu veya doğrudan kaplin üzerinden elektrik makinesini döndürür.",
+          "PTO modunda makine senkron jeneratör gibi çalışır; gerilim AVR, frekans ise sabit devir veya konvertör ile korunur.",
+          "PTI/PTH modunda aynı makine şebekeden beslenip motor olarak çalışır ve şafta tork verir.",
+          "PMS, yük durumuna göre şaft jeneratörü ile yardımcı dizel jeneratörler arasında yük paylaşımını ve geçişi yönetir."
+        ],
+        operation: [
+          "Devreye almadan önce şaft devri, ana makine yükü ve pervane modunun (CPP hatvesi) uygun olduğunu doğrula.",
+          "Senkronizasyon koşullarını (gerilim, frekans, faz sırası, faz açısı) sağla ve baraya al.",
+          "Yük transferini kademeli yap; yardımcı jeneratörü devreden çıkarmadan önce şaft jeneratörünün yükü kararlı taşıdığını gör.",
+          "Manevra öncesi yardımcı jeneratörü devreye al ve şaft jeneratörünü prosedüre uygun şekilde devreden çıkar.",
+          "Konvertör soğutması, harmonik filtre ve fan/filtre durumunu periyodik olarak kontrol et."
+        ],
+        faults: [
+          { fault: "Frekans dalgalanması", cause: "Şaft devri değişimi, CPP hatve kontrolü veya konvertör regülasyon arızası", action: "Devir ve hatve geri beslemesini kontrol et, konvertör alarm kaydını incele, gerekiyorsa yardımcı jeneratöre geç." },
+          { fault: "Yük paylaşımı bozuk", cause: "PMS ayarı, droop/izokron mod uyuşmazlığı", action: "Mod seçimlerini ve kW/kVAr tepkisini jeneratör bazında karşılaştır." },
+          { fault: "Ana makine yavaşladığında güç kaybı", cause: "Düşük devirde şaft jeneratörü kapasitesinin düşmesi", action: "Seyir safhasına göre stand-by jeneratörü önceden devreye al." },
+          { fault: "Konvertör aşırı sıcaklık alarmı", cause: "Fan/filtre tıkanıklığı, soğutma suyu sorunu, aşırı yük", action: "Yükü azalt, soğutma ve filtre durumunu kontrol et, üretici limitlerini uygula." },
+          { fault: "PTH modunda beklenen hız sağlanamıyor", cause: "Sınırlı güç, hatve/ayar hatası veya batarya kapasitesi", action: "Düzenin tasarım gücünü ve süresini doğrula; seyir planını buna göre revize et." }
+        ],
+        precautions: [
+          "Şaft jeneratörü devredeyken ana makine yükü ve devri değiştirilecekse elektrik yükü önceden yönetilir.",
+          "Konvertör ve alternatör mahallinde yüksek gerilim uyarıları ve kilitleme (LOTO) prosedürü uygulanır.",
+          "Harmonik bozulma hassas elektronik cihazları etkileyebilir; ölçüm ve filtre bakımı ihmal edilmez.",
+          "PTH düzeninin kapasitesi ve çalışma süresi bilinmeden acil durum planı bu düzene dayandırılmaz."
+        ]
+      },
+      {
+        title: "Baş ve Kıç İticiler (Thruster)",
+        introduction: "İticiler, düşük hızda ve yanaşma/ayrılma manevralarında geminin başını veya kıçını yanal olarak hareket ettiren yardımcı tahrik makineleridir. En yaygın düzen, gövde içinden geçen bir tünel içine yerleştirilmiş pervanedir; elektrik motoru veya hidrolik motorla tahrik edilir ve yön değişimi hatve (CPP) veya devir yönü (frekans konvertörlü FPP) ile sağlanır.",
+        sections: [
+          {
+            heading: "Tipler ve Tahrik Düzenleri",
+            paragraphs: [
+              "Tünel tipi itici, gövdedeki tünel içinde çalışır ve yalnız enine kuvvet üretir. Retractable (indirilebilir) ve azimuth iticiler ise 360° yönlendirilebilir kuvvet üreterek dinamik konumlandırma (DP) ve manevra kabiliyeti sağlar.",
+              "Elektrik tahrikli düzenlerde motor gücü doğrudan ana barayı yükler; bu nedenle itici kullanımı öncesinde yeterli jeneratör kapasitesi devreye alınır. Yol verme akımı ve ani yük değişimi blackout riskinin başlıca kaynağıdır."
+            ],
+            table: {
+              headers: ["Tip", "Kuvvet yönü", "Tipik kullanım", "Dikkat"],
+              rows: [
+                ["Tünel (tunnel) itici", "Yalnız enine", "Yanaşma/ayrılma, kılavuz manevrası", "Gemi hızı arttıkça etkinlik düşer"],
+                ["Retractable itici", "360°", "DP, özel maksatlı gemiler", "İndirme/kaldırma mekanizması bakımı"],
+                ["Azimuth itici", "360°", "Tahrik + manevra", "Yağ ve sızdırmazlık düzeni kritiktir"],
+                ["Hidrolik tahrikli itici", "Enine", "Küçük tonajlı gemiler", "HPU kapasitesi ve yağ sıcaklığı"]
+              ]
+            }
+          },
+          {
+            heading: "Etkinlik ve Hız Sınırı",
+            paragraphs: [
+              "İticinin ürettiği yanal kuvvet, gemi ileri hız aldıkça hızla azalır. Tünel çıkışındaki akış, gövde boyunca oluşan akım alanıyla etkileşerek kuvvetin bir kısmını iptal eder; bu nedenle iticiler tipik olarak çok düşük hızlarda etkilidir ve manevra planı bu sınıra göre yapılır.",
+              "Tünel ızgarası (grid), deniz canlısı ve yabancı cisim girişini engeller; kirlenmesi hem itme kuvvetini düşürür hem de kavitasyon ve titreşim yaratır. Havuzlamada ızgara, pervane kanadı ve tünel kaplaması birlikte kontrol edilir."
+            ]
+          },
+          {
+            heading: "Yağlama, Sızdırmazlık ve Kirlilik Riski",
+            paragraphs: [
+              "Dişli kutusu ve hatve mekanizması yağla çalışır; yağ deposu su hattının üzerinde konumlandırılır, böylece kaçak halinde denizden yağa su girişi yerine seviye düşüşü gözlenir. Seviye ve basınç alarmı, sızdırmazlık arızasının ilk göstergesidir.",
+              "Su altındaki yağ dolu bölmelerden kaynaklanan sızıntılar kirlilik olayı doğurabilir. Deniz suyuyla temas eden yağlama noktalarında çevreye uyumlu yağ (EAL) kullanımı, sefer bölgesine göre uygulanabilir kurallardan doğrulanır."
+            ]
+          }
+        ],
+        keyPoints: [
+          "İtici kullanımından önce yeterli jeneratör kapasitesi devreye alınmalıdır; yol verme akımı ve ani yük değişimi blackout riskidir.",
+          "İtici kuvveti gemi hızı arttıkça hızla azalır; manevra planı bu sınır bilinerek yapılır.",
+          "Tünel ızgarasının kirlenmesi itme kaybı, kavitasyon ve titreşim olarak kendini gösterir.",
+          "Yağ seviyesi/basınç alarmı, su altı sızdırmazlık arızasının erken ve çoğu zaman tek uyarısıdır."
+        ],
+        workingPrinciple: [
+          "Elektrik veya hidrolik motor, dişli kutusu üzerinden tünel içindeki pervaneyi döndürür.",
+          "Kuvvetin yönü ve şiddeti, CPP düzeninde hatve açısıyla; FPP düzeninde konvertör üzerinden devir yönü ve devir sayısıyla ayarlanır.",
+          "Köprüüstü kumandası, hatve/devir talebini yerel kontrol ünitesine iletir; geri besleme göstergesi gerçek hatveyi gösterir.",
+          "Yağ sistemi dişli kutusunu ve sızdırmazlık elemanlarını besler; basınç ve seviye izlenir."
+        ],
+        operation: [
+          "Manevradan önce ilave jeneratörü devreye al, itici hazırlığını köprüüstüne bildir ve kumanda transferini doğrula.",
+          "İticiyi kademeli yükle; sürekli tam güçte uzun süreli kullanım motor ve konvertör sıcaklık sınırlarını zorlar.",
+          "Hatve göstergesi ile gerçek kuvvet tepkisini karşılaştır; sıfır hatvede yük çekiliyorsa geri besleme veya mekanizma sorunludur.",
+          "Manevra bitiminde iticiyi durdur, hatveyi sıfıra al ve elektrik beslemesini prosedüre göre kes.",
+          "Yağ seviyesi, sıcaklık, titreşim ve motor sargı sıcaklığı değerlerini kayıt altına al."
+        ],
+        faults: [
+          { fault: "İtme kuvveti düşük", cause: "Tünel ızgarası kirli, hatve geri beslemesi hatalı, pervane hasarlı", action: "Izgara ve pervane durumunu dalgıç/havuzlama ile kontrol et, hatve kalibrasyonunu doğrula." },
+          { fault: "Yol verirken bara frekansı düşüyor / blackout riski", cause: "Yetersiz jeneratör kapasitesi, ani yük artışı", action: "İlave jeneratörü devreye al, yol verme rampasını ve PMS ayarını gözden geçir." },
+          { fault: "Aşırı titreşim ve gürültü", cause: "Kavitasyon, yabancı cisim, kanat hasarı veya yatak aşınması", action: "Yükü azalt, titreşim ölçümü al, ilk fırsatta dalgıç muayenesi planla." },
+          { fault: "Yağ seviyesinde düşüş", cause: "Sızdırmazlık elemanı aşınması", action: "Kullanımı sınırla, seviye trendini kaydet, kirlilik riskini raporla ve onarım planla." },
+          { fault: "Motor sargı/konvertör sıcaklık alarmı", cause: "Uzun süreli tam yük, soğutma veya filtre sorunu", action: "Yükü düşür, soğutma ve havalandırmayı kontrol et, üretici çalışma süresi limitine uy." }
+        ],
+        precautions: [
+          "Tünel bölgesinde dalgıç çalışması varsa itici elektriksel olarak izole edilir ve kilitlenir (LOTO).",
+          "İtici mahalline giriş öncesi mahal havalandırması ve kapalı mahal riskleri değerlendirilir.",
+          "Aşırı ısınmayı önlemek için üreticinin sürekli çalışma süresi ve tekrar başlatma sınırlarına uyulur.",
+          "Yağ kaçağı şüphesinde kirlilik bildirim yükümlülüğü Kaptan ile birlikte değerlendirilir."
+        ]
+      },
+      {
+        title: "Merkezi Soğutma Suyu Sistemi (HT / LT ve Deniz Suyu Devresi)",
+        introduction: "Merkezi soğutma sistemi, ana makine, yardımcı makineler ve yardımcı ekipmanın attığı ısıyı önce kapalı tatlı su devrelerine, oradan merkezi soğutucu (central cooler) üzerinden deniz suyuna aktarır. Kapalı devre kullanımı, korozyon ve tortu sorununu deniz suyu tarafında tek bir eşanjörle sınırlandırır.",
+        sections: [
+          {
+            heading: "Deniz Suyu Devresi",
+            paragraphs: [
+              "Deniz suyu, yüksek ve alçak deniz sandıklarından (high/low sea chest) alınır. Sığ, çamurlu veya buzlu sularda uygun sandığın seçilmesi tıkanma ve hava emme riskini belirler.",
+              "Süzgeç (strainer) fark basıncı, tıkanmanın en güvenilir göstergesidir. Deniz sandığı buhar/hava üfleme hattı, buzlanma ve tıkanma durumunda kullanılır; deniz canlısı üremesine karşı MGPS (anot veya elektroliz) düzeni bulunabilir.",
+              "Deniz suyu pompaları genellikle çift olup biri stand-by'dır; otomatik devreye girme mantığı basınç düşüşü ile tetiklenir."
+            ]
+          },
+          {
+            heading: "HT ve LT Tatlı Su Devreleri",
+            paragraphs: [
+              "HT (yüksek sıcaklık) devresi ana makine gömlek suyunu dolaştırır ve tipik olarak 80–90 °C aralığında çalışır; sıcaklık üç yollu termostatik valfle kontrol edilir. Aşırı soğuk çalışma, gömlek yüzeyinde soğuk korozyona ve yakıt kalıntısı birikimine yol açar.",
+              "LT (düşük sıcaklık) devresi yağ soğutucusu, hava soğutucusu (charge air cooler), yardımcı makineler ve kompresörleri besler; merkezi soğutucu girişindeki sıcaklık genellikle otomatik valfle sabit tutulur.",
+              "Genleşme tankı, devrenin en yüksek noktasında bulunur; hava atma, ısıl genleşme ve dolum işlevi görür. Tank seviyesindeki sürekli düşüş kaçağı, sürekli yükselme ise eşanjörden veya gömlekten iç geçişi işaret eder."
+            ],
+            formula: {
+              expression: "Q = ṁ × c_p × ΔT",
+              variables: [
+                "Q: Aktarılan ısı gücü (kW)",
+                "ṁ: Kütlesel debi (kg/s)",
+                "c_p: Özgül ısı (su için ≈ 4,18 kJ/kg·K)",
+                "ΔT: Giriş-çıkış sıcaklık farkı (K)"
+              ]
+            },
+            example: {
+              problem: "LT devresinde 200 m³/h debi dolaşıyor ve merkezi soğutucu girişi ile çıkışı arasındaki fark 5 K ölçülüyor. Aktarılan ısı gücünü hesaplayınız.",
+              steps: [
+                "ṁ = 200 m³/h × 1000 kg/m³ ÷ 3600 s = 55,6 kg/s",
+                "Q = 55,6 × 4,18 × 5",
+                "Q ≈ 1162 kW"
+              ],
+              result: "Yaklaşık 1,16 MW ısı deniz suyuna aktarılıyor. Aynı debide ΔT'nin beklenenden düşük olması, soğutucunun kirlendiğini veya akışın azaldığını gösterir."
+            }
+          },
+          {
+            heading: "Su Kimyası ve Korozyon Kontrolü",
+            paragraphs: [
+              "Kapalı devre suyunun kimyasal şartlandırması, korozyon ve kavitasyon erozyonunu önler. Ölçülen tipik parametreler nitrit/inhibitör seviyesi, pH ve klorür içeriğidir; limitler kimyasal üreticisinin ve makine üreticisinin belirlediği aralıklardan alınır.",
+              "Yüksek klorür, deniz suyu veya kötü kalitede dolum suyunun devreye karıştığını gösterir. Distile su ile dolum ve doğru dozaj, eşanjör ile gömlek ömrünü doğrudan etkiler."
+            ],
+            table: {
+              headers: ["Ölçüm", "Ne anlama gelir", "Sapmada ilk adım"],
+              rows: [
+                ["Nitrit / inhibitör seviyesi", "Korozyon koruması", "Dozajı üretici aralığına getir, kaçak kontrolü yap"],
+                ["pH", "Genel korozyon eğilimi", "Dolum suyu kalitesini ve dozajı gözden geçir"],
+                ["Klorür", "Deniz suyu veya kötü dolum suyu girişi", "Eşanjör iç geçişini ve dolum kaynağını araştır"],
+                ["Genleşme tankı seviyesi", "Kaçak veya iç geçiş", "Trend tut, gaz/yağ izini kontrol et"]
+              ]
+            }
+          }
+        ],
+        keyPoints: [
+          "Kapalı HT/LT devreleri sayesinde deniz suyu yalnız merkezi soğutucuya girer; kirlenme ve korozyon tek noktada yönetilir.",
+          "Çıkış sıcaklığının tutması soğutucunun temiz olduğunu kanıtlamaz; debi, fark basıncı ve valf konumu birlikte değerlendirilir.",
+          "Genleşme tankı seviyesindeki kararlı değişim, kaçak veya iç geçişin ilk işaretidir.",
+          "Aşırı soğuk çalıştırma, aşırı sıcak çalıştırma kadar zararlıdır; termostatik valf kontrolü ihmal edilmemelidir."
+        ],
+        workingPrinciple: [
+          "Deniz suyu pompası, sandıktan aldığı suyu süzgeç üzerinden merkezi soğutucuya basar.",
+          "LT devresi ekipman soğutucularından geçerek ısıyı toplar ve merkezi soğutucuda deniz suyuna aktarır.",
+          "HT devresi ana makine gömleklerini soğutur; sıcaklık üç yollu termostatik valfle sabit tutulur ve fazla ısı LT devresine veya tatlı su üretecine verilir.",
+          "Genleşme tankı devrenin havasını atar, ısıl genleşmeyi karşılar ve dolum noktası olarak çalışır."
+        ],
+        operation: [
+          "Vardiyada deniz suyu süzgeç fark basıncını, pompa basınçlarını ve stand-by pompanın otomatik konumunu kontrol et.",
+          "HT/LT giriş-çıkış sıcaklıklarını yükle birlikte trendle; aynı yükte artan fark kirlenmeyi işaret eder.",
+          "Genleşme tankı seviyesini her turda kaydet; ani değişimde kaçak ve iç geçiş kontrolü yap.",
+          "Sığ ve çamurlu sularda uygun deniz sandığına geçiş yap, gerekiyorsa üfleme hattını prosedüre göre kullan.",
+          "Kimyasal ölçümleri planlı aralıkta yap, dozajı ve sonuçları kayda geç."
+        ],
+        faults: [
+          { fault: "Soğutma yetersiz, sıcaklıklar yükseliyor", cause: "Süzgeç/soğutucu kirli, pompa performansı düşük, devrede hava", action: "Fark basıncını ölç, stand-by pompaya geç, havayı al, temizlik planla." },
+          { fault: "Deniz suyu pompası emiş kaybediyor", cause: "Sandık tıkanması, sığ suda hava emme", action: "Diğer sandığa geç, süzgeci temizle, gerekiyorsa üfleme uygula." },
+          { fault: "Genleşme tankı seviyesi sürekli düşüyor", cause: "Kaçak, conta veya soğutucu arızası", action: "Devreyi bölüm bölüm izle, basınç testi planla, tamamlama miktarını kaydet." },
+          { fault: "Genleşme tankında yağ veya gaz izi", cause: "Yağ soğutucusundan iç geçiş veya gömlek/conta sorunu", action: "İlgili eşanjörü izole ederek ayrım yap, gaz testi uygula, Başmühendisi bilgilendir." },
+          { fault: "HT sıcaklığı düşük seyrediyor", cause: "Termostatik valf açık kalmış veya sensör hatası", action: "Valf hareketini yerel olarak dene, sensörü doğrula, soğuk korozyon riskini bildir." }
+        ],
+        precautions: [
+          "Deniz suyu hattında bakım öncesi sandık valfi kapatılır, hat boşaltılır ve etiketleme/kilitleme uygulanır.",
+          "Sıcak HT devresinde valf veya kapak açmadan önce basınç düşürülür ve sıcaklık güvenli seviyeye indirilir.",
+          "Kimyasal katkılar üretici talimatına ve güvenlik bilgi formuna göre, uygun KKD ile kullanılır.",
+          "Deniz suyu tarafındaki anot ve kaplama durumu, planlı havuzlama kapsamında kontrol edilir."
+        ]
+      },
+      {
+        title: "Yakıt Besleme ve Booster Ünitesi (Viskozite Kontrolü)",
+        introduction: "Yakıt besleme sistemi, servis tankındaki yakıtı doğru basınç, sıcaklık ve viskozitede makine enjeksiyon sistemine ulaştırır. Ağır yakıt kullanan gemilerde besleme pompası, karışım (mixing/deaeration) tankı, sirkülasyon (booster) pompası, son ısıtıcı, viskozimetre ve otomatik filtre bir ünite olarak çalışır.",
+        sections: [
+          {
+            heading: "Hat Zinciri ve Basınç Kademeleri",
+            paragraphs: [
+              "Zincir; depo tankı → çökeltme (settling) tankı → separatör → servis tankı → besleme pompası → karışım tankı → booster pompası → son ısıtıcı → viskozimetre → makine şeklinde ilerler. Makineden dönen sıcak yakıt karışım tankına geri döner.",
+              "Besleme pompası hat basıncını yükselterek yakıtın ısıtıldığında buharlaşıp gaz kilidi (gassing) yapmasını önler; booster pompası ise makinede gerekli sirkülasyonu sağlar. İki kademeli bu düzen, ağır yakıtta kararlı enjeksiyon için gereklidir.",
+              "Otomatik ters yıkamalı filtre ve fark basıncı alarmı, katı kirletici artışının ilk göstergesidir. Filtre fark basıncının hızla artması genellikle separatör performansının düştüğünü haber verir."
+            ]
+          },
+          {
+            heading: "Viskozite ve Sıcaklık Kontrolü",
+            paragraphs: [
+              "Enjeksiyon kalitesini belirleyen büyüklük sıcaklık değil viskozitedir. Viskozimetre ölçtüğü değere göre son ısıtıcıyı kontrol eder; hedef viskozite aralığı makine üreticisinin talimatından alınır ve yakıttan yakıta değişmez şekilde korunur.",
+              "Viskozite çok yüksek kalırsa püskürtme kabalaşır, geç yanma ve kurum oluşur; çok düşük olursa pompa elemanlarında yağlama kaybı ve kaçak artar. Distile yakıtlarda alt viskozite sınırının altına inmemek için soğutucu gerekebilir.",
+              "Yakıt değişimi (changeover) sırasında sıcaklık değişim hızı sınırlıdır; hızlı değişim pompa elemanlarında sıkışma ve kaçak yaratır. Değişim, emisyon kontrol alanına girişten önce planlı biçimde tamamlanır ve kayda geçirilir."
+            ],
+            table: {
+              headers: ["Durum", "Belirti", "Sonuç"],
+              rows: [
+                ["Viskozite hedefin üstünde", "Egzoz sıcaklığı ve kurum artışı", "Kötü püskürtme, geç yanma"],
+                ["Viskozite hedefin altında", "Yakıt pompasında kaçak, güç kaybı", "Yağlama kaybı ve aşınma"],
+                ["Hızlı sıcaklık değişimi", "Pompa sıkışması, kaçak alarmı", "Enjeksiyon kesintisi riski"],
+                ["Filtre fark basıncı artışı", "Otomatik yıkama sıklığında artış", "Separatör/yakıt kalitesi sorunu"]
+              ]
+            }
+          },
+          {
+            heading: "Servis Tankı ve Su Yönetimi",
+            paragraphs: [
+              "Servis tankı drenajı her vardiyada alınır; su ve tortu birikimi yanma sorunlarının en sık nedenidir. Tank ısıtması, yakıtın akışkanlığını korurken aşırı ısıtma nedeniyle hafif bileşenlerin kaybına yol açmayacak aralıkta tutulur.",
+              "Yakıt tanklarının seviyesi, sıcaklığı ve ısıtma buhar hattı kaçakları düzenli izlenir; buhar serpantininden tanka su geçişi hem yanmayı bozar hem de separatör yükünü artırır."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Enjeksiyonu belirleyen büyüklük viskozitedir; sıcaklık yalnızca viskoziteyi tutmak için kullanılan araçtır.",
+          "Besleme ve booster pompalarının iki kademeli düzeni, ısıtılan yakıtta gaz kilidini önlemek içindir.",
+          "Yakıt değişiminde sıcaklık değişim hızı sınırlanır ve işlem emisyon kontrol alanı sınırından önce tamamlanır.",
+          "Filtre fark basıncındaki artış çoğu zaman filtrenin değil, arıtma zincirinin sorununu gösterir."
+        ],
+        workingPrinciple: [
+          "Besleme pompası, servis tankından aldığı yakıtı basınç altında karışım tankına gönderir.",
+          "Karışım tankı, makineden dönen sıcak yakıtla taze yakıtı birleştirir ve havayı ayırır.",
+          "Booster pompası yakıtı son ısıtıcıdan geçirerek makineye sirküle eder.",
+          "Viskozimetre ölçümüne göre ısıtıcı kontrol edilir ve hedef viskozite korunur.",
+          "Otomatik filtre katıları tutar; fark basıncı arttıkça ters yıkama devreye girer."
+        ],
+        operation: [
+          "Vardiyada servis tankı drenajını al, seviye ve sıcaklığı kaydet.",
+          "Besleme/booster basınçlarını, ısıtıcı çıkış sıcaklığını ve viskozite değerini birlikte izle.",
+          "Filtre fark basıncını ve otomatik yıkama sıklığını trendle; artış varsa separatör ayarlarını gözden geçir.",
+          "Yakıt değişimini planla: tank/hat dizilimini kontrol et, sıcaklığı kontrollü değiştir, işlemi ve saatini kaydet.",
+          "Yedek pompanın otomatik konumda olduğunu ve devreye girme basıncının doğru ayarlandığını doğrula."
+        ],
+        faults: [
+          { fault: "Makinede güç kaybı ve düzensiz çalışma", cause: "Yakıtta su/hava, düşük besleme basıncı, filtre tıkanması", action: "Drenaj al, basınçları ölç, filtreyi temizle, gerekiyorsa yedek pompaya geç." },
+          { fault: "Viskozite hedefe oturmuyor", cause: "Isıtıcı kapasitesi, kontrol valfi veya viskozimetre arızası", action: "Isıtıcı çıkış sıcaklığını manuel doğrula, viskozimetreyi laboratuvar/numune verisiyle karşılaştır." },
+          { fault: "Yakıt pompalarında sıkışma", cause: "Yakıt değişiminde hızlı sıcaklık değişimi", action: "Değişim hızını sınırla, sıcaklık rampasını üretici limitine çek, sıkışan elemanı kontrol et." },
+          { fault: "Filtre fark basıncı hızla artıyor", cause: "Kötü yakıt kalitesi, separatör performans kaybı, kedi kılı (kat fines)", action: "Numune al, separatör debisini/sıcaklığını düşür, yakıt analizi sonucunu bekle." },
+          { fault: "Karışım tankında sürekli hava/gaz", cause: "Emiş tarafında kaçak veya besleme basıncının düşük olması", action: "Emiş hattını sızdırmazlık yönünden kontrol et, besleme basıncını yükselt." }
+        ],
+        precautions: [
+          "Sıcak yakıt hatlarında sızıntı yangın riskidir; izolasyon ve sıçrama koruması eksiksiz olmalıdır.",
+          "Filtre kapağı açılmadan önce hat izole edilir, basınç düşürülür ve sıcak yakıt için uygun KKD kullanılır.",
+          "Yakıt değişimi manevra veya kritik seyir safhasında değil, planlı ve izlenebilir koşullarda yapılır.",
+          "Numune alma noktalarında sıcak yakıt sıçramasına karşı yüz koruması ve uygun kap kullanılır."
+        ]
+      },
+      {
+        title: "Yağlama Yağı Sistemi ve Kıç Şaft Yağlaması",
+        introduction: "Yağlama yağı sistemi, yatak ve hareketli yüzeylerde yağ filmi oluşturarak sürtünmeyi azaltır; aynı zamanda ısı taşır, temizler, aşınma ürünlerini toplar ve piston-gömlek arasında sızdırmazlık sağlar. Ana makine yağlaması, silindir yağlaması ve kıç şaft (stern tube) yağlaması farklı yağlar ve farklı emniyet mantığıyla çalışır.",
+        sections: [
+          {
+            heading: "Sistem Yağı Devresi",
+            paragraphs: [
+              "Karter veya ayrı yağ tankından alınan yağ, pompa ile basınçlandırılır; soğutucudan ve tam akışlı filtreden geçerek makine yataklarına dağıtılır. Dönüş yağı tekrar tanka gelir ve devir sürer.",
+              "By-pass hattındaki separatör, sistemden sürekli küçük bir debi çekerek suyu ve katıları uzaklaştırır. Bu sürekli temizleme, yağ ömrünü ve yatak güvenliğini doğrudan belirler.",
+              "Düşük yağ basıncı, makinenin en kritik korumalarından biridir; alarm ve otomatik durdurma zinciri işletme kolaylığı için devre dışı bırakılmaz."
+            ],
+            table: {
+              headers: ["Yağ türü", "Görev", "İzlenen değer"],
+              rows: [
+                ["Sistem/karter yağı", "Yatak, kavrama ve soğutma", "Basınç, sıcaklık, su içeriği, viskozite"],
+                ["Silindir yağı", "Gömlek yağlaması ve asit nötrleme", "Besleme oranı, alkalinite (BN), kazıma analizi"],
+                ["Kıç şaft yağı", "Şaft yatağı ve sızdırmazlık", "Seviye/basınç, su içeriği"],
+                ["Hidrolik/dişli yağı", "Yardımcı ekipman", "Temizlik sınıfı, su içeriği"]
+              ]
+            }
+          },
+          {
+            heading: "Silindir Yağlaması ve Alkalinite Seçimi",
+            paragraphs: [
+              "Silindir yağı gömlek yüzeyine ölçülü dozlarla verilir. Besleme oranı, makine yüküne ve üreticinin belirlediği alt sınıra göre ayarlanır; gereğinden düşük besleme aşınma ve kazıma izlerine, gereğinden yüksek besleme ise kalıntı birikmesine ve gereksiz maliyete yol açar.",
+              "Yağın alkalinitesi (BN), yakıttaki kükürtten oluşan asidi nötrleyecek şekilde seçilir. Düşük kükürtlü yakıta geçildiğinde yüksek BN'li yağın kullanılması, kalsiyum bileşiklerinin birikmesine ve segman/gömlek sorunlarına neden olabilir.",
+              "Kazıma (scrape-down) yağ analizi, demir içeriği ve kalan alkalinite üzerinden besleme oranının doğru olup olmadığını gösteren en pratik geri bildirimdir."
+            ]
+          },
+          {
+            heading: "Kıç Şaft (Stern Tube) Yağlaması",
+            paragraphs: [
+              "Yağ yağlamalı düzenlerde kıç şaft yatağı, su hattının üzerindeki bir baş tanktan (header tank) beslenir. Tank yüksekliği, deniz suyu basıncından yüksek bir iç basınç sağlayarak suyun içeri girmesini zorlaştırır; bu nedenle tank seviyesi kritik bir göstergedir.",
+              "Baş tank seviyesinin düşmesi denize yağ kaçağı, yükselmesi ise şaft yatağına su girişi anlamına gelebilir. Her iki durum da sızdırmazlık elemanının incelenmesini gerektirir ve kaçak durumunda kirlilik bildirim yükümlülüğü değerlendirilir.",
+              "Deniz suyuyla temas eden yağlama noktalarında çevreye uyumlu yağ (EAL) kullanımı, geminin sefer bölgesine göre uygulanabilir kurallardan doğrulanır. Su yağlamalı kıç şaft düzenlerinde ise yatak malzemesi ve su akışı izlenir."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Yağ yalnız sürtünmeyi azaltmaz; ısı taşır, temizler ve sızdırmazlık sağlar. Bu dört işlevden biri bozulduğunda arıza gelişir.",
+          "By-pass separatörü sürekli çalıştığı sürece yağ ömrü uzar; kesintiye uğradığında su ve katı birikimi hızla artar.",
+          "Silindir yağı besleme oranı ve alkalinitesi, kullanılan yakıtın kükürt içeriğiyle birlikte seçilir.",
+          "Kıç şaft baş tankı seviyesindeki değişim, denize yağ kaçağının veya yatağa su girişinin ilk uyarısıdır."
+        ],
+        workingPrinciple: [
+          "Pompa, yağı tanktan alıp soğutucu ve filtre üzerinden yataklara basar.",
+          "Yataklarda oluşan yağ filmi metal temasını engeller; ısınan yağ tanka döner.",
+          "By-pass separatörü sürekli küçük debiyle suyu ve katıları ayırır.",
+          "Silindir yağlama ünitesi, yük ve devir bilgisine göre ölçülü doz verir.",
+          "Kıç şaft baş tankı, su hattı üzerindeki konumu sayesinde yatakta pozitif yağ basıncı sağlar."
+        ],
+        operation: [
+          "Vardiyada yağ basıncı, sıcaklık, filtre fark basıncı ve tank seviyelerini kaydet.",
+          "Separatörün gerçekten yağ aldığını, sıcaklığının ve boşaltma çevriminin doğru olduğunu doğrula.",
+          "Silindir yağı besleme oranını yük değişiminde kontrol et, kazıma analizi sonuçlarına göre ayarla.",
+          "Kıç şaft baş tank seviyesini her turda oku ve trend tut; tamamlama miktarlarını kayda geç.",
+          "Planlı aralıklarla yağ numunesi al; su içeriği, viskozite ve aşınma metali sonuçlarını takip et."
+        ],
+        faults: [
+          { fault: "Yağ basıncı düşük", cause: "Filtre tıkalı, pompa aşınması, emiş tarafında hava veya seviye düşüklüğü", action: "Seviyeyi ve filtre fark basıncını kontrol et, yedek pompaya geç, korumayı bypass etme." },
+          { fault: "Yağ sıcaklığı yüksek", cause: "Soğutucu kirli, soğutma suyu debisi düşük, aşırı yük", action: "Soğutucu giriş/çıkış farkını ölç, LT devresini kontrol et, yükü değerlendir." },
+          { fault: "Yağda su tespiti", cause: "Soğutucu iç geçişi, gömlek/conta kaçağı, yoğuşma", action: "Separatör çalışmasını artır, kaynağı izole ederek bul, analiz sonucuna göre yağ değişimi planla." },
+          { fault: "Kazıma analizinde yüksek demir", cause: "Yetersiz silindir yağı beslemesi veya uygunsuz BN seçimi", action: "Besleme oranını üretici aralığında artır, yağ tipini yakıt kükürdüne göre gözden geçir." },
+          { fault: "Kıç şaft tank seviyesi değişiyor", cause: "Sızdırmazlık elemanı aşınması", action: "Trendi kaydet, kullanım koşullarını sınırla, kirlilik riskini raporla ve onarım planla." }
+        ],
+        precautions: [
+          "Karter kapağı, makine durdurulup soğuma süresi beklenmeden açılmaz; sıcak yağ buharı patlama riski taşır.",
+          "Yağ kaçakları sıcak yüzeylerde yangın kaynağıdır; izolasyon ve sıçrama koruması eksiksiz tutulur.",
+          "Yağ numunesi alırken sıcak yağ ve basınç riskine karşı uygun KKD kullanılır.",
+          "Kullanılmış yağ ve filtreler atık yönetimi kurallarına göre toplanır ve kayda geçirilir."
+        ]
+      },
+      {
+        title: "Balast ve Sintine Sistemi (Pompa, Hat ve Eductor)",
+        introduction: "Balast sistemi, geminin draft, trim, meyil ve mukavemet durumunu yönetmek için tanklara su alıp basar. Sintine sistemi ise makine dairesi ve ambar kuyularında biriken suyu güvenli biçimde toplar. İki sistem ayrı amaçlara hizmet eder; hatların ve valflerin karışması hem su alma hem de kirlilik açısından ciddi risktir.",
+        sections: [
+          {
+            heading: "Balast Devresi ve Sıyırma (Stripping)",
+            paragraphs: [
+              "Balast pompaları genellikle santrifüj tiptedir ve ana balast hattı üzerinden tanklara bağlanır. Valfler çoğunlukla hidrolik/pnömatik uzaktan kumandalıdır; mimik panodaki gösterge ile gerçek valf konumu her zaman aynı olmayabilir, bu nedenle kritik operasyonlarda yerel doğrulama yapılır.",
+              "Tank dibinde kalan suyun alınması için eductor (ejektör) kullanılır; basma suyu ile vakum oluşturarak düşük seviyedeki suyu emer. Eductor'un çalışması için gerekli tahrik basıncı sağlanmazsa emiş oluşmaz ve tank sıyrılamaz.",
+              "Balast operasyonu yükleme/tahliye planıyla eşzamanlı yürütülür; ara safhalarda draft, trim ve mukavemet sınırları yük bilgisayarıyla izlenir. Balast suyu yönetim gereklilikleri ve kayıtları ayrıca uygulanır."
+            ],
+            formula: {
+              expression: "t = V / Q",
+              variables: [
+                "t: Süre (saat)",
+                "V: Aktarılacak hacim (m³)",
+                "Q: Pompa debisi (m³/saat)"
+              ]
+            },
+            example: {
+              problem: "3000 m³ balastın 500 m³/saat kapasiteli tek pompayla basılması ne kadar sürer? Yükleme 4 saatte tamamlanacaksa ne yapılmalıdır?",
+              steps: [
+                "t = 3000 / 500 = 6 saat",
+                "Gerekli kapasite: Q = 3000 / 4 = 750 m³/saat"
+              ],
+              result: "Tek pompa yetersizdir; ikinci pompa devreye alınmalı veya yükleme hızı terminalle görüşülerek düşürülmelidir. Aksi hâlde ara safhalarda draft ve mukavemet sınırları zorlanır."
+            }
+          },
+          {
+            heading: "Sintine Devresi ve Acil Emiş",
+            paragraphs: [
+              "Sintine kuyularında yüksek seviye alarmı bulunur; makine dairesi gözetimsiz (UMS) çalışırken bu alarm su almaya karşı temel erken uyarıdır. Kuyu süzgeçleri ve emiş hatları tıkalıysa alarm gelse bile su basılamaz.",
+              "Makine dairesinde, en yüksek kapasiteli pompadan doğrudan emiş sağlayan acil sintine emiş düzeni bulunur. Bu düzenin valf konumu, erişilebilirliği ve çalışır durumu tatbikat kapsamında doğrulanır; önüne malzeme istiflenmesi tipik bir bulgudur.",
+              "Sintine suyu, onaylı 15 ppm ekipmanından geçmeden denize verilemez. Sintine ile balast hatlarının birbirine geçişini önleyen çek valfler ve kör flanşlar denetimlerde özellikle incelenir."
+            ]
+          },
+          {
+            heading: "Kayıt ve Uyum",
+            paragraphs: [
+              "Sintine suyunun aktarımı, denize verilmesi veya kıyı tesisine teslimi Yağ Kayıt Defterine işlenir. Balast operasyonları ise balast suyu yönetim planı ve kayıt defteri kapsamındadır.",
+              "Kayıtların operasyonla ve tank sounding değerleriyle tutarlı olması, denetimde tek başına ekipmanın çalışır olmasından daha belirleyicidir."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Balast ve sintine hatlarının ayrımı, hem su alma emniyeti hem de kirlilik açısından temel savunmadır.",
+          "Mimik pano göstergesi ile gerçek valf konumu farklı olabilir; kritik operasyonda yerel doğrulama yapılır.",
+          "Acil sintine emişinin erişilebilir ve çalışır olması, tatbikat ve tur kontrolleriyle sürekli doğrulanır.",
+          "Sintine suyu yalnız onaylı 15 ppm ekipmanı ve geçerli koşullar sağlandığında denize verilebilir; kayıt zinciri operasyonla tutarlı olmalıdır."
+        ],
+        workingPrinciple: [
+          "Balast pompası, deniz sandığından veya tanktan aldığı suyu ana hat üzerinden hedef tanka basar.",
+          "Uzaktan kumandalı valfler hidrolik/pnömatik aktüatörlerle açılır; konum geri beslemesi panoda gösterilir.",
+          "Eductor, tahrik suyu ile vakum oluşturarak tank dibindeki suyu sıyırır.",
+          "Sintine pompası, kuyulardan aldığı suyu holding tankına veya onaylı ayırıcıya gönderir.",
+          "Yüksek seviye alarmı, kuyudaki su seviyesi eşiği aştığında kontrol odasına uyarı verir."
+        ],
+        operation: [
+          "Operasyon öncesi hat dizilimini P&ID üzerinden kur ve kritik valfleri yerel olarak doğrula.",
+          "Pompa emiş/basma basınçlarını, tank seviye değişimini ve draft/trim etkisini birlikte izle.",
+          "Sıyırma safhasında eductor tahrik basıncını kontrol et; emiş oluşmuyorsa hattı ve valfleri gözden geçir.",
+          "Sintine kuyularını turlarda gözle kontrol et, alarm testlerini planlı aralıkta yap.",
+          "Tüm aktarım ve deşarj işlemlerini ilgili kayıt defterine zamanında ve gerçek değerlerle işle."
+        ],
+        faults: [
+          { fault: "Balast pompası emiş yapmıyor", cause: "Hava emme, kapalı valf, süzgeç tıkanıklığı veya priming arızası", action: "Hat dizilimini doğrula, priming düzenini kontrol et, süzgeci temizle." },
+          { fault: "Tank sıyrılamıyor", cause: "Eductor tahrik basıncı yetersiz, hat tıkalı", action: "Tahrik pompası basıncını ölç, eductor nozulunu ve hattı kontrol et." },
+          { fault: "Sintine kuyusu seviyesi düşmüyor", cause: "Süzgeç tıkalı, çek valf sızdırıyor, pompa emiş kaybı", action: "Kuyu süzgecini temizle, çek valfi kontrol et, yedek emiş düzenine geç." },
+          { fault: "Yüksek seviye alarmı gelmiyor", cause: "Şamandıra/sensör kirlenmesi veya arızası", action: "Sensörü temizle, fonksiyon testini yap, sonucu kayda geç." },
+          { fault: "Balast tankında beklenmeyen seviye değişimi", cause: "Valf iç geçişi veya hat/kaplama hasarı", action: "İlgili valfleri izole ederek ayrım yap, tank sounding trendini karşılaştır, Başmühendisi bilgilendir." }
+        ],
+        precautions: [
+          "Balast tankı ve kuyu girişleri kapalı mahaldir; giriş izni, gaz ölçümü ve havalandırma olmadan girilmez.",
+          "Sintine ve balast hatları arasında geçici bağlantı kurulmaz; bu tür düzenlemeler denetimde ağır uygunsuzluktur.",
+          "Onaylı ayırıcı devre dışıyken sintine suyu denize verilmez; holding kapasitesi ve kıyı tesisi planı önceden kurulur.",
+          "Ağır hava ve yükleme safhalarında serbest yüzey etkisi dikkate alınarak tanklar mümkün olduğunca dolu veya boş tutulur."
+        ]
+      },
+      {
+        title: "Hidrolik Güç Üniteleri ve Güverte Hidroliği",
+        introduction: "Hidrolik güç ünitesi (HPU), elektrik motoru ve pompa grubuyla basınçlı yağ üreterek dümen makinesi, ırgat, vinç, ambar kapağı ve valf aktüatörleri gibi tüketicileri besler. Sistemin güvenilirliği pompa ve silindirden çok yağ temizliği, sızdırmazlık ve basınç emniyet düzeninin sağlığına bağlıdır.",
+        sections: [
+          {
+            heading: "Ünite Bileşenleri",
+            paragraphs: [
+              "Bir HPU; yağ tankı, değişken deplasmanlı veya sabit deplasmanlı pompa, emniyet (relief) valfi, filtreler, soğutucu, akümülatör ve yön kontrol valflerinden oluşur. Tüketiciye giden hatlar üzerinde ayrıca kilitleme ve yük tutma valfleri bulunur.",
+              "Değişken deplasmanlı pompalar, talep olmadığında debiyi düşürerek ısınmayı ve enerji tüketimini azaltır. Sabit deplasmanlı düzenlerde ise fazla debi emniyet valfinden döner ve yağ sıcaklığı hızla yükselir.",
+              "Filtreler dönüş ve basınç hatlarında bulunur; fark basıncı göstergesi kirlenmeyi haber verir. Filtre baypası açık kalırsa sistem filtresiz çalışır ve aşınma hızlanır."
+            ],
+            table: {
+              headers: ["Bileşen", "Görev", "İzlenen değer"],
+              rows: [
+                ["Pompa grubu", "Basınç ve debi üretimi", "Basınç, motor akımı, gürültü"],
+                ["Emniyet valfi", "Aşırı basınç koruması", "Ayar basıncı, sürekli açma belirtisi"],
+                ["Akümülatör", "Ani talep ve darbe sönümleme", "Ön şarj basıncı, tepki süresi"],
+                ["Filtre", "Kirletici kontrolü", "Fark basıncı, değişim aralığı"],
+                ["Soğutucu", "Yağ sıcaklığı kontrolü", "Giriş/çıkış sıcaklık farkı"]
+              ]
+            }
+          },
+          {
+            heading: "Akümülatör ve Ön Şarj",
+            paragraphs: [
+              "Akümülatör, azot gazı ile önceden şarj edilmiş bir hazne üzerinden enerji depolar. Ön şarj basıncı üreticinin verdiği değere göre ayarlanır; genel uygulamada minimum çalışma basıncının biraz altında tutulur.",
+              "Ön şarj düşerse akümülatör kapasitesi azalır ve pompa sık devreye girer; çok yüksek olursa yağ hacmi kullanılamaz ve darbe sönümleme kaybolur. Basınç ölçümü ancak sistem tarafı boşaltıldıktan sonra doğru okunur."
+            ],
+            formula: {
+              expression: "P₁ × V₁ = P₂ × V₂",
+              variables: [
+                "P₁, V₁: Ön şarj basıncı ve gaz hacmi",
+                "P₂, V₂: Çalışma basıncındaki basınç ve gaz hacmi"
+              ]
+            },
+            example: {
+              problem: "50 litre hacimli bir akümülatör 100 bar ön şarj ile dolduruluyor. Sistem basıncı 160 bar iken depolanan kullanılabilir yağ hacmi yaklaşık ne kadardır?",
+              steps: [
+                "P₁V₁ = P₂V₂ → 100 × 50 = 160 × V₂",
+                "V₂ = 5000 / 160 ≈ 31,3 litre",
+                "Kullanılabilir yağ = 50 − 31,3 ≈ 18,7 litre"
+              ],
+              result: "Yaklaşık 18,7 litre yağ depolanır. Ön şarj basıncı düştüğünde bu hacim azalır ve pompanın devreye girme sıklığı artar; sık devreye girme çoğu zaman ön şarj kaybının ilk işaretidir."
+            }
+          },
+          {
+            heading: "Yağ Temizliği ve Kaçak Yönetimi",
+            paragraphs: [
+              "Hidrolik arızalarının büyük bölümü kirlilik kaynaklıdır. Hedef temizlik sınıfı üretici tarafından belirlenir; su içeriği ve partikül sayımı periyodik olarak takip edilir. Tank havalandırma filtresi ihmal edildiğinde neme ve toza açık bir sistem oluşur.",
+              "Güvertede yüksek basınçlı yağ kaçağı ciddi bir yaralanma riskidir; kaçak arayışında el veya çıplak cilt kullanılmaz. Hortumlar yaş, çatlak ve kıvrım yönünden düzenli incelenir.",
+              "Denizle temas eden hidrolik düzenlerde (dümen makinesi, ırgat, vinç, ambar kapağı) çevreye uyumlu yağ kullanımı ve kaçak kayıtları, geminin sefer bölgesine göre uygulanabilir kurallardan doğrulanır."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Hidrolik arızalarının çoğu bileşen değil kirlilik ve nem kaynaklıdır; filtre ve havalandırma bakımı birincil önlemdir.",
+          "Pompanın sık devreye girmesi genellikle akümülatör ön şarj kaybının ilk göstergesidir.",
+          "Emniyet valfinin sürekli açması hem enerji kaybı hem de hızlı yağ ısınması demektir.",
+          "Yüksek basınçlı yağ kaçağı cilde nüfuz edebilir; kaçak asla elle aranmaz."
+        ],
+        workingPrinciple: [
+          "Elektrik motoru pompayı döndürür; pompa tanktan aldığı yağı basınçlandırır.",
+          "Yön kontrol valfi, basınçlı yağı silindir veya hidrolik motora yönlendirir.",
+          "Emniyet valfi, ayar basıncı aşıldığında yağı tanka döndürerek sistemi korur.",
+          "Akümülatör ani talepte yağ verir, darbeleri sönümler ve pompanın sürekli çalışmasını azaltır.",
+          "Dönen yağ filtre ve soğutucudan geçerek tanka döner."
+        ],
+        operation: [
+          "Çalıştırmadan önce tank seviyesi, yağ sıcaklığı, filtre fark basıncı ve kaçak durumunu kontrol et.",
+          "Sistem basıncını ve motor akımını yüksüz/yüklü koşulda karşılaştır.",
+          "Akümülatör ön şarjını planlı aralıkta ve yalnız sistem tarafı boşaltıldıktan sonra ölç.",
+          "Tüketici bazında hareket hızını ve tutma özelliğini kontrol et; yavaşlama iç kaçağı gösterir.",
+          "Yağ numunesini periyodik al; partikül ve su içeriği sonuçlarına göre filtre/yağ planı güncelle."
+        ],
+        faults: [
+          { fault: "Hareket yavaş veya güçsüz", cause: "Pompa aşınması, iç kaçak, emniyet valfi ayarı düşük", action: "Basınç ölçümü yap, valf ayarını doğrula, silindir sızdırmazlığını test et." },
+          { fault: "Yağ sıcaklığı yüksek", cause: "Emniyet valfinden sürekli dönüş, soğutucu kirli, düşük yağ seviyesi", action: "Valf ayarını ve talebi kontrol et, soğutucuyu temizle, seviyeyi tamamla." },
+          { fault: "Pompa sık devreye giriyor", cause: "Akümülatör ön şarj kaybı veya sistemde kaçak", action: "Ön şarjı ölç ve düzelt, hat/valf kaçaklarını ara." },
+          { fault: "Sistemde gürültü ve titreşim", cause: "Emişte hava, kavitasyon, tank seviyesi düşük", action: "Seviyeyi tamamla, emiş hattı sızdırmazlığını kontrol et, havayı al." },
+          { fault: "Yağ süt rengi", cause: "Yağda su bulunması", action: "Kaynağı belirle (soğutucu, havalandırma, güverte suyu), numune al, gerekiyorsa yağı değiştir." }
+        ],
+        precautions: [
+          "Basınçlı hatlarda çalışmadan önce basınç boşaltılır, akümülatör tarafı da tahliye edilir ve kilitleme/etiketleme uygulanır.",
+          "Kaçak aramak için karton veya uygun bir yüzey kullanılır; el veya çıplak cilt asla kullanılmaz.",
+          "Yüksek basınçlı yağ yaralanmalarında görünür yara küçük olsa bile derhal tıbbi destek istenir.",
+          "Yağ kaçakları güvertede kayma riski ve deniz kirliliği yaratır; hemen toplanır ve kaydedilir."
+        ]
+      },
+      {
+        title: "Yakıt/Yağ Transfer ve Sludge Sistemi",
+        introduction: "Transfer sistemi, bunker tanklarındaki yakıt ve yağı çökeltme/servis tanklarına ve tanklar arasında taşır. Sludge sistemi ise separatör, filtre, drenaj ve kaçak kaynaklı yağ kalıntılarını toplayıp kontrollü şekilde bertaraf eder. Bu iki hat, MARPOL uyumunun ve makine dairesi temizliğinin belkemiğidir.",
+        sections: [
+          {
+            heading: "Transfer Hattı ve Tank Düzeni",
+            paragraphs: [
+              "Transfer pompaları genellikle vidalı veya dişli tip pozitif deplasmanlı pompalardır; viskoz yakıtta kararlı debi sağlarlar. Basma tarafında emniyet valfi bulunur, çünkü kapalı valfe karşı basan pozitif deplasmanlı pompa hattı patlatabilir.",
+              "Tank ısıtma serpantinleri yakıtın pompalanabilir kalmasını sağlar. Serpantin kaçağı hem tanka su karıştırır hem de kondens hattına yağ taşıyarak kirlilik yaratır; kondens gözetleme tankı bu nedenle düzenli kontrol edilir.",
+              "Tank seviye göstergeleri, yüksek seviye alarmı ve taşma (overflow) tankı, transfer sırasındaki en önemli koruma katmanıdır. Transfer, terk edilip başka işe geçilecek bir operasyon değildir."
+            ]
+          },
+          {
+            heading: "Sludge Üretimi ve Bertaraf",
+            paragraphs: [
+              "Sludge kaynakları; separatör boşaltmaları, filtre temizlikleri, tank drenajları, yakıt/yağ kaçakları ve sintine tankı yağ fazıdır. Üretilen miktar, kullanılan yakıt kalitesi ve separatör ayarlarıyla doğrudan ilişkilidir.",
+              "Bertaraf yolları sınırlıdır: onaylı insineratörde yakma veya kıyı atık alım tesisine teslim. Sludge tankından denize doğrudan bağlantı bulunmaması ve boşaltma hattının standart bağlantıya sahip olması, denetimlerde ilk bakılan noktalardandır.",
+              "Sludge tankı seviyesi, üretim ve bertaraf miktarları arasındaki tutarlılık (kütle dengesi) hem işletme hem de denetim açısından kritiktir. Kayıtlarla gerçek seviyelerin uyuşmaması, tek başına ağır bir bulgudur."
+            ],
+            table: {
+              headers: ["İşlem", "Yağ Kayıt Defteri (Bölüm I) kodu", "Tipik kanıt"],
+              rows: [
+                ["Yakıt veya dökme yağ alımı (bunker)", "H", "Bunker delivery note, tank sounding"],
+                ["Sludge toplama ve transferi", "C", "Tank seviyesi, transfer saatleri"],
+                ["Sludge/atık yağın kıyıya teslimi", "C", "Atık alım tesisi makbuzu"],
+                ["Sintine suyunun elle deşarjı veya bertarafı", "D", "Ekipman kaydı, konum ve miktar"]
+              ]
+            }
+          },
+          {
+            heading: "Bunker Operasyonu ve Kirlilik Önleme",
+            paragraphs: [
+              "Bunker öncesi tank planı, kapasite hesabı, haberleşme ve acil durdurma yöntemi karşı tarafla birlikte kararlaştırılır. Güverte firar delikleri (scupper) kapatılır, damlama tavaları boşaltılır ve SOPEP ekipmanı hazır bulundurulur.",
+              "Alım sırasında temsili numune alınır ve saklanır; numune, yakıt kalitesi ve kükürt uyumu tartışmalarında tek nesnel kanıttır.",
+              "Operasyon boyunca sürekli gözetim, seviye takibi ve kademeli tank değişimi uygulanır. Taşma riski en yüksek an, tank değişimi ve son doldurma safhasıdır."
+            ]
+          }
+        ],
+        keyPoints: [
+          "Pozitif deplasmanlı transfer pompası kapalı valfe karşı basamaz; emniyet valfi ve doğru hat dizilimi zorunludur.",
+          "Sludge tankından denize doğrudan bağlantı bulunmaması ve standart boşaltma bağlantısının uygunluğu denetimde ilk kontrol edilen noktalardandır.",
+          "Sludge üretimi, bertarafı ve tank seviyesi arasındaki tutarlılık kayıtlarla birlikte değerlendirilir.",
+          "Bunker sırasında en yüksek taşma riski tank değişimi ve son doldurma safhasındadır."
+        ],
+        workingPrinciple: [
+          "Transfer pompası, bunker tankından aldığı yakıtı seçilen tanka basar; hat dizilimi valflerle kurulur.",
+          "Isıtma serpantinleri viskoziteyi pompalanabilir aralıkta tutar.",
+          "Separatör, filtre ve drenaj kaynaklı kalıntılar sludge tankında toplanır.",
+          "Sludge pompası, tank içeriğini insineratör besleme tankına veya standart bağlantı üzerinden kıyı tesisine gönderir.",
+          "Yüksek seviye alarmı ve taşma tankı, aşırı doldurmaya karşı son koruma katmanıdır."
+        ],
+        operation: [
+          "Transfer öncesi tank seviyelerini, hat dizilimini ve alarm durumlarını doğrula; hedef tank kapasitesini hesapla.",
+          "Transferi sürekli gözetim altında yürüt; seviye değişimini beklenen debiyle karşılaştır.",
+          "Isıtma sıcaklığını yakıt tipine uygun tut; aşırı ısıtmadan kaçın.",
+          "Sludge tankı seviyesini haftalık trendle; insineratör veya kıyı teslimi planını buna göre kur.",
+          "Her işlemi Yağ Kayıt Defterine zamanında, doğru kod ve gerçek miktarlarla işle."
+        ],
+        faults: [
+          { fault: "Transfer sırasında basınç yükseliyor, debi yok", cause: "Kapalı valf veya tıkalı hat", action: "Pompayı durdur, hat dizilimini kontrol et, emniyet valfinin ayarını doğrula." },
+          { fault: "Tanka su karışıyor", cause: "Isıtma serpantini kaçağı", action: "Serpantini izole et ve basınç testi yap, kondens gözetleme tankını kontrol et." },
+          { fault: "Sludge miktarı beklenenden yüksek", cause: "Kötü yakıt kalitesi, separatör ayar/performans sorunu, aşırı drenaj", action: "Separatör sıcaklık ve debisini gözden geçir, yakıt analizini kontrol et, kaynakları ayrı ayrı ölç." },
+          { fault: "Sludge pompası basmıyor", cause: "Yoğun/soğuk kalıntı, tıkanma", action: "Tank ısıtmasını çalıştır, emiş ağzını ve hattı kontrol et." },
+          { fault: "Taşma tankı seviyesi yükselmiş", cause: "Aşırı doldurma veya valf iç geçişi", action: "Transferi durdur, kaynağı belirle, olayı ve düzeltici işlemi kayda geç." }
+        ],
+        precautions: [
+          "Bunker ve transfer sırasında güverte firar delikleri kapatılır, damlama tavaları boş ve SOPEP ekipmanı hazır tutulur.",
+          "Sıcak yakıt hatlarında sızıntı yangın riskidir; izolasyon ve sıçrama koruması korunur.",
+          "Sludge tankı kapalı mahaldir; giriş yalnız izin, gaz ölçümü ve havalandırma ile yapılır.",
+          "Kayıt defteri girişleri sonradan toplu değil, işlem tamamlandıkça yapılır ve sorumlu tarafından imzalanır."
         ]
       }
     ]
