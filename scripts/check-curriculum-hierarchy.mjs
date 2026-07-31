@@ -7,8 +7,10 @@ const failures = [];
 
 const hierarchy = read("src/data/curriculumHierarchy.ts");
 const beta = read("src/data/betaLessons.ts");
+const supplements = read("src/data/curriculumSupplementTopics.ts");
 const categories = read("src/data/calculationCenterConfig.ts");
 const machine = read("src/data/machineTopicData.ts");
+const machineLessons = read("src/data/machineTopicLessonData.ts");
 const lessonsRoute = read("src/pages/LessonsPage.tsx");
 const lessonTopicsRoute = read("src/pages/LessonTopicsPage.tsx");
 const machineTopicsRoute = read("src/pages/MachineTopicLessonsPage.tsx");
@@ -59,7 +61,7 @@ const requiredTracks = [
   "Denizcilik İngilizcesi ve Operasyonel İletişim",
   "Mevzuat, Sertifikalar ve Denetimler",
 ];
-for (const title of requiredTracks) requireText(hierarchy, title, "dahili konu eşleşmeleri");
+for (const title of requiredTracks) requireText(hierarchy, title, "yeterlilik veri eşleştirmeleri");
 
 forbidText(categories, 'subtitle: ""', "kategori alt başlıkları");
 forbidText(categories, 'title: "Cargo Handling and Stowage"', "başlık dil standardı");
@@ -83,10 +85,10 @@ requireText(machineTopicsRoute, "MachineCurriculumCoursePage", "makine rota yön
 requireText(lessonsPage, "useSearchParams", "kitaplık görünüm seçimi");
 requireText(lessonsPage, "Güverte Kitaplığı", "kitaplık girişleri");
 requireText(lessonsPage, "Makine Kitaplığı", "kitaplık girişleri");
+forbidText(lessonsPage, "Mesleki Yeterlilikler", "ayrı yeterlilik kitaplığı");
+forbidText(lessonsPage, '"tracks"', "ayrı yeterlilik görünümü");
+forbidText(lessonsPage, "competencyTracks", "yeterlilik parkurları arayüzü");
 requireText(lessonsPage, "aspect-[3/4]", "kitap kapağı görünümü");
-forbidText(lessonsPage, "Mesleki Yeterlilikler", "ayrı yeterlilik bölümü");
-forbidText(lessonsPage, "competencyTracks", "ayrı yeterlilik parkurları arayüzü");
-forbidText(lessonsPage, '"tracks"', "ayrı yeterlilik görünüm anahtarı");
 forbidText(lessonsPage, "sectionIconMap", "ana ekrandaki araç butonları");
 forbidText(lessonsPage, "config.sections.map", "ana ekrandaki araç butonları");
 
@@ -97,7 +99,10 @@ for (const [file, source] of [
 ]) {
   requireText(source, "getBetaModules", `${file} modül entegrasyonu`);
   forbidText(source, "topicsData", `${file} eski sabit konu listesi`);
+  forbidText(source, "TopicCompetencyBadges", `${file} yeterlilik etiketi`);
 }
+forbidText(deckDetail, "TopicCompetencyBadges", "güverte konu detayı yeterlilik etiketi");
+forbidText(machineDetail, "TopicCompetencyBadges", "makine konu detayı yeterlilik etiketi");
 
 requireText(lessonTopics, "CourseSectionTabs", "güverte ders sekmeleri");
 requireText(machineTopics, "CourseSectionTabs", "makine ders sekmeleri");
@@ -107,10 +112,6 @@ forbidText(lessonTopics, "expandedModules", "güverte çoklu açık modül davra
 forbidText(machineTopics, "expandedModules", "makine çoklu açık modül davranışı");
 forbidText(lessonTopics, "Ders Araçları", "güverte ayrı araç kartı");
 forbidText(machineTopics, "Ders Araçları", "makine ayrı araç kartı");
-forbidText(lessonTopics, "TopicCompetencyBadges", "güverte yeterlilik etiketi");
-forbidText(machineTopics, "TopicCompetencyBadges", "makine yeterlilik etiketi");
-forbidText(deckDetail, "TopicCompetencyBadges", "güverte konu detayı yeterlilik etiketi");
-forbidText(machineDetail, "TopicCompetencyBadges", "makine konu detayı yeterlilik etiketi");
 
 for (const tabLabel of ["Konular", "Hesaplamalar", "Formüller", "Kurallar", "Alıştırmalar"]) {
   requireText(courseTabs, tabLabel, "ortak ders sekmeleri");
@@ -119,6 +120,52 @@ requireText(courseTabs, "/exercises/${exerciseCategory}/topics", "Alıştırmala
 forbidText(courseTabs, "/exercises/${exerciseCategory}/quiz", "eski toplu quiz yönlendirmesi");
 requireText(courseHeader, "CourseSectionTabs", "araç sayfalarında kalıcı sekme şeridi");
 forbidText(courseHeader, "sectionMeta", "tekrarlanan bölüm alt başlığı");
+
+const requiredSupplementTopics = [
+  "IAMSAR ve Arama Kurtarma Koordinasyonu",
+  "İş Emniyetinde Şiddet, Taciz ve Zorbalığın Önlenmesi",
+  "Konteyner Kaybı, Tehlike Mesajı ve Olay Belgeleri",
+  "Alternatif Yakıtların Operasyonel Emniyeti",
+  "Yüksek Gerilim İzolasyonu ve Ark Parlaması Emniyeti",
+  "Batarya Enerji Depolama ve Termal Kaçak",
+  "Makine Otomasyonu ve OT Siber Güvenliği",
+  "Psikolojik Güvenlik, Şiddet ve Tacize Müdahale",
+  "Havuzlama ve Teknik Survey Hazırlığı",
+];
+for (const title of requiredSupplementTopics) {
+  requireText(supplements, title, "mevcut modüllere eklenen konular");
+}
+
+const requiredExistingModuleTargets = [
+  'moduleId: "com-distress"',
+  'moduleId: "safety-occupational"',
+  'moduleId: "cargo-documents"',
+  'moduleId: "machine-fuel-technology-deniz-yakit-turleri"',
+  'moduleId: "machine-electrical-elektrik-dagitim-sistemi"',
+  'moduleId: "machine-electrical-aydinlatma-ve-aku-sistemleri"',
+  'moduleId: "machine-automation-plc-ve-otomasyon-sistemleri"',
+  'moduleId: "machine-erm-liderlik-ve-iletisim"',
+  'moduleId: "machine-maintenance-planli-bakim-sistemi-pms"',
+];
+for (const target of requiredExistingModuleTargets) {
+  requireText(supplements, target, "tamamlayıcı konu modül hedefi");
+}
+
+for (const existingModuleTitle of [
+  "Deniz Yakıt Türleri",
+  "Elektrik Dağıtım Sistemi",
+  "Aydınlatma ve Akü Sistemleri",
+  "PLC ve Otomasyon Sistemleri",
+  "Liderlik ve İletişim",
+  "Planlı Bakım Sistemi (PMS)",
+]) {
+  requireText(machineLessons, existingModuleTitle, "makine mevcut modül hedefi");
+}
+requireText(beta, "getCurriculumSupplementTopics", "tamamlayıcı konu veri bağlantısı");
+requireText(beta, ".filter((topic) => topic.moduleId === module.id)", "yalnız mevcut modüle ekleme davranışı");
+requireText(beta, "getCurriculumModules(key).map", "mevcut modül listesinin korunması");
+forbidText(beta, "supplementModules", "yeni tamamlayıcı modül üretimi");
+forbidText(beta, "modules.push", "yeni modül başlığı üretimi");
 
 requireText(questionDistribution, "getTopicQuiz", "eski quiz bankası kaynağı");
 requireText(questionDistribution, "getBetaTopic", "konu içeriğine göre soru eşleştirmesi");
@@ -152,8 +199,10 @@ for (const [source, binding, label] of visibleDescriptionBindings) {
 }
 
 const literalIds = [...hierarchy.matchAll(/\bid:\s*"([a-z0-9-]+)"/g)].map((match) => match[1]);
-const duplicates = [...new Set(literalIds.filter((id, index) => literalIds.indexOf(id) !== index))];
-if (duplicates.length) failures.push(`curriculumHierarchy: yinelenen sabit id: ${duplicates.join(", ")}`);
+const supplementIds = [...supplements.matchAll(/\bid:\s*"([a-z0-9-]+)"/g)].map((match) => match[1]);
+const allIds = [...literalIds, ...supplementIds];
+const duplicates = [...new Set(allIds.filter((id, index) => allIds.indexOf(id) !== index))];
+if (duplicates.length) failures.push(`müfredat: yinelenen sabit id: ${duplicates.join(", ")}`);
 
 const genericDisplayHeadings = ["Detaylı Anlatım", "Formül 1", "Çözümlü Örnek 1"];
 for (const heading of genericDisplayHeadings) {
@@ -169,5 +218,5 @@ if (failures.length) {
 }
 
 console.log(
-  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, iki kitaplık girişli Dersler ekranı, ayrı yeterlilik bölümü veya etiketi olmadan ortak ders sekmeleri, konu bazlı quiz dağılımı ve tek açık modül davranışı.`,
+  `✅ Müfredat doğrulandı: ${requiredCourses.length} ana ders, ${requiredSupplementTopics.length} mevcut modüle eklenen konu, ortak ders sekmeleri, konu bazlı quiz dağılımı, tek açık modül ve açıklamasız başlık arayüzü.`,
 );
