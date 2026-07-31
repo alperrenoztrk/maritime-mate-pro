@@ -1,8 +1,9 @@
 import type { CSSProperties } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
-import { ArrowLeft, BookOpen, ChevronRight, Ship, Wrench } from "lucide-react";
+import { ArrowLeft, ChevronRight, Ship, Wrench } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { LibraryBookCard } from "@/components/library/LibraryInterface";
 
 const LESSONS_JSONLD = {
   "@context": "https://schema.org",
@@ -128,7 +129,6 @@ export default function LessonsLibraryPage() {
 
             <section className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {libraryCategories.map((category) => {
-                const CategoryIcon = category.icon;
                 const isMachineTopic = category.key.startsWith("machine-");
                 const machineSlug = isMachineTopic
                   ? category.key.replace("machine-", "")
@@ -138,27 +138,13 @@ export default function LessonsLibraryPage() {
                   : `/lessons/${category.key}/topics`;
 
                 return (
-                  <Link
+                  <LibraryBookCard
                     key={category.key}
                     to={href}
-                    className="group relative aspect-[3/4] min-h-60 overflow-hidden rounded-l-md rounded-r-3xl border border-white/20 shadow-lg transition duration-300 hover:-translate-y-1 hover:rotate-[0.4deg] hover:shadow-2xl"
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${category.accent}`} />
-                    <div className="absolute inset-y-0 left-0 w-4 border-r border-white/15 bg-black/20 shadow-[4px_0_12px_rgba(0,0,0,0.18)]" />
-                    <div className="absolute inset-y-3 right-0 w-1.5 rounded-l-full bg-white/35" />
-                    <div className="absolute inset-x-5 bottom-1 h-1 rounded-full bg-white/30" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.28),transparent_42%)]" />
-
-                    <div className="relative flex h-full flex-col p-5 pl-7 text-white">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-                        <CategoryIcon className="h-5 w-5" />
-                      </span>
-                      <div className="mt-auto flex items-end justify-between gap-3 pb-2">
-                        <h2 className="text-base font-bold leading-snug sm:text-lg">{category.title}</h2>
-                        <BookOpen className="h-5 w-5 shrink-0 opacity-80 transition-transform group-hover:scale-110" />
-                      </div>
-                    </div>
-                  </Link>
+                    title={category.title}
+                    icon={category.icon}
+                    accent={category.accent}
+                  />
                 );
               })}
             </section>
