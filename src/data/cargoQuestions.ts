@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { cargoQuestionsExtended } from "@/data/cargoQuestionsExtended";
 
-export const cargoQuestions: QuizQuestion[] = [
+const baseCargoQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "TPC değeri 25 ton/cm olan bir geminin draftı 8.80 m'den 9.05 m'ye çıktığında yaklaşık kaç ton yük alınmıştır?",
@@ -844,5 +845,10 @@ export const cargoQuestions: QuizQuestion[] = [
     explanation: "Bazı tehlikeli maddeler güvertede taşınır; acil müdahale, havalandırma ve gerekirse denize atma imkânı için.",
     category: "IMDG"
   }
+];
+
+export const cargoQuestions: QuizQuestion[] = [
+  ...baseCargoQuestions,
+  ...cargoQuestionsExtended,
 ];
 

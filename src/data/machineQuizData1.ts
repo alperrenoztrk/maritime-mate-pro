@@ -1,4 +1,4 @@
-// Makine Bölümü Quiz Soruları — Her konu 50 soru
+// Makine Bölümü Quiz Soruları — taban banka (her konu id 1..50); devamı machineQuizDataExt*.ts
 import type { QuizQuestion } from "@/types/quiz";
 
 export const machineQuizQuestions: Record<string, QuizQuestion[]> = {

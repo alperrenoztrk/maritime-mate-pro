@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { economicsQuestionsExtended } from "@/data/economicsQuestionsExtended";
 
-export const economicsQuestions: QuizQuestion[] = [
+const baseEconomicsQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "Voyage charter (sefer çarteri) nedir?",
@@ -652,4 +653,9 @@ export const economicsQuestions: QuizQuestion[] = [
     explanation: "Incoterms 2020'de CIP, satıcının daha geniş kapsamlı (ICC A) sigorta yaptırmasını gerektirirken, CIF asgari (ICC C) sigortayı gerektirir.",
     category: "Incoterms 2020"
   }
+];
+
+export const economicsQuestions: QuizQuestion[] = [
+  ...baseEconomicsQuestions,
+  ...economicsQuestionsExtended,
 ];

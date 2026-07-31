@@ -12,7 +12,7 @@ import { economicsQuestions } from "@/data/economicsQuestions";
 
 /**
  * Birleşik quiz registry'si. Güverte konuları kendi soru bankalarından;
- * makine konuları mevcut 800'lük bankadan (slug anahtarlı, 50/konu) gelir.
+ * makine konuları 2400'lük bankadan (slug anahtarlı, 150/konu) gelir.
  */
 const deckQuiz: Record<string, QuizQuestion[]> = {
   stability: stabilityQuestions,

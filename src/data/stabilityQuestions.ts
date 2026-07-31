@@ -1,7 +1,8 @@
 import type { QuizQuestion } from "@/types/quiz";
 import { createSeededRng, pickRandomUnique } from "@/utils/random";
+import { stabilityQuestionsExtended } from "@/data/stabilityQuestionsExtended";
 
-export const stabilityQuestions: QuizQuestion[] = [
+const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "2008 IS Code'a göre genel yük gemileri için GZ alan kriter setlerinden hangisi doğrudur?",
@@ -507,6 +508,11 @@ export const stabilityQuestions: QuizQuestion[] = [
     explanation: "Kütle dağılımı/GM ayarı veya hız/rota ile karşılaşma periyodunu değiştirerek rezonansın önüne geçilebilir.",
     category: "Second-Generation IS"
   }
+];
+
+export const stabilityQuestions: QuizQuestion[] = [
+  ...baseStabilityQuestions,
+  ...stabilityQuestionsExtended,
 ];
 
 // Kategorilere göre soruları filtreleme fonksiyonu

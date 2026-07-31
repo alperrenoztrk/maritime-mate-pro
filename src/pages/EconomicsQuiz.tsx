@@ -17,7 +17,7 @@ export default function EconomicsQuizPage() {
   }, [seed, count]);
   const maxCount = economicsQuestions.length;
   const selectableCounts = useMemo(() => {
-    const baseCounts = [10, 25, 50, maxCount];
+    const baseCounts = [10, 25, 50, 100, maxCount];
     const uniqueCounts = Array.from(new Set(baseCounts.filter((n) => n <= maxCount)));
     return uniqueCounts.sort((a, b) => a - b);
   }, [maxCount]);

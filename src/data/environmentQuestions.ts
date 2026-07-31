@@ -1,10 +1,11 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { environmentQuestionsExtended } from "@/data/environmentQuestionsExtended";
 
 /**
  * Çevre Koruma soru bankası — MARPOL Annex I–VI, BWM, atık yönetimi ve
  * enerji verimliliği (EEXI/CII). Gerçek IMO mevzuatına dayanır.
  */
-export const environmentQuestions: QuizQuestion[] = [
+const baseEnvironmentQuestions: QuizQuestion[] = [
   { id: 1, question: "MARPOL Annex I hangi kirliliği düzenler?", options: ["Yağ kirliliği", "Zararlı sıvı maddeler", "Çöp", "Hava kirliliği"], correctAnswer: 0, explanation: "Annex I, gemilerden kaynaklanan yağ (oil) kirliliğini önler.", category: "MARPOL Genel" },
   { id: 2, question: "MARPOL Annex VI hangi konuyu kapsar?", options: ["Atık su", "Hava kirliliği (SOx/NOx)", "Çöp", "Balast suyu"], correctAnswer: 1, explanation: "Annex VI gemilerden hava kirliliğini (SOx, NOx, partikül, sera gazları) düzenler.", category: "MARPOL Genel" },
   { id: 3, question: "Makine dairesi sintine suyu denize basılırken yağ içeriği en fazla kaç ppm olabilir?", options: ["5 ppm", "10 ppm", "15 ppm", "100 ppm"], correctAnswer: 2, explanation: "MARPOL Annex I: OWS çıkışında yağ içeriği 15 ppm'i aşamaz.", category: "Annex I – Yağ" },
@@ -55,4 +56,9 @@ export const environmentQuestions: QuizQuestion[] = [
   { id: 48, question: "Antifouling sistemlerinde TBT neden yasaklandı?", options: ["Pahalı olduğu için", "Toksik ve çevreye zararlı olduğu için", "Renkli olduğu için", "Ağır olduğu için"], correctAnswer: 1, explanation: "AFS Konvansiyonu, toksik TBT bazlı zehirli boyaları yasaklamıştır.", category: "Diğer Sözleşmeler" },
   { id: 49, question: "Ship Recycling (gemi geri dönüşümü) hangi sözleşme ile düzenlenir?", options: ["Hong Kong Sözleşmesi", "SOLAS", "STCW", "COLREG"], correctAnswer: 0, explanation: "Hong Kong Sözleşmesi güvenli ve çevreye duyarlı gemi geri dönüşümünü düzenler (IHM gerektirir).", category: "Diğer Sözleşmeler" },
   { id: 50, question: "Sintine ve sludge'ın yanlış yönetimi (magic pipe) ne tür ihlaldir?", options: ["İdari uyarı", "Ciddi MARPOL ihlali / suç", "Önemsiz", "Sadece kayıt hatası"], correctAnswer: 1, explanation: "Bypass (magic pipe) ile yasa dışı deşarj ağır cezai yaptırımı olan ciddi bir MARPOL suçudur.", category: "Uyum & Denetim" },
+];
+
+export const environmentQuestions: QuizQuestion[] = [
+  ...baseEnvironmentQuestions,
+  ...environmentQuestionsExtended,
 ];

@@ -1,7 +1,8 @@
 import type { QuizQuestion } from "@/types/quiz";
 import { createSeededRng, pickRandomUnique } from "@/utils/random";
+import { navigationQuestionsExtended } from "@/data/navigationQuestionsExtended";
 
-export const navigationQuestions: QuizQuestion[] = [
+const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "D=120 NM yolu 10 kn hızla kaç saatte alırsınız?",
@@ -723,6 +724,11 @@ export const navigationQuestions: QuizQuestion[] = [
     explanation: "Emergency navigation: Magnetic compass, essential charts, sextant, chronometer, navigation tables minimum gereklidir.",
     category: "Emergency Navigation"
   }
+];
+
+export const navigationQuestions: QuizQuestion[] = [
+  ...baseNavigationQuestions,
+  ...navigationQuestionsExtended,
 ];
 
 export const getRandomNavigationQuestions = (count: number, seed?: number): QuizQuestion[] => {
