@@ -37,7 +37,7 @@ export const shipSystemsSections: ShipSystemsSection[] = [
   {
     id: "auxiliary",
     title: "Yardımcı Makineler",
-    desc: "Jeneratör, kompresör, pompa, separatör, kazanlar ve tüm yardımcı sistemler",
+    desc: "Jeneratör, acil/şaft jeneratörü, kazan, separatör, kompresör, pompa, merkezi soğutma, yakıt-yağ devreleri, balast/sintine, hidrolik ünite ve itici",
     icon: Gauge,
     to: "/ship-systems/auxiliary",
     color: "from-purple-500/20 to-violet-500/10",

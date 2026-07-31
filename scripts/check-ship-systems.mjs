@@ -75,7 +75,7 @@ for (const [sectionId, section] of Object.entries(shipSystemsData)) {
 const radar = shipSystemsData["nav-systems"]?.topics[0];
 const ecdis = shipSystemsData["nav-systems"]?.topics[1];
 
-if (topicCount !== 65) failures.push(`Toplam konu 65 yerine ${topicCount}`);
+if (topicCount !== 74) failures.push(`Toplam konu 74 yerine ${topicCount}`);
 if (!radar || radar.sections.length < 8) failures.push("Radar anlatımı en az 8 teknik bölüm içermiyor");
 if (!ecdis || ecdis.sections.length < 9) failures.push("ECDIS anlatımı en az 9 teknik bölüm içermiyor");
 
