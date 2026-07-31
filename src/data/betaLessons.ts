@@ -4,6 +4,12 @@ import { getTopicContentsByCategory } from "@/data/topicContents";
 import { stabilityTopicsData } from "@/data/stabilityTopicsContent";
 import { getMachineSubTopicContent } from "@/data/machineTopicDetailContent";
 import {
+  getCurriculumSupplementTopic,
+  getCurriculumSupplementTopicById,
+  getCurriculumSupplementTopics,
+  type CurriculumSupplementTopic,
+} from "@/data/curriculumSupplementTopics";
+import {
   getCurriculumCourse,
   getCurriculumModules,
   getCurriculumTopicById,
@@ -94,33 +100,76 @@ const displaySectionTitle = (title: string) =>
 const makeSectionId = (topicId: string | undefined, index: number) =>
   topicId ? `${topicId}-section-${index + 1}` : undefined;
 
-/** Yeni arayüzlerin kullanacağı modül grupları. */
+const mapSupplementTopic = (topic: CurriculumSupplementTopic): BetaTopic => ({
+  id: topic.id,
+  title: topic.title,
+  sourceTitle: topic.sourceTitle,
+  moduleId: topic.moduleId,
+  level: topic.level,
+  introduction: topic.introduction,
+  sections: topic.sections.map((section, index) => ({
+    id: makeSectionId(topic.id, index),
+    title: section.title,
+    sourceTitle: section.title,
+    content: section.content,
+    bulletPoints: section.bulletPoints,
+  })),
+  keyPoints: topic.keyPoints,
+});
+
+/**
+ * Yeni arayüzlerin kullanacağı modül grupları.
+ * Tamamlayıcı konular yalnız mevcut modüllere eklenir; eşleşmeyen bir modül
+ * için yeni başlık oluşturulmaz.
+ */
 export function getBetaModules(key?: string): BetaModule[] {
   if (!key) return [];
-  return getCurriculumModules(key).map((module) => ({
-    id: module.id,
-    title: module.title,
-    description: module.description,
-    topicCount: module.topics.length,
-    topics: module.topics.map((topic) => ({
-      id: topic.id,
-      title: topic.title,
-      sourceTitle: topic.sourceTitle,
-      level: topic.level,
-    })),
-  }));
+  const supplements = getCurriculumSupplementTopics(key);
+
+  return getCurriculumModules(key).map((module) => {
+    const topics = [
+      ...module.topics.map((topic) => ({
+        id: topic.id,
+        title: topic.title,
+        sourceTitle: topic.sourceTitle,
+        level: topic.level,
+      })),
+      ...supplements
+        .filter((topic) => topic.moduleId === module.id)
+        .map((topic) => ({
+          id: topic.id,
+          title: topic.title,
+          sourceTitle: topic.sourceTitle,
+          level: topic.level,
+        })),
+    ];
+
+    return {
+      id: module.id,
+      title: module.title,
+      description: module.description,
+      topicCount: topics.length,
+      topics,
+    };
+  });
 }
 
 /** Eski düz liste API'si korunur; artık tekrarları ayıklanmış kanonik başlıkları döndürür. */
 export function getBetaTopicTitles(key?: string): string[] {
   if (!key) return [];
-  return getCurriculumTopicRefs(key).map((topic) => topic.title);
+  return [
+    ...getCurriculumTopicRefs(key).map((topic) => topic.title),
+    ...getCurriculumSupplementTopics(key).map((topic) => topic.title),
+  ];
 }
 
 /** URL ve ilerleme kaydı için başlıktan bağımsız, kararlı konu kimlikleri. */
 export function getBetaTopicIds(key?: string): string[] {
   if (!key) return [];
-  return getCurriculumTopicRefs(key).map((topic) => topic.id);
+  return [
+    ...getCurriculumTopicRefs(key).map((topic) => topic.id),
+    ...getCurriculumSupplementTopics(key).map((topic) => topic.id),
+  ];
 }
 
 function mapMachineTopic(
@@ -265,8 +314,11 @@ function mapDeckTopic(
  */
 export function getBetaTopic(key?: string, titleOrId?: string): BetaTopic | null {
   if (!key || !titleOrId) return null;
-  const metadata =
-    getCurriculumTopicById(titleOrId) ?? resolveCurriculumTopic(key, titleOrId);
+
+  const supplement = getCurriculumSupplementTopic(key, titleOrId);
+  if (supplement) return mapSupplementTopic(supplement);
+
+  const metadata = getCurriculumTopicById(titleOrId) ?? resolveCurriculumTopic(key, titleOrId);
   const sourceTitle = metadata?.sourceTitle ?? titleOrId;
   if (isMachine(key)) return mapMachineTopic(machineSlug(key), sourceTitle, metadata);
   if (key === "stability") return mapStabilityTopic(sourceTitle, metadata);
@@ -275,6 +327,9 @@ export function getBetaTopic(key?: string, titleOrId?: string): BetaTopic | null
 }
 
 export function getBetaTopicById(topicId?: string): BetaTopic | null {
+  const supplement = getCurriculumSupplementTopicById(topicId);
+  if (supplement) return mapSupplementTopic(supplement);
+
   const topic = getCurriculumTopicById(topicId);
   return topic ? getBetaTopic(topic.sourceCategory, topic.id) : null;
 }
