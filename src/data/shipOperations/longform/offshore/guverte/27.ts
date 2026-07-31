@@ -42,7 +42,7 @@ const content: ShipOpLongForm = {
               ["Bridge Mate DP 1 / 2 / 3", "Otomatik mevki ve baş tutma", "Ana DP kontrol katmanı"],
               ["Bridge Mate JX / DP 0", "Joystick ve temel DP", "Alt seviye / yedek manevra"],
               ["Bridge Mate DP Chair", "Koltuğa entegre operatör istasyonu", "DP 1 ve DP 2 istasyonu olarak"],
-              ["Bridge Mate TCS", "İtici / sevk kontrolü", "DP komutunu iticiye taşır"],
+              ["Bridge Mate TCS", "İtici ve pervane kontrolü", "DP komutunu iticiye taşır"],
               ["Bridge Mate IBS", "Entegre köprüüstü (MFW)", "Conning, ECDIS, autopilot ortak platform"],
               ["RadaScan / CyScan", "Lokal konum referansı", "DP'ye PRS girdisi"],
             ],

@@ -1,7 +1,7 @@
 import type { ShipOpLongForm } from "../../types";
 
 const content: ShipOpLongForm = {
-  title: "Bridge Mate Thruster Control System (TCS) ve sevk entegrasyonu",
+  title: "Bridge Mate Thruster Control System (TCS) ve itici entegrasyonu",
   shipType: "offshore",
   dept: "makine",
   opIndex: 14,
@@ -34,7 +34,7 @@ const content: ShipOpLongForm = {
           ],
         },
         {
-          subheading: "1.2 Desteklenen sevk tipleri",
+          subheading: "1.2 Desteklenen itici ve pervane tipleri",
           paragraphs: [
             `TCS motor markasından bağımsız çalışır ve tunnel thruster, Voith sevk sistemleri, azimuth podlar, retractable üniteler ve waterjetler dahil olmak üzere her tür sevk cihazını kontrol edebilir.`,
           ],
@@ -47,7 +47,7 @@ const content: ShipOpLongForm = {
               ["Voith", "Sürekli değişken vektör", "Hızlı tepki, farklı derating"],
               ["Waterjet", "Yüksek hızda etkin", "Düşük hızda sınırlı itki"],
             ],
-            caption: "TCS kapsamındaki sevk tipleri ve DP açısından öne çıkan özellikleri",
+            caption: "TCS kapsamındaki itici tipleri ve DP açısından öne çıkan özellikleri",
           },
         },
         {

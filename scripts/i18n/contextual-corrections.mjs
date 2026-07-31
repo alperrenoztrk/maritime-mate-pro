@@ -338,4 +338,83 @@ export const CONTEXTUAL_CORRECTIONS = {
     cs: 'Bouřky', hu: 'Zivataros', ro: 'Furtună cu tunete', el: 'Καταιγίδα',
     bg: 'Гръмотевична буря', uk: 'Гроза',
   },
+
+  // ── Marine Technologies (Bridge Mate) DP: brand and product names ─────────
+  // Generic MT translates the vendor and product names as ordinary nouns
+  // ("Marine Technologies" -> "Meerestechnologien" / "海洋技術", "RadaScan"
+  // -> "雷达扫描"). They are proper nouns and must survive verbatim in every
+  // language, so the whole string is pinned here.
+  '1. Marine Technologies ve Bridge Mate Konsepti': {
+    de: '1. Konzept von Marine Technologies und Bridge Mate',
+    fr: '1. Concept de Marine Technologies et Bridge Mate',
+    es: '1. Concepto de Marine Technologies y Bridge Mate',
+    it: '1. Concetto di Marine Technologies e Bridge Mate',
+    pt: '1. Conceito de Marine Technologies e Bridge Mate',
+    nl: '1. Concept van Marine Technologies en Bridge Mate',
+    sv: '1. Konceptet Marine Technologies och Bridge Mate',
+    pl: '1. Pojęcie Marine Technologies i Bridge Mate',
+    cs: '1. Koncept Marine Technologies a Bridge Mate',
+    ja: '1. Marine Technologies と Bridge Mate の概念',
+    ko: '1. Marine Technologies 및 Bridge Mate의 개념',
+    'zh-CN': '1. Marine Technologies 和 Bridge Mate 的概念',
+  },
+  'Bridge Mate operatör istasyonu, DP Chair ve MFW ile DP vardiyası': {
+    de: 'Bridge Mate Bedienplatz, DP Chair und DP-Schicht mit MFW',
+    fr: 'Poste opérateur Bridge Mate, DP Chair et décalage DP avec MFW',
+    es: 'Bridge Mate estación del operador, DP Chair y turno DP con MFW',
+    pt: 'Bridge Mate estação do operador, DP Chair e turno DP com MFW',
+    nl: 'Bridge Mate operatorstation, DP Chair en DP-ploeg met MFW',
+    sv: 'Bridge Mate förarplats, DP Chair och DP-skift med MFW',
+    fi: 'Bridge Mate ohjausasema, DP Chair ja DP-vaihto MFW:llä',
+    pl: 'Bridge Mate stacja operatorska, DP Chair i zmiana DP z MFW',
+    ja: 'Bridge Mate オペレーター ステーション、DP Chair、MFW による DP シフト',
+    'zh-CN': 'Bridge Mate 操作员站、DP Chair 和 DP 轮班（带 MFW）',
+  },
+  '1.2 DP Chair konsepti': {
+    fr: '1.2 Notion DP Chair', es: '1.2 DP Chair concepto', it: '1.2 DP Chair concetto',
+    pt: '1.2 Conceito DP Chair', nl: '1.2 DP Chair-concept', sv: '1.2 DP Chair koncept',
+    no: '1.2 DP Chair konsept', da: '1.2 DP Chair koncept', pl: '1.2 Koncepcja DP Chair',
+    cs: '1.2 DP Chair koncept', ja: '1.2 DP Chair の概念', ko: '1.2 DP Chair 개념',
+    'zh-CN': '1.2 DP Chair 概念',
+  },
+  '15 inç kol dayaması ekranı, DP 1/DP 2 operatör istasyonu seçeneği ve konsolu tamamlama/yerine geçme özelliği MT Bridge Mate DP Chair broşüründe (MT-SAL-0096 v1.0) belirtilmiştir.': {
+
+    fr: 'L\'écran d\'accoudoir de 15 pouces, l\'option de poste de commande DP 1/DP 2 et la fonction de complément/remplacement de console sont spécifiés dans la brochure MT Bridge Mate DP Chair (MT-SAL-0096 v1.0).',
+    es: 'La pantalla del apoyabrazos de 15 pulgadas, la opción de estación del operador DP 1/DP 2 y la función de complemento/reemplazo de la consola se especifican en el folleto MT Bridge Mate DP Chair (MT-SAL-0096 v1.0).',
+    it: 'Il display del bracciolo da 15 pollici, l\'opzione della stazione operatore DP 1/DP 2 e la funzionalità di complemento/sostituzione della console sono specificati nella brochure MT Bridge Mate DP Chair (MT-SAL-0096 v1.0).',
+    pt: 'O display do apoio de braço de 15 polegadas, a opção de estação do operador DP 1/DP 2 e o recurso de complemento/substituição do console são especificados no folheto MT Bridge Mate DP Chair (MT-SAL-0096 v1.0).',
+    ja: '15 インチのアームレスト ディスプレイ、DP 1/DP 2 オペレーター ステーション オプション、およびコンソールの補完/交換機能は、MT Bridge Mate DP Chair パンフレット (MT-SAL-0096 v1.0) で指定されています。',
+    ko: '15인치 팔걸이 디스플레이, DP 1/DP 2 운전자 스테이션 옵션 및 콘솔 보완/교체 기능은 MT Bridge Mate DP Chair 브로셔(MT-SAL-0096 v1.0)에 지정되어 있습니다.',
+    'zh-CN': 'MT Bridge Mate DP Chair 手册 (MT-SAL-0096 v1.0) 中指定了 15 英寸扶手显示屏、DP 1/DP 2 操作员站选件和控制台补充/替换功能。',
+  },
+  'Marine Technologies Bridge Mate DP': {
+    es: 'Marine Technologies Bridge Mate XP', it: 'Marine Technologies Bridge Mate XP',
+    pt: 'Marine Technologies Bridge MateXP', ja: 'Marine Technologies Bridge Mate XP',
+    ko: 'Marine Technologies Bridge Mate XP', 'zh-CN': 'Marine Technologies Bridge Mate XP',
+  },
+  'DP vardiyasının kalitesi, DPO\'nun oturduğu yerden ne gördüğü ve neye ne kadar hızlı ulaşabildiğiyle doğrudan ilgilidir. Bridge Mate ailesi bu noktada üç farklı fiziksel çözüm sunar: klasik konsol, kompakt operatör istasyonu ve kol dayamasına gömülü ekranıyla DP Chair. Bu bölüm, istasyon tipinin vardiya düzenine, kontrol devrine ve gözcülüğe etkisini ele alır.': {
+
+    pt: 'A qualidade do turno do DP está diretamente relacionada com o que o DPO vê de onde está e com que rapidez ele consegue acessar o quê. Neste ponto, a família Bridge Mate oferece três soluções físicas diferentes: o console clássico, a estação de operação compacta e o DP Chair com tela embutida no apoio de braço. Este capítulo discute o impacto do tipo de estação nos padrões de turno, na rotatividade de controle e na vigilância.',
+    sv: 'Kvaliteten på DP-skiftet är direkt relaterad till vad DPO ser varifrån han sitter och hur snabbt han kan komma åt vad. Vid det här laget erbjuder Bridge Mate-familjen tre olika fysiska lösningar: den klassiska konsolen, den kompakta förarplatsen och DP Chair med sin skärm inbäddad i armstödet. Det här kapitlet diskuterar inverkan av stationstyp på skiftmönster, omsättning av kontroll och utkik.',
+    no: 'Kvaliteten på DP-skiftet er direkte relatert til hva DPO ser fra der han sitter og hvor raskt han kan få tilgang til hva. På dette tidspunktet tilbyr Bridge Mate-familien tre forskjellige fysiske løsninger: den klassiske konsollen, den kompakte førerplassen og DP Chair med skjermen innebygd i armlenet. Dette kapittelet diskuterer innvirkningen av stasjonstype på skiftemønster, omsetning av kontroll og utkikk.',
+    da: 'Kvaliteten af ​​DP-skiftet er direkte relateret til, hvad DPO\'en ser, hvorfra han sidder, og hvor hurtigt han kan få adgang til hvad. På dette tidspunkt tilbyder Bridge Mate-familien tre forskellige fysiske løsninger: den klassiske konsol, den kompakte førerplads og DP Chair med sin skærm indlejret i armlænet. Dette kapitel diskuterer indvirkningen af ​​stationstype på skiftemønstre, omsætning af kontrol og udkig.',
+    fi: 'DP-vuoron laatu riippuu suoraan siitä, mitä DPO näkee istumapaikastaan ​​ja kuinka nopeasti hän pääsee käsiksi mihinkin. Tässä vaiheessa Bridge Mate-tuoteperhe tarjoaa kolme erilaista fyysistä ratkaisua: klassinen konsoli, kompakti ohjausasema ja DP Chair, jonka näyttö on upotettu käsinojaan. Tässä luvussa käsitellään aseman tyypin vaikutusta vuorotapoihin, ohjauksen vaihtumiseen ja tarkkailuon.',
+    pl: 'Jakość zmiany DP jest bezpośrednio powiązana z tym, co DPO widzi z miejsca, w którym siedzi, i od tego, jak szybko może uzyskać do czego dostęp. W tym momencie rodzina Bridge Mate oferuje trzy różne rozwiązania fizyczne: klasyczną konsolę, kompaktowe stanowisko operatora i DP Chair z ekranem osadzonym w podłokietniku. W tym rozdziale omówiono wpływ typu stacji na schematy zmian, zmianę kontroli i obserwację.',
+    ja: 'DP シフトの質は、DPO が座っている場所から何が見えるか、そして何にどれだけ早くアクセスできるかに直接関係します。現時点では、Bridge Mate ファミリは 3 つの異なる物理ソリューションを提供しています。クラシック コンソール、コンパクトなオペレーター ステーション、およびアームレストにスクリーンが埋め込まれた DP Chair です。この章では、ステーションの種類がシフト パターン、制御の交代、見張りに与える影響について説明します。',
+    ko: 'DP 교대근무의 품질은 DPO가 앉은 자리에서 무엇을 보는지, 그리고 얼마나 빨리 무엇에 접근할 수 있는지와 직접적인 관련이 있습니다. 현재 Bridge Mate 제품군은 클래식 콘솔, 소형 운전실, 팔걸이에 스크린이 내장된 DP Chair 등 세 가지 물리적 솔루션을 제공합니다. 이 장에서는 교대 패턴, 제어 회전율 및 감시에 대한 스테이션 유형의 영향을 논의합니다.',
+    'zh-CN': 'DP 轮班的质量与 DPO 从他所在的位置看到的内容以及他访问内容的速度直接相关。目前，Bridge Mate 系列提供了三种不同的物理解决方案：经典控制台、紧凑型操作台和屏幕嵌入扶手中的 DP Chair。本章讨论车站类型对轮班模式、控制权交接和瞭望的影响。',
+  },
+  '1. Referans Tipleri ve Bridge Mate Portföyü': {
+    pl: '1. Typy referencyjne i Bridge Mate portfel', ja: '1. 参照タイプと Bridge Mate ポートフォリオ',
+    ko: '1. 참조 유형 및 Bridge Mate 포트폴리오',
+  },
+  '1.3 CyScan': {
+    ja: '1.3 CyScan', ko: '1.3 CyScan', 'zh-CN': '1.3 CyScan',
+  },
+  '1.2 RadaScan': {
+    ko: '1.2 RadaScan', 'zh-CN': '1.2 RadaScan',
+  },
+  'Marine Technologies Bridge Mate DP ailesi ve dağıtık mimari': {
+    'zh-CN': 'Marine Technologies Bridge Mate DP 系列和分布式架构',
+  },
 };

@@ -853,11 +853,11 @@ export const offshore: ShipType = {
           ["Critical equipment register", "PMS history", "Condition-monitoring trend", "Return-to-service certificate"],
         ),
         op(
-          "Bridge Mate Thruster Control System (TCS) ve sevk entegrasyonu",
-          "DP, joystick ve autopilot komutlarını sevk cihazlarına ileten TCS'in yedekliliği, kapsamı ve yedek kontrol yolu makine tarafından doğrulanır.",
+          "Bridge Mate Thruster Control System (TCS) ve itici entegrasyonu",
+          "DP, joystick ve autopilot komutlarını itici ve pervanelere ileten TCS'in yedekliliği, kapsamı ve yedek kontrol yolu makine tarafından doğrulanır.",
           [
             "TCS'in üç kontrol bilgisayarı ve yedekli haberleşme ağı üzerinden çalıştığını, tek bilgisayar kaybının sevk kontrolünü düşürmediğini teyit et.",
-            "Sistemin kontrol ettiği sevk tiplerini listele: tunnel thruster, Voith, azimuth pod, retractable ve waterjet dahil.",
+            "Sistemin kontrol ettiği itici ve pervane tiplerini listele: tunnel thruster, Voith, azimuth pod, retractable ve waterjet dahil.",
             "TCS'in motor markasından bağımsız çalıştığını, ancak arayüz parametrelerinin her üniteye göre ayarlandığını devreye alma kayıtlarından doğrula.",
             "Backup thruster kontrolü ve bağımsız joystick yolunun DP/TCS ana yolundan ayrı olduğunu ve düzenli test edildiğini kontrol et.",
             "Autopilot ve joystick entegrasyonunda komut önceliğinin ve kontrol devrinin nasıl çözüldüğünü FMEA ile karşılaştır.",
