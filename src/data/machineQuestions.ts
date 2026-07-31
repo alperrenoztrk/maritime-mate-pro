@@ -1,4 +1,5 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { machineQuestionsExtended } from "@/data/machineQuestionsExtended";
 import { createSeededRng, pickRandomUnique } from "@/utils/random";
 
 /**
@@ -6,7 +7,7 @@ import { createSeededRng, pickRandomUnique } from "@/utils/random";
  * Not: Sorular operasyonel/pratik odaklıdır; gemi tipine ve şirket prosedürlerine göre değişebilecek
  * detaylarda "genel prensip" yaklaşımı kullanılmıştır.
  */
-export const machineQuestions: QuizQuestion[] = [
+const baseMachineQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "SFOC neyi ifade eder?",
@@ -487,6 +488,11 @@ export const machineQuestions: QuizQuestion[] = [
     explanation: "LOTO, bakım sırasında ekipmanın kazara enerjilenmesini/çalıştırılmasını önleyerek personel emniyetini sağlar.",
     category: "İş Emniyeti (PTW)",
   },
+];
+
+export const machineQuestions: QuizQuestion[] = [
+  ...baseMachineQuestions,
+  ...machineQuestionsExtended,
 ];
 
 export const getRandomMachineQuestions = (count: number, seed?: number): QuizQuestion[] => {

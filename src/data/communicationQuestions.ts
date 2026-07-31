@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/quiz";
+import { communicationQuestionsExtended } from "@/data/communicationQuestionsExtended";
 
-export const communicationQuestions: QuizQuestion[] = [
+const baseCommunicationQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "GMDSS açılımı nedir?",
@@ -777,4 +778,9 @@ export const communicationQuestions: QuizQuestion[] = [
     explanation: "E-navigasyonda GMDSS; ECDIS, AIS, VTS ve kıyı servisleriyle bütünleşik bir bilgi akışının parçası olur; standart veri biçimleri ve siber güvenlik temel bileşenlerdir.",
     category: "GMDSS Modernizasyonu"
   }
+];
+
+export const communicationQuestions: QuizQuestion[] = [
+  ...baseCommunicationQuestions,
+  ...communicationQuestionsExtended,
 ];
