@@ -102,7 +102,6 @@ export default function ShipSystemsPage() {
               title={section.title}
               icon={section.icon}
               accent={section.color}
-              badge={shipSystemsData[section.id]?.topics.length ?? 0}
             />
           ))}
         </section>
