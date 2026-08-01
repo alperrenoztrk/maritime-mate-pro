@@ -100,7 +100,6 @@ export default function ShipSystemsPage() {
               key={section.id}
               to={section.to}
               title={section.title}
-              icon={section.icon}
               accent={section.color}
             />
           ))}

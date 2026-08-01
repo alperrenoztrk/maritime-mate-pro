@@ -142,7 +142,6 @@ export default function LessonsLibraryPage() {
                     key={category.key}
                     to={href}
                     title={category.title}
-                    icon={category.icon}
                     accent={category.accent}
                   />
                 );

@@ -19,9 +19,7 @@ export default function ExercisesPage() {
             key={category.key}
             to={`/exercises/${category.key}/topics`}
             title={category.title}
-            icon={category.icon}
             accent={category.accent}
-            badge={category.topicCount}
           />
         ) : (
           <div

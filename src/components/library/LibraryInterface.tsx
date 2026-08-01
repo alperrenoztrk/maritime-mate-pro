@@ -126,21 +126,15 @@ export function LibraryEntryCard({
 
 export function LibraryBookCard({
   title,
-  icon: Icon,
   accent,
   to,
   image,
-  badge,
 }: {
   title: string;
-  icon: LucideIcon;
   accent: string;
   to: string;
   image?: string;
-  badge?: string | number;
 }) {
-  const statusBadge = typeof badge === "string" ? badge : null;
-
   return (
     <Link
       to={to}
@@ -187,34 +181,10 @@ export function LibraryBookCard({
         <div aria-hidden className="absolute left-1 top-8 h-px w-3 bg-white/25" />
         <div aria-hidden className="absolute bottom-8 left-1 h-px w-3 bg-white/25" />
 
-        <div className="relative flex h-full flex-col px-6 pb-5 pl-8 pt-5 text-white">
-          <div className="flex items-start justify-between gap-3">
-            <span className="text-[9px] font-semibold uppercase tracking-[0.24em] text-white/75">
-              Mariner&apos;s Book
-            </span>
-            {statusBadge && (
-              <span className="rounded-sm border border-white/25 bg-black/20 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider backdrop-blur-sm">
-                {statusBadge}
-              </span>
-            )}
-          </div>
-
-          <div className="mt-7 flex justify-center">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_10px_rgba(0,0,0,0.2)] backdrop-blur-[2px]">
-              <Icon className="h-6 w-6" strokeWidth={1.65} />
-            </span>
-          </div>
-
-          <div className="my-auto px-1 text-center">
-            <h2 className="font-serif text-lg font-bold leading-snug tracking-wide drop-shadow-sm sm:text-xl">
-              {title}
-            </h2>
-            <div aria-hidden className="mx-auto mt-4 h-px w-14 bg-white/45" />
-          </div>
-
-          <span className="text-center text-[8px] font-semibold uppercase tracking-[0.28em] text-white/60">
-            Nautical Leap
-          </span>
+        <div className="absolute inset-x-0 bottom-0 top-1/3 flex items-center justify-center px-6 pb-4 pl-8 text-center text-white">
+          <h2 className="font-serif text-lg font-bold leading-snug tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)] sm:text-xl">
+            {title}
+          </h2>
         </div>
       </div>
     </Link>

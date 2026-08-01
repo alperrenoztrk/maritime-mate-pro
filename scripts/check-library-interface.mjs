@@ -43,8 +43,19 @@ requireText(shared, "safe-area-inset-top", "mobil güvenli alan");
 requireText(shared, "--ad-banner-height", "reklam bandı güvenli alanı");
 requireText(shared, "repeating-linear-gradient", "kitap sayfa dokusu");
 requireText(shared, "[perspective:1200px]", "kitap derinlik görünümü");
-requireText(shared, "Nautical Leap", "kitap kapak yayıncı işareti");
-requireText(shared, 'typeof badge === "string"', "sayfa sayısını çağrıştıran sayısal kapak rozetlerini gizleme");
+const bookCard = shared.slice(
+  shared.indexOf("export function LibraryBookCard"),
+  shared.indexOf("export function LibraryCompactCard"),
+);
+requireText(bookCard, "{title}", "kitap kapağında kitap ismi");
+for (const [text, label] of [
+  ["Nautical Leap", "yayıncı işareti"],
+  ["Mariner&apos;s Book", "marka üst başlığı"],
+  ["<Icon", "kapak ikonu"],
+  ["badge", "kapak rozeti"],
+]) {
+  forbidText(bookCard, text, `kitap kapağında ${label}`);
+}
 
 for (const [label, source] of [
   ["Operasyonlar", operations],

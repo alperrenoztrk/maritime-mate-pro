@@ -124,15 +124,12 @@ export default function RegulationsLibraryPage() {
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {filteredItems.map((item) => {
                 const category = categories.find((entry) => entry.category === item.category) ?? categories[0];
-                const chapterCount = item.narrativeChapters?.length ?? 0;
                 return (
                   <LibraryBookCard
                     key={item.slug}
                     to={`/regulations/${item.slug}`}
                     title={item.label}
-                    icon={category.icon}
                     accent={category.accent}
-                    badge={chapterCount || undefined}
                   />
                 );
               })}

@@ -118,7 +118,6 @@ function ToolBook({
       <LibraryBookCard
         to={tool.to}
         title={tool.title}
-        icon={tool.icon}
         accent={meta.accent}
       />
       <button
