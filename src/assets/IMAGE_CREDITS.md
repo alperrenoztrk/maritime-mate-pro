@@ -27,6 +27,10 @@ lisanslı görseller için atıf zorunludur; kaynak sayfalara verilen bağlantı
 | `clouds/kelvin-helmholtz.jpg` | [Kelvin-Helmholtz waves.jpg](https://commons.wikimedia.org/wiki/File:Kelvin-Helmholtz_waves.jpg) | Astronautilus | CC BY 2.0 |
 | `clouds/pyrocumulus.jpg` | [Wildfire in Yellowstone National Park produces Pyrocumulus clouds1.jpg](https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg) | Brocken Inaglory | CC BY-SA 3.0 |
 | `clouds/virga.jpg` | [Virga in the early morning.jpg](https://commons.wikimedia.org/wiki/File:Virga_in_the_early_morning.jpg) | Rivervictorlauramarie | CC0 |
+| `instruments/chronometer.jpg` | [Marine-Chronometer.A.Lange&Soehne.1948.jpg](https://commons.wikimedia.org/wiki/File:Marine-Chronometer.A.Lange%26Soehne.1948.jpg) | Bautsch | CC0 |
+| `instruments/compass.jpg` | [Askania compass.JPG](https://commons.wikimedia.org/wiki/File:Askania_compass.JPG) | Blueberry009 | Public domain |
+| `instruments/porthole.jpg` | [Bamberton through the porthole - panoramio.jpg](https://commons.wikimedia.org/wiki/File:Bamberton_through_the_porthole_-_panoramio.jpg) | Kiwibirdman | CC BY 3.0 |
+| `instruments/thermometer.jpg` | [Quicksilvertermometer Osaby.JPG](https://commons.wikimedia.org/wiki/File:Quicksilvertermometer_Osaby.JPG) | Pieter Kuiper | Public domain |
 | `maritime/cargo-ship-ocean.jpg` | [Cargo ship "Fri Ocean", Medina Wharf, Cowes, Isle of Wight, England.jpg](https://commons.wikimedia.org/wiki/File:Cargo_ship_%22Fri_Ocean%22,_Medina_Wharf,_Cowes,_Isle_of_Wight,_England.jpg) | ITookSomePhotos | CC BY 4.0 |
 | `maritime/container-ship-aerial.jpg` | [MAERSK HANOI Container Ship (Port Koper SIKOP, 2023).jpg](https://commons.wikimedia.org/wiki/File:MAERSK_HANOI_Container_Ship_(Port_Koper_SIKOP,_2023).jpg) | Petar Milošević | CC BY-SA 4.0 |
 | `maritime/engine-room.jpg` | [Angoumois - Engine room 1 - Main engine.jpg](https://commons.wikimedia.org/wiki/File:Angoumois_-_Engine_room_1_-_Main_engine.jpg) | Rémi Kaupp | CC BY-SA 3.0 |

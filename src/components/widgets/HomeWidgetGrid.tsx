@@ -4,12 +4,13 @@ import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { type HomeWidgetId, AVAILABLE_WIDGETS, useHomeWidgets } from "@/hooks/useHomeWidgets";
 import { useLocation } from "@/contexts/LocationContext";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
-import { VintageWidgetStyles } from "@/components/widgets/vintage/VintageWidgetStyles";
-import { ChronometerWidget } from "@/components/widgets/vintage/ChronometerWidget";
-import { ThermometerWidget } from "@/components/widgets/vintage/ThermometerWidget";
-import { WindCompassWidget } from "@/components/widgets/vintage/WindCompassWidget";
-import { GpsReceiverWidget } from "@/components/widgets/vintage/GpsReceiverWidget";
-import { SunArcWidget } from "@/components/widgets/vintage/SunArcWidget";
+import { InstrumentStyles } from "@/components/widgets/instruments/InstrumentStyles";
+import { InstrumentCredits } from "@/components/widgets/instruments/InstrumentCredits";
+import { ChronometerWidget } from "@/components/widgets/instruments/ChronometerWidget";
+import { ThermometerWidget } from "@/components/widgets/instruments/ThermometerWidget";
+import { WindCompassWidget } from "@/components/widgets/instruments/WindCompassWidget";
+import { GpsReceiverWidget } from "@/components/widgets/instruments/GpsReceiverWidget";
+import { SunArcWidget } from "@/components/widgets/instruments/SunArcWidget";
 
 function degreesToCompass(degrees: number): string {
   const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
@@ -180,8 +181,8 @@ export function HomeWidgetGrid() {
             label={effectiveLabel ?? null}
             latDMS={latitude !== undefined ? decimalToDMS(latitude, true) : "—"}
             lonDMS={longitude !== undefined ? decimalToDMS(longitude, false) : "—"}
-            latDec={latitude !== undefined ? latitude.toFixed(6) + "°" : ""}
-            lonDec={longitude !== undefined ? longitude.toFixed(6) + "°" : ""}
+            latDec={latitude !== undefined ? latitude.toFixed(4) + "°" : ""}
+            lonDec={longitude !== undefined ? longitude.toFixed(4) + "°" : ""}
             sourceKind={sourceKind}
             sourceLabel={sourceLabel}
             accuracyLabel={accuracyLabel}
@@ -214,10 +215,11 @@ export function HomeWidgetGrid() {
 
   return (
     <>
-      <VintageWidgetStyles />
-      <div className="grid grid-cols-2 gap-3 px-4 sm:grid-cols-4">
+      <InstrumentStyles />
+      <div className="grid grid-cols-2 items-start gap-3 px-4 sm:grid-cols-4">
         {enabled.map(render)}
       </div>
+      <InstrumentCredits />
       <ManualLocationDialog open={manualOpen} onOpenChange={setManualOpen} />
     </>
   );
