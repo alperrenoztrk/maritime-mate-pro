@@ -9,6 +9,18 @@ import { toast } from "sonner";
 import { StableTalesEngine } from "./StableTalesCalculationEngine";
 import { BumbaKrenData } from "./StableTalesTypes";
 
+interface CraneCalculationResult {
+  gm_degisimi: number;
+  yeni_gm: number;
+  yeni_kg: number;
+  virtual_kg_artis: number;
+  stabilityStatus: string;
+  stabilityColor: string;
+  recommendations: string[];
+  güvenlik_marjı: number;
+  operasyon_durumu: string;
+}
+
 export const CraneBoomCalculations = () => {
   const [vesselData, setVesselData] = useState({
     deplasman: 25000,
@@ -24,7 +36,7 @@ export const CraneBoomCalculations = () => {
     gm_degisimi: undefined
   });
 
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<CraneCalculationResult | null>(null);
 
   const calculateCraneEffect = () => {
     try {
@@ -42,7 +54,7 @@ export const CraneBoomCalculations = () => {
       // Calculate stability status
       let stabilityStatus = 'excellent';
       let stabilityColor = 'default';
-      let recommendations: string[] = [];
+      const recommendations: string[] = [];
 
       if (yeni_gm >= 0.5) {
         stabilityStatus = 'Mükemmel';

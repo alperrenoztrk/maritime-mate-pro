@@ -6,8 +6,8 @@ import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useAuth } from "@/hooks/useAuth";
-import { useEntitlement } from "@/contexts/EntitlementContext";
+import { useAuth } from "@/hooks/useAuthContext";
+import { useEntitlement } from "@/contexts/useEntitlement";
 import {
   fetchProOffers,
   isBillingAvailable,

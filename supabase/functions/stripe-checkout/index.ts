@@ -54,6 +54,14 @@ interface CreateCheckoutBody {
   customerEmail?: string;
 }
 
+interface StripeCheckoutForm {
+  mode: "payment" | "subscription";
+  success_url: string;
+  cancel_url: string;
+  line_items: Array<{ price: string; quantity: number }>;
+  customer_email?: string;
+}
+
 // Minimal Stripe REST call using fetch to avoid external deps on Deno Edge
 async function createStripeCheckoutSession(params: CreateCheckoutBody, corsHeaders: Record<string, string>) {
   const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
@@ -95,7 +103,7 @@ async function createStripeCheckoutSession(params: CreateCheckoutBody, corsHeade
   const mode = params.mode || (Deno.env.get("STRIPE_DEFAULT_MODE") as "payment" | "subscription") || "payment";
   const quantity = Math.min(Math.max(params.quantity ?? 1, 1), 10);
 
-  const body: any = {
+  const body: StripeCheckoutForm = {
     mode,
     success_url: successUrl,
     cancel_url: cancelUrl,

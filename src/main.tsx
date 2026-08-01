@@ -4,14 +4,11 @@
 import './lib/safeStorage'
 import { safeLocalStorage } from './lib/safeStorage'
 import { createRoot } from 'react-dom/client'
-import { HelmetProvider } from 'react-helmet-async'
-import App from './App.tsx'
 import './index.css'
-import { ErrorBoundary } from './components/ErrorBoundary'
-import { FONT_SCALES, type FontSizeKey } from './contexts/FontSizeContext'
+import { FONT_SCALES, type FontSizeKey } from './contexts/font-size-context'
 import { weatherPreloader } from './services/weatherPreloader'
-import { LocationProvider } from './contexts/LocationContext'
 import { registerOfflineSupport } from './serviceWorkerRegistration'
+import { AppRoot } from './AppRoot'
 
 if (window.location.hostname === 'www.nauticalleap.com') {
   window.location.replace(`https://nauticalleap.com${window.location.pathname}${window.location.search}${window.location.hash}`);
@@ -39,18 +36,6 @@ if (!container) {
   throw new Error('Root element not found');
 }
 
-function Root() {
-  return (
-    <ErrorBoundary>
-      <HelmetProvider>
-        <LocationProvider>
-          <App />
-        </LocationProvider>
-      </HelmetProvider>
-    </ErrorBoundary>
-  );
-}
-
 // Background weather preload — never blocks the splash screen.
 try {
   weatherPreloader.preloadWeatherData();
@@ -58,7 +43,7 @@ try {
   console.warn('[Main] Weather preload başlatılamadı:', e);
 }
 
-createRoot(container).render(<Root />);
+createRoot(container).render(<AppRoot />);
 
 const hideSplash = () => {
   const splash = document.getElementById('splash-root');
@@ -79,5 +64,3 @@ requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
 
 // Hard safety net in case the rAF callback never fires.
 setTimeout(hideSplash, splashHideDelay + 1200);
-
-

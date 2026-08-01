@@ -7,6 +7,15 @@ import { ArrowLeft, Droplets, Calculator, BarChart3 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
+interface BallastTankDistribution {
+  forepeak: number;
+  afterpeak: number;
+  no1Hold: number;
+  no2Hold: number;
+  no3Hold: number;
+  no4Hold: number;
+}
+
 export default function DraftSurveyBallast() {
   const { toast } = useToast();
   
@@ -39,7 +48,7 @@ export default function DraftSurveyBallast() {
     draftChange: number;
     ballastWeight: number;
     ballastVolume: number;
-    tankDistribution: any;
+    tankDistribution: BallastTankDistribution;
   } | null>(null);
 
   const calculate = () => {

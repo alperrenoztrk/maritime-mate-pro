@@ -460,7 +460,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
     }
   };
 
-  const updateData = (field: keyof EngineData, value: number | string | boolean) => {
+  const updateData = <K extends keyof EngineData>(field: K, value: EngineData[K]) => {
     setData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -545,7 +545,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="requiredNoxTier">NOₓ Regülasyon Tier (Kontrol)</Label>
-                  <Select value={data.requiredNoxTier} onValueChange={(value) => updateData('requiredNoxTier', value as any)}>
+                  <Select value={data.requiredNoxTier} onValueChange={(value) => updateData('requiredNoxTier', value as EngineData["requiredNoxTier"])}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>

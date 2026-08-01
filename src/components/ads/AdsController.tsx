@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { useEntitlement } from "@/contexts/EntitlementContext";
+import { useEntitlement } from "@/contexts/useEntitlement";
 import { isAdFreeRoute } from "@/config/ads";
 import {
   areAdsSupported,

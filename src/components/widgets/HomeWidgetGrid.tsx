@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { type HomeWidgetId, AVAILABLE_WIDGETS, useHomeWidgets } from "@/hooks/useHomeWidgets";
-import { useLocation } from "@/contexts/LocationContext";
+import { useLocation } from "@/contexts/useSelectedLocation";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 import { InstrumentStyles } from "@/components/widgets/instruments/InstrumentStyles";
 import { InstrumentDefs } from "@/components/widgets/instruments/InstrumentDefs";

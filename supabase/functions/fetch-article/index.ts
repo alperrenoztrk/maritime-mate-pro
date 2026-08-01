@@ -62,7 +62,7 @@ function extractArticleContent(html: string, url: string): {
   const publishedAt = dateMatch?.[1];
 
   // Remove scripts, styles, nav, footer, header, aside, comments
-  let cleaned = html
+  const cleaned = html
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<nav[\s\S]*?<\/nav>/gi, "")
@@ -114,7 +114,7 @@ function extractArticleContent(html: string, url: string): {
  * Convert HTML to clean readable text preserving paragraphs and headings
  */
 function htmlToReadableText(html: string): string {
-  let text = html
+  const text = html
     // Preserve headings with markdown-like markers
     .replace(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi, "\n\n## $1\n\n")
     // Preserve paragraphs
@@ -274,7 +274,7 @@ serve(async (req: Request) => {
       }
     };
 
-    let response = await fetchWithTimeout(url, 15000);
+    const response = await fetchWithTimeout(url, 15000);
 
     // If the source blocks us (403/451/406/429) or fails, try Jina Reader proxy
     if (!response.ok && [401, 403, 406, 429, 451, 503].includes(response.status)) {

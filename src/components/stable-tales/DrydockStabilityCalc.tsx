@@ -9,6 +9,20 @@ import { toast } from "sonner";
 import { StableTalesEngine } from "./StableTalesCalculationEngine";
 import { HavuzKritikData } from "./StableTalesTypes";
 
+interface DrydockCalculationResult {
+  kritik_gm: number;
+  mevcut_gm: number;
+  güvenlik_marjı: number;
+  kren_momenti: number;
+  ortalama_aralik: number;
+  maksimum_aralik: number;
+  destek_sayisi: number;
+  güvenlik_durumu: string;
+  güvenlik_rengi: string;
+  öneriler: string[];
+  gm_orani: number;
+}
+
 export const DrydockStabilityCalc = () => {
   const [vesselData, setVesselData] = useState({
     deplasman: 25000,
@@ -25,7 +39,7 @@ export const DrydockStabilityCalc = () => {
     kren_momenti: undefined
   });
 
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<DrydockCalculationResult | null>(null);
 
   const addSupportPoint = () => {
     setDrydockData(prev => ({
@@ -63,7 +77,7 @@ export const DrydockStabilityCalc = () => {
       // Safety assessment
       let güvenlik_durumu = 'Güvenli';
       let güvenlik_rengi = 'default';
-      let öneriler: string[] = [];
+      const öneriler: string[] = [];
       
       if (mevcut_gm >= kritik_gm * 1.5) {
         güvenlik_durumu = 'Çok Güvenli';

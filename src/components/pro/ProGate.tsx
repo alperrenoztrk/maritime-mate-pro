@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Crown, Lock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useEntitlement } from "@/contexts/EntitlementContext";
+import { useEntitlement } from "@/contexts/useEntitlement";
 
 interface ProGateProps {
   children: ReactNode;

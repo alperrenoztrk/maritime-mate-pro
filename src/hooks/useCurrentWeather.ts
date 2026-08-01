@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { weatherPreloader } from "@/services/weatherPreloader";
-import { useLocation } from "@/contexts/LocationContext";
+import { useLocation } from "@/contexts/useSelectedLocation";
 
 type WeatherResponse = {
   latitude: number;

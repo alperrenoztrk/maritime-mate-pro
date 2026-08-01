@@ -7,7 +7,7 @@ import { fetchMaritimeNews, type MaritimeNewsItem } from "@/services/maritimeNew
 import { NewsReaderDialog } from "@/components/news/NewsReaderDialog";
 import { NewspaperStyles } from "@/components/news/NewspaperStyles";
 import { softHyphenate } from "@/components/news/hyphenate";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 
 /** Gazetenin kuruluş yılı — cilt numarası bundan türetiliyor. */
 const FOUNDED_YEAR = 1888;

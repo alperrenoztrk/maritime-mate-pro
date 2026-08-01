@@ -7,10 +7,11 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useNavigate } from "react-router-dom";
-import { useFontSize, FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/FontSizeContext";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { useAuth } from "@/hooks/useAuth";
-import { useEntitlement } from "@/contexts/EntitlementContext";
+import { FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/font-size-context";
+import { useFontSize } from "@/contexts/useFontSize";
+import { useLanguage } from "@/contexts/useLanguage";
+import { useAuth } from "@/hooks/useAuthContext";
+import { useEntitlement } from "@/contexts/useEntitlement";
 import { getLanguageFlag } from "@/utils/languages";
 import {
   areAdsSupported,

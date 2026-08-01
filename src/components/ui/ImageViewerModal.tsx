@@ -1,7 +1,7 @@
 import { X, ZoomIn, ZoomOut, RotateCw, ImageOff } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { withImageProxy } from "./LessonImage";
+import { withImageProxy } from "./imageProxy";
 
 interface ImageViewerModalProps {
   src: string;

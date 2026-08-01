@@ -6,7 +6,7 @@ import { Loader2, Lightbulb } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 import { stripMarkdown } from "@/utils/cleanText";
 
 // UI string translations for all 25 supported languages

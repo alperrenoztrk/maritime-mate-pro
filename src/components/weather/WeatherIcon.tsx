@@ -21,7 +21,7 @@ interface WeatherGlyph {
 }
 
 /** Maps a WMO weather code to a lucide icon + tone that reads on light and dark surfaces. */
-export function wmoToGlyph(code?: number): WeatherGlyph {
+function wmoToGlyph(code?: number): WeatherGlyph {
   if (code === undefined || code === null || Number.isNaN(code)) {
     return { Icon: Thermometer, colorClass: "text-slate-400" };
   }
@@ -75,7 +75,7 @@ export function wmoToGlyph(code?: number): WeatherGlyph {
 }
 
 /** Range-based variant for callers that bucket WMO codes instead of matching them exactly. */
-export function wmoRangeToGlyph(code?: number): WeatherGlyph {
+function wmoRangeToGlyph(code?: number): WeatherGlyph {
   if (code === undefined || code === null || Number.isNaN(code)) {
     return { Icon: Thermometer, colorClass: "text-slate-400" };
   }

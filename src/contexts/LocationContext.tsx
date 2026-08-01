@@ -1,17 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-export type SelectedLocation = {
-  latitude: number;
-  longitude: number;
-  locationLabel: string;
-} | null;
-
-type LocationContextType = {
-  selectedLocation: SelectedLocation;
-  setSelectedLocation: (location: SelectedLocation) => void;
-};
-
-const LocationContext = createContext<LocationContextType | undefined>(undefined);
+import { useState, type ReactNode } from "react";
+import { LocationContext, type SelectedLocation } from "./location-context";
 
 export function LocationProvider({ children }: { children: ReactNode }) {
   const [selectedLocation, setSelectedLocationState] = useState<SelectedLocation>(() => {
@@ -39,12 +27,4 @@ export function LocationProvider({ children }: { children: ReactNode }) {
       {children}
     </LocationContext.Provider>
   );
-}
-
-export function useLocation() {
-  const context = useContext(LocationContext);
-  if (context === undefined) {
-    throw new Error('useLocation must be used within a LocationProvider');
-  }
-  return context;
 }

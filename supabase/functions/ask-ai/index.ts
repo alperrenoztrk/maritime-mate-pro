@@ -4,6 +4,33 @@ import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 import { createServiceClient, consumeAiQuota, quotaExceededResponse } from "../_shared/entitlements.ts";
 
+type CalculationValues = Record<string, unknown>;
+
+interface AskAiRequest {
+  question?: unknown;
+  values?: unknown;
+  conversationHistory?: Array<{ question: string; answer: string }>;
+}
+
+interface WolframPod {
+  title?: string;
+  subpods?: Array<{ plaintext?: string }>;
+}
+
+interface WolframApiResponse {
+  queryresult?: { pods?: WolframPod[] };
+}
+
+interface WolframCalculationResult {
+  input: string;
+  result: string;
+  steps: string[];
+  interpretation: string;
+}
+
+const isCalculationValues = (value: unknown): value is CalculationValues =>
+  Boolean(value) && typeof value === "object" && !Array.isArray(value);
+
 serve(async (req) => {
   const origin = req.headers.get('origin');
   const corsHeaders = getCorsHeaders(origin);
@@ -20,13 +47,14 @@ serve(async (req) => {
   }
 
   let question: string = '';
-  let values: any;
+  let values: CalculationValues | undefined;
   let conversationHistory: Array<{question: string, answer: string}> | undefined;
   
   try {
-    const body = await req.json();
-    
-    ({ question, values, conversationHistory } = body);
+    const body = await req.json() as AskAiRequest;
+    question = typeof body.question === "string" ? body.question : "";
+    values = isCalculationValues(body.values) ? body.values : undefined;
+    conversationHistory = body.conversationHistory;
     
     // Input validation and sanitization
     if (!question || typeof question !== 'string') {
@@ -599,7 +627,7 @@ Detaylı formüller ve %100 doğru hesaplamalarla yanıtlayacağım.`;
 }
 
 // Gemini AI açıklama fonksiyonu
-async function getGeminiExplanation(question: string, values: any, apiKey: string, conversationHistory?: Array<{question: string, answer: string}>) {
+async function getGeminiExplanation(question: string, values: CalculationValues | undefined, apiKey: string, conversationHistory?: Array<{question: string, answer: string}>) {
   try {
     const prompt = values 
       ? `Sen denizcilik mühendisliği konusunda uzman bir asistansın. Verilen değerlerle hesaplama yapılacak. Önce neden bu hesabın yapıldığını, hangi formülün kullanıldığını açıkla.
@@ -706,7 +734,7 @@ Lütfen şu kurallara göre yanıt ver:
 }
 
 // Wolfram hesaplama fonksiyonu
-async function performWolframCalculation(question: string, values: any, apiKey: string) {
+async function performWolframCalculation(question: string, values: CalculationValues, apiKey: string) {
   try {
     const query = createWolframQuery(question, values);
     console.log('Wolfram query:', query);
@@ -718,7 +746,7 @@ async function performWolframCalculation(question: string, values: any, apiKey: 
       return null;
     }
 
-    const data = await response.json();
+    const data = await response.json() as WolframApiResponse;
     console.log('Wolfram response received');
 
     if (data.queryresult && data.queryresult.pods) {
@@ -734,7 +762,7 @@ async function performWolframCalculation(question: string, values: any, apiKey: 
 }
 
 // Wolfram sorgusu oluştur
-function createWolframQuery(question: string, values: any): string {
+function createWolframQuery(question: string, values: CalculationValues): string {
   const questionLower = question.toLowerCase();
   
   // Deplasman hesabı
@@ -813,8 +841,8 @@ function createWolframQuery(question: string, values: any): string {
 }
 
 // Wolfram sonuçlarını çıkar
-function extractWolframResults(pods: any[]): any {
-  const results = {
+function extractWolframResults(pods: WolframPod[]): WolframCalculationResult {
+  const results: WolframCalculationResult = {
     input: '',
     result: '',
     steps: [] as string[],
@@ -822,13 +850,14 @@ function extractWolframResults(pods: any[]): any {
   };
 
   for (const pod of pods) {
-    if (pod.title === 'Input') {
+    const title = pod.title ?? "";
+    if (title === 'Input') {
       results.input = pod.subpods?.[0]?.plaintext || '';
-    } else if (pod.title === 'Result' || pod.title === 'Exact result' || pod.title === 'Decimal approximation') {
+    } else if (title === 'Result' || title === 'Exact result' || title === 'Decimal approximation') {
       results.result = pod.subpods?.[0]?.plaintext || '';
-    } else if (pod.title.includes('step') || pod.title.includes('Step')) {
+    } else if (title.includes('step') || title.includes('Step')) {
       results.steps.push(pod.subpods?.[0]?.plaintext || '');
-    } else if (pod.title === 'Interpretation' || pod.title.includes('interpretation')) {
+    } else if (title === 'Interpretation' || title.includes('interpretation')) {
       results.interpretation = pod.subpods?.[0]?.plaintext || '';
     }
   }
@@ -837,7 +866,7 @@ function extractWolframResults(pods: any[]): any {
 }
 
 // AI ve Wolfram sonuçlarını birleştir
-function combineResults(aiExplanation: string | null, wolframResult: any): any {
+function combineResults(aiExplanation: string | null, wolframResult: WolframCalculationResult | null) {
   if (!aiExplanation && !wolframResult) {
     return {
       explanation: 'Hesaplama yapılamadı. Lütfen değerleri kontrol edin.',

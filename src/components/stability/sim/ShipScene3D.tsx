@@ -5,7 +5,7 @@ import { SceneEnvironment } from "./SceneEnvironment";
 import { OceanSurface3D } from "./OceanSurface3D";
 import { WakeEffects } from "./WakeEffects";
 import { ShipModel3D, type ShipType } from "./ShipModel3D";
-import { DECK_Y, KEEL_Y, UNITS_PER_METER } from "./hullGeometry";
+import { immersionFor, SHIP_SCALE_DEFAULT } from "./shipDraftGeometry";
 
 /**
  * Shared realistic ship scene: environment/IBL + Gerstner ocean + wake layer
@@ -43,21 +43,6 @@ export interface ShipScene3DProps {
   scale?: number;
   /** Rendered inside the heeling group — markers tilt with the ship. */
   children?: ReactNode;
-}
-
-export const SHIP_SCALE_DEFAULT = 0.82;
-
-/** Immersion (world units, +down) for a draft, clamped at the deck edge. */
-function immersionFor(draftM: number, scale: number): number {
-  const raw = (draftM - 6.5) * UNITS_PER_METER * scale;
-  const max = (DECK_Y + 0.04) * scale; // deck edge stays just above the sea
-  return Math.min(raw, max);
-}
-
-/** World Y of the keel at a given draft — for placing the K marker. */
-export function keelWorldY(draftM: number, scale: number = SHIP_SCALE_DEFAULT): number {
-  // ShipModel3D lifts itself +0.1·scale so the design WL sits at world y=0.
-  return (KEEL_Y + 0.1) * scale - immersionFor(draftM, scale);
 }
 
 export function ShipScene3D({

@@ -10,6 +10,26 @@ import { toast } from "sonner";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Area, AreaChart, ReferenceDot, ReferenceArea } from "recharts";
 import { StableTalesEngine } from "./StableTalesCalculationEngine";
 
+interface SolasCriterionResult {
+  value: number;
+  required: number;
+  passed: boolean;
+  score: number;
+}
+
+type SolasCriterionKey = "gm" | "area_0_30" | "area_0_40" | "area_30_40" | "max_gz" | "gz_angle";
+
+interface SolasCriteriaResults extends Record<SolasCriterionKey, SolasCriterionResult> {
+  overall: {
+    passed: number;
+    total: number;
+    score: number;
+    compliant: boolean;
+  };
+}
+
+const SOLAS_CRITERION_KEYS: SolasCriterionKey[] = ["gm", "area_0_30", "area_0_40", "area_30_40", "max_gz", "gz_angle"];
+
 export const AdvancedSOLASChecker = () => {
   const [vesselData, setVesselData] = useState({
     deplasman: 25000,
@@ -19,7 +39,7 @@ export const AdvancedSOLASChecker = () => {
     hizmet_alani: 'unrestricted'
   });
 
-  const [criteriaResults, setCriteriaResults] = useState<any>(null);
+  const [criteriaResults, setCriteriaResults] = useState<SolasCriteriaResults | null>(null);
   const [gzCurve, setGzCurve] = useState<Array<{ aci: number; gz: number; area: number; rightingMoment: number }>>([]);
   
   const checkSOLASCriteria = () => {
@@ -307,7 +327,9 @@ export const AdvancedSOLASChecker = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {Object.entries(criteriaResults).filter(([key]) => key !== 'overall').map(([key, criterion]: [string, any]) => (
+                {SOLAS_CRITERION_KEYS.map((key) => {
+                  const criterion = criteriaResults[key];
+                  return (
                   <div key={key} className="p-4 border rounded-lg space-y-3">
                     <div className="flex items-center justify-between">
                       <h4 className="font-medium">{getCriterionName(key)}</h4>
@@ -345,7 +367,8 @@ export const AdvancedSOLASChecker = () => {
                       <Progress value={criterion.score} className="h-2" />
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>

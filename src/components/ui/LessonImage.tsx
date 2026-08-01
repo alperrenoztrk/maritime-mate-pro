@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ImageOff } from "lucide-react";
+import { withImageProxy } from "./imageProxy";
 
 interface LessonImageProps {
   src: string;
@@ -8,36 +9,6 @@ interface LessonImageProps {
   onClick?: () => void;
   /** When true, do not wrap with proxy/fallback chrome; render bare img with onError fallback (used inside ImageViewerModal). */
   bare?: boolean;
-}
-
-/**
- * Wrap an external image URL with the images.weserv.nl proxy so that
- * Referer/hotlink-protected hosts (sailingissues.com, marinegyaan.com,
- * researchgate.net, jimcdn, etc.) load reliably inside the app.
- *
- * Local assets (Vite imports starting with /, blob:, data:) are returned as-is.
- */
-export function withImageProxy(url: string): string {
-  if (!url) return url;
-  if (
-    url.startsWith("data:") ||
-    url.startsWith("blob:") ||
-    url.startsWith("/") ||
-    url.startsWith("./") ||
-    url.startsWith("../")
-  ) {
-    return url;
-  }
-  // Already proxied
-  if (url.includes("images.weserv.nl")) return url;
-  try {
-    const u = new URL(url);
-    // Strip protocol — weserv expects host+path
-    const target = `${u.host}${u.pathname}${u.search}`;
-    return `https://images.weserv.nl/?url=${encodeURIComponent(target)}&w=900&output=webp&we`;
-  } catch {
-    return url;
-  }
 }
 
 type Stage = "proxy" | "direct" | "failed";

@@ -40,14 +40,20 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
   const [bollardInputs, setBollardInputs] = useState({ displacement: "", speed: "", k: "30" });
   const [scopeInputs, setScopeInputs] = useState({ chainLength: "", depth: "" });
 
-  const sectionRefs: Record<string, RefObject<HTMLDivElement>> = {
-    mooring: useRef<HTMLDivElement>(null),
-    wind: useRef<HTMLDivElement>(null),
-    catenary: useRef<HTMLDivElement>(null),
-    "anchor-holding": useRef<HTMLDivElement>(null),
-    "bollard-pull": useRef<HTMLDivElement>(null),
-    "scope-ratio": useRef<HTMLDivElement>(null),
-  };
+  const mooringRef = useRef<HTMLDivElement>(null);
+  const windRef = useRef<HTMLDivElement>(null);
+  const catenaryRef = useRef<HTMLDivElement>(null);
+  const anchorHoldingRef = useRef<HTMLDivElement>(null);
+  const bollardPullRef = useRef<HTMLDivElement>(null);
+  const scopeRatioRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useMemo<Record<SectionKey, RefObject<HTMLDivElement>>>(() => ({
+    mooring: mooringRef,
+    wind: windRef,
+    catenary: catenaryRef,
+    "anchor-holding": anchorHoldingRef,
+    "bollard-pull": bollardPullRef,
+    "scope-ratio": scopeRatioRef,
+  }), []);
 
   useEffect(() => {
     if (!initialSection) return;
@@ -55,7 +61,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
     if (target) {
       setTimeout(() => target.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
     }
-  }, [initialSection]);
+  }, [initialSection, sectionRefs]);
 
   const calculateMooringLoad = () => {
     const swl = parseFloat(mooringInputs.swl.replace(",", "."));

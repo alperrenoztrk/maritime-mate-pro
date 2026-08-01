@@ -242,7 +242,7 @@ const content: CrewTaskLongForm = {
             {
               type: "tip",
               title: "Açıklayarak yaptır, yaptırarak öğret",
-              text: `\"Demonstrate, then supervise, then delegate\" (göster, gözetle, devret) modeli stajyer eğitiminde en etkili yöntemdir. Stajyere bir görevi önce yaparak gösterin, sonra gözetiminizde yaptırın, yetkinleştikçe bağımsız sorumluluk verin.`,
+              text: `"Demonstrate, then supervise, then delegate" (göster, gözetle, devret) modeli stajyer eğitiminde en etkili yöntemdir. Stajyere bir görevi önce yaparak gösterin, sonra gözetiminizde yaptırın, yetkinleştikçe bağımsız sorumluluk verin.`,
             },
           ],
         },
@@ -319,7 +319,7 @@ const content: CrewTaskLongForm = {
             {
               type: "tip",
               title: "Eğitimi ölçülebilir hedeflere bağla",
-              text: `\"ECDIS öğret\" yerine \"sefer sonunda junior zabit safety settings'i bağımsız girip route check'i tek başına yorumlayabilsin\" gibi ölçülebilir bir hedef koyun. Net hedef, hem eğitenin hem eğitilenin ilerlemeyi görmesini sağlar.`,
+              text: `"ECDIS öğret" yerine "sefer sonunda junior zabit safety settings'i bağımsız girip route check'i tek başına yorumlayabilsin" gibi ölçülebilir bir hedef koyun. Net hedef, hem eğitenin hem eğitilenin ilerlemeyi görmesini sağlar.`,
             },
           ],
         },

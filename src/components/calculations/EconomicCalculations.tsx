@@ -9,6 +9,38 @@ import { DollarSign, TrendingUp, Clock } from "lucide-react";
 import type { CalculationStep } from "@/types/calculationSteps";
 import { CalculationSteps } from "@/components/ui/calculation-steps";
 
+interface TceResult {
+  grossFreight: number;
+  voyageExpenses: number;
+  netFreight: number;
+  voyageDays: number;
+  tce: number;
+  profitability: "Excellent" | "Good" | "Fair" | "Poor";
+}
+
+interface DemurrageResult {
+  demurrageRate: number;
+  layTime: number;
+  actualTime: number;
+  timeDifference: number;
+  type: "Demurrage" | "Despatch" | "On Time";
+  amount: number;
+  description: string;
+  status: "penalty" | "bonus" | "neutral";
+}
+
+interface VoyageEconomicsResult {
+  cargoQuantity: number;
+  freightRate: number;
+  grossRevenue: number;
+  bunkerCost: number;
+  portCosts: number;
+  totalCosts: number;
+  netProfit: number;
+  profitMargin: number;
+  profitability: "Excellent" | "Good" | "Fair" | "Poor" | "Loss";
+}
+
 export const EconomicCalculations = () => {
   const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
@@ -16,20 +48,20 @@ export const EconomicCalculations = () => {
   const [grossFreight, setGrossFreight] = useState("");
   const [voyageExpenses, setVoyageExpenses] = useState("");
   const [voyageDays, setVoyageDays] = useState("");
-  const [tceResult, setTceResult] = useState<any>(null);
+  const [tceResult, setTceResult] = useState<TceResult | null>(null);
 
   // Demurrage Calculation
   const [demurrageRate, setDemurrageRate] = useState("");
   const [layTime, setLayTime] = useState("");
   const [actualTime, setActualTime] = useState("");
-  const [demurrageResult, setDemurrageResult] = useState<any>(null);
+  const [demurrageResult, setDemurrageResult] = useState<DemurrageResult | null>(null);
 
   // Voyage Economics
   const [cargoQuantity, setCargoQuantity] = useState("");
   const [freightRate, setFreightRate] = useState("");
   const [bunkerCost, setBunkerCost] = useState("");
   const [portCosts, setPortCosts] = useState("");
-  const [voyageResult, setVoyageResult] = useState<any>(null);
+  const [voyageResult, setVoyageResult] = useState<VoyageEconomicsResult | null>(null);
 
   const calculateTCE = () => {
     const freight = parseFloat(grossFreight);
@@ -64,30 +96,41 @@ export const EconomicCalculations = () => {
     if (isNaN(rate) || isNaN(layTimeHours) || isNaN(actualHours)) return;
 
     const timeDifference = actualHours - layTimeHours;
-    let result: any = {
+    const baseResult = {
       demurrageRate: rate,
       layTime: layTimeHours,
       actualTime: actualHours,
       timeDifference
     };
 
+    let result: DemurrageResult;
+
     if (timeDifference > 0) {
       // Demurrage - vessel is delayed
-      result.type = 'Demurrage';
-      result.amount = timeDifference * rate;
-      result.description = 'Yükleme/boşaltma süresi aşıldı';
-      result.status = 'penalty';
+      result = {
+        ...baseResult,
+        type: 'Demurrage',
+        amount: timeDifference * rate,
+        description: 'Yükleme/boşaltma süresi aşıldı',
+        status: 'penalty',
+      };
     } else if (timeDifference < 0) {
       // Despatch - vessel finished early
-      result.type = 'Despatch';
-      result.amount = Math.abs(timeDifference) * (rate * 0.5); // Usually half demurrage rate
-      result.description = 'Yükleme/boşaltma erken tamamlandı';
-      result.status = 'bonus';
+      result = {
+        ...baseResult,
+        type: 'Despatch',
+        amount: Math.abs(timeDifference) * (rate * 0.5), // Usually half demurrage rate
+        description: 'Yükleme/boşaltma erken tamamlandı',
+        status: 'bonus',
+      };
     } else {
-      result.type = 'On Time';
-      result.amount = 0;
-      result.description = 'Tam zamanında tamamlandı';
-      result.status = 'neutral';
+      result = {
+        ...baseResult,
+        type: 'On Time',
+        amount: 0,
+        description: 'Tam zamanında tamamlandı',
+        status: 'neutral',
+      };
     }
 
     setDemurrageResult(result);

@@ -194,14 +194,14 @@ export default function BetaWorkHoursTool() {
       setPeople(built);
       setActivePerson(built[0].id);
       toast.success(`${built.length} personel için tablo oluşturuldu`);
-    } catch (e: any) {
-      const msg = e?.message ?? "";
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : "";
       if (msg.includes("429"))
         toast.error("Çok fazla istek. Bir dakika bekleyin.");
       else if (msg.includes("402"))
         toast.error("Servis kotası doldu. Lütfen daha sonra tekrar deneyin.");
       else toast.error("Okuma başarısız. Tekrar deneyin.");
-      console.error(e);
+      console.error(error);
     } finally {
       setLoading(false);
     }

@@ -30,14 +30,16 @@ const Glossary = () => {
   const updateSearch = (value: string) => {
     setSearch(value);
     const next = new URLSearchParams(searchParams);
-    value.trim() ? next.set("q", value) : next.delete("q");
+    if (value.trim()) next.set("q", value);
+    else next.delete("q");
     setSearchParams(next, { replace: true });
   };
 
   const updateCategory = (category: string | null) => {
     setActiveCategory(category);
     const next = new URLSearchParams(searchParams);
-    category ? next.set("cat", category) : next.delete("cat");
+    if (category) next.set("cat", category);
+    else next.delete("cat");
     setSearchParams(next, { replace: true });
   };
 

@@ -9,6 +9,14 @@ import { toast } from "sonner";
 import { StableTalesEngine } from "./StableTalesCalculationEngine";
 import { SarkacMeyilData } from "./StableTalesTypes";
 
+interface PendulumCalculationResult {
+  meyil_acisi: number;
+  sarkac_uzunlugu: number;
+  sapma: number;
+  hata_marji: number;
+  dogruluk: string;
+}
+
 export const PendulumStabilityCalc = () => {
   const [sarkacData, setSarkacData] = useState<SarkacMeyilData>({
     sarkac_uzunlugu: 1.0,
@@ -16,7 +24,7 @@ export const PendulumStabilityCalc = () => {
     meyil_acisi: undefined
   });
 
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<PendulumCalculationResult | null>(null);
 
   const calculatePendulum = () => {
     try {

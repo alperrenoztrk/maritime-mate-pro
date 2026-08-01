@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useEntitlement } from "@/contexts/EntitlementContext";
+import { useEntitlement } from "@/contexts/useEntitlement";
 
 interface ProRouteProps {
   children: ReactNode;

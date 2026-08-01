@@ -39,9 +39,21 @@ interface RawAnalysis {
   warnings?: string[];
 }
 
+interface ToolCallChoice {
+  message?: {
+    tool_calls?: Array<{
+      function?: { name?: string; arguments?: string };
+    }>;
+  };
+}
+
 function cleanText(value: unknown, maxLength = 180): string | null {
   if (typeof value !== "string") return null;
-  const cleaned = value.replace(/[\u0000-\u001F\u007F]/g, " ").replace(/\s+/g, " ").trim();
+  const withoutControls = Array.from(value, (character) => {
+    const code = character.charCodeAt(0);
+    return code <= 31 || code === 127 ? " " : character;
+  }).join("");
+  const cleaned = withoutControls.replace(/\s+/g, " ").trim();
   return cleaned ? cleaned.slice(0, maxLength) : null;
 }
 
@@ -92,7 +104,7 @@ function normalizeAnalysis(raw: RawAnalysis) {
 }
 
 function parseToolCall(payload: unknown): RawAnalysis | null {
-  const choices = (payload as any)?.choices ?? [];
+  const choices = (payload as { choices?: ToolCallChoice[] } | null)?.choices ?? [];
   for (const choice of choices) {
     for (const call of choice?.message?.tool_calls ?? []) {
       if (call?.function?.name !== "return_document_analysis") continue;

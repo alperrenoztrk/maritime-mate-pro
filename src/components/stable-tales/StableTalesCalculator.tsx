@@ -8,7 +8,10 @@ import { Calculator, Ship, AlertTriangle, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, ReferenceDot, ReferenceArea } from "recharts";
 import { StableTalesEngine } from "./StableTalesCalculationEngine";
-import { StableTalesInput, YukBilgisi, TankBilgisi } from "./StableTalesTypes";
+import type { SOLASKriterleri, StabilityCalculationResult, StableTalesInput, YukBilgisi, TankBilgisi } from "./StableTalesTypes";
+
+type SolasCriterionKey = Exclude<keyof SOLASKriterleri, "genel_uygunluk">;
+const SOLAS_CRITERION_KEYS: SolasCriterionKey[] = ["alan_0_30", "alan_0_40", "alan_30_40", "max_gz", "gm"];
 
 export const StableTalesCalculator = () => {
   const [vesselData, setVesselData] = useState({
@@ -18,7 +21,7 @@ export const StableTalesCalculator = () => {
     gemi_adi: "M/V Example Ship"
   });
 
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<StabilityCalculationResult | null>(null);
   const [gzCurve, setGzCurve] = useState<Array<{ aci: number; gz: number; kn: number; rightingMoment: number }>>([]);
   const [yukler, setYukler] = useState<YukBilgisi[]>([]);
   const [tanklar, setTanklar] = useState<TankBilgisi[]>([]);
@@ -319,7 +322,9 @@ export const StableTalesCalculator = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Object.entries(results.solas_uygunluk).filter(([key]) => key !== 'genel_uygunluk').map(([key, kriter]: [string, any]) => (
+                {SOLAS_CRITERION_KEYS.map((key) => {
+                  const kriter = results.solas_uygunluk[key];
+                  return (
                   <div key={key} className="flex items-center justify-between p-3 border rounded-lg">
                     <div>
                       <p className="font-medium">{key.replace('_', ' ').toUpperCase()}</p>
@@ -331,7 +336,8 @@ export const StableTalesCalculator = () => {
                       {kriter.uygun ? "✓" : "✗"}
                     </Badge>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>

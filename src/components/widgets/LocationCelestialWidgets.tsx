@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { MapPin, Maximize2 } from "lucide-react";
-import { useLocation } from "@/contexts/LocationContext";
+import { useLocation } from "@/contexts/useSelectedLocation";
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -39,7 +39,7 @@ const LocationCelestialWidgets: React.FC<LocationCelestialWidgetsProps> = ({
     
     // Değeri saniyeye yuvarlayıp öyle bölerek 59.6" gibi bir değerin bir sonraki
     // dakikaya/dereceye taşınmasını sağla; aksi halde geçersiz "60" saniye çıkar.
-    let totalSeconds = Math.round(Math.abs(decimal) * 3600);
+    const totalSeconds = Math.round(Math.abs(decimal) * 3600);
     const seconds = totalSeconds % 60;
     const totalMinutes = Math.floor(totalSeconds / 60);
     const minutes = totalMinutes % 60;
