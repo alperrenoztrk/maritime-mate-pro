@@ -66,6 +66,9 @@ export function InstrumentFrame({
         />
       )}
 
+      {/* Altı ayrı fotoğrafı tek bir ışığa oturtan ortak vinyet/parlama. */}
+      <div className="iw-grade" />
+
       {/* Canlı katman — fotoğrafın okuma yüzeyinin üstüne oturur. */}
       {children}
 

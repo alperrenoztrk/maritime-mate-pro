@@ -1,4 +1,5 @@
 import { InstrumentFrame } from "./InstrumentFrame";
+import { ChronometerFace } from "./ChronometerFace";
 import { CHRONOMETER, CHRONOMETER_DIAL } from "./instrumentPhotos";
 import { dialStyle } from "./overlayGeometry";
 
@@ -15,21 +16,22 @@ interface ChronometerWidgetProps {
 }
 
 /**
- * Gerçek bir A. Lange & Söhne gemi kronometresinin fotoğrafı; canlı ibreler
- * fotoğrafın kadranının üstüne çizilir. Kadran yüzeyi yeniden boyanır, yoksa
- * fotoğraftaki donmuş ibreler canlı olanlarla çakışırdı.
+ * Gerçek bir A. Lange & Söhne gemi kronometresinin fotoğrafı; kadran canlı
+ * olarak yeniden çizilir (bkz. ChronometerFace), fotoğrafın pirinç bezeli,
+ * kubbe camı ve ahşap kutusu olduğu gibi kalır.
+ *
+ * Kadranın yeniden çizilmesi şart: fotoğraftaki ibreler donmuş. Yeni yüzey
+ * fotoğraftakinin ölçülmüş düzenini taşıdığı için ek bir katman gibi değil,
+ * fotoğrafın devamı gibi durur.
  */
 export function ChronometerWidget({ label, hours, minutes, seconds, digital, subLabel, variant }: ChronometerWidgetProps) {
-  const hourDeg = (hours % 12) * 30 + minutes * 0.5;
-  const minuteDeg = minutes * 6 + seconds * 0.1;
-  const secondDeg = seconds * 6;
   const isGmt = variant === "gmt";
 
   return (
     <InstrumentFrame
       photo={CHRONOMETER}
       size="small"
-      photoFilter={isGmt ? "saturate(.55) brightness(.82)" : undefined}
+      photoFilter={isGmt ? "saturate(.5) brightness(.78)" : undefined}
       label={isGmt ? <span className="notranslate" translate="no">{label}</span> : label}
       readout={
         <>
@@ -38,18 +40,14 @@ export function ChronometerWidget({ label, hours, minutes, seconds, digital, sub
         </>
       }
     >
-      <div
-        className={"iw-face" + (isGmt ? " iw-face--gmt" : "")}
-        style={dialStyle(CHRONOMETER_DIAL, CHRONOMETER.aspect)}
-      >
-        <span className="iw-nu iw-nu--t notranslate" translate="no">XII</span>
-        <span className="iw-nu iw-nu--r notranslate" translate="no">III</span>
-        <span className="iw-nu iw-nu--b notranslate" translate="no">VI</span>
-        <span className="iw-nu iw-nu--l notranslate" translate="no">IX</span>
-        <div className="iw-hand iw-hand--hour" style={{ transform: `translateX(-50%) rotate(${hourDeg}deg)` }} />
-        <div className="iw-hand iw-hand--min" style={{ transform: `translateX(-50%) rotate(${minuteDeg}deg)` }} />
-        <div className="iw-hand iw-hand--sec" style={{ transform: `translateX(-50%) rotate(${secondDeg}deg)` }} />
-        <div className="iw-cap" />
+      <div className="iw-dial" style={dialStyle(CHRONOMETER_DIAL, CHRONOMETER.aspect)}>
+        <ChronometerFace
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+          variant={variant}
+          inscription={isGmt ? ["MARINER'S BOOK", "GREENWICH · UTC"] : ["MARINER'S BOOK", "MARINE CHRONOMETER"]}
+        />
       </div>
     </InstrumentFrame>
   );

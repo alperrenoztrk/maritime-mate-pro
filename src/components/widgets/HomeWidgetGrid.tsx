@@ -5,6 +5,7 @@ import { type HomeWidgetId, AVAILABLE_WIDGETS, useHomeWidgets } from "@/hooks/us
 import { useLocation } from "@/contexts/LocationContext";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 import { InstrumentStyles } from "@/components/widgets/instruments/InstrumentStyles";
+import { InstrumentDefs } from "@/components/widgets/instruments/InstrumentDefs";
 import { InstrumentCredits } from "@/components/widgets/instruments/InstrumentCredits";
 import { ChronometerWidget } from "@/components/widgets/instruments/ChronometerWidget";
 import { ThermometerWidget } from "@/components/widgets/instruments/ThermometerWidget";
@@ -198,12 +199,14 @@ export function HomeWidgetGrid() {
         const sunset = data?.sunsetIso
           ? new Date(data.sunsetIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
           : "—";
+        // Kırpılmadan geçer: gece saatlerinde 0'ın altına / 1'in üstüne çıkması
+        // lombardan karanlık görünmesini sağlar (bkz. PortholeSky).
         let progress: number | null = null;
         if (data?.sunriseIso && data?.sunsetIso) {
           const rise = new Date(data.sunriseIso).getTime();
           const set = new Date(data.sunsetIso).getTime();
           if (set > rise) {
-            progress = Math.min(1, Math.max(0, (now.getTime() - rise) / (set - rise)));
+            progress = (now.getTime() - rise) / (set - rise);
           }
         }
         return <SunArcWidget key={id} sunrise={sunrise} sunset={sunset} progress={progress} />;
@@ -216,6 +219,7 @@ export function HomeWidgetGrid() {
   return (
     <>
       <InstrumentStyles />
+      <InstrumentDefs />
       <div className="grid grid-cols-2 items-start gap-3 px-4 sm:grid-cols-4">
         {enabled.map(render)}
       </div>

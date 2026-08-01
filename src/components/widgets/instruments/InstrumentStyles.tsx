@@ -2,10 +2,11 @@
  * Fotoğraf tabanlı enstrüman widget'larının ortak CSS'i (`iw-` prefix).
  * HomeWidgetGrid tarafından bir kez render edilir; bileşenler yalnızca sınıfları kullanır.
  *
- * Kural: gövde artık gradyanla çizilmiyor — fotoğraf veriyor. CSS'in işi
- * yalnızca (1) fotoğrafı kutuya kırpmak, (2) okuma yüzeyini örtüp yeniden
- * çizmek, (3) yazıyı her fotoğrafın üstünde okunur tutmak. Konum/ölçü
- * değerleri bileşenlerden inline gelir (bkz. overlayGeometry.ts).
+ * İş bölümü: gövdeyi FOTOĞRAF verir, okuma yüzeyini SVG çizer (bkz.
+ * ChronometerFace / CompassFace / PortholeSky), CSS ise ikisini aynı ışığa
+ * oturtur — fotoğrafı kutuya kırpar, üstüne ortak bir vinyet/parlama geçirir,
+ * pirinç plakayı ve alt okuma şeridini kabartır. Konum/ölçü değerleri
+ * bileşenlerden inline gelir (bkz. overlayGeometry.ts).
  */
 export function InstrumentStyles() {
   return (
@@ -21,7 +22,8 @@ export function InstrumentStyles() {
         background: #14100c;
         box-shadow:
           0 2px 4px rgba(0,0,0,.45),
-          0 10px 22px rgba(0,0,0,.5);
+          0 10px 22px rgba(0,0,0,.5),
+          inset 0 1px 0 rgba(255,232,170,.14);
       }
       .iw-small{ grid-column: span 1; }
       .iw-medium{ grid-column: span 2; }
@@ -39,6 +41,22 @@ export function InstrumentStyles() {
         background: linear-gradient(160deg, #2a211a 0%, #16100b 100%);
       }
 
+      /*
+        Ortak ışık: altı fotoğraf altı ayrı stüdyoda çekildi. Hepsinin üstünden
+        aynı vinyet ve aynı köşegen parlama geçince tek bir dolabın içindeki
+        enstrümanlar gibi dururlar. Canlı yüzeylerin (z-index 2) altında kalır.
+      */
+      .iw-grade{
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(128deg, rgba(255,244,214,.14) 0%, rgba(255,244,214,.03) 26%, transparent 46%),
+          radial-gradient(120% 110% at 34% 26%, rgba(255,236,196,.1) 0%, transparent 58%),
+          radial-gradient(130% 120% at 50% 52%, transparent 46%, rgba(10,6,2,.34) 84%, rgba(6,3,1,.6) 100%);
+      }
+
       /* ── Üst şerit: pirinç plaka + eylem ── */
       .iw-top{
         position: absolute;
@@ -51,12 +69,14 @@ export function InstrumentStyles() {
         justify-content: space-between;
         gap: 6px;
         padding: 7px 8px 14px;
-        background: linear-gradient(180deg, rgba(6,4,2,.78) 0%, rgba(6,4,2,.42) 55%, transparent 100%);
+        background: linear-gradient(180deg, rgba(6,4,2,.7) 0%, rgba(6,4,2,.34) 55%, transparent 100%);
         pointer-events: none;
       }
       .iw-top > *{ pointer-events: auto; }
 
+      /* Pirinç künye: fırçalanmış yüzey, iki vida, kazınmış harfler. */
       .iw-plate{
+        position: relative;
         font-family: Georgia, 'Times New Roman', serif;
         font-size: 9px;
         font-weight: 600;
@@ -65,15 +85,19 @@ export function InstrumentStyles() {
         color: #3a2b10;
         text-transform: uppercase;
         text-align: center;
-        padding: 3px 10px;
+        padding: 3px 11px;
         border-radius: 3px;
         max-width: 100%;
-        text-shadow: 0 1px 0 rgba(255,255,255,.42);
+        text-shadow: 0 1px 0 rgba(255,255,255,.5), 0 -1px 0 rgba(0,0,0,.22);
         background:
-          radial-gradient(circle 1.6px at 4.5px 50%, #6b4e16 0 58%, rgba(0,0,0,.4) 66%, transparent 74%),
-          radial-gradient(circle 1.6px at calc(100% - 4.5px) 50%, #6b4e16 0 58%, rgba(0,0,0,.4) 66%, transparent 74%),
-          linear-gradient(180deg, #f6e3a0 0%, #dfba63 52%, #caa044 100%);
-        box-shadow: inset 0 1px 1px rgba(255,255,255,.55), inset 0 -1px 1px rgba(0,0,0,.35), 0 1px 3px rgba(0,0,0,.6);
+          radial-gradient(circle 1.7px at 5px 50%, #6b4e16 0 52%, rgba(0,0,0,.45) 62%, transparent 72%),
+          radial-gradient(circle 1.7px at calc(100% - 5px) 50%, #6b4e16 0 52%, rgba(0,0,0,.45) 62%, transparent 72%),
+          repeating-linear-gradient(94deg, rgba(255,255,255,.09) 0 1px, rgba(120,88,24,.05) 1px 3px),
+          linear-gradient(180deg, #f8e7ab 0%, #dfba63 48%, #b98f34 100%);
+        box-shadow:
+          inset 0 1px 1px rgba(255,255,255,.6),
+          inset 0 -1px 1px rgba(0,0,0,.4),
+          0 1px 3px rgba(0,0,0,.6);
       }
 
       /* ── Alt şerit: okumalar. Fotoğraf ne olursa olsun kontrast burada. ── */
@@ -87,8 +111,18 @@ export function InstrumentStyles() {
         flex-direction: column;
         align-items: center;
         gap: 1px;
-        padding: 14px 8px 7px;
-        background: linear-gradient(0deg, rgba(6,4,2,.9) 0%, rgba(6,4,2,.66) 48%, transparent 100%);
+        padding: 15px 8px 7px;
+        background: linear-gradient(0deg, rgba(5,3,1,.92) 0%, rgba(5,3,1,.68) 46%, transparent 100%);
+      }
+      /* Şeridi kasaya bağlayan pirinç kılcal çizgi. */
+      .iw-readout::before{
+        content: "";
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        top: 12px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(226,190,110,.4) 22%, rgba(226,190,110,.4) 78%, transparent);
       }
       /* İki okumayı yan yana koyan satır (doğuş/batış gibi). */
       .iw-split{
@@ -110,8 +144,8 @@ export function InstrumentStyles() {
         font-variant-numeric: tabular-nums;
         font-size: 15px;
         font-weight: 700;
-        color: #f6e3a0;
-        text-shadow: 0 1px 2px rgba(0,0,0,.85);
+        color: #f7e6ac;
+        text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 0 10px rgba(226,180,90,.28);
         letter-spacing: .08em;
         line-height: 1;
       }
@@ -127,124 +161,24 @@ export function InstrumentStyles() {
         white-space: nowrap;
         line-height: 1.2;
       }
-      .iw-engraved{
-        font-family: Georgia, 'Times New Roman', serif;
-        color: #e2d3a8;
-        text-shadow: 0 1px 2px rgba(0,0,0,.8);
-        letter-spacing: .1em;
-      }
 
-      /* ── Kadran yüzeyi: fotoğraftaki donmuş ibreleri örter ── */
-      .iw-face{
+      /* ── Kadran: fotoğraftaki donmuş kadranı canlı SVG yüzey örter ──
+         Kutu yalnızca daireyi konumlandırır; bütün çizim SVG'de. Gölge,
+         yüzeyi fotoğrafın camının altına oturtur. */
+      .iw-dial{
         position: absolute;
         z-index: 2;
         border-radius: 50%;
-        transform-style: preserve-3d;
-        background:
-          radial-gradient(circle at 40% 32%, #fdf6e0 0%, #f8eed4 55%, #ecd9ae 100%);
         box-shadow:
-          inset 0 0 0 1px rgba(74,49,19,.4),
-          inset 0 3px 9px rgba(90,60,20,.32),
-          0 0 7px 4px rgba(20,12,4,.28);
+          0 0 5px 2px rgba(16,10,3,.4),
+          inset 0 1px 3px rgba(0,0,0,.3);
       }
-      /*
-        Taksimat halkası + kubbe cam yansıması — fotoğrafın camını taklit eder.
-        Sıralama önemli: opak iç disk konik gradyanın ÜSTÜNDE durur, yoksa
-        taksimat çizgileri merkeze kadar uzayıp pasta dilimine döner.
-      */
-      .iw-face::after{
-        content: "";
-        position: absolute;
-        inset: 0;
-        /* Kadran zemininin üstünde ama rakam/ibre/göbeğin altında kalmalı. */
-        z-index: 1;
-        border-radius: 50%;
-        pointer-events: none;
-        background:
-          radial-gradient(circle at 68% 82%, rgba(255,255,255,.16) 0 8%, transparent 26%),
-          linear-gradient(148deg, rgba(255,255,255,.34) 6%, rgba(255,255,255,.09) 24%, transparent 44%),
-          radial-gradient(circle, #f8eed4 0 84%, transparent 85%),
-          repeating-conic-gradient(from -0.75deg, #4a3113 0 1.5deg, transparent 1.5deg 30deg);
-      }
-      /* GMT: koyu arduvaz kadran */
-      .iw-face--gmt{
-        background: radial-gradient(circle at 40% 32%, #2e3f52 0%, #22303f 55%, #17222e 100%);
-        box-shadow:
-          inset 0 0 0 1px rgba(218,165,32,.45),
-          inset 0 3px 9px rgba(0,0,0,.5),
-          0 0 7px 4px rgba(6,10,16,.36);
-      }
-      .iw-face--gmt::after{
-        background:
-          radial-gradient(circle at 68% 82%, rgba(255,255,255,.1) 0 8%, transparent 26%),
-          linear-gradient(148deg, rgba(255,255,255,.26) 6%, rgba(255,255,255,.07) 24%, transparent 44%),
-          radial-gradient(circle, #22303f 0 84%, transparent 85%),
-          repeating-conic-gradient(from -0.75deg, #f2d98a 0 1.5deg, transparent 1.5deg 30deg);
-      }
-      /* Pusula kartı: krem zemin + artı tel, taksimat 15°'de bir (daha ince) */
-      .iw-face--card::after{
-        background:
-          radial-gradient(circle at 68% 82%, rgba(255,255,255,.16) 0 8%, transparent 26%),
-          linear-gradient(148deg, rgba(255,255,255,.34) 6%, rgba(255,255,255,.09) 24%, transparent 44%),
-          linear-gradient(0deg, transparent calc(50% - .5px), rgba(74,49,19,.26) 50%, transparent calc(50% + .5px)),
-          linear-gradient(90deg, transparent calc(50% - .5px), rgba(74,49,19,.26) 50%, transparent calc(50% + .5px)),
-          radial-gradient(circle, #f8eed4 0 86%, transparent 87%),
-          repeating-conic-gradient(from -0.5deg, #4a3113 0 1deg, transparent 1deg 15deg);
-      }
-
-      /* Roma rakamları / kerteriz harfleri */
-      .iw-nu{
-        position: absolute;
-        z-index: 3;
-        font-family: Georgia, 'Times New Roman', serif;
-        font-size: clamp(7px, 2.4vw, 10px);
-        font-weight: 700;
-        color: #4a3113;
-        line-height: 1;
-      }
-      .iw-face--gmt .iw-nu{ color: #f2d98a; }
-      .iw-nu--t{ top: 11%; left: 50%; transform: translateX(-50%); }
-      .iw-nu--r{ right: 12%; top: 50%; transform: translateY(-50%); }
-      .iw-nu--b{ bottom: 11%; left: 50%; transform: translateX(-50%); }
-      .iw-nu--l{ left: 12%; top: 50%; transform: translateY(-50%); }
-
-      /* İbreler — transition yok: 1 Hz atlama gerçek kronometre tiki */
-      .iw-hand{
-        position: absolute;
-        left: 50%;
-        bottom: 50%;
-        transform-origin: 50% 100%;
-        border-radius: 99px;
-        z-index: 4;
-        filter: drop-shadow(0 1px 1px rgba(0,0,0,.4));
-      }
-      .iw-hand--hour{ width: 4px; height: 24%; background: #3f2a0e; }
-      .iw-hand--min{ width: 3px; height: 33%; background: #3f2a0e; }
-      .iw-hand--sec{ width: 1.5px; height: 38%; background: #8f1f1f; }
-      .iw-face--gmt .iw-hand--hour, .iw-face--gmt .iw-hand--min{ background: #f2d98a; }
-      .iw-cap{
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 9px;
-        height: 9px;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        background: radial-gradient(circle at 35% 30%, #f2d98a, #7a5c1a 80%);
-        box-shadow: 0 1px 2px rgba(0,0,0,.45);
-        z-index: 5;
-      }
-      .iw-needle{
-        position: absolute;
-        left: 50%;
-        top: 14%;
-        width: 3px;
-        height: 72%;
-        transform-origin: 50% 50%;
-        border-radius: 99px;
-        background: linear-gradient(180deg, #8f1f1f 0 50%, #384355 50%);
-        filter: drop-shadow(0 1px 1px rgba(0,0,0,.4));
-        z-index: 4;
+      .iw-svg{
+        display: block;
+        width: 100%;
+        height: 100%;
+        /* Yüzey içindeki karışım modları fotoğrafa taşmasın. */
+        isolation: isolate;
       }
 
       /* ── LCD: fotoğraftaki ekranın üstüne canlı fosfor ── */
@@ -257,37 +191,50 @@ export function InstrumentStyles() {
         gap: 1px;
         padding: 6px 8px;
         border-radius: 3px;
-        background: #0c1a10;
+        background:
+          radial-gradient(120% 140% at 50% 40%, #12271a 0%, #0a170f 72%, #060e09 100%);
         box-shadow:
           inset 0 0 12px rgba(0,0,0,.8),
-          inset 0 0 30px rgba(125,255,160,.06),
-          0 0 0 1px rgba(0,0,0,.65);
+          inset 0 0 30px rgba(125,255,160,.07),
+          0 0 0 1px rgba(0,0,0,.65),
+          0 0 12px rgba(90,255,140,.09);
         font-family: ui-monospace, SFMono-Regular, Menlo, 'Courier New', monospace;
         color: #7dffa0;
-        text-shadow: 0 0 4px rgba(125,255,160,.45);
+        text-shadow: 0 0 4px rgba(125,255,160,.5);
         /* Ekran fotoğrafın çerçevesi kadar dar; DMS satırı taşmasın. */
         font-size: 9px;
-        line-height: 1.5;
+        line-height: 1.45;
         overflow: hidden;
       }
-      /* Ekran camı: tarama satırları + köşegen parlama */
+      /* Ekran camı: piksel ızgarası, tarama satırları, köşegen parlama */
       .iw-screen::after{
         content: "";
         position: absolute;
         inset: 0;
         pointer-events: none;
         background:
-          linear-gradient(112deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.03) 22%, transparent 38%),
-          repeating-linear-gradient(180deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+          linear-gradient(112deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,.03) 20%, transparent 36%),
+          repeating-linear-gradient(90deg, rgba(0,0,0,.1) 0 1px, transparent 1px 2px),
+          repeating-linear-gradient(180deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
       }
-      .iw-lcd-dim{ opacity: .62; font-size: 7px; }
+      .iw-lcd-dim{ opacity: .6; font-size: 7.5px; }
       .iw-lcd-row{
         display: flex;
         justify-content: space-between;
         gap: 8px;
         white-space: nowrap;
       }
+      .iw-lcd-key{
+        opacity: .55;
+        letter-spacing: .06em;
+      }
       .iw-lcd-label{ overflow: hidden; text-overflow: ellipsis; }
+      .iw-lcd-rule{
+        height: 1px;
+        margin: 2px 0;
+        background: repeating-linear-gradient(90deg, rgba(125,255,160,.4) 0 2px, transparent 2px 4px);
+        opacity: .5;
+      }
       .iw-lcd-amber{ color: #ffd27d; text-shadow: 0 0 4px rgba(255,210,125,.4); }
 
       .iw-btn{
@@ -308,34 +255,66 @@ export function InstrumentStyles() {
       }
       .iw-btn:active{ transform: scale(.9); }
 
-      /* ── Termometre: fotoğrafın kılcalını örten cam tüp ── */
+      /* ── Termometre: fotoğrafın kılcalını örten cam kılcal ──
+         Tüp saydam: fotoğrafın basılı taksimatı arkasından görünür, yalnızca
+         kılcalın kendisi yeniden boyanır. */
       .iw-tube{
         position: absolute;
         z-index: 2;
-        border-radius: 3px;
+        border-radius: 2px;
+        /* Neredeyse saydam: fotoğrafın basılı taksimatı arkadan okunmaya devam
+           etsin, yalnızca kılcalın camı yeniden ışıklansın. */
         background:
-          linear-gradient(90deg, transparent 10%, rgba(255,255,255,.4) 26%, transparent 46%),
-          linear-gradient(90deg, rgba(206,204,198,.92), rgba(186,184,177,.88) 42%, rgba(150,148,142,.9));
-        box-shadow: inset 0 0 3px rgba(0,0,0,.35), 0 0 3px rgba(0,0,0,.25);
+          linear-gradient(90deg,
+            rgba(255,255,255,.3) 0%,
+            rgba(255,255,255,.34) 20%,
+            rgba(148,156,154,.12) 54%,
+            rgba(72,78,76,.22) 100%);
+        box-shadow: inset 0 0 2px rgba(0,0,0,.3);
       }
       .iw-mercury{
         position: absolute;
         left: 0;
         right: 0;
-        border-radius: 2px 2px 0 0;
-        background: linear-gradient(180deg, #d34040, #8f1f1f);
-        box-shadow: inset -1px 0 1px rgba(0,0,0,.3);
+        bottom: 0;
+        /* Silindir: sol kenarda ışık, sağ kenarda gölge. */
+        background:
+          linear-gradient(90deg, #5d0f0f 0%, #a9231d 24%, #e0685c 39%, #a81f19 62%, #4d0c0c 100%);
+        box-shadow:
+          0 0 5px rgba(150,26,20,.5),
+          inset 0 -8px 8px rgba(0,0,0,.22);
+      }
+      /* Menisküs: sıvının ucundaki kubbe. */
+      .iw-mercury::after{
+        content: "";
+        position: absolute;
+        left: -4%;
+        right: -4%;
+        top: -2px;
+        height: 3.6px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse at 32% 26%, #e8867a 0%, #b32a22 52%, #6d1210 100%);
       }
 
-      /* ── Lombar camı: güneş yayının çizildiği daire ── */
+      /* ── Lombar camı ── */
       .iw-glass{
         position: absolute;
         z-index: 2;
         border-radius: 50%;
         overflow: hidden;
-        background: radial-gradient(circle at 50% 78%, rgba(10,22,34,.34) 0%, rgba(10,22,34,.06) 62%, transparent 100%);
       }
-      .iw-glass svg{ display: block; width: 100%; height: 100%; }
+      /* Güneşin camın dışına, madeni çerçeveye vuran ışığı. */
+      .iw-spill{
+        position: absolute;
+        z-index: 3;
+        width: 62%;
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        pointer-events: none;
+        mix-blend-mode: screen;
+        filter: blur(6px);
+      }
     `}</style>
   );
 }

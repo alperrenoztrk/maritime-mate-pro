@@ -70,12 +70,12 @@ export function tubeStyle(c: ColumnAnchor): CSSProperties {
   };
 }
 
-/** Canlı cıva sütunu — tüpün tabanından başlar, okunan sıcaklıkta biter. */
+/**
+ * Canlı sıvı sütunu — tüpün tabanından başlar, okunan sıcaklıkta biter.
+ * Yükseklik `bottom: 0` ile ölçüldüğü için üst uç menisküsü taşıyabilir.
+ */
 export function mercuryStyle(c: ColumnAnchor, temperatureC: number): CSSProperties {
   const y = temperatureToY(c, temperatureC);
   const span = c.yBase - c.yTubeTop;
-  return {
-    top: `${((y - c.yTubeTop) / span) * 100}%`,
-    height: `${((c.yBase - y) / span) * 100}%`,
-  };
+  return { height: `${((c.yBase - y) / span) * 100}%` };
 }

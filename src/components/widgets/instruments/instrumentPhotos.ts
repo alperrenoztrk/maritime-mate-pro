@@ -103,7 +103,9 @@ export const SMALL_ASPECT = 1 / 1.14;
 export const CHRONOMETER: InstrumentPhoto = {
   src: chronometerPhoto,
   alt: "Pirinç çerçeveli, ahşap kutulu gemi kronometresi",
-  crop: { x: 0.165, y: 0, w: 0.67, h: 1 },
+  // 960×733 karede kadran (485, 339) merkezli, 230 px yarıçaplı. Kırpma tam
+  // olarak SMALL_ASPECT veriyor (643×733) — daire yamulmasın diye.
+  crop: { x: 0.1703, y: 0, w: 0.6698, h: 1 },
   aspect: SMALL_ASPECT,
   credit: {
     title: "Marine-Chronometer.A.Lange&Soehne.1948.jpg",
@@ -113,13 +115,20 @@ export const CHRONOMETER: InstrumentPhoto = {
   },
 };
 
-/** Fotoğraftaki beyaz kadranın ölçülen sınırları (tarayıcıda grid ile okundu). */
-export const CHRONOMETER_DIAL: DialAnchor = { cx: 0.509, cy: 0.505, r: 0.376 };
+/**
+ * Fotoğraftaki emaye kadranın kırpılmış kutuya göre ölçülen sınırları.
+ * Yarıçap fotoğrafın kadranından bir tık büyük: canlı yüzey emayenin son
+ * milimetresini de örtsün ki fotoğrafın basılı dakika halkası hiç görünmesin.
+ */
+export const CHRONOMETER_DIAL: DialAnchor = { cx: 0.5118, cy: 0.4935, r: 0.3795 };
 
 export const COMPASS: InstrumentPhoto = {
   src: compassPhoto,
   alt: "Siyah bezelli, cam kubbeli gemi pusulası",
-  crop: { x: 0.176, y: 0, w: 0.658, h: 1 },
+  // 960×720 karede kart (515, 369) merkezli, 254 px yarıçaplı. Kırpma kartı
+  // yatayda ortalar; fotoğrafta bezel kartın sağına kaçık olduğu için kutuda
+  // pusulanın kendisi ortalanır.
+  crop: { x: 0.2075, y: 0, w: 0.658, h: 1 },
   aspect: SMALL_ASPECT,
   credit: {
     title: "Askania compass.JPG",
@@ -129,7 +138,8 @@ export const COMPASS: InstrumentPhoto = {
   },
 };
 
-export const COMPASS_DIAL: DialAnchor = { cx: 0.528, cy: 0.495, r: 0.4 };
+/** Fotoğraftaki pusula kartının sınırları; canlı kart bunun tam üstüne oturur. */
+export const COMPASS_DIAL: DialAnchor = { cx: 0.5163, cy: 0.5026, r: 0.3955 };
 
 export const THERMOMETER: InstrumentPhoto = {
   src: thermometerPhoto,
@@ -174,8 +184,12 @@ export const PORTHOLE: InstrumentPhoto = {
   },
 };
 
-/** Lombarın cam açıklığı — fotoğrafta hafif oval, güneş yayı bunun içine çizilir. */
-export const PORTHOLE_GLASS: EllipseAnchor = { cx: 0.472, cy: 0.496, rx: 0.199, ry: 0.393 };
+/**
+ * Lombarın cam açıklığı — 960×540 karede (474, 275) merkezli, 216 px yarıçaplı
+ * daire. Kutunun eni ve boyu farklı ölçeklendiği için yarıçap iki eksende ayrı
+ * kesir olarak tutulur.
+ */
+export const PORTHOLE_GLASS: EllipseAnchor = { cx: 0.4938, cy: 0.5093, rx: 0.225, ry: 0.4 };
 
 export const GPS: InstrumentPhoto = {
   src: gpsPhoto,
