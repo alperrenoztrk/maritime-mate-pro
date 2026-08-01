@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calculator, ListOrdered } from "lucide-react";
+import { AlertCircle, Calculator, ListOrdered } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,13 @@ import { Label } from "@/components/ui/label";
 import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 import { StepByStepSolution } from "./StepByStepSolution";
 import { buildAutoSteps } from "./autoSteps";
+import { CalculationRecordPanel } from "./CalculationRecordPanel";
+import {
+  buildCalculationRecord,
+  hasCalculationError,
+  validateCalculationInputs,
+  type CalculationRecord,
+} from "@/utils/calculationRecord";
 
 /**
  * Tek bir bağlı hesaplayıcı kartı. Üstte formülü gösterir (Formüller
@@ -22,23 +29,75 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
   const [steps, setSteps] = useState<CalcStep[] | null>(null);
   const [showSteps, setShowSteps] = useState(false);
   const [numVals, setNumVals] = useState<Record<string, number>>({});
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [calculationError, setCalculationError] = useState("");
+  const [record, setRecord] = useState<CalculationRecord | null>(null);
 
   const inputs = entry.inputs ?? [];
 
   const handleCalc = () => {
     if (!entry.calculate) return;
-    const computed: Record<string, number> = {};
-    for (const inp of inputs) {
-      const v = parseFloat(vals[inp.key] || "0");
-      if (isNaN(v)) return;
-      computed[inp.key] = v;
+    const validation = validateCalculationInputs(inputs, vals);
+    setFieldErrors(validation.errors);
+    setCalculationError("");
+
+    if (Object.keys(validation.errors).length > 0) {
+      setResults(null);
+      setSteps(null);
+      setRecord(null);
+      setShowSteps(false);
+      return;
     }
-    const r = entry.calculate(computed);
-    const resultList = Array.isArray(r) ? r : [r];
-    setResults(resultList);
-    setNumVals(computed);
-    // Elle yazılmış zengin adımlar önceliklidir; yoksa genel otomatik adımlar.
-    setSteps(entry.steps ? entry.steps(computed) : buildAutoSteps(entry, computed, resultList));
+
+    try {
+      const resultList = entry.calculate(validation.values);
+      if (!Array.isArray(resultList) || resultList.length === 0) {
+        throw new Error("Hesap motoru sonuç üretmedi.");
+      }
+
+      const calculatedSteps = entry.steps
+        ? entry.steps(validation.values)
+        : buildAutoSteps(entry, validation.values, resultList);
+
+      if (hasCalculationError(resultList)) {
+        setCalculationError(resultList.map((result) => result.value).join(" "));
+        setResults(null);
+        setSteps(null);
+        setRecord(null);
+        setShowSteps(false);
+        return;
+      }
+
+      setResults(resultList);
+      setNumVals(validation.values);
+      setSteps(calculatedSteps);
+      setRecord(buildCalculationRecord(entry, validation.values, resultList, calculatedSteps));
+      // Navigation Almanac kıyasındaki gibi ayrıntı sonuçla birlikte görünür.
+      setShowSteps(true);
+    } catch (error) {
+      setResults(null);
+      setSteps(null);
+      setRecord(null);
+      setShowSteps(false);
+      setCalculationError(
+        error instanceof Error ? error.message : "Hesaplama tamamlanamadı. Girdileri kontrol edin.",
+      );
+    }
+  };
+
+  const updateValue = (key: string, value: string) => {
+    setVals((previous) => ({ ...previous, [key]: value }));
+    setFieldErrors((previous) => {
+      if (!previous[key]) return previous;
+      const next = { ...previous };
+      delete next[key];
+      return next;
+    });
+    setCalculationError("");
+    // Değişen girdilerle eski bir sonucun ekranda kalmasını önle.
+    setResults(null);
+    setSteps(null);
+    setRecord(null);
     setShowSteps(false);
   };
 
@@ -60,27 +119,42 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
               </Label>
               <Input
                 type="number"
+                inputMode="decimal"
                 placeholder={inp.placeholder}
                 value={vals[inp.key] || ""}
-                onChange={(e) => setVals((p) => ({ ...p, [inp.key]: e.target.value }))}
+                onChange={(e) => updateValue(inp.key, e.target.value)}
+                min={inp.min}
+                max={inp.max}
+                step={inp.step ?? "any"}
+                required={inp.required !== false}
+                aria-invalid={Boolean(fieldErrors[inp.key])}
+                aria-describedby={fieldErrors[inp.key] ? `${entry.id}-${inp.key}-error` : inp.help ? `${entry.id}-${inp.key}-help` : undefined}
                 className="h-9"
               />
+              {inp.help && !fieldErrors[inp.key] && (
+                <p id={`${entry.id}-${inp.key}-help`} className="text-[11px] text-muted-foreground">{inp.help}</p>
+              )}
+              {fieldErrors[inp.key] && (
+                <p id={`${entry.id}-${inp.key}-error`} className="flex items-center gap-1 text-[11px] text-destructive">
+                  <AlertCircle className="h-3 w-3 shrink-0" /> {fieldErrors[inp.key]}
+                </p>
+              )}
             </div>
           ))}
         </div>
         <Button onClick={handleCalc} size="sm" className="w-full gap-2">
           <Calculator className="h-4 w-4" /> Hesapla
         </Button>
-        {results && (
-          <div className="bg-primary/5 rounded-lg p-3 space-y-1">
-            {results.map((r, i) => (
-              <div key={i} className="flex justify-between text-sm">
-                <span className="text-muted-foreground">{r.label}</span>
-                <span className="font-semibold text-foreground">{r.value}</span>
-              </div>
-            ))}
+        {calculationError && (
+          <div role="alert" className="flex items-start gap-2 rounded-lg border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+            <div>
+              <p className="font-semibold">Hesaplama tamamlanamadı</p>
+              <p className="text-xs">{calculationError}</p>
+            </div>
           </div>
         )}
+        {results && record && <CalculationRecordPanel record={record} />}
         {results && steps && steps.length > 0 && (
           <>
             <Button

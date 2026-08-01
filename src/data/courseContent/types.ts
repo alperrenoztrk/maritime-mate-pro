@@ -25,6 +25,14 @@ export interface CalcInput {
   label: string;
   unit?: string;
   placeholder?: string;
+  /** İsteğe bağlı sayısal sınırlar; ortak hesaplayıcı bunları UI ve doğrulamada uygular. */
+  min?: number;
+  max?: number;
+  step?: number | "any";
+  /** Varsayılan true. Yalnız gerçekten isteğe bağlı alanlarda false kullanılmalıdır. */
+  required?: boolean;
+  /** Girdinin kaynağı veya işaret/birim kuralı için kısa operasyonel yardım. */
+  help?: string;
 }
 
 export interface CalcResult {

@@ -14,6 +14,11 @@
 import { courseTopics } from "@/data/courseContent";
 import { buildAutoSteps } from "@/components/courseContent/autoSteps";
 import type { CourseEntry } from "@/data/courseContent/types";
+import {
+  buildCalculationRecord,
+  calculationRecordToText,
+  validateCalculationInputs,
+} from "@/utils/calculationRecord";
 
 const failures: string[] = [];
 const fail = (where: string, msg: string) => failures.push(`${where}: ${msg}`);
@@ -38,6 +43,31 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
     checked++;
     const where = `${topicKey}/${entry.id}`;
     const vals = sampleInputs(entry);
+    const inputs = entry.inputs ?? [];
+
+    // 0) Profesyonel hesap sözleşmesi: izlenebilir formül, kaynak ve girdi tanımı.
+    if (!entry.formula?.trim()) fail(where, "formül metni eksik");
+    if (!entry.source?.code?.trim()) fail(where, "kaynak izi eksik");
+    if (inputs.length === 0) fail(where, "hesap girdisi tanımlı değil");
+    if (entry.variables.length === 0) fail(where, "formül değişkenleri tanımlı değil");
+
+    const keys = new Set<string>();
+    for (const input of inputs) {
+      if (!input.key.trim()) fail(where, "boş girdi anahtarı");
+      if (keys.has(input.key)) fail(where, `tekrarlanan girdi anahtarı: ${input.key}`);
+      keys.add(input.key);
+      if (!input.label.trim()) fail(where, `"${input.key}" girdi etiketi eksik`);
+      if (input.placeholder === undefined || !Number.isFinite(Number(input.placeholder))) {
+        fail(where, `"${input.key}" sayısal örnek değeri eksik/geçersiz`);
+      }
+    }
+
+    // Boş alan hiçbir hesapta sessizce 0 kabul edilmemeli.
+    const blankValidation = validateCalculationInputs(inputs, {});
+    const requiredCount = inputs.filter((input) => input.required !== false).length;
+    if (Object.keys(blankValidation.errors).length !== requiredCount) {
+      fail(where, "boş girdi doğrulaması zorunlu alanları yakalamadı");
+    }
 
     // 1) calculate() çalışmalı ve geçerli sonuç dizisi döndürmeli.
     let results;
@@ -61,23 +91,41 @@ for (const [topicKey, topic] of Object.entries(courseTopics)) {
 
     // 2) buildAutoSteps tutarlı ve dolu adım üretmeli.
     try {
-      const steps = buildAutoSteps(entry, vals, results);
+      const steps = entry.steps ? entry.steps(vals) : buildAutoSteps(entry, vals, results);
       if (steps.length < 1) {
         fail(where, `buildAutoSteps boş döndü`);
       } else {
         // Son N adım her sonucu sırayla yansıtmalı (tutarlılık sözleşmesi).
-        const tail = steps.slice(-results.length);
-        results.forEach((r, i) => {
-          if (tail[i]?.result !== r.value) {
-            fail(where, `auto-step sonucu "${r.label}" calculate ile uyuşmuyor`);
-          }
-        });
+        if (!entry.steps) {
+          const tail = steps.slice(-results.length);
+          results.forEach((r, i) => {
+            if (tail[i]?.result !== r.value) {
+              fail(where, `auto-step sonucu "${r.label}" calculate ile uyuşmuyor`);
+            }
+          });
+        }
+
+        // 3) Her hesap kopyalanabilir girdi/formül/sonuç/kaynak dökümü üretmeli.
+        const record = buildCalculationRecord(
+          entry,
+          vals,
+          results,
+          steps,
+          new Date("2026-08-01T00:00:00.000Z"),
+        );
+        const recordText = calculationRecordToText(record);
+        for (const marker of ["GİRDİLER", "FORMÜL:", "SONUÇLAR", "İŞLEM İZİ", "KAYNAK:"]) {
+          if (!recordText.includes(marker)) fail(where, `hesap dökümünde "${marker}" eksik`);
+        }
+        if (record.checks.some((check) => check.status === "error")) {
+          fail(where, "örnek hesap dökümü hata kontrolü üretti");
+        }
       }
     } catch (e) {
       fail(where, `buildAutoSteps exception: ${(e as Error).message}`);
     }
 
-    // 3) Elle yazılmış steps() varsa (navigation) exception atmamalı.
+    // 4) Elle yazılmış steps() varsa (navigation) exception atmamalı.
     if (typeof entry.steps === "function") {
       try {
         entry.steps(vals);
