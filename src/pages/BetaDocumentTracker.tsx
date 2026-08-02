@@ -503,13 +503,13 @@ export default function BetaDocumentTracker() {
 
                     <dl className="mt-3 space-y-1.5 text-[11px]">
                       {document.document_number && (
-                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge no.</dt><dd className="truncate font-medium">{document.document_number}</dd></div>
+                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge no.</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.document_number}</dd></div>
                       )}
                       {document.holder_name && (
-                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge sahibi</dt><dd className="truncate font-medium">{document.holder_name}</dd></div>
+                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Belge sahibi</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.holder_name}</dd></div>
                       )}
                       {document.issuing_authority && (
-                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Düzenleyen</dt><dd className="truncate font-medium">{document.issuing_authority}</dd></div>
+                        <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Düzenleyen</dt><dd className="truncate font-medium notranslate" translate="no" data-no-translate>{document.issuing_authority}</dd></div>
                       )}
                       <div className="flex justify-between gap-3"><dt className="text-muted-foreground">AI güveni</dt><dd className="font-medium">%{Math.round(document.confidence * 100)}</dd></div>
                     </dl>
