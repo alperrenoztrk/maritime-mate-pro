@@ -26,8 +26,7 @@ export interface ShipType {
   label: string;
   description: string;
   emoji: string;
-  /** Kart ve detay başlığında kullanılan gerçek gemi fotoğrafı (ES6 import). */
-  image: string;
+  /** Kitap kapağının bez cilt rengi (Tailwind gradyan sınıfları). */
   color: string;
   departments: ShipOperationDepartment[];
 }

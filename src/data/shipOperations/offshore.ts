@@ -1,5 +1,4 @@
 import type { ShipOperation, ShipType } from "./types";
-import image from "@/assets/ships/operation-offshore.svg";
 
 // Piri Reis University DP Induction Course (May 2024) sunumlarindaki
 // operasyonel akisin Turkce, gemi-ustu kullanimina uygun bir uyarlamasidir.
@@ -27,8 +26,7 @@ export const offshore: ShipType = {
   description:
     "DP destekli offshore operasyonlari: PSV, AHTS, dalis-ROV, boru ve kablo doseme, drilling, FPSO ve agir kaldirma",
   emoji: "⚓",
-  image,
-  color: "from-cyan-500/25 to-blue-700/15",
+  color: "from-cyan-500 via-sky-700 to-blue-900",
   departments: [
     {
       id: "guverte",

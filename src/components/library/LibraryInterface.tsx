@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, ChevronRight, Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import { accentGradient } from "./libraryAccent";
 
 const highRefreshRateStyles: CSSProperties = {
   ["--frame-rate" as string]: "120",
@@ -92,7 +93,7 @@ export function LibraryEntryCard({
     "group relative min-h-44 overflow-hidden rounded-3xl border border-white/20 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl";
   const content = (
     <>
-      <div className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
+      <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg")} />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_45%)]" />
       <div className="relative flex h-full min-h-44 flex-col justify-between p-5 text-white">
         <span className="flex items-start justify-between gap-3">
@@ -124,70 +125,186 @@ export function LibraryEntryCard({
   );
 }
 
+/* ── Ciltli kitap görünümü ────────────────────────────────────────────────────
+   Kapak artık düz bir kart değil; gerçek bir cildin geometrisi CSS 3B ile
+   kuruluyor: arka kapak, sırt (spine) ve ön kapak ayrı yüzler olarak
+   konumlanıyor, kitap Y ekseninde hafifçe döndürüldüğü için sırt soldan
+   görünüyor. Tüm dokular gradyandan üretiliyor, ek görsel indirilmiyor. */
+
+/** Bez cilt (buckram) dokusu: ince atkı/çözgü örgüsü. */
+const clothWeave: CSSProperties = {
+  backgroundImage:
+    "repeating-linear-gradient(0deg, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 1px, transparent 1px, transparent 2px)," +
+    "repeating-linear-gradient(90deg, rgba(0,0,0,0.14) 0px, rgba(0,0,0,0.14) 1px, transparent 1px, transparent 2px)",
+};
+
+/** Sırtın yuvarlaklığı. Yüz kaçış açısında ~5 piksele sıkıştığı için gölgeler
+    kasıtlı olarak yumuşak; aksi hâlde cilt rengi tamamen kararıyor. */
+const spineRound: CSSProperties = {
+  backgroundImage:
+    "linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.06) 42%, rgba(255,255,255,0.14) 68%, rgba(0,0,0,0.26) 100%)",
+};
+
+/** Sırttaki kabartma cilt bantları (raised bands). */
+const spineBands: CSSProperties = {
+  backgroundImage:
+    "repeating-linear-gradient(180deg, transparent 0 16.8%, rgba(0,0,0,0.32) 16.8% 17.7%," +
+    "rgba(255,255,255,0.16) 17.7% 18.6%, rgba(0,0,0,0.2) 18.6% 19.3%, transparent 19.3% 20%)",
+};
+
+/** Şiraze (headband): sırtın baş ve ayak ucundaki dokuma bant. */
+const headband: CSSProperties = {
+  backgroundImage:
+    "repeating-linear-gradient(90deg, #e0c088 0 2px, #7a5c33 2px 4px)",
+};
+
+/** Yaldız (gold foil) sırt çizgisi. */
+const goldRule = "bg-[linear-gradient(90deg,transparent,rgba(233,201,124,0.9),transparent)]";
+
+/** Kapak yazısındaki varak parlaklığı (metne kırpılan metalik gradyan). */
+const goldFoil: CSSProperties = {
+  backgroundImage: "linear-gradient(180deg, #f8e8bb 0%, #e3bf72 52%, #b2842f 100%)",
+};
+
+function LibraryBookCase({
+  title,
+  accent,
+  muted = false,
+}: {
+  title: string;
+  accent: string;
+  muted?: boolean;
+}) {
+  return (
+    <div
+      className={`relative h-full w-full [--bk-spine:22px] [perspective:1200px] sm:[--bk-spine:26px] ${
+        muted ? "opacity-70 saturate-[0.35]" : ""
+      }`}
+    >
+      {/* Kitabın zemine düşen gölgesi. */}
+      <div
+        aria-hidden
+        className="absolute inset-x-[7%] -bottom-1 h-[5%] rounded-[50%] bg-slate-900/45 blur-[7px] transition-all duration-500 group-hover:inset-x-[4%] group-hover:blur-[11px] motion-reduce:transition-none dark:bg-black/75"
+      />
+
+      <div
+        className={`relative h-full w-full [transform-style:preserve-3d] [transform:rotateY(13deg)] transition-transform duration-500 ease-out motion-reduce:transition-none ${
+          muted
+            ? ""
+            : "group-hover:[transform:rotateY(20deg)_translateY(-6px)] group-focus-visible:[transform:rotateY(20deg)_translateY(-6px)]"
+        }`}
+      >
+        {/* Arka kapak. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 rounded-r-[5px] bg-[#161d29] [transform:translateZ(calc(var(--bk-spine)*-0.5))]"
+        />
+
+        {/* Sırt: kitabın kalınlığını veren sol yüz. */}
+        <div
+          aria-hidden
+          className="absolute inset-y-0 left-0 w-[var(--bk-spine)] origin-left overflow-hidden bg-slate-800 [transform:translateZ(calc(var(--bk-spine)*-0.5))_rotateY(-90deg)]"
+        >
+          <div className={`absolute inset-0 ${accent}`} style={accentGradient("180deg")} />
+          <div className="absolute inset-0" style={spineRound} />
+          <div className="absolute inset-0" style={spineBands} />
+          <div className={`absolute inset-x-0 top-[9%] h-px ${goldRule}`} />
+          <div className={`absolute inset-x-0 bottom-[9%] h-px ${goldRule}`} />
+          <div className="absolute inset-x-0 top-0 h-[2px]" style={headband} />
+          <div className="absolute inset-x-0 bottom-0 h-[2px]" style={headband} />
+        </div>
+
+        {/* Ön kapak. */}
+        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_14px_26px_rgba(15,23,42,0.32)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-500 group-hover:shadow-[0_22px_38px_rgba(15,23,42,0.42)] motion-reduce:transition-none">
+          <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg")} />
+          {/* Boyanın mat, koyu cilt bezine çekilmesi (parlak plastik görünümü kırar). */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[linear-gradient(150deg,rgba(11,15,25,0.46)_0%,rgba(11,15,25,0.12)_40%,rgba(0,0,0,0.4)_100%)]"
+          />
+          {/* Işık düşüşü: köşeler koyu, üst sol omuzda yumuşak parlama. */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[radial-gradient(125%_95%_at_50%_45%,transparent_28%,rgba(0,0,0,0.4)_100%),radial-gradient(90%_65%_at_22%_8%,rgba(255,255,255,0.18),transparent_60%)]"
+          />
+          <div aria-hidden className="absolute inset-0 opacity-45 mix-blend-overlay" style={clothWeave} />
+
+          {/* Sırt ile kapak arasındaki oluk (groove). */}
+          <div
+            aria-hidden
+            className="absolute inset-y-0 left-0 w-[9%] bg-[linear-gradient(90deg,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.22)_38%,rgba(255,255,255,0.14)_74%,transparent_100%)]"
+          />
+          {/* Mukavva kapağın kesik kenar payı. */}
+          <div
+            aria-hidden
+            className="absolute inset-0 rounded-[inherit] shadow-[inset_-1px_0_0_rgba(255,255,255,0.24),inset_0_1px_0_rgba(255,255,255,0.22),inset_0_-1px_0_rgba(255,255,255,0.14)]"
+          />
+
+          {/* Yaldız çerçeve. */}
+          <div aria-hidden className="absolute inset-[7%] rounded-[2px] border border-[#dcbb77]/55" />
+          <div aria-hidden className="absolute inset-[9.5%] rounded-[1px] border border-[#dcbb77]/25" />
+
+          {/* Başlık etiketi: ciltçilikteki deri sırt/kapak etiketi. Yaldızın
+              açık cilt renklerinde de okunmasını garanti eder. */}
+          <div className="absolute inset-x-[15%] top-[21%] flex flex-col items-center gap-2 rounded-[3px] border border-[#dcbb77]/45 bg-[linear-gradient(158deg,rgba(62,43,28,0.92),rgba(26,18,11,0.95))] px-2.5 py-3.5 text-center shadow-[0_1px_0_rgba(255,255,255,0.14),inset_0_1px_3px_rgba(0,0,0,0.5)]">
+            <span aria-hidden className={`h-px w-8 ${goldRule}`} />
+            <h2
+              className="line-clamp-5 bg-clip-text font-book text-[1.02rem] font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.65))] sm:text-lg"
+              style={goldFoil}
+            >
+              {title}
+            </h2>
+            <span aria-hidden className={`h-px w-8 ${goldRule}`} />
+          </div>
+
+          {/* Yayıncı amblemi yerine sade bir yaldız eşkenar dörtgen. */}
+          <div
+            aria-hidden
+            className="absolute bottom-[13%] left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border border-[#dcbb77]/60 bg-[#dcbb77]/20"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function LibraryBookCard({
   title,
   accent,
   to,
-  image,
 }: {
   title: string;
   accent: string;
   to: string;
-  image?: string;
 }) {
   return (
     <Link
       to={to}
       aria-label={title}
-      className="group relative block aspect-[3/4] min-h-60 pb-2 pr-2 outline-none [perspective:1200px] focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+      className="group relative block aspect-[3/4] min-h-60 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
     >
-      <div
-        aria-hidden
-        className="absolute bottom-0 left-3 right-0 h-3 rounded-b-[10px] border border-stone-400/35 bg-[#eee5d2] shadow-[0_8px_16px_rgba(15,23,42,0.28)] dark:border-stone-900/60 dark:bg-[#c9bea7]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, rgba(92,72,45,0.14) 0px, rgba(92,72,45,0.14) 1px, transparent 1px, transparent 3px)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-2 right-0 top-3 w-3 rounded-r-[10px] border-y border-r border-stone-400/35 bg-[#f3ead8] shadow-[5px_2px_10px_rgba(15,23,42,0.18)] dark:border-stone-900/60 dark:bg-[#d2c6af]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(90deg, rgba(92,72,45,0.12) 0px, rgba(92,72,45,0.12) 1px, transparent 1px, transparent 3px)",
-        }}
-      />
-
-      <div className="absolute bottom-2 left-0 right-2 top-0 origin-left overflow-hidden rounded-l-[5px] rounded-r-[16px] border border-black/30 shadow-[0_12px_25px_rgba(15,23,42,0.34),inset_0_1px_0_rgba(255,255,255,0.24)] transition duration-300 group-hover:-translate-y-1 group-hover:-rotate-[0.35deg] group-hover:shadow-[0_18px_32px_rgba(15,23,42,0.38),inset_0_1px_0_rgba(255,255,255,0.24)]">
-        {image ? (
-          <img src={image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        ) : (
-          <div className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
-        )}
-        {image && <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-75 mix-blend-multiply`} />}
-
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-white/10" />
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-20 mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(115deg, rgba(255,255,255,0.22) 0px, rgba(255,255,255,0.22) 1px, transparent 1px, transparent 5px)",
-          }}
-        />
-        <div aria-hidden className="absolute inset-3 rounded-r-[11px] border border-white/20 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.16)]" />
-
-        <div aria-hidden className="absolute inset-y-0 left-0 w-5 border-r border-black/25 bg-gradient-to-r from-black/45 via-black/20 to-transparent shadow-[4px_0_10px_rgba(0,0,0,0.24)]" />
-        <div aria-hidden className="absolute left-1 top-8 h-px w-3 bg-white/25" />
-        <div aria-hidden className="absolute bottom-8 left-1 h-px w-3 bg-white/25" />
-
-        <div className="absolute inset-x-0 bottom-0 top-1/3 flex items-center justify-center px-6 pb-4 pl-8 text-center text-white">
-          <h2 className="font-serif text-lg font-bold leading-snug tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)] sm:text-xl">
-            {title}
-          </h2>
-        </div>
-      </div>
+      <LibraryBookCase title={title} accent={accent} />
     </Link>
+  );
+}
+
+/** Henüz açılmamış bölümler için tıklanamayan, soluk raf kitabı. */
+export function LibraryBookPlaceholder({
+  title,
+  accent,
+  note,
+}: {
+  title: string;
+  accent: string;
+  note: string;
+}) {
+  return (
+    <div className="relative aspect-[3/4] min-h-60">
+      <LibraryBookCase title={title} accent={accent} muted />
+      <span className="absolute bottom-[5%] left-1/2 -translate-x-1/2 rounded-full bg-slate-900/75 px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm">
+        {note}
+      </span>
+    </div>
   );
 }
 
@@ -209,7 +326,10 @@ export function LibraryCompactCard({
       to={to}
       className="group flex min-h-16 items-center gap-3 rounded-xl border border-border/40 bg-card/70 px-3 py-2.5 shadow-sm transition hover:border-primary/40 hover:bg-card"
     >
-      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${accent} text-white shadow`}>
+      <span
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${accent} text-white shadow`}
+        style={accentGradient("145deg")}
+      >
         <Icon className="h-4 w-4" />
       </span>
       <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-foreground">{title}</span>

@@ -41,8 +41,20 @@ for (const primitive of [
 }
 requireText(shared, "safe-area-inset-top", "mobil güvenli alan");
 requireText(shared, "--ad-banner-height", "reklam bandı güvenli alanı");
-requireText(shared, "repeating-linear-gradient", "kitap sayfa dokusu");
+requireText(shared, "repeating-linear-gradient", "kitap bez cilt dokusu");
 requireText(shared, "[perspective:1200px]", "kitap derinlik görünümü");
+requireText(shared, "[transform-style:preserve-3d]", "kitabın 3B gövdesi");
+requireText(shared, "rotateY(-90deg)", "kitap sırtının ayrı yüz olarak konumlanması");
+requireText(shared, "font-book", "kapak yazısının kitap yazı tipi");
+// `body.marine-global` sayfa kabuğunun içindeki `bg-gradient-to-*` sınıflarını
+// `background: transparent !important` ile siliyor; kartlar bu yüzden gradyanı
+// satır içi kurar. Sınıf kartlara geri gelirse cilt renkleri yeniden kaybolur
+// (sayfa kabuğunun kendisi zaten kasıtlı olarak nötrleniyor, o hariç).
+forbidText(
+  shared.slice(shared.indexOf("export function LibraryEntryCard")),
+  "bg-gradient-to-",
+  "kitaplık kartlarında silinen gradyan sınıfı",
+);
 const bookCard = shared.slice(
   shared.indexOf("export function LibraryBookCard"),
   shared.indexOf("export function LibraryCompactCard"),
@@ -89,6 +101,11 @@ forbidText(lessons, "category.subtitle", "ders kapaklarında gereksiz açıklama
 forbidText(operations, "ship.description", "operasyon kapaklarında gereksiz açıklama");
 forbidText(operations, "badge={", "operasyon kapaklarında sayısal rozet");
 forbidText(systems, "badge={shipSystemsData", "sistem kapaklarında sayısal rozet");
+
+// Operasyon ekranları gemi görselleriyle değil sade cilt kapaklarıyla çalışır.
+forbidText(operations, "image", "operasyon kapaklarında gemi görseli");
+forbidText(operationDetail, "<img", "operasyon detayında gemi görseli");
+forbidText(read("src/data/shipOperations/types.ts"), "image", "operasyon verisinde görsel alanı");
 
 for (const [label, source] of [
   ["Personel görev özeti", read("src/pages/CrewRoleDetail.tsx")],

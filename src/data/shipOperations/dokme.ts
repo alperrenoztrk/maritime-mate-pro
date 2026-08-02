@@ -1,5 +1,4 @@
 import type { ShipType, ShipOperation } from "./types";
-import image from "@/assets/ships/operation-bulk.svg";
 
 const op = (
   title: string,
@@ -15,8 +14,7 @@ export const dokme: ShipType = {
   label: "Dökme",
   description: "Dökme yük gemilerinde ambar, draft survey ve yük operasyonları",
   emoji: "⚓",
-  image,
-  color: "from-amber-500/20 to-yellow-500/10",
+  color: "from-amber-500 via-amber-700 to-yellow-900",
   departments: [
     {
       id: "guverte",

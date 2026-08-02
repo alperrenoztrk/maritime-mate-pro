@@ -1,5 +1,4 @@
 import type { ShipType, ShipOperation } from "./types";
-import image from "@/assets/ships/operation-tanker.svg";
 
 const op = (
   title: string,
@@ -15,8 +14,7 @@ export const tanker: ShipType = {
   label: "Tanker",
   description: "Tanker gemilerinde yük transferi, IGS, COW ve güvenlik operasyonları",
   emoji: "🛢️",
-  image,
-  color: "from-red-500/20 to-orange-500/10",
+  color: "from-rose-500 via-red-700 to-red-900",
   departments: [
     {
       id: "guverte",

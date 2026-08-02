@@ -12,7 +12,6 @@ export default function ShipOperationsPage() {
             to={`/ship-operations/${ship.id}`}
             title={ship.label}
             accent={ship.color}
-            image={ship.image}
           />
         ))}
       </section>
