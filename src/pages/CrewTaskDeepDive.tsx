@@ -4,6 +4,7 @@ import { BookOpen, AlertTriangle, BookMarked, Lightbulb, Scale, FileText, Chevro
 import { crewRoleMap } from "@/data/crewHierarchy";
 import { crewRoleDetails } from "@/data/crewRoleDetails";
 import { loadCrewTaskLongForm, type CrewTaskLongForm, type CrewTaskCallout } from "@/data/crewTasks/types";
+import { scrollToTop } from "@/lib/scrollToTop";
 
 const calloutMeta: Record<CrewTaskCallout["type"], { Icon: typeof AlertTriangle; cls: string; label: string }> = {
   warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Uyarı" },
@@ -30,6 +31,13 @@ export default function CrewTaskDeepDive() {
       .then((c) => setContent(c))
       .finally(() => setLoading(false));
   }, [roleSlug, idx]);
+
+  // Each chapter is its own page ("2 / 8"), so Önceki/Sonraki and the chapter
+  // chips have to start at the top instead of dropping the reader halfway
+  // down the new chapter at the previous one's scroll offset.
+  useEffect(() => {
+    scrollToTop();
+  }, [activeChapter]);
 
   if (!role || !taskMeta) {
     return (

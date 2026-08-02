@@ -5,6 +5,7 @@ import { MobileLayout } from "@/components/MobileLayout";
 import { shipTypeMap } from "@/data/shipOperationsData";
 import type { DepartmentId } from "@/data/shipOperationsData";
 import { loadShipOpLongForm, type ShipOpLongForm, type ShipOpCallout } from "@/data/shipOperations/longform/types";
+import { scrollToTop } from "@/lib/scrollToTop";
 
 const calloutMeta: Record<ShipOpCallout["type"], { Icon: typeof AlertTriangle; cls: string; label: string }> = {
   warning:    { Icon: AlertTriangle, cls: "border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200", label: "Uyarı" },
@@ -34,6 +35,13 @@ export default function ShipOperationDeepDive() {
       .catch(() => setContent(null))
       .finally(() => setLoading(false));
   }, [shipType, dept, idx]);
+
+  // Each chapter is its own page ("2 / 8"), so Önceki/Sonraki and the chapter
+  // chips have to start at the top instead of dropping the reader halfway
+  // down the new chapter at the previous one's scroll offset.
+  useEffect(() => {
+    scrollToTop();
+  }, [activeChapter]);
 
   if (!ship || !opMeta) {
     return (
