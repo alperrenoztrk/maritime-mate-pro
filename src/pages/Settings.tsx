@@ -186,8 +186,50 @@ const Settings = () => {
                     <span data-translatable>Çıkış</span>
                   </Button>
                 </div>
+
+                {/* Gizlilik ve hesap silme — Google Play zorunlu gereksinimleri */}
+                <div className="mt-5 space-y-3 border-t border-border/60 pt-4">
+                  <a
+                    href="https://nauticalleap.com/privacy-policy.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    <span data-translatable>Gizlilik Politikası</span>
+                    <ExternalLink className="w-3 h-3 opacity-70" />
+                  </a>
+
+                  <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 space-y-2">
+                    <p className="text-xs text-muted-foreground">
+                      <span data-translatable>
+                        Hesabınızı sildiğinizde profiliniz, sınav sonuçlarınız, istatistikleriniz, belgeleriniz ve yüklediğiniz dosyalar kalıcı olarak silinir. Bu işlem geri alınamaz.
+                      </span>
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={handleDeleteAccount}
+                        disabled={deleting}
+                        className="gap-2"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        <span data-translatable>
+                          {deleting ? "Siliniyor..." : confirmDelete ? "Evet, hesabımı kalıcı olarak sil" : "Hesabımı sil"}
+                        </span>
+                      </Button>
+                      {confirmDelete && !deleting && (
+                        <Button variant="ghost" size="sm" onClick={() => setConfirmDelete(false)}>
+                          <span data-translatable>Vazgeç</span>
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
+
 
             {/* Pro membership */}
             <Card
