@@ -36,7 +36,7 @@ export default function DeckCurriculumCoursePage() {
   const unifiedSections = hasCourseTopic(categoryId);
 
   const getSectionHref = (sectionId: SectionId) => {
-    if (unifiedSections && ["calculations", "formulas", "rules", "quiz"].includes(sectionId)) {
+    if (unifiedSections && ["calculations", "formulas", "quiz"].includes(sectionId)) {
       return `/lessons/${categoryId}/${sectionId}`;
     }
     return categoryConfig.sections.find((section) => section.id === sectionId)?.href ?? null;
@@ -46,7 +46,6 @@ export default function DeckCurriculumCoursePage() {
     topics: `/lessons/${categoryId}/topics`,
     calculations: getSectionHref("calculations"),
     formulas: getSectionHref("formulas"),
-    rules: getSectionHref("rules"),
     quiz: getSectionHref("quiz"),
   };
 

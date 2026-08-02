@@ -3394,11 +3394,10 @@ export default function StabilityTopicsPage() {
                 <Lightbulb className="h-5 w-5 text-primary" />
                 <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
               </div>
-              <div className="grid gap-2 sm:grid-cols-3">
+              <div className="grid gap-2 sm:grid-cols-2">
                 {[
                   { title: "Stabilite Hesaplamaları", href: "/stability/calculations" },
                   { title: "Stabilite Formülleri", href: "/stability/formulas" },
-                  { title: "IMO Kuralları", href: "/stability/rules" }
                 ].map((resource, index) => (
                   <Link
                     key={index}

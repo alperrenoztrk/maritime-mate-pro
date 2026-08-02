@@ -42,15 +42,28 @@ export default function GuidedLessonSession() {
     const items: FlowItem[] = [];
     if (flow) {
       const sectionByTitle = new Map(content.sections.map((s) => [s.title, s]));
+      const consumedSections = new Set<string>();
       for (const block of flow.blocks) {
         for (const title of block.sectionTitles) {
           const section = sectionByTitle.get(title);
-          if (section) items.push({ kind: "teach", section });
+          if (section) {
+            items.push({ kind: "teach", section });
+            consumedSections.add(section.id ?? section.title);
+          }
         }
         const blockQs = shuffle(
           flow.questions.filter((q) => block.sectionTitles.includes(q.sectionRef)),
         );
         for (const question of blockQs) items.push({ kind: "quiz", question });
+      }
+
+      // Akış dosyaları yalnız ölçme adımlarını tanımlar. Sonradan konu
+      // anlatımına eklenen mevzuat bölümleri (ve akışta adı geçmeyen mevcut
+      // bölümler) de alıştırma oturumunda öğretilmeden atlanmamalıdır.
+      for (const section of content.sections) {
+        if (!consumedSections.has(section.id ?? section.title)) {
+          items.push({ kind: "teach", section });
+        }
       }
     } else {
       for (const section of content.sections) items.push({ kind: "teach", section });

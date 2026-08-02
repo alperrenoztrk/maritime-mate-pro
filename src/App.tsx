@@ -49,7 +49,6 @@ const EconomicsAssistantPage = lazy(() => import("./pages/EconomicsAssistant"));
 const EconomicsQuizPage = lazy(() => import("./pages/EconomicsQuiz"));
 const StabilityAssistantPage = lazy(() => import("./pages/StabilityAssistant"));
 const StabilityGZIMO = lazy(() => import("./pages/StabilityGZIMO"));
-const StabilityRules = lazy(() => import("./pages/StabilityRules"));
 const StabilityGrainPage = lazy(() => import("./pages/StabilityGrain"));
 const StabilityGMPage = lazy(() => import("./pages/StabilityGM"));
 const StabilityWeightShiftPage = lazy(() => import("./pages/StabilityWeightShift"));
@@ -75,7 +74,6 @@ const NavigationFormulasPage = lazy(() => import("./pages/NavigationFormulas"));
 
 const DetailedMeteorology = lazy(() => import("./pages/DetailedMeteorology"));
 const COLREGPresentation = lazy(() => import("./pages/COLREGPresentation"));
-const NavigationRulesPage = lazy(() => import("./pages/NavigationRules"));
 const StabilityCalculationsPage = lazy(() => import("./pages/StabilityCalculations"));
 const StabilityQuizPage = lazy(() => import("./pages/StabilityQuiz"));
 const StabilityShearingBendingPage = lazy(() => import("./pages/StabilityShearingBending"));
@@ -106,16 +104,13 @@ const MachineTopicCalculationsPage = lazy(() => import("./pages/MachineTopicCalc
 const MachineTopicFormulasPage = lazy(() => import("./pages/MachineTopicFormulasPage"));
 const CourseFormulasPage = lazy(() => import("./pages/CourseFormulasPage"));
 const CourseCalculationsPage = lazy(() => import("./pages/CourseCalculationsPage"));
-const CourseRulesPage = lazy(() => import("./pages/CourseRulesPage"));
 const CourseQuizPage = lazy(() => import("./pages/CourseQuizPage"));
-const MachineTopicRulesPage = lazy(() => import("./pages/MachineTopicRulesView"));
 const MachineTopicAssistantPage = lazy(() => import("./pages/MachineTopicAssistantPage"));
 const MachineTopicQuizPage = lazy(() => import("./pages/MachineTopicQuizPage"));
 const MachineTopicLessonsPage = lazy(() => import("./pages/MachineTopicLessonsPage"));
 const MachineTopicDetailPage = lazy(() => import("./pages/MachineTopicDetailPage"));
 
 const EmissionFormulas = lazy(() => import("./pages/EmissionFormulas"));
-const EmissionRules = lazy(() => import("./pages/EmissionRules"));
 const EmissionAssistant = lazy(() => import("./pages/EmissionAssistant"));
 const EmissionQuiz = lazy(() => import("./pages/EmissionQuiz"));
 const SOLASRegulationsPage = lazy(() => import("./pages/SOLASRegulations"));
@@ -138,11 +133,9 @@ const DraftSurveyDensity = lazy(() => import("./pages/DraftSurveyDensity"));
 const DraftSurveyBunker = lazy(() => import("./pages/DraftSurveyBunker"));
 const CargoCalculationsPage = lazy(() => import("./pages/CargoCalculations"));
 
-const CargoRulesPage = lazy(() => import("./pages/CargoRules"));
 const CargoAssistantPage = lazy(() => import("./pages/CargoAssistant"));
 const CargoQuizPage = lazy(() => import("./pages/CargoQuiz"));
 const MeteorologyFormulasPage = lazy(() => import("./pages/MeteorologyFormulas"));
-const MeteorologyRulesPage = lazy(() => import("./pages/MeteorologyRules"));
 const MeteorologyAssistantPage = lazy(() => import("./pages/MeteorologyAssistant"));
 const MeteorologyQuizPage = lazy(() => import("./pages/MeteorologyQuiz"));
 const CommunicationAssistantPage = lazy(() => import("./pages/CommunicationAssistant"));
@@ -153,19 +146,16 @@ const SeamanshipCalculationDetailPage = lazy(() =>
   })),
 );
 const SeamanshipFormulasPage = lazy(() => import("./pages/SeamanshipFormulas"));
-const SeamanshipRulesPage = lazy(() => import("./pages/SeamanshipRules"));
 const SeamanshipAssistantPage = lazy(() => import("./pages/SeamanshipAssistant"));
 const SeamanshipQuizPage = lazy(() => import("./pages/SeamanshipQuiz"));
 
 const SafetyFormulasPage = lazy(() => import("./pages/SafetyFormulas"));
-const SafetyRulesPage = lazy(() => import("./pages/SafetyRules"));
 const SafetyAssistantPage = lazy(() => import("./pages/SafetyAssistant"));
 const SafetyQuizPage = lazy(() => import("./pages/SafetyQuiz"));
 const MachineAssistantPage = lazy(() => import("./pages/MachineAssistant"));
 const MachineCalculationsPage = lazy(() => import("./pages/MachineCalculationsPage"));
 const MachineFormulasPage = lazy(() => import("./pages/MachineFormulas"));
 const MachineQuizPage = lazy(() => import("./pages/MachineQuiz"));
-const MachineRulesPage = lazy(() => import("./pages/MachineRules"));
 const RegulationDetailPage = lazy(() => import("./pages/RegulationDetailPage"));
 const ExamPreparationPage = lazy(() => import("./pages/ExamPreparationPage"));
 
@@ -245,7 +235,7 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/economics/topics" element={<PageTransition><EconomicsTopicsPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/formulas" element={<PageTransition><CourseFormulasPage /></PageTransition>} />
         <Route path="/lessons/:topicKey/calculations" element={<PageTransition><CourseCalculationsPage /></PageTransition>} />
-        <Route path="/lessons/:topicKey/rules" element={<PageTransition><CourseRulesPage /></PageTransition>} />
+        <Route path="/lessons/:topicKey/rules" element={<Navigate to="../topics" relative="path" replace />} />
         <Route path="/lessons/:topicKey/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><CourseQuizPage /></PageTransition></ProRoute>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LessonTopicsPage /></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LessonTopicDetailPage /></PageTransition>} />
@@ -275,7 +265,7 @@ const AnimatedRoutes = () => {
         <Route path="/calculations/:categoryId/:sectionId" element={<PageTransition><CalculationSectionPage /></PageTransition>} />
         {/* Stability sub-routes */}
         <Route path="/stability/assistant" element={<PageTransition><StabilityAssistantPage /></PageTransition>} />
-        <Route path="/stability/rules" element={<PageTransition><StabilityRules /></PageTransition>} />
+        <Route path="/stability/rules" element={<Navigate to="/lessons/stability/topics" replace />} />
         <Route path="/stability/gz-imo" element={<PageTransition><StabilityGZIMO /></PageTransition>} />
         <Route path="/stability/grain" element={<PageTransition><StabilityGrainPage /></PageTransition>} />
         <Route path="/stability/gm" element={<PageTransition><StabilityGMPage /></PageTransition>} />
@@ -312,11 +302,11 @@ const AnimatedRoutes = () => {
         <Route path="/cargo/calculations/bunker" element={<PageTransition><DraftSurveyBunker /></PageTransition>} />
         <Route path="/cargo/formulas" element={<PageTransition><DraftSurveyStandard /></PageTransition>} />
 
-        <Route path="/cargo/rules" element={<PageTransition><CargoRulesPage /></PageTransition>} />
+        <Route path="/cargo/rules" element={<Navigate to="/lessons/cargo/topics" replace />} />
         <Route path="/cargo/assistant" element={<PageTransition><CargoAssistantPage /></PageTransition>} />
         <Route path="/cargo/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><CargoQuizPage /></PageTransition></ProRoute>} />
         <Route path="/meteorology/formulas" element={<PageTransition><MeteorologyFormulasPage /></PageTransition>} />
-        <Route path="/meteorology/rules" element={<PageTransition><MeteorologyRulesPage /></PageTransition>} />
+        <Route path="/meteorology/rules" element={<Navigate to="/lessons/meteorology/topics" replace />} />
         <Route path="/meteorology/assistant" element={<PageTransition><MeteorologyAssistantPage /></PageTransition>} />
         <Route path="/meteorology/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MeteorologyQuizPage /></PageTransition></ProRoute>} />
         <Route path="/communication/assistant" element={<PageTransition><CommunicationAssistantPage /></PageTransition>} />
@@ -329,7 +319,7 @@ const AnimatedRoutes = () => {
 
         <Route path="/environment/calculations" element={<PageTransition><EmissionCalculationsPage /></PageTransition>} />
         <Route path="/environment/formulas" element={<PageTransition><EmissionFormulas /></PageTransition>} />
-        <Route path="/environment/rules" element={<PageTransition><EmissionRules /></PageTransition>} />
+        <Route path="/environment/rules" element={<Navigate to="/lessons/environment/topics" replace />} />
         <Route path="/environment/assistant" element={<PageTransition><EmissionAssistant /></PageTransition>} />
         <Route path="/environment/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><EmissionQuiz /></PageTransition></ProRoute>} />
         <Route path="/solas/regulations" element={<PageTransition><SOLASRegulationsPage /></PageTransition>} />
@@ -343,25 +333,25 @@ const AnimatedRoutes = () => {
           element={<PageTransition><SeamanshipCalculationDetailPage /></PageTransition>}
         />
         <Route path="/seamanship/formulas" element={<PageTransition><SeamanshipFormulasPage /></PageTransition>} />
-        <Route path="/seamanship/rules" element={<PageTransition><SeamanshipRulesPage /></PageTransition>} />
+        <Route path="/seamanship/rules" element={<Navigate to="/lessons/seamanship/topics" replace />} />
         <Route path="/seamanship/assistant" element={<PageTransition><SeamanshipAssistantPage /></PageTransition>} />
         <Route path="/seamanship/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><SeamanshipQuizPage /></PageTransition></ProRoute>} />
 
         <Route path="/safety/formulas" element={<PageTransition><SafetyFormulasPage /></PageTransition>} />
-        <Route path="/safety/rules" element={<PageTransition><SafetyRulesPage /></PageTransition>} />
+        <Route path="/safety/rules" element={<Navigate to="/lessons/safety/topics" replace />} />
         <Route path="/safety/assistant" element={<PageTransition><SafetyAssistantPage /></PageTransition>} />
         <Route path="/safety/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><SafetyQuizPage /></PageTransition></ProRoute>} />
 
         <Route path="/machine/calculations" element={<PageTransition><MachineCalculationsPage /></PageTransition>} />
         <Route path="/machine/formulas" element={<PageTransition><MachineFormulasPage /></PageTransition>} />
-        <Route path="/machine/rules" element={<PageTransition><MachineRulesPage /></PageTransition>} />
+        <Route path="/machine/rules" element={<Navigate to="/lessons?library=machine" replace />} />
         <Route path="/machine/assistant" element={<PageTransition><MachineAssistantPage /></PageTransition>} />
         <Route path="/machine/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MachineQuizPage /></PageTransition></ProRoute>} />
         {/* Machine topic sub-routes */}
         <Route path="/machine/:topicSlug/topics" element={<PageTransition><MachineTopicLessonsPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/calculations" element={<PageTransition><MachineTopicCalculationsPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/formulas" element={<PageTransition><MachineTopicFormulasPage /></PageTransition>} />
-        <Route path="/machine/:topicSlug/rules" element={<PageTransition><MachineTopicRulesPage /></PageTransition>} />
+        <Route path="/machine/:topicSlug/rules" element={<Navigate to="../topics" relative="path" replace />} />
         <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/topics/:subTopicTitle" element={<PageTransition><MachineTopicDetailPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MachineTopicQuizPage /></PageTransition></ProRoute>} />
@@ -369,7 +359,7 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />
         <Route path="/navigation/tide-tutorial" element={<PageTransition><TideCalculationTutorial /></PageTransition>} />
         <Route path="/navigation/formulas" element={<PageTransition><NavigationFormulasPage /></PageTransition>} />
-        <Route path="/navigation/rules" element={<PageTransition><NavigationRulesPage /></PageTransition>} />
+        <Route path="/navigation/rules" element={<Navigate to="/lessons/navigation/topics" replace />} />
 
         <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
         <Route path="/navigation/colreg-presentation" element={<PageTransition><COLREGPresentation /></PageTransition>} />

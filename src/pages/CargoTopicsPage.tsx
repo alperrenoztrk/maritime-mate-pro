@@ -3351,11 +3351,10 @@ export default function CargoTopicsPage() {
                 <Lightbulb className="h-5 w-5 text-amber-500" />
                 <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
               </div>
-              <div className="grid gap-2 sm:grid-cols-3">
+              <div className="grid gap-2 sm:grid-cols-2">
                 {[
                   { title: "Yük Hesaplamaları", href: "/cargo/calculations" },
                   { title: "Draft Survey Formülleri", href: "/cargo/formulas" },
-                  { title: "Yük Kuralları", href: "/cargo/rules" },
                 ].map((resource, index) => (
                   <Link
                     key={index}
