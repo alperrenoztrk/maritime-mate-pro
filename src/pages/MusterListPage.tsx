@@ -11,7 +11,6 @@ import {
   Flame,
   LifeBuoy,
   MapPin,
-  Printer,
   Radio,
   Search,
   ShieldAlert,
@@ -300,7 +299,7 @@ export default function MusterListPage() {
           </p>
         </section>
 
-        <section className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between print:hidden">
+        <section className="print:hidden">
           <label className="relative block w-full sm:max-w-xl">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -310,14 +309,6 @@ export default function MusterListPage() {
               className="h-11 w-full rounded-xl border border-border/60 bg-card/85 pl-9 pr-3 text-sm text-foreground shadow-sm outline-none transition placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/15"
             />
           </label>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-border/60 bg-card/85 px-4 text-xs font-semibold text-foreground shadow-sm transition hover:border-primary/40 hover:bg-card"
-          >
-            <Printer className="h-4 w-4" />
-            Yazdır
-          </button>
         </section>
 
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">

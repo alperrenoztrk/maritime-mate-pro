@@ -107,7 +107,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/thermodynamics/calculations" },
       { title: "Formüller", href: "/machine/thermodynamics/formulas" },
-      { title: "Kurallar", href: "/machine/thermodynamics/rules" },
     ],
   },
 
@@ -180,7 +179,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/fluid-mechanics/calculations" },
       { title: "Formüller", href: "/machine/fluid-mechanics/formulas" },
-      { title: "Kurallar", href: "/machine/fluid-mechanics/rules" },
     ],
   },
 
@@ -263,7 +261,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/machine-elements/calculations" },
       { title: "Formüller", href: "/machine/machine-elements/formulas" },
-      { title: "Kurallar", href: "/machine/machine-elements/rules" },
     ],
   },
 
@@ -348,7 +345,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/diesel-engines/calculations" },
       { title: "Formüller", href: "/machine/diesel-engines/formulas" },
-      { title: "Kurallar", href: "/machine/diesel-engines/rules" },
     ],
   },
 
@@ -417,7 +413,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/ship-systems/calculations" },
       { title: "Formüller", href: "/machine/ship-systems/formulas" },
-      { title: "Kurallar", href: "/machine/ship-systems/rules" },
     ],
   },
 
@@ -486,7 +481,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/auxiliary/calculations" },
       { title: "Formüller", href: "/machine/auxiliary/formulas" },
-      { title: "Kurallar", href: "/machine/auxiliary/rules" },
     ],
   },
 
@@ -547,7 +541,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/fuel-technology/calculations" },
       { title: "Formüller", href: "/machine/fuel-technology/formulas" },
-      { title: "Kurallar", href: "/machine/fuel-technology/rules" },
     ],
   },
 
@@ -605,7 +598,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/cooling-hvac/calculations" },
       { title: "Formüller", href: "/machine/cooling-hvac/formulas" },
-      { title: "Kurallar", href: "/machine/cooling-hvac/rules" },
     ],
   },
 
@@ -674,7 +666,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/electrical/calculations" },
       { title: "Formüller", href: "/machine/electrical/formulas" },
-      { title: "Kurallar", href: "/machine/electrical/rules" },
     ],
   },
 
@@ -732,7 +723,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/automation/calculations" },
       { title: "Formüller", href: "/machine/automation/formulas" },
-      { title: "Kurallar", href: "/machine/automation/rules" },
     ],
   },
 
@@ -791,7 +781,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/engine-room-ops/calculations" },
       { title: "Formüller", href: "/machine/engine-room-ops/formulas" },
-      { title: "Kurallar", href: "/machine/engine-room-ops/rules" },
     ],
   },
 
@@ -849,7 +838,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/maintenance/calculations" },
       { title: "Formüller", href: "/machine/maintenance/formulas" },
-      { title: "Kurallar", href: "/machine/maintenance/rules" },
     ],
   },
 
@@ -918,7 +906,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/engine-room-safety/calculations" },
       { title: "Formüller", href: "/machine/engine-room-safety/formulas" },
-      { title: "Kurallar", href: "/machine/engine-room-safety/rules" },
     ],
   },
 
@@ -990,7 +977,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/environment-machine/calculations" },
       { title: "Formüller", href: "/machine/environment-machine/formulas" },
-      { title: "Kurallar", href: "/machine/environment-machine/rules" },
     ],
   },
 
@@ -1057,7 +1043,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/erm/calculations" },
       { title: "Formüller", href: "/machine/erm/formulas" },
-      { title: "Kurallar", href: "/machine/erm/rules" },
     ],
   },
 
@@ -1116,7 +1101,6 @@ export const machineTopicLessons: Record<string, MachineTopicLesson> = {
     resources: [
       { title: "Hesaplamalar", href: "/machine/energy-efficiency/calculations" },
       { title: "Formüller", href: "/machine/energy-efficiency/formulas" },
-      { title: "Kurallar", href: "/machine/energy-efficiency/rules" },
     ],
   },
 };

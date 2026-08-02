@@ -37,7 +37,6 @@ export const searchIndex: SearchItem[] = [
   { title: "Rüzgâr-Hava Kriteri", path: "/stability/wind-weather", category: "Stabilite", keywords: ["weather criterion", "severe wind"] },
   { title: "IMO Kriterleri", path: "/stability/imo-criteria", category: "Stabilite", keywords: ["IMO A.749"] },
   { title: "Kesme-Bükme Momentleri", path: "/stability/shearing-bending", category: "Stabilite", keywords: ["shearing force", "bending moment"] },
-  { title: "Stabilite Kuralları", path: "/stability/rules", category: "Stabilite" },
   { title: "Stabilite Formülleri", path: "/stability/formulas", category: "Stabilite" },
   { title: "Stabilite Quiz", path: "/stability/quiz", category: "Stabilite" },
   { title: "Stabilite Asistanı", path: "/stability/assistant", category: "Stabilite", keywords: ["danışman", "GM", "GZ"] },
@@ -49,7 +48,6 @@ export const searchIndex: SearchItem[] = [
   // Meteoroloji
   { title: "Meteoroloji Konu Anlatımları", path: "/meteorology/topics", category: "Meteoroloji", keywords: ["hava", "rüzgâr", "basınç"] },
   { title: "Meteoroloji Formülleri", path: "/meteorology/formulas", category: "Meteoroloji" },
-  { title: "Meteoroloji Kuralları", path: "/meteorology/rules", category: "Meteoroloji" },
   { title: "Meteoroloji Quiz", path: "/meteorology/quiz", category: "Meteoroloji" },
   { title: "Meteoroloji Asistanı", path: "/meteorology/assistant", category: "Meteoroloji" },
 
@@ -64,7 +62,6 @@ export const searchIndex: SearchItem[] = [
   { title: "Draft Survey - Yoğunluk", path: "/cargo/calculations/density", category: "Kargo" },
   { title: "Draft Survey - Bunker", path: "/cargo/calculations/bunker", category: "Kargo" },
   { title: "Kargo Formülleri", path: "/cargo/formulas", category: "Kargo" },
-  { title: "Kargo Kuralları", path: "/cargo/rules", category: "Kargo" },
   { title: "Kargo Asistanı", path: "/cargo/assistant", category: "Kargo" },
   { title: "Kargo Quiz", path: "/cargo/quiz", category: "Kargo" },
   { title: "Kargo Konu Anlatımları", path: "/lessons/cargo/topics", category: "Kargo" },
@@ -82,7 +79,6 @@ export const searchIndex: SearchItem[] = [
   // Çevre
   { title: "Emisyon Hesaplamaları", path: "/emissions", category: "Çevre", keywords: ["CO2", "CII", "EEXI", "karbon"] },
   { title: "Çevre Formülleri", path: "/environment/formulas", category: "Çevre" },
-  { title: "Çevre Kuralları", path: "/environment/rules", category: "Çevre", keywords: ["MARPOL"] },
   { title: "Çevre Quiz", path: "/environment/quiz", category: "Çevre" },
   { title: "Çevre Konu Anlatımları", path: "/lessons/environment/topics", category: "Çevre" },
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Calculator, ListChecks, Scale, Sigma } from "lucide-react";
+import { BookOpen, Calculator, ListChecks, Sigma } from "lucide-react";
 
 export type CurriculumSectionId =
   | "topics"
@@ -19,7 +19,6 @@ const tabDefinitions = [
   { id: "topics", label: "Konular", icon: BookOpen },
   { id: "calculations", label: "Hesaplamalar", icon: Calculator },
   { id: "formulas", label: "Formüller", icon: Sigma },
-  { id: "rules", label: "Kurallar", icon: Scale },
   { id: "quiz", label: "Alıştırmalar", icon: ListChecks },
 ] satisfies { id: CurriculumSectionId; label: string; icon: typeof BookOpen }[];
 

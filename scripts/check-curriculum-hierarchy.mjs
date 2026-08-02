@@ -113,9 +113,10 @@ forbidText(machineTopics, "expandedModules", "makine çoklu açık modül davran
 forbidText(lessonTopics, "Ders Araçları", "güverte ayrı araç kartı");
 forbidText(machineTopics, "Ders Araçları", "makine ayrı araç kartı");
 
-for (const tabLabel of ["Konular", "Hesaplamalar", "Formüller", "Kurallar", "Alıştırmalar"]) {
+for (const tabLabel of ["Konular", "Hesaplamalar", "Formüller", "Alıştırmalar"]) {
   requireText(courseTabs, tabLabel, "ortak ders sekmeleri");
 }
+forbidText(courseTabs, 'id: "rules", label: "Kurallar"', "ayrı kurallar sekmesi");
 requireText(courseTabs, "/exercises/${exerciseCategory}/topics", "Alıştırmalar konu listesi yönlendirmesi");
 forbidText(courseTabs, "/exercises/${exerciseCategory}/quiz", "eski toplu quiz yönlendirmesi");
 requireText(courseHeader, "CourseSectionTabs", "araç sayfalarında kalıcı sekme şeridi");

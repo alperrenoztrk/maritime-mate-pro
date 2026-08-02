@@ -231,11 +231,10 @@ export default function FluidMechanicsTopicsPage() {
                 <Lightbulb className="h-5 w-5 text-primary" />
                 <h2 className="text-lg font-semibold text-foreground">Hızlı Erişim</h2>
               </div>
-              <div className="grid gap-2 sm:grid-cols-3">
+              <div className="grid gap-2 sm:grid-cols-2">
                 {[
                   { title: "Makine Hesaplamaları", href: "/machine/calculations" },
                   { title: "Makine Formülleri", href: "/machine/formulas" },
-                  { title: "Makine Kuralları", href: "/machine/rules" },
                 ].map((resource) => (
                   <Link
                     key={resource.href}

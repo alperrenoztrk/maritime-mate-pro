@@ -46,6 +46,7 @@
     "check:document-tracker": "npx tsx scripts/check-document-tracker.ts",
     "check:ux-consistency": "node scripts/check-ux-consistency.mjs",
     "check:library-interface": "node scripts/check-library-interface.mjs",
+    "check:rule-integration": "node scripts/check-rule-integration.mjs",
     "i18n:extract": "node scripts/i18n/extract-strings.mjs",
     "i18n:pretranslate": "npx tsx scripts/i18n/pretranslate.mjs",
     "i18n:generate": "npx tsx scripts/i18n/generate-locales-gtx.mjs",
