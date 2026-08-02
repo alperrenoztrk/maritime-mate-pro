@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sparkles, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 import { explainCalculation } from "@/services/aiClient";
 import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 

@@ -24,6 +24,43 @@ interface RequestBody {
   vesselName?: string;
 }
 
+interface ToolCallChoice {
+  message?: {
+    tool_calls?: Array<{
+      function?: { name?: string; arguments?: string };
+    }>;
+  };
+}
+
+interface PreviousMonthResult {
+  entries?: Array<{
+    name: string;
+    totalWorkHours: number;
+    totalRestHours: number;
+    notes?: string;
+  }>;
+}
+
+interface LogbookResult {
+  entries?: Array<{
+    date: string;
+    name: string;
+    intervals: Array<{ start: string; end: string; activity?: string }>;
+    lowConfidence?: boolean;
+  }>;
+}
+
+class GatewayError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly body: string,
+  ) {
+    super(message);
+    this.name = "GatewayError";
+  }
+}
+
 const MODEL = "google/gemini-2.5-pro";
 const GATEWAY = "https://ai.gateway.lovable.dev/v1/chat/completions";
 
@@ -40,10 +77,7 @@ async function callGateway(payload: unknown): Promise<unknown> {
   });
   if (!resp.ok) {
     const text = await resp.text();
-    const err: any = new Error(`Gateway error ${resp.status}`);
-    err.status = resp.status;
-    err.body = text;
-    throw err;
+    throw new GatewayError(`Gateway error ${resp.status}`, resp.status, text);
   }
   return await resp.json();
 }
@@ -245,7 +279,7 @@ async function extractLogbook(
 }
 
 function parseToolCall(data: unknown, fnName: string): unknown {
-  const choices = (data as any)?.choices ?? [];
+  const choices = (data as { choices?: ToolCallChoice[] } | null)?.choices ?? [];
   for (const c of choices) {
     const calls = c?.message?.tool_calls ?? [];
     for (const tc of calls) {
@@ -292,24 +326,24 @@ Deno.serve(async (req) => {
     const [prevResult, logResult] = await Promise.all([
       extractPreviousMonth(body.previousMonthImages),
       extractLogbook(body.logbookImages, body.monthLabel, crew),
-    ]);
+    ]) as [PreviousMonthResult, LogbookResult];
 
     return new Response(
       JSON.stringify({
         crew,
-        previousMonth: (prevResult as any).entries ?? [],
-        logbook: (logResult as any).entries ?? [],
+        previousMonth: prevResult.entries ?? [],
+        logbook: logResult.entries ?? [],
       }),
       {
         status: 200,
         headers: { ...cors, "Content-Type": "application/json" },
       },
     );
-  } catch (e: any) {
-    logError("extract-work-hours", e);
-    if (e?.status === 429)
+  } catch (error) {
+    logError("extract-work-hours", error);
+    if (error instanceof GatewayError && error.status === 429)
       return errorResponse(cors, 429, GENERIC_ERRORS.RATE_LIMIT);
-    if (e?.status === 402)
+    if (error instanceof GatewayError && error.status === 402)
       return errorResponse(
         cors,
         402,

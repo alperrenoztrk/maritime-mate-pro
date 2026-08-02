@@ -8,7 +8,7 @@ import { useLocationSearch, type LocationResult } from '@/hooks/useLocationSearc
 import { useWeatherForecast } from '@/hooks/useWeatherForecast';
 import { useCurrentWeather } from '@/hooks/useCurrentWeather';
 import { formatDecimalAsDMS } from '@/utils/coordinateUtils';
-import { useLocation } from '@/contexts/LocationContext';
+import { useLocation } from '@/contexts/useSelectedLocation';
 import { toast } from 'sonner';
 
 function LocationCard({ location, onSelect }: { location: LocationResult; onSelect: (location: LocationResult) => void }) {

@@ -9,8 +9,10 @@ import { Button } from "@/components/ui/button";
 import { AlertTriangle, RotateCcw, Move3d } from "lucide-react";
 import * as THREE from "three";
 
-import { shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
-import { ShipScene3D, keelWorldY } from "./sim/ShipScene3D";
+import { type ShipType } from "./sim/ShipModel3D";
+import { shipTypeOptions } from "./sim/shipTypeOptions";
+import { ShipScene3D } from "./sim/ShipScene3D";
+import { keelWorldY } from "./sim/shipDraftGeometry";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
 import { disposeHullGeometries } from "./sim/hullGeometry";
 import { disposeAllShipTextures } from "./sim/proceduralTextures";

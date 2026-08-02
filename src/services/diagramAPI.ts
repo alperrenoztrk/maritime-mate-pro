@@ -272,7 +272,7 @@ class DiagramAPIService {
   }
 
   // Maritime-specific diagram generators
-  async generateEngineFlowChart(engineData: any): Promise<DiagramResponse> {
+  async generateEngineFlowChart(engineData: unknown): Promise<DiagramResponse> {
     const description = `Create a marine engine system flowchart showing:
     - Main engine power: ${engineData.mcrPower} kW
     - Current load: ${engineData.currentLoad}%
@@ -289,7 +289,7 @@ class DiagramAPIService {
     });
   }
 
-  async generateTrimDiagram(trimData: any): Promise<DiagramResponse> {
+  async generateTrimDiagram(trimData: unknown): Promise<DiagramResponse> {
     const description = `Create a ship trim and stability diagram showing:
     - Ship length: ${trimData.L} meters
     - Forward draft: ${trimData.draftForward} m
@@ -307,7 +307,7 @@ class DiagramAPIService {
     });
   }
 
-  async generateGZCurveDiagram(stabilityData: any): Promise<DiagramResponse> {
+  async generateGZCurveDiagram(stabilityData: unknown): Promise<DiagramResponse> {
     const description = `Create a GZ curve (righting arm curve) stability diagram showing:
     - Initial stability (GM): ${stabilityData.GM || 'calculated'} meters
     - Displacement: ${stabilityData.displacement || 'current'} tonnes
@@ -325,7 +325,7 @@ class DiagramAPIService {
     });
   }
 
-  async generateSafetyEvacuationDiagram(safetyData: any): Promise<DiagramResponse> {
+  async generateSafetyEvacuationDiagram(safetyData: unknown): Promise<DiagramResponse> {
     const description = `Create a ship emergency evacuation flowchart showing:
     - Emergency alarm activation
     - Muster station procedures
@@ -342,7 +342,7 @@ class DiagramAPIService {
     });
   }
 
-  async generateEmissionControlDiagram(emissionData: any): Promise<DiagramResponse> {
+  async generateEmissionControlDiagram(emissionData: unknown): Promise<DiagramResponse> {
     const description = `Create an emission control system diagram showing:
     - Engine exhaust gas flow
     - SCR (Selective Catalytic Reduction) system
@@ -360,7 +360,7 @@ class DiagramAPIService {
     });
   }
 
-  async generateCargoOperationDiagram(cargoData: any): Promise<DiagramResponse> {
+  async generateCargoOperationDiagram(cargoData: unknown): Promise<DiagramResponse> {
     const description = `Create a cargo operation flowchart showing:
     - Pre-loading inspection
     - Cargo loading sequence
@@ -378,7 +378,7 @@ class DiagramAPIService {
     });
   }
 
-  async generateStructuralAnalysisDiagram(structuralData: any): Promise<DiagramResponse> {
+  async generateStructuralAnalysisDiagram(structuralData: unknown): Promise<DiagramResponse> {
     const description = `Create a structural analysis flowchart showing:
     - Load identification and calculation
     - Stress analysis procedures

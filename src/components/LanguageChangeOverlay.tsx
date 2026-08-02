@@ -1,4 +1,4 @@
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 import { Loader2 } from "lucide-react";
 
 export function LanguageChangeOverlay() {

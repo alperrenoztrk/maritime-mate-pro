@@ -81,8 +81,8 @@ export default function SunsetTimes() {
       
       const list = times.map((date, i) => ({ date, sunset: sunsets[i] ?? null }));
       setDays(list);
-    } catch (e: any) {
-      setError(e?.message || "Bilinmeyen hata");
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Bilinmeyen hata");
     } finally {
       setLoading(false);
     }

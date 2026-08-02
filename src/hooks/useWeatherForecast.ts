@@ -76,8 +76,8 @@ export function useWeatherForecast(lat?: number, lon?: number) {
       };
       
       setData(forecastData);
-    } catch (e: any) {
-      const message = e?.message || "Bilinmeyen hata";
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Bilinmeyen hata";
       setError(message);
     } finally {
       setLoading(false);
@@ -140,8 +140,8 @@ export function useHourlyForecast(lat?: number, lon?: number, targetDate?: strin
       }));
       
       setData(hourlyData);
-    } catch (e: any) {
-      const message = e?.message || "Bilinmeyen hata";
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Bilinmeyen hata";
       setError(message);
     } finally {
       setLoading(false);

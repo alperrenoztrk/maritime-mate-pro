@@ -11,6 +11,10 @@ export type LocationResult = {
   timezone?: string;
 };
 
+type LocationSearchResponse = {
+  results?: LocationResult[];
+};
+
 export function useLocationSearch() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<LocationResult[]>([]);
@@ -36,10 +40,10 @@ export function useLocationSearch() {
           throw new Error('Konum araması başarısız');
         }
         
-        const data = await response.json();
+        const data = await response.json() as LocationSearchResponse;
         
         if (data.results) {
-          setResults(data.results.map((result: any) => ({
+          setResults(data.results.map((result) => ({
             id: result.id,
             name: result.name,
             country: result.country,

@@ -11,7 +11,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
 import { NewspaperStyles } from "@/components/news/NewspaperStyles";
 import { softHyphenate } from "@/components/news/hyphenate";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 
 function formatDate(iso: string | undefined, locale: string): string {
   if (!iso) return "";

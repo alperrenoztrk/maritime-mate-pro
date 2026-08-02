@@ -134,7 +134,7 @@ const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
                       <Label htmlFor="tankType">Tank Tipi</Label>
                       <Select
                         value={tankData.tankType || ''}
-                        onValueChange={(value) => setTankData({...tankData, tankType: value as any})}
+                        onValueChange={(value) => setTankData({...tankData, tankType: value as TankData["tankType"]})}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Tank tipi seçin" />

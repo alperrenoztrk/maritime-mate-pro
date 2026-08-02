@@ -9,7 +9,7 @@ import DOMPurify from "dompurify";
 
 interface DiagramViewerProps {
   title: string;
-  data: any;
+  data: unknown;
   diagramType: 'engine' | 'trim' | 'safety' | 'emission' | 'cargo' | 'structural' | 'gz-curve';
   className?: string;
 }

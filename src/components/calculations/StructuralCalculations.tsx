@@ -380,7 +380,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
     setLoadPoints([...loadPoints, { position: 50, weight: 500, type: 'cargo' }]);
   };
 
-  const updateLoadPoint = (index: number, field: keyof LoadPoint, value: any) => {
+  const updateLoadPoint = <K extends keyof LoadPoint>(index: number, field: K, value: LoadPoint[K]) => {
     const newPoints = [...loadPoints];
     newPoints[index] = { ...newPoints[index], [field]: value };
     setLoadPoints(newPoints);
@@ -445,7 +445,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                     id="cargoDistribution"
                     className="w-full p-2 border rounded"
                     value={structuralData.cargoDistribution || 'uniform'}
-                    onChange={(e) => setStructuralData({...structuralData, cargoDistribution: e.target.value as any})}
+                    onChange={(e) => setStructuralData({...structuralData, cargoDistribution: e.target.value as StructuralData["cargoDistribution"]})}
                   >
                     <option value="uniform">Düzgün Dağılım</option>
                     <option value="concentrated">Yoğunlaşmış</option>
@@ -488,7 +488,7 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
                         <select 
                           className="w-full p-1 border rounded text-sm"
                           value={load.type}
-                          onChange={(e) => updateLoadPoint(index, 'type', e.target.value as any)}
+                          onChange={(e) => updateLoadPoint(index, 'type', e.target.value as LoadPoint["type"])}
                         >
                           <option value="cargo">Kargo</option>
                           <option value="ballast">Balast</option>

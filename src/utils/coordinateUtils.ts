@@ -22,7 +22,7 @@ export function decimalToDMS(decimal: number, isLatitude: boolean): DMSCoordinat
   // Round the whole value into tenths of a second before splitting it, so that a
   // value like 59.97" rounds up and carries into the next minute/degree instead
   // of producing an invalid "60" seconds (or minutes) reading.
-  let tenthSeconds = Math.round(absolute * 3600 * 10);
+  const tenthSeconds = Math.round(absolute * 3600 * 10);
   const seconds = (tenthSeconds % 600) / 10; // 0.0 – 59.9
   const totalMinutes = Math.floor(tenthSeconds / 600);
   const minutes = totalMinutes % 60;

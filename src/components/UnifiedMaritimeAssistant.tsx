@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Ship, Loader2, MessageCircle, Calculator, Send, BarChart3, Compass } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 import { getLanguageDisplayName } from "@/services/aiClient";
 import { stripMarkdown } from "@/utils/cleanText";
 

@@ -258,7 +258,7 @@ Ağırlık merkezinin hesaplanmasında temel prensip moment dengesine dayanır. 
 KG = Toplam Düşey Moment / Toplam Ağırlık
 ────────────
 
-Burada kullanılan momentler mutlak değerlerle hesaplanır; ağırlığın yukarıda ya da aşağıda olması yön bilgisi olarak değerlendirilir, sayısal işlem sırasında işaret kullanılmaz. Örnek olarak, toplam ağırlığı 10 000 ton olan bir gemide, düşey momentlerin toplamı 52 000 ton·metre olarak bulunmuşsa, düşey ağırlık merkezi 52 000 / 10 000 = 5,2 metre olarak hesaplanır. Bu değer, ağırlık merkezinin omurgadan itibaren 5,2 metre yukarıda bulunduğunu gösterir.
+Burada kullanılan momentler mutlak değerlerle hesaplanır; ağırlığın yukarıda ya da aşağıda olması yön bilgisi olarak değerlendirilir, sayısal işlem sırasında işaret kullanılmaz. Örnek olarak, toplam ağırlığı 10 000 ton olan bir gemide, düşey momentlerin toplamı 52 000 ton·metre olarak bulunmuşsa, düşey ağırlık merkezi 52 000 / 10 000 = 5,2 metre olarak hesaplanır. Bu değer, ağırlık merkezinin omurgadan itibaren 5,2 metre yukarıda bulunduğunu gösterir.
 
 Yükleme sırasında ağırlık merkezinin yer değiştirmesi, eklenen veya çıkarılan ağırlıkların konumuna bağlıdır. Gemide yeni bir yük alındığında, bu yükün ağırlığı ile kendi düşey mesafesi çarpılarak yeni bir moment oluşturulur ve toplam momente eklenir. Aynı şekilde, gemiden çıkarılan bir ağırlık, mevcut momentten düşülür. Yeni toplam moment, yeni toplam ağırlığa bölünerek güncel ağırlık merkezi hesaplanır. Bu işlem sırası her zaman aynı mantıkla yürütülür ve hiçbir adım atlanmaz.
 
@@ -266,7 +266,7 @@ Yükleme sırasında ağırlık merkezinin yer değiştirmesi, eklenen veya çı
 Yeni KG = (Eski Toplam Moment ± Eklenen veya Çıkarılan Moment) / Yeni Toplam Ağırlık
 ────────────
 
-Örneğin, KG’si 5,2 metre olan ve toplam ağırlığı 10 000 ton olan bir gemiye, omurgadan 9 metre yükseklikte bulunan bir noktaya 500 ton yük eklendiğinde, eklenen moment 500 × 9 = 4 500 ton·metre olur. Eski toplam moment 52 000 ton·metre olduğuna göre yeni toplam moment 56 500 ton·metreye yükselir. Yeni toplam ağırlık 10 500 ton olarak alınır ve yeni KG 56 500 / 10 500 ≈ 5,38 metre olarak bulunur. Bu sonuç, yüklemenin ağırlık merkezini yukarı taşıdığını ve geminin stabilitesini olumsuz yönde etkilediğini açıkça gösterir.
+Örneğin, KG’si 5,2 metre olan ve toplam ağırlığı 10 000 ton olan bir gemiye, omurgadan 9 metre yükseklikte bulunan bir noktaya 500 ton yük eklendiğinde, eklenen moment 500 × 9 = 4 500 ton·metre olur. Eski toplam moment 52 000 ton·metre olduğuna göre yeni toplam moment 56 500 ton·metreye yükselir. Yeni toplam ağırlık 10 500 ton olarak alınır ve yeni KG 56 500 / 10 500 ≈ 5,38 metre olarak bulunur. Bu sonuç, yüklemenin ağırlık merkezini yukarı taşıdığını ve geminin stabilitesini olumsuz yönde etkilediğini açıkça gösterir.
 
 Ağırlık merkezinin düşey konumu arttıkça, doğrultma kolları küçülür ve geminin yatmaya karşı direnci azalır. Buna karşılık ağırlık merkezinin aşağı çekilmesi, doğrultma kollarını büyütür ve geminin daha stabil davranmasını sağlar. Bu nedenle balast tanklarının alt seviyelerde yer alması, ağır yüklerin mümkün olduğunca aşağıda istiflenmesi ve serbest yüzey etkisinin kontrol altında tutulması stabilite açısından hayati öneme sahiptir. Ağırlık merkezi kavramı, metasentrik ilişkilerden doğrultma momenti hesaplarına kadar tüm stabilite analizlerinin temelini oluşturur ve her hesaplamada ilk dikkate alınan parametre olarak ele alınır.`
       },
@@ -499,7 +499,7 @@ Doğrultma kolu, geminin yatmış bir durumda tekrar dik konumuna dönme eğilim
 Küçük yatma açıları için doğrultma kolu, metasentrik yaklaşım yardımıyla basit bir trigonometrik ilişkiyle ifade edilebilir. Bu bölgede metasentrik nokta sabit kabul edilir ve GZ değeri yatma açısının sinüsü ile orantılıdır. Matematiksel ifade şu şekildedir:
 
 ────────────
-GZ = GM × sin θ
+GZ = GM × sin θ
 ────────────
 
 Burada GM, metasentrik yükseklik; θ ise geminin yatma açısıdır. Bu ifade yalnızca küçük açılar için geçerlidir ve genellikle yaklaşık 7–10 dereceye kadar kabul edilebilir sonuçlar verir. Bu aralığın ötesinde kaldırma merkezinin hareketi doğrusal olmaktan çıkar ve metasentrik yaklaşım geçerliliğini yitirir.

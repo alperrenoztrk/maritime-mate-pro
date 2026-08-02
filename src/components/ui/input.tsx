@@ -32,7 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           className
         )}
         ref={ref}
-        value={sanitizedValue as any}
+        value={sanitizedValue}
         onChange={handleChange}
         {...props}
       />

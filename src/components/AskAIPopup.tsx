@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTextSelection } from '@/hooks/useTextSelection';
 import { supabase } from '@/integrations/supabase/safeClient';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/contexts/useLanguage';
 import { AIMessage } from '@/services/aiClient';
 import { Sparkles, X, Loader2, Highlighter } from 'lucide-react';
 import { toast } from 'sonner';

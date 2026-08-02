@@ -197,8 +197,8 @@ export function solveCurrentTriangle(input: CurrentTriangleInput): CurrentTriang
 
   const feasible = Math.abs(rhs) <= 1;
   const clamped = Math.max(-1, Math.min(1, rhs));
-  let headingRad = desiredRad + Math.asin(clamped);
-  let headingDeg = normalizeAngle(toDegrees(headingRad) + leewayDeg);
+  const headingRad = desiredRad + Math.asin(clamped);
+  const headingDeg = normalizeAngle(toDegrees(headingRad) + leewayDeg);
 
   // Ground speed along desired track
   const dirX = Math.sin(desiredRad);
@@ -515,7 +515,7 @@ export function calculateTurning(input: TurningCalculationInput): TurningCalcula
 export function calculateWeather(input: WeatherCalculationInput): WeatherCalculationResult {
   const { beaufortNumber, windSpeedKn, windAreaM2, shipSpeedKn } = input;
   
-  let result: WeatherCalculationResult = {};
+  const result: WeatherCalculationResult = {};
   
   if (beaufortNumber !== undefined) {
     result.windSpeedKn = 2 * Math.sqrt(Math.pow(beaufortNumber, 3));
@@ -538,25 +538,27 @@ export function calculateWeather(input: WeatherCalculationInput): WeatherCalcula
 export function calculateCelestial(input: CelestialInput): CelestialResult {
   const { latDeg, decDeg, type } = input;
   
-  let result: CelestialResult = {};
+  const result: CelestialResult = {};
   
   switch (type) {
     case 'meridian':
       // Latitude = 90° - zenith distance ± declination
       result.latitudeDeg = 90 - Math.abs(latDeg - decDeg);
       break;
-    case 'amplitude':
+    case 'amplitude': {
       // A = arcsin(sin δ / cos φ)
       const latRad = toRadians(latDeg);
       const decRad = toRadians(decDeg);
       result.amplitudeDeg = toDegrees(Math.asin(Math.sin(decRad) / Math.cos(latRad)));
       break;
-    case 'sunrise':
+    }
+    case 'sunrise': {
       // Bearing at sunrise/sunset
       const latRad2 = toRadians(latDeg);
       const decRad2 = toRadians(decDeg);
       result.bearingDeg = normalizeAngle(toDegrees(Math.acos(-Math.tan(latRad2) * Math.tan(decRad2))));
       break;
+    }
   }
   
   return result;
@@ -566,7 +568,7 @@ export function calculateCelestial(input: CelestialInput): CelestialResult {
 export function calculateEmergency(input: EmergencyInput): EmergencyResult {
   const { searchType, trackSpacingNm, initialRadiusNm, driftSpeedKn, rescueSpeedKn, distanceNm } = input;
   
-  let result: EmergencyResult = {};
+  const result: EmergencyResult = {};
   
   switch (searchType) {
     case 'square':
@@ -1714,7 +1716,7 @@ export function calculateAirTempCorrection(input: AirTempCorrectionInput): AirTe
   // Mean refraction table (in arc-minutes)
   const mref = [-37.0,-34.5,-33.8,-33.2,-32.6,-32.0,-31.4,-30.8,-30.3,-29.8,-29.2,-28.7,-28.2,-27.8,-27.3,-26.8,-26.4,-25.9,-25.5,-25.1,-24.7,-24.3,-24.0,-23.6,-23.2,-22.9,-22.5,-22.2,-21.9,-21.6,-21.2,-20.9,-20.5,-20.0,-19.5,-19.1,-18.7,-18.3,-17.9,-17.5,-17.2,-16.8,-16.5,-16.1,-15.8,-15.5,-15.2,-14.9,-14.7,-14.4,-14.1,-13.9,-13.7,-13.4,-13.2,-13.0,-12.7,-12.5,-12.3,-12.1,-11.9,-11.8,-11.6,-11.4,-11.2,-11.1,-10.9,-10.7,-10.6,-10.4,-10.3,-10.1,-10.0,-9.9,-9.7,-9.6,-9.5,-9.4,-9.2,-9.1,-9.0,-8.9,-8.8,-8.7,-8.6,-8.5,-8.3,-8.1,-7.9,-7.7,-7.6,-7.4,-7.2,-7.1,-7.0,-6.8,-6.7,-6.6,-6.4,-6.3,-6.2,-6.1,-6.0,-5.9,-5.8,-5.7,-5.6,-5.5,-5.4,-5.3,-5.2,-5.1,-5.0,-4.9,-4.8,-4.7,-4.6,-4.5,-4.4,-4.3,-4.2,-4.1,-4.0,-3.9,-3.8,-3.7,-3.6,-3.5,-3.4,-3.3,-3.2,-3.1,-3.0,-2.9,-2.8,-2.7,-2.6,-2.5,-2.4,-2.3,-2.2,-2.1,-2.0,-1.9,-1.8,-1.7,-1.6,-1.5,-1.4,-1.3,-1.2,-1.1,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.0,0.0];
   
-  let deg = apparentAltDeg;
+  const deg = apparentAltDeg;
   let min = apparentAltMin;
   if (deg < 0) min *= -1;
   
@@ -1795,7 +1797,7 @@ export function calculateAmplitude(input: AmplitudeInput): AmplitudeResult {
     azimuthDeg = 270 + amplitudeDeg;
   }
   
-  let result: AmplitudeResult = {
+  const result: AmplitudeResult = {
     amplitudeDeg: Math.round(amplitudeDeg * 100) / 100,
     amplitudeSign,
     amplitudeDir,
@@ -1803,8 +1805,8 @@ export function calculateAmplitude(input: AmplitudeInput): AmplitudeResult {
   };
   
   if (input.compassBearing !== undefined) {
-    let compassError = input.compassBearing - azimuthDeg;
-    let errorSign: 'East' | 'West' = compassError > 0 ? 'West' : 'East';
+    const compassError = input.compassBearing - azimuthDeg;
+    const errorSign: 'East' | 'West' = compassError > 0 ? 'West' : 'East';
     result.compassError = Math.abs(Math.round(compassError * 10) / 10);
     result.errorSign = errorSign;
   }
@@ -1844,7 +1846,7 @@ export function calculateCorrectedAmplitude(input: AmplitudeInput): AmplitudeRes
   
   const amplitudeDir = input.riseOrSet === 'Rising' ? 'East' : 'West';
   
-  let result: AmplitudeResult = {
+  const result: AmplitudeResult = {
     amplitudeDeg: Math.round(amplitudeDeg * 100) / 100,
     amplitudeSign,
     amplitudeDir,
@@ -1852,8 +1854,8 @@ export function calculateCorrectedAmplitude(input: AmplitudeInput): AmplitudeRes
   };
   
   if (input.compassBearing !== undefined) {
-    let compassError = input.compassBearing - azimuthDeg;
-    let errorSign: 'East' | 'West' = compassError > 0 ? 'West' : 'East';
+    const compassError = input.compassBearing - azimuthDeg;
+    const errorSign: 'East' | 'West' = compassError > 0 ? 'West' : 'East';
     result.compassError = Math.abs(Math.round(compassError * 10) / 10);
     result.errorSign = errorSign;
   }
@@ -1948,8 +1950,8 @@ export type TwoBearingsResult = {
 export function calculateTwoBearingsDistance(input: TwoBearingsInput): TwoBearingsResult {
   const { bearing1Deg, bearing1Min, bearing2Deg, bearing2Min, distanceBetweenBearingsNm } = input;
   
-  let theta1 = toRadians(bearing1Deg + bearing1Min/60);
-  let theta2 = toRadians(bearing2Deg + bearing2Min/60);
+  const theta1 = toRadians(bearing1Deg + bearing1Min/60);
+  const theta2 = toRadians(bearing2Deg + bearing2Min/60);
   
   const deg_90 = Math.PI/2;
   const deg_180 = Math.PI;
@@ -2113,4 +2115,3 @@ export function calculateMeridianTransitChange(input: MeridianTransitChangeInput
   const altitudeChangeSec = input.factor * Math.pow(input.minutesFromMeridian, 2) / 60;
   return { altitudeChangeSec };
 }
-

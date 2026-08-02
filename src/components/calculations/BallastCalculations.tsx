@@ -488,7 +488,7 @@ export const BallastCalculations = ({ initialTab }: { initialTab?: string } = {}
                         id="purpose"
                         className="w-full p-2 border rounded"
                         value={operation.purpose || ''}
-                        onChange={(e) => setOperation({...operation, purpose: e.target.value as any})}
+                        onChange={(e) => setOperation({...operation, purpose: e.target.value as BallastOperation["purpose"]})}
                       >
                         <option value="">Amaç Seçin</option>
                         <option value="trim">Trim Düzeltme</option>

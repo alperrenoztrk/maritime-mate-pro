@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/useAuthContext";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
   getDocumentExpiryState,

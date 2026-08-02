@@ -107,7 +107,7 @@ const CourseFormulasPage = lazy(() => import("./pages/CourseFormulasPage"));
 const CourseCalculationsPage = lazy(() => import("./pages/CourseCalculationsPage"));
 const CourseRulesPage = lazy(() => import("./pages/CourseRulesPage"));
 const CourseQuizPage = lazy(() => import("./pages/CourseQuizPage"));
-const MachineTopicRulesPage = lazy(() => import("./pages/MachineTopicRulesPage"));
+const MachineTopicRulesPage = lazy(() => import("./pages/MachineTopicRulesView"));
 const MachineTopicAssistantPage = lazy(() => import("./pages/MachineTopicAssistantPage"));
 const MachineTopicQuizPage = lazy(() => import("./pages/MachineTopicQuizPage"));
 const MachineTopicLessonsPage = lazy(() => import("./pages/MachineTopicLessonsPage"));

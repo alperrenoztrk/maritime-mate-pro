@@ -149,7 +149,7 @@ export function longestRestBlock(day: DayHours): number {
 
 // STCW: dinlenme en fazla 2 parçaya bölünmeli, biri ≥ 6 saat.
 export function restSplitsValid(day: DayHours): boolean {
-  let blocks: number[] = [];
+  const blocks: number[] = [];
   let cur = 0;
   for (const isWork of day) {
     if (!isWork) {

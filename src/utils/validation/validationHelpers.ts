@@ -23,7 +23,7 @@ export type StabilityLogicInput = {
   displacement?: number | null;
 };
 
-const NON_NUMERIC_PATTERN = /[^0-9,\.\-+]/;
+const NON_NUMERIC_PATTERN = /[^0-9,.+-]/;
 
 export const validateUnit = (rawValue: string, options: UnitValidationOptions): string | null => {
   if (!rawValue || rawValue.trim().length === 0) {

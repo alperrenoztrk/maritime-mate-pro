@@ -10,6 +10,48 @@ import { Fuel, Container, Ship, Truck } from "lucide-react";
 import type { CalculationStep } from "@/types/calculationSteps";
 import { CalculationSteps } from "@/components/ui/calculation-steps";
 
+interface TankerOperationResult {
+  tankVolume: number;
+  cowTime: number;
+  inertGasRequired: number;
+  tankPressure: number;
+  pressureStatus: "safe" | "caution" | "critical";
+  safetyNote: string;
+}
+
+interface LngBoilOffResult {
+  tankCapacity: number;
+  dailyBoilOffRate: number;
+  voyageDays: number;
+  totalBoilOff: number;
+  remainingCargo: number;
+  lossPercentage: number;
+  status: "excellent" | "good" | "acceptable" | "excessive";
+}
+
+interface ContainerStackResult {
+  containerWeight: number;
+  stackHeight: number;
+  totalStackWeight: number;
+  weightPerUnit: number;
+  deckCapacity: number;
+  safetyFactor: number;
+  maxSafeHeight: number;
+  status: "safe" | "caution" | "dangerous";
+  recommendation: string;
+}
+
+interface RoroAxleResult {
+  vehicleWeight: number;
+  axleNumber: number;
+  axleLoad: number;
+  deckLoadLimit: number;
+  totalPressure: number;
+  safetyMargin: number;
+  status: "safe" | "overload";
+  recommendation: string;
+}
+
 export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } = {}) => {
   const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
 
@@ -17,25 +59,25 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
   const [cargoTankVolume, setCargoTankVolume] = useState("");
   const [cowRate, setCowRate] = useState("");
   const [tankPressure, setTankPressure] = useState("");
-  const [tankerResult, setTankerResult] = useState<any>(null);
+  const [tankerResult, setTankerResult] = useState<TankerOperationResult | null>(null);
 
   // LNG - Boil-off Rate
   const [lngTankCapacity, setLngTankCapacity] = useState("");
   const [boilOffRate, setBoilOffRate] = useState("");
   const [voyageDuration, setVoyageDuration] = useState("");
-  const [lngResult, setLngResult] = useState<any>(null);
+  const [lngResult, setLngResult] = useState<LngBoilOffResult | null>(null);
 
   // Container - Stack Weight
   const [containerWeight, setContainerWeight] = useState("");
   const [stackHeight, setStackHeight] = useState("");
   const [deckCapacity, setDeckCapacity] = useState("");
-  const [containerResult, setContainerResult] = useState<any>(null);
+  const [containerResult, setContainerResult] = useState<ContainerStackResult | null>(null);
 
   // Ro-Ro - Axle Load
   const [vehicleWeight, setVehicleWeight] = useState("");
   const [axleNumber, setAxleNumber] = useState("");
   const [deckLoadLimit, setDeckLoadLimit] = useState("");
-  const [roroResult, setRoroResult] = useState<any>(null);
+  const [roroResult, setRoroResult] = useState<RoroAxleResult | null>(null);
 
   const calculateTankerOperations = () => {
     const volume = parseFloat(cargoTankVolume);

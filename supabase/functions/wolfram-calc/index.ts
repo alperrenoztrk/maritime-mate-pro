@@ -2,6 +2,17 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse, errorResponse, logError, GENERIC_ERRORS } from "../_shared/auth.ts";
 
+interface WolframPod {
+  id?: string;
+  title?: string;
+  primary?: boolean;
+  subpods?: Array<{ plaintext?: string }>;
+}
+
+interface WolframResponse {
+  queryresult?: { pods?: WolframPod[] };
+}
+
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
 
@@ -40,11 +51,11 @@ serve(async (req) => {
       return errorResponse(corsHeaders, 500, GENERIC_ERRORS.SERVICE_ERROR);
     }
 
-    const data = await response.json();
+    const data = await response.json() as WolframResponse;
 
     if (data.queryresult && data.queryresult.pods) {
       const resultPod = data.queryresult.pods.find(
-        (pod: any) => pod.id === "Result" || pod.title === "Result" || pod.primary
+        (pod) => pod.id === "Result" || pod.title === "Result" || pod.primary
       );
 
       if (resultPod && resultPod.subpods && resultPod.subpods[0]) {

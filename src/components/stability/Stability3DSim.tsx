@@ -19,9 +19,11 @@ import {
   type ShipState,
   type IMOCompliance,
 } from "./sim/StabilityPhysics";
-import { shipTypeOptions, type ShipType } from "./sim/ShipModel3D";
+import { type ShipType } from "./sim/ShipModel3D";
+import { shipTypeOptions } from "./sim/shipTypeOptions";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
-import { ShipScene3D, keelWorldY } from "./sim/ShipScene3D";
+import { ShipScene3D } from "./sim/ShipScene3D";
+import { keelWorldY } from "./sim/shipDraftGeometry";
 import { disposeHullGeometries } from "./sim/hullGeometry";
 import { disposeAllShipTextures } from "./sim/proceduralTextures";
 

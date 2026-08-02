@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Bot, Send, Sparkles, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/useLanguage";
 import { askLessonTutor, type AIMessage, type TutorLevel } from "@/services/aiClient";
 import { supabase } from "@/integrations/supabase/safeClient";
 

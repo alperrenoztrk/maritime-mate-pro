@@ -162,6 +162,61 @@ const CALC_TITLES: Record<CalcId, string> = {
   emergency: "Acil Durum",
 };
 
+type GreatCircleResults = ReturnType<typeof calculateGreatCircle> & {
+  waypoints: ReturnType<typeof generateGreatCircleWaypoints>;
+};
+type RhumbResults = ReturnType<typeof calculateRhumbLine>;
+type PlaneResults = ReturnType<typeof calculatePlaneSailing>;
+type EtaResults = { hours: number; hoursMinutes: string };
+type TimeConversionResults = {
+  utcIso: string;
+  zoneOffsetHours: number;
+  zoneIso: string;
+  lonDeg: number;
+  lonMinutes: number;
+  lmtIso: string;
+};
+type BasicResults = {
+  solved: ReturnType<typeof solveSpeedDistanceTime>;
+  timeHhMm: ReturnType<typeof hoursToHhMm>;
+  converted: number | null;
+  etaUtcIso: string | null;
+  remaining: ReturnType<typeof calculateRemaining> | null;
+  timeConv: TimeConversionResults | null;
+};
+type ChartResults = { nmFromCm?: number; cmFromNm?: number };
+type CompassResults = ReturnType<typeof convertTVMDCFromCompass> & {
+  check: ReturnType<typeof convertTVMDCFromTrue>;
+  totalError: number;
+};
+type AstroResults = {
+  correction: ReturnType<typeof correctSextantAltitude>;
+  intercept: ReturnType<typeof computeSunInterceptSight>;
+  almanacRows: ReturnType<typeof generateDailySunAlmanac>;
+  table: ReturnType<typeof generateSightReductionTable>;
+};
+type FixResults = Partial<{
+  fix: ReturnType<typeof calculateFixFromTwoBearings>;
+  running: ReturnType<typeof calculateRunningFix>;
+  three: ReturnType<typeof calculateFixFromThreeBearings>;
+  bearingDistance: ReturnType<typeof calculateFixFromBearingAndDistance>;
+  twoDistances: ReturnType<typeof calculateFixFromTwoDistances>;
+}>;
+type UkcWithSquat = ReturnType<typeof calculateUKC> & { squatM: number };
+type PassageRow = {
+  name: string;
+  distanceNm: number;
+  sogKn: number;
+  durationHours: number;
+  startIso: string;
+  etaIso: string;
+};
+type PassageResults = { rows: PassageRow[]; etdIso: string; totalDistanceNm: number };
+type EcdisResults = {
+  xtd: ReturnType<typeof calculateCrossTrackDistance>;
+  look: ReturnType<typeof calculateLookAheadDistance>;
+};
+
 export default function NavigationCalculationPage() {
   const params = useParams();
   const navigate = useNavigate();
@@ -178,7 +233,7 @@ export default function NavigationCalculationPage() {
     wpStepNm: "60",
     wpSegments: ""
   });
-  const [gcResults, setGcResults] = useState<any>(null);
+  const [gcResults, setGcResults] = useState<GreatCircleResults | null>(null);
 
   const [rhumbInputs, setRhumbInputs] = useState({ 
     lat1: emptyDMS(true), 
@@ -186,7 +241,7 @@ export default function NavigationCalculationPage() {
     lat2: emptyDMS(true), 
     lon2: emptyDMS(false) 
   });
-  const [rhumbResults, setRhumbResults] = useState<any>(null);
+  const [rhumbResults, setRhumbResults] = useState<RhumbResults | null>(null);
 
   const [planeInputs, setPlaneInputs] = useState({ 
     lat1: emptyDMS(true), 
@@ -194,10 +249,10 @@ export default function NavigationCalculationPage() {
     lat2: emptyDMS(true), 
     lon2: emptyDMS(false) 
   });
-  const [planeResults, setPlaneResults] = useState<any>(null);
+  const [planeResults, setPlaneResults] = useState<PlaneResults | null>(null);
 
   const [etaInputs, setEtaInputs] = useState({ distance: "", speed: "" });
-  const [etaResults, setEtaResults] = useState<any>(null);
+  const [etaResults, setEtaResults] = useState<EtaResults | null>(null);
 
   // Temel seyir (1️⃣): d/t/v, unit conversions, ETD->ETA, remaining
   const [basicInputs, setBasicInputs] = useState({
@@ -216,7 +271,7 @@ export default function NavigationCalculationPage() {
     zoneOffsetHours: "0",
     lonForLmt: "",
   });
-  const [basicResults, setBasicResults] = useState<any>(null);
+  const [basicResults, setBasicResults] = useState<BasicResults | null>(null);
 
   const [midlatInputs, setMidlatInputs] = useState({
     lat1: emptyDMS(true),
@@ -224,10 +279,10 @@ export default function NavigationCalculationPage() {
     lat2: emptyDMS(true),
     lon2: emptyDMS(false),
   });
-  const [midlatResults, setMidlatResults] = useState<any>(null);
+  const [midlatResults, setMidlatResults] = useState<ReturnType<typeof calculateMiddleLatitudeSailing> | null>(null);
 
   const [chartInputs, setChartInputs] = useState({ lengthCm: "", scale: "", distanceNm: "" });
-  const [chartResults, setChartResults] = useState<any>(null);
+  const [chartResults, setChartResults] = useState<ChartResults | null>(null);
 
   const [positionInputs, setPositionInputs] = useState({
     startLat: emptyDMS(true),
@@ -235,23 +290,23 @@ export default function NavigationCalculationPage() {
     courseTrue: "",
     distanceNm: "",
   });
-  const [positionResults, setPositionResults] = useState<any>(null);
+  const [positionResults, setPositionResults] = useState<ReturnType<typeof calculateDeadReckoning> | null>(null);
 
   const [currentInputs, setCurrentInputs] = useState({ course: "", speed: "", set: "", drift: "" });
-  const [currentResults, setCurrentResults] = useState<any>(null);
+  const [currentResults, setCurrentResults] = useState<ReturnType<typeof solveCurrentTriangle> | null>(null);
 
   const [compassInputs, setCompassInputs] = useState({ compass: "", variation: "", deviation: "" });
-  const [compassResults, setCompassResults] = useState<any>(null);
+  const [compassResults, setCompassResults] = useState<CompassResults | null>(null);
 
   const [cpaInputs, setCpaInputs] = useState({ bearing: "", distance: "", targetCourse: "", targetSpeed: "", ownCourse: "", ownSpeed: "" });
-  const [cpaResults, setCpaResults] = useState<any>(null);
+  const [cpaResults, setCpaResults] = useState<ReturnType<typeof computeArpaCpaTcpa> | null>(null);
 
   const [sightInputs, setSightInputs] = useState({ 
     lat: emptyDMS(true), 
     dec: emptyDMS(true), 
     lha: "" 
   });
-  const [sightResults, setSightResults] = useState<any>(null);
+  const [sightResults, setSightResults] = useState<ReturnType<typeof calculateSightReduction> | null>(null);
 
   const [astroInputs, setAstroInputs] = useState({
     apLat: emptyDMS(true),
@@ -269,18 +324,18 @@ export default function NavigationCalculationPage() {
     lhaStep: "1",
     almanacDateUtc: "",
   });
-  const [astroResults, setAstroResults] = useState<any>(null);
+  const [astroResults, setAstroResults] = useState<AstroResults | null>(null);
 
   const [bearingInputs, setBearingInputs] = useState({ angle: "", run: "", type: "doubling" as "doubling" | "four" | "seven" });
-  const [bearingResults, setBearingResults] = useState<any>(null);
+  const [bearingResults, setBearingResults] = useState<ReturnType<typeof calculateDoublingAngle> | null>(null);
 
   const [distanceInputs, setDistanceInputs] = useState({ height: "", type: "dip" as "dip" | "radar" | "light", lightHeight: "" });
-  const [distanceResults, setDistanceResults] = useState<any>(null);
+  const [distanceResults, setDistanceResults] = useState<ReturnType<typeof calculateDistance> | null>(null);
 
   const [tideInputs, setTideInputs] = useState({ hour: "", range: "" });
   const [tideTableInputs, setTideTableInputs] = useState({ lowTide: "", highTide: "", lowTideTime: "06:00" });
   const [tideTable, setTideTable] = useState<Array<{ time: string; height: number; change: number; status: string }>>([]);
-  const [tideResults, setTideResults] = useState<any>(null);
+  const [tideResults, setTideResults] = useState<ReturnType<typeof calculateTide> | null>(null);
 
   const [tideForecastQuery, setTideForecastQuery] = useState("");
   const [tideForecastSuggestions, setTideForecastSuggestions] = useState<TideForecastSuggestion[]>([]);
@@ -301,7 +356,7 @@ export default function NavigationCalculationPage() {
     hwHeightM: "",
     queryTimeUtc: "",
   });
-  const [tideHotResults, setTideHotResults] = useState<any>(null);
+  const [tideHotResults, setTideHotResults] = useState<ReturnType<typeof calculateHeightOfTideAtTime> | null>(null);
 
   const [ukcInputs, setUkcInputs] = useState({
     chartedDepthM: "",
@@ -311,7 +366,7 @@ export default function NavigationCalculationPage() {
     blockCoeff: "0.70",
     environment: "open" as "open" | "confined",
   });
-  const [ukcResults, setUkcResults] = useState<any>(null);
+  const [ukcResults, setUkcResults] = useState<UkcWithSquat | null>(null);
 
   const [tidalStreamInputs, setTidalStreamInputs] = useState({
     stage: "flood" as "flood" | "ebb",
@@ -324,7 +379,7 @@ export default function NavigationCalculationPage() {
     floodSetDeg: "",
     ebbSetDeg: "",
   });
-  const [tidalStreamResults, setTidalStreamResults] = useState<any>(null);
+  const [tidalStreamResults, setTidalStreamResults] = useState<ReturnType<typeof calculateTidalStream> | null>(null);
 
   const [safetyInputs, setSafetyInputs] = useState({
     chartedDepthM: "",
@@ -335,7 +390,7 @@ export default function NavigationCalculationPage() {
     environment: "open" as "open" | "confined",
     safetyMarginM: "",
   });
-  const [safetyResults, setSafetyResults] = useState<any>(null);
+  const [safetyResults, setSafetyResults] = useState<UkcWithSquat | null>(null);
 
   const [fixInputs, setFixInputs] = useState({
     obj1Lat: emptyDMS(true),
@@ -373,7 +428,7 @@ export default function NavigationCalculationPage() {
     runCourse: "",
     runDistance: "",
   });
-  const [fixResults, setFixResults] = useState<any>(null);
+  const [fixResults, setFixResults] = useState<FixResults | null>(null);
 
   const [radarInputs2, setRadarInputs2] = useState({
     bearing1: "",
@@ -385,12 +440,12 @@ export default function NavigationCalculationPage() {
     ownCourse: "",
     ownSpeed: "",
   });
-  const [radarResults2, setRadarResults2] = useState<any>(null);
+  const [radarResults2, setRadarResults2] = useState<ReturnType<typeof computeTargetMotionFromTwoRadarPlots> | null>(null);
 
   const [colregInputs, setColregInputs] = useState({
     relativeBearing: "",
   });
-  const [colregResults, setColregResults] = useState<any>(null);
+  const [colregResults, setColregResults] = useState<ReturnType<typeof assessColregSituation> | null>(null);
 
   const [passageInputs, setPassageInputs] = useState({
     etdUtc: "",
@@ -403,7 +458,7 @@ export default function NavigationCalculationPage() {
     leg4Dist: "",
     leg4Sog: "",
   });
-  const [passageResults, setPassageResults] = useState<any>(null);
+  const [passageResults, setPassageResults] = useState<PassageResults | null>(null);
 
   const [ecdisInputs, setEcdisInputs] = useState({
     startLat: emptyDMS(true),
@@ -415,23 +470,23 @@ export default function NavigationCalculationPage() {
     sogKn: "",
     lookAheadMin: "",
   });
-  const [ecdisResults, setEcdisResults] = useState<any>(null);
+  const [ecdisResults, setEcdisResults] = useState<EcdisResults | null>(null);
 
   const [turningInputs, setTurningInputs] = useState({ length: "", courseChange: "", speed: "" });
-  const [turningResults, setTurningResults] = useState<any>(null);
+  const [turningResults, setTurningResults] = useState<ReturnType<typeof calculateTurning> | null>(null);
 
   const [weatherInputs, setWeatherInputs] = useState({ beaufort: "", windSpeed: "", windArea: "", shipSpeed: "" });
-  const [weatherResults, setWeatherResults] = useState<any>(null);
+  const [weatherResults, setWeatherResults] = useState<ReturnType<typeof calculateWeather> | null>(null);
 
   const [celestialInputs, setCelestialInputs] = useState({ 
     lat: emptyDMS(true), 
     dec: emptyDMS(true), 
     type: "meridian" as "meridian" | "amplitude" | "sunrise" 
   });
-  const [celestialResults, setCelestialResults] = useState<any>(null);
+  const [celestialResults, setCelestialResults] = useState<ReturnType<typeof calculateCelestial> | null>(null);
 
   const [emergencyInputs, setEmergencyInputs] = useState({ type: "square" as "square" | "sector", trackSpacing: "", radius: "", distance: "", rescueSpeed: "", driftSpeed: "" });
-  const [emergencyResults, setEmergencyResults] = useState<any>(null);
+  const [emergencyResults, setEmergencyResults] = useState<ReturnType<typeof calculateEmergency> | null>(null);
 
   // Load saved values from localStorage on mount
   useEffect(() => {
@@ -535,7 +590,7 @@ export default function NavigationCalculationPage() {
   // Save inputs to localStorage whenever they change
   useEffect(() => {
     try {
-      const dataToSave: any = {};
+      const dataToSave: Record<string, unknown> = {};
       
       switch (id) {
         case "gc":
@@ -686,7 +741,7 @@ export default function NavigationCalculationPage() {
           const lengthCm = chartInputs.lengthCm ? parseFloat(chartInputs.lengthCm) : undefined;
           const scale = chartInputs.scale ? parseFloat(chartInputs.scale) : undefined;
           const distanceNm = chartInputs.distanceNm ? parseFloat(chartInputs.distanceNm) : undefined;
-          const out: any = {};
+          const out: ChartResults = {};
           if (lengthCm !== undefined && scale !== undefined) {
             out.nmFromCm = chartCmToNm(lengthCm, scale);
           }
@@ -744,7 +799,7 @@ export default function NavigationCalculationPage() {
           }
 
           // Remaining
-          let remaining: any = null;
+          let remaining: ReturnType<typeof calculateRemaining> | null = null;
           const plannedTotal = toNum(basicInputs.plannedTotalNm);
           const dmg = toNum(basicInputs.dmgNm);
           const sog = toNum(basicInputs.sogKn);
@@ -753,7 +808,7 @@ export default function NavigationCalculationPage() {
           }
 
           // Time conversions (UTC -> Zone Time, UTC -> LMT, longitude <-> minutes)
-          let timeConv: any = null;
+          let timeConv: TimeConversionResults | null = null;
           try {
             if (basicInputs.timeUtc.trim() !== "") {
               const tUtc = new Date(`${basicInputs.timeUtc}Z`);
@@ -932,7 +987,7 @@ export default function NavigationCalculationPage() {
           break;
         }
         case "fix": {
-          const out: any = {};
+          const out: FixResults = {};
           const hasNonZero = (d: DMSCoordinate) => d.degrees !== 0 || d.minutes !== 0 || d.seconds !== 0;
 
           try {
@@ -1556,7 +1611,7 @@ export default function NavigationCalculationPage() {
                 </div>
                 <div>
                   <Label>From</Label>
-                  <Select value={basicInputs.convertFrom} onValueChange={(v) => setBasicInputs({ ...basicInputs, convertFrom: v as any })}>
+                  <Select value={basicInputs.convertFrom} onValueChange={(v) => setBasicInputs({ ...basicInputs, convertFrom: v as typeof basicInputs.convertFrom })}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="kn">kn</SelectItem>
@@ -1567,7 +1622,7 @@ export default function NavigationCalculationPage() {
                 </div>
                 <div>
                   <Label>To</Label>
-                  <Select value={basicInputs.convertTo} onValueChange={(v) => setBasicInputs({ ...basicInputs, convertTo: v as any })}>
+                  <Select value={basicInputs.convertTo} onValueChange={(v) => setBasicInputs({ ...basicInputs, convertTo: v as typeof basicInputs.convertTo })}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="kn">kn</SelectItem>
@@ -1868,12 +1923,12 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
-      case "bearings":
+      case "bearings": {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
               <Label htmlFor="bearing-type">Hesaplama Türü</Label>
-              <Select value={bearingInputs.type} onValueChange={(value) => setBearingInputs({ ...bearingInputs, type: value as any })}>
+              <Select value={bearingInputs.type} onValueChange={(value) => setBearingInputs({ ...bearingInputs, type: value as typeof bearingInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Seçiniz" />
                 </SelectTrigger>
@@ -1896,7 +1951,8 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
-      case "fix":
+      }
+      case "fix": {
         return (
           <div className="space-y-6">
             <div className="rounded border p-3 bg-muted/30 space-y-3">
@@ -2020,12 +2076,13 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
-      case "distance":
+      }
+      case "distance": {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
               <Label htmlFor="distance-type">Hesaplama Türü</Label>
-              <Select value={distanceInputs.type} onValueChange={(value) => setDistanceInputs({ ...distanceInputs, type: value as any })}>
+              <Select value={distanceInputs.type} onValueChange={(value) => setDistanceInputs({ ...distanceInputs, type: value as typeof distanceInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Seçiniz" />
                 </SelectTrigger>
@@ -2048,7 +2105,8 @@ export default function NavigationCalculationPage() {
             )}
           </div>
         );
-      case "tides":
+      }
+      case "tides": {
         return (
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -2256,7 +2314,7 @@ export default function NavigationCalculationPage() {
                 </div>
                 <div>
                   <Label htmlFor="ukc-env">Environment</Label>
-                  <Select value={ukcInputs.environment} onValueChange={(v) => setUkcInputs({ ...ukcInputs, environment: v as any })}>
+                  <Select value={ukcInputs.environment} onValueChange={(v) => setUkcInputs({ ...ukcInputs, environment: v as typeof ukcInputs.environment })}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="open">Open</SelectItem>
@@ -2277,7 +2335,7 @@ export default function NavigationCalculationPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="ts-stage">Stage</Label>
-                  <Select value={tidalStreamInputs.stage} onValueChange={(v) => setTidalStreamInputs({ ...tidalStreamInputs, stage: v as any })}>
+                  <Select value={tidalStreamInputs.stage} onValueChange={(v) => setTidalStreamInputs({ ...tidalStreamInputs, stage: v as typeof tidalStreamInputs.stage })}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="flood">Flood</SelectItem>
@@ -2350,7 +2408,8 @@ export default function NavigationCalculationPage() {
             )}
           </div>
         );
-      case "safety":
+      }
+      case "safety": {
         return (
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -2376,7 +2435,7 @@ export default function NavigationCalculationPage() {
               </div>
               <div>
                 <Label htmlFor="safe-env">Environment</Label>
-                <Select value={safetyInputs.environment} onValueChange={(v) => setSafetyInputs({ ...safetyInputs, environment: v as any })}>
+                <Select value={safetyInputs.environment} onValueChange={(v) => setSafetyInputs({ ...safetyInputs, environment: v as typeof safetyInputs.environment })}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="open">Open</SelectItem>
@@ -2391,6 +2450,7 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
+      }
       case "passage":
         return (
           <div className="space-y-4">
@@ -2461,7 +2521,7 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
-      case "turning":
+      case "turning": {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
@@ -2478,7 +2538,8 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
-      case "weather":
+      }
+      case "weather": {
         return (
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -2499,12 +2560,13 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
-      case "celestial":
+      }
+      case "celestial": {
         return (
           <div className="space-y-4">
             <div>
               <Label htmlFor="celestial-type" data-translatable>Hesaplama Türü</Label>
-              <Select value={celestialInputs.type} onValueChange={(value) => setCelestialInputs({ ...celestialInputs, type: value as any })}>
+              <Select value={celestialInputs.type} onValueChange={(value) => setCelestialInputs({ ...celestialInputs, type: value as typeof celestialInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Seçiniz" />
                 </SelectTrigger>
@@ -2531,12 +2593,13 @@ export default function NavigationCalculationPage() {
             />
           </div>
         );
-      case "emergency":
+      }
+      case "emergency": {
         return (
           <div className="grid grid-cols-1 gap-4">
             <div>
               <Label htmlFor="emergency-type">Arama Türü</Label>
-              <Select value={emergencyInputs.type} onValueChange={(value) => setEmergencyInputs({ ...emergencyInputs, type: value as any })}>
+              <Select value={emergencyInputs.type} onValueChange={(value) => setEmergencyInputs({ ...emergencyInputs, type: value as typeof emergencyInputs.type })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Seçiniz" />
                 </SelectTrigger>
@@ -2572,6 +2635,7 @@ export default function NavigationCalculationPage() {
             </div>
           </div>
         );
+      }
     }
   };
 
@@ -2626,7 +2690,7 @@ export default function NavigationCalculationPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {gcResults.waypoints.slice(0, 12).map((p: any, i: number) => (
+                        {gcResults.waypoints.slice(0, 12).map((p, i) => (
                           <tr key={i} className="border-b">
                             <td className="p-2 font-mono">{i + 1}</td>
                             <td className="p-2 font-mono">{formatDecimalAsDMS(p.latDeg, true, true)}</td>
@@ -2981,7 +3045,7 @@ export default function NavigationCalculationPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {astroResults.almanacRows.slice(0, 24).map((r: any) => (
+                      {astroResults.almanacRows.slice(0, 24).map((r) => (
                         <tr key={r.utcHour} className="border-b">
                           <td className="p-2 font-mono">{String(r.utcHour).padStart(2, "0")}:00</td>
                           <td className="p-2 font-mono">{r.ghaSunDeg.toFixed(2)}°</td>
@@ -3005,7 +3069,7 @@ export default function NavigationCalculationPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {astroResults.table.slice(0, 60).map((row: any, i: number) => (
+                      {astroResults.table.slice(0, 60).map((row, i) => (
                         <tr key={i} className="border-b">
                           <td className="p-2 font-mono">{row.lhaDeg.toFixed(0)}°</td>
                           <td className="p-2 font-mono">{row.hcDeg.toFixed(2)}°</td>
@@ -3020,7 +3084,7 @@ export default function NavigationCalculationPage() {
             </div>
           )
         );
-      case "bearings":
+      case "bearings": {
         if (!bearingResults) return null;
         const runNm = parseFloat(bearingInputs.run);
         const angleDeg = parseFloat(bearingInputs.angle || "0");
@@ -3043,7 +3107,8 @@ export default function NavigationCalculationPage() {
             <SolutionSteps steps={bearingSteps} />
           </div>
         );
-      case "fix":
+      }
+      case "fix": {
         if (!fixResults) return null;
         const fixSteps: string[] = [];
         if (fixResults.fix) {
@@ -3069,7 +3134,8 @@ export default function NavigationCalculationPage() {
             {fixSteps.length > 0 && <SolutionSteps steps={fixSteps} />}
           </div>
         );
-      case "distance":
+      }
+      case "distance": {
         if (!distanceResults) return null;
         const heightM = parseFloat(distanceInputs.height);
         const lightHeightM = parseFloat(distanceInputs.lightHeight || "0");
@@ -3089,7 +3155,8 @@ export default function NavigationCalculationPage() {
             {distanceSteps.length > 0 && <SolutionSteps steps={distanceSteps} />}
           </div>
         );
-      case "tides":
+      }
+      case "tides": {
         if (!(tideResults || tideHotResults || ukcResults || tidalStreamResults)) return null;
         const tideSteps: string[] = [];
         if (tideResults) {
@@ -3114,7 +3181,8 @@ export default function NavigationCalculationPage() {
             {tideSteps.length > 0 && <SolutionSteps steps={tideSteps} />}
           </div>
         );
-      case "safety":
+      }
+      case "safety": {
         if (!safetyResults) return null;
         const safetySpeed = parseFloat(safetyInputs.speedKn);
         const safetyCb = parseFloat(safetyInputs.blockCoeff);
@@ -3131,6 +3199,7 @@ export default function NavigationCalculationPage() {
             />
           </div>
         );
+      }
       case "passage":
         return (
           passageResults && (
@@ -3150,7 +3219,7 @@ export default function NavigationCalculationPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {passageResults.rows.map((r: any) => (
+                    {passageResults.rows.map((r) => (
                       <tr key={r.name} className="border-b">
                         <td className="p-2">{r.name}</td>
                         <td className="p-2 font-mono">{r.distanceNm.toFixed(2)}</td>
@@ -3189,7 +3258,7 @@ export default function NavigationCalculationPage() {
             />
           </div>
         );
-      case "turning":
+      case "turning": {
         if (!turningResults) return null;
         const shipLength = parseFloat(turningInputs.length);
         const courseChange = parseFloat(turningInputs.courseChange);
@@ -3213,7 +3282,8 @@ export default function NavigationCalculationPage() {
             />
           </div>
         );
-      case "weather":
+      }
+      case "weather": {
         if (!weatherResults) return null;
         const weatherSteps: string[] = [];
         if (weatherInputs.beaufort) {
@@ -3241,7 +3311,8 @@ export default function NavigationCalculationPage() {
             {weatherSteps.length > 0 && <SolutionSteps steps={weatherSteps} />}
           </div>
         );
-      case "celestial":
+      }
+      case "celestial": {
         if (!celestialResults) return null;
         const latDeg = dmsToDecimal(celestialInputs.lat);
         const decDeg = dmsToDecimal(celestialInputs.dec);
@@ -3283,7 +3354,8 @@ export default function NavigationCalculationPage() {
             {celestialSteps.length > 0 && <SolutionSteps steps={celestialSteps} />}
           </div>
         );
-      case "emergency":
+      }
+      case "emergency": {
         if (!emergencyResults) return null;
         const emergencySteps: string[] = [];
         if (emergencyInputs.type === "square" && emergencyResults.legDistanceNm !== undefined) {
@@ -3301,6 +3373,7 @@ export default function NavigationCalculationPage() {
             {emergencySteps.length > 0 && <SolutionSteps steps={emergencySteps} />}
           </div>
         );
+      }
     }
   };
 

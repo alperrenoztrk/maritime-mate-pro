@@ -31,7 +31,7 @@ export function CalculationGrid({ items, className }: CalculationGridProps) {
   );
 }
 
-export interface CalculationMenuCardProps extends CalculationGridItem {}
+export type CalculationMenuCardProps = CalculationGridItem;
 
 export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled }: CalculationMenuCardProps) {
   const formulaMeta = id ? calculationFormulas[id] : undefined;

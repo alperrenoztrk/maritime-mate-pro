@@ -98,8 +98,8 @@ export default function SunriseTimes() {
       }
 
       setDays(list);
-    } catch (e: any) {
-      setError(e?.message || "Bilinmeyen hata");
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Bilinmeyen hata");
     } finally {
       setLoading(false);
     }

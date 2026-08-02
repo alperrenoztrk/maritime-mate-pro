@@ -71,8 +71,8 @@ export function useHourlyWeather() {
       };
       
       setData(hourlyData);
-    } catch (e: any) {
-      const message = e?.message || "Bilinmeyen hata";
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Bilinmeyen hata";
       setError(message);
     } finally {
       setLoading(false);

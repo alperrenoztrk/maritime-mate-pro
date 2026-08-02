@@ -47,13 +47,17 @@ import { stripMarkdown } from "@/utils/cleanText";
    useEffect(()=>{
      const saved = localStorage.getItem('stabilityAssistantChat');
      if (saved) {
-       try { setMessages(JSON.parse(saved)); } catch {}
+       try { setMessages(JSON.parse(saved)); } catch {
+         // Corrupt or legacy local data is ignored; the assistant starts fresh.
+       }
      } else {
        setMessages([{ role: 'assistant', content: 'Bir şeye mi ihtiyacınız var? Örn: "GM hesabı yapmak istiyorum" veya hızlı butonları kullanın.' }]);
      }
    },[]);
    useEffect(()=>{
-     try { localStorage.setItem('stabilityAssistantChat', JSON.stringify(messages)); } catch {}
+     try { localStorage.setItem('stabilityAssistantChat', JSON.stringify(messages)); } catch {
+       // Storage can be unavailable in privacy mode; chat remains usable in memory.
+     }
    },[messages]);
 
    const appendAssistant = (text: string) => setMessages(prev=> [...prev, { role: 'assistant', content: text }]);

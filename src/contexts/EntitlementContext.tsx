@@ -1,5 +1,5 @@
-import { createContext, useContext, useCallback, useEffect, useMemo, useState, ReactNode } from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useAuth } from "@/hooks/useAuthContext";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import { OFFLINE_GRACE_DAYS } from "@/config/products";
@@ -9,6 +9,7 @@ import {
   type Tier,
 } from "@/services/billing";
 import type { ProPlan } from "@/config/products";
+import { EntitlementContext } from "./entitlement-context";
 
 /**
  * Paket hakkı (entitlement) bağlamı.
@@ -88,23 +89,6 @@ function tierFromCache(cache: EntitlementCache, now: Date = new Date()): Tier {
   if (cache.tier === "pro" && ageDays <= OFFLINE_GRACE_DAYS) return "pro";
   return "free";
 }
-
-interface EntitlementContextValue {
-  /** Etkin paket: free / pro (abonelik) / lifetime (ömür boyu). */
-  tier: Tier;
-  /** Pro içeriğe erişim var mı? (abonelik VEYA ömür boyu) */
-  hasProAccess: boolean;
-  loading: boolean;
-  /** true ise sunucuya ulaşılamadı, karar çevrimdışı önbellekten verildi. */
-  fromCache: boolean;
-  /** Son başarılı sunucu eşitlemesi (epoch ms); hiç eşitlenmediyse null. */
-  lastSyncedAt: number | null;
-  refresh: () => Promise<void>;
-  purchase: (plan: ProPlan) => Promise<Tier>;
-  restore: () => Promise<Tier>;
-}
-
-const EntitlementContext = createContext<EntitlementContextValue | undefined>(undefined);
 
 export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
@@ -193,10 +177,4 @@ export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </EntitlementContext.Provider>
   );
-};
-
-export const useEntitlement = (): EntitlementContextValue => {
-  const ctx = useContext(EntitlementContext);
-  if (!ctx) throw new Error("useEntitlement must be used within EntitlementProvider");
-  return ctx;
 };

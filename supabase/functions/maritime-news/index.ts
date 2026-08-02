@@ -41,6 +41,13 @@ type NewsItem = {
   imageUrl?: string;
 };
 
+type XmlRecord = Record<string, unknown>;
+
+interface ParsedSyndicationFeed {
+  rss?: { channel?: XmlRecord };
+  feed?: XmlRecord;
+}
+
 const ENGLISH_FEEDS: FeedSource[] = [
   { id: "gcaptain", name: "gCaptain", url: "https://gcaptain.com/feed/" },
   { id: "marinelink", name: "MarineLink", url: "https://www.marinelink.com/rss" },
@@ -308,22 +315,23 @@ function parseRssOrAtom(xml: string, fallbackSourceName: string): NewsItem[] {
     removeNSPrefix: true,
   });
 
-  const parsed = parser.parse(xml) as any;
+  const parsed = parser.parse(xml) as ParsedSyndicationFeed;
 
   // RSS 2.0
   const rssChannel = parsed?.rss?.channel;
   if (rssChannel) {
     const channelSourceName = (rssChannel?.title && stripHtml(String(rssChannel.title))) || fallbackSourceName;
     const itemsRaw = rssChannel?.item;
-    const items = Array.isArray(itemsRaw) ? itemsRaw : itemsRaw ? [itemsRaw] : [];
+    const items = (Array.isArray(itemsRaw) ? itemsRaw : itemsRaw ? [itemsRaw] : [])
+      .filter((item): item is XmlRecord => Boolean(item) && typeof item === "object");
     return items
-      .map((it: any) => {
-        const sourceName = extractSourceName(it?.source, channelSourceName);
-        const title = stripPublisherSuffix(stripHtml(String(it?.title ?? "")), sourceName).slice(0, 500);
-        const link = normalizeLink(it?.link);
-        const summary = it?.description ? stripHtml(String(it.description)).slice(0, 800) : undefined;
-        const publishedAt = toIsoDate(it?.pubDate ?? it?.published ?? it?.updated);
-        const imageUrl = findImageUrl(it ?? {});
+      .map((it) => {
+        const sourceName = extractSourceName(it.source, channelSourceName);
+        const title = stripPublisherSuffix(stripHtml(String(it.title ?? "")), sourceName).slice(0, 500);
+        const link = normalizeLink(it.link);
+        const summary = it.description ? stripHtml(String(it.description)).slice(0, 800) : undefined;
+        const publishedAt = toIsoDate(it.pubDate ?? it.published ?? it.updated);
+        const imageUrl = findImageUrl(it);
         if (!title || !link) return null;
         return { title, link, summary, publishedAt, imageUrl, source: sourceName } satisfies NewsItem;
       })
@@ -335,20 +343,21 @@ function parseRssOrAtom(xml: string, fallbackSourceName: string): NewsItem[] {
   if (atomFeed) {
     const feedSourceName = (atomFeed?.title && stripHtml(String(atomFeed.title))) || fallbackSourceName;
     const entriesRaw = atomFeed?.entry;
-    const entries = Array.isArray(entriesRaw) ? entriesRaw : entriesRaw ? [entriesRaw] : [];
+    const entries = (Array.isArray(entriesRaw) ? entriesRaw : entriesRaw ? [entriesRaw] : [])
+      .filter((entry): entry is XmlRecord => Boolean(entry) && typeof entry === "object");
 
     return entries
-      .map((e: any) => {
-        const sourceName = extractSourceName(e?.source, feedSourceName);
-        const title = stripPublisherSuffix(stripHtml(String(e?.title ?? "")), sourceName).slice(0, 500);
-        const link = normalizeLink(e?.link);
-        const summary = e?.summary
-          ? stripHtml(String(e.summary)).slice(0, 800)
-          : e?.content
-            ? stripHtml(String(e.content)).slice(0, 800)
+      .map((entry) => {
+        const sourceName = extractSourceName(entry.source, feedSourceName);
+        const title = stripPublisherSuffix(stripHtml(String(entry.title ?? "")), sourceName).slice(0, 500);
+        const link = normalizeLink(entry.link);
+        const summary = entry.summary
+          ? stripHtml(String(entry.summary)).slice(0, 800)
+          : entry.content
+            ? stripHtml(String(entry.content)).slice(0, 800)
             : undefined;
-        const publishedAt = toIsoDate(e?.published ?? e?.updated);
-        const imageUrl = findImageUrl(e ?? {});
+        const publishedAt = toIsoDate(entry.published ?? entry.updated);
+        const imageUrl = findImageUrl(entry);
         if (!title || !link) return null;
         return { title, link, summary, publishedAt, imageUrl, source: sourceName } satisfies NewsItem;
       })

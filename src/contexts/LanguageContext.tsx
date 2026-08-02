@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useRef, useCallback } from 'react';
+import React, { useState, useEffect, ReactNode, useRef, useCallback } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import {
   getMaritimeTranslationOverride,
@@ -28,6 +28,12 @@ import {
   markHarvestedFor,
 } from '@/utils/routeHarvester';
 import { HARVEST_VERSION } from '@/utils/routeManifest';
+import {
+  LanguageContext,
+  type LanguageChangePhase,
+  type LanguageContextValue,
+  type SupportedLanguage,
+} from './language-context';
 
 // True when this window is the hidden harvester iframe. In that case the
 // LanguageProvider must stay in source language and skip all translation work
@@ -37,28 +43,6 @@ const IS_HARVEST_FRAME =
   window.self !== window.top &&
   /[?&]_mtHarvest=1\b/.test(window.location.search);
 
-export type LanguageChangePhase = 'idle' | 'harvest' | 'translate';
-
-interface SupportedLanguage {
-  language: string;
-  name: string;
-  displayName: string;
-}
-
-interface LanguageContextType {
-  currentLanguage: string;
-  supportedLanguages: SupportedLanguage[];
-  isLoading: boolean;
-  changeLanguage: (languageCode: string) => void;
-  getLanguageName: (code: string) => string;
-  isRTL: boolean;
-  resetLanguagePreferences: () => void;
-  isChangingLanguage: boolean;
-  changeProgress: number;
-  changePhase: LanguageChangePhase;
-}
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 const DEFAULT_LANGUAGE = 'en';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
@@ -572,7 +556,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
 
   // ── Public API ─────────────────────────────────────────────────────────────
-  const changeLanguage = useCallback(async (languageCode: string) => {
+  const changeLanguage = async (languageCode: string) => {
     if (languageCode === currentLanguageRef.current) return;
     if (!SUPPORTED_LANGUAGES.find((lang) => lang.language === languageCode)) return;
 
@@ -602,7 +586,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         description: getStaticTranslation(descTr, languageCode) ?? descTr,
       });
     }, 300);
-  }, [toast]);
+  };
 
   const getLanguageNameLocal = (code: string): string =>
     SUPPORTED_LANGUAGES.find((lang) => lang.language === code)?.displayName || code;
@@ -750,7 +734,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     };
   }, []);
 
-  const contextValue: LanguageContextType = {
+  const contextValue: LanguageContextValue = {
     currentLanguage,
     supportedLanguages: SUPPORTED_LANGUAGES,
     isLoading,
@@ -768,17 +752,4 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       {children}
     </LanguageContext.Provider>
   );
-};
-
-export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-};
-
-// Backwards-compatible no-op utility
-export const getTranslation = (key: string, defaultText: string = '', _language: string = DEFAULT_LANGUAGE) => {
-  return defaultText;
 };
