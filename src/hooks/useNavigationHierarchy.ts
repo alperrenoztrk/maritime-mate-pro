@@ -2,6 +2,7 @@ import { useEffect, useCallback, useRef, useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
+import { isArticleOpen } from './useArticleBackGuard';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -244,6 +245,8 @@ const SENTINEL_KEY = '__hierarchy_back__';
  *    `backButton` listener — that would race with this one.
  *  - Top-level pages → exit-confirmation dialog instead of leaving
  *    the app silently.
+ *  - An open article (see `useArticleBackGuard`) makes the press a no-op:
+ *    the back button never closes a text the user is reading.
  */
 export const useNavigationHierarchy = () => {
   const navigate = useNavigate();
@@ -271,6 +274,14 @@ export const useNavigationHierarchy = () => {
     // Defensive: tell Capacitor we own this event. No-op in Cap 7 where
     // listener presence already suppresses default, but harmless.
     try { event?.preventDefault?.(); } catch { /* ignore */ }
+
+    // HARD RULE: the back button MUST NEVER close a piece of writing. While an
+    // article is open (full-screen topic text, news reader, …) the press is
+    // swallowed entirely — no navigation, and the article is not dismissed.
+    // The reader closes it with the article's own close control.
+    if (isArticleOpen()) {
+      return;
+    }
 
     const now = Date.now();
     if (now - lastBackAtRef.current < BACK_COOLDOWN_MS) {

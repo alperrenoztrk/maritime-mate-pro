@@ -49,6 +49,7 @@ import photoSteeringGear from "@/assets/seamanship/steering-gear.jpg";
 import photoDeckCrane from "@/assets/seamanship/deck-crane.jpg";
 import photoHatchCovers from "@/assets/seamanship/hatch-covers.jpg";
 import photoBridgeWatch from "@/assets/seamanship/bridge-watch.jpg";
+import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
 interface SeamanshipSubTopic {
   id: string;
@@ -3208,6 +3209,10 @@ export default function SeamanshipTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+
+  // Back tuşu açık bir yazıyı asla kapatmaz: konu anlatımı ekrandayken
+  // geri tuşu yutulur, yazı ancak kendi kapatma düğmesiyle kapanır.
+  useArticleBackGuard(Boolean(currentContent));
 
   return (
     <div

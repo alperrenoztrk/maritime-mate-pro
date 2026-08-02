@@ -36,6 +36,7 @@ const rightingMomentDiagram = "/diagrams/dogrultma-kolu.svg";
 const trimDiagram = "/diagrams/stability/trim.svg";
 const damageStabilityDiagram = "/diagrams/stability/yara-stabilitesi.svg";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
 // =====================================
 // YENİ 14 BAŞLIKLI STABİLİTE MÜFREDATİ
@@ -3293,6 +3294,10 @@ export default function StabilityTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+
+  // Back tuşu açık bir yazıyı asla kapatmaz: konu anlatımı ekrandayken
+  // geri tuşu yutulur, yazı ancak kendi kapatma düğmesiyle kapanır.
+  useArticleBackGuard(Boolean(currentContent));
 
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",

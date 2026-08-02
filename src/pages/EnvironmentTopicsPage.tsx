@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
 interface EnvironmentSubTopic {
   id: string;
@@ -1875,6 +1876,10 @@ export default function EnvironmentTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+
+  // Back tuşu açık bir yazıyı asla kapatmaz: konu anlatımı ekrandayken
+  // geri tuşu yutulur, yazı ancak kendi kapatma düğmesiyle kapanır.
+  useArticleBackGuard(Boolean(currentContent));
 
   return (
     <div

@@ -22,6 +22,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { fluidMechanicsTopicContents } from "@/data/fluidMechanicsContent";
 import type { FluidTopicContent } from "@/data/fluidMechanicsContent";
+import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
 interface FluidSubTopic {
   id: string;
@@ -134,6 +135,10 @@ export default function FluidMechanicsTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+
+  // Back tuşu açık bir yazıyı asla kapatmaz: konu anlatımı ekrandayken
+  // geri tuşu yutulur, yazı ancak kendi kapatma düğmesiyle kapanır.
+  useArticleBackGuard(Boolean(currentContent));
 
   const highRefreshRateStyles: CSSProperties = {
     ["--frame-rate" as string]: "120",
