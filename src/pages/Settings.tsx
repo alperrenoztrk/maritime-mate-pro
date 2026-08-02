@@ -206,6 +206,13 @@ const Settings = () => {
                         Hesabınızı sildiğinizde profiliniz, sınav sonuçlarınız, istatistikleriniz, belgeleriniz ve yüklediğiniz dosyalar kalıcı olarak silinir. Bu işlem geri alınamaz.
                       </span>
                     </p>
+                    {/* Play, hesap silmenin faturalandırmayı durdurmadığının
+                        kullanıcıya açıkça söylenmesini istiyor. */}
+                    <p className="text-xs font-medium text-destructive/90">
+                      <span data-translatable>
+                        Hesap silme, Google Play aboneliğinizi iptal etmez. Ödemenin durması için aboneliği Google Play &gt; Abonelikler bölümünden ayrıca iptal etmeniz gerekir.
+                      </span>
+                    </p>
                     <div className="flex flex-wrap items-center gap-2">
                       <Button
                         variant="destructive"

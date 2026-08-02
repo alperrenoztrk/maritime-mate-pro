@@ -482,7 +482,7 @@ export default function BetaDocumentTracker() {
                             </span>
                           )}
                         </div>
-                        <h3 className="line-clamp-2 text-sm font-bold text-foreground">{document.title}</h3>
+                        <h3 className="line-clamp-2 text-sm font-bold text-foreground notranslate" translate="no" data-no-translate>{document.title}</h3>
                         <p className="mt-0.5 text-[11px] text-muted-foreground">{document.document_type}</p>
                       </div>
                       <div className="rounded-xl bg-amber-500/10 p-2 text-amber-600 dark:text-amber-300">
@@ -529,6 +529,8 @@ export default function BetaDocumentTracker() {
                         size="sm"
                         className="text-red-600 hover:bg-red-500/10 hover:text-red-700"
                         onClick={() => void handleDelete(document)}
+                        translate="no"
+                        data-no-translate
                         aria-label={`${document.title} belgesini sil`}
                       >
                         <Trash2 className="h-4 w-4" />
