@@ -22,7 +22,7 @@ export default function ShipOperationsDetail() {
 
   if (!ship) {
     return (
-      <LibraryPageShell title="Gemi tipi bulunamadı" backHref="/ship-operations" />
+      <LibraryPageShell title="Gemi tipi bulunamadı" backHref="/ship-operations"><p className="text-muted-foreground">Aradığınız gemi tipi bulunamadı.</p></LibraryPageShell>
     );
   }
 

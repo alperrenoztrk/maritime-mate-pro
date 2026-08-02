@@ -33,7 +33,7 @@ export function PortholeSky({ look }: { look: SkyLook | null }) {
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       aria-hidden="true"
-      translate="no"
+     
     >
       <defs>
         <linearGradient id="iwd-sky" x1="0" y1="0" x2="0" y2="1">

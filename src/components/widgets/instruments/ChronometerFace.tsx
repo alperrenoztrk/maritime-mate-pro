@@ -171,7 +171,7 @@ export function ChronometerFace({ hours, minutes, seconds, variant, inscription 
   );
 
   return (
-    <svg className="iw-svg" viewBox="0 0 200 200" role="img" aria-hidden="true" translate="no">
+    <svg className="iw-svg" viewBox="0 0 200 200" role="img" aria-hidden="true">
       <defs>
         <clipPath id={gmt ? "iwd-clip-gmt" : "iwd-clip-local"}>
           <circle cx={C} cy={C} r={100} />

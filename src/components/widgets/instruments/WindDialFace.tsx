@@ -142,7 +142,7 @@ export function WindDialFace({ directionDeg }: WindDialFaceProps) {
   const needle = <path d={`M ${C} 12 L ${C + 3.2} 88 L ${C - 3.2} 88 Z`} />;
 
   return (
-    <svg className="iw-svg" viewBox="0 0 200 200" role="img" aria-hidden="true" translate="no">
+    <svg className="iw-svg" viewBox="0 0 200 200" role="img" aria-hidden="true">
       <defs>
         <clipPath id="iwd-clip-wind">
           <circle cx={C} cy={C} r={100} />
