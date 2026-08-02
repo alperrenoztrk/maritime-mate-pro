@@ -3,7 +3,7 @@
  * HomeWidgetGrid tarafından bir kez render edilir; bileşenler yalnızca sınıfları kullanır.
  *
  * İş bölümü: gövdeyi FOTOĞRAF verir, okuma yüzeyini SVG çizer (bkz.
- * ChronometerFace / CompassFace / PortholeSky), CSS ise ikisini aynı ışığa
+ * ChronometerFace / WindDialFace / PortholeSky), CSS ise ikisini aynı ışığa
  * oturtur — fotoğrafı kutuya kırpar, üstüne ortak bir vinyet/parlama geçirir,
  * pirinç plakayı ve alt okuma şeridini kabartır. Konum/ölçü değerleri
  * bileşenlerden inline gelir (bkz. overlayGeometry.ts).
@@ -181,30 +181,24 @@ export function InstrumentStyles() {
         isolation: isolate;
       }
 
-      /* ── LCD: fotoğraftaki ekranın üstüne canlı fosfor ── */
+      /* ── LCD: fotoğraftaki renkli ekranın üstüne canlı sayfa ──
+         SGN-500'ün ekranı beyaz zeminli renkli bir LCD; düzen cihazınkini
+         izler: sarı başlık şeridi, kutulanmış küçük alanlar, ortada iri mevki
+         satırları. Alan adları küçük ve gri, değerler kalın siyah. */
       .iw-screen{
         position: absolute;
         z-index: 2;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 1px;
-        padding: 6px 8px;
-        border-radius: 3px;
-        background:
-          radial-gradient(120% 140% at 50% 40%, #12271a 0%, #0a170f 72%, #060e09 100%);
-        box-shadow:
-          inset 0 0 12px rgba(0,0,0,.8),
-          inset 0 0 30px rgba(125,255,160,.07),
-          0 0 0 1px rgba(0,0,0,.65),
-          0 0 12px rgba(90,255,140,.09);
-        font-family: ui-monospace, SFMono-Regular, Menlo, 'Courier New', monospace;
-        color: #7dffa0;
-        text-shadow: 0 0 4px rgba(125,255,160,.5);
-        /* Ekran fotoğrafın çerçevesi kadar dar; DMS satırı taşmasın. */
-        font-size: 9px;
-        line-height: 1.45;
+        border-radius: 2px;
         overflow: hidden;
+        background: linear-gradient(180deg, #f4f4f0 0%, #e2e4de 100%);
+        box-shadow:
+          0 0 0 1px rgba(0,0,0,.7),
+          inset 0 0 10px rgba(20,30,20,.16);
+        font-family: ui-monospace, SFMono-Regular, Menlo, 'Courier New', monospace;
+        color: #16191c;
+        line-height: 1.2;
       }
       /* Ekran camı: piksel ızgarası, tarama satırları, köşegen parlama */
       .iw-screen::after{
@@ -213,29 +207,82 @@ export function InstrumentStyles() {
         inset: 0;
         pointer-events: none;
         background:
-          linear-gradient(112deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,.03) 20%, transparent 36%),
-          repeating-linear-gradient(90deg, rgba(0,0,0,.1) 0 1px, transparent 1px 2px),
-          repeating-linear-gradient(180deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
+          linear-gradient(112deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,.08) 20%, transparent 38%),
+          repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 2px),
+          repeating-linear-gradient(180deg, rgba(0,0,0,.07) 0 1px, transparent 1px 3px);
       }
-      .iw-lcd-dim{ opacity: .6; font-size: 7.5px; }
-      .iw-lcd-row{
+
+      /* Başlık şeridi: fotoğrafta pusula bandının bulunduğu sarı kuşak. */
+      .iw-lcd-bar{
         display: flex;
         justify-content: space-between;
-        gap: 8px;
+        gap: 6px;
+        padding: 1px 4px;
+        font-size: 6.5px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        color: #3c3308;
+        background: linear-gradient(180deg, #e8ca45 0%, #cdac2c 100%);
+        border-bottom: 1px solid rgba(0,0,0,.5);
+      }
+      .iw-lcd-place{
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
         white-space: nowrap;
       }
+
+      /* Alan satırı: cihazdaki gibi üç eşit kutu, aralarında ince ayırıcı. */
+      .iw-lcd-cells{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid rgba(0,0,0,.35);
+      }
+      .iw-lcd-cells:last-child{ border-bottom: 0; border-top: 1px solid rgba(0,0,0,.35); }
+      .iw-lcd-cell{
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        padding: 0 3px 1px;
+        border-right: 1px solid rgba(0,0,0,.3);
+      }
+      .iw-lcd-cell:last-child{ border-right: 0; }
       .iw-lcd-key{
-        opacity: .55;
-        letter-spacing: .06em;
+        margin: 0 -3px 1px;
+        padding: 0 3px;
+        font-size: 5.2px;
+        letter-spacing: .1em;
+        color: #5c6167;
+        background: rgba(15,25,35,.08);
       }
-      .iw-lcd-label{ overflow: hidden; text-overflow: ellipsis; }
-      .iw-lcd-rule{
-        height: 1px;
-        margin: 2px 0;
-        background: repeating-linear-gradient(90deg, rgba(125,255,160,.4) 0 2px, transparent 2px 4px);
-        opacity: .5;
+      .iw-lcd-val{
+        font-size: 9px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      .iw-lcd-amber{ color: #ffd27d; text-shadow: 0 0 4px rgba(255,210,125,.4); }
+      .iw-lcd-small{ font-size: 7.5px; }
+      .iw-lcd-warn{ color: #a3520f; }
+
+      /* Mevki: ekranın ortasını kaplayan iki iri satır. */
+      .iw-lcd-fix{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1px;
+        padding: 1px 5px;
+        min-height: 0;
+      }
+      .iw-lcd-coord{
+        font-size: 12.8px;
+        font-weight: 700;
+        letter-spacing: -.03em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
       .iw-btn{
         display: flex;

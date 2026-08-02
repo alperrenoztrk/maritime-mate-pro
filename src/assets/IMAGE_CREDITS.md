@@ -27,8 +27,6 @@ lisanslı görseller için atıf zorunludur; kaynak sayfalara verilen bağlantı
 | `clouds/kelvin-helmholtz.jpg` | [Kelvin-Helmholtz waves.jpg](https://commons.wikimedia.org/wiki/File:Kelvin-Helmholtz_waves.jpg) | Astronautilus | CC BY 2.0 |
 | `clouds/pyrocumulus.jpg` | [Wildfire in Yellowstone National Park produces Pyrocumulus clouds1.jpg](https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg) | Brocken Inaglory | CC BY-SA 3.0 |
 | `clouds/virga.jpg` | [Virga in the early morning.jpg](https://commons.wikimedia.org/wiki/File:Virga_in_the_early_morning.jpg) | Rivervictorlauramarie | CC0 |
-| `instruments/chronometer.jpg` | [Marine-Chronometer.A.Lange&Soehne.1948.jpg](https://commons.wikimedia.org/wiki/File:Marine-Chronometer.A.Lange%26Soehne.1948.jpg) | Bautsch | CC0 |
-| `instruments/compass.jpg` | [Askania compass.JPG](https://commons.wikimedia.org/wiki/File:Askania_compass.JPG) | Blueberry009 | Public domain |
 | `instruments/porthole.jpg` | [Bamberton through the porthole - panoramio.jpg](https://commons.wikimedia.org/wiki/File:Bamberton_through_the_porthole_-_panoramio.jpg) | Kiwibirdman | CC BY 3.0 |
 | `instruments/thermometer.jpg` | [Quicksilvertermometer Osaby.JPG](https://commons.wikimedia.org/wiki/File:Quicksilvertermometer_Osaby.JPG) | Pieter Kuiper | Public domain |
 | `maritime/cargo-ship-ocean.jpg` | [Cargo ship "Fri Ocean", Medina Wharf, Cowes, Isle of Wight, England.jpg](https://commons.wikimedia.org/wiki/File:Cargo_ship_%22Fri_Ocean%22,_Medina_Wharf,_Cowes,_Isle_of_Wight,_England.jpg) | ITookSomePhotos | CC BY 4.0 |
@@ -83,3 +81,14 @@ lisanslı görseller için atıf zorunludur; kaynak sayfalara verilen bağlantı
 | `ships/roro-ship.jpg` | [2020-01-18 MIMER - IMO 9002647.jpg](https://commons.wikimedia.org/wiki/File:2020-01-18_MIMER_-_IMO_9002647.jpg) | Gordon Leggett | CC BY-SA 4.0 |
 | `ships/tanker-ship.jpg` | [Solomon Sea (oil tanker), in the Solent, England.jpg](https://commons.wikimedia.org/wiki/File:Solomon_Sea_(oil_tanker),_in_the_Solent,_England.jpg) | ITookSomePhotos | CC BY-SA 4.0 |
 | `weather/storm-clouds.jpg` | [Malapascua, Silence, Sea of heavy storm clouds over Visayan Sea, Philippines.jpg](https://commons.wikimedia.org/wiki/File:Malapascua,_Silence,_Sea_of_heavy_storm_clouds_over_Visayan_Sea,_Philippines.jpg) | Vyacheslav Argenberg | CC BY 4.0 |
+
+## Commons dışı görseller
+
+Aşağıdaki fotoğraflar Wikimedia Commons'tan değil, uygulama sahibinin arşivinden
+gelmektedir. Yayın öncesi kullanım haklarının doğrulanması gerekir.
+
+| Dosya | Konu | Kaynak |
+| --- | --- | --- |
+| `instruments/seiko-marine-clock.jpg` | Seiko köprüüstü saati | Kullanıcı arşivi |
+| `instruments/wind-indicator.jpg` | Koshin rüzgâr hız/yön paneli | Kullanıcı arşivi |
+| `instruments/gps-receiver.webp` | Samyung SGN-500 GPS/GLONASS alıcısı | Kullanıcı arşivi |

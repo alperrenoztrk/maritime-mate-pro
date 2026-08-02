@@ -43,6 +43,12 @@ export function InstrumentFrame({
     left: `${(-100 * crop.x) / crop.w}%`,
     top: `${(-100 * crop.y) / crop.h}%`,
     filter: photoFilter,
+    // Maske stüdyo fonunu keser (bkz. SEIKO_CLOCK). İki katman verildiğinde
+    // birleşimleri alınır: kasa dairesi + kulakların geçtiği bant.
+    maskImage: photo.mask,
+    WebkitMaskImage: photo.mask,
+    maskComposite: photo.mask ? "add" : undefined,
+    WebkitMaskComposite: photo.mask ? "source-over" : undefined,
   };
 
   return (

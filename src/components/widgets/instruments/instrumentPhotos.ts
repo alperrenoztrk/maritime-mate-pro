@@ -2,7 +2,7 @@
  * Ana sayfa widget'larının gövdesini oluşturan gerçek enstrüman fotoğrafları.
  *
  * Her widget bir fotoğrafın üstüne canlı veri bindirir. Fotoğraf; gövdeyi,
- * pirinç bezeli, camı ve ışığı verir. Okuma yüzeyi (kadran / LCD / cam tüp)
+ * bezeli, camı ve ışığı verir. Okuma yüzeyi (kadran / LCD / cam tüp)
  * fotoğrafın üstüne kalibre edilmiş opak bir katmanla yeniden çizilir; yoksa
  * fotoğraftaki donmuş ibreler canlı ibrelerle çakışır.
  *
@@ -12,13 +12,15 @@
  *  - `aspect`→ kırpılmış kutunun genişlik/yükseklik oranı. Küçük widget'lar
  *              1/1.14 ≈ 0.877 ile aynı satır yüksekliğini paylaşır.
  *  - Çapalar → KIRPILMIŞ kutunun 0–1 kesirleri, yani ölçekten bağımsız.
+ *  - `mask`  → dikkat: maske `<img>` kutusuna uygulanır, widget kutusuna değil.
+ *              Yüzdeleri KIRPILMAMIŞ fotoğrafın kesirleri olarak yaz.
  */
 
-import chronometerPhoto from "@/assets/instruments/chronometer.jpg";
-import compassPhoto from "@/assets/instruments/compass.jpg";
+import seikoClockPhoto from "@/assets/instruments/seiko-marine-clock.jpg";
+import windIndicatorPhoto from "@/assets/instruments/wind-indicator.jpg";
 import thermometerPhoto from "@/assets/instruments/thermometer.jpg";
 import portholePhoto from "@/assets/instruments/porthole.jpg";
-import gpsPhoto from "@/assets/ship-systems/gps.jpg";
+import gpsPhoto from "@/assets/instruments/gps-receiver.webp";
 
 /** Fotoğrafın hangi bölgesinin widget kutusuna gireceği. */
 export interface PhotoCrop {
@@ -28,7 +30,7 @@ export interface PhotoCrop {
   h: number;
 }
 
-/** Dairesel okuma yüzeyi (kronometre kadranı, pusula kartı). */
+/** Dairesel okuma yüzeyi (saat kadranı, rüzgâr göstergesi). */
 export interface DialAnchor {
   cx: number;
   cy: number;
@@ -82,9 +84,10 @@ export interface ColumnAnchor {
 }
 
 export interface PhotoCredit {
-  /** Commons dosya adı; kredi penceresinde görünen başlık. */
+  /** Kredi penceresinde görünen başlık. */
   title: string;
-  url: string;
+  /** Kaynak sayfa — yalnızca dış kaynaklı (Commons) fotoğraflarda. */
+  url?: string;
   author: string;
   license: string;
 }
@@ -94,52 +97,71 @@ export interface InstrumentPhoto {
   alt: string;
   crop: PhotoCrop;
   aspect: number;
+  /**
+   * Fotoğrafın arka planını kesen CSS maskesi. Yüzdeler `<img>` kutusuna,
+   * yani kırpılmamış fotoğrafa göredir.
+   */
+  mask?: string;
   credit: PhotoCredit;
 }
 
 /** Küçük widget'ların ortak en-boy oranı — .iw-small ile aynı satırı paylaşırlar. */
 export const SMALL_ASPECT = 1 / 1.14;
 
-export const CHRONOMETER: InstrumentPhoto = {
-  src: chronometerPhoto,
-  alt: "Pirinç çerçeveli, ahşap kutulu gemi kronometresi",
-  // 960×733 karede kadran (485, 339) merkezli, 230 px yarıçaplı. Kırpma tam
-  // olarak SMALL_ASPECT veriyor (643×733) — daire yamulmasın diye.
-  crop: { x: 0.1703, y: 0, w: 0.6698, h: 1 },
+/**
+ * Saat gövdesi: stüdyoda beyaz fonda çekilmiş bir Seiko köprüüstü saati.
+ *
+ * Beyaz fon widget ızgarasında parlak bir kutu gibi durduğu için maskeleniyor:
+ * kasa dairesi (554 px karede merkez 273,283 — yarıçap 194) artı kulakların
+ * geçtiği yatay bant açık kalıyor, gerisi şeffaf. Böylece saat, kartın koyu
+ * zemininin üstünde duruyor.
+ */
+export const SEIKO_CLOCK: InstrumentPhoto = {
+  src: seikoClockPhoto,
+  alt: "Açık mavi bezelli, krem kadranlı Seiko köprüüstü saati",
+  // Kasa (çap 388 px) kırpılmış kutunun %93'ünü kaplar.
+  crop: { x: 0.11661, y: 0.08123, w: 0.75307, h: 0.85849 },
   aspect: SMALL_ASPECT,
+  mask:
+    "radial-gradient(ellipse 35.38% 35.38% at 49.31% 51.05%, #000 0 98%, transparent 100%)," +
+    " radial-gradient(ellipse 38.63% 5.42% at 49.31% 51.05%, #000 0 94%, transparent 100%)",
   credit: {
-    title: "Marine-Chronometer.A.Lange&Soehne.1948.jpg",
-    url: "https://commons.wikimedia.org/wiki/File:Marine-Chronometer.A.Lange%26Soehne.1948.jpg",
-    author: "Bautsch",
-    license: "CC0",
+    title: "Seiko köprüüstü saati",
+    author: "Kullanıcı arşivi",
+    license: "Uygulama sahibi tarafından sağlandı",
   },
 };
 
 /**
- * Fotoğraftaki emaye kadranın kırpılmış kutuya göre ölçülen sınırları.
- * Yarıçap fotoğrafın kadranından bir tık büyük: canlı yüzey emayenin son
- * milimetresini de örtsün ki fotoğrafın basılı dakika halkası hiç görünmesin.
+ * Fotoğraftaki krem kadranın kırpılmış kutuya göre ölçülen sınırları. Kadran
+ * kasaya göre biraz sola/yukarı kaçıktır (fotoğraf tam cepheden değil); çapa
+ * bu kaçıklığı taşır. Yarıçap basılı dakika halkasının bir tık dışında:
+ * fotoğrafın taksimatı hiç sızmasın.
  */
-export const CHRONOMETER_DIAL: DialAnchor = { cx: 0.5118, cy: 0.4935, r: 0.3795 };
+export const SEIKO_CLOCK_DIAL: DialAnchor = { cx: 0.472, cy: 0.477, r: 0.392 };
 
-export const COMPASS: InstrumentPhoto = {
-  src: compassPhoto,
-  alt: "Siyah bezelli, cam kubbeli gemi pusulası",
-  // 960×720 karede kart (515, 369) merkezli, 254 px yarıçaplı. Kırpma kartı
-  // yatayda ortalar; fotoğrafta bezel kartın sağına kaçık olduğu için kutuda
-  // pusulanın kendisi ortalanır.
-  crop: { x: 0.2075, y: 0, w: 0.658, h: 1 },
+/**
+ * Rüzgâr gövdesi: köprüüstünde duvara monteli Koshin rüzgâr paneli. Panelde
+ * yan yana iki gösterge var (hız ve yön); widget bir ızgara sütunu geniş
+ * olduğu için kırpma sağdaki YÖN göstergesini alır — hız zaten alt şeritte
+ * rakamla okunur.
+ */
+export const WIND_GAUGE: InstrumentPhoto = {
+  src: windIndicatorPhoto,
+  alt: "Köprüüstü panelinde siyah bezelli rüzgâr yönü göstergesi",
+  // 572×536 karede gösterge (430.6, 250.8) merkezli. Kırpma göstergeyi kutuya
+  // ortalar, üstte panelin vidalarını da içeri alır.
+  crop: { x: 0.54956, y: 0.22071, w: 0.40646, h: 0.4944 },
   aspect: SMALL_ASPECT,
   credit: {
-    title: "Askania compass.JPG",
-    url: "https://commons.wikimedia.org/wiki/File:Askania_compass.JPG",
-    author: "Blueberry009",
-    license: "Kamu malı",
+    title: "Koshin rüzgâr hız/yön paneli",
+    author: "Kullanıcı arşivi",
+    license: "Uygulama sahibi tarafından sağlandı",
   },
 };
 
-/** Fotoğraftaki pusula kartının sınırları; canlı kart bunun tam üstüne oturur. */
-export const COMPASS_DIAL: DialAnchor = { cx: 0.5163, cy: 0.5026, r: 0.3955 };
+/** Göstergenin beyaz yüzü; canlı kadran siyah bezelin iç kenarına kadar örter. */
+export const WIND_GAUGE_DIAL: DialAnchor = { cx: 0.5, cy: 0.506, r: 0.422 };
 
 export const THERMOMETER: InstrumentPhoto = {
   src: thermometerPhoto,
@@ -191,26 +213,35 @@ export const PORTHOLE: InstrumentPhoto = {
  */
 export const PORTHOLE_GLASS: EllipseAnchor = { cx: 0.4938, cy: 0.5093, rx: 0.225, ry: 0.4 };
 
+/**
+ * Konum gövdesi: Samyung SGN-500 birleşik GPS/GLONASS alıcısı. Kırpma
+ * fotoğrafın tam enini alır; koyu fon cihazı kartın içinde çerçeveler ve
+ * yükseklik diğer geniş widget'la (lombar) aynı 1.8 oranına oturur.
+ */
 export const GPS: InstrumentPhoto = {
   src: gpsPhoto,
-  alt: "Gemi köprüüstünde duran Furuno GP-80 GPS alıcısı",
-  crop: { x: 0.127, y: 0.141, w: 0.703, h: 0.586 },
+  alt: "Samyung SGN-500 GPS/GLONASS alıcısı",
+  crop: { x: 0, y: 0.05556, w: 1, h: 0.80351 },
   aspect: 1.8,
   credit: {
-    title: "Furuno Electric GPS Navigator GP-80 at Greenpeace's Rainbow Warrior II 20110108.jpg",
-    url: "https://commons.wikimedia.org/wiki/File:Furuno_Electric_GPS_Navigator_GP-80_at_Greenpeace%27s_Rainbow_Warrior_II_20110108.jpg",
-    author: "☼ うみ 目覚めたら",
-    license: "CC BY-SA 2.0",
+    title: "Samyung SGN-500 GPS/GLONASS alıcısı",
+    author: "Kullanıcı arşivi",
+    license: "Uygulama sahibi tarafından sağlandı",
   },
 };
 
-export const GPS_SCREEN: ScreenAnchor = { x: 0.22, y: 0.21, w: 0.387, h: 0.545 };
+/**
+ * LCD'nin görüntü alanı. Fotoğraftaki ekran 2011 tarihli donmuş bir fix
+ * gösteriyor (tarih, mevki, COG/SOG); alan siyah çerçevenin içine kadar
+ * tamamen örtülür.
+ */
+export const GPS_SCREEN: ScreenAnchor = { x: 0.1725, y: 0.1795, w: 0.4595, h: 0.648 };
 
 /** Kredi penceresinin listesi — her fotoğraf burada bir kez görünür. */
 export const INSTRUMENT_CREDITS: PhotoCredit[] = [
-  CHRONOMETER.credit,
-  COMPASS.credit,
+  SEIKO_CLOCK.credit,
+  WIND_GAUGE.credit,
+  GPS.credit,
   THERMOMETER.credit,
   PORTHOLE.credit,
-  GPS.credit,
 ];
