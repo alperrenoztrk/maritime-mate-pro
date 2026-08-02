@@ -276,33 +276,56 @@ serve(async (req: Request) => {
 
     const response = await fetchWithTimeout(url, 15000);
 
-    // If the source blocks us (403/451/406/429) or fails, try Jina Reader proxy
-    if (!response.ok && [401, 403, 406, 429, 451, 503].includes(response.status)) {
-      const proxied = `https://r.jina.ai/${url}`;
-      const proxyRes = await fetchWithTimeout(proxied, 20000);
-      if (proxyRes.ok) {
-        const text = await readBodyLimited(proxyRes);
-        // Jina returns markdown-like text with "Title:" / "URL Source:" / "Markdown Content:" preamble
-        const titleMatch = text.match(/^Title:\s*(.+)$/m);
-        const jinaTitle = titleMatch?.[1]?.trim() || "";
-        const contentSplit = text.split(/Markdown Content:\s*/);
-        const content = cleanJinaMarkdown((contentSplit[1] || text).trim(), jinaTitle);
-        return new Response(
-          JSON.stringify({
-            title: jinaTitle,
-            content,
-          }),
-          { headers: { ...corsHeaders, "content-type": "application/json" } }
-        );
-      }
-    }
-
+    // If the source blocks or fails for ANY reason, fall back to reader proxies.
+    // Some sites (Cloudflare/bot walls) answer 403 to every server-side fetch,
+    // and r.jina.ai itself can be rate-limited, so several mirrors are tried.
     if (!response.ok) {
+      await response.body?.cancel().catch(() => {});
+      const stripped = url.replace(/^https?:\/\//, "");
+      const readers = [
+        `https://r.jina.ai/${url}`,
+        `https://r.jina.ai/https://${stripped}`,
+      ];
+
+      for (const proxied of readers) {
+        try {
+          const proxyRes = await fetchWithTimeout(proxied, 20000);
+          if (!proxyRes.ok) {
+            await proxyRes.body?.cancel().catch(() => {});
+            continue;
+          }
+          const text = await readBodyLimited(proxyRes);
+          // Jina returns markdown-like text with "Title:" / "URL Source:" / "Markdown Content:" preamble
+          const titleMatch = text.match(/^Title:\s*(.+)$/m);
+          const jinaTitle = titleMatch?.[1]?.trim() || "";
+          const contentSplit = text.split(/Markdown Content:\s*/);
+          const content = cleanJinaMarkdown((contentSplit[1] || text).trim(), jinaTitle);
+          if (content.length >= 50) {
+            return new Response(
+              JSON.stringify({ title: jinaTitle, content }),
+              { headers: { ...corsHeaders, "content-type": "application/json" } }
+            );
+          }
+        } catch (proxyErr) {
+          console.error("[fetch-article] reader failed", String(proxyErr));
+        }
+      }
+
+      // Nothing readable: return a soft 200 so the reader UI can show a
+      // "open in browser" state instead of crashing on a 502.
       return new Response(
-        JSON.stringify({ error: `Kaynak yanıt vermedi (${response.status}).` }),
-        { status: 502, headers: { ...corsHeaders, "content-type": "application/json" } }
+        JSON.stringify({
+          title: "",
+          content: "",
+          warning:
+            response.status === 403 || response.status === 401
+              ? "Kaynak site içeriği uygulama içinde okumayı engelliyor. Haberi tarayıcıda açabilirsiniz."
+              : `Kaynak yanıt vermedi (${response.status}). Haberi tarayıcıda açabilirsiniz.`,
+        }),
+        { headers: { ...corsHeaders, "content-type": "application/json" } }
       );
     }
+
 
     // Only article-like content types are worth parsing; this also stops the
     // endpoint being used to relay binaries.
