@@ -1,13 +1,11 @@
 import type { ShipType } from "./types";
-import image from "@/assets/ships/operation-roro.svg";
 
 export const roRo: ShipType = {
   id: "ro-ro",
   label: "Ro-Ro",
   description: "Ro-Ro gemilerinde araç yükleme, rampa ve deniz operasyonları",
   emoji: "🚢",
-  image,
-  color: "from-emerald-500/20 to-teal-500/10",
+  color: "from-emerald-500 via-teal-700 to-emerald-900",
   departments: [
     {
       id: "guverte",

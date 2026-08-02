@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
-import { ArrowLeft, ChevronRight, Ship, Wrench } from "lucide-react";
+import { ArrowLeft, Ship, Wrench } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { LibraryBookCard } from "@/components/library/LibraryInterface";
+import { LibraryBookCard, LibraryEntryCard } from "@/components/library/LibraryInterface";
 
 const LESSONS_JSONLD = {
   "@context": "https://schema.org",
@@ -79,29 +79,15 @@ export default function LessonsLibraryPage() {
             </header>
 
             <section className="mx-auto grid w-full max-w-3xl gap-4 sm:grid-cols-2">
-              {entryCards.map((entry) => {
-                const EntryIcon = entry.icon;
-                return (
-                  <button
-                    key={entry.id}
-                    type="button"
-                    onClick={() => openView(entry.id)}
-                    className="group relative min-h-44 overflow-hidden rounded-3xl border border-white/20 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${entry.accent}`} />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_45%)]" />
-                    <div className="relative flex h-full min-h-44 flex-col justify-between p-5 text-white">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-                        <EntryIcon className="h-6 w-6" />
-                      </span>
-                      <span className="flex items-end justify-between gap-3">
-                        <span className="text-lg font-bold leading-tight">{entry.title}</span>
-                        <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
+              {entryCards.map((entry) => (
+                <LibraryEntryCard
+                  key={entry.id}
+                  title={entry.title}
+                  icon={entry.icon}
+                  accent={entry.accent}
+                  onClick={() => openView(entry.id)}
+                />
+              ))}
             </section>
           </>
         ) : (

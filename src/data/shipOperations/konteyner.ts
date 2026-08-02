@@ -1,13 +1,11 @@
 import type { ShipType } from "./types";
-import image from "@/assets/ships/operation-container.svg";
 
 export const konteyner: ShipType = {
   id: "konteyner",
   label: "Konteyner",
   description: "Konteyner gemilerinde güverte ve makine departmanı operasyonları",
   emoji: "📦",
-  image,
-  color: "from-blue-500/20 to-cyan-500/10",
+  color: "from-sky-500 via-blue-700 to-indigo-900",
   departments: [
     {
       id: "guverte",

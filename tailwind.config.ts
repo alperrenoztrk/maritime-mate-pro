@@ -30,6 +30,8 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
+				// Kitap kapağı yaldız baskısı; yazı tipi index.css'te self-host edilir.
+				book: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

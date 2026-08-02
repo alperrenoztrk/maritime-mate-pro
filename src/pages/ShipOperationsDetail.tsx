@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { shipTypeMap, type DepartmentId } from "@/data/shipOperationsData";
 import { LibraryPageShell } from "@/components/library/LibraryInterface";
+import { accentGradient } from "@/components/library/libraryAccent";
 
 export default function ShipOperationsDetail() {
   const { shipType } = useParams<{ shipType: string }>();
@@ -44,16 +45,7 @@ export default function ShipOperationsDetail() {
       maxWidth="max-w-5xl"
     >
       <section className="overflow-hidden rounded-3xl border border-white/20 bg-card/75 shadow-lg backdrop-blur">
-        <div className="relative h-44 overflow-hidden sm:h-56">
-          <img src={ship.image} alt={`${ship.label} gemisi`} className="h-full w-full object-cover" />
-          <div className={`absolute inset-0 bg-gradient-to-br ${ship.color} opacity-65 mix-blend-multiply`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-          <h2 className="absolute bottom-5 left-5 right-5 text-2xl font-bold text-white">
-            {ship.label}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 gap-1 border-t border-border/40 p-1.5">
+        <div className="grid grid-cols-2 gap-1 p-1.5">
           {ship.departments.map((department) => {
             const active = department.id === activeDepartment;
             const Icon = department.id === "guverte" ? Anchor : Wrench;
@@ -91,7 +83,10 @@ export default function ShipOperationsDetail() {
                   className="flex w-full items-center gap-3 p-4 text-left transition hover:bg-muted/40"
                   aria-expanded={expanded}
                 >
-                  <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${ship.color} text-sm font-bold text-white`}>
+                  <span
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${ship.color} text-sm font-bold text-white`}
+                    style={accentGradient("145deg")}
+                  >
                     {index + 1}
                   </span>
                   <span className="min-w-0 flex-1 font-semibold leading-snug text-foreground">

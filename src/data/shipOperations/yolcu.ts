@@ -1,5 +1,4 @@
 import type { ShipType, ShipOperation } from "./types";
-import image from "@/assets/ships/operation-passenger.svg";
 
 const op = (
   title: string,
@@ -15,8 +14,7 @@ export const yolcu: ShipType = {
   label: "Yolcu",
   description: "Yolcu ve kruvaziyer gemilerinde güvenlik, servis ve teknik operasyonlar",
   emoji: "🛳️",
-  image,
-  color: "from-purple-500/20 to-violet-500/10",
+  color: "from-violet-500 via-purple-700 to-purple-900",
   departments: [
     {
       id: "guverte",

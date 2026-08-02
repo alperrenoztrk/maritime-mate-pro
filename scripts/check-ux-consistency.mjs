@@ -129,21 +129,25 @@ for (const title of [
 }
 assert(!drillSource.includes('title: "Genel Talim"'), 'Invalid "Genel Talim" heading exists');
 
-const shipModules = {
-  "src/data/shipOperations/konteyner.ts": "operation-container.svg",
-  "src/data/shipOperations/roRo.ts": "operation-roro.svg",
-  "src/data/shipOperations/tanker.ts": "operation-tanker.svg",
-  "src/data/shipOperations/dokme.ts": "operation-bulk.svg",
-  "src/data/shipOperations/yolcu.ts": "operation-passenger.svg",
-  "src/data/shipOperations/offshore.ts": "operation-offshore.svg",
-};
-for (const [file, asset] of Object.entries(shipModules)) {
-  assert(read(file).includes(asset), `${file}: clear ship illustration is not wired`);
-  assert(
-    fs.existsSync(path.join(root, "src/assets/ships", asset)),
-    `Ship illustration asset missing: ${asset}`,
-  );
+// Operasyon ekranları gemi görselleriyle değil sade cilt kapaklarıyla çalışıyor:
+// her gemi tipi yalnızca kapak rengini (Tailwind gradyan durakları) taşımalı.
+const shipModules = [
+  "src/data/shipOperations/konteyner.ts",
+  "src/data/shipOperations/roRo.ts",
+  "src/data/shipOperations/tanker.ts",
+  "src/data/shipOperations/dokme.ts",
+  "src/data/shipOperations/yolcu.ts",
+  "src/data/shipOperations/offshore.ts",
+];
+for (const file of shipModules) {
+  const source = read(file);
+  assert(!source.includes("@/assets/ships"), `${file}: ship illustration must stay removed`);
+  assert(/color: "from-/.test(source), `${file}: book cover colour is not wired`);
 }
+assert(
+  fs.readdirSync(path.join(root, "src/assets/ships")).every((file) => !file.startsWith("operation-")),
+  "Unused operation ship illustrations are still bundled",
+);
 
 const floatingBack = read("src/components/FloatingNavButtons.tsx");
 assert(floatingBack.includes('aria-label="Geri"'), "Global Geri control must remain available");
@@ -154,5 +158,5 @@ if (failures.length) {
 }
 
 console.log(
-  `UX consistency checks passed: ${pageFiles.length} pages, 6 SOLAS/ISPS drill headings, 6 ship illustrations.`,
+  `UX consistency checks passed: ${pageFiles.length} pages, 6 SOLAS/ISPS drill headings, 6 ship book covers.`,
 );
