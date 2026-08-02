@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
