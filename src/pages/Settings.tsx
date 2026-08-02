@@ -50,6 +50,28 @@ const Settings = () => {
     navigate("/", { replace: true });
   };
 
+  // Hesap silme: sunucu tarafında tüm tablolar ve depolanan belgeler temizlenir.
+  const handleDeleteAccount = async () => {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      return;
+    }
+    setDeleting(true);
+    try {
+      const { error } = await supabase.functions.invoke("delete-account", { body: {} });
+      if (error) throw error;
+      toast.success("Hesabınız ve tüm verileriniz silindi");
+      await signOut();
+      navigate("/", { replace: true });
+    } catch {
+      toast.error("Hesap silinemedi. Lütfen tekrar deneyin veya bize yazın.");
+      setDeleting(false);
+      setConfirmDelete(false);
+    }
+  };
+
+
+
   const displayName = (user?.user_metadata?.full_name as string) || "";
   const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
   const initials = displayName ? displayName.charAt(0).toUpperCase() : user?.email ? user.email.charAt(0).toUpperCase() : "?";
