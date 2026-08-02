@@ -161,7 +161,7 @@ export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
     return result.tier;
   }, [user, refresh]);
 
-  const value = useMemo<EntitlementContextValue>(() => ({
+  const value = useMemo(() => ({
     tier,
     hasProAccess: tier === "pro" || tier === "lifetime",
     loading,

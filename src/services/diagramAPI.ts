@@ -272,7 +272,8 @@ class DiagramAPIService {
   }
 
   // Maritime-specific diagram generators
-  async generateEngineFlowChart(engineData: unknown): Promise<DiagramResponse> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async generateEngineFlowChart(engineData: any): Promise<DiagramResponse> {
     const description = `Create a marine engine system flowchart showing:
     - Main engine power: ${engineData.mcrPower} kW
     - Current load: ${engineData.currentLoad}%
@@ -289,7 +290,8 @@ class DiagramAPIService {
     });
   }
 
-  async generateTrimDiagram(trimData: unknown): Promise<DiagramResponse> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async generateTrimDiagram(trimData: any): Promise<DiagramResponse> {
     const description = `Create a ship trim and stability diagram showing:
     - Ship length: ${trimData.L} meters
     - Forward draft: ${trimData.draftForward} m
@@ -307,7 +309,8 @@ class DiagramAPIService {
     });
   }
 
-  async generateGZCurveDiagram(stabilityData: unknown): Promise<DiagramResponse> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async generateGZCurveDiagram(stabilityData: any): Promise<DiagramResponse> {
     const description = `Create a GZ curve (righting arm curve) stability diagram showing:
     - Initial stability (GM): ${stabilityData.GM || 'calculated'} meters
     - Displacement: ${stabilityData.displacement || 'current'} tonnes

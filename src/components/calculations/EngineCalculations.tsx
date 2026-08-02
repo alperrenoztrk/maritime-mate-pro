@@ -533,7 +533,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="engineType">Motor Tipi</Label>
-                  <Select value={data.engineType} onValueChange={(value) => updateData('engineType', value)}>
+                  <Select value={data.engineType} onValueChange={(value) => updateData('engineType', value as 'four-stroke' | 'two-stroke')}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -581,7 +581,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="fuelType">Yakıt Tipi</Label>
-                  <Select value={data.fuelType} onValueChange={(value) => updateData('fuelType', value)}>
+                  <Select value={data.fuelType} onValueChange={(value) => updateData('fuelType', value as 'HFO' | 'MDO' | 'MGO' | 'LNG' | 'Methanol')}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
