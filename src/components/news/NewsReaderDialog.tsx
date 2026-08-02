@@ -12,6 +12,7 @@ import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/m
 import { NewspaperStyles } from "@/components/news/NewspaperStyles";
 import { softHyphenate } from "@/components/news/hyphenate";
 import { useLanguage } from "@/contexts/useLanguage";
+import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
 function formatDate(iso: string | undefined, locale: string): string {
   if (!iso) return "";
@@ -217,6 +218,8 @@ export interface NewsReaderDialogProps {
 
 export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogProps) {
   const { currentLanguage } = useLanguage();
+  // Back tuşu açık bir haberi asla kapatmaz; okuyucu "Gazeteye dön" ile çıkar.
+  useArticleBackGuard(open);
   const articleQuery = useQuery({
     queryKey: ["article-content", item?.link],
     queryFn: () => fetchArticleContent(item!.link),
