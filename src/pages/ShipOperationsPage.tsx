@@ -1,4 +1,4 @@
-import { ClipboardList, Ship } from "lucide-react";
+import { ClipboardList } from "lucide-react";
 import { shipTypes } from "@/data/shipOperationsData";
 import { LibraryBookCard, LibraryPageShell } from "@/components/library/LibraryInterface";
 
@@ -11,7 +11,6 @@ export default function ShipOperationsPage() {
             key={ship.id}
             to={`/ship-operations/${ship.id}`}
             title={ship.label}
-            icon={Ship}
             accent={ship.color}
             image={ship.image}
           />

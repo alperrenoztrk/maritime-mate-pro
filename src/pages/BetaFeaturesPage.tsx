@@ -1,29 +1,25 @@
-import { BadgeCheck, ClipboardCheck, Clock4, FlaskConical, Ship } from "lucide-react";
+import { FlaskConical } from "lucide-react";
 import { LibraryBookCard, LibraryPageShell } from "@/components/library/LibraryInterface";
 
 const FEATURES = [
   {
     to: "/beta/documents",
     title: "Belge ve Sertifika Takibi",
-    icon: BadgeCheck,
     accent: "from-amber-500 via-orange-600 to-rose-700",
   },
   {
     to: "/beta/work-hours",
     title: "Otomatik Çalışma Saati Tablosu",
-    icon: Clock4,
     accent: "from-orange-500 via-amber-600 to-orange-800",
   },
   {
     to: "/beta/psc-checklist",
     title: "PSC Denetim Hazırlık Listesi",
-    icon: ClipboardCheck,
     accent: "from-rose-500 via-orange-600 to-amber-700",
   },
   {
     to: "/beta/ship-simulator",
     title: "3D Gemi Stabilite Simülasyonu",
-    icon: Ship,
     accent: "from-violet-500 via-purple-600 to-indigo-800",
   },
 ];
@@ -41,9 +37,7 @@ export default function BetaFeaturesPage() {
             key={feature.to}
             to={feature.to}
             title={feature.title}
-            icon={feature.icon}
             accent={feature.accent}
-            badge="Yeni"
           />
         ))}
       </section>

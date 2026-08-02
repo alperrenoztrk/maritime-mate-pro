@@ -39,7 +39,6 @@ export default function CrewHierarchyPage() {
               key={role.slug}
               to={`/crew/${role.slug}`}
               title={role.rank}
-              icon={activeMeta.icon}
               accent={activeMeta.accent}
             />
           ))}

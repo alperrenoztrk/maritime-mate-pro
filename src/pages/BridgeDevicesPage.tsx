@@ -11,7 +11,6 @@ export default function BridgeDevicesPage() {
             key={device.id}
             to={`/bridge/${device.id}`}
             title={device.name}
-            icon={device.icon}
             accent={device.accent}
           />
         ))}
