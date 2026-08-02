@@ -2,6 +2,9 @@
 // Restricts access to known origins only to prevent AI credit abuse
 
 const ALLOWED_ORIGINS = [
+  // Production domains
+  'https://nauticalleap.com',
+  'https://www.nauticalleap.com',
   // Lovable preview URLs
   'https://50250357-50a7-4f9d-8353-23b653380abc.lovableproject.com',
   'https://id-preview--50250357-50a7-4f9d-8353-23b653380abc.lovable.app',
