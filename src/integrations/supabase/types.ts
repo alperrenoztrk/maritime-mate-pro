@@ -35,6 +35,87 @@ export type Database = {
         }
         Relationships: []
       }
+      maritime_documents: {
+        Row: {
+          analysis_version: string
+          confidence: number
+          content_hash: string
+          created_at: string
+          date_evidence: string | null
+          document_number: string | null
+          document_type: string
+          expiry_date: string | null
+          holder_name: string | null
+          id: string
+          image_path: string
+          issue_date: string | null
+          issuing_authority: string | null
+          issuing_country: string | null
+          mime_type: string
+          no_expiry: boolean
+          original_filename: string | null
+          raw_analysis: Json
+          reminder_days: number[]
+          review_required: boolean
+          title: string
+          updated_at: string
+          user_id: string
+          warnings: string[]
+        }
+        Insert: {
+          analysis_version?: string
+          confidence?: number
+          content_hash: string
+          created_at?: string
+          date_evidence?: string | null
+          document_number?: string | null
+          document_type: string
+          expiry_date?: string | null
+          holder_name?: string | null
+          id?: string
+          image_path: string
+          issue_date?: string | null
+          issuing_authority?: string | null
+          issuing_country?: string | null
+          mime_type?: string
+          no_expiry?: boolean
+          original_filename?: string | null
+          raw_analysis?: Json
+          reminder_days?: number[]
+          review_required?: boolean
+          title: string
+          updated_at?: string
+          user_id: string
+          warnings?: string[]
+        }
+        Update: {
+          analysis_version?: string
+          confidence?: number
+          content_hash?: string
+          created_at?: string
+          date_evidence?: string | null
+          document_number?: string | null
+          document_type?: string
+          expiry_date?: string | null
+          holder_name?: string | null
+          id?: string
+          image_path?: string
+          issue_date?: string | null
+          issuing_authority?: string | null
+          issuing_country?: string | null
+          mime_type?: string
+          no_expiry?: boolean
+          original_filename?: string | null
+          raw_analysis?: Json
+          reminder_days?: number[]
+          review_required?: boolean
+          title?: string
+          updated_at?: string
+          user_id?: string
+          warnings?: string[]
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
