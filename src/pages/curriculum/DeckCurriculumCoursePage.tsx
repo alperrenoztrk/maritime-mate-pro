@@ -20,7 +20,7 @@ export default function DeckCurriculumCoursePage() {
   const category = getBetaCategories().find((item) => item.key === categoryId);
   const categoryConfig = calculationCategories.find((item) => item.id === categoryId);
   const modules = getBetaModules(categoryId);
-  const [expandedModule, setExpandedModule] = useState<string | null>(modules[0]?.id ?? null);
+  const [expandedModule, setExpandedModule] = useState<string | null>(null);
 
   if (!category || !categoryConfig || !categoryId) {
     return (

@@ -157,7 +157,7 @@ const categories: CategorySection[] = [
 const taskHref = (task: TaskRow) => task.href ?? (task.slug ? `/ship-tasks/${task.slug}` : "#");
 
 export default function ShipTasksLibraryPage() {
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(categories[0]?.title ?? null);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   return (
     <LibraryPageShell title="Gemide Yapılan İşler" icon={FileText}>

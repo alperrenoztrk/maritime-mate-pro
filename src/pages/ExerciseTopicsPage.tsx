@@ -24,9 +24,7 @@ export default function ExerciseTopicsPage() {
   const flowTitles = new Set(flows.map((flow) => flow.topicTitle));
   const scenarios = getScenariosByTopic(categoryId);
   const questionDistribution = getExerciseQuestionDistribution(categoryId);
-  const [expandedModules, setExpandedModules] = useState<string[]>(() =>
-    modules[0] ? [modules[0].id] : [],
-  );
+  const [expandedModules, setExpandedModules] = useState<string[]>([]);
 
   if (!category) {
     return (

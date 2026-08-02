@@ -29,12 +29,13 @@ export default function ShipSystemDetailPage() {
     const t = parseInt(searchParams.get("topic") ?? "", 10);
     return Number.isFinite(t) && t >= 0 ? t : 0;
   })();
-  const [expandedTopic, setExpandedTopic] = useState<number | null>(initialTopic);
+  const [expandedTopic, setExpandedTopic] = useState<number | null>(null);
   const [viewerImage, setViewerImage] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
-    setExpandedTopic(initialTopic);
-    // scroll target topic into view after render
+    // A deep link may position the requested topic, but the container remains
+    // closed until the user deliberately opens it.
+    setExpandedTopic(null);
     const id = requestAnimationFrame(() => {
       const el = document.getElementById(`ship-topic-${initialTopic}`);
       el?.scrollIntoView({ behavior: "smooth", block: "start" });

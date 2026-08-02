@@ -9,8 +9,7 @@ interface CalculationStepsProps {
 }
 
 export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
-  // Ayrıntı standardı: sonuç üretildiğinde işlem zinciri ilk bakışta görünür.
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   if (!steps || steps.length === 0) return null;

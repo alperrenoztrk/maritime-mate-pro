@@ -53,6 +53,48 @@ for (const file of pageFiles) {
   }
 }
 
+const collapsedOnEntry = [
+  ["src/pages/ExerciseTopicsPage.tsx", "useState<string[]>([])", "exercise modules"],
+  ["src/pages/curriculum/DeckCurriculumCoursePage.tsx", "useState<string | null>(null)", "deck curriculum modules"],
+  ["src/pages/curriculum/MachineCurriculumCoursePage.tsx", "useState<string | null>(null)", "machine curriculum modules"],
+  ["src/pages/ShipOperationsDetail.tsx", "useState<number | null>(null)", "ship operations"],
+  ["src/pages/ShipSystemDetailPage.tsx", "useState<number | null>(null)", "ship-system topics"],
+  ["src/pages/NavigationRules.tsx", "useState<number | null>(null)", "navigation rules"],
+  ["src/pages/library/ShipTasksLibraryPage.tsx", "useState<string | null>(null)", "ship-task categories"],
+  ["src/components/ui/calculation-steps.tsx", "useState(false)", "calculation steps"],
+];
+
+for (const [file, closedInitializer, label] of collapsedOnEntry) {
+  assert(
+    read(file).includes(closedInitializer),
+    `${file}: ${label} must be collapsed on initial page entry`,
+  );
+}
+
+const shipOperations = read("src/pages/ShipOperationsDetail.tsx");
+assert(
+  shipOperations.includes("setExpandedOperation(null)"),
+  "ShipOperationsDetail: changing department must not auto-open an operation",
+);
+
+const shipSystems = read("src/pages/ShipSystemDetailPage.tsx");
+assert(
+  shipSystems.includes("setExpandedTopic(null)"),
+  "ShipSystemDetailPage: route/deep-link changes must keep topics collapsed",
+);
+
+const notesPage = read("src/pages/Notes.tsx");
+assert(
+  !notesPage.includes("defaultValue={groups.map"),
+  "Notes: note categories must be collapsed on initial page entry",
+);
+
+const regulationDetailPage = read("src/pages/RegulationDetailPage.tsx");
+assert(
+  !regulationDetailPage.includes("open={chapterIndex === 0}"),
+  "RegulationDetailPage: the first chapter must be collapsed on initial page entry",
+);
+
 const moonPage = read("src/pages/MoonPhases.tsx");
 assert(!moonPage.includes('title="Ana Sayfa"'), "MoonPhases: home shortcut remains");
 
