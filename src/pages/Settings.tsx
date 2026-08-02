@@ -30,6 +30,8 @@ const Settings = () => {
   const { user, signOut } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
   const navigate = useNavigate();
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
