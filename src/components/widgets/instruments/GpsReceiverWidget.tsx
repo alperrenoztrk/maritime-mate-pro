@@ -17,13 +17,14 @@ interface GpsReceiverWidgetProps {
 }
 
 /**
- * Gerçek bir Furuno GP-80 alıcısının fotoğrafı; cihazın LCD'si canlı pozisyonla
- * yeniden yazılır. Fotoğraftaki ekran 2011 tarihli sabit bir fix gösterdiği
- * için ekran alanı tamamen örtülür.
+ * Gerçek bir Samyung SGN-500 alıcısının fotoğrafı; cihazın renkli LCD'si canlı
+ * pozisyonla yeniden yazılır. Fotoğraftaki ekran 2011 tarihli sabit bir fix
+ * gösterdiği için ekran alanı tamamen örtülür.
  *
- * Satır düzeni gerçek alıcıların sayfa düzenini izler: solda alan adı, sağda
- * değer, altta ayırıcı ve durum satırı. Ondalık dereceler kendi satırında —
- * DMS ile yan yana yazılınca ekrandan taşıyordu.
+ * Sayfa düzeni cihazın kendi düzenini izler: üstte sarı başlık şeridi, altında
+ * üç küçük alan (mod / doğruluk / fix saati), ortada iki satır büyük mevki,
+ * altta yine üç alan. Cihazda COG/SOG olan yerde bizde ondalık derece var —
+ * uygulamanın elinde hız/rota verisi yok.
  */
 export function GpsReceiverWidget({
   label,
@@ -41,7 +42,7 @@ export function GpsReceiverWidget({
     <InstrumentFrame
       photo={GPS}
       size="medium"
-      label={<span className="notranslate" translate="no">SAT-NAV GP·80</span>}
+      label="Konum"
       action={
         <button
           type="button"
@@ -57,27 +58,45 @@ export function GpsReceiverWidget({
         </button>
       }
     >
-      <div className="iw-screen" style={screenStyle(GPS_SCREEN)}>
-        <div className="iw-lcd-row notranslate" translate="no">
-          <span className="iw-lcd-key">LAT</span>
-          <span>{latDMS}</span>
+      <div className="iw-screen notranslate" style={screenStyle(GPS_SCREEN)} translate="no">
+        <div className="iw-lcd-bar">
+          <span>GNSS</span>
+          <span className="iw-lcd-place">{label ?? "—"}</span>
         </div>
-        <div className="iw-lcd-row notranslate" translate="no">
-          <span className="iw-lcd-key">LON</span>
-          <span>{lonDMS}</span>
+
+        <div className="iw-lcd-cells">
+          <div className="iw-lcd-cell">
+            <span className="iw-lcd-key">MOD</span>
+            <span className={"iw-lcd-val" + (sourceKind === "ip" ? " iw-lcd-warn" : "")}>{sourceLabel}</span>
+          </div>
+          <div className="iw-lcd-cell">
+            <span className="iw-lcd-key">SAPMA</span>
+            <span className="iw-lcd-val">{accuracyLabel}</span>
+          </div>
+          <div className="iw-lcd-cell">
+            <span className="iw-lcd-key">FIX</span>
+            <span className="iw-lcd-val">{fixedAt}</span>
+          </div>
         </div>
-        <div className="iw-lcd-row iw-lcd-dim notranslate" translate="no">
-          <span>{latDec}</span>
-          <span>{lonDec}</span>
+
+        <div className="iw-lcd-fix">
+          <span className="iw-lcd-coord">{latDMS}</span>
+          <span className="iw-lcd-coord">{lonDMS}</span>
         </div>
-        <div className="iw-lcd-rule" />
-        <div className="iw-lcd-row iw-lcd-dim notranslate" translate="no">
-          <span>{accuracyLabel}</span>
-          <span>FIX {fixedAt}</span>
-        </div>
-        <div className="iw-lcd-row notranslate" translate="no">
-          <span className="iw-lcd-label">{label ?? "—"}</span>
-          <span className={sourceKind === "ip" ? "iw-lcd-amber" : undefined}>{sourceLabel}</span>
+
+        <div className="iw-lcd-cells">
+          <div className="iw-lcd-cell">
+            <span className="iw-lcd-key">ENLEM</span>
+            <span className="iw-lcd-val iw-lcd-small">{latDec || "—"}</span>
+          </div>
+          <div className="iw-lcd-cell">
+            <span className="iw-lcd-key">BOYLAM</span>
+            <span className="iw-lcd-val iw-lcd-small">{lonDec || "—"}</span>
+          </div>
+          <div className="iw-lcd-cell">
+            <span className="iw-lcd-key">DATUM</span>
+            <span className="iw-lcd-val iw-lcd-small">WGS84</span>
+          </div>
         </div>
       </div>
     </InstrumentFrame>

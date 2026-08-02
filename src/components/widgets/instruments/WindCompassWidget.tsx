@@ -1,6 +1,6 @@
 import { InstrumentFrame } from "./InstrumentFrame";
-import { CompassFace } from "./CompassFace";
-import { COMPASS, COMPASS_DIAL } from "./instrumentPhotos";
+import { WindDialFace } from "./WindDialFace";
+import { WIND_GAUGE, WIND_GAUGE_DIAL } from "./instrumentPhotos";
 import { dialStyle } from "./overlayGeometry";
 
 interface WindCompassWidgetProps {
@@ -10,9 +10,9 @@ interface WindCompassWidgetProps {
 }
 
 /**
- * Gerçek bir Askania pusulasının fotoğrafı; kartı canlı olarak yeniden çizilir
- * (bkz. CompassFace) ve üstündeki fırıldak rüzgârın geldiği yönü gösterir.
- * Fotoğrafın siyah bezeli ile kubbe camı olduğu gibi kalır.
+ * Köprüüstündeki Koshin rüzgâr panelinin fotoğrafı; göstergenin yüzü canlı
+ * olarak yeniden çizilir (bkz. WindDialFace) ve ibresi rüzgârın geldiği yönü
+ * gösterir. Fotoğrafın siyah bezeli, vidaları ve panel sacı olduğu gibi kalır.
  */
 export function WindCompassWidget({ speedKt, directionDeg, directionLabel }: WindCompassWidgetProps) {
   const hasDirection = directionDeg !== undefined && !Number.isNaN(directionDeg);
@@ -20,7 +20,7 @@ export function WindCompassWidget({ speedKt, directionDeg, directionLabel }: Win
 
   return (
     <InstrumentFrame
-      photo={COMPASS}
+      photo={WIND_GAUGE}
       size="small"
       label="Rüzgâr"
       readout={
@@ -34,8 +34,8 @@ export function WindCompassWidget({ speedKt, directionDeg, directionLabel }: Win
         </>
       }
     >
-      <div className="iw-dial" style={dialStyle(COMPASS_DIAL, COMPASS.aspect)}>
-        <CompassFace directionDeg={directionDeg} />
+      <div className="iw-dial" style={dialStyle(WIND_GAUGE_DIAL, WIND_GAUGE.aspect)}>
+        <WindDialFace directionDeg={directionDeg} />
       </div>
     </InstrumentFrame>
   );

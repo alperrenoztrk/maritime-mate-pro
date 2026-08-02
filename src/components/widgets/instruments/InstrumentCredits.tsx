@@ -12,9 +12,12 @@ import { INSTRUMENT_CREDITS } from "./instrumentPhotos";
 /**
  * Widget gövdelerindeki fotoğrafların atıfları.
  *
- * CC BY / CC BY-SA lisanslı görseller için atıf zorunlu; ana sayfada başka bir
- * atıf yüzeyi yok. Liste `instrumentPhotos.ts`'deki `credit` alanlarından gelir
- * ki depo tarafındaki CREDITS.md ile tek kaynaktan beslensin.
+ * Kaynaklar karışık: bir kısmı Wikimedia Commons'tan özgür lisanslı (CC BY /
+ * CC BY-SA olanlarda atıf zorunlu), bir kısmı uygulama sahibinin kendi
+ * arşivinden. Ana sayfada başka bir atıf yüzeyi yok. Liste
+ * `instrumentPhotos.ts`'deki `credit` alanlarından gelir ki depo tarafındaki
+ * CREDITS.md ile tek kaynaktan beslensin; `url`'ü olmayan kayıt düz metin
+ * olarak yazılır.
  */
 export function InstrumentCredits() {
   const [open, setOpen] = useState(false);
@@ -28,7 +31,7 @@ export function InstrumentCredits() {
           className="inline-flex items-center gap-1.5 text-[10px] text-amber-200/45 underline-offset-2 transition-colors hover:text-amber-200/80 hover:underline"
         >
           <Camera className="h-3 w-3" aria-hidden="true" />
-          <span data-translatable>Enstrüman fotoğrafları: Wikimedia Commons</span>
+          <span data-translatable>Enstrüman fotoğrafları</span>
         </button>
       </div>
 
@@ -40,23 +43,30 @@ export function InstrumentCredits() {
             </DialogTitle>
             <DialogDescription>
               <span data-translatable>
-                Widget gövdeleri gerçek enstrüman fotoğraflarıdır. Tümü Wikimedia Commons
-                üzerinden özgür lisanslarla alınmıştır.
+                Widget gövdeleri gerçek enstrüman fotoğraflarıdır. Bir kısmı Wikimedia
+                Commons üzerinden özgür lisanslarla alınmış, bir kısmı uygulama arşivinden
+                gelmektedir.
               </span>
             </DialogDescription>
           </DialogHeader>
 
           <ul className="space-y-3">
             {INSTRUMENT_CREDITS.map((credit) => (
-              <li key={credit.url} className="text-xs leading-relaxed">
-                <a
-                  href={credit.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="block break-words font-medium text-amber-300 underline underline-offset-2"
-                >
-                  <span className="notranslate" translate="no">{credit.title}</span>
-                </a>
+              <li key={credit.title} className="text-xs leading-relaxed">
+                {credit.url ? (
+                  <a
+                    href={credit.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="block break-words font-medium text-amber-300 underline underline-offset-2"
+                  >
+                    <span className="notranslate" translate="no">{credit.title}</span>
+                  </a>
+                ) : (
+                  <span className="block break-words font-medium text-amber-300/90 notranslate" translate="no">
+                    {credit.title}
+                  </span>
+                )}
                 <span className="text-muted-foreground notranslate" translate="no">
                   {credit.author} · {credit.license}
                 </span>

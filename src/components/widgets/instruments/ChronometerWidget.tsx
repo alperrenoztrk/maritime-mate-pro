@@ -1,6 +1,6 @@
 import { InstrumentFrame } from "./InstrumentFrame";
 import { ChronometerFace } from "./ChronometerFace";
-import { CHRONOMETER, CHRONOMETER_DIAL } from "./instrumentPhotos";
+import { SEIKO_CLOCK, SEIKO_CLOCK_DIAL } from "./instrumentPhotos";
 import { dialStyle } from "./overlayGeometry";
 
 interface ChronometerWidgetProps {
@@ -16,9 +16,9 @@ interface ChronometerWidgetProps {
 }
 
 /**
- * Gerçek bir A. Lange & Söhne gemi kronometresinin fotoğrafı; kadran canlı
- * olarak yeniden çizilir (bkz. ChronometerFace), fotoğrafın pirinç bezeli,
- * kubbe camı ve ahşap kutusu olduğu gibi kalır.
+ * Gerçek bir Seiko köprüüstü saatinin fotoğrafı; kadran canlı olarak yeniden
+ * çizilir (bkz. ChronometerFace), fotoğrafın açık mavi bezeli, camı ve yan
+ * kulakları olduğu gibi kalır.
  *
  * Kadranın yeniden çizilmesi şart: fotoğraftaki ibreler donmuş. Yeni yüzey
  * fotoğraftakinin ölçülmüş düzenini taşıdığı için ek bir katman gibi değil,
@@ -29,7 +29,7 @@ export function ChronometerWidget({ label, hours, minutes, seconds, digital, sub
 
   return (
     <InstrumentFrame
-      photo={CHRONOMETER}
+      photo={SEIKO_CLOCK}
       size="small"
       photoFilter={isGmt ? "saturate(.5) brightness(.78)" : undefined}
       label={isGmt ? <span className="notranslate" translate="no">{label}</span> : label}
@@ -40,13 +40,13 @@ export function ChronometerWidget({ label, hours, minutes, seconds, digital, sub
         </>
       }
     >
-      <div className="iw-dial" style={dialStyle(CHRONOMETER_DIAL, CHRONOMETER.aspect)}>
+      <div className="iw-dial" style={dialStyle(SEIKO_CLOCK_DIAL, SEIKO_CLOCK.aspect)}>
         <ChronometerFace
           hours={hours}
           minutes={minutes}
           seconds={seconds}
           variant={variant}
-          inscription={isGmt ? ["MARINER'S BOOK", "GREENWICH · UTC"] : ["MARINER'S BOOK", "MARINE CHRONOMETER"]}
+          inscription={isGmt ? ["MARINER'S BOOK", "GREENWICH · UTC"] : ["MARINER'S BOOK", "MARINE CLOCK"]}
         />
       </div>
     </InstrumentFrame>
