@@ -17,6 +17,7 @@ import { FontSizeProvider } from "@/contexts/FontSizeContext";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
 import { useFrameRate } from "@/hooks/useFrameRate";
 import { useScreenProtection } from "@/hooks/useScreenProtection";
@@ -439,6 +440,10 @@ const App = () => {
                   <GlobalMaritimeBackground />
                   <div className="min-h-screen text-foreground overflow-x-hidden">
                     <BrowserRouter>
+                      {/* Every route change starts the new page at the top —
+                          the previous page's scroll offset is never carried
+                          over. Must sit inside the router. */}
+                      <ScrollToTop />
                       <RouteTranslationGate />
                       {/* AdMob orchestration: free tier only, never on the home
                           page / auth flow / paywall. Renders nothing — the

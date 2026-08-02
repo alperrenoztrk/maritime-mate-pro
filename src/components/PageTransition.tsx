@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useLayoutEffect } from "react";
+import { scrollToTop } from "@/lib/scrollToTop";
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -7,6 +8,16 @@ interface PageTransitionProps {
 }
 
 export const PageTransition = ({ children, direction = "none" }: PageTransitionProps) => {
+  // <ScrollToTop> already resets the offset the moment the route changes, but
+  // AnimatePresence runs in "wait" mode: the incoming page only mounts once
+  // the outgoing one has finished animating out. Resetting again here — before
+  // the browser paints this page for the first time — guarantees it is drawn
+  // from the top no matter what happened during that gap.
+  useLayoutEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) return;
+    scrollToTop();
+  }, []);
+
   const variants = {
     initial: {
       opacity: 0,
