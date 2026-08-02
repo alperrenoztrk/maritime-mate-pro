@@ -93,7 +93,6 @@ const Notes = () => {
           ) : (
             <Accordion
               type="multiple"
-              defaultValue={groups.map(([category]) => category)}
               className="space-y-3"
             >
               {groups.map(([category, categoryNotes]) => (

@@ -108,7 +108,7 @@ const sections: RuleSection[] = [
 ];
 
 export default function NavigationRulesPage() {
-  const [expanded, setExpanded] = useState<number | null>(0);
+  const [expanded, setExpanded] = useState<number | null>(null);
 
   const toggle = (idx: number) => {
     setExpanded(expanded === idx ? null : idx);

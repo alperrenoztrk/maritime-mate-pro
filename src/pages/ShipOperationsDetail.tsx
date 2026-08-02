@@ -18,7 +18,7 @@ export default function ShipOperationsDetail() {
   const { shipType } = useParams<{ shipType: string }>();
   const ship = shipType ? shipTypeMap[shipType] : undefined;
   const [activeDepartment, setActiveDepartment] = useState<DepartmentId>("guverte");
-  const [expandedOperation, setExpandedOperation] = useState<number | null>(0);
+  const [expandedOperation, setExpandedOperation] = useState<number | null>(null);
 
   if (!ship) {
     return (
@@ -32,7 +32,7 @@ export default function ShipOperationsDetail() {
 
   const changeDepartment = (department: DepartmentId) => {
     setActiveDepartment(department);
-    setExpandedOperation(0);
+    setExpandedOperation(null);
   };
 
   return (

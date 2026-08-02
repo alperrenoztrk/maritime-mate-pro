@@ -15,7 +15,7 @@ export default function MachineCurriculumCoursePage() {
   const categoryKey = topicSlug ? `machine-${topicSlug}` : undefined;
   const category = getBetaCategories().find((item) => item.key === categoryKey);
   const modules = getBetaModules(categoryKey);
-  const [expandedModule, setExpandedModule] = useState<string | null>(modules[0]?.id ?? null);
+  const [expandedModule, setExpandedModule] = useState<string | null>(null);
 
   if (!topicSlug || !category) {
     return (

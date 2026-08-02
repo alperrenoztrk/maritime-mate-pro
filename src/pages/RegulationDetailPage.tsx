@@ -89,7 +89,6 @@ const NarrativeChapters = ({ chapters }: { chapters: RegulationNarrativeChapter[
       {chapters.map((entry, chapterIndex) => (
         <details
           key={entry.id}
-          open={chapterIndex === 0}
           className="group overflow-hidden rounded-2xl border border-primary/25 bg-card/75 shadow-sm open:border-primary/40"
         >
           <summary className="flex cursor-pointer list-none items-start gap-3 bg-gradient-to-r from-primary/[0.12] via-primary/[0.06] to-transparent p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:p-6">
