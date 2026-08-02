@@ -5,7 +5,7 @@
 -- istemci kendi satırlarını sadece okuyabilir. Böylece Pro hakkı istemciden
 -- sahtelenemez, sunucuda Google Play Developer API doğrulaması zorunlu olur.
 
-CREATE TABLE public.user_entitlements (
+CREATE TABLE IF NOT EXISTS public.user_entitlements (
   id UUID NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   -- Şimdilik yalnızca google_play; ileride app_store / stripe eklenebilir.
@@ -37,23 +37,25 @@ CREATE TABLE public.user_entitlements (
   UNIQUE (platform, purchase_token)
 );
 
-CREATE INDEX idx_user_entitlements_user_id ON public.user_entitlements(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_entitlements_user_id ON public.user_entitlements(user_id);
 
 GRANT SELECT ON public.user_entitlements TO authenticated;
 GRANT ALL ON public.user_entitlements TO service_role;
 
 ALTER TABLE public.user_entitlements ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can view own entitlements" ON public.user_entitlements;
 CREATE POLICY "Users can view own entitlements" ON public.user_entitlements
   FOR SELECT USING (auth.uid() = user_id);
 -- INSERT/UPDATE/DELETE politikası bilinçli olarak yok: yalnızca service_role yazar.
 
+DROP TRIGGER IF EXISTS update_user_entitlements_updated_at ON public.user_entitlements;
 CREATE TRIGGER update_user_entitlements_updated_at
   BEFORE UPDATE ON public.user_entitlements
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
 
 -- Aylık AI kullanım sayacı. period = 'YYYY-MM' (UTC).
-CREATE TABLE public.ai_usage (
+CREATE TABLE IF NOT EXISTS public.ai_usage (
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   period TEXT NOT NULL CHECK (period ~ '^\d{4}-\d{2}$'),
   used INTEGER NOT NULL DEFAULT 0 CHECK (used >= 0),
@@ -66,6 +68,7 @@ GRANT ALL ON public.ai_usage TO service_role;
 
 ALTER TABLE public.ai_usage ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can view own ai usage" ON public.ai_usage;
 CREATE POLICY "Users can view own ai usage" ON public.ai_usage
   FOR SELECT USING (auth.uid() = user_id);
 

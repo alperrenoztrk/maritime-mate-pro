@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, ExternalLink } from "lucide-react";
+import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,8 @@ const Settings = () => {
   const { user, signOut } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
   const navigate = useNavigate();
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
@@ -48,6 +51,28 @@ const Settings = () => {
     // them straight into the auth screen.
     navigate("/", { replace: true });
   };
+
+  // Hesap silme: sunucu tarafında tüm tablolar ve depolanan belgeler temizlenir.
+  const handleDeleteAccount = async () => {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      return;
+    }
+    setDeleting(true);
+    try {
+      const { error } = await supabase.functions.invoke("delete-account", { body: {} });
+      if (error) throw error;
+      toast.success("Hesabınız ve tüm verileriniz silindi");
+      await signOut();
+      navigate("/", { replace: true });
+    } catch {
+      toast.error("Hesap silinemedi. Lütfen tekrar deneyin veya bize yazın.");
+      setDeleting(false);
+      setConfirmDelete(false);
+    }
+  };
+
+
 
   const displayName = (user?.user_metadata?.full_name as string) || "";
   const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
@@ -161,8 +186,50 @@ const Settings = () => {
                     <span data-translatable>Çıkış</span>
                   </Button>
                 </div>
+
+                {/* Gizlilik ve hesap silme — Google Play zorunlu gereksinimleri */}
+                <div className="mt-5 space-y-3 border-t border-border/60 pt-4">
+                  <a
+                    href="https://nauticalleap.com/privacy-policy.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    <span data-translatable>Gizlilik Politikası</span>
+                    <ExternalLink className="w-3 h-3 opacity-70" />
+                  </a>
+
+                  <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 space-y-2">
+                    <p className="text-xs text-muted-foreground">
+                      <span data-translatable>
+                        Hesabınızı sildiğinizde profiliniz, sınav sonuçlarınız, istatistikleriniz, belgeleriniz ve yüklediğiniz dosyalar kalıcı olarak silinir. Bu işlem geri alınamaz.
+                      </span>
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={handleDeleteAccount}
+                        disabled={deleting}
+                        className="gap-2"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        <span data-translatable>
+                          {deleting ? "Siliniyor..." : confirmDelete ? "Evet, hesabımı kalıcı olarak sil" : "Hesabımı sil"}
+                        </span>
+                      </Button>
+                      {confirmDelete && !deleting && (
+                        <Button variant="ghost" size="sm" onClick={() => setConfirmDelete(false)}>
+                          <span data-translatable>Vazgeç</span>
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
+
 
             {/* Pro membership */}
             <Card
