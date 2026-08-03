@@ -214,17 +214,17 @@ export const PORTHOLE: InstrumentPhoto = {
 export const PORTHOLE_GLASS: EllipseAnchor = { cx: 0.4938, cy: 0.5093, rx: 0.225, ry: 0.4 };
 
 /**
- * Konum gövdesi: Samyung SGN-500 birleşik GPS/GLONASS alıcısı. Kırpma
+ * Konum gövdesi: SGN-500 birleşik GPS/GLONASS alıcısı. Kırpma
  * fotoğrafın tam enini alır; koyu fon cihazı kartın içinde çerçeveler ve
  * yükseklik diğer geniş widget'la (lombar) aynı 1.8 oranına oturur.
  */
 export const GPS: InstrumentPhoto = {
   src: gpsPhoto,
-  alt: "Samyung SGN-500 GPS/GLONASS alıcısı",
+  alt: "SGN-500 GPS/GLONASS alıcısı",
   crop: { x: 0, y: 0.05556, w: 1, h: 0.80351 },
   aspect: 1.8,
   credit: {
-    title: "Samyung SGN-500 GPS/GLONASS alıcısı",
+    title: "SGN-500 GPS/GLONASS alıcısı",
     author: "Kullanıcı arşivi",
     license: "Uygulama sahibi tarafından sağlandı",
   },

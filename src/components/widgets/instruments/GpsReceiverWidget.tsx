@@ -17,7 +17,7 @@ interface GpsReceiverWidgetProps {
 }
 
 /**
- * Gerçek bir Samyung SGN-500 alıcısının fotoğrafı; cihazın renkli LCD'si canlı
+ * Gerçek bir SGN-500 alıcısının fotoğrafı; cihazın renkli LCD'si canlı
  * pozisyonla yeniden yazılır. Fotoğraftaki ekran 2011 tarihli sabit bir fix
  * gösterdiği için ekran alanı tamamen örtülür.
  *

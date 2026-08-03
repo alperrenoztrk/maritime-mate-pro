@@ -14,7 +14,7 @@ sağlanmıştır. Bunlar Commons görselleri gibi özgür lisanslı değildir; y
 |---|---|---|
 | seiko-marine-clock.jpg | Seiko köprüüstü saati | Kullanıcı arşivi |
 | wind-indicator.jpg | Koshin rüzgâr hız/yön paneli | Kullanıcı arşivi |
-| gps-receiver.webp | Samyung SGN-500 GPS/GLONASS alıcısı | Kullanıcı arşivi |
+| gps-receiver.webp | SGN-500 GPS/GLONASS alıcısı | Kullanıcı arşivi |
 
 ## Wikimedia Commons
 
