@@ -121,8 +121,21 @@ for (const [label, source] of [
   forbidText(source, "minPagesPerTopic}", `${label} asgari sayfa açıklaması`);
 }
 
-requireText(operationDetail, "expandedOperation", "operasyon tek açık bölüm davranışı");
+// Operasyon listesi satır içi açılmaz: başlık doğrudan detaylı anlatıma gider,
+// amaç/prosedür/mevzuat blokları orada "Operasyon Özeti" olarak okunur.
+requireText(
+  operationDetail,
+  "/ship-operations/${shipType}/${activeDepartment}/${index}",
+  "operasyon başlığından detaylı anlatıma geçiş",
+);
+forbidText(operationDetail, "expandedOperation", "operasyon listesinde satır içi açılır bölüm");
+forbidText(operationDetail, "Detaylı Anlatımı Aç", "operasyon listesinde ayrı detaylı anlatım butonu");
 forbidText(operationDetail, 'type="multiple"', "operasyon çoklu açık bölüm davranışı");
+requireText(
+  read("src/pages/ShipOperationDeepDive.tsx"),
+  "Operasyon Özeti",
+  "listeden taşınan operasyon özeti",
+);
 requireText(tasks, "expandedCategory", "gemi görevleri tek açık bölüm davranışı");
 forbidText(tasks, "<table", "gemi görevleri yoğun tablo görünümü");
 requireText(glossary, "useSearchParams", "sözlük derin bağlantıları");
