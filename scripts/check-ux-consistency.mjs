@@ -57,8 +57,6 @@ const collapsedOnEntry = [
   ["src/pages/ExerciseTopicsPage.tsx", "useState<string[]>([])", "exercise modules"],
   ["src/pages/curriculum/DeckCurriculumCoursePage.tsx", "useState<string | null>(null)", "deck curriculum modules"],
   ["src/pages/curriculum/MachineCurriculumCoursePage.tsx", "useState<string | null>(null)", "machine curriculum modules"],
-  ["src/pages/ShipOperationsDetail.tsx", "useState<number | null>(null)", "ship operations"],
-  ["src/pages/ShipSystemDetailPage.tsx", "useState<number | null>(null)", "ship-system topics"],
   ["src/pages/NavigationRules.tsx", "useState<number | null>(null)", "navigation rules"],
   ["src/pages/library/ShipTasksLibraryPage.tsx", "useState<string | null>(null)", "ship-task categories"],
   ["src/components/ui/calculation-steps.tsx", "useState(false)", "calculation steps"],
@@ -71,16 +69,46 @@ for (const [file, closedInitializer, label] of collapsedOnEntry) {
   );
 }
 
+// Operasyon ve sistem listeleri artık satır içi açılmaz: başlığa dokunmak
+// doğrudan detaylı anlatımı açar, özet bloklar orada tek kaynaktan okunur.
 const shipOperations = read("src/pages/ShipOperationsDetail.tsx");
 assert(
-  shipOperations.includes("setExpandedOperation(null)"),
-  "ShipOperationsDetail: changing department must not auto-open an operation",
+  !shipOperations.includes("expandedOperation"),
+  "ShipOperationsDetail: operations must open the detailed narration instead of expanding inline",
+);
+assert(
+  shipOperations.includes("to={`/ship-operations/${shipType}/${activeDepartment}/${index}`}"),
+  "ShipOperationsDetail: the operation title must link to the detailed narration",
+);
+assert(
+  !shipOperations.includes("Detaylı Anlatımı Aç"),
+  "ShipOperationsDetail: the separate detailed-narration button must stay removed",
 );
 
 const shipSystems = read("src/pages/ShipSystemDetailPage.tsx");
 assert(
-  shipSystems.includes("setExpandedTopic(null)"),
-  "ShipSystemDetailPage: route/deep-link changes must keep topics collapsed",
+  !shipSystems.includes("expandedTopic"),
+  "ShipSystemDetailPage: topics must open the detailed narration instead of expanding inline",
+);
+assert(
+  shipSystems.includes("to={`/ship-systems/${sectionId}/${idx}`}"),
+  "ShipSystemDetailPage: the topic title must link to the detailed narration",
+);
+assert(
+  !shipSystems.includes("anlatımını aç"),
+  "ShipSystemDetailPage: the separate detailed-narration button must stay removed",
+);
+
+// Listeden kaldırılan özet bloklar kaybolmadı; anlatımın ilk sayfasında duruyor.
+const operationDeepDive = read("src/pages/ShipOperationDeepDive.tsx");
+assert(
+  operationDeepDive.includes("Operasyon Özeti"),
+  "ShipOperationDeepDive: the operation summary moved from the list must remain",
+);
+const systemDeepDive = read("src/pages/ShipSystemDeepDive.tsx");
+assert(
+  systemDeepDive.includes("Konu Özeti"),
+  "ShipSystemDeepDive: the topic summary moved from the list must remain",
 );
 
 const notesPage = read("src/pages/Notes.tsx");
