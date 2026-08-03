@@ -1,0 +1,772 @@
+import * as THREE from "three";
+import { hashSeed, mulberry32 } from "@/components/stability/sim/proceduralTextures";
+
+/**
+ * Köprüüstü sahnesinin bütün yüzeyleri — boya, güverte kaplaması, tavan
+ * panelleri, konsol sacı, pencerelerden görünen panorama ve konsoldaki ölü
+ * ekranlar — burada canvas üzerinde çizilir.
+ *
+ * Neden çalışma anında çizim: gemi simülasyonundaki kuralın aynısı geçerli
+ * (bkz. stability/sim/proceduralTextures.ts). Paketlenmiş görsel yok, ağ
+ * isteği yok; sahne Capacitor WebView'ında çevrimdışı da aynı görünür.
+ * Üreteçler tohumlu PRNG ile deterministik, sonuçlar modül düzeyinde
+ * önbelleğe alınır; sahne kapanırken disposeBridgeTextures() çağrılır.
+ */
+
+const cache = new Map<string, THREE.Texture[]>();
+
+function remember<T extends THREE.Texture[]>(key: string, make: () => T): T {
+  let t = cache.get(key) as T | undefined;
+  if (!t) {
+    t = make();
+    cache.set(key, t);
+  }
+  return t;
+}
+
+export function disposeBridgeTextures(): void {
+  cache.forEach((list) => list.forEach((t) => t.dispose()));
+  cache.clear();
+}
+
+function makeCanvas(w: number, h: number): [HTMLCanvasElement, CanvasRenderingContext2D] {
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  return [c, c.getContext("2d") as CanvasRenderingContext2D];
+}
+
+function toTexture(c: HTMLCanvasElement, srgb: boolean): THREE.CanvasTexture {
+  const t = new THREE.CanvasTexture(c);
+  if (srgb) t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
+  return t;
+}
+
+function tiled(t: THREE.CanvasTexture, repeatX: number, repeatY: number): THREE.CanvasTexture {
+  t.wrapS = THREE.RepeatWrapping;
+  t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(repeatX, repeatY);
+  return t;
+}
+
+/** Tohumlu, yumuşak lekeli gürültü — boyanın ve sacın "düz plastik" durmasını engeller. */
+function speckle(
+  g: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  seed: number,
+  count: number,
+  radius: number,
+  alpha: number,
+  dark = "0,0,0",
+  light = "255,255,255",
+) {
+  const rnd = mulberry32(seed);
+  for (let i = 0; i < count; i++) {
+    const x = rnd() * w;
+    const y = rnd() * h;
+    const r = radius * (0.35 + rnd() * 1.3);
+    const up = rnd() > 0.5;
+    const grad = g.createRadialGradient(x, y, 0, x, y, r);
+    grad.addColorStop(0, `rgba(${up ? light : dark},${alpha})`);
+    grad.addColorStop(1, `rgba(${up ? light : dark},0)`);
+    g.fillStyle = grad;
+    g.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+}
+
+/* ─── perde/boya: köprüüstü bulkhead'i ─── */
+
+export interface SurfaceSet {
+  map: THREE.CanvasTexture;
+  /** Yükseklik kanalı doğrudan bumpMap olarak kullanılır — normal map üretmek
+   *  bu kadar düz yüzeyler için gereksiz maliyet. */
+  bumpMap: THREE.CanvasTexture;
+}
+
+/** Açık gri fırça izli gemi boyası; yatay kaynak dikişleri belli belirsiz. */
+export function getPaintTexture(): SurfaceSet {
+  const [map, bump] = remember("paint", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#e8ebed";
+    g.fillRect(0, 0, 512, 512);
+    speckle(g, 512, 512, 0x9a11, 260, 26, 0.045);
+
+    // Rulo izi: yaklaşık dikey, çok soluk.
+    const rnd = mulberry32(0x51ab);
+    g.lineWidth = 1;
+    for (let i = 0; i < 90; i++) {
+      const x = rnd() * 512;
+      g.strokeStyle = `rgba(255,255,255,${0.05 + rnd() * 0.06})`;
+      g.beginPath();
+      g.moveTo(x, 0);
+      g.lineTo(x + (rnd() - 0.5) * 8, 512);
+      g.stroke();
+    }
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#808080";
+    hg.fillRect(0, 0, 256, 256);
+    speckle(hg, 256, 256, 0x1177, 160, 12, 0.35);
+    // Sacın panel dikişi: her 128 px'te bir hafif çukur.
+    hg.strokeStyle = "rgba(40,40,40,.7)";
+    hg.lineWidth = 2;
+    for (let y = 0; y <= 256; y += 128) {
+      hg.beginPath();
+      hg.moveTo(0, y);
+      hg.lineTo(256, y);
+      hg.stroke();
+    }
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 3, 2), bumpMap: tiled(bump, 3, 2) };
+}
+
+/** Kaymaz güverte kaplaması: koyu gri, ince kırmızımsı-mavi zerreli. */
+export function getDeckTexture(): SurfaceSet {
+  const [map, bump] = remember("deck", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#4a4f55";
+    g.fillRect(0, 0, 512, 512);
+    speckle(g, 512, 512, 0x2c41, 900, 5, 0.3, "24,26,30", "150,158,166");
+    speckle(g, 512, 512, 0x77d3, 120, 3, 0.28, "80,60,55", "180,190,200");
+    // Yürüme yolu boyunca hafif parlaklık farkı.
+    const sheen = g.createLinearGradient(0, 0, 512, 512);
+    sheen.addColorStop(0, "rgba(255,255,255,.05)");
+    sheen.addColorStop(0.5, "rgba(255,255,255,0)");
+    sheen.addColorStop(1, "rgba(0,0,0,.06)");
+    g.fillStyle = sheen;
+    g.fillRect(0, 0, 512, 512);
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#787878";
+    hg.fillRect(0, 0, 256, 256);
+    speckle(hg, 256, 256, 0x3311, 700, 3, 0.5);
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 5, 4), bumpMap: tiled(bump, 5, 4) };
+}
+
+/** Tavan: beyaz akustik panel ızgarası, alüminyum çıtalı. */
+export function getDeckheadTexture(): SurfaceSet {
+  const [map, bump] = remember("deckhead", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#f2f4f5";
+    g.fillRect(0, 0, 512, 512);
+    speckle(g, 512, 512, 0x6f22, 200, 18, 0.03);
+    // Panel çıtaları — 256 px'lik kare panel ızgarası.
+    g.strokeStyle = "rgba(150,158,166,.85)";
+    g.lineWidth = 6;
+    for (let p = 0; p <= 512; p += 256) {
+      g.beginPath();
+      g.moveTo(p, 0);
+      g.lineTo(p, 512);
+      g.moveTo(0, p);
+      g.lineTo(512, p);
+      g.stroke();
+    }
+    g.strokeStyle = "rgba(255,255,255,.9)";
+    g.lineWidth = 2;
+    for (let p = 0; p <= 512; p += 256) {
+      g.beginPath();
+      g.moveTo(p - 2, 0);
+      g.lineTo(p - 2, 512);
+      g.moveTo(0, p - 2);
+      g.lineTo(512, p - 2);
+      g.stroke();
+    }
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#909090";
+    hg.fillRect(0, 0, 256, 256);
+    hg.strokeStyle = "#303030";
+    hg.lineWidth = 4;
+    hg.strokeRect(0, 0, 256, 256);
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 4, 3), bumpMap: tiled(bump, 4, 3) };
+}
+
+/** Konsol sacı: RAL 7035 açık gri, fırçalanmış, ince toz dokulu. */
+export function getConsoleTexture(): SurfaceSet {
+  const [map, bump] = remember("console", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#cfd3d6";
+    g.fillRect(0, 0, 512, 512);
+    speckle(g, 512, 512, 0x4d19, 400, 10, 0.05);
+    const rnd = mulberry32(0x8ab2);
+    for (let i = 0; i < 400; i++) {
+      const y = rnd() * 512;
+      g.strokeStyle = `rgba(255,255,255,${0.03 + rnd() * 0.05})`;
+      g.lineWidth = 1;
+      g.beginPath();
+      g.moveTo(0, y);
+      g.lineTo(512, y + (rnd() - 0.5) * 3);
+      g.stroke();
+    }
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#828282";
+    hg.fillRect(0, 0, 256, 256);
+    speckle(hg, 256, 256, 0x22aa, 260, 6, 0.25);
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 2, 2), bumpMap: tiled(bump, 2, 2) };
+}
+
+/** Konsol ön yüzündeki künye plakası. */
+export function getNameplateTexture(): THREE.CanvasTexture {
+  return remember("nameplate", () => {
+    const [c, g] = makeCanvas(512, 256);
+    g.fillStyle = "#d7dbde";
+    g.fillRect(0, 0, 512, 256);
+    speckle(g, 512, 256, 0x1a2b, 120, 14, 0.05);
+    g.fillStyle = "#123a63";
+    g.font = "bold 62px Georgia, 'Times New Roman', serif";
+    g.textAlign = "center";
+    g.textBaseline = "middle";
+    g.fillText("MARINER'S", 256, 98);
+    g.fillText("BOOK", 256, 166);
+    g.strokeStyle = "rgba(18,58,99,.5)";
+    g.lineWidth = 3;
+    g.beginPath();
+    g.moveTo(120, 200);
+    g.lineTo(392, 200);
+    g.stroke();
+    return [toTexture(c, true)];
+  })[0];
+}
+
+/* ─── pencere panoraması ─── */
+
+const PAN_W = 3072;
+const PAN_H = 384;
+/** Ufuk çizgisi — göz hizası pencere ortasının biraz üstünde. */
+const PAN_HORIZON = 176;
+
+/** Uzaktaki kıyı: tepeler + şehir silueti, hava perspektifiyle soluk. */
+function paintCoast(g: CanvasRenderingContext2D, x0: number, x1: number, seed: number, height: number) {
+  const rnd = mulberry32(seed);
+  // Tepe sırtı
+  g.beginPath();
+  g.moveTo(x0, PAN_HORIZON);
+  for (let x = x0; x <= x1; x += 24) {
+    const t = (x - x0) / (x1 - x0);
+    const ridge =
+      Math.sin(t * 7.1 + seed) * 0.35 + Math.sin(t * 3.3 + seed * 0.7) * 0.45 + Math.sin(t * 13.7) * 0.2;
+    const bump = Math.sin(Math.PI * Math.min(1, Math.max(0, t))) * 0.7 + 0.3;
+    g.lineTo(x, PAN_HORIZON - height * bump * (0.55 + ridge * 0.35));
+  }
+  g.lineTo(x1, PAN_HORIZON);
+  g.closePath();
+  g.fillStyle = "rgba(122,146,166,.85)";
+  g.fill();
+
+  // Şehir: kıyı boyunca küçük bloklar, birkaçı yüksek.
+  for (let x = x0; x < x1; x += 5 + rnd() * 9) {
+    const tall = rnd() > 0.9;
+    const h = (tall ? 16 + rnd() * 22 : 4 + rnd() * 10) * (height / 46);
+    const w = 3 + rnd() * 7;
+    g.fillStyle = `rgba(${205 + rnd() * 35},${208 + rnd() * 30},${210 + rnd() * 28},${0.5 + rnd() * 0.35})`;
+    g.fillRect(x, PAN_HORIZON - h, w, h);
+    if (rnd() > 0.7) {
+      g.fillStyle = "rgba(255,236,190,.5)";
+      g.fillRect(x + 1, PAN_HORIZON - h + 2, w - 2, 1.5);
+    }
+  }
+  // Kıyı şeridi köpüğü
+  g.fillStyle = "rgba(236,244,248,.5)";
+  g.fillRect(x0, PAN_HORIZON - 1.5, x1 - x0, 2.5);
+}
+
+/**
+ * Pencerelerden görünen deniz. Tek geniş tuval; her pencere paneli kendi u
+ * dilimini gösterdiği için manzara direkler arasında kesintisiz devam eder
+ * (bkz. bridgeLayout.ts → WINDOW_PANELS.u0/u1).
+ *
+ * Kompozisyon fotoğraftaki gibi: iki yanda boğaz kıyısı, ortada açık su ve
+ * kendi geminin baş tarafı.
+ */
+export function getSeaPanoramaTexture(): THREE.CanvasTexture {
+  return remember("panorama", () => {
+    const [c, g] = makeCanvas(PAN_W, PAN_H);
+
+    // Gökyüzü
+    const sky = g.createLinearGradient(0, 0, 0, PAN_HORIZON);
+    sky.addColorStop(0, "#4d8ec4");
+    sky.addColorStop(0.55, "#8fbcdc");
+    sky.addColorStop(1, "#d8e8f1");
+    g.fillStyle = sky;
+    g.fillRect(0, 0, PAN_W, PAN_HORIZON);
+
+    // Bulutlar
+    const rnd = mulberry32(0x5eac);
+    for (let i = 0; i < 34; i++) {
+      const x = rnd() * PAN_W;
+      const y = 12 + rnd() * (PAN_HORIZON - 60);
+      const rx = 60 + rnd() * 190;
+      const ry = rx * (0.16 + rnd() * 0.16);
+      const grad = g.createRadialGradient(x, y, 0, x, y, rx);
+      const a = 0.22 + rnd() * 0.4;
+      grad.addColorStop(0, `rgba(255,255,255,${a})`);
+      grad.addColorStop(0.55, `rgba(255,255,255,${a * 0.45})`);
+      grad.addColorStop(1, "rgba(255,255,255,0)");
+      g.save();
+      g.translate(x, y);
+      g.scale(1, ry / rx);
+      g.translate(-x, -y);
+      g.fillStyle = grad;
+      g.fillRect(x - rx, y - rx, rx * 2, rx * 2);
+      g.restore();
+    }
+
+    // Güneş — sağ omuzda, camda parlama olarak da yankılanır.
+    const sunX = PAN_W * 0.72;
+    const sunY = PAN_HORIZON * 0.36;
+    const halo = g.createRadialGradient(sunX, sunY, 0, sunX, sunY, 260);
+    halo.addColorStop(0, "rgba(255,250,232,.95)");
+    halo.addColorStop(0.12, "rgba(255,244,206,.6)");
+    halo.addColorStop(1, "rgba(255,244,206,0)");
+    g.fillStyle = halo;
+    g.fillRect(sunX - 260, sunY - 260, 520, 520);
+
+    // Deniz
+    const sea = g.createLinearGradient(0, PAN_HORIZON, 0, PAN_H);
+    sea.addColorStop(0, "#5b93b4");
+    sea.addColorStop(0.18, "#3d7a9d");
+    sea.addColorStop(0.55, "#215878");
+    sea.addColorStop(1, "#123c58");
+    g.fillStyle = sea;
+    g.fillRect(0, PAN_HORIZON, PAN_W, PAN_H - PAN_HORIZON);
+
+    // Kıyı bantları: iki yanda kara, ortada açık su.
+    paintCoast(g, -40, PAN_W * 0.36, 3.1, 46);
+    paintCoast(g, PAN_W * 0.64, PAN_W + 40, 8.4, 40);
+
+    // Dalga çizgileri: ufka yaklaştıkça sıklaşır, aşağıda kalınlaşır.
+    for (let i = 0; i < 900; i++) {
+      const t = Math.pow(rnd(), 1.9);
+      const y = PAN_HORIZON + 2 + t * (PAN_H - PAN_HORIZON - 2);
+      const x = rnd() * PAN_W;
+      const len = 6 + t * 90 * (0.4 + rnd());
+      const thick = 0.7 + t * 2.6;
+      g.strokeStyle = `rgba(255,255,255,${0.05 + rnd() * 0.16 * (0.35 + t)})`;
+      g.lineWidth = thick;
+      g.beginPath();
+      g.moveTo(x, y);
+      g.lineTo(x + len, y + (rnd() - 0.5) * thick);
+      g.stroke();
+    }
+
+    // Güneş yolu — ufuktan aşağı doğru açılan pırıltı bandı.
+    for (let i = 0; i < 420; i++) {
+      const t = Math.pow(rnd(), 1.6);
+      const y = PAN_HORIZON + 2 + t * (PAN_H - PAN_HORIZON);
+      const spread = 40 + t * 420;
+      const x = sunX + (rnd() - 0.5) * spread * 2;
+      const len = 4 + t * 46;
+      g.strokeStyle = `rgba(255,247,214,${(0.1 + rnd() * 0.4) * (1 - t * 0.55)})`;
+      g.lineWidth = 0.8 + t * 2.4;
+      g.beginPath();
+      g.moveTo(x, y);
+      g.lineTo(x + len, y);
+      g.stroke();
+    }
+
+    // Kendi geminin baş tarafı: ortada, aşağıda; uzaklaştıkça daralır.
+    const cx = PAN_W / 2;
+    const bowTipY = PAN_HORIZON + 44;
+    const baseY = PAN_H;
+    const halfBase = 470;
+    const halfTip = 46;
+
+    // Ambar kapaklarının bulunduğu kırmızı güverte
+    g.beginPath();
+    g.moveTo(cx - halfTip, bowTipY);
+    g.lineTo(cx + halfTip, bowTipY);
+    g.lineTo(cx + halfBase, baseY);
+    g.lineTo(cx - halfBase, baseY);
+    g.closePath();
+    g.fillStyle = "#b8452c";
+    g.fill();
+
+    // Güverte üzerinde perspektifle daralan ambar kapağı bantları
+    const hatches = 5;
+    for (let i = 0; i < hatches; i++) {
+      const t0 = Math.pow(i / hatches, 1.5);
+      const t1 = Math.pow((i + 0.62) / hatches, 1.5);
+      const y0 = bowTipY + (baseY - bowTipY) * t0;
+      const y1 = bowTipY + (baseY - bowTipY) * t1;
+      const w0 = (halfTip + (halfBase - halfTip) * t0) * 0.78;
+      const w1 = (halfTip + (halfBase - halfTip) * t1) * 0.78;
+      g.beginPath();
+      g.moveTo(cx - w0, y0);
+      g.lineTo(cx + w0, y0);
+      g.lineTo(cx + w1, y1);
+      g.lineTo(cx - w1, y1);
+      g.closePath();
+      g.fillStyle = i % 2 === 0 ? "#c65437" : "#a93c26";
+      g.fill();
+      g.strokeStyle = "rgba(60,20,12,.45)";
+      g.lineWidth = 2;
+      g.stroke();
+    }
+
+    // Baş kasara küpeştesi ve direği
+    g.strokeStyle = "rgba(236,240,242,.9)";
+    g.lineWidth = 3;
+    g.beginPath();
+    g.moveTo(cx - halfTip - 6, bowTipY + 2);
+    g.lineTo(cx + halfTip + 6, bowTipY + 2);
+    g.stroke();
+    g.lineWidth = 4;
+    g.beginPath();
+    g.moveTo(cx, bowTipY);
+    g.lineTo(cx, bowTipY - 52);
+    g.stroke();
+
+    // Baş omuzluklarındaki köpük
+    for (const side of [-1, 1]) {
+      for (let i = 0; i < 160; i++) {
+        const t = rnd();
+        const y = bowTipY + t * 130;
+        const x = cx + side * (halfTip + (halfBase - halfTip) * (t * 0.55) + 6 + rnd() * 40);
+        const r = 3 + rnd() * 14 * (0.3 + t);
+        const grad = g.createRadialGradient(x, y, 0, x, y, r);
+        grad.addColorStop(0, `rgba(255,255,255,${0.25 + rnd() * 0.45})`);
+        grad.addColorStop(1, "rgba(255,255,255,0)");
+        g.fillStyle = grad;
+        g.fillRect(x - r, y - r, r * 2, r * 2);
+      }
+    }
+
+    return [toTexture(c, true)];
+  })[0];
+}
+
+/* ─── konsoldaki ölü ekranlar ─── */
+
+/** ECDIS: elektronik harita — kara, derinlik konturları, rota ve gemi sembolü. */
+export function getEcdisTexture(): THREE.CanvasTexture {
+  return remember("ecdis", () => {
+    const [c, g] = makeCanvas(1024, 640);
+    g.fillStyle = "#0a2233";
+    g.fillRect(0, 0, 1024, 640);
+
+    // Sığ su bandı
+    g.fillStyle = "#12496b";
+    g.beginPath();
+    g.moveTo(0, 150);
+    g.bezierCurveTo(260, 90, 420, 250, 700, 190);
+    g.bezierCurveTo(860, 155, 940, 240, 1024, 205);
+    g.lineTo(1024, 0);
+    g.lineTo(0, 0);
+    g.closePath();
+    g.fill();
+
+    // Kara
+    g.fillStyle = "#c8b878";
+    g.beginPath();
+    g.moveTo(0, 96);
+    g.bezierCurveTo(240, 40, 430, 190, 690, 130);
+    g.bezierCurveTo(850, 96, 930, 176, 1024, 142);
+    g.lineTo(1024, 0);
+    g.lineTo(0, 0);
+    g.closePath();
+    g.fill();
+    g.fillStyle = "#8fa86a";
+    g.beginPath();
+    g.moveTo(0, 60);
+    g.bezierCurveTo(280, 10, 470, 150, 720, 92);
+    g.lineTo(1024, 104);
+    g.lineTo(1024, 0);
+    g.lineTo(0, 0);
+    g.closePath();
+    g.fill();
+
+    // Derinlik konturları
+    g.strokeStyle = "rgba(120,190,225,.45)";
+    g.lineWidth = 2;
+    for (let i = 0; i < 4; i++) {
+      g.beginPath();
+      g.moveTo(0, 220 + i * 78);
+      g.bezierCurveTo(300, 180 + i * 84, 560, 300 + i * 70, 1024, 250 + i * 80);
+      g.stroke();
+    }
+
+    // İskandil rakamları
+    const rnd = mulberry32(0x3fa1);
+    g.fillStyle = "rgba(150,205,235,.75)";
+    g.font = "17px 'Courier New', monospace";
+    for (let i = 0; i < 70; i++) {
+      const x = rnd() * 1000 + 10;
+      const y = 230 + rnd() * 400;
+      g.fillText(String(Math.round(9 + rnd() * 80)), x, y);
+    }
+
+    // Planlanan rota + waypoint'ler
+    g.strokeStyle = "#e04a4a";
+    g.lineWidth = 3;
+    g.setLineDash([14, 9]);
+    g.beginPath();
+    g.moveTo(512, 620);
+    g.lineTo(470, 400);
+    g.lineTo(560, 230);
+    g.lineTo(700, 120);
+    g.stroke();
+    g.setLineDash([]);
+    for (const [x, y] of [
+      [470, 400],
+      [560, 230],
+      [700, 120],
+    ]) {
+      g.strokeStyle = "#e04a4a";
+      g.lineWidth = 2.5;
+      g.beginPath();
+      g.arc(x, y, 9, 0, Math.PI * 2);
+      g.stroke();
+    }
+
+    // Kendi gemi sembolü + hız vektörü
+    g.strokeStyle = "#39f07a";
+    g.lineWidth = 3;
+    g.beginPath();
+    g.moveTo(512, 560);
+    g.lineTo(512, 430);
+    g.stroke();
+    g.beginPath();
+    g.moveTo(498, 585);
+    g.lineTo(512, 545);
+    g.lineTo(526, 585);
+    g.lineTo(512, 572);
+    g.closePath();
+    g.stroke();
+
+    // Üst bilgi şeridi
+    g.fillStyle = "rgba(6,18,28,.9)";
+    g.fillRect(0, 0, 1024, 44);
+    g.fillStyle = "#7fd4ff";
+    g.font = "bold 22px 'Courier New', monospace";
+    g.fillText("ECDIS   ROUTE MONITOR", 16, 30);
+    g.fillStyle = "#cfe6f4";
+    g.fillText("HDG 021°   SOG 12.4 kn   XTE 0.02 NM", 470, 30);
+
+    // Yan panel
+    g.fillStyle = "rgba(6,18,28,.86)";
+    g.fillRect(846, 44, 178, 596);
+    g.strokeStyle = "rgba(120,190,225,.3)";
+    g.lineWidth = 1;
+    g.strokeRect(846.5, 44.5, 177, 595);
+    g.fillStyle = "#9fd8ef";
+    g.font = "16px 'Courier New', monospace";
+    const rows = ["WPT 07", "BRG 018°", "DIST 3.1 NM", "TTG 00:15", "RNG 6 NM", "N UP", "AIS ON", "VECT 6 min"];
+    rows.forEach((r, i) => g.fillText(r, 858, 78 + i * 30));
+
+    return [toTexture(c, true)];
+  })[0];
+}
+
+/** Radar: yeşil PPI, halkalar, tarama izi ve hedefler. */
+export function getRadarTexture(): THREE.CanvasTexture {
+  return remember("radar", () => {
+    const [c, g] = makeCanvas(640, 640);
+    g.fillStyle = "#04120c";
+    g.fillRect(0, 0, 640, 640);
+    const cx = 320;
+    const cy = 320;
+    const R = 286;
+
+    const glow = g.createRadialGradient(cx, cy, 0, cx, cy, R);
+    glow.addColorStop(0, "rgba(20,90,50,.5)");
+    glow.addColorStop(1, "rgba(6,30,18,.2)");
+    g.fillStyle = glow;
+    g.beginPath();
+    g.arc(cx, cy, R, 0, Math.PI * 2);
+    g.fill();
+
+    // Mesafe halkaları + pusula taksimatı
+    g.strokeStyle = "rgba(80,240,150,.35)";
+    g.lineWidth = 1.5;
+    for (let i = 1; i <= 5; i++) {
+      g.beginPath();
+      g.arc(cx, cy, (R / 5) * i, 0, Math.PI * 2);
+      g.stroke();
+    }
+    for (let a = 0; a < 360; a += 10) {
+      const rad = (a * Math.PI) / 180;
+      const long = a % 30 === 0;
+      g.strokeStyle = `rgba(110,255,175,${long ? 0.75 : 0.4})`;
+      g.beginPath();
+      g.moveTo(cx + Math.sin(rad) * R, cy - Math.cos(rad) * R);
+      g.lineTo(cx + Math.sin(rad) * (R - (long ? 18 : 9)), cy - Math.cos(rad) * (R - (long ? 18 : 9)));
+      g.stroke();
+    }
+
+    // Tarama izi
+    const sweep = g.createConicGradient ? g.createConicGradient(-Math.PI / 2, cx, cy) : null;
+    if (sweep) {
+      sweep.addColorStop(0, "rgba(90,255,160,.34)");
+      sweep.addColorStop(0.14, "rgba(90,255,160,0)");
+      sweep.addColorStop(1, "rgba(90,255,160,0)");
+      g.fillStyle = sweep;
+      g.beginPath();
+      g.arc(cx, cy, R, 0, Math.PI * 2);
+      g.fill();
+    }
+    g.strokeStyle = "rgba(150,255,190,.85)";
+    g.lineWidth = 2;
+    g.beginPath();
+    g.moveTo(cx, cy);
+    g.lineTo(cx, cy - R);
+    g.stroke();
+
+    // Kıyı yankısı + hedefler
+    const rnd = mulberry32(0x77c3);
+    g.fillStyle = "rgba(120,255,170,.55)";
+    for (let i = 0; i < 900; i++) {
+      const a = (rnd() * 120 - 200) * (Math.PI / 180);
+      const r = R * (0.55 + rnd() * 0.42);
+      g.fillRect(cx + Math.sin(a) * r, cy - Math.cos(a) * r, 2 + rnd() * 4, 2 + rnd() * 3);
+    }
+    for (let i = 0; i < 9; i++) {
+      const a = rnd() * Math.PI * 2;
+      const r = R * (0.2 + rnd() * 0.7);
+      const x = cx + Math.sin(a) * r;
+      const y = cy - Math.cos(a) * r;
+      g.fillStyle = "rgba(180,255,205,.95)";
+      g.beginPath();
+      g.arc(x, y, 4 + rnd() * 3, 0, Math.PI * 2);
+      g.fill();
+      g.strokeStyle = "rgba(180,255,205,.7)";
+      g.lineWidth = 1.5;
+      g.beginPath();
+      g.moveTo(x, y);
+      g.lineTo(x + (rnd() - 0.5) * 40, y - rnd() * 34);
+      g.stroke();
+    }
+
+    // Köşe okumaları
+    g.fillStyle = "#9dffc6";
+    g.font = "bold 20px 'Courier New', monospace";
+    g.fillText("RM(T)", 14, 30);
+    g.fillText("RNG 6 NM", 14, 56);
+    g.fillText("VRM 2.4", 14, 82);
+    g.fillText("EBL 047°", 500, 30);
+    g.fillText("CPA 0.8", 500, 56);
+    g.fillText("TCPA 11m", 500, 82);
+
+    return [toTexture(c, true)];
+  })[0];
+}
+
+/** Kaptan konsolundaki dümen açısı / devir göstergesi (statik kadran). */
+export function getGaugeTexture(kind: "rudder" | "rpm"): THREE.CanvasTexture {
+  return remember(`gauge-${kind}`, () => {
+    const [c, g] = makeCanvas(256, 256);
+    g.fillStyle = "#101215";
+    g.fillRect(0, 0, 256, 256);
+    g.fillStyle = "#e9e6df";
+    g.beginPath();
+    g.arc(128, 128, 108, 0, Math.PI * 2);
+    g.fill();
+
+    g.strokeStyle = "#1b1e22";
+    g.lineWidth = 3;
+    g.beginPath();
+    g.arc(128, 128, 108, 0, Math.PI * 2);
+    g.stroke();
+
+    const ticks = kind === "rudder" ? 15 : 13;
+    const span = kind === "rudder" ? Math.PI * 1.05 : Math.PI * 1.5;
+    for (let i = 0; i < ticks; i++) {
+      const a = -Math.PI / 2 - span / 2 + (span * i) / (ticks - 1);
+      const major = i % 2 === 0;
+      g.strokeStyle = "#1b1e22";
+      g.lineWidth = major ? 3.5 : 2;
+      g.beginPath();
+      g.moveTo(128 + Math.cos(a) * 92, 128 + Math.sin(a) * 92);
+      g.lineTo(128 + Math.cos(a) * (major ? 72 : 80), 128 + Math.sin(a) * (major ? 72 : 80));
+      g.stroke();
+    }
+
+    g.fillStyle = "#1b1e22";
+    g.font = "bold 20px Helvetica, Arial, sans-serif";
+    g.textAlign = "center";
+    g.fillText(kind === "rudder" ? "RUDDER" : "RPM", 128, 176);
+    g.font = "13px Helvetica, Arial, sans-serif";
+    g.fillText(kind === "rudder" ? "PORT · STBD" : "SHAFT", 128, 196);
+
+    // İbre
+    const needle = kind === "rudder" ? -Math.PI / 2 + 0.22 : -Math.PI / 2 + 0.6;
+    g.strokeStyle = kind === "rudder" ? "#c0392b" : "#1b1e22";
+    g.lineWidth = 5;
+    g.beginPath();
+    g.moveTo(128, 128);
+    g.lineTo(128 + Math.cos(needle) * 84, 128 + Math.sin(needle) * 84);
+    g.stroke();
+    g.fillStyle = "#2b2f34";
+    g.beginPath();
+    g.arc(128, 128, 9, 0, Math.PI * 2);
+    g.fill();
+
+    return [toTexture(c, true)];
+  })[0];
+}
+
+/** Cam/ekran üstündeki köşegen parlama — pencerelerin cam olduğunu belli eder. */
+export function getGlassGlareTexture(): THREE.CanvasTexture {
+  return remember("glare", () => {
+    const [c, g] = makeCanvas(512, 256);
+    g.fillStyle = "#000000";
+    g.fillRect(0, 0, 512, 256);
+    g.save();
+    g.translate(256, 128);
+    g.rotate(-0.42);
+    const streak = g.createLinearGradient(-260, 0, 260, 0);
+    streak.addColorStop(0, "rgba(255,255,255,0)");
+    streak.addColorStop(0.34, "rgba(255,255,255,.45)");
+    streak.addColorStop(0.42, "rgba(255,255,255,.16)");
+    streak.addColorStop(0.55, "rgba(255,255,255,.5)");
+    streak.addColorStop(0.62, "rgba(255,255,255,.1)");
+    streak.addColorStop(1, "rgba(255,255,255,0)");
+    g.fillStyle = streak;
+    g.fillRect(-300, -46, 600, 92);
+    g.restore();
+    // Kenarlara doğru sönümle: parlama panelin ortasında kalsın.
+    const vig = g.createRadialGradient(256, 128, 40, 256, 128, 300);
+    vig.addColorStop(0, "rgba(0,0,0,0)");
+    vig.addColorStop(1, "rgba(0,0,0,1)");
+    g.globalCompositeOperation = "multiply";
+    g.fillStyle = vig;
+    g.fillRect(0, 0, 512, 256);
+    return [toTexture(c, true)];
+  })[0];
+}
+
+/**
+ * Kapalı bir widget'ın boş yuvası: sönük ekran ve üstünde cihazın künyesi.
+ * Ayarlardan kapatılan widget köprüüstünden silinmez — yeri, sökülmüş bir
+ * cihazın kör kapağı gibi durur.
+ */
+export function getFixtureLabelTexture(name: string): THREE.CanvasTexture {
+  return remember(`fixture-${name}`, () => {
+    const [c, g] = makeCanvas(512, 288);
+    g.fillStyle = "#1b1f22";
+    g.fillRect(0, 0, 512, 288);
+    speckle(g, 512, 288, hashSeed(name), 140, 22, 0.05);
+    // Kör kapağın kenar pahı
+    g.strokeStyle = "rgba(255,255,255,.08)";
+    g.lineWidth = 3;
+    g.strokeRect(10, 10, 492, 268);
+    g.fillStyle = "rgba(214,226,236,.42)";
+    g.font = "bold 30px Helvetica, Arial, sans-serif";
+    g.textAlign = "center";
+    g.textBaseline = "middle";
+    g.fillText(name, 256, 138);
+    g.font = "20px Helvetica, Arial, sans-serif";
+    g.fillStyle = "rgba(214,226,236,.24)";
+    g.fillText("KAPALI", 256, 178);
+    return [toTexture(c, true)];
+  })[0];
+}
