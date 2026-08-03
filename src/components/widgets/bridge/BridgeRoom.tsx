@@ -1,24 +1,18 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import * as THREE from "three";
-import {
-  getDeckTexture,
-  getDeckheadTexture,
-  getGlassGlareTexture,
-  getPaintTexture,
-  getSeaPanoramaTexture,
-} from "./bridgeTextures";
+import { getDeckTexture, getDeckheadTexture, getGlassGlareTexture, getPaintTexture } from "./bridgeTextures";
 import { CLOCK_BOARD, FRONT_WING_Z, ROOM, SCENE_SCALE, WINDOW_PANELS } from "./bridgeLayout";
 
 /**
- * Köprüüstü kabuğu: güverte, tavan, perdeler, pencere kuşağı ve pencerelerden
- * görünen deniz.
+ * Köprüüstü kabuğu: güverte, tavan, perdeler ve pencere kuşağı.
  *
  * Pencere kuşağı gerçek bir köprüüstü gibi kırık hatlı — orta cam düz, yanlar
  * 22° ve 50° açılarak kanatlara doğru dönüyor (bkz. bridgeLayout →
- * WINDOW_PANELS). Her camın gösterdiği manzara tek bir panorama tuvalinin
- * kendi u dilimi olduğu için görüntü direklerin arasında kesintisiz devam
- * ediyor; cam yüzeyleri ışıktan etkilenmesin diye aydınlatmasız çiziliyor,
- * gündüz ışığı gibi parlak kalıyorlar.
+ * WINDOW_PANELS).
+ *
+ * Camların ardı artık boş: manzara buraya boyanmıyor, dışarıda gerçek
+ * geometri olarak duruyor (SeaHorizon + ShipExterior). Oda bu yüzden yalnız
+ * kabuk — açıklıkların arasından geminin kendi baş güvertesi görünüyor.
  */
 
 const PAINT_COLOR = "#eef1f3";
@@ -57,33 +51,32 @@ function WallSlab({
   );
 }
 
-/** Tek bir cam: panoramanın u dilimini taşıyan aydınlatmasız düzlem + parlama. */
+/**
+ * Tek bir cam.
+ *
+ * Eskiden burada panoramanın u dilimini taşıyan aydınlatmasız bir düzlem
+ * vardı: manzara camın üstüne boyalıydı, dolayısıyla kamera dönünce hiç
+ * kaymıyordu. Artık dışarısı gerçek geometri (bkz. SeaHorizon, ShipExterior)
+ * ve cam açıklığı gerçekten açık — geriye yalnız camın kendi parlaması kaldı.
+ */
 function WindowGlass({ panel }: { panel: (typeof WINDOW_PANELS)[number] }) {
-  const panorama = getSeaPanoramaTexture();
   const glare = getGlassGlareTexture();
   const height = ROOM.headY - ROOM.sillY;
 
-  const geometry = useMemo(() => {
-    const g = new THREE.PlaneGeometry(panel.width, height);
-    const uv = g.attributes.uv as THREE.BufferAttribute;
-    for (let i = 0; i < uv.count; i++) {
-      uv.setX(i, panel.u0 + uv.getX(i) * (panel.u1 - panel.u0));
-    }
-    uv.needsUpdate = true;
-    return g;
-  }, [panel.width, panel.u0, panel.u1, height]);
-
-  useEffect(() => () => geometry.dispose(), [geometry]);
-
   return (
     <group position={[panel.center[0], (ROOM.sillY + ROOM.headY) / 2, panel.center[1]]} rotation={[0, panel.yaw, 0]}>
-      <mesh geometry={geometry} position={[0, 0, -0.03]}>
-        <meshBasicMaterial map={panorama} toneMapped={false} />
-      </mesh>
-      {/* Camın kendisi: manzaranın üstünden geçen köşegen parlama. */}
+      {/* Camın izi: dışarıdan gelen ışığın köşegen yansıması. Derinliğe
+          yazmaz, yoksa arkasındaki denizi keserdi. */}
       <mesh position={[0, 0, -0.014]}>
         <planeGeometry args={[panel.width, height]} />
-        <meshBasicMaterial map={glare} transparent opacity={0.16} blending={THREE.AdditiveBlending} depthWrite={false} />
+        <meshBasicMaterial
+          map={glare}
+          transparent
+          opacity={0.16}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          fog={false}
+        />
       </mesh>
     </group>
   );

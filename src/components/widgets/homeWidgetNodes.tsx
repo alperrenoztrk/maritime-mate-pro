@@ -17,6 +17,10 @@ import { SunArcWidget } from "@/components/widgets/instruments/SunArcWidget";
  * ızgarada (HomeWidgetGrid) ve köprüüstü modelinde cihazların üstünde
  * (bridge/BridgeInstrumentMounts). İkisi de bu hook'u kullandığı için veri
  * bir kez çekiliyor ve iki görünüm asla ayrışmıyor.
+ *
+ * Hook hazır bileşenlerin yanında verinin ham hâlini de döndürüyor
+ * (BridgeConditions): köprüüstü sahnesinin dışarısı — gökyüzü, ışık, denizin
+ * salınımı — widget'ların gösterdiği aynı sayılardan kuruluyor.
  */
 
 function degreesToCompass(degrees: number): string {
@@ -73,7 +77,30 @@ function zonedTimeParts(now: Date, timeZone?: string): { h: number; m: number; s
 
 export type HomeWidgetNodes = Partial<Record<HomeWidgetId, ReactNode>>;
 
-export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetNodes {
+/**
+ * Widget'ların gösterdiği verinin ham hâli.
+ *
+ * Köprüüstü sahnesi dışarıyı bununla kuruyor: gökyüzü ve ışık sunProgress'ten
+ * (güneş widget'ıyla aynı skyLook() tablosu), denizin salınımı rüzgârdan,
+ * rengi hava kodundan. Widget'lar bunları zaten çiziyor; aynı sayıları
+ * pencerenin dışına da vermek, iki anlatının ayrışmasını engelliyor —
+ * termometre 4 °C gösterirken camdan yaz günü görünmesin.
+ */
+export interface BridgeConditions {
+  /** 0 gün doğuşu, 1 gün batışı; aralık dışı gece (kırpılmamış). */
+  sunProgress: number | null;
+  windSpeedKt?: number;
+  windDirectionDeg?: number;
+  /** WMO hava kodu — 45 ve üstü kapalı/yağışlı. */
+  weatherCode?: number;
+}
+
+export interface HomeWidgetData {
+  nodes: HomeWidgetNodes;
+  conditions: BridgeConditions;
+}
+
+export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({
     watchPosition: false,
     refreshMs: 300000,
@@ -153,7 +180,14 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetNodes 
     if (set > rise) sunProgress = (now.getTime() - rise) / (set - rise);
   }
 
-  return {
+  const conditions: BridgeConditions = {
+    sunProgress,
+    windSpeedKt: data?.windSpeedKt,
+    windDirectionDeg: data?.windDirectionDeg,
+    weatherCode: data?.weatherCode,
+  };
+
+  const nodes: HomeWidgetNodes = {
     "clock-national": (
       <ChronometerWidget
         label="Yerel Saat"
@@ -200,4 +234,6 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetNodes 
     ),
     sun: <SunArcWidget sunrise={sunrise} sunset={sunset} progress={sunProgress} />,
   };
+
+  return { nodes, conditions };
 }

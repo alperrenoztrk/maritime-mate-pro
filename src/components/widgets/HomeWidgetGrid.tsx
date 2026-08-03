@@ -37,7 +37,9 @@ export function HomeWidgetGrid() {
   const [manualOpen, setManualOpen] = useState(false);
   const [view, setView] = useState<WidgetView>(readView);
 
-  const nodes = useHomeWidgetNodes(useCallback(() => setManualOpen(true), []));
+  // Aynı hook hem widget bileşenlerini hem de köprüüstünün dışarısını besleyen
+  // ham veriyi veriyor; ızgara görünümü ikincisini kullanmıyor.
+  const { nodes, conditions } = useHomeWidgetNodes(useCallback(() => setManualOpen(true), []));
 
   useEffect(() => {
     try {
@@ -86,7 +88,7 @@ export function HomeWidgetGrid() {
       </div>
 
       {view === "bridge" ? (
-        <BridgeWidgetView nodes={nodes} enabled={enabled} fallback={grid} />
+        <BridgeWidgetView nodes={nodes} enabled={enabled} conditions={conditions} fallback={grid} />
       ) : (
         <div className="px-4">{grid}</div>
       )}

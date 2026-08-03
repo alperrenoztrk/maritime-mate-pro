@@ -5,7 +5,7 @@ import type { HomeWidgetId } from "@/hooks/useHomeWidgets";
  *
  * Eksenler: +X sancak, +Y yukarı, +Z kıç (kameraya doğru). Bütün ölçüler
  * metredir; oda gerçek bir köprüüstü kadar geniş tutuldu ki konsol yüksekliği
- * (0.92 m), pencere denizlik hizası (1.14 m) ve göz hizası (1.62 m)
+ * (0.92 m), pencere denizlik hizası (0.95 m) ve göz hizası (1.6 m)
  * birbiriyle tutarlı olsun.
  *
  * Widget'ların yerleri uydurma değil, gemideki asıl yerleri:
@@ -32,17 +32,145 @@ import type { HomeWidgetId } from "@/hooks/useHomeWidgets";
  */
 export const SCENE_SCALE = 100;
 
+/**
+ * Dümencinin göz hizası — kameranın yüksekliği ve ufkun dünyadaki yeri.
+ * Sahne birimine çevrilmesi gereken her yerde SCENE_SCALE ile çarpılır.
+ */
+export const EYE_Y = 1.6;
+
 export const ROOM = {
   deckY: 0,
   deckheadY: 2.62,
   /** Yan perdelerin bordadan uzaklığı — pencere kavisinin bittiği yer. */
   halfWidth: 2.78,
   aftZ: 2.6,
-  /** Pencere denizliği ve üst kirişi. */
-  sillY: 1.12,
+  /**
+   * Pencere denizliği ve üst kirişi.
+   *
+   * Denizlik konsol tezgâhıyla (0.92) neredeyse aynı hizada, kasten: köprüüstü
+   * camları güverteyi ve gemiye yakın deniz yüzeyini görebilmek için alçak
+   * kesilir. Denizlik ne kadar yüksekse kör sektör o kadar uzar — SOLAS V/22
+   * bunu iki gemi boyuyla sınırlıyor.
+   */
+  sillY: 0.95,
   headY: 2.06,
   /** Direklerin/çerçevenin kalınlığı. */
   mullion: 0.08,
+} as const;
+
+/**
+ * Camın dışı: geminin kendisi, deniz ve ufuk.
+ *
+ * Dikey datum odanın güvertesi (y=0). Göz hizası 1.6 m; ana güverte 2.7 m
+ * altta — köprüüstü tek katlı bir güverte evinin üstünde. Su hattı ana
+ * güverteden 5.0 m aşağıda (fribord), göz su üstünde 9.3 m kalıyor.
+ *
+ * BOY NEDEN 118 m: manzaranın geometrisi belirledi, oda değil.
+ *
+ * Camdan aşağı bakılabilen açı sınırlı. Denizlik 7.5°'de kesiyor, ama asıl
+ * engel konsolun yükseltilmiş gösterge kutusu: göz (y=1.6, z=1.95) ile kutunun
+ * üstü (y≈1.15, z=-1.84) yatayın 6.8° altında bir hat çiziyor. Bundan daha
+ * yatay bakılamıyor.
+ *
+ * Bir ışın θ açısıyla inerken güverteyi (gözün 4.3 m altında) 4.3/tanθ
+ * mesafesinde keser. Bu mesafe geminin başından uzaksa ışın başın üstünden
+ * geçip denize düşer. Yani güverte ancak
+ *
+ *     θ ≥ atan(4.3 / başa_olan_mesafe)
+ *
+ * açılarında görünür. Kısa gemide bu eşik büyür ve güverte incecik bir şeride
+ * iner: ilk denemede gemi 78 m'ydi, baş 60 m'deydi, eşik 4.1° çıkıyordu ve
+ * kullanılabilir 6.8°'nin yalnız 2.7°'si gemiye kalıyordu — pencerenin çoğu
+ * denizdi. 118 m'de baş ~100 m'ye gidiyor, eşik 2.5°'ye düşüyor ve gemi
+ * 4.3°'yi alıyor. Sezgiye ters ama doğru: köprüüstünden gemiyi büyüten şey
+ * yakın güverte değil, UZAK güvertedir.
+ *
+ * Boy odanın genişliğinden çıkarılmadı, çünkü oda zaten gerçeğinden dar
+ * (telefon ekranı için — bkz. dosya başı). Kullanıcı köprüüstünün genişliğiyle
+ * geminin genişliğini aynı karede karşılaştıramıyor.
+ *
+ * Buradan çıkan katmanlar:
+ *   • kör sektör  9.3 / 0.119 = 78 m ≈ 0.66 gemi boyu — SOLAS V/22 iki gemi
+ *     boyuna izin veriyor, gerçek bir köprüüstünün içindeyiz
+ *   • güverte plakası 36 m'den başa kadar
+ *   • ambar mezarnalarının üstü (y=-1.2) 24 m'den itibaren
+ *   • baş kasara güvertesi (y=-0.5) 18 m'den itibaren
+ */
+export const EXTERIOR = {
+  /** Ana güverte — odanın güvertesinden 2.7 m, yani bir güverte aşağıda. */
+  mainDeckY: -2.7,
+  /** Su hattı — ana güverteden 5.0 m aşağıda (fribord). */
+  waterlineY: -7.7,
+  /** Tam boy ve genişlik: çok maksatlı kuru yük gemisi. */
+  loa: 118,
+  beam: 17.4,
+  /** Baş bodoslama ve kıç aynalık (z ekseninde; baş −Z yönünde). */
+  stemZ: -98,
+  transomZ: 20,
+  /** Ambar ağzı mezarnası: güverteden yüksekliği ve ağzın yarı genişliği. */
+  coamingHeight: 1.5,
+  hatchHalfWidth: 6.2,
+  /** Üç ambar ağzı — köprüüstü perdesi z=-3'te bitiyor. */
+  hatches: [
+    { z0: -10, z1: -34 },
+    { z0: -38, z1: -62 },
+    { z0: -66, z1: -84 },
+  ] as Array<{ z0: number; z1: number }>,
+  /** Küpeşte yüksekliği — güverte kenarında. */
+  bulwarkHeight: 1.1,
+  /** Baş kasara: kırılma yeri ve ana güverteden yüksekliği. */
+  forecastleBreakZ: -88,
+  forecastleRise: 2.2,
+  /**
+   * İki güverte vinci, ambar aralarında ve merkez hattının dışında.
+   *
+   * Bordaya alınmaları hem gerçek (çok maksatlı gemilerde vinçler ambar
+   * ağzını boş bırakmak için bir tarafa kaydırılır) hem de zorunlu: merkez
+   * hattındayken kule ve bom tam karşıya gelip güverteyi baştan sona
+   * kapatıyordu.
+   */
+  cranes: [
+    { z: -36, x: -5.6 },
+    { z: -64, x: -5.6 },
+  ] as Array<{ z: number; x: number }>,
+  /** Direk baş kasara güvertesinde; ırgat onun ilerisinde. */
+  mastZ: -90,
+  mastHeight: 12,
+  windlassZ: -93,
+} as const;
+
+/**
+ * Deniz ve ufuk.
+ *
+ * Fon, panorama dokusunu taşıyan geniş bir silindir yayı. Kamera odanın içinde
+ * en fazla ~1.5 m geziniyor; 600 m'deki bir fon buna karşılık 0.15° parallaks
+ * yapar, yani sabit durur — ama artık **geminin arkasındadır**, üstüne boyalı
+ * değil. İşin asıl kazancı bu: gemi fona göre kayar.
+ *
+ * Yükseklik: dikey olarak ±14° kapsanıyor (600 m'de ±150 m). 240°'lik yayın
+ * çevresi 2513 m, yüksekliği 300 m → 8.4:1; panorama dokusu 3072×384 = 8:1,
+ * yani doku neredeyse hiç esnemeden oturuyor.
+ *
+ * Merkez yüksekliği ufuk çizgisinden çıkar ve elle yazılmaz: dokuda ufuk
+ * üstten %45.8'de (PANORAMA_HORIZON_V), dünyada da göz hizasına (EYE_Y) denk
+ * gelmeli. SeaHorizon bu ikisinden hesaplıyor — ≈ −10.9 m.
+ */
+export const HORIZON_SCENE = {
+  backdropRadius: 600,
+  backdropHeight: 300,
+  /** Yayın açıklığı — kamera azimutu ±0.5 rad kısıtlı, 240° fazlasıyla yeter. */
+  backdropArc: (240 * Math.PI) / 180,
+  /** Deniz düzlemi, sis bandının ötesine taşacak kadar geniş. */
+  seaRadius: 700,
+  /**
+   * Sis: deniz düzleminin dış kenarını fonun boyalı denizine bağlar. 700 m'deki
+   * kenar ufkun 0.74° altında kalıyor; sis olmadan orada bir disk kenarı
+   * görünürdü. Oda (≤6 m) ve gemi (≤60 m) sisin çok berisinde.
+   */
+  fogNear: 200,
+  fogFar: 650,
+  /** Panoramanın ufuk hizasındaki deniz rengi — sis bununla karışmalı. */
+  fogColor: "#5b93b4",
 } as const;
 
 /** Ön perdenin plan görünümü: iskele kanadından sancak kanadına kırık hat. */
@@ -61,7 +189,13 @@ export interface WindowPanel {
   /** Y ekseni etrafında dönüş — panelin yüzü oda içine bakar. */
   yaw: number;
   width: number;
-  /** Panoramanın bu panele düşen u aralığı; manzara direkler arasında sürer. */
+  /**
+   * Panelin ön perde boyunca kapladığı oran (0 iskele ucu, 1 sancak ucu).
+   *
+   * Manzara camlara boyanırken panoramanın u dilimiydi. Cam artık geçirgen
+   * (bkz. BridgeRoom → WindowGlass), manzara dışarıda gerçek geometri; bu
+   * aralık yalnız perdenin plan geometrisini tarif etmek için duruyor.
+   */
   u0: number;
   u1: number;
 }
