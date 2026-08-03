@@ -1,6 +1,6 @@
 import { Component, Suspense, lazy, type ReactNode } from "react";
 import type { HomeWidgetId } from "@/hooks/useHomeWidgets";
-import type { HomeWidgetNodes } from "@/components/widgets/homeWidgetNodes";
+import type { BridgeConditions, HomeWidgetNodes } from "@/components/widgets/homeWidgetNodes";
 
 /**
  * Köprüüstü görünümünün kapısı: 3B sahneyi ayrı bir parçaya ayırır ve
@@ -40,17 +40,19 @@ function SceneLoading() {
 interface BridgeWidgetViewProps {
   nodes: HomeWidgetNodes;
   enabled: HomeWidgetId[];
+  /** Camın dışını kuran canlı veri: güneş, rüzgâr, hava kodu. */
+  conditions?: BridgeConditions;
   /** 3B başlatılamazsa gösterilecek düz ızgara. */
   fallback: ReactNode;
 }
 
-export function BridgeWidgetView({ nodes, enabled, fallback }: BridgeWidgetViewProps) {
+export function BridgeWidgetView({ nodes, enabled, conditions, fallback }: BridgeWidgetViewProps) {
   return (
     <div className="px-4">
       <div className="relative h-[46svh] min-h-[280px] w-full overflow-hidden rounded-2xl border border-white/15 bg-slate-950 shadow-[0_18px_40px_rgba(0,0,0,.45)]">
         <BridgeErrorBoundary fallback={<div className="h-full overflow-y-auto p-3">{fallback}</div>}>
           <Suspense fallback={<SceneLoading />}>
-            <BridgeScene3D nodes={nodes} enabled={enabled} />
+            <BridgeScene3D nodes={nodes} enabled={enabled} conditions={conditions} />
           </Suspense>
         </BridgeErrorBoundary>
 

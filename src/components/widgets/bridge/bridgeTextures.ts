@@ -281,12 +281,20 @@ function paintCoast(g: CanvasRenderingContext2D, x0: number, x1: number, seed: n
 }
 
 /**
- * Pencerelerden görünen deniz. Tek geniş tuval; her pencere paneli kendi u
- * dilimini gösterdiği için manzara direkler arasında kesintisiz devam eder
- * (bkz. bridgeLayout.ts → WINDOW_PANELS.u0/u1).
+ * Ufuk dokusunun düşey ekseninde ufuk çizgisinin yeri (0 üst, 1 alt).
+ * Fon silindirinin merkez yüksekliği buradan hesaplanır — bkz. SeaHorizon.
+ */
+export const PANORAMA_HORIZON_V = PAN_HORIZON / PAN_H;
+
+/**
+ * Uzak fon: gökyüzü, kıyı ve ufka kadar giden deniz.
  *
- * Kompozisyon fotoğraftaki gibi: iki yanda boğaz kıyısı, ortada açık su ve
- * kendi geminin baş tarafı.
+ * Eskiden camlara boyanıyordu — her pencere paneli tuvalin kendi u dilimini
+ * gösteriyordu — ve kendi geminin baş tarafı da bu tuvale çiziliydi. Artık
+ * gemi camın dışında gerçek geometri; bu tuval camdan değil, geminin
+ * arkasındaki fon silindirinden görünüyor (bkz. SeaHorizon → HORIZON_SCENE).
+ * Kompozisyon aynı kaldı — iki yanda boğaz kıyısı, ortada açık su — yalnız
+ * boyalı baş taraf çıkarıldı.
  */
 export function getSeaPanoramaTexture(): THREE.CanvasTexture {
   return remember("panorama", () => {
@@ -374,75 +382,176 @@ export function getSeaPanoramaTexture(): THREE.CanvasTexture {
       g.stroke();
     }
 
-    // Kendi geminin baş tarafı: ortada, aşağıda; uzaklaştıkça daralır.
-    const cx = PAN_W / 2;
-    const bowTipY = PAN_HORIZON + 44;
-    const baseY = PAN_H;
-    const halfBase = 470;
-    const halfTip = 46;
-
-    // Ambar kapaklarının bulunduğu kırmızı güverte
-    g.beginPath();
-    g.moveTo(cx - halfTip, bowTipY);
-    g.lineTo(cx + halfTip, bowTipY);
-    g.lineTo(cx + halfBase, baseY);
-    g.lineTo(cx - halfBase, baseY);
-    g.closePath();
-    g.fillStyle = "#b8452c";
-    g.fill();
-
-    // Güverte üzerinde perspektifle daralan ambar kapağı bantları
-    const hatches = 5;
-    for (let i = 0; i < hatches; i++) {
-      const t0 = Math.pow(i / hatches, 1.5);
-      const t1 = Math.pow((i + 0.62) / hatches, 1.5);
-      const y0 = bowTipY + (baseY - bowTipY) * t0;
-      const y1 = bowTipY + (baseY - bowTipY) * t1;
-      const w0 = (halfTip + (halfBase - halfTip) * t0) * 0.78;
-      const w1 = (halfTip + (halfBase - halfTip) * t1) * 0.78;
-      g.beginPath();
-      g.moveTo(cx - w0, y0);
-      g.lineTo(cx + w0, y0);
-      g.lineTo(cx + w1, y1);
-      g.lineTo(cx - w1, y1);
-      g.closePath();
-      g.fillStyle = i % 2 === 0 ? "#c65437" : "#a93c26";
-      g.fill();
-      g.strokeStyle = "rgba(60,20,12,.45)";
-      g.lineWidth = 2;
-      g.stroke();
-    }
-
-    // Baş kasara küpeştesi ve direği
-    g.strokeStyle = "rgba(236,240,242,.9)";
-    g.lineWidth = 3;
-    g.beginPath();
-    g.moveTo(cx - halfTip - 6, bowTipY + 2);
-    g.lineTo(cx + halfTip + 6, bowTipY + 2);
-    g.stroke();
-    g.lineWidth = 4;
-    g.beginPath();
-    g.moveTo(cx, bowTipY);
-    g.lineTo(cx, bowTipY - 52);
-    g.stroke();
-
-    // Baş omuzluklarındaki köpük
-    for (const side of [-1, 1]) {
-      for (let i = 0; i < 160; i++) {
-        const t = rnd();
-        const y = bowTipY + t * 130;
-        const x = cx + side * (halfTip + (halfBase - halfTip) * (t * 0.55) + 6 + rnd() * 40);
-        const r = 3 + rnd() * 14 * (0.3 + t);
-        const grad = g.createRadialGradient(x, y, 0, x, y, r);
-        grad.addColorStop(0, `rgba(255,255,255,${0.25 + rnd() * 0.45})`);
-        grad.addColorStop(1, "rgba(255,255,255,0)");
-        g.fillStyle = grad;
-        g.fillRect(x - r, y - r, r * 2, r * 2);
-      }
-    }
+    // Kendi geminin baş tarafı burada çizilmez: gemi artık camın dışında
+    // gerçek geometri (bkz. ShipExterior). Bu tuval yalnız uzak fon — gökyüzü,
+    // kıyı ve ufka kadar giden deniz.
 
     return [toTexture(c, true)];
   })[0];
+}
+
+/* ─── camın dışı: geminin yüzeyleri ─── */
+
+/**
+ * Dış mekân dokularının tekrarı dokunun kendisinde değil, geometrinin
+ * UV'lerinde: shipExterior.ts koordinatları doğrudan metreden UV'ye çevirir
+ * (bkz. PLATE_M). Böylece 80 m'lik güverte ile 2 m'lik bir küpeşte parçası
+ * aynı sac ölçeğini gösterir; doku tarafında oran ayarlamak gerekmez.
+ */
+
+/**
+ * Yük güvertesi: kiremit kırmızısı güverte boyası.
+ *
+ * Yürüme yolları ve ambar çevresi gemide en çok aşınan yerdir; boya oradan
+ * kalkar, altındaki astar ve pas görünür. Tuvaldeki dört dikiş, UV ölçeğiyle
+ * birlikte yaklaşık 0.8 m'de bir sac derzi verir.
+ */
+export function getWeatherDeckTexture(): SurfaceSet {
+  const [map, bump] = remember("weatherDeck", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#96412c";
+    g.fillRect(0, 0, 512, 512);
+    // Boyanın kalktığı yerler: astar grisi ve pas.
+    speckle(g, 512, 512, 0x51a3, 260, 16, 0.16, "70,52,44", "186,150,120");
+    speckle(g, 512, 512, 0x9c17, 90, 26, 0.12, "58,44,38", "150,96,60");
+    // Kaymaz yüzeyin ince taneleri.
+    speckle(g, 512, 512, 0x2ef4, 1400, 2.4, 0.22, "48,26,18", "196,132,104");
+
+    // Sac dikişleri — bir kenarında ışık, öbüründe gölge.
+    g.lineWidth = 3;
+    for (let p = 0; p <= 512; p += 128) {
+      g.strokeStyle = "rgba(52,26,18,.35)";
+      g.beginPath();
+      g.moveTo(0, p);
+      g.lineTo(512, p);
+      g.stroke();
+      g.strokeStyle = "rgba(226,168,140,.18)";
+      g.beginPath();
+      g.moveTo(0, p + 3);
+      g.lineTo(512, p + 3);
+      g.stroke();
+    }
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#8a8a8a";
+    hg.fillRect(0, 0, 256, 256);
+    speckle(hg, 256, 256, 0x2ef4, 900, 2, 0.55);
+    hg.strokeStyle = "#3a3a3a";
+    hg.lineWidth = 2;
+    for (let p = 0; p <= 256; p += 64) {
+      hg.beginPath();
+      hg.moveTo(0, p);
+      hg.lineTo(256, p);
+      hg.stroke();
+    }
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 1, 1), bumpMap: tiled(bump, 1, 1) };
+}
+
+/**
+ * Katlanır ambar kapağı: enine panellere bölünmüş, takviyeli çelik.
+ *
+ * Kapağın okunur tarafı panel derzleridir — kapak enine katlandığı için
+ * derzler gemiyi enlemesine keser. Kapak geometrisi UV'yi bu yöne göre
+ * kuruyor, derzler de gemiyi enine kesiyor.
+ */
+export function getHatchCoverTexture(): SurfaceSet {
+  const [map, bump] = remember("hatchCover", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#63676a";
+    g.fillRect(0, 0, 512, 512);
+    speckle(g, 512, 512, 0x7a31, 320, 10, 0.16, "34,38,42", "148,154,158");
+    // Pas lekeleri — kapak yıllarca açık havada durur. Az ve dağınık: sık
+    // çizilirse boyuna şeritler oluşup çelik kapak ahşap güverteye benziyor.
+    const rnd = mulberry32(0x4d21);
+    for (let i = 0; i < 26; i++) {
+      const x = rnd() * 512;
+      const w = 3 + rnd() * 9;
+      const h = 30 + rnd() * 90;
+      const y = rnd() * (512 - h);
+      const grad = g.createLinearGradient(0, y, 0, y + h);
+      grad.addColorStop(0, "rgba(134,78,42,.3)");
+      grad.addColorStop(1, "rgba(134,78,42,0)");
+      g.fillStyle = grad;
+      g.fillRect(x, y, w, h);
+    }
+
+    // Panel derzleri — kapağın okunur tarafı bunlar, bu yüzden baskın.
+    // Aralarındaki ince çizgiler panel takviyeleri.
+    g.fillStyle = "rgba(22,26,30,.3)";
+    for (let p = 32; p < 512; p += 128) {
+      for (let q = 0; q < 3; q++) g.fillRect(0, p + q * 32, 512, 2);
+    }
+    for (let p = 0; p <= 512; p += 128) {
+      g.fillStyle = "rgba(18,22,26,.85)";
+      g.fillRect(0, p - 4, 512, 8);
+      g.fillStyle = "rgba(198,206,212,.35)";
+      g.fillRect(0, p + 4, 512, 3);
+    }
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#9a9a9a";
+    hg.fillRect(0, 0, 256, 256);
+    hg.fillStyle = "#101010";
+    for (let p = 0; p <= 256; p += 64) hg.fillRect(0, p - 3, 256, 6);
+    speckle(hg, 256, 256, 0x7a31, 400, 3, 0.28);
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 1, 1), bumpMap: tiled(bump, 1, 1) };
+}
+
+/**
+ * Küpeşte, kasara perdesi ve bordanın su üstü kuşağı: açık gri gemi boyası.
+ *
+ * Odanın perdeleriyle (getPaintTexture) aynı boya değil — dışarısı hava ve
+ * tuzla yıkanır, dikişler daha belirgin, güverteye yakın yerde pas akar.
+ */
+export function getTopsideTexture(): SurfaceSet {
+  const [map, bump] = remember("topside", () => {
+    const [c, g] = makeCanvas(512, 512);
+    g.fillStyle = "#dfe3e5";
+    g.fillRect(0, 0, 512, 512);
+    speckle(g, 512, 512, 0x1b8c, 240, 14, 0.09, "80,88,96", "255,255,255");
+
+    // Yatay sac dikişleri.
+    g.lineWidth = 2;
+    for (let p = 0; p <= 512; p += 170) {
+      g.strokeStyle = "rgba(120,132,142,.4)";
+      g.beginPath();
+      g.moveTo(0, p);
+      g.lineTo(512, p);
+      g.stroke();
+    }
+    // Perçin/kaynak izleri ve pas akıntıları.
+    const rnd = mulberry32(0x3f9a);
+    for (let i = 0; i < 48; i++) {
+      const x = rnd() * 512;
+      const y = rnd() * 400;
+      const w = 1.5 + rnd() * 4;
+      const h = 24 + rnd() * 110;
+      const grad = g.createLinearGradient(0, y, 0, y + h);
+      grad.addColorStop(0, "rgba(150,92,48,.3)");
+      grad.addColorStop(1, "rgba(150,92,48,0)");
+      g.fillStyle = grad;
+      g.fillRect(x, y, w, h);
+    }
+
+    const [hc, hg] = makeCanvas(256, 256);
+    hg.fillStyle = "#828282";
+    hg.fillRect(0, 0, 256, 256);
+    speckle(hg, 256, 256, 0x1b8c, 400, 4, 0.3);
+    hg.strokeStyle = "#2e2e2e";
+    hg.lineWidth = 2;
+    for (let p = 0; p <= 256; p += 85) {
+      hg.beginPath();
+      hg.moveTo(0, p);
+      hg.lineTo(256, p);
+      hg.stroke();
+    }
+    return [toTexture(c, true), toTexture(hc, false)];
+  });
+  return { map: tiled(map, 1, 1), bumpMap: tiled(bump, 1, 1) };
 }
 
 /* ─── konsoldaki ölü ekranlar ─── */
