@@ -147,9 +147,8 @@ export function NewsPanel() {
           </ul>
         </div>
 
-        {/* Kağıt dokusu + katlama izi — kaydırmadan bağımsız, sayfanın üstünde sabit */}
+        {/* Kağıt dokusu — kaydırmadan bağımsız, sayfanın üstünde sabit */}
         <div className="gz-grain" aria-hidden="true" />
-        <div className="gz-fold" aria-hidden="true" />
       </div>
 
       <NewsReaderDialog
