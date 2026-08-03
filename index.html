@@ -104,7 +104,9 @@
                   <rect x="132" y="64" width="30" height="18"/>
                   <path d="M140 64 L140 82 M148 64 L148 82 M156 64 L156 82" stroke-width="1.1" opacity=".65"/>
                   <rect x="166" y="70" width="16" height="12"/>
-                  <path d="M192 82 L192 52 M192 52 L204 56 L192 60"/>
+                  <path d="M192 82 L192 72"/>
+                  <circle cx="192" cy="69.4" r="2.6"/>
+                  <path d="M192 65.6 L192 64.2 M189.3 66.7 L188.3 65.7 M194.7 66.7 L195.7 65.7" stroke-width="1.5" opacity=".7"/>
                   <circle cx="184" cy="90" r="2"/>
                   <path d="M20 116 q8 -7 16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0" stroke-width="1.7" opacity=".75"/>
                 </svg>
@@ -117,6 +119,11 @@
                       <linearGradient id="mbDeck" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0" stop-color="#4a7cb5"/><stop offset="1" stop-color="#35679f"/>
                       </linearGradient>
+                      <radialGradient id="mbBowGlow" cx=".5" cy=".5" r=".5">
+                        <stop offset="0" stop-color="#ffe4a0" stop-opacity=".85"/>
+                        <stop offset=".45" stop-color="#ffd77e" stop-opacity=".34"/>
+                        <stop offset="1" stop-color="#ffd77e" stop-opacity="0"/>
+                      </radialGradient>
                     </defs>
                     <circle cx="58" cy="32" r="5" fill="#d7e0ea" opacity=".22"/>
                     <circle cx="64" cy="22" r="7" fill="#d7e0ea" opacity=".14"/>
@@ -154,8 +161,11 @@
                     <path d="M166 70 L182 70 L182 82 L166 82 Z" fill="#c78e2f"/>
                     <path d="M166 70 L182 70 L190 63 L174 63 Z" fill="#daa746"/>
                     <path d="M182 70 L190 63 L190 75 L182 82 Z" fill="#9c6c20"/>
-                    <path d="M192 82 L192 52" stroke="#9db3ca" stroke-width="2"/>
-                    <path d="M192 52 L204 56 L192 60 Z" fill="#d9a63c"/>
+                    <path d="M192 82 L192 74" stroke="#9db3ca" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M190.2 74 L193.8 74 L193.8 71.2 L190.2 71.2 Z" fill="#6d7f93"/>
+                    <circle cx="192" cy="69.4" r="7" fill="url(#mbBowGlow)"/>
+                    <circle cx="192" cy="69.4" r="3" fill="#ffe9b0" opacity=".5"/>
+                    <circle cx="192" cy="69.4" r="1.7" fill="#fff4d6"/>
                     <circle cx="184" cy="90" r="2" fill="#0d2b4e"/>
                   </svg>
                 </div>
