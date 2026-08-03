@@ -1,228 +1,96 @@
-import { useEffect, useMemo, useState } from "react";
-import { useCurrentWeather } from "@/hooks/useCurrentWeather";
-import { useLiveGpsPosition } from "@/hooks/useLiveGpsPosition";
-import { type HomeWidgetId, AVAILABLE_WIDGETS, useHomeWidgets } from "@/hooks/useHomeWidgets";
-import { useLocation } from "@/contexts/useSelectedLocation";
+import { Fragment, useCallback, useEffect, useState } from "react";
+import { LayoutGrid, Ship } from "lucide-react";
+import { type HomeWidgetId, useHomeWidgets } from "@/hooks/useHomeWidgets";
 import { ManualLocationDialog } from "@/components/widgets/ManualLocationDialog";
 import { InstrumentStyles } from "@/components/widgets/instruments/InstrumentStyles";
 import { InstrumentDefs } from "@/components/widgets/instruments/InstrumentDefs";
 import { InstrumentCredits } from "@/components/widgets/instruments/InstrumentCredits";
-import { ChronometerWidget } from "@/components/widgets/instruments/ChronometerWidget";
-import { ThermometerWidget } from "@/components/widgets/instruments/ThermometerWidget";
-import { WindCompassWidget } from "@/components/widgets/instruments/WindCompassWidget";
-import { GpsReceiverWidget } from "@/components/widgets/instruments/GpsReceiverWidget";
-import { SunArcWidget } from "@/components/widgets/instruments/SunArcWidget";
+import { useHomeWidgetNodes } from "@/components/widgets/homeWidgetNodes";
+import { BridgeWidgetView } from "@/components/widgets/BridgeWidgetView";
 
-function degreesToCompass(degrees: number): string {
-  const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
-  return dirs[Math.round(degrees / 22.5) % 16];
-}
+/**
+ * Ana sayfanın widget sayfası. Aynı canlı enstrümanlar iki türlü gösterilir:
+ *
+ *   • Köprüüstü — cihazlar gemideki asıl yerlerinde (saat panosu, dümen
+ *     konsolu, iskele/sancak konsolları, borda perdesi).
+ *   • Izgara    — dar ekranlarda ve WebGL yoksa devreye giren düz liste.
+ *
+ * Hangi widget'ların açık olduğu ve sıraları Ayarlar → Ana Sayfa Widget'ları
+ * tarafında saklanır (useHomeWidgets); iki görünüm de aynı listeyi okur.
+ */
 
-function decimalToDMS(dec: number, isLat: boolean): string {
-  // Round the full value before splitting it so 59.999... seconds carries
-  // correctly into the next minute/degree. Two decimal places retain the
-  // precision of a normal phone GPS fix instead of rounding to ~30 metres.
-  let remainingSeconds = Math.round(Math.abs(dec) * 3600 * 100) / 100;
-  const d = Math.floor(remainingSeconds / 3600);
-  remainingSeconds -= d * 3600;
-  const m = Math.floor(remainingSeconds / 60);
-  const s = (remainingSeconds - m * 60).toFixed(2);
-  const dir = isLat ? (dec >= 0 ? "K" : "G") : (dec >= 0 ? "D" : "B");
-  return `${d}° ${m}′ ${s}″ ${dir}`;
-}
+type WidgetView = "bridge" | "grid";
 
-function wmoText(code?: number): string {
-  if (code === undefined) return "—";
-  if (code === 0) return "Açık";
-  if (code <= 3) return "Az Bulutlu";
-  if (code <= 48) return "Bulutlu";
-  if (code <= 67) return "Yağmurlu";
-  if (code <= 77) return "Karlı";
-  if (code <= 82) return "Sağanak";
-  if (code <= 86) return "Kar";
-  if (code >= 95) return "Fırtına";
-  return "—";
-}
+const VIEW_KEY = "marine-home-widget-view-v1";
 
-/** Analog kadran ibreleri için saat dilimine göre saat/dakika/saniye. */
-function zonedTimeParts(now: Date, timeZone?: string): { h: number; m: number; s: number } {
+function readView(): WidgetView {
   try {
-    const parts = new Intl.DateTimeFormat("en-GB", {
-      timeZone,
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    }).formatToParts(now);
-    const get = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? NaN);
-    const h = get("hour");
-    const m = get("minute");
-    const s = get("second");
-    if ([h, m, s].some(Number.isNaN)) throw new Error("parse");
-    return { h, m, s };
+    return localStorage.getItem(VIEW_KEY) === "grid" ? "grid" : "bridge";
   } catch {
-    return { h: now.getHours(), m: now.getMinutes(), s: now.getSeconds() };
+    return "bridge";
   }
 }
 
 export function HomeWidgetGrid() {
   // Which widgets are shown, and in what order, comes from Ayarlar → Ana Sayfa Widget'ları.
   const { enabled } = useHomeWidgets();
-  const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({ watchPosition: false, refreshMs: 300000, reverseGeocode: true });
-  const { selectedLocation } = useLocation();
-  // Weather APIs snap requests to a forecast grid. The location card must use
-  // the device fix itself; manual selection continues to take precedence.
-  const { position: livePosition } = useLiveGpsPosition(1000, !selectedLocation);
-  const [now, setNow] = useState(new Date());
   const [manualOpen, setManualOpen] = useState(false);
+  const [view, setView] = useState<WidgetView>(readView);
 
+  const nodes = useHomeWidgetNodes(useCallback(() => setManualOpen(true), []));
 
   useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const nationalTime = useMemo(() => {
     try {
-      return now.toLocaleTimeString("tr-TR", {
-        timeZone: data?.timezoneId,
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      });
+      localStorage.setItem(VIEW_KEY, view);
     } catch {
-      return now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false });
+      /* ignore */
     }
-  }, [now, data?.timezoneId]);
+  }, [view]);
 
-  const gmtTime = useMemo(
-    () => now.toLocaleTimeString("en-GB", { timeZone: "UTC", hour: "2-digit", minute: "2-digit", hour12: false }),
-    [now],
+  // Widget'lar doğrudan ızgara çocuğu kalır: sütun genişliğini .iw-small /
+  // .iw-medium sınıfları veriyor (bkz. InstrumentStyles).
+  const grid = (
+    <div className="grid grid-cols-2 items-start gap-3 sm:grid-cols-4">
+      {enabled.map((id: HomeWidgetId) => (
+        <Fragment key={id}>{nodes[id]}</Fragment>
+      ))}
+    </div>
   );
-
-  const render = (id: HomeWidgetId) => {
-    const meta = AVAILABLE_WIDGETS.find((w) => w.id === id);
-    if (!meta) return null;
-
-    switch (id) {
-      case "clock-national": {
-        const t = zonedTimeParts(now, data?.timezoneId);
-        return (
-          <ChronometerWidget
-            key={id}
-            label="Yerel Saat"
-            hours={t.h}
-            minutes={t.m}
-            seconds={t.s}
-            digital={nationalTime}
-            subLabel={locationLabel ?? "—"}
-            variant="local"
-          />
-        );
-      }
-      case "clock-gmt": {
-        const t = zonedTimeParts(now, "UTC");
-        return (
-          <ChronometerWidget
-            key={id}
-            label="GMT"
-            hours={t.h}
-            minutes={t.m}
-            seconds={t.s}
-            digital={gmtTime}
-            subLabel="UTC ±0"
-            variant="gmt"
-          />
-        );
-      }
-      case "weather":
-        return (
-          <ThermometerWidget
-            key={id}
-            temperatureC={data?.temperatureC}
-            conditionText={wmoText(data?.weatherCode)}
-          />
-        );
-      case "wind":
-        return (
-          <WindCompassWidget
-            key={id}
-            speedKt={data?.windSpeedKt}
-            directionDeg={data?.windDirectionDeg}
-            directionLabel={data?.windDirectionDeg !== undefined ? degreesToCompass(data.windDirectionDeg) : "—"}
-          />
-        );
-      case "location": {
-        const latitude = selectedLocation?.latitude ?? livePosition?.latitude ?? data?.latitude;
-        const longitude = selectedLocation?.longitude ?? livePosition?.longitude ?? data?.longitude;
-        const effectiveLabel = selectedLocation?.locationLabel ?? locationLabel;
-        const effectiveSource = selectedLocation ? "manual" : livePosition ? "gps" : locationSource;
-        const effectiveAccuracy = selectedLocation ? null : livePosition?.accuracyMeters ?? accuracyMeters;
-        const effectiveTimestamp = selectedLocation
-          ? positionTimestamp
-          : livePosition?.timestamp ?? positionTimestamp;
-        const sourceKind =
-          effectiveSource === "gps" ? "gps" :
-          effectiveSource === "ip" ? "ip" :
-          effectiveSource === "manual" ? "manual" : "unknown";
-        const sourceLabel =
-          effectiveSource === "gps" ? "GPS" :
-          effectiveSource === "ip" ? "IP" :
-          effectiveSource === "manual" ? "Manuel" : "—";
-        const accuracyLabel =
-          effectiveAccuracy == null ? "—" :
-          effectiveAccuracy < 1000 ? `±${Math.round(effectiveAccuracy)} m` :
-          `±${(effectiveAccuracy / 1000).toFixed(1)} km`;
-        const fixedAt = effectiveTimestamp
-          ? new Date(effectiveTimestamp).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
-          : "—";
-        return (
-          <GpsReceiverWidget
-            key={id}
-            label={effectiveLabel ?? null}
-            latDMS={latitude !== undefined ? decimalToDMS(latitude, true) : "—"}
-            lonDMS={longitude !== undefined ? decimalToDMS(longitude, false) : "—"}
-            latDec={latitude !== undefined ? latitude.toFixed(4) + "°" : ""}
-            lonDec={longitude !== undefined ? longitude.toFixed(4) + "°" : ""}
-            sourceKind={sourceKind}
-            sourceLabel={sourceLabel}
-            accuracyLabel={accuracyLabel}
-            fixedAt={fixedAt}
-            onEdit={() => setManualOpen(true)}
-          />
-        );
-      }
-      case "sun": {
-        const sunrise = data?.sunriseIso
-          ? new Date(data.sunriseIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
-          : "—";
-        const sunset = data?.sunsetIso
-          ? new Date(data.sunsetIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
-          : "—";
-        // Kırpılmadan geçer: gece saatlerinde 0'ın altına / 1'in üstüne çıkması
-        // lombardan karanlık görünmesini sağlar (bkz. PortholeSky).
-        let progress: number | null = null;
-        if (data?.sunriseIso && data?.sunsetIso) {
-          const rise = new Date(data.sunriseIso).getTime();
-          const set = new Date(data.sunsetIso).getTime();
-          if (set > rise) {
-            progress = (now.getTime() - rise) / (set - rise);
-          }
-        }
-        return <SunArcWidget key={id} sunrise={sunrise} sunset={sunset} progress={progress} />;
-      }
-      default:
-        return null;
-    }
-  };
 
   return (
     <>
       <InstrumentStyles />
       <InstrumentDefs />
-      <div className="grid grid-cols-2 items-start gap-3 px-4 sm:grid-cols-4">
-        {enabled.map(render)}
+
+      <div className="mb-3 flex justify-center px-4">
+        <div className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1 backdrop-blur-xl">
+          {([
+            { id: "bridge" as const, label: "Köprüüstü", Icon: Ship },
+            { id: "grid" as const, label: "Izgara", Icon: LayoutGrid },
+          ]).map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setView(id)}
+              aria-pressed={view === id}
+              className={
+                "flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-medium transition-all duration-200 " +
+                (view === id ? "bg-white text-slate-900 shadow" : "text-white/80 hover:bg-white/10")
+              }
+            >
+              <Icon className="h-3.5 w-3.5" strokeWidth={2.25} />
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
+
+      {view === "bridge" ? (
+        <BridgeWidgetView nodes={nodes} enabled={enabled} fallback={grid} />
+      ) : (
+        <div className="px-4">{grid}</div>
+      )}
+
       <InstrumentCredits />
       <ManualLocationDialog open={manualOpen} onOpenChange={setManualOpen} />
     </>
