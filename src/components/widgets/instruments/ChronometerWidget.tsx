@@ -4,7 +4,6 @@ import { SEIKO_CLOCK, SEIKO_CLOCK_DIAL } from "./instrumentPhotos";
 import { dialStyle } from "./overlayGeometry";
 
 interface ChronometerWidgetProps {
-  label: string;
   /** Kadran saati (0-23) — ibre açıları buradan hesaplanır. */
   hours: number;
   minutes: number;
@@ -24,7 +23,7 @@ interface ChronometerWidgetProps {
  * fotoğraftakinin ölçülmüş düzenini taşıdığı için ek bir katman gibi değil,
  * fotoğrafın devamı gibi durur.
  */
-export function ChronometerWidget({ label, hours, minutes, seconds, digital, subLabel, variant }: ChronometerWidgetProps) {
+export function ChronometerWidget({ hours, minutes, seconds, digital, subLabel, variant }: ChronometerWidgetProps) {
   const isGmt = variant === "gmt";
 
   return (
@@ -32,7 +31,6 @@ export function ChronometerWidget({ label, hours, minutes, seconds, digital, sub
       photo={SEIKO_CLOCK}
       size="small"
       photoFilter={isGmt ? "saturate(.5) brightness(.78)" : undefined}
-      label={isGmt ? <span className="notranslate" translate="no">{label}</span> : label}
       readout={
         <>
           <span className="iw-digital notranslate" translate="no">{digital}</span>

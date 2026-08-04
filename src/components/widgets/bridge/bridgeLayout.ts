@@ -362,19 +362,24 @@ const SMALL = 1 / 1.14;
 
 /**
  * Ön perdedeki enstrüman panosu — orta pencerenin üstünde, fotoğraftaki
- * çerçeveli panonun yerinde. Üç cihaz taşır: yerel saat, GMT saati ve rüzgâr.
+ * çerçeveli panonun yerinde. İki cihaz taşır: gemi saati ve rüzgâr.
+ *
+ * GMT saati köprüüstünden çıkarıldı; iki kadran yan yana aynı saati farklı
+ * dilimde gösterince pano bir cihaz panosundan çok bir vitrin gibi
+ * duruyordu. GMT widget'ı ızgarada ve ayarlarda duruyor — yalnız buradan
+ * kaldırıldı (güneş widget'ında olduğu gibi).
  */
-export const CLOCK_BOARD = { y: 2.33, z: -2.97, width: 1.36, height: 0.5 };
+export const CLOCK_BOARD = { y: 2.33, z: -2.97, width: 1.0, height: 0.5 };
 
 /** Panonun yüzeyi — cihazlar perdeden bu kadar dışarıda durur. */
 const BOARD_Z = CLOCK_BOARD.z + 0.07;
-const BOARD_INSTRUMENT_W = 0.34;
+const BOARD_INSTRUMENT_W = 0.36;
 
 export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
-  // Enstrüman panosu: yerel saat — GMT — rüzgâr.
+  // Enstrüman panosu: gemi saati — rüzgâr.
   {
     id: "clock-national",
-    position: [-0.42, CLOCK_BOARD.y, BOARD_Z],
+    position: [-0.23, CLOCK_BOARD.y, BOARD_Z],
     yaw: 0,
     tilt: 0,
     width: BOARD_INSTRUMENT_W,
@@ -382,17 +387,8 @@ export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
     fixture: "SHIP'S CLOCK",
   },
   {
-    id: "clock-gmt",
-    position: [0, CLOCK_BOARD.y, BOARD_Z],
-    yaw: 0,
-    tilt: 0,
-    width: BOARD_INSTRUMENT_W,
-    aspect: SMALL,
-    fixture: "GMT CLOCK",
-  },
-  {
     id: "wind",
-    position: [0.42, CLOCK_BOARD.y, BOARD_Z],
+    position: [0.23, CLOCK_BOARD.y, BOARD_Z],
     yaw: 0,
     tilt: 0,
     width: BOARD_INSTRUMENT_W,

@@ -3,8 +3,14 @@ import type { InstrumentPhoto } from "./instrumentPhotos";
 
 interface InstrumentFrameProps {
   photo: InstrumentPhoto;
-  /** Pirinç plakadaki başlık. */
-  label: ReactNode;
+  /**
+   * Pirinç plakadaki başlık — isteğe bağlı.
+   *
+   * Cihazların çoğunda yok: gerçek bir köprüüstü saatinin üstünde "YEREL SAAT"
+   * yazmaz, kadranın kendisi zaten saattir. Plaka yalnız yazısı olmadan ne
+   * olduğu anlaşılmayan bir yüzey için anlamlı.
+   */
+  label?: ReactNode;
   /** Fotoğrafın üstüne binen canlı katman (kadran, LCD, cıva…). */
   children: ReactNode;
   /** Alt perdedeki okumalar — fotoğraf ne olursa olsun burada okunur kalır. */
@@ -78,10 +84,15 @@ export function InstrumentFrame({
       {/* Canlı katman — fotoğrafın okuma yüzeyinin üstüne oturur. */}
       {children}
 
-      <div className="iw-top">
-        <div className="iw-plate">{label}</div>
-        {action}
-      </div>
+      {/* Üst şerit yalnız taşıyacak bir şey varsa çizilir; boş bir künye
+          bandı fotoğrafın üstüne sebepsiz bir gölge sererdi. Plaka yokken
+          boş bir aralık konuyor ki eylem düğmesi sağda kalsın. */}
+      {label || action ? (
+        <div className="iw-top">
+          {label ? <div className="iw-plate">{label}</div> : <span />}
+          {action}
+        </div>
+      ) : null}
 
       {readout ? <div className="iw-readout">{readout}</div> : null}
     </div>
