@@ -138,17 +138,12 @@ export const EXTERIOR = {
   forecastleBreakZ: -88,
   forecastleRise: 2.2,
   /**
-   * İki güverte vinci, ambar aralarında ve merkez hattının dışında.
-   *
-   * Bordaya alınmaları hem gerçek (çok maksatlı gemilerde vinçler ambar
-   * ağzını boş bırakmak için bir tarafa kaydırılır) hem de zorunlu: merkez
-   * hattındayken kule ve bom tam karşıya gelip güverteyi baştan sona
-   * kapatıyordu.
+   * Güverte vinci yok — gemi kendi donanımı olmayan, liman vinciyle çalışan
+   * bir tip. Vinçler bordaya kaydırılmış hâlde bile 5 m'lik kule ve 13 m'lik
+   * bomla pencerenin iskele yarısını kapatıyordu; kaldırılınca ambar
+   * kapaklarından başa kadar kesintisiz güverte, onun ardında da deniz
+   * görünüyor.
    */
-  cranes: [
-    { z: -36, x: -5.6 },
-    { z: -64, x: -5.6 },
-  ] as Array<{ z: number; x: number }>,
   /** Direk baş kasara güvertesinde; ırgat onun ilerisinde. */
   mastZ: -90,
   mastHeight: 12,
@@ -158,14 +153,20 @@ export const EXTERIOR = {
 /**
  * Deniz ve ufuk.
  *
- * Fon, panorama dokusunu taşıyan geniş bir silindir yayı. Kamera odanın içinde
- * en fazla ~1.5 m geziniyor; 600 m'deki bir fon buna karşılık 0.15° parallaks
+ * Fon, panorama dokusunu taşıyan kapalı bir silindir. Kamera odanın içinde en
+ * fazla ~1.5 m geziniyor; 600 m'deki bir fon buna karşılık 0.15° parallaks
  * yapar, yani sabit durur — ama artık **geminin arkasındadır**, üstüne boyalı
  * değil. İşin asıl kazancı bu: gemi fona göre kayar.
  *
- * Yükseklik: dikey olarak ±14° kapsanıyor (600 m'de ±150 m). 240°'lik yayın
- * çevresi 2513 m, yüksekliği 300 m → 8.4:1; panorama dokusu 3072×384 = 8:1,
- * yani doku neredeyse hiç esnemeden oturuyor.
+ * NEDEN TAM TUR: gemi seyir hâlinde ve rota bacaklarında dönüyor; fon
+ * geminin başına göre değil PUSULAYA göre durmalı. Silindir her karede
+ * −rota kadar döndürülüyor (bkz. SeaHorizon), yani 240°'lik bir yay birkaç
+ * dönüşten sonra kenarını gösterirdi. Tam turda o sorun yok, bedeli de yok:
+ * arkadaki yarım kürenin üçgenleri zaten kadraja girmiyor.
+ *
+ * Yükseklik: dikey olarak ±14° kapsanıyor (600 m'de ±150 m). Tam turun
+ * çevresi 3770 m, yüksekliği 300 m → 12.6:1; panorama dokusu 4096×320 =
+ * 12.8:1, yani doku neredeyse hiç esnemeden oturuyor.
  *
  * Merkez yüksekliği ufuk çizgisinden çıkar ve elle yazılmaz: dokuda ufuk
  * üstten %45.8'de (PANORAMA_HORIZON_V), dünyada da göz hizasına (EYE_Y) denk
@@ -174,8 +175,6 @@ export const EXTERIOR = {
 export const HORIZON_SCENE = {
   backdropRadius: 600,
   backdropHeight: 300,
-  /** Yayın açıklığı — kamera azimutu ±0.5 rad kısıtlı, 240° fazlasıyla yeter. */
-  backdropArc: (240 * Math.PI) / 180,
   /** Deniz düzlemi, sis bandının ötesine taşacak kadar geniş. */
   seaRadius: 700,
   /**
@@ -257,10 +256,25 @@ export interface ConsoleUnit {
 /** Tezgâh üstü yüksekliği — oturur konumda kolay erişilen 0.92 m. */
 export const CONSOLE_TOP_Y = 0.92;
 
+/**
+ * Konsol bandı: pencere hattını izleyen beş ünitelik at nalı.
+ *
+ * Üç üniteden beşe çıkarıldı çünkü tam takım bir köprüüstü üç tezgâha
+ * sığmıyor — modern bir bütünleşik köprü sisteminde (IBS) iskele kanadında
+ * telsiz/MSI grubu, iskelede ECDIS, ortada dümen ve makine, sancakta radar,
+ * sancak kanadında iskandil ve conning bulunur. Kanat üniteleri bordaya
+ * yaslanıp içeri doğru 35° dönüyor: hem gerçek bir at nalı konsolun biçimi
+ * bu, hem de dümencinin göz hizasından hepsi tek bakışta okunuyor.
+ *
+ * Kanat ünitelerinin dış köşesi x = ±2.74'te kalıyor — yan perde ±2.78'de,
+ * yani konsol perdeye değiyor ama içinden geçmiyor.
+ */
 export const CONSOLE_UNITS: ConsoleUnit[] = [
+  { center: [-2.2, -0.95], yaw: 0.62, width: 0.92, depth: 0.58 },
   { center: [-1.36, -1.66], yaw: 0.23, width: 1.32, depth: 0.68 },
   { center: [0, -1.84], yaw: 0, width: 1.0, depth: 0.68 },
   { center: [1.36, -1.66], yaw: -0.23, width: 1.32, depth: 0.68 },
+  { center: [2.2, -0.95], yaw: -0.62, width: 0.92, depth: 0.58 },
 ];
 
 /** Dümen dolabı: orta konsolun kıç yüzünde, oturur göz hizasının altında. */
@@ -310,7 +324,7 @@ export function panelSlot(unit: ConsoleUnit, alongWidth: number, alongPanel = 0,
   };
 }
 
-export const [PORT_UNIT, HELM_UNIT, STBD_UNIT] = CONSOLE_UNITS;
+export const [PORT_WING_UNIT, PORT_UNIT, HELM_UNIT, STBD_UNIT, STBD_WING_UNIT] = CONSOLE_UNITS;
 
 /**
  * Ön perdenin bir camının üstündeki duvar yuvası — perde kırık hatlı olduğu
@@ -348,19 +362,24 @@ const SMALL = 1 / 1.14;
 
 /**
  * Ön perdedeki enstrüman panosu — orta pencerenin üstünde, fotoğraftaki
- * çerçeveli panonun yerinde. Üç cihaz taşır: yerel saat, GMT saati ve rüzgâr.
+ * çerçeveli panonun yerinde. İki cihaz taşır: gemi saati ve rüzgâr.
+ *
+ * GMT saati köprüüstünden çıkarıldı; iki kadran yan yana aynı saati farklı
+ * dilimde gösterince pano bir cihaz panosundan çok bir vitrin gibi
+ * duruyordu. GMT widget'ı ızgarada ve ayarlarda duruyor — yalnız buradan
+ * kaldırıldı (güneş widget'ında olduğu gibi).
  */
-export const CLOCK_BOARD = { y: 2.33, z: -2.97, width: 1.36, height: 0.5 };
+export const CLOCK_BOARD = { y: 2.33, z: -2.97, width: 1.0, height: 0.5 };
 
 /** Panonun yüzeyi — cihazlar perdeden bu kadar dışarıda durur. */
 const BOARD_Z = CLOCK_BOARD.z + 0.07;
-const BOARD_INSTRUMENT_W = 0.34;
+const BOARD_INSTRUMENT_W = 0.36;
 
 export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
-  // Enstrüman panosu: yerel saat — GMT — rüzgâr.
+  // Enstrüman panosu: gemi saati — rüzgâr.
   {
     id: "clock-national",
-    position: [-0.42, CLOCK_BOARD.y, BOARD_Z],
+    position: [-0.23, CLOCK_BOARD.y, BOARD_Z],
     yaw: 0,
     tilt: 0,
     width: BOARD_INSTRUMENT_W,
@@ -368,17 +387,8 @@ export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
     fixture: "SHIP'S CLOCK",
   },
   {
-    id: "clock-gmt",
-    position: [0, CLOCK_BOARD.y, BOARD_Z],
-    yaw: 0,
-    tilt: 0,
-    width: BOARD_INSTRUMENT_W,
-    aspect: SMALL,
-    fixture: "GMT CLOCK",
-  },
-  {
     id: "wind",
-    position: [0.42, CLOCK_BOARD.y, BOARD_Z],
+    position: [0.23, CLOCK_BOARD.y, BOARD_Z],
     yaw: 0,
     tilt: 0,
     width: BOARD_INSTRUMENT_W,
@@ -404,11 +414,57 @@ export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
   },
 ];
 
-/** Konsoldaki gerçek cihazların yuvaları — widget'larla aynı düzlemde dururlar. */
-export const ECDIS_SLOT = panelSlot(PORT_UNIT, -0.4, 0.01, 0.055);
-export const RADAR_SLOT = panelSlot(STBD_UNIT, 0.42, 0.01, 0.055);
-export const RUDDER_GAUGE_SLOT = panelSlot(HELM_UNIT, -0.32, 0.02, 0.05);
-export const RPM_GAUGE_SLOT = panelSlot(HELM_UNIT, 0.32, 0.02, 0.05);
+/**
+ * Tam takım köprüüstü aygıtlarının yuvaları.
+ *
+ * Yerleşim uydurma değil, gemideki asıl yerleri:
+ *   • iskele kanadı  → NAVTEX ve Inmarsat-C (MSI grubu, harita masasının yanı)
+ *   • iskele konsolu → ECDIS ve yanındaki GPS tekrarlayıcısı (widget)
+ *   • orta konsol    → otopilot, dümen açısı ve şaft devri, dümen dolabı
+ *   • sancak konsolu → radar/ARPA ve conning ekranı
+ *   • sancak kanadı  → iskandil ve VHF/DSC
+ *   • ön perde üstü  → Iridium terminali (kanat kapısının üstü)
+ *   • dümenin önü    → cayro tekrarlayıcı, makine telgrafı sütunu
+ *
+ * Widget'lar bu cihazların komşusu: aynı yatık panelde, aynı eğimde
+ * duruyorlar (bkz. INSTRUMENT_MOUNTS).
+ */
+export const ECDIS_SLOT = panelSlot(PORT_UNIT, -0.38, 0.01, 0.055);
+export const RADAR_SLOT = panelSlot(STBD_UNIT, 0.38, 0.01, 0.055);
+export const CONNING_SLOT = panelSlot(STBD_UNIT, -0.37, 0.01, 0.055);
+export const AUTOPILOT_SLOT = panelSlot(HELM_UNIT, 0, 0.055, 0.055);
+export const RUDDER_GAUGE_SLOT = panelSlot(HELM_UNIT, -0.33, -0.07, 0.05);
+export const RPM_GAUGE_SLOT = panelSlot(HELM_UNIT, 0.33, -0.07, 0.05);
+export const NAVTEX_SLOT = panelSlot(PORT_WING_UNIT, -0.22, 0.01, 0.055);
+export const INMARSAT_SLOT = panelSlot(PORT_WING_UNIT, 0.22, 0.01, 0.055);
+export const ECHO_SOUNDER_SLOT = panelSlot(STBD_WING_UNIT, -0.22, 0.01, 0.055);
+export const VHF_SLOT = panelSlot(STBD_WING_UNIT, 0.22, 0.01, 0.055);
+
+/** Iridium: sancak kanat kapısının üstündeki perde yuvası. */
+export const IRIDIUM_SLOT = frontWallSlot(4, 2.3, 0.09);
+
+/**
+ * Cayro tekrarlayıcı: dümencinin tam önünde, tezgâhın üstünde duran sütun.
+ * Gerçek köprüüstünde de dümen dolabıyla pencere arasındadır — dümenci
+ * rotayı başını kaldırmadan okur.
+ */
+export const GYRO_REPEATER = {
+  position: [0, 1.24, -2.02] as [number, number, number],
+  diameter: 0.26,
+  tilt: -0.62,
+};
+
+/**
+ * Makine telgrafı: dümenin sancak omzunda, güverteden yükselen sütun.
+ * Kadranı yukarı-kıça bakar; kaptan tezgâhın yanından okuyabilsin diye.
+ */
+export const TELEGRAPH = {
+  // Dümenin sancak omzu, konsol boşluğunda: daha sancakta durduğunda sütun
+  // radar ve conning ekranlarının önüne dikiliyordu.
+  position: [0.64, 1.04, -1.3] as [number, number, number],
+  diameter: 0.3,
+  tilt: -0.85,
+};
 
 /**
  * drei `<Html transform>` içeriğinin ölçek katsayısı.

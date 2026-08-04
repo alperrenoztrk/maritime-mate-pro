@@ -42,7 +42,6 @@ export function GpsReceiverWidget({
     <InstrumentFrame
       photo={GPS}
       size="medium"
-      label="Konum"
       action={
         <button
           type="button"

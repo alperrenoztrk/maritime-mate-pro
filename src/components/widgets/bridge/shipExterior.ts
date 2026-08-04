@@ -4,7 +4,10 @@ import { HALF, deckHalfBeamAt, deckYAt, UNITS_PER_METER } from "@/components/sta
 import { EXTERIOR } from "./bridgeLayout";
 
 /**
- * Köprüüstünden görünen geminin geometrisi.
+ * Köprüüstünden görünen geminin geometrisi: baş güverte, ambar ağızları, baş
+ * kasara, ırgat ve direk. Güverte vinci YOK — kadrajın ortasına dikilen kule
+ * ve bom, camdan görünen denizin üçte birini kapatıyordu; ambar kapaklarının
+ * üstü artık baştan sona açık.
  *
  * Burada yalnız sayılar ve BufferGeometry var; malzemeler ve sahne ağacı
  * ShipExterior.tsx'te. Bölünme gemi simülasyonundakiyle aynı (hullGeometry.ts
@@ -372,30 +375,6 @@ function buildMast(): THREE.BufferGeometry[] {
   ];
 }
 
-/**
- * Güverte vinci: kaide, döner kule ve bom.
- *
- * Bom istiflenmiş hâlde — limandaki değil, seyirdeki gemi. 48°'lik açı
- * mataforanın kendi mesnedine yaslandığı yer; daha dik istiflenseydi kadrajın
- * ortasına dikilirdi.
- */
-function buildCranes(): THREE.BufferGeometry[] {
-  const parts: THREE.BufferGeometry[] = [];
-  EXTERIOR.cranes.forEach(({ z, x }) => {
-    const y = deckHeightAt(z);
-    parts.push(cyl(1.3, 2.6, x, y + 1.3, z, undefined, 16));
-    parts.push(box(2.6, 2.9, 3.2, x, y + 4.15, z));
-    // Bom: kaideden yukarı ve kıça doğru istiflenmiş.
-    const boomLen = 13;
-    const tilt = THREE.MathUtils.degToRad(48);
-    const boom = new THREE.BoxGeometry(0.55, 0.55, boomLen);
-    boom.rotateX(-tilt);
-    boom.translate(x, y + 5.2 + (Math.sin(tilt) * boomLen) / 2, z + (Math.cos(tilt) * boomLen) / 2);
-    parts.push(boom);
-  });
-  return parts;
-}
-
 /** Küpeşte üstü tutamak borusu ve baş kasara korkuluğu. */
 function buildRails(): THREE.BufferGeometry[] {
   const zs = deckStations();
@@ -413,9 +392,9 @@ function buildRails(): THREE.BufferGeometry[] {
 export interface ShipExteriorGeometry {
   deck: THREE.BufferGeometry;
   covers: THREE.BufferGeometry;
-  /** Açık gri boyalı her şey: küpeşte, mezarna, kasara perdesi, borda, vinç. */
+  /** Açık gri boyalı her şey: küpeşte, mezarna, kasara perdesi, borda. */
   painted: THREE.BufferGeometry;
-  /** Koyu çelik: ırgat, zincir, direk, korkuluk, bom. */
+  /** Koyu çelik: ırgat, zincir, direk, korkuluk. */
   steel: THREE.BufferGeometry;
 }
 
@@ -437,7 +416,6 @@ export function getShipExteriorGeometry(): ShipExteriorGeometry {
     buildTopside(-1),
     buildTopside(1),
     buildForecastleBreak(),
-    ...buildCranes(),
   ]) as THREE.BufferGeometry;
 
   const steel = mergeGeometries([

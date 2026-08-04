@@ -37,7 +37,6 @@ export function SunArcWidget({ sunrise, sunset, progress }: SunArcWidgetProps) {
     <InstrumentFrame
       photo={PORTHOLE}
       size="medium"
-      label="Güneş"
       readout={
         <div className="iw-split">
           <span className="iw-readout-cell">

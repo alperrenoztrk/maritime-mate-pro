@@ -22,7 +22,6 @@ export function WindCompassWidget({ speedKt, directionDeg, directionLabel }: Win
     <InstrumentFrame
       photo={WIND_GAUGE}
       size="small"
-      label="Rüzgâr"
       readout={
         <>
           <span className="iw-digital notranslate" translate="no">

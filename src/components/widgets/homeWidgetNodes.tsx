@@ -190,7 +190,6 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const nodes: HomeWidgetNodes = {
     "clock-national": (
       <ChronometerWidget
-        label="Yerel Saat"
         hours={localParts.h}
         minutes={localParts.m}
         seconds={localParts.s}
@@ -201,7 +200,6 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     ),
     "clock-gmt": (
       <ChronometerWidget
-        label="GMT"
         hours={gmtParts.h}
         minutes={gmtParts.m}
         seconds={gmtParts.s}

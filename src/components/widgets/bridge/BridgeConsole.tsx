@@ -1,18 +1,35 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { getConsoleTexture, getNameplateTexture } from "./bridgeTextures";
 import {
-  getConsoleTexture,
-  getEcdisTexture,
-  getGaugeTexture,
-  getGlassGlareTexture,
-  getNameplateTexture,
-  getRadarTexture,
-} from "./bridgeTextures";
+  drawAutopilot,
+  drawConning,
+  drawEchoSounder,
+  drawEcdis,
+  drawGyroRepeater,
+  drawInmarsatC,
+  drawIridium,
+  drawNavtex,
+  drawRadar,
+  drawRpmGauge,
+  drawRudderGauge,
+  drawTelegraph,
+  drawVhf,
+} from "./bridgeScreens";
+import { LiveScreen } from "./LiveScreen";
+import type { BridgeSim } from "./bridgeSim";
 import {
+  AUTOPILOT_SLOT,
+  CONNING_SLOT,
   CONSOLE_TOP_Y,
   CONSOLE_UNITS,
   ECDIS_SLOT,
+  ECHO_SOUNDER_SLOT,
+  GYRO_REPEATER,
+  INMARSAT_SLOT,
+  IRIDIUM_SLOT,
+  NAVTEX_SLOT,
   PANEL_HEIGHT,
   PANEL_LOCAL_Y,
   PANEL_LOCAL_Z,
@@ -20,20 +37,26 @@ import {
   RADAR_SLOT,
   RPM_GAUGE_SLOT,
   RUDDER_GAUGE_SLOT,
+  TELEGRAPH,
+  VHF_SLOT,
   WHEEL,
-  type Slot,
 } from "./bridgeLayout";
 
 /**
- * Köprüüstü konsolu: iskele (ECDIS), dümen ve sancak (radar) üniteleri.
+ * Köprüüstü konsolu ve üstündeki tam takım seyir aygıtları.
  *
- * Her ünite aynı üç parçadan kurulur — gövde, kauçuk kenarlı tezgâh ve arkada
- * 20° yatık enstrüman paneli. Widget'lar bu yatık panelin üstüne oturur (bkz.
- * BridgeInstrumentMounts); buradaki ekranlar onların komşusu olan gerçek
- * cihazlar: elektronik harita ve radar.
+ * Beş ünitelik at nalı: iskele kanadı (NAVTEX, Inmarsat-C), iskele (ECDIS),
+ * dümen (otopilot, dümen açısı, şaft devri, dümen dolabı), sancak
+ * (radar/ARPA, conning) ve sancak kanadı (iskandil, VHF/DSC). Bunlara dümenin
+ * önündeki cayro tekrarlayıcı, sancak omzundaki makine telgrafı sütunu ve
+ * kanat kapısının üstündeki Iridium terminali ekleniyor.
  *
- * Dümen dolabı orta ünitenin kıç yüzünde; simidin ağır dönüşü kareyi canlı
- * tutmak için çok yavaş salınır, kullanıcı etkileşimi gerektirmez.
+ * Ekranların hiçbiri resim değil: hepsi BridgeSim'den okuyan canlı tuvaller
+ * (bkz. LiveScreen + bridgeScreens). Radar dönüyor, ECDIS'teki gemi rotada
+ * ilerliyor, iskandil izi kayıyor, telgrafın ibresi emri gösteriyor.
+ *
+ * Ana sayfanın widget'ları bu cihazların komşusu — aynı yatık panelde, aynı
+ * eğimde duruyorlar (bkz. BridgeInstrumentMounts).
  */
 
 const DARK_TRIM = "#23272b";
@@ -112,82 +135,20 @@ function ConsoleShell({ unit }: { unit: (typeof CONSOLE_UNITS)[number] }) {
   );
 }
 
-/** Konsol üstünde duran gerçek cihaz ekranı (ECDIS / radar). */
-function DeviceScreen({
-  slot,
-  width,
-  height,
-  texture,
-}: {
-  slot: Slot;
-  width: number;
-  height: number;
-  texture: THREE.Texture;
-}) {
-  const glare = getGlassGlareTexture();
-  return (
-    <group position={slot.position} rotation={[0, slot.yaw, 0]}>
-      <group rotation={[slot.tilt, 0, 0]}>
-        {/* Kasa */}
-        <mesh castShadow receiveShadow>
-          <boxGeometry args={[width + 0.05, height + 0.06, 0.05]} />
-          <meshStandardMaterial color="#15181b" roughness={0.62} metalness={0.2} />
-        </mesh>
-        {/* Görüntü — panel aydınlatmasından bağımsız parlaklıkta */}
-        <mesh position={[0, 0.005, 0.027]}>
-          <planeGeometry args={[width, height]} />
-          <meshBasicMaterial map={texture} toneMapped={false} />
-        </mesh>
-        <mesh position={[0, 0.005, 0.029]}>
-          <planeGeometry args={[width, height]} />
-          <meshBasicMaterial
-            map={glare}
-            transparent
-            opacity={0.1}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
-          />
-        </mesh>
-      </group>
-    </group>
-  );
-}
-
-/** Dümen konsolundaki yuvarlak göstergeler: dümen açısı ve şaft devri. */
-function HelmGauges() {
-  const faces = [
-    { slot: RUDDER_GAUGE_SLOT, tex: getGaugeTexture("rudder") },
-    { slot: RPM_GAUGE_SLOT, tex: getGaugeTexture("rpm") },
-  ];
-  return (
-    <>
-      {faces.map(({ slot, tex }, i) => (
-        <group key={i} position={slot.position} rotation={[0, slot.yaw, 0]}>
-          <group rotation={[slot.tilt, 0, 0]}>
-            {/* Kasa: silindirin ekseni Z'ye çevrilir ki kadran panelden dışarı baksın. */}
-            <mesh rotation={[Math.PI / 2, 0, 0]} castShadow>
-              <cylinderGeometry args={[0.085, 0.085, 0.05, 24]} />
-              <meshStandardMaterial color="#15181b" roughness={0.6} metalness={0.25} />
-            </mesh>
-            <mesh position={[0, 0, 0.027]}>
-              <circleGeometry args={[0.075, 24]} />
-              <meshBasicMaterial map={tex} toneMapped={false} />
-            </mesh>
-          </group>
-        </group>
-      ))}
-    </>
-  );
-}
-
 /** Dümen simidi — jant, parmaklıklar, göbek ve tutamaklar. */
-function ShipsWheel() {
+function ShipsWheel({ sim }: { sim: BridgeSim }) {
   const wheel = useRef<THREE.Group>(null);
 
-  // Ağır bir dümen dolabının hafif salınımı: kare ölü durmasın, ama dikkat
-  // dağıtmasın diye genlik yarım derecenin altında.
-  useFrame(({ clock }) => {
-    if (wheel.current) wheel.current.rotation.z = Math.sin(clock.elapsedTime * 0.35) * 0.075;
+  /**
+   * Simit artık dekor değil: otopilotun bastığı dümen açısını gösteriyor.
+   * Dört tur kilitten kilide bir dümen dolabında 15°'lik dümen ≈ 1.7 tur,
+   * ama kadrajda okunabilir kalsın diye açı 6 kat büyütülüp gösteriliyor.
+   */
+  useFrame(() => {
+    if (!wheel.current) return;
+    const rudder = sim.telemetry?.rudderDeg ?? 0;
+    const target = (-rudder * Math.PI) / 180 * 6;
+    wheel.current.rotation.z += (target - wheel.current.rotation.z) * 0.06;
   });
 
   const spokes = [0, 1, 2, 3, 4, 5];
@@ -233,29 +194,102 @@ function ShipsWheel() {
   );
 }
 
-/** Makine telgrafı kolu — sancak ünitesinin tezgâhında. */
-function TelegraphLever() {
+/**
+ * Makine telgrafı sütunu: güverteden yükselen gövde, üstünde kadran ve kol.
+ *
+ * Eskiden burada yalnız bir kol vardı; telgrafın kendisi yoktu. Şimdi emir ve
+ * cevap ibreli gerçek kadran sütunun üstünde (bkz. drawTelegraph), kol da
+ * emrin kademesine göre duruyor.
+ */
+function TelegraphPedestal({ sim }: { sim: BridgeSim }) {
+  const lever = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (!lever.current) return;
+    const stop = sim.telemetry?.telegraphOrder === "STOP";
+    // İleri tam yol kolu öne yatık, stop dik.
+    const target = stop ? 0 : 0.62;
+    lever.current.rotation.x += (target - lever.current.rotation.x) * 0.08;
+  });
+
+  const [x, y, z] = TELEGRAPH.position;
   return (
-    <group position={[1.05, CONSOLE_TOP_Y + 0.03, -1.45]} rotation={[0, -0.21, 0]}>
-      <mesh castShadow>
-        <cylinderGeometry args={[0.075, 0.085, 0.05, 20]} />
-        <meshStandardMaterial color="#2a2e32" roughness={0.55} metalness={0.35} />
+    <group>
+      {/* Sütun: güverteden kadranın altına kadar */}
+      <mesh position={[x, y / 2, z]} castShadow receiveShadow>
+        <cylinderGeometry args={[0.075, 0.11, y, 18]} />
+        <meshStandardMaterial color="#b9bfc4" roughness={0.45} metalness={0.55} />
       </mesh>
-      <mesh position={[0, 0.11, 0.03]} rotation={[0.32, 0, 0]} castShadow>
-        <cylinderGeometry args={[0.014, 0.016, 0.2, 12]} />
-        <meshStandardMaterial color="#9aa1a7" roughness={0.3} metalness={0.8} />
+      <mesh position={[x, 0.03, z]} castShadow>
+        <cylinderGeometry args={[0.17, 0.19, 0.06, 20]} />
+        <meshStandardMaterial color="#3a4046" roughness={0.65} metalness={0.3} />
       </mesh>
-      <mesh position={[0, 0.21, 0.06]} castShadow>
-        <sphereGeometry args={[0.032, 16, 12]} />
-        <meshStandardMaterial color="#14171a" roughness={0.5} metalness={0.2} />
-      </mesh>
+
+      {/* Kadran gövdesi ve canlı yüzü */}
+      <LiveScreen
+        slot={{ position: [x, y + 0.03, z], yaw: 0, tilt: TELEGRAPH.tilt }}
+        width={TELEGRAPH.diameter}
+        aspect={1}
+        resolution={512}
+        fps={4}
+        draw={drawTelegraph}
+        sim={sim}
+        round
+      />
+
+      {/* Emir kolu — kadranın sancak yanında */}
+      <group position={[x + TELEGRAPH.diameter * 0.62, y + 0.02, z]}>
+        <group ref={lever}>
+          <mesh position={[0, 0.1, 0.02]} castShadow>
+            <cylinderGeometry args={[0.013, 0.016, 0.2, 12]} />
+            <meshStandardMaterial color="#9aa1a7" roughness={0.3} metalness={0.8} />
+          </mesh>
+          <mesh position={[0, 0.2, 0.04]} castShadow>
+            <sphereGeometry args={[0.032, 16, 12]} />
+            <meshStandardMaterial color="#14171a" roughness={0.5} metalness={0.2} />
+          </mesh>
+        </group>
+      </group>
     </group>
   );
 }
 
-export function BridgeConsole() {
-  const ecdis = getEcdisTexture();
-  const radar = getRadarTexture();
+/** Cayro tekrarlayıcı sütunu — dümencinin tam önünde. */
+function GyroPedestal({ sim }: { sim: BridgeSim }) {
+  const [x, y, z] = GYRO_REPEATER.position;
+  return (
+    <group>
+      <mesh position={[x, y - 0.16, z]} castShadow receiveShadow>
+        <cylinderGeometry args={[0.05, 0.07, 0.3, 16]} />
+        <meshStandardMaterial color="#c2c8cc" roughness={0.45} metalness={0.5} />
+      </mesh>
+      <LiveScreen
+        slot={{ position: [x, y, z], yaw: 0, tilt: GYRO_REPEATER.tilt }}
+        width={GYRO_REPEATER.diameter}
+        aspect={1}
+        resolution={512}
+        fps={5}
+        draw={drawGyroRepeater}
+        sim={sim}
+        round
+      />
+    </group>
+  );
+}
+
+export interface BridgeConsoleProps {
+  sim: BridgeSim;
+  /** Gecenin koyuluğu (0–1) — cihaz ekranları gece kısılır. */
+  night?: number;
+}
+
+export function BridgeConsole({ sim, night = 0 }: BridgeConsoleProps) {
+  /**
+   * Gece kısma: köprüüstünde ekranlar gece görüşünü bozmamak için kısılır,
+   * SOLAS da bunu ister. Tam karanlıkta bile %45'te kalıyor — okunmayan bir
+   * ekranın kadrajda anlamı yok.
+   */
+  const dim = 1 - 0.55 * Math.min(1, Math.max(0, night));
 
   return (
     <group>
@@ -263,14 +297,32 @@ export function BridgeConsole() {
         <ConsoleShell key={i} unit={unit} />
       ))}
 
-      {/* İskele ünitesinde elektronik harita, sancakta radar — GPS ve seyir
-          widget'ları bunların yanındaki yuvalara oturur. */}
-      <DeviceScreen slot={ECDIS_SLOT} width={0.46} height={0.29} texture={ecdis} />
-      <DeviceScreen slot={RADAR_SLOT} width={0.34} height={0.34} texture={radar} />
+      {/* İskele kanadı: MSI grubu */}
+      <LiveScreen slot={NAVTEX_SLOT} width={0.34} aspect={1.45} resolution={640} fps={0.5} draw={drawNavtex} sim={sim} dim={dim} />
+      <LiveScreen slot={INMARSAT_SLOT} width={0.34} aspect={1.45} resolution={640} fps={0.5} draw={drawInmarsatC} sim={sim} dim={dim} />
 
-      <HelmGauges />
-      <ShipsWheel />
-      <TelegraphLever />
+      {/* İskele: elektronik harita — GPS widget'ı bunun yanındaki yuvada */}
+      <LiveScreen slot={ECDIS_SLOT} width={0.5} aspect={1.56} resolution={1100} fps={3} draw={drawEcdis} sim={sim} dim={dim} />
+
+      {/* Dümen: otopilot ve iki yuvarlak gösterge */}
+      <LiveScreen slot={AUTOPILOT_SLOT} width={0.34} aspect={2} resolution={640} fps={2} draw={drawAutopilot} sim={sim} dim={dim} />
+      <LiveScreen slot={RUDDER_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRudderGauge} sim={sim} round dim={dim} />
+      <LiveScreen slot={RPM_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRpmGauge} sim={sim} round dim={dim} />
+
+      {/* Sancak: radar/ARPA ve conning */}
+      <LiveScreen slot={RADAR_SLOT} width={0.46} aspect={1.72} resolution={1100} fps={10} draw={drawRadar} sim={sim} dim={dim} />
+      <LiveScreen slot={CONNING_SLOT} width={0.44} aspect={1.9} resolution={896} fps={5} draw={drawConning} sim={sim} dim={dim} />
+
+      {/* Sancak kanadı: iskandil ve telsiz */}
+      <LiveScreen slot={ECHO_SOUNDER_SLOT} width={0.34} aspect={1.45} resolution={640} fps={3} draw={drawEchoSounder} sim={sim} dim={dim} />
+      <LiveScreen slot={VHF_SLOT} width={0.34} aspect={1.45} resolution={640} fps={1} draw={drawVhf} sim={sim} dim={dim} />
+
+      {/* Kanat kapısının üstü: uydu terminali */}
+      <LiveScreen slot={IRIDIUM_SLOT} width={0.32} aspect={1.4} resolution={640} fps={1} draw={drawIridium} sim={sim} dim={dim} />
+
+      <GyroPedestal sim={sim} />
+      <TelegraphPedestal sim={sim} />
+      <ShipsWheel sim={sim} />
     </group>
   );
 }
