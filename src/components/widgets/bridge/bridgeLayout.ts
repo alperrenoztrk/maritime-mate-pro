@@ -433,9 +433,9 @@ export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
  * Widget'lar bu cihazların komşusu: aynı yatık panelde, aynı eğimde
  * duruyorlar (bkz. INSTRUMENT_MOUNTS).
  */
-export const ECDIS_SLOT = panelSlot(PORT_UNIT, -0.4, 0.01, 0.055);
-export const RADAR_SLOT = panelSlot(STBD_UNIT, 0.4, 0.01, 0.055);
-export const CONNING_SLOT = panelSlot(STBD_UNIT, -0.34, 0.01, 0.055);
+export const ECDIS_SLOT = panelSlot(PORT_UNIT, -0.38, 0.01, 0.055);
+export const RADAR_SLOT = panelSlot(STBD_UNIT, 0.38, 0.01, 0.055);
+export const CONNING_SLOT = panelSlot(STBD_UNIT, -0.37, 0.01, 0.055);
 export const AUTOPILOT_SLOT = panelSlot(HELM_UNIT, 0, 0.055, 0.055);
 export const RUDDER_GAUGE_SLOT = panelSlot(HELM_UNIT, -0.33, -0.07, 0.05);
 export const RPM_GAUGE_SLOT = panelSlot(HELM_UNIT, 0.33, -0.07, 0.05);

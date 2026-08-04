@@ -1,3 +1,4 @@
+import { hashSeed, mulberry32 } from "@/components/stability/sim/proceduralTextures";
 import { compassName, douglasLabel } from "./marineConditions";
 import { fmt, type BridgeTelemetry } from "./bridgeTelemetry";
 
@@ -115,215 +116,582 @@ function box(g: CanvasRenderingContext2D, x: number, y: number, w: number, h: nu
 /* ─── radar / ARPA ─── */
 
 /**
- * X-bant ARPA: baş yukarı sunum, dönen tarama, iz bırakan hedefler.
+ * Radar/ARPA — klasik gemi radarı sunumu.
  *
- * Tarama 24 devir/dakika — gerçek bir gemi radarının hızı. Hedefler
- * BridgeTelemetry'den geliyor, yani ECDIS'in AIS listesiyle aynı gemiler;
- * CPA/TCPA ile 0.5 milin altına düşen hedef kırmızıya döner ve köşede
- * çatışma uyarısı yanar.
+ * Görünüm gerçek bir köprüüstü radarından alındı: siyah zemin, mavi PPI
+ * diski, sarı kara yankıları, çevresinde yeşil çerçeveli kutular ve sağda
+ * seçili hedefin ARPA çözümü. Fotoğraf DOKU OLARAK GÖMÜLMEDİ — sahnenin
+ * çevrimdışı sözleşmesi gereği (bkz. bridgeTextures.ts) her yüzey çalışma
+ * anında tuvale çiziliyor; burada da taklit edilen düzenin kendisi, sayılar
+ * ise seferin canlı verisi.
+ *
+ * Tarama 24 devir/dakika. Hedefler BridgeTelemetry'den geliyor, yani ECDIS'in
+ * AIS listesiyle aynı gemiler; CPA/TCPA bağıl hareket üçgeninden çıkıyor,
+ * BCR/BCT ise hedefin pruvamızı kestiği an ve mesafe.
  */
-export const drawRadar: ScreenDraw = (g, w, h, t) => {
-  const bar = chassis(g, w, h, "RADAR  X-BAND  ARPA", "TX ON");
-  const cx = w / 2;
-  const cy = bar + (h - bar) / 2;
-  const R = Math.min(w, h - bar) * 0.45;
-  const rangeNm = 6;
 
-  const glow = g.createRadialGradient(cx, cy, 0, cx, cy, R);
-  glow.addColorStop(0, "rgba(22,96,56,.55)");
-  glow.addColorStop(1, "rgba(5,26,16,.25)");
-  g.fillStyle = glow;
+/** Radarın kendi renk takımı — köprüüstünün geri kalanından bağımsız. */
+const RAD = {
+  bg: "#000000",
+  sea: "#1616cf",
+  land: "#e6e600",
+  echo: "#f2f24a",
+  ring: "rgba(255,255,255,.55)",
+  scale: "#c9d4dd",
+  green: "#25e05a",
+  greenDim: "rgba(37,224,90,.55)",
+  red: "#ff3b30",
+  mono: "'Courier New', ui-monospace, monospace",
+};
+
+/** Yeşil çerçeveli kutu — radarın bütün düğmeleri ve okumaları bunlar. */
+function radarCell(
+  g: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  text: string,
+  size: number,
+  opts: { color?: string; align?: CanvasTextAlign; border?: boolean; fill?: string; bold?: boolean } = {},
+) {
+  if (opts.fill) {
+    g.fillStyle = opts.fill;
+    g.fillRect(x, y, w, h);
+  }
+  if (opts.border !== false) {
+    g.strokeStyle = opts.color ?? RAD.green;
+    g.lineWidth = 1.2;
+    g.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+  }
+  const align = opts.align ?? "center";
+  const tx = align === "left" ? x + w * 0.08 : align === "right" ? x + w * 0.92 : x + w / 2;
+  say(g, text, tx, y + h / 2 + size * 0.36, {
+    size,
+    color: opts.color ?? RAD.green,
+    font: RAD.mono,
+    align,
+    bold: opts.bold ?? true,
+  });
+}
+
+/**
+ * Kara yankısı: limana yaklaşırken PPI'nin kenarlarına giren sarı kütleler.
+ *
+ * Rota kimliğinden tohumlanıyor, yani aynı seferde hep aynı kıyı çizgisi
+ * görünüyor; gemi ilerledikçe kütleler merkeze doğru büyüyor.
+ */
+function radarLandEcho(
+  g: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  R: number,
+  shore: number,
+  seed: number,
+  ahead: boolean,
+) {
+  if (shore <= 0.02) return;
+  const rnd = mulberry32(seed);
+  g.fillStyle = RAD.land;
+  // İki kıyı kütlesi: baş tarafın iki omzunda, kanal ağzı gibi.
+  for (const side of [-1, 1] as const) {
+    const base = (ahead ? 0 : Math.PI) + side * (0.55 + rnd() * 0.25);
+    const spread = 0.5 + rnd() * 0.35;
+    g.beginPath();
+    for (let i = 0; i <= 26; i++) {
+      const u = i / 26;
+      const a = base + (u - 0.5) * spread * 2;
+      const wobble = 0.72 + Math.sin(u * 9 + seed) * 0.11 + Math.sin(u * 21 + side) * 0.06;
+      const r = R * wobble * (1 - shore * 0.34);
+      const x = cx + Math.sin(a) * r;
+      const y = cy - Math.cos(a) * r;
+      if (i === 0) g.moveTo(x, y);
+      else g.lineTo(x, y);
+    }
+    // Dış kenardan kapat: kara PPI'nin kenarına kadar uzanır.
+    for (let i = 26; i >= 0; i--) {
+      const u = i / 26;
+      const a = base + (u - 0.5) * spread * 2;
+      g.lineTo(cx + Math.sin(a) * R, cy - Math.cos(a) * R);
+    }
+    g.closePath();
+    g.fill();
+  }
+}
+
+export const drawRadar: ScreenDraw = (g, w, h, t) => {
+  g.fillStyle = RAD.bg;
+  g.fillRect(0, 0, w, h);
+
+  // PPI merkezden biraz iskelede: sağ sütun bilgi yoğun, sol sütun düğme.
+  // Yarıçap 0.42h — köşeler yeşil kutulara kalsın, daire onlara değmesin.
+  const cx = w * 0.40;
+  const cy = h * 0.5;
+  const R = h * 0.42;
+  const rangeNm = 6;
+  const rings = 4;
+  const u = h * 0.026; // ölçü birimi: bütün yazılar ve kutular buna oranlı
+
+  /* — PPI diski — */
+  g.fillStyle = RAD.sea;
   g.beginPath();
   g.arc(cx, cy, R, 0, Math.PI * 2);
   g.fill();
 
-  // Mesafe halkaları ve pusula taksimatı (baş yukarı → gerçek kuzey işaretli).
-  g.strokeStyle = "rgba(80,240,150,.32)";
-  g.lineWidth = 1.2;
-  for (let i = 1; i <= 4; i++) {
+  const shore = Math.max(0, 1 - Math.min(t.voyage.progress, 1 - t.voyage.progress) / 0.1);
+  radarLandEcho(g, cx, cy, R, shore, hashSeed(t.voyage.route.id), t.voyage.progress > 0.5);
+
+  // Mesafe halkaları
+  g.strokeStyle = RAD.ring;
+  g.lineWidth = 1.1;
+  for (let i = 1; i <= rings; i++) {
     g.beginPath();
-    g.arc(cx, cy, (R / 4) * i, 0, Math.PI * 2);
-    g.stroke();
-  }
-  for (let a = 0; a < 360; a += 10) {
-    const rad = (a * Math.PI) / 180;
-    const long = a % 30 === 0;
-    g.strokeStyle = `rgba(110,255,175,${long ? 0.7 : 0.32})`;
-    g.beginPath();
-    g.moveTo(cx + Math.sin(rad) * R, cy - Math.cos(rad) * R);
-    g.lineTo(cx + Math.sin(rad) * (R - (long ? R * 0.06 : R * 0.03)), cy - Math.cos(rad) * (R - (long ? R * 0.06 : R * 0.03)));
+    g.arc(cx, cy, (R / rings) * i, 0, Math.PI * 2);
     g.stroke();
   }
 
-  // Kuzey oku: baş yukarı sunumda kuzey rotanın tersi kadar döner.
-  const north = (-t.voyage.cogDeg * Math.PI) / 180;
-  g.strokeStyle = "rgba(160,255,200,.8)";
-  g.lineWidth = 2;
-  g.beginPath();
-  g.moveTo(cx + Math.sin(north) * (R - R * 0.1), cy - Math.cos(north) * (R - R * 0.1));
-  g.lineTo(cx + Math.sin(north) * R, cy - Math.cos(north) * R);
-  g.stroke();
-  say(g, "K", cx + Math.sin(north) * (R + R * 0.09), cy - Math.cos(north) * (R + R * 0.09) + 5, {
-    size: R * 0.11,
-    color: "#9dffc6",
-    align: "center",
-    bold: true,
-  });
-
-  // Kıyı yankısı — limana yaklaşırken kara ekrana girer.
-  const shore = Math.max(0, 1 - Math.min(t.voyage.progress, 1 - t.voyage.progress) / 0.09);
-  if (shore > 0.02) {
-    const ahead = t.voyage.progress > 0.5;
-    g.fillStyle = `rgba(120,255,170,${0.16 + shore * 0.45})`;
-    for (let i = 0; i < 700; i++) {
-      const spread = ((i * 2.399) % 1) * 2 - 1;
-      const a = (ahead ? 0 : Math.PI) + spread * 0.9;
-      const rr = R * (0.62 + ((i * 0.618) % 1) * 0.36) * (1 - shore * 0.25);
-      g.fillRect(cx + Math.sin(a) * rr, cy - Math.cos(a) * rr, 2.5, 2.5);
+  // Pusula taksimatı ve rakamlar — diskin dışında, gerçek kuzeye göre.
+  // Sunum rota yukarı (C UP) olduğu için kuzey rota kadar geri döner.
+  const upDeg = t.voyage.cogDeg;
+  for (let a = 0; a < 360; a += 5) {
+    const rel = ((a - upDeg) * Math.PI) / 180;
+    const major = a % 10 === 0;
+    const tick = major ? R * 0.045 : R * 0.022;
+    g.strokeStyle = RAD.scale;
+    g.lineWidth = major ? 1.4 : 1;
+    g.beginPath();
+    g.moveTo(cx + Math.sin(rel) * R, cy - Math.cos(rel) * R);
+    g.lineTo(cx + Math.sin(rel) * (R + tick), cy - Math.cos(rel) * (R + tick));
+    g.stroke();
+    if (a % 10 === 0) {
+      say(g, String(a).padStart(3, "0"), cx + Math.sin(rel) * (R + u * 2.6), cy - Math.cos(rel) * (R + u * 2.6) + u * 0.3, {
+        size: u * 0.72,
+        color: RAD.scale,
+        font: RAD.mono,
+        align: "center",
+      });
     }
   }
 
-  // Hedefler: eko + iz + vektör.
-  let danger = 0;
+  /* — hedefler — */
+  let selected = t.traffic[0];
+  for (const target of t.traffic) {
+    if (target.rangeNm > rangeNm) continue;
+    if (!selected || target.cpaNm < selected.cpaNm) selected = target;
+  }
+
   for (const target of t.traffic) {
     if (target.rangeNm > rangeNm) continue;
     const a = (target.relBearingDeg * Math.PI) / 180;
     const r = (target.rangeNm / rangeNm) * R;
     const x = cx + Math.sin(a) * r;
     const y = cy - Math.cos(a) * r;
-    const close = target.cpaNm < 0.5 && target.tcpaMin > 0 && target.tcpaMin < 30;
-    if (close) danger++;
+    const isSelected = target === selected;
 
-    g.fillStyle = close ? "rgba(255,110,110,.95)" : "rgba(180,255,205,.95)";
+    // Ham eko: radar yankısı önce sarı bir leke.
+    g.fillStyle = RAD.echo;
     g.beginPath();
-    g.arc(x, y, R * 0.017, 0, Math.PI * 2);
+    g.ellipse(x, y, R * 0.014, R * 0.009, a, 0, Math.PI * 2);
     g.fill();
 
-    // Bağıl hareket vektörü: 6 dakikalık yol.
-    const c = ((target.courseDeg - t.voyage.cogDeg) * Math.PI) / 180;
-    const vx = Math.sin(c) * target.speedKt;
-    const vy = Math.cos(c) * target.speedKt - t.voyage.sogKt;
-    const scale = (0.1 / rangeNm) * R;
-    g.strokeStyle = close ? "rgba(255,110,110,.8)" : "rgba(180,255,205,.65)";
+    // ARPA üçgeni ve gerçek hareket vektörü (3 dakikalık yol).
+    const color = isSelected ? RAD.red : "#ffffff";
+    g.strokeStyle = color;
     g.lineWidth = 1.6;
+    const s = R * 0.022;
+    g.beginPath();
+    g.moveTo(x, y - s);
+    g.lineTo(x + s * 0.9, y + s * 0.7);
+    g.lineTo(x - s * 0.9, y + s * 0.7);
+    g.closePath();
+    g.stroke();
+
+    const c = ((target.courseDeg - upDeg) * Math.PI) / 180;
+    const vScale = ((3 / 60) / rangeNm) * R; // 3 dakika
     g.beginPath();
     g.moveTo(x, y);
-    g.lineTo(x + vx * scale, y - vy * scale);
+    g.lineTo(x + Math.sin(c) * target.speedKt * vScale, y - Math.cos(c) * target.speedKt * vScale);
     g.stroke();
+
+    if (isSelected) {
+      say(g, "1", x + s * 1.4, y + s * 1.6, { size: u * 0.8, color: RAD.red, font: RAD.mono, bold: true });
+    }
   }
 
-  // Tarama süpürgesi — 24 d/d.
+  /* — tarama süpürgesi, baş hattı ve kendi gemimiz — */
   const sweep = ((t.nowMs % 2500) / 2500) * Math.PI * 2;
   if (g.createConicGradient) {
     const cone = g.createConicGradient(sweep - Math.PI / 2, cx, cy);
-    cone.addColorStop(0, "rgba(90,255,160,.34)");
-    cone.addColorStop(0.12, "rgba(90,255,160,0)");
-    cone.addColorStop(1, "rgba(90,255,160,0)");
-    g.fillStyle = cone;
+    cone.addColorStop(0, "rgba(255,255,255,.20)");
+    cone.addColorStop(0.1, "rgba(255,255,255,0)");
+    cone.addColorStop(1, "rgba(255,255,255,0)");
+    g.save();
     g.beginPath();
     g.arc(cx, cy, R, 0, Math.PI * 2);
-    g.fill();
+    g.clip();
+    g.fillStyle = cone;
+    g.fillRect(cx - R, cy - R, R * 2, R * 2);
+    g.restore();
   }
-  g.strokeStyle = "rgba(170,255,200,.9)";
-  g.lineWidth = 2;
-  g.beginPath();
-  g.moveTo(cx, cy);
-  g.lineTo(cx + Math.sin(sweep) * R, cy - Math.cos(sweep) * R);
-  g.stroke();
-
-  // Kendi gemimiz ve baş hattı.
-  g.strokeStyle = "rgba(220,255,235,.9)";
+  g.strokeStyle = "#ffffff";
   g.lineWidth = 1.6;
   g.beginPath();
   g.moveTo(cx, cy);
   g.lineTo(cx, cy - R);
   g.stroke();
+  g.fillStyle = "#ffffff";
+  g.beginPath();
+  g.arc(cx, cy, R * 0.012, 0, Math.PI * 2);
+  g.fill();
 
-  // Köşe okumaları.
-  const s = R * 0.1;
-  say(g, `RM(T)  ${rangeNm} NM`, w * 0.03, bar + s * 1.3, { size: s, color: "#9dffc6", bold: true });
-  say(g, `HDG ${fmt.deg(t.voyage.cogDeg)}`, w * 0.03, bar + s * 2.6, { size: s * 0.9, color: "#9dffc6" });
-  say(g, `SOG ${t.voyage.sogKt.toFixed(1)}`, w * 0.03, bar + s * 3.7, { size: s * 0.9, color: "#9dffc6" });
-  say(g, `VRM ${(rangeNm / 2).toFixed(1)}`, w * 0.97, bar + s * 1.3, { size: s * 0.9, color: "#9dffc6", align: "right" });
-  say(g, `EBL ${fmt.deg(t.voyage.bearingToWptDeg)}`, w * 0.97, bar + s * 2.4, {
-    size: s * 0.9,
-    color: "#9dffc6",
-    align: "right",
-  });
-  say(g, `GAIN 72  SEA ${Math.min(9, Math.round(t.marine.douglas))}`, w * 0.97, bar + s * 3.5, {
-    size: s * 0.8,
-    color: "rgba(157,255,198,.7)",
-    align: "right",
-  });
+  /* — sol sütun — */
+  const lx = w * 0.012;
+  const lw = w * 0.115;
+  radarCell(g, lx + lw * 0.15, h * 0.012, lw * 0.85, u * 1.5, "RANGE", u * 0.85, { border: false });
+  radarCell(g, lx + lw * 0.15, h * 0.012 + u * 1.5, lw * 0.85, u * 2.1, `${rangeNm} NM`, u * 1.35);
+  radarCell(g, lx + lw, h * 0.012, lw * 0.28, u * 1.7, "+", u * 1.2);
+  radarCell(g, lx + lw, h * 0.012 + u * 1.9, lw * 0.28, u * 1.7, "−", u * 1.2);
+  radarCell(g, lx + lw * 0.15, h * 0.012 + u * 3.6, lw * 1.13, u * 1.5, `RR  ${(rangeNm / rings).toFixed(1)} NM`, u * 0.78);
 
-  if (danger > 0 && Math.floor(t.nowMs / 600) % 2 === 0) {
-    g.fillStyle = "rgba(255,60,60,.9)";
-    g.fillRect(w * 0.28, h - s * 2.2, w * 0.44, s * 1.6);
-    say(g, `${danger} HEDEF  CPA < 0.5 NM`, w / 2, h - s * 1.05, {
-      size: s * 0.85,
-      color: "#fff",
-      align: "center",
-      bold: true,
+  const btn = (y: number, text: string, color = RAD.green) =>
+    radarCell(g, lx, y, lw * 0.95, u * 1.6, text, u * 0.82, { color });
+  btn(h * 0.135, "TX  A (S)");
+  btn(h * 0.2, "MASTER");
+  btn(h * 0.265, "STBY");
+  btn(h * 0.33, "SP");
+
+  radarCell(g, lx, h * 0.73, lw * 0.5, u * 1.5, "HL", u * 0.82);
+  btn(h * 0.795, "ENH OFF");
+  radarCell(g, lx, h * 0.855, lw * 0.72, u * 1.4, "GAIN", u * 0.75, { fill: "rgba(37,224,90,.14)" });
+  radarCell(g, lx + lw * 0.78, h * 0.855, lw * 0.5, u * 2.9, "MAN", u * 0.8);
+  radarCell(g, lx, h * 0.905, lw * 0.72, u * 1.4, "RAIN", u * 0.75);
+  radarCell(g, lx, h * 0.945, lw * 0.72, u * 1.4, "SEA", u * 0.75);
+
+  /* — sağ sütun — */
+  const rx = w * 0.70;
+  const rw = w * 0.29;
+  const col = rw / 3;
+  radarCell(g, rx, h * 0.012, col * 0.9, u * 1.7, "RM(R)", u * 0.85);
+  radarCell(g, rx + col * 1.0, h * 0.012, col * 0.75, u * 1.7, "HDG", u * 0.85);
+  radarCell(g, rx + col * 1.8, h * 0.012, col * 1.2, u * 1.7, fmt.deg(t.voyage.cogDeg, 1), u * 1.0);
+  radarCell(g, rx, h * 0.012 + u * 1.9, col * 0.9, u * 1.7, "C UP", u * 0.85);
+  radarCell(g, rx + col * 1.0, h * 0.012 + u * 1.9, col * 0.75, u * 1.7, "STW", u * 0.85);
+  radarCell(g, rx + col * 1.8, h * 0.012 + u * 1.9, col * 0.75, u * 1.7, t.voyage.sogKt.toFixed(1), u * 1.0);
+  radarCell(g, rx + col * 2.6, h * 0.012 + u * 1.9, col * 0.4, u * 1.7, "KT", u * 0.7);
+  radarCell(g, rx + col * 2.6, h * 0.012, col * 0.4, u * 1.7, "LOG W", u * 0.6);
+
+  let ry = h * 0.012 + u * 4.1;
+  radarCell(g, rx, ry, rw * 0.62, u * 1.6, "T VECTORS", u * 0.82, { color: RAD.red, fill: "#000" });
+  radarCell(g, rx + rw * 0.62, ry, rw * 0.38, u * 1.6, "3.0 MIN", u * 0.82, { color: RAD.red });
+  ry += u * 1.7;
+  radarCell(g, rx, ry, rw * 0.62, u * 1.5, "TRAILS", u * 0.78);
+  radarCell(g, rx + rw * 0.62, ry, rw * 0.38, u * 1.5, "OFF", u * 0.78);
+
+  ry += u * 2.0;
+  const ebl = [
+    ["ERBL 1", `${fmt.deg(t.voyage.bearingToWptDeg, 1)} T`, true],
+    ["VRM 1 OFF", `${(rangeNm / 2).toFixed(2)} NM`, false],
+    ["EBL 2", "OFF", false],
+    ["VRM 2", "OFF", false],
+  ] as const;
+  ebl.forEach(([label, value, active], i) => {
+    const yy = ry + i * u * 1.5;
+    radarCell(g, rx, yy, rw * 0.55, u * 1.45, label, u * 0.75);
+    radarCell(g, rx + rw * 0.55, yy, rw * 0.45, u * 1.45, value, u * 0.75, {
+      color: active ? "#000000" : RAD.green,
+      fill: active ? "#ffffff" : undefined,
     });
-  }
+  });
+
+  ry += u * 6.6;
+  const danger = selected && selected.cpaNm < 0.5 && selected.tcpaMin > 0 && selected.tcpaMin < 30;
+  radarCell(g, rx, ry, rw, u * 1.8, "CPA-TCPA  1", u * 0.95, {
+    color: danger ? RAD.red : RAD.greenDim,
+    fill: danger && Math.floor(t.nowMs / 600) % 2 === 0 ? "rgba(255,59,48,.18)" : undefined,
+  });
+
+  /* — seçili hedefin ARPA çözümü — */
+  ry += u * 2.2;
+  const boxH = u * 11.4;
+  g.strokeStyle = RAD.green;
+  g.lineWidth = 1.2;
+  g.strokeRect(rx + 0.5, ry + 0.5, rw - 1, boxH - 1);
+  say(g, "TARGET (1)", rx + rw / 2, ry + u * 1.5, {
+    size: u * 0.95,
+    color: RAD.green,
+    font: RAD.mono,
+    align: "center",
+    bold: true,
+  });
+
+  const trueBrg = ((selected?.relBearingDeg ?? 0) + t.voyage.cogDeg) % 360;
+  // Pruva kesme: hedefin bizim rota hattımızı kestiği an ve o andaki mesafe.
+  const bow = bowCrossing(selected, t.voyage.cogDeg, t.voyage.sogKt);
+  const rows: Array<[string, string, string]> = [
+    ["RANGE", (selected?.rangeNm ?? 0).toFixed(1), "NM"],
+    ["T BRG", trueBrg.toFixed(1), "°"],
+    ["CPA", (selected?.cpaNm ?? 0).toFixed(1), "NM"],
+    ["TCPA", (selected?.tcpaMin ?? 0).toFixed(1), "MIN"],
+    ["CSE", fmt.deg(selected?.courseDeg ?? 0, 1).replace("°", ""), "°"],
+    ["STW", (selected?.speedKt ?? 0).toFixed(1), "KT"],
+    ["BCR", bow.rangeNm.toFixed(1), "NM"],
+    ["BCT", bow.minutes.toFixed(1), "MIN"],
+  ];
+  rows.forEach(([label, value, unit], i) => {
+    const yy = ry + u * 2.9 + i * u * 1.05;
+    say(g, label, rx + rw * 0.06, yy, { size: u * 0.82, color: RAD.green, font: RAD.mono, bold: true });
+    say(g, value, rx + rw * 0.68, yy, { size: u * 0.82, color: RAD.green, font: RAD.mono, align: "right", bold: true });
+    say(g, unit, rx + rw * 0.74, yy, { size: u * 0.82, color: RAD.green, font: RAD.mono, bold: true });
+  });
+
+  /* — rüzgâr ve derinlik — */
+  ry += boxH + u * 0.6;
+  const windH = u * 4.4;
+  g.strokeRect(rx + 0.5, ry + 0.5, rw - 1, windH - 1);
+  say(g, "WIND AND DEPTH", rx + rw / 2, ry + u * 1.35, {
+    size: u * 0.85,
+    color: RAD.green,
+    font: RAD.mono,
+    align: "center",
+    bold: true,
+  });
+  const wind: Array<[string, string, string]> = [
+    ["REL WIND", t.apparentWindKt.toFixed(1), "KT"],
+    ["", fmt.deg(t.apparentWindDeg, 1).replace("°", ""), "°R"],
+    ["DEPTH", t.depthM.toFixed(1), "M"],
+  ];
+  wind.forEach(([label, value, unit], i) => {
+    const yy = ry + u * 2.5 + i * u * 0.95;
+    if (label) say(g, label, rx + rw * 0.06, yy, { size: u * 0.78, color: RAD.green, font: RAD.mono, bold: true });
+    say(g, value, rx + rw * 0.72, yy, { size: u * 0.78, color: RAD.green, font: RAD.mono, align: "right", bold: true });
+    say(g, unit, rx + rw * 0.78, yy, { size: u * 0.78, color: RAD.green, font: RAD.mono, bold: true });
+  });
+
+  /* — düğme ızgarası ve saat — */
+  ry += windH + u * 0.8;
+  const grid = ["AZ", "PI", "TOOLS", "ARPA", "SYSTEM", "NAV", "TRIAL", "MAPS", "BRILL"];
+  grid.forEach((text, i) => {
+    const gx = rx + (i % 3) * (rw / 3);
+    const gy = ry + Math.floor(i / 3) * u * 1.7;
+    radarCell(g, gx + 1, gy, rw / 3 - 2, u * 1.55, text, u * 0.78);
+  });
+
+  radarCell(g, cx + R * 0.55, h - u * 4.6, w * 0.09, u * 1.6, "CENTRE", u * 0.78);
+  say(
+    g,
+    `${fmt.hhmm(t.voyage.shipTime)}:${String(t.voyage.shipTime.getUTCSeconds()).padStart(2, "0")}  ${String(
+      t.voyage.shipTime.getUTCDate(),
+    ).padStart(2, "0")}/${String(t.voyage.shipTime.getUTCMonth() + 1).padStart(2, "0")}/${t.voyage.shipTime.getUTCFullYear()}`,
+    w * 0.99,
+    h - u * 0.9,
+    { size: u * 0.85, color: RAD.green, font: RAD.mono, align: "right", bold: true },
+  );
 };
+
+/**
+ * Pruva kesme (bow crossing): hedef rota hattımızı ne zaman, ne mesafede
+ * kesiyor. ARPA'nın BCR/BCT satırları bu.
+ */
+function bowCrossing(
+  target: BridgeTelemetry["traffic"][number] | undefined,
+  headingDeg: number,
+  sogKt: number,
+): { rangeNm: number; minutes: number } {
+  if (!target) return { rangeNm: 0, minutes: 0 };
+  const b = (target.relBearingDeg * Math.PI) / 180;
+  const px = Math.sin(b) * target.rangeNm;
+  const py = Math.cos(b) * target.rangeNm;
+  const c = ((target.courseDeg - headingDeg) * Math.PI) / 180;
+  const vx = Math.sin(c) * target.speedKt;
+  if (Math.abs(vx) < 1e-4) return { rangeNm: 0, minutes: 0 };
+  // Hedefin enine hızıyla merkez hattına gelme süresi.
+  const hours = -px / vx;
+  if (hours < 0) return { rangeNm: 0, minutes: 0 };
+  const vy = Math.cos(c) * target.speedKt;
+  return { rangeNm: py + vy * hours - sogKt * hours, minutes: hours * 60 };
+}
 
 /* ─── ECDIS ─── */
 
 /**
- * ECDIS: seferin gerçek rotasını çizen elektronik harita.
+ * ECDIS — S-52 gündüz renkleriyle elektronik seyir haritası.
  *
- * Harita uydurma bir resim değil — voyage.ts'teki dönüş mevkileri enlem/boylam
- * olarak alınıp gemi merkezli bir Merkatör penceresine düşürülüyor. Gemi rotada
- * ilerledikçe harita altından kayıyor, geçilen dönüş mevkileri arkada kalıyor.
+ * Üstte menü şeridi, solda harita, sağda GPS/mevki paneli: düzen gerçek bir
+ * ECDIS'ten alındı. Renkler de standardın kendisi — derin su beyaz, sığlaştıkça
+ * maviye, kara açık kahverengi, planlanan rota macenta.
+ *
+ * Harita uydurma bir resim değil: voyage.ts'teki dönüş mevkileri enlem/boylam
+ * olarak alınıp gemi merkezli bir Merkatör penceresine düşürülüyor, derinlik
+ * alanları da rota altındaki iskandilden. Gemi ilerledikçe harita altından
+ * kayıyor, geçilen dönüş mevkileri arkada kalıyor, limana yaklaşınca kara
+ * pencereye giriyor.
  */
+
+/** S-52 gündüz renk takımı. */
+const S52 = {
+  depdw: "#ffffff",
+  depmd: "#d9edf7",
+  depms: "#b5dcef",
+  depvs: "#8fc9e8",
+  land: "#e5d9a8",
+  landf: "#b9d69a",
+  chgrd: "#8a9aa6",
+  chblk: "#1a1a1a",
+  magenta: "#c000c0",
+  route: "#d2006e",
+  ownship: "#0d0d0d",
+  panel: "#e9eef1",
+  panelLine: "#9fb0bb",
+  bar: "#dcd7c3",
+  barActive: "#f0a830",
+  text: "#16242e",
+};
+
+const ECDIS_TABS = [
+  "Overview",
+  "Large scale",
+  "Bring",
+  "All other",
+  "Nav data",
+  "Periodic",
+  "Radar",
+  "AIS",
+  "ARPA",
+  "Danger",
+  "Voyage",
+];
+
 export const drawEcdis: ScreenDraw = (g, w, h, t) => {
-  const bar = chassis(g, w, h, "ECDIS  ROUTE MONITOR", t.voyage.arrived ? "MOORED" : "UNDER WAY");
-  const side = w * 0.31;
-  const mapW = w - side;
-  const mapH = h - bar;
-  const cx = mapW * 0.5;
-  const cy = bar + mapH * 0.58;
+  /* — menü şeridi — */
+  const barH = h * 0.058;
+  g.fillStyle = S52.bar;
+  g.fillRect(0, 0, w, barH);
+  g.strokeStyle = "#b4ae98";
+  g.lineWidth = 1;
+  g.beginPath();
+  g.moveTo(0, barH - 0.5);
+  g.lineTo(w, barH - 0.5);
+  g.stroke();
 
-  g.fillStyle = "#0a2233";
-  g.fillRect(0, bar, mapW, mapH);
+  const tabW = (w * 0.7) / ECDIS_TABS.length;
+  ECDIS_TABS.forEach((label, i) => {
+    const x = w * 0.005 + i * tabW;
+    g.fillStyle = "#efeade";
+    g.fillRect(x, barH * 0.14, tabW - 2, barH * 0.72);
+    g.strokeStyle = "#a9a390";
+    g.strokeRect(x + 0.5, barH * 0.14 + 0.5, tabW - 3, barH * 0.72 - 1);
+    say(g, label, x + (tabW - 2) / 2, barH * 0.66, {
+      size: barH * 0.42,
+      color: S52.text,
+      font: UI.sans,
+      align: "center",
+    });
+  });
+  // Son sekme uyarı: gerçek cihazda da turuncu yanar.
+  const warnX = w * 0.005 + ECDIS_TABS.length * tabW;
+  g.fillStyle = S52.barActive;
+  g.fillRect(warnX, barH * 0.14, tabW - 2, barH * 0.72);
+  say(g, "Warnings", warnX + (tabW - 2) / 2, barH * 0.66, {
+    size: barH * 0.42,
+    color: "#2b1a00",
+    font: UI.sans,
+    align: "center",
+    bold: true,
+  });
 
-  // Ölçek: pencerenin yüksekliği rotanın kalan kısmını rahat gösterecek kadar.
+  /* — ölçek ve durum şeridi — */
   const spanNm = Math.max(6, Math.min(90, t.voyage.passage.totalNm * 0.42));
+  const scale = Math.round((spanNm * 1852 * 100) / (h * 0.75) / 1000) * 1000;
+  say(g, `1:${scale.toLocaleString("tr-TR")}`, w * 0.995, barH * 0.66, {
+    size: barH * 0.44,
+    color: S52.text,
+    font: UI.sans,
+    align: "right",
+    bold: true,
+  });
+
+  const mapY = barH;
+  const side = w * 0.235;
+  const mapW = w - side;
+  const mapH = h - mapY;
+  const cx = mapW * 0.5;
+  const cy = mapY + mapH * 0.56;
+
   const pxPerNm = (mapH * 0.8) / spanNm;
-  const latScale = pxPerNm * 60; // 1° enlem = 60 NM
+  const latScale = pxPerNm * 60;
   const lonScale = latScale * Math.cos((t.voyage.lat * Math.PI) / 180);
   // Kuzey yukarı değil, ROTA yukarı: köprüüstünden bakışla aynı yön.
   const rot = (-t.voyage.cogDeg * Math.PI) / 180;
   const cos = Math.cos(rot);
   const sin = Math.sin(rot);
-
   const project = (lat: number, lon: number): [number, number] => {
     const dx = (lon - t.voyage.lon) * lonScale;
     const dy = -(lat - t.voyage.lat) * latScale;
     return [cx + dx * cos - dy * sin, cy + dx * sin + dy * cos];
   };
-
-  // Pencerenin kapsadığı enlem/boylam aralığı — kontur ve iskandil rakamları
-  // bunun içine dağıtılıyor. Mesafeden değil PENCEREDEN türetilmesinin sebebi:
-  // ölçek sefere göre değişiyor, sabit bir serpme yarıçapı kısa seferde ekranı
-  // taşırır, uzun seferde geminin üstünde bir yığın bırakırdı.
   const latSpanDeg = mapH / latScale;
   const lonSpanDeg = mapW / lonScale;
 
   g.save();
   g.beginPath();
-  g.rect(0, bar, mapW, mapH);
+  g.rect(0, mapY, mapW, mapH);
   g.clip();
 
-  // Derinlik konturları — mevkiye bağlı, ekranla birlikte kayıyor.
-  g.strokeStyle = "rgba(120,190,225,.32)";
-  g.lineWidth = 1.6;
+  /* — derinlik alanları — */
+  g.fillStyle = S52.depdw;
+  g.fillRect(0, mapY, mapW, mapH);
+
+  /**
+   * Sığlıklar ROTANIN iki yanında.
+   *
+   * Ekran rota yukarı olduğu için bantlar doğrudan ekran uzayında, dikey
+   * şeritler hâlinde çiziliyor — enlem/boylamda kurulup döndürülselerdi
+   * meridyene paralel kalır, batıya giden gemide kıyı ekranı enine keserdi.
+   * Kenar dalgalanması gemi ilerledikçe kayıyor: harita altından akıyor.
+   */
+  const shore = Math.max(0, 1 - Math.min(t.voyage.progress, 1 - t.voyage.progress) / 0.12);
+  const seed = hashSeed(t.voyage.route.id);
+  const scroll = t.voyage.runNm * 0.35;
+  const edge = (i: number, side: number) =>
+    Math.sin((i / 17) * 5.5 + scroll + seed * 0.001 + side) * 0.035 +
+    Math.sin((i / 17) * 13 - scroll * 0.6 + side * 2) * 0.018;
+
+  const band = (from: number, to: number, fill: string) => {
+    g.fillStyle = fill;
+    for (const dir of [-1, 1] as const) {
+      g.beginPath();
+      for (let i = 0; i <= 17; i++) {
+        const y = mapY + (i / 17) * mapH;
+        const x = cx + dir * (from + edge(i, dir)) * mapW * 0.5;
+        if (i === 0) g.moveTo(x, y);
+        else g.lineTo(x, y);
+      }
+      g.lineTo(cx + dir * to * mapW * 0.5, mapY + mapH);
+      g.lineTo(cx + dir * to * mapW * 0.5, mapY);
+      g.closePath();
+      g.fill();
+    }
+  };
+
+  // Kanal ne kadar dar: açık denizde sığlık uzakta, limana yaklaşırken yanaşır.
+  const n = 0.2 + (1 - shore) * 0.14;
+  band(n, n + 0.34, S52.depmd);
+  band(n + 0.1, n + 0.34, S52.depms);
+  if (shore > 0.05) {
+    band(n + 0.18, n + 0.34, S52.depvs);
+    band(n + 0.26, n + 0.34, S52.land);
+    band(n + 0.26, n + 0.285, S52.landf);
+  }
+
+  /* — derinlik konturları ve iskandil rakamları — */
+  g.strokeStyle = S52.chgrd;
+  g.lineWidth = 1;
   for (let i = -2; i <= 2; i++) {
+    if (i === 0) continue;
     g.beginPath();
     for (let s = 0; s <= 24; s++) {
-      const lat = t.voyage.lat + (s / 24 - 0.5) * latSpanDeg * 1.4;
-      const lon = t.voyage.lon + i * lonSpanDeg * 0.42 + Math.sin(s * 0.7 + i) * lonSpanDeg * 0.08;
+      const lat = t.voyage.lat + (s / 24 - 0.5) * latSpanDeg * 1.5;
+      const lon = t.voyage.lon + i * lonSpanDeg * 0.2 + Math.sin(s * 0.8 + i) * lonSpanDeg * 0.03;
       const [x, y] = project(lat, lon);
       if (s === 0) g.moveTo(x, y);
       else g.lineTo(x, y);
@@ -331,21 +699,64 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
     g.stroke();
   }
 
-  // İskandil rakamları.
-  g.fillStyle = "rgba(150,205,235,.5)";
-  g.font = `${Math.min(mapH * 0.045, mapW * 0.05)}px ${UI.mono}`;
-  for (let i = 0; i < 30; i++) {
-    const lat = t.voyage.lat + (((i * 0.618) % 1) - 0.5) * latSpanDeg * 1.2;
-    const lon = t.voyage.lon + (((i * 0.377) % 1) - 0.5) * lonSpanDeg * 1.2;
+  g.fillStyle = "#31536b";
+  const soundFs = Math.min(mapH * 0.036, mapW * 0.028);
+  g.font = `${soundFs}px ${UI.sans}`;
+  for (let i = 0; i < 40; i++) {
+    const lat = t.voyage.lat + (((i * 0.618) % 1) - 0.5) * latSpanDeg * 1.3;
+    const lon = t.voyage.lon + (((i * 0.377) % 1) - 0.5) * lonSpanDeg * 1.3;
     const [x, y] = project(lat, lon);
-    g.fillText(String(Math.round(t.depthM * (0.6 + ((i * 0.313) % 1) * 0.9))), x, y);
+    g.fillText(String(Math.round(t.depthM * (0.55 + ((i * 0.313) % 1) * 0.95))), x, y);
   }
 
-  // Planlanan rota.
+  /* — enlem/boylam ızgarası — */
+  g.strokeStyle = "rgba(80,110,130,.35)";
+  g.setLineDash([3, 5]);
+  g.lineWidth = 1;
+  for (let i = -2; i <= 2; i++) {
+    const lat = Math.round(t.voyage.lat * 4) / 4 + i * 0.25;
+    g.beginPath();
+    const [x0, y0] = project(lat, t.voyage.lon - lonSpanDeg);
+    const [x1, y1] = project(lat, t.voyage.lon + lonSpanDeg);
+    g.moveTo(x0, y0);
+    g.lineTo(x1, y1);
+    g.stroke();
+    const lon = Math.round(t.voyage.lon * 4) / 4 + i * 0.25;
+    g.beginPath();
+    const [x2, y2] = project(t.voyage.lat - latSpanDeg, lon);
+    const [x3, y3] = project(t.voyage.lat + latSpanDeg, lon);
+    g.moveTo(x2, y2);
+    g.lineTo(x3, y3);
+    g.stroke();
+  }
+  g.setLineDash([]);
+
+  /* — şamandıralar: kanalın iki yanında, harita ile birlikte kayıyor — */
+  if (shore > 0.05) {
+    for (let i = 0; i < 9; i++) {
+      // Konumları alınan yola bağlı: gemi ilerledikçe şamandıralar geriye akar.
+      const frac = ((i / 9 + ((scroll * 0.06) % 1)) % 1);
+      const y = mapY + frac * mapH;
+      for (const dir of [-1, 1] as const) {
+        const x = cx + dir * (n + 0.05) * mapW * 0.5;
+        g.fillStyle = dir < 0 ? "#c81e1e" : "#127a2e";
+        g.beginPath();
+        g.arc(x, y, mapH * 0.009, 0, Math.PI * 2);
+        g.fill();
+        g.strokeStyle = S52.magenta;
+        g.lineWidth = 1;
+        g.beginPath();
+        g.arc(x, y, mapH * 0.019, 0, Math.PI * 2);
+        g.stroke();
+      }
+    }
+  }
+
+  /* — planlanan rota — */
   const wpts = t.voyage.passage.waypoints;
-  g.strokeStyle = "#ff5f4d";
-  g.lineWidth = 2.6;
-  g.setLineDash([12, 7]);
+  g.strokeStyle = S52.route;
+  g.lineWidth = 2.4;
+  g.setLineDash([10, 6]);
   g.beginPath();
   wpts.forEach((p, i) => {
     const [x, y] = project(p.lat, p.lon);
@@ -358,24 +769,22 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
   wpts.forEach((p, i) => {
     const [x, y] = project(p.lat, p.lon);
     const passed = i <= t.voyage.legIndex;
-    g.strokeStyle = passed ? "rgba(255,95,77,.4)" : "#ff5f4d";
-    g.lineWidth = 2;
+    g.strokeStyle = passed ? "rgba(210,0,110,.35)" : S52.route;
+    g.lineWidth = 1.8;
     g.beginPath();
-    g.arc(x, y, mapH * 0.022, 0, Math.PI * 2);
+    g.arc(x, y, mapH * 0.02, 0, Math.PI * 2);
     g.stroke();
     if (!passed && i === t.voyage.legIndex + 1) {
-      say(g, `WP${i}`, x + mapH * 0.035, y + mapH * 0.02, { size: mapH * 0.05, color: "#ffb9ae" });
+      say(g, `WP${i}`, x + mapH * 0.032, y + mapH * 0.018, {
+        size: mapH * 0.045,
+        color: S52.route,
+        font: UI.sans,
+        bold: true,
+      });
     }
   });
 
-  /*
-   * AIS hedefleri — radardaki gemilerin ta kendisi.
-   *
-   * Küçük ölçekte (uzun sefer, geniş pencere) gösterilmiyorlar: 6 millik bir
-   * trafik alanı 90 millik pencerede birkaç pikselе sığar, sekiz üçgen kendi
-   * gemimizin üstünde okunmaz bir yıldıza dönüşür. Gerçek ECDIS de belirli bir
-   * ölçeğin altında hedef bastırma uygular — burada eşik 24 mil.
-   */
+  /* — AIS hedefleri — */
   const aisVisible = spanNm <= 24;
   for (const target of aisVisible ? t.traffic : []) {
     if (target.rangeNm > spanNm * 0.55) continue;
@@ -387,9 +796,9 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
     g.save();
     g.translate(x, y);
     g.rotate(c);
-    g.strokeStyle = target.cpaNm < 0.5 ? UI.red : "rgba(180,255,205,.85)";
-    g.lineWidth = 1.8;
-    const s = mapH * 0.026;
+    g.strokeStyle = target.cpaNm < 0.5 ? "#c81e1e" : S52.chblk;
+    g.lineWidth = 1.6;
+    const s = mapH * 0.024;
     g.beginPath();
     g.moveTo(0, -s * 1.5);
     g.lineTo(s, s);
@@ -399,63 +808,137 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
     g.restore();
   }
 
-  // Kendi gemimiz — rota yukarı sunumda hep dik.
-  g.strokeStyle = "#39f07a";
-  g.lineWidth = 2.6;
+  /* — kendi gemimiz: S-52 çift daire + baş hattı + hız vektörü — */
+  g.strokeStyle = S52.ownship;
+  g.lineWidth = 2;
   g.beginPath();
   g.moveTo(cx, cy);
-  g.lineTo(cx, cy - mapH * 0.22);
+  g.lineTo(cx, cy - mapH * 0.26);
+  g.stroke();
+  // Hız vektörü üzerinde bir dakikalık işaretler.
+  for (let i = 1; i <= 6; i++) {
+    const yy = cy - (mapH * 0.26 * i) / 6;
+    g.beginPath();
+    g.moveTo(cx - mapH * 0.012, yy);
+    g.lineTo(cx + mapH * 0.012, yy);
+    g.stroke();
+  }
+  g.beginPath();
+  g.arc(cx, cy, mapH * 0.018, 0, Math.PI * 2);
   g.stroke();
   g.beginPath();
-  g.moveTo(cx - mapH * 0.028, cy + mapH * 0.045);
-  g.lineTo(cx, cy - mapH * 0.05);
-  g.lineTo(cx + mapH * 0.028, cy + mapH * 0.045);
-  g.lineTo(cx, cy + mapH * 0.02);
-  g.closePath();
+  g.arc(cx, cy, mapH * 0.008, 0, Math.PI * 2);
   g.stroke();
   g.restore();
 
-  // Yan bilgi paneli.
-  box(g, mapW, bar, side, mapH, "rgba(6,18,28,.92)");
-  const px = mapW + side * 0.08;
-  let py = bar + mapH * 0.09;
-  const line = mapH * 0.088;
-  const fs = Math.min(side * 0.115, mapH * 0.062);
+  /* — sağ panel — */
+  g.fillStyle = S52.panel;
+  g.fillRect(mapW, mapY, side, mapH);
+  g.strokeStyle = S52.panelLine;
+  g.lineWidth = 1;
+  g.beginPath();
+  g.moveTo(mapW + 0.5, mapY);
+  g.lineTo(mapW + 0.5, h);
+  g.stroke();
 
-  const rows: Array<[string, string, string?]> = [
-    ["POSN", fmt.lat(t.voyage.lat)],
-    ["", fmt.lon(t.voyage.lon)],
-    ["COG / SOG", `${fmt.deg(t.voyage.cogDeg)}  ${t.voyage.sogKt.toFixed(1)}kn`],
-    ["NEXT WPT", `WP${t.voyage.legIndex + 1}  ${t.voyage.distanceToWptNm.toFixed(1)}NM`],
-    ["XTE", `${Math.abs(t.voyage.xteNm).toFixed(3)} ${t.voyage.xteNm >= 0 ? "STBD" : "PORT"}`,
-      Math.abs(t.voyage.xteNm) > 0.05 ? UI.amber : UI.green],
+  const px = mapW + side * 0.06;
+  const pw = side * 0.88;
+  const fs = Math.min(side * 0.11, mapH * 0.05);
+
+  // Başlık: kaynak ve otomatik kip.
+  g.fillStyle = "#cfe0ea";
+  g.fillRect(mapW, mapY, side, fs * 1.7);
+  say(g, "GPS (COMP)", px, mapY + fs * 1.15, { size: fs * 0.95, color: S52.text, font: UI.sans, bold: true });
+  g.fillStyle = "#ffffff";
+  g.fillRect(mapW + side * 0.72, mapY + fs * 0.3, side * 0.24, fs * 1.05);
+  g.strokeStyle = S52.panelLine;
+  g.strokeRect(mapW + side * 0.72 + 0.5, mapY + fs * 0.3 + 0.5, side * 0.24 - 1, fs * 1.05 - 1);
+  say(g, "AUTO", mapW + side * 0.84, mapY + fs * 1.1, {
+    size: fs * 0.72,
+    color: S52.text,
+    font: UI.sans,
+    align: "center",
+  });
+
+  let py = mapY + fs * 2.9;
+  const chip = (color: string, label: string) => {
+    g.fillStyle = color;
+    g.fillRect(px, py - fs * 0.72, fs * 0.5, fs * 0.5);
+    say(g, label, px + fs * 0.8, py, { size: fs * 0.78, color: "#4a5b66", font: UI.sans });
+  };
+
+  chip("#2f7d32", "SHIP");
+  say(g, fmt.lat(t.voyage.lat), px, py + fs * 1.15, { size: fs, color: S52.text, bold: true });
+  say(g, fmt.lon(t.voyage.lon), px, py + fs * 2.3, { size: fs, color: S52.text, bold: true });
+  py += fs * 3.6;
+
+  const panelRows: Array<[string, string, string, string?]> = [
+    ["#2f7d32", "SOG", `${t.voyage.sogKt.toFixed(1)} kn`],
+    ["#2f7d32", "COG", fmt.deg(t.voyage.cogDeg, 1)],
+    ["#2f7d32", "HDG", fmt.deg(t.voyage.cogDeg, 1), "Gyro"],
+  ];
+  panelRows.forEach(([color, label, value, note]) => {
+    chip(color, label);
+    say(g, value, px + pw, py, { size: fs, color: S52.text, align: "right", bold: true });
+    if (note) say(g, note, px + pw, py + fs * 0.95, { size: fs * 0.7, color: "#6b7d88", font: UI.sans, align: "right" });
+    py += fs * 2.0;
+  });
+
+  g.strokeStyle = S52.panelLine;
+  g.beginPath();
+  g.moveTo(px, py - fs * 0.6);
+  g.lineTo(px + pw, py - fs * 0.6);
+  g.stroke();
+
+  say(g, "S57 ENC — WGS 84", px, py + fs * 0.6, { size: fs * 0.78, color: "#4a5b66", font: UI.sans });
+  say(g, shore > 0.3 ? "Approach a harbour" : "Coastal / Open sea", px, py + fs * 1.8, {
+    size: fs * 0.85,
+    color: S52.text,
+    font: UI.sans,
+  });
+  py += fs * 3.1;
+
+  const voyageRows: Array<[string, string, string?]> = [
+    ["NEXT WPT", `WP${t.voyage.legIndex + 1}  ${t.voyage.distanceToWptNm.toFixed(1)} NM`],
+    [
+      "XTE",
+      `${Math.abs(t.voyage.xteNm).toFixed(3)} ${t.voyage.xteNm >= 0 ? "STBD" : "PORT"}`,
+      Math.abs(t.voyage.xteNm) > 0.05 ? "#b25000" : "#1c6b2e",
+    ],
     ["TO GO", `${t.voyage.toGoNm.toFixed(1)} NM`],
     ["ETA", `${fmt.hhmm(t.voyage.eta)} UTC`],
     ["DEPTH", `${t.depthM.toFixed(1)} m`],
   ];
-  rows.forEach(([label, value, color]) => {
-    if (label) say(g, label, px, py, { size: fs * 0.78, color: UI.faint, font: UI.sans });
-    say(g, value, px, py + (label ? fs * 1.05 : 0), { size: fs, color: color ?? UI.text });
-    py += label ? line * 1.28 : line * 0.62;
+  voyageRows.forEach(([label, value, color]) => {
+    say(g, label, px, py, { size: fs * 0.72, color: "#6b7d88", font: UI.sans });
+    say(g, value, px, py + fs * 1.0, { size: fs * 0.95, color: color ?? S52.text, bold: true });
+    py += fs * 2.15;
   });
 
-  // Alt şerit: seferin kendisi.
-  const stripY = h - mapH * 0.075;
-  g.fillStyle = "rgba(6,18,28,.92)";
+  /* — alt şerit: seferin kendisi — */
+  const stripY = h - mapH * 0.062;
+  g.fillStyle = "rgba(255,255,255,.82)";
   g.fillRect(0, stripY, mapW, h - stripY);
+  g.strokeStyle = S52.panelLine;
+  g.beginPath();
+  g.moveTo(0, stripY + 0.5);
+  g.lineTo(mapW, stripY + 0.5);
+  g.stroke();
   say(
     g,
     `${t.voyage.route.from.name.toUpperCase()} → ${t.voyage.route.to.name.toUpperCase()}`,
-    mapW * 0.02,
-    h - mapH * 0.022,
-    { size: mapH * 0.05, color: UI.accent, bold: true },
+    mapW * 0.015,
+    h - mapH * 0.018,
+    { size: mapH * 0.042, color: S52.text, font: UI.sans, bold: true },
   );
   say(
     g,
-    `AIS ${aisVisible ? "ON" : "SUPP"} · ${Math.round(t.voyage.progress * 100)}%`,
-    mapW * 0.98,
-    h - mapH * 0.022,
-    { size: mapH * 0.05, color: UI.dim, align: "right" },
+    `AIS ${aisVisible ? "ON" : "SUPP"} · ${t.voyage.arrived ? "MOORED" : "UNDER WAY"} · ${Math.round(
+      t.voyage.progress * 100,
+    )}%`,
+    mapW * 0.985,
+    h - mapH * 0.018,
+    { size: mapH * 0.042, color: "#4a5b66", font: UI.sans, align: "right" },
   );
 };
 

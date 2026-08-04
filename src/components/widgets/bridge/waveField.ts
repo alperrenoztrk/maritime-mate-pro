@@ -135,7 +135,7 @@ export function foldingScale(trains: WaveTrain[]): number {
  * alınan yol (0, −V·t); akıntı ise suyu taşıdığı için ters işaretle girer.
  *
  * DİKKAT: burada gerçek zaman ve gerçek sürat kullanılır. Seyir planındaki
- * 60× sıkıştırma (bkz. voyage.ts) denize uygulanmaz — uygulansaydı gemi 780
+ * 30× sıkıştırma (bkz. voyage.ts) denize uygulanmaz — uygulansaydı gemi 400
  * knotla giden bir tekne gibi sallanırdı.
  */
 export function fieldOffset(
@@ -232,8 +232,11 @@ export function shipMotion(
   let pitch = 0;
   let heave = 0;
   let yaw = 0;
-  let rollAmp = 0;
-  let pitchAmp = 0;
+  // Genlikler kareler toplamıyla birikiyor: bağımsız bileşenlerin mutlak
+  // değerleri toplanırsa hepsinin aynı anda tepe yaptığı, gerçekte görülmeyen
+  // bir sayı çıkar. Belirgin genlik √(2·Σa²) — denizcilikte kullanılan ölçü.
+  let rollAmp2 = 0;
+  let pitchAmp2 = 0;
   let dominantEnergy = 0;
   let encounterPeriod = ship.rollPeriodS;
 
@@ -267,8 +270,8 @@ export function shipMotion(
     // Savrulma: kıç omuzluktan gelen dalga gemiyi yalatır — küçük ama var.
     yaw += slope * sin * w.dirX * w.dirZ * 0.12;
 
-    rollAmp += Math.abs(slope * w.dirX * rollRao);
-    pitchAmp += Math.abs(slope * w.dirZ * pitchRao);
+    rollAmp2 += (slope * w.dirX * rollRao) ** 2;
+    pitchAmp2 += (slope * w.dirZ * pitchRao) ** 2;
 
     const energy = w.amplitude * w.amplitude;
     if (energy > dominantEnergy) {
@@ -282,8 +285,8 @@ export function shipMotion(
     pitch,
     heave,
     yaw,
-    rollAmplitudeDeg: (rollAmp * 180) / Math.PI,
-    pitchAmplitudeDeg: (pitchAmp * 180) / Math.PI,
+    rollAmplitudeDeg: (Math.sqrt(2 * rollAmp2) * 180) / Math.PI,
+    pitchAmplitudeDeg: (Math.sqrt(2 * pitchAmp2) * 180) / Math.PI,
     encounterPeriodS: encounterPeriod,
   };
 }

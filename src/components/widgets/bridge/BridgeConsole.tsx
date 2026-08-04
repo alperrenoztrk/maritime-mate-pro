@@ -302,7 +302,7 @@ export function BridgeConsole({ sim, night = 0 }: BridgeConsoleProps) {
       <LiveScreen slot={INMARSAT_SLOT} width={0.34} aspect={1.45} resolution={640} fps={0.5} draw={drawInmarsatC} sim={sim} dim={dim} />
 
       {/* İskele: elektronik harita — GPS widget'ı bunun yanındaki yuvada */}
-      <LiveScreen slot={ECDIS_SLOT} width={0.48} aspect={1.55} resolution={896} fps={3} draw={drawEcdis} sim={sim} dim={dim} />
+      <LiveScreen slot={ECDIS_SLOT} width={0.5} aspect={1.56} resolution={1100} fps={3} draw={drawEcdis} sim={sim} dim={dim} />
 
       {/* Dümen: otopilot ve iki yuvarlak gösterge */}
       <LiveScreen slot={AUTOPILOT_SLOT} width={0.34} aspect={2} resolution={640} fps={2} draw={drawAutopilot} sim={sim} dim={dim} />
@@ -310,7 +310,7 @@ export function BridgeConsole({ sim, night = 0 }: BridgeConsoleProps) {
       <LiveScreen slot={RPM_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRpmGauge} sim={sim} round dim={dim} />
 
       {/* Sancak: radar/ARPA ve conning */}
-      <LiveScreen slot={RADAR_SLOT} width={0.4} aspect={1} resolution={768} fps={12} draw={drawRadar} sim={sim} dim={dim} />
+      <LiveScreen slot={RADAR_SLOT} width={0.46} aspect={1.72} resolution={1100} fps={10} draw={drawRadar} sim={sim} dim={dim} />
       <LiveScreen slot={CONNING_SLOT} width={0.44} aspect={1.9} resolution={896} fps={5} draw={drawConning} sim={sim} dim={dim} />
 
       {/* Sancak kanadı: iskandil ve telsiz */}
