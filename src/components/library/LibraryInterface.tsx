@@ -161,9 +161,11 @@ const headband: CSSProperties = {
 /** Yaldız (gold foil) sırt çizgisi. */
 const goldRule = "bg-[linear-gradient(90deg,transparent,rgba(233,201,124,0.9),transparent)]";
 
-/** Kapak yazısındaki varak parlaklığı (metne kırpılan metalik gradyan). */
+/** Kapak yazısındaki varak parlaklığı (metne kırpılan metalik gradyan).
+    Üst uç krem-beyaza yakın: başlık artık cildin üstüne doğrudan basıldığı için
+    sarı/amber ciltlerde luminans farkını bu açıklık sağlıyor. */
 const goldFoil: CSSProperties = {
-  backgroundImage: "linear-gradient(180deg, #f8e8bb 0%, #e3bf72 52%, #b2842f 100%)",
+  backgroundImage: "linear-gradient(180deg, #fffaf0 0%, #ffdf9b 48%, #d9a441 100%)",
 };
 
 /** Kapaktaki başlık kutusu dar. Tire kapalı olduğu için sığmayan kelimeyi tarayıcı
@@ -261,7 +263,7 @@ function LibraryBookCase({
           <div className="absolute inset-x-[11%] top-[21%] flex flex-col items-center gap-2 px-2 text-center">
             <span aria-hidden className={`h-px w-8 ${goldRule}`} />
             <h2
-              className={`line-clamp-5 bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.92))_drop-shadow(0_0_2px_rgba(0,0,0,0.9))_drop-shadow(0_0_6px_rgba(0,0,0,0.45))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
+              className={`line-clamp-5 bg-clip-text font-book font-black leading-[1.28] tracking-[0.02em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.95))_drop-shadow(0_-1px_0_rgba(0,0,0,0.7))_drop-shadow(1px_0_0_rgba(0,0,0,0.8))_drop-shadow(-1px_0_0_rgba(0,0,0,0.8))_drop-shadow(0_0_5px_rgba(0,0,0,0.6))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
               style={goldFoil}
             >
               {title}
