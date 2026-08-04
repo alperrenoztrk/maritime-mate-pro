@@ -12,6 +12,10 @@ import { ShipExterior } from "./ShipExterior";
 import { disposeBridgeTextures } from "./bridgeTextures";
 import { BridgeZoomToPointer } from "./BridgeZoom";
 import { BRIDGE_VIEW, EYE_Y, HORIZON_SCENE, ROOM, SCENE_SCALE } from "./bridgeLayout";
+import { BridgeSimulation } from "./BridgeSimulation";
+import { createSim } from "./bridgeSim";
+import type { MarineConditions } from "./marineConditions";
+import type { VoyageState } from "./voyage";
 import type { BridgeConditions } from "@/components/widgets/homeWidgetNodes";
 
 /**
@@ -23,12 +27,21 @@ import type { BridgeConditions } from "@/components/widgets/homeWidgetNodes";
  * pencerelerden giren gündüz ışığı (tek gölge veren yönlü ışık) ve tavandaki
  * gömme armatürler (bkz. BridgeRoom → Downlight).
  *
+ * GEMİ SEYİR HÂLİNDE. Rastgele bir limandan rastgele bir limana gidiyor
+ * (voyage.ts), denizin hâli o seferin geçtiği yerden okunuyor
+ * (marineConditions.ts) ve yüzey o denizin dalgalarıyla kabarıyor
+ * (OceanSurface). Gemi bu dalgalara gerçek bir denizcilik modeliyle tepki
+ * veriyor: baştan gelen dalgada baş vuruyor, kemereden gelende yalpalıyor
+ * (waveField.ts). Köprüüstündeki bütün cihazlar aynı gerçekliği okuyor
+ * (bridgeTelemetry.ts) — ECDIS'in mevkisi ile radarın rotası hep aynı.
+ *
  * Camın dışı gerçek: geminin baş güvertesi (ShipExterior) ile deniz ve ufuk
  * (SeaHorizon) sahnenin içinde duruyor, cama boyalı değil. Kamera dönünce
  * gemi fona göre kayıyor — köprüüstünü çıkartmadan ayıran şey bu.
  *
  * Çevrimdışı sözleşmesi gemi simülasyonuyla aynı: HDR dosyası yok, yansımalar
- * drei'nin Lightformer panelleriyle yerel PMREM'e çiziliyor.
+ * drei'nin Lightformer panelleriyle yerel PMREM'e çiziliyor; deniz verisi
+ * alınamazsa mevkiden türeyen bir model devreye giriyor.
  */
 
 /**
@@ -140,14 +153,23 @@ function BridgeLighting({ sun, night, skyColor }: BridgeLightingProps) {
 export interface BridgeScene3DProps {
   nodes: Partial<Record<HomeWidgetId, ReactNode>>;
   enabled: HomeWidgetId[];
-  /** Widget'ları besleyen aynı canlı veri — dışarısı da ondan besleniyor. */
+  /** Widget'ları besleyen canlı veri — sefer verisi yokken yedek. */
   conditions?: BridgeConditions;
+  /**
+   * Geminin seyri ve bulunduğu yerdeki denizin hâli. İkisi de dışarıda
+   * (BridgeWidgetView) kuruluyor: sahne başlatılamasa bile sefer şeridi
+   * çalışsın ve kancalar iki kez kurulmasın diye.
+   */
+  voyage: VoyageState | null;
+  marine: MarineConditions | null;
 }
 
-export function BridgeScene3D({ nodes, enabled, conditions }: BridgeScene3DProps) {
+export function BridgeScene3D({ nodes, enabled, conditions, voyage, marine }: BridgeScene3DProps) {
   // Sahne kapanınca canvas dokularını bırak — köprüüstü panoraması tek başına
   // birkaç megabayt.
   useEffect(() => () => disposeBridgeTextures(), []);
+
+  const sim = useMemo(() => createSim(), []);
 
   const controlsRef = useRef<ComponentRef<typeof OrbitControls>>(null);
   /**
@@ -161,17 +183,21 @@ export function BridgeScene3D({ nodes, enabled, conditions }: BridgeScene3DProps
   );
 
   /**
-   * Gökyüzünün o anki hâli, güneş widget'ıyla tek kaynaktan: lombardan görünen
-   * gökyüzü de (PortholeSky) aynı skyLook() tablosunu okuyor. İki yerde iki
-   * ayrı gündüz/gece eğrisi olsaydı widget ile pencere birbirini yalanlardı.
+   * Gökyüzünün o anki hâli, güneş widget'ıyla aynı tablodan (skyLook).
+   *
+   * Gün ilerlemesi artık GEMİNİN mevkiinden geliyor: kullanıcı Ankara'da
+   * saat 22:00'de bakarken gemi Singapur açıklarındaysa camdan sabah
+   * görünmeli. Sefer verisi henüz kurulmadıysa kullanıcının kendi gün
+   * ilerlemesine düşülüyor — sahne hiçbir karede ışıksız kalmıyor.
    */
-  const look = useMemo(() => skyLook(conditions?.sunProgress ?? null), [conditions?.sunProgress]);
+  const sunProgress = marine?.sunProgress ?? conditions?.sunProgress ?? null;
+  const look = useMemo(() => skyLook(sunProgress), [sunProgress]);
   const night = look?.night ?? 0;
   const skyColor = look?.topColor ?? "#dceaf6";
-  const sun = useMemo(() => sunDirection(conditions?.sunProgress), [conditions?.sunProgress]);
+  const sun = useMemo(() => sunDirection(sunProgress), [sunProgress]);
 
   /** Kapalı havada (WMO ≥ 45) deniz griye kaçar, açıkta gökyüzünü yansıtır. */
-  const overcast = (conditions?.weatherCode ?? 0) >= 45;
+  const overcast = (marine?.weatherCode ?? conditions?.weatherCode ?? 0) >= 45;
   const seaColor = useMemo(() => {
     const base = new THREE.Color(overcast ? "#3f5566" : "#1e5274");
     return base.multiplyScalar(1 - 0.72 * night);
@@ -256,12 +282,20 @@ export function BridgeScene3D({ nodes, enabled, conditions }: BridgeScene3DProps
           args={[fogColor, HORIZON_SCENE.fogNear * SCENE_SCALE, HORIZON_SCENE.fogFar * SCENE_SCALE]}
         />
 
+        <BridgeSimulation sim={sim} voyage={voyage} marine={marine} />
+
         <group scale={SCENE_SCALE}>
           <BridgeLighting sun={sun} night={night} skyColor={skyColor} />
-          <SeaHorizon windSpeedKt={conditions?.windSpeedKt} tint={backdropTint} seaColor={seaColor} />
+          <SeaHorizon
+            sim={sim}
+            headingDeg={voyage?.cogDeg ?? 0}
+            windKt={marine?.windKt ?? conditions?.windSpeedKt ?? 0}
+            tint={backdropTint}
+            seaColor={seaColor}
+          />
           <ShipExterior night={night} />
           <BridgeRoom />
-          <BridgeConsole />
+          <BridgeConsole sim={sim} night={night} />
           <BridgeInstrumentMounts nodes={nodes} enabled={enabled} />
         </group>
       </Canvas>

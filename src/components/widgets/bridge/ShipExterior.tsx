@@ -9,7 +9,7 @@ import { EXTERIOR } from "./bridgeLayout";
 import { deckHeightAt, disposeShipExteriorGeometry, getShipExteriorGeometry } from "./shipExterior";
 
 /**
- * Camın dışındaki gemi: baş güverte, ambarlar, vinç, baş kasara ve direk.
+ * Camın dışındaki gemi: baş güverte, ambarlar, baş kasara ve direk.
  *
  * Geometri shipExterior.ts'te dört malzeme grubunda birleştirilmiş hâlde
  * geliyor; burada yalnız giydiriliyor. Dört çizim çağrısı + silyon feneri:
@@ -79,9 +79,9 @@ export function ShipExterior({ night = 0 }: ShipExteriorProps) {
         />
       </mesh>
 
-      {/* Küpeşte, mezarna, kasara perdesi, borda ve vinç — hepsi aynı açık gri
-          gemi boyası. DoubleSide: yalpada kenar bir kare ters dönse bile
-          arkadaki deniz sızmasın. */}
+      {/* Küpeşte, mezarna, kasara perdesi ve borda — hepsi aynı açık gri gemi
+          boyası. DoubleSide: yalpada kenar bir kare ters dönse bile arkadaki
+          deniz sızmasın. */}
       <mesh geometry={geo.painted}>
         <meshStandardMaterial
           map={topsideTex.map}
@@ -94,7 +94,7 @@ export function ShipExterior({ night = 0 }: ShipExteriorProps) {
         />
       </mesh>
 
-      {/* Irgat, zincir, direk, korkuluk, bom: boyasız/koyu çelik. */}
+      {/* Irgat, zincir, direk, korkuluk: boyasız/koyu çelik. */}
       <mesh geometry={geo.steel}>
         <meshStandardMaterial color={dim.clone().multiplyScalar(0.34)} roughness={0.55} metalness={0.65} />
       </mesh>

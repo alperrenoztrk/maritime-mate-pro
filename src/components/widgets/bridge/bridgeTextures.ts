@@ -240,23 +240,36 @@ export function getNameplateTexture(): THREE.CanvasTexture {
 
 /* ─── pencere panoraması ─── */
 
-const PAN_W = 3072;
-const PAN_H = 384;
+/**
+ * Panorama artık tam tur (360°): fon silindiri geminin rotasına göre
+ * döndüğü için yayın kenarı kadraja girmemeli (bkz. HORIZON_SCENE).
+ * 4096×320 oranı silindirin 12.6:1 oranına oturuyor.
+ */
+const PAN_W = 4096;
+const PAN_H = 320;
 /** Ufuk çizgisi — göz hizası pencere ortasının biraz üstünde. */
-const PAN_HORIZON = 176;
+const PAN_HORIZON = 147;
 
-/** Uzaktaki kıyı: tepeler + şehir silueti, hava perspektifiyle soluk. */
+/**
+ * Uzaktaki kıyı: tepeler + şehir silueti, hava perspektifiyle soluk.
+ *
+ * İki ucunda da sıfıra iniyor (taper). Panorama tam tur olduğu için kıyının
+ * bir yerde bıçakla kesilmiş gibi bitmesi kabul edilemez — hem gerçekçi değil
+ * hem de dikişte iki farklı kıyı çizgisi karşılaşırdı.
+ */
 function paintCoast(g: CanvasRenderingContext2D, x0: number, x1: number, seed: number, height: number) {
   const rnd = mulberry32(seed);
+  /** Uçlarda 0, ortada 1 — kıyı ufkun içinden çıkıp ufka geri giriyor. */
+  const taper = (t: number) => Math.pow(Math.sin(Math.PI * Math.min(1, Math.max(0, t))), 0.55);
+
   // Tepe sırtı
   g.beginPath();
   g.moveTo(x0, PAN_HORIZON);
-  for (let x = x0; x <= x1; x += 24) {
+  for (let x = x0; x <= x1; x += 20) {
     const t = (x - x0) / (x1 - x0);
     const ridge =
       Math.sin(t * 7.1 + seed) * 0.35 + Math.sin(t * 3.3 + seed * 0.7) * 0.45 + Math.sin(t * 13.7) * 0.2;
-    const bump = Math.sin(Math.PI * Math.min(1, Math.max(0, t))) * 0.7 + 0.3;
-    g.lineTo(x, PAN_HORIZON - height * bump * (0.55 + ridge * 0.35));
+    g.lineTo(x, PAN_HORIZON - height * taper(t) * (0.55 + ridge * 0.35));
   }
   g.lineTo(x1, PAN_HORIZON);
   g.closePath();
@@ -265,9 +278,11 @@ function paintCoast(g: CanvasRenderingContext2D, x0: number, x1: number, seed: n
 
   // Şehir: kıyı boyunca küçük bloklar, birkaçı yüksek.
   for (let x = x0; x < x1; x += 5 + rnd() * 9) {
+    const t = (x - x0) / (x1 - x0);
     const tall = rnd() > 0.9;
-    const h = (tall ? 16 + rnd() * 22 : 4 + rnd() * 10) * (height / 46);
+    const h = (tall ? 16 + rnd() * 22 : 4 + rnd() * 10) * (height / 46) * taper(t);
     const w = 3 + rnd() * 7;
+    if (h < 0.6) continue;
     g.fillStyle = `rgba(${205 + rnd() * 35},${208 + rnd() * 30},${210 + rnd() * 28},${0.5 + rnd() * 0.35})`;
     g.fillRect(x, PAN_HORIZON - h, w, h);
     if (rnd() > 0.7) {
@@ -275,9 +290,26 @@ function paintCoast(g: CanvasRenderingContext2D, x0: number, x1: number, seed: n
       g.fillRect(x + 1, PAN_HORIZON - h + 2, w - 2, 1.5);
     }
   }
-  // Kıyı şeridi köpüğü
-  g.fillStyle = "rgba(236,244,248,.5)";
+
+  // Kıyı şeridi köpüğü — uçlarda kıyıyla birlikte sönüyor.
+  const foam = g.createLinearGradient(x0, 0, x1, 0);
+  foam.addColorStop(0, "rgba(236,244,248,0)");
+  foam.addColorStop(0.18, "rgba(236,244,248,.5)");
+  foam.addColorStop(0.82, "rgba(236,244,248,.5)");
+  foam.addColorStop(1, "rgba(236,244,248,0)");
+  g.fillStyle = foam;
   g.fillRect(x0, PAN_HORIZON - 1.5, x1 - x0, 2.5);
+}
+
+/**
+ * Dikişte kesilmemesi gereken çizimler için: şekli x'te çizer, kenara
+ * yakınsa bir de karşı kenarda tekrarlar. Tam turlu panoramada u=0 ile u=1
+ * aynı pikseldir; bu olmadan bulutlar ve pırıltılar dikişte yarım kalırdı.
+ */
+function wrapped(x: number, margin: number, draw: (x: number) => void) {
+  draw(x);
+  if (x < margin) draw(x + PAN_W);
+  else if (x > PAN_W - margin) draw(x - PAN_W);
 }
 
 /**
@@ -310,23 +342,25 @@ export function getSeaPanoramaTexture(): THREE.CanvasTexture {
 
     // Bulutlar
     const rnd = mulberry32(0x5eac);
-    for (let i = 0; i < 34; i++) {
-      const x = rnd() * PAN_W;
-      const y = 12 + rnd() * (PAN_HORIZON - 60);
+    for (let i = 0; i < 44; i++) {
+      const cx = rnd() * PAN_W;
+      const y = 10 + rnd() * (PAN_HORIZON - 52);
       const rx = 60 + rnd() * 190;
       const ry = rx * (0.16 + rnd() * 0.16);
-      const grad = g.createRadialGradient(x, y, 0, x, y, rx);
       const a = 0.22 + rnd() * 0.4;
-      grad.addColorStop(0, `rgba(255,255,255,${a})`);
-      grad.addColorStop(0.55, `rgba(255,255,255,${a * 0.45})`);
-      grad.addColorStop(1, "rgba(255,255,255,0)");
-      g.save();
-      g.translate(x, y);
-      g.scale(1, ry / rx);
-      g.translate(-x, -y);
-      g.fillStyle = grad;
-      g.fillRect(x - rx, y - rx, rx * 2, rx * 2);
-      g.restore();
+      wrapped(cx, rx, (x) => {
+        const grad = g.createRadialGradient(x, y, 0, x, y, rx);
+        grad.addColorStop(0, `rgba(255,255,255,${a})`);
+        grad.addColorStop(0.55, `rgba(255,255,255,${a * 0.45})`);
+        grad.addColorStop(1, "rgba(255,255,255,0)");
+        g.save();
+        g.translate(x, y);
+        g.scale(1, ry / rx);
+        g.translate(-x, -y);
+        g.fillStyle = grad;
+        g.fillRect(x - rx, y - rx, rx * 2, rx * 2);
+        g.restore();
+      });
     }
 
     // Güneş — sağ omuzda, camda parlama olarak da yankılanır.
@@ -348,23 +382,28 @@ export function getSeaPanoramaTexture(): THREE.CanvasTexture {
     g.fillStyle = sea;
     g.fillRect(0, PAN_HORIZON, PAN_W, PAN_H - PAN_HORIZON);
 
-    // Kıyı bantları: iki yanda kara, ortada açık su.
-    paintCoast(g, -40, PAN_W * 0.36, 3.1, 46);
-    paintCoast(g, PAN_W * 0.64, PAN_W + 40, 8.4, 40);
+    // Kıyı bantları: üç ayrı kara parçası, aralarında açık su. Hiçbiri
+    // dikişe (x=0 ≡ x=W) değmiyor — orası hep açık deniz.
+    paintCoast(g, PAN_W * 0.06, PAN_W * 0.31, 3.1, 46);
+    paintCoast(g, PAN_W * 0.40, PAN_W * 0.55, 5.7, 28);
+    paintCoast(g, PAN_W * 0.66, PAN_W * 0.93, 8.4, 40);
 
     // Dalga çizgileri: ufka yaklaştıkça sıklaşır, aşağıda kalınlaşır.
-    for (let i = 0; i < 900; i++) {
+    for (let i = 0; i < 1100; i++) {
       const t = Math.pow(rnd(), 1.9);
       const y = PAN_HORIZON + 2 + t * (PAN_H - PAN_HORIZON - 2);
-      const x = rnd() * PAN_W;
+      const cx = rnd() * PAN_W;
       const len = 6 + t * 90 * (0.4 + rnd());
       const thick = 0.7 + t * 2.6;
+      const jitter = (rnd() - 0.5) * thick;
       g.strokeStyle = `rgba(255,255,255,${0.05 + rnd() * 0.16 * (0.35 + t)})`;
       g.lineWidth = thick;
-      g.beginPath();
-      g.moveTo(x, y);
-      g.lineTo(x + len, y + (rnd() - 0.5) * thick);
-      g.stroke();
+      wrapped(cx, len + 4, (x) => {
+        g.beginPath();
+        g.moveTo(x, y);
+        g.lineTo(x + len, y + jitter);
+        g.stroke();
+      });
     }
 
     // Güneş yolu — ufuktan aşağı doğru açılan pırıltı bandı.
@@ -554,274 +593,15 @@ export function getTopsideTexture(): SurfaceSet {
   return { map: tiled(map, 1, 1), bumpMap: tiled(bump, 1, 1) };
 }
 
-/* ─── konsoldaki ölü ekranlar ─── */
+/* ─── konsoldaki cihaz ekranları ─── */
 
-/** ECDIS: elektronik harita — kara, derinlik konturları, rota ve gemi sembolü. */
-export function getEcdisTexture(): THREE.CanvasTexture {
-  return remember("ecdis", () => {
-    const [c, g] = makeCanvas(1024, 640);
-    g.fillStyle = "#0a2233";
-    g.fillRect(0, 0, 1024, 640);
-
-    // Sığ su bandı
-    g.fillStyle = "#12496b";
-    g.beginPath();
-    g.moveTo(0, 150);
-    g.bezierCurveTo(260, 90, 420, 250, 700, 190);
-    g.bezierCurveTo(860, 155, 940, 240, 1024, 205);
-    g.lineTo(1024, 0);
-    g.lineTo(0, 0);
-    g.closePath();
-    g.fill();
-
-    // Kara
-    g.fillStyle = "#c8b878";
-    g.beginPath();
-    g.moveTo(0, 96);
-    g.bezierCurveTo(240, 40, 430, 190, 690, 130);
-    g.bezierCurveTo(850, 96, 930, 176, 1024, 142);
-    g.lineTo(1024, 0);
-    g.lineTo(0, 0);
-    g.closePath();
-    g.fill();
-    g.fillStyle = "#8fa86a";
-    g.beginPath();
-    g.moveTo(0, 60);
-    g.bezierCurveTo(280, 10, 470, 150, 720, 92);
-    g.lineTo(1024, 104);
-    g.lineTo(1024, 0);
-    g.lineTo(0, 0);
-    g.closePath();
-    g.fill();
-
-    // Derinlik konturları
-    g.strokeStyle = "rgba(120,190,225,.45)";
-    g.lineWidth = 2;
-    for (let i = 0; i < 4; i++) {
-      g.beginPath();
-      g.moveTo(0, 220 + i * 78);
-      g.bezierCurveTo(300, 180 + i * 84, 560, 300 + i * 70, 1024, 250 + i * 80);
-      g.stroke();
-    }
-
-    // İskandil rakamları
-    const rnd = mulberry32(0x3fa1);
-    g.fillStyle = "rgba(150,205,235,.75)";
-    g.font = "17px 'Courier New', monospace";
-    for (let i = 0; i < 70; i++) {
-      const x = rnd() * 1000 + 10;
-      const y = 230 + rnd() * 400;
-      g.fillText(String(Math.round(9 + rnd() * 80)), x, y);
-    }
-
-    // Planlanan rota + waypoint'ler
-    g.strokeStyle = "#e04a4a";
-    g.lineWidth = 3;
-    g.setLineDash([14, 9]);
-    g.beginPath();
-    g.moveTo(512, 620);
-    g.lineTo(470, 400);
-    g.lineTo(560, 230);
-    g.lineTo(700, 120);
-    g.stroke();
-    g.setLineDash([]);
-    for (const [x, y] of [
-      [470, 400],
-      [560, 230],
-      [700, 120],
-    ]) {
-      g.strokeStyle = "#e04a4a";
-      g.lineWidth = 2.5;
-      g.beginPath();
-      g.arc(x, y, 9, 0, Math.PI * 2);
-      g.stroke();
-    }
-
-    // Kendi gemi sembolü + hız vektörü
-    g.strokeStyle = "#39f07a";
-    g.lineWidth = 3;
-    g.beginPath();
-    g.moveTo(512, 560);
-    g.lineTo(512, 430);
-    g.stroke();
-    g.beginPath();
-    g.moveTo(498, 585);
-    g.lineTo(512, 545);
-    g.lineTo(526, 585);
-    g.lineTo(512, 572);
-    g.closePath();
-    g.stroke();
-
-    // Üst bilgi şeridi
-    g.fillStyle = "rgba(6,18,28,.9)";
-    g.fillRect(0, 0, 1024, 44);
-    g.fillStyle = "#7fd4ff";
-    g.font = "bold 22px 'Courier New', monospace";
-    g.fillText("ECDIS   ROUTE MONITOR", 16, 30);
-    g.fillStyle = "#cfe6f4";
-    g.fillText("HDG 021°   SOG 12.4 kn   XTE 0.02 NM", 470, 30);
-
-    // Yan panel
-    g.fillStyle = "rgba(6,18,28,.86)";
-    g.fillRect(846, 44, 178, 596);
-    g.strokeStyle = "rgba(120,190,225,.3)";
-    g.lineWidth = 1;
-    g.strokeRect(846.5, 44.5, 177, 595);
-    g.fillStyle = "#9fd8ef";
-    g.font = "16px 'Courier New', monospace";
-    const rows = ["WPT 07", "BRG 018°", "DIST 3.1 NM", "TTG 00:15", "RNG 6 NM", "N UP", "AIS ON", "VECT 6 min"];
-    rows.forEach((r, i) => g.fillText(r, 858, 78 + i * 30));
-
-    return [toTexture(c, true)];
-  })[0];
-}
-
-/** Radar: yeşil PPI, halkalar, tarama izi ve hedefler. */
-export function getRadarTexture(): THREE.CanvasTexture {
-  return remember("radar", () => {
-    const [c, g] = makeCanvas(640, 640);
-    g.fillStyle = "#04120c";
-    g.fillRect(0, 0, 640, 640);
-    const cx = 320;
-    const cy = 320;
-    const R = 286;
-
-    const glow = g.createRadialGradient(cx, cy, 0, cx, cy, R);
-    glow.addColorStop(0, "rgba(20,90,50,.5)");
-    glow.addColorStop(1, "rgba(6,30,18,.2)");
-    g.fillStyle = glow;
-    g.beginPath();
-    g.arc(cx, cy, R, 0, Math.PI * 2);
-    g.fill();
-
-    // Mesafe halkaları + pusula taksimatı
-    g.strokeStyle = "rgba(80,240,150,.35)";
-    g.lineWidth = 1.5;
-    for (let i = 1; i <= 5; i++) {
-      g.beginPath();
-      g.arc(cx, cy, (R / 5) * i, 0, Math.PI * 2);
-      g.stroke();
-    }
-    for (let a = 0; a < 360; a += 10) {
-      const rad = (a * Math.PI) / 180;
-      const long = a % 30 === 0;
-      g.strokeStyle = `rgba(110,255,175,${long ? 0.75 : 0.4})`;
-      g.beginPath();
-      g.moveTo(cx + Math.sin(rad) * R, cy - Math.cos(rad) * R);
-      g.lineTo(cx + Math.sin(rad) * (R - (long ? 18 : 9)), cy - Math.cos(rad) * (R - (long ? 18 : 9)));
-      g.stroke();
-    }
-
-    // Tarama izi
-    const sweep = g.createConicGradient ? g.createConicGradient(-Math.PI / 2, cx, cy) : null;
-    if (sweep) {
-      sweep.addColorStop(0, "rgba(90,255,160,.34)");
-      sweep.addColorStop(0.14, "rgba(90,255,160,0)");
-      sweep.addColorStop(1, "rgba(90,255,160,0)");
-      g.fillStyle = sweep;
-      g.beginPath();
-      g.arc(cx, cy, R, 0, Math.PI * 2);
-      g.fill();
-    }
-    g.strokeStyle = "rgba(150,255,190,.85)";
-    g.lineWidth = 2;
-    g.beginPath();
-    g.moveTo(cx, cy);
-    g.lineTo(cx, cy - R);
-    g.stroke();
-
-    // Kıyı yankısı + hedefler
-    const rnd = mulberry32(0x77c3);
-    g.fillStyle = "rgba(120,255,170,.55)";
-    for (let i = 0; i < 900; i++) {
-      const a = (rnd() * 120 - 200) * (Math.PI / 180);
-      const r = R * (0.55 + rnd() * 0.42);
-      g.fillRect(cx + Math.sin(a) * r, cy - Math.cos(a) * r, 2 + rnd() * 4, 2 + rnd() * 3);
-    }
-    for (let i = 0; i < 9; i++) {
-      const a = rnd() * Math.PI * 2;
-      const r = R * (0.2 + rnd() * 0.7);
-      const x = cx + Math.sin(a) * r;
-      const y = cy - Math.cos(a) * r;
-      g.fillStyle = "rgba(180,255,205,.95)";
-      g.beginPath();
-      g.arc(x, y, 4 + rnd() * 3, 0, Math.PI * 2);
-      g.fill();
-      g.strokeStyle = "rgba(180,255,205,.7)";
-      g.lineWidth = 1.5;
-      g.beginPath();
-      g.moveTo(x, y);
-      g.lineTo(x + (rnd() - 0.5) * 40, y - rnd() * 34);
-      g.stroke();
-    }
-
-    // Köşe okumaları
-    g.fillStyle = "#9dffc6";
-    g.font = "bold 20px 'Courier New', monospace";
-    g.fillText("RM(T)", 14, 30);
-    g.fillText("RNG 6 NM", 14, 56);
-    g.fillText("VRM 2.4", 14, 82);
-    g.fillText("EBL 047°", 500, 30);
-    g.fillText("CPA 0.8", 500, 56);
-    g.fillText("TCPA 11m", 500, 82);
-
-    return [toTexture(c, true)];
-  })[0];
-}
-
-/** Kaptan konsolundaki dümen açısı / devir göstergesi (statik kadran). */
-export function getGaugeTexture(kind: "rudder" | "rpm"): THREE.CanvasTexture {
-  return remember(`gauge-${kind}`, () => {
-    const [c, g] = makeCanvas(256, 256);
-    g.fillStyle = "#101215";
-    g.fillRect(0, 0, 256, 256);
-    g.fillStyle = "#e9e6df";
-    g.beginPath();
-    g.arc(128, 128, 108, 0, Math.PI * 2);
-    g.fill();
-
-    g.strokeStyle = "#1b1e22";
-    g.lineWidth = 3;
-    g.beginPath();
-    g.arc(128, 128, 108, 0, Math.PI * 2);
-    g.stroke();
-
-    const ticks = kind === "rudder" ? 15 : 13;
-    const span = kind === "rudder" ? Math.PI * 1.05 : Math.PI * 1.5;
-    for (let i = 0; i < ticks; i++) {
-      const a = -Math.PI / 2 - span / 2 + (span * i) / (ticks - 1);
-      const major = i % 2 === 0;
-      g.strokeStyle = "#1b1e22";
-      g.lineWidth = major ? 3.5 : 2;
-      g.beginPath();
-      g.moveTo(128 + Math.cos(a) * 92, 128 + Math.sin(a) * 92);
-      g.lineTo(128 + Math.cos(a) * (major ? 72 : 80), 128 + Math.sin(a) * (major ? 72 : 80));
-      g.stroke();
-    }
-
-    g.fillStyle = "#1b1e22";
-    g.font = "bold 20px Helvetica, Arial, sans-serif";
-    g.textAlign = "center";
-    g.fillText(kind === "rudder" ? "RUDDER" : "RPM", 128, 176);
-    g.font = "13px Helvetica, Arial, sans-serif";
-    g.fillText(kind === "rudder" ? "PORT · STBD" : "SHAFT", 128, 196);
-
-    // İbre
-    const needle = kind === "rudder" ? -Math.PI / 2 + 0.22 : -Math.PI / 2 + 0.6;
-    g.strokeStyle = kind === "rudder" ? "#c0392b" : "#1b1e22";
-    g.lineWidth = 5;
-    g.beginPath();
-    g.moveTo(128, 128);
-    g.lineTo(128 + Math.cos(needle) * 84, 128 + Math.sin(needle) * 84);
-    g.stroke();
-    g.fillStyle = "#2b2f34";
-    g.beginPath();
-    g.arc(128, 128, 9, 0, Math.PI * 2);
-    g.fill();
-
-    return [toTexture(c, true)];
-  })[0];
-}
+/*
+ * ECDIS, radar ve yuvarlak göstergelerin ölü (sabit) tuvalleri buradan
+ * kaldırıldı. Köprüüstündeki her ekran artık CANLI: içeriğini seferin ve
+ * denizin o andaki hâlinden çiziyor, tazeleme sıklığını cihaz belirliyor
+ * (bkz. bridgeScreens.ts + LiveScreen.tsx). Sabit bir radar resmi, dönen
+ * taramanın ve gerçek CPA/TCPA okumalarının yanında duramazdı.
+ */
 
 /** Cam/ekran üstündeki köşegen parlama — pencerelerin cam olduğunu belli eder. */
 export function getGlassGlareTexture(): THREE.CanvasTexture {
