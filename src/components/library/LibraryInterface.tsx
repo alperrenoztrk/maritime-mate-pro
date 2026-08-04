@@ -166,6 +166,17 @@ const goldFoil: CSSProperties = {
   backgroundImage: "linear-gradient(180deg, #f8e8bb 0%, #e3bf72 52%, #b2842f 100%)",
 };
 
+/** Kapaktaki başlık kutusu dar. Tire kapalı olduğu için sığmayan kelimeyi tarayıcı
+    tiresiz kırar; onu da istemiyoruz. Punto başlığın en uzun kelimesine göre
+    seçiliyor, böylece her satır tek parça kelimeyle sütuna sığıyor. */
+const coverTitleSize = (title: string) => {
+  const longest = Math.max(...title.split(/\s+/).map((word) => word.length), 0);
+  if (longest > 18 || title.length > 60) return "text-[0.68rem] sm:text-[0.74rem]";
+  if (longest > 15) return "text-[0.78rem] sm:text-[0.84rem]";
+  if (longest > 12 || title.length > 44) return "text-[0.9rem] sm:text-[0.95rem]";
+  return "text-[1.02rem] sm:text-lg";
+};
+
 function LibraryBookCase({
   title,
   accent,
@@ -246,10 +257,10 @@ function LibraryBookCase({
 
           {/* Başlık etiketi: ciltçilikteki deri sırt/kapak etiketi. Yaldızın
               açık cilt renklerinde de okunmasını garanti eder. */}
-          <div className="absolute inset-x-[15%] top-[21%] flex flex-col items-center gap-2 rounded-[3px] border border-[#dcbb77]/45 bg-[linear-gradient(158deg,rgba(62,43,28,0.92),rgba(26,18,11,0.95))] px-2.5 py-3.5 text-center shadow-[0_1px_0_rgba(255,255,255,0.14),inset_0_1px_3px_rgba(0,0,0,0.5)]">
+          <div className="absolute inset-x-[11%] top-[21%] flex flex-col items-center gap-2 rounded-[3px] border border-[#dcbb77]/45 bg-[linear-gradient(158deg,rgba(62,43,28,0.92),rgba(26,18,11,0.95))] px-2 py-3.5 text-center shadow-[0_1px_0_rgba(255,255,255,0.14),inset_0_1px_3px_rgba(0,0,0,0.5)]">
             <span aria-hidden className={`h-px w-8 ${goldRule}`} />
             <h2
-              className="line-clamp-5 bg-clip-text font-book text-[1.02rem] font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.65))] sm:text-lg"
+              className={`line-clamp-5 bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.65))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
               style={goldFoil}
             >
               {title}

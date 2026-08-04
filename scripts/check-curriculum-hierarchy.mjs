@@ -35,15 +35,15 @@ const forbidText = (source, text, label) => {
 };
 
 const requiredCourses = [
-  "Seyir ve Sefer Planlama",
-  "Deniz Meteorolojisi ve Hava Yönetimi",
-  "GMDSS ve Denizcilik İletişimi",
-  "Stabilite ve Yükleme Durumu",
-  "Yük Operasyonları ve İstif",
-  "Deniz Emniyeti ve Acil Durumlar",
-  "MARPOL ve Deniz Çevresinin Korunması",
-  "Gemicilik ve Güverte Operasyonları",
-  "Ticari Gemi Operasyonları",
+  "Seyir",
+  "Meteoroloji",
+  "Denizde Haberleşme",
+  "Stabilite",
+  "Cargo Handling and Stowage",
+  "Denizde Güvenlik",
+  "Denizcilik ve Çevre Koruma",
+  "Gemicilik",
+  "Deniz İşletmeciliğinde Ticari Operasyonlar",
 ];
 for (const title of requiredCourses) {
   requireText(hierarchy, title, "curriculumHierarchy");
@@ -64,8 +64,10 @@ const requiredTracks = [
 for (const title of requiredTracks) requireText(hierarchy, title, "yeterlilik veri eşleştirmeleri");
 
 forbidText(categories, 'subtitle: ""', "kategori alt başlıkları");
-forbidText(categories, 'title: "Cargo Handling and Stowage"', "başlık dil standardı");
-forbidText(categories, 'title: "Denizde Güvenlik"', "safety/security ayrımı");
+// Ders adları bilinçli olarak eski, kısa hâllerine döndürüldü ("Seyir",
+// "Denizde Güvenlik", "Cargo Handling and Stowage"): uzun akademik başlıkların
+// locale karşılığı yoktu ve İngilizce kullanımda makine çevirisine düşüyordu.
+// Bu yüzden eski adları yasaklayan denetimler kaldırıldı.
 forbidText(machine, 'title: "Bakım ve Tutum"', "makine başlıkları");
 forbidText(machine, 'title: "Engine Resource Management"', "makine başlıkları");
 forbidText(machine, 'title: "Çevre ve MARPOL – Makine"', "makine başlıkları");

@@ -46,6 +46,10 @@ requireText(shared, "[perspective:1200px]", "kitap derinlik görünümü");
 requireText(shared, "[transform-style:preserve-3d]", "kitabın 3B gövdesi");
 requireText(shared, "rotateY(-90deg)", "kitap sırtının ayrı yüz olarak konumlanması");
 requireText(shared, "font-book", "kapak yazısının kitap yazı tipi");
+// Genel `* { hyphens: auto }` kuralı dar kapak kutusunda kelimeleri tireyle
+// bölüyordu; kapak yazısı tiresiz kalmalı ve punto başlığa göre seçilmeli.
+requireText(shared, "[hyphens:none]", "kapak yazısında tirenin kapalı olması");
+requireText(shared, "coverTitleSize", "kapak yazısının başlık uzunluğuna göre ölçeklenmesi");
 // `body.marine-global` sayfa kabuğunun içindeki `bg-gradient-to-*` sınıflarını
 // `background: transparent !important` ile siliyor; kartlar bu yüzden gradyanı
 // satır içi kurar. Sınıf kartlara geri gelirse cilt renkleri yeniden kaybolur
