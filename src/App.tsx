@@ -170,7 +170,6 @@ const LessonTopicDetailPage = lazy(() => import("./pages/LessonTopicDetailPage")
 const ExercisesPage = lazy(() => import("./pages/ExercisesPage"));
 const ExerciseTopicsPage = lazy(() => import("./pages/ExerciseTopicsPage"));
 const ExerciseTopicDetailPage = lazy(() => import("./pages/ExerciseTopicDetailPage"));
-const CourseBetaScenariosPage = lazy(() => import("./pages/CourseBetaScenariosPage"));
 const GuidedLessonSession = lazy(() => import("./components/lessons/GuidedLessonSession"));
 
 const ShipSystemsPage = lazy(() => import("./pages/ShipSystemsPage"));
@@ -244,7 +243,6 @@ const AnimatedRoutes = () => {
         <Route path="/exercises/:categoryId/topics" element={<PageTransition><ExerciseTopicsPage /></PageTransition>} />
         <Route path="/exercises/:categoryId/topics/:topicTitle" element={<PageTransition><ExerciseTopicDetailPage /></PageTransition>} />
         <Route path="/exercises/:categoryId/topics/:topicTitle/learn" element={<PageTransition><GuidedLessonSession /></PageTransition>} />
-        <Route path="/exercises/:topicKey/scenarios" element={<PageTransition><CourseBetaScenariosPage /></PageTransition>} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
         <Route path="/crew/muster-list" element={<PageTransition><MusterListPage /></PageTransition>} />
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />

@@ -34,7 +34,6 @@ const navigationRules: NavigationRule[] = [
     parent: (match) => `/exercises/${match[1]}/topics`,
   },
   { pattern: /^\/exercises\/([^/]+)\/topics$/, parent: () => '/exercises' },
-  { pattern: /^\/exercises\/([^/]+)\/scenarios$/, parent: () => '/exercises' },
   { pattern: /^\/exercises$/, parent: () => '/' },
 
   // ── Crew & Bridge ──────────────────────────────────────────

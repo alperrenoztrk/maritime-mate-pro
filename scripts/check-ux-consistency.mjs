@@ -27,7 +27,6 @@ const pageFiles = [
   "src/pages/LessonTopicsPage.tsx",
   "src/pages/ExercisesPage.tsx",
   "src/pages/ExerciseTopicsPage.tsx",
-  "src/pages/CourseBetaScenariosPage.tsx",
   "src/pages/StabilityTopicsPage.tsx",
   "src/pages/CargoTopicsPage.tsx",
   "src/pages/SeamanshipTopicsPage.tsx",
