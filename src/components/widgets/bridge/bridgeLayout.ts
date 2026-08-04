@@ -393,14 +393,6 @@ export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
     aspect: 1.8,
     fixture: "GPS / GLONASS",
   },
-  // Sancak konsolu: seyir bilgi ekranı (güneş doğuş/batış), radarın yanı.
-  {
-    ...panelSlot(STBD_UNIT, -0.36, 0.01, 0.055),
-    id: "sun",
-    width: 0.58,
-    aspect: 16 / 9,
-    fixture: "CONNING INFO",
-  },
   // İskele tarafındaki ön perde — kanat kapısının yanı, camın üstü: gemide
   // termometre/barometre buraya, dümencinin göz atabileceği yere asılır.
   {
