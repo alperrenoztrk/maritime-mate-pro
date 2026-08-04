@@ -50,6 +50,9 @@ requireText(shared, "font-book", "kapak yazısının kitap yazı tipi");
 // bölüyordu; kapak yazısı tiresiz kalmalı ve punto başlığa göre seçilmeli.
 requireText(shared, "[hyphens:none]", "kapak yazısında tirenin kapalı olması");
 requireText(shared, "coverTitleSize", "kapak yazısının başlık uzunluğuna göre ölçeklenmesi");
+// Başlık cildin üstüne doğrudan basılıyor; arkasındaki koyu deri etiket plakası
+// kaldırıldı, okunurluk harflerin kabartma gölgesinden geliyor.
+forbidText(shared, "rgba(26,18,11,0.95)", "başlık arkasındaki koyu etiket zemini");
 // `body.marine-global` sayfa kabuğunun içindeki `bg-gradient-to-*` sınıflarını
 // `background: transparent !important` ile siliyor; kartlar bu yüzden gradyanı
 // satır içi kurar. Sınıf kartlara geri gelirse cilt renkleri yeniden kaybolur

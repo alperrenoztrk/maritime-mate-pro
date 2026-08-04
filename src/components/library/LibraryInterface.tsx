@@ -255,12 +255,13 @@ function LibraryBookCase({
           <div aria-hidden className="absolute inset-[7%] rounded-[2px] border border-[#dcbb77]/55" />
           <div aria-hidden className="absolute inset-[9.5%] rounded-[1px] border border-[#dcbb77]/25" />
 
-          {/* Başlık etiketi: ciltçilikteki deri sırt/kapak etiketi. Yaldızın
-              açık cilt renklerinde de okunmasını garanti eder. */}
-          <div className="absolute inset-x-[11%] top-[21%] flex flex-col items-center gap-2 rounded-[3px] border border-[#dcbb77]/45 bg-[linear-gradient(158deg,rgba(62,43,28,0.92),rgba(26,18,11,0.95))] px-2 py-3.5 text-center shadow-[0_1px_0_rgba(255,255,255,0.14),inset_0_1px_3px_rgba(0,0,0,0.5)]">
+          {/* Başlık doğrudan cildin üstüne yaldız varakla basılıyor; arkasında
+              koyu etiket plakası yok. Açık cilt renklerinde okunurluğu harflerin
+              kabartma (gömme baskı) gölgesi sağlıyor. */}
+          <div className="absolute inset-x-[11%] top-[21%] flex flex-col items-center gap-2 px-2 text-center">
             <span aria-hidden className={`h-px w-8 ${goldRule}`} />
             <h2
-              className={`line-clamp-5 bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.65))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
+              className={`line-clamp-5 bg-clip-text font-book font-bold leading-[1.28] tracking-[0.015em] text-transparent [filter:drop-shadow(0_1px_0_rgba(0,0,0,0.92))_drop-shadow(0_0_2px_rgba(0,0,0,0.9))_drop-shadow(0_0_6px_rgba(0,0,0,0.45))] [hyphens:none] [-webkit-hyphens:none] ${coverTitleSize(title)}`}
               style={goldFoil}
             >
               {title}
