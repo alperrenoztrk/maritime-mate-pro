@@ -38,6 +38,22 @@ export const SCENE_SCALE = 100;
  */
 export const EYE_Y = 1.6;
 
+/**
+ * Kameranın yuvası ve yakınlaşma sınırları (metre).
+ *
+ * Hem OrbitControls hem de BridgeZoom'un odak matematiği buradan okur —
+ * ikisinin ayrı sayılar tutması, yakınlaşmanın denetimin sınırına takılıp
+ * hedefi yanlış yerde bırakması demek olurdu.
+ *
+ * En yakın mesafe 0.85 m: 0.58 m genişliğindeki bir cihaz kadrajın yarısını
+ * kaplasın diye. Yakın düzlem 8 cm olduğu için kırpılma riski yok.
+ */
+export const BRIDGE_VIEW = {
+  home: [0, 1.33, -1.9] as [number, number, number],
+  minDistance: 0.85,
+  maxDistance: 4.2,
+} as const;
+
 export const ROOM = {
   deckY: 0,
   deckheadY: 2.62,

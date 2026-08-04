@@ -111,6 +111,10 @@ export function BridgeMountStyles() {
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,.55);
+        /* Cihazın üstünde de yakınlaştırılabilsin: bırakılsaydı iki parmak
+           tarayıcının kendi sayfa yakınlaştırmasına gider, çimdik daha
+           başlamadan olay akışı kesilirdi (bkz. BridgeZoom). */
+        touch-action: none;
       }
       /* Köprüüstü camından gelen ışığın cihaz camındaki köşegen izi. */
       .bridge-mount-glare{

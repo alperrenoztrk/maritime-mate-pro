@@ -1,4 +1,4 @@
-import { useEffect, useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, type ComponentRef, type ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, Lightformer, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
@@ -10,7 +10,8 @@ import { BridgeInstrumentMounts, BridgeMountStyles } from "./BridgeInstrumentMou
 import { SeaHorizon } from "./SeaHorizon";
 import { ShipExterior } from "./ShipExterior";
 import { disposeBridgeTextures } from "./bridgeTextures";
-import { EYE_Y, HORIZON_SCENE, ROOM, SCENE_SCALE } from "./bridgeLayout";
+import { BridgeZoomToPointer } from "./BridgeZoom";
+import { BRIDGE_VIEW, EYE_Y, HORIZON_SCENE, ROOM, SCENE_SCALE } from "./bridgeLayout";
 import type { BridgeConditions } from "@/components/widgets/homeWidgetNodes";
 
 /**
@@ -148,6 +149,17 @@ export function BridgeScene3D({ nodes, enabled, conditions }: BridgeScene3DProps
   // birkaç megabayt.
   useEffect(() => () => disposeBridgeTextures(), []);
 
+  const controlsRef = useRef<ComponentRef<typeof OrbitControls>>(null);
+  /**
+   * Kameranın yuvası. Dizi sabit tutuluyor: hedefi artık BridgeZoom her karede
+   * kaydırıyor, her yeniden çizimde yeni bir dizi verilseydi (hava verisi
+   * saatte bir tazeleniyor) yakınlaşma orta yerde yuvasına atlardı.
+   */
+  const homeTarget = useMemo(
+    () => BRIDGE_VIEW.home.map((m) => m * SCENE_SCALE) as [number, number, number],
+    [],
+  );
+
   /**
    * Gökyüzünün o anki hâli, güneş widget'ıyla tek kaynaktan: lombardan görünen
    * gökyüzü de (PortholeSky) aynı skyLook() tablosunu okuyor. İki yerde iki
@@ -215,13 +227,18 @@ export function BridgeScene3D({ nodes, enabled, conditions }: BridgeScene3DProps
           near={NEAR_M * SCENE_SCALE}
           far={FAR_M * SCENE_SCALE}
         />
+        {/* Dönüş denetimde, yakınlaştırma bizde: OrbitControls hep hedefe doğru
+            yaklaşırdı, oysa köprüüstünde asıl istenen dokunulan cihaza —
+            iskeledeki GPS'e, camdaki gemiye — yaklaşmak (bkz. BridgeZoom). */}
         <OrbitControls
+          ref={controlsRef}
           enablePan={false}
+          enableZoom={false}
           enableDamping
           dampingFactor={0.08}
-          target={[0, 1.33 * SCENE_SCALE, -1.9 * SCENE_SCALE]}
-          minDistance={1.1 * SCENE_SCALE}
-          maxDistance={4.2 * SCENE_SCALE}
+          target={homeTarget}
+          minDistance={BRIDGE_VIEW.minDistance * SCENE_SCALE}
+          maxDistance={BRIDGE_VIEW.maxDistance * SCENE_SCALE}
           minAzimuthAngle={-0.5}
           maxAzimuthAngle={0.5}
           // Kamera odanın içinde kalır: 75°'nin altındaki bir yükseklik açısı
@@ -229,6 +246,7 @@ export function BridgeScene3D({ nodes, enabled, conditions }: BridgeScene3DProps
           minPolarAngle={1.32}
           maxPolarAngle={1.62}
         />
+        <BridgeZoomToPointer controls={controlsRef} />
 
         {/* Sis dünya biriminde ölçülür, yani sahne ölçeğiyle çarpılır. Deniz
             düzleminin dış kenarını fonun boyalı denizine bağlar; oda (≤6 m) ve
