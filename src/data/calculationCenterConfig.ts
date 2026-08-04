@@ -115,7 +115,7 @@ const buildSections = (seed: CategorySeed): SectionConfig[] =>
 const deckSeeds: CategorySeed[] = [
   {
     id: "stability",
-    title: "Stabilite ve Yükleme Durumu",
+    title: "Stabilite",
     subtitle: "Enine-boyuna stabilite, yükleme durumu, tekne kuvvetleri ve hasarlı stabilite",
     icon: Ship,
     accent: "from-blue-500 via-indigo-500 to-blue-600",
@@ -136,7 +136,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "navigation",
-    title: "Seyir ve Sefer Planlama",
+    title: "Seyir",
     subtitle: "Klasik, elektronik ve göksel seyir; mevki koyma, COLREG ve passage planning",
     icon: Compass,
     accent: "from-indigo-500 via-purple-500 to-blue-500",
@@ -157,7 +157,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "cargo",
-    title: "Yük Operasyonları ve İstif",
+    title: "Cargo Handling and Stowage",
     subtitle: "Kuru yük, tanker, konteyner, özel yük, cargo-care ve liman belgeleri",
     icon: Package,
     accent: "from-amber-500 via-orange-500 to-rose-500",
@@ -175,7 +175,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "meteorology",
-    title: "Deniz Meteorolojisi ve Hava Yönetimi",
+    title: "Meteoroloji",
     subtitle: "Atmosfer, hava sistemleri, deniz durumu, tahmin ve ağır hava kararları",
     icon: CloudSun,
     accent: "from-sky-500 via-cyan-500 to-blue-500",
@@ -196,7 +196,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "seamanship",
-    title: "Gemicilik ve Güverte Operasyonları",
+    title: "Gemicilik",
     subtitle: "Halatlar, demirleme, bağlama, römorkör, manevra, bakım ve gemi yapısı",
     icon: Anchor,
     accent: "from-emerald-500 via-teal-500 to-blue-500",
@@ -214,7 +214,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "communication",
-    title: "GMDSS ve Denizcilik İletişimi",
+    title: "Denizde Haberleşme",
     subtitle: "Radyo haberleşmesi, distress prosedürleri, SMCP ve operasyonel Maritime English",
     icon: Radio,
     accent: "from-cyan-500 via-blue-500 to-indigo-500",
@@ -239,7 +239,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "safety",
-    title: "Deniz Emniyeti ve Acil Durumlar",
+    title: "Denizde Güvenlik",
     subtitle: "Yangın, terk, kurtarma, iş emniyeti, tıbbi yardım, security ve hasar kontrolü",
     icon: Shield,
     accent: "from-rose-500 via-orange-500 to-amber-500",
@@ -260,7 +260,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "environment",
-    title: "MARPOL ve Deniz Çevresinin Korunması",
+    title: "Denizcilik ve Çevre Koruma",
     subtitle: "Kirliliğin önlenmesi, atık, emisyon, balast suyu ve çevre kayıtları",
     icon: Leaf,
     accent: "from-emerald-600 via-green-600 to-teal-700",
@@ -278,7 +278,7 @@ const deckSeeds: CategorySeed[] = [
   },
   {
     id: "economics",
-    title: "Ticari Gemi Operasyonları",
+    title: "Deniz İşletmeciliğinde Ticari Operasyonlar",
     subtitle: "Charter party, navlun, laytime, sefer ekonomisi, sigorta ve ticari belgeler",
     icon: TrendingUp,
     accent: "from-amber-400 via-yellow-500 to-orange-600",

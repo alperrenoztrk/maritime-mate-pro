@@ -96,7 +96,7 @@ const canonicalDeckTitle = (category: string, sourceTitle: string) => {
 const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   {
     key: "navigation",
-    title: "Seyir ve Sefer Planlama",
+    title: "Seyir",
     subtitle: "Klasik, elektronik ve göksel seyir; mevki koyma, COLREG ve köprüüstü operasyonları",
     modules: [
       {
@@ -180,7 +180,7 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "meteorology",
-    title: "Deniz Meteorolojisi ve Hava Yönetimi",
+    title: "Meteoroloji",
     subtitle: "Atmosfer, hava sistemleri, deniz durumu, tahmin ve ağır hava kararları",
     modules: [
       { id: "met-foundations", title: "Atmosfer ve Ölçüm Temelleri", description: "Basınç, sıcaklık, nem, kararlılık ve meteorolojik cihazlar", keywords: ["basınç", "izobar", "sıcaklık", "nem", "atmosfer", "barometre", "psikrometre"], level: "foundation" },
@@ -193,7 +193,7 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "communication",
-    title: "GMDSS ve Denizcilik İletişimi",
+    title: "Denizde Haberleşme",
     subtitle: "Radyo haberleşmesi, distress prosedürleri, SMCP ve operasyonel Maritime English",
     modules: [
       { id: "com-gmdss", title: "GMDSS Sistemi ve Deniz Alanları", description: "GMDSS mimarisi, A1–A4 deniz alanları ve taşıma gereklilikleri", keywords: ["gmdss", "deniz alan", "a1", "a2", "a3", "a4"], level: "foundation" },
@@ -206,13 +206,13 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "stability",
-    title: "Stabilite ve Yükleme Durumu",
+    title: "Stabilite",
     subtitle: "Enine-boyuna stabilite, yükleme durumu, tekne kuvvetleri ve hasarlı stabilite",
     modules: [],
   },
   {
     key: "cargo",
-    title: "Yük Operasyonları ve İstif",
+    title: "Cargo Handling and Stowage",
     subtitle: "Kuru yük, tanker, konteyner, özel yük, cargo-care ve liman belgeleri",
     modules: [
       { id: "cargo-foundations", title: "Yük Planlamasının Temelleri", description: "Stowage factor, broken stowage, kapasite, dağılım, draft, trim ve stress", keywords: ["istif faktörü", "broken stowage", "yük planı", "ağırlık dağılım", "draft survey"], level: "foundation" },
@@ -225,7 +225,7 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "safety",
-    title: "Deniz Emniyeti ve Acil Durumlar",
+    title: "Denizde Güvenlik",
     subtitle: "Yangın, terk, kurtarma, iş emniyeti, tıbbi yardım, security ve hasar kontrolü",
     modules: [
       { id: "safety-governance", title: "SOLAS, ISM, Sertifikalar ve Denetimler", description: "Emniyet mevzuatı, SMS, survey, sertifikalar, PSC ve raporlama", keywords: ["solas", "ism", "sertifika", "psc", "sörvey", "survey", "emniyet yönetimi"], level: "foundation" },
@@ -239,7 +239,7 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "environment",
-    title: "MARPOL ve Deniz Çevresinin Korunması",
+    title: "Denizcilik ve Çevre Koruma",
     subtitle: "Kirliliğin önlenmesi, atık, emisyon, balast suyu ve çevre kayıtları",
     modules: [
       { id: "env-framework", title: "MARPOL ve Çevre Uyum Sistemi", description: "MARPOL yapısı, sorumluluk, denetim ve kayıt ilkeleri", keywords: ["marpol", "çevre", "uyum"], level: "foundation" },
@@ -251,7 +251,7 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "seamanship",
-    title: "Gemicilik ve Güverte Operasyonları",
+    title: "Gemicilik",
     subtitle: "Halatlar, demirleme, bağlama, römorkör, manevra, güverte bakımı ve gemi yapısı",
     modules: [
       { id: "seamanship-ropes", title: "Halatlar, Düğümler ve Güverte Donanımı", description: "Halat yapısı, SWL, düğümler, sapanlar ve güvenli kullanım", keywords: ["halat", "düğüm", "rope", "wire", "sapan"], level: "foundation" },
@@ -265,7 +265,7 @@ const DECK_COURSE_DEFINITIONS: DeckCourseDefinition[] = [
   },
   {
     key: "economics",
-    title: "Ticari Gemi Operasyonları",
+    title: "Deniz İşletmeciliğinde Ticari Operasyonlar",
     subtitle: "Charter party, navlun, laytime, sefer ekonomisi, sigorta ve ticari belgeler",
     modules: [
       { id: "econ-chartering", title: "Charter Party ve Taşıma Sözleşmeleri", description: "Voyage/time/bareboat charter, taraflar ve temel sözleşme hükümleri", keywords: ["charter", "sözleşme", "kiralama"], level: "foundation" },
@@ -338,7 +338,7 @@ const buildDeckCourse = (definition: DeckCourseDefinition): CurriculumCourse => 
 const buildStabilityCourse = (): CurriculumCourse => ({
   id: "deck-stability",
   key: "stability",
-  title: "Stabilite ve Yükleme Durumu",
+  title: "Stabilite",
   subtitle: "Enine-boyuna stabilite, yükleme durumu, tekne kuvvetleri ve hasarlı stabilite",
   group: "deck",
   modules: stabilityTopicsData.map((module, moduleIndex) => ({
