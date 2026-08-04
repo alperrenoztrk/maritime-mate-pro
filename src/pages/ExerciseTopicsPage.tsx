@@ -4,15 +4,12 @@ import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { getExerciseQuestionDistribution } from "@/data/exerciseQuestionDistribution";
 import { getLessonFlowsByTopic } from "@/data/lessonFlow";
-import { getScenariosByTopic } from "@/data/scenarios";
 import {
   BookOpen,
   ChevronDown,
-  ChevronRight,
   Layers3,
   ListChecks,
   Play,
-  Ship,
   Sparkles,
 } from "lucide-react";
 
@@ -22,7 +19,6 @@ export default function ExerciseTopicsPage() {
   const modules = getBetaModules(categoryId);
   const flows = getLessonFlowsByTopic(categoryId);
   const flowTitles = new Set(flows.map((flow) => flow.topicTitle));
-  const scenarios = getScenariosByTopic(categoryId);
   const questionDistribution = getExerciseQuestionDistribution(categoryId);
   const [expandedModules, setExpandedModules] = useState<string[]>([]);
 
@@ -70,19 +66,6 @@ export default function ExerciseTopicsPage() {
         </header>
 
         <CourseSectionTabs group={category.group} courseKey={courseKey} active="quiz" />
-
-        {scenarios.length > 0 && (
-          <Link
-            to={`/exercises/${categoryId}/scenarios`}
-            className="group flex items-center gap-3 rounded-2xl border border-rose-500/30 bg-rose-500/5 p-4 shadow-sm transition hover:border-rose-500/50 hover:bg-rose-500/10"
-          >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow">
-              <Ship className="h-5 w-5" />
-            </div>
-            <p className="flex-1 font-bold text-foreground">Vardiya ve Operasyon Senaryoları</p>
-            <ChevronRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        )}
 
         <section className="space-y-3">
           <div className="flex items-center gap-2">

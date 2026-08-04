@@ -28,15 +28,15 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 /** Güverte bankaları: taban dosya + "Extended" devam dosyası, birlikte havuzu oluşturur. */
 const DECK_BANKS = [
-  { name: "stability", expected: 150, files: ["src/data/stabilityQuestions.ts", "src/data/stabilityQuestionsExtended.ts"] },
-  { name: "navigation", expected: 270, files: ["src/data/navigationQuestions.ts", "src/data/navigationQuestionsExtended.ts"] },
-  { name: "meteorology", expected: 153, files: ["src/data/meteorologyQuestions.ts", "src/data/meteorologyQuestionsExtended.ts"] },
-  { name: "cargo", expected: 228, files: ["src/data/cargoQuestions.ts", "src/data/cargoQuestionsExtended.ts"] },
-  { name: "safety", expected: 225, files: ["src/data/safetyQuestions.ts", "src/data/safetyQuestionsExtended.ts"] },
-  { name: "seamanship", expected: 255, files: ["src/data/seamanshipQuestions.ts", "src/data/seamanshipQuestionsExtended.ts"] },
-  { name: "environment", expected: 150, files: ["src/data/environmentQuestions.ts", "src/data/environmentQuestionsExtended.ts"] },
-  { name: "communication", expected: 201, files: ["src/data/communicationQuestions.ts", "src/data/communicationQuestionsExtended.ts"] },
-  { name: "economics", expected: 156, files: ["src/data/economicsQuestions.ts", "src/data/economicsQuestionsExtended.ts"] },
+  { name: "stability", expected: 154, files: ["src/data/stabilityQuestions.ts", "src/data/stabilityQuestionsExtended.ts"] },
+  { name: "navigation", expected: 285, files: ["src/data/navigationQuestions.ts", "src/data/navigationQuestionsExtended.ts"] },
+  { name: "meteorology", expected: 159, files: ["src/data/meteorologyQuestions.ts", "src/data/meteorologyQuestionsExtended.ts"] },
+  { name: "cargo", expected: 232, files: ["src/data/cargoQuestions.ts", "src/data/cargoQuestionsExtended.ts"] },
+  { name: "safety", expected: 229, files: ["src/data/safetyQuestions.ts", "src/data/safetyQuestionsExtended.ts"] },
+  { name: "seamanship", expected: 259, files: ["src/data/seamanshipQuestions.ts", "src/data/seamanshipQuestionsExtended.ts"] },
+  { name: "environment", expected: 154, files: ["src/data/environmentQuestions.ts", "src/data/environmentQuestionsExtended.ts"] },
+  { name: "communication", expected: 205, files: ["src/data/communicationQuestions.ts", "src/data/communicationQuestionsExtended.ts"] },
+  { name: "economics", expected: 160, files: ["src/data/economicsQuestions.ts", "src/data/economicsQuestionsExtended.ts"] },
   { name: "machine", expected: 180, files: ["src/data/machineQuestions.ts", "src/data/machineQuestionsExtended.ts"] },
 ];
 
@@ -52,6 +52,7 @@ const MACHINE_FILES = [
   "src/data/machineQuizDataExt3.ts",
   "src/data/machineQuizDataExt4.ts",
   "src/data/machineQuizDataExt5.ts",
+  "src/data/machineQuizDataScenario.ts",
 ];
 
 const MACHINE_SLUGS = [
@@ -73,7 +74,7 @@ const MACHINE_SLUGS = [
   "cooling-hvac",
 ];
 
-const MACHINE_EXPECTED_PER_SLUG = 150;
+const MACHINE_EXPECTED_PER_SLUG = 154;
 
 const errors = [];
 const report = [];
