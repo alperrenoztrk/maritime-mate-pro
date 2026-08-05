@@ -14,6 +14,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import { useAuth } from "@/hooks/useAuthContext";
 import { useEntitlement } from "@/contexts/useEntitlement";
 import { getLanguageFlag } from "@/utils/languages";
+import { PRIVACY_POLICY_URL } from "@/config/legal";
 import {
   areAdsSupported,
   initializeAds,
@@ -190,7 +191,7 @@ const Settings = () => {
                 {/* Gizlilik ve hesap silme — Google Play zorunlu gereksinimleri */}
                 <div className="mt-5 space-y-3 border-t border-border/60 pt-4">
                   <a
-                    href="https://nauticalleap.com/privacy-policy.html"
+                    href={PRIVACY_POLICY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-primary hover:underline"

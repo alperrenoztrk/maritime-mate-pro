@@ -20,10 +20,10 @@ const config: CapacitorConfig = {
     // App: Capacitor 7'de `skipBackButton` opsiyonu yok. JS tarafında
     // `backButton` dinleyicisinin varlığı zaten default davranışı bastırır
     // (bkz. src/hooks/useNavigationHierarchy.ts).
-    Haptics: {},
-    PushNotifications: {
-      presentationOptions: ['badge', 'sound', 'alert']
-    }
+    Haptics: {}
+    // PushNotifications yapılandırması kaldırıldı: @capacitor/push-notifications
+    // kurulu değil ve uygulamada push akışı yok. Ölü yapılandırma, izin/SDK
+    // denetimlerinde yanıltıcı oluyordu.
   },
   android: {
     buildOptions: {

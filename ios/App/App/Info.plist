@@ -37,10 +37,15 @@
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<!-- @capacitor/camera kaldırıldı, ancak bu iki açıklama HÂLÂ GEREKLİ:
+	     belge yükleme WKWebView içindeki <input type="file" accept="image/*">
+	     ile yapılıyor ve iOS'un dosya seçicisi "Fotoğraf Çek" / "Fotoğraf
+	     Kitaplığı" seçeneklerini sunarken bu anahtarları arıyor. Silinirse
+	     kullanıcı fotoğraf çekmeye kalktığında uygulama çöker. -->
 	<key>NSCameraUsageDescription</key>
-	<string>Kamera, hesaplamalarda kullanılmak üzere fotoğraf çekmek için kullanılır. / The camera is used to take photos for use in calculations.</string>
+	<string>Kamera, denizcilik belgelerinizin fotoğrafını çekip son geçerlilik tarihi takibi için yüklemek üzere kullanılır. / The camera is used to photograph your maritime documents and upload them for expiry tracking.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Fotoğraf kitaplığı, uygulamada kullanılacak görselleri seçmek için kullanılır. / The photo library is used to select images for use in the app.</string>
+	<string>Fotoğraf kitaplığı, yükleyeceğiniz belge görsellerini seçmek için kullanılır. / The photo library is used to select document images to upload.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Oluşturulan görselleri fotoğraf kitaplığınıza kaydetmek için kullanılır. / Used to save generated images to your photo library.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Anchor, Loader2, Mail, Lock } from "lucide-react";
+import { Anchor, Loader2, Mail, Lock, ShieldCheck, ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuthContext";
 import { sanitizeReturnPath } from "@/lib/authFlow";
 import { supabase } from "@/integrations/supabase/safeClient";
+import { PRIVACY_POLICY_URL } from "@/config/legal";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
@@ -202,6 +203,36 @@ const Auth = () => {
               </form>
             </TabsContent>
           </Tabs>
+
+          {/* Gizlilik politikası giriş duvarının arkasında kalmamalı: kullanıcı
+              hesap açmadan önce verisinin nasıl işlendiğini okuyabilmeli.
+              Ayarlar'daki bağlantının aynısı (bkz. src/pages/Settings.tsx). */}
+          <div className="border-t border-border/60 pt-4 text-center">
+            <p className="text-[11px] leading-relaxed text-muted-foreground">
+              Kayıt olarak veya giriş yaparak verilerinizin{" "}
+              <a
+                href={PRIVACY_POLICY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4"
+              >
+                Gizlilik Politikası
+              </a>{" "}
+              kapsamında işlenmesini kabul etmiş olursunuz. Hesabınızı ve tüm
+              verilerinizi istediğiniz zaman Ayarlar → Hesabımı sil ile kalıcı
+              olarak silebilirsiniz.
+            </p>
+            <a
+              href={PRIVACY_POLICY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
+            >
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Gizlilik Politikası
+              <ExternalLink className="h-3 w-3 opacity-70" />
+            </a>
+          </div>
         </CardContent>
       </Card>
     </div>
