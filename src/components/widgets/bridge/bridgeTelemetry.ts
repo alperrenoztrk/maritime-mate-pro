@@ -68,7 +68,7 @@ export interface BridgeTelemetry {
 }
 
 /** Servis hızındaki devir — 14 knotta 118 d/d'lik yavaş devirli ana makine. */
-const RPM_AT_SERVICE = 118;
+export const RPM_AT_SERVICE = 118;
 const SERVICE_KT = 14;
 
 /**

@@ -16,6 +16,8 @@ import {
   drawRudderGauge,
   drawTelegraph,
   drawVhf,
+  telegraphLeverLean,
+  telegraphOrderIndex,
 } from "./bridgeScreens";
 import { LiveScreen } from "./LiveScreen";
 import type { BridgeSim } from "./bridgeSim";
@@ -194,60 +196,87 @@ function ShipsWheel({ sim }: { sim: BridgeSim }) {
   );
 }
 
+/** Yelpazenin kendi çerçevesinde duran yuva — gövde zaten yerleştirilmiş. */
+const FAN_SLOT = { position: [0, 0, 0] as [number, number, number], yaw: 0, tilt: 0 };
+
 /**
- * Makine telgrafı sütunu: güverteden yükselen gövde, üstünde kadran ve kol.
+ * Makine telgrafı: sütunun üstünde yelpaze gövdeli kumanda.
  *
- * Eskiden burada yalnız bir kol vardı; telgrafın kendisi yoktu. Şimdi emir ve
- * cevap ibreli gerçek kadran sütunun üstünde (bkz. drawTelegraph), kol da
- * emrin kademesine göre duruyor.
+ * Yuvarlak kadranlı, iki ibreli tipten yelpazeye geçildi — bugün bir
+ * köprüüstünde duran telgraf budur: yarım disk gövde, kademeleri ışıklı yüz
+ * (bkz. drawTelegraph) ve tek bir kol.
+ *
+ * KOL ARTIK EMRİ GÖSTERİYOR. Eskiden yalnız iki konumu vardı (dik ya da öne
+ * yatık) ve kadranın yanında, kendi mili olmayan bir çubuktu; şimdi yelpazenin
+ * miline oturuyor ve emredilen kademenin açısına gidiyor — yüzdeki yanan lamba
+ * ile kolun gösterdiği yer aynı yer.
  */
 function TelegraphPedestal({ sim }: { sim: BridgeSim }) {
   const lever = useRef<THREE.Group>(null);
 
   useFrame(() => {
     if (!lever.current) return;
-    const stop = sim.telemetry?.telegraphOrder === "STOP";
-    // İleri tam yol kolu öne yatık, stop dik.
-    const target = stop ? 0 : 0.62;
-    lever.current.rotation.x += (target - lever.current.rotation.x) * 0.08;
+    const order = sim.telemetry ? telegraphOrderIndex(sim.telemetry.telegraphOrder) : 4;
+    // Sancağa yatık kol yol ileri demek; ekran uzayında sancak +X, dolayısıyla
+    // Z ekseni etrafındaki dönüş ters işaretli.
+    const target = -telegraphLeverLean(order);
+    lever.current.rotation.z += (target - lever.current.rotation.z) * 0.08;
   });
 
-  const [x, y, z] = TELEGRAPH.position;
+  const R = TELEGRAPH.radius;
   return (
-    <group>
-      {/* Sütun: güverteden kadranın altına kadar */}
-      <mesh position={[x, y / 2, z]} castShadow receiveShadow>
-        <cylinderGeometry args={[0.075, 0.11, y, 18]} />
+    <group position={TELEGRAPH.position}>
+      {/* Sütun: güverteden yelpazenin miline kadar */}
+      <mesh position={[0, -TELEGRAPH.position[1] / 2, 0]} castShadow receiveShadow>
+        <cylinderGeometry args={[0.075, 0.11, TELEGRAPH.position[1], 18]} />
         <meshStandardMaterial color="#b9bfc4" roughness={0.45} metalness={0.55} />
       </mesh>
-      <mesh position={[x, 0.03, z]} castShadow>
+      <mesh position={[0, 0.03 - TELEGRAPH.position[1], 0]} castShadow>
         <cylinderGeometry args={[0.17, 0.19, 0.06, 20]} />
         <meshStandardMaterial color="#3a4046" roughness={0.65} metalness={0.3} />
       </mesh>
 
-      {/* Kadran gövdesi ve canlı yüzü */}
-      <LiveScreen
-        slot={{ position: [x, y + 0.03, z], yaw: 0, tilt: TELEGRAPH.tilt }}
-        width={TELEGRAPH.diameter}
-        aspect={1}
-        resolution={512}
-        fps={4}
-        draw={drawTelegraph}
-        sim={sim}
-        round
-      />
+      {/* Önce yüzü dümenciye çeviren yaw, sonra kendi düzleminde geriye yatma */}
+      <group rotation={[0, TELEGRAPH.yaw, 0]}>
+        <group rotation={[TELEGRAPH.tilt, 0, 0]}>
+          {/* Gövde ve canlı yüzü */}
+          <LiveScreen
+            slot={FAN_SLOT}
+            width={R * 2}
+            aspect={1}
+            resolution={640}
+            fps={4}
+            draw={drawTelegraph}
+            sim={sim}
+            shape="fan"
+          />
 
-      {/* Emir kolu — kadranın sancak yanında */}
-      <group position={[x + TELEGRAPH.diameter * 0.62, y + 0.02, z]}>
-        <group ref={lever}>
-          <mesh position={[0, 0.1, 0.02]} castShadow>
-            <cylinderGeometry args={[0.013, 0.016, 0.2, 12]} />
-            <meshStandardMaterial color="#9aa1a7" roughness={0.3} metalness={0.8} />
-          </mesh>
-          <mesh position={[0, 0.2, 0.04]} castShadow>
-            <sphereGeometry args={[0.032, 16, 12]} />
-            <meshStandardMaterial color="#14171a" roughness={0.5} metalness={0.2} />
-          </mesh>
+          {/* Emir kolu: mil yelpazenin merkezinde, kol emrin kademesine bakar */}
+          <group position={[0, 0, 0.03]}>
+            <group ref={lever}>
+              {/* Mil kovanı */}
+              <mesh rotation={[Math.PI / 2, 0, 0]} castShadow>
+                <cylinderGeometry args={[R * 0.13, R * 0.13, 0.045, 20]} />
+                <meshStandardMaterial color="#202427" roughness={0.5} metalness={0.4} />
+              </mesh>
+              {/* Kolun gövdesi */}
+              <mesh position={[0, TELEGRAPH.leverLength / 2, 0.01]} castShadow>
+                <cylinderGeometry args={[R * 0.075, R * 0.095, TELEGRAPH.leverLength, 14]} />
+                <meshStandardMaterial color="#15181b" roughness={0.42} metalness={0.35} />
+              </mesh>
+              {/* Topuz: kola göre yatık, fotoğraftaki eğik başlık */}
+              <group position={[0, TELEGRAPH.leverLength, 0.012]} rotation={[0.55, 0, 0]}>
+                <mesh position={[0, TELEGRAPH.knobLength / 2, 0]} castShadow>
+                  <cylinderGeometry args={[R * 0.115, R * 0.135, TELEGRAPH.knobLength, 18]} />
+                  <meshStandardMaterial color="#121517" roughness={0.35} metalness={0.3} />
+                </mesh>
+                <mesh position={[0, TELEGRAPH.knobLength, 0]} castShadow>
+                  <sphereGeometry args={[R * 0.115, 18, 12, 0, Math.PI * 2, 0, Math.PI / 2]} />
+                  <meshStandardMaterial color="#121517" roughness={0.35} metalness={0.3} />
+                </mesh>
+              </group>
+            </group>
+          </group>
         </group>
       </group>
     </group>
@@ -271,7 +300,7 @@ function GyroPedestal({ sim }: { sim: BridgeSim }) {
         fps={5}
         draw={drawGyroRepeater}
         sim={sim}
-        round
+        shape="dial"
       />
     </group>
   );
@@ -306,8 +335,8 @@ export function BridgeConsole({ sim, night = 0 }: BridgeConsoleProps) {
 
       {/* Dümen: otopilot ve iki yuvarlak gösterge */}
       <LiveScreen slot={AUTOPILOT_SLOT} width={0.34} aspect={2} resolution={640} fps={2} draw={drawAutopilot} sim={sim} dim={dim} />
-      <LiveScreen slot={RUDDER_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRudderGauge} sim={sim} round dim={dim} />
-      <LiveScreen slot={RPM_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRpmGauge} sim={sim} round dim={dim} />
+      <LiveScreen slot={RUDDER_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRudderGauge} sim={sim} shape="dial" dim={dim} />
+      <LiveScreen slot={RPM_GAUGE_SLOT} width={0.15} aspect={1} resolution={384} fps={6} draw={drawRpmGauge} sim={sim} shape="dial" dim={dim} />
 
       {/* Sancak: radar/ARPA ve conning */}
       <LiveScreen slot={RADAR_SLOT} width={0.46} aspect={1.72} resolution={1100} fps={10} draw={drawRadar} sim={sim} dim={dim} />

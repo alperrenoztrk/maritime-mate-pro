@@ -12,8 +12,9 @@ import type { HomeWidgetId } from "@/hooks/useHomeWidgets";
  *   • kronometreler + rüzgâr göstergesi → ön perdedeki enstrüman panosu, orta
  *     pencerenin üstünde (fotoğraftaki çerçeveli panonun aynısı)
  *   • GPS alıcısı    → iskele konsolu, ECDIS'in yanındaki mevki tekrarlayıcısı
- *   • güneş/ufuk     → sancak konsolu, seyir bilgi ekranı
- *   • termometre     → iskele tarafındaki ön perde, camın üstü
+ *
+ * Termometre burada YOK: hava sıcaklığı dışarıdan, kanat üstündeki muhafazadan
+ * okunur; içeri asılan bir termometre odanın sıcaklığını gösterirdi.
  *
  * Oda gerçeğinden bir tık dar tutuldu: telefon ekranı dikey olduğu için
  * köprüüstünün tamamı ancak bu genişlikte tek karede görülüyor.
@@ -403,15 +404,16 @@ export const INSTRUMENT_MOUNTS: InstrumentMount[] = [
     aspect: 1.8,
     fixture: "GPS / GLONASS",
   },
-  // İskele tarafındaki ön perde — kanat kapısının yanı, camın üstü: gemide
-  // termometre/barometre buraya, dümencinin göz atabileceği yere asılır.
-  {
-    ...frontWallSlot(1, 2.33),
-    id: "weather",
-    width: 0.3,
-    aspect: SMALL,
-    fixture: "THERMOMETER",
-  },
+  /*
+   * Termometre köprüüstünden kaldırıldı.
+   *
+   * İçeride asılı bir termometre odanın kendi sıcaklığını ölçer; oysa
+   * köprüüstünde okunan hava sıcaklığı DIŞARIDANDIR — kuru/yaş termometre
+   * kanat üstündeki muhafazasında, hava gözlemi de oradan alınır. Cihaz içeri
+   * asıldığında hem yeri yanlış oluyor hem de gösterdiği sayı. Widget
+   * ızgarada ve ayarlarda duruyor; yalnız köprüüstü kadrajından çıkarıldı
+   * (GMT saati ve güneş widget'ında olduğu gibi).
+   */
 ];
 
 /**
@@ -455,15 +457,34 @@ export const GYRO_REPEATER = {
 };
 
 /**
- * Makine telgrafı: dümenin sancak omzunda, güverteden yükselen sütun.
- * Kadranı yukarı-kıça bakar; kaptan tezgâhın yanından okuyabilsin diye.
+ * Makine telgrafı: dümenin sancak omzunda, güverteden yükselen sütunun
+ * üstündeki YELPAZE gövdeli kumanda.
+ *
+ * Yuvarlak kadranlı tipten yelpazeye geçildi: köprüüstlerinde bugün duran
+ * telgraf, düz kenarı tezgâha oturan yarım disk gövdeli, kademeleri ışıklı,
+ * üstünde tek bir kollu olanıdır. `position` yelpazenin MİLİ, yani yarım
+ * diskin merkezi — sütun buradan güverteye iner, kol da buradan yükselir.
+ *
+ * Yarıçap 0.19 m: gerçek bir telgrafın yelpazesi 35–40 cm enindedir.
  */
 export const TELEGRAPH = {
   // Dümenin sancak omzu, konsol boşluğunda: daha sancakta durduğunda sütun
   // radar ve conning ekranlarının önüne dikiliyordu.
-  position: [0.64, 1.04, -1.3] as [number, number, number],
-  diameter: 0.3,
-  tilt: -0.85,
+  position: [0.64, 1.0, -1.3] as [number, number, number],
+  radius: 0.19,
+  /**
+   * Yüzü dümenciye çevirir.
+   *
+   * Telgraf dümenin sancak omzunda duruyor; yüzü kıça baksaydı dümen
+   * başındaki göz onu yandan, yassılmış olarak görürdü. Açı, milden göz
+   * hizasına giden doğrultunun kendisi: atan2(0 − 0.64, 1.95 − (−1.3)).
+   */
+  yaw: -0.19,
+  /** Kolun boyu ve topuzu (m) — ikisi birlikte yelpazenin yarıçapı kadar. */
+  leverLength: 0.105,
+  knobLength: 0.055,
+  /** Yüz kıça-yukarı bakar: oturur göz hizasından okunacak kadar yatık. */
+  tilt: -0.3,
 };
 
 /**

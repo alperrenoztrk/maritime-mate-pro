@@ -18,6 +18,9 @@ import type { BridgeSim } from "./bridgeSim";
  * çizmek mobil cihazda sahnenin geri kalanını yerdi.
  */
 
+/** Yelpaze gövdenin derinliği (m) — yarım silindirin kalınlığı. */
+const FAN_DEPTH = 0.1;
+
 export interface LiveScreenProps {
   slot: Slot;
   /** Cihazın gerçek genişliği (m). */
@@ -32,8 +35,15 @@ export interface LiveScreenProps {
   sim: BridgeSim;
   /** Kasanın altındaki künye. */
   label?: string;
-  /** Yuvarlak kadran: kasa silindir, cam daire. */
-  round?: boolean;
+  /**
+   * Cihazın biçimi:
+   *   "rect" düz ekran, "dial" yuvarlak kadran, "fan" yelpaze (makine telgrafı).
+   *
+   * "fan"da yüzey bir YARIM disk; dokusu kare tuvalin üst yarısıdır, çünkü
+   * CircleGeometry'nin uv'si tam dairenin sınır kutusuna göre kurulur. Çizim
+   * işlevi de bunu bilerek üst yarıya çiziyor (bkz. drawTelegraph).
+   */
+  shape?: "rect" | "dial" | "fan";
   /** Ekranın gece parlaklığı — köprüüstü karardıkça cihazlar kısılır. */
   dim?: number;
 }
@@ -47,10 +57,11 @@ export function LiveScreen({
   draw,
   sim,
   label,
-  round = false,
+  shape = "rect",
   dim = 1,
 }: LiveScreenProps) {
   const height = width / aspect;
+  const radius = width / 2;
 
   const { canvas, texture } = useMemo(() => {
     const c = document.createElement("canvas");
@@ -97,16 +108,41 @@ export function LiveScreen({
   return (
     <group position={slot.position} rotation={[0, slot.yaw, 0]}>
       <group rotation={[slot.tilt, 0, 0]}>
-        {round ? (
+        {shape === "dial" ? (
           <>
             {/* Kadran kasası: silindirin ekseni Z'ye çevrilir ki yüz panelden
                 dışarı baksın. */}
             <mesh rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
-              <cylinderGeometry args={[width / 2 + 0.012, width / 2 + 0.012, 0.05, 28]} />
+              <cylinderGeometry args={[radius + 0.012, radius + 0.012, 0.05, 28]} />
               <meshStandardMaterial color="#15181b" roughness={0.6} metalness={0.25} />
             </mesh>
             <mesh position={[0, 0, 0.027]}>
-              <circleGeometry args={[width / 2, 28]} />
+              <circleGeometry args={[radius, 28]} />
+              <meshBasicMaterial map={texture} toneMapped={false} color={new THREE.Color(dim, dim, dim)} />
+            </mesh>
+          </>
+        ) : shape === "fan" ? (
+          <>
+            {/* Yelpaze gövde: yarım silindir. thetaStart π/2 seçildi ki
+                X ekseni etrafında çeyrek tur döndürüldüğünde duran yarı ÜST
+                yarı olsun; düz kenarı da tabana otursun. */}
+            <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, -FAN_DEPTH / 2]} castShadow receiveShadow>
+              <cylinderGeometry args={[radius, radius, FAN_DEPTH, 40, 1, false, Math.PI / 2, Math.PI]} />
+              <meshStandardMaterial color="#2b3034" roughness={0.62} metalness={0.22} />
+            </mesh>
+            {/* Yayı çevreleyen kabartma çerçeve */}
+            <mesh position={[0, 0, -FAN_DEPTH / 2]} castShadow>
+              <torusGeometry args={[radius, radius * 0.045, 8, 40, Math.PI]} />
+              <meshStandardMaterial color="#191d20" roughness={0.5} metalness={0.35} />
+            </mesh>
+            {/* Kaide plakası — gövdeyi tezgâha bağlayan döküm ayak */}
+            <mesh position={[0, -radius * 0.055, -FAN_DEPTH / 2]} castShadow receiveShadow>
+              <boxGeometry args={[radius * 2.1, radius * 0.11, FAN_DEPTH * 1.35]} />
+              <meshStandardMaterial color="#16191c" roughness={0.7} metalness={0.2} />
+            </mesh>
+            {/* Yüz: yarım disk, dokunun üst yarısını alır */}
+            <mesh position={[0, 0, 0.002]}>
+              <circleGeometry args={[radius * 0.985, 48, 0, Math.PI]} />
               <meshBasicMaterial map={texture} toneMapped={false} color={new THREE.Color(dim, dim, dim)} />
             </mesh>
           </>
