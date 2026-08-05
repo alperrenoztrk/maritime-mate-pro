@@ -10,7 +10,7 @@
 | Uygulama adı | Mariner's Book |
 | Paket adı / Bundle ID | `com.marinersbook.app` |
 | Sürüm | 2.5.70 (versionCode / build: 20570) |
-| Min SDK / Target SDK | 23 / 35 |
+| Min SDK / Target SDK | 23 / 36 (Android 16 — Play'in 31 Ağustos 2026 zorunluluğu) |
 | Gizlilik politikası | `public/privacy-policy.html` → yayınlanınca `https://<alan-adınız>/privacy-policy.html` |
 
 ---
@@ -21,7 +21,7 @@
 - **Android platformu eksiksiz üretildi** — daha önce repoda yalnızca birkaç üretilmiş dosya vardı (build.gradle, AndroidManifest, MainActivity yoktu). Artık `android/` komple derlenebilir durumda:
   - `versionCode 20570`, `versionName "2.5.70"`
   - Release imzalama: `android/keystore.properties` (gitignored) veya `KEYSTORE_FILE/KEYSTORE_PASSWORD/KEY_ALIAS/KEY_PASSWORD` ortam değişkenleri. Şablon: `android/keystore.properties.example`
-  - Manifest izinleri: `INTERNET`, `ACCESS_NETWORK_STATE`, `POST_NOTIFICATIONS`
+  - Manifest izinleri: `INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION` (+ AdMob SDK'sının otomatik eklediği `com.google.android.gms.permission.AD_ID`)
   - AdMob `APPLICATION_ID` meta-verisi eklendi (şimdilik Google'ın **TEST** App ID'si — eksik olsaydı uygulama açılışta çökerdi)
   - AAB'de dil bölünmesi kapatıldı (uygulama içi dil değiştirme bozulmasın diye)
 - **iOS platformu eklendi** (`ios/`) — bundle ID, sürüm (2.5.70 / 20570), izin açıklamaları (kamera, fotoğraf kitaplığı, izleme/ATT), AdMob iOS TEST App ID, `ITSAppUsesNonExemptEncryption=false`, SKAdNetwork girdisi.

@@ -62,8 +62,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Çevrimdışı durum tespiti -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Push bildirimleri (Android 13+) -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- POST_NOTIFICATIONS bilerek yok: belge hatırlatmaları Web Notification
+         API'si ile gösteriliyor (src/components/documents/DocumentExpiryNotifier.tsx)
+         ve Android WebView bu API'yi uygulamıyor — izin native tarafta hiçbir
+         zaman kullanılmıyordu. PWA/web sürümünde bildirimler tarayıcı iznine
+         bağlı olarak çalışmaya devam eder. Native bildirim eklenirse
+         (@capacitor/local-notifications vb.) izin geri eklenmelidir. -->
     <!-- Canlı konum takibi (WebView geolocation için gerekli) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
