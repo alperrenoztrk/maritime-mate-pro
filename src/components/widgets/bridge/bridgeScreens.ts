@@ -1,6 +1,6 @@
 import { hashSeed, mulberry32 } from "@/components/stability/sim/proceduralTextures";
 import { compassName, douglasLabel } from "./marineConditions";
-import { fmt, type BridgeTelemetry } from "./bridgeTelemetry";
+import { fmt, RPM_AT_SERVICE, type BridgeTelemetry } from "./bridgeTelemetry";
 
 /**
  * Köprüüstü cihazlarının ekranları — hepsi tuvale, çalışma anında çiziliyor.
@@ -547,19 +547,21 @@ const S52 = {
   text: "#16242e",
 };
 
-const ECDIS_TABS = [
-  "Overview",
-  "Large scale",
-  "Bring",
-  "All other",
-  "Nav data",
-  "Periodic",
-  "Radar",
-  "AIS",
-  "ARPA",
-  "Danger",
-  "Voyage",
-];
+const ECDIS_TABS = ["Chart", "Route", "Nav data", "AIS", "ARPA", "Radar", "Alarms", "Settings"];
+
+/**
+ * Kutuya sığan yazı boyu.
+ *
+ * Sekme adları sabit puntoyla yazıldığında kutularının dışına taşıyordu
+ * ("Large scale" 70 piksellik kutuda 85 piksel yer kaplıyor, komşusunun üstüne
+ * biniyordu). Ölçüp küçültmek, adı kısaltmaktan iyi: cihazda ne yazıyorsa o
+ * kalıyor.
+ */
+function fitSize(g: CanvasRenderingContext2D, s: string, maxW: number, size: number, font: string, bold = false): number {
+  g.font = `${bold ? "bold " : ""}${size}px ${font}`;
+  const w = g.measureText(s).width;
+  return w <= maxW ? size : Math.max(size * 0.62, (size * maxW) / w);
+}
 
 export const drawEcdis: ScreenDraw = (g, w, h, t) => {
   /* — menü şeridi — */
@@ -573,36 +575,56 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
   g.lineTo(w, barH - 0.5);
   g.stroke();
 
-  const tabW = (w * 0.7) / ECDIS_TABS.length;
+  // Sekmeler soldan, uyarı kutusu sağdan: aradaki boşluk ölçek yazısının.
+  const tabW = (w * 0.52) / ECDIS_TABS.length;
   ECDIS_TABS.forEach((label, i) => {
     const x = w * 0.005 + i * tabW;
-    g.fillStyle = "#efeade";
+    // İlk sekme seçili — gerçek cihazda da etkin görünüm vurgulu durur.
+    g.fillStyle = i === 0 ? "#ffffff" : "#efeade";
     g.fillRect(x, barH * 0.14, tabW - 2, barH * 0.72);
-    g.strokeStyle = "#a9a390";
+    g.strokeStyle = i === 0 ? "#6d7c86" : "#a9a390";
     g.strokeRect(x + 0.5, barH * 0.14 + 0.5, tabW - 3, barH * 0.72 - 1);
     say(g, label, x + (tabW - 2) / 2, barH * 0.66, {
-      size: barH * 0.42,
+      size: fitSize(g, label, tabW - 10, barH * 0.42, UI.sans),
       color: S52.text,
       font: UI.sans,
       align: "center",
     });
   });
-  // Son sekme uyarı: gerçek cihazda da turuncu yanar.
-  const warnX = w * 0.005 + ECDIS_TABS.length * tabW;
+  // Uyarı kutusu sağ uçta: gerçek cihazda da turuncu yanar.
+  const warnW = w * 0.085;
+  const warnX = w - warnW - w * 0.005;
   g.fillStyle = S52.barActive;
-  g.fillRect(warnX, barH * 0.14, tabW - 2, barH * 0.72);
-  say(g, "Warnings", warnX + (tabW - 2) / 2, barH * 0.66, {
-    size: barH * 0.42,
+  g.fillRect(warnX, barH * 0.14, warnW, barH * 0.72);
+  say(g, "Warnings", warnX + warnW / 2, barH * 0.66, {
+    size: fitSize(g, "Warnings", warnW - 10, barH * 0.42, UI.sans, true),
     color: "#2b1a00",
     font: UI.sans,
     align: "center",
     bold: true,
   });
 
-  /* — ölçek ve durum şeridi — */
-  const spanNm = Math.max(6, Math.min(90, t.voyage.passage.totalNm * 0.42));
-  const scale = Math.round((spanNm * 1852 * 100) / (h * 0.75) / 1000) * 1000;
-  say(g, `1:${scale.toLocaleString("tr-TR")}`, w * 0.995, barH * 0.66, {
+  /**
+   * Görüş alanı ve ölçek.
+   *
+   * Aralık seferin boyuyla değil, KIYIYA olan yakınlıkla seçiliyor: açık
+   * denizde 24 mil, limana yaklaşırken 8 mil. Eskiden sefer uzunluğunun
+   * oranıydı ve 700 millik bir seferde 90 mile çıkıyordu — o aralıkta AIS
+   * hedefleri bastırılıyor, ECDIS radarla aynı gemileri göstermiyordu.
+   * Gerçekte de seyir hâlindeki bir ECDIS 12–24 mil aralığında tutulur.
+   */
+  const shore = Math.max(0, 1 - Math.min(t.voyage.progress, 1 - t.voyage.progress) / 0.12);
+  const spanNm = 24 - 16 * shore;
+  /**
+   * Harita ölçeği: gerçek mesafenin ekrandaki mesafeye oranı.
+   *
+   * Payda EKRANIN FİZİKSEL BOYU olmak zorunda; eskiden piksel sayısına
+   * bölünüyordu ve 24 millik bir pencerede "1:8.000" yazıyordu — o ölçek bir
+   * liman planının ölçeğidir, 24 mil oraya sığmaz. Cihaz 0.42 m yüksekliğinde
+   * bir ECDIS monitörü; pencerenin kapladığı yükseklik onun %80'i.
+   */
+  const scale = Math.round((spanNm * 1852) / (0.8 * 0.42) / 1000) * 1000;
+  say(g, `1:${scale.toLocaleString("tr-TR")}`, warnX - w * 0.012, barH * 0.66, {
     size: barH * 0.44,
     color: S52.text,
     font: UI.sans,
@@ -648,15 +670,23 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
    * şeritler hâlinde çiziliyor — enlem/boylamda kurulup döndürülselerdi
    * meridyene paralel kalır, batıya giden gemide kıyı ekranı enine keserdi.
    * Kenar dalgalanması gemi ilerledikçe kayıyor: harita altından akıyor.
+   *
+   * BANTLAR, KONTURLAR VE İSKANDİL RAKAMLARI TEK MODELDEN ÇIKIYOR.
+   * Eskiden bantlar ekran uzayında, konturlar ve rakamlar enlem/boylamda
+   * üretiliyordu: kontur çizgileri derin suyun ortasından geçiyor, 370 m'lik
+   * iskandil rakamları açık mavi sığlığın üstüne düşüyordu. Bir haritada
+   * iskandil rakamı hangi derinlik alanının içindeyse onun derinliğini yazar;
+   * kontur da o alanın sınırıdır. Aşağıdaki `edgeU`/`depthAtU` ikilisi üçünü
+   * de aynı geometriye bağlıyor.
    */
-  const shore = Math.max(0, 1 - Math.min(t.voyage.progress, 1 - t.voyage.progress) / 0.12);
   const seed = hashSeed(t.voyage.route.id);
   const scroll = t.voyage.runNm * 0.35;
   const edge = (i: number, side: number) =>
     Math.sin((i / 17) * 5.5 + scroll + seed * 0.001 + side) * 0.035 +
     Math.sin((i / 17) * 13 - scroll * 0.6 + side * 2) * 0.018;
 
-  const band = (from: number, to: number, fill: string) => {
+  /** Kenardan dışarısını dolduran bant; `to` verilmezse ekranın dışına taşar. */
+  const band = (from: number, fill: string, to = 1.25) => {
     g.fillStyle = fill;
     for (const dir of [-1, 1] as const) {
       g.beginPath();
@@ -673,40 +703,90 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
     }
   };
 
-  // Kanal ne kadar dar: açık denizde sığlık uzakta, limana yaklaşırken yanaşır.
-  const n = 0.2 + (1 - shore) * 0.14;
-  band(n, n + 0.34, S52.depmd);
-  band(n + 0.1, n + 0.34, S52.depms);
-  if (shore > 0.05) {
-    band(n + 0.18, n + 0.34, S52.depvs);
-    band(n + 0.26, n + 0.34, S52.land);
-    band(n + 0.26, n + 0.285, S52.landf);
-  }
+  /*
+   * Derin suyun yarı genişliği: açık denizde neredeyse bütün ekran, limana
+   * yaklaşırken daralan bir kanal. Eskiden açık denizde de 0.34'te kalıyordu,
+   * yani ekranın üçte ikisi sığlıktı — Akdeniz'in ortasında iki yandan 18
+   * metrelik şelf demek olurdu.
+   */
+  const n = 0.24 + (1 - shore) * 0.62;
+  const hasShore = shore > 0.05;
 
-  /* — derinlik konturları ve iskandil rakamları — */
-  g.strokeStyle = S52.chgrd;
+  /**
+   * Derinlik alanları: merkez hattından uzaklık (yarım ekran = 1) → renk ve
+   * derinlik. `at`, alanın DIŞ sınırı; en sondaki ekranın dışında kalır, yani
+   * sığlık kenara kadar sürer. Eskiden bantlar 0.54'te bitiyordu ve dışarısı
+   * yeniden derin su (beyaz) kalıyordu: kıyı şeridi denizin ortasında asılı
+   * duruyordu.
+   */
+  const deep = Math.max(55, t.depthM);
+  const areas: Array<{ at: number; m: [number, number] | null; fill: string }> = hasShore
+    ? [
+        { at: n, m: [deep * 0.9, deep * 1.25], fill: S52.depdw },
+        { at: n + 0.1, m: [20, 50], fill: S52.depmd },
+        { at: n + 0.18, m: [10, 20], fill: S52.depms },
+        { at: n + 0.26, m: [3, 10], fill: S52.depvs },
+        { at: 9, m: null, fill: S52.land },
+      ]
+    : [
+        { at: n, m: [deep * 0.9, deep * 1.25], fill: S52.depdw },
+        { at: n + 0.1, m: [20, 50], fill: S52.depmd },
+        { at: 9, m: [10, 20], fill: S52.depms },
+      ];
+
+  for (let i = 1; i < areas.length; i++) band(areas[i - 1].at, areas[i].fill);
+  // Kıyı şeridinin yeşil kuşağı — kara kenarındaki bitki örtüsü.
+  if (hasShore) band(n + 0.26, S52.landf, n + 0.285);
+
+  /** Ekran y'sindeki dalgalanmayı bant çizimiyle aynı örnekleme ile veriyor. */
+  const edgeAtY = (y: number, dir: number) => edge(((y - mapY) / mapH) * 17, dir);
+  const depthAtXY = (x: number, y: number): [number, number] | null => {
+    const dir = x < cx ? -1 : 1;
+    const u = Math.abs(x - cx) / (mapW * 0.5) - edgeAtY(y, dir);
+    for (const a of areas) if (u < a.at) return a.m;
+    return null;
+  };
+
+  /* — derinlik konturları: alanların kendi sınırları — */
   g.lineWidth = 1;
-  for (let i = -2; i <= 2; i++) {
-    if (i === 0) continue;
-    g.beginPath();
-    for (let s = 0; s <= 24; s++) {
-      const lat = t.voyage.lat + (s / 24 - 0.5) * latSpanDeg * 1.5;
-      const lon = t.voyage.lon + i * lonSpanDeg * 0.2 + Math.sin(s * 0.8 + i) * lonSpanDeg * 0.03;
-      const [x, y] = project(lat, lon);
-      if (s === 0) g.moveTo(x, y);
-      else g.lineTo(x, y);
+  g.strokeStyle = S52.chgrd;
+  for (let i = 1; i < areas.length; i++) {
+    for (const dir of [-1, 1] as const) {
+      g.beginPath();
+      for (let k = 0; k <= 17; k++) {
+        const y = mapY + (k / 17) * mapH;
+        const x = cx + dir * (areas[i - 1].at + edge(k, dir)) * mapW * 0.5;
+        if (k === 0) g.moveTo(x, y);
+        else g.lineTo(x, y);
+      }
+      g.stroke();
     }
-    g.stroke();
   }
 
-  g.fillStyle = "#31536b";
-  const soundFs = Math.min(mapH * 0.036, mapW * 0.028);
-  g.font = `${soundFs}px ${UI.sans}`;
-  for (let i = 0; i < 40; i++) {
-    const lat = t.voyage.lat + (((i * 0.618) % 1) - 0.5) * latSpanDeg * 1.3;
-    const lon = t.voyage.lon + (((i * 0.377) % 1) - 0.5) * lonSpanDeg * 1.3;
-    const [x, y] = project(lat, lon);
-    g.fillText(String(Math.round(t.depthM * (0.55 + ((i * 0.313) % 1) * 0.95))), x, y);
+  /* — iskandil rakamları: bulunduğu derinlik alanının derinliği — */
+  const soundFs = Math.min(mapH * 0.034, mapW * 0.026);
+  const rnd = mulberry32(seed);
+  for (let i = 0; i < 54; i++) {
+    // Ekran uzayında dağınık bir ızgara; kayması haritayla aynı hızda.
+    const gx = ((i * 7) % 9) / 8;
+    const gy = (Math.floor(i / 9) + ((rnd() * 0.8) % 1)) / 6;
+    const x = (gx * 0.94 + 0.03) * mapW + (rnd() - 0.5) * mapW * 0.06;
+    const y = mapY + (((gy + scroll * 0.02) % 1) * 0.96 + 0.02) * mapH;
+    const jitter = rnd();
+    const d = depthAtXY(x, y);
+    if (d == null) continue; // karada iskandil olmaz
+    // Kendi gemimizin ve alt şeridin üstüne rakam düşmesin.
+    if (Math.abs(x - cx) < mapW * 0.06 && y > cy - mapH * 0.3 && y < cy + mapH * 0.06) continue;
+    if (y > mapY + mapH * 0.93) continue;
+    // Rakam, içinde bulunduğu alanın derinlik aralığından: 10 m konturunun
+    // içindeki bir iskandil 20 m yazamaz, o zaten kontura yer değiştirtirdi.
+    const value = d[0] + (d[1] - d[0]) * jitter;
+    say(g, value < 30 ? value.toFixed(1) : String(Math.round(value)), x, y, {
+      size: soundFs,
+      color: "#31536b",
+      font: UI.sans,
+      align: "center",
+    });
   }
 
   /* — enlem/boylam ızgarası — */
@@ -829,6 +909,49 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
   g.beginPath();
   g.arc(cx, cy, mapH * 0.008, 0, Math.PI * 2);
   g.stroke();
+
+  /**
+   * Kuzey oku ve sunum kipi.
+   *
+   * Ekran rota yukarı olduğu için enlem/boylam ızgarası eğik geçiyor; okun
+   * gösterdiği yön olmadan bu, bozuk bir harita gibi görünüyordu. Kuzeyin
+   * ekrandaki yönü (0,−1) vektörünün rota kadar döndürülmüş hâli.
+   */
+  const nr = mapH * 0.045;
+  const nx = mapW - nr * 2.9;
+  const ny = mapY + nr * 2.1;
+  // Altında opak bir kutu: iskandil rakamlarının üstüne binmesin.
+  g.fillStyle = "rgba(255,255,255,.9)";
+  g.fillRect(nx - nr * 1.85, ny - nr * 1.85, nr * 3.7, nr * 4.4);
+  g.strokeStyle = S52.panelLine;
+  g.lineWidth = 1;
+  g.strokeRect(nx - nr * 1.85 + 0.5, ny - nr * 1.85 + 0.5, nr * 3.7 - 1, nr * 4.4 - 1);
+  g.strokeStyle = "rgba(30,60,80,.55)";
+  g.beginPath();
+  g.arc(nx, ny, nr, 0, Math.PI * 2);
+  g.stroke();
+  g.save();
+  g.translate(nx, ny);
+  g.rotate(rot);
+  g.fillStyle = "#31536b";
+  g.beginPath();
+  g.moveTo(0, -nr);
+  g.lineTo(nr * 0.42, nr * 0.5);
+  g.lineTo(0, nr * 0.18);
+  g.lineTo(-nr * 0.42, nr * 0.5);
+  g.closePath();
+  g.fill();
+  g.restore();
+  // "N" okun ucunda ama dik: dönen bir harf baş yönüne göre ters dururdu.
+  say(g, "N", nx + Math.sin(rot) * nr * 1.42, ny - Math.cos(rot) * nr * 1.42 + nr * 0.3, {
+    size: nr * 0.85,
+    color: "#31536b",
+    font: UI.sans,
+    align: "center",
+    bold: true,
+  });
+  say(g, "COURSE UP", nx, ny + nr * 2.05, { size: nr * 0.62, color: "#4a5b66", font: UI.sans, align: "center" });
+
   g.restore();
 
   /* — sağ panel — */
@@ -843,7 +966,17 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
 
   const px = mapW + side * 0.06;
   const pw = side * 0.88;
-  const fs = Math.min(side * 0.11, mapH * 0.05);
+  /**
+   * Panelin satır yüksekliği, sığdığı ölçüde büyük.
+   *
+   * Aşağıdaki bütün konumlar `fs`'in katı, dolayısıyla panelin toplam boyu da
+   * öyle: başlık 2.9 + mevki 3.6 + üç okuma 6.0 + harita künyesi 3.1 + beş
+   * sefer satırı 10.75 + alt boşluk 1.15 = 27.5 fs. Eskiden `fs` yalnız panel
+   * genişliğinden çıkıyordu ve bu toplam ekranı taşıyordu: DEPTH satırı hiç
+   * görünmüyor, ETA alt kenarda kesiliyordu.
+   */
+  const PANEL_FS_UNITS = 27.5;
+  const fs = Math.min(side * 0.11, mapH / PANEL_FS_UNITS);
 
   // Başlık: kaynak ve otomatik kip.
   g.fillStyle = "#cfe0ea";
@@ -917,7 +1050,7 @@ export const drawEcdis: ScreenDraw = (g, w, h, t) => {
 
   /* — alt şerit: seferin kendisi — */
   const stripY = h - mapH * 0.062;
-  g.fillStyle = "rgba(255,255,255,.82)";
+  g.fillStyle = "#f2f5f7";
   g.fillRect(0, stripY, mapW, h - stripY);
   g.strokeStyle = S52.panelLine;
   g.beginPath();
@@ -1388,66 +1521,257 @@ function dialBase(g: CanvasRenderingContext2D, size: number, face = "#101418") {
   g.stroke();
 }
 
+/* ─── makine telgrafı ─── */
+
 /**
- * Makine telgrafı: emir ve cevap ibreli klasik kadran.
+ * Telgrafın kademeleri — iskeleden sancağa: tam tornistandan tam yola.
  *
- * Kademeler gerçek bir telgrafın kademeleri; kırmızı ibre köprüüstünün emri,
- * sarı ibre makine dairesinin cevabı. İkisi arasındaki gecikme kasten var —
- * emir verilir, makine cevaplar.
+ * `frac`, o kademedeki şaft devrinin servis devrine oranı (tornistan eksi):
+ * makine dairesinin cevabı buradan okunuyor, ayrı bir uydurma tablodan değil.
+ */
+export const TELEGRAPH_STEPS = [
+  { label: "FULL", side: "ASTERN", frac: -1 },
+  { label: "HALF", side: "ASTERN", frac: -0.7 },
+  { label: "SLOW", side: "ASTERN", frac: -0.45 },
+  { label: "D.SLOW", side: "ASTERN", frac: -0.25 },
+  { label: "STOP", side: "", frac: 0 },
+  { label: "D.SLOW", side: "AHEAD", frac: 0.25 },
+  { label: "SLOW", side: "AHEAD", frac: 0.45 },
+  { label: "HALF", side: "AHEAD", frac: 0.7 },
+  { label: "FULL", side: "AHEAD", frac: 1 },
+] as const;
+
+/** Lambaların dizildiği yay — fotoğraftaki yelpazenin açıklığı. */
+export const TELEGRAPH_SPAN = Math.PI * 0.86;
+
+/**
+ * KOLUN yolu, lamba yayından dar.
+ *
+ * Telgrafta emri gösteren şey yanan lambadır; kol, altındaki dişli yatağında
+ * kısa bir yol gider — fotoğraftaki dişli yatak da lamba yayının çok altında
+ * bir açıyı kaplıyor. Kol lamba yayı kadar yatırılınca "tam yol" emrinde
+ * neredeyse yatay duruyor, devrilmiş gibi görünüyordu; gemi seyir hâlinde hep
+ * o emirde olduğu için de kadrajda hep öyle kalıyordu.
+ */
+export const TELEGRAPH_LEVER_SPAN = Math.PI * 0.3;
+
+/** Kademenin dikeyden sapması (radyan) — sancağa, yani yol ileriye doğru artı. */
+export function telegraphLean(index: number): number {
+  return ((index - 4) / 4) * (TELEGRAPH_SPAN / 2);
+}
+
+/** Kolun o kademedeki duruşu: aynı emir, dar yatakta. */
+export function telegraphLeverLean(index: number): number {
+  return ((index - 4) / 4) * (TELEGRAPH_LEVER_SPAN / 2);
+}
+
+/** Köprüüstünün verdiği emrin kademesi; tanınmayan emir STOP sayılır. */
+export function telegraphOrderIndex(order: string): number {
+  const want = order.trim().toUpperCase().replace("DEAD SLOW", "D.SLOW");
+  const i = TELEGRAPH_STEPS.findIndex((s) => `${s.label} ${s.side}`.trim() === want);
+  return i < 0 ? 4 : i;
+}
+
+/**
+ * Makine dairesinin cevabı: şaftın GERÇEKTEN döndüğü devre en yakın kademe.
+ *
+ * Eskiden cevap ibresi emrin bir eksiğine rastgele zamanlarla atlıyordu; artık
+ * telemetrideki devirden çıkıyor, yani limandan kalkarken emir "tam yol"da
+ * dururken cevap sırayla yavaş/yarım/tam yolu geçiyor.
+ */
+export function telegraphAnswerIndex(shaftRpm: number): number {
+  const frac = shaftRpm / RPM_AT_SERVICE;
+  let best = 4;
+  TELEGRAPH_STEPS.forEach((s, i) => {
+    if (Math.abs(s.frac - frac) < Math.abs(TELEGRAPH_STEPS[best].frac - frac)) best = i;
+  });
+  return best;
+}
+
+/**
+ * Makine telgrafı — yelpaze gövdeli, ışıklı kademe göstergeli tip.
+ *
+ * Yüz YARIM DAİRE: çizim kare tuvalin ÜST YARISINA yapılıyor, çünkü 3B'deki
+ * yarım disk yüzeyi dokunun tam o yarısını alıyor (bkz. LiveScreen → "fan").
+ * Merkez, tuvalin ortası; kolun mili de orada.
+ *
+ * Kademeler bir telgrafta ne ise o: iskele yarısı tornistan (kırmızı), sancak
+ * yarısı yol ileri (yeşil), tepesi STOP (kehribar). Emredilen kademenin lambası
+ * yanar; makinenin cevabı ayrı bir halka olarak aynı kadranda durur — ikisi
+ * ayrışınca (emir verilmiş, makine daha oraya gelmemiş) bir bakışta görünür.
  */
 export const drawTelegraph: ScreenDraw = (g, size, _h, t) => {
-  dialBase(g, size, "#161a1e");
   const c = size / 2;
-  const R = size * 0.38;
+  const R = size * 0.5;
 
-  const orders = ["FULL\nASTERN", "HALF\nASTERN", "SLOW\nASTERN", "D.SLOW\nASTERN", "STOP", "D.SLOW\nAHEAD", "SLOW\nAHEAD", "HALF\nAHEAD", "FULL\nAHEAD"];
-  const span = Math.PI * 1.55;
-  const angleFor = (i: number) => -Math.PI / 2 - span / 2 + (span * i) / (orders.length - 1);
+  // Gövde rengi: tuvalin tamamı, yarım diskin dışında kalan kısım görünmüyor.
+  g.fillStyle = "#2f3438";
+  g.fillRect(0, 0, size, size);
 
-  orders.forEach((label, i) => {
-    const a = angleFor(i);
-    g.strokeStyle = i === 4 ? "rgba(255,255,255,.75)" : "rgba(200,220,235,.4)";
-    g.lineWidth = size * (i === 4 ? 0.016 : 0.01);
-    g.beginPath();
-    g.moveTo(c + Math.cos(a) * R, c + Math.sin(a) * R);
-    g.lineTo(c + Math.cos(a) * R * 0.86, c + Math.sin(a) * R * 0.86);
-    g.stroke();
-    label.split("\n").forEach((part, k) => {
-      say(g, part, c + Math.cos(a) * R * 0.73, c + Math.sin(a) * R * 0.73 + k * size * 0.045 - size * 0.005, {
-        size: size * 0.042,
-        color: "rgba(220,235,245,.75)",
-        align: "center",
-        font: UI.sans,
-        bold: true,
-      });
-    });
-  });
-
-  const orderIndex = t.telegraphOrder === "STOP" ? 4 : 8;
-  // Cevap ibresi emri bir tık gecikmeyle izliyor.
-  const answer = orderIndex + (Math.sin(t.nowMs / 3000) > 0.97 ? -1 : 0);
-
-  const needle = (index: number, color: string, length: number, width: number) => {
-    const a = angleFor(index);
-    g.strokeStyle = color;
-    g.lineWidth = size * width;
-    g.lineCap = "round";
-    g.beginPath();
-    g.moveTo(c, c);
-    g.lineTo(c + Math.cos(a) * R * length, c + Math.sin(a) * R * length);
-    g.stroke();
-    g.lineCap = "butt";
-  };
-  needle(answer, "#ffc93c", 0.72, 0.03);
-  needle(orderIndex, "#e0402f", 0.88, 0.022);
-
-  g.fillStyle = "#2a2f34";
+  // Yüz: ortadan kenara doğru koyulaşan mat gri.
+  const face = g.createRadialGradient(c, c, R * 0.1, c, c, R);
+  face.addColorStop(0, "#41474c");
+  face.addColorStop(0.72, "#33383d");
+  face.addColorStop(1, "#22262a");
+  g.fillStyle = face;
   g.beginPath();
-  g.arc(c, c, size * 0.045, 0, Math.PI * 2);
+  g.arc(c, c, R, Math.PI, Math.PI * 2);
+  g.closePath();
   g.fill();
 
-  say(g, "ENGINE ORDER", c, size * 0.86, { size: size * 0.05, color: "rgba(220,235,245,.8)", align: "center", font: UI.sans, bold: true });
-  say(g, `${t.shaftRpm.toFixed(0)} RPM`, c, size * 0.92, { size: size * 0.05, color: UI.amber, align: "center" });
+  const angleFor = (i: number) => -Math.PI / 2 + telegraphLean(i);
+  const at = (a: number, r: number): [number, number] => [c + Math.cos(a) * R * r, c + Math.sin(a) * R * r];
+
+  /* — dış kuşak: dişli taksimat ve yön yazıları — */
+  g.fillStyle = "rgba(12,14,16,.55)";
+  g.beginPath();
+  g.arc(c, c, R * 0.97, Math.PI, Math.PI * 2);
+  g.arc(c, c, R * 0.84, Math.PI * 2, Math.PI, true);
+  g.closePath();
+  g.fill();
+
+  const halfSpan = TELEGRAPH_SPAN / 2;
+  // Yön yazılarının oturduğu yay — taksimat orada kesiliyor ki yazı okunsun.
+  const wordAt = (k: number) => -Math.PI / 2 + (k === 0 ? -1 : 1) * halfSpan * 0.62;
+  for (let k = -28; k <= 28; k++) {
+    const a = -Math.PI / 2 + (k / 28) * halfSpan;
+    if (Math.abs(a - wordAt(0)) < 0.16 || Math.abs(a - wordAt(1)) < 0.16) continue;
+    const major = k % 7 === 0;
+    g.strokeStyle = major ? "rgba(226,236,244,.75)" : "rgba(190,206,218,.34)";
+    g.lineWidth = size * (major ? 0.008 : 0.004);
+    g.beginPath();
+    g.moveTo(...at(a, 0.965));
+    g.lineTo(...at(a, major ? 0.868 : 0.905));
+    g.stroke();
+  }
+
+  ["ASTERN", "AHEAD"].forEach((word, k) => {
+    const a = wordAt(k);
+    g.save();
+    g.translate(...at(a, 0.905));
+    // Yay boyunca, tabanı teğet: +π/2 iki yanda da düz okunan yönü veriyor.
+    g.rotate(a + Math.PI / 2);
+    say(g, word, 0, 0, {
+      size: size * 0.036,
+      color: "rgba(214,228,238,.72)",
+      align: "center",
+      font: UI.sans,
+      bold: true,
+      baseline: "middle",
+    });
+    g.restore();
+  });
+
+  /* — kademeler: lamba + yazı — */
+  const order = telegraphOrderIndex(t.telegraphOrder);
+  const answer = telegraphAnswerIndex(t.shaftRpm);
+
+  TELEGRAPH_STEPS.forEach((step, i) => {
+    const a = angleFor(i);
+    const lit = i === order;
+    const hue = i === 4 ? "#ffb020" : i < 4 ? "#ff3b30" : "#25d366";
+
+    // Lamba yuvası ve camı.
+    const [lx, ly] = at(a, 0.75);
+    const lr = size * 0.026;
+    g.fillStyle = "#15181b";
+    g.beginPath();
+    g.arc(lx, ly, lr * 1.5, 0, Math.PI * 2);
+    g.fill();
+    if (lit) {
+      const glow = g.createRadialGradient(lx, ly, 0, lx, ly, lr * 3.4);
+      glow.addColorStop(0, hue);
+      glow.addColorStop(1, "rgba(0,0,0,0)");
+      g.globalAlpha = 0.55;
+      g.fillStyle = glow;
+      g.beginPath();
+      g.arc(lx, ly, lr * 3.4, 0, Math.PI * 2);
+      g.fill();
+      g.globalAlpha = 1;
+    }
+    g.fillStyle = lit ? hue : "rgba(255,255,255,.09)";
+    g.beginPath();
+    g.arc(lx, ly, lr, 0, Math.PI * 2);
+    g.fill();
+    if (!lit) {
+      // Sönük lamba yine de rengini belli eder — kırmızı yarı, yeşil yarı.
+      g.globalAlpha = 0.22;
+      g.fillStyle = hue;
+      g.beginPath();
+      g.arc(lx, ly, lr, 0, Math.PI * 2);
+      g.fill();
+      g.globalAlpha = 1;
+    }
+
+    // Makinenin cevabı: emirle aynı kadranda, lambanın çevresindeki halka.
+    if (i === answer) {
+      g.strokeStyle = "#ffd45e";
+      g.lineWidth = size * 0.008;
+      g.beginPath();
+      g.arc(lx, ly, lr * 2.05, 0, Math.PI * 2);
+      g.stroke();
+    }
+
+    // Yazı ışın boyunca: tepede dik, uçlara doğru yatıyor (fotoğraftaki gibi).
+    g.save();
+    g.translate(...at(a, 0.5));
+    g.rotate(i < 4 ? a + Math.PI : a);
+    say(g, step.label, 0, 0, {
+      size: size * (step.label === "STOP" ? 0.05 : 0.042),
+      color: lit ? "#ffffff" : "rgba(226,236,244,.68)",
+      align: "center",
+      font: UI.sans,
+      bold: true,
+      baseline: "middle",
+    });
+    g.restore();
+  });
+
+  /* — kolun dişli yatağı: milin çevresindeki dar yay — */
+  const rackR = R * 0.34;
+  const leverHalf = TELEGRAPH_LEVER_SPAN / 2;
+  g.strokeStyle = "rgba(10,12,14,.6)";
+  g.lineWidth = R * 0.1;
+  g.beginPath();
+  g.arc(c, c, rackR, -Math.PI / 2 - leverHalf, -Math.PI / 2 + leverHalf);
+  g.stroke();
+  g.strokeStyle = "rgba(190,206,218,.3)";
+  g.lineWidth = size * 0.004;
+  for (let k = 0; k <= 8; k++) {
+    const a = -Math.PI / 2 - leverHalf + (k / 8) * TELEGRAPH_LEVER_SPAN;
+    g.beginPath();
+    g.moveTo(...at(a, 0.3));
+    g.lineTo(...at(a, 0.385));
+    g.stroke();
+  }
+
+  /* — kolun mili ve künye — */
+  const hub = g.createRadialGradient(c - R * 0.04, c - R * 0.06, R * 0.02, c, c, R * 0.2);
+  hub.addColorStop(0, "#4c5257");
+  hub.addColorStop(1, "#1b1e21");
+  g.fillStyle = hub;
+  g.beginPath();
+  g.arc(c, c, R * 0.19, Math.PI, Math.PI * 2);
+  g.closePath();
+  g.fill();
+
+  /*
+   * Künye ve devir: yarım diskin iki alt köşesinde, çapa yakın.
+   * Köşeye kadar itildiler çünkü uçtaki FULL yazıları da oraya yakın duruyor;
+   * kolun altında da kalmıyorlar, kol en fazla ±63° yatıyor.
+   */
+  say(g, "ENGINE ORDER", c - R * 0.74, c - size * 0.024, {
+    size: size * 0.028,
+    color: "rgba(200,216,228,.5)",
+    align: "center",
+    font: UI.sans,
+    bold: true,
+  });
+  say(g, `${Math.abs(t.shaftRpm).toFixed(0)} RPM`, c + R * 0.74, c - size * 0.024, {
+    size: size * 0.03,
+    color: UI.amber,
+    align: "center",
+  });
 };
 
 /** Cayro tekrarlayıcı: dönen pusula kartı, sabit lubber çizgisi. */
