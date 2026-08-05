@@ -468,9 +468,16 @@ export const GYRO_REPEATER = {
  * Yarıçap 0.19 m: gerçek bir telgrafın yelpazesi 35–40 cm enindedir.
  */
 export const TELEGRAPH = {
-  // Dümenin sancak omzu, konsol boşluğunda: daha sancakta durduğunda sütun
-  // radar ve conning ekranlarının önüne dikiliyordu.
-  position: [0.64, 1.0, -1.3] as [number, number, number],
+  /**
+   * Sancak konsolunun iskele-kıç köşesinde, tezgâh hizasında.
+   *
+   * Önce ince bir sütunun tepesinde, tezgâhtan bir karış yukarıda duruyordu —
+   * konsolun parçası değil, ortada dikilmiş bir direk gibi görünüyordu. Şimdi
+   * kaidesi güverteden yükselen kutu bir ayak ve cihaz tam tezgâh yüksekliğine
+   * oturuyor (tabla üstü 0.945 m). Yeri hâlâ konsol boşluğu: daha sancakta
+   * dursa radar ve conning ekranlarının önüne geçerdi.
+   */
+  position: [0.64, 0.985, -1.4] as [number, number, number],
   radius: 0.19,
   /**
    * Yüzü dümenciye çevirir.
@@ -483,8 +490,15 @@ export const TELEGRAPH = {
   /** Kolun boyu ve topuzu (m) — ikisi birlikte yelpazenin yarıçapı kadar. */
   leverLength: 0.105,
   knobLength: 0.055,
-  /** Yüz kıça-yukarı bakar: oturur göz hizasından okunacak kadar yatık. */
-  tilt: -0.3,
+  /**
+   * Yüz DİK duruyor, tabanı da güverteye paralel.
+   *
+   * Önce panellerdeki gibi geriye yatırılmıştı (-0.3); göz hizası yelpazenin
+   * 60 cm üstünde olduğu için yarım disk kadrajda yassılıyor, kaide plakası da
+   * eğik duruyordu — cihaz dikilmiş değil, devrilmiş gibi görünüyordu. Dik
+   * yüzey göz hizasından zaten 10° eğimle görülüyor, okunmasına engel değil.
+   */
+  tilt: 0,
 };
 
 /**

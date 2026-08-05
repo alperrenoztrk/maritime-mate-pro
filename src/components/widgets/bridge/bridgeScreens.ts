@@ -1545,15 +1545,16 @@ export const TELEGRAPH_STEPS = [
 export const TELEGRAPH_SPAN = Math.PI * 0.86;
 
 /**
- * KOLUN yolu, lamba yayından dar.
+ * KOLUN yolu — kadranın yayı değil.
  *
- * Telgrafta emri gösteren şey yanan lambadır; kol, altındaki dişli yatağında
- * kısa bir yol gider — fotoğraftaki dişli yatak da lamba yayının çok altında
- * bir açıyı kaplıyor. Kol lamba yayı kadar yatırılınca "tam yol" emrinde
- * neredeyse yatay duruyor, devrilmiş gibi görünüyordu; gemi seyir hâlinde hep
- * o emirde olduğu için de kadrajda hep öyle kalıyordu.
+ * Kol ÖNE-ARKAYA gider: ileri itilir yol, geri çekilir tornistan. Telgrafın
+ * kolu yana yatmaz; emri gösteren şey zaten yanan lambadır, kol da kumandanın
+ * kendisidir. Önce lamba yayıyla aynı düzlemde, yana yatar yapılmıştı: gemi
+ * seyirde hep "tam yol"da olduğu için kol kadrajda hep yan duruyordu.
+ *
+ * Yol ±32°: tam yolda bile kol dik duruşunu koruyor.
  */
-export const TELEGRAPH_LEVER_SPAN = Math.PI * 0.3;
+export const TELEGRAPH_LEVER_SPAN = Math.PI * 0.36;
 
 /** Kademenin dikeyden sapması (radyan) — sancağa, yani yol ileriye doğru artı. */
 export function telegraphLean(index: number): number {
@@ -1726,24 +1727,6 @@ export const drawTelegraph: ScreenDraw = (g, size, _h, t) => {
     });
     g.restore();
   });
-
-  /* — kolun dişli yatağı: milin çevresindeki dar yay — */
-  const rackR = R * 0.34;
-  const leverHalf = TELEGRAPH_LEVER_SPAN / 2;
-  g.strokeStyle = "rgba(10,12,14,.6)";
-  g.lineWidth = R * 0.1;
-  g.beginPath();
-  g.arc(c, c, rackR, -Math.PI / 2 - leverHalf, -Math.PI / 2 + leverHalf);
-  g.stroke();
-  g.strokeStyle = "rgba(190,206,218,.3)";
-  g.lineWidth = size * 0.004;
-  for (let k = 0; k <= 8; k++) {
-    const a = -Math.PI / 2 - leverHalf + (k / 8) * TELEGRAPH_LEVER_SPAN;
-    g.beginPath();
-    g.moveTo(...at(a, 0.3));
-    g.lineTo(...at(a, 0.385));
-    g.stroke();
-  }
 
   /* — kolun mili ve künye — */
   const hub = g.createRadialGradient(c - R * 0.04, c - R * 0.06, R * 0.02, c, c, R * 0.2);

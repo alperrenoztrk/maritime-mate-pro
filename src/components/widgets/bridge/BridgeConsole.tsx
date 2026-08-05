@@ -206,10 +206,11 @@ const FAN_SLOT = { position: [0, 0, 0] as [number, number, number], yaw: 0, tilt
  * köprüüstünde duran telgraf budur: yarım disk gövde, kademeleri ışıklı yüz
  * (bkz. drawTelegraph) ve tek bir kol.
  *
- * KOL ARTIK EMRİ GÖSTERİYOR. Eskiden yalnız iki konumu vardı (dik ya da öne
- * yatık) ve kadranın yanında, kendi mili olmayan bir çubuktu; şimdi yelpazenin
- * miline oturuyor ve emredilen kademenin açısına gidiyor — yüzdeki yanan lamba
- * ile kolun gösterdiği yer aynı yer.
+ * KOL ÖNE-ARKAYA HAREKET EDİYOR: ileri itilir yol, geri çekilir tornistan —
+ * bir telgrafın kolu yana yatmaz. Emri gösteren şey yüzdeki yanan lamba; kol
+ * kumandanın kendisi. (Kısa bir dönem kol lamba yayıyla aynı düzlemde, yana
+ * yatar yapılmıştı; gemi seyirde hep "tam yol"da olduğu için kadrajda hep yan
+ * duruyordu.)
  */
 function TelegraphPedestal({ sim }: { sim: BridgeSim }) {
   const lever = useRef<THREE.Group>(null);
@@ -217,22 +218,23 @@ function TelegraphPedestal({ sim }: { sim: BridgeSim }) {
   useFrame(() => {
     if (!lever.current) return;
     const order = sim.telemetry ? telegraphOrderIndex(sim.telemetry.telegraphOrder) : 4;
-    // Sancağa yatık kol yol ileri demek; ekran uzayında sancak +X, dolayısıyla
-    // Z ekseni etrafındaki dönüş ters işaretli.
+    // X ekseninde artı dönüş kolun ucunu kıça götürür; yol ileri emri kolu
+    // öne yatırır, dolayısıyla ters işaretli.
     const target = -telegraphLeverLean(order);
-    lever.current.rotation.z += (target - lever.current.rotation.z) * 0.08;
+    lever.current.rotation.x += (target - lever.current.rotation.x) * 0.08;
   });
 
   const R = TELEGRAPH.radius;
+  const standTop = TELEGRAPH.position[1] - R * 0.11;
   return (
     <group position={TELEGRAPH.position}>
-      {/* Sütun: güverteden yelpazenin miline kadar */}
-      <mesh position={[0, -TELEGRAPH.position[1] / 2, 0]} castShadow receiveShadow>
-        <cylinderGeometry args={[0.075, 0.11, TELEGRAPH.position[1], 18]} />
-        <meshStandardMaterial color="#b9bfc4" roughness={0.45} metalness={0.55} />
+      {/* Ayak: güverteden tezgâh hizasına çıkan kutu kaide */}
+      <mesh position={[0, -standTop / 2, 0]} castShadow receiveShadow>
+        <boxGeometry args={[R * 1.5, standTop, R * 1.3]} />
+        <meshStandardMaterial color="#c4cacf" roughness={0.5} metalness={0.35} />
       </mesh>
-      <mesh position={[0, 0.03 - TELEGRAPH.position[1], 0]} castShadow>
-        <cylinderGeometry args={[0.17, 0.19, 0.06, 20]} />
+      <mesh position={[0, -standTop + 0.03, 0]} castShadow>
+        <boxGeometry args={[R * 2, 0.06, R * 1.8]} />
         <meshStandardMaterial color="#3a4046" roughness={0.65} metalness={0.3} />
       </mesh>
 
@@ -251,21 +253,21 @@ function TelegraphPedestal({ sim }: { sim: BridgeSim }) {
             shape="fan"
           />
 
-          {/* Emir kolu: mil yelpazenin merkezinde, kol emrin kademesine bakar */}
-          <group position={[0, 0, 0.03]}>
+          {/* Mil kovanı — kol yelpazenin ekseninde döner, öne-arkaya */}
+          <mesh position={[0, 0, 0.045]} rotation={[0, Math.PI / 2, 0]} castShadow>
+            <cylinderGeometry args={[R * 0.14, R * 0.14, R * 0.34, 20]} />
+            <meshStandardMaterial color="#202427" roughness={0.5} metalness={0.4} />
+          </mesh>
+
+          {/* Emir kolu: dik durur, emre göre öne yatar */}
+          <group position={[0, 0, 0.045]}>
             <group ref={lever}>
-              {/* Mil kovanı */}
-              <mesh rotation={[Math.PI / 2, 0, 0]} castShadow>
-                <cylinderGeometry args={[R * 0.13, R * 0.13, 0.045, 20]} />
-                <meshStandardMaterial color="#202427" roughness={0.5} metalness={0.4} />
-              </mesh>
-              {/* Kolun gövdesi */}
-              <mesh position={[0, TELEGRAPH.leverLength / 2, 0.01]} castShadow>
+              <mesh position={[0, TELEGRAPH.leverLength / 2, 0]} castShadow>
                 <cylinderGeometry args={[R * 0.075, R * 0.095, TELEGRAPH.leverLength, 14]} />
                 <meshStandardMaterial color="#15181b" roughness={0.42} metalness={0.35} />
               </mesh>
-              {/* Topuz: kola göre yatık, fotoğraftaki eğik başlık */}
-              <group position={[0, TELEGRAPH.leverLength, 0.012]} rotation={[0.55, 0, 0]}>
+              {/* Topuz: fotoğraftaki gibi kola göre kıça eğik başlık */}
+              <group position={[0, TELEGRAPH.leverLength, 0]} rotation={[0.5, 0, 0]}>
                 <mesh position={[0, TELEGRAPH.knobLength / 2, 0]} castShadow>
                   <cylinderGeometry args={[R * 0.115, R * 0.135, TELEGRAPH.knobLength, 18]} />
                   <meshStandardMaterial color="#121517" roughness={0.35} metalness={0.3} />
