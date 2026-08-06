@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getLanguageDisplayName } from "@/services/aiClient";
 import { stripMarkdown } from "@/utils/cleanText";
+import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 
 export const UnifiedMaritimeAssistant = () => {
   const { currentLanguage } = useLanguage();
@@ -388,6 +389,13 @@ Detaylı bir soru sorun, size hesaplama ve açıklamalar sunayım!`;
                   <div key={index} className="h-2"></div>
                 );
               })}
+            </div>
+            <div className="mt-3 border-t border-border/40 pt-2">
+              <ReportAiContentButton
+                surface="maritime_assistant"
+                content={response}
+                prompt={conversationHistory[0]?.question}
+              />
             </div>
           </div>
         )}

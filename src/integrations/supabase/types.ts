@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_content_reports: {
+        Row: {
+          created_at: string
+          id: string
+          note: string | null
+          reason: string
+          reported_content: string
+          status: string
+          surface: string
+          user_id: string
+          user_prompt: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          reason: string
+          reported_content: string
+          status?: string
+          surface: string
+          user_id: string
+          user_prompt?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          reason?: string
+          reported_content?: string
+          status?: string
+          surface?: string
+          user_id?: string
+          user_prompt?: string | null
+        }
+        Relationships: []
+      }
       ai_usage: {
         Row: {
           period: string

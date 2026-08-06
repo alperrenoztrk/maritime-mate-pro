@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/useLanguage";
 import { askLessonTutor, type AIMessage, type TutorLevel } from "@/services/aiClient";
 import { supabase } from "@/integrations/supabase/safeClient";
+import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 
 
 /**
@@ -108,14 +109,24 @@ export function LessonAITutor({
               >
                 {m.role === "user" ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
               </div>
-              <div
-                className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
-                  m.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-card text-foreground/90"
-                }`}
-              >
-                {m.content}
+              <div className="max-w-[80%]">
+                <div
+                  className={`whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
+                    m.role === "user"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-card text-foreground/90"
+                  }`}
+                >
+                  {m.content}
+                </div>
+                {m.role !== "user" && (
+                  <ReportAiContentButton
+                    surface="ai_tutor"
+                    content={m.content}
+                    prompt={messages[i - 1]?.role === "user" ? messages[i - 1].content : undefined}
+                    className="mt-1 pl-1"
+                  />
+                )}
               </div>
             </div>
           ))}

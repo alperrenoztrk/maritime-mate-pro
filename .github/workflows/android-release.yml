@@ -7,6 +7,13 @@ name: Android Release (AAB + APK)
 #   ANDROID_KEY_ALIAS            -> anahtar alias'ı
 #   ANDROID_KEY_ALIAS_PASSWORD   -> anahtar parolası
 # Secret'lar tanımlı değilse build imzasız (unsigned) çıktı üretir.
+#
+# AdMob secret'ları (opsiyonel; tanımlı değilse Google'ın TEST reklamları
+# gösterilir — mağaza sürümünde gelir üretmez, mutlaka doldurun):
+#   ADMOB_APP_ID_ANDROID           -> ca-app-pub-XXXX~YYYY (AndroidManifest)
+#   ADMOB_BANNER_ID_ANDROID        -> ca-app-pub-XXXX/YYYY
+#   ADMOB_INTERSTITIAL_ID_ANDROID
+#   ADMOB_BANNER_ID_IOS / ADMOB_INTERSTITIAL_ID_IOS
 
 on:
   workflow_dispatch:
@@ -47,7 +54,16 @@ jobs:
       - name: Run topic coverage quality gate
         run: npm run check:topic-coverage
 
+      # Reklam birimi kimlikleri JS bundle'ına build sırasında gömülür
+      # (src/config/ads.ts). Secret tanımlı değilse Google'ın resmi TEST
+      # reklamlarına düşülür — yani secret eklenmeden üretilen AAB mağazaya
+      # çıksa bile gerçek reklam göstermez, gelir üretmez.
       - name: Build web (Vite)
+        env:
+          VITE_ADMOB_BANNER_ID_ANDROID: ${{ secrets.ADMOB_BANNER_ID_ANDROID }}
+          VITE_ADMOB_INTERSTITIAL_ID_ANDROID: ${{ secrets.ADMOB_INTERSTITIAL_ID_ANDROID }}
+          VITE_ADMOB_BANNER_ID_IOS: ${{ secrets.ADMOB_BANNER_ID_IOS }}
+          VITE_ADMOB_INTERSTITIAL_ID_IOS: ${{ secrets.ADMOB_INTERSTITIAL_ID_IOS }}
         run: npm run build
 
       - name: Sync Capacitor
@@ -66,12 +82,15 @@ jobs:
 
       # app/build.gradle, KEYSTORE_FILE / KEYSTORE_PASSWORD / KEY_ALIAS /
       # KEY_PASSWORD ortam değişkenleri tanımlıysa release'i otomatik imzalar.
+      # ADMOB_APP_ID_ANDROID manifest'e enjekte edilir; tanımlı değilse
+      # Google'ın TEST App ID'si kullanılır (derleme asla kırılmaz).
       - name: Build AAB (Play Store) + APK (test)
         working-directory: android
         env:
           KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }}
+          ADMOB_APP_ID_ANDROID: ${{ secrets.ADMOB_APP_ID_ANDROID }}
         run: ./gradlew bundleRelease assembleRelease --stacktrace --no-daemon
 
       - name: Upload AAB

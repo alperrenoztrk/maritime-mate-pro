@@ -6,6 +6,7 @@ import { AIMessage } from '@/services/aiClient';
 import { Sparkles, X, Loader2, Highlighter } from 'lucide-react';
 import { toast } from 'sonner';
 import { addNote } from '@/lib/notesStorage';
+import { ReportAiContentButton } from '@/components/ai/ReportAiContentButton';
 
 async function askGeminiAboutText(text: string, language: string): Promise<string> {
   const messages: AIMessage[] = [
@@ -174,7 +175,16 @@ export function AskAIPopup() {
               <p className="text-xs text-red-400">{error}</p>
             )}
             {answer && !loading && (
-              <p className="text-xs text-gray-100 leading-relaxed whitespace-pre-wrap">{answer}</p>
+              <>
+                <p className="text-xs text-gray-100 leading-relaxed whitespace-pre-wrap">{answer}</p>
+                <ReportAiContentButton
+                  surface="ask_ai"
+                  content={answer}
+                  prompt={selectedText}
+                  tone="onDark"
+                  className="mt-2"
+                />
+              </>
             )}
           </div>
         </div>

@@ -11,6 +11,7 @@ import { HydrostaticCalculations } from "@/services/hydrostaticCalculations";
 import type { ShipGeometry } from "@/types/hydrostatic";
 import { useToast } from "@/hooks/use-toast";
 import { stripMarkdown } from "@/utils/cleanText";
+import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 
  type AssistantMode = 'idle' | 'gm' | 'tpc' | 'imo';
  
@@ -189,6 +190,13 @@ import { stripMarkdown } from "@/utils/cleanText";
                              <button aria-label="Kopyala" onClick={()=> copyText(m.content)} className="text-xs text-muted-foreground hover:text-foreground">
                                <Copy className="h-3 w-3" />
                              </button>
+                             {m.role !== 'user' && (
+                               <ReportAiContentButton
+                                 surface="stability_assistant"
+                                 content={m.content}
+                                 prompt={messages[i-1]?.role === 'user' ? messages[i-1].content : undefined}
+                               />
+                             )}
                            </div>
                          </div>
                        ))}
