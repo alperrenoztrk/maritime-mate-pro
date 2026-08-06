@@ -15,7 +15,7 @@ import { LanguageChangeOverlay } from "@/components/LanguageChangeOverlay";
 
 import { DensityProvider } from "@/contexts/DensityContext";
 import { FontSizeProvider } from "@/contexts/FontSizeContext";
-import { AnimatePresence, MotionConfig } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
@@ -428,8 +428,6 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Honor the OS "reduce motion" setting for all framer-motion animations */}
-      <MotionConfig reducedMotion="user">
       <HelmetProvider>
         <AuthProvider>
           <EntitlementProvider>
@@ -457,7 +455,6 @@ const App = () => {
           </EntitlementProvider>
         </AuthProvider>
       </HelmetProvider>
-      </MotionConfig>
     </QueryClientProvider>
   );
 };
