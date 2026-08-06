@@ -1,0 +1,13 @@
+# Yerel (mağaza) derlemede gerçek AdMob App ID'sini kullanmak için bu dosyayı
+# `admob.properties` olarak kopyalayın. admob.properties git'e ASLA eklenmez.
+#
+# Değer AndroidManifest'e ${admobAppId} olarak enjekte edilir. Çözüm sırası
+# (bkz. android/app/build.gradle):
+#   1) android/admob.properties         → bu dosya
+#   2) ADMOB_APP_ID_ANDROID ortam değişkeni → CI (GitHub Actions secret)
+#   3) Google'ın resmi TEST App ID'si       → varsayılan, derleme asla kırılmaz
+#
+# App ID (~ işareti içerir) AdMob Console → Uygulamalar → Uygulama ayarları'nda.
+# Reklam BİRİMİ kimlikleri (/ işaretli) burada değil, .env üzerinden verilir:
+# VITE_ADMOB_BANNER_ID_ANDROID / VITE_ADMOB_INTERSTITIAL_ID_ANDROID
+appId=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY

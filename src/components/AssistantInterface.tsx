@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/useLanguage";
 import { stripMarkdown } from "@/utils/cleanText";
+import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
 
 // UI string translations for all 25 supported languages
 const UI_TRANSLATIONS: Record<string, {
@@ -462,6 +463,13 @@ MANDATORY FORMAT RULES:
                   >
                     {stripMarkdown(response)}
                   </div>
+                </div>
+                <div className="mt-3 border-t border-border/40 pt-2">
+                  <ReportAiContentButton
+                    surface="assistant_interface"
+                    content={response}
+                    prompt={question}
+                  />
                 </div>
               </CardContent>
             </Card>

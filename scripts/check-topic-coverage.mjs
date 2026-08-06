@@ -4,13 +4,16 @@ import ts from "typescript";
 
 const repoRoot = process.cwd();
 
+// Denetlenen modüller. Buraya bir giriş eklerken dosyanın gerçekten var
+// olduğundan emin olun: aşağıdaki kontrol eksik dosyada anlaşılır bir hatayla
+// durur, çünkü bu kapı CI'da derlemeden ÖNCE çalışır — sessizce eskiyen bir
+// giriş, AAB üretimini tamamen bloke eder.
+//
+// Not: Daha önce burada bir "meteorology" girişi vardı ve hiçbir zaman
+// commit'lenmemiş olan src/pages/MeteorologyTopicsPage.tsx dosyasını
+// gösteriyordu; kapı bu yüzden ENOENT ile patlıyordu. Meteoroloji içeriği
+// bu sayfa yapısında tutulmuyor, giriş kaldırıldı.
 const MODULES = [
-  {
-    name: "meteorology",
-    filePath: "src/pages/MeteorologyTopicsPage.tsx",
-    topicsVar: "meteorologyTopics",
-    filterTopicIds: null,
-  },
   {
     name: "deck",
     filePath: "src/pages/SeamanshipTopicsPage.tsx",
@@ -21,6 +24,12 @@ const MODULES = [
 
 function parseSource(filePath) {
   const fullPath = path.join(repoRoot, filePath);
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(
+      `${filePath} bulunamadı. MODULES listesindeki bu giriş ya güncellenmeli ` +
+        `ya da kaldırılmalı (scripts/check-topic-coverage.mjs).`,
+    );
+  }
   const text = fs.readFileSync(fullPath, "utf8");
   return ts.createSourceFile(filePath, text, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 }
@@ -170,4 +179,7 @@ if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log("✅ Kapsam kontrolü başarılı: meteorology ve deck modüllerinde subtopic-content/hasContent tutarlı.");
+console.log(
+  `✅ Kapsam kontrolü başarılı: ${MODULES.map((m) => m.name).join(", ")} ` +
+    `modülünde subtopic-content/hasContent tutarlı.`,
+);

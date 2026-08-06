@@ -100,11 +100,9 @@ dependencies {
 
 apply from: 'capacitor.build.gradle'
 
-try {
-    def servicesJSON = file('google-services.json')
-    if (servicesJSON.text) {
-        apply plugin: 'com.google.gms.google-services'
-    }
-} catch(Exception e) {
-    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
-}
+// Firebase/Google Services kasıtlı olarak yok: uygulama kimlik doğrulama,
+// veritabanı ve depolama için Supabase kullanıyor, push bildirimi göndermiyor.
+// google-services.json ve com.google.gms eklentisi, hiçbir Firebase SDK'sı
+// kurulu olmadığı hâlde derlemeye giriyordu (ve API anahtarını repoya
+// taşıyordu); ikisi de kaldırıldı. Firebase ileride gerçekten kullanılırsa
+// eklenti classpath'i android/build.gradle'a geri eklenmelidir.

@@ -14,10 +14,19 @@ hâlâ görülebilir durumda**. Yapılması gereken:
 2. Yeni anahtarı yalnızca Supabase Secrets'a (`GEMINI_API_KEY`) koyun —
    asla repoya commit etmeyin.
 
-Not: `google-services.json` ve `FIREBASE_SETUP.md` içindeki Firebase API
-anahtarı gizli değildir (istemci tanımlayıcısıdır, uygulamayla birlikte
-dağıtılır); Firebase güvenliği API anahtarıyla değil güvenlik kurallarıyla
-sağlanır.
+## Firebase kaldırıldı
+
+Repoda `google-services.json` (hem kökte hem `android/app/` altında), bir
+`com.google.gms:google-services` Gradle eklentisi ve bir `FIREBASE_SETUP.md`
+duruyordu; hiçbiri kullanılmıyordu. Uygulama kimlik doğrulama, veritabanı ve
+depolama için yalnızca Supabase kullanır, push bildirimi göndermez ve projede
+tek bir Firebase SDK'sı kurulu değildir. Üçü de kaldırıldı.
+
+Firebase API anahtarı türü gereği gizli değildir (istemci tanımlayıcısıdır),
+ama artık kullanılmayan bir projeye ait olduğu ve git geçmişinde kaldığı için
+**Google Cloud Console'dan `maritime-calculator` projesindeki anahtarı silin**
+(ya da proje tamamen atılsın). Yalnızca kısıtlamak yeterli değil: kullanılmayan
+bir anahtarı yaşatmanın hiçbir faydası yok.
 
 ## İstemci (web / Capacitor WebView)
 
