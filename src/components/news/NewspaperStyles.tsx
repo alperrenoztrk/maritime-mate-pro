@@ -102,27 +102,6 @@ export function NewspaperStyles() {
         mask-image: repeating-linear-gradient(90deg, #000 0 26%, transparent 31% 33%);
       }
 
-      /* Sayfanın ortasındaki gerçek katlama izi — içerik akışında değil,
-         kağıdın tam ortasında duruyor. */
-      .gz-fold{
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 50%;
-        height: 26px;
-        margin-top: -13px;
-        z-index: 5;
-        pointer-events: none;
-        background: linear-gradient(180deg,
-          transparent 0%,
-          rgba(90,66,26,.05) 28%,
-          rgba(90,66,26,.15) 45%,
-          rgba(74,54,20,.21) 49.4%,
-          rgba(255,255,255,.4) 51.6%,
-          rgba(90,66,26,.09) 62%,
-          transparent 100%);
-      }
-
       /* ── Manşet (masthead) ── */
       .gz-ear{
         font-family: var(--gz-face-text);
