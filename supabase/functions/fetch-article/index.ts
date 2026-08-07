@@ -2,7 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
 import { assertSafeUrl } from "../_shared/ssrf.ts";
-import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { checkDurableRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 // Public endpoint limits: keep the reader usable while blocking proxy abuse.
 const RATE_LIMIT_PER_MIN = 20;
@@ -207,7 +207,7 @@ serve(async (req: Request) => {
   // Public endpoint: news reader is available to anonymous users.
   // Abuse brake: per-IP fixed window so the function can't be used as a
   // high-volume fetch proxy with just the (public) anon key.
-  const rl = checkRateLimit(`fetch-article:${getClientIp(req)}`, RATE_LIMIT_PER_MIN, 60_000);
+  const rl = await checkDurableRateLimit(`fetch-article:${getClientIp(req)}`, RATE_LIMIT_PER_MIN, 60_000);
   if (!rl.allowed) {
     return rateLimitResponse(corsHeaders, rl.retryAfterSec);
   }

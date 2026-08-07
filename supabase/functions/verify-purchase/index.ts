@@ -44,6 +44,30 @@ interface PurchaseResult {
   error?: string;
 }
 
+/**
+ * Satın alma sırasında istemci Supabase kullanıcı kimliğini
+ * obfuscatedAccountId olarak iliştirir (bkz. services/billing.ts). Google bunu
+ * doğrulama yanıtında geri döndürür, böylece token'ın gerçekten bu hesap için
+ * alındığı sunucuda kanıtlanır — başkasının token'ını ilk talep edenin
+ * kazandığı boşluk kapanır.
+ *
+ * Alan yalnızca uygulama içi satın alma akışında dolu gelir. Play Console
+ * promosyon kodları, obfuscatedAccountId eklenmeden önceki sürümlerle yapılmış
+ * satın alımlar ve bazı geri yükleme akışları null döndürür; bu durumda tek
+ * dayanağımız "token başka hesaba bağlı mı" kontrolü olduğu için satın almayı
+ * reddetmiyoruz (aksi hâlde eski müşteriler Pro'yu geri yükleyemezdi).
+ */
+function accountIdMismatch(obfuscatedAccountId: string | null, userId: string): boolean {
+  return obfuscatedAccountId !== null && obfuscatedAccountId !== userId;
+}
+
+const ACCOUNT_MISMATCH_RESULT = {
+  status: 'account_mismatch',
+  active: false,
+  expiresAt: null,
+  error: 'Bu satın alma başka bir hesaba bağlı',
+} as const;
+
 function mapSubscriptionState(state: SubscriptionState): string {
   switch (state) {
     case 'SUBSCRIPTION_STATE_ACTIVE': return 'active';
@@ -137,6 +161,10 @@ serve(async (req) => {
             results.push({ productId, status: 'unknown_product', active: false, expiresAt: null, error: 'Bilinmeyen ürün' });
             continue;
           }
+          if (accountIdMismatch(verified.obfuscatedAccountId, user.id)) {
+            results.push({ productId, ...ACCOUNT_MISMATCH_RESULT });
+            continue;
+          }
           const status = mapSubscriptionState(verified.state);
 
           const { error: upsertError } = await service.from('user_entitlements').upsert({
@@ -170,6 +198,10 @@ serve(async (req) => {
           const verified = await verifyProduct(p.productId, p.purchaseToken);
           if (!verified) {
             results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Satın alma doğrulanamadı' });
+            continue;
+          }
+          if (accountIdMismatch(verified.obfuscatedAccountId, user.id)) {
+            results.push({ productId: p.productId, ...ACCOUNT_MISMATCH_RESULT });
             continue;
           }
           // purchaseState: 0 satın alındı, 1 iptal/iade, 2 beklemede

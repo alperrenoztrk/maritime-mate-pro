@@ -1,6 +1,6 @@
 import { getCorsHeaders } from "../_shared/cors.ts";
 import { validateAuth, unauthorizedResponse } from "../_shared/auth.ts";
-import { checkRateLimit, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { checkDurableRateLimit, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
@@ -108,7 +108,7 @@ Deno.serve(async (req) => {
 
   // Her batch en fazla 10 Gemini çağrısı üretir; kullanıcı başına dakikada
   // birkaç batch'ten fazlası içerik yazımı için meşru bir kullanım değildir.
-  const rl = checkRateLimit(`batch-content-writer:${user.id}`, 3, 60_000);
+  const rl = await checkDurableRateLimit(`batch-content-writer:${user.id}`, 3, 60_000);
   if (!rl.allowed) {
     return rateLimitResponse(headers, rl.retryAfterSec);
   }
