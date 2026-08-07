@@ -165,7 +165,7 @@ const STATIC_ROUTES: string[] = [
   '/navigation/formulas',
   '/navigation/rules',
   '/navigation/meteorology',
-  '/navigation/colreg-presentation',
+  
   '/navigation/assistant',
   '/navigation/quiz',
 
