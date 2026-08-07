@@ -53,9 +53,7 @@ for (const file of pageFiles) {
 }
 
 const collapsedOnEntry = [
-  ["src/pages/ExerciseTopicsPage.tsx", "useState<string[]>([])", "exercise modules"],
-  ["src/pages/curriculum/DeckCurriculumCoursePage.tsx", "useState<string | null>(null)", "deck curriculum modules"],
-  ["src/pages/curriculum/MachineCurriculumCoursePage.tsx", "useState<string | null>(null)", "machine curriculum modules"],
+  ["src/components/curriculum/CurriculumModuleAccordion.tsx", "useState<string | null>(null)", "curriculum modules"],
   ["src/pages/NavigationRules.tsx", "useState<number | null>(null)", "navigation rules"],
   ["src/pages/library/ShipTasksLibraryPage.tsx", "useState<string | null>(null)", "ship-task categories"],
   ["src/components/ui/calculation-steps.tsx", "useState(false)", "calculation steps"],
@@ -65,6 +63,20 @@ for (const [file, closedInitializer, label] of collapsedOnEntry) {
   assert(
     read(file).includes(closedInitializer),
     `${file}: ${label} must be collapsed on initial page entry`,
+  );
+}
+
+// Alıştırmalar konu listesi derslerdeki konu listesiyle aynıdır: konu satırına
+// dokunmak tek adımda konu detayını açar, ayrı Oku/Sorular/Başla butonu yoktur.
+const exerciseTopics = read("src/pages/ExerciseTopicsPage.tsx");
+assert(
+  exerciseTopics.includes("CurriculumModuleAccordion"),
+  "ExerciseTopicsPage: the topic list must reuse the shared curriculum accordion",
+);
+for (const removedAction of ["Oku", "Sorular", "Başla", "Okuma modu"]) {
+  assert(
+    !exerciseTopics.includes(`> ${removedAction}`),
+    `ExerciseTopicsPage: the separate "${removedAction}" action must stay removed`,
   );
 }
 
