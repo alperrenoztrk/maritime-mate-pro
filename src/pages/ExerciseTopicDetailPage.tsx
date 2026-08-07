@@ -73,15 +73,7 @@ export default function ExerciseTopicDetailPage() {
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300">
-            Beta
-          </span>
           <h1 className="text-base font-bold text-foreground sm:text-lg">{content.title}</h1>
-          {topicQuestions.length > 0 && (
-            <span className="ml-auto rounded-full bg-violet-500/15 px-2.5 py-1 text-[10px] font-semibold text-violet-700 dark:text-violet-300">
-              {topicQuestions.length} soru
-            </span>
-          )}
         </div>
       </div>
 
