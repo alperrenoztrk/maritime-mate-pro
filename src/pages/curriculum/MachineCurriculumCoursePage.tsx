@@ -4,12 +4,6 @@ import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 
-const levelLabel = {
-  foundation: "Temel",
-  operational: "Operasyonel",
-  advanced: "İleri",
-} as const;
-
 export default function MachineCurriculumCoursePage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
   const categoryKey = topicSlug ? `machine-${topicSlug}` : undefined;
@@ -82,20 +76,14 @@ export default function MachineCurriculumCoursePage() {
 
                 {expanded && (
                   <div className="grid gap-1 border-t border-border/40 bg-background/30 p-2 sm:grid-cols-2">
-                    {module.topics.map((topic, topicIndex) => (
+                    {module.topics.map((topic) => (
                       <Link
                         key={topic.id}
                         to={`/machine/${topicSlug}/topics/${encodeURIComponent(topic.id)}`}
                         className="group flex items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-card"
                       >
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-[11px] font-bold text-muted-foreground">
-                          {topicIndex + 1}
-                        </span>
                         <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-foreground">
                           {topic.title}
-                        </span>
-                        <span className="hidden text-[10px] font-semibold uppercase tracking-wide text-muted-foreground sm:inline">
-                          {levelLabel[topic.level]}
                         </span>
                         <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
                       </Link>
