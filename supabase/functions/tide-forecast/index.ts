@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { checkDurableRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 // CORS configuration - restrict to known origins
 const ALLOWED_ORIGINS = [
@@ -219,7 +219,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   // Abuse brake: public endpoint, keep per-IP request volume bounded.
-  const rl = checkRateLimit(`tide-forecast:${getClientIp(req)}`, 30, 60_000);
+  const rl = await checkDurableRateLimit(`tide-forecast:${getClientIp(req)}`, 30, 60_000);
   if (!rl.allowed) {
     return rateLimitResponse(corsHeaders, rl.retryAfterSec);
   }

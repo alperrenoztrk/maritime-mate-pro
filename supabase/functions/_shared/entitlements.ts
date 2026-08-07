@@ -7,7 +7,11 @@
 //  - pro: aktif/ek süredeki abonelik → tüm içerik + geniş AI kotası.
 //  - free: diğer herkes → sınırlı AI kotası.
 
-import { createClient, SupabaseClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import type { SupabaseClient } from './serviceClient.ts';
+
+// Tanım serviceClient.ts'e taşındı (rateLimit.ts de kullanıyor); mevcut
+// çağıranlar bozulmasın diye buradan yeniden dışa aktarılıyor.
+export { createServiceClient } from './serviceClient.ts';
 
 export type Tier = 'free' | 'pro' | 'lifetime';
 
@@ -21,13 +25,6 @@ export function getSubscriptionProductIds(): string[] {
 export function getLifetimeProductIds(): string[] {
   return (Deno.env.get('PLAY_LIFETIME_IDS') || 'pro_lifetime')
     .split(',').map((s) => s.trim()).filter(Boolean);
-}
-
-export function createServiceClient(): SupabaseClient {
-  const url = Deno.env.get('SUPABASE_URL');
-  const key = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  if (!url || !key) throw new Error('Supabase service role configuration missing');
-  return createClient(url, key, { auth: { persistSession: false } });
 }
 
 interface EntitlementRow {

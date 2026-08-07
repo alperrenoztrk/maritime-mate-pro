@@ -11,11 +11,11 @@
  *
  * Doğrulanmış bir faktörü olan kullanıcı giriş yaptığında oturum `aal1`
  * seviyesinde başlar ve `nextLevel` `aal2` olur — uygulama o noktada kod
- * ister (bkz. src/components/auth/MfaGate.tsx).
+ * ister (bkz. src/components/auth/MfaChallengeForm.tsx ve RequireAuth.tsx).
  *
  * ÖNEMLİ: İstemcideki bu kapı tek başına güvenlik değildir; çalınmış bir
  * `aal1` jetonu REST API'ye doğrudan konuşabilir. Asıl zorlama veritabanında,
- * `20260807120000_require_aal2_for_mfa_users.sql` migration'ındaki
+ * `20260807150000_require_aal2_for_mfa_users.sql` migration'ındaki
  * RESTRICTIVE RLS politikalarındadır: faktör kaydetmiş bir kullanıcının
  * satırları yalnızca `aal2` jetonuyla okunabilir/yazılabilir.
  */

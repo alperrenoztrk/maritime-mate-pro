@@ -3,6 +3,8 @@
 // (see scripts/pageTranslator.test) — the React-specific lifecycle, network
 // caching and MutationObserver wiring live in the context itself.
 
+import { isTechnicalString } from './technicalText';
+
 export const SOURCE_LANGUAGE = 'tr';
 
 // Tags whose text content must never be translated.
@@ -153,6 +155,8 @@ const pushTextUnit = (node: Text, originals: WeakMap<Text, string>, units: Trans
   const raw = getOriginalText(node, originals);
   const core = raw.trim();
   if (!core || !hasLetters(core)) return;
+  // Formulas are language independent — never send them to the translator.
+  if (isTechnicalString(core)) return;
   // Preserve the node's original leading/trailing whitespace so inline layout
   // (spacing between adjacent elements) is not collapsed.
   const lead = raw.slice(0, raw.length - raw.trimStart().length);
@@ -176,6 +180,7 @@ const pushAttributeUnits = (el: HTMLElement, units: TranslationUnit[]) => {
     }
     const core = source.trim();
     if (!core || !hasLetters(core)) continue;
+    if (isTechnicalString(core)) continue;
     units.push({
       source: core,
       apply: (translated) => {

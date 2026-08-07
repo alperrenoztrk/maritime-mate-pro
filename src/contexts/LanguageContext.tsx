@@ -5,6 +5,7 @@ import {
   applyMaritimeCorrections,
 } from '@/utils/maritimeGlossary';
 import { normalizeMachineTranslation } from '@/utils/translationQuality';
+import { maskTechnicalTokens, unmaskTechnicalTokens } from '@/utils/technicalText';
 import {
   SOURCE_LANGUAGE,
   TranslationUnit,
@@ -248,7 +249,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     languageCode: string
   ): Promise<Map<string, string>> => {
     const out = new Map<string, string>();
-    const query = batch.join(BATCH_SEPARATOR);
+    // Protect math function names ("atan2", "cosφ") from the engine before the
+    // request; they are restored verbatim in the response.
+    const masks = batch.map((source) => maskTechnicalTokens(source));
+    const query = batch.map((source, i) => masks[i]?.masked ?? source).join(BATCH_SEPARATOR);
     try {
       const response = await fetch(
         `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${SOURCE_LANGUAGE}&tl=${encodeURIComponent(languageCode)}&dt=t&q=${encodeURIComponent(query)}`
@@ -259,7 +263,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       const parts = splitBatchResult(joined, batch.length);
       if (parts) {
         batch.forEach((source, i) => {
-          const corrected = applyMaritimeCorrections(parts[i].trim(), languageCode);
+          const slots = masks[i]?.slots;
+          const raw = slots ? unmaskTechnicalTokens(parts[i].trim(), slots) : parts[i].trim();
+          const corrected = applyMaritimeCorrections(raw, languageCode);
           out.set(source, normalizeMachineTranslation(source, corrected, languageCode));
         });
         return out;

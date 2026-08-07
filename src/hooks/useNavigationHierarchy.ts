@@ -85,7 +85,7 @@ const navigationRules: NavigationRule[] = [
   // ── Navigation (Seyir) ─────────────────────────────────────
   { pattern: /^\/navigation\/calc\/([^/]+)$/, parent: () => '/navigation' },
   { pattern: /^\/navigation\/tide-tutorial$/, parent: () => '/navigation' },
-  { pattern: /^\/navigation\/colreg-presentation$/, parent: () => '/navigation' },
+  
   { pattern: /^\/navigation\/meteorology$/, parent: () => '/navigation' },
   {
     pattern: /^\/navigation\/(formulas|rules|assistant|quiz)$/,

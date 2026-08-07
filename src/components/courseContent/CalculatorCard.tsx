@@ -106,7 +106,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
       <CardHeader className="pb-2">
         <CardTitle className="text-base">{entry.name}</CardTitle>
         <div className="mt-1 rounded-lg bg-background p-2 text-center font-mono text-sm text-primary">
-          {entry.formula}
+          <span translate="no" className="notranslate">{entry.formula}</span>
         </div>
         {entry.note && <p className="text-xs text-muted-foreground">{entry.note}</p>}
       </CardHeader>
