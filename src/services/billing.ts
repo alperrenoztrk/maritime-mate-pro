@@ -65,8 +65,21 @@ async function verifyOnServer(purchases: Array<{ productId: string; purchaseToke
   const { data, error } = await supabase.functions.invoke('verify-purchase', {
     body: { purchases },
   });
-  if (error) throw error;
+  if (error) {
+    // 503 = sunucuda GOOGLE_PLAY_SERVICE_ACCOUNT_JSON tanımlı değil. Bu bir
+    // ağ hatası değil, dağıtım hatasıdır: tekrar denemek düzeltmez ve
+    // kullanıcıya "tekrar deneyin" demek yanıltıcı olur. Ayrı bir hata
+    // tipiyle yüzeye çıkarılır (bkz. scripts/check-play-billing-config.mjs).
+    if (readStatus(error) === 503) throw new BillingNotConfiguredError();
+    throw error;
+  }
   return data as VerifyResult;
+}
+
+/** functions.invoke hatasından HTTP durum kodunu okur (FunctionsHttpError.context). */
+function readStatus(error: unknown): number | null {
+  const context = (error as { context?: { status?: unknown } } | null)?.context;
+  return typeof context?.status === 'number' ? context.status : null;
 }
 
 function toVerifyInput(purchase: PlayPurchase, type: 'subs' | 'inapp') {
@@ -143,6 +156,23 @@ export class BillingPendingError extends Error {
   constructor() {
     super('Ödemeniz beklemede. Onaylandığında Pro erişiminiz otomatik açılacak.');
     this.name = 'BillingPendingError';
+  }
+}
+
+/**
+ * Sunucuda Play Developer API kimlik bilgisi yok: satın alma doğrulanamaz.
+ *
+ * Google, onaylanmayan (acknowledge edilmeyen) satın almayı 3 gün içinde
+ * otomatik iade eder; kullanıcıya bunu söylemek "tekrar deneyin" demekten
+ * hem doğru hem de dürüsttür.
+ */
+export class BillingNotConfiguredError extends Error {
+  constructor() {
+    super(
+      'Satın alma doğrulama servisi şu anda yapılandırılmamış. Ücret tahsil edildiyse ' +
+      'Google 3 gün içinde otomatik iade eder. Lütfen destekle iletişime geçin.',
+    );
+    this.name = 'BillingNotConfiguredError';
   }
 }
 

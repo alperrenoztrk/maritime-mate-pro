@@ -7,6 +7,15 @@
 // satın almayı onaylar (acknowledge). İstemciden gelen hiçbir "Pro" iddiasına
 // doğrudan güvenilmez.
 //
+// Bir satın almanın bu kullanıcıya ait olduğu iki bağımsız kontrolle
+// denetlenir:
+//   1. Jeton başka bir kullanıcıya bağlanmışsa reddedilir (`token_in_use`).
+//   2. Play'in döndürdüğü `obfuscatedExternalAccountId` bu kullanıcıyla
+//      çelişiyorsa reddedilir (`account_mismatch`).
+// İkincisi (1)'deki "önce talep eden kazanır" boşluğunu kapatır: satın alma
+// anında iliştirilen kimlik, jetonu ele geçiren üçüncü bir kişinin onu
+// kendi hesabına bağlamasını engeller.
+//
 // İstek gövdesi:
 //   { purchases: [{ productId, purchaseToken, type: 'subs' | 'inapp' }] }
 // Yanıt:
@@ -42,6 +51,25 @@ interface PurchaseResult {
   active: boolean;
   expiresAt: string | null;
   error?: string;
+}
+
+/**
+ * Satın almaya iliştirilen hesap kimliği bu oturuma mı ait?
+ *
+ * İstemci satın alma sırasında Supabase kullanıcı kimliğini
+ * `obfuscatedAccountId` olarak Play'e verir (bkz. services/billing.ts);
+ * Play bunu doğrulama yanıtında geri döndürür. Eşleşmiyorsa satın alma
+ * başka bir hesaba aittir ve bu kullanıcıya bağlanmamalıdır.
+ *
+ * `null` reddedilmez: alan yalnızca satın alma anında gönderildiğinde dolar.
+ * Bu özellikten önce yapılmış satın almalar, "satın almaları geri yükle"
+ * akışıyla gelen eski jetonlar ve Play Console'dan verilen promosyon/test
+ * lisansları alanı boş bırakır. Onları reddetmek ödeme yapmış kullanıcının
+ * erişimini keserdi; bu durumlarda tek savunma jetonun başka bir hesaba
+ * bağlı olup olmadığı kontrolüdür (aşağıda, `token_in_use`).
+ */
+function accountMatches(claimed: string | null, userId: string): boolean {
+  return claimed === null || claimed === userId;
 }
 
 function mapSubscriptionState(state: SubscriptionState): string {
@@ -137,6 +165,10 @@ serve(async (req) => {
             results.push({ productId, status: 'unknown_product', active: false, expiresAt: null, error: 'Bilinmeyen ürün' });
             continue;
           }
+          if (!accountMatches(verified.obfuscatedAccountId, user.id)) {
+            results.push({ productId, status: 'account_mismatch', active: false, expiresAt: null, error: 'Bu satın alma başka bir hesaba ait' });
+            continue;
+          }
           const status = mapSubscriptionState(verified.state);
 
           const { error: upsertError } = await service.from('user_entitlements').upsert({
@@ -170,6 +202,10 @@ serve(async (req) => {
           const verified = await verifyProduct(p.productId, p.purchaseToken);
           if (!verified) {
             results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Satın alma doğrulanamadı' });
+            continue;
+          }
+          if (!accountMatches(verified.obfuscatedAccountId, user.id)) {
+            results.push({ productId: p.productId, status: 'account_mismatch', active: false, expiresAt: null, error: 'Bu satın alma başka bir hesaba ait' });
             continue;
           }
           // purchaseState: 0 satın alındı, 1 iptal/iade, 2 beklemede
