@@ -70,10 +70,11 @@ Kurallar:
 - **Kaynak sınırları**: Harici yanıtlar boyut sınırıyla okunur
   (`fetch-article`: 3 MB) ve içerik türü süzülür; zaman aşımı zorunludur.
 - **Hata mesajları**: İstemciye yalnızca jenerik mesaj döner; ayrıntı
-  `console.error` ile sunucu logunda kalır (Stripe/fetch hataları dahil).
+  `console.error` ile sunucu logunda kalır (harici servis/fetch hataları
+  dahil).
 - **Girdi doğrulama**: Gövde alanları tip + uzunluk + beyaz liste ile
   doğrulanır (`gemini-chat` mesaj şeması, `batch-content-writer` hedef
-  şeması, `stripe-checkout` priceId/redirect allowlist'i).
+  şeması).
 - **CORS**: Yalnızca `getCorsHeaders(origin)`; `*` kullanılmaz, yanıtlar
   `Vary: Origin` taşır.
 
