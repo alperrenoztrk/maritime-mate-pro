@@ -131,8 +131,8 @@ uygulama tek başına da işe yarasın (mağaza yorumları için kritik).
 ## 6. Bilinen sınırlar / sonraki adımlar
 
 - **iOS:** StoreKit entegrasyonu yok; web/iOS'ta satın alma düğmeleri
-  gizlenir. App Store'a çıkmadan önce eklenmeli (Stripe, Play dışı dijital
-  içerik satışında kullanılamaz; mevcut `stripe-checkout` yalnızca web için).
+  gizlenir. App Store'a çıkmadan önce eklenmeli. Web tarafında da ödeme
+  akışı yok: satın alma yalnızca Google Play üzerinden yapılır.
 - **AdMob:** altyapı kurulu ve `useEntitlement().hasProAccess` ile kapılanmış
   (banner + geçiş reklamı, yalnızca ücretsiz pakette). Varsayılan olarak
   Google'ın TEST reklamları gösterilir; canlıya alma adımları
