@@ -7,6 +7,12 @@ import {
   maskGlossaryTerms,
   unmaskGlossaryTerms,
 } from "../_shared/maritimeGlossary.ts";
+import {
+  maskTechnicalTokens,
+  unmaskTechnicalTokens,
+  fixCalculationNoun,
+  isTechnicalString,
+} from "../_shared/technicalText.ts";
 
 // Google Cloud Translation API v2
 // Docs: https://cloud.google.com/translate/docs/reference/rest/v2/translate
@@ -104,13 +110,17 @@ serve(async (req) => {
 
     for (let i = 0; i < texts.length; i++) {
       const source = texts[i];
+      // Pure formulas are language independent — return them untouched.
+      if (isTechnicalString(source)) { results[i] = source; continue; }
       if (glossaryActive) {
         const override = getMaritimeTranslationOverride(source, targetLanguage);
         if (override) { results[i] = override; continue; }
         const mask = maskGlossaryTerms(source, targetLanguage);
         if (mask) { maskedJobs.push({ index: i, q: mask.masked, slots: mask.slots }); continue; }
       }
-      plainJobs.push({ index: i, q: source, slots: null });
+      // Protect math function names inside mixed prose.
+      const mathMask = maskTechnicalTokens(source);
+      plainJobs.push({ index: i, q: mathMask?.masked ?? source, slots: null });
     }
 
     // Masked texts must go as format=html for <span translate="no"> to be
@@ -134,8 +144,12 @@ serve(async (req) => {
           results[job.index] = texts[job.index];
           return;
         }
+        const originalSource = texts[job.index];
         let out = job.slots ? unmaskGlossaryTerms(raw, job.slots) : raw;
+        const mathMask = maskTechnicalTokens(originalSource);
+        if (mathMask) out = unmaskTechnicalTokens(out, mathMask.slots);
         if (glossaryActive) out = applyMaritimeCorrections(out, targetLanguage);
+        out = fixCalculationNoun(originalSource, out, targetLanguage);
         results[job.index] = out;
       });
     }

@@ -11,6 +11,8 @@
 //   3. Leading-letter case drifting from the source: "Makine" → "machine",
 //      mid-sentence fragment "açısına uygun…" → "An arc…".
 
+import { fixCalculationNoun } from './technicalText';
+
 const ZERO_WIDTH = /\u200B|\u200C|\u200D|\uFEFF/g;
 
 const isUpper = (ch: string): boolean => /\p{Lu}/u.test(ch);
@@ -73,6 +75,9 @@ export const normalizeMachineTranslation = (
       }
     }
   }
+
+  // 4) Fix the "hesap = account" mistranslation of calculation headings.
+  out = fixCalculationNoun(source, out, languageCode);
 
   return out;
 };

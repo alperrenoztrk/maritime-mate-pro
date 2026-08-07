@@ -66,7 +66,7 @@ export function FormulaCard({
                 <div key={`${line.formula}-${lineIdx}`} className="space-y-1">
                   {line.label ? <p className="font-medium">{line.label}</p> : null}
                   <p className="font-mono bg-muted/40 dark:bg-white/5 p-1.5 rounded">
-                    {line.formula}
+                    <span translate="no" className="notranslate">{line.formula}</span>
                   </p>
                 </div>
               ))}

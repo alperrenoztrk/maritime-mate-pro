@@ -50,7 +50,7 @@ export function FormulaList({
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <div className="rounded-lg bg-background p-3 text-center font-mono text-base text-primary">
-                      {f.formula}
+                      <span translate="no" className="notranslate">{f.formula}</span>
                     </div>
                     {f.variables.length > 0 && (
                       <p className="text-xs text-muted-foreground">
