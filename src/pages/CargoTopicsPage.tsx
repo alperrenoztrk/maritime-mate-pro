@@ -13,7 +13,6 @@ import {
   Shield,
   Lightbulb,
   CheckCircle2,
-  Circle,
   X,
   Boxes,
   BarChart3,
@@ -3294,7 +3293,6 @@ export default function CargoTopicsPage() {
           <div className="p-4 space-y-4 max-w-4xl mx-auto pb-20">
             <Accordion type="single" collapsible className="space-y-2">
               {cargoTopics.map((topic) => {
-                const TopicIcon = topic.icon;
                 return (
                   <AccordionItem
                     key={topic.id}
@@ -3306,12 +3304,9 @@ export default function CargoTopicsPage() {
                         <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold">
                           {topic.number}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <TopicIcon className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                          <span className="font-semibold text-foreground text-sm leading-tight">
-                            {topic.title}
-                          </span>
-                        </div>
+                        <span className="font-semibold text-foreground text-sm leading-tight">
+                          {topic.title}
+                        </span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="px-4 pb-4">
@@ -3327,11 +3322,6 @@ export default function CargoTopicsPage() {
                             }`}
                             whileTap={subtopic.hasContent && topicContents[subtopic.id] ? { scale: 0.98 } : {}}
                           >
-                            {subtopic.hasContent && topicContents[subtopic.id] ? (
-                              <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
-                            ) : (
-                              <Circle className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                            )}
                             <span className="text-sm text-foreground">{subtopic.title}</span>
                             {subtopic.hasContent && topicContents[subtopic.id] && (
                               <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />

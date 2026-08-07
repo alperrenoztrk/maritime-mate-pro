@@ -7,9 +7,7 @@ import {
   Anchor,
   BarChart3,
   BookOpen,
-  CheckCircle2,
   ChevronRight,
-  Circle,
   FileText,
   Gauge,
   Lightbulb,
@@ -175,7 +173,6 @@ export default function FluidMechanicsTopicsPage() {
           <div className="mx-auto max-w-4xl space-y-4 p-4 pb-20">
             <Accordion type="single" collapsible className="space-y-2">
               {fluidMechanicsTopics.map((topic) => {
-                const TopicIcon = topic.icon;
                 return (
                   <AccordionItem
                     key={topic.id}
@@ -187,12 +184,9 @@ export default function FluidMechanicsTopicsPage() {
                         <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 font-bold text-white">
                           {topic.number}
                         </span>
-                        <div className="flex items-center gap-2">
-                          <TopicIcon className="h-4 w-4 text-primary" />
-                          <span className="text-sm font-semibold text-foreground leading-tight">
-                            {topic.title}
-                          </span>
-                        </div>
+                        <span className="text-sm font-semibold text-foreground leading-tight">
+                          {topic.title}
+                        </span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="px-4 pb-4">
@@ -208,11 +202,6 @@ export default function FluidMechanicsTopicsPage() {
                             }`}
                             whileTap={subtopic.hasContent && topicContents[subtopic.id] ? { scale: 0.98 } : {}}
                           >
-                            {subtopic.hasContent && topicContents[subtopic.id] ? (
-                              <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-primary" />
-                            ) : (
-                              <Circle className="h-4 w-4 flex-shrink-0 text-muted-foreground" />
-                            )}
                             <span className="text-sm text-foreground">{subtopic.title}</span>
                             {subtopic.hasContent && topicContents[subtopic.id] && (
                               <ChevronRight className="ml-auto h-4 w-4 text-muted-foreground" />
