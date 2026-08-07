@@ -73,7 +73,7 @@ const StabilityFormulaDetailPage = lazy(() => import("./pages/StabilityFormulaDe
 const NavigationFormulasPage = lazy(() => import("./pages/NavigationFormulas"));
 
 const DetailedMeteorology = lazy(() => import("./pages/DetailedMeteorology"));
-const COLREGPresentation = lazy(() => import("./pages/COLREGPresentation"));
+
 const StabilityCalculationsPage = lazy(() => import("./pages/StabilityCalculations"));
 const StabilityQuizPage = lazy(() => import("./pages/StabilityQuiz"));
 const StabilityShearingBendingPage = lazy(() => import("./pages/StabilityShearingBending"));
@@ -360,7 +360,7 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/rules" element={<Navigate to="/lessons/navigation/topics" replace />} />
 
         <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
-        <Route path="/navigation/colreg-presentation" element={<PageTransition><COLREGPresentation /></PageTransition>} />
+        
         <Route path="/navigation/assistant" element={<PageTransition><NavigationAssistantPage /></PageTransition>} />
         <Route path="/navigation/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><NavigationQuizPage /></PageTransition></ProRoute>} />
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />
