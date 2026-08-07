@@ -59,7 +59,7 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
                 <div className="space-y-0.5 min-w-0">
                   <div className="font-semibold text-gray-700 dark:text-gray-300">{s.title}</div>
                   <div className="font-mono text-xs bg-gray-50 dark:bg-gray-800 rounded px-2 py-1 text-gray-800 dark:text-gray-200">
-                    {s.formula}
+                    <span translate="no" className="notranslate">{s.formula}</span>
                   </div>
                   {s.substitution && (
                     <div className="font-mono text-xs bg-gray-100 dark:bg-gray-700 rounded px-2 py-1 text-gray-700 dark:text-gray-300">
