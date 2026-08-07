@@ -393,11 +393,13 @@ export function calculateRhumbLine(lat1Deg: number, lon1Deg: number, lat2Deg: nu
     deltaLonRad = deltaLonRad > 0 ? -(2*Math.PI-deltaLonRad) : (2*Math.PI+deltaLonRad);
   }
 
-  const q = Math.log(Math.tan(Math.PI/4 + lat2Rad/2) / Math.tan(Math.PI/4 + lat1Rad/2)) / deltaLatRad;
-  const qSafe = Math.abs(deltaLatRad) > 1e-12 ? q : Math.cos(lat1Rad);
+  // Δψ = izometrik (genişletilmiş) enlem farkı; q = Δφ/Δψ doğu-batı ölçek oranı.
+  // Δφ → 0 iken q → cos φ̄ olduğundan dejenere durumda orta enlemin kosinüsü kullanılır.
+  const deltaPsi = Math.log(Math.tan(Math.PI/4 + lat2Rad/2) / Math.tan(Math.PI/4 + lat1Rad/2));
+  const q = Math.abs(deltaLatRad) > 1e-12 ? deltaLatRad / deltaPsi : Math.cos((lat1Rad + lat2Rad) / 2);
 
-  const distance = 60 * Math.sqrt(Math.pow(toDegrees(deltaLatRad), 2) + Math.pow(qSafe * toDegrees(deltaLonRad), 2));
-  const course = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, q * deltaLatRad)));
+  const distance = 60 * Math.sqrt(Math.pow(toDegrees(deltaLatRad), 2) + Math.pow(q * toDegrees(deltaLonRad), 2));
+  const course = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, deltaPsi)));
 
   return { distance, course };
 }
