@@ -62,6 +62,12 @@ export const isTechnicalString = (value: string): boolean => {
   return symbolCount >= 2 && proseWords.length <= 2 && text.length <= 120;
 };
 
+/** True when the string uses a math function call the engine would mangle. */
+export const containsMathCall = (value: string): boolean => {
+  MATH_CALL_RE.lastIndex = 0;
+  return MATH_CALL_RE.test(value);
+};
+
 export interface TechnicalMask {
   masked: string;
   slots: string[];

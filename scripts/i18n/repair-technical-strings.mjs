@@ -1,14 +1,18 @@
-// One-off repair for locale files generated before the technical-text
-// protection layer existed: restores mangled math function names ("tane2" →
-// "atan2") and fixes "hesap → account" mistranslations.
+// Repairs locale files generated before the technical-text protection layer.
 //
-//   node scripts/i18n/repair-technical-strings.mjs
+//   - formula-only strings are reset to the source (formulas are universal)
+//   - strings containing math function calls ("atan2(...)") were corrupted by
+//     the engine, so the entry is dropped: the runtime translator regenerates
+//     it with the math tokens masked
+//   - "hesap → account" headings are rewritten to the calculation sense
+//
+//   npx tsx scripts/i18n/repair-technical-strings.mjs
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   isTechnicalString,
-  repairTechnicalTokens,
+  containsMathCall,
   fixCalculationNoun,
 } from '../../src/utils/technicalText.ts';
 
@@ -25,20 +29,26 @@ for (const file of readdirSync(localesDir).filter((f) => f.endsWith('.json'))) {
   }
   const data = JSON.parse(rawFile);
   let fixed = 0;
+  let dropped = 0;
   for (const [source, value] of Object.entries(data)) {
     if (typeof value !== 'string') continue;
-    let next = isTechnicalString(source) ? source : repairTechnicalTokens(source, value);
-    next = fixCalculationNoun(source, next, lang);
-    if (next !== value) {
-      data[source] = next;
-      fixed += 1;
+    if (isTechnicalString(source)) {
+      if (value !== source) { data[source] = source; fixed += 1; }
+      continue;
     }
+    if (containsMathCall(source)) {
+      delete data[source];
+      dropped += 1;
+      continue;
+    }
+    const next = fixCalculationNoun(source, value, lang);
+    if (next !== value) { data[source] = next; fixed += 1; }
   }
-  if (fixed) {
+  if (fixed || dropped) {
     // Compact output: these files must stay under the 10 MB repo limit.
     writeFileSync(path, JSON.stringify(data));
-    console.log(`${lang}: ${fixed} strings repaired`);
-    totalFixed += fixed;
+    console.log(`${lang}: ${fixed} repaired, ${dropped} dropped`);
+    totalFixed += fixed + dropped;
   }
 }
 console.log(`Total: ${totalFixed}`);
