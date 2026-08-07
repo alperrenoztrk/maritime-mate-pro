@@ -9,12 +9,6 @@ import {
 } from "@/components/curriculum/CourseSectionTabs";
 import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 
-const levelLabel = {
-  foundation: "Temel",
-  operational: "Operasyonel",
-  advanced: "İleri",
-} as const;
-
 export default function DeckCurriculumCoursePage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = getBetaCategories().find((item) => item.key === categoryId);

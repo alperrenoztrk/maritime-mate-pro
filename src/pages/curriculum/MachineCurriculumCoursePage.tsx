@@ -4,12 +4,6 @@ import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 
-const levelLabel = {
-  foundation: "Temel",
-  operational: "Operasyonel",
-  advanced: "İleri",
-} as const;
-
 export default function MachineCurriculumCoursePage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
   const categoryKey = topicSlug ? `machine-${topicSlug}` : undefined;
