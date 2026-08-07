@@ -91,7 +91,7 @@ function tierFromCache(cache: EntitlementCache, now: Date = new Date()): Tier {
 }
 
 export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
-  const { user } = useAuth();
+  const { user, mfaChallengeRequired } = useAuth();
   const [tier, setTier] = useState<Tier>("free");
   const [loading, setLoading] = useState(true);
   const [fromCache, setFromCache] = useState(false);
@@ -102,6 +102,24 @@ export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
       setTier("free");
       setFromCache(false);
       setLastSyncedAt(null);
+      setLoading(false);
+      return;
+    }
+
+    // 2FA kodu girilmeden önce oturum `aal1`dir ve `user_entitlements` RLS
+    // tarafından kapalıdır. Kritik nokta: sorgu HATA vermez, BOŞ döner —
+    // yani aşağıdaki akış tier'ı "free" hesaplayıp önbellekteki Pro hakkını
+    // ezerdi. Kullanıcı kodu girmeden uygulamayı kapatırsa çevrimdışı Pro
+    // erişimi de kaybolurdu. Kod adımı bitene kadar son bilinen durumu koru;
+    // oturum aal2'ye yükselince user nesnesi değişir ve bu effect yeniden
+    // çalışır (bkz. src/lib/mfa.ts).
+    if (mfaChallengeRequired) {
+      const cache = readCache(user.id);
+      if (cache) {
+        setTier(tierFromCache(cache));
+        setFromCache(true);
+        setLastSyncedAt(cache.syncedAt);
+      }
       setLoading(false);
       return;
     }
@@ -140,7 +158,7 @@ export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
     } finally {
       setLoading(false);
     }
-  }, [user]);
+  }, [user, mfaChallengeRequired]);
 
   useEffect(() => {
     setLoading(true);

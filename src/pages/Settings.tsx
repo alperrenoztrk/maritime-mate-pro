@@ -15,6 +15,7 @@ import { useAuth } from "@/hooks/useAuthContext";
 import { useEntitlement } from "@/contexts/useEntitlement";
 import { getLanguageFlag } from "@/utils/languages";
 import { PRIVACY_POLICY_URL } from "@/config/legal";
+import { TwoFactorCard } from "@/components/settings/TwoFactorCard";
 import {
   areAdsSupported,
   initializeAds,
@@ -238,6 +239,8 @@ const Settings = () => {
               </CardContent>
             </Card>
 
+            {/* Hesap güvenliği: isteğe bağlı 2FA (bkz. src/lib/mfa.ts) */}
+            <TwoFactorCard />
 
             {/* Pro membership */}
             <Card

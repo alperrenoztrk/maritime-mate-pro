@@ -42,8 +42,16 @@ bir anahtarı yaşatmanın hiçbir faydası yok.
   kullanılır. Yeni kullanım eklemeyin; gerekiyorsa DOMPurify'dan geçirin.
 - **postMessage**: Dinleyiciler `event.source` doğrulaması yapar
   (routeHarvester). Yeni dinleyicilerde kaynak/origin kontrolü zorunludur.
-- **Oturum**: Supabase oturumu WebView localStorage'ında tutulur;
-  Android'de `allowBackup=false` ile yedek üzerinden sızması engellenir.
+- **Oturum**: Native kabuklarda Supabase oturumu Android Keystore / iOS
+  Keychain arkasında şifreli tutulur (`src/lib/secureSessionStorage.ts` →
+  `@aparajita/capacitor-secure-storage`; AES/GCM, anahtar `AndroidKeyStore`
+  içinde üretilir ve TEE/StrongBox olan cihazlarda donanımdan çıkmaz).
+  Root'lanmış bir cihazda SharedPreferences dosyası okunsa bile yalnızca
+  şifreli metin görünür. Web/PWA'da karşılığı olmadığı için oturum
+  localStorage'da kalır. Android'de ayrıca `allowBackup=false`.
+  Eklenti yüklenemezse (web, `cap sync` yapılmamış kabuk) adaptör
+  localStorage'a düşer — kullanıcı kilitlenmez, koruma seviyesi eski hâline
+  döner ve konsola uyarı yazılır.
 
 ## Edge Functions (Supabase)
 
@@ -76,6 +84,33 @@ Kurallar:
   şeması, `stripe-checkout` priceId/redirect allowlist'i).
 - **CORS**: Yalnızca `getCorsHeaders(origin)`; `*` kullanılmaz, yanıtlar
   `Vary: Origin` taşır.
+
+## Kimlik doğrulama
+
+- **İki adımlı doğrulama (TOTP)**: İsteğe bağlıdır, Ayarlar → İki adımlı
+  doğrulama'dan açılır (`src/lib/mfa.ts`, `src/components/settings/
+  TwoFactorCard.tsx`). Girişte kod adımı hem `Auth.tsx` hem `RequireAuth`
+  tarafından uygulanır.
+- **İstemci kapısı tek başına yeterli değildir**: çalınmış bir `aal1` jetonu
+  PostgREST'e doğrudan konuşabilir. Zorlama veritabanındadır — faktör
+  kaydetmiş kullanıcının satırları yalnızca `aal2` jetonuyla açılır
+  (`20260807120000_require_aal2_for_mfa_users.sql`, RESTRICTIVE politikalar).
+  **Yeni kullanıcı tablosu eklerken bu politikayı da eklemeyi unutmayın**;
+  RLS'i açıp AAL politikasını atlamak 2FA'yı o tablo için sessizce devre dışı
+  bırakır.
+- **Tuzak — RLS engeli hata değil, boş sonuç döndürür.** `aal1` oturumda
+  korumalı bir tablodan okuma yapan kod `error` almaz; `data: []` alır. Bu
+  sonucu "kullanıcının hiç kaydı yok" diye yorumlayıp yerele yazan her yer
+  veriyi bozar (`EntitlementContext` Pro hakkını "free" ile eziyordu; kod
+  adımı bitene kadar sorgu atlanarak düzeltildi). Oturumun tamamlanmasını
+  beklemeyen yeni bir okuma eklemeyin.
+- **TOTP Supabase'de varsayılan olarak KAPALIDIR.** Panelden açılmadan
+  uygulamadaki akış çalışmaz — bkz. `docs/supabase-auth-hardening.md`.
+- **Panel ayarları** (sızmış şifre koruması, minimum şifre uzunluğu, rate
+  limit, e-posta doğrulama, OTP süresi) repoda görünmez. Hedeflenen değerler
+  `supabase/config.toml` içindedir ama `supabase config push` çalıştırılmadan
+  etkili olmaz; doğrulama listesi `docs/supabase-auth-hardening.md`.
+  `Auth.tsx:19`'daki 8 karakter kuralı yalnızca istemci tarafıdır.
 
 ## Veritabanı
 

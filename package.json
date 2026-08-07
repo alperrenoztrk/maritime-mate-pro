@@ -58,6 +58,7 @@
     "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict"
   },
   "dependencies": {
+    "@aparajita/capacitor-secure-storage": "^7.1.6",
     "@capacitor-community/admob": "^7.2.0",
     "@capacitor/android": "^7.4.2",
     "@capacitor/app": "^7.0.1",
