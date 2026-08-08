@@ -50,7 +50,6 @@ const STATIC_ROUTES: string[] = [
   '/lessons',
   '/glossary',
   '/beta',
-  '/beta/work-hours',
   '/beta/psc-checklist',
   '/beta/ship-simulator',
 

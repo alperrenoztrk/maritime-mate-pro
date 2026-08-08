@@ -8,11 +8,6 @@ const FEATURES = [
     accent: "from-amber-500 via-orange-600 to-rose-700",
   },
   {
-    to: "/beta/work-hours",
-    title: "Otomatik Çalışma Saati Tablosu",
-    accent: "from-orange-500 via-amber-600 to-orange-800",
-  },
-  {
     to: "/beta/psc-checklist",
     title: "PSC Denetim Hazırlık Listesi",
     accent: "from-rose-500 via-orange-600 to-amber-700",
