@@ -13,6 +13,7 @@ import {
   isBillingAvailable,
   isUserCanceled,
   BillingPendingError,
+  BillingNotConfiguredError,
   type ProOffers,
 } from "@/services/billing";
 import { getPlaySubscriptionManagementUrl, PRODUCT_IDS, type ProPlan } from "@/config/products";
@@ -111,6 +112,9 @@ const ProPage = () => {
         // kullanıcı vazgeçti; sessiz geç
       } else if (e instanceof BillingPendingError) {
         toast.info(e.message);
+      } else if (e instanceof BillingNotConfiguredError) {
+        // Sunucu yapılandırma hatası: "tekrar deneyin" demek yanıltıcı olur.
+        toast.error(e.message, { duration: 10_000 });
       } else {
         toast.error("Satın alma tamamlanamadı. Lütfen tekrar deneyin.");
       }

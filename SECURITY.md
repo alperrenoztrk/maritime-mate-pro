@@ -174,6 +174,35 @@ koruma yine de sağlamaz.
 - `service_role` anahtarı yalnızca edge function ortamında yaşar; istemciye
   yalnızca publishable/anon anahtar gider.
 
+## Para kazanma sırları (repoda değildir)
+
+Abonelik akışı iki Supabase Secret'ına bağlıdır. Kod kusursuz çalışsa bile
+bunlar eksikse sonuç şudur: kullanıcı **ödeme yapar ama Pro açılmaz**.
+
+- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` — yoksa `verify-purchase` 503 döner ve
+  hiçbir satın alma doğrulanamaz. (Onaylanmayan satın almayı Google 3 gün
+  içinde iade eder, yani para geri gider — ama kullanıcı Pro alamaz.)
+- `PLAY_RTDN_SECRET` — yoksa/yanlışsa `play-rtdn` her bildirimi 401'ler;
+  yenileme, iptal, ödeme sorunu ve iade olayları entitlement tablosuna hiç
+  işlenmez. Süresi dolmuş abonelikte bile erişim, kullanıcı uygulamayı açana
+  kadar açık kalır.
+
+İkisi de dışarıdan doğrulanabilir:
+
+```
+npm run check:billing-config
+```
+
+Gerekli ortam değişkenleri `scripts/check-play-billing-config.mjs` başındaki
+açıklamadadır. Kapı hiçbir kontrolü çalıştıramazsa yeşil dönmez (çıkış kodu 2),
+çünkü "doğrulandı" ile "doğrulanmadı" aynı çıktıyı vermemelidir. Bu kapı yeşil
+olmadan mağazaya çıkmayın.
+
+Sunucu yapılandırması eksikken satın alma denenirse istemci artık jenerik
+"tekrar deneyin" mesajı göstermez: `BillingNotConfiguredError`
+(`src/services/billing.ts`) kullanıcıya ücretin iade edileceğini söyler.
+Tekrar denemek bu hatayı düzeltmez.
+
 ## Android
 
 - `android:allowBackup="false"` — oturum verisinin ADB/bulut yedeğiyle
