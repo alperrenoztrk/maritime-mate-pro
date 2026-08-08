@@ -14,25 +14,29 @@ export function LessonTeachCard({
   section,
   categoryId,
   topicTitle,
+  hideImage = false,
 }: {
   section: BetaSection;
   categoryId: string;
   topicTitle: string;
+  /** Görsel aynı konuda daha önce gösterildiyse tekrar basılmaz. */
+  hideImage?: boolean;
 }) {
-  const sectionImage = resolveLessonImage(
+  const resolvedImage = resolveLessonImage(
     categoryId,
     section.image,
-    section.title,
+    section.sourceTitle ?? section.title,
     topicTitle,
     section.imageAlt,
   );
+  const sectionImage = hideImage ? undefined : resolvedImage;
   const content = section.content
     ? normalizeLessonMarkdownImages(
         section.content,
         categoryId,
-        section.title,
+        section.sourceTitle ?? section.title,
         topicTitle,
-        sectionImage ? [sectionImage] : [],
+        resolvedImage ? [resolvedImage] : [],
       )
     : section.content;
 

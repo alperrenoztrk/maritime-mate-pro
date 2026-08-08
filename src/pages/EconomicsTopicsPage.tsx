@@ -20,6 +20,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
+import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
 interface EconSubTopic {
   id: string;
@@ -1663,11 +1664,7 @@ export default function EconomicsTopicsPage() {
                   </p>
                 </div>
 
-                <div className="prose prose-sm max-w-none">
-                  <div className="text-foreground leading-relaxed whitespace-pre-line">
-                    {currentContent.content}
-                  </div>
-                </div>
+                <StructuredLessonText text={currentContent.content} />
 
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
                   <div className="bg-muted/50 rounded-xl p-4 space-y-2">

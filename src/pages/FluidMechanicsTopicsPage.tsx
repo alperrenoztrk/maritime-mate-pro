@@ -21,6 +21,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { fluidMechanicsTopicContents } from "@/data/fluidMechanicsContent";
 import type { FluidTopicContent } from "@/data/fluidMechanicsContent";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
+import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
 interface FluidSubTopic {
   id: string;
@@ -283,11 +284,7 @@ export default function FluidMechanicsTopicsPage() {
                   </p>
                 </div>
 
-                <div className="prose prose-sm max-w-none">
-                  <div className="whitespace-pre-line leading-relaxed text-foreground">
-                    {currentContent.content}
-                  </div>
-                </div>
+                <StructuredLessonText text={currentContent.content} />
 
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
                   <div className="space-y-2 rounded-xl bg-muted/50 p-4">

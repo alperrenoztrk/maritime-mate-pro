@@ -49,6 +49,7 @@ import photoDeckCrane from "@/assets/seamanship/deck-crane.jpg";
 import photoHatchCovers from "@/assets/seamanship/hatch-covers.jpg";
 import photoBridgeWatch from "@/assets/seamanship/bridge-watch.jpg";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
+import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
 interface SeamanshipSubTopic {
   id: string;
@@ -3391,11 +3392,7 @@ export default function SeamanshipTopicsPage() {
                 )}
 
                 {/* Main Content */}
-                <div className="prose prose-sm max-w-none">
-                  <div className="text-foreground leading-relaxed whitespace-pre-line">
-                    {currentContent.content}
-                  </div>
-                </div>
+                <StructuredLessonText text={currentContent.content} />
 
                 {/* Data Table */}
                 {currentContent.table && (
