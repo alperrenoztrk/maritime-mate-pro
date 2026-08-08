@@ -81,7 +81,7 @@ export function NewsPanel() {
             <div className="gz-dateline">
               <span>{dateline}</span>
               <Link to="/maritime-news" className="np-alllink">
-                All N→
+                Tüm Haberler →
               </Link>
             </div>
             <div className="gz-rule-thick" aria-hidden="true" />
