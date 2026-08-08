@@ -107,7 +107,7 @@ export function LibraryEntryCard({
           )}
         </span>
         <span className="flex items-end justify-between gap-3">
-          <span className="text-lg font-bold leading-tight">{title}</span>
+          <span className="whitespace-pre-line text-lg font-bold leading-tight">{title}</span>
           <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
         </span>
       </div>
