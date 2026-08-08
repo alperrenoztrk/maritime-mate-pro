@@ -278,7 +278,7 @@ export const crewHierarchy: CrewGroup[] = [
     ],
   },
   {
-    department: "İkmal / Yaşam Mahalli",
+    department: "Galley",
     focus: "Gemi içi yaşam, kumanya ve mürettebat hizmetleri",
     colorCode: "İKMAL",
     roles: [
