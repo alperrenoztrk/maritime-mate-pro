@@ -179,12 +179,12 @@ export const TwoFactorCard = () => {
         ) : (
           <>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Kapalı. Açtığınızda hesabınıza yalnızca şifrenizi bilen değil,
-              doğrulayıcı uygulamanıza da erişebilen biri girebilir.
+              Şu anda devre dışı. Etkinleştirdiğinizde hesabınıza yalnızca şifrenizi
+              bilen değil, doğrulayıcı uygulamanıza da erişebilen biri girebilir.
             </p>
             <Button variant="outline" size="sm" className="w-full gap-2" disabled={busy} onClick={handleStart}>
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}
-              Aç
+              Etkinleştir
             </Button>
           </>
         )}
