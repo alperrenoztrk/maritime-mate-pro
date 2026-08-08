@@ -1391,7 +1391,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Sarkaç Boyu (m)</Label>
-                    <Input type="number" placeholder="Boy" value={pendulumInputs.pendulumLength} onChange={(e)=> setPendulumInputs(p=>({...p, pendulumLength:e.target.value}))} />
+                    <Input type="number" placeholder="Uzunluk" value={pendulumInputs.pendulumLength} onChange={(e)=> setPendulumInputs(p=>({...p, pendulumLength:e.target.value}))} />
                   </div>
                   <div>
                     <Label>Sapma (m)</Label>
@@ -1935,7 +1935,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   </div>
                   <div>
                     <Label>Boy (m)</Label>
-                    <Input type="number" placeholder="Boy" value={pontoonInputs.length} onChange={(e)=> setPontoonInputs(p=>({...p, length:e.target.value}))} />
+                    <Input type="number" placeholder="Uzunluk" value={pontoonInputs.length} onChange={(e)=> setPontoonInputs(p=>({...p, length:e.target.value}))} />
                   </div>
                   <div>
                     <Label>En (m)</Label>
