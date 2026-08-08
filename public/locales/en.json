@@ -25,10 +25,10 @@
   "Adımları Gizle": "Hide Steps",
   "Verilen değerler": "Given values",
   "Uygulanan formül": "Applied formula",
-  "Adım Adım Çözüm": "Step-by-Step Solution",
+  "Adım Adım Çözüm": "Step by Step Solution",
   "Bu işlemi yapay zekaya sor": "Ask AI about this calculation",
   "Yapay Zeka Açıklaması": "AI Explanation",
-  "Hazırlanıyor...": "Preparing...",
+  "Hazırlanıyor...": "Loading...",
   "Açıklama alınamadı. Lütfen tekrar deneyin.": "Could not get explanation. Please try again.",
   "Bu konu için bağlı hesaplayıcı henüz eklenmedi.": "The linked calculator for this topic has not been added yet.",
   "Bu konu için kurallar henüz eklenmedi.": "Rules for this topic have not been added yet.",
@@ -61033,5 +61033,14 @@
   "Köprüüstü / Operasyon": "Deck",
   "Makine / Teknik": "Machine",
   "Machine": "Machine",
-  "İkmal / Yaşam Mahalli": "Galley"
+  "İkmal / Yaşam Mahalli": "Galley",
+  "Role Cetveli / Muster List": "Muster  List",
+  "Açıkla": "Explain",
+  "M": "Muster Lı",
+  "6": "\n",
+  "8": "\n",
+  "2": "\n",
+  "ExplainSave": "Save",
+  "ExplainSave_2": "Explain\nSav",
+  "ExplainSave_v2": "Explain\nSav"
 }
