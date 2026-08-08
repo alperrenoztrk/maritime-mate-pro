@@ -16,7 +16,7 @@ export type CrewGroup = {
 
 export const crewHierarchy: CrewGroup[] = [
   {
-    department: "Köprüüstü / Operasyon",
+    department: "Deck",
     focus: "Seyir, emniyet ve yük operasyonlarının planlanması ve icrası",
     colorCode: "Kaptanlık",
     roles: [
