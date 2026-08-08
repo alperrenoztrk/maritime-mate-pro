@@ -167,7 +167,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "enclosed-space",
     title: "Kapalı Mahal Kurtarma",
-    shortTitle: "Kapalı Mahal",
+    shortTitle: "Enclosed Space",
     signalClass: "ship-specific",
     signalLabel: "Lokal imdat çağrısı + gemiye özel alarm/PA",
     signal:
