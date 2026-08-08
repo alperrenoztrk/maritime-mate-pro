@@ -14,7 +14,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import { useAuth } from "@/hooks/useAuthContext";
 import { useEntitlement } from "@/contexts/useEntitlement";
 import { getLanguageFlag } from "@/utils/languages";
-import { PRIVACY_POLICY_URL, TERMS_OF_USE_URL } from "@/config/legal";
+import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { TwoFactorCard } from "@/components/settings/TwoFactorCard";
 import {
   areAdsSupported,
@@ -194,7 +194,7 @@ const Settings = () => {
                     kullanım şartlarının da uygulama içinden erişilebilir olması beklenir. */}
                 <div className="mt-5 space-y-3 border-t border-border/60 pt-4">
                   <a
-                    href={PRIVACY_POLICY_URL}
+                    href={getPrivacyPolicyUrl(currentLanguage)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-primary hover:underline"
@@ -205,7 +205,7 @@ const Settings = () => {
                   </a>
 
                   <a
-                    href={TERMS_OF_USE_URL}
+                    href={getTermsOfUseUrl(currentLanguage)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-primary hover:underline"

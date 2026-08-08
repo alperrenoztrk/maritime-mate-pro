@@ -28,3 +28,27 @@ export const DATA_DELETION_URL = `${PRIVACY_POLICY_URL}#hesap-ve-veri-silme`;
  * resmi kaynakların esas alınacağı buradadır.
  */
 export const TERMS_OF_USE_URL = "https://nauticalleap.com/terms-of-use.html";
+
+/**
+ * Yasal sayfaların dile göre doğru bölümüne inen adresi üretir.
+ *
+ * Her iki doküman da tek sayfada önce Türkçe, sonra İngilizce metni taşır.
+ * Uygulamanın varsayılan dili İngilizce (bkz. LanguageContext'teki
+ * DEFAULT_LANGUAGE), dolayısıyla adresi olduğu gibi vermek ilk kez açan
+ * kullanıcıyı okuyamayacağı Türkçe metnin başına indirir. Türkçe dışındaki
+ * her dilde İngilizce bölüme (`#en`) inilir — desteklenen diğer diller için
+ * ayrı çeviri bulunmadığından İngilizce en yakın okunabilir karşılıktır.
+ */
+function localizedLegalUrl(baseUrl: string, language: string): string {
+  return language === "tr" ? baseUrl : `${baseUrl}#en`;
+}
+
+/** Gizlilik politikasının, verilen dile uygun bölümüne inen adresi. */
+export function getPrivacyPolicyUrl(language: string): string {
+  return localizedLegalUrl(PRIVACY_POLICY_URL, language);
+}
+
+/** Kullanım şartlarının, verilen dile uygun bölümüne inen adresi. */
+export function getTermsOfUseUrl(language: string): string {
+  return localizedLegalUrl(TERMS_OF_USE_URL, language);
+}

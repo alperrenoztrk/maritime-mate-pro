@@ -13,7 +13,8 @@ import { useAuth } from "@/hooks/useAuthContext";
 import { sanitizeReturnPath } from "@/lib/authFlow";
 import { MfaChallengeForm } from "@/components/auth/MfaChallengeForm";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { PRIVACY_POLICY_URL, TERMS_OF_USE_URL } from "@/config/legal";
+import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
+import { useLanguage } from "@/contexts/useLanguage";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
@@ -26,6 +27,9 @@ const Auth = () => {
   const [searchParams] = useSearchParams();
   const { user, loading, mfaChallengeRequired, signOut, signInWithEmail, signUpWithEmail, signInWithGoogle } =
     useAuth();
+  const { currentLanguage } = useLanguage();
+  const privacyPolicyUrl = getPrivacyPolicyUrl(currentLanguage);
+  const termsOfUseUrl = getTermsOfUseUrl(currentLanguage);
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -219,7 +223,7 @@ const Auth = () => {
             <p className="text-[11px] leading-relaxed text-muted-foreground">
               Kayıt olarak veya giriş yaparak{" "}
               <a
-                href={TERMS_OF_USE_URL}
+                href={termsOfUseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"
@@ -228,7 +232,7 @@ const Auth = () => {
               </a>
               'nı kabul eder ve verilerinizin{" "}
               <a
-                href={PRIVACY_POLICY_URL}
+                href={privacyPolicyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4"
@@ -241,7 +245,7 @@ const Auth = () => {
             </p>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
               <a
-                href={PRIVACY_POLICY_URL}
+                href={privacyPolicyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
@@ -251,7 +255,7 @@ const Auth = () => {
                 <ExternalLink className="h-3 w-3 opacity-70" />
               </a>
               <a
-                href={TERMS_OF_USE_URL}
+                href={termsOfUseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"

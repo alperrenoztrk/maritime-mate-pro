@@ -17,7 +17,8 @@ import {
   type ProOffers,
 } from "@/services/billing";
 import { getPlaySubscriptionManagementUrl, PRODUCT_IDS, type ProPlan } from "@/config/products";
-import { TERMS_OF_USE_URL } from "@/config/legal";
+import { getTermsOfUseUrl } from "@/config/legal";
+import { useLanguage } from "@/contexts/useLanguage";
 
 /**
  * Pro paywall sayfası (/pro).
@@ -63,6 +64,7 @@ const ProPage = () => {
   const gatedFeature = useMemo(() => searchParams.get("feature"), [searchParams]);
   const { user } = useAuth();
   const { tier, hasProAccess, fromCache, lastSyncedAt, purchase, restore, refresh } = useEntitlement();
+  const { currentLanguage } = useLanguage();
 
   const [billingReady, setBillingReady] = useState<boolean | null>(null);
   const [offers, setOffers] = useState<ProOffers | null>(null);
@@ -335,7 +337,7 @@ const ProPage = () => {
                   </span>{" "}
                   <span data-translatable>İadeler Google Play iade politikasına tabidir. Koşulların tamamı için bkz.</span>{" "}
                   <a
-                    href={TERMS_OF_USE_URL}
+                    href={getTermsOfUseUrl(currentLanguage)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary underline underline-offset-4"
