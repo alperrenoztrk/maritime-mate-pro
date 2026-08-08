@@ -19,3 +19,61 @@ verify_jwt = false
 
 [functions.analyze-maritime-document]
 verify_jwt = true
+
+# ---------------------------------------------------------------------------
+# Kimlik doğrulama sertleştirmesi
+#
+# ⚠️ BU BÖLÜM `supabase config push` ÇALIŞTIRILMADAN ETKİLİ DEĞİLDİR.
+#    Bugün ayarların canlıdaki kaynağı Supabase panelidir; buradaki değerler
+#    yalnızca hedeflenen durumu kayda geçirir. Doğrulama listesi:
+#    docs/supabase-auth-hardening.md
+#
+# ⚠️ PUSH ETMEDEN ÖNCE OKUYUN: `config push` auth ayarlarının TAMAMINI bu
+#    dosyadan yazar. Burada YAZMAYAN bir anahtar CLI varsayılanına döner —
+#    örneğin `site_url` yazılmazsa panelinizdeki adres `http://127.0.0.1:3000`
+#    ile ezilir ve Google girişi kırılır. Push etmeden önce `site_url` ve
+#    `additional_redirect_urls` satırlarını projenizin gerçek adresleriyle
+#    doldurun (custom URL scheme dahil: com.marinersbook.app://auth/callback).
+# ---------------------------------------------------------------------------
+
+[auth]
+# Şifre kuralının sunucu tarafı karşılığı. src/pages/Auth.tsx:19'daki zod
+# şeması yalnızca formu doğrular; API'ye doğrudan yapılan bir signUp çağrısı
+# onu atlar. İkisi aynı değerde tutulmalı.
+minimum_password_length = 8
+# Harf + rakam zorunluluğu. Daha katısı (`lower_upper_letters_digits`) parola
+# yöneticisi kullanmayan gemi adamlarını zorlayacağı için seçilmedi.
+password_requirements = "letters_digits"
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+
+[auth.email]
+# E-posta doğrulaması zorunlu: doğrulanmamış adresle hesap açılıp
+# başkasının e-postası sahiplenilemesin.
+enable_confirmations = true
+# Şifre değişiminde eski adrese de onay gider.
+double_confirm_changes = true
+# Şifre değiştirmek için mevcut oturumun yeniden doğrulanması gerekir —
+# çalınmış bir jetonla şifre değiştirip hesabı ele geçirmeyi engeller.
+secure_password_change = true
+# Sihirli bağlantı / OTP ömrü: 1 saat yerine 15 dakika. Posta kutusuna
+# sonradan erişen birinin eski bağlantıyı kullanma penceresini daraltır.
+otp_expiry = 900
+
+[auth.rate_limit]
+# Giriş/kayıt denemesi freni (5 dakikalık pencerede, IP başına). Varsayılan
+# 30; şifre denemesi için gereğinden gevşek.
+sign_in_sign_ups = 10
+# OTP / e-posta bağlantısı doğrulama denemesi.
+token_verifications = 10
+
+# İki adımlı doğrulama (src/lib/mfa.ts). TOTP Supabase'de VARSAYILAN OLARAK
+# KAPALIDIR; bu iki anahtar açılmadan uygulamadaki 2FA akışı çalışmaz.
+# NOT: MFA, Supabase'in ücretli planlarına bağlı olabilir — panelden teyit edin.
+[auth.mfa]
+max_enrolled_factors = 5
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true

@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuthContext";
 import { sanitizeReturnPath } from "@/lib/authFlow";
+import { MfaChallengeForm } from "@/components/auth/MfaChallengeForm";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { PRIVACY_POLICY_URL } from "@/config/legal";
 
@@ -23,7 +24,8 @@ const credentialsSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user, loading, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth();
+  const { user, loading, mfaChallengeRequired, signOut, signInWithEmail, signUpWithEmail, signInWithGoogle } =
+    useAuth();
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,9 +33,11 @@ const Auth = () => {
 
   const nextPath = useMemo(() => sanitizeReturnPath(searchParams.get("next")), [searchParams]);
 
+  // 2FA açık bir hesapta şifre doğru olsa bile oturum `aal1`dir; kod adımı
+  // bitmeden yönlendirme yapılmaz, kart içinde kod ekranı gösterilir.
   useEffect(() => {
-    if (!loading && user) navigate(nextPath, { replace: true });
-  }, [user, loading, navigate, nextPath]);
+    if (!loading && user && !mfaChallengeRequired) navigate(nextPath, { replace: true });
+  }, [user, loading, mfaChallengeRequired, navigate, nextPath]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,8 +56,9 @@ const Auth = () => {
             : error.message;
           toast.error(msg);
         } else {
+          // Yönlendirmeyi yukarıdaki effect yapar: 2FA açıksa önce kod adımı
+          // gösterilmeli, doğrudan navigate çağırmak o adımı atlardı.
           toast.success("Giriş başarılı");
-          navigate(nextPath, { replace: true });
         }
       } else {
         const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password, nextPath);
@@ -129,7 +134,9 @@ const Auth = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {(
+          {mfaChallengeRequired ? (
+            <MfaChallengeForm onVerified={() => navigate(nextPath, { replace: true })} onCancel={signOut} />
+          ) : (
             <>
               <Button
                 type="button"
@@ -149,60 +156,60 @@ const Auth = () => {
                   <span className="bg-card px-2 text-muted-foreground">veya e-posta ile</span>
                 </div>
               </div>
+              <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
+                <TabsList className="grid grid-cols-2 w-full">
+                  <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
+                  <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="signin" className="mt-4">
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <EmailPasswordFields
+                      email={email}
+                      password={password}
+                      onEmail={setEmail}
+                      onPassword={setPassword}
+                    />
+                    <Button type="submit" className="w-full" disabled={busy}>
+                      {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
+                    </Button>
+                  </form>
+                  <div className="mt-3 text-center">
+                    <button
+                      type="button"
+                      onClick={handleResetPassword}
+                      disabled={busy}
+                      className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                    >
+                      Şifremi unuttum / şifre belirle
+                    </button>
+                    <p className="mt-2 text-[11px] text-muted-foreground">
+                      Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
+                      belirleyebilir veya Google ile giriş yapabilirsiniz.
+                    </p>
+                  </div>
+                </TabsContent>
+
+
+                <TabsContent value="signup" className="mt-4">
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <EmailPasswordFields
+                      email={email}
+                      password={password}
+                      onEmail={setEmail}
+                      onPassword={setPassword}
+                    />
+                    <Button type="submit" className="w-full" disabled={busy}>
+                      {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Kayıt Ol"}
+                    </Button>
+                    <p className="text-xs text-muted-foreground text-center">
+                      Şifre en az 8 karakter olmalıdır
+                    </p>
+                  </form>
+                </TabsContent>
+              </Tabs>
             </>
           )}
-          <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
-            <TabsList className="grid grid-cols-2 w-full">
-              <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
-              <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="signin" className="mt-4">
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <EmailPasswordFields
-                  email={email}
-                  password={password}
-                  onEmail={setEmail}
-                  onPassword={setPassword}
-                />
-                <Button type="submit" className="w-full" disabled={busy}>
-                  {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Giriş Yap"}
-                </Button>
-              </form>
-              <div className="mt-3 text-center">
-                <button
-                  type="button"
-                  onClick={handleResetPassword}
-                  disabled={busy}
-                  className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
-                >
-                  Şifremi unuttum / şifre belirle
-                </button>
-                <p className="mt-2 text-[11px] text-muted-foreground">
-                  Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
-                  belirleyebilir veya Google ile giriş yapabilirsiniz.
-                </p>
-              </div>
-            </TabsContent>
-
-
-            <TabsContent value="signup" className="mt-4">
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <EmailPasswordFields
-                  email={email}
-                  password={password}
-                  onEmail={setEmail}
-                  onPassword={setPassword}
-                />
-                <Button type="submit" className="w-full" disabled={busy}>
-                  {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : "Kayıt Ol"}
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  Şifre en az 8 karakter olmalıdır
-                </p>
-              </form>
-            </TabsContent>
-          </Tabs>
 
           {/* Gizlilik politikası giriş duvarının arkasında kalmamalı: kullanıcı
               hesap açmadan önce verisinin nasıl işlendiğini okuyabilmeli.

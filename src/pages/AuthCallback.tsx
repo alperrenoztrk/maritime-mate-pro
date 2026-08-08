@@ -59,7 +59,7 @@ const AuthCallback = () => {
     const completeSession = async () => {
       try {
         const hasOAuthCode = new URLSearchParams(window.location.search).has("code");
-        const hadCodeVerifier = Boolean(getStoredCodeVerifier());
+        const hadCodeVerifier = Boolean(await getStoredCodeVerifier());
         const { handled, error: oauthError } = await finishOAuthFromUrl(window.location.href);
         if (oauthError) {
           if (hasOAuthCode && !hadCodeVerifier) {
