@@ -21,7 +21,7 @@
 - **Android platformu eksiksiz üretildi** — daha önce repoda yalnızca birkaç üretilmiş dosya vardı (build.gradle, AndroidManifest, MainActivity yoktu). Artık `android/` komple derlenebilir durumda:
   - `versionCode 20570`, `versionName "2.5.70"`
   - Release imzalama: `android/keystore.properties` (gitignored) veya `KEYSTORE_FILE/KEYSTORE_PASSWORD/KEY_ALIAS/KEY_PASSWORD` ortam değişkenleri. Şablon: `android/keystore.properties.example`
-  - Manifest izinleri: `INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION` (+ AdMob SDK'sının otomatik eklediği `com.google.android.gms.permission.AD_ID`)
+  - Manifest izinleri: `INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION` (AdMob SDK'sının otomatik eklediği `com.google.android.gms.permission.AD_ID` reklamlar kapalı olduğu için `tools:node="remove"` ile çıkarıldı)
   - AdMob `APPLICATION_ID` meta-verisi eklendi (şimdilik Google'ın **TEST** App ID'si — eksik olsaydı uygulama açılışta çökerdi)
   - AAB'de dil bölünmesi kapatıldı (uygulama içi dil değiştirme bozulmasın diye)
 - **iOS platformu eklendi** (`ios/`) — bundle ID, sürüm (2.5.70 / 20570), izin açıklamaları (kamera, fotoğraf kitaplığı, izleme/ATT), AdMob iOS TEST App ID, `ITSAppUsesNonExemptEncryption=false`, SKAdNetwork girdisi.
@@ -39,7 +39,7 @@
 - **Yapay zekâ içeriği bildirme mekanizması eklendi** — Play'in Üretken Yapay Zekâ politikası bunu zorunlu tutuyordu ve hiçbir AI ekranında yoktu. `ReportAiContentButton` beş yüzeye de bağlandı (AI Eğitmen, Açıkla popup'ı, Denizcilik Asistanı, Asistan arayüzü, Stabilite asistanı); bildirimler `ai_content_reports` tablosuna yazılıyor (RLS: kullanıcı yalnızca kendi bildirimini yazar/okur).
 - **Firebase tamamen kaldırıldı** — `google-services.json` (kök + `android/app/`), `com.google.gms:google-services` classpath'i, `app/build.gradle`'daki apply bloğu ve `FIREBASE_SETUP.md`. Projede tek bir Firebase SDK'sı kurulu değildi; sadece derlemeye giriyor ve API anahtarını repoda taşıyordu. Anahtarın Google Cloud'dan silinmesi gerekiyor (bkz. `SECURITY.md`).
 - **AdMob kimlikleri CI'ya bağlandı** — `android-release.yml` artık `ADMOB_*` secret'larını hem Vite build'ine hem Gradle'a geçiriyor. Secret yoksa davranış değişmiyor (TEST reklamı), ama artık gerçek kimlik girmek için kod değişikliği gerekmiyor. Şablon: `android/admob.properties.example`.
-- **Reklamlar build-time anahtarla kapatıldı (`VITE_ADS_ENABLED`, varsayılan kapalı)** — ilk sürüm reklamsız çıkacak. Daha önce AdMob kimlikleri boş bırakıldığında reklamlar kapanmıyor, Google'ın **TEST** reklamları gösteriliyordu; mağaza sürümünde bu bir AdMob politikası ihlaliydi. Artık anahtar açıkça `true` değilse `areAdsSupported()` false döner ve tek kapıdan geçen tüm yollar kapanır: SDK `initialize` edilmez, UMP onay formu açılmaz, banner/geçiş reklamı istenmez, `--ad-banner-height` `0px`'te kalır (`MobileLayout` alt boşluk açmaz), Ayarlar'daki "Reklamlar ve Gizlilik" kartı görünmez. Manifest'teki AdMob `APPLICATION_ID` meta-data'sı **bilinçli olarak duruyor** — SDK pakette bağımlılık olduğu için eksik olsa uygulama açılışta çökerdi. CI'daki `ADMOB_*` aktarımları da duruyor; anahtar kapalıyken etkisizler, reklam açılacağında yalnızca `ADS_ENABLED` variable'ını `true` yapmak yeterli. Ayrıntı: `ADVERTISEMENT_SETUP.md`.
+- **Reklamlar build-time anahtarla kapatıldı (`VITE_ADS_ENABLED`, varsayılan kapalı)** — ilk sürüm reklamsız çıkacak. Daha önce AdMob kimlikleri boş bırakıldığında reklamlar kapanmıyor, Google'ın **TEST** reklamları gösteriliyordu; mağaza sürümünde bu bir AdMob politikası ihlaliydi. Artık anahtar açıkça `true` değilse `areAdsSupported()` false döner ve tek kapıdan geçen tüm yollar kapanır: SDK `initialize` edilmez, UMP onay formu açılmaz, banner/geçiş reklamı istenmez, `--ad-banner-height` `0px`'te kalır (`MobileLayout` alt boşluk açmaz), Ayarlar'daki "Reklamlar ve Gizlilik" kartı görünmez. Manifest'teki AdMob `APPLICATION_ID` meta-data'sı **bilinçli olarak duruyor** — SDK pakette bağımlılık olduğu için eksik olsa uygulama açılışta çökerdi. Buna karşılık `com.google.android.gms.permission.AD_ID` izni `tools:node="remove"` ile kaldırıldı: SDK hiç başlatılmadığı için reklam kimliği okunmuyor, izni pakette taşımak Play beyanıyla çelişirdi (doğrulandı — manifest-merger raporunda izin `play-services-ads-api`, `play-services-ads-identifier` ve `play-services-measurement-sdk-api`'den `REJECTED`, birleşmiş manifest'te yok). **Reklam açılırken bu satır silinmelidir.** CI'daki `ADMOB_*` aktarımları da duruyor; anahtar kapalıyken etkisizler, reklam açılacağında yalnızca `ADS_ENABLED` variable'ını `true` yapmak yeterli. Ayrıntı: `ADVERTISEMENT_SETUP.md`.
 - **Ölü içerik temizlendi** — `public/videos/gemici/*.mp4` (15 dosya, 42.7 MB; knot videoları YouTube'dan geliyor, bu dosyalar hiç referanslanmıyordu), `Nautical-Almanac-2025.pdf` (PDF değil, kaydedilmiş bir bot-engelleme HTML sayfası) ve `MARPOL-Consolidated-2023-Overview.pdf` (tek sayfalık yer tutucu). Sıkıştırılmış paket 180.7 MB → 141.1 MB (ölçüldü).
 - **Data safety cevapları koda göre yeniden yazıldı** — önceki taslak "yalnızca e-posta + ad" diyordu; gerçekte belge fotoğrafı, sınav sonuçları, satın alma, AI sohbeti, konum ve reklam kimliği de var. Yanlış beyan askıya alma sebebi olduğu için aşağıdaki tablo tek tek koddaki akışlara dayandırıldı.
 
@@ -129,7 +129,7 @@ atıf mekanizması var, bu PDF'ler için yok.
    - **İçerik derecelendirmesi (IARC)** anketi
    - **Hesap silme URL'i**: `https://nauticalleap.com/privacy-policy.html` (bölüm 6)
    - **App access**: Belge takibi, Pro ve AI özellikleri `RequireAuth` arkasında — inceleme ekibine **demo hesap** girin, yoksa reddedilir
-   - **Reklam içerir: Hayır** — `VITE_ADS_ENABLED` kapalı olduğu sürece uygulama hiç reklam göstermiyor (bkz. yukarıdaki 2. madde). Reklamı açtığınız sürümde bunu **Evet**'e çevirin. ⚠️ AdMob SDK pakette durduğu için `com.google.android.gms.permission.AD_ID` izni SDK'nın manifest'inden birleşerek pakete giriyor; Play'in reklam kimliği sorusunu buna göre yanıtlayın (reklam kimliği **kullanılmıyor** — SDK hiç başlatılmıyor) veya izni manifest birleştiricide açıkça kaldırın.
+   - **Reklam içerir: Hayır** — `VITE_ADS_ENABLED` kapalı olduğu sürece uygulama hiç reklam göstermiyor (bkz. yukarıdaki 2. madde). **Reklam kimliği (AD_ID) beyanı: Hayır** — `com.google.android.gms.permission.AD_ID` izni `tools:node="remove"` ile manifest'ten kaldırıldığı için AAB'ye hiç girmiyor (doğrulandı: manifest-merger raporunda üç kütüphaneden de `REJECTED`). Reklamı açtığınız sürümde ikisini de **Evet**'e çevirin ve manifest'teki kaldırma satırını silin.
    - Internal testing → AAB yükle → test → Production rollout
 
 4. **⏳ Kapalı test zorunluluğu** — hesabı **kişisel** (organizasyon değil) olarak
@@ -168,11 +168,15 @@ koddaki gerçek akışlara dayandırılmıştır:
 | Silme talebi | Evet | Uygulama içi (`Settings.tsx:57` → `delete-account`) + e-posta |
 | Analitik / çökme izleme | Toplanmıyor | Projede analitik SDK'sı yok |
 
-Ayrıca **App content** altında: "Uygulama reklam içerir → **Hayır**" —
-`VITE_ADS_ENABLED` kapalı olduğu için ilk sürümde hiç reklam yok (test reklamı
-da reklamdır; anahtar zaten bu yüzden eklendi). Reklamı açtığınız sürümde bu
-cevabı **Evet**'e ve yukarıdaki "Cihaz veya diğer kimlikler" satırını
-"Toplanıyor"a çevirin, **reklam kimliği (AD_ID) beyanını → Evet** yapın.
+Ayrıca **App content** altında: "Uygulama reklam içerir → **Hayır**" ve
+**reklam kimliği (AD_ID) beyanı → Hayır** — `VITE_ADS_ENABLED` kapalı olduğu
+için ilk sürümde hiç reklam yok (test reklamı da reklamdır; anahtar zaten bu
+yüzden eklendi) ve AD_ID izni pakete hiç girmiyor.
+
+Reklamı açtığınız sürümde geri çevrilecekler: bu iki cevap **Evet**, yukarıdaki
+"Cihaz veya diğer kimlikler" satırı "Toplanıyor" ve `AndroidManifest.xml`'deki
+AD_ID kaldırma satırının silinmesi (bkz. `ADVERTISEMENT_SETUP.md` → "Test
+reklamlarından canlıya geçiş", adım 3).
 
 ### App Store (macOS gerekir)
 

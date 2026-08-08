@@ -32,6 +32,34 @@ Manifest'teki AdMob `APPLICATION_ID` meta-data'sı **kaldırılmamalıdır**: SD
 pakette bağımlılık olarak durduğu için meta-data eksikse uygulama açılışta
 çöker — reklamlar kapalı olsa bile.
 
+### Reklam kimliği izni (AD_ID) pakette değil
+
+AdMob SDK'sı (`play-services-ads-api`, `play-services-ads-identifier`,
+`play-services-measurement-sdk-api`) `com.google.android.gms.permission.AD_ID`
+iznini kendi manifest'inde beyan eder ve manifest birleştirici normalde onu
+AAB'ye taşır. Reklamlar kapalıyken SDK hiç başlatılmadığı, dolayısıyla reklam
+kimliği hiç okunmadığı için izin `AndroidManifest.xml`'de açıkça kaldırılır:
+
+```xml
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"
+    tools:node="remove" />
+```
+
+Doğrulandı — `:app:processReleaseManifest` sonrası
+`app/build/outputs/logs/manifest-merger-release-report.txt` izni üç kütüphaneden
+de `REJECTED` gösteriyor ve birleşmiş manifest'te izin yok.
+
+> ⚠️ **Reklam açıldığında bu satır kaldırılmalıdır.** İzin olmadan AdMob
+> Android 13+ cihazlarda reklam kimliğine erişemez; doldurma oranı ve gelir
+> düşer, kişiselleştirme kapanır.
+
+Not: `play-services-ads` ayrıca üç Privacy Sandbox izni getiriyor
+(`ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION`,
+`ACCESS_ADSERVICES_TOPICS`). Bunlar AdServices API'lerine aittir ve Play'in
+reklam kimliği beyanının dayandığı izin değildir; şu an pakette duruyorlar.
+Tamamen arındırmak isterseniz aynı `tools:node="remove"` yöntemiyle onlar da
+kaldırılabilir (reklam açılırken yine geri alınmalıdır).
+
 Reklamı açmak için: `VITE_ADS_ENABLED=true` **ve** dört birim kimliğinin birden
 doldurulması (aşağıya bkz.).
 
@@ -140,7 +168,21 @@ Bir platformun kimliği doldurulduğunda `isUsingTestAds()` false döner ve
 `isTesting: true` ile istemek politika ihlalidir**; bu yüzden iki karar tek
 yerden türetilir, elle ayarlamayın.
 
-### 3. App ID (native taraf)
+### 3. AD_ID iznini geri getirin (native taraf)
+
+`android/app/src/main/AndroidManifest.xml` içindeki şu satırı **silin**:
+
+```xml
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"
+    tools:node="remove" />
+```
+
+Satır reklamsız sürüm için eklenmiştir; kalırsa AdMob Android 13+ cihazlarda
+reklam kimliğine erişemez ve gelir düşer. Sildikten sonra izin SDK'nın
+manifest'inden birleşerek geri gelir — ayrıca eklemenize gerek yok. Play
+Console'daki reklam kimliği beyanını da güncellemeyi unutmayın.
+
+### 4. App ID (native taraf)
 
 **Android** — `AndroidManifest.xml` değeri `${admobAppId}`'dir,
 `android/app/build.gradle` şu sırayla çözer:
@@ -159,7 +201,7 @@ değerini elle gerçek App ID ile değiştirin.
 > App ID eksik/yanlışsa uygulama **açılışta çöker**. Bu, AdMob SDK'sının
 > bilinçli davranışıdır.
 
-### 4. Test cihazı
+### 5. Test cihazı
 
 Gerçek kimliklere geçtikten sonra kendi cihazınızda reklam tıklamayın — hesap
 askıya alınabilir. Cihazınızı test cihazı olarak kaydetmek için logcat/Xcode
