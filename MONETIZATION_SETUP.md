@@ -141,8 +141,10 @@ uygulama tek başına da işe yarasın (mağaza yorumları için kritik).
   eklenirken kısıt da genişletilmelidir. Uygulama içi dijital içerikte Play
   Billing zorunludur.
 - **AdMob:** altyapı kurulu ve `useEntitlement().hasProAccess` ile kapılanmış
-  (banner + geçiş reklamı, yalnızca ücretsiz pakette). Varsayılan olarak
-  Google'ın TEST reklamları gösterilir; canlıya alma adımları
+  (banner + geçiş reklamı, yalnızca ücretsiz pakette) ama **şu an tamamen
+  kapalı**: `VITE_ADS_ENABLED` build-time anahtarı varsayılan olarak kapalıdır,
+  ilk mağaza sürümü reklamsız çıkar. Anahtar açıldığında ve kimlikler
+  girilmediğinde Google'ın TEST reklamları gösterilir; canlıya alma adımları
   `ADVERTISEMENT_SETUP.md`'de. Ödüllü (rewarded) reklam henüz yok.
 - **Fiyat testi:** Play Console'da fiyat deneyleri (price experiments) ile
   yıllık/aylık oranını test edin; hedef, kullanıcıları yıllık plana yönlendirmek.

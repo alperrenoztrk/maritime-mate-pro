@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="false"
@@ -71,6 +72,19 @@
     <!-- Canlı konum takibi (WebView geolocation için gerekli) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- REKLAM KİMLİĞİ (AD_ID) — bilinçli olarak KALDIRILIYOR.
+         AdMob SDK'sı (play-services-ads) bu izni kendi manifest'inde beyan eder
+         ve manifest birleştirici onu AAB'ye taşır. Reklamlar `VITE_ADS_ENABLED`
+         anahtarıyla kapalı olduğu için SDK hiç başlatılmıyor, reklam kimliği hiç
+         okunmuyor; izni pakette taşımak Play'in reklam kimliği beyanıyla
+         çelişirdi.
+
+         ⚠️ REKLAM AÇILDIĞINDA BU SATIR KALDIRILMALIDIR — izin olmadan AdMob
+         Android 13+ cihazlarda reklam kimliğine erişemez, bu da doldurma oranını
+         ve geliri düşürür. Ayrıntı: ADVERTISEMENT_SETUP.md. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
 
     <!-- GPS donanımı zorunlu değil; konum yoksa uygulama yine çalışır -->
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />

@@ -4,9 +4,64 @@ Reklam, para kazanma modelinde **ikincil** gelirdir: ana teklif Pro aboneliğidi
 (bkz. `MONETIZATION_SETUP.md`). Reklam yalnızca **ücretsiz pakette** ve yalnızca
 **native uygulamada** (Android/iOS) gösterilir. Web'de reklam yoktur.
 
-Şu an depo, Google'ın **TEST** reklam kimlikleriyle çalışacak şekilde
-yapılandırılmıştır — gerçek kimlikler girilmeden de her şey çalışır ve gerçek
-reklam envanteri kirlenmez.
+## ⚠️ Reklamlar şu an KAPALI (`VITE_ADS_ENABLED`)
+
+Tüm reklam yolları `VITE_ADS_ENABLED` build-time anahtarına bağlıdır ve anahtar
+**varsayılan olarak kapalıdır** — yalnızca değer açıkça `true` ise reklamlar
+etkinleşir (`areAdsEnabled()`, `src/config/ads.ts`). İlk Google Play sürümü
+reklamsız çıkacağı için bu anahtar kapalı bırakılmıştır.
+
+Anahtar kapalıyken:
+
+- AdMob SDK hiç `initialize` **edilmez**,
+- UMP onay formu hiç **açılmaz** (Ayarlar'daki "Reklamlar ve Gizlilik" kartı da
+  görünmez),
+- banner ve geçiş reklamı hiç **istenmez**,
+- `--ad-banner-height` `0px`'te kalır, `MobileLayout` alt boşluk açmaz.
+
+Tek kapı `areAdsSupported()`'tır (`src/services/ads.ts`): anahtar + native
+platform. Modüldeki her giriş noktası buradan geçtiği için anahtarı kapatmak
+reklamı tamamen kapatmaya yeter.
+
+> Kimlikleri boş bırakmak reklamı kapatmaz. Anahtar açık ve kimlikler boşsa
+> Google'ın **TEST** reklamları gösterilir; bunu mağaza sürümünde yapmak AdMob
+> politikası ihlalidir. Bu yüzden "kimlik yok" ile "reklam yok" ayrı
+> kararlardır.
+
+Manifest'teki AdMob `APPLICATION_ID` meta-data'sı **kaldırılmamalıdır**: SDK
+pakette bağımlılık olarak durduğu için meta-data eksikse uygulama açılışta
+çöker — reklamlar kapalı olsa bile.
+
+### Reklam kimliği izni (AD_ID) pakette değil
+
+AdMob SDK'sı (`play-services-ads-api`, `play-services-ads-identifier`,
+`play-services-measurement-sdk-api`) `com.google.android.gms.permission.AD_ID`
+iznini kendi manifest'inde beyan eder ve manifest birleştirici normalde onu
+AAB'ye taşır. Reklamlar kapalıyken SDK hiç başlatılmadığı, dolayısıyla reklam
+kimliği hiç okunmadığı için izin `AndroidManifest.xml`'de açıkça kaldırılır:
+
+```xml
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"
+    tools:node="remove" />
+```
+
+Doğrulandı — `:app:processReleaseManifest` sonrası
+`app/build/outputs/logs/manifest-merger-release-report.txt` izni üç kütüphaneden
+de `REJECTED` gösteriyor ve birleşmiş manifest'te izin yok.
+
+> ⚠️ **Reklam açıldığında bu satır kaldırılmalıdır.** İzin olmadan AdMob
+> Android 13+ cihazlarda reklam kimliğine erişemez; doldurma oranı ve gelir
+> düşer, kişiselleştirme kapanır.
+
+Not: `play-services-ads` ayrıca üç Privacy Sandbox izni getiriyor
+(`ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION`,
+`ACCESS_ADSERVICES_TOPICS`). Bunlar AdServices API'lerine aittir ve Play'in
+reklam kimliği beyanının dayandığı izin değildir; şu an pakette duruyorlar.
+Tamamen arındırmak isterseniz aynı `tools:node="remove"` yöntemiyle onlar da
+kaldırılabilir (reklam açılırken yine geri alınmalıdır).
+
+Reklamı açmak için: `VITE_ADS_ENABLED=true` **ve** dört birim kimliğinin birden
+doldurulması (aşağıya bkz.).
 
 ## Mimari
 
@@ -95,11 +150,13 @@ Hiçbir gerçek kimlik depoya girmez.
 3. App ID'leri (`ca-app-pub-XXXX~YYYY`) ve birim kimliklerini
    (`ca-app-pub-XXXX/YYYY`) not edin. `~` App ID'de, `/` birim kimliğindedir.
 
-### 2. Reklam birimi kimlikleri (JS tarafı)
+### 2. Anahtar + reklam birimi kimlikleri (JS tarafı)
 
-`.env` dosyanıza yazın (bkz. `.env.example`):
+`.env` dosyanıza yazın (bkz. `.env.example`). Anahtar ile dört kimlik **birlikte**
+girilmelidir; anahtarı tek başına açmak TEST reklamı yayınlamak demektir:
 
 ```
+VITE_ADS_ENABLED=true
 VITE_ADMOB_BANNER_ID_ANDROID=ca-app-pub-XXXXXXXX/YYYYYYYYYY
 VITE_ADMOB_INTERSTITIAL_ID_ANDROID=ca-app-pub-XXXXXXXX/YYYYYYYYYY
 VITE_ADMOB_BANNER_ID_IOS=ca-app-pub-XXXXXXXX/YYYYYYYYYY
@@ -111,7 +168,21 @@ Bir platformun kimliği doldurulduğunda `isUsingTestAds()` false döner ve
 `isTesting: true` ile istemek politika ihlalidir**; bu yüzden iki karar tek
 yerden türetilir, elle ayarlamayın.
 
-### 3. App ID (native taraf)
+### 3. AD_ID iznini geri getirin (native taraf)
+
+`android/app/src/main/AndroidManifest.xml` içindeki şu satırı **silin**:
+
+```xml
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"
+    tools:node="remove" />
+```
+
+Satır reklamsız sürüm için eklenmiştir; kalırsa AdMob Android 13+ cihazlarda
+reklam kimliğine erişemez ve gelir düşer. Sildikten sonra izin SDK'nın
+manifest'inden birleşerek geri gelir — ayrıca eklemenize gerek yok. Play
+Console'daki reklam kimliği beyanını da güncellemeyi unutmayın.
+
+### 4. App ID (native taraf)
 
 **Android** — `AndroidManifest.xml` değeri `${admobAppId}`'dir,
 `android/app/build.gradle` şu sırayla çözer:
@@ -130,7 +201,7 @@ değerini elle gerçek App ID ile değiştirin.
 > App ID eksik/yanlışsa uygulama **açılışta çöker**. Bu, AdMob SDK'sının
 > bilinçli davranışıdır.
 
-### 4. Test cihazı
+### 5. Test cihazı
 
 Gerçek kimliklere geçtikten sonra kendi cihazınızda reklam tıklamayın — hesap
 askıya alınabilir. Cihazınızı test cihazı olarak kaydetmek için logcat/Xcode
@@ -148,7 +219,17 @@ npm run build
 npm run build && npx cap sync android && npm run android:build
 ```
 
-Cihazda kontrol listesi:
+Cihazda kontrol listesi — **reklamlar kapalıyken** (varsayılan, ilk sürüm):
+
+- [ ] Hiçbir sayfada banner **yok**, geçiş reklamı **yok**.
+- [ ] İçeriğin altında banner için boşluk **açılmıyor** (`--ad-banner-height`
+      `0px`).
+- [ ] Ayarlar'da "Reklamlar ve Gizlilik" kartı **görünmüyor**.
+- [ ] Logcat'te AdMob başlatma/onay formu kaydı **yok**.
+- [ ] Uygulama açılışta çökmüyor (manifest'teki `APPLICATION_ID` meta-data'sı
+      yerinde).
+
+Reklamlar açıldıktan sonra (`VITE_ADS_ENABLED=true`):
 
 - [ ] Ana sayfada (`/`) banner **yok**.
 - [ ] Bir iç sayfada (örn. `/calculations`) test bannerı görünüyor ve içeriğin
@@ -161,6 +242,10 @@ Cihazda kontrol listesi:
       3 dakikada bir çıkıyor.
 
 ## Mağaza gereksinimleri
+
+Aşağıdakiler **reklamlar açıkken** geçerlidir. `VITE_ADS_ENABLED` kapalı
+bırakılan bir sürümde uygulama reklam göstermez; beyanları buna göre verin ve
+reklamı açtığınız sürümde güncellemeyi unutmayın.
 
 - **Play Console → Uygulama içeriği → Reklamlar:** "Uygulamam reklam içeriyor"
   olarak işaretlenmelidir.
