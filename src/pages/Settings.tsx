@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, ExternalLink } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -14,7 +14,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import { useAuth } from "@/hooks/useAuthContext";
 import { useEntitlement } from "@/contexts/useEntitlement";
 import { getLanguageFlag } from "@/utils/languages";
-import { PRIVACY_POLICY_URL } from "@/config/legal";
+import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { TwoFactorCard } from "@/components/settings/TwoFactorCard";
 import {
   areAdsSupported,
@@ -189,16 +189,29 @@ const Settings = () => {
                   </Button>
                 </div>
 
-                {/* Gizlilik ve hesap silme — Google Play zorunlu gereksinimleri */}
+                {/* Yasal metinler ve hesap silme — Google Play zorunlu gereksinimleri.
+                    Abonelik içeren uygulamalarda gizlilik politikasının yanında
+                    kullanım şartlarının da uygulama içinden erişilebilir olması beklenir. */}
                 <div className="mt-5 space-y-3 border-t border-border/60 pt-4">
                   <a
-                    href={PRIVACY_POLICY_URL}
+                    href={getPrivacyPolicyUrl(currentLanguage)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-primary hover:underline"
                   >
                     <ShieldCheck className="w-4 h-4" />
                     <span data-translatable>Gizlilik Politikası</span>
+                    <ExternalLink className="w-3 h-3 opacity-70" />
+                  </a>
+
+                  <a
+                    href={getTermsOfUseUrl(currentLanguage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span data-translatable>Kullanım Şartları</span>
                     <ExternalLink className="w-3 h-3 opacity-70" />
                   </a>
 

@@ -20,6 +20,8 @@
     }
     h1 { color: #1e40af; font-size: 1.6rem; }
     h2 { color: #1e40af; font-size: 1.15rem; margin-top: 2rem; }
+    /* Anchor ile açıldığında başlık ekranın en tepesine yapışmasın. */
+    h1, h2 { scroll-margin-top: 1.5rem; }
     hr { border: none; border-top: 1px solid #cbd5e1; margin: 3rem 0; }
     .meta { font-size: 0.9rem; opacity: 0.75; }
     table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 0.5rem 0 1rem; }
@@ -28,13 +30,14 @@
   </style>
 </head>
 <body>
-  <h1>Gizlilik Politikası – Mariner's Book</h1>
+  <h1 id="tr">Gizlilik Politikası – Mariner's Book</h1>
   <p class="meta">Yürürlük tarihi: 7 Ağustos 2026 · Paket adı: com.marinersbook.app · Veri sorumlusu: Alperen Öztürk · İletişim: <a href="mailto:ozturkalperen308@gmail.com">ozturkalperen308@gmail.com</a></p>
+  <p class="meta">Ayrıca bkz. <a href="/terms-of-use.html">Kullanım Şartları</a>.</p>
 
-  <h2>1. Genel Bakış</h2>
+  <h2 id="genel-bakis">1. Genel Bakış</h2>
   <p>Mariner's Book ("Uygulama"), denizcilik profesyonelleri ve öğrencileri için hesaplama, eğitim ve belge takip aracıdır. Bu politika, Uygulamayı kullandığınızda hangi verilerin işlendiğini, kimlerle paylaşıldığını, ne kadar süre saklandığını ve haklarınızı açıklar.</p>
 
-  <h2>2. İşlenen Veriler ve Amaçları</h2>
+  <h2 id="islenen-veriler">2. İşlenen Veriler ve Amaçları</h2>
   <table>
     <tr><th>Veri</th><th>Amaç</th><th>Hukuki dayanak (KVKK/GDPR)</th></tr>
     <tr><td>E-posta, ad, profil fotoğrafı, giriş sağlayıcısı</td><td>Hesap oluşturma ve oturum yönetimi</td><td>Sözleşmenin ifası</td></tr>
@@ -51,7 +54,7 @@
   <p><strong>Konum hakkında:</strong> Uygulama <code>ACCESS_FINE_LOCATION</code> ve <code>ACCESS_COARSE_LOCATION</code> izinlerini kullanır. Konumunuz sunucularımızda saklanmaz; yalnızca ilgili hesaplama/hava durumu servislerine anlık olarak iletilir. İzni cihaz ayarlarından her zaman kapatabilirsiniz; konum kapalıyken uygulamayı manuel konum girerek kullanabilirsiniz.</p>
   <p><strong>Yapay zekâ sohbetleri:</strong> Sohbet geçmişi sunucularımızda saklanmaz, yalnızca cihazınızın yerel deposunda tutulur. Ancak yanıt üretmek için mesaj içeriği aşağıdaki servis sağlayıcılara iletilir.</p>
 
-  <h2>3. Veri Aktarılan Üçüncü Taraflar</h2>
+  <h2 id="ucuncu-taraflar">3. Veri Aktarılan Üçüncü Taraflar</h2>
   <table>
     <tr><th>Taraf</th><th>Aktarılan veri</th></tr>
     <tr><td>Supabase (Lovable Cloud) – barındırma, kimlik doğrulama, veritabanı, dosya depolama</td><td>Bölüm 2'deki saklanan tüm veriler</td></tr>
@@ -74,7 +77,7 @@
   <p>Veriler satılmaz ve reklam profilleme amacıyla (AdMob dışında) paylaşılmaz. Bu sağlayıcıların bir kısmı Avrupa Birliği ve Türkiye dışında bulunabilir; aktarım standart sözleşme hükümleri ve sağlayıcıların gizlilik taahhütleri kapsamında yapılır.</p>
   <p>Harici görseller hakkında: Ders sayfalarındaki bazı görseller kendi sunucularımızda değil, kaynak sitelerinde barındırılır. Bu siteler tarafımızca yönetilmez; yalnızca görseli sunmak için gereken teknik bilgiyi (IP adresi, tarayıcı bilgisi) görürler ve kendilerine ait gizlilik politikalarına tabidirler. Bu sitelere tarafımızdan hesap veya belge veriniz aktarılmaz.</p>
 
-  <h2>4. Belgelerin Korunması</h2>
+  <h2 id="belgelerin-korunmasi">4. Belgelerin Korunması</h2>
   <ul>
     <li>Belge fotoğrafları herkese kapalı (private) bir depolama alanında tutulur; yalnızca kısa süreli imzalı bağlantılarla ve yalnızca size gösterilir.</li>
     <li>Veritabanı erişimi satır düzeyi güvenlik (RLS) ile sınırlandırılmıştır: her kullanıcı yalnızca kendi kayıtlarına erişir.</li>
@@ -82,7 +85,7 @@
     <li>Belge ekranındaki kişisel alanlar çeviri servisine gönderilmez.</li>
   </ul>
 
-  <h2>5. Saklama Süreleri</h2>
+  <h2 id="saklama-sureleri">5. Saklama Süreleri</h2>
   <ul>
     <li>Hesap ve profil verisi: hesap silinene kadar.</li>
     <li>Belgeler ve belge fotoğrafları: siz silene veya hesabınızı kapatana kadar.</li>
@@ -91,32 +94,33 @@
     <li>Yapay zekâ sohbet geçmişi: yalnızca cihazınızda; uygulama verilerini temizlediğinizde silinir.</li>
   </ul>
 
-  <h2>6. Hesap ve Veri Silme</h2>
+  <h2 id="hesap-ve-veri-silme">6. Hesap ve Veri Silme</h2>
   <p>Uygulama içinde <strong>Ayarlar → Hesap → "Hesabımı sil"</strong> adımlarıyla hesabınızı ve tüm verilerinizi kalıcı olarak silebilirsiniz. Silme işlemi profilinizi, sınav sonuçlarınızı, istatistiklerinizi, belge kayıtlarınızı, belge fotoğraflarınızı, yüklediğiniz dosyaları, kota sayacınızı ve giriş bilgilerinizi kapsar ve geri alınamaz.</p>
   <p><strong>Aboneliğiniz varsa:</strong> Hesabınızı silmek Google Play aboneliğinizi iptal etmez. Ödemenin durması için aboneliği <strong>Google Play &gt; Abonelikler</strong> bölümünden ayrıca iptal etmeniz gerekir.</p>
   <p>Alternatif olarak <a href="mailto:ozturkalperen308@gmail.com">ozturkalperen308@gmail.com</a> adresine yazarak silme veya veri kopyası talebinde bulunabilirsiniz; talepler en geç 30 gün içinde yanıtlanır.</p>
 
-  <h2>7. Haklarınız</h2>
+  <h2 id="haklariniz">7. Haklarınız</h2>
   <p>KVKK m.11 ve GDPR kapsamında; verilerinize erişme, düzeltme, silme, işlemeyi kısıtlama, taşınabilirlik ve itiraz haklarına sahipsiniz. Rızaya dayalı işlemelerde (belge yükleme, konum, yapay zekâ, reklam) rızanızı istediğiniz zaman geri çekebilirsiniz. Başvurularınızı yukarıdaki e-posta adresine iletebilir, sonuçtan memnun kalmazsanız yetkili veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
 
-  <h2>8. Çocukların Gizliliği</h2>
+  <h2 id="cocuklarin-gizliligi">8. Çocukların Gizliliği</h2>
   <p>Uygulama 13 yaş altı çocuklara yönelik değildir ve bilerek 13 yaş altı kullanıcılardan veri toplamaz.</p>
 
-  <h2>9. Değişiklikler</h2>
+  <h2 id="degisiklikler">9. Değişiklikler</h2>
   <p>Bu politika güncellenebilir; önemli değişiklikler bu sayfada ve uygulama içinde duyurulur.</p>
 
-  <h2>10. İletişim</h2>
+  <h2 id="iletisim">10. İletişim</h2>
   <p><a href="mailto:ozturkalperen308@gmail.com">ozturkalperen308@gmail.com</a></p>
 
   <hr>
 
-  <h1>Privacy Policy – Mariner's Book</h1>
+  <h1 id="en">Privacy Policy – Mariner's Book</h1>
   <p class="meta">Effective date: August 7, 2026 · Package: com.marinersbook.app · Data controller: Alperen Öztürk · Contact: <a href="mailto:ozturkalperen308@gmail.com">ozturkalperen308@gmail.com</a></p>
+  <p class="meta">See also the <a href="/terms-of-use.html#en">Terms of Use</a>.</p>
 
-  <h2>1. Overview</h2>
+  <h2 id="overview">1. Overview</h2>
   <p>Mariner's Book ("the App") is a calculation, education and certificate-tracking tool for maritime professionals and students. This policy explains what data is processed, who it is shared with, how long it is kept, and your rights.</p>
 
-  <h2>2. Data We Process</h2>
+  <h2 id="data-we-process">2. Data We Process</h2>
   <table>
     <tr><th>Data</th><th>Purpose</th><th>Legal basis</th></tr>
     <tr><td>Email, name, avatar, sign-in provider</td><td>Account creation and session management</td><td>Contract</td></tr>
@@ -133,7 +137,7 @@
   <p><strong>About location:</strong> The App requests <code>ACCESS_FINE_LOCATION</code> and <code>ACCESS_COARSE_LOCATION</code>. Your location is not stored on our servers; it is sent to the weather/geocoding services only at the moment of the request. You can revoke the permission at any time and enter a location manually instead.</p>
   <p><strong>AI chats:</strong> Chat history is stored only in your device's local storage, never on our servers. Message content is however transmitted to the providers listed below to generate answers.</p>
 
-  <h2>3. Third Parties</h2>
+  <h2 id="third-parties">3. Third Parties</h2>
   <table>
     <tr><th>Party</th><th>Data shared</th></tr>
     <tr><td>Supabase (Lovable Cloud) – hosting, auth, database, storage</td><td>All stored data listed in section 2</td></tr>
@@ -156,7 +160,7 @@
   <p>We do not sell your data and do not share it for advertising profiling other than AdMob. Some providers operate outside the EU/Turkey; transfers rely on standard contractual clauses and provider privacy commitments.</p>
   <p>About external images: Some images on lesson pages are hosted on their source sites rather than our servers. We do not control those sites; they only see the technical information needed to serve the image (IP address, browser information) and are governed by their own privacy policies. We do not transmit your account or document data to them.</p>
 
-  <h2>4. Protection of Documents</h2>
+  <h2 id="protection-of-documents">4. Protection of Documents</h2>
   <ul>
     <li>Document photos are kept in a private storage bucket and served only to you through short-lived signed URLs.</li>
     <li>Database access is restricted by Row Level Security: each user can only reach their own rows.</li>
@@ -164,7 +168,7 @@
     <li>Personal fields on the document screen are excluded from the translation service.</li>
   </ul>
 
-  <h2>5. Retention</h2>
+  <h2 id="retention">5. Retention</h2>
   <ul>
     <li>Account and profile data: until the account is deleted.</li>
     <li>Documents and document photos: until you delete them or close your account.</li>
@@ -173,21 +177,21 @@
     <li>AI chat history: device-only; removed when you clear app data.</li>
   </ul>
 
-  <h2>6. Account and Data Deletion</h2>
+  <h2 id="account-and-data-deletion">6. Account and Data Deletion</h2>
   <p>You can permanently delete your account and all associated data in the App via <strong>Settings → Account → "Delete my account"</strong>. Deletion covers your profile, quiz results, statistics, document records, document photos, uploaded files, usage counters and credentials, and cannot be undone.</p>
   <p><strong>If you have a subscription:</strong> deleting your account does not cancel your Google Play subscription. To stop billing you must also cancel it under <strong>Google Play &gt; Subscriptions</strong>.</p>
   <p>You may also email <a href="mailto:ozturkalperen308@gmail.com">ozturkalperen308@gmail.com</a> to request deletion or a copy of your data; requests are handled within 30 days.</p>
 
-  <h2>7. Your Rights</h2>
+  <h2 id="your-rights">7. Your Rights</h2>
   <p>Under GDPR and Turkish KVKK you have the right to access, rectify, erase, restrict, port and object to the processing of your data. Where processing is based on consent (documents, location, AI, ads) you may withdraw it at any time. Contact us at the address above; you may also lodge a complaint with your supervisory authority.</p>
 
-  <h2>8. Children's Privacy</h2>
+  <h2 id="childrens-privacy">8. Children's Privacy</h2>
   <p>The App is not directed at children under 13 and does not knowingly collect data from them.</p>
 
-  <h2>9. Changes</h2>
+  <h2 id="changes">9. Changes</h2>
   <p>This policy may be updated; material changes will be announced here and in the App.</p>
 
-  <h2>10. Contact</h2>
+  <h2 id="contact">10. Contact</h2>
   <p><a href="mailto:ozturkalperen308@gmail.com">ozturkalperen308@gmail.com</a></p>
 </body>
 </html>
