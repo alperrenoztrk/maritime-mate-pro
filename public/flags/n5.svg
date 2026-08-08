@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340" role="img" aria-labelledby="t-n5">
+<title id="t-n5">Numeral pennant five</title>
+<defs><clipPath id="c-n5"><path d="M0,0L600,85v170L0,340z"/></clipPath></defs>
+<g clip-path="url(#c-n5)"><rect x="0" y="0" width="300" height="340" fill="#FFCC00"/><rect x="300" y="0" width="300" height="340" fill="#0B4EA2"/></g>
+<path d="M0,0L600,85v170L0,340z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

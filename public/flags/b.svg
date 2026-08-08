@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-b">
+<title id="t-b">Signal flag Bravo</title>
+<defs><clipPath id="c-b"><path d="M0,0h600l-150,300l150,300H0z"/></clipPath></defs>
+<g clip-path="url(#c-b)"><rect x="0" y="0" width="600" height="600" fill="#D8232A"/></g>
+<path d="M0,0h600l-150,300l150,300H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

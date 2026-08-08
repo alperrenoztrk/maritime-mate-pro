@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-m">
+<title id="t-m">Signal flag Mike</title>
+<defs><clipPath id="c-m"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-m)"><rect x="0" y="0" width="600" height="600" fill="#0B4EA2"/><g stroke="#FFFFFF" stroke-width="105"><path d="M0,0L600,600"/><path d="M0,600L600,0"/></g></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

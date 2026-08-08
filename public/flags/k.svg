@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-k">
+<title id="t-k">Signal flag Kilo</title>
+<defs><clipPath id="c-k"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-k)"><rect x="0" y="0" width="300" height="600" fill="#FFCC00"/><rect x="300" y="0" width="300" height="600" fill="#0B4EA2"/></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

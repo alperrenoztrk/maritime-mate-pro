@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-z">
+<title id="t-z">Signal flag Zulu</title>
+<defs><clipPath id="c-z"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-z)"><path d="M0,0L600,0L300,300z" fill="#FFCC00"/><path d="M0,0L0,600L300,300z" fill="#1A1A1A"/><path d="M0,600L600,600L300,300z" fill="#D8232A"/><path d="M600,0L600,600L300,300z" fill="#0B4EA2"/></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

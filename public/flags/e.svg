@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-e">
+<title id="t-e">Signal flag Echo</title>
+<defs><clipPath id="c-e"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-e)"><rect x="0" y="0" width="600" height="300" fill="#0B4EA2"/><rect x="0" y="300" width="600" height="300" fill="#D8232A"/></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

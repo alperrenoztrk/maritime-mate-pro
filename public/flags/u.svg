@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-u">
+<title id="t-u">Signal flag Uniform</title>
+<defs><clipPath id="c-u"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-u)"><rect x="0" y="0" width="300" height="300" fill="#D8232A"/><rect x="300" y="0" width="300" height="300" fill="#FFFFFF"/><rect x="0" y="300" width="300" height="300" fill="#FFFFFF"/><rect x="300" y="300" width="300" height="300" fill="#D8232A"/></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>
