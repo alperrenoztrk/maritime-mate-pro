@@ -110,7 +110,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "abandon",
     title: "Gemiyi Terk",
-    shortTitle: "Terk",
+    shortTitle: "Ship Abandon",
     signalClass: "master-order",
     signalLabel: "Yalnızca Kaptanın açık emri",
     signal:
