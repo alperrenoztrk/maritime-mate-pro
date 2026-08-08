@@ -51,7 +51,7 @@ export default function CrewHierarchyPage() {
     <LibraryPageShell title="Gemi Personeli" icon={Users}>
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <LibraryEntryCard
-          title="Role Cetveli / Muster List"
+          title="Muster\u00a0 List"
           icon={ShieldAlert}
           accent="from-rose-500 via-red-600 to-red-800"
           to="/crew/muster-list"
