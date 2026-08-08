@@ -110,7 +110,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "abandon",
     title: "Gemiyi Terk",
-    shortTitle: "Terk",
+    shortTitle: "Ship Abandon",
     signalClass: "master-order",
     signalLabel: "Yalnızca Kaptanın açık emri",
     signal:
@@ -167,7 +167,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "enclosed-space",
     title: "Kapalı Mahal Kurtarma",
-    shortTitle: "Kapalı Mahal",
+    shortTitle: "Enclosed Space",
     signalClass: "ship-specific",
     signalLabel: "Lokal imdat çağrısı + gemiye özel alarm/PA",
     signal:
@@ -186,7 +186,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "pollution",
     title: "Petrol / Yakıt Döküntüsü",
-    shortTitle: "Kirlilik",
+    shortTitle: "Oil Pollution",
     signalClass: "ship-specific",
     signalLabel: "Köprüüstü bildirimi + SOPEP/SMPEP çağrısı",
     signal:
