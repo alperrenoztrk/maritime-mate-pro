@@ -182,7 +182,6 @@ const SafetyTopicsPage = lazy(() => import("./pages/SafetyTopicsPage"));
 const EnvironmentTopicsPage = lazy(() => import("./pages/EnvironmentTopicsPage"));
 const EconomicsTopicsPage = lazy(() => import("./pages/EconomicsTopicsPage"));
 const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
-const BetaWorkHoursTool = lazy(() => import("./pages/BetaWorkHoursTool"));
 const BetaPscChecklist = lazy(() => import("./pages/BetaPscChecklist"));
 const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
 const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
@@ -220,7 +219,6 @@ const AnimatedRoutes = () => {
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
-        <Route path="/beta/work-hours" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaWorkHoursTool /></PageTransition></ProRoute>} />
         <Route path="/beta/psc-checklist" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaPscChecklist /></PageTransition></ProRoute>} />
         <Route path="/beta/ship-simulator" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaShipSimulator /></PageTransition></ProRoute>} />
         <Route path="/beta/documents" element={<ProRoute feature="Belge ve sertifika takibi"><PageTransition><BetaDocumentTracker /></PageTransition></ProRoute>} />
