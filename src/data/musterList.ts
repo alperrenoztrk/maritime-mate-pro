@@ -186,7 +186,7 @@ export const musterEmergencies: MusterEmergency[] = [
   {
     id: "pollution",
     title: "Petrol / Yakıt Döküntüsü",
-    shortTitle: "Kirlilik",
+    shortTitle: "Oil Pollution",
     signalClass: "ship-specific",
     signalLabel: "Köprüüstü bildirimi + SOPEP/SMPEP çağrısı",
     signal:
