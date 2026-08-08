@@ -134,9 +134,12 @@ uygulama tek başına da işe yarasın (mağaza yorumları için kritik).
   gizlenir. App Store'a çıkmadan önce eklenmeli. Web tarafında da ödeme
   akışı yok: satın alma yalnızca Google Play üzerinden yapılır. Web'de ödeme
   alınacaksa gereken şey bir checkout ucu değil, imza doğrulamalı bir webhook
-  + `platform='stripe'` entitlement yazımıdır (tablo şeması bu değeri zaten
-  kabul ediyor); webhook'suz bir checkout ucu ödeme alsa bile Pro açamaz.
-  Uygulama içi dijital içerikte Play Billing zorunludur.
+  + entitlement yazımıdır; webhook'suz bir checkout ucu ödeme alsa bile Pro
+  açamaz. `user_entitlements.platform` CHECK kısıtı artık yalnızca
+  `google_play` ve `app_store` kabul ediyor
+  (`20260807120000_drop_stripe_platform_check.sql`), yani yeni bir sağlayıcı
+  eklenirken kısıt da genişletilmelidir. Uygulama içi dijital içerikte Play
+  Billing zorunludur.
 - **AdMob:** altyapı kurulu ve `useEntitlement().hasProAccess` ile kapılanmış
   (banner + geçiş reklamı, yalnızca ücretsiz pakette). Varsayılan olarak
   Google'ın TEST reklamları gösterilir; canlıya alma adımları
