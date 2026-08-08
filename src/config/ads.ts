@@ -5,9 +5,12 @@
  * yalnızca ÜCRETSİZ pakette gösterilir, Pro/ömür boyu kullanıcıda hiç
  * gösterilmez ("reklamsız kullanım" Pro vaadidir).
  *
+ * Reklamların tamamı `VITE_ADS_ENABLED` build-time anahtarına bağlıdır ve
+ * anahtar **varsayılan olarak kapalıdır** (bkz. `areAdsEnabled()`).
+ *
  * Gerçek reklam birimi kimlikleri koda YAZILMAZ; `.env` üzerinden verilir.
- * Env boşsa Google'ın resmi TEST birimlerine düşülür, böylece geliştirme ve
- * CI derlemeleri gerçek envanteri kirletmeden çalışır.
+ * Anahtar açık ama kimlikler boşsa Google'ın resmi TEST birimlerine düşülür,
+ * böylece geliştirme ve CI derlemeleri gerçek envanteri kirletmeden çalışır.
  */
 
 import { Capacitor } from '@capacitor/core';
@@ -36,6 +39,27 @@ function env(key: string): string | undefined {
   const raw = (import.meta.env as Record<string, string | undefined>)[key];
   const trimmed = raw?.trim();
   return trimmed ? trimmed : undefined;
+}
+
+/**
+ * Reklamlar bu derlemede etkin mi? (build-time ana anahtar)
+ *
+ * **Varsayılan kapalıdır**: yalnızca `VITE_ADS_ENABLED` değeri açıkça `true`
+ * ise reklamlar etkin sayılır; tanımsız, boş veya başka her değer reklamları
+ * tamamen kapatır.
+ *
+ * "Kimlik yok" ile "reklam yok" bilinçli olarak ayrı kararlardır: kimlikler
+ * boş bırakıldığında TEST reklamına düşmek geliştirmede doğru, ancak mağaza
+ * sürümünde AdMob politikası ihlalidir. Reklamsız yayınlanacak bir sürümde bu
+ * anahtar kapalı bırakılır ve `areAdsSupported()` üzerinden tüm reklam yolları
+ * (SDK başlatma, UMP onay formu, banner, geçiş reklamı) kapanır.
+ *
+ * Reklam açılacaksa anahtarı `true` yapmak yeterli değildir; aşağıdaki dört
+ * birim kimliğinin de doldurulması gerekir, aksi hâlde yayınlanan sürüm
+ * Google'ın TEST reklamlarını gösterir.
+ */
+export function areAdsEnabled(): boolean {
+  return env('VITE_ADS_ENABLED')?.toLowerCase() === 'true';
 }
 
 const CONFIGURED_AD_UNITS: Record<AdPlatform, Record<AdFormat, string | undefined>> = {

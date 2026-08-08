@@ -2,6 +2,9 @@
  * AdMob köprüsü.
  *
  * `@capacitor-community/admob` etrafında ince, savunmacı bir katman:
+ *  - **Build-time anahtarla tamamen kapatılabilir.** `VITE_ADS_ENABLED` açıkça
+ *    `true` değilse (varsayılan) `areAdsSupported()` false döner ve bu
+ *    modüldeki hiçbir çağrı AdMob'a ulaşmaz.
  *  - **Web'de tamamen no-op.** Eklenti web'de `unimplemented` fırlatır; bu
  *    yüzden her giriş noktası `Capacitor.isNativePlatform()` ile korunur
  *    (bkz. src/plugins/screenProtection.web.ts — aynı felsefe).
@@ -30,13 +33,25 @@ import {
   INTERSTITIAL_MIN_INTERVAL_MS,
   INTERSTITIAL_MIN_NAVIGATIONS,
   INTERSTITIAL_SESSION_WARMUP_MS,
+  areAdsEnabled,
   getAdUnitId,
   isUsingTestAds,
 } from '@/config/ads';
 
-/** Reklam bu platformda gösterilebilir mi? (yalnızca Android/iOS) */
+/**
+ * Reklam bu derlemede ve bu platformda gösterilebilir mi?
+ *
+ * İki kapı birden açık olmalı: build-time anahtar (`VITE_ADS_ENABLED`, bkz.
+ * `areAdsEnabled()` — varsayılan kapalı) ve native platform (yalnızca
+ * Android/iOS; eklenti web'de `unimplemented` fırlatır).
+ *
+ * Bu modüldeki her giriş noktası buradan geçer. Anahtar kapalıyken bu yüzden
+ * AdMob SDK hiç `initialize` edilmez, UMP onay formu hiç açılmaz, banner ve
+ * geçiş reklamı hiç istenmez; `--ad-banner-height` 0'da kalır ve `MobileLayout`
+ * alt boşluk açmaz.
+ */
 export function areAdsSupported(): boolean {
-  return Capacitor.isNativePlatform();
+  return areAdsEnabled() && Capacitor.isNativePlatform();
 }
 
 /** Yalnızca geliştirmede konsola yazar; üretimde sessizdir. */

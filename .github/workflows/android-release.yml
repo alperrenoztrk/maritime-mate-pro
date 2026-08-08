@@ -8,8 +8,15 @@ name: Android Release (AAB + APK)
 #   ANDROID_KEY_ALIAS_PASSWORD   -> anahtar parolası
 # Secret'lar tanımlı değilse build imzasız (unsigned) çıktı üretir.
 #
-# AdMob secret'ları (opsiyonel; tanımlı değilse Google'ın TEST reklamları
-# gösterilir — mağaza sürümünde gelir üretmez, mutlaka doldurun):
+# Reklamlar (varsayılan KAPALI). Reklam yolları `VITE_ADS_ENABLED` build-time
+# anahtarına bağlıdır; repository variable olarak ADS_ENABLED tanımlı ve "true"
+# değilse üretilen AAB'de hiç reklam olmaz (SDK başlatılmaz, onay formu
+# açılmaz). Reklamı açmak için: Settings > Variables > ADS_ENABLED=true **ve**
+# aşağıdaki dört birim kimliği secret'ı.
+#
+# AdMob secret'ları (yalnızca ADS_ENABLED=true iken etkilidir; anahtar açıkken
+# tanımlı değillerse Google'ın TEST reklamları gösterilir — mağaza sürümünde
+# gelir üretmez, mutlaka doldurun):
 #   ADMOB_APP_ID_ANDROID           -> ca-app-pub-XXXX~YYYY (AndroidManifest)
 #   ADMOB_BANNER_ID_ANDROID        -> ca-app-pub-XXXX/YYYY
 #   ADMOB_INTERSTITIAL_ID_ANDROID
@@ -54,12 +61,16 @@ jobs:
       - name: Run topic coverage quality gate
         run: npm run check:topic-coverage
 
-      # Reklam birimi kimlikleri JS bundle'ına build sırasında gömülür
-      # (src/config/ads.ts). Secret tanımlı değilse Google'ın resmi TEST
-      # reklamlarına düşülür — yani secret eklenmeden üretilen AAB mağazaya
-      # çıksa bile gerçek reklam göstermez, gelir üretmez.
+      # Reklam anahtarı ve birimi kimlikleri JS bundle'ına build sırasında
+      # gömülür (src/config/ads.ts). ADS_ENABLED variable'ı "true" değilse
+      # (varsayılan) bundle'da reklam yolu hiç çalışmaz ve aşağıdaki kimlikler
+      # ölü kalır — ileride reklam açılacağında yalnızca variable'ı çevirmek
+      # yeterli olsun diye aktarım burada bırakıldı. Anahtar açık ama kimlik
+      # secret'ları boşsa Google'ın resmi TEST reklamlarına düşülür — yani
+      # secret eklenmeden üretilen AAB gerçek reklam göstermez, gelir üretmez.
       - name: Build web (Vite)
         env:
+          VITE_ADS_ENABLED: ${{ vars.ADS_ENABLED }}
           VITE_ADMOB_BANNER_ID_ANDROID: ${{ secrets.ADMOB_BANNER_ID_ANDROID }}
           VITE_ADMOB_INTERSTITIAL_ID_ANDROID: ${{ secrets.ADMOB_INTERSTITIAL_ID_ANDROID }}
           VITE_ADMOB_BANNER_ID_IOS: ${{ secrets.ADMOB_BANNER_ID_IOS }}
@@ -83,7 +94,9 @@ jobs:
       # app/build.gradle, KEYSTORE_FILE / KEYSTORE_PASSWORD / KEY_ALIAS /
       # KEY_PASSWORD ortam değişkenleri tanımlıysa release'i otomatik imzalar.
       # ADMOB_APP_ID_ANDROID manifest'e enjekte edilir; tanımlı değilse
-      # Google'ın TEST App ID'si kullanılır (derleme asla kırılmaz).
+      # Google'ın TEST App ID'si kullanılır (derleme asla kırılmaz). AdMob SDK
+      # pakette bağımlılık olduğu için bu meta-data reklamlar kapalıyken de
+      # gereklidir — eksik olursa uygulama açılışta çöker.
       - name: Build AAB (Play Store) + APK (test)
         working-directory: android
         env:
