@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Anchor, Loader2, Mail, Lock, ShieldCheck, ExternalLink } from "lucide-react";
+import { Anchor, Loader2, Mail, Lock, ShieldCheck, FileText, ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuthContext";
 import { sanitizeReturnPath } from "@/lib/authFlow";
 import { supabase } from "@/integrations/supabase/safeClient";
-import { PRIVACY_POLICY_URL } from "@/config/legal";
+import { PRIVACY_POLICY_URL, TERMS_OF_USE_URL } from "@/config/legal";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
@@ -204,12 +204,22 @@ const Auth = () => {
             </TabsContent>
           </Tabs>
 
-          {/* Gizlilik politikası giriş duvarının arkasında kalmamalı: kullanıcı
-              hesap açmadan önce verisinin nasıl işlendiğini okuyabilmeli.
-              Ayarlar'daki bağlantının aynısı (bkz. src/pages/Settings.tsx). */}
+          {/* Yasal metinler giriş duvarının arkasında kalmamalı: kullanıcı hesap
+              açmadan önce hem verisinin nasıl işlendiğini hem de kabul ettiği
+              şartları okuyabilmeli. Ayarlar'daki bağlantıların aynısı
+              (bkz. src/pages/Settings.tsx). */}
           <div className="border-t border-border/60 pt-4 text-center">
             <p className="text-[11px] leading-relaxed text-muted-foreground">
-              Kayıt olarak veya giriş yaparak verilerinizin{" "}
+              Kayıt olarak veya giriş yaparak{" "}
+              <a
+                href={TERMS_OF_USE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4"
+              >
+                Kullanım Şartları
+              </a>
+              'nı kabul eder ve verilerinizin{" "}
               <a
                 href={PRIVACY_POLICY_URL}
                 target="_blank"
@@ -222,16 +232,28 @@ const Auth = () => {
               verilerinizi istediğiniz zaman Ayarlar → Hesabımı sil ile kalıcı
               olarak silebilirsiniz.
             </p>
-            <a
-              href={PRIVACY_POLICY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
-            >
-              <ShieldCheck className="h-3.5 w-3.5" />
-              Gizlilik Politikası
-              <ExternalLink className="h-3 w-3 opacity-70" />
-            </a>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              <a
+                href={PRIVACY_POLICY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Gizlilik Politikası
+                <ExternalLink className="h-3 w-3 opacity-70" />
+              </a>
+              <a
+                href={TERMS_OF_USE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
+              >
+                <FileText className="h-3.5 w-3.5" />
+                Kullanım Şartları
+                <ExternalLink className="h-3 w-3 opacity-70" />
+              </a>
+            </div>
           </div>
         </CardContent>
       </Card>
