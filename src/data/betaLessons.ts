@@ -411,11 +411,13 @@ export function getRuleIntegrationAssignments(
   return assignments;
 }
 
-const asNarrativeSentence = (value: string) => {
-  const trimmed = value.trim();
-  return /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
-};
-
+/**
+ * Mevzuat maddelerini konu anlatımına bölüm olarak ekler.
+ *
+ * Kaynaktaki `rule.content` zaten madde listesidir; tek paragrafa birleştirmek
+ * yerine `bulletPoints` olarak aktarılır. Grubun ilk bölümünde kaynak künyesi
+ * gösterilir, künye yoksa dolgu metni yazılmaz.
+ */
 const integratedRuleSections = (
   topicId: string,
   assignments: RuleIntegrationAssignment[],
@@ -424,16 +426,13 @@ const integratedRuleSections = (
     group.rules.map((rule, sectionIndex) => {
       const source = group.source
         ? [group.source.code, group.source.detail].filter(Boolean).join(" — ")
-        : "gemiye uygulanan uluslararası ve şirket gereklilikleri";
-      const sourceLead =
-        sectionIndex === 0
-          ? `${group.title} başlığının uygulama çerçevesi ${source} kaynağına dayanır. `
-          : "";
+        : "";
       return {
         id: `${topicId}-integrated-standard-${groupIndex + 1}-${sectionIndex + 1}`,
         title: `${group.title} — ${rule.subtitle}`,
         sourceTitle: rule.subtitle,
-        content: `${sourceLead}${rule.content.map(asNarrativeSentence).join(" ")}`,
+        content: sectionIndex === 0 && source ? `Kaynak: ${source}` : "",
+        bulletPoints: rule.content.map((item) => item.trim()).filter(Boolean),
       };
     }),
   );
