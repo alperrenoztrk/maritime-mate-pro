@@ -17,6 +17,7 @@ import {
   type ProOffers,
 } from "@/services/billing";
 import { getPlaySubscriptionManagementUrl, PRODUCT_IDS, type ProPlan } from "@/config/products";
+import { TERMS_OF_USE_URL } from "@/config/legal";
 
 /**
  * Pro paywall sayfası (/pro).
@@ -326,10 +327,22 @@ const ProPage = () => {
                   <RefreshCw className={`w-4 h-4 ${restoring ? "animate-spin" : ""}`} />
                   <span data-translatable>Satın almaları geri yükle</span>
                 </Button>
+                {/* Play, abonelik satın alma ekranında koşulların tam metnine
+                    bağlantı verilmesini bekliyor; özet burada, tamamı şartlarda. */}
                 <p className="text-xs text-muted-foreground mt-2 max-w-xl mx-auto">
                   <span data-translatable>
                     Ödemeler Google Play hesabınızdan alınır. Abonelikler dönem sonunda otomatik yenilenir; dilediğiniz zaman Google Play &gt; Abonelikler bölümünden iptal edebilirsiniz. Ömür boyu paket tek seferlik ödemedir ve sınırsız yapay zekâ kotası içermez.
-                  </span>
+                  </span>{" "}
+                  <span data-translatable>İadeler Google Play iade politikasına tabidir. Koşulların tamamı için bkz.</span>{" "}
+                  <a
+                    href={TERMS_OF_USE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline underline-offset-4"
+                  >
+                    <span data-translatable>Kullanım Şartları</span>
+                  </a>
+                  .
                 </p>
               </div>
             </>
