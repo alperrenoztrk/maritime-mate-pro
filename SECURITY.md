@@ -3,30 +3,27 @@
 Bu belge uygulamanın dış saldırılara karşı koruma katmanlarını özetler ve
 yeni kod eklerken uyulması gereken kuralları tanımlar.
 
-## Geçmişte commit'lenmiş anahtarlar
+## Git geçmişindeki anahtarlar
 
-**Gemini API anahtarı — temiz.** `test-gemini-api.js` dosyasında bir zamanlar
-gerçek bir Gemini anahtarı (`AIzaSyDZ81...`) commit'lenmişti. Dosyanın tüm
-geçmiş sürümleri tarandı: anahtar artık **git geçmişinde de yok**, dosya
-anahtarı ortam değişkeninden okuyor. (Bu bölüm daha önce anahtarın geçmişte
-durduğunu söylüyordu; artık doğru değil.) Anahtar bir kez sızdığı için yine de
-iptal edilmiş olmalıdır — emin değilseniz
-[Google AI Studio](https://aistudio.google.com/apikey)'dan iptal edip yenisini
-üretin ve yalnızca Supabase Secrets'a (`GEMINI_API_KEY`) koyun.
+Geçmişin tamamı (tüm ref'lerden erişilebilen 243 commit) `AIzaSy[\w-]{10,}`
+kalıbıyla tarandı. Çıkan iki eşleşme:
 
-**Firebase istemci anahtarı — geçmişte duruyor, aksiyon gerekiyor.** Silinmiş
-`google-services.json` (kök + `android/app/`) ve `FIREBASE_SETUP.md` dosyaları
-`AIzaSyBhpu...` ile başlayan anahtarı taşıyordu ve bu **hâlâ git geçmişinden
-okunabilir**. Tür gereği gizli değildir (istemci tanımlayıcısıdır), ama
-kullanılmayan bir anahtarı yaşatmanın hiçbir faydası yok:
-Google Cloud Console → `maritime-calculator` projesinden **anahtarı silin**
-(ya da projeyi tamamen kapatın). Yalnızca kısıtlamak yeterli değildir.
+| Anahtar | Nerede | Durum |
+|---|---|---|
+| `AIzaSyBhpuFTxk…` | silinmiş `google-services.json` + `FIREBASE_SETUP.md` | **Gerçek** Firebase istemci anahtarı — aşağıya bakın |
+| `AIzaSyDExample_Your_Real_API_Key_Here_…` | belge örnekleri | Yer tutucu, zararsız |
 
-Taramayı tekrar etmek için:
+Bu belge daha önce `test-gemini-api.js` içinde `AIzaSyDZ81…` ile başlayan
+gerçek bir Gemini anahtarının geçmişte durduğunu söylüyordu. **Bu artık doğru
+değil:** o dize geçmişte yalnızca bu belgenin kendi uyarı metninde geçiyor,
+hiçbir commit'te kod olarak bulunmuyor. Dosyanın erişilebilir geçmişteki en
+eski hâli bile anahtarı `process.env.GEMINI_API_KEY`'den okuyor.
 
-```
-git log --all -S "AIzaSy" --oneline --name-only
-```
+Tek uyarı: bu tarama yalnızca **mevcut ref'lerden erişilebilen** geçmişi
+kapsar. Anahtar bir zamanlar squash/rewrite edilmiş bir dal üzerinden
+GitHub'a itilmişse, GitHub o nesneleri commit SHA'sı ile hâlâ sunabilir.
+Bu yüzden "anahtarı iptal edin" tavsiyesi geçerliliğini korur; daha önce
+iptal edildiyse yapılacak bir şey yoktur.
 
 ## Firebase kaldırıldı
 
@@ -36,8 +33,12 @@ duruyordu; hiçbiri kullanılmıyordu. Uygulama kimlik doğrulama, veritabanı v
 depolama için yalnızca Supabase kullanır, push bildirimi göndermez ve projede
 tek bir Firebase SDK'sı kurulu değildir. Üçü de kaldırıldı.
 
-Anahtarın git geçmişinde kalması ve silinmesi gerektiği için bkz. yukarıdaki
-"Geçmişte commit'lenmiş anahtarlar".
+Geçmişte kalan tek gerçek anahtar budur (`AIzaSyBhpu…`). Firebase API anahtarı
+türü gereği gizli değildir — istemci tanımlayıcısıdır, APK'dan zaten okunur —
+ama artık kullanılmayan bir projeye ait olduğu için **Google Cloud Console'dan
+`maritime-calculator` projesindeki anahtarı silin** (ya da proje tamamen
+atılsın). Yalnızca kısıtlamak yeterli değil: kullanılmayan bir anahtarı
+yaşatmanın hiçbir faydası yok.
 
 ## İstemci (web / Capacitor WebView)
 
@@ -53,8 +54,16 @@ Anahtarın git geçmişinde kalması ve silinmesi gerektiği için bkz. yukarıd
   kullanılır. Yeni kullanım eklemeyin; gerekiyorsa DOMPurify'dan geçirin.
 - **postMessage**: Dinleyiciler `event.source` doğrulaması yapar
   (routeHarvester). Yeni dinleyicilerde kaynak/origin kontrolü zorunludur.
-- **Oturum**: Supabase oturumu WebView localStorage'ında tutulur;
-  Android'de `allowBackup=false` ile yedek üzerinden sızması engellenir.
+- **Oturum**: Native kabuklarda Supabase oturumu Android Keystore / iOS
+  Keychain arkasında şifreli tutulur (`src/lib/secureSessionStorage.ts` →
+  `@aparajita/capacitor-secure-storage`; AES/GCM, anahtar `AndroidKeyStore`
+  içinde üretilir ve TEE/StrongBox olan cihazlarda donanımdan çıkmaz).
+  Root'lanmış bir cihazda SharedPreferences dosyası okunsa bile yalnızca
+  şifreli metin görünür. Web/PWA'da karşılığı olmadığı için oturum
+  localStorage'da kalır. Android'de ayrıca `allowBackup=false`.
+  Eklenti yüklenemezse (web, `cap sync` yapılmamış kabuk) adaptör
+  localStorage'a düşer — kullanıcı kilitlenmez, koruma seviyesi eski hâline
+  döner ve konsola uyarı yazılır.
 
 ## Edge Functions (Supabase)
 
@@ -66,14 +75,29 @@ fonksiyonlarda kullanılmaları zorunludur:
 | `auth.ts` | `validateAuth` (JWT → kullanıcı), jenerik hata mesajları |
 | `cors.ts` | Origin allowlist'li CORS (`getCorsHeaders`) — wildcard yok |
 | `ssrf.ts` | `assertSafeUrl`: özel/loopback/link-local IP ve iç host engeli |
-| `rateLimit.ts` | IP/kullanıcı başına istek freni (`checkRateLimit`) |
+| `rateLimit.ts` | IP/kullanıcı başına istek freni (`checkDurableRateLimit`) |
 | `entitlements.ts` | Faturalama düzeyinde AI kotası (`consumeAiQuota`) |
+| `serviceClient.ts` | `service_role` istemcisi (yukarıdaki ikisi de kullanır) |
 
 Kurallar:
 
 - **Kimlik doğrulama**: AI/maliyet üreten her uç `validateAuth` + kota
   kullanır. `verify_jwt=false` yalnızca fonksiyon içinde kendi doğrulamasını
   yapan uçlar için kabul edilir (ör. `play-rtdn` timing-safe paylaşılan sır).
+- **Rate limit**: Maliyet üreten veya dış servise giden her uç
+  `checkDurableRateLimit` kullanır. Sayaç Postgres'tedir
+  (`consume_rate_limit` RPC), yani isolate'ler arasında paylaşılır ve soğuk
+  başlatmada sıfırlanmaz. Bellek içi `checkRateLimit` yalnızca ucuz ilk
+  kademedir (aynı isolate'teki bot döngüsünü DB'ye gitmeden keser); tek
+  başına kullanılmamalıdır. DB'ye ulaşılamazsa fren **açık tarafa düşer** —
+  rate limit'in kendisi bir kullanılabilirlik arızasına dönüşmemelidir.
+- **Satın alma doğrulama**: `verify-purchase` bir purchaseToken'ı hesaba
+  bağlamadan önce iki kontrol yapar: (1) token başka bir kullanıcıya bağlı
+  mı, (2) Google'ın döndürdüğü `obfuscatedAccountId` oturumdaki `user.id` ile
+  eşleşiyor mu. İkincisi "başkasının token'ını ilk talep eden kazanır"
+  boşluğunu kapatır. Alan yalnızca uygulama içi satın almalarda dolu gelir;
+  promosyon kodları ve eski sürüm satın alımları için null olabildiğinden
+  null durumunda birinci kontrole güvenilir.
 - **SSRF**: Kullanıcıdan URL alan her fetch `assertSafeUrl`'den geçer ve
   yönlendirmeler `redirect: "manual"` ile izlenip **her sıçramada yeniden
   doğrulanır** (`fetch-article` örnek alınmalı). Harici yanıtlardan gelen
@@ -81,36 +105,67 @@ Kurallar:
 - **Kaynak sınırları**: Harici yanıtlar boyut sınırıyla okunur
   (`fetch-article`: 3 MB) ve içerik türü süzülür; zaman aşımı zorunludur.
 - **Hata mesajları**: İstemciye yalnızca jenerik mesaj döner; ayrıntı
-  `console.error` ile sunucu logunda kalır (Play API/fetch hataları dahil).
+  `console.error` ile sunucu logunda kalır (harici servis/fetch hataları
+  dahil).
 - **Girdi doğrulama**: Gövde alanları tip + uzunluk + beyaz liste ile
   doğrulanır (`gemini-chat` mesaj şeması, `batch-content-writer` hedef
-  şeması, `verify-purchase` ürün kimliği allowlist'i).
+  şeması).
 - **CORS**: Yalnızca `getCorsHeaders(origin)`; `*` kullanılmaz, yanıtlar
   `Vary: Origin` taşır.
 
-## Kimlik doğrulama — Supabase panel ayarları
+## Kimlik doğrulama
 
-Şifreler bu repoda hiçbir yerde tutulmaz, loglanmaz veya elle işlenmez:
-uygulama yalnızca `signInWithPassword` / `signUp` çağırır, hash'lemeyi
-Supabase (GoTrue, bcrypt) yapar. Buna karşılık **şifre politikası ve giriş
-freni koddan değil panelden** yönetilir — `src/pages/Auth.tsx` içindeki
-"en az 8 karakter" kuralı yalnızca istemci tarafı bir kolaylıktır ve API'ye
-doğrudan istek atan biri için bağlayıcı değildir.
+- **İki adımlı doğrulama (TOTP)**: İsteğe bağlıdır, Ayarlar → İki adımlı
+  doğrulama'dan açılır (`src/lib/mfa.ts`, `src/components/settings/
+  TwoFactorCard.tsx`). Girişte kod adımı hem `Auth.tsx` hem `RequireAuth`
+  tarafından uygulanır.
+- **İstemci kapısı tek başına yeterli değildir**: çalınmış bir `aal1` jetonu
+  PostgREST'e doğrudan konuşabilir. Zorlama veritabanındadır — faktör
+  kaydetmiş kullanıcının satırları yalnızca `aal2` jetonuyla açılır
+  (`20260807150000_require_aal2_for_mfa_users.sql`, RESTRICTIVE politikalar).
+  **Yeni kullanıcı tablosu eklerken bu politikayı da eklemeyi unutmayın**;
+  RLS'i açıp AAL politikasını atlamak 2FA'yı o tablo için sessizce devre dışı
+  bırakır.
+- **Tuzak — RLS engeli hata değil, boş sonuç döndürür.** `aal1` oturumda
+  korumalı bir tablodan okuma yapan kod `error` almaz; `data: []` alır. Bu
+  sonucu "kullanıcının hiç kaydı yok" diye yorumlayıp yerele yazan her yer
+  veriyi bozar (`EntitlementContext` Pro hakkını "free" ile eziyordu; kod
+  adımı bitene kadar sorgu atlanarak düzeltildi). Oturumun tamamlanmasını
+  beklemeyen yeni bir okuma eklemeyin.
+- **TOTP Supabase'de varsayılan olarak KAPALIDIR.** Panelden açılmadan
+  uygulamadaki akış çalışmaz — bkz. `docs/supabase-auth-hardening.md`.
+- **Panel ayarları** (sızmış şifre koruması, minimum şifre uzunluğu, rate
+  limit, e-posta doğrulama, OTP süresi) repoda görünmez. Hedeflenen değerler
+  `supabase/config.toml` içindedir ama `supabase config push` çalıştırılmadan
+  etkili olmaz; doğrulama listesi `docs/supabase-auth-hardening.md`.
+  `Auth.tsx:19`'daki 8 karakter kuralı yalnızca istemci tarafıdır.
 
-Aşağıdakiler dağıtım öncesi **elle** doğrulanmalıdır (repodan denetlenemezler):
+## Bilinen sınır: Pro içerik kapısı istemcide
 
-| Ayar | Konum | Olması gereken |
-|---|---|---|
-| Leaked password protection | Authentication → Policies (Password) | **Açık** (HaveIBeenPwned kontrolü) |
-| Minimum password length | Authentication → Policies (Password) | **≥ 8** (istemci kuralıyla eşit) |
-| Password requirements | Authentication → Policies (Password) | En az `letters_digits` |
-| Confirm email | Authentication → Sign In / Providers → Email | **Açık** |
-| Rate limits (sign in/up, token refresh, e-posta) | Authentication → Rate Limits | Varsayılanları düşürmeyin |
-| OTP / magic link süresi | Authentication → Sign In / Providers | **≤ 1 saat** |
-| Redirect URLs | Authentication → URL Configuration | Yalnızca `https://nauticalleap.com/**` ve `com.marinersbook.app://auth/callback` |
+`ProGate.tsx` / `ProRoute.tsx` yalnızca istemci tarafı kontrollerdir. Karar
+`EntitlementContext`'ten gelir; bağlam sunucuya ulaşabildiğinde `user_entitlements`
+tablosunu okur, ulaşamadığında `mmp.entitlement.v1` localStorage önbelleğine
+düşer. Bu önbellek **imzasız düz metindir**: onu düzenleyip cihazı çevrimdışına
+alan biri Pro içeriği açabilir.
 
-MFA/2FA şu an yok. Şifre + e-posta erişimi olan biri hesaba girebilir;
-yüksek riskli hesaplar için ileride TOTP eklenmesi değerlendirilmelidir.
+Bu bilinçli olarak kabul edilmiş bir risktir, çünkü:
+
+- Pro içeriğin çoğu (dersler, quizler, 3B gemi sistemleri) APK'nın içinde
+  paketli gelir. Sunucu kapısı koysak bile içerik cihazda durur; paketli
+  içeriği istemci tarafı bir kontrolle korumak tanım gereği mümkün değildir.
+- Çevrimdışı erişim ürün gereksinimidir (gemide internet yok), dolayısıyla
+  "hak sunucudan doğrulanmadan içerik açılmasın" seçeneği elenmiştir.
+
+Buna karşılık **gerçekten paraya dokunan taraf sunucuda zorlanır**: AI kotası
+(`consume_ai_credit`) ve satın alma doğrulaması (`verify-purchase`) istemciye
+hiç güvenmez. İstemcinin "ben Pro'yum" iddiası hiçbir sunucu kararını
+etkilemez — `getUserTier` her zaman tabloyu okur.
+
+Çıtayı yükseltmek istenirse sıradaki adım, sunucunun Ed25519 ile imzaladığı
+süreli bir hak jetonu üretmesi ve istemcinin yalnızca genel anahtarla
+doğrulamasıdır; bu, saldırıyı "localStorage'da JSON düzenle" seviyesinden
+"APK'yı yamala ve yeniden imzala" seviyesine taşır. Paketli içerik için nihai
+koruma yine de sağlamaz.
 
 ## Veritabanı
 
@@ -121,12 +176,16 @@ yüksek riskli hesaplar için ileride TOTP eklenmesi değerlendirilmelidir.
 
 ## Para kazanma sırları (repoda değildir)
 
-Abonelik akışı iki Supabase Secret'ına bağlıdır; eksiklerse kod kusursuz
-çalışsa bile kullanıcı **ödeme yapar ama Pro açılmaz**:
+Abonelik akışı iki Supabase Secret'ına bağlıdır. Kod kusursuz çalışsa bile
+bunlar eksikse sonuç şudur: kullanıcı **ödeme yapar ama Pro açılmaz**.
 
-- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` — yoksa `verify-purchase` 503 döner.
+- `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` — yoksa `verify-purchase` 503 döner ve
+  hiçbir satın alma doğrulanamaz. (Onaylanmayan satın almayı Google 3 gün
+  içinde iade eder, yani para geri gider — ama kullanıcı Pro alamaz.)
 - `PLAY_RTDN_SECRET` — yoksa/yanlışsa `play-rtdn` her bildirimi 401'ler;
-  yenileme, iptal, ödeme sorunu ve iade olayları hiç işlenmez.
+  yenileme, iptal, ödeme sorunu ve iade olayları entitlement tablosuna hiç
+  işlenmez. Süresi dolmuş abonelikte bile erişim, kullanıcı uygulamayı açana
+  kadar açık kalır.
 
 İkisi de dışarıdan doğrulanabilir:
 
@@ -134,8 +193,15 @@ Abonelik akışı iki Supabase Secret'ına bağlıdır; eksiklerse kod kusursuz
 npm run check:billing-config
 ```
 
-(Gerekli ortam değişkenleri `scripts/check-play-billing-config.mjs`
-başındaki açıklamada.) Bu kapı yeşil olmadan mağazaya çıkmayın.
+Gerekli ortam değişkenleri `scripts/check-play-billing-config.mjs` başındaki
+açıklamadadır. Kapı hiçbir kontrolü çalıştıramazsa yeşil dönmez (çıkış kodu 2),
+çünkü "doğrulandı" ile "doğrulanmadı" aynı çıktıyı vermemelidir. Bu kapı yeşil
+olmadan mağazaya çıkmayın.
+
+Sunucu yapılandırması eksikken satın alma denenirse istemci artık jenerik
+"tekrar deneyin" mesajı göstermez: `BillingNotConfiguredError`
+(`src/services/billing.ts`) kullanıcıya ücretin iade edileceğini söyler.
+Tekrar denemek bu hatayı düzeltmez.
 
 ## Android
 

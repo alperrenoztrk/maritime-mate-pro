@@ -1,5 +1,6 @@
 import { Capacitor } from "@capacitor/core";
 import { supabase, backendUrl, backendPublishableKey } from "@/integrations/supabase/safeClient";
+import { sessionStorageAdapter } from "@/lib/secureSessionStorage";
 
 /**
  * Custom URL scheme the native shells register (AndroidManifest.xml intent
@@ -200,10 +201,16 @@ export const finishOAuthFromUrl = async (
   return { handled: false, error: null };
 };
 
-export const getStoredCodeVerifier = () => {
+/**
+ * PKCE code verifier'ı Supabase'in yazdığı yerden okur. Native kabukta bu
+ * artık Keystore/Keychain olduğu için erişim asenkrondur; adaptör üzerinden
+ * gitmek iki platformda da doğru kaynağa bakmayı garanti eder
+ * (bkz. src/lib/secureSessionStorage.ts).
+ */
+export const getStoredCodeVerifier = async (): Promise<string | null> => {
   try {
     const storageKey = `sb-${new URL(backendUrl).hostname.split(".")[0]}-auth-token-code-verifier`;
-    return localStorage.getItem(storageKey) || null;
+    return (await sessionStorageAdapter.getItem(storageKey)) || null;
   } catch {
     return null;
   }

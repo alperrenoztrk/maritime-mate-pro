@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
@@ -9,12 +9,17 @@ import {
   sanitizeReturnPath,
   startGoogleSignIn,
 } from "@/lib/authFlow";
+import { deriveMfaStatus } from "@/lib/mfa";
 import { AuthContext } from "./auth-context";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Oturum nesnesinden senkron türetilir: girişten sonraki ilk render'da bile
+  // doğru olduğu için kod ekranı atlanamaz (bkz. src/lib/mfa.ts).
+  const mfaChallengeRequired = useMemo(() => deriveMfaStatus(session).challengeRequired, [session]);
 
   useEffect(() => {
     // Register listener FIRST, then fetch session
@@ -113,7 +118,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, session, loading, signInWithEmail, signUpWithEmail, signInWithGoogle, signOut }}
+      value={{
+        user,
+        session,
+        loading,
+        mfaChallengeRequired,
+        signInWithEmail,
+        signUpWithEmail,
+        signInWithGoogle,
+        signOut,
+      }}
     >
       {children}
     </AuthContext.Provider>

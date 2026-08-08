@@ -13,7 +13,6 @@ const earthTimezone1 = "/diagrams/navigation/zaman-dilimleri.svg";
 // Coğrafi Koordinat Sistemi + Enlem — Tur 2: Teknik SVG diyagramlar (AI görseller değiştirildi)
 const coordinateSystem1 = "/diagrams/navigation/koordinat-sistemi.svg";
 const coordinateSystem2 = "/diagrams/navigation/paraleller-meridyenler.svg";
-const coordinateSystem3 = "/diagrams/navigation/enlem-bolgeleri.svg";
 const latitudeParallels = "/diagrams/navigation/enlem-paralelleri.svg";
 const latitudeConcept = "/diagrams/navigation/enlem-tanimi.svg";
 const latitudeMeasurement1 = "/diagrams/navigation/enlem-gokyuzu.svg";
@@ -31,7 +30,6 @@ const enlemDefinition = "/diagrams/navigation/enlem-tanimi.svg";
 const enlemRegions = "/diagrams/navigation/enlem-bolgeleri.svg";
 const enlemNauticalMile = "/diagrams/navigation/deniz-mili.svg";
 const enlemPlaneSailing = "/diagrams/navigation/duzlem-seyir.svg";
-const enlemNewOrleans = "/diagrams/navigation/enlem-bolgeleri.svg";
 
 // Import images - Boylam
 import boylamWorldMap from "@/assets/navigation/boylam-world-map.jpg";
@@ -485,7 +483,7 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       {
         title: "Enlem (Latitude) Kavramı",
         content: "Enlem, bir noktanın ekvatora olan açısal uzaklığıdır. Ölçüm, Dünya merkezinden yapılır ve kuzey–güney yönünü ifade eder.",
-        image: coordinateSystem3,
+        image: latitudeConcept,
         imageAlt: "Latitude and longitude in three dimensions",
         bulletPoints: [
           "Ekvator: 0° enlem",
@@ -649,8 +647,8 @@ Bu sonuç, geminin yerel öğle anında **8° 30.0′ Kuzey enleminde** bulundu�
       {
         title: "Örnek Konum: New Orleans",
         content: "New Orleans, ABD'de 30°N enlem ve 90°W boylam koordinatlarında bulunur. Bu konum, enlemi somut bir örnekle anlamak için kullanılabilir.",
-        image: enlemNewOrleans,
-        imageAlt: "The coordinates of New Orleans as an example",
+        // Görsel yok: elde bu koordinatı gösteren bir diyagram bulunmuyor ve
+        // enlem bölgeleri diyagramı bu sayısal örneği anlatmıyor.
         bulletPoints: [
           "30° Kuzey enlemi, ekvatordan 30° kuzeyde olduğunu gösterir",
           "Bu noktadan kutba mesafe: (90° - 30°) × 60 = 3600 deniz mili",

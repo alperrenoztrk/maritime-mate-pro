@@ -284,7 +284,6 @@ const MaritimeNews = () => {
         <article className="gz-sheet overflow-hidden">
           <div className="gz-showthrough" aria-hidden="true" />
           <div className="gz-grain" aria-hidden="true" />
-          <div className="gz-fold" aria-hidden="true" />
 
           {/* ── Manşet bloğu ──
               Üstteki geniş boşluk, sayfanın üzerinde duran genel "geri" düğmesinin

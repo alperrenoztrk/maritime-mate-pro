@@ -130,7 +130,6 @@ const Index = () => {
             <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
               MARINER'S BOOK
             </span>
-            <span className="sr-only"> — Interactive Maritime Learning and Calculations</span>
           </h1>
         </div>
       </div>

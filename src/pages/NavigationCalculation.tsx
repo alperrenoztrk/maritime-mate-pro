@@ -2718,9 +2718,9 @@ export default function NavigationCalculationPage() {
         }
         const deltaLonDeg = toDegrees(deltaLonRad);
         const deltaLatRad = toRadians(deltaLatDeg);
-        const qRaw = Math.log(Math.tan(Math.PI / 4 + toRadians(lat2) / 2) / Math.tan(Math.PI / 4 + toRadians(lat1) / 2));
-        const q = Math.abs(deltaLatRad) > 1e-12 ? qRaw / deltaLatRad : Math.cos(toRadians(lat1));
-        const courseDeg = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, q * deltaLatRad)));
+        const deltaPsi = Math.log(Math.tan(Math.PI / 4 + toRadians(lat2) / 2) / Math.tan(Math.PI / 4 + toRadians(lat1) / 2));
+        const q = Math.abs(deltaLatRad) > 1e-12 ? deltaLatRad / deltaPsi : Math.cos(toRadians((lat1 + lat2) / 2));
+        const courseDeg = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, deltaPsi)));
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Sonuç:\nMesafe: ${rhumbResults.distance.toFixed(2)} nm\nSabit Kerteriz: ${rhumbResults.course.toFixed(1)}°`}</pre>
@@ -2728,9 +2728,10 @@ export default function NavigationCalculationPage() {
               steps={[
                 `Koordinatları ondalık dereceye çevir: φ1=${formatSigned(lat1, 4)}°, λ1=${formatSigned(lon1, 4)}°, φ2=${formatSigned(lat2, 4)}°, λ2=${formatSigned(lon2, 4)}°`,
                 `ΔLat = φ2 - φ1 = ${formatSigned(deltaLatDeg, 4)}°, ΔLon = ${formatSigned(deltaLonDeg, 4)}° (kısa yol düzeltmesi dahil)`,
-                `q = ln(tan(45+φ2/2) / tan(45+φ1/2)) / Δφ = ${formatMaybeNumber(q, 6)}`,
+                `Δψ = ln(tan(45+φ2/2) / tan(45+φ1/2)) = ${formatMaybeNumber(deltaPsi, 6)}`,
+                `q = Δφ / Δψ = ${formatMaybeNumber(q, 6)}`,
                 `Mesafe = 60 × √(ΔLat² + (q×ΔLon)²) = ${rhumbResults.distance.toFixed(2)} NM`,
-                `Kurs = atan2(ΔLon, q×ΔLat) = ${courseDeg.toFixed(1)}°`,
+                `Kurs = atan2(ΔLon, Δψ) = ${courseDeg.toFixed(1)}°`,
               ]}
             />
           </div>

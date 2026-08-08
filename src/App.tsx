@@ -73,7 +73,7 @@ const StabilityFormulaDetailPage = lazy(() => import("./pages/StabilityFormulaDe
 const NavigationFormulasPage = lazy(() => import("./pages/NavigationFormulas"));
 
 const DetailedMeteorology = lazy(() => import("./pages/DetailedMeteorology"));
-const COLREGPresentation = lazy(() => import("./pages/COLREGPresentation"));
+
 const StabilityCalculationsPage = lazy(() => import("./pages/StabilityCalculations"));
 const StabilityQuizPage = lazy(() => import("./pages/StabilityQuiz"));
 const StabilityShearingBendingPage = lazy(() => import("./pages/StabilityShearingBending"));
@@ -182,7 +182,6 @@ const SafetyTopicsPage = lazy(() => import("./pages/SafetyTopicsPage"));
 const EnvironmentTopicsPage = lazy(() => import("./pages/EnvironmentTopicsPage"));
 const EconomicsTopicsPage = lazy(() => import("./pages/EconomicsTopicsPage"));
 const BetaFeaturesPage = lazy(() => import("./pages/BetaFeaturesPage"));
-const BetaWorkHoursTool = lazy(() => import("./pages/BetaWorkHoursTool"));
 const BetaPscChecklist = lazy(() => import("./pages/BetaPscChecklist"));
 const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
 const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
@@ -220,7 +219,6 @@ const AnimatedRoutes = () => {
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
-        <Route path="/beta/work-hours" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaWorkHoursTool /></PageTransition></ProRoute>} />
         <Route path="/beta/psc-checklist" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaPscChecklist /></PageTransition></ProRoute>} />
         <Route path="/beta/ship-simulator" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaShipSimulator /></PageTransition></ProRoute>} />
         <Route path="/beta/documents" element={<ProRoute feature="Belge ve sertifika takibi"><PageTransition><BetaDocumentTracker /></PageTransition></ProRoute>} />
@@ -360,7 +358,7 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/rules" element={<Navigate to="/lessons/navigation/topics" replace />} />
 
         <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />
-        <Route path="/navigation/colreg-presentation" element={<PageTransition><COLREGPresentation /></PageTransition>} />
+        
         <Route path="/navigation/assistant" element={<PageTransition><NavigationAssistantPage /></PageTransition>} />
         <Route path="/navigation/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><NavigationQuizPage /></PageTransition></ProRoute>} />
         <Route path="/economics" element={<PageTransition><Economics /></PageTransition>} />

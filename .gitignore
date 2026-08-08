@@ -17,6 +17,9 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
+# Cursor agent'ının bıraktığı build/lint çıktıları (.cursor/rules gibi gerçek
+# yapılandırma dosyaları commit'lenebilsin diye yalnızca bu klasör hariç tutulur)
+.cursor/.agent-tools/
 .DS_Store
 *.suo
 *.ntvs*

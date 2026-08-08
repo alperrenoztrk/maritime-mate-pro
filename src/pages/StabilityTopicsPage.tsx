@@ -36,6 +36,7 @@ const trimDiagram = "/diagrams/stability/trim.svg";
 const damageStabilityDiagram = "/diagrams/stability/yara-stabilitesi.svg";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
+import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
 // =====================================
 // YENİ 14 BAŞLIKLI STABİLİTE MÜFREDATİ
@@ -3462,11 +3463,7 @@ export default function StabilityTopicsPage() {
                 )}
 
                 {/* Main Content */}
-                <div className="prose prose-sm max-w-none">
-                  <div className="text-foreground leading-relaxed whitespace-pre-line">
-                    {currentContent.content}
-                  </div>
-                </div>
+                <StructuredLessonText text={currentContent.content} />
 
                 {/* Bullet Points */}
                 {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (

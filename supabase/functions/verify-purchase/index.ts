@@ -7,15 +7,6 @@
 // satın almayı onaylar (acknowledge). İstemciden gelen hiçbir "Pro" iddiasına
 // doğrudan güvenilmez.
 //
-// Bir satın almanın bu kullanıcıya ait olduğu iki bağımsız kontrolle
-// denetlenir:
-//   1. Jeton başka bir kullanıcıya bağlanmışsa reddedilir (`token_in_use`).
-//   2. Play'in döndürdüğü `obfuscatedExternalAccountId` bu kullanıcıyla
-//      çelişiyorsa reddedilir (`account_mismatch`).
-// İkincisi (1)'deki "önce talep eden kazanır" boşluğunu kapatır: satın alma
-// anında iliştirilen kimlik, jetonu ele geçiren üçüncü bir kişinin onu
-// kendi hesabına bağlamasını engeller.
-//
 // İstek gövdesi:
 //   { purchases: [{ productId, purchaseToken, type: 'subs' | 'inapp' }] }
 // Yanıt:
@@ -54,23 +45,28 @@ interface PurchaseResult {
 }
 
 /**
- * Satın almaya iliştirilen hesap kimliği bu oturuma mı ait?
+ * Satın alma sırasında istemci Supabase kullanıcı kimliğini
+ * obfuscatedAccountId olarak iliştirir (bkz. services/billing.ts). Google bunu
+ * doğrulama yanıtında geri döndürür, böylece token'ın gerçekten bu hesap için
+ * alındığı sunucuda kanıtlanır — başkasının token'ını ilk talep edenin
+ * kazandığı boşluk kapanır.
  *
- * İstemci satın alma sırasında Supabase kullanıcı kimliğini
- * `obfuscatedAccountId` olarak Play'e verir (bkz. services/billing.ts);
- * Play bunu doğrulama yanıtında geri döndürür. Eşleşmiyorsa satın alma
- * başka bir hesaba aittir ve bu kullanıcıya bağlanmamalıdır.
- *
- * `null` reddedilmez: alan yalnızca satın alma anında gönderildiğinde dolar.
- * Bu özellikten önce yapılmış satın almalar, "satın almaları geri yükle"
- * akışıyla gelen eski jetonlar ve Play Console'dan verilen promosyon/test
- * lisansları alanı boş bırakır. Onları reddetmek ödeme yapmış kullanıcının
- * erişimini keserdi; bu durumlarda tek savunma jetonun başka bir hesaba
- * bağlı olup olmadığı kontrolüdür (aşağıda, `token_in_use`).
+ * Alan yalnızca uygulama içi satın alma akışında dolu gelir. Play Console
+ * promosyon kodları, obfuscatedAccountId eklenmeden önceki sürümlerle yapılmış
+ * satın alımlar ve bazı geri yükleme akışları null döndürür; bu durumda tek
+ * dayanağımız "token başka hesaba bağlı mı" kontrolü olduğu için satın almayı
+ * reddetmiyoruz (aksi hâlde eski müşteriler Pro'yu geri yükleyemezdi).
  */
-function accountMatches(claimed: string | null, userId: string): boolean {
-  return claimed === null || claimed === userId;
+function accountIdMismatch(obfuscatedAccountId: string | null, userId: string): boolean {
+  return obfuscatedAccountId !== null && obfuscatedAccountId !== userId;
 }
+
+const ACCOUNT_MISMATCH_RESULT = {
+  status: 'account_mismatch',
+  active: false,
+  expiresAt: null,
+  error: 'Bu satın alma başka bir hesaba bağlı',
+} as const;
 
 function mapSubscriptionState(state: SubscriptionState): string {
   switch (state) {
@@ -165,8 +161,8 @@ serve(async (req) => {
             results.push({ productId, status: 'unknown_product', active: false, expiresAt: null, error: 'Bilinmeyen ürün' });
             continue;
           }
-          if (!accountMatches(verified.obfuscatedAccountId, user.id)) {
-            results.push({ productId, status: 'account_mismatch', active: false, expiresAt: null, error: 'Bu satın alma başka bir hesaba ait' });
+          if (accountIdMismatch(verified.obfuscatedAccountId, user.id)) {
+            results.push({ productId, ...ACCOUNT_MISMATCH_RESULT });
             continue;
           }
           const status = mapSubscriptionState(verified.state);
@@ -204,8 +200,8 @@ serve(async (req) => {
             results.push({ productId: p.productId, status: 'not_found', active: false, expiresAt: null, error: 'Satın alma doğrulanamadı' });
             continue;
           }
-          if (!accountMatches(verified.obfuscatedAccountId, user.id)) {
-            results.push({ productId: p.productId, status: 'account_mismatch', active: false, expiresAt: null, error: 'Bu satın alma başka bir hesaba ait' });
+          if (accountIdMismatch(verified.obfuscatedAccountId, user.id)) {
+            results.push({ productId: p.productId, ...ACCOUNT_MISMATCH_RESULT });
             continue;
           }
           // purchaseState: 0 satın alındı, 1 iptal/iade, 2 beklemede

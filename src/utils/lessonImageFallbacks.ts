@@ -41,23 +41,62 @@ import ruleOfTwelfths from "@/assets/tides/rule-of-twelfths.svg";
 import tideTableExcerpt from "@/assets/tides/tide-table-excerpt.svg";
 import ukcStack from "@/assets/tides/ukc-stack.svg";
 
-type Fallback = { keywords: string[]; src: string };
+type Fallback = {
+  keywords: string[];
+  src: string;
+  /** Anahtar kelimeyle başlayan ama farklı anlama gelen kelimeler. */
+  exclude?: string[];
+};
+
+const WORD_CHAR_RE = /[\p{L}\p{N}]/u;
 
 /**
- * Phase B concept overrides — section/topic/alt metni bu anahtar kelimeleri
- * içerdiğinde mevcut src ne olursa olsun (yerel veya http) doğru görsele
- * zorla geçilir. Çünkü Faz B konularında (ETA, akıntı, gelgit, UKC) kaynak
- * veriler tarihi olarak yanlış/ilgisiz görseller içeriyor.
+ * Anahtar kelime eşleşmesi: kelime başında olmak zorunda, böylece "eta"
+ * "beta"/"theta"/"metadata" içinde, "fix" ise "prefix" içinde eşleşmez.
+ *
+ * Türkçe eklerin ("enlemler", "trimi") eşleşmeye devam etmesi için sondaki
+ * sınır yalnız kısa (≤3 harf) anahtarlarda aranır; "yön" artık "yönetim"
+ * içinde eşleşmez.
+ */
+const matchesKeyword = (haystack: string, keyword: string): boolean => {
+  const needle = keyword.toLowerCase().trim();
+  if (!needle) return false;
+
+  for (let from = 0; from <= haystack.length; ) {
+    const index = haystack.indexOf(needle, from);
+    if (index === -1) return false;
+
+    const before = index === 0 ? "" : haystack[index - 1];
+    if (!before || !WORD_CHAR_RE.test(before)) {
+      if (needle.length > 3) return true;
+      const after = haystack[index + needle.length] ?? "";
+      if (!after || !WORD_CHAR_RE.test(after)) return true;
+    }
+    from = index + 1;
+  }
+  return false;
+};
+
+const matchesFallback = (haystack: string, item: Fallback): boolean => {
+  if (item.exclude?.some((word) => haystack.includes(word.toLowerCase()))) return false;
+  return item.keywords.some((keyword) => matchesKeyword(haystack, keyword));
+};
+
+/**
+ * Phase B concept overrides — Faz B konularının (ETA, akıntı, gelgit, UKC)
+ * kaynak verileri tarihi olarak yanlış görseller içerdiği için dış (http)
+ * görseller bu haritaya göre değiştirilir.
+ *
+ * Yerel görsellere dokunulmaz: onlar içerik dosyalarında elle seçilmiştir ve
+ * bölüme burada tahmin edilenden daha uygundur.
  */
 const phaseBOverrides: Fallback[] = [
   { keywords: ["onikiler", "twelfth", "12'ler", "12ler"], src: ruleOfTwelfths },
   { keywords: ["tide table", "tidal table", "gelgit tablo", "admiralty tide"], src: tideTableExcerpt },
   { keywords: ["ukc", "under-keel", "under keel", "squat", "barrass"], src: ukcStack },
-  { keywords: ["chart datum", "lat (lowest", "datum"], src: "/diagrams/navigation/harita-datum.svg" },
+  { keywords: ["chart datum", "lat (lowest", "sıfır noktası"], src: "/diagrams/navigation/harita-datum.svg" },
   { keywords: ["gelgit", "tide", "tidal", "spring tide", "neap tide"], src: tideCurrent },
   { keywords: ["akıntılı seyir", "set ve drift", "set & drift", "akıntı vektör", "vektör üçgen", "cts (course to steer)", "course to steer"], src: tideCurrent },
-  // "eta" tek başına eklenmez — "beta", "theta", "metadata" gibi kelimelerde
-  // yanlış eşleşir. Bu yüzden yalnızca çok kelimeli kalıplar listelenir.
   { keywords: ["eta diyagram", "eta hesab", "eta ve seyir", "estimated time of arrival", "calculating the eta", "the eta and"], src: "/diagrams/navigation/eta-diyagrami.svg" },
 ];
 
@@ -83,16 +122,30 @@ const navigationFallbacks: Fallback[] = [
   { keywords: ["emniyetli su", "safe water"], src: safeWaterMark },
   { keywords: ["izole tehlike", "isolated danger"], src: isolatedDangerMark },
   { keywords: ["kardinal", "cardinal"], src: cardinalMarks },
-  { keywords: ["lateral", "şamandıra", "iala", "buoy"], src: ialaLateralMarks },
+  {
+    keywords: ["lateral", "şamandıra", "iala", "buoy"],
+    src: ialaLateralMarks,
+    // "buoyancy" (yüzerlik) stabilite kavramıdır, şamandıra değil.
+    exclude: ["buoyancy", "buoyant"],
+  },
   { keywords: ["racon"], src: sembolRacon },
   { keywords: ["fener karakter", "ışık karakter", "light characteristic", "sektör ışık", "sector light"], src: sembolLightCharacteristics },
   { keywords: ["akıntı", "current", "drift", "set ve drift"], src: tideCurrent },
-  { keywords: ["chart", "harita", "plot", "mevki", "position", "fix"], src: chartPlotting },
-  { keywords: ["compass", "pusula", "bearing", "kerteriz", "yön", "direction", "manyetik", "magnetic"], src: yonCompassRose },
+  {
+    keywords: ["chart", "harita", "plot", "mevki", "position", "fix"],
+    src: chartPlotting,
+    exclude: ["charter", "çarter"],
+  },
+  {
+    keywords: ["compass", "pusula", "bearing", "kerteriz", "yön", "direction", "manyetik", "magnetic"],
+    src: yonCompassRose,
+    // "yönetim/yönetici/yönerge/yönetmelik" yön kavramı değildir.
+    exclude: ["yönet", "yönerge", "yöntem"],
+  },
   { keywords: ["enlem", "latitude"], src: latitudeParallels },
   { keywords: ["boylam", "longitude"], src: longitudeConcept },
   { keywords: ["koordinat", "coordinate"], src: coordinateSystem },
-  { keywords: ["wind", "rüzg", "leeway", "dalga"], src: yonWindDrift },
+  { keywords: ["wind", "rüzg", "leeway", "dalga"], src: yonWindDrift, exclude: ["window", "windlass"] },
   { keywords: ["weather", "meteoroloji"], src: weatherSystems },
   { keywords: ["ais"], src: aisTargets },
   { keywords: ["navtex"], src: navtexReceiver },
@@ -147,11 +200,16 @@ const tablesByCategory: Record<string, Fallback[]> = {
   stability: stabilityFallbacks,
 };
 
+/**
+ * Kategorinin görsel haritası. Tanımsız kategoriler için boş liste döner —
+ * eskiden seyir haritasına düşülüyordu ve yük/emniyet/çevre bölümlerine
+ * radar, pusula gibi ilgisiz seyir diyagramları atanabiliyordu.
+ */
 const tableForCategory = (categoryId: string | undefined): Fallback[] => {
-  if (!categoryId) return navigationFallbacks;
+  if (!categoryId) return [];
   // Beta/makine alt kategorileri "machine-<slug>" biçiminde gelir.
   if (categoryId.startsWith("machine")) return machineFallbacks;
-  return tablesByCategory[categoryId] ?? navigationFallbacks;
+  return tablesByCategory[categoryId] ?? [];
 };
 
 /**
@@ -169,18 +227,14 @@ export const resolveLessonImage = (
   replaceExternal: boolean = true,
 ): string | undefined => {
   if (!src) return undefined;
+  if (!replaceExternal || !src.startsWith("http")) return src;
+
   const haystack = `${alt ?? ""} ${sectionTitle ?? ""} ${topicTitle ?? ""}`.toLowerCase();
 
-  // Phase B: konseptsel override, src kaynağı ne olursa olsun uygulanır.
-  const phaseB = phaseBOverrides.find((item) =>
-    item.keywords.some((k) => haystack.includes(k.toLowerCase())),
-  );
+  const phaseB = phaseBOverrides.find((item) => matchesFallback(haystack, item));
   if (phaseB) return phaseB.src;
 
-  if (!replaceExternal || !src.startsWith("http")) return src;
-  const match = tableForCategory(categoryId).find((item) =>
-    item.keywords.some((k) => haystack.includes(k.toLowerCase())),
-  );
+  const match = tableForCategory(categoryId).find((item) => matchesFallback(haystack, item));
   return match?.src;
 };
 

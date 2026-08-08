@@ -6,6 +6,7 @@ import { getBetaTopic } from "@/data/betaLessons";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
+import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 
 export default function MachineTopicDetailPage() {
   const [viewerImage, setViewerImage] = useState<string | null>(null);
@@ -71,17 +72,7 @@ export default function MachineTopicDetailPage() {
           <section key={section.id ?? `${section.title}-${index}`} className="space-y-4">
             <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
-            {section.content
-              .split(/\n\n+/)
-              .filter(Boolean)
-              .map((paragraph, paragraphIndex) => (
-                <p
-                  key={paragraphIndex}
-                  className="whitespace-pre-line text-sm leading-relaxed text-foreground/80"
-                >
-                  {paragraph}
-                </p>
-              ))}
+            <StructuredLessonText text={section.content} />
 
             {section.formula && (
               <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4">

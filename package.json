@@ -59,6 +59,7 @@
     "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict"
   },
   "dependencies": {
+    "@aparajita/capacitor-secure-storage": "^7.1.6",
     "@capacitor-community/admob": "^7.2.0",
     "@capacitor/android": "^7.4.2",
     "@capacitor/app": "^7.0.1",
@@ -120,7 +121,6 @@
     "lucide-react": "^0.447.0",
     "next-themes": "^0.4.6",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^5.4.449",
     "react": "^18.3.1",
     "react-day-picker": "^9.8.1",
     "react-dom": "^18.3.1",
@@ -129,7 +129,6 @@
     "react-is": "^19.1.1",
     "react-live-runner": "^1.0.7",
     "react-markdown": "^10.1.0",
-    "react-pdf": "^9.2.1",
     "react-resizable-panels": "^3.0.3",
     "react-router-dom": "^6.28.0",
     "recharts": "^3.1.0",

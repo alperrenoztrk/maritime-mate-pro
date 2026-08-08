@@ -1,6 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "./types";
-import { safeLocalStorage } from "@/lib/safeStorage";
+import { sessionStorageAdapter } from "@/lib/secureSessionStorage";
 
 export const backendUrl = import.meta.env.VITE_SUPABASE_URL as string;
 export const backendPublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
@@ -38,7 +38,9 @@ export const supabase = createClient<Database>(backendUrl, backendPublishableKey
     fetch: createSupabaseFetch(backendPublishableKey),
   },
   auth: {
-    storage: safeLocalStorage,
+    // Native'de Android Keystore / iOS Keychain, web'de safeLocalStorage.
+    // Bkz. src/lib/secureSessionStorage.ts
+    storage: sessionStorageAdapter,
     persistSession: true,
     autoRefreshToken: true,
     detectSessionInUrl: true,

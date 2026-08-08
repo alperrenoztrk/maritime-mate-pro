@@ -58,9 +58,14 @@ try {
 
       assignment.group.rules.forEach((rule, index) => {
         const integrated = integratedSections[index];
+        // Maddeler madde listesi olarak aktarılır; eski düz metin biçimi de kabul edilir.
+        const integratedText = [
+          integrated.content ?? "",
+          ...(integrated.bulletPoints ?? []),
+        ].join("\n");
         for (const item of rule.content) {
           assert(
-            integrated.content.includes(item.trim()),
+            integratedText.includes(item.trim()),
             `${category.key}/${assignment.group.title}/${rule.subtitle}: madde anlatımda bulunamadı`,
           );
           itemCount += 1;

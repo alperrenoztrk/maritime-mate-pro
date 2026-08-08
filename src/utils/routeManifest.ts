@@ -50,7 +50,6 @@ const STATIC_ROUTES: string[] = [
   '/lessons',
   '/glossary',
   '/beta',
-  '/beta/work-hours',
   '/beta/psc-checklist',
   '/beta/ship-simulator',
 
@@ -165,7 +164,7 @@ const STATIC_ROUTES: string[] = [
   '/navigation/formulas',
   '/navigation/rules',
   '/navigation/meteorology',
-  '/navigation/colreg-presentation',
+  
   '/navigation/assistant',
   '/navigation/quiz',
 

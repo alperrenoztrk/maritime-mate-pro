@@ -81,7 +81,7 @@ export function NewsPanel() {
             <div className="gz-dateline">
               <span>{dateline}</span>
               <Link to="/maritime-news" className="np-alllink">
-                Tüm Sayılar →
+                All N→
               </Link>
             </div>
             <div className="gz-rule-thick" aria-hidden="true" />
@@ -147,9 +147,8 @@ export function NewsPanel() {
           </ul>
         </div>
 
-        {/* Kağıt dokusu + katlama izi — kaydırmadan bağımsız, sayfanın üstünde sabit */}
+        {/* Kağıt dokusu — kaydırmadan bağımsız, sayfanın üstünde sabit */}
         <div className="gz-grain" aria-hidden="true" />
-        <div className="gz-fold" aria-hidden="true" />
       </div>
 
       <NewsReaderDialog

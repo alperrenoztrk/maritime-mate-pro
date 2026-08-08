@@ -227,6 +227,27 @@ export type Database = {
         }
         Relationships: []
       }
+      rate_limits: {
+        Row: {
+          bucket: string
+          count: number
+          updated_at: string
+          window_start: string
+        }
+        Insert: {
+          bucket: string
+          count?: number
+          updated_at?: string
+          window_start: string
+        }
+        Update: {
+          bucket?: string
+          count?: number
+          updated_at?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
       user_category_stats: {
         Row: {
           category: string
@@ -368,6 +389,14 @@ export type Database = {
           used: number
         }[]
       }
+      consume_rate_limit: {
+        Args: { p_bucket: string; p_limit: number; p_window_sec: number }
+        Returns: {
+          allowed: boolean
+          retry_after_sec: number
+        }[]
+      }
+      prune_rate_limits: { Args: { p_older_than?: string }; Returns: number }
     }
     Enums: {
       component_category:

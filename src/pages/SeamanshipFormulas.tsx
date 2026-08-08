@@ -98,7 +98,7 @@ export default function SeamanshipFormulasPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="bg-muted/30 rounded-lg p-4">
-                  <pre className="font-mono text-sm sm:text-lg text-left whitespace-pre-wrap break-words leading-relaxed">
+                  <pre translate="no" className="notranslate font-mono text-sm sm:text-lg text-left whitespace-pre-wrap break-words leading-relaxed">
                     {formula.formula}
                   </pre>
                 </div>

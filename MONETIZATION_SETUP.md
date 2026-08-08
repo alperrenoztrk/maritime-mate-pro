@@ -131,15 +131,12 @@ uygulama tek başına da işe yarasın (mağaza yorumları için kritik).
 ## 6. Bilinen sınırlar / sonraki adımlar
 
 - **iOS:** StoreKit entegrasyonu yok; web/iOS'ta satın alma düğmeleri
-  gizlenir. App Store'a çıkmadan önce eklenmeli.
-- **Web:** satın alma yolu yoktur. Daha önce burada bağlanmamış bir
-  `stripe-checkout` edge function'ı duruyordu; istemcide tek bir çağrısı
-  yoktu ve karşılığında **webhook olmadığı için** ödeme alınsa bile
-  `user_entitlements`'a hiçbir şey yazılamıyordu — yani Pro açılamazdı.
-  Kaldırıldı. Web'de ödeme alınacaksa gereken şey checkout ucu değil,
-  imza doğrulamalı bir webhook + `platform='stripe'` entitlement yazımıdır
-  (tablo şeması bu değeri zaten kabul ediyor). Uygulama içi dijital
-  içerikte Play Billing zorunludur; Stripe yalnızca web için düşünülebilir.
+  gizlenir. App Store'a çıkmadan önce eklenmeli. Web tarafında da ödeme
+  akışı yok: satın alma yalnızca Google Play üzerinden yapılır. Web'de ödeme
+  alınacaksa gereken şey bir checkout ucu değil, imza doğrulamalı bir webhook
+  + `platform='stripe'` entitlement yazımıdır (tablo şeması bu değeri zaten
+  kabul ediyor); webhook'suz bir checkout ucu ödeme alsa bile Pro açamaz.
+  Uygulama içi dijital içerikte Play Billing zorunludur.
 - **AdMob:** altyapı kurulu ve `useEntitlement().hasProAccess` ile kapılanmış
   (banner + geçiş reklamı, yalnızca ücretsiz pakette). Varsayılan olarak
   Google'ın TEST reklamları gösterilir; canlıya alma adımları

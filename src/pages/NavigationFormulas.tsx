@@ -245,9 +245,10 @@ cos θ ≈ 0.299 + 0.412 = 0.711
             {isOpen('rhumb') && (
             <CardContent className="space-y-3 text-sm">
               <div className="bg-muted/30 rounded p-3">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`q = ln(tan(π/4 + φ₂/2) / tan(π/4 + φ₁/2)) / (φ₂ − φ₁)
+                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Δψ = ln(tan(π/4 + φ₂/2) / tan(π/4 + φ₁/2))   (izometrik enlem farkı)
+q = Δφ / Δψ        (Δφ → 0 iken q → cosφ̄)
 Mesafe (nm): d = 60 · √((Δφ)² + (q · Δλ)²)
-Kurs: Brg = atan2(Δλ, q · Δφ)
+Kurs: Brg = atan2(Δλ, Δψ)
 Yaklaşık: Departure = 60 · Δλ · cosφ̄, dLat = 60 · Δφ`}</pre>
               </div>
             </CardContent>
@@ -271,9 +272,11 @@ Mesafe = √(dLat² + Dep²)
 
 Middle Lat Sailing:
 φ̄ = (φ₁ + φ₂) / 2
-Departure = Mesafe × cosφ̄
+Departure = Mesafe × sin(Kurs)
 D.Long (dakika) = Departure / cosφ̄
-Course (RL): atan2(D.Long, dLat)`}</pre>
+Course (RL): atan2(D.Long, DMP)
+DMP = MP₂ − MP₁  (meridyen parçaları farkı)
+MP = 7915.7045 · log₁₀tan(45° + φ/2) − 23.0133 · sinφ`}</pre>
               </div>
             </CardContent>
             )}
@@ -407,8 +410,9 @@ dCPA' = |R' + Vrel' · tCPA'|
               <div className="bg-muted/30 rounded p-3">
                 <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`1° Enlem = 60 NM (1' = 1 NM)
 D.Lat (dakika) = 60 · Δφ
-D.Long (dakika) = 60 · Δλ · cosφ̄
-Mesafe (nm) ≈ √(D.Lat² + D.Long²)
+D.Long (dakika) = 60 · Δλ
+Departure (nm) = D.Long · cosφ̄ = 60 · Δλ · cosφ̄
+Mesafe (nm) ≈ √(D.Lat² + Departure²)
 
 Geographical (Horizon) Range:
 d = 2.08 · √hm  (nm, h metre)
