@@ -2,7 +2,8 @@
 // -----------------------------------------------------------------------------
 // The static `searchIndex` only knows about pages. This module additionally
 // indexes the actual content of the app — glossary terms, lesson topics,
-// sailor knots, crew roles, bridge devices and ship systems — so the user can
+// sailor knots, crew roles, bridge devices, ship systems, ICS signal flags,
+// Morse characters, IALA buoy marks and COLREG sound signals — so the user can
 // jump straight to a term or topic instead of only to a section page.
 //
 // The underlying datasets are large, so everything is pulled in through
@@ -122,6 +123,51 @@ async function buildShipSystemItems(): Promise<SearchItem[]> {
   return items;
 }
 
+async function buildSignalFlagItems(): Promise<SearchItem[]> {
+  const { SIGNAL_FLAGS } = await import("./signalFlags");
+  return SIGNAL_FLAGS.map((flag) => ({
+    // "A (Alfa)" biçimi, arama sonucunda harfin tek başına kaybolmasını önler.
+    title: flag.phonetic ? `${flag.label} (${flag.phonetic})` : flag.label,
+    description: shortDescription(flag.meaning),
+    path: `/communication/flags?q=${encodeURIComponent(flag.label)}`,
+    category: "Haberleşme",
+    keywords: [flag.phonetic ?? "", "bayrak", "flama", "işaret kodu", "ICS"].filter(Boolean),
+  }));
+}
+
+async function buildMorseItems(): Promise<SearchItem[]> {
+  const { MORSE_CODE } = await import("./morseCode");
+  return MORSE_CODE.map((entry) => ({
+    title: `${entry.char} — mors ${entry.code}`,
+    description: shortDescription(entry.maritimeUse),
+    path: `/communication/morse?q=${encodeURIComponent(entry.char)}`,
+    category: "Haberleşme",
+    keywords: [entry.phonetic ?? "", "mors", "morse", "aldis"].filter(Boolean),
+  }));
+}
+
+async function buildBuoyageItems(): Promise<SearchItem[]> {
+  const { BUOY_MARKS } = await import("./buoyage");
+  return BUOY_MARKS.map((mark) => ({
+    title: mark.title,
+    description: shortDescription(mark.instruction),
+    path: `/navigation/buoyage?q=${encodeURIComponent(mark.title)}`,
+    category: "Seyir",
+    keywords: ["şamandıra", "buoy", "IALA", mark.colour],
+  }));
+}
+
+async function buildSoundSignalItems(): Promise<SearchItem[]> {
+  const { SOUND_SIGNALS } = await import("./soundSignals");
+  return SOUND_SIGNALS.map((signal) => ({
+    title: `${signal.title} (${signal.readable})`,
+    description: shortDescription(signal.meaning),
+    path: `/navigation/sound-signals?q=${encodeURIComponent(signal.title)}`,
+    category: "Seyir",
+    keywords: ["ses işareti", "düdük", "COLREG", signal.rule],
+  }));
+}
+
 let cachedIndex: SearchItem[] | null = null;
 let pendingIndex: Promise<SearchItem[]> | null = null;
 
@@ -145,6 +191,10 @@ export function loadDeepSearchIndex(): Promise<SearchItem[]> {
     buildCrewItems(),
     buildBridgeDeviceItems(),
     buildShipSystemItems(),
+    buildSignalFlagItems(),
+    buildMorseItems(),
+    buildBuoyageItems(),
+    buildSoundSignalItems(),
   ]).then((results) => {
     cachedIndex = results.flatMap((result) =>
       result.status === "fulfilled" ? result.value : [],

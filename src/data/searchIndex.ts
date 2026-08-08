@@ -21,10 +21,17 @@ export const searchIndex: SearchItem[] = [
   { title: "Seyir Planı", path: "/passage-plan", category: "Seyir", keywords: ["rota", "passage planning"] },
   
   // Seyir
-  { title: "Seyir Hesaplamaları", path: "/hub/navigation", category: "Seyir", keywords: ["navigasyon", "mevki"] },
+  { title: "Seyir Hesaplamaları", path: "/navigation", category: "Seyir", keywords: ["navigasyon", "mevki"] },
   { title: "Seyir Konu Anlatımları", path: "/lessons/navigation/topics", category: "Seyir", keywords: ["ders"] },
-  { title: "COLREG Sunumu", path: "/colreg", category: "Seyir", keywords: ["deniz trafik", "kural", "çatışma"] },
-  
+  { title: "COLREG – Denizde Çatışmayı Önleme", path: "/regulations/colreg", category: "Seyir", keywords: ["deniz trafik", "kural", "çatışma", "colreg", "1972"] },
+  { title: "IALA Şamandıra Sistemi", path: "/navigation/buoyage", category: "Seyir", keywords: ["şamandıra", "samandira", "buoy", "IALA", "kardinal", "lateral", "izole tehlike", "emniyetli su", "batık", "EWMB", "bölge A", "bölge B"] },
+  { title: "Ses İşaretleri (COLREG Kural 32-37)", path: "/navigation/sound-signals", category: "Seyir", keywords: ["ses", "düdük", "sound signal", "sis düdüğü", "kısıtlı görüş", "çan", "gong", "tornistan", "şüphe işareti"] },
+
+  // Haberleşme
+  { title: "İşaret Bayrakları (ICS)", path: "/communication/flags", category: "Haberleşme", keywords: ["bayrak", "flag", "işaret kodu", "ICS", "alfa", "bravo", "oscar", "flama", "ikame", "cevap flaması"] },
+  { title: "Mors Alfabesi", path: "/communication/morse", category: "Haberleşme", keywords: ["mors", "morse", "aldis", "mors lambası", "SOS", "nokta çizgi", "ITU"] },
+  { title: "Haberleşme Asistanı", path: "/communication/assistant", category: "Haberleşme", keywords: ["GMDSS", "VHF", "telsiz"] },
+
   // Stabilite
   { title: "Stabilite Hesaplamaları", path: "/stability/calculations", category: "Stabilite", keywords: ["denge", "GM", "KG"] },
   { title: "GM Hesaplama", path: "/stability/gm", category: "Stabilite", keywords: ["metacentric height", "metacentre"] },
@@ -52,7 +59,7 @@ export const searchIndex: SearchItem[] = [
   { title: "Meteoroloji Asistanı", path: "/meteorology/assistant", category: "Meteoroloji" },
 
   // Kargo
-  { title: "Kargo Hesaplamaları", path: "/hub/cargo", category: "Kargo", keywords: ["yük"] },
+  { title: "Kargo Hesaplamaları", path: "/cargo/calculations", category: "Kargo", keywords: ["yük"] },
   { title: "Draft Survey", path: "/cargo/calculations/draft-survey", category: "Kargo", keywords: ["draft", "su çekimi"] },
   { title: "Draft Survey - Yükleme Öncesi", path: "/cargo/calculations/preloading", category: "Kargo" },
   { title: "Draft Survey - Ara Hesap", path: "/cargo/calculations/intermediate", category: "Kargo" },

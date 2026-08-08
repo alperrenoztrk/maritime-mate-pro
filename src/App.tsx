@@ -55,6 +55,11 @@ const StabilityWeightShiftPage = lazy(() => import("./pages/StabilityWeightShift
 const StabilityFreeSurfacePage = lazy(() => import("./pages/StabilityFreeSurface"));
 const StabilityGZPage = lazy(() => import("./pages/StabilityGZ"));
 const SailorKnotsPage = lazy(() => import("./pages/SailorKnots"));
+// Görsel/işitsel işaret referansları (ICS bayrakları, mors, IALA, COLREG sesleri).
+const SignalFlagsPage = lazy(() => import("./pages/SignalFlags"));
+const MorseCodePage = lazy(() => import("./pages/MorseCode"));
+const BuoyagePage = lazy(() => import("./pages/Buoyage"));
+const SoundSignalsPage = lazy(() => import("./pages/SoundSignals"));
 const StabilityAnalysisPage = lazy(() => import("./pages/StabilityAnalysis"));
 const StableTalesPage = lazy(() => import("./pages/StableTales"));
 const EmptyPage = lazy(() => import("./pages/EmptyPage"));
@@ -306,6 +311,8 @@ const AnimatedRoutes = () => {
         <Route path="/meteorology/assistant" element={<PageTransition><MeteorologyAssistantPage /></PageTransition>} />
         <Route path="/meteorology/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><MeteorologyQuizPage /></PageTransition></ProRoute>} />
         <Route path="/communication/assistant" element={<PageTransition><CommunicationAssistantPage /></PageTransition>} />
+        <Route path="/communication/flags" element={<PageTransition><SignalFlagsPage /></PageTransition>} />
+        <Route path="/communication/morse" element={<PageTransition><MorseCodePage /></PageTransition>} />
         <Route path="/ballast" element={<PageTransition><BallastPage /></PageTransition>} />
         <Route path="/engine" element={<PageTransition><EnginePage /></PageTransition>} />
         <Route path="/hydrodynamics" element={<PageTransition><HydrodynamicsPage /></PageTransition>} />
@@ -354,6 +361,8 @@ const AnimatedRoutes = () => {
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />
         <Route path="/navigation/tide-tutorial" element={<PageTransition><TideCalculationTutorial /></PageTransition>} />
+        <Route path="/navigation/buoyage" element={<PageTransition><BuoyagePage /></PageTransition>} />
+        <Route path="/navigation/sound-signals" element={<PageTransition><SoundSignalsPage /></PageTransition>} />
         <Route path="/navigation/formulas" element={<PageTransition><NavigationFormulasPage /></PageTransition>} />
         <Route path="/navigation/rules" element={<Navigate to="/lessons/navigation/topics" replace />} />
 

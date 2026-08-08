@@ -113,6 +113,15 @@ All colors MUST be HSL.
        their bottom padding so the banner never covers content. */
     --ad-banner-height: 0px;
 
+    /* Vertical strip occupied by the global floating "Geri" control
+       (src/components/FloatingNavButtons.tsx). That control is fixed at
+       top: max(0.75rem, safe-area) and is ~30px tall; it is fully revealed
+       whenever the user is at the top of a page, which is exactly when a
+       page's own <h1> is rendered. Pages that draw their own heading instead
+       of using MobileLayout's header add this to their top padding so the
+       title is never covered. Keep in sync with the button's offset/height. */
+    --floating-nav-reserve: calc(max(0.75rem, env(safe-area-inset-top, 0px)) + 2.75rem);
+
     /* Maritime color palette */
     --background: 210 20% 98%;
     --foreground: 210 12% 16%;

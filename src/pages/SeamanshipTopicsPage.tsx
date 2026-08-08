@@ -2825,18 +2825,41 @@ Bölge B: Kuzey/Güney Amerika, Japonya, Kore, Filipinler
 
 3. Ayrılmış Tehlike İşareti (Isolated Danger): Siyah-kırmızı-siyah yatay çizgili. Tehlike üzerinde konumlandırılır.
 
-4. Güvenli Su İşareti (Safe Water): Kırmızı-beyaz dikey çizgili. Güvenli su bölgesini gösterir. Yaklaşma işareti olarak kullanılır.
+4. Güvenli Su İşareti (Safe Water): Kırmızı-beyaz dikey çizgili. Güvenli su bölgesini gösterir. Yaklaşma işareti olarak kullanılır. Işığı beyazdır; Iso, Oc, LFl 10s veya Mo(A) karakterinde olur.
 
-5. Özel İşaret (Special Mark): Sarı renkli. Özel alan sınırlarını belirtir.`,
+5. Özel İşaret (Special Mark): Sarı renkli, tepe işareti sarı X. Kablo sahası, atış alanı, ölçüm cihazı (ODAS), yarış parkuru gibi özel alan sınırlarını belirtir. Seyir tehlikesi bildirmez.
+
+6. Acil Batık İşareti (Emergency Wreck Marking Buoy — EWMB): 2006'da sisteme eklendi. Mavi ve sarı DİKEY şeritli gövde, tepesinde dik duran sarı haç (+). Işığı dönüşümlü mavi-sarı: Al Oc BuY 3s (1 sn mavi, 0.5 sn karanlık, 1 sn sarı, 0.5 sn karanlık). Yeni tespit edilmiş, henüz haritaya ve seyir ihbarlarına işlenmemiş bir batığı GEÇİCİ olarak işaretler; kalıcı işaretleme yapılınca kaldırılır. Mavi-sarı renk çifti başka hiçbir IALA işaretinde kullanılmaz.
+
+LATERAL İŞARETLERİN BÖLGEYE GÖRE DEĞİŞİMİ:
+
+Bölge A (limana girerken):
+   İskelede: KIRMIZI, silindirik (can) gövde, kırmızı silindir tepe işareti, kırmızı ışık
+   Sancakta: YEŞİL, konik gövde, yeşil koni tepe işareti (ucu yukarı), yeşil ışık
+
+Bölge B (limana girerken) — renkler tam ters:
+   İskelede: YEŞİL, silindirik (can) gövde, yeşil silindir tepe işareti, yeşil ışık
+   Sancakta: KIRMIZI, konik gövde, kırmızı koni tepe işareti, kırmızı ışık
+   Amerikan denizcilerinin ezberi: "red right returning" — dönüşte kırmızı sancakta.
+
+DİKKAT: Bölge değişse de GÖVDE BİÇİMİ değişmez. İskele işareti her iki bölgede de silindirik (can), sancak işareti her iki bölgede de koniktir. Bu yüzden renk okunamadığında (gece, sis, uzak mesafe) biçim ve tepe işareti hâlâ doğru bilgiyi verir.
+
+TERCİHLİ KANAL (PREFERRED CHANNEL) İŞARETLERİ:
+
+Kanal ikiye ayrıldığında kullanılır. Gövde rengi işaretin hangi tarafta bırakılacağını, üzerindeki geniş bant ise tercihli (ana) kanalın yönünü söyler. Işıkları kompozit grup çakardır: Fl (2+1).`,
     bulletPoints: [
       "Bölge A: kırmızı = iskele, yeşil = sancak (limana girerken)",
-      "Bölge B: renk anlamları ters",
+      "Bölge B: renk anlamları ters — 'red right returning'",
+      "Gövde biçimi bölgeye göre DEĞİŞMEZ: iskele silindirik, sancak konik",
       "Kardinal işaretler: tehlikenin hangi tarafından geçileceğini belirtir",
       "Güvenli su işareti: kırmızı-beyaz dikey çizgili, yaklaşma işareti",
+      "EWMB: mavi-sarı dikey şeritli, sarı haç tepe işaretli, geçici batık işareti",
     ],
     keyPoints: [
       "IALA bölgesini bilmek yanal işaretleri doğru yorumlamak için zorunludur",
       "Kardinal işaretlerin tepe şekilleri yönü belirler",
+      "Kardinal ışık imzaları: K = kesintisiz, D = 3'lü, G = 6'lı + uzun çakar, B = 9'lu",
+      "EWMB geçicidir; kalıcı işaretleme yapılana kadar batığın yerini bildirir",
     ],
   },
   "flag-signals": {
@@ -2896,12 +2919,15 @@ Manevra kısıtlı/derin draftlı/yelkenli: Her 2 dakikada bir uzun + iki kısa 
 Çekilmekte olan gemi: Çeken gemiden hemen sonra bir uzun + üç kısa (— •••)
 Demirli gemi: Her dakika hızlı çan çalma (5 sn). >100 m gemilerde pruva çan + kıça gong
 
-TEHLİKE İŞARETİ: Beş veya daha fazla kısa ve hızlı düdük (COLREG Kural 34(d))`,
+ŞÜPHE / İKAZ İŞARETİ (Kural 34(d)): Beş veya daha fazla kısa ve hızlı düdük.
+Bu bir TEHLİKE (distress) işareti DEĞİLDİR; karşı geminin niyetini anlamadığını
+veya çatışmadan kaçınmak için yeterli önlem alındığından şüphe duyulduğunu bildirir.
+Tehlike işaretleri ayrı bir konudur ve Kural 37 ile Ek IV'te düzenlenir.`,
     bulletPoints: [
       "• = sancağa, •• = iskeleye, ••• = tornistan",
       "Kısıtlı görüşte her 2 dakikada uzun düdük (makine ile seyir)",
       "Demirli gemi: pruva çan + kıça gong (>100 m)",
-      "5+ kısa düdük = tehlike işareti",
+      "5+ kısa düdük = şüphe/ikaz işareti (Kural 34(d)) — tehlike işareti değildir",
     ],
   },
   "distress-signals": {
@@ -3296,6 +3322,10 @@ export default function SeamanshipTopicsPage() {
               <div className="grid gap-2 sm:grid-cols-3">
                 {[
                   { title: "Denizci Düğümleri", href: "/seamanship/knots" },
+                  { title: "İşaret Bayrakları", href: "/communication/flags" },
+                  { title: "Mors Alfabesi", href: "/communication/morse" },
+                  { title: "IALA Şamandıraları", href: "/navigation/buoyage" },
+                  { title: "Ses İşaretleri", href: "/navigation/sound-signals" },
                   { title: "Hesaplamalar", href: "/seamanship/calculations" },
                   { title: "Tüm Dersler", href: "/lessons" },
                 ].map((resource, index) => (

@@ -164,9 +164,16 @@ const STATIC_ROUTES: string[] = [
   '/navigation/formulas',
   '/navigation/rules',
   '/navigation/meteorology',
-  
+  '/navigation/buoyage',
+  '/navigation/sound-signals',
+
   '/navigation/assistant',
   '/navigation/quiz',
+
+  // Communication — görsel/işitsel işaret referansları
+  '/communication/assistant',
+  '/communication/flags',
+  '/communication/morse',
 
   '/economics',
   '/economics/assistant',

@@ -6746,7 +6746,12 @@ export const navigationLessonFlows: LessonFlow[] = [
     topicTitle: "Seyir fenerleri: yay ve menzil",
     blocks: [
       { sectionTitles: ["Fener Yayları (Kural 21)", "Görünürlük Menzilleri (Kural 22)"] },
-      { sectionTitles: ["Tipik Fener Düzenleri (Kural 23-31)"] },
+      {
+        sectionTitles: [
+          "Tipik Fener Düzenleri (Kural 23-31)",
+          "Özel Araçlar ve Küçük Tekne İstisnaları (Kural 23, 25, 31)",
+        ],
+      },
     ],
     questions: [
       {
@@ -6776,6 +6781,22 @@ export const navigationLessonFlows: LessonFlow[] = [
         ],
         correctAnswer: 0,
         explanation: "NUC kırmızı-kırmızı; RAM kırmızı-beyaz-kırmızı; CBD üç kırmızı.",
+      },
+      {
+        id: 3,
+        sectionRef: "Özel Araçlar ve Küçük Tekne İstisnaları (Kural 23, 25, 31)",
+        category: NAV,
+        question:
+          "Gece, motorlu gemi fenerlerine ek olarak her yönden görünür SARI ÇAKAR fener gösteren araç hangisidir?",
+        options: [
+          "Displacement dışı modda seyreden hava yastıklı araç (Kural 23(b))",
+          "WIG craft (Kural 23(c))",
+          "Kılavuz gemisi (Kural 29)",
+          "Mayın tarama gemisi (Kural 27(f))",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Sarı çakar hava yastıklı aracı; kırmızı çakar ise su yüzeyine yakın uçan WIG craft'ı belirtir.",
       },
     ],
   },

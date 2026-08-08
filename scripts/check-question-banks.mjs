@@ -29,13 +29,13 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 /** Güverte bankaları: taban dosya + "Extended" devam dosyası, birlikte havuzu oluşturur. */
 const DECK_BANKS = [
   { name: "stability", expected: 154, files: ["src/data/stabilityQuestions.ts", "src/data/stabilityQuestionsExtended.ts"] },
-  { name: "navigation", expected: 285, files: ["src/data/navigationQuestions.ts", "src/data/navigationQuestionsExtended.ts"] },
+  { name: "navigation", expected: 300, files: ["src/data/navigationQuestions.ts", "src/data/navigationQuestionsExtended.ts"] },
   { name: "meteorology", expected: 159, files: ["src/data/meteorologyQuestions.ts", "src/data/meteorologyQuestionsExtended.ts"] },
   { name: "cargo", expected: 232, files: ["src/data/cargoQuestions.ts", "src/data/cargoQuestionsExtended.ts"] },
   { name: "safety", expected: 229, files: ["src/data/safetyQuestions.ts", "src/data/safetyQuestionsExtended.ts"] },
   { name: "seamanship", expected: 259, files: ["src/data/seamanshipQuestions.ts", "src/data/seamanshipQuestionsExtended.ts"] },
   { name: "environment", expected: 154, files: ["src/data/environmentQuestions.ts", "src/data/environmentQuestionsExtended.ts"] },
-  { name: "communication", expected: 205, files: ["src/data/communicationQuestions.ts", "src/data/communicationQuestionsExtended.ts"] },
+  { name: "communication", expected: 242, files: ["src/data/communicationQuestions.ts", "src/data/communicationQuestionsExtended.ts"] },
   { name: "economics", expected: 160, files: ["src/data/economicsQuestions.ts", "src/data/economicsQuestionsExtended.ts"] },
   { name: "machine", expected: 180, files: ["src/data/machineQuestions.ts", "src/data/machineQuestionsExtended.ts"] },
 ];

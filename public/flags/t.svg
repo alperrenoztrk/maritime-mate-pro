@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-t">
+<title id="t-t">Signal flag Tango</title>
+<defs><clipPath id="c-t"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-t)"><rect x="0" y="0" width="200" height="600" fill="#D8232A"/><rect x="200" y="0" width="200" height="600" fill="#FFFFFF"/><rect x="400" y="0" width="200" height="600" fill="#0B4EA2"/></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

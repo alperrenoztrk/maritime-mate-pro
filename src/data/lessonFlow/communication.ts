@@ -78,6 +78,7 @@ export const communicationLessonFlows: LessonFlow[] = [
     topicTitle: "VHF-DSC Operasyonları",
     blocks: [
       { sectionTitles: ["DSC Çağrı Mekanizması", "VHF Kanalları ve Kullanım Disiplini"] },
+      { sectionTitles: ["Kanal Tahsis Tablosu (ITU Appendix 18)"] },
       { sectionTitles: ["Tehlike Çağrısı Prosedürü", "Aciliyet, Emniyet Çağrıları ve Tehlike Teyidi/Aktarımı"] },
     ],
     questions: [
@@ -121,6 +122,31 @@ export const communicationLessonFlows: LessonFlow[] = [
         ],
         correctAnswer: 0,
         explanation: "Gemi alarmı hemen DSC ile teyit etmez (yayılması durmasın); Ch.16'yı dinler. Kıyı istasyonu DSC ile teyit eder.",
+      },
+      {
+        id: 5,
+        sectionRef: "Kanal Tahsis Tablosu (ITU Appendix 18)",
+        category: HAB,
+        question: "Köprüüstü-köprüüstü emniyet haberleşmesi için ayrılmış kanal hangisidir?",
+        options: ["Ch.13", "Ch.06", "Ch.70", "Ch.15"],
+        correctAnswer: 0,
+        explanation:
+          "Ch.13 köprüüstü-köprüüstü emniyet kanalıdır. Ch.06 SAR, Ch.70 yalnız DSC, Ch.15 ise 1 W ile sınırlı gemi içi haberleşmedir.",
+      },
+      {
+        id: 6,
+        sectionRef: "Kanal Tahsis Tablosu (ITU Appendix 18)",
+        category: HAB,
+        question: "Ch.70 hangi amaçla kullanılır?",
+        options: [
+          "Yalnızca DSC (Digital Selective Calling); sesli konuşma yapılmaz",
+          "Liman operasyonları",
+          "Gemi içi haberleşme",
+          "AIS veri yayını",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Ch.70 (156.525 MHz) yalnız DSC'ye ayrılmıştır. AIS ise Ch.87B/88B üzerinden veri yayınlar.",
       },
     ],
   },
@@ -299,6 +325,14 @@ export const communicationLessonFlows: LessonFlow[] = [
     blocks: [
       { sectionTitles: ["Mesaj İşaretleri (Message Markers)"] },
       { sectionTitles: ["Hece Kodu, Sayılar ve Tekrar Protokolü", "Kullanım Alanları"] },
+      { sectionTitles: ["Bölüm A1 — Tehlike, Aciliyet ve Emniyet Trafiği"] },
+      {
+        sectionTitles: [
+          "Bölüm B — Standart Dümen Komutları",
+          "Bölüm B — Standart Makine Komutları ve Demirleme/Bağlama",
+        ],
+      },
+      { sectionTitles: ["VTS Raporlama ve Köprüüstü-Köprüüstü Görüşme"] },
     ],
     questions: [
       {
@@ -337,6 +371,71 @@ export const communicationLessonFlows: LessonFlow[] = [
         ],
         correctAnswer: 0,
         explanation: "Standart dümen komutları: 'Hard-a-starboard' (alabanda sancak), 'Midships' (ortala), 'Steady' (rotada tut).",
+      },
+      {
+        id: 4,
+        sectionRef: "Bölüm A1 — Tehlike, Aciliyet ve Emniyet Trafiği",
+        category: HAB,
+        question: "Telsiz sessizliğinin sona erdiğini ve normal çalışmaya dönülebileceğini hangi ifade bildirir?",
+        options: ["SEELONCE FEENEE", "SEELONCE MAYDAY", "PRU-DONCE", "MAYDAY RELAY"],
+        correctAnswer: 0,
+        explanation:
+          "SEELONCE MAYDAY sessizliği başlatır, PRU-DONCE sınırlı trafiğe izin verir, SEELONCE FEENEE tehlike trafiğinin bittiğini bildirir.",
+      },
+      {
+        id: 5,
+        sectionRef: "Bölüm A1 — Tehlike, Aciliyet ve Emniyet Trafiği",
+        category: HAB,
+        question: "Bir tehlike çağrısını duyup başka bir istasyon adına ileten gemi hangi ifadeyle başlar?",
+        options: ["MAYDAY RELAY ×3", "MAYDAY ×3", "PAN-PAN ×3", "SÉCURITÉ ×3"],
+        correctAnswer: 0,
+        explanation:
+          "MAYDAY RELAY, tehlikeyi kendi yaşamayan ancak başkasının tehlikesini aktaran istasyonun kullandığı ifadedir.",
+      },
+      {
+        id: 6,
+        sectionRef: "Bölüm B — Standart Dümen Komutları",
+        category: HAB,
+        question: "'Steady' ile 'Steady as she goes' arasındaki fark nedir?",
+        options: [
+          "'Steady' dönüşü durdurup o rotayı tutmaktır; 'Steady as she goes' o anki pruva rotasında sabit kalmaktır",
+          "İkisi de aynıdır",
+          "'Steady' alabanda demektir",
+          "'Steady as she goes' dümeni ortalamaktır",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "İki komut karıştırıldığında gemi istenmeyen bir rotada sabitlenir; bu yüzden dümenci komutu aynen tekrarlamak zorundadır.",
+      },
+      {
+        id: 7,
+        sectionRef: "Bölüm B — Standart Makine Komutları ve Demirleme/Bağlama",
+        category: HAB,
+        question: "'Single up to two lines and one spring' komutu neyi ifade eder?",
+        options: [
+          "Kalkışa hazırlık: halatları iki halat ve bir spring kalacak şekilde teke düşür",
+          "Tüm halatları vola et",
+          "Demiri fundo et",
+          "Makineyi manevraya hazırla",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Single up, kalkış öncesi fazla halatların alınıp asgari sayıya inilmesidir.",
+      },
+      {
+        id: 8,
+        sectionRef: "VTS Raporlama ve Köprüüstü-Köprüüstü Görüşme",
+        category: HAB,
+        question: "VHF ile karşı gemiyle bir manevra üzerinde anlaşılması COLREG açısından ne ifade eder?",
+        options: [
+          "Hiçbir COLREG yükümlülüğünü ortadan kaldırmaz; Kural 8'e uygun erken ve belirgin manevra yine zorunludur",
+          "Kural 8 yükümlülüğünü ortadan kaldırır",
+          "Stand-on geminin sorumluluğunu karşı tarafa devreder",
+          "Kısıtlı görüşte ses işaretlerini gereksiz kılar",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "VHF ile 'anlaşma' yaygın bir kaza nedenidir: yanlış gemiyle anlaşma riski taşır ve kuralların yerine geçmez.",
       },
     ],
   },
@@ -504,8 +603,20 @@ export const communicationLessonFlows: LessonFlow[] = [
     topicKey: "communication",
     topicTitle: "Görsel İşaretleşme: Bayraklar ve Mors Lambası",
     blocks: [
-      { sectionTitles: ["Uluslararası İşaret Kodu (ICS)", "Tek Harfli İşaretlerden Önemli Örnekler"] },
-      { sectionTitles: ["Mors Lambası (Aldis Lamp) ile Haberleşme", "Diğer Görsel İşaretler"] },
+      { sectionTitles: ["Uluslararası İşaret Kodu (ICS)", "Tek Harfli İşaretlerin Tamamı (A-Z)"] },
+      {
+        sectionTitles: [
+          "Rakam Flamaları, İkame Flamaları ve Cevap Flaması",
+          "İki Harfli Kod Grupları",
+        ],
+      },
+      {
+        sectionTitles: [
+          "Mors Lambası (Aldis Lamp) ile Haberleşme",
+          "Mors ve Seyir Yardımcıları: Mo ve RACON",
+          "Diğer Görsel İşaretler",
+        ],
+      },
     ],
     questions: [
       {
@@ -524,7 +635,7 @@ export const communicationLessonFlows: LessonFlow[] = [
       },
       {
         id: 2,
-        sectionRef: "Tek Harfli İşaretlerden Önemli Örnekler",
+        sectionRef: "Tek Harfli İşaretlerin Tamamı (A-Z)",
         category: HAB,
         question: "'O' (Oscar) tek harfli bayrak işareti neyi belirtir?",
         options: ["Denize adam düştü (man overboard)", "Kılavuz istiyorum", "Serbest pratika", "Tehlikeli yük"],
@@ -544,6 +655,76 @@ export const communicationLessonFlows: LessonFlow[] = [
         ],
         correctAnswer: 0,
         explanation: "Mors lambası ışıkla (kısa/uzun) mesaj iletir; telsiz arızasında ve karartmada bile kullanılabilir.",
+      },
+      {
+        id: 4,
+        sectionRef: "Rakam Flamaları, İkame Flamaları ve Cevap Flaması",
+        category: HAB,
+        question: "Bir ikame (substitute) flaması neyi tekrarlar?",
+        options: [
+          "Aynı hoist içinde, KENDİ SINIFINDAKİ (harf ya da rakam) ilgili sıradaki bayrağı",
+          "Her zaman hoist'ın en üstündeki bayrağı",
+          "Bir önceki hoist'ın son bayrağını",
+          "Cevap flamasını",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "İkame flaması yalnız kendi sınıfındaki bayrağı tekrarlar; harf bayrakları arasındaki ikame harfleri, rakamlar arasındaki ikame rakamları sayar. Üç ikame ile tek takım bayrak yeterlidir.",
+      },
+      {
+        id: 5,
+        sectionRef: "Rakam Flamaları, İkame Flamaları ve Cevap Flaması",
+        category: HAB,
+        question: "Cevap flamasının YARIYA çekilmiş olması ne anlama gelir?",
+        options: [
+          "İşaretiniz görüldü ancak henüz çözülemedi",
+          "İşaret anlaşıldı",
+          "Haberleşme bitti",
+          "Tehlike altındayım",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Yarıya çekili (at the dip) = gördüm, çözemedim. Tam çekili (close up) = anladım. İndirilmesi haberleşmenin bittiğini bildirir.",
+      },
+      {
+        id: 6,
+        sectionRef: "İki Harfli Kod Grupları",
+        category: HAB,
+        question: "NC kod grubu ne anlama gelir?",
+        options: [
+          "Tehlike altındayım ve acil yardıma ihtiyacım var",
+          "Kılavuz istiyorum",
+          "Liman trafiğe kapalıdır",
+          "Batıyorum",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "NC, COLREG Ek IV'te de sayılan bir tehlike işaretidir. DX 'batıyorum', UM 'liman kapalı', G 'kılavuz istiyorum' demektir.",
+      },
+      {
+        id: 7,
+        sectionRef: "Mors Lambası (Aldis Lamp) ile Haberleşme",
+        category: HAB,
+        question: "Mors zamanlamasında bir ÇİZGİ (dash) kaç birim sürer?",
+        options: ["3 birim", "1 birim", "2 birim", "7 birim"],
+        correctAnswer: 0,
+        explanation:
+          "Nokta 1 birim, çizgi 3 birim, aynı harfin öğeleri arası 1 birim, harfler arası 3 birim, kelimeler arası 7 birimdir.",
+      },
+      {
+        id: 8,
+        sectionRef: "Mors ve Seyir Yardımcıları: Mo ve RACON",
+        category: HAB,
+        question: "Bir şamandıranın ışık karakterinde 'Mo(A)' yazması ne demektir?",
+        options: [
+          "Işık, mors 'A' harfini (kısa-uzun) yanıp sönerek tekrarlar",
+          "Işık sabittir",
+          "Işık dakikada 120 kez çakar",
+          "Şamandıra AIS AtoN yayını yapar",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Mo(A) = ● ▬. Emniyetli su işaretlerinde ve landfall şamandıralarında sık görülür; gece teşhisi kolaylaştırır.",
       },
     ],
   },

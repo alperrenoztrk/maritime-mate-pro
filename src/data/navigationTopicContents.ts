@@ -2670,7 +2670,7 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       },
       {
         title: "IALA sistemi ve şamandıra mantığı",
-        content: "Şamandıra sistemi IALA düzenine göre yorumlanır ve dünya iki ana bölgeye ayrılır. Türkiye ve Avrupa suları IALA Bölge A mantığını kullanır; limana girişte kırmızı iskelede, yeşil sancakta kalır. Buradaki kritik nokta, bu ifadenin bir renk cümlesi değil, bir geçiş talimatı olmasıdır. Aynı renk farklı bölgede farklı tarafı ifade edebildiği için haritadaki bir şamandıra sembolünü gördüğünde ilk refleks, “hangi IALA bölgesindeyim” sorusunu içgüdü hâline getirmektir. Harita şamandırayı çoğu zaman bir nokta gibi çizse bile, o nokta bir koridorun kenarını, bir tehlikenin dolaşma yönünü veya yaklaşım hattının teyidini temsil eder; dolayısıyla sembolün amacı bilgi vermek değil, hareket ettirmektir.",
+        content: "Şamandıra sistemi IALA düzenine göre yorumlanır ve dünya iki ana bölgeye ayrılır. Bölge A; Avrupa, Afrika, Asya'nın büyük bölümü ve Avustralya'yı kapsar — Türkiye Bölge A'dadır ve limana girişte kırmızı iskelede, yeşil sancakta kalır. Bölge B; Kuzey ve Güney Amerika, Japonya, Kore ve Filipinler'i kapsar ve lateral renkler TAM TERSİDİR: limana girişte kırmızı sancakta, yeşil iskelede kalır (Amerikan denizcilerinin ezberiyle “red right returning”). Buradaki kritik nokta, bu ifadenin bir renk cümlesi değil, bir geçiş talimatı olmasıdır. Aynı renk farklı bölgede farklı tarafı ifade edebildiği için haritadaki bir şamandıra sembolünü gördüğünde ilk refleks, “hangi IALA bölgesindeyim” sorusunu içgüdü hâline getirmektir. Bölge değişse de GÖVDE BİÇİMİ değişmez: iskele işareti her iki bölgede de silindirik (can), sancak işareti her iki bölgede de koniktir; renk okunamadığında biçim ve tepe işareti hâlâ doğru bilgiyi verir. Harita şamandırayı çoğu zaman bir nokta gibi çizse bile, o nokta bir koridorun kenarını, bir tehlikenin dolaşma yönünü veya yaklaşım hattının teyidini temsil eder; dolayısıyla sembolün amacı bilgi vermek değil, hareket ettirmektir.",
         image: sembolIalaBuoyage,
         imageAlt: "The logic of the IALA buoyage system"
       },
@@ -2718,7 +2718,11 @@ Bu değer, iki mevki arasındaki **teorik en kısa deniz yolunu** temsil eder. R
       },
       {
         title: "Özel işaretler ve kullanım mantığı",
-        content: "Özel işaretler sarı renkle gösterilir ve seyir emniyetinden ziyade “özel amaçlı alanı” ifade eder; kablo sahası, askeri saha sınırı, ölçüm alanı, yarış parkuru gibi. Haritada sarı işaret genellikle alan taraması ve kısaltmalarla birlikte gelir; mesaj, “burada bir düzenleme/aktivite var, planlamanı buna göre yap” şeklindedir. Özel işaretin ışığı varsa genellikle sarıdır ve karakteri yerel ihtiyaca göre değişir."
+        content: "Özel işaretler sarı renkle gösterilir ve seyir emniyetinden ziyade “özel amaçlı alanı” ifade eder; kablo sahası, askeri saha sınırı, ölçüm alanı, yarış parkuru gibi. Tepe işareti tek sarı X'tir. Haritada sarı işaret genellikle alan taraması ve kısaltmalarla birlikte gelir; mesaj, “burada bir düzenleme/aktivite var, planlamanı buna göre yap” şeklindedir. Özel işaretin ışığı varsa genellikle sarıdır ve karakteri, seyir işaretleriyle karışmayacak biçimde yerel ihtiyaca göre seçilir."
+      },
+      {
+        title: "Acil Batık İşareti (EWMB) ve haritayla ilişkisi",
+        content: "IALA sistemine 2006'da eklenen Acil Batık İşaretleme Şamandırası (Emergency Wreck Marking Buoy), yeni tespit edilmiş ve HENÜZ HARİTAYA İŞLENMEMİŞ bir batığı geçici olarak işaretler. Gövdesi eşit sayıda mavi ve sarı dikey şeritlidir (en az 4, en fazla 8 şerit), tepesinde dik duran sarı bir haç (+) bulunur; ışığı dönüşümlü mavi ve sarıdır — Al Oc BuY 3s: 1 saniye mavi, 0.5 saniye karanlık, 1 saniye sarı, 0.5 saniye karanlık. Mavi-sarı renk çifti IALA sisteminde başka hiçbir işarette kullanılmaz; bu yüzden karıştırılması güçtür.\n\nBu işaretin haritayla ilişkisi diğerlerinin tam tersidir: EWMB tam olarak haritanın HENÜZ BİLMEDİĞİ bir tehlikeyi gösterir. Dolayısıyla haritada göremediğin için “yok” saymak, bu işaretin varlık sebebini ıskalamaktır. Sahada mavi-sarı bir şamandıra görüldüğünde doğru refleks, haritaya değil seyir ihbarlarına (Navigational Warning / NAVTEX) ve VTS bilgisine başvurmak, işaretten uzak durmak ve mevkii köprüüstü ekibiyle paylaşmaktır. Batık haritaya ve Notice to Mariners'a işlenip kalıcı işaretleme (genellikle kardinal veya izole tehlike işareti) yapıldığında EWMB kaldırılır."
       },
       {
         title: "Fenerler ve ışık kısaltmaları",
@@ -11723,12 +11727,27 @@ Kesişim noktası = Running Fix (10:30)
           "Yelkenli (Kural 25): yan fenerler + kıç feneri; isteğe bağlı direk başında kırmızı üstünde yeşil.",
         ],
       },
+      {
+        title: "Özel Araçlar ve Küçük Tekne İstisnaları (Kural 23, 25, 31)",
+        content:
+          "Kural 20-31, yalnız klasik ticaret gemilerini değil, hava yastıklı araçları, WIG (Wing-In-Ground) craft'ları, deniz uçaklarını ve çok küçük tekneleri de kapsar. Bu araçların fener düzeni sınavlarda ve gerçek vardiyada sıkça atlanır; oysa gece bir sarı çakarın anlamını bilmemek, karşıdaki aracın hızını ve manevra karakterini tamamen yanlış değerlendirmeye yol açar.",
+        bulletPoints: [
+          "Hava yastıklı araç — displacement dışı modda (Kural 23(b)): motorlu gemi fenerlerine ek olarak her yönden görünür SARI ÇAKAR fener.",
+          "WIG craft — kalkış, iniş ve su yüzeyine yakın uçuş sırasında (Kural 23(c)): motorlu gemi fenerlerine ek olarak yüksek şiddetli, her yönden görünür KIRMIZI ÇAKAR fener.",
+          "Boyu < 12 m motorlu gemi (Kural 23(d)): silyon ve kıç feneri yerine her yönden görünür bir beyaz fener + yan fenerler gösterebilir.",
+          "Boyu < 7 m ve azami hızı < 7 knot motorlu gemi (Kural 23(d)(ii)): yalnız her yönden görünür bir beyaz fener yeterlidir; mümkünse yan fenerler de gösterilir.",
+          "Boyu < 20 m yelkenli (Kural 25(b)): yan fenerler ve kıç feneri direk başında tek bir kombine fenerde birleştirilebilir.",
+          "Boyu < 7 m yelkenli veya kürekli tekne (Kural 25(d)): fener taşıyamıyorsa, çatışmayı önlemek için zamanında gösterilmek üzere el feneri veya beyaz ışıklı fener bulundurur.",
+          "Deniz uçağı ve WIG craft (Kural 31): tarif edilen fener ve şekilleri gösteremiyorsa, karakteristik ve konum bakımından mümkün olduğunca bunlara en yakın olanları gösterir.",
+        ],
+      },
     ],
     keyPoints: [
       "Yaylar: silyon 225°, yan fenerler 112.5° (her biri), kıç 135°, all-round 360° (Kural 21).",
       "Yan + silyon yayları kemerenin 22.5° kıçında biter; gerisi kıç feneri yayıdır.",
       "≥ 50 m'de silyon 6 NM, yan fenerler 3 NM, kıç 3 NM (Kural 22).",
       "Renk/diziliş kalıpları gemi tipini belirtir: NUC kırmızı-kırmızı, RAM kırmızı-beyaz-kırmızı, CBD üç kırmızı.",
+      "Sarı çakar = hava yastıklı araç; kırmızı çakar = WIG craft (Kural 23(b)-(c)).",
     ]
   },
   "Gündüz işaretleri (top/koni/silindir)": {

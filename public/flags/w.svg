@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="t-w">
+<title id="t-w">Signal flag Whiskey</title>
+<defs><clipPath id="c-w"><path d="M0,0h600v600H0z"/></clipPath></defs>
+<g clip-path="url(#c-w)"><rect x="0" y="0" width="600" height="600" fill="#0B4EA2"/><rect x="120" y="120" width="360" height="360" fill="#FFFFFF"/><rect x="240" y="240" width="120" height="120" fill="#D8232A"/></g>
+<path d="M0,0h600v600H0z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>

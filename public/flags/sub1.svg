@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340" role="img" aria-labelledby="t-sub1">
+<title id="t-sub1">First substitute pennant</title>
+<defs><clipPath id="c-sub1"><path d="M0,0L600,170L0,340z"/></clipPath></defs>
+<g clip-path="url(#c-sub1)"><rect x="0" y="0" width="600" height="340" fill="#0B4EA2"/><path d="M12,57.800000000000004L372,170L12,282.2z" fill="#FFCC00"/></g>
+<path d="M0,0L600,170L0,340z" fill="none" stroke="#00000055" stroke-width="6"/>
+</svg>
