@@ -104,7 +104,7 @@ export default function SoundSignalsPage() {
   const totalMatches = grouped.reduce((n, section) => n + section.signals.length, 0);
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
+    <div className="min-h-screen px-4 pb-4 pt-[var(--floating-nav-reserve)] md:px-8 md:pb-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-2 flex items-center gap-2">
           <Volume2 className="h-7 w-7 text-amber-500" />
