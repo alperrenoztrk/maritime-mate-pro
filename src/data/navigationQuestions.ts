@@ -6,8 +6,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 1,
     question: "D=120 NM yolu 10 kn hızla kaç saatte alırsınız?",
-    options: ["10", "12", "14", "8"],
-    correctAnswer: 1,
+    options: ["12", "14", "8", "10"],
+    correctAnswer: 0,
     explanation: "Zaman = Mesafe / Hız = 120 / 10 = 12 saat.",
     category: "Temel Seyir"
   },
@@ -38,8 +38,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 5,
     question: "COG 045° ve SOG 12 kn iken 2 saatte yer değiştirme yaklaşık kaç NM ve hangi hıza doğrudur?",
-    options: ["12 NM, 045°", "24 NM, 045°", "20 NM, 090°", "24 NM, 090°"],
-    correctAnswer: 1,
+    options: ["24 NM, 045°", "20 NM, 090°", "24 NM, 090°", "12 NM, 045°"],
+    correctAnswer: 0,
     explanation: "Yol = SOG × t = 12 × 2 = 24 NM, yön COG = 045°.",
     category: "Plotting"
   },
@@ -78,32 +78,32 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 10,
     question: "DR (dead reckoning) konumu hangi bilgiden üretilir?",
-    options: ["COG/SOG", "HDG/Speed through water", "Rüzgar verisi", "GZ eğrisi"],
-    correctAnswer: 1,
+    options: ["GZ eğrisi verileri", "COG ve SOG değerleri", "HDG ve parakete hızı", "Rüzgâr yönü ve hızı"],
+    correctAnswer: 2,
     explanation: "DR, gemi baş yönü (HDG) ve suya göre hızdan (STW) türetilir.",
     category: "Klasik Seyir"
   },
   {
     id: 11,
     question: "WGS84 hangi amaçla kullanılır?",
-    options: ["Meteoroloji", "Jeodezik referans", "Manyetik harita", "Gelgit tahmini"],
-    correctAnswer: 1,
+    options: ["Jeodezik referans", "Manyetik harita", "Gelgit tahmini", "Meteoroloji"],
+    correctAnswer: 0,
     explanation: "WGS84, küresel konumlama için kullanılan jeodezik referans sistemidir.",
     category: "Jeodezi/GNSS"
   },
   {
     id: 12,
     question: "1 kn kaç m/s'ye en yakındır?",
-    options: ["0.34", "0.51", "0.72", "1.00"],
-    correctAnswer: 1,
+    options: ["1.00", "0.34", "0.51", "0.72"],
+    correctAnswer: 2,
     explanation: "1 kn ≈ 0.514 m/s.",
     category: "Birimler"
   },
   {
     id: 13,
     question: "1 NM yaklaşık kaç kilometredir?",
-    options: ["1.6", "1.85", "2.0", "2.2"],
-    correctAnswer: 1,
+    options: ["2.0", "2.2", "1.6", "1.85"],
+    correctAnswer: 3,
     explanation: "1 NM ≈ 1.852 km.",
     category: "Birimler"
   },
@@ -126,32 +126,32 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 16,
     question: "Gemi 270°T doğrultusunda 12 kn, akıntı 180°T 3 kn. COG/SOG yaklaşık?",
-    options: ["COG 255°, 13 kn", "COG 257°, 12.4 kn", "COG 236°, 9 kn", "COG 270°, 15 kn"],
-    correctAnswer: 1,
+    options: ["COG 257°, 12.4 kn", "COG 236°, 9 kn", "COG 270°, 15 kn", "COG 255°, 13 kn"],
+    correctAnswer: 0,
     explanation: "Vektörel toplama: Batıya 12, güneye 3; sonuç ~257° ve büyüklük √(12²+3²)=12.37 ≈ 12.4 kn.",
     category: "Akıntı"
   },
   {
     id: 17,
     question: "Gelgit tablosunda MHWS neyi gösterir?",
-    options: ["En düşük düşük su", "Ortalama yüksek su yay", "Ortalama düşük su neap", "En yüksek yüksek su"],
-    correctAnswer: 1,
+    options: ["En yüksek yüksek su", "En düşük düşük su", "Ortalama yüksek su yay", "Ortalama düşük su neap"],
+    correctAnswer: 2,
     explanation: "MHWS: Mean High Water Springs.",
     category: "Gelgit"
   },
   {
     id: 18,
     question: "1 saatlik ileride log 10 NM gösteriyorsa STW kaç kn?",
-    options: ["8", "10", "12", "14"],
-    correctAnswer: 1,
+    options: ["12", "14", "8", "10"],
+    correctAnswer: 3,
     explanation: "STW ≈ 10 NM / 1 h = 10 kn.",
     category: "Aletler"
   },
   {
     id: 19,
     question: "COG ile HDG arasındaki fark temel olarak neyi gösterir?",
-    options: ["Sapma", "Set/Drift etkisi", "Rüzgar yönü", "Deplasman"],
-    correctAnswer: 1,
+    options: ["Set ve drift etkisi", "Rüzgârın estiği yön", "Deplasman değişimi", "Pusula sapması etkisi"],
+    correctAnswer: 0,
     explanation: "Akıntı ve rüzgâr etkileri geminin baş yönü ile iz yönü arasındaki farkı yaratır.",
     category: "Klasik Seyir"
   },
@@ -166,8 +166,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 21,
     question: "Azimut gözlemi ile bulunan hata hangi pusulaya uygulanır?",
-    options: ["Cıvata pusulası", "Gyro", "Manyetik", "Harita"],
-    correctAnswer: 1,
+    options: ["Harita pusula gülüne", "Cıvata pusulasına", "Cayro pusulasına", "Manyetik pusulaya"],
+    correctAnswer: 2,
     explanation: "Güneş/keşif cismi azimutu ile gyro error belirlenir ve gyroya uygulanır.",
     category: "Pusula"
   },
@@ -182,8 +182,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 23,
     question: "RHUMB line (loxodrome) nedir?",
-    options: ["Büyük daire", "Sabit kerterizli rota", "En kısa mesafe", "Akıntı doğrusu"],
-    correctAnswer: 1,
+    options: ["En kısa mesafe rotası", "Akıntı doğrusu rotası", "Büyük daire rotası", "Sabit kerterizli rota"],
+    correctAnswer: 3,
     explanation: "Loxodrome sabit istikametle izlenen rotadır.",
     category: "Haritacılık"
   },
@@ -198,32 +198,32 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 25,
     question: "Mercator projeksiyonun özelliği hangisidir?",
-    options: ["Alan korunumlu", "Açı korunumlu", "Uzaklık korunumlu", "Merkezî"],
-    correctAnswer: 1,
+    options: ["Açı korunumlu", "Uzaklık korunumlu", "Merkezî", "Alan korunumlu"],
+    correctAnswer: 0,
     explanation: "Mercator konformaldir, açıları korur.",
     category: "Haritacılık"
   },
   {
     id: 26,
     question: "DR ile EP arasındaki fark nedir?",
-    options: ["EP akıntı ve rüzgar dahil", "DR GPS'e dayanır", "EP kerterizsiz", "DR akıntı içerir"],
-    correctAnswer: 0,
+    options: ["DR akıntıyı da içerir", "DR doğrudan GPS'e dayanır", "EP akıntı ve rüzgârı içerir", "EP kerteriz kullanmaz"],
+    correctAnswer: 2,
     explanation: "EP (Estimated Position) çevresel etkileri içerir; DR içermez.",
     category: "Klasik Seyir"
   },
   {
     id: 27,
     question: "Uzaklık ölçeğinde 15'lik enlem farkı kaç NM'dir?",
-    options: ["10", "15", "30", "60"],
-    correctAnswer: 1,
+    options: ["30", "60", "10", "15"],
+    correctAnswer: 3,
     explanation: "Enlem dakikası ≈ NM olduğundan 15 NM.",
     category: "Coğrafi Temeller"
   },
   {
     id: 28,
     question: "2 LOP kesişimi size ne verir?",
-    options: ["Hız", "Rota", "Konum noktası (fix)", "Sapma"],
-    correctAnswer: 2,
+    options: ["Konum noktası (fix) verir", "Gerçek rotayı verir", "Pusula sapmasını verir", "Gemi hızını verir"],
+    correctAnswer: 0,
     explanation: "İki konum doğrusu, bir konum noktası (fix) oluşturur.",
     category: "Klasik Seyir"
   },
@@ -246,7 +246,7 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 31,
     question: "TCPA = 10 dk ve CPA = 0.2 NM ise hangi aksiyon önceliklidir?",
-    options: ["Hiçbiri", "Seyri sürdür", "COLREG'e uygun kaçınma", "Hız artır"],
+    options: ["Hızı bir miktar artırmak", "Hiçbir aksiyon gerekmez", "COLREG'e uygun kaçınma", "Mevcut seyri sürdürmek"],
     correctAnswer: 2,
     explanation: "Kısa TCPA ve düşük CPA çarpışma riskidir; kaçınma manevrası gerekir.",
     category: "COLREG"
@@ -262,23 +262,23 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 33,
     question: "Deviation tabloları hangi pusula için tutulur?",
-    options: ["Gyro", "Manyetik", "Harita", "Sextant"],
-    correctAnswer: 1,
+    options: ["Harita", "Sextant", "Gyro", "Manyetik"],
+    correctAnswer: 3,
     explanation: "Deviation, manyetik pusulanın gemi üzeri manyetizmadan kaynaklı hatasıdır.",
     category: "Pusula"
   },
   {
     id: 34,
     question: "Plane sailing hangi varsayıma dayanır?",
-    options: ["Küre", "Elipsoid", "Düzlem (küçük yaylar)", "Büyük daire"],
-    correctAnswer: 2,
+    options: ["Düzlem (küçük yay) varsayımı", "Elipsoit yüzey varsayımı", "Büyük daire varsayımı", "Küresel yüzey varsayımı"],
+    correctAnswer: 0,
     explanation: "Küçük mesafelerde Dünya düzlem kabul edilir.",
     category: "Seyir Yöntemleri"
   },
   {
     id: 35,
     question: "Traverse sailing neyi çözer?",
-    options: ["Kutupsal rota", "Küresel trigonometri", "Enlem ve boylam farklarını birlikte", "Sadece boylam farkı"],
+    options: ["Yalnızca boylam farkını", "Kutupsal rota hesabını", "Enlem ve boylam farkını", "Küresel trigonometriyi"],
     correctAnswer: 2,
     explanation: "Kuzey-güney ve doğu-batı bileşenlerini birlikte ele alır.",
     category: "Seyir Yöntemleri"
@@ -310,8 +310,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 39,
     question: "1 saatlik seyirde 10° sapma ile gidildi. Hedef çizgiden yanal hata ~? (Yol 12 NM)",
-    options: ["~1.2 NM", "~2.1 NM", "~3.5 NM", "~0.5 NM"],
-    correctAnswer: 1,
+    options: ["~3.5 NM", "~0.5 NM", "~1.2 NM", "~2.1 NM"],
+    correctAnswer: 3,
     explanation: "Yanal hata ≈ Yol × sin(10°) ≈ 12×0.1736 ≈ 2.08 NM.",
     category: "Plotting"
   },
@@ -326,8 +326,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 41,
     question: "Eş kerteriz yöntemiyle elde edilen LOP tipi nedir?",
-    options: ["Daire", "Doğru", "Parabol", "Elips"],
-    correctAnswer: 1,
+    options: ["Doğru", "Parabol", "Elips", "Daire"],
+    correctAnswer: 0,
     explanation: "Eş kerteriz iki kerteriz farkından doğrusal bir LOP verir.",
     category: "Klasik Seyir"
   },
@@ -350,7 +350,7 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 44,
     question: "GNSS'te HDOP düşükse konum doğruluğu?",
-    options: ["Kötü", "Orta", "İyi", "Alakasız"],
+    options: ["Doğrulukla ilgisizdir", "Kötü doğruluk verir", "İyi doğruluk verir", "Orta doğruluk verir"],
     correctAnswer: 2,
     explanation: "Düşük DOP daha iyi geometri ve doğruluk demektir.",
     category: "Jeodezi/GNSS"
@@ -366,7 +366,7 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 46,
     question: "Kerteriz değişimi ile hız tayini hangi yönteme aittir?",
-    options: ["Leeway", "Delta bearing", "Running fix", "Doubling the angle"],
+    options: ["Delta bearing yöntemine", "Running fix yöntemine", "Leeway yöntemine", "Doubling the angle'a"],
     correctAnswer: 3,
     explanation: "Kıyıdan belirli bir açıyı ikiye katlama yöntemi ile hız/mesafe tayini yapılır.",
     category: "Kıyı Seyri"
@@ -374,7 +374,7 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 47,
     question: "Leeway nedir?",
-    options: ["Rüzgar nedeniyle sapma açısı", "Akıntı hızı", "Pusula hatası", "Gelgit farkı"],
+    options: ["Rüzgâr kaynaklı sapma", "Pusuladaki sapma hatası", "Gelgit yükseklik farkı", "Akıntının hız değeri"],
     correctAnswer: 0,
     explanation: "Rüzgarın gemiyi itmesiyle oluşan yanal sapma açısı.",
     category: "Rüzgar"
@@ -382,8 +382,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 48,
     question: "Pilot chart'lar ne sunar?",
-    options: ["Anlık hava", "İstatistiksel rüzgar/akıntı", "Gemi hatları", "Derinlik"],
-    correctAnswer: 1,
+    options: ["Ayrıntılı derinlik verisi", "Anlık hava tahmini", "İstatistiksel rüzgâr/akıntı", "Gemi hat tarifeleri"],
+    correctAnswer: 2,
     explanation: "Aylık ortalama rüzgar, akıntı ve rota tavsiyeleri bulunur.",
     category: "Planlama"
   },
@@ -398,8 +398,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 50,
     question: "60°N enleminde COG 090°, SOG 15 kn ile 4 saat giderseniz boylam değişimi yaklaşık kaç derecedir?",
-    options: ["1°", "2°", "3°", "4°"],
-    correctAnswer: 1,
+    options: ["3°", "4°", "1°", "2°"],
+    correctAnswer: 3,
     explanation: "Yol = 15 × 4 = 60 NM (departure). 1° boylam = 60 × cos(60°) = 30 NM olduğundan DLong = 60/30 = 2°.",
     category: "Enlem-Boylam"
   },
@@ -415,8 +415,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 52,
     question: "Radar plotingde hedefin CPA'sı 0.8 NM ve TCPA'sı 12 dakika ise, çarpışma riski var mıdır?",
-    options: ["Hayır, güvenli geçiş", "Evet, yüksek risk", "Şartlı, hızlara bağlı", "Belirsiz, takip gerekli"],
-    correctAnswer: 1,
+    options: ["Evet, yüksek risk", "Şartlı, hızlara bağlı", "Belirsiz, takip gerekli", "Hayır, güvenli geçiş"],
+    correctAnswer: 0,
     explanation: "CPA < 1 NM ve TCPA < 20 dakika ise yüksek çarpışma riski vardır. Derhal kaçınma manevrası gereklidir.",
     category: "Radar & Çarpışma Önleme"
   },
@@ -439,8 +439,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 55,
     question: "COLREGS'e göre, balıkçı gemisi, motorlu gemi ve yelkenli gemi karşılaştığında öncelik sırası nedir?",
-    options: ["Yelkenli > Motorlu > Balıkçı", "Balıkçı > Yelkenli > Motorlu", "Motorlu > Balıkçı > Yelkenli", "Hepsi eşit"],
-    correctAnswer: 1,
+    options: ["Hepsi eşit", "Yelkenli > Motorlu > Balıkçı", "Balıkçı > Yelkenli > Motorlu", "Motorlu > Balıkçı > Yelkenli"],
+    correctAnswer: 2,
     explanation: "COLREGS Kural 18: Balıkçı gemisi (faaliyet halinde) > Yelkenli > Motorlu gemi öncelik sırası.",
     category: "COLREGS"
   },
@@ -463,8 +463,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 58,
     question: "Dead reckoning pozisyonundan fix'e kadar 2.5 NM error var. Bu durumda ne yapmalı?",
-    options: ["DR'ı devam ettir", "Set ve drift hesapla", "Kompası kontrol et", "Hızı azalt"],
-    correctAnswer: 1,
+    options: ["Kompası kontrol et", "Hızı azalt", "DR'ı devam ettir", "Set ve drift hesapla"],
+    correctAnswer: 3,
     explanation: "2.5 NM error büyük. Set (akıntı yönü) ve drift (akıntı hızı) hesaplayıp DR'ı düzeltmek gerekli.",
     category: "Dead Reckoning"
   },
@@ -527,24 +527,24 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 66,
     question: "Composite great circle navigation ne zaman kullanılır?",
-    options: ["Tüm uzun mesafelerde", "Ice limit varsa", "Fuel tasarrufu için", "Sadece Atlantik'te"],
-    correctAnswer: 1,
+    options: ["Ice limit varsa", "Fuel tasarrufu için", "Sadece Atlantik'te", "Tüm uzun mesafelerde"],
+    correctAnswer: 0,
     explanation: "Composite sailing, ice limit, traffic separation zones gibi kısıtlamalar olduğunda kullanılır.",
     category: "Composite Sailing"
   },
   {
     id: 67,
     question: "Electronic chart (ECDIS) alarm: 'Cross Track Error 0.5 NM'. Ne yapmalı?",
-    options: ["Alarmı kapat", "Route'u kontrol et", "Manual steering'e geç", "Hızı azalt"],
-    correctAnswer: 1,
+    options: ["Hızı azalt", "Alarmı kapat", "Route'u kontrol et", "Manual steering'e geç"],
+    correctAnswer: 2,
     explanation: "XTE 0.5 NM büyük sapma. Route planını, akıntıyı ve steering mode'u kontrol etmek gerekli.",
     category: "ECDIS"
   },
   {
     id: 68,
     question: "Magnetic variation 15°W olan bölgede compass heading 270°M'dan true heading'e çevirmek için?",
-    options: ["270° + 15° = 285°T", "270° - 15° = 255°T", "270° × 1.15", "Ek hesap gerekli"],
-    correctAnswer: 1,
+    options: ["270° × 1.15", "Ek hesap gerekli", "270° + 15° = 285°T", "270° - 15° = 255°T"],
+    correctAnswer: 3,
     explanation: "True = Magnetic + Variation. Westerly variation negatif: T = 270° + (-15°) = 255°T.",
     category: "Compass Corrections"
   },
@@ -599,8 +599,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 75,
     question: "SOLAS V/19 kapsamında uluslararası sefer yapan gemilerde AIS taşıma zorunluluğu hangi tonajdan itibaren başlar?",
-    options: ["Tüm gemiler", ">300 GT", ">500 GT", ">1600 GT"],
-    correctAnswer: 1,
+    options: [">300 GT", ">500 GT", ">1600 GT", "Tüm gemiler"],
+    correctAnswer: 0,
     explanation: "AIS, uluslararası sefer yapan 300 GT ve üzeri gemiler (ve tüm yolcu gemileri) için zorunludur; SOLAS V/19 donanım gereklilikleri tonaja göre kademelidir.",
     category: "Maritime Regulations"
   },
@@ -615,24 +615,24 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 77,
     question: "True wind speed 25 kn, direction 090°T. Ship heading 045°T, speed 15 kn ise apparent wind nedir?",
-    options: ["18 kn, 063°T", "37 kn, 073°T", "25 kn, 090°T", "40 kn, 045°T"],
-    correctAnswer: 1,
+    options: ["40 kn, 045°T", "18 kn, 063°T", "37 kn, 073°T", "25 kn, 090°T"],
+    correctAnswer: 2,
     explanation: "Rüzgâr 090°'dan esiyor (vektör: −25E). Gemi hareketi (10.6E, 10.6N); görünen rüzgâr vektörü = gerçek rüzgâr − gemi hızı = (−35.6, −10.6) ⇒ hız √(35.6²+10.6²) ≈ 37 kn, esme yönü ≈ 073°T.",
     category: "Wind Calculations"
   },
   {
     id: 78,
     question: "Seyir hâlindeki bir geminin AIS Class A dinamik veri raporlama aralığı ne kadardır?",
-    options: ["Sabit 10 saniye", "Hıza/dönüşe bağlı 2-10 saniye", "Sabit 30 saniye", "Sabit 2 dakika"],
-    correctAnswer: 1,
+    options: ["Sabit 30 saniye aralık", "Sabit 2 dakika aralık", "Sabit 10 saniye aralık", "Hıza/dönüşe bağlı 2-10 sn"],
+    correctAnswer: 3,
     explanation: "AIS Class A seyirde hıza ve rota değişimine bağlı olarak 2-10 saniyede bir rapor verir; demirli/bağlı gemide aralık 3 dakikadır.",
     category: "AIS Technical"
   },
   {
     id: 79,
     question: "Gyrocompass settling time genellikle ne kadardır?",
-    options: ["15 dakika", "2-6 saat", "24 saat", "3 gün"],
-    correctAnswer: 1,
+    options: ["2-6 saat", "24 saat", "3 gün", "15 dakika"],
+    correctAnswer: 0,
     explanation: "Gyrocompass settling time (true north'a alignment) genellikle 2-6 saat sürer.",
     category: "Gyrocompass"
   },
@@ -663,16 +663,16 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 83,
     question: "GPS Selective Availability hangi yılda kaldırılmıştır?",
-    options: ["1995", "2000", "2005", "2010"],
-    correctAnswer: 1,
+    options: ["2010", "1995", "2000", "2005"],
+    correctAnswer: 2,
     explanation: "GPS Selective Availability (artificial accuracy degradation) 1 Mayıs 2000'de kaldırıldı.",
     category: "GPS History"
   },
   {
     id: 84,
     question: "GMDSS sea area A2'de hangi communication systems zorunludur?",
-    options: ["Sadece VHF", "VHF + MF", "Sadece INMARSAT", "Tüm sistemler"],
-    correctAnswer: 1,
+    options: ["Yalnızca INMARSAT uydu", "Tüm sistemler birlikte", "Yalnızca VHF telsiz", "VHF ile birlikte MF"],
+    correctAnswer: 3,
     explanation: "GMDSS A2 alanı: VHF (DSC) donanımına ek olarak MF (DSC) zorunludur; uydu haberleşmesi ek/alternatif işlevler için kullanılabilir.",
     category: "GMDSS"
   },
@@ -687,8 +687,8 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 86,
     question: "ECDIS'te over-scale uyarısı ne zaman görünür?",
-    options: ["Compilation scale'den daha büyük ölçeğe yakınlaştırınca", "Compilation scale'den daha küçük ölçeğe uzaklaştırınca", "Sadece raster haritalarda", "TSS içinde her zaman"],
-    correctAnswer: 0,
+    options: ["Derleme ölçeğinden uzaklaşınca", "Derleme ölçeğinden yakınlaşınca", "Yalnızca raster haritalarda", "TSS içinde her zaman"],
+    correctAnswer: 1,
     explanation: "Over-scale, ENC compilation scale'in ötesinde yakınlaştırıldığında (daha büyük ölçek) görünür; detay güvenilir olmayabilir.",
     category: "ECDIS Display"
   },
@@ -711,7 +711,7 @@ const baseNavigationQuestions: QuizQuestion[] = [
   {
     id: 89,
     question: "Chart datum ve GPS datum farkı pozisyon hatası yaratabilir mi?",
-    options: ["Hayır, aynıdır", "Evet, yüzlerce metreye varabilir", "Sadece eski chartlarda", "Teknisyen ayarlar"],
+    options: ["Hayır, ikisi aynıdır", "Evet, yüzlerce metre olabilir", "Yalnızca eski haritalarda", "Teknisyen ayarıyla giderilir"],
     correctAnswer: 1,
     explanation: "Yerel harita datumu ile GPS datumu (WGS84) arasındaki fark, bölgeye göre yüzlerce metreye varan pozisyon hatası yaratabilir; harita üzerindeki datum notu kontrol edilmelidir.",
     category: "Datum Differences"
