@@ -12,16 +12,8 @@ import { SunArcWidget } from "@/components/widgets/instruments/SunArcWidget";
 /**
  * Widget'ları besleyen tek kaynak: konum, hava ve saat verisini toplayıp her
  * widget kimliği için hazır bileşeni döndürür.
- *
- * Neden ayrı dosya: aynı bileşenler iki yerde gösteriliyor — ana sayfadaki
- * ızgarada (HomeWidgetGrid) ve köprüüstü modelinde cihazların üstünde
- * (bridge/BridgeInstrumentMounts). İkisi de bu hook'u kullandığı için veri
- * bir kez çekiliyor ve iki görünüm asla ayrışmıyor.
- *
- * Hook hazır bileşenlerin yanında verinin ham hâlini de döndürüyor
- * (BridgeConditions): köprüüstü sahnesinin dışarısı — gökyüzü, ışık, denizin
- * salınımı — widget'ların gösterdiği aynı sayılardan kuruluyor.
  */
+
 
 function degreesToCompass(degrees: number): string {
   const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
@@ -77,28 +69,10 @@ function zonedTimeParts(now: Date, timeZone?: string): { h: number; m: number; s
 
 export type HomeWidgetNodes = Partial<Record<HomeWidgetId, ReactNode>>;
 
-/**
- * Widget'ların gösterdiği verinin ham hâli.
- *
- * Köprüüstü sahnesi dışarıyı bununla kuruyor: gökyüzü ve ışık sunProgress'ten
- * (güneş widget'ıyla aynı skyLook() tablosu), denizin salınımı rüzgârdan,
- * rengi hava kodundan. Widget'lar bunları zaten çiziyor; aynı sayıları
- * pencerenin dışına da vermek, iki anlatının ayrışmasını engelliyor —
- * termometre 4 °C gösterirken camdan yaz günü görünmesin.
- */
-export interface BridgeConditions {
-  /** 0 gün doğuşu, 1 gün batışı; aralık dışı gece (kırpılmamış). */
-  sunProgress: number | null;
-  windSpeedKt?: number;
-  windDirectionDeg?: number;
-  /** WMO hava kodu — 45 ve üstü kapalı/yağışlı. */
-  weatherCode?: number;
-}
-
 export interface HomeWidgetData {
   nodes: HomeWidgetNodes;
-  conditions: BridgeConditions;
 }
+
 
 export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const { data, locationLabel, accuracyMeters, locationSource, positionTimestamp } = useCurrentWeather({
@@ -171,8 +145,6 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const sunset = data?.sunsetIso
     ? new Date(data.sunsetIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
     : "—";
-  // Kırpılmadan geçer: gece saatlerinde 0'ın altına / 1'in üstüne çıkması
-  // lombardan karanlık görünmesini sağlar (bkz. PortholeSky).
   let sunProgress: number | null = null;
   if (data?.sunriseIso && data?.sunsetIso) {
     const rise = new Date(data.sunriseIso).getTime();
@@ -180,12 +152,7 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     if (set > rise) sunProgress = (now.getTime() - rise) / (set - rise);
   }
 
-  const conditions: BridgeConditions = {
-    sunProgress,
-    windSpeedKt: data?.windSpeedKt,
-    windDirectionDeg: data?.windDirectionDeg,
-    weatherCode: data?.weatherCode,
-  };
+
 
   const nodes: HomeWidgetNodes = {
     "clock-national": (
@@ -233,5 +200,5 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     sun: <SunArcWidget sunrise={sunrise} sunset={sunset} progress={sunProgress} />,
   };
 
-  return { nodes, conditions };
+  return { nodes };
 }
