@@ -274,7 +274,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                 <DialogDescription className="sr-only">Haber detayı</DialogDescription>
                 {/* Byline satırı */}
                 <div
-                  className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-y py-1.5 text-[9px]"
+                  className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-y py-1.5 text-micro"
                   style={{
                     fontVariant: "small-caps",
                     letterSpacing: ".12em",
@@ -348,7 +348,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
                       <div className="gz-notice">
                         <p>Tam metin baskıya yetişmedi; özet dizgisi gösteriliyor.</p>
                         {articleQuery.error instanceof Error && articleQuery.error.message ? (
-                          <p className="mt-1 break-words text-[9px] opacity-75">{articleQuery.error.message}</p>
+                          <p className="mt-1 break-words text-micro opacity-75">{articleQuery.error.message}</p>
                         ) : null}
                       </div>
                     </div>
@@ -378,7 +378,7 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
               <div className="mt-6 flex items-center justify-center">
                 <button
                   type="button"
-                  className="border-y px-5 py-1.5 text-[11px] uppercase tracking-[.2em] active:bg-[rgba(35,28,15,.07)]"
+                  className="border-y px-5 py-1.5 text-micro uppercase tracking-[.2em] active:bg-[rgba(35,28,15,.07)]"
                   style={{
                     borderColor: "var(--gz-rule)",
                     color: "var(--gz-ink-soft)",

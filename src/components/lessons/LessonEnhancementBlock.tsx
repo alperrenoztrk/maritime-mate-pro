@@ -101,7 +101,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
               className="overflow-hidden rounded-2xl border border-sky-500/30 bg-sky-500/5 shadow-md"
             >
               <div className="bg-sky-500/10 px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">
+                <p className="text-micro font-bold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">
                   Örnek {i + 1}
                 </p>
                 <p className="mt-1 text-sm font-semibold leading-relaxed text-foreground">
@@ -111,7 +111,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
 
               <div className="grid gap-4 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
                 <div className="rounded-lg border border-border/40 bg-background/60 p-3">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <p className="text-micro font-bold uppercase tracking-wider text-muted-foreground">
                     Verilenler
                   </p>
                   <ul className="mt-2 space-y-1.5">
@@ -125,7 +125,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
                 </div>
 
                 <div className="rounded-lg border border-border/40 bg-background/60 p-3">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <p className="text-micro font-bold uppercase tracking-wider text-muted-foreground">
                     Çözüm
                   </p>
                   <ol className="mt-2 space-y-2">
@@ -149,7 +149,7 @@ export function LessonEnhancementBlock({ data }: { data: LessonTopicEnhancement 
               </div>
 
               <div className="border-t border-sky-500/20 bg-emerald-500/10 px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                <p className="text-micro font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
                   Sonuç
                 </p>
                 <p className="mt-1 text-sm font-bold text-foreground">{ex.answer}</p>

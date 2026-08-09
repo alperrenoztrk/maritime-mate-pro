@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, TrendingDown, Calculator, Package } from "lucide-react";
+import { TrendingDown, Calculator, Package } from "lucide-react";
 
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";

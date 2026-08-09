@@ -143,7 +143,7 @@ export const GMCalculator = () => {
               </span>
             </div>
             
-            <div className="text-[10px] text-muted-foreground pt-2 border-t border-border/30">
+            <div className="text-micro text-muted-foreground pt-2 border-t border-border/30">
               <p><strong>Formül:</strong> GM = KM - KG</p>
             </div>
           </div>
@@ -229,7 +229,7 @@ export const FreeSurfaceCalculator = () => {
             </div>
           </div>
           
-          <p className="text-[10px] text-muted-foreground mt-2">
+          <p className="text-micro text-muted-foreground mt-2">
             <strong>Formül:</strong> FSE = (l × b³ × ρ) / (12 × Δ)
           </p>
         </div>
@@ -359,7 +359,7 @@ export const IMOCriteriaChecker = () => {
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           <div className="space-y-1">
-            <Label className="text-[10px]">0°-30° Alan</Label>
+            <Label className="text-micro">0°-30° Alan</Label>
             <Input
               type="number"
               step="0.001"
@@ -369,7 +369,7 @@ export const IMOCriteriaChecker = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-[10px]">0°-40° Alan</Label>
+            <Label className="text-micro">0°-40° Alan</Label>
             <Input
               type="number"
               step="0.001"
@@ -379,7 +379,7 @@ export const IMOCriteriaChecker = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-[10px]">30°-40° Alan</Label>
+            <Label className="text-micro">30°-40° Alan</Label>
             <Input
               type="number"
               step="0.001"
@@ -389,7 +389,7 @@ export const IMOCriteriaChecker = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-[10px]">GZ @ 30°</Label>
+            <Label className="text-micro">GZ @ 30°</Label>
             <Input
               type="number"
               step="0.01"
@@ -399,7 +399,7 @@ export const IMOCriteriaChecker = () => {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-[10px]">GM₀</Label>
+            <Label className="text-micro">GM₀</Label>
             <Input
               type="number"
               step="0.01"
@@ -614,7 +614,7 @@ export const ShipVisualization = () => {
                 <div className="w-24 h-6 bg-gradient-to-b from-red-500/60 to-red-700/60 rounded-b-3xl border-2 border-t-0 border-foreground/20" />
               </div>
               
-              <div className="absolute top-1 right-1 text-[10px] font-mono bg-background/80 px-1 rounded">
+              <div className="absolute top-1 right-1 text-micro font-mono bg-background/80 px-1 rounded">
                 {heelAngle}°
               </div>
             </div>

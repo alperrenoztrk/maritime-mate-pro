@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, Heart, RotateCcw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
@@ -146,13 +146,8 @@ export default function GuidedLessonSession() {
     <div className="relative min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="sticky top-0 z-10 border-b border-border/40 bg-card/90 px-4 py-3 backdrop-blur">
         <div className="mx-auto flex max-w-2xl items-center gap-3">
-          <Link
-            to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}
-            className="text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Çıkış"
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </Link>
+          {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+
           <Progress value={finished ? 100 : progress} className="h-3 flex-1" />
           {hasFlow ? (
             <span className="flex items-center gap-1 text-sm font-semibold text-rose-500">
@@ -237,7 +232,7 @@ export default function GuidedLessonSession() {
               </>
             ) : current?.kind === "quiz" ? (
               <>
-                <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                <p className="mb-3 text-micro font-bold uppercase tracking-[0.2em] text-primary">
                   Karışık Soru
                 </p>
                 <KnowledgeCheck

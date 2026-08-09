@@ -134,7 +134,7 @@ export default function NavigationRulesPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold leading-tight text-foreground">{section.title}</p>
-                    <p className="text-[11px] text-muted-foreground truncate">{section.source}</p>
+                    <p className="text-micro text-muted-foreground truncate">{section.source}</p>
                   </div>
                   {expanded === idx ? (
                     <ChevronUp className="h-4 w-4 shrink-0 text-muted-foreground" />

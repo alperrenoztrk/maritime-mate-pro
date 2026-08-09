@@ -4,7 +4,6 @@ import { StickyNote, Trash2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 import { MobileLayout } from "@/components/MobileLayout";
-import { BackButton } from "@/components/BackButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { EmptyState } from "@/components/state/AppState";
 import {
   getNotes,
   deleteNote,
@@ -68,7 +68,6 @@ const Notes = () => {
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}
           <div className="flex items-center gap-3">
-            <BackButton to="/" />
             <div className="flex items-center gap-3">
               <StickyNote className="h-9 w-9 text-amber-300" strokeWidth={1.8} />
               <h1 className="text-3xl font-bold text-amber-300">
@@ -78,18 +77,16 @@ const Notes = () => {
           </div>
 
           {notes.length === 0 ? (
-            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-16 text-center">
-              <StickyNote className="h-12 w-12 text-white/40" strokeWidth={1.5} />
-              <p className="text-base font-semibold text-white/90">
-                <span data-translatable>Henüz kaydedilmiş notunuz yok.</span>
-              </p>
-              <p className="max-w-xs text-sm text-white/60">
+            <EmptyState
+              icon={StickyNote}
+              title={<span data-translatable>Henüz kaydedilmiş notunuz yok.</span>}
+              description={
                 <span data-translatable>
                   Herhangi bir sayfada metin seçin ve beliren "Kaydet" düğmesine
                   dokunun; not burada kategorisine göre görünür.
                 </span>
-              </p>
-            </div>
+              }
+            />
           ) : (
             <Accordion
               type="multiple"

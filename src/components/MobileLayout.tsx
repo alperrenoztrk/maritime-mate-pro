@@ -19,63 +19,26 @@ export const MobileLayout = ({ children, className }: MobileLayoutProps) => {
   return (
     <div
       className={cn(
-        "app-tabbar-inset-managed marine-shell relative min-h-[100svh] w-full overflow-x-hidden text-foreground antialiased",
+        // Transparent by design: <GlobalMaritimeBackground /> paints the
+        // gradient, glow and waves once, fixed, for the whole app. This shell
+        // used to repaint all three — which meant every MobileLayout page ran
+        // a second wave animation over an occluded first one.
+        "marine-shell relative min-h-[100svh] w-full overflow-x-hidden text-white antialiased",
         className
       )}
-      style={{
-        background:
-          "linear-gradient(180deg, hsl(var(--marine-bg-top)) 0%, hsl(var(--marine-bg-middle)) 52%, hsl(var(--marine-bg-bottom)) 100%)",
-      }}
     >
-      {/* Top radial glow */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, hsl(var(--marine-glow) / 0.16) 0%, transparent 55%)",
-        }}
-        aria-hidden
-      />
-
-      {/* Bottom ocean waves */}
-      <div className="maritime-decorative-motion pointer-events-none absolute bottom-0 left-0 right-0 h-[22%] overflow-hidden opacity-70">
-        <svg
-          className="absolute bottom-[10%] left-0 w-[200%] h-[60px]"
-          viewBox="0 0 2880 60"
-          preserveAspectRatio="none"
-          style={{ animation: "ml-drift 22s linear infinite" }}
-          aria-hidden
-        >
-          <path
-            d="M0,35 C160,28 320,42 480,36 C640,30 800,22 960,28 C1120,34 1280,46 1440,40 C1600,34 1760,22 1920,28 C2080,34 2240,46 2400,40 C2560,34 2720,28 2880,32 L2880,60 L0,60 Z"
-            fill="hsl(var(--marine-wave-back) / 0.24)"
-          />
-        </svg>
-        <svg
-          className="absolute bottom-0 left-0 w-[200%] h-[44px]"
-          viewBox="0 0 2880 44"
-          preserveAspectRatio="none"
-          style={{ animation: "ml-drift-rev 16s linear infinite" }}
-          aria-hidden
-        >
-          <path
-            d="M0,22 C140,18 280,28 420,24 C560,20 700,14 880,18 C1060,22 1180,30 1360,26 C1540,22 1640,14 1800,18 C1960,22 2080,30 2280,26 C2480,22 2620,16 2780,20 C2840,22 2860,22 2880,22 L2880,44 L0,44 Z"
-            fill="hsl(var(--marine-wave-front) / 0.2)"
-          />
-        </svg>
-      </div>
-
       {/* Content — safe-area aware, scrollable, contained width */}
       <main
         className={cn(
           "relative z-10 mx-auto w-full max-w-4xl",
           // Horizontal padding scales with viewport
           "px-3 xs:px-4 sm:px-5 md:px-6",
-          // Vertical padding respects notch + home indicator
-          "pt-[max(0.875rem,env(safe-area-inset-top))]",
+          // Reserves the strip AppNavBar occupies (notch + control height),
+          // so a page's own heading is never covered by the global back pill.
+          "pt-[var(--floating-nav-reserve)]",
           // Bottom padding also clears the native AdMob banner when one is
           // shown; --ad-banner-height is 0px whenever there is no banner.
-          "pb-[var(--app-content-bottom)]",
+          "pb-[calc(max(1.25rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))]",
           // Avoid bleed under left/right curved edges in landscape
           "pl-[max(0.75rem,env(safe-area-inset-left))]",
           "pr-[max(0.75rem,env(safe-area-inset-right))]",
@@ -88,12 +51,9 @@ export const MobileLayout = ({ children, className }: MobileLayoutProps) => {
       </main>
 
       <style>{`
-        @keyframes ml-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes ml-drift-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
         /* Typography normalization on the dark maritime shell.
            Scoped to .marine-shell so it never leaks into modals/overlays. */
-        .marine-shell { color: hsl(var(--foreground)); }
+        .marine-shell { color: rgb(241 245 249); }
         .marine-shell h1 { font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
         .marine-shell h2 { font-weight: 600; letter-spacing: -0.005em; line-height: 1.2; }
         .marine-shell h3, .marine-shell h4 { font-weight: 600; line-height: 1.25; }

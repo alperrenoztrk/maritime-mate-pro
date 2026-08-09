@@ -1,10 +1,10 @@
 import { useEffect, type CSSProperties, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { ChevronRight, Search } from "lucide-react";
+import { ArrowLeft, ChevronRight, Search } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { accentGradient } from "./libraryAccent";
-import { hapticSelection } from "@/services/haptics";
 import { registerLocalBackHandler } from "@/lib/localBack";
+import { hapticSelection } from "@/lib/haptics";
 
 export function LibraryPageShell({
   title,
@@ -35,15 +35,30 @@ export function LibraryPageShell({
     });
   }, [backHref, navigate, onBack]);
 
+  // No navigational back control here: the app has one global back affordance
+  // (AppNavBar + edge swipe). `backHref` is accepted and ignored so callers
+  // don't have to change. `onBack` is NOT navigation — it unwinds in-page
+  // state (e.g. leaving a category) — so it still gets a control.
+  const backControl = !backHref && onBack ? (
+    <button
+      type="button"
+      onClick={onBack}
+      aria-label={backLabel}
+      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-card/80 text-muted-foreground shadow-sm transition hover:border-primary/40 hover:text-foreground"
+    >
+      <ArrowLeft className="h-5 w-5" />
+    </button>
+  ) : null;
+
   return (
     // The shared inset tokens expand to env(safe-area-inset-top) and
     // var(--ad-banner-height), so every library route clears both the notch
     // and the native banner without duplicating platform math.
     <div
-      className="app-tabbar-inset-managed relative min-h-[100svh] overflow-hidden pb-[var(--app-content-bottom)] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pt-[var(--floating-nav-reserve)]"
-      style={{
-        background: "linear-gradient(150deg, hsl(var(--marine-bg-top)) 0%, hsl(var(--marine-bg-middle)) 55%, hsl(var(--marine-bg-bottom)) 100%)",
-      }}
+      // Top padding reserves the strip AppNavBar occupies. It used to be
+      // max(2rem, safe-top) — 32px against a 56px control, so the global
+      // "Geri" pill sat on top of this header's icon and <h1>.
+      className="relative min-h-[100svh] overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-[max(1rem,env(safe-area-inset-left))] pb-[calc(max(6rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))] pt-[var(--floating-nav-reserve)] dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
@@ -307,7 +322,7 @@ export function LibraryBookPlaceholder({
   return (
     <div className="relative aspect-[3/4] min-h-60">
       <LibraryBookCase title={title} accent={accent} muted />
-      <span className="absolute bottom-[5%] left-1/2 -translate-x-1/2 rounded-full bg-slate-900/75 px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm">
+      <span className="absolute bottom-[5%] left-1/2 -translate-x-1/2 rounded-full bg-slate-900/75 px-2.5 py-1 text-micro font-semibold text-white shadow-sm">
         {note}
       </span>
     </div>
@@ -341,7 +356,7 @@ export function LibraryCompactCard({
       </span>
       <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-foreground">{title}</span>
       {badge !== undefined && (
-        <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+        <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
           {badge}
         </span>
       )}

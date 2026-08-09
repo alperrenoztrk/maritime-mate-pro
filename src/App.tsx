@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useMemo } from "react";
+import { recordNavigation } from "@/lib/navigationDirection";
 import { GlobalMaritimeBackground } from "@/components/GlobalMaritimeBackground";
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
@@ -19,15 +20,14 @@ import { PageTransition } from "@/components/PageTransition";
 import { RouteTranslationGate } from "@/components/RouteTranslationGate";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { useNavigationHierarchy } from "@/hooks/useNavigationHierarchy";
-import { useFrameRate } from "@/hooks/useFrameRate";
 import { useScreenProtection } from "@/hooks/useScreenProtection";
-import { FloatingNavButtons } from "@/components/FloatingNavButtons";
+import { AppNavBar } from "@/components/AppNavBar";
+import { EdgeSwipeBack } from "@/components/EdgeSwipeBack";
+import { RouteSkeleton } from "@/components/state/AppState";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { ProRoute } from "@/components/pro/ProRoute";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { AdsController } from "@/components/ads/AdsController";
-import { AppTabBar } from "@/components/AppTabBar";
-import { SwipeBackGesture } from "@/components/SwipeBackGesture";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -194,11 +194,10 @@ const BetaShipSimulator = lazy(() => import("./pages/BetaShipSimulator"));
 const BetaDocumentTracker = lazy(() => import("./pages/BetaDocumentTracker"));
 const queryClient = new QueryClient();
 
-const RouteFallback = () => (
-  <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
-    <div className="h-8 w-8 animate-spin rounded-full border-2 border-muted-foreground/30 border-t-primary" />
-  </div>
-);
+// A content-shaped skeleton rather than a centred spinner: it keeps the page
+// rhythm while the lazy chunk downloads instead of flashing an empty screen
+// with a ring in the middle.
+const RouteFallback = () => <RouteSkeleton />;
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -207,21 +206,33 @@ const AnimatedRoutes = () => {
   // exits the app — see useNavigationHierarchy for the policy.
   useNavigationHierarchy();
 
+  // Record push/pop for the route transition. Done during render, so the
+  // direction is already correct when AnimatePresence starts the exit
+  // animation in this same commit. useMemo keeps it to one call per route.
+  useMemo(() => recordNavigation(location.pathname), [location.pathname]);
+
   return (
     <>
-    <FloatingNavButtons />
-    <AppTabBar />
-    <SwipeBackGesture />
+    <AppNavBar />
+    {/* iOS edge-swipe back. Shares useBackNavigation with the floating
+        control and the hardware button, so all three land in the same place. */}
+    <EdgeSwipeBack />
     {/* App-wide search dialog: ⌘K / Ctrl+K and the "open-global-search"
         event now work on every route, not just the home page. The trigger
         button is hidden; the dialog itself renders through a portal. */}
     <div className="hidden">
       <GlobalSearch />
     </div>
-    <AnimatePresence mode="sync" initial={false}>
-        <Suspense fallback={<RouteFallback />}>
+    {/* The key MUST sit on AnimatePresence's direct child. It used to be on
+        <Routes>, one level below <Suspense>, so AnimatePresence only ever saw
+        a single unchanging child: no page ever ran its exit animation and
+        mode="wait" had nothing to wait for. Keying the Suspense boundary
+        instead keeps lazy routes working — the outgoing subtree is already
+        resolved, so it can animate out while the incoming one loads. */}
+    <AnimatePresence mode="wait" initial={false}>
+        <Suspense key={location.pathname} fallback={<RouteFallback />}>
         <span hidden aria-hidden="true" data-route-ready-path={location.pathname} />
-        <Routes location={location} key={location.pathname}>
+        <Routes location={location}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
         <Route path="/calculations" element={<PageTransition><CalculationsMenu /></PageTransition>} />
@@ -229,9 +240,9 @@ const AnimatedRoutes = () => {
         <Route path="/glossary" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
-        <Route path="/beta/psc-checklist" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaPscChecklist /></PageTransition></ProRoute>} />
-        <Route path="/beta/ship-simulator" element={<ProRoute feature="Gelişmiş simülasyonlar"><PageTransition><BetaShipSimulator /></PageTransition></ProRoute>} />
-        <Route path="/beta/documents" element={<ProRoute feature="Belge ve sertifika takibi"><PageTransition><BetaDocumentTracker /></PageTransition></ProRoute>} />
+        <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
+        <Route path="/beta/ship-simulator" element={<PageTransition><BetaShipSimulator /></PageTransition>} />
+        <Route path="/beta/documents" element={<PageTransition><BetaDocumentTracker /></PageTransition>} />
 
 
         <Route path="/lessons/stability/topics" element={<PageTransition><StabilityTopicsPage /></PageTransition>} />
@@ -407,10 +418,6 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  // Keep motion timing perceptually consistent while allowing the compositor
-  // to use the display's native refresh rate (including 120 Hz ProMotion).
-  useFrameRate();
-
   // App-wide screenshot / screen-recording blocking (native only).
   // Android: FLAG_SECURE (fully blocks). iOS: blanks captures + app-switcher
   // blur + screenshot detection. No-op on web.

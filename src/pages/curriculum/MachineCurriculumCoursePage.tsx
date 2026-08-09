@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { CurriculumModuleAccordion } from "@/components/curriculum/CurriculumModuleAccordion";
-import { ArrowLeft } from "lucide-react";
+
 
 export default function MachineCurriculumCoursePage() {
   const { topicSlug } = useParams<{ topicSlug: string }>();
@@ -29,13 +29,8 @@ export default function MachineCurriculumCoursePage() {
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-4">
-          <Link
-            to="/lessons?library=machine"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Makine Kitaplığı
-          </Link>
+          {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+
 
           <div className="flex items-center gap-3">
             <div

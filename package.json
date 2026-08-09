@@ -57,7 +57,8 @@
     "i18n:check": "node scripts/i18n/check-coverage.mjs",
     "i18n:audit": "npx tsx scripts/i18n/audit-rendered.mjs",
     "i18n:all": "npm run i18n:extract && npm run i18n:generate && npm run i18n:check -- --strict",
-    "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict"
+    "i18n:verify": "npm run i18n:extract && npm run i18n:check -- --strict",
+    "check:design-system": "node scripts/check-design-system.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",
@@ -116,7 +117,6 @@
     "embla-carousel-react": "^8.6.0",
     "exceljs": "^4.4.0",
     "framer-motion": "^12.23.24",
-    "gsap": "^3.13.0",
     "html2canvas": "^1.4.1",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.447.0",

@@ -138,7 +138,7 @@ export default function MusterListPage() {
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-6 print:max-w-none print:gap-4">
         <header className="space-y-4">
 
-          <h1 className="mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+          <h1 className="mx-auto flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-micro font-semibold uppercase tracking-[0.2em] text-primary">
             <ShieldAlert className="h-3.5 w-3.5" />
             MUSTER LIST
           </h1>
@@ -185,7 +185,7 @@ export default function MusterListPage() {
               <div className="flex flex-wrap items-center gap-2">
                 <h2 className="text-lg font-bold text-foreground">{activeEmergency.title}</h2>
                 <span
-                  className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold ${signalMeta.className}`}
+                  className={`rounded-full border px-2.5 py-1 text-micro font-semibold ${signalMeta.className}`}
                 >
                   {signalMeta.label}
                 </span>
@@ -194,7 +194,7 @@ export default function MusterListPage() {
                 {activeEmergency.description}
               </p>
             </div>
-            <span className="rounded-lg border border-border/50 bg-background/70 px-3 py-1.5 text-[11px] font-medium text-muted-foreground">
+            <span className="rounded-lg border border-border/50 bg-background/70 px-3 py-1.5 text-micro font-medium text-muted-foreground">
               {activeEmergency.reference}
             </span>
           </div>
@@ -224,7 +224,7 @@ export default function MusterListPage() {
               <ol className="space-y-2.5">
                 {activeEmergency.firstActions.map((action, index) => (
                   <li key={action} className="flex gap-2.5 text-xs leading-relaxed text-foreground/85">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-micro font-bold text-primary">
                       {index + 1}
                     </span>
                     <span>{action}</span>
@@ -243,7 +243,7 @@ export default function MusterListPage() {
               </span>
               <div>
                 <h2 className="text-sm font-bold text-foreground">SOLAS / ISPS Talim Başlıkları</h2>
-                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                <p className="mt-1 text-micro leading-relaxed text-muted-foreground">
                   Periyodik zorunlu adlandırmalar; “Genel Talim” bir SOLAS talim başlığı değildir.
                 </p>
               </div>
@@ -257,20 +257,20 @@ export default function MusterListPage() {
                 className="rounded-xl border border-border/40 bg-background/70 p-3"
               >
                 <div className="flex flex-wrap gap-1.5">
-                  <span className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-primary">
+                  <span className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-micro font-bold uppercase tracking-wide text-primary">
                     {drill.classification}
                   </span>
                   {!drill.isStandalone && (
-                    <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-300">
+                    <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 text-micro font-bold uppercase tracking-wide text-amber-700 dark:text-amber-300">
                       Ayrı talim değildir
                     </span>
                   )}
                 </div>
                 <h3 className="mt-2 text-xs font-bold leading-snug text-foreground">{drill.title}</h3>
-                <p className="mt-0.5 text-[10px] font-medium text-muted-foreground">
+                <p className="mt-0.5 text-micro font-medium text-muted-foreground">
                   {drill.englishTitle}
                 </p>
-                <dl className="mt-3 space-y-2 text-[11px] leading-relaxed">
+                <dl className="mt-3 space-y-2 text-micro leading-relaxed">
                   <div>
                     <dt className="font-bold text-foreground">Kapsam</dt>
                     <dd className="text-muted-foreground">{drill.applicability}</dd>
@@ -280,14 +280,14 @@ export default function MusterListPage() {
                     <dd className="text-muted-foreground">{drill.frequency}</dd>
                   </div>
                 </dl>
-                <p className="mt-3 border-t border-border/40 pt-2 text-[10px] font-semibold text-primary">
+                <p className="mt-3 border-t border-border/40 pt-2 text-micro font-semibold text-primary">
                   {drill.reference}
                 </p>
               </article>
             ))}
           </div>
 
-          <p className="mt-4 border-t border-border/40 pt-3 text-[10px] leading-relaxed text-muted-foreground">
+          <p className="mt-4 border-t border-border/40 pt-3 text-micro leading-relaxed text-muted-foreground">
             {solasDrillScopeNote}
           </p>
         </section>
@@ -326,7 +326,7 @@ export default function MusterListPage() {
                     </span>
                     <div>
                       <h2 className="text-sm font-bold text-foreground">{group.team}</h2>
-                      <p className="text-[11px] text-muted-foreground">
+                      <p className="text-micro text-muted-foreground">
                         {group.rows.length} görev pozisyonu
                       </p>
                     </div>
@@ -348,7 +348,7 @@ export default function MusterListPage() {
                             <span>{assignment.rank}</span>
                             <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-50 transition-transform group-hover:translate-x-0.5 print:hidden" />
                           </Link>
-                          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                          <p className="mt-1 text-micro font-semibold uppercase tracking-[0.14em] text-primary">
                             {assignment.billet}
                           </p>
                         </div>
@@ -356,7 +356,7 @@ export default function MusterListPage() {
 
                       <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
                         <div className="rounded-lg border border-border/40 bg-card/60 p-2.5">
-                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                          <dt className="mb-1 flex items-center gap-1.5 text-micro font-semibold uppercase tracking-wide text-muted-foreground">
                             <MapPin className="h-3 w-3" />
                             İlk istasyon
                           </dt>
@@ -365,7 +365,7 @@ export default function MusterListPage() {
                           </dd>
                         </div>
                         <div className="rounded-lg border border-border/40 bg-card/60 p-2.5">
-                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                          <dt className="mb-1 flex items-center gap-1.5 text-micro font-semibold uppercase tracking-wide text-muted-foreground">
                             <ShieldAlert className="h-3 w-3" />
                             Operasyon yeri
                           </dt>
@@ -374,7 +374,7 @@ export default function MusterListPage() {
                           </dd>
                         </div>
                         <div className="rounded-lg border border-border/40 bg-card/60 p-2.5 sm:col-span-2">
-                          <dt className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                          <dt className="mb-1 flex items-center gap-1.5 text-micro font-semibold uppercase tracking-wide text-muted-foreground">
                             <Radio className="h-3 w-3" />
                             Rapor verir
                           </dt>
@@ -385,19 +385,19 @@ export default function MusterListPage() {
                       </dl>
 
                       {assignment.roleNote && (
-                        <p className="mt-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-2.5 text-[11px] leading-relaxed text-foreground/80">
+                        <p className="mt-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-2.5 text-micro leading-relaxed text-foreground/80">
                           {assignment.roleNote}
                         </p>
                       )}
 
                       <div className="mt-4">
-                        <h3 className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                        <h3 className="mb-2 text-micro font-bold uppercase tracking-[0.14em] text-muted-foreground">
                           Görev sırası
                         </h3>
                         <ol className="space-y-2.5">
                           {duty.actions.map((action, index) => (
                             <li key={action} className="flex gap-2.5 text-xs leading-relaxed text-foreground/85">
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-micro font-bold text-primary">
                                 {index + 1}
                               </span>
                               <span>{action}</span>
@@ -408,14 +408,14 @@ export default function MusterListPage() {
 
                       {duty.equipment && duty.equipment.length > 0 && (
                         <div className="mt-4 border-t border-border/40 pt-3">
-                          <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                          <div className="mb-2 text-micro font-bold uppercase tracking-[0.14em] text-muted-foreground">
                             Atanmış donanım
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {duty.equipment.map((equipment) => (
                               <span
                                 key={equipment}
-                                className="rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-[10px] font-medium text-foreground/80"
+                                className="rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-micro font-medium text-foreground/80"
                               >
                                 {equipment}
                               </span>
@@ -425,7 +425,7 @@ export default function MusterListPage() {
                       )}
 
                       {(assignment.substitute || assignment.readinessResponsibility) && (
-                        <div className="mt-4 space-y-2 border-t border-border/40 pt-3 text-[11px] leading-relaxed">
+                        <div className="mt-4 space-y-2 border-t border-border/40 pt-3 text-micro leading-relaxed">
                           {assignment.substitute && (
                             <p className="text-foreground/80">
                               <span className="font-bold text-foreground">Kritik görev yedeği:</span>{" "}
@@ -467,7 +467,7 @@ export default function MusterListPage() {
             </span>
             <div>
               <h2 className="text-sm font-bold text-foreground">Gerçek gemi cetveli kontrolü</h2>
-              <p className="text-[11px] text-muted-foreground">
+              <p className="text-micro text-muted-foreground">
                 Kaptan onayı öncesi temel SOLAS kapsamı
               </p>
             </div>
@@ -483,10 +483,10 @@ export default function MusterListPage() {
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-300" />
                   <div>
                     <h3 className="text-xs font-bold text-foreground">{item.title}</h3>
-                    <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                    <p className="mt-1 text-micro leading-relaxed text-muted-foreground">
                       {item.detail}
                     </p>
-                    <p className="mt-2 text-[10px] font-semibold text-primary">{item.reference}</p>
+                    <p className="mt-2 text-micro font-semibold text-primary">{item.reference}</p>
                   </div>
                 </div>
               </div>
@@ -494,7 +494,7 @@ export default function MusterListPage() {
           </div>
         </section>
 
-        <footer className="rounded-2xl border border-border/50 bg-card/60 p-4 text-[11px] text-muted-foreground print:border-slate-300 print:bg-white">
+        <footer className="rounded-2xl border border-border/50 bg-card/60 p-4 text-micro text-muted-foreground print:border-slate-300 print:bg-white">
           <p className="font-semibold text-foreground">Başlıca dayanaklar</p>
           <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
             {musterReferences.map((reference) => (

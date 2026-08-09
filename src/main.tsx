@@ -84,5 +84,9 @@ try {
 const splashHideDelay = prefersReducedMotion ? 180 : hasSeenIntro ? 240 : 1100;
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
 
+// A tap should never be ignored: let people skip straight into the app.
+const splashEl = document.getElementById('splash-root');
+splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
+
 // Hard safety net in case the rAF callback never fires.
 setTimeout(hideSplash, splashHideDelay + 500);

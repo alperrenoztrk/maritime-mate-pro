@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Smartphone, Sun, Moon, Vibrate } from "lucide-react";
+import { Globe, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Smartphone, Sun, Moon, Vibrate } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { getHapticsEnabled, setHapticsEnabled, hapticSelection, hapticNotify } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -17,8 +19,6 @@ import { getLanguageFlag } from "@/utils/languages";
 import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { TwoFactorCard } from "@/components/settings/TwoFactorCard";
 import { useAppTheme, type Theme } from "@/hooks/useTheme";
-import { hapticError, hapticSelection, hapticSuccess, isHapticsEnabled, setHapticsEnabled } from "@/services/haptics";
-import { Switch } from "@/components/ui/switch";
 import {
   areAdsSupported,
   initializeAds,
@@ -33,22 +33,17 @@ const Settings = () => {
   // RequireAuth already keeps anonymous visitors out of this page and carries
   // the return path, so no local redirect is needed here.
   const { user, signOut } = useAuth();
-  const { tier, hasProAccess } = useEntitlement();
+  const { hasProAccess } = useEntitlement();
   const { theme, setTheme } = useAppTheme();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled);
-
-  const tierLabels: Record<string, string> = {
-    free: "Ücretsiz",
-    pro: "Pro",
-    lifetime: "Ömür Boyu",
-  };
+  // Read once on mount; the haptics module owns the persisted value.
+  const [hapticsOn, setHapticsOn] = useState(() => getHapticsEnabled());
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
-    hapticSuccess();
+    hapticNotify("success");
     toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
   };
 
@@ -70,12 +65,12 @@ const Settings = () => {
     try {
       const { error } = await supabase.functions.invoke("delete-account", { body: {} });
       if (error) throw error;
-      hapticSuccess();
+      hapticNotify("success");
       toast.success("Hesabınız ve tüm verileriniz silindi");
       await signOut();
       navigate("/", { replace: true });
     } catch {
-      hapticError();
+      hapticNotify("error");
       toast.error("Hesap silinemedi. Lütfen tekrar deneyin veya bize yazın.");
       setDeleting(false);
       setConfirmDelete(false);
@@ -140,7 +135,7 @@ const Settings = () => {
   const handlePrivacyOptions = async () => {
     const opened = await openPrivacyOptionsForm();
     if (!opened) {
-      hapticError();
+      hapticNotify("error");
       toast.error("Reklam tercihleri şu anda açılamadı");
     }
   };
@@ -212,7 +207,7 @@ const Settings = () => {
                       if (!enabled) hapticSelection();
                       setHapticsOn(enabled);
                       setHapticsEnabled(enabled);
-                      if (enabled) hapticSuccess();
+                      if (enabled) hapticNotify("success");
                     }}
                     aria-label="Dokunsal geri bildirim"
                   />
@@ -326,45 +321,6 @@ const Settings = () => {
 
             {/* Hesap güvenliği: isteğe bağlı 2FA (bkz. src/lib/mfa.ts) */}
             <TwoFactorCard />
-
-            {/* Pro membership */}
-            <Card
-              className="ios-pressable ios-surface cursor-pointer transition-colors hover:border-amber-400/60"
-              role="button"
-              tabIndex={0}
-              onClick={() => {
-                hapticSelection();
-                navigate("/pro");
-              }}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  hapticSelection();
-                  navigate("/pro");
-                }
-              }}
-            >
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Crown className="w-5 h-5 text-amber-400" />
-                  <span data-translatable>Mariner's Book Pro</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-sm text-muted-foreground">
-                    <span data-translatable>Paketiniz</span>:{" "}
-                    <span className={hasProAccess ? "text-amber-400 font-medium" : ""} data-translatable>
-                      {tierLabels[tier] ?? tier}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-amber-400">
-                    <span data-translatable>{hasProAccess ? "Yönet" : "Pro'ya geç"}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Ads & privacy — free tier on native only */}
             {adsRelevant && (

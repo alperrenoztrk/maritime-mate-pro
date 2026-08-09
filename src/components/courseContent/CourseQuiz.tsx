@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
-import { ArrowLeft, CheckCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
+import { CheckCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
+import { hapticNotify } from "@/lib/haptics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
@@ -49,8 +50,10 @@ export function CourseQuiz({
     setAnsweredCount((count) => count + 1);
     if (idx === question.correctAnswer) {
       setCorrect((count) => count + 1);
+      hapticNotify("success");
       toast.success("Doğru!");
     } else {
+      hapticNotify("error");
       toast.error("Yanlış!");
     }
   };
@@ -84,17 +87,8 @@ export function CourseQuiz({
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]">
       <div className="relative z-10 mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
         <header className="mb-6 space-y-4">
-          <Link
-            to={libraryHref}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {group === "machine"
-              ? "Makine Kitaplığı"
-              : group === "deck"
-                ? "Güverte Kitaplığı"
-                : "Derslere Dön"}
-          </Link>
+          {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+
 
           <div className="flex items-center gap-3">
             <div

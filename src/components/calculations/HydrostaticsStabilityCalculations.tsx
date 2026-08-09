@@ -27,7 +27,6 @@ import {
   CrossCurves
 } from "../../types/hydrostatic";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { BackButton } from "@/components/BackButton";
 
 
 type StabilitySection = 'hydrostatic' | 'stability' | 'trimlist' | 'analysis' | 'bonjean' | 'draft' | 'damage' | 'practical';
@@ -1411,7 +1410,6 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     <div className="space-y-6">
       {singleMode && (
         <div className="flex items-center gap-3">
-          <BackButton to="/stability/calculations" />
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             Stabilite Hesaplamaları
           </span>
@@ -1447,7 +1445,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
               <div className="mb-2 font-semibold text-slate-700 dark:text-slate-200">{section.title}</div>
               <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 md:grid-cols-3">
                 {section.items.map((item) => (
-                  <span key={item} className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-700 dark:bg-slate-600/40 dark:text-slate-100">
+                  <span key={item} className="rounded-full bg-slate-100 px-2 py-1 text-micro font-medium text-slate-700 dark:bg-slate-600/40 dark:text-slate-100">
                     {item}
                   </span>
                 ))}
@@ -1473,7 +1471,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
             <div key={item.id} className="rounded-md bg-white/70 p-3 text-amber-900 shadow-sm dark:bg-gray-700/60 dark:text-amber-100">
               <div className="flex items-center justify-between gap-2 font-semibold">
                 <span>{index + 1}. {item.title}</span>
-                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
+                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
                   Öncelik
                 </span>
               </div>
@@ -1706,7 +1704,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
             <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
               GZ Hesaplama (GZ = GM × sin(φ))
-              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
                 Basitleştirilmiş • Riskli
               </span>
             </h4>
@@ -2677,7 +2675,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg">
             <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
               9. Angle of Loll
-              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
                 Yaklaşık • Riskli
               </span>
             </h4>
@@ -2954,7 +2952,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <span className={`${analysis.imoCriteria.area0to30 >= 0.055 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.area0to30.toFixed(3)} mrad
                         </span>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${analysis.imoCriteria.area0to30 >= 0.055 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.area0to30 >= 0.055 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                           {analysis.imoCriteria.area0to30 >= 0.055 ? 'Uygun' : 'Uygunsuz'}
                         </span>
                       </span>
@@ -2965,7 +2963,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <span className={`${analysis.imoCriteria.area0to40 >= 0.09 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.area0to40.toFixed(3)} mrad
                         </span>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${analysis.imoCriteria.area0to40 >= 0.09 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.area0to40 >= 0.09 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                           {analysis.imoCriteria.area0to40 >= 0.09 ? 'Uygun' : 'Uygunsuz'}
                         </span>
                       </span>
@@ -2976,7 +2974,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <span className={`${analysis.imoCriteria.maxGz >= 0.20 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.maxGz.toFixed(3)} m
                         </span>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${analysis.imoCriteria.maxGz >= 0.2 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.maxGz >= 0.2 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                           {analysis.imoCriteria.maxGz >= 0.2 ? 'Uygun' : 'Uygunsuz'}
                         </span>
                       </span>
@@ -2987,7 +2985,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <span className={`${analysis.imoCriteria.initialGM >= 0.15 ? 'text-green-700' : 'text-red-700'}`}>
                           {analysis.imoCriteria.initialGM.toFixed(3)} m
                         </span>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${analysis.imoCriteria.initialGM >= 0.15 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${analysis.imoCriteria.initialGM >= 0.15 ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                           {analysis.imoCriteria.initialGM >= 0.15 ? 'Uygun' : 'Uygunsuz'}
                         </span>
                       </span>
@@ -2998,7 +2996,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                         <span className={`${solasCriteriaStatus?.weatherCriterionOk ? 'text-green-700' : 'text-red-700'}`}>
                           {solasCriteriaStatus?.weatherCriterionOk ? 'Sağlandı' : 'Sağlanmadı'}
                         </span>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${solasCriteriaStatus?.weatherCriterionOk ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-micro font-semibold ${solasCriteriaStatus?.weatherCriterionOk ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                           {solasCriteriaStatus?.weatherCriterionOk ? 'Uygun' : 'Uygunsuz'}
                         </span>
                       </span>
@@ -3059,7 +3057,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                               <div className="rounded-lg border border-amber-200/60 bg-amber-50 p-2 text-xs text-amber-900 shadow-sm dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-100">
                                 <div className="font-semibold">{point.label}</div>
                                 <div>GM: {point.value?.toFixed(3)} m</div>
-                                <div className="mt-1 text-[11px] opacity-80">SOLAS GM min: 0.15 m</div>
+                                <div className="mt-1 text-micro opacity-80">SOLAS GM min: 0.15 m</div>
                               </div>
                             );
                           }}
@@ -3199,7 +3197,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
                 <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
                   <h4 className="font-semibold mb-3 flex flex-wrap items-center gap-2">
                     Weather Criterion (Basitleştirilmiş)
-                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
+                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-micro font-semibold text-amber-800 dark:bg-amber-500/20 dark:text-amber-100">
                       Riskli
                     </span>
                   </h4>

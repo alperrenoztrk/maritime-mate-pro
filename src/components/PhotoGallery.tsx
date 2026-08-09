@@ -94,7 +94,7 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
                 className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <span
-                className="pointer-events-none absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1 text-[10px] font-medium text-foreground opacity-0 backdrop-blur transition-opacity group-hover:opacity-100"
+                className="pointer-events-none absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/80 px-2 py-1 text-micro font-medium text-foreground opacity-0 backdrop-blur transition-opacity group-hover:opacity-100"
                 aria-hidden="true"
               >
                 <ZoomIn className="h-3 w-3" /> Büyüt
@@ -104,11 +104,11 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
               <p className="text-xs font-semibold leading-tight text-foreground">
                 {p.title}
               </p>
-              <p className="text-[11px] leading-snug text-muted-foreground">
+              <p className="text-micro leading-snug text-muted-foreground">
                 {p.caption}
               </p>
               {p.credit && (
-                <p className="text-[10px] italic text-muted-foreground/70">{p.credit}</p>
+                <p className="text-micro italic text-muted-foreground/70">{p.credit}</p>
               )}
             </figcaption>
           </figure>

@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { BookOpenText } from "lucide-react";
+import { BookOpenText, SearchX } from "lucide-react";
 import { glossaryCategories, glossaryTerms } from "@/data/glossaryTerms";
 import { SEO } from "@/components/SEO";
+import { EmptyState } from "@/components/state/AppState";
 import {
   LibraryEntryCard,
   LibraryPageShell,
@@ -113,7 +114,7 @@ const Glossary = () => {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <h2 className="text-sm font-bold text-foreground">{term.title}</h2>
-                    <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
                       {term.category}
                     </span>
                   </div>
@@ -122,9 +123,7 @@ const Glossary = () => {
               ))}
             </div>
           ) : (
-            <div className="rounded-2xl border border-dashed border-border bg-card/60 px-5 py-12 text-center text-sm text-muted-foreground">
-              Aradığınız terim bulunamadı.
-            </div>
+            <EmptyState icon={SearchX} title="Aradığınız terim bulunamadı." />
           )}
         </section>
       )}

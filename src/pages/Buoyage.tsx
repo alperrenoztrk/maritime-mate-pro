@@ -23,7 +23,7 @@ function BuoyCard({ mark }: { mark: BuoyMark }) {
       <div className="flex flex-wrap items-baseline gap-2">
         <h3 className="text-sm font-semibold text-foreground">{mark.title}</h3>
         {mark.region ? (
-          <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-[11px] font-medium text-sky-700 dark:text-sky-400">
+          <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-micro font-medium text-sky-700 dark:text-sky-400">
             Bölge {mark.region}
           </span>
         ) : null}
@@ -125,7 +125,7 @@ export default function BuoyagePage() {
                   }`}
                 >
                   <span className="block text-sm font-semibold text-foreground">Bölge {value}</span>
-                  <span className="block text-[11px] leading-tight text-muted-foreground">
+                  <span className="block text-micro leading-tight text-muted-foreground">
                     {value === "A"
                       ? "Avrupa, Afrika, Asya'nın çoğu, Avustralya — Türkiye burada"
                       : "Kuzey ve Güney Amerika, Japonya, Kore, Filipinler"}
@@ -134,7 +134,7 @@ export default function BuoyagePage() {
               );
             })}
           </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-micro leading-relaxed text-muted-foreground">
             {region === "A"
               ? "Bölge A: limana girerken KIRMIZI iskelede, YEŞİL sancakta kalır."
               : "Bölge B: limana girerken KIRMIZI sancakta, YEŞİL iskelede kalır (“red right returning”)."}
@@ -178,7 +178,7 @@ export default function BuoyagePage() {
                 <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-[11px] text-muted-foreground">
+                    <span className="shrink-0 text-micro text-muted-foreground">
                       {marks.length} işaret
                     </span>
                   </div>

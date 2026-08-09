@@ -209,7 +209,7 @@ export function StructuredLessonText({
                   const label = item.body ? item.label.replace(/:$/, "") : item.label;
                   return (
                     <li key={`${key}-${itemIndex}`} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-primary/10 text-[11px] font-bold text-primary">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-primary/10 text-micro font-bold text-primary">
                         {itemIndex + 1}
                       </span>
                       <div className="space-y-1 text-sm leading-relaxed text-foreground/80">

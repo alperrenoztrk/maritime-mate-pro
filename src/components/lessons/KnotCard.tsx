@@ -23,7 +23,7 @@ export default function KnotCard({ knotId }: KnotCardProps) {
       <AccordionTrigger className="px-3 py-3 hover:no-underline">
         <div className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 pr-2 text-left">
           <span className="text-sm font-semibold text-foreground">{def.name}</span>
-          <span className="text-[11px] text-muted-foreground">{def.nameEn}</span>
+          <span className="text-micro text-muted-foreground">{def.nameEn}</span>
         </div>
       </AccordionTrigger>
 
@@ -39,11 +39,11 @@ export default function KnotCard({ knotId }: KnotCardProps) {
         {/* Alternate names */}
         {def.aka && def.aka.length > 0 && (
           <div className="mb-3 flex flex-wrap items-center gap-1.5">
-            <span className="text-[10px] uppercase tracking-wide text-muted-foreground/70">Diğer adı</span>
+            <span className="text-micro uppercase tracking-wide text-muted-foreground/70">Diğer adı</span>
             {def.aka.map((name) => (
               <span
                 key={name}
-                className="rounded-full bg-muted/50 px-2 py-0.5 text-[11px] text-muted-foreground"
+                className="rounded-full bg-muted/50 px-2 py-0.5 text-micro text-muted-foreground"
               >
                 {name}
               </span>

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { searchIndex, type SearchItem } from "@/data/searchIndex";
 import { loadDeepSearchIndex, getDeepSearchIndex } from "@/data/deepSearchIndex";
 import { cn } from "@/lib/utils";
-import { hapticSelection } from "@/services/haptics";
+import { hapticSelection } from "@/lib/haptics";
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Seyir": "bg-blue-500/15 text-blue-400",
@@ -262,7 +262,7 @@ export function GlobalSearch() {
         )}
       </span>
       <span className={cn(
-        "shrink-0 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium",
+        "shrink-0 rounded-full px-2 py-0.5 text-micro font-medium",
         CATEGORY_COLORS[item.category] || CATEGORY_COLORS["Genel"]
       )}>
         {item.category}
@@ -279,7 +279,7 @@ export function GlobalSearch() {
       >
         <Search className="h-4 w-4 shrink-0" />
         <span className="flex-1 text-left truncate">Sayfa, hesaplama veya konu ara…</span>
-        <kbd className="hidden sm:inline-flex h-5 items-center rounded border border-border/50 bg-muted/50 px-1.5 text-[10px] font-mono text-muted-foreground">
+        <kbd className="hidden sm:inline-flex h-5 items-center rounded border border-border/50 bg-muted/50 px-1.5 text-micro font-mono text-muted-foreground">
           ⌘K
         </kbd>
       </button>
@@ -305,13 +305,13 @@ export function GlobalSearch() {
           <div ref={listRef} className="max-h-[60vh] overflow-y-auto p-2">
             {showRecent && (
               <>
-                <p className="px-3 pt-1 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-wider text-muted-foreground">
+                <p className="px-3 pt-1 pb-1.5 text-micro font-semibold uppercase tracking-wider text-muted-foreground">
                   Son aramalar
                 </p>
                 <div className="space-y-0.5">
                   {recent.map((item, i) => renderRow(item, i, true))}
                 </div>
-                <p className="px-3 pt-3 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-wider text-muted-foreground">
+                <p className="px-3 pt-3 pb-1.5 text-micro font-semibold uppercase tracking-wider text-muted-foreground">
                   Öneriler
                 </p>
               </>
@@ -326,7 +326,7 @@ export function GlobalSearch() {
               </div>
             )}
           </div>
-          <div className="border-t border-border/30 px-3 py-2 flex items-center gap-4 text-[10px] text-muted-foreground">
+          <div className="border-t border-border/30 px-3 py-2 flex items-center gap-4 text-micro text-muted-foreground">
             <span>↑↓ gezin</span>
             <span>↵ aç</span>
             <span>esc kapat</span>

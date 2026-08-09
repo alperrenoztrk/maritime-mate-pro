@@ -3,7 +3,7 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
-import { hapticImpact } from "@/services/haptics"
+import { hapticImpact } from "@/lib/haptics"
 
 
 const buttonVariants = cva(
@@ -14,9 +14,12 @@ const buttonVariants = cva(
         default:
           "border border-primary/30 bg-primary text-primary-foreground shadow-[var(--shadow-button)] hover:bg-primary/90",
         destructive:
-          "border border-destructive/30 bg-destructive text-destructive-foreground shadow-[var(--shadow-button)] hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground shadow-md hover:shadow-lg hover:scale-[1.02] hover:bg-destructive/90 border border-destructive/20",
+        // No backdrop blur: this is a content-level control, and blurring it
+        // made every outline button in the app a glass surface. Glass is
+        // reserved for floating chrome (.surface-glass).
         outline:
-          "border border-border/80 bg-card/80 text-foreground shadow-sm hover:border-primary/40 hover:bg-card",
+          "border-2 border-border bg-background/50 hover:bg-accent hover:border-primary/50 hover:scale-[1.02]",
         secondary:
           "border border-secondary/20 bg-secondary/15 text-foreground hover:bg-secondary/20",
         ghost: "text-foreground hover:bg-muted/70",

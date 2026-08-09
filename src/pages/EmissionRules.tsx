@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Leaf, Scale, AlertTriangle, CheckCircle, Info } from "lucide-react";
+import { Leaf, Scale, AlertTriangle, CheckCircle, Info } from "lucide-react";
 
 const rules = [
   {

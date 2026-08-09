@@ -64,17 +64,17 @@ export function CalculationMenuCard({ id, title, icon: Icon, to, href, disabled 
               {formulaMeta.source}
             </div>
           )}
-          <div className="mt-2 text-[11px] text-slate-400">
+          <div className="mt-2 text-micro text-slate-400">
             Sürüm / referans yılı: {formulaMeta.edition} / {formulaMeta.referenceYear}
           </div>
-          <div className="mt-1 text-[11px] text-slate-500">Son güncelleme: {formulaMeta.lastUpdated}</div>
+          <div className="mt-1 text-micro text-slate-500">Son güncelleme: {formulaMeta.lastUpdated}</div>
         </div>
       )}
     </div>
   );
 
   const sharedClassName = cn(
-    "group block w-full max-w-[26rem] rounded-[22px] border border-slate-800/70 bg-slate-950/70 p-4 shadow-[0_14px_40px_rgba(47,91,255,0.18)] transition-all duration-200 backdrop-blur",
+    "group block w-full max-w-[26rem] rounded-ios border border-slate-800/70 bg-slate-950/70 p-4 shadow-[0_14px_40px_rgba(47,91,255,0.18)] transition-all duration-200 backdrop-blur",
     disabled
       ? "pointer-events-none opacity-60"
       : "hover:-translate-y-0.5 hover:shadow-[0_18px_46px_rgba(47,91,255,0.22)]",

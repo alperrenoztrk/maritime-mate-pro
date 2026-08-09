@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Sigma, Flame, Droplets, Wind } from "lucide-react";
+import { Sigma, Flame, Droplets, Wind } from "lucide-react";
 
 const safetyFormulas = [
   {

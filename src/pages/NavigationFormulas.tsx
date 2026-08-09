@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Sigma, BookOpen, Calculator, ChevronDown } from "lucide-react";
+import { Sigma, BookOpen, Calculator, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function NavigationFormulasPage() {

@@ -15,7 +15,7 @@ import { MfaChallengeForm } from "@/components/auth/MfaChallengeForm";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { useLanguage } from "@/contexts/useLanguage";
-import { hapticError, hapticSuccess } from "@/services/haptics";
+import { hapticNotify } from "@/lib/haptics";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
@@ -23,12 +23,12 @@ const credentialsSchema = z.object({
 });
 
 const showError = (message: string) => {
-  hapticError();
+  hapticNotify("error");
   toast.error(message);
 };
 
 const showSuccess = (message: string) => {
-  hapticSuccess();
+  hapticNotify("success");
   toast.success(message);
 };
 
@@ -139,7 +139,7 @@ const Auth = () => {
     <div className="relative flex min-h-screen items-center justify-center overflow-x-hidden bg-background px-4 pb-8 pt-[calc(env(safe-area-inset-top)+2rem)] text-foreground">
       <div aria-hidden className="pointer-events-none absolute -left-20 top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -right-24 bottom-12 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-      <Card className="ios-glass-strong relative w-full max-w-md border-border/60 shadow-[0_28px_80px_-34px_hsl(var(--glass-shadow)/0.7)]">
+      <Card className="ios-glass-strong relative w-full max-w-md border-border/60 shadow-[0_28px_80px_-34px_hsl(var(--ios-glass-shadow)/0.7)]">
         <CardHeader className="space-y-3 pb-4 text-center">
           <div className="flex justify-center">
             <div className="flex h-14 w-14 items-center justify-center rounded-[18px] border border-primary/20 bg-primary/10 shadow-sm">
@@ -204,7 +204,7 @@ const Auth = () => {
                     >
                       Şifremi unuttum / şifre belirle
                     </button>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-micro text-muted-foreground">
                       Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
                       belirleyebilir veya Google ile giriş yapabilirsiniz.
                     </p>
@@ -238,7 +238,7 @@ const Auth = () => {
               şartları okuyabilmeli. Ayarlar'daki bağlantıların aynısı
               (bkz. src/pages/Settings.tsx). */}
           <div className="border-t border-border/60 pt-4 text-center">
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className="text-micro leading-relaxed text-muted-foreground">
               Kayıt olarak veya giriş yaparak{" "}
               <a
                 href={termsOfUseUrl}

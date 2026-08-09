@@ -41,7 +41,7 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
     <article className="border-b border-border/30 px-4 py-3 last:border-b-0">
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <h3 className="text-sm font-semibold text-foreground">{signal.title}</h3>
-        <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+        <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-medium text-muted-foreground">
           {signal.rule}
         </span>
       </div>
@@ -52,7 +52,7 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
         {signal.pattern ? (
           <SignalTonePlayer steps={blastPattern(signal.pattern)} preset="whistle" />
         ) : (
-          <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+          <span className="inline-flex items-center gap-1 text-micro text-muted-foreground">
             <Volume2 className="h-3.5 w-3.5" />
             Düdükle verilmez
           </span>
@@ -163,7 +163,7 @@ export default function SoundSignalsPage() {
                 <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-[11px] text-muted-foreground">
+                    <span className="shrink-0 text-micro text-muted-foreground">
                       {signals.length} işaret
                     </span>
                   </div>

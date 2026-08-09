@@ -321,13 +321,13 @@ function SystemSummary({
               <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold text-primary">
                 <Activity className="h-4 w-4" /> Sistemin görevi
               </div>
-              <p className="text-[12px] leading-relaxed text-foreground/85">{guide.purpose}</p>
+              <p className="text-caption leading-relaxed text-foreground/85">{guide.purpose}</p>
             </div>
             <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3">
               <div className="mb-1.5 flex items-center gap-2 text-xs font-semibold text-amber-700 dark:text-amber-300">
                 <ShieldCheck className="h-4 w-4" /> Ne yapmaz / sınırı
               </div>
-              <p className="text-[12px] leading-relaxed text-foreground/85">{guide.boundary}</p>
+              <p className="text-caption leading-relaxed text-foreground/85">{guide.boundary}</p>
             </div>
           </div>
 
@@ -349,7 +349,7 @@ function SystemSummary({
                   loading="lazy"
                 />
               </button>
-              <figcaption className="border-t border-border/20 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+              <figcaption className="border-t border-border/20 px-3 py-2 text-micro leading-relaxed text-muted-foreground">
                 <span className="font-semibold text-foreground/80">Gerçek ekipman fotoğrafı: </span>
                 {guide.photoCaption ?? "Fotoğraf yalnız örnek bir fiziksel kurulumu gösterir; üretici, model ve gemiye özgü donanım onaylı plan ve kullanım kitabından doğrulanır."}
               </figcaption>
@@ -361,7 +361,7 @@ function SystemSummary({
               <UserRoundCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <div>
                 <p className="text-xs font-semibold text-foreground">Sorumluluk ve komuta zinciri</p>
-                <p className="mt-1 text-[12px] leading-relaxed text-foreground/80">{guide.responsibleRole}</p>
+                <p className="mt-1 text-caption leading-relaxed text-foreground/80">{guide.responsibleRole}</p>
               </div>
             </div>
           </div>
@@ -379,7 +379,7 @@ function SystemSummary({
                 </h3>
                 <div className="space-y-1.5 text-foreground/80">
                   {items.map((item, itemIndex) => (
-                    <p key={itemIndex} className="text-[12px] leading-relaxed">• {item}</p>
+                    <p key={itemIndex} className="text-caption leading-relaxed">• {item}</p>
                   ))}
                 </div>
               </section>
@@ -417,7 +417,7 @@ function SystemSummary({
               <div className="rounded-lg border-2 border-primary/20 bg-primary/5 p-3 space-y-1">
                 <p className="text-sm font-mono font-semibold text-center text-foreground">{sec.formula.expression}</p>
                 {sec.formula.variables.map((v, vi) => (
-                  <p key={vi} className="text-[11px] text-muted-foreground">{v}</p>
+                  <p key={vi} className="text-micro text-muted-foreground">{v}</p>
                 ))}
               </div>
             )}
@@ -426,7 +426,7 @@ function SystemSummary({
               <div className="rounded-lg border border-accent/30 bg-accent/5 p-3 space-y-2">
                 <p className="text-xs font-semibold text-accent-foreground">Örnek: {sec.example.problem}</p>
                 {sec.example.steps.map((s, si2) => (
-                  <p key={si2} className="text-[12px] font-mono text-foreground/80">{s}</p>
+                  <p key={si2} className="text-caption font-mono text-foreground/80">{s}</p>
                 ))}
                 <p className="text-xs font-semibold text-primary">{sec.example.result}</p>
               </div>
@@ -439,7 +439,7 @@ function SystemSummary({
         <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 space-y-1">
           <p className="text-xs font-semibold text-primary mb-1">Çalışma Prensibi</p>
           {topic.workingPrinciple.map((wp, wi) => (
-            <p key={wi} className="text-[12px] text-foreground/80 leading-relaxed">• {wp}</p>
+            <p key={wi} className="text-caption text-foreground/80 leading-relaxed">• {wp}</p>
           ))}
         </div>
       )}
@@ -449,7 +449,7 @@ function SystemSummary({
         <div className="rounded-lg border border-border/30 bg-card/40 p-3 space-y-1">
           <p className="text-xs font-semibold text-foreground mb-1">Kullanım</p>
           {topic.operation.map((op, oi) => (
-            <p key={oi} className="text-[12px] text-foreground/80 leading-relaxed">{oi + 1}. {op}</p>
+            <p key={oi} className="text-caption text-foreground/80 leading-relaxed">{oi + 1}. {op}</p>
           ))}
         </div>
       )}
@@ -486,7 +486,7 @@ function SystemSummary({
         <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 space-y-1">
           <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">Önlemler ve Emniyet</p>
           {topic.precautions.map((pc, pci) => (
-            <p key={pci} className="text-[12px] text-foreground/80 leading-relaxed">• {pc}</p>
+            <p key={pci} className="text-caption text-foreground/80 leading-relaxed">• {pc}</p>
           ))}
         </div>
       )}
@@ -496,7 +496,7 @@ function SystemSummary({
         <div className="rounded-lg bg-muted/20 p-3 space-y-1">
           <p className="text-xs font-semibold text-muted-foreground mb-1">Önemli Noktalar</p>
           {topic.keyPoints.map((kp, ki) => (
-            <p key={ki} className="text-[12px] text-foreground/70">• {kp}</p>
+            <p key={ki} className="text-caption text-foreground/70">• {kp}</p>
           ))}
         </div>
       )}
@@ -509,7 +509,7 @@ function SystemSummary({
             </h3>
             <div className="space-y-1.5">
               {guide.records.map((record, recordIndex) => (
-                <p key={recordIndex} className="text-[12px] leading-relaxed text-foreground/75">• {record}</p>
+                <p key={recordIndex} className="text-caption leading-relaxed text-foreground/75">• {record}</p>
               ))}
             </div>
           </section>
@@ -520,8 +520,8 @@ function SystemSummary({
             <div className="space-y-2">
               {guide.references.map((reference, referenceIndex) => (
                 <div key={`${reference.code}-${referenceIndex}`}>
-                  <p className="text-[11px] font-semibold text-primary">{reference.code}</p>
-                  <p className="text-[11px] leading-relaxed text-foreground/70">{reference.scope}</p>
+                  <p className="text-micro font-semibold text-primary">{reference.code}</p>
+                  <p className="text-micro leading-relaxed text-foreground/70">{reference.scope}</p>
                 </div>
               ))}
             </div>
