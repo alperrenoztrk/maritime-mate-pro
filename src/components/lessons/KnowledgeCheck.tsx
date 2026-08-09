@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CheckCircle, XCircle } from "lucide-react";
 import type { QuizQuestion } from "@/types/quiz";
+import { shuffleOptions } from "@/utils/quizOptions";
 
 /**
  * Tek-soruluk bilgi kontrolü (mini quiz).
@@ -20,11 +21,14 @@ export function KnowledgeCheck({
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const answered = selected !== null;
+  // Rehberli ders havuzlarında doğru cevap neredeyse her zaman ilk şıktı;
+  // şık sırası sunumda karıştırılır.
+  const shown = useMemo(() => shuffleOptions(question), [question]);
 
   const handleAnswer = (idx: number) => {
     if (answered) return;
     setSelected(idx);
-    onAnswered?.(idx === question.correctAnswer);
+    onAnswered?.(idx === shown.correctAnswer);
   };
 
   return (
@@ -40,11 +44,11 @@ export function KnowledgeCheck({
           Bilgi Kontrolü
         </p>
       )}
-      <p className="text-base font-medium text-foreground">{question.question}</p>
+      <p className="text-base font-medium text-foreground">{shown.question}</p>
 
       <div className="space-y-2.5">
-        {question.options.map((option, index) => {
-          const isCorrect = index === question.correctAnswer;
+        {shown.options.map((option, index) => {
+          const isCorrect = index === shown.correctAnswer;
           const isSelected = index === selected;
           return (
             <button
@@ -79,7 +83,7 @@ export function KnowledgeCheck({
       {answered && (
         <div className="rounded-xl border border-blue-200 bg-blue-50 p-3.5 dark:border-blue-800 dark:bg-blue-900/20">
           <p className="text-sm text-blue-700 dark:text-blue-300">
-            <strong>Açıklama:</strong> {question.explanation}
+            <strong>Açıklama:</strong> {shown.explanation}
           </p>
         </div>
       )}

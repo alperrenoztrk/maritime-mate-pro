@@ -2,11 +2,14 @@
  * Alıştırma soru dağılımını ölçer.
  *
  * Her ders (beta kategori) için soruların konulara nasıl dağıldığını raporlar:
- * en yoğun konunun payı, boş kalan konu sayısı ve Gini katsayısı.
- * exerciseQuestionDistribution.ts üzerindeki değişikliklerin etkisini
- * önce/sonra karşılaştırmak için kullanılır.
+ * konu başına en az/medyan soru, en yoğun konunun payı, boş kalan konu sayısı ve
+ * Gini katsayısı. exerciseQuestionDistribution.ts üzerindeki değişikliklerin
+ * etkisini önce/sonra karşılaştırmak ve soru havuzu büyütme hedefini
+ * doğrulamak için kullanılır.
  *
- * Kullanım: node scripts/measure-exercise-distribution.mjs [--detail]
+ * Kullanım: node scripts/measure-exercise-distribution.mjs [--detail] [--min N]
+ *
+ * --min N: bir derste konu başına soru sayısı N'in altına düşerse exit 1.
  *
  * Veri modülleri "@/..." alias'ı ve görsel asset importları içerdiği için
  * Vite'ın SSR yükleyicisi üzerinden çalıştırılır.
@@ -32,6 +35,23 @@ const giniCoefficient = (counts) => {
 };
 
 const percent = (value) => `${(value * 100).toFixed(1)}%`;
+
+const median = (values) => {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((left, right) => left - right);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0 ? (sorted[middle - 1] + sorted[middle]) / 2 : sorted[middle];
+};
+
+/** `--min N` bayrağından hedef eşiği okur; verilmezse kapı kapalıdır. */
+const minPerTopicTarget = (() => {
+  const index = process.argv.indexOf("--min");
+  if (index === -1) return null;
+  const value = Number(process.argv[index + 1]);
+  return Number.isFinite(value) && value > 0 ? value : null;
+})();
+
+let exitCode = 0;
 
 const server = await createServer({
   root: rootDir,
@@ -66,6 +86,9 @@ try {
       totalQuestions: distribution.totalQuestions,
       topicCount: entries.length,
       emptyTopics: counts.filter((count) => count === 0).length,
+      minPerTopic: Math.min(...counts),
+      medianPerTopic: median(counts),
+      thinTopics: ranked.filter((entry) => entry.count < (minPerTopicTarget ?? 0)),
       topShare: ranked[0] ? ranked[0].count / distribution.totalQuestions : 0,
       gini: giniCoefficient(counts),
       top3: ranked.slice(0, 3),
@@ -74,13 +97,19 @@ try {
 
   reports.sort((left, right) => right.topShare - left.topShare);
 
-  console.log(["slug", "soru", "konu", "boş konu", "en yoğun pay", "gini"].join("\t"));
+  console.log(
+    ["slug", "soru", "konu", "en az/konu", "medyan/konu", "boş konu", "en yoğun pay", "gini"].join(
+      "\t",
+    ),
+  );
   for (const report of reports) {
     console.log(
       [
         report.key,
         report.totalQuestions,
         report.topicCount,
+        report.minPerTopic,
+        report.medianPerTopic,
         `${report.emptyTopics}/${report.topicCount}`,
         percent(report.topShare),
         report.gini.toFixed(3),
@@ -120,6 +149,32 @@ try {
       }
     }
   }
+
+  if (minPerTopicTarget !== null) {
+    const failing = reports.filter((report) => report.minPerTopic < minPerTopicTarget);
+
+    console.log("");
+    if (failing.length === 0) {
+      console.log(`✅ Her derste konu başına en az ${minPerTopicTarget} soru var.`);
+    } else {
+      console.error(
+        `❌ ${failing.length}/${reports.length} derste konu başına ${minPerTopicTarget} soru hedefi tutmuyor:`,
+      );
+      for (const report of failing) {
+        const sample = report.thinTopics
+          .slice(-3)
+          .map((entry) => `${entry.topicId} (${entry.count})`)
+          .join(", ");
+        console.error(
+          `  - ${report.key}: en az ${report.minPerTopic}, eksik konu ${report.thinTopics.length}/${report.topicCount}` +
+            (sample ? ` — ör. ${sample}` : ""),
+        );
+      }
+      exitCode = 1;
+    }
+  }
 } finally {
   await server.close();
 }
+
+process.exit(exitCode);

@@ -76,6 +76,111 @@ const MACHINE_SLUGS = [
 
 const MACHINE_EXPECTED_PER_SLUG = 154;
 
+/** Rehberli ders (beta) akışları: her dosya bir dersin akış listesini taşır. */
+const BETA_FILES = [
+  "src/data/lessonFlow/navigation.ts",
+  "src/data/lessonFlow/meteorology.ts",
+  "src/data/lessonFlow/machine.ts",
+  "src/data/lessonFlow/communication.ts",
+  "src/data/lessonFlow/stability.ts",
+  "src/data/lessonFlow/cargo.ts",
+  "src/data/lessonFlow/safety.ts",
+  "src/data/lessonFlow/environment.ts",
+  "src/data/lessonFlow/seamanship.ts",
+  "src/data/lessonFlow/economics.ts",
+];
+
+/**
+ * Uzunluk ipucu kuralları.
+ *
+ * Sorun: doğru şık gerekçesini de taşıyan tam cümle, çeldiriciler 2-3 kelimelik
+ * kütük olduğunda "en uzun şıkkı seç" stratejisi bilgi olmadan doğru cevabı
+ * bulur. Ölçüldüğünde bu strateji uygulama genelinde %84 isabet ediyordu.
+ *
+ * `band` soru bazındadır: doğru şıkkın uzunluğu / diğer üç şıkkın ortalaması.
+ * `longest` ve `meanRatio` banka bazında toplulaştırılır. Sınırlar iki yönlüdür;
+ * yoksa sömürü "en kısayı seç" biçiminde tersine döner.
+ */
+const LENGTH_RULES = {
+  band: { min: 0.65, max: 1.55 },
+  longest: { min: 0.15, max: 0.35 },
+  meanRatio: { min: 0.9, max: 1.15 },
+};
+
+/**
+ * Dengelenmiş bankalar: tam kural uygulanır. Bir dersin şıkları dengelendiğinde
+ * bankası buraya taşınır ve LENGTH_BUDGET satırı silinir.
+ */
+const BALANCED_BANKS = new Set([]);
+
+/**
+ * Henüz dengelenmemiş bankaların tavanı (tam sayı yüzde): doğru şıkkın tek
+ * başına en uzun olma oranının bugünkü ölçümü. Kapı bu bankalarda yalnızca daha
+ * kötüye gitmeyi engeller; bir ders dengelendiğinde satırı silinir ve banka
+ * BALANCED_BANKS'e taşınır. Listede olmayan banka doğrudan tam kurala tabidir,
+ * böylece yeni bankalar dengeli doğar. Bütçeler yalnızca düşürülür.
+ */
+const LENGTH_BUDGET = {
+  stability: 38,
+  navigation: 40,
+  meteorology: 57,
+  cargo: 78,
+  safety: 79,
+  seamanship: 91,
+  environment: 74,
+  communication: 79,
+  economics: 84,
+  machine: 92,
+  "machine/thermodynamics": 56,
+  "machine/auxiliary": 91,
+  "machine/electrical": 84,
+  "machine/automation": 97,
+  "machine/maintenance": 97,
+  "machine/erm": 99,
+  "machine/fluid-mechanics": 71,
+  "machine/machine-elements": 85,
+  "machine/diesel-engines": 94,
+  "machine/ship-systems": 97,
+  "machine/engine-room-ops": 97,
+  "machine/engine-room-safety": 99,
+  "machine/environment-machine": 84,
+  "machine/energy-efficiency": 79,
+  "machine/fuel-technology": 88,
+  "machine/cooling-hvac": 90,
+  "beta/navigation": 74,
+  "beta/meteorology": 81,
+  "beta/machine": 86,
+  "beta/communication": 87,
+  "beta/stability": 70,
+  "beta/cargo": 93,
+  "beta/safety": 89,
+  "beta/environment": 89,
+  "beta/seamanship": 100,
+  "beta/economics": 97,
+};
+
+/**
+ * Doğru şıkkın tek bir pozisyonda toplanma tavanı (tam sayı yüzde).
+ *
+ * Varsayılan %40. Rehberli ders (beta) havuzlarında doğru cevap neredeyse her
+ * soruda ilk şıktır; bu ipucu kullanıcı tarafında `utils/quizOptions.ts` ile
+ * sunumda şıklar karıştırılarak etkisizleştirildi, dolayısıyla veri sırası
+ * artık sömürülebilir değil. Bütçe borcu kayda geçirmek içindir: bu havuzlar
+ * yeniden yazıldıkça düşürülür, asla artırılmaz.
+ */
+const POSITION_BUDGET = {
+  "beta/navigation": 97,
+  "beta/meteorology": 100,
+  "beta/machine": 100,
+  "beta/communication": 100,
+  "beta/stability": 100,
+  "beta/cargo": 100,
+  "beta/safety": 100,
+  "beta/environment": 100,
+  "beta/seamanship": 100,
+  "beta/economics": 100,
+};
+
 const errors = [];
 const report = [];
 
@@ -167,9 +272,47 @@ function readRecordLiteral(relativePath) {
   return evaluate(literal, relativePath);
 }
 
-function evaluate(literal, relativePath) {
+/**
+ * Rehberli ders dosyasındaki akışları `{ topicTitle, questions }` olarak okur.
+ *
+ * Akışların içindeki `questions` dizileri tip anotasyonu taşımadığı için
+ * `readQuestionLiterals` deseni buraya uymaz: her `topicTitle` sonrası gelen
+ * ilk `questions: [` bloğu dengeli taramayla alınır.
+ */
+function readFlowLiterals(relativePath) {
+  const source = readFileSync(path.join(root, relativePath), "utf8");
+  const titlePattern = /topicTitle:\s*"((?:[^"\\]|\\.)*)"/g;
+  const flows = [];
+
+  // Akış dosyaları kategori adını modül düzeyindeki bir sabitten alır
+  // (`const NAV = "Seyir"` → `category: NAV`). Literal tek başına
+  // değerlendirilemeyeceği için bu sabitler önsöz olarak eklenir.
+  const prelude = [...source.matchAll(/^const\s+([A-Za-z_$][\w$]*)\s*=\s*("(?:[^"\\]|\\.)*");/gm)]
+    .map(([, name, value]) => `const ${name} = ${value};`)
+    .join("\n");
+
+  let match;
+  while ((match = titlePattern.exec(source)) !== null) {
+    const start = source.indexOf("questions:", match.index);
+    if (start === -1) {
+      fail(`${relativePath}: "${match[1]}" akışında questions dizisi yok.`);
+      continue;
+    }
+    const literal = readBalanced(source, source.indexOf("[", start));
+    if (!literal) {
+      fail(`${relativePath}: "${match[1]}" akışının questions dizisi kapanmamış.`);
+      continue;
+    }
+    flows.push({ topicTitle: match[1], questions: evaluate(literal, relativePath, prelude) });
+  }
+
+  if (flows.length === 0) fail(`${relativePath}: akış bulunamadı.`);
+  return flows;
+}
+
+function evaluate(literal, relativePath, prelude = "") {
   try {
-    return new Function(`return (${literal});`)();
+    return new Function(`${prelude}\nreturn (${literal});`)();
   } catch (error) {
     fail(`${relativePath}: literal değerlendirilemedi — ${error.message}`);
     return [];
@@ -191,14 +334,111 @@ const normalizeText = (value) =>
 const isNumericQuestion = (question) =>
   question.options.filter((option) => /\d/.test(String(option))).length >= 3;
 
+/**
+ * Doğru şıkkın uzunluğunun diğer üç şıkkın ortalamasına oranı. 1.0 = ayırt
+ * edilemez; 2.0 = doğru şık çeldiricilerin iki katı uzunlukta.
+ */
+const lengthRatio = (question) => {
+  const lengths = question.options.map((option) => String(option).trim().length);
+  const others = lengths.filter((_, index) => index !== question.correctAnswer);
+  const otherMean = others.reduce((sum, value) => sum + value, 0) / others.length;
+  if (otherMean === 0) return Number.POSITIVE_INFINITY;
+  return lengths[question.correctAnswer] / otherMean;
+};
+
+const isUniquelyLongest = (question) => {
+  const lengths = question.options.map((option) => String(option).trim().length);
+  const longest = Math.max(...lengths);
+  return lengths[question.correctAnswer] === longest && lengths.filter((l) => l === longest).length === 1;
+};
+
+/**
+ * Doğru cevabı içerikten bağımsız ele veren ipuçlarını denetler: şık pozisyonu
+ * ve şık uzunluğu. Banka bazında toplulaştırılır (tek soruda oran anlamsızdır).
+ */
+function checkAnswerCues(label, questions) {
+  const usable = questions.filter(
+    (question) =>
+      Array.isArray(question?.options) &&
+      question.options.length === 4 &&
+      Number.isInteger(question.correctAnswer) &&
+      question.correctAnswer >= 0 &&
+      question.correctAnswer < 4,
+  );
+  if (usable.length === 0) return { longestRate: 0, meanRatio: 0, answerPositions: [0, 0, 0, 0] };
+
+  const total = usable.length;
+  const answerPositions = [0, 0, 0, 0];
+  const outOfBand = [];
+  let uniqueLongest = 0;
+  let ratioSum = 0;
+
+  usable.forEach((question, index) => {
+    answerPositions[question.correctAnswer] += 1;
+    const ratio = lengthRatio(question);
+    ratioSum += ratio;
+    if (isUniquelyLongest(question)) uniqueLongest += 1;
+    if (ratio < LENGTH_RULES.band.min || ratio > LENGTH_RULES.band.max) {
+      outOfBand.push({ where: `#${index + 1} (id: ${question.id})`, ratio });
+    }
+  });
+
+  const longestRate = uniqueLongest / total;
+  const meanRatio = ratioSum / total;
+
+  const positionCap = POSITION_BUDGET[label] ?? 40;
+  const skewed = answerPositions.findIndex(
+    (count) => Math.round((count / total) * 100) > positionCap,
+  );
+  if (skewed !== -1) {
+    fail(
+      `${label}: doğru cevapların %${Math.round((answerPositions[skewed] / total) * 100)}'i ` +
+        `${skewed}. şıkta toplanmış (üst sınır %${positionCap}).`,
+    );
+  }
+
+  if (BALANCED_BANKS.has(label) || !(label in LENGTH_BUDGET)) {
+    if (longestRate > LENGTH_RULES.longest.max || longestRate < LENGTH_RULES.longest.min) {
+      fail(
+        `${label}: doğru şık soruların %${Math.round(longestRate * 100)}'inde tek başına en uzun ` +
+          `(izinli aralık %${LENGTH_RULES.longest.min * 100}-${LENGTH_RULES.longest.max * 100}).`,
+      );
+    }
+    if (meanRatio > LENGTH_RULES.meanRatio.max || meanRatio < LENGTH_RULES.meanRatio.min) {
+      fail(
+        `${label}: doğru şık / çeldirici uzunluk oranı ortalaması ${meanRatio.toFixed(2)} ` +
+          `(izinli aralık ${LENGTH_RULES.meanRatio.min}-${LENGTH_RULES.meanRatio.max}).`,
+      );
+    }
+    if (outOfBand.length > 0) {
+      const sample = outOfBand
+        .slice(0, 5)
+        .map((entry) => `${entry.where} oran ${entry.ratio.toFixed(2)}`)
+        .join(", ");
+      fail(
+        `${label}: ${outOfBand.length} soruda doğru şık uzunluğu ` +
+          `${LENGTH_RULES.band.min}-${LENGTH_RULES.band.max} bandının dışında — ${sample}` +
+          (outOfBand.length > 5 ? ", …" : ""),
+      );
+    }
+  } else if (Math.round(longestRate * 100) > LENGTH_BUDGET[label]) {
+    fail(
+      `${label}: doğru şıkkın tek başına en uzun olma oranı %${Math.round(longestRate * 100)}, ` +
+        `bütçe %${LENGTH_BUDGET[label]}. Bu banka henüz dengelenmedi; yeni sorular ` +
+        `çeldiricilerle eşit uzunlukta yazılmalı (bütçe artırılmaz, düşürülür).`,
+    );
+  }
+
+  return { longestRate, meanRatio, answerPositions };
+}
+
 function checkQuestions(label, questions, expected) {
-  if (questions.length !== expected) {
+  if (expected !== null && questions.length !== expected) {
     fail(`${label}: ${expected} soru bekleniyordu, ${questions.length} bulundu.`);
   }
 
   const seenIds = new Set();
   const seenPrompts = new Map();
-  const answerPositions = [0, 0, 0, 0];
   let numericCount = 0;
 
   questions.forEach((question, index) => {
@@ -243,8 +483,6 @@ function checkQuestions(label, questions, expected) {
       question.correctAnswer > 3
     ) {
       fail(`${where}: correctAnswer 0..3 aralığında olmalı (${question.correctAnswer}).`);
-    } else {
-      answerPositions[question.correctAnswer] += 1;
     }
 
     if (typeof question.explanation !== "string" || question.explanation.trim() === "") {
@@ -255,20 +493,20 @@ function checkQuestions(label, questions, expected) {
     }
   });
 
-  const total = questions.length || 1;
-  const skewed = answerPositions.findIndex((count) => count / total > 0.4);
-  if (skewed !== -1) {
-    fail(
-      `${label}: doğru cevapların %${Math.round((answerPositions[skewed] / total) * 100)}'i ` +
-        `${skewed}. şıkta toplanmış (üst sınır %40).`,
-    );
-  }
+  return Math.round((numericCount / (questions.length || 1)) * 100);
+}
 
+/** Bir bankayı hem yapısal hem ipucu kurallarıyla denetler ve rapora ekler. */
+function checkBank(label, questions, expected) {
+  const numericRatio = checkQuestions(label, questions, expected);
+  const cues = checkAnswerCues(label, questions);
   report.push({
     label,
     count: questions.length,
-    numericRatio: Math.round((numericCount / total) * 100),
-    answerPositions,
+    numericRatio,
+    answerPositions: cues.answerPositions,
+    longestRate: cues.longestRate,
+    meanRatio: cues.meanRatio,
   });
 }
 
@@ -276,7 +514,7 @@ function checkQuestions(label, questions, expected) {
 
 for (const bank of DECK_BANKS) {
   const questions = bank.files.flatMap((file) => readQuestionLiterals(file));
-  checkQuestions(bank.name, questions, bank.expected);
+  checkBank(bank.name, questions, bank.expected);
 }
 
 // --- Makine konu bankası -----------------------------------------------------
@@ -289,7 +527,7 @@ for (const file of MACHINE_FILES) {
 }
 
 for (const slug of MACHINE_SLUGS) {
-  checkQuestions(`machine/${slug}`, machineBank.get(slug) ?? [], MACHINE_EXPECTED_PER_SLUG);
+  checkBank(`machine/${slug}`, machineBank.get(slug) ?? [], MACHINE_EXPECTED_PER_SLUG);
 }
 
 for (const slug of machineBank.keys()) {
@@ -298,15 +536,46 @@ for (const slug of machineBank.keys()) {
   }
 }
 
+// --- Rehberli ders (beta) akışları -------------------------------------------
+//
+// Yapısal kurallar akış bazında (id'ler her akışta 1'den başlar); pozisyon ve
+// uzunluk oranları ise ders bazında toplulaştırılır — ortalama 2.6 soruluk bir
+// akışta oran hesabı anlamsız olurdu.
+
+for (const file of BETA_FILES) {
+  const module = path.basename(file, ".ts");
+  const flows = readFlowLiterals(file);
+  const all = [];
+
+  for (const flow of flows) {
+    checkQuestions(`beta/${module}/${flow.topicTitle}`, flow.questions, null);
+    all.push(...flow.questions);
+  }
+
+  const cues = checkAnswerCues(`beta/${module}`, all);
+  report.push({
+    label: `beta/${module} (${flows.length} akış)`,
+    count: all.length,
+    numericRatio: null,
+    answerPositions: cues.answerPositions,
+    longestRate: cues.longestRate,
+    meanRatio: cues.meanRatio,
+  });
+}
+
 // --- Çıktı -------------------------------------------------------------------
 
 const totalQuestions = report.reduce((sum, entry) => sum + entry.count, 0);
 
-console.log("Soru bankası raporu (adet | sayısal ~% | doğru şık dağılımı)");
+console.log(
+  "Soru bankası raporu (adet | sayısal ~% | doğru şık dağılımı | doğru şık en uzun % | uzunluk oranı)",
+);
 for (const entry of report) {
+  const numeric = entry.numericRatio === null ? "  —" : `%${String(entry.numericRatio).padStart(3)}`;
   console.log(
-    `  ${entry.label.padEnd(28)} ${String(entry.count).padStart(4)} | ` +
-      `%${String(entry.numericRatio).padStart(3)} | ${entry.answerPositions.join("/")}`,
+    `  ${entry.label.padEnd(34)} ${String(entry.count).padStart(4)} | ` +
+      `${numeric} | ${entry.answerPositions.join("/").padEnd(15)} | ` +
+      `%${String(Math.round(entry.longestRate * 100)).padStart(3)} | ${entry.meanRatio.toFixed(2)}`,
   );
 }
 console.log(`  ${"TOPLAM".padEnd(28)} ${String(totalQuestions).padStart(4)}`);

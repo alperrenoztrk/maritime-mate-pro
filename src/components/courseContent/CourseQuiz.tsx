@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { toast } from "sonner";
 import type { QuizQuestion } from "@/types/quiz";
+import { shuffleOptionsAll } from "@/utils/quizOptions";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -32,7 +33,9 @@ export function CourseQuiz({
   courseKey?: string;
   group?: "deck" | "machine";
 }) {
-  const [order, setOrder] = useState<QuizQuestion[]>(() => shuffle(questions));
+  // Soru sırasının yanında şık sırası da karıştırılır; aksi hâlde doğru cevabın
+  // veri dosyasındaki sabit konumu (çoğunlukla ilk şık) ipucu olur.
+  const [order, setOrder] = useState<QuizQuestion[]>(() => shuffleOptionsAll(shuffle(questions)));
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -68,7 +71,7 @@ export function CourseQuiz({
   const finishNow = () => setFinished(true);
 
   const restart = () => {
-    setOrder(shuffle(questions));
+    setOrder(shuffleOptionsAll(shuffle(questions)));
     setCurrent(0);
     setSelected(null);
     setAnswered(false);

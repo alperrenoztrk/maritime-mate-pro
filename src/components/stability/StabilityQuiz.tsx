@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { ChevronLeft, ChevronRight, RotateCcw, CheckCircle, XCircle, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { QuizQuestion } from '@/types/quiz';
+import { shuffleOptionsAll, toSourceAnswers } from '@/utils/quizOptions';
 
 interface QuizProps {
   questions: QuizQuestion[];
@@ -17,8 +18,11 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
   const [showResults, setShowResults] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const totalQuestions = questions.length;
+  // Şıklar veri sırasıyla gösterilirse "doğru cevap hep ilk şık" gibi ipuçları
+  // bilgi olmadan çözülebilir hâle gelir; sunumda karıştırılır.
+  const presented = useMemo(() => shuffleOptionsAll(questions), [questions]);
+  const currentQuestion = presented[currentQuestionIndex];
+  const totalQuestions = presented.length;
   const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
   // Reset quiz state when questions change
@@ -56,7 +60,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
 
   const calculateScore = () => {
     let correct = 0;
-    questions.forEach(question => {
+    presented.forEach(question => {
       if (selectedAnswers[question.id] === question.correctAnswer) {
         correct++;
       }
@@ -67,7 +71,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
   const finishQuiz = () => {
     setQuizCompleted(true);
     const score = calculateScore();
-    onComplete?.(score, totalQuestions, selectedAnswers);
+    onComplete?.(score, totalQuestions, toSourceAnswers(presented, selectedAnswers));
   };
 
   const resetQuiz = () => {
@@ -79,7 +83,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
 
   const isCurrentQuestionAnswered = selectedAnswers[currentQuestion.id] !== undefined;
   const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
-  const allQuestionsAnswered = questions.every(q => selectedAnswers[q.id] !== undefined);
+  const allQuestionsAnswered = presented.every(q => selectedAnswers[q.id] !== undefined);
 
   if (quizCompleted) {
     const score = calculateScore();
@@ -105,7 +109,7 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
           
           <div className="space-y-4">
             <h3 className="font-semibold">Soru Detayları:</h3>
-            {questions.map((question, index) => {
+            {presented.map((question, index) => {
               const userAnswer = selectedAnswers[question.id];
               const isCorrect = userAnswer === question.correctAnswer;
               
