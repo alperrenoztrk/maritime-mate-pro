@@ -17,13 +17,8 @@ export function CourseTopicHeader({
 
   return (
     <header className="space-y-4">
-      <Link
-        to={`/lessons?library=${topic.group}`}
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        {topic.group === "machine" ? "Makine Kitaplığı" : "Güverte Kitaplığı"}
-      </Link>
+      {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+
 
       <div className="flex items-center gap-3">
         <div
