@@ -24,15 +24,11 @@ export function LibraryPageShell({
   maxWidth?: string;
   headerAside?: ReactNode;
 }) {
-  const backControl = backHref ? (
-    <Link
-      to={backHref}
-      aria-label={backLabel}
-      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-card/80 text-muted-foreground shadow-sm transition hover:border-primary/40 hover:text-foreground"
-    >
-      <ArrowLeft className="h-5 w-5" />
-    </Link>
-  ) : onBack ? (
+  // No navigational back control here: the app has one global back affordance
+  // (AppNavBar + edge swipe). `backHref` is accepted and ignored so callers
+  // don't have to change. `onBack` is NOT navigation — it unwinds in-page
+  // state (e.g. leaving a category) — so it still gets a control.
+  const backControl = !backHref && onBack ? (
     <button
       type="button"
       onClick={onBack}
