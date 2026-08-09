@@ -13,8 +13,8 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 2,
     question: "Kumulonimbus (Cb) bulutu genellikle hangi hava olayının habercisidir?",
-    options: ["Sakin hava", "Fırtına ve sağanak", "Sis", "Hafif rüzgâr"],
-    correctAnswer: 1,
+    options: ["Sakin ve durgun hava koşulu", "Yer seviyesinde yoğun sis", "Fırtına ve sağanak yağış", "Hafif esen düzenli rüzgâr"],
+    correctAnswer: 2,
     explanation: "Cb dikey gelişimli fırtına bulutudur; şiddetli sağanak, yıldırım, squall görülebilir.",
     category: "Bulutlar"
   },
@@ -37,7 +37,7 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 5,
     question: "NAVTEX uluslararası yayın için en yaygın hangi frekansta çalışır?",
-    options: ["VHF", "MF (518 kHz)", "HF", "UHF"],
+    options: ["VHF bandında (156 MHz)", "MF bandında (518 kHz)", "HF bandında (8 MHz)", "UHF bandında (450 MHz)"],
     correctAnswer: 1,
     explanation: "NAVTEX: 518 kHz (international) ve 490 kHz (local) MF yayınları.",
     category: "GMDSS/Met"
@@ -93,8 +93,8 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 12,
     question: "Soğuk cephe geçişinde aşağıdakilerden hangisi daha olasıdır?",
-    options: ["Sıcaklığın artması", "Kısa süreli sağanak ve ani rüzgâr değişimi", "Uzun süreli hafif yağmur", "Rüzgârın tamamen kesilmesi"],
-    correctAnswer: 1,
+    options: ["Sıcaklığın belirgin artması", "Uzun süreli hafif yağmur", "Kısa sağanak ve ani rüzgâr", "Rüzgârın tamamen kesilmesi"],
+    correctAnswer: 2,
     explanation: "Soğuk cephe: dar bantta konvektif yağış, squall, sıcaklık düşüşü.",
     category: "Cepheler"
   },
@@ -109,23 +109,23 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 14,
     question: "Duman/sis ayrımında, sisin temel özelliği hangisidir?",
-    options: ["Sadece gündüz oluşur", "Yoğunlaşma ile su damlacıkları içerir", "Her zaman kuru olur", "Sadece kirli havada oluşur"],
-    correctAnswer: 1,
+    options: ["Yoğuşmayla su damlacığı içerir", "Yalnızca gündüz saatlerinde oluşur", "Her zaman kuru yapıda olur", "Yalnızca kirli havada oluşur"],
+    correctAnswer: 0,
     explanation: "Sis, havadaki su buharının yoğuşmasıyla oluşan çok küçük su damlacıklarıdır.",
     category: "Sis"
   },
   {
     id: 15,
     question: "Bora rüzgârı aşağıdaki özelliklerden hangisiyle bilinir?",
-    options: ["Sıcak ve nemli", "Soğuk, kuru ve ani şiddetli", "Sürekli hafif meltem", "Tropikal fırtına"],
-    correctAnswer: 1,
+    options: ["Sıcak, nemli ve yumuşak", "Sürekli esen hafif deniz meltemi", "Soğuk, kuru ve ani şiddetli", "Tropikal kökenli fırtına"],
+    correctAnswer: 2,
     explanation: "Bora: özellikle Adriyatik'te görülen katabatik, soğuk ve çok şiddetli rüzgâr.",
     category: "Yerel Rüzgarlar"
   },
   {
     id: 16,
     question: "Mistral rüzgârı en çok hangi bölgede bilinir?",
-    options: ["Kızıldeniz", "Biskay Körfezi", "Güney Fransa / Rhone Vadisi", "Karadeniz"],
+    options: ["Kızıldeniz ve çevresi", "Biskay Körfezi çevresi", "Güney Fransa/Rhone Vadisi", "Karadeniz kıyı şeridi"],
     correctAnswer: 2,
     explanation: "Mistral: Rhone vadisinden Akdeniz'e esen soğuk, kuru rüzgâr.",
     category: "Yerel Rüzgarlar"
@@ -149,8 +149,8 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 19,
     question: "Tropikal siklonlardan kaçınmada en temel ilke hangisidir?",
-    options: ["Merkeze yaklaşmak", "Güvenli sektörü belirleyip merkezden uzaklaşmak", "Hızı artırıp merkeze girmek", "Rüzgâr yönünü görmezden gelmek"],
-    correctAnswer: 1,
+    options: ["Merkeze doğru yaklaşmak", "Hızı artırıp merkeze girmek", "Güvenli sektörden uzaklaşmak", "Rüzgâr yönünü göz ardı etmek"],
+    correctAnswer: 2,
     explanation: "Storm avoidance: safe/dangerous semicircle analizi yapıp merkezi mümkün olan en büyük mesafede tutmak esastır.",
     category: "Storm Avoidance"
   },
@@ -165,15 +165,15 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 21,
     question: "METAR raporlarında 'CAVOK' ne anlama gelir?",
-    options: ["Şiddetli fırtına", "Görüş ve bulut şartları iyi", "Sis uyarısı", "Buzlanma riski"],
-    correctAnswer: 1,
+    options: ["Görüş ve bulut şartları iyi", "Şiddetli fırtına uyarısı", "Yoğun sis uyarısı var", "Buzlanma riski yüksek"],
+    correctAnswer: 0,
     explanation: "CAVOK: Ceiling And Visibility OK (görüş ≥ 10 km, belirgin bulut yok vb.).",
     category: "Met Raporları"
   },
   {
     id: 22,
     question: "Dalga periyodu artarsa, derin suda dalga boyu nasıl değişir?",
-    options: ["Azalır", "Artar", "Değişmez", "Rastgele değişir"],
+    options: ["Bir miktar azalır", "Belirgin artar", "Hiç değişmez", "Rastgele değişir"],
     correctAnswer: 1,
     explanation: "Derin suda L ∝ T²; periyot artışı dalga boyunu büyütür.",
     category: "Dalgalar"
@@ -181,7 +181,7 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 23,
     question: "Deniz üzerinde oluşan adveksiyon sisi en sık hangi durumda görülür?",
-    options: ["Soğuk hava sıcak su üzerine geldiğinde", "Sıcak ve nemli hava soğuk su üzerine geldiğinde", "Sadece dağlarda", "Sadece gece"],
+    options: ["Soğuk hava sıcak su üzerine geldiğinde", "Sıcak nemli hava soğuk su üzerinde", "Yalnızca dağ yamaçlarında", "Yalnızca gece saatlerinde"],
     correctAnswer: 1,
     explanation: "Sıcak-nemli hava soğuk yüzeye taşınınca (adveksiyon) hızla doygunluğa ulaşıp sis oluşur.",
     category: "Sis"
@@ -189,7 +189,7 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 24,
     question: "Rüzgâr şiddeti çok artmadan önce barometrede hızlı düşüş gözleniyorsa bu genellikle neye işaret eder?",
-    options: ["Yüksek basınç sırtı", "Yaklaşan alçak basınç/cephe", "Kesin olarak sis", "Gelgit değişimi"],
+    options: ["Yüksek basınç sırtı geliyor", "Yaklaşan alçak basınç/cephe", "Kesin olarak sis oluşacak", "Gelgit değişimi yaklaşıyor"],
     correctAnswer: 1,
     explanation: "Hızlı basınç düşüşü genellikle yaklaşan alçak basınç/cephe sistemidir.",
     category: "Basınç Sistemleri"
@@ -197,7 +197,7 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
   {
     id: 25,
     question: "Denizcilikte 'swell' için en doğru tanım hangisidir?",
-    options: ["Yerel rüzgârın oluşturduğu kısa periyotlu dalga", "Uzak fırtınadan gelen uzun periyotlu dalga", "Gelgit akıntısı", "Buz parçaları"],
+    options: ["Yerel rüzgârın kısa dalgası", "Uzak fırtınadan uzun dalga", "Gelgit kaynaklı akıntı", "Yüzen buz parçaları"],
     correctAnswer: 1,
     explanation: "Swell: uzak fırtınaların ürettiği, uzun periyotlu düzenli dalga sistemidir.",
     category: "Dalgalar"
@@ -206,10 +206,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 26,
     question: "Sinoptik haritada izobarların çok sık (birbirine yakın) çizildiği bölge neyi gösterir?",
     options: [
-      "Zayıf rüzgâr",
-      "Güçlü basınç gradyanı ve dolayısıyla kuvvetli rüzgâr",
-      "Sis bölgesi",
-      "Sakin deniz"
+      "Zayıf rüzgâr ve sakin deniz",
+      "Güçlü gradyan ve kuvvetli rüzgâr",
+      "Yoğun sis bölgesi oluşumu",
+      "Tamamen sakin deniz durumu"
     ],
     correctAnswer: 1,
     explanation: "Sık izobarlar büyük basınç gradyanı demektir; gradyan ne kadar büyükse rüzgâr o kadar şiddetlidir.",
@@ -219,10 +219,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 27,
     question: "Buys Ballot yasası Güney yarımkürede nasıl uygulanır?",
     options: [
-      "Sırtı rüzgâra verince alçak basınç solda kalır",
-      "Yüzü rüzgâra dönünce alçak basınç solda kalır; sırtı rüzgâra verince alçak sağdadır",
-      "Alçak basınç her zaman önde kalır",
-      "Yasa GH'de geçersizdir"
+      "Sırtı rüzgâra verince alçak solda",
+      "Yüzü rüzgâra dönünce alçak solda",
+      "Alçak basınç her zaman öndedir",
+      "Yasa güney yarımkürede geçersiz"
     ],
     correctAnswer: 1,
     explanation: "GH'de Coriolis ters yönlüdür; sırtınızı rüzgâra verdiğinizde alçak basınç sağ tarafta kalır (KH'nin tersi).",
@@ -232,10 +232,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 28,
     question: "Sinoptik haritada 'ridge' (sırt) terimi neyi ifade eder?",
     options: [
-      "Alçak basıncın uzantısı",
-      "Yüksek basıncın uzantısı; genellikle sakin/açık hava",
-      "Cephe çizgisi",
-      "İzoterm"
+      "Alçak basıncın uzantısıdır",
+      "Yüksek basınç uzantısı; açık hava",
+      "Cephe çizgisini göstermektedir",
+      "İzoterm çizgisini gösterir"
     ],
     correctAnswer: 1,
     explanation: "Ridge, yüksek basınç alanının dışarı doğru uzantısıdır ve genellikle stabil, açık hava ile ilişkilidir.",
@@ -245,10 +245,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 29,
     question: "Sinoptik haritada 'trough' (oluk/çukur) neyi gösterir?",
     options: [
-      "Yüksek basınç sırtı",
-      "Alçak basıncın uzantısı; genellikle bulutlu ve yağışlı hava",
-      "Sabit basınç hattı",
-      "Sakin deniz"
+      "Yüksek basınç sırtını gösterir",
+      "Alçak basınç uzantısı; yağışlı",
+      "Sabit basınç hattını gösterir",
+      "Sakin deniz alanını gösterir"
     ],
     correctAnswer: 1,
     explanation: "Trough, alçak basıncın dışa uzantısıdır; bozuk, bulutlu, yağışlı hava ve rüzgâr değişimleriyle ilişkilidir.",
@@ -258,10 +258,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 30,
     question: "Beaufort skalasında 12. kuvvet neyi ifade eder?",
     options: [
-      "Kuvvetli esinti",
-      "Fırtına (storm)",
-      "Orkan/Hurricane (≥ 64 knot)",
-      "Sakin"
+      "Kuvvetli esinti (force 6)",
+      "Fırtına/storm (force 10)",
+      "Orkan/hurricane (≥64 kn)",
+      "Sakin/calm (force 0)"
     ],
     correctAnswer: 2,
     explanation: "Beaufort 12 = Hurricane force; rüzgâr 64 knot ve üzeridir.",
@@ -271,10 +271,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 31,
     question: "Beaufort 0 (Calm) hangi deniz durumunu tanımlar?",
     options: [
-      "Ayna gibi düz deniz, rüzgâr < 1 knot",
-      "Küçük dalgalar",
-      "Köpüklü tepeler",
-      "Kırılan dalgalar"
+      "Ayna gibi deniz, <1 knot",
+      "Küçük dalgalar, 4-6 knot",
+      "Köpüklü tepeler, 20 knot",
+      "Kırılan dalgalar, 30 knot"
     ],
     correctAnswer: 0,
     explanation: "Beaufort 0: rüzgâr 1 knot'tan az; deniz ayna gibidir.",
@@ -284,12 +284,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 32,
     question: "Sirrus (Ci) bulutları aşağıdakilerden hangisiyle tanımlanır?",
     options: [
-      "Yüksek seviyede buz kristallerinden oluşan ince, tüy benzeri bulutlar",
-      "Alçak seviye yağmur bulutları",
-      "Dikey gelişen fırtına bulutları",
-      "Yer seviyesi sis"
+      "Alçak seviye yağmur bulutu",
+      "Dikey gelişen fırtına bulutu",
+      "Yüksek seviye ince buz bulutu",
+      "Yer seviyesindeki sis tabakası"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "Sirrus, yüksek troposferde buz kristallerinden oluşan ince beyaz lifli bulutlardır; sıklıkla cephe yaklaşımının ilk işaretidir.",
     category: "Bulutlar"
   },
@@ -297,12 +297,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 33,
     question: "Stratus (St) bulutu tipik olarak hangi havayla ilişkilidir?",
     options: [
+      "Düşük gri örtü; çiseleme",
       "Şiddetli gök gürültülü fırtına",
-      "Düşük, gri, örtü gibi bulut; çiseleme ve düşük görüş",
-      "Açık ve güneşli hava",
-      "Dolu fırtınası"
+      "Açık ve güneşli sakin hava",
+      "Dolu fırtınası ve şimşek"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Stratus alçak, gri tabaka bulutudur; çiseleme ve azalan görüşle ilişkilidir.",
     category: "Bulutlar"
   },
@@ -310,10 +310,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 34,
     question: "Bulut yükseklik sınıflandırmasında 'alto' öneki hangi seviyeyi belirtir?",
     options: [
-      "Alçak seviye",
-      "Orta seviye bulutlar (yaklaşık 2–7 km)",
-      "Yüksek seviye",
-      "Yer seviyesi"
+      "Alçak seviye bulutları",
+      "Orta seviye (2-7 km) bulutlar",
+      "Yüksek seviye bulutları",
+      "Yer seviyesi sis tabakası"
     ],
     correctAnswer: 1,
     explanation: "Altocumulus ve altostratus orta seviye (genelde 2–7 km) bulutlarıdır.",
@@ -323,10 +323,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 35,
     question: "Oklüzyon (occluded) cephesi nasıl oluşur?",
     options: [
-      "İki yüksek basıncın birleşmesiyle",
-      "Hızlı ilerleyen soğuk cephenin önündeki sıcak cepheye yetişip sıcak havayı yukarı kaldırmasıyla",
+      "İki yüksek basınç alanının birleşmesiyle",
+      "Soğuk cephenin sıcağa yetişmesiyle",
       "Sıcak cephenin yok olmasıyla",
-      "Sadece tropik bölgelerde"
+      "Yalnızca tropik bölgelerde"
     ],
     correctAnswer: 1,
     explanation: "Soğuk cephe sıcak cepheye yetişir, sıcak sektör yerden kaldırılır ve oklüzyon cephesi oluşur.",
@@ -336,12 +336,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 36,
     question: "Soğuk cephe geçtikten sonra rüzgâr yönü Kuzey yarımkürede tipik olarak nasıl değişir?",
     options: [
-      "Geri döner (backing)",
-      "Saat yönünde döner (veering), örn. güneybatıdan kuzeybatıya",
-      "Tamamen kesilir",
-      "Hiç değişmez"
+      "Geri döner (backing) yönünde",
+      "Tamamen kesilir ve durur",
+      "Saat yönünde döner (veering)",
+      "Hiçbir şekilde değişmez"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "KH'de soğuk cephe geçişinde rüzgâr genellikle veer eder (saat yönünde), basınç yükselir ve hava temizlenir.",
     category: "Cepheler"
   },
@@ -349,12 +349,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 37,
     question: "Sıcak cephenin eğimi (slope) soğuk cepheye göre nasıldır?",
     options: [
-      "Daha dik",
-      "Daha az eğimli (yatık); bu yüzden yağış bandı geniş ve uzun sürelidir",
-      "Tamamen dikey",
-      "Aynıdır"
+      "Daha yatık; yağış bandı geniş",
+      "Daha dik bir eğim açısına sahiptir",
+      "Tamamen dikey konumdadır",
+      "Soğuk cepheyle aynıdır"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Sıcak cephe yatık eğimlidir; geniş ve uzun süreli tabaka bulutu/yağış üretir. Soğuk cephe diktir ve dar konvektif yağış verir.",
     category: "Cepheler"
   },
@@ -362,12 +362,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 38,
     question: "Radyasyon (yer) sisi tipik olarak hangi koşulda oluşur?",
     options: [
+      "Açık, sakin gecede karada",
       "Rüzgârlı ve bulutlu gecelerde",
-      "Açık, sakin (hafif rüzgârlı) gecelerde karada yüzeyin ışınımla soğumasıyla",
       "Öğle vakti güçlü güneşte",
-      "Fırtına sırasında"
+      "Fırtına sırasında denizde"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Radyasyon sisi açık, sakin gecelerde karada yüzey soğumasıyla oluşur; gündüz ısınınca dağılır. Denizde nadirdir.",
     category: "Sis"
   },
@@ -375,12 +375,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 39,
     question: "Buharlaşma (steam/arctic sea smoke) sisi nasıl oluşur?",
     options: [
-      "Sıcak hava soğuk su üstüne geldiğinde",
-      "Çok soğuk hava nispeten sıcak su üzerine geldiğinde, sudan buharlaşan nemin yoğuşmasıyla",
-      "Yağmurdan sonra",
-      "Yüksek basınçta"
+      "Çok soğuk hava sıcak su üstünde",
+      "Sıcak hava soğuk su üstüne gelince",
+      "Yağmurdan hemen sonra",
+      "Yüksek basınç altında"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Soğuk hava sıcak su üstüne gelince su yüzeyinden buharlaşan nem hemen yoğuşur; 'sea smoke' (deniz dumanı) oluşur.",
     category: "Sis"
   },
@@ -388,10 +388,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 40,
     question: "Tropikal dönen fırtınada (TRS) 'tehlikeli yarım daire' (dangerous semicircle) Kuzey yarımkürede neresidir?",
     options: [
-      "Fırtınanın ilerleme yönüne göre sol taraf",
-      "Fırtınanın ilerleme yönüne göre sağ taraf",
-      "Tam merkez",
-      "Arka taraf"
+      "İlerleme yönüne göre sol taraf",
+      "İlerleme yönüne göre sağ taraf",
+      "Fırtınanın tam merkezi",
+      "Fırtınanın arka tarafı"
     ],
     correctAnswer: 1,
     explanation: "KH'de fırtınanın hareket yönüne göre sağ yarım dairede rüzgâr hızı ve ilerleme hızı toplandığından en tehlikeli bölgedir.",
@@ -402,9 +402,9 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     question: "Kuzey yarımkürede tehlikeli yarım dairede bulunan bir gemi için klasik kaçınma manevrası nedir?",
     options: [
       "Rüzgârı kıçtan alıp merkeze gitmek",
-      "Rüzgârı sancak baş omuzluğunda tutarak (starboard bow) mümkün olan en yüksek hızla uzaklaşmak",
-      "Demir atmak",
-      "Rüzgâra doğru dönmek"
+      "Sancak baş omuzlukta tutup kaçmak",
+      "Demir atıp fırtınayı beklemek",
+      "Rüzgâra doğru dönüş yapmak"
     ],
     correctAnswer: 1,
     explanation: "KH tehlikeli yarım dairede gemi rüzgârı sancak baş omuzluğunda tutup hız yaparak fırtına izinden çıkmaya çalışır.",
@@ -414,12 +414,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 42,
     question: "Barometrede sürekli ve belirgin düşüşle birlikte uzun periyotlu swell gelmesi okyanusta neyin habercisi olabilir?",
     options: [
+      "Sakin hava koşulları geliyor",
       "Yaklaşan tropikal dönen fırtına",
-      "Sakin hava",
-      "Sis",
-      "Yüksek basınç"
+      "Yoğun sis oluşacağını",
+      "Yüksek basınç yaklaşıyor"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Olağandışı uzun periyotlu swell ve düşen basınç, ufuktaki bir TRS'nin erken işaretleri olabilir.",
     category: "Tropikal Fırtına"
   },
@@ -441,11 +441,11 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     question: "Hava routeing (weather routeing) servislerinin temel amacı nedir?",
     options: [
       "Yakıt fiyatını belirlemek",
-      "Tahmini hava/deniz koşullarına göre en güvenli ve verimli rotayı önererek hasar, gecikme ve yakıt tüketimini azaltmak",
-      "Limanı seçmek",
-      "Mürettebatı planlamak"
+      "Uğranacak varış limanını belirleyip seçmek",
+      "En güvenli, verimli rotayı önermek",
+      "Mürettebat vardiya planı yapmak"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Weather routeing, meteoroloji tahminlerini kullanarak en uygun rotayı önerir; güvenlik, zaman ve yakıt optimizasyonu sağlar.",
     category: "Hava Routeing"
   },
@@ -453,10 +453,10 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 45,
     question: "Swell ile rüzgâr (sea) dalgaları arasındaki temel fark nedir?",
     options: [
-      "Swell yerel rüzgârla oluşur, sea uzaktan gelir",
-      "Sea yerel rüzgârla oluşan kısa-düzensiz dalga; swell uzaktaki sistemden gelen uzun periyotlu düzenli dalgadır",
-      "İkisi tamamen aynıdır",
-      "Swell sadece sığ suda olur"
+      "Swell yerelde oluşur, sea uzaktan gelir",
+      "Sea yerel kısa, swell uzun periyot",
+      "İkisi tamamen aynı olgudur",
+      "Swell yalnızca sığ suda olur"
     ],
     correctAnswer: 1,
     explanation: "Sea, mevcut yerel rüzgârın ürettiği kısa ve düzensiz dalgalardır; swell ise alandan uzaklaşmış, uzun ve düzenli dalgalardır.",
@@ -466,20 +466,20 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 46,
     question: "Dalga oluşumunda 'fetch' (kabarma mesafesi) neyi ifade eder?",
     options: [
-      "Dalga yüksekliği",
-      "Rüzgârın aynı yön ve şiddette estiği açık su uzunluğu",
-      "Dalga periyodu",
-      "Su derinliği"
+      "Rüzgârın estiği açık su boyu",
+      "Oluşan dalga yüksekliği",
+      "Dalganın salınım periyodu",
+      "Bölgedeki su derinliği"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Fetch, rüzgârın kesintisiz estiği mesafedir; fetch, rüzgâr hızı ve süresi arttıkça dalga yüksekliği büyür.",
     category: "Dalgalar"
   },
   {
     id: 47,
     question: "Anemometre hangi büyüklüğü ölçer?",
-    options: ["Basınç", "Rüzgâr hızı", "Nem", "Sıcaklık"],
-    correctAnswer: 1,
+    options: ["Hava basıncını", "Bağıl nemi", "Rüzgâr hızını", "Hava sıcaklığını"],
+    correctAnswer: 2,
     explanation: "Anemometre rüzgâr hızını (ve genellikle yönünü) ölçen alettir.",
     category: "Ölçüm"
   },
@@ -487,12 +487,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 48,
     question: "Geostrofik rüzgâr (geostrophic wind) hangi iki kuvvetin dengesiyle açıklanır?",
     options: [
+      "Basınç gradyanı ve Coriolis",
       "Sürtünme ve yerçekimi",
-      "Basınç gradyan kuvveti ile Coriolis kuvveti",
-      "Gelgit ve rüzgâr",
-      "Sadece Coriolis"
+      "Gelgit ve rüzgâr kuvveti",
+      "Yalnızca Coriolis kuvvetinin etkisi"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Yüksek atmosferde sürtünmenin ihmal edildiği yerde rüzgâr, basınç gradyan kuvveti ve Coriolis dengesinde izobarlara paralel eser.",
     category: "Dinamik"
   },
@@ -500,12 +500,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 49,
     question: "Yüzey rüzgârı, sürtünme nedeniyle geostrofik rüzgâra göre izobarlara göre nasıl davranır?",
     options: [
+      "İzobarları keserek alçağa eser",
       "İzobarlara tam dik eser",
-      "Sürtünme yönü saptırır; rüzgâr izobarları keserek alçak basınca doğru hafif açıyla eser",
       "İzobarlara tam paralel eser",
-      "Hiç değişmez"
+      "Hiçbir şekilde değişmez"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Yüzeyde sürtünme rüzgârı yavaşlatır ve alçak basınca doğru izobarları belirli bir açıyla kesmesine yol açar.",
     category: "Dinamik"
   },
@@ -513,12 +513,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 50,
     question: "Denizcilikte 'significant wave height' (belirgin dalga yüksekliği, Hs) ne anlama gelir?",
     options: [
-      "En yüksek tek dalga",
-      "En yüksek üçte birlik dalga grubunun ortalama yüksekliği",
-      "Ortalama tüm dalgalar",
-      "En düşük dalga"
+      "En yüksek tek dalganın boyu",
+      "Tüm dalgaların ortalaması",
+      "En yüksek 1/3'ün ortalaması",
+      "En düşük dalganın boyu"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Hs, gözlenen dalgaların en yüksek 1/3'ünün ortalama yüksekliğidir; deneyimli gözlemcinin tahminine yakındır.",
     category: "Dalgalar"
   },
@@ -526,12 +526,12 @@ const baseMeteorologyQuestions: QuizQuestion[] = [
     id: 51,
     question: "Sinoptik haritada cephe sembollerinde sıcak cephe nasıl gösterilir?",
     options: [
-      "Mavi üçgenlerle",
-      "Kırmızı yarım dairelerle (ilerleme yönüne dönük)",
+      "Kırmızı yarım dairelerle",
+      "Mavi üçgenlerle gösterilir",
       "Mor karışık sembollerle",
-      "Kesik çizgiyle"
+      "Kesik çizgiyle gösterilir"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Sıcak cephe kırmızı yarım dairelerle, soğuk cephe mavi üçgenlerle, oklüzyon mor (üçgen+yarım daire) ile gösterilir.",
     category: "Sinoptik Harita"
   }

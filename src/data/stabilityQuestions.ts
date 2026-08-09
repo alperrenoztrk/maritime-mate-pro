@@ -20,10 +20,10 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 2,
     question: "IS Code'a göre GZmax ve açısı için doğru ifade hangisidir?",
     options: [
-      "GZ, 30° veya üzerindeki bir açıda ≥ 0.20 m; GZmax açısı ≥ 25° (tercihen > 30°)",
-      "GZmax ≥ 0.10 m ve ≤ 25°'de meydana gelir",
-      "GZmax ≥ 0.30 m ve ≤ 20°'de meydana gelir",
-      "GZmax değeri açıdan bağımsızdır"
+      "GZ ≥ 0.20 m (≥30°) ve GZmax açısı ≥ 25°",
+      "GZ ≥ 0.10 m ve GZmax ≤ 25°'de oluşur",
+      "GZ ≥ 0.30 m ve GZmax ≤ 20°'de oluşur",
+      "GZmax değeri meyil açısından bağımsızdır"
     ],
     correctAnswer: 0,
     explanation: "IS Code 2008: doğrultucu kol GZ, 30° veya daha büyük bir meyil açısında en az 0.20 m olmalı; maksimum GZ tercihen 30°'den büyük, her hâlde 25°'den küçük olmayan bir açıda oluşmalıdır.",
@@ -67,12 +67,12 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 6,
     question: "Weather Criterion'da karşılaştırılan alan hangisidir?",
     options: [
-      "0–30° alanı",
-      "0–θe alanı (rüzgâr devirmesine karşı)",
-      "30–40° alanı",
-      "0–40° toplam alanı"
+      "0–30° arasındaki GZ alanı",
+      "30–40° arasındaki GZ alanı",
+      "0–θe alanı (rüzgâr devirmesi)",
+      "0–40° toplam GZ alanı"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Rüzgâr kuvvetine karşı 0'dan denge açısına (θe) kadar GZ alanı kontrol edilir.",
     category: "Weather Criterion"
   },
@@ -106,10 +106,10 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 9,
     question: "İkinci nesil IS (SDC) kapsamında değerlendirilen zafiyet modlarından hangisi doğru kombinasyondur?",
     options: [
-      "Parametrik yalpa, saf stabilite kaybı, ölü gemi durumu",
-      "Yalnızca broaching",
-      "Sadece sürüklenme",
-      "Yalnızca dengesiz trim"
+      "Parametrik yalpa, saf kayıp, ölü gemi",
+      "Yalnızca broaching zafiyeti modu",
+      "Yalnızca sürüklenme zafiyeti modu",
+      "Yalnızca dengesiz trim durumu"
     ],
     correctAnswer: 0,
     explanation: "2. nesil IS; parametrik yalpa, saf stabilite kaybı, ölü gemi, dalga tepesi/yan deniz aşırı yalpa vb. modları değerlendirir.",
@@ -175,9 +175,9 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 17,
     question: "Parametrik yalpa için zafiyet hangi koşulda artar?",
     options: [
-      "Dalgayla karşılaşma periyodu yalpa doğal periyodunun yaklaşık yarısına yaklaştığında",
-      "Yalpa doğal periyodu dalga periyodundan bağımsızdır",
-      "Kısa gemilerde asla oluşmaz",
+      "Karşılaşma periyodu doğal periyodun yarısına yaklaştığında",
+      "Doğal yalpa periyodu dalga periyodundan bağımsız olduğunda",
+      "Kısa gemilerde hiçbir koşulda oluşmadığında",
       "GM çok büyük olduğunda her zaman artar"
     ],
     correctAnswer: 0,
@@ -188,12 +188,12 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 18,
     question: "Ölü gemi (dead ship) durumu için doğru ifade hangisidir?",
     options: [
-      "Tahrik ve dümen kaybında rüzgâr-balıkçıl kriteri uygulanmaz",
-      "Yalnızca tankerlerde aranır",
-      "Tekne, rüzgâr karşısında belirli bir denge açısında yeterli GZ alanı göstermelidir",
-      "GZmax 0.05 m yeterlidir"
+      "Rüzgâr karşısında yeterli GZ alanı göstermelidir",
+      "Tahrik kaybında rüzgâr kriteri uygulanmaz",
+      "Yalnızca tankerlerde aranan bir kriterdir",
+      "GZmax değerinin 0.05 m olması yeterlidir"
     ],
-    correctAnswer: 2,
+    correctAnswer: 0,
     explanation: "Ölü gemi durumu için yeterli sağlama alanı (0–θe) ve sınırlar aranır; tahrik/dümen yok kabul edilir.",
     category: "Second-Generation IS"
   },
@@ -250,7 +250,7 @@ const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 24,
     question: "BM = I/∇. Deplasman artarken (I sabit), BM nasıl değişir?",
-    options: ["Artar", "Azalır", "Değişmez", "Önce artar sonra azalır"],
+    options: ["Bir miktar artar", "Belirgin azalır", "Hiç değişmez", "Önce artar sonra azalır"],
     correctAnswer: 1,
     explanation: "Bölünen büyüklük ∇ arttıkça BM küçülür.",
     category: "Hidrostatik"
@@ -258,7 +258,7 @@ const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 25,
     question: "Bonjean eğrileri esas olarak hangi hesap için kullanılır?",
-    options: ["Rüzgâr alanı", "Su altı alan/hacim hesapları", "Yalpa periyodu", "İtme tahmini"],
+    options: ["Rüzgâr projeksiyon alanı hesabı", "Su altı alan ve hacim hesabı", "Doğal yalpa periyodu hesabı", "Pervane itme kuvveti tahmini"],
     correctAnswer: 1,
     explanation: "Kesit alanları ve hacimleri bulmada kullanılır; deplasman-trim çözümlerinde temel veri sağlar.",
     category: "Hidrostatik"
@@ -282,7 +282,7 @@ const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 28,
     question: "Loll durumu hangi GM işaretinde ortaya çıkar?",
-    options: ["GM > 0", "GM = 0", "GM < 0", "GM, BM'ye eşitse"],
+    options: ["GM > 0 olduğunda", "GM = 0 olduğunda", "GM < 0 olduğunda", "GM, BM'ye eşitse"],
     correctAnswer: 2,
     explanation: "Negatif GM'de gemi bir açıda kararsız dengeye (loll) gelir.",
     category: "Loll"
@@ -291,12 +291,12 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 29,
     question: "Rüzgâr devirmesine karşı güverte kenarı batma açısı (deck-edge immersion) 30°'den küçükse ne beklenir?",
     options: [
-      "Kriterler uygulanmaz",
-      "GZ kriterleri aynı kalır; sadece geometri etkilenir",
-      "GZmax şartı iptal olur",
-      "GM0 şartı artar"
+      "GZ kriterleri aynı, geometri etkilenir",
+      "Kriterlerin hiçbiri artık uygulanmaz",
+      "GZmax şartı tümüyle iptal edilir",
+      "GM0 şartı bir kat artırılır"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "IS Code alan ve GZmax şartları geçerlidir; fakat deck-edge erken batarsa GZ eğrisi şekli etkilenir.",
     category: "IS Code (2008)"
   },
@@ -304,28 +304,28 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 30,
     question: "TPC hakkında doğru ifade hangisidir?",
     options: [
-      "Δ ile orantılıdır",
-      "Su hattı alanı (Awp) ile orantılıdır",
-      "LCB ile orantılıdır",
-      "GM ile orantılıdır"
+      "Su hattı alanı ile orantılıdır",
+      "Deplasman (Δ) ile orantılıdır",
+      "LCB konumu ile orantılıdır",
+      "GM değeri ile orantılıdır"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Yaklaşık TPC ≈ ρ·Awp/100; Awp büyüdükçe TPC artar.",
     category: "Hidrostatik"
   },
   {
     id: 31,
     question: "KN eğrisi neyi sağlar?",
-    options: ["GZ/GM oranını", "K noktasına göre sağlama kolu referansını", "BM'yi", "KB'yi"],
-    correctAnswer: 1,
+    options: ["K'ya göre sağlama kolu", "GZ ile GM oranını verir", "BM metasantr yarıçapını verir", "KB kaldırma merkezini verir"],
+    correctAnswer: 0,
     explanation: "GZ = KN − KG·sinθ ifadesinde KN, geometrik sağlama kolu referansıdır.",
     category: "GZ/KN"
   },
   {
     id: 32,
     question: "Bir ağırlığın yanal taşınması doğrudan hangi büyüklüğü değiştirir?",
-    options: ["LCG", "VCG", "TCG", "Deplasman"],
-    correctAnswer: 2,
+    options: ["LCG (boyuna)", "TCG (enine)", "VCG (düşey)", "Deplasman (Δ)"],
+    correctAnswer: 1,
     explanation: "Yanal taşımada transvers ağırlık merkezi (TCG) değişir; LCG/VCG değil.",
     category: "Ağırlık Operasyonları"
   },
@@ -341,10 +341,10 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 34,
     question: "Serbest yüzeyin azaltılmasının en etkili yolu hangisidir?",
     options: [
-      "Tankları yarıda tutmak",
+      "Tankları yarı dolu hâlde tutmak",
       "Tankları tam doldurmak veya boşaltmak",
-      "Bölmeleri kaldırmak",
-      "Viskoziteyi düşürmek"
+      "Tank içi bölmeleri kaldırmak",
+      "Sıvının viskozitesini düşürmek"
     ],
     correctAnswer: 1,
     explanation: "Yarı dolu durumdan kaçınmak, bölmelendirme ve tam dolu/boş işletmek esastır.",
@@ -369,8 +369,8 @@ const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 37,
     question: "MCT1cm, GML arttığında nasıl değişir?",
-    options: ["Artar", "Azalır", "Değişmez", "Önce artar sonra azalır"],
-    correctAnswer: 0,
+    options: ["Bir miktar azalır", "Belirgin artar", "Hiç değişmez", "Önce artar sonra azalır"],
+    correctAnswer: 1,
     explanation: "MCT1cm ≈ Δ×GML/(100×LPP); GML artışı MCT'yi artırır.",
     category: "Trim"
   },
@@ -385,7 +385,7 @@ const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 39,
     question: "Dinamik stabilite ne ile ilişkilidir?",
-    options: ["GZ eğrisi altındaki alanla (enerji)", "GZmax ile", "GM0 ile", "BM ile"],
+    options: ["GZ eğrisi altındaki alanla", "GZmax değeri ile ilişkilidir", "GM0 değeri ile ilişkilidir", "BM değeri ile ilişkilidir"],
     correctAnswer: 0,
     explanation: "Açıya göre GZ integrali dinamik stabiliteyi (sağlama enerjisini) temsil eder.",
     category: "Dinamik Stabilite"
@@ -394,10 +394,10 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 40,
     question: "Rüzgâr momenti yaklaşık olarak hangi parametrelerin fonksiyonudur?",
     options: [
-      "Hava yoğunluğu, sürükleme katsayısı, projeksiyon alanı, rüzgâr hızı^2",
-      "Su yoğunluğu, Awp, GM, rüzgâr hızı",
-      "Yalpa periyodu ve Lpp",
-      "LCB ve KB"
+      "Hava yoğunluğu, Cd, alan ve hız karesi",
+      "Su yoğunluğu, Awp, GM ve rüzgâr hızı",
+      "Doğal yalpa periyodu ve gemi boyu",
+      "LCB ve KB konumlarının yeri"
     ],
     correctAnswer: 0,
     explanation: "Basitleştirilmiş: Mw ≈ 0.5·ρair·Cd·A·V^2·z (moment kolu dâhil).",
@@ -407,10 +407,10 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 41,
     question: "İkinci nesil IS kapsamında 'saf stabilite kaybı' hangi koşulda beklenir?",
     options: [
-      "Dalga tepesinde kaldırma merkezinin düşmesi ve GM'nin anlık azalması",
-      "Sadece rüzgâr sert eserse",
-      "Sadece pervane boşalınca",
-      "Yalnızca kıçtan dalga alınca"
+      "Dalga tepesinde GM'nin anlık azalması",
+      "Yalnızca rüzgâr sert estiğinde",
+      "Yalnızca pervane boşaldığında",
+      "Yalnızca kıçtan dalga alındığında"
     ],
     correctAnswer: 0,
     explanation: "Dalga tepesinde gövde formu nedeniyle BM/GM azalması anlık stabilite kaybına yol açabilir.",
@@ -420,12 +420,12 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 42,
     question: "Grain Code için denge açısı sınırı hangi ölçüttür?",
     options: [
-      "12° veya güverte kenarı batma açısından küçük olanı aşmamalı",
-      "16° sabit",
-      "10° sabit",
-      "Sınır yoktur"
+      "Her koşulda 16° sabit sınır",
+      "Her koşulda 10° sabit sınır",
+      "12° veya güverte kenarı açısı",
+      "Belirlenmiş bir sınır yoktur"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "Tahıl kayması sonrası denge açısı 12° veya deck-edge immersion açısını aşmamalı.",
     category: "Grain Code"
   },
@@ -456,8 +456,8 @@ const baseStabilityQuestions: QuizQuestion[] = [
   {
     id: 46,
     question: "Serbest yüzey düzeltmesi (FSC) hangi terime uygulanır?",
-    options: ["KB", "BM", "KG/GM", "KN"],
-    correctAnswer: 2,
+    options: ["KG/GM terimine uygulanır", "KB terimine uygulanır", "BM terimine uygulanır", "KN terimine uygulanır"],
+    correctAnswer: 0,
     explanation: "Sanal KG artışı olarak KG'ye eklenir veya GM'den düşülür (GMcorr).",
     category: "Serbest Yüzey"
   },
@@ -486,12 +486,12 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 49,
     question: "Hasarlı stabilite A indeksi hangi bileşenlerden hesaplanır?",
     options: [
-      "Tüm olası hasar senaryoları için sağkalım olasılığı ve sonuç katsayıları",
-      "Sadece min. GM",
-      "Sadece GZmax",
-      "Sadece deck-edge açısı"
+      "Yalnızca deck-edge açısından hesaplanır",
+      "Sağkalım olasılığı ve sonuç katsayıları",
+      "Yalnızca minimum GM değerinden hesaplanır",
+      "Yalnızca GZmax değerinden hesaplanır"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Olasılıksal yaklaşım: hasar olasılığı, bölmeleme ve sağkalım olasılığı (s-index) bileşenleri üzerinden A elde edilir.",
     category: "Hasarlı Stabilite (SOLAS)"
   },
@@ -499,9 +499,9 @@ const baseStabilityQuestions: QuizQuestion[] = [
     id: 50,
     question: "Parametrik yalpada hangi önlem zafiyeti azaltır?",
     options: [
-      "Yalpa doğal periyodunu dalga karşılaşma periyodundan uzaklaştırmak",
-      "GM'yi sıfıra indirmek",
-      "Serbest yüzeyi artırmak",
+      "Doğal periyodu karşılaşmadan ayırmak",
+      "GM değerini sıfıra indirmek",
+      "Serbest yüzey alanını artırmak",
       "Kren operasyonlarını artırmak"
     ],
     correctAnswer: 0,
