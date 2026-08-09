@@ -92,22 +92,8 @@ export default function LessonTopicDetailPage() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-5 p-4 sm:p-6">
-        <Link
-          to={`/lessons/${categoryId}/topics`}
-          className="inline-flex items-center gap-2.5 self-start text-sm text-muted-foreground transition hover:text-foreground"
-        >
-          {CategoryIcon && (
-            <span
-              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${category?.accent ?? "from-sky-500 to-blue-600"} text-white shadow-md`}
-            >
-              <CategoryIcon className="h-5 w-5" />
-            </span>
-          )}
-          <span className="inline-flex items-center gap-1.5 font-medium">
-            <ArrowLeft className="h-4 w-4" />
-            {category?.title ?? "Konular"}
-          </span>
-        </Link>
+        {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+
 
         {content.introduction && (
           <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
