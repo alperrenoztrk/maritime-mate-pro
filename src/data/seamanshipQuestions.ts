@@ -21,7 +21,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 3,
     question: "ISM Kodunun temel amacı nedir?",
-    options: ["Gemi güvenliği sertifikasyonu", "Güvenli gemi işletimi ve kirlilik önleme", "Mürettebat sertifikasyonu", "Kargo güvenliği"],
+    options: ["Gemi güvenlik sertifikalarının düzenlenmesi", "Emniyetli gemi işletimi ve kirliliğin önlenmesi", "Gemi adamı yeterliklerinin belgelendirilmesi", "Yük emniyeti ve istif kurallarının belirlenmesi"],
     correctAnswer: 1,
     explanation: "ISM, emniyetli işletim ve çevre kirliliğinin önlenmesi için yönetim sistemi standartları getirir.",
     category: "ISM/ISPS"
@@ -45,15 +45,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 6,
     question: "Palamar hatlarında 'snap-back zone' neyi ifade eder?",
-    options: ["Halatın suya değdiği bölge", "Halat koparsa geri savrulacağı tehlike alanı", "Halatın yağlanacağı alan", "Halatın bağlanacağı babayı"],
-    correctAnswer: 1,
+    options: ["Halat koparsa savrulacağı tehlike alanı", "Halatın bağlandığı baba ve fırdöndü alanı", "Halatın su yüzeyine değdiği ıslak bölge", "Halatın yağlanması gereken bakım alanı"],
+    correctAnswer: 0,
     explanation: "Kopma halinde halat, elastik enerjiyle geri savrulur; bu bölge ölümcül olabilir.",
     category: "Palamar"
   },
   {
     id: 7,
     question: "Bowline (İzbarço) düğümünün en önemli özelliği hangisidir?",
-    options: ["Yük altında sıkışıp çözülmez", "Sabit bir göz (ilmek) oluşturur", "Sadece zincirde kullanılır", "Su altında çözülür"],
+    options: ["Yük altında sıkışıp hiç çözülmez", "Sabit bir göz (ilmek) oluşturur", "Sadece zincirde kullanılır", "Su altında çözülür"],
     correctAnswer: 1,
     explanation: "Bowline güvenilir sabit göz oluşturur; birçok pratik kullanımda tercih edilir.",
     category: "Düğümler"
@@ -69,39 +69,39 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 9,
     question: "Denizde 'man overboard' durumunda ilk aksiyon hangisidir?",
-    options: ["Günlük doldurmak", "Can simidi/ışık duman şamandırası atmak ve alarm vermek", "Hemen limana dönmek", "Makineyi durdurmak"],
-    correctAnswer: 1,
+    options: ["Can simidi ve duman şamandırası atıp alarm vermek", "Olayı seyir jurnaline kaydedip vardiyayı bilgilendirmek", "Rotayı en yakın limana çevirip yardım istemek", "Ana makineyi durdurup gemiyi akıntıya bırakmak"],
+    correctAnswer: 0,
     explanation: "İlk hedef: kişiyi işaretlemek ve görünür kılmak (lifebuoy/marking) + alarm/koordinasyon.",
     category: "Acil Durum"
   },
   {
     id: 10,
     question: "Güvertede ağır hava devriyesinde öncelikli kontrol hangisidir?",
-    options: ["Kamarot bölümü", "Mutfak", "Ambar kapakları ve güverte ekipman emniyeti", "Ofis evrakı"],
-    correctAnswer: 2,
+    options: ["Ambar kapakları ve güverte ekipmanı", "Kamara bölümündeki eşyaların emniyeti", "Mutfak ve kumanya deposunun düzeni", "Köprüüstü evrak ve jurnal düzeni"],
+    correctAnswer: 0,
     explanation: "Ambar kapakları, lashings, ventler, güverte ekipmanı heavy weather'da kritik risk oluşturur.",
     category: "Ağır Hava"
   },
   {
     id: 11,
     question: "Çelik halatın (wire) periyodik kontrolünde en kritik bulgulardan biri hangisidir?",
-    options: ["Renk değişimi", "Kırık tel sayısı ve bukle/kink", "Sadece yağ seviyesi", "Etiket yazısı"],
-    correctAnswer: 1,
+    options: ["Kırık tel sayısı ve bukle (kink) oluşumu", "Halatın dış yüzeyindeki renk değişimi", "Yağlama gresinin tank seviyesi kaydı", "Makara üzerindeki etiket yazısının okunurluğu"],
+    correctAnswer: 0,
     explanation: "Broken wires, kinks, birdcaging gibi deformasyonlar ciddi emniyet riski taşır.",
     category: "Bakım"
   },
   {
     id: 12,
     question: "Gemi yanaşma sırasında römorkör komutu verirken en önemli unsur hangisidir?",
-    options: ["Sadece rüzgâr", "Net ve standart iletişim/komut", "Sadece akıntı", "Sadece draft"],
-    correctAnswer: 1,
+    options: ["Net ve standart telsiz komutları", "Yalnızca geminin draft değerleri", "Yalnızca rüzgâr yönü ve şiddeti", "Yalnızca akıntının yön ve hızı"],
+    correctAnswer: 0,
     explanation: "Tug operations'ta yanlış anlaşılma ciddi kaza sebebidir; standard phraseology kritik.",
     category: "Manevra"
   },
   {
     id: 13,
     question: "Kıçtan bağlanmada (stern-to) en önemli risklerden biri hangisidir?",
-    options: ["Görüş artışı", "Pervane/rudder hasarı ve kıçın dalga/akıntıyla sürüklenmesi", "Yakıt tasarrufu", "Radar menzil artışı"],
+    options: ["Köprüüstünden görüş açısının artması", "Pervane ve dümene hasar, kıçın sürüklenmesi", "Manevrada yakıt tüketiminin azalması", "Radar menzilinin belirgin biçimde artış göstermesi"],
     correctAnswer: 1,
     explanation: "Kıç manevrası dar alanda hassastır; prop/rudder clearance ve çevresel etkiler kritik.",
     category: "Manevra"
@@ -109,15 +109,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 14,
     question: "Denizde çatışma önlemede 'stand-on vessel' için doğru ifade hangisidir?",
-    options: ["Her zaman rota/hız değiştirir", "Mümkün olduğunca rota ve hızını muhafaza eder", "Daima iskele tarafına döner", "Hiç manevra yapamaz"],
-    correctAnswer: 1,
+    options: ["Şartlar elverdiğince rota ve hızını korur", "Her koşulda rota ve hızını değiştirmek zorundadır", "Daima iskele tarafına dönüş yapar", "Hiçbir koşulda manevra yapamaz"],
+    correctAnswer: 0,
     explanation: "COLREG: Stand-on, şartlar elverdiğince rota/hızını korur; risk devam ederse manevra yapabilir.",
     category: "COLREG"
   },
   {
     id: 15,
     question: "Bir gemide 'permit to work' sistemi aşağıdakilerden hangisini en çok azaltır?",
-    options: ["Yakıt tüketimini", "Kontrolsüz ve riskli iş yapılmasını", "Radar arızasını", "Gelgit hatasını"],
+    options: ["Sefer başına yakıt tüketiminin artmasını", "Kontrolsüz ve riskli iş yapılmasını", "Radar ve seyir cihazlarındaki arızaları", "Gelgit hesaplarındaki hata payını"],
     correctAnswer: 1,
     explanation: "PTW: sıcak iş, enclosed space vb. riskli işlerde prosedür/izolasyon/ölçüm kontrolü sağlar.",
     category: "İş Emniyeti"
@@ -125,15 +125,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 16,
     question: "Enclosed space entry (kapalı mahale giriş) için en kritik ön koşul hangisidir?",
-    options: ["Kapıyı açık bırakmak", "Atmosfer ölçümü ve havalandırma", "Telefonla konuşmak", "Sadece aydınlatma"],
-    correctAnswer: 1,
+    options: ["Atmosfer ölçümü ve havalandırma yapılması", "Taşınabilir aydınlatma temin edilmesi", "Kapının açık bırakılması ve gözcü konması", "Telsizle sürekli iletişim kurulması"],
+    correctAnswer: 0,
     explanation: "O2, LEL, toksik gaz ölçümü + sürekli havalandırma + izin/prosedür hayati önemdedir.",
     category: "İş Emniyeti"
   },
   {
     id: 17,
     question: "Gemide 'toolbox talk' (iş başı konuşması) en iyi ne zaman yapılır?",
-    options: ["İş bittikten sonra", "İşe başlamadan hemen önce", "Sadece limanda", "Sadece kaptan isteyince"],
+    options: ["İş bittikten sonra", "İşe başlamadan hemen önce", "Sadece limanda", "Sadece kaptan talep ettiğinde"],
     correctAnswer: 1,
     explanation: "İşe başlamadan önce riskler/roller/iletişim netleştirilir.",
     category: "İş Emniyeti"
@@ -141,16 +141,16 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 18,
     question: "Demir taraması (dragging anchor) şüphesinde en pratik göstergelerden biri hangisidir?",
-    options: ["GPS/ekosounder konumunun sabit kalması", "Kerterizlerin ve GPS pozisyonunun sürüklenmesi", "Deniz suyu tuzluluğu", "Hava sıcaklığı"],
-    correctAnswer: 1,
+    options: ["Kerteriz ve GPS pozisyonunun sürüklenmesi", "GPS ve iskandil değerlerinin sabit kalması", "Deniz suyu tuzluluğunun belirgin değişmesi", "Hava sıcaklığının hızla düşmeye başlaması"],
+    correctAnswer: 0,
     explanation: "Kerterizler değişiyor ve pozisyon sürükleniyorsa anchor dragging ihtimali artar.",
     category: "Demirleme"
   },
   {
     id: 19,
     question: "Bir halatın SWL/WLL değerleri ile ilgili doğru ifade hangisidir?",
-    options: ["WLL her zaman MBL'den büyüktür", "WLL çalışma yük limitidir, MBL kırılma yüküdür", "MBL ile WLL aynıdır", "WLL sadece zincirde kullanılır"],
-    correctAnswer: 1,
+    options: ["WLL çalışma limiti, MBL kırılma yüküdür", "WLL yalnızca zincir donanımında kullanılır", "WLL her zaman MBL değerinden büyüktür", "MBL ile WLL aynı değeri ifade eder"],
+    correctAnswer: 0,
     explanation: "WLL/SWL güvenli çalışma sınırı; MBL minimum kırılma yüküdür (emniyet katsayısı uygulanır).",
     category: "Palamar"
   },
@@ -165,39 +165,39 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 21,
     question: "Güvertede 'lanyard' kullanımının temel amacı hangisidir?",
-    options: ["Süslü görünmek", "Aletlerin düşmesini önlemek", "Rüzgârı ölçmek", "Pusula sapmasını ölçmek"],
-    correctAnswer: 1,
+    options: ["El aletlerinin düşmesini önlemek", "Personelin görünürlüğünü artırmak", "Rüzgâr hızını yaklaşık ölçmek", "Pusula sapmasını belirlemek"],
+    correctAnswer: 0,
     explanation: "Tool lanyard, overboard düşüşü ve yaralanma riskini azaltır.",
     category: "İş Emniyeti"
   },
   {
     id: 22,
     question: "Emniyet kemeri/harness için doğru kullanım hangisidir?",
-    options: ["Sadece bele bağlamak", "Uygun ankraj noktasına bağlayıp fall-arrest kullanmak", "İple elde tutmak", "Ağır havada hiç kullanmamak"],
-    correctAnswer: 1,
+    options: ["Sertifikalı ankraja bağlanıp emniyet almak", "Ağır havada kemeri hiç kullanmamak", "Kemeri yalnızca bel hizasına bağlayarak çalışmak", "Emniyet ipini elde tutarak ilerlemek"],
+    correctAnswer: 0,
     explanation: "Fall-arrest sisteminde sertifikalı ankraj + doğru bağlantı ve kontrol şarttır.",
     category: "İş Emniyeti"
   },
   {
     id: 23,
     question: "Denizde 'heaving line' (atış halatı) en çok hangi amaçla kullanılır?",
-    options: ["Yangın söndürmek", "Palamarı iskeleye/rihtıma ulaştırmak", "Radar hedefi işaretlemek", "Gelgit ölçmek"],
-    correctAnswer: 1,
+    options: ["Palamarı rıhtıma ulaştırmak", "Güvertede yangın hortumunu uzatmak", "Radar hedefini şamandırayla işaretlemek", "Gelgit yüksekliğini iskandille ölçmek"],
+    correctAnswer: 0,
     explanation: "Heaving line ile messenger/halat karşı tarafa atılır; ardından asıl palamar alınır.",
     category: "Palamar"
   },
   {
     id: 24,
     question: "Bir palamarın babaya (bitt) düzgün bağlanmasında en önemli ilke hangisidir?",
-    options: ["Düğümleri rastgele atmak", "Turns düzgün ve çaprazsız; sürtünme/çakışma olmadan", "Sadece tek tur", "Halatı ıslatmak"],
-    correctAnswer: 1,
+    options: ["Turları düzgün ve çaprazsız almak", "Düğümleri rastgele bir sırayla atmak", "Yalnızca tek tur alıp bırakmak", "Halatı önceden suyla ıslatmak"],
+    correctAnswer: 0,
     explanation: "Düzgün turns ve figure-of-eight bağ, yük altında kaymayı ve hasarı azaltır.",
     category: "Palamar"
   },
   {
     id: 25,
     question: "Gemide 'near miss' raporlamasının temel faydası hangisidir?",
-    options: ["Ceza vermek", "Kaza olmadan önce tehlikeyi görüp iyileştirmek", "Sadece evrak artırmak", "Sigorta primini hemen düşürmek"],
+    options: ["Sorumlu personele disiplin cezası verilmesi", "Kaza öncesi tehlikenin görülüp giderilmesi", "Şirket evrak sayısının artırılması", "Sigorta priminin hemen düşürülmesi"],
     correctAnswer: 1,
     explanation: "Near miss, kök neden analizi ve önleyici aksiyonlar için en değerli girdilerden biridir.",
     category: "SMS"
@@ -213,15 +213,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 27,
     question: "'Midships' dümen komutu ne anlama gelir?",
-    options: ["Dümeni tam iskele", "Dümeni tam sancak", "Dümeni orta (sıfır) konuma getir", "Pervaneyi durdur"],
-    correctAnswer: 2,
+    options: ["Dümeni orta (sıfır) konuma getir", "Pervaneyi durdur ve boşta beklemede kal", "Dümeni tam iskele tarafına bas", "Dümeni tam sancak tarafına bas"],
+    correctAnswer: 0,
     explanation: "Midships: dümen yelpazesini gemi orta hattına (0°) getirmek.",
     category: "Dümen Komutları"
   },
   {
     id: 28,
     question: "'Steady as she goes' dümen komutu neyi ister?",
-    options: ["Mevcut pruva hattını koru", "Hızlandır", "İskele tarafına dön", "Demir at"],
+    options: ["Mevcut pruva hattını koru", "Devri artırıp hızı yükselt", "İskele tarafına dönüş yap", "Demir atmaya hazırlan"],
     correctAnswer: 0,
     explanation: "Komut anındaki rotayı (heading) tutmak ve o pruvada sabit gitmek demektir.",
     category: "Dümen Komutları"
@@ -237,8 +237,8 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 30,
     question: "COLREG Kural 7 hangi konuyu kapsar?",
-    options: ["Manevra ve durma mesafesi", "Çatışma riski (risk of collision)", "Sis işaretleri", "Demirleme ışıkları"],
-    correctAnswer: 1,
+    options: ["Çatışma riskinin belirlenmesi", "Manevra ve durma mesafesi bilgileri", "Kısıtlı görüşte ses işaretleri", "Demirde gösterilecek fenerler"],
+    correctAnswer: 0,
     explanation: "Rule 7: Çatışma riskinin belirlenmesi; sabit kerteriz + azalan mesafe risk göstergesidir.",
     category: "COLREG"
   },
@@ -269,8 +269,8 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 34,
     question: "Demir atarken zincir 'brought up' (demir tuttu) durumu nasıl anlaşılır?",
-    options: ["Zincir gevşek kalır ve sallanır", "Zincir gerilir sonra düşer/gevşer ve gemi rüzgâra/akıntıya döner", "Zincir kopmuştur", "Pruva suya dalar"],
-    correctAnswer: 1,
+    options: ["Zincir gerilip gevşer, gemi rüzgâra döner", "Zincir sürekli gevşek kalır ve sallanır", "Zincir kopar ve ırgat serbest döner", "Pruva suya dalar ve baş omuzluk suya gömülür"],
+    correctAnswer: 0,
     explanation: "Zincir gerilip sonra gevşemesi ve geminin demire doğru salması demirin tuttuğunu gösterir.",
     category: "Demirleme"
   },
@@ -285,7 +285,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 36,
     question: "Reef knot (camadan bağı) en uygun hangi amaçla kullanılır?",
-    options: ["Sabit göz yapmak", "Eşit kalınlıkta iki ucu birleştirmek (yük altında değil)", "Direğe bağlamak", "Ağır çekme yükü taşımak"],
+    options: ["Halat ucunda sabit bir göz meydana getirmek", "Eşit kalınlıkta iki ucu geçici bağlamak", "Halatı direğe veya babaya bağlamak", "Ağır çekme yükünü emniyetle taşımak"],
     correctAnswer: 1,
     explanation: "Reef knot eşit halatları geçici bağlar; sürekli/ağır yükte güvenilir değildir.",
     category: "Düğümler"
@@ -293,7 +293,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 37,
     question: "Sheet bend (anele bağı/dülger bağı) ne için uygundur?",
-    options: ["Farklı kalınlıkta iki halatı birleştirmek", "Direğe bağlamak", "Zincir kısaltmak", "Sabit göz yapmak"],
+    options: ["Farklı kalınlıkta iki halatı eklemek", "Halat ucunda sabit göz oluşturmak", "Halatı direğe veya sereye emniyetle bağlamak", "Zincir boyunu geçici kısaltmak"],
     correctAnswer: 0,
     explanation: "Sheet bend, farklı çap/malzemedeki iki halatı birbirine eklemek için uygundur.",
     category: "Düğümler"
@@ -301,7 +301,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 38,
     question: "Figure-of-eight (sekiz) düğümünün temel amacı nedir?",
-    options: ["İki halatı birleştirmek", "Halat ucunun makara/delikten kaçmasını önleyen stopper", "Sabit göz yapmak", "Direğe bağlamak"],
+    options: ["Halatı direğe bağlamak için kullanılır", "Halat ucunun makaradan kaçmasını önler", "İki halatı uç uca eklemek için kullanılır", "Halat ucunda sabit göz oluşturmak için"],
     correctAnswer: 1,
     explanation: "Sekiz düğümü stopper olarak halat ucunun blok/delikten geçmesini engeller.",
     category: "Düğümler"
@@ -309,15 +309,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 39,
     question: "Rounding turn and two half hitches bağı genelde ne için kullanılır?",
-    options: ["İki halatı eklemek", "Bir halatı halka/babaya güvenli bağlamak", "Halat kısaltmak", "Stopper yapmak"],
-    correctAnswer: 1,
+    options: ["Halatı halka veya babaya güvenli bağlamak", "İki halatı uç uca ekleyerek uzatmak", "Halat boyunu geçici olarak kısaltmak", "Halat ucuna stopper düğümü atmak"],
+    correctAnswer: 0,
     explanation: "Round turn and two half hitches, yük altında bir nesneye güvenli bağ için yaygındır.",
     category: "Düğümler"
   },
   {
     id: 40,
     question: "SOLAS'a göre kapalı tip can filikası (lifeboat) tatbikatı (drill) ne sıklıkla yapılmalıdır?",
-    options: ["Yılda bir", "Ayda bir (abandon ship drill)", "Haftada bir", "Sadece liman denetiminde"],
+    options: ["Yılda bir kez, klas sörveyinde", "Ayda bir kez düzenli olarak", "Haftada bir kez düzenli olarak", "Yalnızca liman devleti denetiminde"],
     correctAnswer: 1,
     explanation: "SOLAS III/19: Abandon ship ve yangın tatbikatları her ay yapılmalıdır; ekip değişimine göre 24 saat içinde.",
     category: "Can Kurtarma"
@@ -325,15 +325,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 41,
     question: "SOLAS'a göre mürettebatın her birinin filikaya binip suya indirilme tatbikatı (lifeboat launch) en az ne sıklıkla yapılmalıdır?",
-    options: ["Her ay", "3 ayda bir", "Mümkünse her ay, en az 3 ayda bir suya indirme", "Yılda bir"],
-    correctAnswer: 2,
+    options: ["Mümkünse aylık, en az 3 ayda bir", "Yalnızca 6 ayda bir kez yapılarak", "Her ay mutlaka suya indirilerek", "Yalnızca yılda bir kez yapılarak"],
+    correctAnswer: 0,
     explanation: "SOLAS III/19.3.3: Her filika 3 ayda bir personelle suya indirilip manevra yaptırılmalıdır.",
     category: "Can Kurtarma"
   },
   {
     id: 42,
     question: "Rescue boat (kurtarma botu) tatbikatı ne sıklıkla yapılmalıdır?",
-    options: ["Yılda bir", "Mümkünse her ay, en az 3 ayda bir suya indirilerek", "Haftada bir", "Sadece acil durumda"],
+    options: ["Her hafta güvertede kuru tatbikatla", "Mümkünse aylık, en az 3 ayda bir suya", "Yalnızca gerçek acil durum çıktığında", "Yalnızca yılda bir kez suya indirilerek"],
     correctAnswer: 1,
     explanation: "SOLAS gereği rescue boat mümkün olduğunca aylık, en az 3 ayda bir suya indirilerek tatbik edilir.",
     category: "Can Kurtarma"
@@ -341,7 +341,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 43,
     question: "Williamson dönüşü (Williamson turn) hangi durumda tercih edilir?",
-    options: ["Yüksek hızda yakıt tasarrufu", "Denize adam düştüğünde (özellikle gece/görüş düşükken) aynı izi geri izlemek", "Demirleme", "Yanaşma"],
+    options: ["Yüksek hızda yakıt tasarrufu sağlamak", "Denize adam düştüğünde su izine dönmek", "Demirleme sahasına yaklaşırken dönüş yapmak", "Rıhtıma yanaşmada kıçı yaklaştırmak"],
     correctAnswer: 1,
     explanation: "Williamson turn, MOB'da geminin kendi su izine dönüp kazazedeye yaklaşmasını sağlar.",
     category: "Acil Durum"
@@ -349,47 +349,47 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 44,
     question: "Güvertede pas (rust) gidermede 'chipping' sonrası ilk doğru adım hangisidir?",
-    options: ["Hemen son kat boya", "Yüzey temizliği/priming (astar) uygulaması", "Yağlamak", "Tuzlu suyla yıkamak"],
-    correctAnswer: 1,
+    options: ["Yüzeyi temizleyip astar (primer) atmak", "Doğrudan son kat boyayı uygulamak", "Yüzeyi gres yağıyla korumaya almak", "Yüzeyi tuzlu deniz suyuyla yıkamak"],
+    correctAnswer: 0,
     explanation: "Pas temizlendikten sonra yüzey temizlenip astar (primer) atılır; ardından ara/son katlar gelir.",
     category: "Bakım"
   },
   {
     id: 45,
     question: "Sentetik halat (örn. polipropilen) için çelik halata göre doğru ifade hangisidir?",
-    options: ["Suda batar", "Daha düşük snap-back enerjisi taşır", "Yüksek elastikiyet nedeniyle koptuğunda tehlikeli geri savrulur", "Hiç bakım gerektirmez"],
-    correctAnswer: 2,
+    options: ["Çelik halattan düşük snap-back enerjisi taşır", "Yüksek elastikiyet nedeniyle tehlikeli savrulur", "Hiç bakım gerektirmez, kontrolü zorunlu değildir", "Suda batar, bu yüzden pervaneye dolanmaz"],
+    correctAnswer: 1,
     explanation: "Sentetik halatlar yüksek elastikiyet nedeniyle koptuğunda ciddi snap-back riski taşır.",
     category: "Palamar"
   },
   {
     id: 46,
     question: "Watchkeeping (vardiya) sırasında devir teslimde (handover) görevli en kritik kuralı hangisidir?",
-    options: ["Vardiyayı hemen devretmek", "Devralan kişi tam durumu (pozisyon, trafik, koşullar) anlamadan vardiyayı devretmemek", "Sadece rota bilgisini vermek", "Devir teslimi günlüğe yazmamak"],
-    correctAnswer: 1,
+    options: ["Devralan durumu kavramadan devretmemek", "Vardiyayı hiç beklemeden hemen devretmek", "Yalnızca rota bilgisini aktarmak", "Devri jurnale hiç kaydetmemek"],
+    correctAnswer: 0,
     explanation: "STCW: Devralan zabit durumu tam değerlendirip emin olmadan vardiya devredilmez.",
     category: "Vardiya"
   },
   {
     id: 47,
     question: "STCW dinlenme saatleri kuralına göre 24 saatlik dönemde minimum dinlenme süresi nedir?",
-    options: ["6 saat", "8 saat", "10 saat", "12 saat"],
-    correctAnswer: 2,
+    options: ["8 saat", "10 saat", "12 saat", "6 saat"],
+    correctAnswer: 1,
     explanation: "STCW/MLC: Herhangi bir 24 saatte en az 10 saat, 7 günlük dönemde en az 77 saat dinlenme.",
     category: "Vardiya"
   },
   {
     id: 48,
     question: "Köprüüstü vardiyasında 'sole look-out' (tek gözcü) gündüz koşuluyla ilgili doğru ifade hangisidir?",
-    options: ["Gece her zaman serbesttir", "Sadece koşullar tam değerlendirildiğinde ve güvenli olduğunda gündüz uygulanabilir", "Hiçbir zaman uygulanamaz", "Sadece kaptan izniyle gece uygulanır"],
-    correctAnswer: 1,
+    options: ["Koşullar güvenliyse gündüz uygulanabilir", "Gece vardiyalarında her zaman serbesttir", "Hiçbir koşulda uygulanması mümkün değildir", "Kaptan izniyle gece de uygulanabilir"],
+    correctAnswer: 0,
     explanation: "STCW: Sole look-out yalnızca durum tam değerlendirilip güvenli olduğunda ve gündüz uygulanabilir.",
     category: "Vardiya"
   },
   {
     id: 49,
     question: "Pilotaj (kılavuz kaptan) gemideyken sorumlulukla ilgili doğru ifade hangisidir?",
-    options: ["Tüm sorumluluk pilota geçer", "Kaptan geminin emniyetinden sorumlu olmaya devam eder", "Vardiya zabiti sorumluluğu bırakır", "Pilot köprüden ayrılamaz"],
+    options: ["Vardiya zabiti sorumluluğunu bırakır", "Kaptan emniyetten sorumlu olmayı sürdürür", "Kılavuz köprüüstünden hiç ayrılamaz", "Tüm sorumluluk kılavuz kaptana geçer"],
     correctAnswer: 1,
     explanation: "Pilotun varlığı kaptan ve vardiya ekibinin gemi emniyetinden sorumluluğunu kaldırmaz.",
     category: "Vardiya"
@@ -397,16 +397,16 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 50,
     question: "Palamar operasyonunda 'make fast' komutu ne demektir?",
-    options: ["Halatı boşalt", "Halatı babaya/vince emniyetli şekilde bağla/sabitle", "Halatı denize at", "Vinci durdur"],
-    correctAnswer: 1,
+    options: ["Halatı babaya emniyetli biçimde sabitle", "Halatı boşalt ve tamburdan tümüyle salıver", "Halatı keserek denize bırakıp uzaklaş", "Vinci durdurup fren uygula ve bekle"],
+    correctAnswer: 0,
     explanation: "Make fast: halatı baba/biti üzerine emniyetli olacak şekilde sabitlemek.",
     category: "Palamar"
   },
   {
     id: 51,
     question: "Palamar terimi 'heave away' ne anlama gelir?",
-    options: ["Halatı boşalt", "Vinçle halatı içeri al / gergin hale getir", "Halatı kes", "Demir at"],
-    correctAnswer: 1,
+    options: ["Vinçle halatı içeri al ve ger", "Demir atmaya hazırlan ve bekle", "Halatı boşalt ve gevşek bırak", "Halatı kesip serbest bırak"],
+    correctAnswer: 0,
     explanation: "Heave away: vinç/ırgat ile halatı sarıp gemiyi rıhtıma çekmek.",
     category: "Palamar"
   },
@@ -421,7 +421,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 53,
     question: "Demir vardiyasında (anchor watch) öncelikli görev nedir?",
-    options: ["Boya yapmak", "Demir tutuşunu/pozisyonu izleyip dragging'i erken fark etmek", "Yakıt almak", "Kargo işlemek"],
+    options: ["Yük elleçleme planını takip etmek", "Pozisyonu izleyip demir taramasını fark etmek", "Güvertede boya ve bakım işlerini yürütmek", "Yakıt ikmali planını hazırlayıp uygulamak"],
     correctAnswer: 1,
     explanation: "Anchor watch: pozisyon/kerteriz izleyerek demir taramasını ve trafik/havayı kontrol etmek.",
     category: "Demirleme"
@@ -429,15 +429,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 54,
     question: "COLREG Kural 19 (sınırlı görüşte seyir) için doğru ifade hangisidir?",
-    options: ["Stand-on/give-on kuralları aynen uygulanır", "Güvenli hız ve gerekirse durabilecek şekilde dikkatli seyir esastır", "Işıklar kapatılır", "Hız artırılır"],
-    correctAnswer: 1,
+    options: ["Güvenli hızda, gerekirse durabilecek şekilde", "Stand-on ve give-way kuralları aynen uygulanır", "Seyir fenerleri kapatılıp radar kullanılır", "Hız artırılarak görüş alanı hızla terk edilir"],
+    correctAnswer: 0,
     explanation: "Rule 19: Sınırlı görüşte güvenli hız, radar kullanımı ve gerekirse rota/hız değişimiyle dikkatli seyir gerekir.",
     category: "COLREG"
   },
   {
     id: 55,
     question: "Pilot çarmıhı (pilot ladder) kullanımıyla ilgili SOLAS gereği doğru olan hangisidir?",
-    options: ["İstenen her açıda kurulabilir", "Su hattına 9 m'den fazla yüksekse accommodation/pilot ladder kombinasyonu kullanılır", "Sadece tek basamak yeterlidir", "Aydınlatma gerekmez"],
+    options: ["Gece kullanımında aydınlatma gerekmez", "9 m'yi aşarsa kombinasyon donanımı kullanılır", "İstenen her açı ve yükseklikte kurulabilmektedir", "Tek basamak ve tek el tutamağı yeterlidir"],
     correctAnswer: 1,
     explanation: "SOLAS V/23: Tırmanma 9 m'yi aşarsa accommodation ladder ile kombinasyon ve gece aydınlatma zorunludur.",
     category: "Manevra"
@@ -445,23 +445,23 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 56,
     question: "COLREG Kural 9 (dar kanallar) için doğru ifade hangisidir?",
-    options: ["Gemiler kanalın ortasından gider", "Gemiler kanalın sancak (sağ) dış kenarına yakın seyreder", "Gemiler iskele tarafındaki kenardan gider", "Dar kanalda demir atılır"],
-    correctAnswer: 1,
+    options: ["Kanalın tam ortasından seyredilir", "Kanalın iskele dış kenarına yakın seyredilir", "Kanalın sancak dış kenarına yakın seyredilir", "Kanal içinde demirleyerek sıra beklenir"],
+    correctAnswer: 2,
     explanation: "Rule 9: Dar kanal/geçitte gemi, güvenli ve uygulanabilir olduğunca kanalın sancak dış kenarına yakın seyreder.",
     category: "COLREG"
   },
   {
     id: 57,
     question: "COLREG Kural 18 önceliklerine göre güçle yürüyen gemi (power-driven) kime yol vermelidir?",
-    options: ["Hiç kimseye", "Kontrol kabiliyeti kısıtlı, manevra yeteneği sınırlı, balıkçı ve yelkenli gemilere", "Sadece yelkenliye", "Sadece balıkçıya"],
-    correctAnswer: 1,
+    options: ["Kısıtlı, sınırlı, balıkçı ve yelkenliye", "Hiçbir gemiye yol verme yükümlülüğü yoktur", "Yalnızca yelkenli gemilere yol verir", "Yalnızca balıkçı gemilerine yol verir"],
+    correctAnswer: 0,
     explanation: "Rule 18: Power-driven gemi; NUC, RAM, balıkçı ve yelkenli gemilere yol vermekle yükümlüdür.",
     category: "COLREG"
   },
   {
     id: 58,
     question: "COLREG Kural 17 (stand-on) gemi, çatışma yakınsa ne yapabilir?",
-    options: ["Hiçbir şey", "Yalnız manevrayla çatışmayı önleyecek aksiyonu alır", "Sadece iskele tarafına döner", "Demir atar"],
+    options: ["Demir atarak yolunu tamamen keser", "Çatışmayı önleyecek aksiyonu kendisi alır", "Hiçbir aksiyon almadan rotasını korumayı sürdürür", "Yalnızca iskele tarafına dönüş yapar"],
     correctAnswer: 1,
     explanation: "Rule 17: Give-way manevra yapmazsa stand-on gemi çatışmayı önlemek için aksiyon alabilir/almalıdır.",
     category: "COLREG"
@@ -469,23 +469,23 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 59,
     question: "COLREG Kural 8'e göre çatışmadan kaçınma manevrası nasıl olmalıdır?",
-    options: ["Küçük ve sık değişimlerle", "Belirgin, zamanında ve iyi denizcilik kurallarına uygun", "Sadece hız değişimiyle", "Son anda ani"],
-    correctAnswer: 1,
+    options: ["Belirgin, zamanında ve iyi denizcilikle", "Küçük ve sık rota değişimleriyle yapılır", "Yalnızca hız değişimiyle yapılmalıdır", "Son anda ve ani biçimde yapılmalıdır"],
+    correctAnswer: 0,
     explanation: "Rule 8: Manevra erken, belirgin (gözle/radarla fark edilir) ve yeterli olmalıdır.",
     category: "COLREG"
   },
   {
     id: 60,
     question: "Demirlemede 'foul anchor' ne demektir?",
-    options: ["Demirin temiz çıkması", "Demire zincir/halat/enkaz dolanması veya demirin takılması", "Demir tutması", "Demir kaybı"],
-    correctAnswer: 1,
+    options: ["Demirin temiz ve serbest biçimde çıkması", "Demirin dibi iyi tutmuş olması", "Demire zincir veya enkaz dolanması", "Demirin zincirle birlikte kaybı"],
+    correctAnswer: 2,
     explanation: "Foul anchor: demire kendi zinciri, başka zincir veya dipteki cisimlerin dolanması durumudur.",
     category: "Demirleme"
   },
   {
     id: 61,
     question: "İki demirle 'open moor' yapmanın temel amacı nedir?",
-    options: ["Daha hızlı kalkış", "Tutuş gücünü artırmak ve salınımı azaltmak", "Yakıt tasarrufu", "Pruvayı serbest bırakmak"],
+    options: ["Demir kaldırma süresini kısaltmak", "Tutuşu artırıp salınımı azaltmak", "Demirde yakıt tüketimini azaltmak", "Pruvayı tümüyle serbest bırakmak"],
     correctAnswer: 1,
     explanation: "İki demir kullanımı tutuşu artırır ve geminin salma (yawing) alanını sınırlandırır.",
     category: "Demirleme"
@@ -493,15 +493,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 62,
     question: "Manila/sentetik halat depolamada en doğru yaklaşım hangisidir?",
-    options: ["Islak ve güneşte saklamak", "Kuru, havadar, UV ve kimyasaldan korunan yerde saklamak", "Yağ içinde saklamak", "Güverteye serbest bırakmak"],
-    correctAnswer: 1,
+    options: ["Islak ve güneş altında açıkta saklamak", "Yağ dolu varil içinde bekletmek", "Kuru, havadar ve UV'den korunan yerde", "Güvertede serbest yığın hâlinde bırakmak"],
+    correctAnswer: 2,
     explanation: "Halatlar kuru, havadar, UV ve kimyasallardan korunan ortamda saklanmalı; nem ve güneş ömrünü kısaltır.",
     category: "Bakım"
   },
   {
     id: 63,
     question: "Timber hitch (kütük bağı) en uygun ne için kullanılır?",
-    options: ["Sabit göz", "Silindirik/uzun nesneyi (kütük, boru) çekmek için bağlamak", "İki halat eklemek", "Stopper"],
+    options: ["Halat ucunda sabit göz oluşturmak", "Silindirik cismi çekmek için kavramak", "İki halatı uç uca ekleyip uzatmak", "Halat ucuna stopper düğümü atmak"],
     correctAnswer: 1,
     explanation: "Timber hitch, silindirik bir cismi sürükleme/çekme için kavrar; gerginlik altında sıkılaşır.",
     category: "Düğümler"
@@ -509,7 +509,7 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 64,
     question: "Rolling hitch'in (gergi/işkı bağı) ana avantajı nedir?",
-    options: ["Hızlı çözülmesi", "Boyuna (eksenel) yük altında kaymaya direnç göstermesi", "Sadece zincirde çalışması", "Su altında çözülmesi"],
+    options: ["Su altında kendiliğinden çözülmesi", "Eksenel yük altında kaymaya direnci", "Yük altında bile hızla çözülebilmesi", "Yalnızca zincir üzerinde çalışması"],
     correctAnswer: 1,
     explanation: "Rolling hitch, başka bir halat veya direk üzerinde eksenel yük altında kaymadan tutunur (örn. gergin halatı tutmak).",
     category: "Düğümler"
@@ -517,23 +517,23 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 65,
     question: "Lifebuoy (can simidi) ile ilgili SOLAS gereği doğru olan hangisidir?",
-    options: ["Hepsi ışıklı olmalı", "En az iki adedinde kendinden ateşli ışık ve duman şamandırası bulunmalı", "Sadece bir tane gerekir", "Rengi mavidir"],
-    correctAnswer: 1,
+    options: ["En az ikisinde ışık ve duman bulunmalı", "Tüm can simitleri ışıklı olmak zorundadır", "Gemide tek bir can simidi yeterlidir", "Can simitlerinin rengi mavi olmalıdır"],
+    correctAnswer: 0,
     explanation: "SOLAS III: Köprüüstü yakınındaki en az iki can simidi otomatik ışık ve duman sinyaliyle (self-activating) donatılır.",
     category: "Can Kurtarma"
   },
   {
     id: 66,
     question: "Immersion suit (dalgıç/hayatta kalma elbisesi) ile ilgili doğru ifade hangisidir?",
-    options: ["Sadece yüzme içindir", "Soğuk suda hipotermiyi geciktirir ve yüzdürme sağlar", "Sadece yangında kullanılır", "Tek beden üretilir"],
-    correctAnswer: 1,
+    options: ["Yalnızca yüzme antrenmanı için kullanılır", "Yalnızca yangın müdahalesinde kullanılır", "Hipotermiyi geciktirir ve yüzdürme sağlar", "Tek beden üretilir, herkese aynı gelir"],
+    correctAnswer: 2,
     explanation: "Immersion suit soğuk suda ısı kaybını azaltır; SOLAS gereği her kişi için temin edilir (gemi tipine göre).",
     category: "Can Kurtarma"
   },
   {
     id: 67,
     question: "Can salı (liferaft) hidrostatik bırakacı (HRU) ne işe yarar?",
-    options: ["Salı sıkıştırır", "Gemi batarken belirli derinlikte salı otomatik serbest bırakır", "Salı şişirir", "Salı ısıtır"],
+    options: ["Sal içindeki suyu ısıtarak korur", "Batmada salı otomatik serbest bırakır", "Salı kılıf içinde sıkıştırıp sabitler", "Salı basınçlı hava ile şişirir"],
     correctAnswer: 1,
     explanation: "HRU, gemi battığında (yaklaşık 1,5–4 m) su basıncıyla bağı keser; sal yüzeye çıkıp otomatik şişer.",
     category: "Can Kurtarma"
@@ -549,15 +549,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 69,
     question: "Helm komutu 'Ease to five' ne demektir?",
-    options: ["Dümen açısını 5°'ye azalt", "Dümeni tam bas", "Hızı 5 knot azalt", "5 derece rota tut"],
-    correctAnswer: 0,
+    options: ["Dümeni tam basılı konumda tutmaya devam et", "Hızı 5 knot kadar azalt", "Dümen açısını 5 dereceye azalt", "Pruvayı 5 derece sancağa al"],
+    correctAnswer: 2,
     explanation: "Ease to five: mevcut dümen açısını azaltıp 5 dereceye getirmek.",
     category: "Dümen Komutları"
   },
   {
     id: 70,
     question: "Helm komutu 'Meet her' ne için verilir?",
-    options: ["Dönüşü hızlandırmak", "Geminin dönüşünü durdurmak/karşılamak için karşı dümen vermek", "Demir atmak", "Hız artırmak"],
+    options: ["Dönüşü hızlandırmak için dümen bas", "Dönüşü durdurmak için karşı dümen", "Demir atmaya hazırlanmasını istemek", "Devri artırıp hızı yükseltmesini istemek"],
     correctAnswer: 1,
     explanation: "Meet her: geminin dönme oranını yavaşlatmak/durdurmak için ters yöne dümen uygulamak.",
     category: "Dümen Komutları"
@@ -565,16 +565,16 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 71,
     question: "Pervaneli geminin 'transverse thrust' (paddle wheel) etkisi en çok ne zaman belirgindir?",
-    options: ["Tam yolda", "Düşük hızda ve özellikle tornistan başlangıcında", "Demirdeyken", "Yelken altında"],
-    correctAnswer: 1,
+    options: ["Düşük hızda ve tornistan başında", "Tam yolda ve yüksek devirde", "Demirde beklerken ve akıntısız suda", "Yelken altında seyrederken"],
+    correctAnswer: 0,
     explanation: "Yanal itki etkisi (özellikle sağ devirli pervanede kıçı iskeleye atar) düşük hız ve tornistanda belirgindir.",
     category: "Manevra"
   },
   {
     id: 72,
     question: "Pivot point (dönme noktası) ileri yolda yaklaşık nerededir?",
-    options: ["Kıçta", "Pruvaya yakın (yaklaşık 1/4 boy)", "Tam ortada", "Su altında değil"],
-    correctAnswer: 1,
+    options: ["Kıç omuzlukta, dümen yakınında", "Tam ortada, orta kesitte", "Pruvaya yakın, yaklaşık 1/4 boyda", "Su hattının üzerindeki bir noktada"],
+    correctAnswer: 2,
     explanation: "İleri yolda pivot point pruvaya yaklaşık geminin baş tarafından 1/4 boy mesafede oluşur; tornistanda kıça kayar.",
     category: "Manevra"
   },
@@ -589,15 +589,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 74,
     question: "Çelik halatta 'birdcaging' (kuş kafesi) neyi gösterir?",
-    options: ["Normal yağlama", "Tellerin/demetlerin açılıp deformasyonu, ciddi hasar", "Renk değişimi", "Yeni halat"],
-    correctAnswer: 1,
+    options: ["Normal yağlamanın yüzeye çıkması", "Halatın dış yüzeyinde renk değişimi", "Damarların açılması, ciddi hasar", "Halatın yeni ve kullanılmamış olması"],
+    correctAnswer: 2,
     explanation: "Birdcaging, halatın damarlarının kafes gibi açılmasıdır; halat hasarlıdır ve kullanım dışı bırakılır.",
     category: "Bakım"
   },
   {
     id: 75,
     question: "Cathodic protection (katodik koruma) güvertede/teknede ne işe yarar?",
-    options: ["Boya parlaklığı", "Galvanik korozyondan koruma (sakrifisyel anotlar)", "Yakıt tasarrufu", "Pas üretimi"],
+    options: ["Boyanın parlaklığını uzun süre korur", "Sakrifisyel anotlarla korozyonu önler", "Sefer başına yakıt tüketimini azaltır", "Yüzeyde denetimli pas tabakası üretir"],
     correctAnswer: 1,
     explanation: "Sakrifisyel anotlar (çinko/alüminyum) korozyona kendini feda ederek tekne metalini korur.",
     category: "Bakım"
@@ -605,15 +605,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 76,
     question: "Yüksek basınçlı su jeti/grit blasting öncesi en kritik emniyet adımı nedir?",
-    options: ["Müzik açmak", "KKD (gözlük/maske/eldiven) ve çevre güvenliği sağlamak", "Boya seçmek", "Halat almak"],
-    correctAnswer: 1,
+    options: ["Çalışma alanında müzik yayını açmak", "Son kat boya rengini önceden belirlemek", "KKD kullanıp alan emniyetini sağlamak", "Yedek halat ve makara temin etmek"],
+    correctAnswer: 2,
     explanation: "Yüksek basınç ve toz/partikül ciddi yaralanma yapar; uygun KKD ve alan emniyeti şarttır.",
     category: "İş Emniyeti"
   },
   {
     id: 77,
     question: "Aloft (yüksekte/direkte) çalışmada zorunlu emniyet unsuru hangisidir?",
-    options: ["Sadece bot", "Emniyet kemeri/harness, gantline ve düşme koruması", "Sadece eldiven", "Şapka"],
+    options: ["Yalnızca baret takmak yeterlidir", "Harness, gantline ve düşme koruması", "Yalnızca çelik burunlu iş botu giymek", "Yalnızca iş eldiveni kullanmak"],
     correctAnswer: 1,
     explanation: "Yüksekte çalışmada harness, ikincil emniyet (lifeline/gantline) ve alttaki alanın kapatılması gerekir.",
     category: "İş Emniyeti"
@@ -621,15 +621,15 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 78,
     question: "Vardiya devrinde görüş sınırlıyken (sis) devreden zabit en çok neyi vurgulamalı?",
-    options: ["Yemek menüsü", "Radar/ARPA hedefleri, ses işaretleri ve güvenli hız durumu", "Boya işleri", "Liman evrakı"],
-    correctAnswer: 1,
+    options: ["ARPA hedefleri, ses işaretleri ve hız", "Gün içindeki kumanya ve yemek düzeni planı", "Güvertedeki boya ve bakım programı", "Limanda hazırlanacak evrak listesi"],
+    correctAnswer: 0,
     explanation: "Sınırlı görüşte trafik (ARPA), ses işaretleri ve güvenli hız kritik bilgilerdir; eksiksiz devredilmeli.",
     category: "Vardiya"
   },
   {
     id: 79,
     question: "BRM (Bridge Resource Management) temel amacı nedir?",
-    options: ["Yakıt almak", "Köprüüstü kaynaklarını (insan/ekipman/bilgi) etkin kullanıp hata zincirini kırmak", "Hızı artırmak", "Kargo planı"],
+    options: ["Yük istif planını köprüden yönetmek", "Kaynakları kullanıp hata zincirini kırmak", "Yakıt ikmalini planlayıp maliyeti düşürmek", "Sefer hızını artırıp süreyi kısaltmak"],
     correctAnswer: 1,
     explanation: "BRM; iletişim, görev paylaşımı ve durumsal farkındalıkla kaza zincirini kırmayı hedefler.",
     category: "Vardiya"
@@ -637,23 +637,23 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 80,
     question: "Kaptanı çağırma (call the master) kuralı için doğru ifade hangisidir?",
-    options: ["Sadece çatışmada", "Şüphe halinde tereddütsüz kaptanı çağırmak esastır", "Hiçbir zaman gece çağrılmaz", "Sadece liman yakınında"],
-    correctAnswer: 1,
+    options: ["Şüphe hâlinde tereddütsüz çağırılır", "Yalnızca çatışma riski varsa çağırılır", "Gece hiçbir koşulda çağrılmaz", "Yalnızca liman yakınında çağırılır"],
+    correctAnswer: 0,
     explanation: "STCW: Görüş kötüleşmesi, trafik şüphesi, ekipman arızası vb. durumlarda zabit tereddüt etmeden kaptanı çağırır.",
     category: "Vardiya"
   },
   {
     id: 81,
     question: "MOB'da 'Anderson turn' (single turn) ne zaman tercih edilir?",
-    options: ["Manevra kabiliyeti yüksek gemilerde, kazazede hemen görülüyorsa en hızlı dönüş", "Sadece geceleyin", "Demirde", "Sis varsa"],
-    correctAnswer: 0,
+    options: ["Yalnızca gece ve görüş kapalı olduğunda", "Yalnızca demirde beklenirken", "Kazazede görülüyorsa en hızlı dönüş", "Yalnızca yoğun sis çökmüş durumda"],
+    correctAnswer: 2,
     explanation: "Anderson turn en hızlı dönüştür; kazazede görülüyor ve gemi manevra kabiliyeti yüksekse uygundur.",
     category: "Acil Durum"
   },
   {
     id: 82,
     question: "Palamar operasyonunda 'check the line' komutu ne ister?",
-    options: ["Halatı tamamen boşalt", "Halatı kontrollü gerginlikte tutup ani yükü emmek", "Halatı kes", "Halatı denize at"],
+    options: ["Halatı denize atıp bölgeden uzaklaş", "Halatı kontrollü gerginlikte tut", "Halatı tümüyle boşalt ve tamburdan sal", "Halatı keserek tümüyle serbest bırak"],
     correctAnswer: 1,
     explanation: "Check: halata kontrollü fren uygulayarak ani gerilimi yumuşatmak (sürtünme turuyla).",
     category: "Palamar"
@@ -661,23 +661,23 @@ const baseSeamanshipQuestions: QuizQuestion[] = [
   {
     id: 83,
     question: "Tow (yedekleme) operasyonunda 'gob rope / gog rope' ne işe yarar?",
-    options: ["Yedek halatı kısaltmak", "Yedek halatın yanlamasına kaymasını sınırlandırıp girth/devrilme riskini azaltmak", "Demir atmak", "Yakıt almak"],
-    correctAnswer: 1,
+    options: ["Halatın yana kaymasını sınırlandırmak", "Yedek halatın boyunu kısaltmak", "Yedekleme sırasında demir atmak", "Yedek halat üzerinden yakıt hattı geçirmek"],
+    correctAnswer: 0,
     explanation: "Gob rope, römorkörde tow halatının kıça doğru hareketini sınırlandırarak girting (yan yatma) riskini azaltır.",
     category: "Manevra"
   },
   {
     id: 84,
     question: "Mooring planında 'fairlead' (kurt ağzı) işlevi nedir?",
-    options: ["Halatı kesmek", "Halatı doğru açıyla yönlendirip aşınmayı azaltmak", "Halatı ısıtmak", "Demir tutmak"],
-    correctAnswer: 1,
+    options: ["Halatı gerektiğinde hızla kesmek", "Halatı ısıtıp esnekliğini artırmak", "Halatı doğru açıyla yönlendirmek", "Demirin dibi tutmasını sağlamak"],
+    correctAnswer: 2,
     explanation: "Fairlead/Panama lead halatı uygun açıyla yönlendirir; keskin temas ve aşınmayı önler.",
     category: "Palamar"
   },
   {
     id: 85,
     question: "Rescue boat ile bir kazazedeyi sudan alırken en güvenli yaklaşım hangisidir?",
-    options: ["Tam yolda yaklaşmak", "Rüzgâr/akıntı altından yavaş yaklaşıp gemiyi kazazede üstüne sürüklenir konuma getirmek", "Kıçtan dümdüz gitmek", "Pervaneyi kazazedeye yakın çalıştırmak"],
+    options: ["Pervaneyi kazazedeye yakın çalıştırmak", "Rüzgâraltından yavaş ve kontrollü yaklaşmak", "Tam yolda hızla yaklaşıp yanına gitmek", "Kıçtan dümdüz yaklaşıp yanında durmak"],
     correctAnswer: 1,
     explanation: "Genelde rüzgâraltından kontrollü yaklaşılır; pervane kazazededen uzak tutulur, sürüklenme kontrol edilir.",
     category: "Can Kurtarma"
