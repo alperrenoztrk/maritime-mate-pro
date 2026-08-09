@@ -187,7 +187,7 @@
       <div class="splash-tag" translate="no" lang="en">
 </div>
       <style>
-        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:Inter,system-ui,-apple-system,sans-serif;transition:opacity .6s cubic-bezier(.4,0,.2,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
+        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;transition:opacity .22s cubic-bezier(.2,.8,.2,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
         .splash-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #0a2a55 0%, #041530 55%, #020a14 100%);}
         .splash-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(218,165,32,0.10), transparent 62%);opacity:0;animation:splash-glow 1.4s cubic-bezier(.4,0,.2,1) .5s forwards;}
         .splash-sea{position:absolute;left:0;right:0;bottom:0;height:47%;opacity:0;background:linear-gradient(180deg, rgba(9,38,74,0) 0%, rgba(18,64,118,.38) 30%, rgba(15,56,105,.55) 55%, rgba(5,22,46,.85) 100%);animation:sea-in .7s ease 2.5s forwards;}
@@ -243,7 +243,29 @@
           .splash-title{font-size:clamp(.85rem,2.2vh,1.25rem);letter-spacing:clamp(2px,.5vw,6px);}
         }
 
+        /* First-launch brand moment: complete in about one second. Subsequent
+           launches are dismissed by main.tsx before this sequence advances. */
+        .splash-stage{animation-duration:.28s;}
+        .splash-bg::after{animation-duration:.4s;animation-delay:.04s;}
+        .splash-sea{animation-duration:.25s;animation-delay:.55s;}
+        .book{animation:book-recenter .42s cubic-bezier(.22,1,.36,1) .12s forwards,book-out .28s cubic-bezier(.55,0,.8,.4) .74s forwards;}
+        .book-cover{animation:cover-open .42s cubic-bezier(.22,1,.36,1) .12s forwards;}
+        .ship-stage{animation-duration:.16s;animation-delay:.46s;}
+        .ship-lift{animation-duration:.24s;animation-delay:.56s;}
+        .ship-track{animation-duration:.32s;animation-delay:.72s;}
+        .ship-flat{animation-duration:.12s;animation-delay:.56s;}
+        .ship-solid{animation-duration:.24s;animation-delay:.56s;}
+        .ship-wake{animation:wake-in .14s ease .72s forwards,wake-pulse .3s ease-in-out .76s 1 alternate;}
+        .splash-title{animation:title-in .24s cubic-bezier(.22,1,.36,1) .4s forwards,title-shimmer .5s linear .58s 1;}
+        .splash-tag{animation-duration:.22s;animation-delay:.46s;}
+
         .splash-hide{opacity:0;pointer-events:none;}
+        #translation-guard{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 42%,#0a2a55 0%,#041530 58%,#020a14 100%);}
+        #translation-guard::before{content:"";width:42px;height:42px;border-radius:999px;border:2px solid rgba(255,255,255,.18);border-top-color:#7dd3fc;animation:translation-guard-spin .8s linear infinite;box-shadow:0 0 28px rgba(56,189,248,.18);}
+        html[data-translation-pending="true"] #root{visibility:hidden;}
+        html[data-translation-pending="true"] #translation-guard{display:flex;}
+        [data-mt-translation-pending="true"]{visibility:hidden !important;}
+        @keyframes translation-guard-spin{to{transform:rotate(360deg);}}
         @keyframes stage-in{to{opacity:1;transform:scale(1);}}
         @keyframes book-recenter{to{transform:translateX(0);}}
         @keyframes book-out{to{opacity:0;transform:translateX(0) translateY(10%) rotateX(30deg) scale(.93);}}
@@ -271,6 +293,7 @@
           .ship-track,.ship-bob,.cover-emblem{animation:none !important;}
           .ship-lift{animation:none !important;transform:scale(1.7) translate(-20%,-8%);}
           .ship-wake{animation:none !important;opacity:.7;}
+          #translation-guard::before{animation-duration:1.6s;}
         }
         .splash-brief .splash-stage,.splash-brief .book-cover,.splash-brief .splash-title,.splash-brief .splash-tag,.splash-brief .splash-bg::after{animation-duration:.3s !important;animation-delay:0s !important;}
         .splash-brief .book{animation:none !important;transform:translateX(0);}
@@ -280,6 +303,7 @@
       </style>
     </div>
 
+    <div id="translation-guard" aria-hidden="true"></div>
     <div id="root"></div>
     <!-- Splash bekçisi: uygulama paketi açılmazsa kullanıcıyı splash ekranında
          kilitli bırakmaz. Klasik script — modül paketini çökerten hatalardan

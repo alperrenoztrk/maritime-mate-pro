@@ -1,9 +1,10 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, type CSSProperties, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, ChevronRight, Search } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { accentGradient } from "./libraryAccent";
-
+import { registerLocalBackHandler } from "@/lib/localBack";
+import { hapticSelection } from "@/lib/haptics";
 
 export function LibraryPageShell({
   title,
@@ -24,6 +25,16 @@ export function LibraryPageShell({
   maxWidth?: string;
   headerAside?: ReactNode;
 }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!onBack && !backHref) return;
+    return registerLocalBackHandler(() => {
+      if (onBack) onBack();
+      else if (backHref) navigate(backHref, { replace: true });
+    });
+  }, [backHref, navigate, onBack]);
+
   // No navigational back control here: the app has one global back affordance
   // (AppNavBar + edge swipe). `backHref` is accepted and ignored so callers
   // don't have to change. `onBack` is NOT navigation — it unwinds in-page
@@ -40,6 +51,9 @@ export function LibraryPageShell({
   ) : null;
 
   return (
+    // The shared inset tokens expand to env(safe-area-inset-top) and
+    // var(--ad-banner-height), so every library route clears both the notch
+    // and the native banner without duplicating platform math.
     <div
       // Top padding reserves the strip AppNavBar occupies. It used to be
       // max(2rem, safe-top) — 32px against a 56px control, so the global
@@ -47,16 +61,15 @@ export function LibraryPageShell({
       className="relative min-h-[100svh] overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-[max(1rem,env(safe-area-inset-left))] pb-[calc(max(6rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))] pt-[var(--floating-nav-reserve)] dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute right-10 top-10 h-56 w-56 rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute right-10 top-10 h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
       </div>
 
       <div className={`relative z-10 mx-auto flex ${maxWidth} flex-col gap-7`}>
         <header className="flex min-h-10 items-center gap-3">
-          {backControl}
           <div className="flex min-w-0 flex-1 items-center gap-3">
             {HeaderIcon && <HeaderIcon className="h-6 w-6 shrink-0 text-primary" />}
-            <h1 className="min-w-0 text-2xl font-bold leading-tight text-foreground">{title}</h1>
+            <h1 className="min-w-0 text-[clamp(1.75rem,6vw,2.3rem)] font-bold leading-[1.05] tracking-[-0.03em] text-foreground">{title}</h1>
           </div>
           {headerAside}
         </header>
@@ -83,7 +96,7 @@ export function LibraryEntryCard({
   badge?: string | number;
 }) {
   const className =
-    "group relative min-h-44 overflow-hidden rounded-3xl border border-white/20 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl";
+    "ios-pressable group relative min-h-44 overflow-hidden rounded-[var(--radius-sheet)] border border-white/20 text-left shadow-lg hover:shadow-xl active:scale-[0.985]";
   const content = (
     <>
       <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg")} />
@@ -108,7 +121,7 @@ export function LibraryEntryCard({
   );
 
   return to ? (
-    <Link to={to} className={className}>
+    <Link to={to} className={className} onClick={hapticSelection}>
       {content}
     </Link>
   ) : (
@@ -190,11 +203,11 @@ function LibraryBookCase({
       {/* Kitabın zemine düşen gölgesi. */}
       <div
         aria-hidden
-        className="absolute inset-x-[7%] -bottom-1 h-[5%] rounded-[50%] bg-slate-900/45 blur-[7px] transition-all duration-500 group-hover:inset-x-[4%] group-hover:blur-[11px] motion-reduce:transition-none dark:bg-black/75"
+        className="absolute inset-x-[7%] -bottom-1 h-[5%] rounded-[50%] bg-slate-900/45 blur-[7px] transition-all duration-[var(--motion-slow)] group-hover:inset-x-[4%] group-hover:blur-[11px] motion-reduce:transition-none dark:bg-black/75"
       />
 
       <div
-        className={`relative h-full w-full [transform-style:preserve-3d] [transform:rotateY(13deg)] transition-transform duration-500 ease-out motion-reduce:transition-none ${
+        className={`relative h-full w-full [transform-style:preserve-3d] [transform:rotateY(13deg)] transition-transform duration-[var(--motion-slow)] ease-out motion-reduce:transition-none ${
           muted
             ? ""
             : "group-hover:[transform:rotateY(20deg)_translateY(-6px)] group-focus-visible:[transform:rotateY(20deg)_translateY(-6px)]"
@@ -221,7 +234,7 @@ function LibraryBookCase({
         </div>
 
         {/* Ön kapak. */}
-        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_14px_26px_rgba(15,23,42,0.32)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-500 group-hover:shadow-[0_22px_38px_rgba(15,23,42,0.42)] motion-reduce:transition-none">
+        <div className="absolute inset-0 overflow-hidden rounded-l-[2px] rounded-r-[6px] bg-slate-800 shadow-[0_14px_26px_rgba(15,23,42,0.32)] [transform:translateZ(calc(var(--bk-spine)*0.5))] transition-shadow duration-[var(--motion-slow)] group-hover:shadow-[0_22px_38px_rgba(15,23,42,0.42)] motion-reduce:transition-none">
           <div className={`absolute inset-0 ${accent}`} style={accentGradient("145deg")} />
           {/* Boyanın mat, koyu cilt bezine çekilmesi (parlak plastik görünümü kırar). */}
           <div
@@ -288,6 +301,7 @@ export function LibraryBookCard({
     <Link
       to={to}
       aria-label={title}
+      onClick={hapticSelection}
       className="group relative block aspect-[3/4] min-h-60 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
     >
       <LibraryBookCase title={title} accent={accent} />
@@ -331,7 +345,8 @@ export function LibraryCompactCard({
   return (
     <Link
       to={to}
-      className="group flex min-h-16 items-center gap-3 rounded-xl border border-border/40 bg-card/70 px-3 py-2.5 shadow-sm transition hover:border-primary/40 hover:bg-card"
+      className="ios-pressable group flex min-h-16 items-center gap-3 rounded-[var(--radius-control)] border border-border/50 bg-card/90 px-3 py-2.5 shadow-sm hover:border-primary/40 hover:bg-card"
+      onClick={hapticSelection}
     >
       <span
         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${accent} text-white shadow`}
@@ -370,7 +385,7 @@ export function LibrarySearchField({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        className="h-11 w-full rounded-2xl border border-border/60 bg-card/80 pl-10 pr-4 text-sm text-foreground shadow-sm outline-none backdrop-blur transition placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+        className="h-11 w-full rounded-[var(--radius-control)] border border-border/70 bg-card/90 pl-10 pr-4 text-base text-foreground shadow-sm outline-none transition-[border-color,box-shadow,background-color] duration-200 placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
       />
     </div>
   );

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { searchIndex, type SearchItem } from "@/data/searchIndex";
 import { loadDeepSearchIndex, getDeepSearchIndex } from "@/data/deepSearchIndex";
 import { cn } from "@/lib/utils";
+import { hapticSelection } from "@/lib/haptics";
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Seyir": "bg-blue-500/15 text-blue-400",
@@ -204,6 +205,7 @@ export function GlobalSearch() {
   }, [selectedIndex]);
 
   const handleSelect = useCallback((item: SearchItem) => {
+    hapticSelection();
     setOpen(false);
     setQuery("");
     const entry: SearchItem = {
@@ -240,7 +242,7 @@ export function GlobalSearch() {
       onClick={() => handleSelect(item)}
       onMouseEnter={() => setSelectedIndex(index)}
       className={cn(
-        "flex items-center gap-3 w-full rounded-lg px-3 py-2.5 text-left text-sm transition-colors",
+        "ios-pressable flex min-h-12 w-full items-center gap-3 rounded-[var(--radius-control)] px-3 py-2.5 text-left text-sm",
         index === selectedIndex
           ? "bg-accent text-accent-foreground"
           : "text-foreground hover:bg-accent/50"
@@ -273,7 +275,7 @@ export function GlobalSearch() {
       {/* Search trigger button */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 transition-colors w-full"
+        className="ios-pressable flex min-h-11 w-full items-center gap-2 rounded-[var(--radius-control)] border border-border/60 bg-card/90 px-3 py-2 text-sm text-muted-foreground hover:bg-muted/70"
       >
         <Search className="h-4 w-4 shrink-0" />
         <span className="flex-1 text-left truncate">Sayfa, hesaplama veya konu ara…</span>
@@ -283,7 +285,7 @@ export function GlobalSearch() {
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="p-0 gap-0 max-w-lg overflow-hidden bg-card/95 backdrop-blur-xl border-border/50">
+        <DialogContent className="ios-glass-strong max-w-lg gap-0 overflow-hidden p-0 [&>button:last-child]:hidden">
           <div className="flex items-center border-b border-border/30 px-3">
             <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
             <Input

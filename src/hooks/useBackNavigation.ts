@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
 import { hapticImpact } from "@/lib/haptics";
+import { requestLocalBack } from "@/lib/localBack";
 
 /**
  * The single "go back" action, shared by every back affordance: the floating
@@ -16,16 +17,21 @@ import { hapticImpact } from "@/lib/haptics";
  * button, which uses exactly this rule.
  */
 export const useBackNavigation = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const navigate = useNavigate();
 
   const goBack = useCallback(() => {
     // Home is the root of the hierarchy: back is a no-op, never an app exit.
     if (pathname === "/") return;
     hapticImpact("light");
+    if (requestLocalBack()) return;
+    if (search) {
+      navigate(pathname, { replace: true });
+      return;
+    }
     const parent = findParentPath(pathname);
     navigate(!parent || parent === pathname ? "/" : parent, { replace: true });
-  }, [pathname, navigate]);
+  }, [pathname, search, navigate]);
 
   return { goBack, canGoBack: pathname !== "/" };
 };

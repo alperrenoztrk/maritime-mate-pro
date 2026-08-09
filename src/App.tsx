@@ -231,6 +231,7 @@ const AnimatedRoutes = () => {
         resolved, so it can animate out while the incoming one loads. */}
     <AnimatePresence mode="wait" initial={false}>
         <Suspense key={location.pathname} fallback={<RouteFallback />}>
+        <span hidden aria-hidden="true" data-route-ready-path={location.pathname} />
         <Routes location={location}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />
@@ -438,7 +439,7 @@ const App = () => {
           <EntitlementProvider>
           <LanguageProvider>
             <TooltipProvider>
-              <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
+              <ThemeProvider defaultTheme="system" storageKey="maritime-ui-theme-v2">
                 <FontSizeProvider>
                   <Toaster />
                   <DocumentExpiryNotifier />

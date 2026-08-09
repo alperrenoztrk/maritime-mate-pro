@@ -1,6 +1,5 @@
 src/components/AskAIPopup.tsx
 src/components/AssistantInterface.tsx
-src/components/GlobalSearch.tsx
 src/components/LanguageChangeOverlay.tsx
 src/components/PhotoGallery.tsx
 src/components/courseContent/CalculatorCard.tsx
@@ -18,7 +17,6 @@ src/components/stability/Stability3DSim.tsx
 src/components/ui/ImageViewerModal.tsx
 src/components/ui/calculation-card.tsx
 src/components/ui/calculation-grid.tsx
-src/pages/Auth.tsx
 src/pages/CargoTopicsPage.tsx
 src/pages/Converter.tsx
 src/pages/CrewRoleDetail.tsx

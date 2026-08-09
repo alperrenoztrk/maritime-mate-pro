@@ -9,12 +9,27 @@ import { FONT_SCALES, type FontSizeKey } from './contexts/font-size-context'
 import { weatherPreloader } from './services/weatherPreloader'
 import { registerOfflineSupport } from './serviceWorkerRegistration'
 import { AppRoot } from './AppRoot'
+import {
+  readLanguagePreference,
+  SOURCE_LANGUAGE,
+} from './utils/languagePreference'
+import { beginInitialTranslationGuard } from './utils/translationGuard'
 
 if (window.location.hostname === 'www.nauticalleap.com') {
   window.location.replace(`https://nauticalleap.com${window.location.pathname}${window.location.search}${window.location.hash}`);
 }
 
 console.log('[Main] Starting Maritime Calculator App v2...');
+
+// Resolve the persisted language before React mounts. Route content is authored
+// in Turkish and translated at runtime, so letting the root paint before the
+// selected dictionary is ready would expose a frame of source-language text.
+// The static guard lives outside #root and remains visible until the provider
+// has translated the first committed tree.
+const initialLanguage = readLanguagePreference(safeLocalStorage);
+document.documentElement.lang = initialLanguage;
+document.documentElement.dir = initialLanguage === 'ar' ? 'rtl' : 'ltr';
+beginInitialTranslationGuard(initialLanguage !== SOURCE_LANGUAGE);
 
 // Apply the saved font-size scale before first paint to avoid a flash of
 // unscaled text. The FontSizeProvider keeps it in sync afterwards.
@@ -49,36 +64,24 @@ const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     splash.classList.add('splash-hide');
-    // The fade-out transition is .6s — remove only after it has finished.
-    setTimeout(() => splash.remove(), 650);
+    // Keep the launch hand-off brief; the native launch screen already covers
+    // loading and the branded sequence must never block daily use.
+    setTimeout(() => splash.remove(), 280);
   }
 };
 
 const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// The full sequence — book cover opens, the ship drawing appears, pops into
-// 3D and sails off — runs ~4.2s. That is a fine first impression and a long
-// wait on the fiftieth launch, so only the first launch pays for it. Everyone
-// else gets a brief brand beat.
-const SEEN_KEY = 'maritime-splash-seen';
-let hasSeenSplash = false;
+let hasSeenIntro = false;
 try {
-  hasSeenSplash = safeLocalStorage.getItem(SEEN_KEY) === '1';
-  safeLocalStorage.setItem(SEEN_KEY, '1');
+  hasSeenIntro = safeLocalStorage.getItem('maritime-intro-seen') === 'true';
+  safeLocalStorage.setItem('maritime-intro-seen', 'true');
 } catch {
-  /* storage unavailable — fall back to the full sequence */
+  // The safe-storage guard normally prevents this; keep launch non-blocking if
+  // an embedded browser still denies storage access.
 }
-
-const splashHideDelay = prefersReducedMotion ? 1100 : hasSeenSplash ? 700 : 4200;
-
-// Shortened runs get a class so index.html's delay cascade can compress to
-// match instead of being cut off mid-animation.
-if (splashHideDelay < 4200) {
-  document.getElementById('splash-root')?.classList.add('splash-brief');
-}
-
+const splashHideDelay = prefersReducedMotion ? 180 : hasSeenIntro ? 240 : 1100;
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
 
 // A tap should never be ignored: let people skip straight into the app.
@@ -86,4 +89,4 @@ const splashEl = document.getElementById('splash-root');
 splashEl?.addEventListener('pointerdown', hideSplash, { once: true, passive: true });
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, splashHideDelay + 1200);
+setTimeout(hideSplash, splashHideDelay + 500);

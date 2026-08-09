@@ -20,7 +20,7 @@ export const GlobalMaritimeBackground = () => {
         // Top stop is the app's canonical shell colour — mirrored by
         // index.html theme-color, the PWA manifest and the native status bar.
         background:
-          "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
+          "linear-gradient(180deg, hsl(var(--marine-bg-top)) 0%, hsl(var(--marine-bg-middle)) 52%, hsl(var(--marine-bg-bottom)) 100%)",
       }}
     >
       {/* Top radial glow */}
@@ -28,7 +28,7 @@ export const GlobalMaritimeBackground = () => {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.14) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 50% 0%, hsl(var(--marine-glow) / 0.16) 0%, transparent 55%)",
         }}
       />
 

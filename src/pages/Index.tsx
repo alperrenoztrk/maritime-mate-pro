@@ -84,7 +84,7 @@ const Index = () => {
           className="absolute inset-0 backdrop-blur-[6px]"
           style={{
             background:
-              "linear-gradient(180deg, hsl(214 84% 8% / 0.95) 0%, hsl(214 84% 8% / 0.88) 60%, hsl(214 84% 10% / 0) 100%)",
+              "linear-gradient(180deg, hsl(var(--marine-bg-top) / 0.96) 0%, hsl(var(--marine-bg-top) / 0.88) 60%, transparent 100%)",
             maskImage: "linear-gradient(180deg, #000 0%, #000 70%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 70%, transparent 100%)",
           }}
@@ -95,13 +95,13 @@ const Index = () => {
             translate="no"
             lang="en"
             style={{
-              background: "linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #ffffff 100%)",
+              background: "linear-gradient(135deg, hsl(var(--marine-title-start)) 0%, hsl(var(--marine-title-mid)) 50%, hsl(var(--marine-title-start)) 100%)",
               backgroundSize: "200% auto",
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               animation: "title-shine 3s linear infinite",
-              textShadow: "0 0 32px rgba(56,189,248,0.3)",
+              textShadow: "0 10px 30px hsl(var(--marine-glow) / 0.16)",
             }}
           >
             <span className="block text-[clamp(1.6rem,6vw,2.4rem)] leading-tight">
@@ -147,12 +147,12 @@ const Index = () => {
         >
           {isScrolling ? (
             <div className="flex items-center gap-2">
-              {PAGES.map((p) => (
+              {PAGES.map((page) => (
                 <span
-                  key={p}
+                  key={page}
                   className={
                     "h-2 w-2 rounded-full transition-all duration-200 " +
-                    (activePage === p ? "bg-white scale-110" : "bg-white/40")
+                    (activePage === page ? "bg-white scale-110" : "bg-white/40")
                   }
                 />
               ))}

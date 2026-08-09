@@ -139,6 +139,7 @@ export const runWithConcurrency = async <T,>(
 // A single translatable unit: a source string plus how to write the result back.
 export interface TranslationUnit {
   source: string;
+  element: HTMLElement;
   apply: (translated: string) => void;
 }
 
@@ -152,6 +153,8 @@ const getOriginalText = (node: Text, originals: WeakMap<Text, string>): string =
 
 const pushTextUnit = (node: Text, originals: WeakMap<Text, string>, units: TranslationUnit[]) => {
   if (shouldSkipTextNode(node)) return;
+  const parentElement = node.parentElement;
+  if (!parentElement) return;
   const raw = getOriginalText(node, originals);
   const core = raw.trim();
   if (!core || !hasLetters(core)) return;
@@ -163,6 +166,7 @@ const pushTextUnit = (node: Text, originals: WeakMap<Text, string>, units: Trans
   const trail = raw.slice(raw.trimEnd().length);
   units.push({
     source: core,
+    element: parentElement,
     apply: (translated) => {
       if (node.isConnected) node.nodeValue = `${lead}${translated}${trail}`;
     },
@@ -183,6 +187,7 @@ const pushAttributeUnits = (el: HTMLElement, units: TranslationUnit[]) => {
     if (isTechnicalString(core)) continue;
     units.push({
       source: core,
+      element: el,
       apply: (translated) => {
         if (el.isConnected) el.setAttribute(attr, translated);
       },

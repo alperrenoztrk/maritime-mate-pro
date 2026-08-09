@@ -1,95 +1,89 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { ShipWheel } from "lucide-react";
 import { useLanguage } from "@/contexts/useLanguage";
+import { SOURCE_LANGUAGE } from "@/utils/languagePreference";
+import {
+  beginTranslationGuard,
+  finishTranslationGuard,
+} from "@/utils/translationGuard";
 
-const SOURCE_LANGUAGE = "tr";
+const ROUTE_MOUNT_TIMEOUT_MS = 15_000;
 
-// Timing knobs (ms). Give the Google Translate widget time to start, then reveal
-// once the page DOM goes quiet — capped so navigation never hangs.
-const MIN_HOLD = 0;
-const QUIET_WINDOW = 30;
-const MAX_HOLD = 150;
+const findRouteReadySignal = (pathname: string): HTMLElement | null => {
+  const signals = document.querySelectorAll<HTMLElement>("[data-route-ready-path]");
+  for (const signal of signals) {
+    if (signal.dataset.routeReadyPath === pathname) return signal;
+  }
+  return null;
+};
 
+/**
+ * Coordinates navigation with the translation engine. The guard is activated
+ * in a layout effect (before paint), waits for the lazy route chunk to mount,
+ * and is only released after LanguageContext confirms the DOM is paint-safe:
+ * local translations are applied and any live-only units are hidden until
+ * their background translation settles. Source text and paint never race.
+ */
 export const RouteTranslationGate = () => {
-  const location = useLocation();
-  const { currentLanguage } = useLanguage();
-  const [translating, setTranslating] = useState(false);
+  const { pathname } = useLocation();
+  const { currentLanguage, isLoading, translateRoute } = useLanguage();
 
-  // Latest language without re-running the navigation effect when it changes.
-  const languageRef = useRef(currentLanguage);
-  languageRef.current = currentLanguage;
+  useLayoutEffect(() => {
+    if (isLoading || currentLanguage === SOURCE_LANGUAGE) return;
 
-  // Skip the initial load (covered by the splash screen, and the saved language
-  // isn't read from localStorage until after the first render). Only gate on
-  // actual page-to-page navigation.
-  const firstRunRef = useRef(true);
-
-  useEffect(() => {
-    if (firstRunRef.current) {
-      firstRunRef.current = false;
-      return;
-    }
-
-    // No translation happens in the source language: never gate.
-    if (languageRef.current === SOURCE_LANGUAGE) {
-      setTranslating(false);
-      return;
-    }
-
-    const root = document.getElementById("root");
-    if (!root) return;
-
-    setTranslating(true);
-    const start = Date.now();
-    let quietTimer: number | undefined;
+    const token = beginTranslationGuard();
+    const appRoot = document.getElementById("root");
+    let disposed = false;
+    let preparing = false;
+    let observer: MutationObserver | null = null;
 
     const reveal = () => {
-      window.clearTimeout(quietTimer);
-      window.clearTimeout(capTimer);
-      observer.disconnect();
-      setTranslating(false);
+      if (disposed) return;
+      finishTranslationGuard(token);
     };
 
-    const observer = new MutationObserver(() => {
-      // Wait at least MIN_HOLD so we don't reveal before the widget starts.
-      if (Date.now() - start < MIN_HOLD) return;
-      window.clearTimeout(quietTimer);
-      quietTimer = window.setTimeout(reveal, QUIET_WINDOW);
-    });
-    observer.observe(root, { childList: true, subtree: true, characterData: true });
+    const prepare = async (routeRoot: Node) => {
+      if (preparing || disposed) return;
+      preparing = true;
+      observer?.disconnect();
+      window.clearTimeout(safetyTimer);
 
-    // Hard cap: always reveal even if the widget does nothing / network is slow.
-    const capTimer = window.setTimeout(reveal, MAX_HOLD);
-    // Fallback quiet timer in case no mutations ever fire after MIN_HOLD.
-    quietTimer = window.setTimeout(reveal, MIN_HOLD + QUIET_WINDOW);
+      try {
+        await translateRoute(routeRoot);
+      } finally {
+        reveal();
+      }
+    };
+
+    const tryMountedRoute = () => {
+      const readySignal = findRouteReadySignal(pathname);
+      if (readySignal) void prepare(appRoot ?? readySignal.parentNode ?? readySignal);
+    };
+
+    if (appRoot) {
+      observer = new MutationObserver(tryMountedRoute);
+      observer.observe(appRoot, { childList: true, subtree: true });
+    }
+
+    // Never strand the UI if a lazy import fails before the route-ready signal mounts.
+    // The root remains protected during the whole timeout; the fallback pass
+    // translates any error/auth screen that does exist before revealing it.
+    const safetyTimer = window.setTimeout(() => {
+      void prepare(appRoot ?? document.body);
+    }, ROUTE_MOUNT_TIMEOUT_MS);
+
+    // The route may already be committed by the time this sibling layout
+    // effect runs. If it is still suspended, the observer catches the signal
+    // when React replaces the fallback with the resolved route tree.
+    tryMountedRoute();
 
     return () => {
-      window.clearTimeout(quietTimer);
-      window.clearTimeout(capTimer);
-      observer.disconnect();
+      disposed = true;
+      observer?.disconnect();
+      window.clearTimeout(safetyTimer);
+      finishTranslationGuard(token);
     };
-  }, [location.pathname]);
+  }, [currentLanguage, isLoading, pathname, translateRoute]);
 
-  return (
-    <AnimatePresence>
-      {translating && (
-        <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.08 }}
-        >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 2.5 }}
-          >
-            <ShipWheel className="h-12 w-12 text-primary" />
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return null;
 };

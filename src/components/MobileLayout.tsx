@@ -61,7 +61,7 @@ export const MobileLayout = ({ children, className }: MobileLayoutProps) => {
 
         /* Soft-tone any hard slate/zinc/gray text written by inner pages
            so they remain readable on the dark gradient without per-page edits. */
-        .marine-shell__content :where(.text-slate-900,.text-slate-800,.text-slate-700,
+        .dark .marine-shell__content :where(.text-slate-900,.text-slate-800,.text-slate-700,
           .text-gray-900,.text-gray-800,.text-gray-700,
           .text-zinc-900,.text-zinc-800,.text-zinc-700,
           .text-neutral-900,.text-neutral-800,.text-neutral-700,
@@ -69,14 +69,14 @@ export const MobileLayout = ({ children, className }: MobileLayoutProps) => {
           .text-black,.text-foreground) {
           color: rgb(241 245 249) !important;
         }
-        .marine-shell__content :where(.text-slate-600,.text-slate-500,
+        .dark .marine-shell__content :where(.text-slate-600,.text-slate-500,
           .text-gray-600,.text-gray-500,
           .text-zinc-600,.text-zinc-500,
           .text-neutral-600,.text-neutral-500,
           .text-muted-foreground) {
           color: rgb(203 213 225) !important;
         }
-        .marine-shell__content :where(.text-slate-400,.text-gray-400,.text-zinc-400) {
+        .dark .marine-shell__content :where(.text-slate-400,.text-gray-400,.text-zinc-400) {
           color: rgb(148 163 184) !important;
         }
       `}</style>

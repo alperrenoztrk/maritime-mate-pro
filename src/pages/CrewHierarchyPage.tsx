@@ -64,7 +64,7 @@ export default function CrewHierarchyPage() {
               title={group.department}
               icon={meta.icon}
               accent={meta.accent}
-              
+
               onClick={() => setSearchParams({ department: String(index) })}
             />
           );

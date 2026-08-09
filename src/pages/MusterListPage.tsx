@@ -125,7 +125,6 @@ export default function MusterListPage() {
   const visibleAssignments = groups.reduce((total, group) => total + group.rows.length, 0);
   const signalMeta = SIGNAL_META[activeEmergency.signalClass];
 
-
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-4 py-8 pb-24 print:bg-white print:px-0 print:py-0 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"

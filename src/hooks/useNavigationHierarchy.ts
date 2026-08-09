@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
 import { isArticleOpen } from './useArticleBackGuard';
+import { requestLocalBack } from '@/lib/localBack';
 
 type NavigationRule = {
   pattern: RegExp;
@@ -299,6 +300,17 @@ export const useNavigationHierarchy = () => {
     if (path === '/') {
       return;
     }
+    if (requestLocalBack()) {
+      return;
+    }
+    const search =
+      typeof window !== 'undefined'
+        ? window.location.search
+        : searchRef.current;
+    if (search) {
+      navigateRef.current(path, { replace: true });
+      return;
+    }
     const parent = findParentPath(path);
     if (!parent || parent === path) {
       navigateRef.current('/', { replace: true });
@@ -385,6 +397,5 @@ export const useNavigationHierarchy = () => {
     [showExitDialog, closeExitDialog, confirmExit],
   );
 };
-
 
 

@@ -306,7 +306,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(typeof time === 'number' ? time : String(time)).toLocaleTimeString('tr-TR')}
                       formatter={(value: number) => [`${value.toFixed(1)}°C`, 'Sıcaklık']}
                     />
                     <Line 
@@ -339,7 +339,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(typeof time === 'number' ? time : String(time)).toLocaleTimeString('tr-TR')}
                       formatter={(value: number) => [`${value.toFixed(0)}%`, 'Nem']}
                     />
                     <Line 
@@ -372,7 +372,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(typeof time === 'number' ? time : String(time)).toLocaleTimeString('tr-TR')}
                       formatter={(value: number) => [`${value.toFixed(1)} kt`, 'Rüzgar']}
                     />
                     <Line 
@@ -405,7 +405,7 @@ const WeatherInfoWidgets: React.FC<WeatherInfoWidgetsProps> = ({
                     />
                     <YAxis />
                     <Tooltip 
-                      labelFormatter={(time) => new Date(time).toLocaleTimeString('tr-TR')}
+                      labelFormatter={(time) => new Date(typeof time === 'number' ? time : String(time)).toLocaleTimeString('tr-TR')}
                       formatter={(value: number) => [`${value.toFixed(1)} mm`, 'Yağış']}
                     />
                     <Line 

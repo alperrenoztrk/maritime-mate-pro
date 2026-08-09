@@ -12,7 +12,7 @@ interface AppIcon {
 const APPS: AppIcon[] = [
   { label: "Dersler", to: "/lessons", Icon: BookOpen, gradient: "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)" },
   { label: "Alıştırmalar", to: "/exercises", Icon: Sparkles, gradient: "linear-gradient(135deg, #a855f7 0%, #4f46e5 100%)" },
-  { label: "Personnel", to: "/crew", Icon: Users, gradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)" },
+  { label: "Personel", to: "/crew", Icon: Users, gradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)" },
   { label: "Gemi Sistemleri", to: "/ship-systems", Icon: Ship, gradient: "linear-gradient(135deg, #f59e0b 0%, #b45309 100%)" },
   { label: "Operasyonlar", to: "/ship-operations", Icon: ClipboardList, gradient: "linear-gradient(135deg, #ec4899 0%, #be185d 100%)" },
   { label: "Sözlük", to: "/glossary", Icon: BookA, gradient: "linear-gradient(135deg, #0891b2 0%, #1e3a8a 100%)" },
@@ -40,7 +40,7 @@ export function AppIconGrid() {
             style={{
               background: gradient,
               boxShadow:
-                "0 8px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.2)",
+                "0 14px 28px -16px rgba(0,0,0,0.62), inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.16)",
             }}
           >
             <Icon className="h-1/2 w-1/2 text-white drop-shadow-md" strokeWidth={1.8} />

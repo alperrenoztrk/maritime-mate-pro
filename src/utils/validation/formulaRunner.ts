@@ -142,7 +142,7 @@ if (failures.length) {
     ...failures.map((f) => `- ${f}`),
   ].join("\n");
   console.error(message);
-  process.exit(1);
+  throw new Error(message);
 }
 
 console.log(`✅ Formül doğrulama geçti: ${checked} hesaplayıcı sorunsuz.`);
