@@ -131,13 +131,13 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
           
           {/* Altitude badges - Top */}
           <div className="absolute top-2 left-2">
-            <Badge variant="secondary" className="text-xs backdrop-blur-md bg-white/90 dark:bg-gray-800/90 border border-white/50 font-semibold shadow-lg">
+            <Badge variant="secondary" className="text-xs bg-white/90 dark:bg-gray-800/90 border border-white/50 font-semibold shadow-lg">
               <Thermometer className="h-3 w-3 mr-1" />
               {cloud.altitude}
             </Badge>
           </div>
           <div className="absolute top-2 right-2">
-            <Badge variant="secondary" className="text-xs backdrop-blur-md bg-white/90 dark:bg-gray-800/90 border border-white/50 font-semibold shadow-lg">
+            <Badge variant="secondary" className="text-xs bg-white/90 dark:bg-gray-800/90 border border-white/50 font-semibold shadow-lg">
               {cloud.altitudeFt}
             </Badge>
           </div>

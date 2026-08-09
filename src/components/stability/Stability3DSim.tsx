@@ -37,7 +37,7 @@ const MARKER_VSCALE = 0.12;
 /* ─── IMO compliance badge ─── */
 function IMOBadge({ label, ok }: { label: string; ok: boolean }) {
   return (
-    <div className="flex items-center gap-1.5 text-[10px]">
+    <div className="flex items-center gap-1.5 text-micro">
       {ok ? (
         <CheckCircle2 className="h-3 w-3 text-emerald-400" />
       ) : (
@@ -122,7 +122,7 @@ export const Stability3DSim = () => {
         <div className="flex flex-col gap-2 rounded-lg border border-border/40 bg-muted/30 p-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
             <Label className="text-xs font-semibold">Gemi Tipi</Label>
-            <span className="hidden text-[10px] text-muted-foreground sm:inline">{activeShip?.description}</span>
+            <span className="hidden text-micro text-muted-foreground sm:inline">{activeShip?.description}</span>
           </div>
           <Select value={shipType} onValueChange={(v) => setShipType(v as ShipType)}>
             <SelectTrigger className="h-8 w-full text-xs sm:w-44">
@@ -194,12 +194,12 @@ export const Stability3DSim = () => {
           </SimErrorBoundary>
 
           {/* Interaction hint */}
-          <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-[9px] text-muted-foreground shadow-sm backdrop-blur-sm">
+          <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-micro text-muted-foreground shadow-sm backdrop-blur-sm">
             Sürükle: döndür · Kaydır: yakınlaş
           </div>
 
           {/* Live readout - top left */}
-          <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-[11px] shadow-md backdrop-blur-sm">
+          <div className="absolute left-2.5 top-2.5 rounded-lg bg-background/85 px-3 py-2 text-micro shadow-md backdrop-blur-sm">
             <div className="space-y-0.5">
               <Row label="KM" value={`${stability.km.toFixed(2)} m`} />
               <Row label="KG" value={`${kgInput.toFixed(2)} m`} />
@@ -217,7 +217,7 @@ export const Stability3DSim = () => {
           </div>
 
           {/* Hydrostatic data - bottom right */}
-          <div className="absolute bottom-2.5 right-2.5 rounded-lg bg-background/85 px-3 py-2 text-[10px] text-muted-foreground shadow-md backdrop-blur-sm">
+          <div className="absolute bottom-2.5 right-2.5 rounded-lg bg-background/85 px-3 py-2 text-micro text-muted-foreground shadow-md backdrop-blur-sm">
             <div>KB: {stability.kb.toFixed(2)} m</div>
             <div>BM: {stability.bm.toFixed(2)} m</div>
             <div>Δ: {Math.round(stability.displacement)} t</div>
@@ -226,7 +226,7 @@ export const Stability3DSim = () => {
 
           {/* GM danger warning */}
           {stability.gm < 0.15 && (
-            <div className="absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg bg-red-500/90 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5">
+            <div className="absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg bg-red-500/90 px-3 py-1.5 text-micro font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5">
               <AlertTriangle className="h-3.5 w-3.5" />
               TEHLİKE: GM &lt; 0.15 m — Yetersiz stabilite!
             </div>
@@ -235,7 +235,7 @@ export const Stability3DSim = () => {
           {/* Heel / deck-immersion warning (only when GM is otherwise OK) */}
           {stability.gm >= 0.15 && (nearCapsize || deckImmersed) && (
             <div
-              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5 ${
+              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-micro font-semibold text-white shadow-lg backdrop-blur-sm flex items-center gap-1.5 ${
                 nearCapsize ? "bg-red-500/90" : "bg-amber-500/90"
               }`}
             >
@@ -265,7 +265,7 @@ export const Stability3DSim = () => {
             step={5000}
             onValueChange={(v) => setWindMoment(v[0])}
           />
-          <p className="mt-1 text-[10px] text-muted-foreground">
+          <p className="mt-1 text-micro text-muted-foreground">
             Yandan esen rüzgârın devirme momenti. Denge meyli, doğrultma momenti Δ·GZ(φ)'ye eşitlenerek çözülür.
             Yüksek KG → düşük GM → aynı rüzgârda daha büyük meyil.
           </p>
@@ -309,7 +309,7 @@ export const Stability3DSim = () => {
             <span className="text-xs font-semibold text-foreground">IMO A.749 Stabilite Kriterleri</span>
             <Badge
               variant={imo.overallPass ? "default" : "destructive"}
-              className="ml-auto text-[10px] px-1.5 py-0"
+              className="ml-auto text-micro px-1.5 py-0"
             >
               {imo.overallPass ? "UYGUN" : "UYGUN DEĞİL"}
             </Badge>
@@ -325,11 +325,11 @@ export const Stability3DSim = () => {
         </div>
 
         {/* Formulas */}
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-[11px] text-muted-foreground space-y-1">
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-micro text-muted-foreground space-y-1">
           <div className="font-mono text-primary text-xs">GM = KM − KG</div>
           <div className="font-mono text-primary text-xs">GZ = sinφ · [GM + ½·BM·tan²φ]</div>
           <div className="font-mono text-primary text-xs">KB ≈ ⅓(5T/2 − ∇/Awp)</div>
-          <p className="mt-1 text-[10px]">
+          <p className="mt-1 text-micro">
             Wall-sided formül büyük açılarda (φ &gt; 15°) doğrusal yaklaşıma göre çok daha doğru sonuç verir.
             Yalpa hareketi sönümlü harmonik osilatör (ζ = 0.15) ile modellenir.
           </p>
@@ -416,7 +416,7 @@ function SliderControl({
         <span className="font-mono">{value.toFixed(2)}</span>
       </Label>
       <Slider value={[value]} min={min} max={max} step={step} onValueChange={(v) => onChange(v[0])} />
-      <p className="text-[10px] text-muted-foreground">{hint}</p>
+      <p className="text-micro text-muted-foreground">{hint}</p>
     </div>
   );
 }

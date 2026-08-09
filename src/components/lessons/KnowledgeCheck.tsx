@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CheckCircle, XCircle } from "lucide-react";
 import type { QuizQuestion } from "@/types/quiz";
+import { hapticNotify } from "@/lib/haptics";
 
 /**
  * Tek-soruluk bilgi kontrolü (mini quiz).
@@ -23,8 +24,12 @@ export function KnowledgeCheck({
 
   const handleAnswer = (idx: number) => {
     if (answered) return;
+    const correct = idx === question.correctAnswer;
     setSelected(idx);
-    onAnswered?.(idx === question.correctAnswer);
+    // Grading is the moment the answer lands — iOS marks it with a
+    // notification haptic, not a plain tap.
+    hapticNotify(correct ? "success" : "error");
+    onAnswered?.(correct);
   };
 
   return (
@@ -36,7 +41,7 @@ export function KnowledgeCheck({
       }
     >
       {!compact && (
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+        <p className="text-micro font-bold uppercase tracking-[0.2em] text-primary">
           Bilgi Kontrolü
         </p>
       )}

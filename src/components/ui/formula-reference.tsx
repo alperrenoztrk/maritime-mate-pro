@@ -20,13 +20,13 @@ export function FormulaReference({ metaId, className }: FormulaReferenceProps) {
         className,
       )}
     >
-      <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">Referans</div>
+      <div className="text-micro font-semibold uppercase tracking-[0.2em] text-slate-400">Referans</div>
       <div className="mt-2 text-sm font-semibold text-slate-800 dark:text-slate-100">{meta.title}</div>
       <div className="mt-1 text-slate-600 dark:text-slate-300">Formül: <span translate="no" className="notranslate">{meta.formula}</span></div>
       <div className="mt-2 text-slate-600 dark:text-slate-300">
         Kaynak: {meta.source} — {meta.edition}
       </div>
-      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+      <div className="mt-1 text-micro text-slate-500 dark:text-slate-400">
         Son güncelleme: {meta.lastUpdated}
       </div>
     </div>

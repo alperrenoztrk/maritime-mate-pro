@@ -51,13 +51,13 @@ export function StepByStepSolution({
         {steps.map((s, i) => (
           <li key={i} className="rounded-md border border-border/30 bg-card/60 p-2">
             <div className="flex items-start gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-bold text-primary">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-micro font-bold text-primary">
                 {i + 1}
               </span>
               <div className="min-w-0 flex-1 space-y-1">
                 <p className="text-xs font-medium text-foreground">{s.title}</p>
                 {s.expression && (
-                  <p className="break-words font-mono text-[11px] text-muted-foreground">
+                  <p className="break-words font-mono text-micro text-muted-foreground">
                     {s.expression}
                   </p>
                 )}
@@ -65,7 +65,7 @@ export function StepByStepSolution({
                   <p className="text-xs font-semibold text-foreground">{s.result}</p>
                 )}
                 {s.hint && (
-                  <p className="text-[11px] italic text-muted-foreground">{s.hint}</p>
+                  <p className="text-micro italic text-muted-foreground">{s.hint}</p>
                 )}
               </div>
             </div>
@@ -94,7 +94,7 @@ export function StepByStepSolution({
       {error && <p className="text-xs text-red-500">{error}</p>}
       {aiAnswer && !loading && (
         <div className="rounded-md border border-blue-500/20 bg-blue-500/5 p-3">
-          <p className="mb-1 flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-blue-500">
+          <p className="mb-1 flex items-center gap-1.5 text-micro uppercase tracking-wide text-blue-500">
             <Sparkles className="h-3 w-3" /> Yapay Zeka Açıklaması
           </p>
           <p className="whitespace-pre-wrap text-xs leading-relaxed text-foreground">

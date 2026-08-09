@@ -39,7 +39,12 @@ for (const primitive of [
 ]) {
   requireText(shared, `export function ${primitive}`, "ortak kitaplık bileşenleri");
 }
-requireText(shared, "safe-area-inset-top", "mobil güvenli alan");
+// Top inset now comes through --floating-nav-reserve, which is itself defined
+// as calc(max(0.75rem, env(safe-area-inset-top)) + 2.75rem) in index.css. It
+// reserves the notch AND the global back control, which a bare
+// env(safe-area-inset-top) did not — the "Geri" pill used to sit on this
+// shell's header.
+requireText(shared, "--floating-nav-reserve", "mobil güvenli alan + navigasyon şeridi");
 requireText(shared, "--ad-banner-height", "reklam bandı güvenli alanı");
 requireText(shared, "repeating-linear-gradient", "kitap bez cilt dokusu");
 requireText(shared, "[perspective:1200px]", "kitap derinlik görünümü");

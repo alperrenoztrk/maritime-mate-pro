@@ -37,12 +37,12 @@ export function FormulaList({
                         (calcHref ? (
                           <Link
                             to={`${calcHref}#${f.id}`}
-                            className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary transition-colors hover:bg-primary/20"
+                            className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary transition-colors hover:bg-primary/20"
                           >
                             <Calculator className="h-3 w-3" /> Hesapla
                           </Link>
                         ) : (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
+                          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary">
                             <Calculator className="h-3 w-3" /> Hesaplanabilir
                           </span>
                         ))}
@@ -61,7 +61,7 @@ export function FormulaList({
                     )}
                     {f.note && <p className="text-xs text-muted-foreground italic">{f.note}</p>}
                     {f.source && (
-                      <p className="text-[11px] text-muted-foreground">
+                      <p className="text-micro text-muted-foreground">
                         Kaynak: {f.source.code}
                         {f.source.detail ? ` — ${f.source.detail}` : ""}
                       </p>

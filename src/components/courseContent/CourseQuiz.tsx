@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, CheckCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
+import { hapticNotify } from "@/lib/haptics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
@@ -49,8 +50,10 @@ export function CourseQuiz({
     setAnsweredCount((count) => count + 1);
     if (idx === question.correctAnswer) {
       setCorrect((count) => count + 1);
+      hapticNotify("success");
       toast.success("Doğru!");
     } else {
+      hapticNotify("error");
       toast.error("Yanlış!");
     }
   };

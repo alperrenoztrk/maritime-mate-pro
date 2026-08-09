@@ -52,7 +52,7 @@ export default function MachineTopicDetailPage() {
           </div>
           <span className="text-xs font-medium text-muted-foreground">{topicConfig.title}</span>
           {content.level && (
-            <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-primary">
+            <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-micro font-semibold uppercase text-primary">
               {content.level === "foundation"
                 ? "Temel"
                 : content.level === "operational"

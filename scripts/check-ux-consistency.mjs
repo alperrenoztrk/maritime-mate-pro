@@ -188,8 +188,15 @@ assert(
   "Unused operation ship illustrations are still bundled",
 );
 
-const floatingBack = read("src/components/FloatingNavButtons.tsx");
-assert(floatingBack.includes('aria-label="Geri"'), "Global Geri control must remain available");
+// The global back control moved from FloatingNavButtons into AppNavBar, which
+// also owns the scroll-edge material. The guarantee is unchanged: exactly one
+// globally mounted "Geri" affordance.
+const appNavBar = read("src/components/AppNavBar.tsx");
+assert(appNavBar.includes('aria-label="Geri"'), "Global Geri control must remain available");
+assert(
+  appNavBar.includes("useBackNavigation"),
+  "AppNavBar must route back through useBackNavigation so it agrees with the hardware button and the edge swipe",
+);
 
 if (failures.length) {
   console.error(failures.map((failure) => `- ${failure}`).join("\n"));

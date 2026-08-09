@@ -25,7 +25,7 @@ export function CourseRulesList({ groups }: { groups: RuleGroup[] }) {
             <h2 className="text-lg font-semibold text-foreground">{category.title}</h2>
           </div>
           {category.source && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-micro text-muted-foreground">
               Kaynak: {category.source.code}
               {category.source.detail ? ` — ${category.source.detail}` : ""}
             </p>

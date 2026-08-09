@@ -81,7 +81,7 @@ export const CalculationSteps = ({ steps }: CalculationStepsProps) => {
             </div>
           ))}
         </div>
-        <p className="mt-2 px-2 text-[10px] leading-relaxed text-muted-foreground">
+        <p className="mt-2 px-2 text-micro leading-relaxed text-muted-foreground">
           Ara değerler hesap motorunda tam hassasiyetle tutulur; gösterimdeki yuvarlama sonraki adıma taşınmaz.
           Sonuçları gemiye özel onaylı doküman ve cihaz çıktılarıyla doğrulayın.
         </p>

@@ -14,6 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { EmptyState } from "@/components/state/AppState";
 import {
   getNotes,
   deleteNote,
@@ -78,18 +79,16 @@ const Notes = () => {
           </div>
 
           {notes.length === 0 ? (
-            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-16 text-center">
-              <StickyNote className="h-12 w-12 text-white/40" strokeWidth={1.5} />
-              <p className="text-base font-semibold text-white/90">
-                <span data-translatable>Henüz kaydedilmiş notunuz yok.</span>
-              </p>
-              <p className="max-w-xs text-sm text-white/60">
+            <EmptyState
+              icon={StickyNote}
+              title={<span data-translatable>Henüz kaydedilmiş notunuz yok.</span>}
+              description={
                 <span data-translatable>
                   Herhangi bir sayfada metin seçin ve beliren "Kaydet" düğmesine
                   dokunun; not burada kategorisine göre görünür.
                 </span>
-              </p>
-            </div>
+              }
+            />
           ) : (
             <Accordion
               type="multiple"

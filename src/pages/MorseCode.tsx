@@ -135,7 +135,7 @@ function MorseTranslator() {
                       {letter.code ? (
                         <CodeGlyphs code={letter.code} />
                       ) : (
-                        <span className="text-[10px] text-muted-foreground">—</span>
+                        <span className="text-micro text-muted-foreground">—</span>
                       )}
                     </div>
                   ))}
@@ -278,7 +278,7 @@ export default function MorseCodePage() {
                 <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
                   <div className="flex items-baseline justify-between gap-2">
                     <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-[11px] text-muted-foreground">
+                    <span className="shrink-0 text-micro text-muted-foreground">
                       {entries.length} kayıt
                     </span>
                   </div>

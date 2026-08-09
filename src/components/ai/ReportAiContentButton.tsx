@@ -105,7 +105,7 @@ export function ReportAiContentButton({
         onClick={() => setOpen(true)}
         aria-label="Bu yapay zekâ yanıtını bildir"
         title="Bu yanıtı bildir"
-        className={`inline-flex items-center gap-1 text-[10px] transition-colors ${triggerClass} ${className}`}
+        className={`inline-flex items-center gap-1 text-micro transition-colors ${triggerClass} ${className}`}
       >
         <Flag className="h-3 w-3" />
         Bildir

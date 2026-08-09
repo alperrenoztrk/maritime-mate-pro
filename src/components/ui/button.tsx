@@ -14,8 +14,11 @@ const buttonVariants = cva(
           "bg-primary text-primary-foreground shadow-md hover:shadow-lg hover:scale-[1.02] hover:bg-primary/90 border border-primary/20",
         destructive:
           "bg-destructive text-destructive-foreground shadow-md hover:shadow-lg hover:scale-[1.02] hover:bg-destructive/90 border border-destructive/20",
+        // No backdrop blur: this is a content-level control, and blurring it
+        // made every outline button in the app a glass surface. Glass is
+        // reserved for floating chrome (.surface-glass).
         outline:
-          "border-2 border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:border-primary/50 hover:scale-[1.02]",
+          "border-2 border-border bg-background/50 hover:bg-accent hover:border-primary/50 hover:scale-[1.02]",
         secondary:
           "bg-secondary/10 text-secondary-foreground border border-secondary/20 hover:bg-secondary/20 hover:scale-[1.02]",
         ghost: "hover:bg-accent/50 hover:text-accent-foreground",

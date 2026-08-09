@@ -28,7 +28,7 @@ export function InstrumentCredits() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-1.5 text-[10px] text-amber-200/45 underline-offset-2 transition-colors hover:text-amber-200/80 hover:underline"
+          className="inline-flex items-center gap-1.5 text-micro text-amber-200/45 underline-offset-2 transition-colors hover:text-amber-200/80 hover:underline"
         >
           <Camera className="h-3 w-3" aria-hidden="true" />
           <span data-translatable>Enstrüman fotoğrafları</span>

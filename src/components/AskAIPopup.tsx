@@ -159,7 +159,7 @@ export function AskAIPopup() {
 
           {/* Selected text preview */}
           <div className="px-3 py-2 border-b border-white/10">
-            <p className="text-[10px] text-gray-400 uppercase tracking-wide mb-1">Seçilen metin</p>
+            <p className="text-micro text-gray-400 uppercase tracking-wide mb-1">Seçilen metin</p>
             <p className="text-xs text-gray-300 italic line-clamp-2">"{selectedText}"</p>
           </div>
 

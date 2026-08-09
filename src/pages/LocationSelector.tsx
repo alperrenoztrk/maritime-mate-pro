@@ -37,7 +37,7 @@ function LocationCard({ location, onSelect }: { location: LocationResult; onSele
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
                 <MapPin className="h-3 w-3" aria-hidden />
-                <span className="font-mono text-[10px]">
+                <span className="font-mono text-micro">
                   {formatDecimalAsDMS(location.latitude, true, true)}, {formatDecimalAsDMS(location.longitude, false, true)}
                 </span>
               </div>

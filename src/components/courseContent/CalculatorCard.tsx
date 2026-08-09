@@ -8,6 +8,7 @@ import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 import { StepByStepSolution } from "./StepByStepSolution";
 import { buildAutoSteps } from "./autoSteps";
 import { CalculationRecordPanel } from "./CalculationRecordPanel";
+import { hapticNotify } from "@/lib/haptics";
 import {
   buildCalculationRecord,
   hasCalculationError,
@@ -42,6 +43,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
     setCalculationError("");
 
     if (Object.keys(validation.errors).length > 0) {
+      hapticNotify("error");
       setResults(null);
       setSteps(null);
       setRecord(null);
@@ -60,6 +62,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
         : buildAutoSteps(entry, validation.values, resultList);
 
       if (hasCalculationError(resultList)) {
+        hapticNotify("error");
         setCalculationError(resultList.map((result) => result.value).join(" "));
         setResults(null);
         setSteps(null);
@@ -68,6 +71,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
         return;
       }
 
+      hapticNotify("success");
       setResults(resultList);
       setNumVals(validation.values);
       setSteps(calculatedSteps);
@@ -75,6 +79,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
       // Navigation Almanac kıyasındaki gibi ayrıntı sonuçla birlikte görünür.
       setShowSteps(true);
     } catch (error) {
+      hapticNotify("error");
       setResults(null);
       setSteps(null);
       setRecord(null);
@@ -132,10 +137,10 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
                 className="h-9"
               />
               {inp.help && !fieldErrors[inp.key] && (
-                <p id={`${entry.id}-${inp.key}-help`} className="text-[11px] text-muted-foreground">{inp.help}</p>
+                <p id={`${entry.id}-${inp.key}-help`} className="text-micro text-muted-foreground">{inp.help}</p>
               )}
               {fieldErrors[inp.key] && (
-                <p id={`${entry.id}-${inp.key}-error`} className="flex items-center gap-1 text-[11px] text-destructive">
+                <p id={`${entry.id}-${inp.key}-error`} className="flex items-center gap-1 text-micro text-destructive">
                   <AlertCircle className="h-3 w-3 shrink-0" /> {fieldErrors[inp.key]}
                 </p>
               )}
@@ -172,7 +177,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
           </>
         )}
         {entry.source && (
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-micro text-muted-foreground">
             Kaynak: {entry.source.code}
             {entry.source.detail ? ` — ${entry.source.detail}` : ""}
           </p>

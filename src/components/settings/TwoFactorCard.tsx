@@ -141,7 +141,7 @@ export const TwoFactorCard = () => {
               <Label className="text-xs text-muted-foreground">
                 QR okutamıyorsanız bu anahtarı elle girin
               </Label>
-              <code className="block break-all rounded bg-muted px-2 py-1.5 text-[11px]">
+              <code className="block break-all rounded bg-muted px-2 py-1.5 text-micro">
                 {enrollment.secret}
               </code>
             </div>

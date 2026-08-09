@@ -342,7 +342,7 @@ const MaritimeNews = () => {
                     <div key={i} className="gz-skel h-3 animate-pulse" style={{ width: `${88 - (i % 3) * 14}%` }} />
                   ))}
                 </div>
-                <p className="pt-3 text-center text-[10px] italic" style={{ color: "var(--gz-ink-faint)" }}>
+                <p className="pt-3 text-center text-micro italic" style={{ color: "var(--gz-ink-faint)" }}>
                   Baskı makinesi çalışıyor…
                 </p>
               </div>
@@ -352,7 +352,7 @@ const MaritimeNews = () => {
                 <h2 className="gz-headline text-xl">Bugünkü baskı gecikti</h2>
                 <div className="gz-notice">
                   Haberler alınamadı; hatlar onarılır onarılmaz baskıya devam edilecektir. Biraz sonra tekrar deneyin.
-                  <div className="mt-1 break-words text-[9px] not-italic opacity-80">
+                  <div className="mt-1 break-words text-micro not-italic opacity-80">
                     {query.error instanceof Error ? query.error.message : "Bilinmeyen hata"}
                   </div>
                 </div>
@@ -400,7 +400,7 @@ const MaritimeNews = () => {
                       {leadBody ? (
                         <>
                           <p
-                            className="gz-cols gz-cols--3 gz-just gz-dropcap mt-2.5 text-[11px] leading-[1.5]"
+                            className="gz-cols gz-cols--3 gz-just gz-dropcap mt-2.5 text-micro leading-[1.5]"
                             style={{ color: "var(--gz-ink-soft)" }}
                           >
                             {softHyphenate(leadBody)}
@@ -435,7 +435,7 @@ const MaritimeNews = () => {
                             <h3 className="gz-headline text-[13px] leading-[1.16]">{it.title}</h3>
                             {stripHtml(it.summary) ? (
                               <p
-                                className="gz-just mt-1 line-clamp-4 text-[10px] leading-[1.45]"
+                                className="gz-just mt-1 line-clamp-4 text-micro leading-[1.45]"
                                 style={{ color: "var(--gz-ink-soft)" }}
                               >
                                 {softHyphenate(stripHtml(it.summary))}
@@ -497,7 +497,7 @@ const MaritimeNews = () => {
                             className="mb-1.5 break-inside-avoid border-b border-dotted border-[rgba(35,28,15,.32)] pb-1.5"
                           >
                             <button type="button" className="gz-tap" onClick={() => openItem(it)}>
-                              <span className="line-clamp-3 text-[11px] font-bold leading-[1.28]">
+                              <span className="line-clamp-3 text-micro font-bold leading-[1.28]">
                                 <span aria-hidden="true" style={{ color: "var(--gz-ink-faint)" }}>
                                   ■{" "}
                                 </span>

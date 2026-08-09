@@ -58,7 +58,7 @@ export default function KnotVideo({ videoId, title, poster, credit }: KnotVideoP
           </button>
         )}
       </div>
-      <figcaption className="mt-1 text-center text-[10px] text-muted-foreground/70">
+      <figcaption className="mt-1 text-center text-micro text-muted-foreground/70">
         Video: {credit}
       </figcaption>
     </figure>

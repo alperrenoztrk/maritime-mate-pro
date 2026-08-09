@@ -153,7 +153,7 @@ export default function MachineCalculationsPage() {
                       <p className="text-sm text-slate-700 leading-relaxed dark:text-slate-200">{machine.description}</p>
                     </div>
                     <div className="rounded-lg bg-slate-50 px-3 py-2 text-slate-700 dark:bg-slate-900/40">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#2F5BFF]">
+                      <p className="text-micro font-semibold uppercase tracking-wide text-[#2F5BFF]">
                         Kullanım kılavuzu
                       </p>
                       <ul className="mt-2 space-y-1 text-xs leading-relaxed text-slate-700 dark:text-slate-300">

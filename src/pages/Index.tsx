@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Search } from "lucide-react";
+import { hapticSelection } from "@/lib/haptics";
 import { AppIconGrid } from "@/components/home/AppIconGrid";
 import { HomeWidgetGrid } from "@/components/widgets/HomeWidgetGrid";
 import { NewsPanel } from "@/components/home/NewsPanel";
@@ -28,6 +29,9 @@ const Index = () => {
     const el = pagerRef.current;
     if (!el) return;
     let ticking = false;
+    // Tracks the last panel we fired a haptic for, so the tick happens once
+    // per panel change rather than on every scroll frame.
+    let lastIndex = Math.round(el.scrollLeft / el.clientWidth);
     const onScroll = () => {
       setIsScrolling(true);
       if (scrollTimerRef.current) window.clearTimeout(scrollTimerRef.current);
@@ -37,6 +41,11 @@ const Index = () => {
       requestAnimationFrame(() => {
         const idx = Math.round(el.scrollLeft / el.clientWidth);
         const clamped = Math.max(0, Math.min(PAGES.length - 1, idx));
+        if (clamped !== lastIndex) {
+          // Panel snapped — the same selection feedback iOS gives a picker.
+          lastIndex = clamped;
+          hapticSelection();
+        }
         setActivePage(PAGES[clamped]);
         ticking = false;
       });
@@ -52,47 +61,15 @@ const Index = () => {
 
 
   return (
-    <div
-      className="relative min-h-[100svh] overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
-      }}
-    >
-      {/* Background glow */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 25%, rgba(56,189,248,0.14) 0%, transparent 55%)",
-        }}
-      />
-
-      {/* Subtle ocean waves at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-[28%] overflow-hidden pointer-events-none">
-        <svg
-          className="absolute bottom-[10%] left-0 w-[200%] h-[60px]"
-          viewBox="0 0 2880 60"
-          preserveAspectRatio="none"
-          style={{ animation: "home-drift 22s linear infinite" }}
-        >
-          <path
-            d="M0,35 C160,28 320,42 480,36 C640,30 800,22 960,28 C1120,34 1280,46 1440,40 C1600,34 1760,22 1920,28 C2080,34 2240,46 2400,40 C2560,34 2720,28 2880,32 L2880,60 L0,60 Z"
-            fill="rgba(14,100,140,0.35)"
-          />
-        </svg>
-        <svg
-          className="absolute bottom-0 left-0 w-[200%] h-[44px]"
-          viewBox="0 0 2880 44"
-          preserveAspectRatio="none"
-          style={{ animation: "home-drift-rev 16s linear infinite" }}
-        >
-          <path
-            d="M0,22 C140,18 280,28 420,24 C560,20 700,14 880,18 C1060,22 1180,30 1360,26 C1540,22 1640,14 1800,18 C1960,22 2080,30 2280,26 C2480,22 2620,16 2780,20 C2840,22 2860,22 2880,22 L2880,44 L0,44 Z"
-            fill="rgba(30,180,220,0.28)"
-          />
-        </svg>
-      </div>
+    <div className="relative min-h-[100svh] overflow-hidden">
+      {/*
+        No background of its own. The gradient that used to be declared here
+        was already dead: marine-global's `background: transparent !important`
+        matched this element (min-h-[100svh], no marine-keep) and beat the
+        inline style. The wave pair, however, still rendered — stacked on top
+        of the identical pair inside GlobalMaritimeBackground. Both are gone;
+        the shared fixed backdrop shows through.
+      */}
 
 
 
@@ -114,7 +91,7 @@ const Index = () => {
         />
         <div className="relative px-4 pb-10 text-center pt-[max(2rem,calc(env(safe-area-inset-top)+0.75rem))] sm:pt-[max(3rem,calc(env(safe-area-inset-top)+0.75rem))]">
           <h1
-            className="select-none font-black tracking-wider notranslate"
+            className="motion-ambient select-none font-black tracking-wider notranslate"
             translate="no"
             lang="en"
             style={{
@@ -190,8 +167,6 @@ const Index = () => {
       </div>
 
       <style>{`
-        @keyframes home-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes home-drift-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         @keyframes title-shine { to { background-position: 200% center; } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

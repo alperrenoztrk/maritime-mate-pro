@@ -2,18 +2,26 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport-fit=cover is REQUIRED for env(safe-area-inset-*) to report real
+         values on iOS. Without it every safe-area calculation in the app silently
+         resolves to 0 and the notch/home-indicator padding never applies. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Single source of truth for the shell colour: hsl(214 84% 8%), the top
+         stop of the ocean gradient in GlobalMaritimeBackground. Kept in sync with
+         capacitor.config.ts (StatusBar) and vite.config.ts (PWA manifest). -->
+    <meta name="theme-color" content="#031226" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title translate="no">Mariner&#39;s Book — Interactive Maritime Learning &amp; Calculations</title>
     <meta name="description" content="Mariner&#39;s Book delivers interactive maritime lessons, stability and cargo calculators, COLREG references, and animated tools for sailors and maritime students.">
     <meta name="author" content="Mariner's Book" />
     <link rel="canonical" href="https://nauticalleap.com/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Doğrudan stylesheet: önceki preload+onload hilesi inline event handler
-         gerektirdiğinden üretim CSP'si ile uyumsuzdu (display=swap zaten
-         yazı tipi yüklenirken metni engellemiyor). -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <!-- Inter ve JetBrains Mono artık self-host (bkz. src/index.css @font-face
+         blokları ve public/fonts). Google Fonts'a giden stylesheet ve iki
+         preconnect kaldırıldı: ilk açılış artık üçüncü taraf bir isteğe
+         bağlı değil ve Capacitor paketi çevrimdışı ilk açılışta da doğru
+         yazı tipiyle çiziyor. -->
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nauticalleap.com/" />
@@ -253,6 +261,10 @@
         @keyframes title-shimmer{to{background-position:200% center;}}
         @keyframes splash-glow{to{opacity:1;}}
         @keyframes emblem-glow{from{filter:drop-shadow(0 0 4px rgba(218,165,32,.4));}to{filter:drop-shadow(0 0 10px rgba(218,165,32,.75));}}
+        /* Returning launches (and reduced-motion) hide the splash after ~0.7s.
+           The full choreography runs on delays out to 3.15s, so without this
+           it would simply be cut off mid-book-opening. Both cases collapse to
+           a short brand beat: the mark and title, no narrative. */
         @media (prefers-reduced-motion: reduce){
           .splash-stage,.book-cover,.ship-stage,.ship-flat,.ship-solid,.splash-title,.splash-tag,.splash-bg::after,.splash-sea{animation-duration:.3s !important;animation-delay:0s !important;}
           .book{animation:none !important;transform:translateX(0);}
@@ -260,6 +272,10 @@
           .ship-lift{animation:none !important;transform:scale(1.7) translate(-20%,-8%);}
           .ship-wake{animation:none !important;opacity:.7;}
         }
+        .splash-brief .splash-stage,.splash-brief .book-cover,.splash-brief .splash-title,.splash-brief .splash-tag,.splash-brief .splash-bg::after{animation-duration:.3s !important;animation-delay:0s !important;}
+        .splash-brief .book{animation:none !important;transform:translateX(0);}
+        .splash-brief .ship-stage,.splash-brief .ship-track,.splash-brief .ship-bob,.splash-brief .ship-lift,.splash-brief .ship-wake,.splash-brief .splash-sea,.splash-brief .cover-emblem{animation:none !important;}
+        .splash-brief .ship-stage{opacity:0;}
 
       </style>
     </div>

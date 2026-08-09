@@ -237,7 +237,7 @@ export default function GuidedLessonSession() {
               </>
             ) : current?.kind === "quiz" ? (
               <>
-                <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                <p className="mb-3 text-micro font-bold uppercase tracking-[0.2em] text-primary">
                   Karışık Soru
                 </p>
                 <KnowledgeCheck

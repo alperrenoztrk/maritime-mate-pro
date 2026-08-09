@@ -4,11 +4,6 @@ import { ArrowLeft, ChevronRight, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { accentGradient } from "./libraryAccent";
 
-const highRefreshRateStyles: CSSProperties = {
-  ["--frame-rate" as string]: "120",
-  ["--animation-duration" as string]: "8.33ms",
-  ["--transition-duration" as string]: "16.67ms",
-};
 
 export function LibraryPageShell({
   title,
@@ -50,8 +45,10 @@ export function LibraryPageShell({
 
   return (
     <div
-      className="relative min-h-[100svh] overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-[max(1rem,env(safe-area-inset-left))] pb-[calc(max(6rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))] pt-[max(2rem,env(safe-area-inset-top))] dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-      style={highRefreshRateStyles}
+      // Top padding reserves the strip AppNavBar occupies. It used to be
+      // max(2rem, safe-top) — 32px against a 56px control, so the global
+      // "Geri" pill sat on top of this header's icon and <h1>.
+      className="relative min-h-[100svh] overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 px-[max(1rem,env(safe-area-inset-left))] pb-[calc(max(6rem,env(safe-area-inset-bottom))+var(--ad-banner-height,0px))] pt-[var(--floating-nav-reserve)] dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
@@ -315,7 +312,7 @@ export function LibraryBookPlaceholder({
   return (
     <div className="relative aspect-[3/4] min-h-60">
       <LibraryBookCase title={title} accent={accent} muted />
-      <span className="absolute bottom-[5%] left-1/2 -translate-x-1/2 rounded-full bg-slate-900/75 px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm">
+      <span className="absolute bottom-[5%] left-1/2 -translate-x-1/2 rounded-full bg-slate-900/75 px-2.5 py-1 text-micro font-semibold text-white shadow-sm">
         {note}
       </span>
     </div>
@@ -348,7 +345,7 @@ export function LibraryCompactCard({
       </span>
       <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-foreground">{title}</span>
       {badge !== undefined && (
-        <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
+        <span className="rounded-full bg-muted px-2 py-0.5 text-micro font-semibold text-muted-foreground">
           {badge}
         </span>
       )}
