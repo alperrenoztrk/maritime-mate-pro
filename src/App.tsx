@@ -220,6 +220,7 @@ const AnimatedRoutes = () => {
     </div>
     <AnimatePresence mode="sync" initial={false}>
         <Suspense fallback={<RouteFallback />}>
+        <span hidden aria-hidden="true" data-route-ready-path={location.pathname} />
         <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/maritime-news" element={<PageTransition><MaritimeNews /></PageTransition>} />

@@ -12,7 +12,8 @@ export interface LanguageContextValue {
   currentLanguage: string;
   supportedLanguages: SupportedLanguage[];
   isLoading: boolean;
-  changeLanguage: (languageCode: string) => void;
+  changeLanguage: (languageCode: string) => Promise<void>;
+  translateRoute: (root?: Node) => Promise<void>;
   getLanguageName: (code: string) => string;
   isRTL: boolean;
   resetLanguagePreferences: () => void;

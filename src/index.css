@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Persistent first-paint translation guard. The matching minimal rules also
+   live in index.html so they work before the JS/CSS bundle arrives; these stay
+   active after the launch splash (and its inline style) is removed. */
+#translation-guard {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 42%, #0a2a55 0%, #041530 58%, #020a14 100%);
+}
+
+#translation-guard::before {
+  width: 42px;
+  height: 42px;
+  content: "";
+  border: 2px solid rgb(255 255 255 / 18%);
+  border-top-color: #7dd3fc;
+  border-radius: 999px;
+  animation: translation-guard-spin 0.8s linear infinite;
+  box-shadow: 0 0 28px rgb(56 189 248 / 18%);
+}
+
+html[data-translation-pending="true"] #root {
+  visibility: hidden;
+}
+
+html[data-translation-pending="true"] #translation-guard {
+  display: flex;
+}
+
+[data-mt-translation-pending="true"] {
+  visibility: hidden !important;
+}
+
+@keyframes translation-guard-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #translation-guard::before { animation-duration: 1.6s; }
+}
+
 /* ── Gazete yazı tipleri (yalnızca haber ekranları) ───────────────────────────
    Kendi sunucumuzdan servis ediliyor: vite.config.ts'teki `globPatterns` woff2'yi
    kapsadığı için service worker bunları önbelleğe alır ve Capacitor paketinde

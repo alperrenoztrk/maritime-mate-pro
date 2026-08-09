@@ -30,6 +30,12 @@ import {
 } from '@/utils/routeHarvester';
 import { HARVEST_VERSION } from '@/utils/routeManifest';
 import {
+  DEFAULT_LANGUAGE,
+  LANGUAGE_STORAGE_KEY,
+  readLanguagePreference,
+} from '@/utils/languagePreference';
+import { finishInitialTranslationGuard } from '@/utils/translationGuard';
+import {
   LanguageContext,
   type LanguageChangePhase,
   type LanguageContextValue,
@@ -43,8 +49,6 @@ const IS_HARVEST_FRAME =
   typeof window !== 'undefined' &&
   window.self !== window.top &&
   /[?&]_mtHarvest=1\b/.test(window.location.search);
-
-const DEFAULT_LANGUAGE = 'en';
 
 // Supported languages - 25 languages (sorted by international alphabetical order / English name)
 const BASE_SUPPORTED_LANGUAGES: SupportedLanguage[] = [
@@ -93,7 +97,17 @@ const SEEN_STRINGS_MAX = 8000;
 const BULK_CONCURRENCY = 8;
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState<string>(DEFAULT_LANGUAGE);
+  // The persisted choice is read during the very first render. Starting from a
+  // hard-coded default and correcting it in an effect lets React commit the
+  // wrong language once, which is the root cause of the navigation flash.
+  const initialLanguageRef = useRef(
+    IS_HARVEST_FRAME
+      ? SOURCE_LANGUAGE
+      : readLanguagePreference(
+          typeof localStorage !== 'undefined' ? localStorage : undefined,
+        ),
+  );
+  const [currentLanguage, setCurrentLanguage] = useState<string>(initialLanguageRef.current);
   const [isLoading, setIsLoading] = useState(true);
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [changeProgress, setChangeProgress] = useState(0);
@@ -107,7 +121,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const flushHandleRef = useRef<number | null>(null);
   const persistHandleRef = useRef<number | null>(null);
   const originalTextRef = useRef<WeakMap<Text, string>>(new WeakMap());
-  const currentLanguageRef = useRef<string>(DEFAULT_LANGUAGE);
+  const currentLanguageRef = useRef<string>(initialLanguageRef.current);
+  const translatedLanguageRef = useRef<string | null>(null);
+  const translateRouteImplRef = useRef<(root?: Node) => Promise<void>>(async () => undefined);
+  const pendingTranslationsRef = useRef<WeakMap<HTMLElement, Set<string>>>(new WeakMap());
   // Tracks languages whose upfront bulk pass has already run. NOTE: this no
   // longer gates live translation. The shipped static packs only cover ~40 UI
   // strings (menus/buttons/labels), NOT the app's body content (lessons,
@@ -315,20 +332,88 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     }
   };
 
+  const applyLocalTranslations = (
+    units: TranslationUnit[],
+    languageCode: string,
+  ): {
+    bySource: Map<string, TranslationUnit[]>;
+    unresolved: string[];
+  } => {
+    const bySource = new Map<string, TranslationUnit[]>();
+    for (const unit of units) {
+      recordSeen(unit.source);
+      const list = bySource.get(unit.source);
+      if (list) list.push(unit);
+      else bySource.set(unit.source, [unit]);
+    }
+
+    const setPending = (source: string, sourceUnits: TranslationUnit[], pending: boolean) => {
+      const sourceSuffix = `\u0000${source}`;
+      const pendingKey = `${languageCode}${sourceSuffix}`;
+      for (const element of new Set(sourceUnits.map((unit) => unit.element))) {
+        let sources = pendingTranslationsRef.current.get(element);
+        if (!sources) {
+          sources = new Set<string>();
+          pendingTranslationsRef.current.set(element, sources);
+        }
+
+        // A language switch supersedes an in-flight request for the same source
+        // string. Keep pending state per source, but never let the old language
+        // continue hiding the newly selected language.
+        for (const key of sources) {
+          if (key.endsWith(sourceSuffix)) sources.delete(key);
+        }
+        if (pending) sources.add(pendingKey);
+
+        if (sources.size > 0) element.setAttribute('data-mt-translation-pending', 'true');
+        else element.removeAttribute('data-mt-translation-pending');
+      }
+    };
+
+    if (languageCode === SOURCE_LANGUAGE) {
+      writeWithoutObserving(() => {
+        for (const sourceUnits of bySource.values()) {
+          for (const element of new Set(sourceUnits.map((unit) => unit.element))) {
+            pendingTranslationsRef.current.get(element)?.clear();
+            element.removeAttribute('data-mt-translation-pending');
+          }
+          sourceUnits.forEach((unit) => unit.apply(unit.source));
+        }
+      });
+      return { bySource, unresolved: [] };
+    }
+
+    const writes: Array<() => void> = [];
+    const unresolved: string[] = [];
+    for (const [source, sourceUnits] of bySource) {
+      const translated = resolveLocally(source, languageCode);
+      if (translated === undefined) {
+        unresolved.push(source);
+        writes.push(() => setPending(source, sourceUnits, true));
+        continue;
+      }
+      writes.push(() => setPending(source, sourceUnits, false));
+      if (translated !== source) {
+        writes.push(() => sourceUnits.forEach((unit) => unit.apply(translated)));
+      }
+    }
+
+    if (writes.length > 0) {
+      writeWithoutObserving(() => writes.forEach((write) => write()));
+    }
+
+    return { bySource, unresolved };
+  };
+
   const translateUnits = async (
     units: TranslationUnit[],
     languageCode: string,
     runId: number,
-    options: { allowLive?: boolean } = {}
+    options: { allowLive?: boolean; waitForLive?: boolean } = {}
   ) => {
     if (units.length === 0) return;
 
-    if (languageCode === SOURCE_LANGUAGE) {
-      writeWithoutObserving(() => units.forEach((unit) => unit.apply(unit.source)));
-      return;
-    }
-
-    const { allowLive = true } = options;
+    const { allowLive = true, waitForLive = true } = options;
 
     // Make sure the language's static pack is in memory BEFORE resolving.
     // Route-change mutations can fire before the pack finishes loading on a
@@ -338,19 +423,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     await loadStaticDictionary(languageCode);
     if (translationRunIdRef.current !== runId) return;
 
-    const bySource = new Map<string, Array<(t: string) => void>>();
-    for (const unit of units) {
-      recordSeen(unit.source);
-      const list = bySource.get(unit.source);
-      if (list) list.push(unit.apply);
-      else bySource.set(unit.source, [unit.apply]);
-    }
+    const { bySource, unresolved } = applyLocalTranslations(units, languageCode);
+    if (languageCode === SOURCE_LANGUAGE) return;
 
     const applyTranslation = (source: string, translated: string) => {
       if (translated === source) return;
-      const appliers = bySource.get(source);
-      if (!appliers) return;
-      writeWithoutObserving(() => appliers.forEach((apply) => apply(translated)));
+      const sourceUnits = bySource.get(source);
+      if (!sourceUnits) return;
+      writeWithoutObserving(() => sourceUnits.forEach((unit) => unit.apply(translated)));
     };
 
     // 1) Apply everything we can resolve without the network right away. This is
@@ -361,34 +441,55 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // are cached + persisted below, so the next time the same string is seen it
     // resolves instantly with no network.
     const canLiveFetch = allowLive;
-    for (const source of bySource.keys()) {
-      const local = resolveLocally(source, languageCode);
-      if (local !== undefined) {
-        applyTranslation(source, local);
-      } else if (canLiveFetch) {
-        networkSources.push(source);
-      }
-      // else: leave in source language (cache-only mode after a bulk pass).
-    }
+    if (canLiveFetch) networkSources.push(...unresolved);
 
     // 2) Translate the remainder in as few batched requests as possible.
     if (networkSources.length > 0) {
-      const translations = await networkTranslateMany(networkSources, languageCode);
-      if (translationRunIdRef.current !== runId) return;
-      for (const [source, translated] of translations) {
-        translationCacheRef.current.set(`${languageCode}:${source}`, translated);
-        applyTranslation(source, translated);
-      }
-    }
+      const translateMissing = async () => {
+        try {
+          const translations = await networkTranslateMany(networkSources, languageCode);
+          if (translationRunIdRef.current !== runId) return;
+          for (const [source, translated] of translations) {
+            translationCacheRef.current.set(`${languageCode}:${source}`, translated);
+            applyTranslation(source, translated);
+          }
+        } finally {
+          // Unknown/dynamic strings are invisible while their live request is in
+          // flight. Reveal them only after that request settles, so a slow
+          // connection cannot expose Turkish text for one or two seconds.
+          writeWithoutObserving(() => {
+            for (const source of networkSources) {
+            const sourceUnits = bySource.get(source);
+            if (!sourceUnits) continue;
+            for (const element of new Set(sourceUnits.map((unit) => unit.element))) {
+              const pending = pendingTranslationsRef.current.get(element);
+              pending?.delete(`${languageCode}\u0000${source}`);
+                if (!pending || pending.size === 0) {
+                  element.removeAttribute('data-mt-translation-pending');
+                }
+              }
+            }
+          });
+        }
+        persistCacheSoon();
+      };
 
-    persistCacheSoon();
+      if (waitForLive) await translateMissing();
+      else {
+        void translateMissing().catch((error) => {
+          console.warn('Arka plan çevirisi tamamlanamadı:', error);
+        });
+      }
+    } else {
+      persistCacheSoon();
+    }
   };
 
   const translateRoots = async (
     roots: Node[],
     languageCode: string,
     runId: number,
-    options: { allowLive?: boolean } = {}
+    options: { allowLive?: boolean; waitForLive?: boolean } = {}
   ) => {
     if (typeof document === 'undefined' || !document.body) return;
     const units: TranslationUnit[] = [];
@@ -401,7 +502,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const translatePage = (
     languageCode: string,
     runId: number,
-    options: { allowLive?: boolean } = {}
+    options: { allowLive?: boolean; waitForLive?: boolean } = {}
   ) => translateRoots([document.body], languageCode, runId, options);
 
   // ── Mutation observer ──────────────────────────────────────────────────────
@@ -431,15 +532,35 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     if (typeof document === 'undefined' || !document.body || observerRef.current) return;
     const observer = new MutationObserver((mutations) => {
       const pending = pendingNodesRef.current;
+      const addedRoots: Node[] = [];
       for (const mutation of mutations) {
         if (mutation.type === 'characterData' && mutation.target.nodeType === Node.TEXT_NODE) {
           const textNode = mutation.target as Text;
           originalTextRef.current.set(textNode, textNode.nodeValue ?? '');
           pending.add(textNode);
+          addedRoots.push(textNode);
         } else if (mutation.type === 'childList') {
-          mutation.addedNodes.forEach((added) => pending.add(added));
+          mutation.addedNodes.forEach((added) => {
+            pending.add(added);
+            addedRoots.push(added);
+          });
         }
       }
+
+      // MutationObserver callbacks run in the microtask checkpoint before the
+      // browser paints. Apply dictionary/cache hits right here instead of
+      // waiting for the next animation frame; lazy route chunks and async React
+      // updates therefore never expose their Turkish source text for one frame.
+      if (addedRoots.length > 0 && currentLanguageRef.current !== SOURCE_LANGUAGE) {
+        const units: TranslationUnit[] = [];
+        for (const root of addedRoots) {
+          if (root.isConnected) {
+            units.push(...collectTranslationUnits(root, originalTextRef.current));
+          }
+        }
+        applyLocalTranslations(units, currentLanguageRef.current);
+      }
+
       if (pending.size > 0) scheduleFlush();
     });
     observerRef.current = observer;
@@ -560,6 +681,39 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     setChangeProgress(100);
   };
 
+  translateRouteImplRef.current = async (root?: Node) => {
+    if (typeof document === 'undefined' || !document.body) return;
+
+    // This explicit route pass supersedes the observer's queued animation-frame
+    // pass for the same React commit. Cancel it to avoid duplicate live batches.
+    pendingNodesRef.current.clear();
+    if (flushHandleRef.current !== null) {
+      window.cancelAnimationFrame?.(flushHandleRef.current);
+      window.clearTimeout(flushHandleRef.current);
+      flushHandleRef.current = null;
+    }
+
+    const language = currentLanguageRef.current;
+    const runId = ++translationRunIdRef.current;
+    await loadStaticDictionary(language);
+    if (translationRunIdRef.current !== runId) return;
+
+    await translateRoots(
+      [root && root.isConnected ? root : document.body],
+      language,
+      runId,
+      { allowLive: true, waitForLive: false },
+    );
+    if (translationRunIdRef.current === runId) {
+      translatedLanguageRef.current = language;
+    }
+  };
+
+  const translateRoute = useCallback(
+    (root?: Node) => translateRouteImplRef.current(root),
+    [],
+  );
+
 
   // ── Public API ─────────────────────────────────────────────────────────────
   const changeLanguage = async (languageCode: string) => {
@@ -578,7 +732,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       console.error('Toplu çeviri sırasında hata:', error);
     }
 
-    localStorage.setItem('preferredLanguage', languageCode);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, languageCode);
     setCurrentLanguage(languageCode);
 
     // Allow the effect-driven page pass a tick to run, then dismiss.
@@ -600,7 +754,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const getLanguageName = getLanguageNameLocal;
 
   const resetLanguagePreferences = () => {
-    localStorage.removeItem('preferredLanguage');
+    localStorage.removeItem(LANGUAGE_STORAGE_KEY);
     setCurrentLanguage(DEFAULT_LANGUAGE);
 
     const titleTr = 'Ayarlar Sıfırlandı';
@@ -613,22 +767,50 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // ── Effects ────────────────────────────────────────────────────────────────
   useEffect(() => {
+    let cancelled = false;
+
     if (IS_HARVEST_FRAME) {
       // Inside the hidden harvester iframe: force source language, no caches,
       // no observers, no translation passes. The parent window harvests the
       // raw DOM text from this frame.
       setCurrentLanguage(SOURCE_LANGUAGE);
       setIsLoading(false);
+      finishInitialTranslationGuard();
       return;
     }
-    loadCacheFromStorage();
-    const savedLanguage = localStorage.getItem('preferredLanguage') || DEFAULT_LANGUAGE;
-    const validLanguage = SUPPORTED_LANGUAGES.find((lang) => lang.language === savedLanguage)
-      ? savedLanguage
-      : DEFAULT_LANGUAGE;
 
-    setCurrentLanguage(validLanguage);
-    setIsLoading(false);
+    loadCacheFromStorage();
+
+    const initializeLanguage = async () => {
+      const language = currentLanguageRef.current;
+      const runId = ++translationRunIdRef.current;
+      ensureObserver();
+
+      try {
+        await loadStaticDictionary(language);
+        if (cancelled || translationRunIdRef.current !== runId) return;
+        await translatePage(language, runId, { allowLive: true });
+        if (!cancelled && translationRunIdRef.current === runId) {
+          translatedLanguageRef.current = language;
+        }
+      } catch (error) {
+        console.error('İlk dil hazırlanırken hata:', error);
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+          finishInitialTranslationGuard();
+        }
+      }
+    };
+
+    void initializeLanguage();
+    return () => {
+      cancelled = true;
+      finishInitialTranslationGuard();
+    };
+    // Initialization intentionally runs once against the synchronously resolved
+    // language. Subsequent changes are handled by the effect below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Inside the harvest iframe: wait until the DOM has been quiet for a short
@@ -715,12 +897,16 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const runId = ++translationRunIdRef.current;
     const language = currentLanguage;
     ensureObserver();
+    if (translatedLanguageRef.current === language) return;
     void (async () => {
       await loadStaticDictionary(language);
       if (translationRunIdRef.current !== runId) return;
       // Always allow live fetches so the full page (body content included) is
       // translated, not just the strings present in the small static pack.
-      void translatePage(language, runId, { allowLive: true });
+      await translatePage(language, runId, { allowLive: true });
+      if (translationRunIdRef.current === runId) {
+        translatedLanguageRef.current = language;
+      }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLanguage, isLoading]);
@@ -745,6 +931,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     supportedLanguages: SUPPORTED_LANGUAGES,
     isLoading,
     changeLanguage,
+    translateRoute,
     getLanguageName,
     isRTL,
     resetLanguagePreferences,

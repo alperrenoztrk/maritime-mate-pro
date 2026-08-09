@@ -253,6 +253,12 @@
         .splash-tag{animation-duration:.22s;animation-delay:.46s;}
 
         .splash-hide{opacity:0;pointer-events:none;}
+        #translation-guard{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 42%,#0a2a55 0%,#041530 58%,#020a14 100%);}
+        #translation-guard::before{content:"";width:42px;height:42px;border-radius:999px;border:2px solid rgba(255,255,255,.18);border-top-color:#7dd3fc;animation:translation-guard-spin .8s linear infinite;box-shadow:0 0 28px rgba(56,189,248,.18);}
+        html[data-translation-pending="true"] #root{visibility:hidden;}
+        html[data-translation-pending="true"] #translation-guard{display:flex;}
+        [data-mt-translation-pending="true"]{visibility:hidden !important;}
+        @keyframes translation-guard-spin{to{transform:rotate(360deg);}}
         @keyframes stage-in{to{opacity:1;transform:scale(1);}}
         @keyframes book-recenter{to{transform:translateX(0);}}
         @keyframes book-out{to{opacity:0;transform:translateX(0) translateY(10%) rotateX(30deg) scale(.93);}}
@@ -276,11 +282,13 @@
           .ship-track,.ship-bob,.cover-emblem{animation:none !important;}
           .ship-lift{animation:none !important;transform:scale(1.7) translate(-20%,-8%);}
           .ship-wake{animation:none !important;opacity:.7;}
+          #translation-guard::before{animation-duration:1.6s;}
         }
 
       </style>
     </div>
 
+    <div id="translation-guard" aria-hidden="true"></div>
     <div id="root"></div>
     <!-- Splash bekçisi: uygulama paketi açılmazsa kullanıcıyı splash ekranında
          kilitli bırakmaz. Klasik script — modül paketini çökerten hatalardan
