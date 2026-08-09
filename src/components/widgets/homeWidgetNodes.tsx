@@ -145,8 +145,6 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
   const sunset = data?.sunsetIso
     ? new Date(data.sunsetIso).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", hour12: false })
     : "—";
-  // Kırpılmadan geçer: gece saatlerinde 0'ın altına / 1'in üstüne çıkması
-  // lombardan karanlık görünmesini sağlar (bkz. PortholeSky).
   let sunProgress: number | null = null;
   if (data?.sunriseIso && data?.sunsetIso) {
     const rise = new Date(data.sunriseIso).getTime();
@@ -154,12 +152,7 @@ export function useHomeWidgetNodes(onEditLocation: () => void): HomeWidgetData {
     if (set > rise) sunProgress = (now.getTime() - rise) / (set - rise);
   }
 
-  const conditions: BridgeConditions = {
-    sunProgress,
-    windSpeedKt: data?.windSpeedKt,
-    windDirectionDeg: data?.windDirectionDeg,
-    weatherCode: data?.weatherCode,
-  };
+
 
   const nodes: HomeWidgetNodes = {
     "clock-national": (
