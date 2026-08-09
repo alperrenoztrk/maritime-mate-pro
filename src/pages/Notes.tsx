@@ -4,7 +4,6 @@ import { StickyNote, Trash2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 import { MobileLayout } from "@/components/MobileLayout";
-import { BackButton } from "@/components/BackButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -69,7 +68,6 @@ const Notes = () => {
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}
           <div className="flex items-center gap-3">
-            <BackButton to="/" />
             <div className="flex items-center gap-3">
               <StickyNote className="h-9 w-9 text-amber-300" strokeWidth={1.8} />
               <h1 className="text-3xl font-bold text-amber-300">

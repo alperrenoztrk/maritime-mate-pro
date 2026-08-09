@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Scale, Shield, Flame, LifeBuoy } from "lucide-react";
+import { Scale, Shield, Flame, LifeBuoy } from "lucide-react";
 
 const safetyRules = [
   {

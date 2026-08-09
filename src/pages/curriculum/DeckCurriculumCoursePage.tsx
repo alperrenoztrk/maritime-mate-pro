@@ -7,7 +7,7 @@ import {
   type CurriculumSectionId,
 } from "@/components/curriculum/CourseSectionTabs";
 import { CurriculumModuleAccordion } from "@/components/curriculum/CurriculumModuleAccordion";
-import { ArrowLeft } from "lucide-react";
+
 
 export default function DeckCurriculumCoursePage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -51,13 +51,8 @@ export default function DeckCurriculumCoursePage() {
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-5">
         <header className="space-y-4">
-          <Link
-            to="/lessons?library=deck"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Güverte Kitaplığı
-          </Link>
+          {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+
 
           <div className="flex items-center gap-3">
             <div

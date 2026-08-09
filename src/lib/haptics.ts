@@ -59,10 +59,12 @@ export const hapticImpact = (weight: ImpactWeight = "light"): void => {
   void import("@capacitor/haptics")
     .then(({ Haptics, ImpactStyle }) =>
       Haptics.impact({
-        light: ImpactStyle.Light,
-        medium: ImpactStyle.Medium,
-        heavy: ImpactStyle.Heavy,
-      }[weight]),
+        style: {
+          light: ImpactStyle.Light,
+          medium: ImpactStyle.Medium,
+          heavy: ImpactStyle.Heavy,
+        }[weight],
+      }),
     )
     .catch(() => {
       /* no taptic engine, or the bridge is not up yet */
