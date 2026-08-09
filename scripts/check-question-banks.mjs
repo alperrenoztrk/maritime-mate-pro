@@ -7,17 +7,24 @@
  * `Record<string, QuizQuestion[]>` literalleri dengeli parantez taramasıyla
  * çıkarılıp değerlendirilir.
  *
+ * Kapsam: güverte bankaları, makine konu bankaları ve rehberli ders (beta)
+ * akışlarının recap soruları.
+ *
  * Kontroller (hata → exit 1):
  *   - banka başına beklenen soru adedi
- *   - id'ler 1..N kesintisiz ve tekrarsız
+ *   - id'ler 1..N kesintisiz ve tekrarsız (beta akışlarında akış başına)
  *   - options tam 4 eleman, dolu ve birbirinden farklı
  *   - correctAnswer 0..3 aralığında
  *   - explanation ve category dolu
  *   - banka içinde tekrar eden soru metni yok
  *   - doğru şık tek bir pozisyona yığılmamış (hiçbir indeks > %40)
+ *   - doğru şık uzunluk ipucu vermiyor: soru bazında doğru şık / çeldirici
+ *     uzunluk oranı bandı, banka bazında "tek başına en uzun" oranı ve
+ *     ortalama oran (bkz. LENGTH_RULES / LENGTH_BUDGET / BALANCED_BANKS)
  *
- * Rapor (hata değil): banka başına hesaplamalı (sayısal) soru oranı ve
- * doğru şık pozisyon dağılımı.
+ * Rapor (hata değil): banka başına hesaplamalı (sayısal) soru oranı, doğru şık
+ * pozisyon dağılımı, doğru şıkkın tek başına en uzun olma oranı ve ortalama
+ * uzunluk oranı.
  */
 
 import { readFileSync } from "node:fs";
@@ -36,7 +43,7 @@ const DECK_BANKS = [
   { name: "seamanship", expected: 259, files: ["src/data/seamanshipQuestions.ts", "src/data/seamanshipQuestionsExtended.ts"] },
   { name: "environment", expected: 154, files: ["src/data/environmentQuestions.ts", "src/data/environmentQuestionsExtended.ts"] },
   { name: "communication", expected: 242, files: ["src/data/communicationQuestions.ts", "src/data/communicationQuestionsExtended.ts"] },
-  { name: "economics", expected: 160, files: ["src/data/economicsQuestions.ts", "src/data/economicsQuestionsExtended.ts"] },
+  { name: "economics", expected: 170, files: ["src/data/economicsQuestions.ts", "src/data/economicsQuestionsExtended.ts"] },
   { name: "machine", expected: 180, files: ["src/data/machineQuestions.ts", "src/data/machineQuestionsExtended.ts"] },
 ];
 
@@ -111,7 +118,7 @@ const LENGTH_RULES = {
  * Dengelenmiş bankalar: tam kural uygulanır. Bir dersin şıkları dengelendiğinde
  * bankası buraya taşınır ve LENGTH_BUDGET satırı silinir.
  */
-const BALANCED_BANKS = new Set([]);
+const BALANCED_BANKS = new Set(["economics"]);
 
 /**
  * Henüz dengelenmemiş bankaların tavanı (tam sayı yüzde): doğru şıkkın tek
@@ -129,7 +136,6 @@ const LENGTH_BUDGET = {
   seamanship: 91,
   environment: 74,
   communication: 79,
-  economics: 84,
   machine: 92,
   "machine/thermodynamics": 56,
   "machine/auxiliary": 91,
