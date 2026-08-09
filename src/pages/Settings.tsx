@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink } from "lucide-react";
+import { Globe, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Smartphone, Sun, Moon, Vibrate } from "lucide-react";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -16,6 +16,9 @@ import { useEntitlement } from "@/contexts/useEntitlement";
 import { getLanguageFlag } from "@/utils/languages";
 import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { TwoFactorCard } from "@/components/settings/TwoFactorCard";
+import { useAppTheme, type Theme } from "@/hooks/useTheme";
+import { hapticError, hapticSelection, hapticSuccess, isHapticsEnabled, setHapticsEnabled } from "@/services/haptics";
+import { Switch } from "@/components/ui/switch";
 import {
   areAdsSupported,
   initializeAds,
@@ -31,9 +34,11 @@ const Settings = () => {
   // the return path, so no local redirect is needed here.
   const { user, signOut } = useAuth();
   const { tier, hasProAccess } = useEntitlement();
+  const { theme, setTheme } = useAppTheme();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled);
 
   const tierLabels: Record<string, string> = {
     free: "Ücretsiz",
@@ -43,6 +48,7 @@ const Settings = () => {
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
+    hapticSuccess();
     toast.success(`Dil değiştirildi: ${getLanguageName(value)}`);
   };
 
@@ -64,10 +70,12 @@ const Settings = () => {
     try {
       const { error } = await supabase.functions.invoke("delete-account", { body: {} });
       if (error) throw error;
+      hapticSuccess();
       toast.success("Hesabınız ve tüm verileriniz silindi");
       await signOut();
       navigate("/", { replace: true });
     } catch {
+      hapticError();
       toast.error("Hesap silinemedi. Lütfen tekrar deneyin veya bize yazın.");
       setDeleting(false);
       setConfirmDelete(false);
@@ -99,8 +107,15 @@ const Settings = () => {
 
   const handleFontSizeChange = (value: string) => {
     setFontSize(value as FontSizeKey);
+    hapticSelection();
     toast.success(`Yazı boyutu: ${fontSizeLabels[value as FontSizeKey]}`);
   };
+
+  const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [
+    { value: "system", label: "Sistem", icon: Smartphone },
+    { value: "light", label: "Açık", icon: Sun },
+    { value: "dark", label: "Koyu", icon: Moon },
+  ];
 
   // Reklam onayı (UMP): Google, onay formu gösterilen bölgelerde kullanıcının
   // tercihini sonradan değiştirebileceği bir giriş noktası zorunlu kılar.
@@ -124,7 +139,10 @@ const Settings = () => {
 
   const handlePrivacyOptions = async () => {
     const opened = await openPrivacyOptionsForm();
-    if (!opened) toast.error("Reklam tercihleri şu anda açılamadı");
+    if (!opened) {
+      hapticError();
+      toast.error("Reklam tercihleri şu anda açılamadı");
+    }
   };
 
   // Only reachable for the frame between signing out and the redirect landing.
@@ -134,22 +152,76 @@ const Settings = () => {
 
   return (
     <MobileLayout>
-      <div className="min-h-screen bg-background text-foreground p-4">
+      <div className="min-h-[100svh] p-2 text-foreground sm:p-4">
         <div className="max-w-4xl mx-auto space-y-6">
 
           {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-3">
-              <SettingsIcon className="h-12 w-12 text-blue-600 dark:text-blue-400 nature-icon" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent nature-title">
-                <span data-translatable>Ayarlar</span>
-              </h1>
-            </div>
-          </div>
+          <header className="space-y-1 pb-1 pt-14">
+            <p className="ios-section-title" data-translatable>Hesap ve tercihler</p>
+            <h1 className="ios-large-title"><span data-translatable>Ayarlar</span></h1>
+          </header>
 
           <div className="grid gap-6">
+            {/* Appearance and tactile feedback */}
+            <Card className="ios-surface">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Sun className="h-5 w-5 text-primary" />
+                  <span data-translatable>Görünüm ve Etkileşim</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                <div className="grid grid-cols-3 gap-2 rounded-[var(--radius-card)] bg-muted/60 p-1.5">
+                  {appearanceOptions.map((option) => {
+                    const Icon = option.icon;
+                    const active = theme === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          hapticSelection();
+                          setTheme(option.value);
+                        }}
+                        aria-pressed={active}
+                        className={`ios-pressable flex min-h-12 flex-col items-center justify-center gap-1 rounded-[var(--radius-control)] text-xs font-semibold ${
+                          active ? "bg-card text-primary shadow-sm" : "text-muted-foreground"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span data-translatable>{option.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="flex items-center justify-between gap-4 border-t border-border/50 pt-4">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <Vibrate className="h-5 w-5" />
+                    </span>
+                    <div className="min-w-0">
+                      <Label htmlFor="haptics-toggle" className="font-semibold" data-translatable>Dokunsal geri bildirim</Label>
+                      <p className="mt-0.5 text-sm text-muted-foreground" data-translatable>Seçim, başarı ve hata anlarında hafif titreşim.</p>
+                    </div>
+                  </div>
+                  <Switch
+                    id="haptics-toggle"
+                    checked={hapticsOn}
+                    onCheckedChange={(enabled) => {
+                      if (!enabled) hapticSelection();
+                      setHapticsOn(enabled);
+                      setHapticsEnabled(enabled);
+                      if (enabled) hapticSuccess();
+                    }}
+                    aria-label="Dokunsal geri bildirim"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Account */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card className="ios-surface">
               <CardHeader>
                 <CardTitle>
                   <span data-translatable>Hesap</span>
@@ -257,8 +329,20 @@ const Settings = () => {
 
             {/* Pro membership */}
             <Card
-              className="shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:border-amber-400/60 transition-colors"
-              onClick={() => navigate("/pro")}
+              className="ios-pressable ios-surface cursor-pointer transition-colors hover:border-amber-400/60"
+              role="button"
+              tabIndex={0}
+              onClick={() => {
+                hapticSelection();
+                navigate("/pro");
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  hapticSelection();
+                  navigate("/pro");
+                }
+              }}
             >
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -284,7 +368,7 @@ const Settings = () => {
 
             {/* Ads & privacy — free tier on native only */}
             {adsRelevant && (
-              <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+              <Card className="ios-surface">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Megaphone className="w-5 h-5" />
@@ -307,7 +391,7 @@ const Settings = () => {
             )}
 
             {/* Font Size Settings */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card className="ios-surface">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Type className="w-5 h-5" />
@@ -340,7 +424,7 @@ const Settings = () => {
             </Card>
 
             {/* Language Settings */}
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
+            <Card className="ios-surface">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="w-5 h-5" />

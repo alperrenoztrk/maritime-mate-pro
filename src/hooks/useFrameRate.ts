@@ -1,26 +1,48 @@
 import { useEffect } from 'react';
 
+const MOTION_DURATIONS = {
+  instant: 120,
+  fast: 180,
+  base: 260,
+  slow: 360,
+} as const;
+
 export const useFrameRate = () => {
   useEffect(() => {
-    // Always set to maximum frame rate for optimal performance
-    const maxFrameRate = 120;
-    
-    // Apply maximum frame rate to CSS custom property
-    document.documentElement.style.setProperty('--frame-rate', `${maxFrameRate}`);
-    
-    // Update animation durations for maximum performance
-    const baseDuration = 1000 / maxFrameRate; // ~8.33ms for 120 FPS
-    document.documentElement.style.setProperty('--animation-duration', `${baseDuration}ms`);
-    
-    // Update transition durations for smooth performance
-    document.documentElement.style.setProperty('--transition-duration', `${baseDuration * 2}ms`);
-    
-    // Save to localStorage for consistency
-    localStorage.setItem('frameRate', maxFrameRate.toString());
+    const root = document.documentElement;
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Refresh rate controls how often an animation is sampled, not how long the
+    // animation should last. Browsers automatically render CSS/WAAPI motion at
+    // the display's available refresh rate, so keep human-perceptible durations
+    // stable on both 60 Hz and 120 Hz devices.
+    const applyMotionPreference = (reduceMotion: boolean) => {
+      root.style.setProperty('--frame-rate', 'auto');
+      root.style.setProperty('--motion-instant', `${reduceMotion ? 1 : MOTION_DURATIONS.instant}ms`);
+      root.style.setProperty('--motion-fast', `${reduceMotion ? 1 : MOTION_DURATIONS.fast}ms`);
+      root.style.setProperty('--motion-base', `${reduceMotion ? 1 : MOTION_DURATIONS.base}ms`);
+      root.style.setProperty('--motion-slow', `${reduceMotion ? 1 : MOTION_DURATIONS.slow}ms`);
+      // Backward-compatible aliases used by older components.
+      root.style.setProperty('--animation-duration', `${reduceMotion ? 1 : MOTION_DURATIONS.base}ms`);
+      root.style.setProperty('--transition-duration', `${reduceMotion ? 1 : MOTION_DURATIONS.base}ms`);
+      root.toggleAttribute('data-reduce-motion', reduceMotion);
+    };
+
+    const handleChange = (event: MediaQueryListEvent) => applyMotionPreference(event.matches);
+    applyMotionPreference(reducedMotionQuery.matches);
+    if (reducedMotionQuery.addEventListener) reducedMotionQuery.addEventListener('change', handleChange);
+    else reducedMotionQuery.addListener?.(handleChange);
+
+    return () => {
+      if (reducedMotionQuery.removeEventListener) reducedMotionQuery.removeEventListener('change', handleChange);
+      else reducedMotionQuery.removeListener?.(handleChange);
+    };
   }, []);
 
   return {
-    frameRate: 120,
-    updateFrameRate: () => {} // No-op since we always use max
+    // Kept for compatibility with existing consumers. Rendering cadence is
+    // intentionally delegated to the browser/display compositor.
+    frameRate: 'auto' as const,
+    updateFrameRate: () => {},
   };
 };

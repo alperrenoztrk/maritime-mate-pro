@@ -26,6 +26,8 @@ import { GlobalSearch } from "@/components/GlobalSearch";
 import { ProRoute } from "@/components/pro/ProRoute";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { AdsController } from "@/components/ads/AdsController";
+import { AppTabBar } from "@/components/AppTabBar";
+import { SwipeBackGesture } from "@/components/SwipeBackGesture";
 
 // Pages are code-split via React.lazy so the initial bundle stays small enough
 // for the mobile preview / first paint. Each route only downloads its own chunk.
@@ -208,13 +210,15 @@ const AnimatedRoutes = () => {
   return (
     <>
     <FloatingNavButtons />
+    <AppTabBar />
+    <SwipeBackGesture />
     {/* App-wide search dialog: ⌘K / Ctrl+K and the "open-global-search"
         event now work on every route, not just the home page. The trigger
         button is hidden; the dialog itself renders through a portal. */}
     <div className="hidden">
       <GlobalSearch />
     </div>
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="sync" initial={false}>
         <Suspense fallback={<RouteFallback />}>
         <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
@@ -402,7 +406,8 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  // Prefer maximum smoothness on high refresh displays (e.g. 120Hz)
+  // Keep motion timing perceptually consistent while allowing the compositor
+  // to use the display's native refresh rate (including 120 Hz ProMotion).
   useFrameRate();
 
   // App-wide screenshot / screen-recording blocking (native only).
@@ -426,7 +431,7 @@ const App = () => {
           <EntitlementProvider>
           <LanguageProvider>
             <TooltipProvider>
-              <ThemeProvider defaultTheme="dark" storageKey="maritime-ui-theme-v2">
+              <ThemeProvider defaultTheme="system" storageKey="maritime-ui-theme-v2">
                 <FontSizeProvider>
                   <Toaster />
                   <DocumentExpiryNotifier />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { BookOpen, Users, Ship, ClipboardList, FlaskConical, BookA, Settings, Sparkles, StickyNote, type LucideIcon } from "lucide-react";
+import { hapticSelection } from "@/services/haptics";
 
 interface AppIcon {
   label: string;
@@ -11,7 +12,7 @@ interface AppIcon {
 const APPS: AppIcon[] = [
   { label: "Dersler", to: "/lessons", Icon: BookOpen, gradient: "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)" },
   { label: "Alıştırmalar", to: "/exercises", Icon: Sparkles, gradient: "linear-gradient(135deg, #a855f7 0%, #4f46e5 100%)" },
-  { label: "Personnel", to: "/crew", Icon: Users, gradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)" },
+  { label: "Personel", to: "/crew", Icon: Users, gradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)" },
   { label: "Gemi Sistemleri", to: "/ship-systems", Icon: Ship, gradient: "linear-gradient(135deg, #f59e0b 0%, #b45309 100%)" },
   { label: "Operasyonlar", to: "/ship-operations", Icon: ClipboardList, gradient: "linear-gradient(135deg, #ec4899 0%, #be185d 100%)" },
   { label: "Sözlük", to: "/glossary", Icon: BookA, gradient: "linear-gradient(135deg, #0891b2 0%, #1e3a8a 100%)" },
@@ -28,15 +29,16 @@ export function AppIconGrid() {
         <Link
           key={to}
           to={to}
-          className="group flex flex-col items-center gap-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded-[22px]"
+          onClick={hapticSelection}
+          className="group flex flex-col items-center gap-2 rounded-[22px] outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
           aria-label={label}
         >
           <div
-            className="relative flex aspect-square w-full items-center justify-center rounded-[22px] transition-transform duration-150 group-active:scale-90"
+            className="ios-pressable relative flex aspect-square w-full items-center justify-center rounded-[22px] group-active:scale-[0.92]"
             style={{
               background: gradient,
               boxShadow:
-                "0 8px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.2)",
+                "0 14px 28px -16px rgba(0,0,0,0.62), inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.16)",
             }}
           >
             <Icon className="h-1/2 w-1/2 text-white drop-shadow-md" strokeWidth={1.8} />
@@ -47,7 +49,7 @@ export function AppIconGrid() {
               }}
             />
           </div>
-          <span className="text-[11px] font-medium text-white/90 drop-shadow-md leading-tight text-center">
+          <span className="text-center text-xs font-medium leading-tight text-foreground/90">
             {label}
           </span>
         </Link>

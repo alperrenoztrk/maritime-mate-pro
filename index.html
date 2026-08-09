@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#061225" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title translate="no">Mariner&#39;s Book — Interactive Maritime Learning &amp; Calculations</title>
     <meta name="description" content="Mariner&#39;s Book delivers interactive maritime lessons, stability and cargo calculators, COLREG references, and animated tools for sailors and maritime students.">
@@ -179,7 +180,7 @@
       <div class="splash-tag" translate="no" lang="en">
 </div>
       <style>
-        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:Inter,system-ui,-apple-system,sans-serif;transition:opacity .6s cubic-bezier(.4,0,.2,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
+        .splash-root{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;overflow:hidden;max-width:100vw;max-height:100vh;max-height:100svh;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;transition:opacity .22s cubic-bezier(.2,.8,.2,1);padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-left)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-right));box-sizing:border-box;}
         .splash-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #0a2a55 0%, #041530 55%, #020a14 100%);}
         .splash-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(218,165,32,0.10), transparent 62%);opacity:0;animation:splash-glow 1.4s cubic-bezier(.4,0,.2,1) .5s forwards;}
         .splash-sea{position:absolute;left:0;right:0;bottom:0;height:47%;opacity:0;background:linear-gradient(180deg, rgba(9,38,74,0) 0%, rgba(18,64,118,.38) 30%, rgba(15,56,105,.55) 55%, rgba(5,22,46,.85) 100%);animation:sea-in .7s ease 2.5s forwards;}
@@ -234,6 +235,22 @@
           .splash-stage{width:min(52svh*1.5,60vw,420px);margin-bottom:clamp(.5rem,2svh,1rem);}
           .splash-title{font-size:clamp(.85rem,2.2vh,1.25rem);letter-spacing:clamp(2px,.5vw,6px);}
         }
+
+        /* First-launch brand moment: complete in about one second. Subsequent
+           launches are dismissed by main.tsx before this sequence advances. */
+        .splash-stage{animation-duration:.28s;}
+        .splash-bg::after{animation-duration:.4s;animation-delay:.04s;}
+        .splash-sea{animation-duration:.25s;animation-delay:.55s;}
+        .book{animation:book-recenter .42s cubic-bezier(.22,1,.36,1) .12s forwards,book-out .28s cubic-bezier(.55,0,.8,.4) .74s forwards;}
+        .book-cover{animation:cover-open .42s cubic-bezier(.22,1,.36,1) .12s forwards;}
+        .ship-stage{animation-duration:.16s;animation-delay:.46s;}
+        .ship-lift{animation-duration:.24s;animation-delay:.56s;}
+        .ship-track{animation-duration:.32s;animation-delay:.72s;}
+        .ship-flat{animation-duration:.12s;animation-delay:.56s;}
+        .ship-solid{animation-duration:.24s;animation-delay:.56s;}
+        .ship-wake{animation:wake-in .14s ease .72s forwards,wake-pulse .3s ease-in-out .76s 1 alternate;}
+        .splash-title{animation:title-in .24s cubic-bezier(.22,1,.36,1) .4s forwards,title-shimmer .5s linear .58s 1;}
+        .splash-tag{animation-duration:.22s;animation-delay:.46s;}
 
         .splash-hide{opacity:0;pointer-events:none;}
         @keyframes stage-in{to{opacity:1;transform:scale(1);}}

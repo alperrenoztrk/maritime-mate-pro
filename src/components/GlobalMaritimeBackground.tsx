@@ -17,7 +17,7 @@ export const GlobalMaritimeBackground = () => {
       style={{
         zIndex: -1,
         background:
-          "linear-gradient(180deg, hsl(214 84% 8%) 0%, hsl(214 84% 15%) 50%, hsl(200 80% 18%) 100%)",
+          "linear-gradient(180deg, hsl(var(--marine-bg-top)) 0%, hsl(var(--marine-bg-middle)) 52%, hsl(var(--marine-bg-bottom)) 100%)",
       }}
     >
       {/* Top radial glow */}
@@ -25,12 +25,12 @@ export const GlobalMaritimeBackground = () => {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.14) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 50% 0%, hsl(var(--marine-glow) / 0.16) 0%, transparent 55%)",
         }}
       />
 
       {/* Bottom ocean waves */}
-      <div className="absolute bottom-0 left-0 right-0 h-[22%] overflow-hidden">
+      <div className="maritime-decorative-motion absolute bottom-0 left-0 right-0 h-[22%] overflow-hidden opacity-70">
         <svg
           className="absolute bottom-[10%] left-0 w-[200%] h-[60px]"
           viewBox="0 0 2880 60"
@@ -39,7 +39,7 @@ export const GlobalMaritimeBackground = () => {
         >
           <path
             d="M0,35 C160,28 320,42 480,36 C640,30 800,22 960,28 C1120,34 1280,46 1440,40 C1600,34 1760,22 1920,28 C2080,34 2240,46 2400,40 C2560,34 2720,28 2880,32 L2880,60 L0,60 Z"
-            fill="rgba(14,100,140,0.30)"
+            fill="hsl(var(--marine-wave-back) / 0.24)"
           />
         </svg>
         <svg
@@ -50,7 +50,7 @@ export const GlobalMaritimeBackground = () => {
         >
           <path
             d="M0,22 C140,18 280,28 420,24 C560,20 700,14 880,18 C1060,22 1180,30 1360,26 C1540,22 1640,14 1800,18 C1960,22 2080,30 2280,26 C2480,22 2620,16 2780,20 C2840,22 2860,22 2880,22 L2880,44 L0,44 Z"
-            fill="rgba(30,180,220,0.22)"
+            fill="hsl(var(--marine-wave-front) / 0.2)"
           />
         </svg>
       </div>

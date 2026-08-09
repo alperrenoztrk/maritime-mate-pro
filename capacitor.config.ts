@@ -10,8 +10,10 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   plugins: {
     StatusBar: {
-      style: 'DARK',
-      backgroundColor: '#1e40af'
+      // Runtime appearance is synchronized by ThemeProvider. The packaged
+      // default matches the dark maritime launch surface.
+      style: 'LIGHT',
+      backgroundColor: '#061225'
     },
     Keyboard: {
       resize: 'body',

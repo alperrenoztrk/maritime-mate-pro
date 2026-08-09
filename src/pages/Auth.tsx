@@ -15,11 +15,22 @@ import { MfaChallengeForm } from "@/components/auth/MfaChallengeForm";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { useLanguage } from "@/contexts/useLanguage";
+import { hapticError, hapticSuccess } from "@/services/haptics";
 
 const credentialsSchema = z.object({
   email: z.string().trim().email({ message: "Geçerli bir e-posta girin" }).max(255),
   password: z.string().min(8, { message: "Şifre en az 8 karakter olmalı" }).max(72),
 });
+
+const showError = (message: string) => {
+  hapticError();
+  toast.error(message);
+};
+
+const showSuccess = (message: string) => {
+  hapticSuccess();
+  toast.success(message);
+};
 
 
 const Auth = () => {
@@ -47,7 +58,7 @@ const Auth = () => {
     e.preventDefault();
     const parsed = credentialsSchema.safeParse({ email, password });
     if (!parsed.success) {
-      toast.error(parsed.error.issues[0].message);
+      showError(parsed.error.issues[0].message);
       return;
     }
     setBusy(true);
@@ -58,23 +69,23 @@ const Auth = () => {
           const msg = error.message.includes("Invalid login")
             ? "E-posta veya şifre hatalı. Bu hesabı Google ile oluşturduysanız \"Google ile devam et\" ile girin ya da aşağıdan şifre belirleyin."
             : error.message;
-          toast.error(msg);
+          showError(msg);
         } else {
           // Yönlendirmeyi yukarıdaki effect yapar: 2FA açıksa önce kod adımı
           // gösterilmeli, doğrudan navigate çağırmak o adımı atlardı.
-          toast.success("Giriş başarılı");
+          showSuccess("Giriş başarılı");
         }
       } else {
         const { error } = await signUpWithEmail(parsed.data.email, parsed.data.password, nextPath);
         if (error) {
           if (error.message.includes("already registered") || error.message.includes("User already")) {
-            toast.error("Bu e-posta zaten kayıtlı. Google ile giriş yapın veya \"Şifremi unuttum\" ile şifre belirleyin.");
+            showError("Bu e-posta zaten kayıtlı. Google ile giriş yapın veya \"Şifremi unuttum\" ile şifre belirleyin.");
             setTab("signin");
           } else {
-            toast.error(error.message);
+            showError(error.message);
           }
         } else {
-          toast.success("Kayıt başarılı! E-postanızı kontrol edin.");
+          showSuccess("Kayıt başarılı! E-postanızı kontrol edin.");
         }
       }
     } finally {
@@ -87,7 +98,7 @@ const Auth = () => {
   const handleResetPassword = async () => {
     const parsedEmail = credentialsSchema.shape.email.safeParse(email);
     if (!parsedEmail.success) {
-      toast.error("Önce geçerli bir e-posta girin");
+      showError("Önce geçerli bir e-posta girin");
       return;
     }
     setBusy(true);
@@ -96,9 +107,9 @@ const Auth = () => {
         redirectTo: `${window.location.origin}/reset-password`,
       });
       if (error) {
-        toast.error(error.message || "Şifre belirleme e-postası gönderilemedi");
+        showError(error.message || "Şifre belirleme e-postası gönderilemedi");
       } else {
-        toast.success("Şifre belirleme bağlantısı e-postanıza gönderildi.");
+        showSuccess("Şifre belirleme bağlantısı e-postanıza gönderildi.");
       }
     } finally {
       setBusy(false);
@@ -115,27 +126,32 @@ const Auth = () => {
     try {
       const { error } = await signInWithGoogle(nextPath);
       if (error) {
-        toast.error(error.message || "Google ile giriş başarısız");
+        showError(error.message || "Google ile giriş başarısız");
       }
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Google ile giriş başarısız");
+      showError(err instanceof Error ? err.message : "Google ile giriş başarısız");
     } finally {
       setBusy(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-background text-foreground">
-      <Card className="w-full max-w-md shadow-2xl border-border/50 backdrop-blur">
-        <CardHeader className="text-center space-y-3">
+    <div className="relative flex min-h-screen items-center justify-center overflow-x-hidden bg-background px-4 pb-8 pt-[calc(env(safe-area-inset-top)+2rem)] text-foreground">
+      <div aria-hidden className="pointer-events-none absolute -left-20 top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-24 bottom-12 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+      <Card className="ios-glass-strong relative w-full max-w-md border-border/60 shadow-[0_28px_80px_-34px_hsl(var(--glass-shadow)/0.7)]">
+        <CardHeader className="space-y-3 pb-4 text-center">
           <div className="flex justify-center">
-            <div className="p-3 rounded-2xl bg-primary/10 border border-primary/20">
-              <Anchor className="w-8 h-8 text-primary" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-[18px] border border-primary/20 bg-primary/10 shadow-sm">
+              <Anchor className="h-7 w-7 text-primary" strokeWidth={1.8} />
             </div>
           </div>
-          <CardTitle className="text-2xl notranslate" translate="no" lang="en">
+          <CardTitle className="notranslate text-[30px] tracking-[-0.035em]" translate="no" lang="en">
             Mariner's Book
           </CardTitle>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Denizcilik araçlarına güvenli ve hızlı erişim.
+          </p>
         </CardHeader>
         <CardContent className="space-y-4">
           {mfaChallengeRequired ? (
@@ -162,8 +178,8 @@ const Auth = () => {
               </div>
               <Tabs value={tab} onValueChange={(v) => setTab(v as "signin" | "signup")}>
                 <TabsList className="grid grid-cols-2 w-full">
-                  <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
                   <TabsTrigger value="signin">Giriş Yap</TabsTrigger>
+                  <TabsTrigger value="signup">Kayıt Ol</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="signin" className="mt-4">
@@ -171,6 +187,7 @@ const Auth = () => {
                     <EmailPasswordFields
                       email={email}
                       password={password}
+                      passwordAutocomplete="current-password"
                       onEmail={setEmail}
                       onPassword={setPassword}
                     />
@@ -183,11 +200,11 @@ const Auth = () => {
                       type="button"
                       onClick={handleResetPassword}
                       disabled={busy}
-                      className="text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground disabled:opacity-50"
+                      className="ios-pressable min-h-11 rounded-xl px-3 text-sm font-medium text-primary hover:bg-primary/10 disabled:opacity-50"
                     >
                       Şifremi unuttum / şifre belirle
                     </button>
-                    <p className="mt-2 text-[11px] text-muted-foreground">
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                       Hesabınızı Google ile oluşturduysanız şifreniz yoktur. Buradan şifre
                       belirleyebilir veya Google ile giriş yapabilirsiniz.
                     </p>
@@ -200,6 +217,7 @@ const Auth = () => {
                     <EmailPasswordFields
                       email={email}
                       password={password}
+                      passwordAutocomplete="new-password"
                       onEmail={setEmail}
                       onPassword={setPassword}
                     />
@@ -220,7 +238,7 @@ const Auth = () => {
               şartları okuyabilmeli. Ayarlar'daki bağlantıların aynısı
               (bkz. src/pages/Settings.tsx). */}
           <div className="border-t border-border/60 pt-4 text-center">
-            <p className="text-[11px] leading-relaxed text-muted-foreground">
+            <p className="text-xs leading-relaxed text-muted-foreground">
               Kayıt olarak veya giriş yaparak{" "}
               <a
                 href={termsOfUseUrl}
@@ -275,11 +293,13 @@ const Auth = () => {
 const EmailPasswordFields = ({
   email,
   password,
+  passwordAutocomplete,
   onEmail,
   onPassword,
 }: {
   email: string;
   password: string;
+  passwordAutocomplete: "current-password" | "new-password";
   onEmail: (v: string) => void;
   onPassword: (v: string) => void;
 }) => (
@@ -292,6 +312,8 @@ const EmailPasswordFields = ({
           id="email"
           type="email"
           autoComplete="email"
+          autoCapitalize="none"
+          spellCheck={false}
           className="pl-9"
           value={email}
           onChange={(e) => onEmail(e.target.value)}
@@ -306,7 +328,7 @@ const EmailPasswordFields = ({
         <Input
           id="password"
           type="password"
-          autoComplete="current-password"
+          autoComplete={passwordAutocomplete}
           className="pl-9"
           value={password}
           onChange={(e) => onPassword(e.target.value)}

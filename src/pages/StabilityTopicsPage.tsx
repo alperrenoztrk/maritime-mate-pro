@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -3299,16 +3298,9 @@ export default function StabilityTopicsPage() {
   // geri tuşu yutulur, yazı ancak kendi kapatma düğmesiyle kapanır.
   useArticleBackGuard(Boolean(currentContent));
 
-  const highRefreshRateStyles: CSSProperties = {
-    ["--frame-rate" as string]: "120",
-    ["--animation-duration" as string]: "8.33ms",
-    ["--transition-duration" as string]: "16.67ms",
-  };
-
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-      style={highRefreshRateStyles}
     >
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0">

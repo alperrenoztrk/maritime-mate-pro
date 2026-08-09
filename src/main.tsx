@@ -49,18 +49,25 @@ const hideSplash = () => {
   const splash = document.getElementById('splash-root');
   if (splash && !splash.classList.contains('splash-hide')) {
     splash.classList.add('splash-hide');
-    // The fade-out transition is .6s — remove only after it has finished.
-    setTimeout(() => splash.remove(), 650);
+    // Keep the launch hand-off brief; the native launch screen already covers
+    // loading and the branded sequence must never block daily use.
+    setTimeout(() => splash.remove(), 280);
   }
 };
 
-// Let the splash sequence play through before fading: book cover opens, the
-// ship drawing appears on the page, pops into 3D and sails off (~4.2s).
 const prefersReducedMotion =
   typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const splashHideDelay = prefersReducedMotion ? 1100 : 4200;
+let hasSeenIntro = false;
+try {
+  hasSeenIntro = safeLocalStorage.getItem('maritime-intro-seen') === 'true';
+  safeLocalStorage.setItem('maritime-intro-seen', 'true');
+} catch {
+  // The safe-storage guard normally prevents this; keep launch non-blocking if
+  // an embedded browser still denies storage access.
+}
+const splashHideDelay = prefersReducedMotion ? 180 : hasSeenIntro ? 240 : 1100;
 requestAnimationFrame(() => setTimeout(hideSplash, splashHideDelay));
 
 // Hard safety net in case the rAF callback never fires.
-setTimeout(hideSplash, splashHideDelay + 1200);
+setTimeout(hideSplash, splashHideDelay + 500);

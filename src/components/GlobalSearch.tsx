@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { searchIndex, type SearchItem } from "@/data/searchIndex";
 import { loadDeepSearchIndex, getDeepSearchIndex } from "@/data/deepSearchIndex";
 import { cn } from "@/lib/utils";
+import { hapticSelection } from "@/services/haptics";
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Seyir": "bg-blue-500/15 text-blue-400",
@@ -204,6 +205,7 @@ export function GlobalSearch() {
   }, [selectedIndex]);
 
   const handleSelect = useCallback((item: SearchItem) => {
+    hapticSelection();
     setOpen(false);
     setQuery("");
     const entry: SearchItem = {
@@ -240,7 +242,7 @@ export function GlobalSearch() {
       onClick={() => handleSelect(item)}
       onMouseEnter={() => setSelectedIndex(index)}
       className={cn(
-        "flex items-center gap-3 w-full rounded-lg px-3 py-2.5 text-left text-sm transition-colors",
+        "ios-pressable flex min-h-12 w-full items-center gap-3 rounded-[var(--radius-control)] px-3 py-2.5 text-left text-sm",
         index === selectedIndex
           ? "bg-accent text-accent-foreground"
           : "text-foreground hover:bg-accent/50"
@@ -260,7 +262,7 @@ export function GlobalSearch() {
         )}
       </span>
       <span className={cn(
-        "shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium",
+        "shrink-0 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium",
         CATEGORY_COLORS[item.category] || CATEGORY_COLORS["Genel"]
       )}>
         {item.category}
@@ -273,7 +275,7 @@ export function GlobalSearch() {
       {/* Search trigger button */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 transition-colors w-full"
+        className="ios-pressable flex min-h-11 w-full items-center gap-2 rounded-[var(--radius-control)] border border-border/60 bg-card/90 px-3 py-2 text-sm text-muted-foreground hover:bg-muted/70"
       >
         <Search className="h-4 w-4 shrink-0" />
         <span className="flex-1 text-left truncate">Sayfa, hesaplama veya konu ara…</span>
@@ -283,7 +285,7 @@ export function GlobalSearch() {
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="p-0 gap-0 max-w-lg overflow-hidden bg-card/95 backdrop-blur-xl border-border/50">
+        <DialogContent className="ios-glass-strong max-w-lg gap-0 overflow-hidden p-0 [&>button:last-child]:hidden">
           <div className="flex items-center border-b border-border/30 px-3">
             <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
             <Input
@@ -303,13 +305,13 @@ export function GlobalSearch() {
           <div ref={listRef} className="max-h-[60vh] overflow-y-auto p-2">
             {showRecent && (
               <>
-                <p className="px-3 pt-1 pb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                <p className="px-3 pt-1 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-wider text-muted-foreground">
                   Son aramalar
                 </p>
                 <div className="space-y-0.5">
                   {recent.map((item, i) => renderRow(item, i, true))}
                 </div>
-                <p className="px-3 pt-3 pb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                <p className="px-3 pt-3 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-wider text-muted-foreground">
                   Öneriler
                 </p>
               </>
