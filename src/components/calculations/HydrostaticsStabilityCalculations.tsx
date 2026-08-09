@@ -1411,7 +1411,6 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
     <div className="space-y-6">
       {singleMode && (
         <div className="flex items-center gap-3">
-          <BackButton to="/stability/calculations" />
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             Stabilite Hesaplamaları
           </span>
