@@ -12,16 +12,8 @@ import { SunArcWidget } from "@/components/widgets/instruments/SunArcWidget";
 /**
  * Widget'ları besleyen tek kaynak: konum, hava ve saat verisini toplayıp her
  * widget kimliği için hazır bileşeni döndürür.
- *
- * Neden ayrı dosya: aynı bileşenler iki yerde gösteriliyor — ana sayfadaki
- * ızgarada (HomeWidgetGrid) ve köprüüstü modelinde cihazların üstünde
- * (bridge/BridgeInstrumentMounts). İkisi de bu hook'u kullandığı için veri
- * bir kez çekiliyor ve iki görünüm asla ayrışmıyor.
- *
- * Hook hazır bileşenlerin yanında verinin ham hâlini de döndürüyor
- * (BridgeConditions): köprüüstü sahnesinin dışarısı — gökyüzü, ışık, denizin
- * salınımı — widget'ların gösterdiği aynı sayılardan kuruluyor.
  */
+
 
 function degreesToCompass(degrees: number): string {
   const dirs = ["K", "KKD", "KD", "DKD", "D", "DGD", "GD", "GGD", "G", "GGB", "GB", "BGB", "B", "BKB", "KB", "KKB"];
