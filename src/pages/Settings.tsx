@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Crown, ChevronRight, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Vibrate } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Vibrate } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { getHapticsEnabled, setHapticsEnabled, hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
@@ -32,18 +32,12 @@ const Settings = () => {
   // RequireAuth already keeps anonymous visitors out of this page and carries
   // the return path, so no local redirect is needed here.
   const { user, signOut } = useAuth();
-  const { tier, hasProAccess } = useEntitlement();
+  const { hasProAccess } = useEntitlement();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
   // Read once on mount; the haptics module owns the persisted value.
   const [hapticsOn, setHapticsOn] = useState(() => getHapticsEnabled());
-
-  const tierLabels: Record<string, string> = {
-    free: "Ücretsiz",
-    pro: "Pro",
-    lifetime: "Ömür Boyu",
-  };
 
   const handleLanguageChange = async (value: string) => {
     await changeLanguage(value);
@@ -259,32 +253,6 @@ const Settings = () => {
             {/* Hesap güvenliği: isteğe bağlı 2FA (bkz. src/lib/mfa.ts) */}
             <TwoFactorCard />
 
-            {/* Pro membership */}
-            <Card
-              className="shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:border-amber-400/60 transition-colors"
-              onClick={() => navigate("/pro")}
-            >
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Crown className="w-5 h-5 text-amber-400" />
-                  <span data-translatable>Mariner's Book Pro</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-sm text-muted-foreground">
-                    <span data-translatable>Paketiniz</span>:{" "}
-                    <span className={hasProAccess ? "text-amber-400 font-medium" : ""} data-translatable>
-                      {tierLabels[tier] ?? tier}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-amber-400">
-                    <span data-translatable>{hasProAccess ? "Yönet" : "Pro'ya geç"}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Ads & privacy — free tier on native only */}
             {adsRelevant && (
