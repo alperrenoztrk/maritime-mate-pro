@@ -117,7 +117,7 @@ const MachineTopicDetailPage = lazy(() => import("./pages/MachineTopicDetailPage
 
 const EmissionFormulas = lazy(() => import("./pages/EmissionFormulas"));
 const EmissionAssistant = lazy(() => import("./pages/EmissionAssistant"));
-const EmissionQuiz = lazy(() => import("./pages/EmissionQuiz"));
+const EnvironmentQuizPage = lazy(() => import("./pages/EnvironmentQuiz"));
 const SOLASRegulationsPage = lazy(() => import("./pages/SOLASRegulations"));
 const SOLASCertificatesPage = lazy(() => import("./pages/SOLASCertificates"));
 const SOLASShipRequirementsPage = lazy(() => import("./pages/SOLASShipRequirements"));
@@ -324,7 +324,7 @@ const AnimatedRoutes = () => {
         <Route path="/environment/formulas" element={<PageTransition><EmissionFormulas /></PageTransition>} />
         <Route path="/environment/rules" element={<Navigate to="/lessons/environment/topics" replace />} />
         <Route path="/environment/assistant" element={<PageTransition><EmissionAssistant /></PageTransition>} />
-        <Route path="/environment/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><EmissionQuiz /></PageTransition></ProRoute>} />
+        <Route path="/environment/quiz" element={<ProRoute feature="Quiz ve sınav hazırlığı"><PageTransition><EnvironmentQuizPage /></PageTransition></ProRoute>} />
         <Route path="/solas/regulations" element={<PageTransition><SOLASRegulationsPage /></PageTransition>} />
         <Route path="/solas/certificates" element={<PageTransition><SOLASCertificatesPage /></PageTransition>} />
         <Route path="/solas/ship-requirements" element={<PageTransition><SOLASShipRequirementsPage /></PageTransition>} />
