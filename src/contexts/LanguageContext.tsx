@@ -459,11 +459,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
           // connection cannot expose Turkish text for one or two seconds.
           writeWithoutObserving(() => {
             for (const source of networkSources) {
-            const sourceUnits = bySource.get(source);
-            if (!sourceUnits) continue;
-            for (const element of new Set(sourceUnits.map((unit) => unit.element))) {
-              const pending = pendingTranslationsRef.current.get(element);
-              pending?.delete(`${languageCode}\u0000${source}`);
+              const sourceUnits = bySource.get(source);
+              if (!sourceUnits) continue;
+              for (const element of new Set(sourceUnits.map((unit) => unit.element))) {
+                const pending = pendingTranslationsRef.current.get(element);
+                pending?.delete(`${languageCode}\u0000${source}`);
                 if (!pending || pending.size === 0) {
                   element.removeAttribute('data-mt-translation-pending');
                 }
